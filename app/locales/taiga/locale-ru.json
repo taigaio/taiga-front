@@ -409,8 +409,8 @@
             "PAGE_TITLE": "Участие - {{projectName}}",
             "ADD_BUTTON": "+ Новый участник",
             "ADD_BUTTON_TITLE": "Добавить нового участника",
-            "LIMIT_USERS_WARNING": "Why can't I add more members",
-            "LIMIT_USERS_WARNING_MESSAGE": "Currently you can only have <strong>{{members}}</strong> members per project. If you want to add more members get in touch with the administrators"
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_ADMIN": "This project has reached its limit of allowed members <strong>({{members}})</strong>.",
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "This project has reached its limit of allowed members <strong>({{members}})</strong>. If you want to add more members please contact the administrators."
         },
         "PROJECT_EXPORT": {
             "TITLE": "Экспорт",
@@ -472,7 +472,16 @@
             "MAX_PRIVATE_PROJECTS": "You've reached the maximum number of private projects",
             "MAX_PRIVATE_PROJECTS_MEMBERS": "The project exceeds the maximum members number in private projects",
             "MAX_PUBLIC_PROJECTS": "You've reached the maximum number of public projects",
-            "MAX_PUBLIC_PROJECTS_MEMBERS": "The project exceeds the maximum members number in public projects"
+            "MAX_PUBLIC_PROJECTS_MEMBERS": "The project exceeds the maximum members number in public projects",
+            "PROJECT_OWNER": "Project owner",
+            "REQUEST_OWNERSHIP": "Request ownership",
+            "REQUEST_OWNERSHIP_CONFIRMATION_TITLE": "Do you want to be the project owner?",
+            "REQUEST_OWNERSHIP_DESC": "Ask the owner {{name}} to transfert to you the project ownership.",
+            "REQUEST_OWNERSHIP_BUTTON": "Request",
+            "REQUEST_OWNERSHIP_SUCCESS": "We'll notify the project owner",
+            "CHANGE_OWNER": "Change owner",
+            "CHANGE_OWNER_SUCCESS_TITLE": "Ok, your request has been sent",
+            "CHANGE_OWNER_SUCCESS_DESC": "We will notify you by email whether it accepts or rejects the ownership of the project."
         },
         "REPORTS": {
             "TITLE": "Отчеты",
@@ -680,6 +689,24 @@
         },
         "SUBMENU_THIDPARTIES": {
             "TITLE": "Сервисы"
+        },
+        "PROJECT_TRANSFER": {
+            "DO_YOU_ACCEPT_PROJECT_OWNERNSHIP": "Do you want to be the new project owner?",
+            "PRIVATE": "Private",
+            "ACCEPTED_PROJECT_OWNERNSHIP": "OK. Now you are the new owner of the project.",
+            "REJECTED_PROJECT_OWNERNSHIP": "OK. We will contact with the owner",
+            "ACCEPT": "Accept",
+            "REJECT": "Reject",
+            "PROPOSE_OWNERSHIP": "<strong>{{owner}}</strong>, the current owner of the project <strong>{{project}}</strong> wants you to be the new owner of the project.",
+            "ADD_COMMENT_QUESTION": "Do you want to add a comment for the owner?",
+            "ADD_COMMENT": "Do you want to add a comment for the owner?",
+            "UNLIMITED_PROJECTS": "Unlimited",
+            "OWNER_MESSAGE": {
+                "PRIVATE": "Remember, you can own up to <strong>{{maxProjects}}</strong> private projects and you already own <strong>{{currentProjects}}</strong> private projects",
+                "PUBLIC": "Remember, you can own <strong>{{maxProjects}}</strong> public projects and you already own <strong>{{currentProjects}}</strong> public projects"
+            },
+            "CANT_BE_OWNED": "Right now you can't be the owner of a project with this characteristics. To be the owner of this project you should contact the admin staff and change your account conditions.",
+            "CHANGE_MY_PLAN": "Change my plan"
         }
     },
     "USER": {
@@ -791,7 +818,7 @@
             "CHANGE_PASSWORD": "Изменить пароль",
             "DASHBOARD_TITLE": "Рабочий стол",
             "DISCOVER_TITLE": "Найти проекты в тренде",
-            "NEW_ITEM": "New",
+            "NEW_ITEM": "Новая",
             "DISCOVER": "Найти",
             "ACTION_REORDER": "Можно перетаскивать мышкой"
         },
@@ -808,7 +835,7 @@
             "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) это слишком много для наших Умпа-Лумп, попробуйте еще раз с размером меньшим, чем ({{maxFileSize}})",
             "SYNC_SUCCESS": "Импорт проекта выполнен успешно",
             "PROJECT_RESTRICTIONS": {
-                "PROJECT_MEMBERS_DESC": "The project you want to import has {{members}} users, but you are only allowed to have {{max_members}} users per project. If you want have more users contact with the administrators.",
+                "PROJECT_MEMBERS_DESC": "The project you want to import has {{members}} users, but you are only allowed to have {{max_memberships}} users per project. If you want have more users contact with the administrators.",
                 "PRIVATE_PROJECTS_SPACE": {
                     "TITLE": "You don't have space for another private project",
                     "DESC": "The project you want to import is private, but you don't have space to create more."
@@ -818,17 +845,17 @@
                     "DESC": "The project you want to import is public, but you don't have space to create more."
                 },
                 "PRIVATE_PROJECTS_MEMBERS": {
-                    "TITLE": "Your account only allows {{max_members}} users per private project"
+                    "TITLE": "Your account only allows {{max_memberships}} users per private project"
                 },
                 "PUBLIC_PROJECTS_MEMBERS": {
-                    "TITLE": "Your account only allows {{max_members}} users per public project"
+                    "TITLE": "Your account only allows {{max_memberships}} users per public project"
                 },
                 "PRIVATE_PROJECTS_SPACE_MEMBERS": {
-                    "TITLE": "You don't have space for another private project and neither for more than {{max_members}} users per private projects",
+                    "TITLE": "You don't have space for another private project and neither for more than {{max_memberships}} users per private projects",
                     "DESC": "The project that you want to import is private and has {{members}} users."
                 },
                 "PUBLIC_PROJECTS_SPACE_MEMBERS": {
-                    "TITLE": "You don't have space for another public project and neither for more than {{max_members}} users per public projects",
+                    "TITLE": "You don't have space for another public project and neither for more than {{max_memberships}} users per public projects",
                     "DESC": "The public that you want to import is public and has more than {{members}} users."
                 }
             }
@@ -859,7 +886,6 @@
         "DELETE_ACCOUNT": {
             "SECTION_NAME": "Удалить аккаунт",
             "CONFIRM": "Вы уверены, что хотите удалить ваш аккаунт?",
-            "SUBTITLE": "Мы будем скучать по вам! :-(",
             "NEWSLETTER_LABEL_TEXT": "Я больше не хочу получать вашу новостную рассылку",
             "CANCEL": "Back to settings",
             "ACCEPT": "Delete account",
@@ -919,7 +945,25 @@
         },
         "CREATE_MEMBER": {
             "PLACEHOLDER_INVITATION_TEXT": "(Необязательно) Добавьте персональный текст в приглашение. Скажите что-нибудь приятное вашим новым участникам ;-)",
-            "PLACEHOLDER_TYPE_EMAIL": "Укажите e-mail"
+            "PLACEHOLDER_TYPE_EMAIL": "Укажите e-mail",
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "This project can't have more than <strong>{{maxMembers}}</strong> members.<br> If you want to add more members contact the administrators.",
+            "LIMIT_USERS_WARNING_MESSAGE": "This project can't have more than <strong>{{maxMembers}}</strong> members."
+        },
+        "LEAVE_PROJECT_WARNING": {
+            "TITLE": "You can not leave the project without owner",
+            "CURRENT_USER_OWNER": {
+                "DESC": "You are the project owner before leaving it you must pass the property to someone else.",
+                "BUTTON": "Change the project owner"
+            },
+            "OTHER_USER_OWNER": {
+                "DESC": "You can't delete the project owner, you must request a new owner before deleting the user.",
+                "BUTTON": "Request change project owner"
+            }
+        },
+        "CHANGE_OWNER": {
+            "TITLE": "Who do you want to be the new owner?",
+            "ADD_COMMENT": "Add comment",
+            "BUTTON": "Ask this teammate to be the owner"
         }
     },
     "US": {
@@ -1349,13 +1393,13 @@
     "WIZARD": {
         "SECTION_TITLE_CREATE_PROJECT": "Создать проект",
         "CREATE_PROJECT_TEXT": "Свежий и чистый! Так здóрово!",
-        "CHOOSE_TEMPLATE": "Which template would fit better in your project?",
+        "CHOOSE_TEMPLATE": "Какой шаблон лучше всего подойдет для Вашего проекта?",
         "CHOOSE_TEMPLATE_TITLE": "More info about project templates",
         "CHOOSE_TEMPLATE_INFO": "More info",
         "PROJECT_DETAILS": "Project Details",
         "PUBLIC_PROJECT": "Public Project",
         "PRIVATE_PROJECT": "Private Project",
-        "CREATE_PROJECT": "Create project",
+        "CREATE_PROJECT": "Создать проект",
         "MAX_PRIVATE_PROJECTS": "You've reached the maximum number of private projects",
         "MAX_PUBLIC_PROJECTS": "You've reached the maximum number of public projects",
         "CHANGE_PLANS": "change plans"
