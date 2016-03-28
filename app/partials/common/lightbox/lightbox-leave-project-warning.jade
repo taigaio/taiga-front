@@ -7,13 +7,13 @@ div.content
 
     h2.title {{'LIGHTBOX.LEAVE_PROJECT_WARNING.TITLE' | translate}}
 
-    div(ng-if="currentUser")
+    div(ng-if="isCurrentUser")
         p {{'LIGHTBOX.LEAVE_PROJECT_WARNING.CURRENT_USER_OWNER.DESC' | translate}}
 
         a.button-green(tg-nav="project-admin-home:project=project.slug", href="")
             span(translate="LIGHTBOX.LEAVE_PROJECT_WARNING.CURRENT_USER_OWNER.BUTTON")
 
-    div(ng-if="!currentUser")
+    div(ng-if="!isCurrentUser")
         p {{'LIGHTBOX.LEAVE_PROJECT_WARNING.OTHER_USER_OWNER.DESC' | translate}}
 
         a.button-green(tg-nav="project-admin-home:project=project.slug", href="")

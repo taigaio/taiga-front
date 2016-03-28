@@ -385,7 +385,8 @@ module.directive("tgMembershipsRowRoleSelector", ["$log", "$tgRepo", "$tgConfirm
 ## Member Actions Directive
 #############################################################################
 
-MembershipsRowActionsDirective = ($log, $repo, $rs, $confirm, $compile, $translate, currentUserService, lightboxFactory) ->
+MembershipsRowActionsDirective = ($log, $repo, $rs, $confirm, $compile, $translate, $location,
+                                  $navUrls, lightboxFactory) ->
     activedTemplate = """
     <div class="active"
          translate="ADMIN.MEMBERSHIP.STATUS_ACTIVE">
@@ -448,20 +449,22 @@ MembershipsRowActionsDirective = ($log, $repo, $rs, $confirm, $compile, $transla
             $confirm.askOnDelete(title, message).then (askResponse) ->
                 onSuccess = =>
                     askResponse.finish()
+                    if member.user != $scope.user.id
+                        if $scope.page > 1 && ($scope.count - 1) <= $scope.paginatedBy
+                            $ctrl.selectFilter("page", $scope.page - 1)
 
-                    if $scope.page > 1 && ($scope.count - 1) <= $scope.paginatedBy
-                        $ctrl.selectFilter("page", $scope.page - 1)
+                        $ctrl.loadMembers()
+                    else
+                        $location.path($navUrls.resolve("home"))
 
-                    $ctrl.loadMembers()
-
-                    text = $translate.instant("ADMIN.MEMBERSHIP.SUCCESS_DELETE")
-                    $confirm.notify("success", null, text)
+                    text = $translate.instant("ADMIN.MEMBERSHIP.SUCCESS_DELETE", {message: message})
+                    $confirm.notify("success", text, null, 5000)
 
                 onError = =>
                     askResponse.finish(false)
 
                     text = $translate.instant("ADMIN.MEMBERSHIP.ERROR_DELETE", {message: message})
-                    $confirm.notify("error", null, text)
+                    $confirm.notify("error", text)
 
                 $repo.remove(member).then(onSuccess, onError)
 
@@ -469,13 +472,12 @@ MembershipsRowActionsDirective = ($log, $repo, $rs, $confirm, $compile, $transla
             event.preventDefault()
 
             if $scope.project.owner.id == member.user
-                currentUser = currentUserService.getUser()
-                isCurrentUser = currentUser.get('id') == member.user
+                isCurrentUser = $scope.user.id == member.user
 
                 lightboxFactory.create("tg-lightbox-leave-project-warning", {
                     class: "lightbox lightbox-leave-project-warning"
                 }, {
-                    currentUser: isCurrentUser,
+                    isCurrentUser: isCurrentUser,
                     project: $scope.project
                 })
             else
@@ -487,7 +489,8 @@ MembershipsRowActionsDirective = ($log, $repo, $rs, $confirm, $compile, $transla
     return {link: link}
 
 module.directive("tgMembershipsRowActions", ["$log", "$tgRepo", "$tgResources", "$tgConfirm", "$compile",
-                                             "$translate", "tgCurrentUserService", "tgLightboxFactory", MembershipsRowActionsDirective])
+                                             "$translate", "$tgLocation", "$tgNavUrls", "tgLightboxFactory",
+                                             MembershipsRowActionsDirective])
 
 
 #############################################################################
