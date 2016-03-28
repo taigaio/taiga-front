@@ -116,16 +116,13 @@
 tg-admin-project-restrictions {
     p {
         @extend %xsmall;
-        margin-bottom: 0;
-    }
-    span {
-        display: block;
+        text-align: center;
     }
     a {
         color: $primary;
     }
-    fieldset {
-        text-align: center;
+    span {
+        display: block;
     }
     span:first-child {
         &::before {
