@@ -68,9 +68,13 @@
             .project-title,
             .private,
             .project-description,
-            .icon-badge,
-            .icon-drag {
+            .icon-badge {
                 opacity: .25;
+            }
+        }
+        &.blocked-project:hover {
+            .icon-drag {
+                opacity: 1;
             }
         }
         .list-itemtype-project-data-wrapper {
