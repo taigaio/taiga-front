@@ -318,7 +318,8 @@
         "PLACEHOLDER_FIELD": "Username or email",
         "ACTION_RESET_PASSWORD": "Reset Password",
         "LINK_CANCEL": "Nah, take me back. I think I remember it.",
-        "SUCCESS": "<strong>Check your inbox!</strong><br />We have sent you an email with the instructions to set a new password",
+        "SUCCESS_TITLE": "Check your inbox!",
+        "SUCCESS_TEXT": "We have sent you an email with the instructions to set a new password",
         "ERROR": "According to our Oompa Loompas, your are not registered yet."
     },
     "CHANGE_PASSWORD": {

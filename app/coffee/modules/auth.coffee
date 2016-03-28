@@ -358,8 +358,10 @@ ForgotPasswordDirective = ($auth, $confirm, $location, $navUrls, $translate) ->
         onSuccessSubmit = (response) ->
             $location.path($navUrls.resolve("login"))
 
-            text = $translate.instant("FORGOT_PASSWORD_FORM.SUCCESS")
-            $confirm.success(text)
+            title = $translate.instant("FORGOT_PASSWORD_FORM.SUCCESS_TITLE")
+            message = $translate.instant("FORGOT_PASSWORD_FORM.SUCCESS_TEXT")
+
+            $confirm.success(title, message)
 
         onErrorSubmit = (response) ->
             text = $translate.instant("FORGOT_PASSWORD_FORM.ERROR")
