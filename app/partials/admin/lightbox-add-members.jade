@@ -10,10 +10,18 @@ a.close(
         .add-single-member(ng-repeat="member in vm.memberInvites")
             fieldset
                 input(
+                    ng-if="$first"
                     type="email"
                     required
                     placeholder="{{'LIGHTBOX.CREATE_MEMBER.PLACEHOLDER_TYPE_EMAIL' | translate}}"
                     data-required="true"
+                    data-type="email"
+                    ng-model="member.email"
+                )
+                input(
+                    ng-if="!$first"
+                    type="email"
+                    placeholder="{{'LIGHTBOX.CREATE_MEMBER.PLACEHOLDER_TYPE_EMAIL' | translate}}"
                     data-type="email"
                     ng-model="member.email"
                 )

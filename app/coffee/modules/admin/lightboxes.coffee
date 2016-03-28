@@ -77,6 +77,9 @@ class LightboxAddMembersController
         @.form.reset()
         return if not @.form.validate()
 
+        @.memberInvites = _.filter(@.memberInvites, (invites) ->
+            invites.email != "")
+
         @.submitInvites = true
         promise = @rs.memberships.bulkCreateMemberships(
             @.project.id,
