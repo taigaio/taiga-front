@@ -61,9 +61,10 @@
     .hero {
         width: 100%;
         .row {
-            background: $whitish;
-            border-bottom: 0;
+            border-bottom: 1px solid $whitish;
+            border-top: 1px solid $whitish;
             margin: 1rem 0;
+            padding: 1.5rem 1rem;
         }
     }
     .avatar {
