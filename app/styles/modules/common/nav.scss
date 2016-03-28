@@ -3,8 +3,7 @@ $label-arrow-wh: 12px;
 tg-project-menu {
     background-position: 0 -300px;
     display: inline-block;
-    height: calc(100vh - 40px);
-    min-height: 95%;
+    min-height: calc(100vh - 40px);
     min-width: 50px;
     padding: 1rem 0;
     position: relative;
