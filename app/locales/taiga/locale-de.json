@@ -318,7 +318,8 @@
         "PLACEHOLDER_FIELD": "Benutzername oder E-Mail-Adresse",
         "ACTION_RESET_PASSWORD": "Passwort zurücksetzen",
         "LINK_CANCEL": "Nein, bring mich zurück. Ich denke, ich erinnere mich daran.",
-        "SUCCESS": "<strong>Sehen Sie in Ihren Posteingang!</strong><br />Unsere Helferelein haben Ihnen eine E-Mail mit einer Anleitung gesendet, um ein neues Passwort festzulegen.",
+        "SUCCESS_TITLE": "Check your inbox!",
+        "SUCCESS_TEXT": "We have sent you an email with the instructions to set a new password",
         "ERROR": "Laut unseren Helferlein sind Sie bislang noch nicht registriert."
     },
     "CHANGE_PASSWORD": {
@@ -889,7 +890,8 @@
             "NEWSLETTER_LABEL_TEXT": "Ich möchte keinen Newsletter mehr erhalten",
             "CANCEL": "Back to settings",
             "ACCEPT": "Delete account",
-            "BLOCK_PROJECT": "Note that all your projects owned will be <strong>blocked</strong>. If you do not want to block your projects before deleting your account you can transfer ownership of the project to someone else."
+            "BLOCK_PROJECT": "Note that all your projects owned will be <strong>blocked</strong>. If you do not want to block your projects before deleting your account you can transfer ownership of the project to someone else.",
+            "SUBTITLE": "You are going to miss you!:("
         },
         "DELETE_PROJECT": {
             "TITLE": "Projekt löschen",

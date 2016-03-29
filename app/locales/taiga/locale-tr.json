@@ -318,7 +318,8 @@
         "PLACEHOLDER_FIELD": "Kullanıcı adı veya e-posta",
         "ACTION_RESET_PASSWORD": "Parolayı Sıfırla",
         "LINK_CANCEL": "Boşver, geri gidelim. Sanırım hatırladım.",
-        "SUCCESS": "<strong>Gelen kutunuzu kontrol edin!</strong><br />Yeni parolanızı oluşturabilmeniz için gerekli yönergeleri içeren bir e-posta gönderdik",
+        "SUCCESS_TITLE": "Check your inbox!",
+        "SUCCESS_TEXT": "We have sent you an email with the instructions to set a new password",
         "ERROR": "Honki ponkilerimize göre, siz henüz bir kayıt yaptırmamış durumdasınız."
     },
     "CHANGE_PASSWORD": {
@@ -889,7 +890,8 @@
             "NEWSLETTER_LABEL_TEXT": "Bundan böyle bülteninizi almak istemiyorum.",
             "CANCEL": "Back to settings",
             "ACCEPT": "Delete account",
-            "BLOCK_PROJECT": "Note that all your projects owned will be <strong>blocked</strong>. If you do not want to block your projects before deleting your account you can transfer ownership of the project to someone else."
+            "BLOCK_PROJECT": "Note that all your projects owned will be <strong>blocked</strong>. If you do not want to block your projects before deleting your account you can transfer ownership of the project to someone else.",
+            "SUBTITLE": "You are going to miss you!:("
         },
         "DELETE_PROJECT": {
             "TITLE": "Proje Sil",

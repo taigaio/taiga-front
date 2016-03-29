@@ -318,7 +318,8 @@
         "PLACEHOLDER_FIELD": "使用者名稱或電子郵件",
         "ACTION_RESET_PASSWORD": "重設密碼 ",
         "LINK_CANCEL": "不，請帶我回去，我記起來了",
-        "SUCCESS": "<strong>檢查你的收信箱</strong><br />我們送出了一封信<br />裏面有設定你新電子郵件的相關指示",
+        "SUCCESS_TITLE": "Check your inbox!",
+        "SUCCESS_TEXT": "We have sent you an email with the instructions to set a new password",
         "ERROR": "按我們的記錄，你尚未註冊"
     },
     "CHANGE_PASSWORD": {
@@ -889,7 +890,8 @@
             "NEWSLETTER_LABEL_TEXT": "不願再收到電子月報",
             "CANCEL": "Back to settings",
             "ACCEPT": "Delete account",
-            "BLOCK_PROJECT": "Note that all your projects owned will be <strong>blocked</strong>. If you do not want to block your projects before deleting your account you can transfer ownership of the project to someone else."
+            "BLOCK_PROJECT": "Note that all your projects owned will be <strong>blocked</strong>. If you do not want to block your projects before deleting your account you can transfer ownership of the project to someone else.",
+            "SUBTITLE": "You are going to miss you!:("
         },
         "DELETE_PROJECT": {
             "TITLE": "刪除專案",

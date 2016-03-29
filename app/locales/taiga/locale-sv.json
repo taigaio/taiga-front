@@ -318,7 +318,8 @@
         "PLACEHOLDER_FIELD": "Användarnamn eller e-postadress",
         "ACTION_RESET_PASSWORD": "Återställ lösenord",
         "LINK_CANCEL": "Nej, ta mig tillbaka. Jag tror att jag minns det.",
-        "SUCCESS": "<strong>Kolla inboxen!</strong><br/>Du ska ha fått ett e-postmeddelande med instruktioner för hur du ändrar lösenordet",
+        "SUCCESS_TITLE": "Check your inbox!",
+        "SUCCESS_TEXT": "We have sent you an email with the instructions to set a new password",
         "ERROR": "Enligt våra Oompaloompier är du inte registrerad ännu."
     },
     "CHANGE_PASSWORD": {
@@ -889,7 +890,8 @@
             "NEWSLETTER_LABEL_TEXT": "Jag vill inte motta flera nyhetsbrev",
             "CANCEL": "Back to settings",
             "ACCEPT": "Delete account",
-            "BLOCK_PROJECT": "Note that all your projects owned will be <strong>blocked</strong>. If you do not want to block your projects before deleting your account you can transfer ownership of the project to someone else."
+            "BLOCK_PROJECT": "Note that all your projects owned will be <strong>blocked</strong>. If you do not want to block your projects before deleting your account you can transfer ownership of the project to someone else.",
+            "SUBTITLE": "You are going to miss you!:("
         },
         "DELETE_PROJECT": {
             "TITLE": "Ta bort projekt",

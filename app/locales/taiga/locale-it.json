@@ -318,7 +318,8 @@
         "PLACEHOLDER_FIELD": "Nome utente o email",
         "ACTION_RESET_PASSWORD": "Reimposta la password",
         "LINK_CANCEL": "Fa niente dai, riportami indietro. Penso di ricordarmela.",
-        "SUCCESS": "<strong>Controlla la tua posta!</strong><br />Ti abbiamo inviato una email con le istruzioni per reimpostare la password",
+        "SUCCESS_TITLE": "Check your inbox!",
+        "SUCCESS_TEXT": "We have sent you an email with the instructions to set a new password",
         "ERROR": "Secondo i nostri Oompa Loompa, non sei ancora registrato."
     },
     "CHANGE_PASSWORD": {
@@ -889,7 +890,8 @@
             "NEWSLETTER_LABEL_TEXT": "Non voglio più ricevere le vostre newsletter",
             "CANCEL": "Back to settings",
             "ACCEPT": "Delete account",
-            "BLOCK_PROJECT": "Note that all your projects owned will be <strong>blocked</strong>. If you do not want to block your projects before deleting your account you can transfer ownership of the project to someone else."
+            "BLOCK_PROJECT": "Note that all your projects owned will be <strong>blocked</strong>. If you do not want to block your projects before deleting your account you can transfer ownership of the project to someone else.",
+            "SUBTITLE": "You are going to miss you!:("
         },
         "DELETE_PROJECT": {
             "TITLE": "Elimina progetto",

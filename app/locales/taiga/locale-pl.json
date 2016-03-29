@@ -318,7 +318,8 @@
         "PLACEHOLDER_FIELD": "Login albo e-mail",
         "ACTION_RESET_PASSWORD": "Resetuj hasło",
         "LINK_CANCEL": "Nie, zabierz mnie stąd. Chyba je pamiętam.",
-        "SUCCESS": "<strong>Sprawdź swoją skrzynkę!</strong><br />Wysłaliśmy Ci wiadomość e-mail z instrukcją jak ustawić nowe hasło.",
+        "SUCCESS_TITLE": "Check your inbox!",
+        "SUCCESS_TEXT": "We have sent you an email with the instructions to set a new password",
         "ERROR": "Nasze Umpa Lumpy twierdzą, że nie jesteś jeszcze zarejestrowany."
     },
     "CHANGE_PASSWORD": {
@@ -889,7 +890,8 @@
             "NEWSLETTER_LABEL_TEXT": "Nie chcę więcej otrzymywać waszego newslettera",
             "CANCEL": "Back to settings",
             "ACCEPT": "Delete account",
-            "BLOCK_PROJECT": "Note that all your projects owned will be <strong>blocked</strong>. If you do not want to block your projects before deleting your account you can transfer ownership of the project to someone else."
+            "BLOCK_PROJECT": "Note that all your projects owned will be <strong>blocked</strong>. If you do not want to block your projects before deleting your account you can transfer ownership of the project to someone else.",
+            "SUBTITLE": "You are going to miss you!:("
         },
         "DELETE_PROJECT": {
             "TITLE": "Usuń projekt",

@@ -318,7 +318,8 @@
         "PLACEHOLDER_FIELD": "Логин или e-mail",
         "ACTION_RESET_PASSWORD": "Сбросить пароль",
         "LINK_CANCEL": "Не, давай назад, думаю я вспомню.",
-        "SUCCESS": "<strong>Проверьте почту!</strong><br />Мы выслали Вам письмо с инструкцией по установке нового пароля",
+        "SUCCESS_TITLE": "Check your inbox!",
+        "SUCCESS_TEXT": "We have sent you an email with the instructions to set a new password",
         "ERROR": "Умпа-Лумпы говорят, что вы еще не зарегистрированы."
     },
     "CHANGE_PASSWORD": {
@@ -889,7 +890,8 @@
             "NEWSLETTER_LABEL_TEXT": "Я больше не хочу получать вашу новостную рассылку",
             "CANCEL": "Back to settings",
             "ACCEPT": "Delete account",
-            "BLOCK_PROJECT": "Note that all your projects owned will be <strong>blocked</strong>. If you do not want to block your projects before deleting your account you can transfer ownership of the project to someone else."
+            "BLOCK_PROJECT": "Note that all your projects owned will be <strong>blocked</strong>. If you do not want to block your projects before deleting your account you can transfer ownership of the project to someone else.",
+            "SUBTITLE": "You are going to miss you!:("
         },
         "DELETE_PROJECT": {
             "TITLE": "Удалить проект",

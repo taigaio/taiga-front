@@ -318,7 +318,8 @@
         "PLACEHOLDER_FIELD": "Gebruikersnaam of e-mail",
         "ACTION_RESET_PASSWORD": "Wachtwoord resetten",
         "LINK_CANCEL": "Nah, stuur me terug. I denk dat ik het zal onthouden.",
-        "SUCCESS": "<strong>Controleer je inbox!</strong><br />We hebben je een email gestuurd met instructie om een nieuw wachtwoord aan te maken",
+        "SUCCESS_TITLE": "Check your inbox!",
+        "SUCCESS_TEXT": "We have sent you an email with the instructions to set a new password",
         "ERROR": "Volgens onze Oempa-Loempa's ben je nog niet geregisteerd"
     },
     "CHANGE_PASSWORD": {
@@ -889,7 +890,8 @@
             "NEWSLETTER_LABEL_TEXT": "Ik wil de nieuwsbrief niet meer ontvangen",
             "CANCEL": "Back to settings",
             "ACCEPT": "Delete account",
-            "BLOCK_PROJECT": "Note that all your projects owned will be <strong>blocked</strong>. If you do not want to block your projects before deleting your account you can transfer ownership of the project to someone else."
+            "BLOCK_PROJECT": "Note that all your projects owned will be <strong>blocked</strong>. If you do not want to block your projects before deleting your account you can transfer ownership of the project to someone else.",
+            "SUBTITLE": "You are going to miss you!:("
         },
         "DELETE_PROJECT": {
             "TITLE": "Verwijder project",
