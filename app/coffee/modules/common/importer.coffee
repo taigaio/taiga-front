@@ -92,17 +92,19 @@ ImportProjectButtonDirective = ($rs, $confirm, $location, $navUrls, $translate, 
             loader = $confirm.loader($translate.instant("PROJECT.IMPORT.UPLOADING_FILE"))
 
             onSuccess = (result) ->
-                loader.stop()
-                if result.status == 202 # Async mode
-                    title = $translate.instant("PROJECT.IMPORT.ASYNC_IN_PROGRESS_TITLE")
-                    message = $translate.instant("PROJECT.IMPORT.ASYNC_IN_PROGRESS_MESSAGE")
-                    $confirm.success(title, message)
+                currentUserService.loadProjects().then () ->
+                    loader.stop()
 
-                else # result.status == 201 # Sync mode
-                    ctx = {project: result.data.slug}
-                    $location.path($navUrls.resolve("project-admin-project-profile-details", ctx))
-                    msg = $translate.instant("PROJECT.IMPORT.SYNC_SUCCESS")
-                    $confirm.notify("success", msg)
+                    if result.status == 202 # Async mode
+                        title = $translate.instant("PROJECT.IMPORT.ASYNC_IN_PROGRESS_TITLE")
+                        message = $translate.instant("PROJECT.IMPORT.ASYNC_IN_PROGRESS_MESSAGE")
+                        $confirm.success(title, message)
+
+                    else # result.status == 201 # Sync mode
+                        ctx = {project: result.data.slug}
+                        $location.path($navUrls.resolve("project-admin-project-profile-details", ctx))
+                        msg = $translate.instant("PROJECT.IMPORT.SYNC_SUCCESS")
+                        $confirm.notify("success", msg)
 
             onError = (result) ->
                 $tgAuth.refresh().then () ->
