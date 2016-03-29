@@ -76,7 +76,10 @@ class TransferProject
                 project: @.project.get("slug")
             })
             @location.path(newUrl)
-            @confirmService.notify("success", @translate.instant("ADMIN.PROJECT_TRANSFER.ACCEPTED_PROJECT_OWNERNSHIP"), '', 5000)
+
+            @confirmService.notify("success", @translate.instant("ADMIN.PROJECT_TRANSFER.ACCEPTED_PROJECT_OWNERNSHIP"), '', 15000)
+
+        return
 
     transferReject: (token, reason) ->
         @projectService.transferReject(@.project.get("id"), token, reason).success () =>
@@ -85,6 +88,8 @@ class TransferProject
             })
             @location.path(newUrl)
             @confirmService.notify("success", @translate.instant("ADMIN.PROJECT_TRANSFER.REJECTED_PROJECT_OWNERNSHIP"), '', 5000)
+
+        return
 
     addComment: () ->
         @.showAddComment = true
