@@ -249,7 +249,7 @@ LeaveProjectDirective = ($repo, $confirm, $location, $rs, $navurls, $translate, 
                 lightboxFactory.create("tg-lightbox-leave-project-warning", {
                     class: "lightbox lightbox-leave-project-warning"
                 }, {
-                    currentUser: true,
+                    isCurrentUser: true,
                     project: $scope.project
                 })
             else
