@@ -225,7 +225,7 @@ module.directive("tgTeamMembers", TeamMembersDirective)
 ## Leave project Directive
 #############################################################################
 
-LeaveProjectDirective = ($repo, $confirm, $location, $rs, $navurls, $translate, lightboxFactory) ->
+LeaveProjectDirective = ($repo, $confirm, $location, $rs, $navurls, $translate, lightboxFactory, currentUserService) ->
     link = ($scope, $el, $attrs) ->
         leaveConfirm = () ->
             leave_project_text = $translate.instant("TEAM.ACTION_LEAVE_PROJECT")
@@ -235,9 +235,10 @@ LeaveProjectDirective = ($repo, $confirm, $location, $rs, $navurls, $translate, 
                 promise = $rs.projects.leave($scope.project.id)
 
                 promise.then =>
-                    response.finish()
-                    $confirm.notify("success")
-                    $location.path($navurls.resolve("home"))
+                    currentUserService.loadProjects().then () ->
+                        response.finish()
+                        $confirm.notify("success")
+                        $location.path($navurls.resolve("home"))
 
                 promise.then null, (response) ->
                     response.finish()
@@ -263,7 +264,7 @@ LeaveProjectDirective = ($repo, $confirm, $location, $rs, $navurls, $translate, 
         link: link
     }
 
-module.directive("tgLeaveProject", ["$tgRepo", "$tgConfirm", "$tgLocation", "$tgResources", "$tgNavUrls", "$translate", "tgLightboxFactory",
+module.directive("tgLeaveProject", ["$tgRepo", "$tgConfirm", "$tgLocation", "$tgResources", "$tgNavUrls", "$translate", "tgLightboxFactory", "tgCurrentUserService",
                                     LeaveProjectDirective])
 
 
