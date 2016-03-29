@@ -11,22 +11,22 @@
 
 div.notification-message.notification-message-success
    div.text
-       h4.warning(translate="NOTIFICATION.OK")
-       p(translate="NOTIFICATION.SAVED")
+       h4.warning
+       p
 
 div.notification-message.notification-message-error
     svg.icon.icon-error
         use(xlink:href="#icon-error")
     div.text
-        h4.warning(translate="NOTIFICATION.WARNING")
-        p(translate="NOTIFICATION.WARNING_TEXT")
+        h4.warning
+        p
     svg.icon.icon-close(href="", title="{{'NOTIFICATION.CLOSE' | translate}}")
         use(xlink:href="#icon-close")
 
 div.notification-light.notification-message-light-error
     div.text
-        h4.warning(translate="NOTIFICATION.WARNING")
-        p(translate="NOTIFICATION.WARNING_TEXT")
+        h4.warning
+        p
     a.close(href="", title="{{'NOTIFICATION.CLOSE' | translate}}")
         svg.icon.icon-close
             use(xlink:href="#icon-close")
