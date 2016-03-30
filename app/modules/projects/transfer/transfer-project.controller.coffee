@@ -32,17 +32,19 @@ class TransferProject
     ]
 
     constructor: (@routeParams, @projectService, @location, @authService, @currentUserService, @navUrls, @translate, @confirmService) ->
+
+    initialize: () ->
         @.projectId = @.project.get("id")
         @.token = @routeParams.token
-        @._refreshUserData()
         @.showAddComment = false
+        return @._refreshUserData()
 
     _validateToken: () ->
-        @projectService.transferValidateToken(@.projectId, @.token).error (data, status) =>
+        return @projectService.transferValidateToken(@.projectId, @.token).then null, (data, status) =>
             @location.path(@navUrls.resolve("not-found"))
 
     _refreshUserData: () ->
-        @authService.refresh().then () =>
+        return @authService.refresh().then () =>
             @._validateToken()
             @._setProjectData()
             @._checkOwnerData()
@@ -71,25 +73,25 @@ class TransferProject
         @.validNumberOfMemberships = maxMemberships == null || @.project.get('total_memberships') <= maxMemberships
 
     transferAccept: (token, reason) ->
-        @projectService.transferAccept(@.project.get("id"), token, reason).success () =>
+        return @projectService.transferAccept(@.project.get("id"), token, reason).then () =>
             newUrl = @navUrls.resolve("project-admin-project-profile-details", {
                 project: @.project.get("slug")
             })
             @location.path(newUrl)
 
-            @confirmService.notify("success", @translate.instant("ADMIN.PROJECT_TRANSFER.ACCEPTED_PROJECT_OWNERNSHIP"), '', 15000)
+            @confirmService.notify("success", @translate.instant("ADMIN.PROJECT_TRANSFER.ACCEPTED_PROJECT_OWNERNSHIP"), '', 5000)
 
-        return
+            return
 
     transferReject: (token, reason) ->
-        @projectService.transferReject(@.project.get("id"), token, reason).success () =>
+        return @projectService.transferReject(@.project.get("id"), token, reason).then () =>
             newUrl = @navUrls.resolve("project-admin-project-profile-details", {
                 project: @project.get("slug")
             })
             @location.path(newUrl)
             @confirmService.notify("success", @translate.instant("ADMIN.PROJECT_TRANSFER.REJECTED_PROJECT_OWNERNSHIP"), '', 5000)
 
-        return
+            return
 
     addComment: () ->
         @.showAddComment = true
@@ -97,7 +99,6 @@ class TransferProject
     hideComment: () ->
         @.showAddComment = false
         @.reason = ''
-
 
 
 module.controller("TransferProjectController", TransferProject)

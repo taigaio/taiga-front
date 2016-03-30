@@ -20,7 +20,11 @@
 module = angular.module('taigaProjects')
 
 TransferProjectDirective = () ->
+    link = (scope, el, attrs, ctrl) ->
+      ctrl.initialize()
+
     return {
+        link: link,
         scope: {},
         bindToController: {
             project: "="
