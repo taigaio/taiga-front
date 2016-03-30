@@ -453,7 +453,7 @@ MembershipsRowActionsDirective = ($log, $repo, $rs, $confirm, $compile, $transla
                         if $scope.page > 1 && ($scope.count - 1) <= $scope.paginatedBy
                             $ctrl.selectFilter("page", $scope.page - 1)
 
-                        $ctrl.loadMembers()
+                        $ctrl.loadInitialData()
                     else
                         $location.path($navUrls.resolve("home"))
 
