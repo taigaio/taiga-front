@@ -15,7 +15,7 @@
                 span.transfer-project-members
                     svg.icon.icon-team
                         use(xlink:href="#icon-team")
-                    span {{::vm.project.get("members").size}}
+                    span {{::vm.project.get("total_memberships")}}
 
     p(
         translate="ADMIN.PROJECT_TRANSFER.PROPOSE_OWNERSHIP"
@@ -23,7 +23,7 @@
     )
 
     div(ng-if="vm.canBeOwnedByUser.valid")
-    
+
         p(
             translate="{{vm.ownerMessage}}"
             translate-values="{maxProjects: vm.maxProjects, currentProjects: vm.currentProjects}"
@@ -35,7 +35,7 @@
             ng-if="!vm.showAddComment"
             translate="ADMIN.PROJECT_TRANSFER.ADD_COMMENT_QUESTION"
         )
-        
+
         fieldset.transfer-project-comment-form(
             ng-if="vm.showAddComment"
             ng-class="{'open': vm.showAddComment}"
