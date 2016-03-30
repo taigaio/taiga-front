@@ -69,7 +69,7 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin, tai
         promise.then null, @.onInitialDataError.bind(@)
 
         @scope.$on "membersform:new:success", =>
-            @.loadMembers()
+            @.loadInitialData()
             @analytics.trackEvent("membership", "create", "create memberships on admin", 1)
 
     loadProject: ->
