@@ -27,16 +27,19 @@
     .close {
         @include svg-size(2rem);
         cursor: pointer;
+        display: block;
         fill: $gray;
         position: absolute;
         right: 3rem;
         top: 3rem;
         transition: fill .2s;
+        display: block;
         &:hover {
             fill: $red-light;
         }
         svg {
             @include svg-size(2rem);
+            pointer-events: none;
         }
     }
     &.open {

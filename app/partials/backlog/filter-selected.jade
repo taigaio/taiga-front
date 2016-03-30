@@ -1,7 +1,9 @@
 <% _.each(filters, function(f) { %>
-a.single-filter.selected(data-type!="<%- f.type %>", data-id!="<%- f.id %>")
-    span.name(style!="<%- f.style %>")
-        | <%- f.name %>
-    svg.icon.icon-close.remove-filter
-        use(xlink:href="#icon-close")
+.single-filter.selected(
+    data-type!="<%- f.type %>"
+    data-id!="<%- f.id %>"
+)
+    span.name(style!="<%- f.style %>") <%- f.name %>
+    a.remove-filter(href="")
+        tg-svg(svg-icon="icon-close")
 <% }) %>

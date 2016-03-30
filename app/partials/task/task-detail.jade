@@ -67,15 +67,13 @@ div.wrapper(
                             tg-bo-href="previousUrl"
                             title="{{'TASK.PREVIOUS' | translate}}"
                         )
-                            svg.icon.icon-arrow-left
-                                use(xlink:href='#icon-arrow-left')
+                            tg-svg(svg-icon="icon-arrow-left")
                         a(
                             ng-show="nextUrl"
                             tg-bo-href="nextUrl"
                             title="{{'TASK.NEXT' | translate}}"
                         )
-                            svg.icon.icon-arrow-right
-                                use(xlink:href='#icon-arrow-right')
+                            tg-svg(svg-icon="icon-arrow-right")
             .subheader
                 div.tags-block(tg-tag-line, ng-model="task", required-perm="modify_task")
                 tg-created-by-display.ticket-created-by(ng-model="task")

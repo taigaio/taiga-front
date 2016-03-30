@@ -151,6 +151,7 @@ RelatedTaskCreateFormDirective = ($repo, $compile, $confirm, $tgmodel, $loading,
             return promise
 
         close = () ->
+            $el.removeClass('active')
             $el.off()
             $el.html("")
 
@@ -173,7 +174,7 @@ RelatedTaskCreateFormDirective = ($repo, $compile, $confirm, $tgmodel, $loading,
             $el.on "click", ".icon-close", (event)->
                 $scope.$apply () -> close()
 
-            $el.on "click", ".icon-save", (event)->
+            $el.on "click", ".save-task", (event)->
                 createTask(newTask).then ->
                     close()
 

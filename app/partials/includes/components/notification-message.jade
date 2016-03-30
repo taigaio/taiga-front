@@ -15,18 +15,16 @@ div.notification-message.notification-message-success
        p
 
 div.notification-message.notification-message-error
-    svg.icon.icon-error
-        use(xlink:href="#icon-error")
+    tg-svg(svg-icon="icon-error")
     div.text
-        h4.warning
-        p
-    svg.icon.icon-close(href="", title="{{'NOTIFICATION.CLOSE' | translate}}")
-        use(xlink:href="#icon-close")
+        h4.warning(translate="NOTIFICATION.WARNING")
+        p(translate="NOTIFICATION.WARNING_TEXT")
+    a.close(href="", title="{{'NOTIFICATION.CLOSE' | translate}}")
+        tg-svg(svg-icon="icon-close")
 
 div.notification-light.notification-message-light-error
     div.text
         h4.warning
         p
     a.close(href="", title="{{'NOTIFICATION.CLOSE' | translate}}")
-        svg.icon.icon-close
-            use(xlink:href="#icon-close")
+        tg-svg(svg-icon="icon-close")

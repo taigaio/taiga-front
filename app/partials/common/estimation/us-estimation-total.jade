@@ -1,6 +1,8 @@
 a.us-points(href="", title!="<%= title %>", class!="<% if (!editable) { %>not-clickable<% } %>")
     span.points-value <%= text %>
     <% if (editable) { %>
-    svg.icon.icon-arrow-down(tg-check-permission="modify_us")
-        use(xlink:href="#icon-arrow-down")
+    tg-svg(
+        svg-icon="icon-arrow-down",
+        tg-check-permission="modify_us"
+    )
     <% } %>

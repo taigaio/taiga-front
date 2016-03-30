@@ -2,6 +2,5 @@ mixin wysihelp
     div.wysiwyg-help
         span.drag-drop-help Attach files by dragging & dropping on the textarea above.
         a.help-markdown(href="https://taiga.io/support/taiga-markdown-syntax/", target="_blank", title="{{'COMMON.WYSIWYG.MARKDOWN_HELP' | translate}}")
-            svg.icon.icon-question
-                use(xlink:href="#icon-question")
+            tg-svg(svg-icon="icon-question")
             span(translate="COMMON.WYSIWYG.MARKDOWN_HELP")

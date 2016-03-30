@@ -7,7 +7,6 @@
             a.close(
               ng-click="vm.close()"
               href=""
-              title="{{ COMMON.CLOSE | translate }}"
+              ng-title="COMMON.CLOSE | translate"
             )
-                svg.icon.icon-close
-                    use(xlink:href="#icon-close")
+                tg-svg(svg-icon="icon-close")

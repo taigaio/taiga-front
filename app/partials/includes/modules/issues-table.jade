@@ -20,8 +20,7 @@ section.issues-table.basic-table(ng-class="{empty: !issues.length}")
             ng-class="{'inactive': !issue.total_voters, 'is-voted': issue.is_voter}"
             title="{{ 'COMMON.VOTE_BUTTON.COUNTER_TITLE'|translate:{total:issue.total_voters||0}:'messageformat' }}"
         )
-            svg.icon.icon-upvote
-                use(xlink:href="#icon-upvote")
+            tg-svg(svg-icon="icon-upvote")
             span {{ ::issue.total_voters }}
         div.subject
             a(
@@ -43,16 +42,20 @@ section.issues-table.basic-table(ng-class="{empty: !issues.length}")
                 title="{{'ISSUES.TABLE.TITLE_ACTION_CHANGE_STATUS' | translate}}"
             )
                 span.issue-status-bind
-                svg.icon.icon-arrow-down(tg-check-permission="modify_issue")
-                    use(xlink:href="#icon-arrow-down")
+                tg-svg(
+                    tg-check-permission="modify_issue"
+                    svg-icon="icon-arrow-down"
+                )
 
         div.created-field(tg-bo-bind="issue.created_date|momentFormat:'DD MMM YYYY HH:mm'")
 
         div.assigned-field(tg-issue-assigned-to-inline-edition="issue")
             div.issue-assignedto(title="{{'ISSUES.TABLE.TITLE_ACTION_ASSIGNED_TO' | translate}}")
                 figure.avatar
-                svg.icon.icon-arrow-down(tg-check-permission="modify_issue")
-                    use(xlink:href="#icon-arrow-down")
+                tg-svg(
+                    tg-check-permission="modify_issue"
+                    svg-icon="icon-arrow-down"
+                )
 
 section.empty-issues(ng-if="issues != undefined && issues.length == 0")
     img(

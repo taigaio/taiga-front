@@ -10,11 +10,11 @@
         span <%- watcher.full_name_display %>
 
         <% if(isEditable){ %>
-        svg.icon.icon-trash.js-delete-watcher.delete-watcher(
+        tg-svg.js-delete-watcher.delete-watcher(
+            svg-icon="icon-trash",
+            svg-title-translate="COMMON.WATCHERS.DELETE",
             data-watcher-id!="<%- watcher.id %>"
-            title="{{'COMMON.WATCHERS.DELETE' | translate}}"
         )
-            use(xlink:href="#icon-trash")
         <% }; %>
 <% } %>
 <% }); %>

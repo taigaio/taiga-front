@@ -24,9 +24,10 @@ div.kanban-task-inner(ng-class="{'task-archived': us.isArchived}")
             span.task-name(ng-bind="us.subject")
         p(translate="KANBAN.UNDO_ARCHIVED")
 
-    svg.icon.icon-edit(
-        tg-check-permission="modify_us"
-        title="{{'COMMON.EDIT' | translate}}"
+    a.edit-us(
+        href="",
+        title="{{'COMMON.EDIT' | translate}}",
+        tg-check-permission="modify_us",
         ng-hide="us.isArchived"
     )
-        use(xlink:href="#icon-edit")
+        tg-svg(svg-icon="icon-edit")

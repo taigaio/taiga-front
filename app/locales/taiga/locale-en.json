@@ -1413,6 +1413,7 @@
         "PLACEHOLDER_PAGE": "Write your wiki page",
         "REMOVE": "Remove this wiki page",
         "DELETE_LIGHTBOX_TITLE": "Delete Wiki Page",
+        "DELETE_LINK_TITLE": "Delete Wiki link",
         "NAVIGATION": {
             "SECTION_NAME": "Links",
             "ACTION_ADD_LINK": "Add link"

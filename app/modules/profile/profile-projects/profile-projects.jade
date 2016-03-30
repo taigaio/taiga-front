@@ -4,8 +4,7 @@ section.profile-projects
             img(src="/#{v}/svg/spinner-circle.svg", alt="Loading...")
 
     .empty-tab(ng-if="vm.projects && !vm.projects.size")
-        svg.icon.icon-unwatch
-            use(xlink:href="#icon-unwatch")
+        tg-svg(svg-icon="icon-unwatch")
 
         p(
             translate="USER.PROFILE.PROJECTS_EMPTY"
@@ -33,9 +32,12 @@ section.profile-projects
                             tg-nav="project:project=project.get('slug')"
                             title="{{ ::project.get('name') }}"
                         ) {{::project.get('name')}}
-                        svg.icon.icon-blocked-project(ng-if="project.get('blocked_code')")
-                            use(xlink:href="#icon-blocked-project")
-                                title(translate="PROJECT.BLOCKED_PROJECT.BLOCKED")
+
+                        tg-svg(
+                            ng-if="project.get('blocked_code')",
+                            svg-icon="icon-blocked-project"
+                            svg-title-translate="PROJECT.BLOCKED_PROJECT.BLOCKED"
+                        )
                     p.project-description {{ ::project.get('description') | limitTo:300 }}
 
         .list-itemtype-project-right
@@ -45,16 +47,14 @@ section.profile-projects
                     ng-class="{'active': project.get('is_fan')}"
                     title="{{ 'PROJECT.LIKE_BUTTON.COUNTER_TITLE'|translate:{total:project.get(\"total_fans\")||0}:'messageformat' }}"
                 )
-                    svg.icon.icon-like
-                        use(xlink:href="#icon-like")
+                    tg-svg(svg-icon="icon-like")
                     span {{ ::project.get('total_fans') }}
 
                 span.list-itemtype-track-watchers(
                     ng-class="{'active': project.get('is_watcher')}"
                     title="{{ 'PROJECT.WATCH_BUTTON.COUNTER_TITLE'|translate:{total:project.get(\"total_watchers\")||0}:'messageformat' }}"
                 )
-                    svg.icon.icon-watch
-                        use(xlink:href="#icon-watch")
+                    tg-svg(svg-icon="icon-watch")
                     span {{ ::project.get('total_watchers') }}
 
             .list-itemtype-project-members

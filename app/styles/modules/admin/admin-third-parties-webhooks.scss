@@ -25,11 +25,6 @@
     .single-webhook-wrapper {
         border-bottom: 1px solid $whitish;
     }
-    .webhooks-options {
-        margin-bottom: 1rem;
-        text-align: right;
-    }
-
     .webhook-service,
     .webhook-url {
         margin-right: .5rem;
@@ -58,9 +53,9 @@
     .webhook-options {
         flex-basis: 100px;
         flex-grow: 0;
-        min-width: 100px;
-        text-align: center;
+        flex-shrink: 0;
         a {
+            display: inline-block;
             margin-right: .5rem;
         }
         svg {

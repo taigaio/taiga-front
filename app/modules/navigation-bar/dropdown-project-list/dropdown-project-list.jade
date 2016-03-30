@@ -1,6 +1,9 @@
-a(href="", title="Projects", tg-nav="projects")
-    svg.icon.icon-project
-        use(xlink:href="#icon-project")
+a(
+    href=""
+    title="Projects"
+    tg-nav="projects"
+)
+    tg-svg(svg-icon="icon-project")
 
 div.navbar-dropdown.dropdown-project-list
     ul
@@ -11,9 +14,11 @@ div.navbar-dropdown.dropdown-project-list
             ng-class="{'blocked-project': project.get('blocked_code')}"
         )
             span {{::project.get("name")}}
-            svg.icon.icon-blocked-project(ng-if="project.get('blocked_code')")
-                use(xlink:href="#icon-blocked-project")
-                    title(translate="PROJECT.BLOCKED_PROJECT.BLOCKED")
+            tg-svg(
+                svg-icon="icon-blocked-project"
+                ng-if="project.get('blocked_code')"
+                svg-title="PROJECT.BLOCKED_PROJECT.BLOCKED"
+            )
 
     a.see-more-projects-btn.button-gray(
         href="#",
@@ -33,6 +38,5 @@ div.navbar-dropdown.dropdown-project-list
                 href=""
                 title="{{'PROJECT.NAVIGATION.TITLE_IMPORT_PROJECT' | translate}}"
             )
-                svg.icon.icon-upload
-                    use(xlink:href="#icon-upload")
+                tg-svg(svg-icon="icon-upload")
             input.import-file.hidden(type="file")

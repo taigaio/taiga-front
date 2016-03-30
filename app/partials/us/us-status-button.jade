@@ -4,8 +4,7 @@ span.detail-status-inner.js-edit-status(
 )
     span <%- status.name %>
     <% if(editable){ %>
-    svg.icon.icon-arrow-down
-        use(xlink:href="#icon-arrow-down")
+    tg-svg(svg-icon="icon-arrow-down")
     <% }%>
 
     ul.pop-status.popover

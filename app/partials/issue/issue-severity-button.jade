@@ -1,16 +1,18 @@
-div(class!="severity-data <% if(editable){ %>clickable<% }%>")
-    span(class="level", style!="background-color:<%- severity.color %>")
-    span(class="severity-severity") <%- severity.name %>
+.severity-data(class!="<% if(editable){ %>clickable<% }%>")
+    span.level(style!="background-color:<%- severity.color %>")
+    span.severity-severity <%- severity.name %>
     <% if(editable){ %>
-    svg.icon.icon-arrow-down
-        use(xlink:href="#icon-arrow-down")
+    tg-svg(svg-icon="icon-arrow-down")
     <% }%>
-    span(class="level-name", translate="COMMON.FIELDS.SEVERITY")
+    span.level-name(translate="COMMON.FIELDS.SEVERITY")
 
-    ul(class="popover pop-severity")
+    ul.popover.pop-severity
         <% _.each(severityes, function(sv) { %>
         li
-            a(href="" class="severity" title!="<%- sv.name %>"
-               data-severity-id!="<%- sv.id %>")
+            a.severity(
+                href=""
+                title!="<%- sv.name %>"
+                data-severity-id!="<%- sv.id %>"
+            )
                 <%- sv.name %>
         <% }); %>

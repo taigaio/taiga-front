@@ -281,6 +281,11 @@
         cursor: auto;
         padding-right: 45px;
     }
+    .us-status {
+        tg-svg {
+            display: inline-block;
+        }
+    }
 }
 
 .empty-backlog {

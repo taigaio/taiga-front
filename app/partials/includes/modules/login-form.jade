@@ -1,4 +1,4 @@
-div.login-form-container(tg-login)
+.login-form-container(tg-login)
     form.login-form
         fieldset
             input(
@@ -16,18 +16,20 @@ div.login-form-container(tg-login)
             input(
                 type="password"
                 name="password"
-                tg-capslock
                 data-required="true"
                 placeholder="{{'LOGIN_COMMON.PLACEHOLDER_AUTH_PASSWORD' | translate}}"
+                ng-focus="capslockIcon = !capslockIcon"
+                ng-keyup="onKeyUp($event)"
             )
 
-            // This should be hidden when focus on pass
             a.forgot-pass(
                 href=""
                 tg-nav="forgot-password"
                 title="{{'LOGIN_COMMON.TITLE_LINK_FORGOT_PASSWORD' | translate}}"
                 translate="LOGIN_COMMON.LINK_FORGOT_PASSWORD"
             )
+            
+            tg-capslock
 
         fieldset
             button.button-green.submit-button(

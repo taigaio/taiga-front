@@ -1,5 +1,4 @@
-svg.close.icon.icon-close(href="", title="{{'COMMON.CLOSE' | translate}}")
-    use(xlink:href="#icon-close")
+tg-lightbox-close
 
 .form
     h2.title(translate="LIGHTBOX.CHANGE_OWNER.TITLE")
@@ -53,12 +52,12 @@ svg.close.icon.icon-close(href="", title="{{'COMMON.CLOSE' | translate}}")
         )
 
         fieldset(ng-if="vm.commentOpen")
-            svg.icon.icon-close(
-                ng-click="vm.commentOpen = false"
+            tg-svg(
+                svg-icon="icon-close",
+                ng-click="vm.commentOpen = false",
                 href="",
                 title="{{'COMMON.CLOSE' | translate}}"
             )
-                use(xlink:href="#icon-close")
             label(translate="LIGHTBOX.CHANGE_OWNER.ADD_COMMENT")
             textarea(ng-model="vm.comment")
 

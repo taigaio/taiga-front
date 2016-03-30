@@ -9,7 +9,7 @@
         margin-bottom: 0;
     }
     &:hover {
-        .icon-edit {
+        .edit-us {
             display: block;
             fill: $card-dark;
             opacity: 1;
@@ -95,15 +95,20 @@
         bottom: .5rem;
         position: absolute;
     }
-    .icon-edit {
-        @include svg-size(1.1rem);
-        fill: $card-hover;
+    .edit-us {
+        display: block;
         opacity: 0;
         position: absolute;
+        svg {
+            @include svg-size(1.1rem);
+            fill: $card-hover;
+        }
         &:hover {
             cursor: pointer;
-            fill: darken($card-hover, 15%);
-            transition: color .3s linear;
+            svg {
+                fill: darken($card-hover, 15%);
+                transition: color .3s linear;
+            }
         }
     }
 }
@@ -140,7 +145,7 @@
         word-wrap: break-word;
     }
     .loading,
-    .icon-edit {
+    .edit-us {
         bottom: .2rem;
         right: .5rem;
     }

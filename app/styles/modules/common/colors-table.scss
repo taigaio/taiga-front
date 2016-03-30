@@ -24,6 +24,11 @@
                 transition: opacity .3s linear;
             }
         }
+        .options-column {
+            a {
+                display: inline-block;
+            }
+        }
     }
     form {
         &:last-child {
@@ -136,5 +141,4 @@
             }
         }
     }
-
 }

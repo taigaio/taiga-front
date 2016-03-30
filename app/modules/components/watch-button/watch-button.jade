@@ -16,8 +16,7 @@ a.track-button.watch-button.watch-container(
     ng-mouseleave="vm.showTextWhenMouseIsLeave()"
 )
     span.track-inner
-        svg.icon.icon-watch
-            use(xlink:href="#icon-watch")
+        tg-svg(svg-icon="icon-watch")
         span(
             ng-if="!vm.item.is_watcher",
             translate="COMMON.WATCH_BUTTON.WATCH"
@@ -38,7 +37,6 @@ span.track-button.watch-button.watch-container(
 )
     span.track-inner
         span.track-icon
-            svg.icon.icon-watch
-                use(xlink:href="#icon-watch")
+            tg-svg(svg-icon="icon-watch")
         span(translate="COMMON.WATCH_BUTTON.WATCHERS")
     +counter

@@ -61,8 +61,11 @@
 }
 
 .project-values-settings {
-    svg {
+    a {
+        display: inline-block;
         margin-right: .5rem;
+    }
+    svg {
         &.icon-trash {
             fill: $red-light;
         }

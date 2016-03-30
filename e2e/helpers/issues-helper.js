@@ -100,7 +100,7 @@ helper.filtersCats = function() {
 };
 
 helper.filtersList = function() {
-    return $$('.filter-list a');
+    return $$('.filter-list .single-filter');
 };
 
 helper.selectFilter = async function(index) {
@@ -123,14 +123,14 @@ helper.removeFilters = async function() {
     let count = await $$('.filters-applied .single-filter.selected').count();
 
     while(count) {
-        $$('.single-filter.selected').get(0).click();
+        $$('.single-filter.selected').get(0).$('.remove-filter').click();
 
         count = await $$('.single-filter.selected').count();
     }
 };
 
 helper.getCustomFilters = function() {
-    return $$('.filter-list a[data-type="myFilters"]');
+    return $$('.filter-list div[data-type="myFilters"]');
 };
 
 helper.removeCustomFilters = async function() {

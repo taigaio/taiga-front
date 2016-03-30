@@ -83,7 +83,6 @@ div.wrapper(
                         owner="project.owner",
                         project-id="project.id"
                     )
-
                 fieldset(ng-if="project.owner.id == user.id")
                     tg-admin-project-change-owner.admin-project-profile-owner-actions(
                         members="project.members.length"
@@ -95,9 +94,10 @@ div.wrapper(
                 fieldset.looking-for-people
                     .looking-for-people-selector
                         span {{ 'ADMIN.PROJECT_PROFILE.RECRUITING' | translate }}
-                        svg.icon.icon-recruit
-                            use(xlink:href="#icon-recruit")
-                                title {{ 'ADMIN.PROJECT_PROFILE.RECRUITING_MESSAGE' | translate }}"
+                        tg-svg(
+                            svg-icon="icon-recruit",
+                            svg-title-translate="ADMIN.PROJECT_PROFILE.RECRUITING_MESSAGE"
+                        )
                         div.check
                             input(
                                 type="checkbox",
@@ -146,9 +146,10 @@ div.wrapper(
                         href="https://taiga.io/support/whats-the-difference-between-public-and-private-projects/"
                         target="_blank"
                     )
-                        svg.icon.icon-question
-                            use(xlink:href="#icon-question")
-                                title {{ 'ADMIN.PROJECT_PROFILE.PRIVATE_OR_PUBLIC' | translate }}
+                        tg-svg(
+                            svg-icon="icon-question",
+                            svg-title-translate="ADMIN.PROJECT_PROFILE.PRIVATE_OR_PUBLIC"
+                        )
                         span {{'ADMIN.PROJECT_PROFILE.PRIVATE_OR_PUBLIC' | translate }}
                 button.button-green.submit-button(
                     type="submit"

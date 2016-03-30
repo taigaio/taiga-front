@@ -22,6 +22,12 @@
 # File: utils.coffee
 ###
 
+addClass = (el, className) ->
+    if (el.classList)
+        el.classList.add(className)
+    else
+        el.className += ' ' + className
+
 nl2br = (str) =>
     breakTag = '<br />'
     return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2')
@@ -222,6 +228,7 @@ patch = (oldImmutable, newImmutable) ->
     return pathObj
 
 taiga = @.taiga
+taiga.addClass = addClass
 taiga.nl2br = nl2br
 taiga.bindMethods = bindMethods
 taiga.bindOnce = bindOnce

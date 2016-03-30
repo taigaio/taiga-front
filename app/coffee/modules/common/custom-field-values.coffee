@@ -117,7 +117,7 @@ CustomAttributesValuesDirective = ($templates, $storage) ->
             $ctrl.initialize($attrs.type, value.id)
             $ctrl.loadCustomAttributesValues()
 
-        $el.on "click", ".custom-fields-header .icon", ->
+        $el.on "click", ".custom-fields-header .collapse", ->
             hash = collapsedHash($attrs.type)
             collapsed = not($storage.get(hash) or false)
             $storage.set(hash, collapsed)

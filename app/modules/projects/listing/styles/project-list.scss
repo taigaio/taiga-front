@@ -87,11 +87,13 @@
     }
     .drag {
         align-self: center;
-        fill: $gray-light;
-        height: 1.1rem;
-        margin-right: .5rem;
         opacity: 0;
-        transition: opacity .2s;
-        width: 1.1rem;
+        svg {
+            fill: $gray-light;
+            height: 1.1rem;
+            margin-right: .5rem;
+            transition: opacity .2s;
+            width: 1.1rem;
+        }
     }
 }

@@ -6,5 +6,4 @@ div.new-us
     a.button-bulk(href="", title="{{'US.ADD_BULK' | translate}}",
                          ng-click="ctrl.addNewUs('bulk')",
                          tg-check-permission="add_us")
-        svg.icon.icon-bulk
-            use(xlink:href="#icon-bulk")
+        tg-svg(svg-icon="icon-bulk")

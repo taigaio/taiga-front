@@ -275,6 +275,13 @@ LoginDirective = ($auth, $confirm, $location, $config, $routeParams, $navUrls, $
         onError = (response) ->
             $confirm.notify("light-error", $translate.instant("LOGIN_FORM.ERROR_AUTH_INCORRECT"))
 
+        $scope.onKeyUp = (event) ->
+            target = angular.element(event.currentTarget)
+            value = target.val()
+            $scope.iscapsLockActivated = false
+            if value != value.toLowerCase()
+                $scope.iscapsLockActivated = true
+
         submit = debounce 2000, (event) =>
             event.preventDefault()
 

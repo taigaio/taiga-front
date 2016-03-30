@@ -16,10 +16,11 @@ div.wrapper
                     .intro-title
                         h1
                             span.project-name {{::vm.project.get("name")}}
-                                
-                        svg.icon.icon-lock.private(ng-if="::vm.project.get('is_private')")
-                            use(xlink:href="#icon-lock")
-                                title {{'PROJECT.PRIVATE' | translate}}"
+                        tg-svg(
+                            ng-if="::vm.project.get('is_private')"
+                            svg-icon="icon-lock"
+                            svgTitleTranslate: "PROJECT.PRIVATE"
+                        )
 
                     div.track-buttons-container(ng-if="vm.user")
                         tg-like-project-button(project="vm.project")
@@ -30,15 +31,13 @@ div.wrapper
                             span.list-itemtype-track-likers(
                                 title="{{ 'PROJECT.LIKE_BUTTON.COUNTER_TITLE'|translate:{total:vm.project.get(\"total_fans\")||0}:'messageformat' }}"
                             )
-                                svg.icon.icon-like
-                                    use(xlink:href="#icon-like")
+                                tg-svg(svg-icon="icon-like")
                                 span {{ ::vm.project.get('total_fans') }}
 
                             span.list-itemtype-track-watchers(
                                 title="{{ 'PROJECT.WATCH_BUTTON.COUNTER_TITLE'|translate:{total:vm.project.get(\"total_watchers\")||0}:'messageformat' }}"
                             )
-                                svg.icon.icon-watche
-                                    use(xlink:href="#icon-watch")
+                                tg-svg(svg-icon="icon-watch")
                                 span {{ ::vm.project.get('total_watchers') }}
 
                 p.description {{vm.project.get('description')}}
@@ -70,6 +69,8 @@ div.wrapper
                             title="{{::member.get('full_name')}}"
                         )
                             img(ng-src="{{::member.get('photo')}}", alt="{{::member.get('full_name')}}")
-                            svg.icon.icon-badge(ng-if="member.get('id') == vm.project.getIn(['owner', 'id'])")
-                                use(xlink:href="#icon-badge")
-                                    title(translate="COMMON.OWNER")
+                            tg-svg(
+                                ng-if="member.get('id') == vm.project.getIn(['owner', 'id'])"
+                                svg-icon="icon-badge"
+                                svgTitleTranslate: "COMMON.OWNER"
+                            )

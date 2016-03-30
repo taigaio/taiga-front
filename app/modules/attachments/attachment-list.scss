@@ -51,10 +51,12 @@
             opacity: 0;
         }
         .editable-settings {
+            display: block;
             opacity: 1;
         }
         svg {
             fill: $gray-light;
+            pointer-events: none;
         }
         .icon-edit,
         .icon-save {

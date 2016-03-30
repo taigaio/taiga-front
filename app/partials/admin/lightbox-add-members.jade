@@ -1,9 +1,4 @@
-a.close(
-    href=""
-    title="close"
-)
-    svg.icon.icon-close
-        use(xlink:href="#icon-close")
+tg-lightbox-close
 .add-member-wrapper
     h2.title(translate="LIGHTBOX.ADD_MEMBER.TITLE")
     form.add-member-form(ng-submit="vm.submit()")
@@ -37,15 +32,13 @@ a.close(
                     ng-click="vm.addSingleMember()"
                     ng-if="$last && vm.canAddUsers"
                 )
-                    svg.icon.icon-add
-                        use(xlink:href="#icon-add")
+                    tg-svg(svg-icon="icon-add")
                 a.remove-fieldset.ng-animate-disabled(
                     href=""
                     ng-click="vm.removeSingleMember($index)"
                     ng-if="!$last || ($last && !vm.canAddUsers && vm.membersLimit > 1)"
                 )
-                    svg.icon.icon-trash
-                        use(xlink:href="#icon-trash")
+                    tg-svg(svg-icon="icon-trash")
 
         tg-lightbox-add-members-warning-message(ng-if="vm.showWarningMessage", project="vm.project")
 

@@ -139,7 +139,6 @@
         }
     }
     .icon {
-        @include svg-size(.75rem);
         fill: $gray-light;
     }
 }

@@ -240,7 +240,7 @@ module.directive("tgMemberships", ["$tgTemplate", "$compile", MembershipsDirecti
 ## Member Avatar Directive
 #############################################################################
 
-MembershipsRowAvatarDirective = ($log, $template, $translate) ->
+MembershipsRowAvatarDirective = ($log, $template, $translate, $compile) ->
     template = $template.get("admin/memberships-row-avatar.html", true)
 
     link = ($scope, $el, $attrs) ->
@@ -255,6 +255,8 @@ MembershipsRowAvatarDirective = ($log, $template, $translate) ->
             }
 
             html = template(ctx)
+            html = $compile(html)($scope)
+
             $el.html(html)
 
         if not $attrs.tgMembershipsRowAvatar?
@@ -269,7 +271,7 @@ MembershipsRowAvatarDirective = ($log, $template, $translate) ->
     return {link: link}
 
 
-module.directive("tgMembershipsRowAvatar", ["$log", "$tgTemplate", '$translate', MembershipsRowAvatarDirective])
+module.directive("tgMembershipsRowAvatar", ["$log", "$tgTemplate", '$translate', "$compile", MembershipsRowAvatarDirective])
 
 
 #############################################################################
@@ -393,9 +395,7 @@ MembershipsRowActionsDirective = ($log, $repo, $rs, $confirm, $compile, $transla
     </div>
     <a class="delete" href=""
        title="{{ 'ADMIN.MEMBERSHIP.DELETE_MEMBER' | translate }}">
-        <svg class="icon icon-trash">
-            <use xlink:href="#icon-trash">
-        </svg>
+        <tg-svg svg-icon="icon-trash"></tg-svg>
     </a>
     """
 
@@ -406,9 +406,7 @@ MembershipsRowActionsDirective = ($log, $repo, $rs, $confirm, $compile, $transla
     </a>
     <a class="delete" href=""
        title="{{ 'ADMIN.MEMBERSHIP.DELETE_MEMBER' | translate }}">
-        <svg class="icon icon-trash">
-            <use xlink:href="#icon-trash">
-        </svg>
+        <tg-svg svg-icon="icon-trash"></tg-svg>
     </a>
     """
 

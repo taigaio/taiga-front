@@ -1,37 +1,37 @@
 .attribute(ng-if="issuesEnabled")
-    svg.icon.icon-briefcase(
-        ng-style="{'opacity': stats.closed_bugs[userId]}"
+    tg-svg(
+        svg-icon="icon-briefcase",
+        ng-style="{'opacity': stats.closed_bugs[userId]}",
         ng-class="{'top': stats.closed_bugs[userId] == 1}"
     )
-        use(xlink:href="#icon-briefcase")
 
 .attribute(ng-if="tasksEnabled")
-    svg.icon.icon-iocaine(
-        ng-style="{'opacity': stats.iocaine_tasks[userId]}"
+    tg-svg(
+        svg-icon="icon-iocaine",
+        ng-style="{'opacity': stats.iocaine_tasks[userId]}",
         ng-class="{'top': stats.iocaine_tasks[userId] == 1}"
     )
-        use(xlink:href="#icon-iocaine")
 
 .attribute(ng-if="wikiEnabled")
-    svg.icon.icon-edit(
-        ng-style="{'opacity': stats.wiki_changes[userId]}"
+    tg-svg(
+        svg-icon="icon-edit",
+        ng-style="{'opacity': stats.wiki_changes[userId]}",
         ng-class="{'top': stats.wiki_changes[userId] == 1}"
     )
-        use(xlink:href="#icon-edit")
 
 .attribute(ng-if="issuesEnabled")
-    svg.icon.icon-bug(
-        ng-style="{'opacity': stats.created_bugs[userId]}"
+    tg-svg(
+        svg-icon="icon-bug",
+        ng-style="{'opacity': stats.created_bugs[userId]}",
         ng-class="{'top': stats.created_bugs[userId] == 1}"
     )
-        use(xlink:href="#icon-bug")
 
 .attribute(ng-if="tasksEnabled")
-    svg.icon.icon-task(
-        ng-style="{'opacity': stats.closed_tasks[userId]}"
+    tg-svg(
+        svg-icon="icon-task",
+        ng-style="{'opacity': stats.closed_tasks[userId]}",
         ng-class="{'top': stats.closed_tasks[userId] == 1}"
     )
-        use(xlink:href="#icon-task")
 
 .attribute
     span.points(ng-bind="stats.totals[userId]")

@@ -426,7 +426,7 @@ KanbanUserstoryDirective = ($rootscope, $loading, $rs, $rs2) ->
             else if not us.is_blocked and $el.hasClass("blocked")
                 $el.removeClass("blocked")
 
-        $el.on 'click', '.icon-edit', (event) ->
+        $el.on 'click', '.edit-us', (event) ->
             if $el.find(".icon-edit").hasClass("noclick")
                 return
 

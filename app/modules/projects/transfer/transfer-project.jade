@@ -9,12 +9,10 @@
             h3.transfer-project-title {{::vm.project.get("name")}}
             .transfer-project-statistics
                 span.transfer-project-private(ng-if="vm.project.get('is_private')")
-                    svg.icon.icon-lock
-                        use(xlink:href="#icon-lock")
+                    tg-svg(svg-icon="icon-lock")
                     span(translate="ADMIN.PROJECT_TRANSFER.PRIVATE")
                 span.transfer-project-members
-                    svg.icon.icon-team
-                        use(xlink:href="#icon-team")
+                    tg-svg(svg-icon="icon-team")
                     span {{::vm.project.get("total_memberships")}}
 
     p(
@@ -44,8 +42,10 @@
                 label.transfer-project-comment-label(
                     translate="ADMIN.PROJECT_TRANSFER.ADD_COMMENT"
                 )
-                svg.icon.icon-close(ng-click="vm.hideComment()")
-                    use(xlink:href="#icon-close")
+                tg-svg(
+                    svg-icon="icon-close"
+                    ng-click="vm.hideComment()"
+                )
             textarea.transfer-project-comment(
                 name="reason"
                 ng-model="vm.reason"
@@ -66,4 +66,4 @@
                 translate="ADMIN.PROJECT_TRANSFER.ACCEPT"
             )
 
-    div(ng-if="!vm.canBeOwnedByUser.valid", tg-cant-own-project-explanation)
+    tg-cant-own-project-explanation(ng-if="!vm.canBeOwnedByUser.valid")

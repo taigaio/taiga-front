@@ -292,9 +292,7 @@ RolePermissionsDirective = ($rootscope, $repo, $confirm, $compile) ->
                  title="{{ '<%- permission.name %>' | translate }}"></div>
         <% }) %>
     </div>
-    <svg class="icon icon-arrow-right">
-        <use xlink:href="#icon-arrow-right">
-    </svg>
+    <tg-svg svg-icon="icon-arrow-right"></tg-svg>
     """)
 
     categoryTemplate = _.template("""

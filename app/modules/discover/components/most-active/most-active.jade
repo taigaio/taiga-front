@@ -1,8 +1,7 @@
 .most-active(ng-if="vm.highlighted.size")
     .header
         .title-wrapper
-            svg.icon.icon-activity
-                use(xlink:href="#icon-activity")
+            tg-svg(svg-icon="icon-activity")
             h1.title {{ 'DISCOVER.MOST_ACTIVE' | translate }}
         tg-discover-home-order-by(on-change="vm.orderBy(orderBy)", order-by="vm.currentOrderBy")
     
@@ -15,6 +14,5 @@
 .empty-highlighted-project(
     ng-if="!vm.highlighted.size"
 )
-    svg.icon.icon-activity
-        use(xlink:href="#icon-activity")
+    tg-svg(svg-icon="icon-activity")
     span {{ 'DISCOVER.MOST_ACTIVE_EMPTY' | translate }}

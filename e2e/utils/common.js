@@ -46,6 +46,16 @@ common.browserSkip = function(browserName, name, fn) {
     }
 };
 
+common.waitHref = async function(el) {
+    await browser.wait(async function() {
+        let href = await el.getAttribute('href');
+
+        return (href.length > 1 && href !== browser.params.glob.host + "#");
+     }, 5000);
+
+    return el.getAttribute('href');
+};
+
 common.link = async function(el) {
     let oldUrl = await browser.getCurrentUrl();
 
@@ -68,13 +78,7 @@ common.link = async function(el) {
         .mouseMove({x: 10, y: 10})
         .perform();
 
-    await browser.wait(async function() {
-        let href = await el.getAttribute('href');
-
-        return (href.length > 1 && href !== browser.params.glob.host + "#");
-     }, 5000);
-
-
+    await common.waitHref(el);
 
     await browser
         .actions()
@@ -453,9 +457,6 @@ common.createProject = async function(members = []) {
     lb.description().sendKeys('bbb');
 
     await lb.submit();
-
-    await notifications.success.open();
-    await notifications.success.close();
 
     if (members.length) {
         var adminMembershipsHelper = require('../helpers').adminMemberships;

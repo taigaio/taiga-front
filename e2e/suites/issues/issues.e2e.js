@@ -53,9 +53,9 @@ describe('issues list', function() {
         it('send form', async function() {
             createIssueLightbox.submit();
 
-            await createIssueLightbox.waitClose();
+            let openNotification = await utils.notifications.success.open();
 
-            expect(utils.notifications.success.open()).to.be.eventually.true;
+            expect(openNotification).to.be.true;
 
             await utils.notifications.success.close();
         });
@@ -174,6 +174,7 @@ describe('issues list', function() {
             let htmlChanges = await utils.common.outerHtmlChanges(table);
             issuesHelper.filtersCats().get(0).$('a').click();
             issuesHelper.selectFilter(0);
+
             await htmlChanges();
 
             issuesHelper.backToFilters();
@@ -285,7 +286,9 @@ describe('issues list', function() {
 
             await issuesHelper.saveFilter('custom');
 
-            expect(issuesHelper.getCustomFilters().count()).to.be.eventually.equal(1);
+            let customFilters = await issuesHelper.getCustomFilters().count();
+
+            expect(customFilters).to.be.equal(1);
 
             await issuesHelper.removeFilters();
             issuesHelper.backToFilters();

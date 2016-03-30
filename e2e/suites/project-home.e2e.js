@@ -53,6 +53,7 @@ describe('project home', function() {
         };
 
         await reset();
+        await browser.waitForAngular();
 
         let link = $('tg-like-project-button a');
         let likesCounterOld = parseInt(await link.$('.track-button-counter').getText(), 10);

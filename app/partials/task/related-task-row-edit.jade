@@ -1,20 +1,27 @@
-.tasks
-    .task-name
-        input(type='text', value!='<%- task.subject %>', placeholder="{{'TASK.PLACEHOLDER_SUBJECT' | translate}}")
-        .task-settings
-          svg.icon.icon-save.save-task(title="{{'COMMON.SAVE' | translate}}")
-              use(xlink:href="#icon-save")
-          svg.icon.icon-close.cancel-edit(title="{{'COMMON.CANCEL' | translate}}")
-              use(xlink:href="#icon-close")
+.task-name
+    input(
+        type='text'
+        value!='<%- task.subject %>'
+        placeholder="{{'TASK.PLACEHOLDER_SUBJECT' | translate}}"
+    )
+.task-settings
+    a.save-task(
+        href=""
+        title="{{'COMMON.SAVE' | translate}}"
+    )
+        tg-svg(svg-icon="icon-save")
+    a.cancel-edit(
+        href=""
+        title="{{'COMMON.CANCEL' | translate}}"
+    )
+        tg-svg(svg-icon="icon-cancel")
 
 .status(tg-related-task-status='task', ng-model='task')
   a.task-status(href='', title="{{'TASK.TITLE_SELECT_STATUS' | translate}}")
     span.task-status-bind
-    svg.icon.icon-arrow-down
-        use(xlink:href="#icon-arrow-down")
+    tg-svg(svg-icon="icon-arrow-down")
 
 .assigned-to(tg-related-task-assigned-to-inline-edition='task')
   .task-assignedto(title="{{'COMMON.FIELDS.ASSIGNED_TO' | translate}}")
     figure.avatar
-    svg.icon.icon-arrow-down
-        use(xlink:href="#icon-arrow-down")
+    tg-svg(svg-icon="icon-arrow-down")

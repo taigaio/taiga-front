@@ -22,13 +22,11 @@ div.wrapper.roles(ng-controller="RolesController as ctrl",
             .edit-role
                 input(type="text", value="{{ role.name }}")
                 a.save(href="", title="{{'COMMON.SAVE' | translate}}")
-                    svg.icon.icon-save
-                        use(xlink:href="#icon-save")
+                    tg-svg(svg-icon="icon-save")
             p.total
                 span.role-name(title="{{'ADMIN.ROLES.COUNT_MEMBERS' | translate}}") {{ role.name }}
-                a.edit-value
-                    svg.icon.icon-edit
-                        use(xlink:href="#icon-edit")
+                a.edit-value(href="")
+                    tg-svg(svg-icon="icon-edit")
 
         div.any-computable-role(ng-hide="anyComputableRole", translate="ADMIN.ROLES.WARNING_NO_ROLE")
 

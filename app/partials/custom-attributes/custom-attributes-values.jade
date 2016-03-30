@@ -2,7 +2,7 @@ section.duty-custom-fields(ng-show="ctrl.customAttributes.length")
     div.custom-fields-header
         span(translate="COMMON.CUSTOM_ATTRIBUTES.CUSTOM_FIELDS")
         // Remove .open class on click on this button in both .icon and .custom-fields-body to close
-        svg.icon.icon-arrow-down(class!="<% if (!collapsed) { %>open<% } %>")
-            use(xlink:href="#icon-arrow-down")
+        a.collapse(href="", class!="<% if (!collapsed) { %>open<% } %>")
+            tg-svg(svg-icon="icon-arrow-down")
     div.custom-fields-body(class!="<% if (!collapsed) { %>open<% } %>")
         div(ng-repeat="att in ctrl.customAttributes", tg-custom-attribute-value="ctrl.getAttributeValue(att)", required-edition-perm!="<%- requiredEditionPerm %>")

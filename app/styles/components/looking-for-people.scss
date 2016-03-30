@@ -1,0 +1,5 @@
+.look-for-people {
+    @include svg-size();
+    fill: $gray-light;
+    margin-left: .25rem;
+}

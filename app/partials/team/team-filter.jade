@@ -6,8 +6,7 @@ ul
             href=""
         )
           span.title(translate="TEAM.SECTION_FILTER_ALL")
-          svg.icon.icon-arrow-right
-              use(xlink:href="#icon-arrow-right")
+          tg-svg(svg-icon="icon-arrow-right")
 
     li(ng-repeat="role in roles")
         a(
@@ -16,5 +15,4 @@ ul
             href=""
         )
             span.title(tg-bo-bind="role.name")
-            svg.icon.icon-arrow-right
-                use(xlink:href="#icon-arrow-right")
+            tg-svg(svg-icon="icon-arrow-right")

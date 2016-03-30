@@ -56,13 +56,14 @@
         }
     }
     .close {
-        height: 2.5rem;
+        display: block;
         position: absolute;
         right: 0;
         top: 1rem;
-        width: 2.5rem;
         svg {
+            @include svg-size(2rem);
             fill: lighten($tribe-secondary, 15%);
+            pointer-events: none;
             transition: fill .2s;
             &:hover {
                 fill: $tribe-secondary;

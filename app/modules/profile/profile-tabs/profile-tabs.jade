@@ -7,8 +7,7 @@ div
             ng-click="vm.toggleTab(tab)"
             ng-class="{active: tab.active}"
         )
-            svg.icon(ng-class="::tab.icon")
-                use(xlink:href="{{::tab.iconName}}")
+            tg-svg(svg-icon="{{::tab.icon}}")
             span {{::tab.name}}
 
     ng-transclude
