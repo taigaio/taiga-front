@@ -31,12 +31,19 @@ class LoginPage
     @.$inject = [
         'tgCurrentUserService',
         '$location',
-        '$tgNavUrls'
+        '$tgNavUrls',
+        '$routeParams'
     ]
 
-    constructor: (currentUserService, $location, $navUrls) ->
+    constructor: (currentUserService, $location, $navUrls, $routeParams) ->
         if currentUserService.isAuthenticated()
-            $location.path($navUrls.resolve("home"))
+            url = $navUrls.resolve("home")
+            if $routeParams['next']
+                url = $routeParams['next']
+                $location.search('next', null)
+
+            $location.path(url)
+
 
 module.controller('LoginPage', LoginPage)
 
