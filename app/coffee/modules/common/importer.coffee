@@ -38,7 +38,7 @@ ImportProjectButtonDirective = ($rs, $confirm, $location, $navUrls, $translate, 
                     privateError = !currentUserService.canCreatePrivateProjects().valid
                     maxMemberships = null
 
-                    if user.get('max_memberships_private_projects') != null && result.headers.memberships > user.get('max_memberships_private_projects')
+                    if user.get('max_memberships_private_projects') != null && result.headers.memberships >= user.get('max_memberships_private_projects')
                         membersError = true
                     else
                         membersError = false
@@ -55,7 +55,7 @@ ImportProjectButtonDirective = ($rs, $confirm, $location, $navUrls, $translate, 
                 else
                     publicError = !currentUserService.canCreatePublicProjects().valid
 
-                    if user.get('max_memberships_public_projects') != null && result.headers.memberships > user.get('max_memberships_public_projects')
+                    if user.get('max_memberships_public_projects') != null && result.headers.memberships >= user.get('max_memberships_public_projects')
                         membersError = true
                     else
                         membersError = false
