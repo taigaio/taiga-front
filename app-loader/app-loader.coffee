@@ -55,6 +55,9 @@ promise = $.getJSON "/conf.json"
 promise.done (data) ->
     window.taigaConfig = _.assign({}, window.taigaConfig, data)
 
+promise.fail () ->
+    console.error "Your conf.json file is not a valid json file, please review it."
+
 promise.always ->
     if window.taigaConfig.contribPlugins.length > 0
         loadPlugins(window.taigaConfig.contribPlugins).then () ->
