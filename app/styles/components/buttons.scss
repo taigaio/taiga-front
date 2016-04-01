@@ -30,10 +30,20 @@
     }
     .icon {
         color: $white;
-        margin-right: .3rem;
+    }
+    &.disabled,
+    &[disabled] {
+        background: $whitish;
+        box-shadow: none;
+        color: $gray-light;
+        cursor: not-allowed;
+        opacity: .65;
+        &:hover {
+            background: $whitish;
+            color: $gray-light;
+        }
     }
 }
-
 .trans-button {
     @extend %medium;
     @extend %title;
@@ -43,23 +53,16 @@
         color: $blackish;
         transition: color .2s linear;
     }
-    &:hover,
-    &.active {
-        span,
-        .icon {
-            color: $primary;
-        }
+    .icon {
+        margin-right: .5rem;
     }
     &:visited {
         color: $blackish;
     }
 }
-
-
 .submit-button {
     width: 100%;
 }
-
 .button-green,
 a.button-green {
     @extend %button;
@@ -70,7 +73,6 @@ a.button-green {
         color: $white;
     }
 }
-
 .button-gray,
 a.button-gray {
     @extend %button;
@@ -81,7 +83,6 @@ a.button-gray {
         color: $white;
     }
 }
-
 .button-blackish {
     @extend %button;
     background: $blackish;
@@ -91,7 +92,6 @@ a.button-gray {
         color: $white;
     }
 }
-
 .button-red {
     @extend %button;
     background: $red-light;
@@ -103,7 +103,6 @@ a.button-gray {
         color: $white;
     }
 }
-
 .button-block {
     background: $white;
     color: $red;
@@ -112,19 +111,20 @@ a.button-gray {
         color: $white;
     }
 }
-
 .button-bulk {
     @extend %button;
     background: $primary;
     padding: .35rem .5rem;
     .icon {
+        fill: currentColor;
         margin-right: 0;
+        position: relative;
+        top: 1px;
     }
     &:hover {
         background: $primary-light;
     }
 }
-
 .button-auth {
     @extend %button;
     background: $grayer;

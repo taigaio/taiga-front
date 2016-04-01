@@ -1,6 +1,10 @@
 section.home-project-list(ng-if="vm.projects.size")
 
-    .home-project(tg-bind-scope, tg-repeat="project in vm.projects")
+    .home-project(
+        tg-bind-scope
+        tg-repeat="project in vm.projects"
+        ng-class="{'blocked-project': project.get('blocked_code')}"
+    )
         .tags-container
             .project-tag(
                 style="background: {{tag.get('color')}}"
@@ -19,16 +23,18 @@ section.home-project-list(ng-if="vm.projects.size")
                         alt="{{::project.get('name')}}"
                     )
                 h2.project-card-name
-                    a(
+                    a.project-title(
                         href="#"
                         tg-nav="project:project=project.get('slug')"
                         title="{{::project.get('name')}}"
                     ) {{::project.get('name')}}
-                    span.look-for-people(
-                        ng-if="project.get('is_looking_for_people')"
-                        title="{{ ::project.get('looking_for_people_note') }}"
-                    )
-                        include ../../../svg/recruit.svg
+                    svg.look-for-people.icon.icon-recruit(ng-if="project.get('is_looking_for_people')")
+                        use(xlink:href="#icon-recruit")
+                            title="{{ ::project.get('looking_for_people_note') }}"
+                    svg.icon.icon-blocked-project(ng-if="project.get('blocked_code')")
+                        use(xlink:href="#icon-blocked-project")
+                            title(translate="PROJECT.BLOCKED_PROJECT.BLOCKED")
+                        
             p.project-card-description {{::project.get('description')| limitTo:100 }}
                  span(ng-if="::project.get('description').length > 100") ...
             .project-card-statistics
@@ -36,25 +42,29 @@ section.home-project-list(ng-if="vm.projects.size")
                     ng-class="{'active': project.get('is_fan')}"
                     title="{{ 'PROJECT.FANS_COUNTER_TITLE'|translate:{total:project.get('total_fans')||0}:'messageformat' }}"
                 )
-                    include ../../../svg/like.svg
+                    svg.icon.icon-like
+                        use(xlink:href="#icon-like")
                     span {{::project.get('total_fans')}}
                 span.statistic(
                     ng-class="{'active': project.get('is_watcher')}"
                     title="{{ 'PROJECT.WATCHERS_COUNTER_TITLE'|translate:{total:project.get('total_watchers')||0}:'messageformat' }}"
                 )
-                    include ../../../svg/eye.svg
+                    svg.icon.icon-watch
+                        use(xlink:href="#icon-watch")
                     span {{::project.get('total_watchers')}}
                 span.statistic(
                     ng-class="{'active': project.get('i_am_member')}"
                     title="{{ 'PROJECT.MEMBERS_COUNTER_TITLE'|translate:{total:project.get('members').size||0}:'messageformat' }}"
                 )
-                    include ../../../svg/team.svg
+                    svg.icon.icon-team
+                        use(xlink:href="#icon-team")
                     span.statistics-num {{ ::project.get('members').size }}
                 span.statistic(
                     ng-if="::project.get('is_private')"
                     title="{{ 'PROJECT.PRIVATE' | translate }}"
                 )
-                    include ../../../svg/lock.svg
+                    svg.icon.icon-lock
+                        use(xlink:href="#icon-lock")
 
     a.see-more-projects-btn.button-gray(
         href="#",
@@ -65,7 +75,8 @@ section.home-project-list(ng-if="vm.projects.size")
     )
 
 section.projects-empty(ng-if="vm.projects != undefined && vm.projects.size === 0")
-    include ../../../svg/empty-project.svg
+    svg.icon.icon-project
+        use(xlink:href="#icon-project")
     p(translate="HOME.EMPTY_PROJECT_LIST")
     a.create-project-button.button-green(href="#", ng-click="vm.newProject()",
                                       title="{{'PROJECT.NAVIGATION.TITLE_CREATE_PROJECT' | translate}}",

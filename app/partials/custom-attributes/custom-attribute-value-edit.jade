@@ -14,10 +14,13 @@ form.custom-field-single.editable
         <% } else if (type=="multiline") { %>
         textarea#custom-field-value(name="value") <%- value %>
         <% } else if (type=="date") { %>
-        input#custom-field-value(name="value", type="text", value!="<%- value %>")
+        input#custom-field-value(name="value", type="text", data-pikaday, value!="<%- value %>")
+        <% } else if (type=="url") { %>
+        input#custom-field-value(name="value", type="url", data-type="url", value!="<%- value %>")
         <% } else { %>
         input#custom-field-value(name="value", type="text", value!="<%- value %>")
         <% } %>
 
     div.custom-field-options
-        a.icon.icon-floppy(href="", title="{{'COMMON.CUSTOM_ATTRIBUTES.SAVE' | translate}}")
+        svg.icon.icon-save.js-save-description(title="{{'COMMON.CUSTOM_ATTRIBUTES.SAVE' | translate}}")
+            use(xlink:href="#icon-save")

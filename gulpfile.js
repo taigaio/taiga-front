@@ -27,6 +27,9 @@ var gulp = require("gulp"),
     del = require("del"),
     livereload = require('gulp-livereload'),
     gulpFilter = require('gulp-filter'),
+    addsrc = require('gulp-add-src');
+    mergeStream = require('merge-stream'),
+    path = require('path'),
     coffeelint = require('gulp-coffeelint');
 
 var argv = require('minimist')(process.argv.slice(2));
@@ -67,13 +70,14 @@ paths.css_vendor = [
     paths.vendor + "intro.js/introjs.css"
 ];
 paths.locales = paths.app + "locales/**/*.json";
+paths.modulesLocales = paths.app + "modules/**/locales/*.json";
 
 paths.sass = [
     paths.app + "**/*.scss",
-    "!" + paths.app + "/styles/bourbon/**/*.scss",
-    "!" + paths.app + "/styles/dependencies/**/*.scss",
-    "!" + paths.app + "/styles/extras/**/*.scss",
-    "!" + paths.app + "/themes/**/variables.scss",
+    "!" + paths.app + "styles/bourbon/**/*.scss",
+    "!" + paths.app + "styles/dependencies/**/*.scss",
+    "!" + paths.app + "styles/extras/**/*.scss",
+    "!" + paths.app + "themes/**/*.scss",
 ];
 
 paths.sass_watch = paths.sass.concat(themes.current.customScss);
@@ -85,7 +89,8 @@ paths.styles_dependencies = [
 
 paths.css = [
     paths.tmp + "styles/**/*.css",
-    paths.tmp + "modules/**/*.css"
+    paths.tmp + "modules/**/*.css",
+    paths.tmp + "custom.css"
 ];
 
 paths.css_order = [
@@ -101,7 +106,7 @@ paths.css_order = [
     paths.tmp + "styles/modules/**/*.css",
     paths.tmp + "modules/**/*.css",
     paths.tmp + "styles/shame/*.css",
-    paths.tmp + "themes/**/*.css"
+    paths.tmp + "custom.css"
 ];
 
 paths.coffee = [
@@ -110,6 +115,8 @@ paths.coffee = [
 ];
 
 paths.coffee_order = [
+    paths.app + "modules/compile-modules/**/*.module.coffee",
+    paths.app + "modules/compile-modules/**/*.coffee",
     paths.app + "coffee/app.coffee",
     paths.app + "coffee/*.coffee",
     paths.app + "coffee/modules/controllerMixins.coffee",
@@ -138,9 +145,8 @@ paths.coffee_order = [
 paths.libs = [
     paths.vendor + "bluebird/js/browser/bluebird.js",
     paths.vendor + "jquery/dist/jquery.js",
-    paths.vendor + "lodash/dist/lodash.js",
+    paths.vendor + "lodash/lodash.js",
     paths.vendor + "emoticons/lib/emoticons.js",
-    paths.vendor + "underscore.string/lib/underscore.string.js",
     paths.vendor + "messageformat/messageformat.js",
     paths.vendor + "angular/angular.js",
     paths.vendor + "angular-route/angular-route.js",
@@ -259,9 +265,8 @@ gulp.task("clear-sass-cache", function() {
 });
 
 gulp.task("sass-compile", [], function() {
-    var sassFiles = paths.sass.concat(themes.current.customScss);
-
-    return gulp.src(sassFiles)
+    return gulp.src(paths.sass)
+        .pipe(addsrc.append(themes.current.customScss))
         .pipe(plumber())
         .pipe(insert.prepend('@import "dependencies";'))
         .pipe(cached("sass"))
@@ -292,9 +297,7 @@ gulp.task("css-lint-app", function() {
 });
 
 gulp.task("app-css", function() {
-    var cssFiles = paths.css.concat(themes.current.customCss);
-
-    return gulp.src(cssFiles)
+    return gulp.src(paths.css)
         .pipe(order(paths.css_order, {base: '.'}))
         .pipe(concat("theme-" + themes.current.name + ".css"))
         .pipe(autoprefixer({
@@ -379,8 +382,22 @@ gulp.task("app-loader", function() {
 });
 
 gulp.task("locales", function() {
-    return gulp.src(paths.locales)
+    var plugins = gulp.src(paths.app + "modules/**/locales/*.json")
+        .pipe(rename(function (localeFile) {
+            // rename app/modules/compiles-modules/tg-contrib/locales/locale-en.json
+            // to tg-contrib/locale-en.json
+
+            var pluginPath = path.join(localeFile.dirname, '..');
+            var pluginFolder = pluginPath.split('/').pop();
+
+            localeFile.dirname = pluginFolder;
+        }))
         .pipe(gulp.dest(paths.distVersion + "locales"));
+
+    var core = gulp.src(paths.locales)
+            .pipe(gulp.dest(paths.distVersion + "locales"));
+
+    return mergeStream(plugins, core);
 });
 
 gulp.task("coffee-lint", function () {
@@ -480,7 +497,7 @@ gulp.task("copy-theme-fonts", function() {
 });
 
 gulp.task("copy-images", function() {
-    return gulp.src(paths.app + "/images/**/*")
+    return gulp.src([paths.app + "/images/**/*", paths.app + '/modules/compile-modules/**/images/*'])
         .pipe(gulpif(isDeploy, imagemin({progressive: true})))
         .pipe(gulp.dest(paths.distVersion + "/images/"));
 });
@@ -550,7 +567,7 @@ gulp.task("watch", function() {
     gulp.watch(paths.svg, ["copy-svg"]);
     gulp.watch(paths.coffee, ["app-watch"]);
     gulp.watch(paths.libs, ["jslibs-watch"]);
-    gulp.watch(paths.locales, ["locales"]);
+    gulp.watch([paths.locales, paths.modulesLocales], ["locales"]);
     gulp.watch(paths.images, ["copy-images"]);
     gulp.watch(paths.fonts, ["copy-fonts"]);
 });

@@ -1,0 +1,72 @@
+svg.close.icon.icon-close(href="", title="{{'COMMON.CLOSE' | translate}}")
+    use(xlink:href="#icon-close")
+
+.form
+    h2.title(translate="LIGHTBOX.CHANGE_OWNER.TITLE")
+    fieldset
+        input(
+            type="text",
+            data-maxlength="500",
+            placeholder="{{'LIGHTBOX.ASSIGNED_TO.SEARCH' | translate}}",
+            ng-model="vm.q",
+            ng-change="vm.userSearch()"
+        )
+
+    .assigned-to-list
+        .user-list-single.is-active(ng-if="vm.selected")
+            .user-list-avatar
+                a(
+                    href="#"
+                    title="{{'COMMON.ASSIGNED_TO.TITLE' | translate}}"
+                )
+                    img(ng-src="{{vm.selected.photo}}")
+            a.user-list-name(
+                href=""
+                title="{{vm.selected.full_name_display}}"
+            ) {{vm.selected.full_name_display}}
+
+        .user-list-single.ng-animate-disabled(
+            ng-repeat="user in vm.getUsers()",
+            ng-click="vm.selectUser(user)"
+        )
+            .user-list-avatar
+                a(
+                    href="#"
+                    title="{{'COMMON.ASSIGNED_TO.TITLE' | translate}}"
+                )
+                    img(ng-src="{{user.photo}}")
+            a.user-list-name(
+                href=""
+                title="{{user.full_name_display}}"
+            ) {{user.full_name_display}}
+
+        .more-watchers(ng-if="!vm.q.length")
+            span(translate="COMMON.ASSIGNED_TO.TOO_MANY")
+
+    .add-comment
+        a(
+            href="",
+            class="ng-animate-disabled"
+            ng-if="!vm.commentOpen",
+            ng-click="vm.commentOpen = true"
+            translate="LIGHTBOX.CHANGE_OWNER.ADD_COMMENT"
+        )
+
+        fieldset(ng-if="vm.commentOpen")
+            svg.icon.icon-close(
+                ng-click="vm.commentOpen = false"
+                href="",
+                title="{{'COMMON.CLOSE' | translate}}"
+            )
+                use(xlink:href="#icon-close")
+            label(translate="LIGHTBOX.CHANGE_OWNER.ADD_COMMENT")
+            textarea(ng-model="vm.comment")
+
+    button.button-green.submit-button(
+        tg-loading="vm.loading",
+        ng-click="vm.submit()",
+        ng-disabled="!vm.selected",
+        type="submit",
+        title="{{'LIGHTBOX.CHANGE_OWNER.BUTTON' | translate}}",
+        translate="LIGHTBOX.CHANGE_OWNER.BUTTON"
+    )

@@ -79,7 +79,7 @@
             width: 100%;
         }
         .us-title-text:hover {
-            .icon-edit {
+            .edit {
                 opacity: 1;
                 transition: opacity .3s linear;
             }
@@ -99,13 +99,13 @@
             padding-right: 1rem;
             width: 100%;
         }
-        .icon-edit,
-        .icon-floppy {
-            @extend %large;
-            color: $gray-light;
+        .edit,
+        .save {
+            cursor: pointer;
+            fill: $gray-light;
             margin-left: .5rem;
         }
-        .icon-edit {
+        .edit {
             opacity: 0;
         }
         .us-related-task {
@@ -167,8 +167,9 @@
     position: absolute;
     right: 1rem;
     top: 1rem;
-    a {
-        @extend %xlarge;
+    svg {
+        @include svg-size(1.2rem);
+        fill: currentColor;
     }
 }
 
@@ -202,6 +203,7 @@
     &:hover {
         .view-description {
             .edit {
+
                 opacity: 1;
                 top: -1.5rem;
                 transition: all .2s linear;
@@ -240,23 +242,28 @@
         }
     }
     .edit {
-        color: $grayer;
+        cursor: pointer;
+        fill: $gray;
     }
     .view-description {
         .edit {
             background: $whitish;
+            height: 2rem;
             left: 0;
             opacity: 0;
             padding: .2rem .5rem;
             position: absolute;
             top: 0;
             transition: all .2s linear;
+            width: 2rem;
         }
     }
     .edit-description {
         margin-bottom: 2rem;
         .save {
-            top: .4rem;
+            cursor: pointer;
+            position: relative;
+            top: .3rem;
         }
         .edit {
             position: absolute;

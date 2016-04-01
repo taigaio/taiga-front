@@ -2,7 +2,7 @@
     "COMMON": {
         "YES": "Sì",
         "NO": "No",
-        "OR": "or",
+        "OR": "o",
         "LOADING": "Caricamento...",
         "LOADING_PROJECT": "Stiamo caricando il progetto...",
         "DATE": "DD MMM YYYY",
@@ -22,8 +22,8 @@
         "BLOCK_TITLE": "Block this item for example if it has a dependency that can not be satisfied",
         "BLOCKED": "Bloccato",
         "UNBLOCK": "Sblocca",
-        "UNBLOCK_TITLE": "Unblock this item",
-        "BLOCKED_NOTE": "Why is this blocked?",
+        "UNBLOCK_TITLE": "Sblocca questo elemento",
+        "BLOCKED_NOTE": "Perché questo compito è bloccato?",
         "BLOCKED_REASON": "Spiega il motivo",
         "CREATED_BY": "Creato da {{fullDisplayName}}",
         "FROM": "da",
@@ -41,7 +41,8 @@
         "IOCAINE_TEXT": "Sei stremato? Assicurati che gli altri lo sappiano cliccando su 'aspirina' quando stai lavorando su un compito che ti affatica. Ma non demordere, ricordati: si può migliorare solo se di tanto in tanto si accettano sfide extra!",
         "CLIENT_REQUIREMENT": "Requisito del Cliente è un nuovo requisito che non era stato previsto ed ora è stato richiesto come requisito del progetto",
         "TEAM_REQUIREMENT": "Requisito del Team è un requisito che deve esistere nel progetto ma non deve avere costi per il cliente",
-        "CAPSLOCK_WARNING": "Attento! stai scrivendo in maiuscolo e questo input è sensibile alle maiuscole..",
+        "OWNER": "Project Owner",
+        "CAPSLOCK_WARNING": "Be careful! You are using capital letters in an input field that is case sensitive.",
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Questo valore non è valido.",
             "TYPE_EMAIL": "Questo valore dovrebbe corrispondere ad una mail valida",
@@ -65,7 +66,9 @@
             "MIN_CHECK": "Devi selezionare almeno %s scelte.",
             "MAX_CHECK": "Devi selezionare la scelta %s o meno.",
             "RANGE_CHECK": "Devi selezionare tra %s e %s scelta.",
-            "EQUAL_TO": "Il valore dovrebbe essere uguale"
+            "EQUAL_TO": "Il valore dovrebbe essere uguale",
+            "LINEWIDTH": "One or more lines is perhaps too long. Try to keep under %s characters.",
+            "PIKADAY": "Invalid date format, please use DD MMM YYYY (like 23 Mar 1984)"
         },
         "PICKERDATE": {
             "FORMAT": "DD MMM YYYY",
@@ -315,7 +318,8 @@
         "PLACEHOLDER_FIELD": "Nome utente o email",
         "ACTION_RESET_PASSWORD": "Reimposta la password",
         "LINK_CANCEL": "Fa niente dai, riportami indietro. Penso di ricordarmela.",
-        "SUCCESS": "<strong>Controlla la tua posta!</strong><br />Ti abbiamo inviato una email con le istruzioni per reimpostare la password",
+        "SUCCESS_TITLE": "Check your inbox!",
+        "SUCCESS_TEXT": "We sent you an email with the instructions to set a new password",
         "ERROR": "Secondo i nostri Oompa Loompa, non sei ancora registrato."
     },
     "CHANGE_PASSWORD": {
@@ -373,7 +377,6 @@
         "DEPRECATED_FILE": "Deprecato?",
         "ADD": "Aggiungi un nuovo allegato. {{maxFileSizeMsg}}",
         "DROP": "Rilascia qui l'allegato!",
-        "MAX_FILE_SIZE": "[Dimensione max. {{maxFileSize}}]",
         "SHOW_DEPRECATED": "+ visualizza allegati deprecati",
         "HIDE_DEPRECATED": "- nascondi allegati deprecati",
         "COUNT_DEPRECATED": "({{ counter }} deprecati)",
@@ -406,7 +409,9 @@
             "TITLE": "Gestisci membri",
             "PAGE_TITLE": "Webhooks - {{projectName}}",
             "ADD_BUTTON": "Nuovo Membro",
-            "ADD_BUTTON_TITLE": "Aggiungi un nuovo membro"
+            "ADD_BUTTON_TITLE": "Aggiungi un nuovo membro",
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_ADMIN": "Unfortunately, this project has reached its limit of <strong>({{members}})</strong> allowed members.",
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "This project has reached its limit of <strong>({{members}})</strong> allowed members. If you would like to increase that limit please contact the administrator."
         },
         "PROJECT_EXPORT": {
             "TITLE": "Esporta",
@@ -428,6 +433,10 @@
             "DISABLE": "Disabilita",
             "BACKLOG": "Backlog",
             "BACKLOG_DESCRIPTION": "Amministra le storie degli utenti per mantenere una visione organizzata dei lavori in arrivo e di quelli ad alta priorità ",
+            "NUMBER_SPRINTS": "Expected number of sprints",
+            "NUMBER_SPRINTS_HELP": "0 for an undetermined number",
+            "NUMBER_US_POINTS": "Expected total of story points",
+            "NUMBER_US_POINTS_HELP": "0 for an undetermined number",
             "KANBAN": "Kanban",
             "KANBAN_DESCRIPTION": "Organizza in modo semplice il tuo progetto con questa board",
             "ISSUES": "problemi",
@@ -435,9 +444,9 @@
             "WIKI": "Wiki",
             "WIKI_DESCRIPTION": "Aggiungi, modifica o elimina i contenuti in collaborazione con gli altri. E' il posto giusto per la documentazione del tuo progetto",
             "MEETUP": "Incontro",
-            "MEETUP_DESCRIPTION": "Scegli il tuo sistema di videoconferenza. Anche gli sviluppatori hanno bisogno di qualche contatto faccia a faccia. ",
+            "MEETUP_DESCRIPTION": "Choose your videoconference system.",
             "SELECT_VIDEOCONFERENCE": "Seleziona un sistema di videoconferenza",
-            "SALT_CHAT_ROOM": "Se preferisci puoi aggiungere un valore sale al nome della chat room",
+            "SALT_CHAT_ROOM": "Add a prefix to the chatroom name",
             "JITSI_CHAT_ROOM": "Jitsi",
             "APPEARIN_CHAT_ROOM": "AppearIn",
             "TALKY_CHAT_ROOM": "Talky",
@@ -449,22 +458,31 @@
             "PROJECT_DETAILS": "Dettagli progetto",
             "PROJECT_NAME": "Nome progetto",
             "PROJECT_SLUG": "Progetto lumaca",
-            "NUMBER_SPRINTS": "Numero di sprint (0 come quantità indeterminata)",
-            "NUMBER_US_POINTS": "Numero di punti delle storie utente (0 come quantità indeterminata)",
             "TAGS": "Tag",
             "DESCRIPTION": "Descrizione",
             "RECRUITING": "Il progetto cerca persone?",
             "RECRUITING_MESSAGE": "Chi stai cercando?",
             "RECRUITING_PLACEHOLDER": "Definisci il profilo che stai cercando",
             "PUBLIC_PROJECT": "Progetto pubblico",
-            "PUBLIC_PROJECT_DESC": "Gli utenti possono cercare e vedere il tuo progetto",
             "PRIVATE_PROJECT": "Progetto privato",
-            "PRIVATE_PROJECT_DESC": "Di default, il progetto sarà nascosto al pubblico",
             "PRIVATE_OR_PUBLIC": "Quale è la differenza tra progetto privato e pubblico?",
             "DELETE": "Elimina questo progetto",
             "LOGO_HELP": "L'immagine sarà scalata a 80x80px.",
             "CHANGE_LOGO": "Cambia Logo",
-            "ACTION_USE_DEFAULT_LOGO": "Usa l'immagine di default"
+            "ACTION_USE_DEFAULT_LOGO": "Usa l'immagine di default",
+            "MAX_PRIVATE_PROJECTS": "You've reached the maximum number of private projects allowed by your current plan",
+            "MAX_PRIVATE_PROJECTS_MEMBERS": "The maximum number of members for private projects has been exceeded",
+            "MAX_PUBLIC_PROJECTS": "Unfortunately, you've reached the maximum number of public projects allowed by your current plan",
+            "MAX_PUBLIC_PROJECTS_MEMBERS": "The project exceeds your maximum number of members for public projects",
+            "PROJECT_OWNER": "Project owner",
+            "REQUEST_OWNERSHIP": "Request ownership",
+            "REQUEST_OWNERSHIP_CONFIRMATION_TITLE": "Do you want to become the new project owner?",
+            "REQUEST_OWNERSHIP_DESC": "Request that current project owner {{name}} transfer ownership of this project to you.",
+            "REQUEST_OWNERSHIP_BUTTON": "Richiesta",
+            "REQUEST_OWNERSHIP_SUCCESS": "We'll notify the project owner",
+            "CHANGE_OWNER": "Change owner",
+            "CHANGE_OWNER_SUCCESS_TITLE": "Ok, your request has been sent!",
+            "CHANGE_OWNER_SUCCESS_DESC": "We will notify you by email if the project ownership request is accepted or declined"
         },
         "REPORTS": {
             "TITLE": "Rapporti",
@@ -495,7 +513,8 @@
             "ISSUE_ADD": "Aggiungi un campo personalizzato alla criticitá",
             "FIELD_TYPE_TEXT": "Testo",
             "FIELD_TYPE_MULTI": "Multilinea",
-            "FIELD_TYPE_DATE": "Data"
+            "FIELD_TYPE_DATE": "Data",
+            "FIELD_TYPE_URL": "Url"
         },
         "PROJECT_VALUES": {
             "PAGE_TITLE": "{{sectionName}} - Valori di progetto - {{projectName}}",
@@ -543,7 +562,7 @@
             "COUNT_MEMBERS": "{{ role.members_count }} membri con questo ruolo",
             "TITLE_DELETE_ROLE": "Elimina ruolo",
             "REPLACEMENT_ROLE": "Tutti gli utenti con questo ruolo saranno spostati a ",
-            "WARNING_DELETE_ROLE": "<strong>Attento, tutte le stime dei ruoli saranno eliminate</strong>",
+            "WARNING_DELETE_ROLE": "Be careful! All role estimations will be removed",
             "ERROR_DELETE_ALL": "Non puoi cancellare tutti i valori",
             "EXTERNAL_USER": "Utente esterno"
         },
@@ -671,6 +690,24 @@
         },
         "SUBMENU_THIDPARTIES": {
             "TITLE": "Servizi"
+        },
+        "PROJECT_TRANSFER": {
+            "DO_YOU_ACCEPT_PROJECT_OWNERNSHIP": "Would you like to become the new project owner?",
+            "PRIVATE": "Private",
+            "ACCEPTED_PROJECT_OWNERNSHIP": "Congratulations! You're now the new project owner.",
+            "REJECTED_PROJECT_OWNERNSHIP": "OK. We'll contact the current project owner",
+            "ACCEPT": "Accetta",
+            "REJECT": "Reject",
+            "PROPOSE_OWNERSHIP": "<strong>{{owner}}</strong>, the current owner of the project <strong>{{project}}</strong> has asked that you become the new  project owner.",
+            "ADD_COMMENT_QUESTION": "Would you like to send a question to the project owner?",
+            "ADD_COMMENT": "Would you like to add a comment for the project owner?",
+            "UNLIMITED_PROJECTS": "Unlimited",
+            "OWNER_MESSAGE": {
+                "PRIVATE": "Please remember that you can own up to <strong>{{maxProjects}}</strong> private projects. You currently own <strong>{{currentProjects}}</strong> private projects",
+                "PUBLIC": "Please remember that you can own up to <strong>{{maxProjects}}</strong> public projects. You currently own <strong>{{currentProjects}}</strong> public projects"
+            },
+            "CANT_BE_OWNED": "At the moment you cannot become an owner of a project of this type. If you would like to become the owner of this project, please contact the administrator so they change your account settings to enable project ownership.",
+            "CHANGE_MY_PLAN": "Change my plan"
         }
     },
     "USER": {
@@ -731,6 +768,11 @@
         "FANS_COUNTER_TITLE": "{total, plural, one{un follower} other{# followers}}",
         "WATCHERS_COUNTER_TITLE": "{total, plural, one{un osservatore} other{# osservatori}} ",
         "MEMBERS_COUNTER_TITLE": "{total, plural, one{un membro} other{# membri}}",
+        "BLOCKED_PROJECT": {
+            "BLOCKED": "Blocked project",
+            "THIS_PROJECT_IS_BLOCKED": "This project is temporarily blocked",
+            "TO_UNBLOCK_CONTACT_THE_ADMIN_STAFF": "In order to unblock your projects, contact the administrator."
+        },
         "STATS": {
             "PROJECT": "progetto<br/> punti",
             "DEFINED": "Definiti <br/> punti",
@@ -777,6 +819,7 @@
             "CHANGE_PASSWORD": "Cambia password",
             "DASHBOARD_TITLE": "Dashboard",
             "DISCOVER_TITLE": "Scopri i progetti più seguiti",
+            "NEW_ITEM": "Nuovo",
             "DISCOVER": "Scopri",
             "ACTION_REORDER": "Usa drag & drop per riordinare"
         },
@@ -791,7 +834,32 @@
             "ERROR_TOO_MANY_REQUEST": "Scusaci, i nostri Oompa Loompa sono di nuovo occupati. Riprova di nuovo in qualche minuto.",
             "ERROR_MESSAGE": "I nostri Oompa Loompa hanno qualche problema ad importare il dump dei tuoi dati: {{error_message}}",
             "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) è troppo pesante per i nostri Oompa Loompa; falli contenti, prova con una dimensione minore di ({{maxFileSize}})",
-            "SYNC_SUCCESS": "Il tuo progetto è stato importato con successo"
+            "SYNC_SUCCESS": "Il tuo progetto è stato importato con successo",
+            "PROJECT_RESTRICTIONS": {
+                "PROJECT_MEMBERS_DESC": "The project you are trying to import has {{members}} members, unfortunately, your current plan allows for a maximum of {{max_memberships}} members per project. If you would like to increase that limit please contact the administrator.",
+                "PRIVATE_PROJECTS_SPACE": {
+                    "TITLE": "Unfortunately, your current plan does not allow for additional private projects",
+                    "DESC": "The project you are trying to import is private. Unfortunately, your current plan does not allow for additional private projects."
+                },
+                "PUBLIC_PROJECTS_SPACE": {
+                    "TITLE": "Unfortunately, your current plan does not allow for additional private projects",
+                    "DESC": "The project you are trying to import is public. Unfortunately, your current plan does not allow additional public projects."
+                },
+                "PRIVATE_PROJECTS_MEMBERS": {
+                    "TITLE": "Your current plan allows for a maximum of {{max_memberships}} members per private project"
+                },
+                "PUBLIC_PROJECTS_MEMBERS": {
+                    "TITLE": "Your current plan allows for a maximum of {{max_memberships}} members per public project."
+                },
+                "PRIVATE_PROJECTS_SPACE_MEMBERS": {
+                    "TITLE": "Unfortunately your current plan doesn't allow additional private projects or an increase of more than {{max_memberships}} members per private project",
+                    "DESC": "The project that you are trying to import is private and has {{members}} members."
+                },
+                "PUBLIC_PROJECTS_SPACE_MEMBERS": {
+                    "TITLE": "Unfortunately your current plan doesn't allow additional public projects or an increase of more than {{max_memberships}} members per public project",
+                    "DESC": "The project that you are trying to import is public and has more than {{members}} members."
+                }
+            }
         },
         "LIKE_BUTTON": {
             "LIKE": "Mi piace",
@@ -819,8 +887,11 @@
         "DELETE_ACCOUNT": {
             "SECTION_NAME": "Elimina Account Taiga",
             "CONFIRM": "Sei sicuro di voler eliminare il tuo account Taiga?",
-            "SUBTITLE": "Ci mancherai! :-(",
-            "NEWSLETTER_LABEL_TEXT": "Non voglio più ricevere le vostre newsletter"
+            "NEWSLETTER_LABEL_TEXT": "Non voglio più ricevere le vostre newsletter",
+            "CANCEL": "Back to settings",
+            "ACCEPT": "Delete account",
+            "BLOCK_PROJECT": "Note that all the projects you own projects will be <strong>blocked</strong> after you delete your account. If you do want a project blocked, transfer ownership to another member of each project prior to deleting your account.",
+            "SUBTITLE": "Sorry to see you go. We'll be here if you should ever consider us again! :("
         },
         "DELETE_PROJECT": {
             "TITLE": "Elimina progetto",
@@ -876,7 +947,25 @@
         },
         "CREATE_MEMBER": {
             "PLACEHOLDER_INVITATION_TEXT": "(facoltativo) aggiungi un testo personalizzato all'invito. Di qualcosa di simpatico ai tuoi nuovi membri ;-)",
-            "PLACEHOLDER_TYPE_EMAIL": "Scrivi una mail"
+            "PLACEHOLDER_TYPE_EMAIL": "Scrivi una mail",
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "Unfortunately, this project can't have more than <strong>{{maxMembers}}</strong> members.<br> If you would like to increase the current limit, please contact the administrator.",
+            "LIMIT_USERS_WARNING_MESSAGE": "Unfortunately, this project can't have more than <strong>{{maxMembers}}</strong> members."
+        },
+        "LEAVE_PROJECT_WARNING": {
+            "TITLE": "Unfortunately, this project can't be left without an owner",
+            "CURRENT_USER_OWNER": {
+                "DESC": "You are the current owner of this project. Before leaving, please transfer ownership to someone else.",
+                "BUTTON": "Change the project owner"
+            },
+            "OTHER_USER_OWNER": {
+                "DESC": "Unfortunately, you can't delete a member who is also the current project owner. First, please assign a new project owner.",
+                "BUTTON": "Request project owner change"
+            }
+        },
+        "CHANGE_OWNER": {
+            "TITLE": "Who do you want to be the new project owner?",
+            "ADD_COMMENT": "Add comment",
+            "BUTTON": "Ask this project member to become the new project owner"
         }
     },
     "US": {
@@ -914,7 +1003,7 @@
         "TYPE_NEW_COMMENT": "Scrivi un nuovo commento qui",
         "SHOW_DELETED": "Visualizza commento cancellato",
         "HIDE_DELETED": "Nascondi commento cancellato",
-        "DELETE": "Delete comment",
+        "DELETE": "Cancella commento",
         "RESTORE": "Ripristina commento"
     },
     "ACTIVITY": {
@@ -1304,12 +1393,18 @@
         }
     },
     "WIZARD": {
-        "SECTION_TITLE_CHOOSE_TEMPLATE": "Scegli il tema",
-        "CHOOSE_TEMPLATE_TEXT": "Quale template si adatta meglio al tuo progetto?",
         "SECTION_TITLE_CREATE_PROJECT": "Crea Progetto",
         "CREATE_PROJECT_TEXT": "Nuovo di zecca. Vai così!",
-        "PROGRESS_TEMPLATE_SELECTION": "Selezione del template",
-        "PROGRESS_NAME_DESCRIPTION": "Nome e descrizione"
+        "CHOOSE_TEMPLATE": "Which template fits your project best?",
+        "CHOOSE_TEMPLATE_TITLE": "More info about project templates",
+        "CHOOSE_TEMPLATE_INFO": "More info",
+        "PROJECT_DETAILS": "Project Details",
+        "PUBLIC_PROJECT": "Public Project",
+        "PRIVATE_PROJECT": "Private Project",
+        "CREATE_PROJECT": "Crea progetto",
+        "MAX_PRIVATE_PROJECTS": "You've reached the maximum number of private projects",
+        "MAX_PUBLIC_PROJECTS": "Unfortunately, you've reached the maximum number of public projects",
+        "CHANGE_PLANS": "change plans"
     },
     "WIKI": {
         "PAGE_TITLE": "{{wikiPageName}} - Wiki - {{projectName}}",
@@ -1446,7 +1541,7 @@
         }
     },
     "DISCOVER": {
-        "PAGE_TITLE": "Discover projects - Taiga",
+        "PAGE_TITLE": "Scopri i progetti - Taiga",
         "PAGE_DESCRIPTION": "Searchable directory of Public Projects in Taiga. Explore backlogs, timelines, issues, and teams. Check out the most liked or most active projects. Filter by Kanban or Scrum.",
         "DISCOVER_TITLE": "Scopri progetti",
         "DISCOVER_SUBTITLE": "{projects, plural, one{Un progetto pubblico da scoprire} other{# progetti pubblici da scoprire}}",
@@ -1470,7 +1565,7 @@
             "CLEAR": "Cancella filtri"
         },
         "SEARCH": {
-            "PAGE_TITLE": "Search - Discover projects - Taiga",
+            "PAGE_TITLE": "Cerca - Scopri i progetti - Taiga",
             "PAGE_DESCRIPTION": "Searchable directory of Public Projects in Taiga. Explore backlogs, timelines, issues, and teams. Check out the most liked or most active projects. Filter by Kanban or Scrum.",
             "INPUT_PLACEHOLDER": "Inserisci testo...",
             "ACTION_TITLE": "Cerca",

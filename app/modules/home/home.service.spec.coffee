@@ -128,6 +128,7 @@ describe "tgHome", ->
                             project: '1',
                             url: '/testing-project/us/1',
                             projectName: 'fake1',
+                            blockedProject: undefined,
                             _name: 'userstories'
                         }]
                         tasks: [{
@@ -136,6 +137,7 @@ describe "tgHome", ->
                             project: '1',
                             url: '/testing-project/tasks/1',
                             projectName: 'fake1',
+                            blockedProject: undefined,
                             _name: 'tasks'
                         }]
                         issues: [{
@@ -144,6 +146,7 @@ describe "tgHome", ->
                             project: '1',
                             url: '/testing-project/issues/1',
                             projectName: 'fake1',
+                            blockedProject: undefined,
                             _name: 'issues'
                         }]
                     }
@@ -154,6 +157,7 @@ describe "tgHome", ->
                             project: '1',
                             url: '/testing-project/us/1',
                             projectName: 'fake1',
+                            blockedProject: undefined,
                             _name: 'userstories'
                         }]
                         tasks: [{
@@ -162,6 +166,7 @@ describe "tgHome", ->
                             project: '1',
                             url: '/testing-project/tasks/1',
                             projectName: 'fake1',
+                            blockedProject: undefined,
                             _name: 'tasks'
                         }]
                         issues: [{
@@ -170,6 +175,7 @@ describe "tgHome", ->
                             project: '1',
                             url: '/testing-project/issues/1',
                             projectName: 'fake1',
+                            blockedProject: undefined,
                             _name: 'issues'
                         }]
                     }

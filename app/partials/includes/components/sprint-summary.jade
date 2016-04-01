@@ -13,7 +13,8 @@ div.summary.large-summary
             span.description(translate="BACKLOG.SPRINT_SUMMARY.COMPLETED_POINTS")
 
         div.summary-stats
-            span.icon.icon-bulk
+            svg.icon.icon-bulk
+                use(xlink:href="#icon-bulk")
             span.number(ng-bind="stats.openTasks|default:'--'")
             span.description(translate="BACKLOG.SPRINT_SUMMARY.OPEN_TASKS")
         div.summary-stats
@@ -21,9 +22,11 @@ div.summary.large-summary
             span.description(translate="BACKLOG.SPRINT_SUMMARY.CLOSED_TASKS")
 
         div.summary-stats(title="{{'COMMON.IOCAINE_TEXT' | translate}}")
-            span.icon.icon-iocaine
+            svg.icon.icon-iocaine
+                use(xlink:href="#icon-iocaine")
             span.number(ng-bind="stats.iocaine_doses|default:'--'")
             span.description(translate="BACKLOG.SPRINT_SUMMARY.IOCAINE_DOSES")
             
     div.stats.toggle-analytics-visibility(title="{{'BACKLOG.SPRINT_SUMMARY.SHOW_STATISTICS_TITLE' | translate}}")
-        include ../../../svg/graph.svg
+        svg.icon.icon-graph
+            use(xlink:href="#icon-graph")

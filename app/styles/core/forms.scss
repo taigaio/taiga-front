@@ -8,6 +8,7 @@ fieldset {
 input[type="text"],
 input[type="number"],
 input[type="password"],
+input[type="url"],
 input[type="email"],
 input[type="date"],
 input[type="password"],
@@ -40,9 +41,11 @@ textarea {
     }
 }
 .icon-capslock {
-    bottom: .6rem;
-    color: $gray;
+    bottom: .8rem;
     display: none;
+    fill: $gray;
+    height: .9rem;
     position: absolute;
     right: 1rem;
+    width: .9rem;
 }

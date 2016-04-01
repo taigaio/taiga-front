@@ -12,25 +12,23 @@
     display: inline-flex;
     position: relative;
     .track-inner {
-        align-items: stretch;
+        align-items: center;
         background: $whitish;
         border-radius: 4px 0 0 4px;
         display: flex;
         flex: 1;
         flex-basis: 140px;
+        justify-content: flex-start;
         margin-right: .1rem;
         min-width: 140px;
         &:hover {
             background: darken($whitish, 5%);
             transition: background .3s;
         }
-        span {
-            align-self: center;
-        }
-        .icon-arrow-up {
-            margin-left: auto;
-            padding: 0 .5rem;
-            transform: rotate(180deg);
+        .icon-arrow-down {
+            height: .6rem;
+            margin: 0 .5rem 0 auto;
+            width: .6rem;
         }
     }
     &:hover {
@@ -41,7 +39,7 @@
             background: rgba($primary-light, .2);
         }
         .track-icon {
-            path {
+            svg {
                 fill: $primary;
             }
         }
@@ -53,13 +51,9 @@
     .track-icon {
         padding: .3rem .6rem .3rem .75rem;
         svg {
-            height: 1.1rem;
+            fill: $grayer;
             position: relative;
             top: 2px;
-            width: 1.1rem;
-        }
-        path {
-            fill: $grayer;
         }
     }
     .track-button-counter {
@@ -79,7 +73,7 @@
                 color: $whitish;
                 transition: background .3s;
             }
-            path {
+            svg {
                 fill: $red-light;
             }
         }
@@ -121,7 +115,7 @@
     .watch-check {
         height: 1.25rem;
         width: 1.25rem;
-        path {
+        svg {
             fill: $primary-light;
         }
     }
@@ -155,7 +149,7 @@
             background: rgba($primary-light, .2);
             color: $primary;
             transition: all .3s;
-            path {
+            svg {
                 fill: $primary;
             }
         }
@@ -163,22 +157,18 @@
             background: $red;
             color: $whitish;
             svg {
+                fill: $red-light;
                 transform: rotate(180deg);
                 transition: all .3s;
-            }
-            path {
-                fill: $red-light;
             }
         }
     }
     svg {
+        fill: $gray-light;
         height: 1rem;
         width: 1rem;
     }
     span {
         display: block;
-    }
-    path {
-        fill: $gray-light;
     }
 }

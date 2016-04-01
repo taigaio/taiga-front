@@ -13,20 +13,29 @@
             margin: 0;
         }
     }
-    .create-options a {
-        &.create-project-btn {
-            margin-right: .25rem;
-            padding: .6rem 2.5rem;
-        }
-        &.import-project-button {
-            padding: .53rem .8rem;
-            &:hover {
-                background: $grayer;
-            }
+    .icon-lock,
+    .icon-badge,
+    .icon-blocked-project {
+        @include svg-size();
+    }
+    .icon-badge {
+        margin-left: .5rem;
+    }
+    .create-project-btn {
+        margin-right: .25rem;
+        padding: .6rem 2.5rem;
+    }
+    .import-project-button {
+        padding: .53rem .8rem;
+        &:hover {
             .icon-upload {
-                margin: 0;
+                fill: $primary-light;
             }
         }
+        .icon-upload {
+            fill: $white;
+        }
+
     }
     .project-list-section {
         display: flex;
@@ -47,10 +56,24 @@
     .list-itemtype-project {
         background: rgba($white, .6);
         &:hover {
-            background: lighten($primary, 63%);
+            background: rgba($primary-light, .1);
             cursor: move;
             transition: background .3s;
             .drag {
+                opacity: 1;
+            }
+        }
+        &.blocked-project {
+            .list-itemtype-project-image,
+            .project-title,
+            .private,
+            .project-description,
+            .icon-badge {
+                opacity: .25;
+            }
+        }
+        &.blocked-project:hover {
+            .icon-drag {
                 opacity: 1;
             }
         }
@@ -63,10 +86,12 @@
         }
     }
     .drag {
-        @extend %large;
         align-self: center;
-        color: $gray-light;
+        fill: $gray-light;
+        height: 1.1rem;
+        margin-right: .5rem;
         opacity: 0;
         transition: opacity .2s;
+        width: 1.1rem;
     }
 }

@@ -28,13 +28,15 @@ describe('discover', () => {
         });
 
         it('rearrange', async () => {
+            let projects = discoverHelper.likedProjects();
+            let discoverCount = await projects.count();
+
             discoverHelper.rearrangeLike(3);
 
             let filterText = await discoverHelper.getLikeFilterText();
-            let projects = discoverHelper.likedProjects();
 
             expect(filterText).to.be.equal('All time');
-            expect(await projects.count()).to.be.equal(5);
+            expect(await projects.count()).to.be.equal(discoverCount);
 
         });
     });
@@ -47,13 +49,15 @@ describe('discover', () => {
         });
 
         it('rearrange', async () => {
+            let projects = discoverHelper.activeProjects();
+            let discoverCount = await projects.count();
+
             discoverHelper.rearrangeActive(3);
 
             let filterText = await discoverHelper.getActiveFilterText();
-            let projects = discoverHelper.activeProjects();
 
             expect(filterText).to.be.equal('All time');
-            expect(await projects.count()).to.be.equal(5);
+            expect(await projects.count()).to.be.equal(discoverCount);
         });
     });
 

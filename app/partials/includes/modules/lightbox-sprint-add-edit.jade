@@ -1,30 +1,57 @@
-a.close(href="", title="{{'COMMON.CLOSE' | translate}}")
-    span.icon.icon-delete
+a.close(
+    href=""
+    title="{{'COMMON.CLOSE' | translate}}"
+)
+    svg.icon.icon-close
+        use(xlink:href="#icon-close")
 
 form
     h2.title(translate="LIGHTBOX.ADD_EDIT_SPRINT.TITLE")
     fieldset
-        input.sprint-name(type="text", name="name",  ng-model="sprint.name",
-                          ng-model-options="{ debounce: 200 }",
-                          data-required="true", data-maxlength="500",
-                          placeholder="{{'LIGHTBOX.ADD_EDIT_SPRINT.PLACEHOLDER_SPRINT_NAME' | translate}}")
+        input.sprint-name(
+            type="text"
+            name="name"
+            ng-model="sprint.name"
+            ng-model-options="{ debounce: 200 }"
+            data-required="true"
+            data-maxlength="500"
+            placeholder="{{'LIGHTBOX.ADD_EDIT_SPRINT.PLACEHOLDER_SPRINT_NAME' | translate}}"
+        )
         label.last-sprint-name
 
     fieldset.dates
         div
-            input.date-start(type="text", name="estimated_start",
-                             ng-model="sprint.estimated_start", data-required="true", tg-date-selector,
-                             placeholder="{{'LIGHTBOX.ADD_EDIT_SPRINT.PLACEHOLDER_SPRINT_START' | translate}}")
+            input.date-start(
+                type="text"
+                name="estimated_start"
+                ng-model="sprint.estimated_start"
+                data-required="true"
+                tg-date-selector
+                placeholder="{{'LIGHTBOX.ADD_EDIT_SPRINT.PLACEHOLDER_SPRINT_START' | translate}}"
+            )
         div
-            input.date-end(type="text", name="estimated_finish",
-                           ng-model="sprint.estimated_finish", data-required="true", tg-date-selector,
-                           placeholder="{{'LIGHTBOX.ADD_EDIT_SPRINT.PLACEHOLDER_SPRINT_END' | translate}}")
+            input.date-end(
+                type="text"
+                name="estimated_finish"
+                ng-model="sprint.estimated_finish"
+                data-required="true"
+                tg-date-selector
+                placeholder="{{'LIGHTBOX.ADD_EDIT_SPRINT.PLACEHOLDER_SPRINT_END' | translate}}"
+            )
 
-    button.button-green.submit-button(type="submit", title="{{'COMMON.CREATE' | translate}}",
-                                      translate="COMMON.CREATE")
+    button.button-green.submit-button(
+        type="submit"
+        title="{{'COMMON.CREATE' | translate}}"
+        translate="COMMON.CREATE"
+    )
 
-    div(tg-check-permission="delete_milestone")
-        span.delete-sprint.hidden(translate)
-            span(translate="LIGHTBOX.ADD_EDIT_SPRINT.ACTION_DELETE_SPRINT")
-            a.icon.icon-delete(href="",
-                               title="{{'LIGHTBOX.ADD_EDIT_SPRINT.TITLE_ACTION_DELETE_SPRINT' | translate}}")
+    a.delete-sprint(
+        tg-check-permission="delete_milestone"
+        href=""
+        title="{{'LIGHTBOX.ADD_EDIT_SPRINT.TITLE_ACTION_DELETE_SPRINT' | translate}}"
+    )
+        span {{'LIGHTBOX.ADD_EDIT_SPRINT.ACTION_DELETE_SPRINT' | translate }}
+        svg.icon.icon-trash(
+            href=""
+        )
+            use(xlink:href="#icon-trash")

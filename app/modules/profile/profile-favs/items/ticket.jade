@@ -1,4 +1,4 @@
-div.list-itemtype-ticket
+div.list-itemtype-ticket(ng-class="{'blocked-project': vm.item.get('project_blocked_code')}")
     a.list-itemtype-avatar(
         href=""
         ng-if="::vm.item.get('assigned_to')"
@@ -38,6 +38,9 @@ div.list-itemtype-ticket
             )
             span.ticket-status(ng-style="::{'color': vm.item.get('status_color')}")
                 | {{:: vm.item.get('status') }}
+            svg.icon.icon-blocked-project(ng-if="vm.item.get('project_blocked_code')")
+                use(xlink:href="#icon-blocked-project")
+                    title(translate="PROJECT.BLOCKED_PROJECT.BLOCKED")
         h2
             span.ticket-id(tg-bo-ref="vm.item.get('ref')")
             a.ticket-title(
@@ -45,36 +48,33 @@ div.list-itemtype-ticket
                 ng-if="::vm.item.get('type') === 'userstory'"
                 tg-nav="project-userstories-detail:project=vm.item.get('project_slug'),ref=vm.item.get('ref')"
                 title="#{{ ::vm.item.get('ref') }} {{ ::vm.item.get('subject') }}"
-            )
-                | {{ ::vm.item.get('subject') }}
+            ) {{ ::vm.item.get('subject') }}
             a.ticket-title(
                 href="#"
                 ng-if="::vm.item.get('type') === 'task'"
                 tg-nav="project-tasks-detail:project=vm.item.get('project_slug'),ref=vm.item.get('ref')"
                 title="#{{ ::vm.item.get('ref') }} {{ ::vm.item.get('subject') }}"
-            )
-                | {{ ::vm.item.get('subject') }}
+            ) {{ ::vm.item.get('subject') }}
             a.ticket-title(
                 href="#"
                 ng-if="::vm.item.get('type') === 'issue'"
                 tg-nav="project-issues-detail:project=vm.item.get('project_slug'),ref=vm.item.get('ref')"
                 title="#{{ ::vm.item.get('ref') }} {{ ::vm.item.get('subject') }}"
-            )
-                | {{ ::vm.item.get('subject') }}
+            ) {{ ::vm.item.get('subject') }}
 
     div.list-itemtype-track
         span.list-itemtype-track-likers(
             ng-class="{'active': vm.item.get('is_voter')}",
             title="{{ 'COMMON.VOTE_BUTTON.COUNTER_TITLE'|translate:{total:vm.item.get(\"total_voters\")||0}:'messageformat' }}"
         )
-            span.icon
-                include ../../../../svg/upvote.svg
+            svg.icon.icon-upvote
+                use(xlink:href="#icon-upvote")
             span {{ ::vm.item.get('total_voters') }}
 
         span.list-itemtype-track-watchers(
             ng-class="{'active': vm.item.get('is_watcher')}"
             title="{{ 'COMMON.WATCH_BUTTON.COUNTER_TITLE'|translate:{total:vm.item.get(\"total_watchers\")||0}:'messageformat' }}"
         )
-            span.icon
-                include ../../../../svg/watch.svg
+            svg.icon.icon-watch
+                use(xlink:href="#icon-watch")
             span {{ ::vm.item.get('total_watchers') }}

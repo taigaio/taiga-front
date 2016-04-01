@@ -16,11 +16,10 @@ div.wrapper
                     .intro-title
                         h1
                             span.project-name {{::vm.project.get("name")}}
-                        span.private(
-                            ng-if="::vm.project.get('is_private')"
-                            title="{{'PROJECT.PRIVATE' | translate}}"
-                        )
-                            include ../../../svg/lock.svg
+                                
+                        svg.icon.icon-lock.private(ng-if="::vm.project.get('is_private')")
+                            use(xlink:href="#icon-lock")
+                                title {{'PROJECT.PRIVATE' | translate}}"
 
                     div.track-buttons-container(ng-if="vm.user")
                         tg-like-project-button(project="vm.project")
@@ -31,15 +30,15 @@ div.wrapper
                             span.list-itemtype-track-likers(
                                 title="{{ 'PROJECT.LIKE_BUTTON.COUNTER_TITLE'|translate:{total:vm.project.get(\"total_fans\")||0}:'messageformat' }}"
                             )
-                                span.icon
-                                    include ../../../svg/like.svg
+                                svg.icon.icon-like
+                                    use(xlink:href="#icon-like")
                                 span {{ ::vm.project.get('total_fans') }}
 
                             span.list-itemtype-track-watchers(
                                 title="{{ 'PROJECT.WATCH_BUTTON.COUNTER_TITLE'|translate:{total:vm.project.get(\"total_watchers\")||0}:'messageformat' }}"
                             )
-                                span.icon
-                                    include ../../../svg/watch.svg
+                                svg.icon.icon-watche
+                                    use(xlink:href="#icon-watch")
                                 span {{ ::vm.project.get('total_watchers') }}
 
                 p.description {{vm.project.get('description')}}
@@ -62,7 +61,7 @@ div.wrapper
                         title="{{'PROJECT.LOOKING_FOR_PEOPLE' | translate}}"
                     )
                     h3 {{'PROJECT.LOOKING_FOR_PEOPLE' | translate}}
-                    p(ng-if="vm.project.get('looking_for_people_note')") {{::vm.project.get('looking_for_people_note')}}"
+                    p(ng-if="vm.project.get('looking_for_people_note')") {{::vm.project.get('looking_for_people_note')}}
                 h2.title {{"PROJECT.SECTION.TEAM" | translate}}
                 ul.involved-team
                     li(tg-repeat="member in vm.members")
@@ -71,3 +70,6 @@ div.wrapper
                             title="{{::member.get('full_name')}}"
                         )
                             img(ng-src="{{::member.get('photo')}}", alt="{{::member.get('full_name')}}")
+                            svg.icon.icon-badge(ng-if="member.get('id') == vm.project.getIn(['owner', 'id'])")
+                                use(xlink:href="#icon-badge")
+                                    title(translate="COMMON.OWNER")

@@ -36,7 +36,7 @@ class ContribController extends taiga.Controller
     ]
 
     constructor: (@rootScope, @scope, @params, @repo, @rs, @confirm) ->
-        @scope.currentPlugin = _.first(_.where(@rootScope.adminPlugins, {"slug": @params.plugin}))
+        @scope.currentPlugin = _.head(_.filter(@rootScope.adminPlugins, {"slug": @params.plugin}))
         @scope.projectSlug = @params.pslug
 
         promise = @.loadInitialData()
@@ -56,3 +56,16 @@ class ContribController extends taiga.Controller
         return @.loadProject()
 
 module.controller("ContribController", ContribController)
+
+
+class ContribUserSettingsController extends taiga.Controller
+    @.$inject = [
+        "$rootScope",
+        "$scope",
+        "$routeParams"
+    ]
+
+    constructor: (@rootScope, @scope, @params) ->
+        @scope.currentPlugin = _.head(_.filter(@rootScope.userSettingsPlugins, {"slug": @params.plugin}))
+
+module.controller("ContribUserSettingsController", ContribUserSettingsController)

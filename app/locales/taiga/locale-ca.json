@@ -41,7 +41,8 @@
         "IOCAINE_TEXT": "Un poc saturat per una tasca? Fes-ho saber als teus companys clicant a Iocaina quan edites la tasca. Es possible ser inmune a aquesta (fictícia) poció mortal consumint xicotetes dòsis poc a poc, així com es possible millorar amb xicotets nous desafiaments!",
         "CLIENT_REQUIREMENT": "Client requirement is new requirement that was not previously expected and it is required to be part of the project",
         "TEAM_REQUIREMENT": "Team requirement is a requirement that must exist in the project but should have no cost for the client",
-        "CAPSLOCK_WARNING": "Be careful! You're writing with capital letters and this input is case sensitive.",
+        "OWNER": "Project Owner",
+        "CAPSLOCK_WARNING": "Be careful! You are using capital letters in an input field that is case sensitive.",
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Aquest valor pareix invàlid.",
             "TYPE_EMAIL": "Deu ser un correu vàlid.",
@@ -65,7 +66,9 @@
             "MIN_CHECK": "You must select at least %s choices.",
             "MAX_CHECK": "Heu de seleccionar la opció %s o inferior.",
             "RANGE_CHECK": "Heu de seleccionar entre les opcions %s i %s.",
-            "EQUAL_TO": "Aquest valor hauria de ser el mateix."
+            "EQUAL_TO": "Aquest valor hauria de ser el mateix.",
+            "LINEWIDTH": "One or more lines is perhaps too long. Try to keep under %s characters.",
+            "PIKADAY": "Invalid date format, please use DD MMM YYYY (like 23 Mar 1984)"
         },
         "PICKERDATE": {
             "FORMAT": "DD MMM YYYY",
@@ -315,7 +318,8 @@
         "PLACEHOLDER_FIELD": "Nom d'usuari o correu electrònic",
         "ACTION_RESET_PASSWORD": "Resetejar contrasenya",
         "LINK_CANCEL": "No, porta'm enrere, crec que ja ho recordo.",
-        "SUCCESS": "<strong>Mira el teu correu!</strong><br /> Hem enviat un correu amb les instrucciones per a setejar una nova contrasenya.",
+        "SUCCESS_TITLE": "Check your inbox!",
+        "SUCCESS_TEXT": "We sent you an email with the instructions to set a new password",
         "ERROR": "Segons els nostres Oompa Loompas, no estàs registrat encara."
     },
     "CHANGE_PASSWORD": {
@@ -373,7 +377,6 @@
         "DEPRECATED_FILE": "Obsolet?",
         "ADD": "Afegeix un nou adjunt. {{maxFileSizeMsg}}",
         "DROP": "Deixa els adjunts ací",
-        "MAX_FILE_SIZE": "[Max. grandària:  {{maxFileSize}}]",
         "SHOW_DEPRECATED": "+ mostra els adjunts obsolets",
         "HIDE_DEPRECATED": "- Amagar els adjunts obsolets",
         "COUNT_DEPRECATED": "({{ counter }} obsolet)",
@@ -406,7 +409,9 @@
             "TITLE": "Gestió de Membres",
             "PAGE_TITLE": "Afiliacions - {{projectName}}",
             "ADD_BUTTON": "+ Nou membre",
-            "ADD_BUTTON_TITLE": "Afegir nou membre"
+            "ADD_BUTTON_TITLE": "Afegir nou membre",
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_ADMIN": "Unfortunately, this project has reached its limit of <strong>({{members}})</strong> allowed members.",
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "This project has reached its limit of <strong>({{members}})</strong> allowed members. If you would like to increase that limit please contact the administrator."
         },
         "PROJECT_EXPORT": {
             "TITLE": "Exportar",
@@ -428,6 +433,10 @@
             "DISABLE": "Desactiva",
             "BACKLOG": "Backlog",
             "BACKLOG_DESCRIPTION": "Organitza les històries d'usuari per a mantindre una vista organitzada i prioritzada del treball.",
+            "NUMBER_SPRINTS": "Expected number of sprints",
+            "NUMBER_SPRINTS_HELP": "0 for an undetermined number",
+            "NUMBER_US_POINTS": "Expected total of story points",
+            "NUMBER_US_POINTS_HELP": "0 for an undetermined number",
             "KANBAN": "Kanban",
             "KANBAN_DESCRIPTION": "Organitza els projectes de un mode sencill amb aquest tauler",
             "ISSUES": "Incidències",
@@ -435,9 +444,9 @@
             "WIKI": "Wiki",
             "WIKI_DESCRIPTION": "Afegix, modifica o borra contingut en col3laboració amb altres. Aquest es el lloc correcte per a la teua documentació.",
             "MEETUP": "Trobar-se",
-            "MEETUP_DESCRIPTION": "Tria el teu sistema de videonconferéncia. Inclosos els desenvolupadors necessitan contacte cara a cara",
+            "MEETUP_DESCRIPTION": "Choose your videoconference system.",
             "SELECT_VIDEOCONFERENCE": "Selecciona un sistema de videconferència",
-            "SALT_CHAT_ROOM": "Pots afegir un code salt a la sala de xat",
+            "SALT_CHAT_ROOM": "Add a prefix to the chatroom name",
             "JITSI_CHAT_ROOM": "Jitsi",
             "APPEARIN_CHAT_ROOM": "AppearIn",
             "TALKY_CHAT_ROOM": "Talky",
@@ -449,22 +458,31 @@
             "PROJECT_DETAILS": "Detalls de projecte",
             "PROJECT_NAME": "Nom del projecte",
             "PROJECT_SLUG": "Slug de projecte",
-            "NUMBER_SPRINTS": "Nombre d'sprints (0 per a quantitat indetermindad)",
-            "NUMBER_US_POINTS": "Nombre de punts d'històries (0 per a una quantitat indeterminada)",
             "TAGS": "Etiquetes",
             "DESCRIPTION": "Descripció",
             "RECRUITING": "Este projecte busca col·laboracions?",
             "RECRUITING_MESSAGE": "A qui estàs buscant?",
             "RECRUITING_PLACEHOLDER": "Defineix els perfils que estàs buscant",
             "PUBLIC_PROJECT": "Projecte públic",
-            "PUBLIC_PROJECT_DESC": "Els usuaris podràn trobar i vore el teu projecte",
             "PRIVATE_PROJECT": "Projecte privat",
-            "PRIVATE_PROJECT_DESC": "By default, this project will be hidden to the public",
             "PRIVATE_OR_PUBLIC": "What's the difference between public and private projects?",
             "DELETE": "Esborra aquest projecte",
             "LOGO_HELP": "The image will be scaled to 80x80px.",
             "CHANGE_LOGO": "Change logo",
-            "ACTION_USE_DEFAULT_LOGO": "Use default image"
+            "ACTION_USE_DEFAULT_LOGO": "Use default image",
+            "MAX_PRIVATE_PROJECTS": "You've reached the maximum number of private projects allowed by your current plan",
+            "MAX_PRIVATE_PROJECTS_MEMBERS": "The maximum number of members for private projects has been exceeded",
+            "MAX_PUBLIC_PROJECTS": "Unfortunately, you've reached the maximum number of public projects allowed by your current plan",
+            "MAX_PUBLIC_PROJECTS_MEMBERS": "The project exceeds your maximum number of members for public projects",
+            "PROJECT_OWNER": "Project owner",
+            "REQUEST_OWNERSHIP": "Request ownership",
+            "REQUEST_OWNERSHIP_CONFIRMATION_TITLE": "Do you want to become the new project owner?",
+            "REQUEST_OWNERSHIP_DESC": "Request that current project owner {{name}} transfer ownership of this project to you.",
+            "REQUEST_OWNERSHIP_BUTTON": "Petició",
+            "REQUEST_OWNERSHIP_SUCCESS": "We'll notify the project owner",
+            "CHANGE_OWNER": "Change owner",
+            "CHANGE_OWNER_SUCCESS_TITLE": "Ok, your request has been sent!",
+            "CHANGE_OWNER_SUCCESS_DESC": "We will notify you by email if the project ownership request is accepted or declined"
         },
         "REPORTS": {
             "TITLE": "Informes",
@@ -495,7 +513,8 @@
             "ISSUE_ADD": "Afegix camps personalitzats en incidències",
             "FIELD_TYPE_TEXT": "Text",
             "FIELD_TYPE_MULTI": "Múltiples línies",
-            "FIELD_TYPE_DATE": "Data"
+            "FIELD_TYPE_DATE": "Data",
+            "FIELD_TYPE_URL": "Url"
         },
         "PROJECT_VALUES": {
             "PAGE_TITLE": "{{sectionName}} - Valors de projecte - {{projectName}}",
@@ -543,7 +562,7 @@
             "COUNT_MEMBERS": "{{ role.members_count }} membres amb aquest rol",
             "TITLE_DELETE_ROLE": "Esborrar rol",
             "REPLACEMENT_ROLE": "Tots els usuaris amb aquest rol es canviaran a",
-            "WARNING_DELETE_ROLE": "<strong>Atenció, totes les estimacions del rol seràn esborrades</strong>",
+            "WARNING_DELETE_ROLE": "Be careful! All role estimations will be removed",
             "ERROR_DELETE_ALL": "No pots esborrar tots els valors",
             "EXTERNAL_USER": "Usuari extern"
         },
@@ -671,6 +690,24 @@
         },
         "SUBMENU_THIDPARTIES": {
             "TITLE": "Serveis"
+        },
+        "PROJECT_TRANSFER": {
+            "DO_YOU_ACCEPT_PROJECT_OWNERNSHIP": "Would you like to become the new project owner?",
+            "PRIVATE": "Private",
+            "ACCEPTED_PROJECT_OWNERNSHIP": "Congratulations! You're now the new project owner.",
+            "REJECTED_PROJECT_OWNERNSHIP": "OK. We'll contact the current project owner",
+            "ACCEPT": "Acceptar",
+            "REJECT": "Reject",
+            "PROPOSE_OWNERSHIP": "<strong>{{owner}}</strong>, the current owner of the project <strong>{{project}}</strong> has asked that you become the new  project owner.",
+            "ADD_COMMENT_QUESTION": "Would you like to send a question to the project owner?",
+            "ADD_COMMENT": "Would you like to add a comment for the project owner?",
+            "UNLIMITED_PROJECTS": "Unlimited",
+            "OWNER_MESSAGE": {
+                "PRIVATE": "Please remember that you can own up to <strong>{{maxProjects}}</strong> private projects. You currently own <strong>{{currentProjects}}</strong> private projects",
+                "PUBLIC": "Please remember that you can own up to <strong>{{maxProjects}}</strong> public projects. You currently own <strong>{{currentProjects}}</strong> public projects"
+            },
+            "CANT_BE_OWNED": "At the moment you cannot become an owner of a project of this type. If you would like to become the owner of this project, please contact the administrator so they change your account settings to enable project ownership.",
+            "CHANGE_MY_PLAN": "Change my plan"
         }
     },
     "USER": {
@@ -731,6 +768,11 @@
         "FANS_COUNTER_TITLE": "{total, plural, one{un fan} other{# fans}}",
         "WATCHERS_COUNTER_TITLE": "{total, plural, one{un seguidor} other{# seguidors}}",
         "MEMBERS_COUNTER_TITLE": "{total, plural, one{un membre} other{# membres}}",
+        "BLOCKED_PROJECT": {
+            "BLOCKED": "Blocked project",
+            "THIS_PROJECT_IS_BLOCKED": "This project is temporarily blocked",
+            "TO_UNBLOCK_CONTACT_THE_ADMIN_STAFF": "In order to unblock your projects, contact the administrator."
+        },
         "STATS": {
             "PROJECT": "punts<br/> projecte",
             "DEFINED": "punts<br/> definits",
@@ -777,6 +819,7 @@
             "CHANGE_PASSWORD": "Canvi de contrasenya",
             "DASHBOARD_TITLE": "Tauler",
             "DISCOVER_TITLE": "Discover trending projects",
+            "NEW_ITEM": "New",
             "DISCOVER": "Descobreix",
             "ACTION_REORDER": "Arrossega els elements per endreçar"
         },
@@ -791,7 +834,32 @@
             "ERROR_TOO_MANY_REQUEST": "Ho sentim, els Oompa Loompas estàn molt ocupats ara mateix. Intenta-ho de nou en uns moments.",
             "ERROR_MESSAGE": "Els Oompa Loompas tenen problemes important les teues dades: {{error_message}}",
             "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) es massa gran per als nostres Oompa Loompas, prova amb algun inferior a ({{maxFileSize}})",
-            "SYNC_SUCCESS": "El teu projecte s'ha importat correctament"
+            "SYNC_SUCCESS": "El teu projecte s'ha importat correctament",
+            "PROJECT_RESTRICTIONS": {
+                "PROJECT_MEMBERS_DESC": "The project you are trying to import has {{members}} members, unfortunately, your current plan allows for a maximum of {{max_memberships}} members per project. If you would like to increase that limit please contact the administrator.",
+                "PRIVATE_PROJECTS_SPACE": {
+                    "TITLE": "Unfortunately, your current plan does not allow for additional private projects",
+                    "DESC": "The project you are trying to import is private. Unfortunately, your current plan does not allow for additional private projects."
+                },
+                "PUBLIC_PROJECTS_SPACE": {
+                    "TITLE": "Unfortunately, your current plan does not allow for additional private projects",
+                    "DESC": "The project you are trying to import is public. Unfortunately, your current plan does not allow additional public projects."
+                },
+                "PRIVATE_PROJECTS_MEMBERS": {
+                    "TITLE": "Your current plan allows for a maximum of {{max_memberships}} members per private project"
+                },
+                "PUBLIC_PROJECTS_MEMBERS": {
+                    "TITLE": "Your current plan allows for a maximum of {{max_memberships}} members per public project."
+                },
+                "PRIVATE_PROJECTS_SPACE_MEMBERS": {
+                    "TITLE": "Unfortunately your current plan doesn't allow additional private projects or an increase of more than {{max_memberships}} members per private project",
+                    "DESC": "The project that you are trying to import is private and has {{members}} members."
+                },
+                "PUBLIC_PROJECTS_SPACE_MEMBERS": {
+                    "TITLE": "Unfortunately your current plan doesn't allow additional public projects or an increase of more than {{max_memberships}} members per public project",
+                    "DESC": "The project that you are trying to import is public and has more than {{members}} members."
+                }
+            }
         },
         "LIKE_BUTTON": {
             "LIKE": "M'agrada",
@@ -819,8 +887,11 @@
         "DELETE_ACCOUNT": {
             "SECTION_NAME": "Esborrar compte de Taiga",
             "CONFIRM": "Segur que vols borrar el teu compte de Taiga? ",
-            "SUBTITLE": "Te trobarem a faltar! :-(",
-            "NEWSLETTER_LABEL_TEXT": "No vull rebre més el vostre butlletí de notícies"
+            "NEWSLETTER_LABEL_TEXT": "No vull rebre més el vostre butlletí de notícies",
+            "CANCEL": "Back to settings",
+            "ACCEPT": "Delete account",
+            "BLOCK_PROJECT": "Note that all the projects you own projects will be <strong>blocked</strong> after you delete your account. If you do want a project blocked, transfer ownership to another member of each project prior to deleting your account.",
+            "SUBTITLE": "Sorry to see you go. We'll be here if you should ever consider us again! :("
         },
         "DELETE_PROJECT": {
             "TITLE": "Esborrar projecte",
@@ -876,7 +947,25 @@
         },
         "CREATE_MEMBER": {
             "PLACEHOLDER_INVITATION_TEXT": "(Opcional) Afegix un text personalizat a la invitació. Dis-li algo divertit als nous membres. ;-)",
-            "PLACEHOLDER_TYPE_EMAIL": "Escriu un correu"
+            "PLACEHOLDER_TYPE_EMAIL": "Escriu un correu",
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "Unfortunately, this project can't have more than <strong>{{maxMembers}}</strong> members.<br> If you would like to increase the current limit, please contact the administrator.",
+            "LIMIT_USERS_WARNING_MESSAGE": "Unfortunately, this project can't have more than <strong>{{maxMembers}}</strong> members."
+        },
+        "LEAVE_PROJECT_WARNING": {
+            "TITLE": "Unfortunately, this project can't be left without an owner",
+            "CURRENT_USER_OWNER": {
+                "DESC": "You are the current owner of this project. Before leaving, please transfer ownership to someone else.",
+                "BUTTON": "Change the project owner"
+            },
+            "OTHER_USER_OWNER": {
+                "DESC": "Unfortunately, you can't delete a member who is also the current project owner. First, please assign a new project owner.",
+                "BUTTON": "Request project owner change"
+            }
+        },
+        "CHANGE_OWNER": {
+            "TITLE": "Who do you want to be the new project owner?",
+            "ADD_COMMENT": "Add comment",
+            "BUTTON": "Ask this project member to become the new project owner"
         }
     },
     "US": {
@@ -1304,12 +1393,18 @@
         }
     },
     "WIZARD": {
-        "SECTION_TITLE_CHOOSE_TEMPLATE": "Tria una plantilla",
-        "CHOOSE_TEMPLATE_TEXT": "Quina plantilla encaixa millor al teu projecte?",
         "SECTION_TITLE_CREATE_PROJECT": "Crear projecte",
         "CREATE_PROJECT_TEXT": "Nou projecte. Qué il·lusió!",
-        "PROGRESS_TEMPLATE_SELECTION": "Selecció de plantilla",
-        "PROGRESS_NAME_DESCRIPTION": "Nom i descripció"
+        "CHOOSE_TEMPLATE": "Which template fits your project best?",
+        "CHOOSE_TEMPLATE_TITLE": "More info about project templates",
+        "CHOOSE_TEMPLATE_INFO": "More info",
+        "PROJECT_DETAILS": "Project Details",
+        "PUBLIC_PROJECT": "Public Project",
+        "PRIVATE_PROJECT": "Private Project",
+        "CREATE_PROJECT": "Crear projecte",
+        "MAX_PRIVATE_PROJECTS": "You've reached the maximum number of private projects",
+        "MAX_PUBLIC_PROJECTS": "Unfortunately, you've reached the maximum number of public projects",
+        "CHANGE_PLANS": "change plans"
     },
     "WIKI": {
         "PAGE_TITLE": "{{wikiPageName}} - Wiki - {{projectName}}",

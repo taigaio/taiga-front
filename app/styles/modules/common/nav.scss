@@ -3,12 +3,12 @@ $label-arrow-wh: 12px;
 tg-project-menu {
     background-position: 0 -300px;
     display: inline-block;
-    min-height: 95%;
+    min-height: calc(100vh - 40px);
     min-width: 50px;
     padding: 1rem 0;
     position: relative;
     text-transform: uppercase;
-    z-index: 9;
+    z-index: 99;
     .menu {
         &.menu-fixed {
             position: fixed;
@@ -23,15 +23,17 @@ tg-project-menu {
     position: relative;
     text-align: center;
     a {
-        color: $white;
         display: block;
-        padding: .75rem .8rem;
+        padding: 1.1rem .8rem;
         position: relative;
     }
     a:hover {
         background: rgba($black, .2);
-        color: $primary-light;
         transition: color .3s linear;
+        svg {
+            fill: $primary-light;
+            transition: fill .3s linear;
+        }
         .helper {
             @extend %small;
             animation: slideLeft 200ms ease-in-out both;
@@ -60,6 +62,7 @@ tg-project-menu {
         }
     }
     svg {
+        fill: $white;
         height: 1.5rem;
         width: 1.5rem;
         path {

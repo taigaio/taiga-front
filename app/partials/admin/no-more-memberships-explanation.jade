@@ -1,0 +1,11 @@
+p.admin-subtitle(
+    ng-if="project.i_am_owner == true"
+    translate="ADMIN.MEMBERSHIPS.LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER"
+    translate-values="{members: project.total_memberships}"
+)
+
+p.admin-subtitle(
+    ng-if="project.i_am_owner == false"
+    translate="ADMIN.MEMBERSHIPS.LIMIT_USERS_WARNING_MESSAGE_FOR_ADMIN"
+    translate-values="{members: project.total_memberships}"
+)

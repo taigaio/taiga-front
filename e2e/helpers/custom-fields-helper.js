@@ -2,20 +2,19 @@ var utils = require('../utils');
 
 var helper = module.exports;
 
-helper.create = function(indexType, name, desc, option) {
+helper.create = async function(indexType, name, desc, option) {
     let type = $$('div[tg-project-custom-attributes]').get(indexType);
 
     type.$('.js-add-custom-field-button').click();
-
     let form = type.$$('form').last();
 
-    form.$('input[name="name"]').sendKeys(name);
-    form.$('input[name="description"]').sendKeys(desc);
+    await form.$('input[name="name"]').sendKeys(name);
+    await form.$('input[name="description"]').sendKeys(desc);
     form.$(`select option:nth-child(${option})`).click();
 
     let saveButton = form.$('.js-create-custom-field-button');
 
-    browser.actions()
+    return browser.actions()
         .mouseMove(saveButton)
         .click()
         .perform();

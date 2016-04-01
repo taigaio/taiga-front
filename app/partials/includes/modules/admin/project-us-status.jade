@@ -21,7 +21,8 @@ section.project-us-status
                 div(ng-repeat="value in values", tg-bind-scope)
                     form(tg-bind-scope)
                         div.row.table-main.visualization
-                            span.icon.icon-drag-v
+                            svg.icon.icon-drag
+                                use(xlink:href="#icon-drag")
 
                             div.color-column
                                 div.current-color(ng-style="{background: value.color}")
@@ -33,44 +34,69 @@ section.project-us-status
                                 span {{ value.slug }}
 
                             div.is-closed-column
-                                div.icon.icon-check-square(ng-show="value.is_closed")
+                                svg.icon.icon-check(ng-show="value.is_closed")
+                                    use(xlink:href="#icon-check")
 
                             div.is-archived-column
-                                div.icon.icon-check-square(ng-show="value.is_archived")
+                                svg.icon.icon-check(ng-show="value.is_archived")
+                                    use(xlink:href="#icon-check")
 
                             div.status-wip-limit
                                 span(ng-hide="value.is_archived") {{ value.wip_limit }}
 
                             div.options-column
-                                a.edit-value.icon.icon-edit(href="", title="{{'ADMIN.COMMON.TITLE_ACTION_EDIT_VALUE' | translate}}")
-                                a.delete-value.icon.icon-delete(href="", title="{{'ADMIN.COMMON.TITLE_ACTION_DELETE_VALUE' | translate}}")
+                                svg.edit-value.icon.icon-edit(title="{{'ADMIN.COMMON.TITLE_ACTION_EDIT_VALUE' | translate}}")
+                                    use(xlink:href="#icon-edit")
+                                svg.delete-value.icon.icon-trash(title="{{'ADMIN.COMMON.TITLE_ACTION_DELETE_VALUE' | translate}}")
+                                    use(xlink:href="#icon-trash")
 
                         div.row.table-main.edition.hidden
-                            div.color-column(tg-color-selection, ng-model="value")
-                                div.current-color(ng-style="{background: value.color}")
+                            .color-column(tg-color-selection, ng-model="value")
+                                .current-color(ng-style="{background: value.color}")
                                 include ../../components/select-color
 
 
-                            div.status-name
-                                input(name="name", type="text", placeholder="{{'ADMIN.US_STATUS.PLACEHOLDER_WRITE_NAME' | translate}}",
-                                    ng-model="value.name", data-required="true", data-maxlength="255")
+                            .status-name
+                                input(
+                                    name="name"
+                                    type="text"
+                                    placeholder="{{'ADMIN.US_STATUS.PLACEHOLDER_WRITE_NAME' | translate}}",
+                                    ng-model="value.name"
+                                    data-required="true"
+                                    data-maxlength="255"
+                                )
 
-                            div.is-closed-column
-                                select(name="is_closed", ng-model="value.is_closed", data-required="true",
-                                       ng-options="e.id as e.name | translate for e in [{'id':true, 'name':'COMMON.YES'},{'id':false, 'name': 'COMMON.NO'}]")
+                            .is-closed-column
+                                select(
+                                    name="is_closed"
+                                    ng-model="value.is_closed"
+                                    data-required="true"
+                                    ng-options="e.id as e.name | translate for e in [{'id':true, 'name':'COMMON.YES'},{'id':false, 'name': 'COMMON.NO'}]"
+                                )
 
-                            div.is-archived-column
-                                select(name="is_archived", ng-model="value.is_archived", data-required="true",
-                                       ng-options="e.id as e.name | translate for e in [{'id':true, 'name':'COMMON.YES'},{'id':false, 'name': 'COMMON.NO'}]")
+                            .is-archived-column
+                                select(
+                                    name="is_archived"
+                                    ng-model="value.is_archived"
+                                    data-required="true"
+                                    ng-options="e.id as e.name | translate for e in [{'id':true, 'name':'COMMON.YES'},{'id':false, 'name': 'COMMON.NO'}]"
+                                )
 
-                            div.status-wip-limit
-                                input(name="wip_limit", type="number", ng-hide="value.is_archived",
-                                      ng-model="value.wip_limit", data-type="digits",
-                                      placeholder="{{'ADMIN.US_STATUS.WIP_LIMIT_COLUMN' | translate}}")
+                            .status-wip-limit
+                                input(
+                                    name="wip_limit"
+                                    type="number"
+                                    ng-hide="value.is_archived"
+                                    ng-model="value.wip_limit"
+                                    data-type="digits"
+                                    placeholder="{{'ADMIN.US_STATUS.WIP_LIMIT_COLUMN' | translate}}"
+                                )
 
-                            div.options-column
-                                a.save.icon.icon-floppy(href="", title="{{'COMMON.SAVE' | translate}}")
-                            a.cancel.icon.icon-delete(href="", title="{{'COMMON.CANCEL' | translate}}")
+                            .options-column
+                                svg.save.icon.icon-save(title="{{'COMMON.SAVE' | translate}}")
+                                    use(xlink:href="#icon-save")
+                            svg.cancel.icon.icon-close(title="{{'COMMON.CANCEL' | translate}}")
+                                use(xlink:href="#icon-close")
 
             form
                 div.row.table-main.new-value.hidden
@@ -79,23 +105,43 @@ section.project-us-status
                         include ../../components/select-color
 
                     div.status-name
-                        input(name="name", type="text",
-                              ng-model="newValue.name", data-required="true", data-maxlength="255",
-                              placeholder="{{'ADMIN.US_STATUS.PLACEHOLDER_WRITE_NAME' | translate}}")
+                        input(
+                            name="name"
+                            type="text"
+                            ng-model="newValue.name"
+                            data-required="true"
+                            data-maxlength="255"
+                            placeholder="{{'ADMIN.US_STATUS.PLACEHOLDER_WRITE_NAME' | translate}}"
+                        )
 
                     div.is-closed-column
-                        select(name="is_closed", ng-model="newValue.is_closed", data-required="true",
-                               ng-options="e.id as e.name | translate for e in [{'id':true, 'name':'COMMON.YES'},{'id':false, 'name': 'COMMON.NO'}]")
+                        select(
+                            name="is_closed"
+                            ng-model="newValue.is_closed"
+                            data-required="true"
+                            ng-options="e.id as e.name | translate for e in [{'id':true, 'name':'COMMON.YES'},{'id':false, 'name': 'COMMON.NO'}]"
+                        )
 
                     div.is-archived-column
-                        select(name="is_archived", ng-model="newValue.is_archived", data-required="true",
-                               ng-options="e.id as e.name | translate for e in [{'id':true, 'name':'COMMON.YES'},{'id':false, 'name': 'COMMON.NO'}]")
+                        select(
+                            name="is_archived"
+                            ng-model="newValue.is_archived"
+                            data-required="true"
+                            ng-options="e.id as e.name | translate for e in [{'id':true, 'name':'COMMON.YES'},{'id':false, 'name': 'COMMON.NO'}]"
+                        )
 
                     div.status-wip-limit
-                        input(name="wip_limit", type="number", ng-hide="newValue.is_archived",
-                              ng-model="newValue.wip_limit", data-type="digits",
-                              placeholder="{{'ADMIN.US_STATUS.WIP_LIMIT_COLUMN' | translate}}")
+                        input(
+                            name="wip_limit"
+                            type="number"
+                            ng-hide="newValue.is_archived"
+                            ng-model="newValue.wip_limit"
+                            data-type="digits"
+                            placeholder="{{'ADMIN.US_STATUS.WIP_LIMIT_COLUMN' | translate}}"
+                        )
 
                     div.options-column
-                        a.add-new.icon.icon-floppy(href="", title="{{'COMMON.ADD' | translate}}")
-                        a.delete-new.icon.icon-delete(href="", title="{{'COMMON.CANCEL' | translate}}")
+                        svg.add-new.icon.icon-save(title="{{'COMMON.ADD' | translate}}")
+                            use(xlink:href="#icon-save")
+                        svg.delete-new.icon.icon-trash(title="{{'COMMON.CANCEL' | translate}}")
+                            use(xlink:href="#icon-trash")

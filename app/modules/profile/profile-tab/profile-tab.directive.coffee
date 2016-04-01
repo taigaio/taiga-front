@@ -28,6 +28,7 @@ ProfileTabDirective = () ->
             scope.tab.title = title
 
         scope.tab.icon = attrs.tabIcon
+        scope.tab.iconName = '#' + attrs.tabIcon
         scope.tab.active = !!attrs.tabActive
 
         if scope.$eval(attrs.tabDisabled) != true

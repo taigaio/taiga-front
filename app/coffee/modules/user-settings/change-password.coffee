@@ -63,8 +63,13 @@ module.controller("UserChangePasswordController", UserChangePasswordController)
 
 UserChangePasswordDirective = ($rs, $confirm, $loading, $translate) ->
     link = ($scope, $el, $attrs, ctrl) ->
+        form = new checksley.Form($el.find("form"))
+
         submit = debounce 2000, (event) =>
             event.preventDefault()
+
+            if not form.validate()
+                return
 
             if $scope.newPassword1 != $scope.newPassword2
                 $confirm.notify('error', $translate.instant("CHANGE_PASSWORD.ERROR_PASSWORD_MATCH"))

@@ -8,7 +8,8 @@ a.track-button.like-button.like-container(
 )
     span.track-inner
         span.track-icon
-            include ../../../../svg/like.svg
+            svg.icon.icon-like
+                use(xlink:href="#icon-like")
         span(
             ng-if="!vm.project.get('is_fan')"
             translate="PROJECT.LIKE_BUTTON.LIKE"

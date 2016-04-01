@@ -307,7 +307,9 @@ describe('issues list', function() {
         it('remove custom filter', async function() {
             await issuesHelper.removeCustomFilters();
 
-            expect(issuesHelper.getCustomFilters().count()).to.be.eventually.equal(0);
+            let customFilterCount = await issuesHelper.getCustomFilters().count();
+
+            expect(customFilterCount).to.be.equal(0);
         });
     });
 });

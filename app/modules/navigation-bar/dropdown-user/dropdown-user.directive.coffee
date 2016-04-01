@@ -18,7 +18,7 @@
 ###
 
 DropdownUserDirective = (authService, configService, locationService,
-        navUrlsService, feedbackService) ->
+        navUrlsService, feedbackService, $rootScope) ->
 
     link = (scope, el, attrs, ctrl) ->
         scope.vm = {}
@@ -33,6 +33,8 @@ DropdownUserDirective = (authService, configService, locationService,
         scope.vm.sendFeedback = ->
             feedbackService.sendFeedback()
 
+        scope.vm.userSettingsPlugins = _.filter($rootScope.userSettingsPlugins, {userMenu: true})
+
     directive = {
         templateUrl: "navigation-bar/dropdown-user/dropdown-user.html"
         scope: {}
@@ -46,7 +48,8 @@ DropdownUserDirective.$inject = [
     "$tgConfig",
     "$tgLocation",
     "$tgNavUrls",
-    "tgFeedbackService"
+    "tgFeedbackService",
+    "$rootScope"
 ]
 
 angular.module("taigaNavigationBar").directive("tgDropdownUser", DropdownUserDirective)

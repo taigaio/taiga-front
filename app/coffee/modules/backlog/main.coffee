@@ -563,7 +563,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
         currentLoading = @loading()
             .target(target)
-            .removeClasses("icon-edit")
+            .removeClasses("edit-story")
             .timeout(200)
             .start()
 
@@ -959,7 +959,7 @@ UsPointsDirective = ($tgEstimationsService, $repo, $tgTemplate) ->
             $el.find(".pop-role").popover().open(() -> $(this).remove())
 
         bindClickElements = () ->
-            $el.on "click", "a.us-points span", (event) ->
+            $el.on "click", "a.us-points", (event) ->
                 event.preventDefault()
                 event.stopPropagation()
                 us = $scope.$eval($attrs.tgBacklogUsPoints)

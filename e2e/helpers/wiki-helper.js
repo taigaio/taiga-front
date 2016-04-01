@@ -22,7 +22,7 @@ helper.links = function() {
         },
 
         deleteLink: async function(link){
-            link.$(".icon-delete").click();
+            link.$(".icon-trash").click();
             await utils.lightbox.confirm.ok();
             await browser.waitForAngular();
         }

@@ -1,0 +1,93 @@
+.transfer-project-wrapper {
+    max-width: 500px;
+    width: 90%;
+}
+
+.transfer-project {
+    align-items: center;
+    background: url('../images/discover.png') bottom center repeat-x;
+    display: flex;
+    justify-content: center;
+    min-height: calc(100vh - 40px);
+    .transfer-title {
+        @extend %light;
+    }
+    &-detail {
+        align-items: center;
+        border-bottom: 1px solid $whitish;
+        border-top: 1px solid $whitish;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin: 1rem 0 3rem;
+        padding: 1rem 0;
+    }
+    &-image {
+        margin-right: 1rem;
+        width: 4rem;
+    }
+    &-title {
+        @extend %light;
+        @extend %larger;
+        margin-bottom: .25rem;
+    }
+    &-statistics {
+        span {
+            color: $gray-light;
+            margin-right: .5rem;
+        }
+        svg {
+            fill: $gray-light;
+            margin-right: .25rem;
+        }
+    }
+    &-private {
+        text-transform: uppercase;
+    }
+    &-comment-link {
+        color: $primary;
+        cursor: pointer;
+        display: block;
+        margin-bottom: 1rem;
+        &:hover {
+            color: $primary-light;
+        }
+    }
+    &-comment-header {
+        display: flex;
+        justify-content: space-between;
+        .icon-close {
+            cursor: pointer;
+            fill: $gray-light;
+            &:hover {
+                fill: $red-light;
+                transition: fill .2s;
+            }
+        }
+    }
+    &-comment-form {
+        &.ng-enter {
+            animation: dropdownFade .2s;
+        }
+    }
+    &-comment-label {
+        display: block;
+        margin-bottom: .5rem;
+    }
+    &-comment {
+        margin-bottom: 1rem;
+        min-height: 6rem;
+    }
+    &-options {
+        display: flex;
+        a {
+            @extend %large;
+            display: block;
+            flex: 1;
+            padding: .75rem;
+            &:first-child {
+                margin-right: .5rem;
+            }
+        }
+    }
+}

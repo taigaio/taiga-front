@@ -1,17 +1,24 @@
 .row
     .username
-        figure.avatar
+        .avatar
             img(tg-bo-src="currentUser.photo", tg-bo-alt="currentUser.full_name_display")
 
-            figcaption
-                span.name(tg-bo-bind="currentUser.full_name_display")
+            .avatar-data
+                .name
+                    span(tg-bo-bind="currentUser.full_name_display")
+                    svg.icon.icon-badge(ng-if="currentUser.id == owner")
+                        use(xlink:href="#icon-badge")
+                            title(translate="COMMON.OWNER")
 
-                span.position(tg-bo-bind="currentUser.role_name")
+                .position(tg-bo-bind="currentUser.role_name")
 
-                div(tg-leave-project="", projectid="{{projectId}}")
+                div(tg-leave-project="", project="project", user="currentUser")
 
-    .member-stats(tg-team-member-stats, stats="stats",
-                                        user="currentUser.user",
-                                        issuesEnabled="issuesEnabled",
-                                        tasksenabled="tasksEnabled",
-                                        wikienabled="wikiEnabled")
+    .member-stats(
+        tg-team-member-stats
+        stats="stats"
+        ser="currentUser.user"
+        issuesEnabled="issuesEnabled"
+        tasksenabled="tasksEnabled"
+        wikienabled="wikiEnabled"
+    )

@@ -1,8 +1,24 @@
-a.close(href="", title="{{'COMMON.CLOSE' | translate}}")
-    span.icon.icon-delete
+a.close(
+    href=""
+    title="{{'COMMON.CLOSE' | translate}}"
+)
+    svg.icon.icon-close
+        use(xlink:href="#icon-close")
 form
     h2.title(translate="COMMON.NEW_BULK")
     fieldset
-        textarea(cols="200", wrap="off", tg-limit-line-length, ng-attr-placeholder="{{'COMMON.ONE_ITEM_LINE' | translate}}", ng-model="new.bulk", data-required="true", data-linewidth="200")
+        textarea(
+            cols="200"
+            wrap="off"
+            ng-model="new.bulk"
+            data-required="true"
+            data-linewidth="200"
+            ng-attr-placeholder="{{'COMMON.ONE_ITEM_LINE' | translate}}"
 
-    button.button-green.submit-button(type="submit", title="{{'COMMON.SAVE' | translate}}", translate="COMMON.SAVE")
+        )
+
+    button.button-green.submit-button(
+        type="submit"
+        title="{{'COMMON.SAVE' | translate}}"
+        translate="COMMON.SAVE"
+    )

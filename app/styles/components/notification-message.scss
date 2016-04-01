@@ -1,15 +1,22 @@
 .notification-message-success {
     background: rgba($primary-light, .95);
     box-shadow: 0 25px 10px -15px rgba($black, .05);
-    opacity: 1;
     right: -370px;
     top: 2%;
     transition: opacity .2s ease-in;
     width: 370px;
     &.active {
-        animation: animSlide 2000ms linear both;
+        animation: animSlide 2000ms;
+        animation-fill-mode: forwards;
+        animation-iteration-count: 1;
         opacity: 1;
     }
+    &.inactive {
+        animation: animSlideOut .5s;
+        opacity: 0;
+        transform: none;
+    }
+
     p {
         margin: 0;
     }
@@ -40,8 +47,11 @@
     20% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -413.214, 0, 0, 1); }
     27.23% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -403.135, 0, 0, 1); }
     38.34% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -399.585, 0, 0, 1); }
-    60.56% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -400.01, 0, 0, 1); }
-    82.78% { opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -400, 0, 0, 1); }
+    100% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -400, 0, 0, 1); }
+}
+
+@keyframes animSlideOut {
+    0% { opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -400, 0, 0, 1); }
     100% { opacity: 0; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -400, 0, 0, 1); }
 }
 
@@ -49,6 +59,7 @@
 
 .notification-message-error {
     background: rgba($red, .9);
+    opacity: 1;
     top: 0;
     transform: translateY(-100%);
     width: 100%;
@@ -60,10 +71,10 @@
     &.inactive {
         transition: all .6s ease-in-out;
     }
-    .icon-notification-error {
-        @extend %xxlarge;
-        display: inline;
-        vertical-align: sub;
+    .icon-error {
+        @include svg-size(3rem);
+        fill: $white;
+        margin-right: .5rem;
     }
     .warning {
         @extend %xlarge;
@@ -79,8 +90,9 @@
             margin: 0;
         }
     }
-    .icon-delete {
-        color: $white;
+    .icon-close {
+        cursor: pointer;
+        fill: $white;
         position: absolute;
         right: 1rem;
         top: 1rem;
@@ -131,7 +143,7 @@
     .close {
         margin-right: 1rem;
         width: 2rem;
-        path {
+        svg {
             fill: $white;
         }
     }

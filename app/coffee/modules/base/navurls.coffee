@@ -59,7 +59,7 @@ module.service("$tgNavUrls", NavigationUrlsService)
 ## Navigation Urls Directive
 #############################################################################
 
-NavigationUrlsDirective = ($navurls, $auth, $q, $location) ->
+NavigationUrlsDirective = ($navurls, $auth, $q, $location, lightboxService) ->
     # Example:
     # link(tg-nav="project-backlog:project='sss',")
 
@@ -157,9 +157,11 @@ NavigationUrlsDirective = ($navurls, $auth, $q, $location) ->
                             when 2
                                 window.open fullUrl
 
+                        lightboxService.closeAll()
+
         $scope.$on "$destroy", ->
             $el.off()
 
     return {link: link}
 
-module.directive("tgNav", ["$tgNavUrls", "$tgAuth", "$q", "$tgLocation", NavigationUrlsDirective])
+module.directive("tgNav", ["$tgNavUrls", "$tgAuth", "$q", "$tgLocation", "lightboxService", NavigationUrlsDirective])

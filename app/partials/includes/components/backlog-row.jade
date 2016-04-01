@@ -13,7 +13,8 @@ div.row.us-item-row(
         ng-class="{'inactive': !us.total_voters, 'is-voted': us.is_voter}"
         title="{{ 'COMMON.VOTE_BUTTON.COUNTER_TITLE'|translate:{total:us.total_voters||0}:'messageformat' }}"
     )
-        span.icon.icon-caret-up
+        svg.icon.icon-upvote
+            use(xlink:href="#icon-upvote")
         span {{ ::us.total_voters }}
     div.user-stories
         div.tags-block(tg-colorize-tags="us.tags", tg-colorize-tags-type="backlog")
@@ -27,25 +28,33 @@ div.row.us-item-row(
                 span(tg-bo-ref="us.ref")
                 span(ng-bind="us.subject")
             div.us-settings
-                a.icon.icon-edit(
+                a.edit-story(
                     href=""
                     tg-check-permission="modify_us"
                     ng-click="ctrl.editUserStory(us.project, us.ref, $event)"
                     title="{{'COMMON.EDIT' | translate}}"
                 )
-                a.icon.icon-delete(
+                    svg.icon.icon-edit
+                        use(xlink:href="#icon-edit")
+                    
+                a.icon-delete(
                     href=""
                     tg-check-permission="delete_us"
                     ng-click="ctrl.deleteUserStory(us)"
                     title="{{'COMMON.DELETE' | translate}}"
                 )
+                    svg.icon.icon-trash
+                        use(xlink:href="#icon-trash")
 
     div.status(tg-us-status="us" on-update="ctrl.updateUserStoryStatus()")
         a.us-status(href="", title="{{'BACKLOG.STATUS_NAME' | translate}}")
             span.us-status-bind
-            span.icon.icon-arrow-bottom(tg-check-permission="modify_us")
+            svg.icon.icon-arrow-down(tg-check-permission="modify_us")
+                use(xlink:href="#icon-arrow-down")
 
     div.points(tg-backlog-us-points="us")
         a.us-points(href="", title="{{'COMMON.FIELDS.POINTS' | translate}}")
 
-    a.icon.icon-drag-v(tg-check-permission="modify_us", href="", title="{{'COMMON.DRAG' | translate}}")
+    a(tg-check-permission="modify_us", href="", title="{{'COMMON.DRAG' | translate}}")
+        svg.icon.icon-drag
+            use(xlink:href="#icon-drag")

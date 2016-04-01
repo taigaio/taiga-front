@@ -62,7 +62,7 @@ RelatedTaskRowDirective = ($repo, $compile, $confirm, $rootscope, $loading, $tem
                 else if event.keyCode == 27
                     renderView($model.$modelValue)
 
-            $el.on "click", ".icon-floppy", (event) ->
+            $el.on "click", ".save-task", (event) ->
                 saveTask($model.$modelValue).then ->
                     renderView($model.$modelValue)
 
@@ -79,7 +79,7 @@ RelatedTaskRowDirective = ($repo, $compile, $confirm, $rootscope, $loading, $tem
 
             $el.html($compile(templateView({task: task, perms: perms}))($scope))
 
-            $el.on "click", ".icon-edit", ->
+            $el.on "click", ".edit-task", ->
                 renderEdit($model.$modelValue)
                 $el.find('input').focus().select()
 
@@ -170,10 +170,10 @@ RelatedTaskCreateFormDirective = ($repo, $compile, $confirm, $tgmodel, $loading,
                 else if event.keyCode == 27
                     $scope.$apply () -> close()
 
-            $el.on "click", ".icon-delete", (event)->
+            $el.on "click", ".icon-close", (event)->
                 $scope.$apply () -> close()
 
-            $el.on "click", ".icon-floppy", (event)->
+            $el.on "click", ".icon-save", (event)->
                 createTask(newTask).then ->
                     close()
 

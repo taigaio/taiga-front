@@ -17,6 +17,15 @@
     }
 }
 
+@mixin placeholder {
+  $placeholders: ":-webkit-input" ":-moz" "-moz" "-ms-input";
+  @each $placeholder in $placeholders {
+    &:#{$placeholder}-placeholder {
+      @content;
+    }
+  }
+}
+
 @mixin slide($max, $overflow, $min: 0) {
     max-height: $min;
     transition: max-height .5s ease-in;
@@ -120,24 +129,18 @@
         display: flex;
         .icon {
             display: block;
-            margin-right: .2rem;
-            width: 16px;
+            margin-right: .25rem;
         }
         &.active {
             color: $primary;
-            path {
+            .icon {
                 fill: currentcolor;
             }
         }
     }
     .icon {
-        svg {
-            height: 1rem;
-            width: 1rem;
-        }
-        path {
-            fill: currentcolor;
-        }
+        @include svg-size(.75rem);
+        fill: $gray-light;
     }
 }
 

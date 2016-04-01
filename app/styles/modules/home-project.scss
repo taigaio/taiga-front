@@ -30,6 +30,9 @@
         margin-bottom: 0;
         vertical-align: middle;
     }
+    .private {
+        @include svg-size(1.1rem);
+    }
     .like-watch-container {
         margin-left: auto;
     }
@@ -96,6 +99,7 @@
         li {
             flex-basis: 24%;
             margin-right: .14rem;
+            position: relative;
             &:nth-child(4n) {
                 margin-right: 0;
             }
@@ -106,6 +110,14 @@
         img {
             border-radius: .2rem;
             width: 100%;
+        }
+        .icon-badge {
+            @include svg-size(1.2rem);
+            background: rgba($black, .5);
+            bottom: 5%;
+            padding: .1rem;
+            position: absolute;
+            right: 5%;
         }
     }
 }

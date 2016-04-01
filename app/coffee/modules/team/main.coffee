@@ -95,6 +95,7 @@ class TeamController extends mixOf(taiga.Controller, taiga.PageMixin)
             @scope.issuesEnabled = project.is_issues_activated
             @scope.tasksEnabled = project.is_kanban_activated or project.is_backlog_activated
             @scope.wikiEnabled = project.is_wiki_activated
+            @scope.owner = project.owner.id
 
             return project
 
@@ -110,15 +111,18 @@ class TeamController extends mixOf(taiga.Controller, taiga.PageMixin)
           @scope.stats.totals = @scope.totals
 
     _processStat: (stat) ->
-        max = _.max(stat)
-        min = _.min(stat)
-        singleStat = _.map stat, (value, key) ->
+        max = _.max(_.toArray(stat))
+        min = _.min(_.toArray(stat))
+
+        singleStat = Object()
+        for own key, value of stat
             if value == min
-                return [key, 0.1]
-            if value == max
-                return [key, 1]
-            return [key, (value * 0.5) / max]
-        singleStat = _.object(singleStat)
+                singleStat[key] = 0.1
+            else if value == max
+                singleStat[key] = 1
+            else
+                singleStat[key] = (value * 0.5) / max
+
         return singleStat
 
     _processStats: (stats) ->
@@ -131,6 +135,11 @@ class TeamController extends mixOf(taiga.Controller, taiga.PageMixin)
         return promise.then (project) =>
             @.fillUsersAndRoles(project.members, project.roles)
             @.loadMembers()
+
+            userRoles = _.map @scope.users, (user) -> user.role
+
+            @scope.roles = _.filter @scope.roles, (role) -> userRoles.indexOf(role.id) != -1
+
             return @.loadMemberStats()
 
 module.controller("TeamController", TeamController)
@@ -175,12 +184,13 @@ TeamMemberCurrentUserDirective = () ->
     return {
         templateUrl: "team/team-member-current-user.html"
         scope: {
-            projectId: "=projectid",
+            project: "=project",
             currentUser: "=currentuser",
-            stats: "="
-            issuesEnabled: "=issuesenabled"
-            tasksEnabled: "=tasksenabled"
-            wikiEnabled: "=wikienabled"
+            stats: "=",
+            issuesEnabled: "=issuesenabled",
+            tasksEnabled: "=tasksenabled",
+            wikiEnabled: "=wikienabled",
+            owner: "=owner"
         }
     }
 
@@ -200,10 +210,11 @@ TeamMembersDirective = () ->
             memberships: "=",
             filtersQ: "=filtersq",
             filtersRole: "=filtersrole",
-            stats: "="
-            issuesEnabled: "=issuesenabled"
-            tasksEnabled: "=tasksenabled"
-            wikiEnabled: "=wikienabled"
+            stats: "=",
+            issuesEnabled: "=issuesenabled",
+            tasksEnabled: "=tasksenabled",
+            wikiEnabled: "=wikienabled",
+            owner: "=owner"
         }
     }
 
@@ -214,31 +225,46 @@ module.directive("tgTeamMembers", TeamMembersDirective)
 ## Leave project Directive
 #############################################################################
 
-LeaveProjectDirective = ($repo, $confirm, $location, $rs, $navurls, $translate) ->
+LeaveProjectDirective = ($repo, $confirm, $location, $rs, $navurls, $translate, lightboxFactory, currentUserService) ->
     link = ($scope, $el, $attrs) ->
-        $scope.leave = () ->
+        leaveConfirm = () ->
             leave_project_text = $translate.instant("TEAM.ACTION_LEAVE_PROJECT")
             confirm_leave_project_text = $translate.instant("TEAM.CONFIRM_LEAVE_PROJECT")
 
             $confirm.ask(leave_project_text, confirm_leave_project_text).then (response) =>
-                promise = $rs.projects.leave($attrs.projectid)
+                promise = $rs.projects.leave($scope.project.id)
 
                 promise.then =>
-                    response.finish()
-                    $confirm.notify("success")
-                    $location.path($navurls.resolve("home"))
+                    currentUserService.loadProjects().then () ->
+                        response.finish()
+                        $confirm.notify("success")
+                        $location.path($navurls.resolve("home"))
 
                 promise.then null, (response) ->
                     response.finish()
                     $confirm.notify('error', response.data._error_message)
 
+        $scope.leave = () ->
+            if $scope.project.owner.id == $scope.user.id
+                lightboxFactory.create("tg-lightbox-leave-project-warning", {
+                    class: "lightbox lightbox-leave-project-warning"
+                }, {
+                    isCurrentUser: true,
+                    project: $scope.project
+                })
+            else
+                leaveConfirm()
+
     return {
-        scope: {},
+        scope: {
+            user: "=",
+            project: "="
+        },
         templateUrl: "team/leave-project.html",
         link: link
     }
 
-module.directive("tgLeaveProject", ["$tgRepo", "$tgConfirm", "$tgLocation", "$tgResources", "$tgNavUrls", "$translate",
+module.directive("tgLeaveProject", ["$tgRepo", "$tgConfirm", "$tgLocation", "$tgResources", "$tgNavUrls", "$translate", "tgLightboxFactory", "tgCurrentUserService",
                                     LeaveProjectDirective])
 
 

@@ -16,7 +16,11 @@ describe('feedback', function() {
     });
 
     it('send feedback', async function() {
-        await utils.common.topMenuOption(4);
+        let menu = utils.common.getMenu();
+        let menuOption = $('a[translate="PROJECT.NAVIGATION.FEEDBACK"]');
+
+        browser.actions().mouseMove(menu).perform();
+        browser.actions().mouseMove(menuOption).click().perform();
 
         let feedbackLightbox = $('div[tg-lb-feedback]');
 

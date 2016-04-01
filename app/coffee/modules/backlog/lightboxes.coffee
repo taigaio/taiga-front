@@ -36,8 +36,11 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading,
     link = ($scope, $el, attrs) ->
         hasErrors = false
         createSprint = true
+        form = null
 
         resetSprint = () ->
+            form.reset() if form
+
             $scope.sprint = {
                 project: null
                 name: null
@@ -201,7 +204,7 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading,
 
         $el.on "submit", "form", submit
 
-        $el.on "click", ".delete-sprint .icon-delete", (event) ->
+        $el.on "click", ".delete-sprint", (event) ->
             event.preventDefault()
             remove()
 

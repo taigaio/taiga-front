@@ -1,5 +1,6 @@
-a.promote-button.editable(
+a.promote-button.is-editable(
     tg-check-permission="add_us"
     title="{{ 'ISSUES.ACTION_PROMOTE_TO_US' | translate }}"
 )
-    include ../../svg/promote.svg
+    svg.icon.icon-promote
+        use(xlink:href="#icon-promote")

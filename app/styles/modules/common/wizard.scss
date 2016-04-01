@@ -1,73 +1,109 @@
 .wizard-create-project {
     @extend %lightbox;
-    @extend %background-taiga;
-    background-size: cover;
-    color: $white;
-    text-align: center;
-    form {
-        width: 500px;
-    }
-    .title {
-        width: 100%;
-    }
-    h1,
-    p {
-        color: $white;
-    }
-    h1 {
-        line-height: 1.5rem;
-    }
-    p {
-        @extend %small;
-        opacity: .8;
-    }
-    input,
-    textarea,
-    select {
-        background: rgba($white, .7);
-        @include placeholder {
-            color: $grayer;
-        }
-    }
     .close {
-        color: $white;
-        &:hover {
-            color: $red-light;
+        @include svg-size(2rem);
+    }
+    form {
+        width: 700px;
+    }
+    header {
+        margin-bottom: 3rem;
+        .title {
+            margin-bottom: 0;
+        }
+        .subtitle {
+            @extend %small;
+            color: $gray-light;
+            text-align: center;
         }
     }
-    .wizard-step {
-        animation: formSlide .4s ease-in-out;
-        animation-direction: alternate-reverse;
-        display: none;
-        &.active {
-            animation: formSlide .4s ease-in-out;
-            &.create-step2,
-            &.create-step3,
-            &.create-step1 {
-                display: block;
-            }
-        }
+    .more-info {
+        @extend %small;
+        color: $primary;
     }
-    .wizard-action {
-        div {
-            display: flex;
+    .template-selector-title {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+    }
+    .template-selector {
+        display: flex;
+        margin-bottom: 1rem;
+        input {
+            display: none;
         }
-        a {
-            color: $white;
-            display: inline-block;
-            flex-basis: 40%;
-            flex-grow: 1;
+        fieldset {
             &:first-child {
                 margin-right: .5rem;
             }
         }
     }
-    .create-step1 {
-        .template-inner {
-            display: flex;
+    input {
+        &:checked+label {
+            background: $primary-light;
+            color: $white;
+            transition: background .2s ease-in;
+            &:hover {
+                background: $primary-light;
+            }
         }
+        +label {
+            background: rgba($whitish, .7);
+            cursor: pointer;
+            display: block;
+            padding: 2rem 1rem;
+            text-align: center;
+            transition: background .2s ease-in;
+            &:hover {
+                background: rgba($primary-light, .3);
+                transition: background .2s ease-in;
+            }
+            .icon {
+                @include svg-size(1.4rem);
+                fill: currentColor;
+                margin-right: 1rem;
+                vertical-align: text-top;
+            }
+            .template-name {
+                @extend %large;
+                text-transform: uppercase;
+            }
+        }
+    }
+    input[disabled]+label {
+        background: lighten($whitish, 5%);
+        box-shadow: none;
+        color: lighten($gray-light, 20%);
+        cursor: not-allowed;
+        opacity: .65;
+        &:hover {
+            background: lighten($whitish, 5%);
+            color: lighten($gray-light, 20%);
+        }
+    }
+    .template-data {
+        legend {
+            display: block;
+            margin-bottom: .5rem;
+        }
+        input,
+        textarea {
+            background: none;
+            border: 1px solid $whitish;
+            color: $gray-light;
+            @include placeholder {
+                color: darken($whitish, 20%);
+            }
+        }
+        textarea {
+            height: 7rem;
+            min-height: 7rem;
+        }
+    }
+    .template-privacity {
+        display: flex;
         fieldset {
-            flex-grow: 1;
+            margin-bottom: 0;
             &:first-child {
                 margin-right: .5rem;
             }
@@ -75,105 +111,37 @@
         input {
             display: none;
         }
-        input:checked {
-            +label {
-                background: rgba($primary-light, .7);
-                transition: background .3s ease-in;
-            }
+        label {
+            display: block;
+            text-align: center;
+            text-transform: uppercase;
+
         }
         input+label {
-            background: rgba($whitish, .7);
-            cursor: pointer;
-            display: block;
-            margin-bottom: 1rem;
             padding: 1rem;
-            text-align: center;
-            transition: background .3s ease-in;
-            &:hover {
-                background: rgba($primary, .7);
-                transition: background .3s ease-in;
-            }
-            .icon {
-                @extend %xxlarge;
-                color: $white;
-            }
         }
-        h2 {
-            color: $white;
-            margin: 0;
-            margin-top: .5rem;
-            text-transform: uppercase;
-        }
-        p {
-            text-align: center;
+        svg {
+            @include svg-size(.7rem);
         }
     }
-    .progress-bar {
-        bottom: 0;
-        height: .5rem;
-        left: 0;
-        position: absolute;
-        width: 100%;
-    }
-    .step1 {
-        .bar {
-            transition: width .6s ease-in-out;
-            width: 25%;
+    .create-warning {
+        @extend %small;
+        padding: 1rem;
+        text-align: center;
+        .icon-exclamation {
+            fill: $red-light;
+            margin-right: .5rem;
+            vertical-align: middle;
         }
-        .progress-state {
-            span:nth-child(1) {
-                color: rgba($white, 1);
-                transition: color .3s ease-in-out;
-                transition-delay: .6s;
-            }
-        }
-    }
-    .step2 {
-        .bar {
-            transition: width .6s ease-in-out;
-            // width: 50%;
-            width: 75%;
-        }
-        .progress-state {
-            span:nth-child(1),
-            span:nth-child(2) {
-                color: rgba($white, 1);
-                transition: color .3s ease-in-out;
-                transition-delay: .6s;
-            }
-        }
-    }
-
-    .progress-state {
-        position: absolute;
-        width: 100%;
-        span {
-            color: rgba($white, .5);
+        a {
+            color: $primary;
             display: inline-block;
-            margin-left: -100px;
-            position: absolute;
-            text-align: center;
-            top: -2rem;
-            transition: all 1s ease-in;
-            width: 200px;
-            &:nth-child(1) {
-                left: 25%;
-            }
-            &:nth-child(2) {
-                left: 75%;
-            }
+            margin-left: .25rem;
         }
     }
-    .progress-bar-wrapper {
-        background: rgba($white, .3);
-        height: .5rem;
-    }
-    .bar {
-        background: rgba($primary-light, .9);
-        height: .5rem;
-        left: 0;
-        position: absolute;
-        top: 0;
-        width: 0;
+    .button-green {
+        display: block;
+        margin: 1rem 5rem;
+        width: calc(100% - 10rem);
     }
 }

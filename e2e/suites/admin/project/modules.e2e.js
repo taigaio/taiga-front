@@ -16,18 +16,16 @@ describe('modules', function() {
     });
 
     it('disable module', async function() {
-        let functionalities = $$('.functionality');
+        let functionalities = $$('.module');
 
         let functionality = functionalities.get(0);
 
-        let label = functionality.$('label');
+        let input = functionality.$('.check input');
 
         browser.actions()
-            .mouseMove(label)
+            .mouseMove(input)
             .click()
             .perform();
-
-        $('button[type="submit"]').click();
 
         let active = await utils.common.hasClass(functionality, 'active');
 
@@ -38,18 +36,16 @@ describe('modules', function() {
     });
 
     it('enable module', async function() {
-        let functionalities = $$('.functionality');
+        let functionalities = $$('.module');
 
         let functionality = functionalities.get(0);
 
-        let label = functionality.$('label');
+        let input = functionality.$('.check input');
 
         browser.actions()
-            .mouseMove(label)
+            .mouseMove(input)
             .click()
             .perform();
-
-        $('button[type="submit"]').click();
 
         let active = await utils.common.hasClass(functionality, 'active');
 
@@ -60,24 +56,24 @@ describe('modules', function() {
     });
 
     it('enable videoconference', async function() {
-        let functionality = $$('.functionality').get(4);
+        let functionality = $$('.module').get(4);
 
-        let label = functionality.$('label');
+        let input = functionality.$('.check input');
 
         browser.actions()
-            .mouseMove(label)
+            .mouseMove(input)
             .click()
             .perform();
 
         let videoconference = functionality.$$('select').get(0);
 
-        videoconference.$(`option:nth-child(1)`).click();
+        videoconference.$(`option:nth-child(2)`).click();
 
-        let salt = functionality.$$('select').get(0);
+        let salt = $('#videoconference-prefix');
 
         salt.sendKeys('abccceee');
 
-        $('button[type="submit"]').click();
+        functionality.$('.icon-save').click();
         expect(utils.notifications.success.open()).to.be.eventually.equal(true);
     });
 });

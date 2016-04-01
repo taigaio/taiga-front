@@ -65,6 +65,7 @@ shared.statusTesting = async function(status1 , status2) {
     await statusHelper.setStatus(1);
 
     let selectedStatus = await statusHelper.getSelectedStatus();
+
     expect(selectedStatus).to.be.equal(status1);
 
     // Status 2
@@ -104,7 +105,9 @@ shared.assignedToTesting = function() {
 
         await assignedTo.clear();
 
-        expect(assignedTo.isUnassigned()).to.be.eventually.true;
+        let isUnsassigned = assignedTo.isUnassigned();
+
+        expect(isUnsassigned).to.be.equal.true;
     });
 
     it('filter', async function () {
@@ -117,19 +120,18 @@ shared.assignedToTesting = function() {
 
         let names = await assignToLightbox.getNames();
 
-        await assignToLightbox.filter(names[0]);
+        await assignToLightbox.filter(names[1]);
 
         let newNames = await assignToLightbox.getNames();
 
-        expect(newNames).to.have.length(1);
+        expect(newNames).to.have.length.below(3);
 
         assignToLightbox.selectFirst();
 
         await assignToLightbox.waitClose();
-        await notifications.success.close();
     });
 
-    it('keyboard navigatin', async function() {
+    it('keyboard navigation', async function() {
         let assignedTo = detailHelper.assignedTo();
         let assignToLightbox = commonHelper.assignToLightbox();
 
@@ -332,7 +334,6 @@ shared.watchersTesting = function() {
 
         await watchersLightboxHelper.selectFirst();
         await watchersLightboxHelper.waitClose();
-        await notifications.success.close();
     });
 
     it('keyboard navigatin', async function() {
@@ -366,7 +367,9 @@ shared.customFields = function(typeIndex) {
     before(async function() {
         let url = await browser.getCurrentUrl();
         let rootUrl = await commonUtil.getProjectUrlRoot();
-        browser.get(rootUrl + '/admin/project-values/custom-fields');
+
+        await browser.get(rootUrl + '/admin/project-values/custom-fields');
+        await browser.sleep(2000);
 
         await customFieldsHelper.create(typeIndex, 'detail-test-custom-fields-text', 'desc1', 1);
 
@@ -386,13 +389,12 @@ shared.customFields = function(typeIndex) {
     it('text create', async function() {
         let customFields = customFieldsHelper.getDetailFields();
 
-        // await browser.sleep(4000);
         let count = await customFields.count();
 
         let textField = customFields.get(count - 2);
 
         textField.$('input').sendKeys('test text');
-        textField.$('.icon-floppy').click();
+        textField.$('.js-save-description').click();
 
         // debounce
         await browser.sleep(2000);
@@ -408,10 +410,10 @@ shared.customFields = function(typeIndex) {
 
         let textField = customFields.get(count - 2);
 
-        textField.$('.icon-edit').click();
+        textField.$('.js-edit-description').click();
 
         textField.$('input').sendKeys('test text edit');
-        textField.$('.icon-floppy').click();
+        textField.$('.js-save-description').click();
 
         // debounce
         await browser.sleep(2000);
@@ -428,7 +430,7 @@ shared.customFields = function(typeIndex) {
         let textField = customFields.get(count - 1);
 
         textField.$('textarea').sendKeys('test text2');
-        textField.$('.icon-floppy').click();
+        textField.$('.js-save-description').click();
 
         // debounce
         await browser.sleep(2000);
@@ -446,7 +448,7 @@ shared.customFields = function(typeIndex) {
 
         textField.$('.icon-edit').click();
         textField.$('textarea').sendKeys('test text2 edit');
-        textField.$('.icon-floppy').click();
+        textField.$('.js-save-description').click();
 
         // // debounce
         await browser.sleep(2000);

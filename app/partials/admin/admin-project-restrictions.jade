@@ -1,0 +1,8 @@
+fieldset(ng-if="!project.is_private_extra_info.can_be_updated && project.i_am_owner" ng-switch="project.is_private_extra_info.reason")
+    span(ng-switch-when="max_private_projects") {{ 'ADMIN.PROJECT_PROFILE.MAX_PRIVATE_PROJECTS' | translate }}
+
+    span(ng-switch-when="max_private_projects_memberships") {{ 'ADMIN.PROJECT_PROFILE.MAX_PRIVATE_PROJECTS_MEMBERS' | translate }}
+
+    span(ng-switch-when="max_public_projects") {{ 'ADMIN.PROJECT_PROFILE.MAX_PUBLIC_PROJECTS' | translate }}
+
+    span(ng-switch-when="max_public_projects_memberships") {{ 'ADMIN.PROJECT_PROFILE.MAX_PUBLIC_PROJECTS_MEMBERS' | translate }}

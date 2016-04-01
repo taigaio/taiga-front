@@ -70,7 +70,7 @@ class RolesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fil
 
     loadProject: ->
         return @rs.projects.getBySlug(@params.pslug).then (project) =>
-            if not project.i_am_owner
+            if not project.i_am_admin
                 @location.path(@navUrls.resolve("permission-denied"))
 
             @scope.projectId = project.id
@@ -193,7 +193,7 @@ EditRoleDirective = ($repo, $confirm) ->
 
             toggleView()
 
-        $el.on "click", "a.icon-edit", ->
+        $el.on "click", ".edit-value", ->
             toggleView()
             $el.find("input").focus()
             $el.find("input").val($scope.role.name)
@@ -251,7 +251,7 @@ NewRoleDirective = ($tgrepo, $confirm) ->
                     project: $scope.projectId
                     name: target.val()
                     permissions: DEFAULT_PERMISSIONS
-                    order: _.max($scope.roles, (r) -> r.order).order + 1
+                    order: _.maxBy($scope.roles, (r) -> r.order).order + 1
                     computable: false
                 }
 
@@ -292,7 +292,9 @@ RolePermissionsDirective = ($rootscope, $repo, $confirm, $compile) ->
                  title="{{ '<%- permission.name %>' | translate }}"></div>
         <% }) %>
     </div>
-    <div class="icon icon-arrow-bottom"></div>
+    <svg class="icon icon-arrow-right">
+        <use xlink:href="#icon-arrow-right">
+    </svg>
     """)
 
     categoryTemplate = _.template("""
@@ -431,6 +433,7 @@ RolePermissionsDirective = ($rootscope, $repo, $confirm, $compile) ->
             $el.on "click", ".resume", (event) ->
                 event.preventDefault()
                 target = angular.element(event.currentTarget)
+                target.toggleClass("open-drawer")
                 target.next().toggleClass("open")
 
             $el.on "change", ".category-item input", (event) ->

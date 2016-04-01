@@ -1,12 +1,12 @@
 a.close(href="", title="{{'close' | translate}}")
-    span.icon.icon-delete
+    svg.icon.icon-close
+        use(xlink:href="#icon-close")
 form
-    h2.title(translate="LIGHTBOX.DELETE_ACCOUNT.SECTION_NAME")
-    p
-        span.question(translate="LIGHTBOX.DELETE_ACCOUNT.CONFIRM")
-        span.subtitle(translate="LIGHTBOX.DELETE_ACCOUNT.SUBTITLE")
+    h2.title(translate="LIGHTBOX.DELETE_ACCOUNT.CONFIRM")
+
+    p(ng-bind-html="'LIGHTBOX.DELETE_ACCOUNT.BLOCK_PROJECT' | translate")
     div.options
-        a.button-green(href="", title="{{'COMMON.ACCEPT' | translate}}")
-            span(translate="COMMON.ACCEPT")
-        a.button-red(href="", title="{{'Cancel' | translate}}", )
-            span(translate="COMMON.CANCEL")
+        a.button-green(href="", title="{{'LIGHTBOX.DELETE_ACCOUNT.CANCEL' | translate}}")
+            span(translate="LIGHTBOX.DELETE_ACCOUNT.CANCEL")
+        a.button-red(href="", title="{{'LIGHTBOX.DELETE_ACCOUNT.ACCEPT' | translate}}")
+            span(translate="LIGHTBOX.DELETE_ACCOUNT.ACCEPT")

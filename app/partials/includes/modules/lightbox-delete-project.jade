@@ -1,11 +1,12 @@
 a.close(href="", title="{{'close' | translate}}")
-    span.icon.icon-delete
+    svg.icon.icon-close
+        use(xlink:href="#icon-close")
 form
     h2.title(translate="LIGHTBOX.DELETE_PROJECT.TITLE")
     p
         span.question(translate="LIGHTBOX.DELETE_PROJECT.QUESTION")
         span.subtitle(translate="LIGHTBOX.DELETE_PROJECT.SUBTITLE")
-    div.options
+    .options
         a.button-green(href="", title="{{'LIGHTBOX.DELETE_PROJECT.CONFIRM' | translate}}")
             span(translate="LIGHTBOX.DELETE_PROJECT.CONFIRM")
         a.button-red(href="", title="{{'COMMON.CANCEL' | translate}}")

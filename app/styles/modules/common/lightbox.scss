@@ -1,8 +1,8 @@
 .lightbox {
     @extend %lightbox;
     h2 {
-        @extend %larger;
-        @extend %text;
+        @extend %xlarge;
+        @extend %light;
     }
 }
 
@@ -57,9 +57,13 @@
         }
         .requirement,
         .iocaine {
+            vertical-align: middle;
             &:hover {
                 background: $primary-light;
                 border: 1px solid $primary;
+            }
+            svg {
+                @include svg-size(.75rem);
             }
         }
 
@@ -142,52 +146,62 @@
 
 .lightbox-add-member {
     .add-member-wrapper {
+        max-width: 600px;
+        width: 90%;
+    }
+    .add-single-member {
+        align-items: center;
         display: flex;
+        justify-content: space-between;
         margin-bottom: .5rem;
         &:last-child {
             margin-bottom: 0;
         }
         fieldset {
-            position: relative;
-            &:first-child {
-                flex-basis: 400px;
-                flex-grow: 3;
-            }
+            display: inline-block;
+            flex: 1;
+            margin: 0 .5rem 0 0;
             &:last-child {
-                flex-basis: 200px;
-                flex-grow: 1;
-                margin-left: .5rem;
+                flex-basis: 30px;
+                flex-grow: 0;
+                flex-shrink: 0;
             }
+            &:first-child {
+                flex-basis: 20%;
+            }
+
         }
-        .icon-delete {
-            @extend %large;
-        }
-    }
-    .extra-text {
-        margin-top: 1rem;
-    }
-    fieldset {
-        margin-bottom: 0;
-    }
-    select {
-        width: 80%;
     }
     .icon {
-        @extend %large;
+        @include svg-size(1.25rem);
+        fill: $gray;
         margin-left: .5rem;
     }
-    .icon-delete {
-        @extend %xlarge;
+    .icon-add {
         &:hover {
-            color: $red;
+            fill: $primary;
+            transition: fill .2s;
         }
     }
-    .button {
-        margin-top: 1rem;
+    .icon-trash {
+        fill: $red-light;
+        &:hover {
+            fill: $red;
+            transition: fill .2s;
+        }
+    }
+    .member-limit-warning {
+        @extend %small;
+        background: $red-light;
+        color: $white;
+        margin: 1rem 0;
+        padding: 1rem 2rem;
+        text-align: center;
     }
     .help-text {
         @extend %small;
-        padding: .5rem 1rem;
+        @extend %light;
+        margin-top: 1rem;
     }
     .checksley-error-list {
         right: .5rem;
@@ -234,17 +248,18 @@
     }
     .delete-sprint {
         @extend %small;
-        color: $grayer;
-        display: block;
-        margin-top: 1rem;
-        text-align: right;
-        a {
-            color: $gray-light;
-            margin-left: .5rem;
+        color: $gray;
+        float: right;
+        margin: 1rem .25rem 0 0;
+        transition: color .3s linear;
+        .icon {
+            fill: currentColor;
+        }
+        &:hover {
+            color: $red;
             transition: color .3s linear;
-            &:hover {
-                color: $red;
-                transition: color .3s linear;
+            .icon {
+                fill: currentColor;
             }
         }
     }
@@ -316,9 +331,15 @@
             }
         }
     }
+    .warning {
+        @extend %bold;
+    }
 }
 
 .lightbox-delete-account {
+    p {
+        text-align: center;
+    }
     form {
         flex-basis: 420px;
         flex-grow: 0;
@@ -329,10 +350,6 @@
         display: block;
         line-height: 2rem;
         text-align: center;
-    }
-    .subtitle {
-        @extend %large;
-        @extend %title;
     }
     .newsletter {
         margin: 1rem 0;
@@ -491,7 +508,7 @@
     .user-list-single {
         &:hover,
         &.selected {
-            background: lighten($primary, 58%);
+            background: rgba(lighten($primary-light, 30%), .3);
             cursor: pointer;
         }
         &:hover {
@@ -504,6 +521,33 @@
         @extend %medium;
         padding: .5rem;
         text-align: center;
+    }
+    .submit-button {
+        margin-top: 1rem;
+    }
+    .add-comment {
+        position: relative;
+        text-align: center;
+        .icon-close {
+            cursor: pointer;
+            fill: $gray;
+            position: absolute;
+            right: 0;
+            top: 0;
+            transition: fill .2s;
+            &:hover {
+                fill: $red-light;
+            }
+            svg {
+                @include svg-size(2rem);
+            }
+        }
+        textarea {
+            margin-top: 1rem;
+        }
+        a {
+            color: $primary;
+        }
     }
 }
 
@@ -523,8 +567,47 @@
             margin-right: 0;
         }
         &:last-child {
+            flex-basis: 100%;
             margin: .1rem 0;
             min-width: 100%;
         }
+    }
+}
+
+.lightbox-import-error {
+    text-align: center;
+    .content {
+        width: 500px;
+    }
+    h2 {
+        margin-top: 1rem;
+    }
+    .description {
+        a {
+            color: $primary;
+        }
+    }
+    img {
+        height: 5rem;
+    }
+}
+
+.lightbox-leave-project-warning {
+    text-align: center;
+    .icon {
+        fill: $gray-light;
+        height: 3rem;
+        margin-bottom: 1rem;
+        width: 3rem;
+    }
+    .content {
+        width: 500px;
+    }
+}
+
+.lightbox-request-ownership {
+    text-align: center;
+    .content {
+        width: 500px;
     }
 }

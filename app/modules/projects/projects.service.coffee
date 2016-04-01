@@ -57,10 +57,20 @@ class ProjectsService extends taiga.Service
 
     newProject: ->
         @lightboxFactory.create("tg-lb-create-project", {
-            "class": "wizard-create-project"
+            "class": "wizard-create-project lightbox"
         })
 
     bulkUpdateProjectsOrder: (sortData) ->
         return @rs.projects.bulkUpdateOrder(sortData)
+
+    transferValidateToken: (projectId, token) ->
+        return @rs.projects.transferValidateToken(projectId, token)
+
+    transferAccept: (projectId, token, reason) ->
+        return @rs.projects.transferAccept(projectId, token, reason)
+
+    transferReject: (projectId, token, reason) ->
+        return @rs.projects.transferReject(projectId, token, reason)
+
 
 angular.module("taigaProjects").service("tgProjectsService", ProjectsService)

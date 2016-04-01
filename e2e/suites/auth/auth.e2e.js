@@ -7,6 +7,10 @@ chai.use(chaiAsPromised);
 var expect = chai.expect;
 
 describe('auth', function() {
+    before(async function() {
+        await utils.common.logout();
+    });
+
     it('login', async function() {
         browser.get(browser.params.glob.host + 'login');
 
@@ -32,8 +36,8 @@ describe('auth', function() {
     describe('page without perms', function() {
         let path = 'project/project-4/';
 
-        before(function() {
-            return utils.common.topMenuOption(6);
+        before(async function() {
+            await utils.common.logout();
         });
 
         it("redirect to login", async function() {
@@ -58,8 +62,8 @@ describe('auth', function() {
     describe("user", function() {
         var user = {};
 
-        before(function() {
-            utils.common.login('admin', '123123');
+        before(async function() {
+            await utils.common.logout();
         });
 
         it("logout", async function() {
@@ -96,7 +100,7 @@ describe('auth', function() {
                 expect($$('.checksley-required').count()).to.be.eventually.equal(4);
             });
 
-            it('register ok', function() {
+            it('register ok', async function() {
                 browser.get(browser.params.glob.host + 'register');
 
                 user.username = "username-" + Math.random();
@@ -111,40 +115,57 @@ describe('auth', function() {
 
                 $('.submit-button').click();
 
-                expect(browser.getCurrentUrl()).to.be.eventually.equal(browser.params.glob.host);
+                await utils.common.waitLoader();
+
+                let currentUrl = await browser.getCurrentUrl();
+
+                expect(currentUrl).to.be.equal(browser.params.glob.host);
+
+                browser.get(browser.params.glob.host + '/');
+
+                await utils.common.waitLoader();
+                await utils.common.closeJoyride();
             });
         });
 
         describe("change password", function() {
-            beforeEach(async function() {
-                await utils.common.login(user.username, user.password);
+            it("error", async function() {
+                browser.get(browser.params.glob.host + 'user-settings/user-change-password');
+                await browser.waitForAngular();
 
-                return browser.get(browser.params.glob.host + 'user-settings/user-change-password');
-            });
-
-            it("error", function() {
                 $('#current-password').sendKeys('wrong');
                 $('#new-password').sendKeys('123123');
                 $('#retype-password').sendKeys('123123');
 
                 $('.submit-button').click();
 
-                expect(utils.notifications.error.open()).to.be.eventually.equal(true);
+                let open = await utils.notifications.error.open();
+                expect(open).to.be.equal(true);
             });
 
-            it("success", function() {
+            it("success", async function() {
+                browser.get(browser.params.glob.host + 'user-settings/user-change-password');
+                await browser.waitForAngular();
+
                 $('#current-password').sendKeys(user.password);
                 $('#new-password').sendKeys(user.password);
                 $('#retype-password').sendKeys(user.password);
 
                 $('.submit-button').click();
 
-                expect(utils.notifications.success.open()).to.be.eventually.equal(true);
+                let open = await utils.notifications.success.open();
+                expect(open).to.be.equal(true);
+
+                await utils.notifications.success.close();
             });
         });
 
         describe("remember password", function() {
-            beforeEach(function() {
+            before(async function() {
+                await utils.common.logout();
+            });
+
+            beforeEach(async function() {
                 browser.get(browser.params.glob.host + 'forgot-password');
             });
 
@@ -176,8 +197,8 @@ describe('auth', function() {
         });
 
         describe("accout", function() {
-            before(function() {
-                utils.common.login(user.username, user.password);
+            before(async function() {
+                await utils.common.login(user.username, user.password);
             });
 
             it("delete", async function() {
@@ -188,7 +209,7 @@ describe('auth', function() {
 
                 utils.common.takeScreenshot("auth", "delete-account");
 
-                $('.lightbox-delete-account .button-green').click();
+                $('.lightbox-delete-account .button-red').click();
 
                 let url = await browser.getCurrentUrl();
 

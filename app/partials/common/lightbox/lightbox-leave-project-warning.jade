@@ -1,0 +1,20 @@
+a.close(href="", title="{{'COMMON.CLOSE' | translate}}")
+    svg.icon.icon-close(title="{{'COMMON.CLOSE' | translate}}")
+        use(xlink:href="#icon-close")
+div.content
+    svg.icon.icon-exclamation
+        use(xlink:href="#icon-exclamation")
+
+    h2.title {{'LIGHTBOX.LEAVE_PROJECT_WARNING.TITLE' | translate}}
+
+    div(ng-if="isCurrentUser")
+        p {{'LIGHTBOX.LEAVE_PROJECT_WARNING.CURRENT_USER_OWNER.DESC' | translate}}
+
+        a.button-green(tg-nav="project-admin-home:project=project.slug", href="")
+            span(translate="LIGHTBOX.LEAVE_PROJECT_WARNING.CURRENT_USER_OWNER.BUTTON")
+
+    div(ng-if="!isCurrentUser")
+        p {{'LIGHTBOX.LEAVE_PROJECT_WARNING.OTHER_USER_OWNER.DESC' | translate}}
+
+        a.button-green(tg-nav="project-admin-home:project=project.slug", href="")
+            span(translate="LIGHTBOX.LEAVE_PROJECT_WARNING.OTHER_USER_OWNER.BUTTON")

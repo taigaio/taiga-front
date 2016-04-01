@@ -27,7 +27,7 @@
             background: rgba($primary-light, .05);
             cursor: move;
             transition: background .2s linear;
-            .icon-drag-v,
+            .icon-drag,
             .custom-options {
                 opacity: 1;
                 transition: opacity .2s linear;
@@ -47,15 +47,15 @@
         border-bottom: 1px solid $whitish;
         color: $gray;
     }
-    .icon-drag-v {
-        color: $gray-light;
+    .icon-drag {
+        fill: $gray-light;
         opacity: 0;
         padding: 0 .1rem;
         transition: color .2s linear;
         vertical-align: middle;
         &:hover {
-            color: $gray;
             cursor: move;
+            fill: $gray;
             transition: color .2s linear;
         }
     }
@@ -83,14 +83,19 @@
         flex-shrink: 0;
         opacity: 0;
         text-align: center;
-        a {
-            color: $gray-light;
+        svg {
+            cursor: pointer;
+            fill: $gray-light;
             margin-right: .5rem;
             transition: color .2s linear;
             vertical-align: middle;
             &:hover {
-                color: $primary;
+                fill: $primary;
                 transition: color .2s linear;
+            }
+            &.icon-trash,
+            &.icon-close {
+                fill: $red-light;
             }
         }
     }

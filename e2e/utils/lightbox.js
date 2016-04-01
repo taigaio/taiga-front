@@ -3,6 +3,14 @@ var common = require('./common');
 var lightbox = module.exports;
 var transition = 300;
 
+lightbox.exit = function(el) {
+    if (typeof el === 'string' || el instanceof String) {
+        el = $(el);
+    }
+
+    el.$('.close').click();
+};
+
 lightbox.open = async function(el) {
     var deferred = protractor.promise.defer();
 

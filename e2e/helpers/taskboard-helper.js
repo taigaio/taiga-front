@@ -19,7 +19,7 @@ helper.getBoxTasks = function(row, column) {
 helper.openNewTaskLb = function(row) {
     let us = helper.usertories().get(row);
 
-    us.$('.icon-plus').click();
+    us.$('.icon-add').click();
 };
 
 helper.openBulkTaskLb = function(row) {
@@ -29,25 +29,25 @@ helper.openBulkTaskLb = function(row) {
 };
 
 helper.foldRow = function(row) {
-    let icon = $$('.icon-vfold.vfold').get(row);
+    let icon = $$('.icon-fold-row.vfold').get(row);
 
     icon.click();
 };
 
 helper.unFoldRow = function(row) {
-    let icon = $$('.icon-vunfold.vunfold').get(row);
+    let icon = $$('.icon-unfold-row.vunfold').get(row);
 
     icon.click();
 };
 
 helper.foldColumn = function(row) {
-    let icon = $$('.icon-vfold.hfold').get(row);
+    let icon = $$('.icon-fold-row.hfold').get(row);
 
     icon.click();
 };
 
 helper.unFoldColumn = function(row) {
-    let icon = $$('.icon-vunfold.hunfold').get(row);
+    let icon = $$('.icon-fold-row.hunfold').get(row);
 
     icon.click();
 };
@@ -57,7 +57,7 @@ helper.editTask = function(row, column, task) {
 };
 
 helper.toggleGraph = function() {
-    $('.large-summary svg').click();
+    $('.icon-graph').click();
 };
 
 helper.getCreateTask = function() {

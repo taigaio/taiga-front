@@ -33,7 +33,7 @@ describe('Task detail', function(){
 
     it('description edition', sharedDetail.descriptionTesting);
 
-    it('status edition', sharedDetail.statusTesting);
+    it('status edition', sharedDetail.statusTesting.bind(this, 'In progress', 'Ready for test'));
 
     describe('assigned to edition', sharedDetail.assignedToTesting);
 

@@ -27,6 +27,26 @@ debounce = @.taiga.debounce
 
 module = angular.module("taigaAuth", ["taigaResources"])
 
+class LoginPage
+    @.$inject = [
+        'tgCurrentUserService',
+        '$location',
+        '$tgNavUrls',
+        '$routeParams'
+    ]
+
+    constructor: (currentUserService, $location, $navUrls, $routeParams) ->
+        if currentUserService.isAuthenticated()
+            url = $navUrls.resolve("home")
+            if $routeParams['next']
+                url = $routeParams['next']
+                $location.search('next', null)
+
+            $location.path(url)
+
+
+module.controller('LoginPage', LoginPage)
+
 #############################################################################
 ## Authentication Service
 #############################################################################
@@ -122,6 +142,17 @@ class AuthService extends taiga.Service
         return false
 
     ## Http interface
+    refresh: () ->
+        url = @urls.resolve("user-me")
+
+        return @http.get(url).then (data, status) =>
+            user = data.data
+            user.token = @.getUser().auth_token
+
+            user = @model.make_model("users", user)
+
+            @.setUser(user)
+            return user
 
     login: (data, type) ->
         url = @urls.resolve("auth")
@@ -214,7 +245,6 @@ PublicRegisterMessageDirective = ($config, $navUrls, $routeParams, templates) ->
         url = $navUrls.resolve("register")
         if $routeParams['next'] and $routeParams['next'] != $navUrls.resolve("register")
             nextUrl = encodeURIComponent($routeParams['next'])
-            console.log "-----", nextUrl
             url += "?next=#{nextUrl}"
 
         return template({url:url})
@@ -287,15 +317,10 @@ RegisterDirective = ($auth, $confirm, $location, $navUrls, $config, $routeParams
         $scope.data = {}
         form = $el.find("form").checksley({onlyOneErrorElement: true})
 
-        if $routeParams['next'] and $routeParams['next'] != $navUrls.resolve("register")
-            $scope.nextUrl = decodeURIComponent($routeParams['next'])
-        else
-            $scope.nextUrl = $navUrls.resolve("home")
+        $scope.nextUrl = $navUrls.resolve("home")
 
         onSuccessSubmit = (response) ->
             $analytics.trackEvent("auth", "register", "user registration", 1)
-
-            $confirm.notify("success", $translate.instant("LOGIN_FORM.SUCCESS"))
 
             $location.url($scope.nextUrl)
 
@@ -340,8 +365,10 @@ ForgotPasswordDirective = ($auth, $confirm, $location, $navUrls, $translate) ->
         onSuccessSubmit = (response) ->
             $location.path($navUrls.resolve("login"))
 
-            text = $translate.instant("FORGOT_PASSWORD_FORM.SUCCESS")
-            $confirm.success(text)
+            title = $translate.instant("FORGOT_PASSWORD_FORM.SUCCESS_TITLE")
+            message = $translate.instant("FORGOT_PASSWORD_FORM.SUCCESS_TEXT")
+
+            $confirm.success(title, message)
 
         onErrorSubmit = (response) ->
             text = $translate.instant("FORGOT_PASSWORD_FORM.ERROR")

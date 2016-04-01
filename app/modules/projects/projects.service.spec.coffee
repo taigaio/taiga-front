@@ -79,7 +79,7 @@ describe "tgProjectsService", ->
         projectsService.newProject()
 
         expect(mocks.lightboxFactory.create).to.have.been.calledWith("tg-lb-create-project", {
-            "class": "wizard-create-project"
+            "class": "wizard-create-project lightbox"
         })
 
     it "bulkUpdateProjectsOrder and then fetch projects again", () ->
@@ -162,4 +162,17 @@ describe "tgProjectsService", ->
                 }
             ])
 
+            done()
+
+    it "validateTransferToken", (done) ->
+        projectId = 3
+
+        tokenValidation = Immutable.fromJS({})
+
+        mocks.resources.projects = {}
+        mocks.resources.projects.transferValidateToken = sinon.stub()
+        mocks.resources.projects.transferValidateToken.withArgs(projectId).promise().resolve(tokenValidation)
+
+        projectsService.transferValidateToken(projectId).then (projects) ->
+            expect(projects.toJS()).to.be.eql({})
             done()

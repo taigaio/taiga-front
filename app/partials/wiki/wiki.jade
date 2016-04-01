@@ -29,5 +29,6 @@ div.wrapper(ng-controller="WikiDetailController as ctrl",
         )
 
         a.remove(href="", ng-click="ctrl.delete()", ng-if="wiki.id", title="{{'WIKI.REMOVE' | translate}}", tg-check-permission="delete_wiki_page")
-            span.icon.icon-delete
+            svg.icon.icon-trash
+                use(xlink:href="#icon-trash")
             span(translate="WIKI.REMOVE")

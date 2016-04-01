@@ -1,5 +1,5 @@
-div.custom-field-single
-    div.custom-field-data
+.custom-field-single
+    .custom-field-data
         span.custom-field-name
             <%- name %>
         <% if (description){ %>
@@ -7,11 +7,17 @@ div.custom-field-single
             <%- description %>
         <% } %>
 
-    div.custom-field-value.js-value-view-mode
+    .custom-field-value.js-value-view-mode
         span
+            <% if (type=="url") { %>
+            a(href!="<%- value %>")
+                <%- value %>
+            <% } else { %>
             <%- value %>
+            <% } %>
 
     <% if (isEditable) { %>
-    div.custom-field-options
-        a.icon.icon-edit(href="", title="{{'COMMON.CUSTOM_ATTRIBUTES.EDIT' | translate}}")
+    .custom-field-options
+        svg.icon.icon-edit.js-edit-description(title="{{'COMMON.CUSTOM_ATTRIBUTES.EDIT' | translate}}")
+            use(xlink:href="#icon-edit")
     <% } %>

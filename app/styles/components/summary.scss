@@ -139,8 +139,11 @@ $summary-background: $grayer;
         margin-right: 2rem;
     }
     .icon {
-        font-size: 1.4rem;
+        fill: currentColor;
+        height: 1.5rem;
         margin-right: .4rem;
+        vertical-align: middle;
+        width: 1.5rem;
         &.icon-stats {
             color: $primary;
             float: right;
@@ -171,10 +174,11 @@ $summary-background: $grayer;
     margin-bottom: 1rem;
     padding: 2rem 6rem;
     svg {
-        flex-basis: 5rem;
+        @include svg-size(4rem);
+        fill: $primary-dark;
+        flex-basis: 4rem;
         flex-shrink: 0;
-        margin-right: 1rem;
-        width: 5rem;
+        margin-right: 2rem;
     }
     p {
         margin: 0;
@@ -188,9 +192,6 @@ $summary-background: $grayer;
         color: $primary-dark;
         margin: 0;
         text-transform: uppercase;
-    }
-    path {
-        fill: $primary-dark;
     }
     a {
         @extend %bold;

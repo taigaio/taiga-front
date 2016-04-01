@@ -73,6 +73,7 @@ a {
 input[type="text"],
 input[type="number"],
 input[type="password"],
+input[type="url"],
 input[type="email"],
 input[type="date"],
 input[type="password"],
@@ -154,7 +155,7 @@ tg-project-menu {
         background: lighten($primary-light, 20%);
         border-top: 3px solid $primary;
         .icon {
-            color: $primary;
+            fill: $primary;
         }
     }
 }
@@ -171,7 +172,7 @@ tg-project-menu {
 //Kanban table
 .kanban-table-header {
     .task-colum-name {
-        background: lighten($primary-light, 20%);
+        background: lighten($whitish, 5%);
         border-top: 3px solid $primary;
         .icon {
             color: $primary;
@@ -181,6 +182,6 @@ tg-project-menu {
 
 .kanban-table-body {
     .kanban-uses-box {
-        background: $whitish;
+        background: lighten($whitish, 5%);
     }
 }

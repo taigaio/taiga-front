@@ -8,15 +8,8 @@
         display: flex;
         justify-content: space-between;
         padding: .5rem 1rem;
-        .icon-arrow-bottom {
-            @extend %large;
+        .icon {
             cursor: pointer;
-            transform: rotate(-90deg);
-            transition: transform .2s linear;
-            &.open {
-                transform: rotate(0);
-                transition: transform .2s linear;
-            }
         }
     }
     .custom-fields-body {
@@ -37,14 +30,16 @@
                 margin-top: .5rem;
             }
         }
-        .custom-field-options {
-            opacity: 0;
-            transition: opacity .2s linear;
-            a {
-                color: $gray-light;
-            }
-            a:hover {
-                color: $primary;
+    }
+    .custom-field-options {
+        margin: 0;
+        opacity: 0;
+        transition: opacity .2s linear;
+        svg {
+            cursor: pointer;
+            fill: $gray-light;
+            &:hover {
+                fill: $primary;
             }
         }
     }
@@ -61,9 +56,6 @@
             display: block;
             line-height: .9rem;
         }
-    }
-    .custom-field-options {
-        margin: 0;
     }
     .custom-field-value {
         @extend %light;

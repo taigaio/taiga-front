@@ -71,7 +71,7 @@ class WebhooksController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.
 
     loadProject: ->
         return @rs.projects.getBySlug(@params.pslug).then (project) =>
-            if not project.i_am_owner
+            if not project.i_am_admin
                 @location.path(@navUrls.resolve("permission-denied"))
 
             @scope.projectId = project.id
@@ -103,7 +103,7 @@ WebhookDirective = ($rs, $repo, $confirm, $loading, $translate) ->
             $rs.webhooklogs.list(webhook.id).then (webhooklogs) =>
                 for log in webhooklogs
                     log.validStatus = 200 <= log.status < 300
-                    log.prettySentHeaders = _.map(_.pairs(log.request_headers), ([header, value]) -> "#{header}: #{value}").join("\n")
+                    log.prettySentHeaders = _.map(_.toPairs(log.request_headers), ([header, value]) -> "#{header}: #{value}").join("\n")
                     log.prettySentData = JSON.stringify(log.request_data)
                     log.prettyDate = moment(log.created).format(prettyDate)
 

@@ -25,8 +25,9 @@
         display: flex;
         margin-top: auto;
         svg {
-            @include svg-size(.8rem);
-            fill: $gray-light;
+            @include svg-size(.75rem);
+            fill: currentColor;
+            margin-right: .25rem;
         }
         .svg-eye-closed {
             display: none;
@@ -40,7 +41,7 @@
         &.active {
             color: $primary;
             svg {
-                fill: $primary;
+                fill: currentColor;
             }
         }
     }
@@ -71,10 +72,8 @@
         }
     }
     .look-for-people {
-        svg {
-            @include svg-size(1rem);
-            fill: $gray-light;
-            margin: 0 .5rem;
-        }
+        @include svg-size(1rem);
+        fill: $gray-light;
+        margin: 0 .5rem;
     }
 }

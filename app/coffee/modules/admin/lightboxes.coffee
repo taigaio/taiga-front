@@ -27,141 +27,256 @@ debounce = @.taiga.debounce
 
 module = angular.module("taigaKanban")
 
-MAX_MEMBERSHIP_FIELDSETS = 4
-
 #############################################################################
 ## Create Members Lightbox Directive
 #############################################################################
 
-CreateMembersDirective = ($rs, $rootScope, $confirm, $loading, lightboxService, $compile) ->
-    extraTextTemplate = """
-    <fieldset class="extra-text">
-        <textarea ng-attr-placeholder="{{'LIGHTBOX.CREATE_MEMBER.PLACEHOLDER_INVITATION_TEXT' | translate}}"
-                  maxlength="255"></textarea>
-    </fieldset>
-    """
+class LightboxAddMembersController
+    @.$inject = [
+        "$scope",
+        "lightboxService",
+        "tgLoader",
+        "$tgConfirm",
+        "$tgResources",
+        "$rootScope",
+    ]
 
-    template = _.template("""
-    <div class="add-member-wrapper">
-        <fieldset>
-            <input tg-capslock type="email" placeholder="{{'LIGHTBOX.CREATE_MEMBER.PLACEHOLDER_TYPE_EMAIL' | translate}}"
-                   <% if(required) { %> data-required="true" <% } %> data-type="email" />
-        </fieldset>
-        <fieldset>
-            <select <% if(required) { %> data-required="true" <% } %> data-required="true">
-                <% _.each(roleList, function(role) { %>
-                <option value="<%- role.id %>"><%- role.name %></option>
-                <% }); %>
-            </select>
-            <a class="icon icon-plus add-fieldset" href=""></a>
-        </fieldset>
-    </div>
-    """)
+    constructor: (@scope, @lightboxService, @tgLoader, @confirm, @rs, @rootScope) ->
+        @._defaultMaxInvites = 4
+        @._defaultRole = @.project.roles[0].id
+        @.form = null
+        @.submitInvites = false
+        @.canAddUsers = true
+        @.memberInvites = []
 
-    link = ($scope, $el, $attrs) ->
-        createFieldSet = (required = true)->
-            ctx = {roleList: $scope.project.roles, required: required}
-            return $compile(template(ctx))($scope)
+        if @.project.max_memberships == null
+            @.membersLimit = @._defaultMaxInvites
+        else
+            pendingMembersCount = Math.max(@.project.max_memberships - @.project.total_memberships, 0)
+            @.membersLimit = Math.min(pendingMembersCount, @._defaultMaxInvites)
 
-        resetForm = ->
-            $el.find("form textarea").remove()
-            $el.find("form .add-member-wrapper").remove()
+        @.addSingleMember()
 
-            invitations = $el.find(".add-member-forms")
-            invitations.html($compile(extraTextTemplate)($scope))
+    addSingleMember: () ->
+        @.memberInvites.push({email:'', role_id: @._defaultRole})
 
-            fieldSet = createFieldSet()
-            invitations.prepend(fieldSet)
+        if @.memberInvites.length >= @.membersLimit
+            @.canAddUsers = false
+        @.showWarningMessage = (!@.canAddUsers &&
+                            @.project.total_memberships + @.memberInvites.length == @.project.max_memberships)
 
-        $scope.$on "membersform:new",  ->
-            resetForm()
-            lightboxService.open($el)
+    removeSingleMember: (index) ->
+        @.memberInvites.splice(index, 1)
 
-        $scope.$on "$destroy", ->
-            $el.off()
+        @.canAddUsers = true
+        @.showWarningMessage = @.membersLimit == 1
 
-        $el.on "click", ".delete-fieldset", (event) ->
-            event.preventDefault()
-            target = angular.element(event.currentTarget)
-            fieldSet = target.closest('.add-member-wrapper')
+    submit: () ->
+        # Need to reset the form constrains
+        @.form.initializeFields()
+        @.form.reset()
+        return if not @.form.validate()
 
-            fieldSet.remove()
+        @.memberInvites = _.filter(@.memberInvites, (invites) ->
+            invites.email != "")
 
-            lastActionButton = $el.find(".add-member-wrapper fieldset:last > a")
-            if lastActionButton.hasClass("icon-delete delete-fieldset")
-                lastActionButton.removeClass("icon-delete delete-fieldset")
-                                .addClass("icon-plus add-fieldset")
+        @.submitInvites = true
+        promise = @rs.memberships.bulkCreateMemberships(
+            @.project.id,
+            @.memberInvites,
+            @.invitationText
+        )
+        promise.then(
+            @._onSuccessInvite.bind(this),
+            @._onErrorInvite.bind(this)
+        )
 
-        $el.on "click", ".add-fieldset", (event) ->
-            event.preventDefault()
-            target = angular.element(event.currentTarget)
-            fieldSet = target.closest('.add-member-wrapper')
+    _onSuccessInvite: () ->
+        @.submitInvites = false
+        @rootScope.$broadcast("membersform:new:success")
+        @lightboxService.closeAll()
+        @confirm.notify("success")
 
-            target.removeClass("icon-plus add-fieldset")
-                  .addClass("icon-delete delete-fieldset")
+    _onErrorInvite: (response) ->
+        @.submitInvites = false
+        @.form.setErrors(response.data)
+        if response.data._error_message
+            @confirm.notify("error", response.data._error_message)
 
-            newFieldSet = createFieldSet(false)
-            fieldSet.after(newFieldSet)
+module.controller("LbAddMembersController", LightboxAddMembersController)
 
-            $scope.$digest() # To compile newFieldSet and translate text
 
-            if $el.find(".add-member-wrapper").length == MAX_MEMBERSHIP_FIELDSETS
-                $el.find(".add-member-wrapper fieldset:last > a").removeClass("icon-plus add-fieldset")
-                                             .addClass("icon-delete delete-fieldset")
 
-        submit = debounce 2000, (event) =>
-            event.preventDefault()
+LightboxAddMembersDirective = (lightboxService) ->
+    link = (scope, el, attrs, ctrl) ->
+        lightboxService.open(el)
+        ctrl.form = el.find("form").checksley()
 
-            currentLoading = $loading()
-                .target(submitButton)
-                .start()
+    return {
+        scope: {},
+        bindToController: {
+            project: '=',
+        },
+        controller: 'LbAddMembersController',
+        controllerAs: 'vm',
+        templateUrl: 'admin/lightbox-add-members.html',
+        link: link
+    }
 
-            onSuccess = (data) ->
-                currentLoading.finish()
-                lightboxService.close($el)
-                $confirm.notify("success")
-                $rootScope.$broadcast("membersform:new:success")
+module.directive("tgLbAddMembers", ["lightboxService", LightboxAddMembersDirective])
 
-            onError = (data) ->
-                currentLoading.finish()
-                lightboxService.close($el)
-                $confirm.notify("error")
-                $rootScope.$broadcast("membersform:new:error")
 
-            form = $el.find("form").checksley()
+#############################################################################
+## Warning message directive
+#############################################################################
 
-            #checksley find new fields
-            form.destroy()
-            form.initialize()
-            if not form.validate()
-                return
+LightboxAddMembersWarningMessageDirective = () ->
+    return {
+          templateUrl: "admin/lightbox-add-members-no-more=memberships-warning-message.html"
+          scope: {
+              project: "="
+          }
+    }
 
-            memberWrappers = $el.find("form .add-member-wrapper")
-            memberWrappers = _.filter memberWrappers, (mw) ->
-                angular.element(mw).find("input").hasClass('checksley-ok')
+module.directive("tgLightboxAddMembersWarningMessage", [LightboxAddMembersWarningMessageDirective])
 
-            invitations = _.map memberWrappers, (mw) ->
-                memberWrapper = angular.element(mw)
-                email =  memberWrapper.find("input")
-                role = memberWrapper.find("select")
 
-                return {
-                    email: email.val()
-                    role_id: role.val()
-                }
+#############################################################################
+## Transfer project ownership
+#############################################################################
 
-            if invitations.length
-                invitation_extra_text = $el.find("form textarea").val()
+LbRequestOwnershipDirective = (lightboxService, rs, confirmService, $translate) ->
+    return {
+        link: (scope, el) ->
+            lightboxService.open(el)
 
-                promise = $rs.memberships.bulkCreateMemberships($scope.project.id,
-                                                      invitations, invitation_extra_text)
-                promise.then(onSuccess, onError)
+            scope.request = () ->
+                scope.loading = true
 
-        submitButton = $el.find(".submit-button")
+                rs.projects.transferRequest(scope.projectId).then () ->
+                    scope.loading = false
 
-        $el.on "submit", "form", submit
+                    lightboxService.close(el)
 
-    return {link: link}
+                    confirmService.notify("success", $translate.instant("ADMIN.PROJECT_PROFILE.REQUEST_OWNERSHIP_SUCCESS"))
 
-module.directive("tgLbCreateMembers", ["$tgResources", "$rootScope", "$tgConfirm", "$tgLoading",
-                                       "lightboxService", "$compile", CreateMembersDirective])
+        templateUrl: "common/lightbox/lightbox-request-ownership.html"
+    }
+
+module.directive('tgLbRequestOwnership', [
+    "lightboxService",
+    "tgResources",
+    "$tgConfirm",
+    "$translate",
+    LbRequestOwnershipDirective])
+
+class ChangeOwnerLightboxController
+    constructor: (@rs, @lightboxService, @confirm, @translate) ->
+        @.users = []
+        @.q = ""
+        @.commentOpen = false
+
+    limit: 3
+
+    normalizeString: (normalizedString) ->
+        normalizedString = normalizedString.replace("Á", "A").replace("Ä", "A").replace("À", "A")
+        normalizedString = normalizedString.replace("É", "E").replace("Ë", "E").replace("È", "E")
+        normalizedString = normalizedString.replace("Í", "I").replace("Ï", "I").replace("Ì", "I")
+        normalizedString = normalizedString.replace("Ó", "O").replace("Ö", "O").replace("Ò", "O")
+        normalizedString = normalizedString.replace("Ú", "U").replace("Ü", "U").replace("Ù", "U")
+        return normalizedString
+
+    filterUsers: (user) ->
+        username = user.full_name_display.toUpperCase()
+        username = @.normalizeString(username)
+        text = @.q.toUpperCase()
+        text = @.normalizeString(text)
+
+        return _.includes(username, text)
+
+    getUsers: () ->
+        if !@.users.length && !@.q.length
+            users =  @.activeUsers
+        else
+            users = @.users
+
+        users = users.slice(0, @.limit)
+        users = _.reject(users, {"selected": true})
+
+        return _.reject(users, {"id": @.currentOwnerId})
+
+    userSearch: () ->
+        @.users = @.activeUsers
+
+        @.selected = _.find(@.users, {"selected": true})
+
+        @.users = _.filter(@.users, @.filterUsers.bind(this)) if @.q
+
+    selectUser: (user) ->
+        @.activeUsers = _.map @.activeUsers, (user) ->
+            user.selected = false
+
+            return user
+
+        user.selected = true
+
+        @.userSearch()
+
+    submit: () ->
+        @.loading = true
+        @rs.projects.transferStart(@.projectId, @.selected.id, @.comment)
+            .then () =>
+                @.loading = false
+                @lightboxService.closeAll()
+
+                title = @translate.instant("ADMIN.PROJECT_PROFILE.CHANGE_OWNER_SUCCESS_TITLE")
+                desc = @translate.instant("ADMIN.PROJECT_PROFILE.CHANGE_OWNER_SUCCESS_DESC")
+
+                @confirm.success(title, desc, {
+                    type: "svg",
+                    name: "icon-speak-up"
+                })
+
+ChangeOwnerLightboxController.$inject = [
+        "tgResources",
+        "lightboxService",
+        "$tgConfirm",
+        "$translate"
+]
+
+module.controller('ChangeOwnerLightbox', ChangeOwnerLightboxController)
+
+ChangeOwnerLightboxDirective = (lightboxService, lightboxKeyboardNavigationService, $template, $compile) ->
+    link = (scope, el) ->
+        lightboxService.open(el)
+
+    return {
+        scope: true,
+        controller: "ChangeOwnerLightbox",
+        controllerAs: "vm",
+        bindToController: {
+            currentOwnerId: "=",
+            projectId: "=",
+            activeUsers: "="
+        },
+        templateUrl: "common/lightbox/lightbox-change-owner.html"
+        link:link
+    }
+
+
+module.directive("tgLbChangeOwner", ["lightboxService", "lightboxKeyboardNavigationService", "$tgTemplate", "$compile", ChangeOwnerLightboxDirective])
+
+TransferProjectStartSuccessDirective = (lightboxService) ->
+    link = (scope, el) ->
+        scope.close = () ->
+            lightboxService.close(el)
+
+        lightboxService.open(el)
+
+    return {
+        templateUrl: "common/lightbox/lightbox-transfer-project-start-success.html"
+        link:link
+    }
+
+
+module.directive("tgLbTransferProjectStartSuccess", ["lightboxService", TransferProjectStartSuccessDirective])

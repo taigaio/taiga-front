@@ -67,6 +67,7 @@ urls = {
     "profile": "/profile"
     "user-profile": "/profile/:username"
 
+    "blocked-project": "/blocked-project/:project"
     "project": "/project/:project"
     "project-backlog": "/project/:project/backlog"
     "project-taskboard": "/project/:project/taskboard/:sprint"
@@ -112,6 +113,7 @@ urls = {
     "user-settings-user-change-password": "/user-settings/user-change-password"
     "user-settings-user-avatar": "/user-settings/user-avatar"
     "user-settings-mail-notifications": "/user-settings/mail-notifications"
+    "user-settings-contrib": "/user-settings/contrib/:plugin"
 
 }
 

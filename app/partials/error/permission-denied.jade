@@ -2,8 +2,14 @@ doctype html
 
 div.error-main
     div.error-container
-        object.logo-svg(type="image/svg+xml", data="/svg/logo.svg")
-            img(src="/#{v}/images/logo.png", alt="TAIGA")
+        img.logo-svg(
+            ng-src="/#{v}/svg/logo.svg"
+            alt="TAIGA"
+        )
         h1.logo(translate="ERROR.PERMISSION_DENIED")
         p.error-text(translate="ERROR.PERMISSION_DENIED_TEXT")
-        a(href="/", title="", translate="COMMON.GO_HOME")
+        a(
+            href="/"
+            title=""
+            translate="COMMON.GO_HOME"
+        )

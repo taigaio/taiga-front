@@ -1,0 +1,15 @@
+.blocked-project-detail
+    .blocked-project-inner
+        .blocked-project-title
+            .project-image
+                img(
+                    tg-project-logo-small-src="vm.project"
+                    alt="{{::vm.project.get('name')}}"
+                )
+                svg.icon.icon-blocked-project
+                    use(xlink:href="#icon-blocked-project")
+                        title(translate="PROJECT.BLOCKED_PROJECT.BLOCKED")
+            span.project-title {{::vm.project.get("name")}}
+        .blocked-project-message
+            h1.project-block-title {{'PROJECT.BLOCKED_PROJECT.BLOCKED' | translate}}
+            tg-blocked-project-explanation.project-block-message

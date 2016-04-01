@@ -41,7 +41,8 @@
         "IOCAINE_TEXT": "感到任務的不堪負荷？確認其它人在編輯任務時知道此狀況，可以點選Iocaine。它可能會成為免疫的致命狀況，只要長期小量消耗，但如果你只是偶而挑戰它可有助表現。",
         "CLIENT_REQUIREMENT": "Client requirement is new requirement that was not previously expected and it is required to be part of the project",
         "TEAM_REQUIREMENT": "Team requirement is a requirement that must exist in the project but should have no cost for the client",
-        "CAPSLOCK_WARNING": "注意你輸入了大寫符號，大小寫字母有所不同",
+        "OWNER": "Project Owner",
+        "CAPSLOCK_WARNING": "Be careful! You are using capital letters in an input field that is case sensitive.",
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "該數值似乎為無效",
             "TYPE_EMAIL": "該電子郵件應為有效地址",
@@ -65,7 +66,9 @@
             "MIN_CHECK": "你必須至少選擇 %s 選項",
             "MAX_CHECK": "你必須至多選出 %s選項",
             "RANGE_CHECK": "你必須在%s 與 %s 之間作出選擇",
-            "EQUAL_TO": "該數值應為一致"
+            "EQUAL_TO": "該數值應為一致",
+            "LINEWIDTH": "One or more lines is perhaps too long. Try to keep under %s characters.",
+            "PIKADAY": "Invalid date format, please use DD MMM YYYY (like 23 Mar 1984)"
         },
         "PICKERDATE": {
             "FORMAT": "DD MMM YYYY",
@@ -315,7 +318,8 @@
         "PLACEHOLDER_FIELD": "使用者名稱或電子郵件",
         "ACTION_RESET_PASSWORD": "重設密碼 ",
         "LINK_CANCEL": "不，請帶我回去，我記起來了",
-        "SUCCESS": "<strong>檢查你的收信箱</strong><br />我們送出了一封信<br />裏面有設定你新電子郵件的相關指示",
+        "SUCCESS_TITLE": "Check your inbox!",
+        "SUCCESS_TEXT": "We sent you an email with the instructions to set a new password",
         "ERROR": "按我們的記錄，你尚未註冊"
     },
     "CHANGE_PASSWORD": {
@@ -373,7 +377,6 @@
         "DEPRECATED_FILE": "棄用?",
         "ADD": "加入新附件 {{maxFileSizeMsg}}",
         "DROP": "在此移除附件 ",
-        "MAX_FILE_SIZE": "[Max. size: {{maxFileSize}}]",
         "SHOW_DEPRECATED": "+ 顯示棄用的附件",
         "HIDE_DEPRECATED": "+ 隱藏棄用的附件",
         "COUNT_DEPRECATED": "({{ counter }} 遭棄用)",
@@ -406,7 +409,9 @@
             "TITLE": "管理成員",
             "PAGE_TITLE": "成員資格 - {{projectName}}",
             "ADD_BUTTON": "+ 新成員",
-            "ADD_BUTTON_TITLE": "增加新成員"
+            "ADD_BUTTON_TITLE": "增加新成員",
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_ADMIN": "Unfortunately, this project has reached its limit of <strong>({{members}})</strong> allowed members.",
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "This project has reached its limit of <strong>({{members}})</strong> allowed members. If you would like to increase that limit please contact the administrator."
         },
         "PROJECT_EXPORT": {
             "TITLE": "匯出",
@@ -428,6 +433,10 @@
             "DISABLE": "停用",
             "BACKLOG": "待辦任務優先表",
             "BACKLOG_DESCRIPTION": "管理你的 User Story 讓接下來的及優先的工作能被有條理地檢視 ",
+            "NUMBER_SPRINTS": "Expected number of sprints",
+            "NUMBER_SPRINTS_HELP": "0 for an undetermined number",
+            "NUMBER_US_POINTS": "Expected total of story points",
+            "NUMBER_US_POINTS_HELP": "0 for an undetermined number",
             "KANBAN": "Kanban(看板)",
             "KANBAN_DESCRIPTION": "在此看板上組織你的專案",
             "ISSUES": "問題 ",
@@ -435,9 +444,9 @@
             "WIKI": "維基",
             "WIKI_DESCRIPTION": "新增,修正或是刪除與他人合作的內容。這裏正是專案文件記錄區",
             "MEETUP": "符合",
-            "MEETUP_DESCRIPTION": "選擇你的視訊系統。有些開發者需要面對面接觸",
+            "MEETUP_DESCRIPTION": "Choose your videoconference system.",
             "SELECT_VIDEOCONFERENCE": "選擇一個視訊會議系統　",
-            "SALT_CHAT_ROOM": "你可以把聊天室名稱加上salt code亂數密碼　",
+            "SALT_CHAT_ROOM": "Add a prefix to the chatroom name",
             "JITSI_CHAT_ROOM": "Jitsi",
             "APPEARIN_CHAT_ROOM": "AppearIn",
             "TALKY_CHAT_ROOM": "Talky",
@@ -449,22 +458,31 @@
             "PROJECT_DETAILS": "專案細節",
             "PROJECT_NAME": "專案名稱",
             "PROJECT_SLUG": "專案代稱",
-            "NUMBER_SPRINTS": "衝刺任務數目(0為未決定數量)",
-            "NUMBER_US_POINTS": "使用者故事點數數目 (0 為未決定數目)",
             "TAGS": "標籤",
             "DESCRIPTION": "描述",
             "RECRUITING": "這個專案是否在徵人",
             "RECRUITING_MESSAGE": "你在找誰？",
             "RECRUITING_PLACEHOLDER": "定義你要找的資訊",
             "PUBLIC_PROJECT": "公開專案",
-            "PUBLIC_PROJECT_DESC": "用戶能夠找到並檢視你的專案",
             "PRIVATE_PROJECT": "不公開專案",
-            "PRIVATE_PROJECT_DESC": "本專案預設為私密不公開顯示",
             "PRIVATE_OR_PUBLIC": "公開專案和私密專案有何差異?",
             "DELETE": "刪除此專案",
             "LOGO_HELP": "此圖片將被裁成80x80px.<br>",
             "CHANGE_LOGO": "更改圖標",
-            "ACTION_USE_DEFAULT_LOGO": "使用設預圖片"
+            "ACTION_USE_DEFAULT_LOGO": "使用設預圖片",
+            "MAX_PRIVATE_PROJECTS": "You've reached the maximum number of private projects allowed by your current plan",
+            "MAX_PRIVATE_PROJECTS_MEMBERS": "The maximum number of members for private projects has been exceeded",
+            "MAX_PUBLIC_PROJECTS": "Unfortunately, you've reached the maximum number of public projects allowed by your current plan",
+            "MAX_PUBLIC_PROJECTS_MEMBERS": "The project exceeds your maximum number of members for public projects",
+            "PROJECT_OWNER": "Project owner",
+            "REQUEST_OWNERSHIP": "Request ownership",
+            "REQUEST_OWNERSHIP_CONFIRMATION_TITLE": "Do you want to become the new project owner?",
+            "REQUEST_OWNERSHIP_DESC": "Request that current project owner {{name}} transfer ownership of this project to you.",
+            "REQUEST_OWNERSHIP_BUTTON": "要求",
+            "REQUEST_OWNERSHIP_SUCCESS": "We'll notify the project owner",
+            "CHANGE_OWNER": "Change owner",
+            "CHANGE_OWNER_SUCCESS_TITLE": "Ok, your request has been sent!",
+            "CHANGE_OWNER_SUCCESS_DESC": "We will notify you by email if the project ownership request is accepted or declined"
         },
         "REPORTS": {
             "TITLE": "Reports",
@@ -495,7 +513,8 @@
             "ISSUE_ADD": "在問題中加入客制欄位",
             "FIELD_TYPE_TEXT": "單行文字",
             "FIELD_TYPE_MULTI": "多行",
-            "FIELD_TYPE_DATE": "日期"
+            "FIELD_TYPE_DATE": "日期",
+            "FIELD_TYPE_URL": "Url"
         },
         "PROJECT_VALUES": {
             "PAGE_TITLE": "{{sectionName}} - 專案數值 - {{projectName}}",
@@ -543,7 +562,7 @@
             "COUNT_MEMBERS": "{{ role.members_count }} 這類角色的成員",
             "TITLE_DELETE_ROLE": "删除角色",
             "REPLACEMENT_ROLE": "和此角色有關的使用者都將遭移除　",
-            "WARNING_DELETE_ROLE": "<strong>小心, 所有角色的估算都將會移除</strong>",
+            "WARNING_DELETE_ROLE": "Be careful! All role estimations will be removed",
             "ERROR_DELETE_ALL": "你不能刪除所有數值",
             "EXTERNAL_USER": "外部使用者"
         },
@@ -671,6 +690,24 @@
         },
         "SUBMENU_THIDPARTIES": {
             "TITLE": "服務 "
+        },
+        "PROJECT_TRANSFER": {
+            "DO_YOU_ACCEPT_PROJECT_OWNERNSHIP": "Would you like to become the new project owner?",
+            "PRIVATE": "Private",
+            "ACCEPTED_PROJECT_OWNERNSHIP": "Congratulations! You're now the new project owner.",
+            "REJECTED_PROJECT_OWNERNSHIP": "OK. We'll contact the current project owner",
+            "ACCEPT": "接受",
+            "REJECT": "Reject",
+            "PROPOSE_OWNERSHIP": "<strong>{{owner}}</strong>, the current owner of the project <strong>{{project}}</strong> has asked that you become the new  project owner.",
+            "ADD_COMMENT_QUESTION": "Would you like to send a question to the project owner?",
+            "ADD_COMMENT": "Would you like to add a comment for the project owner?",
+            "UNLIMITED_PROJECTS": "Unlimited",
+            "OWNER_MESSAGE": {
+                "PRIVATE": "Please remember that you can own up to <strong>{{maxProjects}}</strong> private projects. You currently own <strong>{{currentProjects}}</strong> private projects",
+                "PUBLIC": "Please remember that you can own up to <strong>{{maxProjects}}</strong> public projects. You currently own <strong>{{currentProjects}}</strong> public projects"
+            },
+            "CANT_BE_OWNED": "At the moment you cannot become an owner of a project of this type. If you would like to become the owner of this project, please contact the administrator so they change your account settings to enable project ownership.",
+            "CHANGE_MY_PLAN": "Change my plan"
         }
     },
     "USER": {
@@ -731,6 +768,11 @@
         "FANS_COUNTER_TITLE": "{total, plural, one{一個粉絲} other{# 粉絲}}",
         "WATCHERS_COUNTER_TITLE": "{total, plural, one{一個觀注者} other{# 觀注者}}",
         "MEMBERS_COUNTER_TITLE": "{total, plural, one{one member} other{# members}}",
+        "BLOCKED_PROJECT": {
+            "BLOCKED": "Blocked project",
+            "THIS_PROJECT_IS_BLOCKED": "This project is temporarily blocked",
+            "TO_UNBLOCK_CONTACT_THE_ADMIN_STAFF": "In order to unblock your projects, contact the administrator."
+        },
         "STATS": {
             "PROJECT": "專案<br/> 點數",
             "DEFINED": "已定義<br/> 點數",
@@ -777,6 +819,7 @@
             "CHANGE_PASSWORD": "更換密碼 ",
             "DASHBOARD_TITLE": "控制台",
             "DISCOVER_TITLE": "發現流行專案",
+            "NEW_ITEM": "新　",
             "DISCOVER": "發現",
             "ACTION_REORDER": "拖移 & 丟到來記錄"
         },
@@ -791,7 +834,32 @@
             "ERROR_TOO_MANY_REQUEST": "抱歉系統繁忙中，請稍後再試試　",
             "ERROR_MESSAGE": "我們的系統無法滙入你的資料",
             "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) 超過系統容量上限, 請重傳小一點的檔案 ({{maxFileSize}})",
-            "SYNC_SUCCESS": "你的專案已成功滙入"
+            "SYNC_SUCCESS": "你的專案已成功滙入",
+            "PROJECT_RESTRICTIONS": {
+                "PROJECT_MEMBERS_DESC": "The project you are trying to import has {{members}} members, unfortunately, your current plan allows for a maximum of {{max_memberships}} members per project. If you would like to increase that limit please contact the administrator.",
+                "PRIVATE_PROJECTS_SPACE": {
+                    "TITLE": "Unfortunately, your current plan does not allow for additional private projects",
+                    "DESC": "The project you are trying to import is private. Unfortunately, your current plan does not allow for additional private projects."
+                },
+                "PUBLIC_PROJECTS_SPACE": {
+                    "TITLE": "Unfortunately, your current plan does not allow for additional private projects",
+                    "DESC": "The project you are trying to import is public. Unfortunately, your current plan does not allow additional public projects."
+                },
+                "PRIVATE_PROJECTS_MEMBERS": {
+                    "TITLE": "Your current plan allows for a maximum of {{max_memberships}} members per private project"
+                },
+                "PUBLIC_PROJECTS_MEMBERS": {
+                    "TITLE": "Your current plan allows for a maximum of {{max_memberships}} members per public project."
+                },
+                "PRIVATE_PROJECTS_SPACE_MEMBERS": {
+                    "TITLE": "Unfortunately your current plan doesn't allow additional private projects or an increase of more than {{max_memberships}} members per private project",
+                    "DESC": "The project that you are trying to import is private and has {{members}} members."
+                },
+                "PUBLIC_PROJECTS_SPACE_MEMBERS": {
+                    "TITLE": "Unfortunately your current plan doesn't allow additional public projects or an increase of more than {{max_memberships}} members per public project",
+                    "DESC": "The project that you are trying to import is public and has more than {{members}} members."
+                }
+            }
         },
         "LIKE_BUTTON": {
             "LIKE": "喜歡",
@@ -819,8 +887,11 @@
         "DELETE_ACCOUNT": {
             "SECTION_NAME": "刪除Taiga帳戶",
             "CONFIRM": "你確定要刪除Taiga帳戶嗎？",
-            "SUBTITLE": "我們會想念你:-(",
-            "NEWSLETTER_LABEL_TEXT": "不願再收到電子月報"
+            "NEWSLETTER_LABEL_TEXT": "不願再收到電子月報",
+            "CANCEL": "Back to settings",
+            "ACCEPT": "Delete account",
+            "BLOCK_PROJECT": "Note that all the projects you own projects will be <strong>blocked</strong> after you delete your account. If you do want a project blocked, transfer ownership to another member of each project prior to deleting your account.",
+            "SUBTITLE": "Sorry to see you go. We'll be here if you should ever consider us again! :("
         },
         "DELETE_PROJECT": {
             "TITLE": "刪除專案",
@@ -876,7 +947,25 @@
         },
         "CREATE_MEMBER": {
             "PLACEHOLDER_INVITATION_TEXT": "(非必要) 加上一段私人文字在邀請信，告訴你的新成員一些好事  ;-)",
-            "PLACEHOLDER_TYPE_EMAIL": "輸入一個電郵地址"
+            "PLACEHOLDER_TYPE_EMAIL": "輸入一個電郵地址",
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "Unfortunately, this project can't have more than <strong>{{maxMembers}}</strong> members.<br> If you would like to increase the current limit, please contact the administrator.",
+            "LIMIT_USERS_WARNING_MESSAGE": "Unfortunately, this project can't have more than <strong>{{maxMembers}}</strong> members."
+        },
+        "LEAVE_PROJECT_WARNING": {
+            "TITLE": "Unfortunately, this project can't be left without an owner",
+            "CURRENT_USER_OWNER": {
+                "DESC": "You are the current owner of this project. Before leaving, please transfer ownership to someone else.",
+                "BUTTON": "Change the project owner"
+            },
+            "OTHER_USER_OWNER": {
+                "DESC": "Unfortunately, you can't delete a member who is also the current project owner. First, please assign a new project owner.",
+                "BUTTON": "Request project owner change"
+            }
+        },
+        "CHANGE_OWNER": {
+            "TITLE": "Who do you want to be the new project owner?",
+            "ADD_COMMENT": "Add comment",
+            "BUTTON": "Ask this project member to become the new project owner"
         }
     },
     "US": {
@@ -1304,12 +1393,18 @@
         }
     },
     "WIZARD": {
-        "SECTION_TITLE_CHOOSE_TEMPLATE": "選擇外觀 ",
-        "CHOOSE_TEMPLATE_TEXT": "哪一個樣版最適合你的專案",
         "SECTION_TITLE_CREATE_PROJECT": "創建專案",
         "CREATE_PROJECT_TEXT": "新鮮與乾淨，太好了",
-        "PROGRESS_TEMPLATE_SELECTION": "外觀選擇",
-        "PROGRESS_NAME_DESCRIPTION": "名稱與描述"
+        "CHOOSE_TEMPLATE": "Which template fits your project best?",
+        "CHOOSE_TEMPLATE_TITLE": "More info about project templates",
+        "CHOOSE_TEMPLATE_INFO": "More info",
+        "PROJECT_DETAILS": "Project Details",
+        "PUBLIC_PROJECT": "Public Project",
+        "PRIVATE_PROJECT": "Private Project",
+        "CREATE_PROJECT": "創建專案",
+        "MAX_PRIVATE_PROJECTS": "You've reached the maximum number of private projects",
+        "MAX_PUBLIC_PROJECTS": "Unfortunately, you've reached the maximum number of public projects",
+        "CHANGE_PLANS": "change plans"
     },
     "WIKI": {
         "PAGE_TITLE": "{{wikiPageName}} - 維基 - {{projectName}}",

@@ -294,7 +294,8 @@ helper.attachment = function() {
                 return !!count;
             }, 5000);
 
-            await el.$$('tg-attachment .editable-attachment-comment input').last().sendKeys(name);
+
+            await el.$('tg-attachment .editable-attachment-comment input').sendKeys(name);
             await browser.actions().sendKeys(protractor.Key.ENTER).perform();
             await browser.executeScript(toggleInput);
             await browser.waitForAngular();
@@ -303,7 +304,17 @@ helper.attachment = function() {
 
         renameLastAttchment: async function (name) {
             await browser.actions().mouseMove(el.$$('tg-attachment').last()).perform();
-            await el.$$('tg-attachment .attachment-settings .icon-edit').last().click();
+
+            let settingsGroup = el.$$('tg-attachment .attachment-settings').last();
+
+            await settingsGroup.$$('.settings').first().click();
+
+            await browser.wait(async () => {
+                let count = await $$('tg-attachment .editable-attachment-comment input').count();
+
+                return !!count;
+            }, 5000);
+
             await el.$$('tg-attachment .editable-attachment-comment input').last().sendKeys(name);
             await browser.actions().sendKeys(protractor.Key.ENTER).perform();
             await browser.waitForAngular();
@@ -341,7 +352,7 @@ helper.attachment = function() {
             await browser.actions().mouseMove(el.$$('tg-attachment').last()).perform();
             await el.$$('tg-attachment .attachment-settings .icon-edit').last().click();
             await el.$$('tg-attachment .editable-attachment-deprecated input').last().click();
-            await el.$$('tg-attachment .attachment-settings .editable-settings.icon-floppy').last().click();
+            await el.$$('tg-attachment .attachment-settings').last().$$('.editable-settings').first().click();
             await browser.waitForAngular();
         },
 
@@ -358,7 +369,7 @@ helper.attachment = function() {
 
             // close edit
             if(isEditable) {
-                let iconDelete = await attachment.$('.attachment-settings .icon-delete');
+                let iconDelete = await attachment.$$('.attachment-settings a').get(1);
                 await browser.actions().mouseMove(iconDelete).perform();
 
                 iconDelete.click();
@@ -366,7 +377,7 @@ helper.attachment = function() {
                 await browser.waitForAngular();
             }
 
-            let iconDelete = await attachment.$('.attachment-settings .icon-delete');
+            let iconDelete = await attachment.$$('.attachment-settings a').get(1);
             await browser.actions().mouseMove(iconDelete).perform();
 
             iconDelete.click();
@@ -377,8 +388,8 @@ helper.attachment = function() {
 
         dragLastAttchmentToFirstPosition: async function() {
             await browser.actions().mouseMove(el.$$('tg-attachment').last()).perform();
-            let lastDraggableAttachment = el.$$('tg-attachment .attachment-settings .icon-drag-v').last();
-            let destination = el.$$('tg-attachment .attachment-settings .icon-drag-v').first();
+            let lastDraggableAttachment = el.$$('tg-attachment .attachment-settings a').last();
+            let destination = el.$$('tg-attachment .attachment-settings').first();
             await utils.common.drag(lastDraggableAttachment, destination);
         },
 
@@ -415,11 +426,13 @@ helper.watchers = function() {
         },
 
         removeAllWatchers: async function() {
-            let totalWatchers = await await el.$$('.icon-delete').count();
+            let totalWatchers = await await el.$$('.js-delete-watcher').count();
+
+            if(!totalWatchers) return;
 
             let htmlChanges = htmlChanges = await utils.common.outerHtmlChanges(el);
             while (totalWatchers > 0) {
-                await el.$$('.icon-delete').first().click();
+                await el.$$('.js-delete-watcher').first().click();
                 await utils.lightbox.confirm.ok();
                 totalWatchers --;
             }
@@ -442,7 +455,7 @@ helper.watchersLightbox = function() {
             return utils.lightbox.close(el);
         },
         close: function() {
-            el.$$('.icon-delete').first().click();
+            el.$$('.icon-close').first().click();
         },
         selectFirst: async function() {
             el.$$('div[data-user-id]').first().click();

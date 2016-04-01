@@ -1,9 +1,11 @@
 .admin-membership {
     header {
         @include clearfix;
-        a {
-            float: right;
-        }
+    }
+    .limit-users-warning {
+        @extend %small;
+        color: $primary;
+        margin-right: 1rem;
     }
     .check {
         input { // IE needs smaller size

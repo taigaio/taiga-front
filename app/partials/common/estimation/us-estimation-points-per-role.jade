@@ -3,7 +3,8 @@ ul.points-per-role
     li.ticket-role-points.total(class!="<% if(editable){ %>clickable<% } %>", data-role-id!="<%- role.id %>", title!="<%- role.name %>")
         span.points 
             <%- role.points %>
-            span.icon-arrow-bottom
+            svg.icon.icon-arrow-down
+                use(xlink:href="#icon-arrow-down")
         span.role 
             <%- role.name %>
     <% }); %>

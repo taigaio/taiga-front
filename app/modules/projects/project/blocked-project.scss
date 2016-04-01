@@ -1,0 +1,45 @@
+.blocked-project-detail {
+    align-items: center;
+    background: url('../images/discover.png') bottom center repeat-x;
+    display: flex;
+    height: calc(100vh - 40px);
+    justify-content: center;
+    min-height: calc(100vh - 40px);
+    min-width: 100vw;
+    width: 100vw;
+}
+
+.blocked-project-inner {
+    width: 330px;
+}
+
+.blocked-project-title {
+    align-items: center;
+    display: flex;
+    .project-image {
+        flex-basis: 6rem;
+        margin-right: 1rem;
+        max-width: 6rem;
+        position: relative;
+    }
+    img {
+        width: 100%;
+    }
+    .icon-blocked-project {
+        @include svg-size(1.5rem);
+        position: absolute;
+        right: -.5rem;
+        top: -.5rem;
+    }
+    .project-title {
+        @extend %larger;
+    }
+}
+
+.blocked-project-message {
+    margin-top: 4rem;
+    text-align: center;
+    .project-block-title {
+        @extend %xlarge;
+    }
+}

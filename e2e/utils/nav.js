@@ -46,6 +46,11 @@ var actions = {
         browser.get(browser.params.glob.host);
         return common.waitLoader();
     },
+    admin: async function() {
+        await common.link($('#nav-admin a'));
+
+        return common.waitLoader();
+    },
     taskboard: async function(index) {
         let link = $$('.sprints .button-gray').get(index);
 
@@ -57,6 +62,11 @@ var actions = {
         let task = $$('div[tg-taskboard-task] a.task-name').get(index);
 
         await common.link(task);
+
+        return common.waitLoader();
+    },
+    team: async function() {
+        await common.link($('#nav-team a'));
 
         return common.waitLoader();
     }
@@ -87,12 +97,20 @@ var nav = {
         this.actions.push(actions.home.bind(null));
         return this;
     },
+    admin: function() {
+        this.actions.push(actions.admin.bind(null));
+        return this;
+    },
     taskboard: function(index) {
         this.actions.push(actions.taskboard.bind(null, index));
         return this;
     },
     task: function(index) {
         this.actions.push(actions.task.bind(null, index));
+        return this;
+    },
+    team: function(index) {
+        this.actions.push(actions.team.bind(null, index));
         return this;
     },
     go: function() {

@@ -23,13 +23,13 @@ helper.createProjectLightbox = function() {
             await browser.sleep(1000);
         },
         submit: function() {
-            return $('.wizard-step.active .button-green').click();
+            return $('div[tg-lb-create-project]  .button-green').click();
         },
         name: function() {
-            return $$('.create-step2 input').get(0);
+            return $$('div[tg-lb-create-project] input[type="text"]').get(0);
         },
         description: function() {
-            return $$('.create-step2 textarea');
+            return $('div[tg-lb-create-project] textarea');
         },
         errors: function() {
             return $$('.checksley-error-list li');

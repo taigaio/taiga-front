@@ -82,22 +82,20 @@ body {
     padding: 1rem 2rem;
 }
 
-.icon {
-    @extend %taiga;
-}
-
 .hidden {
     // scss-lint:disable ImportantRule
     display: none !important;
 }
 
 .header-with-actions {
-    align-content: stretch;
     align-items: center;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     margin-bottom: 1rem;
+    header {
+        flex: 1;
+    }
     .action-buttons {
         flex-shrink: 0;
     }

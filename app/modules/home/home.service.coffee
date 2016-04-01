@@ -41,6 +41,7 @@ class HomeService extends taiga.Service
 
             duty = duty.set('url', url)
             duty = duty.set('projectName', project.get('name'))
+            duty = duty.set('blockedProject', project.get('blocked_code'))
             duty = duty.set("_name", objType)
 
             return duty

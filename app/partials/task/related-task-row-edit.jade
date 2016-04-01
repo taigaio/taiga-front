@@ -2,15 +2,19 @@
     .task-name
         input(type='text', value!='<%- task.subject %>', placeholder="{{'TASK.PLACEHOLDER_SUBJECT' | translate}}")
         .task-settings
-          a.icon.icon-floppy(href='', title="{{'COMMON.SAVE' | translate}}")
-          a.icon.icon-delete.cancel-edit(href='', title="{{'COMMON.CANCEL' | translate}}")
+          svg.icon.icon-save.save-task(title="{{'COMMON.SAVE' | translate}}")
+              use(xlink:href="#icon-save")
+          svg.icon.icon-close.cancel-edit(title="{{'COMMON.CANCEL' | translate}}")
+              use(xlink:href="#icon-close")
 
 .status(tg-related-task-status='task', ng-model='task')
   a.task-status(href='', title="{{'TASK.TITLE_SELECT_STATUS' | translate}}")
     span.task-status-bind
-    span.icon.icon-arrow-bottom
+    svg.icon.icon-arrow-down
+        use(xlink:href="#icon-arrow-down")
 
 .assigned-to(tg-related-task-assigned-to-inline-edition='task')
   .task-assignedto(title="{{'COMMON.FIELDS.ASSIGNED_TO' | translate}}")
     figure.avatar
-    span.icon.icon-arrow-bottom
+    svg.icon.icon-arrow-down
+        use(xlink:href="#icon-arrow-down")

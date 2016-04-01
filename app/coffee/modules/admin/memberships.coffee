@@ -47,11 +47,13 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin, tai
         "$tgNavUrls",
         "$tgAnalytics",
         "tgAppMetaService",
-        "$translate"
+        "$translate",
+        "$tgAuth"
+        "tgLightboxFactory"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @navUrls, @analytics,
-                  @appMetaService, @translate) ->
+                  @appMetaService, @translate, @auth, @lightboxFactory) ->
         bindMethods(@)
 
         @scope.project = {}
@@ -67,21 +69,25 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin, tai
         promise.then null, @.onInitialDataError.bind(@)
 
         @scope.$on "membersform:new:success", =>
-            @.loadMembers()
+            @.loadInitialData()
             @analytics.trackEvent("membership", "create", "create memberships on admin", 1)
 
     loadProject: ->
         return @rs.projects.getBySlug(@params.pslug).then (project) =>
-            if not project.i_am_owner
+            if not project.i_am_admin
                 @location.path(@navUrls.resolve("permission-denied"))
 
             @scope.projectId = project.id
             @scope.project = project
+
+            @scope.canAddUsers = project.max_memberships == null || project.max_memberships > project.total_memberships
+
             @scope.$emit('project:loaded', project)
             return project
 
     loadMembers: ->
         httpFilters = @.getUrlFilters()
+
         return @rs.memberships.list(@scope.projectId, httpFilters).then (data) =>
             @scope.memberships = _.filter(data.models, (membership) ->
                                     membership.user == null or membership.is_user_active)
@@ -92,20 +98,41 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin, tai
             return data
 
     loadInitialData: ->
-        promise = @.loadProject()
-        promise.then =>
-            @.loadMembers()
-
-        return promise
+        return @.loadProject().then () =>
+            return @q.all([
+                @.loadMembers(),
+                @auth.refresh()
+            ])
 
     getUrlFilters: ->
         filters = _.pick(@location.search(), "page")
         filters.page = 1 if not filters.page
         return filters
 
-    addNewMembers:  ->
-        @rootscope.$broadcast("membersform:new")
+    # Actions
 
+    addNewMembers:  ->
+        @lightboxFactory.create(
+            'tg-lb-add-members',
+            {
+                "class": "lightbox lightbox-add-member",
+                "project": "project"
+            },
+            {
+                "project": @scope.project
+            }
+        )
+
+    showLimitUsersWarningMessage: ->
+        title = @translate.instant("ADMIN.MEMBERSHIPS.LIMIT_USERS_WARNING")
+        message = @translate.instant("ADMIN.MEMBERSHIPS.LIMIT_USERS_WARNING_MESSAGE", {
+            members: @scope.project.max_memberships
+        })
+        icon = "/" + window._version + "/svg/icons/team-question.svg"
+        @confirm.success(title, message, {
+            name: icon,
+            type: "img"
+        })
 
 module.controller("MembershipsController", MembershipsController)
 
@@ -224,6 +251,7 @@ MembershipsRowAvatarDirective = ($log, $template, $translate) ->
                 email: if member.user_email then member.user_email else member.email
                 imgurl: if member.photo then member.photo else "/" + window._version + "/images/unnamed.png"
                 pending: if !member.is_user_active then pending else ""
+                isOwner: member.is_owner
             }
 
             html = template(ctx)
@@ -252,6 +280,18 @@ MembershipsRowAdminCheckboxDirective = ($log, $repo, $confirm, $template, $compi
     template = $template.get("admin/admin-memberships-row-checkbox.html", true)
 
     link = ($scope, $el, $attrs) ->
+        $scope.$on "$destroy", ->
+            $el.off()
+
+        if not $attrs.tgMembershipsRowAdminCheckbox?
+            return $log.error "MembershipsRowAdminCheckboxDirective: the directive need a member"
+
+        member = $scope.$eval($attrs.tgMembershipsRowAdminCheckbox)
+
+        if member.is_owner
+            $el.find(".js-check").remove()
+            return
+
         render = (member) ->
             ctx = {inputId: "is-admin-#{member.id}"}
 
@@ -260,30 +300,23 @@ MembershipsRowAdminCheckboxDirective = ($log, $repo, $confirm, $template, $compi
 
             $el.html(html)
 
-        if not $attrs.tgMembershipsRowAdminCheckbox?
-            return $log.error "MembershipsRowAdminCheckboxDirective: the directive need a member"
-
-        member = $scope.$eval($attrs.tgMembershipsRowAdminCheckbox)
-        html = render(member)
-
-        if member.is_owner
-            $el.find(":checkbox").prop("checked", true)
-
         $el.on "click", ":checkbox", (event) =>
             onSuccess = ->
                 $confirm.notify("success")
 
             onError = (data) ->
                 member.revert()
-                $el.find(":checkbox").prop("checked", member.is_owner)
-                $confirm.notify("error", data.is_owner[0])
+                $el.find(":checkbox").prop("checked", member.is_admin)
+                $confirm.notify("error", data.is_admin[0])
 
             target = angular.element(event.currentTarget)
-            member.is_owner = target.prop("checked")
+            member.is_admin = target.prop("checked")
             $repo.save(member).then(onSuccess, onError)
 
-        $scope.$on "$destroy", ->
-            $el.off()
+        html = render(member)
+
+        if member.is_admin
+            $el.find(":checkbox").prop("checked", true)
 
     return {link: link}
 
@@ -352,14 +385,17 @@ module.directive("tgMembershipsRowRoleSelector", ["$log", "$tgRepo", "$tgConfirm
 ## Member Actions Directive
 #############################################################################
 
-MembershipsRowActionsDirective = ($log, $repo, $rs, $confirm, $compile, $translate) ->
+MembershipsRowActionsDirective = ($log, $repo, $rs, $confirm, $compile, $translate, $location,
+                                  $navUrls, lightboxFactory) ->
     activedTemplate = """
     <div class="active"
          translate="ADMIN.MEMBERSHIP.STATUS_ACTIVE">
     </div>
     <a class="delete" href=""
        title="{{ 'ADMIN.MEMBERSHIP.DELETE_MEMBER' | translate }}">
-        <span class="icon icon-delete"></span>
+        <svg class="icon icon-trash">
+            <use xlink:href="#icon-trash">
+        </svg>
     </a>
     """
 
@@ -370,7 +406,9 @@ MembershipsRowActionsDirective = ($log, $repo, $rs, $confirm, $compile, $transla
     </a>
     <a class="delete" href=""
        title="{{ 'ADMIN.MEMBERSHIP.DELETE_MEMBER' | translate }}">
-        <span class="icon icon-delete"></span>
+        <svg class="icon icon-trash">
+            <use xlink:href="#icon-trash">
+        </svg>
     </a>
     """
 
@@ -403,9 +441,7 @@ MembershipsRowActionsDirective = ($log, $repo, $rs, $confirm, $compile, $transla
 
             $rs.memberships.resendInvitation($scope.member.id).then(onSuccess, onError)
 
-        $el.on "click", ".delete", (event) ->
-            event.preventDefault()
-
+        leaveConfirm = () ->
             title = $translate.instant("ADMIN.MEMBERSHIP.DELETE_MEMBER")
             defaultMsg = $translate.instant("ADMIN.MEMBERSHIP.DEFAULT_DELETE_MESSAGE", {email: member.email})
             message = if member.user then member.full_name else defaultMsg
@@ -413,28 +449,60 @@ MembershipsRowActionsDirective = ($log, $repo, $rs, $confirm, $compile, $transla
             $confirm.askOnDelete(title, message).then (askResponse) ->
                 onSuccess = =>
                     askResponse.finish()
+                    if member.user != $scope.user.id
+                        if $scope.page > 1 && ($scope.count - 1) <= $scope.paginatedBy
+                            $ctrl.selectFilter("page", $scope.page - 1)
 
-                    if $scope.page > 1 && ($scope.count - 1) <= $scope.paginatedBy
-                        $ctrl.selectFilter("page", $scope.page - 1)
+                        $ctrl.loadInitialData()
+                    else
+                        $location.path($navUrls.resolve("home"))
 
-                    $ctrl.loadMembers()
-
-                    text = $translate.instant("ADMIN.MEMBERSHIP.SUCCESS_DELETE")
-                    $confirm.notify("success", null, text)
+                    text = $translate.instant("ADMIN.MEMBERSHIP.SUCCESS_DELETE", {message: message})
+                    $confirm.notify("success", text, null, 5000)
 
                 onError = =>
                     askResponse.finish(false)
 
                     text = $translate.instant("ADMIN.MEMBERSHIP.ERROR_DELETE", {message: message})
-                    $confirm.notify("error", null, text)
+                    $confirm.notify("error", text)
 
                 $repo.remove(member).then(onSuccess, onError)
+
+        $el.on "click", ".delete", (event) ->
+            event.preventDefault()
+
+            if $scope.project.owner.id == member.user
+                isCurrentUser = $scope.user.id == member.user
+
+                lightboxFactory.create("tg-lightbox-leave-project-warning", {
+                    class: "lightbox lightbox-leave-project-warning"
+                }, {
+                    isCurrentUser: isCurrentUser,
+                    project: $scope.project
+                })
+            else
+                leaveConfirm()
 
         $scope.$on "$destroy", ->
             $el.off()
 
     return {link: link}
 
-
 module.directive("tgMembershipsRowActions", ["$log", "$tgRepo", "$tgResources", "$tgConfirm", "$compile",
-                                             "$translate", MembershipsRowActionsDirective])
+                                             "$translate", "$tgLocation", "$tgNavUrls", "tgLightboxFactory",
+                                             MembershipsRowActionsDirective])
+
+
+#############################################################################
+## No more memberships explanation directive
+#############################################################################
+
+NoMoreMembershipsExplanationDirective = () ->
+    return {
+          templateUrl: "admin/no-more-memberships-explanation.html"
+          scope: {
+              project: "="
+          }
+    }
+
+module.directive("tgNoMoreMembershipsExplanation", [NoMoreMembershipsExplanationDirective])

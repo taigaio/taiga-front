@@ -10,3 +10,10 @@ section.admin-menu
             li#usersettingsmenu-mail-notifications
                 a(href="", tg-nav="user-settings-mail-notifications", title="{{ 'USER_SETTINGS.MENU.EMAIL_NOTIFICATIONS' | translate }}")
                     span.title(translate="USER_SETTINGS.MENU.EMAIL_NOTIFICATIONS")
+            li#usersettings-contrib(ng-repeat="plugin in userSettingsPlugins")
+                a(
+                    href=""
+                    tg-nav="user-settings-contrib:plugin=plugin.slug"
+                    ng-class="{active: plugin.slug == currentPlugin.slug}"
+                )
+                    span.title {{ plugin.name }}

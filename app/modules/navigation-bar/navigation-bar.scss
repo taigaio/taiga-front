@@ -52,13 +52,14 @@ $dropdown-width: 350px;
         color: $white;
         display: inline-block;
         transition: all .2s linear;
-        svg path {
-            fill: darken($primary-dark, 8%);
+        svg {
+            fill: rgba($primary-dark, .8);
+            transition: all .2s linear;
         }
         &:hover {
             background: rgba($black, .2);
             color: $primary-light;
-            svg path {
+            svg {
                 fill: $white;
             }
 
@@ -84,10 +85,6 @@ $dropdown-width: 350px;
         max-height: 1.2rem;
         max-width: 1.2rem;
         width: 1.2rem;
-        path {
-            fill: $top-icon-color;
-            transition: all .2s;
-        }
     }
     .topnav-dropdown-wrapper {
         position: relative;
@@ -132,6 +129,20 @@ $dropdown-width: 350px;
         margin-bottom: .5rem;
         padding: 0;
     }
+    .plugin {
+        &:hover {
+            .new {
+                color: $white;
+            }
+        }
+        .new {
+            @extend %small;
+            background: $red-light;
+            float: right;
+            margin-left: auto;
+            padding: .1rem .25rem;
+        }
+    }
     a {
         color: $gray-light;
         display: block;
@@ -152,14 +163,30 @@ $dropdown-width: 350px;
         &.see-more-projects-btn {
             margin-bottom: .3rem;
         }
+        &.import-project-button {
+            padding: .8rem 1rem;
+        }
         &.create-project-btn {
             flex: 1;
         }
-        &.import-project-button {
-            padding-left: .75rem;
-            padding-right: .75rem;
+        &.blocked-project {
+            color: $gray;
+            svg {
+                margin-left: .5rem;
+                position: relative;
+                top: .25rem;
+            }
         }
-
+    }
+    .import-project-button {
+        &:hover {
+            svg {
+                fill: $primary-light;
+            }
+        }
+        svg {
+            fill: $white;
+        }
     }
     .create-options {
         display: flex;

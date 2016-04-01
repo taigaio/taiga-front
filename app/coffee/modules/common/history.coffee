@@ -370,10 +370,12 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm, $translate, $c
         renderComments = ->
             comments = $scope.comments or []
             totalComments = comments.length
-            if not showAllComments
-                comments = _.last(comments, 4)
 
-            comments = _.map(comments, (x) -> renderComment(x))
+            if not showAllComments
+                comments = _.takeRight(comments, 4)
+
+            comments = _.map comments, (x) -> renderComment(x)
+
             html = renderHistory(comments, totalComments)
             $el.find(".comments-list").html(html)
 
@@ -381,7 +383,7 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm, $translate, $c
             changes = $scope.history or []
             totalChanges = changes.length
             if not showAllActivity
-                changes = _.last(changes, 4)
+                changes = _.takeRight(changes, 4)
 
             changes = _.map(changes, (x) -> renderChange(x))
             html = renderHistory(changes, totalChanges)

@@ -46,17 +46,19 @@ div.wrapper(
                         span.block-description-title(translate="COMMON.BLOCKED")
                         span.block-description(ng-bind="issue.blocked_note || ('ISSUES.BLOCKED' | translate)")
 
-                    div.issue-nav
-                        a.icon.icon-arrow-left(
+                    .issue-nav
+                        svg.icon.icon-arrow-left(
                             ng-show="previousUrl"
                             tg-bo-href="previousUrl"
                             title="{{'ISSUES.TITLE_PREVIOUS_ISSUE' | translate}}"
                         )
-                        a.icon.icon-arrow-right(
+                            use(xlink:href="#icon-arrow-left")
+                        svg.icon.icon-arrow-right(
                             ng-show="nextUrl"
                             tg-bo-href="nextUrl"
                             title="{{'ISSUES.TITLE_NEXT_ISSUE' | translate}}"
                         )
+                            use(xlink:href="#icon-arrow-right")
             .subheader
                 div.tags-block(tg-tag-line, ng-model="issue", required-perm="modify_issue")
                 tg-created-by-display.ticket-created-by(ng-model="issue")

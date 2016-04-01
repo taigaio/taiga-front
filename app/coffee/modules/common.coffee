@@ -235,26 +235,6 @@ module.factory("$projectUrl", ["$tgNavUrls", ProjectUrl])
 
 
 #############################################################################
-## Limite line size in a text area
-#############################################################################
-
-LimitLineLengthDirective = () ->
-    link = ($scope, $el, $attrs) ->
-        maxColsPerLine = parseInt($el.attr("cols"))
-        $el.on "keyup", (event) ->
-            code = event.keyCode
-            lines = $el.val().split("\n")
-
-            _.each lines, (line, index) ->
-                lines[index] = line.substring(0, maxColsPerLine - 2)
-
-            $el.val(lines.join("\n"))
-
-    return {link:link}
-
-module.directive("tgLimitLineLength", LimitLineLengthDirective)
-
-#############################################################################
 ## Queue Q promises
 #############################################################################
 
@@ -308,13 +288,11 @@ Capslock = ($translate) ->
     link = ($scope, $el, $attrs) ->
         open = false
 
-        warningIcon = $('<div>')
-            .addClass('icon')
-            .addClass('icon-capslock')
-            .attr('title', $translate.instant('COMMON.CAPSLOCK_WARNING'))
+
+        warningIcon = "<svg class='icon icon-capslock' title='" + $translate.instant('COMMON.CAPSLOCK_WARNING') + "'><use xlink:href='#icon-capslock'></svg>";
 
         hideIcon = () ->
-            warningIcon.fadeOut () ->
+            $('.icon-capslock').fadeOut () ->
                 open = false
 
                 $(this).remove()

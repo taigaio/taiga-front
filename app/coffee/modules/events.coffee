@@ -59,7 +59,7 @@ class EventsService
         if not startswith(url, "ws:") and not startswith(url, "wss:")
             loc = @win.location
             scheme = if loc.protocol == "https:" then "wss:" else "ws:"
-            path = _.str.ltrim(url, "/")
+            path = _.trimStart(url, "/")
             url = "#{scheme}//#{loc.host}/#{path}"
 
         @.ws = new @win.WebSocket(url)

@@ -3,7 +3,16 @@
     .list-itemtype-project {
         display: flex;
         justify-content: space-between;
-        min-height: 10rem;
+        min-height: 9rem;
+        padding: .75rem;
+        &.blocked-project {
+            .list-itemtype-project-image,
+            .project-title,
+            .project-description,
+            .list-itemtype-project-right {
+                opacity: .4;
+            }
+        }
         .project-list-single-title-wrapper {
             display: flex;
         }
@@ -14,7 +23,11 @@
             display: flex;
             flex-direction: column;
             flex-shrink: 0;
+            justify-content: space-between;
             width: 200px;
+        }
+        .icon-blocked-project {
+            @include svg-size();
         }
     }
 }

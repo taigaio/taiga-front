@@ -1,12 +1,4 @@
 .private {
-    display: inline-block;
+    fill: $gray-light;
     margin-left: .5rem;
-    width: .5rem;
-    svg {
-        @include svg-size();
-    }
-    path {
-        fill: $gray-light;
-        transition: fill .3s linear;
-    }
 }

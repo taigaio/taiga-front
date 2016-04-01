@@ -1,0 +1,66 @@
+a.close(
+    href=""
+    title="close"
+)
+    svg.icon.icon-close
+        use(xlink:href="#icon-close")
+.add-member-wrapper
+    h2.title(translate="LIGHTBOX.ADD_MEMBER.TITLE")
+    form.add-member-form(ng-submit="vm.submit()")
+        .add-single-member(ng-repeat="member in vm.memberInvites")
+            fieldset
+                input(
+                    ng-if="$first"
+                    type="email"
+                    required
+                    placeholder="{{'LIGHTBOX.CREATE_MEMBER.PLACEHOLDER_TYPE_EMAIL' | translate}}"
+                    data-required="true"
+                    data-type="email"
+                    ng-model="member.email"
+                )
+                input(
+                    ng-if="!$first"
+                    type="email"
+                    placeholder="{{'LIGHTBOX.CREATE_MEMBER.PLACEHOLDER_TYPE_EMAIL' | translate}}"
+                    data-type="email"
+                    ng-model="member.email"
+                )
+            fieldset
+                select(
+                    ng-if="vm.project"
+                    ng-model="member.role_id"
+                    ng-options="role.id as role.name for role in vm.project.roles"
+                )
+            fieldset
+                a.add-fieldset.ng-animate-disabled(
+                    href=""
+                    ng-click="vm.addSingleMember()"
+                    ng-if="$last && vm.canAddUsers"
+                )
+                    svg.icon.icon-add
+                        use(xlink:href="#icon-add")
+                a.remove-fieldset.ng-animate-disabled(
+                    href=""
+                    ng-click="vm.removeSingleMember($index)"
+                    ng-if="!$last || ($last && !vm.canAddUsers && vm.membersLimit > 1)"
+                )
+                    svg.icon.icon-trash
+                        use(xlink:href="#icon-trash")
+
+        tg-lightbox-add-members-warning-message(ng-if="vm.showWarningMessage", project="vm.project")
+
+        fieldset.invitation-text
+            textarea(
+                ng-attr-placeholder="{{'LIGHTBOX.CREATE_MEMBER.PLACEHOLDER_INVITATION_TEXT' | translate}}"
+                maxlength="255"
+                ng-model="vm.invitationText"
+            )
+
+        button.button-green.submit-button(
+            type="submit"
+            title="{{'COMMON.CREATE' | translate}}"
+            translate="COMMON.CREATE"
+            tg-loading="vm.submitInvites"
+        )
+
+    p.help-text(translate="LIGHTBOX.ADD_MEMBER.HELP_TEXT")

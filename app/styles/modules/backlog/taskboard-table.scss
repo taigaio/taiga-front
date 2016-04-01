@@ -12,7 +12,7 @@ $column-margin: 0 10px 0 0;
         margin: 0;
         min-height: 0;
         .taskboard-task-inner {
-            padding: .2rem;
+            padding: .1rem;
         }
         .taskboard-tagline,
         .taskboard-text {
@@ -89,11 +89,12 @@ $column-margin: 0 10px 0 0;
         }
         .icon {
             @extend %medium;
-            color: $gray-light;
+            fill: $gray-light;
             margin-right: .3rem;
-            transition: color .2s linear;
+            transition: fill .2s linear;
             &:hover {
-                color: $primary;
+                cursor: pointer;
+                fill: $primary;
             }
             &.hfold,
             &.hunfold {
@@ -157,8 +158,8 @@ $column-margin: 0 10px 0 0;
                 background: rgba($red, .6);
 
             }
-            .taskboard-userstory-box a,
-            .taskboard-userstory-box a:hover,
+            .taskboard-userstory-box svg,
+            .taskboard-userstory-box svg:hover,
             .points-value,
             .points-value:hover {
                 color: $white;
@@ -174,7 +175,7 @@ $column-margin: 0 10px 0 0;
                 @include ellipsis(100%);
             }
             .points-value,
-            .icon-plus,
+            .icon-add,
             .icon-bulk {
                 display: none;
             }
@@ -184,21 +185,23 @@ $column-margin: 0 10px 0 0;
     .taskboard-userstory-box {
         padding: .5rem .5rem .5rem 1.5rem;
         .icon {
-            color: $gray-light;
+            cursor: pointer;
+            fill: $gray-light;
             position: absolute;
             right: .5rem;
             top: .7rem;
-            transition: color .2s linear;
+            transition: fill .2s linear;
             &:hover {
-                color: $primary;
+                fill: $primary;
             }
-            &.icon-plus {
+            &.icon-add {
                 right: 2rem;
             }
-            &.icon-vfold,
-            &.icon-vunfold {
+            &.icon-fold-row,
+            &.icon-unfold-row {
                 left: 0;
                 right: inherit;
+                top: 1rem;
             }
         }
     }

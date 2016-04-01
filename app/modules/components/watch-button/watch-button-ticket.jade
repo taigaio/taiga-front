@@ -13,20 +13,18 @@ div.ticket-watch-inner
         ng-mouseover="vm.showTextWhenMouseIsOver()"
         ng-mouseleave="vm.showTextWhenMouseIsLeave()"
     )
-        span.track-icon
-            include ../../../svg/watch.svg
-        span(
-            ng-if="!vm.item.is_watcher",
-            translate="COMMON.WATCH_BUTTON.WATCH"
-        )
-        span(
-            ng-if="vm.item.is_watcher && !vm.isMouseOver",
-            translate="COMMON.WATCH_BUTTON.WATCHING"
-        )
-        span(
-            ng-if="vm.item.is_watcher && vm.isMouseOver",
-            translate="COMMON.WATCH_BUTTON.UNWATCH"
-        )
+        span(ng-if="!vm.item.is_watcher")
+            svg.icon.icon-watch
+                use(xlink:href="#icon-watch")
+            | {{'COMMON.WATCH_BUTTON.WATCH' | translate}}
+        span(ng-if="vm.item.is_watcher && !vm.isMouseOver",)
+            svg.icon.icon-watch
+                use(xlink:href="#icon-watch")
+            | {{'COMMON.WATCH_BUTTON.WATCHING' | translate}}
+        span(ng-if="vm.item.is_watcher && vm.isMouseOver")
+            svg.icon.icon-unwatch
+                use(xlink:href="#icon-unwatch")
+            | {{'COMMON.WATCH_BUTTON.UNWATCH' | translate}}
 
     a.add-watcher(
         href=""

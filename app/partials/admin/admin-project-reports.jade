@@ -22,5 +22,6 @@ div.wrapper(ng-controller="ProjectProfileController as ctrl",
 
         div
             a.help-button(href="https://taiga.io/support/csv-reports/", target="_blank")
-                span.icon.icon-help
+                svg.icon.icon-question
+                    use(xlink:href="#icon-question")
                 span(translate="ADMIN.REPORTS.HELP")

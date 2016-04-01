@@ -20,6 +20,35 @@ describe('leaving project', function(){
     });
 });
 
+describe('leaving project owner', function(){
+    before(async function(){
+        await utils.common.createProject();
+        await utils.nav
+            .init()
+            .team()
+            .go();
+    });
+
+    it('leave project', async function(){
+        teamHelper.team().leave();
+
+        let isLeaveProjectWarningOpen = await teamHelper.isLeaveProjectWarningOpen();
+
+        await utils.common.takeScreenshot("team", "leave-project-warning");
+
+        expect(isLeaveProjectWarningOpen).to.be.equal(true);
+
+        let lb = teamHelper.leavingProjectWarningLb();
+
+        await utils.lightbox.open(lb);
+
+        utils.lightbox.exit(lb);
+
+        let isPresent = await lb.isPresent();
+        expect(isPresent).to.be.false;
+    });
+});
+
 describe('team', function() {
     before(async function(){
         browser.get(browser.params.glob.host + 'project/project-5/team');

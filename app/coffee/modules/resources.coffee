@@ -45,6 +45,7 @@ urls = {
     "user-voted": "/users/%s/voted"
     "user-watched": "/users/%s/watched"
     "user-contacts": "/users/%s/contacts"
+    "user-me": "/users/me"
 
     # User - Notification
     "permissions": "/permissions"
@@ -73,6 +74,11 @@ urls = {
     "project-unlike": "/projects/%s/unlike"
     "project-watch": "/projects/%s/watch"
     "project-unwatch": "/projects/%s/unwatch"
+    "project-transfer-validate-token": "/projects/%s/transfer_validate_token"
+    "project-transfer-accept": "/projects/%s/transfer_accept"
+    "project-transfer-reject": "/projects/%s/transfer_reject"
+    "project-transfer-request": "/projects/%s/transfer_request"
+    "project-transfer-start": "/projects/%s/transfer_start"
 
     # Project Values - Choises
     "userstory-statuses": "/userstory-statuses"

@@ -2,7 +2,7 @@
     "COMMON": {
         "YES": "Sim",
         "NO": "Não",
-        "OR": "or",
+        "OR": "ou",
         "LOADING": "Carregando...",
         "LOADING_PROJECT": "Carregando o projeto...",
         "DATE": "DD MMM YYYY",
@@ -19,11 +19,11 @@
         "TAG_LINE": "Sua ferramenta de código aberto, gratuita e ágil.",
         "TAG_LINE_2": "AME SEU PROJETO",
         "BLOCK": "Bloquear",
-        "BLOCK_TITLE": "Block this item for example if it has a dependency that can not be satisfied",
+        "BLOCK_TITLE": "Bloqueia este item, por exemplo, se ele possui uma dependência não resolvida",
         "BLOCKED": "Bloqueado",
         "UNBLOCK": "Desbloquear",
-        "UNBLOCK_TITLE": "Unblock this item",
-        "BLOCKED_NOTE": "Why is this blocked?",
+        "UNBLOCK_TITLE": "Desbloquear este item",
+        "BLOCKED_NOTE": "Por que esta bloqueado?",
         "BLOCKED_REASON": "Por favor, explique a razão",
         "CREATED_BY": "Criado por {{fullDisplayName}}",
         "FROM": "de",
@@ -41,7 +41,8 @@
         "IOCAINE_TEXT": "Se sentindo sobrecarregado por uma tarefa? Assegure-se de que os outros saibam disso clicando em Iocaine quando estiver editando a tarefa. É possível se tornar imune a essse veneno mortal (fictício) consumindo pequenas quantidades ao longo do tempo, assim como é possível ficar melhor no que faz, ocasionalmente, por assumir desafios extras!",
         "CLIENT_REQUIREMENT": "Client requirement is new requirement that was not previously expected and it is required to be part of the project",
         "TEAM_REQUIREMENT": "Team requirement is a requirement that must exist in the project but should have no cost for the client",
-        "CAPSLOCK_WARNING": "Seja cuidadoso! Você está escrevendo em letras maiúsculas e esse campo é case sensitive, ou seja trata com distinção letras maiúsculas das minúsculas",
+        "OWNER": "Project Owner",
+        "CAPSLOCK_WARNING": "Be careful! You are using capital letters in an input field that is case sensitive.",
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Este valor parece ser inválido.",
             "TYPE_EMAIL": "Este valor deve ser um e-mail válido.",
@@ -65,7 +66,9 @@
             "MIN_CHECK": "Você deve selecionar pelo menos %s escolhas.",
             "MAX_CHECK": "Você deve selecionar %s escolhas ou menos.",
             "RANGE_CHECK": "Você deve selecionar entre %s e %s escolhas.",
-            "EQUAL_TO": "Esse valor deveria ser o mesmo."
+            "EQUAL_TO": "Esse valor deveria ser o mesmo.",
+            "LINEWIDTH": "One or more lines is perhaps too long. Try to keep under %s characters.",
+            "PIKADAY": "Invalid date format, please use DD MMM YYYY (like 23 Mar 1984)"
         },
         "PICKERDATE": {
             "FORMAT": "DD MMM YYYY",
@@ -205,11 +208,11 @@
             "BOLD_BUTTON_SAMPLE_TEXT": "Seu texto aqui...",
             "ITALIC_BUTTON": "Itálico",
             "ITALIC_SAMPLE_TEXT": "Seu texto aqui...",
-            "STRIKE_BUTTON": "Strike",
+            "STRIKE_BUTTON": "Riscar",
             "STRIKE_SAMPLE_TEXT": "Seu texto aqui...",
-            "BULLETED_LIST_BUTTON": "Lista de Marcadores",
+            "BULLETED_LIST_BUTTON": "Lista de marcadores",
             "BULLETED_LIST_SAMPLE_TEXT": "Seu texto aqui...",
-            "NUMERIC_LIST_BUTTON": "Lista Numérica",
+            "NUMERIC_LIST_BUTTON": "Lista numérica",
             "NUMERIC_LIST_SAMPLE_TEXT": "Seu texto aqui...",
             "PICTURE_BUTTON": "Imagem",
             "PICTURE_SAMPLE_TEXT": "Seu texto alternativo para a imagem aqui...",
@@ -217,7 +220,7 @@
             "LINK_SAMPLE_TEXT": "Seu texto para o link vai aqui...",
             "QUOTE_BLOCK_BUTTON": "Bloco de citação",
             "QUOTE_BLOCK_SAMPLE_TEXT": "Seu texto aqui...",
-            "CODE_BLOCK_BUTTON": "Bloco de Código",
+            "CODE_BLOCK_BUTTON": "Bloco de código",
             "CODE_BLOCK_SAMPLE_TEXT": "Seu texto aqui...",
             "PREVIEW_BUTTON": "Pré Visualizar",
             "EDIT_BUTTON": "Editar",
@@ -229,13 +232,13 @@
                 "VIEW_SPRINTS": "Ver sprints",
                 "ADD_SPRINTS": "Adicionar sprints",
                 "MODIFY_SPRINTS": "Modificar sprints",
-                "DELETE_SPRINTS": "Apagar Sprints"
+                "DELETE_SPRINTS": "Apagar sprints"
             },
             "USER_STORIES": {
                 "NAME": "User Stories",
                 "VIEW_USER_STORIES": "Ver user stories",
                 "ADD_USER_STORIES": "Adicionar user stories",
-                "MODIFY_USER_STORIES": "Modificar user stories",
+                "MODIFY_USER_STORIES": "Modificar estórias de usuário",
                 "DELETE_USER_STORIES": "Apagar user stories"
             },
             "TASKS": {
@@ -315,7 +318,8 @@
         "PLACEHOLDER_FIELD": "Nome de usuário ou email",
         "ACTION_RESET_PASSWORD": "Resetar Senha",
         "LINK_CANCEL": "Nããão, me leve de volta. Acho que me lembrei.",
-        "SUCCESS": "<strong>Verifique sua conta de email</strong><br />Enviamos um email com as instruções para configurar uma nova senha",
+        "SUCCESS_TITLE": "Check your inbox!",
+        "SUCCESS_TEXT": "We sent you an email with the instructions to set a new password",
         "ERROR": "Segundo nossos Oompa Loompas, você ainda não está inscrito."
     },
     "CHANGE_PASSWORD": {
@@ -350,9 +354,9 @@
     },
     "HOME": {
         "PAGE_TITLE": "Início - Taiga",
-        "PAGE_DESCRIPTION": "A página inicial do Taiga contém seus projetos principais e todos as user stories atribuídas ou observadas por você, tarefas e casos",
-        "EMPTY_WORKING_ON": "<strong>Isso parece vazio não acha?</strong> Comece a trabalhar com Taiga para começar a ver estórias, tarefas e casos em que está trabalhando.",
-        "EMPTY_WATCHING": "<strong>Siga</strong> Estórias, Tarefas e Casos nos seus projetos  e seja notificado das mudanças :)",
+        "PAGE_DESCRIPTION": "A página inicial do Taiga com seus principais projetos e todas as estórias atribuídas ou observadas por você, tarefas e problemas",
+        "EMPTY_WORKING_ON": "<strong>Isso parece vazio não acha?</strong> Comece a trabalhar com Taiga para começar a ver estórias, tarefas e problemas em que está trabalhando.",
+        "EMPTY_WATCHING": "<strong>Siga</strong> Estórias, Tarefas e Problemas nos seus projetos e seja notificado das mudanças :)",
         "EMPTY_PROJECT_LIST": "Você ainda não tem projetos",
         "WORKING_ON_SECTION": "Trabalhando em",
         "WATCHING_SECTION": "Observando",
@@ -366,14 +370,13 @@
     "ATTACHMENT": {
         "SECTION_NAME": "anexos",
         "TITLE": "{{ fileName }} enviado em {{ date }}",
-        "LIST_VIEW_MODE": "List view mode",
-        "GALLERY_VIEW_MODE": "Gallery view mode",
+        "LIST_VIEW_MODE": "Modo de visualização lista",
+        "GALLERY_VIEW_MODE": "Modo de Visualização Galeria",
         "DESCRIPTION": "Escreva uma curta descrição",
         "DEPRECATED": "(obsoleto)",
         "DEPRECATED_FILE": "Obsoleto?",
         "ADD": "Adicionar novo anexo. {{maxFileSizeMsg}}",
         "DROP": "Jogue os anexos aqui!",
-        "MAX_FILE_SIZE": "[Tamanho Máximo: {{maxFileSize}}]",
         "SHOW_DEPRECATED": "+ mostrar anexos deprecados",
         "HIDE_DEPRECATED": "- esconder anexos obsoletos",
         "COUNT_DEPRECATED": "({{ counter }} deprecados)",
@@ -406,7 +409,9 @@
             "TITLE": "Gerenciar Membros",
             "PAGE_TITLE": "Filiados - {{projectName}}",
             "ADD_BUTTON": "+ Novo Membro",
-            "ADD_BUTTON_TITLE": "Adicionar novo membro"
+            "ADD_BUTTON_TITLE": "Adicionar novo membro",
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_ADMIN": "Unfortunately, this project has reached its limit of <strong>({{members}})</strong> allowed members.",
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "This project has reached its limit of <strong>({{members}})</strong> allowed members. If you would like to increase that limit please contact the administrator."
         },
         "PROJECT_EXPORT": {
             "TITLE": "Exportar",
@@ -428,16 +433,20 @@
             "DISABLE": "Desabilitar",
             "BACKLOG": "Backlog",
             "BACKLOG_DESCRIPTION": "Gerencie suas user stories para manter uma visualização organizada de trabalhos futuros e priorizados.",
+            "NUMBER_SPRINTS": "Expected number of sprints",
+            "NUMBER_SPRINTS_HELP": "0 for an undetermined number",
+            "NUMBER_US_POINTS": "Expected total of story points",
+            "NUMBER_US_POINTS_HELP": "0 for an undetermined number",
             "KANBAN": "Kanban",
             "KANBAN_DESCRIPTION": "Organize seu projeto de um jeito \"lean\" com esse mural",
-            "ISSUES": "Casos",
+            "ISSUES": "Problemas",
             "ISSUES_DESCRIPTION": "Acompanhe os bugs, questões e melhorias relacionadas ao seu projeto. Não perca nada!",
             "WIKI": "Wiki",
             "WIKI_DESCRIPTION": "Adicione, modifique ou apague conteúdo em colaboração com outras pessoas. Este é o local certo pra documentação do seu projeto.",
             "MEETUP": "Reunião",
-            "MEETUP_DESCRIPTION": "Escolha seu sistema de vídeo conferência. Até desenvolvedores precisam de contato cara a cara.",
+            "MEETUP_DESCRIPTION": "Choose your videoconference system.",
             "SELECT_VIDEOCONFERENCE": "Selecione um sistema de video conferência",
-            "SALT_CHAT_ROOM": "Se você quiser, pode acrescentar um 'salt code' para o nome da sala de bate-papo",
+            "SALT_CHAT_ROOM": "Add a prefix to the chatroom name",
             "JITSI_CHAT_ROOM": "Jitsi",
             "APPEARIN_CHAT_ROOM": "AppearIn",
             "TALKY_CHAT_ROOM": "Talky",
@@ -449,22 +458,31 @@
             "PROJECT_DETAILS": "Detalhes do projeto",
             "PROJECT_NAME": "Nome do projeto",
             "PROJECT_SLUG": "Slug do projeto",
-            "NUMBER_SPRINTS": "Número de sprints (0 para uma quantidade indeterminada)",
-            "NUMBER_US_POINTS": "Número de pontos US (0 para uma quantidade indeterminada)",
             "TAGS": "Tags",
             "DESCRIPTION": "Descrição",
-            "RECRUITING": "Is this project looking for people?",
+            "RECRUITING": "Este projeto esta a procura de colaboradores?",
             "RECRUITING_MESSAGE": "O que você está procurando?",
-            "RECRUITING_PLACEHOLDER": "Define the profiles you are looking for",
+            "RECRUITING_PLACEHOLDER": "Defina o perfil que você procura?",
             "PUBLIC_PROJECT": "Projeto Publico",
-            "PUBLIC_PROJECT_DESC": "Users will be able to find and view your project",
             "PRIVATE_PROJECT": "Projeto Privado",
-            "PRIVATE_PROJECT_DESC": "Por padrão, esse projeto é escondido do público",
             "PRIVATE_OR_PUBLIC": "Qual a diferença entre projeto público e privado?",
             "DELETE": "Apagar este projeto",
             "LOGO_HELP": "A imagem deve ser na escala de 80x80px.",
             "CHANGE_LOGO": "Alterar logo",
-            "ACTION_USE_DEFAULT_LOGO": "Usar imagem padrão"
+            "ACTION_USE_DEFAULT_LOGO": "Usar imagem padrão",
+            "MAX_PRIVATE_PROJECTS": "You've reached the maximum number of private projects allowed by your current plan",
+            "MAX_PRIVATE_PROJECTS_MEMBERS": "The maximum number of members for private projects has been exceeded",
+            "MAX_PUBLIC_PROJECTS": "Unfortunately, you've reached the maximum number of public projects allowed by your current plan",
+            "MAX_PUBLIC_PROJECTS_MEMBERS": "The project exceeds your maximum number of members for public projects",
+            "PROJECT_OWNER": "Project owner",
+            "REQUEST_OWNERSHIP": "Request ownership",
+            "REQUEST_OWNERSHIP_CONFIRMATION_TITLE": "Do you want to become the new project owner?",
+            "REQUEST_OWNERSHIP_DESC": "Request that current project owner {{name}} transfer ownership of this project to you.",
+            "REQUEST_OWNERSHIP_BUTTON": "Solicitação",
+            "REQUEST_OWNERSHIP_SUCCESS": "We'll notify the project owner",
+            "CHANGE_OWNER": "Change owner",
+            "CHANGE_OWNER_SUCCESS_TITLE": "Ok, your request has been sent!",
+            "CHANGE_OWNER_SUCCESS_DESC": "We will notify you by email if the project ownership request is accepted or declined"
         },
         "REPORTS": {
             "TITLE": "Relatórios",
@@ -477,7 +495,7 @@
         "CSV": {
             "SECTION_TITLE_US": "Relatórios de user stories",
             "SECTION_TITLE_TASK": "relatórios de tarefas",
-            "SECTION_TITLE_ISSUE": "relatórios de casos",
+            "SECTION_TITLE_ISSUE": "relatórios de problemas",
             "DOWNLOAD": "Baixar CSV",
             "URL_FIELD_PLACEHOLDER": "Por favor, gere novamente a url do CSV",
             "TITLE_REGENERATE_URL": "Regerar URL CSV",
@@ -486,16 +504,17 @@
         },
         "CUSTOM_FIELDS": {
             "TITLE": "Campos Personalizados",
-            "SUBTITLE": "Especificar campos personalizados para user stories, tarefas e casos",
+            "SUBTITLE": "Especificar campos personalizados para estórias, tarefas e problemas",
             "US_DESCRIPTION": "Campos personalizados das user stories",
             "US_ADD": "Adicionar campo personalizado nas user stories",
             "TASK_DESCRIPTION": "Campos personalizados das Tarefas\n",
             "TASK_ADD": "Adicionar campos personalizados na tarefa",
-            "ISSUE_DESCRIPTION": "Campos personalizados dos casos",
-            "ISSUE_ADD": "Adicionar um campo personalizado no caso",
+            "ISSUE_DESCRIPTION": "Campos personalizados dos problemas",
+            "ISSUE_ADD": "Adicionar um campo personalizado no problema",
             "FIELD_TYPE_TEXT": "Texto",
             "FIELD_TYPE_MULTI": "Multi-linha",
-            "FIELD_TYPE_DATE": "Data"
+            "FIELD_TYPE_DATE": "Data",
+            "FIELD_TYPE_URL": "Url"
         },
         "PROJECT_VALUES": {
             "PAGE_TITLE": "{{sectionName}} - Valores do projeto - {{projectName}}",
@@ -510,26 +529,26 @@
         },
         "PROJECT_VALUES_PRIORITIES": {
             "TITLE": "Prioridades",
-            "SUBTITLE": "Especifique as prioridades que seus casos terão",
-            "ISSUE_TITLE": "Prioridades do caso",
+            "SUBTITLE": "Especifique as prioridades que seus problemas terão",
+            "ISSUE_TITLE": "Prioridades do problema",
             "ACTION_ADD": "Adicionar nova prioridade"
         },
         "PROJECT_VALUES_SEVERITIES": {
             "TITLE": "Seriedades",
-            "SUBTITLE": "Especifique a severidade que seus casos terão",
-            "ISSUE_TITLE": "Seriedades do caso",
+            "SUBTITLE": "Especifique as severidades que seus problemas terão",
+            "ISSUE_TITLE": "Seriedades do problema",
             "ACTION_ADD": "Adicionar nova severidade"
         },
         "PROJECT_VALUES_STATUS": {
             "TITLE": "Situação",
-            "SUBTITLE": "Especifique os status pelos quais suas user stories, tarefas e casos passarão",
+            "SUBTITLE": "Especifique os status pelos quais suas estórias, tarefas e problemas passarão",
             "US_TITLE": "Estados das Users Strories",
             "TASK_TITLE": "Estados da tarefa",
             "ISSUE_TITLE": "Estados do caso"
         },
         "PROJECT_VALUES_TYPES": {
             "TITLE": "Tipos",
-            "SUBTITLE": "Especifique os tipos que seu caso pode ser",
+            "SUBTITLE": "Especifique os tipos que seu problema pode ser",
             "ISSUE_TITLE": "Tipos de casos",
             "ACTION_ADD": "Adicionar novo {{objName}}"
         },
@@ -543,7 +562,7 @@
             "COUNT_MEMBERS": "{{ role.members_count }} membros com a mesma função",
             "TITLE_DELETE_ROLE": "Apagar Função",
             "REPLACEMENT_ROLE": "Todos os usuários com essa função serão movidos para",
-            "WARNING_DELETE_ROLE": "<strong>Seja cuidadoso, todas as estimativas para as funções serão removidas.</strong>",
+            "WARNING_DELETE_ROLE": "Be careful! All role estimations will be removed",
             "ERROR_DELETE_ALL": "Você não pode apagar todos os valores",
             "EXTERNAL_USER": "Usuário externo"
         },
@@ -671,6 +690,24 @@
         },
         "SUBMENU_THIDPARTIES": {
             "TITLE": "Serviços"
+        },
+        "PROJECT_TRANSFER": {
+            "DO_YOU_ACCEPT_PROJECT_OWNERNSHIP": "Would you like to become the new project owner?",
+            "PRIVATE": "Private",
+            "ACCEPTED_PROJECT_OWNERNSHIP": "Congratulations! You're now the new project owner.",
+            "REJECTED_PROJECT_OWNERNSHIP": "OK. We'll contact the current project owner",
+            "ACCEPT": "Aceitar",
+            "REJECT": "Reject",
+            "PROPOSE_OWNERSHIP": "<strong>{{owner}}</strong>, the current owner of the project <strong>{{project}}</strong> has asked that you become the new  project owner.",
+            "ADD_COMMENT_QUESTION": "Would you like to send a question to the project owner?",
+            "ADD_COMMENT": "Would you like to add a comment for the project owner?",
+            "UNLIMITED_PROJECTS": "Unlimited",
+            "OWNER_MESSAGE": {
+                "PRIVATE": "Please remember that you can own up to <strong>{{maxProjects}}</strong> private projects. You currently own <strong>{{currentProjects}}</strong> private projects",
+                "PUBLIC": "Please remember that you can own up to <strong>{{maxProjects}}</strong> public projects. You currently own <strong>{{currentProjects}}</strong> public projects"
+            },
+            "CANT_BE_OWNED": "At the moment you cannot become an owner of a project of this type. If you would like to become the owner of this project, please contact the administrator so they change your account settings to enable project ownership.",
+            "CHANGE_MY_PLAN": "Change my plan"
         }
     },
     "USER": {
@@ -703,7 +740,7 @@
         },
         "PROFILE_SIDEBAR": {
             "TITLE": "Seu perfil",
-            "DESCRIPTION": "People can see everything you do and what you are working on. Add a nice bio to give an enhanced version of your information.",
+            "DESCRIPTION": "As pessoas podem ver tudo que você faz e no que você está trabalhando. Adicione uma bela biografia para disponibilizar uma versão melhorada das sua informações.",
             "ADD_INFO": "Editar biografia"
         },
         "PROFILE_FAVS": {
@@ -716,7 +753,7 @@
             "FILTER_TYPE_USER_STORIES_TITLES": "Mostrar apenas user stories",
             "FILTER_TYPE_TASKS": "Tarefas",
             "FILTER_TYPE_TASK_TITLES": "Mostrar apenas tarefas",
-            "FILTER_TYPE_ISSUES": "Casos",
+            "FILTER_TYPE_ISSUES": "Problemas",
             "FILTER_TYPE_ISSUES_TITLE": "mostrar apenas problemas",
             "EMPTY_TITLE": "Parece que não há nada para exibir aqui."
         }
@@ -727,10 +764,15 @@
         "SECTION_PROJECTS": "Projetos",
         "HELP": "Reordene seus projetos para colocar no topo os mais usados.<br/> Os 10 primeiros projetos aparecerão na lista de projetos da barra de navegação superior.",
         "PRIVATE": "Projeto Privado",
-        "LOOKING_FOR_PEOPLE": "This project is looking for people",
+        "LOOKING_FOR_PEOPLE": "Este projeto esta a procura de colaboradores",
         "FANS_COUNTER_TITLE": "{total, plural, um{um fã} outro{# fãs}}",
         "WATCHERS_COUNTER_TITLE": "{total, plural, um{um observador} outro{#watchers}}",
         "MEMBERS_COUNTER_TITLE": "{total, plural, um{one member} outro{# members}}",
+        "BLOCKED_PROJECT": {
+            "BLOCKED": "Blocked project",
+            "THIS_PROJECT_IS_BLOCKED": "This project is temporarily blocked",
+            "TO_UNBLOCK_CONTACT_THE_ADMIN_STAFF": "In order to unblock your projects, contact the administrator."
+        },
         "STATS": {
             "PROJECT": "projetos<br/> pontos",
             "DEFINED": "pontos<br/> definidos",
@@ -742,7 +784,7 @@
             "TIMELINE": "Linha do Tempo",
             "BACKLOG": "Backlog",
             "KANBAN": "Kanban",
-            "ISSUES": "Casos",
+            "ISSUES": "Problemas",
             "WIKI": "Wiki",
             "TEAM": "Time",
             "MEETUP": "Reunião",
@@ -777,6 +819,7 @@
             "CHANGE_PASSWORD": "Alterar senha",
             "DASHBOARD_TITLE": "Painel",
             "DISCOVER_TITLE": "Descobrir projetos em destaques",
+            "NEW_ITEM": "Novo",
             "DISCOVER": "Descubra",
             "ACTION_REORDER": "Seguro e arraste para ordenar"
         },
@@ -791,7 +834,32 @@
             "ERROR_TOO_MANY_REQUEST": "Desculpe, nossos Oompa Loompas estão muito ocupados neste instante. Tente novamente em alguns minutos.",
             "ERROR_MESSAGE": "Nossos Oompa Loompas tiveram alguns problemas ao importar seu arquivo de despejo: {{error_message}}",
             "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) é muito pesado para nossos Oompa Loompas, tente algo menor que ({{maxFileSize}})",
-            "SYNC_SUCCESS": "Seu projeto foi importado com sucesso"
+            "SYNC_SUCCESS": "Seu projeto foi importado com sucesso",
+            "PROJECT_RESTRICTIONS": {
+                "PROJECT_MEMBERS_DESC": "The project you are trying to import has {{members}} members, unfortunately, your current plan allows for a maximum of {{max_memberships}} members per project. If you would like to increase that limit please contact the administrator.",
+                "PRIVATE_PROJECTS_SPACE": {
+                    "TITLE": "Unfortunately, your current plan does not allow for additional private projects",
+                    "DESC": "The project you are trying to import is private. Unfortunately, your current plan does not allow for additional private projects."
+                },
+                "PUBLIC_PROJECTS_SPACE": {
+                    "TITLE": "Unfortunately, your current plan does not allow for additional private projects",
+                    "DESC": "The project you are trying to import is public. Unfortunately, your current plan does not allow additional public projects."
+                },
+                "PRIVATE_PROJECTS_MEMBERS": {
+                    "TITLE": "Your current plan allows for a maximum of {{max_memberships}} members per private project"
+                },
+                "PUBLIC_PROJECTS_MEMBERS": {
+                    "TITLE": "Your current plan allows for a maximum of {{max_memberships}} members per public project."
+                },
+                "PRIVATE_PROJECTS_SPACE_MEMBERS": {
+                    "TITLE": "Unfortunately your current plan doesn't allow additional private projects or an increase of more than {{max_memberships}} members per private project",
+                    "DESC": "The project that you are trying to import is private and has {{members}} members."
+                },
+                "PUBLIC_PROJECTS_SPACE_MEMBERS": {
+                    "TITLE": "Unfortunately your current plan doesn't allow additional public projects or an increase of more than {{max_memberships}} members per public project",
+                    "DESC": "The project that you are trying to import is public and has more than {{members}} members."
+                }
+            }
         },
         "LIKE_BUTTON": {
             "LIKE": "Curtir",
@@ -819,13 +887,16 @@
         "DELETE_ACCOUNT": {
             "SECTION_NAME": "Apagar conta no Taiga",
             "CONFIRM": "Você tem certeza que quer apagar sua conta Taiga?",
-            "SUBTITLE": "Nós vamos sentir sua falta! :-(",
-            "NEWSLETTER_LABEL_TEXT": "Eu não quero receber mais os informativos"
+            "NEWSLETTER_LABEL_TEXT": "Eu não quero receber mais os informativos",
+            "CANCEL": "Back to settings",
+            "ACCEPT": "Delete account",
+            "BLOCK_PROJECT": "Note that all the projects you own projects will be <strong>blocked</strong> after you delete your account. If you do want a project blocked, transfer ownership to another member of each project prior to deleting your account.",
+            "SUBTITLE": "Sorry to see you go. We'll be here if you should ever consider us again! :("
         },
         "DELETE_PROJECT": {
             "TITLE": "Apagar projeto",
             "QUESTION": "Você tem certeza que quer apagar este projeto?",
-            "SUBTITLE": "Todas as informações do projeto (estórias de uso, tarefas, casos, sprints e páginas de wiki) serão perdidos! :-(",
+            "SUBTITLE": "Todas as informações do projeto (estórias, tarefas, problemas, sprints e páginas de wiki) serão perdidos! :-(",
             "CONFIRM": "Sim, eu tenho certeza"
         },
         "ASSIGNED_TO": {
@@ -837,7 +908,7 @@
             "HELP_TEXT": "Se os usuários já estiverem registrados no Taiga, eles serão adicionados automaticamente. Caso contrário, eles receberão um convite."
         },
         "CREATE_ISSUE": {
-            "TITLE": "Adicionar caso"
+            "TITLE": "Adicionar problema"
         },
         "FEEDBACK": {
             "TITLE": "Diga-nos algo...",
@@ -850,10 +921,10 @@
         },
         "ADD_EDIT_SPRINT": {
             "TITLE": "Novo Sprint",
-            "PLACEHOLDER_SPRINT_NAME": "nome do Sprint",
+            "PLACEHOLDER_SPRINT_NAME": "nome do sprint",
             "PLACEHOLDER_SPRINT_START": "Inicio Estimado",
             "PLACEHOLDER_SPRINT_END": "Estimativa de Termino",
-            "ACTION_DELETE_SPRINT": "Você quer apagar este Sprint?",
+            "ACTION_DELETE_SPRINT": "Você quer apagar este sprint?",
             "TITLE_ACTION_DELETE_SPRINT": "apagar sprint",
             "LAST_SPRINT_NAME": "último sprint é <strong>{{lastSprint}} ;-) </strong>"
         },
@@ -872,11 +943,29 @@
             "EDIT_US": "Editar user story"
         },
         "DELETE_SPRINT": {
-            "TITLE": "Apagar Sprint"
+            "TITLE": "Apagar sprint"
         },
         "CREATE_MEMBER": {
             "PLACEHOLDER_INVITATION_TEXT": "(Opcional) Adicione uma mensagem de texto ao convite. Diga algo animador para os novos membros ;-)",
-            "PLACEHOLDER_TYPE_EMAIL": "Digite um Email"
+            "PLACEHOLDER_TYPE_EMAIL": "Digite um Email",
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "Unfortunately, this project can't have more than <strong>{{maxMembers}}</strong> members.<br> If you would like to increase the current limit, please contact the administrator.",
+            "LIMIT_USERS_WARNING_MESSAGE": "Unfortunately, this project can't have more than <strong>{{maxMembers}}</strong> members."
+        },
+        "LEAVE_PROJECT_WARNING": {
+            "TITLE": "Unfortunately, this project can't be left without an owner",
+            "CURRENT_USER_OWNER": {
+                "DESC": "You are the current owner of this project. Before leaving, please transfer ownership to someone else.",
+                "BUTTON": "Change the project owner"
+            },
+            "OTHER_USER_OWNER": {
+                "DESC": "Unfortunately, you can't delete a member who is also the current project owner. First, please assign a new project owner.",
+                "BUTTON": "Request project owner change"
+            }
+        },
+        "CHANGE_OWNER": {
+            "TITLE": "Who do you want to be the new project owner?",
+            "ADD_COMMENT": "Add comment",
+            "BUTTON": "Ask this project member to become the new project owner"
         }
     },
     "US": {
@@ -888,8 +977,8 @@
         "TOTAL_POINTS": "total de pontos",
         "ADD": "+ Adicionar uma nova User Story",
         "ADD_BULK": "Adicionar User Stories em lote",
-        "PROMOTED": "Esta estória de uso foi promovida do caso:",
-        "TITLE_LINK_GO_TO_ISSUE": "Ir para caso",
+        "PROMOTED": "Esta estória de uso foi promovida do problema:",
+        "TITLE_LINK_GO_TO_ISSUE": "Ir para problema",
         "EXTERNAL_REFERENCE": "Esta EU foi criada de",
         "GO_TO_EXTERNAL_REFERENCE": "Ir para a origem",
         "BLOCKED": "Esta user story está bloqueada",
@@ -914,7 +1003,7 @@
         "TYPE_NEW_COMMENT": "Escreva um novo comentário aqui",
         "SHOW_DELETED": "Mostrar comentários apagados",
         "HIDE_DELETED": "Esconder comentário apagado",
-        "DELETE": "Delete comment",
+        "DELETE": "Apagar comentário",
         "RESTORE": "Restaurar comentário"
     },
     "ACTIVITY": {
@@ -977,8 +1066,8 @@
         "CUSTOMIZE_GRAPH_TEXT": "To have a nice graph that helps you follow the evolution of the project you have to set up the points and sprints through the",
         "CUSTOMIZE_GRAPH_ADMIN": "Administrador",
         "CUSTOMIZE_GRAPH_TITLE": "Configure os pontos e sprints pelo Administrador",
-        "MOVE_US_TO_CURRENT_SPRINT": "Mover para Sprint Corrente",
-        "MOVE_US_TO_LATEST_SPRINT": "ir para o último Sprint",
+        "MOVE_US_TO_CURRENT_SPRINT": "Mover para sprint corrente",
+        "MOVE_US_TO_LATEST_SPRINT": "ir para o último sprint",
         "SHOW_FILTERS": "Mostrar filtros",
         "SHOW_TAGS": "Exibir tags",
         "EMPTY": "O backlog está vazio!",
@@ -989,7 +1078,7 @@
         "CLOSED_POINTS": "fechado",
         "COMPACT_SPRINT": "Sprint Resumido",
         "GO_TO_TASKBOARD": "Ir ao quadro de tarefas de {{::name}}",
-        "EDIT_SPRINT": "Editar Sprint",
+        "EDIT_SPRINT": "Editar sprint",
         "TOTAL_POINTS": "total",
         "STATUS_NAME": "Nome de Situação",
         "SORTABLE_FILTER_ERROR": "Você não pode jogar sobre o  backlog quando filtros estão abertos",
@@ -998,9 +1087,9 @@
             "XAXIS_LABEL": "Sprintes",
             "YAXIS_LABEL": "Pontos",
             "OPTIMAL": "Ideal de pontos pendentes para o sprint \"{{sprintName}}\" deve ser {{value}}",
-            "REAL": "Real pending points for sprint \"{{sprintName}}\" is {{value}}",
-            "INCREMENT_TEAM": "Pontos incrementados pelos requerimentos do time para o sprint  \"{{sprintName}}\" é {{value}}",
-            "INCREMENT_CLIENT": "Pontos incrementados pelos requerimentos do cliente para o sprint \"{{sprintName}}\" é {{value}}"
+            "REAL": "Pontos realmente pendentes para o sprint \"{{sprintName}}\" é {{value}}",
+            "INCREMENT_TEAM": "Pontos incrementados pelos requisitos do time para o sprint  \"{{sprintName}}\" é {{value}}",
+            "INCREMENT_CLIENT": "Pontos incrementados pelos requisitos do cliente para o sprint \"{{sprintName}}\" é {{value}}"
         },
         "TAGS": {
             "TOGGLE": "Alternar visibilidade das tags",
@@ -1014,7 +1103,7 @@
         "SPRINT_SUMMARY": {
             "TOTAL_POINTS": "pontos<br />totais",
             "COMPLETED_POINTS": "pontos <br />completados",
-            "OPEN_TASKS": "tasks<br />abertas",
+            "OPEN_TASKS": "tarefas<br />abertas",
             "CLOSED_TASKS": "tarefas<br />fechadas",
             "IOCAINE_DOSES": "iocaine<br />doses",
             "SHOW_STATISTICS_TITLE": "Mostrar estatísticas",
@@ -1038,13 +1127,13 @@
         "SPRINTS": {
             "TITLE": "SPRINTS",
             "DATE": "DD MMM YYYY",
-            "LINK_TASKBOARD": "Sprint quadro de tarefas",
+            "LINK_TASKBOARD": "Quadro de tarefas do sprint",
             "TITLE_LINK_TASKBOARD": "ir para quadro de tarefas de \"{{name}}\"",
             "NUMBER_SPRINTS": "<br/>sprints",
             "EMPTY": "Ainda não temos sprints.",
-            "WARNING_EMPTY_SPRINT_ANONYMOUS": "Esse sprint não tem Estórias",
-            "WARNING_EMPTY_SPRINT": "Solte aqui Estórias do seu backlog para iniciar uma nova sprint",
-            "TITLE_ACTION_NEW_SPRINT": "Add nova sprint",
+            "WARNING_EMPTY_SPRINT_ANONYMOUS": "Esse sprint não tem estórias de usuário",
+            "WARNING_EMPTY_SPRINT": "Solte aqui estórias do seu backlog para iniciar uma nova sprint",
+            "TITLE_ACTION_NEW_SPRINT": "Adicionar nova sprint",
             "TEXT_ACTION_NEW_SPRINT": "Você poderá querer criar uma nova sprint em seu projeto",
             "ACTION_SHOW_CLOSED_SPRINTS": "Mostre os sprints fechados",
             "ACTION_HIDE_CLOSED_SPRINTS": "Esconder sprints fechados"
@@ -1134,9 +1223,9 @@
         "SUCCESS": "Nossos Oompa Loompas atualizaram seu email"
     },
     "ISSUES": {
-        "PAGE_TITLE": "Casos - {{projectName}}",
-        "PAGE_DESCRIPTION": "O painel de casos do projeto {{projectName}}: {{projectDescription}}",
-        "LIST_SECTION_NAME": "Casos",
+        "PAGE_TITLE": "Problemas - {{projectName}}",
+        "PAGE_DESCRIPTION": "O painel de problemas do projeto {{projectName}}: {{projectDescription}}",
+        "LIST_SECTION_NAME": "Problemas",
         "SECTION_NAME": "Detalhes do caso",
         "ACTION_NEW_ISSUE": "+ NOVO CASO",
         "ACTION_PROMOTE_TO_US": "Promover para User Story",
@@ -1201,7 +1290,7 @@
         }
     },
     "ISSUE": {
-        "PAGE_TITLE": "{{issueSubject}} - caso {{issueRef}} - {{projectName}}",
+        "PAGE_TITLE": "{{issueSubject}} - problema {{issueRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Estado: {{issueStatus }}. Tipo: {{issueType}}, Prioridade: {{issuePriority}}. severidade: {{issueSeverity}}. Descrição: {{issueDescription}}"
     },
     "KANBAN": {
@@ -1304,12 +1393,18 @@
         }
     },
     "WIZARD": {
-        "SECTION_TITLE_CHOOSE_TEMPLATE": "Escolher um template",
-        "CHOOSE_TEMPLATE_TEXT": "Qual template se encaixa melhor no seu projeto?",
         "SECTION_TITLE_CREATE_PROJECT": "Criar Projeto",
         "CREATE_PROJECT_TEXT": "Novo em folha. Tão excitante!",
-        "PROGRESS_TEMPLATE_SELECTION": "Seleção de tipo de projeto",
-        "PROGRESS_NAME_DESCRIPTION": "Nome e descrição"
+        "CHOOSE_TEMPLATE": "Which template fits your project best?",
+        "CHOOSE_TEMPLATE_TITLE": "More info about project templates",
+        "CHOOSE_TEMPLATE_INFO": "More info",
+        "PROJECT_DETAILS": "Project Details",
+        "PUBLIC_PROJECT": "Public Project",
+        "PRIVATE_PROJECT": "Private Project",
+        "CREATE_PROJECT": "Criar projeto",
+        "MAX_PRIVATE_PROJECTS": "You've reached the maximum number of private projects",
+        "MAX_PUBLIC_PROJECTS": "Unfortunately, you've reached the maximum number of public projects",
+        "CHANGE_PLANS": "change plans"
     },
     "WIKI": {
         "PAGE_TITLE": "{{wikiPageName}} - Wiki - {{projectName}}",
@@ -1335,7 +1430,7 @@
         "HINT1_TITLE": "Você sabia que você pode importar e exportar projetos?",
         "HINT1_TEXT": "Isso permite você extrair todo o seu conteúdo de um Taiga e mover para outro.",
         "HINT2_TITLE": "Você sabia que pode criar campos personalizados?",
-        "HINT2_TEXT": "Teams can now create custom fields as a flexible means to enter specific data useful for their particular workflow.",
+        "HINT2_TEXT": "Equipes agora podem personalizar campos, um jeito flexível de inserir dados específicos para uso em seu próprio fluxo de trabalho.",
         "HINT3_TITLE": "Reorder your projects to feature those most relevant to you.",
         "HINT3_TEXT": "The 10 projects are listed in the direct access bar at the top.",
         "HINT4_TITLE": "Você esqueceu onde está trabalhando?",
@@ -1365,12 +1460,12 @@
         "NEW_COMMENT_ISSUE": "{{username}} comentou no issue {{obj_name}}",
         "NEW_COMMENT_TASK": "{{username}} comentou na tarefa {{obj_name}}",
         "NEW_MEMBER": "{{project_name}} tem um membro novo",
-        "US_ADDED_MILESTONE": "{{username}} adicionou a US {{obj_name}} a {{sprint_name}}",
+        "US_ADDED_MILESTONE": "{{username}} adicionou a estória {{obj_name}} a {{sprint_name}}",
         "US_MOVED": "{{username}} moveu a US {{obj_name}}",
         "US_REMOVED_FROM_MILESTONE": "{{username}} adicionou a US {{obj_name}} ao backlog",
         "BLOCKED": "{{username}} bloqueou {{obj_name}}",
         "UNBLOCKED": "{{username}} desbloqueou {{obj_name}}",
-        "NEW_USER": "{{username}} ingressou no taiga"
+        "NEW_USER": "{{username}} ingressou no Taiga"
     },
     "LEGAL": {
         "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>When creating a new account, you agree to our <br /></span><a href=\"{{ termsOfServiceUrl }}\" title=\"See terms of service\" target=\"_blank\">terms of service</a><span> and </span><a href=\"{{ privacyPolicyUrl }}\" title=\"See privacy policy\" target=\"_blank\">privacy policy</a>."
@@ -1414,7 +1509,7 @@
             "STEP1": {
                 "TITLE": "Sumário do projeto",
                 "TEXT1": "Aqui você verá o estado do seu projeto",
-                "TEXT2": "You can change every kind of project settings through the admin."
+                "TEXT2": "Você pode alterar qualquer configuração do projeto no menu admin."
             },
             "STEP2": {
                 "TITLE": "Backlog do Produto",
@@ -1426,7 +1521,7 @@
             },
             "STEP4": {
                 "TITLE": "User Stories",
-                "TEXT": "Those are the requirements at high level. You can add them to the backlog and drag them to the sprint in which it should be delivered."
+                "TEXT": "Estes são os requisitos em alto nível. Você pode adicioná-los ao backlog e arrastá-los ao sprint em que deve ser entregue. "
             }
         },
         "KANBAN": {
@@ -1455,7 +1550,7 @@
         "MOST_LIKED": "Mais curtidas",
         "MOST_LIKED_EMPTY": "Não existe projetos curtidos ainda",
         "VIEW_MORE": "Visualizar mais",
-        "RECRUITING": "This project is looking for people",
+        "RECRUITING": "Este projeto esta procurando colaboradores",
         "FEATURED": "Featured Projects",
         "EMPTY": "There are no projects to show with this search criteria.<br> Try again!",
         "FILTERS": {
@@ -1470,7 +1565,7 @@
             "CLEAR": "Limpar filtros"
         },
         "SEARCH": {
-            "PAGE_TITLE": "Search - Discover projects - Taiga",
+            "PAGE_TITLE": "Procurar - Descobrir projetos - Taiga",
             "PAGE_DESCRIPTION": "Searchable directory of Public Projects in Taiga. Explore backlogs, timelines, issues, and teams. Check out the most liked or most active projects. Filter by Kanban or Scrum.",
             "INPUT_PLACEHOLDER": "Digite algo...",
             "ACTION_TITLE": "Procurar",

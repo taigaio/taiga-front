@@ -7,7 +7,7 @@ helper.getHeaderColumns = function() {
 };
 
 helper.openNewUsLb = function(column) {
-    helper.getHeaderColumns().get(column).$('.icon-plus').click();
+    helper.getHeaderColumns().get(column).$$('.option').get(4).click();
 };
 
 helper.getColumns = function() {

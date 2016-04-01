@@ -41,7 +41,8 @@
         "IOCAINE_TEXT": "Känner du dig lite bortkommen med en uppgift? Försäkra dig om att andra känner till uppgiften när du klickar på Iocaine-knappen när du ändrar uppgiften. Det är möjligt att bli immun till det här (påhittade) dödliga giftet om du tar små mängder över tid - och du kan även så småningom om bli bättre på vad du gör när du då och då tar på dig större utmaningar!",
         "CLIENT_REQUIREMENT": "Client requirement is new requirement that was not previously expected and it is required to be part of the project",
         "TEAM_REQUIREMENT": "Team requirement is a requirement that must exist in the project but should have no cost for the client",
-        "CAPSLOCK_WARNING": "Var försiktig! Du skriver med STORA bokstäver och det här fältet är skriftlägekänsligt.",
+        "OWNER": "Project Owner",
+        "CAPSLOCK_WARNING": "Be careful! You are using capital letters in an input field that is case sensitive.",
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Det här värdet är felaktigt. ",
             "TYPE_EMAIL": "Värdet måste vara en giltig e-postadress",
@@ -65,7 +66,9 @@
             "MIN_CHECK": "Du måste välja minst %s val.",
             "MAX_CHECK": "Du måste välja %s val eller mindre.",
             "RANGE_CHECK": "Du måste välja mellan %s och %s val.",
-            "EQUAL_TO": "Det här värdet skulle vara det samma. "
+            "EQUAL_TO": "Det här värdet skulle vara det samma. ",
+            "LINEWIDTH": "One or more lines is perhaps too long. Try to keep under %s characters.",
+            "PIKADAY": "Invalid date format, please use DD MMM YYYY (like 23 Mar 1984)"
         },
         "PICKERDATE": {
             "FORMAT": "YYYY-MM-DD",
@@ -315,7 +318,8 @@
         "PLACEHOLDER_FIELD": "Användarnamn eller e-postadress",
         "ACTION_RESET_PASSWORD": "Återställ lösenord",
         "LINK_CANCEL": "Nej, ta mig tillbaka. Jag tror att jag minns det.",
-        "SUCCESS": "<strong>Kolla inboxen!</strong><br/>Du ska ha fått ett e-postmeddelande med instruktioner för hur du ändrar lösenordet",
+        "SUCCESS_TITLE": "Check your inbox!",
+        "SUCCESS_TEXT": "We sent you an email with the instructions to set a new password",
         "ERROR": "Enligt våra Oompaloompier är du inte registrerad ännu."
     },
     "CHANGE_PASSWORD": {
@@ -373,7 +377,6 @@
         "DEPRECATED_FILE": "Borttagen?",
         "ADD": "Lägg till ny bilaga. {{maxFileSizeMsg}}",
         "DROP": "Drag och släpp filer som ska bifogas här!",
-        "MAX_FILE_SIZE": "[Max. size: {{maxFileSize}}]",
         "SHOW_DEPRECATED": "+ visa ogillade bilagor",
         "HIDE_DEPRECATED": "- dölj ogillade bilagor",
         "COUNT_DEPRECATED": "({{ counter }} deprecated)",
@@ -406,7 +409,9 @@
             "TITLE": "Hantera medlemmar",
             "PAGE_TITLE": "Medlemskap - {{projectName}}",
             "ADD_BUTTON": "+ Ny medlem",
-            "ADD_BUTTON_TITLE": "Lägg till ny medlem"
+            "ADD_BUTTON_TITLE": "Lägg till ny medlem",
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_ADMIN": "Unfortunately, this project has reached its limit of <strong>({{members}})</strong> allowed members.",
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "This project has reached its limit of <strong>({{members}})</strong> allowed members. If you would like to increase that limit please contact the administrator."
         },
         "PROJECT_EXPORT": {
             "TITLE": "Exportera",
@@ -428,6 +433,10 @@
             "DISABLE": "Avvaktivera",
             "BACKLOG": "Inkorg",
             "BACKLOG_DESCRIPTION": "Hantera dina användarhistorier för att organisera visningar av kommande och prioriterade jobb. ",
+            "NUMBER_SPRINTS": "Expected number of sprints",
+            "NUMBER_SPRINTS_HELP": "0 for an undetermined number",
+            "NUMBER_US_POINTS": "Expected total of story points",
+            "NUMBER_US_POINTS_HELP": "0 for an undetermined number",
             "KANBAN": "Kanban",
             "KANBAN_DESCRIPTION": "Organisera dina projekt med Lean med den här tavlan.  ",
             "ISSUES": "Frågor",
@@ -435,9 +444,9 @@
             "WIKI": "Wiki",
             "WIKI_DESCRIPTION": "Lägg till, modifiera eller ta bort innehåll i samarbetet med andra. Det här är rätt plats för ditt projektdokumentation. ",
             "MEETUP": "Möt upp",
-            "MEETUP_DESCRIPTION": "Välj ditt videokonferenssystem. Även utvecklare behöver mötas ansikte mot ansikte.",
+            "MEETUP_DESCRIPTION": "Choose your videoconference system.",
             "SELECT_VIDEOCONFERENCE": "Välj videokonferenssystem",
-            "SALT_CHAT_ROOM": "Om du önskar det kan du lägga till några tillfälliga tecken till chat-rummets namn. ",
+            "SALT_CHAT_ROOM": "Add a prefix to the chatroom name",
             "JITSI_CHAT_ROOM": "Jitsi",
             "APPEARIN_CHAT_ROOM": "Dyker upp i ",
             "TALKY_CHAT_ROOM": "Talky",
@@ -449,22 +458,31 @@
             "PROJECT_DETAILS": "Projektdetaljer",
             "PROJECT_NAME": "Projektnamn",
             "PROJECT_SLUG": "Projektslugg",
-            "NUMBER_SPRINTS": "Antal sprintar (0 för en obestämd kvantitet)",
-            "NUMBER_US_POINTS": "Antal US-poäng (0 för ett obestämd antal)",
             "TAGS": "Etiketter",
             "DESCRIPTION": "Beskrivning",
             "RECRUITING": "Is this project looking for people?",
             "RECRUITING_MESSAGE": "Vem letar du efter?",
             "RECRUITING_PLACEHOLDER": "Define the profiles you are looking for",
             "PUBLIC_PROJECT": "Publika projekt",
-            "PUBLIC_PROJECT_DESC": "Users will be able to find and view your project",
             "PRIVATE_PROJECT": "Privata projekt",
-            "PRIVATE_PROJECT_DESC": "By default, this project will be hidden to the public",
             "PRIVATE_OR_PUBLIC": "Vad är skillnaden mellan publika och privata projekt?",
             "DELETE": "Ta bort projekt",
             "LOGO_HELP": "Bilden kommer skalas till 80x80px.",
             "CHANGE_LOGO": "Ändra logga",
-            "ACTION_USE_DEFAULT_LOGO": "Use default image"
+            "ACTION_USE_DEFAULT_LOGO": "Use default image",
+            "MAX_PRIVATE_PROJECTS": "You've reached the maximum number of private projects allowed by your current plan",
+            "MAX_PRIVATE_PROJECTS_MEMBERS": "The maximum number of members for private projects has been exceeded",
+            "MAX_PUBLIC_PROJECTS": "Unfortunately, you've reached the maximum number of public projects allowed by your current plan",
+            "MAX_PUBLIC_PROJECTS_MEMBERS": "The project exceeds your maximum number of members for public projects",
+            "PROJECT_OWNER": "Project owner",
+            "REQUEST_OWNERSHIP": "Request ownership",
+            "REQUEST_OWNERSHIP_CONFIRMATION_TITLE": "Do you want to become the new project owner?",
+            "REQUEST_OWNERSHIP_DESC": "Request that current project owner {{name}} transfer ownership of this project to you.",
+            "REQUEST_OWNERSHIP_BUTTON": "Förfrågan",
+            "REQUEST_OWNERSHIP_SUCCESS": "We'll notify the project owner",
+            "CHANGE_OWNER": "Change owner",
+            "CHANGE_OWNER_SUCCESS_TITLE": "Ok, your request has been sent!",
+            "CHANGE_OWNER_SUCCESS_DESC": "We will notify you by email if the project ownership request is accepted or declined"
         },
         "REPORTS": {
             "TITLE": "Rapporter",
@@ -495,7 +513,8 @@
             "ISSUE_ADD": "Anpassade fält för ärenden",
             "FIELD_TYPE_TEXT": "Text",
             "FIELD_TYPE_MULTI": "Flerradig",
-            "FIELD_TYPE_DATE": "Datum"
+            "FIELD_TYPE_DATE": "Datum",
+            "FIELD_TYPE_URL": "Url"
         },
         "PROJECT_VALUES": {
             "PAGE_TITLE": "{{sectionName}} - Projektvärden - {{projectName}}",
@@ -543,7 +562,7 @@
             "COUNT_MEMBERS": "{{ role.members_count }} medlemmar med den här rollen",
             "TITLE_DELETE_ROLE": "Ta bort rollen",
             "REPLACEMENT_ROLE": "Alla användarna med den här rollen vill flyttas till",
-            "WARNING_DELETE_ROLE": "<strong>Var försiktig. Alla beräkninger för den här rollen vill tas bort</strong>",
+            "WARNING_DELETE_ROLE": "Be careful! All role estimations will be removed",
             "ERROR_DELETE_ALL": "Du kan inte ta bort alla värden",
             "EXTERNAL_USER": "Extern användare"
         },
@@ -671,6 +690,24 @@
         },
         "SUBMENU_THIDPARTIES": {
             "TITLE": "Tjänster"
+        },
+        "PROJECT_TRANSFER": {
+            "DO_YOU_ACCEPT_PROJECT_OWNERNSHIP": "Would you like to become the new project owner?",
+            "PRIVATE": "Private",
+            "ACCEPTED_PROJECT_OWNERNSHIP": "Congratulations! You're now the new project owner.",
+            "REJECTED_PROJECT_OWNERNSHIP": "OK. We'll contact the current project owner",
+            "ACCEPT": "Acceptera",
+            "REJECT": "Reject",
+            "PROPOSE_OWNERSHIP": "<strong>{{owner}}</strong>, the current owner of the project <strong>{{project}}</strong> has asked that you become the new  project owner.",
+            "ADD_COMMENT_QUESTION": "Would you like to send a question to the project owner?",
+            "ADD_COMMENT": "Would you like to add a comment for the project owner?",
+            "UNLIMITED_PROJECTS": "Unlimited",
+            "OWNER_MESSAGE": {
+                "PRIVATE": "Please remember that you can own up to <strong>{{maxProjects}}</strong> private projects. You currently own <strong>{{currentProjects}}</strong> private projects",
+                "PUBLIC": "Please remember that you can own up to <strong>{{maxProjects}}</strong> public projects. You currently own <strong>{{currentProjects}}</strong> public projects"
+            },
+            "CANT_BE_OWNED": "At the moment you cannot become an owner of a project of this type. If you would like to become the owner of this project, please contact the administrator so they change your account settings to enable project ownership.",
+            "CHANGE_MY_PLAN": "Change my plan"
         }
     },
     "USER": {
@@ -731,6 +768,11 @@
         "FANS_COUNTER_TITLE": "{total, plural, one{one fan} andra{# fans}}",
         "WATCHERS_COUNTER_TITLE": "{total, plural, en{one watcher} andra{# watchers}}",
         "MEMBERS_COUNTER_TITLE": "{total, plural, one{one member} other{# members}}",
+        "BLOCKED_PROJECT": {
+            "BLOCKED": "Blocked project",
+            "THIS_PROJECT_IS_BLOCKED": "This project is temporarily blocked",
+            "TO_UNBLOCK_CONTACT_THE_ADMIN_STAFF": "In order to unblock your projects, contact the administrator."
+        },
         "STATS": {
             "PROJECT": "projekt<br/> poäng",
             "DEFINED": "definierad<br/> poäng",
@@ -777,6 +819,7 @@
             "CHANGE_PASSWORD": "Byt lösenord",
             "DASHBOARD_TITLE": "Instrumentpanel",
             "DISCOVER_TITLE": "Upptäck nya rörliga projekt",
+            "NEW_ITEM": "Ny",
             "DISCOVER": "Upptäck",
             "ACTION_REORDER": "Dra & släpp för att sortera"
         },
@@ -791,7 +834,32 @@
             "ERROR_TOO_MANY_REQUEST": "Beklagar. Våra oompa loompier är mycket upptagna. Vänligen försök på nytt om några minuter. ",
             "ERROR_MESSAGE": "Våra Oompa Loompier har lite problem med att importera dina hämtningsdata: {{error_message}}",
             "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) är för tungt för våra Oompa Loompier. Försök med något mindre än ({{maxFileSize}})",
-            "SYNC_SUCCESS": "Ditt projekt är korrekt importerad"
+            "SYNC_SUCCESS": "Ditt projekt är korrekt importerad",
+            "PROJECT_RESTRICTIONS": {
+                "PROJECT_MEMBERS_DESC": "The project you are trying to import has {{members}} members, unfortunately, your current plan allows for a maximum of {{max_memberships}} members per project. If you would like to increase that limit please contact the administrator.",
+                "PRIVATE_PROJECTS_SPACE": {
+                    "TITLE": "Unfortunately, your current plan does not allow for additional private projects",
+                    "DESC": "The project you are trying to import is private. Unfortunately, your current plan does not allow for additional private projects."
+                },
+                "PUBLIC_PROJECTS_SPACE": {
+                    "TITLE": "Unfortunately, your current plan does not allow for additional private projects",
+                    "DESC": "The project you are trying to import is public. Unfortunately, your current plan does not allow additional public projects."
+                },
+                "PRIVATE_PROJECTS_MEMBERS": {
+                    "TITLE": "Your current plan allows for a maximum of {{max_memberships}} members per private project"
+                },
+                "PUBLIC_PROJECTS_MEMBERS": {
+                    "TITLE": "Your current plan allows for a maximum of {{max_memberships}} members per public project."
+                },
+                "PRIVATE_PROJECTS_SPACE_MEMBERS": {
+                    "TITLE": "Unfortunately your current plan doesn't allow additional private projects or an increase of more than {{max_memberships}} members per private project",
+                    "DESC": "The project that you are trying to import is private and has {{members}} members."
+                },
+                "PUBLIC_PROJECTS_SPACE_MEMBERS": {
+                    "TITLE": "Unfortunately your current plan doesn't allow additional public projects or an increase of more than {{max_memberships}} members per public project",
+                    "DESC": "The project that you are trying to import is public and has more than {{members}} members."
+                }
+            }
         },
         "LIKE_BUTTON": {
             "LIKE": "Gillar",
@@ -819,8 +887,11 @@
         "DELETE_ACCOUNT": {
             "SECTION_NAME": "Ta bort konto",
             "CONFIRM": "Är du säker på att du vill radera kontot?",
-            "SUBTITLE": "Vi kommer att sakna dig!",
-            "NEWSLETTER_LABEL_TEXT": "Jag vill inte motta flera nyhetsbrev"
+            "NEWSLETTER_LABEL_TEXT": "Jag vill inte motta flera nyhetsbrev",
+            "CANCEL": "Back to settings",
+            "ACCEPT": "Delete account",
+            "BLOCK_PROJECT": "Note that all the projects you own projects will be <strong>blocked</strong> after you delete your account. If you do want a project blocked, transfer ownership to another member of each project prior to deleting your account.",
+            "SUBTITLE": "Sorry to see you go. We'll be here if you should ever consider us again! :("
         },
         "DELETE_PROJECT": {
             "TITLE": "Ta bort projekt",
@@ -876,7 +947,25 @@
         },
         "CREATE_MEMBER": {
             "PLACEHOLDER_INVITATION_TEXT": "(Valfritt) Lägg till en personlig hälsning till invitationen. Berätta något trevligt till din nya projektmedlem ;-)",
-            "PLACEHOLDER_TYPE_EMAIL": "Skriv in en e-postadress"
+            "PLACEHOLDER_TYPE_EMAIL": "Skriv in en e-postadress",
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "Unfortunately, this project can't have more than <strong>{{maxMembers}}</strong> members.<br> If you would like to increase the current limit, please contact the administrator.",
+            "LIMIT_USERS_WARNING_MESSAGE": "Unfortunately, this project can't have more than <strong>{{maxMembers}}</strong> members."
+        },
+        "LEAVE_PROJECT_WARNING": {
+            "TITLE": "Unfortunately, this project can't be left without an owner",
+            "CURRENT_USER_OWNER": {
+                "DESC": "You are the current owner of this project. Before leaving, please transfer ownership to someone else.",
+                "BUTTON": "Change the project owner"
+            },
+            "OTHER_USER_OWNER": {
+                "DESC": "Unfortunately, you can't delete a member who is also the current project owner. First, please assign a new project owner.",
+                "BUTTON": "Request project owner change"
+            }
+        },
+        "CHANGE_OWNER": {
+            "TITLE": "Who do you want to be the new project owner?",
+            "ADD_COMMENT": "Add comment",
+            "BUTTON": "Ask this project member to become the new project owner"
         }
     },
     "US": {
@@ -1304,12 +1393,18 @@
         }
     },
     "WIZARD": {
-        "SECTION_TITLE_CHOOSE_TEMPLATE": "Välj en mall",
-        "CHOOSE_TEMPLATE_TEXT": "Vilken mall skulle passa bättre i det här projektet? ",
         "SECTION_TITLE_CREATE_PROJECT": "Skapa projekt",
         "CREATE_PROJECT_TEXT": "Fräscht och rent. Så trevligt!",
-        "PROGRESS_TEMPLATE_SELECTION": "Urval mallar",
-        "PROGRESS_NAME_DESCRIPTION": "Namn och beskrivning"
+        "CHOOSE_TEMPLATE": "Which template fits your project best?",
+        "CHOOSE_TEMPLATE_TITLE": "More info about project templates",
+        "CHOOSE_TEMPLATE_INFO": "More info",
+        "PROJECT_DETAILS": "Project Details",
+        "PUBLIC_PROJECT": "Public Project",
+        "PRIVATE_PROJECT": "Private Project",
+        "CREATE_PROJECT": "Skapa projekt",
+        "MAX_PRIVATE_PROJECTS": "You've reached the maximum number of private projects",
+        "MAX_PUBLIC_PROJECTS": "Unfortunately, you've reached the maximum number of public projects",
+        "CHANGE_PLANS": "change plans"
     },
     "WIKI": {
         "PAGE_TITLE": "{{wikiPageName}} - Wiki - {{projectName}}",

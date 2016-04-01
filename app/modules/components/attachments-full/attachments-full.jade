@@ -11,21 +11,24 @@ section.attachments(
                 ng-click="vm.setMode('gallery')"
                 title="{{ 'ATTACHMENT.GALLERY_VIEW_MODE' | translate }}"
             )
-                include ../../../svg/gallery.svg
+                svg.icon.icon-gallery
+                    use(xlink:href="#icon-gallery")
             button.view-list(
                 ng-class="{'is-active': vm.mode == 'list'}"
                 ng-if="vm.attachments.size"
                 ng-click="vm.setMode('list')"
                 title="{{ 'ATTACHMENT.LIST_VIEW_MODE' | translate }}"
             )
-                include ../../../svg/list.svg
+                svg.icon.icon-list
+                    use(xlink:href="#icon-list")
             .add-attach(
                 tg-check-permission="modify_{{vm.type}}"
                 title!="{{'ATTACHMENT.ADD' | translate}}"
             )
 
                 label.add-attachment-button(for="add-attach")
-                    include ../../../svg/add.svg
+                    svg.icon.icon-add
+                        use(xlink:href="#icon-add")
 
                 input(
                     id="add-attach",
@@ -52,12 +55,11 @@ section.attachments(
 
           .single-attachment(ng-repeat="file in vm.uploadingAttachments()")
               .attachment-name
-                  span.icon
-                      include ../../../svg/attachment.svg
+                  svg.icon.icon-attachment
+                      use(xlink:href="#icon-attachment")
                   span {{file.name}}
               .attachment-size
                   span {{file.size | sizeFormat}}
-
               .attachment-comments
                   span {{file.progressMessage}}
                   .percentage(ng-style="{'width': file.progressPercent}")

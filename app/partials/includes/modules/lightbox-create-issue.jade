@@ -1,19 +1,42 @@
-a.close(href="", title="{{'COMMON.CLOSE' | translate}}")
-    span.icon.icon-delete
+a.close(
+    href=""
+    title="{{'COMMON.CLOSE' | translate}}"
+)
+    svg.icon.icon-close
+        use(xlink:href="#icon-close")
 form
     h2.title(translate="LIGHTBOX.CREATE_ISSUE.TITLE")
     fieldset
-        input(type="text", ng-model="issue.subject", ng-attr-placeholder="{{'COMMON.FIELDS.SUBJECT' | translate}}", ng-model-options="{ debounce: 200 }", data-required="true", data-maxlength="500")
-    div.fieldset-row
+        input(
+            type="text"
+            ng-model="issue.subject"
+            ng-attr-placeholder="{{'COMMON.FIELDS.SUBJECT' | translate}}"
+            ng-model-options="{ debounce: 200 }"
+            data-required="true"
+            data-maxlength="500"
+        )
+    .fieldset-row
         fieldset
-            select.type(ng-model="issue.type", ng-options="t.id as t.name for t in issueTypes")
+            select.type(
+                ng-model="issue.type"
+                ng-options="t.id as t.name for t in issueTypes"
+            )
         fieldset
-            select.priority(ng-model="issue.priority", ng-options="p.id as p.name for p in priorityList")
+            select.priority(
+                ng-model="issue.priority"
+                ng-options="p.id as p.name for p in priorityList"
+            )
         fieldset
-            select.severity(ng-model="issue.severity", ng-options="s.id as s.name for s in severityList")
+            select.severity(
+                ng-model="issue.severity"
+                ng-options="s.id as s.name for s in severityList"
+            )
 
     fieldset
-        div.tags-block(tg-lb-tag-line, ng-model="issue.tags")
+        .tags-block(
+            tg-lb-tag-line
+            ng-model="issue.tags"
+        )
 
     fieldset
         section
@@ -24,7 +47,14 @@ form
               )
 
     fieldset
-        textarea.description(ng-attr-placeholder="{{'COMMON.FIELDS.DESCRIPTION' | translate}}", ng-model="issue.description")
+        textarea.description(
+            ng-attr-placeholder="{{'COMMON.FIELDS.DESCRIPTION' | translate}}"
+            ng-model="issue.description"
+        )
 
     // include lightbox-attachments
-    button.button-green.submit-button(type="submit", title="{{'COMMON.CREATE' | translate}}", translate="COMMON.CREATE")
+    button.button-green.submit-button(
+        type="submit"
+        title="{{'COMMON.CREATE' | translate}}"
+        translate="COMMON.CREATE"
+    )
