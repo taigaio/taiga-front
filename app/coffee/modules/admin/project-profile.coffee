@@ -569,13 +569,15 @@ AdminProjectChangeOwnerDirective = (lightboxFactory) ->
                 }, {
                     projectId: scope.projectId,
                     activeUsers: scope.activeUsers,
-                    currentOwnerId: scope.owner.id
+                    currentOwnerId: scope.owner.id,
+                    members: scope.members
                 })
 
         scope: {
             "activeUsers": "="
             "projectId": "="
             "owner": "="
+            "members": "="
         },
         templateUrl: "admin/admin-project-change-owner.html"
     }

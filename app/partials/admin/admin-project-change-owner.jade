@@ -5,4 +5,7 @@
     .owner-info-title {{ 'ADMIN.PROJECT_PROFILE.PROJECT_OWNER' | translate }}
     .owner-name {{::owner.full_name_display}}
 
-a.request(href="", ng-click="changeOwner()") {{ 'ADMIN.PROJECT_PROFILE.CHANGE_OWNER' | translate }}
+a.request(
+    href="",
+    ng-click="changeOwner()",
+    ng-if="members > 1") {{ 'ADMIN.PROJECT_PROFILE.CHANGE_OWNER' | translate }}
