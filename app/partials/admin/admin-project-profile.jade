@@ -84,7 +84,7 @@ div.wrapper(
                         project-id="project.id"
                     )
 
-                fieldset(ng-if="project.owner.id == user.id")
+                fieldset(ng-if="project.owner.id == user.id && project.members.length > 1")
                     tg-admin-project-change-owner.admin-project-profile-owner-actions(
                         owner="project.owner",
                         project-id="project.id"
