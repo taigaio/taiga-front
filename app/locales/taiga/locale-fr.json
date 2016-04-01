@@ -1389,7 +1389,7 @@
             "LANGUAGE": "Langue",
             "LANGUAGE_DEFAULT": "-- utiliser la langue par défaut --",
             "THEME": "Thème",
-            "THEME_DEFAULT": "-- Utiliser la langue par défaut --"
+            "THEME_DEFAULT": "-- utiliser le thème par défaut --"
         }
     },
     "WIZARD": {
