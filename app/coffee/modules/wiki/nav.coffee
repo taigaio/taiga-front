@@ -77,7 +77,7 @@ WikiNavDirective = ($tgrepo, $log, $location, $confirm, $navUrls, $analytics, $l
                 $el.find(".new input").focus()
                 $el.find(".add-button").hide()
 
-            $el.on "click", ".wiki-link .icon-delete", (event) ->
+            $el.on "click", ".js-delete-link", (event) ->
                 event.preventDefault()
                 event.stopPropagation()
                 target = angular.element(event.currentTarget)

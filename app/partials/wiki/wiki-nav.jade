@@ -8,7 +8,7 @@ nav
       a(title!="<%- link.title %>")
           span.link-title <%- link.title %>
           <% if (deleteWikiLinkPermission) { %>
-          svg.icon.icon-trash
+          svg.js-delete-link.icon.icon-trash
               use(xlink:href="#icon-trash")
           <% } %>
       input(type="text" placeholder="{{'COMMON.FIELDS.NAME' | translate}}" class="hidden" value!="<%- link.title %>")
