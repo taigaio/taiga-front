@@ -28,9 +28,6 @@ section.home-project-list(ng-if="vm.projects.size")
                         tg-nav="project:project=project.get('slug')"
                         title="{{::project.get('name')}}"
                     ) {{::project.get('name')}}
-                    svg.look-for-people.icon.icon-recruit(ng-if="project.get('is_looking_for_people')")
-                        use(xlink:href="#icon-recruit")
-                            title="{{ ::project.get('looking_for_people_note') }}"
                     svg.icon.icon-blocked-project(ng-if="project.get('blocked_code')")
                         use(xlink:href="#icon-blocked-project")
                             title(translate="PROJECT.BLOCKED_PROJECT.BLOCKED")
