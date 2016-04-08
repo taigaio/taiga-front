@@ -45,21 +45,10 @@
     margin-bottom: 0;
     li {
         @extend %large;
-        display: inline-block;
-        &:first-child {
-            border-right: 1px solid $whitish;
-        }
-        &:last-child {
-            border-right: 0;
-        }
-    }
-    a {
         background: $white;
-        color: $gray-light;
+        border-right: 1px solid $whitish;
         display: inline-block;
-        padding: .5rem 2rem;
         position: relative;
-        transition: color .2s ease-in;
         &.active {
             color: $primary;
             top: 1px;
@@ -68,6 +57,12 @@
             color: $grayer;
             transition: color .2s ease-in;
         }
+    }
+    a {
+        color: $gray-light;
+        display: block;
+        padding: .5rem 2rem;
+        transition: color .2s ease-in;
     }
     .icon {
         fill: currentColor;
