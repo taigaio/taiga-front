@@ -842,7 +842,7 @@
                     "DESC": "The project you are trying to import is private. Unfortunately, your current plan does not allow for additional private projects."
                 },
                 "PUBLIC_PROJECTS_SPACE": {
-                    "TITLE": "Unfortunately, your current plan does not allow for additional private projects",
+                    "TITLE": "Unfortunately, your current plan does not allow for additional public projects",
                     "DESC": "The project you are trying to import is public. Unfortunately, your current plan does not allow additional public projects."
                 },
                 "PRIVATE_PROJECTS_MEMBERS": {
