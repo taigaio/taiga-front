@@ -39,12 +39,11 @@
     }
 }
 .history-tabs {
-    @extend %title;
+    @extend %light;
     border-bottom: 1px solid $whitish;
     border-top: 1px solid $whitish;
     margin-bottom: 0;
     li {
-        @extend %large;
         background: $white;
         border-right: 1px solid $whitish;
         display: inline-block;
@@ -74,6 +73,7 @@
 .add-comment {
     @include cursor-progress;
     @include clearfix;
+    margin-top: 1rem;
     &.active {
         .button-green {
             display: block;
