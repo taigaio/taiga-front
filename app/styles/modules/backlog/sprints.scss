@@ -145,7 +145,7 @@
     .sprint-table {
         .sprint-empty {
             @extend %light;
-            background: lighten($gray-light, 18%);
+            background: darken($whitish, 5%);
             border: 2px dashed lighten($gray-light, 10%);
             color: $gray;
             padding: 1rem;
