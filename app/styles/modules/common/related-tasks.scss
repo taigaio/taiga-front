@@ -183,6 +183,20 @@
             }
         }
     }
+    .closed,
+    .closed:hover {
+        border-left: 10px solid $whitish;
+        color: $whitish;
+        a,
+        svg {
+            fill: $whitish;
+        }
+        .task-name a {
+            color: $whitish;
+            text-decoration: line-through;
+
+        }
+    }
     .icon-iocaine {
         display: none;
     }

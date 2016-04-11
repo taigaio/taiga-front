@@ -45,10 +45,11 @@
     margin-bottom: 0;
     li {
         background: $white;
-        border-right: 1px solid $whitish;
         display: inline-block;
         position: relative;
         &.active {
+            border-left: 1px solid $whitish;
+            border-right: 1px solid $whitish;
             color: $primary;
             top: 1px;
         }
