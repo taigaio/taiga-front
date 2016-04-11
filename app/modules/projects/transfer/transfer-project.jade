@@ -53,14 +53,14 @@
 
         .transfer-project-options
             a.button.button-gray(
-                ng-click="vm.transferReject(vm.token, vm.reason)"
+                ng-click="vm.transferReject(vm.token, vm.reason, $event)"
                 href="#"
                 title="{{'ADMIN.PROJECT_TRANSFER.REJECT' | translate}}"
                 translate="ADMIN.PROJECT_TRANSFER.REJECT"
             )
 
             a.button.button-green(
-                ng-click="vm.transferAccept(vm.token, vm.reason)"
+                ng-click="vm.transferAccept(vm.token, vm.reason, $event)"
                 href="#"
                 title="{{'ADMIN.PROJECT_TRANSFER.ACCEPT' | translate}}"
                 translate="ADMIN.PROJECT_TRANSFER.ACCEPT"

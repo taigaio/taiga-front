@@ -29,9 +29,10 @@ class TransferProject
         "$tgNavUrls",
         "$translate",
         "$tgConfirm"
+        "$tgLoading"
     ]
 
-    constructor: (@routeParams, @projectService, @location, @authService, @currentUserService, @navUrls, @translate, @confirmService) ->
+    constructor: (@routeParams, @projectService, @location, @authService, @currentUserService, @navUrls, @translate, @confirmService, @loading) ->
 
     initialize: () ->
         @.projectId = @.project.get("id")
@@ -72,22 +73,31 @@ class TransferProject
 
         @.validNumberOfMemberships = maxMemberships == null || @.project.get('total_memberships') <= maxMemberships
 
-    transferAccept: (token, reason) ->
+    transferAccept: (token, reason, $event) ->
+        target = angular.element($event.currentTarget)
+        currentLoading = @loading()
+            .target(target)
+            .start()
         return @projectService.transferAccept(@.project.get("id"), token, reason).then () =>
             newUrl = @navUrls.resolve("project-admin-project-profile-details", {
                 project: @.project.get("slug")
             })
+            currentLoading.finish()
             @location.path(newUrl)
 
             @confirmService.notify("success", @translate.instant("ADMIN.PROJECT_TRANSFER.ACCEPTED_PROJECT_OWNERNSHIP"), '', 5000)
-
             return
 
-    transferReject: (token, reason) ->
+    transferReject: (token, reason, $event) ->
+        target = $($event.target)
+        currentLoading = @loading()
+            .target(target)
+            .start()
         return @projectService.transferReject(@.project.get("id"), token, reason).then () =>
-            newUrl = @navUrls.resolve("project-admin-project-profile-details", {
+            newUrl = @navUrls.resolve("home", {
                 project: @project.get("slug")
             })
+            currentLoading.finish()
             @location.path(newUrl)
             @confirmService.notify("success", @translate.instant("ADMIN.PROJECT_TRANSFER.REJECTED_PROJECT_OWNERNSHIP"), '', 5000)
 
