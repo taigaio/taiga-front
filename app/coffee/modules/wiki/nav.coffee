@@ -35,7 +35,8 @@ module = angular.module("taigaWiki")
 ## Wiki Main Directive
 #############################################################################
 
-WikiNavDirective = ($tgrepo, $log, $location, $confirm, $navUrls, $analytics, $loading, $template, $compile, $translate) ->
+WikiNavDirective = ($tgrepo, $log, $location, $confirm, $analytics, $loading, $template,
+                    $compile, $translate) ->
     template = $template.get("wiki/wiki-nav.html", true)
     link = ($scope, $el, $attrs) ->
         $ctrl = $el.controller()
@@ -58,18 +59,6 @@ WikiNavDirective = ($tgrepo, $log, $location, $confirm, $navUrls, $analytics, $l
 
             $el.off()
             $el.html(html)
-
-            $el.on "click", ".wiki-link .link-title", (event) ->
-                event.preventDefault()
-                target = angular.element(event.currentTarget)
-                linkId = target.parents('.wiki-link').data('id')
-                linkSlug = $scope.wikiLinks[linkId].href
-                $scope.$apply ->
-                    ctx = {
-                        project: $scope.projectSlug
-                        slug: linkSlug
-                    }
-                    $location.path($navUrls.resolve("project-wiki-page", ctx))
 
             $el.on "click", ".add-button", (event) ->
                 event.preventDefault()
@@ -146,5 +135,5 @@ WikiNavDirective = ($tgrepo, $log, $location, $confirm, $navUrls, $analytics, $l
 
     return {link:link}
 
-module.directive("tgWikiNav", ["$tgRepo", "$log", "$tgLocation", "$tgConfirm", "$tgNavUrls",
-                               "$tgAnalytics", "$tgLoading", "$tgTemplate", "$compile", "$translate", WikiNavDirective])
+module.directive("tgWikiNav", ["$tgRepo", "$log", "$tgLocation", "$tgConfirm", "$tgAnalytics",
+                               "$tgLoading", "$tgTemplate", "$compile", "$translate", WikiNavDirective])

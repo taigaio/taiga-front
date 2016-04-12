@@ -5,22 +5,27 @@ nav
   ul
     <% _.each(wikiLinks, function(link, index) { %>
     li.wiki-link(data-id!="<%- index %>")
-        a.link-title(title!="<%- link.title %>") <%- link.title %>
+        a.link-title(title!="<%- link.title %>", href!="<%- link.url %>")
+            <%- link.title %>
+
         <% if (deleteWikiLinkPermission) { %>
         a.js-delete-link.remove-wiki-page(title!="{{'WIKI.DELETE_LINK_TITLE' | translate}}")
             tg-svg(svg-icon="icon-trash")
         <% } %>
+
         input.hidden(
             type="text"
             placeholder="{{'COMMON.FIELDS.NAME' | translate}}"
             value!="<%- link.title %>"
         )
     <% }) %>
+
     li.new.hidden
         input(
             type="text"
             placeholder="{{'COMMON.FIELDS.NAME' | translate}}"
         )
+
 <% if (addWikiLinkPermission) { %>
 a(
     href=""
