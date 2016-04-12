@@ -1,4 +1,7 @@
 .admin-roles {
+    .save {
+        display: inline-block;
+    }
     .role-name {
         @extend %xlarge;
         @extend %light;

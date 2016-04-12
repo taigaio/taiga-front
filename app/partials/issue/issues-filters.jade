@@ -1,17 +1,22 @@
 <% _.each(filters, function(f) { %>
 <% if (!f.selected) { %>
-a(class="single-filter", data-type!="<%- f.type %>", data-id!="<%- f.id %>")
-    span(class="name", style!="<%- f.style %>")
-            | <%- f.name %>
+.single-filter(
+    data-type!="<%- f.type %>"
+    data-id!="<%- f.id %>"
+)
+    span.name(style!="<%- f.style %>") <%- f.name %>
     <% if (f.count){ %>
-    span(class="number") <%- f.count %>
+    span.number <%- f.count %>
     <% } %>
     <% if (f.type == "myFilters"){ %>
-    svg.icon.icon-close.remove-filter
-        use(xlink:href="#icon-close")
+    a.remove-filter(href="")
+        tg-svg(svg-icon="icon-trash")
     <% } %>
 <% } %>
 <% }) %>
 span(class="new")
-input(class="hidden my-filter-name", type="text",
-           placeholder="{{'ISSUES.PLACEHOLDER_FILTER_NAME' | translate}}")
+input(
+    class="hidden my-filter-name"
+    type="text"
+    placeholder="{{'ISSUES.PLACEHOLDER_FILTER_NAME' | translate}}"
+)

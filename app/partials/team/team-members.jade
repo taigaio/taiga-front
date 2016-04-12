@@ -9,9 +9,8 @@
                     title="{{::user.full_name_display}}"
                 ) {{::user.full_name_display}}
                     svg.icon.icon-badge(ng-if="user.id == owner")
-                        use(xlink:href="#icon-badge")
-                            title(translate="COMMON.OWNER")
-                    
+                        tg-svg(svg-icon="icon-badge", svg-title-translate="COMMON.OWNER")
+
                 span.position {{::user.role_name}}
 
     .member-stats(

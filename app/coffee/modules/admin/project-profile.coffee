@@ -228,7 +228,7 @@ ProjectModulesDirective = ($repo, $confirm, $loading, projectService) ->
             event.preventDefault()
             submit()
 
-        $el.on "click", ".icon-save", (event) ->
+        $el.on "click", ".save", (event) ->
             event.preventDefault()
             submit()
 

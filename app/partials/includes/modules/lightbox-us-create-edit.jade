@@ -1,9 +1,5 @@
-a.close(
-    href=""
-    title="{{'COMMON.CLOSE' | translate}}"
-)
-    svg.icon.icon-close
-        use(xlink:href="#icon-close")
+tg-lightbox-close
+
 form
     h2.title(translate="LIGHTBOX.CREATE_EDIT_US.TITLE")
     fieldset
@@ -80,7 +76,7 @@ form
                 type="checkbox"
                 name="is_blocked"
                 ng-model="us.is_blocked"
-                id="blocked-us" 
+                id="blocked-us"
                 ng-value="true"
             )
             label.blocked.trans-button(

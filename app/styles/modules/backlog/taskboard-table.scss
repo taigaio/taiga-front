@@ -87,21 +87,6 @@ $column-margin: 0 10px 0 0;
         &:last-child {
             margin-right: 0;
         }
-        .icon {
-            @extend %medium;
-            fill: $gray-light;
-            margin-right: .3rem;
-            transition: fill .2s linear;
-            &:hover {
-                cursor: pointer;
-                fill: $primary;
-            }
-            &.hfold,
-            &.hunfold {
-                display: inline-block;
-                transform: rotate(90deg);
-            }
-        }
         &.column-fold {
             align-items: center;
             justify-content: center;
@@ -112,6 +97,28 @@ $column-margin: 0 10px 0 0;
             .hfold,
             .hunfold {
                 margin: 0;
+            }
+        }
+    }
+    tg-svg {
+        display: block;
+        margin-right: .3rem;
+        svg {
+            @extend %medium;
+            fill: $gray-light;
+            transition: fill .2s linear;
+        }
+        &:hover {
+            cursor: pointer;
+            svg {
+                fill: $primary;
+            }
+        }
+        &.hfold,
+        &.hunfold {
+            display: inline-block;
+            svg {
+                transform: rotate(90deg);
             }
         }
     }
@@ -184,32 +191,35 @@ $column-margin: 0 10px 0 0;
 
     .taskboard-userstory-box {
         padding: .5rem .5rem .5rem 1.5rem;
-        .icon {
-            cursor: pointer;
-            fill: $gray-light;
-            position: absolute;
-            right: .5rem;
-            top: .7rem;
-            transition: fill .2s linear;
-            &:hover {
-                fill: $primary;
-            }
-            &.icon-add {
-                right: 2rem;
-            }
-            &.icon-fold-row,
-            &.icon-unfold-row {
-                left: 0;
-                right: inherit;
-                top: 1rem;
-            }
-        }
     }
     .avatar-task-link {
         display: none;
     }
     .avatar-assigned-to {
         display: block;
+    }
+    .icon {
+        transition: fill .2s linear;
+    }
+    tg-svg {
+        cursor: pointer;
+        display: block;
+        position: absolute;
+        right: .5rem;
+        top: .7rem;
+        &:hover {
+            svg {
+                fill: $primary;
+            }
+        }
+        &.add-action {
+            right: 2rem;
+        }
+        &.fold-action {
+            left: 0;
+            right: inherit;
+            top: 1rem;
+        }
     }
 }
 

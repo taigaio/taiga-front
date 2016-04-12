@@ -7,7 +7,9 @@ section.team-filters
             fieldset
                 input(type="text", placeholder="{{'TEAM.PLACEHOLDER_INPUT_SEARCH' | translate}}", ng-model="filtersQ")
                 .icon-search-wrapper
-                    svg.icon.icon-search(title="{{'COMMON.FILTERS.TITLE_ACTION_FILTER_BUTTON' | translate}}")
-                        use(xlink:href="#icon-search")
+                    tg-svg(
+                        svg-icon="icon-search",
+                        title="{{'COMMON.FILTERS.TITLE_ACTION_FILTER_BUTTON' | translate}}"
+                    )
 
         nav(tg-team-filters)

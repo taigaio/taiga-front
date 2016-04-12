@@ -49,6 +49,7 @@
             transition-delay: .1s;
         }
         .remove-assigned-to {
+            display: block;
             fill: $grayer;
             opacity: 1;
             position: absolute;

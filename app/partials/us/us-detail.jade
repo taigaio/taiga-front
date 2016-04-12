@@ -60,15 +60,13 @@ div.wrapper(
                             tg-bo-href="previousUrl"
                             title="{{'US.PREVIOUS' | translate}}"
                         )
-                            svg.icon.icon-arrow-left
-                                use(xlink:href="#icon-arrow-left")
+                            tg-svg(svg-icon="icon-arrow-left")
                         a(
                             ng-show="nextUrl"
                             tg-bo-href="nextUrl"
                             title="{{'US.NEXT' | translate}}"
                         )
-                            svg.icon.icon-arrow-right
-                                use(xlink:href="#icon-arrow-right")
+                            tg-svg(svg-icon="icon-arrow-right")
             .subheader
                 .tags-block(tg-tag-line, ng-model="us", required-perm="modify_us")
                 tg-created-by-display.ticket-created-by(ng-model="us")

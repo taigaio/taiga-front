@@ -1,51 +1,47 @@
-.tasks
-    .task-name
-        a.clickable(
-            tg-nav="project-tasks-detail:project=project.slug,ref=task.ref"
-            title!="#<%- task.ref %> <%- task.subject %>")
-            svg.icon.icon-iocaine
-                use(xlink:href="#icon-iocaine")
-            span #<%- task.ref %>
-            span <%- task.subject %>
-        .task-settings
-            <% if(perms.modify_task) { %>
-            svg.icon.icon-edit.edit-task(
-                href=""
-                title="{{'COMMON.EDIT' | translate}}"
-            )
-                use(xlink:href="#icon-edit")
-            <% } %>
-            <% if(perms.delete_task) { %>
-            svg.icon.icon-trash.delete-task(
-                title="{{'COMMON.DELETE' | translate}}"
-            )
-                use(xlink:href="#icon-trash")
-            <% } %>
+.task-name
+    a.clickable(
+        tg-nav="project-tasks-detail:project=project.slug,ref=task.ref"
+        title!="#<%- task.ref %> <%- task.subject %>")
+        span #<%- task.ref %>
+        span <%- task.subject %>
+.task-settings
+    <% if(perms.modify_task) { %>
+    a.edit-task(
+        href=""
+        title="{{'COMMON.EDIT' | translate}}"
+    )
+        tg-svg(svg-icon="icon-edit")
+    <% } %>
+    <% if(perms.delete_task) { %>
+    a.delete-task(
+        title="{{'COMMON.DELETE' | translate}}"
+        href=""
+    )
+        tg-svg(svg-icon="icon-trash")
+    <% } %>
 
 .status(
     tg-related-task-status="task"
     ng-model="task"
 )
     a.task-status(
-        href="" 
+        href=""
         title="{{'TASK.TITLE_SELECT_STATUS' | translate}}"
         ng-style="{'color': task.status_extra_info.color}"
     )
         span.task-status-bind
         <% if(perms.modify_task) { %>
-        svg.icon.icon-arrow-down(ng-style="{'fill': task.status_extra_info.color}")
-            use(xlink:href="#icon-arrow-down")
+        tg-svg(svg-icon="icon-arrow-down", ng-style="{'fill': task.status_extra_info.color}")
         <% } %>
 
 .assigned-to(
     tg-related-task-assigned-to-inline-edition="task"
 )
     .task-assignedto(
-        title="{{'COMMON.FIELDS.ASSIGNED_TO' | translate}}" 
+        title="{{'COMMON.FIELDS.ASSIGNED_TO' | translate}}"
         class="<% if(perms.modify_task) { %>editable<% } %>"
     )
         figure.avatar
         <% if(perms.modify_task) { %>
-        svg.icon.icon-arrow-down
-            use(xlink:href="#icon-arrow-down")
+        tg-svg(svg-icon="icon-arrow-down")
         <% } %>

@@ -584,20 +584,20 @@ IssuesFiltersDirective = ($q, $log, $location, $rs, $confirm, $loading, $templat
                 unwatchIssues()
 
         # Dom Event Handlers
-        $el.on "click", ".filters-cats > ul > li > a", (event) ->
+        $el.on "click", ".filters-cat-single", (event) ->
             event.preventDefault()
             target = angular.element(event.currentTarget)
             tags = $scope.filters[target.data("type")]
             renderFilters(_.reject(tags, "selected"))
             showFilters(target.attr("title"), target.data("type"))
 
-        $el.on "click", ".filters-inner > .filters-step-cat > .breadcrumb > .back", (event) ->
+        $el.on "click", ".back", (event) ->
             event.preventDefault()
             showCategories($el)
 
-        $el.on "click", ".filters-applied a", (event) ->
+        $el.on "click", ".filters-applied .remove-filter", (event) ->
             event.preventDefault()
-            target = angular.element(event.currentTarget)
+            target = angular.element(event.currentTarget).parent()
 
             id = target.data("id") or null
             type = target.data("type")
@@ -617,7 +617,7 @@ IssuesFiltersDirective = ($q, $log, $location, $rs, $confirm, $loading, $templat
 
             toggleFilterSelection(type, id)
 
-        $el.on "click", ".filter-list .single-filter .remove-filter", (event) ->
+        $el.on "click", ".filter-list .remove-filter", (event) ->
             event.preventDefault()
             event.stopPropagation()
 

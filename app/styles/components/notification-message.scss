@@ -90,12 +90,15 @@
             margin: 0;
         }
     }
-    .icon-close {
-        cursor: pointer;
-        fill: $white;
+    .close {
+        display: block;
         position: absolute;
         right: 1rem;
         top: 1rem;
+    }
+    .icon-close {
+        cursor: pointer;
+        fill: $white;
     }
 }
 
@@ -141,6 +144,7 @@
         line-height: 1.5rem;
     }
     .close {
+        display: block;
         margin-right: 1rem;
         width: 2rem;
         svg {

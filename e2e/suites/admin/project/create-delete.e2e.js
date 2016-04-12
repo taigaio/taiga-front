@@ -37,16 +37,16 @@ describe('create-delete project', function() {
     });
 
     it('create project', async function() {
+        let originalUrl = await browser.getCurrentUrl();
+
         lb.name().sendKeys('aaa');
         lb.description().sendKeys('bbb');
 
         await lb.submit();
 
-        let open = utils.notifications.success.open();
+        let projectUrl = await browser.getCurrentUrl();
 
-        expect(open).to.be.equal.true;
-
-        await utils.notifications.success.close();
+        expect(projectUrl).not.to.be.equal(originalUrl);
     });
 
     it('delete', async function() {

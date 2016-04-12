@@ -12,8 +12,7 @@ div.wrapper(tg-backlog, ng-controller="BacklogController as ctrl",
             include ../includes/components/summary
 
             div.empty-burndown(ng-if="showGraphPlaceholder && project.i_am_admin")
-                svg.icon.icon-graph
-                    use(xlink:href="#icon-graph")
+                tg-svg(svg-icon="icon-graph")
                 div.empty-text
                     p.title(translate="BACKLOG.CUSTOMIZE_GRAPH")
                     p {{'BACKLOG.CUSTOMIZE_GRAPH_TEXT' | translate}} #[a(href="", tg-nav="project-admin-project-profile-modules:project=project.slug", title="{{'BACKLOG.CUSTOMIZE_GRAPH_TITLE' | translate}}") {{'BACKLOG.CUSTOMIZE_GRAPH_ADMIN' | translate}}]
@@ -30,8 +29,7 @@ div.wrapper(tg-backlog, ng-controller="BacklogController as ctrl",
                     title="{{'BACKLOG.MOVE_US_TO_CURRENT_SPRINT' | translate}}"
                     id="move-to-current-sprint"
                 )
-                    svg.icon.icon-move
-                        use(xlink:href="#icon-move")
+                    tg-svg(svg-icon="icon-move")
                     span.text(translate="BACKLOG.MOVE_US_TO_CURRENT_SPRINT")
                 a.trans-button.move-to-latest-sprint.move-to-sprint(
                     ng-if="!currentSprint"
@@ -39,8 +37,7 @@ div.wrapper(tg-backlog, ng-controller="BacklogController as ctrl",
                     title="{{'BACKLOG.MOVE_US_TO_LATEST_SPRINT' | translate}}"
                     id="move-to-latest-sprint"
                 )
-                    svg.icon.icon-move
-                        use(xlink:href="#icon-move")
+                    tg-svg(svg-icon="icon-move")
                     span.text(translate="BACKLOG.MOVE_US_TO_LATEST_SPRINT")
                 a.trans-button(
                     ng-if="userstories.length"

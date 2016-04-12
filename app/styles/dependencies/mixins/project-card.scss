@@ -71,9 +71,4 @@
             }
         }
     }
-    .look-for-people {
-        @include svg-size(1rem);
-        fill: $gray-light;
-        margin: 0 .5rem;
-    }
 }

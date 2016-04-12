@@ -3,9 +3,10 @@ figure.avatar
     figcaption
         span.name <%- full_name %>
             <% if (isOwner) { %>
-            svg.icon.icon-badge
-                use(xlink:href="#icon-badge")
-                    title(translate="COMMON.OWNER")
+            tg-svg(
+                svg-icon="icon-badge",
+                svg-title-translate="COMMON.OWNER"
+            )
             <% }  %>
         div
             span.pending <%- pending %>

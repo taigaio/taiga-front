@@ -30,7 +30,7 @@ describe('wiki', function() {
 
     it('follow last link', async function() {
         // the click event is not on the <a> :(
-        let lastLink = wikiHelper.links().get().last().$('.link-title');
+        let lastLink = wikiHelper.links().get().last();
         browser
            .actions()
            .mouseMove(lastLink)

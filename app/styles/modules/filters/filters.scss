@@ -27,8 +27,7 @@
             color: $gray-light;
         }
     }
-    .icon-search {
-        color: $gray-light;
+    .search-action {
         position: absolute;
         right: .7rem;
         top: .7rem;
@@ -68,6 +67,12 @@
         @include placeholder {
             color: $gray-light;
         }
+    }
+}
+
+.filter-list {
+    .single-filter {
+        cursor: pointer;
     }
 }
 

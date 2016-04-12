@@ -1,51 +1,60 @@
 section.custom-fields-table.basic-table
-    div.project-values-title
+    .project-values-title
         h2 {{ customFieldSectionTitle | translate }}
         a.button.button-gray.show-add-new.js-add-custom-field-button(
             href=""
             title="{{ customFieldButtonTitle | translate }}"
+            translate="ADMIN.CUSTOM_ATTRIBUTES.ADD"
         )
-            span(translate="ADMIN.CUSTOM_ATTRIBUTES.ADD")
 
-    div.table-header
-        div.row
-            div.custom-name
-                span(translate="COMMON.FIELDS.NAME")
-            div.custom-description
-                span(translate="COMMON.FIELDS.DESCRIPTION")
-            div.custom-field-type
-                span(translate="COMMON.FIELDS.TYPE")
-            div.custom-options
+    .table-header
+        .row
+            .custom-name(translate="COMMON.FIELDS.NAME")
+            .custom-description(translate="COMMON.FIELDS.DESCRIPTION")
+            .custom-field-type(translate="COMMON.FIELDS.TYPE")
+            .custom-options
 
-    div.table-body
-        div.js-sortable
-            div(ng-repeat="attr in customAttributes track by attr.id", tg-bind-scope)
+    .table-body
+        .js-sortable
+            div(
+                ng-repeat="attr in customAttributes track by attr.id"
+                tg-bind-scope
+            )
                 form.js-form(tg-bind-scope)
                     div.row.single-custom-field.js-view-custom-field
-                        svg.icon.icon-drag
-                            use(xlink:href="#icon-drag")
-                        div.custom-name
-                            span {{ attr.name }}
-                        div.custom-description
-                            span {{ attr.description }}
+                        tg-svg(svg-icon="icon-drag")
+                        div.custom-name {{ attr.name }}
+                        div.custom-description {{ attr.description }}
                         div.custom-field-type(ng-switch on="attr.type")
-                            //- See TYPE_CHOICES in app/coffee/modules/admin/project-values.coffee
-                            span(ng-switch-default, translate="ADMIN.CUSTOM_FIELDS.FIELD_TYPE_TEXT")
-                            span(ng-switch-when="multiline", translate="ADMIN.CUSTOM_FIELDS.FIELD_TYPE_MULTI")
-                            span(ng-switch-when="date", translate="ADMIN.CUSTOM_FIELDS.FIELD_TYPE_DATE")
-                            span(ng-switch-when="url", translate="ADMIN.CUSTOM_FIELDS.FIELD_TYPE_URL")
-                        div.custom-options
-                            div.custom-options-wrapper
-                                svg.js-edit-custom-field-button.icon.icon-edit(
-                                    href=""
+                            span(
+                                ng-switch-default
+                                translate="ADMIN.CUSTOM_FIELDS.FIELD_TYPE_TEXT"
+                            )
+                            span(
+                                ng-switch-when="multiline"
+                                translate="ADMIN.CUSTOM_FIELDS.FIELD_TYPE_MULTI"
+                            )
+                            span(
+                                ng-switch-when="date"
+                                translate="ADMIN.CUSTOM_FIELDS.FIELD_TYPE_DATE"
+                            )
+                            span(
+                                ng-switch-when="url"
+                                translate="ADMIN.CUSTOM_FIELDS.FIELD_TYPE_URL"
+                            )
+                        .custom-options
+                            .custom-options-wrapper
+                                a.js-edit-custom-field-button(
+                                    href="",
                                     title="{{'ADMIN.CUSTOM_ATTRIBUTES.EDIT' | translate}}"
                                 )
-                                    use(xlink:href="#icon-edit")
-                                svg.js-delete-custom-field-button.icon.icon-trash(
-                                    href=""
+                                    tg-svg(svg-icon="icon-edit")
+
+                                a.js-delete-custom-field-button(
+                                    href="",
                                     title="{{'ADMIN.CUSTOM_ATTRIBUTES.DELETE' | translate}}"
                                 )
-                                    use(xlink:href="#icon-trash")
+                                    tg-svg(svg-icon="icon-trash")
 
                     div.row.single-custom-field.js-edit-custom-field.hidden
                         fieldset.custom-name
@@ -71,16 +80,17 @@ section.custom-fields-table.basic-table
                             )
                         fieldset.custom-options
                             div.custom-options-wrapper
-                                svg.js-update-custom-field-button.icon.icon-save(
-                                    href=""
+                                a.js-update-custom-field-button(
+                                    href="",
                                     title="{{'ADMIN.CUSTOM_ATTRIBUTES.ACTION_UPDATE' | translate}}"
                                 )
-                                    use(xlink:href="#icon-save")
-                                svg.js-cancel-edit-custom-field-button.icon.icon-close(
-                                    href=""
+                                    tg-svg(svg-icon="icon-save")
+
+                                a.js-cancel-edit-custom-field-button(
+                                    href="",
                                     title="{{'ADMIN.CUSTOM_ATTRIBUTES.ACTION_CANCEL_EDITION' | translate}}"
                                 )
-                                    use(xlink:href="#icon-close")
+                                    tg-svg(svg-icon="icon-close")
 
         form.row.single-custom-field.js-new-custom-field.hidden
             fieldset.custom-name
@@ -108,13 +118,14 @@ section.custom-fields-table.basic-table
 
             fieldset.custom-options
                 div.custom-options-wrapper
-                    svg.js-create-custom-field-button.icon.icon-save(
-                        href=""
+                    a.js-create-custom-field-button(
+                        href="",
                         title="{{'ADMIN.CUSTOM_ATTRIBUTES.SAVE_TITLE' | translate}}"
                     )
-                        use(xlink:href="#icon-save")
-                    svg.js-cancel-new-custom-field-button.icon.icon-trash(
-                        href=""
+                        tg-svg(svg-icon="icon-save")
+
+                    a.js-cancel-new-custom-field-button(
+                        href="",
                         title="{{'ADMIN.CUSTOM_ATTRIBUTES.CANCEL_TITLE' | translate}}"
                     )
-                        use(xlink:href="#icon-trash")
+                        tg-svg(svg-icon="icon-close")

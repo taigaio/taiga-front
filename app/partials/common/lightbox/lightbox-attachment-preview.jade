@@ -1,6 +1,5 @@
 .attachment-preview
-    svg.close.icon.icon-close(href="", title="{{'COMMON.CLOSE' | translate}}")
-        use(xlink:href="#icon-close")
+    tg-lightbox-close
 
     a(href="{{::file.get('url')}}", title="{{::file.get('description')}}", target="_blank", download="{{::file.get('name')}}")
         img(src="{{::file.get('url')}}")

@@ -13,6 +13,19 @@ describe('modules', function() {
         await utils.common.waitLoader();
 
         utils.common.takeScreenshot('admin', 'project-modules');
+
+        // enable if the first module is disable
+        let functionalities = $$('.module');
+        let functionality = functionalities.get(0);
+
+        let input = functionality.$('.check input');
+
+        browser.actions()
+            .mouseMove(input)
+            .click()
+            .perform();
+
+        await utils.notifications.success.open();
     });
 
     it('disable module', async function() {
@@ -47,9 +60,12 @@ describe('modules', function() {
             .click()
             .perform();
 
+        let notificationSuccess = await utils.notifications.success.open();
+
+        expect(notificationSuccess).to.be.equal(true);
+
         let active = await utils.common.hasClass(functionality, 'active');
 
-        expect(utils.notifications.success.open()).to.be.eventually.equal(true);
         expect(active).to.be.true;
 
         await utils.notifications.success.close();
@@ -74,6 +90,9 @@ describe('modules', function() {
         salt.sendKeys('abccceee');
 
         functionality.$('.icon-save').click();
-        expect(utils.notifications.success.open()).to.be.eventually.equal(true);
+
+        let notificationSuccess = await utils.notifications.success.open();
+
+        expect(notificationSuccess).to.be.equal(true);
     });
 });

@@ -42,11 +42,14 @@
         padding: .4rem;
         width: 14rem;
     }
+    .save {
+        cursor: pointer;
+        display: inline-block;
+        margin-left: .5rem;
+    }
     .icon-save {
         @include svg-size();
-        cursor: pointer;
         fill: $grayer;
-        margin-left: .5rem;
         &:hover {
             fill: $primary;
             transition: .2s linear;
@@ -68,6 +71,7 @@
     }
     .add-tag {
         color: $gray-light;
+        display: inline-block;
         &:hover {
             color: $primary-light;
         }
@@ -77,5 +81,8 @@
     }
     .add-tag-text {
         @extend %small;
+    }
+    .remove-tag {
+        display: inline-block;
     }
 }

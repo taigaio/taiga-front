@@ -1,11 +1,9 @@
 .tags-container
 a(href="#", class="add-tag hidden", title="{{'COMMON.TAGS.ADD' | translate}}")
-    svg.icon.icon-add
-        use(xlink:href="#icon-add")
+    tg-svg(svg-icon="icon-add")
     span.add-tag-text(translate="COMMON.TAGS.ADD")
 
 span.add-tag-input
     input(type="text", placeholder="{{'COMMON.TAGS.PLACEHOLDER' | translate}}", class="tag-input hidden")
     span.save.hidden(title="{{'COMMON.SAVE' | translate}}")
-        svg.icon.icon-save
-            use(xlink:href="#icon-save")
+        tg-svg(svg-icon="icon-save")

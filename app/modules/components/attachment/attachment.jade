@@ -12,8 +12,7 @@ form.single-attachment(
             target="_blank"
             download="{{::vm.attachment.getIn(['file', 'name'])}}"
         )
-            svg.icon.icon-attachment
-                use(xlink:href="#icon-attachment")
+            tg-svg(svg-icon="icon-attachment")
             span {{::vm.attachment.getIn(['file', 'name'])}}
 
     .attachment-comments(ng-if="!vm.attachment.get('editable') && vm.attachment.getIn(['file', 'description'])")
@@ -52,8 +51,7 @@ form.single-attachment(
                 title="{{'COMMON.SAVE' | translate}}"
                 ng-click="vm.save()"
             )
-                svg.drag.icon.icon-save
-                    use(xlink:href="#icon-save")
+                tg-svg(svg-icon="icon-save")
 
         div
             a.editable-settings(
@@ -61,8 +59,7 @@ form.single-attachment(
                 title="{{'COMMON.CANCEL' | translate}}"
                 ng-click="vm.editMode(false)"
             )
-                svg.drag.icon.icon-close
-                    use(xlink:href="#icon-close")
+                tg-svg(svg-icon="icon-close")
 
     .attachment-settings(
         ng-if="!vm.attachment.get('editable')"
@@ -73,18 +70,15 @@ form.single-attachment(
             title="{{'COMMON.EDIT' | translate}}"
             ng-click="vm.editMode(true)"
         )
-            svg.drag.icon.icon-edit
-                use(xlink:href="#icon-edit")
+            tg-svg.drag(svg-icon="icon-edit")
         a.settings(
             href=""
             title="{{'COMMON.DELETE' | translate}}"
             ng-click="vm.delete()"
         )
-            svg.drag.icon.icon-trash
-                use(xlink:href="#icon-trash")
+            tg-svg.drag(svg-icon="icon-trash")
         a.settings(
             href=""
             title="{{'COMMON.DRAG' | translate}}"
         )
-            svg.drag.icon.icon-drag
-                use(xlink:href="#icon-drag")
+            tg-svg.drag(svg-icon="icon-drag")

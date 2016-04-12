@@ -177,9 +177,9 @@ class ConfirmService extends taiga.Service
                 useSVG.setAttributeNS('http://www.w3.org/1999/xlink','href', '#' + icon.name)
 
                 detailImage = document.createElementNS("http://www.w3.org/2000/svg", "svg")
-                detailImage.classList.add("icon")
-                detailImage.classList.add("lb-icon")
-                detailImage.classList.add(icon.name)
+                taiga.addClass(detailImage, "icon")
+                taiga.addClass(detailImage, "lb-icon")
+                taiga.addClass(detailImage, icon.name)
                 detailImage.appendChild(useSVG)
 
             if detailImage

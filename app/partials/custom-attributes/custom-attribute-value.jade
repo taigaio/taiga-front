@@ -18,6 +18,6 @@
 
     <% if (isEditable) { %>
     .custom-field-options
-        svg.icon.icon-edit.js-edit-description(title="{{'COMMON.CUSTOM_ATTRIBUTES.EDIT' | translate}}")
-            use(xlink:href="#icon-edit")
+        a.js-edit-description(href="", title="{{'COMMON.CUSTOM_ATTRIBUTES.EDIT' | translate}}")
+            tg-svg(svg-icon="icon-edit")
     <% } %>

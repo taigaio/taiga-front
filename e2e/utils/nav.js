@@ -14,7 +14,23 @@ var actions = {
             project = $$('div[tg-dropdown-project-list] li a').get(index);
         }
 
-        await common.link(project);
+        let oldUrl = await browser.getCurrentUrl();
+
+        await browser
+            .actions()
+            .mouseMove(project)
+            .perform();
+
+        let href = await common.waitHref(project);
+
+        // we don't use click because in IE doesn't work
+        browser.get(href);
+
+        await browser.wait(async function() {
+            let newUrl = await browser.getCurrentUrl();
+
+            return oldUrl !== newUrl;
+        }, 7000);
 
         return common.waitLoader();
     },

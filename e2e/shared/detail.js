@@ -21,8 +21,12 @@ shared.titleTesting = async function() {
     titleHelper.setTitle("New title " + date);
     titleHelper.save();
 
+    let notificationSuccess = await notifications.success.open();
+
+    expect(notificationSuccess).to.be.true;
+
     let newTitle = await titleHelper.getTitle();
-    expect(notifications.success.open()).to.be.eventually.true;
+
     expect(newTitle).to.be.not.equal(title);
 
     await notifications.success.close();
@@ -51,8 +55,9 @@ shared.descriptionTesting = async function() {
     descriptionHelper.save();
 
     let newDescription = await descriptionHelper.getInnerHtml();
+    let notificationOpen = notifications.success.open();
 
-    expect(notifications.success.open()).to.be.eventually.true;
+    expect(notificationOpen).to.be.equal.true;
     expect(newDescription).to.be.not.equal(description);
 
     await notifications.success.close();
@@ -203,12 +208,16 @@ shared.blockTesting = async function() {
 
     await blockLightboxHelper.waitClose();
 
-    expect($('.block-description').getText()).to.be.eventually.equal('This is a testing block reason');
-    expect($('.block-description').isDisplayed()).to.be.eventually.true;
+    let descriptionText = await $('.block-description').getText();
+    expect(descriptionText).to.be.equal('This is a testing block reason');
+
+    let isDisplayed = $('.block-description').isDisplayed();
+    expect(isDisplayed).to.be.equal.true;
 
     blockHelper.unblock();
 
-    expect($('.block-description').isDisplayed()).to.be.eventually.false;
+    isDisplayed = $('.block-description').isDisplayed();
+    expect(isDisplayed).to.be.equal.false;
 
     await notifications.success.close();
 }

@@ -22,8 +22,7 @@ div.wrapper(
                         span.us-number(tg-bo-ref="issue.ref")
                         span.us-name(tg-editable-subject, ng-model="issue", required-perm="modify_issue")
 
-                    p.us-related-task(ng-if="issue.generated_user_stories.length")
-                        | {{ 'ISSUES.PROMOTED'|translate }}
+                    p.us-related-task(ng-if="issue.generated_user_stories.length") {{ 'ISSUES.PROMOTED'|translate }}
                         a(
                             href=""
                             ng-repeat="us in issue.generated_user_stories"
@@ -52,21 +51,32 @@ div.wrapper(
                             tg-bo-href="previousUrl"
                             title="{{'ISSUES.TITLE_PREVIOUS_ISSUE' | translate}}"
                         )
-                            svg.icon.icon-arrow-left
-                                use(xlink:href="#icon-arrow-left")
+                            tg-svg(
+                                svg-icon="icon-arrow-left"
+                            )
                         a(
                             ng-show="nextUrl"
                             tg-bo-href="nextUrl"
                             title="{{'ISSUES.TITLE_NEXT_ISSUE' | translate}}"
-                        )
-                            svg.icon.icon-arrow-right
-                                use(xlink:href="#icon-arrow-right")
 
+                        )
+                            tg-svg(
+                                svg-icon="icon-arrow-right"
+                            )
             .subheader
-                div.tags-block(tg-tag-line, ng-model="issue", required-perm="modify_issue")
+                .tags-block(
+                    tg-tag-line
+                    ng-model="issue"
+                    required-perm="modify_issue"
+                )
                 tg-created-by-display.ticket-created-by(ng-model="issue")
 
-        section.duty-content(tg-editable-description, tg-editable-wysiwyg, ng-model="issue", required-perm="modify_issue")
+        section.duty-content(
+            tg-editable-description
+            tg-editable-wysiwyg
+            ng-model="issue"
+            required-perm="modify_issue"
+        )
 
         // Custom Fields
         tg-custom-attributes-values(
@@ -83,10 +93,13 @@ div.wrapper(
             edit-permission = "modify_issue"
         )
 
-        tg-history(ng-model="issue", type="issue")
+        tg-history(
+            ng-model="issue"
+            type="issue"
+        )
 
     sidebar.menu-secondary.sidebar.ticket-data
-        
+
         .ticket-header
             span.ticket-title(
                 tg-issue-status-display
@@ -96,15 +109,28 @@ div.wrapper(
                 tg-issue-status-button
                 ng-model="issue"
             )
-        
-        //tg-created-by-display.ticket-created-by(ng-model="issue")
-        
-        div.ticket-data-container
-            div.ticket-status(tg-issue-type-button, ng-model="issue")
-            div.ticket-status(tg-issue-severity-button, ng-model="issue")
-            div.ticket-status(tg-issue-priority-button, ng-model="issue")
 
-        section.ticket-assigned-to(tg-assigned-to, ng-model="issue", required-perm="modify_issue")
+        //tg-created-by-display.ticket-created-by(ng-model="issue")
+
+        div.ticket-data-container
+            div.ticket-status(
+                tg-issue-type-button
+                ng-model="issue"
+            )
+            div.ticket-status(
+                tg-issue-severity-button
+                ng-model="issue"
+            )
+            div.ticket-status(
+                tg-issue-priority-button
+                ng-model="issue"
+            )
+
+        section.ticket-assigned-to(
+            tg-assigned-to
+            ng-model="issue"
+            required-perm="modify_issue"
+        )
 
         section.ticket-watch-buttons
             div.ticket-watch(
@@ -122,11 +148,11 @@ div.wrapper(
 
         section.ticket-detail-settings
             tg-promote-issue-to-us-button(
-                tg-check-permission="add_us", 
+                tg-check-permission="add_us",
                 ng-model="issue"
             )
             tg-block-button(
-                tg-check-permission="modify_issue", 
+                tg-check-permission="modify_issue",
                 ng-model="issue"
             )
             tg-delete-button(

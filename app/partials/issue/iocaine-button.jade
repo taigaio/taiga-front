@@ -3,8 +3,7 @@ fieldset(title="{{ 'TASK.TITLE_ACTION_IOCAINE' | translate }}")
         for="is-iocaine"
         class!="<% if(isEditable){ %>is-editable<% }; %> <% if(isIocaine){ %>active<% }; %>"
     )
-        svg.icon.icon-iocaine
-            use(xlink:href="#icon-iocaine")
+        tg-svg(svg-icon="icon-iocaine")
     input(
         type="checkbox"
         id="is-iocaine"

@@ -9,8 +9,7 @@ a.vote-inner(
     ng-mouseleave="vm.showTextWhenMouseIsLeave()"
 )
     span.track-icon
-        svg.icon.icon-upvote
-            use(xlink:href="#icon-upvote")
+        tg-svg(svg-icon="icon-upvote")
     span.track-button-counter(
         title="{{ 'COMMON.VOTE_BUTTON.COUNTER_TITLE'|translate:{total:vm.item.total_voters||0}:'messageformat' }}",
         tg-loading="vm.loading"
@@ -19,8 +18,7 @@ a.vote-inner(
 //- Anonymous user button
 span.vote-inner(ng-if="::!vm.user")
     span.track-icon
-        svg.icon.icon-upvote
-            use(xlink:href="#icon-upvote")
+        tg-svg(svg-icon="icon-watch")
     span.track-button-counter(
         title="{{ 'COMMON.VOTE_BUTTON.COUNTER_TITLE'|translate:{total:vm.item.total_voters||0}:'messageformat' }}"
     ) {{ ::vm.item.total_voters }}

@@ -92,6 +92,7 @@
         .ticket-project,
         .ticket-type,
         .ticket-status,
+        .ticket-id,
         .list-itemtype-avatar,
         .list-itemtype-track,
         .ticket-title {
@@ -99,6 +100,7 @@
         }
         .icon-blocked-project {
             @include svg-size();
+            margin-left: .25rem;
         }
     }
     h2 {

@@ -11,6 +11,9 @@
         .icon {
             cursor: pointer;
         }
+        .collapse {
+            display: block;
+        }
     }
     .custom-fields-body {
         @include slide(1000px, hidden, $min: 0);
@@ -35,8 +38,10 @@
         margin: 0;
         opacity: 0;
         transition: opacity .2s linear;
+        a {
+            display: inline-block;
+        }
         svg {
-            cursor: pointer;
             fill: $gray-light;
             &:hover {
                 fill: $primary;

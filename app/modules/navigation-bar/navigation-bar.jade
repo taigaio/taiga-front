@@ -30,21 +30,19 @@ nav.navbar(ng-if="vm.isEnabledHeader")
         )
 
     div.nav-right(ng-if="vm.isAuthenticated")
-        a(tg-nav="home",
-          ng-class="{active: vm.active}",
-          title="{{'PROJECT.NAVIGATION.DASHBOARD_TITLE' | translate}}")
-
-            svg.icon.icon-dashboard
-                use(xlink:href="#icon-dashboard")
+        a(
+            tg-nav="home"
+            ng-class="{active: vm.active}"
+            title="{{'PROJECT.NAVIGATION.DASHBOARD_TITLE' | translate}}"
+        )
+            tg-svg(svg-icon="icon-dashboard")
 
         a(
             href="#",
             tg-nav="discover",
             title="{{'PROJECT.NAVIGATION.DISCOVER_TITLE' | translate}}",
         )
-            svg.icon.icon-discover
-                use(xlink:href="#icon-discover")
+            tg-svg(svg-icon="icon-discover")
 
         div.topnav-dropdown-wrapper(ng-show="vm.projects.size", tg-dropdown-project-list)
-        //- div.topnav-dropdown-wrapper(tg-dropdown-organization-list)
         div.topnav-dropdown-wrapper(tg-dropdown-user)
