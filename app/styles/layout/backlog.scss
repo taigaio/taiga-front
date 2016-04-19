@@ -1,5 +1,5 @@
 .backlog-menu {
-    background: $whitish;
+    background: $mass-white;
     color: $blackish;
     display: flex;
     justify-content: space-between;
@@ -7,15 +7,15 @@
     .trans-button {
         color: $blackish;
         display: inline-block;
-        padding: .4rem 1.5rem;
+        padding: .3rem 1.5rem;
         &.active,
         &:hover {
-            background: darken($whitish, 10%);
-            color: $grayer;
+            background: $whitish;
+            color: $gray;
         }
         &.active {
             &:hover {
-                background: lighten($gray, 30%);
+                background: darken($whitish, 10%);
             }
         }
         &.move-to-sprint {

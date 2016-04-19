@@ -35,9 +35,9 @@
 }
 
 .discover-search-subfilter {
-    @include arrow('bottom', $whitish, $whitish, 1, 8);
+    @include arrow('bottom', $mass-white, $mass-white, 1, 8);
     align-items: center;
-    background: $whitish;
+    background: $mass-white;
     display: flex;
     justify-content: space-between;
     position: relative;
@@ -80,7 +80,7 @@
             }
             &.active {
                 background: $primary-light;
-                color: $whitish;
+                color: $white;
             }
         }
     }

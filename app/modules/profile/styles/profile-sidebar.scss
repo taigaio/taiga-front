@@ -1,7 +1,7 @@
 .profile-sidebar {
     h4 {
         @include font-type(bold);
-        background: $whitish;
+        background: $mass-white;
         color: $gray;
         margin-bottom: .5rem;
         padding: .5rem;
@@ -18,8 +18,5 @@
     }
     a {
         color: $primary;
-    }
-    .trans-button {
-        margin-bottom: 1rem;
     }
 }
