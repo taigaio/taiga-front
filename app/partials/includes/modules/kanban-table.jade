@@ -60,7 +60,7 @@ div.kanban-table(tg-kanban-squish-column)
                         ng-class="class"
                         ng-if="s.is_archived"
                         tg-kanban-archived-status-header="s")
-                        tg-svg.bulk-action(svg-icon="icon-watch")
+                        tg-svg.bulk-action(svg-icon="{{class}}")
 
     div.kanban-table-body
         div.kanban-table-inner
