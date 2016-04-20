@@ -13,6 +13,7 @@
     <% }; %>
 
     .assigned-to-options
+        <% if (isEditable) { %>
         a(
             href=""
             title="{{ 'COMMON.ASSIGNED_TO.TITLE_ACTION_EDIT_ASSIGNMENT'|translate }}"
@@ -25,7 +26,8 @@
                 <% if (isEditable && !isUnassigned) { %>
                 tg-svg(svg-icon="icon-arrow-down")
                 <% }; %>
-
+        <% }; %>
+        
         <% if (isEditable && isUnassigned) { %>
         span(translate="COMMON.OR")
         | &nbsp;
