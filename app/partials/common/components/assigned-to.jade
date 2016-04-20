@@ -13,6 +13,11 @@
     <% }; %>
 
     .assigned-to-options
+        <% if (!isEditable && fullNameVisible) { %>
+        span.assigned-name
+            <%- fullName %>
+        <% }; %>
+
         <% if (isEditable) { %>
         a(
             href=""
@@ -23,11 +28,11 @@
                 <% if (fullNameVisible) { %>
                 <%- fullName %>
                 <% }; %>
-                <% if (isEditable && !isUnassigned) { %>
+                <% if (!isUnassigned) { %>
                 tg-svg(svg-icon="icon-arrow-down")
                 <% }; %>
         <% }; %>
-        
+
         <% if (isEditable && isUnassigned) { %>
         span(translate="COMMON.OR")
         | &nbsp;
