@@ -57,6 +57,7 @@
                 href="#"
                 title="{{'ADMIN.PROJECT_TRANSFER.REJECT' | translate}}"
                 translate="ADMIN.PROJECT_TRANSFER.REJECT"
+                tg-loading="vm.loadingReject"
             )
 
             a.button.button-green(
@@ -64,6 +65,7 @@
                 href="#"
                 title="{{'ADMIN.PROJECT_TRANSFER.ACCEPT' | translate}}"
                 translate="ADMIN.PROJECT_TRANSFER.ACCEPT"
+                tg-loading="vm.loadingAccept"
             )
 
     tg-cant-own-project-explanation(ng-if="!vm.canBeOwnedByUser.valid")
