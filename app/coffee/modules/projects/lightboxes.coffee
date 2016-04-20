@@ -35,10 +35,6 @@ CreateProject = ($rootscope, $repo, $confirm, $location, $navurls, $rs, $project
         $scope.templates = []
         currentLoading = null
 
-        $auth.refresh()
-        $scope.canCreatePrivateProjects = currentUserService.canCreatePrivateProjects()
-        $scope.canCreatePublicProjects = currentUserService.canCreatePublicProjects()
-
         form = $el.find("form").checksley({"onlyOneErrorElement": true})
 
         onSuccessSubmit = (response) ->
@@ -88,6 +84,9 @@ CreateProject = ($rootscope, $repo, $confirm, $location, $navurls, $rs, $project
             else
                 $scope.data.creation_template = _.head(_.filter($scope.templates, (x) -> x.slug == "scrum")).id
 
+            $scope.canCreatePrivateProjects = currentUserService.canCreatePrivateProjects()
+            $scope.canCreatePublicProjects = currentUserService.canCreatePublicProjects()
+
             lightboxService.open($el)
 
         submitButton = $el.find(".submit-button")
@@ -101,7 +100,8 @@ CreateProject = ($rootscope, $repo, $confirm, $location, $navurls, $rs, $project
         $scope.$on "$destroy", ->
             $el.off()
 
-        openLightbox()
+        $auth.refresh().then () ->
+            openLightbox()
 
     directive = {
         link: link,
