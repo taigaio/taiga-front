@@ -8,5 +8,13 @@ div.backlog-table-header
             span.header-points(translate="COMMON.FIELDS.POINTS")
             tg-svg(svg-icon="icon-arrow-down")
 
-div.backlog-table-body(tg-backlog-sortable, ng-class="{'show-tags': ctrl.showTags, 'active-filters': ctrl.activeFilters}" )
+div.backlog-table-body(
+    tg-backlog-sortable,
+    ng-class="{'show-tags': ctrl.showTags, 'active-filters': ctrl.activeFilters}"
+    infinite-scroll="ctrl.loadUserstories()"
+    infinite-scroll-disabled="ctrl.disablePagination"
+    infinite-scroll-immediate-check='false'
+)
     include ../components/backlog-row
+
+    div(tg-loading="ctrl.loadingUserstories")

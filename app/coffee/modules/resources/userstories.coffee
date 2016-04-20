@@ -51,7 +51,9 @@ resourceProvider = ($repo, $http, $urls, $storage) ->
         params = {"project": projectId, "milestone": "null"}
         params = _.extend({}, params, filters or {})
         service.storeQueryParams(projectId, params)
-        return $repo.queryMany("userstories", params)
+        return $repo.queryMany("userstories", params, {
+            enablePagination: true
+        }, true)
 
     service.listAll = (projectId, filters) ->
         params = {"project": projectId}
