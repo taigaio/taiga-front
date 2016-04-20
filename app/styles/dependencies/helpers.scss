@@ -55,10 +55,14 @@
         transition: opacity .3s ease;
     }
     .lb-icon {
-        @include svg-size(6rem);
-        display: block;
-        fill: $whitish;
         margin: 1rem auto;
+        display: flex;
+        justify-content: center;
+        svg {
+            @include svg-size(6rem);
+            display: block;
+            fill: $whitish;
+        }
     }
     .title {
         text-align: center;
