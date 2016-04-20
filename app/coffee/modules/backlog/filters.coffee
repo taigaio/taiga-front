@@ -97,6 +97,8 @@ BacklogFiltersDirective = ($q, $log, $location, $template, $compile) ->
         reloadUserstories = () ->
             currentFiltersType = getFiltersType()
 
+            $ctrl.resetBacklogPagination()
+
             $q.all([$ctrl.loadUserstories(), $ctrl.generateFilters()]).then () ->
                 currentFilters = $scope.filters[currentFiltersType]
                 renderFilters(_.reject(currentFilters, "selected"))
