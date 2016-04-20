@@ -49,10 +49,6 @@
         color: $gray-light;
         width: 200px;
     }
-    .placeholder {
-        background-color: lighten($whitish, 3%);
-        height: 5rem;
-    }
     .list-itemtype-project {
         background: rgba($white, .6);
         &:hover {
@@ -95,5 +91,17 @@
             transition: opacity .2s;
             width: 1.1rem;
         }
+    }
+    .gu-transit {
+        background-color: lighten($whitish, 3%);
+        height: 5rem;
+        opacity: 1;
+        * {
+            display: none;
+        }
+    }
+    .gu-mirror {
+        background: lighten($primary, 63%);
+        opacity: 1;
     }
 }

@@ -108,6 +108,8 @@ LbTagLineDirective = ($rs, $template, $compile) ->
 
     templateTags = $template.get("common/tag/lb-tag-line-tags.html", true)
 
+    autocomplete = null
+
     link = ($scope, $el, $attrs, $model) ->
         ## Render
         renderTags = (tags, tagsColors) ->
@@ -130,7 +132,7 @@ LbTagLineDirective = ($rs, $template, $compile) ->
 
         resetInput = ->
             $el.find("input").val("")
-            $el.find("input").autocomplete("close")
+            autocomplete.close()
 
         ## Aux methods
         addValue = (value) ->
@@ -190,22 +192,15 @@ LbTagLineDirective = ($rs, $template, $compile) ->
             deleteValue(value)
 
         bindOnce $scope, "project", (project) ->
-            positioningFunction = (position, elements) ->
-                menu = elements.element.element
-                menu.css("width", elements.target.width)
-                menu.css("top", position.top)
-                menu.css("left", position.left)
+            input = $el.find("input")
 
-            $el.find("input").autocomplete({
-                source: _.keys(project.tags_colors)
-                position: {
-                    my: "left top",
-                    using: positioningFunction
-                }
-                select: (event, ui) ->
-                    addValue(ui.item.value)
-                    ui.item.value = ""
-            })
+            autocomplete = new Awesomplete(input[0], {
+                list: _.keys(project.tags_colors)
+            });
+
+            input.on "awesomplete-selectcomplete", () ->
+                addValue(input.val())
+                input.val("")
 
         $scope.$watch $attrs.ngModel, (tags) ->
             tagsColors = $scope.project?.tags_colors or []
@@ -235,6 +230,8 @@ TagLineDirective = ($rootScope, $repo, $rs, $confirm, $qqueue, $template, $compi
     templateTags = $template.get("common/tag/tags-line-tags.html", true)
 
     link = ($scope, $el, $attrs, $model) ->
+        autocomplete = null
+
         isEditable = ->
             if $attrs.requiredPerm?
                 return $scope.project.my_permissions.indexOf($attrs.requiredPerm) != -1
@@ -268,7 +265,8 @@ TagLineDirective = ($rootScope, $repo, $rs, $confirm, $qqueue, $template, $compi
         hideInput = -> $el.find("input").addClass("hidden").blur()
         resetInput = ->
             $el.find("input").val("")
-            $el.find("input").autocomplete("close")
+
+            autocomplete.close()
 
         ## Aux methods
         addValue = $qqueue.bindAdd (value) ->
@@ -366,22 +364,15 @@ TagLineDirective = ($rootScope, $repo, $rs, $confirm, $qqueue, $template, $compi
 
             showAddTagButton()
 
-            positioningFunction = (position, elements) ->
-                menu = elements.element.element
-                menu.css("width", elements.target.width)
-                menu.css("top", position.top)
-                menu.css("left", position.left)
+            input = $el.find("input")
 
-            $el.find("input").autocomplete({
-                source: _.keys(tags_colors)
-                position: {
-                    my: "left top",
-                    using: positioningFunction
-                }
-                select: (event, ui) ->
-                    addValue(ui.item.value)
-                    ui.item.value = ""
-            })
+            autocomplete = new Awesomplete(input[0], {
+                list: _.keys(tags_colors)
+            });
+
+            input.on "awesomplete-selectcomplete", () ->
+                addValue(input.val())
+                input.val("")
 
         $scope.$watch $attrs.ngModel, (model) ->
             return if not model

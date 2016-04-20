@@ -418,8 +418,6 @@ module.directive("tgKanbanArchivedStatusIntro", ["$translate", KanbanArchivedSta
 
 KanbanUserstoryDirective = ($rootscope, $loading, $rs, $rs2) ->
     link = ($scope, $el, $attrs, $model) ->
-        $el.disableSelection()
-
         $scope.$watch "us", (us) ->
             if us.is_blocked and not $el.hasClass("blocked")
                 $el.addClass("blocked")
@@ -498,8 +496,6 @@ module.directive("tgKanbanSquishColumn", ["$tgResources", KanbanSquishColumnDire
 
 KanbanWipLimitDirective = ->
     link = ($scope, $el, $attrs) ->
-        $el.disableSelection()
-
         status = $scope.$eval($attrs.tgKanbanWipLimit)
 
         redrawWipLimit = =>

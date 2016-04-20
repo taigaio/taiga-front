@@ -17,6 +17,8 @@
 # File: app-meta.service.spec.coffee
 ###
 
+angular.module("taigaCommon").provider("$exceptionHandler", angular.mock.$ExceptionHandlerProvider)
+
 describe "AppMetaService", ->
     appMetaService = null
     $rootScope = null

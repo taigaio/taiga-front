@@ -137,22 +137,31 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame, $tra
         itemEl = null
         tdom = $el.find(".sortable")
 
-        tdom.sortable({
-            handle: ".row.table-main.visualization",
-            dropOnEmpty: true
-            connectWith: ".project-values-body"
-            revert: 400
-            axis: "y"
+        drake = dragula([tdom[0]], {
+            direction: 'vertical',
+            copySortSource: false,
+            copy: false,
+            mirrorContainer: tdom[0],
+            moves: (item) -> return $(item).is('div[tg-bind-scope]')
         })
 
-        tdom.on "sortstop", (event, ui) ->
-            itemEl = ui.item
+        drake.on 'dragend', (item) ->
+            itemEl = $(item)
             itemValue = itemEl.scope().value
             itemIndex = itemEl.index()
             $scope.$broadcast("admin:project-values:move", itemValue, itemIndex)
 
+        scroll = autoScroll(window, {
+            margin: 20,
+            pixels: 30,
+            scrollWhenOutside: true,
+            autoScroll: () ->
+                return this.down && drake.dragging;
+        })
+
         $scope.$on "$destroy", ->
             $el.off()
+            drake.destroy()
 
     ## Value Link
 

@@ -1,5 +1,20 @@
 .attachments {
     margin-bottom: 4rem;
+    .gu-transit {
+        background: $whitish;
+        height: 40px;
+        * {
+            display: none;
+        }
+    }
+    .gu-mirror {
+        opacity: 1;
+        form {
+            background: lighten($primary, 60%);
+            box-shadow: 1px 1px 10px rgba($black, .1);
+            transition: background .2s ease-in;
+        }
+    }
 }
 
 .attachments-header {
@@ -78,15 +93,6 @@
 .single-attachment {
     @extend %small;
     background: rgba($white, .9);
-    &.ui-sortable-helper {
-        background: lighten($primary, 60%);
-        box-shadow: 1px 1px 10px rgba($black, .1);
-        transition: background .2s ease-in;
-    }
-    &.sortable-placeholder {
-        background: $whitish;
-        height: 40px;
-    }
     .attachment-name {
         @extend %bold;
         padding-right: 1rem;
