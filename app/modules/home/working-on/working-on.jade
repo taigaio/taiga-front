@@ -1,11 +1,9 @@
+h1
+    span.green {{"HOME.DASHBOARD" | translate}}
+
 section.working-on-container
-
     header
-        h1
-            span.green {{"HOME.DASHBOARD" | translate}}
-
-
-    .title-bar.working-on-title(translate="HOME.WORKING_ON_SECTION")
+        h1.title-bar.working-on-title(translate="HOME.WORKING_ON_SECTION")
 
     .working-on(ng-if="vm.assignedTo.size")
         .duty-single(
@@ -17,7 +15,8 @@ section.working-on-container
         include empty.jade
 
 section.watching-container
-    .title-bar.watching-title(translate="HOME.WATCHING_SECTION")
+    header
+        h1.title-bar.watching-title(translate="HOME.WATCHING_SECTION")
 
     .watching(ng-if="vm.watching.size")
         .duty-single(

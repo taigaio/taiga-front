@@ -11,7 +11,10 @@ section.home-project-list(ng-if="vm.projects.size")
                 title="{{tag.get('name')}}"
                 tg-repeat="tag in project.get('colorized_tags') track by tag.get('name')"
             )
-        .project-card-inner(href="#", tg-nav="project:project=project.get('slug')")
+        .project-card-inner(
+            href="#"
+            tg-nav="project:project=project.get('slug')"
+        )
             .project-card-header
                 a.project-card-logo(
                     href="#"
@@ -22,7 +25,7 @@ section.home-project-list(ng-if="vm.projects.size")
                         tg-project-logo-small-src="::project"
                         alt="{{::project.get('name')}}"
                     )
-                h2.project-card-name
+                h3.project-card-name
                     a.project-title(
                         href="#"
                         tg-nav="project:project=project.get('slug')"
@@ -85,11 +88,16 @@ section.home-project-list(ng-if="vm.projects.size")
 section.projects-empty(ng-if="vm.projects != undefined && vm.projects.size === 0")
     tg-svg(svg-icon="icon-project")
     p(translate="HOME.EMPTY_PROJECT_LIST")
-    a.create-project-button.button-green(href="#", ng-click="vm.newProject()",
-                                      title="{{'PROJECT.NAVIGATION.TITLE_CREATE_PROJECT' | translate}}",
-                                      translate="PROJECT.NAVIGATION.ACTION_CREATE_PROJECT")
+    a.create-project-button.button-green(
+        href="#"
+        ng-click="vm.newProject()"
+        title="{{'PROJECT.NAVIGATION.TITLE_CREATE_PROJECT' | translate}}"
+        translate="PROJECT.NAVIGATION.ACTION_CREATE_PROJECT"
+    )
     span(tg-import-project-button)
-        a.import-project-button.button-blackish(href="#",
-                                                title="{{'PROJECT.NAVIGATION.TITLE_IMPORT_PROJECT' | translate}}",
-                                                translate="PROJECT.NAVIGATION.ACTION_IMPORT_PROJECT")
+        a.import-project-button.button-blackish(
+            href="#"
+            title="{{'PROJECT.NAVIGATION.TITLE_IMPORT_PROJECT' | translate}}"
+            translate="PROJECT.NAVIGATION.ACTION_IMPORT_PROJECT"
+        )
         input.import-file.hidden(type="file")
