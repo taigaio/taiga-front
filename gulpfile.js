@@ -398,14 +398,11 @@ gulp.task("locales", function() {
             localeFile.dirname = pluginFolder;
         }));
 
-    return gulp.src(paths.locales)
-        .pipe(gulpif(isDeploy, jsonminify()))
-        .pipe(gulp.dest(paths.distVersion + "locales"));
+    var core = gulp.src(paths.locales);
 
-    var core = gulp.src(paths.locales)
+    return mergeStream(plugins, core)
+            .pipe(gulpif(isDeploy, jsonminify()))
             .pipe(gulp.dest(paths.distVersion + "locales"));
-
-    return mergeStream(plugins, core);
 });
 
 gulp.task("coffee-lint", function () {
