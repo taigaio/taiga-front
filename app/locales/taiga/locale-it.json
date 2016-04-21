@@ -140,7 +140,8 @@
             "BLOCKED_NOTE": "nota bloccata",
             "IS_BLOCKED": "è bloccato",
             "REF": "Riferimento",
-            "VOTES": "Voti"
+            "VOTES": "Voti",
+            "SPRINT": "Sprint"
         },
         "ROLES": {
             "ALL": "Tutti"
@@ -355,7 +356,7 @@
     "HOME": {
         "PAGE_TITLE": "Home - Taiga",
         "PAGE_DESCRIPTION": "La home di Taiga con i tuoi principali progetti e tutte le storie utente, i compiti e problemi assegnati e osservati. ",
-        "EMPTY_WORKING_ON": "<strong>Dà un po' l'idea di vuoto, no?</strong> Inizia a lavorare con Taiga e qui vedrai le storie, i compiti ed i problemi su cui stai lavorando.",
+        "EMPTY_WORKING_ON": "<strong>It feels empty, doesn't it?</strong> Start working with Taiga and you'll see here the stories, tasks and issues you are working on.",
         "EMPTY_WATCHING": "<strong>Ossserva</strong> Storie Utente, Compiti, Criticità nel progetto e ti verranno notificate le sue modifiche :)",
         "EMPTY_PROJECT_LIST": "Per ora non hai nessun progetto",
         "WORKING_ON_SECTION": "Sta lavorando su",
@@ -699,7 +700,6 @@
             "ACCEPT": "Accetta",
             "REJECT": "Reject",
             "PROPOSE_OWNERSHIP": "<strong>{{owner}}</strong>, the current owner of the project <strong>{{project}}</strong> has asked that you become the new  project owner.",
-            "ADD_COMMENT_QUESTION": "Would you like to send a question to the project owner?",
             "ADD_COMMENT": "Would you like to add a comment for the project owner?",
             "UNLIMITED_PROJECTS": "Unlimited",
             "OWNER_MESSAGE": {
@@ -1413,6 +1413,7 @@
         "PLACEHOLDER_PAGE": "Crea la tua pagina wiki",
         "REMOVE": "Rimuovi questa pagina wiki",
         "DELETE_LIGHTBOX_TITLE": "Elimina Pagina Wiki",
+        "DELETE_LINK_TITLE": "Delete Wiki link",
         "NAVIGATION": {
             "SECTION_NAME": "Link",
             "ACTION_ADD_LINK": "Aggiungi link"
