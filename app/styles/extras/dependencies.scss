@@ -1,10 +1,10 @@
 // Bourbon
 $prefix-for-webkit:    true;
 $prefix-for-mozilla:   true;
-//$prefix-for-microsoft: true;
-//$prefix-for-opera:     true;
-//$prefix-for-spec:      true;
-@import '../bourbon/bourbon';
+$prefix-for-microsoft: true;
+$prefix-for-opera:     true;
+$prefix-for-spec:      true;
+@import '../../../vendor/bourbon/app/assets/stylesheets/bourbon';
 
 //#################################################
 //             dependencies

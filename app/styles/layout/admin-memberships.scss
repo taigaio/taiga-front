@@ -1,7 +1,4 @@
 .admin-membership {
-    header {
-        @include clearfix;
-    }
     .limit-users-warning {
         @extend %small;
         color: $primary;
