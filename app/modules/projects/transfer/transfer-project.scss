@@ -1,12 +1,15 @@
 .transfer-project-wrapper {
-    max-width: 500px;
+    flex-basis: 500px;
+    flex-grow: 0;
     width: 90%;
 }
 
 .transfer-project {
+    align-content: center;
     align-items: center;
     background: url('../images/discover.png') bottom center repeat-x;
     display: flex;
+    height: calc(100vh - 40px);
     justify-content: center;
     min-height: calc(100vh - 40px);
     .transfer-title {

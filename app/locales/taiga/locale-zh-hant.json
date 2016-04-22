@@ -140,7 +140,8 @@
             "BLOCKED_NOTE": "已封鎖之筆記",
             "IS_BLOCKED": "封鎖",
             "REF": "Ref",
-            "VOTES": "投票數"
+            "VOTES": "投票數",
+            "SPRINT": "衝刺任務"
         },
         "ROLES": {
             "ALL": "所有"
@@ -355,7 +356,7 @@
     "HOME": {
         "PAGE_TITLE": "首頁 - Taiga",
         "PAGE_DESCRIPTION": "Taiga 首頁，你的主要專案以及任命，觀看使用者故事，任務與問題。",
-        "EMPTY_WORKING_ON": "<strong>It feels empty, doesn't it?</strong> Start working with Taiga and you'll see here the stories, tasks and issues you are workin on.",
+        "EMPTY_WORKING_ON": "<strong>It feels empty, doesn't it?</strong> Start working with Taiga and you'll see here the stories, tasks and issues you are working on.",
         "EMPTY_WATCHING": "<strong>Follow</strong> User Stories, Tasks, Issues in your projects and be notified about its changes :)",
         "EMPTY_PROJECT_LIST": "你尚無任何專案",
         "WORKING_ON_SECTION": "進行中",
@@ -699,7 +700,6 @@
             "ACCEPT": "接受",
             "REJECT": "Reject",
             "PROPOSE_OWNERSHIP": "<strong>{{owner}}</strong>, the current owner of the project <strong>{{project}}</strong> has asked that you become the new  project owner.",
-            "ADD_COMMENT_QUESTION": "Would you like to send a question to the project owner?",
             "ADD_COMMENT": "Would you like to add a comment for the project owner?",
             "UNLIMITED_PROJECTS": "Unlimited",
             "OWNER_MESSAGE": {
@@ -1413,6 +1413,7 @@
         "PLACEHOLDER_PAGE": "編寫你的維基頁",
         "REMOVE": "移除此維基頁　",
         "DELETE_LIGHTBOX_TITLE": "刪除維基頁",
+        "DELETE_LINK_TITLE": "Delete Wiki link",
         "NAVIGATION": {
             "SECTION_NAME": "連結",
             "ACTION_ADD_LINK": "新增連結"

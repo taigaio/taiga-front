@@ -140,7 +140,8 @@
             "BLOCKED_NOTE": "estetty muistiinpano",
             "IS_BLOCKED": "on estetty",
             "REF": "Ref",
-            "VOTES": "Ääniä"
+            "VOTES": "Ääniä",
+            "SPRINT": "Kierros"
         },
         "ROLES": {
             "ALL": "Kaikki"
@@ -355,7 +356,7 @@
     "HOME": {
         "PAGE_TITLE": "Home - Taiga",
         "PAGE_DESCRIPTION": "The Taiga home page with your main projects and all your assigned and watched user stories, tasks and issues",
-        "EMPTY_WORKING_ON": "<strong>It feels empty, doesn't it?</strong> Start working with Taiga and you'll see here the stories, tasks and issues you are workin on.",
+        "EMPTY_WORKING_ON": "<strong>It feels empty, doesn't it?</strong> Start working with Taiga and you'll see here the stories, tasks and issues you are working on.",
         "EMPTY_WATCHING": "<strong>Follow</strong> User Stories, Tasks, Issues in your projects and be notified about its changes :)",
         "EMPTY_PROJECT_LIST": "You don't have any projects yet",
         "WORKING_ON_SECTION": "Working on",
@@ -699,7 +700,6 @@
             "ACCEPT": "Hyväksy",
             "REJECT": "Reject",
             "PROPOSE_OWNERSHIP": "<strong>{{owner}}</strong>, the current owner of the project <strong>{{project}}</strong> has asked that you become the new  project owner.",
-            "ADD_COMMENT_QUESTION": "Would you like to send a question to the project owner?",
             "ADD_COMMENT": "Would you like to add a comment for the project owner?",
             "UNLIMITED_PROJECTS": "Unlimited",
             "OWNER_MESSAGE": {
@@ -1413,6 +1413,7 @@
         "PLACEHOLDER_PAGE": "Kirjoita wiki-sivu",
         "REMOVE": "Poista tämä wiki-sivu",
         "DELETE_LIGHTBOX_TITLE": "Poista wiki-sivu",
+        "DELETE_LINK_TITLE": "Delete Wiki link",
         "NAVIGATION": {
             "SECTION_NAME": "Linkit",
             "ACTION_ADD_LINK": "Lisää linkki"
