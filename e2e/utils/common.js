@@ -482,3 +482,33 @@ common.createProject = async function(members = []) {
         await newMemberLightbox.waitClose();
     }
 };
+
+common.getTransferProjectToken = function(projectSlug, username) {
+    let execSync = require('child_process').execSync;
+
+    let cliPath = path.resolve(process.cwd(), 'e2e', 'taiga_back_cli.py');
+
+    let result = execSync(`python ${cliPath} transfer_token ${browser.params.glob.back} ${projectSlug}  ${username}`);
+
+    return result.toString();
+};
+
+
+/*
+max_private_projects
+max_memberships_private_projects
+max_public_projects
+max_memberships_public_projects
+*/
+common.setUserLimits = function(username, restrictions) {
+    let execSync = require('child_process').execSync;
+
+    let cliPath = path.resolve(process.cwd(), 'e2e', 'taiga_back_cli.py');
+    let params = '';
+
+    for (let restrictionKey in restrictions) {
+        params += `--${restrictionKey}=${restrictions[restrictionKey]} `;
+    }
+
+    execSync(`python ${cliPath} update_user_limits ${browser.params.glob.back} ${username} ${params}`);
+};

@@ -44,7 +44,9 @@ exports.config = {
         projectHome: "e2e/suites/project-home.e2e.js",
         search: "e2e/suites/search.e2e.js",
         team: "e2e/suites/team.e2e.js",
-        discover: "e2e/suites/discover/*.e2e.js"
+        discover: "e2e/suites/discover/*.e2e.js",
+        transferProject: "e2e/suites/transfer-project.e2e.js",
+        compileModules: "app/modules/compile-modules/**/*.e2e.js"
     },
     onPrepare: function() {
         // disable by default because performance problems on IE
@@ -98,6 +100,10 @@ exports.config = {
         //   });
         // };
         // browser.addMockModule('trackMouse', trackMouse);
+
+        var argv = require('minimist')(process.argv.slice(2));
+
+        browser.params.glob.back = argv.back;
 
         require('./e2e/capabilities.js');
 
