@@ -162,8 +162,7 @@ class RolesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fil
         subtitle = @translate.instant("ADMIN.ROLES.DISABLE_COMPUTABLE_ALERT_SUBTITLE", {
             roleName: @scope.role.name
         })
-        message =  @translate.instant("ADMIN.ROLES.DISABLE_COMPUTABLE_ALERT_MESSAGE")
-        return @confirm.ask(title, subtitle, message).then askOnSuccess, askOnError
+        return @confirm.ask(title, subtitle, "").then askOnSuccess, askOnError
 
     toggleComputable: debounce 2000, ->
         if not @scope.role.computable
