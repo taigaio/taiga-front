@@ -8,8 +8,7 @@
         margin-right: .4rem;
     }
     a,
-    .active span,
-    .dots {
+    .active span {
         background: $gray-light;
         color: $white;
         padding: .5rem 1rem;
@@ -26,28 +25,5 @@
         span {
             background: $primary-light;
         }
-    }
-    .dots {
-        background: transparent;
-        color: $gray-light;
-    }
-}
-
-.v-pagination-list {
-    overflow: hidden;
-}
-
-.v-pagination-next,
-.v-pagination-previous {
-    background-color: $gray;
-    color: $whitish;
-    display: block;
-    padding: .1rem 0;
-    text-align: center;
-    visibility: hidden;
-    width: 100%;
-    &:hover {
-        background-color: $blackish;
-        transition: background .3s linear;
     }
 }

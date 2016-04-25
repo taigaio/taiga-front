@@ -103,14 +103,7 @@ a.button-gray {
         color: $white;
     }
 }
-.button-block {
-    background: $white;
-    color: $red;
-    &:hover {
-        background: $red-light;
-        color: $white;
-    }
-}
+
 .button-bulk {
     @extend %button;
     background: $primary;

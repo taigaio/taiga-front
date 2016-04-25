@@ -40,8 +40,7 @@ $summary-background: $grayer;
             opacity: 1;
         }
         &:hover {
-            .graph,
-            .color-line {
+            .graph {
                 fill: $primary-light;
                 transition: fill .2s;
             }
@@ -50,10 +49,6 @@ $summary-background: $grayer;
             }
         }
         &.active {
-            .white-line,
-            .color-line {
-                display: none;
-            }
             .graph {
                 fill: $primary;
             }
@@ -69,17 +64,9 @@ $summary-background: $grayer;
             transition: all .2s;
             width: 100%;
         }
-        .graph,
-        .color-line {
+        .graph {
             fill: darken($gray-light, 20%);
             transition: fill .2s;
-        }
-        .white-line {
-            fill: $summary-background;
-        }
-        .white-line,
-        .color-line {
-            display: block;
         }
     }
 }
@@ -135,9 +122,6 @@ $summary-background: $grayer;
             border: 0;
             margin: 0;
         }
-    }
-    .summary-stats-divider {
-        margin-right: 2rem;
     }
     .icon {
         fill: currentColor;

@@ -18,7 +18,6 @@
         width: 100%;
     }
     .backlog-table-title,
-    .backlog-table-subtitle,
     .row {
         &:hover {
             background: transparent;
@@ -41,7 +40,6 @@
             flex-basis: 125px;
             flex-grow: 0;
         }
-
     }
     .votes {
         color: $gray;
@@ -191,7 +189,6 @@
             display: none;
         }
     }
-    .row-selected,
     .is-checked {
         background: lighten($primary, 60%);
         transition: background .2s ease-in;

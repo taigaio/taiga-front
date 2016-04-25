@@ -33,9 +33,6 @@
     .private {
         @include svg-size(1.1rem);
     }
-    .like-watch-container {
-        margin-left: auto;
-    }
     .track-buttons-container {
         display: flex;
     }
@@ -91,8 +88,7 @@
         flex-basis: 220px;
         width: 220px;
     }
-    .involved-team,
-    .involved-organization {
+    .involved-team {
         display: flex;
         flex-wrap: wrap;
         margin-bottom: 1rem;

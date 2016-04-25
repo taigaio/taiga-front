@@ -147,12 +147,6 @@
         bottom: .2rem;
         right: .5rem;
     }
-    .icon-drag-h {
-        @extend %xlarge;
-        bottom: .2rem;
-        cursor: move;
-        right: 45%;
-    }
     .task-points {
         @extend %small;
         color: darken($card-hover, 15%);
@@ -215,19 +209,10 @@
     .task-points {
         display: none;
     }
-    .icon-edit,
-    .icon-drag-h {
-        top: 1.4rem;
-    }
     .icon-edit {
         bottom: .2rem;
         right: 1rem;
-    }
-    .icon-drag-h {
-        @extend %medium;
-        cursor: move;
-        right: .1rem;
-        transform: rotate(90deg);
+        top: 1.4rem;
     }
     .kanban-tag {
         border-top: .2rem solid;

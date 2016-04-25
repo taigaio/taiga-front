@@ -138,17 +138,6 @@
         transition: background .2s ease-in;
     }
 }
-.more-comments {
-    @extend %small;
-    border-bottom: 1px solid $gray-light;
-    color: $gray-light;
-    display: block;
-    padding: 1rem;
-    .prev-comments-num {
-        color: $primary;
-        margin-left: .5rem;
-    }
-}
 .comment-list {
     &.activeanimation {
         .comment-single.ng-enter:last-child,
@@ -285,16 +274,5 @@
         .change-entry {
             display: flex;
         }
-    }
-}
-.more-activity {
-    @extend %small;
-    border-bottom: 1px solid $gray-light;
-    color: $gray-light;
-    display: block;
-    padding: 1rem;
-    .prev-activity-num {
-        color: $primary;
-        margin-left: .5rem;
     }
 }

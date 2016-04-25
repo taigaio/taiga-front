@@ -123,29 +123,6 @@
             display: block;
         }
     }
-
-    .profile-organizations {
-        border-bottom: 1px solid $whitish;
-        border-top: 1px solid $whitish;
-        margin-bottom: 1rem;
-        padding: 1rem 0;
-        h3 {
-            @extend %bold;
-            margin-bottom: .5rem;
-        }
-        .profile-organizations-wrapper {
-            display: flex;
-            justify-content: space-between;
-        }
-        .organization {
-            background: $gray-light;
-            border-radius: 5px;
-            height: 45px;
-            margin-right: .2rem;
-            width: 45px;
-        }
-    }
-
     .profile-quote {
         @extend %light;
         @extend %large;

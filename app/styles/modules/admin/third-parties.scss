@@ -6,13 +6,13 @@
     }
     input,
     textarea {
-        @extend %title;
+        @extend %text;
     }
     fieldset {
         margin-bottom: 1rem;
     }
     label {
-        @extend %title;
+        @extend %text;
         display: block;
         margin-bottom: .2rem;
     }
@@ -43,48 +43,6 @@
             &.visible {
                 opacity: 1;
                 transition: opacity .2s linear;
-            }
-        }
-    }
-    .help {
-        margin-top: 2rem;
-        h3 {
-            font-family: opensans-semibold;
-            margin-bottom: 1rem;
-        }
-        ol {
-            padding: 0 0 0 2rem;
-            span {
-                font-family: opensans-semibold;
-            }
-        }
-        .img {
-            margin-bottom: 1rem;
-        }
-        .alt-image {
-            @extend %small;
-            font-style: italic;
-        }
-        code {
-            @extend %small;
-            background: $whitish;
-            direction: ltr;
-            display: block;
-            font-family: 'courier new', 'monospace';
-            line-height: 1.4rem;
-            margin-bottom: 1rem;
-            padding: .5rem;
-            unicode-bidi: embed;
-            white-space: pre;
-            width: 100%;
-        }
-        .code-info {
-            padding-left: 1rem;
-            li {
-                margin-bottom: .5rem;
-            }
-            span {
-                font-family: opensans-semibold;
             }
         }
     }

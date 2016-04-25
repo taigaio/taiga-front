@@ -157,12 +157,6 @@ $column-margin: 0 10px 0 0;
         margin-bottom: .5rem;
         min-height: 10rem;
         width: 100%;
-        &:hover {
-            .new-task {
-                opacity: 1;
-                transition: opacity .3s linear;
-            }
-        }
         &.blocked {
             .taskboard-userstory-box {
                 background: rgba($red, .6);
@@ -228,10 +222,6 @@ $column-margin: 0 10px 0 0;
 
 .taskboard-userstory-box {
     position: relative;
-    .tag-list {
-        display: none;
-        margin-bottom: 1rem;
-    }
     .us-title {
         @extend %large;
         @extend %title;
@@ -244,22 +234,5 @@ $column-margin: 0 10px 0 0;
         span {
             margin-right: .1rem;
         }
-    }
-}
-
-.points-list {
-    a {
-        color: $primary;
-        margin-left: .5rem;
-        &:hover {
-            span {
-                opacity: 1;
-                transition: opacity .2s linear;
-            }
-        }
-    }
-    span {
-        opacity: 0;
-        transition: opacity .2s linear;
     }
 }
