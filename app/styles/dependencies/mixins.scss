@@ -1,10 +1,3 @@
-@mixin ellipsis($width: 100px) {
-    max-width: $width;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
 @mixin box-shadow($h-shadow: 1px, $v-shadow: 1px, $blur: 15px, $spread: 6px, $color: rgba(0, 0, 0, .1)) {
     box-shadow: $h-shadow $v-shadow $blur $spread $color;
 }
@@ -34,10 +27,6 @@
         transition: max-height .5s ease-in;
         max-height: $max;
     }
-}
-
-@mixin background($red: 255, $green: 255, $blue: 255, $opacity: 1) {
-    background: rgba($red, $green, $blue, $opacity);
 }
 
 @mixin popover($width, $top: '', $left: '', $bottom: '', $right: '', $arrow-width: 0, $arrow-top: '', $arrow-left: '', $arrow-bottom: '', $arrow-height: 15px) {

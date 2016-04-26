@@ -76,7 +76,8 @@
     "intro.js": "~1.1.1",
     "lodash": "~4.0.0",
     "messageformat": "^0.1.8",
-    "dragula.js": "dragula#^3.6.6"
+    "dragula.js": "dragula#^3.6.6",
+    "bourbon": "^4.2.7"
   },
   "resolutions": {
     "lodash": "~4.0.0",
