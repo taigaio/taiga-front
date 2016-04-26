@@ -17,10 +17,6 @@
             text-align: center;
         }
     }
-    .more-info {
-        @extend %small;
-        color: $primary;
-    }
     .template-selector-title {
         display: flex;
         justify-content: space-between;

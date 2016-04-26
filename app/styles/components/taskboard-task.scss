@@ -6,8 +6,7 @@
     margin: .2rem;
     position: relative;
     &:hover {
-        .icon-edit,
-        .icon-drag-h {
+        .icon-edit {
             display: block;
             fill: $card-dark;
             opacity: 1;

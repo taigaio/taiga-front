@@ -6,7 +6,7 @@
     }
     .row {
         &:hover {
-            background: lighten($primary, 60%);
+            background: lighten($primary, 65%);
             transition: background .2s ease-in;
         }
         .icon {
@@ -19,10 +19,6 @@
                 margin-right: .5rem;
             }
         }
-    }
-    .row-selected {
-        background: lighten($primary, 60%);
-        transition: background .2s ease-in;
     }
     .title {
         @extend %medium;

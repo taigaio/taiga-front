@@ -97,9 +97,6 @@
             color: $gray-light;
             flex-flow: 1;
         }
-        .sprint-points {
-            flex-grow: 1;
-        }
         ul {
             margin: 0;
         }
@@ -224,7 +221,6 @@
         .tags-block,
         .us-settings,
         .status,
-        .icon-drag-v,
         .popover,
         input {
             display: none;

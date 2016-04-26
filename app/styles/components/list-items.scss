@@ -36,8 +36,7 @@
         .list-itemtype-track,
         .list-itemtype-project-image,
         .list-itemtype-project-name,
-        .list-itemtype-project-description,
-        .list-itemtype-project-private {
+        .list-itemtype-project-description {
             opacity: .4;
         }
     }
@@ -70,13 +69,6 @@
             margin-right: .3rem;
             width: 2rem;
         }
-    }
-    .list-itemtype-project-tags {
-        align-self: flex-end;
-        display: flex;
-        flex: 3;
-        flex-wrap: wrap;
-        margin-top: .5rem;
     }
     .tag {
         align-self: flex-end;
@@ -138,9 +130,4 @@
         @extend %light;
         margin-top: .25rem;
     }
-}
-
-.list-itemtype-timeline {
-    @include list-itemtype-common;
-
 }
