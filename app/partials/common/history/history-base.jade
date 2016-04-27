@@ -4,10 +4,9 @@ section.history
     <% if (commentsVisible || historyVisible) { %>
     ul.history-tabs
         <% if (commentsVisible) { %>
-        li
+        li.active
             a(
                 href="",
-                class="active",
                 data-section-class="history-comments"
             )
                 tg-svg(svg-icon="icon-writer")
