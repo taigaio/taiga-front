@@ -3,7 +3,7 @@
 //////////////////////
 
 .track-buttons-container {
-    @extend %small;
+    @include font-size(small);
     position: relative;
 }
 
@@ -102,7 +102,7 @@
         }
     }
     a {
-        @extend %light;
+        @include font-type(light);
         border-bottom: 1px solid rgba($gray-light, .3);
         color: $white;
         display: flex;

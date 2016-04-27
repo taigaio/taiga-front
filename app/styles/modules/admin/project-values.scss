@@ -20,7 +20,7 @@
 }
 
 .project-values-header {
-    @extend %bold;
+    @include font-type(bold);
     border-bottom: 3px solid $whitish;
 }
 .project-values-body {

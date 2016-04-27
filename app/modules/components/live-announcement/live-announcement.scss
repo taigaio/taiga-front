@@ -43,15 +43,15 @@
         width: 100%;
     }
     .title {
-        @extend %bold;
-        @extend %larger;
+        @include font-type(bold);
+        @include font-size(larger);
         color: $tribe-secondary;
         margin-bottom: .5rem;
     }
     .warning {
         color: $tribe-secondary;
         a {
-            @extend %bold;
+            @include font-type(bold);
             color: $tribe-secondary;
         }
     }

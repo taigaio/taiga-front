@@ -1,5 +1,5 @@
 .error-main {
-    @extend %background-taiga;
+    @include background-taiga;
     align-items: center;
     bottom: 0;
     display: flex;

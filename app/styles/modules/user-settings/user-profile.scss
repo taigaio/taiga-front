@@ -7,7 +7,7 @@
         width: 100%;
     }
     .delete-account {
-        @extend %small;
+        @include font-size(small);
         display: block;
         margin-top: 1rem;
     }

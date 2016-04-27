@@ -5,14 +5,13 @@
     justify-content: space-between;
     margin-bottom: 1rem;
     .trans-button {
-        @extend %trans-button;
         color: $blackish;
         display: inline-block;
         padding: .4rem 1.5rem;
         &.active,
         &:hover {
-            background: $gray-light;
-            color: $gray;
+            background: darken($whitish, 10%);
+            color: $grayer;
         }
         &.active {
             &:hover {

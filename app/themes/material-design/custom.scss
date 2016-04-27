@@ -92,7 +92,7 @@ textarea {
 
 // Input errors
 .checksley-error-list {
-    @extend %light;
+    @include font-type(light);
     background: rgba($red, .7);
     color: $white;
 }

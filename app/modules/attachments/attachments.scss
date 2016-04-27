@@ -25,8 +25,8 @@
     justify-content: space-between;
     min-height: 36px;
     .attachments-title {
-        @extend %medium;
-        @extend %bold;
+        @include font-type(bold);
+        @include font-size(medium);
         color: $grayer;
         line-height: 36px;
         padding: 0 1rem;
@@ -70,8 +70,8 @@
         }
     }
     .size-info {
-        @extend %light;
-        @extend %small;
+        @include font-size(small);
+        @include font-type(light);
         color: $gray;
         padding-left: 1rem;
     }
@@ -81,8 +81,8 @@
 }
 
 .attachments-empty {
-    @extend %large;
-    @extend %bold;
+    @include font-size(large);
+    @include font-type(bold);
     border: 3px dashed $whitish;
     color: $gray-light;
     margin-top: .5rem;
@@ -91,10 +91,10 @@
 }
 
 .single-attachment {
-    @extend %small;
+    @include font-size(small);
     background: rgba($white, .9);
     .attachment-name {
-        @extend %bold;
+        @include font-type(bold);
         padding-right: 1rem;
         svg {
             fill: $gray;
@@ -109,7 +109,7 @@
 }
 
 .more-attachments {
-    @extend %small;
+    @include font-size(small);
     border-bottom: 1px solid $gray-light;
     display: block;
     padding: 1rem 0 1rem 1rem;

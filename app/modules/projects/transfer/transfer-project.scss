@@ -13,7 +13,7 @@
     justify-content: center;
     min-height: calc(100vh - 40px);
     .transfer-title {
-        @extend %light;
+        @include font-type(light);
     }
     &-detail {
         align-items: center;
@@ -30,8 +30,8 @@
         width: 4rem;
     }
     &-title {
-        @extend %light;
-        @extend %larger;
+        @include font-type(light);
+        @include font-size(larger);
         margin-bottom: .25rem;
     }
     &-statistics {
@@ -84,7 +84,7 @@
     &-options {
         display: flex;
         a {
-            @extend %large;
+            @include font-size(large);
             display: block;
             flex: 1;
             padding: .75rem;

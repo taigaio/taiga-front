@@ -1,6 +1,6 @@
 .admin-membership-table {
     .title {
-        @extend %bold;
+        @include font-type(bold);
     }
     .avatar {
         align-items: center;
@@ -27,7 +27,7 @@
             width: 100%;
         }
         .name {
-            @extend %bold;
+            @include font-type(bold);
         }
         .email {
             color: $gray-light;
@@ -76,7 +76,7 @@
             vertical-align: middle;
         }
         label {
-            @extend %small;
+            @include font-size(small);
         }
     }
     .row-member,

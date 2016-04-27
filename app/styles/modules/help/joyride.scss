@@ -15,11 +15,11 @@
 
 .introjs-tooltip {
     h3 {
-        @extend %large;
+        @include font-size(large);
         margin-bottom: .5rem;
     }
     p {
-        @extend %light;
+        @include font-type(light);
         line-height: 1.4;
         margin-bottom: 0;
     }

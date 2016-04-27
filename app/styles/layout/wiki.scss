@@ -1,10 +1,10 @@
 .wiki {
     .wiki-title {
-        @extend %light;
-        @extend %larger;
+        @include font-type(light);
+        @include font-size(larger);
     }
     .remove {
-        @extend %small;
+        @include font-size(small);
         color: $gray-light;
         &:hover {
             color: $red-light;

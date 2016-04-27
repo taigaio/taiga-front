@@ -48,7 +48,7 @@
             white-space: nowrap;
         }
         .icon {
-            @extend %medium;
+            @include font-size(medium);
             color: $gray-light;
             &:hover {
                 color: $grayer;
@@ -57,7 +57,7 @@
         }
     }
     .table-main {
-        @extend %small;
+        @include font-size(small);
         border-bottom: 1px solid $whitish;
     }
     .status,
@@ -83,7 +83,7 @@
 }
 
 .search-result-table-header {
-    @extend %bold;
+    @include font-type(bold);
 }
 
 .empty-search-results {
@@ -93,11 +93,11 @@
         margin-bottom: 1rem;
     }
     .title {
-        @extend %large;
+        @include font-size(large);
         text-transform: uppercase;
     }
     p {
-        @extend %light;
+        @include font-type(light);
         margin: 0;
     }
 }

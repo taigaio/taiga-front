@@ -21,7 +21,7 @@
         width: 32px;
     }
     .username {
-        @extend %large;
+        @include font-size(large);
         color: $primary-light;
         white-space: nowrap;
     }

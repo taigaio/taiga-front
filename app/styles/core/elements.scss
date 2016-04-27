@@ -9,7 +9,7 @@ blockquote {
     margin: 0 0 20px;
     padding: .5rem 1.25rem;
     cite {
-        @extend %small;
+        @include font-size(small);
         display: block;
         &::before {
             content: '\2014 \0020';
@@ -27,7 +27,7 @@ ul { list-style: none outside; }
 ol { list-style: decimal; }
 
 sup {
-    @extend %small;
+    @include font-size(small);
     vertical-align: super;
 }
 
@@ -83,7 +83,7 @@ svg {
 
 .spin {
     img {
-        @extend %loading-spinner;
+        @include loading-spinner;
         max-height: 2rem;
         max-width: 2rem;
     }

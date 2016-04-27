@@ -11,8 +11,8 @@
     justify-content: space-between;
     min-height: 36px;
     .related-tasks-title {
-        @extend %medium;
-        @extend %bold;
+        @include font-size(medium);
+        @include font-type(bold);
         margin-left: 1rem;
     }
     .add-button {
@@ -37,7 +37,7 @@
 .related-tasks-body {
     width: 100%;
     .row {
-        @extend %small;
+        @include font-size(small);
         align-items: center;
         border-bottom: 1px solid $whitish;
         display: flex;
@@ -83,7 +83,7 @@
             margin-right: .25rem;
         }
         input {
-            @extend %medium;
+            @include font-size(medium);
             margin-right: 1rem;
             padding: 3px;
             width: 85%;

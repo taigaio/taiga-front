@@ -1,0 +1,45 @@
+@mixin popover($width, $top: '', $left: '', $bottom: '', $right: '', $arrow-width: 0, $arrow-top: '', $arrow-left: '', $arrow-bottom: '', $arrow-height: 15px) {
+    @include font-type(light);
+    @include font-size(small);
+    background: $blackish;
+    bottom: #{$bottom};
+    color: $white;
+    display: none;
+    left: #{$left};
+    list-style-type: none;
+    margin: 0;
+    padding: 10px;
+    position: absolute;
+    right: #{$right};
+    top: #{$top};
+    width: $width;
+    z-index: 99;
+    a {
+        @include font-size(small);
+        border-bottom: 1px solid $grayer;
+        color: $white;
+        display: block;
+        padding: 10px 2px;
+        &:last-child {
+            border: 0;
+        }
+        &:hover {
+            color: $primary-light;
+            transition: color .3s linear;
+            &.point {
+                color: $white;
+            }
+        }
+    }
+    &:after {
+        background: $blackish;
+        bottom: #{$arrow-bottom};
+        content: '';
+        height: #{$arrow-height};
+        left: #{$arrow-left};
+        position: absolute;
+        top: #{$arrow-top};
+        transform: rotate(45deg);
+        width: #{$arrow-width};
+    }
+}

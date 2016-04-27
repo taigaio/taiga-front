@@ -8,14 +8,13 @@
     padding: .5rem;
     padding-right: 0;
     h2 {
-        @extend %normal;
-        @extend %text;
+        @include font-type(text);
         line-height: 1.4;
         margin-bottom: 0;
         text-transform: none;
     }
     p {
-        @extend %light;
+        @include font-type(light);
         margin-bottom: 0;
     }
     .list-itemtype-avatar {
@@ -41,7 +40,7 @@
         }
     }
     h2 {
-        @extend %large;
+        @include font-size(large);
     }
     .icon-blocked-project {
         @include svg-size(.75rem);
@@ -96,7 +95,7 @@
         }
     }
     h2 {
-        @extend %medium;
+        @include font-size(medium);
     }
     .ticket-type,
     .ticket-project {
@@ -123,11 +122,11 @@
 .list-itemtype-user {
     @include list-itemtype-common;
     h2 {
-        @extend %large;
+        @include font-size(large);
     }
     .extra-info {
-        @extend %small;
-        @extend %light;
+        @include font-size(small);
+        @include font-type(light);
         margin-top: .25rem;
     }
 }

@@ -32,7 +32,7 @@
         top: -.5rem;
     }
     .project-title {
-        @extend %larger;
+        @include font-size(larger);
     }
 }
 
@@ -40,6 +40,6 @@
     margin-top: 4rem;
     text-align: center;
     .project-block-title {
-        @extend %xlarge;
+        @include font-size(xlarge);
     }
 }

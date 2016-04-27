@@ -1,0 +1,39 @@
+// __Font Sizes__ //
+
+@mixin font-size($size) {
+    @if $size == xsmall {
+        font-size: .75rem;
+    } @else if $size == small {
+        font-size: .9rem;
+    } @else if $size == medium {
+        font-size: 1rem;
+    } @else if $size == large {
+        font-size: 1.2rem;
+    } @else if $size == larger {
+        font-size: 1.6rem;
+    } @else if $size == xlarge {
+        font-size: 2rem;
+    } @else if $size == xxlarge {
+        font-size: 3rem;
+    } @else if $size == gigantic {
+        font-size: 4rem;
+    } @else {
+        font-size: 1rem;
+    }
+}
+
+@mixin font-type($type) {
+    @if $type == title {
+        font-family: 'OpenSans-CondLight', Arial, Helvetica, sans-serif;
+    } @else if $type == light {
+        font-family: 'OpenSans-Light', Arial, Helvetica, sans-serif;
+    } @else if $type == text {
+        font-family: 'OpenSans-Regular', Arial, Helvetica, sans-serif;
+    } @else if $type == bold {
+        font-family: 'OpenSans-Semibold', Arial, Helvetica, sans-serif;
+    } @else if $type == mono {
+        font-family: 'courier new', 'monospace';
+    } @else {
+        font-family: 'OpenSans-Regular', Arial, Helvetica, sans-serif;
+    }
+}

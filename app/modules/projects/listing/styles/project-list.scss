@@ -8,8 +8,8 @@
         margin: 2rem 0 1rem;
         padding: .9rem 1rem;
         h1 {
-            @extend %larger;
-            @extend %light;
+            @include font-size(larger);
+            @include font-type(light);
             margin: 0;
         }
     }
@@ -45,7 +45,7 @@
         margin-right: 2rem;
     }
     .help-area {
-        @extend %small;
+        @include font-size(small);
         color: $gray-light;
         width: 200px;
     }

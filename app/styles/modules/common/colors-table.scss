@@ -1,7 +1,7 @@
 .colors-table {
     .table-header {
-        @extend %medium;
-        @extend %bold;
+        @include font-size(medium);
+        @include font-type(bold);
         border-bottom: 3px solid $whitish;
         &:hover {
             background: transparent;

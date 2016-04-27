@@ -37,35 +37,14 @@ $tribe-secondary: #107a8a;
 $top-icon-color: $white;
 $dropdown-color: rgba(darken($primary-dark, 20%), 1);
 
-// Font Sizes
-%xsmall {font-size: .75rem;}
-%small {font-size: .9rem;}
-%medium {font-size: 1rem;}
-%large {font-size: 1.2rem;}
-%larger {font-size: 1.6rem;}
-%xlarge {font-size: 2rem;}
-%xxlarge {font-size: 3rem;}
+/* Overwrite mixins */
 
-// Font Types
-%title {font-family: 'OpenSans-CondLight', Arial, Helvetica, sans-serif; }
-%light {font-family: 'OpenSans-Light', Arial, Helvetica, sans-serif; }
-%text {font-family: 'opensans-regular', Arial, Helvetica, sans-serif; }
-%bold {font-family: 'opensans-semibold', Arial, Helvetica, sans-serif; }
-%taiga {font-family: 'taiga';}
-%mono {font-family: 'courier new', 'monospace';}
-
-// lightbox
-%lightbox {
-    background: rgba($white, .98);
-}
-
-// Background images
-%triangled-bg {
+@mixin triangled-bg {
     background: url('https://lh4.googleusercontent.com/-k7YewfrSQ_Q/VGdNZND0NBI/AAAAAAAAD1A/UDZBeSGR7iM/w1465-h824-no/Ultimate%2BMaterial%2BLollipop%2BCollection%2B-%2B480') no-repeat center center;
     background-size: cover;
 }
 
-%background-taiga {
+@mixin background-taiga {
     background: url('https://lh6.googleusercontent.com/-2l_mJ5g6j4k/VGdNZCpaERI/AAAAAAAAD2o/zCx5Z3cYv6Y/w1465-h824-no/Ultimate%2BMaterial%2BLollipop%2BCollection%2B-%2B497') no-repeat center center;
     background-size: cover;
 }

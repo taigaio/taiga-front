@@ -1,6 +1,6 @@
 .profile-sidebar {
     h4 {
-        @extend %bold;
+        @include font-type(bold);
         background: $whitish;
         color: $gray;
         margin-bottom: .5rem;
@@ -13,7 +13,7 @@
         }
     }
     p {
-        @extend %small;
+        @include font-size(small);
         color: $gray-light;
     }
     a {

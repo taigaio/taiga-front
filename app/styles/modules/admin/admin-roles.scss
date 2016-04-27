@@ -3,8 +3,8 @@
         display: inline-block;
     }
     .role-name {
-        @extend %xlarge;
-        @extend %light;
+        @include font-size(xlarge);
+        @include font-type(light);
         color: $grayer;
     }
     .icon {
@@ -42,8 +42,8 @@
         padding: .5rem;
     }
     .general-category {
-        @extend %light;
-        @extend %small;
+        @include font-type(light);
+        @include font-size(small);
         align-items: center;
         display: flex;
         justify-content: flex-end;

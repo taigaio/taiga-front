@@ -136,7 +136,7 @@ $dropdown-width: 350px;
             }
         }
         .new {
-            @extend %small;
+            @include font-size(small);
             background: $red-light;
             float: right;
             margin-left: auto;

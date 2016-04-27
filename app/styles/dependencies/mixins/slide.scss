@@ -1,0 +1,9 @@
+@mixin slide($max, $overflow, $min: 0) {
+    max-height: $min;
+    transition: max-height .5s ease-in;
+    overflow: #{$overflow};
+    &.open {
+        transition: max-height .5s ease-in;
+        max-height: $max;
+    }
+}

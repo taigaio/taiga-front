@@ -21,7 +21,7 @@
         }
     }
     .user-list-name {
-        @extend %light;
+        @include font-type(light);
         color: $grayer;
         margin-left: .5rem;
     }

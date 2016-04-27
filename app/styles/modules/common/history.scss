@@ -31,15 +31,15 @@
         flex-grow: 1;
     }
     .activity-changed {
-        @extend %bold;
+        @include font-type(bold);
     }
     .activity-fromto {
-        @extend %small;
+        @include font-size(small);
         word-wrap: break-word;
     }
 }
 .history-tabs {
-    @extend %light;
+    @include font-type(light);
     border-bottom: 1px solid $whitish;
     border-top: 1px solid $whitish;
     margin-bottom: 0;
@@ -127,7 +127,7 @@
     }
 }
 .show-more-comments {
-    @extend %small;
+    @include font-size(small);
     border-bottom: 1px solid $gray-light;
     border-top: 1px solid $gray-light;
     color: $gray-light;
@@ -177,7 +177,7 @@
     }
     &.deleted-comment,
     .deleted-comment {
-        @extend %small;
+        @include font-size(small);
         color: $gray-light;
         padding: .5rem;
         a {
@@ -196,12 +196,12 @@
             display: none;
             margin: .2rem 0 .5rem;
             p {
-                @extend %medium;
+                @include font-size(medium);
             }
         }
     }
     .comment-restore {
-        @extend %small;
+        @include font-size(small);
         color: $gray-light;
         display: block;
         position: absolute;
@@ -245,7 +245,7 @@
         }
     }
     .date {
-        @extend %small;
+        @include font-size(small);
         color: $gray-light;
         margin-left: 1rem;
     }

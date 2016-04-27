@@ -82,7 +82,7 @@
         }
     }
     .statistic {
-        @extend %small;
+        @include font-size(small);
         color: $gray-light;
         display: inline-block;
         margin-right: .5rem;
@@ -114,8 +114,8 @@
         margin-bottom: 1rem;
     }
     .title {
-        @extend %large;
-        @extend %light;
+        @include font-size(large);
+        @include font-type(light);
         margin: 0;
         text-transform: uppercase;
     }

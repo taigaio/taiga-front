@@ -26,10 +26,10 @@
             margin: 0;
         }
         h3 {
-            @extend %large;
+            @include font-size(large);
         }
         a {
-            @extend %xsmall;
+            @include font-size(x-small);
             display: block;
         }
     }
@@ -47,7 +47,7 @@
 
         }
         p {
-            @extend %xsmall;
+            @include font-size(x-small);
         }
     }
     .user-card {
@@ -67,7 +67,7 @@
         display: block;
     }
     .cancel {
-        @extend %small;
+        @include font-size(small);
         display: block;
         margin-top: .5rem;
         text-align: left;

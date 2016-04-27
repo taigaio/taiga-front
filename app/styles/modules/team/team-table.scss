@@ -14,7 +14,7 @@
         justify-content: flex-end;
     }
     .attribute {
-        @extend %light;
+        @include font-type(light);
         flex: 1;
         position: relative;
         text-align: center;
@@ -23,8 +23,8 @@
             fill: $gray;
         }
         .points {
-            @extend %larger;
-            @extend %light;
+            @include font-size(larger);
+            @include font-type(light);
             color: $grayer;
         }
         .top {
@@ -38,7 +38,7 @@
         }
     }
     .leave-project {
-        @extend %small;
+        @include font-size(small);
         color: $red-light;
         .icon {
             @include svg-size(.8rem);
@@ -54,8 +54,8 @@
         }
     }
     .team-header {
-        @extend %title;
-        @extend %bold;
+        @include font-type(text);
+        @include font-type(bold);
         border-bottom: 0;
     }
     .hero {
@@ -91,10 +91,10 @@
             width: 100%;
         }
         .name {
-            @extend %bold;
+            @include font-type(bold);
         }
         .position {
-            @extend %light;
+            @include font-type(light);
             color: $gray-light;
         }
     }

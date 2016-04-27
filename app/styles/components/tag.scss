@@ -1,6 +1,6 @@
 .tag {
-    @extend %light;
-    @extend %small;
+    @include font-type(light);
+    @include font-size(small);
     background: $whitish; // Fallback
     border-radius: 0 5px 5px 0;
     color: $grayer;
@@ -56,7 +56,7 @@
         }
     }
     .tag {
-        @extend %small;
+        @include font-size(small);
         margin: 0 .5rem .5rem 0;
         padding: .5rem;
     }
@@ -80,7 +80,7 @@
         @include svg-size(.9rem);
     }
     .add-tag-text {
-        @extend %small;
+        @include font-size(small);
     }
     .remove-tag {
         display: inline-block;

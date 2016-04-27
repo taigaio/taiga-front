@@ -1,7 +1,6 @@
 .admin-menu {
     li {
-        @extend %large;
-        @extend %title;
+        @include font-type(text);
         border-bottom: 1px solid darken($whitish, 10%);
         text-transform: uppercase;
         &:last-child {

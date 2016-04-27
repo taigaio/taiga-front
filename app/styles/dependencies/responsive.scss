@@ -1,7 +1,3 @@
-// - Hey, there is a mixin here instead of in mixins.scss!!! Are you drunk or what?
-// - I know, I know, but look it closer, it makes sense
-// - Oh, I see. It's ok for this time...
-
 @mixin breakpoint($point) {
     @if $point == desktop {
         @media (min-width: 1200px) { @content ; }

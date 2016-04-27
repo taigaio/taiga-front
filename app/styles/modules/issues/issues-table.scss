@@ -21,8 +21,8 @@
         }
     }
     .title {
-        @extend %medium;
-        @extend %bold;
+        @include font-size(medium);
+        @include font-type(bold);
         border-bottom: 1px solid $gray-light;
         &:hover {
             background: transparent;
@@ -35,7 +35,7 @@
         }
     }
     .table-main {
-        @extend %small;
+        @include font-size(small);
         border-bottom: 1px solid darken($whitish, 4%);
     }
     .avatar {
@@ -161,11 +161,11 @@
         margin-bottom: 1rem;
     }
     .title {
-        @extend %large;
+        @include font-size(large);
         text-transform: uppercase;
     }
     p {
-        @extend %light;
+        @include font-type(light);
         margin: 0;
     }
 }

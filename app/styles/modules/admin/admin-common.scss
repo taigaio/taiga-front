@@ -9,7 +9,7 @@
         margin-bottom: 2rem;
     }
     .total {
-        @extend %large;
+        @include font-size(large);
         align-items: center;
         background-color: $whitish;
         color: $grayer;

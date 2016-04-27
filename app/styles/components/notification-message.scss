@@ -21,8 +21,8 @@
         margin: 0;
     }
     .warning {
-        @extend %large;
-        @extend %bold;
+        @include font-size(large);
+        @include font-type(bold);
         color: $white;
         line-height: 1.2;
     }
@@ -77,8 +77,8 @@
         margin-right: .5rem;
     }
     .warning {
-        @extend %xlarge;
-        @extend %bold;
+        @include font-size(xlarge);
+        @include font-type(bold);
         color: $white;
         line-height: 2.4rem;
     }
@@ -135,8 +135,8 @@
         transition: all .6s;
     }
     p {
-        @extend %light;
-        @extend %small;
+        @include font-type(light);
+        @include font-size(small);
         margin: 0;
     }
     .warning {

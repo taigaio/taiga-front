@@ -10,7 +10,7 @@ _:-ms-fullscreen,
 
 // External lybrary makes weird things. Please destroy
 .markItUpEditor {
-    @extend %small;
+    @include font-size(small);
     line-height: 1.5;
     font-family: monospace;
 }

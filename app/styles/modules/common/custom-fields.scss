@@ -1,7 +1,7 @@
 .duty-custom-fields {
     margin-bottom: 2rem;
     .custom-fields-header {
-        @extend %bold;
+        @include font-type(bold);
         align-content: space-between;
         align-items: center;
         background: $whitish;
@@ -55,15 +55,15 @@
             display: block;
         }
         .custom-field-description {
-            @extend %small;
-            @extend %light;
+            @include font-size(small);
+            @include font-type(light);
             color: lighten($gray, 20%);
             display: block;
             line-height: .9rem;
         }
     }
     .custom-field-value {
-        @extend %light;
+        @include font-type(light);
         align-items: flex-start;
         flex: 1;
         padding: 0 1rem 0 2rem;
