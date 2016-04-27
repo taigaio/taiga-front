@@ -41,13 +41,13 @@ describe('home', function() {
         });
 
         it('close create project lightbox', async function() {
-            $('div[tg-lb-create-project] .icon-close').click();
+            $('div[tg-lb-create-project] .close').click();
 
             return expect(await utils.lightbox.close('div[tg-lb-create-project]')).to.be.equal(true);
         });
     });
 
-    describe("project drag and drop", function() {
+    describe.skip("project drag and drop", function() {
         var draggedElementText;
 
         before(async function() {
@@ -65,13 +65,13 @@ describe('home', function() {
             await browser.waitForAngular();
         });
 
-        utils.common.browserSkip('firefox', 'projects list has the new order', async function() {
+        it('projects list has the new order', async function() {
             var firstElement = await $$('.list-itemtype-project h2 a').first().getText();
 
             expect(firstElement).to.be.equal(draggedElementText);
         });
 
-        utils.common.browserSkip('firefox', 'projects menu has the new order', async function() {
+        it('projects menu has the new order', async function() {
             var firstElementText = await $$('div[tg-dropdown-project-list] ul a').first().getInnerHtml();
 
             expect(firstElementText).to.be.equal(draggedElementText);

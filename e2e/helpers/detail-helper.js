@@ -350,9 +350,16 @@ helper.attachment = function() {
 
         deprecateLastAttachment: async function() {
             await browser.actions().mouseMove(el.$$('tg-attachment').last()).perform();
-            await el.$$('tg-attachment .attachment-settings .icon-edit').last().click();
+
+            let editEl = el.$$('tg-attachment').last().$('.attachment-settings .e2e-edit');
+            await browser
+                .actions()
+                .mouseMove(editEl)
+                .click()
+                .perform();
+
             await el.$$('tg-attachment .editable-attachment-deprecated input').last().click();
-            await el.$$('tg-attachment .attachment-settings').last().$$('.editable-settings').first().click();
+            await el.$$('tg-attachment .attachment-settings').last().$('.e2e-save').click();
             await browser.waitForAngular();
         },
 
@@ -455,7 +462,7 @@ helper.watchersLightbox = function() {
             return utils.lightbox.close(el);
         },
         close: function() {
-            el.$$('.icon-close').first().click();
+            el.$$('.close').first().click();
         },
         selectFirst: async function() {
             el.$$('div[data-user-id]').first().click();

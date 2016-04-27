@@ -450,7 +450,7 @@ class ProjectCustomAttributesController extends mixOf(taiga.Controller, taiga.Pa
     loadCustomAttributes: =>
         return @rs.customAttributes[@scope.type].list(@scope.projectId).then (customAttributes) =>
             @scope.customAttributes = customAttributes
-            @scope.maxOrder = _.maxBy(customAttributes, "order").order
+            @scope.maxOrder = _.maxBy(customAttributes, "order")?.order
             return customAttributes
 
     createCustomAttribute: (attrValues) =>

@@ -23,7 +23,7 @@ helper.getBoxUss = function(column) {
 };
 
 helper.editUs = function(column, us) {
-    helper.getColumns().get(column).$$('.icon-edit').get(us).click();
+    helper.getColumns().get(column).$$('.edit-us').get(us).click();
 };
 
 helper.openBulkUsLb = function(column) {

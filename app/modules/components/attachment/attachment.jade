@@ -46,7 +46,7 @@ form.single-attachment(
 
     .attachment-settings(ng-if="vm.attachment.get('editable')")
         div(tg-loading="vm.attachment.get('loading')")
-            a.editable-settings(
+            a.editable-settings.e2e-save(
                 href=""
                 title="{{'COMMON.SAVE' | translate}}"
                 ng-click="vm.save()"
@@ -54,7 +54,7 @@ form.single-attachment(
                 tg-svg(svg-icon="icon-save")
 
         div
-            a.editable-settings(
+            a.editable-settings.e2e-cancel(
                 href=""
                 title="{{'COMMON.CANCEL' | translate}}"
                 ng-click="vm.editMode(false)"
@@ -65,13 +65,13 @@ form.single-attachment(
         ng-if="!vm.attachment.get('editable')"
         tg-check-permission="modify_{{vm.type}}"
     )
-        a.settings(
+        a.settings.e2e-edit(
             href=""
             title="{{'COMMON.EDIT' | translate}}"
             ng-click="vm.editMode(true)"
         )
             tg-svg.drag(svg-icon="icon-edit")
-        a.settings(
+        a.settings.e2e-delete(
             href=""
             title="{{'COMMON.DELETE' | translate}}"
             ng-click="vm.delete()"

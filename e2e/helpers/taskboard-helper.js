@@ -19,13 +19,13 @@ helper.getBoxTasks = function(row, column) {
 helper.openNewTaskLb = function(row) {
     let us = helper.usertories().get(row);
 
-    us.$('.icon-add').click();
+    us.$('.add-action').click();
 };
 
 helper.openBulkTaskLb = function(row) {
     let us = helper.usertories().get(row);
 
-    us.$('.icon-bulk').click();
+    us.$('.bulk-action').click();
 };
 
 helper.foldRow = function(row) {
@@ -53,11 +53,11 @@ helper.unFoldColumn = function(row) {
 };
 
 helper.editTask = function(row, column, task) {
-    helper.getBoxTasks(row, column).get(task).$('.icon-edit').click();
+    helper.getBoxTasks(row, column).get(task).$('.edit-task').click();
 };
 
 helper.toggleGraph = function() {
-    $('.icon-graph').click();
+    $('.toggle-analytics-visibility').click();
 };
 
 helper.getCreateTask = function() {

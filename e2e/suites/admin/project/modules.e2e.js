@@ -18,14 +18,19 @@ describe('modules', function() {
         let functionalities = $$('.module');
         let functionality = functionalities.get(0);
 
-        let input = functionality.$('.check input');
+        let active = await utils.common.hasClass(functionality, 'active');
 
-        browser.actions()
-            .mouseMove(input)
-            .click()
-            .perform();
+        if(!active) {
+            let input = functionality.$('.check input');
 
-        await utils.notifications.success.open();
+            browser.actions()
+                .mouseMove(input)
+                .click()
+                .perform();
+
+            await utils.notifications.success.open();
+            await utils.notifications.success.close();
+        }
     });
 
     it('disable module', async function() {
@@ -42,7 +47,8 @@ describe('modules', function() {
 
         let active = await utils.common.hasClass(functionality, 'active');
 
-        expect(utils.notifications.success.open()).to.be.eventually.equal(true);
+        await utils.notifications.success.open();
+
         expect(active).to.be.false;
 
         await utils.notifications.success.close();
@@ -89,7 +95,7 @@ describe('modules', function() {
 
         salt.sendKeys('abccceee');
 
-        functionality.$('.icon-save').click();
+        functionality.$('.save').click();
 
         let notificationSuccess = await utils.notifications.success.open();
 

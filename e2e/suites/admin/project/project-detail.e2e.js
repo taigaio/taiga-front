@@ -84,7 +84,11 @@ describe('project detail', function() {
 
         await utils.lightbox.open(adminHelper.requestOwnershipLb());
 
-        expect(utils.notifications.success.open()).to.be.eventually.true;
+        adminHelper.acceptRequestOwnership();
+
+        let notificationSuccess = await utils.notifications.success.open();
+
+        expect(notificationSuccess).to.be.true;
     });
 
     it('change ownership', async function() {

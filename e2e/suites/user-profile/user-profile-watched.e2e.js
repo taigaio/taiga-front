@@ -1,4 +1,5 @@
 var utils = require('../../utils');
+var helper = require('../../helpers/user-profile-helper');
 
 var chai = require('chai');
 var chaiAsPromised = require('chai-as-promised');
@@ -15,7 +16,7 @@ describe('user profile - watched', function() {
 
             $$('.tab').get(3).click();
 
-            browser.waitForAngular();
+            await helper.waitLoader();
 
             utils.common.takeScreenshot('user-profile', 'current-user-watched');
         });

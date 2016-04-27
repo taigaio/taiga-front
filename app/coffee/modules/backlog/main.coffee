@@ -92,14 +92,9 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         # On Error
         promise.then null, @.onInitialDataError.bind(@)
 
-    resetBacklogPagination: ->
-        @.page = 1
-        @scope.userstories = []
-
     initializeEventHandlers: ->
         @scope.$on "usform:bulk:success", =>
-            @.resetBacklogPagination()
-            @.loadUserstories()
+            @.loadUserstories(true)
             @.loadProjectStats()
             @analytics.trackEvent("userstory", "create", "bulk create userstory on backlog", 1)
 
@@ -109,8 +104,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             @analytics.trackEvent("sprint", "create", "create sprint on backlog", 1)
 
         @scope.$on "usform:new:success", =>
-            @.resetBacklogPagination()
-            @.loadUserstories()
+            @.loadUserstories(true)
             @.loadProjectStats()
 
             @rootscope.$broadcast("filters:update")
@@ -120,10 +114,9 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             @.loadProjectStats()
 
         @scope.$on "sprintform:remove:success", (event, sprint) =>
-            @.resetBacklogPagination()
             @.loadSprints()
             @.loadProjectStats()
-            @.loadUserstories()
+            @.loadUserstories(true)
 
             if sprint.closed
                 @.loadClosedSprints()
@@ -264,11 +257,14 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
         @.loadUserstories()
 
-    loadUserstories: ->
+    loadUserstories: (resetPagination = false)->
         @.loadingUserstories = true
         @.disablePagination = true
         @scope.httpParams = @.getUrlFilters()
         @rs.userstories.storeQueryParams(@scope.projectId, @scope.httpParams)
+
+        if resetPagination
+            @.page = 1
 
         @scope.httpParams.page = @.page
 
@@ -277,6 +273,9 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         return promise.then (result) =>
             userstories = result[0]
             header = result[1]
+
+            if resetPagination
+                @scope.userstories = []
 
             # NOTE: Fix order of USs because the filter orderBy does not work propertly in the partials files
             @scope.userstories = @scope.userstories.concat(_.sortBy(userstories, "backlog_order"))
@@ -607,7 +606,11 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             promise = @.repo.remove(us)
             promise.then =>
                 askResponse.finish()
-                @.loadBacklog()
+
+                @q.all([
+                    @.loadProjectStats(),
+                    @.loadSprints()
+                ])
             promise.then null, =>
                 askResponse.finish(false)
                 @confirm.notify("error")
