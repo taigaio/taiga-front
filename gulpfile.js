@@ -220,6 +220,7 @@ gulp.task("copy-index", function() {
 
 gulp.task("template-cache", function() {
     return gulp.src(paths.htmlPartials)
+        .pipe(gulpif(isDeploy, replace(/e2e-([a-z\-]+)/g, '')))
         .pipe(templateCache({standalone: true}))
         .pipe(gulpif(isDeploy, uglify()))
         .pipe(gulp.dest(paths.distVersion + "js/"))

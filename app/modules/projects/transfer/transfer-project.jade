@@ -52,7 +52,7 @@
             )
 
         .transfer-project-options
-            a.button.button-gray(
+            a.button.button-gray.e2e-transfer-reject(
                 ng-click="vm.transferReject(vm.token, vm.reason, $event)"
                 href="#"
                 title="{{'ADMIN.PROJECT_TRANSFER.REJECT' | translate}}"
@@ -60,7 +60,7 @@
                 tg-loading="vm.loadingReject"
             )
 
-            a.button.button-green(
+            a.button.button-green.e2e-transfer-accept(
                 ng-click="vm.transferAccept(vm.token, vm.reason, $event)"
                 href="#"
                 title="{{'ADMIN.PROJECT_TRANSFER.ACCEPT' | translate}}"
