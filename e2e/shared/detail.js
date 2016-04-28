@@ -55,7 +55,7 @@ shared.descriptionTesting = async function() {
     descriptionHelper.save();
 
     let newDescription = await descriptionHelper.getInnerHtml();
-    let notificationOpen = notifications.success.open();
+    let notificationOpen = await notifications.success.open();
 
     expect(notificationOpen).to.be.equal.true;
     expect(newDescription).to.be.not.equal(description);
@@ -166,15 +166,15 @@ shared.assignedToTesting = function() {
 
 shared.historyTesting = async function() {
     let historyHelper = detailHelper.history();
-
     //Adding a comment
     historyHelper.selectCommentsTab();
+
     let commentsCounter = await historyHelper.countComments();
     let date = Date.now();
     await historyHelper.addComment("New comment " + date);
     let newCommentsCounter = await historyHelper.countComments();
-    expect(newCommentsCounter).to.be.equal(commentsCounter+1);
 
+    expect(newCommentsCounter).to.be.equal(commentsCounter+1);
 
     //Deleting last comment
     let deletedCommentsCounter = await historyHelper.countDeletedComments();
@@ -202,9 +202,9 @@ shared.blockTesting = async function() {
 
     blockHelper.block();
 
-    blockLightboxHelper.waitOpen();
-    blockLightboxHelper.fill('This is a testing block reason');
-    blockLightboxHelper.submit();
+    await blockLightboxHelper.waitOpen();
+    await blockLightboxHelper.fill('This is a testing block reason');
+    await blockLightboxHelper.submit();
 
     await blockLightboxHelper.waitClose();
 
@@ -242,11 +242,10 @@ shared.attachmentTesting = async function() {
     expect(newAttachmentsLength).to.be.equal(attachmentsLength + 1);
 
     //Drag'n drop
-    if (['firefox', 'internet explorer'].indexOf(browser.browserName) === -1) {
-        await attachmentHelper.dragLastAttchmentToFirstPosition();
-        name = await attachmentHelper.getFirstAttachmentName();
-        expect(name).to.be.equal('This is the testing name ' + date);
-    }
+    // await attachmentHelper.dragLastAttchmentToFirstPosition();
+    // name = await attachmentHelper.getFirstAttachmentName();
+    // expect(name).to.be.equal('This is the testing name ' + date);
+
     // Renaming
     await attachmentHelper.renameLastAttchment('This is the new testing name ' + date);
     name = await attachmentHelper.getLastAttachmentName();
@@ -361,7 +360,6 @@ shared.watchersTesting = function() {
            .perform();
 
         let selected = watchersLightboxHelper.userList().get(1);
-
         let isSelected = await commonUtil.hasClass(selected, 'selected');
 
         expect(isSelected).to.be.true;
@@ -455,7 +453,7 @@ shared.customFields = function(typeIndex) {
 
         let textField = customFields.get(count - 1);
 
-        textField.$('.icon-edit').click();
+        textField.$('.js-edit-description').click();
         textField.$('textarea').sendKeys('test text2 edit');
         textField.$('.js-save-description').click();
 

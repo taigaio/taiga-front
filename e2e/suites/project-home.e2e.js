@@ -7,16 +7,21 @@ chai.use(chaiAsPromised);
 var expect = chai.expect;
 
 describe('project home', function() {
-    beforeEach(async function() {
+    before(async function() {
         browser.get(browser.params.glob.host + 'project/project-1/');
         await utils.common.waitLoader();
 
         await utils.common.takeScreenshot("project", "home-like");
 
-    });
+        //reset
+        let link = $('tg-like-project-button a');
+        let likeActive = await utils.common.hasClass(link, 'active');
 
-    it('screenshot', async function() {
-        await utils.common.takeScreenshot("project", "home");
+        if (!likeActive) {
+            link.click();
+        }
+
+        await browser.waitForAngular();
     });
 
 /*
@@ -42,19 +47,6 @@ describe('project home', function() {
     });
 */
     it('unlike', async function() {
-        let reset = async function() {
-            //reset
-            let link = $('tg-like-project-button a');
-            let likeActive = await utils.common.hasClass(link, 'active');
-
-            if (!likeActive) {
-                link.click();
-            }
-        };
-
-        await reset();
-        await browser.waitForAngular();
-
         let link = $('tg-like-project-button a');
         let likesCounterOld = parseInt(await link.$('.track-button-counter').getText(), 10);
 

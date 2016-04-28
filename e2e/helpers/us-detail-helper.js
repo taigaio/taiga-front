@@ -58,7 +58,7 @@ helper.relatedTaskForm = async function(form, name, status, assigned_to) {
     await assignToLightbox.selectFirst();
     await assignToLightbox.waitClose();
 
-    let saveBtn = form.$('.icon-save');
+    let saveBtn = form.$('.save-task');
 
     await browser.actions()
         .mouseMove(saveBtn)
@@ -77,7 +77,7 @@ helper.createRelatedTasks = function(name, status, assigned_to) {
 helper.editRelatedTasks = function(taskIndex, name, status, assigned_to) {
     let task = helper.relatedTasks().get(taskIndex);
 
-    task.$('.icon-edit').click();
+    task.$('.edit-task').click();
 
     return helper.relatedTaskForm(task, status, assigned_to);
 };
@@ -91,7 +91,7 @@ helper.deleteRelatedTask = function(taskIndex, name, status, assigned_to) {
 
     browser
         .actions()
-        .mouseMove(task.$('.icon-trash'))
+        .mouseMove(task.$('.delete-task'))
         .click()
         .perform();
 

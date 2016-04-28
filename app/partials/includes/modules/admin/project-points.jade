@@ -46,7 +46,7 @@ section.project-values-table
                             input(name="value", type="text", placeholder="{{'COMMON.FIELDS.VALUE' | translate}}", ng-model="value.value", data-type="number")
 
                         div.project-values-settings
-                            a.save(href="", title="{{'COMMON.SAVE' | translate}}")
+                            a.save.e2e-save(href="", title="{{'COMMON.SAVE' | translate}}")
                                 tg-svg(svg-icon="icon-save")
 
                             a.cancel(href="", title="{{'COMMON.CANCEL' | translate}}")
@@ -73,7 +73,7 @@ section.project-values-table
                     )
 
                 div.project-values-settings
-                    a.add-new(href="", title="{{'COMMON.ADD' | translate}}")
+                    a.add-new.e2e-save(href="", title="{{'COMMON.ADD' | translate}}")
                         tg-svg(svg-icon="icon-save")
 
                     a.delete-new(href="", title="{{'COMMON.CANCEL' | translate}}")

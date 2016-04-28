@@ -85,7 +85,9 @@ describe('issues list', function() {
 
             await createIssueLightbox.waitClose();
 
-            expect(utils.notifications.success.open()).to.be.eventually.true;
+            let notificationSuccess = await utils.notifications.success.open();
+
+            expect(notificationSuccess).to.be.be.true;
 
             await utils.notifications.success.close();
         });

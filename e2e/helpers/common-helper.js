@@ -19,7 +19,7 @@ helper.assignToLightbox = function() {
             return utils.lightbox.close(el);
         },
         close: function() {
-            el.$$('.icon-close').first().click();
+            el.$$('.close').first().click();
         },
         selectFirst: function() {
             el.$$('div[data-user-id]').first().click();

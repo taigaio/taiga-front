@@ -265,8 +265,9 @@ EditableWikiContentDirective = ($window, $document, $repo, $confirm, $loading, $
                 currentLoading.finish()
 
         $el.on "click", "a", (event) ->
-            target = angular.element(event.target)
+            target = angular.element(event.currentTarget)
             href = target.attr('href')
+
             if href.indexOf("#") == 0
                 event.preventDefault()
                 $('body').scrollTop($(href).offset().top)

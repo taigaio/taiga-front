@@ -1,4 +1,5 @@
 var utils = require('../../utils');
+var helper = require('../../helpers/user-profile-helper');
 
 var chai = require('chai');
 var chaiAsPromised = require('chai-as-promised');
@@ -15,7 +16,7 @@ describe('user profile - likes', function() {
 
             $$('.tab').get(1).click();
 
-            browser.waitForAngular();
+            await helper.waitLoader();
 
             utils.common.takeScreenshot('user-profile', 'current-user-likes');
         });
@@ -27,10 +28,13 @@ describe('user profile - likes', function() {
         });
 
         it('likes tab - filter by query', async function() {
+            let projectNames = await helper.getProjectsNames();
+            let projectName = projectNames[0].substr(projectNames[0].length - 1);
+
             let allItems = await $$('div[infinite-scroll] > div').count();
 
             let htmlChanges = await utils.common.outerHtmlChanges('div[infinite-scroll]');
-            $('div.searchbox > input').sendKeys('proj 2');
+            $('div.searchbox > input').sendKeys(projectName);
             await htmlChanges();
 
             let filteredItems = await $$('div[infinite-scroll] > div').count();

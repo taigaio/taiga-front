@@ -11,7 +11,7 @@ notifications.success.open = function() {
     return browser
         .wait(function() {
             return common.hasClass(el, 'active');
-        }, 4000)
+        }, 6000)
         .then(function(active) {
             return browser.sleep(transition).then(function() {
                 return active;
@@ -25,7 +25,7 @@ notifications.success.close = function() {
     return browser
         .wait(function() {
             return common.hasClass(el, 'inactive');
-        }, 4000)
+        }, 6000)
         .then(function(active) {
             return browser.sleep(transition).then(function() {
                 return active;
@@ -40,7 +40,7 @@ notifications.error.open = function() {
     return browser
         .wait(function() {
             return common.hasClass(el, 'active');
-        }, 4000)
+        }, 6000)
         .then(function(active) {
             return browser.sleep(transition).then(function() {
                 return active;
@@ -54,7 +54,7 @@ notifications.error.close = function() {
     return browser
         .wait(function() {
             return common.hasClass(el, 'inactive');
-        }, 4000)
+        }, 6000)
         .then(function(active) {
             return browser.sleep(transition).then(function() {
                 return active;
@@ -70,7 +70,7 @@ notifications.errorLight.open = function() {
     return browser
         .wait(function() {
             return common.hasClass(el, 'active');
-        }, 4000)
+        }, 6000)
         .then(function(active) {
             return browser.sleep(transition).then(function() {
                 return active;
@@ -84,7 +84,7 @@ notifications.errorLight.close = function() {
     return browser
         .wait(function() {
             return common.hasClass(el, 'inactive');
-        }, 4000)
+        }, 6000)
         .then(function(active) {
             return browser.sleep(transition).then(function() {
                 return active;

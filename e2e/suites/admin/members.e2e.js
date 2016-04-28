@@ -83,13 +83,13 @@ describe('admin - members', function() {
         adminMembershipsHelper.delete(member);
 
         utils.common.takeScreenshot('memberships', 'delete-member-lb');
-
         await utils.lightbox.confirm.ok();
 
         let membersCount = await adminMembershipsHelper.getMembers().count();
 
         expect(membersCount).to.be.equal(initMembersCount - 1);
 
+        await utils.notifications.success.open();
         await utils.notifications.success.close();
     });
 

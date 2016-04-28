@@ -22,41 +22,37 @@ describe('custom-fields', function() {
             it('create', async function() {
                 let oldCountCustomFields = await customFieldsHelper.getCustomFiledsByType(typeIndex).count();
 
-                customFieldsHelper.create(typeIndex, 'test1-text', 'desc1', 1);
+                await customFieldsHelper.create(typeIndex, 'test1-text', 'desc1', 1);
 
                 // debounce :(
                 await utils.notifications.success.open();
                 await browser.sleep(2000);
 
-                customFieldsHelper.create(typeIndex, 'test1-multi', 'desc1', 3);
+                await customFieldsHelper.create(typeIndex, 'test1-multi', 'desc1', 3);
 
                 // debounce :(
                 await utils.notifications.success.open();
                 await browser.sleep(2000);
 
-                // customFieldsHelper.create(typeIndex, 'test1-date', 'desc1', 4);
+                let countCustomFields = await customFieldsHelper.getCustomFiledsByType(typeIndex).count();
 
-                // // debounce :(
-                // await utils.notifications.success.open();
-                // await browser.sleep(2000);
-
-                let countCustomFields = customFieldsHelper.getCustomFiledsByType(typeIndex).count();
-
-                expect(countCustomFields).to.be.eventually.equal(oldCountCustomFields + 2);
+                expect(countCustomFields).to.be.equal(oldCountCustomFields + 2);
             });
 
             it('edit', async function() {
-                customFieldsHelper.edit(typeIndex, 0, 'edit', 'desc2', 2);
+                await customFieldsHelper.edit(typeIndex, 0, 'edit', 'desc2', 1);
 
-                expect(utils.notifications.success.open()).to.be.eventually.true;
+                let notification = await utils.notifications.success.open();
+
+                expect(notification).to.be.true;
             });
 
-            utils.common.browserSkip(['firefox', 'internet explorer'], 'drag', async function() {
+            it.skip('drag', async function() {
                 let nameOld = await customFieldsHelper.getName(typeIndex, 0);
 
                 await customFieldsHelper.drag(typeIndex, 0, 1);
 
-                let nameNew = customFieldsHelper.getName(typeIndex, 1);
+                let nameNew = awcustomFieldsHelper.getName(typeIndex, 1);
 
                 expect(nameNew).to.be.eventually.equal(nameOld);
             });
@@ -80,27 +76,21 @@ describe('custom-fields', function() {
             it('create', async function() {
                 let oldCountCustomFields = await customFieldsHelper.getCustomFiledsByType(typeIndex).count();
 
-                customFieldsHelper.create(typeIndex, 'test1-text', 'desc1', 1);
+                await customFieldsHelper.create(typeIndex, 'test1-text', 'desc1', 1);
 
                 // debounce :(
                 await utils.notifications.success.open();
                 await browser.sleep(2500);
 
-                customFieldsHelper.create(typeIndex, 'test1-multi', 'desc1', 3);
+                await customFieldsHelper.create(typeIndex, 'test1-multi', 'desc1', 3);
 
                 // debounce :(
                 await utils.notifications.success.open();
                 await browser.sleep(2500);
 
-                // customFieldsHelper.create(typeIndex, 'test1-date', 'desc1', 4);
+                let countCustomFields = await customFieldsHelper.getCustomFiledsByType(typeIndex).count();
 
-                // // debounce :(
-                // await utils.notifications.success.open();
-                // await browser.sleep(2000);
-
-                let countCustomFields = customFieldsHelper.getCustomFiledsByType(typeIndex).count();
-
-                expect(countCustomFields).to.be.eventually.equal(oldCountCustomFields + 2);
+                expect(countCustomFields).to.be.equal(oldCountCustomFields + 2);
             });
 
             it('edit', async function() {
@@ -109,7 +99,7 @@ describe('custom-fields', function() {
                 expect(utils.notifications.success.open()).to.be.eventually.true;
             });
 
-            utils.common.browserSkip(['firefox', 'internet explorer'], 'drag', async function() {
+            it.skip('drag', async function() {
                 let nameOld = await customFieldsHelper.getName(typeIndex, 0);
 
                 await customFieldsHelper.drag(typeIndex, 0, 1);
@@ -138,27 +128,21 @@ describe('custom-fields', function() {
             it('create', async function() {
                 let oldCountCustomFields = await customFieldsHelper.getCustomFiledsByType(typeIndex).count();
 
-                customFieldsHelper.create(typeIndex, 'test1-text', 'desc1', 1);
+                await customFieldsHelper.create(typeIndex, 'test1-text', 'desc1', 1);
 
                 // debounce :(
                 await utils.notifications.success.open();
                 await browser.sleep(2000);
 
-                customFieldsHelper.create(typeIndex, 'test1-multi', 'desc1', 3);
+                await customFieldsHelper.create(typeIndex, 'test1-multi', 'desc1', 3);
 
                 // debounce :(
                 await utils.notifications.success.open();
                 await browser.sleep(2000);
 
-                // customFieldsHelper.create(typeIndex, 'test1-date', 'desc1', 4);
+                let countCustomFields = await customFieldsHelper.getCustomFiledsByType(typeIndex).count();
 
-                // // debounce :(
-                // await utils.notifications.success.open();
-                // await browser.sleep(2000);
-
-                let countCustomFields = customFieldsHelper.getCustomFiledsByType(typeIndex).count();
-
-                expect(countCustomFields).to.be.eventually.equal(oldCountCustomFields + 2);
+                expect(countCustomFields).to.be.equal(oldCountCustomFields + 2);
             });
 
             it('edit', async function() {
@@ -167,7 +151,7 @@ describe('custom-fields', function() {
                 expect(utils.notifications.success.open()).to.be.eventually.true;
             });
 
-            utils.common.browserSkip(['firefox', 'internet explorer'], 'drag', async function() {
+            it.skip('drag', async function() {
                 let nameOld = await customFieldsHelper.getName(typeIndex, 0);
 
                 await customFieldsHelper.drag(typeIndex, 0, 1);

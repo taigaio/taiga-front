@@ -27,7 +27,7 @@ div.row.us-item-row(
                 span(tg-bo-ref="us.ref")
                 span(ng-bind="us.subject")
             div.us-settings
-                a.edit-story(
+                a.e2e-edit.edit-story(
                     href=""
                     tg-check-permission="modify_us"
                     ng-click="ctrl.editUserStory(us.project, us.ref, $event)"
@@ -35,7 +35,7 @@ div.row.us-item-row(
                 )
                     tg-svg(svg-icon="icon-edit")
 
-                a.icon-delete(
+                a.e2e-delete(
                     href=""
                     tg-check-permission="delete_us"
                     ng-click="ctrl.deleteUserStory(us)"
