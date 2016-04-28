@@ -1,7 +1,9 @@
 doctype html
 
-div.wrapper(ng-controller="ProjectProfileController as ctrl",
-            ng-init="section='admin'; sectionName='ADMIN.PROJECT_EXPORT.TITLE'")
+div.wrapper(
+    ng-controller="ProjectProfileController as ctrl"
+    ng-init="section='admin'; sectionName='ADMIN.PROJECT_EXPORT.TITLE'"
+)
     tg-project-menu
 
     sidebar.menu-secondary.sidebar.settings-nav(tg-admin-navigation="project-profile")
@@ -16,7 +18,10 @@ div.wrapper(ng-controller="ProjectProfileController as ctrl",
             p.admin-subtitle(translate="ADMIN.PROJECT_EXPORT.SUBTITLE")
 
         div.admin-project-export-buttons
-            a.button-green.button-export(href="", title="{{ 'ADMIN.PROJECT_EXPORT.EXPORT_BUTTON_TITLE' | translate }}")
+            a.button-green.button-export(
+                href=""
+                title="{{ 'ADMIN.PROJECT_EXPORT.EXPORT_BUTTON_TITLE' | translate }}"
+            )
                 span(translate="ADMIN.PROJECT_EXPORT.EXPORT_BUTTON")
 
         div.admin-project-export-result.hidden
@@ -25,6 +30,9 @@ div.wrapper(ng-controller="ProjectProfileController as ctrl",
             h3.result-title
             p.result-message
 
-        a.help-button(href="https://taiga.io/support/import-export-projects/", target="_blank")
+        a.help-button(
+            href="https://tree.taiga.io/support/admin/import-export-projects/"
+            target="_blank"
+        )
             tg-svg(svg-icon="icon-question")
             span(translate="ADMIN.HELP")
