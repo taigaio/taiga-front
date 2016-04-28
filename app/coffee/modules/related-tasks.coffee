@@ -117,16 +117,14 @@ module.directive("tgRelatedTaskRow", ["$tgRepo", "$compile", "$tgConfirm", "$roo
                                       "$tgTemplate", "$translate", RelatedTaskRowDirective])
 
 
-RelatedTaskCreateFormDirective = ($repo, $compile, $confirm, $tgmodel, $loading, $analytics, $template) ->
-    template = $template.get("task/related-task-create-form.html", true)
-
+RelatedTaskCreateFormDirective = ($repo, $compile, $confirm, $tgmodel, $loading, $analytics) ->
     newTask = {
         subject: ""
         assigned_to: null
     }
 
     link = ($scope, $el, $attrs) ->
-        createTask = debounce 2000, (task) ->
+        createTask = (task) ->
             task.subject = $el.find('input').val()
             task.assigned_to = $scope.newTask.assigned_to
             task.status = $scope.newTask.status
@@ -151,50 +149,54 @@ RelatedTaskCreateFormDirective = ($repo, $compile, $confirm, $tgmodel, $loading,
             return promise
 
         close = () ->
-            $el.removeClass('active')
             $el.off()
-            $el.html("")
 
-            $scope.newRelatedTaskFormOpen = false
+            $scope.openNewRelatedTask = false
+
+        reset = () ->
+            newTask = {
+                subject: ""
+                assigned_to: null
+            }
+
+            newTask["status"] = $scope.project.default_task_status
+            newTask["project"] = $scope.project.id
+            newTask["user_story"] = $scope.us.id
+
+            $scope.newTask = $tgmodel.make_model("tasks", newTask)
 
         render = ->
-            $scope.newRelatedTaskFormOpen = true
-
-            $el.html($compile(template())($scope))
-            $el.find('input').focus().select()
-            $el.addClass('active')
+            $scope.openNewRelatedTask = true
 
             $el.on "keyup", "input", (event)->
                 if event.keyCode == 13
                     createTask(newTask).then ->
-                        render()
+                        reset()
+                        $el.find('input').focus()
+
                 else if event.keyCode == 27
                     $scope.$apply () -> close()
 
-            $el.on "click", ".icon-close", (event)->
-                $scope.$apply () -> close()
+        $scope.save = () ->
+            createTask(newTask).then ->
+                close()
 
-            $el.on "click", ".save-task", (event)->
-                createTask(newTask).then ->
-                    close()
-
-        taiga.bindOnce $scope, "us", (val) ->
-            newTask["status"] = $scope.project.default_task_status
-            newTask["project"] = $scope.project.id
-            newTask["user_story"] = $scope.us.id
-            $scope.newTask = $tgmodel.make_model("tasks", newTask)
-            $el.html("")
+        taiga.bindOnce $scope, "us", reset
 
         $scope.$on "related-tasks:show-form", ->
-            render()
+            $scope.$apply(render)
 
         $scope.$on "$destroy", ->
             $el.off()
 
-    return {link: link}
+    return {
+        scope: true,
+        link: link,
+        templateUrl: 'task/related-task-create-form.html'
+    }
 
 module.directive("tgRelatedTaskCreateForm", ["$tgRepo", "$compile", "$tgConfirm", "$tgModel", "$tgLoading",
-                                             "$tgAnalytics", "$tgTemplate", RelatedTaskCreateFormDirective])
+                                             "$tgAnalytics", RelatedTaskCreateFormDirective])
 
 
 RelatedTaskCreateButtonDirective = ($repo, $compile, $confirm, $tgmodel, $template) ->
@@ -287,6 +289,10 @@ RelatedTaskAssignedToInlineEditionDirective = ($repo, $rootscope, $translate) ->
         task = $scope.$eval($attrs.tgRelatedTaskAssignedToInlineEdition)
         notAutoSave = $scope.$eval($attrs.notAutoSave)
         autoSave = !notAutoSave
+
+        $scope.$watch $attrs.tgRelatedTaskAssignedToInlineEdition, () ->
+            task = $scope.$eval($attrs.tgRelatedTaskAssignedToInlineEdition)
+            updateRelatedTask(task)
 
         updateRelatedTask(task)
 

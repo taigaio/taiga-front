@@ -158,6 +158,10 @@ RelatedTaskStatusDirective = ($repo, $template) ->
                         $scope.$eval($attrs.onUpdate)
                         $scope.$emit("related-tasks:status-changed")
 
+        $scope.$watch $attrs.tgRelatedTaskStatus, () ->
+            task = $scope.$eval($attrs.tgRelatedTaskStatus)
+            updateTaskStatus($el, task, $scope.taskStatusById)
+
         taiga.bindOnce $scope, "project", (project) ->
             $el.append(selectionTemplate({ 'statuses':  project.task_statuses }))
             updateTaskStatus($el, task, $scope.taskStatusById)

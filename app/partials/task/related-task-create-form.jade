@@ -1,15 +1,16 @@
-.task-name
-    input(type='text', placeholder="{{'TASK.PLACEHOLDER_SUBJECT' | translate}}")
-.task-settings
-    a.save-task(title="{{'COMMON.SAVE' | translate}}")
-        tg-svg(svg-icon="icon-save")
+.row.single-related-task.related-task-create-form.active(ng-if="openNewRelatedTask")
+    .task-name
+        input(type='text', autofocus, placeholder="{{'TASK.PLACEHOLDER_SUBJECT' | translate}}")
+    .task-settings
+        a.save-task(ng-click="save()" title="{{'COMMON.SAVE' | translate}}")
+            tg-svg(svg-icon="icon-save")
 
-.status(tg-related-task-status='newTask', ng-model='newTask', not-auto-save='true')
-  a.task-status(href='', title="{{'TASK.TITLE_SELECT_STATUS' | translate}}")
-    span.task-status-bind
-    tg-svg(svg-icon="icon-arrow-down")
+    .status(tg-related-task-status='newTask', ng-model='newTask', not-auto-save='true')
+         a.task-status(href='', title="{{'TASK.TITLE_SELECT_STATUS' | translate}}")
+            span.task-status-bind
+            tg-svg(svg-icon="icon-arrow-down")
 
-.assigned-to(tg-related-task-assigned-to-inline-edition='newTask', not-auto-save='true')
-  .task-assignedto(title="{{'COMMON.FIELDS.ASSIGNED_TO' | translate}}")
-    figure.avatar
-    tg-svg(svg-icon="icon-arrow-down")
+    .assigned-to(tg-related-task-assigned-to-inline-edition='newTask', not-auto-save='true')
+        .task-assignedto(title="{{'COMMON.FIELDS.ASSIGNED_TO' | translate}}")
+            figure.avatar
+            tg-svg(svg-icon="icon-arrow-down")
