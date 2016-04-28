@@ -1,13 +1,12 @@
 # Changelog #
 
 
-## 2.1.0 ??? (unreleased)
+## 2.1.0 Ursus Americanus (2016-05-03)
 
 ### Features
-- ...
+- Add sprint title on search results for user stories (thanks to [@everblut](https://github.com/everblut))
 
 ### Misc
-- Add sprint title on search results for user stories (thanks to [@everblut](https://github.com/everblut))
 - Lots of small and not so small bugfixes.
 
 
