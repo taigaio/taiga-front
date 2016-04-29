@@ -129,8 +129,7 @@ div.wrapper(
                                 ng-model="project.is_private"
                                 ng-value="false"
                             )
-                            label.trans-button(for="private-project")
-                                {{ 'ADMIN.PROJECT_PROFILE.PUBLIC_PROJECT' | translate }}
+                            label.trans-button(for="private-project") {{ 'ADMIN.PROJECT_PROFILE.PUBLIC_PROJECT' | translate }}
 
                         div.privacy-option
                             input.privacy-project(
@@ -141,8 +140,7 @@ div.wrapper(
                                 ng-model="project.is_private"
                                 ng-value="true"
                             )
-                            label.trans-button(for="public-project")
-                                {{'ADMIN.PROJECT_PROFILE.PRIVATE_PROJECT' | translate }}
+                            label.trans-button(for="public-project") {{'ADMIN.PROJECT_PROFILE.PRIVATE_PROJECT' | translate }}
 
                     a.private-or-public(
                         href="https://tree.taiga.io/support/frequently-asked-questions/whats-the-difference-between-public-and-private-projects/"
