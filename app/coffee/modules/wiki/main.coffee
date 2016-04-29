@@ -117,6 +117,13 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
     loadWikiLinks: ->
         return @rs.wiki.listLinks(@scope.projectId).then (wikiLinks) =>
             @scope.wikiLinks = wikiLinks
+
+            for link in @scope.wikiLinks
+                link.url = @navUrls.resolve("project-wiki-page", {
+                    project: @scope.projectSlug
+                    slug: link.href
+                })
+
             selectedWikiLink = _.find(wikiLinks, {href: @scope.wikiSlug})
             @scope.wikiTitle = selectedWikiLink.title if selectedWikiLink?
 
@@ -258,8 +265,9 @@ EditableWikiContentDirective = ($window, $document, $repo, $confirm, $loading, $
                 currentLoading.finish()
 
         $el.on "click", "a", (event) ->
-            target = angular.element(event.target)
+            target = angular.element(event.currentTarget)
             href = target.attr('href')
+
             if href.indexOf("#") == 0
                 event.preventDefault()
                 $('body').scrollTop($(href).offset().top)

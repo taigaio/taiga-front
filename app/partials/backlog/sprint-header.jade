@@ -1,12 +1,18 @@
 .sprint-name
     a.compact-sprint(href="", title="{{'BACKLOG.COMPACT_SPRINT' | translate}}")
-        svg.icon.icon-arrow-right
-            use(xlink:href="#icon-arrow-right")
-    a(ng-if="::isVisible", href="{{::taskboardUrl}}", title="{{'BACKLOG.GO_TO_TASKBOARD' | translate}}")
+        tg-svg(svg-icon="icon-arrow-right")
+    a(
+        ng-if="::isVisible"
+        href="{{::taskboardUrl}}"
+        title="{{'BACKLOG.GO_TO_TASKBOARD' | translate}}"
+    )
         span {{::name}}
-
-    svg.icon.icon-edit.edit-sprint(ng-if="::isEditable", href="", title="{{'BACKLOG.EDIT_SPRINT' | translate}}")
-        use(xlink:href="#icon-edit")
+    a.edit-sprint(
+        ng-if="::isEditable"
+        href=""
+        title="{{'BACKLOG.EDIT_SPRINT' | translate}}"
+    )
+        tg-svg(svg-icon="icon-edit")
 
 .sprint-summary
     .sprint-date {{::estimatedDateRange}}

@@ -1,9 +1,4 @@
-a.close(
-    href=""
-    title="{{'COMMON.CLOSE' | translate}}"
-)
-    svg.icon.icon-close
-        use(xlink:href="#icon-close")
+tg-lightbox-close
 form
     h2.title(translate="LIGHTBOX.CREATE_EDIT_TASK.TITLE")
     fieldset
@@ -65,8 +60,7 @@ form
                 ng-value="true"
             )
             label.iocaine.trans-button(for="iocaine-task")
-                svg.icon.icon-iocaine(for="iocaine-task icon-iocaine")
-                    use(xlink:href="#icon-iocaine")
+                tg-svg(svg-icon="icon-iocaine")
                 span Iocaine
 
         fieldset.blocking-flag

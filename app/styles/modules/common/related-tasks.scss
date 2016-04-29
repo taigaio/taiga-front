@@ -11,8 +11,8 @@
     justify-content: space-between;
     min-height: 36px;
     .related-tasks-title {
-        @extend %medium;
-        @extend %bold;
+        @include font-size(medium);
+        @include font-type(bold);
         margin-left: 1rem;
     }
     .add-button {
@@ -37,33 +37,27 @@
 .related-tasks-body {
     width: 100%;
     .row {
-        @extend %small;
-        align-content: center;
+        @include font-size(small);
         align-items: center;
         border-bottom: 1px solid $whitish;
         display: flex;
-        justify-content: center;
         padding: .5rem 0 .5rem .5rem;
-        position: relative;
-        text-align: left;
-        width: 100%;
         &:hover {
-            background: transparent;
             .task-settings {
                 opacity: 1;
                 transition: all .2s ease-in;
             }
         }
-        &:last-child {
-            border: 0;
+        .task-name {
+            flex: 1;
         }
-        .tasks {
-            overflow: hidden;
-            width: 100%;
+        .task-settings {
+            flex-shrink: 0;
+            width: 60px;
         }
         .status {
             flex-shrink: 0;
-            width: 100px;
+            width: 125px;
         }
         .assigned-to {
             cursor: pointer;
@@ -77,65 +71,19 @@
             padding: .5rem 0 .5rem .5rem;
         }
     }
-    .status {
-        position: relative;
-        text-align: left;
-        &:hover {
-            .icon {
-                opacity: 1;
-                transition: opacity .2s ease-in;
-            }
-        }
-        .not-clickable {
-            &:hover {
-                color: $grayer;
-            }
-        }
-        .popover {
-            a {
-                text-align: left;
-                width: 100%;
-            }
-            .point {
-                text-align: center;
-            }
-        }
-        .icon {
-            @include svg-size(.8rem);
-            fill: $gray-light;
-            margin-left: .2rem;
-            opacity: 0;
-        }
-    }
-    .pop-status {
-        @include popover(200px, 0, 40%);
-        padding-right: 1rem;
-        &.fix {
-            bottom: 0;
-            top: auto;
-        }
+
+    .iocaine {
+        background: rgba($primary-light, .1);
+        border-left: 10px solid $primary-light;
     }
     .task-name {
         display: flex;
-        justify-content: space-between;
-        position: relative;
-        a {
-            display: inline-block;
-            max-width: 90%;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            svg,
-            span {
-                margin-right: .25rem;
-            }
-        }
-        svg,
+        margin-right: 1rem;
         span {
             margin-right: .25rem;
         }
         input {
-            @extend %medium;
+            @include font-size(medium);
             margin-right: 1rem;
             padding: 3px;
             width: 85%;
@@ -150,41 +98,55 @@
             }
         }
     }
-    .iocaine,
-    .iocaine:hover {
-        background: rgba($primary-light, .3);
-        .icon-iocaine {
-            @extend %large;
-            display: inline-block;
-            margin-right: .5rem;
-            vertical-align: top;
-        }
-        a,
-        svg {
-            color: $primary-dark;
-            fill: $primary-dark;
+    .status {
+        position: relative;
+        .not-clickable {
             &:hover {
-                color: currentColor;
-                fill: currentColor;
+                color: $grayer;
             }
+        }
+        .popover {
+            left: 0;
+            top: 1rem;
+            a {
+                display: block;
+            }
+        }
+        .icon {
+            @include svg-size(.8rem);
+            fill: currentColor;
+            margin-left: .2rem;
         }
     }
-    .blocked,
-    .blocked:hover {
-        background: $red-light;
-        color: $white;
+    .closed,
+    .closed:hover {
+        border-left: 10px solid $whitish;
+        color: $whitish;
         a,
         svg {
-            color: $white;
-            fill: $white;
-            &:hover {
-                color: currentColor;
-                fill: currentColor;
-            }
+            fill: $whitish;
+        }
+        .task-name a {
+            color: $whitish;
+            text-decoration: line-through;
+
         }
     }
     .icon-iocaine {
         display: none;
+    }
+    .pop-status {
+        @include popover(200px, 0, 40%);
+        padding-right: 1rem;
+        &.fix {
+            bottom: 0;
+            top: auto;
+        }
+    }
+    .blocked,
+    .blocked:hover {
+        background: rgba($red-light, .2);
+        border-left: 10px solid $red-light;
     }
     .task-settings {
         align-items: center;
@@ -193,20 +155,32 @@
         svg {
             @include svg-size(1.1rem);
             fill: $gray-light;
-            margin-right: 2rem;
+            margin-right: .5rem;
             transition: fill .2s ease-in;
             &:hover {
-                cursor: pointer;
-                fill: $grayer;
+                fill: $gray;
             }
-            &.icon-close:hover {
-                fill: $red-light;
+        }
+        a {
+            &:hover {
+                cursor: pointer;
             }
         }
     }
-    .assigned-to {
-        position: relative;
-        text-align: left;
+    .edit-task,
+    .save-task,
+    .delete-task {
+        &:hover {
+            .icon-edit {
+                fill: $grayer;
+            }
+            .icon-save {
+                fill: $primary;
+            }
+            .icon-trash {
+                fill: $red-light;
+            }
+        }
     }
     .task-assignedto {
         position: relative;

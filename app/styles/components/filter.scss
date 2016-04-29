@@ -1,11 +1,14 @@
 .single-filter {
-    @extend %large;
-    @extend %title;
+    @include font-size(large);
+    @include font-type(text);
     @include clearfix;
-    cursor: pointer;
-    display: block;
+    align-items: center;
+    background: darken($whitish, 10%); // Fallback
+    display: flex;
+    justify-content: space-between;
     margin-bottom: .5rem;
     opacity: .5;
+    padding-right: .5rem;
     position: relative;
     &:hover {
         color: $grayer;
@@ -24,9 +27,7 @@
     }
     .name {
         @include ellipsis(100%);
-        background: darken($whitish, 10%); // Fallback
         display: block;
-        padding-right: 2rem;
         width: 100%;
     }
     .number {
@@ -36,13 +37,15 @@
         top: 0;
     }
     .remove-filter {
-        fill: $gray;
-        position: absolute;
-        right: .5rem;
-        top: .75rem;
-        transition: fill .2s linear;
+        display: block;
+        svg {
+            fill: $gray;
+            transition: fill .2s linear;
+        }
         &:hover {
-            fill: $red;
+            svg {
+                fill: $red;
+            }
         }
     }
 }

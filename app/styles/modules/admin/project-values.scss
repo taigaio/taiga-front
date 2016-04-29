@@ -20,7 +20,7 @@
 }
 
 .project-values-header {
-    @extend %bold;
+    @include font-type(bold);
     border-bottom: 3px solid $whitish;
 }
 .project-values-body {
@@ -61,8 +61,11 @@
 }
 
 .project-values-settings {
-    svg {
+    a {
+        display: inline-block;
         margin-right: .5rem;
+    }
+    svg {
         &.icon-trash {
             fill: $red-light;
         }

@@ -173,14 +173,17 @@ class ConfirmService extends taiga.Service
             if icon.type == "img"
                 detailImage = $('<img>').addClass('lb-icon').attr('src', icon.name)
             else if icon.type == "svg"
+                detailImage = document.createElement("div")
+                taiga.addClass(detailImage, "icon")
+                taiga.addClass(detailImage, icon.name)
+                taiga.addClass(detailImage, "lb-icon")
+
+                svgContainer = document.createElementNS("http://www.w3.org/2000/svg", "svg")
+
                 useSVG = document.createElementNS('http://www.w3.org/2000/svg', 'use')
                 useSVG.setAttributeNS('http://www.w3.org/1999/xlink','href', '#' + icon.name)
 
-                detailImage = document.createElementNS("http://www.w3.org/2000/svg", "svg")
-                detailImage.classList.add("icon")
-                detailImage.classList.add("lb-icon")
-                detailImage.classList.add(icon.name)
-                detailImage.appendChild(useSVG)
+                detailImage.appendChild(svgContainer).appendChild(useSVG)
 
             if detailImage
                 el.find('section').prepend(detailImage)

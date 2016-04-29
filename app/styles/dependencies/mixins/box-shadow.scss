@@ -1,0 +1,3 @@
+@mixin box-shadow($h-shadow: 1px, $v-shadow: 1px, $blur: 15px, $spread: 6px, $color: rgba(0, 0, 0, .1)) {
+    box-shadow: $h-shadow $v-shadow $blur $spread $color;
+}

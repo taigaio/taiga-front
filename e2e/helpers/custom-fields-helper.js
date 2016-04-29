@@ -20,21 +20,24 @@ helper.create = async function(indexType, name, desc, option) {
         .perform();
 };
 
-helper.edit = function(indexType, indexCustomField, name, desc, option) {
+helper.edit = async function(indexType, indexCustomField, name, desc, option) {
     let form = helper.getCustomFiledsByType(indexType).get(indexCustomField);
 
-    browser.actions()
+    await browser.actions()
         .mouseMove(form.$('.js-edit-custom-field-button'))
         .click()
         .perform();
 
-    form.$('input[name="name"]').sendKeys(name);
-    form.$('input[name="description"]').sendKeys(desc);
-    form.$(`select option:nth-child(${option})`).click();
+    await form.$('input[name="name"]').sendKeys(name);
+    await form.$('input[name="description"]').sendKeys(desc);
+
+    await form.$('select').click();
+
+    await form.$(`select option:nth-child(${option})`).click();
 
     let saveButton = form.$('.js-update-custom-field-button');
 
-    browser.actions()
+    return browser.actions()
         .mouseMove(saveButton)
         .click()
         .perform();

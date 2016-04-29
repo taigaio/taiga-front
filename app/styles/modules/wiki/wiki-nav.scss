@@ -1,53 +1,58 @@
-.wiki-nav {
-    li {
-        @extend %large;
-        @extend %title;
-        border-bottom: 1px solid $gray-light;
-        text-transform: uppercase;
+.wiki-link {
+    @include font-type(text);
+    align-items: center;
+    border-bottom: 1px solid $gray-light;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0 1rem 1rem;
+    text-transform: uppercase;
+    &:hover {
+        .remove-wiki-page {
+            cursor: pointer;
+            opacity: 1;
+            transition: opacity .2s linear;
+            transition-delay: .2s;
+        }
+    }
+    .remove-wiki-page {
+        opacity: 0;
         &:hover {
             .icon {
-                opacity: 1;
-                transition: opacity .2s linear;
-                transition-delay: .2s;
-            }
-        }
-        a {
-            align-items: center;
-            display: flex;
-            justify-content: space-between;
-            padding: 1rem 0 1rem 1rem;
-            span {
-                cursor: pointer;
-            }
-        }
-        .icon {
-            fill: $gray-light;
-            opacity: 0;
-            &:hover {
-                cursor: pointer;
                 fill: $red;
             }
         }
-        input {
-            @extend %text;
-            @extend %medium;
-            background: $grayer;
-            color: $whitish;
-            @include placeholder {
-                color: $gray-light;
-            }
-        }
-        .loading {
-            margin: 0;
-            padding: 8px;
-            text-align: center;
-            width: 100%;
-        }
+    }
+    .link-title {
+        cursor: pointer;
+    }
+    .icon-trash {
+        fill: $gray-light;
+    }
+}
+
+.wiki-nav {
+    ul {
+        border-top: 1px solid $gray-light;
     }
     .add-button {
         color: $white;
         display: block;
         margin-bottom: .5rem;
         text-align: center;
+    }
+    input[type="text"] {
+        @include font-type(text);
+        @include font-size(medium);
+        background: $grayer;
+        color: $whitish;
+        @include placeholder {
+            color: $gray-light;
+        }
+    }
+    .loading {
+        margin: 0;
+        padding: 8px;
+        text-align: center;
+        width: 100%;
     }
 }

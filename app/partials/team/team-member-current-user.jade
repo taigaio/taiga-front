@@ -6,13 +6,19 @@
             .avatar-data
                 .name
                     span(tg-bo-bind="currentUser.full_name_display")
-                    svg.icon.icon-badge(ng-if="currentUser.id == owner")
-                        use(xlink:href="#icon-badge")
-                            title(translate="COMMON.OWNER")
+                    tg-svg(
+                        ng-if="currentUser.id == owner"
+                        svg-icon="icon-badge"
+                        svg-title-translate="COMMON.OWNER"
+                    )
 
                 .position(tg-bo-bind="currentUser.role_name")
 
-                div(tg-leave-project="", project="project", user="currentUser")
+                div(
+                    tg-leave-project=""
+                    project="project"
+                    user="currentUser"
+                )
 
     .member-stats(
         tg-team-member-stats

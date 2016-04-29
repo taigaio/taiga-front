@@ -4,8 +4,8 @@
         position: relative;
     }
     li {
-        @extend %large;
-        @extend %text;
+        @include font-size(large);
+        @include font-type(text);
         border-bottom: 1px solid $gray-light;
         text-transform: uppercase;
         &:last-child {

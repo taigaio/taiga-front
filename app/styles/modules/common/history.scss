@@ -31,36 +31,25 @@
         flex-grow: 1;
     }
     .activity-changed {
-        @extend %bold;
+        @include font-type(bold);
     }
     .activity-fromto {
-        @extend %small;
+        @include font-size(small);
         word-wrap: break-word;
     }
 }
 .history-tabs {
-    @extend %title;
+    @include font-type(light);
     border-bottom: 1px solid $whitish;
     border-top: 1px solid $whitish;
     margin-bottom: 0;
     li {
-        @extend %large;
-        display: inline-block;
-        &:first-child {
-            border-right: 1px solid $whitish;
-        }
-        &:last-child {
-            border-right: 0;
-        }
-    }
-    a {
         background: $white;
-        color: $gray-light;
         display: inline-block;
-        padding: .5rem 2rem;
         position: relative;
-        transition: color .2s ease-in;
         &.active {
+            border-left: 1px solid $whitish;
+            border-right: 1px solid $whitish;
             color: $primary;
             top: 1px;
         }
@@ -68,6 +57,12 @@
             color: $grayer;
             transition: color .2s ease-in;
         }
+    }
+    a {
+        color: $gray-light;
+        display: block;
+        padding: .5rem 2rem;
+        transition: color .2s ease-in;
     }
     .icon {
         fill: currentColor;
@@ -79,6 +74,7 @@
 .add-comment {
     @include cursor-progress;
     @include clearfix;
+    margin-top: 1rem;
     &.active {
         .button-green {
             display: block;
@@ -131,7 +127,7 @@
     }
 }
 .show-more-comments {
-    @extend %small;
+    @include font-size(small);
     border-bottom: 1px solid $gray-light;
     border-top: 1px solid $gray-light;
     color: $gray-light;
@@ -140,17 +136,6 @@
     &:hover {
         background: lighten($primary, 60%);
         transition: background .2s ease-in;
-    }
-}
-.more-comments {
-    @extend %small;
-    border-bottom: 1px solid $gray-light;
-    color: $gray-light;
-    display: block;
-    padding: 1rem;
-    .prev-comments-num {
-        color: $primary;
-        margin-left: .5rem;
     }
 }
 .comment-list {
@@ -192,7 +177,7 @@
     }
     &.deleted-comment,
     .deleted-comment {
-        @extend %small;
+        @include font-size(small);
         color: $gray-light;
         padding: .5rem;
         a {
@@ -211,13 +196,14 @@
             display: none;
             margin: .2rem 0 .5rem;
             p {
-                @extend %medium;
+                @include font-size(medium);
             }
         }
     }
     .comment-restore {
-        @extend %small;
+        @include font-size(small);
         color: $gray-light;
+        display: block;
         position: absolute;
         right: 0;
         top: .4rem;
@@ -259,7 +245,7 @@
         }
     }
     .date {
-        @extend %small;
+        @include font-size(small);
         color: $gray-light;
         margin-left: 1rem;
     }
@@ -268,31 +254,25 @@
     }
     .comment-delete {
         cursor: pointer;
-        fill: $red-light;
+        display: block;
         opacity: 0;
         position: absolute;
         right: .5rem;
         top: 2rem;
-        transition: all .2s linear;
+        svg {
+            fill: $red-light;
+            transition: all .2s linear;
+        }
         &:hover {
-            fill: $red;
-            transition: color .2s linear;
+            svg {
+                fill: $red;
+                transition: color .2s linear;
+            }
         }
     }
     &.activity {
         .change-entry {
             display: flex;
         }
-    }
-}
-.more-activity {
-    @extend %small;
-    border-bottom: 1px solid $gray-light;
-    color: $gray-light;
-    display: block;
-    padding: 1rem;
-    .prev-activity-num {
-        color: $primary;
-        margin-left: .5rem;
     }
 }

@@ -2,7 +2,7 @@
 .project-details {
     @include profile-form;
     .looking-for-people {
-        @extend %light;
+        @include font-type(light);
         border-bottom: 1px solid $whitish;
         border-top: 1px solid $whitish;
         padding: 1rem 0;
@@ -31,7 +31,7 @@
         }
     }
     .delete-project {
-        @extend %xsmall;
+        @include font-size(x-small);
         display: block;
         margin-top: 1rem;
         text-align: right;
@@ -40,7 +40,7 @@
         }
     }
     .private-or-public {
-        @extend %xsmall;
+        @include font-size(x-small);
         color: $gray-light;
         margin-bottom: 2rem;
         svg {
@@ -115,7 +115,7 @@
 }
 tg-admin-project-restrictions {
     p {
-        @extend %xsmall;
+        @include font-size(x-small);
         text-align: center;
     }
     a {
@@ -163,7 +163,7 @@ tg-admin-project-restrictions {
         color: $gray-light;
     }
     .owner-name {
-        @extend %bold;
+        @include font-type(bold);
     }
     .owner-avatar {
         width: 2.5rem;

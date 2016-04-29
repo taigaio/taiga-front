@@ -11,7 +11,7 @@
         }
     }
     .forgot-pass {
-        @extend %small;
+        @include font-size(small);
         color: $gray;
         opacity: 1;
         position: absolute;
@@ -21,12 +21,6 @@
         &:hover {
             color: $grayer;
             transition: color .3s linear;
-        }
-    }
-    .remember-me {
-        vertical-align: top;
-        +label {
-            cursor: pointer;
         }
     }
 }

@@ -21,7 +21,7 @@
         }
     }
     .user-list-name {
-        @extend %light;
+        @include font-type(light);
         color: $grayer;
         margin-left: .5rem;
     }
@@ -49,6 +49,7 @@
             transition-delay: .1s;
         }
         .remove-assigned-to {
+            display: block;
             fill: $grayer;
             opacity: 1;
             position: absolute;

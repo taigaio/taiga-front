@@ -13,10 +13,10 @@ helper.getSection = function(item) {
             return section.$$('form').last();
         },
         rows: function() {
-            return section.$$('.ui-sortable > div');
+            return section.$$('.sortable > div');
         },
         delete: function(row) {
-            let deleteButton = row.$$('.icon-trash').first();
+            let deleteButton = row.$$('.delete-value').first();
 
             return browser.actions()
                 .mouseMove(deleteButton)
@@ -24,7 +24,7 @@ helper.getSection = function(item) {
                 .perform();
         },
         edit: async function(row) {
-            let editButton = row.$('.icon-edit');
+            let editButton = row.$('.edit-value');
 
             return browser.actions()
                 .mouseMove(editButton)
@@ -41,7 +41,7 @@ helper.getStatusNames = function(section) {
 helper.getForm = function(form) {
     return {
         save: function() {
-            let saveButton = form.$('.icon-save');
+            let saveButton = form.$('.e2e-save');
 
             browser.actions()
                 .mouseMove(saveButton)

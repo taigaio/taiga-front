@@ -16,8 +16,7 @@ section.colors-table
             div(ng-repeat="value in values", tg-bind-scope)
                 form(tg-bind-scope)
                     div.row.table-main.visualization
-                        svg.icon.icon-drag
-                            use(xlink:href="#icon-drag")
+                        tg-svg(svg-icon="icon-drag")
 
                         div.color-column
                             div.current-color(ng-style="{background: value.color}")
@@ -26,10 +25,17 @@ section.colors-table
                             span {{ value.name }}
 
                         div.options-column
-                            svg.edit-value.icon.icon-edit(title="{{'ADMIN.COMMON.TITLE_ACTION_EDIT_VALUE' | translate}}")
-                                use(xlink:href="#icon-edit")
-                            svg.delete-value.icon.icon-trash(title="{{'ADMIN.COMMON.TITLE_ACTION_DELETE_VALUE' | translate}}")
-                                use(xlink:href="#icon-trash")
+                            a.edit-value(href="")
+                                tg-svg(
+                                    svg-icon="icon-edit",
+                                    title="{{'ADMIN.COMMON.TITLE_ACTION_EDIT_VALUE' | translate}}"
+                                )
+
+                            a.delete-value(href="")
+                                tg-svg(
+                                    svg-icon="icon-trash",
+                                    title="{{'ADMIN.COMMON.TITLE_ACTION_DELETE_VALUE' | translate}}"
+                                )
 
                     div.row.table-main.edition.hidden
                         div.color-column(
@@ -50,10 +56,16 @@ section.colors-table
                             )
 
                         div.options-column
-                            svg.save.icon.icon-save(title="{{'COMMON.SAVE' | translate}}")
-                                use(xlink:href="#icon-save")
-                            svg.cancel.icon.icon-trash(title="{{'COMMON.CANCEL' | translate}}")
-                                use(xlink:href="#icon-trash")
+                            a.save.e2e-save(href="")
+                                tg-svg(
+                                    title="{{'COMMON.SAVE' | translate}}",
+                                    svg-icon="icon-save"
+                                 )
+                            a.cancel(href="")
+                                tg-svg(
+                                    title="{{'COMMON.CANCEL' | translate}}",
+                                    svg-icon="icon-close"
+                                )
 
         form
             div.row.table-main.new-value.hidden
@@ -75,7 +87,13 @@ section.colors-table
                     )
 
                 div.options-column
-                    svg.add-new.icon.icon-save(title="{{'COMMON.ADD' | translate}}")
-                        use(xlink:href="#icon-save")
-                    svg.delete-new.icon.icon-trash(title="{{'COMMON.CANCEL' | translate}}")
-                        use(xlink:href="#icon-trash")
+                    a.add-new.e2e-save(href="")
+                        tg-svg(
+                            title="{{'COMMON.ADD' | translate}}",
+                            svg-icon="icon-save"
+                        )
+                    a.delete-new(href="")
+                        tg-svg(
+                            title="{{'COMMON.CANCEL' | translate}}",
+                            svg-icon="icon-close"
+                        )

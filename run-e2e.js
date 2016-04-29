@@ -3,8 +3,9 @@ var child_process = require('child_process');
 var inquirer = require("inquirer");
 var Promise = require('bluebird');
 
-// npm run e2e -- -s userStories, auth
+// npm run e2e -- --s userStories, auth
 
+var taigaBackPath = '';
 var suites = [
     'auth',
     'public',
@@ -34,7 +35,7 @@ function backup() {
 }
 
 function launchProtractor(suit) {
-    child_process.spawnSync('protractor', ['conf.e2e.js', '--suite=' + suit], {stdio: "inherit"});
+    child_process.spawnSync('protractor', ['conf.e2e.js', '--suite=' + suit, '--back=' + taigaBackPath], {stdio: "inherit"});
 }
 
 function restoreBackup() {
@@ -86,4 +87,18 @@ async function launch () {
     }
 }
 
-launch();
+if (argv.b) {
+    taigaBackPath = argv.b;
+    launch();
+} else {
+    inquirer.prompt([
+        {
+            type: 'string',
+            name: 'back',
+            message: 'Taiga back path'
+        }
+    ], function (answer) {
+        taigaBackPath = answer.back;
+        launch();
+    });
+}

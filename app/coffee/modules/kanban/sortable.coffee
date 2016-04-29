@@ -55,16 +55,23 @@ KanbanSortableDirective = ($repo, $rs, $rootscope) ->
                 itemEl.off()
                 itemEl.remove()
 
-            tdom.sortable({
-                handle: ".kanban-task-inner"
-                dropOnEmpty: true
-                connectWith: ".kanban-uses-box"
-                revert: 400
+            containers = _.map $el.find('.task-column'), (item) ->
+                return item
+
+            drake = dragula(containers, {
+                copySortSource: false,
+                copy: false,
+                mirrorContainer: tdom[0],
+                moves: (item) ->
+                    return $(item).hasClass('kanban-task')
             })
 
-            tdom.on "sortstop", (event, ui) ->
-                parentEl = ui.item.parent()
-                itemEl = ui.item
+            drake.on 'drag', (item) ->
+                oldParentScope = $(item).parent().scope()
+
+            drake.on 'dragend', (item) ->
+                parentEl = $(item).parent()
+                itemEl = $(item)
                 itemUs = itemEl.scope().us
                 itemIndex = itemEl.index()
                 newParentScope = parentEl.scope()
@@ -78,14 +85,17 @@ KanbanSortableDirective = ($repo, $rs, $rootscope) ->
                 $scope.$apply ->
                     $rootscope.$broadcast("kanban:us:move", itemUs, itemUs.status, newStatusId, itemIndex)
 
-                ui.item.find('a').removeClass('noclick')
+            scroll = autoScroll(containers, {
+                margin: 20,
+                pixels: 30,
+                scrollWhenOutside: true,
+                autoScroll: () ->
+                    return this.down && drake.dragging;
+            })
 
-            tdom.on "sortstart", (event, ui) ->
-                oldParentScope = ui.item.parent().scope()
-                ui.item.find('a').addClass('noclick')
-
-        $scope.$on "$destroy", ->
-            $el.off()
+            $scope.$on "$destroy", ->
+                $el.off()
+                drake.destroy()
 
     return {link: link}
 

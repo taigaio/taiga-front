@@ -1,7 +1,7 @@
 .colors-table {
     .table-header {
-        @extend %medium;
-        @extend %bold;
+        @include font-size(medium);
+        @include font-type(bold);
         border-bottom: 3px solid $whitish;
         &:hover {
             background: transparent;
@@ -22,6 +22,11 @@
             .options-column {
                 opacity: 1;
                 transition: opacity .3s linear;
+            }
+        }
+        .options-column {
+            a {
+                display: inline-block;
             }
         }
     }
@@ -136,5 +141,13 @@
             }
         }
     }
-
+    .gu-mirror {
+        background: lighten($primary, 60%);
+        opacity: 1;
+    }
+    .gu-transit {
+        * {
+            visibility: hidden;
+        }
+    }
 }

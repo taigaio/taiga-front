@@ -9,12 +9,10 @@
             h3.transfer-project-title {{::vm.project.get("name")}}
             .transfer-project-statistics
                 span.transfer-project-private(ng-if="vm.project.get('is_private')")
-                    svg.icon.icon-lock
-                        use(xlink:href="#icon-lock")
+                    tg-svg(svg-icon="icon-lock")
                     span(translate="ADMIN.PROJECT_TRANSFER.PRIVATE")
                 span.transfer-project-members
-                    svg.icon.icon-team
-                        use(xlink:href="#icon-team")
+                    tg-svg(svg-icon="icon-team")
                     span {{::vm.project.get("total_memberships")}}
 
     p(
@@ -33,7 +31,7 @@
             href=""
             ng-click="vm.addComment()"
             ng-if="!vm.showAddComment"
-            translate="ADMIN.PROJECT_TRANSFER.ADD_COMMENT_QUESTION"
+            translate="ADMIN.PROJECT_TRANSFER.ADD_COMMENT"
         )
 
         fieldset.transfer-project-comment-form(
@@ -44,26 +42,30 @@
                 label.transfer-project-comment-label(
                     translate="ADMIN.PROJECT_TRANSFER.ADD_COMMENT"
                 )
-                svg.icon.icon-close(ng-click="vm.hideComment()")
-                    use(xlink:href="#icon-close")
+                tg-svg(
+                    svg-icon="icon-close"
+                    ng-click="vm.hideComment()"
+                )
             textarea.transfer-project-comment(
                 name="reason"
                 ng-model="vm.reason"
             )
 
         .transfer-project-options
-            a.button.button-gray(
-                ng-click="vm.transferReject(vm.token, vm.reason)"
+            a.button.button-gray.e2e-transfer-reject(
+                ng-click="vm.transferReject(vm.token, vm.reason, $event)"
                 href="#"
                 title="{{'ADMIN.PROJECT_TRANSFER.REJECT' | translate}}"
                 translate="ADMIN.PROJECT_TRANSFER.REJECT"
+                tg-loading="vm.loadingReject"
             )
 
-            a.button.button-green(
-                ng-click="vm.transferAccept(vm.token, vm.reason)"
+            a.button.button-green.e2e-transfer-accept(
+                ng-click="vm.transferAccept(vm.token, vm.reason, $event)"
                 href="#"
                 title="{{'ADMIN.PROJECT_TRANSFER.ACCEPT' | translate}}"
                 translate="ADMIN.PROJECT_TRANSFER.ACCEPT"
+                tg-loading="vm.loadingAccept"
             )
 
-    div(ng-if="!vm.canBeOwnedByUser.valid", tg-cant-own-project-explanation)
+    tg-cant-own-project-explanation(ng-if="!vm.canBeOwnedByUser.valid")

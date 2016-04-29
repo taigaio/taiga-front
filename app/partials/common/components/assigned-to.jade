@@ -2,8 +2,7 @@
     img(src!="<%- photo %>", alt!="<%- fullName %>")
     <% if (isIocaine) { %>
     .iocaine-symbol(title="{{ 'TASK.TITLE_ACTION_IOCAINE' | translate }}")
-        svg.icon.icon-iocaine
-            use(xlink:href="#icon-iocaine")
+       tg-svg(svg-icon="icon-iocaine")
     <% }; %>
 
 .assigned-to
@@ -14,6 +13,12 @@
     <% }; %>
 
     .assigned-to-options
+        <% if (!isEditable && fullNameVisible) { %>
+        span.assigned-name
+            <%- fullName %>
+        <% }; %>
+
+        <% if (isEditable) { %>
         a(
             href=""
             title="{{ 'COMMON.ASSIGNED_TO.TITLE_ACTION_EDIT_ASSIGNMENT'|translate }}"
@@ -23,10 +28,10 @@
                 <% if (fullNameVisible) { %>
                 <%- fullName %>
                 <% }; %>
-                <% if (isEditable && !isUnassigned) { %>
-                svg.icon.icon-arrow-down
-                    use(xlink:href="#icon-arrow-down")
+                <% if (!isUnassigned) { %>
+                tg-svg(svg-icon="icon-arrow-down")
                 <% }; %>
+        <% }; %>
 
         <% if (isEditable && isUnassigned) { %>
         span(translate="COMMON.OR")
@@ -39,9 +44,8 @@
         <% }; %>
 
     <% if (isEditable && !isUnassigned) { %>
-    svg.icon.icon-close.remove-user(
-        href=""
+    tg-svg.remove-user(
+        svg-icon="icon-close",
         title="{{'COMMON.ASSIGNED_TO.DELETE_ASSIGNMENT' | translate}}"
     )
-        use(xlink:href="#icon-close")
     <% } %>

@@ -1,9 +1,4 @@
-a.close(
-    href=""
-    title="{{'COMMON.CLOSE' | translate}}"
-)
-    svg.icon.icon-close
-        use(xlink:href="#icon-close")
+tg-lightbox-close
 
 form
     h2.title(translate="LIGHTBOX.ADD_EDIT_SPRINT.TITLE")
@@ -51,7 +46,4 @@ form
         title="{{'LIGHTBOX.ADD_EDIT_SPRINT.TITLE_ACTION_DELETE_SPRINT' | translate}}"
     )
         span {{'LIGHTBOX.ADD_EDIT_SPRINT.ACTION_DELETE_SPRINT' | translate }}
-        svg.icon.icon-trash(
-            href=""
-        )
-            use(xlink:href="#icon-trash")
+        tg-svg(svg-icon="icon-trash")

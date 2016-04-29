@@ -1,6 +1,15 @@
 # Changelog #
 
 
+## 2.1.0 Ursus Americanus (2016-05-03)
+
+### Features
+- Add sprint title on search results for user stories (thanks to [@everblut](https://github.com/everblut))
+
+### Misc
+- Lots of small and not so small bugfixes.
+
+
 ## 2.0.0 Pulsatilla Patens (2016-04-04)
 
 ### Features

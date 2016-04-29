@@ -119,11 +119,11 @@ helper.openNewUs = function() {
 };
 
 helper.openUsBacklogEdit = function(item) {
-    $$('.backlog-table-body .icon-edit').get(item).click();
+    $$('.backlog-table-body .e2e-edit').get(item).click();
 };
 
 helper.openMilestoneEdit = function(item) {
-    $$('div[tg-backlog-sprint="sprint"] .icon-edit').get(item).click();
+    $$('div[tg-backlog-sprint="sprint"] .edit-sprint').get(item).click();
 };
 
 helper.openNewMilestone = function(item) {
@@ -157,7 +157,7 @@ helper.getUsPoints = async function(item)  {
 };
 
 helper.deleteUs = function(item) {
-    $$('.backlog-table-body > div .icon-delete').get(item).click();
+    $$('.backlog-table-body > div .e2e-delete').get(item).click();
 };
 
 helper.getUsRef = function(elm) {

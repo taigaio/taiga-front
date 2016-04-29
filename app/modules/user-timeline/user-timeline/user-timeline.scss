@@ -11,7 +11,7 @@
         .username {
             color: $primary;
             &:first-child {
-                @extend %bold;
+                @include font-type(bold);
                 color: $gray;
             }
         }
@@ -70,7 +70,7 @@
             flex: 1;
         }
         a {
-            @extend %bold;
+            @include font-type(bold);
         }
         p {
             color: $gray-light;
@@ -80,8 +80,8 @@
         border: 0;
         padding: 0;
         span {
-            @extend %text;
-            @extend %medium;
+            @include font-type(text);
+            @include font-size(medium);
             display: inline-block;
             max-width: 95%;
             overflow: hidden;
@@ -98,7 +98,7 @@
         margin: 10% auto;
         width: 3rem;
         img {
-            @extend %loading-spinner;
+            @include loading-spinner;
             max-height: 3rem;
             max-width: 3rem;
         }

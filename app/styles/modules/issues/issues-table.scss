@@ -6,7 +6,7 @@
     }
     .row {
         &:hover {
-            background: lighten($primary, 60%);
+            background: lighten($primary, 65%);
             transition: background .2s ease-in;
         }
         .icon {
@@ -20,13 +20,9 @@
             }
         }
     }
-    .row-selected {
-        background: lighten($primary, 60%);
-        transition: background .2s ease-in;
-    }
     .title {
-        @extend %medium;
-        @extend %bold;
+        @include font-size(medium);
+        @include font-type(bold);
         border-bottom: 1px solid $gray-light;
         &:hover {
             background: transparent;
@@ -39,7 +35,7 @@
         }
     }
     .table-main {
-        @extend %small;
+        @include font-size(small);
         border-bottom: 1px solid darken($whitish, 4%);
     }
     .avatar {
@@ -153,6 +149,9 @@
             display: none;
         }
     }
+    .issue-status {
+        display: inline-block;
+    }
 }
 
 .empty-issues {
@@ -162,11 +161,11 @@
         margin-bottom: 1rem;
     }
     .title {
-        @extend %large;
+        @include font-size(large);
         text-transform: uppercase;
     }
     p {
-        @extend %light;
+        @include font-type(light);
         margin: 0;
     }
 }

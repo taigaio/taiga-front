@@ -1,4 +1,4 @@
-div.kanban-table(tg-kanban-squish-column)
+div.kanban-table(tg-kanban-squish-column, tg-kanban-sortable)
     div.kanban-table-header
         div.kanban-table-inner
             h2.task-colum-name(ng-repeat="s in usStatusList track by s.id",
@@ -13,32 +13,28 @@ div.kanban-table(tg-kanban-squish-column)
                         title="{{'KANBAN.TITLE_ACTION_FOLD' | translate}}"
                         ng-class='{hidden:folds[s.id]}'
                     )
-                        svg.icon.icon-fold-column
-                            use(xlink:href="#icon-fold-column")
+                        tg-svg(svg-icon="icon-fold-column")
                     a.option.hunfold(
                         href=""
                         ng-click='foldStatus(s)'
                         title="{{'KANBAN.TITLE_ACTION_UNFOLD' | translate}}"
                         ng-class='{hidden:!folds[s.id]}'
                     )
-                        svg.icon.icon-unfold-column
-                            use(xlink:href="#icon-unfold-column")
+                        tg-svg(svg-icon="icon-unfold-column")
                     a.option(
                         href=""
                         title="{{'KANBAN.TITLE_ACTION_FOLD_CARDS' | translate}}"
                         ng-class="{hidden:statusViewModes[s.id] == 'minimized'}"
                         ng-click="ctrl.updateStatusViewMode(s.id, 'minimized')"
                     )
-                        svg.icon.icon-fold-row
-                            use(xlink:href="#icon-fold-row")
+                        tg-svg.fold-action(svg-icon="icon-fold-row")
                     a.option(
                         href=""
                         title="{{'KANBAN.TITLE_ACTION_UNFOLD_CARDS' | translate}}"
                         ng-class="{hidden:statusViewModes[s.id] == 'maximized'}"
                         ng-click="ctrl.updateStatusViewMode(s.id, 'maximized')"
                     )
-                        svg.icon.icon-unfold-row
-                            use(xlink:href="#icon-unfold-row")
+                        tg-svg.fold-action(svg-icon="icon-unfold-row")
 
                     a.option(
                         href=""
@@ -47,8 +43,7 @@ div.kanban-table(tg-kanban-squish-column)
                          tg-check-permission="add_us"
                          ng-hide="s.is_archived"
                     )
-                        svg.icon.icon-add
-                            use(xlink:href="#icon-add")
+                        tg-svg.add-action(svg-icon="icon-add")
 
                     a.option(
                         href=""
@@ -57,8 +52,7 @@ div.kanban-table(tg-kanban-squish-column)
                         tg-check-permission="add_us"
                         ng-hide="s.is_archived"
                     )
-                        svg.icon.icon-bulk
-                            use(xlink:href="#icon-bulk")
+                        tg-svg.bulk-action(svg-icon="icon-bulk")
 
                     a.option(
                         href=""
@@ -66,14 +60,12 @@ div.kanban-table(tg-kanban-squish-column)
                         ng-class="class"
                         ng-if="s.is_archived"
                         tg-kanban-archived-status-header="s")
-                        svg.icon.icon-watch
-                            use(xlink:href="#icon-watch")
+                        tg-svg.bulk-action(svg-icon="{{class}}")
 
     div.kanban-table-body
         div.kanban-table-inner
             div.kanban-uses-box.task-column(ng-class='{vfold:folds[s.id]}',
                 ng-repeat="s in usStatusList track by s.id",
-                tg-kanban-sortable,
                 tg-kanban-wip-limit="s",
                 tg-kanban-column-height-fixer,
                 tg-bind-scope

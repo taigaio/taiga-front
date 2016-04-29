@@ -1,42 +1,42 @@
-div.taskboard-table(tg-taskboard-squish-column)
+div.taskboard-table(tg-taskboard-squish-column, tg-taskboard-sortable)
     div.taskboard-table-header
         div.taskboard-table-inner
             h2.task-colum-name(translate="TASKBOARD.TABLE.COLUMN")
             h2.task-colum-name(ng-repeat="s in taskStatusList track by s.id", ng-style="{'border-top-color':s.color}", ng-class="{'column-fold':statusesFolded[s.id]}", class="squish-status-{{s.id}}", tg-bo-title="s.name")
                 span(tg-bo-bind="s.name")
-                svg.icon.icon-fold-row.hfold(
-                    ng-click='foldStatus(s)'
+
+                tg-svg.hfold.fold-action(
+                    svg-icon="icon-fold-row",
+                    ng-click='foldStatus(s)',
                     title="{{'TASKBOARD.TABLE.TITLE_ACTION_FOLD' | translate}}"
                     ng-class='{hidden:statusesFolded[s.id]}'
                 )
-                    use(xlink:href="#icon-fold-row")
-                    
-                svg.icon.icon-fold-row.hunfold(
+
+                tg-svg.hunfold.fold-action(
+                    svg-icon="icon-unfold-row",
+                    ng-click='foldStatus(s)',
                     title="{{'TASKBOARD.TABLE.TITLE_ACTION_UNFOLD' | translate}}"
-                    ng-click='foldStatus(s)'
                     ng-class='{hidden:!statusesFolded[s.id]}'
                 )
-                    use(xlink:href="#icon-unfold-row")
 
     div.taskboard-table-body(tg-taskboard-table-height-fixer)
         div.taskboard-table-inner
             div.task-row(ng-repeat="us in userstories track by us.id", ng-class="{blocked: us.is_blocked, 'row-fold':usFolded[us.id]}")
                 div.taskboard-userstory-box.task-column(tg-bo-title="us.blocked_note")
-                    
-                    svg.icon.icon-fold-row.vfold(
-                        title="{{'TASKBOARD.TABLE.TITLE_ACTION_FOLD_ROW' | translate}}"
+                    tg-svg.vfold.fold-action(
+                        svg-icon="icon-fold-row",
                         ng-click='foldUs(us)'
+                        title="{{'TASKBOARD.TABLE.TITLE_ACTION_FOLD_ROW' | translate}}"
                         ng-class='{hidden:usFolded[us.id]}'
                     )
-                        use(xlink:href="#icon-fold-row")
-                    
-                    svg.icon.icon-unfold-row.vunfold(
-                        title="{{'TASKBOARD.TABLE.TITLE_ACTION_UNFOLD_ROW' | translate}}"
+
+                    tg-svg.vunfold.fold-action(
+                        svg-icon="icon-unfold-row",
                         ng-click='foldUs(us)'
+                        title="{{'TASKBOARD.TABLE.TITLE_ACTION_UNFOLD_ROW' | translate}}"
                         ng-class='{hidden:!usFolded[us.id]}'
                     )
-                        use(xlink:href="#icon-fold-row")
-                    
+
                     h3.us-title
                         a(href="",
                           tg-nav="project-userstories-detail:project=project.slug,ref=us.ref",
@@ -49,7 +49,7 @@ div.taskboard-table(tg-taskboard-squish-column)
                         span(translate="TASKBOARD.TABLE.FIELD_POINTS")
                     include ../components/addnewtask
 
-                div.taskboard-tasks-box.task-column(ng-repeat="st in taskStatusList track by st.id", tg-taskboard-sortable, class="squish-status-{{st.id}}", ng-class="{'column-fold':statusesFolded[st.id]}", tg-bind-scope)
+                div.taskboard-tasks-box.task-column(ng-repeat="st in taskStatusList track by st.id", class="squish-status-{{st.id}}", ng-class="{'column-fold':statusesFolded[st.id]}", tg-bind-scope)
                     div.taskboard-task(
                         ng-repeat="task in usTasks[us.id][st.id] track by task.id"
                         tg-bind-scope
@@ -71,20 +71,18 @@ div.taskboard-table(tg-taskboard-squish-column)
                         ng-click='foldUs()'
                         ng-class="{hidden:usFolded[null]}"
                     )
-                        svg.icon.icon-fold-row
-                            use(xlink:href="#icon-fold-row")
+                        tg-svg.fold-action(svg-icon="icon-fold-row")
                     a.vunfold(
                         href=""
                         title="{{'TASKBOARD.TABLE.TITLE_ACTION_UNFOLD_ROW' | translate}}"
                         ng-click='foldUs()'
                         ng-class="{hidden:!usFolded[null]}"
                     )
-                        svg.icon.icon-unfold-row
-                            use(xlink:href="#icon-unfold-row")
+                        tg-svg.fold-action(svg-icon="icon-unfold-row")
                     h3.us-title
                         span(translate="TASKBOARD.TABLE.ROW_UNASSIGED_TASKS_TITLE")
                     include ../components/addnewtask.jade
-                div.taskboard-tasks-box.task-column(ng-repeat="st in taskStatusList track by st.id", tg-taskboard-sortable, class="squish-status-{{st.id}}", ng-class="{'column-fold':statusesFolded[st.id]}", tg-bind-scope)
+                div.taskboard-tasks-box.task-column(ng-repeat="st in taskStatusList track by st.id", class="squish-status-{{st.id}}", ng-class="{'column-fold':statusesFolded[st.id]}", tg-bind-scope)
                     div.taskboard-task(
                         ng-repeat="task in usTasks[null][st.id] track by task.id"
                         tg-bind-scope

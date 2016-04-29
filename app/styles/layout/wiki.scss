@@ -1,10 +1,10 @@
 .wiki {
     .wiki-title {
-        @extend %light;
-        @extend %larger;
+        @include font-type(light);
+        @include font-size(larger);
     }
     .remove {
-        @extend %small;
+        @include font-size(small);
         color: $gray-light;
         &:hover {
             color: $red-light;
@@ -55,31 +55,39 @@
             cursor: pointer;
         }
     }
-    .edit-wiki-content {
-        .icon {
-            &:hover {
-                cursor: pointer;
+    .preview {
+        padding-top: 1.8rem;
+    }
+}
+
+.edit-wiki-content {
+    a {
+        display: inline-block;
+        margin-right: .5rem;
+        &:last-child {
+            margin: 0;
+        }
+        &:hover {
+            cursor: pointer;
+            .icon {
                 fill: $primary-dark;
                 opacity: .3;
                 transition: all .2s linear;
             }
         }
-        .preview-icon {
-            position: absolute;
-            right: 3.5rem;
-        }
-        .action-container {
-            position: absolute;
-            right: 1rem;
-            top: .3rem;
-        }
-        .edit {
-            position: absolute;
-            right: 3.5rem;
-            top: .4rem;
-        }
     }
-    .preview {
-        padding-top: 1.8rem;
+    .preview-icon {
+        position: absolute;
+        right: 3.5rem;
+    }
+    .action-container {
+        position: absolute;
+        right: 1rem;
+        top: .3rem;
+    }
+    .edit {
+        position: absolute;
+        right: 3.5rem;
+        top: .4rem;
     }
 }

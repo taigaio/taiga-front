@@ -2,7 +2,7 @@
 .watching-empty {
     margin-bottom: 4rem;
     p {
-        @extend %light;
+        @include font-type(light);
         margin: 2rem 9rem 1rem;
         text-align: center;
     }

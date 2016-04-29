@@ -1,105 +1,96 @@
 nav.menu(
     ng-if="vm.project"
     ng-class="{'menu-fixed': vm.fixed}",
-) 
-    div(class="menu-container")
-        ul(class="main-nav")
-            li(id="nav-search")
+)
+    .menu-container
+        ul.main-nav
+            li#nav-search
                 a(
                     href=""
                     ng-click="vm.search()"
                     ng-class="{active: vm.active == 'search'}"
                     aria-label="{{'PROJECT.SECTION.SEARCH' | translate}}"
                     tabindex="1"
-                 )
-                     svg.icon.icon-search
-                         use(xlink:href="#icon-search")
-                     span.helper(translate="PROJECT.SECTION.SEARCH")
+                )
+                    tg-svg(svg-icon="icon-search")
+                    span.helper(translate="PROJECT.SECTION.SEARCH")
 
-             li(id="nav-timeline")
+             li#nav-timeline
                  a(
                     tg-nav="project:project=vm.project.get('slug')"
                     ng-class="{active: vm.active == 'project-timeline'}"
                     aria-label="{{'PROJECT.SECTION.TIMELINE' | translate}}"
                     tabindex="2"
                  )
-                    svg.icon.icon-timeline
-                        use(xlink:href="#icon-timeline")
+                    tg-svg(svg-icon="icon-timeline")
                     span.helper(translate="PROJECT.SECTION.TIMELINE")
 
-            li(id="nav-backlog", ng-if="vm.menu.get('backlog')")
+            li#nav-backlog(ng-if="vm.menu.get('backlog')")
                 a(
                     tg-nav="project-backlog:project=vm.project.get('slug')"
                     ng-class="{active: vm.active == 'backlog'}"
                     aria-label="{{'PROJECT.SECTION.BACKLOG' | translate}}"
                     tabindex="2"
                 )
-                    svg.icon.icon-scrum
-                        use(xlink:href="#icon-scrum")
+                    tg-svg(svg-icon="icon-scrum")
                     span.helper(translate="PROJECT.SECTION.BACKLOG")
 
-            li(id="nav-kanban", ng-if="vm.menu.get('kanban')")
+            li#nav-kanban(ng-if="vm.menu.get('kanban')")
                 a(
                     tg-nav="project-kanban:project=vm.project.get('slug')"
                     ng-class="{active: vm.active == 'kanban'}"
                     aria-label="{{'PROJECT.SECTION.KANBAN' | translate}}"
                     tabindex="3"
                 )
-                    svg.icon.icon-kanban
-                        use(xlink:href="#icon-kanban")
+                    tg-svg(svg-icon="icon-kanban")
                     span.helper(translate="PROJECT.SECTION.KANBAN")
 
-            li(id="nav-issues", ng-if="vm.menu.get('issues')")
+            li#nav-issues(ng-if="vm.menu.get('issues')")
                 a(
                     tg-nav="project-issues:project=vm.project.get('slug')"
                     ng-class="{active: vm.active == 'issues'}"
                     aria-label="{{'PROJECT.SECTION.ISSUES' | translate}}"
                     tabindex="4"
                 )
-                    svg.icon.icon-issues
-                        use(xlink:href="#icon-issues")
+                    tg-svg(svg-icon="icon-issues")
                     span.helper(translate="PROJECT.SECTION.ISSUES")
 
-            li(id="nav-wiki", ng-if="vm.menu.get('wiki')")
+            li#nav-wiki(ng-if="vm.menu.get('wiki')")
                 a(
                     tg-nav="project-wiki:project=vm.project.get('slug')"
                     ng-class="{active: vm.active == 'wiki'}"
                     aria-label="{{'PROJECT.SECTION.WIKI' | translate}}"
                     tabindex="5"
                 )
-                    svg.icon.icon-wiki
-                        use(xlink:href="#icon-wiki")
+                    tg-svg(svg-icon="icon-wiki")
                     span.helper(translate="PROJECT.SECTION.WIKI")
 
-            li(id="nav-team")
+            li#nav-team
                 a(
                     tg-nav="project-team:project=vm.project.get('slug')"
                     ng-class="{active: vm.active == 'team'}"
                     aria-label="{{'PROJECT.SECTION.TEAM' | translate}}"
                     tabindex="6"
                 )
-                    svg.icon.icon-team
-                        use(xlink:href="#icon-team")
+                    tg-svg(svg-icon="icon-team")
                     span.helper(translate="PROJECT.SECTION.TEAM")
 
-            li(id="nav-video", ng-if="vm.project.get('videoconferenceUrl')")
+            li#nav-video(ng-if="vm.project.get('videoconferenceUrl')")
                 a(
                     ng-href="{{vm.project.get('videoconferenceUrl')}}"
                     target="_blank"
                     aria-label="{{'PROJECT.SECTION.MEETUP' | translate}}"
                     tabindex="7"
                 )
-                    svg.icon.icon-bubble
-                        use(xlink:href="#icon-bubble")
+                    tg-svg(svg-icon="icon-bubble")
                     span.helper(translate="PROJECT.SECTION.MEETUP")
 
-            li(id="nav-admin", ng-if="vm.project.get('i_am_admin')")
+            li#nav-admin(ng-if="vm.project.get('i_am_admin')")
                 a(
                     tg-nav="project-admin-home:project=vm.project.get('slug')"
                     ng-class="{active: vm.active == 'admin'}"
                     aria-label="{{'PROJECT.SECTION.ADMIN' | translate}}"
                     tabindex="8"
                 )
-                    svg.icon.icon-settings
-                        use(xlink:href="#icon-settings")
+                    tg-svg(svg-icon="icon-settings")
                     span.helper(translate="PROJECT.SECTION.ADMIN")

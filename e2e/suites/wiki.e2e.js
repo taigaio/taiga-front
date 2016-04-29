@@ -9,7 +9,7 @@ chai.use(chaiAsPromised);
 var expect = chai.expect;
 
 describe('wiki', function() {
-    let currentWiki = {};
+    var currentWiki = {};
 
     before(async function(){
         browser.get(browser.params.glob.host + 'project/project-0/wiki/home');
@@ -29,8 +29,8 @@ describe('wiki', function() {
     });
 
     it('follow last link', async function() {
-        // the click event is not on the <a> :(
-        let lastLink = wikiHelper.links().get().last().$('.link-title');
+        let lastLink = wikiHelper.links().get().last();
+
         browser
            .actions()
            .mouseMove(lastLink)
@@ -40,7 +40,9 @@ describe('wiki', function() {
         await utils.common.waitLoader();
         await utils.common.takeScreenshot("wiki", "new-link-created-with-empty-wiki-page");
 
-        expect(browser.getCurrentUrl()).to.be.eventually.equal(browser.params.glob.host + 'project/project-0/wiki/' + currentWiki.slug);
+        let url = await browser.getCurrentUrl();
+
+        expect(url).to.be.equal(browser.params.glob.host + 'project/project-0/wiki/' + currentWiki.slug);
     });
 
     it('remove link', async function() {

@@ -1,8 +1,7 @@
 .discover-results-header
     .discover-results-header-inner
         .title
-            svg.icon.icon-search
-                use(xlink:href="#icon-search")
+            tg-svg(svg-icon="icon-search")
             h2 {{ 'DISCOVER.SEARCH.RESULTS' | translate }}
 
         .filter-discover-search(ng-mouseleave="vm.toggleClose()")
@@ -11,16 +10,14 @@
                 ng-click="vm.openLike()"
                 ng-class="{active: vm.like_is_open}"
             )
-                svg.icon.icon-like
-                    use(xlink:href="#icon-like")
+                tg-svg(svg-icon="icon-like")
                 span {{ 'DISCOVER.MOST_LIKED' | translate }}
             a.discover-search-filter(
                 href="#"
                 ng-click="vm.openActivity()"
                 ng-class="{active: vm.activity_is_open}"
             )
-                svg.icon.icon-activity
-                    use(xlink:href="#icon-activity")
+                tg-svg(svg-icon="icon-activity")
                 span {{ 'DISCOVER.MOST_ACTIVE' | translate }}
 
     .discover-search-subfilter.most-liked-subfilter(ng-if="vm.like_is_open")

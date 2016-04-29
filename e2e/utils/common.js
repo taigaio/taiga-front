@@ -46,6 +46,16 @@ common.browserSkip = function(browserName, name, fn) {
     }
 };
 
+common.waitHref = async function(el) {
+    await browser.wait(async function() {
+        let href = await el.getAttribute('href');
+
+        return (href.length > 1 && href !== browser.params.glob.host + "#");
+     }, 5000);
+
+    return el.getAttribute('href');
+};
+
 common.link = async function(el) {
     let oldUrl = await browser.getCurrentUrl();
 
@@ -68,13 +78,7 @@ common.link = async function(el) {
         .mouseMove({x: 10, y: 10})
         .perform();
 
-    await browser.wait(async function() {
-        let href = await el.getAttribute('href');
-
-        return (href.length > 1 && href !== browser.params.glob.host + "#");
-     }, 5000);
-
-
+    await common.waitHref(el);
 
     await browser
         .actions()
@@ -454,9 +458,6 @@ common.createProject = async function(members = []) {
 
     await lb.submit();
 
-    await notifications.success.open();
-    await notifications.success.close();
-
     if (members.length) {
         var adminMembershipsHelper = require('../helpers').adminMemberships;
 
@@ -480,4 +481,34 @@ common.createProject = async function(members = []) {
 
         await newMemberLightbox.waitClose();
     }
+};
+
+common.getTransferProjectToken = function(projectSlug, username) {
+    let execSync = require('child_process').execSync;
+
+    let cliPath = path.resolve(process.cwd(), 'e2e', 'taiga_back_cli.py');
+
+    let result = execSync(`python ${cliPath} transfer_token ${browser.params.glob.back} ${projectSlug}  ${username}`);
+
+    return result.toString();
+};
+
+
+/*
+max_private_projects
+max_memberships_private_projects
+max_public_projects
+max_memberships_public_projects
+*/
+common.setUserLimits = function(username, restrictions) {
+    let execSync = require('child_process').execSync;
+
+    let cliPath = path.resolve(process.cwd(), 'e2e', 'taiga_back_cli.py');
+    let params = '';
+
+    for (let restrictionKey in restrictions) {
+        params += `--${restrictionKey}=${restrictions[restrictionKey]} `;
+    }
+
+    execSync(`python ${cliPath} update_user_limits ${browser.params.glob.back} ${username} ${params}`);
 };

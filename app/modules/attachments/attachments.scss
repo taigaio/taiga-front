@@ -1,5 +1,20 @@
 .attachments {
-    margin-bottom: 2rem;
+    margin-bottom: 4rem;
+    .gu-transit {
+        background: $whitish;
+        height: 40px;
+        * {
+            display: none;
+        }
+    }
+    .gu-mirror {
+        opacity: 1;
+        form {
+            background: lighten($primary, 60%);
+            box-shadow: 1px 1px 10px rgba($black, .1);
+            transition: background .2s ease-in;
+        }
+    }
 }
 
 .attachments-header {
@@ -10,8 +25,8 @@
     justify-content: space-between;
     min-height: 36px;
     .attachments-title {
-        @extend %medium;
-        @extend %bold;
+        @include font-type(bold);
+        @include font-size(medium);
         color: $grayer;
         line-height: 36px;
         padding: 0 1rem;
@@ -55,8 +70,8 @@
         }
     }
     .size-info {
-        @extend %light;
-        @extend %small;
+        @include font-size(small);
+        @include font-type(light);
         color: $gray;
         padding-left: 1rem;
     }
@@ -66,8 +81,8 @@
 }
 
 .attachments-empty {
-    @extend %large;
-    @extend %bold;
+    @include font-size(large);
+    @include font-type(bold);
     border: 3px dashed $whitish;
     color: $gray-light;
     margin-top: .5rem;
@@ -76,19 +91,10 @@
 }
 
 .single-attachment {
-    @extend %small;
+    @include font-size(small);
     background: rgba($white, .9);
-    &.ui-sortable-helper {
-        background: lighten($primary, 60%);
-        box-shadow: 1px 1px 10px rgba($black, .1);
-        transition: background .2s ease-in;
-    }
-    &.sortable-placeholder {
-        background: $whitish;
-        height: 40px;
-    }
     .attachment-name {
-        @extend %bold;
+        @include font-type(bold);
         padding-right: 1rem;
         svg {
             fill: $gray;
@@ -103,7 +109,7 @@
 }
 
 .more-attachments {
-    @extend %small;
+    @include font-size(small);
     border-bottom: 1px solid $gray-light;
     display: block;
     padding: 1rem 0 1rem 1rem;

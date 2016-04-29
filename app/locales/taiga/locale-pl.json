@@ -140,7 +140,8 @@
             "BLOCKED_NOTE": "zablokowana notka",
             "IS_BLOCKED": "zablokowana",
             "REF": "Ref",
-            "VOTES": "Głosy"
+            "VOTES": "Głosy",
+            "SPRINT": "Sprint"
         },
         "ROLES": {
             "ALL": "Wszystko"
@@ -355,7 +356,7 @@
     "HOME": {
         "PAGE_TITLE": "Strona główna - Taiga",
         "PAGE_DESCRIPTION": "Główna strona Taiga, z Twoimi głównymi projektami i wszystkimi przypisanymi Tobie i obserwowanymi historyjkami użytkownika, zadaniami i zgłoszeniami.",
-        "EMPTY_WORKING_ON": "<strong>Trochę tu pusto?</strong>Rozpocznij pracę z Taigą, a pojawią się tutaj historie, zadania oraz zgłoszone błędy, nad którymi pracujesz.",
+        "EMPTY_WORKING_ON": "<strong>It feels empty, doesn't it?</strong> Start working with Taiga and you'll see here the stories, tasks and issues you are working on.",
         "EMPTY_WATCHING": "<strong>Follow</strong> User Stories, Tasks, Issues in your projects and be notified about its changes :)",
         "EMPTY_PROJECT_LIST": "Nie masz jeszcze żadnych projektów",
         "WORKING_ON_SECTION": "Pracujesz nad",
@@ -556,9 +557,8 @@
             "PAGE_TITLE": "Role - {{projectName}}",
             "WARNING_NO_ROLE": "Bez przydzielenia ról w projekcie nie ma możliwości oceniania historyjek użytkownika. Umpa Lumpy nie będą wiedziały komu wolno to zrobić :)",
             "HELP_ROLE_ENABLED": "Jeśli aktywne użytkownicy pełniący tę rolę będą mogli szacować wartości historyjek",
-            "DISABLE_COMPUTABLE_ALERT_TITLE": "Disable estimation for this role",
+            "DISABLE_COMPUTABLE_ALERT_TITLE": "Are you sure you want to disable this role estimations?",
             "DISABLE_COMPUTABLE_ALERT_SUBTITLE": "If you disable estimation permissions for role {{roleName}} all previous estimations made by this role will be removed",
-            "DISABLE_COMPUTABLE_ALERT_MESSAGE": "<strong>Are you sure you want to disable this role estimations?</strong>",
             "COUNT_MEMBERS": "{{ role.members_count }} użytkowników pełniących tę rolę w projekcie",
             "TITLE_DELETE_ROLE": "Usuń rolę",
             "REPLACEMENT_ROLE": "Wszyscy użytkownicy pełniący tę rolę zostaną przeniesieni do",
@@ -699,7 +699,6 @@
             "ACCEPT": "Akceptuj",
             "REJECT": "Reject",
             "PROPOSE_OWNERSHIP": "<strong>{{owner}}</strong>, the current owner of the project <strong>{{project}}</strong> has asked that you become the new  project owner.",
-            "ADD_COMMENT_QUESTION": "Would you like to send a question to the project owner?",
             "ADD_COMMENT": "Would you like to add a comment for the project owner?",
             "UNLIMITED_PROJECTS": "Unlimited",
             "OWNER_MESSAGE": {
@@ -1413,6 +1412,7 @@
         "PLACEHOLDER_PAGE": "Napisz swoje Wiki",
         "REMOVE": "Usuń tą stronę Wiki",
         "DELETE_LIGHTBOX_TITLE": "Usuń tą stronę Wiki",
+        "DELETE_LINK_TITLE": "Delete Wiki link",
         "NAVIGATION": {
             "SECTION_NAME": "Linki",
             "ACTION_ADD_LINK": "Dodaj link"

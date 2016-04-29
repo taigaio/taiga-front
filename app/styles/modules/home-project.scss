@@ -33,9 +33,6 @@
     .private {
         @include svg-size(1.1rem);
     }
-    .like-watch-container {
-        margin-left: auto;
-    }
     .track-buttons-container {
         display: flex;
     }
@@ -46,17 +43,17 @@
         @include list-itemtype-track;
     }
     .description {
-        @extend %light;
-        @extend %medium;
+        @include font-type(light);
+        @include font-size(medium);
         margin: 0;
     }
     .project-data {
         display: flex;
     }
     .title {
-        @extend %medium;
-        @extend %text;
-        @extend %bold;
+        @include font-size(medium);
+        @include font-type(text);
+        @include font-type(bold);
         align-content: center;
         background: $whitish;
         display: flex;
@@ -80,19 +77,18 @@
             width: 100%;
         }
         h3 {
-            @extend %small;
+            @include font-size(small);
         }
         p {
-            @extend %small;
-            @extend %light;
+            @include font-size(small);
+            @include font-type(light);
         }
     }
     .involved-data {
         flex-basis: 220px;
         width: 220px;
     }
-    .involved-team,
-    .involved-organization {
+    .involved-team {
         display: flex;
         flex-wrap: wrap;
         margin-bottom: 1rem;

@@ -329,7 +329,7 @@ KanbanArchivedStatusHeaderDirective = ($rootscope, $translate) ->
         status = $scope.$eval($attrs.tgKanbanArchivedStatusHeader)
         hidden = true
 
-        $scope.class = "icon-open-eye"
+        $scope.class = "icon-watch"
         $scope.title = showArchivedText
 
         $el.on "click", (event) ->
@@ -337,12 +337,12 @@ KanbanArchivedStatusHeaderDirective = ($rootscope, $translate) ->
 
             $scope.$apply ->
                 if hidden
-                    $scope.class = "icon-open-eye"
+                    $scope.class = "icon-watch"
                     $scope.title = showArchivedText
                     $rootscope.$broadcast("kanban:hide-userstories-for-status", status.id)
 
                 else
-                    $scope.class = "icon-closed-eye"
+                    $scope.class = "icon-unwatch"
                     $scope.title = hideArchivedText
                     $rootscope.$broadcast("kanban:show-userstories-for-status", status.id)
 
@@ -418,15 +418,13 @@ module.directive("tgKanbanArchivedStatusIntro", ["$translate", KanbanArchivedSta
 
 KanbanUserstoryDirective = ($rootscope, $loading, $rs, $rs2) ->
     link = ($scope, $el, $attrs, $model) ->
-        $el.disableSelection()
-
         $scope.$watch "us", (us) ->
             if us.is_blocked and not $el.hasClass("blocked")
                 $el.addClass("blocked")
             else if not us.is_blocked and $el.hasClass("blocked")
                 $el.removeClass("blocked")
 
-        $el.on 'click', '.icon-edit', (event) ->
+        $el.on 'click', '.edit-us', (event) ->
             if $el.find(".icon-edit").hasClass("noclick")
                 return
 
@@ -498,8 +496,6 @@ module.directive("tgKanbanSquishColumn", ["$tgResources", KanbanSquishColumnDire
 
 KanbanWipLimitDirective = ->
     link = ($scope, $el, $attrs) ->
-        $el.disableSelection()
-
         status = $scope.$eval($attrs.tgKanbanWipLimit)
 
         redrawWipLimit = =>

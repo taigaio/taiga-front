@@ -1,7 +1,10 @@
 doctype html
 
-div.wrapper.roles(tg-github-webhooks, ng-controller="GithubController as ctrl",
-                        ng-init="section='admin'")
+div.wrapper.roles(
+    tg-github-webhooks
+    ng-controller="GithubController as ctrl",
+    ng-init="section='admin'"
+)
     tg-project-menu
     sidebar.menu-secondary.sidebar.settings-nav(tg-admin-navigation="third-parties")
         include ../includes/modules/admin-menu
@@ -14,22 +17,40 @@ div.wrapper.roles(tg-github-webhooks, ng-controller="GithubController as ctrl",
         form
             fieldset
                 label(for="secret-key", translate="ADMIN.THIRD_PARTIES.SECRET_KEY")
-                input(type="text", name="secret-key", ng-model="github.secret", placeholder="{{'ADMIN.THIRD_PARTIES.SECRET_KEY' | translate}}", id="secret-key")
+                input(
+                    id="secret-key"
+                    type="text"
+                    name="secret-key"
+                    ng-model="github.secret"
+                    placeholder="{{'ADMIN.THIRD_PARTIES.SECRET_KEY' | translate}}"
+                )
 
             fieldset
                 .select-input-text(tg-select-input-text)
                     div
                         label(for="payload-url", translate="ADMIN.THIRD_PARTIES.PAYLOAD_URL")
                         .field-with-option
-                            input(type="text", ng-model="github.webhooks_url", name="payload-url", readonly="readonly", placeholder="{{'ADMIN.THIRD_PARTIES.PAYLOAD_URL' | translate}}", id="payload-url")
+                            input(
+                                id="payload-url"
+                                type="text"
+                                name="payload-url"
+                                readonly="readonly"
+                                ng-model="github.webhooks_url"
+                                placeholder="{{'ADMIN.THIRD_PARTIES.PAYLOAD_URL' | translate}}"
+                            )
                             .option-wrapper.select-input-content
-                                svg.icon.icon-clipboard
-                                    use(xlink:href="#icon-clipboard")
+                                tg-svg(svg-icon="icon-clipboard")
                         .help-copy(translate="COMMON.COPY_TO_CLIPBOARD")
 
-            button.button-green.submit-button(type="submit", title="{{'COMMON.SAVE' | translate}}", translate="COMMON.SAVE")
+            button.button-green.submit-button(
+                type="submit"
+                title="{{'COMMON.SAVE' | translate}}"
+                translate="COMMON.SAVE"
+            )
 
-        a.help-button(href="https://taiga.io/support/github-integration/", target="_blank")
-            svg.icon.icon-question
-                use(xlink:href="#icon-question")
+        a.help-button(
+            href="https://tree.taiga.io/support/integrations/github-integration/"
+            target="_blank"
+        )
+            tg-svg(svg-icon="icon-question")
             span(translate="ADMIN.HELP")

@@ -6,6 +6,6 @@
         text-align: center;
     }
     .register-text {
-        @extend %small;
+        @include font-size(small);
     }
 }

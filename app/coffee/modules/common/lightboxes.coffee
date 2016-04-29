@@ -51,7 +51,12 @@ class LightboxService extends taiga.Service
         @animationFrame.add ->
             $el.addClass("open")
             $el.one "transitionend", =>
-              $el.find('input,textarea').first().focus()
+                firstField = $el.find('input,textarea').first()
+
+                if firstField.length
+                    $el.find('input,textarea').first().focus()
+                else if document.activeElement
+                    $(document.activeElement).blur()
 
         @animationFrame.add =>
             lightboxContent.show()
@@ -79,7 +84,7 @@ class LightboxService extends taiga.Service
 
         if $el.hasClass("remove-on-close")
             scope = $el.data("scope")
-            scope.$destroy()
+            scope.$destroy() if scope
             $el.remove()
 
     closeAll: ->

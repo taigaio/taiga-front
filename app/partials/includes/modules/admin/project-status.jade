@@ -17,8 +17,7 @@ section.colors-table.admin-status-table
             div(ng-repeat="value in values", tg-bind-scope)
                 form(tg-bind-scope)
                     div.row.table-main.visualization
-                        svg.icon.icon-drag
-                            use(xlink:href="#icon-drag")
+                        tg-svg(svg-icon="icon-drag")
                         div.color-column
                             div.current-color(ng-style="{background: value.color}")
 
@@ -29,14 +28,22 @@ section.colors-table.admin-status-table
                             span {{ value.slug }}
 
                         div.is-closed-column
-                            svg.icon.icon-check(ng-show="value.is_closed")
-                                use(xlink:href="#icon-check")
+                            tg-svg(
+                                ng-show="value.is_closed"
+                                svg-icon="icon-check"
+                            )
 
                         div.options-column
-                            svg.edit-value.icon.icon-edit(title="{{'ADMIN.COMMON.TITLE_ACTION_EDIT_VALUE' | translate}}")
-                                use(xlink:href="#icon-edit")
-                            svg.delete-value.icon.icon-trash(title="{{'ADMIN.COMMON.TITLE_ACTION_DELETE_VALUE' | translate}}")
-                                use(xlink:href="#icon-trash")
+                            a.edit-value(href="")
+                                tg-svg(
+                                    title="{{'ADMIN.COMMON.TITLE_ACTION_EDIT_VALUE' | translate}}",
+                                    svg-icon="icon-edit"
+                                )
+                            a.delete-value(href="")
+                                tg-svg(
+                                    title="{{'ADMIN.COMMON.TITLE_ACTION_DELETE_VALUE' | translate}}"
+                                    svg-icon="icon-trash"
+                                )
 
                     div.row.table-main.edition.hidden
                         div.color-column(
@@ -64,10 +71,11 @@ section.colors-table.admin-status-table
                                 ng-options="e.id as e.name | translate for e in [{'id':true, 'name':'COMMON.YES'},{'id':false, 'name': 'COMMON.NO'}]")
 
                         div.options-column
-                            svg.save.icon.icon-save(title="{{'COMMON.SAVE' | translate}}")
-                                use(xlink:href="#icon-save")
-                        svg.cancel.icon.icon-close(title="{{'COMMON.CANCEL' | translate}}")
-                            use(xlink:href="#icon-close")
+                            a.save.e2e-save(href="", title="{{'COMMON.SAVE' | translate}}")
+                                tg-svg(svg-icon="icon-save")
+
+                            a.cancel(href="", title="{{'COMMON.CANCEL' | translate}}")
+                                tg-svg.cancel(svg-icon="icon-close")
 
         form
             div.row.table-main.new-value.hidden
@@ -97,7 +105,8 @@ section.colors-table.admin-status-table
                     )
 
                 div.options-column
-                    svg.add-new.icon.icon-save(title="{{'COMMON.ADD' | translate}}")
-                        use(xlink:href="#icon-save")
-                    svg.delete-new.icon.icon-close(title="{{'COMMON.CANCEL' | translate}}")
-                        use(xlink:href="#icon-close")
+                    a.add-new.e2e-save(href="", title="{{'COMMON.ADD' | translate}}")
+                        tg-svg(svg-icon="icon-save")
+
+                    a.delete-new(href="", title="{{'COMMON.CANCEL' | translate}}")
+                        tg-svg(svg-icon="icon-close")

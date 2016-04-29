@@ -28,6 +28,7 @@ script(type="text/ng-template", id="search-userstories")
             div.row.title
                 div.ref(translate="COMMON.FIELDS.REF")
                 div.user-stories(translate="SEARCH.FILTER_USER_STORIES")
+                div.sprint(translate="COMMON.FIELDS.SPRINT")
                 div.status(translate="COMMON.FIELDS.STATUS")
                 div.points(translate="COMMON.FIELDS.POINTS")
         div.search-result-table-body
@@ -37,6 +38,10 @@ script(type="text/ng-template", id="search-userstories")
                     div.user-story-name
                         a(href="", tg-nav="project-userstories-detail:project=project.slug,ref=us.ref",
                             tg-bo-bind="us.subject")
+                div.sprint
+                    div.sprint-link
+                        a(href="", tg-nav="project-taskboard:project=project.slug,sprint=us.milestone_slug",
+                            tg-bo-bind="us.milestone_name")
                 div.status(tg-listitem-us-status="us")
                 div.points(tg-bo-bind="us.total_points")
 

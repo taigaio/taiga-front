@@ -10,7 +10,7 @@
         justify-content: space-between;
         margin-bottom: 1rem;
         a {
-            @extend %small;
+            @include font-size(small);
             min-width: 110px;
         }
         .icon:not(.icon-clipboard) {

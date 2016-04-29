@@ -1,5 +1,5 @@
 .wizard-create-project {
-    @extend %lightbox;
+    @include lightbox;
     .close {
         @include svg-size(2rem);
     }
@@ -12,14 +12,10 @@
             margin-bottom: 0;
         }
         .subtitle {
-            @extend %small;
+            @include font-size(small);
             color: $gray-light;
             text-align: center;
         }
-    }
-    .more-info {
-        @extend %small;
-        color: $primary;
     }
     .template-selector-title {
         display: flex;
@@ -59,13 +55,13 @@
                 transition: background .2s ease-in;
             }
             .icon {
-                @include svg-size(1.4rem);
+                @include svg-size(1.5rem);
                 fill: currentColor;
                 margin-right: 1rem;
                 vertical-align: text-top;
             }
             .template-name {
-                @extend %large;
+                @include font-size(large);
                 text-transform: uppercase;
             }
         }
@@ -125,7 +121,7 @@
         }
     }
     .create-warning {
-        @extend %small;
+        @include font-size(small);
         padding: 1rem;
         text-align: center;
         .icon-exclamation {

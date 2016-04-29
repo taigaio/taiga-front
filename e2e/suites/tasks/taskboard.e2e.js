@@ -213,7 +213,7 @@ describe('taskboard', function() {
         });
     });
 
-    describe('move tasks', function() {
+    describe.skip('move tasks', function() {
         it('move task between statuses', async function() {
             let initOriginTaskCount = await taskboardHelper.getBoxTasks(0, 0).count();
             let initDestinationTaskCount = await taskboardHelper.getBoxTasks(0, 1).count();

@@ -62,6 +62,10 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
                   @location, @appMetaService, @navUrls, @events, @analytics, @translate, @loading, @rs2) ->
         bindMethods(@)
 
+        @.page = 1
+        @.disablePagination = false
+        @scope.userstories = []
+
         @scope.sectionName = @translate.instant("BACKLOG.SECTION_NAME")
         @showTags = false
         @activeFilters = false
@@ -90,7 +94,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
     initializeEventHandlers: ->
         @scope.$on "usform:bulk:success", =>
-            @.loadUserstories()
+            @.loadUserstories(true)
             @.loadProjectStats()
             @analytics.trackEvent("userstory", "create", "bulk create userstory on backlog", 1)
 
@@ -100,7 +104,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             @analytics.trackEvent("sprint", "create", "create sprint on backlog", 1)
 
         @scope.$on "usform:new:success", =>
-            @.loadUserstories()
+            @.loadUserstories(true)
             @.loadProjectStats()
 
             @rootscope.$broadcast("filters:update")
@@ -112,20 +116,25 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         @scope.$on "sprintform:remove:success", (event, sprint) =>
             @.loadSprints()
             @.loadProjectStats()
-            @.loadUserstories()
+            @.loadUserstories(true)
 
             if sprint.closed
                 @.loadClosedSprints()
 
             @rootscope.$broadcast("filters:update")
 
-        @scope.$on "usform:edit:success", =>
-            @.loadUserstories()
+        @scope.$on "usform:edit:success", (event, data) =>
+            index = _.findIndex @scope.userstories, (us) ->
+                return us.id == data.id
+
+            @scope.userstories[index] = data
+
             @rootscope.$broadcast("filters:update")
 
         @scope.$on("sprint:us:move", @.moveUs)
-        @scope.$on("sprint:us:moved", @.loadSprints)
-        @scope.$on("sprint:us:moved", @.loadProjectStats)
+        @scope.$on "sprint:us:moved", () =>
+            @.loadSprints()
+            @.loadProjectStats()
 
         @scope.$on("backlog:load-closed-sprints", @.loadClosedSprints)
         @scope.$on("backlog:unload-closed-sprints", @.unloadClosedSprints)
@@ -248,17 +257,36 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
         @.loadUserstories()
 
-    loadUserstories: ->
+    loadUserstories: (resetPagination = false)->
+        @.loadingUserstories = true
+        @.disablePagination = true
         @scope.httpParams = @.getUrlFilters()
         @rs.userstories.storeQueryParams(@scope.projectId, @scope.httpParams)
 
+        if resetPagination
+            @.page = 1
+
+        @scope.httpParams.page = @.page
+
         promise = @rs.userstories.listUnassigned(@scope.projectId, @scope.httpParams)
 
-        return promise.then (userstories) =>
+        return promise.then (result) =>
+            userstories = result[0]
+            header = result[1]
+
+            if resetPagination
+                @scope.userstories = []
+
             # NOTE: Fix order of USs because the filter orderBy does not work propertly in the partials files
-            @scope.userstories = _.sortBy(userstories, "backlog_order")
+            @scope.userstories = @scope.userstories.concat(_.sortBy(userstories, "backlog_order"))
 
             @.setSearchDataFilters()
+
+            @.loadingUserstories = false
+
+            if header('x-pagination-next')
+                @.disablePagination = false
+                @.page++
 
             # The broadcast must be executed when the DOM has been fully reloaded.
             # We can't assure when this exactly happens so we need a defer
@@ -362,8 +390,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
                 # Persist in bulk all affected
                 # userstories with order change
                 @rs.userstories.bulkUpdateBacklogOrder(project, data).then =>
-                    for us in usList
-                        @rootscope.$broadcast("sprint:us:moved", us, oldSprintId, newSprintId)
+                    @rootscope.$broadcast("sprint:us:moved")
 
             # For sprint
             else
@@ -374,8 +401,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
                 # Persist in bulk all affected
                 # userstories with order change
                 @rs.userstories.bulkUpdateSprintOrder(project, data).then =>
-                    for us in usList
-                        @rootscope.$broadcast("sprint:us:moved", us, oldSprintId, newSprintId)
+                    @rootscope.$broadcast("sprint:us:moved")
 
             return promise
 
@@ -402,7 +428,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
                 items = @.resortUserStories(@scope.userstories, "backlog_order")
                 data = @.prepareBulkUpdateData(items, "backlog_order")
                 return @rs.userstories.bulkUpdateBacklogOrder(us.project, data).then =>
-                    @rootscope.$broadcast("sprint:us:moved", us, oldSprintId, newSprintId)
+                    @rootscope.$broadcast("sprint:us:moved")
 
                     if movedFromClosedSprint
                         @rootscope.$broadcast("backlog:load-closed-sprints")
@@ -415,17 +441,15 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         # From backlog to sprint
         if oldSprintId == null
             us.milestone = newSprintId for us in usList
+            args = [newUsIndex, 0].concat(usList)
 
-            @scope.$apply =>
-                args = [newUsIndex, 0].concat(usList)
+            # Add moving us to sprint user stories list
+            Array.prototype.splice.apply(newSprint.user_stories, args)
 
-                # Add moving us to sprint user stories list
-                Array.prototype.splice.apply(newSprint.user_stories, args)
-
-                # Remove moving us from backlog userstories lists.
-                for us, key in usList
-                    r = @scope.userstories.indexOf(us)
-                    @scope.userstories.splice(r, 1)
+            # Remove moving us from backlog userstories lists.
+            for us, key in usList
+                r = @scope.userstories.indexOf(us)
+                @scope.userstories.splice(r, 1)
 
         # From sprint to sprint
         else
@@ -442,21 +466,20 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
                     r = sprint.user_stories.indexOf(us)
                     sprint.user_stories.splice(r, 1)
 
-        # Persist the milestone change of userstory
+        #Persist the milestone change of userstory
         promises = _.map usList, (us) => @repo.save(us)
 
-        # Rehash userstories order field
-        # and persist in bulk all changes.
+        #Rehash userstories order field
+        #and persist in bulk all changes.
         promise = @q.all(promises).then =>
             items = @.resortUserStories(newSprint.user_stories, "sprint_order")
             data = @.prepareBulkUpdateData(items, "sprint_order")
 
             @rs.userstories.bulkUpdateSprintOrder(project, data).then (result) =>
-                @rootscope.$broadcast("sprint:us:moved", us, oldSprintId, newSprintId)
+                @rootscope.$broadcast("sprint:us:moved")
 
             @rs.userstories.bulkUpdateBacklogOrder(project, data).then =>
-                for us in usList
-                    @rootscope.$broadcast("sprint:us:moved", us, oldSprintId, newSprintId)
+                @rootscope.$broadcast("sprint:us:moved")
 
             if movedToClosedSprint || movedFromClosedSprint
                 @scope.$broadcast("backlog:load-closed-sprints")
@@ -583,7 +606,11 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             promise = @.repo.remove(us)
             promise.then =>
                 askResponse.finish()
-                @.loadBacklog()
+
+                @q.all([
+                    @.loadProjectStats(),
+                    @.loadSprints()
+                ])
             promise.then null, =>
                 askResponse.finish(false)
                 @confirm.notify("error")
@@ -652,7 +679,7 @@ BacklogDirective = ($repo, $rootscope, $translate) ->
             return _.map(rowElements, (x) -> angular.element(x))
 
         $scope.$on("userstories:loaded", reloadDoomLine)
-        $scope.$watch "stats", reloadDoomLine
+        $scope.$watch("stats", reloadDoomLine)
 
     ## Move to current sprint link
 
@@ -807,8 +834,6 @@ BacklogDirective = ($repo, $rootscope, $translate) ->
         linkFilters($scope, $el, $attrs, $ctrl)
         linkDoomLine($scope, $el, $attrs, $ctrl)
 
-        $el.find(".backlog-table-body").disableSelection()
-
         filters = $ctrl.getUrlFilters()
         if filters.status ||
            filters.tags ||
@@ -843,7 +868,7 @@ UsRolePointsSelectorDirective = ($rootscope, $template, $compile, $translate) ->
             if numberOfRoles > 1
                 $el.append($compile(selectionTemplate({"roles": roles}))($scope))
             else
-                $el.find(".icon-arrow-bottom").remove()
+                $el.find(".icon-arrow-down").remove()
                 $el.find(".header-points").addClass("not-clickable")
 
         $scope.$on "uspoints:select", (ctx, roleId, roleName) ->

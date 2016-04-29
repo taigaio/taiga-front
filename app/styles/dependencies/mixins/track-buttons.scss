@@ -1,0 +1,31 @@
+
+// Mixin for track buttons
+@mixin list-itemtype-track {
+    .list-itemtype-track {
+        @include font-size(small);
+        color: $gray-light;
+        display: flex;
+        flex-shrink: 0;
+        justify-content: flex-end;
+        .list-itemtype-track-likers {
+            margin-right: .5rem;
+        }
+    }
+    .list-itemtype-track-likers,
+    .list-itemtype-track-watchers {
+        display: flex;
+        .icon {
+            display: block;
+            margin-right: .25rem;
+        }
+        &.active {
+            color: $primary;
+            .icon {
+                fill: currentcolor;
+            }
+        }
+    }
+    .icon {
+        fill: $gray-light;
+    }
+}

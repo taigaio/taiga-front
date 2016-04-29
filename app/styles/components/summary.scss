@@ -19,19 +19,20 @@ $summary-background: $grayer;
         }
     }
     .number {
-        @extend %xlarge;
-        @extend %bold;
+        @include font-size(xlarge);
+        @include font-type(bold);
         line-height: .9;
         margin-right: .3rem;
     }
 
     .description {
-        @extend %small;
-        @extend %light;
+        @include font-size(small);
+        @include font-type(light);
         line-height: 1;
     }
     .stats {
         cursor: pointer;
+        display: block;
         height: 2rem;
         margin-left: auto;
         width: 2rem;
@@ -39,8 +40,7 @@ $summary-background: $grayer;
             opacity: 1;
         }
         &:hover {
-            .graph,
-            .color-line {
+            .graph {
                 fill: $primary-light;
                 transition: fill .2s;
             }
@@ -49,10 +49,6 @@ $summary-background: $grayer;
             }
         }
         &.active {
-            .white-line,
-            .color-line {
-                display: none;
-            }
             .graph {
                 fill: $primary;
             }
@@ -68,17 +64,9 @@ $summary-background: $grayer;
             transition: all .2s;
             width: 100%;
         }
-        .graph,
-        .color-line {
+        .graph {
             fill: darken($gray-light, 20%);
             transition: fill .2s;
-        }
-        .white-line {
-            fill: $summary-background;
-        }
-        .white-line,
-        .color-line {
-            display: block;
         }
     }
 }
@@ -135,9 +123,6 @@ $summary-background: $grayer;
             margin: 0;
         }
     }
-    .summary-stats-divider {
-        margin-right: 2rem;
-    }
     .icon {
         fill: currentColor;
         height: 1.5rem;
@@ -164,7 +149,7 @@ $summary-background: $grayer;
 }
 
 .empty-burndown {
-    @extend %light;
+    @include font-type(light);
     align-content: center;
     align-items: center;
     background: rgba($primary-dark, .15);
@@ -187,14 +172,14 @@ $summary-background: $grayer;
         flex: 1;
     }
     .title {
-        @extend %light;
-        @extend %large;
+        @include font-type(light);
+        @include font-size(large);
         color: $primary-dark;
         margin: 0;
         text-transform: uppercase;
     }
     a {
-        @extend %bold;
+        @include font-type(bold);
         animation: blink 2s infinite;
     }
 }

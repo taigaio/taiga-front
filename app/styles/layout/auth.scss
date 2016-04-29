@@ -1,5 +1,5 @@
 .auth {
-    @extend %triangled-bg;
+    @include triangled-bg;
     align-items: center;
     bottom: 0;
     display: flex;
@@ -22,15 +22,15 @@
         }
     }
     .logo {
-        @extend %xxlarge;
-        @extend %title;
+        @include font-size(xxlarge);
+        @include font-type(text);
         color: $white;
         margin-bottom: 1rem;
         text-align: center;
 
     }
     .tagline {
-        @extend %xlarge;
+        @include font-size(xlarge);
         color: $white;
         line-height: 2rem;
         margin-bottom: 1rem;

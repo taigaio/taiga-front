@@ -13,8 +13,7 @@ section.sprints
             ng-if="totalMilestones"
             tg-check-permission="add_milestone"
         )
-            svg.icon.icon-add
-                use(xlink:href="#icon-add")
+            tg-svg(svg-icon="icon-add")
 
     div.sprints-empty(ng-if="totalMilestones === 0")
         img(
@@ -37,8 +36,7 @@ section.sprints
 
     a.filter-closed-sprints(href="", tg-backlog-toggle-closed-sprints-visualization,
                             ng-if="totalClosedMilestones")
-        svg.icon.icon-archive
-            use(xlink:href="#icon-archive")
+        tg-svg(svg-icon="icon-archive")
         span.text(translate="BACKLOG.SPRINTS.ACTION_SHOW_CLOSED_SPRINTS")
 
     div.sprint.sprint-closed(ng-repeat="sprint in closedSprints track by sprint.id",

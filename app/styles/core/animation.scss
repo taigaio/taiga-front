@@ -46,20 +46,6 @@
 }
 
 // Drop Down element animations
-@keyframes dropdownFade {
-    0% {
-        opacity: 0;
-        transform: translateY(-.25rem);
-    }
-    60% {
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(0);
-    }
-}
-
-// Drop Down element animations
 
 @keyframes dropdownFade {
     0% {

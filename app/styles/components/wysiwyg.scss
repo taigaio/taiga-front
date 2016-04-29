@@ -4,19 +4,19 @@
     overflow: auto;
     padding: 1rem;
     h1 {
-        @extend %xlarge;
-        @extend %text;
+        @include font-size(xlarge);
+        @include font-type(text);
         line-height: 2.5rem;
         text-transform: uppercase;
     }
     h2 {
-        @extend %large;
-        @extend %bold;
+        @include font-size(large);
+        @include font-type(bold);
         margin-bottom: .5rem;
         text-transform: uppercase;
     }
     h3 {
-        @extend %bold;
+        @include font-type(bold);
         text-transform: uppercase;
     }
     ul,
@@ -55,7 +55,7 @@
     }
     pre,
     code {
-        @extend %small;
+        @include font-size(small);
         background: lighten($grayer, 10%);
         color: $whitish;
         direction: ltr;

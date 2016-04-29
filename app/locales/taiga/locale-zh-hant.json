@@ -140,7 +140,8 @@
             "BLOCKED_NOTE": "已封鎖之筆記",
             "IS_BLOCKED": "封鎖",
             "REF": "Ref",
-            "VOTES": "投票數"
+            "VOTES": "投票數",
+            "SPRINT": "衝刺任務"
         },
         "ROLES": {
             "ALL": "所有"
@@ -355,7 +356,7 @@
     "HOME": {
         "PAGE_TITLE": "首頁 - Taiga",
         "PAGE_DESCRIPTION": "Taiga 首頁，你的主要專案以及任命，觀看使用者故事，任務與問題。",
-        "EMPTY_WORKING_ON": "<strong>It feels empty, doesn't it?</strong> Start working with Taiga and you'll see here the stories, tasks and issues you are workin on.",
+        "EMPTY_WORKING_ON": "<strong>It feels empty, doesn't it?</strong> Start working with Taiga and you'll see here the stories, tasks and issues you are working on.",
         "EMPTY_WATCHING": "<strong>Follow</strong> User Stories, Tasks, Issues in your projects and be notified about its changes :)",
         "EMPTY_PROJECT_LIST": "你尚無任何專案",
         "WORKING_ON_SECTION": "進行中",
@@ -556,9 +557,8 @@
             "PAGE_TITLE": "角色- {{projectName}}",
             "WARNING_NO_ROLE": "注意，你的專案中無角色可以評估使用者故事的點數",
             "HELP_ROLE_ENABLED": "當啟動時，被指派此角色的成員將可以評估使用者故事點數",
-            "DISABLE_COMPUTABLE_ALERT_TITLE": "Disable estimation for this role",
+            "DISABLE_COMPUTABLE_ALERT_TITLE": "Are you sure you want to disable this role estimations?",
             "DISABLE_COMPUTABLE_ALERT_SUBTITLE": "If you disable estimation permissions for role {{roleName}} all previous estimations made by this role will be removed",
-            "DISABLE_COMPUTABLE_ALERT_MESSAGE": "<strong>Are you sure you want to disable this role estimations?</strong>",
             "COUNT_MEMBERS": "{{ role.members_count }} 這類角色的成員",
             "TITLE_DELETE_ROLE": "删除角色",
             "REPLACEMENT_ROLE": "和此角色有關的使用者都將遭移除　",
@@ -699,7 +699,6 @@
             "ACCEPT": "接受",
             "REJECT": "Reject",
             "PROPOSE_OWNERSHIP": "<strong>{{owner}}</strong>, the current owner of the project <strong>{{project}}</strong> has asked that you become the new  project owner.",
-            "ADD_COMMENT_QUESTION": "Would you like to send a question to the project owner?",
             "ADD_COMMENT": "Would you like to add a comment for the project owner?",
             "UNLIMITED_PROJECTS": "Unlimited",
             "OWNER_MESSAGE": {
@@ -1413,6 +1412,7 @@
         "PLACEHOLDER_PAGE": "編寫你的維基頁",
         "REMOVE": "移除此維基頁　",
         "DELETE_LIGHTBOX_TITLE": "刪除維基頁",
+        "DELETE_LINK_TITLE": "Delete Wiki link",
         "NAVIGATION": {
             "SECTION_NAME": "連結",
             "ACTION_ADD_LINK": "新增連結"

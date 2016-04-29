@@ -19,8 +19,7 @@ div.wrapper(
         form.module-container
             .module.module-scrum(ng-class="{true:'active', false:''}[project.is_backlog_activated]")
                 .module-icon
-                    svg.icon.icon-scrum
-                        use(xlink:href="#icon-scrum")
+                    tg-svg(svg-icon="icon-scrum")
                 .module-name(translate="ADMIN.MODULES.BACKLOG")
                 .module-desc
                     p(translate="ADMIN.MODULES.BACKLOG_DESCRIPTION")
@@ -47,9 +46,10 @@ div.wrapper(
                                 placeholder="{{'ADMIN.MODULES.NUMBER_US_POINTS_HELP' | translate}}"
                                 ng-model="project.total_story_points"
                                 data-type="digits"
-                            )
-                        svg.icon.icon-save(ng-if="project.is_backlog_activated")
-                            use(xlink:href="#icon-save")
+                             )
+                        .options
+                            a.save(href="", ng-if="project.is_backlog_activated")
+                                tg-svg(svg-icon="icon-save")
                 .module-activation.module-direct-active
                     div.check
                         input.activate-input(
@@ -65,8 +65,7 @@ div.wrapper(
 
             .module.module-kanban(ng-class="{true:'active', false:''}[project.is_kanban_activated]")
                 .module-icon
-                    svg.icon.icon-kanban
-                        use(xlink:href="#icon-kanban")
+                    tg-svg(svg-icon="icon-kanban")
                 .module-name(translate="ADMIN.MODULES.KANBAN")
                 .module-desc(translate="ADMIN.MODULES.KANBAN_DESCRIPTION")
                 .module-activation.module-direct-active
@@ -84,8 +83,7 @@ div.wrapper(
 
             .module.module-issues(ng-class="{true:'active', false:''}[project.is_issues_activated]")
                 .module-icon
-                    svg.icon.icon-issues
-                        use(xlink:href="#icon-issues")
+                    tg-svg(svg-icon="icon-issues")
                 .module-name(translate="ADMIN.MODULES.ISSUES")
                 .module-desc(translate="ADMIN.MODULES.ISSUES_DESCRIPTION")
                 .module-activation.module-direct-active
@@ -103,8 +101,7 @@ div.wrapper(
 
             .module.module-wiki(ng-class="{true:'active', false:''}[project.is_wiki_activated]")
                 .module-icon
-                    svg.icon.icon-wiki
-                        use(xlink:href="#icon-wiki")
+                    tg-svg(svg-icon="icon-wiki")
                 .module-name(translate="ADMIN.MODULES.WIKI")
                 .module-desc(translate="ADMIN.MODULES.WIKI_DESCRIPTION")
                 .module-activation.module-direct-active
@@ -122,8 +119,7 @@ div.wrapper(
 
             .module.module-videoconference(ng-class="{true:'active', false:''}[isVideoconferenceActivated]")
                 .module-icon
-                    svg.icon.icon-bubble-empty
-                        use(xlink:href="#icon-bubble-empty")
+                    tg-svg(svg-icon="icon-bubble-empty")
                 .module-name(translate="ADMIN.MODULES.MEETUP")
                 .module-desc
                     p(translate="ADMIN.MODULES.MEETUP_DESCRIPTION")
@@ -157,8 +153,9 @@ div.wrapper(
                                 data-type="url"
                                 data-required="true"
                             )
-                        svg.icon.icon-save(ng-if="project.videoconferences")
-                            use(xlink:href="#icon-save")
+                        fieldset.options
+                            a.save(href="", ng-if="project.videoconferences")
+                                tg-svg(svg-icon="icon-save")
 
                 .module-activation
                     div.check

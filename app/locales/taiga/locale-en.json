@@ -140,7 +140,8 @@
             "BLOCKED_NOTE": "blocked note",
             "IS_BLOCKED": "is blocked",
             "REF": "Ref",
-            "VOTES": "Votes"
+            "VOTES": "Votes",
+            "SPRINT": "Sprint"
         },
         "ROLES": {
             "ALL": "All"
@@ -224,6 +225,7 @@
             "CODE_BLOCK_SAMPLE_TEXT": "Your text here...",
             "PREVIEW_BUTTON": "Preview",
             "EDIT_BUTTON": "Edit",
+            "ATTACH_FILE_HELP": "Attach files by dragging & dropping on the textarea above.",
             "MARKDOWN_HELP": "Markdown syntax help"
         },
         "PERMISIONS_CATEGORIES": {
@@ -355,7 +357,7 @@
     "HOME": {
         "PAGE_TITLE": "Home - Taiga",
         "PAGE_DESCRIPTION": "The Taiga home page with your main projects and all your assigned and watched user stories, tasks and issues",
-        "EMPTY_WORKING_ON": "<strong>It feels empty, doesn't it?</strong> Start working with Taiga and you'll see here the stories, tasks and issues you are workin on.",
+        "EMPTY_WORKING_ON": "<strong>It feels empty, doesn't it?</strong> Start working with Taiga and you'll see here the stories, tasks and issues you are working on.",
         "EMPTY_WATCHING": "<strong>Follow</strong> User Stories, Tasks, Issues in your projects and be notified about its changes :)",
         "EMPTY_PROJECT_LIST": "You don't have any projects yet",
         "WORKING_ON_SECTION": "Working on",
@@ -556,9 +558,8 @@
             "PAGE_TITLE": "Roles - {{projectName}}",
             "WARNING_NO_ROLE": "Be careful, no role in your project will be able to estimate the point value for user stories",
             "HELP_ROLE_ENABLED": "When enabled, members assigned to this role will be able to estimate the point value for user stories",
-            "DISABLE_COMPUTABLE_ALERT_TITLE": "Disable estimation for this role",
+            "DISABLE_COMPUTABLE_ALERT_TITLE": "Are you sure you want to disable this role estimations?",
             "DISABLE_COMPUTABLE_ALERT_SUBTITLE": "If you disable estimation permissions for role {{roleName}} all previous estimations made by this role will be removed",
-            "DISABLE_COMPUTABLE_ALERT_MESSAGE": "<strong>Are you sure you want to disable this role estimations?</strong>",
             "COUNT_MEMBERS": "{{ role.members_count }} members with this role",
             "TITLE_DELETE_ROLE": "Delete Role",
             "REPLACEMENT_ROLE": "All the users with this role will be moved to",
@@ -699,7 +700,6 @@
             "ACCEPT": "Accept",
             "REJECT": "Reject",
             "PROPOSE_OWNERSHIP": "<strong>{{owner}}</strong>, the current owner of the project <strong>{{project}}</strong> has asked that you become the new  project owner.",
-            "ADD_COMMENT_QUESTION": "Would you like to send a question to the project owner?",
             "ADD_COMMENT": "Would you like to add a comment for the project owner?",
             "UNLIMITED_PROJECTS": "Unlimited",
             "OWNER_MESSAGE": {
@@ -1413,6 +1413,7 @@
         "PLACEHOLDER_PAGE": "Write your wiki page",
         "REMOVE": "Remove this wiki page",
         "DELETE_LIGHTBOX_TITLE": "Delete Wiki Page",
+        "DELETE_LINK_TITLE": "Delete Wiki link",
         "NAVIGATION": {
             "SECTION_NAME": "Links",
             "ACTION_ADD_LINK": "Add link"

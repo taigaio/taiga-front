@@ -18,12 +18,18 @@
                         tg-nav="project:project=vm.item.get('slug')"
                         title="{{ ::vm.item.get('name') }}"
                     ) {{ ::vm.item.get('name') }}
-                    svg.icon.icon-lock.private(ng-if="::vm.item.get('project_is_private')")
-                        use(xlink:href="#icon-lock")
-                            title {{'PROJECT.PRIVATE' | translate}}"
-                    svg.icon.icon-blocked-project(ng-if="vm.item.get('project_blocked_code')")
-                        use(xlink:href="#icon-blocked-project")
-                            title(translate="PROJECT.BLOCKED_PROJECT.BLOCKED")
+
+                    tg-svg(
+                        ng-if="::vm.item.get('is_private')"
+                        svg-icon="icon-lock"
+                        svg-title-translate="PROJECT.PRIVATE"
+                    )
+
+                    tg-svg(
+                        ng-if="vm.item.get('blocked_code')"
+                        svg-icon="icon-blocked-project"
+                        svg-title-translate="PROJECT.BLOCKED_PROJECT.BLOCKED"
+                    )
                 p.list-itemtype-project-description {{ ::vm.item.get('description') }}
 
     .list-itemtype-track
@@ -31,14 +37,12 @@
             ng-class="{'active': vm.item.get('is_fan')}"
             title="{{ 'PROJECT.LIKE_BUTTON.COUNTER_TITLE'|translate:{total:vm.item.get(\"total_fans\")||0}:'messageformat' }}"
          )
-            svg.icon.icon-like
-                use(xlink:href="#icon-like")
+            tg-svg(svg-icon="icon-like")
             span {{ ::vm.item.get('total_fans') }}
 
         span.list-itemtype-track-watchers(
             ng-class="{'active': vm.item.get('is_watcher')}"
             title="{{ 'PROJECT.WATCH_BUTTON.COUNTER_TITLE'|translate:{total:vm.item.get(\"total_watchers\")||0}:'messageformat' }}"
         )
-            svg.icon.icon-watch
-                use(xlink:href="#icon-watch")
+            tg-svg(svg-icon="icon-watch")
             span {{ ::vm.item.get('total_watchers') }}

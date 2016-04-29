@@ -5,33 +5,21 @@
         width: 100%;
     }
     h2 {
-        @extend %text;
-        @extend %large;
+        @include font-type(text);
+        @include font-size(large);
         margin-bottom: 0;
     }
     fieldset {
         border-bottom: 1px solid $whitish;
         margin-bottom: 1rem;
-        padding-bottom: 1rem;
     }
-    .contrib-input {
-        flex: 1;
-    }
-    .contrib-test {
-        align-items: center;
-        display: flex;
-        flex-basis: 7.5rem;
-        justify-content: center;
-        margin-left: .5rem;
-        text-align: center;
+    input {
+        margin-bottom: 1rem;
     }
     label {
-        @extend %text;
+        @include font-type(text);
         display: block;
         margin-bottom: .25rem;
-    }
-    .contrib-form-wrapper {
-        display: flex;
     }
     .submit-button {
         display: block;
@@ -48,67 +36,18 @@
             border-radius: 0 5px 5px 0;
             cursor: pointer;
             display: flex;
+            margin-bottom: 1rem;
             padding: 0 1rem;
-        }
-        .help-copy {
-            @extend %small;
-            opacity: 0;
-            &.visible {
-                opacity: 1;
-                transition: opacity .2s linear;
-            }
         }
     }
     .check-item {
         align-items: center;
-        // border-bottom: 1px solid $whitish;
         display: flex;
         justify-content: space-between;
         margin-top: 1rem;
         &:last-child {
             border-bottom: 0;
-        }
-    }
-    .help {
-        margin-top: 2rem;
-        h3 {
-            font-family: opensans-semibold;
             margin-bottom: 1rem;
-        }
-        ol {
-            padding: 0 0 0 2rem;
-            span {
-                font-family: opensans-semibold;
-            }
-        }
-        .img {
-            margin-bottom: 1rem;
-        }
-        .alt-image {
-            @extend %small;
-            font-style: italic;
-        }
-        code {
-            @extend %small;
-            background: $whitish;
-            direction: ltr;
-            display: block;
-            font-family: 'courier new', 'monospace';
-            line-height: 1.4rem;
-            margin-bottom: 1rem;
-            padding: .5rem;
-            unicode-bidi: embed;
-            white-space: pre;
-            width: 100%;
-        }
-        .code-info {
-            padding-left: 1rem;
-            li {
-                margin-bottom: .5rem;
-            }
-            span {
-                font-family: opensans-semibold;
-            }
         }
     }
 }

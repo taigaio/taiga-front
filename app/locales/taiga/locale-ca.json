@@ -140,7 +140,8 @@
             "BLOCKED_NOTE": "Nota de bloqueig",
             "IS_BLOCKED": "està bloquejat",
             "REF": "Ref",
-            "VOTES": "Vots"
+            "VOTES": "Vots",
+            "SPRINT": "Sprint"
         },
         "ROLES": {
             "ALL": "Tot"
@@ -355,7 +356,7 @@
     "HOME": {
         "PAGE_TITLE": "Home - Taiga",
         "PAGE_DESCRIPTION": "La home de Taiga amb els teus projectes principals, totes les històries d'usuari, tasques i incidències que tens assignades i aquelles que estàs Watching",
-        "EMPTY_WORKING_ON": "<strong>Sembla buit, no?</strong> Comenceu a treballar amb Taiga i voràs ací les históries, tasques e incidències en les que estás treballant.",
+        "EMPTY_WORKING_ON": "<strong>It feels empty, doesn't it?</strong> Start working with Taiga and you'll see here the stories, tasks and issues you are working on.",
         "EMPTY_WATCHING": "<strong>Segueix</strong> históries, tasques e incidéncies en els teus project i rep notificacions quan canvien :)",
         "EMPTY_PROJECT_LIST": "No tens cap projecte encara",
         "WORKING_ON_SECTION": "En Progrés",
@@ -556,9 +557,8 @@
             "PAGE_TITLE": "Rols - {{projectName}}",
             "WARNING_NO_ROLE": "Ves amb compte, cap rol en el teu projecte pot estimar punts per a les històries d'usuari",
             "HELP_ROLE_ENABLED": "Si està activat, els membres assignats a aquest rol podràn estimar els punts d'històries d'usuaris",
-            "DISABLE_COMPUTABLE_ALERT_TITLE": "Disable estimation for this role",
+            "DISABLE_COMPUTABLE_ALERT_TITLE": "Are you sure you want to disable this role estimations?",
             "DISABLE_COMPUTABLE_ALERT_SUBTITLE": "If you disable estimation permissions for role {{roleName}} all previous estimations made by this role will be removed",
-            "DISABLE_COMPUTABLE_ALERT_MESSAGE": "<strong>Are you sure you want to disable this role estimations?</strong>",
             "COUNT_MEMBERS": "{{ role.members_count }} membres amb aquest rol",
             "TITLE_DELETE_ROLE": "Esborrar rol",
             "REPLACEMENT_ROLE": "Tots els usuaris amb aquest rol es canviaran a",
@@ -699,7 +699,6 @@
             "ACCEPT": "Acceptar",
             "REJECT": "Reject",
             "PROPOSE_OWNERSHIP": "<strong>{{owner}}</strong>, the current owner of the project <strong>{{project}}</strong> has asked that you become the new  project owner.",
-            "ADD_COMMENT_QUESTION": "Would you like to send a question to the project owner?",
             "ADD_COMMENT": "Would you like to add a comment for the project owner?",
             "UNLIMITED_PROJECTS": "Unlimited",
             "OWNER_MESSAGE": {
@@ -1413,6 +1412,7 @@
         "PLACEHOLDER_PAGE": "Esciu pàgina del Wiki",
         "REMOVE": "Esborrar pàgina de Wiki",
         "DELETE_LIGHTBOX_TITLE": "Esborrar pàgina de Wiki",
+        "DELETE_LINK_TITLE": "Delete Wiki link",
         "NAVIGATION": {
             "SECTION_NAME": "Enllaços",
             "ACTION_ADD_LINK": "Afegir link"

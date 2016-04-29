@@ -8,14 +8,13 @@
     padding: .5rem;
     padding-right: 0;
     h2 {
-        @extend %normal;
-        @extend %text;
+        @include font-type(text);
         line-height: 1.4;
         margin-bottom: 0;
         text-transform: none;
     }
     p {
-        @extend %light;
+        @include font-type(light);
         margin-bottom: 0;
     }
     .list-itemtype-avatar {
@@ -36,13 +35,12 @@
         .list-itemtype-track,
         .list-itemtype-project-image,
         .list-itemtype-project-name,
-        .list-itemtype-project-description,
-        .list-itemtype-project-private {
+        .list-itemtype-project-description {
             opacity: .4;
         }
     }
     h2 {
-        @extend %large;
+        @include font-size(large);
     }
     .icon-blocked-project {
         @include svg-size(.75rem);
@@ -71,13 +69,6 @@
             width: 2rem;
         }
     }
-    .list-itemtype-project-tags {
-        align-self: flex-end;
-        display: flex;
-        flex: 3;
-        flex-wrap: wrap;
-        margin-top: .5rem;
-    }
     .tag {
         align-self: flex-end;
         margin: 0 .25rem .25rem 0;
@@ -92,6 +83,7 @@
         .ticket-project,
         .ticket-type,
         .ticket-status,
+        .ticket-id,
         .list-itemtype-avatar,
         .list-itemtype-track,
         .ticket-title {
@@ -99,10 +91,11 @@
         }
         .icon-blocked-project {
             @include svg-size();
+            margin-left: .25rem;
         }
     }
     h2 {
-        @extend %medium;
+        @include font-size(medium);
     }
     .ticket-type,
     .ticket-project {
@@ -129,16 +122,11 @@
 .list-itemtype-user {
     @include list-itemtype-common;
     h2 {
-        @extend %large;
+        @include font-size(large);
     }
     .extra-info {
-        @extend %small;
-        @extend %light;
+        @include font-size(small);
+        @include font-type(light);
         margin-top: .25rem;
     }
-}
-
-.list-itemtype-timeline {
-    @include list-itemtype-common;
-
 }

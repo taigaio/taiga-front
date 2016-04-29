@@ -1,5 +1,4 @@
-svg.close.icon.icon-close(title="{{'COMMON.CLOSE' | translate}}")
-    use(xlink:href="#icon-close")
+tg-lightbox-close
 form
     header
         h1.title(translate="WIZARD.SECTION_TITLE_CREATE_PROJECT")
@@ -10,12 +9,6 @@ form
     section.template-option
         .template-selector-title
             legend(translate="WIZARD.CHOOSE_TEMPLATE")
-            // UX issue
-            //- a.more-info(
-            //-     href=""
-            //-     title="{{ 'WIZARD.CHOOSE_TEMPLATE_TITLE' | translate }}"
-            //-     translate="WIZARD.CHOOSE_TEMPLATE_INFO"
-            //- )
         .template-selector
             fieldset(ng-repeat="template in templates")
                 input(
@@ -27,8 +20,7 @@ form
                     data-required="true"
                 )
                 label.template-label(for="template-{{ template.id }}")
-                    svg.icon(ng-class="'icon-'+template.slug")
-                        use(xlink:href="{{'#icon-' + template.slug }}")
+                    tg-svg(svg-icon="{{'icon-'+template.slug}}")
                     span.template-name {{ template.name }}
         .template-data
             legend(translate="WIZARD.PROJECT_DETAILS")
@@ -64,8 +56,7 @@ form
                     ng-checked="canCreatePublicProjects.valid"
                 )
                 label.template-privacity(for="template-public")
-                    svg.icon.icon-discover
-                        use(xlink:href="#icon-discover")
+                    tg-svg(svg-icon="icon-discover")
                     span(translate="WIZARD.PUBLIC_PROJECT")
             fieldset
                 input(
@@ -81,12 +72,11 @@ form
                     ng-checked="!canCreatePublicProjects.valid"
                 )
                 label.template-privacity(for="template-private")
-                    svg.icon.icon-lock
-                        use(xlink:href="#icon-lock")
+                    tg-svg(svg-icon="icon-lock")
                     span(translate="WIZARD.PRIVATE_PROJECT")
-        
+
         tg-create-project-restriction
-        
+
         button.button-green.submit-button(
             translate="WIZARD.CREATE_PROJECT"
             title="{{'WIZARD.CREATE_PROJECT' | translate}}"

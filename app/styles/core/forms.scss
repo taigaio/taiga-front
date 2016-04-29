@@ -40,12 +40,20 @@ textarea {
         padding: .2rem;
     }
 }
-.icon-capslock {
-    bottom: .8rem;
-    display: none;
-    fill: $gray;
-    height: .9rem;
-    position: absolute;
-    right: 1rem;
-    width: .9rem;
+.capslock {
+    &.ng-enter {
+        animation: dropdownFade .2s ease-in;
+    }
+    &.ng-leave {
+        animation: dropdownFade .2s ease-in;
+        animation-direction: reverse;
+    }
+    .icon-capslock {
+        bottom: .8rem;
+        fill: $gray;
+        height: .9rem;
+        position: absolute;
+        right: 1rem;
+        width: .9rem;
+    }
 }

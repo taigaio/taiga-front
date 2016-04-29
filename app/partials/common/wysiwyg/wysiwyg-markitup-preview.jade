@@ -1,6 +1,8 @@
 .preview
     .actions
-        svg.edit.icon.icon-edit(title="{{'COMMON.WYSIWYG.EDIT_BUTTON' | translate}}")
-            use(xlink:href="#icon-edit")
+        tg-svg.edit(
+            svg-icon="icon-edit",
+            svg-title-translate="COMMON.WYSIWYG.EDIT_BUTTON"
+        )
         .content.wysiwyg
             | <%= data %>

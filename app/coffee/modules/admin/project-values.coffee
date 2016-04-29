@@ -137,22 +137,31 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame, $tra
         itemEl = null
         tdom = $el.find(".sortable")
 
-        tdom.sortable({
-            handle: ".row.table-main.visualization",
-            dropOnEmpty: true
-            connectWith: ".project-values-body"
-            revert: 400
-            axis: "y"
+        drake = dragula([tdom[0]], {
+            direction: 'vertical',
+            copySortSource: false,
+            copy: false,
+            mirrorContainer: tdom[0],
+            moves: (item) -> return $(item).is('div[tg-bind-scope]')
         })
 
-        tdom.on "sortstop", (event, ui) ->
-            itemEl = ui.item
+        drake.on 'dragend', (item) ->
+            itemEl = $(item)
             itemValue = itemEl.scope().value
             itemIndex = itemEl.index()
             $scope.$broadcast("admin:project-values:move", itemValue, itemIndex)
 
+        scroll = autoScroll(window, {
+            margin: 20,
+            pixels: 30,
+            scrollWhenOutside: true,
+            autoScroll: () ->
+                return this.down && drake.dragging;
+        })
+
         $scope.$on "$destroy", ->
             $el.off()
+            drake.destroy()
 
     ## Value Link
 
@@ -441,7 +450,7 @@ class ProjectCustomAttributesController extends mixOf(taiga.Controller, taiga.Pa
     loadCustomAttributes: =>
         return @rs.customAttributes[@scope.type].list(@scope.projectId).then (customAttributes) =>
             @scope.customAttributes = customAttributes
-            @scope.maxOrder = _.maxBy(customAttributes, "order").order
+            @scope.maxOrder = _.maxBy(customAttributes, "order")?.order
             return customAttributes
 
     createCustomAttribute: (attrValues) =>
@@ -483,16 +492,16 @@ ProjectCustomAttributesDirective = ($log, $confirm, animationFrame, $translate) 
         # Drag & Drop
         ##################################
         sortableEl = $el.find(".js-sortable")
-
-        sortableEl.sortable({
-            handle: ".js-view-custom-field",
-            dropOnEmpty: true
-            revert: 400
-            axis: "y"
+        drake = dragula([sortableEl[0]], {
+            direction: 'vertical',
+            copySortSource: false,
+            copy: false,
+            mirrorContainer: sortableEl[0],
+            moves: (item) -> return $(item).is('div[tg-bind-scope]')
         })
 
-        sortableEl.on "sortstop", (event, ui) ->
-            itemEl = ui.item
+        drake.on 'dragend', (item) ->
+            itemEl = $(item)
             itemAttr = itemEl.scope().attr
             itemIndex = itemEl.index()
             $ctrl.moveCustomAttributes(itemAttr, itemIndex)

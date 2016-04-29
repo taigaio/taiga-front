@@ -73,21 +73,24 @@ class TransferProject
         @.validNumberOfMemberships = maxMemberships == null || @.project.get('total_memberships') <= maxMemberships
 
     transferAccept: (token, reason) ->
+        @.loadingAccept = true
         return @projectService.transferAccept(@.project.get("id"), token, reason).then () =>
             newUrl = @navUrls.resolve("project-admin-project-profile-details", {
                 project: @.project.get("slug")
             })
+            @.loadingAccept = false
             @location.path(newUrl)
 
             @confirmService.notify("success", @translate.instant("ADMIN.PROJECT_TRANSFER.ACCEPTED_PROJECT_OWNERNSHIP"), '', 5000)
-
             return
 
     transferReject: (token, reason) ->
+        @.loadingReject = true
         return @projectService.transferReject(@.project.get("id"), token, reason).then () =>
-            newUrl = @navUrls.resolve("project-admin-project-profile-details", {
+            newUrl = @navUrls.resolve("home", {
                 project: @project.get("slug")
             })
+            @.loadingReject = false
             @location.path(newUrl)
             @confirmService.notify("success", @translate.instant("ADMIN.PROJECT_TRANSFER.REJECTED_PROJECT_OWNERNSHIP"), '', 5000)
 

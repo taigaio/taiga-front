@@ -8,13 +8,13 @@
         margin: 0 auto;
         width: 2.5rem;
         img {
-            @extend %loading-spinner;
+            @include loading-spinner;
             width: 100%;
         }
     }
     h3 {
-        @extend %bold;
-        @extend %large;
+        @include font-type(bold);
+        @include font-size(large);
         background: $whitish;
         color: $gray;
         margin: .5rem;

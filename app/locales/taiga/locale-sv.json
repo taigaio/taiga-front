@@ -35,7 +35,7 @@
         "ONE_ITEM_LINE": "En post per rad ...",
         "NEW_BULK": "Lägg till flera nya",
         "RELATED_TASKS": "Besläktade uppgifter",
-        "LOGOUT": "Logg  ut",
+        "LOGOUT": "Logga  ut",
         "EXTERNAL_USER": "en extern användare",
         "GENERIC_ERROR": "En av våra Oompa Loompier säger {{error}}.",
         "IOCAINE_TEXT": "Känner du dig lite bortkommen med en uppgift? Försäkra dig om att andra känner till uppgiften när du klickar på Iocaine-knappen när du ändrar uppgiften. Det är möjligt att bli immun till det här (påhittade) dödliga giftet om du tar små mängder över tid - och du kan även så småningom om bli bättre på vad du gör när du då och då tar på dig större utmaningar!",
@@ -140,20 +140,21 @@
             "BLOCKED_NOTE": "blockerad notering",
             "IS_BLOCKED": "är blockerad",
             "REF": "Ref. ",
-            "VOTES": "Röster"
+            "VOTES": "Röster",
+            "SPRINT": "Sprint"
         },
         "ROLES": {
             "ALL": "Alla"
         },
         "ASSIGNED_TO": {
             "NOT_ASSIGNED": "Ej tilldelad",
-            "ASSIGN": "Assign",
+            "ASSIGN": "Tilldela",
             "DELETE_ASSIGNMENT": "Ta bort tilldelning",
             "REMOVE_ASSIGNED": "Ta bort tilldelning",
             "TOO_MANY": "... för många användare, fortsätter filtreringen",
             "CONFIRM_UNASSIGNED": "Vill du lämna det utan att tilldela det? ",
             "TITLE_ACTION_EDIT_ASSIGNMENT": "Redigera tilldelning",
-            "SELF": "Assign to me"
+            "SELF": "Tilldela mig"
         },
         "STATUS": {
             "CLOSED": "Stängd",
@@ -355,7 +356,7 @@
     "HOME": {
         "PAGE_TITLE": "Hem - Taiga",
         "PAGE_DESCRIPTION": "Taiga hemsida med dina viktigaste projekt, alla dina tilldelade  användaruppgifter, uppdrag och frågor",
-        "EMPTY_WORKING_ON": "<strong>Känns tråkigt utan innehåll, eller hur?`</strong> Börja att arbeta med Taiga och du vill se uppgifter, uppdrag och ärenden du arbetar med. ",
+        "EMPTY_WORKING_ON": "<strong>It feels empty, doesn't it?</strong> Start working with Taiga and you'll see here the stories, tasks and issues you are working on.",
         "EMPTY_WATCHING": "<strong>Follow</strong> User Stories, Tasks, Issues in your projects and be notified about its changes :)",
         "EMPTY_PROJECT_LIST": "Du har inte än några projekt",
         "WORKING_ON_SECTION": "Arbetar med",
@@ -556,9 +557,8 @@
             "PAGE_TITLE": "Roller - {{projectName}}",
             "WARNING_NO_ROLE": "Var försiktig. Inga roller i ditt projekt kan estimera poängvärden för användarhistorier",
             "HELP_ROLE_ENABLED": "När det är aktivt, vill medlemmarna tilldelad den här rollen kunna estimera punktvärlden för användarhistorier",
-            "DISABLE_COMPUTABLE_ALERT_TITLE": "Avaktivera beräkningar för den  här rollen",
+            "DISABLE_COMPUTABLE_ALERT_TITLE": "ÄR du säker på att du vill avvaktivera den här rollens beräkningar?",
             "DISABLE_COMPUTABLE_ALERT_SUBTITLE": "Om du avaktiverar behörigheter för beräkning för rollen  {{roleName}} vill alla tidigare beräkningar gjord av den här rollen tas bort. ",
-            "DISABLE_COMPUTABLE_ALERT_MESSAGE": "<strong>ÄR du säker på att du vill avvaktivera den här rollens beräkningar?</strong>",
             "COUNT_MEMBERS": "{{ role.members_count }} medlemmar med den här rollen",
             "TITLE_DELETE_ROLE": "Ta bort rollen",
             "REPLACEMENT_ROLE": "Alla användarna med den här rollen vill flyttas till",
@@ -693,13 +693,12 @@
         },
         "PROJECT_TRANSFER": {
             "DO_YOU_ACCEPT_PROJECT_OWNERNSHIP": "Would you like to become the new project owner?",
-            "PRIVATE": "Private",
+            "PRIVATE": "Privat",
             "ACCEPTED_PROJECT_OWNERNSHIP": "Congratulations! You're now the new project owner.",
             "REJECTED_PROJECT_OWNERNSHIP": "OK. We'll contact the current project owner",
             "ACCEPT": "Acceptera",
             "REJECT": "Reject",
             "PROPOSE_OWNERSHIP": "<strong>{{owner}}</strong>, the current owner of the project <strong>{{project}}</strong> has asked that you become the new  project owner.",
-            "ADD_COMMENT_QUESTION": "Would you like to send a question to the project owner?",
             "ADD_COMMENT": "Would you like to add a comment for the project owner?",
             "UNLIMITED_PROJECTS": "Unlimited",
             "OWNER_MESSAGE": {
@@ -795,24 +794,24 @@
             "PLACEHOLDER_SEARCH": "Sök i ...",
             "ACTION_CREATE_PROJECT": "Skapa projekt",
             "ACTION_IMPORT_PROJECT": "Importerar projekt",
-            "MANAGE_PROJECTS": "Manage projects",
+            "MANAGE_PROJECTS": "Hantera projekt",
             "TITLE_CREATE_PROJECT": "Skapa projekt",
             "TITLE_IMPORT_PROJECT": "Importerar projekt",
             "TITLE_PRVIOUS_PROJECT": "Visa tidigare projekt",
             "TITLE_NEXT_PROJECT": "Visa nästa projekt",
             "HELP_TITLE": "Taiga hjälpsida",
             "HELP": "Hjälp",
-            "HOMEPAGE": "Homepage",
+            "HOMEPAGE": "Webbplats",
             "FEEDBACK_TITLE": "Skicka återkoppling",
-            "FEEDBACK": "Återkokppling",
+            "FEEDBACK": "Återkoppling",
             "NOTIFICATIONS_TITLE": "Ändra inställningar för dina notifieringar",
             "NOTIFICATIONS": "Notifieringar",
             "ORGANIZATIONS_TITLE": "Ändra dina organisationer",
             "ORGANIZATIONS": "Ändra organizationer",
             "SETTINGS_TITLE": "Ändra inställningarna",
             "SETTINGS": "Inställningar",
-            "VIEW_PROFILE_TITLE": "Vis profil",
-            "VIEW_PROFILE": "Vis profil",
+            "VIEW_PROFILE_TITLE": "Visa profil",
+            "VIEW_PROFILE": "Visa profil",
             "EDIT_PROFILE_TITLE": "Ändra din profil",
             "EDIT_PROFILE": "Ändra profil",
             "CHANGE_PASSWORD_TITLE": "Byt lösenord",
@@ -889,7 +888,7 @@
             "CONFIRM": "Är du säker på att du vill radera kontot?",
             "NEWSLETTER_LABEL_TEXT": "Jag vill inte motta flera nyhetsbrev",
             "CANCEL": "Back to settings",
-            "ACCEPT": "Delete account",
+            "ACCEPT": "Ta bort konto",
             "BLOCK_PROJECT": "Note that all the projects you own projects will be <strong>blocked</strong> after you delete your account. If you do want a project blocked, transfer ownership to another member of each project prior to deleting your account.",
             "SUBTITLE": "Sorry to see you go. We'll be here if you should ever consider us again! :("
         },
@@ -964,7 +963,7 @@
         },
         "CHANGE_OWNER": {
             "TITLE": "Who do you want to be the new project owner?",
-            "ADD_COMMENT": "Add comment",
+            "ADD_COMMENT": "Lägg till kommentar",
             "BUTTON": "Ask this project member to become the new project owner"
         }
     },
@@ -1368,7 +1367,7 @@
             "USER_PROFILE": "Användarprofil",
             "CHANGE_PASSWORD": "Ändra lösenord",
             "NOTIFICATIONS": "Notifieringar",
-            "FEEDBACK": "Återkokppling",
+            "FEEDBACK": "Återkoppling",
             "TITLE_AVATAR": "Inställningar för användare"
         }
     },
@@ -1413,6 +1412,7 @@
         "PLACEHOLDER_PAGE": "Skriv din wiki-sida",
         "REMOVE": "Ta bort den här wiki-sidan",
         "DELETE_LIGHTBOX_TITLE": "Ta bort Wiki-sida",
+        "DELETE_LINK_TITLE": "Delete Wiki link",
         "NAVIGATION": {
             "SECTION_NAME": "Länkar",
             "ACTION_ADD_LINK": "Lägg till länk"

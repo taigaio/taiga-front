@@ -1,16 +1,17 @@
-div(class!="type-data <% if(editable){ %>clickable<% }%>")
-    span(class="level", style!="background-color:<%- type.color %>")
-    span(class="type-type") <%- type.name %>
+.type-data(class!="<% if(editable){ %>clickable<% }%>")
+    span.level(style!="background-color:<%- type.color %>")
+    span.type-type <%- type.name %>
     <% if(editable){ %>
-    svg.icon.icon-arrow-down
-        use(xlink:href="#icon-arrow-down")
+    tg-svg(svg-icon="icon-arrow-down")
     <% }%>
-    span(class="level-name", translate="COMMON.FIELDS.TYPE")
+    span.level-name(translate="COMMON.FIELDS.TYPE")
 
-    ul(class="popover pop-type")
+    ul.popover.pop-type
         <% _.each(typees, function(tp) { %>
         li
-            a(href="", class="type", title!="<%- tp.name %>",
-               data-type-id!="<%- tp.id %>")
-                | <%- tp.name %>
+            a.type(
+                href=""
+                title!="<%- tp.name %>"
+                data-type-id!="<%- tp.id %>"
+            ) <%- tp.name %>
         <% }); %>

@@ -13,8 +13,7 @@
                     href=""
                     title="{{'PROJECT.NAVIGATION.TITLE_IMPORT_PROJECT' | translate}}"
                 )
-                    svg.icon.icon-upload
-                        use(xlink:href="#icon-upload")
+                    tg-svg(svg-icon="icon-upload")
                 input.import-file.hidden(type="file")
 
     section.project-list-section
@@ -44,23 +43,26 @@
                                         tg-nav="project:project=project.get('slug')"
                                         title="{{ ::project.get('name') }}"
                                     ) {{project.get('name')}}
-                                    svg.icon.icon-lock.private(ng-if="project.get('is_private')")
-                                        use(xlink:href="#icon-lock")
-                                            title {{'PROJECT.PRIVATE' | translate}}"
-                                    
-                                    svg.icon.icon-badge(ng-if="project.get('i_am_owner')")
-                                        use(xlink:href="#icon-badge")
-                                            title(translate="COMMON.OWNER")
-                                    svg.icon.icon-blocked-project(ng-if="project.get('blocked_code')")
-                                        use(xlink:href="#icon-blocked-project")
-                                            title(translate="PROJECT.BLOCKED_PROJECT.BLOCKED")
-                                            
-                                            
+                                    tg-svg(
+                                        ng-if="project.get('is_private')",
+                                        svg-icon="icon-lock",
+                                        svg-title-translate="PROJECT.PRIVATE"
+                                    )
+                                    tg-svg(
+                                        ng-if="project.get('i_am_owner')",
+                                        svg-icon="icon-badge",
+                                        svg-title-translate="COMMON.OWNER"
+                                    )
+                                    tg-svg(
+                                        ng-if="project.get('blocked_code')",
+                                        svg-icon="icon-blocked-project",
+                                        svg-title-translate="PROJECT.BLOCKED_PROJECT.BLOCKED"
+                                    )
+
                                 p.project-description {{ ::project.get('description') | limitTo:300 }}
                                     span(ng-if="::project.get('description').length > 300") ...
 
-                    svg.drag.icon.icon-drag
-                        use(xlink:href="#icon-drag")
+                    tg-svg.drag(svg-icon="icon-drag")
 
         aside.help-area
             p(translate="PROJECT.HELP")

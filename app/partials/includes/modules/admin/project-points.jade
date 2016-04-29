@@ -18,8 +18,7 @@ section.project-values-table
             div(ng-repeat="value in values track by value.id", tg-bind-scope)
                 form(tg-bind-scope)
                     div.project-values-row.row.table-main.visualization
-                        svg.icon.icon-drag
-                            use(xlink:href="#icon-drag")
+                        tg-svg(svg-icon="icon-drag")
 
                         div.project-values-name
                             span {{ value.name }}
@@ -28,10 +27,16 @@ section.project-values-table
                             span {{ value.value }}
 
                         div.project-values-settings
-                            svg.edit-value.icon.icon-edit(title="{{'ADMIN.POINTS.TITLE_ACTION_EDIT_VALUE' | translate}}")
-                                use(xlink:href="#icon-edit")
-                            svg.delete-value.icon.icon-trash(title="{{'ADMIN.POINTS.TITLE_ACTION_DELETE_VALUE' | translate}}")
-                                use(xlink:href="#icon-trash")
+                            a.edit-value(href="")
+                                tg-svg(
+                                    title="{{'ADMIN.COMMON.TITLE_ACTION_EDIT_VALUE' | translate}}",
+                                    svg-icon="icon-edit"
+                                )
+                            a.delete-value(href="")
+                                tg-svg(
+                                    title="{{'ADMIN.COMMON.TITLE_ACTION_DELETE_VALUE' | translate}}"
+                                    svg-icon="icon-trash"
+                                )
 
                     div.project-values-row.row.table-main.edition.hidden
                         div.project-values-name
@@ -41,10 +46,11 @@ section.project-values-table
                             input(name="value", type="text", placeholder="{{'COMMON.FIELDS.VALUE' | translate}}", ng-model="value.value", data-type="number")
 
                         div.project-values-settings
-                            svg.save.icon.icon-save(title="{{'COMMON.SAVE' | translate}}")
-                                use(xlink:href="#icon-save")
-                            svg.cancel.icon.icon-close(href="", title="{{'COMON.CANCEL' | translate}}")
-                                use(xlink:href="#icon-close")
+                            a.save.e2e-save(href="", title="{{'COMMON.SAVE' | translate}}")
+                                tg-svg(svg-icon="icon-save")
+
+                            a.cancel(href="", title="{{'COMMON.CANCEL' | translate}}")
+                                tg-svg.cancel(svg-icon="icon-close")
 
         form
             div.project-values-row.new-value.hidden
@@ -67,7 +73,8 @@ section.project-values-table
                     )
 
                 div.project-values-settings
-                    svg.add-new.icon.icon-save(title="{{'COMMON.ADD' | translate}}")
-                        use(xlink:href="#icon-save")
-                    svg.delete-new.icon.icon-trash(title="{{'COMMON.CANCEL' | translate}}")
-                        use(xlink:href="#icon-trash")
+                    a.add-new.e2e-save(href="", title="{{'COMMON.ADD' | translate}}")
+                        tg-svg(svg-icon="icon-save")
+
+                    a.delete-new(href="", title="{{'COMMON.CANCEL' | translate}}")
+                        tg-svg(svg-icon="icon-close")

@@ -30,8 +30,6 @@ div.navbar-dropdown.dropdown-user
                 ng-class="{active: plugin.slug == currentPlugin.slug}"
             )
                 span.title {{ plugin.name }}
-                span.new(translate="PROJECT.NAVIGATION.NEW_ITEM")
-
         li
             a(
                 href="#",
@@ -54,7 +52,7 @@ div.navbar-dropdown.dropdown-user
                 translate="PROJECT.NAVIGATION.FEEDBACK")
         li
             a(
-                href="https://taiga.io/support/",
+                href="https://tree.taiga.io/support/",
                 target="_blank",
                 title="{{'PROJECT.NAVIGATION.HELP_TITLE' | translate}}",
                 translate="PROJECT.NAVIGATION.HELP")

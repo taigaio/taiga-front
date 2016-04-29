@@ -15,14 +15,16 @@
             span(translate="COMMENTS.DELETED_INFO",
                  translate-values!="{ user: '<%- deleteCommentUser %>', date: '<%- deleteCommentDate %>'}")
         <% } %>
-        .comment.wysiwyg(ng-non-bindable)
-            | <%= comment %>
+        .comment.wysiwyg
+            div(ng-non-bindable)
+                | <%= comment %>
             <% if (!deleteCommentDate && mode !== "activity" && canDeleteComment) { %>
-            svg.icon.icon-trash.comment-delete(
+            a.comment-delete(
+                href="",
+                title!="<%- deleteCommentActionTitle %>",
                 data-activity-id!="<%- activityId %>"
-                title!="<%- deleteCommentActionTitle %>"
             )
-                use(xlink:href="#icon-trash")
+                tg-svg(svg-icon="icon-trash")
             <% } %>
         <% } %>
 
@@ -31,8 +33,7 @@
             <% if (mode != "activity") { %>
             a.changes-title(href="", title="{{'ACTIVITY.SHOW_ACTIVITY' | translate}}")
                 span <%- changesText %>
-                svg.icon.icon-arrow-right
-                    use(xlink:href="#icon-arrow-right")
+                tg-svg(svg-icon="icon-arrow-right")
             <% } %>
             <% _.each(changes, function(change) { %>
             | <%= change %>

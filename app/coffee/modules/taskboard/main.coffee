@@ -309,24 +309,22 @@ module.directive("tgTaskboard", ["$rootScope", TaskboardDirective])
 
 TaskboardTaskDirective = ($rootscope, $loading, $rs, $rs2) ->
     link = ($scope, $el, $attrs, $model) ->
-        $el.disableSelection()
-
         $scope.$watch "task", (task) ->
             if task.is_blocked and not $el.hasClass("blocked")
                 $el.addClass("blocked")
             else if not task.is_blocked and $el.hasClass("blocked")
                 $el.removeClass("blocked")
 
-        $el.find(".icon-edit").on "click", (event) ->
-            if $el.find('.icon-edit').hasClass('noclick')
+        $el.find(".edit-task").on "click", (event) ->
+            if $el.find('.edit-task').hasClass('noclick')
                 return
+
             $scope.$apply ->
                 target = $(event.target)
 
                 currentLoading = $loading()
                     .target(target)
                     .timeout(200)
-                    .removeClasses("icon-edit")
                     .start()
 
                 task = $scope.task

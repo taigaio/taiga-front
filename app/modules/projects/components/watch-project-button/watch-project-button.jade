@@ -6,12 +6,10 @@ a.track-button.watch-button.watch-container(
 )
     span.track-inner
         span.track-icon
-            svg.icon.icon-watch
-                use(xlink:href="#icon-watch")
+            tg-svg(svg-icon="icon-watch")
         span(ng-if="!vm.project.get('is_watcher')", translate="PROJECT.WATCH_BUTTON.WATCH")
         span(ng-if="vm.project.get('is_watcher')", translate="PROJECT.WATCH_BUTTON.WATCHING")
-        svg.icon.icon-arrow-down
-            use(xlink:href="#icon-arrow-down")
+        tg-svg(svg-icon="icon-arrow-down")
 
     span.track-button-counter(
         title="{{ 'PROJECT.WATCH_BUTTON.COUNTER_TITLE'|translate:{total:vm.project.get(\"total_watchers\")||0}:'messageformat' }}",
@@ -37,8 +35,7 @@ ul.watch-options(
         )
             span(translate="PROJECT.WATCH_BUTTON.OPTIONS.NOTIFY_ALL")
             span.watch-check(ng-if="vm.project.get('is_watcher') && vm.project.get('notify_level') == 2")
-                svg.icon.icon-check-empty
-                    use(xlink:href="#icon-check-empty")
+                tg-svg(svg-icon="icon-check-empty")
     li
         a(
             href="",
@@ -48,8 +45,7 @@ ul.watch-options(
         )
             span(translate="PROJECT.WATCH_BUTTON.OPTIONS.NOTIFY_INVOLVED")
             span.watch-check(ng-if="vm.project.get('is_watcher') && vm.project.get('notify_level') == 1")
-                svg.icon.icon-check-empty
-                    use(xlink:href="#icon-check-empty")
+                tg-svg(svg-icon="icon-check-empty")
 
     li(ng-if="vm.project.get('is_watcher')")
         a(

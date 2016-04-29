@@ -41,7 +41,7 @@
         "IOCAINE_TEXT": "Se sentindo sobrecarregado por uma tarefa? Assegure-se de que os outros saibam disso clicando em Iocaine quando estiver editando a tarefa. É possível se tornar imune a essse veneno mortal (fictício) consumindo pequenas quantidades ao longo do tempo, assim como é possível ficar melhor no que faz, ocasionalmente, por assumir desafios extras!",
         "CLIENT_REQUIREMENT": "Client requirement is new requirement that was not previously expected and it is required to be part of the project",
         "TEAM_REQUIREMENT": "Team requirement is a requirement that must exist in the project but should have no cost for the client",
-        "OWNER": "Project Owner",
+        "OWNER": "Dono do Projeto",
         "CAPSLOCK_WARNING": "Be careful! You are using capital letters in an input field that is case sensitive.",
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Este valor parece ser inválido.",
@@ -140,7 +140,8 @@
             "BLOCKED_NOTE": "Nota de bloqueio",
             "IS_BLOCKED": "está bloqueada",
             "REF": "Ref",
-            "VOTES": "Votos"
+            "VOTES": "Votos",
+            "SPRINT": "Sprint"
         },
         "ROLES": {
             "ALL": "Tudo"
@@ -318,8 +319,8 @@
         "PLACEHOLDER_FIELD": "Nome de usuário ou email",
         "ACTION_RESET_PASSWORD": "Resetar Senha",
         "LINK_CANCEL": "Nããão, me leve de volta. Acho que me lembrei.",
-        "SUCCESS_TITLE": "Check your inbox!",
-        "SUCCESS_TEXT": "We sent you an email with the instructions to set a new password",
+        "SUCCESS_TITLE": "Verifique sua caixa de entrada!",
+        "SUCCESS_TEXT": "Nós lhe enviamos um e-mail com instruções para definição de uma nova senha.",
         "ERROR": "Segundo nossos Oompa Loompas, você ainda não está inscrito."
     },
     "CHANGE_PASSWORD": {
@@ -355,8 +356,8 @@
     "HOME": {
         "PAGE_TITLE": "Início - Taiga",
         "PAGE_DESCRIPTION": "A página inicial do Taiga com seus principais projetos e todas as estórias atribuídas ou observadas por você, tarefas e problemas",
-        "EMPTY_WORKING_ON": "<strong>Isso parece vazio não acha?</strong> Comece a trabalhar com Taiga para começar a ver estórias, tarefas e problemas em que está trabalhando.",
-        "EMPTY_WATCHING": "<strong>Siga</strong> Estórias, Tarefas e Problemas nos seus projetos e seja notificado das mudanças :)",
+        "EMPTY_WORKING_ON": "<strong>It feels empty, doesn't it?</strong> Start working with Taiga and you'll see here the stories, tasks and issues you are working on.",
+        "EMPTY_WATCHING": "<strong>Siga</strong> Estórias, Tarefas e Casos nos seus projetos e seja notificado das mudanças :)",
         "EMPTY_PROJECT_LIST": "Você ainda não tem projetos",
         "WORKING_ON_SECTION": "Trabalhando em",
         "WATCHING_SECTION": "Observando",
@@ -476,7 +477,7 @@
             "MAX_PUBLIC_PROJECTS_MEMBERS": "The project exceeds your maximum number of members for public projects",
             "PROJECT_OWNER": "Project owner",
             "REQUEST_OWNERSHIP": "Request ownership",
-            "REQUEST_OWNERSHIP_CONFIRMATION_TITLE": "Do you want to become the new project owner?",
+            "REQUEST_OWNERSHIP_CONFIRMATION_TITLE": "Gostaria de se tornar o novo dono do projeto?",
             "REQUEST_OWNERSHIP_DESC": "Request that current project owner {{name}} transfer ownership of this project to you.",
             "REQUEST_OWNERSHIP_BUTTON": "Solicitação",
             "REQUEST_OWNERSHIP_SUCCESS": "We'll notify the project owner",
@@ -556,9 +557,8 @@
             "PAGE_TITLE": "Funções - {{projectName}}",
             "WARNING_NO_ROLE": "Seja cuidadoso, nenhuma função em seu projeto será capaz de estimar o valor dos pontos para as user stories",
             "HELP_ROLE_ENABLED": "Quando habilitado, membros atribuídos a esta função serão capazes de estimar valores para user stories",
-            "DISABLE_COMPUTABLE_ALERT_TITLE": "Desativar estimativa para esta permissão",
+            "DISABLE_COMPUTABLE_ALERT_TITLE": "Você tem certeza que quer desativar esta permissão de estimativas?",
             "DISABLE_COMPUTABLE_ALERT_SUBTITLE": "Se você desativar a permissão de estimativas para esta regra  {{roleName}} todas estimativas feitas anteriormente por esta regra serão removidas.",
-            "DISABLE_COMPUTABLE_ALERT_MESSAGE": "<strong>Você tem certeza que quer desativar esta permissão de estimativas?</strong>",
             "COUNT_MEMBERS": "{{ role.members_count }} membros com a mesma função",
             "TITLE_DELETE_ROLE": "Apagar Função",
             "REPLACEMENT_ROLE": "Todos os usuários com essa função serão movidos para",
@@ -699,7 +699,6 @@
             "ACCEPT": "Aceitar",
             "REJECT": "Reject",
             "PROPOSE_OWNERSHIP": "<strong>{{owner}}</strong>, the current owner of the project <strong>{{project}}</strong> has asked that you become the new  project owner.",
-            "ADD_COMMENT_QUESTION": "Would you like to send a question to the project owner?",
             "ADD_COMMENT": "Would you like to add a comment for the project owner?",
             "UNLIMITED_PROJECTS": "Unlimited",
             "OWNER_MESSAGE": {
@@ -888,8 +887,8 @@
             "SECTION_NAME": "Apagar conta no Taiga",
             "CONFIRM": "Você tem certeza que quer apagar sua conta Taiga?",
             "NEWSLETTER_LABEL_TEXT": "Eu não quero receber mais os informativos",
-            "CANCEL": "Back to settings",
-            "ACCEPT": "Delete account",
+            "CANCEL": "Voltar para configurações",
+            "ACCEPT": "Remover conta",
             "BLOCK_PROJECT": "Note that all the projects you own projects will be <strong>blocked</strong> after you delete your account. If you do want a project blocked, transfer ownership to another member of each project prior to deleting your account.",
             "SUBTITLE": "Sorry to see you go. We'll be here if you should ever consider us again! :("
         },
@@ -1399,8 +1398,8 @@
         "CHOOSE_TEMPLATE_TITLE": "More info about project templates",
         "CHOOSE_TEMPLATE_INFO": "More info",
         "PROJECT_DETAILS": "Project Details",
-        "PUBLIC_PROJECT": "Public Project",
-        "PRIVATE_PROJECT": "Private Project",
+        "PUBLIC_PROJECT": "Projeto Público",
+        "PRIVATE_PROJECT": "Projeto Privado",
         "CREATE_PROJECT": "Criar projeto",
         "MAX_PRIVATE_PROJECTS": "You've reached the maximum number of private projects",
         "MAX_PUBLIC_PROJECTS": "Unfortunately, you've reached the maximum number of public projects",
@@ -1413,6 +1412,7 @@
         "PLACEHOLDER_PAGE": "Escreve sua página wiki",
         "REMOVE": "Remover essa página wiki",
         "DELETE_LIGHTBOX_TITLE": "Apagar página Wiki",
+        "DELETE_LINK_TITLE": "Delete Wiki link",
         "NAVIGATION": {
             "SECTION_NAME": "Links",
             "ACTION_ADD_LINK": "Adicionar link"

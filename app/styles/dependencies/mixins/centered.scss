@@ -1,0 +1,9 @@
+@mixin centered {
+    margin: 1rem auto;
+    max-width: 1200px;
+    min-width: 768px;
+    @include breakpoint(tablet) {
+        width: 90%;
+        min-width: 0;
+    }
+}

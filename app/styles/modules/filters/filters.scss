@@ -9,7 +9,7 @@
         }
     }
     .breadcrumb {
-        @extend %large;
+        @include font-size(large);
         margin-top: 1rem;
         .icon-arrow-right {
             @include svg-size(.7rem);
@@ -27,8 +27,7 @@
             color: $gray-light;
         }
     }
-    .icon-search {
-        color: $gray-light;
+    .search-action {
         position: absolute;
         right: .7rem;
         top: .7rem;
@@ -44,7 +43,7 @@
         text-align: center;
         width: 100%;
         .loading-spinner {
-            @extend %loading-spinner;
+            @include loading-spinner;
             max-height: 1rem;
             max-width: 1rem;
         }
@@ -68,6 +67,12 @@
         @include placeholder {
             color: $gray-light;
         }
+    }
+}
+
+.filter-list {
+    .single-filter {
+        cursor: pointer;
     }
 }
 

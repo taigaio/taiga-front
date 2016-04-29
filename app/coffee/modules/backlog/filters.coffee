@@ -38,9 +38,9 @@ module = angular.module("taigaBacklog")
 ## Issues Filters Directive
 #############################################################################
 
-BacklogFiltersDirective = ($q, $log, $location, $templates) ->
-    template = $templates.get("backlog/filters.html", true)
-    templateSelected = $templates.get("backlog/filter-selected.html", true)
+BacklogFiltersDirective = ($q, $log, $location, $template, $compile) ->
+    template = $template.get("backlog/filters.html", true)
+    templateSelected = $template.get("backlog/filter-selected.html", true)
 
     link = ($scope, $el, $attrs) ->
         currentFiltersType = ''
@@ -78,6 +78,8 @@ BacklogFiltersDirective = ($q, $log, $location, $templates) ->
                     f.style = "border-left: 3px solid #{f.color}"
 
             html = templateSelected({filters: selectedFilters})
+            html = $compile(html)($scope)
+
             $el.find(".filters-applied").html(html)
 
         renderFilters = (filters) ->
@@ -86,6 +88,7 @@ BacklogFiltersDirective = ($q, $log, $location, $templates) ->
                     f.style = "border-left: 3px solid #{f.color}"
 
             html = template({filters:filters})
+            html = $compile(html)($scope)
             $el.find(".filter-list").html(html)
 
         getFiltersType = () ->
@@ -94,7 +97,7 @@ BacklogFiltersDirective = ($q, $log, $location, $templates) ->
         reloadUserstories = () ->
             currentFiltersType = getFiltersType()
 
-            $q.all([$ctrl.loadUserstories(), $ctrl.generateFilters()]).then () ->
+            $q.all([$ctrl.loadUserstories(true), $ctrl.generateFilters()]).then () ->
                 currentFilters = $scope.filters[currentFiltersType]
                 renderFilters(_.reject(currentFilters, "selected"))
 
@@ -158,9 +161,9 @@ BacklogFiltersDirective = ($q, $log, $location, $templates) ->
             event.preventDefault()
             showCategories()
 
-        $el.on "click", ".filters-applied a", (event) ->
+        $el.on "click", ".remove-filter", (event) ->
             event.preventDefault()
-            target = angular.element(event.currentTarget)
+            target = angular.element(event.currentTarget).parent()
             id = target.data("id")
             type = target.data("type")
             toggleFilterSelection(type, id)
@@ -179,4 +182,4 @@ BacklogFiltersDirective = ($q, $log, $location, $templates) ->
 
     return {link:link}
 
-module.directive("tgBacklogFilters", ["$q", "$log", "$tgLocation", "$tgTemplate", BacklogFiltersDirective])
+module.directive("tgBacklogFilters", ["$q", "$log", "$tgLocation", "$tgTemplate", "$compile", BacklogFiltersDirective])

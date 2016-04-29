@@ -11,24 +11,21 @@ section.attachments(
                 ng-click="vm.setMode('gallery')"
                 title="{{ 'ATTACHMENT.GALLERY_VIEW_MODE' | translate }}"
             )
-                svg.icon.icon-gallery
-                    use(xlink:href="#icon-gallery")
+                tg-svg(svg-icon="icon-gallery")
             button.view-list(
                 ng-class="{'is-active': vm.mode == 'list'}"
                 ng-if="vm.attachments.size"
                 ng-click="vm.setMode('list')"
                 title="{{ 'ATTACHMENT.LIST_VIEW_MODE' | translate }}"
             )
-                svg.icon.icon-list
-                    use(xlink:href="#icon-list")
+                tg-svg(svg-icon="icon-list")
             .add-attach(
                 tg-check-permission="modify_{{vm.type}}"
                 title!="{{'ATTACHMENT.ADD' | translate}}"
             )
 
                 label.add-attachment-button(for="add-attach")
-                    svg.icon.icon-add
-                        use(xlink:href="#icon-add")
+                    tg-svg(svg-icon="icon-add")
 
                 input(
                     id="add-attach",
@@ -55,8 +52,7 @@ section.attachments(
 
           .single-attachment(ng-repeat="file in vm.uploadingAttachments()")
               .attachment-name
-                  svg.icon.icon-attachment
-                      use(xlink:href="#icon-attachment")
+                  tg-svg(svg-icon="icon-attachment")
                   span {{file.name}}
               .attachment-size
                   span {{file.size | sizeFormat}}

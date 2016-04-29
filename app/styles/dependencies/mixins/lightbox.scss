@@ -1,0 +1,66 @@
+@mixin lightbox {
+    background: rgba($white, .95);
+    bottom: 0;
+    display: none;
+    left: 0;
+    opacity: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 99910;
+    .close {
+        @include svg-size(2rem);
+        cursor: pointer;
+        display: block;
+        fill: $gray;
+        position: absolute;
+        right: 3rem;
+        top: 3rem;
+        transition: fill .2s;
+        display: block;
+        &:hover {
+            fill: $red-light;
+        }
+        svg {
+            @include svg-size(2rem);
+            pointer-events: none;
+        }
+    }
+    &.open {
+        align-content: center;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        opacity: 1;
+        transition: opacity .3s ease;
+    }
+    &.close {
+        opacity: 0;
+        transition: opacity .3s ease;
+    }
+    .lb-icon {
+        margin: 1rem auto;
+        display: flex;
+        justify-content: center;
+        svg {
+            @include svg-size(6rem);
+            display: block;
+            fill: $whitish;
+        }
+    }
+    .title {
+        text-align: center;
+    }
+    fieldset {
+        margin-bottom: 1rem;
+    }
+    textarea {
+        resize: vertical;
+    }
+    .button-green,
+    .button-gray {
+        display: block;
+        padding: 12px;
+        text-align: center;
+    }
+}

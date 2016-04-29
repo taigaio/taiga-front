@@ -10,19 +10,14 @@
         padding: .5rem 0;
     }
     .table-header {
-        @extend %bold;
+        @include font-type(bold);
         border-bottom: 3px solid $whitish;
-        .custom-name span,
-        .custom-description span {
+        .custom-name,
+        .custom-description {
             padding-left: 1.1rem;
         }
     }
     .table-body {
-        form:last-child {
-            .row {
-                border: 0;
-            }
-        }
         .row:hover {
             background: rgba($primary-light, .05);
             cursor: move;
@@ -50,18 +45,11 @@
     .icon-drag {
         fill: $gray-light;
         opacity: 0;
-        padding: 0 .1rem;
+        padding: 0 .25rem 0 .1rem;
         transition: color .2s linear;
-        vertical-align: middle;
-        &:hover {
-            cursor: move;
-            fill: $gray;
-            transition: color .2s linear;
-        }
     }
     .custom-name,
     .custom-description {
-        color: $gray;
         margin-right: .5rem;
     }
     .custom-name {
@@ -74,8 +62,9 @@
         flex-grow: 8;
     }
     .custom-field-type {
-        flex-basis: 25%;
+        flex-basis: 10%;
         flex-grow: 0;
+        flex-shrink: 0;
     }
     .custom-options {
         flex-basis: 100px;
@@ -102,6 +91,9 @@
     .custom-options-wrapper {
         opacity: 0;
         transition: opacity .3s linear;
+        a {
+            display: inline-block;
+        }
     }
     form {
         .custom-options-wrapper {

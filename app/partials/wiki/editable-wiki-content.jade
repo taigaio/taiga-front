@@ -2,19 +2,28 @@ include ../common/components/wysiwyg.jade
 
 .view-wiki-content
     section.wysiwyg(tg-bind-html='wiki.html')
-    svg.edit.icon.icon-edit(
+    a.edit(
+        href=""
         title="{{'COMMON.EDIT' | translate}}"
-        ng-if="wiki"
     )
-        use(xlink:href="#icon-edit")
+        tg-svg(svg-icon="icon-edit")
 
 .edit-wiki-content(style='display: none;')
-    textarea(ng-attr-placeholder="{{'WIKI.PLACEHOLDER_PAGE' | translate}}",
-             ng-model='wiki.content', tg-markitup='tg-markitup')
+    textarea(
+        ng-attr-placeholder="{{'WIKI.PLACEHOLDER_PAGE' | translate}}",
+        ng-model='wiki.content'
+        tg-markitup='tg-markitup'
+    )
     +wysihelp
 
     span.action-container
-        svg.save.icon.icon-save(title="{{'COMMON.SAVE' | translate}}")
-            use(xlink:href="#icon-save")
-        svg.cancel.icon.icon-close(title="{{'COMMON.CANCEL' | translate}}")
-            use(xlink:href="#icon-close")
+        a.save(
+            title="{{'COMMON.SAVE' | translate}}"
+            href=""
+        )
+            tg-svg(svg-icon="icon-save")
+        a.cancel(
+            title="{{'COMMON.CANCEL' | translate}}"
+            href=""
+        )
+            tg-svg(svg-icon="icon-close")

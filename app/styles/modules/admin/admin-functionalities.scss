@@ -27,15 +27,15 @@
         }
     }
     .module-name {
-        @extend %bold;
-        @extend %large;
+        @include font-type(bold);
+        @include font-size(large);
         color: $gray-light;
         flex-basis: 100px;
         flex-shrink: 0;
         margin: 0 .5rem;
     }
     .module-desc {
-        @extend %small;
+        @include font-size(small);
         color: $gray-light;
         flex: 1;
         margin: 0 2rem 0 0;
@@ -48,14 +48,16 @@
         align-items: flex-start;
         display: flex;
         margin-top: .5rem;
+        .options {
+            align-items: center;
+            display: flex;
+            height: 2.5rem;
+        }
         fieldset,
         .icon {
             margin: 0 .5rem;
         }
         .icon {
-            @include svg-size(2.5rem);
-            align-self: center;
-            cursor: pointer;
             fill: $gray-light;
             &:hover {
                 fill: $primary;
@@ -63,12 +65,12 @@
         }
     }
     .module-scrum {
-        .icon {
+        .options {
             align-self: flex-end;
         }
     }
     .module-videoconference {
-        .icon {
+        .options {
             align-self: flex-start;
         }
     }

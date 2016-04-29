@@ -421,7 +421,7 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm, $translate, $c
 
         # Events
 
-        $el.on "click", ".add-comment button.button-green", debounce 2000, (event) ->
+        $el.on "click", ".add-comment .button-green", debounce 2000, (event) ->
             event.preventDefault()
 
             target = angular.element(event.currentTarget)
@@ -467,11 +467,11 @@ HistoryDirective = ($log, $loading, $qqueue, $template, $confirm, $translate, $c
         $el.on "focus", ".add-comment textarea", (event) ->
             $(this).addClass('active')
 
-        $el.on "click", ".history-tabs li a", (event) ->
+        $el.on "click", ".history-tabs a", (event) ->
             target = angular.element(event.currentTarget)
 
-            $el.find(".history-tabs li a").removeClass("active")
-            target.addClass("active")
+            $el.find(".history-tabs li").removeClass("active")
+            target.parent().addClass("active")
 
             $el.find(".history section").addClass("hidden")
             $el.find(".history section.#{target.data('section-class')}").removeClass("hidden")

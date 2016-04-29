@@ -284,39 +284,52 @@ module.factory("$tgTemplate", ["$templateCache", Template])
 ## Permission directive, hide elements when necessary
 #############################################################################
 
-Capslock = ($translate) ->
-    link = ($scope, $el, $attrs) ->
-        open = false
+Capslock = () ->
+    template = """
+        <tg-svg class="capslock" ng-if="capslockIcon && iscapsLockActivated" svg-icon='icon-capslock' svg-title='COMMON.CAPSLOCK_WARNING'></tg-svg>
+    """
 
+    return {
+        template: template
+    }
 
-        warningIcon = "<svg class='icon icon-capslock' title='" + $translate.instant('COMMON.CAPSLOCK_WARNING') + "'><use xlink:href='#icon-capslock'></svg>";
+module.directive("tgCapslock", [Capslock])
 
-        hideIcon = () ->
-            $('.icon-capslock').fadeOut () ->
-                open = false
+LightboxClose = () ->
+    template = """
+        <a class="close" href="" title="{{'COMMON.CLOSE' | translate}}">
+            <tg-svg svg-icon="icon-close"></tg-svg>
+        </a>
+    """
 
-                $(this).remove()
+    return {
+        template: template
+    }
 
-        showIcon = (e) ->
-            return if open
-            element = e.currentTarget
-            $(element).parent().append(warningIcon)
-            $('.icon-capslock').fadeIn()
+module.directive("tgLightboxClose", [LightboxClose])
 
-            open = true
+Svg = () ->
+    template = """
+    <svg class="{{ 'icon ' + svgIcon }}">
+        <use xlink:href="" ng-attr-xlink:href="{{ '#' + svgIcon }}">
+            <title ng-if="svgTitle">{{svgTitle}}</title>
+            <title
+                ng-if="svgTitleTranslate"
+                translate="{{svgTitleTranslate}}"
+                translate-values="{{svgTitleTranslateValues}}"
+                ></title>
+        </use>
+    </svg>
+    """
 
-        $el.on 'blur', (e) ->
-            hideIcon()
+    return {
+        scope: {
+            svgIcon: "@",
+            svgTitle: "@",
+            svgTitleTranslate: "@",
+            svgTitleTranslateValues: "="
+        },
+        template: template
+    }
 
-        $el.on 'keyup.capslock, focus', (e) ->
-            if $el.val() == $el.val().toLowerCase()
-                hideIcon(e)
-            else
-                showIcon(e)
-
-        $scope.$on "$destroy", ->
-            $el.off('.capslock')
-
-    return {link:link}
-
-module.directive("tgCapslock", ["$translate", Capslock])
+module.directive("tgSvg", [Svg])

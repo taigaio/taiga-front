@@ -18,7 +18,7 @@ exports.config = {
         }
     },
     mochaOpts: {
-        timeout: 45000,
+        timeout: 55000,
         compilers: 'js:babel-register',
         require: 'babel-polyfill'
     },
@@ -44,61 +44,73 @@ exports.config = {
         projectHome: "e2e/suites/project-home.e2e.js",
         search: "e2e/suites/search.e2e.js",
         team: "e2e/suites/team.e2e.js",
-        discover: "e2e/suites/discover/*.e2e.js"
+        discover: "e2e/suites/discover/*.e2e.js",
+        transferProject: "e2e/suites/transfer-project.e2e.js",
+        compileModules: "app/modules/compile-modules/**/*.e2e.js"
     },
     onPrepare: function() {
+        // disable by default because performance problems on IE
         // track mouse movements
-        var trackMouse = function() {
-          angular.module('trackMouse', []).run(function($document) {
+        // var trackMouse = function() {
+        //   angular.module('trackMouse', []).run(function($document) {
 
-            function addDot(ev) {
-              var color = 'black',
-                size = 6;
+        //     function addDot(ev) {
+        //       var color = 'black',
+        //         size = 6;
 
-              switch (ev.type) {
-                case 'click':
-                  color = 'red';
-                  break;
-                case 'dblclick':
-                  color = 'blue';
-                  break;
-                case 'mousemove':
-                  color = 'green';
-                  break;
-              }
+        //       switch (ev.type) {
+        //         case 'click':
+        //           color = 'red';
+        //           break;
+        //         case 'dblclick':
+        //           color = 'blue';
+        //           break;
+        //         case 'mousemove':
+        //           color = 'green';
+        //           break;
+        //       }
 
-              var dotEl = $('<div></div>')
-                .css({
-                  position: 'fixed',
-                  height: size + 'px',
-                  width: size + 'px',
-                  'background-color': color,
-                  top: ev.clientY,
-                  left: ev.clientX,
+        //       var dotEl = $('<div></div>')
+        //         .css({
+        //           position: 'fixed',
+        //           height: size + 'px',
+        //           width: size + 'px',
+        //           'background-color': color,
+        //           top: ev.clientY,
+        //           left: ev.clientX,
 
-                  'z-index': 9999,
+        //           'z-index': 9999,
 
-                  // make sure this dot won't interfere with the mouse events of other elements
-                  'pointer-events': 'none'
-                })
-                .appendTo('body');
+        //           // make sure this dot won't interfere with the mouse events of other elements
+        //           'pointer-events': 'none'
+        //         })
+        //         .appendTo('body');
 
-              setTimeout(function() {
-                dotEl.remove();
-              }, 1000);
-            }
+        //       setTimeout(function() {
+        //         dotEl.remove();
+        //       }, 1000);
+        //     }
 
-            $document.on({
-              click: addDot,
-              dblclick: addDot,
-              mousemove: addDot
-            });
+        //     $document.on({
+        //       click: addDot,
+        //       dblclick: addDot,
+        //       mousemove: addDot
+        //     });
 
-          });
-        };
-        browser.addMockModule('trackMouse', trackMouse);
+        //   });
+        // };
+        // browser.addMockModule('trackMouse', trackMouse);
+
+        var argv = require('minimist')(process.argv.slice(2));
+
+        browser.params.glob.back = argv.back;
 
         require('./e2e/capabilities.js');
+
+        browser.get(browser.params.glob.host);
+
+        browser.executeScript('window.sessionStorage.clear();');
+        browser.executeScript('window.localStorage.clear();');
 
         browser.driver.manage().window().maximize();
 

@@ -11,7 +11,7 @@
 // Default body color and background
 body {
     background: $white; // fallback
-    color: $grayer;
+    color: $black;
 }
 
 // Main
@@ -97,7 +97,7 @@ textarea {
 
 // Input errors
 .checksley-error-list {
-    @extend %light;
+    @include font-type(light);
     background: rgba($red, .7);
     color: $white;
 }
@@ -128,6 +128,11 @@ cite {
 .summary {
     background: $grayer;
     color: $white;
+    .stats {
+        svg {
+            fill: $white;
+        }
+    }
 }
 
 
@@ -145,7 +150,7 @@ cite {
         :hover {
             color: $white;
         }
-        svg path {
+        svg {
             fill: $white;
         }
     }
@@ -169,6 +174,89 @@ tg-project-menu {
     }
 }
 
+//*****************************
+//** HOME
+//******************************
+
+.home-project-list {
+    li {
+        border: 1px solid $black;
+    }
+    p {
+        color: $black;
+    }
+}
+
+//*****************************
+//** WORKING ON
+//******************************
+.working-on-container {
+    .list-itemtype-ticket {
+        .ticket-status,
+        .ticket-status,
+        .ticket-type,
+        .ticket-project {
+            color: $black;
+        }
+    }
+}
+
+
+//*****************************
+//** PROJECT PAGE
+//******************************
+
+.single-project {
+    .title {
+        background: $whitish;
+        color: $black;
+    }
+}
+
+.watch-options {
+    a{
+        &.active  {
+            color: $primary;
+        }
+    }
+}
+
+//*****************************
+//** SCRUM
+//******************************
+
+.summary {
+    .data {
+        .number {
+            color: $white;
+        }
+    }
+}
+
+//*****************************
+//** WIKI
+//******************************
+
+.wiki-summary {
+    .username {
+        color: $white;
+    }
+}
+
+.drag-drop-help {
+    color: $black;
+}
+
+.wiki-content {
+    &.editable {
+        &:hover {
+            .wysiwyg {
+                background: $white;
+                border: 1px solid;
+            }
+        }
+    }
+}
 
 //*****************************
 //** TASKBOARD
@@ -222,11 +310,6 @@ tg-project-menu {
     color: $black;
 }
 
-
-.points-per-role > li:first-child {
-    background: $black;
-}
-
 //*****************************
 //** TICKET DETAIL
 //******************************
@@ -274,6 +357,15 @@ tg-project-menu {
     }
 }
 
+.us-story-main-data {
+    .us-title {
+        background: $white;
+        .us-name {
+            color: $black;
+        }
+    }
+}
+
 //*****************************
 //** LOGIN
 //******************************
@@ -285,18 +377,7 @@ tg-project-menu {
     }
 }
 
-//*****************************
-//** HOME
-//******************************
 
-.home-project-list {
-    li {
-        border: 1px solid $black;
-    }
-    p {
-        color: $black;
-    }
-}
 
 //*****************************
 //** PROFILE
@@ -336,7 +417,6 @@ tg-project-menu {
         }
     }
     label {
-        color: $black;
         &:hover {
             color: $white;
         }

@@ -22,10 +22,10 @@ helper.getNewMemberLightbox = function() {
             el.$('.add-fieldset').click();
         },
         getRows: function() {
-            return el.$$('.add-member-wrapper');
+            return el.$$('.add-single-member');
         },
         deleteRow: function(index) {
-            el.$$('.delete-fieldset').get(index).click();
+            el.$$('.remove-fieldset').get(index).click();
         },
         submit: function() {
             el.$('.submit-button').click();

@@ -1,6 +1,6 @@
 .tag {
-    @extend %light;
-    @extend %small;
+    @include font-type(light);
+    @include font-size(small);
     background: $whitish; // Fallback
     border-radius: 0 5px 5px 0;
     color: $grayer;
@@ -42,18 +42,21 @@
         padding: .4rem;
         width: 14rem;
     }
+    .save {
+        cursor: pointer;
+        display: inline-block;
+        margin-left: .5rem;
+    }
     .icon-save {
         @include svg-size();
-        cursor: pointer;
         fill: $grayer;
-        margin-left: .5rem;
         &:hover {
             fill: $primary;
             transition: .2s linear;
         }
     }
     .tag {
-        @extend %small;
+        @include font-size(small);
         margin: 0 .5rem .5rem 0;
         padding: .5rem;
     }
@@ -68,6 +71,7 @@
     }
     .add-tag {
         color: $gray-light;
+        display: inline-block;
         &:hover {
             color: $primary-light;
         }
@@ -76,6 +80,9 @@
         @include svg-size(.9rem);
     }
     .add-tag-text {
-        @extend %small;
+        @include font-size(small);
+    }
+    .remove-tag {
+        display: inline-block;
     }
 }

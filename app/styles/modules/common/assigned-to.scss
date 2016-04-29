@@ -13,7 +13,7 @@
         }
     }
     .loading-spinner {
-        @extend %loading-spinner;
+        @include loading-spinner;
         margin: 1rem auto;
         max-height: 2rem;
         max-width: 2rem;
@@ -49,8 +49,8 @@
         flex-grow: 1;
         margin-left: .5rem;
         .assigned-title {
-            @extend %small;
-            @extend %light;
+            @include font-size(small);
+            @include font-type(light);
             color: $gray;
             display: block;
             margin: .2rem 0 .25rem;

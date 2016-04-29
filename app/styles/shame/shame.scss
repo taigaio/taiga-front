@@ -10,7 +10,19 @@ _:-ms-fullscreen,
 
 // External lybrary makes weird things. Please destroy
 .markItUpEditor {
-    @extend %small;
+    @include font-size(small);
     line-height: 1.5;
     font-family: monospace;
+}
+
+// Prevent IE Bug when the user clicks in the svg path the js event click doesn't work
+
+svg {
+    pointer-events: none;
+}
+
+// Avoid previous selector to remove event on child SVG click.
+
+a[ng-click] svg {
+    pointer-events: auto;
 }

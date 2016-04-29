@@ -18,11 +18,11 @@ helper.links = function() {
         },
 
         get: function() {
-            return el.$$(".wiki-link a");
+            return el.$$(".wiki-link a.link-title");
         },
 
         deleteLink: async function(link){
-            link.$(".icon-trash").click();
+            link.click();
             await utils.lightbox.confirm.ok();
             await browser.waitForAngular();
         }
