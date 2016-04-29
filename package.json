@@ -84,6 +84,7 @@
     "minimist": "^1.1.1",
     "mocha": "^2.2.4",
     "node-uuid": "^1.4.3",
+    "node-sass": "3.4.2",
     "photoswipe": "^4.1.0",
     "pre-commit": "^1.0.5",
     "readable-stream": "~2.0.2",
