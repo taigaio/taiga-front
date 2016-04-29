@@ -63,7 +63,7 @@
     "gulp-print": "^2.0.1",
     "gulp-rename": "^1.2.0",
     "gulp-replace": "^0.5.3",
-    "gulp-sass": "^2.0.4",
+    "gulp-sass": "2.2.0",
     "gulp-scss-lint": "0.3.6",
     "gulp-size": "^2.0.0",
     "gulp-sourcemaps": "^1.5.0",
