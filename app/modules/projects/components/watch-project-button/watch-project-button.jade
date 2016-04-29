@@ -9,7 +9,7 @@ a.track-button.watch-button.watch-container(
             tg-svg(svg-icon="icon-watch")
         span(ng-if="!vm.project.get('is_watcher')", translate="PROJECT.WATCH_BUTTON.WATCH")
         span(ng-if="vm.project.get('is_watcher')", translate="PROJECT.WATCH_BUTTON.WATCHING")
-        tg-svg(svg-icon="icon-arrow-down")
+        tg-svg.watch-options-arrow(svg-icon="icon-arrow-down")
 
     span.track-button-counter(
         title="{{ 'PROJECT.WATCH_BUTTON.COUNTER_TITLE'|translate:{total:vm.project.get(\"total_watchers\")||0}:'messageformat' }}",

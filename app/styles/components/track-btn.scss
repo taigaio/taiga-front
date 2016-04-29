@@ -25,10 +25,11 @@
             background: darken($whitish, 5%);
             transition: background .3s;
         }
-        .icon-arrow-down {
-            height: .6rem;
-            margin: 0 .5rem 0 auto;
-            width: .6rem;
+    }
+    .watch-options-arrow {
+        margin: 0 .5rem 0 auto;
+        svg {
+            @include svg-size(.75rem);
         }
     }
     &:hover {
