@@ -88,6 +88,7 @@
             margin-top: 5px;
         }
         .sprint-summary {
+            align-items: flex-end;
             display: flex;
             justify-content: space-between;
         }
@@ -95,17 +96,11 @@
             @include font-size(small);
             @include font-type(text);
             color: $gray-light;
-            flex-flow: 1;
+            flex: 1;
         }
         ul {
             margin: 0;
             text-align: right;
-        }
-        li {
-            display: inline-block;
-            &:first-child {
-                margin-right: 3px;
-            }
         }
     }
     .compact-sprint {
