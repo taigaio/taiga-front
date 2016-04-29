@@ -56,7 +56,11 @@
             margin: .2rem 0 .25rem;
         }
         .assigned-to-options {
-            display: inline-block;
+            align-content: center;
+            display: flex;
+            a {
+                margin-right: .2rem;
+            }
         }
         .user-assigned,
         .assign-to-me {
@@ -69,9 +73,6 @@
                 fill: currentColor;
                 height: .75rem;
                 width: .75rem;
-            }
-            span {
-                @include ellipsis(80%);
             }
         }
     }
@@ -101,9 +102,6 @@
         }
         .icon {
             vertical-align: middle;
-        }
-        > span {
-            @include ellipsis(80%);
         }
     }
 }
