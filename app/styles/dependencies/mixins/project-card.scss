@@ -17,8 +17,8 @@
         width: 100%;
     }
     .project-card-description {
-        @extend %small;
-        @extend %light;
+        @include font-size(small);
+        @include font-type(light);
         color: $gray;
     }
     .project-card-statistics {
@@ -31,7 +31,7 @@
         }
     }
     .statistic {
-        @extend %small;
+        @include font-size(small);
         color: $gray-light;
         display: inline-block;
         margin-right: .5rem;
@@ -60,8 +60,8 @@
     .project-card-name {
         line-height: 1.25;
         a {
-            @extend %large;
-            @extend %large;
+            @include font-size(large);
+            @include font-size(large);
             color: $primary;
             &:hover {
                 color: $primary-light;

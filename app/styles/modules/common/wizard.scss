@@ -1,5 +1,5 @@
 .wizard-create-project {
-    @extend %lightbox;
+    @include lightbox;
     .close {
         @include svg-size(2rem);
     }
@@ -12,7 +12,7 @@
             margin-bottom: 0;
         }
         .subtitle {
-            @extend %small;
+            @include font-size(small);
             color: $gray-light;
             text-align: center;
         }
@@ -61,7 +61,7 @@
                 vertical-align: text-top;
             }
             .template-name {
-                @extend %large;
+                @include font-size(large);
                 text-transform: uppercase;
             }
         }
@@ -121,7 +121,7 @@
         }
     }
     .create-warning {
-        @extend %small;
+        @include font-size(small);
         padding: 1rem;
         text-align: center;
         .icon-exclamation {

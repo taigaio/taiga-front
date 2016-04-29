@@ -12,7 +12,7 @@
 }
 
 .external-reference {
-    @extend %small;
+    @include font-size(small);
     color: $gray-light;
     margin-top: .5rem;
     a {

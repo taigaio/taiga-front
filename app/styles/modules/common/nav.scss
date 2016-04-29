@@ -35,7 +35,7 @@ tg-project-menu {
             transition: fill .3s linear;
         }
         .helper {
-            @extend %small;
+            @include font-size(small);
             animation: slideLeft 200ms ease-in-out both;
             background: linear-gradient(to right, rgba($black, 1) 0%, rgba($black, .8) 100%);
             color: $white;
@@ -80,7 +80,7 @@ tg-project-menu {
         line-height: 2.2rem;
     }
     .item {
-        @extend %large;
+        @include font-size(large);
     }
     .active {
         background: rgba($black, .2);

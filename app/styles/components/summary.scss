@@ -19,15 +19,15 @@ $summary-background: $grayer;
         }
     }
     .number {
-        @extend %xlarge;
-        @extend %bold;
+        @include font-size(xlarge);
+        @include font-type(bold);
         line-height: .9;
         margin-right: .3rem;
     }
 
     .description {
-        @extend %small;
-        @extend %light;
+        @include font-size(small);
+        @include font-type(light);
         line-height: 1;
     }
     .stats {
@@ -149,7 +149,7 @@ $summary-background: $grayer;
 }
 
 .empty-burndown {
-    @extend %light;
+    @include font-type(light);
     align-content: center;
     align-items: center;
     background: rgba($primary-dark, .15);
@@ -172,14 +172,14 @@ $summary-background: $grayer;
         flex: 1;
     }
     .title {
-        @extend %light;
-        @extend %large;
+        @include font-type(light);
+        @include font-size(large);
         color: $primary-dark;
         margin: 0;
         text-transform: uppercase;
     }
     a {
-        @extend %bold;
+        @include font-type(bold);
         animation: blink 2s infinite;
     }
 }

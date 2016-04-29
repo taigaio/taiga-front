@@ -58,7 +58,7 @@
         flex-grow: 1;
         max-width: 55px;
         a {
-            @extend %small;
+            @include font-size(small);
             display: block;
             text-align: center;
         }
@@ -87,7 +87,7 @@
         width: 1.75rem;
     }
     .task-assigned {
-        @extend %small;
+        @include font-size(small);
         color: $card-dark;
         display: block;
         &:hover {
@@ -99,10 +99,10 @@
         margin-right: .5em;
     }
     .task-name {
-        @extend %bold;
+        @include font-type(bold);
     }
     .taskboard-text {
-        @extend %small;
+        @include font-size(small);
         flex-basis: 50px;
         flex-grow: 10;
         padding: 0 .5rem 0 1rem;

@@ -14,7 +14,7 @@
     }
 
     .table-header {
-        @extend %bold;
+        @include font-type(bold);
         border-bottom: 1px solid $gray-light;
     }
     .table-body {
@@ -137,11 +137,11 @@
         justify-content: space-between;
         padding: 1.5rem 0 .5rem;
         span:first-child {
-            @extend %bold;
+            @include font-type(bold);
             color: $gray-light;
         }
         a {
-            @extend %small;
+            @include font-size(small);
             color: $gray-light;
             &:hover {
                 color: $primary-light;
@@ -156,7 +156,7 @@
     .history-single-request-body,
     .history-single-response-body {
         .response-container {
-            @extend %mono;
+            @include font-type(mono);
             align-content: center;
             align-items: center;
             background: $whitish;
@@ -166,7 +166,7 @@
             margin-bottom: .5rem;
         }
         span {
-            @extend %small;
+            @include font-size(small);
             color: $gray-light;
             flex-basis: 20%;
             flex-grow: 1;
@@ -174,7 +174,7 @@
             text-align: center;
         }
         textarea {
-            @extend %mono;
+            @include font-type(mono);
             border: 0;
             flex-grow: 2;
             min-height: 7.5rem;

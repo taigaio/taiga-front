@@ -1,6 +1,6 @@
 .admin-membership {
     .limit-users-warning {
-        @extend %small;
+        @include font-size(small);
         color: $primary;
         margin-right: 1rem;
     }

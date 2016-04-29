@@ -10,7 +10,7 @@
         padding: .5rem 0;
     }
     .table-header {
-        @extend %bold;
+        @include font-type(bold);
         border-bottom: 3px solid $whitish;
         .custom-name,
         .custom-description {

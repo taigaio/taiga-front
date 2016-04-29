@@ -6,13 +6,13 @@
     }
     input,
     textarea {
-        @extend %text;
+        @include font-type(text);
     }
     fieldset {
         margin-bottom: 1rem;
     }
     label {
-        @extend %text;
+        @include font-type(text);
         display: block;
         margin-bottom: .2rem;
     }
@@ -38,7 +38,7 @@
             padding: 0 1rem;
         }
         .help-copy {
-            @extend %small;
+            @include font-size(small);
             opacity: 0;
             &.visible {
                 opacity: 1;

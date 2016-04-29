@@ -1,8 +1,8 @@
 .lightbox {
-    @extend %lightbox;
+    @include lightbox;
     h2 {
-        @extend %xlarge;
-        @extend %light;
+        @include font-size(xlarge);
+        @include font-type(light);
     }
 }
 
@@ -22,7 +22,7 @@
         resize: vertical;
     }
     label {
-        @extend %xsmall;
+        @include font-size(xsmall);
         background: $whitish;
         border: 1px solid $gray-light;
         color: $grayer;
@@ -191,7 +191,7 @@
         }
     }
     .member-limit-warning {
-        @extend %small;
+        @include font-size(small);
         background: $red-light;
         color: $white;
         margin: 1rem 0;
@@ -199,8 +199,8 @@
         text-align: center;
     }
     .help-text {
-        @extend %small;
-        @extend %light;
+        @include font-size(small);
+        @include font-type(light);
         margin-top: 1rem;
     }
     .checksley-error-list {
@@ -221,7 +221,7 @@
         max-width: 600px;
     }
     .last-sprint-name {
-        @extend %small;
+        @include font-size(small);
         color: $gray;
         opacity: 1;
         position: absolute;
@@ -247,7 +247,7 @@
         }
     }
     .delete-sprint {
-        @extend %small;
+        @include font-size(small);
         color: $gray;
         float: right;
         margin: 1rem .25rem 0 0;
@@ -278,8 +278,8 @@
         text-align: center;
     }
     .subtitle {
-        @extend %large;
-        @extend %title;
+        @include font-size(large);
+        @include font-type(text);
         white-space: pre-line;
     }
     .options {
@@ -308,8 +308,8 @@
         text-align: center;
     }
     .subtitle {
-        @extend %large;
-        @extend %title;
+        @include font-size(large);
+        @include font-type(text);
     }
     .replacement {
         display: block;
@@ -332,7 +332,7 @@
         }
     }
     .warning {
-        @extend %bold;
+        @include font-type(bold);
     }
 }
 
@@ -357,8 +357,8 @@
         input {
             margin-right: .5rem;
             +label {
-                @extend %small;
-                @extend %text;
+                @include font-size(small);
+                @include font-type(text);
             }
         }
     }
@@ -388,8 +388,8 @@
         text-align: center;
     }
     .subtitle {
-        @extend %large;
-        @extend %title;
+        @include font-size(large);
+        @include font-type(text);
     }
     .options {
         display: flex;
@@ -427,7 +427,7 @@
         margin: 1rem auto;
         width: 5rem;
         img {
-            @extend %loading-spinner;
+            @include loading-spinner;
             max-height: 100%;
             max-width: 100%;
             width: 100%;
@@ -446,9 +446,9 @@
             transition: width .1s linear;
         }
         .progress {
-            @extend %title;
-            @extend %bold;
-            @extend %large;
+            @include font-type(text);
+            @include font-type(bold);
+            @include font-size(large);
             background: darken($whitish, 5%);
             bottom: 35px;
             color: $gray;
@@ -517,8 +517,8 @@
         }
     }
     .more-watchers {
-        @extend %title;
-        @extend %medium;
+        @include font-type(text);
+        @include font-size(medium);
         padding: .5rem;
         text-align: center;
     }

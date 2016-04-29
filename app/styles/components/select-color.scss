@@ -24,8 +24,8 @@
         margin-bottom: 1rem;
     }
     input {
-        @extend %medium;
-        @extend %text;
+        @include font-size(medium);
+        @include font-type(text);
         background-color: $whitish;
         width: 243px;
         @include placeholder {

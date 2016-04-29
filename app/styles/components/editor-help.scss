@@ -10,7 +10,7 @@
 }
 
 .drag-drop-help {
-    @extend %xsmall;
+    @include font-size(x-small);
     color: $gray;
 }
 

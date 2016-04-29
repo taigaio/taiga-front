@@ -35,8 +35,8 @@
         width: 100%;
     }
     p {
-        @extend %small;
-        @extend %light;
+        @include font-size(small);
+        @include font-type(light);
     }
     .create-project-button {
         display: block;

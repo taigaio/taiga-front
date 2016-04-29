@@ -62,7 +62,7 @@
     }
     .avatar {
         a {
-            @extend %small;
+            @include font-size(small);
             text-align: center;
         }
         img {
@@ -74,7 +74,7 @@
         }
     }
     .task-text {
-        @extend %small;
+        @include font-size(small);
         flex-grow: 1;
         padding: 0 .5rem 0 .8rem;
     }
@@ -87,7 +87,7 @@
         margin-right: .3rem;
     }
     .task-name {
-        @extend %bold;
+        @include font-type(bold);
     }
     .loading {
         bottom: .5rem;
@@ -129,7 +129,7 @@
             color: $gray-light;
         }
         p {
-            @extend %small;
+            @include font-size(small);
             color: $gray-light;
             margin: 0;
             &:last-child {
@@ -148,7 +148,7 @@
         right: .5rem;
     }
     .task-points {
-        @extend %small;
+        @include font-size(small);
         color: darken($card-hover, 15%);
         margin: 0;
         span {
@@ -171,7 +171,7 @@
         padding: 0 .3rem;
     }
     .task-archived {
-        @extend %small;
+        @include font-size(small);
         background: darken($whitish, 5%);
         padding: .3rem;
         text-align: left;

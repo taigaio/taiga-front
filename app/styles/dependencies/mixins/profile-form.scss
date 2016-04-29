@@ -6,7 +6,7 @@
         margin-bottom: 1rem;
     }
     label {
-        @extend %light;
+        @include font-type(light);
         display: block;
         margin-bottom: .2rem;
     }
@@ -41,12 +41,12 @@
         }
     }
     .loading-spinner {
-        @extend %loading-spinner;
+        @include loading-spinner;
         border: 0;
         transform-origin: center center;
     }
     .use-default-image {
-        @extend %xsmall;
+        @include font-size(x-small);
         display: block;
         margin-top: .25rem;
         text-align: center;
@@ -59,7 +59,6 @@
         flex: 1;
         max-width: 500px;
     }
-
     @include breakpoint(tablet) {
         form {
             display: block;

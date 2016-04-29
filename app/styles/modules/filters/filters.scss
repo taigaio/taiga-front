@@ -9,7 +9,7 @@
         }
     }
     .breadcrumb {
-        @extend %large;
+        @include font-size(large);
         margin-top: 1rem;
         .icon-arrow-right {
             @include svg-size(.7rem);
@@ -43,7 +43,7 @@
         text-align: center;
         width: 100%;
         .loading-spinner {
-            @extend %loading-spinner;
+            @include loading-spinner;
             max-height: 1rem;
             max-width: 1rem;
         }

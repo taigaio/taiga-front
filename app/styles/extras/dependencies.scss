@@ -1,9 +1,4 @@
 // Bourbon
-$prefix-for-webkit:    true;
-$prefix-for-mozilla:   true;
-$prefix-for-microsoft: true;
-$prefix-for-opera:     true;
-$prefix-for-spec:      true;
 @import '../../../vendor/bourbon/app/assets/stylesheets/bourbon';
 
 //#################################################
@@ -11,6 +6,18 @@ $prefix-for-spec:      true;
 //#################################################
 
 @import "variables";
-@import '../dependencies/mixins';
+@import '../dependencies/reset';
 @import '../dependencies/helpers';
 @import '../dependencies/responsive';
+@import '../dependencies/mixins/typography';
+@import '../dependencies/mixins/background';
+@import '../dependencies/mixins/box-arrow';
+@import '../dependencies/mixins/box-shadow';
+@import '../dependencies/mixins/centered';
+@import '../dependencies/mixins/lightbox';
+@import '../dependencies/mixins/loading-spinner';
+@import '../dependencies/mixins/popover';
+@import '../dependencies/mixins/progress';
+@import '../dependencies/mixins/slide';
+@import '../dependencies/mixins/svg';
+@import '../dependencies/mixins/track-buttons';

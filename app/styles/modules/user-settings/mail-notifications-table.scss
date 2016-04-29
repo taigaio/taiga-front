@@ -7,7 +7,7 @@
     }
 
     .policy-table-header {
-        @extend %bold;
+        @include font-type(bold);
         border-bottom: 2px solid $gray-light;
     }
 

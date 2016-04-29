@@ -9,7 +9,7 @@
         }
     }
     .row {
-        @extend %small;
+        @include font-size(small);
         align-items: center;
         border-bottom: 1px solid $gray-light;
         display: flex;
@@ -128,8 +128,8 @@
 
 .backlog-table-header {
     .backlog-table-title {
-        @extend %text;
-        @extend %medium;
+        @include font-type(text);
+        @include font-size(medium);
         border-bottom: 2px solid $gray-light;
         flex-wrap: nowrap;
         padding-right: 1rem;
@@ -204,7 +204,7 @@
         display: flex;
         flex-wrap: nowrap;
         a {
-            @extend %light;
+            @include font-type(light);
             display: inline-block;
             flex: 1;
         }
@@ -216,7 +216,7 @@
         display: none;
         margin-bottom: .3rem;
         .tag {
-            @extend %small;
+            @include font-size(small);
             margin-right: .5rem;
             padding: .2rem .5rem;
         }
@@ -250,8 +250,8 @@
         position: relative;
         width: 100%;
         span {
-            @extend %small;
-            @extend %title;
+            @include font-size(small);
+            @include font-type(text);
             color: $white;
             position: absolute;
             right: .5rem;
@@ -290,7 +290,7 @@
         margin: 2% auto;
         width: 3rem;
         img {
-            @extend %loading-spinner;
+            @include loading-spinner;
             max-height: 3rem;
             max-width: 3rem;
         }
@@ -298,7 +298,7 @@
 }
 
 .empty-backlog {
-    @extend %light;
+    @include font-type(light);
     padding: 2rem;
     text-align: center;
     .row {
@@ -308,7 +308,7 @@
         margin-bottom: 1rem;
     }
     .title {
-        @extend %large;
+        @include font-size(large);
         margin-bottom: .5rem;
         text-transform: uppercase;
     }

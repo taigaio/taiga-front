@@ -22,8 +22,8 @@
         width: 100%;
     }
     .profile-edition {
-        @extend %large;
-        @extend %light;
+        @include font-size(large);
+        @include font-type(light);
         background: rgba($black, .4);
         bottom: 0;
         color: $white;
@@ -64,8 +64,8 @@
         }
     }
     h1 {
-        @extend %bold;
-        @extend %xlarge;
+        @include font-type(bold);
+        @include font-size(xlarge);
         line-height: 1.2;
         margin-bottom: .25rem;
         text-transform: none;
@@ -75,15 +75,15 @@
         word-wrap: break-word;
     }
     h2 {
-        @extend %light;
-        @extend %larger;
+        @include font-type(light);
+        @include font-size(larger);
         color: $gray;
         line-height: 1.2;
         margin-bottom: 1rem;
     }
     .username {
-        @extend %light;
-        @extend %large;
+        @include font-type(light);
+        @include font-size(large);
         color: $gray-light;
         margin-bottom: 1rem;
     }
@@ -112,20 +112,20 @@
             text-align: center;
         }
         .stat-number {
-            @extend %xlarge;
-            @extend %bold;
+            @include font-size(xlarge);
+            @include font-type(bold);
             display: block;
             line-height: 1;
         }
         .stat-name {
-            @extend %title;
-            @extend %small;
+            @include font-type(text);
+            @include font-size(small);
             display: block;
         }
     }
     .profile-quote {
-        @extend %light;
-        @extend %large;
+        @include font-type(light);
+        @include font-size(large);
         background: url('../images/quote.png') no-repeat top left;
         line-height: 1.4;
         padding: .5rem;

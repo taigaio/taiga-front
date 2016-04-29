@@ -10,8 +10,8 @@
         margin-right: .25rem;
     }
     .title {
-        @extend %bold;
-        @extend %larger;
+        @include font-type(bold);
+        @include font-size(larger);
         text-transform: uppercase;
     }
     h2 {
@@ -57,7 +57,7 @@
         animation: dropdownFade .2s;
     }
     .results {
-        @extend %small;
+        @include font-size(small);
         color: $red-light;
         display: block;
         padding: .5rem 1rem;

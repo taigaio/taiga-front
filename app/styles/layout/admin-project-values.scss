@@ -5,7 +5,7 @@
             height: 0;
             position: relative;
             li {
-                @extend %light;
+                @include font-type(light);
                 background: rgba($red, .7);
                 position: absolute;
                 width: 100%;
@@ -22,8 +22,8 @@
         margin-bottom: 0;
     }
     p {
-        @extend %title;
-        @extend %large;
+        @include font-type(text);
+        @include font-size(large);
         color: $gray-light;
     }
 }
@@ -37,6 +37,8 @@
     padding: .8em 1rem;
     text-transform: uppercase;
     h2 {
+        @include font-type(light);
+        @include font-size(large);
         margin: 0;
         span {
             margin-left: .5rem;

@@ -59,7 +59,7 @@ $column-margin: 0 10px 0 0;
         position: absolute;
     }
     .task-colum-name {
-        @extend %medium;
+        @include font-size(medium);
         align-items: center;
         background: $whitish;
         border-top: 3px solid $gray-light;
@@ -96,7 +96,7 @@ $column-margin: 0 10px 0 0;
 }
 
 .kanban-table-body {
-    @extend %medium;
+    @include font-size(medium);
     display: flex;
     height: 100%;
     overflow: hidden;
@@ -114,8 +114,8 @@ $column-margin: 0 10px 0 0;
             margin-right: 0;
         }
         .kanban-column-intro {
-            @extend %bold;
-            @extend %small;
+            @include font-type(bold);
+            @include font-size(small);
             color: $gray-light;
             margin: 1rem 2rem;
             &.active {

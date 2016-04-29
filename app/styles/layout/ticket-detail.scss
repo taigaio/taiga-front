@@ -8,8 +8,8 @@
         margin-bottom: .5rem;
     }
     .us-title {
-        @extend %large;
-        @extend %text;
+        @include font-size(large);
+        @include font-type(text);
         align-items: flex-start;
         background: $whitish;
         display: flex;
@@ -39,7 +39,7 @@
                 color: $red-light;
             }
             .unblock {
-                @extend %bold;
+                @include font-type(bold);
                 color: $white;
                 float: right;
             }
@@ -71,8 +71,8 @@
             }
         }
         .us-title-text {
-            @extend %larger;
-            @extend %text;
+            @include font-size(larger);
+            @include font-type(text);
             align-content: center;
             align-items: center;
             display: flex;
@@ -88,7 +88,7 @@
             }
         }
         .us-number {
-            @extend %text;
+            @include font-type(text);
             color: $gray-light;
             flex-shrink: 0;
             line-height: 2.2rem;
@@ -114,7 +114,7 @@
             opacity: 0;
         }
         .us-related-task {
-            @extend %small;
+            @include font-size(small);
             color: $gray-light;
             margin-top: .5rem;
             a {
@@ -129,10 +129,10 @@
             }
         }
         .block-desc-container {
-            @extend %small;
+            @include font-size(small);
         }
         .block-description-title {
-            @extend %bold;
+            @include font-type(bold);
             color: $white;
             margin-right: .5rem;
         }
@@ -143,7 +143,7 @@
         }
     }
     .loading-spinner {
-        @extend %loading-spinner;
+        @include loading-spinner;
         max-height: 1.5rem;
         max-width: 1.5rem;
     }
@@ -152,14 +152,14 @@
 .blocked-warning {
     margin-bottom: 1rem;
     .blocked {
-        @extend %title;
-        @extend %xlarge;
+        @include font-type(text);
+        @include font-size(xlarge);
         color: $red;
         line-height: 2.5rem;
         margin-bottom: .5rem;
     }
     .icon {
-        @extend %xlarge;
+        @include font-size(xlarge);
         vertical-align: middle;
     }
     .block-description {
@@ -244,7 +244,7 @@
             transition: opacity .2s linear;
         }
         .loading-spinner {
-            @extend %loading-spinner;
+            @include loading-spinner;
             max-height: 1.5rem;
             max-width: 1.5rem;
         }

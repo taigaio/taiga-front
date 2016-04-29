@@ -36,14 +36,14 @@ h6 {
 }
 
 h1 {
-    @extend %xlarge;
-    @extend %light;
+    @include font-size(xlarge);
+    @include font-type(light);
     line-height: 1.5;
     margin-bottom: 1rem;
     text-transform: uppercase;
 
     span {
-        @extend %larger;
+        @include font-size(larger);
         margin-right: .5rem;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -77,8 +77,8 @@ h1 {
 }
 
 h2 {
-    @extend %larger;
-    @extend %text;
+    @include font-size(larger);
+    @include font-type(text);
     line-height: 1.2;
     margin-bottom: 1rem;
 }
@@ -97,7 +97,7 @@ em {
 }
 
 small {
-    @extend %xsmall;
+    @include font-size(x-small);
 }
 
 strong {

@@ -14,7 +14,7 @@
             }
         }
         .attachment-name {
-            @extend %light;
+            @include font-type(light);
             @include ellipsis(175px);
             display: inline-block;
         }

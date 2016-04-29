@@ -11,8 +11,8 @@
         display: block;
     }
     .title-bar {
-        @extend %light;
-        @extend %larger;
+        @include font-type(light);
+        @include font-size(larger);
         align-content: center;
         background: $whitish;
         display: flex;

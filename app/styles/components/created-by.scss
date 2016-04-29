@@ -24,8 +24,8 @@
         }
         .created-title,
         .created-date {
-            @extend %light;
-            @extend %small;
+            @include font-type(light);
+            @include font-size(small);
             color: $gray;
             display: block;
             text-align: right;

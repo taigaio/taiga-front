@@ -9,12 +9,6 @@ form
     section.template-option
         .template-selector-title
             legend(translate="WIZARD.CHOOSE_TEMPLATE")
-            // UX issue
-            //- a.more-info(
-            //-     href=""
-            //-     title="{{ 'WIZARD.CHOOSE_TEMPLATE_TITLE' | translate }}"
-            //-     translate="WIZARD.CHOOSE_TEMPLATE_INFO"
-            //- )
         .template-selector
             fieldset(ng-repeat="template in templates")
                 input(

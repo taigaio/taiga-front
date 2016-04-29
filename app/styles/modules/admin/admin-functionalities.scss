@@ -27,15 +27,15 @@
         }
     }
     .module-name {
-        @extend %bold;
-        @extend %large;
+        @include font-type(bold);
+        @include font-size(large);
         color: $gray-light;
         flex-basis: 100px;
         flex-shrink: 0;
         margin: 0 .5rem;
     }
     .module-desc {
-        @extend %small;
+        @include font-size(small);
         color: $gray-light;
         flex: 1;
         margin: 0 2rem 0 0;

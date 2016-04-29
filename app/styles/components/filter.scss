@@ -1,6 +1,6 @@
 .single-filter {
-    @extend %large;
-    @extend %title;
+    @include font-size(large);
+    @include font-type(text);
     @include clearfix;
     align-items: center;
     background: darken($whitish, 10%); // Fallback

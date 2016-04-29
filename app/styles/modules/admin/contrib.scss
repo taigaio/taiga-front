@@ -5,8 +5,8 @@
         width: 100%;
     }
     h2 {
-        @extend %text;
-        @extend %large;
+        @include font-type(text);
+        @include font-size(large);
         margin-bottom: 0;
     }
     fieldset {
@@ -17,7 +17,7 @@
         margin-bottom: 1rem;
     }
     label {
-        @extend %text;
+        @include font-type(text);
         display: block;
         margin-bottom: .25rem;
     }

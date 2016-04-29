@@ -8,12 +8,12 @@
         margin: 0 auto;
     }
     .title {
-        @extend %xxlarge;
+        @include font-size(xxlarge);
         margin-bottom: 0;
     }
     .project-number {
-        @extend %light;
-        @extend %large;
+        @include font-type(light);
+        @include font-size(large);
         color: $primary;
     }
     form {

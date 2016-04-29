@@ -22,8 +22,8 @@
             width: 50%;
         }
         ~ .check-text {
-            @extend %small;
-            @extend %text;
+            @include font-size(small);
+            @include font-type(text);
             color: $white;
             position: absolute;
             top: .2rem;
