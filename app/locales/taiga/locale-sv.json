@@ -225,6 +225,7 @@
             "CODE_BLOCK_SAMPLE_TEXT": "Din text här",
             "PREVIEW_BUTTON": "Förhandsvisa",
             "EDIT_BUTTON": "Redigera",
+            "ATTACH_FILE_HELP": "Attach files by dragging & dropping on the textarea above.",
             "MARKDOWN_HELP": "Hjälp för markeringssyntax"
         },
         "PERMISIONS_CATEGORIES": {

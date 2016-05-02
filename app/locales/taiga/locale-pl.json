@@ -2,7 +2,7 @@
     "COMMON": {
         "YES": "Tak",
         "NO": "Nie",
-        "OR": "or",
+        "OR": "lub",
         "LOADING": "Wczytywanie...",
         "LOADING_PROJECT": "Wczytywanie projektu...",
         "DATE": "DD MMM YYYY",
@@ -225,6 +225,7 @@
             "CODE_BLOCK_SAMPLE_TEXT": "Przykładowy tekst...",
             "PREVIEW_BUTTON": "Podgląd",
             "EDIT_BUTTON": "Edycja",
+            "ATTACH_FILE_HELP": "Attach files by dragging & dropping on the textarea above.",
             "MARKDOWN_HELP": "Składnia Markdown pomoc"
         },
         "PERMISIONS_CATEGORIES": {
@@ -286,9 +287,9 @@
         "HEADER": "Mam już login do Taigi",
         "PLACEHOLDER_AUTH_NAME": "Login albo e-mail (uwzględnij wielkość liter)",
         "LINK_FORGOT_PASSWORD": "Zapomniałeś?",
-        "TITLE_LINK_FORGOT_PASSWORD": "Did you forget your password?",
+        "TITLE_LINK_FORGOT_PASSWORD": "Zapomniałeś hasło? ",
         "ACTION_ENTER": "Wprowadź",
-        "ACTION_SIGN_IN": "Login",
+        "ACTION_SIGN_IN": "Zaloguj",
         "PLACEHOLDER_AUTH_PASSWORD": "Hasło (uwzględnij wielkość liter)"
     },
     "LOGIN_FORM": {
@@ -319,8 +320,8 @@
         "PLACEHOLDER_FIELD": "Login albo e-mail",
         "ACTION_RESET_PASSWORD": "Resetuj hasło",
         "LINK_CANCEL": "Nie, zabierz mnie stąd. Chyba je pamiętam.",
-        "SUCCESS_TITLE": "Check your inbox!",
-        "SUCCESS_TEXT": "We sent you an email with the instructions to set a new password",
+        "SUCCESS_TITLE": "Sprawdź swoją skrzynkę mailową!",
+        "SUCCESS_TEXT": "Sprawdź swoją skrzynkę!<br />Wysłaliśmy Ci wiadomość e-mail z instrukcją jak ustawić nowe hasło.",
         "ERROR": "Nasze Umpa Lumpy twierdzą, że nie jesteś jeszcze zarejestrowany."
     },
     "CHANGE_PASSWORD": {
@@ -349,7 +350,7 @@
         "PAGE_DESCRIPTION": "Zaakceptuj zaproszenie, aby dołączyć do projektu w Taiga, platformie do zarządzania projektami dla startup'ów i zwinnych deweloperów oraz designerów, którzy chcą prostego, pięknego narzędzia sprawiającego, że praca jest przyjemna."
     },
     "INVITATION_LOGIN_FORM": {
-        "NOT_FOUND": "Our Oompa Loompas can't find your invitation.",
+        "NOT_FOUND": "Nasze Umpa Lumpy nie znajdują Twojego zaproszenia :(",
         "SUCCESS": "Udało Ci się dołączyć do tego projektu. Witaj w {{project_name}}",
         "ERROR": "Według naszych Umpa Lump, nie jesteś jeszcze zarejestrowany. Albo wpisałeś złe hasło."
     },

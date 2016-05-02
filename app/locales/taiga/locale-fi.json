@@ -225,6 +225,7 @@
             "CODE_BLOCK_SAMPLE_TEXT": "Kirjoita tänne...",
             "PREVIEW_BUTTON": "Esikatselu",
             "EDIT_BUTTON": "Muokkaa",
+            "ATTACH_FILE_HELP": "Attach files by dragging & dropping on the textarea above.",
             "MARKDOWN_HELP": "Merkintätavan ohjeet"
         },
         "PERMISIONS_CATEGORIES": {

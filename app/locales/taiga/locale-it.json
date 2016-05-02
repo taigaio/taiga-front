@@ -225,6 +225,7 @@
             "CODE_BLOCK_SAMPLE_TEXT": "Inserire qui il testo...",
             "PREVIEW_BUTTON": "Anteprima",
             "EDIT_BUTTON": "Modifica",
+            "ATTACH_FILE_HELP": "Attach files by dragging & dropping on the textarea above.",
             "MARKDOWN_HELP": "Aiuto per la sintassi Markdown"
         },
         "PERMISIONS_CATEGORIES": {
