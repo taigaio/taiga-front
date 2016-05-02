@@ -225,6 +225,7 @@
             "CODE_BLOCK_SAMPLE_TEXT": "Votre texte ici…",
             "PREVIEW_BUTTON": "Aperçu",
             "EDIT_BUTTON": "Modifier",
+            "ATTACH_FILE_HELP": "Attach files by dragging & dropping on the textarea above.",
             "MARKDOWN_HELP": "Aide sur la syntaxe Markdown"
         },
         "PERMISIONS_CATEGORIES": {
@@ -356,7 +357,7 @@
     "HOME": {
         "PAGE_TITLE": "Accueil - Taiga",
         "PAGE_DESCRIPTION": "La page d'accueil de Taiga sur laquelle apparaissent vos projets principaux et toutes les récits utilisateur, tâches et tickets qui vont sont assignés et surveillés.",
-        "EMPTY_WORKING_ON": "<strong>It feels empty, doesn't it?</strong> Start working with Taiga and you'll see here the stories, tasks and issues you are working on.",
+        "EMPTY_WORKING_ON": "<strong>Ça fait vide, hein ?</strong>Commencez à utiliser Taiga et vous verrez apparaître ici les récits, tâches et tickets sur lesquels vous travaillez.",
         "EMPTY_WATCHING": "<strong>Suivez</strong> des récits utilisateur, des tâches, des tickets dans vos projets et soyez prévenu des modifications :)",
         "EMPTY_PROJECT_LIST": "Vous n'avez aucun projet pour l'instant",
         "WORKING_ON_SECTION": "Projets en cours",
@@ -411,8 +412,8 @@
             "PAGE_TITLE": "Membres - {{projectName}}",
             "ADD_BUTTON": "+ Nouveau membre",
             "ADD_BUTTON_TITLE": "Ajouter un membre",
-            "LIMIT_USERS_WARNING_MESSAGE_FOR_ADMIN": "Unfortunately, this project has reached its limit of <strong>({{members}})</strong> allowed members.",
-            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "This project has reached its limit of <strong>({{members}})</strong> allowed members. If you would like to increase that limit please contact the administrator."
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_ADMIN": "Désolé, ce projet a atteint sa limite de membres autorisés <strong>({{members}})</strong>.",
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "Ce projet a atteint sa limite de  <strong>({{members}})</strong> membres autorisés. Si vous désirez augmenter cette limite, merci de contacter l'administrateur."
         },
         "PROJECT_EXPORT": {
             "TITLE": "Exporter",
@@ -447,7 +448,7 @@
             "MEETUP": "Meet Up",
             "MEETUP_DESCRIPTION": "Choisissez un système de vidéoconférence",
             "SELECT_VIDEOCONFERENCE": "Choisissez un système de vidéoconférence",
-            "SALT_CHAT_ROOM": "Add a prefix to the chatroom name",
+            "SALT_CHAT_ROOM": "Ajouter un préfixe au nom du salon de chat",
             "JITSI_CHAT_ROOM": "Jitsi",
             "APPEARIN_CHAT_ROOM": "AppearIn",
             "TALKY_CHAT_ROOM": "Talky",
@@ -471,10 +472,10 @@
             "LOGO_HELP": "L'image va être agrandie à 80x80px",
             "CHANGE_LOGO": "Changer le logo",
             "ACTION_USE_DEFAULT_LOGO": "Utiliser l'image par défaut",
-            "MAX_PRIVATE_PROJECTS": "You've reached the maximum number of private projects allowed by your current plan",
-            "MAX_PRIVATE_PROJECTS_MEMBERS": "The maximum number of members for private projects has been exceeded",
-            "MAX_PUBLIC_PROJECTS": "Unfortunately, you've reached the maximum number of public projects allowed by your current plan",
-            "MAX_PUBLIC_PROJECTS_MEMBERS": "The project exceeds your maximum number of members for public projects",
+            "MAX_PRIVATE_PROJECTS": "Vous avez atteint le nombre maximum autorisé de projets privés accordé par votre souscription actuelle.",
+            "MAX_PRIVATE_PROJECTS_MEMBERS": "Le nombre maximum de membres de projets privés a été dépassé.",
+            "MAX_PUBLIC_PROJECTS": "Désolé, vous avez atteint le nombre maximum de projets publics accordé par votre souscription actuelle.",
+            "MAX_PUBLIC_PROJECTS_MEMBERS": "Ce projet dépasse le nombre maximum de membres autorisés pour un projet public",
             "PROJECT_OWNER": "Propriétaire du projet",
             "REQUEST_OWNERSHIP": "Demander la propriété",
             "REQUEST_OWNERSHIP_CONFIRMATION_TITLE": "Voulez-vous devenir le nouveau propriétaire du projet ?",
@@ -702,11 +703,11 @@
             "ADD_COMMENT": "Voulez-vous ajouter un commentaire pour le propriétaire du projet ?",
             "UNLIMITED_PROJECTS": "Illimité",
             "OWNER_MESSAGE": {
-                "PRIVATE": "Please remember that you can own up to <strong>{{maxProjects}}</strong> private projects. You currently own <strong>{{currentProjects}}</strong> private projects",
-                "PUBLIC": "Please remember that you can own up to <strong>{{maxProjects}}</strong> public projects. You currently own <strong>{{currentProjects}}</strong> public projects"
+                "PRIVATE": "Gardez en mémoire que vous pouvez posséder jusqu'à <strong>{{maxProjects}}</strong> projets privés. Vous possédez actuellement <strong>{{currentProjects}}</strong> projets privés.",
+                "PUBLIC": "Gardez en mémoire que vous pouvez posséder jusqu'à <strong>{{maxProjects}}</strong> projets publics. Vous possédez actuellement <strong>{{currentProjects}}</strong> projets publics."
             },
             "CANT_BE_OWNED": "Pour le moment, vous ne pouvez devenir propriétaire d'un projet de ce type. Si vous voulez devenir propriétaire de ce projet, merci de contacter l'administrateur afin qu'il puisse modifier les paramètres de votre compte pour autoriser la propriété de projet.",
-            "CHANGE_MY_PLAN": "Change my plan"
+            "CHANGE_MY_PLAN": "Changer ma souscription actuelle"
         }
     },
     "USER": {
@@ -835,28 +836,28 @@
             "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) est un peu trop lourd pour nos Oompa Loompas, réessayez avec un fichier d'une taille inférieure à ({{maxFileSize}})",
             "SYNC_SUCCESS": "Votre projet a été importé avec succès",
             "PROJECT_RESTRICTIONS": {
-                "PROJECT_MEMBERS_DESC": "The project you are trying to import has {{members}} members, unfortunately, your current plan allows for a maximum of {{max_memberships}} members per project. If you would like to increase that limit please contact the administrator.",
+                "PROJECT_MEMBERS_DESC": "Le projet que vous voulez importer a {{members}} membres. Votre souscription actuelle vous permet un maximum de {{max_memberships}} membres par projet. Si vous désirez augmenter cette limite, merci de contacter un administrateur.",
                 "PRIVATE_PROJECTS_SPACE": {
-                    "TITLE": "Unfortunately, your current plan does not allow for additional private projects",
-                    "DESC": "The project you are trying to import is private. Unfortunately, your current plan does not allow for additional private projects."
+                    "TITLE": "Malheureusement, votre souscription actuelle ne vous permet pas d'ajouter un projet privé supplémentaire.",
+                    "DESC": "Le projet que vous voulez importer est privé. Votre souscription actuelle ne vous permet pas d'ajouter un projet privé supplémentaire."
                 },
                 "PUBLIC_PROJECTS_SPACE": {
-                    "TITLE": "Unfortunately, your current plan does not allow for additional public projects",
-                    "DESC": "The project you are trying to import is public. Unfortunately, your current plan does not allow additional public projects."
+                    "TITLE": "Malheureusement, votre souscription actuelle ne vous permet pas d'ajouter un projet public supplémentaire.",
+                    "DESC": "Le projet que vous voulez importer est privé. Votre souscription actuelle ne vous permet pas d'ajouter un projet public supplémentaire."
                 },
                 "PRIVATE_PROJECTS_MEMBERS": {
-                    "TITLE": "Your current plan allows for a maximum of {{max_memberships}} members per private project"
+                    "TITLE": "Votre souscription actuelle permet un maximum de {{max_memberships}} par projet privé."
                 },
                 "PUBLIC_PROJECTS_MEMBERS": {
-                    "TITLE": "Your current plan allows for a maximum of {{max_memberships}} members per public project."
+                    "TITLE": "Votre souscription actuelle permet un maximum de {{max_memberships}} par projet public."
                 },
                 "PRIVATE_PROJECTS_SPACE_MEMBERS": {
-                    "TITLE": "Unfortunately your current plan doesn't allow additional private projects or an increase of more than {{max_memberships}} members per private project",
-                    "DESC": "The project that you are trying to import is private and has {{members}} members."
+                    "TITLE": "Désolé, votre souscription actuelle ne permet ni d'ajouter des projets privés supplémentaire, ni d'avoir plus de  {{max_memberships}} membres par projet privé.",
+                    "DESC": "Le projet que vous voulez importer est privé et a {{members}} membres."
                 },
                 "PUBLIC_PROJECTS_SPACE_MEMBERS": {
-                    "TITLE": "Unfortunately your current plan doesn't allow additional public projects or an increase of more than {{max_memberships}} members per public project",
-                    "DESC": "The project that you are trying to import is public and has more than {{members}} members."
+                    "TITLE": "Désolé, votre souscription actuelle ne permet ni d'ajouter des projets publics supplémentaire, ni d'avoir plus de  {{max_memberships}} membres par projet public.",
+                    "DESC": "Le projet que vous voulez importer est public et a {{members}} membres."
                 }
             }
         },
@@ -890,7 +891,7 @@
             "CANCEL": "Retour aux réglages",
             "ACCEPT": "Supprimer le compte",
             "BLOCK_PROJECT": "Notez que tous les projets dont vous avez la propriété seront <strong>bloqués</strong> après que vous ayez supprimé votre compte. Si vous souhaitez pas qu'un projet soit bloqué, merci d'en transférer la propriété auprès d'un autre membre avant la suppression de votre compte.",
-            "SUBTITLE": "Sorry to see you go. We'll be here if you should ever consider us again! :("
+            "SUBTITLE": "Vous partez déjà ? Nous serons toujours là si jamais vous changez d'avis ! :("
         },
         "DELETE_PROJECT": {
             "TITLE": "Supprimer le projet",
@@ -947,8 +948,8 @@
         "CREATE_MEMBER": {
             "PLACEHOLDER_INVITATION_TEXT": "(Optionnel) Ajoutez un texte personnalisé à l'invitation. Dites quelque chose de gentil à vos nouveaux membres ;-)",
             "PLACEHOLDER_TYPE_EMAIL": "Saisissez une adresse courriel",
-            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "Unfortunately, this project can't have more than <strong>{{maxMembers}}</strong> members.<br> If you would like to increase the current limit, please contact the administrator.",
-            "LIMIT_USERS_WARNING_MESSAGE": "Unfortunately, this project can't have more than <strong>{{maxMembers}}</strong> members."
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "Désolé, ce projet ne peut avoir plus de <strong>{{maxMembers}}</strong> membres. <br>Si vous désirez augmenter cette limite, merci de contacter l'administrateur.",
+            "LIMIT_USERS_WARNING_MESSAGE": "Désolé, ce projet ne peut avoir plus de <strong>{{maxMembers}}</strong> membres."
         },
         "LEAVE_PROJECT_WARNING": {
             "TITLE": "Malheureusement, ce projet ne peut pas être laissé sans propriétaire",
@@ -1402,7 +1403,7 @@
         "PRIVATE_PROJECT": "Projet privé",
         "CREATE_PROJECT": "Créer un projet",
         "MAX_PRIVATE_PROJECTS": "Vous avez atteint le nombre maximum de projets privés",
-        "MAX_PUBLIC_PROJECTS": "Unfortunately, you've reached the maximum number of public projects",
+        "MAX_PUBLIC_PROJECTS": "Désolé, vous avez atteint le nombre maximal de projet public.",
         "CHANGE_PLANS": "changer de souscription"
     },
     "WIKI": {
@@ -1412,7 +1413,7 @@
         "PLACEHOLDER_PAGE": "Ecrivez votre page wiki",
         "REMOVE": "Supprimer cette page wiki",
         "DELETE_LIGHTBOX_TITLE": "Supprimer la page Wiki",
-        "DELETE_LINK_TITLE": "Delete Wiki link",
+        "DELETE_LINK_TITLE": "Supprimer un lien Wiki",
         "NAVIGATION": {
             "SECTION_NAME": "Liens",
             "ACTION_ADD_LINK": "Ajouter un lien"
