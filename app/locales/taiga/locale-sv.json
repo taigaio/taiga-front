@@ -173,7 +173,7 @@
             "UNWATCH": "Frånkoppla visning",
             "WATCHERS": "Observatörer",
             "BUTTON_TITLE": "Visa/Visa inte den här posten",
-            "COUNTER_TITLE": "{total, plural, en{one watcher} andra{# watchers}}"
+            "COUNTER_TITLE": "{total, plural, one{one watcher} other{# watchers}}"
         },
         "VOTE_BUTTON": {
             "UPVOTE": "Rösta för",
@@ -765,8 +765,8 @@
         "HELP": "Organisera dina projekt och sätt in de mest använda här. <br/> De första 10 toppprojekten vill visas i toppnavigeringens projektlista. ",
         "PRIVATE": "Privata projekt",
         "LOOKING_FOR_PEOPLE": "This project is looking for people",
-        "FANS_COUNTER_TITLE": "{total, plural, one{one fan} andra{# fans}}",
-        "WATCHERS_COUNTER_TITLE": "{total, plural, en{one watcher} andra{# watchers}}",
+        "FANS_COUNTER_TITLE": "{total, plural, one{one fan} other{# fans}}",
+        "WATCHERS_COUNTER_TITLE": "{total, plural, en{one watcher} other{# watchers}}",
         "MEMBERS_COUNTER_TITLE": "{total, plural, one{one member} other{# members}}",
         "BLOCKED_PROJECT": {
             "BLOCKED": "Blocked project",
@@ -866,13 +866,13 @@
             "LIKED": "Likte",
             "UNLIKE": "Ogillar",
             "BUTTON_TITLE": "Gilla eller ogilla projektet",
-            "COUNTER_TITLE": "{total, plural, one{one fan} andra{# fans}}"
+            "COUNTER_TITLE": "{total, plural, one{one fan} other{# fans}}"
         },
         "WATCH_BUTTON": {
             "BUTTON_TITLE": "Visa projektet och lägg till egenskaper för avisering",
             "WATCH": "Visa",
             "WATCHING": "Bevakar",
-            "COUNTER_TITLE": "{total, plural, en{one watcher} andra{# watchers}}",
+            "COUNTER_TITLE": "{total, plural, en{one watcher} other{# watchers}}",
             "OPTIONS": {
                 "NOTIFY_ALL": "Motta alla notifieringar",
                 "NOTIFY_ALL_TITLE": "Motta alla notifieringar för det här projektet",
@@ -1018,7 +1018,7 @@
         "DELETED_ATTACHMENT": "ta bort bifogad fil",
         "UPDATED_ATTACHMENT": "uppdaterad bilaga {{filename}}",
         "DELETED_CUSTOM_ATTRIBUTE": "raderad anpassad atribut",
-        "SIZE_CHANGE": "Gjorde {size, plural, one{one change} annan{# changes}}",
+        "SIZE_CHANGE": "Gjorde {size, plural, one{one change} other{# changes}}",
         "VALUES": {
             "YES": "ja",
             "NO": "nej",
