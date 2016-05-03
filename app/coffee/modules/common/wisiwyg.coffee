@@ -366,6 +366,10 @@ MarkitupDirective = ($rootscope, $rs, $selectedText, $template, $compile, $trans
             element
                 .markItUpRemove()
                 .markItUp(markdownSettings)
+                .on({
+                    'textComplete:hide': (e) ->
+                        $(this).data('autocompleting-closed', new Date().getTime())
+                })
                 .textcomplete([
                     # us, task, and issue autocomplete: #id or #<part of title>
                     {
