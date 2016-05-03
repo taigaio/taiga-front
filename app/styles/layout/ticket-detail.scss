@@ -182,6 +182,7 @@
 }
 
 .subheader {
+    align-items: flex-start;
     display: flex;
     justify-content: space-between;
     @include breakpoint(laptop) {
@@ -192,14 +193,12 @@
         flex-basis: 250px;
         flex-shrink: 0;
         @include breakpoint(laptop) {
-            flex: 0;
             order: 1;
         }
     }
     .tags-block {
         flex: 1;
         @include breakpoint(laptop) {
-            flex: 0;
             order: 2;
         }
     }

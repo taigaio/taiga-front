@@ -91,6 +91,9 @@ svg {
 
 // scss-lint:disable QualifyingElement
 div.awesomplete {
+    input {
+        display: inline-block;
+    }
     > ul {
         background: rgba($black, .95);
         color: $primary-light;
