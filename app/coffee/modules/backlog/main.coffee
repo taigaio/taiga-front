@@ -142,7 +142,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
     initializeSubscription: ->
         routingKey1 = "changes.project.#{@scope.projectId}.userstories"
         @events.subscribe @scope, routingKey1, (message) =>
-            @.loadUserstories()
+            @.loadAllPaginatedUserstories()
             @.loadSprints()
 
         routingKey2 = "changes.project.#{@scope.projectId}.milestones"
@@ -257,7 +257,13 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
         @.loadUserstories()
 
-    loadUserstories: (resetPagination = false)->
+    loadAllPaginatedUserstories: () ->
+        page = @.page
+
+        @.loadUserstories(true, @scope.userstories.length).then () =>
+          @.page = page
+
+    loadUserstories: (resetPagination = false, pageSize) ->
         @.loadingUserstories = true
         @.disablePagination = true
         @scope.httpParams = @.getUrlFilters()
@@ -268,7 +274,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
         @scope.httpParams.page = @.page
 
-        promise = @rs.userstories.listUnassigned(@scope.projectId, @scope.httpParams)
+        promise = @rs.userstories.listUnassigned(@scope.projectId, @scope.httpParams, pageSize)
 
         return promise.then (result) =>
             userstories = result[0]
