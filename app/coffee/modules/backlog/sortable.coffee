@@ -93,7 +93,10 @@ BacklogSortableDirective = ($repo, $rs, $rootscope, $tgConfirm, $translate) ->
                 parent = $(item).parent()
                 isBacklog = parent.hasClass('backlog-table-body') || parent.hasClass('empty-backlog')
 
-                sameContainer = (initIsBacklog == isBacklog)
+                if initIsBacklog || isBacklog
+                    sameContainer = (initIsBacklog == isBacklog)
+                else
+                    sameContainer = $(item).scope().sprint.id == parent.scope().sprint.id
 
                 dragMultipleItems = window.dragMultiple.stop()
 
