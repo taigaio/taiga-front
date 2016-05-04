@@ -63,7 +63,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         bindMethods(@)
 
         @.page = 1
-        @.disablePagination = false
+        @.disablePagination = true
         @scope.userstories = []
 
         @scope.sectionName = @translate.instant("BACKLOG.SECTION_NAME")
@@ -77,6 +77,8 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
         # On Success
         promise.then =>
+            @.disablePagination = false
+
             title = @translate.instant("BACKLOG.PAGE_TITLE", {projectName: @scope.project.name})
             description = @translate.instant("BACKLOG.PAGE_DESCRIPTION", {
                 projectName: @scope.project.name,
@@ -264,6 +266,8 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
           @.page = page
 
     loadUserstories: (resetPagination = false, pageSize) ->
+        return null if !@scope.projectId
+        
         @.loadingUserstories = true
         @.disablePagination = true
         @scope.httpParams = @.getUrlFilters()
