@@ -589,7 +589,10 @@ EditableDescriptionDirective = ($rootscope, $repo, $confirm, $compile, $loading,
             save(description)
 
         $el.on "keydown", "textarea", (event) ->
-            if event.keyCode == 27
+            autocompleteClosedRecently = () =>
+                return new Date().getTime() - $(this).data('autocompleting-closed') > 100
+
+            if event.keyCode == 27 && autocompleteClosedRecently()
                 $scope.$apply () => $scope.item.revert()
                 $el.find('.edit-description').hide()
                 $el.find('.view-description').show()
