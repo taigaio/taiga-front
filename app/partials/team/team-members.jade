@@ -7,8 +7,7 @@
                 a.name(
                     tg-nav="user-profile:username=user.username",
                     title="{{::user.full_name_display}}"
-                )
-                    {{::user.full_name_display}}
+                ) {{::user.full_name_display}}
                     tg-svg(
                         ng-if="user.id == owner"
                         svg-icon="icon-badge"
