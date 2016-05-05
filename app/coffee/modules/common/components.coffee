@@ -529,7 +529,7 @@ module.directive("tgEditableSubject", ["$rootScope", "$tgRepo", "$tgConfirm", "$
 ## Editable description directive
 #############################################################################
 
-EditableDescriptionDirective = ($rootscope, $repo, $confirm, $compile, $loading, $selectedText, $qqueue, $template) ->
+EditableDescriptionDirective = ($rootscope, $repo, $confirm, $compile, $loading, $selectedText, $qqueue, $template, $translate) ->
     template = $template.get("common/components/editable-description.html")
     noDescriptionMegEditMode = $template.get("common/components/editable-description-msg-edit-mode.html")
     noDescriptionMegReadMode = $template.get("common/components/editable-description-msg-read-mode.html")
@@ -563,6 +563,11 @@ EditableDescriptionDirective = ($rootscope, $repo, $confirm, $compile, $loading,
             promise.finally ->
                 currentLoading.finish()
 
+        cancelEdition = () ->
+            $scope.item.revert()
+            $el.find('.edit-description').hide()
+            $el.find('.view-description').show()
+
         $el.on "mouseup", ".view-description", (event) ->
             # We want to dettect the a inside the div so we use the target and
             # not the currentTarget
@@ -589,15 +594,19 @@ EditableDescriptionDirective = ($rootscope, $repo, $confirm, $compile, $loading,
             save(description)
 
         $el.on "keydown", "textarea", (event) ->
-            if event.keyCode == 27
-                $scope.$apply () => $scope.item.revert()
-                $el.find('.edit-description').hide()
-                $el.find('.view-description').show()
+            return if event.keyCode != 27
+
+            $scope.$applyAsync () ->
+                title = $translate.instant("COMMON.CONFIRM_CLOSE_EDIT_MODE_TITLE")
+                message = $translate.instant("COMMON.CONFIRM_CLOSE_EDIT_MODE_MESSAGE")
+                $confirm.ask(title, null, message).then (askResponse) ->
+                    cancelEdition()
+                    askResponse.finish()
 
         $scope.$watch $attrs.ngModel, (value) ->
             return if not value
-            $scope.item = value
 
+            $scope.item = value
             if isEditable()
                 $el.find('.view-description .edit').show()
                 $el.find('.view-description .us-content').addClass('editable')
@@ -623,7 +632,9 @@ module.directive("tgEditableDescription", [
     "$tgLoading",
     "$selectedText",
     "$tgQqueue",
-    "$tgTemplate", EditableDescriptionDirective])
+    "$tgTemplate",
+    "$translate",
+    EditableDescriptionDirective])
 
 
 
