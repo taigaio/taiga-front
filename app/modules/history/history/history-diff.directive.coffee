@@ -14,21 +14,25 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: check-permissions.service.coffee
+# File: history.directive.coffee
 ###
 
-taiga = @.taiga
+module = angular.module('taigaHistory')
 
-class CheckPermissionsService
-    @.$inject = [
-        "tgProjectService"
-    ]
+HistoryDiffDirective = () ->
+    link = (scope, el, attrs, ctrl) ->
+        ctrl.diffTags()
 
-    constructor: (@projectService) ->
+    return {
+        scope: {
+            type: "<",
+            diff: "<"
+        },
+        templateUrl:"history/history/history-diff.html",
+        controller: "ActivitiesDiffCtrl",
+        controllerAs: 'vm',
+        bindToController: true,
+        link: link
+    }
 
-    check: (permission) ->
-        return false if !@projectService.project
-
-        return @projectService.project.get('my_permissions').indexOf(permission) != -1
-
-angular.module("taigaCommon").service("tgCheckPermissionsService", CheckPermissionsService)
+module.directive("tgHistoryDiff", HistoryDiffDirective)

@@ -53,7 +53,7 @@ describe('Task detail', function(){
       expect(newIsIocaine).to.be.equal(isIocaine);
     });
 
-    it('history', sharedDetail.historyTesting);
+    it('history', sharedDetail.historyTesting.bind(this, "tasks"));
 
     it('block', sharedDetail.blockTesting);
 

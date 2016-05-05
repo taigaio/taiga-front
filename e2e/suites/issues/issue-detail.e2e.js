@@ -37,7 +37,7 @@ describe('Issue detail', async function(){
 
     describe('watchers edition', sharedDetail.watchersTesting);
 
-    it('history', sharedDetail.historyTesting);
+    it('history', sharedDetail.historyTesting.bind(this, "issues"));
 
     it('block', sharedDetail.blockTesting);
 
@@ -57,4 +57,5 @@ describe('Issue detail', async function(){
             expect(url).not.to.be.equal(issueUrl);
         });
     });
+
 });

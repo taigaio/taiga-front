@@ -244,6 +244,7 @@
                 "VIEW_USER_STORIES": "View user stories",
                 "ADD_USER_STORIES": "Add user stories",
                 "MODIFY_USER_STORIES": "Modify user stories",
+                "COMMENT_USER_STORIES": "Comment user stories",
                 "DELETE_USER_STORIES": "Delete user stories"
             },
             "TASKS": {
@@ -251,6 +252,7 @@
                 "VIEW_TASKS": "View tasks",
                 "ADD_TASKS": "Add tasks",
                 "MODIFY_TASKS": "Modify tasks",
+                "COMMENT_TASKS": "Comment tasks",
                 "DELETE_TASKS": "Delete tasks"
             },
             "ISSUES": {
@@ -258,6 +260,7 @@
                 "VIEW_ISSUES": "View issues",
                 "ADD_ISSUES": "Add issues",
                 "MODIFY_ISSUES": "Modify issues",
+                "COMMENT_ISSUES": "Comment issues",
                 "DELETE_ISSUES": "Delete issues"
             },
             "WIKI": {
@@ -1018,28 +1021,47 @@
         }
     },
     "COMMENTS": {
-        "DELETED_INFO": "Comment deleted by {{user}} on {{date}}",
+        "DELETED_INFO": "Comment deleted by {{user}}",
         "TITLE": "Comments",
+        "COMMENTS_COUNT": "{{comments}} Comments",
+        "ORDER": "Order",
+        "OLDER_FIRST": "Older first",
+        "RECENT_FIRST": "Recent first",
         "COMMENT": "Comment",
+        "EDIT_COMMENT": "Edit comment",
+        "EDITED_COMMENT": "Edited:",
+        "SHOW_HISTORY": "View historic",
         "TYPE_NEW_COMMENT": "Type a new comment here",
         "SHOW_DELETED": "Show deleted comment",
         "HIDE_DELETED": "Hide deleted comment",
         "DELETE": "Delete comment",
-        "RESTORE": "Restore comment"
+        "RESTORE": "Restore comment",
+        "HISTORY": {
+            "TITLE": "Activity"
+        }
     },
     "ACTIVITY": {
         "SHOW_ACTIVITY": "Show activity",
         "DATETIME": "DD MMM YYYY HH:mm",
         "SHOW_MORE": "+ Show previous entries ({{showMore}} more)",
         "TITLE": "Activity",
+        "ACTIVITIES_COUNT": "{{activities}} Activities",
         "REMOVED": "removed",
         "ADDED": "added",
-        "US_POINTS": "US points ({{name}})",
-        "NEW_ATTACHMENT": "new attachment",
-        "DELETED_ATTACHMENT": "deleted attachment",
-        "UPDATED_ATTACHMENT": "updated attachment {{filename}}",
-        "DELETED_CUSTOM_ATTRIBUTE": "deleted custom attribute",
+        "TAGS_ADDED": "tags added:",
+        "TAGS_REMOVED": "tags removed:",
+        "US_POINTS": "{{role}} points",
+        "NEW_ATTACHMENT": "new attachment:",
+        "DELETED_ATTACHMENT": "deleted attachment:",
+        "UPDATED_ATTACHMENT": "updated attachment ({{filename}}): ",
+        "CREATED_CUSTOM_ATTRIBUTE": "created custom attribute",
+        "UPDATED_CUSTOM_ATTRIBUTE": "updated custom attribute",
         "SIZE_CHANGE": "Made {size, plural, one{one change} other{# changes}}",
+        "BECAME_DEPRECATED": "became deprecated",
+        "BECAME_UNDEPRECATED": "became undeprecated",
+        "TEAM_REQUIREMENT": "Team Requirement",
+        "CLIENT_REQUIREMENT": "Client Requirement",
+        "BLOCKED": "Blocked",
         "VALUES": {
             "YES": "yes",
             "NO": "no",
@@ -1071,6 +1093,7 @@
             "TAGS": "tags",
             "ATTACHMENTS": "attachments",
             "IS_DEPRECATED": "is deprecated",
+            "IS_NOT_DEPRECATED": "is not deprecated",
             "ORDER": "order",
             "BACKLOG_ORDER": "backlog order",
             "SPRINT_ORDER": "sprint order",

@@ -1,4 +1,5 @@
 var path = require('path');
+var utils = require('../utils');
 var detailHelper = require('../helpers').detail;
 var commonHelper = require('../helpers').common;
 var customFieldsHelper = require('../helpers/custom-fields-helper');
@@ -191,29 +192,49 @@ shared.assignedToTesting = function() {
     });
 }
 
-shared.historyTesting = async function() {
+shared.historyTesting = async function(screenshotsFolder) {
     let historyHelper = detailHelper.history();
+
+
     //Adding a comment
     historyHelper.selectCommentsTab();
+    await utils.common.takeScreenshot(screenshotsFolder, "show comments tab");
 
     let commentsCounter = await historyHelper.countComments();
     let date = Date.now();
-    await historyHelper.addComment("New comment " + date);
-    let newCommentsCounter = await historyHelper.countComments();
 
+    await historyHelper.addComment("New comment " + date);
+    await utils.common.takeScreenshot(screenshotsFolder, "new coment");
+
+    let newCommentsCounter = await historyHelper.countComments();
     expect(newCommentsCounter).to.be.equal(commentsCounter+1);
+
+    //Edit last comment
+    historyHelper.editLastComment();
+    let editComment = detailHelper.editComment();
+    editComment.updateText("This is the new and updated text");
+    editComment.saveComment();
+    await utils.common.takeScreenshot(screenshotsFolder, "edit comment");
+
+    //Show versions from last comment edited
+    historyHelper.showVersionsLastComment();
+    await utils.common.takeScreenshot(screenshotsFolder, "show comment versions");
+
+    historyHelper.closeVersionsLastComment();
 
     //Deleting last comment
     let deletedCommentsCounter = await historyHelper.countDeletedComments();
     await historyHelper.deleteLastComment();
     let newDeletedCommentsCounter = await historyHelper.countDeletedComments();
     expect(newDeletedCommentsCounter).to.be.equal(deletedCommentsCounter+1);
+    await utils.common.takeScreenshot(screenshotsFolder, "deleted comment");
 
     //Restore last comment
     deletedCommentsCounter = await historyHelper.countDeletedComments();
     await historyHelper.restoreLastComment();
     newDeletedCommentsCounter = await historyHelper.countDeletedComments();
     expect(newDeletedCommentsCounter).to.be.equal(deletedCommentsCounter-1);
+    await utils.common.takeScreenshot(screenshotsFolder, "restored comment");
 
     //Store comment with a modification
     commentsCounter = await historyHelper.countComments();
@@ -221,18 +242,19 @@ shared.historyTesting = async function() {
     historyHelper.writeComment("New comment " + date);
     let title = detailHelper.title();
     title.setTitle('changed');
-    title.save();
-
+    await title.save();
     newCommentsCounter = await historyHelper.countComments();
 
     expect(newCommentsCounter).to.be.equal(commentsCounter+1);
 
     //Check activity
     await historyHelper.selectActivityTab();
+    await utils.common.takeScreenshot(screenshotsFolder, "show activity tab");
 
     let activitiesCounter = await historyHelper.countActivities();
 
-    expect(activitiesCounter).to.be.least(newCommentsCounter);
+    expect(newCommentsCounter).to.be.least(activitiesCounter);
+    
 }
 
 shared.blockTesting = async function() {
