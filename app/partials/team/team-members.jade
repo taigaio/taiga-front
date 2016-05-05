@@ -7,9 +7,13 @@
                 a.name(
                     tg-nav="user-profile:username=user.username",
                     title="{{::user.full_name_display}}"
-                ) {{::user.full_name_display}}
-                    svg.icon.icon-badge(ng-if="user.id == owner")
-                        tg-svg(svg-icon="icon-badge", svg-title-translate="COMMON.OWNER")
+                )
+                    {{::user.full_name_display}}
+                    tg-svg(
+                        ng-if="user.id == owner"
+                        svg-icon="icon-badge"
+                        svg-title-translate="COMMON.OWNER"
+                    )
 
                 span.position {{::user.role_name}}
 
