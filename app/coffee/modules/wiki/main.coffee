@@ -206,7 +206,7 @@ module.directive("tgWikiSummary", ["$log", "$tgTemplate", "$compile", "$translat
 ## Editable Wiki Content Directive
 #############################################################################
 
-EditableWikiContentDirective = ($window, $document, $repo, $confirm, $loading, $analytics, $qqueue) ->
+EditableWikiContentDirective = ($window, $document, $repo, $confirm, $loading, $analytics, $qqueue, $translate) ->
     link = ($scope, $el, $attrs, $model) ->
         isEditable = ->
             return $scope.project.my_permissions.indexOf("modify_wiki_page") != -1
@@ -227,8 +227,8 @@ EditableWikiContentDirective = ($window, $document, $repo, $confirm, $loading, $
         cancelEdition = ->
             return if not $model.$modelValue.id
 
-            $scope.$apply () =>
-                $model.$modelValue.revert()
+            $model.$modelValue.revert()
+
             switchToReadMode()
 
         getSelectedText = ->
@@ -290,11 +290,15 @@ EditableWikiContentDirective = ($window, $document, $repo, $confirm, $loading, $
             save($scope.wiki)
 
         $el.on "click", ".cancel", ->
-            cancelEdition()
+            $scope.$apply(cancelEdition)
 
         $el.on "keydown", "textarea", (event) ->
             if event.keyCode == 27
-                cancelEdition()
+                $scope.$applyAsync () ->
+                    confirmTitle = $translate.instant("COMMON.CONFIRM_CLOSE_EDIT_MODE")
+                    $confirm.ask(confirmTitle).then (askResponse) ->
+                        cancelEdition()
+                        askResponse.finish()
 
         $scope.$watch $attrs.ngModel, (wikiPage) ->
             return if not wikiPage
@@ -317,4 +321,4 @@ EditableWikiContentDirective = ($window, $document, $repo, $confirm, $loading, $
     }
 
 module.directive("tgEditableWikiContent", ["$window", "$document", "$tgRepo", "$tgConfirm", "$tgLoading",
-                                           "$tgAnalytics", "$tgQqueue", EditableWikiContentDirective])
+                                           "$tgAnalytics", "$tgQqueue", "$translate", EditableWikiContentDirective])

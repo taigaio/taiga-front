@@ -1,6 +1,15 @@
 # Changelog #
 
 
+## 2.2.0 ???? (Unreleased)
+
+### Features
+- Show a confirmation notice when you exit edit mode by pressing ESC in the markdown inputs.
+
+### Misc
+- Lots of small and not so small bugfixes.
+
+
 ## 2.1.0 Ursus Americanus (2016-05-03)
 
 ### Features
