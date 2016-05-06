@@ -20,10 +20,23 @@
 module = angular.module("taigaHistory")
 
 class HistorySectionController
-    @.$inject = []
+    @.$inject = [
+        "$tgResources"
+    ]
 
-    constructor: () ->
+    constructor: (@rs) ->
         @.viewComments = true
+        @rs.history.get(@.type, @.id).then (history) =>
+            @._getComments(history)
+            @._getActivities(history)
+
+    _getComments: (comments) ->
+        @.comments = _.filter(comments, (item) -> item.comment != "")
+        @.commentsNum = comments.length
+
+    _getActivities: (activities) ->
+        @.activities =  _.filter(activities, (item) -> Object.keys(item.values_diff).length > 0)
+        @.activitiesNum = activities.length
 
     onActiveHistoryTab: (active) ->
         console.log "onActiveHistoryTab"

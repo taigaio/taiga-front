@@ -28,6 +28,8 @@ HistoryTabsDirective = () ->
             onActiveActivities: "&",
             onOrderComments: "&"
             activeTab: "<",
+            commentsNum: "<",
+            activitiesNum: "<"
         }
     }
 

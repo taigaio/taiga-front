@@ -4,18 +4,22 @@ nav.history-tabs
         title="Comments"
         ng-click="onActiveComments()"
         ng-class="{active: activeTab}"
-    ) 8 comments
+        translate="COMMENTS.COMMENTS_COUNT"
+        translate-values="{comments: commentsNum}"
+    )
     a.history-tab(
         href=""
         title="Activities"
         ng-click="onActiveActivities()"
         ng-class="{active: !activeTab}"
-    ) 81 Activities
+        translate="ACTIVITY.ACTIVITIES_COUNT"
+        translate-values="{activities: activitiesNum}"
+    )
     a.order-comments(
         href=""
         title="Order Comments"
         ng-click="onOrderComments()"
-        ng-class="{new-first: top, old-first: !top}"    
+        ng-class="{'new-first': top, 'old-first': !top}"    
     ) 
-        span Order top
+        span Order
         tg-svg(svg-icon="icon-arrow-down")

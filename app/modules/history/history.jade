@@ -4,6 +4,8 @@ section.history
         on-active-activities="vm.onActiveHistoryTab(false)"
         active-tab="vm.viewComments",
         on-order-comments="vm.onOrderComments()"
+        comments-num="vm.commentsNum"
+        activities-num="vm.activitiesNum"
     )
     tg-comments(ng-if="vm.viewComments")
     tg-history(ng-if="!vm.viewComments")

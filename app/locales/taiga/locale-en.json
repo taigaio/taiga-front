@@ -1013,6 +1013,8 @@
     "COMMENTS": {
         "DELETED_INFO": "Comment deleted by {{user}} on {{date}}",
         "TITLE": "Comments",
+        "COMMENTS_COUNT": "{{comments`}} Comments",
+        "ORDER": "Order",
         "COMMENT": "Comment",
         "TYPE_NEW_COMMENT": "Type a new comment here",
         "SHOW_DELETED": "Show deleted comment",
@@ -1025,6 +1027,7 @@
         "DATETIME": "DD MMM YYYY HH:mm",
         "SHOW_MORE": "+ Show previous entries ({{showMore}} more)",
         "TITLE": "Activity",
+        "ACTIVITIES_COUNT": "{{activities}} Activities",
         "REMOVED": "removed",
         "ADDED": "added",
         "US_POINTS": "US points ({{name}})",

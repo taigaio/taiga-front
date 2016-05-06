@@ -24,7 +24,12 @@ HistorySectionDirective = () ->
     return {
         templateUrl:"history/history.html",
         controller: "HistorySection",
-        controllerAs: "vm"
+        controllerAs: "vm",
+        bindToController: true,
+        scope: {
+            type: "@",
+            id: "="
+        }
     }
 
 HistorySectionDirective.$inject = []
