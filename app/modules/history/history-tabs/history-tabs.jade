@@ -1,1 +1,13 @@
-p History tabs
+nav.history-tabs
+    a.history-tab(
+        href=""
+        title="Comments"
+        ng-click="onActiveComments()"
+        ng-class="{active: vm.viewComments}"
+    ) 8 comments
+    a.history-tab(
+        href=""
+        title="Activities"
+        ng-click="onActiveActivities()"
+        ng-class="{active: !vm.viewComments}"
+    ) 81 Activities

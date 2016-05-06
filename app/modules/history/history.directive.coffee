@@ -20,13 +20,13 @@
 module = angular.module('taigaHistory')
 
 HistorySectionDirective = () ->
-    link = (scope, el, attrs) ->
-        console.log 'Test'
 
     return {
-        scope: {},
         templateUrl:"history/history.html",
-        link: link
+        controller: "HistorySection",
+        controllerAs: "vm"
     }
+
+HistorySectionDirective.$inject = []
 
 module.directive("tgHistorySection", HistorySectionDirective)
