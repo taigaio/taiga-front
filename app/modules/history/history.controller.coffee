@@ -29,5 +29,7 @@ class HistorySectionController
         console.log "onActiveHistoryTab"
         @.viewComments = active
 
+    onOrderComments: () ->
+        console.log 'order-comments'
 
 module.controller("HistorySection", HistorySectionController)

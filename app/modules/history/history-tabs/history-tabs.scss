@@ -1,19 +1,31 @@
 .history-tabs {
-    @include font-type(bold);
     background: $whitish;
-    .history-tab {
-        border-bottom: 3px solid transparent;
-        color: $gray-light;
+    display: flex;
+    flex-direction: row;
+    a {
+        color: $grayer;
         display: inline-block;
         padding: .75rem 1rem;
-        transition: all .1s linear;
         &:hover {
             color: $grayer;
         }
+    }
+    .history-tab {
+        @include font-type(bold);
+        border-bottom: 3px solid transparent;
+        color: $gray-light;
+        transition: all .1s linear;
         &.active {
             border-bottom: 3px solid $grayer;
             color: $grayer;
         }
+    }
+    .order-comments {
+        @include font-type(light);
+        margin-left: auto;
+    }
+    .icon-arrow-down {
+        @include svg-size(.8rem);
     }
 }
 

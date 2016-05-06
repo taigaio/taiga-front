@@ -26,6 +26,7 @@ HistoryTabsDirective = () ->
         scope: {
             onActiveComments: "&",
             onActiveActivities: "&",
+            onOrderComments: "&"
             activeTab: "<",
         }
     }

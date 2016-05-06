@@ -11,3 +11,11 @@ nav.history-tabs
         ng-click="onActiveActivities()"
         ng-class="{active: !activeTab}"
     ) 81 Activities
+    a.order-comments(
+        href=""
+        title="Order Comments"
+        ng-click="onOrderComments()"
+        ng-class="{new-first: top, old-first: !top}"    
+    ) 
+        span Order top
+        tg-svg(svg-icon="icon-arrow-down")
