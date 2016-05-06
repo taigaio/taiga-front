@@ -1,2 +1,22 @@
 section.comments
-    
+    .comment(ng-repeat="comment in vm.comments")
+        img.comment-avatar(
+            src="{{comment.user.photo}}"
+            alt="{{comment.user.name}}"
+        )
+        .comment-main
+            .comment-data
+                span.comment-creator {{comment.user.name}}
+                span.comment-date {{comment.created_at | momentFormat:'DD MMM YYYY HH:mm'}}
+            p.comment-text {{comment.comment}}
+        .comment-options
+            tg-svg.comment-option(
+                svg-icon="icon-edit"
+                svg-title-translate="COMMON.EDIT"
+                ng-click="vm.editComment()"
+            )
+            tg-svg.comment-option(
+                svg-icon="icon-trash"
+                svg-title-translate="COMMON.DELETE"
+                ng-click="vm.deleteComment(comment.id)"
+            )

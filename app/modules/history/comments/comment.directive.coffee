@@ -20,13 +20,15 @@
 module = angular.module('taigaHistory')
 
 CommentsDirective = () ->
-    link = (scope, el, attrs) ->
-        console.log 'Comments'
 
     return {
-        scope: {},
+        scope: {
+            comments: "<"
+        },
         templateUrl:"history/comments/comments.html",
-        link: link
+        bindToController: true,
+        controller: 'CommentsCtrl',
+        controllerAs: "vm",
     }
 
 module.directive("tgComments", CommentsDirective)

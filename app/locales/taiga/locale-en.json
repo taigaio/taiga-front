@@ -1013,7 +1013,7 @@
     "COMMENTS": {
         "DELETED_INFO": "Comment deleted by {{user}} on {{date}}",
         "TITLE": "Comments",
-        "COMMENTS_COUNT": "{{comments`}} Comments",
+        "COMMENTS_COUNT": "{{comments}} Comments",
         "ORDER": "Order",
         "COMMENT": "Comment",
         "TYPE_NEW_COMMENT": "Type a new comment here",
