@@ -46,53 +46,44 @@ class HomeService extends taiga.Service
 
             return duty
 
+        _getValidDutiesAndAttachProjectInfo = (duties, dutyType)->
+            # Exclude duties where I'm not member of the project
+            duties = duties.filter((duty) ->
+                return projectsById.get(String(duty.get('project'))))
+
+            duties = duties.map (duty) ->
+                return _attachProjectInfoToDuty(duty, dutyType)
+
+            return duties
+
         assignedTo = workInProgress.get("assignedTo")
 
         if assignedTo.get("userStories")
-            _duties = assignedTo.get("userStories").map (duty) ->
-                return _attachProjectInfoToDuty(duty, "userstories")
-
+            _duties = _getValidDutiesAndAttachProjectInfo(assignedTo.get("userStories"), "userstories")
             assignedTo = assignedTo.set("userStories", _duties)
 
         if assignedTo.get("tasks")
-            _duties = assignedTo.get("tasks").map (duty) ->
-                return _attachProjectInfoToDuty(duty, "tasks")
-
+            _duties = _getValidDutiesAndAttachProjectInfo(assignedTo.get("tasks"), "tasks")
             assignedTo = assignedTo.set("tasks", _duties)
 
-        if assignedTo.get("issues")
-            _duties = assignedTo.get("issues").map (duty) ->
-                return _attachProjectInfoToDuty(duty, "issues")
 
+        if assignedTo.get("issues")
+            _duties = _getValidDutiesAndAttachProjectInfo(assignedTo.get("issues"), "issues")
             assignedTo = assignedTo.set("issues", _duties)
+
 
         watching = workInProgress.get("watching")
 
         if watching.get("userStories")
-            _duties = watching.get("userStories").filter (duty) ->
-                return !!projectsById.get(String(duty.get('project')))
-
-            _duties = _duties.map (duty) ->
-                return _attachProjectInfoToDuty(duty, "userstories")
-
+            _duties = _getValidDutiesAndAttachProjectInfo(watching.get("userStories"), "userstories")
             watching = watching.set("userStories", _duties)
 
         if watching.get("tasks")
-            _duties = watching.get("tasks").filter (duty) ->
-                return !!projectsById.get(String(duty.get('project')))
-
-            _duties = _duties.map (duty) ->
-                return _attachProjectInfoToDuty(duty, "tasks")
-
+            _duties = _getValidDutiesAndAttachProjectInfo(watching.get("tasks"), "tasks")
             watching = watching.set("tasks", _duties)
 
         if watching.get("issues")
-            _duties = watching.get("issues").filter (duty) ->
-                return !!projectsById.get(String(duty.get('project')))
-
-            _duties = _duties.map (duty) ->
-                return _attachProjectInfoToDuty(duty, "issues")
-
+            _duties = _getValidDutiesAndAttachProjectInfo(watching.get("issues"), "issues")
             watching = watching.set("issues", _duties)
 
         workInProgress = workInProgress.set("assignedTo", assignedTo)
