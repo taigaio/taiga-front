@@ -2,10 +2,11 @@
     @include font-type(bold);
     background: $whitish;
     .history-tab {
+        border-bottom: 3px solid transparent;
         color: $gray-light;
         display: inline-block;
         padding: .75rem 1rem;
-        transition: color .1s linear;
+        transition: all .1s linear;
         &:hover {
             color: $grayer;
         }

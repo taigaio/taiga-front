@@ -1,7 +1,8 @@
 section.history
     tg-history-tabs(
-        on-active-comments="onActiveHistoryTab(true)"
-        on-active-activities="onActiveHistoryTab(false)"
+        on-active-comments="vm.onActiveHistoryTab(true)"
+        on-active-activities="vm.onActiveHistoryTab(false)"
+        active-tab="vm.viewComments"
     )
     tg-comments(ng-if="vm.viewComments")
     tg-history(ng-if="!vm.viewComments")

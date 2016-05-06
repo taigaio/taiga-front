@@ -25,7 +25,8 @@ HistoryTabsDirective = () ->
         templateUrl:"history/history-tabs/history-tabs.html",
         scope: {
             onActiveComments: "&",
-            onActiveActivities: "&"
+            onActiveActivities: "&",
+            activeTab: "<",
         }
     }
 

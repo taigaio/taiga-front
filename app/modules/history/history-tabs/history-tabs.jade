@@ -3,11 +3,11 @@ nav.history-tabs
         href=""
         title="Comments"
         ng-click="onActiveComments()"
-        ng-class="{active: vm.viewComments}"
+        ng-class="{active: activeTab}"
     ) 8 comments
     a.history-tab(
         href=""
         title="Activities"
         ng-click="onActiveActivities()"
-        ng-class="{active: !vm.viewComments}"
+        ng-class="{active: !activeTab}"
     ) 81 Activities
