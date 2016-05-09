@@ -2,8 +2,9 @@ require("babel-register");
 require("babel-polyfill");
 
 var utils = require('./e2e/utils');
+var argv = require('minimist')(process.argv.slice(2));
 
-exports.config = {
+var config = {
     seleniumAddress: 'http://localhost:4444/wd/hub',
     framework: 'mocha',
     params: {
@@ -101,8 +102,6 @@ exports.config = {
         // };
         // browser.addMockModule('trackMouse', trackMouse);
 
-        var argv = require('minimist')(process.argv.slice(2));
-
         browser.params.glob.back = argv.back;
 
         require('./e2e/capabilities.js');
@@ -140,4 +139,23 @@ exports.config = {
             return browser.get(browser.params.glob.host);
         });
     }
+};
+
+
+if (argv.json) {
+    var fs = require('fs');
+    var dir = './e2e/reports';
+
+    if (!fs.existsSync(dir)){
+        fs.mkdirSync(dir);
+    }
+
+    var suites = argv.suite.split(',').join('-');
+
+    process.env['MOCHA_REPORTER'] = 'JSON';
+    process.env['MOCHA_REPORTER_FILE'] = 'e2e/reports/report-' + suites +'.json';
+
+    config.mochaOpts.reporter = 'reporter-file';
 }
+
+exports.config = config;

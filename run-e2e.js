@@ -35,7 +35,13 @@ function backup() {
 }
 
 function launchProtractor(suit) {
-    child_process.spawnSync('protractor', ['conf.e2e.js', '--suite=' + suit, '--back=' + taigaBackPath], {stdio: "inherit"});
+    let protractorParams = ['conf.e2e.js', '--suite=' + suit, '--back=' + taigaBackPath];
+
+    if (argv.json) {
+        protractorParams.push('--json');
+    }
+
+    child_process.spawnSync('protractor', protractorParams, {stdio: "inherit"});
 }
 
 function restoreBackup() {
