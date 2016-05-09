@@ -1,0 +1,37 @@
+.diff-attachments-new(
+    ng-if="diff.new.length"
+    ng-repeat="newAttachment in activity.values_diff.attachments.new"
+)
+    span.key(translate="ACTIVITY.NEW_ATTACHMENT")
+    span.diff {{newAttachment.filename}}
+.diff-attachments-update(
+    ng-if="diff.changed.length"
+    ng-repeat="editAttachment in activity.values_diff.attachments.changed"
+) 
+    span.key(
+        translate="ACTIVITY.UPDATED_ATTACHMENT"
+        translate-values="{filename: editAttachment.filename}"
+    )
+    span.diff(ng-if="editAttachment.changes.is_deprecated")
+        span(
+            ng-if="editAttachment.changes.is_deprecated[1] == false"
+            translate="ACTIVITY.BECAME_DEPRECATED"
+        )
+        span(
+            ng-if="editAttachment.changes.is_deprecated[1] == true"
+            translate="ACTIVITY.BECAME_UNDEPRECATED"
+        )
+    span.diff(ng-if="editAttachment.changes.description")
+        span(ng-if='editAttachment.changes.description[0].length') {{editAttachment.changes.description[0]}}
+        span(ng-if='!editAttachment.changes.description[0].length') ...
+        tg-svg(
+            svg-icon="icon-arrow-right"
+        )
+        span {{editAttachment.changes.description[1]}}
+        
+.diff-attachments-deleted(
+    ng-if="diff.deleted.length"
+    ng-repeat="deletedAttachment in activity.values_diff.attachments.deleted"
+)
+    span.key(translate="ACTIVITY.DELETED_ATTACHMENT")
+    span.diff {{deletedAttachment.filename}}
