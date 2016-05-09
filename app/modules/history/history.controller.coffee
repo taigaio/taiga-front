@@ -32,12 +32,11 @@ class HistorySectionController
 
     _getComments: (comments) ->
         @.comments = _.filter(comments, (item) -> item.comment != "")
-        @.commentsNum = comments.length
-        console.log @.comments
+        @.commentsNum = @.comments.length
 
     _getActivities: (activities) ->
         @.activities =  _.filter(activities, (item) -> Object.keys(item.values_diff).length > 0)
-        @.activitiesNum = activities.length
+        @.activitiesNum = @.activities.length
 
     onActiveHistoryTab: (active) ->
         console.log "onActiveHistoryTab"
