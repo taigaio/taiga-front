@@ -39,7 +39,6 @@ class HistorySectionController
         @.activitiesNum = @.activities.length
 
     onActiveHistoryTab: (active) ->
-        console.log "onActiveHistoryTab"
         @.viewComments = active
 
     onOrderComments: () ->

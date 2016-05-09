@@ -23,4 +23,44 @@ section.activities
                         ng-if="key == 'attachments'"
                     )
                         include history-templates/history-attachments
+
+                    .diff-wrapper(
+                        ng-if="key == 'milestone'"
+                    )
+                        include history-templates/history-milestone
+
+                    .diff-wrapper(
+                        ng-if="key == 'status'"
+                    )
+                        include history-templates/history-status
+
+                    .diff-wrapper(
+                        ng-if="key == 'subject'"
+                    )
+                        include history-templates/history-subject
+
+                    .diff-wrapper(
+                        ng-if="key == 'description_diff'"
+                    )
+                        include history-templates/history-description
+
+                    .diff-wrapper(
+                        ng-if="key == 'assigned_to'"
+                    )
+                        include history-templates/history-assigned
+
+                    .diff-wrapper(
+                        ng-if="key == 'tags'"
+                        ng-init="res = vm.removeTags(diff[0], diff[1])"
+                    )
+                        p(
+                            ng-if="res.diffRemoveTags"
+                            translate="ACTIVITY.TAGS_REMOVED"
+                            translate-values="{tags: res.diffRemoveTags}"
+                        )
+                        p(
+                            ng-if="res.diffAddTags"
+                            translate="ACTIVITY.TAGS_ADDED"
+                            translate-values="{tags: res.diffAddTags}"
+                        )
                         

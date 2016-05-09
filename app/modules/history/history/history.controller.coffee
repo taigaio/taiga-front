@@ -24,8 +24,13 @@ class ActivitiesController
     ]
 
     constructor: () ->
-        @.flatActivities = _.flatten(@.activities)
-        console.log @.flatActivities
+
+
+    removeTags: (tagFrom, tagTo) ->
+        res = {}
+        res.diffRemoveTags = _.difference(tagFrom, tagTo).toString()
+        res.diffAddTags = _.difference(tagTo, tagFrom).toString()
+        return res
 
 
 module.controller("ActivitiesCtrl", ActivitiesController)

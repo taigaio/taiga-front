@@ -1030,6 +1030,8 @@
         "ACTIVITIES_COUNT": "{{activities}} Activities",
         "REMOVED": "removed",
         "ADDED": "added",
+        "TAGS_ADDED": "tags added: {{tags}}",
+        "TAGS_REMOVED": "tags removed: {{tags}}",
         "US_POINTS": "{{role}} points",
         "NEW_ATTACHMENT": "new attachment:",
         "DELETED_ATTACHMENT": "deleted attachment:",
