@@ -30,7 +30,7 @@ describe('User story detail', function(){
 
     it('tags edition', sharedDetail.tagsTesting);
 
-    it('description edition', sharedDetail.descriptionTesting);
+    describe('description', sharedDetail.descriptionTesting);
 
     it('status edition', sharedDetail.statusTesting.bind(this, 'Ready', 'In progress'));
 

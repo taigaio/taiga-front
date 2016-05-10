@@ -38,6 +38,10 @@ helper.editor = function(){
     let obj = {
         el: el,
 
+        focus: function() {
+            el.$("textarea").click();
+        },
+
         enabledEditionMode: async function(){
             await el.$("section[tg-editable-wiki-content] .view-wiki-content").click();
         },
@@ -58,7 +62,7 @@ helper.editor = function(){
         },
 
         getInnerHtml: async function(text){
-            let wikiText = await el.$(".content").getInnerHtml();
+            let wikiText = await el.$(".view-wiki-content .wysiwyg").getInnerHtml();
             return wikiText;
         },
 
@@ -75,7 +79,10 @@ helper.editor = function(){
             await el.$(".preview-icon a").click();
             await browser.waitForAngular();
         },
-
+        closePreview: async function(){
+            await el.$(".actions .wysiwyg").click();
+            await browser.waitForAngular();
+        },
         save: async function(){
             await el.$(".save").click();
             await browser.waitForAngular();

@@ -29,7 +29,9 @@ helper.description = function(){
 
     let obj = {
         el: el,
-
+        focus: function() {
+            el.$('textarea').click();
+        },
         enabledEditionMode: async function(){
             await el.$(".view-description").click();
         },

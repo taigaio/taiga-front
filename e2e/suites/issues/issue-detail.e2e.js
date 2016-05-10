@@ -29,7 +29,7 @@ describe('Issue detail', async function(){
 
     it('tags edition', sharedDetail.tagsTesting);
 
-    it('description edition', sharedDetail.descriptionTesting);
+    describe('description', sharedDetail.descriptionTesting);
 
     it('status edition', sharedDetail.statusTesting.bind(this, 'In progress', 'Ready for test'));
 

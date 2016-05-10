@@ -60,6 +60,7 @@ describe('wiki', function() {
         //preview
         wikiHelper.editor().preview();
         await utils.common.takeScreenshot("wiki", "home-edition-preview");
+        wikiHelper.editor().closePreview();
 
         //save
         wikiHelper.editor().save();
@@ -72,6 +73,28 @@ describe('wiki', function() {
         expect(newLastEditionDatetime).to.be.not.equal(lastEditionDatetime);
 
         await utils.common.takeScreenshot("wiki", "home-edition");
+    });
+
+    it('confirm close with ESC in lightbox', async function() {
+        wikiHelper.editor().enabledEditionMode();
+
+        browser.actions().sendKeys(protractor.Key.ESCAPE).perform();
+
+        await utils.lightbox.confirm.cancel();
+
+        let descriptionVisibility = await $('.view-wiki-content').isDisplayed();
+
+        expect(descriptionVisibility).to.be.false;
+
+        wikiHelper.editor().focus();
+
+        browser.actions().sendKeys(protractor.Key.ESCAPE).perform();
+
+        await utils.lightbox.confirm.ok();
+
+        descriptionVisibility = await $('.view-wiki-content').isDisplayed();
+
+        expect(descriptionVisibility).to.be.true;
     });
 
     it('attachments', sharedDetail.attachmentTesting);

@@ -3,6 +3,7 @@ var detailHelper = require('../helpers').detail;
 var commonHelper = require('../helpers').common;
 var customFieldsHelper = require('../helpers/custom-fields-helper');
 var commonUtil = require('../utils/common');
+var lightbox = require('../utils/lightbox');
 var notifications = require('../utils/notifications');
 
 var chai = require('chai');
@@ -46,21 +47,47 @@ shared.tagsTesting = async function() {
     expect(newtagsText).to.be.not.eql(tagsText);
 }
 
-shared.descriptionTesting = async function() {
-    let descriptionHelper = detailHelper.description();
-    let description = await descriptionHelper.getInnerHtml();
-    let date = Date.now();
-    descriptionHelper.enabledEditionMode();
-    descriptionHelper.setText("New description " + date);
-    descriptionHelper.save();
+shared.descriptionTesting = function() {
+    it('confirm close with ESC', async function() {
+        let descriptionHelper = detailHelper.description();
 
-    let newDescription = await descriptionHelper.getInnerHtml();
-    let notificationOpen = await notifications.success.open();
+        descriptionHelper.enabledEditionMode();
 
-    expect(notificationOpen).to.be.equal.true;
-    expect(newDescription).to.be.not.equal(description);
+        browser.actions().sendKeys(protractor.Key.ESCAPE).perform();
 
-    await notifications.success.close();
+        await lightbox.confirm.cancel();
+
+        let descriptionVisibility = await $('.edit-description').isDisplayed();
+
+        expect(descriptionVisibility).to.be.true;
+
+        descriptionHelper.focus();
+
+        browser.actions().sendKeys(protractor.Key.ESCAPE).perform();
+
+        await lightbox.confirm.ok();
+
+        descriptionVisibility = await $('.edit-description').isDisplayed();
+
+        expect(descriptionVisibility).to.be.false;
+    });
+
+    it('edit', async function() {
+        let descriptionHelper = detailHelper.description();
+        let description = await descriptionHelper.getInnerHtml();
+        let date = Date.now();
+        descriptionHelper.enabledEditionMode();
+        descriptionHelper.setText("New description " + date);
+        descriptionHelper.save();
+
+        let newDescription = await descriptionHelper.getInnerHtml();
+        let notificationOpen = await notifications.success.open();
+
+        expect(notificationOpen).to.be.equal.true;
+        expect(newDescription).to.be.not.equal(description);
+
+        await notifications.success.close();
+    });
 }
 
 shared.statusTesting = async function(status1 , status2) {
