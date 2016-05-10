@@ -66,6 +66,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         @.disablePagination = false
         @.firstLoadComplete = false
         @scope.userstories = []
+        @.tag_point = null;
 
         @scope.sectionName = @translate.instant("BACKLOG.SECTION_NAME")
         @showTags = false
@@ -164,7 +165,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         return @rs.projects.stats(@scope.projectId).then (stats) =>
             @scope.stats = stats
             totalPoints = if stats.total_points then stats.total_points else stats.defined_points
-
+            stats.tag_points=@.tag_point
             if totalPoints
                 @scope.stats.completedPercentage = Math.round(100 * stats.closed_points / totalPoints)
             else
@@ -303,7 +304,14 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             # We can't assure when this exactly happens so we need a defer
             scopeDefer @scope, =>
                 @scope.$broadcast("userstories:loaded")
-
+            if @.getUrlFilters().tags != undefined
+              @.tag_point=0
+              for userstory in userstories
+                @.tag_point += userstory.total_points
+              console.log(@.tag_point)
+            else
+              @.tag_point = null
+            @.loadProjectStats()
             return userstories
 
     loadBacklog: ->

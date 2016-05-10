@@ -7,6 +7,9 @@ div.summary
     div.summary-stats(ng-if="stats.total_points")
         span.number(ng-bind="stats.total_points | number") --
         span.description(translate="BACKLOG.SUMMARY.PROJECT_POINTS")
+    div.summary-stats(ng-if="stats.tag_points")
+        span.number(ng-bind="stats.tag_points | number") --
+        span.description(translate="BACKLOG.SUMMARY.TAGS_POINTS")
     div.summary-stats
         span.number(ng-bind="stats.defined_points | number") --
         span.description(translate="BACKLOG.SUMMARY.DEFINED_POINTS")
