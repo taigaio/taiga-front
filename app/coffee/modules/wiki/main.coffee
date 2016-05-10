@@ -292,12 +292,13 @@ EditableWikiContentDirective = ($window, $document, $repo, $confirm, $loading, $
             $scope.$apply(cancelEdition)
 
         $el.on "keydown", "textarea", (event) ->
-            if event.keyCode == 27
-                $scope.$applyAsync () ->
-                    confirmTitle = $translate.instant("COMMON.CONFIRM_CLOSE_EDIT_MODE")
-                    $confirm.ask(confirmTitle).then (askResponse) ->
-                        cancelEdition()
-                        askResponse.finish()
+            return if event.keyCode != 27
+            $scope.$applyAsync () ->
+                title = $translate.instant("COMMON.CONFIRM_CLOSE_EDIT_MODE_TITLE")
+                message = $translate.instant("COMMON.CONFIRM_CLOSE_EDIT_MODE_MESSAGE")
+                $confirm.ask(title, null, message).then (askResponse) ->
+                    cancelEdition()
+                    askResponse.finish()
 
         $scope.$watch $attrs.ngModel, (wikiPage) ->
             return if not wikiPage
