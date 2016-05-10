@@ -1,11 +1,8 @@
 .diff-tags-wrapper
-    p(
-        ng-if="vm.removedTags.length"
-        translate="ACTIVITY.TAGS_REMOVED"
-        translate-values="{tags: vm.removedTags}"
-    )
-    p(
-        ng-if="vm.diffAddTags.length"
-        translate="ACTIVITY.TAGS_ADDED"
-        translate-values="{tags: vm.diffAddTags}"
-    ) 
+    p(ng-if="vm.diffRemoveTags")
+        span.key(translate="ACTIVITY.TAGS_REMOVED")
+        span.diff {{vm.diffRemoveTags}}
+    
+    p(ng-if="vm.diffAddTags")
+        span.key(translate="ACTIVITY.TAGS_ADDED")
+        span.diff {{vm.diffAddTags}}

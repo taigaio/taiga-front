@@ -24,6 +24,7 @@ class ActivitiesDiffController
     ]
 
     constructor: () ->
+        console.log @.type, @.diff
         if @.type == 'tags'
             @.diffRemoveTags = _.difference(@.diff[0], @.diff[1]).toString()
             @.diffAddTags = _.difference(@.diff[1], @.diff[0]).toString()

@@ -36,14 +36,11 @@
 .diff-wrapper(
     ng-if="vm.type == 'tags'"
 )
-    p(
-        ng-if="vm.diffRemoveTags"
-        translate="ACTIVITY.TAGS_REMOVED"
-        translate-values="{tags: vm.diffRemoveTags}"
-    )
-    p(
-        ng-if="vm.diffAddTags"
-        translate="ACTIVITY.TAGS_ADDED"
-        translate-values="{tags: vm.diffAddTags}"
-    )
+    include history-templates/history-tags
+
+.diff-wrapper(
+    ng-if="vm.type == 'custom_attributes'"
+)
+    include history-templates/history-custom-attributes
+    
     
