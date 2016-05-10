@@ -11,6 +11,15 @@
                 width: 100%;
             }
         }
+        .admin-attributes-section-wrapper-empty {
+            color: $gray-light;
+            padding: 10vh 0 0;
+            text-align: center;
+        }
+        .loading-spinner {
+            max-height: 3rem;
+            max-width: 3rem;
+        }
     }
 }
 
