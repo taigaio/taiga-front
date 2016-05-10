@@ -24,7 +24,8 @@ CommentsDirective = () ->
     return {
         scope: {
             comments: "<",
-            onDeleteComment: "&"
+            onDeleteComment: "&",
+            onRestoreDeletedComment: "&"
         },
         templateUrl:"history/comments/comments.html",
         bindToController: true,

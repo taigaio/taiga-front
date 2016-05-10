@@ -11,6 +11,7 @@ section.history
         ng-if="vm.viewComments"
         comments="vm.comments"
         on-delete-comment="vm.deleteComment(commentId)"
+        on-restore-deleted-comment="vm.restoreDeletedComment(commentId)"
     )
     tg-history(
         ng-if="!vm.viewComments"

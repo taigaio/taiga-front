@@ -35,7 +35,6 @@ class HistorySectionController
 
     _getComments: (comments) ->
         @.comments = _.filter(comments, (item) -> item.comment != "")
-        console.log @.comments
         @.commentsNum = @.comments.length
 
     _getActivities: (activities) ->
@@ -50,6 +49,13 @@ class HistorySectionController
         objectId = @.id
         activityId = commentId
         @rs.history.deleteComment(type, objectId, activityId).then =>
+            @._loadHistory()
+
+    restoreDeletedComment: (commentId) ->
+        type = @.type
+        objectId = @.id
+        activityId = commentId
+        @rs.history.undeleteComment(type, objectId, activityId).then =>
             @._loadHistory()
 
     onOrderComments: () ->

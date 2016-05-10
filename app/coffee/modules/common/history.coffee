@@ -50,7 +50,7 @@
 #     @.$inject = ["$scope", "$tgRepo", "$tgResources"]
 #
 #     constructor: (@scope, @repo, @rs) ->
-# 
+#
 #     initialize: (type, objectId) ->
 #         @.type = type
 #         @.objectId = objectId
