@@ -252,8 +252,7 @@ EditableWikiContentDirective = ($window, $document, $repo, $confirm, $loading, $
                 $confirm.notify("error")
 
             currentLoading = $loading()
-                .removeClasses("icon-floppy")
-                .target($el.find('.icon-floppy'))
+                .target($el.find('.save'))
                 .start()
 
             if wiki.id?
