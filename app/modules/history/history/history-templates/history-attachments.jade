@@ -1,12 +1,13 @@
+
 .diff-attachments-new(
-    ng-if="diff.new.length"
-    ng-repeat="newAttachment in activity.values_diff.attachments.new"
+    ng-if="vm.diff.new.length"
+    ng-repeat="newAttachment in vm.diff.new"
 )
     span.key(translate="ACTIVITY.NEW_ATTACHMENT")
     span.diff {{newAttachment.filename}}
 .diff-attachments-update(
-    ng-if="diff.changed.length"
-    ng-repeat="editAttachment in activity.values_diff.attachments.changed"
+    ng-if="vm.diff.changed.length"
+    ng-repeat="editAttachment in vm.diff.changed"
 ) 
     span.key(
         translate="ACTIVITY.UPDATED_ATTACHMENT"
@@ -30,8 +31,8 @@
         span {{editAttachment.changes.description[1]}}
         
 .diff-attachments-deleted(
-    ng-if="diff.deleted.length"
-    ng-repeat="deletedAttachment in activity.values_diff.attachments.deleted"
+    ng-if="vm.diff.deleted.length"
+    ng-repeat="deletedAttachment in vm.diff.deleted"
 )
     span.key(translate="ACTIVITY.DELETED_ATTACHMENT")
     span.diff {{deletedAttachment.filename}}
