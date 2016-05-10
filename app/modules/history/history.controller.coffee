@@ -26,12 +26,16 @@ class HistorySectionController
 
     constructor: (@rs) ->
         @.viewComments = true
+        @._loadHistory()
+
+    _loadHistory: () ->
         @rs.history.get(@.type, @.id).then (history) =>
             @._getComments(history)
             @._getActivities(history)
 
     _getComments: (comments) ->
         @.comments = _.filter(comments, (item) -> item.comment != "")
+        console.log @.comments
         @.commentsNum = @.comments.length
 
     _getActivities: (activities) ->
@@ -40,6 +44,13 @@ class HistorySectionController
 
     onActiveHistoryTab: (active) ->
         @.viewComments = active
+
+    deleteComment: (commentId) ->
+        type = @.type
+        objectId = @.id
+        activityId = commentId
+        @rs.history.deleteComment(type, objectId, activityId).then =>
+            @._loadHistory()
 
     onOrderComments: () ->
         console.log 'order-comments'

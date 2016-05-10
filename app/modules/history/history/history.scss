@@ -1,6 +1,7 @@
 .activities {
     .activity {
         align-items: flex-start;
+        border-bottom: 1px solid $whitish;
         display: flex;
         padding: 2rem 0;
     }

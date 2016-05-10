@@ -5,6 +5,9 @@
         margin-right: .5rem;
         padding: .25rem;
     }
+    .diff {
+        line-height: 1.6;
+    }
     .icon-arrow-right {
         @include svg-size(.75rem);
         fill: $gray-light;

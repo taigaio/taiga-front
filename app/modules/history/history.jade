@@ -10,6 +10,7 @@ section.history
     tg-comments(
         ng-if="vm.viewComments"
         comments="vm.comments"
+        on-delete-comment="vm.deleteComment(commentId)"
     )
     tg-history(
         ng-if="!vm.viewComments"

@@ -23,7 +23,8 @@ CommentsDirective = () ->
 
     return {
         scope: {
-            comments: "<"
+            comments: "<",
+            onDeleteComment: "&"
         },
         templateUrl:"history/comments/comments.html",
         bindToController: true,

@@ -24,12 +24,15 @@ class CommentsController
     ]
 
     constructor: () ->
+        @.hiddenDeletedComment = true
+
+    showDeletedComment: () ->
+        @.hiddenDeletedComment = false
+
+    hideDeletedComment: () ->
+        @.hiddenDeletedComment = true
 
     editComment: () ->
         console.log 'edit Comment' + id
-
-    deleteComment: (id) ->
-        console.log 'delete Comment' + id
-
 
 module.controller("CommentsCtrl", CommentsController)

@@ -1,23 +1,68 @@
 section.comments
     .comments-wrapper
-        .comment(ng-repeat="comment in vm.comments")
-            img.comment-avatar(
-                ng-src="{{comment.user.photo}}"
-                ng-alt="{{comment.user.name}}"
+        .comment(
+            ng-repeat="comment in vm.comments"
+            ng-class="{'deleted-comment': comment.delete_comment_date}"
+        )
+            .comment-wrapper(
+                ng-if="!comment.delete_comment_date"
             )
-            .comment-main
-                .comment-data
-                    span.comment-creator {{comment.user.name}}
-                    span.comment-date {{comment.created_at | momentFormat:'DD MMM YYYY HH:mm'}}
-                p.comment-text {{comment.comment}}
-            .comment-options
-                tg-svg.comment-option(
-                    svg-icon="icon-edit"
-                    svg-title-translate="COMMON.EDIT"
-                    ng-click="vm.editComment()"
+                img.comment-avatar(
+                    ng-src="{{comment.user.photo}}"
+                    ng-alt="{{comment.user.name}}"
                 )
-                tg-svg.comment-option(
-                    svg-icon="icon-trash"
-                    svg-title-translate="COMMON.DELETE"
-                    ng-click="vm.deleteComment(comment.id)"
-                )
+                .comment-main
+                    .comment-data
+                        span.comment-creator {{comment.user.name}}
+                        span.comment-date {{comment.created_at | momentFormat:'DD MMM YYYY HH:mm'}}
+                    p.comment-text {{comment.comment}}
+                .comment-options
+                    tg-svg.comment-option(
+                        svg-icon="icon-edit"
+                        svg-title-translate="COMMON.EDIT"
+                        ng-click="vm.editComment()"
+                    )
+                    tg-svg.comment-option(
+                        svg-icon="icon-trash"
+                        svg-title-translate="COMMON.DELETE"
+                        ng-click="vm.onDeleteComment({commentId: comment.id})"
+                    )
+            .deleted-comment-wrapper(
+                ng-if="comment.delete_comment_date"
+            )
+                .deleted-comment-main
+                    span(
+                        translate="COMMENTS.DELETED_INFO"
+                        translate-values="{user: comment.delete_comment_user.name, date: comment.delete_comment_date}"
+                    )
+                    a.toggle-deleted-comment(
+                        href=""
+                        ng-click="vm.showDeletedComment()"
+                        ng-if="vm.hiddenDeletedComment"
+                    )
+                        span(translate="COMMENTS.SHOW_DELETED")
+                        tg-svg(
+                            svg-icon="icon-arrow-down"
+                            svg-title-translate="COMMENTS.SHOW_DELETED"
+                        )
+                    a.toggle-deleted-comment(
+                        href=""
+                        ng-click="vm.hideDeletedComment()"
+                        ng-if="!vm.hiddenDeletedComment"
+                    )
+                        span(translate="COMMENTS.HIDE_DELETED")
+                        tg-svg(
+                            svg-icon="icon-arrow-up"
+                            svg-title-translate="COMMENTS.HIDE_DELETED"
+                        )
+                    a.restore-comment(
+                        href=""
+                        ng-click="vm.restoreDeletedComment()"
+                    )
+                        tg-svg(
+                            svg-icon="icon-reload"
+                            svg-title-translate="COMMENTS.RESTORE"
+                        )
+                        span(translate="COMMENTS.RESTORE")
+                p.deleted-comment-comment(ng-if="!vm.hiddenDeletedComment") {{comment.comment}}
+                
