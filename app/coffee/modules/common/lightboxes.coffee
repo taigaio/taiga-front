@@ -75,12 +75,15 @@ class LightboxService extends taiga.Service
         docEl = angular.element(document)
         docEl.off(".lightbox")
         docEl.off(".keyboard-navigation") # Hack: to fix problems in the WYSIWYG textareas when press ENTER
-        $el.one "transitionend", =>
-            $el.removeAttr('style')
-            $el.removeClass("open").removeClass('close')
 
         @animationFrame.add ->
             $el.addClass('close')
+
+            $el.one "transitionend", =>
+                $el.removeAttr('style')
+                $el.removeClass("open").removeClass('close')
+
+
 
         if $el.hasClass("remove-on-close")
             scope = $el.data("scope")
@@ -658,7 +661,7 @@ WatchersLightboxDirective = ($repo, lightboxService, lightboxKeyboardNavigationS
             render(users)
             $el.find("input").focus()
 
-        $el.on "click", ".user-list-single", debounce 2000, (event) ->
+        $el.on "click", ".user-list-single", debounce 200, (event) ->
             closeLightbox()
 
             event.preventDefault()
