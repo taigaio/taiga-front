@@ -244,6 +244,7 @@
                 "VIEW_USER_STORIES": "View user stories",
                 "ADD_USER_STORIES": "Add user stories",
                 "MODIFY_USER_STORIES": "Modify user stories",
+                "COMMENT_USER_STORIES": "Comment user stories",
                 "DELETE_USER_STORIES": "Delete user stories"
             },
             "TASKS": {
@@ -251,6 +252,7 @@
                 "VIEW_TASKS": "View tasks",
                 "ADD_TASKS": "Add tasks",
                 "MODIFY_TASKS": "Modify tasks",
+                "COMMENT_TASKS": "Comment tasks",
                 "DELETE_TASKS": "Delete tasks"
             },
             "ISSUES": {
@@ -258,6 +260,7 @@
                 "VIEW_ISSUES": "View issues",
                 "ADD_ISSUES": "Add issues",
                 "MODIFY_ISSUES": "Modify issues",
+                "COMMENT_ISSUES": "Comment issues",
                 "DELETE_ISSUES": "Delete issues"
             },
             "WIKI": {
