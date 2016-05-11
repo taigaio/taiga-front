@@ -12,6 +12,10 @@ section.history
         comments="vm.comments"
         on-delete-comment="vm.deleteComment(commentId)"
         on-restore-deleted-comment="vm.restoreDeletedComment(commentId)"
+        on-add-comment="vm.addComment()"
+        type="vm.type"
+        name="{{vm.name}}"
+        loading="vm.loading"
     )
     tg-history(
         ng-if="!vm.viewComments"

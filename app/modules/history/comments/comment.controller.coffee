@@ -27,6 +27,7 @@ class CommentsController
 
     constructor: (@currentUserService, @permissionService) ->
         @.hiddenDeletedComment = true
+        @.modifyType = 'modify_' + @.name
 
     showDeletedComment: () ->
         @.hiddenDeletedComment = false
@@ -37,12 +38,10 @@ class CommentsController
     canEditDeleteComment: (comment) ->
         if @currentUserService.getUser()
             @.user = @currentUserService.getUser().toJS()
-            if @.user.id == comment.pk || @permissionService.check('modify_project')
-                console.log @.user.id, comment.pk
-                console.log @permissionService.check('modify_project')
-                return true
+            return @.user.id == comment.pk || @permissionService.check('modify_project')
 
     editComment: () ->
         console.log 'edit Comment' + id
+
 
 module.controller("CommentsCtrl", CommentsController)

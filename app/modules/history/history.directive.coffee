@@ -27,7 +27,8 @@ HistorySectionDirective = () ->
         controllerAs: "vm",
         bindToController: true,
         scope: {
-            type: "@",
+            type: "=",
+            name: "@",
             id: "="
         }
     }

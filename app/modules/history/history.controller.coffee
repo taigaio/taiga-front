@@ -21,15 +21,18 @@ module = angular.module("taigaHistory")
 
 class HistorySectionController
     @.$inject = [
-        "$tgResources"
+        "$tgResources",
+        "$tgRepo",
+        "$tgConfirm"
     ]
 
-    constructor: (@rs) ->
+    constructor: (@rs, @repo, @confirm) ->
         @.viewComments = true
+        console.log @.name
         @._loadHistory()
 
     _loadHistory: () ->
-        @rs.history.get(@.type, @.id).then (history) =>
+        @rs.history.get(@.name, @.id).then (history) =>
             @._getComments(history)
             @._getActivities(history)
 
@@ -45,18 +48,24 @@ class HistorySectionController
         @.viewComments = active
 
     deleteComment: (commentId) ->
-        type = @.type
+        type = @.name
         objectId = @.id
         activityId = commentId
         @rs.history.deleteComment(type, objectId, activityId).then =>
             @._loadHistory()
 
     restoreDeletedComment: (commentId) ->
-        type = @.type
+        type = @.name
         objectId = @.id
         activityId = commentId
         @rs.history.undeleteComment(type, objectId, activityId).then =>
             @._loadHistory()
+
+    addComment: () ->
+        @.loading = true
+        @repo.save(@.type).then =>
+            @._loadHistory()
+            @.loading = false
 
     onOrderComments: () ->
         console.log 'order-comments'

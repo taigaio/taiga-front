@@ -1,3 +1,5 @@
+include ../../../partials/common/components/wysiwyg.jade
+
 section.comments
     .comments-wrapper
         .comment(
@@ -69,3 +71,22 @@ section.comments
                         span(translate="COMMENTS.RESTORE")
                 p.deleted-comment-comment(ng-if="!vm.hiddenDeletedComment") {{comment.comment}}
                 
+    tg-editable-wysiwyg.add-comment(
+        ng-model="vm.type"
+        tg-check-permission="{{vm.modifyType}}"
+        tg-toggle-comment
+    )
+        textarea(
+            ng-attr-placeholder="{{'COMMENTS.TYPE_NEW_COMMENT' | translate}}"
+            tg-markitup="tg-markitup"
+            ng-model="vm.type.comment"
+        )
+        +wysihelp
+        button.button-green.save-comment(
+            type="button"
+            title="{{'COMMENTS.COMMENT' | translate}}"
+            translate="COMMENTS.COMMENT"
+            ng-disabled="!vm.type.comment.length"
+            ng-click="vm.onAddComment()"
+            tg-loading="vm.loading"
+        ) 

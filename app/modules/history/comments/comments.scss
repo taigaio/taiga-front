@@ -6,6 +6,7 @@
             }
         }
         &.deleted-comment {
+            border-bottom: 1px solid $whitish;
             padding: 1rem 0;
         }
     }
@@ -14,6 +15,9 @@
         border-bottom: 1px solid $whitish;
         display: flex;
         padding: 2rem 0;
+    }
+    .comment-main {
+        width: 100%;
     }
     .comment-avatar {
         flex-basis: 50px;
@@ -69,6 +73,7 @@
         color: $primary;
         fill: $primary;
         margin: 0 1rem;
+        transition: none;
         .icon-arrow-down,
         .icon-arrow-up {
             @include svg-size(.8rem);
@@ -89,5 +94,15 @@
     }
     .deleted-comment-comment {
         margin-top: 1rem;
+    }
+    .add-comment {
+        textarea {
+            height: 3rem;
+        }
+    }
+    .save-comment {
+        float: right;
+        margin-top: 1rem;
+        padding: .5rem 4rem;
     }
 }
