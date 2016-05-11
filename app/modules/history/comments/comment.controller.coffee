@@ -19,7 +19,7 @@
 
 module = angular.module("taigaHistory")
 
-class CommentsController
+class CommentController
     @.$inject = [
         "tgCurrentUserService",
         "tgCheckPermissionsService"
@@ -27,7 +27,6 @@ class CommentsController
 
     constructor: (@currentUserService, @permissionService) ->
         @.hiddenDeletedComment = true
-        @.modifyType = 'modify_' + @.name
 
     showDeletedComment: () ->
         @.hiddenDeletedComment = false
@@ -35,13 +34,9 @@ class CommentsController
     hideDeletedComment: () ->
         @.hiddenDeletedComment = true
 
-    canEditDeleteComment: (comment) ->
+    canEditDeleteComment: () ->
         if @currentUserService.getUser()
             @.user = @currentUserService.getUser().toJS()
-            return @.user.id == comment.pk || @permissionService.check('modify_project')
+            return @.user.id == @.comment.pk || @permissionService.check('modify_project')
 
-    editComment: () ->
-        console.log 'edit Comment' + id
-
-
-module.controller("CommentsCtrl", CommentsController)
+module.controller("CommentCtrl", CommentController)

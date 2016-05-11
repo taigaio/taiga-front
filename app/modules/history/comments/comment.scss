@@ -1,13 +1,10 @@
 .comments {
-    .comment {
-        &:hover {
-            .comment-option {
-                opacity: 1;
-            }
-        }
-        &.deleted-comment {
-            border-bottom: 1px solid $whitish;
-            padding: 1rem 0;
+    clear: both;
+}
+.comment {
+    &:hover {
+        .comment-option {
+            opacity: 1;
         }
     }
     .comment-wrapper {
@@ -61,6 +58,8 @@
         }
     }
     .deleted-comment-wrapper {
+        border-bottom: 1px solid $whitish;
+        padding: 1rem 0;
         width: 100%;
     }
     .deleted-comment-main {

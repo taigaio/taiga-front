@@ -19,18 +19,22 @@
 
 module = angular.module('taigaHistory')
 
-CommentDirective = () ->
+CommentsDirective = () ->
 
     return {
         scope: {
-            comment: "<",
+            type: "=",
+            name: "@",
+            comments: "<",
             onDeleteComment: "&",
-            onRestoreDeletedComment: "&"
+            onRestoreDeletedComment: "&",
+            onAddComment: "&",
+            loading: "<"
         },
-        templateUrl:"history/comments/comment.html",
+        templateUrl:"history/comments/comments.html",
         bindToController: true,
-        controller: 'CommentCtrl',
+        controller: 'CommentsCtrl',
         controllerAs: "vm",
     }
 
-module.directive("tgComment", CommentDirective)
+module.directive("tgComments", CommentsDirective)

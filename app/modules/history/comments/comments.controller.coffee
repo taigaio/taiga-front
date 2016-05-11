@@ -1,5 +1,5 @@
 ###
-# Copyright (C) 2014-2016 Taiga Agile LLC <taiga@taiga.io>
+# Copyright (C) 2014-2015 Taiga Agile LLC <taiga@taiga.io>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -14,23 +14,15 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: comment.directive.coffee
+# File: history.controller.coffee
 ###
 
-module = angular.module('taigaHistory')
+module = angular.module("taigaHistory")
 
-CommentDirective = () ->
+class CommentsController
+    @.$inject = []
 
-    return {
-        scope: {
-            comment: "<",
-            onDeleteComment: "&",
-            onRestoreDeletedComment: "&"
-        },
-        templateUrl:"history/comments/comment.html",
-        bindToController: true,
-        controller: 'CommentCtrl',
-        controllerAs: "vm",
-    }
+    constructor: () ->
+        @.modifyType = 'modify_' + @.name
 
-module.directive("tgComment", CommentDirective)
+module.controller("CommentsCtrl", CommentsController)

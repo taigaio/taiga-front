@@ -58,6 +58,7 @@ class HistorySectionController
             @._loadHistory()
 
     restoreDeletedComment: (commentId) ->
+        console.log @.name, @.id, commentId
         type = @.name
         objectId = @.id
         activityId = commentId
