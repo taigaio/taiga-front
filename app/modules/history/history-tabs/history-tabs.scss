@@ -23,44 +23,10 @@
     .order-comments {
         @include font-type(light);
         margin-left: auto;
+        transition: none;
     }
+    .icon-arrow-up,
     .icon-arrow-down {
-        @include svg-size(.8rem);
+        @include svg-size(.75rem);
     }
 }
-
-
-
-
-//     @include font-type(light);
-//     border-bottom: 1px solid $whitish;
-//     border-top: 1px solid $whitish;
-//     margin-bottom: 0;
-//     li {
-//         background: $white;
-//         display: inline-block;
-//         position: relative;
-//         &.active {
-//             border-left: 1px solid $whitish;
-//             border-right: 1px solid $whitish;
-//             color: $primary;
-//             top: 1px;
-//         }
-//         &:hover {
-//             color: $grayer;
-//             transition: color .2s ease-in;
-//         }
-//     }
-//     a {
-//         color: $gray-light;
-//         display: block;
-//         padding: .5rem 2rem;
-//         transition: color .2s ease-in;
-//     }
-//     .icon {
-//         fill: currentColor;
-//         height: .75rem;
-//         margin-right: .5rem;
-//         width: .75rem;
-//     }
-// }

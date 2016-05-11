@@ -38,6 +38,8 @@ class HistorySectionController
 
     _getComments: (comments) ->
         @.comments = _.filter(comments, (item) -> item.comment != "")
+        if @.reverse
+            @.comments - _.reverse(@.comments)
         @.commentsNum = @.comments.length
 
     _getActivities: (activities) ->
@@ -68,6 +70,7 @@ class HistorySectionController
             @.loading = false
 
     onOrderComments: () ->
-        console.log 'order-comments'
+        @.reverse = !@.reverse
+        @._loadHistory()
 
 module.controller("HistorySection", HistorySectionController)

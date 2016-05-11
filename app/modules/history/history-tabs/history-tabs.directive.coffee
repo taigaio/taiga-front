@@ -29,7 +29,8 @@ HistoryTabsDirective = () ->
             onOrderComments: "&"
             activeTab: "<",
             commentsNum: "<",
-            activitiesNum: "<"
+            activitiesNum: "<",
+            onReverse: "<"
         }
     }
 

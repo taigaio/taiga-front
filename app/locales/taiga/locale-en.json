@@ -1015,6 +1015,8 @@
         "TITLE": "Comments",
         "COMMENTS_COUNT": "{{comments}} Comments",
         "ORDER": "Order",
+        "OLDER_FIRST": "Older first",
+        "RECENT_FIRST": "Recent first",
         "COMMENT": "Comment",
         "TYPE_NEW_COMMENT": "Type a new comment here",
         "SHOW_DELETED": "Show deleted comment",
