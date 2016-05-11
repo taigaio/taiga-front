@@ -23,13 +23,14 @@ class HistorySectionController
     @.$inject = [
         "$tgResources",
         "$tgRepo",
-        "$tgConfirm"
+        "$tgConfirm",
+        "$tgStorage",
     ]
 
-    constructor: (@rs, @repo, @confirm) ->
+    constructor: (@rs, @repo, @confirm, @storage) ->
         @.viewComments = true
-        console.log @.name
         @._loadHistory()
+        @.reverse = @storage.get("orderComments")
 
     _loadHistory: () ->
         @rs.history.get(@.name, @.id).then (history) =>
@@ -71,6 +72,7 @@ class HistorySectionController
 
     onOrderComments: () ->
         @.reverse = !@.reverse
+        @storage.set("orderComments", @.reverse)
         @._loadHistory()
 
 module.controller("HistorySection", HistorySectionController)
