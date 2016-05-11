@@ -1,17 +1,34 @@
 .comments {
     clear: both;
-}
-.comment {
-    &:hover {
-        .comment-option {
-            opacity: 1;
+    .add-comment {
+        margin-top: 1rem;
+        textarea {
+            height: 3rem;
         }
     }
+    .save-comment-wrapper {
+        align-items: flex-end;
+        display: flex;
+        flex-direction: column;
+    }
+    .save-comment {
+        margin-top: 1rem;
+        padding: .5rem 4rem;
+    }
+
+}
+.comment {
+    display: block;
     .comment-wrapper {
         align-items: flex-start;
         border-bottom: 1px solid $whitish;
         display: flex;
         padding: 2rem 0;
+        &:hover {
+            .comment-option {
+                opacity: 1;
+            }
+        }
     }
     .comment-main {
         width: 100%;
@@ -94,14 +111,10 @@
     .deleted-comment-comment {
         margin-top: 1rem;
     }
-    .add-comment {
+    .comment-editor {
+        margin-bottom: 2rem;
         textarea {
             height: 3rem;
         }
-    }
-    .save-comment {
-        float: right;
-        margin-top: 1rem;
-        padding: .5rem 4rem;
     }
 }

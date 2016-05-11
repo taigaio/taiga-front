@@ -20,11 +20,12 @@ section.comments
             ng-model="vm.type.comment"
         )
         +wysihelp
-        button.button-green.save-comment(
-            type="button"
-            title="{{'COMMENTS.COMMENT' | translate}}"
-            translate="COMMENTS.COMMENT"
-            ng-disabled="!vm.type.comment.length"
-            ng-click="vm.onAddComment()"
-            tg-loading="vm.loading"
-        ) 
+        .save-comment-wrapper
+            button.button-green.save-comment(
+                type="button"
+                title="{{'COMMENTS.COMMENT' | translate}}"
+                translate="COMMENTS.COMMENT"
+                ng-disabled="!vm.type.comment.length"
+                ng-click="vm.onAddComment()"
+                tg-loading="vm.loading"
+            ) 

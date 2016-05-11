@@ -20,6 +20,7 @@ nav.history-tabs
         title="Order Comments"
         ng-click="onOrderComments()"
         ng-class="{'new-first': top, 'old-first': !top}"
+        ng-if="commentsNum > 1"
     ) 
         span(
             translate="COMMENTS.OLDER_FIRST"

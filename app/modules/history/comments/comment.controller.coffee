@@ -34,6 +34,9 @@ class CommentController
     hideDeletedComment: () ->
         @.hiddenDeletedComment = true
 
+    editComment: () ->
+        @.toggleEditComment = !@.toggleEditComment
+
     canEditDeleteComment: () ->
         if @currentUserService.getUser()
             @.user = @currentUserService.getUser().toJS()

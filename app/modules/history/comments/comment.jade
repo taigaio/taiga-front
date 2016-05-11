@@ -1,3 +1,5 @@
+include ../../../partials/common/components/wysiwyg.jade
+
 .comment-wrapper(
     ng-if="!vm.comment.delete_comment_date"
 )
@@ -14,7 +16,7 @@
         tg-svg.comment-option(
             svg-icon="icon-edit"
             svg-title-translate="COMMON.EDIT"
-            ng-click="onEdit=true"
+            ng-click="vm.editComment()"
             ng-if="::vm.canEditDeleteComment()"
         )
         tg-svg.comment-option(
@@ -23,26 +25,26 @@
             ng-click="vm.onDeleteComment({commentId: vm.comment.id})"
             ng-if="::vm.canEditDeleteComment()"
         )
-//- .comment-editor(
-//-     ng-if="onEdit"
-//- )
-//-     tg-editable-wysiwyg.edit-comment(
-//-         ng-model="vm.type"
-//-     )
-//-         textarea(
-//-             ng-attr-placeholder="{{'COMMENTS.TYPE_NEW_COMMENT' | translate}}"
-//-             tg-markitup="tg-markitup"
-//-             ng-model="vm.type.comment"
-//-         )
-//-         +wysihelp
-//-         button.button-green.save-comment(
-//-             type="button"
-//-             title="{{'COMMENTS.COMMENT' | translate}}"
-//-             translate="COMMENTS.COMMENT"
-//-             ng-disabled="!vm.type.comment.length"
-//-             ng-click="vm.onAddComment()"
-//-             tg-loading="vm.loading"
-//-         ) 
+.comment-editor(
+    ng-if="vm.toggleEditComment"
+)
+    tg-editable-wysiwyg.edit-comment(
+        ng-model="vm.type"
+    )
+        textarea(
+            tg-markitup="tg-markitup"
+            ng-model="vm.comment.comment"
+        )
+        +wysihelp
+        .save-comment-wrapper
+            button.button-green.save-comment(
+                type="button"
+                title="{{'COMMENTS.EDIT_COMMENT' | translate}}"
+                translate="COMMENTS.EDIT_COMMENT"
+                ng-disabled="!vm.type.comment.length"
+                ng-click="vm.onAddComment()"
+                tg-loading="vm.loading"
+            ) 
 .deleted-comment-wrapper(
     ng-if="vm.comment.delete_comment_date"
 )
