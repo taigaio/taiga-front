@@ -25,6 +25,7 @@ CommentsDirective = () ->
         scope: {
             type: "=",
             name: "@",
+            object: "@",
             comments: "<",
             onDeleteComment: "&",
             onRestoreDeletedComment: "&",

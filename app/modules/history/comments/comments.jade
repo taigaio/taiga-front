@@ -6,6 +6,8 @@ section.comments
             ng-repeat="comment in vm.comments"
             ng-class="{'deleted-comment': comment.delete_comment_date}"
             comment="comment"
+            name="{{vm.name}}"
+            object="{{vm.object}}"
             on-delete-comment="vm.onDeleteComment({commentId: commentId})"
             on-restore-deleted-comment="vm.onRestoreDeletedComment({commentId: commentId})"
             on-edit-comment="vm.onEditComment({commentId: commentId, commentData: commentData})"

@@ -39,6 +39,9 @@
         margin-right: 1.5rem;
     }
     .comment-data {
+        align-items: center;
+        display: flex;
+        justify-content: flex-start;
         margin-bottom: 1rem;
     }
     .comment-creator {
@@ -46,7 +49,25 @@
         margin-right: .5rem;
     }
     .comment-date {
+        @include font-size(small);
         color: $gray-light;
+    }
+    .comment-edited {
+        @include font-size(small);
+        background: $whitish;
+        margin: 0 .5rem;
+        padding: .25rem;
+        .separator {
+            margin: 0 .25rem;
+        }
+        a {
+            color: $primary;
+            fill: $primary;
+        }
+        svg {
+            @include svg-size(.75rem);
+            margin: 0 0 0 .25rem;
+        }
     }
     .comment-options {
         align-items: center;

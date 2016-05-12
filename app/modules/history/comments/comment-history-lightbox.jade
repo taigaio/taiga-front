@@ -1,0 +1,7 @@
+tg-lightbox-close
+
+.history-container
+    h2.title(translate="COMMENTS.HISTORY.TITLE")
+    .history-wrapper
+        .history-entry(ng-repeat="entry in vm.commentHistoryEntries")
+            p {{entry}}

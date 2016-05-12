@@ -11,6 +11,17 @@ include ../../../partials/common/components/wysiwyg.jade
         .comment-data
             span.comment-creator {{vm.comment.user.name}}
             span.comment-date {{vm.comment.created_at | momentFormat:'DD MMM YYYY HH:mm'}}
+            .comment-edited(ng-if="vm.comment.edit_comment_date")
+                span(translate="COMMENTS.EDITED_COMMENT")
+                span {{vm.comment.edit_comment_date | momentFormat:'DD MMM YYYY HH:mm'}}
+                span.separator -
+                a(
+                    href=""
+                    title="COMMENTS.SHOW_HISTORY"
+                    ng-click="vm.displayCommentHistory()"
+                )
+                    span(translate="COMMENTS.SHOW_HISTORY")
+                    tg-svg(svg-icon="icon-bulk")
         p.comment-text {{vm.comment.comment}}
     .comment-options
         tg-svg.comment-option(

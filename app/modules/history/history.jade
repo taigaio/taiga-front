@@ -15,7 +15,7 @@ section.history
         on-restore-deleted-comment="vm.restoreDeletedComment(commentId)"
         on-add-comment="vm.addComment()"
         on-edit-comment="vm.editComment(commentId, commentData)"
-        type="vm.type"
+        object="{{vm.id}}"
         name="{{vm.name}}"
         loading="vm.loading"
     )

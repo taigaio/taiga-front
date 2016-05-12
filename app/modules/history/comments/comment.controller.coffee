@@ -22,14 +22,15 @@ module = angular.module("taigaHistory")
 class CommentController
     @.$inject = [
         "tgCurrentUserService",
-        "tgCheckPermissionsService"
+        "tgCheckPermissionsService",
+        "tgLightboxFactory",
+        "lightboxService"
     ]
 
-    constructor: (@currentUserService, @permissionService) ->
+    constructor: (@currentUserService, @permissionService, @lightboxFactory, @lightboxService) ->
         @.hiddenDeletedComment = true
         @.toggleEditComment = false
         @.commentContent = angular.copy(@.comment)
-        console.log @.comment
 
     showDeletedComment: () ->
         @.hiddenDeletedComment = false
@@ -44,5 +45,19 @@ class CommentController
         if @currentUserService.getUser()
             @.user = @currentUserService.getUser().toJS()
             return @.user.id == @.comment.pk || @permissionService.check('modify_project')
+
+    displayCommentHistory: () ->
+        console.log @.name
+        console.log @.object
+        @lightboxFactory.create('tg-lb-display-historic', {
+            "class": "lightbox lightbox-display-historic"
+            "comment": "comment"
+            "name": "name"
+            "object": "object"
+        }, {
+            "comment": @.comment
+            "name": @.name
+            "object": @.object
+        })
 
 module.controller("CommentCtrl", CommentController)

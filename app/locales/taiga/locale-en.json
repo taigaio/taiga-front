@@ -1019,11 +1019,16 @@
         "RECENT_FIRST": "Recent first",
         "COMMENT": "Comment",
         "EDIT_COMMENT": "Edit comment",
+        "EDITED_COMMENT": "Edited:",
+        "SHOW_HISTORY": "View historic",
         "TYPE_NEW_COMMENT": "Type a new comment here",
         "SHOW_DELETED": "Show deleted comment",
         "HIDE_DELETED": "Hide deleted comment",
         "DELETE": "Delete comment",
-        "RESTORE": "Restore comment"
+        "RESTORE": "Restore comment",
+        "HISTORY": {
+            "TITLE": "Activity"
+        }
     },
     "ACTIVITY": {
         "SHOW_ACTIVITY": "Show activity",

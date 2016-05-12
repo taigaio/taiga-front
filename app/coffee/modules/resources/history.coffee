@@ -44,6 +44,13 @@ resourceProvider = ($repo, $http, $urls) ->
         return $http.post(url, commentData, params).then (data) =>
             return data.data
 
+    service.getCommentHistory = (type, objectId, activityId) ->
+        url = $urls.resolve("history/#{type}")
+        url = "#{url}/#{objectId}/comment_versions"
+        params = {id: activityId}
+        return $http.get(url, params).then (data) =>
+            return data.data
+
     service.deleteComment = (type, objectId, activityId) ->
         url = $urls.resolve("history/#{type}")
         url = "#{url}/#{objectId}/delete_comment"

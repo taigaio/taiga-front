@@ -19,23 +19,21 @@
 
 module = angular.module('taigaHistory')
 
-CommentDirective = () ->
+LightboxDisplayHistoricDirective = (lightboxService) ->
+    link = (scope, el, attrs, ctrl) ->
+        lightboxService.open(el)
 
     return {
-        scope: {
-            name: "@",
-            object: "@",
-            comment: "<",
-            type: "<",
-            objectId: "<",
-            onDeleteComment: "&",
-            onRestoreDeletedComment: "&",
-            onEditComment: "&"
+        scope: {},
+        bindToController: {
+            name: '=',
+            object: '=',
+            comment: '='
         },
-        templateUrl:"history/comments/comment.html",
-        bindToController: true,
-        controller: 'CommentCtrl',
+        templateUrl:"history/comments/comment-history-lightbox.html",
+        controller: "LightboxDisplayHistoricCtrl",
         controllerAs: "vm",
+        link: link
     }
 
-module.directive("tgComment", CommentDirective)
+module.directive("tgLbDisplayHistoric", LightboxDisplayHistoricDirective)
