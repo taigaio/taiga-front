@@ -1,0 +1,19 @@
+span.detail-status-inner.js-edit-status(
+    class!="<% if(editable){ %>clickable<% }%>"
+)
+    span(style!="background-color:<%- status.color %>")
+        span.e2e-status <%- status.name %>
+        <% if(editable){ %>
+        tg-svg(svg-icon="icon-arrow-down")
+        <% }%>
+
+ul.pop-status.popover
+    <% _.each(statuses, function(st) { %>
+    li
+        a.status(
+            href=""
+            title!="<%- st.name %>"
+            data-status-id!="<%- st.id %>"
+        )
+            | <%- st.name %>
+    <% }); %>
