@@ -49,11 +49,12 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         "tgAppMetaService",
         "$tgNavUrls",
         "$tgAnalytics",
-        "$translate"
+        "$translate",
+        "$tgQueueModelTransformation"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location,
-                  @log, @appMetaService, @navUrls, @analytics, @translate) ->
+                  @log, @appMetaService, @navUrls, @analytics, @translate, @modelTransform) ->
         bindMethods(@)
 
         @scope.taskRef = @params.taskref
@@ -117,6 +118,8 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
             @scope.task = task
             @scope.taskId = task.id
             @scope.commentModel = task
+
+            @modelTransform.setObject(@scope, 'task')
 
             if @scope.task.neighbors.previous?.ref?
                 ctx = {
@@ -245,7 +248,7 @@ module.directive("tgTaskStatusDisplay", ["$tgTemplate", "$compile", TaskStatusDi
 ## Task status button directive
 #############################################################################
 
-TaskStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue, $compile, $translate, $template) ->
+TaskStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $modelTransform, $compile, $translate, $template) ->
     # Display the status of Task and you can edit it.
     #
     # Example:
@@ -256,7 +259,7 @@ TaskStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue, $co
     #   - scope.statusById object
     #   - $scope.project.my_permissions
 
-    template = $template.get("us/us-status-button.html", true)
+    template = $template.get("common/components/status-button.html", true)
 
     link = ($scope, $el, $attrs, $model) ->
         isEditable = ->
@@ -273,16 +276,17 @@ TaskStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue, $co
 
             $el.html(html)
 
-        save = $qqueue.bindAdd (status) =>
-            task = $model.$modelValue.clone()
-            task.status = status
-
+        save = (status) ->
             currentLoading = $loading()
                 .target($el)
                 .start()
 
+            transform = $modelTransform.save (task) ->
+                task.status = status
+
+                return task
+
             onSuccess = ->
-                $model.$setViewValue(task)
                 $rootScope.$broadcast("object:updated")
                 currentLoading.finish()
 
@@ -290,7 +294,7 @@ TaskStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue, $co
                 $confirm.notify("error")
                 currentLoading.finish()
 
-            $repo.save(task).then(onSuccess, onError)
+            transform.then(onSuccess, onError)
 
         $el.on "click", ".js-edit-status", (event) ->
             event.preventDefault()
@@ -310,7 +314,10 @@ TaskStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue, $co
 
             save(target.data("status-id"))
 
-        $scope.$watch $attrs.ngModel, (task) ->
+        $scope.$watch () ->
+            return $model.$modelValue?.status
+        , () ->
+            task = $model.$modelValue
             render(task) if task
 
         $scope.$on "$destroy", ->
@@ -322,11 +329,11 @@ TaskStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue, $co
         require: "ngModel"
     }
 
-module.directive("tgTaskStatusButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", "$tgQqueue",
+module.directive("tgTaskStatusButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", "$tgQueueModelTransformation",
                                         "$compile", "$translate", "$tgTemplate", TaskStatusButtonDirective])
 
 
-TaskIsIocaineButtonDirective = ($rootscope, $tgrepo, $confirm, $loading, $qqueue, $compile, $template) ->
+TaskIsIocaineButtonDirective = ($rootscope, $tgrepo, $confirm, $loading, $modelTransform, $compile, $template) ->
     template = $template.get("issue/iocaine-button.html", true)
 
     link = ($scope, $el, $attrs, $model) ->
@@ -345,24 +352,23 @@ TaskIsIocaineButtonDirective = ($rootscope, $tgrepo, $confirm, $loading, $qqueue
             html = $compile(template(ctx))($scope)
             $el.html(html)
 
-        save = $qqueue.bindAdd (is_iocaine) =>
-            task = $model.$modelValue.clone()
-            task.is_iocaine = is_iocaine
-
+        save = (is_iocaine) ->
             currentLoading = $loading()
                 .target($el.find('label'))
                 .start()
 
-            promise = $tgrepo.save(task)
+            transform = $modelTransform.save (task) ->
+                task.is_iocaine = is_iocaine
 
-            promise.then ->
-                $model.$setViewValue(task)
+                return task
+
+            transform.then ->
                 $rootscope.$broadcast("object:updated")
 
-            promise.then null, ->
+            transform.then null, ->
                 $confirm.notify("error")
 
-            promise.finally ->
+            transform.finally ->
                 currentLoading.finish()
 
         $el.on "click", ".is-iocaine", (event) ->
@@ -371,7 +377,10 @@ TaskIsIocaineButtonDirective = ($rootscope, $tgrepo, $confirm, $loading, $qqueue
             is_iocaine = not $model.$modelValue.is_iocaine
             save(is_iocaine)
 
-        $scope.$watch $attrs.ngModel, (task) ->
+        $scope.$watch () ->
+            return $model.$modelValue?.is_iocaine
+        , () ->
+            task = $model.$modelValue
             render(task) if task
 
         $scope.$on "$destroy", ->
@@ -383,5 +392,5 @@ TaskIsIocaineButtonDirective = ($rootscope, $tgrepo, $confirm, $loading, $qqueue
         require: "ngModel"
     }
 
-module.directive("tgTaskIsIocaineButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", "$tgQqueue",
+module.directive("tgTaskIsIocaineButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", "$tgQueueModelTransformation",
                                            "$compile", "$tgTemplate", TaskIsIocaineButtonDirective])

@@ -105,7 +105,7 @@ helper.statusSelector = function() {
             return this.getSelectedStatus();
         },
         getSelectedStatus: async function(){
-            return el.$$('.detail-status-inner span').first().getInnerHtml();
+            return el.$$('.detail-status-inner .e2e-status').first().getInnerHtml();
         }
     };
 

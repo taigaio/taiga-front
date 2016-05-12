@@ -222,7 +222,7 @@ module.directive("tgLbTagLine", ["$tgResources", "$tgTemplate", "$compile", LbTa
 ## TagLine  Directive (for detail pages)
 #############################################################################
 
-TagLineDirective = ($rootScope, $repo, $rs, $confirm, $qqueue, $template, $compile) ->
+TagLineDirective = ($rootScope, $repo, $rs, $confirm, $modelTransform, $template, $compile) ->
     ENTER_KEY = 13
     ESC_KEY = 27
     COMMA_KEY = 188
@@ -269,48 +269,49 @@ TagLineDirective = ($rootScope, $repo, $rs, $confirm, $qqueue, $template, $compi
             autocomplete.close()
 
         ## Aux methods
-        addValue = $qqueue.bindAdd (value) ->
+        addValue = (value) ->
             value = trim(value.toLowerCase())
             return if value.length == 0
 
-            tags = _.clone($model.$modelValue.tags, false)
-            tags = [] if not tags?
-            tags.push(value) if value not in tags
+            transform = $modelTransform.save (item) ->
+                if not item.tags
+                    item.tags = []
 
-            model = $model.$modelValue.clone()
-            model.tags = tags
-            $model.$setViewValue(model)
+                tags = _.clone(item.tags)
+
+                tags.push(value) if value not in tags
+
+                item.tags = tags
+
+                return item
 
             onSuccess = ->
                 $rootScope.$broadcast("object:updated")
+
             onError = ->
                 $confirm.notify("error")
-                model.revert()
-                $model.$setViewValue(model)
 
             hideSaveButton()
 
-            return $repo.save(model).then(onSuccess, onError)
+            return transform.then(onSuccess, onError)
 
-        deleteValue = $qqueue.bindAdd (value) ->
+        deleteValue = (value) ->
             value = trim(value.toLowerCase())
             return if value.length == 0
 
-            tags = _.clone($model.$modelValue.tags, false)
-            tags = _.pull(tags, value)
+            transform = $modelTransform.save (item) ->
+                tags = _.clone(item.tags, false)
+                item.tags = _.pull(tags, value)
 
-            model = $model.$modelValue.clone()
-            model.tags = tags
-            $model.$setViewValue(model)
+                return item
 
             onSuccess = ->
                 $rootScope.$broadcast("object:updated")
+
             onError = ->
                 $confirm.notify("error")
-                model.revert()
-                $model.$setViewValue(model)
 
-            return $repo.save(model).then(onSuccess, onError)
+            return transform.then(onSuccess, onError)
 
         saveInputTag = () ->
             value = $el.find("input").val()
@@ -374,7 +375,12 @@ TagLineDirective = ($rootScope, $repo, $rs, $confirm, $qqueue, $template, $compi
                 addValue(input.val())
                 input.val("")
 
-        $scope.$watch $attrs.ngModel, (model) ->
+
+        $scope.$watchCollection () ->
+            return $model.$modelValue?.tags
+        , () ->
+            model = $model.$modelValue
+
             return if not model
 
             if model.tags?.length
@@ -394,5 +400,5 @@ TagLineDirective = ($rootScope, $repo, $rs, $confirm, $qqueue, $template, $compi
         templateUrl: "common/tag/tag-line.html"
     }
 
-module.directive("tgTagLine", ["$rootScope", "$tgRepo", "$tgResources", "$tgConfirm", "$tgQqueue",
+module.directive("tgTagLine", ["$rootScope", "$tgRepo", "$tgResources", "$tgConfirm", "$tgQueueModelTransformation",
                                "$tgTemplate", "$compile", TagLineDirective])

@@ -80,7 +80,7 @@ module.directive("tgLbUsEstimation", ["$tgEstimationsService", "$rootScope", "$t
 ## User story estimation directive
 #############################################################################
 
-UsEstimationDirective = ($tgEstimationsService, $rootScope, $repo, $qqueue, $template, $compile) ->
+UsEstimationDirective = ($tgEstimationsService, $rootScope, $repo, $template, $compile) ->
     # Display the points of a US and you can edit it.
     #
     # Example:
@@ -91,11 +91,14 @@ UsEstimationDirective = ($tgEstimationsService, $rootScope, $repo, $qqueue, $tem
     #   - scope.project object
 
     link = ($scope, $el, $attrs, $model) ->
-        $scope.$watch $attrs.ngModel, (us) ->
+        $scope.$watchCollection () ->
+            return $model.$modelValue && $model.$modelValue.points
+        , () ->
+            us = $model.$modelValue
             if us
                 estimationProcess = $tgEstimationsService.create($el, us, $scope.project)
                 estimationProcess.onSelectedPointForRole = (roleId, pointId) ->
-                    @save(roleId, pointId).then ->
+                    @save(roleId, pointId).then () ->
                         $rootScope.$broadcast("object:updated")
 
                 estimationProcess.render = () ->
@@ -121,7 +124,7 @@ UsEstimationDirective = ($tgEstimationsService, $rootScope, $repo, $qqueue, $tem
         require: "ngModel"
     }
 
-module.directive("tgUsEstimation", ["$tgEstimationsService", "$rootScope", "$tgRepo", "$tgQqueue",
+module.directive("tgUsEstimation", ["$tgEstimationsService", "$rootScope", "$tgRepo",
                                     "$tgTemplate", "$compile", UsEstimationDirective])
 
 
@@ -129,7 +132,7 @@ module.directive("tgUsEstimation", ["$tgEstimationsService", "$rootScope", "$tgR
 ## Estimations service
 #############################################################################
 
-EstimationsService = ($template, $qqueue, $repo, $confirm, $q) ->
+EstimationsService = ($template, $modelTransform, $repo, $confirm, $q) ->
     pointsTemplate = $template.get("common/estimation/us-estimation-points.html", true)
 
     class EstimationProcess
@@ -143,17 +146,23 @@ EstimationsService = ($template, $qqueue, $repo, $confirm, $q) ->
 
         save: (roleId, pointId) ->
             deferred = $q.defer()
-            $qqueue.add () =>
-                onSuccess = =>
-                    deferred.resolve()
 
-                onError = =>
-                    $confirm.notify("error")
-                    @us.revert()
-                    @render()
-                    deferred.reject()
+            transform = $modelTransform.save (us) =>
+                points = _.clone(@us.points, true)
+                points[roleId] = pointId
 
-                $repo.save(@us).then(onSuccess, onError)
+                us.points = points
+
+                return us
+
+            onSuccess = =>
+                deferred.resolve()
+
+            onError = =>
+                $confirm.notify("error")
+                deferred.reject()
+
+            transform.then(onSuccess, onError)
 
             return deferred.promise
 
@@ -197,10 +206,6 @@ EstimationsService = ($template, $qqueue, $repo, $confirm, $q) ->
                 roleId = target.data("role-id")
                 pointId = target.data("point-id")
                 @$el.find(".popover").popover().close()
-                points = _.clone(@us.points, true)
-                points[roleId] = pointId
-                @us.points = points
-                @render()
                 @onSelectedPointForRole(roleId, pointId)
 
         renderPointsSelector: (roleId, target) ->
@@ -247,5 +252,5 @@ EstimationsService = ($template, $qqueue, $repo, $confirm, $q) ->
         create: create
     }
 
-module.factory("$tgEstimationsService", ["$tgTemplate", "$tgQqueue",  "$tgRepo", "$tgConfirm",
+module.factory("$tgEstimationsService", ["$tgTemplate", "$tgQueueModelTransformation",  "$tgRepo", "$tgConfirm",
                                          "$q", EstimationsService])

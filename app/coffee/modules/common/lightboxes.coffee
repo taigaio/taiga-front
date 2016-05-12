@@ -169,47 +169,51 @@ module.directive("lightbox", ["lightboxService", LightboxDirective])
 
 # Issue/Userstory blocking message lightbox directive.
 
-BlockLightboxDirective = ($rootscope, $tgrepo, $confirm, lightboxService, $loading, $qqueue, $translate) ->
+BlockLightboxDirective = ($rootscope, $tgrepo, $confirm, lightboxService, $loading, $modelTransform, $translate) ->
     link = ($scope, $el, $attrs, $model) ->
         title = $translate.instant($attrs.title)
         $el.find("h2.title").text(title)
 
-        unblock = $qqueue.bindAdd (item, finishCallback) =>
-            promise = $tgrepo.save(item)
-            promise.then ->
+        unblock = (finishCallback) =>
+            transform = $modelTransform.save (item) ->
+                item.is_blocked = false
+                item.blocked_note = ""
+
+                return item
+
+            transform.then ->
                 $confirm.notify("success")
                 $rootscope.$broadcast("object:updated")
-                $model.$setViewValue(item)
                 finishCallback()
 
-            promise.then null, ->
+            transform.then null, ->
                 $confirm.notify("error")
                 item.revert()
-                $model.$setViewValue(item)
 
-            promise.finally ->
+            transform.finally ->
                 finishCallback()
 
-            return promise
+            return transform
 
-        block = $qqueue.bindAdd (item) =>
-            $model.$setViewValue(item)
-
+        block = () ->
             currentLoading = $loading()
                 .target($el.find(".button-green"))
                 .start()
 
-            promise = $tgrepo.save($model.$modelValue)
-            promise.then ->
+            transform = $modelTransform.save (item) ->
+                item.is_blocked = true
+                item.blocked_note = $el.find(".reason").val()
+
+                return item
+
+            transform.then ->
                 $confirm.notify("success")
                 $rootscope.$broadcast("object:updated")
 
-            promise.then null, ->
+            transform.then null, ->
                 $confirm.notify("error")
-                item.revert()
-                $model.$setViewValue(item)
 
-            promise.finally ->
+            transform.finally ->
                 currentLoading.finish()
                 lightboxService.close($el)
 
@@ -218,11 +222,7 @@ BlockLightboxDirective = ($rootscope, $tgrepo, $confirm, lightboxService, $loadi
             lightboxService.open($el)
 
         $scope.$on "unblock", (event, model, finishCallback) =>
-            item = $model.$modelValue.clone()
-            item.is_blocked = false
-            item.blocked_note = ""
-
-            unblock(item, finishCallback)
+            unblock(finishCallback)
 
         $scope.$on "$destroy", ->
             $el.off()
@@ -230,11 +230,7 @@ BlockLightboxDirective = ($rootscope, $tgrepo, $confirm, lightboxService, $loadi
         $el.on "click", ".button-green", (event) ->
             event.preventDefault()
 
-            item = $model.$modelValue.clone()
-            item.is_blocked = true
-            item.blocked_note = $el.find(".reason").val()
-
-            block(item)
+            block()
 
     return {
         templateUrl: "common/lightbox/lightbox-block.html"
@@ -242,7 +238,7 @@ BlockLightboxDirective = ($rootscope, $tgrepo, $confirm, lightboxService, $loadi
         require: "ngModel"
     }
 
-module.directive("tgLbBlock", ["$rootScope", "$tgRepo", "$tgConfirm", "lightboxService", "$tgLoading", "$tgQqueue", "$translate", BlockLightboxDirective])
+module.directive("tgLbBlock", ["$rootScope", "$tgRepo", "$tgConfirm", "lightboxService", "$tgLoading", "$tgQueueModelTransformation", "$translate", BlockLightboxDirective])
 
 
 #############################################################################
