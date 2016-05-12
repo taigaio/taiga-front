@@ -27,6 +27,9 @@ class CommentController
 
     constructor: (@currentUserService, @permissionService) ->
         @.hiddenDeletedComment = true
+        @.toggleEditComment = false
+        @.commentContent = angular.copy(@.comment)
+        console.log @.comment
 
     showDeletedComment: () ->
         @.hiddenDeletedComment = false
@@ -34,7 +37,7 @@ class CommentController
     hideDeletedComment: () ->
         @.hiddenDeletedComment = true
 
-    editComment: () ->
+    toggleCommentEditor: () ->
         @.toggleEditComment = !@.toggleEditComment
 
     canEditDeleteComment: () ->

@@ -8,6 +8,7 @@ section.comments
             comment="comment"
             on-delete-comment="vm.onDeleteComment({commentId: commentId})"
             on-restore-deleted-comment="vm.onRestoreDeletedComment({commentId: commentId})"
+            on-edit-comment="vm.onEditComment({commentId: commentId, commentData: commentData})"
         )
     tg-editable-wysiwyg.add-comment(
         ng-model="vm.type"

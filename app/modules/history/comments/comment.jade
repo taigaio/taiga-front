@@ -16,7 +16,7 @@ include ../../../partials/common/components/wysiwyg.jade
         tg-svg.comment-option(
             svg-icon="icon-edit"
             svg-title-translate="COMMON.EDIT"
-            ng-click="vm.editComment()"
+            ng-click="vm.toggleCommentEditor()"
             ng-if="::vm.canEditDeleteComment()"
         )
         tg-svg.comment-option(
@@ -33,7 +33,7 @@ include ../../../partials/common/components/wysiwyg.jade
     )
         textarea(
             tg-markitup="tg-markitup"
-            ng-model="vm.comment.comment"
+            ng-model="vm.commentContent.comment"
         )
         +wysihelp
         .save-comment-wrapper
@@ -41,8 +41,8 @@ include ../../../partials/common/components/wysiwyg.jade
                 type="button"
                 title="{{'COMMENTS.EDIT_COMMENT' | translate}}"
                 translate="COMMENTS.EDIT_COMMENT"
-                ng-disabled="!vm.type.comment.length"
-                ng-click="vm.onAddComment()"
+                ng-disabled="!vm.commentContent.comment.length"
+                ng-click="vm.onEditComment({commentId: vm.comment.id, commentData: vm.commentContent.comment})"
                 tg-loading="vm.loading"
             ) 
 .deleted-comment-wrapper(

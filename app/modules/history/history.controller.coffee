@@ -57,6 +57,14 @@ class HistorySectionController
         @rs.history.deleteComment(type, objectId, activityId).then =>
             @._loadHistory()
 
+    editComment: (commentId, comment) ->
+        type = @.name
+        objectId = @.id
+        activityId = commentId
+        comment = comment
+        @rs.history.editComment(type, objectId, activityId, comment).then =>
+            @._loadHistory()
+
     restoreDeletedComment: (commentId) ->
         console.log @.name, @.id, commentId
         type = @.name

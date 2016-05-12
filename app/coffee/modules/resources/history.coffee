@@ -31,6 +31,19 @@ resourceProvider = ($repo, $http, $urls) ->
     service.get = (type, objectId) ->
         return $repo.queryOneRaw("history/#{type}", objectId)
 
+    service.editComment = (type, objectId, activityId, comment) ->
+        url = $urls.resolve("history/#{type}")
+        url = "#{url}/#{objectId}/edit_comment"
+        console.log url
+        params = {
+            id: activityId
+        }
+        commentData = {
+            comment: comment
+        }
+        return $http.post(url, commentData, params).then (data) =>
+            return data.data
+
     service.deleteComment = (type, objectId, activityId) ->
         url = $urls.resolve("history/#{type}")
         url = "#{url}/#{objectId}/delete_comment"

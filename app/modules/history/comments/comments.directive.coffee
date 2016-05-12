@@ -29,6 +29,7 @@ CommentsDirective = () ->
             onDeleteComment: "&",
             onRestoreDeletedComment: "&",
             onAddComment: "&",
+            onEditComment: "&",
             loading: "<"
         },
         templateUrl:"history/comments/comments.html",
