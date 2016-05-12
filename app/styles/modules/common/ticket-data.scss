@@ -22,11 +22,13 @@
     }
     .detail-status-inner {
         align-items: center;
-        color: $white;
         display: flex;
         justify-content: flex-start;
-        padding: .15rem .25rem;
-        text-transform: uppercase;
+        > span {
+            color: $white;
+            padding: .15rem .25rem;
+            text-transform: uppercase;
+        }
     }
     .pop-status {
         @include popover(150px, 1.25rem, 0, '', '');

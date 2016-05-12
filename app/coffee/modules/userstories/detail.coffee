@@ -49,11 +49,12 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         "tgAppMetaService",
         "$tgNavUrls",
         "$tgAnalytics",
-        "$translate"
+        "$translate",
+        "$tgQueueModelTransformation"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location,
-                  @log, @appMetaService, @navUrls, @analytics, @translate) ->
+                  @log, @appMetaService, @navUrls, @analytics, @translate, @modelTransform) ->
         bindMethods(@)
 
         @scope.usRef = @params.usref
@@ -158,6 +159,8 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
             @scope.us = us
             @scope.usId = us.id
             @scope.commentModel = us
+
+            @modelTransform.setObject(@scope, 'us')
 
             if @scope.us.neighbors.previous?.ref?
                 ctx = {
@@ -285,7 +288,7 @@ module.directive("tgUsStatusDisplay", ["$tgTemplate", "$compile", UsStatusDispla
 ## User story status button directive
 #############################################################################
 
-UsStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue, $template) ->
+UsStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $modelTransform, $template, $compile) ->
     # Display the status of a US and you can edit it.
     #
     # Example:
@@ -296,7 +299,7 @@ UsStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue, $temp
     #   - scope.statusById object
     #   - $scope.project.my_permissions
 
-    template = $template.get("us/us-status-button.html", true)
+    template = $template.get("common/components/status-button.html", true)
 
     link = ($scope, $el, $attrs, $model) ->
         isEditable = ->
@@ -313,19 +316,21 @@ UsStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue, $temp
 
             $el.html(html)
 
-        save = $qqueue.bindAdd (status) =>
-            us = $model.$modelValue.clone()
+            $compile($el.contents())($scope);
 
-            us.status = status
-
-            $.fn.popover().closeAll()
+        save = (status) =>
+            $el.find(".pop-status").popover().close()
 
             currentLoading = $loading()
-                .target($el)
+                .target($el.find('.js-edit-status'))
                 .start()
 
+            transform = $modelTransform.save (us) ->
+                us.status = status
+
+                return us
+
             onSuccess = ->
-                $model.$setViewValue(us)
                 $rootScope.$broadcast("object:updated")
                 currentLoading.finish()
 
@@ -333,7 +338,7 @@ UsStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue, $temp
                 $confirm.notify("error")
                 currentLoading.finish()
 
-            $repo.save(us).then(onSuccess, onError)
+            transform.then(onSuccess, onError)
 
         $el.on "click", ".js-edit-status", (event) ->
             event.preventDefault()
@@ -352,7 +357,11 @@ UsStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue, $temp
 
             save(status)
 
-        $scope.$watch $attrs.ngModel, (us) ->
+        $scope.$watch () ->
+            return $model.$modelValue?.status
+        , () ->
+            us = $model.$modelValue
+
             render(us) if us
 
         $scope.$on "$destroy", ->
@@ -364,7 +373,7 @@ UsStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue, $temp
         require: "ngModel"
     }
 
-module.directive("tgUsStatusButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading","$tgQqueue", "$tgTemplate",
+module.directive("tgUsStatusButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading","$tgQueueModelTransformation", "$tgTemplate", "$compile",
                                       UsStatusButtonDirective])
 
 
@@ -372,7 +381,7 @@ module.directive("tgUsStatusButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$t
 ## User story team requirements button directive
 #############################################################################
 
-UsTeamRequirementButtonDirective = ($rootscope, $tgrepo, $confirm, $loading, $qqueue, $template, $compile) ->
+UsTeamRequirementButtonDirective = ($rootscope, $tgrepo, $confirm, $loading, $modelTransform, $template, $compile) ->
     template = $template.get("us/us-team-requirement-button.html", true)
 
     link = ($scope, $el, $attrs, $model) ->
@@ -389,21 +398,21 @@ UsTeamRequirementButtonDirective = ($rootscope, $tgrepo, $confirm, $loading, $qq
 
             $el.html(html)
 
-        save = $qqueue.bindAdd (team_requirement) =>
-            us = $model.$modelValue.clone()
-            us.team_requirement = team_requirement
-
+        save = (team_requirement) ->
             currentLoading = $loading()
                 .target($el.find("label"))
                 .start()
 
-            promise = $tgrepo.save(us)
-            promise.then =>
-                $model.$setViewValue(us)
+            transform = $modelTransform.save (us) ->
+                us.team_requirement = team_requirement
+
+                return us
+
+            transform.then =>
                 currentLoading.finish()
                 $rootscope.$broadcast("object:updated")
 
-            promise.then null, ->
+            transform.then null, ->
                 currentLoading.finish()
                 $confirm.notify("error")
 
@@ -414,7 +423,11 @@ UsTeamRequirementButtonDirective = ($rootscope, $tgrepo, $confirm, $loading, $qq
 
             save(team_requirement)
 
-        $scope.$watch $attrs.ngModel, (us) ->
+        $scope.$watch () ->
+            return $model.$modelValue?.team_requirement
+        , () ->
+            us = $model.$modelValue
+
             render(us) if us
 
         $scope.$on "$destroy", ->
@@ -426,13 +439,13 @@ UsTeamRequirementButtonDirective = ($rootscope, $tgrepo, $confirm, $loading, $qq
         require: "ngModel"
     }
 
-module.directive("tgUsTeamRequirementButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", "$tgQqueue", "$tgTemplate", "$compile", UsTeamRequirementButtonDirective])
+module.directive("tgUsTeamRequirementButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", "$tgQueueModelTransformation", "$tgTemplate", "$compile", UsTeamRequirementButtonDirective])
 
 #############################################################################
 ## User story client requirements button directive
 #############################################################################
 
-UsClientRequirementButtonDirective = ($rootscope, $tgrepo, $confirm, $loading, $qqueue, $template, $compile) ->
+UsClientRequirementButtonDirective = ($rootscope, $tgrepo, $confirm, $loading, $modelTransform, $template, $compile) ->
     template = $template.get("us/us-client-requirement-button.html", true)
 
     link = ($scope, $el, $attrs, $model) ->
@@ -447,21 +460,21 @@ UsClientRequirementButtonDirective = ($rootscope, $tgrepo, $confirm, $loading, $
             html = $compile(template(ctx))($scope)
             $el.html(html)
 
-        save = $qqueue.bindAdd (client_requirement) =>
-            us = $model.$modelValue.clone()
-            us.client_requirement = client_requirement
-
+        save = (client_requirement) ->
             currentLoading = $loading()
                 .target($el.find("label"))
                 .start()
 
-            promise = $tgrepo.save(us)
-            promise.then =>
-                $model.$setViewValue(us)
+            transform = $modelTransform.save (us) ->
+                us.client_requirement = client_requirement
+
+                return us
+
+            transform.then =>
                 currentLoading.finish()
                 $rootscope.$broadcast("object:updated")
 
-            promise.then null, ->
+            transform.then null, ->
                 $confirm.notify("error")
 
         $el.on "click", ".client-requirement", (event) ->
@@ -470,7 +483,10 @@ UsClientRequirementButtonDirective = ($rootscope, $tgrepo, $confirm, $loading, $
             client_requirement = not $model.$modelValue.client_requirement
             save(client_requirement)
 
-        $scope.$watch $attrs.ngModel, (us) ->
+        $scope.$watch () ->
+            return $model.$modelValue?.client_requirement
+        , () ->
+            us = $model.$modelValue
             render(us) if us
 
         $scope.$on "$destroy", ->
@@ -482,5 +498,5 @@ UsClientRequirementButtonDirective = ($rootscope, $tgrepo, $confirm, $loading, $
         require: "ngModel"
     }
 
-module.directive("tgUsClientRequirementButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", "$tgQqueue", "$tgTemplate", "$compile",
+module.directive("tgUsClientRequirementButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", "$tgQueueModelTransformation", "$tgTemplate", "$compile",
                                                  UsClientRequirementButtonDirective])

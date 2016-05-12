@@ -263,6 +263,51 @@ Qqueue = ($q) ->
 
 module.factory("$tgQqueue", ["$q", Qqueue])
 
+
+#############################################################################
+## Queue model transformation
+#############################################################################
+
+class QueueModelTransformation extends taiga.Service
+    @.$inject = [
+        "$tgQqueue",
+        "$tgRepo",
+        "$q",
+        "$tgModel"
+    ]
+
+    constructor: (@qqueue, @repo, @q, @model) ->
+
+    setObject: (@scope, @prop) ->
+
+    clone: () ->
+        attrs = _.cloneDeep(@.scope[@.prop]._attrs)
+        model = @model.make_model(@.scope[@.prop]._name, attrs)
+
+        return model
+
+    getObj: () ->
+        return @.scope[@.prop]
+
+    save: (transformation) ->
+        defered = @q.defer()
+
+        @qqueue.add () =>
+            clone = @.clone()
+
+            transformation(clone)
+
+            success = () =>
+                @.scope[@.prop] = clone
+
+                defered.resolve.apply(null, arguments)
+
+            @repo.save(clone).then(success, defered.reject)
+
+        return defered.promise
+
+module.service("$tgQueueModelTransformation", QueueModelTransformation)
+
 #############################################################################
 ## Templates
 #############################################################################
