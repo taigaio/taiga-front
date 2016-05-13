@@ -45,11 +45,12 @@ class TeamController extends mixOf(taiga.Controller, taiga.PageMixin)
         "tgAppMetaService",
         "$tgAuth",
         "$translate",
-        "tgProjectService"
+        "tgProjectService",
+        "tgErrorHandlingService"
     ]
 
     constructor: (@scope, @rootscope, @repo, @rs, @params, @q, @location, @navUrls, @appMetaService, @auth,
-                  @translate, @projectService) ->
+                  @translate, @projectService, @errorHandlingService) ->
         @scope.sectionName = "TEAM.SECTION_NAME"
 
         promise = @.loadInitialData()

@@ -54,11 +54,12 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         "$tgNavUrls",
         "$tgEvents",
         "$tgAnalytics",
-        "$translate"
+        "$translate",
+        "tgErrorHandlingService"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @urls, @params, @q, @location, @appMetaService,
-                  @navUrls, @events, @analytics, @translate) ->
+                  @navUrls, @events, @analytics, @translate, @errorHandlingService) ->
         @scope.sectionName = "Issues"
         @scope.filters = {}
 
@@ -98,7 +99,7 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
     loadProject: ->
         return @rs.projects.getBySlug(@params.pslug).then (project) =>
             if not project.is_issues_activated
-                @location.path(@navUrls.resolve("permission-denied"))
+                @errorHandlingService.permissionDenied()
 
             @scope.projectId = project.id
             @scope.project = project

@@ -56,11 +56,12 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         "$translate",
         "$tgLoading",
         "tgResources",
-        "$tgQueueModelTransformation"
+        "$tgQueueModelTransformation",
+        "tgErrorHandlingService"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q,
-                  @location, @appMetaService, @navUrls, @events, @analytics, @translate, @loading, @rs2, @modelTransform) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @appMetaService, @navUrls,
+                  @events, @analytics, @translate, @loading, @rs2, @modelTransform, @errorHandlingService) ->
         bindMethods(@)
 
         @.page = 1
@@ -317,7 +318,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
     loadProject: ->
         return @rs.projects.getBySlug(@params.pslug).then (project) =>
             if not project.is_backlog_activated
-                @location.path(@navUrls.resolve("permission-denied"))
+                @errorHandlingService.permissionDenied()
 
             @scope.projectId = project.id
             @scope.project = project

@@ -52,11 +52,12 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$tgNavUrls"
         "$tgEvents"
         "$tgAnalytics",
-        "$translate"
+        "$translate",
+        "tgErrorHandlingService"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @appMetaService, @location, @navUrls,
-                  @events, @analytics, @translate) ->
+                  @events, @analytics, @translate, @errorHandlingService) ->
         bindMethods(@)
 
         @scope.sectionName = @translate.instant("TASKBOARD.SECTION_NAME")
@@ -124,7 +125,7 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
     loadProject: ->
         return @rs.projects.get(@scope.projectId).then (project) =>
             if not project.is_backlog_activated
-                @location.path(@navUrls.resolve("permission-denied"))
+                @errorHandlingService.permissionDenied()
 
             @scope.project = project
             # Not used at this momment

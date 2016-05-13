@@ -61,11 +61,12 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         "$tgNavUrls",
         "$tgEvents",
         "$tgAnalytics",
-        "$translate"
+        "$translate",
+        "tgErrorHandlingService"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location,
-                  @appMetaService, @navUrls, @events, @analytics, @translate) ->
+                  @appMetaService, @navUrls, @events, @analytics, @translate, @errorHandlingService) ->
 
         bindMethods(@)
 
@@ -193,7 +194,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
     loadProject: ->
         return @rs.projects.getBySlug(@params.pslug).then (project) =>
             if not project.is_kanban_activated
-                @location.path(@navUrls.resolve("permission-denied"))
+                @errorHandlingService.permissionDenied()
 
             @scope.projectId = project.id
             @scope.project = project

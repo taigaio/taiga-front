@@ -48,12 +48,13 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin, tai
         "$tgAnalytics",
         "tgAppMetaService",
         "$translate",
-        "$tgAuth"
-        "tgLightboxFactory"
+        "$tgAuth",
+        "tgLightboxFactory",
+        "tgErrorHandlingService"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @navUrls, @analytics,
-                  @appMetaService, @translate, @auth, @lightboxFactory) ->
+                  @appMetaService, @translate, @auth, @lightboxFactory, @errorHandlingService) ->
         bindMethods(@)
 
         @scope.project = {}
@@ -75,7 +76,7 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin, tai
     loadProject: ->
         return @rs.projects.getBySlug(@params.pslug).then (project) =>
             if not project.i_am_admin
-                @location.path(@navUrls.resolve("permission-denied"))
+                @errorHandlingService.permissionDenied()
 
             @scope.projectId = project.id
             @scope.project = project

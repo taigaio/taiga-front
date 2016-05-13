@@ -20,19 +20,16 @@
 class xhrError extends taiga.Service
     @.$inject = [
         "$q",
-        "$location",
-        "$tgNavUrls"
+        "tgErrorHandlingService"
     ]
 
-    constructor: (@q, @location, @navUrls) ->
+    constructor: (@q, @errorHandlingService) ->
 
     notFound: () ->
-        @location.path(@navUrls.resolve("not-found"))
-        @location.replace()
+        @errorHandlingService.notfound()
 
     permissionDenied: () ->
-        @location.path(@navUrls.resolve("permission-denied"))
-        @location.replace()
+        @errorHandlingService.permissionDenied()
 
     response: (xhr) ->
         if xhr

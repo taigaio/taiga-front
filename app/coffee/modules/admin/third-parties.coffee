@@ -45,10 +45,11 @@ class WebhooksController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.
         "$tgLocation",
         "$tgNavUrls",
         "tgAppMetaService",
-        "$translate"
+        "$translate",
+        "tgErrorHandlingService"
     ]
 
-    constructor: (@scope, @repo, @rs, @params, @location, @navUrls, @appMetaService, @translate) ->
+    constructor: (@scope, @repo, @rs, @params, @location, @navUrls, @appMetaService, @translate, @errorHandlingService) ->
         bindMethods(@)
 
         @scope.sectionName = "ADMIN.WEBHOOKS.SECTION_NAME"
@@ -72,7 +73,7 @@ class WebhooksController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.
     loadProject: ->
         return @rs.projects.getBySlug(@params.pslug).then (project) =>
             if not project.i_am_admin
-                @location.path(@navUrls.resolve("permission-denied"))
+                @errorHandlingService.permissionDenied()
 
             @scope.projectId = project.id
             @scope.project = project

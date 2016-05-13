@@ -50,11 +50,12 @@ class ProjectValuesSectionController extends mixOf(taiga.Controller, taiga.PageM
         "$tgLocation",
         "$tgNavUrls",
         "tgAppMetaService",
-        "$translate"
+        "$translate",
+        "tgErrorHandlingService"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @navUrls,
-                  @appMetaService, @translate) ->
+                  @appMetaService, @translate, @errorHandlingService) ->
         @scope.project = {}
 
         promise = @.loadInitialData()
@@ -74,7 +75,7 @@ class ProjectValuesSectionController extends mixOf(taiga.Controller, taiga.PageM
     loadProject: ->
         return @rs.projects.getBySlug(@params.pslug).then (project) =>
             if not project.i_am_admin
-                @location.path(@navUrls.resolve("permission-denied"))
+                @errorHandlingService.permissionDenied()
 
             @scope.projectId = project.id
             @scope.project = project

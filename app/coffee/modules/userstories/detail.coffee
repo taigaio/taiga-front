@@ -50,12 +50,13 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$tgNavUrls",
         "$tgAnalytics",
         "$translate",
-        "$tgConfig",
-        "$tgQueueModelTransformation"
+        "$tgQueueModelTransformation",
+        "tgErrorHandlingService",
+        "$tgConfig"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @log, @appMetaService,
-                  @navUrls, @analytics, @translate, @configService, @modelTransform) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location,
+                  @log, @appMetaService, @navUrls, @analytics, @translate, @modelTransform, @errorHandlingService, @configService) ->
         bindMethods(@)
 
         @scope.usRef = @params.usref

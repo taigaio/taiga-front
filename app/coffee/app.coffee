@@ -443,7 +443,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
     $routeProvider.when("/permission-denied",
         {templateUrl: "error/permission-denied.html"})
 
-    $routeProvider.otherwise({redirectTo: "/not-found"})
+    $routeProvider.otherwise({templateUrl: "error/not-found.html"})
     $locationProvider.html5Mode({enabled: true, requireBase: false})
 
     defaultHeaders = {
@@ -465,12 +465,12 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
     $tgEventsProvider.setSessionId(taiga.sessionId)
 
     # Add next param when user try to access to a secction need auth permissions.
-    authHttpIntercept = ($q, $location, $navUrls, $lightboxService) ->
+    authHttpIntercept = ($q, $location, $navUrls, $lightboxService, errorHandlingService) ->
         httpResponseError = (response) ->
             if response.status == 0 || (response.status == -1 && !response.config.cancelable)
                 $lightboxService.closeAll()
-                $location.path($navUrls.resolve("error"))
-                $location.replace()
+
+                errorHandlingService.error()
             else if response.status == 401 and $location.url().indexOf('/login') == -1
                 nextUrl = encodeURIComponent($location.url())
                 $location.url($navUrls.resolve("login")).search("next=#{nextUrl}")
@@ -481,7 +481,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
             responseError: httpResponseError
         }
 
-    $provide.factory("authHttpIntercept", ["$q", "$location", "$tgNavUrls", "lightboxService",
+    $provide.factory("authHttpIntercept", ["$q", "$location", "$tgNavUrls", "lightboxService", "tgErrorHandlingService",
                                            authHttpIntercept])
 
     $httpProvider.interceptors.push("authHttpIntercept")
@@ -536,7 +536,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
     $httpProvider.interceptors.push("versionCheckHttpIntercept")
 
 
-    blockingIntercept = ($q, $routeParams, $location, $navUrls) ->
+    blockingIntercept = ($q, $routeParams, $location, $navUrls, errorHandlingService) ->
         # API calls can return blocked elements and in that situation the user will be redirected
         # to the blocked project page
         # This can happens in two scenarios
@@ -544,10 +544,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
         # - An error reponse when updating/creating/deleting including a 451 error code
         redirectToBlockedPage = ->
             pslug = $routeParams.pslug
-            blockedUrl = $navUrls.resolve("blocked-project", {project: pslug})
-            currentUrl = $location.url()
-            if currentUrl.indexOf(blockedUrl) == -1
-                $location.replace().path(blockedUrl)
+            errorHandlingService.block()
 
         responseOk = (response) ->
             if response.data.blocked_code
@@ -566,7 +563,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
             responseError: responseError
         }
 
-    $provide.factory("blockingIntercept", ["$q", "$routeParams", "$location", "$tgNavUrls", blockingIntercept])
+    $provide.factory("blockingIntercept", ["$q", "$routeParams", "$location", "$tgNavUrls", "tgErrorHandlingService", blockingIntercept])
 
     $httpProvider.interceptors.push("blockingIntercept")
 
@@ -637,7 +634,7 @@ i18nInit = (lang, $translate) ->
     checksley.updateMessages('default', messages)
 
 
-init = ($log, $rootscope, $auth, $events, $analytics, $translate, $location, $navUrls, appMetaService, projectService, loaderService, navigationBarService) ->
+init = ($log, $rootscope, $auth, $events, $analytics, $translate, $location, $navUrls, appMetaService, projectService, loaderService, navigationBarService, errorHandlingService) ->
     $log.debug("Initialize application")
 
     $rootscope.$on '$translatePartialLoaderStructureChanged', () ->
@@ -691,6 +688,8 @@ init = ($log, $rootscope, $auth, $events, $analytics, $translate, $location, $na
         un()
 
     $rootscope.$on '$routeChangeSuccess',  (event, next) ->
+        errorHandlingService.init()
+
         if next.loader
             loaderService.start(true)
 
@@ -803,6 +802,6 @@ module.run([
     "tgProjectService",
     "tgLoader",
     "tgNavigationBarService",
-    "$route",
+    "tgErrorHandlingService",
     init
 ])
