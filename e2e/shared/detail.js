@@ -209,14 +209,26 @@ shared.historyTesting = async function() {
     let newDeletedCommentsCounter = await historyHelper.countDeletedComments();
     expect(newDeletedCommentsCounter).to.be.equal(deletedCommentsCounter+1);
 
-    //Restore last coment
+    //Restore last comment
     deletedCommentsCounter = await historyHelper.countDeletedComments();
     await historyHelper.restoreLastComment();
     newDeletedCommentsCounter = await historyHelper.countDeletedComments();
     expect(newDeletedCommentsCounter).to.be.equal(deletedCommentsCounter-1);
 
+    //Store comment with a modification
+    commentsCounter = await historyHelper.countComments();
+
+    historyHelper.writeComment("New comment " + date);
+    let title = detailHelper.title();
+    title.setTitle('changed');
+    title.save();
+
+    newCommentsCounter = await historyHelper.countComments();
+
+    expect(newCommentsCounter).to.be.equal(commentsCounter+1);
+
     //Check activity
-    historyHelper.selectActivityTab();
+    await historyHelper.selectActivityTab();
 
     let activitiesCounter = await historyHelper.countActivities();
 

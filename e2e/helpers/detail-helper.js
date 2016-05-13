@@ -158,9 +158,13 @@ helper.history = function() {
         },
 
         addComment: async function(comment) {
-            el.$('textarea[tg-markitup]').sendKeys(comment);
+            obj.writeComment(comment);
             el.$('.save-comment').click();
             await browser.waitForAngular();
+        },
+
+        writeComment: function(comment) {
+            el.$('textarea[tg-markitup]').sendKeys(comment);
         },
 
         countComments: async function() {
