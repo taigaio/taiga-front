@@ -23,7 +23,7 @@ CommentsDirective = () ->
 
     return {
         scope: {
-            type: "=",
+            type: "<",
             name: "@",
             object: "@",
             comments: "<",

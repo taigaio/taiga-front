@@ -66,7 +66,6 @@ class HistorySectionController
             @._loadHistory()
 
     restoreDeletedComment: (commentId) ->
-        console.log @.name, @.id, commentId
         type = @.name
         objectId = @.id
         activityId = commentId
@@ -74,6 +73,7 @@ class HistorySectionController
             @._loadHistory()
 
     addComment: () ->
+        type = @.type
         @.loading = true
         @repo.save(@.type).then =>
             @._loadHistory()

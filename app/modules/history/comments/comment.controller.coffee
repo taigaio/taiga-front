@@ -44,7 +44,7 @@ class CommentController
     canEditDeleteComment: () ->
         if @currentUserService.getUser()
             @.user = @currentUserService.getUser().toJS()
-            return @.user.id == @.comment.pk || @permissionService.check('modify_project')
+            return @.user.id == @.comment.user.pk || @permissionService.check('modify_project')
 
     displayCommentHistory: () ->
         console.log @.name
