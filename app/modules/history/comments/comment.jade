@@ -23,18 +23,16 @@ include ../../../partials/common/components/wysiwyg.jade
                     span(translate="COMMENTS.SHOW_HISTORY")
                     tg-svg(svg-icon="icon-bulk")
         p.comment-text {{vm.comment.comment}}
-    .comment-options
+    .comment-options(ng-if="::vm.canEditDeleteComment()")
         tg-svg.comment-option(
             svg-icon="icon-edit"
             svg-title-translate="COMMON.EDIT"
             ng-click="vm.toggleCommentEditor()"
-            ng-if="::vm.canEditDeleteComment()"
         )
         tg-svg.comment-option(
             svg-icon="icon-trash"
             svg-title-translate="COMMON.DELETE"
             ng-click="vm.onDeleteComment({commentId: vm.comment.id})"
-            ng-if="::vm.canEditDeleteComment()"
         )
 .comment-editor(
     ng-if="vm.toggleEditComment"
