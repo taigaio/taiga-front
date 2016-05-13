@@ -656,7 +656,7 @@ EditableWysiwyg = (attachmentsService, attachmentsFullService) ->
     link = ($scope, $el, $attrs, $model) ->
 
         isInEditMode = ->
-            return $el.find('textarea').is(':visible')
+            return $el.find('textarea').is(':visible') and $model.$modelValue.id
 
 
         uploadFile = (file, type) ->
