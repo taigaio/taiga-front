@@ -293,9 +293,17 @@ class QueueModelTransformation extends taiga.Service
         defered = @q.defer()
 
         @qqueue.add () =>
+            obj = @.getObj()
+            comment = obj.comment
+
+            obj.comment = ''
+
             clone = @.clone()
 
             transformation(clone)
+
+            if comment.length
+                clone.comment = comment
 
             success = () =>
                 @.scope[@.prop] = clone
