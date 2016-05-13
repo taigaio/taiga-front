@@ -30,7 +30,7 @@ LightboxDisplayHistoricDirective = (lightboxService) ->
             object: '=',
             comment: '='
         },
-        templateUrl:"history/comments/comment-history-lightbox.html",
+        templateUrl:"history/history-lightbox/comment-history-lightbox.html",
         controller: "LightboxDisplayHistoricCtrl",
         controllerAs: "vm",
         link: link

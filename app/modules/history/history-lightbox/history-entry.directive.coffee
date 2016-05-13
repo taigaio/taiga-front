@@ -1,5 +1,5 @@
 ###
-# Copyright (C) 2014-2015 Taiga Agile LLC <taiga@taiga.io>
+# Copyright (C) 2014-2016 Taiga Agile LLC <taiga@taiga.io>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -14,21 +14,18 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: history.controller.coffee
+# File: comment.directive.coffee
 ###
 
-module = angular.module("taigaHistory")
+module = angular.module('taigaHistory')
 
-class LightboxDisplayHistoricController
-    @.$inject = [
-        "$tgResources",
-    ]
+HistoryEntryDirective = (lightboxService) ->
 
-    constructor: (@rs) ->
-        type = @.name
-        objectId = @.object
-        activityId = @.comment.id
-        @rs.history.getCommentHistory(type, objectId, activityId).then (data) =>
-            @.commentHistoryEntries = data
+    return {
+        scope: {
+            entry: "<"
+        },
+        templateUrl:"history/history-lightbox/history-entry.html",
+    }
 
-module.controller("LightboxDisplayHistoricCtrl", LightboxDisplayHistoricController)
+module.directive("tgHistoryEntry", HistoryEntryDirective)

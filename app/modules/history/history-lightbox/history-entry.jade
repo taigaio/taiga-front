@@ -1,0 +1,17 @@
+.entry-wrapper
+    img.entry-avatar(
+        ng-src="{{entry.user.photo}}"
+        ng-alt="{{entry.user.name}}"
+    )
+    .entry-main
+        .entry-data
+            span.entry-creator {{entry.user.full_name_display}}
+            span.entry-date {{entry.date | momentFormat:'DD MMM YYYY HH:mm'}}
+            tg-svg.display-full-entry(
+                svg-icon="icon-arrow-down"
+                ng-class="{'inactive': !displayFullEntry}"
+                ng-click="displayFullEntry=!displayFullEntry"
+            )
+        p.entry-text(
+            ng-class="{'ellipsis': displayFullEntry}"
+        ) {{entry.comment}}
