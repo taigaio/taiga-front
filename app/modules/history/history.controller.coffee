@@ -23,11 +23,10 @@ class HistorySectionController
     @.$inject = [
         "$tgResources",
         "$tgRepo",
-        "$tgConfirm",
         "$tgStorage",
     ]
 
-    constructor: (@rs, @repo, @confirm, @storage) ->
+    constructor: (@rs, @repo, @storage) ->
         @.viewComments = true
         @._loadHistory()
         @.reverse = @storage.get("orderComments")
