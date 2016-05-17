@@ -152,8 +152,16 @@ if (argv.json) {
 
     var suites = argv.suite.split(',').join('-');
 
+    var reportFileName = 'report-' + suites + '-chrome.json';
+
+    if (argv.firefox) {
+        reportFileName = 'report-' + suites + '-firefox.json';
+    } else if (argv.ie) {
+        reportFileName = 'report-' + suites + '-ie.json';
+    }
+
     process.env['MOCHA_REPORTER'] = 'JSON';
-    process.env['MOCHA_REPORTER_FILE'] = 'e2e/reports/report-' + suites +'.json';
+    process.env['MOCHA_REPORTER_FILE'] = 'e2e/reports/' + reportFileName;
 
     config.mochaOpts.reporter = 'reporter-file';
 }
