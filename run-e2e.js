@@ -50,7 +50,7 @@ function launchProtractor(suit) {
     }
 
     if (argv.seleniumAddress) {
-        protractorParams.push('--seleniumAddress=' + seleniumAddress);
+        protractorParams.push('--seleniumAddress=' + argv.seleniumAddress);
     }
 
     child_process.spawnSync('protractor', protractorParams, {stdio: "inherit"});
