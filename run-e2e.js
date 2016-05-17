@@ -41,6 +41,14 @@ function launchProtractor(suit) {
         protractorParams.push('--json');
     }
 
+    if (argv.ie) {
+        protractorParams.push('--ie');
+    }
+
+    if (argv.firefox) {
+        protractorParams.push('--firefox');
+    }
+
     child_process.spawnSync('protractor', protractorParams, {stdio: "inherit"});
 }
 

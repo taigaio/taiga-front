@@ -158,4 +158,17 @@ if (argv.json) {
     config.mochaOpts.reporter = 'reporter-file';
 }
 
+if (argv.firefox) {
+    config.capabilities = {
+         browserName: 'firefox'
+    };
+}
+
+if (argv.ie) {
+    config.capabilities = {
+         browserName: 'internet explorer',
+         version: '11'
+    };
+}
+
 exports.config = config;
