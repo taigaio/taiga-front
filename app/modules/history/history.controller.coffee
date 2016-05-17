@@ -53,7 +53,9 @@ class HistorySectionController
         type = @.name
         objectId = @.id
         activityId = commentId
-        @rs.history.deleteComment(type, objectId, activityId).then =>
+
+        console.log type, objectId, activityId
+        return @rs.history.deleteComment(type, objectId, activityId).then =>
             @._loadHistory()
 
     editComment: (commentId, comment) ->
@@ -61,14 +63,14 @@ class HistorySectionController
         objectId = @.id
         activityId = commentId
         comment = comment
-        @rs.history.editComment(type, objectId, activityId, comment).then =>
+        return @rs.history.editComment(type, objectId, activityId, comment).then =>
             @._loadHistory()
 
     restoreDeletedComment: (commentId) ->
         type = @.name
         objectId = @.id
         activityId = commentId
-        @rs.history.undeleteComment(type, objectId, activityId).then =>
+        return @rs.history.undeleteComment(type, objectId, activityId).then =>
             @._loadHistory()
 
     addComment: () ->

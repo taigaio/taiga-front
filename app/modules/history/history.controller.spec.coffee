@@ -63,9 +63,9 @@ describe "HistorySection", ->
 
         inject ($controller) ->
             controller = $controller
-
-    it.only "load historic", (done) ->
         promise = mocks.tgResources.history.get.promise().resolve()
+
+    it "load historic", (done) ->
         historyCtrl = controller "HistorySection"
 
         historyCtrl._getComments = sinon.stub()
@@ -79,3 +79,70 @@ describe "HistorySection", ->
             expect(historyCtrl._getComments).have.been.calledWith(data)
             expect(historyCtrl._getActivities).have.been.calledWith(data)
             done()
+
+    it "get Comments older first", () ->
+        historyCtrl = controller "HistorySection"
+
+        comments = ['comment3', 'comment2', 'comment1']
+        historyCtrl.reverse = false
+
+        historyCtrl._getComments(comments)
+        expect(historyCtrl.comments).to.be.eql(['comment3', 'comment2', 'comment1'])
+        expect(historyCtrl.commentsNum).to.be.equal(3)
+
+    it "get Comments newer first", () ->
+        historyCtrl = controller "HistorySection"
+
+        comments = ['comment3', 'comment2', 'comment1']
+        historyCtrl.reverse = true
+
+        historyCtrl._getComments(comments)
+        expect(historyCtrl.comments).to.be.eql(['comment1', 'comment2', 'comment3'])
+        expect(historyCtrl.commentsNum).to.be.equal(3)
+
+    it "get activities", () ->
+        historyCtrl = controller "HistorySection"
+        activities = {
+            'activity1': {
+                'values_diff': '1'
+            },
+            'activity2': {
+                'values_diff': '2'
+            },
+            'activity3': {
+                'values_diff': '3'
+            },
+        }
+
+        historyCtrl._getActivities(activities)
+
+        historyCtrl.activities = activities
+        expect(historyCtrl.activitiesNum).to.be.equal(3)
+
+    it "on active history tab", () ->
+        historyCtrl = controller "HistorySection"
+        active = true
+        historyCtrl.onActiveHistoryTab(active)
+        expect(historyCtrl.viewComments).to.be.true
+
+    it "on inactive history tab", () ->
+        historyCtrl = controller "HistorySection"
+        active = false
+        historyCtrl.onActiveHistoryTab(active)
+        expect(historyCtrl.viewComments).to.be.false
+
+    it.only "delete comment", () ->
+        historyCtrl = controller "HistorySection"
+        historyCtrl._loadHistory = sinon.stub()
+
+        historyCtrl.name = "type"
+        historyCtrl.id = 1
+
+        type = historyCtrl.name
+        objectId = historyCtrl.id
+        commentId = 7
+
+        promise = mocks.tgResources.history.deleteComment.withArgs(type, objectId, commentId).promise().resolve()
+
+        historyCtrl.deleteComment(commentId).then () ->
+            expect(historyCtrl._loadHistory).have.been.called
