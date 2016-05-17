@@ -49,6 +49,10 @@ function launchProtractor(suit) {
         protractorParams.push('--firefox');
     }
 
+    if (argv.seleniumAddress) {
+        protractorParams.push('--seleniumAddress=' + seleniumAddress);
+    }
+
     child_process.spawnSync('protractor', protractorParams, {stdio: "inherit"});
 }
 

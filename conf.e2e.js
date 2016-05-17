@@ -171,4 +171,8 @@ if (argv.ie) {
     };
 }
 
+if (argv.seleniumAddress) {
+    config.seleniumAddress = argv.seleniumAddress;
+}
+
 exports.config = config;
