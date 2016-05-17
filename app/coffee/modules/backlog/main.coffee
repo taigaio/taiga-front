@@ -55,11 +55,12 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         "$tgAnalytics",
         "$translate",
         "$tgLoading",
-        "tgResources"
+        "tgResources",
+        "$tgQueueModelTransformation"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q,
-                  @location, @appMetaService, @navUrls, @events, @analytics, @translate, @loading, @rs2) ->
+                  @location, @appMetaService, @navUrls, @events, @analytics, @translate, @loading, @rs2, @modelTransform) ->
         bindMethods(@)
 
         @.page = 1
@@ -958,7 +959,10 @@ UsPointsDirective = ($tgEstimationsService, $repo, $tgTemplate) ->
                 if estimationProcess.isEditable
                     bindClickElements()
 
-                estimationProcess.onSelectedPointForRole = (roleId, pointId) ->
+                estimationProcess.onSelectedPointForRole = (roleId, pointId, points) ->
+                    us.points = points
+                    estimationProcess.render()
+
                     @save(roleId, pointId).then ->
                         $ctrl.loadProjectStats()
 
