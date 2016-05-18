@@ -14,17 +14,23 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: history.controller.coffee
+# File: subscriptions.controller.spec.coffee
 ###
 
-module = angular.module("taigaHistory")
+describe "CommentsController", ->
+    provide = null
+    controller = null
+    mocks = {}
 
-class CommentsController
-    @.$inject = []
+    beforeEach ->
+        module "taigaHistory"
 
-    constructor: () ->
+        inject ($controller) ->
+            controller = $controller
 
-    setModifyType: () ->
-        @.modifyType = 'modify_' + @.name
+    it.only "set modification type", () ->
+        commentsCtrl = controller "CommentsCtrl"
+        commentsCtrl.name = "us"
 
-module.controller("CommentsCtrl", CommentsController)
+        commentsCtrl.setModifyType()
+        expect(commentsCtrl.modifyType).to.be.equal("modify_us")
