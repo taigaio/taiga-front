@@ -62,7 +62,6 @@ class HistorySectionController
         type = @.name
         objectId = @.id
         activityId = commentId
-        comment = comment
         return @rs.history.editComment(type, objectId, activityId, comment).then =>
             @._loadHistory()
 

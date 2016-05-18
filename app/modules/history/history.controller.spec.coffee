@@ -131,7 +131,7 @@ describe "HistorySection", ->
         historyCtrl.onActiveHistoryTab(active)
         expect(historyCtrl.viewComments).to.be.false
 
-    it.only "delete comment", () ->
+    it "delete comment", () ->
         historyCtrl = controller "HistorySection"
         historyCtrl._loadHistory = sinon.stub()
 
@@ -146,3 +146,63 @@ describe "HistorySection", ->
 
         historyCtrl.deleteComment(commentId).then () ->
             expect(historyCtrl._loadHistory).have.been.called
+
+    it "edit comment", () ->
+        historyCtrl = controller "HistorySection"
+        historyCtrl._loadHistory = sinon.stub()
+
+        historyCtrl.name = "type"
+        historyCtrl.id = 1
+        activityId = 7
+        comment = "blablabla"
+
+        type = historyCtrl.name
+        objectId = historyCtrl.id
+        commentId = activityId
+
+        promise = mocks.tgResources.history.editComment.withArgs(type, objectId, activityId, comment).promise().resolve()
+
+        historyCtrl.editComment(commentId, comment).then () ->
+            expect(historyCtrl._loadHistory).has.been.called
+
+    it "restore comment", () ->
+        historyCtrl = controller "HistorySection"
+        historyCtrl._loadHistory = sinon.stub()
+
+        historyCtrl.name = "type"
+        historyCtrl.id = 1
+        activityId = 7
+
+        type = historyCtrl.name
+        objectId = historyCtrl.id
+        commentId = activityId
+
+        promise = mocks.tgResources.history.undeleteComment.withArgs(type, objectId, activityId).promise().resolve()
+
+        historyCtrl.restoreDeletedComment(commentId).then () ->
+            expect(historyCtrl._loadHistory).has.been.called
+
+    it "add comment", () ->
+        historyCtrl = controller "HistorySection"
+        historyCtrl._loadHistory = sinon.stub()
+
+        historyCtrl.type = "type"
+        type = historyCtrl.type
+        historyCtrl.loading = true
+
+        promise = mocks.tgRepo.save.withArgs(type).promise().resolve()
+
+        historyCtrl.addComment().then () ->
+            expect(historyCtrl._loadHistory).has.been.called
+            expect(historyCtrl.loading).to.be.false
+
+    it "order comments", () ->
+        historyCtrl = controller "HistorySection"
+        historyCtrl._loadHistory = sinon.stub()
+
+        historyCtrl.reverse = false
+
+        historyCtrl.onOrderComments()
+        expect(historyCtrl.reverse).to.be.true
+        expect(mocks.tgStorage.set).has.been.calledWith("orderComments", historyCtrl.reverse)
+        expect(historyCtrl._loadHistory).has.been.called
