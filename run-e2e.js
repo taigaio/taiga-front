@@ -37,20 +37,21 @@ function backup() {
 function launchProtractor(suit) {
     let protractorParams = ['conf.e2e.js', '--suite=' + suit, '--back=' + taigaBackPath];
 
-    if (argv.json) {
-        protractorParams.push('--json');
-    }
+    var discard = [
+        "_",
+        "s",
+        "a",
+        "b"
+    ];
 
-    if (argv.ie) {
-        protractorParams.push('--ie');
-    }
-
-    if (argv.firefox) {
-        protractorParams.push('--firefox');
-    }
-
-    if (argv.seleniumAddress) {
-        protractorParams.push('--seleniumAddress=' + argv.seleniumAddress);
+    for(var arg in argv) {
+        if (discard.indexOf(arg) === -1) {
+            if(typeof argv[arg] === 'boolean') {
+                protractorParams.push('--' + arg);
+            } else {
+                protractorParams.push('--' + arg + "=" + argv[arg]);
+            }
+        }
     }
 
     child_process.spawnSync('protractor', protractorParams, {stdio: "inherit"});

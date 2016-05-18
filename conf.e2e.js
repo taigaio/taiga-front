@@ -183,4 +183,9 @@ if (argv.seleniumAddress) {
     config.seleniumAddress = argv.seleniumAddress;
 }
 
+
+if (argv.host) {
+    config.params.glob.host = argv.host;
+}
+
 exports.config = config;
