@@ -21,6 +21,7 @@ module = angular.module('taigaHistory')
 
 LightboxDisplayHistoricDirective = (lightboxService) ->
     link = (scope, el, attrs, ctrl) ->
+        ctrl._loadHistoric()
         lightboxService.open(el)
 
     return {

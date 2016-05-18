@@ -25,11 +25,13 @@ class LightboxDisplayHistoricController
     ]
 
     constructor: (@rs) ->
+
+    _loadHistoric: () ->
         type = @.name
         objectId = @.object
         activityId = @.comment.id
+
         @rs.history.getCommentHistory(type, objectId, activityId).then (data) =>
             @.commentHistoryEntries = data
-            console.log @.commentHistoryEntries
 
 module.controller("LightboxDisplayHistoricCtrl", LightboxDisplayHistoricController)

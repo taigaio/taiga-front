@@ -47,8 +47,6 @@ class CommentController
             return @.user.id == @.comment.user.pk || @permissionService.check('modify_project')
 
     displayCommentHistory: () ->
-        console.log @.name
-        console.log @.object
         @lightboxFactory.create('tg-lb-display-historic', {
             "class": "lightbox lightbox-display-historic"
             "comment": "comment"
