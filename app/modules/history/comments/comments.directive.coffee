@@ -21,8 +21,8 @@ module = angular.module('taigaHistory')
 
 CommentsDirective = () ->
 
-    link: (scope, el, attrs, ctrl) ->
-        ctrl.modifyType()
+    link = (scope, el, attrs, ctrl) ->
+        ctrl.setModifyType()
 
     return {
         scope: {
