@@ -28,7 +28,7 @@ describe "CommentsController", ->
         inject ($controller) ->
             controller = $controller
 
-    it.only "set modification type", () ->
+    it "set modification type", () ->
         commentsCtrl = controller "CommentsCtrl"
         commentsCtrl.name = "us"
 

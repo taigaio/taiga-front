@@ -23,11 +23,10 @@ class CommentController
     @.$inject = [
         "tgCurrentUserService",
         "tgCheckPermissionsService",
-        "tgLightboxFactory",
-        "lightboxService"
+        "tgLightboxFactory"
     ]
 
-    constructor: (@currentUserService, @permissionService, @lightboxFactory, @lightboxService) ->
+    constructor: (@currentUserService, @permissionService, @lightboxFactory) ->
         @.hiddenDeletedComment = true
         @.toggleEditComment = false
         @.commentContent = angular.copy(@.comment)
@@ -43,8 +42,8 @@ class CommentController
 
     canEditDeleteComment: () ->
         if @currentUserService.getUser()
-            @.user = @currentUserService.getUser().toJS()
-            return @.user.id == @.comment.user.pk || @permissionService.check('modify_project')
+            @.user = @currentUserService.getUser()
+            return @.user.get('id') == @.comment.user.pk || @permissionService.check('modify_project')
 
     displayCommentHistory: () ->
         @lightboxFactory.create('tg-lb-display-historic', {
