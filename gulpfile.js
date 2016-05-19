@@ -78,6 +78,7 @@ paths.modulesLocales = paths.app + "modules/**/locales/*.json";
 
 paths.sass = [
     paths.app + "**/*.scss",
+    "!" + paths.app + "**/*.mixin.scss",
     "!" + paths.app + "styles/bourbon/**/*.scss",
     "!" + paths.app + "styles/dependencies/**/*.scss",
     "!" + paths.app + "styles/extras/**/*.scss",
