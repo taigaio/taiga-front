@@ -50,15 +50,18 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$tgNavUrls",
         "$tgAnalytics",
         "$translate",
+        "$tgConfig",
         "$tgQueueModelTransformation"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location,
-                  @log, @appMetaService, @navUrls, @analytics, @translate, @modelTransform) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @log, @appMetaService,
+                  @navUrls, @analytics, @translate, @configService, @modelTransform) ->
         bindMethods(@)
 
         @scope.usRef = @params.usref
         @scope.sectionName = @translate.instant("US.SECTION_NAME")
+        @scope.tribeEnabled = @configService.config.tribeHost
+
         @.initializeEventHandlers()
 
         promise = @.loadInitialData()
@@ -238,6 +241,17 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
             @confirm.notify("error")
 
         return @rs.userstories.unwatch(@scope.usId).then(onSuccess, onError)
+
+    onTribeInfo: ->
+            publishTitle = @translate.instant("US.TRIBE.PUBLISH_MORE_INFO_TITLE")
+            image = $('<img />')
+                .attr({
+                    'src': "/#{window._version}/images/monster-fight.png",
+                    'alt': @translate.instant("US.TRIBE.PUBLISH_MORE_INFO_TITLE")
+                })
+            text = @translate.instant("US.TRIBE.PUBLISH_MORE_INFO_TEXT")
+            publishDesc = $('<div></div>').append(image).append(text)
+            @confirm.success(publishTitle, publishDesc)
 
 module.controller("UserStoryDetailController", UserStoryDetailController)
 
