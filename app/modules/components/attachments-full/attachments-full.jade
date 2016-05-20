@@ -94,3 +94,8 @@ section.attachments(
                     alt="{{'COMMON.LOADING' | translate}}"
                 )
             .attachment-data {{file.progressMessage}}
+
+tg-attachments-preview.lightbox.lightbox-block(
+    ng-show="vm.showAttachments()",
+    attachments="vm.attachments"
+)

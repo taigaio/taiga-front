@@ -2,7 +2,7 @@
     ng-class="{deprecated: vm.attachment.getIn(['file', 'is_deprecated'])}",
     ng-if="vm.attachment.getIn(['file', 'id'])",
 )
-    a.attachment-image(
+    a.attachment-image.e2e-attachment-link(
         tg-attachment-link="vm.attachment"
         href="{{::vm.attachment.getIn(['file', 'url'])}}"
         title="{{::vm.attachment.getIn(['file', 'name'])}}"

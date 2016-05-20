@@ -4,6 +4,10 @@ var lightbox = module.exports;
 var transition = 300;
 
 lightbox.exit = function(el) {
+    if (!el) {
+        el = $('.lightbox.open');
+    }
+
     if (typeof el === 'string' || el instanceof String) {
         el = $(el);
     }

@@ -127,6 +127,26 @@
 }
 
 .attachment-preview {
+    .attachment-preview-container {
+        svg {
+            @include svg-size(3rem);
+            fill: $gray-light;
+            &:hover {
+                fill: $primary-light;
+                transition: fill .3s linear;
+            }
+        }
+    }
+    .previous {
+        left: 3rem;
+        position: absolute;
+        top: calc(50% - 3rem);
+    }
+    .next {
+        position: absolute;
+        right: 3rem;
+        top: calc(50% - 3rem);
+    }
     img {
         max-height: 80vh;
         max-width: 80vw;

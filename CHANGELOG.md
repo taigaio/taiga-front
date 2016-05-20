@@ -7,6 +7,7 @@
 - Show a confirmation notice when you exit edit mode by pressing ESC in the markdown inputs.
 - Add the tribe button to link stories from tree.taiga.io with gigs in tribe.taiga.io.
 - Errors (not found, server error, permissions and blocked project) don't change the current url.
+- Attachments image slider
 
 ### Misc
 - Lots of small and not so small bugfixes.
