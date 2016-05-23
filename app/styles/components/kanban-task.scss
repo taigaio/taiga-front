@@ -88,7 +88,6 @@
     }
     .task-name {
         @include font-type(bold);
-        word-break: break-word;
     }
     .loading {
         bottom: .5rem;

@@ -100,7 +100,6 @@
     }
     .task-name {
         @include font-type(bold);
-        word-break: break-word;
     }
     .taskboard-text {
         @include font-size(small);

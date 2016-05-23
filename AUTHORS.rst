@@ -31,3 +31,4 @@ answer newbie questions, and generally made Taiga that much better:
 - Ryan Swanstrom
 - Vlad Topala <topalavlad@gmail.com>
 - Wil Wade
+- Iago Last
