@@ -130,10 +130,14 @@ class UserTimelineItemTitle
     _getLink: (url, text, title) ->
         title = title || text
 
+        span = $('<span>')
+            .attr('ng-non-bindable', true)
+            .text(text)
+
         return $('<a>')
             .attr('tg-nav', url)
-            .text(text)
             .attr('title', title)
+            .append(span)
             .prop('outerHTML')
 
     _getUsernameSpan: (text) ->
