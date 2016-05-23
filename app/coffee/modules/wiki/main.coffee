@@ -134,7 +134,7 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
             @q.all([@.loadWikiLinks(), @.loadWiki()]).then @.checkLinksPerms.bind(this)
 
     checkLinksPerms: ->
-        if @scope.project.my_permissions.indexOf("modify_wiki_link") != -1 ||
+        if @scope.project.my_permissions.indexOf("add_wiki_link") != -1 ||
           (@scope.project.my_permissions.indexOf("view_wiki_links") != -1 && @scope.wikiLinks.length)
             @scope.linksVisible = true
 
