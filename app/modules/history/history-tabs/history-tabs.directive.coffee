@@ -14,21 +14,24 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: check-permissions.service.coffee
+# File: history-tabs.directive.coffee
 ###
 
-taiga = @.taiga
+module = angular.module('taigaHistory')
 
-class CheckPermissionsService
-    @.$inject = [
-        "tgProjectService"
-    ]
+HistoryTabsDirective = () ->
 
-    constructor: (@projectService) ->
+    return {
+        templateUrl:"history/history-tabs/history-tabs.html",
+        scope: {
+            onActiveComments: "&",
+            onActiveActivities: "&",
+            onOrderComments: "&"
+            activeTab: "<",
+            commentsNum: "<",
+            activitiesNum: "<",
+            onReverse: "<"
+        }
+    }
 
-    check: (permission) ->
-        return false if !@projectService.project
-
-        return @projectService.project.get('my_permissions').indexOf(permission) != -1
-
-angular.module("taigaCommon").service("tgCheckPermissionsService", CheckPermissionsService)
+module.directive("tgHistoryTabs", HistoryTabsDirective)

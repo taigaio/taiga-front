@@ -1,0 +1,11 @@
+.diff-milestone-wrapper
+    span.key(
+        translate="ACTIVITY.FIELDS.MILESTONE"
+    )
+    span.diff(ng-if="vm.diff[0] != null") {{vm.diff[0]}}
+    span.diff(ng-if="vm.diff[0] == null") ...
+    tg-svg(
+        svg-icon="icon-arrow-right"
+    )
+    span.diff(ng-if="vm.diff[1] != null") {{vm.diff[1]}}
+    span.diff(ng-if="vm.diff[1] == null") ...

@@ -6,6 +6,8 @@
 ### Features
 - Show a confirmation notice when you exit edit mode by pressing ESC in the markdown inputs.
 - Add the tribe button to link stories from tree.taiga.io with gigs in tribe.taiga.io.
+- New admin area to edit the tag colors used in your project
+- Ability to edit comments, view edition history and redesign comments module UI
 
 ### Misc
 - Lots of small and not so small bugfixes.

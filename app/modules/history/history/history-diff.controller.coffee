@@ -1,5 +1,5 @@
 ###
-# Copyright (C) 2014-2016 Taiga Agile LLC <taiga@taiga.io>
+# Copyright (C) 2014-2015 Taiga Agile LLC <taiga@taiga.io>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -14,21 +14,21 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: check-permissions.service.coffee
+# File: history.controller.coffee
 ###
 
-taiga = @.taiga
+module = angular.module("taigaHistory")
 
-class CheckPermissionsService
+class ActivitiesDiffController
     @.$inject = [
-        "tgProjectService"
     ]
 
-    constructor: (@projectService) ->
+    constructor: () ->
 
-    check: (permission) ->
-        return false if !@projectService.project
+    diffTags: () ->
+        if @.type == 'tags'
+            @.diffRemoveTags = _.difference(@.diff[0], @.diff[1]).toString()
+            @.diffAddTags = _.difference(@.diff[1], @.diff[0]).toString()
 
-        return @projectService.project.get('my_permissions').indexOf(permission) != -1
 
-angular.module("taigaCommon").service("tgCheckPermissionsService", CheckPermissionsService)
+module.controller("ActivitiesDiffCtrl", ActivitiesDiffController)

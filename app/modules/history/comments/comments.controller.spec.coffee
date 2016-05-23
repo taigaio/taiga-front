@@ -1,5 +1,5 @@
 ###
-# Copyright (C) 2014-2016 Taiga Agile LLC <taiga@taiga.io>
+# Copyright (C) 2014-2015 Taiga Agile LLC <taiga@taiga.io>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -14,21 +14,23 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: check-permissions.service.coffee
+# File: subscriptions.controller.spec.coffee
 ###
 
-taiga = @.taiga
+describe "CommentsController", ->
+    provide = null
+    controller = null
+    mocks = {}
 
-class CheckPermissionsService
-    @.$inject = [
-        "tgProjectService"
-    ]
+    beforeEach ->
+        module "taigaHistory"
 
-    constructor: (@projectService) ->
+        inject ($controller) ->
+            controller = $controller
 
-    check: (permission) ->
-        return false if !@projectService.project
+    it "set modification type", () ->
+        commentsCtrl = controller "CommentsCtrl"
+        commentsCtrl.name = "us"
 
-        return @projectService.project.get('my_permissions').indexOf(permission) != -1
-
-angular.module("taigaCommon").service("tgCheckPermissionsService", CheckPermissionsService)
+        commentsCtrl.setModifyType()
+        expect(commentsCtrl.modifyType).to.be.equal("modify_us")
