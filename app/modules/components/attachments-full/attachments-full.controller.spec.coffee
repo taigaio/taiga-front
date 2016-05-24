@@ -158,7 +158,7 @@ describe "AttachmentsController", ->
             deleteFile = Immutable.Map()
 
             mocks.attachmentsFullService.deleteAttachment = sinon.stub()
-            mocks.attachmentsFullService.deleteAttachment.withArgs(deleteFile, 'us').promise().reject()
+            mocks.attachmentsFullService.deleteAttachment.withArgs(deleteFile, 'us').promise().reject(new Error('error'))
 
             askResponse = {
                 finish: sinon.spy()

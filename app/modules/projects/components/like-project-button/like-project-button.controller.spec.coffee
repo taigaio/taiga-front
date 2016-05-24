@@ -91,7 +91,7 @@ describe "LikeProjectButton", ->
         ctrl = $controller("LikeProjectButton")
         ctrl.project = project
 
-        mocks.tgLikeProjectButton.like.withArgs(project.get('id')).promise().reject()
+        mocks.tgLikeProjectButton.like.withArgs(project.get('id')).promise().reject(new Error('error'))
 
         ctrl.toggleLike().finally () ->
             expect(mocks.tgConfirm.notify.withArgs("error")).to.be.calledOnce
@@ -127,7 +127,7 @@ describe "LikeProjectButton", ->
         ctrl = $controller("LikeProjectButton")
         ctrl.project = project
 
-        mocks.tgLikeProjectButton.unlike.withArgs(project.get('id')).promise().reject()
+        mocks.tgLikeProjectButton.unlike.withArgs(project.get('id')).promise().reject(new Error('error'))
 
         ctrl.toggleLike().finally () ->
             expect(mocks.tgConfirm.notify.withArgs("error")).to.be.calledOnce

@@ -73,7 +73,7 @@ class AttachmentsFullService extends taiga.Service
 
                     resolve(attachment)
             else
-                reject(file)
+                reject(new Error(file))
 
     loadAttachments: (type, objId, projectId)->
         @attachmentsService.list(type, objId, projectId).then (files) =>

@@ -118,7 +118,7 @@ describe "WatchProjectButton", ->
         ctrl.project = project
         ctrl.showWatchOptions = true
 
-        mocks.tgWatchProjectButton.watch.withArgs(project.get('id'), notifyLevel).promise().reject()
+        mocks.tgWatchProjectButton.watch.withArgs(project.get('id'), notifyLevel).promise().reject(new Error('error'))
 
         ctrl.watch(notifyLevel).finally () ->
             expect(mocks.tgConfirm.notify.withArgs("error")).to.be.calledOnce
@@ -159,7 +159,7 @@ describe "WatchProjectButton", ->
         ctrl.project = project
         ctrl.showWatchOptions = true
 
-        mocks.tgWatchProjectButton.unwatch.withArgs(project.get('id')).promise().reject()
+        mocks.tgWatchProjectButton.unwatch.withArgs(project.get('id')).promise().reject(new Error('error'))
 
         ctrl.unwatch().finally () ->
             expect(mocks.tgConfirm.notify.withArgs("error")).to.be.calledOnce

@@ -104,17 +104,15 @@ describe "ExternalAppController", ->
         mocks.routeParams.application = 6
         mocks.routeParams.state = "testing-state"
 
-        xhr = {
-            status: 404
-        }
+        error = new Error('404')
 
-        mocks.tgExternalAppsService.getApplicationToken.withArgs(mocks.routeParams.application, mocks.routeParams.state).promise().reject(xhr)
+        mocks.tgExternalAppsService.getApplicationToken.withArgs(mocks.routeParams.application, mocks.routeParams.state).promise().reject(error)
 
         ctrl = $controller("ExternalApp")
 
         setTimeout ( ->
             expect(mocks.tgLoader.start.withArgs(false)).to.be.calledOnce
-            expect(mocks.tgXhrErrorService.response.withArgs(xhr)).to.be.calledOnce
+            expect(mocks.tgXhrErrorService.response.withArgs(error)).to.be.calledOnce
             done()
         )
 

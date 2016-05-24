@@ -190,7 +190,7 @@ describe "tgCurrentUserService", ->
             done()
 
     it "create default joyride config", (done) ->
-        mocks.resources.user.getUserStorage.withArgs('joyride').promise().reject()
+        mocks.resources.user.getUserStorage.withArgs('joyride').promise().reject(new Error('error'))
 
         currentUserService.loadJoyRideConfig().then (config) ->
             joyride = {
