@@ -26,3 +26,16 @@ svg {
 a[ng-click] svg {
     pointer-events: auto;
 }
+
+// chrome url break
+.kanban-task {
+    .task-name {
+        word-break: break-word;
+    }
+}
+
+.taskboard-task {
+    .task-name {
+        word-break: break-word;
+    }
+}
