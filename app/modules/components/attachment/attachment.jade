@@ -37,6 +37,7 @@ form.single-attachment(
         input(
             type="checkbox"
             ng-model="vm.form.is_deprecated"
+            ng-checked="vm.attachment.getIn(['file', 'is_deprecated'])"
             name="is-deprecated"
             id="attach-{{::vm.attachment.getIn(['file', 'id'])}}-is-deprecated"
         )
