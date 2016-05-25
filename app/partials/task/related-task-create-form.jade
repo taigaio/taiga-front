@@ -1,6 +1,6 @@
 .row.single-related-task.related-task-create-form.active(ng-if="openNewRelatedTask")
     .task-name
-        input(type='text', autofocus, placeholder="{{'TASK.PLACEHOLDER_SUBJECT' | translate}}")
+        input(type='text', tg-autofocus, placeholder="{{'TASK.PLACEHOLDER_SUBJECT' | translate}}")
     .task-settings
         a.save-task(ng-click="save()" title="{{'COMMON.SAVE' | translate}}")
             tg-svg(svg-icon="icon-save")
