@@ -1,9 +1,15 @@
 .tags-container
-a(href="#", class="add-tag hidden", title="{{'COMMON.TAGS.ADD' | translate}}")
+a.add-tag.hidden(
+    href="#"
+    title="{{'COMMON.TAGS.ADD' | translate}}"
+)
     tg-svg(svg-icon="icon-add")
     span.add-tag-text(translate="COMMON.TAGS.ADD")
 
 span.add-tag-input
-    input(type="text", placeholder="{{'COMMON.TAGS.PLACEHOLDER' | translate}}", class="tag-input hidden")
+    input.tag-input.hidden(
+        type="text"
+        placeholder="{{'COMMON.TAGS.PLACEHOLDER' | translate}}"
+    )
     span.save.hidden(title="{{'COMMON.SAVE' | translate}}")
         tg-svg(svg-icon="icon-save")

@@ -1,11 +1,16 @@
-.view-subject
-    | {{ item.subject }}
+.view-subject {{ item.subject }}
     tg-svg.edit(
         svg-icon="icon-edit",
         title="{{'COMMON.EDIT' | translate}}"
     )
 .edit-subject
-    input(type="text", ng-model="item.subject", data-required="true", data-maxlength="500", ng-model-options="{ debounce: 200 }")
+    input(
+        type="text"
+        ng-model="item.subject"
+        data-required="true"
+        data-maxlength="500"
+        ng-model-options="{ debounce: 200 }"
+    )
     span.save-container
        a.save(href="")
            tg-svg(
