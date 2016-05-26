@@ -315,6 +315,28 @@ shared.attachmentTesting = async function() {
 
     attachmentHelper.list();
 
+    // Gallery images
+    var fileToUploadImage = commonUtil.uploadImagePath();
+
+    await attachmentHelper.upload(fileToUploadImage, 'testing image ' + date);
+
+    await attachmentHelper.upload(fileToUpload, 'testing image ' + date);
+
+    await attachmentHelper.upload(fileToUploadImage, 'testing image ' + date);
+    await browser.sleep(5000);
+
+    attachmentHelper.attachmentLinks().last().click();
+
+    await attachmentHelper.previewLightbox();
+    let previewSrc = await attachmentHelper.getPreviewSrc();
+
+    await attachmentHelper.nextPreview();
+
+    let previewSrc2 = await attachmentHelper.getPreviewSrc();
+
+    expect(previewSrc).not.to.be.equal(previewSrc2);
+    await lightbox.exit();
+
     // Deleting
     attachmentsLength = await attachmentHelper.countAttachments();
     await attachmentHelper.deleteLastAttachment();

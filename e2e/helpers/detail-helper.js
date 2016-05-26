@@ -417,6 +417,18 @@ helper.attachment = function() {
         list: function() {
             $('.view-list').click();
         },
+        previewLightbox: function() {
+            return utils.lightbox.open($('tg-attachments-preview'));
+        },
+        getPreviewSrc: function() {
+            return $('tg-attachments-preview img').getAttribute('src');
+        },
+        nextPreview: function() {
+            return $('tg-attachments-preview .next').click();
+        },
+        attachmentLinks: function() {
+            return $$('.e2e-attachment-link');
+        }
     };
 
     return obj;

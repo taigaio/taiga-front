@@ -17,7 +17,7 @@
 # File: attachment-link.directive.coffee
 ###
 
-AttachmentLinkDirective = ($parse, lightboxFactory) ->
+AttachmentLinkDirective = ($parse, attachmentsPreviewService, lightboxService) ->
     link = (scope, el, attrs) ->
         attachment = $parse(attrs.tgAttachmentLink)(scope)
 
@@ -26,11 +26,8 @@ AttachmentLinkDirective = ($parse, lightboxFactory) ->
                 event.preventDefault()
 
                 scope.$apply ->
-                    lightboxFactory.create('tg-lb-attachment-preview', {
-                        class: 'lightbox lightbox-block'
-                    }, {
-                        file: attachment.get('file')
-                    })
+                    lightboxService.open($('tg-attachments-preview'))
+                    attachmentsPreviewService.fileId = attachment.getIn(['file', 'id'])
 
         scope.$on "$destroy", -> el.off()
     return {
@@ -39,7 +36,8 @@ AttachmentLinkDirective = ($parse, lightboxFactory) ->
 
 AttachmentLinkDirective.$inject = [
     "$parse",
-    "tgLightboxFactory"
+    "tgAttachmentsPreviewService",
+    "lightboxService"
 ]
 
 angular.module("taigaComponents").directive("tgAttachmentLink", AttachmentLinkDirective)
