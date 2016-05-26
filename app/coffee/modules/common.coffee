@@ -386,3 +386,12 @@ Svg = () ->
     }
 
 module.directive("tgSvg", [Svg])
+
+Autofocus = ($timeout) ->
+  return {
+    restrict: 'A',
+    link : ($scope, $element) ->
+      $timeout -> $element[0].focus()
+  }
+
+module.directive('tgAutofocus', ['$timeout', Autofocus])
