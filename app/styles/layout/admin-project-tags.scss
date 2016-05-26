@@ -1,0 +1,20 @@
+.table-tags-editor {
+    input[type="text"] {
+        background-color: transparent;
+        border: 0;
+        border-bottom: 1px solid transparent;
+        box-shadow: none;
+        transition: border-bottom .2s linear;
+        &:focus {
+            border-bottom: 1px solid $gray;
+            outline: none;
+        }
+    }
+    .color-filter {
+        align-items: center;
+        display: flex;
+        flex-grow: 1;
+        padding: 0 10px;
+        position: relative;
+    }
+}

@@ -557,6 +557,12 @@
             "ISSUE_TITLE": "Issues types",
             "ACTION_ADD": "Add new {{objName}}"
         },
+        "PROJECT_VALUES_TAGS": {
+            "TITLE": "Tags",
+            "SUBTITLE": "View and edit the color of your user stories",
+            "EMPTY": "Currently there are no tags",
+            "EMPTY_SEARCH": "It looks like nothing was found with your search criteria"
+        },
         "ROLES": {
             "PAGE_TITLE": "Roles - {{projectName}}",
             "WARNING_NO_ROLE": "Be careful, no role in your project will be able to estimate the point value for user stories",
@@ -682,7 +688,8 @@
             "PRIORITIES": "Priorities",
             "SEVERITIES": "Severities",
             "TYPES": "Types",
-            "CUSTOM_FIELDS": "Custom fields"
+            "CUSTOM_FIELDS": "Custom fields",
+            "TAGS": "Tags"
         },
         "SUBMENU_PROJECT_PROFILE": {
             "TITLE": "Project Profile"
