@@ -34,8 +34,23 @@
 }
 
 .tags-block {
+    align-content: center;
+    display: flex;
+    flex-wrap: wrap;
     .tags-container {
-        display: inline-block;
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .add-tag-input {
+        align-items: flex-start;
+        display: flex;
+        flex-grow: 0;
+        flex-shrink: 0;
+        width: 250px;
+        .icon-save {
+            margin-top: .5rem;
+        }
     }
     input {
         margin-right: .25rem;
@@ -54,6 +69,9 @@
             fill: $primary;
             transition: .2s linear;
         }
+    }
+    .loading-spinner {
+        margin-right: .5rem;
     }
     .tag {
         @include font-size(small);
@@ -78,6 +96,8 @@
     }
     .icon-add {
         @include svg-size(.9rem);
+        margin-right: .25rem;
+        margin-top: .5rem;
     }
     .add-tag-text {
         @include font-size(small);

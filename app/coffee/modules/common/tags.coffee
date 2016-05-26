@@ -112,7 +112,7 @@ LbTagLineDirective = ($rs, $template, $compile) ->
 
     link = ($scope, $el, $attrs, $model) ->
         ## Render
-        renderTags = (tags, tagsColors) ->
+        renderTags = (tags, tagsColors = []) ->
             ctx = {
                 tags: _.map(tags, (t) -> {name: t, color: tagsColors[t]})
             }
@@ -231,6 +231,8 @@ TagLineDirective = ($rootScope, $repo, $rs, $confirm, $modelTransform, $template
 
     link = ($scope, $el, $attrs, $model) ->
         autocomplete = null
+        loading = false
+        deleteTagLoading = null
 
         isEditable = ->
             if $attrs.requiredPerm?
@@ -243,7 +245,10 @@ TagLineDirective = ($rootScope, $repo, $rs, $confirm, $modelTransform, $template
             ctx = {
                 tags: _.map(tags, (t) -> {name: t, color: tagsColors[t]})
                 isEditable: isEditable()
+                loading: loading
+                deleteTagLoading: deleteTagLoading
             }
+
             html = $compile(templateTags(ctx))($scope)
             $el.find("div.tags-container").html(html)
 
@@ -270,8 +275,10 @@ TagLineDirective = ($rootScope, $repo, $rs, $confirm, $modelTransform, $template
 
         ## Aux methods
         addValue = (value) ->
+            loading = true
             value = trim(value.toLowerCase())
             return if value.length == 0
+            renderTags($model.$modelValue.tags, $scope.project?.tags_colors)
 
             transform = $modelTransform.save (item) ->
                 if not item.tags
@@ -287,6 +294,8 @@ TagLineDirective = ($rootScope, $repo, $rs, $confirm, $modelTransform, $template
 
             onSuccess = ->
                 $rootScope.$broadcast("object:updated")
+                loading = false
+                renderTags($model.$modelValue.tags, $scope.project?.tags_colors)
 
             onError = ->
                 $confirm.notify("error")
@@ -298,6 +307,8 @@ TagLineDirective = ($rootScope, $repo, $rs, $confirm, $modelTransform, $template
         deleteValue = (value) ->
             value = trim(value.toLowerCase())
             return if value.length == 0
+            deleteTagLoading = value
+            renderTags($model.$modelValue.tags, $scope.project?.tags_colors)
 
             transform = $modelTransform.save (item) ->
                 tags = _.clone(item.tags, false)
@@ -307,9 +318,12 @@ TagLineDirective = ($rootScope, $repo, $rs, $confirm, $modelTransform, $template
 
             onSuccess = ->
                 $rootScope.$broadcast("object:updated")
+                renderTags($model.$modelValue.tags, $scope.project?.tags_colors)
+                deleteTagLoading = null
 
             onError = ->
                 $confirm.notify("error")
+                deleteTagLoading = null
 
             return transform.then(onSuccess, onError)
 
@@ -357,6 +371,7 @@ TagLineDirective = ($rootScope, $repo, $rs, $confirm, $modelTransform, $template
             value = target.siblings(".tag-name").text()
 
             deleteValue(value)
+            $scope.$digest()
 
         bindOnce $scope, "project.tags_colors", (tags_colors) ->
             if not isEditable()

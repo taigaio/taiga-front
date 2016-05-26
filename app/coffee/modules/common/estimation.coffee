@@ -111,14 +111,19 @@ UsEstimationDirective = ($tgEstimationsService, $rootScope, $repo, $template, $c
             if us
                 estimationProcess = $tgEstimationsService.create($el, us, $scope.project)
                 estimationProcess.onSelectedPointForRole = (roleId, pointId, points) ->
+                    estimationProcess.loading = roleId
+                    estimationProcess.render()
                     save(points).then () ->
+                        estimationProcess.loading = false
                         $rootScope.$broadcast("object:updated")
+                        estimationProcess.render()
 
                 estimationProcess.render = () ->
                     ctx = {
                         totalPoints: @calculateTotalPoints()
                         roles: @calculateRoles()
                         editable: @isEditable
+                        loading: estimationProcess.loading
                     }
                     mainTemplate = "common/estimation/us-estimation-points-per-role.html"
                     template = $template.get(mainTemplate, true)
@@ -154,6 +159,7 @@ EstimationsService = ($template, $repo, $confirm, $q, $qqueue) ->
             @isEditable = @project.my_permissions.indexOf("modify_us") != -1
             @roles = @project.roles
             @points = @project.points
+            @loading = false
             @pointsById = groupBy(@points, (x) -> x.id)
             @onSelectedPointForRole =  (roleId, pointId) ->
             @render = () ->
@@ -163,6 +169,7 @@ EstimationsService = ($template, $repo, $confirm, $q, $qqueue) ->
             $qqueue.add () =>
                 onSuccess = =>
                     deferred.resolve()
+                    @render()
 
                 onError = =>
                     $confirm.notify("error")
@@ -214,7 +221,6 @@ EstimationsService = ($template, $repo, $confirm, $q, $qqueue) ->
                 roleId = target.data("role-id")
                 pointId = target.data("point-id")
                 @$el.find(".popover").popover().close()
-
 
                 points = _.clone(@us.points, true)
                 points[roleId] = pointId
