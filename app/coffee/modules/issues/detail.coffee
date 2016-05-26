@@ -52,11 +52,12 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$tgAnalytics",
         "$tgNavUrls",
         "$translate",
-        "$tgQueueModelTransformation"
+        "$tgQueueModelTransformation",
+        "tgErrorHandlingService"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location,
-                  @log, @appMetaService, @analytics, @navUrls, @translate, @modelTransform) ->
+                  @log, @appMetaService, @analytics, @navUrls, @translate, @modelTransform, @errorHandlingService) ->
         bindMethods(@)
 
         @scope.issueRef = @params.issueref

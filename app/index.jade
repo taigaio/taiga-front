@@ -20,9 +20,13 @@ html(lang="en")
             window.prerenderReady = false;
 
     body(tg-main)
-        div(tg-navigation-bar)
+        div(tg-navigation-bar, ng-if="!errorHandling.showingError")
+        div.master(ng-view, ng-if="!errorHandling.showingError")
 
-        div.master(ng-view)
+        div(ng-if="errorHandling.notfound", ng-include="'error/not-found.html'")
+        div(ng-if="errorHandling.error", ng-include="'error/error.html'")
+        div(ng-if="errorHandling.permissionDenied", ng-include="'error/permission-denied.html'")
+        div(ng-if="errorHandling.blocked", ng-include="'projects/project/blocked-project.html'")
 
         div.lightbox.lightbox-generic-ask
             include partials/includes/modules/lightbox-generic-ask

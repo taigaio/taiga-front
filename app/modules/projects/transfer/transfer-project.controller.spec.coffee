@@ -28,6 +28,13 @@ describe "TransferProject", ->
         mocks.routeParams = {}
         provide.value "$routeParams", mocks.routeParams
 
+    _mockErrorHandlingService = () ->
+        mocks.errorHandlingService = {
+            notfound: sinon.stub()
+        }
+
+        provide.value "tgErrorHandlingService", mocks.errorHandlingService
+
     _mockProjectsService = () ->
         mocks.projectsService = {
             transferValidateToken: sinon.stub()
@@ -90,6 +97,7 @@ describe "TransferProject", ->
             _mockTgNavUrls()
             _mockTranslate()
             _mockTgConfirm()
+            _mockErrorHandlingService()
             return null
 
     _inject = (callback) ->
@@ -119,7 +127,7 @@ describe "TransferProject", ->
         ctrl = $controller("TransferProjectController")
         ctrl.project = project
         ctrl.initialize().then () ->
-            expect(mocks.location.path).to.be.calledWith("/not-found")
+            expect(mocks.errorHandlingService.notfound).have.been.called;
             done()
 
     it "valid token private project with max projects for user", (done) ->

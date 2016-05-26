@@ -53,11 +53,12 @@ class ProjectProfileController extends mixOf(taiga.Controller, taiga.PageMixin)
         "tgAppMetaService",
         "$translate",
         "$tgAuth",
-        "tgCurrentUserService"
+        "tgCurrentUserService",
+        "tgErrorHandlingService"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @navUrls,
-                  @appMetaService, @translate, @tgAuth, @currentUserService) ->
+                  @appMetaService, @translate, @tgAuth, @currentUserService, @errorHandlingService) ->
         @scope.project = {}
 
         promise = @.loadInitialData()
@@ -83,7 +84,7 @@ class ProjectProfileController extends mixOf(taiga.Controller, taiga.PageMixin)
     loadProject: ->
         return @rs.projects.getBySlug(@params.pslug).then (project) =>
             if not project.i_am_admin
-                @location.path(@navUrls.resolve("permission-denied"))
+                @errorHandlingService.permissionDenied()
 
             @scope.projectId = project.id
             @scope.project = project

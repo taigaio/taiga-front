@@ -45,19 +45,19 @@ class UserSettingsController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$tgLocation",
         "$tgNavUrls",
         "$tgAuth",
-        "$translate"
+        "$translate",
+        "tgErrorHandlingService"
     ]
 
     constructor: (@scope, @rootscope, @config, @repo, @confirm, @rs, @params, @q, @location, @navUrls,
-                  @auth, @translate) ->
+                  @auth, @translate, @errorHandlingService) ->
         @scope.sectionName = "USER_SETTINGS.MENU.SECTION_TITLE"
 
         @scope.project = {}
         @scope.user = @auth.getUser()
 
         if !@scope.user
-            @location.path(@navUrls.resolve("permission-denied"))
-            @location.replace()
+            @errorHandlingService.permissionDenied()
 
         @scope.lang = @getLan()
         @scope.theme = @getTheme()

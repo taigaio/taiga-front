@@ -51,11 +51,12 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         "tgAppMetaService",
         "$tgNavUrls",
         "$tgAnalytics",
-        "$translate"
+        "$translate",
+        "tgErrorHandlingService"
     ]
 
     constructor: (@scope, @rootscope, @repo, @model, @confirm, @rs, @params, @q, @location,
-                  @filter, @log, @appMetaService, @navUrls, @analytics, @translate) ->
+                  @filter, @log, @appMetaService, @navUrls, @analytics, @translate, @errorHandlingService) ->
         @scope.projectSlug = @params.pslug
         @scope.wikiSlug = @params.slug
         @scope.wikiTitle = @scope.wikiSlug
@@ -86,7 +87,7 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
     loadProject: ->
         return @rs.projects.getBySlug(@params.pslug).then (project) =>
             if not project.is_wiki_activated
-                @location.path(@navUrls.resolve("permission-denied"))
+                @errorHandlingService.permissionDenied()
 
             @scope.projectId = project.id
             @scope.project = project
