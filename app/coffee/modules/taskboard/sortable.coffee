@@ -87,8 +87,9 @@ TaskboardSortableDirective = ($repo, $rs, $rootscope) ->
                 $scope.$apply ->
                     $rootscope.$broadcast("taskboard:task:move", itemTask, newUsId, newStatusId, itemIndex)
 
+
             scroll = autoScroll([$('.taskboard-table-body')[0]], {
-                margin: 20,
+                margin: 100,
                 pixels: 30,
                 scrollWhenOutside: true,
                 autoScroll: () ->

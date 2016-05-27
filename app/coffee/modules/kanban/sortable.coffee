@@ -86,7 +86,7 @@ KanbanSortableDirective = ($repo, $rs, $rootscope) ->
                     $rootscope.$broadcast("kanban:us:move", itemUs, itemUs.status, newStatusId, itemIndex)
 
             scroll = autoScroll(containers, {
-                margin: 20,
+                margin: 100,
                 pixels: 30,
                 scrollWhenOutside: true,
                 autoScroll: () ->
