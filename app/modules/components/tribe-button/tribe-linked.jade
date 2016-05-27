@@ -12,21 +12,19 @@
                 ng-click="vm.hide()"
                 href=""
                 title="{{ 'US.TRIBE.CLOSE' | translate }}"
-            )
-                svg.icon.icon-remove
-                    use(xlink:href="#icon-remove")
-                
+            ) tg-svg.icon-remove(svg-icon="icon-close")
+
         a.gig-title(
             href="{{::vm.tribeHost}}/gigs/{{gigId}}"
             title="gigTitle"
             target="_blank"
         ) {{gigTitle}}
-        
+
         a.delete-link(
             href="{{::vm.tribeHost}}/gigs/{{gigId}}/link-with-taiga?from=taiga"
             title="{{ 'US.TRIBE.EDIT_LINK' | translate }}"
         ) {{ 'US.TRIBE.EDIT_LINK' | translate }}
-        
+
         a.synchronize-link.button-tribe(
             ng-href="{{::vm.tribeHost}}/gigs/sync/{{gigId}}?from=taiga"
             title="{{ 'US.TRIBE.SINCHRONIZE_LINK' }}"

@@ -55,12 +55,9 @@
             vertical-align: text-bottom;
         }
         svg {
+            @include svg-size();
             fill: $red-light;
-            height: 1.5rem;
-            max-height: 1.5rem;
-            max-width: 1.5rem;
             transition: all .2s;
-            width: 1.5rem;
             &:hover {
                 fill: $red;
             }
