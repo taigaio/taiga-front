@@ -315,7 +315,7 @@ module.directive("tgLogin", ["$tgAuth", "$tgConfirm", "$tgLocation", "$tgConfig"
 ## Register Directive
 #############################################################################
 
-RegisterDirective = ($auth, $confirm, $location, $navUrls, $config, $routeParams, $analytics, $translate) ->
+RegisterDirective = ($auth, $confirm, $location, $navUrls, $config, $routeParams, $analytics, $translate, $window) ->
     link = ($scope, $el, $attrs) ->
         if not $config.get("publicRegisterEnabled")
             $location.path($navUrls.resolve("not-found"))
@@ -324,12 +324,20 @@ RegisterDirective = ($auth, $confirm, $location, $navUrls, $config, $routeParams
         $scope.data = {}
         form = $el.find("form").checksley({onlyOneErrorElement: true})
 
-        $scope.nextUrl = $navUrls.resolve("home")
+        console.log $routeParams['forceNext']
+
+        if $routeParams['forceNext'] and $routeParams['forceNext'] != $navUrls.resolve("register")
+            $scope.nextUrl = decodeURIComponent($routeParams['forceNext'])
+        else
+            $scope.nextUrl = $navUrls.resolve("home")
 
         onSuccessSubmit = (response) ->
             $analytics.trackEvent("auth", "register", "user registration", 1)
 
-            $location.url($scope.nextUrl)
+            if $scope.nextUrl.indexOf('http') == 0
+                $window.location.href = $scope.nextUrl
+            else
+                $location.url($scope.nextUrl)
 
         onErrorSubmit = (response) ->
             if response.data._error_message
@@ -357,7 +365,7 @@ RegisterDirective = ($auth, $confirm, $location, $navUrls, $config, $routeParams
     return {link:link}
 
 module.directive("tgRegister", ["$tgAuth", "$tgConfirm", "$tgLocation", "$tgNavUrls", "$tgConfig",
-                                "$routeParams", "$tgAnalytics", "$translate", RegisterDirective])
+                                "$routeParams", "$tgAnalytics", "$translate", "$window", RegisterDirective])
 
 
 #############################################################################
