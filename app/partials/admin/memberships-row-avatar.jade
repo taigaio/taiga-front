@@ -1,7 +1,7 @@
 figure.avatar
     img(src!="<%- imgurl %>", alt!="<%- full_name %>")
     figcaption
-        span.name <%- full_name %>
+        span.name(ng-non-bindable) <%- full_name %>
             <% if (isOwner) { %>
             tg-svg(
                 svg-icon="icon-badge",
