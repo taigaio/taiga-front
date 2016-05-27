@@ -215,6 +215,9 @@ _.mixin
 isImage = (name) ->
     return name.match(/\.(jpe?g|png|gif|gifv|webm)/i) != null
 
+isPdf = (name) ->
+    return name.match(/\.(pdf)/i) != null
+
 patch = (oldImmutable, newImmutable) ->
     pathObj = {}
 
@@ -252,4 +255,5 @@ taiga.stripTags = stripTags
 taiga.replaceTags = replaceTags
 taiga.defineImmutableProperty = defineImmutableProperty
 taiga.isImage = isImage
+taiga.isPdf = isPdf
 taiga.patch = patch

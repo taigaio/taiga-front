@@ -28,6 +28,9 @@ AttachmentLinkDirective = ($parse, attachmentsPreviewService, lightboxService) -
                 scope.$apply ->
                     lightboxService.open($('tg-attachments-preview'))
                     attachmentsPreviewService.fileId = attachment.getIn(['file', 'id'])
+            else if taiga.isPdf(attachment.getIn(['file', 'name']))
+                event.preventDefault()
+                window.open(attachment.getIn(['file', 'url']))
 
         scope.$on "$destroy", -> el.off()
     return {
