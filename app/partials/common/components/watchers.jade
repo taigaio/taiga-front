@@ -7,7 +7,7 @@
             alt!="<%- watcher.full_name_display %>"
         )
     .user-list-name
-        span <%- watcher.full_name_display %>
+        span(ng-non-bindable) <%- watcher.full_name_display %>
 
         <% if(isEditable){ %>
         tg-svg.js-delete-watcher.delete-watcher(
