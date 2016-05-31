@@ -57,6 +57,7 @@ LbUsEstimationDirective = ($tgEstimationsService, $rootScope, $repo, $template, 
                         totalPoints: @calculateTotalPoints()
                         roles: @calculateRoles()
                         editable: @isEditable
+                        loading: false
                     }
                     mainTemplate = "common/estimation/us-estimation-points-per-role.html"
                     template = $template.get(mainTemplate, true)
