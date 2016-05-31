@@ -243,8 +243,9 @@ PublicRegisterMessageDirective = ($config, $navUrls, $routeParams, templates) ->
             return ""
 
         url = $navUrls.resolve("register")
-        if $routeParams['next'] and $routeParams['next'] != $navUrls.resolve("register")
-            nextUrl = encodeURIComponent($routeParams['next'])
+
+        if $routeParams['force_next']
+            nextUrl = encodeURIComponent($routeParams['force_next'])
             url += "?next=#{nextUrl}"
 
         return template({url:url})
@@ -259,7 +260,7 @@ module.directive("tgPublicRegisterMessage", ["$tgConfig", "$tgNavUrls", "$routeP
                                              "$tgTemplate", PublicRegisterMessageDirective])
 
 
-LoginDirective = ($auth, $confirm, $location, $config, $routeParams, $navUrls, $events, $translate) ->
+LoginDirective = ($auth, $confirm, $location, $config, $routeParams, $navUrls, $events, $translate, $window) ->
     link = ($scope, $el, $attrs) ->
         form = new checksley.Form($el.find("form.login-form"))
 
@@ -268,9 +269,16 @@ LoginDirective = ($auth, $confirm, $location, $config, $routeParams, $navUrls, $
         else
             $scope.nextUrl = $navUrls.resolve("home")
 
+        if $routeParams['force_next']
+            $scope.nextUrl = decodeURIComponent($routeParams['force_next'])
+
         onSuccess = (response) ->
             $events.setupConnection()
-            $location.url($scope.nextUrl)
+
+            if $scope.nextUrl.indexOf('http') == 0
+                $window.location.href = $scope.nextUrl
+            else
+                $location.url($scope.nextUrl)
 
         onError = (response) ->
             $confirm.notify("light-error", $translate.instant("LOGIN_FORM.ERROR_AUTH_INCORRECT"))
@@ -308,7 +316,7 @@ LoginDirective = ($auth, $confirm, $location, $config, $routeParams, $navUrls, $
     return {link:link}
 
 module.directive("tgLogin", ["$tgAuth", "$tgConfirm", "$tgLocation", "$tgConfig", "$routeParams",
-                             "$tgNavUrls", "$tgEvents", "$translate", LoginDirective])
+                             "$tgNavUrls", "$tgEvents", "$translate", "$window", LoginDirective])
 
 
 #############################################################################
@@ -324,10 +332,8 @@ RegisterDirective = ($auth, $confirm, $location, $navUrls, $config, $routeParams
         $scope.data = {}
         form = $el.find("form").checksley({onlyOneErrorElement: true})
 
-        console.log $routeParams['forceNext']
-
-        if $routeParams['forceNext'] and $routeParams['forceNext'] != $navUrls.resolve("register")
-            $scope.nextUrl = decodeURIComponent($routeParams['forceNext'])
+        if $routeParams['next'] and $routeParams['next'] != $navUrls.resolve("login")
+            $scope.nextUrl = decodeURIComponent($routeParams['next'])
         else
             $scope.nextUrl = $navUrls.resolve("home")
 

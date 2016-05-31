@@ -478,7 +478,14 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
                 errorHandlingService.error()
             else if response.status == 401 and $location.url().indexOf('/login') == -1
                 nextUrl = encodeURIComponent($location.url())
-                $location.url($navUrls.resolve("login")).search("next=#{nextUrl}")
+                search = $location.search()
+
+                if search.force_next
+                    $location.url($navUrls.resolve("login"))
+                        .search("force_next", search.force_next)
+                else
+                    $location.url($navUrls.resolve("login"))
+                        .search("next", nextUrl)
 
             return $q.reject(response)
 
