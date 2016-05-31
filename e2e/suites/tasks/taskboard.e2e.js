@@ -213,7 +213,7 @@ describe('taskboard', function() {
         });
     });
 
-    describe.skip('move tasks', function() {
+    describe('move tasks', function() {
         it('move task between statuses', async function() {
             let initOriginTaskCount = await taskboardHelper.getBoxTasks(0, 0).count();
             let initDestinationTaskCount = await taskboardHelper.getBoxTasks(0, 1).count();
@@ -232,8 +232,7 @@ describe('taskboard', function() {
             expect(destinationTaskCount).to.be.equal(initDestinationTaskCount + 1);
         });
 
-        // jquery ui drag bug
-        it.skip('move task between US\s', async function() {
+        it('move task between US\s', async function() {
             let initOriginTaskCount = await taskboardHelper.getBoxTasks(0, 0).count();
             let initDestinationTaskCount = await taskboardHelper.getBoxTasks(1, 1).count();
 

@@ -176,41 +176,63 @@ common.prepare = function() {
 
 common.dragEnd = function(elm) {
     return browser.wait(async function() {
-        let count = await $$('.ui-sortable-helper').count();
+        let count = await $$('.gu-mirror').count();
 
         return count === 0;
     }, 1000);
 };
 
-common.drag = async function(elm, elm2, offset) {
-    // this code doesn't have sense (jquery ui + scroll drag + selenium = :( )
-    await browser.actions()
-        .mouseMove(elm)
-        .mouseDown()
-        .perform();
+common.drag = async function(elm, elm2) {
+    var drag = `
+        var drag = arguments[0].origin;
+        var dest = arguments[0].dest;
 
-    await browser.actions()
-        .mouseMove(elm2, offset)
-        .perform();
+        function triggerMouseEvent (node, eventType, opts) {
+            var event = new CustomEvent(eventType);
+            event.initEvent (eventType, true, true);
 
-    await browser.sleep(60);
+            if(opts && opts.cords) {
+                event.pageX = opts.cords.x;
+                event.clientX = opts.cords.x;
+                event.pageY = opts.cords.y;
+                event.clientY = opts.cords.y - window.pageYOffset;
 
-    await browser.actions()
-        .mouseMove({x: 10, y: -10}) // fire jqueryui mousemove event always
-        .perform();
+                dest.scrollIntoView();
+            }
 
-    await browser.sleep(60);
+            event.which = 1;
+            node.dispatchEvent(event);
+        }
 
-    await browser.actions()
-        .mouseMove({x: -10, y: 10})
-        .perform();
+        triggerMouseEvent(drag, "mousedown");
 
-    await browser.sleep(60);
+        triggerMouseEvent(document.documentElement, "mousemove", {
+            cords: {
+                x: $(dest).offset().left,
+                y: $(dest).offset().top
+            }
+        });
 
-    return browser.actions()
-        .mouseUp()
-        .perform()
-        .then(common.dragEnd);
+        triggerMouseEvent(document.documentElement, "mousemove", {
+            cords: {
+                x: $(dest).offset().left,
+                y: $(dest).offset().top
+            }
+        });
+
+        triggerMouseEvent(document.documentElement, "mouseup", {
+            cords: {
+                x: $(dest).offset().left,
+                y: $(dest).offset().top
+            }
+        });
+    `;
+
+    // return browser.executeScript(drag, elm, elm2);
+    return browser.executeScript(drag, {
+        origin: elm.getWebElement(),
+        dest: elm2.getWebElement()
+    }).then(common.dragEnd);
 };
 
 common.transitionend = function(selector, property) {

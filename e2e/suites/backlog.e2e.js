@@ -199,12 +199,13 @@ describe('backlog', function() {
         expect(newUsCount).to.be.equal(usCount - 1);
     });
 
-    it.skip('drag backlog us', async function() {
+    it('drag backlog us', async function() {
         let dragableElements = backlogHelper.userStories();
 
-        let dragElement = dragableElements.get(1);
+        let dragElement = dragableElements.get(4);
         let dragElementHandler = dragElement.$('.icon-drag');
         let draggedElementRef = await backlogHelper.getUsRef(dragElement);
+
 
         await utils.common.drag(dragElementHandler, dragableElements.get(0));
         await browser.waitForAngular();
@@ -214,7 +215,7 @@ describe('backlog', function() {
         expect(firstElementTextRef).to.be.equal(draggedElementRef);
     });
 
-    it.skip('reorder multiple us', async function() {
+    it('reorder multiple us', async function() {
         let dragableElements = backlogHelper.userStories();
 
         let count = await dragableElements.count();
@@ -233,8 +234,7 @@ describe('backlog', function() {
         let ref2 = await backlogHelper.getUsRef(dragElement);
         draggedRefs.push(await backlogHelper.getUsRef(dragElement));
 
-        await utils.common.drag(dragElement, dragableElements.get(0));
-        await browser.sleep(200);
+        await utils.common.drag(dragElement.$('.icon-drag'), dragableElements.get(0));
 
         let elementRef1 = await backlogHelper.getUsRef(dragableElements.get(0));
         let elementRef2 = await backlogHelper.getUsRef(dragableElements.get(1));
@@ -243,7 +243,7 @@ describe('backlog', function() {
         expect(elementRef1).to.be.equal(draggedRefs[1]);
     });
 
-    it.skip('drag multiple us to milestone', async function() {
+    it.only('drag multiple us to milestone', async function() {
         let sprint = backlogHelper.sprints().get(0);
         let initUssSprintCount = await backlogHelper.getSprintUsertories(sprint).count();
 
@@ -256,7 +256,7 @@ describe('backlog', function() {
         let dragElement = dragableElements.get(0);
         let dragElementHandler = dragElement.$('.icon-drag');
 
-        await utils.common.drag(dragElementHandler, sprint);
+        await utils.common.drag(dragElementHandler, sprint.$('.sprint-table'));
         await browser.waitForAngular();
 
         let ussSprintCount = await backlogHelper.getSprintUsertories(sprint).count();
@@ -264,8 +264,8 @@ describe('backlog', function() {
         expect(ussSprintCount).to.be.equal(initUssSprintCount + 2);
     });
 
-    it.skip('drag us to milestone', async function() {
-        let sprint = backlogHelper.sprints().get(0);
+    it('drag us to milestone', async function() {
+        let sprint = backlogHelper.sprints().get(0).$('.sprint-table');
 
         let dragableElements = backlogHelper.userStories();
         let dragElement = dragableElements.get(0);
@@ -303,7 +303,7 @@ describe('backlog', function() {
         expect(sprintRefs.indexOf(draggedRef)).to.be.not.equal(-1);
     });
 
-    it.skip('reorder milestone us', async function() {
+    it('reorder milestone us', async function() {
         let sprint = backlogHelper.sprints().get(0);
         let dragableElements = backlogHelper.getSprintUsertories(sprint);
 
@@ -318,7 +318,7 @@ describe('backlog', function() {
         expect(firstElementRef).to.be.equal(firstElementRef);
     });
 
-    it.skip('drag us from milestone to milestone', async function() {
+    it('drag us from milestone to milestone', async function() {
         let sprint1 = backlogHelper.sprints().get(0);
         let sprint2 = backlogHelper.sprints().get(1);
 
@@ -326,7 +326,7 @@ describe('backlog', function() {
 
         let dragElement = backlogHelper.getSprintUsertories(sprint1).get(0);
 
-        await utils.common.drag(dragElement, sprint2);
+        await utils.common.drag(dragElement, sprint2.$('.sprint-table'));
         await browser.waitForAngular();
 
         let firstElement = backlogHelper.getSprintUsertories(sprint2).get(0);
@@ -606,12 +606,29 @@ describe('backlog', function() {
         }
 
         async function dragClosedUsToMilestone() {
-            await backlogHelper.setUsStatus(2, 5);
+            //create us
+            backlogHelper.openNewUs();
 
-            let dragElement =  backlogHelper.userStories().get(2);
+            let createUSLightbox = backlogHelper.getCreateEditUsLightbox();
+
+            await createUSLightbox.waitOpen();
+
+            createUSLightbox.subject().sendKeys('subject');
+
+            //closed status
+            createUSLightbox.status(5).click();
+
+            createUSLightbox.submit();
+
+            await utils.lightbox.close(createUSLightbox.el);
+
+            await backlogHelper.loadFullBacklog();
+
+            // drag us to milestone
+            let dragElement =  backlogHelper.userStories().last();
             let dragElementHandler = dragElement.$('.icon-drag');
 
-            let sprint = backlogHelper.sprints().last();
+            let sprint = backlogHelper.getClosedSprintTable();
             await utils.common.drag(dragElementHandler, sprint);
 
             return browser.waitForAngular();
@@ -638,16 +655,19 @@ describe('backlog', function() {
             expect(closedSprints).to.be.equal(0);
         });
 
-        it.skip('open sprint by drag open US to closed sprint', async function() {
+        it('open sprint by drag open US to closed sprint', async function() {
             backlogHelper.toggleClosedSprints();
 
-            await backlogHelper.setUsStatus(1, 0);
+            await backlogHelper.setUsStatus(1, 1);
 
-            let dragElement =  backlogHelper.userStories().get(0);
+            let dragElement =  backlogHelper.userStories().get(1);
             let dragElementHandler = dragElement.$('.icon-drag');
 
             let sprint = backlogHelper.sprints().last();
-            await utils.common.drag(dragElementHandler, sprint);
+
+            await backlogHelper.toggleSprint(sprint);
+
+            await utils.common.drag(dragElementHandler, sprint.$('.sprint-table'));
             await browser.waitForAngular();
 
             let closedSprints = await backlogHelper.closedSprints().count();

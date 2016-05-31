@@ -47,7 +47,7 @@ describe('custom-fields', function() {
                 expect(notification).to.be.true;
             });
 
-            it.skip('drag', async function() {
+            it('drag', async function() {
                 let nameOld = await customFieldsHelper.getName(typeIndex, 0);
 
                 await customFieldsHelper.drag(typeIndex, 0, 1);
@@ -99,7 +99,7 @@ describe('custom-fields', function() {
                 expect(utils.notifications.success.open()).to.be.eventually.true;
             });
 
-            it.skip('drag', async function() {
+            it('drag', async function() {
                 let nameOld = await customFieldsHelper.getName(typeIndex, 0);
 
                 await customFieldsHelper.drag(typeIndex, 0, 1);
@@ -151,7 +151,7 @@ describe('custom-fields', function() {
                 expect(utils.notifications.success.open()).to.be.eventually.true;
             });
 
-            it.skip('drag', async function() {
+            it('drag', async function() {
                 let nameOld = await customFieldsHelper.getName(typeIndex, 0);
 
                 await customFieldsHelper.drag(typeIndex, 0, 1);

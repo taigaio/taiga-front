@@ -225,7 +225,7 @@ describe('kanban', function() {
         });
     });
 
-    it.skip('move us between columns', async function() {
+    it('move us between columns', async function() {
         let initOriginUsCount = await kanbanHelper.getBoxUss(0).count();
         let initDestinationUsCount = await kanbanHelper.getBoxUss(1).count();
 
@@ -243,7 +243,7 @@ describe('kanban', function() {
         expect(destinationUsCount).to.be.equal(initDestinationUsCount + 1);
     });
 
-    describe.skip('archive', function() {
+    describe('archive', function() {
         it('move to archive', async function() {
             let initOriginUsCount = await kanbanHelper.getBoxUss(3).count();
 
@@ -264,7 +264,7 @@ describe('kanban', function() {
         });
 
         it('show archive', async function() {
-            $('.icon-open-eye').click();
+            $('.e2e-archived').click();
 
             await kanbanHelper.scrollRight();
 
@@ -276,7 +276,7 @@ describe('kanban', function() {
         });
 
         it('close archive', async function() {
-            $('.icon-closed-eye').click();
+            $('.e2e-archived').click();
 
             let usCount = await kanbanHelper.getBoxUss(5).count();
 

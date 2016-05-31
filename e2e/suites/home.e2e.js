@@ -47,7 +47,7 @@ describe('home', function() {
         });
     });
 
-    describe.skip("project drag and drop", function() {
+    describe("project drag and drop", function() {
         var draggedElementText;
 
         before(async function() {
@@ -72,7 +72,7 @@ describe('home', function() {
         });
 
         it('projects menu has the new order', async function() {
-            var firstElementText = await $$('div[tg-dropdown-project-list] ul a').first().getInnerHtml();
+            var firstElementText = await $$('div[tg-dropdown-project-list] ul a span').first().getInnerHtml();
 
             expect(firstElementText).to.be.equal(draggedElementText);
         });

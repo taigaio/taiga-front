@@ -8,7 +8,7 @@ var chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 var expect = chai.expect;
 
-describe.only('attributes - tags', function() {
+describe('attributes - tags', function() {
     before(async function(){
         browser.get(browser.params.glob.host + 'project/project-0/admin/project-values/tags');
 

@@ -130,8 +130,18 @@ helper.openNewMilestone = function(item) {
     $('.add-sprint').click();
 };
 
+helper.getClosedSprintTable = function() {
+    return $$('.sprint-empty').last();
+};
+
 helper.toggleClosedSprints = function() {
     $('.filter-closed-sprints').click();
+};
+
+helper.toggleSprint = async function(el) {
+    el.$('.compact-sprint').click();
+
+    await utils.common.waitTransitionTime(el.$('.sprint-table'));
 };
 
 helper.closedSprints = function() {
@@ -162,6 +172,18 @@ helper.deleteUs = function(item) {
 
 helper.getUsRef = function(elm) {
     return elm.$('span[tg-bo-ref]').getText();
+};
+
+helper.loadFullBacklog = async function() {
+    do {
+        var uss = helper.userStories();
+        var count = await uss.count();
+        var last = uss.last();
+
+        await browser.executeScript("arguments[0].scrollIntoView();", last.getWebElement());
+
+        var newcount = await uss.count();
+    } while(count < newcount);
 };
 
 // get ref with the larger length
