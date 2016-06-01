@@ -82,7 +82,7 @@
     }
 
     .webhooks-history {
-        @include slide(1000px, hidden, $min: 0);
+        display: none;
     }
 
     .history-single-wrapper {

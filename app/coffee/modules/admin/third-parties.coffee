@@ -194,15 +194,22 @@ WebhookDirective = ($rs, $repo, $confirm, $loading, $translate) ->
 
         $el.on "click", ".toggle-history", (event) ->
             target = angular.element(event.currentTarget)
+
             if not webhook.logs? or webhook.logs.length == 0
                 updateLogs().then ->
                     #Waiting for ng-repeat to finish
                     timeout 0, ->
-                        $el.find(".webhooks-history").toggleClass("open")
+                        $el.find(".webhooks-history")
+                            .toggleClass("open")
+                            .slideToggle()
+
                         updateShowHideHistoryText()
 
             else
-                $el.find(".webhooks-history").toggleClass("open")
+                $el.find(".webhooks-history")
+                    .toggleClass("open")
+                    .slideToggle()
+
                 $scope.$apply () ->
                     updateShowHideHistoryText()
 

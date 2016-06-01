@@ -91,7 +91,7 @@ div.wrapper.roles(ng-controller="WebhooksController as ctrl",
                                     a.delete-webhook(href="", title="{{'ADMIN.WEBHOOKS.DELETE' | translate}}")
                                         tg-svg(svg-icon="icon-trash")
 
-                        div.webhooks-history(ng-show="webhook.logs")
+                        div.webhooks-history
                             div.history-single-wrapper(ng-repeat="log in webhook.logs")
                                 div.history-single
                                     div
