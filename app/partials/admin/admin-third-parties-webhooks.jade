@@ -1,7 +1,9 @@
 doctype html
 
-div.wrapper.roles(ng-controller="WebhooksController as ctrl",
-                        ng-init="section='admin'")
+div.wrapper.roles(
+    ng-controller="WebhooksController as ctrl",
+    ng-init="section='admin'"
+)
     tg-project-menu
 
     sidebar.menu-secondary.sidebar.settings-nav(tg-admin-navigation="third-parties")
@@ -10,25 +12,27 @@ div.wrapper.roles(ng-controller="WebhooksController as ctrl",
         include ../includes/modules/admin-submenu-third-parties
 
     section.main.admin-common.admin-webhooks(tg-new-webhook)
-        include ../includes/components/mainTitle
-
-        p.admin-subtitle(translate="ADMIN.WEBHOOKS.SUBTITLE")
-        div.webhooks-options
-            a.button-green.hidden.add-webhook(
-                href=""
-                title="{{'ADMIN.WEBHOOKS.ADD_NEW' | translate}}"
-                translate="ADMIN.WEBHOOKS.ADD_NEW"
-            )
+        header.header-with-actions
+            include ../includes/components/mainTitle
+            .action-buttons
+                a.button-green.hidden.add-webhook(
+                    href=""
+                    title="{{'ADMIN.WEBHOOKS.ADD_NEW' | translate}}"
+                    translate="ADMIN.WEBHOOKS.ADD_NEW"
+                )
 
         section.webhooks-table.basic-table
-            div.table-header
-                div.row
-                    div.webhook-service(translate="COMMON.FIELDS.NAME")
-                    div.webhook-url(translate="COMMON.FIELDS.URL")
-                    div.webhook-options
-            div.table-body
-                div.single-webhook-wrapper(tg-webhook="webhook", ng-repeat="webhook in webhooks")
-                    div.edition-mode.hidden
+            .table-header
+                .row
+                    .webhook-service(translate="COMMON.FIELDS.NAME")
+                    .webhook-url(translate="COMMON.FIELDS.URL")
+                    .webhook-options
+            .table-body
+                .single-webhook-wrapper(
+                    tg-webhook="webhook"
+                    ng-repeat="webhook in webhooks"
+                )
+                    .edition-mode.hidden
                         form.row
                             fieldset.webhook-service
                                 input(
@@ -37,9 +41,9 @@ div.wrapper.roles(ng-controller="WebhooksController as ctrl",
                                     data-required="true"
                                     ng-model="webhook.name"
                                     placeholder="{{'ADMIN.WEBHOOKS.TYPE_NAME' | translate}}"
-                                )
-                            div.webhook-url
-                                div.webhook-url-inputs
+                                )    
+                            .webhook-url
+                                .webhook-url-inputs
                                     fieldset
                                         input(
                                             type="text"
@@ -57,7 +61,7 @@ div.wrapper.roles(ng-controller="WebhooksController as ctrl",
                                             data-required="true"
                                             ng-model="webhook.key"
                                         )
-                            div.webhook-options
+                            .webhook-options
                                 a.edit-existing(
                                     href=""
                                     title="{{'ADMIN.WEBHOOKS.SAVE' | translate}}"
@@ -69,11 +73,10 @@ div.wrapper.roles(ng-controller="WebhooksController as ctrl",
                                 )
                                     tg-svg(svg-icon="icon-close")
 
-                    div.visualization-mode
-                        div.row
-                            div.webhook-service
-                                span(ng-bind="webhook.name")
-                            div.webhook-url
+                    .visualization-mode
+                        .row
+                            .webhook-service(ng-bind="webhook.name")
+                            .webhook-url
                                 span(ng-bind="webhook.url")
                                 a.show-history.toggle-history(
                                     href=""
@@ -82,18 +85,27 @@ div.wrapper.roles(ng-controller="WebhooksController as ctrl",
                                     translate="ADMIN.WEBHOOKS.SHOW_HISTORY"
                                 )
 
-                            div.webhook-options
-                                div.webhook-options-wrapper
-                                    a.test-webhook(href="", title="{{'ADMIN.WEBHOOKS.TEST' | translate}}")
+                            .webhook-options
+                                .webhook-options-wrapper
+                                    a.test-webhook(
+                                        href=""
+                                        title="{{'ADMIN.WEBHOOKS.TEST' | translate}}"
+                                    )
                                         tg-svg(svg-icon="icon-check-empty")
-                                    a.edit-webhook(href="", title="{{'ADMIN.WEBHOOKS.EDIT' | translate}}")
+                                    a.edit-webhook(
+                                        href=""
+                                        title="{{'ADMIN.WEBHOOKS.EDIT' | translate}}"
+                                    )
                                         tg-svg(svg-icon="icon-edit")
-                                    a.delete-webhook(href="", title="{{'ADMIN.WEBHOOKS.DELETE' | translate}}")
+                                    a.delete-webhook(
+                                        href=""
+                                        title="{{'ADMIN.WEBHOOKS.DELETE' | translate}}"
+                                    )
                                         tg-svg(svg-icon="icon-trash")
 
-                        div.webhooks-history
-                            div.history-single-wrapper(ng-repeat="log in webhook.logs")
-                                div.history-single
+                        .webhooks-history
+                            .history-single-wrapper(ng-repeat="log in webhook.logs")
+                                .history-single
                                     div
                                         span.history-response-icon(
                                             ng-class="log.validStatus ? 'history-success' : 'history-error'"
@@ -103,8 +115,8 @@ div.wrapper.roles(ng-controller="WebhooksController as ctrl",
                                     a.toggle-log(href="")
                                         tg-svg(svg-icon="icon-arrow-down")
 
-                                div.history-single-response
-                                    div.history-single-request-header
+                                .history-single-response
+                                    .history-single-request-header
                                         span(translate="ADMIN.WEBHOOKS.REQUEST")
                                         a.resend-request(
                                             href=""
@@ -113,20 +125,29 @@ div.wrapper.roles(ng-controller="WebhooksController as ctrl",
                                         )
                                             tg-svg(svg-icon="icon-reload")
                                             span(translate="ADMIN.WEBHOOKS.RESEND_REQUEST")
-                                    div.history-single-request-body
-                                        div.response-container
+                                    .history-single-request-body
+                                        .response-container
                                             span.response-title(translate="ADMIN.WEBHOOKS.HEADERS")
-                                            textarea(name="headers", ng-bind="log.prettySentHeaders")
+                                            textarea(
+                                                name="headers"
+                                                ng-bind="log.prettySentHeaders"
+                                            )   
 
-                                        div.response-container
+                                        .response-container
                                             span.response-title(translate="ADMIN.WEBHOOKS.PAYLOAD")
-                                            textarea(name="payload", ng-bind="log.prettySentData")
+                                            textarea(
+                                                name="payload"
+                                                ng-bind="log.prettySentData"
+                                            )
 
-                                    div.history-single-response-header
+                                    .history-single-response-header
                                         span(translate="ADMIN.WEBHOOKS.RESPONSE")
-                                    div.history-single-response-body
-                                        div.response-container
-                                            textarea(name="response-data", ng-bind="log.response_data")
+                                    .history-single-response-body
+                                        .response-container
+                                            textarea(
+                                                name="response-data"
+                                                ng-bind="log.response_data"
+                                            )
 
                 form.new-webhook-form.row.hidden
                     fieldset.webhook-service
@@ -137,8 +158,8 @@ div.wrapper.roles(ng-controller="WebhooksController as ctrl",
                             ng-model="newValue.name"
                             placeholder="{{'ADMIN.WEBHOOKS.TYPE_NAME' | translate}}"
                         )
-                    div.webhook-url
-                        div.webhook-url-inputs
+                    .webhook-url
+                        .webhook-url-inputs
                             fieldset
                                 input(
                                     type="text"
@@ -156,10 +177,16 @@ div.wrapper.roles(ng-controller="WebhooksController as ctrl",
                                     data-required="true"
                                     ng-model="newValue.key"
                                 )
-                    div.webhook-options
-                        a.add-new(href="", title="{{'ADMIN.WEBHOOKS.SAVE' | translate}}")
+                    .webhook-options
+                        a.add-new(
+                            href=""
+                            title="{{'ADMIN.WEBHOOKS.SAVE' | translate}}"
+                        )
                             tg-svg(svg-icon="icon-save")
-                        a.cancel-new(href="", title="{{'ADMIN.WEBHOOKS.CANCEL' | translate}}")
+                        a.cancel-new(
+                            href=""
+                            title="{{'ADMIN.WEBHOOKS.CANCEL' | translate}}"
+                        )
                             tg-svg(svg-icon="icon-close")
 
         a.help-button(

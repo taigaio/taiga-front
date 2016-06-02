@@ -16,6 +16,7 @@
 
 .help-markdown,
 .help-button {
+    @include font-size(xsmall);
     &:hover {
         span {
             transition: color .2s linear;
@@ -29,6 +30,7 @@
         vertical-align: text-top;
     }
     .icon {
+        @include svg-size(.9rem);
         fill: $gray-light;
         margin-right: .2rem;
     }
