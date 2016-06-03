@@ -378,22 +378,28 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService,
                 .target(submitButton)
                 .start()
 
+            params = {
+                include_attachments: true,
+                include_tasks: true
+            }
+
             if $scope.isNew
                 promise = $repo.create("userstories", $scope.us)
                 broadcastEvent = "usform:new:success"
             else
-                promise = $repo.save($scope.us)
+                promise = $repo.save($scope.us, true)
                 broadcastEvent = "usform:edit:success"
 
             promise.then (data) ->
-                deleteAttachments(data).then () =>  createAttachments(data)
+                deleteAttachments(data)
+                    .then () => createAttachments(data)
+                    .then () =>
+                        currentLoading.finish()
+                        lightboxService.close($el)
 
-                return data
+                        $rs.userstories.getByRef(data.project, data.ref, params).then (us) ->
+                            $rootScope.$broadcast(broadcastEvent, us)
 
-            promise.then (data) ->
-                currentLoading.finish()
-                lightboxService.close($el)
-                $rootScope.$broadcast(broadcastEvent, data)
 
             promise.then null, (data) ->
                 currentLoading.finish()
@@ -433,7 +439,7 @@ module.directive("tgLbCreateEditUserstory", [
     "$translate",
     "$tgConfirm",
     "$q",
-    "tgAttachmentsService",
+    "tgAttachmentsService"
     CreateEditUserstoryDirective
 ])
 
@@ -442,7 +448,7 @@ module.directive("tgLbCreateEditUserstory", [
 ## Creare Bulk Userstories Lightbox Directive
 #############################################################################
 
-CreateBulkUserstoriesDirective = ($repo, $rs, $rootscope, lightboxService, $loading) ->
+CreateBulkUserstoriesDirective = ($repo, $rs, $rootscope, lightboxService, $loading, $model) ->
     link = ($scope, $el, attrs) ->
         form = null
 
@@ -469,6 +475,7 @@ CreateBulkUserstoriesDirective = ($repo, $rs, $rootscope, lightboxService, $load
 
             promise = $rs.userstories.bulkCreate($scope.new.projectId, $scope.new.statusId, $scope.new.bulk)
             promise.then (result) ->
+                result =  _.map(result.data, (x) => $model.make_model('userstories', x))
                 currentLoading.finish()
                 $rootscope.$broadcast("usform:bulk:success", result)
                 lightboxService.close($el)
@@ -494,6 +501,7 @@ module.directive("tgLbCreateBulkUserstories", [
     "$rootScope",
     "lightboxService",
     "$tgLoading",
+    "$tgModel",
     CreateBulkUserstoriesDirective
 ])
 
@@ -535,7 +543,7 @@ AssignedToLightboxDirective = (lightboxService, lightboxKeyboardNavigationServic
             visibleUsers = _.map visibleUsers, (user) ->
                 user.avatar = avatarService.getAvatar(user)
 
-            selected.avatar = avatarService.getAvatar(selected)
+            selected.avatar = avatarService.getAvatar(selected) if selected
 
             ctx = {
                 selected: selected

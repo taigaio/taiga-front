@@ -1,0 +1,110 @@
+h1
+    span.title(translate="COMMON.FILTERS.TITLE")
+
+form
+    fieldset
+        input.e2e-filter-q(
+            type="text",
+            placeholder="{{'COMMON.FILTERS.INPUT_PLACEHOLDER' | translate}}",
+            ng-model="vm.q"
+            ng-model-options="{ debounce: 200 }"
+            ng-change="vm.changeQ()"
+        )
+        tg-svg.search-action(
+            svg-icon="icon-search",
+            title="{{'COMMON.FILTERS.TITLE_ACTION_SEARCH' | translate}}"
+        )
+
+.filters-step-cat
+    .filters-applied
+        .single-filter.ng-animate-disabled(ng-repeat="it in vm.selectedFilters track by it.key")
+            span.name(ng-attr-style="{{it.color ? 'border-left: 3px solid ' + it.color: ''}}") {{it.name}}
+            a.remove-filter.e2e-remove-filter(
+               ng-click="vm.unselectFilter(it)"
+               href=""
+           )
+                tg-svg(svg-icon="icon-close")
+
+        a.button.button-gray.save-filters.ng-animate-disabled.e2e-open-custom-filter-form(
+            ng-click="vm.customFilterForm = true"
+            ng-if="vm.selectedFilters.length && !vm.customFilterForm"
+            href="",
+            title="{{'COMMON.SAVE' | translate}}",
+            translate="COMMON.FILTERS.ACTION_SAVE_CUSTOM_FILTER"
+        )
+
+        form(
+            ng-if="vm.customFilterForm"
+            ng-submit="vm.saveCustomFilter()"
+        )
+            input.my-filter-name.e2e-filter-name-input(
+                tg-autofocus
+                ng-model="vm.customFilterName"
+                type="text"
+                placeholder="{{'COMMON.FILTERS.PLACEHOLDER_FILTER_NAME' | translate}}"
+            )
+
+    .filters-cats
+        ul
+            li(
+                ng-class="{selected: vm.isOpen(filter.dataType)}"
+                ng-repeat="filter in vm.filters track by filter.dataType"
+            )
+                a.filters-cat-single.e2e-category(
+                    ng-class="{selected: vm.isOpen(filter.dataType)}"
+                    ng-click="vm.toggleFilterCategory(filter.dataType)"
+                    href=""
+                    title="{{::filter.title}}"
+                )
+                    span.title {{::filter.title}}
+                    tg-svg.ng-animate-disabled(
+                        ng-if="!vm.isOpen(filter.dataType)"
+                        svg-icon="icon-arrow-right"
+                    )
+                    tg-svg.ng-animate-disabled(
+                        ng-if="vm.isOpen(filter.dataType)"
+                        svg-icon="icon-arrow-down"
+                    )
+
+                .filter-list(
+                    ng-if="vm.isOpen(filter.dataType)",
+                    tg-filter-slide-down
+                )
+                    .single-filter.ng-animate-disabled(
+                        ng-repeat="it in filter.content"
+                        ng-if="!vm.isFilterSelected(filter, it) && !(it.count == 0 && filter.hideEmpty)"
+                        ng-click="vm.selectFilter(filter, it)"
+                    )
+                        span.name(ng-attr-style="{{it.color ? 'border-left: 3px solid ' + it.color: ''}}") {{it.name}}
+                        span.number.e2e-filter-count(ng-if="it.count > 0") {{it.count}}
+
+            li.custom-filters.e2e-custom-filters(ng-class="{selected: vm.isOpen('custom-filter')}")
+                a.filters-cat-single(
+                    ng-class="{selected: vm.isOpen('custom-filter')}"
+                    ng-click="vm.toggleFilterCategory('custom-filter')"
+                    href=""
+                    title="{{'COMMON.FILTERS.CATEGORIES.CUSTOM_FILTERS' | translate}}"
+                )
+                    span.title(translate="COMMON.FILTERS.CATEGORIES.CUSTOM_FILTERS")
+                    tg-svg.ng-animate-disabled(
+                        ng-if="!vm.isOpen('custom-filter')"
+                        svg-icon="icon-arrow-right"
+                    )
+                    tg-svg.ng-animate-disabled(
+                        ng-if="vm.isOpen('custom-filter')"
+                        svg-icon="icon-arrow-down"
+                    )
+                .filter-list(
+                    ng-if="vm.isOpen('custom-filter')",
+                    tg-filter-slide-down
+                )
+                    .single-filter.ng-animate-disabled.e2e-custom-filter(
+                        ng-repeat="it in vm.customFilters"
+                        ng-click="vm.selectCustomFilter(it)"
+                    )
+                        span.name {{it.name}}
+                        a.remove-filter.e2e-remove-custom-filter(
+                            ng-click="vm.removeCustomFilter(it)"
+                            href=""
+                        )
+                            tg-svg(svg-icon="icon-trash")

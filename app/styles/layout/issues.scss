@@ -1,10 +1,6 @@
 .issues {
     .filters-bar {
-        flex: 0 0 auto;
+        position: relative;
         width: 260px;
-    }
-    .filters-inner {
-        opacity: 1;
-        padding: 1rem;
     }
 }

@@ -32,16 +32,6 @@ resourceProvider = ($storage) ->
     hashSuffixStatusViewModes = "kanban-statusviewmodels"
     hashSuffixStatusColumnModes = "kanban-statuscolumnmodels"
 
-    service.storeStatusViewModes = (projectId, params) ->
-        ns = "#{projectId}:#{hashSuffixStatusViewModes}"
-        hash = generateHash([projectId, ns])
-        $storage.set(hash, params)
-
-    service.getStatusViewModes = (projectId) ->
-        ns = "#{projectId}:#{hashSuffixStatusViewModes}"
-        hash = generateHash([projectId, ns])
-        return $storage.get(hash) or {}
-
     service.storeStatusColumnModes = (projectId, params) ->
         ns = "#{projectId}:#{hashSuffixStatusColumnModes}"
         hash = generateHash([projectId, ns])

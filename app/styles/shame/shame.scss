@@ -28,14 +28,8 @@ a[ng-click] svg {
 }
 
 // chrome url break
-.kanban-task {
-    .task-name {
-        word-break: break-word;
-    }
-}
-
-.taskboard-task {
-    .task-name {
+tg-card {
+    .card-title span:last-child {
         word-break: break-word;
     }
 }

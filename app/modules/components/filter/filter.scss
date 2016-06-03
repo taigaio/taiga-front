@@ -1,0 +1,150 @@
+tg-filter {
+    background-color: $whitish;
+    display: block;
+    left: 0;
+    min-height: 100%;
+    padding: 1rem 0;
+    position: absolute;
+    top: 0;
+    width: 260px;
+    z-index: 1;
+    .filters-applied {
+        padding: 0 1rem 1rem;
+    }
+    h1,
+    form {
+        padding: 0 1rem;
+    }
+    input {
+        background: $grayer;
+        color: $white;
+        @include placeholder {
+            color: $gray-light;
+        }
+    }
+    .search-action {
+        position: absolute;
+        right: .7rem;
+        top: .7rem;
+    }
+    &.ng-hide-add {
+        transform: translateX(0);
+        transition-duration: .5s;
+    }
+    &.ng-hide-add-active {
+        transform: translateX(-260px);
+    }
+    &.ng-hide-remove {
+        transform: translateX(-260px);
+        transition-duration: .5s;
+    }
+    &.ng-hide-remove-active {
+        transform: translateX(0);
+    }
+}
+
+.filter-list {
+    display: none;
+    overflow-y: auto;
+    padding: 1rem;
+}
+
+.filters-step-cat {
+    margin-top: 2rem;
+}
+
+.filters-cats {
+    ul {
+        margin-bottom: 0;
+    }
+    li {
+        border-bottom: 1px solid $gray-light;
+        text-transform: uppercase;
+        &.selected {
+            border-bottom: 0;
+        }
+    }
+    .custom-filters {
+        .title {
+            color: $primary;
+        }
+    }
+    .filters-cat-single {
+        align-items: center;
+        color: $grayer;
+        display: flex;
+        justify-content: space-between;
+        padding: .5rem .5rem .5rem 1.5rem;
+        transition: color .2s ease-in;
+        &:hover,
+        &.selected {
+            background-color: rgba(darken($whitish, 20%), 1);
+            color: $grayer;
+            transition: background-color .2s ease-in;
+            .icon {
+                opacity: 1;
+                transition: opacity .2s ease-in;
+            }
+        }
+    }
+    .icon-arrow-down {
+        fill: currentColor;
+        float: right;
+        height: .9rem;
+        opacity: 0;
+        transition: opacity .2s ease-in;
+        width: .9rem;
+    }
+}
+
+.single-filter {
+    @include font-type(text);
+    @include clearfix;
+    align-items: center;
+    background: darken($whitish, 10%); // Fallback
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: .5rem;
+    opacity: .5;
+    padding-right: .5rem;
+    position: relative;
+    &:hover {
+        color: $grayer;
+        opacity: 1;
+        transition: opacity .2s linear;
+    }
+    &.selected,
+    &.active {
+        color: $grayer;
+        opacity: 1;
+        transition: opacity .2s linear;
+    }
+    .name,
+    .number {
+        padding: 8px 10px;
+    }
+    .name {
+        @include ellipsis(100%);
+        display: block;
+        width: 100%;
+    }
+    .number {
+        background: darken($whitish, 20%); // Fallback
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    .remove-filter {
+        display: block;
+        svg {
+            fill: $gray;
+            transition: fill .2s linear;
+        }
+        &:hover {
+            svg {
+                fill: $red;
+            }
+        }
+    }
+}

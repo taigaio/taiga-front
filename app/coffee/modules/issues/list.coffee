@@ -32,6 +32,7 @@ groupBy = @.taiga.groupBy
 bindOnce = @.taiga.bindOnce
 debounceLeading = @.taiga.debounceLeading
 startswith = @.taiga.startswith
+bindMethods = @.taiga.bindMethods
 
 module = angular.module("taigaIssues")
 
@@ -55,21 +56,23 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         "$tgEvents",
         "$tgAnalytics",
         "$translate",
-        "tgErrorHandlingService"
+        "tgErrorHandlingService",
+        "$tgStorage",
+        "tgFilterRemoteStorageService"
     ]
 
+    filtersHashSuffix: "issues-filters"
+    myFiltersHashSuffix: "issues-my-filters"
+
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @urls, @params, @q, @location, @appMetaService,
-                  @navUrls, @events, @analytics, @translate, @errorHandlingService) ->
+                  @navUrls, @events, @analytics, @translate, @errorHandlingService, @storage, @filterRemoteStorageService) ->
+        bindMethods(@)
+
         @scope.sectionName = "Issues"
         @scope.filters = {}
         @.voting = false
 
-        if _.isEmpty(@location.search())
-            filters = @rs.issues.getFilters(@params.pslug)
-            filters.page = 1
-            @location.search(filters)
-            @location.replace()
-            return
+        return if @.applyStoredFilters(@params.pslug, @.filtersHashSuffix)
 
         promise = @.loadInitialData()
 
@@ -89,13 +92,196 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             @analytics.trackEvent("issue", "create", "create issue on issues list", 1)
             @.loadIssues()
 
+    changeQ: (q) ->
+        @.unselectFilter("page")
+        @.replaceFilter("q", q)
+        @.loadIssues()
+        @.generateFilters()
+
+    removeFilter: (filter) ->
+        @.unselectFilter("page")
+        @.unselectFilter(filter.dataType, filter.id)
+        @.loadIssues()
+        @.generateFilters()
+
+    addFilter: (newFilter) ->
+        @.unselectFilter("page")
+        @.selectFilter(newFilter.category.dataType, newFilter.filter.id)
+        @.loadIssues()
+        @.generateFilters()
+
+    selectCustomFilter: (customFilter) ->
+        orderBy = @location.search().order_by
+
+        if orderBy
+            customFilter.filter.order_by = orderBy
+
+        @.unselectFilter("page")
+        @.replaceAllFilters(customFilter.filter)
+        @.loadIssues()
+        @.generateFilters()
+
+    removeCustomFilter: (customFilter) ->
+        console.log "oooo"
+        @filterRemoteStorageService.getFilters(@scope.projectId, @.myFiltersHashSuffix).then (userFilters) =>
+            console.log userFilters[customFilter.id]
+            delete userFilters[customFilter.id]
+
+            @filterRemoteStorageService.storeFilters(@scope.projectId, userFilters, @.myFiltersHashSuffix).then(@.generateFilters)
+
+    saveCustomFilter: (name) ->
+        filters = {}
+        urlfilters = @location.search()
+        filters.tags = urlfilters.tags
+        filters.status = urlfilters.status
+        filters.type = urlfilters.type
+        filters.severity = urlfilters.severity
+        filters.priority = urlfilters.priority
+        filters.assigned_to = urlfilters.assigned_to
+        filters.owner = urlfilters.owner
+
+        @filterRemoteStorageService.getFilters(@scope.projectId, @.myFiltersHashSuffix).then (userFilters) =>
+            userFilters[name] = filters
+
+            @filterRemoteStorageService.storeFilters(@scope.projectId, userFilters, @.myFiltersHashSuffix).then(@.generateFilters)
+
+    generateFilters: ->
+        @.storeFilters(@params.pslug, @location.search(), @.filtersHashSuffix)
+
+        urlfilters = @location.search()
+
+        loadFilters = {}
+        loadFilters.project = @scope.projectId
+        loadFilters.tags = urlfilters.tags
+        loadFilters.status = urlfilters.status
+        loadFilters.type = urlfilters.type
+        loadFilters.severity = urlfilters.severity
+        loadFilters.priority = urlfilters.priority
+        loadFilters.assigned_to = urlfilters.assigned_to
+        loadFilters.owner = urlfilters.owner
+        loadFilters.q = urlfilters.q
+
+        return @q.all([
+            @rs.issues.filtersData(loadFilters),
+            @filterRemoteStorageService.getFilters(@scope.projectId, @.myFiltersHashSuffix)
+        ]).then (result) =>
+            data = result[0]
+            customFiltersRaw = result[1]
+
+            statuses = _.map data.statuses, (it) ->
+                it.id = it.id.toString()
+
+                return it
+            type = _.map data.types, (it) ->
+                it.id = it.id.toString()
+
+                return it
+            severity = _.map data.severities, (it) ->
+                it.id = it.id.toString()
+
+                return it
+            priority = _.map data.priorities, (it) ->
+                it.id = it.id.toString()
+
+                return it
+            tags = _.map data.tags, (it) ->
+                it.id = it.name
+
+                return it
+            assignedTo = _.map data.assigned_to, (it) ->
+                if it.id
+                    it.id = it.id.toString()
+                else
+                    it.id = "null"
+
+                it.name = it.full_name || "Unassigned"
+
+                return it
+            owner = _.map data.owners, (it) ->
+                it.id = it.id.toString()
+                it.name = it.full_name
+
+                return it
+
+            @.selectedFilters = []
+
+            if loadFilters.status
+                selected = @.formatSelectedFilters("status", statuses, loadFilters.status)
+                @.selectedFilters = @.selectedFilters.concat(selected)
+
+            if loadFilters.tags
+                selected = @.formatSelectedFilters("tags", tags, loadFilters.tags)
+                @.selectedFilters = @.selectedFilters.concat(selected)
+
+            if loadFilters.assigned_to
+                selected = @.formatSelectedFilters("assigned_to", assignedTo, loadFilters.assigned_to)
+                @.selectedFilters = @.selectedFilters.concat(selected)
+
+            if loadFilters.owner
+                selected = @.formatSelectedFilters("owner", owner, loadFilters.owner)
+                @.selectedFilters = @.selectedFilters.concat(selected)
+
+            if loadFilters.type
+                selected = @.formatSelectedFilters("type", type, loadFilters.type)
+                @.selectedFilters = @.selectedFilters.concat(selected)
+
+            if loadFilters.severity
+                selected = @.formatSelectedFilters("severity", severity, loadFilters.severity)
+                @.selectedFilters = @.selectedFilters.concat(selected)
+
+            if loadFilters.priority
+                selected = @.formatSelectedFilters("priority", priority, loadFilters.priority)
+                @.selectedFilters = @.selectedFilters.concat(selected)
+
+            @.filterQ = loadFilters.q
+
+            @.filters = [
+                {
+                    title: @translate.instant("COMMON.FILTERS.CATEGORIES.TYPE"),
+                    dataType: "type",
+                    content: type
+                },
+                {
+                    title: @translate.instant("COMMON.FILTERS.CATEGORIES.SEVERITY"),
+                    dataType: "severity",
+                    content: severity
+                },
+                {
+                    title: @translate.instant("COMMON.FILTERS.CATEGORIES.PRIORITIES"),
+                    dataType: "priority",
+                    content: priority
+                },
+                {
+                    title: @translate.instant("COMMON.FILTERS.CATEGORIES.STATUS"),
+                    dataType: "status",
+                    content: statuses
+                },
+                {
+                    title: @translate.instant("COMMON.FILTERS.CATEGORIES.TAGS"),
+                    dataType: "tags",
+                    content: tags
+                },
+                {
+                    title: @translate.instant("COMMON.FILTERS.CATEGORIES.ASSIGNED_TO"),
+                    dataType: "assigned_to",
+                    content: assignedTo
+                },
+                {
+                    title: @translate.instant("COMMON.FILTERS.CATEGORIES.CREATED_BY"),
+                    dataType: "owner",
+                    content: owner
+                }
+            ];
+
+            @.customFilters = []
+            _.forOwn customFiltersRaw, (value, key) =>
+                @.customFilters.push({id: key, name: key, filter: value})
+
     initializeSubscription: ->
         routingKey = "changes.project.#{@scope.projectId}.issues"
         @events.subscribe @scope, routingKey, (message) =>
             @.loadIssues()
 
-    storeFilters: ->
-        @rs.issues.storeFilters(@params.pslug, @location.search())
 
     loadProject: ->
         return @rs.projects.getBySlug(@params.pslug).then (project) =>
@@ -117,160 +303,15 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
             return project
 
-    getUrlFilters: ->
-        filters = _.pick(@location.search(), "page", "tags", "status", "types",
-                                             "q", "severities", "priorities",
-                                             "assignedTo", "createdBy", "orderBy")
-
-        filters.page = 1 if not filters.page
-        return filters
-
-    getUrlFilter: (name) ->
-        filters = _.pick(@location.search(), name)
-        return filters[name]
-
-    loadMyFilters: ->
-        return @rs.issues.getMyFilters(@scope.projectId).then (filters) =>
-            return _.map filters, (value, key) =>
-                return {id: key, name: key, type: "myFilters", selected: false}
-
-    removeNotExistingFiltersFromUrl: ->
-        currentSearch = @location.search()
-        urlfilters = @.getUrlFilters()
-
-        for filterName, filterValue of urlfilters
-            if filterName == "page" or filterName == "orderBy" or filterName == "q"
-                continue
-
-            if filterName == "tags"
-                splittedValues = _.map("#{filterValue}".split(","))
-            else
-                splittedValues = _.map("#{filterValue}".split(","), (x) -> if x == "null" then null else parseInt(x))
-
-            existingValues = _.intersection(splittedValues, _.map(@scope.filters[filterName], "id"))
-            if splittedValues.length != existingValues.length
-                @location.search(filterName, existingValues.join())
-
-        if currentSearch != @location.search()
-           @location.replace()
-
-    markSelectedFilters: (filters, urlfilters) ->
-        # Build selected filters (from url) fast lookup data structure
-        searchdata = {}
-        for name, value of _.omit(urlfilters, "page", "orderBy")
-            if not searchdata[name]?
-                searchdata[name] = {}
-
-            for val in "#{value}".split(",")
-                searchdata[name][val] = true
-
-        isSelected = (type, id) ->
-            if searchdata[type]? and searchdata[type][id]
-                return true
-            return false
-
-        for key, value of filters
-            for obj in value
-                obj.selected = if isSelected(obj.type, obj.id) then true else undefined
-
-    loadFilters: () ->
-        urlfilters = @.getUrlFilters()
-
-        if urlfilters.q
-            @scope.filtersQ = urlfilters.q
-
-        # Load My Filters
-        promise = @.loadMyFilters().then (myFilters) =>
-            @scope.filters.myFilters = myFilters
-            return myFilters
-
-        loadFilters = {}
-        loadFilters.project = @scope.projectId
-        loadFilters.tags = urlfilters.tags
-        loadFilters.status = urlfilters.status
-        loadFilters.q = urlfilters.q
-        loadFilters.types = urlfilters.types
-        loadFilters.severities = urlfilters.severities
-        loadFilters.priorities = urlfilters.priorities
-        loadFilters.assigned_to = urlfilters.assignedTo
-        loadFilters.owner = urlfilters.createdBy
-
-        # Load default filters data
-        promise = promise.then =>
-            return @rs.issues.filtersData(loadFilters)
-
-        # Format filters and set them on scope
-        return promise.then (data) =>
-            usersFiltersFormat = (users, type, unknownOption) =>
-                reformatedUsers = _.map users, (t) =>
-                    t.type = type
-                    t.name = if t.full_name then t.full_name else unknownOption
-
-                    return t
-
-                unknownItem = _.remove(reformatedUsers, (u) -> not u.id)
-                reformatedUsers = _.sortBy(reformatedUsers, (u) -> u.name.toUpperCase())
-                if unknownItem.length > 0
-                    reformatedUsers.unshift(unknownItem[0])
-                return reformatedUsers
-
-            choicesFiltersFormat = (choices, type, byIdObject) =>
-                _.map choices, (t) ->
-                    t.type = type
-                    return t
-
-            tagsFilterFormat = (tags) =>
-                return _.map tags, (t) ->
-                    t.id = t.name
-                    t.type = 'tags'
-                    return t
-
-            # Build filters data structure
-            @scope.filters.status = choicesFiltersFormat(data.statuses, "status", @scope.issueStatusById)
-            @scope.filters.severities = choicesFiltersFormat(data.severities, "severities", @scope.severityById)
-            @scope.filters.priorities = choicesFiltersFormat(data.priorities, "priorities", @scope.priorityById)
-            @scope.filters.assignedTo = usersFiltersFormat(data.assigned_to, "assignedTo", "Unassigned")
-            @scope.filters.createdBy = usersFiltersFormat(data.owners, "createdBy", "Unknown")
-            @scope.filters.types = choicesFiltersFormat(data.types, "types", @scope.issueTypeById)
-            @scope.filters.tags = tagsFilterFormat(data.tags)
-
-            @.removeNotExistingFiltersFromUrl()
-            @.markSelectedFilters(@scope.filters, urlfilters)
-
-            @rootscope.$broadcast("filters:loaded", @scope.filters)
-
     # We need to guarantee that the last petition done here is the finally used
     # When searching by text loadIssues can be called fastly with different parameters and
     # can be resolved in a different order than generated
     # We count the requests made and only if the callback is for the last one data is updated
     loadIssuesRequests: 0
     loadIssues: =>
-        @scope.urlFilters = @.getUrlFilters()
+        params = @location.search()
 
-        # Convert stored filters to http parameters
-        # ready filters (the name difference exists
-        # because of some automatic lookups and is
-        # the simplest way todo it without adding
-        # additional complexity to code.
-        @scope.httpParams = {}
-        for name, values of @scope.urlFilters
-            if name == "severities"
-                name = "severity"
-            else if name == "orderBy"
-                name = "order_by"
-            else if name == "priorities"
-                name = "priority"
-            else if name == "assignedTo"
-                name = "assigned_to"
-            else if name == "createdBy"
-                name = "owner"
-            else if name == "status"
-                name = "status"
-            else if name == "types"
-                name = "type"
-            @scope.httpParams[name] = values
-
-        promise = @rs.issues.list(@scope.projectId, @scope.httpParams)
+        promise = @rs.issues.list(@scope.projectId, params)
         @.loadIssuesRequests += 1
         promise.index = @.loadIssuesRequests
         promise.then (data) =>
@@ -289,25 +330,9 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         return promise.then (project) =>
             @.fillUsersAndRoles(project.members, project.roles)
             @.initializeSubscription()
-            @.loadFilters()
+            @.generateFilters()
 
             return @.loadIssues()
-
-    saveCurrentFiltersTo: (newFilter) ->
-        deferred = @q.defer()
-        @rs.issues.getMyFilters(@scope.projectId).then (filters) =>
-            filters[newFilter] = @location.search()
-            @rs.issues.storeMyFilters(@scope.projectId, filters).then =>
-                deferred.resolve()
-        return deferred.promise
-
-    deleteMyFilter: (filter) ->
-        deferred = @q.defer()
-        @rs.issues.getMyFilters(@scope.projectId).then (filters) =>
-            delete filters[filter]
-            @rs.issues.storeMyFilters(@scope.projectId, filters).then =>
-                deferred.resolve()
-        return deferred.promise
 
     # Functions used from templates
     addNewIssue: ->
@@ -337,6 +362,12 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             @.voting = null
 
         return @rs.issues.downvote(issueId).then(onSuccess, onError)
+
+    getOrderBy: ->
+        if _.isString(@location.search().order_by)
+            return @location.search().order_by
+        else
+            return "created_date"
 
 module.controller("IssuesController", IssuesController)
 
@@ -431,28 +462,40 @@ IssuesDirective = ($log, $location, $template, $compile) ->
     ## Issues Filters
     linkOrdering = ($scope, $el, $attrs, $ctrl) ->
         # Draw the arrow the first time
-        currentOrder = $ctrl.getUrlFilter("orderBy") or "created_date"
+
+        currentOrder = $ctrl.getOrderBy()
+
         if currentOrder
-            icon = if startswith(currentOrder, "-") then "icon-arrow-up" else "icon-arrow-bottom"
+            icon = if startswith(currentOrder, "-") then "icon-arrow-up" else "icon-arrow-down"
             colHeadElement = $el.find(".row.title > div[data-fieldname='#{trim(currentOrder, "-")}']")
-            colHeadElement.html("#{colHeadElement.html()}<span class='icon #{icon}'></span>")
+
+            svg = $("<tg-svg>").attr("svg-icon", icon)
+
+            colHeadElement.append(svg)
+            $compile(colHeadElement.contents())($scope);
 
         $el.on "click", ".row.title > div", (event) ->
             target = angular.element(event.currentTarget)
 
-            currentOrder = $ctrl.getUrlFilter("orderBy")
+            currentOrder = $ctrl.getOrderBy()
             newOrder = target.data("fieldname")
 
             finalOrder = if currentOrder == newOrder then "-#{newOrder}" else newOrder
 
             $scope.$apply ->
-                $ctrl.replaceFilter("orderBy", finalOrder)
-                $ctrl.storeFilters()
+                $ctrl.replaceFilter("order_by", finalOrder)
+
+                $ctrl.storeFilters($ctrl.params.pslug, $location.search(), $ctrl.filtersHashSuffix)
                 $ctrl.loadIssues().then ->
                     # Update the arrow
-                    $el.find(".row.title > div > span.icon").remove()
-                    icon = if startswith(finalOrder, "-") then "icon-arrow-up" else "icon-arrow-bottom"
-                    target.html("#{target.html()}<span class='icon #{icon}'></span>")
+                    $el.find(".row.title > div > tg-svg").remove()
+                    icon = if startswith(finalOrder, "-") then "icon-arrow-up" else "icon-arrow-down"
+
+                    svg = $("<tg-svg>")
+                        .attr("svg-icon", icon)
+
+                    target.append(svg)
+                    $compile(target.contents())($scope);
 
     ## Issues Link
     link = ($scope, $el, $attrs) ->
@@ -466,253 +509,6 @@ IssuesDirective = ($log, $location, $template, $compile) ->
     return {link:link}
 
 module.directive("tgIssues", ["$log", "$tgLocation", "$tgTemplate", "$compile", IssuesDirective])
-
-
-#############################################################################
-## Issues Filters Directive
-#############################################################################
-
-IssuesFiltersDirective = ($q, $log, $location, $rs, $confirm, $loading, $template, $translate, $compile, $auth) ->
-    template = $template.get("issue/issues-filters.html", true)
-    templateSelected = $template.get("issue/issues-filters-selected.html", true)
-
-    link = ($scope, $el, $attrs) ->
-        $ctrl = $el.closest(".wrapper").controller()
-
-        selectedFilters = []
-
-        showFilters = (title, type) ->
-            $el.find(".filters-cats").hide()
-            $el.find(".filter-list").removeClass("hidden")
-            $el.find(".breadcrumb").removeClass("hidden")
-            $el.find("h2 .subfilter .title").html(title)
-            $el.find("h2 .subfilter .title").prop("data-type", type)
-
-        showCategories = ->
-            $el.find(".filters-cats").show()
-            $el.find(".filter-list").addClass("hidden")
-            $el.find(".breadcrumb").addClass("hidden")
-
-        initializeSelectedFilters = (filters) ->
-            selectedFilters = []
-            for name, values of filters
-                for val in values
-                    selectedFilters.push(val) if val.selected
-
-            renderSelectedFilters(selectedFilters)
-
-        renderSelectedFilters = (selectedFilters) ->
-            _.filter selectedFilters, (f) =>
-                if f.color
-                    f.style = "border-left: 3px solid #{f.color}"
-
-            html = templateSelected({filters:selectedFilters})
-            html = $compile(html)($scope)
-            $el.find(".filters-applied").html(html)
-
-            if $auth.isAuthenticated() && selectedFilters.length > 0
-                $el.find(".save-filters").show()
-            else
-                $el.find(".save-filters").hide()
-
-        renderFilters = (filters) ->
-            _.filter filters, (f) =>
-                if f.color
-                    f.style = "border-left: 3px solid #{f.color}"
-
-            html = template({filters:filters})
-            html = $compile(html)($scope)
-            $el.find(".filter-list").html(html)
-
-        getFiltersType = () ->
-            return $el.find(".subfilter .title").prop('data-type')
-
-        reloadIssues = () ->
-            currentFiltersType = getFiltersType()
-
-            $q.all([$ctrl.loadIssues(), $ctrl.loadFilters()]).then () ->
-                filters = $scope.filters[currentFiltersType]
-                renderFilters(_.reject(filters, "selected"))
-
-        toggleFilterSelection = (type, id) ->
-            if type == "myFilters"
-                $rs.issues.getMyFilters($scope.projectId).then (data) ->
-                    myFilters = data
-                    filters = myFilters[id]
-                    filters.page = 1
-                    $ctrl.replaceAllFilters(filters)
-                    $ctrl.storeFilters()
-                    $ctrl.loadIssues()
-                    $ctrl.markSelectedFilters($scope.filters, filters)
-                    initializeSelectedFilters($scope.filters)
-                return null
-
-            filters = $scope.filters[type]
-            filterId = if type == 'tags' then taiga.toString(id) else id
-            filter = _.find(filters, {id: filterId})
-            filter.selected = (not filter.selected)
-
-            # Convert id to null as string for properly
-            # put null value on url parameters
-            id = "null" if id is null
-
-            if filter.selected
-                selectedFilters.push(filter)
-                $ctrl.selectFilter(type, id)
-                $ctrl.selectFilter("page", 1)
-                $ctrl.storeFilters()
-            else
-                selectedFilters = _.reject selectedFilters, (f) ->
-                    return f.id == filter.id && f.type == filter.type
-
-                $ctrl.unselectFilter(type, id)
-                $ctrl.selectFilter("page", 1)
-                $ctrl.storeFilters()
-
-            reloadIssues()
-
-            renderSelectedFilters(selectedFilters)
-
-            currentFiltersType = getFiltersType()
-
-            if type == currentFiltersType
-                renderFilters(_.reject(filters, "selected"))
-
-        # Angular Watchers
-        $scope.$on "filters:loaded", (ctx, filters) ->
-            initializeSelectedFilters(filters)
-
-        $scope.$on "filters:issueupdate", (ctx, filters) ->
-            html = template({filters:filters.status})
-            html = $compile(html)($scope)
-            $el.find(".filter-list").html(html)
-
-        selectQFilter = debounceLeading 100, (value, oldValue) ->
-            return if value is undefined or  value == oldValue
-
-            $ctrl.replaceFilter("page", null, true)
-
-            if value.length == 0
-                $ctrl.replaceFilter("q", null)
-                $ctrl.storeFilters()
-            else
-                $ctrl.replaceFilter("q", value)
-                $ctrl.storeFilters()
-
-            reloadIssues()
-
-        unwatchIssues = $scope.$watch "issues", (newValue) ->
-            if !_.isUndefined(newValue)
-                $scope.$watch("filtersQ", selectQFilter)
-                unwatchIssues()
-
-        # Dom Event Handlers
-        $el.on "click", ".filters-cat-single", (event) ->
-            event.preventDefault()
-            target = angular.element(event.currentTarget)
-            tags = $scope.filters[target.data("type")]
-            renderFilters(_.reject(tags, "selected"))
-            showFilters(target.attr("title"), target.data("type"))
-
-        $el.on "click", ".back", (event) ->
-            event.preventDefault()
-            showCategories($el)
-
-        $el.on "click", ".filters-applied .remove-filter", (event) ->
-            event.preventDefault()
-            target = angular.element(event.currentTarget).parent()
-
-            id = target.data("id") or null
-            type = target.data("type")
-            toggleFilterSelection(type, id)
-
-        $el.on "click", ".filter-list .single-filter", (event) ->
-            event.preventDefault()
-            target = angular.element(event.currentTarget)
-            target.toggleClass("active")
-
-            id = target.data("id") or null
-            type = target.data("type")
-
-            # A saved filter can't be active
-            if type == "myFilters"
-                target.removeClass("active")
-
-            toggleFilterSelection(type, id)
-
-        $el.on "click", ".filter-list .remove-filter", (event) ->
-            event.preventDefault()
-            event.stopPropagation()
-
-            target = angular.element(event.currentTarget)
-            customFilterName = target.parent().data('id')
-            title = $translate.instant("ISSUES.FILTERS.CONFIRM_DELETE.TITLE")
-            message = $translate.instant("ISSUES.FILTERS.CONFIRM_DELETE.MESSAGE", {customFilterName: customFilterName})
-
-            $confirm.askOnDelete(title, message).then (askResponse) ->
-                promise = $ctrl.deleteMyFilter(customFilterName)
-                promise.then ->
-                    promise = $ctrl.loadMyFilters()
-                    promise.then (filters) ->
-                        askResponse.finish()
-                        $scope.filters.myFilters = filters
-                        renderFilters($scope.filters.myFilters)
-                    promise.then null, ->
-                        askResponse.finish()
-                promise.then null, ->
-                    askResponse.finish(false)
-                    $confirm.notify("error")
-
-
-        $el.on "click", ".save-filters", (event) ->
-            event.preventDefault()
-            renderFilters($scope.filters["myFilters"])
-            showFilters("My filters", "myFilters")
-            $el.find('.save-filters').hide()
-            $el.find('.my-filter-name').removeClass("hidden")
-            $el.find('.my-filter-name').focus()
-            $scope.$apply()
-
-        $el.on "keyup", ".my-filter-name", (event) ->
-            event.preventDefault()
-            if event.keyCode == 13
-                target = angular.element(event.currentTarget)
-                newFilter = target.val()
-                currentLoading = $loading()
-                    .target($el.find(".new"))
-                    .start()
-                promise = $ctrl.saveCurrentFiltersTo(newFilter)
-                promise.then ->
-                    loadPromise = $ctrl.loadMyFilters()
-                    loadPromise.then (filters) ->
-                        currentLoading.finish()
-                        $scope.filters.myFilters = filters
-
-                        currentfilterstype = $el.find("h2 .subfilter .title").prop('data-type')
-                        if currentfilterstype == "myFilters"
-                            renderFilters($scope.filters.myFilters)
-
-                        $el.find('.my-filter-name').addClass("hidden")
-                        $el.find('.save-filters').show()
-
-                    loadPromise.then null, ->
-                        currentLoading.finish()
-                        $confirm.notify("error", "Error loading custom filters")
-
-                promise.then null, ->
-                    currentLoading.finish()
-                    $el.find(".my-filter-name").val(newFilter).focus().select()
-                    $confirm.notify("error", "Filter not saved")
-
-            else if event.keyCode == 27
-                $el.find('.my-filter-name').val('')
-                $el.find('.my-filter-name').addClass("hidden")
-                $el.find('.save-filters').show()
-
-    return {link:link}
-
-module.directive("tgIssuesFilters", ["$q", "$log", "$tgLocation", "$tgResources", "$tgConfirm", "$tgLoading",
-                                     "$tgTemplate", "$translate", "$compile", "$tgAuth", IssuesFiltersDirective])
 
 
 #############################################################################

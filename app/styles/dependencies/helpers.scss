@@ -1,2 +1,2 @@
 $navbar: 40px;
-$main-height: calc(100vh - 40px);
+$main-height: calc(100vh - #{$navbar});

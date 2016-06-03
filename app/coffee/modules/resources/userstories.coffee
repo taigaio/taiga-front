@@ -26,7 +26,7 @@ taiga = @.taiga
 
 generateHash = taiga.generateHash
 
-resourceProvider = ($repo, $http, $urls, $storage) ->
+resourceProvider = ($repo, $http, $urls, $storage, $q) ->
     service = {}
     hashSuffix = "userstories-queryparams"
 
@@ -35,10 +35,12 @@ resourceProvider = ($repo, $http, $urls, $storage) ->
         params.project = projectId
         return $repo.queryOne("userstories", usId, params)
 
-    service.getByRef = (projectId, ref) ->
+    service.getByRef = (projectId, ref, extraParams = {}) ->
         params = service.getQueryParams(projectId)
         params.project = projectId
         params.ref = ref
+        params = _.extend({}, params, extraParams)
+
         return $repo.queryOne("userstories", "by_ref", params)
 
     service.listInAllProjects = (filters) ->
@@ -96,9 +98,9 @@ resourceProvider = ($repo, $http, $urls, $storage) ->
         params = {project_id: projectId, bulk_stories: data}
         return $http.post(url, params)
 
-    service.bulkUpdateSprintOrder = (projectId, data) ->
-        url = $urls.resolve("bulk-update-us-sprint-order")
-        params = {project_id: projectId, bulk_stories: data}
+    service.bulkUpdateMilestone = (projectId, milestoneId, data) ->
+        url = $urls.resolve("bulk-update-us-milestone")
+        params = {project_id: projectId, milestone_id: milestoneId, bulk_stories: data}
         return $http.post(url, params)
 
     service.bulkUpdateKanbanOrder = (projectId, data) ->
@@ -133,4 +135,4 @@ resourceProvider = ($repo, $http, $urls, $storage) ->
         instance.userstories = service
 
 module = angular.module("taigaResources")
-module.factory("$tgUserstoriesResourcesProvider", ["$tgRepo", "$tgHttp", "$tgUrls", "$tgStorage", resourceProvider])
+module.factory("$tgUserstoriesResourcesProvider", ["$tgRepo", "$tgHttp", "$tgUrls", "$tgStorage", "$q", resourceProvider])

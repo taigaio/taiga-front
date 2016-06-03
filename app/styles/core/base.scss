@@ -56,21 +56,6 @@ body {
     min-width: 0;
     padding: 1rem;
     width: 320px;
-    &.filters-bar {
-        flex: 0 0 auto;
-        padding: 0;
-        transition: all .2s linear;
-        width: 0;
-        &.active {
-            padding: 2em 1em;
-            transition: all .2s linear;
-            width: 260px;
-            .filters-inner {
-                opacity: 1;
-                transition: all .4s ease-in;
-            }
-        }
-    }
     .search-in {
         margin-top: .5rem;
     }

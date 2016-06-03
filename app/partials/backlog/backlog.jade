@@ -3,8 +3,21 @@ doctype html
 div.wrapper(tg-backlog, ng-controller="BacklogController as ctrl",
             ng-init="section='backlog'")
     tg-project-menu
-    sidebar.menu-secondary.extrabar.filters-bar(tg-backlog-filters)
-        include ../includes/modules/backlog-filters
+
+    sidebar.backlog-filter
+        tg-filter(
+            q="ctrl.filterQ"
+            filters="ctrl.filters"
+            custom-filters="ctrl.customFilters"
+            selected-filters="ctrl.selectedFilters"
+            customFilters="ctl.customFilters"
+            on-save-custom-filter="ctrl.saveCustomFilter(name)"
+            on-add-filter="ctrl.addFilter(filter)"
+            on-select-custom-filter="ctrl.selectCustomFilter(filter)"
+            on-remove-custom-filter="ctrl.removeCustomFilter(filter)"
+            on-remove-filter="ctrl.removeFilter(filter)"
+            on-change-q="ctrl.changeQ(q)"
+        )
     section.main.backlog
         include ../includes/components/mainTitle
 
@@ -39,12 +52,19 @@ div.wrapper(tg-backlog, ng-controller="BacklogController as ctrl",
                 )
                     tg-svg(svg-icon="icon-move")
                     span.text(translate="BACKLOG.MOVE_US_TO_LATEST_SPRINT")
-                a.trans-button(
-                    ng-if="userstories.length"
+                a.trans-button.e2e-open-filter(
+                    ng-if="!ctrl.activeFilters"
                     href=""
                     title="{{'BACKLOG.FILTERS.TOGGLE' | translate}}"
                     id="show-filters-button"
                     translate="BACKLOG.FILTERS.SHOW"
+                )
+                a.trans-button.active.e2e-open-filter(
+                    ng-if="ctrl.activeFilters"
+                    href=""
+                    title="{{'BACKLOG.FILTERS.HIDE' | translate}}"
+                    id="show-filters-button"
+                    translate="BACKLOG.FILTERS.HIDE"
                 )
                 a.trans-button(
                     ng-if="userstories.length"

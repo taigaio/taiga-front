@@ -1,0 +1,9 @@
+input.range-slider(
+    type="range",
+    min="0",
+    max="{{levels - 1}}",
+    step="1"
+    ng-model="value"
+    ng-model-options="{ debounce: 200 }"
+    tg-bind-scope
+)

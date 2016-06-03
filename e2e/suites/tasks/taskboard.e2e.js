@@ -2,6 +2,8 @@ var utils = require('../../utils');
 var backlogHelper = require('../../helpers').backlog;
 var taskboardHelper = require('../../helpers').taskboard;
 var commonHelper = require('../../helpers').common;
+var filterHelper = require('../../helpers/filters-helper');
+var sharedFilters = require('../../shared/filters');
 
 var chai = require('chai');
 var chaiAsPromised = require('chai-as-promised');
@@ -19,6 +21,24 @@ describe('taskboard', function() {
             .go();
 
         utils.common.takeScreenshot('taskboard', 'taskboard');
+    });
+
+    it('zoom', async function() {
+        taskboardHelper.zoom(1);
+        await browser.sleep(1000);
+        utils.common.takeScreenshot('taskboard', 'zoom1');
+
+        taskboardHelper.zoom(2);
+        await browser.sleep(1000);
+        utils.common.takeScreenshot('taskboard', 'zoom2');
+
+        taskboardHelper.zoom(3);
+        await browser.sleep(1000);
+        utils.common.takeScreenshot('taskboard', 'zoom3');
+
+        taskboardHelper.zoom(4);
+        await browser.sleep(1000);
+        utils.common.takeScreenshot('taskboard', 'zoom4');
     });
 
     describe('create task', function() {
@@ -65,7 +85,7 @@ describe('taskboard', function() {
 
             let tasks = taskboardHelper.getBoxTasks(0, 0);
 
-            let tasksSubject = await $$('.task-name').getText();
+            let tasksSubject = await $$('.e2e-title').getText();
 
             let findSubject = tasksSubject.indexOf(formFields.subject) !== -1;
 
@@ -111,7 +131,7 @@ describe('taskboard', function() {
 
             let tasks = taskboardHelper.getBoxTasks(0, 0);
 
-            let tasksSubject = await $$('.task-name').getText();
+            let tasksSubject = await $$('.e2e-title').getText();
 
             let findSubject = tasksSubject.indexOf(formFields.subject) !== 1;
 
@@ -296,4 +316,8 @@ describe('taskboard', function() {
             expect(open).to.be.false;
         });
     });
+
+    describe('taskboard filters', sharedFilters.bind(this, 'taskboard', () => {
+        return taskboardHelper.getTasks().count();
+    }));
 });

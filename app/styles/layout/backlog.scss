@@ -1,3 +1,24 @@
+.backlog-filter {
+    align-items: stretch;
+    display: flex;
+    opacity: 0;
+    overflow: hidden;
+    position: relative;
+    transition: all .2s linear;
+    width: 0;
+    tg-filter {
+        transform: translateX(-260px);
+        transition: all .2s linear;
+    }
+    &.active {
+        opacity: 1;
+        transition: all .2s linear;
+        width: 260px;
+        tg-filter {
+            transform: translateX(0);
+        }
+    }
+}
 .backlog-menu {
     background: $mass-white;
     color: $blackish;

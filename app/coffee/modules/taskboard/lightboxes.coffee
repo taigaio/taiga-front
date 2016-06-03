@@ -108,6 +108,11 @@ CreateEditTaskDirective = ($repo, $model, $rs, $rootscope, $loading, lightboxSer
             if not form.validate()
                 return
 
+            params = {
+                include_attachments: true,
+                include_tasks: true
+            }
+
             if $scope.isNew
                 promise = $repo.create("tasks", $scope.task)
                 broadcastEvent = "taskform:new:success"
@@ -116,20 +121,22 @@ CreateEditTaskDirective = ($repo, $model, $rs, $rootscope, $loading, lightboxSer
                 broadcastEvent = "taskform:edit:success"
 
             promise.then (data) ->
-                createAttachments(data)
                 deleteAttachments(data)
+                    .then () => createAttachments(data)
+                    .then () =>
+                        currentLoading.finish()
+                        lightboxService.close($el)
 
-                return data
+                        $rs.tasks.getByRef(data.project, data.ref, params).then (task) ->
+                            $rootscope.$broadcast(broadcastEvent, task)
 
             currentLoading = $loading()
                 .target(submitButton)
                 .start()
 
-            # FIXME: error handling?
             promise.then (data) ->
                 currentLoading.finish()
                 lightboxService.close($el)
-                $rootscope.$broadcast(broadcastEvent, data)
 
         $el.on "submit", "form", submit
 
@@ -139,7 +146,7 @@ CreateEditTaskDirective = ($repo, $model, $rs, $rootscope, $loading, lightboxSer
     return {link: link}
 
 
-CreateBulkTasksDirective = ($repo, $rs, $rootscope, $loading, lightboxService) ->
+CreateBulkTasksDirective = ($repo, $rs, $rootscope, $loading, lightboxService, $model) ->
     link = ($scope, $el, attrs) ->
         $scope.form = {data: "", usId: null}
 
@@ -161,6 +168,7 @@ CreateBulkTasksDirective = ($repo, $rs, $rootscope, $loading, lightboxService) -
 
             promise = $rs.tasks.bulkCreate(projectId, sprintId, usId, data)
             promise.then (result) ->
+                result =  _.map(result, (x) => $model.make_model('userstories', x))
                 currentLoading.finish()
                 $rootscope.$broadcast("taskform:bulk:success", result)
                 lightboxService.close($el)
@@ -205,5 +213,6 @@ module.directive("tgLbCreateBulkTasks", [
     "$rootScope",
     "$tgLoading",
     "lightboxService",
+    "$tgModel",
     CreateBulkTasksDirective
 ])

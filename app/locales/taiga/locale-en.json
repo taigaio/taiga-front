@@ -45,6 +45,10 @@
         "CAPSLOCK_WARNING": "Be careful! You are using capital letters in an input field that is case sensitive.",
         "CONFIRM_CLOSE_EDIT_MODE_TITLE": "Are you sure you want to close the edit mode?",
         "CONFIRM_CLOSE_EDIT_MODE_MESSAGE": "Remember that if you close the edit mode without saving all the changes will be lost",
+        "CARD": {
+            "ASSIGN_TO": "Assign To",
+            "EDIT": "Edit card"
+        },
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "This value seems to be invalid.",
             "TYPE_EMAIL": "This value should be a valid email.",
@@ -196,9 +200,25 @@
             "TITLE": "filters",
             "INPUT_PLACEHOLDER": "Subject or reference",
             "TITLE_ACTION_FILTER_BUTTON": "search",
-            "BREADCRUMB_TITLE": "back to categories",
-            "BREADCRUMB_FILTERS": "Filters",
-            "BREADCRUMB_STATUS": "status"
+            "TITLE": "Filters",
+            "INPUT_SEARCH_PLACEHOLDER": "Subject or ref",
+            "TITLE_ACTION_SEARCH": "Search",
+            "ACTION_SAVE_CUSTOM_FILTER": "save as custom filter",
+            "PLACEHOLDER_FILTER_NAME": "Write the filter name and press enter",
+            "CATEGORIES": {
+                "TYPE": "Type",
+                "STATUS": "Status",
+                "SEVERITY": "Severity",
+                "PRIORITIES": "Priorities",
+                "TAGS": "Tags",
+                "ASSIGNED_TO": "Assigned to",
+                "CREATED_BY": "Created by",
+                "CUSTOM_FILTERS": "Custom filters"
+            },
+            "CONFIRM_DELETE": {
+                "TITLE": "Delete custom filter",
+                "MESSAGE": "the custom filter '{{customFilterName}}'"
+            }
         },
         "WYSIWYG": {
             "H1_BUTTON": "First Level Heading",
@@ -1169,9 +1189,7 @@
             "TITLE": "Filters",
             "REMOVE": "Remove Filters",
             "HIDE": "Hide Filters",
-            "SHOW": "Show Filters",
-            "FILTER_CATEGORY_STATUS": "Status",
-            "FILTER_CATEGORY_TAGS": "Tags"
+            "SHOW": "Show Filters"
         },
         "SPRINTS": {
             "TITLE": "SPRINTS",
@@ -1278,7 +1296,6 @@
         "SECTION_NAME": "Issue",
         "ACTION_NEW_ISSUE": "+ NEW ISSUE",
         "ACTION_PROMOTE_TO_US": "Promote to User Story",
-        "PLACEHOLDER_FILTER_NAME": "Write the filter name and press enter",
         "PROMOTED": "This issue has been promoted to US:",
         "EXTERNAL_REFERENCE": "This issue has been created from",
         "GO_TO_EXTERNAL_REFERENCE": "Go to origin",
@@ -1295,28 +1312,6 @@
         "CONFIRM_PROMOTE": {
             "TITLE": "Promote this issue to a new user story",
             "MESSAGE": "Are you sure you want to create a new US from this Issue?"
-        },
-        "FILTERS": {
-            "TITLE": "Filters",
-            "INPUT_SEARCH_PLACEHOLDER": "Subject or ref",
-            "TITLE_ACTION_SEARCH": "Search",
-            "ACTION_SAVE_CUSTOM_FILTER": "save as custom filter",
-            "BREADCRUMB": "Filters",
-            "TITLE_BREADCRUMB": "Filters",
-            "CATEGORIES": {
-                "TYPE": "Type",
-                "STATUS": "Status",
-                "SEVERITY": "Severity",
-                "PRIORITIES": "Priorities",
-                "TAGS": "Tags",
-                "ASSIGNED_TO": "Assigned to",
-                "CREATED_BY": "Created by",
-                "CUSTOM_FILTERS": "Custom filters"
-            },
-            "CONFIRM_DELETE": {
-                "TITLE": "Delete custom filter",
-                "MESSAGE": "the custom filter '{{customFilterName}}'"
-            }
         },
         "TABLE": {
             "COLUMNS": {
