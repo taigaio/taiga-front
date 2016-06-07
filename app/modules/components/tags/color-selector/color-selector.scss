@@ -1,0 +1,68 @@
+@mixin color-selector-option {
+    border-radius: 2px;
+    cursor: pointer;
+    height: 2.25rem;
+    width: 2.25rem;
+    min-width: 2.25rem;
+    margin: 0 .5rem .5rem 0;
+    &:nth-child(7n) {
+        margin-right: 0;
+    }
+}
+
+.color-selector {
+    position: relative;
+    .tag-color {
+        @include color-selector-option;
+        border: 1px solid $gray-light;
+        border-left: 0;
+        border-radius: 0;
+        margin: 0;
+        transition: background .3s ease-out;
+        &.empty-color {
+            @include empty-color(34);
+        }
+    }
+}
+
+.color-selector-dropdown {
+    background: $blackish;
+    left: 0;
+    padding: 1rem;
+    position: absolute;
+    top: 2.25rem;
+    width: 332px;
+    z-index: 99;
+}
+
+.color-selector-dropdown-list {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    margin-bottom: 0;
+    .color-selector-option {
+        @include color-selector-option;
+    }
+    .empty-color {
+        @include color-selector-option;
+        @include empty-color(34);
+    }
+}
+
+.custom-color-selector {
+    display: flex;
+    .custom-color-input {
+        margin: 0;
+        width: 100%;
+    }
+    .display-custom-color {
+        @include color-selector-option;
+        flex-shrink: 0;
+        margin: 0;
+        margin-right: .5rem;
+        &.empty-color {
+            @include empty-color(34);
+            cursor: default;
+        }
+    }
+}

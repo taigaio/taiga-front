@@ -66,11 +66,7 @@ describe('taskboard', function() {
             createTaskLightbox.subject().sendKeys(formFields.subject);
             createTaskLightbox.description().sendKeys(formFields.description);
 
-            createTaskLightbox.tags().sendKeys('aaa');
-            browser.actions().sendKeys(protractor.Key.ENTER).perform();
-
-            createTaskLightbox.tags().sendKeys('bbb');
-            browser.actions().sendKeys(protractor.Key.ENTER).perform();
+            commonHelper.tags();
 
             await createTaskLightbox.blocked().click();
             await createTaskLightbox.blockedNote().sendKeys(formFields.blockedNote);

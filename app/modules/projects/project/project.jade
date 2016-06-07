@@ -43,11 +43,8 @@ div.wrapper
                 p.description {{vm.project.get('description')}}
 
         div.single-project-tags.tags-container(ng-if="::vm.project.get('tags').size")
-            span.tag(
-                style='border-left: 5px solid {{::tag.get("color")}};',
-                tg-repeat="tag in ::vm.project.get('colorized_tags')"
-            )
-                span.tag-name {{::tag.get('name')}}
+            span.tag(tg-repeat="tag in ::vm.project.get('tags')")
+                span.tag-name {{::tag}}
 
         div.project-data
             section.timeline(ng-if="vm.project")
@@ -60,7 +57,9 @@ div.wrapper
                         title="{{'PROJECT.LOOKING_FOR_PEOPLE' | translate}}"
                     )
                     h3 {{'PROJECT.LOOKING_FOR_PEOPLE' | translate}}
-                    p(ng-if="vm.project.get('looking_for_people_note')") {{::vm.project.get('looking_for_people_note')}}
+                    p(ng-if="vm.project.get('looking_for_people_note')")
+                        | {{::vm.project.get('looking_for_people_note')}}
+
                 h2.title {{"PROJECT.SECTION.TEAM" | translate}}
                 ul.involved-team
                     li(tg-repeat="member in vm.members")

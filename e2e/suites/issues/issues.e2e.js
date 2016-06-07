@@ -38,11 +38,7 @@ describe('issues list', function() {
             createIssueLightbox.subject().sendKeys('subject');
 
             // tags
-            await createIssueLightbox.tags().sendKeys('aaa');
-            browser.actions().sendKeys(protractor.Key.ENTER).perform();
-
-            await createIssueLightbox.tags().sendKeys('bbb');
-            browser.actions().sendKeys(protractor.Key.ENTER).perform();
+            commonHelper.tags();
         });
 
         it('upload attachments', commonHelper.lightboxAttachment);

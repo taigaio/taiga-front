@@ -13,55 +13,20 @@ div.wrapper(
     sidebar.menu-tertiary.sidebar(tg-admin-navigation="values-tags")
         include ../includes/modules/admin-submenu-project-values
 
-    section.main.admin-common.admin-attributes.colors-table
-        include ../includes/components/mainTitle
-        p.admin-subtitle(translate="ADMIN.PROJECT_VALUES_TAGS.SUBTITLE")
-        
-        .admin-attributes-section(
-            ng-controller="ProjectTagsController as ctrl"
-        )
-            .admin-attributes-section-wrapper-empty(
-                ng-if="!projectTags.length"
-                tg-loading="ctrl.loading"
-            )
-                p(translate="ADMIN.PROJECT_VALUES_TAGS.EMPTY")
-            .admin-attributes-section-wrapper(
-                ng-if="projectTags.length"
-            )
-                .table-header.table-tags-editor
-                    .row
-                        .color-column(translate="COMMON.FIELDS.COLOR")
-                        .color-name(translate="COMMON.FIELDS.NAME")
-                        .color-filter
-                            input.e2e-tags-filter(
-                                type="text"
-                                name="name"
-                                ng-model="tagsFilter.name"
-                                ng-model-options="{debounce: 200}"
-                            )
-                            tg-svg(
-                                svg-icon="icon-search"
-                            )
-                
-                p.admin-attributes-section-wrapper-empty(
-                    tg-loading="ctrl.loading"
-                    translate="ADMIN.PROJECT_VALUES_TAGS.EMPTY_SEARCH"
-                    ng-if="!(projectTags | filter:tagsFilter).length"
+    section.main.admin-common.admin-attributes.colors-table.tags-table(
+        tg-project-tags,
+        ng-controller="ProjectTagsController as ctrl"
+    )
+        header.header-with-actions
+            .title
+                include ../includes/components/mainTitle
+                p.admin-subtitle(translate="ADMIN.PROJECT_VALUES_TAGS.SUBTITLE")
+            .action-buttons
+                a.button.button-green.show-add-new(
+                    href=""
+                    title="{{ 'ADMIN.PROJECT_VALUES_TAGS.NEW_TAG'|translate }}"
+                    translate="ADMIN.PROJECT_VALUES_TAGS.NEW_TAG"
                 )
-                .table-main(
-                        ng-repeat="tag in projectTags | filter:tagsFilter"
-                        tg-bind-scope
-                    )
-                        form(
-                            tg-project-tag
-                            ng-model="tag"
-                        )
-                            .row.edition.no-draggable
-                                .color-column(
-                                    tg-color-selection
-                                    ng-model="tag"
-                                )
-                                    .current-color(ng-style="{background: tag.color}")
-                                    include ../includes/components/select-color
 
-                                .color-name {{ tag.name }}
+        .admin-attributes-section
+            include ../includes/modules/admin/project-tags

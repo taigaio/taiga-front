@@ -68,7 +68,12 @@ div.wrapper(
                         )
                             tg-svg(svg-icon="icon-arrow-right")
             .subheader
-                .tags-block(tg-tag-line, ng-model="us", required-perm="modify_us")
+                tg-tag-line.tags-block(
+                    ng-if="us && project"
+                    project="project"
+                    item="us"
+                    permissions="modify_us"
+                )
                 tg-created-by-display.ticket-created-by(ng-model="us")
 
         section.duty-content(tg-editable-description, tg-editable-wysiwyg, ng-model="us", required-perm="modify_us")

@@ -1,0 +1,12 @@
+ul.tags-dropdown
+    li(
+        ng-repeat="tag in colorArray | filter: tag.name",
+        ng-click="onSelectTag({name: tag[0], color: tag[1]})"
+    )
+        .tags-dropdown-option
+            span.tags-dropdown-name {{tag[0]}}
+            span.tags-dropdown-color(
+                ng-if="tag[1]"
+                ng-style="{'background': tag[1]}"
+                ng-title="tag[1]"
+            )

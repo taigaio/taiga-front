@@ -49,11 +49,7 @@ describe('backlog', function() {
             createUSLightbox.status(2).click();
 
             // tags
-            createUSLightbox.tags().sendKeys('aaa');
-            browser.actions().sendKeys(protractor.Key.ENTER).perform();
-
-            createUSLightbox.tags().sendKeys('bbb');
-            browser.actions().sendKeys(protractor.Key.ENTER).perform();
+            commonHelper.tags();
 
             // description
             createUSLightbox.description().sendKeys('test test');
@@ -245,7 +241,7 @@ describe('backlog', function() {
         expect(elementRef1).to.be.equal(draggedRefs[1]);
     });
 
-    it.skip('drag multiple us to milestone', async function() {
+    it('drag multiple us to milestone', async function() {
         let sprint = backlogHelper.sprints().get(0);
         let initUssSprintCount = await backlogHelper.getSprintUsertories(sprint).count();
 

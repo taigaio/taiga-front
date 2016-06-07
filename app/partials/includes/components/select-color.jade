@@ -20,7 +20,9 @@ div.popover.select-color
         li.color(style="background: #ef2929", data-color="#ef2929")
         li.color(style="background: #cc0000", data-color="#cc0000")
         li.color(style="background: #a40000", data-color="#a40000")
-        li.color(style="background: #2e3436", data-color="#2e3436")
+        li.color(style="background: #2e3436", data-color="#2e3436", ng-if="!allowEmpty")
+        li.color(data-color="", ng-class="{'empty-color': allowEmpty}")
 
     input(type="text", placeholder="personalized colors", ng-model="color")
-    div.selected-color(ng-style="{'background-color': color}")
+    div.selected-color(ng-style="{'background-color': color}", ng-if="color !== null")
+    div.selected-color(ng-style="{'background-color': none}", ng-if="color === null")

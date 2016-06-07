@@ -1,0 +1,8 @@
+span {{ tag[0] }}
+tg-svg.icon-close.e2e-delete-tag(
+    ng-if="hasPermissions"
+    svg-icon="icon-close"
+    svg-title-translate="COMMON.TAG.DELETE"
+    ng-click="onDeleteTag(tag)"
+    tg-loading="loadingRemoveTag == tag[0]"
+)

@@ -19,8 +19,21 @@ helper.getCreateEditUsLightbox = function() {
         subject: function() {
             return el.$('input[name="subject"]');
         },
-        tags: function() {
-            return el.$('.tag-input');
+        tags: async function() {
+            $('.e2e-show-tag-input').click();
+            $('.e2e-open-color-selector').click();
+
+            $$('.e2e-color-dropdown li').get(1).click();
+            $('.e2e-add-tag-input')
+                .sendKeys('xxxyy')
+                .sendKeys(protractor.Key.ENTER);
+
+            $$('.e2e-delete-tag').last().click();
+
+            $('.e2e-add-tag-input')
+                .sendKeys('a')
+                .sendKeys(protractor.Key.ARROW_DOWN)
+                .sendKeys(protractor.Key.ENTER);
         },
         description: function() {
             return el.$('textarea[name="description"]');

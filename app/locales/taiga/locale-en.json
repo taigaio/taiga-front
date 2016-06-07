@@ -426,7 +426,8 @@
     "ADMIN": {
         "COMMON": {
             "TITLE_ACTION_EDIT_VALUE": "Edit value",
-            "TITLE_ACTION_DELETE_VALUE": "Delete value"
+            "TITLE_ACTION_DELETE_VALUE": "Delete value",
+            "TITLE_ACTION_DELETE_TAG": "Delete tag"
         },
         "HELP": "Do you need help? Check out our support page!",
         "PROJECT_DEFAULT_VALUES": {
@@ -582,9 +583,14 @@
         },
         "PROJECT_VALUES_TAGS": {
             "TITLE": "Tags",
-            "SUBTITLE": "View and edit the color of your user stories",
+            "SUBTITLE": "View and edit the color of your tags",
             "EMPTY": "Currently there are no tags",
-            "EMPTY_SEARCH": "It looks like nothing was found with your search criteria"
+            "EMPTY_SEARCH": "It looks like nothing was found with your search criteria",
+            "ACTION_ADD": "Add tag",
+            "NEW_TAG": "New tag",
+            "MIXING_HELP_TEXT": "Select the tags that you want to merge",
+            "MIXING_MERGE": "Merge Tags",
+            "SELECTED": "Selected"
         },
         "ROLES": {
             "PAGE_TITLE": "Roles - {{projectName}}",

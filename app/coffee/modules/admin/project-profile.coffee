@@ -62,6 +62,7 @@ class ProjectProfileController extends mixOf(taiga.Controller, taiga.PageMixin)
         @scope.project = {}
 
         promise = @.loadInitialData()
+        @scope.projectTags = []
 
         promise.then =>
             sectionName = @translate.instant( @scope.sectionName)
@@ -96,6 +97,11 @@ class ProjectProfileController extends mixOf(taiga.Controller, taiga.PageMixin)
             @scope.issueTypesList = _.sortBy(project.issue_types, "order")
             @scope.issueStatusList = _.sortBy(project.issue_statuses, "order")
             @scope.$emit('project:loaded', project)
+
+
+            @scope.projectTags = _.map @scope.project.tags, (it) =>
+                return [it, @scope.project.tags_colors[it]]
+
             return project
 
     loadInitialData: ->
@@ -106,6 +112,21 @@ class ProjectProfileController extends mixOf(taiga.Controller, taiga.PageMixin)
 
     openDeleteLightbox: ->
         @rootscope.$broadcast("deletelightbox:new", @scope.project)
+
+    addTag: (name, color) ->
+        tags = _.clone(@scope.project.tags)
+
+        tags.push(name)
+
+        @scope.projectTags.push([name, null])
+        @scope.project.tags = tags
+
+    deleteTag: (tag) ->
+        tags = _.clone(@scope.project.tags)
+        _.pull(tags, tag[0])
+        _.remove @scope.projectTags, (it) => it[0] == tag[0]
+
+        @scope.project.tags = tags
 
 module.controller("ProjectProfileController", ProjectProfileController)
 

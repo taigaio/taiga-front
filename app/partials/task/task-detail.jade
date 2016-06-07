@@ -75,7 +75,12 @@ div.wrapper(
                         )
                             tg-svg(svg-icon="icon-arrow-right")
             .subheader
-                div.tags-block(tg-tag-line, ng-model="task", required-perm="modify_task")
+                tg-tag-line.tags-block(
+                    ng-if="task && project"
+                    project="project"
+                    item="task"
+                    permissions="modify_task"
+                )
                 tg-created-by-display.ticket-created-by(ng-model="task")
 
         section.duty-content(tg-editable-description, tg-editable-wysiwyg, ng-model="task", required-perm="modify_task")
@@ -94,7 +99,7 @@ div.wrapper(
             project-id="projectId"
             edit-permission = "modify_task"
         )
-        
+
         tg-history-section(
             ng-if="task"
             type="task"

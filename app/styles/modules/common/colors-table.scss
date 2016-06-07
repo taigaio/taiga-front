@@ -15,7 +15,6 @@
     }
     .row {
         align-items: center;
-        border-bottom: 1px solid $whitish;
         display: flex;
         justify-content: center;
         padding: 1rem;
@@ -27,15 +26,11 @@
                 cursor: pointer;
             }
         }
-        &.edition,
-        &.new-value {
-            padding-left: 50px;
-        }
         &.hidden {
             display: none;
         }
         &:hover {
-            background: lighten($primary, 60%);
+            background: lighten(rgba($primary-light, .2), 30%);
             cursor: move;
             transition: background .2s ease-in;
             .icon {
@@ -110,14 +105,8 @@
     }
     .options-column {
         a {
+            cursor: pointer;
             display: inline-block;
-        }
-    }
-    form {
-        &:last-child {
-            .row {
-                border: 0;
-            }
         }
     }
 
@@ -133,18 +122,23 @@
         height: 40px;
         width: 40px;
     }
+
     .icon {
         cursor: pointer;
         fill: $gray-light;
         margin-right: 1rem;
         opacity: 0;
         &:hover {
-            fill: $primary;
+            fill: $primary-light;
             transition: all .2s ease-in;
         }
         &.icon-check {
             cursor: default;
             fill: $primary;
+            opacity: 1;
+        }
+        &.icon-merge {
+            cursor: default;
             opacity: 1;
         }
         &.icon-search {
@@ -156,9 +150,7 @@
             cursor: move;
         }
         &.icon-trash {
-            &:hover {
-                fill: $red-light;
-            }
+            fill: $red-light;
         }
     }
     .gu-mirror {

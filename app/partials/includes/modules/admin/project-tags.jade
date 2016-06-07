@@ -1,0 +1,175 @@
+section
+    .admin-tags-section-wrapper-empty(
+        ng-show="!projectTagsAll.length"
+        tg-loading="ctrl.loading"
+    )
+        p(translate="ADMIN.PROJECT_VALUES_TAGS.EMPTY")
+
+    .admin-tags-section-wrapper(
+        ng-show="projectTagsAll.length"
+    )
+        form.add-tag-container.new-value.hidden
+            tg-color-selection.color-column(
+                tg-allow-empty="true"
+                ng-model="newValue"
+            )
+                .current-color(
+                    ng-style="{background: newValue.color}"
+                    ng-if="newValue.color"
+                )
+                .current-color.empty-color(ng-if="!newValue.color")
+                include ../../components/select-color
+
+            .tag-name
+                input(
+                    name="name"
+                    type="text"
+                    placeholder="{{'ADMIN.TYPES.PLACEHOLDER_WRITE_NAME' | translate}}",
+                    ng-model="newValue.name"
+                    data-required="true"
+                    data-maxlength="255"
+                )
+
+            .options-column
+                a.add-new.e2e-save(href="")
+                    tg-svg(
+                        title="{{'COMMON.ADD' | translate}}",
+                        svg-icon="icon-save"
+                    )
+                a.delete-new(href="")
+                    tg-svg(
+                        title="{{'COMMON.CANCEL' | translate}}",
+                        svg-icon="icon-close"
+                    )
+
+        .table-header.table-tags-editor
+            div.row.header-tag-row
+                .color-column(translate="COMMON.FIELDS.COLOR")
+                .status-name(translate="COMMON.FIELDS.NAME")
+                .color-filter
+                    input.e2e-tags-filter(
+                        type="text"
+                        name="name"
+                        ng-model="tagsFilter.name"
+                        ng-model-options="{debounce: 200}"
+                    )
+                    tg-svg(
+                        svg-icon="icon-search"
+                    )
+
+        .table-main.table-admin-tags
+            div(ng-show="!mixingTags.toTag")
+                .admin-attributes-section-wrapper-empty(
+                    ng-show="!projectTags.length"
+                    tg-loading="ctrl.loading"
+                )
+                    p(translate="ADMIN.PROJECT_VALUES_TAGS.EMPTY_SEARCH")
+                    p lalalaal
+
+                div(
+                    ng-repeat="tag in projectTags"
+                    tg-bind-scope
+                )
+                    form(tg-bind-scope)
+                        .row.tag-row.table-main.visualization(ng-class="{{ ctrl.mixingClass(tag) }}")
+                            .color-column
+                                .current-color(
+                                    ng-style="{background: tag.color}"
+                                    ng-if="tag.color"
+                                )
+                                .current-color.empty-color(ng-if="!tag.color")
+
+                            .status-name
+                                span(tg-bo-html="tag.name")
+
+                            .options-column
+                                a.mix-tags(href="")
+                                    tg-svg(
+                                        title="{{'ADMIN.PROJECT_VALUES_TAGS.MIXING_MERGE' | translate}}"
+                                        svg-icon="icon-merge"
+                                    )
+                                    div.popover.merge-explanation
+                                        span(translate="ADMIN.PROJECT_VALUES_TAGS.MIXING_MERGE")
+
+                                a.edit-value(href="")
+                                    tg-svg(
+                                        svg-icon="icon-edit"
+                                        title="{{'ADMIN.COMMON.TITLE_ACTION_EDIT_VALUE' | translate}}"
+                                    )
+
+                                a.delete-tag(href="")
+                                    tg-svg(
+                                        svg-icon="icon-trash"
+                                        title="{{'ADMIN.COMMON.TITLE_ACTION_DELETE_VALUE' | translate}}"
+                                    )
+
+                        .row.tag-row.table-main.edition.hidden
+                            .color-column(
+                                tg-color-selection
+                                tg-allow-empty="true"
+                                ng-model="tag"
+                            )
+                                .current-color(
+                                    ng-style="{background: tag.color}"
+                                    ng-if="tag.color"
+                                )
+                                .current-color.empty-color(ng-if="!tag.color")
+                                include ../../components/select-color
+
+                            .status-name
+                                input(
+                                    name="name"
+                                    type="text"
+                                    placeholder="{{'ADMIN.TYPES.PLACEHOLDER_WRITE_NAME' | translate}}",
+                                    ng-model="tag.name"
+                                    data-required="true"
+                                    data-maxlength="255"
+                                )
+
+                            .options-column
+                                a.save.e2e-save(href="")
+                                    tg-svg(
+                                        title="{{'COMMON.SAVE' | translate}}"
+                                        svg-icon="icon-save"
+                                     )
+                                a.cancel(href="")
+                                    tg-svg(
+                                        title="{{'COMMON.CANCEL' | translate}}"
+                                        svg-icon="icon-close"
+                                    )
+
+            div(ng-show="mixingTags.toTag")
+                div(
+                    ng-repeat="tag in projectTags"
+                    tg-bind-scope
+                )
+                    form(tg-bind-scope)
+                        .row.mixing-row.table-main.visualization(class="{{ ctrl.mixingClass(tag) }}")
+                            .color-column
+                                .current-color(ng-style="{background: tag.color}")
+
+                            .status-name
+                                span(tg-bo-html="tag.name")
+
+                            .mixing-options-column
+                                .mixing-help-text(
+                                    ng-if="mixingTags.toTag === tag.name"
+                                    translate="ADMIN.PROJECT_VALUES_TAGS.MIXING_HELP_TEXT"
+                                )
+                                a.mixing-confirm.button-green(
+                                    href=""
+                                    ng-if="mixingTags.toTag === tag.name && mixingTags.fromTags.length"
+                                    translate="ADMIN.PROJECT_VALUES_TAGS.MIXING_MERGE"
+                                )
+                                a.mixing-cancel.button-gray(
+                                    href=""
+                                    ng-if="mixingTags.toTag === tag.name"
+                                    translate="COMMON.CANCEL"
+                                )
+                                span.mixing-selected(
+                                    ng-if="mixingTags.fromTags.indexOf(tag.name) !== -1"
+                                )
+                                    tg-svg(
+                                        title="{{'ADMIN.PROJECT_VALUES_TAGS.SELECTED' | translate}}"
+                                        svg-icon="icon-merge"
+                                    )

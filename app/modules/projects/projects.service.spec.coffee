@@ -129,8 +129,7 @@ describe "tgProjectsService", ->
                     id: 2,
                     url: 'url-2',
                     tags: ['xx', 'yy', 'aa'],
-                    tags_colors: {xx: "red", yy: "blue", aa: "white"},
-                    colorized_tags: [{name: 'aa', color: 'white'}, {name: 'xx', color: 'red'}, {name: 'yy', color: 'blue'}]
+                    tags_colors: {xx: "red", yy: "blue", aa: "white"}
                 }
             )
 
@@ -157,8 +156,7 @@ describe "tgProjectsService", ->
                     id: 2,
                     url: 'url-2',
                     tags: ['xx', 'yy', 'aa'],
-                    tags_colors: {xx: "red", yy: "blue", aa: "white"},
-                    colorized_tags: [{name: 'aa', color: 'white'}, {name: 'xx', color: 'red'}, {name: 'yy', color: 'blue'}]
+                    tags_colors: {xx: "red", yy: "blue", aa: "white"}
                 }
             ])
 

@@ -19,6 +19,9 @@
         height: 35px;
         width: 35px;
     }
+    .empty-color {
+        @include empty-color(33);
+    }
     ul {
         float: left;
         margin-bottom: 1rem;
