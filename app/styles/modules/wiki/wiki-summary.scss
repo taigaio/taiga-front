@@ -27,4 +27,16 @@
         @include font-size(large);
         white-space: nowrap;
     }
+    .remove {
+        fill: $gray-light;
+        margin-left: auto;
+        transition: fill .1s linear;
+        &:hover {
+            cursor: pointer;
+            fill: $red-light;
+        }
+        svg {
+            @include svg-size(1.5rem);
+        }
+    }
 }

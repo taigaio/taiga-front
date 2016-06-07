@@ -779,6 +779,7 @@ modules = [
     "taigaExternalApps",
     "taigaDiscover",
     "taigaHistory",
+    "taigaWikiHistory",
 
     # template cache
     "templates",

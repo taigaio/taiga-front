@@ -1,0 +1,12 @@
+nav.history-tabs(ng-if="vm.historyEntries")
+    a.history-tab.active(
+        href=""
+        title="{{ACTIVITY.TITLE}}"
+        translate="ACTIVITY.TITLE"
+    )
+
+section.wiki-history(ng-if="vm.historyEntries")
+    tg-wiki-history-entry.wiki-history-entry(
+        tg-repeat="historyEntry in vm.historyEntries"
+        history-entry="historyEntry"
+    )

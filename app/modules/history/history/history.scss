@@ -1,10 +1,8 @@
-.activities {
-    .activity {
-        align-items: flex-start;
-        border-bottom: 1px solid $whitish;
-        display: flex;
-        padding: 2rem 0;
-    }
+.activity {
+    align-items: flex-start;
+    border-bottom: 1px solid $whitish;
+    display: flex;
+    padding: 2rem 0;
     .activity-avatar {
         flex-basis: 50px;
         flex-shrink: 0;
@@ -19,31 +17,5 @@
     }
     .activity-date {
         color: $gray-light;
-    }
-    .comment-options {
-        align-items: center;
-        align-self: stretch;
-        display: flex;
-        flex-basis: 50px;
-        flex-shrink: 0;
-        margin-left: 1.5rem;
-        .comment-option {
-            cursor: pointer;
-            opacity: 0;
-            transition: opacity .2s;
-        }
-        .icon-edit {
-            fill: $gray-light;
-            margin-right: .5rem;
-            &:hover {
-                fill: $gray;
-            }
-        }
-        .icon-trash {
-            fill: $red-light;
-            &:hover {
-                fill: $red;
-            }
-        }
     }
 }

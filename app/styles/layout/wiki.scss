@@ -1,4 +1,5 @@
 .wiki {
+    max-width: 1024px;
     .wysiwyg {
         margin-bottom: 0;
     }
@@ -8,28 +9,10 @@
         margin-bottom: 0;
         padding: 1rem;
     }
-    .remove {
-        @include font-size(small);
-        color: $gray-light;
-        cursor: pointer;
-        &:hover {
-            color: $red-light;
-            transition: color .1s linear;
-            .icon {
-                fill: $red-light;
-                transition: fill .1s linear;
-            }
-        }
-        .icon {
-            color: $gray-light;
-            margin-right: .2rem;
-        }
-    }
 }
 
 .wiki-content {
     @include font-size(large);
-    max-width: 1024px;
     position: relative;
     &.editable {
         &:hover {
