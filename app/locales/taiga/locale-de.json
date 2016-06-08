@@ -447,14 +447,14 @@
             "ISSUES_DESCRIPTION": "Verfolgen Sie Fehler, Fragen und Verbesserungen, die mit Ihrem Projekt verbunden sind. Vermissen Sie nichts!",
             "WIKI": "Wiki",
             "WIKI_DESCRIPTION": "Fügen Sie Inhalte hinzu, ändern oder löschen Sie sie in Zusammenarbeit mit anderen. Dies ist der richtige Ort für Ihre Projektdokumentation.",
-            "MEETUP": "Zusammentreffen",
+            "MEETUP": "Meetup",
             "MEETUP_DESCRIPTION": "Wähle Sie Ihr Videokonferenzsystem.",
             "SELECT_VIDEOCONFERENCE": "Wählen Sie ein Videokonferenzsystem",
             "SALT_CHAT_ROOM": "Fügen Sie ein Präfix für den Chatraum-Namen hinzu",
             "JITSI_CHAT_ROOM": "Jitsi",
-            "APPEARIN_CHAT_ROOM": "Erscheint in",
-            "TALKY_CHAT_ROOM": "Gesprächig",
-            "CUSTOM_CHAT_ROOM": "Kunde",
+            "APPEARIN_CHAT_ROOM": "Appear.in",
+            "TALKY_CHAT_ROOM": "Talky.io",
+            "CUSTOM_CHAT_ROOM": "Benutzerdefiniert",
             "URL_CHAT_ROOM": "URL Ihres Chatrooms"
         },
         "PROJECT_PROFILE": {
