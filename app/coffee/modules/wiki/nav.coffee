@@ -38,7 +38,40 @@ module = angular.module("taigaWiki")
 WikiNavDirective = ($tgrepo, $log, $location, $confirm, $analytics, $loading, $template,
                     $compile, $translate) ->
     template = $template.get("wiki/wiki-nav.html", true)
-    link = ($scope, $el, $attrs) ->
+
+    linkDragAndDrop = ($scope, $el, $attrs) ->
+        oldParentScope = null
+        newParentScope = null
+        itemEl = null
+        tdom = $el.find(".sortable")
+
+        drake = dragula([tdom[0]], {
+            direction: 'vertical',
+            copySortSource: false,
+            copy: false,
+            mirrorContainer: tdom[0],
+            moves: (item) -> return $(item).is('li')
+        })
+
+        drake.on 'dragend', (item) ->
+            itemEl = $(item)
+            item = itemEl.scope().link
+            itemIndex = itemEl.index()
+            $scope.$emit("wiki:links:move", item, itemIndex)
+
+        scroll = autoScroll(window, {
+            margin: 20,
+            pixels: 30,
+            scrollWhenOutside: true,
+            autoScroll: () ->
+                return this.down && drake.dragging;
+        })
+
+        $scope.$on "$destroy", ->
+            $el.off()
+            drake.destroy()
+
+    linkWikiLinks = ($scope, $el, $attrs) ->
         $ctrl = $el.controller()
 
         if not $attrs.ngModel?
@@ -130,8 +163,14 @@ WikiNavDirective = ($tgrepo, $log, $location, $confirm, $analytics, $loading, $t
                     $el.find(".new input").val('')
                     $el.find(".add-button").show()
 
-
         bindOnce($scope, $attrs.ngModel, render)
+
+    link = ($scope, $el, $attrs) ->
+        linkWikiLinks($scope, $el, $attrs)
+        linkDragAndDrop($scope, $el, $attrs)
+
+        $scope.$on "$destroy", ->
+            $el.off()
 
     return {link:link}
 

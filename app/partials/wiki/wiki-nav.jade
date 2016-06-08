@@ -2,10 +2,10 @@ header
   h1(translate="WIKI.NAVIGATION.SECTION_NAME")
 
 nav
-  ul
-    <% _.each(wikiLinks, function(link, index) { %>
-    li.wiki-link(data-id!="<%- index %>")
-        a.link-title(title!="<%- link.title %>", href!="<%- link.url %>")<%- link.title %>
+  ul.sortable
+    li.wiki-link(ng-repeat="link in wikiLinks", data-id!="{{ $index }}", tg-bind-scope)
+        tg-svg.dragger(svg-icon="icon-drag")
+        a.link-title(title!="{{ link.title }}", href!="{{ link.url }}") {{ link.title }}
 
         <% if (deleteWikiLinkPermission) { %>
         a.js-delete-link.remove-wiki-page(title!="{{'WIKI.DELETE_LINK_TITLE' | translate}}")
@@ -15,9 +15,8 @@ nav
         input.hidden(
             type="text"
             placeholder="{{'COMMON.FIELDS.NAME' | translate}}"
-            value!="<%- link.title %>"
+            value!="{{ link.title }}"
         )
-    <% }) %>
 
     li.new.hidden
         input(

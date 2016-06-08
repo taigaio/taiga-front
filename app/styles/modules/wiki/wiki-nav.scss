@@ -4,7 +4,7 @@
     border-bottom: 1px solid $gray-light;
     display: flex;
     justify-content: space-between;
-    padding: 1rem 0 1rem 1rem;
+    padding: 1rem 0;
     text-transform: uppercase;
     &:hover {
         .remove-wiki-page {
@@ -13,6 +13,15 @@
             transition: opacity .2s linear;
             transition-delay: .2s;
         }
+        .dragger {
+            fill: $gray-light;
+            opacity: 1;
+            transition: opacity .2s linear;
+            transition-delay: .2s;
+        }
+    }
+    .dragger {
+        opacity: 0;
     }
     .remove-wiki-page {
         opacity: 0;
@@ -24,6 +33,7 @@
     }
     .link-title {
         cursor: pointer;
+        flex-grow: 1;
     }
     .icon-trash {
         fill: $gray-light;
