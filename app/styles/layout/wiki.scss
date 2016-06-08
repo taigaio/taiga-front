@@ -91,3 +91,93 @@
         top: .4rem;
     }
 }
+
+.wiki-pages-table {
+    display: flex;
+    margin-bottom: 2rem;
+    &.empty {
+        display: none;
+    }
+    .row {
+        &:hover {
+            background: lighten($primary, 65%);
+            transition: background .2s ease-in;
+        }
+        .icon {
+            display: inline;
+        }
+    }
+    .title {
+        @include font-size(medium);
+        @include font-type(bold);
+        border-bottom: 1px solid $gray-light;
+        &:hover {
+            background: transparent;
+        }
+        div {
+            cursor: pointer;
+        }
+        .votes {
+            color: $gray;
+        }
+    }
+    .table-main {
+        @include font-size(small);
+        border-bottom: 1px solid darken($whitish, 4%);
+    }
+    .avatar {
+        align-items: center;
+        display: flex;
+        img {
+            width: 35px;
+        }
+        figcaption {
+            flex-basis: 60%;
+            flex-grow: 1;
+            margin-left: .5rem;
+        }
+    }
+    .title-field {
+        overflow: hidden;
+        padding-right: 1rem;
+        width: 100%;
+        a {
+            @include ellipsis(100%);
+            display: block;
+        }
+        span {
+            vertical-align: middle;
+            &:first-child {
+                margin-right: .5rem;
+            }
+        }
+    }
+    .editions-field,
+    .created-field,
+    .modified-field,
+    .creator-field ,
+    .last-modifier-field {
+        flex-basis: 140px;
+        flex-grow: 1;
+        flex-shrink: 0;
+        padding: 0 1rem;
+        position: relative;
+        text-align: left;
+    }
+    .creator-field ,
+    .last-modifier-field {
+        display: flex;
+        flex-basis: 180px;
+        flex-direction: row;
+        .user-avatar {
+            flex-grow: 0;
+            img {
+                height: 48px;
+            }
+        }
+        .user-full-name {
+            flex-grow: 1;
+            padding: .5rem;
+        }
+    }
+}

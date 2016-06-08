@@ -1,0 +1,13 @@
+.user-avatar
+    a(
+        href="{{url}}"
+        title="{{user.full_name_display}}"
+    )
+        img(
+            src="{{user.photo}}"
+            alt="{{user.full_name_display}}"
+        )
+a.user-full-name(
+    href="{{url}}"
+    title="{{user.full_name_display}}"
+) {{user.full_name_display}}

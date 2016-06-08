@@ -1,0 +1,44 @@
+doctype html
+
+div.wrapper(ng-controller="WikiPagesListController as ctrl",
+            ng-init="section='wiki'")
+    tg-project-menu
+    sidebar.menu-secondary.extrabar(ng-if="linksVisible")
+        section.wiki-nav(tg-wiki-nav, ng-model="wikiLinks")
+    section.main.wiki
+        header
+            h1
+                span(tg-bo-bind="project.name")
+                span.green(translate="PROJECT.SECTION.WIKI")
+                span.date(translate="WIKI.SECTION_PAGES_LIST")
+
+        section.wiki-pages-table.basic-table
+            .row.title
+                .title-field(
+                    translate="WIKI.PAGES_LIST_COLUMNS.TITLE"
+                )
+                .editions-field(
+                    translate="WIKI.PAGES_LIST_COLUMNS.EDITIONS"
+                )
+                .creator-field(
+                    translate="WIKI.PAGES_LIST_COLUMNS.CREATOR"
+                )
+                .created-field(
+                    translate="WIKI.PAGES_LIST_COLUMNS.CREATED"
+                )
+                .last-modifier-field(
+                    translate="WIKI.PAGES_LIST_COLUMNS.LAST_MODIFIER"
+                )
+                .modified-field(
+                    translate="WIKI.PAGES_LIST_COLUMNS.MODIFIED"
+                )
+
+            div.row.table-main(ng-repeat="wikipage in wikipages track by wikipage.slug")
+                div.title-field
+                    a(href="", tg-nav="project-wiki-page:project=project.slug,slug=wikipage.slug")
+                        | {{wikipage.slug}}
+                div.editions-field {{wikipage.editions}}
+                div.creator-field(tg-user-display, tg-user-id="{{wikipage.owner}}")
+                div.created-field(tg-bo-bind="wikipage.created_date|momentFormat:'DD MMM YYYY HH:mm'")
+                div.last-modifier-field(tg-user-display, tg-user-id="{{wikipage.last_modifier}}")
+                div.modified-field(tg-bo-bind="wikipage.modified_date|momentFormat:'DD MMM YYYY HH:mm'")
