@@ -26,6 +26,7 @@ answer newbie questions, and generally made Taiga that much better:
 - Guilhem Got <guilhem.got@gmail.com>
 - Jordan Rinke
 - Miguel de la Cruz <miguel.delacruz@kaleidos.net>
+- Mika Andrianarijaona <mikaoelitiana@gmail.com>
 - Pilar Esteban <pilar.esteban@gmail.com>
 - Ramiro Sánchez <ramiro.sanzhez@kaleidos.net>
 - Ryan Swanstrom

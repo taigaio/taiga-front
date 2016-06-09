@@ -9,6 +9,7 @@
 - Errors (not found, server error, permissions and blocked project) don't change the current url.
 - Attachments image slider
 - New admin area to edit the tag colors used in your project
+- Display the current user (me) at first in assignment lightbox (thanks to [@mikaoelitiana](https://github.com/mikaoelitiana))
 
 ### Misc
 - Lots of small and not so small bugfixes.
