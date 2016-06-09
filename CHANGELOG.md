@@ -13,6 +13,8 @@
 - Add a new permissions to allow add comments instead of use the existent modify permission for this purpose.
 - Ability to edit comments, view edition history and redesign comments module UI
 - Upvote and downvote issues from the issues list.
+- Divide dashboard in two columns in large screens
+
 
 ### Misc
 - Lots of small and not so small bugfixes.
