@@ -527,6 +527,7 @@ AssignedToLightboxDirective = (lightboxService, lightboxKeyboardNavigationServic
         render = (selected, text) ->
             users = _.clone($scope.activeUsers, true)
             users = _.reject(users, {"id": selected.id}) if selected?
+            users = _.sortBy(users, (o) -> if o.id is $scope.user.id then 0 else o.id)
             users = _.filter(users, _.partial(filterUsers, text)) if text?
 
             ctx = {
