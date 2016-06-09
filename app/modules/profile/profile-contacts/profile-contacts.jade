@@ -11,12 +11,6 @@ section.profile-contacts
         div(ng-if="vm.isCurrentUser")
             p(translate="USER.PROFILE.CURRENT_USER_CONTACTS_EMPTY")
             p(translate="USER.PROFILE.CURRENT_USER_CONTACTS_EMPTY_EXPLAIN")
-    //-
-        nav.profile-contact-filters
-            a.active(href="", title="No Filter") all
-            a(href="", title="Only show your team") team
-            a(href="", title="Only show people you follow") following
-            a(href="", title="Only show people follow you") followers
 
     div.list-itemtype-user(tg-repeat="contact in ::vm.contacts")
         a.list-itemtype-avatar(tg-nav="user-profile:username=contact.get('username')", title="{{::contact.get('name')}}")

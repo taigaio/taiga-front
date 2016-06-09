@@ -28,7 +28,7 @@
     &.editable {
         &:hover {
             .wysiwyg {
-                background: $whitish;
+                background: $mass-white;
                 cursor: pointer;
             }
         }
@@ -44,7 +44,7 @@
     }
     .edit {
         @include svg-size(2rem);
-        background: $whitish;
+        background: $mass-white;
         left: 0;
         opacity: 0;
         padding: .2rem .5rem;

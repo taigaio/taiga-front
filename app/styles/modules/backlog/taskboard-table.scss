@@ -73,7 +73,7 @@ $column-margin: 0 10px 0 0;
     .task-colum-name {
         @include font-size(medium);
         align-items: center;
-        background: $whitish;
+        background: $mass-white;
         border-top: 3px solid $gray-light;
         color: $gray;
         display: flex;

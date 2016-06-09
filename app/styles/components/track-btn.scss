@@ -13,7 +13,7 @@
     position: relative;
     .track-inner {
         align-items: center;
-        background: $whitish;
+        background: $mass-white;
         border-radius: 4px 0 0 4px;
         display: flex;
         flex: 1;
@@ -22,7 +22,7 @@
         margin-right: .1rem;
         min-width: 140px;
         &:hover {
-            background: darken($whitish, 5%);
+            background: darken($mass-white, 5%);
             transition: background .3s;
         }
     }
@@ -131,7 +131,7 @@
     justify-content: center;
     margin-right: .3rem;
     .vote-inner {
-        background: $whitish;
+        background: $mass-white;
         color: $gray-light;
         display: block;
         padding: 1rem;
@@ -139,7 +139,7 @@
     }
     a {
         &:hover {
-            background: darken($whitish, 5%);
+            background: darken($mass-white, 5%);
             color: $primary-dark;
             transition: background .3s;
             path {

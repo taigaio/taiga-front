@@ -15,7 +15,7 @@
     h3 {
         @include font-type(bold);
         @include font-size(large);
-        background: $whitish;
+        background: $mass-white;
         color: $gray;
         margin: .5rem;
         padding: .5rem;

@@ -79,7 +79,7 @@ input[type="date"],
 input[type="password"],
 select,
 textarea {
-    background: $whitish;
+    background: $mass-white;
     border-color: $primary;
     color: $grayer;
     @include placeholder {
@@ -152,7 +152,7 @@ tg-project-menu {
 //Taskboard table
 .taskboard-table-header {
     .task-colum-name {
-        background: lighten($primary-light, 20%);
+        background: $mass-white;
         border-top: 3px solid $primary;
         .icon {
             fill: $primary;
@@ -161,7 +161,7 @@ tg-project-menu {
 }
 .taskboard-table-body {
     .taskboard-tasks-box {
-        background: $whitish;
+        background: $mass-white;
     }
 }
 

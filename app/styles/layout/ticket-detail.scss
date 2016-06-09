@@ -11,7 +11,7 @@
         @include font-size(large);
         @include font-type(text);
         align-items: flex-start;
-        background: $whitish;
+        background: $mass-white;
         display: flex;
         flex: 1;
         flex-direction: column;
@@ -217,7 +217,7 @@
                 transition: all .2s linear;
             }
             .editable {
-                background: $whitish;
+                background: $mass-white;
                 cursor: pointer;
             }
             .no-description {
@@ -255,7 +255,7 @@
     }
     .view-description {
         .edit {
-            background: $whitish;
+            background: $mass-white;
             height: 2rem;
             left: 0;
             opacity: 0;

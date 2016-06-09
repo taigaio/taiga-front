@@ -1,7 +1,7 @@
 .tag {
     @include font-type(light);
     @include font-size(small);
-    background: $whitish; // Fallback
+    background: $mass-white;
     border-radius: 0 5px 5px 0;
     color: $grayer;
     display: inline-block;
