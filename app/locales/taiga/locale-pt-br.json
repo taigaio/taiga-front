@@ -228,6 +228,7 @@
             "PREVIEW_BUTTON": "Pré Visualizar",
             "EDIT_BUTTON": "Editar",
             "ATTACH_FILE_HELP": "Anexe arquivos arrastando e soltando na área de texto acima.",
+            "ATTACH_FILE_HELP_SAVE_FIRST": "Save first before if you want to attach files by dragging & dropping on the textarea above.",
             "MARKDOWN_HELP": "Ajuda de sintaxe markdown"
         },
         "PERMISIONS_CATEGORIES": {
@@ -414,7 +415,7 @@
             "PAGE_TITLE": "Filiados - {{projectName}}",
             "ADD_BUTTON": "+ Novo Membro",
             "ADD_BUTTON_TITLE": "Adicionar novo membro",
-            "LIMIT_USERS_WARNING_MESSAGE_FOR_ADMIN": "Unfortunately, this project has reached its limit of <strong>({{members}})</strong> allowed members.",
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_ADMIN": "Infelizmente, este projeto atingiu o número máximo de <strong>({{membros}})</strong> membros permitidos.",
             "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "This project has reached its limit of <strong>({{members}})</strong> allowed members. If you would like to increase that limit please contact the administrator."
         },
         "PROJECT_EXPORT": {
@@ -556,6 +557,12 @@
             "ISSUE_TITLE": "Tipos de problemas",
             "ACTION_ADD": "Adicionar novo {{objName}}"
         },
+        "PROJECT_VALUES_TAGS": {
+            "TITLE": "Tags",
+            "SUBTITLE": "View and edit the color of your user stories",
+            "EMPTY": "Currently there are no tags",
+            "EMPTY_SEARCH": "It looks like nothing was found with your search criteria"
+        },
         "ROLES": {
             "PAGE_TITLE": "Funções - {{projectName}}",
             "WARNING_NO_ROLE": "Seja cuidadoso, nenhuma função em seu projeto será capaz de estimar o valor dos pontos para as histórias de usuários",
@@ -681,7 +688,8 @@
             "PRIORITIES": "Prioridades",
             "SEVERITIES": "Gravidades",
             "TYPES": "Tipos",
-            "CUSTOM_FIELDS": "Campos personalizados"
+            "CUSTOM_FIELDS": "Campos personalizados",
+            "TAGS": "Tags"
         },
         "SUBMENU_PROJECT_PROFILE": {
             "TITLE": "Perfil do Projeto"
@@ -973,7 +981,7 @@
     "US": {
         "PAGE_TITLE": "{{userStorySubject}} - História de Usuário {{userStoryRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Estado: {{userStoryStatus }}. Completos {{userStoryProgressPercentage}}% ({{userStoryClosedTasks}} de {{userStoryTotalTasks}} tarefas encerradas). Pontos: {{userStoryPoints}}. Descrição: {{userStoryDescription}}",
-        "SECTION_NAME": "Detalhes da História de Usuário",
+        "SECTION_NAME": "User story",
         "LINK_TASKBOARD": "Quadro de Tarefas",
         "TITLE_LINK_TASKBOARD": "Ir para o quadro de tarefas",
         "TOTAL_POINTS": "total de pontos",
@@ -992,6 +1000,17 @@
         "ASSIGN": "Atribuir História de Usuário",
         "NOT_ESTIMATED": "Não estimado",
         "TOTAL_US_POINTS": "Total de pontos de histórias",
+        "TRIBE": {
+            "PUBLISH": "Publish as Gig in Taiga Tribe",
+            "PUBLISH_INFO": "More info",
+            "PUBLISH_TITLE": "More info on publishing in Taiga Tribe",
+            "PUBLISHED_AS_GIG": "Story published as Gig in Taiga Tribe",
+            "EDIT_LINK": "Edit link",
+            "CLOSE": "Close",
+            "SYNCHRONIZE_LINK": "synchronize with Taiga Tribe",
+            "PUBLISH_MORE_INFO_TITLE": "Do you need somebody for this task?",
+            "PUBLISH_MORE_INFO_TEXT": "<p>If you need help with a particular piece of work you can easily create gigs on<a href='taigatribe.com' title='Taiga Tribe'> Taiga Tribe </a> and receive help from all over the world. You will be able to control and manage the gig enjoying a great community eager to contribute.</p><p><a href='taigatribe.com' title='Taiga Tribe'> TaigaTribe </a>  was born as a Taiga sibling. Both platforms can live separately but we believe that there is much power in using them combined so we are making sure the integration works like a charm.</p>"
+        },
         "FIELDS": {
             "TEAM_REQUIREMENT": "Requisitos da Equipe",
             "CLIENT_REQUIREMENT": "Requisitos do Cliente",
@@ -1179,7 +1198,7 @@
     "TASK": {
         "PAGE_TITLE": "{{taskSubject}} - Tarefa {{taskRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Estado: {{taskStatus }}. Descrição: {{taskDescription}}",
-        "SECTION_NAME": "Detalhes da Tarefa",
+        "SECTION_NAME": "Task",
         "LINK_TASKBOARD": "Quadro de Tarefas",
         "TITLE_LINK_TASKBOARD": "Ir para o quadro de tarefas",
         "PLACEHOLDER_SUBJECT": "Digite um novo titulo para tarefa",
@@ -1228,7 +1247,7 @@
         "PAGE_TITLE": "Problemas - {{projectName}}",
         "PAGE_DESCRIPTION": "O painel de problemas do projeto {{projectName}}: {{projectDescription}}",
         "LIST_SECTION_NAME": "Problemas",
-        "SECTION_NAME": "Detalhes do problema",
+        "SECTION_NAME": "Issue",
         "ACTION_NEW_ISSUE": "+ NOVO PROBLEMA",
         "ACTION_PROMOTE_TO_US": "Promover para História de Usuário",
         "PLACEHOLDER_FILTER_NAME": "Digite o nome do filtro e pressione Enter",

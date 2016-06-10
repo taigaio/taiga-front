@@ -228,6 +228,7 @@
             "PREVIEW_BUTTON": "Vorschau",
             "EDIT_BUTTON": "Bearbeiten",
             "ATTACH_FILE_HELP": "Dateien per Drag & Drop auf das obere Textfeld anhängen.",
+            "ATTACH_FILE_HELP_SAVE_FIRST": "Save first before if you want to attach files by dragging & dropping on the textarea above.",
             "MARKDOWN_HELP": "Markdown syntax Hilfe"
         },
         "PERMISIONS_CATEGORIES": {
@@ -452,9 +453,9 @@
             "SELECT_VIDEOCONFERENCE": "Wählen Sie ein Videokonferenzsystem",
             "SALT_CHAT_ROOM": "Fügen Sie ein Präfix für den Chatraum-Namen hinzu",
             "JITSI_CHAT_ROOM": "Jitsi",
-            "APPEARIN_CHAT_ROOM": "Erscheint in",
-            "TALKY_CHAT_ROOM": "Gesprächig",
-            "CUSTOM_CHAT_ROOM": "Kunde",
+            "APPEARIN_CHAT_ROOM": "Appear.in",
+            "TALKY_CHAT_ROOM": "Talky.io",
+            "CUSTOM_CHAT_ROOM": "Benutzerdefiniert",
             "URL_CHAT_ROOM": "URL Ihres Chatrooms"
         },
         "PROJECT_PROFILE": {
@@ -555,6 +556,12 @@
             "SUBTITLE": "Spezifizieren Sie, welche Arten Ihre Tickets haben können",
             "ISSUE_TITLE": "Ticketarten",
             "ACTION_ADD": "Neu hinzufügen {{objName}}"
+        },
+        "PROJECT_VALUES_TAGS": {
+            "TITLE": "Tags",
+            "SUBTITLE": "View and edit the color of your user stories",
+            "EMPTY": "Currently there are no tags",
+            "EMPTY_SEARCH": "It looks like nothing was found with your search criteria"
         },
         "ROLES": {
             "PAGE_TITLE": "Rollen - {{projectName}}",
@@ -681,7 +688,8 @@
             "PRIORITIES": "Prioritäten",
             "SEVERITIES": "Schweregrade",
             "TYPES": "Typen",
-            "CUSTOM_FIELDS": "Benutzerdefinierte Felder"
+            "CUSTOM_FIELDS": "Benutzerdefinierte Felder",
+            "TAGS": "Tags"
         },
         "SUBMENU_PROJECT_PROFILE": {
             "TITLE": "Projektprofil"
@@ -973,7 +981,7 @@
     "US": {
         "PAGE_TITLE": "{{userStorySubject}} - User-Story {{userStoryRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Status: {{userStoryStatus }}. Abgeschlossen {{userStoryProgressPercentage}}% ({{userStoryClosedTasks}} von {{userStoryTotalTasks}} Aufgaben geschlossen). Punkte: {{userStoryPoints}}. Beschreibung: {{userStoryDescription}}",
-        "SECTION_NAME": "User-Story Details",
+        "SECTION_NAME": "User story",
         "LINK_TASKBOARD": "Taskboard",
         "TITLE_LINK_TASKBOARD": "Zu Taskboard wechseln",
         "TOTAL_POINTS": "Gesamtpunkte",
@@ -992,6 +1000,17 @@
         "ASSIGN": "Zugeordnete User-Story",
         "NOT_ESTIMATED": "Nicht eingeschätzt",
         "TOTAL_US_POINTS": "User-Story-Punkte insgesamt",
+        "TRIBE": {
+            "PUBLISH": "Publish as Gig in Taiga Tribe",
+            "PUBLISH_INFO": "More info",
+            "PUBLISH_TITLE": "More info on publishing in Taiga Tribe",
+            "PUBLISHED_AS_GIG": "Story published as Gig in Taiga Tribe",
+            "EDIT_LINK": "Edit link",
+            "CLOSE": "Close",
+            "SYNCHRONIZE_LINK": "synchronize with Taiga Tribe",
+            "PUBLISH_MORE_INFO_TITLE": "Do you need somebody for this task?",
+            "PUBLISH_MORE_INFO_TEXT": "<p>If you need help with a particular piece of work you can easily create gigs on<a href='taigatribe.com' title='Taiga Tribe'> Taiga Tribe </a> and receive help from all over the world. You will be able to control and manage the gig enjoying a great community eager to contribute.</p><p><a href='taigatribe.com' title='Taiga Tribe'> TaigaTribe </a>  was born as a Taiga sibling. Both platforms can live separately but we believe that there is much power in using them combined so we are making sure the integration works like a charm.</p>"
+        },
         "FIELDS": {
             "TEAM_REQUIREMENT": "Team Anforderung",
             "CLIENT_REQUIREMENT": "Kundenanforderung",
@@ -1179,7 +1198,7 @@
     "TASK": {
         "PAGE_TITLE": "{{taskSubject}} - Aufgabe {{taskRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Status: {{taskStatus }}. Beschreibung: {{taskDescription}}",
-        "SECTION_NAME": "Aufgabendetails",
+        "SECTION_NAME": "Task",
         "LINK_TASKBOARD": "Taskboard",
         "TITLE_LINK_TASKBOARD": "Zu Taskboard wechseln",
         "PLACEHOLDER_SUBJECT": "Betreff...",
@@ -1228,7 +1247,7 @@
         "PAGE_TITLE": "Tickets - {{projectName}}",
         "PAGE_DESCRIPTION": "Das Ticket-Listen Panel des Projekts {{projectName}}: {{projectDescription}}",
         "LIST_SECTION_NAME": "Tickets",
-        "SECTION_NAME": "Ticket Details",
+        "SECTION_NAME": "Issue",
         "ACTION_NEW_ISSUE": "+ NEUES TICKET",
         "ACTION_PROMOTE_TO_US": "Zur User-Story aufwerten",
         "PLACEHOLDER_FILTER_NAME": "Benennen Sie den Filter und drücken Sie die Eingabetaste",

@@ -228,6 +228,7 @@
             "PREVIEW_BUTTON": "Previsualitzar",
             "EDIT_BUTTON": "Editar",
             "ATTACH_FILE_HELP": "Attach files by dragging & dropping on the textarea above.",
+            "ATTACH_FILE_HELP_SAVE_FIRST": "Save first before if you want to attach files by dragging & dropping on the textarea above.",
             "MARKDOWN_HELP": "Ajuda de Markdown"
         },
         "PERMISIONS_CATEGORIES": {
@@ -556,6 +557,12 @@
             "ISSUE_TITLE": "Tipus d'incidències",
             "ACTION_ADD": "Afegir now {{objName}}"
         },
+        "PROJECT_VALUES_TAGS": {
+            "TITLE": "Tags",
+            "SUBTITLE": "View and edit the color of your user stories",
+            "EMPTY": "Currently there are no tags",
+            "EMPTY_SEARCH": "It looks like nothing was found with your search criteria"
+        },
         "ROLES": {
             "PAGE_TITLE": "Rols - {{projectName}}",
             "WARNING_NO_ROLE": "Ves amb compte, cap rol en el teu projecte pot estimar punts per a les històries d'usuari",
@@ -681,7 +688,8 @@
             "PRIORITIES": "Prioritats",
             "SEVERITIES": "severitats",
             "TYPES": "Tipus",
-            "CUSTOM_FIELDS": "Camps personalitzats"
+            "CUSTOM_FIELDS": "Camps personalitzats",
+            "TAGS": "Tags"
         },
         "SUBMENU_PROJECT_PROFILE": {
             "TITLE": "Perfil de projecte"
@@ -973,7 +981,7 @@
     "US": {
         "PAGE_TITLE": "{{userStorySubject}} - Història d'Usuari {{userStoryRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Estat: {{userStoryStatus }}. Completat {{userStoryProgressPercentage}}% ({{userStoryClosedTasks}} de {{userStoryTotalTasks}} tasques tancades). Punts: {{userStoryPoints}}. Descripció: {{userStoryDescription}}",
-        "SECTION_NAME": "Detalls de la història d'usuari",
+        "SECTION_NAME": "User story",
         "LINK_TASKBOARD": "Panell de tasques",
         "TITLE_LINK_TASKBOARD": "Anar a panell de tasques",
         "TOTAL_POINTS": "punts totals",
@@ -992,6 +1000,17 @@
         "ASSIGN": "Assigna història d'usuari",
         "NOT_ESTIMATED": "Sense estimar",
         "TOTAL_US_POINTS": "Punts totals d'US",
+        "TRIBE": {
+            "PUBLISH": "Publish as Gig in Taiga Tribe",
+            "PUBLISH_INFO": "More info",
+            "PUBLISH_TITLE": "More info on publishing in Taiga Tribe",
+            "PUBLISHED_AS_GIG": "Story published as Gig in Taiga Tribe",
+            "EDIT_LINK": "Edit link",
+            "CLOSE": "Close",
+            "SYNCHRONIZE_LINK": "synchronize with Taiga Tribe",
+            "PUBLISH_MORE_INFO_TITLE": "Do you need somebody for this task?",
+            "PUBLISH_MORE_INFO_TEXT": "<p>If you need help with a particular piece of work you can easily create gigs on<a href='taigatribe.com' title='Taiga Tribe'> Taiga Tribe </a> and receive help from all over the world. You will be able to control and manage the gig enjoying a great community eager to contribute.</p><p><a href='taigatribe.com' title='Taiga Tribe'> TaigaTribe </a>  was born as a Taiga sibling. Both platforms can live separately but we believe that there is much power in using them combined so we are making sure the integration works like a charm.</p>"
+        },
         "FIELDS": {
             "TEAM_REQUIREMENT": "Requeriment d'equip",
             "CLIENT_REQUIREMENT": "Requeriment de client",
@@ -1179,7 +1198,7 @@
     "TASK": {
         "PAGE_TITLE": "{{taskSubject}} - Tasca {{taskRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Estat: {{taskStatus }}. Descripció: {{taskDescription}}",
-        "SECTION_NAME": "Detalls de la tasca",
+        "SECTION_NAME": "Task",
         "LINK_TASKBOARD": "Panell de tasques",
         "TITLE_LINK_TASKBOARD": "Anar a panell de tasques",
         "PLACEHOLDER_SUBJECT": "Afegix la descripció de la tasca",
@@ -1228,7 +1247,7 @@
         "PAGE_TITLE": "Incidències - {{projectName}}",
         "PAGE_DESCRIPTION": "El panell d'incidències de {{projectName}}: {{projectDescription}}",
         "LIST_SECTION_NAME": "Incidències",
-        "SECTION_NAME": "Detalls d'incidència",
+        "SECTION_NAME": "Issue",
         "ACTION_NEW_ISSUE": "+ NOVA INCIDÈNCIA",
         "ACTION_PROMOTE_TO_US": "Promocionar història d'usuari",
         "PLACEHOLDER_FILTER_NAME": "Escriu el filtre i pressiona Intro",

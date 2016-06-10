@@ -228,6 +228,7 @@
             "PREVIEW_BUTTON": "Förhandsvisa",
             "EDIT_BUTTON": "Redigera",
             "ATTACH_FILE_HELP": "Attach files by dragging & dropping on the textarea above.",
+            "ATTACH_FILE_HELP_SAVE_FIRST": "Save first before if you want to attach files by dragging & dropping on the textarea above.",
             "MARKDOWN_HELP": "Hjälp för markeringssyntax"
         },
         "PERMISIONS_CATEGORIES": {
@@ -556,6 +557,12 @@
             "ISSUE_TITLE": "Ärendetyper",
             "ACTION_ADD": "Lägg till ny {{objName}}"
         },
+        "PROJECT_VALUES_TAGS": {
+            "TITLE": "Tags",
+            "SUBTITLE": "View and edit the color of your user stories",
+            "EMPTY": "Currently there are no tags",
+            "EMPTY_SEARCH": "It looks like nothing was found with your search criteria"
+        },
         "ROLES": {
             "PAGE_TITLE": "Roller - {{projectName}}",
             "WARNING_NO_ROLE": "Var försiktig. Inga roller i ditt projekt kan estimera poängvärden för användarhistorier",
@@ -681,7 +688,8 @@
             "PRIORITIES": "Prioritet",
             "SEVERITIES": "Allvarsgrad",
             "TYPES": "Typ",
-            "CUSTOM_FIELDS": "Anpassade fält"
+            "CUSTOM_FIELDS": "Anpassade fält",
+            "TAGS": "Tags"
         },
         "SUBMENU_PROJECT_PROFILE": {
             "TITLE": "Projektprofil"
@@ -973,7 +981,7 @@
     "US": {
         "PAGE_TITLE": "{{userStorySubject}} - Användarhistorier {{userStoryRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Status: {{userStoryStatus }}. avslutad{{userStoryProgressPercentage}}% ({{userStoryClosedTasks}} av {{userStoryTotalTasks}} tasks closed). Poäng: {{userStoryPoints}}. Beskrivning: {{userStoryDescription}}",
-        "SECTION_NAME": "Detaljer för användarhistorier",
+        "SECTION_NAME": "User story",
         "LINK_TASKBOARD": "Uppgiftstavla",
         "TITLE_LINK_TASKBOARD": "Gå till uppgiftstavlan",
         "TOTAL_POINTS": "totalpoäng",
@@ -992,6 +1000,17 @@
         "ASSIGN": "Lägg till användarhistorie",
         "NOT_ESTIMATED": "Ej beräknad",
         "TOTAL_US_POINTS": "Total US-poäng",
+        "TRIBE": {
+            "PUBLISH": "Publish as Gig in Taiga Tribe",
+            "PUBLISH_INFO": "More info",
+            "PUBLISH_TITLE": "More info on publishing in Taiga Tribe",
+            "PUBLISHED_AS_GIG": "Story published as Gig in Taiga Tribe",
+            "EDIT_LINK": "Edit link",
+            "CLOSE": "Close",
+            "SYNCHRONIZE_LINK": "synchronize with Taiga Tribe",
+            "PUBLISH_MORE_INFO_TITLE": "Do you need somebody for this task?",
+            "PUBLISH_MORE_INFO_TEXT": "<p>If you need help with a particular piece of work you can easily create gigs on<a href='taigatribe.com' title='Taiga Tribe'> Taiga Tribe </a> and receive help from all over the world. You will be able to control and manage the gig enjoying a great community eager to contribute.</p><p><a href='taigatribe.com' title='Taiga Tribe'> TaigaTribe </a>  was born as a Taiga sibling. Both platforms can live separately but we believe that there is much power in using them combined so we are making sure the integration works like a charm.</p>"
+        },
         "FIELDS": {
             "TEAM_REQUIREMENT": "Teamets behov",
             "CLIENT_REQUIREMENT": "Kräver beställare",
@@ -1179,7 +1198,7 @@
     "TASK": {
         "PAGE_TITLE": "{{taskSubject}} - Uppgift {{taskRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Status: {{taskStatus }}. Beskrivning: {{taskDescription}}",
-        "SECTION_NAME": "Detaljer för uppgiften",
+        "SECTION_NAME": "Task",
         "LINK_TASKBOARD": "Uppgiftstavla",
         "TITLE_LINK_TASKBOARD": "Gå till uppgiftstavlan",
         "PLACEHOLDER_SUBJECT": "Skriv in den nya uppgiftens titel",
@@ -1228,7 +1247,7 @@
         "PAGE_TITLE": "Ärenden - {{projectName}}",
         "PAGE_DESCRIPTION": "Ärenden som listas för projektet {{projectName}}: {{projectDescription}}",
         "LIST_SECTION_NAME": "Ärenden",
-        "SECTION_NAME": "Detaljer för ärenden ",
+        "SECTION_NAME": "Issue",
         "ACTION_NEW_ISSUE": "+ NYTT ÄRENDE",
         "ACTION_PROMOTE_TO_US": "Flytta till användarhistorie",
         "PLACEHOLDER_FILTER_NAME": "Skriv filternamnet och tryck på <Enter>",

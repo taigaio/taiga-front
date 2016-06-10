@@ -228,6 +228,7 @@
             "PREVIEW_BUTTON": "Voorbeeld",
             "EDIT_BUTTON": "Bewerk",
             "ATTACH_FILE_HELP": "Attach files by dragging & dropping on the textarea above.",
+            "ATTACH_FILE_HELP_SAVE_FIRST": "Save first before if you want to attach files by dragging & dropping on the textarea above.",
             "MARKDOWN_HELP": "Markdown syntax help"
         },
         "PERMISIONS_CATEGORIES": {
@@ -556,6 +557,12 @@
             "ISSUE_TITLE": "Issues types",
             "ACTION_ADD": "Voeg nieuwe {{objName}} toe"
         },
+        "PROJECT_VALUES_TAGS": {
+            "TITLE": "Tags",
+            "SUBTITLE": "View and edit the color of your user stories",
+            "EMPTY": "Currently there are no tags",
+            "EMPTY_SEARCH": "It looks like nothing was found with your search criteria"
+        },
         "ROLES": {
             "PAGE_TITLE": "Rollen - {{projectName}}",
             "WARNING_NO_ROLE": "Wees voorzichtig, geen enkele rol in je project zal de puntenwaarde van een user story kunnen estimeren",
@@ -681,7 +688,8 @@
             "PRIORITIES": "Prioriteiten",
             "SEVERITIES": "Ernst",
             "TYPES": "Types",
-            "CUSTOM_FIELDS": "Eigen velden"
+            "CUSTOM_FIELDS": "Eigen velden",
+            "TAGS": "Tags"
         },
         "SUBMENU_PROJECT_PROFILE": {
             "TITLE": "Project profiel"
@@ -973,7 +981,7 @@
     "US": {
         "PAGE_TITLE": "{{userStorySubject}} - User Story {{userStoryRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Status: {{userStoryStatus }}. Voltooid {{userStoryProgressPercentage}}% ({{userStoryClosedTasks}} van {{userStoryTotalTasks}} taken gesloten). Punten: {{userStoryPoints}}. Omschrijving: {{userStoryDescription}}",
-        "SECTION_NAME": "User story details",
+        "SECTION_NAME": "User story",
         "LINK_TASKBOARD": "Taakbord",
         "TITLE_LINK_TASKBOARD": "Ga naar het dashboard",
         "TOTAL_POINTS": "totaal aantal punten",
@@ -992,6 +1000,17 @@
         "ASSIGN": "User story toewijzen",
         "NOT_ESTIMATED": "Niet ingeschat",
         "TOTAL_US_POINTS": "Totaal US punten",
+        "TRIBE": {
+            "PUBLISH": "Publish as Gig in Taiga Tribe",
+            "PUBLISH_INFO": "More info",
+            "PUBLISH_TITLE": "More info on publishing in Taiga Tribe",
+            "PUBLISHED_AS_GIG": "Story published as Gig in Taiga Tribe",
+            "EDIT_LINK": "Edit link",
+            "CLOSE": "Close",
+            "SYNCHRONIZE_LINK": "synchronize with Taiga Tribe",
+            "PUBLISH_MORE_INFO_TITLE": "Do you need somebody for this task?",
+            "PUBLISH_MORE_INFO_TEXT": "<p>If you need help with a particular piece of work you can easily create gigs on<a href='taigatribe.com' title='Taiga Tribe'> Taiga Tribe </a> and receive help from all over the world. You will be able to control and manage the gig enjoying a great community eager to contribute.</p><p><a href='taigatribe.com' title='Taiga Tribe'> TaigaTribe </a>  was born as a Taiga sibling. Both platforms can live separately but we believe that there is much power in using them combined so we are making sure the integration works like a charm.</p>"
+        },
         "FIELDS": {
             "TEAM_REQUIREMENT": "Eisen team",
             "CLIENT_REQUIREMENT": "Requirement van de klant",
@@ -1179,7 +1198,7 @@
     "TASK": {
         "PAGE_TITLE": "{{taskSubject}} - Taak {{taskRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Status: {{taskStatus }}. Omschrijving: {{taskDescription}}",
-        "SECTION_NAME": "Taak details",
+        "SECTION_NAME": "Task",
         "LINK_TASKBOARD": "Taakbord",
         "TITLE_LINK_TASKBOARD": "Ga naar het taakbord",
         "PLACEHOLDER_SUBJECT": "Type het nieuwe onderwerp voor de taak",
@@ -1228,7 +1247,7 @@
         "PAGE_TITLE": "Issues - {{projectName}}",
         "PAGE_DESCRIPTION": "Het issue lijst overzicht van het project {{projectName}}: {{projectDescription}}",
         "LIST_SECTION_NAME": "Issues",
-        "SECTION_NAME": "Issue details",
+        "SECTION_NAME": "Issue",
         "ACTION_NEW_ISSUE": "+ nieuw probleem",
         "ACTION_PROMOTE_TO_US": "Promoveer tot User Story",
         "PLACEHOLDER_FILTER_NAME": "Geef de filternaam in en druk op enter",

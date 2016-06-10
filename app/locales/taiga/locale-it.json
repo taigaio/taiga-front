@@ -228,6 +228,7 @@
             "PREVIEW_BUTTON": "Anteprima",
             "EDIT_BUTTON": "Modifica",
             "ATTACH_FILE_HELP": "Attach files by dragging & dropping on the textarea above.",
+            "ATTACH_FILE_HELP_SAVE_FIRST": "Save first before if you want to attach files by dragging & dropping on the textarea above.",
             "MARKDOWN_HELP": "Aiuto per la sintassi Markdown"
         },
         "PERMISIONS_CATEGORIES": {
@@ -556,6 +557,12 @@
             "ISSUE_TITLE": "Tipi di criticitá",
             "ACTION_ADD": "Aggiungi {{objName}}"
         },
+        "PROJECT_VALUES_TAGS": {
+            "TITLE": "Tags",
+            "SUBTITLE": "View and edit the color of your user stories",
+            "EMPTY": "Currently there are no tags",
+            "EMPTY_SEARCH": "It looks like nothing was found with your search criteria"
+        },
         "ROLES": {
             "PAGE_TITLE": "Ruoli - {{projectName}}",
             "WARNING_NO_ROLE": "Attento, nessun ruolo, all'interno del tuo progetto, potrà stimare i punti valore per le storie utente",
@@ -681,7 +688,8 @@
             "PRIORITIES": "priorità",
             "SEVERITIES": "Severitá",
             "TYPES": "Tipi",
-            "CUSTOM_FIELDS": "Campi personalizzati"
+            "CUSTOM_FIELDS": "Campi personalizzati",
+            "TAGS": "Tags"
         },
         "SUBMENU_PROJECT_PROFILE": {
             "TITLE": "Profilo progetto"
@@ -973,7 +981,7 @@
     "US": {
         "PAGE_TITLE": "{{userStorySubject}} - User Story {{userStoryRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Status: {{userStoryStatus }}. Completata per il {{userStoryProgressPercentage}}% ({{userStoryClosedTasks}} di {{userStoryTotalTasks}} tasks closed). Punti: {{userStoryPoints}}. Descrizione: {{userStoryDescription}}",
-        "SECTION_NAME": "Dettagli della storia utente",
+        "SECTION_NAME": "User story",
         "LINK_TASKBOARD": "Pannello dei compiti",
         "TITLE_LINK_TASKBOARD": "Vai al pannello dei compiti",
         "TOTAL_POINTS": "totale punti",
@@ -992,6 +1000,17 @@
         "ASSIGN": "Assegna la storia utente",
         "NOT_ESTIMATED": "Non stimato",
         "TOTAL_US_POINTS": "Totale punti della storia utente",
+        "TRIBE": {
+            "PUBLISH": "Publish as Gig in Taiga Tribe",
+            "PUBLISH_INFO": "More info",
+            "PUBLISH_TITLE": "More info on publishing in Taiga Tribe",
+            "PUBLISHED_AS_GIG": "Story published as Gig in Taiga Tribe",
+            "EDIT_LINK": "Edit link",
+            "CLOSE": "Close",
+            "SYNCHRONIZE_LINK": "synchronize with Taiga Tribe",
+            "PUBLISH_MORE_INFO_TITLE": "Do you need somebody for this task?",
+            "PUBLISH_MORE_INFO_TEXT": "<p>If you need help with a particular piece of work you can easily create gigs on<a href='taigatribe.com' title='Taiga Tribe'> Taiga Tribe </a> and receive help from all over the world. You will be able to control and manage the gig enjoying a great community eager to contribute.</p><p><a href='taigatribe.com' title='Taiga Tribe'> TaigaTribe </a>  was born as a Taiga sibling. Both platforms can live separately but we believe that there is much power in using them combined so we are making sure the integration works like a charm.</p>"
+        },
         "FIELDS": {
             "TEAM_REQUIREMENT": "Requisito del team",
             "CLIENT_REQUIREMENT": "Requisito del client",
@@ -1179,7 +1198,7 @@
     "TASK": {
         "PAGE_TITLE": "{{taskSubject}} - Compiti {{taskRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Stato: {{taskStatus }}. Descrizione: {{taskDescription}}",
-        "SECTION_NAME": "Dettagli del compito",
+        "SECTION_NAME": "Task",
         "LINK_TASKBOARD": "Pannello dei compiti",
         "TITLE_LINK_TASKBOARD": "Vai al pannello dei compiti",
         "PLACEHOLDER_SUBJECT": "Inserisci il soggetto del nuovo compito",
@@ -1228,7 +1247,7 @@
         "PAGE_TITLE": "Criticitá - {{projectName}}",
         "PAGE_DESCRIPTION": "Il pannello con la lista dei problemi del progetto {{projectName}}: {{projectDescription}}",
         "LIST_SECTION_NAME": "problemi",
-        "SECTION_NAME": "Dettagli della criticitá",
+        "SECTION_NAME": "Issue",
         "ACTION_NEW_ISSUE": "+ NUOVA CRITICITÁ",
         "ACTION_PROMOTE_TO_US": "Promuovi la storia utente",
         "PLACEHOLDER_FILTER_NAME": "Scrivi il nome del filtro e premi invio",

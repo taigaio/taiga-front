@@ -228,6 +228,7 @@
             "PREVIEW_BUTTON": "Aperçu",
             "EDIT_BUTTON": "Modifier",
             "ATTACH_FILE_HELP": "Attach files by dragging & dropping on the textarea above.",
+            "ATTACH_FILE_HELP_SAVE_FIRST": "Save first before if you want to attach files by dragging & dropping on the textarea above.",
             "MARKDOWN_HELP": "Aide sur la syntaxe Markdown"
         },
         "PERMISIONS_CATEGORIES": {
@@ -556,6 +557,12 @@
             "ISSUE_TITLE": "Types de tickets",
             "ACTION_ADD": "Ajouter un nouveau {{objName}}"
         },
+        "PROJECT_VALUES_TAGS": {
+            "TITLE": "Tags",
+            "SUBTITLE": "View and edit the color of your user stories",
+            "EMPTY": "Currently there are no tags",
+            "EMPTY_SEARCH": "It looks like nothing was found with your search criteria"
+        },
         "ROLES": {
             "PAGE_TITLE": "Rôles - {{projectName}}",
             "WARNING_NO_ROLE": "Attention, aucun rôle dans votre projet ne pourra estimer la valeur du point pour les récits utilisateurs",
@@ -681,7 +688,8 @@
             "PRIORITIES": "Priorités",
             "SEVERITIES": "Gravité",
             "TYPES": "Types",
-            "CUSTOM_FIELDS": "Champs personnalisés"
+            "CUSTOM_FIELDS": "Champs personnalisés",
+            "TAGS": "Tags"
         },
         "SUBMENU_PROJECT_PROFILE": {
             "TITLE": "Profil projet"
@@ -973,7 +981,7 @@
     "US": {
         "PAGE_TITLE": "{{userStorySubject}} - Récit utilisateur {{userStoryRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "État : {{userStoryStatus }}. Achevé {{userStoryProgressPercentage}}% ({{userStoryClosedTasks}} sur {{userStoryTotalTasks}} tâches fermées). Points : {{userStoryPoints}}. Description : {{userStoryDescription}}",
-        "SECTION_NAME": "Détails du récit utilisateur",
+        "SECTION_NAME": "User story",
         "LINK_TASKBOARD": "Tableau des tâches",
         "TITLE_LINK_TASKBOARD": "Aller au tableau des tâches",
         "TOTAL_POINTS": "total des points",
@@ -992,6 +1000,17 @@
         "ASSIGN": "Affecter le récit utilisateur",
         "NOT_ESTIMATED": "Non estimé",
         "TOTAL_US_POINTS": "Total des points RU",
+        "TRIBE": {
+            "PUBLISH": "Publish as Gig in Taiga Tribe",
+            "PUBLISH_INFO": "More info",
+            "PUBLISH_TITLE": "More info on publishing in Taiga Tribe",
+            "PUBLISHED_AS_GIG": "Story published as Gig in Taiga Tribe",
+            "EDIT_LINK": "Edit link",
+            "CLOSE": "Close",
+            "SYNCHRONIZE_LINK": "synchronize with Taiga Tribe",
+            "PUBLISH_MORE_INFO_TITLE": "Do you need somebody for this task?",
+            "PUBLISH_MORE_INFO_TEXT": "<p>If you need help with a particular piece of work you can easily create gigs on<a href='taigatribe.com' title='Taiga Tribe'> Taiga Tribe </a> and receive help from all over the world. You will be able to control and manage the gig enjoying a great community eager to contribute.</p><p><a href='taigatribe.com' title='Taiga Tribe'> TaigaTribe </a>  was born as a Taiga sibling. Both platforms can live separately but we believe that there is much power in using them combined so we are making sure the integration works like a charm.</p>"
+        },
         "FIELDS": {
             "TEAM_REQUIREMENT": "Besoin projet",
             "CLIENT_REQUIREMENT": "Besoin client",
@@ -1179,7 +1198,7 @@
     "TASK": {
         "PAGE_TITLE": "{{taskSubject}} - Tâche {{taskRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "État : {{taskStatus }}. Description : {{taskDescription}}",
-        "SECTION_NAME": "Détails de la tâche",
+        "SECTION_NAME": "Task",
         "LINK_TASKBOARD": "Tableau des tâches",
         "TITLE_LINK_TASKBOARD": "Aller au tableau des tâches",
         "PLACEHOLDER_SUBJECT": "Entrez l'objet de la nouvelle tâche",
@@ -1228,7 +1247,7 @@
         "PAGE_TITLE": "Tickets - {{projectName}}",
         "PAGE_DESCRIPTION": "Le panneau de la liste des tickets du projet {{projectName}} : {{projectDescription}}",
         "LIST_SECTION_NAME": "Tickets",
-        "SECTION_NAME": "Détails du ticket",
+        "SECTION_NAME": "Issue",
         "ACTION_NEW_ISSUE": "+ NOUVEAU TICKET",
         "ACTION_PROMOTE_TO_US": "Promouvoir en récit utilisateur",
         "PLACEHOLDER_FILTER_NAME": "Écrivez le nom du filtre et appuyez sur \"Entrée\"",

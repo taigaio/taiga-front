@@ -41,13 +41,13 @@
         "IOCAINE_TEXT": "Чувствуете, что задание берет верх над вами? Дайте другим знать об этом, нажав на \"Иокаин\", когда редактируете задание. Возможно стать неуязвимым к этому (выдуманному) смертельном яду, потребляя небольшие количества время от времени, так же как возможно стать лучше в том, что вы делаете, временами беря на себя дополнительные препятствия!",
         "CLIENT_REQUIREMENT": "Client requirement is new requirement that was not previously expected and it is required to be part of the project",
         "TEAM_REQUIREMENT": "Team requirement is a requirement that must exist in the project but should have no cost for the client",
-        "OWNER": "Project Owner",
+        "OWNER": "Владелец проекта",
         "CAPSLOCK_WARNING": "Be careful! You are using capital letters in an input field that is case sensitive.",
         "CONFIRM_CLOSE_EDIT_MODE_TITLE": "Are you sure you want to close the edit mode?",
         "CONFIRM_CLOSE_EDIT_MODE_MESSAGE": "Remember that if you close the edit mode without saving all the changes will be lost",
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Кажется, это значение некорректно.",
-            "TYPE_EMAIL": "Это значение должно быть корректным email-адресом.",
+            "TYPE_EMAIL": "Значение должно быть корректной электронной почтой.",
             "TYPE_URL": "Это значение должно быть корректным URL-адресом.",
             "TYPE_URLSTRICT": "Это значение должно быть корректным URL-адресом.",
             "TYPE_NUMBER": "Это значение должно быть правильным числом",
@@ -228,6 +228,7 @@
             "PREVIEW_BUTTON": "Предварительный просмотр",
             "EDIT_BUTTON": "Редактировать",
             "ATTACH_FILE_HELP": "Attach files by dragging & dropping on the textarea above.",
+            "ATTACH_FILE_HELP_SAVE_FIRST": "Save first before if you want to attach files by dragging & dropping on the textarea above.",
             "MARKDOWN_HELP": "Помощь по синтаксису Markdown"
         },
         "PERMISIONS_CATEGORIES": {
@@ -287,7 +288,7 @@
     },
     "LOGIN_COMMON": {
         "HEADER": "У меня уже есть логин в Taiga",
-        "PLACEHOLDER_AUTH_NAME": "Логин или email (с учетом регистра)",
+        "PLACEHOLDER_AUTH_NAME": "Имя пользователя или электронная почта (с учётом регистра)",
         "LINK_FORGOT_PASSWORD": "Забыли?",
         "TITLE_LINK_FORGOT_PASSWORD": "Вы забыли свой пароль?",
         "ACTION_ENTER": "Ввод",
@@ -295,7 +296,7 @@
         "PLACEHOLDER_AUTH_PASSWORD": "Пароль (чувствителен к регистру)"
     },
     "LOGIN_FORM": {
-        "ERROR_AUTH_INCORRECT": "Oompa Loompas считает, что Ваш логин, email или пароль неправильный.",
+        "ERROR_AUTH_INCORRECT": "Oompa Loompas считает, что ваше имя пользователя, электронная почта или пароль неправильные.",
         "SUCCESS": "Oompa Loompas счастлив, добро пожаловать в Тайгу!"
     },
     "REGISTER": {
@@ -306,7 +307,7 @@
         "TITLE": "Зарегистрируйте аккаунт Taiga (бесплатно)",
         "PLACEHOLDER_NAME": "Выберите имя учётной записи (с учётом регистра)",
         "PLACEHOLDER_FULL_NAME": "Введите Ваше полное имя",
-        "PLACEHOLDER_EMAIL": "Ваш email",
+        "PLACEHOLDER_EMAIL": "Ваша электронная почта",
         "PLACEHOLDER_PASSWORD": "Задайте новый пароль (с учетом регистра)",
         "ACTION_SIGN_UP": "Зарегистрироваться",
         "TITLE_LINK_LOGIN": "Войти",
@@ -318,12 +319,12 @@
     },
     "FORGOT_PASSWORD_FORM": {
         "TITLE": "Упс, забыли пароль?",
-        "SUBTITLE": "Введите Ваш логин или email для получения нового пароля",
-        "PLACEHOLDER_FIELD": "Логин или e-mail",
+        "SUBTITLE": "Введите ваше имя пользователя или электронную почту, чтобы получить новый пароль",
+        "PLACEHOLDER_FIELD": "Имя пользователя или электронная почта",
         "ACTION_RESET_PASSWORD": "Сбросить пароль",
         "LINK_CANCEL": "Не, давай назад, думаю я вспомню.",
-        "SUCCESS_TITLE": "Check your inbox!",
-        "SUCCESS_TEXT": "We sent you an email with the instructions to set a new password",
+        "SUCCESS_TITLE": "Проверьте Вашу почту!",
+        "SUCCESS_TEXT": "Мы отправили вам письмо с инструкциями по восстановлению пароля",
         "ERROR": "Умпа-Лумпы говорят, что вы еще не зарегистрированы."
     },
     "CHANGE_PASSWORD": {
@@ -425,7 +426,7 @@
             "LOADING_TITLE": "Мы создали ваш файл резервной копии",
             "DUMP_READY": "Файл резервной копии готов!",
             "LOADING_MESSAGE": "Пожалуйста, не закрывайте эту страницу",
-            "ASYNC_MESSAGE": "Мы отправим вам email когда будет готово.",
+            "ASYNC_MESSAGE": "Мы отправим вам письмо когда будет готово.",
             "SYNC_MESSAGE": "Если загрузка не начинается самостоятельно, нажмите <a href='{{url}}' download title='Download the dump file'>здесь</a>.",
             "ERROR": "У Oompa Loompas возникли проблемы при создании резервной копии. Повторите еще раз.",
             "ERROR_BUSY": "Извините, Oompa Loompas очень загружен сейчас. Повторите через несколько минут.",
@@ -437,7 +438,7 @@
             "DISABLE": "Выключить",
             "BACKLOG": "Список задач",
             "BACKLOG_DESCRIPTION": "Управляйте пользовательскими историями, чтобы поддерживать организованное видение важных и приоритетных задач.",
-            "NUMBER_SPRINTS": "Expected number of sprints",
+            "NUMBER_SPRINTS": "Ожидаемое количество спринтов",
             "NUMBER_SPRINTS_HELP": "0 for an undetermined number",
             "NUMBER_US_POINTS": "Expected total of story points",
             "NUMBER_US_POINTS_HELP": "0 for an undetermined number",
@@ -448,9 +449,9 @@
             "WIKI": "Вики",
             "WIKI_DESCRIPTION": "Добавляйте, изменяйте или удаляйте контент совместно с остальными. Это самое правильное место для документации вашего проекта.",
             "MEETUP": "Созвониться",
-            "MEETUP_DESCRIPTION": "Choose your videoconference system.",
+            "MEETUP_DESCRIPTION": "Выберите Вашу систему видеоконференций",
             "SELECT_VIDEOCONFERENCE": "Выберите систему видеоконференций",
-            "SALT_CHAT_ROOM": "Add a prefix to the chatroom name",
+            "SALT_CHAT_ROOM": "Добавить префикс к имени чата",
             "JITSI_CHAT_ROOM": "Jitsi",
             "APPEARIN_CHAT_ROOM": "AppearIn",
             "TALKY_CHAT_ROOM": "Talky",
@@ -472,19 +473,19 @@
             "PRIVATE_OR_PUBLIC": "В чём разница между публичными и приватными проектами?",
             "DELETE": "Удалить проект",
             "LOGO_HELP": "Изображение будет отмасштабировано до 80x80px.",
-            "CHANGE_LOGO": "Change logo",
+            "CHANGE_LOGO": "Изменить лого",
             "ACTION_USE_DEFAULT_LOGO": "Использовать картинку по умолчанию",
             "MAX_PRIVATE_PROJECTS": "You've reached the maximum number of private projects allowed by your current plan",
             "MAX_PRIVATE_PROJECTS_MEMBERS": "The maximum number of members for private projects has been exceeded",
             "MAX_PUBLIC_PROJECTS": "Unfortunately, you've reached the maximum number of public projects allowed by your current plan",
             "MAX_PUBLIC_PROJECTS_MEMBERS": "The project exceeds your maximum number of members for public projects",
-            "PROJECT_OWNER": "Project owner",
+            "PROJECT_OWNER": "Владелец проекта",
             "REQUEST_OWNERSHIP": "Request ownership",
-            "REQUEST_OWNERSHIP_CONFIRMATION_TITLE": "Do you want to become the new project owner?",
+            "REQUEST_OWNERSHIP_CONFIRMATION_TITLE": "Хотите стать новым владельцем проекта?",
             "REQUEST_OWNERSHIP_DESC": "Request that current project owner {{name}} transfer ownership of this project to you.",
             "REQUEST_OWNERSHIP_BUTTON": "Запрос",
-            "REQUEST_OWNERSHIP_SUCCESS": "We'll notify the project owner",
-            "CHANGE_OWNER": "Change owner",
+            "REQUEST_OWNERSHIP_SUCCESS": "Мы уведомим владельца проекта",
+            "CHANGE_OWNER": "Сменить владельца",
             "CHANGE_OWNER_SUCCESS_TITLE": "Ok, your request has been sent!",
             "CHANGE_OWNER_SUCCESS_DESC": "We will notify you by email if the project ownership request is accepted or declined"
         },
@@ -555,6 +556,12 @@
             "SUBTITLE": "Укажите, какие типы смогут иметь ваши запросы",
             "ISSUE_TITLE": "Типы запросов",
             "ACTION_ADD": "Добавить новый"
+        },
+        "PROJECT_VALUES_TAGS": {
+            "TITLE": "Tags",
+            "SUBTITLE": "View and edit the color of your user stories",
+            "EMPTY": "Currently there are no tags",
+            "EMPTY_SEARCH": "It looks like nothing was found with your search criteria"
         },
         "ROLES": {
             "PAGE_TITLE": "Роли - {{projectName}}",
@@ -681,7 +688,8 @@
             "PRIORITIES": "Приоритет",
             "SEVERITIES": "Степени важности",
             "TYPES": "Типы",
-            "CUSTOM_FIELDS": "Собственные поля"
+            "CUSTOM_FIELDS": "Собственные поля",
+            "TAGS": "Tags"
         },
         "SUBMENU_PROJECT_PROFILE": {
             "TITLE": "Профиль проекта"
@@ -697,8 +705,8 @@
         "PROJECT_TRANSFER": {
             "DO_YOU_ACCEPT_PROJECT_OWNERNSHIP": "Would you like to become the new project owner?",
             "PRIVATE": "Private",
-            "ACCEPTED_PROJECT_OWNERNSHIP": "Congratulations! You're now the new project owner.",
-            "REJECTED_PROJECT_OWNERNSHIP": "OK. We'll contact the current project owner",
+            "ACCEPTED_PROJECT_OWNERNSHIP": "Поздравляем! Вы новый владелец проекта.",
+            "REJECTED_PROJECT_OWNERNSHIP": "Хорошо. Мы свяжемся с текущим владельцем проекта",
             "ACCEPT": "Принимаю",
             "REJECT": "Reject",
             "PROPOSE_OWNERSHIP": "<strong>{{owner}}</strong>, the current owner of the project <strong>{{project}}</strong> has asked that you become the new  project owner.",
@@ -771,8 +779,8 @@
         "WATCHERS_COUNTER_TITLE": "{total, plural, one{один наблюдатель} other{# наблюдателя (-ей)}}",
         "MEMBERS_COUNTER_TITLE": "{total, plural, one{one member} other{# members}}",
         "BLOCKED_PROJECT": {
-            "BLOCKED": "Blocked project",
-            "THIS_PROJECT_IS_BLOCKED": "This project is temporarily blocked",
+            "BLOCKED": "Заблокированный проект",
+            "THIS_PROJECT_IS_BLOCKED": "Этот проект временно заблокирован",
             "TO_UNBLOCK_CONTACT_THE_ADMIN_STAFF": "In order to unblock your projects, contact the administrator."
         },
         "STATS": {
@@ -890,8 +898,8 @@
             "SECTION_NAME": "Удалить аккаунт",
             "CONFIRM": "Вы уверены, что хотите удалить ваш аккаунт?",
             "NEWSLETTER_LABEL_TEXT": "Я больше не хочу получать вашу новостную рассылку",
-            "CANCEL": "Back to settings",
-            "ACCEPT": "Delete account",
+            "CANCEL": "Вернуться к настройкам",
+            "ACCEPT": "Удалить аккаунт",
             "BLOCK_PROJECT": "Note that all the projects you own projects will be <strong>blocked</strong> after you delete your account. If you do want a project blocked, transfer ownership to another member of each project prior to deleting your account.",
             "SUBTITLE": "Sorry to see you go. We'll be here if you should ever consider us again! :("
         },
@@ -949,7 +957,7 @@
         },
         "CREATE_MEMBER": {
             "PLACEHOLDER_INVITATION_TEXT": "(Необязательно) Добавьте персональный текст в приглашение. Скажите что-нибудь приятное вашим новым участникам ;-)",
-            "PLACEHOLDER_TYPE_EMAIL": "Укажите e-mail",
+            "PLACEHOLDER_TYPE_EMAIL": "Введите электронную почту",
             "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "Unfortunately, this project can't have more than <strong>{{maxMembers}}</strong> members.<br> If you would like to increase the current limit, please contact the administrator.",
             "LIMIT_USERS_WARNING_MESSAGE": "Unfortunately, this project can't have more than <strong>{{maxMembers}}</strong> members."
         },
@@ -957,23 +965,23 @@
             "TITLE": "Unfortunately, this project can't be left without an owner",
             "CURRENT_USER_OWNER": {
                 "DESC": "You are the current owner of this project. Before leaving, please transfer ownership to someone else.",
-                "BUTTON": "Change the project owner"
+                "BUTTON": "Сменить владельца проекта"
             },
             "OTHER_USER_OWNER": {
                 "DESC": "Unfortunately, you can't delete a member who is also the current project owner. First, please assign a new project owner.",
-                "BUTTON": "Request project owner change"
+                "BUTTON": "Запрос смены владельца проекта"
             }
         },
         "CHANGE_OWNER": {
-            "TITLE": "Who do you want to be the new project owner?",
-            "ADD_COMMENT": "Add comment",
-            "BUTTON": "Ask this project member to become the new project owner"
+            "TITLE": "Кого вы хотите назначить новым владельцем проекта?",
+            "ADD_COMMENT": "Добавить комментарий",
+            "BUTTON": "Предложить участнику проекта стать его новым владельцем"
         }
     },
     "US": {
         "PAGE_TITLE": "{{userStorySubject}} - Пользовательская История {{userStoryRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Статус: {{userStoryStatus }}. Выполнено {{userStoryProgressPercentage}}% ({{userStoryClosedTasks}} из {{userStoryTotalTasks}} задач). Очки: {{userStoryPoints}}. Описание: {{userStoryDescription}}",
-        "SECTION_NAME": "Детали пользовательских историй",
+        "SECTION_NAME": "User story",
         "LINK_TASKBOARD": "Панель задач",
         "TITLE_LINK_TASKBOARD": "Перейти к панели задач",
         "TOTAL_POINTS": "общее число очков",
@@ -992,6 +1000,17 @@
         "ASSIGN": "Поручить пользовательскую историю",
         "NOT_ESTIMATED": "Не оценено",
         "TOTAL_US_POINTS": "Всего очков за ПИ",
+        "TRIBE": {
+            "PUBLISH": "Publish as Gig in Taiga Tribe",
+            "PUBLISH_INFO": "More info",
+            "PUBLISH_TITLE": "More info on publishing in Taiga Tribe",
+            "PUBLISHED_AS_GIG": "Story published as Gig in Taiga Tribe",
+            "EDIT_LINK": "Edit link",
+            "CLOSE": "Close",
+            "SYNCHRONIZE_LINK": "synchronize with Taiga Tribe",
+            "PUBLISH_MORE_INFO_TITLE": "Do you need somebody for this task?",
+            "PUBLISH_MORE_INFO_TEXT": "<p>If you need help with a particular piece of work you can easily create gigs on<a href='taigatribe.com' title='Taiga Tribe'> Taiga Tribe </a> and receive help from all over the world. You will be able to control and manage the gig enjoying a great community eager to contribute.</p><p><a href='taigatribe.com' title='Taiga Tribe'> TaigaTribe </a>  was born as a Taiga sibling. Both platforms can live separately but we believe that there is much power in using them combined so we are making sure the integration works like a charm.</p>"
+        },
         "FIELDS": {
             "TEAM_REQUIREMENT": "Требование от Команды",
             "CLIENT_REQUIREMENT": "Требование клиента",
@@ -1179,7 +1198,7 @@
     "TASK": {
         "PAGE_TITLE": "{{taskSubject}} - Задача {{taskRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Статус: {{taskStatus }}. Описание: {{taskDescription}}",
-        "SECTION_NAME": "Детали задачи",
+        "SECTION_NAME": "Task",
         "LINK_TASKBOARD": "Панель задач",
         "TITLE_LINK_TASKBOARD": "Перейти к панели задач",
         "PLACEHOLDER_SUBJECT": "Укажите новое название задачи",
@@ -1218,17 +1237,17 @@
         "SUCCESS": "Oompa Loompas удалил ваш аккаунт"
     },
     "CHANGE_EMAIL_FORM": {
-        "TITLE": "Изменить e-mail",
+        "TITLE": "Сменить вашу электронную почту",
         "SUBTITLE": "Ещё один клик и Ваш email будет обновлён!",
         "PLACEHOLDER_INPUT_TOKEN": "изменить идентификатор email",
-        "ACTION_CHANGE_EMAIL": "изменить почту",
-        "SUCCESS": "Oompa Loompas обновил ваш e-mail"
+        "ACTION_CHANGE_EMAIL": "Сменить электронную почту",
+        "SUCCESS": "Наш Oompa Loompas обновил вашу электронную почту"
     },
     "ISSUES": {
         "PAGE_TITLE": "Запросы - {{projectName}}",
         "PAGE_DESCRIPTION": "Панель запросов проекта {{projectName}}: {{projectDescription}}",
         "LIST_SECTION_NAME": "Запросы",
-        "SECTION_NAME": "Детали запроса",
+        "SECTION_NAME": "Issue",
         "ACTION_NEW_ISSUE": "+НОВЫЙ ЗАПРОС",
         "ACTION_PROMOTE_TO_US": "Повысить до пользовательской истории",
         "PLACEHOLDER_FILTER_NAME": "Введите название фильтра и нажмите \"ввод\"",
@@ -1383,7 +1402,7 @@
         "CHANGE_PHOTO": "Изменить фото",
         "FIELD": {
             "USERNAME": "Имя пользователя",
-            "EMAIL": "Email",
+            "EMAIL": "Электронная почта",
             "FULL_NAME": "Полное имя",
             "PLACEHOLDER_FULL_NAME": "Полное имя (например, Игорь Николаев)",
             "BIO": "Биография (не более 210 символов)",
@@ -1399,7 +1418,7 @@
         "CREATE_PROJECT_TEXT": "Свежий и чистый! Так здóрово!",
         "CHOOSE_TEMPLATE": "Which template fits your project best?",
         "CHOOSE_TEMPLATE_TITLE": "More info about project templates",
-        "CHOOSE_TEMPLATE_INFO": "More info",
+        "CHOOSE_TEMPLATE_INFO": "Больше инфо",
         "PROJECT_DETAILS": "Project Details",
         "PUBLIC_PROJECT": "Public Project",
         "PRIVATE_PROJECT": "Private Project",

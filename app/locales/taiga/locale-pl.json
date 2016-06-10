@@ -228,6 +228,7 @@
             "PREVIEW_BUTTON": "Podgląd",
             "EDIT_BUTTON": "Edycja",
             "ATTACH_FILE_HELP": "Attach files by dragging & dropping on the textarea above.",
+            "ATTACH_FILE_HELP_SAVE_FIRST": "Save first before if you want to attach files by dragging & dropping on the textarea above.",
             "MARKDOWN_HELP": "Składnia Markdown pomoc"
         },
         "PERMISIONS_CATEGORIES": {
@@ -556,6 +557,12 @@
             "ISSUE_TITLE": "Typy zgłoszeń",
             "ACTION_ADD": "Dodaj nowy {{objName}}"
         },
+        "PROJECT_VALUES_TAGS": {
+            "TITLE": "Tags",
+            "SUBTITLE": "View and edit the color of your user stories",
+            "EMPTY": "Currently there are no tags",
+            "EMPTY_SEARCH": "It looks like nothing was found with your search criteria"
+        },
         "ROLES": {
             "PAGE_TITLE": "Role - {{projectName}}",
             "WARNING_NO_ROLE": "Bez przydzielenia ról w projekcie nie ma możliwości oceniania historyjek użytkownika. Umpa Lumpy nie będą wiedziały komu wolno to zrobić :)",
@@ -681,7 +688,8 @@
             "PRIORITIES": "Priorytety",
             "SEVERITIES": "Ważność",
             "TYPES": "Typy",
-            "CUSTOM_FIELDS": "Niestandardowe pola"
+            "CUSTOM_FIELDS": "Niestandardowe pola",
+            "TAGS": "Tags"
         },
         "SUBMENU_PROJECT_PROFILE": {
             "TITLE": "Profil projektu"
@@ -973,7 +981,7 @@
     "US": {
         "PAGE_TITLE": "{{userStorySubject}} - Historyjka użytkownika {{userStoryRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Status: {{userStoryStatus }}. Zakończono {{userStoryProgressPercentage}}% ({{userStoryClosedTasks}} z {{userStoryTotalTasks}} zadań). Punktów: {{userStoryPoints}}. Opis: {{userStoryDescription}}",
-        "SECTION_NAME": "Szczegóły historyjki użytkownika",
+        "SECTION_NAME": "User story",
         "LINK_TASKBOARD": "Tablica zadań",
         "TITLE_LINK_TASKBOARD": "Idź do listy zadań",
         "TOTAL_POINTS": "total points",
@@ -992,6 +1000,17 @@
         "ASSIGN": "Przypisz historyjkę użytkownika",
         "NOT_ESTIMATED": "Nie oszacowane",
         "TOTAL_US_POINTS": "Łącznie punktów",
+        "TRIBE": {
+            "PUBLISH": "Publish as Gig in Taiga Tribe",
+            "PUBLISH_INFO": "More info",
+            "PUBLISH_TITLE": "More info on publishing in Taiga Tribe",
+            "PUBLISHED_AS_GIG": "Story published as Gig in Taiga Tribe",
+            "EDIT_LINK": "Edit link",
+            "CLOSE": "Close",
+            "SYNCHRONIZE_LINK": "synchronize with Taiga Tribe",
+            "PUBLISH_MORE_INFO_TITLE": "Do you need somebody for this task?",
+            "PUBLISH_MORE_INFO_TEXT": "<p>If you need help with a particular piece of work you can easily create gigs on<a href='taigatribe.com' title='Taiga Tribe'> Taiga Tribe </a> and receive help from all over the world. You will be able to control and manage the gig enjoying a great community eager to contribute.</p><p><a href='taigatribe.com' title='Taiga Tribe'> TaigaTribe </a>  was born as a Taiga sibling. Both platforms can live separately but we believe that there is much power in using them combined so we are making sure the integration works like a charm.</p>"
+        },
         "FIELDS": {
             "TEAM_REQUIREMENT": "Wymaganie zespołu",
             "CLIENT_REQUIREMENT": "Wymaganie klienta",
@@ -1179,7 +1198,7 @@
     "TASK": {
         "PAGE_TITLE": "{{taskSubject}} - Zadanie {{taskRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Status: {{taskStatus }}. Opis: {{taskDescription}}",
-        "SECTION_NAME": "Szczegóły zadania",
+        "SECTION_NAME": "Task",
         "LINK_TASKBOARD": "Tablica zadań",
         "TITLE_LINK_TASKBOARD": "Idź do listy zadań",
         "PLACEHOLDER_SUBJECT": "Wpisz temat zadania",
@@ -1228,7 +1247,7 @@
         "PAGE_TITLE": "Zgłoszenia - {{projectName}}",
         "PAGE_DESCRIPTION": "Lista zgłoszeń w projekcie {{projectName}}: {{projectDescription}}",
         "LIST_SECTION_NAME": "Zgłoszenia",
-        "SECTION_NAME": "Szczegóły zgłoszenia",
+        "SECTION_NAME": "Issue",
         "ACTION_NEW_ISSUE": "+ NOWE ZGŁOSZENIE",
         "ACTION_PROMOTE_TO_US": "Awansuj na historyjkę użytkownika",
         "PLACEHOLDER_FILTER_NAME": "Wpisz nazwę filtru i kliknij enter",

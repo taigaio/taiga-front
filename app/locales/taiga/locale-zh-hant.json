@@ -228,6 +228,7 @@
             "PREVIEW_BUTTON": "預視　",
             "EDIT_BUTTON": "編輯",
             "ATTACH_FILE_HELP": "Attach files by dragging & dropping on the textarea above.",
+            "ATTACH_FILE_HELP_SAVE_FIRST": "Save first before if you want to attach files by dragging & dropping on the textarea above.",
             "MARKDOWN_HELP": "Markdown 語法協助"
         },
         "PERMISIONS_CATEGORIES": {
@@ -556,6 +557,12 @@
             "ISSUE_TITLE": "問題類型",
             "ACTION_ADD": "新增{{objName}}"
         },
+        "PROJECT_VALUES_TAGS": {
+            "TITLE": "Tags",
+            "SUBTITLE": "View and edit the color of your user stories",
+            "EMPTY": "Currently there are no tags",
+            "EMPTY_SEARCH": "It looks like nothing was found with your search criteria"
+        },
         "ROLES": {
             "PAGE_TITLE": "角色- {{projectName}}",
             "WARNING_NO_ROLE": "注意，你的專案中無角色可以評估使用者故事的點數",
@@ -681,7 +688,8 @@
             "PRIORITIES": "優先性",
             "SEVERITIES": "急迫性",
             "TYPES": "類型",
-            "CUSTOM_FIELDS": "客製化欄位"
+            "CUSTOM_FIELDS": "客製化欄位",
+            "TAGS": "Tags"
         },
         "SUBMENU_PROJECT_PROFILE": {
             "TITLE": "專案檔案"
@@ -973,7 +981,7 @@
     "US": {
         "PAGE_TITLE": "{{userStorySubject}} - 使用者故事 {{userStoryRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "狀態: {{userStoryStatus }}.已完成 {{userStoryProgressPercentage}}% ({{userStoryClosedTasks}} of {{userStoryTotalTasks}} tasks closed). 點數: {{userStoryPoints}}. 描述: {{userStoryDescription}}",
-        "SECTION_NAME": "使用者故事細節",
+        "SECTION_NAME": "User story",
         "LINK_TASKBOARD": "任務板",
         "TITLE_LINK_TASKBOARD": "到任務板去",
         "TOTAL_POINTS": "所有點數",
@@ -992,6 +1000,17 @@
         "ASSIGN": "指派使用者故事",
         "NOT_ESTIMATED": "無預估",
         "TOTAL_US_POINTS": "全部使用者故事點數",
+        "TRIBE": {
+            "PUBLISH": "Publish as Gig in Taiga Tribe",
+            "PUBLISH_INFO": "More info",
+            "PUBLISH_TITLE": "More info on publishing in Taiga Tribe",
+            "PUBLISHED_AS_GIG": "Story published as Gig in Taiga Tribe",
+            "EDIT_LINK": "Edit link",
+            "CLOSE": "Close",
+            "SYNCHRONIZE_LINK": "synchronize with Taiga Tribe",
+            "PUBLISH_MORE_INFO_TITLE": "Do you need somebody for this task?",
+            "PUBLISH_MORE_INFO_TEXT": "<p>If you need help with a particular piece of work you can easily create gigs on<a href='taigatribe.com' title='Taiga Tribe'> Taiga Tribe </a> and receive help from all over the world. You will be able to control and manage the gig enjoying a great community eager to contribute.</p><p><a href='taigatribe.com' title='Taiga Tribe'> TaigaTribe </a>  was born as a Taiga sibling. Both platforms can live separately but we believe that there is much power in using them combined so we are making sure the integration works like a charm.</p>"
+        },
         "FIELDS": {
             "TEAM_REQUIREMENT": "團隊要求",
             "CLIENT_REQUIREMENT": "客戶要求",
@@ -1179,7 +1198,7 @@
     "TASK": {
         "PAGE_TITLE": "{{taskSubject}} - 任務 {{taskRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "狀態: {{taskStatus }}.描述: {{taskDescription}}",
-        "SECTION_NAME": "任務細節",
+        "SECTION_NAME": "Task",
         "LINK_TASKBOARD": "任務板",
         "TITLE_LINK_TASKBOARD": "到任務板去",
         "PLACEHOLDER_SUBJECT": "鍵入新任務主旨",
@@ -1228,7 +1247,7 @@
         "PAGE_TITLE": "問題 - {{projectName}}",
         "PAGE_DESCRIPTION": " {{projectName}}的問題清單看版: {{projectDescription}}",
         "LIST_SECTION_NAME": "問題 ",
-        "SECTION_NAME": "問題細節",
+        "SECTION_NAME": "Issue",
         "ACTION_NEW_ISSUE": "+ 新問題　",
         "ACTION_PROMOTE_TO_US": "提昇到使用者故事",
         "PLACEHOLDER_FILTER_NAME": "寫入過濾器名稱後按下enter ",

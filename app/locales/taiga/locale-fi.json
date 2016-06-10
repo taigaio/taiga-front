@@ -228,6 +228,7 @@
             "PREVIEW_BUTTON": "Esikatselu",
             "EDIT_BUTTON": "Muokkaa",
             "ATTACH_FILE_HELP": "Attach files by dragging & dropping on the textarea above.",
+            "ATTACH_FILE_HELP_SAVE_FIRST": "Save first before if you want to attach files by dragging & dropping on the textarea above.",
             "MARKDOWN_HELP": "Merkintätavan ohjeet"
         },
         "PERMISIONS_CATEGORIES": {
@@ -556,6 +557,12 @@
             "ISSUE_TITLE": "Pyyntöjen tyypit",
             "ACTION_ADD": "Lisää uusi {{objName}}"
         },
+        "PROJECT_VALUES_TAGS": {
+            "TITLE": "Tags",
+            "SUBTITLE": "View and edit the color of your user stories",
+            "EMPTY": "Currently there are no tags",
+            "EMPTY_SEARCH": "It looks like nothing was found with your search criteria"
+        },
         "ROLES": {
             "PAGE_TITLE": "Roles - {{projectName}}",
             "WARNING_NO_ROLE": "Ole varovainen, yksikään rooli projektissasi ei voi arvioida käyttäjätarinoidesi kokoa",
@@ -681,7 +688,8 @@
             "PRIORITIES": "Tärkeydet",
             "SEVERITIES": "Vakavuudet",
             "TYPES": "Tyypit",
-            "CUSTOM_FIELDS": "Omat kentät"
+            "CUSTOM_FIELDS": "Omat kentät",
+            "TAGS": "Tags"
         },
         "SUBMENU_PROJECT_PROFILE": {
             "TITLE": "Projektin profiili"
@@ -973,7 +981,7 @@
     "US": {
         "PAGE_TITLE": "{{userStorySubject}} - User Story {{userStoryRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Status: {{userStoryStatus }}. Completed {{userStoryProgressPercentage}}% ({{userStoryClosedTasks}} of {{userStoryTotalTasks}} tasks closed). Points: {{userStoryPoints}}. Description: {{userStoryDescription}}",
-        "SECTION_NAME": "Käyttäjätarinan tiedot",
+        "SECTION_NAME": "User story",
         "LINK_TASKBOARD": "Tehtävätaulu",
         "TITLE_LINK_TASKBOARD": "Siirry tehtävätauluun",
         "TOTAL_POINTS": "total points",
@@ -992,6 +1000,17 @@
         "ASSIGN": "Käyttäjätarinan tekijä",
         "NOT_ESTIMATED": "Ei arvioitu",
         "TOTAL_US_POINTS": "Kt pisteet yhteensä",
+        "TRIBE": {
+            "PUBLISH": "Publish as Gig in Taiga Tribe",
+            "PUBLISH_INFO": "More info",
+            "PUBLISH_TITLE": "More info on publishing in Taiga Tribe",
+            "PUBLISHED_AS_GIG": "Story published as Gig in Taiga Tribe",
+            "EDIT_LINK": "Edit link",
+            "CLOSE": "Close",
+            "SYNCHRONIZE_LINK": "synchronize with Taiga Tribe",
+            "PUBLISH_MORE_INFO_TITLE": "Do you need somebody for this task?",
+            "PUBLISH_MORE_INFO_TEXT": "<p>If you need help with a particular piece of work you can easily create gigs on<a href='taigatribe.com' title='Taiga Tribe'> Taiga Tribe </a> and receive help from all over the world. You will be able to control and manage the gig enjoying a great community eager to contribute.</p><p><a href='taigatribe.com' title='Taiga Tribe'> TaigaTribe </a>  was born as a Taiga sibling. Both platforms can live separately but we believe that there is much power in using them combined so we are making sure the integration works like a charm.</p>"
+        },
         "FIELDS": {
             "TEAM_REQUIREMENT": "Tiimin vaatimus",
             "CLIENT_REQUIREMENT": "Asiakkaan vaatimus",
@@ -1179,7 +1198,7 @@
     "TASK": {
         "PAGE_TITLE": "{{taskSubject}} - Task {{taskRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Status: {{taskStatus }}. Description: {{taskDescription}}",
-        "SECTION_NAME": "Tehtävän tiedot",
+        "SECTION_NAME": "Task",
         "LINK_TASKBOARD": "Tehtävätaulu",
         "TITLE_LINK_TASKBOARD": "Siirry tehtävätauluun",
         "PLACEHOLDER_SUBJECT": "Anna tehtävän aihe",
@@ -1228,7 +1247,7 @@
         "PAGE_TITLE": "Issues - {{projectName}}",
         "PAGE_DESCRIPTION": "The issues list panel of the project {{projectName}}: {{projectDescription}}",
         "LIST_SECTION_NAME": "Pyynnöt",
-        "SECTION_NAME": "Pyynnön tiedot",
+        "SECTION_NAME": "Issue",
         "ACTION_NEW_ISSUE": "+ UUSI PYYNTÖ",
         "ACTION_PROMOTE_TO_US": "Liitä käyttäjätarinaan",
         "PLACEHOLDER_FILTER_NAME": "Anna suodattimen nimi ja paina enter",
