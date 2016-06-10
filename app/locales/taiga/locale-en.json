@@ -1459,6 +1459,7 @@
         "DELETE_LIGHTBOX_TITLE": "Delete Wiki Page",
         "DELETE_LINK_TITLE": "Delete Wiki link",
         "NAVIGATION": {
+            "HOME": "Main Page",
             "SECTION_NAME": "Links",
             "ACTION_ADD_LINK": "Add link",
             "ALL_PAGES": "All pages"
