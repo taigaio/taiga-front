@@ -981,7 +981,7 @@
     "US": {
         "PAGE_TITLE": "{{userStorySubject}} - User Story {{userStoryRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Status: {{userStoryStatus }}. Completed {{userStoryProgressPercentage}}% ({{userStoryClosedTasks}} of {{userStoryTotalTasks}} tasks closed). Points: {{userStoryPoints}}. Description: {{userStoryDescription}}",
-        "SECTION_NAME": "User story details",
+        "SECTION_NAME": "User story",
         "LINK_TASKBOARD": "Taskboard",
         "TITLE_LINK_TASKBOARD": "Go to the taskboard",
         "TOTAL_POINTS": "total points",
@@ -1198,7 +1198,7 @@
     "TASK": {
         "PAGE_TITLE": "{{taskSubject}} - Task {{taskRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Status: {{taskStatus }}. Description: {{taskDescription}}",
-        "SECTION_NAME": "Task details",
+        "SECTION_NAME": "Task",
         "LINK_TASKBOARD": "Taskboard",
         "TITLE_LINK_TASKBOARD": "Go to the taskboard",
         "PLACEHOLDER_SUBJECT": "Type the new task subject",
@@ -1247,7 +1247,7 @@
         "PAGE_TITLE": "Issues - {{projectName}}",
         "PAGE_DESCRIPTION": "The issues list panel of the project {{projectName}}: {{projectDescription}}",
         "LIST_SECTION_NAME": "Issues",
-        "SECTION_NAME": "Issue details",
+        "SECTION_NAME": "Issue",
         "ACTION_NEW_ISSUE": "+ NEW ISSUE",
         "ACTION_PROMOTE_TO_US": "Promote to User Story",
         "PLACEHOLDER_FILTER_NAME": "Write the filter name and press enter",
