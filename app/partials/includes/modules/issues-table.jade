@@ -47,7 +47,10 @@ section.issues-table.basic-table(ng-class="{empty: !issues.length}")
                     svg-icon="icon-arrow-down"
                 )
 
-        div.created-field(tg-bo-bind="issue.created_date|momentFormat:'DD MMM YYYY HH:mm'")
+        div.created-field(
+            tg-bo-bind="issue.created_date|momentFormat:'DD MMM YYYY'"
+            tg-bo-title="issue.created_date|momentFormat:'DD MMM YYYY HH:mm'"
+        )
 
         div.assigned-field(tg-issue-assigned-to-inline-edition="issue")
             div.issue-assignedto(title="{{'ISSUES.TABLE.TITLE_ACTION_ASSIGNED_TO' | translate}}")
