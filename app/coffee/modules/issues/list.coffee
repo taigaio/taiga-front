@@ -62,6 +62,7 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                   @navUrls, @events, @analytics, @translate, @errorHandlingService) ->
         @scope.sectionName = "Issues"
         @scope.filters = {}
+        @.voting = false
 
         if _.isEmpty(@location.search())
             filters = @rs.issues.getFilters(@params.pslug)
@@ -315,6 +316,27 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
     addIssuesInBulk: ->
         @rootscope.$broadcast("issueform:bulk", @scope.projectId)
 
+    upVoteIssue: (issueId) ->
+        @.voting = issueId
+        onSuccess = =>
+            @.loadIssues()
+            @.voting = null
+        onError = =>
+            @confirm.notify("error")
+            @.voting = null
+
+        return @rs.issues.upvote(issueId).then(onSuccess, onError)
+
+    downVoteIssue: (issueId) ->
+        @.voting = issueId
+        onSuccess = =>
+            @.loadIssues()
+            @.voting = null
+        onError = =>
+            @confirm.notify("error")
+            @.voting = null
+
+        return @rs.issues.downvote(issueId).then(onSuccess, onError)
 
 module.controller("IssuesController", IssuesController)
 
