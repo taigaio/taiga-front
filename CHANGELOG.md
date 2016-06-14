@@ -7,14 +7,14 @@
 - Show a confirmation notice when you exit edit mode by pressing ESC in the markdown inputs.
 - Add the tribe button to link stories from tree.taiga.io with gigs in tribe.taiga.io.
 - Errors (not found, server error, permissions and blocked project) don't change the current url.
-- Attachments image slider
-- New admin area to edit the tag colors used in your project
+- Neew Attachments image slider in preview mode.
+- New admin area to edit the tag colors used in your project.
 - Display the current user (me) at first in assignment lightbox (thanks to [@mikaoelitiana](https://github.com/mikaoelitiana))
 - Add a new permissions to allow add comments instead of use the existent modify permission for this purpose.
-- Ability to edit comments, view edition history and redesign comments module UI
+- Ability to edit comments, view edition history and redesign comments module UI.
 - Upvote and downvote issues from the issues list.
-- Divide dashboard in two columns in large screens
-
+- Divide dashboard in two columns in large screens,
+- Drag & Drop ordering for wiki links.
 
 ### Misc
 - Lots of small and not so small bugfixes.
