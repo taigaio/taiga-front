@@ -3,6 +3,7 @@
     "eventsUrl": null,
     "eventsMaxMissedHeartbeats": 5,
     "eventsHeartbeatIntervalTime": 60000,
+    "eventsReconnectTryInterval": 10000,
     "debug": true,
     "debugInfo": false,
     "defaultLanguage": "en",

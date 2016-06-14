@@ -96,6 +96,7 @@ class EventsService
 
         maxMissedHeartbeats =  @config.get("eventsMaxMissedHeartbeats", 5)
         heartbeatIntervalTime = @config.get("eventsHeartbeatIntervalTime", 60000)
+        reconnectTryInterval = @config.get("eventsReconnectTryInterval", 10000)
 
         @.missedHeartbeats = 0
         @.heartbeatInterval = setInterval(() =>
@@ -108,7 +109,7 @@ class EventsService
                 @log.debug("HeartBeat send PING")
             catch e
                 @log.error("HeartBeat error: " + e.message)
-                @.stopHeartBeatMessages()
+                @.setupConnection()
         , heartbeatIntervalTime)
 
         @log.debug("HeartBeat enabled")
@@ -228,11 +229,13 @@ class EventsService
     onError: (error) ->
         @log.error("WebSocket error: #{error}")
         @.error = true
+        setTimeout(@.setupConnection, @.reconnectTryInterval)
 
     onClose: ->
         @log.debug("WebSocket closed.")
         @.connected = false
         @.stopHeartBeatMessages()
+        setTimeout(@.setupConnection, @.reconnectTryInterval)
 
 
 class EventsProvider
