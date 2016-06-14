@@ -173,8 +173,6 @@ UserDisplayDirective = ($template, $compile, $translate, $navUrls)->
     #     div.creator(tg-user-display, tg-user-id="{{ user.id }}")
     #
     # Requirements:
-    #   - model object must have the attributes 'created_date' and
-    #     'owner'(ng-model)
     #   - scope.usersById object is required.
 
     link = ($scope, $el, $attrs) ->
@@ -185,7 +183,7 @@ UserDisplayDirective = ($template, $compile, $translate, $navUrls)->
             photo: "/" + window._version + "/images/user-noimage.png"
         }
 
-        $scope.url = if $scope.owner?.is_active then $navUrls.resolve("user-profile", {username: $scope.owner.username}) else ""
+        $scope.url = if $scope.user.is_active then $navUrls.resolve("user-profile", {username: $scope.user.username}) else ""
 
         $scope.$on "$destroy", ->
             $el.off()
