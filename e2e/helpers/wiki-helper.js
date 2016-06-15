@@ -17,8 +17,15 @@ helper.links = function() {
             return newLink;
         },
 
-        get: function() {
+        get: function(index) {
+            if(index !== null && index !== undefined)
+                return el.$$(".wiki-link a.link-title").get(index)
             return el.$$(".wiki-link a.link-title");
+        },
+
+        getNameOf: async function(index) {
+            let item = await obj.get(index)
+            return item.getText()
         },
 
         deleteLink: async function(link){
@@ -30,6 +37,12 @@ helper.links = function() {
     };
 
     return obj;
+};
+
+helper.dragAndDropLinks = async function(indexFrom, indexTo) {
+    let selectedLink = helper.links().get(indexFrom);
+    let newPosition = helper.links().get(indexTo);
+    return utils.common.drag(selectedLink, newPosition);
 };
 
 helper.editor = function(){

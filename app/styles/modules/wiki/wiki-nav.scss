@@ -2,9 +2,10 @@
     @include font-type(text);
     align-items: center;
     border-bottom: 1px solid $gray-light;
+    cursor: move;
     display: flex;
     justify-content: space-between;
-    padding: 1rem 0 1rem 1rem;
+    padding: 1rem 0;
     text-transform: uppercase;
     &:hover {
         .remove-wiki-page {
@@ -12,6 +13,20 @@
             opacity: 1;
             transition: opacity .2s linear;
             transition-delay: .2s;
+        }
+        .dragger {
+            cursor: move;
+            fill: $gray-light;
+            opacity: 1;
+            transition: opacity .2s linear;
+            transition-delay: .2s;
+        }
+    }
+    .dragger {
+        margin-right: .5rem;
+        opacity: 0;
+        svg {
+            @include svg-size(.9rem);
         }
     }
     .remove-wiki-page {
@@ -24,6 +39,7 @@
     }
     .link-title {
         cursor: pointer;
+        flex-grow: 1;
     }
     .icon-trash {
         fill: $gray-light;

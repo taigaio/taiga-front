@@ -57,6 +57,7 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
 
     constructor: (@scope, @rootscope, @repo, @model, @confirm, @rs, @params, @q, @location,
                   @filter, @log, @appMetaService, @navUrls, @analytics, @translate, @errorHandlingService) ->
+        @scope.$on("wiki:links:move", @.moveLink)
         @scope.projectSlug = @params.pslug
         @scope.wikiSlug = @params.slug
         @scope.wikiTitle = @scope.wikiSlug
@@ -155,6 +156,16 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
                 @confirm.notify("error")
 
             @repo.remove(@scope.wiki).then onSuccess, onError
+
+    moveLink: (ctx, item, itemIndex) =>
+        values = @scope.wikiLinks
+        r = values.indexOf(item)
+        values.splice(r, 1)
+        values.splice(itemIndex, 0, item)
+        _.each values, (value, index) ->
+            value.order = index
+
+        @repo.saveAll(values)
 
 module.controller("WikiDetailController", WikiDetailController)
 

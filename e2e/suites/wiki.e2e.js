@@ -20,6 +20,17 @@ describe('wiki', function() {
         await utils.common.takeScreenshot("wiki", "empty");
     });
 
+    it("drag & drop links", async function() {
+        let nameOld = await wikiHelper.links().getNameOf(0);
+
+        await wikiHelper.dragAndDropLinks(0, 1);
+
+        let nameNew = await wikiHelper.links().getNameOf(4);
+
+        expect(nameNew).to.be.equal(nameOld);
+
+    });
+
     it('add link', async function(){
         let timestamp = new Date().getTime();
         currentWiki.slug = "test-link" + timestamp;
