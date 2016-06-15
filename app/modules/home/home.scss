@@ -1,8 +1,31 @@
 .home-wrapper {
     display: flex;
+    @include breakpoint(tablet) {
+        flex-direction: column;
+    }
+    @include breakpoint(mobile) {
+        flex-direction: column;
+    }
     .duty-summary {
         flex: 1;
         margin-right: 2rem;
+    }
+    .dashboard-container {
+        display: flex;
+        flex-direction: row;
+        @include breakpoint(laptop) {
+            flex-direction: column;
+        }
+        @include breakpoint(tablet) {
+            flex-direction: column;
+        }
+        @include breakpoint(mobile) {
+            flex-direction: column;
+        }
+    }
+    .working-on-container {
+        margin-right: .5rem;
+        padding-right: .5rem;
     }
     .project-list {
         width: 250px;
@@ -12,11 +35,11 @@
     }
     .title-bar {
         @include font-type(light);
-        @include font-size(larger);
+        @include font-size(large);
         align-content: center;
         background: $mass-white;
         display: flex;
         margin: 0 0 .5rem;
-        padding: .9rem 1rem;
+        padding: .5rem 1rem;
     }
 }
