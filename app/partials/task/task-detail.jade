@@ -94,8 +94,13 @@ div.wrapper(
             project-id="projectId"
             edit-permission = "modify_task"
         )
-
-        tg-history(ng-model="task", type="task")
+        
+        tg-history-section(
+            ng-if="task"
+            type="task"
+            name="task"
+            id="task.id"
+        )
 
     sidebar.menu-secondary.sidebar.ticket-data
 

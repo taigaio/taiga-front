@@ -1,0 +1,19 @@
+.diff-custom-new(
+    ng-if="vm.diff.new.length"
+    ng-repeat="newCustom in vm.diff.new"
+)
+    span.key(translate="ACTIVITY.CREATED_CUSTOM_ATTRIBUTE")
+    span.diff ({{newCustom.name}})
+    span.diff {{newCustom.value}}
+    
+.diff-custom-new(
+    ng-if="vm.diff.changed.length"
+    ng-repeat="changeCustom in vm.diff.changed"
+)
+    span.key(translate="ACTIVITY.UPDATED_CUSTOM_ATTRIBUTE")
+    span.diff ({{changeCustom.name}})
+    span.diff {{changeCustom.changes.value[0]}}
+    tg-svg(
+        svg-icon="icon-arrow-right"
+    )
+    span.diff {{changeCustom.changes.value[1]}}

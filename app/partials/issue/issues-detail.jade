@@ -92,10 +92,12 @@ div.wrapper(
             project-id="projectId"
             edit-permission = "modify_issue"
         )
-
-        tg-history(
-            ng-model="issue"
+        
+        tg-history-section(
+            ng-if="issue"
             type="issue"
+            name="issue"
+            id="issue.id"
         )
 
     sidebar.menu-secondary.sidebar.ticket-data

@@ -90,9 +90,12 @@ div.wrapper(
             edit-permission = "modify_us"
         )
 
-        tg-history(
-            ng-model="us"
+        tg-history-section(
+            ng-if="us"
             type="us"
+            name="us"
+            id="us.id"
+            project-id="projectId"
         )
 
     sidebar.menu-secondary.sidebar.ticket-data

@@ -1,6 +1,4 @@
 ###
-# Copyright (C) 2014-2016 Taiga Agile LLC <taiga@taiga.io>
-#
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
 # published by the Free Software Foundation, either version 3 of the
@@ -14,21 +12,17 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: check-permissions.service.coffee
+# File: comments.controller.coffee
 ###
 
-taiga = @.taiga
+module = angular.module("taigaHistory")
 
-class CheckPermissionsService
-    @.$inject = [
-        "tgProjectService"
-    ]
+class CommentsController
+    @.$inject = []
 
-    constructor: (@projectService) ->
+    constructor: () ->
 
-    check: (permission) ->
-        return false if !@projectService.project
+    initializePermissions: () ->
+        @.canAddCommentPermission = 'comment_' + @.name
 
-        return @projectService.project.get('my_permissions').indexOf(permission) != -1
-
-angular.module("taigaCommon").service("tgCheckPermissionsService", CheckPermissionsService)
+module.controller("CommentsCtrl", CommentsController)

@@ -68,7 +68,7 @@ describe('User story detail', function(){
 
     describe('watchers edition', sharedDetail.watchersTesting);
 
-    it('history', sharedDetail.historyTesting);
+    it('history', sharedDetail.historyTesting.bind(this, "user-stories"));
 
     it('block', sharedDetail.blockTesting);
 

@@ -1,0 +1,29 @@
+section.history
+    tg-history-tabs(
+        on-active-comments="vm.onActiveHistoryTab(true)"
+        on-active-activities="vm.onActiveHistoryTab(false)"
+        active-tab="vm.viewComments",
+        on-order-comments="vm.onOrderComments()"
+        comments-num="vm.commentsNum"
+        activities-num="vm.activitiesNum"
+        on-reverse="vm.reverse"
+    )
+    tg-comments(
+        ng-if="vm.viewComments"
+        comments="vm.comments"
+        on-delete-comment="vm.deleteComment(commentId)"
+        on-restore-deleted-comment="vm.restoreDeletedComment(commentId)"
+        on-add-comment="vm.addComment()"
+        on-edit-comment="vm.editComment(commentId, commentData)"
+        object="{{vm.id}}"
+        type="vm.type"
+        name="{{vm.name}}"
+        loading="vm.loading"
+        editing="vm.editing"
+        deleting="vm.deleting"
+        project-id="vm.projectId"
+    )
+    tg-history(
+        ng-if="!vm.viewComments"
+        activities="vm.activities"
+    )

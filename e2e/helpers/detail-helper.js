@@ -16,8 +16,9 @@ helper.title = function() {
             el.$('.edit-subject input').clear().sendKeys(title);
         },
 
-        save: function() {
+        save: async function() {
             el.$('.save').click();
+            await browser.waitForAngular();
         }
     };
 
@@ -144,17 +145,37 @@ helper.assignedTo = function() {
     return obj;
 };
 
+helper.editComment = function() {
+  let el = $('.comment-editor');
+  let obj = {
+      el:el,
+
+      updateText: function (text) {
+          el.$('textarea').sendKeys(text);
+      },
+
+      saveComment: async function () {
+          el.$('.save-comment').click()
+          await browser.waitForAngular();
+      }
+  }
+  return obj;
+
+};
+
 helper.history = function() {
     let el = $('section.history');
     let obj = {
         el:el,
 
-        selectCommentsTab: function() {
-            el.$$('.history-tabs li a').first().click();
+        selectCommentsTab: async function() {
+            el.$('.e2e-comments-tab').click();
+            await browser.waitForAngular();
         },
 
-        selectActivityTab: function() {
-            el.$$('.history-tabs li a').last().click();
+        selectActivityTab: async function() {
+            el.$('.e2e-activity-tab').click();
+            await browser.waitForAngular();
         },
 
         addComment: async function(comment) {
@@ -168,46 +189,65 @@ helper.history = function() {
         },
 
         countComments: async function() {
-            let moreComments = el.$('.comments-list .show-more-comments');
-            let moreCommentsIsPresent = await moreComments.isPresent();
-            if (moreCommentsIsPresent){
-                moreComments.click();
-            }
-            await browser.waitForAngular();
-            let comments = await el.$$(".activity-single.comment");
+            let comments = await el.$$(".comment-wrapper");
             return comments.length;
         },
 
         countActivities: async function() {
-            let moreActivities = el.$('.changes-list .show-more-comments');
-            let selectActivityTabIsPresent = await moreActivities.isPresent();
-            if (selectActivityTabIsPresent){
-                utils.common.link(moreActivities);
-                // moreActivities.click();
-            }
-            await browser.waitForAngular();
-            let activities = await el.$$(".activity-single.activity");
+            let activities = await el.$$(".activity");
             return activities.length;
         },
 
         countDeletedComments: async function() {
-            let moreComments = el.$('.comments-list .show-more-comments');
-            let moreCommentsIsPresent = await moreComments.isPresent();
-            if (moreCommentsIsPresent){
-                moreComments.click();
-            }
-            await browser.waitForAngular();
-            let comments = await el.$$(".activity-single.comment.deleted-comment");
+            let comments = await el.$$(".deleted-comment-wrapper");
             return comments.length;
         },
 
+        editLastComment: async function() {
+            let lastComment = el.$$(".comment-wrapper").last()
+            browser
+               .actions()
+               .mouseMove(lastComment)
+               .perform();
+
+            lastComment.$$(".comment-option").first().click();
+            await browser.waitForAngular();
+        },
+
         deleteLastComment: async function() {
-            el.$$(".activity-single.comment .comment-delete").last().click();
+            let lastComment = el.$$(".comment-wrapper").last()
+            browser
+               .actions()
+               .mouseMove(lastComment)
+               .perform();
+
+            lastComment.$$(".comment-option").last().click();
+            await browser.waitForAngular();
+        },
+
+        showVersionsLastComment: async function() {
+          el.$$(".comment-edited a").last().click();
+          await browser.waitForAngular();
+        },
+
+        closeVersionsLastComment: async function() {
+          $(".lightbox-display-historic .close").click();
+          await browser.waitForAngular();
+        },
+
+        enableEditModeLastComment: async function() {
+            let lastComment = el.$$(".comment-wrapper").last()
+            browser
+               .actions()
+               .mouseMove(lastComment)
+               .perform();
+
+            lastComment.$$(".comment-option").last().click();
             await browser.waitForAngular();
         },
 
         restoreLastComment: async function() {
-            el.$$(".activity-single.comment.deleted-comment .comment-restore").last().click();
+            el.$$(".deleted-comment-wrapper .restore-comment").last().click();
             await browser.waitForAngular();
         }
     }

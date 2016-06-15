@@ -83,7 +83,7 @@ MarkitupDirective = ($rootscope, $rs, $selectedText, $template, $compile, $trans
             markdownDomNode = element.parents(".markdown")
             markItUpDomNode = element.parents(".markItUp")
 
-            $rs.mdrender.render($scope.projectId, $model.$modelValue).then (data) ->
+            $rs.mdrender.render($scope.projectId || $scope.vm.projectId, $model.$modelValue).then (data) ->
                 html = previewTemplate({data: data.data})
                 html = $compile(html)($scope)
 
