@@ -16,12 +16,24 @@ section.issues-table.basic-table(ng-class="{empty: !issues.length}")
         div.level-field(tg-listitem-type="issue")
         div.level-field(tg-listitem-severity="issue")
         div.level-field(tg-listitem-priority="issue")
-        div.votes(
-            ng-class="{'inactive': !issue.total_voters, 'is-voted': issue.is_voter}"
+        div.votes.ng-animate-disabled(
+            ng-class="{'inactive': !issue.total_voters}"
+            ng-if="!issue.is_voter"
             title="{{ 'COMMON.VOTE_BUTTON.COUNTER_TITLE'|translate:{total:issue.total_voters||0}:'messageformat' }}"
+            ng-click="ctrl.upVoteIssue(issue.id)"
+            tg-loading="ctrl.voting == issue.id"
         )
             tg-svg(svg-icon="icon-upvote")
-            span {{ ::issue.total_voters }}
+            span {{ issue.total_voters }}
+        div.votes.ng-animate-disabled(
+            ng-class="{'is-voted': issue.is_voter}"
+            ng-if="issue.is_voter"
+            title="{{ 'COMMON.VOTE_BUTTON.COUNTER_TITLE'|translate:{total:issue.total_voters||0}:'messageformat' }}"
+            ng-click="ctrl.downVoteIssue(issue.id)"
+            tg-loading="ctrl.voting == issue.id"
+        )
+            tg-svg(svg-icon="icon-upvote")
+            span {{ issue.total_voters }}
         div.subject
             a(
                 href=""

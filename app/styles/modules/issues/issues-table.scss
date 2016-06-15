@@ -59,21 +59,43 @@
     }
     .votes {
         color: $gray;
+        cursor: pointer;
         flex-basis: 75px;
         flex-shrink: 0;
         text-align: center;
         width: 75px;
+        &:hover {
+            color: $primary-light;
+            transition: all .2s linear;
+            svg {
+                fill: $primary-light;
+                transition: all .2s linear;
+            }
+        }
         &.inactive {
             color: $gray-light;
-        }
-        &.is-voted {
-            color: $primary-light;
         }
         svg {
             @include svg-size(.75rem);
             fill: $gray;
             margin-right: .25rem;
             vertical-align: middle;
+        }
+    }
+    .is-voted {
+        color: $primary-light;
+        transition: all .2s linear;
+        svg {
+            fill: $primary-light;
+            transition: all .2s linear;
+        }
+        &:hover {
+            color: $red-light;
+            svg {
+                fill: $red-light;
+                transform: rotate(180deg);
+            }
+
         }
     }
     .subject {
