@@ -1,28 +1,45 @@
 header
-  h1(translate="WIKI.NAVIGATION.SECTION_NAME")
+    h1(translate="WIKI.NAVIGATION.SECTION_NAME")
 
 nav
-  ul.sortable
-    li.wiki-link(ng-repeat="link in wikiLinks", data-id!="{{ $index }}", tg-bind-scope)
-        tg-svg.dragger(svg-icon="icon-drag")
-        a.link-title(title!="{{ link.title }}", href!="{{ link.url }}") {{ link.title }}
+    ul
+        li.wiki-link
+            a.link-title(
+                href=""
+                tg-nav="project-wiki-list:project=project.slug"
+                translate="WIKI.NAVIGATION.ALL_PAGES"
+            )
 
-        <% if (deleteWikiLinkPermission) { %>
-        a.js-delete-link.remove-wiki-page(title!="{{'WIKI.DELETE_LINK_TITLE' | translate}}")
-            tg-svg(svg-icon="icon-trash")
-        <% } %>
+        li.wiki-link
+            a.link-title(
+                href=""
+                tg-nav="project-wiki:project=project.slug"
+                translate="WIKI.NAVIGATION.HOME"
+            )
 
-        input.hidden(
-            type="text"
-            placeholder="{{'COMMON.FIELDS.NAME' | translate}}"
-            value!="{{ link.title }}"
-        )
+    ul.sortable
+        li.wiki-link(ng-repeat="link in wikiLinks", data-id!="{{ $index }}", tg-bind-scope)
+            <% if (addWikiLinkPermission) { %>
+            tg-svg.dragger(svg-icon="icon-drag")
+            <% } %>
+            a.link-title(title!="{{ link.title }}", href!="{{ link.url }}") {{ link.title }}
 
-    li.new.hidden
-        input(
-            type="text"
-            placeholder="{{'COMMON.FIELDS.NAME' | translate}}"
-        )
+            <% if (deleteWikiLinkPermission) { %>
+            a.js-delete-link.remove-wiki-page(title!="{{'WIKI.DELETE_LINK_TITLE' | translate}}")
+                tg-svg(svg-icon="icon-trash")
+            <% } %>
+
+            input.hidden(
+                type="text"
+                placeholder="{{'COMMON.FIELDS.NAME' | translate}}"
+                value!="{{ link.title }}"
+            )
+
+        li.new.hidden
+            input(
+                type="text"
+                placeholder="{{'COMMON.FIELDS.NAME' | translate}}"
+            )
 
 <% if (addWikiLinkPermission) { %>
 a(

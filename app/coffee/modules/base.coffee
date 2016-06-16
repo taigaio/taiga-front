@@ -80,6 +80,7 @@ urls = {
     "project-issues-detail": "/project/:project/issue/:ref"
 
     "project-wiki": "/project/:project/wiki"
+    "project-wiki-list": "/project/:project/wiki-list"
     "project-wiki-page": "/project/:project/wiki/:slug"
 
     # Team

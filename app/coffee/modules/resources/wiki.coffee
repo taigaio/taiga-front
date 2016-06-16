@@ -34,6 +34,9 @@ resourceProvider = ($repo, $http, $urls) ->
     service.getBySlug = (projectId, slug) ->
         return $repo.queryOne("wiki", "by_slug?project=#{projectId}&slug=#{slug}")
 
+    service.list = (projectId) ->
+        return $repo.queryMany("wiki", {project: projectId})
+
     service.listLinks = (projectId) ->
         return $repo.queryMany("wiki-links", {project: projectId})
 

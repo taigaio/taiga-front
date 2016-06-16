@@ -1459,13 +1459,24 @@
         "DELETE_LIGHTBOX_TITLE": "Delete Wiki Page",
         "DELETE_LINK_TITLE": "Delete Wiki link",
         "NAVIGATION": {
+            "HOME": "Main Page",
             "SECTION_NAME": "Links",
-            "ACTION_ADD_LINK": "Add link"
+            "ACTION_ADD_LINK": "Add link",
+            "ALL_PAGES": "All pages"
         },
         "SUMMARY": {
             "TIMES_EDITED": "times <br />edited",
             "LAST_EDIT": "last <br />edit",
             "LAST_MODIFICATION": "last modification"
+        },
+        "SECTION_PAGES_LIST": "All pages",
+        "PAGES_LIST_COLUMNS": {
+            "TITLE": "Title",
+            "EDITIONS": "Editions",
+            "CREATED": "Created",
+            "MODIFIED": "Modified",
+            "CREATOR": "Creator",
+            "LAST_MODIFIER": "Last modifier"
         }
     },
     "HINTS": {

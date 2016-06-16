@@ -188,6 +188,13 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
     # Wiki
     $routeProvider.when("/project/:pslug/wiki",
         {redirectTo: (params) -> "/project/#{params.pslug}/wiki/home"}, )
+    $routeProvider.when("/project/:pslug/wiki-list",
+        {
+            templateUrl: "wiki/wiki-list.html",
+            loader: true,
+            section: "wiki"
+        }
+    )
     $routeProvider.when("/project/:pslug/wiki/:slug",
         {
             templateUrl: "wiki/wiki.html",

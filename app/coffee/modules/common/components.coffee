@@ -165,6 +165,39 @@ CreatedByDisplayDirective = ($template, $compile, $translate, $navUrls)->
 module.directive("tgCreatedByDisplay", ["$tgTemplate", "$compile", "$translate", "$tgNavUrls",
                                         CreatedByDisplayDirective])
 
+
+UserDisplayDirective = ($template, $compile, $translate, $navUrls)->
+    # Display the user information (full name and photo).
+    #
+    # Example:
+    #     div.creator(tg-user-display, tg-user-id="{{ user.id }}")
+    #
+    # Requirements:
+    #   - scope.usersById object is required.
+
+    link = ($scope, $el, $attrs) ->
+        id = $attrs.tgUserId
+        console.log($scope.usersById[id])
+        $scope.user = $scope.usersById[id] or {
+            full_name_display: $translate.instant("COMMON.EXTERNAL_USER")
+            photo: "/" + window._version + "/images/user-noimage.png"
+        }
+
+        $scope.url = if $scope.user.is_active then $navUrls.resolve("user-profile", {username: $scope.user.username}) else ""
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {
+        link: link
+        restrict: "EA"
+        scope: true,
+        templateUrl: "common/components/user-display.html"
+    }
+
+module.directive("tgUserDisplay", ["$tgTemplate", "$compile", "$translate", "$tgNavUrls",
+                                   UserDisplayDirective])
+
 #############################################################################
 ## Watchers directive
 #############################################################################

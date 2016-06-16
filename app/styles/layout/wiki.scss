@@ -1,11 +1,17 @@
 .wiki {
+    .wysiwyg {
+        margin-bottom: 0;
+    }
     .wiki-title {
         @include font-type(light);
-        @include font-size(larger);
+        @include font-size(xxlarge);
+        margin-bottom: 0;
+        padding: 1rem;
     }
     .remove {
         @include font-size(small);
         color: $gray-light;
+        cursor: pointer;
         &:hover {
             color: $red-light;
             transition: color .1s linear;
@@ -22,8 +28,8 @@
 }
 
 .wiki-content {
-    @include cursor-progress;
-    margin-bottom: 2rem;
+    @include font-size(large);
+    max-width: 1024px;
     position: relative;
     &.editable {
         &:hover {
