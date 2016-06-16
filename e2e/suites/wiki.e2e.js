@@ -25,6 +25,8 @@ describe('wiki', function() {
 
         await wikiHelper.dragAndDropLinks(0, 1);
 
+        // NOTE: Thre is a strange scroll and we have to take the
+        //       fifth element instead of the second.
         let nameNew = await wikiHelper.links().getNameOf(4);
 
         expect(nameNew).to.be.equal(nameOld);

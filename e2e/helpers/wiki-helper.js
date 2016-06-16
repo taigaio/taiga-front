@@ -41,7 +41,7 @@ helper.links = function() {
 
 helper.dragAndDropLinks = async function(indexFrom, indexTo) {
     let selectedLink = helper.links().get(indexFrom);
-    let newPosition = helper.links().get(indexTo);
+    let newPosition = helper.links().get(indexTo).getLocation();
     return utils.common.drag(selectedLink, newPosition);
 };
 
