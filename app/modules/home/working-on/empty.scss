@@ -3,7 +3,7 @@
     margin-bottom: 4rem;
     p {
         @include font-type(light);
-        margin: 2rem 9rem 1rem;
+        margin: 2rem 2rem 1rem;
         text-align: center;
     }
 }
@@ -34,10 +34,28 @@
         background: $mass-white;
         height: 1rem;
         margin-bottom: 1rem;
-        width: 40vw;
+        width: 8vw;
+        @include breakpoint(laptop) {
+            width: 30vw;
+        }
+        @include breakpoint(tablet) {
+            width: 30vw;
+        }
+        @include breakpoint(mobile) {
+            width: 30vw;
+        }
         &:last-child {
             margin: 0;
-            width: 20vw;
+            width: 18vw;
+            @include breakpoint(laptop) {
+                width: 50vw;
+            }
+            @include breakpoint(tablet) {
+                width: 50vw;
+            }
+            @include breakpoint(mobile) {
+                width: 50vw;
+            }
         }
     }
 }
