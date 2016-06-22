@@ -1,7 +1,7 @@
 # Changelog #
 
 
-## 2.2.0 ???? (Unreleased)
+## 3.0.0 ???? (Unreleased)
 
 ### Features
 - Add the tribe button to link stories from tree.taiga.io with gigs in tribe.taiga.io.
