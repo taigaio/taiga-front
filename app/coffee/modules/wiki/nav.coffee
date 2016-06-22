@@ -45,31 +45,35 @@ WikiNavDirective = ($tgrepo, $log, $location, $confirm, $analytics, $loading, $t
         itemEl = null
         tdom = $el.find(".sortable")
 
-        drake = dragula([tdom[0]], {
-            direction: 'vertical',
-            copySortSource: false,
-            copy: false,
-            mirrorContainer: tdom[0],
-            moves: (item) -> return $(item).is('li')
-        })
+        addWikiLinkPermission = $scope.project.my_permissions.indexOf("add_wiki_link") > -1
 
-        drake.on 'dragend', (item) ->
-            itemEl = $(item)
-            item = itemEl.scope().link
-            itemIndex = itemEl.index()
-            $scope.$emit("wiki:links:move", item, itemIndex)
+        if addWikiLinkPermission
+            drake = dragula([tdom[0]], {
+                direction: 'vertical',
+                copySortSource: false,
+                copy: false,
+                mirrorContainer: tdom[0],
+                moves: (item) -> return $(item).is('li')
+            })
 
-        scroll = autoScroll(window, {
-            margin: 20,
-            pixels: 30,
-            scrollWhenOutside: true,
-            autoScroll: () ->
-                return this.down && drake.dragging;
-        })
+            drake.on 'dragend', (item) ->
+                itemEl = $(item)
+                item = itemEl.scope().link
+                itemIndex = itemEl.index()
+                $scope.$emit("wiki:links:move", item, itemIndex)
+
+            scroll = autoScroll(window, {
+                margin: 20,
+                pixels: 30,
+                scrollWhenOutside: true,
+                autoScroll: () ->
+                    return this.down && drake.dragging;
+            })
 
         $scope.$on "$destroy", ->
             $el.off()
-            drake.destroy()
+            if addWikiLinkPermission
+                drake.destroy()
 
     linkWikiLinks = ($scope, $el, $attrs) ->
         $ctrl = $el.controller()

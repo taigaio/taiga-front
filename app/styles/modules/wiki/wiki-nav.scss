@@ -2,7 +2,6 @@
     @include font-type(text);
     align-items: center;
     border-bottom: 1px solid $gray-light;
-    cursor: move;
     display: flex;
     justify-content: space-between;
     padding: 1rem 0;
@@ -21,6 +20,9 @@
             transition: opacity .2s linear;
             transition-delay: .2s;
         }
+    }
+    &.is-sortable {
+        cursor: move;
     }
     .dragger {
         margin-right: .5rem;
