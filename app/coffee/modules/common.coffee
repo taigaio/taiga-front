@@ -300,6 +300,9 @@ class QueueModelTransformation extends taiga.Service
 
             clone = @.clone()
 
+            modified = _.omit(obj._modifiedAttrs, ['version'])
+            clone = _.assign(clone, modified)
+
             transformation(clone)
 
             if comment.length
