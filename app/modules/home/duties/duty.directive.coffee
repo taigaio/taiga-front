@@ -21,6 +21,7 @@ DutyDirective = (navurls, $translate) ->
     link = (scope, el, attrs, ctrl) ->
         scope.vm = {}
         scope.vm.duty = scope.duty
+        scope.vm.type = scope.type
 
         scope.vm.getDutyType = () ->
             if scope.vm.duty
@@ -34,7 +35,8 @@ DutyDirective = (navurls, $translate) ->
     return {
         templateUrl: "home/duties/duty.html"
         scope: {
-            "duty": "=tgDuty"
+            "duty": "=tgDuty",
+            "type": "@"
         }
         link: link
     }

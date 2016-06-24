@@ -40,8 +40,7 @@ class HomeService extends taiga.Service
             url = @navurls.resolve("project-#{objType}-detail", ctx)
 
             duty = duty.set('url', url)
-            duty = duty.set('projectName', project.get('name'))
-            duty = duty.set('blockedProject', project.get('blocked_code'))
+            duty = duty.set('project', project)
             duty = duty.set("_name", objType)
 
             return duty
