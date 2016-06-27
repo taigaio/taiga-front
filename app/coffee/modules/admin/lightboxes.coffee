@@ -132,7 +132,7 @@ module.directive("tgLbAddMembers", ["lightboxService", LightboxAddMembersDirecti
 
 LightboxAddMembersWarningMessageDirective = () ->
     return {
-          templateUrl: "admin/lightbox-add-members-no-more=memberships-warning-message.html"
+          templateUrl: "admin/memberships-warning-message.html"
           scope: {
               project: "="
           }
