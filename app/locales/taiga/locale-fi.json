@@ -244,6 +244,7 @@
                 "VIEW_USER_STORIES": "Katso käyttäjätarinoita",
                 "ADD_USER_STORIES": "Lisää käyttäjätarinoita",
                 "MODIFY_USER_STORIES": "Muokkaa käyttäjätarinoita",
+                "COMMENT_USER_STORIES": "Comment user stories",
                 "DELETE_USER_STORIES": "Poista käyttäjätarinoita"
             },
             "TASKS": {
@@ -251,6 +252,7 @@
                 "VIEW_TASKS": "Katsot tehtäviä",
                 "ADD_TASKS": "Lisää tehtäviä",
                 "MODIFY_TASKS": "Muokkaa tehtäviä",
+                "COMMENT_TASKS": "Comment tasks",
                 "DELETE_TASKS": "Poista tehtäviä"
             },
             "ISSUES": {
@@ -258,6 +260,7 @@
                 "VIEW_ISSUES": "Katso pyyntöjä",
                 "ADD_ISSUES": "Lisää pyyntöjä",
                 "MODIFY_ISSUES": "Muokkaa pyyntöjä",
+                "COMMENT_ISSUES": "Comment issues",
                 "DELETE_ISSUES": "Poista pyyntöjä"
             },
             "WIKI": {
@@ -558,7 +561,7 @@
             "ACTION_ADD": "Lisää uusi {{objName}}"
         },
         "PROJECT_VALUES_TAGS": {
-            "TITLE": "Tags",
+            "TITLE": "Avainsanat",
             "SUBTITLE": "View and edit the color of your user stories",
             "EMPTY": "Currently there are no tags",
             "EMPTY_SEARCH": "It looks like nothing was found with your search criteria"
@@ -689,7 +692,7 @@
             "SEVERITIES": "Vakavuudet",
             "TYPES": "Tyypit",
             "CUSTOM_FIELDS": "Omat kentät",
-            "TAGS": "Tags"
+            "TAGS": "Avainsanat"
         },
         "SUBMENU_PROJECT_PROFILE": {
             "TITLE": "Projektin profiili"
@@ -981,7 +984,7 @@
     "US": {
         "PAGE_TITLE": "{{userStorySubject}} - User Story {{userStoryRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Status: {{userStoryStatus }}. Completed {{userStoryProgressPercentage}}% ({{userStoryClosedTasks}} of {{userStoryTotalTasks}} tasks closed). Points: {{userStoryPoints}}. Description: {{userStoryDescription}}",
-        "SECTION_NAME": "User story",
+        "SECTION_NAME": "Käyttäjätarina",
         "LINK_TASKBOARD": "Tehtävätaulu",
         "TITLE_LINK_TASKBOARD": "Siirry tehtävätauluun",
         "TOTAL_POINTS": "total points",
@@ -1018,28 +1021,47 @@
         }
     },
     "COMMENTS": {
-        "DELETED_INFO": "{{user}} poisti kommentin {{date}}",
+        "DELETED_INFO": "Comment deleted by {{user}}",
         "TITLE": "Kommentit",
+        "COMMENTS_COUNT": "{{comments}} Comments",
+        "ORDER": "Order",
+        "OLDER_FIRST": "Older first",
+        "RECENT_FIRST": "Recent first",
         "COMMENT": "Kommentti",
+        "EDIT_COMMENT": "Edit comment",
+        "EDITED_COMMENT": "Edited:",
+        "SHOW_HISTORY": "View historic",
         "TYPE_NEW_COMMENT": "Lisää uusi kommentti tässä",
         "SHOW_DELETED": "Näytä poistettu kommentti",
         "HIDE_DELETED": "Piilota poistettu kommentti",
         "DELETE": "Delete comment",
-        "RESTORE": "Palauta kommentti"
+        "RESTORE": "Palauta kommentti",
+        "HISTORY": {
+            "TITLE": "Activity"
+        }
     },
     "ACTIVITY": {
         "SHOW_ACTIVITY": "Näytä tapahtumat",
         "DATETIME": "DD.MM.YY - HH:mm",
         "SHOW_MORE": "+ Näytä edelliset rivit ({{showMore}} lisää)",
         "TITLE": "Aktiivisuus",
+        "ACTIVITIES_COUNT": "{{activities}} Activities",
         "REMOVED": "poistettu",
         "ADDED": "lisätty",
-        "US_POINTS": "Kt pisteet ({{name}})",
-        "NEW_ATTACHMENT": "uusi liite",
-        "DELETED_ATTACHMENT": "poistettu liite",
-        "UPDATED_ATTACHMENT": "päivitetty liite {{filename}}",
-        "DELETED_CUSTOM_ATTRIBUTE": "poista oma attribuutti",
+        "TAGS_ADDED": "tags added:",
+        "TAGS_REMOVED": "tags removed:",
+        "US_POINTS": "{{role}} points",
+        "NEW_ATTACHMENT": "new attachment:",
+        "DELETED_ATTACHMENT": "deleted attachment:",
+        "UPDATED_ATTACHMENT": "updated attachment ({{filename}}):",
+        "CREATED_CUSTOM_ATTRIBUTE": "created custom attribute",
+        "UPDATED_CUSTOM_ATTRIBUTE": "updated custom attribute",
         "SIZE_CHANGE": "Tehty {size, plural, one{muutos} other{# muutosta}}",
+        "BECAME_DEPRECATED": "became deprecated",
+        "BECAME_UNDEPRECATED": "became undeprecated",
+        "TEAM_REQUIREMENT": "Team Requirement",
+        "CLIENT_REQUIREMENT": "Client Requirement",
+        "BLOCKED": "Blocked",
         "VALUES": {
             "YES": "Kyllä",
             "NO": "ei",
@@ -1071,6 +1093,7 @@
             "TAGS": "avainsanat",
             "ATTACHMENTS": "liitteet",
             "IS_DEPRECATED": "on vanhentunut",
+            "IS_NOT_DEPRECATED": "is not deprecated",
             "ORDER": "järjestys",
             "BACKLOG_ORDER": "odottavien järjestys",
             "SPRINT_ORDER": "kierroksen järjestys",
@@ -1436,13 +1459,24 @@
         "DELETE_LIGHTBOX_TITLE": "Poista wiki-sivu",
         "DELETE_LINK_TITLE": "Delete Wiki link",
         "NAVIGATION": {
+            "HOME": "Main Page",
             "SECTION_NAME": "Linkit",
-            "ACTION_ADD_LINK": "Lisää linkki"
+            "ACTION_ADD_LINK": "Lisää linkki",
+            "ALL_PAGES": "All pages"
         },
         "SUMMARY": {
             "TIMES_EDITED": "kertaa<br/>muokattu",
             "LAST_EDIT": "viimeinen<br/>muokkaus",
             "LAST_MODIFICATION": "viimeinen muokkaus"
+        },
+        "SECTION_PAGES_LIST": "All pages",
+        "PAGES_LIST_COLUMNS": {
+            "TITLE": "Title",
+            "EDITIONS": "Editions",
+            "CREATED": "Created",
+            "MODIFIED": "Modified",
+            "CREATOR": "Creator",
+            "LAST_MODIFIER": "Last modifier"
         }
     },
     "HINTS": {

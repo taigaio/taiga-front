@@ -244,6 +244,7 @@
                 "VIEW_USER_STORIES": "Bekijk user stories",
                 "ADD_USER_STORIES": "User stories toevoegen",
                 "MODIFY_USER_STORIES": "user stories bewerken",
+                "COMMENT_USER_STORIES": "Comment user stories",
                 "DELETE_USER_STORIES": "Verwijderd user stories"
             },
             "TASKS": {
@@ -251,6 +252,7 @@
                 "VIEW_TASKS": "Bekijk taken",
                 "ADD_TASKS": "Taak toevoegen",
                 "MODIFY_TASKS": "Bewerk taken",
+                "COMMENT_TASKS": "Comment tasks",
                 "DELETE_TASKS": "Verwijder taken"
             },
             "ISSUES": {
@@ -258,6 +260,7 @@
                 "VIEW_ISSUES": "Bekijk issues",
                 "ADD_ISSUES": "Issues toevoegen",
                 "MODIFY_ISSUES": "Bewerk issues",
+                "COMMENT_ISSUES": "Comment issues",
                 "DELETE_ISSUES": "Issues verwijderen"
             },
             "WIKI": {
@@ -1018,28 +1021,47 @@
         }
     },
     "COMMENTS": {
-        "DELETED_INFO": "Opmerking verwijderd door {{user}} op {{date}}",
+        "DELETED_INFO": "Comment deleted by {{user}}",
         "TITLE": "Reacties",
+        "COMMENTS_COUNT": "{{comments}} Comments",
+        "ORDER": "Order",
+        "OLDER_FIRST": "Older first",
+        "RECENT_FIRST": "Recent first",
         "COMMENT": "Reageer",
+        "EDIT_COMMENT": "Edit comment",
+        "EDITED_COMMENT": "Edited:",
+        "SHOW_HISTORY": "View historic",
         "TYPE_NEW_COMMENT": "Type hier nieuw commentaar",
         "SHOW_DELETED": "Toon verwijderd commentaar",
         "HIDE_DELETED": "Verberg verwijderde opmerkingen",
         "DELETE": "Delete comment",
-        "RESTORE": "Opmerking herstellen"
+        "RESTORE": "Opmerking herstellen",
+        "HISTORY": {
+            "TITLE": "Activity"
+        }
     },
     "ACTIVITY": {
         "SHOW_ACTIVITY": "Toon activiteit",
         "DATETIME": "DD MMM YYYY HH:mm",
         "SHOW_MORE": "+ Toon vorige items ({{showMore}} meer)",
         "TITLE": "Activiteit",
+        "ACTIVITIES_COUNT": "{{activities}} Activities",
         "REMOVED": "verwijderd",
         "ADDED": "toegevoegd",
-        "US_POINTS": "US punten ({{name}})",
-        "NEW_ATTACHMENT": "Nieuwe bijlage",
-        "DELETED_ATTACHMENT": "verwijderd bijlage",
-        "UPDATED_ATTACHMENT": "bijlage {{filename}} bijgewerkt",
-        "DELETED_CUSTOM_ATTRIBUTE": "eigen attribuut verwijderen",
+        "TAGS_ADDED": "tags added:",
+        "TAGS_REMOVED": "tags removed:",
+        "US_POINTS": "{{role}} points",
+        "NEW_ATTACHMENT": "new attachment:",
+        "DELETED_ATTACHMENT": "deleted attachment:",
+        "UPDATED_ATTACHMENT": "updated attachment ({{filename}}):",
+        "CREATED_CUSTOM_ATTRIBUTE": "created custom attribute",
+        "UPDATED_CUSTOM_ATTRIBUTE": "updated custom attribute",
         "SIZE_CHANGE": "{size, plural, one{één verandering} other{# veranderingen}} gemaakt",
+        "BECAME_DEPRECATED": "became deprecated",
+        "BECAME_UNDEPRECATED": "became undeprecated",
+        "TEAM_REQUIREMENT": "Team Requirement",
+        "CLIENT_REQUIREMENT": "Client Requirement",
+        "BLOCKED": "Blocked",
         "VALUES": {
             "YES": "ja",
             "NO": "nee",
@@ -1071,6 +1093,7 @@
             "TAGS": "tags",
             "ATTACHMENTS": "bijlagen",
             "IS_DEPRECATED": "is verourderd",
+            "IS_NOT_DEPRECATED": "is not deprecated",
             "ORDER": "volgorde",
             "BACKLOG_ORDER": "backlog volgorde",
             "SPRINT_ORDER": "sprint volgorde",
@@ -1198,7 +1221,7 @@
     "TASK": {
         "PAGE_TITLE": "{{taskSubject}} - Taak {{taskRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Status: {{taskStatus }}. Omschrijving: {{taskDescription}}",
-        "SECTION_NAME": "Task",
+        "SECTION_NAME": "Taak",
         "LINK_TASKBOARD": "Taakbord",
         "TITLE_LINK_TASKBOARD": "Ga naar het taakbord",
         "PLACEHOLDER_SUBJECT": "Type het nieuwe onderwerp voor de taak",
@@ -1436,13 +1459,24 @@
         "DELETE_LIGHTBOX_TITLE": "Verwijderd wiki pagina",
         "DELETE_LINK_TITLE": "Delete Wiki link",
         "NAVIGATION": {
+            "HOME": "Main Page",
             "SECTION_NAME": "Links",
-            "ACTION_ADD_LINK": "Link toevoegen"
+            "ACTION_ADD_LINK": "Link toevoegen",
+            "ALL_PAGES": "All pages"
         },
         "SUMMARY": {
             "TIMES_EDITED": "keer <br/>bewerkt",
             "LAST_EDIT": "laatst <br />bewerkt",
             "LAST_MODIFICATION": "laatste wijziging"
+        },
+        "SECTION_PAGES_LIST": "All pages",
+        "PAGES_LIST_COLUMNS": {
+            "TITLE": "Title",
+            "EDITIONS": "Editions",
+            "CREATED": "Created",
+            "MODIFIED": "Modified",
+            "CREATOR": "Creator",
+            "LAST_MODIFIER": "Last modifier"
         }
     },
     "HINTS": {

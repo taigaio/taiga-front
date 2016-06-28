@@ -244,6 +244,7 @@
                 "VIEW_USER_STORIES": "Ver histórias de usuários",
                 "ADD_USER_STORIES": "Adicionar histórias de usuários",
                 "MODIFY_USER_STORIES": "Modificar histórias de usuários",
+                "COMMENT_USER_STORIES": "Comment user stories",
                 "DELETE_USER_STORIES": "Apagar histórias de usuários"
             },
             "TASKS": {
@@ -251,6 +252,7 @@
                 "VIEW_TASKS": "Ver tarefas",
                 "ADD_TASKS": "Adicionar uma nova Tarefa",
                 "MODIFY_TASKS": "Modificar tarefa",
+                "COMMENT_TASKS": "Comment tasks",
                 "DELETE_TASKS": "Apagar tarefas"
             },
             "ISSUES": {
@@ -258,6 +260,7 @@
                 "VIEW_ISSUES": "Ver problemas",
                 "ADD_ISSUES": "Adicionar problemas",
                 "MODIFY_ISSUES": "Modificar problemas",
+                "COMMENT_ISSUES": "Comment issues",
                 "DELETE_ISSUES": "Apagar problemas"
             },
             "WIKI": {
@@ -484,8 +487,8 @@
             "REQUEST_OWNERSHIP_CONFIRMATION_TITLE": "Gostaria de se tornar o novo dono do projeto?",
             "REQUEST_OWNERSHIP_DESC": "Solicitar ao atual dono de projeto {{name}} a transferência da propriedade deste projeto para você.",
             "REQUEST_OWNERSHIP_BUTTON": "Solicitação",
-            "REQUEST_OWNERSHIP_SUCCESS": "We'll notify the project owner",
-            "CHANGE_OWNER": "Change owner",
+            "REQUEST_OWNERSHIP_SUCCESS": "Vamos notificar o dono do projeto",
+            "CHANGE_OWNER": "Mudar dono",
             "CHANGE_OWNER_SUCCESS_TITLE": "Ok, your request has been sent!",
             "CHANGE_OWNER_SUCCESS_DESC": "We will notify you by email if the project ownership request is accepted or declined"
         },
@@ -560,7 +563,7 @@
         "PROJECT_VALUES_TAGS": {
             "TITLE": "Tags",
             "SUBTITLE": "View and edit the color of your user stories",
-            "EMPTY": "Currently there are no tags",
+            "EMPTY": "Atualmente não há tags",
             "EMPTY_SEARCH": "It looks like nothing was found with your search criteria"
         },
         "ROLES": {
@@ -780,7 +783,7 @@
         "MEMBERS_COUNTER_TITLE": "{total, plural, one{one member} other{# members}}",
         "BLOCKED_PROJECT": {
             "BLOCKED": "Projeto bloqueado",
-            "THIS_PROJECT_IS_BLOCKED": "This project is temporarily blocked",
+            "THIS_PROJECT_IS_BLOCKED": "Este projeto está temporariamente bloqueado",
             "TO_UNBLOCK_CONTACT_THE_ADMIN_STAFF": "In order to unblock your projects, contact the administrator."
         },
         "STATS": {
@@ -962,14 +965,14 @@
             "LIMIT_USERS_WARNING_MESSAGE": "Unfortunately, this project can't have more than <strong>{{maxMembers}}</strong> members."
         },
         "LEAVE_PROJECT_WARNING": {
-            "TITLE": "Unfortunately, this project can't be left without an owner",
+            "TITLE": "Infelizmente, este projeto não pode ficar sem um dono",
             "CURRENT_USER_OWNER": {
                 "DESC": "You are the current owner of this project. Before leaving, please transfer ownership to someone else.",
-                "BUTTON": "Change the project owner"
+                "BUTTON": "Mude o dono do projeto"
             },
             "OTHER_USER_OWNER": {
                 "DESC": "Unfortunately, you can't delete a member who is also the current project owner. First, please assign a new project owner.",
-                "BUTTON": "Request project owner change"
+                "BUTTON": "Solicite a mudança do dono do projeto"
             }
         },
         "CHANGE_OWNER": {
@@ -981,13 +984,13 @@
     "US": {
         "PAGE_TITLE": "{{userStorySubject}} - História de Usuário {{userStoryRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Estado: {{userStoryStatus }}. Completos {{userStoryProgressPercentage}}% ({{userStoryClosedTasks}} de {{userStoryTotalTasks}} tarefas encerradas). Pontos: {{userStoryPoints}}. Descrição: {{userStoryDescription}}",
-        "SECTION_NAME": "User story",
+        "SECTION_NAME": "História de usuário",
         "LINK_TASKBOARD": "Quadro de Tarefas",
         "TITLE_LINK_TASKBOARD": "Ir para o quadro de tarefas",
         "TOTAL_POINTS": "total de pontos",
         "ADD": "+ Adicionar uma nova História de Usuário",
         "ADD_BULK": "Adicionar Histórias de Usuários em lote",
-        "PROMOTED": "Esta história de usuário foi promovida do problema:",
+        "PROMOTED": "Esta História de Usuário foi criada a partir do Problema:",
         "TITLE_LINK_GO_TO_ISSUE": "Ir para problema",
         "EXTERNAL_REFERENCE": "Esta História de Usuário foi criada de",
         "GO_TO_EXTERNAL_REFERENCE": "Ir para a origem",
@@ -1002,7 +1005,7 @@
         "TOTAL_US_POINTS": "Total de pontos de histórias",
         "TRIBE": {
             "PUBLISH": "Publish as Gig in Taiga Tribe",
-            "PUBLISH_INFO": "More info",
+            "PUBLISH_INFO": "Mais informações",
             "PUBLISH_TITLE": "More info on publishing in Taiga Tribe",
             "PUBLISHED_AS_GIG": "Story published as Gig in Taiga Tribe",
             "EDIT_LINK": "Edit link",
@@ -1018,28 +1021,47 @@
         }
     },
     "COMMENTS": {
-        "DELETED_INFO": "Comentário apagado por {{user}} em {{date}}",
+        "DELETED_INFO": "Comment deleted by {{user}}",
         "TITLE": "Comentários",
+        "COMMENTS_COUNT": "{{comments}} Comments",
+        "ORDER": "Order",
+        "OLDER_FIRST": "Older first",
+        "RECENT_FIRST": "Recent first",
         "COMMENT": "Comentário",
+        "EDIT_COMMENT": "Edit comment",
+        "EDITED_COMMENT": "Edited:",
+        "SHOW_HISTORY": "View historic",
         "TYPE_NEW_COMMENT": "Escreva um novo comentário aqui",
         "SHOW_DELETED": "Mostrar comentários apagados",
         "HIDE_DELETED": "Esconder comentário apagado",
         "DELETE": "Apagar comentário",
-        "RESTORE": "Restaurar comentário"
+        "RESTORE": "Restaurar comentário",
+        "HISTORY": {
+            "TITLE": "Activity"
+        }
     },
     "ACTIVITY": {
         "SHOW_ACTIVITY": "Exibir atividade",
         "DATETIME": "DD MMM YYYY HH:mm",
         "SHOW_MORE": "+ Mostrar entradas anteriores (mais {{showMore}})",
         "TITLE": "Atividade",
+        "ACTIVITIES_COUNT": "{{activities}} Activities",
         "REMOVED": "removido",
         "ADDED": "adicionado",
-        "US_POINTS": "pontos de história ({{name}})",
-        "NEW_ATTACHMENT": "novo anexo",
-        "DELETED_ATTACHMENT": "apagar anexo",
-        "UPDATED_ATTACHMENT": "anexo atualizado {{filename}}",
-        "DELETED_CUSTOM_ATTRIBUTE": "atributo personalizado apagado",
+        "TAGS_ADDED": "tags added:",
+        "TAGS_REMOVED": "tags removed:",
+        "US_POINTS": "{{role}} points",
+        "NEW_ATTACHMENT": "new attachment:",
+        "DELETED_ATTACHMENT": "deleted attachment:",
+        "UPDATED_ATTACHMENT": "updated attachment ({{filename}}):",
+        "CREATED_CUSTOM_ATTRIBUTE": "created custom attribute",
+        "UPDATED_CUSTOM_ATTRIBUTE": "updated custom attribute",
         "SIZE_CHANGE": "Feito {size, plural, one{one change} other{# changes}}",
+        "BECAME_DEPRECATED": "became deprecated",
+        "BECAME_UNDEPRECATED": "became undeprecated",
+        "TEAM_REQUIREMENT": "Team Requirement",
+        "CLIENT_REQUIREMENT": "Client Requirement",
+        "BLOCKED": "Blocked",
         "VALUES": {
             "YES": "sim",
             "NO": "não",
@@ -1071,6 +1093,7 @@
             "TAGS": "tags",
             "ATTACHMENTS": "anexos",
             "IS_DEPRECATED": "está obsoleto",
+            "IS_NOT_DEPRECATED": "is not deprecated",
             "ORDER": "ordem",
             "BACKLOG_ORDER": "requisição do backlog",
             "SPRINT_ORDER": "ordem de sprint ",
@@ -1198,7 +1221,7 @@
     "TASK": {
         "PAGE_TITLE": "{{taskSubject}} - Tarefa {{taskRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Estado: {{taskStatus }}. Descrição: {{taskDescription}}",
-        "SECTION_NAME": "Task",
+        "SECTION_NAME": "Tarefa",
         "LINK_TASKBOARD": "Quadro de Tarefas",
         "TITLE_LINK_TASKBOARD": "Ir para o quadro de tarefas",
         "PLACEHOLDER_SUBJECT": "Digite um novo titulo para tarefa",
@@ -1247,7 +1270,7 @@
         "PAGE_TITLE": "Problemas - {{projectName}}",
         "PAGE_DESCRIPTION": "O painel de problemas do projeto {{projectName}}: {{projectDescription}}",
         "LIST_SECTION_NAME": "Problemas",
-        "SECTION_NAME": "Issue",
+        "SECTION_NAME": "Problema",
         "ACTION_NEW_ISSUE": "+ NOVO PROBLEMA",
         "ACTION_PROMOTE_TO_US": "Promover para História de Usuário",
         "PLACEHOLDER_FILTER_NAME": "Digite o nome do filtro e pressione Enter",
@@ -1424,7 +1447,7 @@
         "PRIVATE_PROJECT": "Projeto Privado",
         "CREATE_PROJECT": "Criar projeto",
         "MAX_PRIVATE_PROJECTS": "You've reached the maximum number of private projects",
-        "MAX_PUBLIC_PROJECTS": "Unfortunately, you've reached the maximum number of public projects",
+        "MAX_PUBLIC_PROJECTS": "Infelizmente, você atingiu o número máximo de projetos públicos",
         "CHANGE_PLANS": "change plans"
     },
     "WIKI": {
@@ -1436,13 +1459,24 @@
         "DELETE_LIGHTBOX_TITLE": "Apagar página Wiki",
         "DELETE_LINK_TITLE": "Remover link de Wiki",
         "NAVIGATION": {
+            "HOME": "Main Page",
             "SECTION_NAME": "Links",
-            "ACTION_ADD_LINK": "Adicionar link"
+            "ACTION_ADD_LINK": "Adicionar link",
+            "ALL_PAGES": "All pages"
         },
         "SUMMARY": {
             "TIMES_EDITED": "vezes<br />editadas",
             "LAST_EDIT": "última<br />edição",
             "LAST_MODIFICATION": "ultima modificação"
+        },
+        "SECTION_PAGES_LIST": "All pages",
+        "PAGES_LIST_COLUMNS": {
+            "TITLE": "Title",
+            "EDITIONS": "Editions",
+            "CREATED": "Created",
+            "MODIFIED": "Modified",
+            "CREATOR": "Creator",
+            "LAST_MODIFIER": "Last modifier"
         }
     },
     "HINTS": {
@@ -1469,12 +1503,12 @@
         "NEW_PROJECT": "{{username}} criou o projeto {{project_name}}",
         "MILESTONE_UPDATED": "{{username}} atualizou a sprint {{obj_name}}",
         "US_UPDATED": "{{username}} atualizou o atributo \"{{field_name}}\" da História de Usuário {{obj_name}}",
-        "US_UPDATED_WITH_NEW_VALUE": "{{username}} atualizou o trabalho \"{{field_name}}\" da US {{obj_name}} para {{new_value}}",
-        "US_UPDATED_POINTS": "{{username}} atualizou pontos de '{{role_name}}' da História de Usuário {{obj_name}} para {{new_value}}",
+        "US_UPDATED_WITH_NEW_VALUE": "{{username}} atualizou o atributo \"{{field_name}}\" da História de Usuário {{obj_name}} para {{new_value}}",
+        "US_UPDATED_POINTS": "{{username}} atualizou os pontos de '{{role_name}}' da História de Usuário {{obj_name}} para {{new_value}}",
         "ISSUE_UPDATED": "{{username}} atualizou o atributo \"{{field_name}}\" do problema {{obj_name}}",
         "ISSUE_UPDATED_WITH_NEW_VALUE": "{{username}} atualizou o atributo \"{{field_name}}\" do problema  {{obj_name}} para {{new_value}}",
         "TASK_UPDATED": "{{username}} atualizou o atributo \"{{field_name}}\" da tarefa {{obj_name}} para {{new_value}}",
-        "TASK_UPDATED_WITH_NEW_VALUE": "{{username}} Atualizou o atributo \"{{field_name}}\" da tarefa {{obj_name}} para {{new_value}}",
+        "TASK_UPDATED_WITH_NEW_VALUE": "{{username}} atualizou o atributo \"{{field_name}}\" da tarefa {{obj_name}} para {{new_value}}",
         "TASK_UPDATED_WITH_US": "{{username}} atualizou o atributo \"{{field_name}}\" da tarefa {{obj_name}}  que pertence à História de Usuário {{us_name}}",
         "TASK_UPDATED_WITH_US_NEW_VALUE": "{{username}} atualizou o atributo \"{{field_name}}\" da tarefa {{obj_name}} que pertence à História de Usuário {{us_name}} para {{new_value}}",
         "WIKI_UPDATED": "{{username}} atualizou a página wiki {{obj_name}}",
@@ -1518,7 +1552,7 @@
             },
             "STEP3": {
                 "TITLE": "Observando",
-                "TEXT1": "And right here you will find the ones in your projects that you want to know about.",
+                "TEXT1": "E aqui você vai encontrar os do seu projeto que você escolheu seguir.",
                 "TEXT2": "Você já está trabalhando com Taiga ;)"
             },
             "STEP4": {

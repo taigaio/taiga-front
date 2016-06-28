@@ -244,6 +244,7 @@
                 "VIEW_USER_STORIES": "Przeglądaj historyjki użytkownika",
                 "ADD_USER_STORIES": "Dodawaj historyjki użytkownika",
                 "MODIFY_USER_STORIES": "Modyfikuj historyjki użytkownika",
+                "COMMENT_USER_STORIES": "Comment user stories",
                 "DELETE_USER_STORIES": "Usuwaj historyjki użytkownika"
             },
             "TASKS": {
@@ -251,6 +252,7 @@
                 "VIEW_TASKS": "Przeglądaj zadania",
                 "ADD_TASKS": "Dodawaj zadania",
                 "MODIFY_TASKS": "Modyfikuj zadania",
+                "COMMENT_TASKS": "Comment tasks",
                 "DELETE_TASKS": "Usuwaj zadania"
             },
             "ISSUES": {
@@ -258,6 +260,7 @@
                 "VIEW_ISSUES": "Przeglądaj zgłoszenia",
                 "ADD_ISSUES": "Dodawaj zgłoszenia",
                 "MODIFY_ISSUES": "Modyfikuj zgłoszenia",
+                "COMMENT_ISSUES": "Comment issues",
                 "DELETE_ISSUES": "Usuwaj zgłoszenia"
             },
             "WIKI": {
@@ -558,7 +561,7 @@
             "ACTION_ADD": "Dodaj nowy {{objName}}"
         },
         "PROJECT_VALUES_TAGS": {
-            "TITLE": "Tags",
+            "TITLE": "Tagi",
             "SUBTITLE": "View and edit the color of your user stories",
             "EMPTY": "Currently there are no tags",
             "EMPTY_SEARCH": "It looks like nothing was found with your search criteria"
@@ -689,7 +692,7 @@
             "SEVERITIES": "Ważność",
             "TYPES": "Typy",
             "CUSTOM_FIELDS": "Niestandardowe pola",
-            "TAGS": "Tags"
+            "TAGS": "Tagi"
         },
         "SUBMENU_PROJECT_PROFILE": {
             "TITLE": "Profil projektu"
@@ -981,7 +984,7 @@
     "US": {
         "PAGE_TITLE": "{{userStorySubject}} - Historyjka użytkownika {{userStoryRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Status: {{userStoryStatus }}. Zakończono {{userStoryProgressPercentage}}% ({{userStoryClosedTasks}} z {{userStoryTotalTasks}} zadań). Punktów: {{userStoryPoints}}. Opis: {{userStoryDescription}}",
-        "SECTION_NAME": "User story",
+        "SECTION_NAME": "Historyjka użytkownika",
         "LINK_TASKBOARD": "Tablica zadań",
         "TITLE_LINK_TASKBOARD": "Idź do listy zadań",
         "TOTAL_POINTS": "total points",
@@ -1018,28 +1021,47 @@
         }
     },
     "COMMENTS": {
-        "DELETED_INFO": "Komentarz usunięty przez {{user}} w dniu {{date}}",
+        "DELETED_INFO": "Comment deleted by {{user}}",
         "TITLE": "Komentarze",
+        "COMMENTS_COUNT": "{{comments}} Comments",
+        "ORDER": "Order",
+        "OLDER_FIRST": "Older first",
+        "RECENT_FIRST": "Recent first",
         "COMMENT": "Komentarz",
+        "EDIT_COMMENT": "Edit comment",
+        "EDITED_COMMENT": "Edited:",
+        "SHOW_HISTORY": "View historic",
         "TYPE_NEW_COMMENT": "Tutaj wpisz nowy komentarz",
         "SHOW_DELETED": "Pokaż usunięty komentarz",
         "HIDE_DELETED": "Ukryj skasowane komentarze",
         "DELETE": "Delete comment",
-        "RESTORE": "Przywróć komentarz"
+        "RESTORE": "Przywróć komentarz",
+        "HISTORY": {
+            "TITLE": "Activity"
+        }
     },
     "ACTIVITY": {
         "SHOW_ACTIVITY": "Pokaż aktywność",
         "DATETIME": "DD MMM YYYY HH:mm",
         "SHOW_MORE": "+ Pokaż poprzednie wpisy ({{showMore}} więcej)",
         "TITLE": "Aktywność",
+        "ACTIVITIES_COUNT": "{{activities}} Activities",
         "REMOVED": "usunięty",
         "ADDED": "dodany",
-        "US_POINTS": "Punkty HU ({{name}})",
-        "NEW_ATTACHMENT": "nowy załącznik",
-        "DELETED_ATTACHMENT": "Usunięty załącznik",
-        "UPDATED_ATTACHMENT": "Zaktualizowany załącznik {{filename}}",
-        "DELETED_CUSTOM_ATTRIBUTE": "Usunięty niestandardowy atrybut",
+        "TAGS_ADDED": "tags added:",
+        "TAGS_REMOVED": "tags removed:",
+        "US_POINTS": "{{role}} points",
+        "NEW_ATTACHMENT": "new attachment:",
+        "DELETED_ATTACHMENT": "deleted attachment:",
+        "UPDATED_ATTACHMENT": "updated attachment ({{filename}}):",
+        "CREATED_CUSTOM_ATTRIBUTE": "created custom attribute",
+        "UPDATED_CUSTOM_ATTRIBUTE": "updated custom attribute",
         "SIZE_CHANGE": "Dokonano {size, plural, one{one change} other{# changes}}",
+        "BECAME_DEPRECATED": "became deprecated",
+        "BECAME_UNDEPRECATED": "became undeprecated",
+        "TEAM_REQUIREMENT": "Team Requirement",
+        "CLIENT_REQUIREMENT": "Client Requirement",
+        "BLOCKED": "Blocked",
         "VALUES": {
             "YES": "tak",
             "NO": "nie",
@@ -1071,6 +1093,7 @@
             "TAGS": "tagi",
             "ATTACHMENTS": "załączniki",
             "IS_DEPRECATED": "jest przedawniony",
+            "IS_NOT_DEPRECATED": "is not deprecated",
             "ORDER": "kolejność",
             "BACKLOG_ORDER": "kolejność backlogu",
             "SPRINT_ORDER": "kolejność sprintów",
@@ -1198,7 +1221,7 @@
     "TASK": {
         "PAGE_TITLE": "{{taskSubject}} - Zadanie {{taskRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Status: {{taskStatus }}. Opis: {{taskDescription}}",
-        "SECTION_NAME": "Task",
+        "SECTION_NAME": "Zadania",
         "LINK_TASKBOARD": "Tablica zadań",
         "TITLE_LINK_TASKBOARD": "Idź do listy zadań",
         "PLACEHOLDER_SUBJECT": "Wpisz temat zadania",
@@ -1247,7 +1270,7 @@
         "PAGE_TITLE": "Zgłoszenia - {{projectName}}",
         "PAGE_DESCRIPTION": "Lista zgłoszeń w projekcie {{projectName}}: {{projectDescription}}",
         "LIST_SECTION_NAME": "Zgłoszenia",
-        "SECTION_NAME": "Issue",
+        "SECTION_NAME": "Zgłoszenie",
         "ACTION_NEW_ISSUE": "+ NOWE ZGŁOSZENIE",
         "ACTION_PROMOTE_TO_US": "Awansuj na historyjkę użytkownika",
         "PLACEHOLDER_FILTER_NAME": "Wpisz nazwę filtru i kliknij enter",
@@ -1436,13 +1459,24 @@
         "DELETE_LIGHTBOX_TITLE": "Usuń tą stronę Wiki",
         "DELETE_LINK_TITLE": "Delete Wiki link",
         "NAVIGATION": {
+            "HOME": "Main Page",
             "SECTION_NAME": "Linki",
-            "ACTION_ADD_LINK": "Dodaj link"
+            "ACTION_ADD_LINK": "Dodaj link",
+            "ALL_PAGES": "All pages"
         },
         "SUMMARY": {
             "TIMES_EDITED": "razy <br />edytowano",
             "LAST_EDIT": "ostatnia <br />edycja",
             "LAST_MODIFICATION": "ostatnia modyfikacja"
+        },
+        "SECTION_PAGES_LIST": "All pages",
+        "PAGES_LIST_COLUMNS": {
+            "TITLE": "Title",
+            "EDITIONS": "Editions",
+            "CREATED": "Created",
+            "MODIFIED": "Modified",
+            "CREATOR": "Creator",
+            "LAST_MODIFIER": "Last modifier"
         }
     },
     "HINTS": {

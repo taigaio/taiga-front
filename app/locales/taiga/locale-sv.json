@@ -244,6 +244,7 @@
                 "VIEW_USER_STORIES": "Visa användarhistorier",
                 "ADD_USER_STORIES": "Lägg till användarhistorier",
                 "MODIFY_USER_STORIES": "Modifiera användarhistorier",
+                "COMMENT_USER_STORIES": "Comment user stories",
                 "DELETE_USER_STORIES": "Ta bort användarhistorier"
             },
             "TASKS": {
@@ -251,6 +252,7 @@
                 "VIEW_TASKS": "Visa uppgifter",
                 "ADD_TASKS": "Lägg till uppgifter",
                 "MODIFY_TASKS": "Modifiera uppgifter",
+                "COMMENT_TASKS": "Comment tasks",
                 "DELETE_TASKS": "Ta bort uppgift"
             },
             "ISSUES": {
@@ -258,6 +260,7 @@
                 "VIEW_ISSUES": "Visa ärenden",
                 "ADD_ISSUES": "Lägg till ärenden",
                 "MODIFY_ISSUES": "Modifiera ärenden",
+                "COMMENT_ISSUES": "Comment issues",
                 "DELETE_ISSUES": "Ta bort uppgifter"
             },
             "WIKI": {
@@ -558,7 +561,7 @@
             "ACTION_ADD": "Lägg till ny {{objName}}"
         },
         "PROJECT_VALUES_TAGS": {
-            "TITLE": "Tags",
+            "TITLE": "Etiketter",
             "SUBTITLE": "View and edit the color of your user stories",
             "EMPTY": "Currently there are no tags",
             "EMPTY_SEARCH": "It looks like nothing was found with your search criteria"
@@ -689,7 +692,7 @@
             "SEVERITIES": "Allvarsgrad",
             "TYPES": "Typ",
             "CUSTOM_FIELDS": "Anpassade fält",
-            "TAGS": "Tags"
+            "TAGS": "Etiketter"
         },
         "SUBMENU_PROJECT_PROFILE": {
             "TITLE": "Projektprofil"
@@ -981,7 +984,7 @@
     "US": {
         "PAGE_TITLE": "{{userStorySubject}} - Användarhistorier {{userStoryRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Status: {{userStoryStatus }}. avslutad{{userStoryProgressPercentage}}% ({{userStoryClosedTasks}} av {{userStoryTotalTasks}} tasks closed). Poäng: {{userStoryPoints}}. Beskrivning: {{userStoryDescription}}",
-        "SECTION_NAME": "User story",
+        "SECTION_NAME": "Användarhistorie",
         "LINK_TASKBOARD": "Uppgiftstavla",
         "TITLE_LINK_TASKBOARD": "Gå till uppgiftstavlan",
         "TOTAL_POINTS": "totalpoäng",
@@ -1018,28 +1021,47 @@
         }
     },
     "COMMENTS": {
-        "DELETED_INFO": "Kommentar raderad av {{user}} den {{date}}",
+        "DELETED_INFO": "Comment deleted by {{user}}",
         "TITLE": "Kommentarer",
+        "COMMENTS_COUNT": "{{comments}} Comments",
+        "ORDER": "Order",
+        "OLDER_FIRST": "Older first",
+        "RECENT_FIRST": "Recent first",
         "COMMENT": "Kommentarer",
+        "EDIT_COMMENT": "Edit comment",
+        "EDITED_COMMENT": "Edited:",
+        "SHOW_HISTORY": "View historic",
         "TYPE_NEW_COMMENT": "Skriv en ny kommentar här",
         "SHOW_DELETED": "Visa raderade kommentarer",
         "HIDE_DELETED": "Dölj raderade kommentarer",
         "DELETE": "Ta bort kommentar",
-        "RESTORE": "Hämta tillbaka tidigare kommentarer"
+        "RESTORE": "Hämta tillbaka tidigare kommentarer",
+        "HISTORY": {
+            "TITLE": "Activity"
+        }
     },
     "ACTIVITY": {
         "SHOW_ACTIVITY": "Visa aktiviteter",
         "DATETIME": "YYYY-MM-DD HH:mm",
         "SHOW_MORE": "+ Visa tidigare poster ({{showMore}} more)",
         "TITLE": "Aktiviteter",
+        "ACTIVITIES_COUNT": "{{activities}} Activities",
         "REMOVED": "borttaget",
         "ADDED": "lagt till",
-        "US_POINTS": "US-poäng ({{name}})",
-        "NEW_ATTACHMENT": "ny bilaga",
-        "DELETED_ATTACHMENT": "ta bort bifogad fil",
-        "UPDATED_ATTACHMENT": "uppdaterad bilaga {{filename}}",
-        "DELETED_CUSTOM_ATTRIBUTE": "raderad anpassad atribut",
+        "TAGS_ADDED": "tags added:",
+        "TAGS_REMOVED": "tags removed:",
+        "US_POINTS": "{{role}} points",
+        "NEW_ATTACHMENT": "new attachment:",
+        "DELETED_ATTACHMENT": "deleted attachment:",
+        "UPDATED_ATTACHMENT": "updated attachment ({{filename}}):",
+        "CREATED_CUSTOM_ATTRIBUTE": "created custom attribute",
+        "UPDATED_CUSTOM_ATTRIBUTE": "updated custom attribute",
         "SIZE_CHANGE": "Gjorde {size, plural, one{one change} other{# changes}}",
+        "BECAME_DEPRECATED": "became deprecated",
+        "BECAME_UNDEPRECATED": "became undeprecated",
+        "TEAM_REQUIREMENT": "Team Requirement",
+        "CLIENT_REQUIREMENT": "Client Requirement",
+        "BLOCKED": "Blocked",
         "VALUES": {
             "YES": "ja",
             "NO": "nej",
@@ -1071,6 +1093,7 @@
             "TAGS": "etiketter",
             "ATTACHMENTS": "bilagor",
             "IS_DEPRECATED": "undviks",
+            "IS_NOT_DEPRECATED": "is not deprecated",
             "ORDER": "sortera",
             "BACKLOG_ORDER": "sortera inkorgen",
             "SPRINT_ORDER": "sortera sprintar",
@@ -1198,7 +1221,7 @@
     "TASK": {
         "PAGE_TITLE": "{{taskSubject}} - Uppgift {{taskRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Status: {{taskStatus }}. Beskrivning: {{taskDescription}}",
-        "SECTION_NAME": "Task",
+        "SECTION_NAME": "Uppgift",
         "LINK_TASKBOARD": "Uppgiftstavla",
         "TITLE_LINK_TASKBOARD": "Gå till uppgiftstavlan",
         "PLACEHOLDER_SUBJECT": "Skriv in den nya uppgiftens titel",
@@ -1247,7 +1270,7 @@
         "PAGE_TITLE": "Ärenden - {{projectName}}",
         "PAGE_DESCRIPTION": "Ärenden som listas för projektet {{projectName}}: {{projectDescription}}",
         "LIST_SECTION_NAME": "Ärenden",
-        "SECTION_NAME": "Issue",
+        "SECTION_NAME": "ärende",
         "ACTION_NEW_ISSUE": "+ NYTT ÄRENDE",
         "ACTION_PROMOTE_TO_US": "Flytta till användarhistorie",
         "PLACEHOLDER_FILTER_NAME": "Skriv filternamnet och tryck på <Enter>",
@@ -1436,13 +1459,24 @@
         "DELETE_LIGHTBOX_TITLE": "Ta bort Wiki-sida",
         "DELETE_LINK_TITLE": "Delete Wiki link",
         "NAVIGATION": {
+            "HOME": "Main Page",
             "SECTION_NAME": "Länkar",
-            "ACTION_ADD_LINK": "Lägg till länk"
+            "ACTION_ADD_LINK": "Lägg till länk",
+            "ALL_PAGES": "All pages"
         },
         "SUMMARY": {
             "TIMES_EDITED": "gånger <br/> ändrad",
             "LAST_EDIT": "senaste <br/> ändring",
             "LAST_MODIFICATION": "senast modifierad"
+        },
+        "SECTION_PAGES_LIST": "All pages",
+        "PAGES_LIST_COLUMNS": {
+            "TITLE": "Title",
+            "EDITIONS": "Editions",
+            "CREATED": "Created",
+            "MODIFIED": "Modified",
+            "CREATOR": "Creator",
+            "LAST_MODIFIER": "Last modifier"
         }
     },
     "HINTS": {

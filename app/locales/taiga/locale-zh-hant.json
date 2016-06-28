@@ -244,6 +244,7 @@
                 "VIEW_USER_STORIES": "檢視使用者故事",
                 "ADD_USER_STORIES": "新增使用者故事",
                 "MODIFY_USER_STORIES": "修正使用者故事",
+                "COMMENT_USER_STORIES": "Comment user stories",
                 "DELETE_USER_STORIES": "刪除使用者故事"
             },
             "TASKS": {
@@ -251,6 +252,7 @@
                 "VIEW_TASKS": "檢視任務 ",
                 "ADD_TASKS": "新增任務 ",
                 "MODIFY_TASKS": "修正任務 ",
+                "COMMENT_TASKS": "Comment tasks",
                 "DELETE_TASKS": "刪除任務"
             },
             "ISSUES": {
@@ -258,6 +260,7 @@
                 "VIEW_ISSUES": "檢視問題 ",
                 "ADD_ISSUES": "新增問題 ",
                 "MODIFY_ISSUES": "修正議題 ",
+                "COMMENT_ISSUES": "Comment issues",
                 "DELETE_ISSUES": "刪除問題　"
             },
             "WIKI": {
@@ -558,7 +561,7 @@
             "ACTION_ADD": "新增{{objName}}"
         },
         "PROJECT_VALUES_TAGS": {
-            "TITLE": "Tags",
+            "TITLE": "標籤",
             "SUBTITLE": "View and edit the color of your user stories",
             "EMPTY": "Currently there are no tags",
             "EMPTY_SEARCH": "It looks like nothing was found with your search criteria"
@@ -689,7 +692,7 @@
             "SEVERITIES": "急迫性",
             "TYPES": "類型",
             "CUSTOM_FIELDS": "客製化欄位",
-            "TAGS": "Tags"
+            "TAGS": "標籤"
         },
         "SUBMENU_PROJECT_PROFILE": {
             "TITLE": "專案檔案"
@@ -981,7 +984,7 @@
     "US": {
         "PAGE_TITLE": "{{userStorySubject}} - 使用者故事 {{userStoryRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "狀態: {{userStoryStatus }}.已完成 {{userStoryProgressPercentage}}% ({{userStoryClosedTasks}} of {{userStoryTotalTasks}} tasks closed). 點數: {{userStoryPoints}}. 描述: {{userStoryDescription}}",
-        "SECTION_NAME": "User story",
+        "SECTION_NAME": "使用者故事",
         "LINK_TASKBOARD": "任務板",
         "TITLE_LINK_TASKBOARD": "到任務板去",
         "TOTAL_POINTS": "所有點數",
@@ -1018,28 +1021,47 @@
         }
     },
     "COMMENTS": {
-        "DELETED_INFO": "評論被  {{user}} 於 {{date}}刪除　",
+        "DELETED_INFO": "Comment deleted by {{user}}",
         "TITLE": "評論",
+        "COMMENTS_COUNT": "{{comments}} Comments",
+        "ORDER": "Order",
+        "OLDER_FIRST": "Older first",
+        "RECENT_FIRST": "Recent first",
         "COMMENT": "評論",
+        "EDIT_COMMENT": "Edit comment",
+        "EDITED_COMMENT": "Edited:",
+        "SHOW_HISTORY": "View historic",
         "TYPE_NEW_COMMENT": "在此輸入一個新的評論",
         "SHOW_DELETED": "顯示遭刪除的評論 ",
         "HIDE_DELETED": "隱藏已刪除之評論 ",
         "DELETE": "刪除評論 ",
-        "RESTORE": "恢復原評論 "
+        "RESTORE": "恢復原評論 ",
+        "HISTORY": {
+            "TITLE": "Activity"
+        }
     },
     "ACTIVITY": {
         "SHOW_ACTIVITY": "顯示動態",
         "DATETIME": "DD MMM YYYY HH:mm",
         "SHOW_MORE": "+ 顯示過去條目 ({{showMore}} more)",
         "TITLE": "動態",
+        "ACTIVITIES_COUNT": "{{activities}} Activities",
         "REMOVED": "已移除",
         "ADDED": "已加入",
-        "US_POINTS": "使用者故事點數({{name}})",
-        "NEW_ATTACHMENT": "新附件",
-        "DELETED_ATTACHMENT": "已刪除附件",
-        "UPDATED_ATTACHMENT": "更新附件 {{filename}}",
-        "DELETED_CUSTOM_ATTRIBUTE": "刪除客製屬性",
+        "TAGS_ADDED": "tags added:",
+        "TAGS_REMOVED": "tags removed:",
+        "US_POINTS": "{{role}} points",
+        "NEW_ATTACHMENT": "new attachment:",
+        "DELETED_ATTACHMENT": "deleted attachment:",
+        "UPDATED_ATTACHMENT": "updated attachment ({{filename}}):",
+        "CREATED_CUSTOM_ATTRIBUTE": "created custom attribute",
+        "UPDATED_CUSTOM_ATTRIBUTE": "updated custom attribute",
         "SIZE_CHANGE": "使  {size, plural, one{更改} other{變化}}",
+        "BECAME_DEPRECATED": "became deprecated",
+        "BECAME_UNDEPRECATED": "became undeprecated",
+        "TEAM_REQUIREMENT": "Team Requirement",
+        "CLIENT_REQUIREMENT": "Client Requirement",
+        "BLOCKED": "Blocked",
         "VALUES": {
             "YES": "yes",
             "NO": "no",
@@ -1071,6 +1093,7 @@
             "TAGS": "標籤",
             "ATTACHMENTS": "附件",
             "IS_DEPRECATED": "被棄用",
+            "IS_NOT_DEPRECATED": "is not deprecated",
             "ORDER": "次序",
             "BACKLOG_ORDER": "待辦任務先後次序",
             "SPRINT_ORDER": "衝刺任務次序",
@@ -1198,7 +1221,7 @@
     "TASK": {
         "PAGE_TITLE": "{{taskSubject}} - 任務 {{taskRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "狀態: {{taskStatus }}.描述: {{taskDescription}}",
-        "SECTION_NAME": "Task",
+        "SECTION_NAME": "任務",
         "LINK_TASKBOARD": "任務板",
         "TITLE_LINK_TASKBOARD": "到任務板去",
         "PLACEHOLDER_SUBJECT": "鍵入新任務主旨",
@@ -1247,7 +1270,7 @@
         "PAGE_TITLE": "問題 - {{projectName}}",
         "PAGE_DESCRIPTION": " {{projectName}}的問題清單看版: {{projectDescription}}",
         "LIST_SECTION_NAME": "問題 ",
-        "SECTION_NAME": "Issue",
+        "SECTION_NAME": "問題",
         "ACTION_NEW_ISSUE": "+ 新問題　",
         "ACTION_PROMOTE_TO_US": "提昇到使用者故事",
         "PLACEHOLDER_FILTER_NAME": "寫入過濾器名稱後按下enter ",
@@ -1436,13 +1459,24 @@
         "DELETE_LIGHTBOX_TITLE": "刪除維基頁",
         "DELETE_LINK_TITLE": "Delete Wiki link",
         "NAVIGATION": {
+            "HOME": "Main Page",
             "SECTION_NAME": "連結",
-            "ACTION_ADD_LINK": "新增連結"
+            "ACTION_ADD_LINK": "新增連結",
+            "ALL_PAGES": "All pages"
         },
         "SUMMARY": {
             "TIMES_EDITED": "次數 <br />編輯 ",
             "LAST_EDIT": "上次 <br />編輯 ",
             "LAST_MODIFICATION": "上回修改"
+        },
+        "SECTION_PAGES_LIST": "All pages",
+        "PAGES_LIST_COLUMNS": {
+            "TITLE": "Title",
+            "EDITIONS": "Editions",
+            "CREATED": "Created",
+            "MODIFIED": "Modified",
+            "CREATOR": "Creator",
+            "LAST_MODIFIER": "Last modifier"
         }
     },
     "HINTS": {

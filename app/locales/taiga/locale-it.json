@@ -244,6 +244,7 @@
                 "VIEW_USER_STORIES": "Vai alle storie utente",
                 "ADD_USER_STORIES": "Aggiungi le storie utente",
                 "MODIFY_USER_STORIES": "Modifica le storie utente",
+                "COMMENT_USER_STORIES": "Comment user stories",
                 "DELETE_USER_STORIES": "Elimina le storie utente"
             },
             "TASKS": {
@@ -251,6 +252,7 @@
                 "VIEW_TASKS": "Guarda i compiti",
                 "ADD_TASKS": "Aggiungi i compiti",
                 "MODIFY_TASKS": "Modifica i compiti",
+                "COMMENT_TASKS": "Comment tasks",
                 "DELETE_TASKS": "Elimina i compiti"
             },
             "ISSUES": {
@@ -258,6 +260,7 @@
                 "VIEW_ISSUES": "Guarda i problemi",
                 "ADD_ISSUES": "Aggiungi un problema",
                 "MODIFY_ISSUES": "Modifica i problemi",
+                "COMMENT_ISSUES": "Comment issues",
                 "DELETE_ISSUES": "Elimina i problemi"
             },
             "WIKI": {
@@ -558,7 +561,7 @@
             "ACTION_ADD": "Aggiungi {{objName}}"
         },
         "PROJECT_VALUES_TAGS": {
-            "TITLE": "Tags",
+            "TITLE": "Tag",
             "SUBTITLE": "View and edit the color of your user stories",
             "EMPTY": "Currently there are no tags",
             "EMPTY_SEARCH": "It looks like nothing was found with your search criteria"
@@ -689,7 +692,7 @@
             "SEVERITIES": "Severitá",
             "TYPES": "Tipi",
             "CUSTOM_FIELDS": "Campi personalizzati",
-            "TAGS": "Tags"
+            "TAGS": "Tag"
         },
         "SUBMENU_PROJECT_PROFILE": {
             "TITLE": "Profilo progetto"
@@ -981,7 +984,7 @@
     "US": {
         "PAGE_TITLE": "{{userStorySubject}} - User Story {{userStoryRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Status: {{userStoryStatus }}. Completata per il {{userStoryProgressPercentage}}% ({{userStoryClosedTasks}} di {{userStoryTotalTasks}} tasks closed). Punti: {{userStoryPoints}}. Descrizione: {{userStoryDescription}}",
-        "SECTION_NAME": "User story",
+        "SECTION_NAME": "Storia utente",
         "LINK_TASKBOARD": "Pannello dei compiti",
         "TITLE_LINK_TASKBOARD": "Vai al pannello dei compiti",
         "TOTAL_POINTS": "totale punti",
@@ -1018,28 +1021,47 @@
         }
     },
     "COMMENTS": {
-        "DELETED_INFO": "Commento cancellato da {{user}} il {{date}}",
+        "DELETED_INFO": "Comment deleted by {{user}}",
         "TITLE": "Commenti",
+        "COMMENTS_COUNT": "{{comments}} Comments",
+        "ORDER": "Order",
+        "OLDER_FIRST": "Older first",
+        "RECENT_FIRST": "Recent first",
         "COMMENT": "Commento",
+        "EDIT_COMMENT": "Edit comment",
+        "EDITED_COMMENT": "Edited:",
+        "SHOW_HISTORY": "View historic",
         "TYPE_NEW_COMMENT": "Scrivi un nuovo commento qui",
         "SHOW_DELETED": "Visualizza commento cancellato",
         "HIDE_DELETED": "Nascondi commento cancellato",
         "DELETE": "Cancella commento",
-        "RESTORE": "Ripristina commento"
+        "RESTORE": "Ripristina commento",
+        "HISTORY": {
+            "TITLE": "Activity"
+        }
     },
     "ACTIVITY": {
         "SHOW_ACTIVITY": "Mostra attività",
         "DATETIME": "DD MMM YYYY HH:mm",
         "SHOW_MORE": "Mostra gli inserimenti precedenti ({{showMore}} more)",
         "TITLE": "Attività",
+        "ACTIVITIES_COUNT": "{{activities}} Activities",
         "REMOVED": "rimosso",
         "ADDED": "aggiunto",
-        "US_POINTS": "punti storia utente ({{name}})",
-        "NEW_ATTACHMENT": "nuovo allegato",
-        "DELETED_ATTACHMENT": "allegato eliminato",
-        "UPDATED_ATTACHMENT": "Aggiornato l'allegato {{filename}}",
-        "DELETED_CUSTOM_ATTRIBUTE": "elimina un attributo personalizzato",
+        "TAGS_ADDED": "tags added:",
+        "TAGS_REMOVED": "tags removed:",
+        "US_POINTS": "{{role}} points",
+        "NEW_ATTACHMENT": "new attachment:",
+        "DELETED_ATTACHMENT": "deleted attachment:",
+        "UPDATED_ATTACHMENT": "updated attachment ({{filename}}):",
+        "CREATED_CUSTOM_ATTRIBUTE": "created custom attribute",
+        "UPDATED_CUSTOM_ATTRIBUTE": "updated custom attribute",
         "SIZE_CHANGE": "Fatto {size, plural, one{un cambiamento} other{# cambiamenti}}",
+        "BECAME_DEPRECATED": "became deprecated",
+        "BECAME_UNDEPRECATED": "became undeprecated",
+        "TEAM_REQUIREMENT": "Team Requirement",
+        "CLIENT_REQUIREMENT": "Client Requirement",
+        "BLOCKED": "Blocked",
         "VALUES": {
             "YES": "si",
             "NO": "no",
@@ -1071,6 +1093,7 @@
             "TAGS": "tag",
             "ATTACHMENTS": "allegati",
             "IS_DEPRECATED": "è deprecato",
+            "IS_NOT_DEPRECATED": "is not deprecated",
             "ORDER": "ordine",
             "BACKLOG_ORDER": "Ordine di backlog",
             "SPRINT_ORDER": "Ordine dello sprint",
@@ -1198,7 +1221,7 @@
     "TASK": {
         "PAGE_TITLE": "{{taskSubject}} - Compiti {{taskRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Stato: {{taskStatus }}. Descrizione: {{taskDescription}}",
-        "SECTION_NAME": "Task",
+        "SECTION_NAME": "Compito",
         "LINK_TASKBOARD": "Pannello dei compiti",
         "TITLE_LINK_TASKBOARD": "Vai al pannello dei compiti",
         "PLACEHOLDER_SUBJECT": "Inserisci il soggetto del nuovo compito",
@@ -1247,7 +1270,7 @@
         "PAGE_TITLE": "Criticitá - {{projectName}}",
         "PAGE_DESCRIPTION": "Il pannello con la lista dei problemi del progetto {{projectName}}: {{projectDescription}}",
         "LIST_SECTION_NAME": "problemi",
-        "SECTION_NAME": "Issue",
+        "SECTION_NAME": "Problema",
         "ACTION_NEW_ISSUE": "+ NUOVA CRITICITÁ",
         "ACTION_PROMOTE_TO_US": "Promuovi la storia utente",
         "PLACEHOLDER_FILTER_NAME": "Scrivi il nome del filtro e premi invio",
@@ -1436,13 +1459,24 @@
         "DELETE_LIGHTBOX_TITLE": "Elimina Pagina Wiki",
         "DELETE_LINK_TITLE": "Delete Wiki link",
         "NAVIGATION": {
+            "HOME": "Main Page",
             "SECTION_NAME": "Link",
-            "ACTION_ADD_LINK": "Aggiungi link"
+            "ACTION_ADD_LINK": "Aggiungi link",
+            "ALL_PAGES": "All pages"
         },
         "SUMMARY": {
             "TIMES_EDITED": "tempo <br />modificato",
             "LAST_EDIT": "<br /> ultima modifica",
             "LAST_MODIFICATION": "ultima modifica"
+        },
+        "SECTION_PAGES_LIST": "All pages",
+        "PAGES_LIST_COLUMNS": {
+            "TITLE": "Title",
+            "EDITIONS": "Editions",
+            "CREATED": "Created",
+            "MODIFIED": "Modified",
+            "CREATOR": "Creator",
+            "LAST_MODIFIER": "Last modifier"
         }
     },
     "HINTS": {

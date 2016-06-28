@@ -244,6 +244,7 @@
                 "VIEW_USER_STORIES": "Kullanıcı hikayelerini gör",
                 "ADD_USER_STORIES": "Kullanıcı hikayeleri ekle",
                 "MODIFY_USER_STORIES": "Kullanıcı hikayelerini değiştir",
+                "COMMENT_USER_STORIES": "Comment user stories",
                 "DELETE_USER_STORIES": "Kullanıcı hikayelerini sil"
             },
             "TASKS": {
@@ -251,6 +252,7 @@
                 "VIEW_TASKS": "Görevler gör",
                 "ADD_TASKS": "Görevleri ekle",
                 "MODIFY_TASKS": "Görevleri değiştir",
+                "COMMENT_TASKS": "Comment tasks",
                 "DELETE_TASKS": "Görevleri sil"
             },
             "ISSUES": {
@@ -258,6 +260,7 @@
                 "VIEW_ISSUES": "Sorunları gör",
                 "ADD_ISSUES": "Sorunları ekle",
                 "MODIFY_ISSUES": "Sorunları değiştir",
+                "COMMENT_ISSUES": "Comment issues",
                 "DELETE_ISSUES": "Sorunları sil"
             },
             "WIKI": {
@@ -558,7 +561,7 @@
             "ACTION_ADD": "Ekle yeni {{objName}}"
         },
         "PROJECT_VALUES_TAGS": {
-            "TITLE": "Tags",
+            "TITLE": "Etiketler ",
             "SUBTITLE": "View and edit the color of your user stories",
             "EMPTY": "Currently there are no tags",
             "EMPTY_SEARCH": "It looks like nothing was found with your search criteria"
@@ -689,7 +692,7 @@
             "SEVERITIES": "Önem Dereceleri",
             "TYPES": "Tipler",
             "CUSTOM_FIELDS": "Özel alanlar",
-            "TAGS": "Tags"
+            "TAGS": "Etiketler "
         },
         "SUBMENU_PROJECT_PROFILE": {
             "TITLE": "Proje Profili"
@@ -981,7 +984,7 @@
     "US": {
         "PAGE_TITLE": "{{userStorySubject}} - Kullanıcı Hikayesi {{userStoryRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Durum: {{userStoryStatus }}. Tamamlanan {{userStoryProgressPercentage}}% ({{userStoryClosedTasks}} of {{userStoryTotalTasks}} tasks closed). Puanlar: {{userStoryPoints}}. Tanım: {{userStoryDescription}}",
-        "SECTION_NAME": "User story",
+        "SECTION_NAME": "Kullanıcı hikayesi",
         "LINK_TASKBOARD": "Görev Panosu",
         "TITLE_LINK_TASKBOARD": "Görev panosuna git",
         "TOTAL_POINTS": "toplam puanlar",
@@ -1018,28 +1021,47 @@
         }
     },
     "COMMENTS": {
-        "DELETED_INFO": "Yorum {{date}} tarihinde {{user}} tarafından silindi",
+        "DELETED_INFO": "Comment deleted by {{user}}",
         "TITLE": "Yorumlar",
+        "COMMENTS_COUNT": "{{comments}} Comments",
+        "ORDER": "Order",
+        "OLDER_FIRST": "Older first",
+        "RECENT_FIRST": "Recent first",
         "COMMENT": "Yorum Yap",
+        "EDIT_COMMENT": "Edit comment",
+        "EDITED_COMMENT": "Edited:",
+        "SHOW_HISTORY": "View historic",
         "TYPE_NEW_COMMENT": "Buraya yeni bir yorum yazın",
         "SHOW_DELETED": "Silinmiş yorumları göster",
         "HIDE_DELETED": "Silinmiş yorumu gizle",
         "DELETE": "Yorumu sil",
-        "RESTORE": "Yorumu geri yükle"
+        "RESTORE": "Yorumu geri yükle",
+        "HISTORY": {
+            "TITLE": "Activity"
+        }
     },
     "ACTIVITY": {
         "SHOW_ACTIVITY": "Eylemleri göster",
         "DATETIME": "DD MMM YYYY HH:mm",
         "SHOW_MORE": "+ Önceki girdileri göster ({{showMore}} daha fazla)",
         "TITLE": "Aktivite",
+        "ACTIVITIES_COUNT": "{{activities}} Activities",
         "REMOVED": "silindi",
         "ADDED": "eklendi",
-        "US_POINTS": "KH puanları ({{name}})",
-        "NEW_ATTACHMENT": "yeni ek",
-        "DELETED_ATTACHMENT": "ek sil",
-        "UPDATED_ATTACHMENT": "güncellenmiş ek {{filename}}",
-        "DELETED_CUSTOM_ATTRIBUTE": "silinmiş özel öznitelik",
+        "TAGS_ADDED": "tags added:",
+        "TAGS_REMOVED": "tags removed:",
+        "US_POINTS": "{{role}} points",
+        "NEW_ATTACHMENT": "new attachment:",
+        "DELETED_ATTACHMENT": "deleted attachment:",
+        "UPDATED_ATTACHMENT": "updated attachment ({{filename}}):",
+        "CREATED_CUSTOM_ATTRIBUTE": "created custom attribute",
+        "UPDATED_CUSTOM_ATTRIBUTE": "updated custom attribute",
         "SIZE_CHANGE": "Yapılan {size, plural, one{tek değişiklik} other{# değişiklikler}}",
+        "BECAME_DEPRECATED": "became deprecated",
+        "BECAME_UNDEPRECATED": "became undeprecated",
+        "TEAM_REQUIREMENT": "Team Requirement",
+        "CLIENT_REQUIREMENT": "Client Requirement",
+        "BLOCKED": "Blocked",
         "VALUES": {
             "YES": "evet",
             "NO": "hayır",
@@ -1071,6 +1093,7 @@
             "TAGS": "etiketler",
             "ATTACHMENTS": "ekler",
             "IS_DEPRECATED": "kaldırıldı",
+            "IS_NOT_DEPRECATED": "is not deprecated",
             "ORDER": "sıra",
             "BACKLOG_ORDER": "havuz sıralaması",
             "SPRINT_ORDER": "koşu sırası",
@@ -1198,7 +1221,7 @@
     "TASK": {
         "PAGE_TITLE": "{{taskSubject}} - Görev {{taskRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Durum: {{taskStatus }}. Tanım: {{taskDescription}}",
-        "SECTION_NAME": "Task",
+        "SECTION_NAME": "Görev",
         "LINK_TASKBOARD": "Görev Panosu",
         "TITLE_LINK_TASKBOARD": "Görev panosuna git",
         "PLACEHOLDER_SUBJECT": "Yeni görev konusunu gir",
@@ -1247,7 +1270,7 @@
         "PAGE_TITLE": "Sorunlar - {{projectName}}",
         "PAGE_DESCRIPTION": "{{projectName}} projesinin sorun listesi paneli: {{projectDescription}}",
         "LIST_SECTION_NAME": "Sorunlar",
-        "SECTION_NAME": "Issue",
+        "SECTION_NAME": "Sorun",
         "ACTION_NEW_ISSUE": "+ YENİ SORUN",
         "ACTION_PROMOTE_TO_US": "Kullanıcı Hikayesine Terfi Ettir",
         "PLACEHOLDER_FILTER_NAME": "Filtre adı yazın ve enter a basın",
@@ -1436,13 +1459,24 @@
         "DELETE_LIGHTBOX_TITLE": "Wiki Sayfası Sil",
         "DELETE_LINK_TITLE": "Delete Wiki link",
         "NAVIGATION": {
+            "HOME": "Main Page",
             "SECTION_NAME": "Bağlantılar",
-            "ACTION_ADD_LINK": "Bağlantı ekle"
+            "ACTION_ADD_LINK": "Bağlantı ekle",
+            "ALL_PAGES": "All pages"
         },
         "SUMMARY": {
             "TIMES_EDITED": "kere <br />düzenlendi",
             "LAST_EDIT": "son <br />düzenleme",
             "LAST_MODIFICATION": "son düzenleme"
+        },
+        "SECTION_PAGES_LIST": "All pages",
+        "PAGES_LIST_COLUMNS": {
+            "TITLE": "Title",
+            "EDITIONS": "Editions",
+            "CREATED": "Created",
+            "MODIFIED": "Modified",
+            "CREATOR": "Creator",
+            "LAST_MODIFIER": "Last modifier"
         }
     },
     "HINTS": {

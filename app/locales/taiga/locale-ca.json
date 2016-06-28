@@ -244,6 +244,7 @@
                 "VIEW_USER_STORIES": "Vore istòries d'usuari",
                 "ADD_USER_STORIES": "Afegir històries d'usuari",
                 "MODIFY_USER_STORIES": "Editar història d'usuari",
+                "COMMENT_USER_STORIES": "Comment user stories",
                 "DELETE_USER_STORIES": "Esborrar històries d'usuari"
             },
             "TASKS": {
@@ -251,6 +252,7 @@
                 "VIEW_TASKS": "Vore tasca",
                 "ADD_TASKS": "Afegit tasques",
                 "MODIFY_TASKS": "Modificar tasques",
+                "COMMENT_TASKS": "Comment tasks",
                 "DELETE_TASKS": "Esborrar tasques"
             },
             "ISSUES": {
@@ -258,6 +260,7 @@
                 "VIEW_ISSUES": "Vore incidències",
                 "ADD_ISSUES": "Afegeix incidències",
                 "MODIFY_ISSUES": "Modifica incidències",
+                "COMMENT_ISSUES": "Comment issues",
                 "DELETE_ISSUES": "Elimina incidències"
             },
             "WIKI": {
@@ -558,7 +561,7 @@
             "ACTION_ADD": "Afegir now {{objName}}"
         },
         "PROJECT_VALUES_TAGS": {
-            "TITLE": "Tags",
+            "TITLE": "Etiquetes",
             "SUBTITLE": "View and edit the color of your user stories",
             "EMPTY": "Currently there are no tags",
             "EMPTY_SEARCH": "It looks like nothing was found with your search criteria"
@@ -689,7 +692,7 @@
             "SEVERITIES": "severitats",
             "TYPES": "Tipus",
             "CUSTOM_FIELDS": "Camps personalitzats",
-            "TAGS": "Tags"
+            "TAGS": "Etiquetes"
         },
         "SUBMENU_PROJECT_PROFILE": {
             "TITLE": "Perfil de projecte"
@@ -981,7 +984,7 @@
     "US": {
         "PAGE_TITLE": "{{userStorySubject}} - Història d'Usuari {{userStoryRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Estat: {{userStoryStatus }}. Completat {{userStoryProgressPercentage}}% ({{userStoryClosedTasks}} de {{userStoryTotalTasks}} tasques tancades). Punts: {{userStoryPoints}}. Descripció: {{userStoryDescription}}",
-        "SECTION_NAME": "User story",
+        "SECTION_NAME": "Història d'usuari",
         "LINK_TASKBOARD": "Panell de tasques",
         "TITLE_LINK_TASKBOARD": "Anar a panell de tasques",
         "TOTAL_POINTS": "punts totals",
@@ -1018,28 +1021,47 @@
         }
     },
     "COMMENTS": {
-        "DELETED_INFO": "Comentari esborrat per {{user}} el {{date}}",
+        "DELETED_INFO": "Comment deleted by {{user}}",
         "TITLE": "Comentaris",
+        "COMMENTS_COUNT": "{{comments}} Comments",
+        "ORDER": "Order",
+        "OLDER_FIRST": "Older first",
+        "RECENT_FIRST": "Recent first",
         "COMMENT": "Comentar",
+        "EDIT_COMMENT": "Edit comment",
+        "EDITED_COMMENT": "Edited:",
+        "SHOW_HISTORY": "View historic",
         "TYPE_NEW_COMMENT": "Escriu un nou comentari ací",
         "SHOW_DELETED": "Mostra el comentari esborrat.",
         "HIDE_DELETED": "Amaga el comentari esborrat",
         "DELETE": "Esborrar comentari",
-        "RESTORE": "Resturar comentari."
+        "RESTORE": "Resturar comentari.",
+        "HISTORY": {
+            "TITLE": "Activity"
+        }
     },
     "ACTIVITY": {
         "SHOW_ACTIVITY": "Mostrar activitat",
         "DATETIME": "DD MMM YYYY HH:mm",
         "SHOW_MORE": "+ Mostrar activitat anterior ({{showMore}} més)",
         "TITLE": "Activitat",
+        "ACTIVITIES_COUNT": "{{activities}} Activities",
         "REMOVED": "Borrat",
         "ADDED": "Afegit",
-        "US_POINTS": "Punts d'US ({{name}})",
-        "NEW_ATTACHMENT": "Nou adjunt",
-        "DELETED_ATTACHMENT": "Adjunts esborrats",
-        "UPDATED_ATTACHMENT": "Actualitzat adjunt {{filename}}",
-        "DELETED_CUSTOM_ATTRIBUTE": "Esborrar camps personalitzat",
+        "TAGS_ADDED": "tags added:",
+        "TAGS_REMOVED": "tags removed:",
+        "US_POINTS": "{{role}} points",
+        "NEW_ATTACHMENT": "new attachment:",
+        "DELETED_ATTACHMENT": "deleted attachment:",
+        "UPDATED_ATTACHMENT": "updated attachment ({{filename}}):",
+        "CREATED_CUSTOM_ATTRIBUTE": "created custom attribute",
+        "UPDATED_CUSTOM_ATTRIBUTE": "updated custom attribute",
         "SIZE_CHANGE": "Fet {size, plural, one{un canvi} other{# changes}}",
+        "BECAME_DEPRECATED": "became deprecated",
+        "BECAME_UNDEPRECATED": "became undeprecated",
+        "TEAM_REQUIREMENT": "Team Requirement",
+        "CLIENT_REQUIREMENT": "Client Requirement",
+        "BLOCKED": "Blocked",
         "VALUES": {
             "YES": "si",
             "NO": "no",
@@ -1071,6 +1093,7 @@
             "TAGS": "Etiquetes",
             "ATTACHMENTS": "adjunts",
             "IS_DEPRECATED": "és obsolet",
+            "IS_NOT_DEPRECATED": "is not deprecated",
             "ORDER": "ordre",
             "BACKLOG_ORDER": "ordre de backlog",
             "SPRINT_ORDER": "ordre d'sprint",
@@ -1198,7 +1221,7 @@
     "TASK": {
         "PAGE_TITLE": "{{taskSubject}} - Tasca {{taskRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Estat: {{taskStatus }}. Descripció: {{taskDescription}}",
-        "SECTION_NAME": "Task",
+        "SECTION_NAME": "Tasca",
         "LINK_TASKBOARD": "Panell de tasques",
         "TITLE_LINK_TASKBOARD": "Anar a panell de tasques",
         "PLACEHOLDER_SUBJECT": "Afegix la descripció de la tasca",
@@ -1247,7 +1270,7 @@
         "PAGE_TITLE": "Incidències - {{projectName}}",
         "PAGE_DESCRIPTION": "El panell d'incidències de {{projectName}}: {{projectDescription}}",
         "LIST_SECTION_NAME": "Incidències",
-        "SECTION_NAME": "Issue",
+        "SECTION_NAME": "incidència",
         "ACTION_NEW_ISSUE": "+ NOVA INCIDÈNCIA",
         "ACTION_PROMOTE_TO_US": "Promocionar història d'usuari",
         "PLACEHOLDER_FILTER_NAME": "Escriu el filtre i pressiona Intro",
@@ -1436,13 +1459,24 @@
         "DELETE_LIGHTBOX_TITLE": "Esborrar pàgina de Wiki",
         "DELETE_LINK_TITLE": "Delete Wiki link",
         "NAVIGATION": {
+            "HOME": "Main Page",
             "SECTION_NAME": "Enllaços",
-            "ACTION_ADD_LINK": "Afegir link"
+            "ACTION_ADD_LINK": "Afegir link",
+            "ALL_PAGES": "All pages"
         },
         "SUMMARY": {
             "TIMES_EDITED": "voltes <br />editat",
             "LAST_EDIT": "última <br />edició",
             "LAST_MODIFICATION": "última modificació"
+        },
+        "SECTION_PAGES_LIST": "All pages",
+        "PAGES_LIST_COLUMNS": {
+            "TITLE": "Title",
+            "EDITIONS": "Editions",
+            "CREATED": "Created",
+            "MODIFIED": "Modified",
+            "CREATOR": "Creator",
+            "LAST_MODIFIER": "Last modifier"
         }
     },
     "HINTS": {

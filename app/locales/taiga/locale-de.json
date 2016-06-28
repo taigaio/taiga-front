@@ -43,7 +43,7 @@
         "TEAM_REQUIREMENT": "Team requirement is a requirement that must exist in the project but should have no cost for the client",
         "OWNER": "Projekteigentümer",
         "CAPSLOCK_WARNING": "Achtung! Sie verwenden Großbuchstaben in einem Eingabefeld, dass Groß- und Kleinschreibung berücksichtigt.",
-        "CONFIRM_CLOSE_EDIT_MODE_TITLE": "Are you sure you want to close the edit mode?",
+        "CONFIRM_CLOSE_EDIT_MODE_TITLE": "Sind Sie sicher, dass Sie den Bearbeitungsmodus beenden möchten?",
         "CONFIRM_CLOSE_EDIT_MODE_MESSAGE": "Remember that if you close the edit mode without saving all the changes will be lost",
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Dieser Wert scheint ungültig zu sein.",
@@ -244,6 +244,7 @@
                 "VIEW_USER_STORIES": "User-Stories ansehen",
                 "ADD_USER_STORIES": "User-Stories hinzufügen",
                 "MODIFY_USER_STORIES": "User-Stories modifizieren",
+                "COMMENT_USER_STORIES": "Comment user stories",
                 "DELETE_USER_STORIES": "User-Stories löschen"
             },
             "TASKS": {
@@ -251,6 +252,7 @@
                 "VIEW_TASKS": "Aufgaben ansehen",
                 "ADD_TASKS": "Aufgaben hinzufügen",
                 "MODIFY_TASKS": "Aufgaben ändern",
+                "COMMENT_TASKS": "Comment tasks",
                 "DELETE_TASKS": "Aufgaben löschen"
             },
             "ISSUES": {
@@ -258,6 +260,7 @@
                 "VIEW_ISSUES": "Tickets ansehen",
                 "ADD_ISSUES": "Tickets hinzufügen",
                 "MODIFY_ISSUES": "Tickets ändern",
+                "COMMENT_ISSUES": "Comment issues",
                 "DELETE_ISSUES": "Tickets löschen"
             },
             "WIKI": {
@@ -290,7 +293,7 @@
         "HEADER": "Ich bin bereits bei Taiga angemeldet",
         "PLACEHOLDER_AUTH_NAME": "Benutzername oder E-Mail-Adresse",
         "LINK_FORGOT_PASSWORD": "Haben Sie es vergessen?",
-        "TITLE_LINK_FORGOT_PASSWORD": "Did you forget your password?",
+        "TITLE_LINK_FORGOT_PASSWORD": "Haben Sie Ihr Passwort vergessen?",
         "ACTION_ENTER": "Eingabe",
         "ACTION_SIGN_IN": "Login",
         "PLACEHOLDER_AUTH_PASSWORD": "Passwort"
@@ -558,10 +561,10 @@
             "ACTION_ADD": "Neu hinzufügen {{objName}}"
         },
         "PROJECT_VALUES_TAGS": {
-            "TITLE": "Tags",
+            "TITLE": "Schlagwörter",
             "SUBTITLE": "View and edit the color of your user stories",
             "EMPTY": "Currently there are no tags",
-            "EMPTY_SEARCH": "It looks like nothing was found with your search criteria"
+            "EMPTY_SEARCH": "Es sieht so aus, als konnte zu Ihren Suchkriterien nichts passendes gefunden werden."
         },
         "ROLES": {
             "PAGE_TITLE": "Rollen - {{projectName}}",
@@ -689,7 +692,7 @@
             "SEVERITIES": "Schweregrade",
             "TYPES": "Typen",
             "CUSTOM_FIELDS": "Benutzerdefinierte Felder",
-            "TAGS": "Tags"
+            "TAGS": "Schlagwörter"
         },
         "SUBMENU_PROJECT_PROFILE": {
             "TITLE": "Projektprofil"
@@ -981,7 +984,7 @@
     "US": {
         "PAGE_TITLE": "{{userStorySubject}} - User-Story {{userStoryRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Status: {{userStoryStatus }}. Abgeschlossen {{userStoryProgressPercentage}}% ({{userStoryClosedTasks}} von {{userStoryTotalTasks}} Aufgaben geschlossen). Punkte: {{userStoryPoints}}. Beschreibung: {{userStoryDescription}}",
-        "SECTION_NAME": "User story",
+        "SECTION_NAME": "User-Story",
         "LINK_TASKBOARD": "Taskboard",
         "TITLE_LINK_TASKBOARD": "Zu Taskboard wechseln",
         "TOTAL_POINTS": "Gesamtpunkte",
@@ -1001,13 +1004,13 @@
         "NOT_ESTIMATED": "Nicht eingeschätzt",
         "TOTAL_US_POINTS": "User-Story-Punkte insgesamt",
         "TRIBE": {
-            "PUBLISH": "Publish as Gig in Taiga Tribe",
-            "PUBLISH_INFO": "More info",
+            "PUBLISH": "Als Gig in Taiga Tribe veröffentlichen",
+            "PUBLISH_INFO": "Weitere Infos",
             "PUBLISH_TITLE": "More info on publishing in Taiga Tribe",
             "PUBLISHED_AS_GIG": "Story published as Gig in Taiga Tribe",
-            "EDIT_LINK": "Edit link",
-            "CLOSE": "Close",
-            "SYNCHRONIZE_LINK": "synchronize with Taiga Tribe",
+            "EDIT_LINK": "Link bearbeiten",
+            "CLOSE": "Schließen",
+            "SYNCHRONIZE_LINK": "mit Taiga Tribe synchronisieren",
             "PUBLISH_MORE_INFO_TITLE": "Do you need somebody for this task?",
             "PUBLISH_MORE_INFO_TEXT": "<p>If you need help with a particular piece of work you can easily create gigs on<a href='taigatribe.com' title='Taiga Tribe'> Taiga Tribe </a> and receive help from all over the world. You will be able to control and manage the gig enjoying a great community eager to contribute.</p><p><a href='taigatribe.com' title='Taiga Tribe'> TaigaTribe </a>  was born as a Taiga sibling. Both platforms can live separately but we believe that there is much power in using them combined so we are making sure the integration works like a charm.</p>"
         },
@@ -1018,28 +1021,47 @@
         }
     },
     "COMMENTS": {
-        "DELETED_INFO": "Kommentar gelöscht von {{user}} am {{date}}",
+        "DELETED_INFO": "Comment deleted by {{user}}",
         "TITLE": "Kommentare",
+        "COMMENTS_COUNT": "{{comments}} Comments",
+        "ORDER": "Order",
+        "OLDER_FIRST": "Older first",
+        "RECENT_FIRST": "Recent first",
         "COMMENT": "Kommentieren",
+        "EDIT_COMMENT": "Edit comment",
+        "EDITED_COMMENT": "Edited:",
+        "SHOW_HISTORY": "View historic",
         "TYPE_NEW_COMMENT": "Geben Sie hier einen neuen Kommentar ein",
         "SHOW_DELETED": "Gelöschten Kommentar anzeigen",
         "HIDE_DELETED": "Gelöschten Kommentar ausblenden",
         "DELETE": "Kommentar löschen",
-        "RESTORE": "Kommentar wiederherstellen"
+        "RESTORE": "Kommentar wiederherstellen",
+        "HISTORY": {
+            "TITLE": "Activity"
+        }
     },
     "ACTIVITY": {
         "SHOW_ACTIVITY": "Aktivitäten zeigen",
         "DATETIME": "DD MMM YYYY HH:mm",
         "SHOW_MORE": "+ Vorherige Einträge zeigen ({{showMore}} vorhanden)",
         "TITLE": "Aktivität",
+        "ACTIVITIES_COUNT": "{{activities}} Activities",
         "REMOVED": "entfernt",
         "ADDED": "hinzugefügt",
-        "US_POINTS": "User-Story Punkte ({{name}})",
-        "NEW_ATTACHMENT": "Neuer Anhang",
-        "DELETED_ATTACHMENT": "Gelöschter Anhang",
-        "UPDATED_ATTACHMENT": "aktualisierter Anhang {{filename}}",
-        "DELETED_CUSTOM_ATTRIBUTE": "gelöschtes Kundenattribut",
+        "TAGS_ADDED": "tags added:",
+        "TAGS_REMOVED": "tags removed:",
+        "US_POINTS": "{{role}} points",
+        "NEW_ATTACHMENT": "new attachment:",
+        "DELETED_ATTACHMENT": "deleted attachment:",
+        "UPDATED_ATTACHMENT": "updated attachment ({{filename}}):",
+        "CREATED_CUSTOM_ATTRIBUTE": "created custom attribute",
+        "UPDATED_CUSTOM_ATTRIBUTE": "updated custom attribute",
         "SIZE_CHANGE": "Machte {size, plural, one{eine Änderung} other{# Änderungen}}",
+        "BECAME_DEPRECATED": "became deprecated",
+        "BECAME_UNDEPRECATED": "became undeprecated",
+        "TEAM_REQUIREMENT": "Team Requirement",
+        "CLIENT_REQUIREMENT": "Client Requirement",
+        "BLOCKED": "Blocked",
         "VALUES": {
             "YES": "ja",
             "NO": "nein",
@@ -1071,6 +1093,7 @@
             "TAGS": "Schlagwörter",
             "ATTACHMENTS": "Anhänge",
             "IS_DEPRECATED": "ist veraltet",
+            "IS_NOT_DEPRECATED": "is not deprecated",
             "ORDER": "Befehl",
             "BACKLOG_ORDER": "Backlog Befehl",
             "SPRINT_ORDER": "Sprint Befehl",
@@ -1198,7 +1221,7 @@
     "TASK": {
         "PAGE_TITLE": "{{taskSubject}} - Aufgabe {{taskRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Status: {{taskStatus }}. Beschreibung: {{taskDescription}}",
-        "SECTION_NAME": "Task",
+        "SECTION_NAME": "Aufgabe",
         "LINK_TASKBOARD": "Taskboard",
         "TITLE_LINK_TASKBOARD": "Zu Taskboard wechseln",
         "PLACEHOLDER_SUBJECT": "Betreff...",
@@ -1247,7 +1270,7 @@
         "PAGE_TITLE": "Tickets - {{projectName}}",
         "PAGE_DESCRIPTION": "Das Ticket-Listen Panel des Projekts {{projectName}}: {{projectDescription}}",
         "LIST_SECTION_NAME": "Tickets",
-        "SECTION_NAME": "Issue",
+        "SECTION_NAME": "Ticket",
         "ACTION_NEW_ISSUE": "+ NEUES TICKET",
         "ACTION_PROMOTE_TO_US": "Zur User-Story aufwerten",
         "PLACEHOLDER_FILTER_NAME": "Benennen Sie den Filter und drücken Sie die Eingabetaste",
@@ -1436,13 +1459,24 @@
         "DELETE_LIGHTBOX_TITLE": "Wiki Seite löschen",
         "DELETE_LINK_TITLE": "Entferne Wiki Link",
         "NAVIGATION": {
+            "HOME": "Main Page",
             "SECTION_NAME": "Links",
-            "ACTION_ADD_LINK": "Link hinzufügen"
+            "ACTION_ADD_LINK": "Link hinzufügen",
+            "ALL_PAGES": "All pages"
         },
         "SUMMARY": {
-            "TIMES_EDITED": "Zeiten <br />bearbeitet",
+            "TIMES_EDITED": "mal <br />bearbeitet",
             "LAST_EDIT": "letzte <br />Bearbeitung",
             "LAST_MODIFICATION": "letzte Änderung"
+        },
+        "SECTION_PAGES_LIST": "All pages",
+        "PAGES_LIST_COLUMNS": {
+            "TITLE": "Title",
+            "EDITIONS": "Editions",
+            "CREATED": "Created",
+            "MODIFIED": "Modified",
+            "CREATOR": "Creator",
+            "LAST_MODIFIER": "Last modifier"
         }
     },
     "HINTS": {

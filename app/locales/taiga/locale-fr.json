@@ -244,6 +244,7 @@
                 "VIEW_USER_STORIES": "Afficher les récits utilisateur",
                 "ADD_USER_STORIES": "Ajouter des récits utilisateur",
                 "MODIFY_USER_STORIES": "Modifier les récits utilisateur",
+                "COMMENT_USER_STORIES": "Comment user stories",
                 "DELETE_USER_STORIES": "Supprimer des récits utilisateur"
             },
             "TASKS": {
@@ -251,6 +252,7 @@
                 "VIEW_TASKS": "Voir les tâches",
                 "ADD_TASKS": "Ajouter des tâches",
                 "MODIFY_TASKS": "Modifier des tâches",
+                "COMMENT_TASKS": "Comment tasks",
                 "DELETE_TASKS": "Supprimer des tâches"
             },
             "ISSUES": {
@@ -258,6 +260,7 @@
                 "VIEW_ISSUES": "Voir les tickets",
                 "ADD_ISSUES": "Ajouter des tickets",
                 "MODIFY_ISSUES": "Modifier des tickets",
+                "COMMENT_ISSUES": "Comment issues",
                 "DELETE_ISSUES": "Supprimer des tickets"
             },
             "WIKI": {
@@ -558,7 +561,7 @@
             "ACTION_ADD": "Ajouter un nouveau {{objName}}"
         },
         "PROJECT_VALUES_TAGS": {
-            "TITLE": "Tags",
+            "TITLE": "Mots-clés",
             "SUBTITLE": "View and edit the color of your user stories",
             "EMPTY": "Currently there are no tags",
             "EMPTY_SEARCH": "It looks like nothing was found with your search criteria"
@@ -689,7 +692,7 @@
             "SEVERITIES": "Gravité",
             "TYPES": "Types",
             "CUSTOM_FIELDS": "Champs personnalisés",
-            "TAGS": "Tags"
+            "TAGS": "Mots-clés"
         },
         "SUBMENU_PROJECT_PROFILE": {
             "TITLE": "Profil projet"
@@ -981,7 +984,7 @@
     "US": {
         "PAGE_TITLE": "{{userStorySubject}} - Récit utilisateur {{userStoryRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "État : {{userStoryStatus }}. Achevé {{userStoryProgressPercentage}}% ({{userStoryClosedTasks}} sur {{userStoryTotalTasks}} tâches fermées). Points : {{userStoryPoints}}. Description : {{userStoryDescription}}",
-        "SECTION_NAME": "User story",
+        "SECTION_NAME": "Récit utilisateur",
         "LINK_TASKBOARD": "Tableau des tâches",
         "TITLE_LINK_TASKBOARD": "Aller au tableau des tâches",
         "TOTAL_POINTS": "total des points",
@@ -1002,7 +1005,7 @@
         "TOTAL_US_POINTS": "Total des points RU",
         "TRIBE": {
             "PUBLISH": "Publish as Gig in Taiga Tribe",
-            "PUBLISH_INFO": "More info",
+            "PUBLISH_INFO": "Plus d'informations",
             "PUBLISH_TITLE": "More info on publishing in Taiga Tribe",
             "PUBLISHED_AS_GIG": "Story published as Gig in Taiga Tribe",
             "EDIT_LINK": "Edit link",
@@ -1018,28 +1021,47 @@
         }
     },
     "COMMENTS": {
-        "DELETED_INFO": "Commentaire supprimé par {{user}} le {{date}}",
+        "DELETED_INFO": "Comment deleted by {{user}}",
         "TITLE": "Commentaires",
+        "COMMENTS_COUNT": "{{comments}} Comments",
+        "ORDER": "Order",
+        "OLDER_FIRST": "Older first",
+        "RECENT_FIRST": "Recent first",
         "COMMENT": "Commentaire",
+        "EDIT_COMMENT": "Edit comment",
+        "EDITED_COMMENT": "Edited:",
+        "SHOW_HISTORY": "View historic",
         "TYPE_NEW_COMMENT": "Entrez un nouveau commentaire ici",
         "SHOW_DELETED": "Afficher le commentaire supprimé",
         "HIDE_DELETED": "Cacher le commentaire supprimé",
         "DELETE": "Supprimer le commentaire",
-        "RESTORE": "Restaurer le commentaire"
+        "RESTORE": "Restaurer le commentaire",
+        "HISTORY": {
+            "TITLE": "Activity"
+        }
     },
     "ACTIVITY": {
         "SHOW_ACTIVITY": "Afficher l'activité",
         "DATETIME": "DD MMM YYYY HH:mm",
         "SHOW_MORE": "+ Montrer les entrées précédentes ({{showMore}} plus)",
         "TITLE": "Activité",
+        "ACTIVITIES_COUNT": "{{activities}} Activities",
         "REMOVED": "supprimé",
         "ADDED": "ajouté",
-        "US_POINTS": "Points du récit utilisateur ({{name}})",
-        "NEW_ATTACHMENT": "nouvelle pièce jointe",
-        "DELETED_ATTACHMENT": "Pièce jointe supprimée",
-        "UPDATED_ATTACHMENT": "Pièce jointe {{filename}} modifiée",
-        "DELETED_CUSTOM_ATTRIBUTE": "Attribut personnalisé supprimé",
+        "TAGS_ADDED": "tags added:",
+        "TAGS_REMOVED": "tags removed:",
+        "US_POINTS": "{{role}} points",
+        "NEW_ATTACHMENT": "new attachment:",
+        "DELETED_ATTACHMENT": "deleted attachment:",
+        "UPDATED_ATTACHMENT": "updated attachment ({{filename}}):",
+        "CREATED_CUSTOM_ATTRIBUTE": "created custom attribute",
+        "UPDATED_CUSTOM_ATTRIBUTE": "updated custom attribute",
         "SIZE_CHANGE": "A fait {size, plural, one{une modification} other{# modifications}}",
+        "BECAME_DEPRECATED": "became deprecated",
+        "BECAME_UNDEPRECATED": "became undeprecated",
+        "TEAM_REQUIREMENT": "Team Requirement",
+        "CLIENT_REQUIREMENT": "Client Requirement",
+        "BLOCKED": "Blocked",
         "VALUES": {
             "YES": "oui",
             "NO": "no",
@@ -1071,6 +1093,7 @@
             "TAGS": "mots-clés",
             "ATTACHMENTS": "pièces jointes",
             "IS_DEPRECATED": "est obsolète",
+            "IS_NOT_DEPRECATED": "is not deprecated",
             "ORDER": "classement",
             "BACKLOG_ORDER": "classement du backlog",
             "SPRINT_ORDER": "classement du sprint",
@@ -1198,7 +1221,7 @@
     "TASK": {
         "PAGE_TITLE": "{{taskSubject}} - Tâche {{taskRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "État : {{taskStatus }}. Description : {{taskDescription}}",
-        "SECTION_NAME": "Task",
+        "SECTION_NAME": "Tâche",
         "LINK_TASKBOARD": "Tableau des tâches",
         "TITLE_LINK_TASKBOARD": "Aller au tableau des tâches",
         "PLACEHOLDER_SUBJECT": "Entrez l'objet de la nouvelle tâche",
@@ -1247,7 +1270,7 @@
         "PAGE_TITLE": "Tickets - {{projectName}}",
         "PAGE_DESCRIPTION": "Le panneau de la liste des tickets du projet {{projectName}} : {{projectDescription}}",
         "LIST_SECTION_NAME": "Tickets",
-        "SECTION_NAME": "Issue",
+        "SECTION_NAME": "Ticket",
         "ACTION_NEW_ISSUE": "+ NOUVEAU TICKET",
         "ACTION_PROMOTE_TO_US": "Promouvoir en récit utilisateur",
         "PLACEHOLDER_FILTER_NAME": "Écrivez le nom du filtre et appuyez sur \"Entrée\"",
@@ -1436,13 +1459,24 @@
         "DELETE_LIGHTBOX_TITLE": "Supprimer la page Wiki",
         "DELETE_LINK_TITLE": "Supprimer un lien Wiki",
         "NAVIGATION": {
+            "HOME": "Main Page",
             "SECTION_NAME": "Liens",
-            "ACTION_ADD_LINK": "Ajouter un lien"
+            "ACTION_ADD_LINK": "Ajouter un lien",
+            "ALL_PAGES": "All pages"
         },
         "SUMMARY": {
             "TIMES_EDITED": "modifications",
             "LAST_EDIT": "dernière <br />modification",
             "LAST_MODIFICATION": "dernière modification"
+        },
+        "SECTION_PAGES_LIST": "All pages",
+        "PAGES_LIST_COLUMNS": {
+            "TITLE": "Title",
+            "EDITIONS": "Editions",
+            "CREATED": "Created",
+            "MODIFIED": "Modified",
+            "CREATOR": "Creator",
+            "LAST_MODIFIER": "Last modifier"
         }
     },
     "HINTS": {

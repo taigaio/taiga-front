@@ -244,6 +244,7 @@
                 "VIEW_USER_STORIES": "Просматривать пользовательские истории",
                 "ADD_USER_STORIES": "Добавлять пользовательские истории",
                 "MODIFY_USER_STORIES": "Изменять пользовательские истории",
+                "COMMENT_USER_STORIES": "Comment user stories",
                 "DELETE_USER_STORIES": "Удалять пользовательские истории"
             },
             "TASKS": {
@@ -251,6 +252,7 @@
                 "VIEW_TASKS": "Просмотреть задачи",
                 "ADD_TASKS": "Добавить задачи",
                 "MODIFY_TASKS": "Редактировать задачи",
+                "COMMENT_TASKS": "Comment tasks",
                 "DELETE_TASKS": "Удалить задачи"
             },
             "ISSUES": {
@@ -258,6 +260,7 @@
                 "VIEW_ISSUES": "Посмотреть запросы",
                 "ADD_ISSUES": "Добавить запросы",
                 "MODIFY_ISSUES": "Изменить запросы",
+                "COMMENT_ISSUES": "Comment issues",
                 "DELETE_ISSUES": "Удалить запросы"
             },
             "WIKI": {
@@ -558,7 +561,7 @@
             "ACTION_ADD": "Добавить новый"
         },
         "PROJECT_VALUES_TAGS": {
-            "TITLE": "Tags",
+            "TITLE": "Тэги",
             "SUBTITLE": "View and edit the color of your user stories",
             "EMPTY": "Currently there are no tags",
             "EMPTY_SEARCH": "It looks like nothing was found with your search criteria"
@@ -689,7 +692,7 @@
             "SEVERITIES": "Степени важности",
             "TYPES": "Типы",
             "CUSTOM_FIELDS": "Собственные поля",
-            "TAGS": "Tags"
+            "TAGS": "Тэги"
         },
         "SUBMENU_PROJECT_PROFILE": {
             "TITLE": "Профиль проекта"
@@ -981,7 +984,7 @@
     "US": {
         "PAGE_TITLE": "{{userStorySubject}} - Пользовательская История {{userStoryRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Статус: {{userStoryStatus }}. Выполнено {{userStoryProgressPercentage}}% ({{userStoryClosedTasks}} из {{userStoryTotalTasks}} задач). Очки: {{userStoryPoints}}. Описание: {{userStoryDescription}}",
-        "SECTION_NAME": "User story",
+        "SECTION_NAME": "Пользовательская история",
         "LINK_TASKBOARD": "Панель задач",
         "TITLE_LINK_TASKBOARD": "Перейти к панели задач",
         "TOTAL_POINTS": "общее число очков",
@@ -1002,7 +1005,7 @@
         "TOTAL_US_POINTS": "Всего очков за ПИ",
         "TRIBE": {
             "PUBLISH": "Publish as Gig in Taiga Tribe",
-            "PUBLISH_INFO": "More info",
+            "PUBLISH_INFO": "Больше инфо",
             "PUBLISH_TITLE": "More info on publishing in Taiga Tribe",
             "PUBLISHED_AS_GIG": "Story published as Gig in Taiga Tribe",
             "EDIT_LINK": "Edit link",
@@ -1018,28 +1021,47 @@
         }
     },
     "COMMENTS": {
-        "DELETED_INFO": "Комментарий удален {{user}} {{date}}",
+        "DELETED_INFO": "Comment deleted by {{user}}",
         "TITLE": "Комментарии",
+        "COMMENTS_COUNT": "{{comments}} Comments",
+        "ORDER": "Order",
+        "OLDER_FIRST": "Older first",
+        "RECENT_FIRST": "Recent first",
         "COMMENT": "Комментарий",
+        "EDIT_COMMENT": "Edit comment",
+        "EDITED_COMMENT": "Edited:",
+        "SHOW_HISTORY": "View historic",
         "TYPE_NEW_COMMENT": "Добавить комментарий",
         "SHOW_DELETED": "Показать удаленный комментарий",
         "HIDE_DELETED": "Скрыть удаленный комментарий",
         "DELETE": "Удалить комментарий",
-        "RESTORE": "Показать удаленный комментарий"
+        "RESTORE": "Показать удаленный комментарий",
+        "HISTORY": {
+            "TITLE": "Activity"
+        }
     },
     "ACTIVITY": {
         "SHOW_ACTIVITY": "Показать действия",
         "DATETIME": "DD MMM YYYY HH:mm",
         "SHOW_MORE": "+ Показать предыдущие записи (ещё {{showMore}})",
         "TITLE": "Действия",
+        "ACTIVITIES_COUNT": "{{activities}} Activities",
         "REMOVED": "удален",
         "ADDED": "добавлено",
-        "US_POINTS": "ПИ очки ({{name}})",
-        "NEW_ATTACHMENT": "новое вложение",
-        "DELETED_ATTACHMENT": "удаленное вложение",
-        "UPDATED_ATTACHMENT": "обновлено приложение {{filename}}",
-        "DELETED_CUSTOM_ATTRIBUTE": "удалить атрибут",
+        "TAGS_ADDED": "tags added:",
+        "TAGS_REMOVED": "tags removed:",
+        "US_POINTS": "{{role}} points",
+        "NEW_ATTACHMENT": "new attachment:",
+        "DELETED_ATTACHMENT": "deleted attachment:",
+        "UPDATED_ATTACHMENT": "updated attachment ({{filename}}):",
+        "CREATED_CUSTOM_ATTRIBUTE": "created custom attribute",
+        "UPDATED_CUSTOM_ATTRIBUTE": "updated custom attribute",
         "SIZE_CHANGE": "Сделано {size, plural, one{изменение} other{# изменений}}",
+        "BECAME_DEPRECATED": "became deprecated",
+        "BECAME_UNDEPRECATED": "became undeprecated",
+        "TEAM_REQUIREMENT": "Team Requirement",
+        "CLIENT_REQUIREMENT": "Client Requirement",
+        "BLOCKED": "Blocked",
         "VALUES": {
             "YES": "да",
             "NO": "нет",
@@ -1071,6 +1093,7 @@
             "TAGS": "тэги",
             "ATTACHMENTS": "Вложения",
             "IS_DEPRECATED": "рекомендовано",
+            "IS_NOT_DEPRECATED": "is not deprecated",
             "ORDER": "порядок",
             "BACKLOG_ORDER": "порядок списка задач",
             "SPRINT_ORDER": "порядок спринтов",
@@ -1198,7 +1221,7 @@
     "TASK": {
         "PAGE_TITLE": "{{taskSubject}} - Задача {{taskRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Статус: {{taskStatus }}. Описание: {{taskDescription}}",
-        "SECTION_NAME": "Task",
+        "SECTION_NAME": "Задача",
         "LINK_TASKBOARD": "Панель задач",
         "TITLE_LINK_TASKBOARD": "Перейти к панели задач",
         "PLACEHOLDER_SUBJECT": "Укажите новое название задачи",
@@ -1247,7 +1270,7 @@
         "PAGE_TITLE": "Запросы - {{projectName}}",
         "PAGE_DESCRIPTION": "Панель запросов проекта {{projectName}}: {{projectDescription}}",
         "LIST_SECTION_NAME": "Запросы",
-        "SECTION_NAME": "Issue",
+        "SECTION_NAME": "Запрос",
         "ACTION_NEW_ISSUE": "+НОВЫЙ ЗАПРОС",
         "ACTION_PROMOTE_TO_US": "Повысить до пользовательской истории",
         "PLACEHOLDER_FILTER_NAME": "Введите название фильтра и нажмите \"ввод\"",
@@ -1436,13 +1459,24 @@
         "DELETE_LIGHTBOX_TITLE": "Удалить вики страницу",
         "DELETE_LINK_TITLE": "Delete Wiki link",
         "NAVIGATION": {
+            "HOME": "Main Page",
             "SECTION_NAME": "Ссылки",
-            "ACTION_ADD_LINK": "Добавить ссылку"
+            "ACTION_ADD_LINK": "Добавить ссылку",
+            "ALL_PAGES": "All pages"
         },
         "SUMMARY": {
             "TIMES_EDITED": "раз <br />отредактировано",
             "LAST_EDIT": "последняя <br/> правка",
             "LAST_MODIFICATION": "последнее изменение"
+        },
+        "SECTION_PAGES_LIST": "All pages",
+        "PAGES_LIST_COLUMNS": {
+            "TITLE": "Title",
+            "EDITIONS": "Editions",
+            "CREATED": "Created",
+            "MODIFIED": "Modified",
+            "CREATOR": "Creator",
+            "LAST_MODIFIER": "Last modifier"
         }
     },
     "HINTS": {
