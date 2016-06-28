@@ -54,7 +54,7 @@ Resource = (urlsService, http, paginateResponseService) ->
                 "x-disable-pagination": "1"
             }
 
-        params = {"member": userId, "order_by": "memberships__user_order"}
+        params = {"member": userId, "order_by": "user_order"}
 
         return http.get(url, params, httpOptions)
             .then (result) ->
