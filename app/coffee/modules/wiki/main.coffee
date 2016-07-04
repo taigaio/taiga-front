@@ -239,9 +239,12 @@ EditableWikiContentDirective = ($window, $document, $repo, $confirm, $loading, $
         cancelEdition = ->
             return if not $model.$modelValue.id
 
-            $model.$modelValue.revert()
-
-            switchToReadMode()
+            title = $translate.instant("COMMON.CONFIRM_CLOSE_EDIT_MODE_TITLE")
+            message = $translate.instant("COMMON.CONFIRM_CLOSE_EDIT_MODE_MESSAGE")
+            $confirm.ask(title, null, message).then (askResponse) ->
+                $model.$modelValue.revert()
+                switchToReadMode()
+                askResponse.finish()
 
         getSelectedText = ->
             if $window.getSelection
