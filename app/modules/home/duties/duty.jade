@@ -1,27 +1,33 @@
 a.list-itemtype-ticket(
     href="{{ ::vm.duty.get('url') }}"
     title="{{ ::duty.get('subject') }}"
-    ng-class="{'blocked': vm.duty.get('is_blocked'), 'blocked-project': vm.duty.get('blockedProject')}"
+    ng-class="{'blocked': vm.duty.get('is_blocked'), 'blocked-project': vm.duty.getIn(['project', 'blocked_code'])}"
 )
-    div.list-itemtype-avatar(ng-if="::vm.duty.get('assigned_to_extra_info')")
+    div.list-itemtype-avatar(ng-if="vm.type == 'working-on'")
         img(
+            tg-project-logo-small-src="::vm.duty.get('project')"
+            title="{{ ::vm.duty.getIn(['project', 'name']) }}"
+        )
+    div.list-itemtype-avatar(ng-if="vm.type == 'watching'")
+        img(
+            ng-if="vm.duty.get('assigned_to_extra_info')"
             ng-src="{{ ::vm.duty.get('assigned_to_extra_info').get('photo') }}"
             title="{{ ::vm.duty.get('assigned_to_extra_info').get('full_name_display') }}"
         )
-    div.list-itemtype-avatar(ng-if="::!vm.duty.get('assigned_to_extra_info')")
         img(
+            ng-if="!vm.duty.get('assigned_to_extra_info')"
             src="/#{v}/images/unnamed.png"
             title="{{'ACTIVITY.VALUES.UNASSIGNED' | translate}}"
         )
     div.list-itemtype-ticket-data
         p
-            span.ticket-project {{ ::vm.duty.get('projectName')}}
+            span.ticket-project {{ ::vm.duty.getIn(['project', 'name']) }}
 
             span.ticket-type {{ ::vm.getDutyType() }}
             span.ticket-status(ng-style="{'color': vm.duty.get('status_extra_info').get('color')}") {{ ::vm.duty.get('status_extra_info').get('name') }}
 
             tg-svg(
-                ng-if="vm.duty.get('blockedProject')",
+                ng-if="vm.duty.getIn(['project', 'blocked_code'])"
                 svg-icon="icon-blocked-project",
                 svg-title-translate="PROJECT.BLOCKED_PROJECT.BLOCKED"
             )
