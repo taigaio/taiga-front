@@ -73,11 +73,14 @@ describe "tgHome", ->
     it "get work in progress by user", (done) ->
         userId = 3
 
+        project1 = {id: 1, name: "fake1", slug: "project-1"}
+        project2 = {id: 2, name: "fake2", slug: "project-2"}
+
         mocks.projectsService.getProjectsByUserId
             .withArgs(userId)
             .resolve(Immutable.fromJS([
-                {id: 1, name: "fake1", slug: "project-1"},
-                {id: 2, name: "fake2", slug: "project-2"}
+                project1,
+                project2
             ]))
 
         mocks.resources.userstories.listInAllProjects
@@ -125,28 +128,22 @@ describe "tgHome", ->
                         userStories: [{
                             id: 1,
                             ref: 1,
-                            project: '1',
                             url: '/testing-project/us/1',
-                            projectName: 'fake1',
-                            blockedProject: undefined,
+                            project: project1,
                             _name: 'userstories'
                         }]
                         tasks: [{
                             id: 2,
                             ref: 2,
-                            project: '1',
+                            project: project1,
                             url: '/testing-project/tasks/1',
-                            projectName: 'fake1',
-                            blockedProject: undefined,
                             _name: 'tasks'
                         }]
                         issues: [{
                             id: 3,
                             ref: 3,
-                            project: '1',
                             url: '/testing-project/issues/1',
-                            projectName: 'fake1',
-                            blockedProject: undefined,
+                            project: project1,
                             _name: 'issues'
                         }]
                     }
@@ -154,28 +151,22 @@ describe "tgHome", ->
                         userStories: [{
                             id: 1,
                             ref: 1,
-                            project: '1',
                             url: '/testing-project/us/1',
-                            projectName: 'fake1',
-                            blockedProject: undefined,
+                            project: project1,
                             _name: 'userstories'
                         }]
                         tasks: [{
                             id: 2,
                             ref: 2,
-                            project: '1',
                             url: '/testing-project/tasks/1',
-                            projectName: 'fake1',
-                            blockedProject: undefined,
+                            project: project1,
                             _name: 'tasks'
                         }]
                         issues: [{
                             id: 3,
                             ref: 3,
-                            project: '1',
                             url: '/testing-project/issues/1',
-                            projectName: 'fake1',
-                            blockedProject: undefined,
+                            project: project1,
                             _name: 'issues'
                         }]
                     }
