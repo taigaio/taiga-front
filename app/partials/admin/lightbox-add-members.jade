@@ -10,6 +10,7 @@ tg-lightbox-close
                     required
                     placeholder="{{'LIGHTBOX.CREATE_MEMBER.PLACEHOLDER_TYPE_EMAIL' | translate}}"
                     data-required="true"
+                    name="email-{{$index}}"
                     data-type="email"
                     ng-model="member.email"
                 )
@@ -17,12 +18,14 @@ tg-lightbox-close
                     ng-if="!$first"
                     type="email"
                     placeholder="{{'LIGHTBOX.CREATE_MEMBER.PLACEHOLDER_TYPE_EMAIL' | translate}}"
+                    name="email-{{$index}}"
                     data-type="email"
                     ng-model="member.email"
                 )
             fieldset
                 select(
                     ng-if="vm.project"
+                    name="role-{{$index}}"
                     ng-model="member.role_id"
                     ng-options="role.id as role.name for role in vm.project.roles"
                 )
