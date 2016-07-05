@@ -220,6 +220,7 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
 
         return promise.then(=> @.loadProject())
                       .then(=> @.loadTaskboard())
+                      .then(=> @.setRolePoints())
 
     refreshTasksOrder: (tasks) ->
             items = @.resortTasks(tasks)
@@ -272,6 +273,33 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
 
     editTaskAssignedTo: (task) ->
         @rootscope.$broadcast("assigned-to:add", task)
+
+    setRolePoints: () ->
+        computableRoles = _.filter(@scope.project.roles, "computable")
+
+        getRole = (roleId) =>
+            roleId = parseInt(roleId, 10)
+            return _.find computableRoles, (role) -> role.id == roleId
+
+        getPoint = (pointId) =>
+            poitnId = parseInt(pointId, 10)
+            return _.find @scope.project.points, (point) -> point.id == pointId
+
+        pointsByRole = _.reduce @scope.userstories, (result, us, key) =>
+            _.forOwn us.points, (pointId, roleId) ->
+                role = getRole(roleId)
+                point = getPoint(pointId)
+
+                if !result[role.id]
+                    result[role.id] = role
+                    result[role.id].points = 0
+
+                result[role.id].points += point.value
+
+            return result
+        , {}
+
+        @scope.pointsByRole = Object.keys(pointsByRole).map (key) -> return pointsByRole[key]
 
 module.controller("TaskboardController", TaskboardController)
 

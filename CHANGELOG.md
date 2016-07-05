@@ -12,6 +12,7 @@
 - Display the current user (me) at first in assignment lightbox (thanks to [@mikaoelitiana](https://github.com/mikaoelitiana))
 - Divide the user dashboard in two columns in large screens,
 - Upvote and downvote issues from the issues list.
+- Show points per role in statsection of the taskboard panel.
 - Comments:
     - Add a new permissions to allow add comments instead of use the existent modify permission for this purpose.
     - Ability to edit comments, view edition history and redesign comments module UI.

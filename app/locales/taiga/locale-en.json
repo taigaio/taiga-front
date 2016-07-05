@@ -1151,7 +1151,8 @@
             "CLOSED_TASKS": "closed<br />tasks",
             "IOCAINE_DOSES": "iocaine<br />doses",
             "SHOW_STATISTICS_TITLE": "Show statistics",
-            "TOGGLE_BAKLOG_GRAPH": "Show/Hide burndown graph"
+            "TOGGLE_BAKLOG_GRAPH": "Show/Hide burndown graph",
+            "POINTS_PER_ROLE": "Points per role"
         },
         "SUMMARY": {
             "PROJECT_POINTS": "project<br />points",
