@@ -5,11 +5,11 @@ div.wrapper(
     ng-init="section='wiki'"
 )
     tg-project-menu
-    sidebar.menu-secondary.extrabar(ng-if="linksVisible")
-        section.wiki-nav(
-            tg-wiki-nav
-            ng-model="wikiLinks"
-        )
+    sidebar.menu-secondary.extrabar.wiki-nav(
+        ng-if="linksVisible"
+        tg-wiki-nav
+        ng-model="wikiLinks"
+    )
     section.main.wiki
         header
             h1
