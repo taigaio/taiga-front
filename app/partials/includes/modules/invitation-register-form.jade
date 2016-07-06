@@ -1,9 +1,9 @@
-form.register-form
+form.register-form(ng-if="publicRegisterEnabled")
     p.form-header(translate="REGISTER_FORM.TITLE")
     fieldset
         input(
             type="text"
-            autocorrect="off" 
+            autocorrect="off"
             autocapitalize="none"
             name="username"
             ng-model="dataRegister.username"

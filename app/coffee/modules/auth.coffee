@@ -472,13 +472,14 @@ module.directive("tgChangePasswordFromRecovery", ["$tgAuth", "$tgConfirm", "$tgL
 ## Invitation
 #############################################################################
 
-InvitationDirective = ($auth, $confirm, $location, $params, $navUrls, $analytics, $translate) ->
+InvitationDirective = ($auth, $confirm, $location, $params, $navUrls, $analytics, $translate, config) ->
     link = ($scope, $el, $attrs) ->
         token = $params.token
 
         promise = $auth.getInvitation(token)
         promise.then (invitation) ->
             $scope.invitation = invitation
+            $scope.publicRegisterEnabled = config.get("publicRegisterEnabled")
 
         promise.then null, (response) ->
             $location.path($navUrls.resolve("login"))
@@ -549,7 +550,7 @@ InvitationDirective = ($auth, $confirm, $location, $params, $navUrls, $analytics
     return {link:link}
 
 module.directive("tgInvitation", ["$tgAuth", "$tgConfirm", "$tgLocation", "$routeParams",
-                                  "$tgNavUrls", "$tgAnalytics", "$translate", InvitationDirective])
+                                  "$tgNavUrls", "$tgAnalytics", "$translate", "$tgConfig", InvitationDirective])
 
 
 #############################################################################
