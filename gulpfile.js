@@ -356,6 +356,14 @@ gulp.task("compile-themes", function(cb) {
 gulp.task("styles", function(cb) {
     return runSequence("scss-lint",
                        "sass-compile",
+                       ["app-css", "vendor-css"],
+                       "main-css",
+                       cb);
+});
+
+gulp.task("styles-lint", function(cb) {
+    return runSequence("scss-lint",
+                       "sass-compile",
                        "css-lint-app",
                        ["app-css", "vendor-css"],
                        "main-css",
@@ -589,7 +597,7 @@ gulp.task("watch", function() {
     livereload.listen();
 
     gulp.watch(paths.jade, ["jade-watch"]);
-    gulp.watch(paths.sass_watch, ["styles"]);
+    gulp.watch(paths.sass_watch, ["styles-lint"]);
     gulp.watch(paths.styles_dependencies, ["styles-dependencies"]);
     gulp.watch(paths.svg, ["copy-svg"]);
     gulp.watch(paths.coffee, ["app-watch"]);
