@@ -17,9 +17,12 @@
         p {
             display: inline-block;
         }
-        del {
+        ins {
             background: lighten(rgba($primary-light, .3), 20%);
             text-decoration: underline;
+        }
+        del {
+            background: rgba($red-light, .3);
         }
     }
 }

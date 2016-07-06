@@ -16,15 +16,14 @@ div.wrapper(
                 span(tg-bo-bind="project.name")
                 span.green(translate="PROJECT.SECTION.WIKI")
 
-
         h2.wiki-title(ng-bind='wikiTitle')
         section.wiki-content(
             tg-editable-wysiwyg,
             tg-editable-wiki-content,
             ng-model="wiki"
         )
-        
-        div.summary.wiki-summary(
+
+        .summary.wiki-summary(
             tg-wiki-summary
             ng-model="wiki"
             ng-if="wiki.id"
@@ -38,12 +37,7 @@ div.wrapper(
             edit-permission = "modify_wiki_page"
         )
 
-        a.remove(
-            href=""
-            ng-click="ctrl.delete()"
+        tg-wiki-history(
             ng-if="wiki.id"
-            title="{{'WIKI.REMOVE' | translate}}"
-            tg-check-permission="delete_wiki_page"
+            wiki-id="wiki.id"
         )
-            tg-svg(svg-icon="icon-trash")
-            span(translate="WIKI.REMOVE")
