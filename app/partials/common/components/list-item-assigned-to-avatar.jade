@@ -1,3 +1,7 @@
 div.avatar
-    img(src!="<%- imgurl %>", alt!="<%- name %>")
+    img(
+        style!="background-color: <%- bg %>"
+        src!="<%- imgurl %>"
+        alt!="<%- name %>"
+    )
     span.avatar-caption <%- name %>

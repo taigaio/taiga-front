@@ -2,7 +2,7 @@ include ../../../partials/common/components/wysiwyg.jade
 
 .comment-wrapper(ng-if="!vm.comment.delete_comment_date")
     img.comment-avatar(
-        ng-src="{{vm.comment.user.photo}}"
+        tg-avatar="vm.comment.user"
         ng-alt="{{vm.comment.user.name}}"
     )
     .comment-main

@@ -14,7 +14,10 @@ section.profile-contacts
 
     div.list-itemtype-user(tg-repeat="contact in ::vm.contacts")
         a.list-itemtype-avatar(tg-nav="user-profile:username=contact.get('username')", title="{{::contact.get('name')}}")
-            img(ng-src="{{::contact.get('photo')}}", alt="{{::contact.get('full_name')}}")
+            img(
+                tg-avatar="contact"
+                alt="{{::contact.get('full_name')}}"
+            )
 
         div.list-itemtype-user-data
             h2

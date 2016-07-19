@@ -1,5 +1,9 @@
 .user-avatar(class!="<% if (isIocaine) { %> is-iocaine <% }; %>")
-    img(src!="<%- photo %>", alt!="<%- fullName %>")
+    img(
+      style!="background-color: <%- bg %>"
+      src!="<%- avatar %>"
+      alt!="<%- fullName %>"
+    )
     <% if (isIocaine) { %>
     .iocaine-symbol(title="{{ 'TASK.TITLE_ACTION_IOCAINE' | translate }}")
        tg-svg(svg-icon="icon-iocaine")

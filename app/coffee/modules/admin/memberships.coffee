@@ -241,16 +241,19 @@ module.directive("tgMemberships", ["$tgTemplate", "$compile", MembershipsDirecti
 ## Member Avatar Directive
 #############################################################################
 
-MembershipsRowAvatarDirective = ($log, $template, $translate, $compile) ->
+MembershipsRowAvatarDirective = ($log, $template, $translate, $compile, avatarService) ->
     template = $template.get("admin/memberships-row-avatar.html", true)
 
     link = ($scope, $el, $attrs) ->
         pending = $translate.instant("ADMIN.MEMBERSHIP.STATUS_PENDING")
         render = (member) ->
+            avatar = avatarService.getAvatar(member)
+
             ctx = {
                 full_name: if member.full_name then member.full_name else ""
                 email: if member.user_email then member.user_email else member.email
-                imgurl: if member.photo then member.photo else "/" + window._version + "/images/unnamed.png"
+                imgurl: avatar.url
+                bg: avatar.bg
                 pending: if !member.is_user_active then pending else ""
                 isOwner: member.is_owner
             }
@@ -272,7 +275,7 @@ MembershipsRowAvatarDirective = ($log, $template, $translate, $compile) ->
     return {link: link}
 
 
-module.directive("tgMembershipsRowAvatar", ["$log", "$tgTemplate", '$translate', "$compile", MembershipsRowAvatarDirective])
+module.directive("tgMembershipsRowAvatar", ["$log", "$tgTemplate", '$translate', "$compile", "tgAvatarService", MembershipsRowAvatarDirective])
 
 
 #############################################################################

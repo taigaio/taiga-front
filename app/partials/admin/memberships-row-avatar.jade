@@ -1,5 +1,8 @@
 figure.avatar
-    img(src!="<%- imgurl %>", alt!="<%- full_name %>")
+    img(
+        style!="background-color: <%- bg %>"
+        src!="<%- imgurl %>", alt!="<%- full_name %>"
+    )
     figcaption
         span.name(ng-non-bindable) <%- full_name %>
             <% if (isOwner) { %>

@@ -1,7 +1,7 @@
 .row.member(ng-repeat="user in memberships | membersFilter:filtersQ:filtersRole")
     .username
         .avatar
-            img(tg-bo-src="user.photo", tg-bo-alt="user.full_name_display")
+            img(tg-avatar="user", tg-bo-alt="user.full_name_display")
 
             .avatar-data
                 a.name(

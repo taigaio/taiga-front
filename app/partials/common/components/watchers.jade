@@ -1,20 +1,15 @@
-<% _.each(watchers, function(watcher) { %>
-<% if(watcher) { %>
-.user-list-single
+.user-list-single(ng-repeat="watcher in watchers")
     .user-list-avatar
         img(
-            src!="<%- watcher.photo %>"
-            alt!="<%- watcher.full_name_display %>"
+            tg-avatar="watcher"
+            alt="{{watcher.full_name_display}}"
         )
     .user-list-name
-        span(ng-non-bindable) <%- watcher.full_name_display %>
+        span {{watcher.full_name_display}}
 
-        <% if(isEditable){ %>
         tg-svg.js-delete-watcher.delete-watcher(
+            ng-if="isEditable"
             svg-icon="icon-trash",
             svg-title-translate="COMMON.WATCHERS.DELETE",
-            data-watcher-id!="<%- watcher.id %>"
+            data-watcher-id="{{watcher.id}}"
         )
-        <% }; %>
-<% } %>
-<% }); %>

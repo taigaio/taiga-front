@@ -5,7 +5,10 @@
             href=""
             title="{{'COMMON.ASSIGNED_TO' | translate}}"
         )
-            img(src!="<%- selected.photo %>")
+            img(
+                style!="background: <%- selected.avatar.bg %>"
+                src!="<%- selected.avatar.url %>"
+            )
     a.user-list-name(
         href=""
         title!="<%- selected.full_name_display %>"
@@ -25,7 +28,10 @@
             href="#"
             title="{{'COMMON.ASSIGNED_TO.TITLE' | translate}}"
         )
-            img(src!="<%- user.photo %>")
+            img(
+                style!="background: <%- user.avatar.bg %>"
+                src!="<%- user.avatar.url %>"
+            )
     a.user-list-name(
         href=""
         title!="<%- user.full_name_display %>"

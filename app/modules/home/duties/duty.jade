@@ -11,8 +11,8 @@ a.list-itemtype-ticket(
     div.list-itemtype-avatar(ng-if="vm.type == 'watching'")
         img(
             ng-if="vm.duty.get('assigned_to_extra_info')"
-            ng-src="{{ ::vm.duty.get('assigned_to_extra_info').get('photo') }}"
             title="{{ ::vm.duty.get('assigned_to_extra_info').get('full_name_display') }}"
+            tg-avatar="vm.duty.get('assigned_to_extra_info')"
         )
         img(
             ng-if="!vm.duty.get('assigned_to_extra_info')"

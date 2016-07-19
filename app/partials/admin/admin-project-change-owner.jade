@@ -1,5 +1,5 @@
 .owner-avatar
-    img(ng-src="{{owner.photo || '/#{v}/images/user-noimage.png'}}", alt="{{::owner.full_name_display}}")
+    img(tg-avatar="owner", alt="{{::owner.full_name_display}}")
 
 .owner-info
     .owner-info-title {{ 'ADMIN.PROJECT_PROFILE.PROJECT_OWNER' | translate }}

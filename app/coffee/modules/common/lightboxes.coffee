@@ -502,7 +502,7 @@ module.directive("tgLbCreateBulkUserstories", [
 ## AssignedTo Lightbox Directive
 #############################################################################
 
-AssignedToLightboxDirective = (lightboxService, lightboxKeyboardNavigationService, $template, $compile) ->
+AssignedToLightboxDirective = (lightboxService, lightboxKeyboardNavigationService, $template, $compile, avatarService) ->
     link = ($scope, $el, $attrs) ->
         selectedUser = null
         selectedItem = null
@@ -530,10 +530,17 @@ AssignedToLightboxDirective = (lightboxService, lightboxKeyboardNavigationServic
             users = _.sortBy(users, (o) -> if o.id is $scope.user.id then 0 else o.id)
             users = _.filter(users, _.partial(filterUsers, text)) if text?
 
+            visibleUsers = _.slice(users, 0, 5)
+
+            visibleUsers = _.map visibleUsers, (user) ->
+                user.avatar = avatarService.getAvatar(user)
+
+            selected.avatar = avatarService.getAvatar(selected)
+
             ctx = {
                 selected: selected
                 users: _.slice(users, 0, 5)
-                showMore: users.length > 5
+                showMore: visibleUsers
             }
 
             html = usersTemplate(ctx)
@@ -597,7 +604,7 @@ AssignedToLightboxDirective = (lightboxService, lightboxKeyboardNavigationServic
     }
 
 
-module.directive("tgLbAssignedto", ["lightboxService", "lightboxKeyboardNavigationService", "$tgTemplate", "$compile", AssignedToLightboxDirective])
+module.directive("tgLbAssignedto", ["lightboxService", "lightboxKeyboardNavigationService", "$tgTemplate", "$compile", "tgAvatarService", AssignedToLightboxDirective])
 
 
 #############################################################################
