@@ -391,6 +391,9 @@
         "WATCHING_SECTION": "Watching",
         "DASHBOARD": "Projects Dashboard"
     },
+    "EPICS": {
+        "TITLE": "EPICS"
+    },
     "PROJECTS": {
         "PAGE_TITLE": "My projects - Taiga",
         "PAGE_DESCRIPTION": "A list with all your projects, you can reorder or create a new one.",

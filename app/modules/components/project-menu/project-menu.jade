@@ -15,15 +15,25 @@ nav.menu(
                     tg-svg(svg-icon="icon-search")
                     span.helper(translate="PROJECT.SECTION.SEARCH")
 
-             li#nav-timeline
-                 a(
+            li#nav-timeline
+                a(
                     tg-nav="project:project=vm.project.get('slug')"
                     ng-class="{active: vm.active == 'project-timeline'}"
                     aria-label="{{'PROJECT.SECTION.TIMELINE' | translate}}"
                     tabindex="2"
-                 )
+                )
                     tg-svg(svg-icon="icon-timeline")
                     span.helper(translate="PROJECT.SECTION.TIMELINE")
+                    
+            li#nav-epics
+                a(
+                    tg-nav="project-epics:project=vm.project.get('slug')"
+                    ng-class="{active: vm.active == 'epics'}"
+                    aria-label="{{'EPICS.TITLE' | translate}}"
+                    tabindex="2"
+                )
+                    tg-svg(svg-icon="icon-epics")
+                    span.helper(translate="EPICS.TITLE")
 
             li#nav-backlog(
                 ng-if="vm.menu.get('backlog')"

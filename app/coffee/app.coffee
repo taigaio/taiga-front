@@ -124,7 +124,6 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
         }
     )
 
-
     $routeProvider.when("/blocked-project/:pslug/",
         {
             templateUrl: "projects/project/blocked-project.html",
@@ -150,6 +149,16 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
             reloadOnSearch: false,
             section: "search",
             loader: true
+        }
+    )
+
+    $routeProvider.when("/project/:pslug/epics",
+    {
+            section: "epics",
+            templateUrl: "epics/dashboard/epics-dashboard.html",
+            loader: true,
+            controller: "EpicsDashboardCtrl",
+            controllerAs: "vm"
         }
     )
 
@@ -792,6 +801,7 @@ modules = [
     "taigaDiscover",
     "taigaHistory",
     "taigaWikiHistory",
+    'taigaEpics',
 
     # template cache
     "templates",
