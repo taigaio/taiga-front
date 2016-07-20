@@ -1,1 +1,19 @@
-p Epics
+doctype html
+
+.wrapper()
+    tg-project-menu
+    section.main(role="main")
+        header.header-with-actions
+            h1(
+                tg-main-title
+                project-name="vm.project.name"
+                i18n-section-name="{{ vm.sectionName }}"
+            )
+            .action-buttons
+                button.button-green(
+                    translate="EPICS.DASHBOARD.ADD"
+                    title="{{ EPICS.DASHBOARD.ADD_TITLE | translate }}",
+                    ng-click="vm.addNewEpic()"
+                )
+                
+        tg-epics-table

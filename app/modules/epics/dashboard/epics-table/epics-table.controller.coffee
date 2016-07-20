@@ -14,29 +14,31 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: epics.dashboard.controller.coffee
+# File: epics-table.controller.coffee
 ###
 
 module = angular.module("taigaEpics")
 
-class EpicsDashboardController
-    @.$inject = [
-        "$tgResources",
-        "$routeParams",
-        "tgErrorHandlingService"
-    ]
+class EpicsTableController
+    @.$inject = []
 
-    constructor: (@rs, @params, @errorHandlingService) ->
-        @.sectionName = "Epics"
-        @._loadProject()
+    constructor: () ->
+        @.displayOptions = false
+        @.displayVotes = true
+        @.column = {
+            votes: true,
+            name: true,
+            project: true,
+            sprint: true,
+            assigned: true,
+            status: true,
+            progress: true
+        }
 
-    _loadProject: () ->
-        return @rs.projects.getBySlug(@params.pslug).then (project) =>
-            if not project.is_epics_activated
-                @errorHandlingService.permissionDenied()
-            @project = project
+    toggleEpicTableOptions: () ->
+        @.displayOptions = !@.displayOptions
 
-    addNewEpic: () ->
-        console.log 'Add new Epic'
+    updateEpicTableColumns: () ->
+        console.log @.column
 
-module.controller("EpicsDashboardCtrl", EpicsDashboardController)
+module.controller("EpicsTableCtrl", EpicsTableController)

@@ -392,7 +392,20 @@
         "DASHBOARD": "Projects Dashboard"
     },
     "EPICS": {
-        "TITLE": "EPICS"
+        "TITLE": "EPICS",
+        "DASHBOARD": {
+            "ADD": "+ ADD EPIC"
+        },
+        "TABLE": {
+            "VOTES": "Votes",
+            "NAME": "Name",
+            "PROJECT": "Project",
+            "SPRINT": "Sprint",
+            "ASSIGNED_TO": "Assigned to",
+            "STATUS": "Status",
+            "PROGRESS": "Progress",
+            "VIEW_OPTIONS": "View options"
+        }
     },
     "PROJECTS": {
         "PAGE_TITLE": "My projects - Taiga",
