@@ -1,14 +1,14 @@
 doctype html
 
 div.wrapper.roles(
-    tg-gitlab-webhooks
-    ng-controller="GitlabController as ctrl"
+    tg-gogs-webhooks
+    ng-controller="GogsController as ctrl",
     ng-init="section='admin'"
 )
     tg-project-menu
     sidebar.menu-secondary.sidebar.settings-nav(tg-admin-navigation="third-parties")
         include ../includes/modules/admin-menu
-    sidebar.menu-tertiary.sidebar(tg-admin-navigation="third-parties-gitlab")
+    sidebar.menu-tertiary.sidebar(tg-admin-navigation="third-parties-gogs")
         include ../includes/modules/admin-submenu-third-parties
 
     section.main.admin-common.admin-third-parties
@@ -21,7 +21,7 @@ div.wrapper.roles(
                     id="secret-key"
                     type="text"
                     name="secret-key"
-                    ng-model="gitlab.secret"
+                    ng-model="gogs.secret"
                     placeholder="{{'ADMIN.THIRD_PARTIES.SECRET_KEY' | translate}}"
                 )
 
@@ -35,23 +35,12 @@ div.wrapper.roles(
                                 type="text"
                                 name="payload-url"
                                 readonly="readonly"
-                                ng-model="gitlab.webhooks_url"
+                                ng-model="gogs.webhooks_url"
                                 placeholder="{{'ADMIN.THIRD_PARTIES.PAYLOAD_URL' | translate}}"
                             )
                             .option-wrapper.select-input-content
                                 tg-svg(svg-icon="icon-clipboard")
                         .help-copy(translate="COMMON.COPY_TO_CLIPBOARD")
-
-            fieldset
-                label(for="valid-origin-ips", translate="ADMIN.THIRD_PARTIES.VALID_IPS")
-                input(
-                    id="valid-origin-ips"
-                    type="text"
-                    name="valid-origin-ips"
-                    tg-valid-origin-ips
-                    ng-model="gitlab.valid_origin_ips"
-                    placeholder="{{'ADMIN.GITLAB.INFO_VERIFYING_IP' | translate}}"
-                )
 
             button.button-green.submit-button(
                 type="submit"

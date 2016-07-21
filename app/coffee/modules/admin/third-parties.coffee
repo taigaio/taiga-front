@@ -586,3 +586,50 @@ ValidOriginIpsDirective = ->
     }
 
 module.directive("tgValidOriginIps", ValidOriginIpsDirective)
+
+#############################################################################
+## Gogs Controller
+#############################################################################
+
+class GogsController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.FiltersMixin)
+    @.$inject = [
+        "$scope",
+        "$tgRepo",
+        "$tgResources",
+        "$routeParams",
+        "tgAppMetaService",
+        "$translate"
+    ]
+
+    constructor: (@scope, @repo, @rs, @params, @appMetaService, @translate) ->
+        bindMethods(@)
+
+        @scope.sectionName = @translate.instant("ADMIN.GOGS.SECTION_NAME")
+        @scope.project = {}
+
+        promise = @.loadInitialData()
+
+        promise.then () =>
+            title = @translate.instant("ADMIN.GOGS.PAGE_TITLE", {projectName: @scope.project.name})
+            description = @scope.project.description
+            @appMetaService.setAll(title, description)
+
+        promise.then null, @.onInitialDataError.bind(@)
+
+    loadModules: ->
+        return @rs.modules.list(@scope.projectId, "gogs").then (gogs) =>
+            @scope.gogs = gogs
+
+    loadProject: ->
+        return @rs.projects.getBySlug(@params.pslug).then (project) =>
+            @scope.projectId = project.id
+            @scope.project = project
+            @scope.$emit('project:loaded', project)
+            return project
+
+    loadInitialData: ->
+        promise = @.loadProject()
+        promise.then(=> @.loadModules())
+        return promise
+
+module.controller("GogsController", GogsController)

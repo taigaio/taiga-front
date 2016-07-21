@@ -20,6 +20,8 @@
     - Drag & Drop ordering for wiki links.
     - Add a list of all wiki pages
     - Add Wiki history
+- Third party integrations:
+    - Included gogs as builtin integration.
 
 ### Misc
 - Lots of small and not so small bugfixes.

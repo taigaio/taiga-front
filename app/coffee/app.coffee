@@ -341,6 +341,12 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
             section: "admin"
         }
     )
+    $routeProvider.when("/project/:pslug/admin/third-parties/gogs",
+        {
+            templateUrl: "admin/admin-third-parties-gogs.html",
+            section: "admin"
+        }
+    )
     # Admin - Contrib Plugins
     $routeProvider.when("/project/:pslug/admin/contrib/:plugin",
         {templateUrl: "contrib/main.html"})
