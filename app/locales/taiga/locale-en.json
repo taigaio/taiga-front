@@ -401,7 +401,7 @@
             "NAME": "Name",
             "PROJECT": "Project",
             "SPRINT": "Sprint",
-            "ASSIGNED_TO": "Assigned to",
+            "ASSIGNED_TO": "Assigned",
             "STATUS": "Status",
             "PROGRESS": "Progress",
             "VIEW_OPTIONS": "View options"

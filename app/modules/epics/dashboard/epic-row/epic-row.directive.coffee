@@ -19,18 +19,18 @@
 
 module = angular.module('taigaEpics')
 
-EpicsTableDirective = () ->
+EpicRowDirective = () ->
 
     return {
-        templateUrl:"epics/dashboard/epics-table/epics-table.html",
-        controller: "EpicsTableCtrl",
+        templateUrl:"epics/dashboard/epic-row/epic-row.html",
+        controller: "EpicRowCtrl",
         controllerAs: "vm",
         bindToController: true,
         scope: {
-            project: "="
+            epic: '='
         }
     }
 
-EpicsTableDirective.$inject = []
+EpicRowDirective.$inject = []
 
-module.directive("tgEpicsTable", EpicsTableDirective)
+module.directive("tgEpicRow", EpicRowDirective)

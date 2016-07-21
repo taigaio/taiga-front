@@ -34,7 +34,7 @@ class EpicsDashboardController
         return @rs.projects.getBySlug(@params.pslug).then (project) =>
             if not project.is_epics_activated
                 @errorHandlingService.permissionDenied()
-            @project = project
+            @.project = project
 
     addNewEpic: () ->
         console.log 'Add new Epic'

@@ -14,23 +14,24 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: epics-table.directive.coffee
+# File: epics-resource.service.coffee
 ###
 
-module = angular.module('taigaEpics')
+Resource = (urlsService, http) ->
+    service = {}
 
-EpicsTableDirective = () ->
+    service.listAll = (params) ->
+        url = urlsService.resolve("epics")
 
-    return {
-        templateUrl:"epics/dashboard/epics-table/epics-table.html",
-        controller: "EpicsTableCtrl",
-        controllerAs: "vm",
-        bindToController: true,
-        scope: {
-            project: "="
-        }
-    }
+        httpOptions = {}
 
-EpicsTableDirective.$inject = []
+        return http.get(url, params, httpOptions).then (result) ->
+            return Immutable.fromJS(result.data)
 
-module.directive("tgEpicsTable", EpicsTableDirective)
+    return () ->
+        return {"epics": service}
+
+Resource.$inject = ["$tgUrls", "$tgHttp"]
+
+module = angular.module("taigaResources2")
+module.factory("tgEpicsResource", Resource)

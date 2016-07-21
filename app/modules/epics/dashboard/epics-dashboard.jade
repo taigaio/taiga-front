@@ -16,4 +16,7 @@ doctype html
                     ng-click="vm.addNewEpic()"
                 )
                 
-        tg-epics-table
+        tg-epics-table(
+            ng-if="vm.project"
+            project="vm.project"
+        )

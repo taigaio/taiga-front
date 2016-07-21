@@ -20,9 +20,11 @@
 module = angular.module("taigaEpics")
 
 class EpicsTableController
-    @.$inject = []
+    @.$inject = [
+        "tgResources"
+    ]
 
-    constructor: () ->
+    constructor: (@rs) ->
         @.displayOptions = false
         @.displayVotes = true
         @.column = {
@@ -34,11 +36,15 @@ class EpicsTableController
             status: true,
             progress: true
         }
+        @._loadEpics()
 
     toggleEpicTableOptions: () ->
         @.displayOptions = !@.displayOptions
 
-    updateEpicTableColumns: () ->
-        console.log @.column
+    _loadEpics: () ->
+        projectId = @.project.id
+        params = {}
+        promise = @rs.epics.listAll(projectId, params).then (epics) =>
+            @.epics = epics
 
 module.controller("EpicsTableCtrl", EpicsTableController)

@@ -1,0 +1,31 @@
+.epic-row {
+    @include font-size(small);
+    align-items: center;
+    border-bottom: 1px solid $whitish;
+    display: flex;
+    .progress-bar,
+    .progress-status {
+        height: 1.5rem;
+        left: 0;
+        position: absolute;
+        top: .25rem;
+    }
+    .progress-bar {
+        background: $mass-white;
+        max-width: 40vw;
+        width: 100%;
+    }
+    .progress-status {
+        background: $primary-light;
+        width: 10vw;
+    }
+    .vote {
+        color: $gray;
+    }
+    .icon-upvote {
+        @include svg-size(.75rem);
+        fill: $gray;
+        margin-right: .25rem;
+        vertical-align: middle;
+    }
+}

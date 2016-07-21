@@ -6,7 +6,6 @@ mixin epicSwitch(name, model)
             type="checkbox"
             ng-checked= model
             ng-model= model
-            ng-change="vm.updateEpicTableColumns()"
         )
         div
         span.check-text.check-yes(translate="COMMON.YES")
@@ -90,10 +89,7 @@ mixin epicSwitch(name, model)
                     )
                     +epicSwitch('switch-progress', 'vm.column.progress')
     .epics-table-body
-        .vote
-        .name
-        .project
-        .sprint
-        .assigned
-        .status
-        .progress
+        .epics-table-body-row(tg-repeat="epic in vm.epics track by epic.get('id')")
+            tg-epic-row(
+                epic="epic"
+            )

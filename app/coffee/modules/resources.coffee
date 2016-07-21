@@ -92,6 +92,9 @@ urls = {
     # Milestones/Sprints
     "milestones": "/milestones"
 
+    # Epics
+    "epics": "/epics"
+
     # User stories
     "userstories": "/userstories"
     "bulk-create-us": "/userstories/bulk_create"

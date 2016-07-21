@@ -1,0 +1,29 @@
+.epic-row
+    .vote(ng-class="{'is-voter': vm.epic.get('is_voter')}") 
+        tg-svg(svg-icon='icon-upvote')
+        span {{::vm.epic.get('total_voters')}}
+        
+    .name() {{::vm.epic.get('subject')}}
+    
+    .project() {{::vm.epic.get('project')}}
+    .sprint(
+        translate="EPICS.TABLE.SPRINT"
+    )
+    .assigned(
+        ng-if="vm.epic.getIn(['assigned_to_extra_info', 'photo'])"
+    ) 
+        img(
+            ng-src="{{vm.epic.getIn(['assigned_to_extra_info', 'photo'])}}"
+            alt="::vm.epic.getIn(['assigned_to_extra_info', 'name'])"
+        )    
+    .assigned(
+        ng-if="!vm.epic.getIn(['assigned_to_extra_info', 'photo'])"
+    ) Unassigned
+    .status(
+        ng-style="{'color': vm.epic.getIn(['status_extra_info', 'color'])}"
+    ) 
+        span {{::vm.epic.getIn(['status_extra_info', 'name'])}}
+        tg-svg(svg-icon="icon-arrow-down")        
+    .progress
+        .progress-bar
+        .progress-status

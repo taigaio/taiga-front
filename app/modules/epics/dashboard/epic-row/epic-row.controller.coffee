@@ -1,5 +1,5 @@
 ###
-# Copyright (C) 2014-2016 Taiga Agile LLC <taiga@taiga.io>
+# Copyright (C) 2014-2015 Taiga Agile LLC <taiga@taiga.io>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -14,23 +14,16 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: epics-table.directive.coffee
+# File: epics-table.controller.coffee
 ###
 
-module = angular.module('taigaEpics')
+module = angular.module("taigaEpics")
 
-EpicsTableDirective = () ->
+class EpicRowController
+    @.$inject = [
+    ]
 
-    return {
-        templateUrl:"epics/dashboard/epics-table/epics-table.html",
-        controller: "EpicsTableCtrl",
-        controllerAs: "vm",
-        bindToController: true,
-        scope: {
-            project: "="
-        }
-    }
+    constructor: () ->
+        console.log @.epic.toJS()
 
-EpicsTableDirective.$inject = []
-
-module.directive("tgEpicsTable", EpicsTableDirective)
+module.controller("EpicRowCtrl", EpicRowController)
