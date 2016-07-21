@@ -1037,7 +1037,7 @@
         "DELETE": "Delete comment",
         "RESTORE": "Opmerking herstellen",
         "HISTORY": {
-            "TITLE": "Activity"
+            "TITLE": "Activiteit"
         }
     },
     "ACTIVITY": {
@@ -1059,9 +1059,9 @@
         "SIZE_CHANGE": "{size, plural, one{één verandering} other{# veranderingen}} gemaakt",
         "BECAME_DEPRECATED": "became deprecated",
         "BECAME_UNDEPRECATED": "became undeprecated",
-        "TEAM_REQUIREMENT": "Team Requirement",
-        "CLIENT_REQUIREMENT": "Client Requirement",
-        "BLOCKED": "Blocked",
+        "TEAM_REQUIREMENT": "Eisen team",
+        "CLIENT_REQUIREMENT": "Requirement van de klant",
+        "BLOCKED": "Geblokkeerd",
         "VALUES": {
             "YES": "ja",
             "NO": "nee",
@@ -1460,9 +1460,9 @@
         "DELETE_LINK_TITLE": "Delete Wiki link",
         "NAVIGATION": {
             "HOME": "Main Page",
-            "SECTION_NAME": "Links",
-            "ACTION_ADD_LINK": "Link toevoegen",
-            "ALL_PAGES": "All pages"
+            "SECTION_NAME": "BOOKMARKS",
+            "ACTION_ADD_LINK": "Add bookmark",
+            "ALL_PAGES": "All wiki pages"
         },
         "SUMMARY": {
             "TIMES_EDITED": "keer <br/>bewerkt",
@@ -1473,7 +1473,7 @@
         "PAGES_LIST_COLUMNS": {
             "TITLE": "Title",
             "EDITIONS": "Editions",
-            "CREATED": "Created",
+            "CREATED": "Aangemaakt",
             "MODIFIED": "Modified",
             "CREATOR": "Creator",
             "LAST_MODIFIER": "Last modifier"

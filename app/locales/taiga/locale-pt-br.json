@@ -419,7 +419,7 @@
             "ADD_BUTTON": "+ Novo Membro",
             "ADD_BUTTON_TITLE": "Adicionar novo membro",
             "LIMIT_USERS_WARNING_MESSAGE_FOR_ADMIN": "Infelizmente, este projeto atingiu o número máximo de <strong>({{membros}})</strong> membros permitidos.",
-            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "This project has reached its limit of <strong>({{members}})</strong> allowed members. If you would like to increase that limit please contact the administrator."
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "Este projeto atingiu o limite de <strong>({{members}})</strong> membros permitidos. Se você deseja aumentar este limite entre em contato com o administrador."
         },
         "PROJECT_EXPORT": {
             "TITLE": "Exportar",
@@ -454,7 +454,7 @@
             "MEETUP": "Reunião",
             "MEETUP_DESCRIPTION": "Selecione seu sistema de videoconferência.",
             "SELECT_VIDEOCONFERENCE": "Selecione um sistema de videoconferência",
-            "SALT_CHAT_ROOM": "Add a prefix to the chatroom name",
+            "SALT_CHAT_ROOM": "Adicionar um prefixo ao nome da sala de chat",
             "JITSI_CHAT_ROOM": "Jitsi",
             "APPEARIN_CHAT_ROOM": "AppearIn",
             "TALKY_CHAT_ROOM": "Talky",
@@ -478,10 +478,10 @@
             "LOGO_HELP": "A imagem deve ser na escala de 80x80px.",
             "CHANGE_LOGO": "Alterar logo",
             "ACTION_USE_DEFAULT_LOGO": "Usar imagem padrão",
-            "MAX_PRIVATE_PROJECTS": "You've reached the maximum number of private projects allowed by your current plan",
-            "MAX_PRIVATE_PROJECTS_MEMBERS": "The maximum number of members for private projects has been exceeded",
+            "MAX_PRIVATE_PROJECTS": "Você atingiu o número máximo de projetos privados permitidos para seu plano atual.",
+            "MAX_PRIVATE_PROJECTS_MEMBERS": "O número máximo de membros para projetos privados foi excedido.",
             "MAX_PUBLIC_PROJECTS": "Unfortunately, you've reached the maximum number of public projects allowed by your current plan",
-            "MAX_PUBLIC_PROJECTS_MEMBERS": "The project exceeds your maximum number of members for public projects",
+            "MAX_PUBLIC_PROJECTS_MEMBERS": "Este projeto atingiu o seu limite atual de membros para projetos públicos",
             "PROJECT_OWNER": "Dono do projeto",
             "REQUEST_OWNERSHIP": "Solicitar propriedade",
             "REQUEST_OWNERSHIP_CONFIRMATION_TITLE": "Gostaria de se tornar o novo dono do projeto?",
@@ -489,7 +489,7 @@
             "REQUEST_OWNERSHIP_BUTTON": "Solicitação",
             "REQUEST_OWNERSHIP_SUCCESS": "Vamos notificar o dono do projeto",
             "CHANGE_OWNER": "Mudar dono",
-            "CHANGE_OWNER_SUCCESS_TITLE": "Ok, your request has been sent!",
+            "CHANGE_OWNER_SUCCESS_TITLE": "Ok, sua requisição foi enviada!",
             "CHANGE_OWNER_SUCCESS_DESC": "We will notify you by email if the project ownership request is accepted or declined"
         },
         "REPORTS": {
@@ -538,7 +538,7 @@
         "PROJECT_VALUES_PRIORITIES": {
             "TITLE": "Prioridades",
             "SUBTITLE": "Especifique as prioridades que seus problemas terão",
-            "ISSUE_TITLE": "Prioridades do problema",
+            "ISSUE_TITLE": "Severidade dos apontamentos",
             "ACTION_ADD": "Adicionar nova prioridade"
         },
         "PROJECT_VALUES_SEVERITIES": {
@@ -562,9 +562,9 @@
         },
         "PROJECT_VALUES_TAGS": {
             "TITLE": "Tags",
-            "SUBTITLE": "View and edit the color of your user stories",
+            "SUBTITLE": "Ver e editar as cores das stories de seu usuário",
             "EMPTY": "Atualmente não há tags",
-            "EMPTY_SEARCH": "It looks like nothing was found with your search criteria"
+            "EMPTY_SEARCH": "Parece que nada foi encontrado com os critérios de sua pesquisa."
         },
         "ROLES": {
             "PAGE_TITLE": "Funções - {{projectName}}",
@@ -575,7 +575,7 @@
             "COUNT_MEMBERS": "{{ role.members_count }} membros com a mesma função",
             "TITLE_DELETE_ROLE": "Apagar Função",
             "REPLACEMENT_ROLE": "Todos os usuários com essa função serão movidos para",
-            "WARNING_DELETE_ROLE": "Be careful! All role estimations will be removed",
+            "WARNING_DELETE_ROLE": "Cuidado! Todas as estimativas de papéis serão removidas",
             "ERROR_DELETE_ALL": "Você não pode apagar todos os valores",
             "EXTERNAL_USER": "Usuário externo"
         },
@@ -707,20 +707,20 @@
         },
         "PROJECT_TRANSFER": {
             "DO_YOU_ACCEPT_PROJECT_OWNERNSHIP": "Would you like to become the new project owner?",
-            "PRIVATE": "Private",
-            "ACCEPTED_PROJECT_OWNERNSHIP": "Congratulations! You're now the new project owner.",
-            "REJECTED_PROJECT_OWNERNSHIP": "OK. We'll contact the current project owner",
+            "PRIVATE": "Privado",
+            "ACCEPTED_PROJECT_OWNERNSHIP": "Parabéns! Você é o proprietário do projeto agora.",
+            "REJECTED_PROJECT_OWNERNSHIP": "OK. Entraremos em contato com o atual dono do projeto.",
             "ACCEPT": "Aceitar",
-            "REJECT": "Reject",
+            "REJECT": "Rejeitar",
             "PROPOSE_OWNERSHIP": "<strong>{{owner}}</strong>, the current owner of the project <strong>{{project}}</strong> has asked that you become the new  project owner.",
             "ADD_COMMENT": "Would you like to add a comment for the project owner?",
-            "UNLIMITED_PROJECTS": "Unlimited",
+            "UNLIMITED_PROJECTS": "Ilimitado",
             "OWNER_MESSAGE": {
                 "PRIVATE": "Please remember that you can own up to <strong>{{maxProjects}}</strong> private projects. You currently own <strong>{{currentProjects}}</strong> private projects",
                 "PUBLIC": "Please remember that you can own up to <strong>{{maxProjects}}</strong> public projects. You currently own <strong>{{currentProjects}}</strong> public projects"
             },
             "CANT_BE_OWNED": "At the moment you cannot become an owner of a project of this type. If you would like to become the owner of this project, please contact the administrator so they change your account settings to enable project ownership.",
-            "CHANGE_MY_PLAN": "Change my plan"
+            "CHANGE_MY_PLAN": "Mudar meu plano"
         }
     },
     "USER": {
@@ -767,7 +767,7 @@
             "FILTER_TYPE_TASKS": "Tarefas",
             "FILTER_TYPE_TASK_TITLES": "Mostrar apenas tarefas",
             "FILTER_TYPE_ISSUES": "Problemas",
-            "FILTER_TYPE_ISSUES_TITLE": "mostrar apenas problemas",
+            "FILTER_TYPE_ISSUES_TITLE": "mostrar apenas apontamentos",
             "EMPTY_TITLE": "Parece que não há nada para exibir aqui."
         }
     },
@@ -784,7 +784,7 @@
         "BLOCKED_PROJECT": {
             "BLOCKED": "Projeto bloqueado",
             "THIS_PROJECT_IS_BLOCKED": "Este projeto está temporariamente bloqueado",
-            "TO_UNBLOCK_CONTACT_THE_ADMIN_STAFF": "In order to unblock your projects, contact the administrator."
+            "TO_UNBLOCK_CONTACT_THE_ADMIN_STAFF": "Para desbloquear seus projetos, contate o administrador."
         },
         "STATS": {
             "PROJECT": "projetos<br/> pontos",
@@ -903,7 +903,7 @@
             "NEWSLETTER_LABEL_TEXT": "Eu não quero receber mais os informativos",
             "CANCEL": "Voltar para configurações",
             "ACCEPT": "Remover conta",
-            "BLOCK_PROJECT": "Note that all the projects you own projects will be <strong>blocked</strong> after you delete your account. If you do want a project blocked, transfer ownership to another member of each project prior to deleting your account.",
+            "BLOCK_PROJECT": "Note que todos os projetos em que você é o dono serão <strong>bloqueados</strong> depois que você apagar sua conta. Se você quer um projeto bloqueado, transfira a posse para outro membro de cada projeto antes de apagar sua conta.",
             "SUBTITLE": "É uma pena vê-lo partir. Estaremos aqui se você algum dia considerar-nos novamente! :("
         },
         "DELETE_PROJECT": {
@@ -961,17 +961,17 @@
         "CREATE_MEMBER": {
             "PLACEHOLDER_INVITATION_TEXT": "(Opcional) Adicione uma mensagem de texto ao convite. Diga algo animador para os novos membros ;-)",
             "PLACEHOLDER_TYPE_EMAIL": "Digite um Email",
-            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "Unfortunately, this project can't have more than <strong>{{maxMembers}}</strong> members.<br> If you would like to increase the current limit, please contact the administrator.",
-            "LIMIT_USERS_WARNING_MESSAGE": "Unfortunately, this project can't have more than <strong>{{maxMembers}}</strong> members."
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "Infelizmente, este projeto não pode ter mais do que <strong>{{maxMembers}}</strong> membros.<br> Se você gostaria de aumentar o limite atual, por favor contate o administrador.",
+            "LIMIT_USERS_WARNING_MESSAGE": "Infelizmente este projeto não pode ter mais do que <strong>{{maxMembers}}</strong> membros."
         },
         "LEAVE_PROJECT_WARNING": {
             "TITLE": "Infelizmente, este projeto não pode ficar sem um dono",
             "CURRENT_USER_OWNER": {
-                "DESC": "You are the current owner of this project. Before leaving, please transfer ownership to someone else.",
+                "DESC": "Você é o dono atual deste projeto. Antes de sair, por favor transfira o projeto para outra pessoa.",
                 "BUTTON": "Mude o dono do projeto"
             },
             "OTHER_USER_OWNER": {
-                "DESC": "Unfortunately, you can't delete a member who is also the current project owner. First, please assign a new project owner.",
+                "DESC": "Infelizmnete, você não pode apagar um membro que também é o dono de um projeto. Primeiro designe um novo proprietário para o projeto.",
                 "BUTTON": "Solicite a mudança do dono do projeto"
             }
         },
@@ -991,7 +991,7 @@
         "ADD": "+ Adicionar uma nova História de Usuário",
         "ADD_BULK": "Adicionar Histórias de Usuários em lote",
         "PROMOTED": "Esta História de Usuário foi criada a partir do Problema:",
-        "TITLE_LINK_GO_TO_ISSUE": "Ir para problema",
+        "TITLE_LINK_GO_TO_ISSUE": "Adicionar comentários aos apontamentos",
         "EXTERNAL_REFERENCE": "Esta História de Usuário foi criada de",
         "GO_TO_EXTERNAL_REFERENCE": "Ir para a origem",
         "BLOCKED": "Esta história de usuário está bloqueada",
@@ -1004,14 +1004,14 @@
         "NOT_ESTIMATED": "Não estimado",
         "TOTAL_US_POINTS": "Total de pontos de histórias",
         "TRIBE": {
-            "PUBLISH": "Publish as Gig in Taiga Tribe",
+            "PUBLISH": "Publicar como Gig no Taiga Tribe",
             "PUBLISH_INFO": "Mais informações",
             "PUBLISH_TITLE": "More info on publishing in Taiga Tribe",
             "PUBLISHED_AS_GIG": "Story published as Gig in Taiga Tribe",
-            "EDIT_LINK": "Edit link",
-            "CLOSE": "Close",
+            "EDIT_LINK": "Editar link",
+            "CLOSE": "Fechar",
             "SYNCHRONIZE_LINK": "synchronize with Taiga Tribe",
-            "PUBLISH_MORE_INFO_TITLE": "Do you need somebody for this task?",
+            "PUBLISH_MORE_INFO_TITLE": "Você precisa de alguém para esta tarefa?",
             "PUBLISH_MORE_INFO_TEXT": "<p>If you need help with a particular piece of work you can easily create gigs on<a href='taigatribe.com' title='Taiga Tribe'> Taiga Tribe </a> and receive help from all over the world. You will be able to control and manage the gig enjoying a great community eager to contribute.</p><p><a href='taigatribe.com' title='Taiga Tribe'> TaigaTribe </a>  was born as a Taiga sibling. Both platforms can live separately but we believe that there is much power in using them combined so we are making sure the integration works like a charm.</p>"
         },
         "FIELDS": {
@@ -1021,23 +1021,23 @@
         }
     },
     "COMMENTS": {
-        "DELETED_INFO": "Comment deleted by {{user}}",
+        "DELETED_INFO": "Comentário apagado por {{user}}",
         "TITLE": "Comentários",
-        "COMMENTS_COUNT": "{{comments}} Comments",
-        "ORDER": "Order",
-        "OLDER_FIRST": "Older first",
-        "RECENT_FIRST": "Recent first",
+        "COMMENTS_COUNT": "{{comments}} comentários",
+        "ORDER": "Ordenação",
+        "OLDER_FIRST": "Antigos primeiro",
+        "RECENT_FIRST": "Recentes primeiro",
         "COMMENT": "Comentário",
-        "EDIT_COMMENT": "Edit comment",
-        "EDITED_COMMENT": "Edited:",
-        "SHOW_HISTORY": "View historic",
+        "EDIT_COMMENT": "Editar comentário",
+        "EDITED_COMMENT": "Editado:",
+        "SHOW_HISTORY": "Ver histórico",
         "TYPE_NEW_COMMENT": "Escreva um novo comentário aqui",
         "SHOW_DELETED": "Mostrar comentários apagados",
         "HIDE_DELETED": "Esconder comentário apagado",
         "DELETE": "Apagar comentário",
         "RESTORE": "Restaurar comentário",
         "HISTORY": {
-            "TITLE": "Activity"
+            "TITLE": "Atividade"
         }
     },
     "ACTIVITY": {
@@ -1045,23 +1045,23 @@
         "DATETIME": "DD MMM YYYY HH:mm",
         "SHOW_MORE": "+ Mostrar entradas anteriores (mais {{showMore}})",
         "TITLE": "Atividade",
-        "ACTIVITIES_COUNT": "{{activities}} Activities",
+        "ACTIVITIES_COUNT": "{{activities}} atividades",
         "REMOVED": "removido",
         "ADDED": "adicionado",
-        "TAGS_ADDED": "tags added:",
-        "TAGS_REMOVED": "tags removed:",
-        "US_POINTS": "{{role}} points",
-        "NEW_ATTACHMENT": "new attachment:",
-        "DELETED_ATTACHMENT": "deleted attachment:",
-        "UPDATED_ATTACHMENT": "updated attachment ({{filename}}):",
-        "CREATED_CUSTOM_ATTRIBUTE": "created custom attribute",
-        "UPDATED_CUSTOM_ATTRIBUTE": "updated custom attribute",
+        "TAGS_ADDED": "tags adicionadas:",
+        "TAGS_REMOVED": "tags removidas:",
+        "US_POINTS": "{{role}} pontos",
+        "NEW_ATTACHMENT": "novo anexo:",
+        "DELETED_ATTACHMENT": "anexo apagado:",
+        "UPDATED_ATTACHMENT": "anexo atualizado ({{filename}}):",
+        "CREATED_CUSTOM_ATTRIBUTE": "atributo personalizado criado",
+        "UPDATED_CUSTOM_ATTRIBUTE": "atributo personalizado atualizado",
         "SIZE_CHANGE": "Feito {size, plural, one{one change} other{# changes}}",
-        "BECAME_DEPRECATED": "became deprecated",
+        "BECAME_DEPRECATED": "foi depreciado",
         "BECAME_UNDEPRECATED": "became undeprecated",
-        "TEAM_REQUIREMENT": "Team Requirement",
-        "CLIENT_REQUIREMENT": "Client Requirement",
-        "BLOCKED": "Blocked",
+        "TEAM_REQUIREMENT": "Requisitos da Equipe",
+        "CLIENT_REQUIREMENT": "Requisitos do Cliente",
+        "BLOCKED": "Bloqueado",
         "VALUES": {
             "YES": "sim",
             "NO": "não",
@@ -1267,9 +1267,9 @@
         "SUCCESS": "Nossos Oompa Loompas atualizaram seu email"
     },
     "ISSUES": {
-        "PAGE_TITLE": "Problemas - {{projectName}}",
+        "PAGE_TITLE": "Apontamentos - {{projectName}}",
         "PAGE_DESCRIPTION": "O painel de problemas do projeto {{projectName}}: {{projectDescription}}",
-        "LIST_SECTION_NAME": "Problemas",
+        "LIST_SECTION_NAME": "Tipos de problemas",
         "SECTION_NAME": "Problema",
         "ACTION_NEW_ISSUE": "+ NOVO PROBLEMA",
         "ACTION_PROMOTE_TO_US": "Promover para História de Usuário",
@@ -1277,7 +1277,7 @@
         "PROMOTED": "Esse problema foi promovido para história de usuário",
         "EXTERNAL_REFERENCE": "Esse problema foi criado a partir de",
         "GO_TO_EXTERNAL_REFERENCE": "Ir para a origem",
-        "BLOCKED": "Esse problema está bloqueado",
+        "BLOCKED": "Esse apontamento está bloqueado",
         "TITLE_PREVIOUS_ISSUE": "problema anterior",
         "TITLE_NEXT_ISSUE": "próximo problema",
         "ACTION_DELETE": "Problema apagado",
@@ -1374,7 +1374,7 @@
         "APP_TITLE": "EQUIPE - {{projectName}}",
         "PLACEHOLDER_INPUT_SEARCH": "Procurar pelo nome completo...",
         "COLUMN_MR_WOLF": "Sr. Wolf",
-        "EXPLANATION_COLUMN_MR_WOLF": "Problemas fechados",
+        "EXPLANATION_COLUMN_MR_WOLF": "Adicionar apontamentos",
         "COLUMN_IOCAINE": "Bebedor de Iocaine",
         "EXPLANATION_COLUMN_IOCAINE": "Doses de Iocaine ingeridas",
         "COLUMN_CERVANTES": "Pero Vaz de Caminha",
@@ -1439,7 +1439,7 @@
     "WIZARD": {
         "SECTION_TITLE_CREATE_PROJECT": "Criar Projeto",
         "CREATE_PROJECT_TEXT": "Novo em folha. Tão excitante!",
-        "CHOOSE_TEMPLATE": "Which template fits your project best?",
+        "CHOOSE_TEMPLATE": "Qual template se encaixa melhor no seu projeto?",
         "CHOOSE_TEMPLATE_TITLE": "Mais informações sobre templates de projeto",
         "CHOOSE_TEMPLATE_INFO": "Mais informações",
         "PROJECT_DETAILS": "Detalhes do Projeto",
@@ -1459,24 +1459,24 @@
         "DELETE_LIGHTBOX_TITLE": "Apagar página Wiki",
         "DELETE_LINK_TITLE": "Remover link de Wiki",
         "NAVIGATION": {
-            "HOME": "Main Page",
-            "SECTION_NAME": "Links",
-            "ACTION_ADD_LINK": "Adicionar link",
-            "ALL_PAGES": "All pages"
+            "HOME": "Página principal",
+            "SECTION_NAME": "BOOKMARKS",
+            "ACTION_ADD_LINK": "Add bookmark",
+            "ALL_PAGES": "All wiki pages"
         },
         "SUMMARY": {
             "TIMES_EDITED": "vezes<br />editadas",
             "LAST_EDIT": "última<br />edição",
             "LAST_MODIFICATION": "ultima modificação"
         },
-        "SECTION_PAGES_LIST": "All pages",
+        "SECTION_PAGES_LIST": "Todas as páginas",
         "PAGES_LIST_COLUMNS": {
-            "TITLE": "Title",
-            "EDITIONS": "Editions",
-            "CREATED": "Created",
-            "MODIFIED": "Modified",
-            "CREATOR": "Creator",
-            "LAST_MODIFIER": "Last modifier"
+            "TITLE": "Título",
+            "EDITIONS": "Edições",
+            "CREATED": "Criado",
+            "MODIFIED": "Modificado",
+            "CREATOR": "Criador",
+            "LAST_MODIFIER": "Último modificador"
         }
     },
     "HINTS": {

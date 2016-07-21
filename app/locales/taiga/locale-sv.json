@@ -1037,7 +1037,7 @@
         "DELETE": "Ta bort kommentar",
         "RESTORE": "Hämta tillbaka tidigare kommentarer",
         "HISTORY": {
-            "TITLE": "Activity"
+            "TITLE": "Aktiviteter"
         }
     },
     "ACTIVITY": {
@@ -1059,9 +1059,9 @@
         "SIZE_CHANGE": "Gjorde {size, plural, one{one change} other{# changes}}",
         "BECAME_DEPRECATED": "became deprecated",
         "BECAME_UNDEPRECATED": "became undeprecated",
-        "TEAM_REQUIREMENT": "Team Requirement",
-        "CLIENT_REQUIREMENT": "Client Requirement",
-        "BLOCKED": "Blocked",
+        "TEAM_REQUIREMENT": "Teamets behov",
+        "CLIENT_REQUIREMENT": "Kräver beställare",
+        "BLOCKED": "Blockerad",
         "VALUES": {
             "YES": "ja",
             "NO": "nej",
@@ -1460,9 +1460,9 @@
         "DELETE_LINK_TITLE": "Delete Wiki link",
         "NAVIGATION": {
             "HOME": "Main Page",
-            "SECTION_NAME": "Länkar",
-            "ACTION_ADD_LINK": "Lägg till länk",
-            "ALL_PAGES": "All pages"
+            "SECTION_NAME": "BOOKMARKS",
+            "ACTION_ADD_LINK": "Add bookmark",
+            "ALL_PAGES": "All wiki pages"
         },
         "SUMMARY": {
             "TIMES_EDITED": "gånger <br/> ändrad",
@@ -1473,7 +1473,7 @@
         "PAGES_LIST_COLUMNS": {
             "TITLE": "Title",
             "EDITIONS": "Editions",
-            "CREATED": "Created",
+            "CREATED": "Skapad",
             "MODIFIED": "Modified",
             "CREATOR": "Creator",
             "LAST_MODIFIER": "Last modifier"

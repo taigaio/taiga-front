@@ -1037,7 +1037,7 @@
         "DELETE": "刪除評論 ",
         "RESTORE": "恢復原評論 ",
         "HISTORY": {
-            "TITLE": "Activity"
+            "TITLE": "動態"
         }
     },
     "ACTIVITY": {
@@ -1059,9 +1059,9 @@
         "SIZE_CHANGE": "使  {size, plural, one{更改} other{變化}}",
         "BECAME_DEPRECATED": "became deprecated",
         "BECAME_UNDEPRECATED": "became undeprecated",
-        "TEAM_REQUIREMENT": "Team Requirement",
-        "CLIENT_REQUIREMENT": "Client Requirement",
-        "BLOCKED": "Blocked",
+        "TEAM_REQUIREMENT": "團隊要求",
+        "CLIENT_REQUIREMENT": "客戶要求",
+        "BLOCKED": "已封鎖",
         "VALUES": {
             "YES": "yes",
             "NO": "no",
@@ -1460,9 +1460,9 @@
         "DELETE_LINK_TITLE": "Delete Wiki link",
         "NAVIGATION": {
             "HOME": "Main Page",
-            "SECTION_NAME": "連結",
-            "ACTION_ADD_LINK": "新增連結",
-            "ALL_PAGES": "All pages"
+            "SECTION_NAME": "BOOKMARKS",
+            "ACTION_ADD_LINK": "Add bookmark",
+            "ALL_PAGES": "All wiki pages"
         },
         "SUMMARY": {
             "TIMES_EDITED": "次數 <br />編輯 ",
@@ -1473,7 +1473,7 @@
         "PAGES_LIST_COLUMNS": {
             "TITLE": "Title",
             "EDITIONS": "Editions",
-            "CREATED": "Created",
+            "CREATED": "已創建",
             "MODIFIED": "Modified",
             "CREATOR": "Creator",
             "LAST_MODIFIER": "Last modifier"

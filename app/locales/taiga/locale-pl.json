@@ -19,11 +19,11 @@
         "TAG_LINE": "Twoje zwinne, wolne, otwartoźródłowe narzędzie do zarządzania projektem",
         "TAG_LINE_2": "Pokochaj swój projekt!",
         "BLOCK": "Blokuj",
-        "BLOCK_TITLE": "Block this item for example if it has a dependency that can not be satisfied",
+        "BLOCK_TITLE": "Zablokuj to np. jeżeli posiada zależności, które nie mogą być zrealizowane",
         "BLOCKED": "Zablokowane",
         "UNBLOCK": "Odblokuj",
-        "UNBLOCK_TITLE": "Unblock this item",
-        "BLOCKED_NOTE": "Why is this blocked?",
+        "UNBLOCK_TITLE": "Odblokuj",
+        "BLOCKED_NOTE": "Dlaczego jest zabokowane?",
         "BLOCKED_REASON": "Wyjaśnij powód",
         "CREATED_BY": "Utworzone przez {{fullDisplayName}}",
         "FROM": "od",
@@ -363,7 +363,7 @@
     "HOME": {
         "PAGE_TITLE": "Strona główna - Taiga",
         "PAGE_DESCRIPTION": "Główna strona Taiga, z Twoimi głównymi projektami i wszystkimi przypisanymi Tobie i obserwowanymi historyjkami użytkownika, zadaniami i zgłoszeniami.",
-        "EMPTY_WORKING_ON": "<strong>It feels empty, doesn't it?</strong> Start working with Taiga and you'll see here the stories, tasks and issues you are working on.",
+        "EMPTY_WORKING_ON": "<strong>Trochę pusto, nieprawdaż?</strong> Zacznij pracować z Taiga a tutaj pojawią się historie, zadania i zgłoszenia nad którymi pracujesz.",
         "EMPTY_WATCHING": "<strong>Follow</strong> User Stories, Tasks, Issues in your projects and be notified about its changes :)",
         "EMPTY_PROJECT_LIST": "Nie masz jeszcze żadnych projektów",
         "WORKING_ON_SECTION": "Pracujesz nad",
@@ -384,7 +384,7 @@
         "DEPRECATED": "(przestarzały)",
         "DEPRECATED_FILE": "Przestarzałe?",
         "ADD": "Dodaj nowy załącznik. {{maxFileSizeMsg}}",
-        "DROP": "Drop attachments here!",
+        "DROP": "Upuść załączniki tutaj",
         "SHOW_DEPRECATED": "+ pokaż przestarzałe załączniki",
         "HIDE_DEPRECATED": "- ukryj przestarzałe załączniki",
         "COUNT_DEPRECATED": "({{ counter }} przestarzałych",
@@ -418,7 +418,7 @@
             "PAGE_TITLE": "Członkostwa - {{projectName}}",
             "ADD_BUTTON": "+ Nowy członek",
             "ADD_BUTTON_TITLE": "Dodaj nowego członka",
-            "LIMIT_USERS_WARNING_MESSAGE_FOR_ADMIN": "Unfortunately, this project has reached its limit of <strong>({{members}})</strong> allowed members.",
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_ADMIN": "Niestety ten projekt osiągnął maksymalną liczbę <strong>{{{members}}}</strong> dozwolonych użytkowników.",
             "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "This project has reached its limit of <strong>({{members}})</strong> allowed members. If you would like to increase that limit please contact the administrator."
         },
         "PROJECT_EXPORT": {
@@ -442,9 +442,9 @@
             "BACKLOG": "Dziennik",
             "BACKLOG_DESCRIPTION": "Zarządzaj swoimi historyjkami użytkownika aby utrzymać zorganizowany widok i priorytety zadań",
             "NUMBER_SPRINTS": "Expected number of sprints",
-            "NUMBER_SPRINTS_HELP": "0 for an undetermined number",
+            "NUMBER_SPRINTS_HELP": "0 dla nieokreślonej liczby",
             "NUMBER_US_POINTS": "Expected total of story points",
-            "NUMBER_US_POINTS_HELP": "0 for an undetermined number",
+            "NUMBER_US_POINTS_HELP": "0 dla nieokreślonej liczby",
             "KANBAN": "Kanban",
             "KANBAN_DESCRIPTION": "Organizuj swój projekt przy użyciu metody lean.",
             "ISSUES": "Zgłoszenia",
@@ -468,8 +468,8 @@
             "PROJECT_SLUG": "Szczegóły projektu",
             "TAGS": "Tagi",
             "DESCRIPTION": "Opis",
-            "RECRUITING": "Is this project looking for people?",
-            "RECRUITING_MESSAGE": "Who are you looking for?",
+            "RECRUITING": "Czy ten pojekt szuka uczestników?",
+            "RECRUITING_MESSAGE": "Kogo szukasz?",
             "RECRUITING_PLACEHOLDER": "Define the profiles you are looking for",
             "PUBLIC_PROJECT": "Projekt publiczny",
             "PRIVATE_PROJECT": "Projekt prywatny",
@@ -738,9 +738,9 @@
             "REPORT": "Zgłoś naruszenie",
             "TABS": {
                 "ACTIVITY_TAB": "Oś czasu",
-                "ACTIVITY_TAB_TITLE": "Show all the activity of this user",
+                "ACTIVITY_TAB_TITLE": "Wyświetl całą aktywność użytkownika",
                 "PROJECTS_TAB": "Projekty",
-                "PROJECTS_TAB_TITLE": "List of all projects in which the user is a member",
+                "PROJECTS_TAB_TITLE": "Lista wszystkich projektów, do których należy użytkownik",
                 "LIKES_TAB": "Likes",
                 "LIKES_TAB_TITLE": "List all likes made by this user",
                 "VOTES_TAB": "Głosy",
@@ -754,7 +754,7 @@
         "PROFILE_SIDEBAR": {
             "TITLE": "Twój profil",
             "DESCRIPTION": "People can see everything you do and what you are working on. Add a nice bio to give an enhanced version of your information.",
-            "ADD_INFO": "Edit bio"
+            "ADD_INFO": "Edytuj biografię"
         },
         "PROFILE_FAVS": {
             "FILTER_INPUT_PLACEHOLDER": "Type something...",
@@ -768,7 +768,7 @@
             "FILTER_TYPE_TASK_TITLES": "Show only tasks",
             "FILTER_TYPE_ISSUES": "Zgłoszenia",
             "FILTER_TYPE_ISSUES_TITLE": "Show only issues",
-            "EMPTY_TITLE": "It looks like there's nothing to show here."
+            "EMPTY_TITLE": "Wygląda na to, że nie ma niczego do wyświetlenia tutaj."
         }
     },
     "PROJECT": {
@@ -777,14 +777,14 @@
         "SECTION_PROJECTS": "Projekty",
         "HELP": "Ustal kolejność Twoich projektów tak, aby na górze znalazły się te najważniejsze. <br/> Pierwsze 10 projektów pojawi się w liście projektów na górnym pasku nawigacji.",
         "PRIVATE": "Projekt prywatny",
-        "LOOKING_FOR_PEOPLE": "This project is looking for people",
+        "LOOKING_FOR_PEOPLE": "Ten projekt szuka uczestników",
         "FANS_COUNTER_TITLE": "{total, plural, one{one fan} other{# fans}}",
         "WATCHERS_COUNTER_TITLE": "{total, plural, one{one watcher} other{# watchers}}",
         "MEMBERS_COUNTER_TITLE": "{total, plural, one{one member} other{# members}}",
         "BLOCKED_PROJECT": {
-            "BLOCKED": "Blocked project",
-            "THIS_PROJECT_IS_BLOCKED": "This project is temporarily blocked",
-            "TO_UNBLOCK_CONTACT_THE_ADMIN_STAFF": "In order to unblock your projects, contact the administrator."
+            "BLOCKED": "Projekt zablokowany",
+            "THIS_PROJECT_IS_BLOCKED": "Ten projekt jest tymczasowo zablokowany",
+            "TO_UNBLOCK_CONTACT_THE_ADMIN_STAFF": "Aby odblokować swój projekt, skontaktuj się z administacją"
         },
         "STATS": {
             "PROJECT": "projekt<br/> punkty",
@@ -901,8 +901,8 @@
             "SECTION_NAME": "Usuń konto z Taiga",
             "CONFIRM": "Czy na pewno chcesz usunąć swoje konto z Taiga?",
             "NEWSLETTER_LABEL_TEXT": "Nie chcę więcej otrzymywać waszego newslettera",
-            "CANCEL": "Back to settings",
-            "ACCEPT": "Delete account",
+            "CANCEL": "Powrót do ustawień",
+            "ACCEPT": "Usuń konto",
             "BLOCK_PROJECT": "Note that all the projects you own projects will be <strong>blocked</strong> after you delete your account. If you do want a project blocked, transfer ownership to another member of each project prior to deleting your account.",
             "SUBTITLE": "Sorry to see you go. We'll be here if you should ever consider us again! :("
         },
@@ -1021,15 +1021,15 @@
         }
     },
     "COMMENTS": {
-        "DELETED_INFO": "Comment deleted by {{user}}",
+        "DELETED_INFO": "Komentarz usunięty przez {{user}}",
         "TITLE": "Komentarze",
         "COMMENTS_COUNT": "{{comments}} Comments",
         "ORDER": "Order",
         "OLDER_FIRST": "Older first",
-        "RECENT_FIRST": "Recent first",
+        "RECENT_FIRST": "Ostatnie najpierw",
         "COMMENT": "Komentarz",
-        "EDIT_COMMENT": "Edit comment",
-        "EDITED_COMMENT": "Edited:",
+        "EDIT_COMMENT": "Edytuj komentarz",
+        "EDITED_COMMENT": "Edytowano",
         "SHOW_HISTORY": "View historic",
         "TYPE_NEW_COMMENT": "Tutaj wpisz nowy komentarz",
         "SHOW_DELETED": "Pokaż usunięty komentarz",
@@ -1037,7 +1037,7 @@
         "DELETE": "Delete comment",
         "RESTORE": "Przywróć komentarz",
         "HISTORY": {
-            "TITLE": "Activity"
+            "TITLE": "Aktywność"
         }
     },
     "ACTIVITY": {
@@ -1048,10 +1048,10 @@
         "ACTIVITIES_COUNT": "{{activities}} Activities",
         "REMOVED": "usunięty",
         "ADDED": "dodany",
-        "TAGS_ADDED": "tags added:",
-        "TAGS_REMOVED": "tags removed:",
+        "TAGS_ADDED": "dodano klucz",
+        "TAGS_REMOVED": "usunięto tag:",
         "US_POINTS": "{{role}} points",
-        "NEW_ATTACHMENT": "new attachment:",
+        "NEW_ATTACHMENT": "nowy załącznik",
         "DELETED_ATTACHMENT": "deleted attachment:",
         "UPDATED_ATTACHMENT": "updated attachment ({{filename}}):",
         "CREATED_CUSTOM_ATTRIBUTE": "created custom attribute",
@@ -1059,9 +1059,9 @@
         "SIZE_CHANGE": "Dokonano {size, plural, one{one change} other{# changes}}",
         "BECAME_DEPRECATED": "became deprecated",
         "BECAME_UNDEPRECATED": "became undeprecated",
-        "TEAM_REQUIREMENT": "Team Requirement",
-        "CLIENT_REQUIREMENT": "Client Requirement",
-        "BLOCKED": "Blocked",
+        "TEAM_REQUIREMENT": "Wymaganie zespołu",
+        "CLIENT_REQUIREMENT": "Wymaganie klienta",
+        "BLOCKED": "Zablokowane",
         "VALUES": {
             "YES": "tak",
             "NO": "nie",
@@ -1111,7 +1111,7 @@
         "CUSTOMIZE_GRAPH_ADMIN": "Admin",
         "CUSTOMIZE_GRAPH_TITLE": "Set up the points and sprints through the Admin",
         "MOVE_US_TO_CURRENT_SPRINT": "Przejdź do bieżącego sprintu",
-        "MOVE_US_TO_LATEST_SPRINT": "Move to latest Sprint",
+        "MOVE_US_TO_LATEST_SPRINT": "Przejdź do ostatniego sprintu",
         "SHOW_FILTERS": "Pokaż filtry",
         "SHOW_TAGS": "Pokaż tagi",
         "EMPTY": "The backlog is empty!",
@@ -1460,9 +1460,9 @@
         "DELETE_LINK_TITLE": "Delete Wiki link",
         "NAVIGATION": {
             "HOME": "Main Page",
-            "SECTION_NAME": "Linki",
-            "ACTION_ADD_LINK": "Dodaj link",
-            "ALL_PAGES": "All pages"
+            "SECTION_NAME": "BOOKMARKS",
+            "ACTION_ADD_LINK": "Add bookmark",
+            "ALL_PAGES": "All wiki pages"
         },
         "SUMMARY": {
             "TIMES_EDITED": "razy <br />edytowano",
@@ -1473,7 +1473,7 @@
         "PAGES_LIST_COLUMNS": {
             "TITLE": "Title",
             "EDITIONS": "Editions",
-            "CREATED": "Created",
+            "CREATED": "Utworzone",
             "MODIFIED": "Modified",
             "CREATOR": "Creator",
             "LAST_MODIFIER": "Last modifier"
@@ -1606,7 +1606,7 @@
         "MOST_LIKED": "Most liked",
         "MOST_LIKED_EMPTY": "There are no LIKED projects yet",
         "VIEW_MORE": "View more",
-        "RECRUITING": "This project is looking for people",
+        "RECRUITING": "Ten projekt szuka ludzi",
         "FEATURED": "Featured Projects",
         "EMPTY": "There are no projects to show with this search criteria.<br> Try again!",
         "FILTERS": {

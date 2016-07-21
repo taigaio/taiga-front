@@ -1037,7 +1037,7 @@
         "DELETE": "Esborrar comentari",
         "RESTORE": "Resturar comentari.",
         "HISTORY": {
-            "TITLE": "Activity"
+            "TITLE": "Activitat"
         }
     },
     "ACTIVITY": {
@@ -1059,9 +1059,9 @@
         "SIZE_CHANGE": "Fet {size, plural, one{un canvi} other{# changes}}",
         "BECAME_DEPRECATED": "became deprecated",
         "BECAME_UNDEPRECATED": "became undeprecated",
-        "TEAM_REQUIREMENT": "Team Requirement",
-        "CLIENT_REQUIREMENT": "Client Requirement",
-        "BLOCKED": "Blocked",
+        "TEAM_REQUIREMENT": "Requeriment d'equip",
+        "CLIENT_REQUIREMENT": "Requeriment de client",
+        "BLOCKED": "Bloquejat",
         "VALUES": {
             "YES": "si",
             "NO": "no",
@@ -1460,9 +1460,9 @@
         "DELETE_LINK_TITLE": "Delete Wiki link",
         "NAVIGATION": {
             "HOME": "Main Page",
-            "SECTION_NAME": "Enllaços",
-            "ACTION_ADD_LINK": "Afegir link",
-            "ALL_PAGES": "All pages"
+            "SECTION_NAME": "BOOKMARKS",
+            "ACTION_ADD_LINK": "Add bookmark",
+            "ALL_PAGES": "All wiki pages"
         },
         "SUMMARY": {
             "TIMES_EDITED": "voltes <br />editat",
@@ -1473,7 +1473,7 @@
         "PAGES_LIST_COLUMNS": {
             "TITLE": "Title",
             "EDITIONS": "Editions",
-            "CREATED": "Created",
+            "CREATED": "Creat",
             "MODIFIED": "Modified",
             "CREATOR": "Creator",
             "LAST_MODIFIER": "Last modifier"

@@ -1037,7 +1037,7 @@
         "DELETE": "Kommentar löschen",
         "RESTORE": "Kommentar wiederherstellen",
         "HISTORY": {
-            "TITLE": "Activity"
+            "TITLE": "Aktivität"
         }
     },
     "ACTIVITY": {
@@ -1059,9 +1059,9 @@
         "SIZE_CHANGE": "Machte {size, plural, one{eine Änderung} other{# Änderungen}}",
         "BECAME_DEPRECATED": "became deprecated",
         "BECAME_UNDEPRECATED": "became undeprecated",
-        "TEAM_REQUIREMENT": "Team Requirement",
-        "CLIENT_REQUIREMENT": "Client Requirement",
-        "BLOCKED": "Blocked",
+        "TEAM_REQUIREMENT": "Team Anforderung",
+        "CLIENT_REQUIREMENT": "Kundenanforderung",
+        "BLOCKED": "Blockiert",
         "VALUES": {
             "YES": "ja",
             "NO": "nein",
@@ -1460,9 +1460,9 @@
         "DELETE_LINK_TITLE": "Entferne Wiki Link",
         "NAVIGATION": {
             "HOME": "Main Page",
-            "SECTION_NAME": "Links",
-            "ACTION_ADD_LINK": "Link hinzufügen",
-            "ALL_PAGES": "All pages"
+            "SECTION_NAME": "BOOKMARKS",
+            "ACTION_ADD_LINK": "Add bookmark",
+            "ALL_PAGES": "All wiki pages"
         },
         "SUMMARY": {
             "TIMES_EDITED": "mal <br />bearbeitet",
@@ -1473,7 +1473,7 @@
         "PAGES_LIST_COLUMNS": {
             "TITLE": "Title",
             "EDITIONS": "Editions",
-            "CREATED": "Created",
+            "CREATED": "Erstellt",
             "MODIFIED": "Modified",
             "CREATOR": "Creator",
             "LAST_MODIFIER": "Last modifier"
