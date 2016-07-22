@@ -25,6 +25,7 @@ class EpicRowController
 
     constructor: () ->
         console.log @.epic.toJS()
+        console.log @.project
         @._calculateProgressBar()
 
     _calculateProgressBar: () ->

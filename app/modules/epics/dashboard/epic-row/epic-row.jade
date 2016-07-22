@@ -1,6 +1,7 @@
 .epic-row(
     ng-class="{'is-blocked':  vm.epic.get('is_blocked'), 'is-closed': vm.epic.get('is_closed')}"
 )
+    tg-svg(svg-icon="icon-drag")
     .vote(
         ng-if="vm.column.votes"
         ng-class="{'is-voter': vm.epic.get('is_voter')}"
@@ -31,14 +32,22 @@
     ) Unassigned
     .status(
         ng-if="vm.column.status"
-        ng-style="{'color': vm.epic.getIn(['status_extra_info', 'color'])}"
         ng-mouseleave="displayStatusList = false"
     )
         button(
             ng-click="displayStatusList = true"
+            ng-style="{'color': vm.epic.getIn(['status_extra_info', 'color'])}"
         )
             span {{::vm.epic.getIn(['status_extra_info', 'name'])}}
-            tg-svg(svg-icon="icon-arrow-down")        
+            tg-svg(
+                svg-icon="icon-arrow-down"
+            )
+            
+        ul.epic-statuses(ng-show="displayStatusList")
+            li(
+                ng-repeat="status in vm.project.epic_statuses | orderBy:'order'"
+                ng-click="vm.updateEpicStatus(status.name)"
+            ) {{status.name}}
     .progress(ng-if="vm.column.progress")
         .progress-bar
         .progress-status(

@@ -12,8 +12,12 @@
             text-decoration: line-through;
         }
     }
+    .icon-drag {
+        fill: $gray-light;
+    }
     .status {
         cursor: pointer;
+        position: relative;
         button {
             background: none;
         }
@@ -47,5 +51,30 @@
         fill: $gray;
         margin-right: .25rem;
         vertical-align: middle;
+    }
+    .epic-statuses {
+        @include font-type(light);
+        @include font-size(small);
+        background: rgba($blackish, .9);
+        border-bottom: 1px solid $grayer;
+        box-shadow: 3px 3px 2px rgba($black, .1);
+        color: $white;
+        left: 0;
+        list-style-type: none;
+        margin: 0;
+        position: absolute;
+        top: 2.5rem;
+        width: 200px;
+        z-index: 99;
+        &:last-child {
+            border: 0;
+        }
+        li {
+            padding: .5rem;
+            &:hover {
+                color: $primary-light;
+                transition: color .3s linear;
+            }
+        }
     }
 }
