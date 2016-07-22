@@ -25,5 +25,11 @@ class EpicRowController
 
     constructor: () ->
         console.log @.epic.toJS()
+        @._calculateProgressBar()
+
+    _calculateProgressBar: () ->
+        totalUs = @.epic.getIn(['user_stories_counts', 'closed'])
+        totalUsCompleted = @.epic.getIn(['user_stories_counts', 'opened'])
+        @.percentage = (totalUs * 100) / totalUsCompleted
 
 module.controller("EpicRowCtrl", EpicRowController)

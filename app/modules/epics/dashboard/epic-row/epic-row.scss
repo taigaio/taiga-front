@@ -3,6 +3,26 @@
     align-items: center;
     border-bottom: 1px solid $whitish;
     display: flex;
+    &.is-blocked {
+        background: rgba($red-light, .5);
+    }
+    &.is-closed {
+        .name {
+            color: $gray-light;
+            text-decoration: line-through;
+        }
+    }
+    .status {
+        cursor: pointer;
+        button {
+            background: none;
+        }
+        .icon {
+            @include svg-size(.7rem);
+            fill: $gray-light;
+            margin-left: .1rem;
+        }
+    }
     .progress-bar,
     .progress-status {
         height: 1.5rem;

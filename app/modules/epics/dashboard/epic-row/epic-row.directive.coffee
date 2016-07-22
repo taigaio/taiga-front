@@ -27,7 +27,9 @@ EpicRowDirective = () ->
         controllerAs: "vm",
         bindToController: true,
         scope: {
-            epic: '='
+            project: '=',
+            epic: '=',
+            column: '='
         }
     }
 

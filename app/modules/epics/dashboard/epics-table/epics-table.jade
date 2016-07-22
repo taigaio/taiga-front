@@ -92,4 +92,6 @@ mixin epicSwitch(name, model)
         .epics-table-body-row(tg-repeat="epic in vm.epics track by epic.get('id')")
             tg-epic-row(
                 epic="epic"
+                project="vm.project"
+                column="vm.column"
             )
