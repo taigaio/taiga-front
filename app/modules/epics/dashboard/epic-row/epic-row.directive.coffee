@@ -29,7 +29,9 @@ EpicRowDirective = () ->
         scope: {
             project: '=',
             epic: '=',
-            column: '='
+            column: '=',
+            permissions: '=',
+            onUpdateEpicStatus: "&"
         }
     }
 

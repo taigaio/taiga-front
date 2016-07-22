@@ -2,7 +2,14 @@
     @include font-size(small);
     align-items: center;
     border-bottom: 1px solid $whitish;
+    cursor: pointer;
     display: flex;
+    &:hover {
+        .icon-drag {
+            cursor: move;
+            opacity: 1;
+        }
+    }
     &.is-blocked {
         background: rgba($red-light, .5);
     }
@@ -13,7 +20,10 @@
         }
     }
     .icon-drag {
-        fill: $gray-light;
+        @include svg-size(.75rem);
+        fill: $whitish;
+        opacity: 0;
+        transition: opacity .1s;
     }
     .status {
         cursor: pointer;

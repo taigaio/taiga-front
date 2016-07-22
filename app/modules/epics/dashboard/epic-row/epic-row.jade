@@ -1,7 +1,9 @@
 .epic-row(
     ng-class="{'is-blocked':  vm.epic.get('is_blocked'), 'is-closed': vm.epic.get('is_closed')}"
 )
-    tg-svg(svg-icon="icon-drag")
+    tg-svg(
+        svg-icon="icon-drag"
+    )
     .vote(
         ng-if="vm.column.votes"
         ng-class="{'is-voter': vm.epic.get('is_voter')}"
@@ -31,14 +33,18 @@
         ng-if="vm.column.assigned && !vm.epic.getIn(['assigned_to_extra_info', 'photo'])"
     ) Unassigned
     .status(
-        ng-if="vm.column.status"
+        ng-if="vm.column.status && !vm.permissions.canEdit"
+    )
+        span {{vm.epic.getIn(['status_extra_info', 'name'])}}
+    .status(
+        ng-if="vm.column.status && vm.permissions.canEdit"
         ng-mouseleave="displayStatusList = false"
     )
         button(
             ng-click="displayStatusList = true"
             ng-style="{'color': vm.epic.getIn(['status_extra_info', 'color'])}"
         )
-            span {{::vm.epic.getIn(['status_extra_info', 'name'])}}
+            span {{vm.epic.getIn(['status_extra_info', 'name'])}}
             tg-svg(
                 svg-icon="icon-arrow-down"
             )
@@ -46,7 +52,7 @@
         ul.epic-statuses(ng-show="displayStatusList")
             li(
                 ng-repeat="status in vm.project.epic_statuses | orderBy:'order'"
-                ng-click="vm.updateEpicStatus(status.name)"
+                ng-click="vm.updateEpicStatus(status.id)"
             ) {{status.name}}
     .progress(ng-if="vm.column.progress")
         .progress-bar

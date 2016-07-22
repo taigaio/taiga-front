@@ -36,15 +36,21 @@ class EpicsTableController
             status: true,
             progress: true
         }
-        @._loadEpics()
+        @.loadEpics()
+        @._checkPermissions()
 
     toggleEpicTableOptions: () ->
         @.displayOptions = !@.displayOptions
 
-    _loadEpics: () ->
+    _checkPermissions: () ->
+        @.permissions = {
+            canEdit: _.includes(@.project.my_permissions, 'modify_epic')
+        }
+
+    loadEpics: () ->
         projectId = @.project.id
-        params = {}
-        promise = @rs.epics.listAll(projectId, params).then (epics) =>
+        promise = @rs.epics.list(projectId).then (epics) =>
             @.epics = epics
+            console.log @.epics
 
 module.controller("EpicsTableCtrl", EpicsTableController)
