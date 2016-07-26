@@ -394,7 +394,8 @@
     "EPICS": {
         "TITLE": "EPICS",
         "DASHBOARD": {
-            "ADD": "+ ADD EPIC"
+            "ADD": "+ ADD EPIC",
+            "UNASSIGNED": "Unassigned"
         },
         "TABLE": {
             "VOTES": "Votes",

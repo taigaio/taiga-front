@@ -23,15 +23,23 @@
         translate="EPICS.TABLE.SPRINT"
     )
     .assigned(
-        ng-if="vm.column.assigned && vm.epic.getIn(['assigned_to_extra_info', 'photo'])"
+        ng-if="vm.column.assigned && vm.epic.get('assigned_to')"
     ) 
         img(
+            ng-if="vm.epic.getIn(['assigned_to_extra_info', 'photo'])"
             ng-src="{{vm.epic.getIn(['assigned_to_extra_info', 'photo'])}}"
-            alt="::vm.epic.getIn(['assigned_to_extra_info', 'name'])"
+            alt="{{::vm.epic.getIn(['assigned_to_extra_info', 'full_name_display'])}}"
+        )    
+        img(
+            ng-if="!vm.epic.getIn(['assigned_to_extra_info', 'photo'])"
+            ng-src="https://www.gravatar.com/avatar/{{vm.epic.getIn(['assigned_to_extra_info', 'gravatar_id'])}}"
+            alt="{{::vm.epic.getIn(['assigned_to_extra_info', 'full_name_display'])}}"
         )    
     .assigned(
-        ng-if="vm.column.assigned && !vm.epic.getIn(['assigned_to_extra_info', 'photo'])"
-    ) Unassigned
+        ng-if="vm.column.assigned && !vm.epic.get('assigned_to')"
+        ng-class="{'is-unassigned': !vm.epic.get('assigned_to')}"
+        translate="EPICS.DASHBOARD.UNASSIGNED"
+    )
     .status(
         ng-if="vm.column.status && !vm.permissions.canEdit"
     )

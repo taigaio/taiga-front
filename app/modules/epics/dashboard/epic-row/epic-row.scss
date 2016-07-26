@@ -56,11 +56,19 @@
     .vote {
         color: $gray;
     }
+    .assigned {
+        img {
+            width: 40px;
+        }
+    }
     .icon-upvote {
         @include svg-size(.75rem);
         fill: $gray;
         margin-right: .25rem;
         vertical-align: middle;
+    }
+    .is-unassigned {
+        color: $gray-light;
     }
     .epic-statuses {
         @include font-type(light);
