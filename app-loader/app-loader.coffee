@@ -33,7 +33,7 @@ loadStylesheet = (path) ->
 
 loadPlugin = (pluginPath) ->
     return new Promise (resolve, reject) ->
-        $.getJSON(pluginPath).then (plugin) ->
+        success = (plugin) ->
             window.taigaContribPlugins.push(plugin)
 
             if plugin.css
@@ -44,6 +44,11 @@ loadPlugin = (pluginPath) ->
                 ljs.load(plugin.js, resolve)
             else
                 resolve()
+
+        fail = () ->
+            console.error("error loading", pluginPath);
+
+        $.getJSON(pluginPath).then(success, fail)
 
 loadPlugins = (plugins) ->
     promises = []
