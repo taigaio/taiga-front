@@ -51,6 +51,8 @@ class EpicsTableController
         projectId = @.project.id
         promise = @rs.epics.list(projectId).then (epics) =>
             @.epics = epics
-            console.log @.epics
+
+    reorderEpics: (epic, index) ->
+        console.log epic, index
 
 module.controller("EpicsTableCtrl", EpicsTableController)
