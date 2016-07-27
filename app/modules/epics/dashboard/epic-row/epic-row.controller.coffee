@@ -57,13 +57,12 @@ class EpicRowController
 
             onSuccess = (data) =>
                 @.epicStories = data
-                console.log @.epicStories.toJS()
                 @.displayUserStories = true
 
             onError = (data) =>
                 @confirm.notify('error')
 
-            return @rs.userstories.listInEpics(id).then(onSuccess, onError)
+            return @rs.userstories.listInEpic(id).then(onSuccess, onError)
         else
             @.displayUserStories = false
 

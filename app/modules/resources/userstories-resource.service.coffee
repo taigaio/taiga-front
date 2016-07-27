@@ -33,11 +33,12 @@ Resource = (urlsService, http) ->
             .then (result) ->
                 return Immutable.fromJS(result.data)
 
-    service.listInEpics = (ids) ->
+    service.listInEpic = (epicIid) ->
         url = urlsService.resolve("userstories")
 
         params = {
-            'epics': ids,
+            'epic': epicIid,
+            'order_by': 'epic_order',
             'include_tasks': true
         }
 
