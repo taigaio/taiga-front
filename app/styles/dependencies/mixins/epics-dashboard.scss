@@ -1,8 +1,8 @@
 @mixin epics-table {
+    .project,
     .assigned {
         padding: .5rem;
     }
-    .project,
     .vote,
     .status,
     .sprint,

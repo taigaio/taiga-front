@@ -43,8 +43,11 @@
     .assigned(
         ng-if="vm.column.assigned && !vm.story.get('assigned_to')"
         ng-class="{'is-unassigned': !vm.story.get('assigned_to')}"
-        translate="EPICS.DASHBOARD.UNASSIGNED"
     )
+        img(
+            src="/#{v}/images/unnamed.png"
+            alt="{{EPICS.DASHBOARD.UNASSIGNED | translate}}"
+        )
     .status(ng-if="vm.column.status") {{vm.story.getIn(['status_extra_info', 'name'])}}
     .progress(ng-if="vm.column.progress")
         .progress-bar

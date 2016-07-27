@@ -47,8 +47,11 @@
     .assigned(
         ng-if="vm.column.assigned && !vm.epic.get('assigned_to')"
         ng-class="{'is-unassigned': !vm.epic.get('assigned_to')}"
-        translate="EPICS.DASHBOARD.UNASSIGNED"
     )
+        img(
+            src="/#{v}/images/unnamed.png"
+            alt="{{EPICS.DASHBOARD.UNASSIGNED | translate}}"
+        )
     .status(
         ng-if="vm.column.status && !vm.permissions.canEdit"
     )
