@@ -59,7 +59,6 @@ class EpicRowController
                 @.epicStories = data
                 console.log @.epicStories.toJS()
                 @.displayUserStories = true
-                @confirm.notify('success')
 
             onError = (data) =>
                 @confirm.notify('error')

@@ -27,6 +27,7 @@ EpicsTableDirective = () ->
         controllerAs: "vm",
         bindToController: true,
         scope: {
+            epics: "="
             project: "="
         }
     }

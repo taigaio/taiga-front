@@ -398,6 +398,11 @@
             "ADD": "+ ADD EPIC",
             "UNASSIGNED": "Unassigned"
         },
+        "EMPTY": {
+            "TITLE": "It looks like you have not created any epics yet",
+            "EXPLANATION": "Create an epic to have a superior level of User Stories. Epics can contain or be composed by User Stories from this or any other project",
+            "HELP": "Learn more about epics"
+        },
         "TABLE": {
             "VOTES": "Votes",
             "NAME": "Name",

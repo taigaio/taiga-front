@@ -20,11 +20,9 @@
 module = angular.module("taigaEpics")
 
 class EpicsTableController
-    @.$inject = [
-        "tgResources"
-    ]
+    @.$inject = []
 
-    constructor: (@rs) ->
+    constructor: () ->
         @.displayOptions = false
         @.displayVotes = true
         @.column = {
@@ -36,7 +34,6 @@ class EpicsTableController
             status: true,
             progress: true
         }
-        @.loadEpics()
         @._checkPermissions()
 
     toggleEpicTableOptions: () ->
@@ -46,11 +43,6 @@ class EpicsTableController
         @.permissions = {
             canEdit: _.includes(@.project.my_permissions, 'modify_epic')
         }
-
-    loadEpics: () ->
-        projectId = @.project.id
-        promise = @rs.epics.list(projectId).then (epics) =>
-            @.epics = epics
 
     reorderEpics: (epic, index) ->
         console.log epic, index

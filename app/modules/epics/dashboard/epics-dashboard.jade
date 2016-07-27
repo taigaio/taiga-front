@@ -9,7 +9,7 @@ doctype html
                 project-name="vm.project.name"
                 i18n-section-name="{{ vm.sectionName }}"
             )
-            .action-buttons
+            .action-buttons(ng-if="vm.epics.size")
                 button.button-green(
                     translate="EPICS.DASHBOARD.ADD"
                     title="{{ EPICS.DASHBOARD.ADD_TITLE | translate }}",
@@ -17,6 +17,26 @@ doctype html
                 )
                 
         tg-epics-table(
-            ng-if="vm.project"
+            ng-if="vm.project && vm.epics.size"
             project="vm.project"
+            epics="vm.epics"
         )
+        
+        section.empty-epics(ng-if="!vm.epics.size")
+            img(
+                src="/#{v}/images/epics-empty.png"
+                ng-title="EPICS.EMPTY.HELP | translate"
+            )
+            h1.title(translate="EPICS.EMPTY.TITLE")
+            p(translate="EPICS.EMPTY.EXPLANATION")
+            a(
+                translate="EPICS.EMPTY.HELP"
+                href="https://tree.taiga.io/support/frequently-asked-questions/who-is-taiga-for/"
+                target="_blank"
+                ng-title="EPICS.EMPTY.HELP | translate"
+            )
+            button.create-epic.button-green(
+                translate="EPICS.DASHBOARD.ADD"
+                title="{{ EPICS.DASHBOARD.ADD_TITLE | translate }}",
+                ng-click="vm.addNewEpic()"
+            )

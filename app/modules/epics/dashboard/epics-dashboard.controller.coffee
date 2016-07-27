@@ -22,11 +22,12 @@ module = angular.module("taigaEpics")
 class EpicsDashboardController
     @.$inject = [
         "$tgResources",
+        "tgResources",
         "$routeParams",
         "tgErrorHandlingService"
     ]
 
-    constructor: (@rs, @params, @errorHandlingService) ->
+    constructor: (@rs, @resources, @params, @errorHandlingService) ->
         @.sectionName = "Epics"
         @._loadProject()
 
@@ -35,6 +36,12 @@ class EpicsDashboardController
             if not project.is_epics_activated
                 @errorHandlingService.permissionDenied()
             @.project = project
+            @._loadEpics()
+
+    _loadEpics: () ->
+        projectId = @.project.id
+        return @resources.epics.list(projectId).then (epics) =>
+            @.epics = epics
 
     addNewEpic: () ->
         console.log 'Add new Epic'
