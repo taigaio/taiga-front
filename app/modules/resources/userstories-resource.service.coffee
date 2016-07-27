@@ -33,6 +33,18 @@ Resource = (urlsService, http) ->
             .then (result) ->
                 return Immutable.fromJS(result.data)
 
+    service.listInEpics = (ids) ->
+        url = urlsService.resolve("userstories")
+
+        params = {
+            'epics': ids,
+            'include_tasks': true
+        }
+
+        return http.get(url, params)
+            .then (result) ->
+                return Immutable.fromJS(result.data)
+
     return () ->
         return {"userstories": service}
 

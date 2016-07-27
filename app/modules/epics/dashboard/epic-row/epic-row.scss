@@ -1,9 +1,12 @@
+@import '../../../../styles/dependencies/mixins/epics-dashboard';
+
 .epic-row {
+    @include epics-table;
     @include font-size(small);
     align-items: center;
     background: $white;
     border-bottom: 1px solid $whitish;
-    cursor: move;
+    cursor: pointer;
     display: flex;
     transition: background .2s;
     &:hover {
@@ -21,6 +24,19 @@
             text-decoration: line-through;
         }
     }
+    &.unfold {
+        .name {
+            .icon {
+                transform: rotate(0deg);
+            }
+        }
+    }
+    .name {
+        .icon {
+            transform: rotate(180deg);
+            transition: all .2s;
+        }
+    }
     .icon-drag {
         @include svg-size(.75rem);
         cursor: move;
@@ -28,17 +44,26 @@
         opacity: 0;
         transition: opacity .1s;
     }
+    .epic-pill {
+        @include font-type(light);
+        @include font-size(xsmall);
+        background: $grayer;
+        border-radius: .25rem;
+        color: $white;
+        margin: 0 .5rem;
+        padding: .1rem .25rem;
+    }
     .status {
         cursor: pointer;
         position: relative;
         button {
             background: none;
         }
-        .icon {
-            @include svg-size(.7rem);
-            fill: $gray-light;
-            margin-left: .1rem;
-        }
+    }
+    .icon-arrow-down {
+        @include svg-size(.7rem);
+        fill: $gray-light;
+        margin-left: .1rem;
     }
     .progress-bar,
     .progress-status {

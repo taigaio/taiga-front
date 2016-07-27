@@ -1,0 +1,54 @@
+.story-row(
+    ng-class="{'is-blocked': vm.story.is_blocked, 'is-closed': vm.story.is_closed}"
+)
+    tg-svg.icon-drag(
+        svg-icon="icon-drag"
+    )
+    .vote(
+        ng-if="vm.column.votes"
+        ng-class="{'is-voter': vm.story.get('is_voter')}"
+    ) 
+        tg-svg(svg-icon='icon-upvote')
+        span {{::vm.story.get('total_voters')}}
+        
+    .name(ng-if="vm.column.name")
+        - var hash = "#";
+        a(
+            tg-nav="project-userstories-detail:project=vm.project.slug,ref=vm.story.get('ref')"
+            ng-attr-title="{{::vm.story.get('subject')}}"
+        ) #{hash}{{::vm.story.get('ref')}} {{::vm.story.get('subject')}}
+        .story-pill(ng-style="::{'background-color': vm.epic.get('color')}")
+    .project(
+        ng-if="vm.column.project"
+        tg-nav="project:project=vm.story.getIn(['project_extra_info', 'slug'])"
+    )
+        img(
+            tg-project-logo-small-src="::vm.story.get('project_extra_info')"
+            alt="{{::vm.story.getIn(['project_extra_info', 'name'])}}"
+        )
+    .sprint(ng-if="vm.column.sprint") {{::vm.story.get('milestone_name')}}
+    .assigned(
+        ng-if="vm.column.assigned && vm.story.get('assigned_to')"
+    )
+        img(
+            ng-if="vm.story.getIn(['assigned_to_extra_info', 'photo'])"
+            ng-src="{{vm.story.getIn(['assigned_to_extra_info', 'photo'])}}"
+            alt="{{::vm.story.getIn(['assigned_to_extra_info', 'full_name_display'])}}"
+        )
+        img(
+            ng-if="!vm.story.getIn(['assigned_to_extra_info', 'photo'])"
+            ng-src="https://www.gravatar.com/avatar/{{vm.story.getIn(['assigned_to_extra_info', 'gravatar_id'])}}"
+            alt="{{::vm.story.getIn(['assigned_to_extra_info', 'full_name_display'])}}"
+        )
+    .assigned(
+        ng-if="vm.column.assigned && !vm.story.get('assigned_to')"
+        ng-class="{'is-unassigned': !vm.story.get('assigned_to')}"
+        translate="EPICS.DASHBOARD.UNASSIGNED"
+    )
+    .status(ng-if="vm.column.status") {{vm.story.getIn(['status_extra_info', 'name'])}}
+    .progress(ng-if="vm.column.progress")
+        .progress-bar
+        .progress-status(
+            ng-if="::vm.percentage"
+            ng-attr-width="::vm.percentage"
+        )

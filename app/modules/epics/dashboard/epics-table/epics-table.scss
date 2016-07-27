@@ -1,58 +1,11 @@
+@import '../../../../styles/dependencies/mixins/epics-dashboard';
+
 .epics-table {
     margin-top: 2rem;
 }
 
-.epics-table-header,
-.epic-row {
-    .assigned {
-        padding: .5rem;
-    }
-    .project,
-    .vote,
-    .status,
-    .sprint,
-    .name,
-    .progress {
-        padding: 1rem .5rem;
-    }
-
-    .assigned,
-    .project,
-    .vote {
-        flex-basis: 100px;
-        flex-grow: 0;
-        flex-shrink: 0;
-        flex-wrap: wrap;
-        text-align: center;
-    }
-    .status,
-    .sprint {
-        flex-basis: 150px;
-        flex-grow: 0;
-        flex-shrink: 0;
-        flex-wrap: wrap;
-        max-width: 150px;
-    }
-    .name,
-    .progress {
-        flex-basis: 20vw;
-        flex-grow: 1;
-        flex-shrink: 2;
-        max-width: 40vw;
-    }
-    .name,
-    .sprint {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        width: 90%;
-    }
-    .progress {
-        position: relative;
-    }
-}
-
 .epics-table-header {
+    @include epics-table;
     @include font-type(bold);
     border-bottom: 1px solid $gray-light;
     display: flex;

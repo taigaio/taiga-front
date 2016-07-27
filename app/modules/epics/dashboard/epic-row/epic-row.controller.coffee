@@ -26,6 +26,7 @@ class EpicRowController
     ]
 
     constructor: (@rs, @confirm) ->
+        @.displayUserStories = false
         @._calculateProgressBar()
 
     _calculateProgressBar: () ->
@@ -49,5 +50,22 @@ class EpicRowController
             @confirm.notify('error')
 
         return @rs.epics.patch(id, patch).then(onSuccess, onError)
+
+    requestUserStories: (epic) ->
+        if @.displayUserStories == false
+            id = @.epic.get('id')
+
+            onSuccess = (data) =>
+                @.epicStories = data
+                console.log @.epicStories.toJS()
+                @.displayUserStories = true
+                @confirm.notify('success')
+
+            onError = (data) =>
+                @confirm.notify('error')
+
+            return @rs.userstories.listInEpics(id).then(onSuccess, onError)
+        else
+            @.displayUserStories = false
 
 module.controller("EpicRowCtrl", EpicRowController)

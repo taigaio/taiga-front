@@ -393,6 +393,7 @@
     },
     "EPICS": {
         "TITLE": "EPICS",
+        "EPIC": "EPIC",
         "DASHBOARD": {
             "ADD": "+ ADD EPIC",
             "UNASSIGNED": "Unassigned"

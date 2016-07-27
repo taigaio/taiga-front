@@ -1,40 +1,49 @@
 .epic-row(
-    ng-class="{'is-blocked':  vm.epic.get('is_blocked'), 'is-closed': vm.epic.get('is_closed')}"
+    ng-class="{'is-blocked':  vm.epic.get('is_blocked'), 'is-closed': vm.epic.get('is_closed'), 'unfold': vm.displayUserStories}"
+    ng-click="vm.requestUserStories(vm.epic)"
 )
-    tg-svg(
+    tg-svg.icon-drag(
         svg-icon="icon-drag"
     )
     .vote(
         ng-if="vm.column.votes"
         ng-class="{'is-voter': vm.epic.get('is_voter')}"
-    ) 
+    )
         tg-svg(svg-icon='icon-upvote')
         span {{::vm.epic.get('total_voters')}}
-        
-    .name(ng-if="vm.column.name") 
+
+    .name(ng-if="vm.column.name")
+        - var hash = "#";
         a(
             tg-nav="project-epic-detail:project=vm.project.get('slug')"
             ng-attr-title="{{::vm.epic.get('subject')}}"
-        ) {{::vm.epic.get('subject')}}
-    
-    .project(ng-if="vm.column.project") {{::vm.epic.get('project')}}
+        ) #{hash}{{::vm.epic.get('ref')}} {{::vm.epic.get('subject')}}
+        span.epic-pill(
+            ng-style="::{'background-color': vm.epic.get('color')}"
+            translate="EPICS.EPIC"
+        )
+        tg-svg(
+            svg-icon="icon-arrow-down"
+            ng-if="vm.epic.getIn(['user_stories_counts', 'opened']) || vm.epic.getIn(['user_stories_counts', 'closed'])"
+        )
+
+    .project(ng-if="vm.column.project")
     .sprint(
         ng-if="vm.column.sprint"
-        translate="EPICS.TABLE.SPRINT"
     )
     .assigned(
         ng-if="vm.column.assigned && vm.epic.get('assigned_to')"
-    ) 
+    )
         img(
             ng-if="vm.epic.getIn(['assigned_to_extra_info', 'photo'])"
             ng-src="{{vm.epic.getIn(['assigned_to_extra_info', 'photo'])}}"
             alt="{{::vm.epic.getIn(['assigned_to_extra_info', 'full_name_display'])}}"
-        )    
+        )
         img(
             ng-if="!vm.epic.getIn(['assigned_to_extra_info', 'photo'])"
             ng-src="https://www.gravatar.com/avatar/{{vm.epic.getIn(['assigned_to_extra_info', 'gravatar_id'])}}"
             alt="{{::vm.epic.getIn(['assigned_to_extra_info', 'full_name_display'])}}"
-        )    
+        )
     .assigned(
         ng-if="vm.column.assigned && !vm.epic.get('assigned_to')"
         ng-class="{'is-unassigned': !vm.epic.get('assigned_to')}"
@@ -56,7 +65,7 @@
             tg-svg(
                 svg-icon="icon-arrow-down"
             )
-            
+
         ul.epic-statuses(ng-show="displayStatusList")
             li(
                 ng-repeat="status in vm.project.epic_statuses | orderBy:'order'"
@@ -67,4 +76,13 @@
         .progress-status(
             ng-if="::vm.percentage"
             ng-attr-width="::vm.percentage"
+        )
+.epic-stories-wrapper(ng-if="vm.displayUserStories && vm.epicStories")
+
+    .epic-story(tg-repeat="story in vm.epicStories track by story.get('id')")
+        tg-story-row(
+            epic="vm.epic"
+            story="story"
+            project="vm.project"
+            column="vm.column"
         )
