@@ -2,8 +2,10 @@ div.wrapper
     div.invitation-main
         div.centered.invitation-container(tg-invitation)
             a.avatar(href="", tg-bo-title="invitation.invited_by.full_name_display")
-                img(tg-bo-src="invitation.invited_by.photo",
-                           tg-bo-alt="invitation.invited_by.full_name_display")
+                img(
+                    tg-avatar="invitation.invited_by"
+                    tg-bo-alt="invitation.invited_by.full_name_display"
+                )
                 span.person-name(tg-bo-bind="invitation.invited_by.full_name_display")
 
             span.invitation-text

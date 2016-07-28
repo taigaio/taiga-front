@@ -524,11 +524,11 @@ module.directive("tgKanbanWipLimit", KanbanWipLimitDirective)
 ## Kanban User Directive
 #############################################################################
 
-KanbanUserDirective = ($log, $compile, $translate) ->
+KanbanUserDirective = ($log, $compile, $translate, avatarService) ->
     template = _.template("""
     <figure class="avatar">
         <a href="#" title="{{'US.ASSIGN' | translate}}" <% if (!clickable) {%>class="not-clickable"<% } %>>
-            <img src="<%- imgurl %>" alt="<%- name %>" class="avatar">
+            <img style="background-color: <%- bg %>" src="<%- imgurl %>" alt="<%- name %>" class="avatar">
         </a>
     </figure>
     """)
@@ -551,16 +551,20 @@ KanbanUserDirective = ($log, $compile, $translate) ->
                 render(user)
 
         render = (user) ->
+            avatar = avatarService.getAvatar(user)
+
             if user is undefined
                 ctx = {
                     name: $translate.instant("COMMON.ASSIGNED_TO.NOT_ASSIGNED"),
-                    imgurl: "/#{window._version}/images/unnamed.png",
-                    clickable: clickable
+                    imgurl: avatar.url,
+                    clickable: clickable,
+                    bg: null
                 }
             else
                 ctx = {
                     name: user.full_name_display,
-                    imgurl: user.photo,
+                    imgurl: avatar.url,
+                    bg: avatar.bg,
                     clickable: clickable
                 }
 
@@ -593,4 +597,4 @@ KanbanUserDirective = ($log, $compile, $translate) ->
 
     return {link: link, require:"ngModel"}
 
-module.directive("tgKanbanUserAvatar", ["$log", "$compile", "$translate", KanbanUserDirective])
+module.directive("tgKanbanUserAvatar", ["$log", "$compile", "$translate", "tgAvatarService", KanbanUserDirective])

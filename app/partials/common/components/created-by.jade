@@ -12,6 +12,7 @@
         title="{{owner.full_name_display}}"
     )
         img(
-            src="{{owner.photo}}"
+            ng-style="{'background': owner.bg}"
+            ng-src="{{owner.avatar}}"
             alt="{{owner.full_name_display}}"
         )

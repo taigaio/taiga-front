@@ -265,9 +265,9 @@ RelatedTasksDirective = ($repo, $rs, $rootscope) ->
 module.directive("tgRelatedTasks", ["$tgRepo", "$tgResources", "$rootScope", RelatedTasksDirective])
 
 
-RelatedTaskAssignedToInlineEditionDirective = ($repo, $rootscope, $translate) ->
+RelatedTaskAssignedToInlineEditionDirective = ($repo, $rootscope, $translate, avatarService) ->
     template = _.template("""
-    <img src="<%- imgurl %>" alt="<%- name %>"/>
+    <img style="background-color: <%- bg %>" src="<%- imgurl %>" alt="<%- name %>"/>
     <figcaption><%- name %></figcaption>
     """)
 
@@ -275,11 +275,15 @@ RelatedTaskAssignedToInlineEditionDirective = ($repo, $rootscope, $translate) ->
         updateRelatedTask = (task) ->
             ctx = {
                 name: $translate.instant("COMMON.ASSIGNED_TO.NOT_ASSIGNED"),
-                imgurl: "/" + window._version + "/images/unnamed.png"
             }
+
             member = $scope.usersById[task.assigned_to]
+
+            avatar = avatarService.getAvatar(member)
+            ctx.imgurl = avatar.url
+            ctx.bg = avatar.bg
+
             if member
-                ctx.imgurl = member.photo
                 ctx.name = member.full_name_display
 
             $el.find(".avatar").html(template(ctx))
@@ -318,5 +322,5 @@ RelatedTaskAssignedToInlineEditionDirective = ($repo, $rootscope, $translate) ->
 
     return {link: link}
 
-module.directive("tgRelatedTaskAssignedToInlineEdition", ["$tgRepo", "$rootScope", "$translate",
+module.directive("tgRelatedTaskAssignedToInlineEdition", ["$tgRepo", "$rootScope", "$translate", "tgAvatarService",
                                                           RelatedTaskAssignedToInlineEditionDirective])

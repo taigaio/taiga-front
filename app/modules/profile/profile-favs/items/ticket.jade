@@ -3,11 +3,11 @@
         href=""
         ng-if="::vm.item.get('assigned_to')"
         tg-nav="user-profile:username=vm.item.get('assigned_to_username')"
-        title="{{ ::vm.item.get('assigned_to_full_name') }}"
+        title="{{ ::vm.item.getIn(['assigned_to_extra_info', 'full_name_display']) }}"
     )
         img(
-            ng-src="{{ ::vm.item.get('assigned_to_photo') }}",
-            alt="{{ ::vm.item.get('assigned_to_full_name') }}"
+            tg-avatar="{{ ::vm.item.get('assigned_to_extra_info') }}",
+            alt="{{ ::vm.item.getIn(['assigned_to_extra_info', 'full_name_display']) }}"
         )
 
     a.list-itemtype-avatar(

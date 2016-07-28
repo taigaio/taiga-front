@@ -174,7 +174,7 @@ module.controller("WikiDetailController", WikiDetailController)
 ## Wiki Summary Directive
 #############################################################################
 
-WikiSummaryDirective = ($log, $template, $compile, $translate) ->
+WikiSummaryDirective = ($log, $template, $compile, $translate, avatarService) ->
     template = $template.get("wiki/wiki-summary.html", true)
 
     link = ($scope, $el, $attrs, $model) ->
@@ -184,10 +184,12 @@ WikiSummaryDirective = ($log, $template, $compile, $translate) ->
             else
                 user = $scope.usersById[wiki.last_modifier]
 
+            avatar = avatarService.getAvatar(user)
+
             if user is undefined
-                user = {name: "unknown", imgUrl: "/" + window._version + "/images/user-noimage.png"}
+                user = {name: "unknown", avatar: avatar}
             else
-                user = {name: user.full_name_display, imgUrl: user.photo}
+                user = {name: user.full_name_display, avatar: avatar}
 
             ctx = {
                 totalEditions: wiki.editions
@@ -211,7 +213,7 @@ WikiSummaryDirective = ($log, $template, $compile, $translate) ->
         require: "ngModel"
     }
 
-module.directive("tgWikiSummary", ["$log", "$tgTemplate", "$compile", "$translate",  WikiSummaryDirective])
+module.directive("tgWikiSummary", ["$log", "$tgTemplate", "$compile", "$translate",  "tgAvatarService", WikiSummaryDirective])
 
 
 #############################################################################

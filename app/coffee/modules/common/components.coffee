@@ -126,7 +126,7 @@ module.directive("tgSprintProgressbar", SprintProgressBarDirective)
 ## Created-by display directive
 #############################################################################
 
-CreatedByDisplayDirective = ($template, $compile, $translate, $navUrls)->
+CreatedByDisplayDirective = ($template, $compile, $translate, $navUrls, avatarService)->
     # Display the owner information (full name and photo) and the date of
     # creation of an object (like USs, tasks and issues).
     #
@@ -141,10 +141,14 @@ CreatedByDisplayDirective = ($template, $compile, $translate, $navUrls)->
     link = ($scope, $el, $attrs) ->
         bindOnce $scope, $attrs.ngModel, (model) ->
             if model?
+
+                avatar = avatarService.getAvatar(model.owner_extra_info)
                 $scope.owner = model.owner_extra_info or {
                     full_name_display: $translate.instant("COMMON.EXTERNAL_USER")
-                    photo: "/" + window._version + "/images/user-noimage.png"
                 }
+
+                $scope.owner.avatar = avatar.url
+                $scope.owner.bg = avatar.bg
 
                 $scope.url = if $scope.owner?.is_active then $navUrls.resolve("user-profile", {username: $scope.owner.username}) else ""
 
@@ -162,11 +166,11 @@ CreatedByDisplayDirective = ($template, $compile, $translate, $navUrls)->
         templateUrl: "common/components/created-by.html"
     }
 
-module.directive("tgCreatedByDisplay", ["$tgTemplate", "$compile", "$translate", "$tgNavUrls",
+module.directive("tgCreatedByDisplay", ["$tgTemplate", "$compile", "$translate", "$tgNavUrls", "tgAvatarService",
                                         CreatedByDisplayDirective])
 
 
-UserDisplayDirective = ($template, $compile, $translate, $navUrls)->
+UserDisplayDirective = ($template, $compile, $translate, $navUrls, avatarService)->
     # Display the user information (full name and photo).
     #
     # Example:
@@ -177,11 +181,14 @@ UserDisplayDirective = ($template, $compile, $translate, $navUrls)->
 
     link = ($scope, $el, $attrs) ->
         id = $attrs.tgUserId
-        console.log($scope.usersById[id])
         $scope.user = $scope.usersById[id] or {
             full_name_display: $translate.instant("COMMON.EXTERNAL_USER")
-            photo: "/" + window._version + "/images/user-noimage.png"
         }
+
+        avatar = avatarService.getAvatar($scope.usersById[id] or null)
+
+        $scope.user.avatar = avatar.url
+        $scope.user.bg = avatar.bg
 
         $scope.url = if $scope.user.is_active then $navUrls.resolve("user-profile", {username: $scope.user.username}) else ""
 
@@ -195,7 +202,7 @@ UserDisplayDirective = ($template, $compile, $translate, $navUrls)->
         templateUrl: "common/components/user-display.html"
     }
 
-module.directive("tgUserDisplay", ["$tgTemplate", "$compile", "$translate", "$tgNavUrls",
+module.directive("tgUserDisplay", ["$tgTemplate", "$compile", "$translate", "$tgNavUrls", "tgAvatarService",
                                    UserDisplayDirective])
 
 #############################################################################
@@ -205,7 +212,6 @@ module.directive("tgUserDisplay", ["$tgTemplate", "$compile", "$translate", "$tg
 WatchersDirective = ($rootscope, $confirm, $repo, $modelTransform, $template, $compile, $translate) ->
     # You have to include a div with the tg-lb-watchers directive in the page
     # where use this directive
-    template = $template.get("common/components/watchers.html", true)
 
     link = ($scope, $el, $attrs, $model) ->
         isEditable = ->
@@ -242,13 +248,8 @@ WatchersDirective = ($rootscope, $confirm, $repo, $modelTransform, $template, $c
                 $confirm.notify("error")
 
         renderWatchers = (watchers) ->
-            ctx = {
-                watchers: watchers
-                isEditable: isEditable()
-            }
-
-            html = $compile(template(ctx))($scope)
-            $el.html(html)
+            $scope.watchers = watchers
+            $scope.isEditable = isEditable()
 
         $el.on "click", ".js-delete-watcher", (event) ->
             event.preventDefault()
@@ -282,7 +283,12 @@ WatchersDirective = ($rootscope, $confirm, $repo, $modelTransform, $template, $c
         $scope.$on "$destroy", ->
             $el.off()
 
-    return {link:link, require:"ngModel"}
+    return {
+        scope: true,
+        templateUrl: "common/components/watchers.html",
+        link:link,
+        require:"ngModel"
+    }
 
 module.directive("tgWatchers", ["$rootScope", "$tgConfirm", "$tgRepo", "$tgQueueModelTransformation", "$tgTemplate", "$compile",
                                 "$translate", WatchersDirective])
@@ -292,7 +298,7 @@ module.directive("tgWatchers", ["$rootScope", "$tgConfirm", "$tgRepo", "$tgQueue
 ## Assigned to directive
 #############################################################################
 
-AssignedToDirective = ($rootscope, $confirm, $repo, $loading, $modelTransform, $template, $translate, $compile, $currentUserService) ->
+AssignedToDirective = ($rootscope, $confirm, $repo, $loading, $modelTransform, $template, $translate, $compile, $currentUserService, avatarService) ->
     # You have to include a div with the tg-lb-assignedto directive in the page
     # where use this directive
     template = $template.get("common/components/assigned-to.html", true)
@@ -326,20 +332,23 @@ AssignedToDirective = ($rootscope, $confirm, $repo, $loading, $modelTransform, $
             return transform
 
         renderAssignedTo = (assignedObject) ->
+            avatar = avatarService.getAvatar(assignedObject?.assigned_to_extra_info)
+            bg = null
+
             if assignedObject?.assigned_to?
                 fullName = assignedObject.assigned_to_extra_info.full_name_display
-                photo = assignedObject.assigned_to_extra_info.photo
                 isUnassigned = false
+                bg = avatar.bg
             else
                 fullName = $translate.instant("COMMON.ASSIGNED_TO.ASSIGN")
-                photo = "/#{window._version}/images/unnamed.png"
                 isUnassigned = true
 
             isIocaine = assignedObject?.is_iocaine
 
             ctx = {
                 fullName: fullName
-                photo: photo
+                avatar: avatar.url
+                bg: bg
                 isUnassigned: isUnassigned
                 isEditable: isEditable()
                 isIocaine: isIocaine
@@ -386,7 +395,7 @@ AssignedToDirective = ($rootscope, $confirm, $repo, $loading, $modelTransform, $
         require:"ngModel"
     }
 
-module.directive("tgAssignedTo", ["$rootScope", "$tgConfirm", "$tgRepo", "$tgLoading", "$tgQueueModelTransformation", "$tgTemplate", "$translate", "$compile","tgCurrentUserService",
+module.directive("tgAssignedTo", ["$rootScope", "$tgConfirm", "$tgRepo", "$tgLoading", "$tgQueueModelTransformation", "$tgTemplate", "$translate", "$compile","tgCurrentUserService", "tgAvatarService",
                                   AssignedToDirective])
 
 
@@ -776,7 +785,7 @@ ListItemTaskStatusDirective = ->
 module.directive("tgListitemTaskStatus", ListItemTaskStatusDirective)
 
 
-ListItemAssignedtoDirective = ($template, $translate) ->
+ListItemAssignedtoDirective = ($template, $translate, avatarService) ->
     template = $template.get("common/components/list-item-assigned-to-avatar.html", true)
 
     link = ($scope, $el, $attrs) ->
@@ -784,19 +793,22 @@ ListItemAssignedtoDirective = ($template, $translate) ->
             item = $scope.$eval($attrs.tgListitemAssignedto)
             ctx = {
                 name: $translate.instant("COMMON.ASSIGNED_TO.NOT_ASSIGNED"),
-                imgurl: "/#{window._version}/images/unnamed.png"
             }
 
             member = usersById[item.assigned_to]
+            avatar = avatarService.getAvatar(member)
+
+            ctx.imgurl = avatar.url
+            ctx.bg = avatar.bg
+
             if member
-                ctx.imgurl = member.photo
                 ctx.name = member.full_name_display
 
             $el.html(template(ctx))
 
     return {link:link}
 
-module.directive("tgListitemAssignedto", ["$tgTemplate", "$translate", ListItemAssignedtoDirective])
+module.directive("tgListitemAssignedto", ["$tgTemplate", "$translate", "tgAvatarService", ListItemAssignedtoDirective])
 
 
 ListItemIssueStatusDirective = ->

@@ -4,7 +4,8 @@
         title="{{user.full_name_display}}"
     )
         img(
-            src="{{user.photo}}"
+            ng-style="{'background-color': user.bg}"
+            ng-src="{{user.avatar}}"
             alt="{{user.full_name_display}}"
         )
 a.user-full-name(
@@ -15,7 +16,8 @@ a.user-full-name(
 
 .user-avatar(ng-if="!url")
     img(
-        src="{{user.photo}}"
+        ng-style="{'background-color': user.bg}"
+        ng-src="{{user.avatar}}"
         alt="{{user.full_name_display}}"
     )
 span.user-full-name(ng-if="!url") {{user.full_name_display}}
