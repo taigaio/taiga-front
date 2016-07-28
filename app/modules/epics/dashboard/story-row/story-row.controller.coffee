@@ -32,4 +32,7 @@ class StoryRowController
         totalTasksCompleted = _.pull(areTasksCompleted, false).length
         @.percentage = totalTasksCompleted * 100 / totalTasks
 
+    onSelectAssignedTo: () ->
+        console.log 'ng-click="vm.onSelectAssignedTo()"'
+
 module.controller("StoryRowCtrl", StoryRowController)

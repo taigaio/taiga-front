@@ -66,4 +66,7 @@ class EpicRowController
         else
             @.displayUserStories = false
 
+    onSelectAssignedTo: () ->
+        console.log 'onSelectAssignedTo'
+
 module.controller("EpicRowCtrl", EpicRowController)

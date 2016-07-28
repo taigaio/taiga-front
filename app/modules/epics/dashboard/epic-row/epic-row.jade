@@ -33,6 +33,7 @@
     )
     .assigned(
         ng-if="vm.column.assigned && vm.epic.get('assigned_to')"
+        ng-click="vm.onSelectAssignedTo()"
     )
         img(
             ng-if="vm.epic.getIn(['assigned_to_extra_info', 'photo'])"
@@ -47,6 +48,7 @@
     .assigned(
         ng-if="vm.column.assigned && !vm.epic.get('assigned_to')"
         ng-class="{'is-unassigned': !vm.epic.get('assigned_to')}"
+        ng-click="vm.onSelectAssignedTo()"
     )
         img(
             src="/#{v}/images/unnamed.png"

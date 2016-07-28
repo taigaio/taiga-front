@@ -8,7 +8,7 @@
     border-bottom: 1px solid $whitish;
     cursor: pointer;
     display: flex;
-    margin-left: 2rem;
+    margin-left: 5rem;
     transition: background .2s;
     &:hover {
         background: rgba($primary-light, .05);
@@ -33,7 +33,7 @@
         transition: opacity .1s;
     }
     .name {
-        flex-basis: 18vw;
+        flex-basis: 16vw;
     }
     .story-pill {
         background: $grayer;
