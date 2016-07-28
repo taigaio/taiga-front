@@ -1,6 +1,7 @@
 header(tg-backlog-sprint-header, ng-model="sprint")
 
-div.sprint-progress-bar(tg-progress-bar="100 * sprint.closed_points / sprint.total_points")
+.summary-progress-wrapper
+    div.sprint-progress-bar(tg-progress-bar="100 * sprint.closed_points / sprint.total_points")
 
 div.sprint-table(tg-bind-scope, ng-class="{'sprint-empty-wrapper': !sprint.user_stories.length}")
     div.sprint-empty(ng-if="!sprint.user_stories.length")

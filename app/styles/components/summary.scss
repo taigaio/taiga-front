@@ -2,14 +2,18 @@ $summary-background: $grayer;
 
 .summary {
     align-content: center;
+    align-items: center;
     background: $summary-background;
     color: $white;
     display: flex;
     flex-wrap: wrap;
+    height: 65px;
     justify-content: flex-start;
     margin-bottom: 2rem;
-    padding: 1em;
+    overflow: hidden;
+    padding: 1rem;
     .summary-stats {
+        align-items: center;
         display: flex;
         margin: 0 .5rem;
     }
@@ -20,7 +24,7 @@ $summary-background: $grayer;
     }
     .number {
         @include font-size(xlarge);
-        @include font-type(bold);
+        @include font-type(light);
         line-height: .9;
         margin-right: .3rem;
     }
@@ -69,6 +73,21 @@ $summary-background: $grayer;
             transition: fill .2s;
         }
     }
+    .main-summary-stats {
+        display: flex;
+        transform: translateY(0);
+        transition: all .2s ease-in-out;
+    }
+
+
+    .show-role-points {
+        .points-per-role-stats {
+            transform: translateY(-35px);
+        }
+        .main-summary-stats {
+            transform: translateY(-65px);
+        }
+    }
 }
 
 .summary-progress-bar {
@@ -102,7 +121,12 @@ $summary-background: $grayer;
 }
 
 .large-summary {
+    align-items: stretch;
     justify-content: space-between;
+    padding: .75rem 1rem;
+    .stats-wrapper {
+        padding-top: .35rem;
+    }
     .large-summary-wrapper {
         align-content: center;
         display: flex;
@@ -110,6 +134,7 @@ $summary-background: $grayer;
         justify-content: flex-start;
     }
     .summary-progress-wrapper {
+        align-items: center;
         display: flex;
     }
     .summary-progress-bar {
@@ -122,13 +147,23 @@ $summary-background: $grayer;
             border: 0;
             margin: 0;
         }
+        &.summary-completed-points,
+        &.summary-closed-tasks {
+            border-right: 1px solid $blackish;
+            margin-right: 0;
+            padding-right: 1rem;
+            +.summary-stats {
+                border-left: 1px solid $gray;
+                margin-left: 0;
+                padding-left: 1rem;
+            }
+        }
     }
     .icon {
+        @include svg-size(1.3rem);
         fill: currentColor;
-        height: 1.5rem;
         margin-right: .4rem;
         vertical-align: middle;
-        width: 1.5rem;
         &.icon-stats {
             color: $primary;
             float: right;
@@ -144,6 +179,33 @@ $summary-background: $grayer;
                 color: $primary;
                 transition: color .3s linear;
             }
+        }
+    }
+    .points-per-role-stats-content {
+        display: flex;
+        padding-left: 1rem;
+        .summary-stats {
+            padding: 0;
+        }
+    }
+    .toggle-points-per-role {
+        color: $white;
+        cursor: pointer;
+        svg {
+            @include svg-size();
+        }
+    }
+    .points-per-role-stats {
+        margin-left: .5rem;
+        transform: translateY(35px);
+        transition: all .2s ease-in-out;
+        .number {
+            @include font-size(large);
+            @include font-type(normal);
+        }
+        .role {
+            @include font-size(xsmall);
+            @include font-type(light);
         }
     }
 }
