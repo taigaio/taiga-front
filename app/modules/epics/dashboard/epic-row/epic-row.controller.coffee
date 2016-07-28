@@ -28,6 +28,7 @@ class EpicRowController
     constructor: (@rs, @confirm) ->
         @.displayUserStories = false
         @._calculateProgressBar()
+        @.displayAssignedTo = false
 
     _calculateProgressBar: () ->
         totalUs = @.epic.getIn(['user_stories_counts', 'closed'])
@@ -67,6 +68,6 @@ class EpicRowController
             @.displayUserStories = false
 
     onSelectAssignedTo: () ->
-        console.log 'onSelectAssignedTo'
+        console.log 'Assigned to'
 
 module.controller("EpicRowCtrl", EpicRowController)

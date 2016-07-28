@@ -1,5 +1,3 @@
-doctype html
-
 .wrapper()
     tg-project-menu
     section.main(role="main")
@@ -13,7 +11,7 @@ doctype html
                 button.button-green(
                     translate="EPICS.DASHBOARD.ADD"
                     title="{{ EPICS.DASHBOARD.ADD_TITLE | translate }}",
-                    ng-click="vm.addNewEpic()"
+                    ng-click="vm.onCreateEpic()"
                 )
                 
         tg-epics-table(
@@ -37,6 +35,6 @@ doctype html
             )
             button.create-epic.button-green(
                 translate="EPICS.DASHBOARD.ADD"
-                title="{{ EPICS.DASHBOARD.ADD_TITLE | translate }}",
-                ng-click="vm.addNewEpic()"
+                title="{{ EPICS.DASHBOARD.ADD_TITLE | translate }}"
+                ng-click="vm.onCreateEpic()"
             )

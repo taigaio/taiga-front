@@ -412,6 +412,14 @@
             "STATUS": "Status",
             "PROGRESS": "Progress",
             "VIEW_OPTIONS": "View options"
+        },
+        "CREATE": {
+            "TITLE": "New Epic",
+            "TEAM_REQUIREMENT": "Team requirement",
+            "CLIENT_REQUIREMENT": "Client requirement",
+            "BLOCKED": "Blocked",
+            "BLOCKED_NOTE_PLACEHOLDER": "Why is this epic blocked?",
+            "CREATE_EPIC": "Create epic"
         }
     },
     "PROJECTS": {

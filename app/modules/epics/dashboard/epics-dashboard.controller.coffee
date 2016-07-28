@@ -24,12 +24,14 @@ class EpicsDashboardController
         "$tgResources",
         "tgResources",
         "$routeParams",
-        "tgErrorHandlingService"
+        "tgErrorHandlingService",
+        "tgLightboxFactory",
     ]
 
-    constructor: (@rs, @resources, @params, @errorHandlingService) ->
+    constructor: (@rs, @resources, @params, @errorHandlingService, @lightboxFactory) ->
         @.sectionName = "Epics"
         @._loadProject()
+        @.createEpic = false
 
     _loadProject: () ->
         return @rs.projects.getBySlug(@params.pslug).then (project) =>
@@ -43,7 +45,14 @@ class EpicsDashboardController
         return @resources.epics.list(projectId).then (epics) =>
             @.epics = epics
 
-    addNewEpic: () ->
-        console.log 'Add new Epic'
+    onCreateEpic: () ->
+        @lightboxFactory.create('tg-create-epic', {
+            "class": "lightbox lightbox-create-epic"
+            "project": "project"
+            "on-reload-epics": "onReloadEpics"
+        }, {
+            "project": @.project
+            "onReloadEpics": @_loadEpics
+        })
 
 module.controller("EpicsDashboardCtrl", EpicsDashboardController)

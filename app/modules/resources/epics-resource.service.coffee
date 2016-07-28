@@ -41,6 +41,11 @@ Resource = (urlsService, http) ->
 
         return http.patch(url, patch)
 
+    service.post = (params) ->
+        url = urlsService.resolve("epics")
+
+        return http.post(url, params)
+
     return () ->
         return {"epics": service}
 
