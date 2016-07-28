@@ -17,7 +17,9 @@
             tg-nav="project-userstories-detail:project=vm.project.slug,ref=vm.story.get('ref')"
             ng-attr-title="{{::vm.story.get('subject')}}"
         ) #{hash}{{::vm.story.get('ref')}} {{::vm.story.get('subject')}}
-        .story-pill(ng-style="::{'background-color': vm.epic.get('color')}")
+        .story-pill-wrapper(tg-repeat="pill in vm.story.get('epics')")
+            .story-pill(ng-style="{'background': pill.get('color')}")
+            .story-pill-data #{hash}{{pill.get('id')}} {{pill.get('subject')}}
     .project(
         ng-if="vm.column.project"
         tg-nav="project:project=vm.story.getIn(['project_extra_info', 'slug'])"
