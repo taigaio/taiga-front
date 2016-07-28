@@ -88,6 +88,8 @@ class SearchController extends mixOf(taiga.Controller, taiga.PageMixin)
         return @rs.projects.getBySlug(@params.pslug).then (project) =>
             @scope.project = project
             @scope.$emit('project:loaded', project)
+
+            @scope.epicStatusById = groupBy(project.epic_statuses, (x) -> x.id)
             @scope.issueStatusById = groupBy(project.issue_statuses, (x) -> x.id)
             @scope.taskStatusById = groupBy(project.task_statuses, (x) -> x.id)
             @scope.severityById = groupBy(project.severities, (x) -> x.id)
@@ -194,7 +196,7 @@ SearchDirective = ($log, $compile, $templatecache, $routeparams, $location) ->
                 return selectedSection
 
             if data
-                for name in ["userstories", "issues", "tasks", "wikipages"]
+                for name in ["userstories", "epics", "issues", "tasks", "wikipages"]
                     value = data[name]
 
                     if value.length > maxVal
@@ -222,6 +224,7 @@ SearchDirective = ($log, $compile, $templatecache, $routeparams, $location) ->
             activeSectionName = section.name
 
         templates = {
+            epics: $templatecache.get("search-epics")
             issues: $templatecache.get("search-issues")
             tasks: $templatecache.get("search-tasks")
             userstories: $templatecache.get("search-userstories")

@@ -1388,6 +1388,7 @@
     "SEARCH": {
         "PAGE_TITLE": "Search - {{projectName}}",
         "PAGE_DESCRIPTION": "Search anything, user stories, issues, tasks or wiki pages, in the project {{projectName}}: {{projectDescription}}",
+        "FILTER_EPICS": "Epics",
         "FILTER_USER_STORIES": "User Stories",
         "FILTER_ISSUES": "Issues",
         "FILTER_TASKS": "Tasks",

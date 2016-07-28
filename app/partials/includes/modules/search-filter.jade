@@ -1,4 +1,13 @@
 ul.search-filter
+    li.epics(data-name="epics")
+        a(
+            href="#"
+            title="{{ 'SEARCH.FILTER_EPICS' | translate }}"
+        )
+            tg-svg(svg-icon="icon-epics")
+            span.num
+            span.name(translate="SEARCH.FILTER_EPICS")
+
     li.userstories(data-name="userstories")
         a.active(
             href="#"

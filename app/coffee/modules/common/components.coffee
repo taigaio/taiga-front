@@ -765,6 +765,16 @@ module.directive("tgEditableWysiwyg", ["tgAttachmentsService", "tgAttachmentsFul
 ##       completely bindonce, they only serves for visualization of data.
 #############################################################################
 
+ListItemEpicStatusDirective = ->
+    link = ($scope, $el, $attrs) ->
+        epic = $scope.$eval($attrs.tgListitemEpicStatus)
+        bindOnce $scope, "epicStatusById", (epicStatusById) ->
+            $el.html(epicStatusById[epic.status].name)
+
+    return {link:link}
+
+module.directive("tgListitemEpicStatus", ListItemEpicStatusDirective)
+
 ListItemUsStatusDirective = ->
     link = ($scope, $el, $attrs) ->
         us = $scope.$eval($attrs.tgListitemUsStatus)

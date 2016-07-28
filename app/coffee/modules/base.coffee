@@ -76,6 +76,7 @@ urls = {
     "project-epics": "/project/:project/epics"
     "project-search": "/project/:project/search"
 
+    "project-epic-detail": "/project/:project/epic/:ref"
     "project-userstories-detail": "/project/:project/us/:ref"
     "project-tasks-detail": "/project/:project/task/:ref"
     "project-issues-detail": "/project/:project/issue/:ref"
