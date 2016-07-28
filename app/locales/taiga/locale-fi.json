@@ -598,6 +598,10 @@
             "SECTION_NAME": "Github",
             "PAGE_TITLE": "Github - {{projectName}}"
         },
+        "GOGS": {
+            "SECTION_NAME": "Gogs",
+            "PAGE_TITLE": "Gogs - {{projectName}}"
+        },
         "WEBHOOKS": {
             "PAGE_TITLE": "Webhooks - {{projectName}}",
             "SECTION_NAME": "Webhookit",

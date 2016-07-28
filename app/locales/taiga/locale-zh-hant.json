@@ -598,6 +598,10 @@
             "SECTION_NAME": "Githun",
             "PAGE_TITLE": "Gitlab - {{projectName}}"
         },
+        "GOGS": {
+            "SECTION_NAME": "Gogs",
+            "PAGE_TITLE": "Gogs - {{projectName}}"
+        },
         "WEBHOOKS": {
             "PAGE_TITLE": "Webhooks- {{projectName}}",
             "SECTION_NAME": "網頁觸發 ",
