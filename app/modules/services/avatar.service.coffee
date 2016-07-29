@@ -49,7 +49,7 @@ class AvatarService
         }
 
     getAvatar: (user, type) ->
-        return getUnnamed() if !user
+        return @.getUnnamed() if !user
 
         avatarParamName = 'photo'
 
@@ -65,7 +65,7 @@ class AvatarService
             gravatar = user.gravatar_id
             photo = user[avatarParamName]
 
-        return getUnnamed() if !gravatar
+        return @.getUnnamed() if !gravatar
 
         if photo
             return {
