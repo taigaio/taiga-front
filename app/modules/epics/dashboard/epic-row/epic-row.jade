@@ -36,13 +36,7 @@
         ng-click="vm.onSelectAssignedTo()"
     )
         img(
-            ng-if="vm.epic.getIn(['assigned_to_extra_info', 'photo'])"
-            ng-src="{{vm.epic.getIn(['assigned_to_extra_info', 'photo'])}}"
-            alt="{{::vm.epic.getIn(['assigned_to_extra_info', 'full_name_display'])}}"
-        )
-        img(
-            ng-if="!vm.epic.getIn(['assigned_to_extra_info', 'photo'])"
-            ng-src="https://www.gravatar.com/avatar/{{vm.epic.getIn(['assigned_to_extra_info', 'gravatar_id'])}}"
+            tg-avatar="vm.epic.get('assigned_to_extra_info')"
             alt="{{::vm.epic.getIn(['assigned_to_extra_info', 'full_name_display'])}}"
         )
     .assigned(
