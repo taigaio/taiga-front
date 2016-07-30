@@ -1155,7 +1155,8 @@
             "CLOSED_TASKS": "tâches<br />fermées",
             "IOCAINE_DOSES": "doses<br />de iocaine",
             "SHOW_STATISTICS_TITLE": "Afficher les statistiques",
-            "TOGGLE_BAKLOG_GRAPH": "Afficher/masquer le graphique d'avancement"
+            "TOGGLE_BAKLOG_GRAPH": "Afficher/masquer le graphique d'avancement",
+            "POINTS_PER_ROLE": "Points per role"
         },
         "SUMMARY": {
             "PROJECT_POINTS": "projet<br />points",

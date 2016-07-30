@@ -1155,7 +1155,8 @@
             "CLOSED_TASKS": "kapatılmış <br /> görevler",
             "IOCAINE_DOSES": "baldıran zehri<br /> dozu",
             "SHOW_STATISTICS_TITLE": "İstatistikleri göster",
-            "TOGGLE_BAKLOG_GRAPH": "Eritme grafiğini göster/gizle"
+            "TOGGLE_BAKLOG_GRAPH": "Eritme grafiğini göster/gizle",
+            "POINTS_PER_ROLE": "Points per role"
         },
         "SUMMARY": {
             "PROJECT_POINTS": "proje<br/> puanları",

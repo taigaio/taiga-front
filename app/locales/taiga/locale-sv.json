@@ -1155,7 +1155,8 @@
             "CLOSED_TASKS": "stängd<br />uppgifer",
             "IOCAINE_DOSES": "iocaine<br />doser",
             "SHOW_STATISTICS_TITLE": "Visa statistik",
-            "TOGGLE_BAKLOG_GRAPH": "Visa/Dölj burn down-graf"
+            "TOGGLE_BAKLOG_GRAPH": "Visa/Dölj burn down-graf",
+            "POINTS_PER_ROLE": "Points per role"
         },
         "SUMMARY": {
             "PROJECT_POINTS": "projekt<br/>poäng",

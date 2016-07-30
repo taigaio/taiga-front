@@ -1155,7 +1155,8 @@
             "CLOSED_TASKS": "<br /> compiti chiusi",
             "IOCAINE_DOSES": "<br /> pasticche di aspirina",
             "SHOW_STATISTICS_TITLE": "Mostra statistiche",
-            "TOGGLE_BAKLOG_GRAPH": "Mostra/nascondi i grafici burndown"
+            "TOGGLE_BAKLOG_GRAPH": "Mostra/nascondi i grafici burndown",
+            "POINTS_PER_ROLE": "Points per role"
         },
         "SUMMARY": {
             "PROJECT_POINTS": "<br /> punti di progetto",

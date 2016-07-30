@@ -1155,7 +1155,8 @@
             "CLOSED_TASKS": "已關閉<br />任務",
             "IOCAINE_DOSES": "毒物（全新任務挑戰）<br />劑量",
             "SHOW_STATISTICS_TITLE": "顯示統計",
-            "TOGGLE_BAKLOG_GRAPH": "顯示/隱藏 剩餘工作量圖"
+            "TOGGLE_BAKLOG_GRAPH": "顯示/隱藏 剩餘工作量圖",
+            "POINTS_PER_ROLE": "Points per role"
         },
         "SUMMARY": {
             "PROJECT_POINTS": "專案<br/> 點數",
