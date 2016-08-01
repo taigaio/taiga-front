@@ -74,7 +74,7 @@
         .progress-bar
         .progress-status(
             ng-if="::vm.percentage"
-            ng-attr-width="::vm.percentage"
+            ng-style="{'width':vm.percentage}"
         )
 .epic-stories-wrapper(ng-if="vm.displayUserStories && vm.epicStories")
 

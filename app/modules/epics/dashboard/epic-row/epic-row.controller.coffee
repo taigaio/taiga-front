@@ -31,9 +31,16 @@ class EpicRowController
         @.displayAssignedTo = false
 
     _calculateProgressBar: () ->
-        totalUs = @.epic.getIn(['user_stories_counts', 'closed'])
-        totalUsCompleted = @.epic.getIn(['user_stories_counts', 'opened'])
-        @.percentage = totalUs * 100 / totalUsCompleted
+        if @.epic.getIn(['status_extra_info', 'is_closed']) == true
+            @.percentage = "100%"
+        else
+            opened = @.epic.getIn(['user_stories_counts', 'opened'])
+            closed = @.epic.getIn(['user_stories_counts', 'closed'])
+            total = opened + closed
+            if total == 0
+                @.percentage = "0%"
+            else
+                @.percentage = "#{closed * 100 / total}%"
 
     updateEpicStatus: (status) ->
         id = @.epic.get('id')

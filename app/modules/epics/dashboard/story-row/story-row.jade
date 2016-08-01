@@ -4,10 +4,10 @@
     .vote(
         ng-if="vm.column.votes"
         ng-class="{'is-voter': vm.story.get('is_voter')}"
-    ) 
+    )
         tg-svg(svg-icon='icon-upvote')
         span {{::vm.story.get('total_voters')}}
-        
+
     .name(ng-if="vm.column.name")
         - var hash = "#";
         a(
@@ -48,5 +48,5 @@
         .progress-bar
         .progress-status(
             ng-if="::vm.percentage"
-            ng-attr-width="::vm.percentage"
+            ng-style="{'width':vm.percentage}"
         )

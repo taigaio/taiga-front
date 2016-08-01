@@ -44,7 +44,7 @@ tg-lightbox-close
                 input(
                     type="checkbox"
                     name="team_requirement"
-                    ng-model="vm.newEpic.teamRequirement"
+                    ng-model="vm.newEpic.team_requirement"
                     id="team-requirement"
                 )
                 label.requirement.trans-button(
@@ -55,7 +55,7 @@ tg-lightbox-close
                 input(
                     type="checkbox"
                     name="client_requirement"
-                    ng-model="vm.newEpic.clientRequirement"
+                    ng-model="vm.newEpic.client_requirement"
                     id="client-requirement"
                 )
                 label.requirement.trans-button(
@@ -66,7 +66,7 @@ tg-lightbox-close
                 input(
                     type="checkbox"
                     name="blocked"
-                    ng-model="vm.newEpic.isBlocked"
+                    ng-model="vm.newEpic.is_blocked"
                     id="blocked"
                     ng-click="displayBlockedReason = !displayBlockedReason"
                 )
@@ -87,4 +87,4 @@ tg-lightbox-close
                 type="submit"
                 translate="EPICS.CREATE.CREATE_EPIC"
             )
-        
+
