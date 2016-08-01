@@ -26,19 +26,12 @@
             alt="{{::vm.story.getIn(['project_extra_info', 'name'])}}"
         )
     .sprint(ng-if="vm.column.sprint") {{::vm.story.get('milestone_name')}}
-    .assigned(
-        ng-if="vm.column.assigned && vm.story.get('assigned_to')"
-        ng-click="vm.onSelectAssignedTo()"
-    )
+    .assigned(ng-if="vm.column.assigned && vm.story.get('assigned_to')")
         img(
             tg-avatar="vm.story.get('assigned_to_extra_info')"
             alt="{{::vm.story.getIn(['assigned_to_extra_info', 'full_name_display'])}}"
         )
-    .assigned(
-        ng-if="vm.column.assigned && !vm.story.get('assigned_to')"
-        ng-class="{'is-unassigned': !vm.story.get('assigned_to')}"
-        ng-click="vm.onSelectAssignedTo()"
-    )
+    .assigned(ng-if="vm.column.assigned && !vm.story.get('assigned_to')")
         img(
             src="/#{v}/images/unnamed.png"
             alt="{{EPICS.DASHBOARD.UNASSIGNED | translate}}"

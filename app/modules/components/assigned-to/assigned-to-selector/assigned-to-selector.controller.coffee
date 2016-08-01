@@ -1,5 +1,5 @@
 ###
-# Copyright (C) 2014-2016 Taiga Agile LLC <taiga@taiga.io>
+# Copyright (C) 2014-2015 Taiga Agile LLC <taiga@taiga.io>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -14,22 +14,12 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: assigned-to-selector.directive.coffee
+# File: assigned-to-selector.controller.coffee
 ###
 
-AssignedToSelectorDirective = () ->
+class AssignedToSelectorController
+    @.$inject = []
 
-    return {
-        controller: "AssignedToSelectorCtrl",
-        controllerAs: "vm",
-        bindToController: true,
-        templateUrl: "components/assigned-to/assigned-to-selector/assigned-to-selector.html",
-        scope: {
-            assigned: "=",
-            project: "="
-        }
-    }
+    constructor: () ->
 
-AssignedToSelectorDirective.$inject = []
-
-angular.module("taigaComponents").directive("tgAssignedToSelector", AssignedToSelectorDirective)
+angular.module('taigaComponents').controller('AssignedToSelectorCtrl', AssignedToSelectorController)

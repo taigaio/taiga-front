@@ -23,15 +23,16 @@ class AssignedToController
     ]
 
     constructor: (@lightboxFactory) ->
+        @.has_permissions = _.includes(@.project.my_permissions, 'modify_epic')
 
     onSelectAssignedTo: (assigned, project) ->
         @lightboxFactory.create('tg-assigned-to-selector', {
             "class": "lightbox lightbox-assigned-to-selector open"
-            "assigned": "assigned"
+            "assignedTo": "assignedTo"
             "project": "project"
         }, {
-            "assigned": assigned
-            "project": project
+            "assignedTo": @.assignedTo
+            "project": @.project
         })
 
 angular.module('taigaComponents').controller('AssignedToCtrl', AssignedToController)

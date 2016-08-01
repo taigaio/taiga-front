@@ -17,19 +17,21 @@
 # File: assigned-to-selector.directive.coffee
 ###
 
-AssignedToSelectorDirective = () ->
+AssignedItemDirective = () ->
+
+    link = (scope, el, attrs) ->
 
     return {
-        controller: "AssignedToSelectorCtrl",
-        controllerAs: "vm",
-        bindToController: true,
-        templateUrl: "components/assigned-to/assigned-to-selector/assigned-to-selector.html",
+        # controller: "AssignedToSelectorCtrl",
+        # controllerAs: "vm",
+        # bindToController: true,
+        templateUrl: "components/assigned-to/assigned-item/assigned-item.html",
         scope: {
-            assigned: "=",
-            project: "="
-        }
+            member: "=",
+        },
+        link: link
     }
 
-AssignedToSelectorDirective.$inject = []
+AssignedItemDirective.$inject = []
 
-angular.module("taigaComponents").directive("tgAssignedToSelector", AssignedToSelectorDirective)
+angular.module("taigaComponents").directive("tgAssignedItem", AssignedItemDirective)

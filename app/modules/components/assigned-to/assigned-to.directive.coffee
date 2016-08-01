@@ -25,7 +25,7 @@ AssignedToDirective = () ->
         bindToController: true,
         templateUrl: "components/assigned-to/assigned-to.html",
         scope: {
-            assignedTo: "="
+            assignedTo: "=",
             project: "="
         }
     }
