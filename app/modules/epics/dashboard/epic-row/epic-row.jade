@@ -31,22 +31,10 @@
     .sprint(
         ng-if="vm.column.sprint"
     )
-    .assigned(
-        ng-if="vm.column.assigned && vm.epic.get('assigned_to')"
-        ng-click="vm.onSelectAssignedTo()"
-    )
-        img(
-            tg-avatar="vm.epic.get('assigned_to_extra_info')"
-            alt="{{::vm.epic.getIn(['assigned_to_extra_info', 'full_name_display'])}}"
-        )
-    .assigned(
-        ng-if="vm.column.assigned && !vm.epic.get('assigned_to')"
-        ng-class="{'is-unassigned': !vm.epic.get('assigned_to')}"
-        ng-click="vm.onSelectAssignedTo()"
-    )
-        img(
-            src="/#{v}/images/unnamed.png"
-            alt="{{EPICS.DASHBOARD.UNASSIGNED | translate}}"
+    .assigned
+        tg-assigned-to-component(
+            assigned-to="vm.epic.get('assigned_to_extra_info')"
+            project="vm.project"
         )
     .status(
         ng-if="vm.column.status && !vm.permissions.canEdit"

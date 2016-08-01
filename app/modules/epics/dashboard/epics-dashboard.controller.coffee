@@ -40,9 +40,9 @@ class EpicsDashboardController
             if not project.is_epics_activated
                 @errorHandlingService.permissionDenied()
             @.project = project
-            @._loadEpics()
+            @.loadEpics()
 
-    _loadEpics: () ->
+    loadEpics: () ->
         projectId = @.project.id
         return @resources.epics.list(projectId).then (epics) =>
             @.epics = epics
@@ -50,7 +50,7 @@ class EpicsDashboardController
     _onCreateEpic: () ->
         @lightboxService.closeAll()
         @confirm.notify("success")
-        @._loadEpics()
+        @.loadEpics()
 
     onCreateEpic: () ->
         @lightboxFactory.create('tg-create-epic', {

@@ -1,0 +1,13 @@
+img.assigned-to(
+    ng-if="vm.assignedTo"
+    tg-avatar="vm.assignedTo"
+    alt="{{vm.assignedTo.get('full_name_display')}}"
+    title="{{vm.assignedTo.get('full_name_display')}}"
+    ng-click="vm.onSelectAssignedTo(vm.assignedTo, vm.project)"
+)
+img.assigned-to(
+    ng-if="!vm.assignedTo"
+    src="/#{v}/images/unnamed.png"
+    alt="{{EPICS.DASHBOARD.UNASSIGNED | translate}}"
+    ng-click="vm.onSelectAssignedTo(vm.assignedTo, vm.project)"
+)

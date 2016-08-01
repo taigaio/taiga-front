@@ -1,5 +1,5 @@
 ###
-# Copyright (C) 2014-2016 Taiga Agile LLC <taiga@taiga.io>
+# Copyright (C) 2014-2015 Taiga Agile LLC <taiga@taiga.io>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -14,25 +14,24 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: epics-table.directive.coffee
+# File: attchment.controller.coffee
 ###
 
-module = angular.module('taigaEpics')
+class AssignedToController
+    @.$inject = [
+        "tgLightboxFactory"
+    ]
 
-EpicsTableDirective = () ->
+    constructor: (@lightboxFactory) ->
 
-    return {
-        templateUrl:"epics/dashboard/epics-table/epics-table.html",
-        controller: "EpicsTableCtrl",
-        controllerAs: "vm",
-        bindToController: true,
-        scope: {
-            epics: "=",
-            project: "=",
-            onUpdateEpicStatus: "&"
-        }
-    }
+    onSelectAssignedTo: (assigned, project) ->
+        @lightboxFactory.create('tg-assigned-to-selector', {
+            "class": "lightbox lightbox-assigned-to-selector open"
+            "assigned": "assigned"
+            "project": "project"
+        }, {
+            "assigned": assigned
+            "project": project
+        })
 
-EpicsTableDirective.$inject = []
-
-module.directive("tgEpicsTable", EpicsTableDirective)
+angular.module('taigaComponents').controller('AssignedToCtrl', AssignedToController)

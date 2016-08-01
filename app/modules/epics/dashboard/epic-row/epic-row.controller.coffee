@@ -54,7 +54,6 @@ class EpicRowController
             @.onUpdateEpicStatus()
 
         onError = (data) =>
-            console.log data
             @confirm.notify('error')
 
         return @rs.epics.patch(id, patch).then(onSuccess, onError)

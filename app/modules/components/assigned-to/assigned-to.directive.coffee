@@ -14,25 +14,22 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: epics-table.directive.coffee
+# File: assigned-to.directive.coffee
 ###
 
-module = angular.module('taigaEpics')
-
-EpicsTableDirective = () ->
+AssignedToDirective = () ->
 
     return {
-        templateUrl:"epics/dashboard/epics-table/epics-table.html",
-        controller: "EpicsTableCtrl",
+        controller: "AssignedToCtrl",
         controllerAs: "vm",
         bindToController: true,
+        templateUrl: "components/assigned-to/assigned-to.html",
         scope: {
-            epics: "=",
-            project: "=",
-            onUpdateEpicStatus: "&"
+            assignedTo: "="
+            project: "="
         }
     }
 
-EpicsTableDirective.$inject = []
+AssignedToDirective.$inject = []
 
-module.directive("tgEpicsTable", EpicsTableDirective)
+angular.module("taigaComponents").directive("tgAssignedToComponent", AssignedToDirective)
