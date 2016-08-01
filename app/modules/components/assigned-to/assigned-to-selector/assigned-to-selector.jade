@@ -9,9 +9,9 @@ tg-lightbox-close
         ng-model="vm.assignToMember.name"
         ng-model-options="{debounce: 200}"
     )
-    ul.tags-dropdown
-        li(ng-repeat="member in vm.project.members | filter: vm.assignToMember.name")
+    ul.assignable-member-list
+        li(ng-repeat="member in vm.nonAssignedMembers | filter: vm.assignToMember.name | limitTo:6")
             tg-assigned-item.assigned-members-option(
                 member="member"
-                ng-click="vm.onAddTag(tag[0], tag[1], vm.project)"
+                ng-click="vm.onAssignTo(member)"
             )

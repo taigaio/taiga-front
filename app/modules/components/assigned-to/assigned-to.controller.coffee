@@ -27,11 +27,11 @@ class AssignedToController
 
     onSelectAssignedTo: (assigned, project) ->
         @lightboxFactory.create('tg-assigned-to-selector', {
-            "class": "lightbox lightbox-assigned-to-selector open"
-            "assignedTo": "assignedTo"
+            "class": "lightbox lightbox-assigned-to-selector open",
+            "assigned": "assigned",
             "project": "project"
         }, {
-            "assignedTo": @.assignedTo
+            "assigned": @.assignedTo,
             "project": @.project
         })
 

@@ -21,5 +21,14 @@ class AssignedToSelectorController
     @.$inject = []
 
     constructor: () ->
+        @._filterAssignedMember()
+
+    _filterAssignedMember: () ->
+        @.nonAssignedMembers = _.filter(@.project.members, (member) =>
+            return member.id != @.assigned.get('id')
+        )
+
+    onAssignTo: (member) ->
+        console.log member
 
 angular.module('taigaComponents').controller('AssignedToSelectorCtrl', AssignedToSelectorController)
