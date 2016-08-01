@@ -1,9 +1,6 @@
 .story-row(
     ng-class="{'is-blocked': vm.story.is_blocked, 'is-closed': vm.story.is_closed}"
 )
-    tg-svg.icon-drag(
-        svg-icon="icon-drag"
-    )
     .vote(
         ng-if="vm.column.votes"
         ng-class="{'is-voter': vm.story.get('is_voter')}"

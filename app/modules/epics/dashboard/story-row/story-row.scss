@@ -8,13 +8,10 @@
     border-bottom: 1px solid $whitish;
     cursor: pointer;
     display: flex;
-    margin-left: 5rem;
+    margin-left: 4rem;
     transition: background .2s;
     &:hover {
         background: rgba($primary-light, .05);
-        .icon-drag {
-            opacity: 1;
-        }
     }
     &.is-blocked {
         background: rgba($red-light, .5);
@@ -25,15 +22,8 @@
             text-decoration: line-through;
         }
     }
-    .icon-drag {
-        @include svg-size(.75rem);
-        cursor: move;
-        fill: $whitish;
-        opacity: 0;
-        transition: opacity .1s;
-    }
     .name {
-        flex-basis: 16vw;
+        flex-basis: 17.5vw;
     }
     .story-pill-wrapper {
         display: inline-block;

@@ -26,9 +26,11 @@ class EpicsDashboardController
         "$routeParams",
         "tgErrorHandlingService",
         "tgLightboxFactory",
+        "lightboxService",
+        "$tgConfirm"
     ]
 
-    constructor: (@rs, @resources, @params, @errorHandlingService, @lightboxFactory) ->
+    constructor: (@rs, @resources, @params, @errorHandlingService, @lightboxFactory, @lightboxService, @confirm) ->
         @.sectionName = "Epics"
         @._loadProject()
         @.createEpic = false
@@ -45,14 +47,19 @@ class EpicsDashboardController
         return @resources.epics.list(projectId).then (epics) =>
             @.epics = epics
 
+    _onCreateEpic: () ->
+        @lightboxService.closeAll()
+        @confirm.notify("success")
+        @._loadEpics()
+
     onCreateEpic: () ->
         @lightboxFactory.create('tg-create-epic', {
-            "class": "lightbox lightbox-create-epic"
+            "class": "lightbox lightbox-create-epic open"
             "project": "project"
-            "on-reload-epics": "onReloadEpics"
+            "on-reload-epics": "reloadEpics()"
         }, {
             "project": @.project
-            "onReloadEpics": @_loadEpics
+            "reloadEpics": @._onCreateEpic.bind(this)
         })
 
 module.controller("EpicsDashboardCtrl", EpicsDashboardController)
