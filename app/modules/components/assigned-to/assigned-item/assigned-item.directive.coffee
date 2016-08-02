@@ -22,12 +22,9 @@ AssignedItemDirective = () ->
     link = (scope, el, attrs) ->
 
     return {
-        # controller: "AssignedToSelectorCtrl",
-        # controllerAs: "vm",
-        # bindToController: true,
         templateUrl: "components/assigned-to/assigned-item/assigned-item.html",
         scope: {
-            member: "=",
+            member: "="
         },
         link: link
     }

@@ -14,25 +14,38 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: attchment.controller.coffee
+# File: assigned-to.controller.coffee
 ###
 
 class AssignedToController
     @.$inject = [
-        "tgLightboxFactory"
+        "tgLightboxFactory",
+        "lightboxService",
     ]
 
-    constructor: (@lightboxFactory) ->
+    constructor: (@lightboxFactory, @lightboxService) ->
         @.has_permissions = _.includes(@.project.my_permissions, 'modify_epic')
+
+    _closeAndRemoveAssigned: () ->
+        @lightboxService.closeAll()
+        @.onRemoveAssigned()
+
+    _closeAndAssign: (member) ->
+        @lightboxService.closeAll()
+        @.onAssignTo({'member': member})
 
     onSelectAssignedTo: (assigned, project) ->
         @lightboxFactory.create('tg-assigned-to-selector', {
             "class": "lightbox lightbox-assigned-to-selector open",
             "assigned": "assigned",
-            "project": "project"
+            "project": "project",
+            "on-remove-assigned": "onRemoveAssigned()"
+            "on-assign-to": "assignTo(member)"
         }, {
             "assigned": @.assignedTo,
-            "project": @.project
+            "project": @.project,
+            "onRemoveAssigned": @._closeAndRemoveAssigned.bind(this),
+            "assignTo": @._closeAndAssign.bind(this)
         })
 
 angular.module('taigaComponents').controller('AssignedToCtrl', AssignedToController)

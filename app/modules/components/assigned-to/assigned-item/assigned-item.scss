@@ -1,12 +1,14 @@
 .assignable-member-single {
     align-items: center;
-    background: $white;
-    border-bottom: 1px solid $whitish;
     display: flex;
     padding: .25rem 0;
+    .assigned-members-option & {
+        background: $white;
+        border-bottom: 1px solid $whitish;
+        cursor: pointer;
+    }
     &:hover {
         background: rgba($primary-light, .05);
-        cursor: pointer;
     }
     .assignable-member-avatar {
         flex-basis: 3rem;

@@ -26,7 +26,9 @@ AssignedToSelectorDirective = () ->
         templateUrl: "components/assigned-to/assigned-to-selector/assigned-to-selector.html",
         scope: {
             assigned: "=",
-            project: "="
+            project: "=",
+            onRemoveAssigned: "&",
+            onAssignTo: "&"
         }
     }
 

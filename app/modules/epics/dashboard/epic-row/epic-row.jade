@@ -35,6 +35,8 @@
         tg-assigned-to-component(
             assigned-to="vm.epic.get('assigned_to_extra_info')"
             project="vm.project"
+            on-remove-assigned="vm.onRemoveAssigned()"
+            on-assign-to="vm.onAssignTo(member)"
         )
     .status(
         ng-if="vm.column.status && !vm.permissions.canEdit"

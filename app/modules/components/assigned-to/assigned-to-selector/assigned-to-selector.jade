@@ -10,8 +10,18 @@ tg-lightbox-close
         ng-model-options="{debounce: 200}"
     )
     ul.assignable-member-list
+        li.assigned-member(
+            ng-repeat="member in vm.assignedMember"
+            ng-if="vm.assigned"
+        )
+            tg-assigned-item(member="member")
+            tg-svg.unassign-epic(
+                svg-icon="icon-close"
+                svg-title-translate="COMMON.ASSIGNED_TO.REMOVE_ASSIGNED"
+                ng-click="vm.onRemoveAssigned()"
+            )
         li(ng-repeat="member in vm.nonAssignedMembers | filter: vm.assignToMember.name | limitTo:6")
             tg-assigned-item.assigned-members-option(
                 member="member"
-                ng-click="vm.onAssignTo(member)"
+                ng-click="vm.onAssignTo({'member': member})"
             )

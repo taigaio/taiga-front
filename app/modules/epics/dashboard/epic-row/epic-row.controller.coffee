@@ -73,7 +73,38 @@ class EpicRowController
         else
             @.displayUserStories = false
 
-    onSelectAssignedTo: () ->
-        console.log 'Assigned to'
+    onRemoveAssigned: () ->
+        id = @.epic.get('id')
+        version = @.epic.get('version')
+        patch = {
+            'assigned_to': null,
+            'version': version
+        }
+
+        onSuccess = =>
+            @.onUpdateEpicStatus()
+            @confirm.notify('success')
+
+        onError = (data) =>
+            @confirm.notify('error')
+
+        return @rs.epics.patch(id, patch).then(onSuccess, onError)
+
+    onAssignTo: (member) ->
+        id = @.epic.get('id')
+        version = @.epic.get('version')
+        patch = {
+            'assigned_to': member.id,
+            'version': version
+        }
+
+        onSuccess = =>
+            @.onUpdateEpicStatus()
+            @confirm.notify('success')
+
+        onError = (data) =>
+            @confirm.notify('error')
+
+        return @rs.epics.patch(id, patch).then(onSuccess, onError)
 
 module.controller("EpicRowCtrl", EpicRowController)
