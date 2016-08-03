@@ -1,0 +1,326 @@
+.card {
+    box-shadow: 2px 2px 4px darken($whitish, 10%);
+    cursor: move;
+    display: block;
+    margin: 0 .6rem .6rem;
+    overflow: hidden;
+    transition: box-shadow .2s ease-in;
+    &:hover {
+        box-shadow: 3px 3px 6px darken($whitish, 10%);
+    }
+}
+
+.card-inner {
+    background: $white;
+    border-radius: .25rem;
+    &.zoom-0,
+    &.zoom-1 {
+        .card-title {
+            flex: 1;
+            margin: 0;
+            padding: .25rem;
+        }
+    }
+    &.zoom-1 {
+        .card-owner-info {
+            align-items: flex-start;
+        }
+    }
+    &.card-blocked {
+        background: $red-light;
+        .statistic,
+        .card-title a,
+        .card-owner-name,
+        .card-estimation {
+            color: $white;
+        }
+        .card-owner-actions {
+            background: rgba($red-light, .9);
+        }
+        svg {
+            fill: $white;
+        }
+        .statistic {
+            &.active {
+                color: $white;
+            }
+        }
+        .card-unfold {
+            &:hover {
+                background: rgba($red-light, .9);
+            }
+        }
+        &.zoom-0,
+        &.zoom-1 {
+            .card-title {
+                color: $white;
+            }
+        }
+    }
+}
+
+.card-tags {
+    display: flex;
+    .card-tag {
+        display: block;
+        flex: 1;
+        height: .5rem;
+
+    }
+}
+
+.card-owner {
+    position: relative;
+    .card-owner-info {
+        align-items: center;
+        display: flex;
+    }
+    .card-owner-avatar {
+        line-height: 0;
+        position: relative;
+    }
+    .icon-iocaine {
+        @include svg-size(1.2rem);
+        background: rgba($blackish, .8);
+        border-radius: 4px 0 0;
+        bottom: .25rem;
+        fill: $whitish;
+        padding: .25rem;
+        position: absolute;
+        right: .5rem;
+    }
+    .is-iocaine {
+        filter: hue-rotate(265deg) saturate(3);
+    }
+    &:hover {
+        .card-owner-actions {
+            opacity: 1;
+        }
+    }
+    img {
+        flex-shrink: 0;
+        height: 2.5rem;
+        margin-right: .5rem;
+        width: 2.5rem;
+    }
+    .card-owner-name {
+        color: $gray-light;
+    }
+}
+
+.card-owner-actions {
+    background: rgba($white, .9);
+    display: flex;
+    justify-content: space-between;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    transition: all .2s;
+    width: 100%;
+    &:hover {
+        color: $primary-light;
+        svg {
+            fill: currentColor;
+        }
+    }
+    .icon {
+        @include svg-size(1.2rem);
+        display: inline-block;
+        margin-right: .25rem;
+        padding: 0;
+    }
+    a {
+        align-items: center;
+        cursor: pointer;
+        display: flex;
+        padding: .6rem 1rem;
+    }
+}
+
+.card-title {
+    @include font-size(normal);
+    line-height: 1.25;
+    margin-bottom: .25rem;
+    padding: 1rem 1rem 0;
+    span {
+        padding-right: .25rem;
+    }
+}
+
+.card-data {
+    color: $gray-light;
+    display: flex;
+    font-size: 14px;
+    justify-content: space-between;
+    padding: 0 1rem .5rem;
+}
+
+.card-statistics {
+    @include font-size(small);
+    color: lighten($gray-light, 25%);
+    display: flex;
+    margin-left: auto;
+    .statistic {
+        align-content: center;
+        display: flex;
+        margin-left: .75rem;
+        &.active {
+            color: $primary-light;
+            svg {
+                fill: currentColor;
+            }
+        }
+    }
+    .icon {
+        @include svg-size(.75rem);
+        fill: lighten($gray-light, 25%);
+        margin-right: .2rem;
+    }
+}
+
+.card-completion {
+    margin: 0 1rem .5rem;
+    position: relative;
+    .card-completion-bar {
+        background: $whitish;
+        height: .4rem;
+        width: 100%;
+    }
+    .card-completion-percentage {
+        background: $primary-light;
+        cursor: pointer;
+        height: .4rem;
+        left: 0;
+        position: absolute;
+        top: 0;
+        &:hover {
+            + .card-tooltip {
+                opacity: 1;
+            }
+        }
+    }
+    .card-tooltip {
+        background: $blackish;
+        border-radius: 5px;
+        color: $white;
+        font-size: 14px;
+        left: calc(25% - 50px);
+        opacity: 0;
+        padding: .25rem 1rem;
+        position: absolute;
+        text-align: center;
+        top: -2.25rem;
+        transition: opacity .2s;
+        width: 100px;
+        &::after {
+            background: $black;
+            content: '';
+            height: 10px;
+            left: 50%;
+            position: absolute;
+            top: 70%;
+            transform: rotate(45deg);
+            width: 10px;
+        }
+    }
+}
+
+.card-unfold {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: .25rem;
+    &:hover {
+        background: linear-gradient(to bottom, $white, darken($white, 1%));
+    }
+    svg {
+        @include svg-size($width: 2rem, $height: .3rem);
+        fill: $whitish;
+    }
+}
+
+.card-tasks {
+    border-top: 1px solid $whitish;
+    margin: 0;
+    margin-top: .5rem;
+    padding: 0;
+}
+
+.card-task {
+    @include font-size(xsmall);
+    border-bottom: 1px solid $whitish;
+    list-style: none;
+    a {
+        color: $gray-light;
+        display: block;
+        overflow: hidden;
+        padding: .5rem .75rem;
+        text-overflow: ellipsis;
+        transition: color .2s;
+        white-space: nowrap;
+        &.blocked-task {
+            color: $red-light;
+        }
+        &.closed-task {
+            color: $gray-light;
+            text-decoration: line-through;
+        }
+        &:hover {
+            color: $primary;
+        }
+    }
+}
+
+.card-slideshow {
+    position: relative;
+    &:hover {
+        .slideshow-left,
+        .slideshow-right {
+            background: rgba($white, .2);
+            padding: .25rem;
+            transition: background .2s;
+        }
+    }
+    .slideshow-icon {
+        cursor: pointer;
+        position: absolute;
+        top: 35%;
+        &:hover {
+            background: rgba($primary-light, .5);
+            transition: background .2s;
+        }
+    }
+    svg {
+        @include svg-size(1.2rem);
+        transition: fill .2s;
+    }
+    .slideshow-left,
+    .slideshow-right {
+        background: transparent;
+        padding: .25rem;
+    }
+    .slideshow-left {
+        left: 0;
+    }
+    .slideshow-right {
+        right: 0;
+    }
+    img {
+        width: 100%;
+    }
+}
+
+.card-slideshow-wrapper {
+    align-items: center;
+    display: flex;
+    height: 120px;
+    justify-content: center;
+    overflow: hidden;
+    .loading-spinner {
+        min-height: 3rem;
+        min-width: 3rem;
+    }
+}

@@ -6,8 +6,20 @@ div.wrapper.issues.lightbox-generic-form(
     ng-init="section='issues'"
 )
     tg-project-menu
-    sidebar.menu-secondary.extrabar.filters-bar(tg-issues-filters)
-        include ../includes/modules/issues-filters
+    sidebar.filters-bar
+        tg-filter(
+          q="ctrl.filterQ"
+          filters="ctrl.filters"
+          custom-filters="ctrl.customFilters"
+          selected-filters="ctrl.selectedFilters"
+          customFilters="ctl.customFilters"
+          on-save-custom-filter="ctrl.saveCustomFilter(name)"
+          on-add-filter="ctrl.addFilter(filter)"
+          on-select-custom-filter="ctrl.selectCustomFilter(filter)"
+          on-remove-custom-filter="ctrl.removeCustomFilter(filter)"
+          on-remove-filter="ctrl.removeFilter(filter)"
+          on-change-q="ctrl.changeQ(q)"
+        )
 
     section.main.issues-page
         header

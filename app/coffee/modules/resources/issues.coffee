@@ -30,8 +30,6 @@ generateHash = taiga.generateHash
 resourceProvider = ($repo, $http, $urls, $storage, $q) ->
     service = {}
     hashSuffix = "issues-queryparams"
-    filtersHashSuffix = "issues-filters"
-    myFiltersHashSuffix = "issues-my-filters"
 
     service.get = (projectId, issueId) ->
         params = service.getQueryParams(projectId)
@@ -94,53 +92,6 @@ resourceProvider = ($repo, $http, $urls, $storage, $q) ->
         ns = "#{projectId}:#{hashSuffix}"
         hash = generateHash([projectId, ns])
         return $storage.get(hash) or {}
-
-    service.storeFilters = (projectSlug, params) ->
-        ns = "#{projectSlug}:#{filtersHashSuffix}"
-        hash = generateHash([projectSlug, ns])
-        $storage.set(hash, params)
-
-    service.getFilters = (projectSlug) ->
-        ns = "#{projectSlug}:#{filtersHashSuffix}"
-        hash = generateHash([projectSlug, ns])
-        return $storage.get(hash) or {}
-
-    service.storeMyFilters = (projectId, myFilters) ->
-        deferred = $q.defer()
-        url = $urls.resolve("user-storage")
-        ns = "#{projectId}:#{myFiltersHashSuffix}"
-        hash = generateHash([projectId, ns])
-        if _.isEmpty(myFilters)
-            promise = $http.delete("#{url}/#{hash}", {key: hash, value:myFilters})
-            promise.then ->
-                deferred.resolve()
-            promise.then null, ->
-                deferred.reject()
-        else
-            promise = $http.put("#{url}/#{hash}", {key: hash, value:myFilters})
-            promise.then (data) ->
-                deferred.resolve()
-            promise.then null, (data) ->
-                innerPromise = $http.post("#{url}", {key: hash, value:myFilters})
-                innerPromise.then ->
-                    deferred.resolve()
-                innerPromise.then null, ->
-                    deferred.reject()
-        return deferred.promise
-
-    service.getMyFilters = (projectId) ->
-        deferred = $q.defer()
-        url = $urls.resolve("user-storage")
-        ns = "#{projectId}:#{myFiltersHashSuffix}"
-        hash = generateHash([projectId, ns])
-
-        promise = $http.get("#{url}/#{hash}")
-        promise.then (data) ->
-            deferred.resolve(data.data.value)
-        promise.then null, (data) ->
-            deferred.resolve({})
-
-        return deferred.promise
 
     return (instance) ->
         instance.issues = service

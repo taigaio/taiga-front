@@ -40,8 +40,12 @@ module = angular.module("taigaKanban")
 
 KanbanSortableDirective = ($repo, $rs, $rootscope) ->
     link = ($scope, $el, $attrs) ->
-        bindOnce $scope, "project", (project) ->
-            if not (project.my_permissions.indexOf("modify_us") > -1)
+        unwatch = $scope.$watch "usByStatus", (usByStatus) ->
+            return if !usByStatus || !usByStatus.size
+
+            unwatch()
+
+            if not ($scope.project.my_permissions.indexOf("modify_us") > -1)
                 return
 
             oldParentScope = null
@@ -63,7 +67,7 @@ KanbanSortableDirective = ($repo, $rs, $rootscope) ->
                 copy: false,
                 mirrorContainer: tdom[0],
                 moves: (item) ->
-                    return $(item).hasClass('kanban-task')
+                    return $(item).is('tg-card')
             })
 
             drake.on 'drag', (item) ->
@@ -83,7 +87,7 @@ KanbanSortableDirective = ($repo, $rs, $rootscope) ->
                     deleteElement(itemEl)
 
                 $scope.$apply ->
-                    $rootscope.$broadcast("kanban:us:move", itemUs, itemUs.status, newStatusId, itemIndex)
+                    $rootscope.$broadcast("kanban:us:move", itemUs, itemUs.getIn(['model', 'status']), newStatusId, itemIndex)
 
             scroll = autoScroll(containers, {
                 margin: 100,

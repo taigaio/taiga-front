@@ -2,6 +2,7 @@ var utils = require('../utils');
 var kanbanHelper = require('../helpers').kanban;
 var backlogHelper = require('../helpers').backlog;
 var commonHelper = require('../helpers').common;
+var filterHelper = require('../helpers/filters-helper');
 
 var chai = require('chai');
 var chaiAsPromised = require('chai-as-promised');
@@ -16,6 +17,24 @@ describe('kanban', function() {
         await utils.common.waitLoader();
 
         utils.common.takeScreenshot('kanban', 'kanban');
+    });
+
+    it('zoom', async function() {
+        kanbanHelper.zoom(1);
+        await browser.sleep(1000);
+        utils.common.takeScreenshot('kanban', 'zoom1');
+
+        kanbanHelper.zoom(2);
+        await browser.sleep(1000);
+        utils.common.takeScreenshot('kanban', 'zoom2');
+
+        kanbanHelper.zoom(3);
+        await browser.sleep(1000);
+        utils.common.takeScreenshot('kanban', 'zoom3');
+
+        kanbanHelper.zoom(4);
+        await browser.sleep(1000);
+        utils.common.takeScreenshot('kanban', 'zoom4');
     });
 
     describe('create us', function() {
@@ -148,7 +167,6 @@ describe('kanban', function() {
             await utils.lightbox.close(createUSLightbox.el);
 
             let ussTitles = await kanbanHelper.getColumnUssTitles(0);
-
             let findSubject = ussTitles.indexOf(formFields.subject) !== -1;
 
             expect(findSubject).to.be.true;
@@ -297,8 +315,12 @@ describe('kanban', function() {
 
         await lightbox.waitClose();
 
-        let usAssignedTo = await kanbanHelper.getBoxUss(0).get(0).$('.task-assigned').getText();
+        let usAssignedTo = await kanbanHelper.getBoxUss(0).get(0).$('.card-owner-name').getText();
 
         expect(assgnedToName).to.be.equal(usAssignedTo);
     });
+
+    describe('kanban filters', sharedFilters.bind(this, 'kanban', () => {
+        return kanbanHelper.getUss().count();
+    }));
 });

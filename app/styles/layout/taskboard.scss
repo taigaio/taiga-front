@@ -1,6 +1,7 @@
 .taskboard {
     height: $main-height;
     overflow: hidden;
+    position: relative;
     h1,
     .graphics-container,
     .summary {
@@ -9,6 +10,12 @@
     .graphics-container {
         @include slide(300px, hidden);
     }
+}
+
+.taskboard-header {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
 }
 
 .taskboard-inner {

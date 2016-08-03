@@ -38,13 +38,14 @@ module = angular.module("taigaTaskboard")
 ## Taskboard Controller
 #############################################################################
 
-class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
+class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.FiltersMixin)
     @.$inject = [
         "$scope",
         "$rootScope",
         "$tgRepo",
         "$tgConfirm",
         "$tgResources",
+        "tgResources"
         "$routeParams",
         "$q",
         "tgAppMetaService",
@@ -53,12 +54,20 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$tgEvents"
         "$tgAnalytics",
         "$translate",
-        "tgErrorHandlingService"
+        "tgErrorHandlingService",
+        "tgTaskboardTasks",
+        "$tgStorage",
+        "tgFilterRemoteStorageService"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @appMetaService, @location, @navUrls,
-                  @events, @analytics, @translate, @errorHandlingService) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @rs2, @params, @q, @appMetaService, @location, @navUrls,
+                  @events, @analytics, @translate, @errorHandlingService, @taskboardTasksService, @storage, @filterRemoteStorageService) ->
         bindMethods(@)
+        @taskboardTasksService.reset()
+        @scope.userstories = []
+        @.openFilter = false
+
+        return if @.applyStoredFilters(@params.pslug, "tasks-filters")
 
         @scope.sectionName = @translate.instant("TASKBOARD.SECTION_NAME")
         @.initializeEventHandlers()
@@ -69,6 +78,150 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
         promise.then => @._setMeta()
         # On Error
         promise.then null, @.onInitialDataError.bind(@)
+
+        taiga.defineImmutableProperty @.scope, "usTasks", () =>
+            return @taskboardTasksService.usTasks
+
+    setZoom: (zoomLevel, zoom) ->
+        if @.zoomLevel != zoomLevel
+            @taskboardTasksService.resetFolds()
+
+        @.zoomLevel = zoomLevel
+        @.zoom = zoom
+
+        if @.zoomLevel == '0'
+            @rootscope.$broadcast("sprint:zoom0")
+
+    changeQ: (q) ->
+        @.replaceFilter("q", q)
+        @.loadTasks()
+        @.generateFilters()
+
+    removeFilter: (filter) ->
+        @.unselectFilter(filter.dataType, filter.id)
+        @.loadTasks()
+        @.generateFilters()
+
+    addFilter: (newFilter) ->
+        @.selectFilter(newFilter.category.dataType, newFilter.filter.id)
+        @.loadTasks()
+        @.generateFilters()
+
+    selectCustomFilter: (customFilter) ->
+        @.replaceAllFilters(customFilter.filter)
+        @.loadTasks()
+        @.generateFilters()
+
+    removeCustomFilter: (customFilter) ->
+        @filterRemoteStorageService.getFilters(@scope.projectId, 'tasks-custom-filters').then (userFilters) =>
+            delete userFilters[customFilter.id]
+
+            @filterRemoteStorageService.storeFilters(@scope.projectId, userFilters, 'tasks-custom-filters').then(@.generateFilters)
+
+    saveCustomFilter: (name) ->
+        filters = {}
+        urlfilters = @location.search()
+        filters.tags = urlfilters.tags
+        filters.status = urlfilters.status
+        filters.assigned_to = urlfilters.assigned_to
+        filters.owner = urlfilters.owner
+
+        @filterRemoteStorageService.getFilters(@scope.projectId, 'tasks-custom-filters').then (userFilters) =>
+            userFilters[name] = filters
+
+            @filterRemoteStorageService.storeFilters(@scope.projectId, userFilters, 'tasks-custom-filters').then(@.generateFilters)
+
+    generateFilters: ->
+        @.storeFilters(@params.pslug, @location.search(), "tasks-filters")
+
+        urlfilters = @location.search()
+
+        loadFilters = {}
+        loadFilters.project = @scope.projectId
+        loadFilters.milestone = @scope.sprintId
+        loadFilters.tags = urlfilters.tags
+        loadFilters.status = urlfilters.status
+        loadFilters.assigned_to = urlfilters.assigned_to
+        loadFilters.owner = urlfilters.owner
+        loadFilters.q = urlfilters.q
+
+        return @q.all([
+            @rs.tasks.filtersData(loadFilters),
+            @filterRemoteStorageService.getFilters(@scope.projectId, 'tasks-custom-filters')
+        ]).then (result) =>
+            data = result[0]
+            customFiltersRaw = result[1]
+
+            statuses = _.map data.statuses, (it) ->
+                it.id = it.id.toString()
+
+                return it
+            tags = _.map data.tags, (it) ->
+                it.id = it.name
+
+                return it
+            assignedTo = _.map data.assigned_to, (it) ->
+                if it.id
+                    it.id = it.id.toString()
+                else
+                    it.id = "null"
+
+                it.name = it.full_name || "Unassigned"
+
+                return it
+            owner = _.map data.owners, (it) ->
+                it.id = it.id.toString()
+                it.name = it.full_name
+
+                return it
+
+            @.selectedFilters = []
+
+            if loadFilters.status
+                selected = @.formatSelectedFilters("status", statuses, loadFilters.status)
+                @.selectedFilters = @.selectedFilters.concat(selected)
+
+            if loadFilters.tags
+                selected = @.formatSelectedFilters("tags", tags, loadFilters.tags)
+                @.selectedFilters = @.selectedFilters.concat(selected)
+
+            if loadFilters.assigned_to
+                selected = @.formatSelectedFilters("assigned_to", assignedTo, loadFilters.assigned_to)
+                @.selectedFilters = @.selectedFilters.concat(selected)
+
+            if loadFilters.owner
+                selected = @.formatSelectedFilters("owner", owner, loadFilters.owner)
+                @.selectedFilters = @.selectedFilters.concat(selected)
+
+            @.filterQ = loadFilters.q
+
+            @.filters = [
+                {
+                    title: @translate.instant("COMMON.FILTERS.CATEGORIES.STATUS"),
+                    dataType: "status",
+                    content: statuses
+                },
+                {
+                    title: @translate.instant("COMMON.FILTERS.CATEGORIES.TAGS"),
+                    dataType: "tags",
+                    content: tags,
+                    hideEmpty: true
+                },
+                {
+                    title: @translate.instant("COMMON.FILTERS.CATEGORIES.ASSIGNED_TO"),
+                    dataType: "assigned_to",
+                    content: assignedTo
+                },
+                {
+                    title: @translate.instant("COMMON.FILTERS.CATEGORIES.CREATED_BY"),
+                    dataType: "owner",
+                    content: owner
+                }
+            ];
+
+            @.customFilters = []
+            _.forOwn customFiltersRaw, (value, key) =>
+                @.customFilters.push({id: key, name: key, filter: value})
 
     _setMeta: ->
         prettyDate = @translate.instant("BACKLOG.SPRINTS.DATE")
@@ -92,24 +245,33 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
         @appMetaService.setAll(title, description)
 
     initializeEventHandlers: ->
-        # TODO: Reload entire taskboard after create/edit tasks seems
-        # a big overhead. It should be optimized in near future.
-        @scope.$on "taskform:bulk:success", =>
-            @.loadTaskboard()
+        @scope.$on "taskform:bulk:success", (event, tasks) =>
+            @.refreshTagsColors().then () =>
+                @taskboardTasksService.add(tasks)
+
             @analytics.trackEvent("task", "create", "bulk create task on taskboard", 1)
 
-        @scope.$on "taskform:new:success", =>
-            @.loadTaskboard()
+        @scope.$on "taskform:new:success", (event, task) =>
+            @.refreshTagsColors().then () =>
+                @taskboardTasksService.add(task)
+
             @analytics.trackEvent("task", "create", "create task on taskboard", 1)
 
-        @scope.$on("taskform:edit:success", => @.loadTaskboard())
-        @scope.$on("taskboard:task:move", @.taskMove)
+        @scope.$on "taskform:edit:success", (event, task) =>
+            @.refreshTagsColors().then () =>
+                @taskboardTasksService.replaceModel(task)
 
-        @scope.$on "assigned-to:added", (ctx, userId, task) =>
-            task.assigned_to = userId
-            promise = @repo.save(task)
-            promise.then null, ->
-                console.log "FAIL" # TODO
+        @scope.$on("taskboard:task:move", @.taskMove)
+        @scope.$on("assigned-to:added", @.onAssignedToChanged)
+
+    onAssignedToChanged: (ctx, userid, taskModel) ->
+        taskModel.assigned_to = userid
+
+        @taskboardTasksService.replaceModel(taskModel)
+
+        promise = @repo.save(taskModel)
+        promise.then null, ->
+            console.log "FAIL" # TODO
 
     initializeSubscription: ->
         routingKey = "changes.project.#{@scope.projectId}.tasks"
@@ -130,7 +292,6 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
             @scope.project = project
             # Not used at this momment
             @scope.pointsList = _.sortBy(project.points, "order")
-            # @scope.roleList = _.sortBy(project.roles, "order")
             @scope.pointsById = groupBy(project.points, (e) -> e.id)
             @scope.roleById = groupBy(project.roles, (e) -> e.id)
             @scope.taskStatusList = _.sortBy(project.task_statuses, "order")
@@ -170,34 +331,22 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
         return @rs.sprints.get(@scope.projectId, @scope.sprintId).then (sprint) =>
             @scope.sprint = sprint
             @scope.userstories = _.sortBy(sprint.user_stories, "sprint_order")
+
+            @taskboardTasksService.setUserstories(@scope.userstories)
+
             return sprint
 
     loadTasks: ->
-        return @rs.tasks.list(@scope.projectId, @scope.sprintId).then (tasks) =>
-            @scope.tasks = _.sortBy(tasks, 'taskboard_order')
-            @scope.usTasks = {}
+        params = {
+            include_attachments: true,
+            include_tasks: true
+        }
 
-            # Iterate over all userstories and
-            # null userstory for unassigned tasks
-            for us in _.union(@scope.userstories, [{id:null}])
-                @scope.usTasks[us.id] = {}
-                for status in @scope.taskStatusList
-                    @scope.usTasks[us.id][status.id] = []
+        params = _.merge params, @location.search()
 
-            for task in @scope.tasks
-                if @scope.usTasks[task.user_story]? and @scope.usTasks[task.user_story][task.status]?
-                    @scope.usTasks[task.user_story][task.status].push(task)
-
-            if tasks.length == 0
-
-                if @scope.userstories.length > 0
-                    usId = @scope.userstories[0].id
-                else
-                    usId = null
-
-                @scope.usTasks[usId][@scope.taskStatusList[0].id].push({isPlaceholder: true})
-
-            return tasks
+        return @rs.tasks.list(@scope.projectId, @scope.sprintId, null, params).then (tasks) =>
+            @taskboardTasksService.init(@scope.project, @scope.usersById)
+            @taskboardTasksService.set(tasks)
 
     loadTaskboard: ->
         return @q.all([
@@ -219,51 +368,56 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
             return data
 
         return promise.then(=> @.loadProject())
-                      .then(=> @.loadTaskboard())
-                      .then(=> @.setRolePoints())
+                      .then =>
+                          @.generateFilters()
 
-    refreshTasksOrder: (tasks) ->
-            items = @.resortTasks(tasks)
-            data = @.prepareBulkUpdateData(items)
+                          return @.loadTaskboard().then(=> @.setRolePoints())
 
-            return @rs.tasks.bulkUpdateTaskTaskboardOrder(@scope.project.id, data)
+    showPlaceHolder: (statusId, usId) ->
+        if !@taskboardTasksService.tasksRaw.length
+            if @scope.taskStatusList[0].id == statusId &&
+              (!@scope.userstories.length || @scope.userstories[0].id == usId)
+                return true
 
-    resortTasks: (tasks) ->
-        items = []
+        return false
 
-        for item, index in tasks
-            item["taskboard_order"] = index
-            if item.isModified()
-                items.push(item)
+    editTask: (id) ->
+        task = @.taskboardTasksService.getTask(id)
 
-        return items
+        task = task.set('loading', true)
+        @taskboardTasksService.replace(task)
 
-    prepareBulkUpdateData: (uses) ->
-         return _.map(uses, (x) -> {"task_id": x.id, "order": x["taskboard_order"]})
+        @rs.tasks.getByRef(task.getIn(['model', 'project']), task.getIn(['model', 'ref'])).then (editingTask) =>
+             @rs2.attachments.list("task", task.get('id'), task.getIn(['model', 'project'])).then (attachments) =>
+                @rootscope.$broadcast("taskform:edit", editingTask, attachments.toJS())
+                task = task.set('loading', false)
+                @taskboardTasksService.replace(task)
 
-    taskMove: (ctx, task, usId, statusId, order) ->
-        # Remove task from old position
-        r = @scope.usTasks[task.user_story][task.status].indexOf(task)
-        @scope.usTasks[task.user_story][task.status].splice(r, 1)
+    taskMove: (ctx, task, oldStatusId, usId, statusId, order) ->
+        task = @taskboardTasksService.getTaskModel(task.get('id'))
 
-        # Add task to new position
-        tasks = @scope.usTasks[usId][statusId]
-        tasks.splice(order, 0, task)
+        moveUpdateData = @taskboardTasksService.move(task.id, usId, statusId, order)
 
-        task.user_story = usId
-        task.status = statusId
-        task.taskboard_order = order
+        params = {
+            status__is_archived: false,
+            include_attachments: true,
+            include_tasks: true
+        }
 
-        promise = @repo.save(task)
+        options = {
+            headers: {
+                "set-orders": JSON.stringify(moveUpdateData.set_orders)
+            }
+        }
 
-        @rootscope.$broadcast("sprint:task:moved", task)
+        promise = @repo.save(task, true, params, options, true).then (result) =>
+            headers = result[1]
 
-        promise.then =>
-            @.refreshTasksOrder(tasks)
+            if headers && headers['taiga-info-order-updated']
+                order = JSON.parse(headers['taiga-info-order-updated'])
+                @taskboardTasksService.assignOrders(order)
+
             @.loadSprintStats()
-
-        promise.then null, =>
-            console.log "FAIL TASK SAVE"
 
     ## Template actions
     addNewTask: (type, us) ->
@@ -271,7 +425,12 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin)
             when "standard" then @rootscope.$broadcast("taskform:new", @scope.sprintId, us?.id)
             when "bulk" then @rootscope.$broadcast("taskform:bulk", @scope.sprintId, us?.id)
 
-    editTaskAssignedTo: (task) ->
+    toggleFold: (id) ->
+        @taskboardTasksService.toggleFold(id)
+
+    changeTaskAssignedTo: (id) ->
+        task = @taskboardTasksService.getTaskModel(id)
+
         @rootscope.$broadcast("assigned-to:add", task)
 
     setRolePoints: () ->
@@ -331,43 +490,6 @@ TaskboardDirective = ($rootscope) ->
 
 module.directive("tgTaskboard", ["$rootScope", TaskboardDirective])
 
-
-#############################################################################
-## Taskboard Task Directive
-#############################################################################
-
-TaskboardTaskDirective = ($rootscope, $loading, $rs, $rs2) ->
-    link = ($scope, $el, $attrs, $model) ->
-        $scope.$watch "task", (task) ->
-            if task.is_blocked and not $el.hasClass("blocked")
-                $el.addClass("blocked")
-            else if not task.is_blocked and $el.hasClass("blocked")
-                $el.removeClass("blocked")
-
-        $el.find(".edit-task").on "click", (event) ->
-            if $el.find('.edit-task').hasClass('noclick')
-                return
-
-            $scope.$apply ->
-                target = $(event.target)
-
-                currentLoading = $loading()
-                    .target(target)
-                    .timeout(200)
-                    .start()
-
-                task = $scope.task
-
-                $rs.tasks.getByRef(task.project, task.ref).then (editingTask) =>
-                    $rs2.attachments.list("task", editingTask.id, editingTask.project).then (attachments) =>
-                        $rootscope.$broadcast("taskform:edit", editingTask, attachments.toJS())
-                        currentLoading.finish()
-
-    return {link:link}
-
-
-module.directive("tgTaskboardTask", ["$rootScope", "$tgLoading", "$tgResources", "tgResources", TaskboardTaskDirective])
-
 #############################################################################
 ## Taskboard Squish Column Directive
 #############################################################################
@@ -377,14 +499,18 @@ TaskboardSquishColumnDirective = (rs) ->
     maxColumnWidth = 300
 
     link = ($scope, $el, $attrs) ->
+        $scope.$on "sprint:zoom0", () =>
+            recalculateTaskboardWidth()
+
         $scope.$on "sprint:task:moved", () =>
             recalculateTaskboardWidth()
 
-        bindOnce $scope, "usTasks", (project) ->
-            $scope.statusesFolded = rs.tasks.getStatusColumnModes($scope.project.id)
-            $scope.usFolded = rs.tasks.getUsRowModes($scope.project.id, $scope.sprintId)
+        $scope.$watch "usTasks", () ->
+            if $scope.project
+                $scope.statusesFolded = rs.tasks.getStatusColumnModes($scope.project.id)
+                $scope.usFolded = rs.tasks.getUsRowModes($scope.project.id, $scope.sprintId)
 
-            recalculateTaskboardWidth()
+                recalculateTaskboardWidth()
 
         $scope.foldStatus = (status) ->
             $scope.statusesFolded[status.id] = !!!$scope.statusesFolded[status.id]
@@ -403,7 +529,10 @@ TaskboardSquishColumnDirective = (rs) ->
             recalculateTaskboardWidth()
 
         getCeilWidth = (usId, statusId) =>
-            tasks = $scope.usTasks[usId][statusId].length
+            if usId
+                tasks = $scope.usTasks.getIn([usId.toString(), statusId.toString()]).size
+            else
+                tasks = $scope.usTasks.getIn(['null', statusId.toString()]).size
 
             if $scope.statusesFolded[statusId]
                 if tasks and $scope.usFolded[usId]
@@ -422,7 +551,10 @@ TaskboardSquishColumnDirective = (rs) ->
             if width
                 column.css('max-width', width)
             else
-                column.css("max-width", maxColumnWidth)
+                if $scope.ctrl.zoomLevel == '0'
+                    column.css("max-width", 148)
+                else
+                    column.css("max-width", maxColumnWidth)
 
         refreshTaskboardTableWidth = () =>
             columnWidths = []
@@ -458,67 +590,3 @@ TaskboardSquishColumnDirective = (rs) ->
     return {link: link}
 
 module.directive("tgTaskboardSquishColumn", ["$tgResources", TaskboardSquishColumnDirective])
-
-#############################################################################
-## Taskboard User Directive
-#############################################################################
-
-TaskboardUserDirective = ($log, $translate, avatarService) ->
-    clickable = false
-
-    link = ($scope, $el, $attrs) ->
-        username_label = $el.parent().find("a.task-assigned")
-        username_label.addClass("not-clickable")
-
-        $scope.$watch 'task.assigned_to', (assigned_to) ->
-            user = $scope.usersById[assigned_to]
-
-            avatar = avatarService.getAvatar(user)
-
-            if user is undefined
-                _.assign($scope, {
-                    name: $translate.instant("COMMON.ASSIGNED_TO.NOT_ASSIGNED"),
-                    avatar: avatar,
-                    clickable: clickable
-                })
-            else
-                _.assign($scope, {
-                    name: user.full_name_display,
-                    avatar: avatar,
-                    clickable: clickable
-                })
-
-            username_label.text($scope.name)
-
-
-        bindOnce $scope, "project", (project) ->
-            if project.my_permissions.indexOf("modify_task") > -1
-                clickable = true
-                $el.find(".avatar-assigned-to").on "click", (event) =>
-                    if $el.find('a').hasClass('noclick')
-                        return
-
-                    $ctrl = $el.controller()
-                    $ctrl.editTaskAssignedTo($scope.task)
-
-                username_label.removeClass("not-clickable")
-                username_label.on "click", (event) ->
-                    if $el.find('a').hasClass('noclick')
-                        return
-
-                    $ctrl = $el.controller()
-                    $ctrl.editTaskAssignedTo($scope.task)
-
-
-    return {
-        link: link,
-        templateUrl: "taskboard/taskboard-user.html",
-        scope: {
-            "usersById": "=users",
-            "project": "=",
-            "task": "=",
-        }
-    }
-
-
-module.directive("tgTaskboardUserAvatar", ["$log", "$translate", "tgAvatarService", TaskboardUserDirective])

@@ -23,6 +23,10 @@
     - Add Wiki history
 - Third party integrations:
     - Included gogs as builtin integration.
+- Filters refactor
+- Cards ui refactor with zoom
+- Kanban filters
+- Taskboard filters
 
 ### Misc
 - Lots of small and not so small bugfixes.

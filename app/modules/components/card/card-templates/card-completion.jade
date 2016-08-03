@@ -1,0 +1,4 @@
+.card-completion(ng-if="vm.visible('extra_info') && vm.item.getIn(['model', 'tasks']).size")
+    .card-completion-bar
+    .card-completion-percentage(ng-style="{width: vm.closedTasksPercent() + '%'}" )
+    span.card-tooltip tasks {{vm.getClosedTasks().size}}/{{vm.item.getIn(['model', 'tasks']).size}}

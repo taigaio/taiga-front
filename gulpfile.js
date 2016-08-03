@@ -291,7 +291,11 @@ gulp.task("css-lint-app", function() {
     return gulp.src(cssFiles)
         .pipe(gulpif(!isDeploy, cache(csslint("csslintrc.json"), {
           success: function(csslintFile) {
-            return csslintFile.csslint.success;
+              if (csslintFile.csslint) {
+                  return csslintFile.csslint.success;
+              } else {
+                  return false;
+              }
           },
           value: function(csslintFile) {
             return {

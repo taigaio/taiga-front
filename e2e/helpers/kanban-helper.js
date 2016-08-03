@@ -15,15 +15,31 @@ helper.getColumns = function() {
 };
 
 helper.getColumnUssTitles = function(column) {
-    return helper.getColumns().$$('.task-name').getText();
+    return helper.getColumns().$$('.e2e-title').getText();
 };
 
 helper.getBoxUss = function(column) {
-    return helper.getColumns().get(column).$$('.kanban-task');
+    return helper.getColumns().get(column).$$('tg-card');
 };
 
-helper.editUs = function(column, us) {
-    helper.getColumns().get(column).$$('.edit-us').get(us).click();
+helper.getUss = function() {
+    return $$('tg-card')
+};
+
+helper.editUs = async function(column, us) {
+    let editionZone = helper.getColumns().get(column).$$('.card-owner-actions').get(us);
+
+    await browser
+        .actions()
+        .mouseMove(editionZone)
+        .perform();
+
+    return browser
+        .actions()
+        .mouseMove(editionZone)
+        .mouseMove(editionZone.$('.e2e-edit'))
+        .click()
+        .perform();
 };
 
 helper.openBulkUsLb = function(column) {
@@ -59,5 +75,13 @@ helper.scrollRight = function() {
 };
 
 helper.watchersLinks = function() {
-    return $$('.task-assigned');
+    return $$('.e2e-assign');
+};
+
+helper.zoom = async function(level) {
+    return  browser
+        .actions()
+        .mouseMove($('tg-board-zoom'), {y: 14, x: level * 49})
+        .click()
+        .perform();
 };

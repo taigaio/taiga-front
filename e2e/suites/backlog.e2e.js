@@ -5,6 +5,8 @@ var commonHelper = require('../helpers').common;
 var chai = require('chai');
 var chaiAsPromised = require('chai-as-promised');
 
+var sharedFilters = require('../shared/filters');
+
 chai.use(chaiAsPromised);
 var expect = chai.expect;
 
@@ -243,7 +245,7 @@ describe('backlog', function() {
         expect(elementRef1).to.be.equal(draggedRefs[1]);
     });
 
-    it.only('drag multiple us to milestone', async function() {
+    it('drag multiple us to milestone', async function() {
         let sprint = backlogHelper.sprints().get(0);
         let initUssSprintCount = await backlogHelper.getSprintUsertories(sprint).count();
 
@@ -453,143 +455,9 @@ describe('backlog', function() {
         });
     });
 
-    describe('filters', function() {
-        it('show filters', async function() {
-            let transition = utils.common.transitionend('.menu-secondary.filters-bar', 'opacity');
-
-            $('#show-filters-button').click();
-
-            await transition();
-
-            utils.common.takeScreenshot('backlog', 'backlog-filters');
-        });
-
-        it('filter by subject', async function() {
-            let usCount = await backlogHelper.userStories().count();
-            let filterQ = element(by.model('filtersQ'));
-
-            let htmlChanges = await utils.common.outerHtmlChanges('.backlog-table-body');
-
-            await filterQ.sendKeys('add');
-
-            await htmlChanges();
-
-            let newUsCount = await backlogHelper.userStories().count();
-
-            expect(newUsCount).to.be.below(usCount);
-
-            htmlChanges = await utils.common.outerHtmlChanges('.backlog-table-body');
-
-            // clear status
-            await filterQ.clear();
-
-            await htmlChanges();
-        });
-
-        it('filter by ref', async function() {
-            let userstories = backlogHelper.userStories();
-            let filterQ = element(by.model('filtersQ'));
-            let htmlChanges = await utils.common.outerHtmlChanges('.backlog-table-body');
-
-            let ref = await backlogHelper.getTestingFilterRef();
-
-            ref = ref.replace('#', '');
-
-            await filterQ.sendKeys(ref);
-            await htmlChanges();
-
-            let newUsCount = await userstories.count();
-            expect(newUsCount).to.be.equal(1);
-
-            htmlChanges = await utils.common.outerHtmlChanges('.backlog-table-body');
-
-            // clear status
-            await filterQ.clear();
-
-            await htmlChanges();
-        });
-
-        it('filter by status', async function() {
-            let usCount = await backlogHelper.userStories().count();
-
-            let htmlChanges = await utils.common.outerHtmlChanges('.backlog-table-body');
-
-            $$('.filters-cats a').first().click();
-            $$('.filter-list a').first().click();
-
-            await htmlChanges();
-
-            let newUsCount = await backlogHelper.userStories().count();
-
-            expect(newUsCount).to.be.below(usCount);
-
-            //remove status
-            htmlChanges = await utils.common.outerHtmlChanges('.backlog-table-body');
-
-            $$('.filters-applied a').first().click();
-
-            await htmlChanges();
-
-            newUsCount = await backlogHelper.userStories().count();
-
-            expect(newUsCount).to.be.equal(usCount);
-
-            backlogHelper.goBackFilters();
-        });
-
-        it('filter by tags', async function() {
-            let usCount = await backlogHelper.userStories().count();
-            let htmlChanges = await utils.common.outerHtmlChanges('.backlog-table-body');
-
-            $$('.filters-cats a').get(1).click();
-            await browser.waitForAngular();
-
-            $$('.filter-list a').first().click();
-
-            await htmlChanges();
-
-            let newUsCount = await backlogHelper.userStories().count();
-
-            expect(newUsCount).to.be.below(usCount);
-
-            //remove tags
-            htmlChanges = await utils.common.outerHtmlChanges('.backlog-table-body');
-
-            $$('.filters-applied a').first().click();
-
-            await htmlChanges();
-
-            newUsCount = await backlogHelper.userStories().count();
-
-            expect(newUsCount).to.be.equal(usCount);
-        });
-
-        it('trying drag with filters open', async function() {
-            let dragableElements =  backlogHelper.userStories();
-            let dragElement = dragableElements.get(5);
-
-            await utils.common.drag(dragElement, dragableElements.get(0));
-
-            let waitErrorOpen = await utils.notifications.error.open();
-
-            expect(waitErrorOpen).to.be.true;
-
-            await utils.notifications.error.close();
-        });
-
-        it('hide filters', async function() {
-            let menu = $('.menu-secondary.filters-bar');
-            let transition = utils.common.transitionend('.menu-secondary.filters-bar', 'width');
-
-            $('#show-filters-button').click();
-
-            await transition();
-
-            let waitWidth = await menu.getCssValue('width');
-
-            expect(waitWidth).to.be.equal('0px');
-        });
-    });
+    describe('backlog filters', sharedFilters.bind(this, 'backlog', () => {
+        return backlogHelper.userStories().count();
+    }));
 
     describe('closed sprints', function() {
         async function createEmptyMilestone() {

@@ -41,7 +41,7 @@ class RepositoryService extends taiga.Service
         defered = @q.defer()
         url = @urls.resolve(name)
 
-        promise = @http.post(url, JSON.stringify(data))
+        promise = @http.post(url, JSON.stringify(data), extraParams)
         promise.success (_data, _status) =>
             defered.resolve(@model.make_model(name, _data, null, dataTypes))
 
@@ -67,7 +67,7 @@ class RepositoryService extends taiga.Service
         promises = _.map(models, (x) => @.save(x, true))
         return @q.all(promises)
 
-    save: (model, patch=true) ->
+    save: (model, patch=true, params = {}, options, returnHeaders = false) ->
         defered = @q.defer()
 
         if not model.isModified() and patch
@@ -75,20 +75,25 @@ class RepositoryService extends taiga.Service
             return defered.promise
 
         url = @.resolveUrlForModel(model)
+
         data = JSON.stringify(model.getAttrs(patch))
 
         if patch
-            promise = @http.patch(url, data)
+            promise = @http.patch(url, data, params, options)
         else
-            promise = @http.put(url, data)
+            promise = @http.put(url, data, params, options)
 
-        promise.success (data, status) =>
+        promise.success (data, status, headers, response) =>
             model._isModified = false
             model._attrs = _.extend(model.getAttrs(), data)
             model._modifiedAttrs = {}
 
             model.applyCasts()
-            defered.resolve(model)
+
+            if returnHeaders
+                defered.resolve([model, headers()])
+            else
+                defered.resolve(model)
 
         promise.error (data, status) ->
             defered.reject(data)

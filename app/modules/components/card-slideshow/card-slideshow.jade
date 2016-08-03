@@ -1,0 +1,18 @@
+.card-slideshow(ng-if="vm.images.size")
+    tg-svg.slideshow-icon.slideshow-left(
+        ng-click="vm.previous()"
+        ng-if="vm.images.size > 1"
+        svg-icon="icon-arrow-left"
+    )
+    tg-svg.slideshow-icon.slideshow-right(
+        ng-click="vm.next()"
+        ng-if="vm.images.size > 1"
+        svg-icon="icon-arrow-right"
+    )
+
+    .card-slideshow-wrapper(
+        ng-if="$index == vm.index"
+        tg-repeat="image in vm.images track by image.get('id')"
+    )
+        tg-preload-image(preload-src="{{image.get('thumbnail_card_url')}}")
+            img(ng-src="{{image.get('thumbnail_card_url')}}")

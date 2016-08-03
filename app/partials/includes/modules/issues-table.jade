@@ -1,13 +1,21 @@
 section.issues-table.basic-table(ng-class="{empty: !issues.length}")
     div.row.title
-        div.level-field(data-fieldname="type", translate="ISSUES.TABLE.COLUMNS.TYPE")
-        div.level-field(data-fieldname="severity", translate="ISSUES.TABLE.COLUMNS.SEVERITY")
-        div.level-field(data-fieldname="priority", translate="ISSUES.TABLE.COLUMNS.PRIORITY")
-        div.votes(data-fieldname="total_voters", translate="ISSUES.TABLE.COLUMNS.VOTES")
-        div.subject(data-fieldname="subject", translate="ISSUES.TABLE.COLUMNS.SUBJECT")
-        div.issue-field(data-fieldname="status", translate="ISSUES.TABLE.COLUMNS.STATUS")
-        div.created-field(data-fieldname="created_date", translate="ISSUES.TABLE.COLUMNS.CREATED")
-        div.assigned-field(data-fieldname="assigned_to", translate="ISSUES.TABLE.COLUMNS.ASSIGNED_TO")
+        div.level-field(data-fieldname="type")
+             | {{"ISSUES.TABLE.COLUMNS.TYPE" | translate}}
+        div.level-field(data-fieldname="severity")
+             | {{"ISSUES.TABLE.COLUMNS.SEVERITY" | translate}}
+        div.level-field(data-fieldname="priority")
+             | {{"ISSUES.TABLE.COLUMNS.PRIORITY" | translate}}
+        div.votes(data-fieldname="total_voters")
+             | {{"ISSUES.TABLE.COLUMNS.VOTES" | translate}}
+        div.subject(data-fieldname="subject")
+             | {{"ISSUES.TABLE.COLUMNS.SUBJECT" | translate}}
+        div.issue-field(data-fieldname="status")
+             | {{"ISSUES.TABLE.COLUMNS.STATUS" | translate}}
+        div.created-field(data-fieldname="created_date")
+             | {{"ISSUES.TABLE.COLUMNS.CREATED" | translate}}
+        div.assigned-field(data-fieldname="assigned_to")
+             | {{"ISSUES.TABLE.COLUMNS.ASSIGNED_TO" | translate}}
 
     div.row.table-main(
         ng-repeat="issue in issues track by issue.id"

@@ -13,7 +13,11 @@ helper.getBox = function(row, column) {
 helper.getBoxTasks = function(row, column) {
     let box = helper.getBox(row, column);
 
-    return box.$$('.taskboard-task');
+    return box.$$('tg-card');
+};
+
+helper.getTasks = function() {
+    return $$('tg-card');
 };
 
 helper.openNewTaskLb = function(row) {
@@ -52,8 +56,20 @@ helper.unFoldColumn = function(row) {
     icon.click();
 };
 
-helper.editTask = function(row, column, task) {
-    helper.getBoxTasks(row, column).get(task).$('.edit-task').click();
+helper.editTask = async function(row, column, task) {
+    let editionZone = helper.getBoxTasks(row, column).$$('.card-owner-actions').get(task);
+
+    await browser
+        .actions()
+        .mouseMove(editionZone)
+        .perform();
+
+    return browser
+        .actions()
+        .mouseMove(editionZone)
+        .mouseMove(editionZone.$('.e2e-edit'))
+        .click()
+        .perform();
 };
 
 helper.toggleGraph = function() {
@@ -114,5 +130,13 @@ helper.getBulkCreateTask = function() {
 };
 
 helper.watchersLinks = function() {
-    return $$('.task-assigned');
+    return $$('.e2e-assign');
+};
+
+helper.zoom = async function(level) {
+    return  browser
+        .actions()
+        .mouseMove($('tg-board-zoom'), {y: 10, x: level * 74})
+        .click()
+        .perform();
 };

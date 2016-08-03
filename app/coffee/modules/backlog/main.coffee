@@ -39,7 +39,7 @@ module = angular.module("taigaBacklog")
 ## Backlog Controller
 #############################################################################
 
-class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.FiltersMixin)
+class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.FiltersMixin, taiga.UsFiltersMixin)
     @.$inject = [
         "$scope",
         "$rootScope",
@@ -57,17 +57,29 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         "$tgLoading",
         "tgResources",
         "$tgQueueModelTransformation",
-        "tgErrorHandlingService"
+        "tgErrorHandlingService",
+        "$tgStorage",
+        "tgFilterRemoteStorageService"
     ]
 
+    storeCustomFiltersName: 'backlog-custom-filters'
+    storeFiltersName: 'backlog-filters'
+    backlogOrder: {}
+    milestonesOrder: {}
+
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @appMetaService, @navUrls,
-                  @events, @analytics, @translate, @loading, @rs2, @modelTransform, @errorHandlingService) ->
+                  @events, @analytics, @translate, @loading, @rs2, @modelTransform, @errorHandlingService, @storage, @filterRemoteStorageService) ->
         bindMethods(@)
+
+        @.backlogOrder = {}
+        @.milestonesOrder = {}
 
         @.page = 1
         @.disablePagination = false
         @.firstLoadComplete = false
         @scope.userstories = []
+
+        return if @.applyStoredFilters(@params.pslug, "backlog-filters")
 
         @scope.sectionName = @translate.instant("BACKLOG.SECTION_NAME")
         @showTags = false
@@ -96,6 +108,9 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
         # On Error
         promise.then null, @.onInitialDataError.bind(@)
+
+    filtersReloadContent: () ->
+        @.loadUserstories(true)
 
     initializeEventHandlers: ->
         @scope.$on "usform:bulk:success", =>
@@ -175,6 +190,12 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             @scope.showGraphPlaceholder = !(stats.total_points? && stats.total_milestones?)
             return stats
 
+    setMilestonesOrder: (sprints) ->
+        for sprint in sprints
+            @.milestonesOrder[sprint.id] = {}
+            for it in sprint.user_stories
+                @.milestonesOrder[sprint.id][it.id] = it.sprint_order
+
     unloadClosedSprints: ->
         @scope.$apply =>
             @scope.closedSprints =  []
@@ -184,6 +205,8 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         params = {closed: true}
         return @rs.sprints.list(@scope.projectId, params).then (result) =>
             sprints = result.milestones
+
+            @.setMilestonesOrder(sprints)
 
             @scope.totalClosedMilestones = result.closed
 
@@ -199,6 +222,8 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         params = {closed: false}
         return @rs.sprints.list(@scope.projectId, params).then (result) =>
             sprints = result.milestones
+
+            @.setMilestonesOrder(sprints)
 
             @scope.totalMilestones = sprints
             @scope.totalClosedMilestones = result.closed
@@ -221,47 +246,6 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
             return sprints
 
-    restoreFilters: ->
-        selectedTags = @scope.oldSelectedTags
-        selectedStatuses = @scope.oldSelectedStatuses
-
-        return if !selectedStatuses and !selectedStatuses
-
-        @scope.filtersQ = @scope.filtersQOld
-
-        @.replaceFilter("q", @scope.filtersQ)
-
-        _.each [selectedTags, selectedStatuses], (filterGrp) =>
-            _.each filterGrp, (item) =>
-                filters = @scope.filters[item.type]
-                filter = _.find(filters, {id: item.id})
-                filter.selected = true
-
-                @.selectFilter(item.type, item.id)
-
-        @.loadUserstories()
-
-    resetFilters: ->
-        selectedTags = _.filter(@scope.filters.tags, "selected")
-        selectedStatuses = _.filter(@scope.filters.status, "selected")
-
-        @scope.oldSelectedTags = selectedTags
-        @scope.oldSelectedStatuses = selectedStatuses
-
-        @scope.filtersQOld = @scope.filtersQ
-        @scope.filtersQ = undefined
-        @.replaceFilter("q", @scope.filtersQ)
-
-        _.each [selectedTags, selectedStatuses], (filterGrp) =>
-            _.each filterGrp, (item) =>
-                filters = @scope.filters[item.type]
-                filter = _.find(filters, {id: item.id})
-                filter.selected = false
-
-                @.unselectFilter(item.type, item.id)
-
-        @.loadUserstories()
-
     loadAllPaginatedUserstories: () ->
         page = @.page
 
@@ -273,15 +257,15 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
         @.loadingUserstories = true
         @.disablePagination = true
-        @scope.httpParams = @.getUrlFilters()
-        @rs.userstories.storeQueryParams(@scope.projectId, @scope.httpParams)
+        params = _.clone(@location.search())
+        @rs.userstories.storeQueryParams(@scope.projectId, params)
 
         if resetPagination
             @.page = 1
 
-        @scope.httpParams.page = @.page
+        params.page = @.page
 
-        promise = @rs.userstories.listUnassigned(@scope.projectId, @scope.httpParams, pageSize)
+        promise = @rs.userstories.listUnassigned(@scope.projectId, params, pageSize)
 
         return promise.then (result) =>
             userstories = result[0]
@@ -293,7 +277,8 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             # NOTE: Fix order of USs because the filter orderBy does not work propertly in the partials files
             @scope.userstories = @scope.userstories.concat(_.sortBy(userstories, "backlog_order"))
 
-            @.setSearchDataFilters()
+            for it in @scope.userstories
+                @.backlogOrder[it.id] = it.backlog_order
 
             @.loadingUserstories = false
 
@@ -354,242 +339,142 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
         return items
 
+    # --move us api behavior--
+    # if your are moving multiples USs you must use the bulk api
+    # if there is only one US you must use patch (repo.save)
+    # the new US position is the position of the previous US + 1
+    # if the previous US has a position value that it is equal to other USs, you must send all the USs with that position value only if they are before of the target position
+    #    with this USs if it's a patch you must add them to the header, if is a bulk you must send them with the other USs
     moveUs: (ctx, usList, newUsIndex, newSprintId) ->
         oldSprintId = usList[0].milestone
         project = usList[0].project
 
-        movedFromClosedSprint = false
-        movedToClosedSprint = false
+        if oldSprintId
+            sprint = @scope.sprintsById[oldSprintId] || @scope.closedSprintsById[oldSprintId]
 
-        sprint = @scope.sprintsById[oldSprintId]
+        if newSprintId
+            newSprint = @scope.sprintsById[newSprintId] || @scope.closedSprintsById[newSprintId]
 
-        # Move from closed sprint
-        if !sprint && @scope.closedSprintsById
-            sprint = @scope.closedSprintsById[oldSprintId]
-            movedFromClosedSprint = true if sprint
+        currentSprintId = if newSprintId != oldSprintId then newSprintId else oldSprintId
 
-        newSprint = @scope.sprintsById[newSprintId]
+        orderList = null
+        orderField = ""
 
-        # Move to closed sprint
-        if !newSprint && newSprintId
-            newSprint = @scope.closedSprintsById[newSprintId]
-            movedToClosedSprint = true if newSprint
+        if newSprintId != oldSprintId
+            if newSprintId == null # From sprint to backlog
+                for us, key in usList # delete from sprint userstories
+                    _.remove sprint.user_stories, (it) -> it.id == us.id
 
-        # In the same sprint or in the backlog
-        if newSprintId == oldSprintId
-            items = null
-            userstories = null
+                orderField = "backlog_order"
+                orderList = @.backlogOrder
 
-            if newSprintId == null
-                userstories = @scope.userstories
-            else
-                userstories = newSprint.user_stories
+                beforeDestination = _.slice(@scope.userstories, 0, newUsIndex)
+                afterDestination = _.slice(@scope.userstories, newUsIndex)
 
-            @scope.$apply ->
-                for us, key in usList
-                    r = userstories.indexOf(us)
-                    userstories.splice(r, 1)
+                @scope.userstories = @scope.userstories.concat(usList)
+            else # From backlog to sprint
+                for us in usList # delete from sprint userstories
+                    _.remove @scope.userstories, (it) -> it.id == us.id
 
-                args = [newUsIndex, 0].concat(usList)
-                Array.prototype.splice.apply(userstories, args)
+                orderField = "sprint_order"
+                orderList = @.milestonesOrder[newSprint.id]
 
-            # If in backlog
-            if newSprintId == null
-                # Rehash userstories order field
+                beforeDestination = _.slice(newSprint.user_stories, 0, newUsIndex)
+                afterDestination = _.slice(newSprint.user_stories, newUsIndex)
 
-                items = @.resortUserStories(userstories, "backlog_order")
-                data = @.prepareBulkUpdateData(items, "backlog_order")
-
-                # Persist in bulk all affected
-                # userstories with order change
-                @rs.userstories.bulkUpdateBacklogOrder(project, data).then =>
-                    @rootscope.$broadcast("sprint:us:moved")
-
-            # For sprint
-            else
-                # Rehash userstories order field
-                items = @.resortUserStories(userstories, "sprint_order")
-                data = @.prepareBulkUpdateData(items, "sprint_order")
-
-                # Persist in bulk all affected
-                # userstories with order change
-                @rs.userstories.bulkUpdateSprintOrder(project, data).then =>
-                    @rootscope.$broadcast("sprint:us:moved")
-
-            return promise
-
-        # From sprint to backlog
-        if newSprintId == null
-            us.milestone = null for us in usList
-
-            @scope.$apply =>
-                # Add new us to backlog userstories list
-                # @scope.userstories.splice(newUsIndex, 0, us)
-                args = [newUsIndex, 0].concat(usList)
-                Array.prototype.splice.apply(@scope.userstories, args)
-
-                for us, key in usList
-                    r = sprint.user_stories.indexOf(us)
-                    sprint.user_stories.splice(r, 1)
-
-            # Persist the milestone change of userstory
-            promise = @repo.save(us)
-
-            # Rehash userstories order field
-            # and persist in bulk all changes.
-            promise = promise.then =>
-                items = @.resortUserStories(@scope.userstories, "backlog_order")
-                data = @.prepareBulkUpdateData(items, "backlog_order")
-                return @rs.userstories.bulkUpdateBacklogOrder(us.project, data).then =>
-                    @rootscope.$broadcast("sprint:us:moved")
-
-                    if movedFromClosedSprint
-                        @rootscope.$broadcast("backlog:load-closed-sprints")
-
-            promise.then null, ->
-                console.log "FAIL" # TODO
-
-            return promise
-
-        # From backlog to sprint
-        if oldSprintId == null
-            us.milestone = newSprintId for us in usList
-            args = [newUsIndex, 0].concat(usList)
-
-            # Add moving us to sprint user stories list
-            Array.prototype.splice.apply(newSprint.user_stories, args)
-
-            # Remove moving us from backlog userstories lists.
-            for us, key in usList
-                r = @scope.userstories.indexOf(us)
-                @scope.userstories.splice(r, 1)
-
-        # From sprint to sprint
+                newSprint.user_stories = newSprint.user_stories.concat(usList)
         else
-            us.milestone = newSprintId for us in usList
+            if oldSprintId == null # backlog
+                orderField = "backlog_order"
+                orderList = @.backlogOrder
 
-            @scope.$apply =>
-                args = [newUsIndex, 0].concat(usList)
+                list = _.filter @scope.userstories, (listIt) -> # Remove moved US from list
+                    return !_.find usList, (moveIt) -> return listIt.id == moveIt.id
 
-                # Add new us to backlog userstories list
-                Array.prototype.splice.apply(newSprint.user_stories, args)
+                beforeDestination = _.slice(list, 0, newUsIndex)
+                afterDestination = _.slice(list, newUsIndex)
+            else # sprint
+                orderField = "sprint_order"
+                orderList = @.milestonesOrder[sprint.id]
 
-                # Remove the us from the sprint list.
-                for us in usList
-                    r = sprint.user_stories.indexOf(us)
-                    sprint.user_stories.splice(r, 1)
+                list = _.filter newSprint.user_stories, (listIt) -> # Remove moved US from list
+                    return !_.find usList, (moveIt) -> return listIt.id == moveIt.id
 
-        #Persist the milestone change of userstory
-        promises = _.map usList, (us) => @repo.save(us)
+                beforeDestination = _.slice(list, 0, newUsIndex)
+                afterDestination = _.slice(list, newUsIndex)
 
-        #Rehash userstories order field
-        #and persist in bulk all changes.
-        promise = @q.all(promises).then =>
-            items = @.resortUserStories(newSprint.user_stories, "sprint_order")
-            data = @.prepareBulkUpdateData(items, "sprint_order")
+        # previous us
+        previous = beforeDestination[beforeDestination.length - 1]
 
-            @rs.userstories.bulkUpdateSprintOrder(project, data).then (result) =>
-                @rootscope.$broadcast("sprint:us:moved")
+        # this will store the previous us with the same position
+        setPreviousOrders = []
 
-            @rs.userstories.bulkUpdateBacklogOrder(project, data).then =>
-                @rootscope.$broadcast("sprint:us:moved")
+        if !previous
+            startIndex = 0
+        else if previous
+            startIndex = orderList[previous.id] + 1
 
-            if movedToClosedSprint || movedFromClosedSprint
-                @scope.$broadcast("backlog:load-closed-sprints")
+            previousWithTheSameOrder = _.filter beforeDestination, (it) -> it[orderField] == orderList[previous.id]
 
-        promise.then null, ->
-            console.log "FAIL" # TODO
+            # we must send the USs previous to the dropped USs to tell the backend which USs are before the dropped USs,
+            # if they have the same value to order, the backend doens't know after which one do you want to drop the USs
+            if previousWithTheSameOrder.length > 1
+                setPreviousOrders = _.map previousWithTheSameOrder, (it) -> {us_id: it.id, order: orderList[it.id]}
+
+        modifiedUs = []
+
+        for us, key in usList # update sprint and new position
+            us.milestone = currentSprintId
+            us[orderField] = startIndex + key
+            orderList[us.id] = us[orderField]
+
+            modifiedUs.push({us_id: us.id, order: us[orderField]})
+
+        startIndex = orderList[usList[usList.length - 1].id]
+
+        for it, key in afterDestination # increase position of the us after the dragged us's
+            orderList[it.id] = startIndex + key + 1
+
+        # refresh order
+        @scope.userstories = _.sortBy @scope.userstories, (it) => @.backlogOrder[it.id]
+
+        for sprint in @scope.sprints
+            sprint.user_stories = _.sortBy sprint.user_stories, (it) => @.milestonesOrder[sprint.id][it.id]
+
+        for sprint in @scope.closedSprints
+            sprint.user_stories = _.sortBy sprint.user_stories, (it) => @.milestonesOrder[sprint.id][it.id]
+
+        #saving
+        if usList.length > 1 && (newSprintId != oldSprintId) # drag multiple to sprint
+            data = modifiedUs.concat(setPreviousOrders)
+            promise = @rs.userstories.bulkUpdateMilestone(project, newSprintId, data)
+        else if usList.length > 1 # drag multiple in backlog
+            data = modifiedUs.concat(setPreviousOrders)
+            promise = @rs.userstories.bulkUpdateBacklogOrder(project, data)
+        else  # drag single
+            setOrders = {}
+            for it in setPreviousOrders
+                setOrders[it.us_id] = it.order
+
+            options = {
+                headers: {
+                    "set-orders": JSON.stringify(setOrders)
+                }
+            }
+
+            promise = @repo.save(usList[0], true, {}, options, true)
+
+        promise.then () =>
+            @rootscope.$broadcast("sprint:us:moved")
+
+            if @scope.closedSprintsById && @scope.closedSprintsById[oldSprintId]
+                @rootscope.$broadcast("backlog:load-closed-sprints")
 
         return promise
-
-    isFilterSelected: (type, id) ->
-        if @searchdata[type]? and @searchdata[type][id]
-            return true
-        return false
-
-    setSearchDataFilters: () ->
-        urlfilters = @.getUrlFilters()
-
-        if urlfilters.q
-            @scope.filtersQ = @scope.filtersQ or urlfilters.q
-
-        @searchdata = {}
-        for name, value of urlfilters
-            if not @searchdata[name]?
-                @searchdata[name] = {}
-
-            for val in taiga.toString(value).split(",")
-                @searchdata[name][val] = true
-
-    getUrlFilters: ->
-        return _.pick(@location.search(), "status", "tags", "q")
-
-    generateFilters: ->
-        urlfilters = @.getUrlFilters()
-        @scope.filters =  {}
-
-        loadFilters = {}
-        loadFilters.project = @scope.projectId
-        loadFilters.tags = urlfilters.tags
-        loadFilters.status = urlfilters.status
-        loadFilters.q = urlfilters.q
-        loadFilters.milestone = 'null'
-
-        return @rs.userstories.filtersData(loadFilters).then (data) =>
-            choicesFiltersFormat = (choices, type, byIdObject) =>
-                _.map choices, (t) ->
-                    t.type = type
-                    return t
-
-            tagsFilterFormat = (tags) =>
-                return _.map tags, (t) ->
-                    t.id = t.name
-                    t.type = 'tags'
-                    return t
-
-            # Build filters data structure
-            @scope.filters.status = choicesFiltersFormat(data.statuses, "status", @scope.usStatusById)
-            @scope.filters.tags = tagsFilterFormat(data.tags)
-
-            selectedTags = _.filter(@scope.filters.tags, "selected")
-            selectedTags = _.map(selectedTags, "id")
-
-            selectedStatuses = _.filter(@scope.filters.status, "selected")
-            selectedStatuses = _.map(selectedStatuses, "id")
-
-            @.markSelectedFilters(@scope.filters, urlfilters)
-
-            #store query params
-            @rs.userstories.storeQueryParams(@scope.projectId, {
-                "status": selectedStatuses,
-                "tags": selectedTags,
-                "project": @scope.projectId
-                "milestone": null
-            })
-
-    markSelectedFilters: (filters, urlfilters) ->
-        # Build selected filters (from url) fast lookup data structure
-        searchdata = {}
-        for name, value of _.omit(urlfilters, "page", "orderBy")
-            if not searchdata[name]?
-                searchdata[name] = {}
-
-            for val in "#{value}".split(",")
-                searchdata[name][val] = true
-
-        isSelected = (type, id) ->
-            if searchdata[type]? and searchdata[type][id]
-                return true
-            return false
-
-        for key, value of filters
-            for obj in value
-                obj.selected = if isSelected(obj.type, obj.id) then true else undefined
 
     ## Template actions
 
     updateUserStoryStatus: () ->
-        @.setSearchDataFilters()
         @.generateFilters().then () =>
             @rootscope.$broadcast("filters:update")
             @.loadProjectStats()
@@ -807,8 +692,15 @@ BacklogDirective = ($repo, $rootscope, $translate) ->
             text = $translate.instant("BACKLOG.TAGS.SHOW")
             elm.text(text)
 
+    openFilterInit = ($scope, $el, $ctrl) ->
+        sidebar = $el.find("sidebar.backlog-filter")
+
+        sidebar.addClass("active")
+
+        $ctrl.activeFilters = true
+
     showHideFilter = ($scope, $el, $ctrl) ->
-        sidebar = $el.find("sidebar.filters-bar")
+        sidebar = $el.find("sidebar.backlog-filter")
         sidebar.one "transitionend", () ->
             timeout 150, ->
                 $rootscope.$broadcast("resize")
@@ -823,11 +715,6 @@ BacklogDirective = ($repo, $rootscope, $translate) ->
         showText = $translate.instant("BACKLOG.FILTERS.SHOW")
 
         toggleText(target, [hideText, showText])
-
-        if !sidebar.hasClass("active")
-            $ctrl.resetFilters()
-        else
-            $ctrl.restoreFilters()
 
         $ctrl.toggleActiveFilters()
 
@@ -847,11 +734,13 @@ BacklogDirective = ($repo, $rootscope, $translate) ->
         linkFilters($scope, $el, $attrs, $ctrl)
         linkDoomLine($scope, $el, $attrs, $ctrl)
 
-        filters = $ctrl.getUrlFilters()
+        filters = $ctrl.location.search()
         if filters.status ||
            filters.tags ||
-           filters.q
-            showHideFilter($scope, $el, $ctrl)
+           filters.q ||
+           filters.assigned_to ||
+           filters.owner
+            openFilterInit($scope, $el, $ctrl)
 
         $scope.$on "showTags", () ->
             showHideTags($ctrl)

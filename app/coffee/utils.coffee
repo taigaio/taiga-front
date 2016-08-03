@@ -38,7 +38,7 @@ bindMethods = (object) =>
     methods = []
 
     _.forIn object, (value, key) =>
-        if key not in dependencies
+        if key not in dependencies && _.isFunction(value)
             methods.push(key)
 
     _.bindAll(object, methods)

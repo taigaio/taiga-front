@@ -38,17 +38,23 @@ resourceProvider = ($repo, $http, $urls, $storage) ->
         params.project = projectId
         return $repo.queryOne("tasks", taskId, params)
 
-    service.getByRef = (projectId, ref) ->
+    service.getByRef = (projectId, ref, extraParams) ->
         params = service.getQueryParams(projectId)
         params.project = projectId
         params.ref = ref
+
+        params = _.extend({}, params, extraParams)
+
         return $repo.queryOne("tasks", "by_ref", params)
 
     service.listInAllProjects = (filters) ->
         return $repo.queryMany("tasks", filters)
 
-    service.list = (projectId, sprintId=null, userStoryId=null) ->
-        params = {project: projectId}
+    service.filtersData = (params) ->
+        return $repo.queryOneRaw("task-filters", null, params)
+
+    service.list = (projectId, sprintId=null, userStoryId=null, params) ->
+        params = _.merge(params, {project: projectId})
         params.milestone = sprintId if sprintId
         params.user_story = userStoryId if userStoryId
         service.storeQueryParams(projectId, params)
