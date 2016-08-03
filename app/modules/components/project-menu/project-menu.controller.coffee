@@ -52,11 +52,15 @@ class ProjectMenuController
 
     _setMenuPermissions: () ->
         @.menu = Immutable.Map({
+            epics: false,
             backlog: false,
             kanban: false,
             issues: false,
             wiki: false
         })
+
+        if @.project.get("is_epics_activated") && @.project.get("my_permissions").indexOf("view_epics") != -1
+            @.menu = @.menu.set("epics", true)
 
         if @.project.get("is_backlog_activated") && @.project.get("my_permissions").indexOf("view_us") != -1
             @.menu = @.menu.set("backlog", true)

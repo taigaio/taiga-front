@@ -17,12 +17,30 @@ div.wrapper(
             include ../includes/components/mainTitle
 
         form.module-container
+            .module.module-epics(ng-class="{true:'active', false:''}[project.is_epics_activated]")
+                .module-icon
+                    tg-svg(svg-icon="icon-epics")
+                .module-name(translate="ADMIN.MODULES.EPICS")
+                .module-desc
+                    p(translate="ADMIN.MODULES.EPICS_DESCRIPTION")
+                .module-activation.module-direct-active
+                    div.check
+                        input.activate-input(
+                            id="functionality-epics"
+                            name="functionality-epics"
+                            type="checkbox"
+                            ng-checked="project.is_epics_activated"
+                            ng-model="project.is_epics_activated"
+                        )
+                        div
+                        span.check-text.check-yes(translate="COMMON.YES")
+                        span.check-text.check-no(translate="COMMON.NO")
             .module.module-scrum(ng-class="{true:'active', false:''}[project.is_backlog_activated]")
                 .module-icon
                     tg-svg(svg-icon="icon-scrum")
                 .module-name(translate="ADMIN.MODULES.BACKLOG")
                 .module-desc
-                    p(translate="ADMIN.MODULES.BACKLOG_DESCRIPTION")
+                    p(translate="ADMIN.MODULES.BACKLOG_DESCRIPTION")                    
                     .module-desc-options(ng-if="project.is_backlog_activated")
                         fieldset
                             label(for="total-sprints") {{ 'ADMIN.MODULES.NUMBER_SPRINTS' | translate }}

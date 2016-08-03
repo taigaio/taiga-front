@@ -24,8 +24,8 @@ nav.menu(
                 )
                     tg-svg(svg-icon="icon-timeline")
                     span.helper(translate="PROJECT.SECTION.TIMELINE")
-                    
-            li#nav-epics
+
+            li#nav-epics(ng-if="vm.menu.get('epics')")
                 a(
                     tg-nav="project-epics:project=vm.project.get('slug')"
                     ng-class="{active: vm.active == 'epics'}"

@@ -492,6 +492,8 @@
             "TITLE": "Modules",
             "ENABLE": "Enable",
             "DISABLE": "Disable",
+            "EPICS": "Epics",
+            "EPICS_DESCRIPTION": "Visualize and manage the most strategic part of your project",
             "BACKLOG": "Backlog",
             "BACKLOG_DESCRIPTION": "Manage your user stories to maintain an organized view of upcoming and prioritized work.",
             "NUMBER_SPRINTS": "Expected number of sprints",
