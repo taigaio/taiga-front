@@ -14,6 +14,15 @@
 - Upvote and downvote issues from the issues list.
 - Show points per role in statsection of the taskboard panel.
 - Show a funny randon animals/color for users with no avatar (like project logos).
+- Filters:
+    - Refactor the filter module.
+    - Add filters in the kanban panel.
+    - Add filter in the sprint taskboard panel.
+- Cards UI improvements:
+    - Add zoom levels.
+    - Show information according the zoom level.
+    - Show voters, watchers, taks and attachments.
+    - Improve performance.
 - Comments:
     - Add a new permissions to allow add comments instead of use the existent modify permission for this purpose.
     - Ability to edit comments, view edition history and redesign comments module UI.
@@ -23,10 +32,6 @@
     - Add Wiki history
 - Third party integrations:
     - Included gogs as builtin integration.
-- Filters refactor
-- Cards ui refactor with zoom
-- Kanban filters
-- Taskboard filters
 
 ### Misc
 - Lots of small and not so small bugfixes.
