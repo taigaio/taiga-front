@@ -14,6 +14,7 @@
 - Upvote and downvote issues from the issues list.
 - Show points per role in statsection of the taskboard panel.
 - Show a funny randon animals/color for users with no avatar (like project logos).
+- Show Open Sprints in the left navigation menu (backlog submenu).
 - Filters:
     - Refactor the filter module.
     - Add filters in the kanban panel.
