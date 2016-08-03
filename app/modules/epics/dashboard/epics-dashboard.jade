@@ -18,7 +18,7 @@
             ng-if="vm.project && vm.epics.size"
             project="vm.project"
             epics="vm.epics"
-            on-update-epic-status="vm.loadEpics()"
+            on-update-epic="vm.loadEpics()"
         )
         
         section.empty-epics(ng-if="!vm.epics.size")

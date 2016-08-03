@@ -51,7 +51,7 @@ class EpicRowController
         }
 
         onSuccess = =>
-            @.onUpdateEpicStatus()
+            @.onUpdateEpic()
 
         onError = (data) =>
             @confirm.notify('error')
@@ -82,7 +82,7 @@ class EpicRowController
         }
 
         onSuccess = =>
-            @.onUpdateEpicStatus()
+            @.onUpdateEpic()
             @confirm.notify('success')
 
         onError = (data) =>
@@ -99,7 +99,7 @@ class EpicRowController
         }
 
         onSuccess = =>
-            @.onUpdateEpicStatus()
+            @.onUpdateEpic()
             @confirm.notify('success')
 
         onError = (data) =>

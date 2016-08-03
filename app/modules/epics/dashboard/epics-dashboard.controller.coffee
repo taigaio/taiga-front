@@ -43,6 +43,7 @@ class EpicsDashboardController
             @.loadEpics()
 
     loadEpics: () ->
+        console.log 'reload'
         projectId = @.project.id
         return @resources.epics.list(projectId).then (epics) =>
             @.epics = epics

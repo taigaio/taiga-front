@@ -29,7 +29,7 @@ EpicsTableDirective = () ->
         scope: {
             epics: "=",
             project: "=",
-            onUpdateEpicStatus: "&"
+            onUpdateEpic: "&"
         }
     }
 

@@ -31,7 +31,7 @@ EpicRowDirective = () ->
             epic: '=',
             column: '=',
             permissions: '=',
-            onUpdateEpicStatus: "&"
+            onUpdateEpic: "&"
         }
     }
 
