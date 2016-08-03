@@ -25,7 +25,12 @@ nav.menu(
                     tg-svg(svg-icon="icon-timeline")
                     span.helper(translate="PROJECT.SECTION.TIMELINE")
 
-            li#nav-backlog(ng-if="vm.menu.get('backlog')")
+            li#nav-backlog(
+                ng-if="vm.menu.get('backlog')"
+                ng-mouseover="backlogHover = true"
+                ng-mouseleave="backlogHover = false"
+                ng-init="backlogHover = false"
+            )
                 a(
                     tg-nav="project-backlog:project=vm.project.get('slug')"
                     ng-class="{active: vm.active == 'backlog'}"
@@ -33,7 +38,14 @@ nav.menu(
                     tabindex="2"
                 )
                     tg-svg(svg-icon="icon-scrum")
-                    span.helper(translate="PROJECT.SECTION.BACKLOG")
+
+                span.backlog-sprints-menu(ng-show="backlogHover")
+                  span(translate="PROJECT.SECTION.BACKLOG")
+                  a(
+                      tg-repeat="sprint in vm.project.get('milestones') track by sprint.get('id')"
+                      ng-if="!sprint.get('closed')"
+                      tg-nav="project-taskboard:project=vm.project.get('slug'),sprint=sprint.get('slug')"
+                  ) {{::sprint.get('name')}}
 
             li#nav-kanban(ng-if="vm.menu.get('kanban')")
                 a(
