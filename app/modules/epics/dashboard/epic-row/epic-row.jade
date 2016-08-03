@@ -15,7 +15,7 @@
     .name(ng-if="vm.column.name")
         - var hash = "#";
         a(
-            tg-nav="project-epic-detail:project=vm.project.get('slug')"
+            tg-nav="project-epics-detail:project=vm.project.get('slug')"
             ng-attr-title="{{::vm.epic.get('subject')}}"
         ) #{hash}{{::vm.epic.get('ref')}} {{::vm.epic.get('subject')}}
         span.epic-pill(

@@ -119,6 +119,7 @@
         "USER_STORY": "User story",
         "TASK": "Task",
         "ISSUE": "Issue",
+        "EPIC": "Epic",
         "TAGS": {
             "PLACEHOLDER": "Enter tag",
             "DELETE": "Delete tag",

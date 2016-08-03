@@ -57,6 +57,10 @@ class HomeService extends taiga.Service
 
         assignedTo = workInProgress.get("assignedTo")
 
+        if assignedTo.get("epics")
+            _duties = _getValidDutiesAndAttachProjectInfo(assignedTo.get("epics"), "epics")
+            assignedTo = assignedTo.set("epics", _duties)
+
         if assignedTo.get("userStories")
             _duties = _getValidDutiesAndAttachProjectInfo(assignedTo.get("userStories"), "userstories")
             assignedTo = assignedTo.set("userStories", _duties)
@@ -65,13 +69,16 @@ class HomeService extends taiga.Service
             _duties = _getValidDutiesAndAttachProjectInfo(assignedTo.get("tasks"), "tasks")
             assignedTo = assignedTo.set("tasks", _duties)
 
-
         if assignedTo.get("issues")
             _duties = _getValidDutiesAndAttachProjectInfo(assignedTo.get("issues"), "issues")
             assignedTo = assignedTo.set("issues", _duties)
 
 
         watching = workInProgress.get("watching")
+
+        if watching.get("epics")
+            _duties = _getValidDutiesAndAttachProjectInfo(watching.get("epics"), "epics")
+            watching = watching.set("epics", _duties)
 
         if watching.get("userStories")
             _duties = _getValidDutiesAndAttachProjectInfo(watching.get("userStories"), "userstories")
@@ -106,6 +113,14 @@ class HomeService extends taiga.Service
             assigned_to: userId
         }
 
+        params_epics = {
+            is_closed: false
+            assigned_to: userId
+        }
+
+        assignedEpicsPromise = @rs.epics.listInAllProjects(params_epics).then (epics) ->
+            assignedTo = assignedTo.set("epics", epics)
+
         assignedUserStoriesPromise = @rs.userstories.listInAllProjects(params_us).then (userstories) ->
             assignedTo = assignedTo.set("userStories", userstories)
 
@@ -125,7 +140,15 @@ class HomeService extends taiga.Service
             watchers: userId
         }
 
+        params_epics = {
+            is_closed: false
+            watchers: userId
+        }
+
         watching = Immutable.Map()
+
+        watchingEpicsPromise = @rs.epics.listInAllProjects(params_epics).then (epics) ->
+            watching = watching.set("epics", epics)
 
         watchingUserStoriesPromise = @rs.userstories.listInAllProjects(params_us).then (userstories) ->
             watching = watching.set("userStories", userstories)
@@ -139,12 +162,14 @@ class HomeService extends taiga.Service
         workInProgress = Immutable.Map()
 
         Promise.all([
-            projectsPromise
+            projectsPromise,
+            assignedEpicsPromise,
+            watchingEpicsPromise,
             assignedUserStoriesPromise,
-            assignedTasksPromise,
-            assignedIssuesPromise,
             watchingUserStoriesPromise,
+            assignedTasksPromise,
             watchingTasksPromise,
+            assignedIssuesPromise,
             watchingIssuesPromise
         ]).then =>
             workInProgress = workInProgress.set("assignedTo", assignedTo)

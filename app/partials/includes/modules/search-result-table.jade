@@ -33,7 +33,7 @@ script(type="text/ng-template", id="search-epics")
                 div.ref(tg-bo-ref="epic.ref")
                 div.user-stories
                     div.user-story-name
-                        a(href="", tg-nav="project-epic-detail:project=project.slug,ref=epic.ref",
+                        a(href="", tg-nav="project-epics-detail:project=project.slug,ref=epic.ref",
                             tg-bo-bind="epic.subject")
                 div.status(tg-listitem-epic-status="epic")
 
