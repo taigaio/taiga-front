@@ -34,7 +34,6 @@ class EpicsTableController
             status: true,
             progress: true
         }
-        @._checkPermissions()
 
     toggleEpicTableOptions: () ->
         @.displayOptions = !@.displayOptions

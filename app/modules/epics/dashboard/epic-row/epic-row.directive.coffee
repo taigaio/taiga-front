@@ -21,7 +21,11 @@ module = angular.module('taigaEpics')
 
 EpicRowDirective = () ->
 
+    link = (scope, el, attrs, ctrl) ->
+        ctrl._calculateProgressBar()
+
     return {
+        link: link,
         templateUrl:"epics/dashboard/epic-row/epic-row.html",
         controller: "EpicRowCtrl",
         controllerAs: "vm",

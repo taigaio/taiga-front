@@ -27,40 +27,40 @@ class EpicRowController
 
     constructor: (@rs, @confirm) ->
         @.displayUserStories = false
-        @._calculateProgressBar()
         @.displayAssignedTo = false
+        @.loadingStatus = false
 
     _calculateProgressBar: () ->
         if @.epic.getIn(['status_extra_info', 'is_closed']) == true
             @.percentage = "100%"
         else
-            opened = @.epic.getIn(['user_stories_counts', 'opened'])
-            closed = @.epic.getIn(['user_stories_counts', 'closed'])
-            total = opened + closed
-            if total == 0
+            @.opened = @.epic.getIn(['user_stories_counts', 'opened'])
+            @.closed = @.epic.getIn(['user_stories_counts', 'closed'])
+            @.total = @.opened + @.closed
+            if @.total == 0
                 @.percentage = "0%"
             else
-                @.percentage = "#{closed * 100 / total}%"
+                @.percentage = "#{@.closed * 100 / @.total}%"
 
     updateEpicStatus: (status) ->
-        id = @.epic.get('id')
-        version = @.epic.get('version')
+        @.loadingStatus = true
+        @.displayStatusList = false
         patch = {
             'status': status,
-            'version': version
+            'version': @.epic.get('version')
         }
 
         onSuccess = =>
+            @.loadingStatus = false
             @.onUpdateEpic()
 
         onError = (data) =>
             @confirm.notify('error')
 
-        return @rs.epics.patch(id, patch).then(onSuccess, onError)
+        return @rs.epics.patch(@.epic.get('id'), patch).then(onSuccess, onError)
 
     requestUserStories: (epic) ->
-        if @.displayUserStories == false
-            id = @.epic.get('id')
+        if !@.displayUserStories
 
             onSuccess = (data) =>
                 @.epicStories = data
@@ -69,7 +69,7 @@ class EpicRowController
             onError = (data) =>
                 @confirm.notify('error')
 
-            return @rs.userstories.listInEpic(id).then(onSuccess, onError)
+            return @rs.userstories.listInEpic(@.epic.get('id')).then(onSuccess, onError)
         else
             @.displayUserStories = false
 
@@ -83,7 +83,6 @@ class EpicRowController
 
         onSuccess = =>
             @.onUpdateEpic()
-            @confirm.notify('success')
 
         onError = (data) =>
             @confirm.notify('error')

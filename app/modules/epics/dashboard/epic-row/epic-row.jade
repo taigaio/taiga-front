@@ -44,18 +44,19 @@
         span {{vm.epic.getIn(['status_extra_info', 'name'])}}
     .status(
         ng-if="vm.column.status && vm.permissions.canEdit"
-        ng-mouseleave="displayStatusList = false"
+        ng-mouseleave="vm.displayStatusList = false"
     )
         button(
-            ng-click="displayStatusList = true"
+            ng-click="vm.displayStatusList = true"
             ng-style="{'color': vm.epic.getIn(['status_extra_info', 'color'])}"
+            tg-loading="vm.loadingStatus"
         )
             span {{vm.epic.getIn(['status_extra_info', 'name'])}}
             tg-svg(
                 svg-icon="icon-arrow-down"
             )
 
-        ul.epic-statuses(ng-show="displayStatusList")
+        ul.epic-statuses(ng-if="vm.displayStatusList")
             li(
                 ng-repeat="status in vm.project.epic_statuses | orderBy:'order'"
                 ng-click="vm.updateEpicStatus(status.id)"

@@ -32,10 +32,9 @@ class EpicsDashboardController
 
     constructor: (@rs, @resources, @params, @errorHandlingService, @lightboxFactory, @lightboxService, @confirm) ->
         @.sectionName = "Epics"
-        @._loadProject()
         @.createEpic = false
 
-    _loadProject: () ->
+    loadProject: () ->
         return @rs.projects.getBySlug(@params.pslug).then (project) =>
             if not project.is_epics_activated
                 @errorHandlingService.permissionDenied()
@@ -43,7 +42,6 @@ class EpicsDashboardController
             @.loadEpics()
 
     loadEpics: () ->
-        console.log 'reload'
         projectId = @.project.id
         return @resources.epics.list(projectId).then (epics) =>
             @.epics = epics

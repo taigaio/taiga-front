@@ -21,7 +21,11 @@ module = angular.module('taigaEpics')
 
 EpicsTableDirective = () ->
 
+    link = (scope, el, attrs, ctrl) ->
+        ctrl._checkPermissions()
+
     return {
+        link: link,
         templateUrl:"epics/dashboard/epics-table/epics-table.html",
         controller: "EpicsTableCtrl",
         controllerAs: "vm",
