@@ -21,7 +21,12 @@ module = angular.module('taigaEpics')
 
 BelongToEpicsDirective = () ->
 
+    link = (scope, el, attrs) ->
+        if !scope.epics.isIterable
+          scope.epics = Immutable.fromJS(scope.epics)
+
     return {
+        link: link,
         templateUrl:"components/belong-to-epics/belong-to-epics.html",
         scope: {
             epics: '='
