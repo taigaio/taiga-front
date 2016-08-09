@@ -11,20 +11,7 @@
     background-color: $grayer;
     border-radius: 50%;
     display: inline-block;
-    height: .75rem;
-    margin-left: .25rem;
+    height: .7rem;
     position: relative;
-    width: .75rem;
-}
-.belong-to-epic-pill-data {
-    animation: dropdownFade .2s;
-    background: rgba($black, .9);
-    bottom: 1.25rem;
-    color: $white;
-    display: none;
-    left: -100px;
-    padding: .5rem 1rem;
-    position: absolute;
-    width: 200px;
-    z-index: 99;
+    width: .7rem;
 }
