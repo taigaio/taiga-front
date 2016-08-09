@@ -8,6 +8,7 @@ h2.card-title
         span(ng-if="vm.visible('ref')") {{::"#" + vm.item.getIn(['model', 'ref'])}}
         span.e2e-title(ng-if="vm.visible('subject')") {{vm.item.getIn(['model', 'subject'])}}
         tg-belong-to-epics(
+            format="pill"
             ng-if="vm.item.getIn(['model', 'epics'])"
             epics="vm.item.getIn(['model', 'epics'])"
         )

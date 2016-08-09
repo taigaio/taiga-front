@@ -27,6 +27,7 @@
                 span(tg-bo-ref="us.ref")
                 span(ng-bind="us.subject")
                 tg-belong-to-epics(
+                    format="pill"
                     ng-if="us.epics"
                     epics="us.epics"
                 )

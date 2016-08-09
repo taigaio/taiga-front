@@ -1,0 +1,10 @@
+- var hash = "#";
+span.belong-to-epic-text-wrapper(tg-repeat="epic in epics track by epic.get('id')")
+    .belong-to-epic-pill(
+        ng-style="{'background': epic.get('color')}"
+        title="#{hash}{{epic.get('id')}} {{epic.get('subject')}}"
+    )
+    a.belong-to-epic-text(
+        href=""
+        tg-nav="project-epics-detail:project=vm.project.get('slug')"
+    ) #{hash}{{epic.get('id')}} {{epic.get('subject')}}

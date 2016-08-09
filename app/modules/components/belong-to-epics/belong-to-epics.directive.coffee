@@ -22,15 +22,21 @@ module = angular.module('taigaEpics')
 BelongToEpicsDirective = () ->
 
     link = (scope, el, attrs) ->
-        if !scope.epics.isIterable
+        if scope.epics && !scope.epics.isIterable
           scope.epics = Immutable.fromJS(scope.epics)
+
+        if scope.project && !scope.project.isIterable
+          scope.project = Immutable.fromJS(scope.project)
+
+        scope.getTemplateUrl = () ->
+            return "components/belong-to-epics/belong-to-epics-" + attrs.format + ".html"
 
     return {
         link: link,
-        templateUrl:"components/belong-to-epics/belong-to-epics.html",
         scope: {
             epics: '='
-        }
+        },
+        template : '<span ng-include="getTemplateUrl()"></span>'
     }
 
 BelongToEpicsDirective.$inject = []

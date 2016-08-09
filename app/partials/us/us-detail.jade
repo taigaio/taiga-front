@@ -29,10 +29,22 @@ div.wrapper(
                 div.us-title(ng-class="{blocked: us.is_blocked}")
                     h2.us-title-text
                         span.us-number(tg-bo-ref="us.ref")
-                        span.us-name(tg-editable-subject, ng-model="us", required-perm="modify_us")
+                        span.us-name(
+                            tg-editable-subject
+                            ng-model="us"
+                            required-perm="modify_us"
+                        )
+                        
+                    p.belong-to-epics-wrapper(ng-if="us.epics")
+                        span This User Story belongs to
+                        tg-belong-to-epics(
+                            ng-if="us.epics"
+                            epics="us.epics"
+                            format="text"
+                            project="project"
+                        )
 
-                    p.us-related-task(ng-if="us.origin_issue")
-                        | {{ 'US.PROMOTED'|translate }}
+                    p.us-related-task(ng-if="us.origin_issue") {{ 'US.PROMOTED'|translate }}
                         a(
                             href=""
                             tg-check-permission="view_us"

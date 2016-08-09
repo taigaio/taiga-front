@@ -142,6 +142,14 @@
             margin-right: 5rem;
         }
     }
+    .belong-to-epics-wrapper {
+        @include font-size(small);
+        color: $gray-light;
+        margin-top: .5rem;
+        a:hover {
+            color: $primary;
+        }
+    }
     .loading-spinner {
         @include loading-spinner;
         max-height: 1.5rem;

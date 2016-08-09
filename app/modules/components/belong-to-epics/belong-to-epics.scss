@@ -7,6 +7,7 @@
         }
     }
 }
+
 .belong-to-epic-pill {
     background-color: $grayer;
     border-radius: 50%;
@@ -14,4 +15,12 @@
     height: .7rem;
     position: relative;
     width: .7rem;
+}
+
+.belong-to-epic-text-wrapper {
+    margin-right: 1rem;
+}
+
+.belong-to-epic-text {
+    margin-left: .25rem;
 }
