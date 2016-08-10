@@ -223,10 +223,12 @@ ProjectModulesDirective = ($repo, $confirm, $loading, projectService) ->
 
         $el.on "change", ".module-activation.module-direct-active input", (event) ->
             event.preventDefault()
-            submit()
+
+            $scope.$applyAsync(submit)
 
         $el.on "submit", "form", (event) ->
             event.preventDefault()
+
             submit()
 
         $el.on "click", ".save", (event) ->
