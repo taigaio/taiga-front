@@ -55,6 +55,8 @@ RelatedTaskRowDirective = ($repo, $compile, $confirm, $rootscope, $loading, $tem
         renderEdit = (task) ->
             $el.html($compile(templateEdit({task: task}))($scope))
 
+            $el.find(".task-name input").val(task.subject)
+
             $el.on "keyup", "input", (event) ->
                 if event.keyCode == 13
                     saveTask($model.$modelValue).then ->
