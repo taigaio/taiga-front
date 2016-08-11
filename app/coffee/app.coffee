@@ -58,6 +58,19 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
                 $translate().then () -> deferred.resolve()
 
                 return deferred.promise
+            ],
+            projectLoaded: ["$q", "tgProjectService", "$route", ($q, projectService, $route) ->
+                deferred = $q.defer()
+
+                projectService.setSection($route.current.$$route.section)
+
+                if $route.current.params.pslug
+                    projectService.setProjectBySlug($route.current.params.pslug).then(deferred.resolve)
+                else
+                    projectService.cleanProject()
+                    deferred.resolve()
+
+                return deferred.promise
             ]
         })
 
@@ -659,7 +672,7 @@ i18nInit = (lang, $translate) ->
     checksley.updateMessages('default', messages)
 
 
-init = ($log, $rootscope, $auth, $events, $analytics, $translate, $location, $navUrls, appMetaService, projectService, loaderService, navigationBarService, errorHandlingService) ->
+init = ($log, $rootscope, $auth, $events, $analytics, $translate, $location, $navUrls, appMetaService, loaderService, navigationBarService, errorHandlingService) ->
     $log.debug("Initialize application")
 
     $rootscope.$on '$translatePartialLoaderStructureChanged', () ->
@@ -721,13 +734,6 @@ init = ($log, $rootscope, $auth, $events, $analytics, $translate, $location, $na
         if next.access && next.access.requiresLogin
             if !$auth.isAuthenticated()
                 $location.path($navUrls.resolve("login"))
-
-        projectService.setSection(next.section)
-
-        if next.params.pslug
-            projectService.setProjectBySlug(next.params.pslug)
-        else
-            projectService.cleanProject()
 
         if next.title or next.description
             title = $translate.instant(next.title or "")
@@ -826,7 +832,6 @@ module.run([
     "$tgLocation",
     "$tgNavUrls",
     "tgAppMetaService",
-    "tgProjectService",
     "tgLoader",
     "tgNavigationBarService",
     "tgErrorHandlingService",
