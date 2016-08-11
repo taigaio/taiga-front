@@ -292,7 +292,8 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService,
             attachmentsToAdd = attachmentsToAdd.push(attachment)
 
         $scope.deleteAttachment = (attachment) ->
-            attachmentsToDelete = attachmentsToDelete.push(attachment)
+            if attachment.get("id")
+                attachmentsToDelete = attachmentsToDelete.push(attachment)
 
         $scope.$on "usform:new", (ctx, projectId, status, statusList) ->
             form.reset() if form

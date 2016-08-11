@@ -41,7 +41,8 @@ CreateEditTaskDirective = ($repo, $model, $rs, $rootscope, $loading, lightboxSer
             attachmentsToAdd = attachmentsToAdd.push(attachment)
 
         $scope.deleteAttachment = (attachment) ->
-            attachmentsToDelete = attachmentsToDelete.push(attachment)
+            if attachment.get("id")
+                attachmentsToDelete = attachmentsToDelete.push(attachment)
 
         createAttachments = (obj) ->
             promises = _.map attachmentsToAdd.toJS(), (attachment) ->
