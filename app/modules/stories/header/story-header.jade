@@ -1,0 +1,76 @@
+.detail-title-wrapper
+    h2.detail-title-text.ng-animate-disabled(
+        ng-show="!vm.editMode"
+        ng-hide="vm.editMode"
+    )
+        span.detail-number {{'#' + vm.item.ref}}
+        span.detail-subject(
+            ng-click="vm.editSubject(true)"
+            ng-if="vm.permissions.canEdit"
+        ) {{vm.item.subject}}
+        span.detail-subject(
+            ng-if="!vm.permissions.canEdit"
+        ) {{vm.item.subject}}
+        tg-svg.detail-edit(
+            ng-if="vm.permissions.canEdit"
+            svg-icon="icon-edit"
+            ng-click="vm.editSubject(true)"
+        )
+
+    .edit-title-wrapper(ng-if="vm.editMode")
+        input.edit-title-input(
+            type="text"
+            ng-model="vm.item.subject"
+            maxlength="500"
+            autofocus
+            required
+            ng-keydown="vm.onCancelEdition($event)"
+        )
+        button.edit-title-button(
+            ng-click="vm.saveSubject()"
+            tg-loading="vm.loadingSubject"
+        )
+            tg-svg(
+                svg-icon="icon-save"
+            )
+.belong-to-epics-wrapper(ng-if="vm.item.epics")
+    span This User Story belongs to
+    tg-belong-to-epics(
+        ng-if="::vm.item.epics"
+        epics="::vm.item.epics"
+        format="text"
+        project="project"
+    )
+
+.item-origin-issue(
+    ng-if="vm.item.origin_issue"
+)
+    span(translate="US.PROMOTED")
+    a(
+        href=""
+        tg-check-permission="view_us"
+        tg-nav="project-issues-detail:project=vm.project.slug,ref=vm.item.origin_issue.ref"
+        title="{{'US.TITLE_LINK_GO_TO_ISSUE' | translate}}"
+    )
+        span {{'#' + vm.item.origin_issue.ref}}
+        span {{vm.item.origin_issue.subject}}
+
+.block-desc-container(ng-show="vm.item.is_blocked")
+    span.block-description-title(translate="COMMON.BLOCKED")
+    span.block-description(
+        ng-if="vm.item.blocked_note"
+    ) {{vm.item.blocked_note}}
+
+.issue-nav
+    a(
+        ng-show="previousUrl"
+        tg-bo-href="previousUrl"
+        title="{{'US.PREVIOUS' | translate}}"
+    )
+        tg-svg(svg-icon="icon-arrow-left")
+    a(
+        ng-show="nextUrl"
+        tg-bo-href="nextUrl"
+        title="{{'US.NEXT' | translate}}"
+    )
+        tg-svg(svg-icon="icon-arrow-right")

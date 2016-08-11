@@ -1,0 +1,251 @@
+.detail-header-container {
+    background: $mass-white;
+    flex: 1;
+    padding: 1rem;
+    &:hover {
+        .detail-edit {
+            opacity: 1;
+        }
+    }
+    &.blocked {
+        background: $red;
+        color: $white;
+        transition: all .2s linear;
+        a,
+        .detail-number,
+        .detail-subject {
+            color: $white;
+        }
+        svg {
+            fill: $white;
+        }
+    }
+    .item-origin-issue,
+    .belong-to-epics-wrapper,
+    .block-desc-container {
+        @include font-size(small);
+        margin-top: .5rem;
+    }
+    .item-origin-issue {
+        a {
+            padding: 0 .2rem;
+        }
+    }
+}
+
+.detail-title-wrapper {
+    @include font-size(larger);
+    @include font-type(text);
+    align-content: center;
+    display: flex;
+    position: relative;
+    transition: all .2s linear;
+    &.blocked {
+        background: $red;
+        transition: all .2s linear;
+    }
+    .detail-title-text {
+        margin: 0;
+    }
+    .detail-number {
+        color: $gray-light;
+        flex-shrink: 0;
+        margin-right: .5rem;
+    }
+    .detail-subject {
+        color: $gray;
+        flex-grow: 1;
+    }
+
+    .detail-edit {
+        cursor: pointer;
+        margin-left: .75rem;
+        opacity: 0;
+        transition: opacity .2s;
+        svg {
+            @include svg-size(1.25rem);
+        }
+    }
+}
+
+.edit-title-wrapper {
+    @include font-size(larger);
+    @include font-type(text);
+    display: flex;
+    flex: 1;
+    .edit-title-input {
+        background: $white;
+        flex: 1;
+    }
+    .edit-title-button {
+        background: none;
+        display: inline;
+        margin-left: 1rem;
+        transition: fill .2s;
+        &:hover {
+            fill: $primary;
+        }
+    }
+}
+
+.block-desc-container {
+    .block-description-title {
+        @include font-type(bold);
+        margin-right: .5rem;
+
+    }
+}
+
+.issue-nav {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    a {
+        display: inline-block;
+    }
+    svg {
+        @include svg-size(1.2rem);
+        fill: currentColor;
+    }
+}
+
+//
+// .us-title {
+//
+//     &.blocked {
+//         background: $red;
+//         transition: all .2s linear;
+//         vertical-align: middle;
+//         .us-title-text,
+//         input {
+//             margin-bottom: .5rem;
+//         }
+//         .us-number,
+//         .us-name,
+//         .us-related-task {
+//             color: $white;
+//         }
+//         a {
+//             color: $white;
+//             transition: color .3s linear;
+//         }
+//         a:hover {
+//             color: $red-light;
+//         }
+//         .unblock {
+//             @include font-type(bold);
+//             color: $white;
+//             float: right;
+//         }
+//         .unblock:hover {
+//             color: $red-light;
+//             transition: color .3s linear;
+//         }
+//     }
+//     p {
+//         margin-bottom: 0;
+//     }
+//     .us-edit-name-inner {
+//         display: flex;
+//     }
+//     .edit-subject {
+//         align-content: center;
+//         align-items: center;
+//         display: flex;
+//         width: 100%;
+//     }
+//     input {
+//         background: $white;
+//         flex-grow: 1;
+//     }
+//     .save-container {
+//         flex-grow: 1;
+//         .save {
+//             display: block;
+//         }
+//     }
+//     .us-title-text {
+//         @include font-size(larger);
+//         @include font-type(text);
+//         align-content: center;
+//         align-items: center;
+//         display: flex;
+//         flex: 1;
+//         margin-bottom: 0;
+//         max-width: 92%;
+//         width: 100%;
+//     }
+//     .us-title-text:hover {
+//         .edit {
+//             opacity: 1;
+//             transition: opacity .3s linear;
+//         }
+//     }
+//     .us-number {
+//         @include font-type(text);
+//         color: $gray-light;
+//         flex-shrink: 0;
+//         line-height: 2.2rem;
+//         margin-right: .5rem;
+//     }
+//     .us-name {
+//         color: $gray;
+//         display: inline-block;
+//         flex-grow: 1;
+//         line-height: 2.2rem;
+//         padding-right: 1rem;
+//         width: 100%;
+//     }
+//     .save,
+//     .edit {
+//         cursor: pointer;
+//         margin-left: .5rem;
+//         svg {
+//             fill: $gray-light;
+//         }
+//     }
+//     .edit {
+//         opacity: 0;
+//     }
+//     .us-related-task {
+//         @include font-size(small);
+//         color: $gray-light;
+//         margin-top: .5rem;
+//         a {
+//             border-left: 1px solid $gray-light;
+//             padding: 0 .2rem;
+//         }
+//         a:hover {
+//             color: $primary;
+//         }
+//         a:first-child {
+//             border: 0;
+//         }
+//     }
+//     .block-desc-container {
+//         @include font-size(small);
+//     }
+//     .block-description-title {
+//         @include font-type(bold);
+//         color: $white;
+//         margin-right: .5rem;
+//     }
+//     .block-description {
+//         color: $white;
+//         display: inline-block;
+//         margin-right: 5rem;
+//     }
+// }
+// .belong-to-epics-wrapper {
+//     @include font-size(small);
+//     color: $gray-light;
+//     margin-top: .5rem;
+//     a:hover {
+//         color: $primary;
+//     }
+// }
+// .loading-spinner {
+//     @include loading-spinner;
+//     max-height: 1.5rem;
+//     max-width: 1.5rem;
+// }
