@@ -2,6 +2,7 @@
     background: $mass-white;
     flex: 1;
     padding: 1rem;
+    position: relative;
     &:hover {
         .detail-edit {
             opacity: 1;
@@ -45,6 +46,7 @@
         transition: all .2s linear;
     }
     .detail-title-text {
+        line-height: normal;
         margin: 0;
     }
     .detail-number {

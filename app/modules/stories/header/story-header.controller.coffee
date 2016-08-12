@@ -23,13 +23,30 @@ class StoryHeaderController
     @.$inject = [
         "$rootScope",
         "$tgConfirm",
-        "$tgQueueModelTransformation"
+        "$tgQueueModelTransformation",
+        "$tgNavUrls",
     ]
 
-    constructor: (@rootScope, @confirm, @modelTransform) ->
+    constructor: (@rootScope, @confirm, @modelTransform, @navUrls) ->
         @.editMode = false
         @.loadingSubject = false
         @.originalSubject = @.item.subject
+
+        console.log @.item
+
+        if @.item.neighbors.previous?.ref?
+            ctx = {
+                project: @.project.slug
+                ref: @.item.neighbors.previous.ref
+            }
+            @.previousUrl = @navUrls.resolve("project-userstories-detail", ctx)
+
+        if @.item.neighbors.next?.ref?
+            ctx = {
+                project: @.project.slug
+                ref: @.item.neighbors.next.ref
+            }
+            @.nextUrl = @navUrls.resolve("project-userstories-detail", ctx)
 
     _checkPermissions: () ->
         @.permissions = {
@@ -42,7 +59,10 @@ class StoryHeaderController
         if !value
             @.editMode = false
 
-    onCancelEdition: (event) ->
+    onKeyDown: (event) ->
+        if event.which == 13
+            @.saveSubject()
+
         if event.which == 27
             @.item.subject = @.originalSubject
             @.editSubject(false)
@@ -52,6 +72,7 @@ class StoryHeaderController
             @.loadingSubject = false
             @rootScope.$broadcast("object:updated")
             @confirm.notify('success')
+            @.originalSubject = @.item.subject
 
         onEditSubjectError = () =>
             @.loadingSubject = false

@@ -24,7 +24,7 @@
             maxlength="500"
             autofocus
             required
-            ng-keydown="vm.onCancelEdition($event)"
+            ng-keydown="vm.onKeyDown($event)"
         )
         button.edit-title-button(
             ng-click="vm.saveSubject()"
@@ -63,14 +63,14 @@
 
 .issue-nav
     a(
-        ng-show="previousUrl"
-        tg-bo-href="previousUrl"
+        ng-if="vm.previousUrl"
+        ng-href="{{vm.previousUrl}}"
         title="{{'US.PREVIOUS' | translate}}"
     )
         tg-svg(svg-icon="icon-arrow-left")
     a(
-        ng-show="nextUrl"
-        tg-bo-href="nextUrl"
+        ng-if="vm.nextUrl"
+        ng-href="{{vm.nextUrl}}"
         title="{{'US.NEXT' | translate}}"
     )
         tg-svg(svg-icon="icon-arrow-right")

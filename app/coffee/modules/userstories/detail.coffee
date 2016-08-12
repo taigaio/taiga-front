@@ -166,20 +166,6 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
 
             @modelTransform.setObject(@scope, 'us')
 
-            if @scope.us.neighbors.previous?.ref?
-                ctx = {
-                    project: @scope.project.slug
-                    ref: @scope.us.neighbors.previous.ref
-                }
-                @scope.previousUrl = @navUrls.resolve("project-userstories-detail", ctx)
-
-            if @scope.us.neighbors.next?.ref?
-                ctx = {
-                    project: @scope.project.slug
-                    ref: @scope.us.neighbors.next.ref
-                }
-                @scope.nextUrl = @navUrls.resolve("project-userstories-detail", ctx)
-
             return us
 
     loadSprint: ->
