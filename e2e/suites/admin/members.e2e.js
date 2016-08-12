@@ -8,7 +8,7 @@ var chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 var expect = chai.expect;
 
-describe('admin - members', function() {
+describe.only('admin - members', function() {
     before(async function(){
         browser.get(browser.params.glob.host + 'project/project-0/admin/memberships');
 
@@ -50,7 +50,8 @@ describe('admin - members', function() {
         });
 
         it('submit', async function() {
-            newMemberLightbox.submit();
+            await browser.sleep(1000);
+            await newMemberLightbox.submit();
 
             await newMemberLightbox.waitClose();
 
@@ -101,11 +102,9 @@ describe('admin - members', function() {
         utils.common.takeScreenshot('memberships', 'delete-owner-lb');
 
         let isLeaveProjectWarningOpen = await adminMembershipsHelper.isLeaveProjectWarningOpen();
-
         expect(isLeaveProjectWarningOpen).to.be.equal(true);
 
         let lb = adminMembershipsHelper.leavingProjectWarningLb();
-
         await utils.lightbox.open(lb);
 
         utils.lightbox.exit(lb);

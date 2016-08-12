@@ -28,7 +28,6 @@ class CommentController
 
     constructor: (@currentUserService, @permissionService, @lightboxFactory) ->
         @.hiddenDeletedComment = true
-        @.toggleEditComment = false
         @.commentContent = angular.copy(@.comment)
 
     showDeletedComment: () ->
@@ -37,12 +36,9 @@ class CommentController
     hideDeletedComment: () ->
         @.hiddenDeletedComment = true
 
-    toggleCommentEditor: () ->
-        @.toggleEditComment = !@.toggleEditComment
-
     checkCancelComment: (event) ->
         if event.keyCode == 27
-            @.toggleCommentEditor()
+            @.onEditMode({commentId: @.comment.id})
 
     canEditDeleteComment: () ->
         if @currentUserService.getUser()

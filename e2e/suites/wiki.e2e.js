@@ -20,24 +20,14 @@ describe('wiki', function() {
         await utils.common.takeScreenshot("wiki", "empty");
     });
 
-    it("drag & drop links", async function() {
-        let nameOld = await wikiHelper.links().getNameOf(0);
-
-        await wikiHelper.dragAndDropLinks(0, 1);
-
-        // NOTE: Thre is a strange scroll and we have to take the
-        //       fifth element instead of the second.
-        let nameNew = await wikiHelper.links().getNameOf(4);
-
-        expect(nameNew).to.be.equal(nameOld);
-
-    });
-
     it('add link', async function(){
+        let linkText = "Test link" + new Date().getTime();
+        await wikiHelper.links().addLink(linkText);
+
         let timestamp = new Date().getTime();
         currentWiki.slug = "test-link" + timestamp;
 
-        let linkText = "Test link" + timestamp;
+        linkText = "Test link" + timestamp;
         currentWiki.link = await wikiHelper.links().addLink(linkText);
     });
 
@@ -56,6 +46,17 @@ describe('wiki', function() {
         let url = await browser.getCurrentUrl();
 
         expect(url).to.be.equal(browser.params.glob.host + 'project/project-0/wiki/' + currentWiki.slug);
+    });
+
+    utils.common.browserSkip('internet explorer', "drag & drop links", async function() {
+        let nameOld = await wikiHelper.links().getNameOf(0);
+
+        await wikiHelper.dragAndDropLinks(0, 1);
+
+        let nameNew = await wikiHelper.links().getNameOf(0);
+
+        expect(nameNew).to.be.equal(nameOld);
+
     });
 
     it('remove link', async function() {

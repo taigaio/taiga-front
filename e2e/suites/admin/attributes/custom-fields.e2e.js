@@ -42,9 +42,11 @@ describe('custom-fields', function() {
             it('edit', async function() {
                 await customFieldsHelper.edit(typeIndex, 0, 'edit', 'desc2', 1);
 
-                let notification = await utils.notifications.success.open();
+                let open = await utils.notifications.success.open();
 
-                expect(notification).to.be.true;
+                expect(open).to.be.true;
+
+                await utils.notifications.success.close();
             });
 
             it('drag', async function() {
@@ -52,9 +54,9 @@ describe('custom-fields', function() {
 
                 await customFieldsHelper.drag(typeIndex, 0, 1);
 
-                let nameNew = awcustomFieldsHelper.getName(typeIndex, 1);
+                let nameNew = await customFieldsHelper.getName(typeIndex, 1);
 
-                expect(nameNew).to.be.eventually.equal(nameOld);
+                expect(nameNew).to.be.equal(nameOld);
             });
 
             it('delete', async function() {
@@ -75,15 +77,12 @@ describe('custom-fields', function() {
 
             it('create', async function() {
                 let oldCountCustomFields = await customFieldsHelper.getCustomFiledsByType(typeIndex).count();
-
                 await customFieldsHelper.create(typeIndex, 'test1-text', 'desc1', 1);
-
                 // debounce :(
                 await utils.notifications.success.open();
                 await browser.sleep(2500);
 
                 await customFieldsHelper.create(typeIndex, 'test1-multi', 'desc1', 3);
-
                 // debounce :(
                 await utils.notifications.success.open();
                 await browser.sleep(2500);
@@ -96,7 +95,11 @@ describe('custom-fields', function() {
             it('edit', async function() {
                 customFieldsHelper.edit(typeIndex, 0, 'edit', 'desc2', 2);
 
-                expect(utils.notifications.success.open()).to.be.eventually.true;
+                let open = await utils.notifications.success.open();
+
+                expect(open).to.be.true;
+
+                await utils.notifications.success.close();
             });
 
             it('drag', async function() {
@@ -104,9 +107,9 @@ describe('custom-fields', function() {
 
                 await customFieldsHelper.drag(typeIndex, 0, 1);
 
-                let nameNew = customFieldsHelper.getName(typeIndex, 1);
+                let nameNew = await customFieldsHelper.getName(typeIndex, 1);
 
-                expect(nameNew).to.be.eventually.equal(nameOld);
+                expect(nameNew).to.be.equal(nameOld);
             });
 
             it('delete', async function() {
@@ -148,7 +151,11 @@ describe('custom-fields', function() {
             it('edit', async function() {
                 customFieldsHelper.edit(typeIndex, 0, 'edit', 'desc2', 2);
 
-                expect(utils.notifications.success.open()).to.be.eventually.true;
+                let open = await utils.notifications.success.open();
+
+                expect(open).to.be.true;
+
+                await utils.notifications.success.close();
             });
 
             it('drag', async function() {
@@ -156,9 +163,9 @@ describe('custom-fields', function() {
 
                 await customFieldsHelper.drag(typeIndex, 0, 1);
 
-                let nameNew = customFieldsHelper.getName(typeIndex, 1);
+                let nameNew = await customFieldsHelper.getName(typeIndex, 1);
 
-                expect(nameNew).to.be.eventually.equal(nameOld);
+                expect(nameNew).to.be.equal(nameOld);
             });
 
             it('delete', async function() {

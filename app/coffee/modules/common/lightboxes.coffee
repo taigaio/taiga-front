@@ -544,7 +544,8 @@ AssignedToLightboxDirective = (lightboxService, lightboxKeyboardNavigationServic
             visibleUsers = _.map visibleUsers, (user) ->
                 user.avatar = avatarService.getAvatar(user)
 
-            selected.avatar = avatarService.getAvatar(selected) if selected
+            if selected
+                selected.avatar = avatarService.getAvatar(selected) if selected
 
             ctx = {
                 selected: selected
@@ -620,7 +621,7 @@ module.directive("tgLbAssignedto", ["lightboxService", "lightboxKeyboardNavigati
 ## Watchers Lightbox directive
 #############################################################################
 
-WatchersLightboxDirective = ($repo, lightboxService, lightboxKeyboardNavigationService, $template, $compile) ->
+WatchersLightboxDirective = ($repo, lightboxService, lightboxKeyboardNavigationService, $template, $compile, avatarService) ->
     link = ($scope, $el, $attrs) ->
         selectedItem = null
         usersTemplate = $template.get("common/lightbox/lightbox-assigned-to-users.html", true)
@@ -642,9 +643,16 @@ WatchersLightboxDirective = ($repo, lightboxService, lightboxKeyboardNavigationS
 
         # Render the specific list of users.
         render = (users) ->
+            visibleUsers = _.slice(users, 0, 5)
+
+            visibleUsers = _.map visibleUsers, (user) ->
+                user.avatar = avatarService.getAvatar(user)
+
+                return user
+
             ctx = {
                 selected: false
-                users: _.slice(users, 0, 5)
+                users: visibleUsers
                 showMore: users.length > 5
             }
 
@@ -700,7 +708,7 @@ WatchersLightboxDirective = ($repo, lightboxService, lightboxKeyboardNavigationS
         link:link
     }
 
-module.directive("tgLbWatchers", ["$tgRepo", "lightboxService", "lightboxKeyboardNavigationService", "$tgTemplate", "$compile", WatchersLightboxDirective])
+module.directive("tgLbWatchers", ["$tgRepo", "lightboxService", "lightboxKeyboardNavigationService", "$tgTemplate", "$compile", "tgAvatarService", WatchersLightboxDirective])
 
 
 LightboxLeaveProjectWarningDirective = (lightboxService, $template, $compile) ->

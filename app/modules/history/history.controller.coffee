@@ -27,6 +27,9 @@ class HistorySectionController
     ]
 
     constructor: (@rs, @repo, @storage) ->
+        @.editing = null
+        @.deleting = null
+        @.editMode = {}
         @.viewComments = true
         @._loadHistory()
         @.reverse = @storage.get("orderComments")
@@ -46,6 +49,9 @@ class HistorySectionController
         @.activities =  _.filter(activities, (item) -> Object.keys(item.values_diff).length > 0)
         @.activitiesNum = @.activities.length
 
+    toggleEditMode: (commentId) ->
+        @.editMode[commentId] = !@.editMode[commentId]
+
     onActiveHistoryTab: (active) ->
         @.viewComments = active
 
@@ -53,28 +59,29 @@ class HistorySectionController
         type = @.name
         objectId = @.id
         activityId = commentId
-        @.deleting = true
+        @.deleting = commentId
         return @rs.history.deleteComment(type, objectId, activityId).then =>
             @._loadHistory()
-            @.deleting = false
+            @.deleting = commentId
 
     editComment: (commentId, comment) ->
         type = @.name
         objectId = @.id
         activityId = commentId
-        @.editing = true
+        @.editing = commentId
         return @rs.history.editComment(type, objectId, activityId, comment).then =>
             @._loadHistory()
-            @.editing = false
+            @.toggleEditMode(commentId)
+            @.editing = null
 
     restoreDeletedComment: (commentId) ->
         type = @.name
         objectId = @.id
         activityId = commentId
-        @.editing = true
+        @.editing = commentId
         return @rs.history.undeleteComment(type, objectId, activityId).then =>
             @._loadHistory()
-            @.editing = false
+            @.editing = null
 
     addComment: () ->
         type = @.type

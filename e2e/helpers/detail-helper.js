@@ -155,7 +155,7 @@ helper.editComment = function() {
       },
 
       saveComment: async function () {
-          el.$('.save-comment').click()
+          el.$('.save-comment').click();
           await browser.waitForAngular();
       }
   }
@@ -204,7 +204,7 @@ helper.history = function() {
         },
 
         editLastComment: async function() {
-            let lastComment = el.$$(".comment-wrapper").last()
+            let lastComment = el.$$(".comment-wrapper").last();
             browser
                .actions()
                .mouseMove(lastComment)
@@ -215,7 +215,8 @@ helper.history = function() {
         },
 
         deleteLastComment: async function() {
-            let lastComment = el.$$(".comment-wrapper").last()
+            let lastComment = el.$$(".comment-wrapper").last();
+
             browser
                .actions()
                .mouseMove(lastComment)
@@ -236,7 +237,7 @@ helper.history = function() {
         },
 
         enableEditModeLastComment: async function() {
-            let lastComment = el.$$(".comment-wrapper").last()
+            let lastComment = el.$$(".comment-wrapper").last();
             browser
                .actions()
                .mouseMove(lastComment)
@@ -323,9 +324,7 @@ helper.attachment = function() {
         },
         upload: async function(filePath, name) {
             let addAttach = el.$('#add-attach');
-
             let countAttachments = await $$('tg-attachment').count();
-
             let toggleInput = function() {
                 $('#add-attach').toggle();
             };
@@ -340,8 +339,8 @@ helper.attachment = function() {
                 return !!count;
             }, 5000);
 
-
             await el.$('tg-attachment .editable-attachment-comment input').sendKeys(name);
+            await browser.sleep(500);
             await browser.actions().sendKeys(protractor.Key.ENTER).perform();
             await browser.executeScript(toggleInput);
             await browser.waitForAngular();

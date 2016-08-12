@@ -46,6 +46,7 @@ $column-padding: .5rem 1rem;
 .taskboard-table {
     display: flex;
     flex-direction: column;
+    height: 100%;
     overflow: hidden;
     width: 100%;
     &.zoom-0 {

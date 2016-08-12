@@ -3,6 +3,7 @@ var kanbanHelper = require('../helpers').kanban;
 var backlogHelper = require('../helpers').backlog;
 var commonHelper = require('../helpers').common;
 var filterHelper = require('../helpers/filters-helper');
+var sharedFilters = require('../shared/filters');
 
 var chai = require('chai');
 var chaiAsPromised = require('chai-as-promised');
@@ -223,24 +224,6 @@ describe('kanban', function() {
 
             expect(foldedColumns).to.be.equal(0);
         });
-
-        it('fold cars', async function() {
-            kanbanHelper.foldCards(0);
-
-            utils.common.takeScreenshot('kanban', 'fold-cards');
-
-            let minimized = await $$('.kanban-task-minimized').count();
-
-            expect(minimized).to.be.above(1);
-        });
-
-        it('unfold cars', async function() {
-            kanbanHelper.unFoldCards(0);
-
-            let minimized = await $$('.kanban-task-minimized').count();
-
-            expect(minimized).to.be.equal(0);
-        });
     });
 
     it('move us between columns', async function() {
@@ -250,7 +233,7 @@ describe('kanban', function() {
         let usOrigin = kanbanHelper.getBoxUss(0).first();
         let destination = kanbanHelper.getColumns().get(1);
 
-        await utils.common.drag(usOrigin, destination);
+        await utils.common.drag(usOrigin, destination, 0, 10);
 
         browser.waitForAngular();
 
@@ -270,7 +253,7 @@ describe('kanban', function() {
 
             await kanbanHelper.scrollRight();
 
-            await utils.common.drag(usOrigin, destination);
+            await utils.common.drag(usOrigin, destination, 0, 10);
 
             browser.waitForAngular();
 

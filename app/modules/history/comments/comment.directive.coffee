@@ -31,6 +31,8 @@ CommentDirective = () ->
             editing: "<",
             deleting: "<",
             objectId: "<",
+            editMode: "<",
+            onEditMode: "&",
             onDeleteComment: "&",
             onRestoreDeletedComment: "&",
             onEditComment: "&"

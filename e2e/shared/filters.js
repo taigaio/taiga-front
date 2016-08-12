@@ -10,6 +10,7 @@ var expect = chai.expect;
 module.exports = function(name, counter) {
     before(async () => {
         await filterHelper.open();
+        await browser.sleep(4000);
 
         utils.common.takeScreenshot(name, 'filters');
     });

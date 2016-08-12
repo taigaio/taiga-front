@@ -40,7 +40,7 @@ helper.getTagsSection = function(item) {
     return {
         el: section,
         rows: function() {
-            return section.$$('.table-main > div');
+            return section.$$('.table-main');
         }
     };
 };

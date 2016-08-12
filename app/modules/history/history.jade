@@ -13,8 +13,11 @@ section.history
         comments="vm.comments"
         on-delete-comment="vm.deleteComment(commentId)"
         on-restore-deleted-comment="vm.restoreDeletedComment(commentId)"
+        on-edit-mode="vm.toggleEditMode(commentId)"
         on-add-comment="vm.addComment()"
         on-edit-comment="vm.editComment(commentId, commentData)"
+        edit-mode="vm.editMode"
+
         object="{{vm.id}}"
         type="vm.type"
         name="{{vm.name}}"

@@ -24,6 +24,10 @@ describe('taskboard', function() {
     });
 
     it('zoom', async function() {
+        taskboardHelper.zoom(0);
+        await browser.sleep(1000);
+        utils.common.takeScreenshot('taskboard', 'zoom1');
+
         taskboardHelper.zoom(1);
         await browser.sleep(1000);
         utils.common.takeScreenshot('taskboard', 'zoom1');
@@ -35,10 +39,6 @@ describe('taskboard', function() {
         taskboardHelper.zoom(3);
         await browser.sleep(1000);
         utils.common.takeScreenshot('taskboard', 'zoom3');
-
-        taskboardHelper.zoom(4);
-        await browser.sleep(1000);
-        utils.common.takeScreenshot('taskboard', 'zoom4');
     });
 
     describe('create task', function() {
@@ -241,9 +241,9 @@ describe('taskboard', function() {
             let taskOrigin = taskboardHelper.getBoxTasks(0, 0).first();
             let destination = taskboardHelper.getBox(0, 1);
 
-            await utils.common.drag(taskOrigin, destination);
+            await utils.common.drag(taskOrigin, destination, 0, 10);
 
-            browser.waitForAngular();
+            await browser.waitForAngular();
 
             let originTaskCount = await taskboardHelper.getBoxTasks(0, 0).count();
             let destinationTaskCount = await taskboardHelper.getBoxTasks(0, 1).count();
@@ -254,17 +254,17 @@ describe('taskboard', function() {
 
         it('move task between US\s', async function() {
             let initOriginTaskCount = await taskboardHelper.getBoxTasks(0, 0).count();
-            let initDestinationTaskCount = await taskboardHelper.getBoxTasks(1, 1).count();
+            let initDestinationTaskCount = await taskboardHelper.getBoxTasks(1, 0).count();
 
             let taskOrigin = taskboardHelper.getBoxTasks(0, 0).first();
             let destination = taskboardHelper.getBox(1, 0);
 
-            await utils.common.drag(taskOrigin, destination);
+            await utils.common.drag(taskOrigin, destination, 0, 10);
 
-            browser.waitForAngular();
+            await browser.waitForAngular();
 
             let originTaskCount = await taskboardHelper.getBoxTasks(0, 0).count();
-            let destinationTaskCount = await taskboardHelper.getBoxTasks(1, 1).count();
+            let destinationTaskCount = await taskboardHelper.getBoxTasks(1, 0).count();
 
             expect(originTaskCount).to.be.equal(initOriginTaskCount - 1);
             expect(destinationTaskCount).to.be.equal(initDestinationTaskCount + 1);
@@ -285,7 +285,7 @@ describe('taskboard', function() {
 
             await lightbox.waitClose();
 
-            let usAssignedTo = await taskboardHelper.getBoxTasks(0, 0).get(0).$('.task-assigned').getText();
+            let usAssignedTo = await taskboardHelper.getBoxTasks(0, 0).get(0).$('.card-owner-name').getText();
 
             expect(assgnedToName).to.be.equal(usAssignedTo);
         });

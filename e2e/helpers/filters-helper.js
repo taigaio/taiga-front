@@ -17,7 +17,7 @@ helper.open = async function() {
 
     var filter = helper.getFilter();
 
-    return utils.common.transitionend('.e2e-open-filter')
+    return utils.common.transitionend('tg-filter');
 };
 
 helper.byText = function(text) {

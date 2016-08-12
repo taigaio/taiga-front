@@ -11,7 +11,7 @@ notifications.success.open = function() {
     return browser
         .wait(function() {
             return common.hasClass(el, 'active');
-        }, 6000)
+        }, 6000, "notification success open")
         .then(function(active) {
             return browser.sleep(transition).then(function() {
                 return active;
@@ -25,7 +25,7 @@ notifications.success.close = function() {
     return browser
         .wait(function() {
             return common.hasClass(el, 'inactive');
-        }, 6000)
+        }, 6000, "notification success close")
         .then(function(active) {
             return browser.sleep(transition).then(function() {
                 return active;

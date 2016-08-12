@@ -225,6 +225,7 @@ shared.historyTesting = async function(screenshotsFolder) {
     //Deleting last comment
     let deletedCommentsCounter = await historyHelper.countDeletedComments();
     await historyHelper.deleteLastComment();
+
     let newDeletedCommentsCounter = await historyHelper.countDeletedComments();
     expect(newDeletedCommentsCounter).to.be.equal(deletedCommentsCounter+1);
     await utils.common.takeScreenshot(screenshotsFolder, "deleted comment");
@@ -243,6 +244,8 @@ shared.historyTesting = async function(screenshotsFolder) {
     let title = detailHelper.title();
     title.setTitle('changed');
     await title.save();
+    await utils.notifications.success.close();
+
     newCommentsCounter = await historyHelper.countComments();
 
     expect(newCommentsCounter).to.be.equal(commentsCounter+1);
@@ -253,8 +256,7 @@ shared.historyTesting = async function(screenshotsFolder) {
 
     let activitiesCounter = await historyHelper.countActivities();
 
-    expect(newCommentsCounter).to.be.least(activitiesCounter);
-    
+    expect(newCommentsCounter).to.be.least(1);
 }
 
 shared.blockTesting = async function() {
@@ -289,6 +291,7 @@ shared.attachmentTesting = async function() {
 
     // Uploading attachment
     let attachmentsLength = await attachmentHelper.countAttachments();
+
     var fileToUpload = commonUtil.uploadFilePath();
 
     await attachmentHelper.upload(fileToUpload, 'This is the testing name ' + date);
@@ -311,7 +314,6 @@ shared.attachmentTesting = async function() {
     await attachmentHelper.renameLastAttchment('This is the new testing name ' + date);
     name = await attachmentHelper.getLastAttachmentName();
     expect(name).to.be.equal('This is the new testing name ' + date);
-
     // Deprecating
     let deprecatedAttachmentsLength = await attachmentHelper.countDeprecatedAttachments();
     await attachmentHelper.deprecateLastAttachment();
@@ -345,7 +347,6 @@ shared.attachmentTesting = async function() {
     await attachmentHelper.upload(fileToUpload, 'testing image ' + date);
 
     await attachmentHelper.upload(fileToUploadImage, 'testing image ' + date);
-    await browser.sleep(5000);
 
     attachmentHelper.attachmentLinks().last().click();
 

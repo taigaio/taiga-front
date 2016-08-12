@@ -22,11 +22,11 @@ include ../../../partials/common/components/wysiwyg.jade
                     tg-svg(svg-icon="icon-bulk")
         .comment-container
             .comment-text.wysiwyg(
-                ng-if="!vm.toggleEditComment"
+                ng-if="!vm.editMode"
                 ng-bind-html="vm.comment.comment_html"
             )
             .comment-editor(
-                ng-if="vm.toggleEditComment"
+                ng-if="vm.editMode"
                 ng-keyup="vm.checkCancelComment($event)"
             )
                 .edit-comment(ng-model="vm.type")
@@ -38,29 +38,29 @@ include ../../../partials/common/components/wysiwyg.jade
                             type="button"
                             title="{{'COMMENTS.EDIT_COMMENT' | translate}}"
                             translate="COMMENTS.EDIT_COMMENT"
-                            ng-disabled="!vm.commentContent.comment.length || vm.editing"
+                            ng-disabled="!vm.commentContent.comment.length || vm.editing == vm.comment.id"
                             ng-click="vm.onEditComment({commentId: vm.comment.id, commentData: vm.commentContent.comment})"
-                            tg-loading="vm.editing"
+                            tg-loading="vm.editing == vm.comment.id"
                         )
     .comment-options(ng-if="::vm.canEditDeleteComment()")
         tg-svg.comment-option(
             svg-icon="icon-edit"
             svg-title-translate="COMMON.EDIT"
-            ng-click="vm.toggleCommentEditor()"
-            ng-if="!vm.toggleEditComment"
+            ng-click="vm.onEditMode({commentId: vm.comment.id})"
+            ng-if="!vm.editMode"
         )
         tg-svg.comment-option(
             svg-icon="icon-close"
             svg-title-translate="COMMON.CANCEL"
-            ng-click="vm.toggleCommentEditor()"
-            ng-if="vm.toggleEditComment"
+            ng-click="vm.onEditMode({commentId: vm.comment.id})"
+            ng-if="vm.editMode"
         )
         tg-svg.comment-option(
             svg-icon="icon-trash"
             svg-title-translate="COMMON.DELETE"
             ng-click="vm.onDeleteComment({commentId: vm.comment.id})"
-            ng-if="!vm.toggleEditComment"
-            tg-loading="vm.deleting"
+            ng-if="!vm.editMode"
+            tg-loading="vm.deleting == vm.comment.id"
         )
 
 .deleted-comment-wrapper(
@@ -95,7 +95,7 @@ include ../../../partials/common/components/wysiwyg.jade
         a.restore-comment(
             href=""
             ng-click="vm.onRestoreDeletedComment({commentId: vm.comment.id})"
-            tg-loading="vm.editing"
+            tg-loading="vm.editing == vm.comment.id"
         )
             tg-svg(
                 svg-icon="icon-reload"

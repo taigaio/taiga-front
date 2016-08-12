@@ -24,14 +24,12 @@ AvatarDirective = (avatarService) ->
         else
             attributeName = 'avatar'
 
-        unwatch = scope.$watch attributeName, (user) ->
+        scope.$watch attributeName, (user) ->
             avatar = avatarService.getAvatar(user, attributeName)
 
             el.attr('src', avatar.url)
             if avatar.bg
                 el.css('background', avatar.bg)
-
-            unwatch() if user
 
     return {
         link: link

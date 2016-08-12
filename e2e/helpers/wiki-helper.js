@@ -3,7 +3,7 @@ var utils = require('../utils');
 var helper = module.exports;
 
 helper.links = function() {
-    let el = $('section[tg-wiki-nav]');
+    let el = $('sidebar[tg-wiki-nav]');
 
     let obj = {
         el: el,
@@ -13,19 +13,25 @@ helper.links = function() {
             el.$(".new input").sendKeys(pageTitle);
             browser.actions().sendKeys(protractor.Key.ENTER).perform();
             await browser.waitForAngular();
-            let newLink = await el.$$(".wiki-link a").last();
+            let newLink = await el.$$(".e2e-wiki-page-link a").last();
             return newLink;
         },
 
         get: function(index) {
-            if(index !== null && index !== undefined)
-                return el.$$(".wiki-link a.link-title").get(index)
-            return el.$$(".wiki-link a.link-title");
+            if(index !== null && index !== undefined) {
+                return el.$$(".e2e-wiki-page-link a.link-title").get(index);
+            }
+
+            return el.$$(".e2e-wiki-page-link a.link-title");
+        },
+
+        row: function(index) {
+            return el.$$(".e2e-wiki-page-link").get(index);
         },
 
         getNameOf: async function(index) {
-            let item = await obj.get(index)
-            return item.getText()
+            let item = await obj.get(index);
+            return item.getText();
         },
 
         deleteLink: async function(link){
@@ -40,7 +46,8 @@ helper.links = function() {
 };
 
 helper.dragAndDropLinks = async function(indexFrom, indexTo) {
-    let selectedLink = helper.links().get(indexFrom);
+    let selectedLink = helper.links().row(indexFrom).$('.dragger');
+
     let newPosition = helper.links().get(indexTo).getLocation();
     return utils.common.drag(selectedLink, newPosition);
 };

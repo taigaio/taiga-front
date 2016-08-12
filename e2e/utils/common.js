@@ -179,13 +179,15 @@ common.dragEnd = function(elm) {
         let count = await $$('.gu-mirror').count();
 
         return count === 0;
-    }, 1000);
+    }, 5000);
 };
 
-common.drag = async function(elm, elm2) {
+common.drag = async function(elm, elm2, extrax = 0, extray = 0) {
     var drag = `
         var drag = arguments[0].origin;
         var dest = arguments[0].dest;
+        var extrax = arguments[0].extrax;
+        var extray = arguments[0].extray;
 
         function triggerMouseEvent (node, eventType, opts) {
             var event = new CustomEvent(eventType);
@@ -196,42 +198,47 @@ common.drag = async function(elm, elm2) {
                 event.clientX = opts.cords.x;
                 event.pageY = opts.cords.y;
                 event.clientY = opts.cords.y - window.pageYOffset;
-
                 dest.scrollIntoView();
             }
 
             event.which = 1;
+
             node.dispatchEvent(event);
         }
 
+        drag.scrollIntoView();
+
         triggerMouseEvent(drag, "mousedown");
+
+        dest.scrollIntoView();
 
         triggerMouseEvent(document.documentElement, "mousemove", {
             cords: {
-                x: $(dest).offset().left,
-                y: $(dest).offset().top
+                x: $(dest).offset().left + extrax,
+                y: $(dest).offset().top + extray
             }
         });
 
         triggerMouseEvent(document.documentElement, "mousemove", {
             cords: {
-                x: $(dest).offset().left,
-                y: $(dest).offset().top
+                x: $(dest).offset().left + extrax,
+                y: $(dest).offset().top + extray
             }
         });
 
         triggerMouseEvent(document.documentElement, "mouseup", {
             cords: {
-                x: $(dest).offset().left,
-                y: $(dest).offset().top
+                x: $(dest).offset().left + extrax,
+                y: $(dest).offset().top + extray
             }
         });
     `;
 
-    // return browser.executeScript(drag, elm, elm2);
     return browser.executeScript(drag, {
         origin: elm.getWebElement(),
-        dest: elm2.getWebElement()
+        dest: elm2.getWebElement(),
+        extrax: extrax,
+        extray: extray
     }).then(common.dragEnd);
 };
 

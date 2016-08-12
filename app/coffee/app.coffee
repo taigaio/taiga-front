@@ -503,7 +503,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
 
                 errorHandlingService.error()
             else if response.status == 401 and $location.url().indexOf('/login') == -1
-                nextUrl = encodeURIComponent($location.url())
+                nextUrl = $location.url()
                 search = $location.search()
 
                 if search.force_next

@@ -44,7 +44,6 @@ describe('attributes - tags', function() {
         let tagsFilter = adminAttributesHelper.getTagsFilter();
         await tagsFilter.clear();
         await tagsFilter.sendKeys('ad');
-        await browser.waitForAngular();
 
         let section = adminAttributesHelper.getTagsSection(0);
         let rows = section.rows();

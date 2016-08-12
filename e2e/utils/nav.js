@@ -47,7 +47,7 @@ var actions = {
         return common.waitLoader();
     },
     backlog: async function() {
-        await common.link($('#nav-backlog a'));
+        await common.link($$('#nav-backlog a').first());
 
         return common.waitLoader();
     },
@@ -75,7 +75,7 @@ var actions = {
         return common.waitLoader();
     },
     task: async function(index) {
-        let task = $$('div[tg-taskboard-task] a.task-name').get(index);
+        let task = $$('tg-card .card-title a').get(index);
 
         await common.link(task);
 

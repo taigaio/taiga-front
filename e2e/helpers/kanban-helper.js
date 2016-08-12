@@ -7,7 +7,7 @@ helper.getHeaderColumns = function() {
 };
 
 helper.openNewUsLb = function(column) {
-    helper.getHeaderColumns().get(column).$$('.option').get(4).click();
+    helper.getHeaderColumns().get(column).$$('.option').get(2).click();
 };
 
 helper.getColumns = function() {
@@ -23,7 +23,7 @@ helper.getBoxUss = function(column) {
 };
 
 helper.getUss = function() {
-    return $$('tg-card')
+    return $$('tg-card');
 };
 
 helper.editUs = async function(column, us) {
@@ -56,18 +56,6 @@ helper.unFoldColumn = function(column) {
     let columnNode = helper.getHeaderColumns().get(column);
 
     columnNode.$$('.options a').get(1).click();
-};
-
-helper.foldCards = function(column) {
-    let columnNode = helper.getHeaderColumns().get(column);
-
-    columnNode.$$('.options a').get(2).click();
-};
-
-helper.unFoldCards = function(column) {
-    let columnNode = helper.getHeaderColumns().get(column);
-
-    columnNode.$$('.options a').get(3).click();
 };
 
 helper.scrollRight = function() {

@@ -4,9 +4,9 @@
     display: flex;
     padding: 2rem 0;
     .activity-avatar {
-        flex-basis: 50px;
         flex-shrink: 0;
         margin-right: 1.5rem;
+        width: 60px;
     }
     .activity-data {
         margin-bottom: 1rem;

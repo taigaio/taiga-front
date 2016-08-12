@@ -136,7 +136,7 @@ helper.watchersLinks = function() {
 helper.zoom = async function(level) {
     return  browser
         .actions()
-        .mouseMove($('tg-board-zoom'), {y: 10, x: level * 74})
+        .mouseMove($('tg-board-zoom'), {y: 14, x: level * 66})
         .click()
         .perform();
 };

@@ -33,7 +33,6 @@ describe "CommentController", ->
         mocks.tgCheckPermissionsService = {
             check: sinon.stub()
         }
-
         provide.value "tgCheckPermissionsService", mocks.tgCheckPermissionsService
 
     _mockTgLightboxFactory = () ->
@@ -62,7 +61,6 @@ describe "CommentController", ->
 
         commentsCtrl.comment = "comment"
         commentsCtrl.hiddenDeletedComment = true
-        commentsCtrl.toggleEditComment = false
         commentsCtrl.commentContent = commentsCtrl.comment
 
     it "show deleted Comment", () ->
@@ -77,21 +75,18 @@ describe "CommentController", ->
         commentsCtrl.hideDeletedComment()
         expect(commentsCtrl.hiddenDeletedComment).to.be.true
 
-    it "toggle deleted Comment", () ->
-        commentsCtrl = controller "CommentCtrl"
-
-        commentsCtrl.toggleEditComment = false
-        commentsCtrl.toggleCommentEditor()
-        expect(commentsCtrl.toggleEditComment).to.be.true
-
     it "cancel comment on keyup", () ->
         commentsCtrl = controller "CommentCtrl"
-        commentsCtrl.toggleCommentEditor = sinon.stub()
+        commentsCtrl.comment = {
+            id: 2
+        }
         event = {
             keyCode: 27
         }
+        commentsCtrl.onEditMode = sinon.stub()
         commentsCtrl.checkCancelComment(event)
-        expect(commentsCtrl.toggleCommentEditor).have.been.called
+
+        expect(commentsCtrl.onEditMode).have.been.called
 
     it "can Edit Comment", () ->
         commentsCtrl = controller "CommentCtrl"

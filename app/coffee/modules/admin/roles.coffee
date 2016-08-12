@@ -99,6 +99,7 @@ class RolesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fil
 
             @scope.roles = roles
             @scope.role = @scope.roles[0]
+
             return roles
 
     loadInitialData: ->

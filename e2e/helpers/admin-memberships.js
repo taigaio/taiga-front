@@ -28,7 +28,7 @@ helper.getNewMemberLightbox = function() {
             el.$$('.remove-fieldset').get(index).click();
         },
         submit: function() {
-            el.$('.submit-button').click();
+            return el.$('.submit-button').click();
         }
     };
 
@@ -49,7 +49,7 @@ helper.getMembers = function() {
 
 helper.getOwner = function() {
     return helper.getMembers().filter(async (member) => {
-        return !!await member.$$('.icon-badge').count();
+        return  !!await member.$$('.owner-badge').count();
     }).first();
 };
 

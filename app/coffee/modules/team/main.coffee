@@ -81,6 +81,8 @@ class TeamController extends mixOf(taiga.Controller, taiga.PageMixin)
         for member in @scope.activeUsers
             @scope.totals[member.id] = 0
 
+        console.log @scope.activeUsers
+
         # Get current user
         @scope.currentUser = _.find(@scope.activeUsers, {id: user?.id})
 

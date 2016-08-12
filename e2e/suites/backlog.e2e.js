@@ -217,7 +217,7 @@ describe('backlog', function() {
         expect(firstElementTextRef).to.be.equal(draggedElementRef);
     });
 
-    it('reorder multiple us', async function() {
+    it.skip('reorder multiple us', async function() {
         let dragableElements = backlogHelper.userStories();
 
         let count = await dragableElements.count();
@@ -245,7 +245,7 @@ describe('backlog', function() {
         expect(elementRef1).to.be.equal(draggedRefs[1]);
     });
 
-    it('drag multiple us to milestone', async function() {
+    it.skip('drag multiple us to milestone', async function() {
         let sprint = backlogHelper.sprints().get(0);
         let initUssSprintCount = await backlogHelper.getSprintUsertories(sprint).count();
 
@@ -285,7 +285,7 @@ describe('backlog', function() {
         expect(ussSprintCount).to.be.equal(initUssSprintCount + 1);
     });
 
-    it('move to current sprint button', async function() {
+    it('move to lastest sprint button', async function() {
         let dragElement = backlogHelper.userStories().first();
 
         dragElement.$('input[type="checkbox"]').click();
@@ -294,7 +294,7 @@ describe('backlog', function() {
 
         let htmlChanges = await utils.common.outerHtmlChanges('.backlog-table-body');
 
-        $('#move-to-current-sprint').click();
+        $('.e2e-move-to-sprint').click();
 
         await htmlChanges();
 
@@ -538,9 +538,9 @@ describe('backlog', function() {
             await utils.common.drag(dragElementHandler, sprint.$('.sprint-table'));
             await browser.waitForAngular();
 
-            let closedSprints = await backlogHelper.closedSprints().count();
+            let closedSprints = await $('.filter-closed-sprints').isPresent();
 
-            expect(closedSprints).to.be.equal(0);
+            expect(closedSprints).to.be.false;
         });
     });
 });

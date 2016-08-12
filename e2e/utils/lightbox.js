@@ -26,7 +26,7 @@ lightbox.open = async function(el) {
         return common.hasClass(el, 'open');
     }, 4000);
 
-    await browser.sleep(transition);
+    await browser.sleep(transition + 100);
 
     if (open) {
         deferred.fulfill(true);
