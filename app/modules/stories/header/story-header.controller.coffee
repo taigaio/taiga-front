@@ -36,20 +36,19 @@ class StoryHeaderController
         console.log @.item
 
     _checkNav: () ->
-
         if @.item.neighbors.previous?.ref?
             ctx = {
                 project: @.project.slug
                 ref: @.item.neighbors.previous.ref
             }
-            @.previousUrl = @navUrls.resolve("project-userstories-detail", ctx)
+            @.previousUrl = @navUrls.resolve("project-" + @.item._name + "-detail", ctx)
 
         if @.item.neighbors.next?.ref?
             ctx = {
                 project: @.project.slug
                 ref: @.item.neighbors.next.ref
             }
-            @.nextUrl = @navUrls.resolve("project-userstories-detail", ctx)
+            @.nextUrl = @navUrls.resolve("project-" + @.item._name + "-detail", ctx)
 
     _checkPermissions: () ->
         @.permissions = {

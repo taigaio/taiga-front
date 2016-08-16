@@ -21,6 +21,7 @@
             fill: $white;
         }
     }
+    .item-generated-us,
     .item-origin-issue,
     .task-belongs-to,
     .belong-to-epics-wrapper,
@@ -28,6 +29,7 @@
         @include font-size(small);
         margin-top: .5rem;
     }
+    .item-generated-us,
     .task-belongs-to,
     .item-origin-issue {
         a {

@@ -33,6 +33,8 @@
             tg-svg(
                 svg-icon="icon-save"
             )
+
+//- User Story belongs to epic
 .belong-to-epics-wrapper(ng-if="vm.item.epics")
     span This User Story belongs to
     tg-belong-to-epics(
@@ -42,20 +44,41 @@
         project="project"
     )
 
-.task-belongs-to(ng-if="vm.item.user_story")
+//- Task belongs to US
+.task-belongs-to(
+    ng-if="vm.item.user_story_extra_info"
+    tg-check-permission="view_us"
+)
     span(translate="TASK.OWNER_US")
     a(
-        href=""
-        tg-check-permission="view_us"
-        tg-nav="project-userstories-detail:project=project.slug,ref=vm.item.user_story.ref"
+        tg-nav="project-userstories-detail:project=vm.project.slug,ref=vm.item.user_story_extra_info.ref"
         title="{{'TASK.TITLE_LINK_GO_OWNER' | translate}}"
     )
-        span.item-ref {{'#' + vm.item.ref}}
-        span {{::vm.item.subject}}
+        span.item-ref {{'#' + vm.item.user_story_extra_info.ref}}
+        span {{::vm.item.user_story_extra_info.subject}}
 
-.item-origin-issue(
-    ng-if="vm.item.origin_issue"
-)
+
+//- User Stories generated from issue
+.item-generated-us(ng-if="vm.item.generated_user_stories.length")
+    span(translate="ISSUES.PROMOTED")
+    a(
+        ng-repeat="userstory in vm.item.generated_user_stories track by userstory.id"
+        tg-check-permission="view_us"
+        tg-nav="project-userstories-detail:project=vm.project.slug,ref=userstory.ref"
+    ) {{'#' + userstory.ref}} {{userstory.subject}}
+
+//- Issue origin from github
+.issue-external-reference(ng-if="vm.item.external_reference")
+    span(translate="ISSUES.EXTERNAL_REFERENCE")
+    a(
+        target="_blank"
+        ng-href="::vm.item.external_reference[1]"
+        ng-title="{{'ISSUES.GO_TO_EXTERNAL_REFERENCE' | translate}}"
+    )
+        span {{ ::vm.item.external_reference[1] }}
+
+//- User Story promoted from issue
+.item-origin-issue(ng-if="vm.item.origin_issue")
     span(translate="US.PROMOTED")
     a(
         href=""
@@ -63,25 +86,25 @@
         tg-nav="project-issues-detail:project=vm.project.slug,ref=vm.item.origin_issue.ref"
         title="{{'US.TITLE_LINK_GO_TO_ISSUE' | translate}}"
     )
-        span {{'#' + vm.item.origin_issue.ref}}
+        span.item-ref {{'#' + vm.item.origin_issue.ref}}
         span {{vm.item.origin_issue.subject}}
 
+//- Blocked description
 .block-desc-container(ng-show="vm.item.is_blocked")
     span.block-description-title(translate="COMMON.BLOCKED")
-    span.block-description(
-        ng-if="vm.item.blocked_note"
-    ) {{vm.item.blocked_note}}
+    span.block-description(ng-if="vm.item.blocked_note") {{vm.item.blocked_note}}
 
+//- Navigation
 .issue-nav
     a(
         ng-if="vm.previousUrl"
         ng-href="{{vm.previousUrl}}"
-        title="{{'US.PREVIOUS' | translate}}"
+        title="{{'COMMON.PREVIOUS' | translate}}"
     )
         tg-svg(svg-icon="icon-arrow-left")
     a(
         ng-if="vm.nextUrl"
         ng-href="{{vm.nextUrl}}"
-        title="{{'US.NEXT' | translate}}"
+        title="{{'COMMON.NEXT' | translate}}"
     )
         tg-svg(svg-icon="icon-arrow-right")
