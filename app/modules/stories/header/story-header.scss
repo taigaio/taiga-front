@@ -39,6 +39,7 @@
     @include font-type(text);
     align-content: center;
     display: flex;
+    max-width: 95%;
     position: relative;
     transition: all .2s linear;
     &.blocked {

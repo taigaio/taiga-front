@@ -14,7 +14,7 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: epics.dashboard.controller.coffee
+# File: story-header.controller.coffee
 ###
 
 module = angular.module("taigaUserStories")
@@ -25,9 +25,10 @@ class StoryHeaderController
         "$tgConfirm",
         "$tgQueueModelTransformation",
         "$tgNavUrls",
+        "$window"
     ]
 
-    constructor: (@rootScope, @confirm, @modelTransform, @navUrls) ->
+    constructor: (@rootScope, @confirm, @modelTransform, @navUrls, @window) ->
         @.editMode = false
         @.loadingSubject = false
         @.originalSubject = @.item.subject
@@ -54,10 +55,12 @@ class StoryHeaderController
         }
 
     editSubject: (value) ->
-        if value
-            @.editMode = true
-        if !value
-            @.editMode = false
+        selection = @window.getSelection()
+        if selection.type != "Range"
+            if value
+                @.editMode = true
+            if !value
+                @.editMode = false
 
     onKeyDown: (event) ->
         if event.which == 13
