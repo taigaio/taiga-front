@@ -42,6 +42,17 @@
         project="project"
     )
 
+.task-belongs-to(ng-if="vm.item.user_story")
+    span(translate="TASK.OWNER_US")
+    a(
+        href=""
+        tg-check-permission="view_us"
+        tg-nav="project-userstories-detail:project=project.slug,ref=vm.item.user_story.ref"
+        title="{{'TASK.TITLE_LINK_GO_OWNER' | translate}}"
+    )
+        span.item-ref {{'#' + vm.item.ref}}
+        span {{::vm.item.subject}}
+
 .item-origin-issue(
     ng-if="vm.item.origin_issue"
 )

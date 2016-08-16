@@ -33,46 +33,6 @@ div.wrapper(
                     ng-class="{blocked: us.is_blocked}"
                     ng-if="project && us"
                 )
-
-                //- div.us-title(ng-class="{blocked: us.is_blocked}")
-                //-     h2.us-title-text
-                //-
-                //-
-                //-     p.us-related-task(ng-if="us.origin_issue") {{ 'US.PROMOTED'|translate }}
-                //-         a(
-                //-             href=""
-                //-             tg-check-permission="view_us"
-                //-             tg-nav="project-issues-detail:project=project.slug,ref=us.origin_issue.ref"
-                //-             tg-bo-title="'#' + us.origin_issue.ref + ' ' + us.origin_issue.subject"
-                //-             title="{{'US.TITLE_LINK_GO_TO_ISSUE' | translate}}"
-                //-         )
-                //-             span(tg-bo-ref="us.origin_issue.ref")
-                //-
-                //-     p.external-reference(ng-if="us.external_reference")
-                //-         | {{ 'US.EXTERNAL_REFERENCE'|translate }}
-                //-         a(
-                //-             tg-bo-href="us.external_reference[1]",
-                //-             title="{{'US.GO_TO_EXTERNAL_REFERENCE' | translate}}"
-                //-             target="_blank"
-                //-         )
-                //-             span {{ us.external_reference[1] }}
-                //-
-                //-     p.block-desc-container(ng-show="us.is_blocked")
-                //-         span.block-description-title(translate="COMMON.BLOCKED")
-                //-         span.block-description(ng-bind="us.blocked_note || ('US.BLOCKED' | translate)")
-                //-     div.issue-nav
-                //-         a(
-                //-             ng-show="previousUrl"
-                //-             tg-bo-href="previousUrl"
-                //-             title="{{'US.PREVIOUS' | translate}}"
-                //-         )
-                //-             tg-svg(svg-icon="icon-arrow-left")
-                //-         a(
-                //-             ng-show="nextUrl"
-                //-             tg-bo-href="nextUrl"
-                //-             title="{{'US.NEXT' | translate}}"
-                //-         )
-                //-             tg-svg(svg-icon="icon-arrow-right")
             .subheader
                 tg-tag-line.tags-block(
                     ng-if="us && project"

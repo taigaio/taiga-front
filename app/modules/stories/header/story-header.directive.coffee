@@ -24,6 +24,7 @@ DetailHeaderDirective = () ->
 
     link = (scope, el, attrs, ctrl) ->
         ctrl._checkPermissions()
+        ctrl._checkNav()
 
     return {
         link: link,
