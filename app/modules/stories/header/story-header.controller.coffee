@@ -33,8 +33,6 @@ class StoryHeaderController
         @.loadingSubject = false
         @.originalSubject = @.item.subject
 
-        console.log @.item
-
     _checkNav: () ->
         if @.item.neighbors.previous?.ref?
             ctx = {

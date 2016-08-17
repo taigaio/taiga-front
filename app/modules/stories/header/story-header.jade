@@ -56,7 +56,12 @@
     )
         span.item-ref {{'#' + vm.item.user_story_extra_info.ref}}
         span {{::vm.item.user_story_extra_info.subject}}
-
+        tg-belong-to-epics(
+            ng-if="::vm.item.user_story_extra_info.epics"
+            epics="::vm.item.user_story_extra_info.epics"
+            format="pill"
+            project="vm.project"
+        )
 
 //- User Stories generated from issue
 .item-generated-us(ng-if="vm.item.generated_user_stories.length")
