@@ -2,22 +2,22 @@ var utils = require('../utils');
 var helper = module.exports;
 
 helper.title = function() {
-    let el = $('span[tg-editable-subject]');
+    let el = $('.e2e-story-header');
 
     let obj = {
         el: el,
 
         getTitle: function() {
-            return el.$('.view-subject').getText();
+            return el.$('.e2e-title-subject').getText();
         },
 
         setTitle: function(title) {
-            el.$('.view-subject').click();
-            el.$('.edit-subject input').clear().sendKeys(title);
+            el.$('.e2e-detail-edit').click();
+            el.$('.e2e-title-input').clear().sendKeys(title);
         },
 
         save: async function() {
-            el.$('.save').click();
+            el.$('.e2e-title-button').click();
             await browser.waitForAngular();
         }
     };

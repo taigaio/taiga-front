@@ -1,24 +1,24 @@
-.detail-title-wrapper
+.detail-title-wrapper.e2e-story-header
     h2.detail-title-text.ng-animate-disabled(
         ng-show="!vm.editMode"
         ng-hide="vm.editMode"
     )
         span.detail-number {{'#' + vm.item.ref}}
-        span.detail-subject(
+        span.detail-subject.e2e-title-subject(
             ng-click="vm.editSubject(true)"
             ng-if="vm.permissions.canEdit"
         ) {{vm.item.subject}}
-        span.detail-subject(
+        span.detail-subject.e2e-title-subject(
             ng-if="!vm.permissions.canEdit"
         ) {{vm.item.subject}}
-        tg-svg.detail-edit(
+        tg-svg.detail-edit.e2e-detail-edit(
             ng-if="vm.permissions.canEdit"
             svg-icon="icon-edit"
             ng-click="vm.editSubject(true)"
         )
 
     .edit-title-wrapper(ng-if="vm.editMode")
-        input.edit-title-input(
+        input.edit-title-input.e2e-title-input(
             type="text"
             ng-model="vm.item.subject"
             maxlength="500"
@@ -26,7 +26,7 @@
             required
             ng-keydown="vm.onKeyDown($event)"
         )
-        button.edit-title-button(
+        button.edit-title-button.e2e-title-button(
             ng-click="vm.saveSubject()"
             tg-loading="vm.loadingSubject"
         )
