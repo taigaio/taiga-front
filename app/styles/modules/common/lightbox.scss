@@ -192,8 +192,8 @@
     }
     .member-limit-warning {
         @include font-size(small);
-        background: $red-light;
-        color: $white;
+        background: $mass-white;
+        color: $grayer;
         margin: 1rem 0;
         padding: 1rem 2rem;
         text-align: center;
