@@ -46,6 +46,11 @@ var actions = {
 
         return common.waitLoader();
     },
+    epics: async function() {
+        await common.link($('#nav-epics a'));
+
+        return common.waitLoader();
+    },
     backlog: async function() {
         await common.link($$('#nav-backlog a').first());
 
@@ -99,6 +104,10 @@ var nav = {
     },
     issue: function(index) {
         this.actions.push(actions.issue.bind(null, index));
+        return this;
+    },
+    epics: function(index) {
+        this.actions.push(actions.epics.bind(null, index));
         return this;
     },
     backlog: function(index) {

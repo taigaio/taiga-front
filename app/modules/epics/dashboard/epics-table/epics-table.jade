@@ -11,8 +11,8 @@ mixin epicSwitch(name, model)
         span.check-text.check-yes(translate="COMMON.YES")
         span.check-text.check-no(translate="COMMON.NO")
 
-.epics-table
-    .epics-table-header
+.epics-table.e2e-epic-table
+    .epics-table-header.e2e-epics-table-header
         .vote(
             translate="EPICS.TABLE.VOTES"
             ng-if="vm.column.votes"
@@ -42,10 +42,10 @@ mixin epicSwitch(name, model)
             ng-if="vm.column.progress"
         )
         .epics-table-options-wrapper(ng-mouseleave="vm.displayOptions = false")
-            button.epics-table-option-button(ng-click="vm.displayOptions = true")
+            button.epics-table-option-button.e2e-epics-column-button(ng-click="vm.displayOptions = true")
                 span(translate="EPICS.TABLE.VIEW_OPTIONS")
                 tg-svg(svg-icon="icon-arrow-down")
-            form.epics-table-dropdown(ng-show="vm.displayOptions")
+            form.epics-table-dropdown.e2e-epics-column-dropdown(ng-show="vm.displayOptions")
                 .fieldset
                     label.epics-table-options-vote(
                         translate="EPICS.TABLE.VOTES"
@@ -90,7 +90,7 @@ mixin epicSwitch(name, model)
                     +epicSwitch('switch-progress', 'vm.column.progress')
     .epics-table-body(tg-epic-sortable)
         .epics-table-body-row(tg-repeat="epic in vm.epics track by epic.get('id')")
-            tg-epic-row(
+            tg-epic-row.e2e-epic(
                 epic="epic"
                 project="vm.project"
                 column="vm.column"

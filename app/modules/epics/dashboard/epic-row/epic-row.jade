@@ -1,4 +1,4 @@
-.epic-row(
+.epic-row.e2e-epic-row(
     ng-class="{'is-blocked':  vm.epic.get('is_blocked'), 'is-closed': vm.epic.get('is_closed'), 'unfold': vm.displayUserStories}"
     ng-click="vm.requestUserStories(vm.epic)"
 )
@@ -31,7 +31,7 @@
     .sprint(
         ng-if="vm.column.sprint"
     )
-    .assigned
+    .assigned.e2e-assigned-to
         tg-assigned-to-component(
             assigned-to="vm.epic.get('assigned_to_extra_info')"
             project="vm.project"
@@ -51,13 +51,13 @@
             ng-style="{'color': vm.epic.getIn(['status_extra_info', 'color'])}"
             tg-loading="vm.loadingStatus"
         )
-            span {{vm.epic.getIn(['status_extra_info', 'name'])}}
+            span.e2e-epic-status {{vm.epic.getIn(['status_extra_info', 'name'])}}
             tg-svg(
                 svg-icon="icon-arrow-down"
             )
 
         ul.epic-statuses(ng-if="vm.displayStatusList")
-            li(
+            li.e2e-edit-epic-status(
                 ng-repeat="status in vm.project.epic_statuses | orderBy:'order'"
                 ng-click="vm.updateEpicStatus(status.id)"
             ) {{status.name}}
@@ -70,7 +70,7 @@
 .epic-stories-wrapper(ng-if="vm.displayUserStories && vm.epicStories")
 
     .epic-story(tg-repeat="story in vm.epicStories track by story.get('id')")
-        tg-story-row(
+        tg-story-row.e2e-story(
             epic="vm.epic"
             story="story"
             project="vm.project"

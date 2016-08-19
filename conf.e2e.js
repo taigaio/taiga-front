@@ -38,6 +38,7 @@ var config = {
         issues: "e2e/suites/issues/*.e2e.js",
         tasks: "e2e/suites/tasks/*.e2e.js",
         userProfile: "e2e/suites/user-profile/*.e2e.js",
+        epics: "e2e/suites/epics/*.e2e.js",
         userStories: "e2e/suites/user-stories/*.e2e.js",
         backlog: "e2e/suites/backlog.e2e.js",
         home: "e2e/suites/home.e2e.js",
