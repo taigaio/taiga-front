@@ -339,7 +339,6 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
     loadTasks: ->
         params = {
             include_attachments: true,
-            include_tasks: true
         }
 
         params = _.merge params, @location.search()
@@ -401,7 +400,6 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
         params = {
             status__is_archived: false,
             include_attachments: true,
-            include_tasks: true
         }
 
         options = {

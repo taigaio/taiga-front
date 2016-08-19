@@ -229,7 +229,7 @@ RelatedTasksDirective = ($repo, $rs, $rootscope) ->
     link = ($scope, $el, $attrs) ->
         loadTasks = ->
             return $rs.tasks.list($scope.projectId, null, $scope.usId).then (tasks) =>
-                $scope.tasks = _.sortBy(tasks, 'ref')
+                $scope.tasks = _.sortBy(tasks, (x) => [x.us_order, x.ref])
                 return tasks
 
         _isVisible = ->
