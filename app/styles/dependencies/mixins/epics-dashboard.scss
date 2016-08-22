@@ -43,14 +43,13 @@
     }
     .progress {
         flex-shrink: 3;
+        margin-right: 1rem;
+        position: relative;
     }
     .sprint {
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
         width: 90%;
-    }
-    .progress {
-        position: relative;
     }
 }
