@@ -8,7 +8,7 @@ tg-lightbox-close
         fieldset
             // TODO ADD COLOR SELECTOR
             tg-color-selector(on-select-dropdown-color="vm.newEpic.color = color")
-            input(
+            input.e2e-create-epic-subject(
                 type="text"
                 name="subject"
                 maxlength="140"
@@ -18,7 +18,7 @@ tg-lightbox-close
                 required
             )
         fieldset
-            select(
+            select.e2e-create-epic-status(
                 id="epic-status"
                 name="status"
                 ng-model="vm.newEpic.status"
@@ -33,7 +33,7 @@ tg-lightbox-close
             ng-model="vm.newEpic.tags"
         )
         fieldset
-            textarea(
+            textarea.e2e-create-epic-description(
                 ng-attr-placeholder="{{'COMMON.FIELDS.DESCRIPTION' | translate}}"
                 ng-model="vm.newEpic.description"
             )
@@ -49,7 +49,7 @@ tg-lightbox-close
                     ng-model="vm.newEpic.team_requirement"
                     id="team-requirement"
                 )
-                label.requirement.trans-button(
+                label.requirement.trans-button.e2e-create-epic-team-requirement(
                     for="team-requirement"
                     translate="EPICS.CREATE.TEAM_REQUIREMENT"
                 )
@@ -60,7 +60,7 @@ tg-lightbox-close
                     ng-model="vm.newEpic.client_requirement"
                     id="client-requirement"
                 )
-                label.requirement.trans-button(
+                label.requirement.trans-button.e2e-create-epic-client-requirement(
                     for="client-requirement"
                     translate="EPICS.CREATE.CLIENT_REQUIREMENT"
                 )
@@ -72,12 +72,12 @@ tg-lightbox-close
                     id="blocked"
                     ng-click="displayBlockedReason = !displayBlockedReason"
                 )
-                label.requirement.trans-button.blocked(
+                label.requirement.trans-button.blocked.e2e-create-epic-blocked(
                     for="blocked"
                     translate="EPICS.CREATE.BLOCKED"
                 )
         fieldset(ng-if="displayBlockedReason")
-            input(
+            input.e2e-create-epic-blocked-note(
                 type="text"
                 name="blocked_note"
                 maxlength="140"
@@ -85,7 +85,7 @@ tg-lightbox-close
                 placeholder="{{'EPICS.CREATE.BLOCKED_NOTE_PLACEHOLDER' | translate}}"
             )
         fieldset
-            input.button-green.create-epic-button(
+            input.button-green.create-epic-button.e2e-create-epic-button(
                 type="submit"
                 translate="EPICS.CREATE.CREATE_EPIC"
             )

@@ -64,4 +64,15 @@ describe('Epics Dashboard', function(){
         expect(currentColumns).to.be.above(newColumns);
     });
 
+    it.only('create Epic', async function() {
+        let date = Date.now();
+        let description = Math.random().toString(36).substring(7);
+        let epic = epicsHelper.epic();
+        let currentEpicsNum = await epic.getEpics();
+        await epic.createEpic(date, description);
+        let newEpicsNum = await epic.getEpics();
+        console.log(currentEpicsNum, newEpicsNum);
+        expect(newEpicsNum).to.be.above(currentEpicsNum);
+    });
+
 })

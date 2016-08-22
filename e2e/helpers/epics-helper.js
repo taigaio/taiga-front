@@ -7,8 +7,24 @@ helper.epic = function() {
 
     let obj = {
         el: el,
+        getEpics: async function() {
+            return el.count();
+        },
+        createEpic: async function(date, description) {
+            $('.e2e-create-epic').click();
+            utils.common.takeScreenshot("epics", "epics-create-epic");
+            $('.e2e-create-epic-subject').clear().sendKeys(date + description);
+            $('.e2e-create-epic-status').click();
+            $$('.e2e-create-epic-status > option').get(0).click();
+            $('.e2e-create-epic-description').clear().sendKeys(date + description);
+            $('.e2e-create-epic-client-requirement').click();
+            $('.e2e-create-epic-team-requirement').click();
+            $('.e2e-create-epic-blocked').click();
+            $('.e2e-create-epic-blocked-note').clear().sendKeys(date + description);
+            $('.e2e-create-epic-button').click();
+        },
         displayUserStoriesinEpic: async function() {
-            await utils.common.takeScreenshot("epics", "epics-child-closed");
+            utils.common.takeScreenshot("epics", "epics-child-closed");
             let storiesCount = await el.count();
             let epicChildren;
             for (var i = 0; i < storiesCount; i++) {
@@ -31,6 +47,7 @@ helper.epic = function() {
         },
         editAssignedTo: async function() {
             el.get(0).$('.e2e-assigned-to-image').click();
+            utils.common.takeScreenshot("epics", "epics-edit-assigned");
             $$('.e2e-assigned-to-selector').last().click();
         },
         removeAssignedTo: async function() {
@@ -47,6 +64,7 @@ helper.epic = function() {
         },
         editStatus: function() {
             el.get(0).$('.e2e-epic-status').click();
+            utils.common.takeScreenshot("epics", "epics-edit-status");
             el.get(0).$$('.e2e-edit-epic-status').last().click();
         },
         getColumns: function() {
@@ -54,6 +72,7 @@ helper.epic = function() {
         },
         removeColumns: function() {
             $('.e2e-epics-column-button').click();
+            utils.common.takeScreenshot("epics", "epics-edit-columns");
             $$('.e2e-epics-column-dropdown .check').first().click();
         }
     }
