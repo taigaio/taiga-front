@@ -22,10 +22,10 @@ section
 
             .tag-name
                 input(
-                    name="name"
+                    name="tag"
                     type="text"
                     placeholder="{{'ADMIN.TYPES.PLACEHOLDER_WRITE_NAME' | translate}}",
-                    ng-model="newValue.name"
+                    ng-model="newValue.tag"
                     data-required="true"
                     data-maxlength="255"
                 )
@@ -118,7 +118,7 @@ section
 
                             .status-name
                                 input(
-                                    name="name"
+                                    name="to_tag"
                                     type="text"
                                     placeholder="{{'ADMIN.TYPES.PLACEHOLDER_WRITE_NAME' | translate}}",
                                     ng-model="tag.name"

@@ -716,7 +716,8 @@ class ProjectTagsController extends taiga.Controller
 
     loadTags: =>
         return @rs.projects.tagsColors(@scope.projectId).then (tags) =>
-            @scope.projectTagsAll = _.map(tags.getAttrs(), (color, name) => @model.make_model('tag', {name: name, color: color}))
+            @scope.projectTagsAll = _.map(tags.getAttrs(), (color, name) =>
+                                            @model.make_model('tag', {name: name, color: color}))
             @.filterAndSortTags()
             @.loading = false
 
@@ -782,7 +783,7 @@ ProjectTagsDirective = ($log, $repo, $confirm, $location, animationFrame, $trans
 
         initializeNewValue = ->
             $scope.newValue = {
-                "name": ""
+                "tag": ""
                 "color": ""
             }
 
@@ -827,13 +828,13 @@ ProjectTagsDirective = ($log, $repo, $confirm, $location, animationFrame, $trans
 
             promise = $ctrl.editTag(originalTag.name, tag.name, tag.color)
             promise.then =>
+                $ctrl.loadTags()
                 row = target.parents(".row.table-main")
                 row.addClass("hidden")
                 row.siblings(".visualization").removeClass('hidden')
-                $ctrl.loadTags()
 
-            promise.then null, (data) ->
-                form.setErrors(data)
+            promise.then null, (response) ->
+                form.setErrors(response.data)
 
         saveNewValue = (target) ->
             formEl = target.parents("form")
@@ -841,14 +842,14 @@ ProjectTagsDirective = ($log, $repo, $confirm, $location, animationFrame, $trans
             form = formEl.checksley()
             return if not form.validate()
 
-            promise = $ctrl.createTag($scope.newValue.name, $scope.newValue.color)
+            promise = $ctrl.createTag($scope.newValue.tag, $scope.newValue.color)
             promise.then (data) =>
                 target.addClass("hidden")
                 $ctrl.loadTags()
                 initializeNewValue()
 
-            promise.then null, (data) ->
-                form.setErrors(data)
+            promise.then null, (response) ->
+                form.setErrors(response.data)
 
         cancel = (target) ->
             row = target.parents(".row.table-main")
@@ -964,4 +965,5 @@ ProjectTagsDirective = ($log, $repo, $confirm, $location, animationFrame, $trans
 
     return {link:link}
 
-module.directive("tgProjectTags", ["$log", "$tgRepo", "$tgConfirm", "$tgLocation", "animationFrame", "$translate", "$rootScope", ProjectTagsDirective])
+module.directive("tgProjectTags", ["$log", "$tgRepo", "$tgConfirm", "$tgLocation", "animationFrame",
+                                   "$translate", "$rootScope", ProjectTagsDirective])
