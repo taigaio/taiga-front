@@ -331,6 +331,10 @@ ColorSelectionDirective = () ->
     ## Color selection Link
 
     link = ($scope, $el, $attrs, $model) ->
+        $scope.allowEmpty = false
+        if $attrs.tgAllowEmpty
+            $scope.allowEmpty = true
+
         $ctrl = $el.controller()
 
         $scope.$watch $attrs.ngModel, (element) ->
@@ -696,59 +700,268 @@ module.directive("tgProjectCustomAttributes", ["$log", "$tgConfirm", "animationF
 ## Tags Controller
 #############################################################################
 
-class ProjectTagsController extends mixOf(taiga.Controller, taiga.PageMixin)
+class ProjectTagsController extends taiga.Controller
     @.$inject = [
         "$scope",
         "$rootScope",
         "$tgRepo",
-        "tgAppMetaService",
-        "$translate"
+        "$tgConfirm",
+        "$tgResources",
+        "$tgModel",
     ]
 
-    constructor: (@scope, @rootscope, @repo, @appMetaService, @translate) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @model) ->
         @.loading = true
-        @rootscope.$on "project:loaded", =>
-            sectionName = @translate.instant(@scope.sectionName)
-            title = @translate.instant("ADMIN.CUSTOM_ATTRIBUTES.PAGE_TITLE", {
-                "sectionName": sectionName,
-                "projectName": @scope.project.name
-            })
-            description = @scope.project.description
-            @appMetaService.setAll(title, description)
+        @rootscope.$on("project:loaded", @.loadTags)
 
+    loadTags: =>
+        return @rs.projects.tagsColors(@scope.projectId).then (tags) =>
+            @scope.projectTagsAll = _.map(tags.getAttrs(), (color, name) => @model.make_model('tag', {name: name, color: color}))
+            @.filterAndSortTags()
             @.loading = false
-            @.tagNames = Object.keys(@scope.project.tags_colors).sort()
-            @scope.projectTags = _.map(@.tagNames, (tagName) => {name: tagName, color: @scope.project.tags_colors[tagName]})
 
-    updateTag: (tag) ->
-        tags_colors = angular.copy(@scope.project.tags_colors)
-        tags_colors[tag.name] = tag.color
-        @scope.project.tags_colors = tags_colors
-        return @repo.save(@scope.project)
+    filterAndSortTags: =>
+        @scope.projectTags = _.filter(
+            _.sortBy(@scope.projectTagsAll, "name"),
+            (tag) => tag.name.indexOf(@scope.tagsFilter.name) != -1
+        )
+
+    deleteTag: (tag) =>
+        return @rs.projects.deleteTag(@scope.projectId, tag)
+
+    createTag: (tag, color) =>
+        return @rs.projects.createTag(@scope.projectId, tag, color)
+
+    editTag: (from_tag, to_tag, color) =>
+        if from_tag == to_tag
+            to_tag = null
+        return @rs.projects.editTag(@scope.projectId, from_tag, to_tag, color)
+
+    startMixingTags: (tag) =>
+        @scope.mixingTags.toTag = tag.name
+
+    toggleMixingFromTags: (tag) =>
+        if tag.name != @scope.mixingTags.toTag
+            index = @scope.mixingTags.fromTags.indexOf(tag.name)
+            if index == -1
+                @scope.mixingTags.fromTags.push(tag.name)
+            else
+                @scope.mixingTags.fromTags.splice(index, 1)
+
+    confirmMixingTags: () =>
+        toTag = @scope.mixingTags.toTag
+        fromTags = @scope.mixingTags.fromTags
+        @rs.projects.mixTags(@scope.projectId, toTag, fromTags).then =>
+            @.cancelMixingTags()
+            @.loadTags()
+
+    cancelMixingTags: () =>
+        @scope.mixingTags.toTag = null
+        @scope.mixingTags.fromTags = []
+
+    mixingClass: (tag) =>
+        if @scope.mixingTags.toTag != null
+            if tag.name == @scope.mixingTags.toTag
+                return "mixing-tags-to"
+            else if @scope.mixingTags.fromTags.indexOf(tag.name) != -1
+                return "mixing-tags-from"
 
 module.controller("ProjectTagsController", ProjectTagsController)
 
 
 #############################################################################
-## Tags Directive
+## Tags directive
 #############################################################################
 
-ProjectTagDirective = () ->
+ProjectTagsDirective = ($log, $repo, $confirm, $location, animationFrame, $translate, $rootscope) ->
     link = ($scope, $el, $attrs) ->
-        $el.color = $scope.tag.color
+        $window = $(window)
         $ctrl = $el.controller()
+        valueType = $attrs.type
+        objName = $attrs.objname
+
+        initializeNewValue = ->
+            $scope.newValue = {
+                "name": ""
+                "color": ""
+            }
+
+        initializeTagsFilter = ->
+            $scope.tagsFilter = {
+                "name": ""
+            }
+
+        initializeMixingTags = ->
+            $scope.mixingTags = {
+                "toTag": null,
+                "fromTags": []
+            }
+
+        initializeTextTranslations = ->
+            $scope.addNewElementText = $translate.instant("ADMIN.PROJECT_VALUES_TAGS.ACTION_ADD")
+
+        initializeNewValue()
+        initializeTagsFilter()
+        initializeMixingTags()
+        initializeTextTranslations()
+
+        $rootscope.$on "$translateChangeEnd", ->
+            $scope.$evalAsync(initializeTextTranslations)
+
+        goToBottomList = (focus = false) =>
+            table = $el.find(".table-main")
+
+            $(document.body).scrollTop(table.offset().top + table.height())
+
+            if focus
+                $el.find(".new-value input:visible").first().focus()
+
+        saveValue = (target) ->
+            formEl = target.parents("form")
+            form = formEl.checksley()
+            return if not form.validate()
+
+            tag = formEl.scope().tag
+            originalTag = tag.clone()
+            originalTag.revert()
+
+            promise = $ctrl.editTag(originalTag.name, tag.name, tag.color)
+            promise.then =>
+                row = target.parents(".row.table-main")
+                row.addClass("hidden")
+                row.siblings(".visualization").removeClass('hidden')
+                $ctrl.loadTags()
+
+            promise.then null, (data) ->
+                form.setErrors(data)
+
+        saveNewValue = (target) ->
+            formEl = target.parents("form")
+            formEl = target
+            form = formEl.checksley()
+            return if not form.validate()
+
+            promise = $ctrl.createTag($scope.newValue.name, $scope.newValue.color)
+            promise.then (data) =>
+                target.addClass("hidden")
+                $ctrl.loadTags()
+                initializeNewValue()
+
+            promise.then null, (data) ->
+                form.setErrors(data)
+
+        cancel = (target) ->
+            row = target.parents(".row.table-main")
+            formEl = target.parents("form")
+            tag = formEl.scope().tag
+
+            $scope.$apply ->
+                row.addClass("hidden")
+                tag.revert()
+                row.siblings(".visualization").removeClass('hidden')
+
+        $scope.$watch "tagsFilter.name", (tagsFilter) ->
+            $ctrl.filterAndSortTags()
+
+        $window.on "keyup", (event) ->
+            if event.keyCode == 27
+                $scope.$apply ->
+                    initializeMixingTags()
+
+        $el.on "click", ".show-add-new", (event) ->
+            event.preventDefault()
+            $el.find(".new-value").removeClass('hidden')
+
+        $el.on "click", ".add-new", debounce 2000, (event) ->
+            event.preventDefault()
+            target = $el.find(".new-value")
+            saveNewValue(target)
+
+        $el.on "click", ".delete-new", (event) ->
+            event.preventDefault()
+            $el.find(".new-value").addClass("hidden")
+            initializeNewValue()
+
+        $el.on "click", ".mix-tags", (event) ->
+            event.preventDefault()
+            target = angular.element(event.currentTarget)
+            $scope.$apply ->
+                $ctrl.startMixingTags(target.parents('form').scope().tag)
+
+        $el.on "click", ".mixing-row", (event) ->
+            event.preventDefault()
+            target = angular.element(event.currentTarget)
+            $scope.$apply ->
+                $ctrl.toggleMixingFromTags(target.parents('form').scope().tag)
+
+        $el.on "click", ".mixing-confirm", (event) ->
+            event.preventDefault()
+            event.stopPropagation()
+            $scope.$apply ->
+                $ctrl.confirmMixingTags()
+
+        $el.on "click", ".mixing-cancel", (event) ->
+            event.preventDefault()
+            event.stopPropagation()
+            $scope.$apply ->
+                $ctrl.cancelMixingTags()
+
+        $el.on "click", ".edit-value", (event) ->
+            event.preventDefault()
+            target = angular.element(event.currentTarget)
+
+            row = target.parents(".row.table-main")
+            row.addClass("hidden")
+
+            editionRow = row.siblings(".edition")
+            editionRow.removeClass('hidden')
+            editionRow.find('input:visible').first().focus().select()
+
+        $el.on "keyup", ".new-value input", (event) ->
+            if event.keyCode == 13
+                target = $el.find(".new-value")
+                saveNewValue(target)
+            else if event.keyCode == 27
+                $el.find(".new-value").addClass("hidden")
+                initializeNewValue()
+
+        $el.on "keyup", ".status-name input", (event) ->
+            target = angular.element(event.currentTarget)
+            if event.keyCode == 13
+                saveValue(target)
+            else if event.keyCode == 27
+                cancel(target)
+
+        $el.on "click", ".save", (event) ->
+            event.preventDefault()
+            target = angular.element(event.currentTarget)
+            saveValue(target)
+
+        $el.on "click", ".cancel", (event) ->
+            event.preventDefault()
+            target = angular.element(event.currentTarget)
+            cancel(target)
+
+        $el.on "click", ".delete-tag", (event) ->
+            event.preventDefault()
+            target = angular.element(event.currentTarget)
+            formEl = target.parents("form")
+            tag = formEl.scope().tag
+
+            title = $translate.instant("ADMIN.COMMON.TITLE_ACTION_DELETE_TAG")
+
+            $confirm.askOnDelete(title, tag.name).then (response) ->
+                onSucces = ->
+                    $ctrl.loadTags().finally ->
+                        response.finish()
+                onError = ->
+                    $confirm.notify("error")
+                $ctrl.deleteTag(tag.name).then(onSucces, onError)
 
         $scope.$on "$destroy", ->
             $el.off()
+            $window.off()
 
-        $scope.$watch "tag.color", (newColor) =>
-            if $el.color != newColor
-                promise = $ctrl.updateTag($scope.tag)
-                promise.then null, (data) ->
-                    form.setErrors(data)
+    return {link:link}
 
-                $el.color = newColor
-
-    return {link: link}
-
-module.directive("tgProjectTag", [ProjectTagDirective])
+module.directive("tgProjectTags", ["$log", "$tgRepo", "$tgConfirm", "$tgLocation", "animationFrame", "$translate", "$rootScope", ProjectTagsDirective])

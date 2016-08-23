@@ -57,34 +57,35 @@ helper.description = function(){
 
 
 helper.tags = function() {
-    let el = $('div[tg-tag-line]');
+    let el = $('tg-tag-line-common');
 
     let obj = {
         el:el,
 
         clearTags: async function() {
-            let tags = await el.$$('.icon-delete');
+            let tags = await el.$$('.e2e-delete-tag');
             let totalTags = tags.length;
             let htmlChanges = null;
             while (totalTags > 0) {
                 htmlChanges = await utils.common.outerHtmlChanges(el.$(".tags-container"));
-                await el.$$('.icon-delete').first().click();
+                await el.$$('.e2e-delete-tag').first().click();
                 totalTags --;
                 await htmlChanges();
             }
         },
 
         getTagsText: function() {
-          return el.$$('.tag-name').getText();
+          return el.$$('tg-tag span').getText();
         },
 
         addTags: async function(tags) {
             let htmlChanges = null
 
-            el.$('.add-tag').click();
+            $('.e2e-show-tag-input').click();
+
             for (let tag of tags){
                 htmlChanges = await utils.common.outerHtmlChanges(el.$(".tags-container"));
-                el.$('.tag-input').sendKeys(tag);
+                el.$('.e2e-add-tag-input').sendKeys(tag);
                 await browser.actions().sendKeys(protractor.Key.ENTER).perform();
                 await htmlChanges();
             }

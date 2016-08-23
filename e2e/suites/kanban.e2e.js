@@ -74,11 +74,7 @@ describe('kanban', function() {
             expect(totalPoints).to.be.equal('4');
 
             // tags
-            createUSLightbox.tags().sendKeys('www');
-            browser.actions().sendKeys(protractor.Key.ENTER).perform();
-
-            createUSLightbox.tags().sendKeys('xxx');
-            browser.actions().sendKeys(protractor.Key.ENTER).perform();
+            commonHelper.tags();
 
             // description
             createUSLightbox.description().sendKeys(formFields.description);

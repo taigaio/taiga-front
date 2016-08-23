@@ -29,9 +29,13 @@ form
             )
 
     fieldset
-        .tags-block(
-            tg-lb-tag-line
-            ng-model="issue.tags"
+        tg-tag-line-common.tags-block(
+            ng-if="project"
+            project="project"
+            tags="issue.tags"
+            permissions="add_issue"
+            on-add-tag="addTag(name, color)"
+            on-delete-tag="deleteTag(tag)"
         )
 
     fieldset

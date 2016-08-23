@@ -1,0 +1,39 @@
+@function sqrt($r) {
+    $x0: 1;
+    $x1: $x0;
+
+    @for $i from 1 through 10 {
+        $x1: $x0 - ($x0 * $x0 - abs($r)) / (2 * $x0);
+        $x0: $x1;
+    }
+
+    @return round($x1);
+}
+
+@mixin empty-color($width) {
+    background: $mass-white;
+    border: 1px solid $whitish;
+    position: relative;
+    &:after {
+        content: "";
+        width: 2px;
+        height: #{sqrt(2*$width*$width)}px;
+        background: #ff8282;
+        transform: rotate(-45deg);
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform-origin: top;
+    }
+    &:before {
+        content: "";
+        width: 2px;
+        height: #{sqrt(2*$width*$width)}px;
+        background: #ff8282;
+        transform: rotate(45deg);
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform-origin: top;
+    }
+}

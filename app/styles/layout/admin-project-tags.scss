@@ -1,20 +1,109 @@
-.table-tags-editor {
-    input[type="text"] {
-        background-color: transparent;
-        border: 0;
-        border-bottom: 1px solid transparent;
-        box-shadow: none;
-        transition: border-bottom .2s linear;
-        &:focus {
-            border-bottom: 1px solid $gray;
-            outline: none;
+.add-tag-container {
+    align-items: center;
+    background: $mass-white;
+    display: flex;
+    margin: .5rem 0;
+    padding: 1rem;
+    .color-column {
+        cursor: pointer;
+        flex-basis: 60px;
+        flex-grow: 0;
+        flex-shrink: 0;
+        position: relative;
+    }
+    .tag-name {
+        flex-basis: 80%;
+        margin-right: 1rem;
+    }
+    .options-column {
+        display: flex;
+    }
+    .current-color {
+        &.empty-color {
+            @include empty-color(38);
         }
     }
-    .color-filter {
-        align-items: center;
-        display: flex;
-        flex-grow: 1;
-        padding: 0 10px;
+    input[type="text"] {
+        background: $white;
+    }
+    .icon {
+        opacity: 1;
+    }
+}
+
+.tags-table {
+    .table-tags-editor {
+        input[type="text"] {
+            background-color: transparent;
+            border: 0;
+            border-bottom: 1px solid transparent;
+            box-shadow: none;
+            transition: border-bottom .2s linear;
+            &:focus {
+                border-bottom: 1px solid $gray;
+                outline: none;
+            }
+        }
+        .row {
+            &.header-tag-row {
+                padding-left: 1rem;
+            }
+        }
+        .color-filter {
+            align-items: center;
+            display: flex;
+            flex-grow: 1;
+            padding: 0 10px;
+            position: relative;
+            input {
+                padding: 0;
+            }
+        }
+    }
+    .row {
+        &.tag-row {
+            margin: .3rem 0;
+            padding: .7rem;
+            &:hover {
+                cursor: default;
+            }
+        }
+    }
+    .mix-tags {
         position: relative;
+        .popover {
+            @include popover(120px, '', '', 2rem, -85%, 1rem, '', 50%, -5px);
+        }
+        &:hover {
+            .popover {
+                display: block;
+            }
+        }
+    }
+    .mixing-options-column {
+        text-align: right;
+    }
+    .mixing-tags-from,
+    .mixing-tags-to {
+        background: lighten(rgba($primary-light, .2), 30%);
+    }
+    .mixing-confirm {
+        margin: 0 .5rem;
+    }
+    .mixing-help-text {
+        @include font-size(xsmall);
+        color: $primary-dark;
+        display: inline;
+        padding-right: .5rem;
+        text-align: center;
+        @include breakpoint(laptop) {
+            display: block;
+            padding: .5rem;
+        }
+    }
+    .current-color {
+        &.empty-color {
+            @include empty-color(38);
+        }
     }
 }

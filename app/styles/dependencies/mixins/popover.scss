@@ -1,4 +1,15 @@
-@mixin popover($width, $top: '', $left: '', $bottom: '', $right: '', $arrow-width: 0, $arrow-top: '', $arrow-left: '', $arrow-bottom: '', $arrow-height: 15px) {
+@mixin popover(
+    $width,
+    $top: '',
+    $left: '',
+    $bottom: '',
+    $right: '',
+    $arrow-width: 0,
+    $arrow-top: '',
+    $arrow-left: '',
+    $arrow-bottom: '',
+    $arrow-height: 15px
+) {
     @include font-type(light);
     @include font-size(small);
     background: $blackish;
@@ -14,6 +25,7 @@
     top: #{$top};
     width: $width;
     z-index: 99;
+    text-align: center;
     a {
         @include font-size(small);
         border-bottom: 1px solid $grayer;

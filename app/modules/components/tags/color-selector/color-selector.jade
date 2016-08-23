@@ -1,0 +1,30 @@
+.color-selector
+    .tag-color.e2e-open-color-selector(
+        ng-click="vm.toggleColorList()"
+        ng-class="{'empty-color': !vm.color}"
+        ng-style="{'background': vm.color}"
+    )
+    .color-selector-dropdown(ng-show="vm.displaycolorList")
+        ul.color-selector-dropdown-list.e2e-color-dropdown
+            li.color-selector-option(
+                ng-repeat="color in vm.colorList"
+                ng-style="{'background': color}"
+                ng-title="color"
+                ng-click="vm.onSelectDropdownColor(color)"
+            )
+            li.empty-color(ng-click="vm.onSelectDropdownColor(null)")
+        .custom-color-selector
+            .display-custom-color.empty-color(
+                ng-if="!customColor.color || customColor.color.length < 7"
+            )
+            .display-custom-color(
+                ng-if="customColor.color.length === 7"
+                ng-style="{'background': customColor.color}"
+                ng-click="vm.onSelectDropdownColor(customColor.color)"
+            )
+            input.custom-color-input(
+                type="text"
+                maxlength="7"
+                placeholder="#000000"
+                ng-model="customColor.color"
+            )
