@@ -1,13 +1,10 @@
 section
     .admin-tags-section-wrapper-empty(
-        ng-show="!projectTagsAll.length"
+        ng-if="!projectTagsAll.length && ctrl.loading"
         tg-loading="ctrl.loading"
     )
-        p(translate="ADMIN.PROJECT_VALUES_TAGS.EMPTY")
 
-    .admin-tags-section-wrapper(
-        ng-show="projectTagsAll.length"
-    )
+    .admin-tags-section-wrapper
         form.add-tag-container.new-value.hidden
             tg-color-selection.color-column(
                 tg-allow-empty="true"
@@ -42,7 +39,14 @@ section
                         svg-icon="icon-close"
                     )
 
-        .table-header.table-tags-editor
+        p.tags-empty(
+            ng-if="!projectTagsAll.length && !ctrl.loading"
+            translate="ADMIN.PROJECT_VALUES_TAGS.EMPTY"
+        )
+
+        .table-header.table-tags-editor(
+            ng-if="projectTagsAll.length"
+        )
             div.row.header-tag-row
                 .color-column(translate="COMMON.FIELDS.COLOR")
                 .status-name(translate="COMMON.FIELDS.NAME")
@@ -57,7 +61,9 @@ section
                         svg-icon="icon-search"
                     )
 
-        .table-main.table-admin-tags
+        .table-main.table-admin-tags(
+            ng-if="projectTagsAll.length"
+        )
             div(ng-show="!mixingTags.toTag")
                 .admin-attributes-section-wrapper-empty(
                     ng-show="!projectTags.length"
