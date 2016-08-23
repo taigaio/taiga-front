@@ -331,7 +331,7 @@ UsStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $modelTransfor
 
             $el.html(html)
 
-            $compile($el.contents())($scope);
+            $compile($el.contents())($scope)
 
         save = (status) =>
             $el.find(".pop-status").popover().close()
