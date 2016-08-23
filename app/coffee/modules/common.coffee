@@ -390,14 +390,22 @@ Svg = () ->
 
 module.directive("tgSvg", [Svg])
 
-Autofocus = ($timeout) ->
+Autofocus = ($timeout, $parse, animationFrame) ->
   return {
     restrict: 'A',
-    link : ($scope, $element) ->
-      $timeout -> $element[0].focus()
+    link : ($scope, $element, attrs) ->
+        if attrs.ngShow
+            model = $parse(attrs.ngShow)
+
+            $scope.$watch model, (value) ->
+                if value == true
+                    $timeout () -> $element[0].focus()
+
+        else
+            $timeout () -> $element[0].focus()
   }
 
-module.directive('tgAutofocus', ['$timeout', Autofocus])
+module.directive('tgAutofocus', ['$timeout', '$parse', "animationFrame", Autofocus])
 
 module.directive 'tgPreloadImage', () ->
     spinner = "<img class='loading-spinner' src='/" + window._version + "/svg/spinner-circle.svg' alt='loading...' />"

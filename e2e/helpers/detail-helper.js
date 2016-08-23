@@ -146,24 +146,6 @@ helper.assignedTo = function() {
     return obj;
 };
 
-helper.editComment = function() {
-  let el = $('.comment-editor');
-  let obj = {
-      el:el,
-
-      updateText: function (text) {
-          el.$('textarea').sendKeys(text);
-      },
-
-      saveComment: async function () {
-          el.$('.save-comment').click();
-          await browser.waitForAngular();
-      }
-  }
-  return obj;
-
-};
-
 helper.history = function() {
     let el = $('section.history');
     let obj = {
@@ -177,16 +159,6 @@ helper.history = function() {
         selectActivityTab: async function() {
             el.$('.e2e-activity-tab').click();
             await browser.waitForAngular();
-        },
-
-        addComment: async function(comment) {
-            obj.writeComment(comment);
-            el.$('.save-comment').click();
-            await browser.waitForAngular();
-        },
-
-        writeComment: function(comment) {
-            el.$('textarea[tg-markitup]').sendKeys(comment);
         },
 
         countComments: async function() {
@@ -227,6 +199,10 @@ helper.history = function() {
             await browser.waitForAngular();
         },
 
+        getComments: function() {
+            return $$('tg-comment');
+        },
+
         showVersionsLastComment: async function() {
           el.$$(".comment-edited a").last().click();
           await browser.waitForAngular();
@@ -252,11 +228,11 @@ helper.history = function() {
             el.$$(".deleted-comment-wrapper .restore-comment").last().click();
             await browser.waitForAngular();
         }
-    }
+    };
 
     return obj;
 
-}
+};
 
 helper.block = function() {
     let el = $('tg-block-button');

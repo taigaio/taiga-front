@@ -1,5 +1,3 @@
-include ../../../partials/common/components/wysiwyg.jade
-
 .comment-wrapper(ng-if="!vm.comment.delete_comment_date")
     img.comment-avatar(
         tg-avatar="vm.comment.user"
@@ -23,37 +21,20 @@ include ../../../partials/common/components/wysiwyg.jade
         .comment-container
             .comment-text.wysiwyg(
                 ng-if="!vm.editMode"
-                ng-bind-html="vm.comment.comment_html"
+                tg-bind-code="vm.comment.comment"
             )
             .comment-editor(
                 ng-if="vm.editMode"
                 ng-keyup="vm.checkCancelComment($event)"
             )
-                .edit-comment(ng-model="vm.type")
-                    textarea(
-                        ng-model="vm.commentContent.comment"
-                    )
-                    .save-comment-wrapper
-                        button.button-green.save-comment(
-                            type="button"
-                            title="{{'COMMENTS.EDIT_COMMENT' | translate}}"
-                            translate="COMMENTS.EDIT_COMMENT"
-                            ng-disabled="!vm.commentContent.comment.length || vm.editing == vm.comment.id"
-                            ng-click="vm.onEditComment({commentId: vm.comment.id, commentData: vm.commentContent.comment})"
-                            tg-loading="vm.editing == vm.comment.id"
-                        )
-    .comment-options(ng-if="::vm.canEditDeleteComment()")
+                tg-comment-edit-wysiwyg.edit-comment
+
+    .comment-options(ng-if="vm.canEditDeleteComment() && !vm.editMode")
         tg-svg.comment-option(
             svg-icon="icon-edit"
             svg-title-translate="COMMON.EDIT"
             ng-click="vm.onEditMode({commentId: vm.comment.id})"
             ng-if="!vm.editMode"
-        )
-        tg-svg.comment-option(
-            svg-icon="icon-close"
-            svg-title-translate="COMMON.CANCEL"
-            ng-click="vm.onEditMode({commentId: vm.comment.id})"
-            ng-if="vm.editMode"
         )
         tg-svg.comment-option(
             svg-icon="icon-trash"
@@ -107,5 +88,5 @@ include ../../../partials/common/components/wysiwyg.jade
             span(translate="COMMENTS.RESTORE")
     p.deleted-comment-comment(
         ng-if="!vm.hiddenDeletedComment"
-        ng-bind-html="vm.comment.comment_html"
+        tg-bind-code="vm.comment.comment"
     )

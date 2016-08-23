@@ -1,6 +1,7 @@
 var utils = require('../utils');
 var sharedDetail = require('../shared/detail');
 var wikiHelper = require('../helpers').wiki;
+var sharedWysiwyg = require('../shared/wysiwyg').wysiwygTesting;
 
 var chai = require('chai');
 var chaiAsPromised = require('chai-as-promised');
@@ -64,30 +65,7 @@ describe('wiki', function() {
         await utils.common.takeScreenshot("wiki", "deleting-the-created-link");
     });
 
-    it('edition', async function() {
-        let timesEdited = wikiHelper.editor().getTimesEdited();
-        let lastEditionDatetime = wikiHelper.editor().getLastEditionDateTime();
-        wikiHelper.editor().enabledEditionMode();
-        let settingText = "This is the new text" + new Date().getTime();
-        wikiHelper.editor().setText(settingText);
-
-        //preview
-        wikiHelper.editor().preview();
-        await utils.common.takeScreenshot("wiki", "home-edition-preview");
-        wikiHelper.editor().closePreview();
-
-        //save
-        wikiHelper.editor().save();
-        let newHtml = await wikiHelper.editor().getInnerHtml();
-        let newTimesEdited = wikiHelper.editor().getTimesEdited();
-        let newLastEditionDatetime = wikiHelper.editor().getLastEditionDateTime();
-
-        expect(newHtml).to.be.equal("<p>" + settingText + "</p>");
-        expect(newTimesEdited).to.be.eventually.equal(timesEdited+1);
-        expect(newLastEditionDatetime).to.be.not.equal(lastEditionDatetime);
-
-        await utils.common.takeScreenshot("wiki", "home-edition");
-    });
+    describe('wiki editor', sharedWysiwyg.bind(this));
 
     it('confirm close with ESC in lightbox', async function() {
         wikiHelper.editor().enabledEditionMode();

@@ -1,6 +1,9 @@
 var utils = require('../../utils');
 var sharedDetail = require('../../shared/detail');
 var epicDetailHelper = require('../../helpers').epicDetail;
+var wysiwyg = require('../../shared/wysiwyg');
+var sharedWysiwyg = wysiwyg.wysiwygTesting;
+var sharedWysiwygComments = wysiwyg.wysiwygTestingComments;
 
 var chai = require('chai');
 var chaiAsPromised = require('chai-as-promised');
@@ -39,7 +42,7 @@ describe('Epic detail', async function(){
 
     it('tags edition', sharedDetail.tagsTesting);
 
-    describe('description', sharedDetail.descriptionTesting);
+    describe('description', sharedWysiwyg.bind(this, '.duty-content'));
 
     describe('related userstories', function() {
         let relatedUserstories = epicDetailHelper.relatedUserstories();
@@ -67,6 +70,8 @@ describe('Epic detail', async function(){
     describe('watchers edition', sharedDetail.watchersTesting);
 
     it('history', sharedDetail.historyTesting.bind(this, "epics"));
+
+    describe('comments epics', sharedWysiwygComments.bind(this, '.comments', 'epics'));
 
     it('block', sharedDetail.blockTesting);
 

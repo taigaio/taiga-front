@@ -1,5 +1,8 @@
 var utils = require('../../utils');
 var sharedDetail = require('../../shared/detail');
+var wysiwyg = require('../../shared/wysiwyg');
+var sharedWysiwyg = wysiwyg.wysiwygTesting;
+var sharedWysiwygComments = wysiwyg.wysiwygTestingComments;
 
 var chai = require('chai');
 var chaiAsPromised = require('chai-as-promised');
@@ -29,7 +32,7 @@ describe('Issue detail', async function(){
 
     it('tags edition', sharedDetail.tagsTesting);
 
-    describe('description', sharedDetail.descriptionTesting);
+    describe('description', sharedWysiwyg.bind(this, '.duty-content'));
 
     it('status edition', sharedDetail.statusTesting.bind(this, 'In progress', 'Ready for test'));
 
@@ -38,6 +41,8 @@ describe('Issue detail', async function(){
     describe('watchers edition', sharedDetail.watchersTesting);
 
     it('history', sharedDetail.historyTesting.bind(this, "issues"));
+
+    describe('comments issue', sharedWysiwygComments.bind(this, '.comments', 'issues'));
 
     it('block', sharedDetail.blockTesting);
 

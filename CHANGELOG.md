@@ -2,6 +2,8 @@
 
 ## 3.1.0 No name yet (no date yet)
 - Velocity forecasting. Create sprints according to team velocity.
+- Remove bower
+- Add new wysiwyg editor (emojis, local storage changes, mentions)
 
 ## 3.0.0 Stellaria Borealis (2016-10-02)
 

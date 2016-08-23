@@ -149,12 +149,16 @@ describe "HistorySection", ->
         objectId = historyCtrl.id
         commentId = 7
 
-        promise = mocks.tgResources.history.deleteComment.withArgs(type, objectId, commentId).promise().resolve()
+        deleteCommentPromise = mocks.tgResources.history.deleteComment.withArgs(type, objectId, commentId).promise()
 
-        historyCtrl.deleting = true
-        historyCtrl.deleteComment(commentId).then () ->
+        ctrlPromise = historyCtrl.deleteComment(commentId)
+        expect(historyCtrl.deleting).to.be.equal(7)
+
+        deleteCommentPromise.resolve()
+
+        ctrlPromise.then () ->
             expect(historyCtrl._loadHistory).have.been.called
-            expect(historyCtrl.deleting).to.be.equal(7)
+            expect(historyCtrl.deleting).to.be.null
 
     it "edit comment", () ->
         historyCtrl = controller "HistorySection"
@@ -201,13 +205,15 @@ describe "HistorySection", ->
 
         historyCtrl.type = "type"
         type = historyCtrl.type
-        historyCtrl.loading = true
+
+        cb = sinon.spy()
 
         promise = mocks.tgRepo.save.withArgs(type).promise().resolve()
 
-        historyCtrl.addComment().then () ->
+        historyCtrl.addComment(cb).then () ->
             expect(historyCtrl._loadHistory).has.been.called
-            expect(historyCtrl.loading).to.be.false
+            expect(cb).to.have.been.called
+
 
     it "order comments", () ->
         historyCtrl = controller "HistorySection"
