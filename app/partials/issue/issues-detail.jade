@@ -23,6 +23,7 @@ div.wrapper(
                     required-perm="modify_issue"
                     ng-class="{blocked: issue.is_blocked}"
                     ng-if="project && issue"
+                    format="text"
                 )
             .subheader
                 tg-tag-line.tags-block(

@@ -29,7 +29,9 @@ BelongToEpicsDirective = () ->
           scope.project = Immutable.fromJS(scope.project)
 
         scope.getTemplateUrl = () ->
-            return "components/belong-to-epics/belong-to-epics-" + attrs.format + ".html"
+            if attrs.format
+                return "components/belong-to-epics/belong-to-epics-" + attrs.format + ".html"
+            return "components/belong-to-epics/belong-to-epics-pill.html"
 
     return {
         link: link,

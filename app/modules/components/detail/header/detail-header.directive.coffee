@@ -36,7 +36,7 @@ DetailHeaderDirective = () ->
             requiredPerm: "@"
         },
         controllerAs: "vm",
-        templateUrl:"stories/header/story-header.html"
+        templateUrl:"components/detail/header/detail-header.html"
     }
 
 
