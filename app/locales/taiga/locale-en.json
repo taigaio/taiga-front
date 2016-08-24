@@ -720,13 +720,14 @@
             "DEFAULT_DELETE_MESSAGE": "the invitation to {{email}}"
         },
         "DEFAULT_VALUES": {
+            "LABEL_EPIC_STATUS": "Default value for epic status selector",
+            "LABEL_US_STATUS": "Default value for user story status selector",
             "LABEL_POINTS": "Default value for points selector",
-            "LABEL_US": "Default value for US status selector",
             "LABEL_TASK_STATUS": "Default value for task status selector",
-            "LABEL_PRIORITY": "Default value for priority selector",
-            "LABEL_SEVERITY": "Default value for severity selector",
             "LABEL_ISSUE_TYPE": "Default value for issue type selector",
-            "LABEL_ISSUE_STATUS": "Default value for issue status selector"
+            "LABEL_ISSUE_STATUS": "Default value for issue status selector",
+            "LABEL_PRIORITY": "Default value for priority selector",
+            "LABEL_SEVERITY": "Default value for severity selector"
         },
         "STATUS": {
             "PLACEHOLDER_WRITE_STATUS_NAME": "Write a name for the new status"

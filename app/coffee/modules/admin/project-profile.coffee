@@ -89,15 +89,15 @@ class ProjectProfileController extends mixOf(taiga.Controller, taiga.PageMixin)
 
             @scope.projectId = project.id
             @scope.project = project
-            @scope.pointsList = _.sortBy(project.points, "order")
+            @scope.epicStatusList = _.sortBy(project.epic_statuses, "order")
             @scope.usStatusList = _.sortBy(project.us_statuses, "order")
+            @scope.pointsList = _.sortBy(project.points, "order")
             @scope.taskStatusList = _.sortBy(project.task_statuses, "order")
-            @scope.prioritiesList = _.sortBy(project.priorities, "order")
-            @scope.severitiesList = _.sortBy(project.severities, "order")
             @scope.issueTypesList = _.sortBy(project.issue_types, "order")
             @scope.issueStatusList = _.sortBy(project.issue_statuses, "order")
+            @scope.prioritiesList = _.sortBy(project.priorities, "order")
+            @scope.severitiesList = _.sortBy(project.severities, "order")
             @scope.$emit('project:loaded', project)
-
 
             @scope.projectTags = _.map @scope.project.tags, (it) =>
                 return [it, @scope.project.tags_colors[it]]
