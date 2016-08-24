@@ -75,11 +75,10 @@ div.wrapper(
 
                     tg-tag-line-common.tags-block(
                         disable-color-selection
-                        ng-if="project"
                         project="project"
                         tags="projectTags"
                         permissions="modify_project"
-                        on-add-tag="ctrl.addTag(name, color)"
+                        on-add-tag="ctrl.addTag(name)"
                         on-delete-tag="ctrl.deleteTag(tag)"
                     )
 

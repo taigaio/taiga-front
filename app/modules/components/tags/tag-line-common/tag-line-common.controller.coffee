@@ -28,6 +28,7 @@ class TagLineCommonController
     ]
 
     constructor: (@tagLineService) ->
+        @.disableColorSelection = false
         @.newTag = {name: "", color: null}
         @.colorArray = []
         @.addTag = false
@@ -45,10 +46,14 @@ class TagLineCommonController
         @.newTag.name = ""
         @.newTag.color = null
 
-        if @.project.tags_colors[name]
-            color = @.project.tags_colors[name]
+        return if not name.length
 
-        @.onAddTag({name: name, color: color}) if name.length
+        if @.disableColorSelection
+            @.onAddTag({name: name, color: color}) if name.length
+        else
+            if @.project.tags_colors[name]
+                color = @.project.tags_colors[name]
+            @.onAddTag({name: name, color: color})
 
     selectColor: (color) ->
         @.newTag.color = color

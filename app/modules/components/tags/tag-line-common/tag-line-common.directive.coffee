@@ -28,7 +28,9 @@ TagLineCommonDirective = () ->
             return if !project || !Object.keys(project).length
 
             unwatch()
-            ctrl.colorArray = ctrl._createColorsArray(ctrl.project.tags_colors)
+
+            if not ctrl.disableColorSelection
+                ctrl.colorArray = ctrl._createColorsArray(ctrl.project.tags_colors)
 
         el.on "keydown", ".tag-input", (event) ->
             if event.keyCode == 27 && ctrl.newTag.name.length
