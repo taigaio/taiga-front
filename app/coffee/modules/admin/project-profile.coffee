@@ -425,6 +425,10 @@ class CsvExporterController extends taiga.Controller
             @._generateUuid()
 
 
+class CsvExporterEpicsController extends CsvExporterController
+    type: "epics"
+
+
 class CsvExporterUserstoriesController extends CsvExporterController
     type: "userstories"
 
@@ -437,6 +441,7 @@ class CsvExporterIssuesController extends CsvExporterController
     type: "issues"
 
 
+module.controller("CsvExporterEpicsController", CsvExporterEpicsController)
 module.controller("CsvExporterUserstoriesController", CsvExporterUserstoriesController)
 module.controller("CsvExporterTasksController", CsvExporterTasksController)
 module.controller("CsvExporterIssuesController", CsvExporterIssuesController)
@@ -445,6 +450,21 @@ module.controller("CsvExporterIssuesController", CsvExporterIssuesController)
 #############################################################################
 ## CSV Directive
 #############################################################################
+
+CsvEpicDirective = ($translate) ->
+    link = ($scope) ->
+        $scope.sectionTitle = "ADMIN.CSV.SECTION_TITLE_EPIC"
+
+    return {
+        controller: "CsvExporterEpicsController",
+        controllerAs: "ctrl",
+        templateUrl: "admin/project-csv.html",
+        link: link,
+        scope: true
+    }
+
+module.directive("tgCsvEpic", ["$translate", CsvEpicDirective])
+
 
 CsvUsDirective = ($translate) ->
     link = ($scope) ->

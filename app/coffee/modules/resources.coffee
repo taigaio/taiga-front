@@ -161,6 +161,7 @@ urls = {
     "webhooklogs-resend": "/webhooklogs/%s/resend"
 
     # Reports - CSV
+    "epics-csv": "/epics/csv?uuid=%s"
     "userstories-csv": "/userstories/csv?uuid=%s"
     "tasks-csv": "/tasks/csv?uuid=%s"
     "issues-csv": "/issues/csv?uuid=%s"

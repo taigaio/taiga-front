@@ -61,16 +61,20 @@ resourceProvider = ($config, $repo, $http, $urls, $auth, $q, $translate) ->
         url = $urls.resolve("bulk-update-projects-order")
         return $http.post(url, bulkData)
 
+    service.regenerate_epics_csv_uuid = (projectId) ->
+        url = "#{$urls.resolve("projects")}/#{projectId}/regenerate_epics_csv_uuid"
+        return $http.post(url)
+
     service.regenerate_userstories_csv_uuid = (projectId) ->
         url = "#{$urls.resolve("projects")}/#{projectId}/regenerate_userstories_csv_uuid"
         return $http.post(url)
 
-    service.regenerate_issues_csv_uuid = (projectId) ->
-        url = "#{$urls.resolve("projects")}/#{projectId}/regenerate_issues_csv_uuid"
-        return $http.post(url)
-
     service.regenerate_tasks_csv_uuid = (projectId) ->
         url = "#{$urls.resolve("projects")}/#{projectId}/regenerate_tasks_csv_uuid"
+        return $http.post(url)
+
+    service.regenerate_issues_csv_uuid = (projectId) ->
+        url = "#{$urls.resolve("projects")}/#{projectId}/regenerate_issues_csv_uuid"
         return $http.post(url)
 
     service.leave = (projectId) ->
