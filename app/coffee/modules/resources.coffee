@@ -81,6 +81,7 @@ urls = {
     "project-transfer-start": "/projects/%s/transfer_start"
 
     # Project Values - Choises
+    "epic-statuses": "/epic-statuses"
     "userstory-statuses": "/userstory-statuses"
     "points": "/points"
     "task-statuses": "/task-statuses"
@@ -223,6 +224,7 @@ module.run([
     "$tgRolesResourcesProvider",
     "$tgUserSettingsResourcesProvider",
     "$tgSprintsResourcesProvider",
+    "$tgEpicsResourcesProvider",
     "$tgUserstoriesResourcesProvider",
     "$tgTasksResourcesProvider",
     "$tgIssuesResourcesProvider",

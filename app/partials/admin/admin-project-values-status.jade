@@ -15,6 +15,12 @@ div.wrapper(ng-controller="ProjectValuesSectionController",
         include ../includes/components/mainTitle
         p.admin-subtitle(translate="ADMIN.PROJECT_VALUES_STATUS.SUBTITLE")
 
+        div.admin-attributes-section(tg-project-values, type="epic-statuses",
+            ng-controller="ProjectValuesController as ctrl",
+            ng-init="section='admin'; resource='epics'; type='epic-statuses'; sectionName='ADMIN.PROJECT_VALUES_STATUS.EPIC_TITLE'"
+            objName="status")
+            include ../includes/modules/admin/project-status
+
         div.admin-attributes-section(tg-project-values, type="userstory-statuses",
             ng-controller="ProjectValuesController as ctrl",
             ng-init="section='admin'; resource='userstories'; type='userstory-statuses'; sectionName='ADMIN.PROJECT_VALUES_STATUS.US_TITLE'",

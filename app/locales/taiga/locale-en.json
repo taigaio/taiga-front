@@ -609,7 +609,8 @@
         "PROJECT_VALUES_STATUS": {
             "TITLE": "Status",
             "SUBTITLE": "Specify the statuses your user stories, tasks and issues will go through",
-            "US_TITLE": "US Statuses",
+            "EPIC_TITLE": "Epic Statuses",
+            "US_TITLE": "User Story Statuses",
             "TASK_TITLE": "Task Statuses",
             "ISSUE_TITLE": "Issue Statuses"
         },
