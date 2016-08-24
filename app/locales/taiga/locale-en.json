@@ -256,6 +256,14 @@
             "MARKDOWN_HELP": "Markdown syntax help"
         },
         "PERMISIONS_CATEGORIES": {
+            "EPICS": {
+                "NAME": "Epics",
+                "VIEW_EPICS": "View epics",
+                "ADD_EPICS": "Add epics",
+                "MODIFY_EPICS": "Modify epics",
+                "COMMENT_EPICS": "Comment epics",
+                "DELETE_EPICS": "Delete epics"
+            },
             "SPRINTS": {
                 "NAME": "Sprints",
                 "VIEW_SPRINTS": "View sprints",
