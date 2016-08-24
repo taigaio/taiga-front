@@ -146,14 +146,16 @@ urls = {
     "attachments/wiki_page": "/wiki/attachments"
 
     # Custom Attributess
+    "custom-attributes/epic": "/epic-custom-attributes"
     "custom-attributes/userstory": "/userstory-custom-attributes"
-    "custom-attributes/issue": "/issue-custom-attributes"
     "custom-attributes/task": "/task-custom-attributes"
+    "custom-attributes/issue": "/issue-custom-attributes"
 
     # Custom Attributess - Values
+    "custom-attributes-values/epic": "/epics/custom-attributes-values"
     "custom-attributes-values/userstory": "/userstories/custom-attributes-values"
-    "custom-attributes-values/issue": "/issues/custom-attributes-values"
     "custom-attributes-values/task": "/tasks/custom-attributes-values"
+    "custom-attributes-values/issue": "/issues/custom-attributes-values"
 
     # Webhooks
     "webhooks": "/webhooks"

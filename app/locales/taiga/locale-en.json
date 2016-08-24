@@ -572,6 +572,8 @@
         "CUSTOM_FIELDS": {
             "TITLE": "Custom Fields",
             "SUBTITLE": "Specify the custom fields for your user stories, tasks and issues",
+            "EPIC_DESCRIPTION": "Epics custom fields",
+            "EPIC_ADD": "Add a custom field in epics",
             "US_DESCRIPTION": "User stories custom fields",
             "US_ADD": "Add a custom field in user stories",
             "TASK_DESCRIPTION": "Tasks custom fields",
