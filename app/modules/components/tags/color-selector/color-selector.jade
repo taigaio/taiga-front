@@ -4,7 +4,7 @@
         ng-class="{'empty-color': !vm.color}"
         ng-style="{'background': vm.color}"
     )
-    .color-selector-dropdown(ng-show="vm.displaycolorList")
+    .color-selector-dropdown(ng-if="vm.displaycolorList")
         ul.color-selector-dropdown-list.e2e-color-dropdown
             li.color-selector-option(
                 ng-repeat="color in vm.colorList"

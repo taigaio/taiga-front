@@ -17,6 +17,9 @@
 # File: create-epic.controller.coffee
 ###
 
+taiga = @.taiga
+trim = taiga.trim
+
 module = angular.module("taigaEpics")
 
 class CreateEpicController
@@ -25,11 +28,29 @@ class CreateEpicController
     ]
 
     constructor: (@rs) ->
+        @.newEpic = {
+            color: null
+            projecti: @.project.id
+            status: @.project.default_epic_status
+            tags: []
+        }
         @.attachments = Immutable.List()
 
     createEpic: () ->
-        @.newEpic.project = @.project.id
         return @rs.epics.post(@.newEpic).then () =>
             @.onReloadEpics()
+
+    selectColor: (color) ->
+        @.newEpic.color = color
+
+    addTag: (name, color) ->
+        name = trim(name.toLowerCase())
+
+        if not _.find(@.newEpic.tags, (it) -> it[0] == name)
+            @.newEpic.tags.push([name, color])
+
+    deleteTag: (tag) ->
+        _.remove @.newEpic.tags, (it) -> it[0] == tag[0]
+
 
 module.controller("CreateEpicCtrl", CreateEpicController)

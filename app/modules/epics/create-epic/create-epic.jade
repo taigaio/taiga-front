@@ -6,8 +6,10 @@ tg-lightbox-close
         ng-submit="vm.createEpic()"
     )
         fieldset
-            // TODO ADD COLOR SELECTOR
-            tg-color-selector(on-select-dropdown-color="vm.newEpic.color = color")
+            tg-color-selector(
+                color="vm.newEpic.color",
+                on-select-color="vm.selectColor(color)"
+            )
             input.e2e-create-epic-subject(
                 type="text"
                 name="subject"
@@ -25,13 +27,17 @@ tg-lightbox-close
             )
                 option(
                     ng-repeat="status in vm.project.epic_statuses | orderBy:'order'"
-                    ng-value="status.id"
+                    ng-value="::status.id"
                     ng-selected="vm.project.default_epic_status"
-                ) {{status.name}}
-        fieldset.tags-block(
-            tg-lb-tag-line
-            ng-model="vm.newEpic.tags"
-        )
+                ) {{::status.name}}
+        fieldset.tags-block
+            tg-tag-line-common(
+                project="vm.project"
+                tags="vm.newEpic.tags"
+                permissions="add_epic"
+                on-add-tag="vm.addTag(name, color)"
+                on-delete-tag="vm.deleteTag(tag)"
+            )
         fieldset
             textarea.e2e-create-epic-description(
                 ng-attr-placeholder="{{'COMMON.FIELDS.DESCRIPTION' | translate}}"
