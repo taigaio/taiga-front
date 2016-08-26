@@ -145,8 +145,8 @@ CreateIssueDirective = ($repo, $confirm, $rootscope, lightboxService, $loading, 
 
     return {link:link}
 
-module.directive("tgLbCreateIssue", ["$tgRepo", "$tgConfirm", "$rootScope", "lightboxService", "$tgLoading", "$q", "tgAttachmentsService",
-                                     CreateIssueDirective])
+module.directive("tgLbCreateIssue", ["$tgRepo", "$tgConfirm", "$rootScope", "lightboxService", "$tgLoading",
+                                     "$q", "tgAttachmentsService", CreateIssueDirective])
 
 
 #############################################################################
