@@ -46,7 +46,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
 
     $animateProvider.classNameFilter(/^(?:(?!ng-animate-disabled).)*$/)
 
-    # wait until the trasnlation is ready to resolve the page
+    # wait until the translation is ready to resolve the page
     originalWhen = $routeProvider.when
 
     $routeProvider.when = (path, route) ->
@@ -159,6 +159,15 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
             loader: true,
             controller: "EpicsDashboardCtrl",
             controllerAs: "vm"
+        }
+    )
+
+    # Epics
+    $routeProvider.when("/project/:pslug/epic/:epicref",
+        {
+            templateUrl: "epic/epic-detail.html",
+            loader: true,
+            section: "epics"
         }
     )
 
@@ -793,6 +802,7 @@ modules = [
     "taigaPlugins",
     "taigaIntegrations",
     "taigaComponents",
+
     # new modules
     "taigaProfile",
     "taigaHome",
@@ -801,7 +811,7 @@ modules = [
     "taigaDiscover",
     "taigaHistory",
     "taigaWikiHistory",
-    'taigaEpics',
+    "taigaEpics",
 
     # template cache
     "templates",

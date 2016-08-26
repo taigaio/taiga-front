@@ -1,0 +1,153 @@
+a.add-button.e2e-add-userstory-button(
+    href=""
+    ng-click="showLightbox(vm.project.get('id'))"
+)
+    tg-svg(svg-icon="icon-add")
+
+div.lightbox.lightbox-create-related-user-stories
+    tg-lightbox-close
+
+    div.form
+        h2.title(translate="EPIC.CREATE_RELATED_USERSTORIES")
+
+        .related-with-selector-title
+            legend(translate="EPIC.RELATED_WITH")
+
+        .related-with-selector
+            fieldset
+                input(
+                    type="radio"
+                    name="related-with-selector"
+                    id="new-user-story"
+                    value="new-user-story"
+                    ng-model="relatedWithSelector"
+                    ng-init="relatedWithSelector='new-user-story'"
+                )
+                label.e2e-new-userstory-label(for="new-user-story")
+                    span.name {{ 'EPIC.NEW_USERSTORY' | translate}}
+
+            fieldset
+                input(
+                    type="radio"
+                    name="related-with-selector"
+                    id="existing-user-story"
+                    value="existing-user-story"
+                    ng-model="relatedWithSelector"
+                )
+                label.e2e-existing-user-story-label(for="existing-user-story")
+                    span.name {{ 'EPIC.EXISTING_USERSTORY' | translate}}
+
+        .project-selector-title
+            legend(
+                ng-if="relatedWithSelector=='new-user-story'"
+                translate="EPIC.CHOOSE_PROJECT_FOR_CREATION"
+            )
+
+            legend(
+                ng-if="relatedWithSelector=='existing-user-story'"
+                translate="EPIC.CHOOSE_PROJECT_FROM"
+            )
+
+        .project-selector()
+            select(
+                ng-model="selectedProject"
+                ng-change="selectProject(selectedProject)"
+                data-required="true"
+                required
+                ng-options="p.id as p.name for p in vm.projects | toMutable"
+            )
+
+        div(ng-show="relatedWithSelector=='new-user-story'")
+            .new-user-story-selector
+                .new-user-story-title
+                    legend(
+                        ng-show="creationMode=='single-new-user-story'"
+                        translate="EPIC.SUBJECT"
+                    )
+
+                    legend(
+                        ng-show="creationMode=='bulk-new-user-stories'"
+                        translate="EPIC.SUBJECT_BULK_MODE"
+                    )
+                .new-user-story-options
+                    fieldset
+                        input(
+                            type="radio"
+                            name="new-user-story-selector"
+                            id="single-new-user-story"
+                            value="single-new-user-story"
+                            ng-model="creationMode"
+                            ng-init="creationMode='single-new-user-story'"
+                        )
+                        label.e2e-single-creation-label(for="single-new-user-story")
+                            tg-svg(svg-icon="icon-add")
+
+                    fieldset
+                        input(
+                            type="radio"
+                            name="new-user-story-selector"
+                            id="bulk-new-user-stories"
+                            value="bulk-new-user-stories"
+                            ng-model="creationMode"
+                        )
+                        label.e2e-bulk-creation-label(for="bulk-new-user-stories")
+                            tg-svg(svg-icon="icon-bulk")
+
+            form.new-user-story-form
+                .single-creation(ng-show="creationMode=='single-new-user-story'")
+                    input.e2e-new-userstory-input-text(
+                        type="text"
+                        ng-model="relatedUserstoriesText"
+                        data-required="true"
+                    )
+
+                .bulk-creation(ng-show="creationMode=='bulk-new-user-stories'")
+                    textarea.e2e-new-userstories-input-textarea(
+                        ng-model="relatedUserstoriesText"
+                        data-required="true"
+                    )
+
+            a.button-green.e2e-create-userstory-button(
+                href=""
+                ng-click="vm.bulkCreateRelatedUserStories(selectedProject, relatedUserstoriesText, closeLightbox)"
+                tg-loading="vm.loading"
+            )
+                span(
+                    translate="COMMON.SAVE"
+                )
+
+        .existing-user-story(ng-show="relatedWithSelector=='existing-user-story'")
+            .existing-user-story-title
+                legend(translate="EPIC.CHOOSE_USERSTORY")
+
+            input.userstory.e2e-filter-userstories-input(
+                type="text"
+                placeholder="{{'EPIC.FILTER_USERSTORIES' | translate}}"
+                ng-model="searchUserstory"
+                ng-change="onUpdateSearchUserstory()"
+            )
+
+            form.existing-user-story-form
+                select.userstory.e2e-userstories-select(
+                    size="5"
+                    ng-model="selectedUserstory"
+                    required
+                    data-required="true"
+                )
+                    - var hash = "#";
+                    option.hidden(
+                        value=""
+                    )
+                    option(
+                        ng-repeat="us in vm.projectUserstories | toMutable  | byRef:searchUserstory track by us.id"
+                        value="{{ ::us.id }}"
+                    ) #{hash}{{::us.ref}} {{::us.subject}}
+
+            a.button-green.e2e-select-related-userstory-button(
+                href=""
+                ng-click="vm.saveRelatedUserStory(selectedUserstory, closeLightbox)"
+                tg-loading="vm.loading"
+            )
+                span(
+                    translate="COMMON.SAVE"
+                )

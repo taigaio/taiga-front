@@ -12,6 +12,7 @@ var suites = [
     'wiki',
     'admin',
     'issues',
+    'epics',
     'tasks',
     'userProfile',
     'userStories',

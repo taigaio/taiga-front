@@ -13,3 +13,5 @@ module.exports.adminPermissions = require("./admin-permissions");
 module.exports.adminIntegrations = require("./admin-integrations");
 module.exports.issues = require("./issues-helper");
 module.exports.createProject = require("./create-project-helper");
+module.exports.epicsDashboard = require("./epics-dashboard-helper");
+module.exports.epicDetail = require("./epic-detail-helper");

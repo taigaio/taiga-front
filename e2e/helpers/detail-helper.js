@@ -86,7 +86,7 @@ helper.tags = function() {
             for (let tag of tags){
                 htmlChanges = await utils.common.outerHtmlChanges(el.$(".tags-container"));
                 el.$('.e2e-add-tag-input').sendKeys(tag);
-                await browser.actions().sendKeys(protractor.Key.ENTER).perform();
+                el.$('.save').click();
                 await htmlChanges();
             }
         }
@@ -537,6 +537,46 @@ helper.watchersLightbox = function() {
         },
         userList: function() {
             return el.$$('.user-list-single');
+        }
+    };
+
+    return obj;
+};
+
+helper.teamRequirement = function() {
+    let el = $('tg-us-team-requirement-button');
+
+    let obj = {
+        el: el,
+
+        toggleStatus: async function(){
+            await el.$("label").click();
+            await browser.waitForAngular();
+        },
+
+        isRequired: async function() {
+            let classes = await el.$("label").getAttribute('class');
+            return classes.includes("active");
+        }
+    };
+
+    return obj;
+};
+
+helper.clientRequirement = function() {
+    let el = $('tg-us-client-requirement-button');
+
+    let obj = {
+        el: el,
+
+        toggleStatus: async function(){
+            await el.$("label").click();
+            await browser.waitForAngular();
+        },
+
+        isRequired: async function() {
+            let classes = await el.$("label").getAttribute('class');
+            return classes.includes("active");
         }
     };
 

@@ -1,0 +1,78 @@
+.lightbox-create-related-user-stories {
+    .related-with-selector-title,
+    .project-selector-title,
+    .new-user-story-title,
+    .existing-user-story-title {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+    }
+    .related-with-selector,
+    .new-user-story-selector {
+        display: flex;
+        input {
+            display: none;
+        }
+        fieldset {
+            &:first-child {
+                margin-right: .5rem;
+            }
+        }
+    }
+    .project-selector,
+    .single-creation {
+        margin-bottom: 1rem;
+    }
+    input {
+        &:checked+label {
+            background: $primary-light;
+            color: $white;
+            transition: background .2s ease-in;
+            &:hover {
+                background: $primary-light;
+            }
+        }
+        +label {
+            background: rgba($whitish, .7);
+            cursor: pointer;
+            display: block;
+            padding: 2rem 1rem;
+            text-align: center;
+            transition: background .2s ease-in;
+            &:hover {
+                background: rgba($primary-light, .3);
+                transition: background .2s ease-in;
+            }
+            .icon {
+                fill: currentColor;
+                margin-top: .25rem;
+                vertical-align: text-top;
+            }
+            .name {
+                @include font-size(large);
+                text-transform: uppercase;
+            }
+        }
+    }
+    .new-user-story-selector {
+        display: flex;
+        justify-content: space-between;
+        .new-user-story-options {
+            display: flex;
+        }
+        fieldset {
+            width: auto;
+        }
+        label {
+            height: 1.5rem;
+            padding: 0;
+            width: 1.5rem;
+        }
+    }
+
+    .existing-user-story {
+        .button-green {
+            margin-top: 1rem;
+        }
+    }
+}

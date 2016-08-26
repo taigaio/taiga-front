@@ -14,30 +14,29 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: belong-to-epics.directive.coffee
+# File: related-userstory-row.directive.coffee
 ###
 
 module = angular.module('taigaEpics')
 
-BelongToEpicsDirective = () ->
-
-    link = (scope, el, attrs) ->
-        if scope.epics && !scope.epics.isIterable
-          scope.epics = Immutable.fromJS(scope.epics)
-
-        scope.getTemplateUrl = () ->
-            if attrs.format
-                return "components/belong-to-epics/belong-to-epics-" + attrs.format + ".html"
-            return "components/belong-to-epics/belong-to-epics-pill.html"
+RelatedUserstoryRowDirective = () ->
+    link = (scope, el, attrs, ctrl) ->
+        ctrl.setAvatarData()
 
     return {
         link: link,
+        templateUrl:"epics/related-userstories/related-userstory-row/related-userstory-row.html",
+        controller: "RelatedUserstoryRowCtrl",
+        controllerAs: "vm",
+        bindToController: true,
         scope: {
-            epics: '='
-        },
-        template : '<span ng-include="getTemplateUrl()"></span>'
+            userstory: '='
+            epic: '='
+            project: '='
+            loadRelatedUserstories:"&"
+        }
     }
 
-BelongToEpicsDirective.$inject = []
+RelatedUserstoryRowDirective.$inject = []
 
-module.directive("tgBelongToEpics", BelongToEpicsDirective)
+module.directive("tgRelatedUserstoryRow", RelatedUserstoryRowDirective)

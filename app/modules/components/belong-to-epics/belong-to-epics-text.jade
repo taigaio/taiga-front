@@ -6,5 +6,5 @@ span.belong-to-epic-text-wrapper(tg-repeat="epic in epics track by epic.get('id'
     )
     a.belong-to-epic-text(
         href=""
-        tg-nav="project-epics-detail:project=vm.project.get('slug')"
+        tg-nav="project-epics-detail:project=epic.getIn(['project', 'slug']),ref=epic.get('ref')"
     ) #{hash}{{epic.get('id')}} {{epic.get('subject')}}

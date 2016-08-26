@@ -51,6 +51,31 @@ Resource = (urlsService, http) ->
 
         return http.post(url, params)
 
+    service.addRelatedUserstory = (epicId, userstoryId) ->
+        url = urlsService.resolve("epic-related-userstories", epicId)
+
+        params = {
+            user_story: userstoryId
+            epic: epicId
+        }
+
+        return http.post(url, params)
+
+    service.bulkCreateRelatedUserStories = (epicId, projectId, bulk_userstories) ->
+        url = urlsService.resolve("epic-related-userstories-bulk-create", epicId)
+
+        params = {
+            bulk_userstories: bulk_userstories,
+            project_id: projectId
+        }
+
+        return http.post(url, params)
+
+    service.deleteRelatedUserstory = (epicId, userstoryId) ->
+        url = urlsService.resolve("epic-related-userstories", epicId) + "/#{userstoryId}"
+
+        return http.delete(url)
+
     return () ->
         return {"epics": service}
 

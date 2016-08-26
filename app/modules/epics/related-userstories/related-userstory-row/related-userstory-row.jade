@@ -1,0 +1,44 @@
+.userstory-name
+    - var hash = "#";
+    a(
+        tg-nav="project-userstories-detail:project=vm.userstory.getIn(['project_extra_info', 'slug']),ref=vm.userstory.get('ref')"
+        ng-attr-title="{{vm.userstory.get('subject')}}"
+    ) #{hash}{{vm.userstory.get('ref')}} {{vm.userstory.get('subject')}}
+
+    tg-belong-to-epics(
+        format="pill"
+        ng-if="vm.userstory.get('epics')"
+        epics="vm.userstory.get('epics')"
+    )
+
+.userstory-settings
+    a.delete-userstory.e2e-delete-userstory(
+        tg-check-permission="modify_epic"
+        title="{{'COMMON.DELETE' | translate}}"
+        href=""
+        ng-click="vm.onDeleteRelatedUserstory()"
+    )
+        tg-svg(svg-icon="icon-trash")
+
+.project(
+    tg-nav="project:project=vm.userstory.getIn(['project_extra_info', 'slug'])"
+)
+    img(
+        tg-project-logo-small-src="::vm.userstory.get('project_extra_info')"
+        alt="{{::vm.userstory.getIn(['project_extra_info', 'name'])}}"
+    )
+
+.status
+    span.userstory-status(ng-style="{'color': vm.userstory.getIn(['status_extra_info', 'color'])}") {{vm.userstory.getIn(['status_extra_info', 'name'])}}
+
+.assigned-to-column
+    figure.avatar
+        img(
+            style="background-color: {{ vm.avatar.bg }}"
+            src="{{ vm.avatar.url }}"
+            alt="{{ vm.avatar.full_name_display }}"
+        )
+
+        figcaption {{ vm.getAssignedToFullNameDisplay() }}
+
+div(tg-related-userstories-create-form)

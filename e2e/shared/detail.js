@@ -274,12 +274,12 @@ shared.blockTesting = async function() {
     let descriptionText = await $('.block-description').getText();
     expect(descriptionText).to.be.equal('This is a testing block reason');
 
-    let isDisplayed = $('.block-description').isDisplayed();
+    let isDisplayed = $('.block-desc-container').isDisplayed();
     expect(isDisplayed).to.be.equal.true;
 
     blockHelper.unblock();
 
-    isDisplayed = $('.block-description').isDisplayed();
+    isDisplayed = $('.block-desc-container').isDisplayed();
     expect(isDisplayed).to.be.equal.false;
 
     await notifications.success.close();
@@ -548,3 +548,37 @@ shared.customFields = function(typeIndex) {
         expect(fieldText).to.be.equal('test text2 edit');
     });
 };
+
+shared.teamRequirementTesting = function() {
+    it('team requirement edition', async function() {
+      let requirementHelper = detailHelper.teamRequirement();
+      let isRequired = await requirementHelper.isRequired();
+
+      // Toggle
+      requirementHelper.toggleStatus();
+      let newIsRequired = await requirementHelper.isRequired();
+      expect(isRequired).to.be.not.equal(newIsRequired);
+
+      // Toggle again
+      requirementHelper.toggleStatus();
+      newIsRequired = await requirementHelper.isRequired();
+      expect(isRequired).to.be.equal(newIsRequired);
+    });
+}
+
+shared.clientRequirementTesting = function () {
+    it('client requirement edition', async function() {
+      let requirementHelper = detailHelper.clientRequirement();
+      let isRequired = await requirementHelper.isRequired();
+
+      // Toggle
+      requirementHelper.toggleStatus();
+      let newIsRequired = await requirementHelper.isRequired();
+      expect(isRequired).to.be.not.equal(newIsRequired);
+
+      // Toggle again
+      requirementHelper.toggleStatus();
+      newIsRequired = await requirementHelper.isRequired();
+      expect(isRequired).to.be.equal(newIsRequired);
+    });
+}

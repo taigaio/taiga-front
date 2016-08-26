@@ -36,35 +36,9 @@ describe('User story detail', function(){
 
     describe('assigned to edition', sharedDetail.assignedToTesting);
 
-    it('team requirement edition', async function() {
-      let requirementHelper = usDetailHelper.teamRequirement();
-      let isRequired = await requirementHelper.isRequired();
+    describe('team requirement edition', sharedDetail.teamRequirementTesting);
 
-      // Toggle
-      requirementHelper.toggleStatus();
-      let newIsRequired = await requirementHelper.isRequired();
-      expect(isRequired).to.be.not.equal(newIsRequired);
-
-      // Toggle again
-      requirementHelper.toggleStatus();
-      newIsRequired = await requirementHelper.isRequired();
-      expect(isRequired).to.be.equal(newIsRequired);
-    });
-
-    it('client requirement edition', async function() {
-      let requirementHelper = usDetailHelper.clientRequirement();
-      let isRequired = await requirementHelper.isRequired();
-
-      // Toggle
-      requirementHelper.toggleStatus();
-      let newIsRequired = await requirementHelper.isRequired();
-      expect(isRequired).to.be.not.equal(newIsRequired);
-
-      // Toggle again
-      requirementHelper.toggleStatus();
-      newIsRequired = await requirementHelper.isRequired();
-      expect(isRequired).to.be.equal(newIsRequired);
-    });
+    describe('client requirement edition', sharedDetail.clientRequirementTesting);
 
     describe('watchers edition', sharedDetail.watchersTesting);
 

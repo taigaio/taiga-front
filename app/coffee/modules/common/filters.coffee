@@ -74,3 +74,29 @@ sizeFormat = =>
     return @.taiga.sizeFormat
 
 module.filter("sizeFormat", sizeFormat)
+
+
+toMutableFilter =  ->
+    toMutable = (js) ->
+      return js.toJS()
+
+    memoizedMutable = _.memoize(toMutable)
+
+    return (input) ->
+      if input instanceof Immutable.List
+        return memoizedMutable(input)
+
+      return input
+
+module.filter("toMutable", toMutableFilter)
+
+
+byRefFilter = ($filterFilter)->
+    return (userstories, filter) ->
+        if filter?.startsWith("#")
+            cleanRef= filter.substr(1)
+            return _.filter(userstories, (us) => String(us.ref).startsWith(cleanRef))
+
+        return $filterFilter(userstories, filter)
+
+module.filter("byRef", ["filterFilter", byRefFilter])

@@ -95,6 +95,12 @@ urls = {
 
     # Epics
     "epics": "/epics"
+    "epic-upvote": "/epics/%s/upvote"
+    "epic-downvote": "/epics/%s/downvote"
+    "epic-watch": "/epics/%s/watch"
+    "epic-unwatch": "/epics/%s/unwatch"
+    "epic-related-userstories": "/epics/%s/related_userstories"
+    "epic-related-userstories-bulk-create": "/epics/%s/related_userstories/bulk_create"
 
     # User stories
     "userstories": "/userstories"
@@ -134,12 +140,14 @@ urls = {
     "wiki-links": "/wiki-links"
 
     # History
+    "history/epic": "/history/epic"
     "history/us": "/history/userstory"
     "history/issue": "/history/issue"
     "history/task": "/history/task"
     "history/wiki": "/history/wiki/%s"
 
     # Attachments
+    "attachments/epic": "/epics/attachments"
     "attachments/us": "/userstories/attachments"
     "attachments/issue": "/issues/attachments"
     "attachments/task": "/tasks/attachments"

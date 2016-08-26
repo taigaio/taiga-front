@@ -44,33 +44,38 @@ helper.epic = function() {
         resetAssignedTo: async function() {
             el.get(0).$('.e2e-assigned-to-image').click();
             $$('.e2e-assigned-to-selector').get(0).click();
+            await browser.waitForAngular();
         },
         editAssignedTo: async function() {
             el.get(0).$('.e2e-assigned-to-image').click();
             utils.common.takeScreenshot("epics", "epics-edit-assigned");
             $$('.e2e-assigned-to-selector').last().click();
+            await browser.waitForAngular();
         },
         removeAssignedTo: async function() {
             el.get(0).$('.e2e-assigned-to-image').click();
-            $$('.e2e-unassign').click();
+            $('.e2e-unassign').click();
+            await browser.waitForAngular();
             return el.get(0).$('.e2e-assigned-to-image').getAttribute("alt");
         },
-        resetStatus: function() {
+        resetStatus: async function() {
             el.get(0).$('.e2e-epic-status').click();
             el.get(0).$$('.e2e-edit-epic-status').get(0).click();
+            await browser.waitForAngular();
         },
         getStatus: function() {
             return el.get(0).$('.e2e-epic-status').getText();
         },
-        editStatus: function() {
+        editStatus: async function() {
             el.get(0).$('.e2e-epic-status').click();
             utils.common.takeScreenshot("epics", "epics-edit-status");
             el.get(0).$$('.e2e-edit-epic-status').last().click();
+            await browser.waitForAngular();
         },
         getColumns: function() {
             return $$('.e2e-epics-table-header > div').count();
         },
-        removeColumns: function() {
+        removeColumns: async function() {
             $('.e2e-epics-column-button').click();
             utils.common.takeScreenshot("epics", "epics-edit-columns");
             $$('.e2e-epics-column-dropdown .check').first().click();

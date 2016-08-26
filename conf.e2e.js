@@ -53,55 +53,55 @@ var config = {
     onPrepare: function() {
         // disable by default because performance problems on IE
         // track mouse movements
-        // var trackMouse = function() {
-        //   angular.module('trackMouse', []).run(function($document) {
+         var trackMouse = function() {
+           angular.module('trackMouse', []).run(function($document) {
 
-        //     function addDot(ev) {
-        //       var color = 'black',
-        //         size = 6;
+             function addDot(ev) {
+               var color = 'black',
+                 size = 6;
 
-        //       switch (ev.type) {
-        //         case 'click':
-        //           color = 'red';
-        //           break;
-        //         case 'dblclick':
-        //           color = 'blue';
-        //           break;
-        //         case 'mousemove':
-        //           color = 'green';
-        //           break;
-        //       }
+               switch (ev.type) {
+                 case 'click':
+                   color = 'red';
+                   break;
+                 case 'dblclick':
+                   color = 'blue';
+                   break;
+                 case 'mousemove':
+                   color = 'green';
+                   break;
+               }
 
-        //       var dotEl = $('<div></div>')
-        //         .css({
-        //           position: 'fixed',
-        //           height: size + 'px',
-        //           width: size + 'px',
-        //           'background-color': color,
-        //           top: ev.clientY,
-        //           left: ev.clientX,
+               var dotEl = $('<div></div>')
+                 .css({
+                   position: 'fixed',
+                   height: size + 'px',
+                   width: size + 'px',
+                   'background-color': color,
+                   top: ev.clientY,
+                   left: ev.clientX,
 
-        //           'z-index': 9999,
+                   'z-index': 9999,
 
-        //           // make sure this dot won't interfere with the mouse events of other elements
-        //           'pointer-events': 'none'
-        //         })
-        //         .appendTo('body');
+                   // make sure this dot won't interfere with the mouse events of other elements
+                   'pointer-events': 'none'
+                 })
+                 .appendTo('body');
 
-        //       setTimeout(function() {
-        //         dotEl.remove();
-        //       }, 1000);
-        //     }
+               setTimeout(function() {
+                 dotEl.remove();
+               }, 1000);
+             }
 
-        //     $document.on({
-        //       click: addDot,
-        //       dblclick: addDot,
-        //       mousemove: addDot
-        //     });
+             $document.on({
+               click: addDot,
+               dblclick: addDot,
+               mousemove: addDot
+             });
 
-        //   });
-        // };
-        // browser.addMockModule('trackMouse', trackMouse);
+           });
+         };
+         browser.addMockModule('trackMouse', trackMouse);
 
         browser.params.glob.back = argv.back;
 

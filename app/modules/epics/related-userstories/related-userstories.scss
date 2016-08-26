@@ -1,0 +1,147 @@
+.related-userstories {
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.related-userstories-header {
+    align-content: center;
+    align-items: center;
+    background: $mass-white;
+    display: flex;
+    justify-content: space-between;
+    min-height: 36px;
+    .related-userstories-title {
+        @include font-size(medium);
+        @include font-type(bold);
+        margin-left: 1rem;
+    }
+    .add-button {
+        background: $grayer;
+        border: 0;
+        display: inline-block;
+        padding: .5rem;
+        transition: background .25s;
+        &:hover,
+        &.is-active {
+            background: $primary-light;
+        }
+        svg {
+            fill: $white;
+            height: 1.25rem;
+            margin-bottom: -.2rem;
+            width: 1.25rem;
+        }
+    }
+}
+
+.related-userstories-body {
+    width: 100%;
+    .row {
+        @include font-size(small);
+        align-items: center;
+        border-bottom: 1px solid $whitish;
+        display: flex;
+        padding: .5rem 0 .5rem .5rem;
+        &:hover {
+            .userstory-settings {
+                opacity: 1;
+                transition: all .2s ease-in;
+            }
+        }
+        .userstory-name {
+            flex: 1;
+        }
+        .userstory-settings {
+            flex-shrink: 0;
+            width: 60px;
+        }
+        .status {
+            flex-shrink: 0;
+            width: 125px;
+        }
+        .assigned-to-column {
+            flex-shrink: 0;
+            width: 150px;
+            img {
+                flex-basis: 35px;
+                // width & height they are only required for IE
+                height: 35px;
+                width: 35px;
+            }
+        }
+        .project {
+            flex-basis: 100px;
+            img {
+                width: 40px;
+            }
+        }
+    }
+
+    .userstory-name {
+        display: flex;
+        margin-right: 1rem;
+
+        span {
+            margin-right: .25rem;
+        }
+    }
+    .status {
+        position: relative;
+    }
+    .closed {
+        border-left: 10px solid $whitish;
+        color: $whitish;
+        a,
+        svg {
+            fill: $whitish;
+        }
+        .userstory-name a {
+            color: $whitish;
+            text-decoration: line-through;
+
+        }
+    }
+    .blocked {
+        background: rgba($red-light, .2);
+        border-left: 10px solid $red-light;
+    }
+    .userstory-settings {
+        align-items: center;
+        display: flex;
+        opacity: 0;
+        svg {
+            @include svg-size(1.1rem);
+            fill: $gray-light;
+            margin-right: .5rem;
+            transition: fill .2s ease-in;
+            &:hover {
+                fill: $gray;
+            }
+        }
+        a {
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+    .delete-userstory {
+        &:hover {
+            .icon-trash {
+                fill: $red-light;
+            }
+        }
+    }
+    .avatar {
+        align-items: center;
+        display: flex;
+        img {
+            flex-basis: 35px;
+            // width & height they are only required for IE
+            height: 35px;
+            width: 35px;
+        }
+        figcaption {
+            margin-left: .5rem;
+        }
+    }
+}
