@@ -62,7 +62,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
             projectLoaded: ["$q", "tgProjectService", "$route", ($q, projectService, $route) ->
                 deferred = $q.defer()
 
-                projectService.setSection($route.current.$$route.section)
+                projectService.setSection($route.current.$$route?.section)
 
                 if $route.current.params.pslug
                     projectService.setProjectBySlug($route.current.params.pslug).then(deferred.resolve)
