@@ -37,6 +37,7 @@
         a {
             @include font-type(text);
             padding: .5rem 1rem;
+            text-align: left;
         }
         a:hover {
             background: rgba($primary-light, .2);
