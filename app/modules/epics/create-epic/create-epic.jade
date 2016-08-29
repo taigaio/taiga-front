@@ -7,7 +7,8 @@ tg-lightbox-close
     )
         fieldset
             tg-color-selector(
-                color="vm.newEpic.color",
+                is-required="true"
+                init-color="vm.newEpic.color"
                 on-select-color="vm.selectColor(color)"
             )
             input.e2e-create-epic-subject(
@@ -46,6 +47,7 @@ tg-lightbox-close
         fieldset
             tg-attachments-simple(
                 attachments="vm.attachments"
+                on-add="vm.addAttachment(attachment)"
             )
         .settings
             fieldset.team-requirement

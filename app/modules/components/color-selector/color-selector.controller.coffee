@@ -17,41 +17,35 @@
 # File: color-selector.controller.coffee
 ###
 
-module = angular.module('taigaCommon')
+taiga = @.taiga
+getDefaulColorList = taiga.getDefaulColorList
+
 
 class ColorSelectorController
-
     constructor: () ->
-        @.colorList = [
-            '#fce94f',
-            '#edd400',
-            '#c4a000',
-            '#8ae234',
-            '#73d216',
-            '#4e9a06',
-            '#d3d7cf',
-            '#fcaf3e',
-            '#f57900',
-            '#ce5c00',
-            '#729fcf',
-            '#3465a4',
-            '#204a87',
-            '#888a85',
-            '#ad7fa8',
-            '#75507b',
-            '#5c3566',
-            '#ef2929',
-            '#cc0000',
-            '#a40000'
-        ]
+        @.colorList = getDefaulColorList()
+
+        if @.initColor
+            @.color = @.initColor
+
         @.displaycolorList = false
 
     toggleColorList: () ->
         @.displaycolorList = !@.displaycolorList
 
+        if @.isRequired and not @.color
+            @.color = @.initColor
+
     onSelectDropdownColor: (color) ->
+        @.color = color
         @.onSelectColor({color: color})
         @.toggleColorList()
 
+    onKeyDown: (event) ->
+        if event.which == 13 # ENTER
+            event.stopPropagation()
+            if @.color or not @.isRequired
+                @.onSelectDropdownColor(@.color)
 
-module.controller("ColorSelectorCtrl", ColorSelectorController)
+
+angular.module('taigaComponents').controller("ColorSelectorCtrl", ColorSelectorController)

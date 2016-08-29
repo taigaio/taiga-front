@@ -12,19 +12,23 @@
                 ng-title="color"
                 ng-click="vm.onSelectDropdownColor(color)"
             )
-            li.empty-color(ng-click="vm.onSelectDropdownColor(null)")
+            li.empty-color(
+                ng-if="!vm.isRequired"
+                ng-click="vm.onSelectDropdownColor(null)"
+            )
         .custom-color-selector
             .display-custom-color.empty-color(
-                ng-if="!customColor.color || customColor.color.length < 7"
+                ng-if="!vm.color"
             )
             .display-custom-color(
-                ng-if="customColor.color.length === 7"
-                ng-style="{'background': customColor.color}"
-                ng-click="vm.onSelectDropdownColor(customColor.color)"
+                ng-if="vm.color"
+                ng-style="{'background': vm.color}"
+                ng-click="vm.onSelectDropdownColor(vm.color)"
             )
             input.custom-color-input(
                 type="text"
                 maxlength="7"
-                placeholder="#000000"
-                ng-model="customColor.color"
+                placeholder="Type hex code"
+                ng-model="vm.color"
+                ng-keydown="vm.onKeyDown($event)"
             )

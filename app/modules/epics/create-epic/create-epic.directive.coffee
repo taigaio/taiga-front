@@ -28,7 +28,7 @@ CreateEpicDirective = () ->
         bindToController: true,
         scope: {
             project: '=',
-            onReloadEpics: '&'
+            onCreateEpic: '&'
         }
     }
 

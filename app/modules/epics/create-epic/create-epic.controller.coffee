@@ -19,30 +19,40 @@
 
 taiga = @.taiga
 trim = taiga.trim
+getRandomDefaultColor = taiga.getRandomDefaultColor
 
 module = angular.module("taigaEpics")
 
 class CreateEpicController
     @.$inject = [
         "tgResources"
+        "tgAttachmentsService"
+        "$q"
     ]
 
-    constructor: (@rs) ->
+    constructor: (@rs, @attachmentsService, @q) ->
         @.newEpic = {
-            color: null
-            projecti: @.project.id
+            color: getRandomDefaultColor()
+            project: @.project.id
             status: @.project.default_epic_status
             tags: []
         }
         @.attachments = Immutable.List()
 
     createEpic: () ->
-        return @rs.epics.post(@.newEpic).then () =>
-            @.onReloadEpics()
+        promise =  @rs.epics.post(@.newEpic)
 
+        promise.then (response) =>
+            @._createAttachments(response.data)
+
+        promise.then (data) =>
+            @.onCreateEpic()
+
+    # Color selector
     selectColor: (color) ->
         @.newEpic.color = color
 
+    # Tags
     addTag: (name, color) ->
         name = trim(name.toLowerCase())
 
@@ -52,5 +62,13 @@ class CreateEpicController
     deleteTag: (tag) ->
         _.remove @.newEpic.tags, (it) -> it[0] == tag[0]
 
+    # Attachments
+    addAttachment: (attachment) ->
+        @.attachments.push(attachment)
+
+    _createAttachments: (epic) ->
+        promises = _.map @.attachments.toJS(), (attachment) ->
+            return attachmentsService.upload(attachment.file, epic.id, epic.project, 'epic')
+        return @q.all(promises)
 
 module.controller("CreateEpicCtrl", CreateEpicController)

@@ -29,7 +29,7 @@ describe "ColorSelector", ->
             return null
 
     beforeEach ->
-        module "taigaCommon"
+        module "taigaComponents"
 
         _mocks()
 

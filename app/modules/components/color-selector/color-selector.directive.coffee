@@ -17,21 +17,20 @@
 # File: color-selector.directive.coffee
 ###
 
-module = angular.module('taigaCommon')
-
 ColorSelectorDirective = ($timeout) ->
-    link = (scope, el) ->
-        timeout = null
+    link = (scope, el, attrs, ctrl) ->
+        # Animation
+        _timeout = null
 
         cancel = () ->
-            $timeout.cancel(timeout)
-            timeout = null
+            $timeout.cancel(_timeout)
+            _timeout = null
 
         close = () ->
-            return if timeout
+            return if _timeout
 
-            timeout = $timeout (() ->
-                scope.vm.displaycolorList = false
+            _timeout = $timeout (() ->
+                scope.vm.toggleColorList()
             ), 400
 
         el.find('.color-selector')
@@ -45,17 +44,19 @@ ColorSelectorDirective = ($timeout) ->
     return {
         link: link,
         scope:{
+            isRequired: "="
             onSelectColor: "&",
-            color: "="
+            initColor: "="
         },
-        templateUrl:"components/tags/color-selector/color-selector.html",
+        templateUrl:"components/color-selector/color-selector.html",
         controller: "ColorSelectorCtrl",
         controllerAs: "vm",
         bindToController: true
     }
 
+
 ColorSelectorDirective.$inject = [
     "$timeout"
 ]
 
-module.directive("tgColorSelector", ColorSelectorDirective)
+angular.module('taigaComponents').directive("tgColorSelector", ColorSelectorDirective)

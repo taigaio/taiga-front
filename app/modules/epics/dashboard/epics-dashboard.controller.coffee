@@ -55,10 +55,10 @@ class EpicsDashboardController
         @lightboxFactory.create('tg-create-epic', {
             "class": "lightbox lightbox-create-epic open"
             "project": "project"
-            "on-reload-epics": "reloadEpics()"
+            "on-create-epic": "onCreateEpic()"
         }, {
             "project": @.project
-            "reloadEpics": @._onCreateEpic.bind(this)
+            "onCreateEpic": @._onCreateEpic.bind(this)
         })
 
 module.controller("EpicsDashboardCtrl", EpicsDashboardController)
