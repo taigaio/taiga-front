@@ -14,23 +14,19 @@ tg-lightbox-close
             input.e2e-create-epic-subject(
                 type="text"
                 name="subject"
-                maxlength="140"
                 ng-model="vm.newEpic.subject"
                 tg-auto-select
                 placeholder="{{'COMMON.FIELDS.SUBJECT' | translate}}"
-                required
+                data-required="true"
+                data-maxlength="140"
             )
         fieldset
             select.e2e-create-epic-status(
                 id="epic-status"
                 name="status"
                 ng-model="vm.newEpic.status"
+                ng-options="s.id as s.name for s in vm.project.epic_statuses | orderBy:'order'"
             )
-                option(
-                    ng-repeat="status in vm.project.epic_statuses | orderBy:'order'"
-                    ng-value="::status.id"
-                    ng-selected="vm.project.default_epic_status"
-                ) {{::status.name}}
         fieldset.tags-block
             tg-tag-line-common(
                 project="vm.project"
@@ -93,7 +89,9 @@ tg-lightbox-close
                 placeholder="{{'EPICS.CREATE.BLOCKED_NOTE_PLACEHOLDER' | translate}}"
             )
         fieldset
-            input.button-green.create-epic-button.e2e-create-epic-button(
+            button.button-green.create-epic-button.e2e-create-epic-button(
                 type="submit"
+                tg-loading="vm.loading"
+                title="{{ 'EPICS.CREATE.CREATE_EPIC' | translate }}"
                 translate="EPICS.CREATE.CREATE_EPIC"
             )

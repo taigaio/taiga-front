@@ -30,7 +30,8 @@ ColorSelectorDirective = ($timeout) ->
             return if _timeout
 
             _timeout = $timeout (() ->
-                scope.vm.toggleColorList()
+                ctrl.displayColorList = false
+                ctrl.resetColor()
             ), 400
 
         el.find('.color-selector')
@@ -43,15 +44,15 @@ ColorSelectorDirective = ($timeout) ->
 
     return {
         link: link,
-        scope:{
-            isRequired: "="
-            onSelectColor: "&",
-            initColor: "="
-        },
         templateUrl:"components/color-selector/color-selector.html",
         controller: "ColorSelectorCtrl",
         controllerAs: "vm",
-        bindToController: true
+        bindToController: {
+            isRequired: "=",
+            onSelectColor: "&",
+            initColor: "="
+        },
+        scope: {},
     }
 
 

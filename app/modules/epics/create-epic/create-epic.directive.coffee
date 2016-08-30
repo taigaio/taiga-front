@@ -20,16 +20,25 @@
 module = angular.module('taigaEpics')
 
 CreateEpicDirective = () ->
+    link = (scope, el, attrs, ctrl) ->
+        form = el.find("form").checksley()
+
+        ctrl.validateForm = =>
+            return form.validate()
+
+        ctrl.setFormErrors = (errors) =>
+            form.setErrors(errors)
 
     return {
+        link: link,
         templateUrl:"epics/create-epic/create-epic.html",
         controller: "CreateEpicCtrl",
         controllerAs: "vm",
-        bindToController: true,
-        scope: {
+        bindToController: {
             project: '=',
             onCreateEpic: '&'
-        }
+        },
+        scope: {}
     }
 
 CreateEpicDirective.$inject = []

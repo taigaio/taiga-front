@@ -28,13 +28,15 @@ class ColorSelectorController
         if @.initColor
             @.color = @.initColor
 
-        @.displaycolorList = false
+        @.displayColorList = false
 
-    toggleColorList: () ->
-        @.displaycolorList = !@.displaycolorList
-
+     resetColor: () ->
         if @.isRequired and not @.color
             @.color = @.initColor
+
+    toggleColorList: () ->
+        @.displayColorList = !@.displayColorList
+        @.resetColor()
 
     onSelectDropdownColor: (color) ->
         @.color = color
