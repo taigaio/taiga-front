@@ -36,19 +36,14 @@ describe "ColorSelector", ->
         inject ($controller) ->
             controller = $controller
 
-        colorSelectorCtrl = controller "ColorSelectorCtrl"
-        colorSelectorCtrl.colorList = [
-            '#fce94f',
-            '#edd400',
-            '#c4a000',
-        ]
-        colorSelectorCtrl.displaycolorList = false
 
     it "display Color Selector", () ->
+        colorSelectorCtrl = controller "ColorSelectorCtrl"
         colorSelectorCtrl.toggleColorList()
-        expect(colorSelectorCtrl.displaycolorList).to.be.true
+        expect(colorSelectorCtrl.displayColorList).to.be.true
 
     it "on select Color", () ->
+        colorSelectorCtrl = controller "ColorSelectorCtrl"
         colorSelectorCtrl.toggleColorList = sinon.stub()
 
         color = '#FFFFFF'
@@ -58,3 +53,17 @@ describe "ColorSelector", ->
         colorSelectorCtrl.onSelectDropdownColor(color)
         expect(colorSelectorCtrl.toggleColorList).have.been.called
         expect(colorSelectorCtrl.onSelectColor).to.have.been.calledWith({color: color})
+
+    it "save on keydown Enter", () ->
+        colorSelectorCtrl = controller "ColorSelectorCtrl"
+        colorSelectorCtrl.onSelectDropdownColor = sinon.stub()
+
+        event = {which: 13, stopPropagation: sinon.stub()}
+        color = "#fabada"
+
+        colorSelectorCtrl.color = color
+
+        colorSelectorCtrl.onKeyDown(event)
+        expect(event.stopPropagation).have.been.called
+        expect(colorSelectorCtrl.onSelectDropdownColor).have.been.called
+        expect(colorSelectorCtrl.onSelectDropdownColor).have.been.calledWith(color)
