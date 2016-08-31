@@ -57,6 +57,8 @@ class CreateEpicController
         promise.finally () =>
             @.loading = false
 
+        return promise
+
     # Color selector
     selectColor: (color) ->
         @.newEpic.color = color
@@ -76,8 +78,8 @@ class CreateEpicController
         @.attachments.push(attachment)
 
     _createAttachments: (epic) ->
-        promises = _.map @.attachments.toJS(), (attachment) ->
-            return attachmentsService.upload(attachment.file, epic.id, epic.project, 'epic')
+        promises = _.map @.attachments.toJS(), (attachment) =>
+            return @attachmentsService.upload(attachment.file, epic.id, epic.project, 'epic')
         return @q.all(promises)
 
 angular.module("taigaEpics").controller("CreateEpicCtrl", CreateEpicController)
