@@ -44,7 +44,6 @@ class DiscoverHomeOrderByController
     orderBy: (type) ->
         @.currentOrderBy = type
         @.is_open = false
-        console.log "Ijsdfkldsfklj"
         @.onChange({orderBy: @.currentOrderBy})
 
 angular.module("taigaDiscover").controller("DiscoverHomeOrderBy", DiscoverHomeOrderByController)
