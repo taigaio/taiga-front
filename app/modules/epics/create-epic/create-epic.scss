@@ -7,6 +7,14 @@
         max-width: 700px;
         width: 90%;
     }
+    .subject-container {
+        align-items: center;
+        display: flex;
+        .subject {
+            padding-left: 1rem;
+            width: 100%;
+        }
+    }
     .attachments {
         margin-bottom: 0;
     }

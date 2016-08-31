@@ -427,6 +427,7 @@
         },
         "CREATE": {
             "TITLE": "New Epic",
+            "PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this epic",
             "TEAM_REQUIREMENT": "Team requirement",
             "CLIENT_REQUIREMENT": "Client requirement",
             "BLOCKED": "Blocked",
