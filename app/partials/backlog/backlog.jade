@@ -78,10 +78,7 @@ div.wrapper(tg-backlog, ng-controller="BacklogController as ctrl",
         section.backlog-table(ng-class="{'hidden': !userstories.length}")
             include ../includes/modules/backlog-table
 
-        div.empty-backlog(
-            ng-class="{'hidden': userstories === undefined || userstories.length}"
-            tg-backlog-empty-sortable
-        )
+        div.empty-backlog(ng-class="{'hidden': userstories === undefined || userstories.length}")
             img(
                 src="/#{v}/images/backlog-empty.png"
                 alt="{{'BACKLOG.EMPTY' | translate}}"
