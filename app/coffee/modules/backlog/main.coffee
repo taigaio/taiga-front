@@ -68,7 +68,8 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
     milestonesOrder: {}
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @appMetaService, @navUrls,
-                  @events, @analytics, @translate, @loading, @rs2, @modelTransform, @errorHandlingService, @storage, @filterRemoteStorageService) ->
+                  @events, @analytics, @translate, @loading, @rs2, @modelTransform, @errorHandlingService,
+                  @storage, @filterRemoteStorageService) ->
         bindMethods(@)
 
         @.backlogOrder = {}
@@ -329,22 +330,15 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
     prepareBulkUpdateData: (uses, field="backlog_order") ->
          return _.map(uses, (x) -> {"us_id": x.id, "order": x[field]})
 
-    resortUserStories: (uses, field="backlog_order") ->
-        items = []
-
-        for item, index in uses
-            item[field] = index
-            if item.isModified()
-                items.push(item)
-
-        return items
-
     # --move us api behavior--
     # if your are moving multiples USs you must use the bulk api
     # if there is only one US you must use patch (repo.save)
     # the new US position is the position of the previous US + 1
-    # if the previous US has a position value that it is equal to other USs, you must send all the USs with that position value only if they are before of the target position
-    #    with this USs if it's a patch you must add them to the header, if is a bulk you must send them with the other USs
+    # if the previous US has a position value that it is equal to
+    # other USs, you must send all the USs with that position value
+    # only if they are before of the target position with this USs
+    # if it's a patch you must add them to the header, if is a bulk
+    # you must send them with the other USs.
     moveUs: (ctx, usList, newUsIndex, newSprintId) ->
         oldSprintId = usList[0].milestone
         project = usList[0].project
@@ -414,12 +408,17 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         else if previous
             startIndex = orderList[previous.id] + 1
 
-            previousWithTheSameOrder = _.filter beforeDestination, (it) -> it[orderField] == orderList[previous.id]
+            previousWithTheSameOrder = _.filter beforeDestination, (it) ->
+                return it[orderField] == orderList[previous.id]
 
-            # we must send the USs previous to the dropped USs to tell the backend which USs are before the dropped USs,
-            # if they have the same value to order, the backend doens't know after which one do you want to drop the USs
+            # we must send the USs previous to the dropped USs to
+            # tell the backend which USs are before the dropped
+            # USs, if they have the same value to order, the backend
+            # doens't know after which one do you want to drop
+            # the USs
             if previousWithTheSameOrder.length > 1
-                setPreviousOrders = _.map previousWithTheSameOrder, (it) -> {us_id: it.id, order: orderList[it.id]}
+                setPreviousOrders = _.map previousWithTheSameOrder, (it) ->
+                    return {us_id: it.id, order: orderList[it.id]}
 
         modifiedUs = []
 
@@ -444,7 +443,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         for sprint in @scope.closedSprints
             sprint.user_stories = _.sortBy sprint.user_stories, (it) => @.milestonesOrder[sprint.id][it.id]
 
-        #saving
+        # saving
         if usList.length > 1 && (newSprintId != oldSprintId) # drag multiple to sprint
             data = modifiedUs.concat(setPreviousOrders)
             promise = @rs.userstories.bulkUpdateMilestone(project, newSprintId, data)
@@ -527,10 +526,10 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
       currentDate = new Date().getTime()
 
       return  _.find @scope.sprints, (sprint) ->
-        start = moment(sprint.estimated_start, 'YYYY-MM-DD').format('x')
-        end = moment(sprint.estimated_finish, 'YYYY-MM-DD').format('x')
+          start = moment(sprint.estimated_start, 'YYYY-MM-DD').format('x')
+          end = moment(sprint.estimated_finish, 'YYYY-MM-DD').format('x')
 
-        return currentDate >= start && currentDate <= end
+          return currentDate >= start && currentDate <= end
 
 module.controller("BacklogController", BacklogController)
 
