@@ -81,7 +81,7 @@ describe "AttachmentsPreviewController", ->
             }
         ])
 
-        mocks.attachmentsPreviewService.fileId = 2;
+        mocks.attachmentsPreviewService.fileId = 2
 
         current = ctrl.getCurrent()
 
@@ -125,7 +125,7 @@ describe "AttachmentsPreviewController", ->
             }
         ])
 
-        mocks.attachmentsPreviewService.fileId = 1;
+        mocks.attachmentsPreviewService.fileId = 1
 
         pagination = ctrl.hasPagination()
 
@@ -173,7 +173,7 @@ describe "AttachmentsPreviewController", ->
             }
         ])
 
-        mocks.attachmentsPreviewService.fileId = 2;
+        mocks.attachmentsPreviewService.fileId = 2
 
         currentIndex = ctrl.getIndex()
 
@@ -215,7 +215,7 @@ describe "AttachmentsPreviewController", ->
             }
         ])
 
-        mocks.attachmentsPreviewService.fileId = 1;
+        mocks.attachmentsPreviewService.fileId = 1
 
         currentIndex = ctrl.next()
 
@@ -256,7 +256,7 @@ describe "AttachmentsPreviewController", ->
             }
         ])
 
-        mocks.attachmentsPreviewService.fileId = 3;
+        mocks.attachmentsPreviewService.fileId = 3
 
         currentIndex = ctrl.next()
 
@@ -298,7 +298,7 @@ describe "AttachmentsPreviewController", ->
             }
         ])
 
-        mocks.attachmentsPreviewService.fileId = 3;
+        mocks.attachmentsPreviewService.fileId = 3
 
         currentIndex = ctrl.previous()
 
@@ -339,7 +339,7 @@ describe "AttachmentsPreviewController", ->
             }
         ])
 
-        mocks.attachmentsPreviewService.fileId = 1;
+        mocks.attachmentsPreviewService.fileId = 1
 
         currentIndex = ctrl.previous()
 

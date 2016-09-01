@@ -38,5 +38,5 @@ describe "tgProjectLogoService", ->
 
         logo = projectLogoService.getDefaultProjectLogo('slug/slug', 2)
 
-        expect(logo.src).to.be.equal('/123/images/project-logos/project-logo-04.png');
-        expect(logo.color).to.be.equal('rgba( 152, 224, 168,  1 )');
+        expect(logo.src).to.be.equal('/123/images/project-logos/project-logo-04.png')
+        expect(logo.color).to.be.equal('rgba( 152, 224, 168,  1 )')

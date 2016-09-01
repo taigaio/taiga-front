@@ -51,7 +51,7 @@ describe "Filter", ->
 
         isOpen = ctrl.isOpen('filter1')
 
-        expect(isOpen).to.be.true;
+        expect(isOpen).to.be.true
 
     it "save custom filter", () ->
         ctrl = $controller("Filter")

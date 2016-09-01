@@ -67,13 +67,13 @@ describe "VoteButton", ->
 
         promise = ctrl.toggleVote()
 
-        expect(ctrl.loading).to.be.true;
+        expect(ctrl.loading).to.be.true
 
         mocks.onUpvote.resolve()
 
         promise.finally () ->
             expect(mocks.onUpvote).to.be.calledOnce
-            expect(ctrl.loading).to.be.false;
+            expect(ctrl.loading).to.be.false
 
             done()
 
@@ -90,12 +90,12 @@ describe "VoteButton", ->
 
         promise = ctrl.toggleVote()
 
-        expect(ctrl.loading).to.be.true;
+        expect(ctrl.loading).to.be.true
 
         mocks.onDownvote.resolve()
 
         promise.finally () ->
             expect(mocks.onDownvote).to.be.calledOnce
-            expect(ctrl.loading).to.be.false;
+            expect(ctrl.loading).to.be.false
 
             done()

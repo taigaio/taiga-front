@@ -29,7 +29,7 @@ AttachmentsDropDirective = ($parse) ->
             e.stopPropagation()
             e.preventDefault()
 
-            dataTransfer = e.dataTransfer || (e.originalEvent && e.originalEvent.dataTransfer);
+            dataTransfer = e.dataTransfer || (e.originalEvent && e.originalEvent.dataTransfer)
 
             scope.$apply () -> eventAttr(scope, {files: dataTransfer.files})
 

@@ -271,7 +271,7 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                     dataType: "owner",
                     content: owner
                 }
-            ];
+            ]
 
             @.customFilters = []
             _.forOwn customFiltersRaw, (value, key) =>
@@ -472,7 +472,7 @@ IssuesDirective = ($log, $location, $template, $compile) ->
             svg = $("<tg-svg>").attr("svg-icon", icon)
 
             colHeadElement.append(svg)
-            $compile(colHeadElement.contents())($scope);
+            $compile(colHeadElement.contents())($scope)
 
         $el.on "click", ".row.title > div", (event) ->
             target = angular.element(event.currentTarget)
@@ -495,7 +495,7 @@ IssuesDirective = ($log, $location, $template, $compile) ->
                         .attr("svg-icon", icon)
 
                     target.append(svg)
-                    $compile(target.contents())($scope);
+                    $compile(target.contents())($scope)
 
     ## Issues Link
     link = ($scope, $el, $attrs) ->

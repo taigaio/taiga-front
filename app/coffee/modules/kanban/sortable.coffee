@@ -94,7 +94,7 @@ KanbanSortableDirective = ($repo, $rs, $rootscope) ->
                 pixels: 30,
                 scrollWhenOutside: true,
                 autoScroll: () ->
-                    return this.down && drake.dragging;
+                    return this.down && drake.dragging
             })
 
             $scope.$on "$destroy", ->

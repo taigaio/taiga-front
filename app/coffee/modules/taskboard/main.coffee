@@ -217,7 +217,7 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
                     dataType: "owner",
                     content: owner
                 }
-            ];
+            ]
 
             @.customFilters = []
             _.forOwn customFiltersRaw, (value, key) =>

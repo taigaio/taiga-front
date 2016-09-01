@@ -68,13 +68,13 @@ describe "WatchButton", ->
 
         promise = ctrl.toggleWatch()
 
-        expect(ctrl.loading).to.be.true;
+        expect(ctrl.loading).to.be.true
 
         mocks.onWatch.resolve()
 
         promise.finally () ->
             expect(mocks.onWatch).to.be.calledOnce
-            expect(ctrl.loading).to.be.false;
+            expect(ctrl.loading).to.be.false
 
             done()
 
@@ -91,13 +91,13 @@ describe "WatchButton", ->
 
         promise = ctrl.toggleWatch()
 
-        expect(ctrl.loading).to.be.true;
+        expect(ctrl.loading).to.be.true
 
         mocks.onUnwatch.resolve()
 
         promise.finally () ->
             expect(mocks.onUnwatch).to.be.calledOnce
-            expect(ctrl.loading).to.be.false;
+            expect(ctrl.loading).to.be.false
 
             done()
 

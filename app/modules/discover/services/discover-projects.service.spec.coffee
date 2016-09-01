@@ -174,6 +174,6 @@ describe "tgDiscoverProjectsService", ->
 
             expect(result).to.have.length(5)
 
-            expect(result[4].decorate).to.be.ok;
+            expect(result[4].decorate).to.be.ok
 
             done()

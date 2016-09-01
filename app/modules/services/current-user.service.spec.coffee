@@ -179,7 +179,7 @@ describe "tgCurrentUserService", ->
             backlog: false,
             kanban: false,
             dashboard: false
-        });
+        })
 
     it "load joyride config", (done) ->
         mocks.resources.user.getUserStorage.withArgs('joyride').promise().resolve(true)

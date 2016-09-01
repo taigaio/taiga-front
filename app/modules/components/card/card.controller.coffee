@@ -27,7 +27,7 @@ class CardController
         @.onToggleFold({id: @.item.get('id')})
 
     getClosedTasks: () ->
-        return @.item.getIn(['model', 'tasks']).filter (task) -> return task.get('is_closed');
+        return @.item.getIn(['model', 'tasks']).filter (task) -> return task.get('is_closed')
 
     closedTasksPercent: () ->
         return @.getClosedTasks().size * 100 / @.item.getIn(['model', 'tasks']).size

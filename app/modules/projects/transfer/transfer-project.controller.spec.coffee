@@ -127,7 +127,7 @@ describe "TransferProject", ->
         ctrl = $controller("TransferProjectController")
         ctrl.project = project
         ctrl.initialize().then () ->
-            expect(mocks.errorHandlingService.notfound).have.been.called;
+            expect(mocks.errorHandlingService.notfound).have.been.called
             done()
 
     it "valid token private project with max projects for user", (done) ->

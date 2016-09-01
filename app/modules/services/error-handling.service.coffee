@@ -27,7 +27,7 @@ class ErrorHandlingService
     constructor: (@rootScope) ->
 
     init: () ->
-        @rootScope.errorHandling = {};
+        @rootScope.errorHandling = {}
 
     notfound: ->
         @rootScope.errorHandling.showingError = true

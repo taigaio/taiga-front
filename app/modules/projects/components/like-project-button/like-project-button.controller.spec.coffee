@@ -72,13 +72,13 @@ describe "LikeProjectButton", ->
 
         promise = ctrl.toggleLike()
 
-        expect(ctrl.loading).to.be.true;
+        expect(ctrl.loading).to.be.true
 
         mocks.tgLikeProjectButton.like.withArgs(project.get('id')).resolve()
 
         promise.finally () ->
             expect(mocks.tgLikeProjectButton.like).to.be.calledOnce
-            expect(ctrl.loading).to.be.false;
+            expect(ctrl.loading).to.be.false
 
             done()
 
@@ -109,13 +109,13 @@ describe "LikeProjectButton", ->
 
         promise = ctrl.toggleLike()
 
-        expect(ctrl.loading).to.be.true;
+        expect(ctrl.loading).to.be.true
 
         mocks.tgLikeProjectButton.unlike.withArgs(project.get('id')).resolve()
 
         promise.finally () ->
             expect(mocks.tgLikeProjectButton.unlike).to.be.calledOnce
-            expect(ctrl.loading).to.be.false;
+            expect(ctrl.loading).to.be.false
 
             done()
 

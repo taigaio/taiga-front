@@ -77,4 +77,4 @@ describe "ProjectsListingController", ->
 
         pageCtrl.newProject()
 
-        expect(mocks.projectsService.newProject).to.be.calledOnce;
+        expect(mocks.projectsService.newProject).to.be.calledOnce

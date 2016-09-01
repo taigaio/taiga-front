@@ -278,7 +278,7 @@ class UsFiltersMixin
                     dataType: "owner",
                     content: owner
                 }
-            ];
+            ]
 
             @.customFilters = []
             _.forOwn customFiltersRaw, (value, key) =>

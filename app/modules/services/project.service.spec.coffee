@@ -89,7 +89,7 @@ describe "tgProjectService", ->
             .then () -> projectService.setProjectBySlug('slug-1')
             .then () -> projectService.setProjectBySlug('slug-2')
             .finally () ->
-                expect(projectService.setProject).to.be.called.twice;
+                expect(projectService.setProject).to.be.called.twice
                 done()
 
     it "set project and set active members", () ->
@@ -136,10 +136,10 @@ describe "tgProjectService", ->
 
         projectService.cleanProject()
 
-        expect(projectService.project).to.be.null;
-        expect(projectService.activeMembers.size).to.be.equal(0);
-        expect(projectService.section).to.be.null;
-        expect(projectService.sectionsBreadcrumb.size).to.be.equal(0);
+        expect(projectService.project).to.be.null
+        expect(projectService.activeMembers.size).to.be.equal(0)
+        expect(projectService.section).to.be.null
+        expect(projectService.sectionsBreadcrumb.size).to.be.equal(0)
 
     it "has permissions", () ->
         project = Immutable.Map({

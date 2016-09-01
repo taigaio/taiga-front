@@ -90,7 +90,7 @@ WikiNavDirective = ($tgrepo, $log, $location, $confirm, $analytics, $loading, $t
                     pixels: 30,
                     scrollWhenOutside: true,
                     autoScroll: () ->
-                        return this.down && drake.dragging;
+                        return this.down && drake.dragging
                 })
 
             $el.on "click", ".add-button", (event) ->
