@@ -25,19 +25,18 @@ BelongToEpicsDirective = () ->
         if scope.epics && !scope.epics.isIterable
           scope.epics = Immutable.fromJS(scope.epics)
 
-        scope.getTemplateUrl = () ->
-            if attrs.format
-                return "components/belong-to-epics/belong-to-epics-" + attrs.format + ".html"
-            return "components/belong-to-epics/belong-to-epics-pill.html"
+    templateUrl = (el, attrs) ->
+        if attrs.format
+            return "components/belong-to-epics/belong-to-epics-" + attrs.format + ".html"
+        return "components/belong-to-epics/belong-to-epics-pill.html"
 
     return {
         link: link,
         scope: {
             epics: '='
         },
-        template : '<span ng-include="getTemplateUrl()"></span>'
+        templateUrl: templateUrl
     }
 
-BelongToEpicsDirective.$inject = []
 
 module.directive("tgBelongToEpics", BelongToEpicsDirective)

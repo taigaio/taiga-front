@@ -25,3 +25,12 @@
 .belong-to-epic-text {
     margin-left: .25rem;
 }
+.belong-to-epic-label {
+    @include font-type(light);
+    @include font-size(xsmall);
+    background: $grayer;
+    border-radius: .25rem;
+    color: $white;
+    margin: 0 .5rem;
+    padding: .1rem .25rem;
+}
