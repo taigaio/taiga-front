@@ -44,21 +44,23 @@ describe "EpicTable", ->
         expect(epicTableCtrl.displayOptions).to.be.false
 
     it "can edit", () ->
-        epicTableCtrl = controller "EpicsTableCtrl"
-        epicTableCtrl.project = {
-            my_permissions: [
-                'modify_epic'
-            ]
+        data = {
+            project: {
+                my_permissions: [
+                    'modify_epic'
+                ]
+            }
         }
-        epicTableCtrl._checkPermissions()
+        epicTableCtrl = controller "EpicsTableCtrl", null, data
         expect(epicTableCtrl.permissions.canEdit).to.be.true
 
     it "can NOT edit", () ->
-        epicTableCtrl = controller "EpicsTableCtrl"
-        epicTableCtrl.project = {
-            my_permissions: [
-                'modify_us'
-            ]
+        data = {
+            project: {
+                my_permissions: [
+                    'modify_us'
+                ]
+            }
         }
-        epicTableCtrl._checkPermissions()
+        epicTableCtrl = controller "EpicsTableCtrl", null, data
         expect(epicTableCtrl.permissions.canEdit).to.be.false

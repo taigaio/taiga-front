@@ -35,13 +35,12 @@ class EpicsTableController
             progress: true
         }
 
-    toggleEpicTableOptions: () ->
-        @.displayOptions = !@.displayOptions
-
-    _checkPermissions: () ->
         @.permissions = {
             canEdit: _.includes(@.project.my_permissions, 'modify_epic')
         }
+
+    toggleEpicTableOptions: () ->
+        @.displayOptions = !@.displayOptions
 
     reorderEpics: (epic, index) ->
         console.log epic, index
