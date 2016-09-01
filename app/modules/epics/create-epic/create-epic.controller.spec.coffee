@@ -106,28 +106,3 @@ describe "EpicRow", ->
             expect(mocks.tgAttachmentsService.upload).have.been.calledTwice
             expect(createEpicCtrl.onCreateEpic).have.been.called
             done()
-
-    # TODO: Talk with JuanFran. How to return a response with an object when a promise is rejected?
-    #              reject_response = {data: {_error_message: "error"}}
-    #
-    #
-    #it "create Epic with an API error", (done) ->
-    #    data = {
-    #        project: {id: 1, default_epic_status: 1}
-    #        validateForm: sinon.stub()
-    #        setFormErrors: sinon.stub()
-    #        onCreateEpic: sinon.stub()
-    #    }
-    #    createEpicCtrl = controller "CreateEpicCtrl", null, data
-    #    createEpicCtrl.attachments = Immutable.List([{file: "file1"}, {file: "file2"}])
-
-    #    data.validateForm.withArgs().returns(true)
-    #    mocks.tgResources.epics.post.withArgs(createEpicCtrl.newEpic).promise().reject(new Error("error"))
-
-    #    createEpicCtrl.createEpic().then () ->
-    #        expect(data.validateForm).have.been.called
-    #        expect(mocks.tgAttachmentsService.upload).not.have.been.called
-    #        expect(createEpicCtrl.onCreateEpic).not.have.been.called
-    #        expect(data.setFormErrors).have.been.called
-    #        expect(mocks.tgConfirm.notify).have.been.called
-    #        done()
