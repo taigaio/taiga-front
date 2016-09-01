@@ -38,7 +38,14 @@ describe "EpicTable", ->
             controller = $controller
 
     it "toggle table options", () ->
-        epicTableCtrl = controller "EpicsTableCtrl"
+        data = {
+            project: {
+                my_permissions: [
+                    'modify_epic'
+                ]
+            }
+        }
+        epicTableCtrl = controller "EpicsTableCtrl", null, data
         epicTableCtrl.displayOptions = true
         epicTableCtrl.toggleEpicTableOptions()
         expect(epicTableCtrl.displayOptions).to.be.false
