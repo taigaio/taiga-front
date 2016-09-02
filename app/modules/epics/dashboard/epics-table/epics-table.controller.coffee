@@ -42,7 +42,8 @@ class EpicsTableController
     toggleEpicTableOptions: () ->
         @.displayOptions = !@.displayOptions
 
-    reorderEpics: (epic, index) ->
-        console.log epic, index
+    reorderEpic: (epic, newIndex) ->
+        console.log epic, newIndex
+
 
 module.controller("EpicsTableCtrl", EpicsTableController)
