@@ -102,7 +102,8 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
     filtersReloadContent: () ->
         @.loadUserstories().then () =>
-            openArchived = _.difference(@kanbanUserstoriesService.archivedStatus, @kanbanUserstoriesService.statusHide)
+            openArchived = _.difference(@kanbanUserstoriesService.archivedStatus,
+                                        @kanbanUserstoriesService.statusHide)
             if openArchived.length
                 for statusId in openArchived
                     @.loadUserStoriesForStatus({}, statusId)
@@ -131,8 +132,10 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
     addNewUs: (type, statusId) ->
         switch type
-            when "standard" then @rootscope.$broadcast("usform:new", @scope.projectId, statusId, @scope.usStatusList)
-            when "bulk" then @rootscope.$broadcast("usform:bulk", @scope.projectId, statusId)
+            when "standard" then @rootscope.$broadcast("usform:new",
+                                                       @scope.projectId, statusId, @scope.usStatusList)
+            when "bulk" then @rootscope.$broadcast("usform:bulk",
+                                                   @scope.projectId, statusId)
 
     editUs: (id) ->
         us = @kanbanUserstoriesService.getUs(id)
