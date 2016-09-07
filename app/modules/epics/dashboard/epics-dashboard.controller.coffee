@@ -17,48 +17,50 @@
 # File: epics.dashboard.controller.coffee
 ###
 
-module = angular.module("taigaEpics")
+taiga = @.taiga
+
 
 class EpicsDashboardController
     @.$inject = [
-        "$tgResources",
-        "tgResources",
         "$routeParams",
         "tgErrorHandlingService",
         "tgLightboxFactory",
         "lightboxService",
-        "$tgConfirm"
+        "$tgConfirm",
+        "tgProjectService",
+        "tgEpicsService"
     ]
 
-    constructor: (@rs, @resources, @params, @errorHandlingService, @lightboxFactory, @lightboxService, @confirm) ->
-        @.sectionName = "Epics"
-        @.createEpic = false
+    constructor: (@params, @errorHandlingService, @lightboxFactory, @lightboxService,
+                  @confirm, @projectService, @epicsService) ->
 
-    loadProject: () ->
-        return @rs.projects.getBySlug(@params.pslug).then (project) =>
-            if not project.is_epics_activated
-                @errorHandlingService.permissionDenied()
-            @.project = project
-            @.loadEpics()
+        @.sectionName = "EPICS.SECTION_NAME"
 
-    loadEpics: () ->
-        projectId = @.project.id
-        return @resources.epics.list(projectId).then (epics) =>
-            @.epics = epics
+        taiga.defineImmutableProperty @, 'project', () => return @projectService.project
+        taiga.defineImmutableProperty @, 'epics', () => return @epicsService.epics
 
-    _onCreateEpic: () ->
-        @lightboxService.closeAll()
-        @confirm.notify("success")
-        @.loadEpics()
+        @._loadInitialData()
+
+    _loadInitialData: () ->
+        @epicsService.clear()
+        @projectService.setProjectBySlug(@params.pslug)
+            .then () =>
+                if not @.project.get("is_epics_activated") or not @projectService.hasPermission("view_epics")
+                    @errorHandlingService.permissionDenied()
+
+                @epicsService.fetchEpics()
+
+    canCreateEpics: () ->
+        return @projectService.hasPermission("add_epic")
 
     onCreateEpic: () ->
         @lightboxFactory.create('tg-create-epic', {
             "class": "lightbox lightbox-create-epic open"
-            "project": "project"
             "on-create-epic": "onCreateEpic()"
         }, {
-            "project": @.project
-            "onCreateEpic": @._onCreateEpic.bind(this)
+            "onCreateEpic": () =>
+                @lightboxService.closeAll()
+                @confirm.notify("success")
         })
 
-module.controller("EpicsDashboardCtrl", EpicsDashboardController)
+angular.module("taigaEpics").controller("EpicsDashboardCtrl", EpicsDashboardController)

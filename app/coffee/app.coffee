@@ -812,6 +812,7 @@ modules = [
     "taigaHistory",
     "taigaWikiHistory",
     "taigaEpics",
+    "taigaUtils"
 
     # template cache
     "templates",

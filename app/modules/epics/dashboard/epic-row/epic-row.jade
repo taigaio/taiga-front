@@ -1,10 +1,11 @@
 .epic-row.e2e-epic-row(
     ng-class="{'is-blocked':  vm.epic.get('is_blocked'), 'is-closed': vm.epic.get('is_closed'), 'unfold': vm.displayUserStories}"
-    ng-click="vm.requestUserStories(vm.epic)"
+    ng-click="vm.toggleUserStoryList()"
 )
     tg-svg.icon-drag(
         svg-icon="icon-drag"
     )
+
     .vote(
         ng-if="vm.column.votes"
         ng-class="{'is-voter': vm.epic.get('is_voter')}"
@@ -28,23 +29,26 @@
         )
 
     .project(ng-if="vm.column.project")
-    .sprint(
-        ng-if="vm.column.sprint"
-    )
-    .assigned.e2e-assigned-to
+
+    .sprint(ng-if="vm.column.sprint")
+
+    .assigned.e2e-assigned-tio(ng-if="vm.column.assigned")
         tg-assigned-to-component(
             assigned-to="vm.epic.get('assigned_to_extra_info')"
             project="vm.project"
-            on-remove-assigned="vm.onRemoveAssigned()"
-            on-assign-to="vm.onAssignTo(member)"
+            on-remove-assigned="vm.updateAssignedTo(null)"
+            on-assign-to="vm.updateAssignedTo(member)"
+            tg-isolate-click
         )
+
     .status(
-        ng-if="vm.column.status && !vm.permissions.canEdit"
+        ng-if="vm.column.status && !vm.canEditEpics()"
     )
         span {{vm.epic.getIn(['status_extra_info', 'name'])}}
     .status(
-        ng-if="vm.column.status && vm.permissions.canEdit"
+        ng-if="vm.column.status && vm.canEditEpics()"
         ng-mouseleave="vm.displayStatusList = false"
+        tg-isolate-click
     )
         button(
             ng-click="vm.displayStatusList = true"
@@ -59,20 +63,19 @@
         ul.epic-statuses(ng-if="vm.displayStatusList")
             li.e2e-edit-epic-status(
                 ng-repeat="status in vm.project.epic_statuses | orderBy:'order'"
-                ng-click="vm.updateEpicStatus(status.id)"
+                ng-click="vm.updateStatus(status.id)"
             ) {{status.name}}
+
     .progress(ng-if="vm.column.progress")
         .progress-bar
         .progress-status(
             ng-if="::vm.percentage"
             ng-style="{'width':vm.percentage}"
         )
-.epic-stories-wrapper(ng-if="vm.displayUserStories && vm.epicStories")
 
+.epic-stories-wrapper(ng-if="vm.displayUserStories && vm.epicStories")
     .epic-story(tg-repeat="story in vm.epicStories track by story.get('id')")
         tg-story-row.e2e-story(
-            epic="vm.epic"
             story="story"
-            project="vm.project"
             column="vm.column"
         )

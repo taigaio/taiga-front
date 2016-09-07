@@ -17,8 +17,6 @@
 # File: create-epic.directive.coffee
 ###
 
-module = angular.module('taigaEpics')
-
 CreateEpicDirective = () ->
     link = (scope, el, attrs, ctrl) ->
         form = el.find("form").checksley()
@@ -35,12 +33,9 @@ CreateEpicDirective = () ->
         controller: "CreateEpicCtrl",
         controllerAs: "vm",
         bindToController: {
-            project: '=',
             onCreateEpic: '&'
         },
         scope: {}
     }
 
-CreateEpicDirective.$inject = []
-
-module.directive("tgCreateEpic", CreateEpicDirective)
+angular.module('taigaEpics').directive("tgCreateEpic", CreateEpicDirective)

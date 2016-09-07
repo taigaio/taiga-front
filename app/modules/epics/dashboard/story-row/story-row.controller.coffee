@@ -29,13 +29,8 @@ class StoryRowController
         if @.story.get('is_closed') == true
             @.percentage = "100%"
         else
-            tasks = @.story.get('tasks').toJS()
             totalTasks = @.story.get('tasks').size
-            areTasksCompleted = _.map(tasks, 'is_closed')
-            totalTasksCompleted = _.pull(areTasksCompleted, false).length
+            totalTasksCompleted = @.story.get('tasks').filter((it) -> it.get("is_closed")).size
             @.percentage = "#{totalTasksCompleted * 100 / totalTasks}%"
-
-    onSelectAssignedTo: () ->
-        console.log 'ng-click="vm.onSelectAssignedTo()"'
 
 module.controller("StoryRowCtrl", StoryRowController)

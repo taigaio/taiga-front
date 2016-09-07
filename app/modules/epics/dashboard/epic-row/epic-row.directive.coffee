@@ -17,28 +17,16 @@
 # File: epics-table.directive.coffee
 ###
 
-module = angular.module('taigaEpics')
-
 EpicRowDirective = () ->
-
-    link = (scope, el, attrs, ctrl) ->
-        ctrl._calculateProgressBar()
-
     return {
-        link: link,
         templateUrl:"epics/dashboard/epic-row/epic-row.html",
         controller: "EpicRowCtrl",
         controllerAs: "vm",
         bindToController: true,
         scope: {
-            project: '=',
             epic: '=',
             column: '=',
-            permissions: '=',
-            onUpdateEpic: "&"
         }
     }
 
-EpicRowDirective.$inject = []
-
-module.directive("tgEpicRow", EpicRowDirective)
+angular.module('taigaEpics').directive("tgEpicRow", EpicRowDirective)

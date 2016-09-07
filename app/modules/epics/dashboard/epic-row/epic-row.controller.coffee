@@ -17,18 +17,22 @@
 # File: epics-table.controller.coffee
 ###
 
-module = angular.module("taigaEpics")
-
 class EpicRowController
     @.$inject = [
-        "tgResources",
-        "$tgConfirm"
+        "$tgConfirm",
+        "tgProjectService",
+        "tgEpicsService"
     ]
 
-    constructor: (@rs, @confirm) ->
+    constructor: (@confirm, @projectService, @epicsService) ->
         @.displayUserStories = false
         @.displayAssignedTo = false
+        @.displayStatusList = false
         @.loadingStatus = false
+
+        # NOTE: We use project as no inmutable object to make
+        #       the code compatible with the old code
+        @.project = @projectService.project.toJS()
 
     _calculateProgressBar: () ->
         if @.epic.getIn(['status_extra_info', 'is_closed']) == true
@@ -42,68 +46,32 @@ class EpicRowController
             else
                 @.percentage = "#{@.closed * 100 / @.total}%"
 
-    updateEpicStatus: (status) ->
-        @.loadingStatus = true
-        @.displayStatusList = false
-        patch = {
-            'status': status,
-            'version': @.epic.get('version')
-        }
+    canEditEpics: () ->
+        return @projectService.hasPermission("modify_epic")
 
-        onSuccess = =>
-            @.loadingStatus = false
-            @.onUpdateEpic()
-
-        onError = (data) =>
-            @confirm.notify('error')
-
-        return @rs.epics.patch(@.epic.get('id'), patch).then(onSuccess, onError)
-
-    requestUserStories: (epic) ->
+    toggleUserStoryList: () ->
         if !@.displayUserStories
-
-            onSuccess = (data) =>
-                @.epicStories = data
-                @.displayUserStories = true
-
-            onError = (data) =>
-                @confirm.notify('error')
-
-            return @rs.userstories.listInEpic(@.epic.get('id')).then(onSuccess, onError)
+            @epicsService.listRelatedUserStories(@.epic)
+                .then (userStories) =>
+                    @.epicStories = userStories
+                    @.displayUserStories = true
+                .catch =>
+                    @confirm.notify('error')
         else
             @.displayUserStories = false
 
-    onRemoveAssigned: () ->
-        id = @.epic.get('id')
-        version = @.epic.get('version')
-        patch = {
-            'assigned_to': null,
-            'version': version
-        }
+    updateStatus: (statusId) ->
+        @.displayStatusList = false
+        @.loadingStatus = true
+        return @epicsService.updateEpicStatus(@.epic, statusId)
+            .catch () =>
+                @confirm.notify('error')
+            .finally () =>
+                @.loadingStatus = false
 
-        onSuccess = =>
-            @.onUpdateEpic()
+    updateAssignedTo: (member) ->
+        return @epicsService.updateEpicAssignedTo(@.epic, member?.id)
+            .catch () =>
+                @confirm.notify('error')
 
-        onError = (data) =>
-            @confirm.notify('error')
-
-        return @rs.epics.patch(id, patch).then(onSuccess, onError)
-
-    onAssignTo: (member) ->
-        id = @.epic.get('id')
-        version = @.epic.get('version')
-        patch = {
-            'assigned_to': member.id,
-            'version': version
-        }
-
-        onSuccess = =>
-            @.onUpdateEpic()
-            @confirm.notify('success')
-
-        onError = (data) =>
-            @confirm.notify('error')
-
-        return @rs.epics.patch(id, patch).then(onSuccess, onError)
-
-module.controller("EpicRowCtrl", EpicRowController)
+angular.module("taigaEpics").controller("EpicRowCtrl", EpicRowController)

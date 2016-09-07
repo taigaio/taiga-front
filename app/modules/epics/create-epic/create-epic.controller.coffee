@@ -24,13 +24,19 @@ getRandomDefaultColor = taiga.getRandomDefaultColor
 
 class CreateEpicController
     @.$inject = [
-        "tgResources"
         "$tgConfirm"
-        "tgAttachmentsService"
-        "$q"
+        "tgProjectService",
+        "tgEpicsService"
     ]
 
-    constructor: (@rs, @confirm, @attachmentsService, @q) ->
+    constructor: (@confirm, @projectService, @epicsService) ->
+        # NOTE: To use Checksley setFormErrors() and validateForm()
+        #       are defined in the directive.
+
+        # NOTE: We use project as no inmutable object to make
+        #       the code compatible with the old code
+        @.project = @projectService.project.toJS()
+
         @.newEpic = {
             color: getRandomDefaultColor()
             project: @.project.id
@@ -39,25 +45,21 @@ class CreateEpicController
         }
         @.attachments = Immutable.List()
 
+        @.loading = false
+
     createEpic: () ->
         return if not @.validateForm()
 
         @.loading = true
 
-        promise =  @rs.epics.post(@.newEpic)
-        promise.then (response) =>
-            @._createAttachments(response.data)
-        promise.then (response) =>
-            @.onCreateEpic()
-        promise.then null, (response) =>
-            @.setFormErrors(response.data)
-
-            if response.data._error_message
-                confirm.notify("error", response.data._error_message)
-        promise.finally () =>
-            @.loading = false
-
-        return promise
+        @epicsService.createEpic(@.epic, @.attachments)
+            .then (response) => # On success
+                @.onCreateEpic()
+            .then null, (response) => # On error
+                @.setFormErrors(response.data)
+                if response.data._error_message
+                    @confirm.notify("error", response.data._error_message)
+                @.loading = false
 
     # Color selector
     selectColor: (color) ->
@@ -76,10 +78,5 @@ class CreateEpicController
     # Attachments
     addAttachment: (attachment) ->
         @.attachments.push(attachment)
-
-    _createAttachments: (epic) ->
-        promises = _.map @.attachments.toJS(), (attachment) =>
-            return @attachmentsService.upload(attachment.file, epic.id, epic.project, 'epic')
-        return @q.all(promises)
 
 angular.module("taigaEpics").controller("CreateEpicCtrl", CreateEpicController)

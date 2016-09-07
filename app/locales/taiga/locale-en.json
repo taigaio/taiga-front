@@ -405,6 +405,7 @@
     },
     "EPICS": {
         "TITLE": "EPICS",
+        "SECTION_NAME": "Epics",
         "EPIC": "EPIC",
         "DASHBOARD": {
             "ADD": "+ ADD EPIC",

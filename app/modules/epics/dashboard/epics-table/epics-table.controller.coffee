@@ -17,12 +17,16 @@
 # File: epics-table.controller.coffee
 ###
 
-module = angular.module("taigaEpics")
+taiga = @.taiga
+
 
 class EpicsTableController
-    @.$inject = []
+    @.$inject = [
+        "$tgConfirm",
+        "tgEpicsService"
+    ]
 
-    constructor: () ->
+    constructor: (@confirm, @epicsService) ->
         @.displayOptions = false
         @.displayVotes = true
         @.column = {
@@ -35,15 +39,14 @@ class EpicsTableController
             progress: true
         }
 
-        @.permissions = {
-            canEdit: _.includes(@.project.my_permissions, 'modify_epic')
-        }
+        taiga.defineImmutableProperty @, 'epics', () => return @epicsService.epics
 
     toggleEpicTableOptions: () ->
         @.displayOptions = !@.displayOptions
 
     reorderEpic: (epic, newIndex) ->
-        console.log epic, newIndex
+        @epicsService.reorderEpic(epic, newIndex)
+            .then null, () => # on error
+                @confirm.notify("error")
 
-
-module.controller("EpicsTableCtrl", EpicsTableController)
+angular.module("taigaEpics").controller("EpicsTableCtrl", EpicsTableController)

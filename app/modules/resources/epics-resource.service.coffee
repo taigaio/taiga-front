@@ -51,6 +51,13 @@ Resource = (urlsService, http) ->
 
         return http.post(url, params)
 
+    service.reorder = (id, data, setOrders) ->
+        url = urlsService.resolve("epics") + "/#{id}"
+
+        options = {"headers": {"set-orders": JSON.stringify(setOrders)}}
+
+        return http.patch(url, data, null, options)
+
     service.addRelatedUserstory = (epicId, userstoryId) ->
         url = urlsService.resolve("epic-related-userstories", epicId)
 

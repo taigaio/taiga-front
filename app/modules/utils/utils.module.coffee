@@ -14,21 +14,7 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: epics-table.directive.coffee
+# File: utils.module.coffee
 ###
 
-module = angular.module('taigaEpics')
-
-StoryRowDirective = () ->
-    return {
-        templateUrl:"epics/dashboard/story-row/story-row.html",
-        controller: "StoryRowCtrl",
-        controllerAs: "vm",
-        bindToController: true,
-        scope: {
-            story: '=',
-            column: '='
-        }
-    }
-
-module.directive("tgStoryRow", StoryRowDirective)
+module = angular.module("taigaUtils", [])

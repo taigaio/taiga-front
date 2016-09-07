@@ -1,5 +1,5 @@
 .story-row(
-    ng-class="{'is-blocked': vm.story.is_blocked, 'is-closed': vm.story.is_closed}"
+    ng-class="{'is-blocked': vm.story.get('is_blocked'), 'is-closed': vm.story.get('is_closed')}"
 )
     .vote(
         ng-if="vm.column.votes"
@@ -11,12 +11,12 @@
     .name(ng-if="vm.column.name")
         - var hash = "#";
         a(
-            tg-nav="project-userstories-detail:project=vm.project.slug,ref=vm.story.get('ref')"
+            tg-nav="project-userstories-detail:project=vm.story.getIn(['project_extra_info', 'slug']),ref=vm.story.get('ref')"
             ng-attr-title="{{::vm.story.get('subject')}}"
         ) #{hash}{{::vm.story.get('ref')}} {{::vm.story.get('subject')}}
         tg-belong-to-epics(
-            format="pill"
             ng-if="vm.story.get('epics')"
+            format="pill"
             epics="vm.story.get('epics')"
         )
     .project(

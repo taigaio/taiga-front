@@ -17,8 +17,10 @@
 # File: epics-sortable.directive.coffee
 ###
 
-EpicsSortableDirective = ($parse) ->
+EpicsSortableDirective = ($parse, projectService) ->
     link = (scope, el, attrs) ->
+        return if not projectService.hasPermission("modify_epic")
+
         callback = $parse(attrs.tgEpicsSortable)
 
         drake = dragula([el[0]], {
@@ -55,7 +57,8 @@ EpicsSortableDirective = ($parse) ->
     }
 
 EpicsSortableDirective.$inject = [
-    "$parse"
+    "$parse",
+    "tgProjectService"
 ]
 
 angular.module("taigaComponents").directive("tgEpicsSortable", EpicsSortableDirective)

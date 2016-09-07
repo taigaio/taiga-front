@@ -14,21 +14,14 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: epics-table.directive.coffee
+# File: isolate-click.directive.coffee
 ###
 
-module = angular.module('taigaEpics')
+IsolateClickDirective = () ->
+    link = (scope, el, attrs) ->
+        el.on 'click', (e) =>
+            e.stopPropagation()
 
-StoryRowDirective = () ->
-    return {
-        templateUrl:"epics/dashboard/story-row/story-row.html",
-        controller: "StoryRowCtrl",
-        controllerAs: "vm",
-        bindToController: true,
-        scope: {
-            story: '=',
-            column: '='
-        }
-    }
+    return {link: link}
 
-module.directive("tgStoryRow", StoryRowDirective)
+angular.module("taigaUtils").directive("tgIsolateClick", IsolateClickDirective)

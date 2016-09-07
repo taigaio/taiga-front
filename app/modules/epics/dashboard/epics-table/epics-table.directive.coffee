@@ -17,21 +17,13 @@
 # File: epics-table.directive.coffee
 ###
 
-module = angular.module('taigaEpics')
-
 EpicsTableDirective = () ->
     return {
         templateUrl:"epics/dashboard/epics-table/epics-table.html",
         controller: "EpicsTableCtrl",
         controllerAs: "vm",
-        bindToController: {
-            epics: "=",
-            project: "=",
-            onUpdateEpic: "&"
-        }
         scope: {}
     }
 
-EpicsTableDirective.$inject = []
 
-module.directive("tgEpicsTable", EpicsTableDirective)
+angular.module('taigaEpics').directive("tgEpicsTable", EpicsTableDirective)
