@@ -45,11 +45,13 @@ Resource = (urlsService, http) ->
         url = urlsService.resolve("epics") + "/#{id}"
 
         return http.patch(url, patch)
+            .then (result) -> Immutable.fromJS(result.data)
 
     service.post = (params) ->
         url = urlsService.resolve("epics")
 
         return http.post(url, params)
+            .then (result) -> Immutable.fromJS(result.data)
 
     service.reorder = (id, data, setOrders) ->
         url = urlsService.resolve("epics") + "/#{id}"
