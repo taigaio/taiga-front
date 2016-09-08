@@ -70,6 +70,13 @@ Resource = (urlsService, http) ->
 
         return http.post(url, params)
 
+    service.reorderRelatedUserstory = (epicId, userstoryId, data, setOrders) ->
+        url = urlsService.resolve("epic-related-userstories", epicId) + "/#{userstoryId}"
+
+        options = {"headers": {"set-orders": JSON.stringify(setOrders)}}
+
+        return http.patch(url, data, null, options)
+
     service.bulkCreateRelatedUserStories = (epicId, projectId, bulk_userstories) ->
         url = urlsService.resolve("epic-related-userstories-bulk-create", epicId)
 

@@ -10,14 +10,17 @@ section.related-userstories
           load-related-userstories="vm.loadRelatedUserstories()"
         )
 
-    .related-userstories-body
-        div(tg-repeat="us in vm.userstories track by us.get('id')")
-            tg-related-userstory-row.row(
-                ng-class="{closed: us.get('is_closed'), blocked: us.get('is_blocked')}"
-                userstory="us"
-                epic="vm.epic"
-                project="vm.project"
-                load-related-userstories="vm.loadRelatedUserstories()"
-            )
+    .related-userstories-body(
+        tg-related-userstories-sortable="vm.reorderRelatedUserstory(us, newIndex)"
+    )
+        tg-related-userstory-row.row(
+            tg-repeat="us in vm.userstories track by us.get('id')"
+            ng-class="{closed: us.get('is_closed'), blocked: us.get('is_blocked')}"
+            userstory="us"
+            epic="vm.epic"
+            project="vm.project"
+            load-related-userstories="vm.loadRelatedUserstories()"
+            tg-bind-scope
+        )
 
-        div(tg-related-userstories-create-form)
+    div(tg-related-userstories-create-form)

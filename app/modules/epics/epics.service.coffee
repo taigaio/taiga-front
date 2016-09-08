@@ -77,6 +77,28 @@ class EpicsService
             .then () =>
                 @.fetchEpics()
 
+    reorderRelatedUserstory: (epic, epicUserstories, userstory, newIndex) ->
+        withoutMoved = epicUserstories.filter (it) => it.get('id') != userstory.get('id')
+        beforeDestination = withoutMoved.slice(0, newIndex)
+
+        previous = beforeDestination.last()
+        newOrder = if !previous then 0 else previous.get('epic_order') + 1
+
+        previousWithTheSameOrder = beforeDestination.filter (it) =>
+            it.get('epic_order') == previous.get('epic_order')
+
+        setOrders = Immutable.OrderedMap previousWithTheSameOrder.map (it) =>
+            [it.get('id'), it.get('epic_order')]
+
+        data = {
+            order: newOrder
+        }
+        epicId = epic.get('id')
+        userstoryId = userstory.get('id')
+        return @resources.epics.reorderRelatedUserstory(epicId, userstoryId, data, setOrders)
+            .then () =>
+                return @.listRelatedUserStories(epic)
+
     updateEpicStatus: (epic, statusId) ->
         data = {
             status: statusId,
