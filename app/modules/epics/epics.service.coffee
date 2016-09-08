@@ -21,22 +21,22 @@ taiga = @.taiga
 
 class EpicsService
     @.$inject = [
-        "tgProjectService",
-        "tgAttachmentsService"
-        "tgResources",
-        "tgXhrErrorService",
-        "$q"
+        'tgProjectService',
+        'tgAttachmentsService'
+        'tgResources',
+        'tgXhrErrorService',
+        '$q'
     ]
 
     constructor: (@projectService, @attachmentsService, @resources, @xhrError, @q) ->
         @._epics = Immutable.List()
-        taiga.defineImmutableProperty @, "epics", () => return @._epics
+        taiga.defineImmutableProperty @, 'epics', () => return @._epics
 
     clear: () ->
         @._epics = Immutable.List()
 
     fetchEpics: () ->
-        return @resources.epics.list(@projectService.project.get("id"))
+        return @resources.epics.list(@projectService.project.get('id'))
             .then (epics) =>
                 @._epics = epics
             .catch (xhr) =>
@@ -46,54 +46,54 @@ class EpicsService
         return @resources.userstories.listInEpic(epic.get('id'))
 
     createEpic: (epicData, attachments) ->
-        @.epicData.project = @projectsService.project.id
+        epicData.project = @projectService.project.get('id')
 
-        return @resources.epics.post(@.epicData)
+        return @resources.epics.post(epicData)
             .then (epic) =>
                 promises = _.map attachments.toJS(), (attachment) =>
-                    @attachmentsService.upload(attachment.file, epic.get("id"), epic.get("project"), 'epic')
+                    @attachmentsService.upload(attachment.file, epic.get('id'), epic.get('project'), 'epic')
                 @q.all(promises).then () =>
                     @.fetchEpics()
 
     reorderEpic: (epic, newIndex) ->
-        withoutMoved = @.epics.filter (it) => it.get("id") != epic.get("id")
+        withoutMoved = @.epics.filter (it) => it.get('id') != epic.get('id')
         beforeDestination = withoutMoved.slice(0, newIndex)
 
         previous = beforeDestination.last()
-        newOrder = if !previous then 0 else epic.get("epics_order") + 1
+        newOrder = if !previous then 0 else epic.get('epics_order') + 1
 
         previousWithTheSameOrder = beforeDestination.filter (it) =>
-            it.get("epics_order") == previous.get("epics_order")
+            it.get('epics_order') == previous.get('epics_order')
         setOrders = Immutable.OrderedMap previousWithTheSameOrder.map (it) =>
-            [it.get('id'), it.get("epics_order")]
+            [it.get('id'), it.get('epics_order')]
 
         data = {
             order: newOrder,
-            version: epic.get("version")
+            version: epic.get('version')
         }
 
-        return @resources.epics.reorder(epic.get("id"), data, setOrders)
+        return @resources.epics.reorder(epic.get('id'), data, setOrders)
             .then () =>
                 @.fetchEpics()
 
     updateEpicStatus: (epic, statusId) ->
         data = {
             status: statusId,
-            version: epic.get("version")
+            version: epic.get('version')
         }
 
-        return @resources.epics.patch(epic.get("id"), data)
+        return @resources.epics.patch(epic.get('id'), data)
             .then () =>
                 @.fetchEpics()
 
     updateEpicAssignedTo: (epic, userId) ->
         data = {
             assigned_to: userId,
-            version: epic.get("version")
+            version: epic.get('version')
         }
 
-        return @resources.epics.patch(epic.get("id"), data)
+        return @resources.epics.patch(epic.get('id'), data)
             .then () =>
                 @.fetchEpics()
 
-angular.module("taigaEpics").service("tgEpicsService", EpicsService)
+angular.module('taigaEpics').service('tgEpicsService', EpicsService)

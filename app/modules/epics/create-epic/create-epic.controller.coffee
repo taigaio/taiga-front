@@ -52,14 +52,15 @@ class CreateEpicController
 
         @.loading = true
 
-        @epicsService.createEpic(@.epic, @.attachments)
+        @epicsService.createEpic(@.newEpic, @.attachments)
             .then (response) => # On success
                 @.onCreateEpic()
-            .then null, (response) => # On error
+                @.loading = false
+            .catch (response) => # On error
+                @.loading = false
                 @.setFormErrors(response.data)
                 if response.data._error_message
                     @confirm.notify("error", response.data._error_message)
-                @.loading = false
 
     # Color selector
     selectColor: (color) ->

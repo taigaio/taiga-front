@@ -54,13 +54,16 @@ class EpicsDashboardController
         return @projectService.hasPermission("add_epic")
 
     onCreateEpic: () ->
+        onCreateEpic =  () =>
+            @lightboxService.closeAll()
+            @confirm.notify("success")
+            return # To prevent error https://docs.angularjs.org/error/$parse/isecdom?p0=onCreateEpic()
+
         @lightboxFactory.create('tg-create-epic', {
             "class": "lightbox lightbox-create-epic open"
             "on-create-epic": "onCreateEpic()"
         }, {
-            "onCreateEpic": () =>
-                @lightboxService.closeAll()
-                @confirm.notify("success")
+            "onCreateEpic": onCreateEpic.bind(this)
         })
 
 angular.module("taigaEpics").controller("EpicsDashboardCtrl", EpicsDashboardController)
