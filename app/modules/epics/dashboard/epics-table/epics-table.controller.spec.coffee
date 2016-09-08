@@ -23,10 +23,23 @@ describe "EpicTable", ->
     controller = null
     mocks = {}
 
+    _mockTgConfirm = () ->
+        mocks.tgConfirm = {
+            notify: sinon.stub()
+        }
+        provide.value "$tgConfirm", mocks.tgConfirm
+
+    _mockTgEpicsService = () ->
+        mocks.tgEpicsService = {
+            createEpic: sinon.stub()
+        }
+        provide.value "tgEpicsService", mocks.tgEpicsService
+
     _mocks = () ->
         module ($provide) ->
             provide = $provide
-
+            _mockTgConfirm()
+            _mockTgEpicsService()
             return null
 
     beforeEach ->
@@ -38,36 +51,7 @@ describe "EpicTable", ->
             controller = $controller
 
     it "toggle table options", () ->
-        data = {
-            project: {
-                my_permissions: [
-                    'modify_epic'
-                ]
-            }
-        }
-        epicTableCtrl = controller "EpicsTableCtrl", null, data
+        epicTableCtrl = controller "EpicsTableCtrl"
         epicTableCtrl.displayOptions = true
         epicTableCtrl.toggleEpicTableOptions()
         expect(epicTableCtrl.displayOptions).to.be.false
-
-    it "can edit", () ->
-        data = {
-            project: {
-                my_permissions: [
-                    'modify_epic'
-                ]
-            }
-        }
-        epicTableCtrl = controller "EpicsTableCtrl", null, data
-        expect(epicTableCtrl.permissions.canEdit).to.be.true
-
-    it "can NOT edit", () ->
-        data = {
-            project: {
-                my_permissions: [
-                    'modify_us'
-                ]
-            }
-        }
-        epicTableCtrl = controller "EpicsTableCtrl", null, data
-        expect(epicTableCtrl.permissions.canEdit).to.be.false

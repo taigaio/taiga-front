@@ -36,6 +36,12 @@ class ProjectService
         taiga.defineImmutableProperty @, "sectionsBreadcrumb", () => return @._sectionsBreadcrumb
         taiga.defineImmutableProperty @, "activeMembers", () => return @._activeMembers
 
+    cleanProject: () ->
+        @._project = null
+        @._activeMembers = Immutable.List()
+        @._section = null
+        @._sectionsBreadcrumb = Immutable.List()
+
     setSection: (section) ->
         @._section = section
 
@@ -43,6 +49,10 @@ class ProjectService
             @._sectionsBreadcrumb = @._sectionsBreadcrumb.push(@._section)
         else
             @._sectionsBreadcrumb = Immutable.List()
+
+    setProject: (project) ->
+        @._project = project
+        @._activeMembers = @._project.get('members').filter (member) -> member.get('is_active')
 
     setProjectBySlug: (pslug) ->
         return new Promise (resolve, reject) =>
@@ -57,23 +67,15 @@ class ProjectService
 
             else resolve()
 
-    setProject: (project) ->
-        @._project = project
-        @._activeMembers = @._project.get('members').filter (member) -> member.get('is_active')
-
-    cleanProject: () ->
-        @._project = null
-        @._activeMembers = Immutable.List()
-        @._section = null
-        @._sectionsBreadcrumb = Immutable.List()
-
-    hasPermission: (permission) ->
-        return @._project.get('my_permissions').indexOf(permission) != -1
-
     fetchProject: () ->
         pslug = @.project.get('slug')
 
         return @projectsService.getProjectBySlug(pslug).then (project) => @.setProject(project)
 
+    hasPermission: (permission) ->
+        return @._project.get('my_permissions').indexOf(permission) != -1
+
+    isEpicsDashboardEnabled: ->
+        return @._project.get("is_epics_activated")
 
 angular.module("taigaCommon").service("tgProjectService", ProjectService)

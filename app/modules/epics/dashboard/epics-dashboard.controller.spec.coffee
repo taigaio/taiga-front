@@ -23,41 +23,38 @@ describe "EpicsDashboard", ->
     controller = null
     mocks = {}
 
-    _mockTgResources = () ->
-        mocks.tgResources = {
-            projects: {
-                getBySlug: sinon.stub()
-            }
-        }
-
-        provide.value "$tgResources", mocks.tgResources
-
-    _mockTgResourcesNew = () ->
-        mocks.tgResourcesNew = {
-            epics: {
-                list: sinon.stub()
-            }
-        }
-
-        provide.value "tgResources", mocks.tgResourcesNew
-
     _mockTgConfirm = () ->
         mocks.tgConfirm = {
             notify: sinon.stub()
         }
-
         provide.value "$tgConfirm", mocks.tgConfirm
 
+    _mockTgProjectService = () ->
+        mocks.tgProjectService = {
+            setProjectBySlug: sinon.stub()
+            hasPermission: sinon.stub()
+            isEpicsDashboardEnabled: sinon.stub()
+        }
+        provide.value "tgProjectService", mocks.tgProjectService
+
+    _mockTgEpicsService = () ->
+        mocks.tgEpicsService = {
+            clear: sinon.stub()
+            fetchEpics: sinon.stub()
+        }
+        provide.value "tgEpicsService", mocks.tgEpicsService
+
     _mockRouteParams = () ->
-        mocks.routeparams = {
+        mocks.routeParams = {
             pslug: sinon.stub()
         }
 
-        provide.value "$routeParams", mocks.routeparams
+        provide.value "$routeParams", mocks.routeParams
 
     _mockTgErrorHandlingService = () ->
         mocks.tgErrorHandlingService = {
             permissionDenied: sinon.stub()
+            notFound: sinon.stub()
         }
 
         provide.value "tgErrorHandlingService", mocks.tgErrorHandlingService
@@ -76,23 +73,16 @@ describe "EpicsDashboard", ->
 
         provide.value "lightboxService", mocks.lightboxService
 
-    _mockTgConfirm = () ->
-        mocks.tgConfirm = {
-            notify: sinon.stub()
-        }
-
-        provide.value "$tgConfirm", mocks.tgConfirm
-
     _mocks = () ->
         module ($provide) ->
             provide = $provide
-            _mockTgResources()
-            _mockTgResourcesNew()
+            _mockTgConfirm()
+            _mockTgProjectService()
+            _mockTgEpicsService()
             _mockRouteParams()
             _mockTgErrorHandlingService()
             _mockTgLightboxFactory()
             _mockLightboxService()
-            _mockTgConfirm()
 
             return null
 
@@ -104,39 +94,70 @@ describe "EpicsDashboard", ->
         inject ($controller) ->
             controller = $controller
 
-        EpicsDashboardCtrl = controller "EpicsDashboardCtrl"
+    it "load data because epics panel is enabled and user has permissions", (done) ->
+        ctrl = controller("EpicsDashboardCtrl")
 
-    it "load projects", (done) ->
-        EpicsDashboardCtrl = controller "EpicsDashboardCtrl"
-        params = mocks.routeparams.pslug
-        EpicsDashboardCtrl.loadEpics = sinon.stub()
-        project = {
-            is_epics_activated: false
-        }
-        promise = mocks.tgResources.projects.getBySlug.withArgs(params).promise().resolve(project)
-        EpicsDashboardCtrl.loadProject().then () ->
+        mocks.tgProjectService.setProjectBySlug
+            .promise()
+            .resolve("ok")
+        mocks.tgProjectService.hasPermission
+            .returns(true)
+        mocks.tgProjectService.isEpicsDashboardEnabled
+            .returns(true)
+
+        ctrl.loadInitialData().then () ->
+            expect(mocks.tgErrorHandlingService.permissionDenied).not.have.been.called
+            expect(mocks.tgErrorHandlingService.notFound).not.have.been.called
+            expect(mocks.tgEpicsService.fetchEpics).have.been.called
+            done()
+
+    it "not load data because epics panel is not enabled", (done) ->
+        ctrl = controller("EpicsDashboardCtrl")
+
+        mocks.tgProjectService.setProjectBySlug
+            .promise()
+            .resolve("ok")
+        mocks.tgProjectService.hasPermission
+            .returns(true)
+        mocks.tgProjectService.isEpicsDashboardEnabled
+            .returns(false)
+
+        ctrl.loadInitialData().then () ->
+            expect(mocks.tgErrorHandlingService.permissionDenied).not.have.been.called
+            expect(mocks.tgErrorHandlingService.notFound).have.been.called
+            expect(mocks.tgEpicsService.fetchEpics).not.have.been.called
+            done()
+
+    it "not load data because user has not permissions", (done) ->
+        ctrl = controller("EpicsDashboardCtrl")
+
+        mocks.tgProjectService.setProjectBySlug
+            .promise()
+            .resolve("ok")
+        mocks.tgProjectService.hasPermission
+            .returns(false)
+        mocks.tgProjectService.isEpicsDashboardEnabled
+            .returns(true)
+
+        ctrl.loadInitialData().then () ->
             expect(mocks.tgErrorHandlingService.permissionDenied).have.been.called
-            expect(EpicsDashboardCtrl.project).is.equal(project)
-            expect(EpicsDashboardCtrl.loadEpics).have.been.called
+            expect(mocks.tgErrorHandlingService.notFound).not.have.been.called
+            expect(mocks.tgEpicsService.fetchEpics).not.have.been.called
             done()
 
-    it "load epics", (done) ->
-        EpicsDashboardCtrl = controller "EpicsDashboardCtrl"
-        EpicsDashboardCtrl.project = {
-            id: 1
-        }
-        epics = {
-            id: 1
-        }
-        promise = mocks.tgResourcesNew.epics.list.withArgs(EpicsDashboardCtrl.project.id).promise().resolve(epics)
-        EpicsDashboardCtrl.loadEpics().then () ->
-            expect(EpicsDashboardCtrl.epics).is.equal(epics)
-            done()
+    it "not load data because epics panel is not enabled and user has not permissions", (done) ->
+        ctrl = controller("EpicsDashboardCtrl")
 
-    it "on create epic", () ->
-        EpicsDashboardCtrl = controller "EpicsDashboardCtrl"
-        EpicsDashboardCtrl.loadEpics = sinon.stub()
-        EpicsDashboardCtrl._onCreateEpic()
-        expect(mocks.lightboxService.closeAll).have.been.called
-        expect(mocks.tgConfirm.notify).have.been.calledWith("success")
-        expect(EpicsDashboardCtrl.loadEpics).have.been.called
+        mocks.tgProjectService.setProjectBySlug
+            .promise()
+            .resolve("ok")
+        mocks.tgProjectService.hasPermission
+            .returns(false)
+        mocks.tgProjectService.isEpicsDashboardEnabled
+            .returns(false)
+
+        ctrl.loadInitialData().then () ->
+            expect(mocks.tgErrorHandlingService.permissionDenied).not.have.been.called
+            expect(mocks.tgErrorHandlingService.notFound).have.been.called
+            expect(mocks.tgEpicsService.fetchEpics).not.have.been.called
+            done()

@@ -32,11 +32,17 @@ describe "RelatedUserStories", ->
 
         provide.value "tgResources", mocks.tgResources
 
+    _mockTgEpicsService = () ->
+        mocks.tgEpicsService = {
+        }
+
+        provide.value "tgEpicsService", mocks.tgEpicsService
+
     _mocks = () ->
         module ($provide) ->
             provide = $provide
             _mockTgResources()
-
+            _mockTgEpicsService()
             return null
 
     beforeEach ->
@@ -47,20 +53,19 @@ describe "RelatedUserStories", ->
         inject ($controller) ->
             controller = $controller
 
-        RelatedUserStoriesCtrl = controller "RelatedUserStoriesCtrl"
-
     it "load related userstories", (done) ->
+        ctrl = controller "RelatedUserStoriesCtrl"
         userstories = Immutable.fromJS([
             {
                 id: 1
             }
         ])
 
-        RelatedUserStoriesCtrl.epic = Immutable.fromJS({
+        ctrl.epic = Immutable.fromJS({
             id: 66
         })
 
         promise = mocks.tgResources.userstories.listInEpic.withArgs(66).promise().resolve(userstories)
-        RelatedUserStoriesCtrl.loadRelatedUserstories().then () ->
-            expect(RelatedUserStoriesCtrl.userstories).is.equal(userstories)
+        ctrl.loadRelatedUserstories().then () ->
+            expect(ctrl.userstories).is.equal(userstories)
             done()

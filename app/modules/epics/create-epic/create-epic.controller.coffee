@@ -39,7 +39,6 @@ class CreateEpicController
 
         @.newEpic = {
             color: getRandomDefaultColor()
-            project: @.project.id
             status: @.project.default_epic_status
             tags: []
         }

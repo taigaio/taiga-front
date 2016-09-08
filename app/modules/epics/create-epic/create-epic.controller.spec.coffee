@@ -23,42 +23,32 @@ describe "EpicRow", ->
     controller = null
     mocks = {}
 
-    _mockTgResources = () ->
-        mocks.tgResources = {
-            epics: {
-                post: sinon.stub()
-            }
-        }
-
-        provide.value "tgResources", mocks.tgResources
-
     _mockTgConfirm = () ->
         mocks.tgConfirm = {
             notify: sinon.stub()
         }
         provide.value "$tgConfirm", mocks.tgConfirm
 
-    _mockTgAttachmentsService = () ->
-        mocks.tgAttachmentsService = {
-            upload: sinon.stub()
+    _mockTgProjectService = () ->
+        mocks.tgProjectService = {
+            project: {
+                toJS: sinon.stub()
+            }
         }
-        provide.value "tgAttachmentsService", mocks.tgAttachmentsService
+        provide.value "tgProjectService", mocks.tgProjectService
 
-    _mockQ = () ->
-        mocks.q = {
-            all: sinon.spy()
+    _mockTgEpicsService = () ->
+        mocks.tgEpicsService = {
+            createEpic: sinon.stub()
         }
-
-        provide.value "$q", mocks.q
-
+        provide.value "tgEpicsService", mocks.tgEpicsService
 
     _mocks = () ->
         module ($provide) ->
             provide = $provide
-            _mockTgResources()
             _mockTgConfirm()
-            _mockTgAttachmentsService()
-            _mockQ()
+            _mockTgProjectService()
+            _mockTgEpicsService()
             return null
 
     beforeEach ->
@@ -70,8 +60,11 @@ describe "EpicRow", ->
             controller = $controller
 
     it "create Epic with invalid form", () ->
+        mocks.tgProjectService.project.toJS.withArgs().returns(
+            {id: 1, default_epic_status: 1}
+        )
+
         data = {
-            project: {id: 1, default_epic_status: 1}
             validateForm: sinon.stub()
             setFormErrors: sinon.stub()
             onCreateEpic: sinon.stub()
@@ -84,11 +77,14 @@ describe "EpicRow", ->
         createEpicCtrl.createEpic()
 
         expect(data.validateForm).have.been.called
-        expect(mocks.tgResources.epics.post).not.have.been.called
+        expect(mocks.tgEpicsService.createEpic).not.have.been.called
 
     it "create Epic successfully", (done) ->
+        mocks.tgProjectService.project.toJS.withArgs().returns(
+            {id: 1, default_epic_status: 1}
+        )
+
         data = {
-            project: {id: 1, default_epic_status: 1}
             validateForm: sinon.stub()
             setFormErrors: sinon.stub()
             onCreateEpic: sinon.stub()
@@ -97,12 +93,16 @@ describe "EpicRow", ->
         createEpicCtrl.attachments = Immutable.List([{file: "file1"}, {file: "file2"}])
 
         data.validateForm.withArgs().returns(true)
-        mocks.tgResources.epics.post.withArgs(createEpicCtrl.newEpic).promise().resolve(
-            {data: {id: 1, project: 1}}
-        )
+        mocks.tgEpicsService.createEpic
+            .withArgs(
+                createEpicCtrl.newEpic,
+                createEpicCtrl.attachments)
+            .promise()
+            .resolve(
+                {data: {id: 1, project: 1}}
+            )
 
         createEpicCtrl.createEpic().then () ->
             expect(data.validateForm).have.been.called
-            expect(mocks.tgAttachmentsService.upload).have.been.calledTwice
             expect(createEpicCtrl.onCreateEpic).have.been.called
             done()

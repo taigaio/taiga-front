@@ -39,16 +39,16 @@ class EpicsDashboardController
         taiga.defineImmutableProperty @, 'project', () => return @projectService.project
         taiga.defineImmutableProperty @, 'epics', () => return @epicsService.epics
 
-        @._loadInitialData()
-
-    _loadInitialData: () ->
+    loadInitialData: () ->
         @epicsService.clear()
-        @projectService.setProjectBySlug(@params.pslug)
+        return @projectService.setProjectBySlug(@params.pslug)
             .then () =>
-                if not @.project.get("is_epics_activated") or not @projectService.hasPermission("view_epics")
-                    @errorHandlingService.permissionDenied()
+                if not @projectService.isEpicsDashboardEnabled()
+                    return @errorHandlingService.notFound()
+                if not @projectService.hasPermission("view_epics")
+                    return @errorHandlingService.permissionDenied()
 
-                @epicsService.fetchEpics()
+                return @epicsService.fetchEpics()
 
     canCreateEpics: () ->
         return @projectService.hasPermission("add_epic")

@@ -23,31 +23,34 @@ describe "EpicRow", ->
     controller = null
     mocks = {}
 
-    _mockTgResources = () ->
-        mocks.tgResources = {
-            epics: {
-                patch: sinon.stub()
-            },
-            userstories: {
-                listInEpic: sinon.stub()
-            }
-        }
-
-        provide.value "tgResources", mocks.tgResources
-
     _mockTgConfirm = () ->
         mocks.tgConfirm = {
             notify: sinon.stub()
         }
-
         provide.value "$tgConfirm", mocks.tgConfirm
+
+    _mockTgProjectService = () ->
+        mocks.tgProjectService = {
+            project: {
+                toJS: sinon.stub()
+            }
+        }
+        provide.value "tgProjectService", mocks.tgProjectService
+
+    _mockTgEpicsService = () ->
+        mocks.tgEpicsService = {
+            listRelatedUserStories: sinon.stub()
+            updateEpicStatus: sinon.stub()
+            updateEpicAssignedTo: sinon.stub()
+        }
+        provide.value "tgEpicsService", mocks.tgEpicsService
 
     _mocks = () ->
         module ($provide) ->
             provide = $provide
-            _mockTgResources()
             _mockTgConfirm()
-
+            _mockTgProjectService()
+            _mockTgEpicsService()
             return null
 
     beforeEach ->
@@ -58,183 +61,139 @@ describe "EpicRow", ->
         inject ($controller) ->
             controller = $controller
 
-        EpicRowCtrl = controller "EpicRowCtrl"
-        EpicRowCtrl.displayUserStories = false
-        EpicRowCtrl.displayAssignedTo = false
-        EpicRowCtrl.loadingStatus = false
-
     it "calculate progress bar in open US", () ->
-
-        EpicRowCtrl = controller "EpicRowCtrl"
-
-        EpicRowCtrl.epic = Immutable.fromJS({
-            status_extra_info: {
-                is_closed: false
-            }
-            user_stories_counts: {
-                opened: 10,
-                closed: 10
-            }
-        })
-
-        EpicRowCtrl._calculateProgressBar()
-        expect(EpicRowCtrl.opened).to.be.equal(10)
-        expect(EpicRowCtrl.closed).to.be.equal(10)
-        expect(EpicRowCtrl.total).to.be.equal(20)
-        expect(EpicRowCtrl.percentage).to.be.equal("50%")
-
-    it "calculate progress bar in zero US", () ->
-        EpicRowCtrl = controller "EpicRowCtrl"
-        EpicRowCtrl.epic = Immutable.fromJS({
-            status_extra_info: {
-                is_closed: false
-            }
-            user_stories_counts: {
-                opened: 0,
-                closed: 0
-            }
-        })
-        EpicRowCtrl._calculateProgressBar()
-        expect(EpicRowCtrl.opened).to.be.equal(0)
-        expect(EpicRowCtrl.closed).to.be.equal(0)
-        expect(EpicRowCtrl.total).to.be.equal(0)
-        expect(EpicRowCtrl.percentage).to.be.equal("0%")
-
-    it "calculate progress bar in zero US", () ->
-        EpicRowCtrl = controller "EpicRowCtrl"
-        EpicRowCtrl.epic = Immutable.fromJS({
-            status_extra_info: {
-                is_closed: true
-            }
-        })
-        EpicRowCtrl._calculateProgressBar()
-        expect(EpicRowCtrl.percentage).to.be.equal("100%")
-
-    it "Update Epic Status Success", (done) ->
-        EpicRowCtrl = controller "EpicRowCtrl"
-
-        EpicRowCtrl.epic = Immutable.fromJS({
-            id: 1,
-            version: 1
-        })
-
-        EpicRowCtrl.patch = {
-            'status': 'new',
-            'version': EpicRowCtrl.epic.get('version')
+        ctrl = controller "EpicRowCtrl", null, {
+            epic: Immutable.fromJS({
+                status_extra_info: {
+                    is_closed: false
+                }
+                user_stories_counts: {
+                    opened: 10,
+                    closed: 10
+                }
+            })
         }
 
-        EpicRowCtrl.loadingStatus = true
-        EpicRowCtrl.onUpdateEpic = sinon.stub()
+        ctrl._calculateProgressBar()
+        expect(ctrl.percentage).to.be.equal("50%")
 
-        promise = mocks.tgResources.epics.patch.withArgs(EpicRowCtrl.epic.get('id'), EpicRowCtrl.patch).promise().resolve()
+    it "calculate progress bar in zero US", () ->
+        ctrl = controller "EpicRowCtrl", null, {
+            epic: Immutable.fromJS({
+                status_extra_info: {
+                    is_closed: false
+                }
+                user_stories_counts: {
+                    opened: 0,
+                    closed: 0
+                }
+            })
+        }
+        expect(ctrl.percentage).to.be.equal("0%")
 
-        status = "new"
-        EpicRowCtrl.updateEpicStatus(status).then () ->
-            expect(EpicRowCtrl.loadingStatus).to.be.false
-            expect(EpicRowCtrl.displayStatusList).to.be.false
-            expect(EpicRowCtrl.onUpdateEpic).to.be.called
+    it "calculate progress bar in zero US", () ->
+        ctrl = controller "EpicRowCtrl", null, {
+            epic: Immutable.fromJS({
+                status_extra_info: {
+                    is_closed: true
+                }
+            })
+        }
+        expect(ctrl.percentage).to.be.equal("100%")
+
+    it "Update Epic Status Success", (done) ->
+        ctrl = controller "EpicRowCtrl", null, {
+            epic: Immutable.fromJS({
+                id: 1
+                version: 1
+            })
+        }
+
+        statusId = 1
+
+        promise = mocks.tgEpicsService.updateEpicStatus
+            .withArgs(ctrl.epic, statusId)
+            .promise()
+            .resolve()
+
+        ctrl.loadingStatus = true
+        ctrl.displayStatusList = true
+
+        ctrl.updateStatus(statusId).then () ->
+            expect(ctrl.loadingStatus).to.be.false
+            expect(ctrl.displayStatusList).to.be.false
             done()
 
     it "Update Epic Status Error", (done) ->
-        EpicRowCtrl = controller "EpicRowCtrl"
-
-        EpicRowCtrl.epic = Immutable.fromJS({
-            id: 1,
-            version: 1
-        })
-
-        EpicRowCtrl.patch = {
-            'status': 'new',
-            'version': EpicRowCtrl.epic.get('version')
+        ctrl = controller "EpicRowCtrl", null, {
+            epic: Immutable.fromJS({
+                id: 1
+                version: 1
+            })
         }
 
-        EpicRowCtrl.loadingStatus = true
-        EpicRowCtrl.onUpdateEpic = sinon.stub()
+        statusId = 1
 
-        promise = mocks.tgResources.epics.patch.withArgs(EpicRowCtrl.epic.get('id'), EpicRowCtrl.patch).promise().reject(new Error('error'))
+        promise = mocks.tgEpicsService.updateEpicStatus
+            .withArgs(ctrl.epic, statusId)
+            .promise()
+            .reject(new Error('error'))
 
-        status = "new"
-        EpicRowCtrl.updateEpicStatus(status).then () ->
+        ctrl.updateStatus(statusId).then () ->
+            expect(ctrl.loadingStatus).to.be.false
+            expect(ctrl.displayStatusList).to.be.false
             expect(mocks.tgConfirm.notify).have.been.calledWith('error')
             done()
 
     it "display User Stories", (done) ->
-        EpicRowCtrl = controller "EpicRowCtrl"
+        ctrl = controller "EpicRowCtrl", null, {
+            epic: Immutable.fromJS({
+                id: 1
+            })
+        }
 
-        EpicRowCtrl.displayUserStories = false
-        EpicRowCtrl.epic = Immutable.fromJS({
-            id: 1
-        })
-        data = true
+        ctrl.displayUserStories = false
 
-        promise = mocks.tgResources.userstories.listInEpic.withArgs(EpicRowCtrl.epic.get('id')).promise().resolve(data)
+        data = Immutable.List()
 
-        EpicRowCtrl.requestUserStories(EpicRowCtrl.epic).then () ->
-            expect(EpicRowCtrl.displayUserStories).to.be.true
-            expect(EpicRowCtrl.epicStories).is.equal(data)
+        promise = mocks.tgEpicsService.listRelatedUserStories
+            .withArgs(ctrl.epic)
+            .promise()
+            .resolve(data)
+
+        ctrl.toggleUserStoryList().then () ->
+            expect(ctrl.displayUserStories).to.be.true
+            expect(ctrl.epicStories).is.equal(data)
             done()
 
     it "display User Stories error", (done) ->
-        EpicRowCtrl = controller "EpicRowCtrl"
-        EpicRowCtrl.displayUserStories = false
+        ctrl = controller "EpicRowCtrl", null, {
+            epic: Immutable.fromJS({
+                id: 1
+            })
+        }
 
-        EpicRowCtrl.epic = Immutable.fromJS({
-            id: 1
-        })
+        ctrl.displayUserStories = false
 
-        promise = mocks.tgResources.userstories.listInEpic.withArgs(EpicRowCtrl.epic.get('id')).promise().reject(new Error('error'))
+        promise = mocks.tgEpicsService.listRelatedUserStories
+            .withArgs(ctrl.epic)
+            .promise()
+            .reject(new Error('error'))
 
-        EpicRowCtrl.requestUserStories(EpicRowCtrl.epic).then () ->
+        ctrl.toggleUserStoryList().then () ->
+            expect(ctrl.displayUserStories).to.be.false
             expect(mocks.tgConfirm.notify).have.been.calledWith('error')
             done()
 
-    it "DO NOT display User Stories", () ->
-        EpicRowCtrl = controller "EpicRowCtrl"
-        EpicRowCtrl.displayUserStories = true
-
-        EpicRowCtrl.epic = Immutable.fromJS({
-            id: 1
-        })
-        EpicRowCtrl.requestUserStories(EpicRowCtrl.epic)
-        expect(EpicRowCtrl.displayUserStories).to.be.false
-
-    it "On remove assigned", () ->
-        EpicRowCtrl = controller "EpicRowCtrl"
-        EpicRowCtrl.epic = Immutable.fromJS({
-            id: 1,
-            version: 1
-        })
-        EpicRowCtrl.patch = {
-            'assigned_to': null,
-            'version': EpicRowCtrl.epic.get('version')
-        }
-        EpicRowCtrl.onUpdateEpic = sinon.stub()
-
-        promise = mocks.tgResources.epics.patch.withArgs(EpicRowCtrl.epic.get('id'), EpicRowCtrl.patch).promise().resolve()
-
-        EpicRowCtrl.onRemoveAssigned().then () ->
-            expect(EpicRowCtrl.onUpdateEpic).to.have.been.called
-
-    it "On assign to", (done) ->
-        EpicRowCtrl = controller "EpicRowCtrl"
-        EpicRowCtrl.epic = Immutable.fromJS({
-            id: 1,
-            version: 1
-        })
-        id = EpicRowCtrl.epic.get('id')
-        version = EpicRowCtrl.epic.get('version')
-        member = {
-            id: 1
-        }
-        EpicRowCtrl.patch = {
-            assigned_to: member.id
-            version: EpicRowCtrl.epic.get('version')
+    it "display User Stories error", ->
+        ctrl = controller "EpicRowCtrl", null, {
+            epic: Immutable.fromJS({
+                id: 1
+            })
         }
 
-        EpicRowCtrl.onUpdateEpic = sinon.stub()
+        ctrl.displayUserStories = true
 
-        promise = mocks.tgResources.epics.patch.withArgs(id, EpicRowCtrl.patch).promise().resolve(member)
-        EpicRowCtrl.onAssignTo(member).then () ->
-            expect(EpicRowCtrl.onUpdateEpic).to.have.been.called
-            expect(mocks.tgConfirm.notify).have.been.calledWith('success')
-            done()
+        ctrl.toggleUserStoryList()
+
+        expect(ctrl.displayUserStories).to.be.false
