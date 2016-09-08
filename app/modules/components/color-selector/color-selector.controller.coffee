@@ -24,13 +24,12 @@ getDefaulColorList = taiga.getDefaulColorList
 class ColorSelectorController
     constructor: () ->
         @.colorList = getDefaulColorList()
-
-        if @.initColor
-            @.color = @.initColor
-
         @.displayColorList = false
 
-     resetColor: () ->
+    setColor: (color) ->
+        @.color = @.initColor
+
+    resetColor: () ->
         if @.isRequired and not @.color
             @.color = @.initColor
 

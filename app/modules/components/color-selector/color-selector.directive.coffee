@@ -17,6 +17,8 @@
 # File: color-selector.directive.coffee
 ###
 
+bindOnce = @.taiga.bindOnce
+
 ColorSelectorDirective = ($timeout) ->
     link = (scope, el, attrs, ctrl) ->
         # Animation
@@ -41,6 +43,9 @@ ColorSelectorDirective = ($timeout) ->
         el.find('.color-selector-dropdown')
             .mouseenter(cancel)
             .mouseleave(close)
+
+        bindOnce scope, 'vm.initColor', (color) ->
+            ctrl.setColor(color)
 
     return {
         link: link,
