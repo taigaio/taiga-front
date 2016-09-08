@@ -34,6 +34,8 @@ class EpicRowController
         #       the code compatible with the old code
         @.project = @projectService.project.toJS()
 
+        @._calculateProgressBar()
+
     _calculateProgressBar: () ->
         if @.epic.getIn(['status_extra_info', 'is_closed']) == true
             @.percentage = "100%"
