@@ -58,14 +58,15 @@ class EpicsService
     reorderEpic: (epic, newIndex) ->
         withoutMoved = @.epics.filter (it) => it.get('id') != epic.get('id')
         beforeDestination = withoutMoved.slice(0, newIndex)
-
         previous = beforeDestination.last()
-        newOrder = if !previous then 0 else epic.get('epics_order') + 1
+
+        newOrder = if !previous then 0 else previous.get('epics_order') + 1
 
         previousWithTheSameOrder = beforeDestination.filter (it) =>
             it.get('epics_order') == previous.get('epics_order')
-        setOrders = Immutable.OrderedMap previousWithTheSameOrder.map (it) =>
+        setOrders = _.fromPairs previousWithTheSameOrder.map((it) =>
             [it.get('id'), it.get('epics_order')]
+        ).toJS()
 
         data = {
             order: newOrder,
