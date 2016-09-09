@@ -34,6 +34,10 @@ describe "EpicsDashboard", ->
             setProjectBySlug: sinon.stub()
             hasPermission: sinon.stub()
             isEpicsDashboardEnabled: sinon.stub()
+            project: Immutable.Map({
+                "name": "testing name"
+                "description": "testing description"
+            })
         }
         provide.value "tgProjectService", mocks.tgProjectService
 
@@ -73,6 +77,20 @@ describe "EpicsDashboard", ->
 
         provide.value "lightboxService", mocks.lightboxService
 
+    _mockTgAppMetaService = () ->
+        mocks.tgAppMetaService = {
+            setAll: sinon.stub()
+        }
+
+        provide.value "tgAppMetaService", mocks.tgAppMetaService
+
+    _mockTranslate = () ->
+        mocks.translate = {
+            instant: sinon.stub()
+        }
+
+        provide.value "$translate", mocks.translate
+
     _mocks = () ->
         module ($provide) ->
             provide = $provide
@@ -83,6 +101,8 @@ describe "EpicsDashboard", ->
             _mockTgErrorHandlingService()
             _mockTgLightboxFactory()
             _mockLightboxService()
+            _mockTgAppMetaService()
+            _mockTranslate()
 
             return null
 
@@ -93,6 +113,19 @@ describe "EpicsDashboard", ->
 
         inject ($controller) ->
             controller = $controller
+
+    it "metada is set", (done) ->
+        mocks.translate.instant.withArgs("EPICS.PAGE_TITLE", {
+            projectName: "testing name"
+        }).returns("TITLE")
+        mocks.translate.instant.withArgs("EPICS.PAGE_DESCRIPTION", {
+            projectName: "testing name"
+            projectDescription: "testing description"
+        }).returns("DESCRIPTION")
+
+        ctrl = controller("EpicsDashboardCtrl")
+        expect(mocks.tgAppMetaService.setAll).have.been.calledWith("TITLE", "DESCRIPTION")
+        done()
 
     it "load data because epics panel is enabled and user has permissions", (done) ->
         ctrl = controller("EpicsDashboardCtrl")

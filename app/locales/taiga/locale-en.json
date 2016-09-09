@@ -407,6 +407,8 @@
         "TITLE": "EPICS",
         "SECTION_NAME": "Epics",
         "EPIC": "EPIC",
+        "PAGE_TITLE": "Epics - {{projectName}}",
+        "PAGE_DESCRIPTION": "The epics list of the project {{projectName}}: {{projectDescription}}",
         "DASHBOARD": {
             "ADD": "+ ADD EPIC",
             "UNASSIGNED": "Unassigned"
