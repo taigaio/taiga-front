@@ -31,6 +31,8 @@ joinStr = @.taiga.joinStr
 groupBy = @.taiga.groupBy
 bindOnce = @.taiga.bindOnce
 debounce = @.taiga.debounce
+getDefaulColorList = @.taiga.getDefaulColorList
+
 
 module = angular.module("taigaAdmin")
 
@@ -179,7 +181,9 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame, $tra
             }
 
         initializeTextTranslations = ->
-            $scope.addNewElementText = $translate.instant("ADMIN.PROJECT_VALUES_#{objName.toUpperCase()}.ACTION_ADD")
+            $scope.addNewElementText = $translate.instant(
+                "ADMIN.PROJECT_VALUES_#{objName.toUpperCase()}.ACTION_ADD"
+            )
 
         initializeNewValue()
         initializeTextTranslations()
@@ -320,7 +324,8 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame, $tra
 
     return {link:link}
 
-module.directive("tgProjectValues", ["$log", "$tgRepo", "$tgConfirm", "$tgLocation", "animationFrame", "$translate", "$rootScope", ProjectValuesDirective])
+module.directive("tgProjectValues", ["$log", "$tgRepo", "$tgConfirm", "$tgLocation", "animationFrame",
+                                     "$translate", "$rootScope", ProjectValuesDirective])
 
 
 #############################################################################
@@ -331,6 +336,8 @@ ColorSelectionDirective = () ->
     ## Color selection Link
 
     link = ($scope, $el, $attrs, $model) ->
+        $scope.colorList = getDefaulColorList()
+
         $scope.allowEmpty = false
         if $attrs.tgAllowEmpty
             $scope.allowEmpty = true
@@ -369,6 +376,7 @@ ColorSelectionDirective = () ->
             $el.find(".select-color").hide()
 
         $el.on "keyup", "input", (event) ->
+            event.stopPropagation()
             if event.keyCode == 13
                 $scope.$apply ->
                     $model.$modelValue.color = $scope.color
