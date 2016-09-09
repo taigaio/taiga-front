@@ -31,6 +31,9 @@ class StoryRowController
         else
             totalTasks = @.story.get('tasks').size
             totalTasksCompleted = @.story.get('tasks').filter((it) -> it.get("is_closed")).size
-            @.percentage = "#{totalTasksCompleted * 100 / totalTasks}%"
+            if totalTasks == 0
+                @.percentage = "0%"
+            else
+                @.percentage = "#{totalTasksCompleted * 100 / totalTasks}%"
 
 module.controller("StoryRowCtrl", StoryRowController)

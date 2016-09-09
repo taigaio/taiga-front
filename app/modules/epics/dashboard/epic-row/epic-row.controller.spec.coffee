@@ -74,7 +74,6 @@ describe "EpicRow", ->
             })
         }
 
-        ctrl._calculateProgressBar()
         expect(ctrl.percentage).to.be.equal("50%")
 
     it "calculate progress bar in zero US", () ->

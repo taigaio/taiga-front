@@ -18,7 +18,6 @@
 ###
 
 describe "EpicsDashboard", ->
-    EpicsDashboardCtrl =  null
     provide = null
     controller = null
     mocks = {}
