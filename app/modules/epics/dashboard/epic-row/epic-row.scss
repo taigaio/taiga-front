@@ -84,6 +84,10 @@
     }
     .vote {
         color: $gray;
+        &.is-voter {
+            color: $primary-light;
+            fill: $primary-light;
+        }
     }
     .assigned {
         img {
