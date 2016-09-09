@@ -23,17 +23,9 @@ describe "RelatedUserStories", ->
     controller = null
     mocks = {}
 
-    _mockTgResources = () ->
-        mocks.tgResources = {
-            userstories: {
-                listInEpic: sinon.stub()
-            }
-        }
-
-        provide.value "tgResources", mocks.tgResources
-
     _mockTgEpicsService = () ->
         mocks.tgEpicsService = {
+            listRelatedUserStories: sinon.stub()
             reorderRelatedUserstory: sinon.stub()
         }
 
@@ -42,7 +34,6 @@ describe "RelatedUserStories", ->
     _mocks = () ->
         module ($provide) ->
             provide = $provide
-            _mockTgResources()
             _mockTgEpicsService()
             return null
 
@@ -66,7 +57,11 @@ describe "RelatedUserStories", ->
             id: 66
         })
 
-        promise = mocks.tgResources.userstories.listInEpic.withArgs(66).promise().resolve(userstories)
+        promise = mocks.tgEpicsService.listRelatedUserStories
+            .withArgs(ctrl.epic)
+            .promise()
+            .resolve(userstories)
+
         ctrl.loadRelatedUserstories().then () ->
             expect(ctrl.userstories).is.equal(userstories)
             done()
@@ -94,7 +89,6 @@ describe "RelatedUserStories", ->
         ctrl.epic = Immutable.fromJS({
             id: 66
         })
-
 
         promise = mocks.tgEpicsService.reorderRelatedUserstory
             .withArgs(ctrl.epic, ctrl.userstories, userstories.get(1), 0)
