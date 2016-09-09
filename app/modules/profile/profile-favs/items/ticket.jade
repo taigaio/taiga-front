@@ -25,6 +25,10 @@
             span.ticket-project
                 | {{:: vm.item.get('project_name') }}
             span.ticket-type(
+                ng-if="::vm.item.get('type') === 'epic'"
+                translate="COMMON.EPIC"
+            )
+            span.ticket-type(
                 ng-if="::vm.item.get('type') === 'userstory'"
                 translate="COMMON.USER_STORY"
             )
@@ -44,6 +48,12 @@
             )
         h2
             span.ticket-id(tg-bo-ref="vm.item.get('ref')")
+            a.ticket-title(
+                href="#"
+                ng-if="::vm.item.get('type') === 'epic'"
+                tg-nav="project-epics-detail:project=vm.item.get('project_slug'),ref=vm.item.get('ref')"
+                title="#{{ ::vm.item.get('ref') }} {{ ::vm.item.get('subject') }}"
+            ) {{ ::vm.item.get('subject') }}
             a.ticket-title(
                 href="#"
                 ng-if="::vm.item.get('type') === 'userstory'"

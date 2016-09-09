@@ -28,6 +28,7 @@ class FavsBaseController
     _init: ->
         @.enableFilterByAll = true
         @.enableFilterByProjects = true
+        @.enableFilterByEpics = true
         @.enableFilterByUserStories = true
         @.enableFilterByTasks = true
         @.enableFilterByIssues = true
@@ -101,6 +102,12 @@ class FavsBaseController
             @._resetList()
             @.loadItems()
 
+    showEpicsOnly: ->
+        if @.type isnt "epic"
+            @.type = "epic"
+            @._resetList()
+            @.loadItems()
+
     showUserStoriesOnly: ->
         if @.type isnt "userstory"
             @.type = "userstory"
@@ -134,6 +141,7 @@ class ProfileLikedController extends FavsBaseController
         @.tabName = 'likes'
         @.enableFilterByAll = false
         @.enableFilterByProjects = false
+        @.enableFilterByEpics = false
         @.enableFilterByUserStories = false
         @.enableFilterByTasks = false
         @.enableFilterByIssues = false
@@ -158,6 +166,7 @@ class ProfileVotedController extends FavsBaseController
         @.tabName = 'upvotes'
         @.enableFilterByAll = true
         @.enableFilterByProjects = false
+        @.enableFilterByEpics = true
         @.enableFilterByUserStories = true
         @.enableFilterByTasks = true
         @.enableFilterByIssues = true
