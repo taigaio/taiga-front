@@ -69,7 +69,7 @@ class EpicsService
         ).toJS()
 
         data = {
-            order: newOrder,
+            epics_order: newOrder,
             version: epic.get('version')
         }
 
