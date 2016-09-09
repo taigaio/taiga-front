@@ -24,11 +24,10 @@ class EpicsService
         'tgProjectService',
         'tgAttachmentsService'
         'tgResources',
-        'tgXhrErrorService',
-        '$q'
+        'tgXhrErrorService'
     ]
 
-    constructor: (@projectService, @attachmentsService, @resources, @xhrError, @q) ->
+    constructor: (@projectService, @attachmentsService, @resources, @xhrError) ->
         @._epics = Immutable.List()
         taiga.defineImmutableProperty @, 'epics', () => return @._epics
 
@@ -52,14 +51,15 @@ class EpicsService
             .then (epic) =>
                 promises = _.map attachments.toJS(), (attachment) =>
                     @attachmentsService.upload(attachment.file, epic.get('id'), epic.get('project'), 'epic')
-                @q.all(promises).then () =>
+
+                Promise.all(promises).then () =>
                     @.fetchEpics()
 
     reorderEpic: (epic, newIndex) ->
         withoutMoved = @.epics.filter (it) => it.get('id') != epic.get('id')
         beforeDestination = withoutMoved.slice(0, newIndex)
-        previous = beforeDestination.last()
 
+        previous = beforeDestination.last()
         newOrder = if !previous then 0 else previous.get('epics_order') + 1
 
         previousWithTheSameOrder = beforeDestination.filter (it) =>
@@ -72,7 +72,6 @@ class EpicsService
             epics_order: newOrder,
             version: epic.get('version')
         }
-
         return @resources.epics.reorder(epic.get('id'), data, setOrders)
             .then () =>
                 @.fetchEpics()
@@ -86,9 +85,9 @@ class EpicsService
 
         previousWithTheSameOrder = beforeDestination.filter (it) =>
             it.get('epic_order') == previous.get('epic_order')
-
-        setOrders = Immutable.OrderedMap previousWithTheSameOrder.map (it) =>
+        setOrders = _.fromPairs previousWithTheSameOrder.map((it) =>
             [it.get('id'), it.get('epic_order')]
+        ).toJS()
 
         data = {
             order: newOrder
