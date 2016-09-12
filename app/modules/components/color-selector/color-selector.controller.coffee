@@ -24,13 +24,18 @@ getDefaulColorList = taiga.getDefaulColorList
 class ColorSelectorController
     constructor: () ->
         @.colorList = getDefaulColorList()
+        @.checkIsColorRequired()
         @.displayColorList = false
+
+    checkIsColorRequired: () ->
+        if !@.isColorRequired
+            @.colorList = _.dropRight(@.colorList);
 
     setColor: (color) ->
         @.color = @.initColor
 
     resetColor: () ->
-        if @.isRequired and not @.color
+        if @.isColorRequired and not @.color
             @.color = @.initColor
 
     toggleColorList: () ->
@@ -45,7 +50,7 @@ class ColorSelectorController
     onKeyDown: (event) ->
         if event.which == 13 # ENTER
             event.stopPropagation()
-            if @.color or not @.isRequired
+            if @.color or not @.isColorRequired
                 @.onSelectDropdownColor(@.color)
 
 

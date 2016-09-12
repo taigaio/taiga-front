@@ -20,7 +20,7 @@ div.wrapper(
 
                 .detail-header-container.epic-header-container(ng-class="{blocked: epic.is_blocked}")
                     tg-color-selector.color-selector(
-                        is-required="true"
+                        is-color-required="true"
                         init-color="epic.color"
                         on-select-color="ctrl.onSelectColor(color)"
                     )
