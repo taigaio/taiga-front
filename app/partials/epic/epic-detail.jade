@@ -18,8 +18,8 @@ div.wrapper(
                     on-downvote="ctrl.onDownvote"
                 )
 
-                .detail-header-container
-                    tg-color-selector(
+                .detail-header-container.epic-header-container(ng-class="{blocked: epic.is_blocked}")
+                    tg-color-selector.color-selector(
                         is-required="true"
                         init-color="epic.color"
                         on-select-color="ctrl.onSelectColor(color)"
@@ -28,7 +28,6 @@ div.wrapper(
                         item="epic"
                         project="project"
                         required-perm="modify_epic"
-                        ng-class="{blocked: epic.is_blocked}"
                         ng-if="project && epic"
                         format="text"
                     )
