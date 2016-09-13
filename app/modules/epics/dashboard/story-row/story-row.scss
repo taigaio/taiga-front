@@ -6,7 +6,6 @@
     align-items: center;
     background: $white;
     border-bottom: 1px solid $whitish;
-    cursor: pointer;
     display: flex;
     margin-left: 4rem;
     transition: background .2s;
@@ -24,6 +23,9 @@
     }
     .name {
         flex-basis: 17.5vw;
+        a {
+            cursor: pointer;
+        }
     }
     .progress-bar,
     .progress-status {
@@ -47,6 +49,9 @@
             color: $primary-light;
             fill: $primary-light;
         }
+    }
+    .project {
+        cursor: pointer;
     }
     .project,
     .assigned {
