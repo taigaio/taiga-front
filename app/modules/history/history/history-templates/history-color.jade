@@ -1,9 +1,17 @@
-.diff-status-wrapper
+.diff-color-wrapper
     span.key(
         translate="ACTIVITY.FIELDS.COLOR"
     )
-    span.diff(ng-if="vm.diff[0]") {{vm.diff[0]}}
+    span.diff(
+        ng-if="vm.diff[0]"
+        ng-style="{background: vm.diff[0]}"
+        title="{{vm.diff[0]}}"
+    )
     tg-svg(
         svg-icon="icon-arrow-right"
     )
-    span.diff(ng-if="vm.diff[1]") {{vm.diff[1]}}
+    span.diff(
+        ng-if="vm.diff[1]"
+        ng-style="{background: vm.diff[1]}"
+        title="{{vm.diff[1]}}"
+    )
