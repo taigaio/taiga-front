@@ -288,6 +288,15 @@ timelineType = (timeline, event) ->
             key: 'TIMELINE.EPIC_UPDATED',
             translate_params: ['username', 'field_name', 'obj_name']
         },
+        { # EpicUpdated color
+            check: (timeline, event) ->
+                return event.obj == 'epic' &&
+                    event.type == 'change' &&
+                    timeline.hasIn(['data', 'value_diff']) &&
+                    timeline.getIn(['data', 'value_diff', 'key']) == 'color'
+            key: 'TIMELINE.EPIC_UPDATED_WITH_NEW_COLOR',
+            translate_params: ['username', 'field_name', 'obj_name', 'new_value']
+        },
         { # EpicUpdated general
             check: (timeline, event) ->
                 return event.obj == 'epic' &&
