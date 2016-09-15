@@ -36,7 +36,7 @@ describe "ColorSelector", ->
         inject ($controller) ->
             controller = $controller
 
-    it.only "require Color on Selector", () ->
+    it "require Color on Selector", () ->
         colorSelectorCtrl = controller "ColorSelectorCtrl"
         colorSelectorCtrl.colorList = ["#000000", "#123123"]
         colorSelectorCtrl.isColorRequired = false
