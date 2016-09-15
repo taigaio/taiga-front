@@ -6,16 +6,11 @@ section
 
     .admin-tags-section-wrapper
         form.add-tag-container.new-value.hidden
-            tg-color-selection.color-column(
-                tg-allow-empty="true"
+            tg-color-selector.color-column(
+                is-color-required="false"
                 ng-model="newValue"
+                on-select-color="newValue.color = color"
             )
-                .current-color(
-                    ng-style="{background: newValue.color}"
-                    ng-if="newValue.color"
-                )
-                .current-color.empty-color(ng-if="!newValue.color")
-                include ../../components/select-color
 
             .tag-name
                 input(
@@ -115,17 +110,11 @@ section
                                     )
 
                         .row.tag-row.table-main.edition.hidden
-                            .color-column(
-                                tg-color-selection
-                                tg-allow-empty="true"
+                            tg-color-selector.color-column(
+                                is-color-required="false"
                                 ng-model="tag"
+                                on-select-color="tag.color = color"
                             )
-                                .current-color(
-                                    ng-style="{background: tag.color}"
-                                    ng-if="tag.color"
-                                )
-                                .current-color.empty-color(ng-if="!tag.color")
-                                include ../../components/select-color
 
                             .status-name
                                 input(
