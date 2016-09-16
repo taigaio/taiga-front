@@ -1,0 +1,34 @@
+%empty {
+    margin-top: 4rem;
+    text-align: center;
+    img {
+        margin-bottom: 1rem;
+        width: 100%;
+    }
+    .title {
+        @include font-size(large);
+        text-transform: uppercase;
+    }
+    p {
+        @include font-type(light);
+        margin: 0;
+    }
+    a {
+        @include font-type(light);
+        color: $primary;
+    }
+}
+
+.empty-small {
+    @extend %empty;
+    img {
+        max-width: 175px;
+    }
+}
+
+.empty-large {
+    @extend %empty;
+    img {
+        max-width: 800px;
+    }
+}

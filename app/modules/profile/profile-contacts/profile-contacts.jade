@@ -3,8 +3,11 @@ section.profile-contacts
         div.spin
             img(src="/#{v}/svg/spinner-circle.svg", alt="Loading...")
 
-    div.empty-tab(ng-if="vm.contacts && !vm.contacts.size")
-        tg-svg(svg-icon="icon-unwatch")
+    div.empty-small(ng-if="vm.contacts && !vm.contacts.size")
+        img(
+            src="/#{v}/images/empty/empty_contact.png"
+            alt="{{ 'USER.PROFILE.CONTACTS_EMPTY' | translate }}"
+        )
 
         div(ng-if="!vm.isCurrentUser")
             p(translate="USER.PROFILE.CONTACTS_EMPTY", translate-values="{username: vm.user.get('full_name_display')}")

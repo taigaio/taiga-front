@@ -80,9 +80,9 @@ section.issues-table.basic-table(ng-class="{empty: !issues.length}")
                     svg-icon="icon-arrow-down"
                 )
 
-section.empty-issues(ng-if="issues != undefined && issues.length == 0")
+section.empty-large(ng-if="issues != undefined && issues.length == 0")
     img(
-        src="/#{v}/images/issues-empty.png",
+        src="/#{v}/images/empty/empty_moon.png",
         alt="{{ISSUES.TABLE.EMPTY.TITLE | translate }}"
     )
     p.title(translate="ISSUES.TABLE.EMPTY.TITLE")

@@ -131,6 +131,7 @@ class ProfileLikedController extends FavsBaseController
 
     constructor: (@userService) ->
         super()
+        @.tabName = 'likes'
         @.enableFilterByAll = false
         @.enableFilterByProjects = false
         @.enableFilterByUserStories = false
@@ -154,6 +155,7 @@ class ProfileVotedController extends FavsBaseController
 
     constructor: (@userService) ->
         super()
+        @.tabName = 'upvotes'
         @.enableFilterByAll = true
         @.enableFilterByProjects = false
         @.enableFilterByUserStories = true
@@ -179,6 +181,7 @@ class ProfileWatchedController extends FavsBaseController
 
     constructor: (@userService) ->
         super()
+        @.tabName = 'watchers'
         @._getItems = @userService.getWatched
 
 

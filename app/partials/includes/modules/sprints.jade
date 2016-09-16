@@ -15,9 +15,9 @@ section.sprints
         )
             tg-svg(svg-icon="icon-add")
 
-    div.sprints-empty(ng-if="totalMilestones === 0")
+    div.empty-small(ng-if="totalMilestones === 0")
         img(
-            src="/#{v}/images/sprint-empty.png"
+            src="/#{v}/images/empty/empty_sprint.png"
             alt="{{'BACKLOG.SPRINTS.EMPTY' | translate}}"
         )
         p.title(translate="BACKLOG.SPRINTS.EMPTY")

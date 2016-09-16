@@ -284,23 +284,3 @@
         }
     }
 }
-
-.empty-backlog {
-    @include font-type(light);
-    padding: 2rem;
-    text-align: center;
-    .row {
-        display: none;
-    }
-    img {
-        margin-bottom: 1rem;
-    }
-    .title {
-        @include font-size(large);
-        margin-bottom: .5rem;
-        text-transform: uppercase;
-    }
-    a {
-        color: $primary;
-    }
-}

@@ -85,19 +85,3 @@
 .search-result-table-header {
     @include font-type(bold);
 }
-
-.empty-search-results {
-    margin-top: 4rem;
-    text-align: center;
-    img {
-        margin-bottom: 1rem;
-    }
-    .title {
-        @include font-size(large);
-        text-transform: uppercase;
-    }
-    p {
-        @include font-type(light);
-        margin: 0;
-    }
-}

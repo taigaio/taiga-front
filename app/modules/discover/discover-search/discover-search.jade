@@ -6,9 +6,9 @@ div(tg-discover-search)
             on-change="vm.onChangeFilter(filter, q)"
         )
 
-    .empty-discover-results(ng-if="!vm.searchResult.size && !vm.loadingGlobal && !vm.loadingList")
+    .empty-large(ng-if="!vm.searchResult.size && !vm.loadingGlobal && !vm.loadingList")
         img(
-            src="/#{v}/images/issues-empty.png",
+            src="/#{v}/images/empty_tex.png",
             alt="{{ DISCOVER.EMPTY | translate }}"
         )
         p.title(translate="DISCOVER.EMPTY")
