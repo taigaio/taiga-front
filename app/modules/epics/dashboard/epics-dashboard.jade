@@ -18,9 +18,9 @@
             ng-if="vm.epics.size"
         )
 
-        section.empty-epics(ng-if="!vm.epics.size")
+        section.empty-epics.empty-large(ng-if="!vm.epics.size")
             img(
-                src="/#{v}/images/epics-empty.png"
+                src="/#{v}/images/empty/empty_des.png"
                 ng-title="EPICS.EMPTY.HELP | translate"
             )
             h1.title(translate="EPICS.EMPTY.TITLE")

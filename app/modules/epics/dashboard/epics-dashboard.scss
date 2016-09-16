@@ -1,23 +1,5 @@
 .empty-epics {
-    margin: 0 auto;
-    padding: 5vh;
     text-align: center;
-    width: 650px;
-    .title {
-        @include font-type(normal);
-        @include font-size(larger);
-        color: $gray-light;
-        margin-bottom: .5rem;
-        text-transform: none;
-    }
-    img {
-        margin: 2rem auto;
-        text-align: center;
-        width: 6rem;
-    }
-    p {
-        color: $gray-light;
-    }
     a {
         color: $primary;
         display: block;
