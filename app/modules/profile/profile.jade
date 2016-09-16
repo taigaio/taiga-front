@@ -1,7 +1,10 @@
 div.profile.centered(ng-if="vm.user")
-    div(tg-profile-bar, user="vm.user", isCurrentUser="vm.isCurrentUser")
+    tg-profile-bar(
+        user="vm.user"
+        isCurrentUser="vm.isCurrentUser"
+    )
     div.main
-        div.timeline-wrapper(tg-profile-tabs)
+        tg-profile-tabs.timeline-wrapper
             div(
                 tg-profile-tab="{{'USER.PROFILE.TABS.ACTIVITY_TAB' | translate}}"
                 tab-title="{{'USER.PROFILE.TABS.ACTIVITY_TAB_TITLE' | translate}}"
