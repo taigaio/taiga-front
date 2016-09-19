@@ -41,12 +41,20 @@ class EpicsDashboardController
         taiga.defineImmutableProperty @, 'project', () => return @projectService.project
         taiga.defineImmutableProperty @, 'epics', () => return @epicsService.epics
 
-        title = @translate.instant("EPICS.PAGE_TITLE", {projectName: @.project.get('name')})
-        description = @translate.instant("EPICS.PAGE_DESCRIPTION", {
-            projectName: @.project.get("name"),
+        @appMetaService.setfn @._setMeta.bind(this)
+
+    _setMeta: () ->
+        return null if !@.project
+
+        ctx = {
+            projectName: @.project.get("name")
             projectDescription: @.project.get("description")
-        })
-        @appMetaService.setAll(title, description)
+        }
+
+        return {
+            title: @translate.instant("EPICS.PAGE_TITLE", ctx)
+            description: @translate.instant("EPICS.PAGE_DESCRIPTION", ctx)
+        }
 
     loadInitialData: () ->
         @epicsService.clear()
