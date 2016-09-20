@@ -48,7 +48,7 @@ a.add-button(
     span(translate="WIKI.NAVIGATION.ACTION_ADD_LINK")
 <% } %>
 
-ul.wiki-link-container.wiki-all-links
+ul.wiki-link-container.wiki-all-links(ng-if="wikiLinks.length")
     li.wiki-link.fixed-link
         a.link-title(
             href=""
