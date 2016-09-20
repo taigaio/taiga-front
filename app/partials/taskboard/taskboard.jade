@@ -29,9 +29,9 @@ div.wrapper(tg-taskboard, ng-controller="TaskboardController as ctrl",
                     on-zoom-change="ctrl.setZoom(zoomLevel, zoom)"
                 )
                 button.button-filter.e2e-open-filter(
-                    ng-class="{'button-filters-applied': !!ctrl.selectedFilters.length}"
                     ng-click="ctrl.openFilter = !ctrl.openFilter"
                 )
+                    span.filter-num(ng-if="ctrl.selectedFilters.length") {{ctrl.selectedFilters.length}}
                     tg-svg(svg-icon="icon-filters")
 
         .taskboard-inner

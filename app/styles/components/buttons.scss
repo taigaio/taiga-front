@@ -161,8 +161,20 @@ a.button-gray {
     background: $whitish;
     margin-left: 1rem;
     padding: .4rem .5rem;
+    position: relative;
     &:hover {
         background: $gray-light;
         fill: $whitish;
+    }
+    .filter-num {
+        @include font-size(small);
+        @include font-type(medium);
+        background: $red;
+        border-radius: 50%;
+        height: 1rem;
+        left: -.5rem;
+        position: absolute;
+        top: -.5rem;
+        width: 1rem;
     }
 }

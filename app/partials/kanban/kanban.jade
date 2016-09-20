@@ -29,9 +29,10 @@ div.wrapper(tg-kanban, ng-controller="KanbanController as ctrl"
                 )
 
                 button.button-filter.e2e-open-filter(
-                    ng-class="{'button-filters-applied': !!ctrl.selectedFilters.length}"
                     ng-click="ctrl.openFilter = !ctrl.openFilter"
+                    title="{{ctrl.selectedFilters.length}} {{'COMMON.FILTERS.APPLIED_FILTERS_NUM' | translate}}"
                 )
+                    span.filter-num(ng-if="ctrl.selectedFilters.length") {{ctrl.selectedFilters.length}}
                     tg-svg(svg-icon="icon-filters")
 
         include ../includes/modules/kanban-table
