@@ -78,15 +78,13 @@ describe "EpicsDashboard", ->
 
     _mockTgAppMetaService = () ->
         mocks.tgAppMetaService = {
-            setAll: sinon.stub()
+            setfn: sinon.stub()
         }
 
         provide.value "tgAppMetaService", mocks.tgAppMetaService
 
     _mockTranslate = () ->
-        mocks.translate = {
-            instant: sinon.stub()
-        }
+        mocks.translate = sinon.stub()
 
         provide.value "$translate", mocks.translate
 
@@ -113,18 +111,9 @@ describe "EpicsDashboard", ->
         inject ($controller) ->
             controller = $controller
 
-    it "metada is set", (done) ->
-        mocks.translate.instant.withArgs("EPICS.PAGE_TITLE", {
-            projectName: "testing name"
-        }).returns("TITLE")
-        mocks.translate.instant.withArgs("EPICS.PAGE_DESCRIPTION", {
-            projectName: "testing name"
-            projectDescription: "testing description"
-        }).returns("DESCRIPTION")
-
+    it "metada is set", () ->
         ctrl = controller("EpicsDashboardCtrl")
-        expect(mocks.tgAppMetaService.setAll).have.been.calledWith("TITLE", "DESCRIPTION")
-        done()
+        expect(mocks.tgAppMetaService.setfn).have.been.called
 
     it "load data because epics panel is enabled and user has permissions", (done) ->
         ctrl = controller("EpicsDashboardCtrl")
