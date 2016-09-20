@@ -37,12 +37,13 @@ class LoginPage
 
     constructor: (currentUserService, $location, $navUrls, $routeParams) ->
         if currentUserService.isAuthenticated()
-            url = $navUrls.resolve("home")
-            if $routeParams['next']
-                url = $routeParams['next']
-                $location.search('next', null)
+            if not $routeParams['force_login']
+                url = $navUrls.resolve("home")
+                if $routeParams['next']
+                    url = decodeURIComponent($routeParams['next'])
+                    $location.search('next', null)
 
-            $location.path(url)
+                $location.url(url)
 
 
 module.controller('LoginPage', LoginPage)
