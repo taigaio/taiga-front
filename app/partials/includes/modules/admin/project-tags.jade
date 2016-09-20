@@ -39,10 +39,12 @@ section
                         svg-icon="icon-close"
                     )
 
-        p.tags-empty(
-            ng-if="!projectTagsAll.length && !ctrl.loading"
-            translate="ADMIN.PROJECT_VALUES_TAGS.EMPTY"
-        )
+        .empty-large.tags-empty(ng-if="!projectTagsAll.length && !ctrl.loading")
+            img(
+                src="/#{v}/images/empty/empty_field.png"
+                alt="{{'BACKLOG.EMPTY' | translate}}"
+            )
+            p.title(translate="ADMIN.PROJECT_VALUES_TAGS.EMPTY")
 
         .table-header.table-tags-editor(
             ng-if="projectTagsAll.length"
