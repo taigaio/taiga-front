@@ -33,6 +33,8 @@
     - Add Wiki history
 - Third party integrations:
     - Included gogs as builtin integration.
+- i18n:
+  - Add norwegian Bokmal (nb) translation.
 
 ### Misc
 - Lots of small and not so small bugfixes.
