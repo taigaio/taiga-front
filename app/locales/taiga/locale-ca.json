@@ -35,6 +35,8 @@
         "ONE_ITEM_LINE": "In item per línia",
         "NEW_BULK": "Nova inserció en grup",
         "RELATED_TASKS": "Tasques relacionades",
+        "PREVIOUS": "Previous",
+        "NEXT": "Següent",
         "LOGOUT": "Surt",
         "EXTERNAL_USER": "un usuari extern",
         "GENERIC_ERROR": "Un Oompa Loompas diu {{error}}.",
@@ -45,6 +47,11 @@
         "CAPSLOCK_WARNING": "Be careful! You are using capital letters in an input field that is case sensitive.",
         "CONFIRM_CLOSE_EDIT_MODE_TITLE": "Are you sure you want to close the edit mode?",
         "CONFIRM_CLOSE_EDIT_MODE_MESSAGE": "Remember that if you close the edit mode without saving all the changes will be lost",
+        "RELATED_USERSTORIES": "Related user stories",
+        "CARD": {
+            "ASSIGN_TO": "Assign To",
+            "EDIT": "Edit card"
+        },
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Aquest valor pareix invàlid.",
             "TYPE_EMAIL": "Deu ser un correu vàlid.",
@@ -115,6 +122,7 @@
         "USER_STORY": "Història d'usuari",
         "TASK": "Tasca",
         "ISSUE": "incidència",
+        "EPIC": "Epic",
         "TAGS": {
             "PLACEHOLDER": "Afegir tag",
             "DELETE": "Elimina l'etiqueta",
@@ -193,12 +201,27 @@
             "CONFIRM_DELETE": "Remeber that all values in this custom field will be deleted.\n Are you sure you want to continue?"
         },
         "FILTERS": {
-            "TITLE": "filtres",
+            "TITLE": "Filtres",
             "INPUT_PLACEHOLDER": "Descripció o referència",
             "TITLE_ACTION_FILTER_BUTTON": "cerca",
-            "BREADCRUMB_TITLE": "tornar a categories",
-            "BREADCRUMB_FILTERS": "Filtres",
-            "BREADCRUMB_STATUS": "estats"
+            "INPUT_SEARCH_PLACEHOLDER": "Descripció o ref",
+            "TITLE_ACTION_SEARCH": "Cerca",
+            "ACTION_SAVE_CUSTOM_FILTER": "Guarda com a filtre",
+            "PLACEHOLDER_FILTER_NAME": "Escriu el filtre i pressiona Intro",
+            "CATEGORIES": {
+                "TYPE": "Tipus",
+                "STATUS": "Estats",
+                "SEVERITY": "Severitat",
+                "PRIORITIES": "Prioritats",
+                "TAGS": "Etiquetes",
+                "ASSIGNED_TO": "Assignat a",
+                "CREATED_BY": "Creat per",
+                "CUSTOM_FILTERS": "Filtres personalitzats"
+            },
+            "CONFIRM_DELETE": {
+                "TITLE": "Esborrar filtre",
+                "MESSAGE": "el filtre '{{customFilterName}}'"
+            }
         },
         "WYSIWYG": {
             "H1_BUTTON": "Capçcalera de primer nivel",
@@ -232,6 +255,14 @@
             "MARKDOWN_HELP": "Ajuda de Markdown"
         },
         "PERMISIONS_CATEGORIES": {
+            "EPICS": {
+                "NAME": "Epics",
+                "VIEW_EPICS": "View epics",
+                "ADD_EPICS": "Add epics",
+                "MODIFY_EPICS": "Modify epics",
+                "COMMENT_EPICS": "Comment epics",
+                "DELETE_EPICS": "Delete epics"
+            },
             "SPRINTS": {
                 "NAME": "Sprints",
                 "VIEW_SPRINTS": "Vore sprints",
@@ -370,6 +401,41 @@
         "WATCHING_SECTION": "Observant",
         "DASHBOARD": "Panell principal"
     },
+    "EPICS": {
+        "TITLE": "EPICS",
+        "SECTION_NAME": "Epics",
+        "EPIC": "EPIC",
+        "PAGE_TITLE": "Epics - {{projectName}}",
+        "PAGE_DESCRIPTION": "The epics list of the project {{projectName}}: {{projectDescription}}",
+        "DASHBOARD": {
+            "ADD": "+ ADD EPIC",
+            "UNASSIGNED": "Sense assignar"
+        },
+        "EMPTY": {
+            "TITLE": "It looks like you have not created any epics yet",
+            "EXPLANATION": "Create an epic to have a superior level of User Stories. Epics can contain or be composed by User Stories from this or any other project",
+            "HELP": "Learn more about epics"
+        },
+        "TABLE": {
+            "VOTES": "Vots",
+            "NAME": "Nom",
+            "PROJECT": "Projecte",
+            "SPRINT": "Sprint",
+            "ASSIGNED_TO": "Assigned",
+            "STATUS": "Estats",
+            "PROGRESS": "Progress",
+            "VIEW_OPTIONS": "View options"
+        },
+        "CREATE": {
+            "TITLE": "New Epic",
+            "PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this epic",
+            "TEAM_REQUIREMENT": "Team requirement",
+            "CLIENT_REQUIREMENT": "Client requirement",
+            "BLOCKED": "Bloquejat",
+            "BLOCKED_NOTE_PLACEHOLDER": "Why is this epic blocked?",
+            "CREATE_EPIC": "Create epic"
+        }
+    },
     "PROJECTS": {
         "PAGE_TITLE": "Els meus projectes - Taiga",
         "PAGE_DESCRIPTION": "Una llista de tots els teus projects, que pots reordenar o crear nous.",
@@ -406,7 +472,8 @@
     "ADMIN": {
         "COMMON": {
             "TITLE_ACTION_EDIT_VALUE": "Editar valor",
-            "TITLE_ACTION_DELETE_VALUE": "Borrar valor"
+            "TITLE_ACTION_DELETE_VALUE": "Borrar valor",
+            "TITLE_ACTION_DELETE_TAG": "Elimina l'etiqueta"
         },
         "HELP": "Necessites ajuda? Mira la nosta pàgina de suport!",
         "PROJECT_DEFAULT_VALUES": {
@@ -439,6 +506,8 @@
             "TITLE": "Mòdules",
             "ENABLE": "Activa",
             "DISABLE": "Desactiva",
+            "EPICS": "Epics",
+            "EPICS_DESCRIPTION": "Visualize and manage the most strategic part of your project",
             "BACKLOG": "Backlog",
             "BACKLOG_DESCRIPTION": "Organitza les històries d'usuari per a mantindre una vista organitzada i prioritzada del treball.",
             "NUMBER_SPRINTS": "Expected number of sprints",
@@ -475,9 +544,9 @@
             "PRIVATE_PROJECT": "Projecte privat",
             "PRIVATE_OR_PUBLIC": "What's the difference between public and private projects?",
             "DELETE": "Esborra aquest projecte",
-            "LOGO_HELP": "The image will be scaled to 80x80px.",
+            "LOGO_HELP": "S'escalarà la imatge a 80x80px.",
             "CHANGE_LOGO": "Change logo",
-            "ACTION_USE_DEFAULT_LOGO": "Use default image",
+            "ACTION_USE_DEFAULT_LOGO": "Utilitza la imatge per defecte",
             "MAX_PRIVATE_PROJECTS": "You've reached the maximum number of private projects allowed by your current plan",
             "MAX_PRIVATE_PROJECTS_MEMBERS": "The maximum number of members for private projects has been exceeded",
             "MAX_PUBLIC_PROJECTS": "Unfortunately, you've reached the maximum number of public projects allowed by your current plan",
@@ -501,6 +570,7 @@
             "REGENERATE_SUBTITLE": "Vas a canviar la URL d'accés al CSV. La URL previa no funcionarà. Estàs segur?"
         },
         "CSV": {
+            "SECTION_TITLE_EPIC": "epics reports",
             "SECTION_TITLE_US": "informes d'històries d'usuari",
             "SECTION_TITLE_TASK": "infome de tasques",
             "SECTION_TITLE_ISSUE": "informe d'incidències",
@@ -513,6 +583,8 @@
         "CUSTOM_FIELDS": {
             "TITLE": "Camps personalitzats",
             "SUBTITLE": "Especifiqueu els camps personalitzats del les vostres històries d'usuari, tasques i incidències",
+            "EPIC_DESCRIPTION": "Epics custom fields",
+            "EPIC_ADD": "Add a custom field in epics",
             "US_DESCRIPTION": "Camps personalitzats d'històries d'usuari",
             "US_ADD": "Afegeix camps personalitzats en històries d'usuari",
             "TASK_DESCRIPTION": "Camps personalitzats de tasques",
@@ -550,7 +622,8 @@
         "PROJECT_VALUES_STATUS": {
             "TITLE": "Estat",
             "SUBTITLE": "Especifica els estats de les vostres històries d'usuari, tasques i incidències",
-            "US_TITLE": "Estats d'US",
+            "EPIC_TITLE": "Epic Statuses",
+            "US_TITLE": "User Story Statuses",
             "TASK_TITLE": "Estats de tasques",
             "ISSUE_TITLE": "Estats d'incidències"
         },
@@ -562,9 +635,14 @@
         },
         "PROJECT_VALUES_TAGS": {
             "TITLE": "Etiquetes",
-            "SUBTITLE": "View and edit the color of your user stories",
+            "SUBTITLE": "View and edit the color of your tags",
             "EMPTY": "Currently there are no tags",
-            "EMPTY_SEARCH": "It looks like nothing was found with your search criteria"
+            "EMPTY_SEARCH": "It looks like nothing was found with your search criteria",
+            "ACTION_ADD": "Afegeix l'etiqueta",
+            "NEW_TAG": "New tag",
+            "MIXING_HELP_TEXT": "Select the tags that you want to merge",
+            "MIXING_MERGE": "Merge Tags",
+            "SELECTED": "Selected"
         },
         "ROLES": {
             "PAGE_TITLE": "Rols - {{projectName}}",
@@ -657,13 +735,14 @@
             "DEFAULT_DELETE_MESSAGE": "la invitació a '{{email}}'."
         },
         "DEFAULT_VALUES": {
+            "LABEL_EPIC_STATUS": "Default value for epic status selector",
+            "LABEL_US_STATUS": "Default value for user story status selector",
             "LABEL_POINTS": "Valor per defecte per a selector de punts",
-            "LABEL_US": "Valor per defecte per a selector d'estats d'US",
             "LABEL_TASK_STATUS": "Valor per defecte per a selector d'estats de tasques",
-            "LABEL_PRIORITY": "Valor per defecte per a selector de prioritat",
-            "LABEL_SEVERITY": "Valor per defecte per a selector de severitat",
             "LABEL_ISSUE_TYPE": "Valor per defecte per a selector de tipus",
-            "LABEL_ISSUE_STATUS": "Valor per defecte per a selector de estats"
+            "LABEL_ISSUE_STATUS": "Valor per defecte per a selector de estats",
+            "LABEL_PRIORITY": "Valor per defecte per a selector de prioritat",
+            "LABEL_SEVERITY": "Valor per defecte per a selector de severitat"
         },
         "STATUS": {
             "PLACEHOLDER_WRITE_STATUS_NAME": "Escriu un nom per a nou estat"
@@ -766,6 +845,8 @@
             "FILTER_TYPE_ALL_TITLE": "Mostrar tot",
             "FILTER_TYPE_PROJECTS": "Projectes",
             "FILTER_TYPE_PROJECT_TITLES": "Mostra només projectes",
+            "FILTER_TYPE_EPICS": "Epics",
+            "FILTER_TYPE_EPIC_TITLES": "Show only epics",
             "FILTER_TYPE_USER_STORIES": "Históries",
             "FILTER_TYPE_USER_STORIES_TITLES": "Veure només històries d'usuari",
             "FILTER_TYPE_TASKS": "Tasques",
@@ -836,7 +917,7 @@
             "CHANGE_PASSWORD": "Canvi de contrasenya",
             "DASHBOARD_TITLE": "Tauler",
             "DISCOVER_TITLE": "Discover trending projects",
-            "NEW_ITEM": "New",
+            "NEW_ITEM": "Nova",
             "DISCOVER": "Descobreix",
             "ACTION_REORDER": "Arrossega els elements per endreçar"
         },
@@ -965,8 +1046,8 @@
         "CREATE_MEMBER": {
             "PLACEHOLDER_INVITATION_TEXT": "(Opcional) Afegix un text personalizat a la invitació. Dis-li algo divertit als nous membres. ;-)",
             "PLACEHOLDER_TYPE_EMAIL": "Escriu un correu",
-            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "Unfortunately, this project can't have more than <strong>{{maxMembers}}</strong> members.<br> If you would like to increase the current limit, please contact the administrator.",
-            "LIMIT_USERS_WARNING_MESSAGE": "Unfortunately, this project can't have more than <strong>{{maxMembers}}</strong> members."
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "You are about to reach the maximum number of members allowed for this project, <strong>{{maxMembers}}</strong> members. If you would like to increase the current limit, please contact the administrator.",
+            "LIMIT_USERS_WARNING_MESSAGE": "You are about to reach the maximum number of members allowed for this project, <strong>{{maxMembers}}</strong> members."
         },
         "LEAVE_PROJECT_WARNING": {
             "TITLE": "Unfortunately, this project can't be left without an owner",
@@ -985,6 +1066,25 @@
             "BUTTON": "Ask this project member to become the new project owner"
         }
     },
+    "EPIC": {
+        "PAGE_TITLE": "{{epicSubject}} - Epic {{epicRef}} - {{projectName}}",
+        "PAGE_DESCRIPTION": "Status: {{epicStatus }}. Description: {{epicDescription}}",
+        "SECTION_NAME": "Epic",
+        "TITLE_LIGHTBOX_DELETE_RELATED_USERSTORY": "Delete related userstory...",
+        "MSG_LIGHTBOX_DELETE_RELATED_USERSTORY": "the related userstory '{{subject}}'",
+        "ERROR_DELETE_RELATED_USERSTORY": "We have not been able to delete: {{errorMessage}}",
+        "CREATE_RELATED_USERSTORIES": "Create a relationship with",
+        "NEW_USERSTORY": "New user story",
+        "EXISTING_USERSTORY": "Existing user story",
+        "CHOOSE_PROJECT_FOR_CREATION": "What's the project?",
+        "SUBJECT": "Subject",
+        "SUBJECT_BULK_MODE": "Subject (bulk insert)",
+        "CHOOSE_PROJECT_FROM": "What's the project?",
+        "CHOOSE_USERSTORY": "What's the user story?",
+        "FILTER_USERSTORIES": "Filter user stories",
+        "LIGHTBOX_TITLE_BLOKING_EPIC": "Blocking epic",
+        "ACTION_DELETE": "Delete epic"
+    },
     "US": {
         "PAGE_TITLE": "{{userStorySubject}} - Història d'Usuari {{userStoryRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Estat: {{userStoryStatus }}. Completat {{userStoryProgressPercentage}}% ({{userStoryClosedTasks}} de {{userStoryTotalTasks}} tasques tancades). Punts: {{userStoryPoints}}. Descripció: {{userStoryDescription}}",
@@ -999,8 +1099,6 @@
         "EXTERNAL_REFERENCE": "Aquesta US ha sigut creada desde",
         "GO_TO_EXTERNAL_REFERENCE": "Anar a l'orige",
         "BLOCKED": "Aquest història d'usuari està bloquejada",
-        "PREVIOUS": "previa història d'usuari",
-        "NEXT": "Pròxima història d'usuari",
         "TITLE_DELETE_ACTION": "Esborra història d'usuari",
         "LIGHTBOX_TITLE_BLOKING_US": "Bloquejant US",
         "TASK_COMPLETED": "{{totalClosedTasks}}/{{totalTasks}} tasques completades",
@@ -1103,7 +1201,8 @@
             "SPRINT_ORDER": "ordre d'sprint",
             "KANBAN_ORDER": "ordre de kanban",
             "TASKBOARD_ORDER": "ordre de panell de tasques",
-            "US_ORDER": "ordre d'US"
+            "US_ORDER": "ordre d'US",
+            "COLOR": "color"
         }
     },
     "BACKLOG": {
@@ -1169,9 +1268,7 @@
             "TITLE": "Filtres",
             "REMOVE": "Esborra filtres",
             "HIDE": "Amaga filtres",
-            "SHOW": "Mostra filtres",
-            "FILTER_CATEGORY_STATUS": "Estats",
-            "FILTER_CATEGORY_TAGS": "Etiquetes"
+            "SHOW": "Mostra filtres"
         },
         "SPRINTS": {
             "TITLE": "SPRINTS",
@@ -1236,8 +1333,6 @@
         "ORIGIN_US": "Aquesta tasca ha sigut creada desde",
         "TITLE_LINK_GO_ORIGIN": "Anar a història d'usuari",
         "BLOCKED": "Aquesta tasca està bloquejada",
-        "PREVIOUS": "tasca prèvia",
-        "NEXT": "pròxima tasca",
         "TITLE_DELETE_ACTION": "Esborrar tasca",
         "LIGHTBOX_TITLE_BLOKING_TASK": "Bloquejant tasca",
         "FIELDS": {
@@ -1278,13 +1373,10 @@
         "SECTION_NAME": "incidència",
         "ACTION_NEW_ISSUE": "+ NOVA INCIDÈNCIA",
         "ACTION_PROMOTE_TO_US": "Promocionar història d'usuari",
-        "PLACEHOLDER_FILTER_NAME": "Escriu el filtre i pressiona Intro",
         "PROMOTED": "Esta incidència ha sigut promcionada a US:",
         "EXTERNAL_REFERENCE": "Esta incidència ha sigut creada desde",
         "GO_TO_EXTERNAL_REFERENCE": "Anar a l'orige",
         "BLOCKED": "Aquesta incidència està bloquejada",
-        "TITLE_PREVIOUS_ISSUE": "incidència prèvia",
-        "TITLE_NEXT_ISSUE": "pròxima incidència",
         "ACTION_DELETE": "Esborrar incidència",
         "LIGHTBOX_TITLE_BLOKING_ISSUE": "Bloquejant incidència",
         "FIELDS": {
@@ -1295,28 +1387,6 @@
         "CONFIRM_PROMOTE": {
             "TITLE": "Promociona aquesta incidència a història d'usuari",
             "MESSAGE": "Segur que vols crear una nova US desde aquesta incidència"
-        },
-        "FILTERS": {
-            "TITLE": "Filtres",
-            "INPUT_SEARCH_PLACEHOLDER": "Descripció o ref",
-            "TITLE_ACTION_SEARCH": "Busca",
-            "ACTION_SAVE_CUSTOM_FILTER": "Guarda com a filtre",
-            "BREADCRUMB": "Filtres",
-            "TITLE_BREADCRUMB": "Filtres",
-            "CATEGORIES": {
-                "TYPE": "Tipus",
-                "STATUS": "Estats",
-                "SEVERITY": "Severitat",
-                "PRIORITIES": "Prioritats",
-                "TAGS": "Etiquetes",
-                "ASSIGNED_TO": "Assignat a",
-                "CREATED_BY": "Creat per",
-                "CUSTOM_FILTERS": "Filtres personalitzats"
-            },
-            "CONFIRM_DELETE": {
-                "TITLE": "Esborrar filtre",
-                "MESSAGE": "el filtre '{{customFilterName}}'"
-            }
         },
         "TABLE": {
             "COLUMNS": {
@@ -1363,6 +1433,7 @@
     "SEARCH": {
         "PAGE_TITLE": "Cerca - {{projectName}}",
         "PAGE_DESCRIPTION": "Busca qualsevol cosa al projecte {{projectName}}: {{projectDescription}}",
+        "FILTER_EPICS": "Epics",
         "FILTER_USER_STORIES": "Històries d'usuari",
         "FILTER_ISSUES": "Incidències",
         "FILTER_TASKS": "Tasca",
@@ -1422,9 +1493,9 @@
         }
     },
     "USER_PROFILE": {
-        "IMAGE_HELP": "The image will be scaled to 80x80px.",
+        "IMAGE_HELP": "S'escalarà la imatge a 80x80px.",
         "ACTION_CHANGE_IMAGE": "Canviar",
-        "ACTION_USE_GRAVATAR": "Use default image",
+        "ACTION_USE_GRAVATAR": "Utilitza la imatge per defecte",
         "ACTION_DELETE_ACCOUNT": "Esborrar compte de Taiga",
         "CHANGE_EMAIL_SUCCESS": "<strong>Mira el teu correu!</strong><br />Hem enviat un correu al teu conter<br /> amb les instrucciones per a escriure una nova adreça de correu",
         "CHANGE_PHOTO": "Canviar foto",
@@ -1505,6 +1576,8 @@
         "TASK_CREATED_WITH_US": "{{username}} ha creat una nova tasca {{obj_name}} a {{project_name}} provinent de US {{us_name}}",
         "WIKI_CREATED": "{{username}} has created a new wiki page {{obj_name}} in {{project_name}}",
         "MILESTONE_CREATED": "{{username}} has created a new sprint {{obj_name}} in {{project_name}}",
+        "EPIC_CREATED": "{{username}} has created a new epic {{obj_name}} in {{project_name}}",
+        "EPIC_RELATED_USERSTORY_CREATED": "{{username}} has related the userstory {{related_us_name}} to the epic {{epic_name}} in {{project_name}}",
         "NEW_PROJECT": "{{username}} ha creat el projecte {{project_name}}",
         "MILESTONE_UPDATED": "{{username}} has updated the sprint {{obj_name}}",
         "US_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the US {{obj_name}}",
@@ -1517,9 +1590,13 @@
         "TASK_UPDATED_WITH_US": "{{username}} ha actualitzat l'atribut  \"{{field_name}}\" de la tasca {{obj_name}} de la història d'usuari {{us_name}}",
         "TASK_UPDATED_WITH_US_NEW_VALUE": "{{username}} ha actualitzat l'atribut \"{{field_name}}\" de la tasca {{obj_name}} de la història d'usuari {{us_name}} amb el valor  {{new_value}}",
         "WIKI_UPDATED": "{{username}} ha actualitzat la pàgina wiki {{obj_name}}",
+        "EPIC_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the epic {{obj_name}}",
+        "EPIC_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the epic {{obj_name}} to {{new_value}}",
+        "EPIC_UPDATED_WITH_NEW_COLOR": "{{username}} has updated the \"{{field_name}}\" of the epic {{obj_name}} to <span class=\"new-color\" style=\"background: {{new_value}}\"></span>",
         "NEW_COMMENT_US": "{{username}} ha comentat la història d'usuari {{obj_name}}",
         "NEW_COMMENT_ISSUE": "{{username}} ha comentat la incidència {{obj_name}}",
         "NEW_COMMENT_TASK": "{{username}} ha comentat la tasca {{obj_name}}",
+        "NEW_COMMENT_EPIC": "{{username}} has commented in the epic {{obj_name}}",
         "NEW_MEMBER": "{{project_name}} te un nou membre",
         "US_ADDED_MILESTONE": "{{username}} ha afegit la història d'usuari {{obj_name}} a {{sprint_name}}",
         "US_MOVED": "{{username}} ha mogut la història d'usuari {{obj_name}}",
