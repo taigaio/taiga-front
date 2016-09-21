@@ -19,7 +19,6 @@ mixin epicSwitch(name, model)
         )
         .name(
             translate="EPICS.TABLE.NAME"
-            ng-if="vm.column.name"
         )
         .project(
             translate="EPICS.TABLE.PROJECT"
@@ -52,12 +51,6 @@ mixin epicSwitch(name, model)
                         for="epicSwitch-votes"
                     )
                     +epicSwitch('switch-votes', 'vm.column.votes')
-                .fieldset
-                    label.epics-table-options-vote(
-                        translate="EPICS.TABLE.NAME"
-                        for="switch-name"
-                    )
-                    +epicSwitch('switch-name', 'vm.column.name')
                 .fieldset
                     label.epics-table-options-vote(
                         translate="EPICS.TABLE.PROJECT"
