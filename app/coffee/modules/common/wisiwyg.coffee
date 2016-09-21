@@ -374,7 +374,7 @@ MarkitupDirective = ($rootscope, $rs, $selectedText, $template, $compile, $trans
                         search: (term, callback) ->
                             term = taiga.slugify(term)
 
-                            searchTypes = ['issues', 'tasks', 'userstories']
+                            searchTypes = ['issues', 'tasks', 'userstories', 'epics']
                             searchProps = ['ref', 'subject']
 
                             filter = (item) =>
@@ -384,8 +384,7 @@ MarkitupDirective = ($rootscope, $rs, $selectedText, $template, $compile, $trans
                                 return false
 
                             cancelablePromise.abort() if cancelablePromise
-
-                            cancelablePromise = $rs.search.do($scope.projectId, term)
+                            cancelablePromise = $rs.search.do($scope.projectId || $scope.vm.projectId, term)
 
                             cancelablePromise.then (res) =>
                                 # ignore wikipages if they're the only results. can't exclude them in search
@@ -441,15 +440,18 @@ MarkitupDirective = ($rootscope, $rs, $selectedText, $template, $compile, $trans
                         search: (term, callback) ->
                             term = taiga.slugify(term)
 
-                            $rs.search.do($scope.projectId, term).then (res) =>
+                            $rs.search.do($scope.projectId || $scope.vm.projectId, term).then (res) =>
                                 if res.count < 1
+                                    console.log 1
                                     callback([])
 
                                 if res.count < 1 or not res.wikipages or res.wikipages.length <= 0
+                                    console.log 2
                                     callback([])
 
                                 else
                                     callback res.wikipages.filter((page) =>
+                                        console.log 3
                                         return taiga.slugify(page['slug']).indexOf(term) >= 0
                                     ), true
 
