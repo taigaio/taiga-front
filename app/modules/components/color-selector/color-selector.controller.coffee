@@ -29,7 +29,7 @@ class ColorSelectorController
 
     checkIsColorRequired: () ->
         if !@.isColorRequired
-            @.colorList = _.dropRight(@.colorList);
+            @.colorList = _.dropRight(@.colorList)
 
     setColor: (color) ->
         @.color = @.initColor
@@ -49,9 +49,9 @@ class ColorSelectorController
 
     onKeyDown: (event) ->
         if event.which == 13 # ENTER
-            event.stopPropagation()
             if @.color or not @.isColorRequired
                 @.onSelectDropdownColor(@.color)
+            event.preventDefault()
 
 
 angular.module('taigaComponents').controller("ColorSelectorCtrl", ColorSelectorController)
