@@ -110,8 +110,13 @@ a.add-button.e2e-add-userstory-button(
                 translate="COMMON.SAVE"
                 ng-show="relatedWithSelector=='new-user-story'"
             )
+            
+        p(
+            ng-show="relatedWithSelector=='existing-user-story' && !vm.projectUserstories.size"
+            translate="EPIC.NO_USERSTORIES"
+        )
 
-        fieldset.existing-user-story(ng-show="relatedWithSelector=='existing-user-story'")
+        fieldset.existing-user-story(ng-show="relatedWithSelector=='existing-user-story' && vm.projectUserstories.size")
             label(
                 translate="EPIC.CHOOSE_USERSTORY"
                 for="userstory-filter"
