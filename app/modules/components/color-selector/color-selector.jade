@@ -1,4 +1,12 @@
-.color-selector
+//- Read only mode
+.color-selector(ng-if="!vm.userCanChangeColor()")
+    .tag-color.disabled.e2e-open-color-selector(
+        ng-class="{'empty-color': !vm.color}"
+        ng-style="{'background': vm.color}"
+    )
+
+//- Read & Edit mode
+.color-selector(ng-if="vm.userCanChangeColor()")
     .tag-color.e2e-open-color-selector(
         ng-click="vm.toggleColorList()"
         ng-class="{'empty-color': !vm.color}"

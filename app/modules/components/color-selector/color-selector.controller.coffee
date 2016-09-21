@@ -22,10 +22,18 @@ getDefaulColorList = taiga.getDefaulColorList
 
 
 class ColorSelectorController
-    constructor: () ->
+    @.$inject = [
+        "tgProjectService",
+    ]
+
+    constructor: (@projectService) ->
         @.colorList = getDefaulColorList()
         @.checkIsColorRequired()
         @.displayColorList = false
+
+    userCanChangeColor: () ->
+        return true if not @.requiredPerm
+        return @projectService.hasPermission(@.requiredPerm)
 
     checkIsColorRequired: () ->
         if !@.isColorRequired

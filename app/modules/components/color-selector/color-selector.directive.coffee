@@ -56,7 +56,8 @@ ColorSelectorDirective = ($timeout) ->
         bindToController: {
             isColorRequired: "=",
             onSelectColor: "&",
-            initColor: "="
+            initColor: "=",
+            requiredPerm: "@"
         },
         scope: {},
     }

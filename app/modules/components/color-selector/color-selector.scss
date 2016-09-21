@@ -18,6 +18,9 @@
         border-radius: 0;
         margin: 0;
         transition: background .3s ease-out;
+        &.disabled {
+            cursor: auto;
+        }
         &.empty-color {
             @include empty-color(34);
         }
