@@ -72,8 +72,11 @@ class EpicRowController
                 @.loadingStatus = false
 
     updateAssignedTo: (member) ->
-        return @epicsService.updateEpicAssignedTo(@.epic, member?.id)
+        @.assignLoader = true
+        return @epicsService.updateEpicAssignedTo(@.epic, member?.id or null)
             .catch () =>
                 @confirm.notify('error')
+            .then () =>
+                @.assignLoader = false
 
 angular.module("taigaEpics").controller("EpicRowCtrl", EpicRowController)

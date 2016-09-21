@@ -32,11 +32,14 @@
 
     .sprint(ng-if="vm.column.sprint")
 
-    .assigned.e2e-assigned-tio(ng-if="vm.column.assigned")
+    .assigned.e2e-assigned-to(
+        ng-if="vm.column.assigned"
+        tg-loading="vm.assignLoader"
+    )
         tg-assigned-to-component(
             assigned-to="vm.epic.get('assigned_to_extra_info')"
             project="vm.project"
-            on-remove-assigned="vm.updateAssignedTo(null)"
+            on-remove-assigned="vm.updateAssignedTo()"
             on-assign-to="vm.updateAssignedTo(member)"
             tg-isolate-click
         )
