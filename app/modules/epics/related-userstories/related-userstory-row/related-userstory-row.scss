@@ -2,25 +2,27 @@ tg-related-userstory-row {
     @include font-size(small);
     align-items: center;
     border-bottom: 1px solid $whitish;
-    cursor: move;
     display: flex;
     padding: .5rem 0 .5rem .5rem;
-    &:hover {
-        background: rgba($primary-light, .05);
-        .userstory-settings {
-            opacity: 1;
-            transition: all .2s ease-in;
+    &.sortable {
+        cursor: move;
+        &:hover {
+            background: rgba($primary-light, .05);
+            .userstory-settings {
+                opacity: 1;
+                transition: all .2s ease-in;
+            }
+            .icon-drag {
+                opacity: 1;
+            }
         }
         .icon-drag {
-            opacity: 1;
+            @include svg-size(.75rem);
+            cursor: move;
+            fill: $whitish;
+            opacity: 0;
+            transition: opacity .1s;
         }
-    }
-    .icon-drag {
-        @include svg-size(.75rem);
-        cursor: move;
-        fill: $whitish;
-        opacity: 0;
-        transition: opacity .1s;
     }
     .status {
         flex-shrink: 0;

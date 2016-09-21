@@ -20,11 +20,17 @@
 module = angular.module("taigaEpics")
 
 class RelatedUserStoriesController
-    @.$inject = ["tgEpicsService"]
+    @.$inject = [
+        "tgProjectService",
+        "tgEpicsService"
+    ]
 
-    constructor: (@epicsService) ->
+    constructor: (@projectService, @epicsService) ->
         @.sectionName = "Epics"
         @.showCreateRelatedUserstoriesLightbox = false
+
+    userCanSort: () ->
+        return @projectService.hasPermission("modify_epic")
 
     loadRelatedUserstories: () ->
         @epicsService.listRelatedUserStories(@.epic)

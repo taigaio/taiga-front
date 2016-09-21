@@ -15,7 +15,7 @@ section.related-userstories
     )
         tg-related-userstory-row.row(
             tg-repeat="us in vm.userstories track by us.get('id')"
-            ng-class="{closed: us.get('is_closed'), blocked: us.get('is_blocked')}"
+            ng-class="{closed: us.get('is_closed'), blocked: us.get('is_blocked'), sortable: vm.userCanSort()}"
             userstory="us"
             epic="vm.epic"
             project="vm.project"
