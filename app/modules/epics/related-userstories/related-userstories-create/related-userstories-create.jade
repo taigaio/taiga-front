@@ -49,7 +49,6 @@ a.add-button.e2e-add-userstory-button(
                 ng-model="selectedProject"
                 ng-change="selectProject(selectedProject)"
                 data-required="true"
-                required
                 ng-options="p.id as p.name for p in vm.projects | toMutable"
                 id="project-selector-dropdown"
             )
@@ -88,20 +87,20 @@ a.add-button.e2e-add-userstory-button(
                         )
                         label.e2e-bulk-creation-label(for="bulk-new-user-stories")
                             tg-svg(svg-icon="icon-bulk")
-                
+
 
             form.new-user-story-form
                 .single-creation(ng-show="creationMode=='single-new-user-story'")
                     input.e2e-new-userstory-input-text(
                         type="text"
                         ng-model="relatedUserstoriesText"
-                        required
+                        data-required="true"
                     )
 
                 .bulk-creation(ng-show="creationMode=='bulk-new-user-stories'")
                     textarea.e2e-new-userstories-input-textarea(
                         ng-model="relatedUserstoriesText"
-                        required
+                        data-required="true"
                     )
 
             button.button-green.create-user-story.e2e-create-userstory-button.ng-animate-disabled(
@@ -129,7 +128,7 @@ a.add-button.e2e-add-userstory-button(
                 select.userstory.e2e-userstories-select(
                     size="5"
                     ng-model="selectedUserstory"
-                    required
+                    data-required="true"
                 )
                     - var hash = "#";
                     option.hidden(
