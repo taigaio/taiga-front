@@ -44,7 +44,8 @@ ColorSelectorDirective = ($timeout) ->
             .mouseenter(cancel)
             .mouseleave(close)
 
-        bindOnce scope, 'vm.initColor', (color) ->
+        scope.$watch 'vm.initColor', (color) ->
+            # We can't just bind once because sometimes the initial color is reset from the outside
             ctrl.setColor(color)
 
     return {

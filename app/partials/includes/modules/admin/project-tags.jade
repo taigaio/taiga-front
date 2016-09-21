@@ -8,7 +8,7 @@ section
         form.add-tag-container.new-value.hidden
             tg-color-selector.color-column(
                 is-color-required="false"
-                ng-model="newValue"
+                init-color="newValue.color"
                 on-select-color="newValue.color = color"
             )
 
