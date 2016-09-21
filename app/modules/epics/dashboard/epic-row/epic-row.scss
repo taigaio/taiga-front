@@ -6,7 +6,7 @@
     align-items: center;
     background: $white;
     border-bottom: 1px solid $whitish;
-    cursor: pointer;
+    cursor: move;
     display: flex;
     transition: background .2s;
     &:hover {
@@ -14,6 +14,9 @@
         .icon-drag {
             opacity: 1;
         }
+    }
+    &.not-empty {
+        cursor: pointer;
     }
     &.is-blocked {
         background: rgba($red-light, .5);

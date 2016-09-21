@@ -1,5 +1,6 @@
+
 .epic-row.e2e-epic-row(
-    ng-class="{'is-blocked':  vm.epic.get('is_blocked'), 'is-closed': vm.epic.get('is_closed'), 'unfold': vm.displayUserStories}"
+    ng-class="{'is-blocked':  vm.epic.get('is_blocked'), 'is-closed': vm.epic.get('is_closed'), 'unfold': vm.displayUserStories, 'not-empty': vm.epic.getIn(['user_stories_counts', 'opened']) || vm.epic.getIn(['user_stories_counts', 'closed'])}"
     ng-click="vm.toggleUserStoryList()"
 )
     tg-svg.icon-drag(
