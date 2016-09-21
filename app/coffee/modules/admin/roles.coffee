@@ -357,7 +357,7 @@ RolePermissionsDirective = ($rootscope, $repo, $confirm, $compile) ->
                 { key: "view_epics", name: "COMMON.PERMISIONS_CATEGORIES.EPICS.VIEW_EPICS"}
                 { key: "add_epic", name: "COMMON.PERMISIONS_CATEGORIES.EPICS.ADD_EPICS"}
                 { key: "modify_epic", name: "COMMON.PERMISIONS_CATEGORIES.EPICS.MODIFY_EPICS"}
-                { key: "comment_epic", name: "COMMON.PERMISIONS_CATEGORIES.USER_STORIES.COMMENT_EPICS"}
+                { key: "comment_epic", name: "COMMON.PERMISIONS_CATEGORIES.EPICS.COMMENT_EPICS"}
                 { key: "delete_epic", name: "COMMON.PERMISIONS_CATEGORIES.EPICS.DELETE_EPICS"}
             ]
             categories.push({
