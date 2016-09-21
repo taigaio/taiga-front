@@ -414,8 +414,8 @@
             "UNASSIGNED": "Unassigned"
         },
         "EMPTY": {
-            "TITLE": "It looks like you have not created any epics yet",
-            "EXPLANATION": "Create an epic to have a superior level of User Stories. Epics can contain or be composed by User Stories from this or any other project",
+            "TITLE": "It looks like there aren't any epics yet",
+            "EXPLANATION": "Epics are items at a higher level that encompass user stories.<br />Epics are at the top of the hierarchy and can be used to group user stories together.",
             "HELP": "Learn more about epics"
         },
         "TABLE": {
