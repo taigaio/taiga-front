@@ -442,16 +442,13 @@ MarkitupDirective = ($rootscope, $rs, $selectedText, $template, $compile, $trans
 
                             $rs.search.do($scope.projectId || $scope.vm.projectId, term).then (res) =>
                                 if res.count < 1
-                                    console.log 1
                                     callback([])
 
                                 if res.count < 1 or not res.wikipages or res.wikipages.length <= 0
-                                    console.log 2
                                     callback([])
 
                                 else
                                     callback res.wikipages.filter((page) =>
-                                        console.log 3
                                         return taiga.slugify(page['slug']).indexOf(term) >= 0
                                     ), true
 
