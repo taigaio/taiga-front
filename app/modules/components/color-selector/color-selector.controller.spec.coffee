@@ -23,9 +23,17 @@ describe "ColorSelector", ->
     colorSelectorCtrl = null
     mocks = {}
 
+    _mockTgProjectService = () ->
+        mocks.tgProjectService = {
+            hasPermission: sinon.stub()
+        }
+        provide.value "tgProjectService", mocks.tgProjectService
+
     _mocks = () ->
         module ($provide) ->
             provide = $provide
+            _mockTgProjectService()
+
             return null
 
     beforeEach ->
