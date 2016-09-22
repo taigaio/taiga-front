@@ -204,6 +204,7 @@ class UsFiltersMixin
         loadFilters.status = urlfilters.status
         loadFilters.assigned_to = urlfilters.assigned_to
         loadFilters.owner = urlfilters.owner
+        loadFilters.epic = urlfilters.epic
         loadFilters.q = urlfilters.q
 
         return @q.all([
@@ -221,10 +222,8 @@ class UsFiltersMixin
                 it.id = it.name
 
                 return it
-
             tagsWithAtLeastOneElement = _.filter tags, (tag) ->
                 return tag.count > 0
-
             assignedTo = _.map data.assigned_to, (it) ->
                 if it.id
                     it.id = it.id.toString()
@@ -237,6 +236,15 @@ class UsFiltersMixin
             owner = _.map data.owners, (it) ->
                 it.id = it.id.toString()
                 it.name = it.full_name
+
+                return it
+            epic = _.map data.epics, (it) ->
+                if it.id
+                    it.id = it.id.toString()
+                    it.name = "##{it.ref} #{it.subject}"
+                else
+                    it.id = "null"
+                    it.name = "Not in an epic"
 
                 return it
 
@@ -256,6 +264,10 @@ class UsFiltersMixin
 
             if loadFilters.owner
                 selected = @.formatSelectedFilters("owner", owner, loadFilters.owner)
+                @.selectedFilters = @.selectedFilters.concat(selected)
+
+            if loadFilters.epic
+                selected = @.formatSelectedFilters("epic", epic, loadFilters.epic)
                 @.selectedFilters = @.selectedFilters.concat(selected)
 
             @.filterQ = loadFilters.q
@@ -282,6 +294,11 @@ class UsFiltersMixin
                     title: @translate.instant("COMMON.FILTERS.CATEGORIES.CREATED_BY"),
                     dataType: "owner",
                     content: owner
+                },
+                {
+                    title: @translate.instant("COMMON.FILTERS.CATEGORIES.EPIC"),
+                    dataType: "epic",
+                    content: epic
                 }
             ]
 

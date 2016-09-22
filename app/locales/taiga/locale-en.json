@@ -218,7 +218,8 @@
                 "TAGS": "Tags",
                 "ASSIGNED_TO": "Assigned to",
                 "CREATED_BY": "Created by",
-                "CUSTOM_FILTERS": "Custom filters"
+                "CUSTOM_FILTERS": "Custom filters",
+                "EPIC": "Epic"
             },
             "CONFIRM_DELETE": {
                 "TITLE": "Delete custom filter",
