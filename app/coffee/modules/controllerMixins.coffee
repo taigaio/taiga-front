@@ -221,6 +221,10 @@ class UsFiltersMixin
                 it.id = it.name
 
                 return it
+
+            tagsWithAtLeastOneElement = _.filter tags, (tag) ->
+                return tag.count > 0
+
             assignedTo = _.map data.assigned_to, (it) ->
                 if it.id
                     it.id = it.id.toString()
@@ -266,7 +270,8 @@ class UsFiltersMixin
                     title: @translate.instant("COMMON.FILTERS.CATEGORIES.TAGS"),
                     dataType: "tags",
                     content: tags,
-                    hideEmpty: true
+                    hideEmpty: true,
+                    totalTaggedElements: tagsWithAtLeastOneElement.length
                 },
                 {
                     title: @translate.instant("COMMON.FILTERS.CATEGORIES.ASSIGNED_TO"),
