@@ -105,9 +105,7 @@ module.filter("byRef", ["filterFilter", byRefFilter])
 darkerFilter = ->
     return (color, luminosity) ->
         # validate hex string
-        console.log color
         color = new String(color).replace(/[^0-9a-f]/gi, '')
-        console.log color
         if color.length < 6
             color = color[0]+ color[0]+ color[1]+ color[1]+ color[2]+ color[2];
 
