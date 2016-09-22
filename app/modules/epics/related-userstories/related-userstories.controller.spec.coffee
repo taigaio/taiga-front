@@ -31,10 +31,17 @@ describe "RelatedUserStories", ->
 
         provide.value "tgEpicsService", mocks.tgEpicsService
 
+    _mockTgProjectService = () ->
+        mocks.tgProjectService = {
+            hasPermission: sinon.stub()
+        }
+        provide.value "tgProjectService", mocks.tgProjectService
+
     _mocks = () ->
         module ($provide) ->
             provide = $provide
             _mockTgEpicsService()
+            _mockTgProjectService()
             return null
 
     beforeEach ->
