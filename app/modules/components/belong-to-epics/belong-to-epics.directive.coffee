@@ -22,8 +22,9 @@ module = angular.module('taigaEpics')
 BelongToEpicsDirective = () ->
 
     link = (scope, el, attrs) ->
-        if scope.epics && !scope.epics.isIterable
-          scope.epics = Immutable.fromJS(scope.epics)
+        scope.$watch 'epics', (epics) ->
+            if epics && !epics.isIterable
+              scope.epics = Immutable.fromJS(epics)
 
     templateUrl = (el, attrs) ->
         if attrs.format
