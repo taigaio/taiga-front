@@ -24,9 +24,10 @@ class HistorySectionController
         "$tgResources",
         "$tgRepo",
         "$tgStorage",
+        "tgProjectService",
     ]
 
-    constructor: (@rs, @repo, @storage) ->
+    constructor: (@rs, @repo, @storage, @projectService) ->
         @.editing = null
         @.deleting = null
         @.editMode = {}
@@ -48,6 +49,15 @@ class HistorySectionController
     _getActivities: (activities) ->
         @.activities =  _.filter(activities, (item) -> Object.keys(item.values_diff).length > 0)
         @.activitiesNum = @.activities.length
+
+    showHistorySection: () ->
+        return @.showCommentTab() or @.showActivityTab()
+
+    showCommentTab: () ->
+        return @.commentsNum > 0 or @projectService.hasPermission("comment_#{@.name}")
+
+    showActivityTab: () ->
+        return @.activitiesNum > 0
 
     toggleEditMode: (commentId) ->
         @.editMode[commentId] = !@.editMode[commentId]
