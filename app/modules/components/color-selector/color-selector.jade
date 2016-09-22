@@ -28,11 +28,12 @@
             .display-custom-color.empty-color(
                 ng-if="!vm.color"
             )
-            .display-custom-color(
-                ng-if="vm.color"
-                ng-style="{'background': vm.color}"
-                ng-click="vm.onSelectDropdownColor(vm.color)"
-            )
+            .display-custom-color-wrapper
+                .display-custom-color(
+                    ng-if="vm.color"
+                    ng-style="{'background': vm.color}"
+                    ng-click="vm.onSelectDropdownColor(vm.color)"
+                )
             input.custom-color-input(
                 type="text"
                 maxlength="7"
