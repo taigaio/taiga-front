@@ -50,15 +50,23 @@
                 padding-left: 1rem;
             }
         }
-        .color-filter {
-            align-items: center;
-            display: flex;
-            flex-grow: 1;
-            padding: 0 10px;
-            position: relative;
+    }
+    .color-filter {
+        align-items: center;
+        display: flex;
+        flex-grow: 1;
+        padding: 0 10px;
+        position: relative;
+        &:hover {
             input {
-                padding: 0;
+                border-bottom: 1px solid $whitish;
             }
+        }
+        input {
+            padding: 0;
+        }
+        label {
+            cursor: pointer;
         }
     }
     .row {

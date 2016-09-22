@@ -54,25 +54,28 @@ section
                 .status-name(translate="COMMON.FIELDS.NAME")
                 .color-filter
                     input.e2e-tags-filter(
+                        id="filter-tags-input"
                         type="text"
                         name="name"
                         ng-model="tagsFilter.name"
                         ng-model-options="{debounce: 200}"
                     )
-                    tg-svg(
-                        svg-icon="icon-search"
-                    )
+                    label(for="filter-tags-input")
+                        tg-svg(svg-icon="icon-search")
 
         .table-main.table-admin-tags(
             ng-if="projectTagsAll.length"
         )
             div(ng-show="!mixingTags.toTag")
-                .admin-attributes-section-wrapper-empty(
+                .empty-large.admin-attributes-section-wrapper-empty(
                     ng-show="!projectTags.length"
                     tg-loading="ctrl.loading"
                 )
+                    img(
+                        src="/#{v}/images/empty/empty_moon.png"
+                        alt="{{'BACKLOG.EMPTY' | translate}}"
+                    )
                     p(translate="ADMIN.PROJECT_VALUES_TAGS.EMPTY_SEARCH")
-                    p lalalaal
 
                 div(
                     ng-repeat="tag in projectTags"
@@ -154,7 +157,13 @@ section
                     form(tg-bind-scope)
                         .row.mixing-row.table-main.visualization(class="{{ ctrl.mixingClass(tag) }}")
                             .color-column
-                                .current-color(ng-style="{background: tag.color}")
+                                .current-color(
+                                    ng-if="tag.color"
+                                    ng-style="{background: tag.color}"
+                                )
+                                .current-color.empty-color(
+                                    ng-if="!tag.color"
+                                )
 
                             .status-name
                                 span(tg-bo-html="tag.name")
