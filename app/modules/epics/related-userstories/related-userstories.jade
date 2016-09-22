@@ -1,4 +1,6 @@
-section.related-userstories
+section.related-userstories(
+    ng-if="vm.showRelatedUserStoriesSection()"
+)
     .related-userstories-header
         span.related-userstories-title(translate="COMMON.RELATED_USERSTORIES")
         tg-related-userstories-create(
