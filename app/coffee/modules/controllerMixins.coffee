@@ -204,7 +204,7 @@ class UsFiltersMixin
         loadFilters.status = urlfilters.status
         loadFilters.assigned_to = urlfilters.assigned_to
         loadFilters.owner = urlfilters.owner
-        loadFilters.epic = urlfilters.epic
+        loadFilters.epics = urlfilters.epics
         loadFilters.q = urlfilters.q
 
         return @q.all([
@@ -238,7 +238,7 @@ class UsFiltersMixin
                 it.name = it.full_name
 
                 return it
-            epic = _.map data.epics, (it) ->
+            epics = _.map data.epics, (it) ->
                 if it.id
                     it.id = it.id.toString()
                     it.name = "##{it.ref} #{it.subject}"
@@ -266,8 +266,8 @@ class UsFiltersMixin
                 selected = @.formatSelectedFilters("owner", owner, loadFilters.owner)
                 @.selectedFilters = @.selectedFilters.concat(selected)
 
-            if loadFilters.epic
-                selected = @.formatSelectedFilters("epic", epic, loadFilters.epic)
+            if loadFilters.epics
+                selected = @.formatSelectedFilters("epics", epics, loadFilters.epics)
                 @.selectedFilters = @.selectedFilters.concat(selected)
 
             @.filterQ = loadFilters.q
@@ -297,8 +297,8 @@ class UsFiltersMixin
                 },
                 {
                     title: @translate.instant("COMMON.FILTERS.CATEGORIES.EPIC"),
-                    dataType: "epic",
-                    content: epic
+                    dataType: "epics",
+                    content: epics
                 }
             ]
 
