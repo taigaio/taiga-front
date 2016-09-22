@@ -100,3 +100,32 @@ byRefFilter = ($filterFilter)->
         return $filterFilter(userstories, filter)
 
 module.filter("byRef", ["filterFilter", byRefFilter])
+
+
+darkerFilter = ->
+    return (color, luminosity) ->
+        # validate hex string
+        console.log color
+        color = new String(color).replace(/[^0-9a-f]/gi, '')
+        console.log color
+        if color.length < 6
+            color = color[0]+ color[0]+ color[1]+ color[1]+ color[2]+ color[2];
+
+        luminosity = luminosity || 0
+
+        # convert to decimal and change luminosity
+        newColor = "#"
+        c = 0
+        i = 0
+        black = 0
+        white = 255
+        # for (i = 0; i < 3; i++)
+        for i in [0, 1, 2]
+            c = parseInt(color.substr(i*2,2), 16)
+            c = Math.round(Math.min(Math.max(black, c + (luminosity * white)), white)).toString(16)
+            newColor += ("00"+c).substr(c.length)
+
+        return newColor
+
+
+module.filter("darker", darkerFilter)
