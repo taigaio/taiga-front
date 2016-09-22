@@ -44,6 +44,12 @@
     top: 1.3rem;
     width: 250px;
     z-index: 99;
+    &.ng-hide-remove {
+        animation: dropdownFade .2s;
+    }
+    &.ng-hide-add {
+        animation: dropdownFade .2s reverse;
+    }
     .fieldset {
         @include font-size(small);
         border-bottom: 1px solid $whitish;

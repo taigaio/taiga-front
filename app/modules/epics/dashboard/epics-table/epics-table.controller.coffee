@@ -23,10 +23,11 @@ taiga = @.taiga
 class EpicsTableController
     @.$inject = [
         "$tgConfirm",
-        "tgEpicsService"
+        "tgEpicsService",
+        "$timeout"
     ]
 
-    constructor: (@confirm, @epicsService) ->
+    constructor: (@confirm, @epicsService, @timeout) ->
         @.displayOptions = false
         @.displayVotes = true
         @.column = {
@@ -48,5 +49,12 @@ class EpicsTableController
         @epicsService.reorderEpic(epic, newIndex)
             .then null, () => # on error
                 @confirm.notify("error")
+
+    hoverEpicTableOption: () ->
+        if @.timer
+            @timeout.cancel(@.timer)
+
+    hideEpicTableOption: () ->
+        return @.timer = @timeout (=> @.displayOptions = false), 400
 
 angular.module("taigaEpics").controller("EpicsTableCtrl", EpicsTableController)

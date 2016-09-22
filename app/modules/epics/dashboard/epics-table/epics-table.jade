@@ -40,11 +40,16 @@ mixin epicSwitch(name, model)
             translate="EPICS.TABLE.PROGRESS"
             ng-if="vm.column.progress"
         )
-        .epics-table-options-wrapper(ng-mouseleave="vm.displayOptions = false")
+        .epics-table-options-wrapper(
+            ng-mouseleave="vm.hideEpicTableOption()"
+        )
             button.epics-table-option-button.e2e-epics-column-button(ng-click="vm.displayOptions = true")
                 span(translate="EPICS.TABLE.VIEW_OPTIONS")
                 tg-svg(svg-icon="icon-arrow-down")
-            form.epics-table-dropdown.e2e-epics-column-dropdown(ng-show="vm.displayOptions")
+            form.epics-table-dropdown.e2e-epics-column-dropdown(
+                ng-show="vm.displayOptions"
+                ng-mouseenter="vm.keepEpicTableOption()"
+            )
                 .fieldset
                     label.epics-table-options-vote(
                         translate="EPICS.TABLE.VOTES"
