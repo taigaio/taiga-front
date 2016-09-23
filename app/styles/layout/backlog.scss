@@ -25,10 +25,11 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 1rem;
-    .trans-button {
+    .menu-button {
+        border-radius: 0;
         color: $blackish;
         display: inline-block;
-        padding: .3rem 1.5rem;
+        padding: .4rem 1.5rem;
         &.active,
         &:hover {
             background: $whitish;

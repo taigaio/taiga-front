@@ -36,7 +36,7 @@ div.wrapper(tg-backlog, ng-controller="BacklogController as ctrl",
 
         div.backlog-menu
             div.backlog-table-options
-                a.trans-button.move-to-current-sprint.move-to-sprint.e2e-move-to-sprint(
+                a.trans-button.menu-button.move-to-current-sprint.move-to-sprint.e2e-move-to-sprint(
                     ng-if="currentSprint"
                     href=""
                     title="{{'BACKLOG.MOVE_US_TO_CURRENT_SPRINT' | translate}}"
@@ -44,7 +44,7 @@ div.wrapper(tg-backlog, ng-controller="BacklogController as ctrl",
                 )
                     tg-svg(svg-icon="icon-move")
                     span.text(translate="BACKLOG.MOVE_US_TO_CURRENT_SPRINT")
-                a.trans-button.move-to-latest-sprint.move-to-sprint.e2e-move-to-sprint(
+                a.trans-button.menu-button.move-to-latest-sprint.move-to-sprint.e2e-move-to-sprint(
                     ng-if="!currentSprint"
                     href=""
                     title="{{'BACKLOG.MOVE_US_TO_LATEST_SPRINT' | translate}}"
@@ -52,21 +52,21 @@ div.wrapper(tg-backlog, ng-controller="BacklogController as ctrl",
                 )
                     tg-svg(svg-icon="icon-move")
                     span.text(translate="BACKLOG.MOVE_US_TO_LATEST_SPRINT")
-                a.trans-button.e2e-open-filter(
+                a.trans-button.menu-button.e2e-open-filter.ng-animate-disabled(
                     ng-if="!ctrl.activeFilters"
                     href=""
                     title="{{'BACKLOG.FILTERS.TOGGLE' | translate}}"
                     id="show-filters-button"
                     translate="BACKLOG.FILTERS.SHOW"
                 )
-                a.trans-button.active.e2e-open-filter(
+                a.trans-button.menu-button.active.e2e-open-filter.ng-animate-disabled(
                     ng-if="ctrl.activeFilters"
                     href=""
                     title="{{'BACKLOG.FILTERS.HIDE' | translate}}"
                     id="show-filters-button"
                     translate="BACKLOG.FILTERS.HIDE"
                 )
-                a.trans-button(
+                a.trans-button.menu-button(
                     ng-if="userstories.length"
                     href=""
                     title="{{'BACKLOG.TAGS.TOGGLE' | translate}}"
