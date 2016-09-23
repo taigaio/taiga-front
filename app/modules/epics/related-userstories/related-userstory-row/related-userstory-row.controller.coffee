@@ -40,15 +40,15 @@ class RelatedUserstoryRowController
         return @translate.instant("COMMON.ASSIGNED_TO.NOT_ASSIGNED")
 
     onDeleteRelatedUserstory: () ->
-        title = @translate.instant('EPIC.TITLE_LIGHTBOX_DELETE_RELATED_USERSTORY')
-        message = @translate.instant('EPIC.MSG_LIGHTBOX_DELETE_RELATED_USERSTORY', {
+        title = @translate.instant('EPIC.TITLE_LIGHTBOX_UNLINK_RELATED_USERSTORY')
+        message = @translate.instant('EPIC.MSG_LIGHTBOX_UNLINK_RELATED_USERSTORY', {
             subject: @.userstory.get('subject')
         })
 
         return @confirm.askOnDelete(title, message)
             .then (askResponse) =>
                 onError = () =>
-                    message = @translate.instant('EPIC.ERROR_DELETE_RELATED_USERSTORY', {errorMessage: message})
+                    message = @translate.instant('EPIC.ERROR_UNLINK_RELATED_USERSTORY', {errorMessage: message})
                     @confirm.notify("error", null, message)
                     askResponse.finish(false)
 
