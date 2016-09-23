@@ -125,15 +125,14 @@ describe "RelatedUserstoryRow", ->
             finish: sinon.spy()
         }
 
-        mocks.translate.instant.withArgs("EPIC.TITLE_LIGHTBOX_DELETE_RELATED_USERSTORY").returns("title")
-        mocks.translate.instant.withArgs("EPIC.MSG_LIGHTBOX_DELETE_RELATED_USERSTORY", {subject: "Deleting"}).returns("message")
+        mocks.translate.instant.withArgs("EPIC.TITLE_LIGHTBOX_UNLINK_RELATED_USERSTORY").returns("title")
+        mocks.translate.instant.withArgs("EPIC.MSG_LIGHTBOX_UNLINK_RELATED_USERSTORY", {subject: "Deleting"}).returns("message")
 
         mocks.tgConfirm.askOnDelete = sinon.stub()
         mocks.tgConfirm.askOnDelete.withArgs("title", "message").promise().resolve(askResponse)
 
         promise = mocks.tgResources.epics.deleteRelatedUserstory.withArgs(123, 124).promise().resolve(true)
         RelatedUserstoryRowCtrl.onDeleteRelatedUserstory().then () ->
-            expect(mocks.tgResources.epics.deleteRelatedUserstory).have.been.calledWith(123, 124)
             expect(RelatedUserstoryRowCtrl.loadRelatedUserstories).have.been.calledOnce
             expect(askResponse.finish).have.been.calledOnce
             done()
@@ -153,16 +152,15 @@ describe "RelatedUserstoryRow", ->
             finish: sinon.spy()
         }
 
-        mocks.translate.instant.withArgs("EPIC.TITLE_LIGHTBOX_DELETE_RELATED_USERSTORY").returns("title")
-        mocks.translate.instant.withArgs("EPIC.MSG_LIGHTBOX_DELETE_RELATED_USERSTORY", {subject: "Deleting"}).returns("message")
-        mocks.translate.instant.withArgs("EPIC.ERROR_DELETE_RELATED_USERSTORY", {errorMessage: "message"}).returns("error message")
+        mocks.translate.instant.withArgs("EPIC.TITLE_LIGHTBOX_UNLINK_RELATED_USERSTORY").returns("title")
+        mocks.translate.instant.withArgs("EPIC.MSG_LIGHTBOX_UNLINK_RELATED_USERSTORY", {subject: "Deleting"}).returns("message")
+        mocks.translate.instant.withArgs("EPIC.ERROR_UNLINK_RELATED_USERSTORY", {errorMessage: "message"}).returns("error message")
 
         mocks.tgConfirm.askOnDelete = sinon.stub()
         mocks.tgConfirm.askOnDelete.withArgs("title", "message").promise().resolve(askResponse)
 
         promise = mocks.tgResources.epics.deleteRelatedUserstory.withArgs(123, 124).promise().reject(new Error("error"))
         RelatedUserstoryRowCtrl.onDeleteRelatedUserstory().then () ->
-            expect(mocks.tgResources.epics.deleteRelatedUserstory).have.been.calledWith(123, 124)
             expect(RelatedUserstoryRowCtrl.loadRelatedUserstories).to.not.have.been.called
             expect(askResponse.finish).have.been.calledWith(false)
             expect(mocks.tgConfirm.notify).have.been.calledWith("error", null, "error message")

@@ -44,7 +44,6 @@ class RelatedUserstoryRowController
         message = @translate.instant('EPIC.MSG_LIGHTBOX_UNLINK_RELATED_USERSTORY', {
             subject: @.userstory.get('subject')
         })
-
         return @confirm.askOnDelete(title, message)
             .then (askResponse) =>
                 onError = () =>
