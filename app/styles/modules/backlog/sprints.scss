@@ -78,10 +78,11 @@
             }
         }
         .number {
-            @include font-size(small);
+            @include font-size(xsmall);
+            margin-right: .2rem;
         }
         .description {
-            @include font-size(x-small);
+            @include font-size(xsmall);
             line-height: .6rem;
             margin-top: 5px;
         }
