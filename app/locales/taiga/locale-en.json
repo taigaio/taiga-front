@@ -120,7 +120,7 @@
         "TASK": "Task",
         "ISSUE": "Issue",
         "TAGS": {
-            "PLACEHOLDER": "I'm it! Tag me...",
+            "PLACEHOLDER": "Enter tag",
             "DELETE": "Delete tag",
             "ADD": "Add tag"
         },
