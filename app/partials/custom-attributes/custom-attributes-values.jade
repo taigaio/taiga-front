@@ -1,8 +1,17 @@
 section.duty-custom-fields(ng-show="ctrl.customAttributes.length")
-    div.custom-fields-header
+    .custom-fields-header
         span(translate="COMMON.CUSTOM_ATTRIBUTES.CUSTOM_FIELDS")
-        // Remove .open class on click on this button in both .icon and .custom-fields-body to close
-        a.collapse(href="", class!="<% if (!collapsed) { %>open<% } %>")
+        a.collapse(
+            href=""
+            ng-class="{'open': !collapsed}"
+            ng-click="toggleCollapse()"
+        )
             tg-svg(svg-icon="icon-arrow-down")
-    div.custom-fields-body(class!="<% if (!collapsed) { %>open<% } %>")
-        div(ng-repeat="att in ctrl.customAttributes", tg-custom-attribute-value="ctrl.getAttributeValue(att)", required-edition-perm!="<%- requiredEditionPerm %>")
+    .custom-fields-body(
+        ng-show="!collapsed"
+    )
+        .custom-attribute(
+            ng-repeat="attr in ctrl.customAttributes"
+            tg-custom-attribute-value="ctrl.getAttributeValue(attr)"
+            required-edition-perm!="<%- requiredEditionPerm %>"
+        )
