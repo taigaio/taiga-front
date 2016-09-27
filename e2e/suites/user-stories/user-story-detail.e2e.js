@@ -48,7 +48,7 @@ describe('User story detail', function(){
 
     it('attachments', sharedDetail.attachmentTesting);
 
-    describe('custom-fields', sharedDetail.customFields.bind(this, 0));
+    describe('custom-fields', sharedDetail.customFields.bind(this, 1));
 
     describe('related tasks', function() {
         it('create', async function() {

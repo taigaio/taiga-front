@@ -59,7 +59,7 @@ describe('Task detail', function(){
 
     it('attachments', sharedDetail.attachmentTesting);
 
-    describe('custom-fields', sharedDetail.customFields.bind(this, 1));
+    describe('custom-fields', sharedDetail.customFields.bind(this, 2));
 
     it('screenshot', async function() {
         await utils.common.takeScreenshot("tasks", "detail updated");

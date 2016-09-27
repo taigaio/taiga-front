@@ -43,7 +43,7 @@ describe('Issue detail', async function(){
 
     it('attachments', sharedDetail.attachmentTesting);
 
-    describe('custom-fields', sharedDetail.customFields.bind(this, 2));
+    describe('custom-fields', sharedDetail.customFields.bind(this, 3));
 
     it('screenshot', async function() {
         await utils.common.takeScreenshot("issues", "detail updated");
