@@ -47,11 +47,11 @@ helper.drag = function(indexType, indexCustomField, indexNewPosition) {
     let customField = helper.getCustomFiledsByType(indexType).get(indexCustomField).$('.e2e-drag');
     let newPosition = helper.getCustomFiledsByType(indexType).get(indexNewPosition);
 
-    return utils.common.drag(customField, newPosition, 0, 40);
+    return utils.common.drag(customField, newPosition, 5, 25);
 };
 
 helper.getCustomFiledsByType = function(indexType) {
-    return $$('div[tg-project-custom-attributes]').get(indexType).$$('.js-sortable > div');
+    return $$('div[tg-project-custom-attributes]').get(indexType).$$('.e2e-item');
 };
 
 helper.delete = async function(indexType, indexCustomField) {

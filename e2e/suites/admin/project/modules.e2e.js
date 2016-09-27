@@ -78,7 +78,7 @@ describe('modules', function() {
     });
 
     it('enable videoconference', async function() {
-        let functionality = $$('.module').get(4);
+        let functionality = $$('.module').get(5);
 
         let input = functionality.$('.check input');
 
