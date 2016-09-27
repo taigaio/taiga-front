@@ -168,6 +168,8 @@ RelatedTaskCreateFormDirective = ($repo, $compile, $confirm, $tgmodel, $loading,
             $scope.newTask = $tgmodel.make_model("tasks", newTask)
 
         render = ->
+            return if $scope.openNewRelatedTask
+
             $scope.openNewRelatedTask = true
 
             $el.on "keyup", "input", (event)->
