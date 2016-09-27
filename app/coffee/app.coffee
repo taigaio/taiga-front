@@ -76,6 +76,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
 
         return originalWhen.call($routeProvider, path, route)
 
+    # Home
     $routeProvider.when("/",
         {
             templateUrl: "home/home.html",
@@ -89,6 +90,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
         }
     )
 
+    # Discover
     $routeProvider.when("/discover",
         {
             templateUrl: "discover/discover-home/discover-home.html",
@@ -110,6 +112,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
         }
     )
 
+    # My Projects
     $routeProvider.when("/projects/",
         {
             templateUrl: "projects/listing/projects-listing.html",
@@ -123,16 +126,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
             controllerAs: "vm"
         }
     )
-
-    $routeProvider.when("/blocked-project/:pslug/",
-        {
-            templateUrl: "projects/project/blocked-project.html",
-            loader: true,
-            controller: "Project",
-            controllerAs: "vm"
-        }
-    )
-
+    # Project
     $routeProvider.when("/project/:pslug/",
         {
             templateUrl: "projects/project/project.html",
@@ -152,6 +146,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
         }
     )
 
+    # Epics
     $routeProvider.when("/project/:pslug/epics",
     {
             section: "epics",
@@ -162,7 +157,6 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
         }
     )
 
-    # Epics
     $routeProvider.when("/project/:pslug/epic/:epicref",
         {
             templateUrl: "epic/epic-detail.html",
@@ -485,6 +479,12 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
     )
 
     # Errors/Exceptions
+    $routeProvider.when("/blocked-project/:pslug/",
+        {
+            templateUrl: "projects/project/blocked-project.html",
+            loader: true,
+        }
+    )
     $routeProvider.when("/error",
         {templateUrl: "error/error.html"})
     $routeProvider.when("/not-found",
