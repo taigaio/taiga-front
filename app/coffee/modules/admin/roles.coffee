@@ -353,6 +353,18 @@ RolePermissionsDirective = ($rootscope, $repo, $confirm, $compile) ->
 
             categories = []
 
+            epicPermissions = [
+                { key: "view_epics", name: "COMMON.PERMISIONS_CATEGORIES.EPICS.VIEW_EPICS"}
+                { key: "add_epic", name: "COMMON.PERMISIONS_CATEGORIES.EPICS.ADD_EPICS"}
+                { key: "modify_epic", name: "COMMON.PERMISIONS_CATEGORIES.EPICS.MODIFY_EPICS"}
+                { key: "comment_epic", name: "COMMON.PERMISIONS_CATEGORIES.EPICS.COMMENT_EPICS"}
+                { key: "delete_epic", name: "COMMON.PERMISIONS_CATEGORIES.EPICS.DELETE_EPICS"}
+            ]
+            categories.push({
+                name: "COMMON.PERMISIONS_CATEGORIES.EPICS.NAME" ,
+                permissions: setActivePermissions(epicPermissions)
+            })
+
             milestonePermissions = [
                 { key: "view_milestones", name: "COMMON.PERMISIONS_CATEGORIES.SPRINTS.VIEW_SPRINTS"}
                 { key: "add_milestone", name: "COMMON.PERMISIONS_CATEGORIES.SPRINTS.ADD_SPRINTS"}

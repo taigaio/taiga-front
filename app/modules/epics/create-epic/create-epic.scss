@@ -1,0 +1,75 @@
+.lightbox-create-epic {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    opacity: 1;
+    .create-epic-container {
+        max-width: 700px;
+        width: 90%;
+    }
+    .subject-container {
+        align-items: center;
+        display: flex;
+        .subject {
+            padding-left: 1rem;
+            width: 100%;
+        }
+    }
+    .attachments {
+        margin-bottom: 0;
+    }
+    .settings {
+        display: flex;
+        justify-content: center;
+        fieldset {
+            margin-right: .5rem;
+            &:hover {
+                color: $white;
+                transition: all .2s ease-in;
+                transition-delay: .2s;
+            }
+            &:last-child {
+                margin: 0;
+            }
+        }
+        input {
+            display: none;
+            &:checked+label {
+                background: $primary;
+                border: 1px solid $primary;
+                color: $white;
+            }
+            &:checked+.blocked {
+                background: $red;
+                border: 1px solid $red;
+                color: $white;
+            }
+        }
+    }
+    label {
+        @include font-size(small);
+        background: $mass-white;
+        border: 1px solid $gray-light;
+        color: $gray-light;
+        cursor: pointer;
+        display: block;
+        padding: .5rem 3rem;
+        text-transform: none;
+        transition: all .2s ease-in;
+        &:hover {
+            background: $primary-light;
+            border: 1px solid $primary;
+            color: $white;
+        }
+        &.blocked {
+            &:hover {
+                background: $red-light;
+                border: 1px solid $red;
+            }
+        }
+    }
+    .create-epic-button {
+        display: block;
+        width: 100%;
+    }
+}

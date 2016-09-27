@@ -44,6 +44,11 @@
     include history-templates/history-custom-attributes
 
 .diff-wrapper(
+    ng-if="vm.type == 'color'"
+)
+    include history-templates/history-color
+
+.diff-wrapper(
     ng-if="vm.type == 'team_requirement'"
 )
     include history-templates/team-requirement
@@ -57,5 +62,3 @@
     ng-if="vm.type == 'is_blocked'"
 )
     include history-templates/blocked
-    
-    

@@ -56,6 +56,15 @@
                 width: 100%;
             }
         }
+        .new-color {
+            border-radius: 50%;
+            display: inline-block;
+            height: 1rem;
+            margin-left: .2rem;
+            position: relative;
+            top: .1rem;
+            width: 1rem;
+        }
     }
     .activity-member-view {
         display: flex;

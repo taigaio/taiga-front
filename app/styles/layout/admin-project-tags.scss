@@ -27,7 +27,10 @@
         background: $white;
     }
     .icon {
-        opacity: 1;
+        &.icon-close,
+        &.icon-save {
+            opacity: 1;
+        }
     }
 }
 

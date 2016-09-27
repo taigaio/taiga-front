@@ -21,6 +21,25 @@ script(type="text/ng-template", id="search-issues")
     div.empty-large(ng-class="{'hidden': issues.length}")
         include ../components/empty-search-results
 
+script(type="text/ng-template", id="search-epics")
+    div.search-result-table-container(ng-class="{'hidden': !epics.length}", tg-bind-scope)
+        div.search-result-table-header
+            div.row.title
+                div.ref(translate="COMMON.FIELDS.REF")
+                div.user-stories(translate="SEARCH.FILTER_EPICS")
+                div.status(translate="COMMON.FIELDS.STATUS")
+        div.search-result-table-body
+            div.row.table-main(ng-repeat="epic in epics track by epic.id")
+                div.ref(tg-bo-ref="epic.ref")
+                div.user-stories
+                    div.user-story-name
+                        a(href="", tg-nav="project-epics-detail:project=project.slug,ref=epic.ref",
+                            tg-bo-bind="epic.subject")
+                div.status(tg-listitem-epic-status="epic")
+
+    div.empty-search-results(ng-class="{'hidden': epics.length}")
+        include ../components/empty-search-results
+
 
 script(type="text/ng-template", id="search-userstories")
     div.search-result-table-container(ng-class="{'hidden': !userstories.length}", tg-bind-scope)

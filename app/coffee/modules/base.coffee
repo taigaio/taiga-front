@@ -73,8 +73,10 @@ urls = {
     "project-taskboard": "/project/:project/taskboard/:sprint"
     "project-kanban": "/project/:project/kanban"
     "project-issues": "/project/:project/issues"
+    "project-epics": "/project/:project/epics"
     "project-search": "/project/:project/search"
 
+    "project-epics-detail": "/project/:project/epic/:ref"
     "project-userstories-detail": "/project/:project/us/:ref"
     "project-tasks-detail": "/project/:project/task/:ref"
     "project-issues-detail": "/project/:project/issue/:ref"

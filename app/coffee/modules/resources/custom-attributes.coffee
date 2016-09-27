@@ -32,6 +32,9 @@ resourceProvider = ($repo) ->
         return $repo.queryMany(resource, {project: projectId})
 
     service = {
+        epic:{
+            list: (projectId) -> _list(projectId, "custom-attributes/epic")
+        }
         userstory:{
             list: (projectId) -> _list(projectId, "custom-attributes/userstory")
         }

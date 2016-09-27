@@ -25,6 +25,8 @@ DutyDirective = (navurls, $translate) ->
 
         scope.vm.getDutyType = () ->
             if scope.vm.duty
+                if scope.vm.duty.get('_name') == "epics"
+                    return $translate.instant("COMMON.EPIC")
                 if scope.vm.duty.get('_name') == "userstories"
                     return $translate.instant("COMMON.USER_STORY")
                 if scope.vm.duty.get('_name') == "tasks"

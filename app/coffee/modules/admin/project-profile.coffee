@@ -89,15 +89,15 @@ class ProjectProfileController extends mixOf(taiga.Controller, taiga.PageMixin)
 
             @scope.projectId = project.id
             @scope.project = project
-            @scope.pointsList = _.sortBy(project.points, "order")
+            @scope.epicStatusList = _.sortBy(project.epic_statuses, "order")
             @scope.usStatusList = _.sortBy(project.us_statuses, "order")
+            @scope.pointsList = _.sortBy(project.points, "order")
             @scope.taskStatusList = _.sortBy(project.task_statuses, "order")
-            @scope.prioritiesList = _.sortBy(project.priorities, "order")
-            @scope.severitiesList = _.sortBy(project.severities, "order")
             @scope.issueTypesList = _.sortBy(project.issue_types, "order")
             @scope.issueStatusList = _.sortBy(project.issue_statuses, "order")
+            @scope.prioritiesList = _.sortBy(project.priorities, "order")
+            @scope.severitiesList = _.sortBy(project.severities, "order")
             @scope.$emit('project:loaded', project)
-
 
             @scope.projectTags = _.map @scope.project.tags, (it) =>
                 return [it, @scope.project.tags_colors[it]]
@@ -425,6 +425,10 @@ class CsvExporterController extends taiga.Controller
             @._generateUuid()
 
 
+class CsvExporterEpicsController extends CsvExporterController
+    type: "epics"
+
+
 class CsvExporterUserstoriesController extends CsvExporterController
     type: "userstories"
 
@@ -437,6 +441,7 @@ class CsvExporterIssuesController extends CsvExporterController
     type: "issues"
 
 
+module.controller("CsvExporterEpicsController", CsvExporterEpicsController)
 module.controller("CsvExporterUserstoriesController", CsvExporterUserstoriesController)
 module.controller("CsvExporterTasksController", CsvExporterTasksController)
 module.controller("CsvExporterIssuesController", CsvExporterIssuesController)
@@ -445,6 +450,21 @@ module.controller("CsvExporterIssuesController", CsvExporterIssuesController)
 #############################################################################
 ## CSV Directive
 #############################################################################
+
+CsvEpicDirective = ($translate) ->
+    link = ($scope) ->
+        $scope.sectionTitle = "ADMIN.CSV.SECTION_TITLE_EPIC"
+
+    return {
+        controller: "CsvExporterEpicsController",
+        controllerAs: "ctrl",
+        templateUrl: "admin/project-csv.html",
+        link: link,
+        scope: true
+    }
+
+module.directive("tgCsvEpic", ["$translate", CsvEpicDirective])
+
 
 CsvUsDirective = ($translate) ->
     link = ($scope) ->

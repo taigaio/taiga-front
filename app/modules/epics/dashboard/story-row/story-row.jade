@@ -1,0 +1,47 @@
+.story-row(
+    ng-class="{'is-blocked': vm.story.get('is_blocked'), 'is-closed': vm.story.get('is_closed')}"
+)
+    .vote(
+        ng-if="vm.column.votes"
+        ng-class="{'is-voter': vm.story.get('is_voter')}"
+    )
+        tg-svg(svg-icon='icon-upvote')
+        span {{::vm.story.get('total_voters')}}
+
+    .name(ng-if="vm.column.name")
+        - var hash = "#";
+        a(
+            tg-nav="project-userstories-detail:project=vm.story.getIn(['project_extra_info', 'slug']),ref=vm.story.get('ref')"
+            ng-attr-title="{{::vm.story.get('subject')}}"
+        ) #{hash}{{::vm.story.get('ref')}} {{::vm.story.get('subject')}}
+        tg-belong-to-epics(
+            ng-if="vm.story.get('epics')"
+            format="pill"
+            epics="vm.story.get('epics')"
+        )
+    .project(
+        ng-if="vm.column.project"
+        tg-nav="project:project=vm.story.getIn(['project_extra_info', 'slug'])"
+    )
+        img(
+            tg-project-logo-small-src="::vm.story.get('project_extra_info')"
+            alt="{{::vm.story.getIn(['project_extra_info', 'name'])}}"
+        )
+    .sprint(ng-if="vm.column.sprint") {{::vm.story.get('milestone_name')}}
+    .assigned(ng-if="vm.column.assigned && vm.story.get('assigned_to')")
+        img(
+            tg-avatar="vm.story.get('assigned_to_extra_info')"
+            alt="{{::vm.story.getIn(['assigned_to_extra_info', 'full_name_display'])}}"
+        )
+    .assigned(ng-if="vm.column.assigned && !vm.story.get('assigned_to')")
+        img(
+            src="/#{v}/images/unnamed.png"
+            alt="{{EPICS.DASHBOARD.UNASSIGNED | translate}}"
+        )
+    .status(ng-if="vm.column.status") {{vm.story.getIn(['status_extra_info', 'name'])}}
+    .progress(ng-if="vm.column.progress")
+        .progress-bar
+        .progress-status(
+            ng-if="::vm.percentage"
+            ng-style="{'width':vm.percentage}"
+        )

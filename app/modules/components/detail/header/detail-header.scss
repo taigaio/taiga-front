@@ -1,0 +1,120 @@
+.detail-header-container {
+    background: $mass-white;
+    flex: 1;
+    padding: 1rem;
+    position: relative;
+    &:hover {
+        .detail-edit {
+            opacity: 1;
+        }
+    }
+    &.blocked {
+        background: $red;
+        color: $white;
+        transition: all .2s linear;
+        a,
+        .detail-number,
+        .detail-subject {
+            color: $white;
+        }
+        svg {
+            fill: $white;
+        }
+    }
+    .item-generated-us,
+    .item-origin-issue,
+    .task-belongs-to,
+    .belong-to-epics-wrapper,
+    .block-desc-container {
+        @include font-size(small);
+        margin-top: .5rem;
+    }
+    .item-generated-us,
+    .task-belongs-to,
+    .item-origin-issue {
+        a {
+            cursor: pointer;
+            padding: 0 .2rem;
+        }
+        .item-ref {
+            padding: 0 .2rem;
+        }
+    }
+}
+
+.detail-title-wrapper {
+    @include font-size(larger);
+    @include font-type(text);
+    align-content: center;
+    display: flex;
+    max-width: 95%;
+    position: relative;
+    transition: all .2s linear;
+    &.blocked {
+        background: $red;
+        transition: all .2s linear;
+    }
+    .detail-title-text {
+        line-height: normal;
+        margin: 0;
+    }
+    .detail-number {
+        color: $gray-light;
+        flex-shrink: 0;
+        margin-right: .5rem;
+    }
+    .detail-subject {
+        color: $gray;
+        flex-grow: 1;
+    }
+    .detail-edit {
+        cursor: pointer;
+        margin-left: .75rem;
+        opacity: 0;
+        transition: opacity .2s;
+        svg {
+            @include svg-size(1.25rem);
+        }
+    }
+}
+
+.edit-title-wrapper {
+    @include font-size(larger);
+    @include font-type(text);
+    display: flex;
+    flex: 1;
+    .edit-title-input {
+        background: $white;
+        flex: 1;
+    }
+    .edit-title-button {
+        background: none;
+        display: inline;
+        margin-left: 1rem;
+        transition: fill .2s;
+        &:hover {
+            fill: $primary;
+        }
+    }
+}
+
+.block-desc-container {
+    .block-description-title {
+        @include font-type(bold);
+        margin-right: .5rem;
+
+    }
+}
+
+.issue-nav {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    a {
+        display: inline-block;
+    }
+    svg {
+        @include svg-size(1.2rem);
+        fill: currentColor;
+    }
+}

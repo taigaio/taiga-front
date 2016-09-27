@@ -54,6 +54,11 @@ div.taskboard-table(
                           tg-bo-title="'#' + us.ref + ' ' + us.subject")
                             span.us-ref(tg-bo-ref="us.ref")
                             span(ng-bind="us.subject")
+                            tg-belong-to-epics(
+                                format="pill"
+                                ng-if="us.epics"
+                                epics="us.epics"
+                            )
                     p.points-value
                         span(ng-bind="us.total_points")
                         span(translate="TASKBOARD.TABLE.FIELD_POINTS")

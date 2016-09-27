@@ -11,7 +11,7 @@
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 # GNU Affero General Public License for more details.
 #
-# You should have received a copy of the GNU Affero General Public License
+# You showld have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
 # File: profile-favs.controller.spec.coffee
@@ -127,7 +127,7 @@ describe "ProfileLiked", ->
             expect(ctrl.q).to.be.equal(textQuery)
             done()
 
-    it "shou loading spinner during the call to the api", (done) ->
+    it "show loading spinner during the call to the api", (done) ->
         $scope = $rootScope.$new()
         ctrl = $controller("ProfileLiked", $scope, {user: user})
 
@@ -154,7 +154,7 @@ describe "ProfileLiked", ->
             expect(ctrl.isLoading).to.be.false
             done()
 
-    it "shou no results placeholder", (done) ->
+    it "show no results placeholder", (done) ->
         $scope = $rootScope.$new()
         ctrl = $controller("ProfileLiked", $scope, {user: user})
 
@@ -282,6 +282,37 @@ describe "ProfileVoted", ->
             expect(ctrl.q).to.be.equal(textQuery)
             done()
 
+    it "show only items of epics", (done) ->
+        $scope = $rootScope.$new()
+        ctrl = $controller("ProfileVoted", $scope, {user: user})
+
+        type = "epic"
+
+        items = Immutable.fromJS({
+            data: [
+                {id: 1},
+                {id: 2},
+                {id: 3}
+            ],
+            next: true
+        })
+
+        mocks.userServices.getVoted.withArgs(user.get("id"), 1, type, null).promise().resolve(items)
+
+        expect(ctrl.items.size).to.be.equal(0)
+        expect(ctrl.scrollDisabled).to.be.false
+        expect(ctrl.type).to.be.null
+        expect(ctrl.q).to.be.null
+
+        ctrl.showEpicsOnly().then () =>
+            expectItems = items.get("data")
+
+            expect(ctrl.items.equals(expectItems)).to.be.true
+            expect(ctrl.scrollDisabled).to.be.false
+            expect(ctrl.type).to.be.type
+            expect(ctrl.q).to.be.null
+            done()
+
     it "show only items of user stories", (done) ->
         $scope = $rootScope.$new()
         ctrl = $controller("ProfileVoted", $scope, {user: user})
@@ -375,7 +406,7 @@ describe "ProfileVoted", ->
             expect(ctrl.q).to.be.null
             done()
 
-    it "shou loading spinner during the call to the api", (done) ->
+    it "show loading spinner during the call to the api", (done) ->
         $scope = $rootScope.$new()
         ctrl = $controller("ProfileVoted", $scope, {user: user})
 
@@ -402,7 +433,7 @@ describe "ProfileVoted", ->
             expect(ctrl.isLoading).to.be.false
             done()
 
-    it "shou no results placeholder", (done) ->
+    it "show no results placeholder", (done) ->
         $scope = $rootScope.$new()
         ctrl = $controller("ProfileVoted", $scope, {user: user})
 
@@ -560,6 +591,37 @@ describe "ProfileWatched", ->
             expect(ctrl.q).to.be.null
             done()
 
+    it "show only items of epics", (done) ->
+        $scope = $rootScope.$new()
+        ctrl = $controller("ProfileWatched", $scope, {user: user})
+
+        type = "epic"
+
+        items = Immutable.fromJS({
+            data: [
+                {id: 1},
+                {id: 2},
+                {id: 3}
+            ],
+            next: true
+        })
+
+        mocks.userServices.getWatched.withArgs(user.get("id"), 1, type, null).promise().resolve(items)
+
+        expect(ctrl.items.size).to.be.equal(0)
+        expect(ctrl.scrollDisabled).to.be.false
+        expect(ctrl.type).to.be.null
+        expect(ctrl.q).to.be.null
+
+        ctrl.showEpicsOnly().then () =>
+            expectItems = items.get("data")
+
+            expect(ctrl.items.equals(expectItems)).to.be.true
+            expect(ctrl.scrollDisabled).to.be.false
+            expect(ctrl.type).to.be.type
+            expect(ctrl.q).to.be.null
+            done()
+
     it "show only items of user stories", (done) ->
         $scope = $rootScope.$new()
         ctrl = $controller("ProfileWatched", $scope, {user: user})
@@ -653,7 +715,7 @@ describe "ProfileWatched", ->
             expect(ctrl.q).to.be.null
             done()
 
-    it "shou loading spinner during the call to the api", (done) ->
+    it "show loading spinner during the call to the api", (done) ->
         $scope = $rootScope.$new()
         ctrl = $controller("ProfileWatched", $scope, {user: user})
 
@@ -680,7 +742,7 @@ describe "ProfileWatched", ->
             expect(ctrl.isLoading).to.be.false
             done()
 
-    it "shou no results placeholder", (done) ->
+    it "show no results placeholder", (done) ->
         $scope = $rootScope.$new()
         ctrl = $controller("ProfileWatched", $scope, {user: user})
 

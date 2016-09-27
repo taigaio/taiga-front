@@ -35,16 +35,14 @@ class ProjectController
 
         @appMetaService.setfn @._setMeta.bind(this)
 
-    _setMeta: (project)->
+    _setMeta: ()->
         return null if !@.project
-
-        metas = {}
 
         ctx = {projectName: @.project.get("name")}
 
-        metas.title = @translate.instant("PROJECT.PAGE_TITLE", ctx)
-        metas.description = @.project.get("description")
-
-        return metas
+        return {
+            title: @translate.instant("PROJECT.PAGE_TITLE", ctx)
+            description: @.project.get("description")
+        }
 
 angular.module("taigaProjects").controller("Project", ProjectController)

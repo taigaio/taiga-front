@@ -111,6 +111,7 @@ describe "ProjectMenu", ->
                 menu = ctrl.menu.toJS()
 
                 expect(menu).to.be.eql({
+                    epics: false,
                     backlog: false,
                     kanban: false,
                     issues: false,
@@ -119,11 +120,12 @@ describe "ProjectMenu", ->
 
             it "all options enabled", () ->
                 project = Immutable.fromJS({
+                    is_epics_activated: true,
                     is_backlog_activated: true,
                     is_kanban_activated: true,
                     is_issues_activated: true,
                     is_wiki_activated: true,
-                    my_permissions: ["view_us", "view_issues", "view_wiki_pages"]
+                    my_permissions: ["view_epics", "view_us", "view_issues", "view_wiki_pages"]
                 })
 
                 mocks.projectService.project = project
@@ -136,6 +138,7 @@ describe "ProjectMenu", ->
                 menu = ctrl.menu.toJS()
 
                 expect(menu).to.be.eql({
+                    epics: true,
                     backlog: true,
                     kanban: true,
                     issues: true,
@@ -144,6 +147,7 @@ describe "ProjectMenu", ->
 
             it "all options disabled because the user doesn't have permissions", () ->
                 project = Immutable.fromJS({
+                    is_epics_activated: true,
                     is_backlog_activated: true,
                     is_kanban_activated: true,
                     is_issues_activated: true,
@@ -161,6 +165,7 @@ describe "ProjectMenu", ->
                 menu = ctrl.menu.toJS()
 
                 expect(menu).to.be.eql({
+                    epics: false,
                     backlog: false,
                     kanban: false,
                     issues: false,

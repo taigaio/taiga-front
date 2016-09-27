@@ -25,4 +25,13 @@
             background: rgba($red-light, .3);
         }
     }
+    .diff-color-wrapper {
+        align-items: center;
+        display: flex;
+        .diff {
+            display: inline-block;
+            height: 1.2rem;
+            width: 1.2rem;
+        }
+    }
 }

@@ -1,0 +1,68 @@
+@import '../../../../styles/dependencies/mixins/epics-dashboard';
+
+.story-row {
+    @include font-size(small);
+    @include epics-table;
+    align-items: center;
+    background: $white;
+    border-bottom: 1px solid $whitish;
+    display: flex;
+    margin-left: 4rem;
+    transition: background .2s;
+    &:hover {
+        background: rgba($primary-light, .05);
+    }
+    &.is-blocked {
+        background: rgba($red-light, .5);
+    }
+    &.is-closed {
+        .name {
+            color: $gray-light;
+            text-decoration: line-through;
+        }
+    }
+    .name {
+        flex-basis: 17.5vw;
+        a {
+            cursor: pointer;
+        }
+    }
+    .progress-bar,
+    .progress-status {
+        height: 1.5rem;
+        left: 0;
+        position: absolute;
+        top: .25rem;
+    }
+    .progress-bar {
+        background: $mass-white;
+        max-width: 40vw;
+        width: 100%;
+    }
+    .progress-status {
+        background: $primary-light;
+        width: 10vw;
+    }
+    .vote {
+        color: $gray;
+        &.is-voter {
+            color: $primary-light;
+            fill: $primary-light;
+        }
+    }
+    .project {
+        cursor: pointer;
+    }
+    .project,
+    .assigned {
+        img {
+            width: 40px;
+        }
+    }
+    .icon-upvote {
+        @include svg-size(.75rem);
+        fill: $gray;
+        margin-right: .25rem;
+        vertical-align: middle;
+    }
+}

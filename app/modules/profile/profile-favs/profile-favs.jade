@@ -28,6 +28,14 @@ section.profile-favs
             )
             a(
                 href=""
+                ng-if="::vm.enableFilterByEpics"
+                ng-click="vm.showEpicsOnly()"
+                ng-class="{active: vm.type === 'epic'}"
+                title="{{ 'USER.PROFILE_FAVS.FILTER_TYPE_EPICS_TITLE'|translate }}"
+                translate="{{ 'USER.PROFILE_FAVS.FILTER_TYPE_EPICS'|translate }}"
+            )
+            a(
+                href=""
                 ng-if="::vm.enableFilterByUserStories"
                 ng-click="vm.showUserStoriesOnly()"
                 ng-class="{active: vm.type === 'userstory'}",
@@ -63,6 +71,11 @@ section.profile-favs
                 ng-switch-when="project"
                 tg-fav-item="item"
                 item-type="project"
+            )
+            div(
+                ng-switch-when="epic"
+                tg-fav-item="item"
+                item-type="epic"
             )
             div(
                 ng-switch-when="userstory"

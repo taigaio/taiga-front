@@ -16,7 +16,7 @@ section.custom-fields-table.basic-table
 
     .table-body
         .js-sortable
-            div(
+            .e2e-item(
                 ng-repeat="attr in customAttributes track by attr.id"
                 tg-bind-scope
             )

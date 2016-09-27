@@ -18,7 +18,9 @@ describe('project detail', function() {
     });
 
     it('edit tag, description and project settings', async function() {
-        let tag = $('.tag-input');
+        adminHelper.enableAddTags();
+
+        let tag = $('.e2e-add-tag-input');
 
         tag.sendKeys('aaa');
         browser.actions().sendKeys(protractor.Key.ENTER).perform();
@@ -105,7 +107,10 @@ describe('project detail', function() {
 
         await lb.waitOpen();
 
-        lb.search('Alicia Flores');
+        let username = lb.getUserName(0);
+
+        await lb.search(username);
+
         lb.select(0);
         lb.addComment('text');
 

@@ -48,12 +48,19 @@ describe "HistorySection", ->
         }
         provide.value "$tgStorage", mocks.tgStorage
 
+    _mockTgProjectService = () ->
+        mocks.tgProjectService = {
+            hasPermission: sinon.stub()
+        }
+        provide.value "tgProjectService", mocks.tgProjectService
+
     _mocks = () ->
         module ($provide) ->
             provide = $provide
             _mockTgResources()
             _mockTgRepo()
             _mocktgStorage()
+            _mockTgProjectService()
             return null
 
     beforeEach ->

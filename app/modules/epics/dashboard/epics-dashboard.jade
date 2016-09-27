@@ -1,0 +1,39 @@
+.wrapper(ng-init="vm.loadInitialData()")
+    tg-project-menu
+    section.main.epics(role="main")
+        header.header-with-actions
+            h1(
+                tg-main-title
+                project-name="vm.project.get('name')"
+                i18n-section-name="{{vm.sectionName}}"
+            )
+            .action-buttons(ng-if="vm.epics.size && vm.canCreateEpics()")
+                button.button-green.e2e-create-epic(
+                    translate="EPICS.DASHBOARD.ADD"
+                    title="{{ EPICS.DASHBOARD.ADD_TITLE | translate }}",
+                    ng-click="vm.onCreateEpic()"
+                )
+
+        tg-epics-table(
+            ng-if="vm.epics.size"
+        )
+
+        section.empty-epics.empty-large(ng-if="!vm.epics.size")
+            img(
+                src="/#{v}/images/empty/empty_des.png"
+                ng-title="EPICS.EMPTY.HELP | translate"
+            )
+            h1.title(translate="EPICS.EMPTY.TITLE")
+            p(translate="EPICS.EMPTY.EXPLANATION")
+            a(
+                translate="EPICS.EMPTY.HELP"
+                href="https://tree.taiga.io/support/epics/what-is-an-epic/"
+                target="_blank"
+                ng-title="EPICS.EMPTY.HELP | translate"
+            )
+            button.create-epic.button-green(
+                ng-if="vm.canCreateEpics()"
+                translate="EPICS.DASHBOARD.ADD"
+                title="{{ EPICS.DASHBOARD.ADD_TITLE | translate }}"
+                ng-click="vm.onCreateEpic()"
+            )

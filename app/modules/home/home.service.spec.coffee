@@ -24,10 +24,12 @@ describe "tgHome", ->
     _mockResources = () ->
         mocks.resources = {}
 
+        mocks.resources.epics = {}
         mocks.resources.userstories = {}
         mocks.resources.tasks = {}
         mocks.resources.issues = {}
 
+        mocks.resources.epics.listInAllProjects = sinon.stub()
         mocks.resources.userstories.listInAllProjects = sinon.stub()
         mocks.resources.tasks.listInAllProjects = sinon.stub()
         mocks.resources.issues.listInAllProjects = sinon.stub()
@@ -83,6 +85,25 @@ describe "tgHome", ->
                 project2
             ]))
 
+        mocks.resources.epics.listInAllProjects
+            .withArgs(sinon.match({
+                is_closed: false
+                assigned_to: userId
+            }))
+            .promise()
+            .resolve(Immutable.fromJS([{id: 4, ref: 4, project: "1"}]))
+
+        mocks.resources.epics.listInAllProjects
+            .withArgs(sinon.match({
+                is_closed: false
+                watchers: userId
+            }))
+            .promise()
+            .resolve(Immutable.fromJS([
+                {id: 4, ref: 4, project: "1"},
+                {id: 5, ref: 5, project: "10"} # the user is not member of this project
+            ]))
+
         mocks.resources.userstories.listInAllProjects
             .withArgs(sinon.match({
                 is_closed: false
@@ -110,6 +131,10 @@ describe "tgHome", ->
 
         # mock urls
         mocks.tgNavUrls.resolve
+            .withArgs("project-epics-detail", {project: "project-1", ref: 4})
+            .returns("/testing-project/epic/1")
+
+        mocks.tgNavUrls.resolve
             .withArgs("project-userstories-detail", {project: "project-1", ref: 1})
             .returns("/testing-project/us/1")
 
@@ -125,6 +150,13 @@ describe "tgHome", ->
             .then (workInProgress) ->
                 expect(workInProgress.toJS()).to.be.eql({
                     assignedTo: {
+                        epics: [{
+                            id: 4,
+                            ref: 4,
+                            url: '/testing-project/epic/1',
+                            project: project1,
+                            _name: 'epics'
+                        }]
                         userStories: [{
                             id: 1,
                             ref: 1,
@@ -148,6 +180,13 @@ describe "tgHome", ->
                         }]
                     }
                     watching: {
+                        epics: [{
+                            id: 4,
+                            ref: 4,
+                            url: '/testing-project/epic/1',
+                            project: project1,
+                            _name: 'epics'
+                        }]
                         userStories: [{
                             id: 1,
                             ref: 1,

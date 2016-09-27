@@ -20,6 +20,13 @@ div.wrapper(
         div.admin-attributes-section(
             tg-project-custom-attributes,
             ng-controller="ProjectCustomAttributesController as ctrl",
+            ng-init="type='epic'; customFieldSectionTitle='ADMIN.CUSTOM_FIELDS.EPIC_DESCRIPTION'; customFieldButtonTitle='ADMIN.CUSTOM_FIELDS.EPIC_ADD'"
+        )
+            include ../includes/modules/admin/admin-custom-attributes
+
+        div.admin-attributes-section(
+            tg-project-custom-attributes,
+            ng-controller="ProjectCustomAttributesController as ctrl",
             ng-init="type='userstory'; customFieldSectionTitle='ADMIN.CUSTOM_FIELDS.US_DESCRIPTION'; customFieldButtonTitle='ADMIN.CUSTOM_FIELDS.US_ADD'"
         )
             include ../includes/modules/admin/admin-custom-attributes

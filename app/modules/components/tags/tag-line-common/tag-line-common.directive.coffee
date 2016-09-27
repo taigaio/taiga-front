@@ -33,7 +33,7 @@ TagLineCommonDirective = () ->
                 ctrl.colorArray = ctrl._createColorsArray(ctrl.project.tags_colors)
 
         el.on "keydown", ".tag-input", (event) ->
-            if event.keyCode == 27 && ctrl.newTag.name.length
+            if event.keyCode == 27
                 ctrl.addTag = false
 
                 ctrl.newTag.name = ""

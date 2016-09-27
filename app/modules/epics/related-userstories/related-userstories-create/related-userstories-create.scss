@@ -1,0 +1,83 @@
+.lightbox-create-related-user-stories {
+    .lightbox-create-related-user-stories-wrapper {
+        max-width: 600px;
+        width: 90%;
+    }
+    .related-with-selector {
+        display: flex;
+        margin-bottom: 1rem;
+        input {
+            display: none;
+            &:checked+label {
+                background: $primary-light;
+                color: $white;
+                transition: background .2s ease-in;
+            }
+            &:checked+label:hover {
+                background: $primary-light;
+            }
+            +label {
+                background: rgba($whitish, .7);
+                cursor: pointer;
+                display: block;
+                padding: 2rem 1rem;
+                text-align: center;
+                text-transform: uppercase;
+                transition: background .2s ease-in;
+            }
+            +label:hover {
+                background: rgba($primary-light, .3);
+                transition: background .2s ease-in;
+            }
+        }
+        .related-with-selector-single {
+            flex: 1;
+            &:first-child {
+                margin-right: .5rem;
+            }
+        }
+    }
+    fieldset {
+        label {
+            display: inline-block;
+            margin-bottom: .5rem;
+        }
+    }
+    .new-user-story-title {
+        align-items: flex-end;
+        display: flex;
+    }
+    .existing-user-story-form,
+    .new-user-story-form {
+        margin-bottom: 1rem;
+    }
+    .new-user-story-options {
+        display: flex;
+        margin-left: auto;
+        input {
+            display: none;
+            &:checked+label {
+                background: $primary-light;
+                color: $white;
+                fill: $white;
+                transition: background .2s ease-in;
+            }
+            +label {
+                background: $mass-white;
+                color: $grayer;
+                cursor: pointer;
+                display: block;
+                padding: .5rem;
+                transition: background .2s ease-in;
+            }
+            +label:hover {
+                background: $primary-light;
+                color: $white;
+                fill: $white;
+            }
+        }
+    }
+    button {
+        width: 100%;
+    }
+}

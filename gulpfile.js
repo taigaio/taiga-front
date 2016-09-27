@@ -130,6 +130,7 @@ paths.coffee_order = [
     paths.app + "coffee/modules/backlog/*.coffee",
     paths.app + "coffee/modules/taskboard/*.coffee",
     paths.app + "coffee/modules/kanban/*.coffee",
+    paths.app + "coffee/modules/epics/*.coffee",
     paths.app + "coffee/modules/issues/*.coffee",
     paths.app + "coffee/modules/userstories/*.coffee",
     paths.app + "coffee/modules/tasks/*.coffee",

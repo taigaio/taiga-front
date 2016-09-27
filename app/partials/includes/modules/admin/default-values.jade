@@ -1,19 +1,39 @@
 section.default-values
     form
+
+        //- Epics
+        fieldset
+            label(for="default-value-epic", translate="ADMIN.DEFAULT_VALUES.LABEL_EPIC_STATUS")
+            select(id="default-value-epic", ng-model="project.default_epic_status",
+                   ng-options="s.id as s.name for s in epicStatusList")
+
+        //- User stories
+        fieldset
+            label(for="default-value-us", translate="ADMIN.DEFAULT_VALUES.LABEL_US_STATUS")
+            select(id="default-value-us", ng-model="project.default_us_status",
+                   ng-options="s.id as s.name for s in usStatusList")
+
         fieldset
             label(for="default-points", translate="ADMIN.DEFAULT_VALUES.LABEL_POINTS")
             select(id="default-points", ng-model="project.default_points",
                    ng-options="s.id as s.name for s in pointsList")
 
-        fieldset
-            label(for="default-value-us", translate="ADMIN.DEFAULT_VALUES.LABEL_US")
-            select(id="default-value-us", ng-model="project.default_us_status",
-                   ng-options="s.id as s.name for s in usStatusList")
-
+        //- Tasks
         fieldset
             label(for="default-value-task", translate="ADMIN.DEFAULT_VALUES.LABEL_TASK_STATUS")
             select(id="default-value-task", ng-model="project.default_task_status",
                    ng-options="s.id as s.name for s in taskStatusList")
+
+        //- Issues
+        fieldset
+            label(for="default-value-issue-type", translate="ADMIN.DEFAULT_VALUES.LABEL_ISSUE_TYPE")
+            select(id="default-value-issue-type", ng-model="project.default_issue_type",
+                   ng-options="s.id as s.name for s in issueTypesList")
+
+        fieldset
+            label(for="default-value-issue-status", translate="ADMIN.DEFAULT_VALUES.LABEL_ISSUE_STATUS")
+            select(id="default-value-issue-status", ng-model="project.default_issue_status",
+                   ng-options="s.id as s.name for s in issueStatusList")
 
         fieldset
             label(for="default-value-priority", translate="ADMIN.DEFAULT_VALUES.LABEL_PRIORITY")
@@ -24,16 +44,6 @@ section.default-values
             label(for="default-value-severity", translate="ADMIN.DEFAULT_VALUES.LABEL_SEVERITY")
             select(id="default-value-severity", ng-model="project.default_severity",
                    ng-options="s.id as s.name for s in severitiesList")
-
-        fieldset
-            label(for="default-value-issue-type", translate="ADMIN.DEFAULT_VALUES.LABEL_ISSUE_TYPE")
-            select(id="default-value-issue-type", ng-model="project.default_issue_type",
-                   ng-options="s.id as s.name for s in issueTypesList")
-
-        fieldset
-            label(for="default-value-issue-status", translate="ADMIN.DEFAULT_VALUES.LABEL_ISSUE_STATUS")
-            select(id="default-value-issue-status", ng-model="project.default_issue_status",
-                   ng-options="s.id as s.name for s in issueStatusList")
 
         fieldset
             button.button-green.submit-button(type="submit", title="{{'COMMON.SAVE' | translate}}")

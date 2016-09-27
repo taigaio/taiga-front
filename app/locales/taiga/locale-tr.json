@@ -35,6 +35,8 @@
         "ONE_ITEM_LINE": "Her satıra bir kalem...",
         "NEW_BULK": "Yeni toplu ekleme",
         "RELATED_TASKS": "İlişkili görevler",
+        "PREVIOUS": "Previous",
+        "NEXT": "İleri",
         "LOGOUT": "Çıkış",
         "EXTERNAL_USER": "bir dış kullanıcı",
         "GENERIC_ERROR": "Honki ponkilerimizden biri derki; {{error}}.",
@@ -45,6 +47,11 @@
         "CAPSLOCK_WARNING": "Be careful! You are using capital letters in an input field that is case sensitive.",
         "CONFIRM_CLOSE_EDIT_MODE_TITLE": "Are you sure you want to close the edit mode?",
         "CONFIRM_CLOSE_EDIT_MODE_MESSAGE": "Remember that if you close the edit mode without saving all the changes will be lost",
+        "RELATED_USERSTORIES": "Related user stories",
+        "CARD": {
+            "ASSIGN_TO": "Assign To",
+            "EDIT": "Edit card"
+        },
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Bu değer geçersiz gözüküyor",
             "TYPE_EMAIL": "Bu değer geçerli bir e-posta adresi olmalı.",
@@ -115,6 +122,7 @@
         "USER_STORY": "Kullanıcı hikayesi",
         "TASK": "Görev",
         "ISSUE": "Sorun",
+        "EPIC": "Epic",
         "TAGS": {
             "PLACEHOLDER": "Ben O'yum! Etiketle beni...",
             "DELETE": "Etiket sil",
@@ -193,12 +201,27 @@
             "CONFIRM_DELETE": "Bu özel alandaki tüm bilgiler silinecek.\nDevam etmek istediğinize emin misiniz?"
         },
         "FILTERS": {
-            "TITLE": "filtreler",
+            "TITLE": "Filtreler",
             "INPUT_PLACEHOLDER": "Konu yada referans",
             "TITLE_ACTION_FILTER_BUTTON": "ara",
-            "BREADCRUMB_TITLE": "kategorilere dön",
-            "BREADCRUMB_FILTERS": "Filtreler",
-            "BREADCRUMB_STATUS": "durum"
+            "INPUT_SEARCH_PLACEHOLDER": "Konu ya da ref",
+            "TITLE_ACTION_SEARCH": "Ara",
+            "ACTION_SAVE_CUSTOM_FILTER": "özel filtre olarak kaydet",
+            "PLACEHOLDER_FILTER_NAME": "Filtre adı yazın ve enter a basın",
+            "CATEGORIES": {
+                "TYPE": "Tip",
+                "STATUS": "Durum ",
+                "SEVERITY": "Önem Derecesi",
+                "PRIORITIES": "Öncelikler",
+                "TAGS": "Etiketler ",
+                "ASSIGNED_TO": "Atanmış",
+                "CREATED_BY": "Oluşturan",
+                "CUSTOM_FILTERS": "Özel filtreler"
+            },
+            "CONFIRM_DELETE": {
+                "TITLE": "Özel filtre sil",
+                "MESSAGE": "'{{customFilterName}}' özel filtresi"
+            }
         },
         "WYSIWYG": {
             "H1_BUTTON": "İlk Düzey Başlık",
@@ -232,6 +255,14 @@
             "MARKDOWN_HELP": "Markdown yazım kılavuzu"
         },
         "PERMISIONS_CATEGORIES": {
+            "EPICS": {
+                "NAME": "Epics",
+                "VIEW_EPICS": "View epics",
+                "ADD_EPICS": "Add epics",
+                "MODIFY_EPICS": "Modify epics",
+                "COMMENT_EPICS": "Comment epics",
+                "DELETE_EPICS": "Delete epics"
+            },
             "SPRINTS": {
                 "NAME": "Koşular",
                 "VIEW_SPRINTS": "Koşuları gör",
@@ -370,6 +401,41 @@
         "WATCHING_SECTION": "İzleniyor",
         "DASHBOARD": "Proje Panosu"
     },
+    "EPICS": {
+        "TITLE": "EPICS",
+        "SECTION_NAME": "Epics",
+        "EPIC": "EPIC",
+        "PAGE_TITLE": "Epics - {{projectName}}",
+        "PAGE_DESCRIPTION": "The epics list of the project {{projectName}}: {{projectDescription}}",
+        "DASHBOARD": {
+            "ADD": "+ ADD EPIC",
+            "UNASSIGNED": "Atama Yok"
+        },
+        "EMPTY": {
+            "TITLE": "It looks like you have not created any epics yet",
+            "EXPLANATION": "Create an epic to have a superior level of User Stories. Epics can contain or be composed by User Stories from this or any other project",
+            "HELP": "Learn more about epics"
+        },
+        "TABLE": {
+            "VOTES": "Oylar",
+            "NAME": "İsim",
+            "PROJECT": "Proje",
+            "SPRINT": "Koşu",
+            "ASSIGNED_TO": "Assigned",
+            "STATUS": "Durum ",
+            "PROGRESS": "Progress",
+            "VIEW_OPTIONS": "View options"
+        },
+        "CREATE": {
+            "TITLE": "New Epic",
+            "PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this epic",
+            "TEAM_REQUIREMENT": "Team requirement",
+            "CLIENT_REQUIREMENT": "Client requirement",
+            "BLOCKED": "Engelli",
+            "BLOCKED_NOTE_PLACEHOLDER": "Why is this epic blocked?",
+            "CREATE_EPIC": "Create epic"
+        }
+    },
     "PROJECTS": {
         "PAGE_TITLE": "Projelerim - Taiga",
         "PAGE_DESCRIPTION": "Tüm projelerinizi içeren bir liste, yenide düzenle ya da yeni bir tane yarat.",
@@ -406,7 +472,8 @@
     "ADMIN": {
         "COMMON": {
             "TITLE_ACTION_EDIT_VALUE": "Değeri düzenle",
-            "TITLE_ACTION_DELETE_VALUE": "Değer sil"
+            "TITLE_ACTION_DELETE_VALUE": "Değer sil",
+            "TITLE_ACTION_DELETE_TAG": "Etiket sil"
         },
         "HELP": "Yardıma mı ihtiyacın var? Destek sayfamızı kontrol edin!",
         "PROJECT_DEFAULT_VALUES": {
@@ -439,6 +506,8 @@
             "TITLE": "Modüller",
             "ENABLE": "Etkinleştir",
             "DISABLE": "Pasifleştir",
+            "EPICS": "Epics",
+            "EPICS_DESCRIPTION": "Visualize and manage the most strategic part of your project",
             "BACKLOG": "Havuz",
             "BACKLOG_DESCRIPTION": "Yeni gelen ve önceliklendirilmiş işler için düzenli bir görünüm elde etmek için kullanıcı hikayelerinizi yönetin.",
             "NUMBER_SPRINTS": "Expected number of sprints",
@@ -501,6 +570,7 @@
             "REGENERATE_SUBTITLE": "CSV veri erişim linkini değiştireceksiniz. Önceki link kapatılacak. Emin misiniz?"
         },
         "CSV": {
+            "SECTION_TITLE_EPIC": "epics reports",
             "SECTION_TITLE_US": "kullanıcı hikayeleri raporları",
             "SECTION_TITLE_TASK": "görevlere ait raporlar",
             "SECTION_TITLE_ISSUE": "sorun raporları",
@@ -513,6 +583,8 @@
         "CUSTOM_FIELDS": {
             "TITLE": "Özel Alanlar",
             "SUBTITLE": "Hikayeleriniz, işleriniz ve sorunlarınız için özel alanları tanımlayın",
+            "EPIC_DESCRIPTION": "Epics custom fields",
+            "EPIC_ADD": "Add a custom field in epics",
             "US_DESCRIPTION": "Kullanıcı hikayeleri özel alanları",
             "US_ADD": "Kullanıcı hikayelerine özel bir alan ekleyin",
             "TASK_DESCRIPTION": "Görevlere ait özel alanlar",
@@ -550,7 +622,8 @@
         "PROJECT_VALUES_STATUS": {
             "TITLE": "Durum",
             "SUBTITLE": "Hikayeleriniz, işleriniz ve sorunlarınızın alabileceği durumları tanımlayın",
-            "US_TITLE": "KH Durumları",
+            "EPIC_TITLE": "Epic Statuses",
+            "US_TITLE": "User Story Statuses",
             "TASK_TITLE": "Görev Durumları",
             "ISSUE_TITLE": "Sorun Durumları"
         },
@@ -562,9 +635,14 @@
         },
         "PROJECT_VALUES_TAGS": {
             "TITLE": "Etiketler ",
-            "SUBTITLE": "View and edit the color of your user stories",
+            "SUBTITLE": "View and edit the color of your tags",
             "EMPTY": "Currently there are no tags",
-            "EMPTY_SEARCH": "It looks like nothing was found with your search criteria"
+            "EMPTY_SEARCH": "It looks like nothing was found with your search criteria",
+            "ACTION_ADD": "Etiket ekle",
+            "NEW_TAG": "New tag",
+            "MIXING_HELP_TEXT": "Select the tags that you want to merge",
+            "MIXING_MERGE": "Merge Tags",
+            "SELECTED": "Selected"
         },
         "ROLES": {
             "PAGE_TITLE": "Roller  - {{projectName}}",
@@ -657,13 +735,14 @@
             "DEFAULT_DELETE_MESSAGE": "davetiye {{email}} "
         },
         "DEFAULT_VALUES": {
+            "LABEL_EPIC_STATUS": "Default value for epic status selector",
+            "LABEL_US_STATUS": "Default value for user story status selector",
             "LABEL_POINTS": "Puan seçici için varsayılan değer",
-            "LABEL_US": "KH durum seçici için varsayılan değer",
             "LABEL_TASK_STATUS": "Görev durum seçici için varsayılan değer",
-            "LABEL_PRIORITY": "Önceli seçicisi için varsayılan değer",
-            "LABEL_SEVERITY": "Önem derecesi seçicisi için varsayılan değer",
             "LABEL_ISSUE_TYPE": "Sorun tipi seçici için varsayılan değer",
-            "LABEL_ISSUE_STATUS": "Sorun durumu seçici için varsayılan değer"
+            "LABEL_ISSUE_STATUS": "Sorun durumu seçici için varsayılan değer",
+            "LABEL_PRIORITY": "Önceli seçicisi için varsayılan değer",
+            "LABEL_SEVERITY": "Önem derecesi seçicisi için varsayılan değer"
         },
         "STATUS": {
             "PLACEHOLDER_WRITE_STATUS_NAME": "Yeni durum için bir isim yaz"
@@ -766,6 +845,8 @@
             "FILTER_TYPE_ALL_TITLE": "Hepsini göster",
             "FILTER_TYPE_PROJECTS": "Projeler",
             "FILTER_TYPE_PROJECT_TITLES": "Sadece projeleri görüntüle",
+            "FILTER_TYPE_EPICS": "Epics",
+            "FILTER_TYPE_EPIC_TITLES": "Show only epics",
             "FILTER_TYPE_USER_STORIES": "Hikayeler",
             "FILTER_TYPE_USER_STORIES_TITLES": "Sadece kullanıcı hikayelerini göster",
             "FILTER_TYPE_TASKS": "Görevler",
@@ -965,8 +1046,8 @@
         "CREATE_MEMBER": {
             "PLACEHOLDER_INVITATION_TEXT": "(Opsiyonel) Davetinize kişiselleştirilmiş bir metin ekleyin. Yeni üyelerinize tatlı bir şeyler söyleyin ;-)",
             "PLACEHOLDER_TYPE_EMAIL": "Bir e-posta girin",
-            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "Unfortunately, this project can't have more than <strong>{{maxMembers}}</strong> members.<br> If you would like to increase the current limit, please contact the administrator.",
-            "LIMIT_USERS_WARNING_MESSAGE": "Unfortunately, this project can't have more than <strong>{{maxMembers}}</strong> members."
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "You are about to reach the maximum number of members allowed for this project, <strong>{{maxMembers}}</strong> members. If you would like to increase the current limit, please contact the administrator.",
+            "LIMIT_USERS_WARNING_MESSAGE": "You are about to reach the maximum number of members allowed for this project, <strong>{{maxMembers}}</strong> members."
         },
         "LEAVE_PROJECT_WARNING": {
             "TITLE": "Unfortunately, this project can't be left without an owner",
@@ -985,6 +1066,25 @@
             "BUTTON": "Ask this project member to become the new project owner"
         }
     },
+    "EPIC": {
+        "PAGE_TITLE": "{{epicSubject}} - Epic {{epicRef}} - {{projectName}}",
+        "PAGE_DESCRIPTION": "Status: {{epicStatus }}. Description: {{epicDescription}}",
+        "SECTION_NAME": "Epic",
+        "TITLE_LIGHTBOX_DELETE_RELATED_USERSTORY": "Delete related userstory...",
+        "MSG_LIGHTBOX_DELETE_RELATED_USERSTORY": "the related userstory '{{subject}}'",
+        "ERROR_DELETE_RELATED_USERSTORY": "We have not been able to delete: {{errorMessage}}",
+        "CREATE_RELATED_USERSTORIES": "Create a relationship with",
+        "NEW_USERSTORY": "New user story",
+        "EXISTING_USERSTORY": "Existing user story",
+        "CHOOSE_PROJECT_FOR_CREATION": "What's the project?",
+        "SUBJECT": "Subject",
+        "SUBJECT_BULK_MODE": "Subject (bulk insert)",
+        "CHOOSE_PROJECT_FROM": "What's the project?",
+        "CHOOSE_USERSTORY": "What's the user story?",
+        "FILTER_USERSTORIES": "Filter user stories",
+        "LIGHTBOX_TITLE_BLOKING_EPIC": "Blocking epic",
+        "ACTION_DELETE": "Delete epic"
+    },
     "US": {
         "PAGE_TITLE": "{{userStorySubject}} - Kullanıcı Hikayesi {{userStoryRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Durum: {{userStoryStatus }}. Tamamlanan {{userStoryProgressPercentage}}% ({{userStoryClosedTasks}} of {{userStoryTotalTasks}} tasks closed). Puanlar: {{userStoryPoints}}. Tanım: {{userStoryDescription}}",
@@ -999,8 +1099,6 @@
         "EXTERNAL_REFERENCE": "Bu KH 'ni oluşturulduğu",
         "GO_TO_EXTERNAL_REFERENCE": "Kökenine git ",
         "BLOCKED": "Bu kullanıcı hikayesi engelli",
-        "PREVIOUS": "önceki kullanıcı hikayesi",
-        "NEXT": "sonraki kullanıcı hikayesi",
         "TITLE_DELETE_ACTION": "Kullanıcı Hikayesi Sil",
         "LIGHTBOX_TITLE_BLOKING_US": "Bizi engelleyen",
         "TASK_COMPLETED": "{{totalClosedTasks}}/{{totalTasks}} tamamlanan görevler",
@@ -1103,7 +1201,8 @@
             "SPRINT_ORDER": "koşu sırası",
             "KANBAN_ORDER": "kanban sırası",
             "TASKBOARD_ORDER": "Görev panosu sırası",
-            "US_ORDER": "kh sırası"
+            "US_ORDER": "kh sırası",
+            "COLOR": "color"
         }
     },
     "BACKLOG": {
@@ -1169,9 +1268,7 @@
             "TITLE": "Filtreler",
             "REMOVE": "Filtreleri Sil",
             "HIDE": "Filtreleri Gizle",
-            "SHOW": "Filtreleri Göster",
-            "FILTER_CATEGORY_STATUS": "Durum",
-            "FILTER_CATEGORY_TAGS": "Etiketler "
+            "SHOW": "Filtreleri Göster"
         },
         "SPRINTS": {
             "TITLE": "KOŞULAR",
@@ -1236,8 +1333,6 @@
         "ORIGIN_US": "Bu görevin oluşturulduğu",
         "TITLE_LINK_GO_ORIGIN": "Kullanıcı hikayesine git",
         "BLOCKED": "Bu iş engelli",
-        "PREVIOUS": "önceki görev",
-        "NEXT": "sonraki görev",
         "TITLE_DELETE_ACTION": "Görev Sil",
         "LIGHTBOX_TITLE_BLOKING_TASK": "Engelleyen iş",
         "FIELDS": {
@@ -1278,13 +1373,10 @@
         "SECTION_NAME": "Sorun",
         "ACTION_NEW_ISSUE": "+ YENİ SORUN",
         "ACTION_PROMOTE_TO_US": "Kullanıcı Hikayesine Terfi Ettir",
-        "PLACEHOLDER_FILTER_NAME": "Filtre adı yazın ve enter a basın",
         "PROMOTED": "Bu sorun, kullanıcı hikayesine yükseltildi:",
         "EXTERNAL_REFERENCE": "Bu talebin oluşturulduğu ",
         "GO_TO_EXTERNAL_REFERENCE": "Kökenine git",
         "BLOCKED": "Bu sorun engelli",
-        "TITLE_PREVIOUS_ISSUE": "önceki sorun",
-        "TITLE_NEXT_ISSUE": "sonraki sorun",
         "ACTION_DELETE": "Sorun sil",
         "LIGHTBOX_TITLE_BLOKING_ISSUE": "Engelleyen sorun",
         "FIELDS": {
@@ -1295,28 +1387,6 @@
         "CONFIRM_PROMOTE": {
             "TITLE": "Bu talebi yeni bir kullanıcı hikayesi olacak şekilde terfi ettirin",
             "MESSAGE": "Bu sorundan yeni bir hikaye oluşturmak istediğinize emin misiniz?"
-        },
-        "FILTERS": {
-            "TITLE": "Filtreler",
-            "INPUT_SEARCH_PLACEHOLDER": "Konu ya da ref",
-            "TITLE_ACTION_SEARCH": "Ara",
-            "ACTION_SAVE_CUSTOM_FILTER": "özel filtre olarak kaydet",
-            "BREADCRUMB": "Filtreler",
-            "TITLE_BREADCRUMB": "Filtreler",
-            "CATEGORIES": {
-                "TYPE": "Tip",
-                "STATUS": "Durum",
-                "SEVERITY": "Önem Derecesi",
-                "PRIORITIES": "Öncelikler",
-                "TAGS": "Etiketler",
-                "ASSIGNED_TO": "Atanmış",
-                "CREATED_BY": "Oluşturan",
-                "CUSTOM_FILTERS": "Özel filtreler"
-            },
-            "CONFIRM_DELETE": {
-                "TITLE": "Özel filtre sil",
-                "MESSAGE": "'{{customFilterName}}' özel filtresi"
-            }
         },
         "TABLE": {
             "COLUMNS": {
@@ -1363,6 +1433,7 @@
     "SEARCH": {
         "PAGE_TITLE": "Ara - {{projectName}}",
         "PAGE_DESCRIPTION": "Projedeki hikayeleri, sorunları, işleri, viki sayfalarını ya da herhangi bir şeyi arayın {{projectName}}: {{projectDescription}}",
+        "FILTER_EPICS": "Epics",
         "FILTER_USER_STORIES": "Kullanıcı Hikayeleri",
         "FILTER_ISSUES": "Sorunlar ",
         "FILTER_TASKS": "Görevler",
@@ -1505,6 +1576,8 @@
         "TASK_CREATED_WITH_US": " {{project_name}} projesinde yer alan {{us_name}} adlı KH ya ait yeni bir görev {{obj_name}}, {{username}} tarafından oluşturuldu",
         "WIKI_CREATED": "{{project_name}} projesindeki yeni wiki sayfası {{obj_name}}, {{username}} tarafından oluşturuldu",
         "MILESTONE_CREATED": "{{project_name}} projesinde {{obj_name}} koşusu, {{username}} tarafından oluşturuldu",
+        "EPIC_CREATED": "{{username}} has created a new epic {{obj_name}} in {{project_name}}",
+        "EPIC_RELATED_USERSTORY_CREATED": "{{username}} has related the userstory {{related_us_name}} to the epic {{epic_name}} in {{project_name}}",
         "NEW_PROJECT": "{{project_name}} proje {{username}} tarafından oluşturuldu",
         "MILESTONE_UPDATED": " {{obj_name}} koşusu {{username}} tarafından güncellendi",
         "US_UPDATED": "{{username}} kullanıcısı, {{obj_name}} KH 'sinin \"{{field_name}}\" alanını güncelledi.  ",
@@ -1517,9 +1590,13 @@
         "TASK_UPDATED_WITH_US": "{{us_name}} adlı KH'ye ait {{obj_name}} talebinin \"{{field_name}}\" özniteliği {{username}}  tarafından güncellendi. ",
         "TASK_UPDATED_WITH_US_NEW_VALUE": "{{username}}, {{us_name}} hikayesindeki {{obj_name}} işinin {{field_name}} özelliğini {{new_value}} olacak şekilde değiştirdi",
         "WIKI_UPDATED": "{{obj_name}} adlı wiki sayfası {{username}} tarafından güncellendi",
+        "EPIC_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the epic {{obj_name}}",
+        "EPIC_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the epic {{obj_name}} to {{new_value}}",
+        "EPIC_UPDATED_WITH_NEW_COLOR": "{{username}} has updated the \"{{field_name}}\" of the epic {{obj_name}} to <span class=\"new-color\" style=\"background: {{new_value}}\"></span>",
         "NEW_COMMENT_US": " {{obj_name}} KH'sine {{username}} tarafından yorum yapıldı",
         "NEW_COMMENT_ISSUE": " {{obj_name}} talebine {{username}} tarafından yorum yapıldı",
         "NEW_COMMENT_TASK": " {{obj_name}} görevine {{username}} tarafından yorum yapıldı",
+        "NEW_COMMENT_EPIC": "{{username}} has commented in the epic {{obj_name}}",
         "NEW_MEMBER": "{{project_name}} projesi yeni bir üyeye sahip",
         "US_ADDED_MILESTONE": " {{username}}, {{sprint_name}} koşusuna {{obj_name}} hikayesini ekledi",
         "US_MOVED": "{{username}}, {{obj_name}} hikayesini taşıdı",

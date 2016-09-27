@@ -1,22 +1,22 @@
-div.activity-item
+.activity-item
     span.activity-date {{::timeline.get('created') | momentFromNow}}
 
-    div.activity-info(tg-user-timeline-title="timeline")
+    .activity-info(tg-user-timeline-title="timeline")
 
-    div.activity-info
+    .activity-info
         // profile image with url
-        div.profile-contact-picture(ng-if="timeline.getIn(['data', 'user', 'is_profile_visible'])")
+        .profile-contact-picture(ng-if="timeline.getIn(['data', 'user', 'is_profile_visible'])")
             a(tg-nav="user-profile:username=timeline.getIn(['data', 'user', 'username'])", title="{{::timeline.getIn(['data', 'user', 'name']) }}")
                 img(
                     tg-avatar="timeline.getIn(['data', 'user'])"
                     alt="{{::timeline.getIn(['data', 'user', 'name'])}}"
                 )
         // profile image without url
-        div.profile-contact-picture(ng-if="!timeline.getIn(['data', 'user', 'is_profile_visible'])")
-          img(
-              tg-avatar="timeline.getIn(['data', 'user'])"
-              alt="{{::timeline.getIn(['data', 'user', 'name'])}}"
-          )
+        .profile-contact-picture(ng-if="!timeline.getIn(['data', 'user', 'is_profile_visible'])")
+            img(
+                tg-avatar="timeline.getIn(['data', 'user'])"
+                alt="{{::timeline.getIn(['data', 'user', 'name'])}}"
+            )
 
         p(tg-compile-html="timeline.get('title_html')")
 

@@ -1,0 +1,113 @@
+.detail-title-wrapper.e2e-story-header
+    h2.detail-title-text.ng-animate-disabled(
+        ng-show="!vm.editMode"
+        ng-hide="vm.editMode"
+    )
+        span.detail-number {{'#' + vm.item.ref}}
+        span.detail-subject.e2e-title-subject(
+            ng-click="vm.editSubject(true)"
+            ng-if="vm.permissions.canEdit"
+        ) {{vm.item.subject}}
+        span.detail-subject.e2e-title-subject(
+            ng-if="!vm.permissions.canEdit"
+        ) {{vm.item.subject}}
+        tg-svg.detail-edit.e2e-detail-edit(
+            ng-if="vm.permissions.canEdit"
+            svg-icon="icon-edit"
+            ng-click="vm.editSubject(true)"
+        )
+
+    .edit-title-wrapper(ng-if="vm.editMode")
+        input.edit-title-input.e2e-title-input(
+            type="text"
+            ng-model="vm.item.subject"
+            maxlength="500"
+            autofocus
+            required
+            ng-keydown="vm.onKeyDown($event)"
+        )
+        button.edit-title-button.e2e-title-button(
+            ng-click="vm.saveSubject()"
+            tg-loading="vm.loadingSubject"
+        )
+            tg-svg(
+                svg-icon="icon-save"
+            )
+
+//- User Story belongs to epic
+.belong-to-epics-wrapper(ng-if="vm.item.epics")
+    span This User Story belongs to
+    tg-belong-to-epics(
+        ng-if="::vm.item.epics"
+        epics="::vm.item.epics"
+        format="text"
+    )
+
+//- Task belongs to US
+.task-belongs-to(
+    ng-if="vm.item.user_story_extra_info"
+    tg-check-permission="view_us"
+)
+    span(translate="TASK.OWNER_US")
+    a(
+        tg-nav="project-userstories-detail:project=vm.project.slug,ref=vm.item.user_story_extra_info.ref"
+        title="{{'TASK.TITLE_LINK_GO_OWNER' | translate}}"
+    )
+        span.item-ref {{'#' + vm.item.user_story_extra_info.ref}}
+        span {{::vm.item.user_story_extra_info.subject}}
+        tg-belong-to-epics(
+            ng-if="::vm.item.user_story_extra_info.epics"
+            epics="::vm.item.user_story_extra_info.epics"
+            format="pill"
+        )
+
+//- User Stories generated from issue
+.item-generated-us(ng-if="vm.item.generated_user_stories.length")
+    span(translate="ISSUES.PROMOTED")
+    a(
+        ng-repeat="userstory in vm.item.generated_user_stories track by userstory.id"
+        tg-check-permission="view_us"
+        tg-nav="project-userstories-detail:project=vm.project.slug,ref=userstory.ref"
+    ) {{'#' + userstory.ref}} {{userstory.subject}}
+
+//- Issue origin from github
+.issue-external-reference(ng-if="vm.item.external_reference")
+    span(translate="ISSUES.EXTERNAL_REFERENCE")
+    a(
+        target="_blank"
+        ng-href="::vm.item.external_reference[1]"
+        ng-title="{{'ISSUES.GO_TO_EXTERNAL_REFERENCE' | translate}}"
+    )
+        span {{ ::vm.item.external_reference[1] }}
+
+//- User Story promoted from issue
+.item-origin-issue(ng-if="vm.item.origin_issue")
+    span(translate="US.PROMOTED")
+    a(
+        href=""
+        tg-check-permission="view_us"
+        tg-nav="project-issues-detail:project=vm.project.slug,ref=vm.item.origin_issue.ref"
+        title="{{'US.TITLE_LINK_GO_TO_ISSUE' | translate}}"
+    )
+        span.item-ref {{'#' + vm.item.origin_issue.ref}}
+        span {{vm.item.origin_issue.subject}}
+
+//- Blocked description
+.block-desc-container(ng-show="vm.item.is_blocked")
+    span.block-description-title(translate="COMMON.BLOCKED")
+    span.block-description(ng-if="vm.item.blocked_note") {{vm.item.blocked_note}}
+
+//- Navigation
+.issue-nav
+    a(
+        ng-if="vm.previousUrl"
+        ng-href="{{vm.previousUrl}}"
+        title="{{'COMMON.PREVIOUS' | translate}}"
+    )
+        tg-svg(svg-icon="icon-arrow-left")
+    a(
+        ng-if="vm.nextUrl"
+        ng-href="{{vm.nextUrl}}"
+        title="{{'COMMON.NEXT' | translate}}"
+    )
+        tg-svg(svg-icon="icon-arrow-right")

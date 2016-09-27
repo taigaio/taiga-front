@@ -26,54 +26,14 @@ div.wrapper(
                     on-upvote="ctrl.onUpvote",
                     on-downvote="ctrl.onDownvote"
                 )
-                div.us-title(ng-class="{blocked: task.is_blocked}")
-                    h2.us-title-text
-                        span.us-number(tg-bo-ref="task.ref")
-                        span.us-name(
-                            tg-editable-subject
-                            ng-model="task"
-                            required-perm="modify_task"
-                        )
-
-                    h3.us-related-task(ng-if="us")
-                        | {{ 'TASK.OWNER_US'|translate }}
-                        a(
-                            href=""
-                            tg-check-permission="view_us"
-                            tg-nav="project-userstories-detail:project=project.slug,ref=us.ref"
-                            title="{{'TASK.TITLE_LINK_GO_OWNER' | translate}}"
-                        )
-                            span(tg-bo-ref="us.ref")
-                            span(tg-bo-bind="us.subject")
-
-                    p.external-reference(ng-if="task.external_reference")
-                        a(
-                            tg-bo-href="task.external_reference[1]",
-                            target="_blank"
-                            title="{{'TASK.TITLE_LINK_GO_ORIGIN' | translate}}"
-                        )
-                            | {{ "TASK.ORIGIN_US"| translate }}
-                            span {{ task.external_reference[1] }}
-
-                    p.block-desc-container(ng-show="task.is_blocked")
-                        span.block-description-title(translate="COMMON.BLOCKED")
-                        span.block-description(
-                            ng-bind="task.blocked_note || ('TASK.BLOCKED_DESCRIPTION' | translate)"
-                        )
-
-                    div.issue-nav
-                        a(
-                            ng-show="previousUrl"
-                            tg-bo-href="previousUrl"
-                            title="{{'TASK.PREVIOUS' | translate}}"
-                        )
-                            tg-svg(svg-icon="icon-arrow-left")
-                        a(
-                            ng-show="nextUrl"
-                            tg-bo-href="nextUrl"
-                            title="{{'TASK.NEXT' | translate}}"
-                        )
-                            tg-svg(svg-icon="icon-arrow-right")
+                tg-detail-header.detail-header-container(
+                    item="task"
+                    project="project"
+                    required-perm="modify_task"
+                    ng-class="{blocked: task.is_blocked}"
+                    ng-if="project && task"
+                    type="text"
+                )
             .subheader
                 tg-tag-line.tags-block(
                     ng-if="task && project"

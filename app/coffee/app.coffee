@@ -46,7 +46,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
 
     $animateProvider.classNameFilter(/^(?:(?!ng-animate-disabled).)*$/)
 
-    # wait until the trasnlation is ready to resolve the page
+    # wait until the translation is ready to resolve the page
     originalWhen = $routeProvider.when
 
     $routeProvider.when = (path, route) ->
@@ -124,7 +124,6 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
         }
     )
 
-
     $routeProvider.when("/blocked-project/:pslug/",
         {
             templateUrl: "projects/project/blocked-project.html",
@@ -150,6 +149,25 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
             reloadOnSearch: false,
             section: "search",
             loader: true
+        }
+    )
+
+    $routeProvider.when("/project/:pslug/epics",
+    {
+            section: "epics",
+            templateUrl: "epics/dashboard/epics-dashboard.html",
+            loader: true,
+            controller: "EpicsDashboardCtrl",
+            controllerAs: "vm"
+        }
+    )
+
+    # Epics
+    $routeProvider.when("/project/:pslug/epic/:epicref",
+        {
+            templateUrl: "epic/epic-detail.html",
+            loader: true,
+            section: "epics"
         }
     )
 
@@ -519,8 +537,8 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
             responseError: httpResponseError
         }
 
-    $provide.factory("authHttpIntercept", ["$q", "$location", "$tgNavUrls", "lightboxService", "tgErrorHandlingService",
-                                           authHttpIntercept])
+    $provide.factory("authHttpIntercept", ["$q", "$location", "$tgNavUrls", "lightboxService",
+                                           "tgErrorHandlingService", authHttpIntercept])
 
     $httpProvider.interceptors.push("authHttpIntercept")
 
@@ -574,14 +592,13 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
     $httpProvider.interceptors.push("versionCheckHttpIntercept")
 
 
-    blockingIntercept = ($q, $routeParams, $location, $navUrls, errorHandlingService) ->
+    blockingIntercept = ($q, errorHandlingService) ->
         # API calls can return blocked elements and in that situation the user will be redirected
         # to the blocked project page
         # This can happens in two scenarios
         # - An ok response containing a blocked_code in the data
         # - An error reponse when updating/creating/deleting including a 451 error code
         redirectToBlockedPage = ->
-            pslug = $routeParams.pslug
             errorHandlingService.block()
 
         responseOk = (response) ->
@@ -601,7 +618,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
             responseError: responseError
         }
 
-    $provide.factory("blockingIntercept", ["$q", "$routeParams", "$location", "$tgNavUrls", "tgErrorHandlingService", blockingIntercept])
+    $provide.factory("blockingIntercept", ["$q", "tgErrorHandlingService", blockingIntercept])
 
     $httpProvider.interceptors.push("blockingIntercept")
 
@@ -672,7 +689,8 @@ i18nInit = (lang, $translate) ->
     checksley.updateMessages('default', messages)
 
 
-init = ($log, $rootscope, $auth, $events, $analytics, $translate, $location, $navUrls, appMetaService, loaderService, navigationBarService, errorHandlingService) ->
+init = ($log, $rootscope, $auth, $events, $analytics, $translate, $location, $navUrls, appMetaService,
+        loaderService, navigationBarService, errorHandlingService) ->
     $log.debug("Initialize application")
 
     $rootscope.$on '$translatePartialLoaderStructureChanged', () ->
@@ -715,6 +733,10 @@ init = ($log, $rootscope, $auth, $events, $analytics, $translate, $location, $na
     # Analytics
     $analytics.initialize()
 
+    # Initialize error handling service when location change start
+    $rootscope.$on '$locationChangeStart',  (event) ->
+        errorHandlingService.init()
+
     # On the first page load the loader is painted in `$routeChangeSuccess`
     # because we need to hide the tg-navigation-bar.
     # In the other cases the loader is in `$routeChangeSuccess`
@@ -725,9 +747,7 @@ init = ($log, $rootscope, $auth, $events, $analytics, $translate, $location, $na
 
         un()
 
-    $rootscope.$on '$routeChangeSuccess',  (event, next) ->
-        errorHandlingService.init()
-
+    $rootscope.$on '$routeChangeSuccess', (event, next) ->
         if next.loader
             loaderService.start(true)
 
@@ -742,7 +762,7 @@ init = ($log, $rootscope, $auth, $events, $analytics, $translate, $location, $na
 
         if next.mobileViewport
             appMetaService.addMobileViewport()
-          else
+        else
             appMetaService.removeMobileViewport()
 
         if next.disableHeader
@@ -750,9 +770,12 @@ init = ($log, $rootscope, $auth, $events, $analytics, $translate, $location, $na
         else
             navigationBarService.enableHeader()
 
-pluginsWithModule = _.filter(@.taigaContribPlugins, (plugin) -> plugin.module)
-
+# Config for infinite scroll
 angular.module('infinite-scroll').value('THROTTLE_MILLISECONDS', 500)
+
+# Load modules
+pluginsWithModule = _.filter(@.taigaContribPlugins, (plugin) -> plugin.module)
+pluginsModules = _.map(pluginsWithModule, (plugin) -> plugin.module)
 
 modules = [
     # Main Global Modules
@@ -784,6 +807,7 @@ modules = [
     "taigaPlugins",
     "taigaIntegrations",
     "taigaComponents",
+
     # new modules
     "taigaProfile",
     "taigaHome",
@@ -792,6 +816,8 @@ modules = [
     "taigaDiscover",
     "taigaHistory",
     "taigaWikiHistory",
+    "taigaEpics",
+    "taigaUtils"
 
     # template cache
     "templates",
@@ -804,7 +830,7 @@ modules = [
     "pascalprecht.translate",
     "infinite-scroll",
     "tgRepeat"
-].concat(_.map(pluginsWithModule, (plugin) -> plugin.module))
+].concat(pluginsModules)
 
 # Main module definition
 module = angular.module("taiga", modules)

@@ -1,0 +1,135 @@
+@import '../../../../styles/dependencies/mixins/epics-dashboard';
+
+.epic-row {
+    @include epics-table;
+    @include font-size(small);
+    align-items: center;
+    background: $white;
+    border-bottom: 1px solid $whitish;
+    cursor: move;
+    display: flex;
+    transition: background .2s;
+    &:hover {
+        background: rgba($primary-light, .05);
+        .icon-drag {
+            opacity: 1;
+        }
+    }
+    &.not-empty {
+        cursor: pointer;
+    }
+    &.is-blocked {
+        background: rgba($red-light, .5);
+    }
+    &.is-closed {
+        .name a {
+            color: lighten($gray-light, 15%);
+            text-decoration: line-through;
+        }
+    }
+    &.unfold {
+        .name {
+            .icon {
+                transform: rotate(0deg);
+            }
+        }
+    }
+    .name {
+        .icon {
+            transform: rotate(180deg);
+            transition: all .2s;
+        }
+    }
+    .icon-drag {
+        @include svg-size(.75rem);
+        cursor: move;
+        fill: $whitish;
+        opacity: 0;
+        transition: opacity .1s;
+    }
+    .epic-pill {
+        @include font-type(light);
+        @include font-size(xsmall);
+        background: $grayer;
+        border-radius: .25rem;
+        color: $white;
+        margin: 0 .5rem;
+        padding: .1rem .25rem;
+    }
+    .status {
+        cursor: pointer;
+        position: relative;
+        button {
+            background: none;
+        }
+    }
+    .icon-arrow-down {
+        @include svg-size(.7rem);
+        fill: $gray-light;
+        margin-left: .1rem;
+    }
+    .progress-bar,
+    .progress-status {
+        height: 1.5rem;
+        left: 0;
+        position: absolute;
+        top: .25rem;
+    }
+    .progress-bar {
+        background: $mass-white;
+        max-width: 40vw;
+        padding-right: 1rem;
+        width: 100%;
+    }
+    .progress-status {
+        background: $primary-light;
+        width: 10vw;
+    }
+    .vote {
+        color: $gray;
+        &.is-voter {
+            color: $primary-light;
+            fill: $primary-light;
+        }
+    }
+    .assigned {
+        img {
+            width: 40px;
+        }
+    }
+    .icon-upvote {
+        @include svg-size(.75rem);
+        fill: $gray;
+        margin-right: .25rem;
+        vertical-align: middle;
+    }
+    .is-unassigned {
+        color: $gray-light;
+    }
+    .epic-statuses {
+        @include font-type(light);
+        @include font-size(small);
+        background: rgba($blackish, .9);
+        border-bottom: 1px solid $grayer;
+        box-shadow: 3px 3px 2px rgba($black, .1);
+        color: $white;
+        left: 0;
+        list-style-type: none;
+        margin: 0;
+        position: absolute;
+        text-align: left;
+        top: 2.5rem;
+        width: 200px;
+        z-index: 99;
+        &:last-child {
+            border: 0;
+        }
+        li {
+            padding: .5rem;
+            &:hover {
+                color: $primary-light;
+                transition: color .3s linear;
+            }
+        }
+    }
+}

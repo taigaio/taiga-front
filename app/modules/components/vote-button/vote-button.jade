@@ -8,17 +8,15 @@ a.vote-inner(
     ng-mouseover="vm.showTextWhenMouseIsOver()"
     ng-mouseleave="vm.showTextWhenMouseIsLeave()"
 )
-    span.track-icon
-        tg-svg(svg-icon="icon-upvote")
-    span.track-button-counter(
+    tg-svg(svg-icon="icon-upvote")
+    span(
         title="{{ 'COMMON.VOTE_BUTTON.COUNTER_TITLE'|translate:{total:vm.item.total_voters||0}:'messageformat' }}",
         tg-loading="vm.loading"
     ) {{ vm.item.total_voters }}
 
 //- Anonymous user button
 span.vote-inner(ng-if="::!vm.user")
-    span.track-icon
-        tg-svg(svg-icon="icon-watch")
-    span.track-button-counter(
+    tg-svg(svg-icon="icon-upvote")
+    span(
         title="{{ 'COMMON.VOTE_BUTTON.COUNTER_TITLE'|translate:{total:vm.item.total_voters||0}:'messageformat' }}"
     ) {{ ::vm.item.total_voters }}

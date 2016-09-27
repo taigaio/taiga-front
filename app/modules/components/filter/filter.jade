@@ -49,7 +49,9 @@ form
             li(
                 ng-class="{selected: vm.isOpen(filter.dataType)}"
                 ng-repeat="filter in vm.filters track by filter.dataType"
+                ng-if="!(filter.hideEmpty && filter.totalTaggedElements === 0)"
             )
+
                 a.filters-cat-single.e2e-category(
                     ng-class="{selected: vm.isOpen(filter.dataType)}"
                     ng-click="vm.toggleFilterCategory(filter.dataType)"
@@ -78,7 +80,11 @@ form
                         span.name(ng-attr-style="{{it.color ? 'border-left: 3px solid ' + it.color: ''}}") {{it.name}}
                         span.number.e2e-filter-count(ng-if="it.count > 0") {{it.count}}
 
-            li.custom-filters.e2e-custom-filters(ng-class="{selected: vm.isOpen('custom-filter')}")
+            li.custom-filters.e2e-custom-filters(
+                ng-class="{selected: vm.isOpen('custom-filter')}"
+                ng-if="vm.customFilters.length > 0"
+            )
+
                 a.filters-cat-single(
                     ng-class="{selected: vm.isOpen('custom-filter')}"
                     ng-click="vm.toggleFilterCategory('custom-filter')"

@@ -82,6 +82,18 @@ timelineType = (timeline, event) ->
             key: 'TIMELINE.MILESTONE_CREATED',
             translate_params: ['username', 'project_name', 'obj_name']
         },
+        { # NewEpic
+            check: (timeline, event) ->
+                return event.obj == 'epic' && event.type == 'create'
+            key: 'TIMELINE.EPIC_CREATED',
+            translate_params: ['username', 'project_name', 'obj_name']
+        },
+        { # NewEpicRelatedUserstory
+            check: (timeline, event) ->
+                return event.obj == 'relateduserstory' && event.type == 'create'
+            key: 'TIMELINE.EPIC_RELATED_USERSTORY_CREATED',
+            translate_params: ['username', 'project_name', 'related_us_name', 'epic_name']
+        },
         { # NewUsComment
             check: (timeline, event) ->
                 return timeline.getIn(['data', 'comment']) && event.obj == 'userstory'
@@ -104,6 +116,15 @@ timelineType = (timeline, event) ->
             check: (timeline, event) ->
                 return timeline.getIn(['data', 'comment']) && event.obj == 'task'
             key: 'TIMELINE.NEW_COMMENT_TASK'
+            translate_params: ['username', 'obj_name'],
+            description: (timeline) ->
+                text = timeline.getIn(['data', 'comment_html'])
+                return $($.parseHTML(text)).text()
+        },
+        { # NewEpicComment
+            check: (timeline, event) ->
+                return timeline.getIn(['data', 'comment']) && event.obj == 'epic'
+            key: 'TIMELINE.NEW_COMMENT_EPIC'
             translate_params: ['username', 'obj_name'],
             description: (timeline) ->
                 text = timeline.getIn(['data', 'comment_html'])
@@ -257,6 +278,31 @@ timelineType = (timeline, event) ->
                     timeline.getIn(['data', 'task', 'userstory'])
             key: 'TIMELINE.TASK_UPDATED_WITH_US_NEW_VALUE',
             translate_params: ['username', 'field_name', 'obj_name', 'us_name', 'new_value']
+        },
+        { # EpicUpdated description
+            check: (timeline, event) ->
+                return event.obj == 'epic' &&
+                    event.type == 'change' &&
+                    timeline.hasIn(['data', 'value_diff']) &&
+                    timeline.getIn(['data', 'value_diff', 'key']) == 'description_diff'
+            key: 'TIMELINE.EPIC_UPDATED',
+            translate_params: ['username', 'field_name', 'obj_name']
+        },
+        { # EpicUpdated color
+            check: (timeline, event) ->
+                return event.obj == 'epic' &&
+                    event.type == 'change' &&
+                    timeline.hasIn(['data', 'value_diff']) &&
+                    timeline.getIn(['data', 'value_diff', 'key']) == 'color'
+            key: 'TIMELINE.EPIC_UPDATED_WITH_NEW_COLOR',
+            translate_params: ['username', 'field_name', 'obj_name', 'new_value']
+        },
+        { # EpicUpdated general
+            check: (timeline, event) ->
+                return event.obj == 'epic' &&
+                    event.type == 'change'
+            key: 'TIMELINE.EPIC_UPDATED_WITH_NEW_VALUE',
+            translate_params: ['username', 'field_name', 'obj_name', 'new_value']
         },
         { # New User
             check: (timeline, event) ->

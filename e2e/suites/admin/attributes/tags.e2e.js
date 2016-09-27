@@ -22,7 +22,9 @@ describe('attributes - tags', function() {
         let rows = section.rows();
         let row = rows.get(0);
 
-        let form = adminAttributesHelper.getGenericForm(row.$('form'));
+        section.edit(row);
+
+        let form = adminAttributesHelper.getGenericForm(row.$$('form').first());
 
         var colorBox = form.colorBox();
         await colorBox.click();
@@ -35,7 +37,7 @@ describe('attributes - tags', function() {
         section = adminAttributesHelper.getTagsSection(0);
         rows = section.rows();
         row = rows.get(0);
-        let backgroundColor = await row.$$('.edition .current-color').get(0).getCssValue('background-color');
+        let backgroundColor = await row.$$('.e2e-open-color-selector').get(0).getCssValue('background-color');
         expect(backgroundColor).to.be.equal('rgba(0, 0, 0, 1)');
         utils.common.takeScreenshot('attributes', 'tag edited is black');
     });
@@ -44,12 +46,11 @@ describe('attributes - tags', function() {
         let tagsFilter = adminAttributesHelper.getTagsFilter();
         await tagsFilter.clear();
         await tagsFilter.sendKeys('ad');
+        await browser.sleep(5000);
 
         let section = adminAttributesHelper.getTagsSection(0);
         let rows = section.rows();
         let count = await rows.count();
         expect(count).to.be.equal(2);
     });
-
-
 });

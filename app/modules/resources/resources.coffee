@@ -27,7 +27,8 @@ services = [
     "tgExternalAppsResource",
     "tgAttachmentsResource",
     "tgStatsResource",
-    "tgWikiHistory"
+    "tgWikiHistory",
+    "tgEpicsResource"
 ]
 
 Resources = ($injector) ->

@@ -15,10 +15,12 @@
     .tag-color {
         @include color-selector-option;
         border: 1px solid $gray-light;
-        border-left: 0;
         border-radius: 0;
         margin: 0;
         transition: background .3s ease-out;
+        &.disabled {
+            cursor: auto;
+        }
         &.empty-color {
             @include empty-color(34);
         }
@@ -50,16 +52,20 @@
 }
 
 .custom-color-selector {
+    align-items: center;
     display: flex;
     .custom-color-input {
         margin: 0;
         width: 100%;
     }
+    .display-custom-color-wrapper {
+        background: $mass-white;
+        margin-right: .5rem;
+    }
     .display-custom-color {
         @include color-selector-option;
         flex-shrink: 0;
         margin: 0;
-        margin-right: .5rem;
         &.empty-color {
             @include empty-color(34);
             cursor: default;

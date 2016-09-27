@@ -40,7 +40,15 @@ helper.getTagsSection = function(item) {
     return {
         el: section,
         rows: function() {
-            return section.$$('.table-main');
+            return section.$$('.e2e-tag-row');
+        },
+        edit: async function(row) {
+            let editButton = row.$('.edit-value');
+
+            return browser.actions()
+                .mouseMove(editButton)
+                .click()
+                .perform();
         }
     };
 };
@@ -48,7 +56,7 @@ helper.getTagsSection = function(item) {
 
 helper.getTagsFilter = function() {
     return $('.table-header .e2e-tags-filter');
-}
+};
 
 helper.getStatusNames = function(section) {
     return section.$$('.status-name span').getText();
@@ -111,12 +119,12 @@ helper.getGenericForm = function(form) {
     };
 
     obj.colorBox = function() {
-        return form.$('.edition .current-color');
-    }
+        return form.$('.edition .e2e-open-color-selector');
+    };
 
     obj.colorText = function() {
-        return form.$('.select-color input');
-    }
+        return form.$('.color-selector-dropdown input');
+    };
 
     return obj;
 };
