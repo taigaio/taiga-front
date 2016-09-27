@@ -71,4 +71,8 @@ module.exports = function(name, counter) {
 
         expect(newCustomFiltersSize).to.be.equal(customFiltersSize - 1);
     });
+
+    after(async function() {
+        await filterHelper.clearFilters();
+    });
 };

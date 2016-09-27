@@ -237,7 +237,7 @@ describe('backlog', function() {
         expect(elementRef1).to.be.equal(draggedRefs[1]);
     });
 
-    it('drag multiple us to milestone', async function() {
+    it.skip('drag multiple us to milestone', async function() {
         let sprint = backlogHelper.sprints().get(0);
         let initUssSprintCount = await backlogHelper.getSprintUsertories(sprint).count();
 

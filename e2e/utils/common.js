@@ -189,6 +189,14 @@ common.drag = async function(elm, elm2, extrax = 0, extray = 0) {
         var extrax = arguments[0].extrax;
         var extray = arguments[0].extray;
 
+        function isScrolledIntoView(el) {
+            var elemTop = el.getBoundingClientRect().top;
+            var elemBottom = el.getBoundingClientRect().bottom;
+
+            var isVisible = (elemTop >= 0) && (elemBottom <= window.innerHeight);
+            return isVisible;
+        }
+
         function triggerMouseEvent (node, eventType, opts) {
             var event = new CustomEvent(eventType);
             event.initEvent (eventType, true, true);
@@ -206,11 +214,11 @@ common.drag = async function(elm, elm2, extrax = 0, extray = 0) {
             node.dispatchEvent(event);
         }
 
-        drag.scrollIntoView();
+        if (!isScrolledIntoView(drag)) {
+            drag.scrollIntoView();
+        }
 
         triggerMouseEvent(drag, "mousedown");
-
-        dest.scrollIntoView();
 
         triggerMouseEvent(document.documentElement, "mousemove", {
             cords: {
@@ -218,6 +226,10 @@ common.drag = async function(elm, elm2, extrax = 0, extray = 0) {
                 y: $(dest).offset().top + extray
             }
         });
+
+        if (!isScrolledIntoView(dest)) {
+            dest.scrollIntoView();
+        }
 
         triggerMouseEvent(document.documentElement, "mousemove", {
             cords: {
