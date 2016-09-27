@@ -142,11 +142,7 @@ describe('backlog', function() {
             editUSLightbox.status(3).click();
 
             // tags
-            editUSLightbox.tags().sendKeys('www');
-            browser.actions().sendKeys(protractor.Key.ENTER).perform();
-
-            editUSLightbox.tags().sendKeys('xxx');
-            browser.actions().sendKeys(protractor.Key.ENTER).perform();
+            editUSLightbox.tags();
 
             // description
             editUSLightbox.description().sendKeys('test test test test');
