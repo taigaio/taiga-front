@@ -27,7 +27,6 @@ class ProjectController
     ]
 
     constructor: (@routeParams, @appMetaService, @auth, @translate, @projectService) ->
-        projectSlug = @routeParams.pslug
         @.user = @auth.userData
 
         taiga.defineImmutableProperty @, "project", () => return @projectService.project
