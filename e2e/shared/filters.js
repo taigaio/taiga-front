@@ -44,9 +44,6 @@ module.exports = function(name, counter) {
 
     it('save custom filters', async () => {
         let len = await counter();
-
-        filterHelper.openCustomFiltersCategory();
-
         let customFiltersSize = await filterHelper.getCustomFilters().count();
 
         await filterHelper.firterByCategoryWithContent();
