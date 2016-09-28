@@ -124,7 +124,7 @@
         "ISSUE": "問題",
         "EPIC": "Epic",
         "TAGS": {
-            "PLACEHOLDER": "我在這裏，請標注我",
+            "PLACEHOLDER": "Enter tag",
             "DELETE": "刪除Tag",
             "ADD": "新增標籤"
         },
@@ -208,6 +208,7 @@
             "TITLE_ACTION_SEARCH": "搜尋",
             "ACTION_SAVE_CUSTOM_FILTER": "儲存為客製過濾器 ",
             "PLACEHOLDER_FILTER_NAME": "寫入過濾器名稱後按下enter ",
+            "APPLIED_FILTERS_NUM": "filters applied",
             "CATEGORIES": {
                 "TYPE": "類型",
                 "STATUS": "狀態",
@@ -216,7 +217,8 @@
                 "TAGS": "標籤",
                 "ASSIGNED_TO": "指派給 ",
                 "CREATED_BY": "由創建",
-                "CUSTOM_FILTERS": "客製過濾器 "
+                "CUSTOM_FILTERS": "客製過濾器 ",
+                "EPIC": "Epic"
             },
             "CONFIRM_DELETE": {
                 "TITLE": "刪除客製過濾器 ",
@@ -412,8 +414,8 @@
             "UNASSIGNED": "未指派"
         },
         "EMPTY": {
-            "TITLE": "It looks like you have not created any epics yet",
-            "EXPLANATION": "Create an epic to have a superior level of User Stories. Epics can contain or be composed by User Stories from this or any other project",
+            "TITLE": "It looks like there aren't any epics yet",
+            "EXPLANATION": "Epics are items at a higher level that encompass user stories.<br />Epics are at the top of the hierarchy and can be used to group user stories together.",
             "HELP": "Learn more about epics"
         },
         "TABLE": {
@@ -1070,17 +1072,18 @@
         "PAGE_TITLE": "{{epicSubject}} - Epic {{epicRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Status: {{epicStatus }}. Description: {{epicDescription}}",
         "SECTION_NAME": "Epic",
-        "TITLE_LIGHTBOX_DELETE_RELATED_USERSTORY": "Delete related userstory...",
-        "MSG_LIGHTBOX_DELETE_RELATED_USERSTORY": "the related userstory '{{subject}}'",
-        "ERROR_DELETE_RELATED_USERSTORY": "We have not been able to delete: {{errorMessage}}",
+        "TITLE_LIGHTBOX_UNLINK_RELATED_USERSTORY": "Unlink related userstory",
+        "MSG_LIGHTBOX_UNLINK_RELATED_USERSTORY": "It will delete the link to the related userstory '{{subject}}'",
+        "ERROR_UNLINK_RELATED_USERSTORY": "We have not been able to unlink: {{errorMessage}}",
         "CREATE_RELATED_USERSTORIES": "Create a relationship with",
-        "NEW_USERSTORY": "New user story",
+        "NEW_USERSTORY": "新使用者故事",
         "EXISTING_USERSTORY": "Existing user story",
         "CHOOSE_PROJECT_FOR_CREATION": "What's the project?",
-        "SUBJECT": "Subject",
+        "SUBJECT": "主旨",
         "SUBJECT_BULK_MODE": "Subject (bulk insert)",
         "CHOOSE_PROJECT_FROM": "What's the project?",
         "CHOOSE_USERSTORY": "What's the user story?",
+        "NO_USERSTORIES": "This project has no User Stories yet. Please select another project.",
         "FILTER_USERSTORIES": "Filter user stories",
         "LIGHTBOX_TITLE_BLOKING_EPIC": "Blocking epic",
         "ACTION_DELETE": "Delete epic"
@@ -1202,7 +1205,7 @@
             "KANBAN_ORDER": "kanban看板次序",
             "TASKBOARD_ORDER": "任務板次序",
             "US_ORDER": "使用者故事次序",
-            "COLOR": "color"
+            "COLOR": "顏色"
         }
     },
     "BACKLOG": {

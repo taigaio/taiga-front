@@ -124,7 +124,7 @@
         "ISSUE": "Ticket",
         "EPIC": "Épopée",
         "TAGS": {
-            "PLACEHOLDER": "Taggez moi !",
+            "PLACEHOLDER": "Enter tag",
             "DELETE": "Supprimer le mot-clé",
             "ADD": "Ajouter un mot-clé"
         },
@@ -208,6 +208,7 @@
             "TITLE_ACTION_SEARCH": "Rechercher",
             "ACTION_SAVE_CUSTOM_FILTER": "sauvegarder en tant que filtre personnalisé",
             "PLACEHOLDER_FILTER_NAME": "Écrivez le nom du filtre et appuyez sur \"Entrée\"",
+            "APPLIED_FILTERS_NUM": "filters applied",
             "CATEGORIES": {
                 "TYPE": "Type",
                 "STATUS": "Statut",
@@ -216,7 +217,8 @@
                 "TAGS": "Mots-clés",
                 "ASSIGNED_TO": "Affecté à",
                 "CREATED_BY": "Créé par",
-                "CUSTOM_FILTERS": "Filtres personnalisés"
+                "CUSTOM_FILTERS": "Filtres personnalisés",
+                "EPIC": "Epic"
             },
             "CONFIRM_DELETE": {
                 "TITLE": "Supprime le filtre personnalisé",
@@ -256,7 +258,7 @@
         },
         "PERMISIONS_CATEGORIES": {
             "EPICS": {
-                "NAME": "Epics",
+                "NAME": "Épopées",
                 "VIEW_EPICS": "View epics",
                 "ADD_EPICS": "Add epics",
                 "MODIFY_EPICS": "Modify epics",
@@ -403,7 +405,7 @@
     },
     "EPICS": {
         "TITLE": "ÉPOPÉES",
-        "SECTION_NAME": "Epics",
+        "SECTION_NAME": "Épopées",
         "EPIC": "ÉPOPÉE",
         "PAGE_TITLE": "Epics - {{projectName}}",
         "PAGE_DESCRIPTION": "The epics list of the project {{projectName}}: {{projectDescription}}",
@@ -412,8 +414,8 @@
             "UNASSIGNED": "Non affecté"
         },
         "EMPTY": {
-            "TITLE": "On dirait que vous n'avez pas encore créé d'épopée",
-            "EXPLANATION": "Créer une épopée pour avoir un niveau au dessus des histoires utilisateur. Les épopées peuvent contenir ou être composées d'histoires utilisateur dans ce projet, ou dans tout autre projet.",
+            "TITLE": "It looks like there aren't any epics yet",
+            "EXPLANATION": "Epics are items at a higher level that encompass user stories.<br />Epics are at the top of the hierarchy and can be used to group user stories together.",
             "HELP": "En savoir plus sur les épopées"
         },
         "TABLE": {
@@ -845,7 +847,7 @@
             "FILTER_TYPE_ALL_TITLE": "Voir tous",
             "FILTER_TYPE_PROJECTS": "Projets",
             "FILTER_TYPE_PROJECT_TITLES": "Voir uniquement les projets",
-            "FILTER_TYPE_EPICS": "Epics",
+            "FILTER_TYPE_EPICS": "Épopées",
             "FILTER_TYPE_EPIC_TITLES": "Show only epics",
             "FILTER_TYPE_USER_STORIES": "Récits",
             "FILTER_TYPE_USER_STORIES_TITLES": "Voir uniquement les user stories",
@@ -1069,18 +1071,19 @@
     "EPIC": {
         "PAGE_TITLE": "{{epicSubject}} - Epic {{epicRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Status: {{epicStatus }}. Description: {{epicDescription}}",
-        "SECTION_NAME": "Epic",
-        "TITLE_LIGHTBOX_DELETE_RELATED_USERSTORY": "Delete related userstory...",
-        "MSG_LIGHTBOX_DELETE_RELATED_USERSTORY": "the related userstory '{{subject}}'",
-        "ERROR_DELETE_RELATED_USERSTORY": "We have not been able to delete: {{errorMessage}}",
+        "SECTION_NAME": "Épopée",
+        "TITLE_LIGHTBOX_UNLINK_RELATED_USERSTORY": "Unlink related userstory",
+        "MSG_LIGHTBOX_UNLINK_RELATED_USERSTORY": "It will delete the link to the related userstory '{{subject}}'",
+        "ERROR_UNLINK_RELATED_USERSTORY": "We have not been able to unlink: {{errorMessage}}",
         "CREATE_RELATED_USERSTORIES": "Create a relationship with",
-        "NEW_USERSTORY": "New user story",
+        "NEW_USERSTORY": "Nouveau récit utilisateur",
         "EXISTING_USERSTORY": "Existing user story",
         "CHOOSE_PROJECT_FOR_CREATION": "What's the project?",
-        "SUBJECT": "Subject",
+        "SUBJECT": "Objet",
         "SUBJECT_BULK_MODE": "Subject (bulk insert)",
         "CHOOSE_PROJECT_FROM": "What's the project?",
         "CHOOSE_USERSTORY": "What's the user story?",
+        "NO_USERSTORIES": "This project has no User Stories yet. Please select another project.",
         "FILTER_USERSTORIES": "Filter user stories",
         "LIGHTBOX_TITLE_BLOKING_EPIC": "Blocking epic",
         "ACTION_DELETE": "Delete epic"
@@ -1202,7 +1205,7 @@
             "KANBAN_ORDER": "Classement du Kanban",
             "TASKBOARD_ORDER": "trier le tableau des tâches",
             "US_ORDER": "classement des récits utilisateur",
-            "COLOR": "color"
+            "COLOR": "couleur"
         }
     },
     "BACKLOG": {

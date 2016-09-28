@@ -124,7 +124,7 @@
         "ISSUE": "incidència",
         "EPIC": "Epic",
         "TAGS": {
-            "PLACEHOLDER": "Afegir tag",
+            "PLACEHOLDER": "Enter tag",
             "DELETE": "Elimina l'etiqueta",
             "ADD": "Afegeix l'etiqueta"
         },
@@ -208,6 +208,7 @@
             "TITLE_ACTION_SEARCH": "Cerca",
             "ACTION_SAVE_CUSTOM_FILTER": "Guarda com a filtre",
             "PLACEHOLDER_FILTER_NAME": "Escriu el filtre i pressiona Intro",
+            "APPLIED_FILTERS_NUM": "filters applied",
             "CATEGORIES": {
                 "TYPE": "Tipus",
                 "STATUS": "Estats",
@@ -216,7 +217,8 @@
                 "TAGS": "Etiquetes",
                 "ASSIGNED_TO": "Assignat a",
                 "CREATED_BY": "Creat per",
-                "CUSTOM_FILTERS": "Filtres personalitzats"
+                "CUSTOM_FILTERS": "Filtres personalitzats",
+                "EPIC": "Epic"
             },
             "CONFIRM_DELETE": {
                 "TITLE": "Esborrar filtre",
@@ -412,8 +414,8 @@
             "UNASSIGNED": "Sense assignar"
         },
         "EMPTY": {
-            "TITLE": "It looks like you have not created any epics yet",
-            "EXPLANATION": "Create an epic to have a superior level of User Stories. Epics can contain or be composed by User Stories from this or any other project",
+            "TITLE": "It looks like there aren't any epics yet",
+            "EXPLANATION": "Epics are items at a higher level that encompass user stories.<br />Epics are at the top of the hierarchy and can be used to group user stories together.",
             "HELP": "Learn more about epics"
         },
         "TABLE": {
@@ -1070,17 +1072,18 @@
         "PAGE_TITLE": "{{epicSubject}} - Epic {{epicRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Status: {{epicStatus }}. Description: {{epicDescription}}",
         "SECTION_NAME": "Epic",
-        "TITLE_LIGHTBOX_DELETE_RELATED_USERSTORY": "Delete related userstory...",
-        "MSG_LIGHTBOX_DELETE_RELATED_USERSTORY": "the related userstory '{{subject}}'",
-        "ERROR_DELETE_RELATED_USERSTORY": "We have not been able to delete: {{errorMessage}}",
+        "TITLE_LIGHTBOX_UNLINK_RELATED_USERSTORY": "Unlink related userstory",
+        "MSG_LIGHTBOX_UNLINK_RELATED_USERSTORY": "It will delete the link to the related userstory '{{subject}}'",
+        "ERROR_UNLINK_RELATED_USERSTORY": "We have not been able to unlink: {{errorMessage}}",
         "CREATE_RELATED_USERSTORIES": "Create a relationship with",
-        "NEW_USERSTORY": "New user story",
+        "NEW_USERSTORY": "Nova història d'usuari",
         "EXISTING_USERSTORY": "Existing user story",
         "CHOOSE_PROJECT_FOR_CREATION": "What's the project?",
-        "SUBJECT": "Subject",
+        "SUBJECT": "Descripció",
         "SUBJECT_BULK_MODE": "Subject (bulk insert)",
         "CHOOSE_PROJECT_FROM": "What's the project?",
         "CHOOSE_USERSTORY": "What's the user story?",
+        "NO_USERSTORIES": "This project has no User Stories yet. Please select another project.",
         "FILTER_USERSTORIES": "Filter user stories",
         "LIGHTBOX_TITLE_BLOKING_EPIC": "Blocking epic",
         "ACTION_DELETE": "Delete epic"

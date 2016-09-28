@@ -124,7 +124,7 @@
         "ISSUE": "Ticket",
         "EPIC": "Epic",
         "TAGS": {
-            "PLACEHOLDER": "Schlagwort...",
+            "PLACEHOLDER": "Enter tag",
             "DELETE": "Schlagwort löschen",
             "ADD": "Schlagwort hinzufügen"
         },
@@ -208,6 +208,7 @@
             "TITLE_ACTION_SEARCH": "Suche",
             "ACTION_SAVE_CUSTOM_FILTER": "Als Benutzerfilter speichern",
             "PLACEHOLDER_FILTER_NAME": "Benennen Sie den Filter und drücken Sie die Eingabetaste",
+            "APPLIED_FILTERS_NUM": "filters applied",
             "CATEGORIES": {
                 "TYPE": "Arten",
                 "STATUS": "Status",
@@ -216,7 +217,8 @@
                 "TAGS": "Schlagwörter",
                 "ASSIGNED_TO": "Zugeordnet zu",
                 "CREATED_BY": "Erstellt durch",
-                "CUSTOM_FILTERS": "Benutzerfilter"
+                "CUSTOM_FILTERS": "Benutzerfilter",
+                "EPIC": "Epic"
             },
             "CONFIRM_DELETE": {
                 "TITLE": "Benutzerfilter löschen",
@@ -412,8 +414,8 @@
             "UNASSIGNED": "Nicht zugeordnet"
         },
         "EMPTY": {
-            "TITLE": "Es sieht so aus, als hätten Sie noch keine Epics erzeugt",
-            "EXPLANATION": "Erstellen Sie Epics als übergeordnete Einheit für User Storys. Epics können User Storys aus diesem oder anderen Projekten beinhalten oder aus Ihnen erstellt werden.",
+            "TITLE": "It looks like there aren't any epics yet",
+            "EXPLANATION": "Epics are items at a higher level that encompass user stories.<br />Epics are at the top of the hierarchy and can be used to group user stories together.",
             "HELP": "Erfahren Sie mehr über Epics"
         },
         "TABLE": {
@@ -1070,17 +1072,18 @@
         "PAGE_TITLE": "{{epicSubject}} - Epic {{epicRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Status: {{epicStatus }}. Description: {{epicDescription}}",
         "SECTION_NAME": "Epic",
-        "TITLE_LIGHTBOX_DELETE_RELATED_USERSTORY": "Delete related userstory...",
-        "MSG_LIGHTBOX_DELETE_RELATED_USERSTORY": "the related userstory '{{subject}}'",
-        "ERROR_DELETE_RELATED_USERSTORY": "We have not been able to delete: {{errorMessage}}",
+        "TITLE_LIGHTBOX_UNLINK_RELATED_USERSTORY": "Unlink related userstory",
+        "MSG_LIGHTBOX_UNLINK_RELATED_USERSTORY": "It will delete the link to the related userstory '{{subject}}'",
+        "ERROR_UNLINK_RELATED_USERSTORY": "We have not been able to unlink: {{errorMessage}}",
         "CREATE_RELATED_USERSTORIES": "Create a relationship with",
-        "NEW_USERSTORY": "New user story",
+        "NEW_USERSTORY": "Neue User-Story",
         "EXISTING_USERSTORY": "Existing user story",
         "CHOOSE_PROJECT_FOR_CREATION": "What's the project?",
-        "SUBJECT": "Subject",
+        "SUBJECT": "Thema",
         "SUBJECT_BULK_MODE": "Subject (bulk insert)",
         "CHOOSE_PROJECT_FROM": "What's the project?",
         "CHOOSE_USERSTORY": "What's the user story?",
+        "NO_USERSTORIES": "This project has no User Stories yet. Please select another project.",
         "FILTER_USERSTORIES": "Filter user stories",
         "LIGHTBOX_TITLE_BLOKING_EPIC": "Blocking epic",
         "ACTION_DELETE": "Delete epic"
@@ -1202,7 +1205,7 @@
             "KANBAN_ORDER": "Kanban Befehl",
             "TASKBOARD_ORDER": "Taskboard Befehl",
             "US_ORDER": "User-Story Befehl",
-            "COLOR": "color"
+            "COLOR": "Farbe"
         }
     },
     "BACKLOG": {

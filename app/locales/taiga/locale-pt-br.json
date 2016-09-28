@@ -124,7 +124,7 @@
         "ISSUE": "Problema",
         "EPIC": "Épico",
         "TAGS": {
-            "PLACEHOLDER": "Adicionar tags...",
+            "PLACEHOLDER": "Enter tag",
             "DELETE": "Apagar tag",
             "ADD": "Adicionar tag"
         },
@@ -208,6 +208,7 @@
             "TITLE_ACTION_SEARCH": "Procurar",
             "ACTION_SAVE_CUSTOM_FILTER": "salve como filtro personalizado",
             "PLACEHOLDER_FILTER_NAME": "Digite o nome do filtro e pressione Enter",
+            "APPLIED_FILTERS_NUM": "filters applied",
             "CATEGORIES": {
                 "TYPE": "Tipo",
                 "STATUS": "Status",
@@ -216,7 +217,8 @@
                 "TAGS": "Tags",
                 "ASSIGNED_TO": "Atribuído a",
                 "CREATED_BY": "Criado por",
-                "CUSTOM_FILTERS": "Filtros personalizados"
+                "CUSTOM_FILTERS": "Filtros personalizados",
+                "EPIC": "Epic"
             },
             "CONFIRM_DELETE": {
                 "TITLE": "Apagar filtro personalizado",
@@ -256,7 +258,7 @@
         },
         "PERMISIONS_CATEGORIES": {
             "EPICS": {
-                "NAME": "Epics",
+                "NAME": "Épicos",
                 "VIEW_EPICS": "View epics",
                 "ADD_EPICS": "Add epics",
                 "MODIFY_EPICS": "Modify epics",
@@ -403,7 +405,7 @@
     },
     "EPICS": {
         "TITLE": "ÉPICOS",
-        "SECTION_NAME": "Epics",
+        "SECTION_NAME": "Épicos",
         "EPIC": "ÉPICO",
         "PAGE_TITLE": "Epics - {{projectName}}",
         "PAGE_DESCRIPTION": "The epics list of the project {{projectName}}: {{projectDescription}}",
@@ -412,8 +414,8 @@
             "UNASSIGNED": "Não-atribuído"
         },
         "EMPTY": {
-            "TITLE": "Parece que você ainda não criou nenhum épico ",
-            "EXPLANATION": "Crie um épico para ter um nível superior de Histórias de Usuário. Épicos podem conter ou serem compostos por Histórias de Usuário deste ou de qualquer outro projeto",
+            "TITLE": "It looks like there aren't any epics yet",
+            "EXPLANATION": "Epics are items at a higher level that encompass user stories.<br />Epics are at the top of the hierarchy and can be used to group user stories together.",
             "HELP": "Saiba mais sobre épicos"
         },
         "TABLE": {
@@ -845,7 +847,7 @@
             "FILTER_TYPE_ALL_TITLE": "Mostrar tudo",
             "FILTER_TYPE_PROJECTS": "Projetos",
             "FILTER_TYPE_PROJECT_TITLES": "Mostrar somente projetos",
-            "FILTER_TYPE_EPICS": "Epics",
+            "FILTER_TYPE_EPICS": "Épicos",
             "FILTER_TYPE_EPIC_TITLES": "Show only epics",
             "FILTER_TYPE_USER_STORIES": "Histórias",
             "FILTER_TYPE_USER_STORIES_TITLES": "Mostrar apenas histórias de usuários",
@@ -1069,18 +1071,19 @@
     "EPIC": {
         "PAGE_TITLE": "{{epicSubject}} - Epic {{epicRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Status: {{epicStatus }}. Description: {{epicDescription}}",
-        "SECTION_NAME": "Epic",
-        "TITLE_LIGHTBOX_DELETE_RELATED_USERSTORY": "Delete related userstory...",
-        "MSG_LIGHTBOX_DELETE_RELATED_USERSTORY": "the related userstory '{{subject}}'",
-        "ERROR_DELETE_RELATED_USERSTORY": "We have not been able to delete: {{errorMessage}}",
+        "SECTION_NAME": "Épico",
+        "TITLE_LIGHTBOX_UNLINK_RELATED_USERSTORY": "Unlink related userstory",
+        "MSG_LIGHTBOX_UNLINK_RELATED_USERSTORY": "It will delete the link to the related userstory '{{subject}}'",
+        "ERROR_UNLINK_RELATED_USERSTORY": "We have not been able to unlink: {{errorMessage}}",
         "CREATE_RELATED_USERSTORIES": "Create a relationship with",
-        "NEW_USERSTORY": "New user story",
+        "NEW_USERSTORY": "Nova história de usuário",
         "EXISTING_USERSTORY": "Existing user story",
         "CHOOSE_PROJECT_FOR_CREATION": "What's the project?",
-        "SUBJECT": "Subject",
+        "SUBJECT": "Assunto",
         "SUBJECT_BULK_MODE": "Subject (bulk insert)",
         "CHOOSE_PROJECT_FROM": "What's the project?",
         "CHOOSE_USERSTORY": "What's the user story?",
+        "NO_USERSTORIES": "This project has no User Stories yet. Please select another project.",
         "FILTER_USERSTORIES": "Filter user stories",
         "LIGHTBOX_TITLE_BLOKING_EPIC": "Blocking epic",
         "ACTION_DELETE": "Delete epic"
@@ -1202,7 +1205,7 @@
             "KANBAN_ORDER": "pedido kanban",
             "TASKBOARD_ORDER": "Ordem de quadro de tarefa",
             "US_ORDER": "ordem da história de usuário",
-            "COLOR": "color"
+            "COLOR": "cor"
         }
     },
     "BACKLOG": {

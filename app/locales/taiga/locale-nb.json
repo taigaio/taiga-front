@@ -124,7 +124,7 @@
         "ISSUE": "Hendelse",
         "EPIC": "Epic",
         "TAGS": {
-            "PLACEHOLDER": "Jeg har den! Ta meg...",
+            "PLACEHOLDER": "Enter tag",
             "DELETE": "Slett etikett",
             "ADD": "Legg til etikett"
         },
@@ -208,6 +208,7 @@
             "TITLE_ACTION_SEARCH": "Søk",
             "ACTION_SAVE_CUSTOM_FILTER": "lagre som egendefinert filter",
             "PLACEHOLDER_FILTER_NAME": "Skriv filternavnet og trykk enter",
+            "APPLIED_FILTERS_NUM": "filters applied",
             "CATEGORIES": {
                 "TYPE": "Type",
                 "STATUS": "Status",
@@ -216,7 +217,8 @@
                 "TAGS": "Etiketter",
                 "ASSIGNED_TO": "Tildelt til",
                 "CREATED_BY": "Laget av",
-                "CUSTOM_FILTERS": "Egendefinert filtre"
+                "CUSTOM_FILTERS": "Egendefinert filtre",
+                "EPIC": "Epic"
             },
             "CONFIRM_DELETE": {
                 "TITLE": "Slett egendefinert filter",
@@ -412,8 +414,8 @@
             "UNASSIGNED": "Ikke tildelt"
         },
         "EMPTY": {
-            "TITLE": "It looks like you have not created any epics yet",
-            "EXPLANATION": "Create an epic to have a superior level of User Stories. Epics can contain or be composed by User Stories from this or any other project",
+            "TITLE": "It looks like there aren't any epics yet",
+            "EXPLANATION": "Epics are items at a higher level that encompass user stories.<br />Epics are at the top of the hierarchy and can be used to group user stories together.",
             "HELP": "Learn more about epics"
         },
         "TABLE": {
@@ -1070,9 +1072,9 @@
         "PAGE_TITLE": "{{epicSubject}} - Epic {{epicRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Status: {{epicStatus }}. Description: {{epicDescription}}",
         "SECTION_NAME": "Epic",
-        "TITLE_LIGHTBOX_DELETE_RELATED_USERSTORY": "Delete related userstory...",
-        "MSG_LIGHTBOX_DELETE_RELATED_USERSTORY": "the related userstory '{{subject}}'",
-        "ERROR_DELETE_RELATED_USERSTORY": "Vi hadde ikke mulighet til å slette: {{errorMessage}}",
+        "TITLE_LIGHTBOX_UNLINK_RELATED_USERSTORY": "Unlink related userstory",
+        "MSG_LIGHTBOX_UNLINK_RELATED_USERSTORY": "It will delete the link to the related userstory '{{subject}}'",
+        "ERROR_UNLINK_RELATED_USERSTORY": "We have not been able to unlink: {{errorMessage}}",
         "CREATE_RELATED_USERSTORIES": "Create a relationship with",
         "NEW_USERSTORY": "Ny brukerhistorie",
         "EXISTING_USERSTORY": "Existing user story",
@@ -1081,6 +1083,7 @@
         "SUBJECT_BULK_MODE": "Subject (bulk insert)",
         "CHOOSE_PROJECT_FROM": "What's the project?",
         "CHOOSE_USERSTORY": "What's the user story?",
+        "NO_USERSTORIES": "This project has no User Stories yet. Please select another project.",
         "FILTER_USERSTORIES": "Filter user stories",
         "LIGHTBOX_TITLE_BLOKING_EPIC": "Blocking epic",
         "ACTION_DELETE": "Delete epic"
