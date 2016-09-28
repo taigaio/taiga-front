@@ -31,7 +31,7 @@ form
 
     fieldset
         tg-tag-line-common.tags-block(
-            ng-if="project"
+            ng-if="project && createEditTaskOpen"
             project="project"
             tags="task.tags"
             permissions="add_task"

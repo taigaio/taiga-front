@@ -30,7 +30,7 @@ form
 
     fieldset
         tg-tag-line-common.tags-block(
-            ng-if="project"
+            ng-if="project && createIssueOpen"
             project="project"
             tags="issue.tags"
             permissions="add_issue"

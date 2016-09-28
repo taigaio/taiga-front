@@ -45,8 +45,8 @@ CreateIssueDirective = ($repo, $confirm, $rootscope, lightboxService, $loading, 
             resetAttachments()
 
             $el.find(".tag-input").val("")
-
-            lightboxService.open($el)
+            lightboxService.open $el, () ->
+                $scope.createIssueOpen = false
 
             $scope.issue = {
                 project: project.id
@@ -58,9 +58,10 @@ CreateIssueDirective = ($repo, $confirm, $rootscope, lightboxService, $loading, 
                 tags: []
             }
 
+            $scope.createIssueOpen = true
+
         $scope.$on "$destroy", ->
             $el.off()
-
 
         createAttachments = (obj) ->
             promises = _.map attachmentsToAdd.toJS(), (attachment) ->

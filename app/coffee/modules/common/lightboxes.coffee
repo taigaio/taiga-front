@@ -36,9 +36,11 @@ trim = @.taiga.trim
 
 # the lightboxContent hide/show doesn't have sense because is an IE hack
 class LightboxService extends taiga.Service
-    constructor: (@animationFrame, @q) ->
+    constructor: (@animationFrame, @q, @rootScope) ->
 
-    open: ($el) ->
+    open: ($el, onClose) ->
+        @.onClose = onClose
+
         if _.isString($el)
             $el = $($el)
         defered = @q.defer()
@@ -71,25 +73,29 @@ class LightboxService extends taiga.Service
         return defered.promise
 
     close: ($el) ->
-        if _.isString($el)
-            $el = $($el)
-        docEl = angular.element(document)
-        docEl.off(".lightbox")
-        docEl.off(".keyboard-navigation") # Hack: to fix problems in the WYSIWYG textareas when press ENTER
+        return new Promise (resolve) =>
+            if _.isString($el)
+                $el = $($el)
+            docEl = angular.element(document)
+            docEl.off(".lightbox")
+            docEl.off(".keyboard-navigation") # Hack: to fix problems in the WYSIWYG textareas when press ENTER
 
-        @animationFrame.add ->
-            $el.addClass('close')
+            @animationFrame.add =>
+                $el.addClass('close')
 
-            $el.one "transitionend", =>
-                $el.removeAttr('style')
-                $el.removeClass("open").removeClass('close')
+                $el.one "transitionend", =>
+                    $el.removeAttr('style')
+                    $el.removeClass("open").removeClass('close')
 
+                    if @.onClose
+                        @rootScope.$apply(@.onClose)
 
+                    resolve()
 
-        if $el.hasClass("remove-on-close")
-            scope = $el.data("scope")
-            scope.$destroy() if scope
-            $el.remove()
+            if $el.hasClass("remove-on-close")
+                scope = $el.data("scope")
+                scope.$destroy() if scope
+                $el.remove()
 
     closeAll: ->
         docEl = angular.element(document)
@@ -97,7 +103,7 @@ class LightboxService extends taiga.Service
             @.close($(lightboxEl))
 
 
-module.service("lightboxService", ["animationFrame", "$q", LightboxService])
+module.service("lightboxService", ["animationFrame", "$q", "$rootScope", LightboxService])
 
 
 class LightboxKeyboardNavigationService extends taiga.Service
@@ -358,7 +364,10 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService,
             $el.find("label.team-requirement").removeClass("selected")
             $el.find("label.client-requirement").removeClass("selected")
 
-            lightboxService.open($el)
+            $scope.createEditUsOpen = true
+
+            lightboxService.open $el, () ->
+                $scope.createEditUsOpen = false
 
         $scope.$on "usform:edit", (ctx, us, attachments) ->
             form.reset() if form
@@ -391,7 +400,10 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService,
             else
                 $el.find("label.client-requirement").removeClass("selected")
 
-            lightboxService.open($el)
+            $scope.createEditUsOpen = true
+
+            lightboxService.open $el, () ->
+                $scope.createEditUsOpen = false
 
         createAttachments = (obj) ->
             promises = _.map attachmentsToAdd.toJS(), (attachment) ->
@@ -451,8 +463,10 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService,
 
         $el.on "click", ".close", (event) ->
             event.preventDefault()
+
             $scope.$apply ->
                 $scope.us.revert()
+
             lightboxService.close($el)
 
         $el.keydown (event) ->
