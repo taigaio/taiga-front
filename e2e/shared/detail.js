@@ -357,8 +357,9 @@ shared.attachmentTesting = async function() {
 
     let previewSrc2 = await attachmentHelper.getPreviewSrc();
 
-    expect(previewSrc).not.to.be.equal(previewSrc2);
     await lightbox.exit();
+
+    expect(previewSrc).not.to.be.equal(previewSrc2);
 
     // Deleting
     attachmentsLength = await attachmentHelper.countAttachments();

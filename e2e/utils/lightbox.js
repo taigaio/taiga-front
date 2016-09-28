@@ -13,6 +13,8 @@ lightbox.exit = function(el) {
     }
 
     el.$('.close').click();
+
+    return lightbox.close(el);
 };
 
 lightbox.open = async function(el) {
@@ -38,7 +40,6 @@ lightbox.open = async function(el) {
 };
 
 lightbox.close = async function(el) {
-    var deferred = protractor.promise.defer();
     var present = true;
 
     if (typeof el == 'string' || el instanceof String) {
@@ -47,22 +48,16 @@ lightbox.close = async function(el) {
 
     present = await el.isPresent();
 
-    if (!present) {
-        deferred.fulfill(true);
-    } else {
-        return browser.wait(function() {
-            return common.hasClass(el, 'open').then(function(open) {
+    if (present) {
+        try {
+            await browser.wait(async function() {
+                let open = await common.hasClass(el, 'open');
                 return !open;
-            });
-        }, 4000)
-            .then(function() {
-                return deferred.fulfill(true);
-            }, function() {
-                deferred.reject(new Error('Lightbox doesn\'t close'));
-            });
+            }, 4000);
+        } catch (e) {
+            new Error('Lightbox doesn\'t close')
+        }
     }
-
-    return deferred.promise;
 };
 
 lightbox.confirm = {};

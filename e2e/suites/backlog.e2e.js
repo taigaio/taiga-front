@@ -10,6 +10,7 @@ var sharedFilters = require('../shared/filters');
 chai.use(chaiAsPromised);
 var expect = chai.expect;
 
+
 describe('backlog', function() {
     before(async function() {
         browser.get(browser.params.glob.host + 'project/project-3/backlog');
@@ -160,6 +161,7 @@ describe('backlog', function() {
         });
     });
 
+
     it('edit status inline', async function() {
         await backlogHelper.setUsStatus(0, 1);
 
@@ -209,7 +211,7 @@ describe('backlog', function() {
         expect(firstElementTextRef).to.be.equal(draggedElementRef);
     });
 
-    it.skip('reorder multiple us', async function() {
+    it('reorder multiple us', async function() {
         let dragableElements = backlogHelper.userStories();
 
         let count = await dragableElements.count();
@@ -237,7 +239,7 @@ describe('backlog', function() {
         expect(elementRef1).to.be.equal(draggedRefs[1]);
     });
 
-    it.skip('drag multiple us to milestone', async function() {
+    it('drag multiple us to milestone', async function() {
         let sprint = backlogHelper.sprints().get(0);
         let initUssSprintCount = await backlogHelper.getSprintUsertories(sprint).count();
 
