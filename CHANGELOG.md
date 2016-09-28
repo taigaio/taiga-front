@@ -10,10 +10,11 @@
 - Errors (not found, server error, permissions and blocked project) don't change the current url.
 - Neew Attachments image slider in preview mode.
 - New admin area to edit the tag colors used in your project.
+- Set color when add a new tags to epics, stories, tasks or issues.
 - Display the current user (me) at first in assignment lightbox (thanks to [@mikaoelitiana](https://github.com/mikaoelitiana))
 - Divide the user dashboard in two columns in large screens.
 - Upvote and downvote issues from the issues list.
-- Show points per role in statsection of the taskboard panel.
+- Show points per role in statsection of the taskboard panel. (thanks to [@fmartingr](https://github.com/fmartingr))
 - Show a funny randon animals/color for users with no avatar (like project logos).
 - Show Open Sprints in the left navigation menu (backlog submenu).
 - Filters:
