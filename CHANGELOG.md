@@ -1,7 +1,7 @@
 # Changelog #
 
 
-## 3.0.0 ???? (Unreleased)
+## 3.0.0 Stellaria Borealis (2016-10-02)
 
 ### Features
 - Add Epics.
