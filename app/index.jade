@@ -21,7 +21,8 @@ html(lang="en")
 
     body(tg-main)
         div(tg-navigation-bar, ng-if="!errorHandling.showingError")
-        div.master(ng-view, ng-if="!errorHandling.showingError")
+        div(ng-if="!errorHandling.showingError")
+            div.master(ng-view)
 
         div(ng-if="errorHandling.notfound", ng-include="'error/not-found.html'")
         div(ng-if="errorHandling.error", ng-include="'error/error.html'")
