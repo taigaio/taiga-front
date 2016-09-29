@@ -162,9 +162,8 @@ class TaskboardTasksService extends taiga.Service
                 task.images = _.filter taskModel.attachments, (it) -> return !!it.thumbnail_card_url
                 task.id = taskModel.id
                 task.assigned_to = @.usersById[taskModel.assigned_to]
-                task.colorized_tags = _.map task.model.tags, (tag) =>
-                    color = @.project.tags_colors[tag]
-                    return {name: tag, color: color}
+                task.colorized_tags = _.map task.model.tags, (tag) =>                    
+                    return {name: tag[0], color: tag[1]}
 
                 usTasks[taskModel.user_story][taskModel.status].push(task)
 

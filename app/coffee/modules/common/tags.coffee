@@ -63,7 +63,7 @@ ColorizeTagsDirective = ->
         backlog: _.template("""
         <% _.each(tags, function(tag) { %>
             <span class="tag"
-                <% if (tag[1] === null || tag[1] == undefined) { %>
+                <% if (tag[1] !== null) { %>
                     style="border-left: 5px solid <%- tag[1] %>"
                 <% } %>
                 title="<%- tag[0] %>"><%- tag[0] %></span>
@@ -73,7 +73,7 @@ ColorizeTagsDirective = ->
         <% _.each(tags, function(tag) { %>
             <a class="kanban-tag"
                 href=""
-                <% if (tag[1] === null || tag[1] == undefined) { %>
+                <% if (tag[1] !== null) { %>
                     style="border-color: <%- tag[1] %>"
                 <% } %>
                 title="<%- tag[0] %>" />
@@ -83,7 +83,7 @@ ColorizeTagsDirective = ->
         <% _.each(tags, function(tag) { %>
             <a class="taskboard-tag"
                 href=""
-                <% if (tag[1] === null || tag[1] == undefined) { %>
+                <% if (tag[1] !== null) { %>
                     style="border-color: <%- tag[1] %>"
                 <% } %>
                 title="<%- tag[0] %>" />

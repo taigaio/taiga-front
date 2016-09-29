@@ -176,8 +176,7 @@ class KanbanUserstoriesService extends taiga.Service
             us.id = usModel.id
             us.assigned_to = @.usersById[usModel.assigned_to]
             us.colorized_tags = _.map us.model.tags, (tag) =>
-                color = @.project.tags_colors[tag]
-                return {name: tag, color: color}
+                return {name: tag[0], color: tag[1]}
 
             return us
 
