@@ -56,8 +56,11 @@ lightbox.close = async function(el) {
             }, 4000);
         } catch (e) {
             new Error('Lightbox doesn\'t close')
+            return false;
         }
     }
+
+    return true;
 };
 
 lightbox.confirm = {};
