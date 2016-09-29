@@ -11,6 +11,7 @@
         flex-grow: 0;
         flex-shrink: 0;
         margin-right: 1.5rem;
+        width: 50px;
     }
     .entry-main {
         flex: 1;
@@ -19,7 +20,7 @@
     .entry-data {
         align-items: flex-start;
         display: flex;
-        margin-bottom: 1rem;
+        margin-bottom: .5rem;
     }
     .entry-creator {
         color: $primary;
