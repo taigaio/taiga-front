@@ -51,11 +51,11 @@
         }
     }
     .level-field {
-        flex-basis: 75px;
+        flex-basis: 85px;
         flex-grow: 0;
         flex-shrink: 0;
         text-align: center;
-        width: 75px;
+        width: 85px;
     }
     .votes {
         color: $gray;
@@ -75,12 +75,19 @@
         &.inactive {
             color: $gray-light;
         }
-        svg {
-            @include svg-size(.75rem);
-            fill: $gray;
-            margin-right: .25rem;
-            vertical-align: middle;
-        }
+    }
+    .icon-upvote {
+        @include svg-size(.75rem);
+        fill: $gray;
+        margin-right: .25rem;
+        vertical-align: middle;
+    }
+    .icon-arrow-up,
+    .icon-arrow-down {
+        @include svg-size(.7rem);
+        fill: $gray-light;
+        margin-left: .25rem;
+        vertical-align: middle;
     }
     .is-voted {
         color: $primary-light;
