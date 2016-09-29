@@ -22,7 +22,7 @@ section
                     data-maxlength="255"
                 )
 
-            .options-column
+            .options-column(tg-loading="loadingCreate")
                 a.add-new.e2e-save(href="")
                     tg-svg(
                         title="{{'COMMON.ADD' | translate}}",
@@ -103,7 +103,7 @@ section
                                         title="{{'ADMIN.COMMON.TITLE_ACTION_EDIT_VALUE' | translate}}"
                                     )
 
-                                a.delete-tag(href="")
+                                a.delete-tag(href="", tg-loading="loadingDelete")
                                     tg-svg(
                                         svg-icon="icon-trash"
                                         title="{{'ADMIN.COMMON.TITLE_ACTION_DELETE_VALUE' | translate}}"
@@ -127,7 +127,7 @@ section
                                     data-maxlength="255"
                                 )
 
-                            .options-column
+                            .options-column(tg-loading="loadingEdit")
                                 a.save.e2e-save(href="")
                                     tg-svg(
                                         title="{{'COMMON.SAVE' | translate}}"
@@ -145,7 +145,9 @@ section
                     tg-bind-scope
                 )
                     form(tg-bind-scope)
-                        .row.mixing-row.table-main.visualization(class="{{ ctrl.mixingClass(tag) }}")
+                        .row.mixing-row.table-main.visualization(
+                            ng-class="ctrl.mixingClass(tag)"
+                        )
                             .color-column
                                 .current-color(
                                     ng-if="tag.color"
@@ -158,25 +160,27 @@ section
                             .status-name
                                 span(tg-bo-html="tag.name")
 
-                            .mixing-options-column
+                            .mixing-options-column(
+                                ng-if="mixingTags.toTag === tag.name"
+                                tg-loading="loadingMixing"
+                            )
                                 .mixing-help-text(
-                                    ng-if="mixingTags.toTag === tag.name"
                                     translate="ADMIN.PROJECT_VALUES_TAGS.MIXING_HELP_TEXT"
                                 )
                                 a.mixing-confirm.button-green(
                                     href=""
-                                    ng-if="mixingTags.toTag === tag.name && mixingTags.fromTags.length"
+                                    ng-if="mixingTags.fromTags.length"
                                     translate="ADMIN.PROJECT_VALUES_TAGS.MIXING_MERGE"
                                 )
                                 a.mixing-cancel.button-gray(
                                     href=""
-                                    ng-if="mixingTags.toTag === tag.name"
                                     translate="COMMON.CANCEL"
                                 )
-                                span.mixing-selected(
-                                    ng-if="mixingTags.fromTags.indexOf(tag.name) !== -1"
+
+                            .mixing-options-column(
+                                ng-if="mixingTags.fromTags.indexOf(tag.name) !== -1"
+                            )
+                                tg-svg.mixing-selected(
+                                    title="{{'ADMIN.PROJECT_VALUES_TAGS.SELECTED' | translate}}"
+                                    svg-icon="icon-merge"
                                 )
-                                    tg-svg(
-                                        title="{{'ADMIN.PROJECT_VALUES_TAGS.SELECTED' | translate}}"
-                                        svg-icon="icon-merge"
-                                    )

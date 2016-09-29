@@ -17,6 +17,10 @@
     }
     .options-column {
         display: flex;
+        .loading-spinner {
+            margin-right: 1.2rem;
+            width: 1.2rem;
+        }
     }
     .current-color {
         &.empty-color {
@@ -80,6 +84,10 @@
                 cursor: default;
             }
         }
+        .loading-spinner {
+            margin-right: 1.2rem;
+            width: 1.2rem;
+        }
     }
     .mix-tags {
         position: relative;
@@ -94,6 +102,10 @@
     }
     .mixing-options-column {
         text-align: right;
+        .loading-spinner {
+            margin-right: 1.2rem;
+            width: 1.2rem;
+        }
     }
     .mixing-tags-from,
     .mixing-tags-to {
