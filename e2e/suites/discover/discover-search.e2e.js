@@ -29,8 +29,6 @@ describe('discover search', () => {
 
             discoverHelper.searchFilter(3);
 
-            await htmlChanges();
-
             let url = await browser.getCurrentUrl();
 
             let projects = discoverHelper.searchProjects();
