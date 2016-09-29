@@ -179,7 +179,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
     refreshTagsColors: ->
         return @rs.projects.tagsColors(@scope.projectId).then (tags_colors) =>
-            @scope.project.tags_colors = tags_colors
+            @scope.project.tags_colors = tags_colors._attrs
 
     loadUserstories: ->
         params = {
