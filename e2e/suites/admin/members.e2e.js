@@ -50,7 +50,8 @@ describe('admin - members', function() {
         });
 
         it('submit', async function() {
-            newMemberLightbox.submit();
+            await browser.sleep(1000);
+            await newMemberLightbox.submit();
 
             await newMemberLightbox.waitClose();
 
@@ -101,11 +102,9 @@ describe('admin - members', function() {
         utils.common.takeScreenshot('memberships', 'delete-owner-lb');
 
         let isLeaveProjectWarningOpen = await adminMembershipsHelper.isLeaveProjectWarningOpen();
-
         expect(isLeaveProjectWarningOpen).to.be.equal(true);
 
         let lb = adminMembershipsHelper.leavingProjectWarningLb();
-
         await utils.lightbox.open(lb);
 
         utils.lightbox.exit(lb);

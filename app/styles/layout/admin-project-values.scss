@@ -11,6 +11,15 @@
                 width: 100%;
             }
         }
+        .admin-tags-section-wrapper-empty {
+            color: $gray-light;
+            padding: 10vh 0 0;
+            text-align: center;
+        }
+        .loading-spinner {
+            max-height: 3rem;
+            max-width: 3rem;
+        }
     }
 }
 
@@ -31,7 +40,7 @@
 .project-values-title {
     align-content: center;
     align-items: center;
-    background: $whitish;
+    background: $mass-white;
     display: flex;
     justify-content: space-between;
     padding: .8em 1rem;

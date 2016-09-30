@@ -1,22 +1,52 @@
 .home-wrapper {
     display: flex;
+    @include breakpoint(tablet) {
+        flex-direction: column;
+    }
+    @include breakpoint(mobile) {
+        flex-direction: column;
+    }
     .duty-summary {
         flex: 1;
         margin-right: 2rem;
     }
+    .dashboard-container {
+        display: flex;
+        flex-direction: row;
+        @include breakpoint(laptop) {
+            flex-direction: column;
+        }
+        @include breakpoint(tablet) {
+            flex-direction: column;
+        }
+        @include breakpoint(mobile) {
+            flex-direction: column;
+        }
+    }
+    .watching-container,
+    .working-on-container {
+        flex: 1;
+        padding-left: .5rem;
+        padding-right: .5rem;
+    }
+    .working-on-container {
+        margin-right: 1rem;
+    }
     .project-list {
-        width: 250px;
+        flex-basis: 250px;
+        flex-grow: 0;
+        flex-shrink: 0;
     }
     .see-more-projects-btn {
         display: block;
     }
     .title-bar {
         @include font-type(light);
-        @include font-size(larger);
+        @include font-size(large);
         align-content: center;
-        background: $whitish;
+        background: $mass-white;
         display: flex;
         margin: 0 0 .5rem;
-        padding: .9rem 1rem;
+        padding: .5rem 1rem;
     }
 }

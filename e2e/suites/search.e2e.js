@@ -84,7 +84,7 @@ describe('search page', function() {
             let searchTerm = element(by.model('searchTerm'));
             await searchTerm.clear();
 
-            let text = await $$('.table-main').get(0).$('a').getText();
+            let text = await $$('.table-main').get(0).$$('a').first().getText();
 
             let htmlChanges = await utils.common.outerHtmlChanges('.search-result-table-body');
 

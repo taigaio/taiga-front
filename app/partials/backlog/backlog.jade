@@ -3,8 +3,21 @@ doctype html
 div.wrapper(tg-backlog, ng-controller="BacklogController as ctrl",
             ng-init="section='backlog'")
     tg-project-menu
-    sidebar.menu-secondary.extrabar.filters-bar(tg-backlog-filters)
-        include ../includes/modules/backlog-filters
+
+    sidebar.backlog-filter
+        tg-filter(
+            q="ctrl.filterQ"
+            filters="ctrl.filters"
+            custom-filters="ctrl.customFilters"
+            selected-filters="ctrl.selectedFilters"
+            customFilters="ctl.customFilters"
+            on-save-custom-filter="ctrl.saveCustomFilter(name)"
+            on-add-filter="ctrl.addFilter(filter)"
+            on-select-custom-filter="ctrl.selectCustomFilter(filter)"
+            on-remove-custom-filter="ctrl.removeCustomFilter(filter)"
+            on-remove-filter="ctrl.removeFilter(filter)"
+            on-change-q="ctrl.changeQ(q)"
+        )
     section.main.backlog
         include ../includes/components/mainTitle
 
@@ -23,7 +36,7 @@ div.wrapper(tg-backlog, ng-controller="BacklogController as ctrl",
 
         div.backlog-menu
             div.backlog-table-options
-                a.trans-button.move-to-current-sprint.move-to-sprint(
+                a.trans-button.menu-button.move-to-current-sprint.move-to-sprint.e2e-move-to-sprint(
                     ng-if="currentSprint"
                     href=""
                     title="{{'BACKLOG.MOVE_US_TO_CURRENT_SPRINT' | translate}}"
@@ -31,7 +44,7 @@ div.wrapper(tg-backlog, ng-controller="BacklogController as ctrl",
                 )
                     tg-svg(svg-icon="icon-move")
                     span.text(translate="BACKLOG.MOVE_US_TO_CURRENT_SPRINT")
-                a.trans-button.move-to-latest-sprint.move-to-sprint(
+                a.trans-button.menu-button.move-to-latest-sprint.move-to-sprint.e2e-move-to-sprint(
                     ng-if="!currentSprint"
                     href=""
                     title="{{'BACKLOG.MOVE_US_TO_LATEST_SPRINT' | translate}}"
@@ -39,14 +52,21 @@ div.wrapper(tg-backlog, ng-controller="BacklogController as ctrl",
                 )
                     tg-svg(svg-icon="icon-move")
                     span.text(translate="BACKLOG.MOVE_US_TO_LATEST_SPRINT")
-                a.trans-button(
-                    ng-if="userstories.length"
+                a.trans-button.menu-button.e2e-open-filter.ng-animate-disabled(
+                    ng-if="!ctrl.activeFilters"
                     href=""
                     title="{{'BACKLOG.FILTERS.TOGGLE' | translate}}"
                     id="show-filters-button"
                     translate="BACKLOG.FILTERS.SHOW"
                 )
-                a.trans-button(
+                a.trans-button.menu-button.active.e2e-open-filter.ng-animate-disabled(
+                    ng-if="ctrl.activeFilters"
+                    href=""
+                    title="{{'BACKLOG.FILTERS.HIDE' | translate}}"
+                    id="show-filters-button"
+                    translate="BACKLOG.FILTERS.HIDE"
+                )
+                a.trans-button.menu-button(
                     ng-if="userstories.length"
                     href=""
                     title="{{'BACKLOG.TAGS.TOGGLE' | translate}}"
@@ -58,12 +78,9 @@ div.wrapper(tg-backlog, ng-controller="BacklogController as ctrl",
         section.backlog-table(ng-class="{'hidden': !userstories.length}")
             include ../includes/modules/backlog-table
 
-        div.empty-backlog(
-            ng-class="{'hidden': userstories === undefined || userstories.length}"
-            tg-backlog-empty-sortable
-        )
+        div.empty-large(ng-class="{'hidden': userstories === undefined || userstories.length}")
             img(
-                src="/#{v}/images/backlog-empty.png"
+                src="/#{v}/images/empty/empty_mex.png"
                 alt="{{'BACKLOG.EMPTY' | translate}}"
             )
             p.title(translate="BACKLOG.EMPTY")

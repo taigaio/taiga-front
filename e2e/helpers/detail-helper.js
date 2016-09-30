@@ -2,22 +2,23 @@ var utils = require('../utils');
 var helper = module.exports;
 
 helper.title = function() {
-    let el = $('span[tg-editable-subject]');
+    let el = $('.e2e-story-header');
 
     let obj = {
         el: el,
 
         getTitle: function() {
-            return el.$('.view-subject').getText();
+            return el.$('.e2e-title-subject').getText();
         },
 
         setTitle: function(title) {
-            el.$('.view-subject').click();
-            el.$('.edit-subject input').clear().sendKeys(title);
+            el.$('.e2e-detail-edit').click();
+            el.$('.e2e-title-input').clear().sendKeys(title);
         },
 
-        save: function() {
-            el.$('.save').click();
+        save: async function() {
+            el.$('.e2e-title-button').click();
+            await browser.waitForAngular();
         }
     };
 
@@ -29,7 +30,9 @@ helper.description = function(){
 
     let obj = {
         el: el,
-
+        focus: function() {
+            el.$('textarea').click();
+        },
         enabledEditionMode: async function(){
             await el.$(".view-description").click();
         },
@@ -54,35 +57,36 @@ helper.description = function(){
 
 
 helper.tags = function() {
-    let el = $('div[tg-tag-line]');
+    let el = $('tg-tag-line-common');
 
     let obj = {
         el:el,
 
         clearTags: async function() {
-            let tags = await el.$$('.icon-delete');
+            let tags = await el.$$('.e2e-delete-tag');
             let totalTags = tags.length;
             let htmlChanges = null;
             while (totalTags > 0) {
                 htmlChanges = await utils.common.outerHtmlChanges(el.$(".tags-container"));
-                await el.$$('.icon-delete').first().click();
+                await el.$$('.e2e-delete-tag').first().click();
                 totalTags --;
                 await htmlChanges();
             }
         },
 
         getTagsText: function() {
-          return el.$$('.tag-name').getText();
+          return el.$$('tg-tag span').getText();
         },
 
         addTags: async function(tags) {
             let htmlChanges = null
 
-            el.$('.add-tag').click();
+            $('.e2e-show-tag-input').click();
+
             for (let tag of tags){
                 htmlChanges = await utils.common.outerHtmlChanges(el.$(".tags-container"));
-                el.$('.tag-input').sendKeys(tag);
-                await browser.actions().sendKeys(protractor.Key.ENTER).perform();
+                el.$('.e2e-add-tag-input').sendKeys(tag);
+                el.$('.save').click();
                 await htmlChanges();
             }
         }
@@ -142,17 +146,37 @@ helper.assignedTo = function() {
     return obj;
 };
 
+helper.editComment = function() {
+  let el = $('.comment-editor');
+  let obj = {
+      el:el,
+
+      updateText: function (text) {
+          el.$('textarea').sendKeys(text);
+      },
+
+      saveComment: async function () {
+          el.$('.save-comment').click();
+          await browser.waitForAngular();
+      }
+  }
+  return obj;
+
+};
+
 helper.history = function() {
     let el = $('section.history');
     let obj = {
         el:el,
 
-        selectCommentsTab: function() {
-            el.$$('.history-tabs li a').first().click();
+        selectCommentsTab: async function() {
+            el.$('.e2e-comments-tab').click();
+            await browser.waitForAngular();
         },
 
-        selectActivityTab: function() {
-            el.$$('.history-tabs li a').last().click();
+        selectActivityTab: async function() {
+            el.$('.e2e-activity-tab').click();
+            await browser.waitForAngular();
         },
 
         addComment: async function(comment) {
@@ -166,46 +190,66 @@ helper.history = function() {
         },
 
         countComments: async function() {
-            let moreComments = el.$('.comments-list .show-more-comments');
-            let moreCommentsIsPresent = await moreComments.isPresent();
-            if (moreCommentsIsPresent){
-                moreComments.click();
-            }
-            await browser.waitForAngular();
-            let comments = await el.$$(".activity-single.comment");
+            let comments = await el.$$(".comment-wrapper");
             return comments.length;
         },
 
         countActivities: async function() {
-            let moreActivities = el.$('.changes-list .show-more-comments');
-            let selectActivityTabIsPresent = await moreActivities.isPresent();
-            if (selectActivityTabIsPresent){
-                utils.common.link(moreActivities);
-                // moreActivities.click();
-            }
-            await browser.waitForAngular();
-            let activities = await el.$$(".activity-single.activity");
+            let activities = await el.$$(".activity");
             return activities.length;
         },
 
         countDeletedComments: async function() {
-            let moreComments = el.$('.comments-list .show-more-comments');
-            let moreCommentsIsPresent = await moreComments.isPresent();
-            if (moreCommentsIsPresent){
-                moreComments.click();
-            }
-            await browser.waitForAngular();
-            let comments = await el.$$(".activity-single.comment.deleted-comment");
+            let comments = await el.$$(".deleted-comment-wrapper");
             return comments.length;
         },
 
+        editLastComment: async function() {
+            let lastComment = el.$$(".comment-wrapper").last();
+            browser
+               .actions()
+               .mouseMove(lastComment)
+               .perform();
+
+            lastComment.$$(".comment-option").first().click();
+            await browser.waitForAngular();
+        },
+
         deleteLastComment: async function() {
-            el.$$(".activity-single.comment .comment-delete").last().click();
+            let lastComment = el.$$(".comment-wrapper").last();
+
+            browser
+               .actions()
+               .mouseMove(lastComment)
+               .perform();
+
+            lastComment.$$(".comment-option").last().click();
+            await browser.waitForAngular();
+        },
+
+        showVersionsLastComment: async function() {
+          el.$$(".comment-edited a").last().click();
+          await browser.waitForAngular();
+        },
+
+        closeVersionsLastComment: async function() {
+          $(".lightbox-display-historic .close").click();
+          await browser.waitForAngular();
+        },
+
+        enableEditModeLastComment: async function() {
+            let lastComment = el.$$(".comment-wrapper").last();
+            browser
+               .actions()
+               .mouseMove(lastComment)
+               .perform();
+
+            lastComment.$$(".comment-option").last().click();
             await browser.waitForAngular();
         },
 
         restoreLastComment: async function() {
-            el.$$(".activity-single.comment.deleted-comment .comment-restore").last().click();
+            el.$$(".deleted-comment-wrapper .restore-comment").last().click();
             await browser.waitForAngular();
         }
     }
@@ -281,9 +325,7 @@ helper.attachment = function() {
         },
         upload: async function(filePath, name) {
             let addAttach = el.$('#add-attach');
-
             let countAttachments = await $$('tg-attachment').count();
-
             let toggleInput = function() {
                 $('#add-attach').toggle();
             };
@@ -298,8 +340,8 @@ helper.attachment = function() {
                 return !!count;
             }, 5000);
 
-
             await el.$('tg-attachment .editable-attachment-comment input').sendKeys(name);
+            await browser.sleep(500);
             await browser.actions().sendKeys(protractor.Key.ENTER).perform();
             await browser.executeScript(toggleInput);
             await browser.waitForAngular();
@@ -415,6 +457,18 @@ helper.attachment = function() {
         list: function() {
             $('.view-list').click();
         },
+        previewLightbox: function() {
+            return utils.lightbox.open($('tg-attachments-preview'));
+        },
+        getPreviewSrc: function() {
+            return $('tg-attachments-preview img').getAttribute('src');
+        },
+        nextPreview: function() {
+            return $('tg-attachments-preview .next').click();
+        },
+        attachmentLinks: function() {
+            return $$('.e2e-attachment-link');
+        }
     };
 
     return obj;
@@ -483,6 +537,46 @@ helper.watchersLightbox = function() {
         },
         userList: function() {
             return el.$$('.user-list-single');
+        }
+    };
+
+    return obj;
+};
+
+helper.teamRequirement = function() {
+    let el = $('tg-us-team-requirement-button');
+
+    let obj = {
+        el: el,
+
+        toggleStatus: async function(){
+            await el.$("label").click();
+            await browser.waitForAngular();
+        },
+
+        isRequired: async function() {
+            let classes = await el.$("label").getAttribute('class');
+            return classes.includes("active");
+        }
+    };
+
+    return obj;
+};
+
+helper.clientRequirement = function() {
+    let el = $('tg-us-client-requirement-button');
+
+    let obj = {
+        el: el,
+
+        toggleStatus: async function(){
+            await el.$("label").click();
+            await browser.waitForAngular();
+        },
+
+        isRequired: async function() {
+            let classes = await el.$("label").getAttribute('class');
+            return classes.includes("active");
         }
     };
 

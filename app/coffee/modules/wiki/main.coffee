@@ -51,11 +51,13 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         "tgAppMetaService",
         "$tgNavUrls",
         "$tgAnalytics",
-        "$translate"
+        "$translate",
+        "tgErrorHandlingService"
     ]
 
     constructor: (@scope, @rootscope, @repo, @model, @confirm, @rs, @params, @q, @location,
-                  @filter, @log, @appMetaService, @navUrls, @analytics, @translate) ->
+                  @filter, @log, @appMetaService, @navUrls, @analytics, @translate, @errorHandlingService) ->
+        @scope.$on("wiki:links:move", @.moveLink)
         @scope.projectSlug = @params.pslug
         @scope.wikiSlug = @params.slug
         @scope.wikiTitle = @scope.wikiSlug
@@ -86,7 +88,7 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
     loadProject: ->
         return @rs.projects.getBySlug(@params.pslug).then (project) =>
             if not project.is_wiki_activated
-                @location.path(@navUrls.resolve("permission-denied"))
+                @errorHandlingService.permissionDenied()
 
             @scope.projectId = project.id
             @scope.project = project
@@ -155,6 +157,16 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
 
             @repo.remove(@scope.wiki).then onSuccess, onError
 
+    moveLink: (ctx, item, itemIndex) =>
+        values = @scope.wikiLinks
+        r = values.indexOf(item)
+        values.splice(r, 1)
+        values.splice(itemIndex, 0, item)
+        _.each values, (value, index) ->
+            value.order = index
+
+        @repo.saveAll(values)
+
 module.controller("WikiDetailController", WikiDetailController)
 
 
@@ -162,7 +174,7 @@ module.controller("WikiDetailController", WikiDetailController)
 ## Wiki Summary Directive
 #############################################################################
 
-WikiSummaryDirective = ($log, $template, $compile, $translate) ->
+WikiSummaryDirective = ($log, $template, $compile, $translate, avatarService) ->
     template = $template.get("wiki/wiki-summary.html", true)
 
     link = ($scope, $el, $attrs, $model) ->
@@ -172,10 +184,12 @@ WikiSummaryDirective = ($log, $template, $compile, $translate) ->
             else
                 user = $scope.usersById[wiki.last_modifier]
 
+            avatar = avatarService.getAvatar(user)
+
             if user is undefined
-                user = {name: "unknown", imgUrl: "/" + window._version + "/images/user-noimage.png"}
+                user = {name: "unknown", avatar: avatar}
             else
-                user = {name: user.full_name_display, imgUrl: user.photo}
+                user = {name: user.full_name_display, avatar: avatar}
 
             ctx = {
                 totalEditions: wiki.editions
@@ -199,14 +213,15 @@ WikiSummaryDirective = ($log, $template, $compile, $translate) ->
         require: "ngModel"
     }
 
-module.directive("tgWikiSummary", ["$log", "$tgTemplate", "$compile", "$translate",  WikiSummaryDirective])
+module.directive("tgWikiSummary", ["$log", "$tgTemplate", "$compile", "$translate",  "tgAvatarService", WikiSummaryDirective])
 
 
 #############################################################################
 ## Editable Wiki Content Directive
 #############################################################################
 
-EditableWikiContentDirective = ($window, $document, $repo, $confirm, $loading, $analytics, $qqueue, $translate) ->
+EditableWikiContentDirective = ($window, $document, $repo, $confirm, $loading, $analytics, $qqueue, $translate,
+                                $wikiHistoryService) ->
     link = ($scope, $el, $attrs, $model) ->
         isEditable = ->
             return $scope.project.my_permissions.indexOf("modify_wiki_page") != -1
@@ -228,7 +243,6 @@ EditableWikiContentDirective = ($window, $document, $repo, $confirm, $loading, $
             return if not $model.$modelValue.id
 
             $model.$modelValue.revert()
-
             switchToReadMode()
 
         getSelectedText = ->
@@ -245,6 +259,7 @@ EditableWikiContentDirective = ($window, $document, $repo, $confirm, $loading, $
 
                 $model.$setViewValue wikiPage.clone()
 
+                $wikiHistoryService.loadHistoryEntries()
                 $confirm.notify("success")
                 switchToReadMode()
 
@@ -252,8 +267,7 @@ EditableWikiContentDirective = ($window, $document, $repo, $confirm, $loading, $
                 $confirm.notify("error")
 
             currentLoading = $loading()
-                .removeClasses("icon-floppy")
-                .target($el.find('.icon-floppy'))
+                .target($el.find('.save'))
                 .start()
 
             if wiki.id?
@@ -322,4 +336,5 @@ EditableWikiContentDirective = ($window, $document, $repo, $confirm, $loading, $
     }
 
 module.directive("tgEditableWikiContent", ["$window", "$document", "$tgRepo", "$tgConfirm", "$tgLoading",
-                                           "$tgAnalytics", "$tgQqueue", "$translate", EditableWikiContentDirective])
+                                           "$tgAnalytics", "$tgQqueue", "$translate", "tgWikiHistoryService",
+                                           EditableWikiContentDirective])

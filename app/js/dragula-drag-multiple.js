@@ -2,6 +2,7 @@
     var multipleSortableClass = 'ui-multisortable-multiple';
     var mainClass = 'main-drag-item';
     var inProgress = false;
+    var removeEventFn = null;
 
     var reset = function(elm) {
         $(elm)
@@ -59,7 +60,7 @@
         var current = dragMultiple.items.elm;
         var container = dragMultiple.items.container;
 
-        $(window).off('mousemove.dragmultiple');
+        document.documentElement.removeEventListener('mousemove', removeEventFn);
 
         // reset
         dragMultiple.items = {};
@@ -199,12 +200,14 @@
 
     dragMultiple.start = function(item, container) {
         if (isMultiple(item, container)) {
-            $(window).on('mousemove.dragmultiple', function() {
+            document.documentElement.addEventListener('mousemove', function() {
                 if (!inProgress) {
                     dragMultiple.prepare(item, container);
                 }
 
                 drag();
+
+                removeEventFn = arguments.callee;
             });
         }
     };

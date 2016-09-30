@@ -48,12 +48,13 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin, tai
         "$tgAnalytics",
         "tgAppMetaService",
         "$translate",
-        "$tgAuth"
-        "tgLightboxFactory"
+        "$tgAuth",
+        "tgLightboxFactory",
+        "tgErrorHandlingService"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @navUrls, @analytics,
-                  @appMetaService, @translate, @auth, @lightboxFactory) ->
+                  @appMetaService, @translate, @auth, @lightboxFactory, @errorHandlingService) ->
         bindMethods(@)
 
         @scope.project = {}
@@ -75,7 +76,7 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin, tai
     loadProject: ->
         return @rs.projects.getBySlug(@params.pslug).then (project) =>
             if not project.i_am_admin
-                @location.path(@navUrls.resolve("permission-denied"))
+                @errorHandlingService.permissionDenied()
 
             @scope.projectId = project.id
             @scope.project = project
@@ -240,16 +241,19 @@ module.directive("tgMemberships", ["$tgTemplate", "$compile", MembershipsDirecti
 ## Member Avatar Directive
 #############################################################################
 
-MembershipsRowAvatarDirective = ($log, $template, $translate, $compile) ->
+MembershipsRowAvatarDirective = ($log, $template, $translate, $compile, avatarService) ->
     template = $template.get("admin/memberships-row-avatar.html", true)
 
     link = ($scope, $el, $attrs) ->
         pending = $translate.instant("ADMIN.MEMBERSHIP.STATUS_PENDING")
         render = (member) ->
+            avatar = avatarService.getAvatar(member)
+
             ctx = {
                 full_name: if member.full_name then member.full_name else ""
                 email: if member.user_email then member.user_email else member.email
-                imgurl: if member.photo then member.photo else "/" + window._version + "/images/unnamed.png"
+                imgurl: avatar.url
+                bg: avatar.bg
                 pending: if !member.is_user_active then pending else ""
                 isOwner: member.is_owner
             }
@@ -271,7 +275,7 @@ MembershipsRowAvatarDirective = ($log, $template, $translate, $compile) ->
     return {link: link}
 
 
-module.directive("tgMembershipsRowAvatar", ["$log", "$tgTemplate", '$translate', "$compile", MembershipsRowAvatarDirective])
+module.directive("tgMembershipsRowAvatar", ["$log", "$tgTemplate", '$translate', "$compile", "tgAvatarService", MembershipsRowAvatarDirective])
 
 
 #############################################################################

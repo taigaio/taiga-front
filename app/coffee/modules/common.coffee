@@ -398,3 +398,50 @@ Autofocus = ($timeout) ->
   }
 
 module.directive('tgAutofocus', ['$timeout', Autofocus])
+
+module.directive 'tgPreloadImage', () ->
+    spinner = "<img class='loading-spinner' src='/" + window._version + "/svg/spinner-circle.svg' alt='loading...' />"
+
+    template = """
+        <div>
+            <ng-transclude></ng-transclude>
+        </div>
+    """
+
+    preload = (src, onLoad) ->
+        image = new Image()
+        image.onload = onLoad
+        image.src = src
+
+        return image
+
+    return {
+        template: template,
+        transclude: true,
+        replace: true,
+        link: (scope, el, attrs) ->
+            image = el.find('img:last')
+            timeout = null
+
+            onLoad = () ->
+                el.find('.loading-spinner').remove()
+                image.show()
+
+                if timeout
+                    clearTimeout(timeout)
+                    timeout = null
+
+            attrs.$observe 'preloadSrc', (src) ->
+                if timeout
+                    clearTimeout(timeout)
+
+                el.find('.loading-spinner').remove()
+
+                timeout = setTimeout () ->
+                    el.prepend(spinner)
+                , 200
+
+                image.hide()
+
+                preload(src, onLoad)
+    }

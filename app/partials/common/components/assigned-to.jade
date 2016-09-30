@@ -1,5 +1,9 @@
 .user-avatar(class!="<% if (isIocaine) { %> is-iocaine <% }; %>")
-    img(src!="<%- photo %>", alt!="<%- fullName %>")
+    img(
+      style!="background-color: <%- bg %>"
+      src!="<%- avatar %>"
+      alt!="<%- fullName %>"
+    )
     <% if (isIocaine) { %>
     .iocaine-symbol(title="{{ 'TASK.TITLE_ACTION_IOCAINE' | translate }}")
        tg-svg(svg-icon="icon-iocaine")
@@ -14,7 +18,7 @@
 
     .assigned-to-options
         <% if (!isEditable && fullNameVisible) { %>
-        span.assigned-name
+        span.assigned-name(ng-non-bindable)
             <%- fullName %>
         <% }; %>
 
@@ -24,7 +28,7 @@
             title="{{ 'COMMON.ASSIGNED_TO.TITLE_ACTION_EDIT_ASSIGNMENT'|translate }}"
             class!="user-assigned <% if (isEditable) { %>editable<% }; %>"
         )
-            span.assigned-name
+            span.assigned-name(ng-non-bindable)
                 <% if (fullNameVisible) { %>
                 <%- fullName %>
                 <% }; %>

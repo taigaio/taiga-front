@@ -28,6 +28,7 @@ bindOnce = @.taiga.bindOnce
 timeout = @.taiga.timeout
 debounce = @.taiga.debounce
 sizeFormat = @.taiga.sizeFormat
+trim = @.taiga.trim
 
 #############################################################################
 ## Common Lightbox Services
@@ -35,9 +36,11 @@ sizeFormat = @.taiga.sizeFormat
 
 # the lightboxContent hide/show doesn't have sense because is an IE hack
 class LightboxService extends taiga.Service
-    constructor: (@animationFrame, @q) ->
+    constructor: (@animationFrame, @q, @rootScope) ->
 
-    open: ($el) ->
+    open: ($el, onClose) ->
+        @.onClose = onClose
+
         if _.isString($el)
             $el = $($el)
         defered = @q.defer()
@@ -70,25 +73,29 @@ class LightboxService extends taiga.Service
         return defered.promise
 
     close: ($el) ->
-        if _.isString($el)
-            $el = $($el)
-        docEl = angular.element(document)
-        docEl.off(".lightbox")
-        docEl.off(".keyboard-navigation") # Hack: to fix problems in the WYSIWYG textareas when press ENTER
+        return new Promise (resolve) =>
+            if _.isString($el)
+                $el = $($el)
+            docEl = angular.element(document)
+            docEl.off(".lightbox")
+            docEl.off(".keyboard-navigation") # Hack: to fix problems in the WYSIWYG textareas when press ENTER
 
-        @animationFrame.add ->
-            $el.addClass('close')
+            @animationFrame.add =>
+                $el.addClass('close')
 
-            $el.one "transitionend", =>
-                $el.removeAttr('style')
-                $el.removeClass("open").removeClass('close')
+                $el.one "transitionend", =>
+                    $el.removeAttr('style')
+                    $el.removeClass("open").removeClass('close')
 
+                    if @.onClose
+                        @rootScope.$apply(@.onClose)
 
+                    resolve()
 
-        if $el.hasClass("remove-on-close")
-            scope = $el.data("scope")
-            scope.$destroy() if scope
-            $el.remove()
+            if $el.hasClass("remove-on-close")
+                scope = $el.data("scope")
+                scope.$destroy() if scope
+                $el.remove()
 
     closeAll: ->
         docEl = angular.element(document)
@@ -96,7 +103,7 @@ class LightboxService extends taiga.Service
             @.close($(lightboxEl))
 
 
-module.service("lightboxService", ["animationFrame", "$q", LightboxService])
+module.service("lightboxService", ["animationFrame", "$q", "$rootScope", LightboxService])
 
 
 class LightboxKeyboardNavigationService extends taiga.Service
@@ -292,7 +299,44 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService,
             attachmentsToAdd = attachmentsToAdd.push(attachment)
 
         $scope.deleteAttachment = (attachment) ->
-            attachmentsToDelete = attachmentsToDelete.push(attachment)
+            if attachment.get("id")
+                attachmentsToDelete = attachmentsToDelete.push(attachment)
+
+        $scope.addTag = (tag, color) ->
+            value = trim(tag.toLowerCase())
+
+            tags = $scope.project.tags
+            projectTags = $scope.project.tags_colors
+
+            tags = [] if not tags?
+            projectTags = {} if not projectTags?
+
+            if value not in tags
+                tags.push(value)
+
+            projectTags[tag] = color || null
+
+            $scope.project.tags = tags
+
+            itemtags = _.clone($scope.us.tags)
+
+            inserted = _.find itemtags, (it) -> it[0] == value
+
+            if !inserted
+                itemtags.push([tag , color])
+                $scope.us.tags = itemtags
+
+        $scope.deleteTag = (tag) ->
+            value = trim(tag[0].toLowerCase())
+
+            tags = $scope.project.tags
+            itemtags = _.clone($scope.us.tags)
+
+            _.remove itemtags, (tag) -> tag[0] == value
+
+            $scope.us.tags = itemtags
+
+            _.pull($scope.us.tags, value)
 
         $scope.$on "usform:new", (ctx, projectId, status, statusList) ->
             form.reset() if form
@@ -320,7 +364,10 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService,
             $el.find("label.team-requirement").removeClass("selected")
             $el.find("label.client-requirement").removeClass("selected")
 
-            lightboxService.open($el)
+            $scope.createEditUsOpen = true
+
+            lightboxService.open $el, () ->
+                $scope.createEditUsOpen = false
 
         $scope.$on "usform:edit", (ctx, us, attachments) ->
             form.reset() if form
@@ -353,7 +400,10 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService,
             else
                 $el.find("label.client-requirement").removeClass("selected")
 
-            lightboxService.open($el)
+            $scope.createEditUsOpen = true
+
+            lightboxService.open $el, () ->
+                $scope.createEditUsOpen = false
 
         createAttachments = (obj) ->
             promises = _.map attachmentsToAdd.toJS(), (attachment) ->
@@ -378,22 +428,28 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService,
                 .target(submitButton)
                 .start()
 
+            params = {
+                include_attachments: true,
+                include_tasks: true
+            }
+
             if $scope.isNew
                 promise = $repo.create("userstories", $scope.us)
                 broadcastEvent = "usform:new:success"
             else
-                promise = $repo.save($scope.us)
+                promise = $repo.save($scope.us, true)
                 broadcastEvent = "usform:edit:success"
 
             promise.then (data) ->
-                deleteAttachments(data).then () =>  createAttachments(data)
+                deleteAttachments(data)
+                    .then () => createAttachments(data)
+                    .then () =>
+                        currentLoading.finish()
+                        lightboxService.close($el)
 
-                return data
+                        $rs.userstories.getByRef(data.project, data.ref, params).then (us) ->
+                            $rootScope.$broadcast(broadcastEvent, us)
 
-            promise.then (data) ->
-                currentLoading.finish()
-                lightboxService.close($el)
-                $rootScope.$broadcast(broadcastEvent, data)
 
             promise.then null, (data) ->
                 currentLoading.finish()
@@ -407,8 +463,10 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService,
 
         $el.on "click", ".close", (event) ->
             event.preventDefault()
+
             $scope.$apply ->
                 $scope.us.revert()
+
             lightboxService.close($el)
 
         $el.keydown (event) ->
@@ -433,7 +491,7 @@ module.directive("tgLbCreateEditUserstory", [
     "$translate",
     "$tgConfirm",
     "$q",
-    "tgAttachmentsService",
+    "tgAttachmentsService"
     CreateEditUserstoryDirective
 ])
 
@@ -442,7 +500,7 @@ module.directive("tgLbCreateEditUserstory", [
 ## Creare Bulk Userstories Lightbox Directive
 #############################################################################
 
-CreateBulkUserstoriesDirective = ($repo, $rs, $rootscope, lightboxService, $loading) ->
+CreateBulkUserstoriesDirective = ($repo, $rs, $rootscope, lightboxService, $loading, $model) ->
     link = ($scope, $el, attrs) ->
         form = null
 
@@ -469,6 +527,7 @@ CreateBulkUserstoriesDirective = ($repo, $rs, $rootscope, lightboxService, $load
 
             promise = $rs.userstories.bulkCreate($scope.new.projectId, $scope.new.statusId, $scope.new.bulk)
             promise.then (result) ->
+                result =  _.map(result.data, (x) => $model.make_model('userstories', x))
                 currentLoading.finish()
                 $rootscope.$broadcast("usform:bulk:success", result)
                 lightboxService.close($el)
@@ -494,6 +553,7 @@ module.directive("tgLbCreateBulkUserstories", [
     "$rootScope",
     "lightboxService",
     "$tgLoading",
+    "$tgModel",
     CreateBulkUserstoriesDirective
 ])
 
@@ -502,7 +562,7 @@ module.directive("tgLbCreateBulkUserstories", [
 ## AssignedTo Lightbox Directive
 #############################################################################
 
-AssignedToLightboxDirective = (lightboxService, lightboxKeyboardNavigationService, $template, $compile) ->
+AssignedToLightboxDirective = (lightboxService, lightboxKeyboardNavigationService, $template, $compile, avatarService) ->
     link = ($scope, $el, $attrs) ->
         selectedUser = null
         selectedItem = null
@@ -527,12 +587,21 @@ AssignedToLightboxDirective = (lightboxService, lightboxKeyboardNavigationServic
         render = (selected, text) ->
             users = _.clone($scope.activeUsers, true)
             users = _.reject(users, {"id": selected.id}) if selected?
+            users = _.sortBy(users, (o) -> if o.id is $scope.user.id then 0 else o.id)
             users = _.filter(users, _.partial(filterUsers, text)) if text?
+
+            visibleUsers = _.slice(users, 0, 5)
+
+            visibleUsers = _.map visibleUsers, (user) ->
+                user.avatar = avatarService.getAvatar(user)
+
+            if selected
+                selected.avatar = avatarService.getAvatar(selected) if selected
 
             ctx = {
                 selected: selected
                 users: _.slice(users, 0, 5)
-                showMore: users.length > 5
+                showMore: visibleUsers
             }
 
             html = usersTemplate(ctx)
@@ -596,14 +665,14 @@ AssignedToLightboxDirective = (lightboxService, lightboxKeyboardNavigationServic
     }
 
 
-module.directive("tgLbAssignedto", ["lightboxService", "lightboxKeyboardNavigationService", "$tgTemplate", "$compile", AssignedToLightboxDirective])
+module.directive("tgLbAssignedto", ["lightboxService", "lightboxKeyboardNavigationService", "$tgTemplate", "$compile", "tgAvatarService", AssignedToLightboxDirective])
 
 
 #############################################################################
 ## Watchers Lightbox directive
 #############################################################################
 
-WatchersLightboxDirective = ($repo, lightboxService, lightboxKeyboardNavigationService, $template, $compile) ->
+WatchersLightboxDirective = ($repo, lightboxService, lightboxKeyboardNavigationService, $template, $compile, avatarService) ->
     link = ($scope, $el, $attrs) ->
         selectedItem = null
         usersTemplate = $template.get("common/lightbox/lightbox-assigned-to-users.html", true)
@@ -625,9 +694,16 @@ WatchersLightboxDirective = ($repo, lightboxService, lightboxKeyboardNavigationS
 
         # Render the specific list of users.
         render = (users) ->
+            visibleUsers = _.slice(users, 0, 5)
+
+            visibleUsers = _.map visibleUsers, (user) ->
+                user.avatar = avatarService.getAvatar(user)
+
+                return user
+
             ctx = {
                 selected: false
-                users: _.slice(users, 0, 5)
+                users: visibleUsers
                 showMore: users.length > 5
             }
 
@@ -683,24 +759,8 @@ WatchersLightboxDirective = ($repo, lightboxService, lightboxKeyboardNavigationS
         link:link
     }
 
-module.directive("tgLbWatchers", ["$tgRepo", "lightboxService", "lightboxKeyboardNavigationService", "$tgTemplate", "$compile", WatchersLightboxDirective])
+module.directive("tgLbWatchers", ["$tgRepo", "lightboxService", "lightboxKeyboardNavigationService", "$tgTemplate", "$compile", "tgAvatarService", WatchersLightboxDirective])
 
-
-#############################################################################
-## Attachment Preview Lighbox
-#############################################################################
-
-AttachmentPreviewLightboxDirective = (lightboxService, $template, $compile) ->
-    link = ($scope, $el, attrs) ->
-        lightboxService.open($el)
-
-    return {
-        templateUrl: 'common/lightbox/lightbox-attachment-preview.html',
-        link: link,
-        scope: true
-    }
-
-module.directive("tgLbAttachmentPreview", ["lightboxService", "$tgTemplate", "$compile", AttachmentPreviewLightboxDirective])
 
 LightboxLeaveProjectWarningDirective = (lightboxService, $template, $compile) ->
     link = ($scope, $el, attrs) ->

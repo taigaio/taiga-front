@@ -27,20 +27,22 @@ class WorkingOnController
         @.watching = Immutable.Map()
 
     _setAssignedTo: (workInProgress) ->
+        epics = workInProgress.get("assignedTo").get("epics")
         userStories = workInProgress.get("assignedTo").get("userStories")
         tasks = workInProgress.get("assignedTo").get("tasks")
         issues = workInProgress.get("assignedTo").get("issues")
 
-        @.assignedTo = userStories.concat(tasks).concat(issues)
+        @.assignedTo = userStories.concat(tasks).concat(issues).concat(epics)
         if @.assignedTo.size > 0
             @.assignedTo = @.assignedTo.sortBy((elem) -> elem.get("modified_date")).reverse()
 
     _setWatching: (workInProgress) ->
+        epics = workInProgress.get("watching").get("epics")
         userStories = workInProgress.get("watching").get("userStories")
         tasks = workInProgress.get("watching").get("tasks")
         issues = workInProgress.get("watching").get("issues")
 
-        @.watching = userStories.concat(tasks).concat(issues)
+        @.watching = userStories.concat(tasks).concat(issues).concat(epics)
         if @.watching.size > 0
             @.watching = @.watching.sortBy((elem) -> elem.get("modified_date")).reverse()
 

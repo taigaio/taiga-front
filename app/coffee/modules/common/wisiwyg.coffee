@@ -83,7 +83,7 @@ MarkitupDirective = ($rootscope, $rs, $selectedText, $template, $compile, $trans
             markdownDomNode = element.parents(".markdown")
             markItUpDomNode = element.parents(".markItUp")
 
-            $rs.mdrender.render($scope.projectId, $model.$modelValue).then (data) ->
+            $rs.mdrender.render($scope.projectId || $scope.vm.projectId, $model.$modelValue).then (data) ->
                 html = previewTemplate({data: data.data})
                 html = $compile(html)($scope)
 
@@ -374,7 +374,7 @@ MarkitupDirective = ($rootscope, $rs, $selectedText, $template, $compile, $trans
                         search: (term, callback) ->
                             term = taiga.slugify(term)
 
-                            searchTypes = ['issues', 'tasks', 'userstories']
+                            searchTypes = ['issues', 'tasks', 'userstories', 'epics']
                             searchProps = ['ref', 'subject']
 
                             filter = (item) =>
@@ -384,8 +384,7 @@ MarkitupDirective = ($rootscope, $rs, $selectedText, $template, $compile, $trans
                                 return false
 
                             cancelablePromise.abort() if cancelablePromise
-
-                            cancelablePromise = $rs.search.do($scope.projectId, term)
+                            cancelablePromise = $rs.search.do($scope.projectId || $scope.vm.projectId, term)
 
                             cancelablePromise.then (res) =>
                                 # ignore wikipages if they're the only results. can't exclude them in search
@@ -441,7 +440,7 @@ MarkitupDirective = ($rootscope, $rs, $selectedText, $template, $compile, $trans
                         search: (term, callback) ->
                             term = taiga.slugify(term)
 
-                            $rs.search.do($scope.projectId, term).then (res) =>
+                            $rs.search.do($scope.projectId || $scope.vm.projectId, term).then (res) =>
                                 if res.count < 1
                                     callback([])
 

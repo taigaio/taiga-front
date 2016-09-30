@@ -126,16 +126,14 @@ describe "ProfileController", ->
 
         mocks.routeParams.slug = "user-slug"
 
-        xhr = {
-            status: 404
-        }
+        error = new Error('404')
 
-        mocks.userService.getUserByUserName.withArgs(mocks.routeParams.slug).promise().reject(xhr)
+        mocks.userService.getUserByUserName.withArgs(mocks.routeParams.slug).promise().reject(error)
 
         ctrl = $controller("Profile")
 
         setTimeout ( ->
-            expect(mocks.xhrErrorService.response.withArgs(xhr)).to.be.calledOnce
+            expect(mocks.xhrErrorService.response.withArgs(error)).to.be.calledOnce
             done()
         )
 

@@ -9,7 +9,7 @@ var expect = chai.expect;
 
 describe('leaving project', function(){
     before(async function(){
-        browser.get(browser.params.glob.host + 'project/project-4/team');
+        browser.get(browser.params.glob.host + 'project/project-3/team');
         await utils.common.waitLoader();
     });
 

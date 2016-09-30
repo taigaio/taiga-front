@@ -1,0 +1,43 @@
+nav.history-tabs
+    a.history-tab.e2e-comments-tab(
+        ng-if="showCommentTab()"
+        href=""
+        title="{{COMMENTS.COMMENT}}"
+        ng-click="onActiveComments()"
+        ng-class="{active: activeTab}"
+        translate="COMMENTS.COMMENTS_COUNT"
+        translate-values="{comments: commentsNum}"
+    )
+    a.history-tab.e2e-activity-tab(
+        ng-if="showActivityTab()"
+        href=""
+        title="Activities"
+        ng-click="onActiveActivities()"
+        ng-class="{active: !activeTab}"
+        translate="ACTIVITY.ACTIVITIES_COUNT"
+        translate-values="{activities: activitiesNum}"
+    )
+    a.order-comments(
+        href=""
+        title="Order Comments"
+        ng-click="onOrderComments()"
+        ng-class="{'new-first': top, 'old-first': !top}"
+        ng-if="commentsNum > 1 && activeTab"
+    )
+
+        span(
+            translate="COMMENTS.OLDER_FIRST"
+            ng-if="onReverse"
+        )
+        tg-svg(
+            svg-icon="icon-arrow-down"
+            ng-if="onReverse"
+        )
+        span(
+            translate="COMMENTS.RECENT_FIRST"
+            ng-if="!onReverse"
+        )
+        tg-svg(
+            svg-icon="icon-arrow-up"
+            ng-if="!onReverse"
+        )

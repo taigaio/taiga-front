@@ -24,9 +24,13 @@ form
         )
 
     fieldset
-        div.tags-block(
-            tg-lb-tag-line
-            ng-model="us.tags"
+        tg-tag-line-common.tags-block(
+            ng-if="project && createEditUsOpen"
+            project="project"
+            tags="us.tags"
+            permissions="add_us"
+            on-add-tag="addTag(name, color)"
+            on-delete-tag="deleteTag(tag)"
         )
 
     fieldset

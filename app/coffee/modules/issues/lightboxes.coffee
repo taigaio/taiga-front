@@ -25,6 +25,7 @@
 taiga = @.taiga
 bindOnce = @.taiga.bindOnce
 debounce = @.taiga.debounce
+trim = @.taiga.trim
 
 module = angular.module("taigaIssues")
 
@@ -44,8 +45,8 @@ CreateIssueDirective = ($repo, $confirm, $rootscope, lightboxService, $loading, 
             resetAttachments()
 
             $el.find(".tag-input").val("")
-
-            lightboxService.open($el)
+            lightboxService.open $el, () ->
+                $scope.createIssueOpen = false
 
             $scope.issue = {
                 project: project.id
@@ -57,9 +58,10 @@ CreateIssueDirective = ($repo, $confirm, $rootscope, lightboxService, $loading, 
                 tags: []
             }
 
+            $scope.createIssueOpen = true
+
         $scope.$on "$destroy", ->
             $el.off()
-
 
         createAttachments = (obj) ->
             promises = _.map attachmentsToAdd.toJS(), (attachment) ->
@@ -75,6 +77,42 @@ CreateIssueDirective = ($repo, $confirm, $rootscope, lightboxService, $loading, 
 
         $scope.addAttachment = (attachment) ->
             attachmentsToAdd = attachmentsToAdd.push(attachment)
+
+        $scope.addTag = (tag, color) ->
+            value = trim(tag.toLowerCase())
+
+            tags = $scope.project.tags
+            projectTags = $scope.project.tags_colors
+
+            tags = [] if not tags?
+            projectTags = {} if not projectTags?
+
+            if value not in tags
+                tags.push(value)
+
+            projectTags[tag] = color || null
+
+            $scope.project.tags = tags
+
+            itemtags = _.clone($scope.issue.tags)
+
+            inserted = _.find itemtags, (it) -> it[0] == value
+
+            if !inserted
+                itemtags.push([tag , color])
+                $scope.issue.tags = itemtags
+
+        $scope.deleteTag = (tag) ->
+            value = trim(tag[0].toLowerCase())
+
+            tags = $scope.project.tags
+            itemtags = _.clone($scope.us.tags)
+
+            _.remove itemtags, (tag) -> tag[0] == value
+
+            $scope.us.tags = itemtags
+
+            _.pull($scope.issue.tags, value)
 
         submit = debounce 2000, (event) =>
             event.preventDefault()
@@ -101,7 +139,6 @@ CreateIssueDirective = ($repo, $confirm, $rootscope, lightboxService, $loading, 
                 currentLoading.finish()
                 $confirm.notify("error")
 
-
         submitButton = $el.find(".submit-button")
 
         $el.on "submit", "form", submit
@@ -109,8 +146,8 @@ CreateIssueDirective = ($repo, $confirm, $rootscope, lightboxService, $loading, 
 
     return {link:link}
 
-module.directive("tgLbCreateIssue", ["$tgRepo", "$tgConfirm", "$rootScope", "lightboxService", "$tgLoading", "$q", "tgAttachmentsService",
-                                     CreateIssueDirective])
+module.directive("tgLbCreateIssue", ["$tgRepo", "$tgConfirm", "$rootScope", "lightboxService", "$tgLoading",
+                                     "$q", "tgAttachmentsService", CreateIssueDirective])
 
 
 #############################################################################

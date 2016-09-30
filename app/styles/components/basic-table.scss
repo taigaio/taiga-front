@@ -11,6 +11,9 @@
         padding: .3rem 0;
         text-align: left;
         width: 100%;
+        @include breakpoint(tablet) {
+            flex-direction: column;
+        }
         @for $i from 1 through 8 {
             .width-#{$i} {
                 flex-basis: 50px;

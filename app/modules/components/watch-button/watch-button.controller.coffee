@@ -45,7 +45,8 @@ class WatchButtonController
         perms = {
             userstories: 'modify_us',
             issues: 'modify_issue',
-            tasks: 'modify_task'
+            tasks: 'modify_task',
+            epics: 'modify_epic'
         }
 
         return perms[name]

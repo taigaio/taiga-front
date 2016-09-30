@@ -73,13 +73,16 @@ urls = {
     "project-taskboard": "/project/:project/taskboard/:sprint"
     "project-kanban": "/project/:project/kanban"
     "project-issues": "/project/:project/issues"
+    "project-epics": "/project/:project/epics"
     "project-search": "/project/:project/search"
 
+    "project-epics-detail": "/project/:project/epic/:ref"
     "project-userstories-detail": "/project/:project/us/:ref"
     "project-tasks-detail": "/project/:project/task/:ref"
     "project-issues-detail": "/project/:project/issue/:ref"
 
     "project-wiki": "/project/:project/wiki"
+    "project-wiki-list": "/project/:project/wiki-list"
     "project-wiki-page": "/project/:project/wiki/:slug"
 
     # Team
@@ -99,6 +102,7 @@ urls = {
     "project-admin-project-values-severities": "/project/:project/admin/project-values/severities"
     "project-admin-project-values-types": "/project/:project/admin/project-values/types"
     "project-admin-project-values-custom-fields": "/project/:project/admin/project-values/custom-fields"
+    "project-admin-project-values-tags": "/project/:project/admin/project-values/tags"
 
     "project-admin-memberships": "/project/:project/admin/memberships"
     "project-admin-roles": "/project/:project/admin/roles"
@@ -106,6 +110,7 @@ urls = {
     "project-admin-third-parties-github": "/project/:project/admin/third-parties/github"
     "project-admin-third-parties-gitlab": "/project/:project/admin/third-parties/gitlab"
     "project-admin-third-parties-bitbucket": "/project/:project/admin/third-parties/bitbucket"
+    "project-admin-third-parties-gogs": "/project/:project/admin/third-parties/gogs"
     "project-admin-contrib": "/project/:project/admin/contrib/:plugin"
 
     # User settings

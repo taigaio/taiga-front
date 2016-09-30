@@ -3,27 +3,29 @@
 $column-width: 300px;
 $column-flex: 1;
 $column-shrink: 0;
-$column-margin: 0 10px 0 0;
+$column-margin: 0 5px 0 0;
+$column-padding: .5rem 1rem;
 
 @mixin fold {
-    .taskboard-task {
-        background: none;
-        border: 0;
-        margin: 0;
-        min-height: 0;
-        .taskboard-task-inner {
-            padding: .1rem;
-        }
-        .taskboard-tagline,
-        .taskboard-text {
+    .card {
+        align-self: flex-start;
+        margin-top: .5rem;
+        tg-card-slideshow,
+        .card-unfold,
+        .card-tag,
+        .card-title,
+        .card-owner-actions,
+        .card-data,
+        .card-statistics,
+        .card-owner-name {
             display: none;
         }
-        .avatar {
-            height: 35px;
-            width: 35px;
-        }
-        .icon {
-            display: none;
+        .card-owner {
+            img {
+                height: 1.3rem;
+                margin-right: 0;
+                width: 1.3rem;
+            }
         }
     }
     &.task-column,
@@ -47,22 +49,18 @@ $column-margin: 0 10px 0 0;
     height: 100%;
     overflow: hidden;
     width: 100%;
-    .taskboard-task {
-        &.readonly {
-            cursor: auto;
-        }
-        &.gu-mirror {
-            opacity: 1;
-            .avatar-task-link {
-                display: none;
-            }
+    &.zoom-0 {
+        .task-colum-name span {
+            padding-right: 1rem;
         }
     }
 }
 
 .taskboard-table-header {
-    margin-bottom: .5rem;
-    min-height: 40px;
+    flex-basis: 38px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    min-height: 38px;
     position: relative;
     width: 100%;
     .taskboard-table-inner {
@@ -73,7 +71,7 @@ $column-margin: 0 10px 0 0;
     .task-colum-name {
         @include font-size(medium);
         align-items: center;
-        background: $whitish;
+        background: $mass-white;
         border-top: 3px solid $gray-light;
         color: $gray;
         display: flex;
@@ -83,7 +81,7 @@ $column-margin: 0 10px 0 0;
         justify-content: space-between;
         margin: $column-margin;
         max-width: $column-width;
-        padding: .5rem 1rem;
+        padding: $column-padding;
         position: relative;
         text-transform: uppercase;
         width: $column-width;
@@ -101,6 +99,9 @@ $column-margin: 0 10px 0 0;
             .hunfold {
                 margin: 0;
             }
+        }
+        span {
+            @include ellipsis(65%);
         }
     }
     tg-svg {
@@ -128,7 +129,8 @@ $column-margin: 0 10px 0 0;
 }
 
 .taskboard-table-body {
-    height: 100%;
+    flex: 1;
+    margin-bottom: 5rem;
     overflow: auto;
     width: 100%;
     .task-column {
@@ -147,14 +149,10 @@ $column-margin: 0 10px 0 0;
     }
     .column-fold {
         @include fold;
-        .taskboard-task {
-            max-width: 40px;
-            width: 40px;
-        }
     }
     .task-row {
         display: flex;
-        margin-bottom: .5rem;
+        margin-bottom: .25rem;
         min-height: 10rem;
         width: 100%;
         &.blocked {
@@ -167,6 +165,7 @@ $column-margin: 0 10px 0 0;
             .points-value,
             .points-value:hover {
                 color: $white;
+                fill: $white;
                 transition: color .3s linear;
             }
             .taskboard-tasks-box {
@@ -185,18 +184,26 @@ $column-margin: 0 10px 0 0;
             }
         }
     }
-
     .taskboard-userstory-box {
         padding: .5rem .5rem .5rem 1.5rem;
     }
-    .avatar-task-link {
-        display: none;
+
+}
+
+.taskboard-userstory-box {
+    position: relative;
+    .us-title {
+        @include font-size(normal);
+        @include font-type(text);
+        margin-bottom: 0;
+        margin-right: 3rem;
     }
-    .avatar-assigned-to {
-        display: block;
-    }
-    .icon {
-        transition: fill .2s linear;
+    .points-value {
+        @include font-size(small);
+        color: $gray-light;
+        span {
+            margin-right: .1rem;
+        }
     }
     tg-svg {
         cursor: pointer;
@@ -216,23 +223,6 @@ $column-margin: 0 10px 0 0;
             left: 0;
             right: inherit;
             top: 1rem;
-        }
-    }
-}
-
-.taskboard-userstory-box {
-    position: relative;
-    .us-title {
-        @include font-size(normal);
-        @include font-type(text);
-        margin-bottom: 0;
-        margin-right: 3rem;
-    }
-    .points-value {
-        @include font-size(small);
-        color: $gray-light;
-        span {
-            margin-right: .1rem;
         }
     }
 }

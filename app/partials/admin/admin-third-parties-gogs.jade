@@ -1,0 +1,56 @@
+doctype html
+
+div.wrapper.roles(
+    tg-gogs-webhooks
+    ng-controller="GogsController as ctrl",
+    ng-init="section='admin'"
+)
+    tg-project-menu
+    sidebar.menu-secondary.sidebar.settings-nav(tg-admin-navigation="third-parties")
+        include ../includes/modules/admin-menu
+    sidebar.menu-tertiary.sidebar(tg-admin-navigation="third-parties-gogs")
+        include ../includes/modules/admin-submenu-third-parties
+
+    section.main.admin-common.admin-third-parties
+        include ../includes/components/mainTitle
+
+        form
+            fieldset
+                label(for="secret-key", translate="ADMIN.THIRD_PARTIES.SECRET_KEY")
+                input(
+                    id="secret-key"
+                    type="text"
+                    name="secret-key"
+                    ng-model="gogs.secret"
+                    placeholder="{{'ADMIN.THIRD_PARTIES.SECRET_KEY' | translate}}"
+                )
+
+            fieldset
+                .select-input-text(tg-select-input-text)
+                    div
+                        label(for="payload-url", translate="ADMIN.THIRD_PARTIES.PAYLOAD_URL")
+                        .field-with-option
+                            input(
+                                id="payload-url"
+                                type="text"
+                                name="payload-url"
+                                readonly="readonly"
+                                ng-model="gogs.webhooks_url"
+                                placeholder="{{'ADMIN.THIRD_PARTIES.PAYLOAD_URL' | translate}}"
+                            )
+                            .option-wrapper.select-input-content
+                                tg-svg(svg-icon="icon-clipboard")
+                        .help-copy(translate="COMMON.COPY_TO_CLIPBOARD")
+
+            button.button-green.submit-button(
+                type="submit"
+                title="{{'COMMON.SAVE' | translate}}"
+                translate="COMMON.SAVE"
+            )
+
+        a.help-button(
+            href="https://tree.taiga.io/support/integrations/gogs-integration/"
+            target="_blank"
+        )
+            tg-svg(svg-icon="icon-question")
+            span(translate="ADMIN.HELP")

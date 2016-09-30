@@ -1,11 +1,25 @@
 header
-  h1(translate="WIKI.NAVIGATION.SECTION_NAME")
+    h1.title(translate="WIKI.NAVIGATION.SECTION_NAME")
 
-nav
-  ul
-    <% _.each(wikiLinks, function(link, index) { %>
-    li.wiki-link(data-id!="<%- index %>")
-        a.link-title(title!="<%- link.title %>", href!="<%- link.url %>")<%- link.title %>
+ul.wiki-link-container
+    li.wiki-link.fixed-link
+        a.link-title(
+            href=""
+            tg-nav="project-wiki:project=project.slug"
+            translate="WIKI.NAVIGATION.HOME"
+        )
+
+ul.sortable.wiki-link-container
+    li.wiki-link.e2e-wiki-page-link(
+        ng-repeat="link in wikiLinks"
+        data-id!="{{ $index }}"
+        tg-bind-scope
+        tg-class-permission="{'is-sortable': 'add_wiki_link'}"
+    )
+        <% if (addWikiLinkPermission) { %>
+        tg-svg.dragger(svg-icon="icon-drag")
+        <% } %>
+        a.link-title(title!="{{ link.title }}", href!="{{ link.url }}") {{ link.title }}
 
         <% if (deleteWikiLinkPermission) { %>
         a.js-delete-link.remove-wiki-page(title!="{{'WIKI.DELETE_LINK_TITLE' | translate}}")
@@ -15,10 +29,10 @@ nav
         input.hidden(
             type="text"
             placeholder="{{'COMMON.FIELDS.NAME' | translate}}"
-            value!="<%- link.title %>"
+            value!="{{ link.title }}"
         )
-    <% }) %>
 
+ul.sortable.wiki-link-container
     li.new.hidden
         input(
             type="text"
@@ -26,10 +40,18 @@ nav
         )
 
 <% if (addWikiLinkPermission) { %>
-a(
+a.add-button(
     href=""
     title="{{'WIKI.NAVIGATION.ACTION_ADD_LINK' | translate}}"
-    class="add-button button-gray"
 )
+    tg-svg(svg-icon="icon-add")
     span(translate="WIKI.NAVIGATION.ACTION_ADD_LINK")
 <% } %>
+
+ul.wiki-link-container.wiki-all-links(ng-if="wikiLinks.length")
+    li.wiki-link.fixed-link
+        a.link-title(
+            href=""
+            tg-nav="project-wiki-list:project=project.slug"
+            translate="WIKI.NAVIGATION.ALL_PAGES"
+        )

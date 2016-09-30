@@ -58,10 +58,13 @@ helper.getChangeOwnerLb = function() {
             return utils.lightbox.close(el);
         },
         search: function(q) {
-            el.$$('input').get(0).sendKeys(q);
+            return el.$$('input').get(0).sendKeys(q);
         },
         select: function(index) {
             el.$$('.user-list-single').get(index).click();
+        },
+        getUserName: function(index) {
+            return el.$$('.user-list-single').get(index).$('.user-list-name').getText();
         },
         addComment: function(text) {
             el.$('.add-comment a').click();
@@ -73,4 +76,8 @@ helper.getChangeOwnerLb = function() {
     };
 
     return obj;
+};
+
+helper.enableAddTags = function() {
+    $('.add-tag-button').click();
 };

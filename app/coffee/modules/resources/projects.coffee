@@ -40,7 +40,7 @@ resourceProvider = ($config, $repo, $http, $urls, $auth, $q, $translate) ->
         return $repo.queryMany("projects")
 
     service.listByMember = (memberId) ->
-        params = {"member": memberId, "order_by": "memberships__user_order"}
+        params = {"member": memberId, "order_by": "user_order"}
         return $repo.queryMany("projects", params)
 
     service.templates = ->
@@ -61,16 +61,20 @@ resourceProvider = ($config, $repo, $http, $urls, $auth, $q, $translate) ->
         url = $urls.resolve("bulk-update-projects-order")
         return $http.post(url, bulkData)
 
+    service.regenerate_epics_csv_uuid = (projectId) ->
+        url = "#{$urls.resolve("projects")}/#{projectId}/regenerate_epics_csv_uuid"
+        return $http.post(url)
+
     service.regenerate_userstories_csv_uuid = (projectId) ->
         url = "#{$urls.resolve("projects")}/#{projectId}/regenerate_userstories_csv_uuid"
         return $http.post(url)
 
-    service.regenerate_issues_csv_uuid = (projectId) ->
-        url = "#{$urls.resolve("projects")}/#{projectId}/regenerate_issues_csv_uuid"
-        return $http.post(url)
-
     service.regenerate_tasks_csv_uuid = (projectId) ->
         url = "#{$urls.resolve("projects")}/#{projectId}/regenerate_tasks_csv_uuid"
+        return $http.post(url)
+
+    service.regenerate_issues_csv_uuid = (projectId) ->
+        url = "#{$urls.resolve("projects")}/#{projectId}/regenerate_issues_csv_uuid"
         return $http.post(url)
 
     service.leave = (projectId) ->
@@ -82,6 +86,34 @@ resourceProvider = ($config, $repo, $http, $urls, $auth, $q, $translate) ->
 
     service.tagsColors = (projectId) ->
         return $repo.queryOne("projects", "#{projectId}/tags_colors")
+
+    service.deleteTag = (projectId, tag) ->
+        url = "#{$urls.resolve("projects")}/#{projectId}/delete_tag"
+        return $http.post(url, {tag: tag})
+
+    service.createTag = (projectId, tag, color) ->
+        url = "#{$urls.resolve("projects")}/#{projectId}/create_tag"
+        data = {}
+        data.tag = tag
+        data.color = null
+        if color
+            data.color = color
+        return $http.post(url, data)
+
+    service.editTag = (projectId, from_tag, to_tag, color) ->
+        url = "#{$urls.resolve("projects")}/#{projectId}/edit_tag"
+        data = {}
+        data.from_tag = from_tag
+        if to_tag
+            data.to_tag = to_tag
+        data.color = null
+        if color
+            data.color = color
+        return $http.post(url, data)
+
+    service.mixTags = (projectId, to_tag, from_tags) ->
+        url = "#{$urls.resolve("projects")}/#{projectId}/mix_tags"
+        return $http.post(url, {to_tag: to_tag, from_tags: from_tags})
 
     service.export = (projectId) ->
         url = "#{$urls.resolve("exporter")}/#{projectId}"

@@ -12,6 +12,7 @@ var suites = [
     'wiki',
     'admin',
     'issues',
+    'epics',
     'tasks',
     'userProfile',
     'userStories',
@@ -35,7 +36,26 @@ function backup() {
 }
 
 function launchProtractor(suit) {
-    child_process.spawnSync('protractor', ['conf.e2e.js', '--suite=' + suit, '--back=' + taigaBackPath], {stdio: "inherit"});
+    let protractorParams = ['conf.e2e.js', '--suite=' + suit, '--back=' + taigaBackPath];
+
+    var discard = [
+        "_",
+        "s",
+        "a",
+        "b"
+    ];
+
+    for(var arg in argv) {
+        if (discard.indexOf(arg) === -1) {
+            if(typeof argv[arg] === 'boolean') {
+                protractorParams.push('--' + arg);
+            } else {
+                protractorParams.push('--' + arg + "=" + argv[arg]);
+            }
+        }
+    }
+
+    child_process.spawnSync('protractor', protractorParams, {stdio: "inherit"});
 }
 
 function restoreBackup() {

@@ -1,7 +1,7 @@
 .row.member(ng-repeat="user in memberships | membersFilter:filtersQ:filtersRole")
     .username
         .avatar
-            img(tg-bo-src="user.photo", tg-bo-alt="user.full_name_display")
+            img(tg-avatar="user", tg-bo-alt="user.full_name_display")
 
             .avatar-data
                 a.name(
@@ -19,7 +19,7 @@
     .member-stats(
         tg-team-member-stats
         stats="stats"
-        user="user.user"
+        user="user.id"
         issuesEnabled="issuesEnabled"
         tasksenabled="tasksEnabled"
         wikienabled="wikiEnabled"

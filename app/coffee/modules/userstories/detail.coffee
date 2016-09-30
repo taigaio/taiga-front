@@ -50,12 +50,13 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$tgNavUrls",
         "$tgAnalytics",
         "$translate",
-        "$tgConfig",
-        "$tgQueueModelTransformation"
+        "$tgQueueModelTransformation",
+        "tgErrorHandlingService",
+        "$tgConfig"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @log, @appMetaService,
-                  @navUrls, @analytics, @translate, @configService, @modelTransform) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location,
+                  @log, @appMetaService, @navUrls, @analytics, @translate, @modelTransform, @errorHandlingService, @configService) ->
         bindMethods(@)
 
         @scope.usRef = @params.usref
@@ -164,20 +165,6 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
             @scope.commentModel = us
 
             @modelTransform.setObject(@scope, 'us')
-
-            if @scope.us.neighbors.previous?.ref?
-                ctx = {
-                    project: @scope.project.slug
-                    ref: @scope.us.neighbors.previous.ref
-                }
-                @scope.previousUrl = @navUrls.resolve("project-userstories-detail", ctx)
-
-            if @scope.us.neighbors.next?.ref?
-                ctx = {
-                    project: @scope.project.slug
-                    ref: @scope.us.neighbors.next.ref
-                }
-                @scope.nextUrl = @navUrls.resolve("project-userstories-detail", ctx)
 
             return us
 
@@ -330,7 +317,7 @@ UsStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $modelTransfor
 
             $el.html(html)
 
-            $compile($el.contents())($scope);
+            $compile($el.contents())($scope)
 
         save = (status) =>
             $el.find(".pop-status").popover().close()

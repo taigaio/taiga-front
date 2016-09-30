@@ -1,28 +1,42 @@
 .wiki-summary {
     align-items: center;
-    flex-wrap: wrap;
     justify-content: flex-start;
+    margin-top: 1rem;
+    &.summary {
+        background: $mass-white;
+        color: $gray;
+    }
     div {
         display: flex;
-        justify-content: space-between;
-        margin-right: 1rem;
-    }
-    .number {
-        line-height: 2rem;
-        top: 0;
+        margin-right: 1.25rem;
     }
     .wiki-user-modification {
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
     }
-    figure {
-        margin-right: .3rem;
-        width: 32px;
+    .avatar {
+        margin-right: .5rem;
+        width: 2.25rem;
+    }
+    img {
+        height: 100%;
+        width: 100%;
     }
     .username {
         @include font-size(large);
-        color: $primary-light;
         white-space: nowrap;
+    }
+    .remove {
+        fill: $gray-light;
+        margin-left: auto;
+        transition: fill .1s linear;
+        &:hover {
+            cursor: pointer;
+            fill: $red-light;
+        }
+        svg {
+            @include svg-size(1.5rem);
+        }
     }
 }

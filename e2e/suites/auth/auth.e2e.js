@@ -43,6 +43,8 @@ describe('auth', function() {
         it("redirect to login", async function() {
             browser.get(browser.params.glob.host + path);
 
+            await utils.common.waitLoader();
+
             let url = await browser.getCurrentUrl();
 
             expect(url).to.be.equal(browser.params.glob.host + 'login?next=' + encodeURIComponent('/' + path));
@@ -52,6 +54,8 @@ describe('auth', function() {
             $('input[name="username"]').sendKeys('admin');
             $('input[name="password"]').sendKeys('123123');
             $('.submit-button').click();
+
+            await utils.common.waitLoader();
 
             let url = await browser.getCurrentUrl();
 

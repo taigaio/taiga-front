@@ -2,6 +2,8 @@ doctype html
 
 div.home-wrapper.centered
     div.duty-summary
-        div(tg-working-on)
+        h1
+            span.green {{"HOME.DASHBOARD" | translate}}
+        tg-working-on.dashboard-container
 
     aside.project-list(tg-home-project-list)

@@ -2,6 +2,8 @@ var utils = require('../../utils');
 var backlogHelper = require('../../helpers').backlog;
 var taskboardHelper = require('../../helpers').taskboard;
 var commonHelper = require('../../helpers').common;
+var filterHelper = require('../../helpers/filters-helper');
+var sharedFilters = require('../../shared/filters');
 
 var chai = require('chai');
 var chaiAsPromised = require('chai-as-promised');
@@ -19,6 +21,24 @@ describe('taskboard', function() {
             .go();
 
         utils.common.takeScreenshot('taskboard', 'taskboard');
+    });
+
+    it('zoom', async function() {
+        taskboardHelper.zoom(0);
+        await browser.sleep(1000);
+        utils.common.takeScreenshot('taskboard', 'zoom1');
+
+        taskboardHelper.zoom(1);
+        await browser.sleep(1000);
+        utils.common.takeScreenshot('taskboard', 'zoom1');
+
+        taskboardHelper.zoom(2);
+        await browser.sleep(1000);
+        utils.common.takeScreenshot('taskboard', 'zoom2');
+
+        taskboardHelper.zoom(3);
+        await browser.sleep(1000);
+        utils.common.takeScreenshot('taskboard', 'zoom3');
     });
 
     describe('create task', function() {
@@ -46,11 +66,7 @@ describe('taskboard', function() {
             createTaskLightbox.subject().sendKeys(formFields.subject);
             createTaskLightbox.description().sendKeys(formFields.description);
 
-            createTaskLightbox.tags().sendKeys('aaa');
-            browser.actions().sendKeys(protractor.Key.ENTER).perform();
-
-            createTaskLightbox.tags().sendKeys('bbb');
-            browser.actions().sendKeys(protractor.Key.ENTER).perform();
+            commonHelper.tags();
 
             await createTaskLightbox.blocked().click();
             await createTaskLightbox.blockedNote().sendKeys(formFields.blockedNote);
@@ -65,7 +81,7 @@ describe('taskboard', function() {
 
             let tasks = taskboardHelper.getBoxTasks(0, 0);
 
-            let tasksSubject = await $$('.task-name').getText();
+            let tasksSubject = await $$('.e2e-title').getText();
 
             let findSubject = tasksSubject.indexOf(formFields.subject) !== -1;
 
@@ -111,7 +127,7 @@ describe('taskboard', function() {
 
             let tasks = taskboardHelper.getBoxTasks(0, 0);
 
-            let tasksSubject = await $$('.task-name').getText();
+            let tasksSubject = await $$('.e2e-title').getText();
 
             let findSubject = tasksSubject.indexOf(formFields.subject) !== 1;
 
@@ -213,7 +229,7 @@ describe('taskboard', function() {
         });
     });
 
-    describe.skip('move tasks', function() {
+    describe('move tasks', function() {
         it('move task between statuses', async function() {
             let initOriginTaskCount = await taskboardHelper.getBoxTasks(0, 0).count();
             let initDestinationTaskCount = await taskboardHelper.getBoxTasks(0, 1).count();
@@ -221,9 +237,9 @@ describe('taskboard', function() {
             let taskOrigin = taskboardHelper.getBoxTasks(0, 0).first();
             let destination = taskboardHelper.getBox(0, 1);
 
-            await utils.common.drag(taskOrigin, destination);
+            await utils.common.drag(taskOrigin, destination, 0, 10);
 
-            browser.waitForAngular();
+            await browser.waitForAngular();
 
             let originTaskCount = await taskboardHelper.getBoxTasks(0, 0).count();
             let destinationTaskCount = await taskboardHelper.getBoxTasks(0, 1).count();
@@ -232,20 +248,19 @@ describe('taskboard', function() {
             expect(destinationTaskCount).to.be.equal(initDestinationTaskCount + 1);
         });
 
-        // jquery ui drag bug
-        it.skip('move task between US\s', async function() {
+        it('move task between US\s', async function() {
             let initOriginTaskCount = await taskboardHelper.getBoxTasks(0, 0).count();
-            let initDestinationTaskCount = await taskboardHelper.getBoxTasks(1, 1).count();
+            let initDestinationTaskCount = await taskboardHelper.getBoxTasks(1, 0).count();
 
             let taskOrigin = taskboardHelper.getBoxTasks(0, 0).first();
             let destination = taskboardHelper.getBox(1, 0);
 
-            await utils.common.drag(taskOrigin, destination);
+            await utils.common.drag(taskOrigin, destination, 0, 10);
 
-            browser.waitForAngular();
+            await browser.waitForAngular();
 
             let originTaskCount = await taskboardHelper.getBoxTasks(0, 0).count();
-            let destinationTaskCount = await taskboardHelper.getBoxTasks(1, 1).count();
+            let destinationTaskCount = await taskboardHelper.getBoxTasks(1, 0).count();
 
             expect(originTaskCount).to.be.equal(initOriginTaskCount - 1);
             expect(destinationTaskCount).to.be.equal(initDestinationTaskCount + 1);
@@ -266,7 +281,7 @@ describe('taskboard', function() {
 
             await lightbox.waitClose();
 
-            let usAssignedTo = await taskboardHelper.getBoxTasks(0, 0).get(0).$('.task-assigned').getText();
+            let usAssignedTo = await taskboardHelper.getBoxTasks(0, 0).get(0).$('.card-owner-name').getText();
 
             expect(assgnedToName).to.be.equal(usAssignedTo);
         });
@@ -297,4 +312,8 @@ describe('taskboard', function() {
             expect(open).to.be.false;
         });
     });
+
+    describe('taskboard filters', sharedFilters.bind(this, 'taskboard', () => {
+        return taskboardHelper.getTasks().count();
+    }));
 });

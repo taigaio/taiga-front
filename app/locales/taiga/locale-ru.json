@@ -35,19 +35,26 @@
         "ONE_ITEM_LINE": "Один объект на строку...",
         "NEW_BULK": "Добавить пакетно",
         "RELATED_TASKS": "Связанные задачи",
+        "PREVIOUS": "Предыдущий",
+        "NEXT": "Следующий",
         "LOGOUT": "Выйти",
         "EXTERNAL_USER": "внешний пользователь",
         "GENERIC_ERROR": "Один из Умпа-Лумп говорит {{error}}.",
         "IOCAINE_TEXT": "Чувствуете, что задание берет верх над вами? Дайте другим знать об этом, нажав на \"Иокаин\", когда редактируете задание. Возможно стать неуязвимым к этому (выдуманному) смертельном яду, потребляя небольшие количества время от времени, так же как возможно стать лучше в том, что вы делаете, временами беря на себя дополнительные препятствия!",
         "CLIENT_REQUIREMENT": "Client requirement is new requirement that was not previously expected and it is required to be part of the project",
         "TEAM_REQUIREMENT": "Team requirement is a requirement that must exist in the project but should have no cost for the client",
-        "OWNER": "Project Owner",
+        "OWNER": "Владелец проекта",
         "CAPSLOCK_WARNING": "Be careful! You are using capital letters in an input field that is case sensitive.",
         "CONFIRM_CLOSE_EDIT_MODE_TITLE": "Are you sure you want to close the edit mode?",
         "CONFIRM_CLOSE_EDIT_MODE_MESSAGE": "Remember that if you close the edit mode without saving all the changes will be lost",
+        "RELATED_USERSTORIES": "Related user stories",
+        "CARD": {
+            "ASSIGN_TO": "Assign To",
+            "EDIT": "Edit card"
+        },
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Кажется, это значение некорректно.",
-            "TYPE_EMAIL": "Это значение должно быть корректным email-адресом.",
+            "TYPE_EMAIL": "Значение должно быть корректной электронной почтой.",
             "TYPE_URL": "Это значение должно быть корректным URL-адресом.",
             "TYPE_URLSTRICT": "Это значение должно быть корректным URL-адресом.",
             "TYPE_NUMBER": "Это значение должно быть правильным числом",
@@ -115,8 +122,9 @@
         "USER_STORY": "Пользовательская история",
         "TASK": "Задача",
         "ISSUE": "Запрос",
+        "EPIC": "Epic",
         "TAGS": {
-            "PLACEHOLDER": "Назначьте тэг",
+            "PLACEHOLDER": "Enter tag",
             "DELETE": "Удалить тэг",
             "ADD": "Добавить тэг"
         },
@@ -193,12 +201,29 @@
             "CONFIRM_DELETE": "Remeber that all values in this custom field will be deleted.\n Are you sure you want to continue?"
         },
         "FILTERS": {
-            "TITLE": "фильтры",
+            "TITLE": "Фильтры",
             "INPUT_PLACEHOLDER": "Название ссылки",
             "TITLE_ACTION_FILTER_BUTTON": "поиск",
-            "BREADCRUMB_TITLE": "назад к категориям",
-            "BREADCRUMB_FILTERS": "Фильтры",
-            "BREADCRUMB_STATUS": "cтатус"
+            "INPUT_SEARCH_PLACEHOLDER": "Название ссылки",
+            "TITLE_ACTION_SEARCH": "Поиск",
+            "ACTION_SAVE_CUSTOM_FILTER": "сохранить как специальный фильтр",
+            "PLACEHOLDER_FILTER_NAME": "Введите название фильтра и нажмите \"ввод\"",
+            "APPLIED_FILTERS_NUM": "filters applied",
+            "CATEGORIES": {
+                "TYPE": "Тип",
+                "STATUS": "Статус",
+                "SEVERITY": "Важность",
+                "PRIORITIES": "Приоритеты",
+                "TAGS": "Тэги",
+                "ASSIGNED_TO": "Назначено",
+                "CREATED_BY": "Создано",
+                "CUSTOM_FILTERS": "Собственные фильтры",
+                "EPIC": "Epic"
+            },
+            "CONFIRM_DELETE": {
+                "TITLE": "Удалить фильтр",
+                "MESSAGE": "специальный фильтр '{{customFilterName}}'"
+            }
         },
         "WYSIWYG": {
             "H1_BUTTON": "Заголовок первого уровня",
@@ -228,9 +253,18 @@
             "PREVIEW_BUTTON": "Предварительный просмотр",
             "EDIT_BUTTON": "Редактировать",
             "ATTACH_FILE_HELP": "Attach files by dragging & dropping on the textarea above.",
+            "ATTACH_FILE_HELP_SAVE_FIRST": "Save first before if you want to attach files by dragging & dropping on the textarea above.",
             "MARKDOWN_HELP": "Помощь по синтаксису Markdown"
         },
         "PERMISIONS_CATEGORIES": {
+            "EPICS": {
+                "NAME": "Epics",
+                "VIEW_EPICS": "View epics",
+                "ADD_EPICS": "Add epics",
+                "MODIFY_EPICS": "Modify epics",
+                "COMMENT_EPICS": "Comment epics",
+                "DELETE_EPICS": "Delete epics"
+            },
             "SPRINTS": {
                 "NAME": "Спринты",
                 "VIEW_SPRINTS": "Посмотреть спринты",
@@ -243,6 +277,7 @@
                 "VIEW_USER_STORIES": "Просматривать пользовательские истории",
                 "ADD_USER_STORIES": "Добавлять пользовательские истории",
                 "MODIFY_USER_STORIES": "Изменять пользовательские истории",
+                "COMMENT_USER_STORIES": "Comment user stories",
                 "DELETE_USER_STORIES": "Удалять пользовательские истории"
             },
             "TASKS": {
@@ -250,6 +285,7 @@
                 "VIEW_TASKS": "Просмотреть задачи",
                 "ADD_TASKS": "Добавить задачи",
                 "MODIFY_TASKS": "Редактировать задачи",
+                "COMMENT_TASKS": "Comment tasks",
                 "DELETE_TASKS": "Удалить задачи"
             },
             "ISSUES": {
@@ -257,6 +293,7 @@
                 "VIEW_ISSUES": "Посмотреть запросы",
                 "ADD_ISSUES": "Добавить запросы",
                 "MODIFY_ISSUES": "Изменить запросы",
+                "COMMENT_ISSUES": "Comment issues",
                 "DELETE_ISSUES": "Удалить запросы"
             },
             "WIKI": {
@@ -287,7 +324,7 @@
     },
     "LOGIN_COMMON": {
         "HEADER": "У меня уже есть логин в Taiga",
-        "PLACEHOLDER_AUTH_NAME": "Логин или email (с учетом регистра)",
+        "PLACEHOLDER_AUTH_NAME": "Имя пользователя или электронная почта (с учётом регистра)",
         "LINK_FORGOT_PASSWORD": "Забыли?",
         "TITLE_LINK_FORGOT_PASSWORD": "Вы забыли свой пароль?",
         "ACTION_ENTER": "Ввод",
@@ -295,7 +332,7 @@
         "PLACEHOLDER_AUTH_PASSWORD": "Пароль (чувствителен к регистру)"
     },
     "LOGIN_FORM": {
-        "ERROR_AUTH_INCORRECT": "Oompa Loompas считает, что Ваш логин, email или пароль неправильный.",
+        "ERROR_AUTH_INCORRECT": "Oompa Loompas считает, что ваше имя пользователя, электронная почта или пароль неправильные.",
         "SUCCESS": "Oompa Loompas счастлив, добро пожаловать в Тайгу!"
     },
     "REGISTER": {
@@ -306,7 +343,7 @@
         "TITLE": "Зарегистрируйте аккаунт Taiga (бесплатно)",
         "PLACEHOLDER_NAME": "Выберите имя учётной записи (с учётом регистра)",
         "PLACEHOLDER_FULL_NAME": "Введите Ваше полное имя",
-        "PLACEHOLDER_EMAIL": "Ваш email",
+        "PLACEHOLDER_EMAIL": "Ваша электронная почта",
         "PLACEHOLDER_PASSWORD": "Задайте новый пароль (с учетом регистра)",
         "ACTION_SIGN_UP": "Зарегистрироваться",
         "TITLE_LINK_LOGIN": "Войти",
@@ -318,12 +355,12 @@
     },
     "FORGOT_PASSWORD_FORM": {
         "TITLE": "Упс, забыли пароль?",
-        "SUBTITLE": "Введите Ваш логин или email для получения нового пароля",
-        "PLACEHOLDER_FIELD": "Логин или e-mail",
+        "SUBTITLE": "Введите ваше имя пользователя или электронную почту, чтобы получить новый пароль",
+        "PLACEHOLDER_FIELD": "Имя пользователя или электронная почта",
         "ACTION_RESET_PASSWORD": "Сбросить пароль",
         "LINK_CANCEL": "Не, давай назад, думаю я вспомню.",
-        "SUCCESS_TITLE": "Check your inbox!",
-        "SUCCESS_TEXT": "We sent you an email with the instructions to set a new password",
+        "SUCCESS_TITLE": "Проверьте Вашу почту!",
+        "SUCCESS_TEXT": "Мы отправили вам письмо с инструкциями по восстановлению пароля",
         "ERROR": "Умпа-Лумпы говорят, что вы еще не зарегистрированы."
     },
     "CHANGE_PASSWORD": {
@@ -359,12 +396,47 @@
     "HOME": {
         "PAGE_TITLE": "Домашняя страница - Taiga",
         "PAGE_DESCRIPTION": "Главная страница Taiga с вашими основными проектами, назначенными и отслеживаемыми ПИ, задачами и запросами",
-        "EMPTY_WORKING_ON": "<strong>It feels empty, doesn't it?</strong> Start working with Taiga and you'll see here the stories, tasks and issues you are working on.",
+        "EMPTY_WORKING_ON": "<strong>Тут кажется пусто, не правда ли?</strong> Начинайте использовать Taiga и вы увидите здесь истории, задачи и запросы над которыми вы сейчас работаете.",
         "EMPTY_WATCHING": "<strong>Следите</strong> за пользовательскими историями, задачами, запросами в ваших проектах и будьте уведомлены об изменениях :)",
         "EMPTY_PROJECT_LIST": "У Вас пока нет проектов",
         "WORKING_ON_SECTION": "Работает над",
         "WATCHING_SECTION": "Отслеживаемые",
         "DASHBOARD": "Рабочий стол с проектами"
+    },
+    "EPICS": {
+        "TITLE": "EPICS",
+        "SECTION_NAME": "Epics",
+        "EPIC": "EPIC",
+        "PAGE_TITLE": "Epics - {{projectName}}",
+        "PAGE_DESCRIPTION": "The epics list of the project {{projectName}}: {{projectDescription}}",
+        "DASHBOARD": {
+            "ADD": "+ ADD EPIC",
+            "UNASSIGNED": "Не назначено"
+        },
+        "EMPTY": {
+            "TITLE": "It looks like there aren't any epics yet",
+            "EXPLANATION": "Epics are items at a higher level that encompass user stories.<br />Epics are at the top of the hierarchy and can be used to group user stories together.",
+            "HELP": "Learn more about epics"
+        },
+        "TABLE": {
+            "VOTES": "Голоса",
+            "NAME": "Имя",
+            "PROJECT": "Проект",
+            "SPRINT": "Спринт",
+            "ASSIGNED_TO": "Assigned",
+            "STATUS": "Статус",
+            "PROGRESS": "Progress",
+            "VIEW_OPTIONS": "View options"
+        },
+        "CREATE": {
+            "TITLE": "New Epic",
+            "PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this epic",
+            "TEAM_REQUIREMENT": "Team requirement",
+            "CLIENT_REQUIREMENT": "Client requirement",
+            "BLOCKED": "Заблокирован",
+            "BLOCKED_NOTE_PLACEHOLDER": "Why is this epic blocked?",
+            "CREATE_EPIC": "Create epic"
+        }
     },
     "PROJECTS": {
         "PAGE_TITLE": "Мои проекты",
@@ -402,7 +474,8 @@
     "ADMIN": {
         "COMMON": {
             "TITLE_ACTION_EDIT_VALUE": "Изменить значение",
-            "TITLE_ACTION_DELETE_VALUE": "Удалить значение"
+            "TITLE_ACTION_DELETE_VALUE": "Удалить значение",
+            "TITLE_ACTION_DELETE_TAG": "Удалить тэг"
         },
         "HELP": "Вам нужна помощь? Проверьте нашу страницу техподдержки!",
         "PROJECT_DEFAULT_VALUES": {
@@ -425,7 +498,7 @@
             "LOADING_TITLE": "Мы создали ваш файл резервной копии",
             "DUMP_READY": "Файл резервной копии готов!",
             "LOADING_MESSAGE": "Пожалуйста, не закрывайте эту страницу",
-            "ASYNC_MESSAGE": "Мы отправим вам email когда будет готово.",
+            "ASYNC_MESSAGE": "Мы отправим вам письмо когда будет готово.",
             "SYNC_MESSAGE": "Если загрузка не начинается самостоятельно, нажмите <a href='{{url}}' download title='Download the dump file'>здесь</a>.",
             "ERROR": "У Oompa Loompas возникли проблемы при создании резервной копии. Повторите еще раз.",
             "ERROR_BUSY": "Извините, Oompa Loompas очень загружен сейчас. Повторите через несколько минут.",
@@ -435,9 +508,11 @@
             "TITLE": "Модули",
             "ENABLE": "Включить",
             "DISABLE": "Выключить",
+            "EPICS": "Epics",
+            "EPICS_DESCRIPTION": "Visualize and manage the most strategic part of your project",
             "BACKLOG": "Список задач",
             "BACKLOG_DESCRIPTION": "Управляйте пользовательскими историями, чтобы поддерживать организованное видение важных и приоритетных задач.",
-            "NUMBER_SPRINTS": "Expected number of sprints",
+            "NUMBER_SPRINTS": "Ожидаемое количество спринтов",
             "NUMBER_SPRINTS_HELP": "0 for an undetermined number",
             "NUMBER_US_POINTS": "Expected total of story points",
             "NUMBER_US_POINTS_HELP": "0 for an undetermined number",
@@ -448,9 +523,9 @@
             "WIKI": "Вики",
             "WIKI_DESCRIPTION": "Добавляйте, изменяйте или удаляйте контент совместно с остальными. Это самое правильное место для документации вашего проекта.",
             "MEETUP": "Созвониться",
-            "MEETUP_DESCRIPTION": "Choose your videoconference system.",
+            "MEETUP_DESCRIPTION": "Выберите Вашу систему видеоконференций",
             "SELECT_VIDEOCONFERENCE": "Выберите систему видеоконференций",
-            "SALT_CHAT_ROOM": "Add a prefix to the chatroom name",
+            "SALT_CHAT_ROOM": "Добавить префикс к имени чата",
             "JITSI_CHAT_ROOM": "Jitsi",
             "APPEARIN_CHAT_ROOM": "AppearIn",
             "TALKY_CHAT_ROOM": "Talky",
@@ -472,20 +547,20 @@
             "PRIVATE_OR_PUBLIC": "В чём разница между публичными и приватными проектами?",
             "DELETE": "Удалить проект",
             "LOGO_HELP": "Изображение будет отмасштабировано до 80x80px.",
-            "CHANGE_LOGO": "Change logo",
+            "CHANGE_LOGO": "Изменить лого",
             "ACTION_USE_DEFAULT_LOGO": "Использовать картинку по умолчанию",
-            "MAX_PRIVATE_PROJECTS": "You've reached the maximum number of private projects allowed by your current plan",
-            "MAX_PRIVATE_PROJECTS_MEMBERS": "The maximum number of members for private projects has been exceeded",
+            "MAX_PRIVATE_PROJECTS": "Вы достигли максимального числа приватных проектов которое разрешено вашим планом.",
+            "MAX_PRIVATE_PROJECTS_MEMBERS": "Максимальное количество участников в приватном проекте достигло лимита",
             "MAX_PUBLIC_PROJECTS": "Unfortunately, you've reached the maximum number of public projects allowed by your current plan",
             "MAX_PUBLIC_PROJECTS_MEMBERS": "The project exceeds your maximum number of members for public projects",
-            "PROJECT_OWNER": "Project owner",
-            "REQUEST_OWNERSHIP": "Request ownership",
-            "REQUEST_OWNERSHIP_CONFIRMATION_TITLE": "Do you want to become the new project owner?",
+            "PROJECT_OWNER": "Владелец проекта",
+            "REQUEST_OWNERSHIP": "Запрос владельца",
+            "REQUEST_OWNERSHIP_CONFIRMATION_TITLE": "Хотите стать новым владельцем проекта?",
             "REQUEST_OWNERSHIP_DESC": "Request that current project owner {{name}} transfer ownership of this project to you.",
             "REQUEST_OWNERSHIP_BUTTON": "Запрос",
-            "REQUEST_OWNERSHIP_SUCCESS": "We'll notify the project owner",
-            "CHANGE_OWNER": "Change owner",
-            "CHANGE_OWNER_SUCCESS_TITLE": "Ok, your request has been sent!",
+            "REQUEST_OWNERSHIP_SUCCESS": "Мы уведомим владельца проекта",
+            "CHANGE_OWNER": "Сменить владельца",
+            "CHANGE_OWNER_SUCCESS_TITLE": "ОК, ваш запрос был отправлен!",
             "CHANGE_OWNER_SUCCESS_DESC": "We will notify you by email if the project ownership request is accepted or declined"
         },
         "REPORTS": {
@@ -497,18 +572,21 @@
             "REGENERATE_SUBTITLE": "Вы собираетесь изменить ссылку доступа к данным CSV. Прежний вариант ссылки перестанет работать. Вы уверены?"
         },
         "CSV": {
+            "SECTION_TITLE_EPIC": "epics reports",
             "SECTION_TITLE_US": "Отчёты по пользовательским историям",
             "SECTION_TITLE_TASK": "отчёты о задачах",
             "SECTION_TITLE_ISSUE": "отчёты о запросах",
             "DOWNLOAD": "Скачать CSV",
             "URL_FIELD_PLACEHOLDER": "Упс, забыли пароль?",
-            "TITLE_REGENERATE_URL": " Сделать CSV ссылку ещё раз",
+            "TITLE_REGENERATE_URL": "Сделать CSV ссылку ещё раз",
             "ACTION_GENERATE_URL": "Сгенерировать ссылку",
             "ACTION_REGENERATE": "Создать заново"
         },
         "CUSTOM_FIELDS": {
             "TITLE": "Пользовательские поля",
             "SUBTITLE": "Укажите специальные поля для ваших пользовательских историй, задач и запросов",
+            "EPIC_DESCRIPTION": "Epics custom fields",
+            "EPIC_ADD": "Add a custom field in epics",
             "US_DESCRIPTION": "Специальные поля для пользовательских историй",
             "US_ADD": "Добавить специальное поле для пользовательских историй",
             "TASK_DESCRIPTION": "Специальные поля задач",
@@ -546,7 +624,8 @@
         "PROJECT_VALUES_STATUS": {
             "TITLE": "Статус",
             "SUBTITLE": "Укажите, какие статусы будут принимать ваши пользовательские истории, задачи и запросы",
-            "US_TITLE": "Статусы ПИ",
+            "EPIC_TITLE": "Epic Statuses",
+            "US_TITLE": "User Story Statuses",
             "TASK_TITLE": "Статус задач",
             "ISSUE_TITLE": "Статусы запроса"
         },
@@ -555,6 +634,17 @@
             "SUBTITLE": "Укажите, какие типы смогут иметь ваши запросы",
             "ISSUE_TITLE": "Типы запросов",
             "ACTION_ADD": "Добавить новый"
+        },
+        "PROJECT_VALUES_TAGS": {
+            "TITLE": "Тэги",
+            "SUBTITLE": "Просмотреть и изменить цвет ваших тэгов",
+            "EMPTY": "В данный момент тэги отсутствуют",
+            "EMPTY_SEARCH": "It looks like nothing was found with your search criteria",
+            "ACTION_ADD": "Добавить тэг",
+            "NEW_TAG": "Новый тэг",
+            "MIXING_HELP_TEXT": "Выберите тэги которые вы хотели бы объединить",
+            "MIXING_MERGE": "Объединить Тэги",
+            "SELECTED": "Выбранные"
         },
         "ROLES": {
             "PAGE_TITLE": "Роли - {{projectName}}",
@@ -587,6 +677,10 @@
         "GITHUB": {
             "SECTION_NAME": "Github",
             "PAGE_TITLE": "Github - {{projectName}}"
+        },
+        "GOGS": {
+            "SECTION_NAME": "Gogs",
+            "PAGE_TITLE": "Gogs - {{projectName}}"
         },
         "WEBHOOKS": {
             "PAGE_TITLE": "Веб-хуки - {{projectName}}",
@@ -643,13 +737,14 @@
             "DEFAULT_DELETE_MESSAGE": "приглашение на {{email}}"
         },
         "DEFAULT_VALUES": {
+            "LABEL_EPIC_STATUS": "Default value for epic status selector",
+            "LABEL_US_STATUS": "Default value for user story status selector",
             "LABEL_POINTS": "Значения по умолчанию для выбора очков",
-            "LABEL_US": "Значение по умолчанию для статуса ПИ",
             "LABEL_TASK_STATUS": "Значение по умолчанию для статуса задачи",
-            "LABEL_PRIORITY": "Значение по умолчанию для выбора приоритета",
-            "LABEL_SEVERITY": "Значение важности по умолчанию",
             "LABEL_ISSUE_TYPE": "Значение по умолчанию для типа запроса",
-            "LABEL_ISSUE_STATUS": "Значение по умолчанию для статуса запроса"
+            "LABEL_ISSUE_STATUS": "Значение по умолчанию для статуса запроса",
+            "LABEL_PRIORITY": "Значение по умолчанию для выбора приоритета",
+            "LABEL_SEVERITY": "Значение важности по умолчанию"
         },
         "STATUS": {
             "PLACEHOLDER_WRITE_STATUS_NAME": "Укажите название для нового статуса"
@@ -681,7 +776,8 @@
             "PRIORITIES": "Приоритет",
             "SEVERITIES": "Степени важности",
             "TYPES": "Типы",
-            "CUSTOM_FIELDS": "Собственные поля"
+            "CUSTOM_FIELDS": "Собственные поля",
+            "TAGS": "Тэги"
         },
         "SUBMENU_PROJECT_PROFILE": {
             "TITLE": "Профиль проекта"
@@ -697,8 +793,8 @@
         "PROJECT_TRANSFER": {
             "DO_YOU_ACCEPT_PROJECT_OWNERNSHIP": "Would you like to become the new project owner?",
             "PRIVATE": "Private",
-            "ACCEPTED_PROJECT_OWNERNSHIP": "Congratulations! You're now the new project owner.",
-            "REJECTED_PROJECT_OWNERNSHIP": "OK. We'll contact the current project owner",
+            "ACCEPTED_PROJECT_OWNERNSHIP": "Поздравляем! Вы новый владелец проекта.",
+            "REJECTED_PROJECT_OWNERNSHIP": "Хорошо. Мы свяжемся с текущим владельцем проекта",
             "ACCEPT": "Принимаю",
             "REJECT": "Reject",
             "PROPOSE_OWNERSHIP": "<strong>{{owner}}</strong>, the current owner of the project <strong>{{project}}</strong> has asked that you become the new  project owner.",
@@ -751,6 +847,8 @@
             "FILTER_TYPE_ALL_TITLE": "Показать все",
             "FILTER_TYPE_PROJECTS": "Проекты",
             "FILTER_TYPE_PROJECT_TITLES": "Показать только проекты",
+            "FILTER_TYPE_EPICS": "Epics",
+            "FILTER_TYPE_EPIC_TITLES": "Show only epics",
             "FILTER_TYPE_USER_STORIES": "Истории",
             "FILTER_TYPE_USER_STORIES_TITLES": "Показывать только пользовательские истории",
             "FILTER_TYPE_TASKS": "Задачи",
@@ -771,8 +869,8 @@
         "WATCHERS_COUNTER_TITLE": "{total, plural, one{один наблюдатель} other{# наблюдателя (-ей)}}",
         "MEMBERS_COUNTER_TITLE": "{total, plural, one{one member} other{# members}}",
         "BLOCKED_PROJECT": {
-            "BLOCKED": "Blocked project",
-            "THIS_PROJECT_IS_BLOCKED": "This project is temporarily blocked",
+            "BLOCKED": "Заблокированный проект",
+            "THIS_PROJECT_IS_BLOCKED": "Этот проект временно заблокирован",
             "TO_UNBLOCK_CONTACT_THE_ADMIN_STAFF": "In order to unblock your projects, contact the administrator."
         },
         "STATS": {
@@ -890,8 +988,8 @@
             "SECTION_NAME": "Удалить аккаунт",
             "CONFIRM": "Вы уверены, что хотите удалить ваш аккаунт?",
             "NEWSLETTER_LABEL_TEXT": "Я больше не хочу получать вашу новостную рассылку",
-            "CANCEL": "Back to settings",
-            "ACCEPT": "Delete account",
+            "CANCEL": "Вернуться к настройкам",
+            "ACCEPT": "Удалить аккаунт",
             "BLOCK_PROJECT": "Note that all the projects you own projects will be <strong>blocked</strong> after you delete your account. If you do want a project blocked, transfer ownership to another member of each project prior to deleting your account.",
             "SUBTITLE": "Sorry to see you go. We'll be here if you should ever consider us again! :("
         },
@@ -949,31 +1047,51 @@
         },
         "CREATE_MEMBER": {
             "PLACEHOLDER_INVITATION_TEXT": "(Необязательно) Добавьте персональный текст в приглашение. Скажите что-нибудь приятное вашим новым участникам ;-)",
-            "PLACEHOLDER_TYPE_EMAIL": "Укажите e-mail",
-            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "Unfortunately, this project can't have more than <strong>{{maxMembers}}</strong> members.<br> If you would like to increase the current limit, please contact the administrator.",
-            "LIMIT_USERS_WARNING_MESSAGE": "Unfortunately, this project can't have more than <strong>{{maxMembers}}</strong> members."
+            "PLACEHOLDER_TYPE_EMAIL": "Введите электронную почту",
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "You are about to reach the maximum number of members allowed for this project, <strong>{{maxMembers}}</strong> members. If you would like to increase the current limit, please contact the administrator.",
+            "LIMIT_USERS_WARNING_MESSAGE": "You are about to reach the maximum number of members allowed for this project, <strong>{{maxMembers}}</strong> members."
         },
         "LEAVE_PROJECT_WARNING": {
             "TITLE": "Unfortunately, this project can't be left without an owner",
             "CURRENT_USER_OWNER": {
                 "DESC": "You are the current owner of this project. Before leaving, please transfer ownership to someone else.",
-                "BUTTON": "Change the project owner"
+                "BUTTON": "Сменить владельца проекта"
             },
             "OTHER_USER_OWNER": {
                 "DESC": "Unfortunately, you can't delete a member who is also the current project owner. First, please assign a new project owner.",
-                "BUTTON": "Request project owner change"
+                "BUTTON": "Запрос смены владельца проекта"
             }
         },
         "CHANGE_OWNER": {
-            "TITLE": "Who do you want to be the new project owner?",
-            "ADD_COMMENT": "Add comment",
-            "BUTTON": "Ask this project member to become the new project owner"
+            "TITLE": "Кого вы хотите назначить новым владельцем проекта?",
+            "ADD_COMMENT": "Добавить комментарий",
+            "BUTTON": "Предложить участнику проекта стать его новым владельцем"
         }
+    },
+    "EPIC": {
+        "PAGE_TITLE": "{{epicSubject}} - Epic {{epicRef}} - {{projectName}}",
+        "PAGE_DESCRIPTION": "Status: {{epicStatus }}. Description: {{epicDescription}}",
+        "SECTION_NAME": "Epic",
+        "TITLE_LIGHTBOX_UNLINK_RELATED_USERSTORY": "Unlink related userstory",
+        "MSG_LIGHTBOX_UNLINK_RELATED_USERSTORY": "It will delete the link to the related userstory '{{subject}}'",
+        "ERROR_UNLINK_RELATED_USERSTORY": "We have not been able to unlink: {{errorMessage}}",
+        "CREATE_RELATED_USERSTORIES": "Create a relationship with",
+        "NEW_USERSTORY": "Новая пользовательская история",
+        "EXISTING_USERSTORY": "Existing user story",
+        "CHOOSE_PROJECT_FOR_CREATION": "What's the project?",
+        "SUBJECT": "Тема",
+        "SUBJECT_BULK_MODE": "Subject (bulk insert)",
+        "CHOOSE_PROJECT_FROM": "What's the project?",
+        "CHOOSE_USERSTORY": "What's the user story?",
+        "NO_USERSTORIES": "This project has no User Stories yet. Please select another project.",
+        "FILTER_USERSTORIES": "Filter user stories",
+        "LIGHTBOX_TITLE_BLOKING_EPIC": "Blocking epic",
+        "ACTION_DELETE": "Delete epic"
     },
     "US": {
         "PAGE_TITLE": "{{userStorySubject}} - Пользовательская История {{userStoryRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Статус: {{userStoryStatus }}. Выполнено {{userStoryProgressPercentage}}% ({{userStoryClosedTasks}} из {{userStoryTotalTasks}} задач). Очки: {{userStoryPoints}}. Описание: {{userStoryDescription}}",
-        "SECTION_NAME": "Детали пользовательских историй",
+        "SECTION_NAME": "Пользовательская история",
         "LINK_TASKBOARD": "Панель задач",
         "TITLE_LINK_TASKBOARD": "Перейти к панели задач",
         "TOTAL_POINTS": "общее число очков",
@@ -983,15 +1101,24 @@
         "TITLE_LINK_GO_TO_ISSUE": "Перейти к запросу",
         "EXTERNAL_REFERENCE": "Эта ПИ была создана из:",
         "GO_TO_EXTERNAL_REFERENCE": "Перейти в начало",
-        "BLOCKED": "Эта пользовательская история заблокирована ",
-        "PREVIOUS": "предыдущая пользовательская история",
-        "NEXT": "следующая пользовательская история",
+        "BLOCKED": "Эта пользовательская история заблокирована",
         "TITLE_DELETE_ACTION": "Удалить пользовательскую историю",
         "LIGHTBOX_TITLE_BLOKING_US": "Блокирующая ПИ",
         "TASK_COMPLETED": "{{totalClosedTasks}}/{{totalTasks}} задач выполнено",
         "ASSIGN": "Поручить пользовательскую историю",
         "NOT_ESTIMATED": "Не оценено",
         "TOTAL_US_POINTS": "Всего очков за ПИ",
+        "TRIBE": {
+            "PUBLISH": "Publish as Gig in Taiga Tribe",
+            "PUBLISH_INFO": "Больше инфо",
+            "PUBLISH_TITLE": "More info on publishing in Taiga Tribe",
+            "PUBLISHED_AS_GIG": "Story published as Gig in Taiga Tribe",
+            "EDIT_LINK": "Редактировать ссылку",
+            "CLOSE": "Закрыть",
+            "SYNCHRONIZE_LINK": "synchronize with Taiga Tribe",
+            "PUBLISH_MORE_INFO_TITLE": "Do you need somebody for this task?",
+            "PUBLISH_MORE_INFO_TEXT": "<p>If you need help with a particular piece of work you can easily create gigs on<a href='taigatribe.com' title='Taiga Tribe'> Taiga Tribe </a> and receive help from all over the world. You will be able to control and manage the gig enjoying a great community eager to contribute.</p><p><a href='taigatribe.com' title='Taiga Tribe'> TaigaTribe </a>  was born as a Taiga sibling. Both platforms can live separately but we believe that there is much power in using them combined so we are making sure the integration works like a charm.</p>"
+        },
         "FIELDS": {
             "TEAM_REQUIREMENT": "Требование от Команды",
             "CLIENT_REQUIREMENT": "Требование клиента",
@@ -999,28 +1126,47 @@
         }
     },
     "COMMENTS": {
-        "DELETED_INFO": "Комментарий удален {{user}} {{date}}",
+        "DELETED_INFO": "Комментарий удалён {{user}}",
         "TITLE": "Комментарии",
+        "COMMENTS_COUNT": "{{comments}} Comments",
+        "ORDER": "Порядок",
+        "OLDER_FIRST": "Сначала старые",
+        "RECENT_FIRST": "Сначала новые",
         "COMMENT": "Комментарий",
+        "EDIT_COMMENT": "Редактировать комментарий",
+        "EDITED_COMMENT": "Изменено:",
+        "SHOW_HISTORY": "View historic",
         "TYPE_NEW_COMMENT": "Добавить комментарий",
         "SHOW_DELETED": "Показать удаленный комментарий",
         "HIDE_DELETED": "Скрыть удаленный комментарий",
         "DELETE": "Удалить комментарий",
-        "RESTORE": "Показать удаленный комментарий"
+        "RESTORE": "Показать удаленный комментарий",
+        "HISTORY": {
+            "TITLE": "Действия"
+        }
     },
     "ACTIVITY": {
         "SHOW_ACTIVITY": "Показать действия",
         "DATETIME": "DD MMM YYYY HH:mm",
         "SHOW_MORE": "+ Показать предыдущие записи (ещё {{showMore}})",
         "TITLE": "Действия",
+        "ACTIVITIES_COUNT": "{{activities}} Activities",
         "REMOVED": "удален",
         "ADDED": "добавлено",
-        "US_POINTS": "ПИ очки ({{name}})",
-        "NEW_ATTACHMENT": "новое вложение",
-        "DELETED_ATTACHMENT": "удаленное вложение",
-        "UPDATED_ATTACHMENT": "обновлено приложение {{filename}}",
-        "DELETED_CUSTOM_ATTRIBUTE": "удалить атрибут",
+        "TAGS_ADDED": "тэги добавлены:",
+        "TAGS_REMOVED": "tags removed:",
+        "US_POINTS": "{{role}} points",
+        "NEW_ATTACHMENT": "новое вложение:",
+        "DELETED_ATTACHMENT": "удалённое вложение:",
+        "UPDATED_ATTACHMENT": "updated attachment ({{filename}}):",
+        "CREATED_CUSTOM_ATTRIBUTE": "created custom attribute",
+        "UPDATED_CUSTOM_ATTRIBUTE": "updated custom attribute",
         "SIZE_CHANGE": "Сделано {size, plural, one{изменение} other{# изменений}}",
+        "BECAME_DEPRECATED": "became deprecated",
+        "BECAME_UNDEPRECATED": "became undeprecated",
+        "TEAM_REQUIREMENT": "Требование от Команды",
+        "CLIENT_REQUIREMENT": "Требование клиента",
+        "BLOCKED": "Заблокирован",
         "VALUES": {
             "YES": "да",
             "NO": "нет",
@@ -1052,12 +1198,14 @@
             "TAGS": "тэги",
             "ATTACHMENTS": "Вложения",
             "IS_DEPRECATED": "рекомендовано",
+            "IS_NOT_DEPRECATED": "is not deprecated",
             "ORDER": "порядок",
             "BACKLOG_ORDER": "порядок списка задач",
             "SPRINT_ORDER": "порядок спринтов",
             "KANBAN_ORDER": "порядок kanban",
             "TASKBOARD_ORDER": "порядок панели задач",
-            "US_ORDER": "порядок ПИ"
+            "US_ORDER": "порядок ПИ",
+            "COLOR": "цвет"
         }
     },
     "BACKLOG": {
@@ -1109,7 +1257,8 @@
             "CLOSED_TASKS": "завершённые <br /> задачи",
             "IOCAINE_DOSES": "иокаина<br />дозы",
             "SHOW_STATISTICS_TITLE": "Показать статистику",
-            "TOGGLE_BAKLOG_GRAPH": "Показать/Скрыть график решения задач"
+            "TOGGLE_BAKLOG_GRAPH": "Показать/Скрыть график решения задач",
+            "POINTS_PER_ROLE": "Points per role"
         },
         "SUMMARY": {
             "PROJECT_POINTS": "проектные<br />очки",
@@ -1122,9 +1271,7 @@
             "TITLE": "Фильтры",
             "REMOVE": "Сбросить фильтры",
             "HIDE": "Спрятать фильтры",
-            "SHOW": "Показать фильтры",
-            "FILTER_CATEGORY_STATUS": "Статус",
-            "FILTER_CATEGORY_TAGS": "Тэги"
+            "SHOW": "Показать фильтры"
         },
         "SPRINTS": {
             "TITLE": "СПРИНТЫ",
@@ -1179,7 +1326,7 @@
     "TASK": {
         "PAGE_TITLE": "{{taskSubject}} - Задача {{taskRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Статус: {{taskStatus }}. Описание: {{taskDescription}}",
-        "SECTION_NAME": "Детали задачи",
+        "SECTION_NAME": "Задача",
         "LINK_TASKBOARD": "Панель задач",
         "TITLE_LINK_TASKBOARD": "Перейти к панели задач",
         "PLACEHOLDER_SUBJECT": "Укажите новое название задачи",
@@ -1189,8 +1336,6 @@
         "ORIGIN_US": "Эта задача была создана из",
         "TITLE_LINK_GO_ORIGIN": "Перейти к пользовательской истории",
         "BLOCKED": "Эта задача заблокирована",
-        "PREVIOUS": "предыдущая задача",
-        "NEXT": "следующая задача",
         "TITLE_DELETE_ACTION": "Удалить задачу",
         "LIGHTBOX_TITLE_BLOKING_TASK": "Блокирующее задание",
         "FIELDS": {
@@ -1218,26 +1363,23 @@
         "SUCCESS": "Oompa Loompas удалил ваш аккаунт"
     },
     "CHANGE_EMAIL_FORM": {
-        "TITLE": "Изменить e-mail",
+        "TITLE": "Сменить вашу электронную почту",
         "SUBTITLE": "Ещё один клик и Ваш email будет обновлён!",
         "PLACEHOLDER_INPUT_TOKEN": "изменить идентификатор email",
-        "ACTION_CHANGE_EMAIL": "изменить почту",
-        "SUCCESS": "Oompa Loompas обновил ваш e-mail"
+        "ACTION_CHANGE_EMAIL": "Сменить электронную почту",
+        "SUCCESS": "Наш Oompa Loompas обновил вашу электронную почту"
     },
     "ISSUES": {
         "PAGE_TITLE": "Запросы - {{projectName}}",
         "PAGE_DESCRIPTION": "Панель запросов проекта {{projectName}}: {{projectDescription}}",
         "LIST_SECTION_NAME": "Запросы",
-        "SECTION_NAME": "Детали запроса",
+        "SECTION_NAME": "Запрос",
         "ACTION_NEW_ISSUE": "+НОВЫЙ ЗАПРОС",
         "ACTION_PROMOTE_TO_US": "Повысить до пользовательской истории",
-        "PLACEHOLDER_FILTER_NAME": "Введите название фильтра и нажмите \"ввод\"",
         "PROMOTED": "Этот запрос был переделан в ПИ:",
         "EXTERNAL_REFERENCE": "Этот запрос был создан из",
         "GO_TO_EXTERNAL_REFERENCE": "Перейти в начало",
         "BLOCKED": "Этот запрос заблокирована",
-        "TITLE_PREVIOUS_ISSUE": "предыдущий запрос",
-        "TITLE_NEXT_ISSUE": "следующий запрос",
         "ACTION_DELETE": "Удалить запрос",
         "LIGHTBOX_TITLE_BLOKING_ISSUE": "Блокирующий запрос",
         "FIELDS": {
@@ -1248,28 +1390,6 @@
         "CONFIRM_PROMOTE": {
             "TITLE": "Превратить этот запрос в новую пользовательскую историю",
             "MESSAGE": "Вы уверены, что хотите создать новую ПИ из этого запроса?"
-        },
-        "FILTERS": {
-            "TITLE": "Фильтры",
-            "INPUT_SEARCH_PLACEHOLDER": "Название ссылки",
-            "TITLE_ACTION_SEARCH": "Поиск",
-            "ACTION_SAVE_CUSTOM_FILTER": "сохранить как специальный фильтр",
-            "BREADCRUMB": "Фильтры",
-            "TITLE_BREADCRUMB": "Фильтры",
-            "CATEGORIES": {
-                "TYPE": "Тип",
-                "STATUS": "Статус",
-                "SEVERITY": "Важность",
-                "PRIORITIES": "Приоритет",
-                "TAGS": "Тэги",
-                "ASSIGNED_TO": "Назначено",
-                "CREATED_BY": "Создано",
-                "CUSTOM_FILTERS": "Собственные фильтры"
-            },
-            "CONFIRM_DELETE": {
-                "TITLE": "Удалить фильтр",
-                "MESSAGE": "специальный фильтр '{{customFilterName}}'"
-            }
         },
         "TABLE": {
             "COLUMNS": {
@@ -1316,6 +1436,7 @@
     "SEARCH": {
         "PAGE_TITLE": "Поиск - {{projectName}}",
         "PAGE_DESCRIPTION": "Ищите что угодно, пользовательские истории, задачи, запросы и вики-страницы, в проекте {{projectName}}: {{projectDescription}}",
+        "FILTER_EPICS": "Epics",
         "FILTER_USER_STORIES": "Пользовательские Истории",
         "FILTER_ISSUES": "Запросы",
         "FILTER_TASKS": "Задачи",
@@ -1383,7 +1504,7 @@
         "CHANGE_PHOTO": "Изменить фото",
         "FIELD": {
             "USERNAME": "Имя пользователя",
-            "EMAIL": "Email",
+            "EMAIL": "Электронная почта",
             "FULL_NAME": "Полное имя",
             "PLACEHOLDER_FULL_NAME": "Полное имя (например, Игорь Николаев)",
             "BIO": "Биография (не более 210 символов)",
@@ -1399,10 +1520,10 @@
         "CREATE_PROJECT_TEXT": "Свежий и чистый! Так здóрово!",
         "CHOOSE_TEMPLATE": "Which template fits your project best?",
         "CHOOSE_TEMPLATE_TITLE": "More info about project templates",
-        "CHOOSE_TEMPLATE_INFO": "More info",
+        "CHOOSE_TEMPLATE_INFO": "Больше инфо",
         "PROJECT_DETAILS": "Project Details",
         "PUBLIC_PROJECT": "Public Project",
-        "PRIVATE_PROJECT": "Private Project",
+        "PRIVATE_PROJECT": "Частный проект",
         "CREATE_PROJECT": "Создать проект",
         "MAX_PRIVATE_PROJECTS": "You've reached the maximum number of private projects",
         "MAX_PUBLIC_PROJECTS": "Unfortunately, you've reached the maximum number of public projects",
@@ -1415,15 +1536,26 @@
         "PLACEHOLDER_PAGE": "Создать вики страницу",
         "REMOVE": "Удалить эту вики страницу",
         "DELETE_LIGHTBOX_TITLE": "Удалить вики страницу",
-        "DELETE_LINK_TITLE": "Delete Wiki link",
+        "DELETE_LINK_TITLE": "Удалить ссылку wiki",
         "NAVIGATION": {
-            "SECTION_NAME": "Ссылки",
-            "ACTION_ADD_LINK": "Добавить ссылку"
+            "HOME": "Главная страница",
+            "SECTION_NAME": "ЗАКЛАДКИ",
+            "ACTION_ADD_LINK": "Добавить закладку",
+            "ALL_PAGES": "All wiki pages"
         },
         "SUMMARY": {
             "TIMES_EDITED": "раз <br />отредактировано",
             "LAST_EDIT": "последняя <br/> правка",
             "LAST_MODIFICATION": "последнее изменение"
+        },
+        "SECTION_PAGES_LIST": "Все страницы",
+        "PAGES_LIST_COLUMNS": {
+            "TITLE": "Title",
+            "EDITIONS": "Editions",
+            "CREATED": "Создан",
+            "MODIFIED": "Modified",
+            "CREATOR": "Creator",
+            "LAST_MODIFIER": "Last modifier"
         }
     },
     "HINTS": {
@@ -1447,6 +1579,8 @@
         "TASK_CREATED_WITH_US": "{{username}} создал новую задачу {{obj_name}} в {{project_name}}, которая принадлежит ПИ {{us_name}}",
         "WIKI_CREATED": "{{username}} создал новую вики-страницу {{obj_name}} в {{project_name}}",
         "MILESTONE_CREATED": "{{username}} создал новый спринт {{obj_name}} в {{project_name}}",
+        "EPIC_CREATED": "{{username}} has created a new epic {{obj_name}} in {{project_name}}",
+        "EPIC_RELATED_USERSTORY_CREATED": "{{username}} has related the userstory {{related_us_name}} to the epic {{epic_name}} in {{project_name}}",
         "NEW_PROJECT": "{{username}} создал проект {{project_name}}",
         "MILESTONE_UPDATED": "{{username}} обновил спринт {{obj_name}}",
         "US_UPDATED": "{{username}} обновил атрибут \"{{field_name}}\" ПИ {{obj_name}}",
@@ -1459,9 +1593,13 @@
         "TASK_UPDATED_WITH_US": "{{username}} изменил атрибут \"{{field_name}}\" задачи {{obj_name}}, которая принадлежит ПИ {{us_name}}",
         "TASK_UPDATED_WITH_US_NEW_VALUE": "{{username}} установил атрибут \"{{field_name}}\" задачи {{obj_name}}, которая принадлежит ПИ {{us_name}}, на {{new_value}}",
         "WIKI_UPDATED": "{{username}} обновил вики-страницу {{obj_name}}",
+        "EPIC_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the epic {{obj_name}}",
+        "EPIC_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the epic {{obj_name}} to {{new_value}}",
+        "EPIC_UPDATED_WITH_NEW_COLOR": "{{username}} has updated the \"{{field_name}}\" of the epic {{obj_name}} to <span class=\"new-color\" style=\"background: {{new_value}}\"></span>",
         "NEW_COMMENT_US": "{{username}} прокомментировал ПИ {{obj_name}}",
         "NEW_COMMENT_ISSUE": "{{username}} прокомментировал запрос {{obj_name}}",
         "NEW_COMMENT_TASK": "{{username}} прокомментировал задачу {{obj_name}}",
+        "NEW_COMMENT_EPIC": "{{username}} has commented in the epic {{obj_name}}",
         "NEW_MEMBER": "У {{project_name}} появился новый участник",
         "US_ADDED_MILESTONE": "{{username}} добавил ПИ {{obj_name}} для {{sprint_name}}",
         "US_MOVED": "{{username}} переместил ПИ {{obj_name}}",

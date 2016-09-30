@@ -3,11 +3,10 @@ a.user-avatar(
     title="{{ vm.user.get('full_name_display') }}"
     ) {{ vm.user.get('full_name_display') }}
     img(
-        ng-src="{{ vm.user.get('photo') }}"
+        tg-avatar="vm.user"
         alt="{{ vm.user.get('full_name_display') }}"
-        width="48px"
         height="40px"
-        )
+    )
 
 div.navbar-dropdown.dropdown-user
     ul

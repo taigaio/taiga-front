@@ -81,6 +81,7 @@ urls = {
     "project-transfer-start": "/projects/%s/transfer_start"
 
     # Project Values - Choises
+    "epic-statuses": "/epic-statuses"
     "userstory-statuses": "/userstory-statuses"
     "points": "/points"
     "task-statuses": "/task-statuses"
@@ -92,11 +93,21 @@ urls = {
     # Milestones/Sprints
     "milestones": "/milestones"
 
+    # Epics
+    "epics": "/epics"
+    "epic-upvote": "/epics/%s/upvote"
+    "epic-downvote": "/epics/%s/downvote"
+    "epic-watch": "/epics/%s/watch"
+    "epic-unwatch": "/epics/%s/unwatch"
+    "epic-related-userstories": "/epics/%s/related_userstories"
+    "epic-related-userstories-bulk-create": "/epics/%s/related_userstories/bulk_create"
+
     # User stories
     "userstories": "/userstories"
     "bulk-create-us": "/userstories/bulk_create"
     "bulk-update-us-backlog-order": "/userstories/bulk_update_backlog_order"
-    "bulk-update-us-sprint-order": "/userstories/bulk_update_sprint_order"
+    "bulk-update-us-milestone": "/userstories/bulk_update_milestone"
+    "bulk-update-us-miles-order": "/userstories/bulk_update_sprint_order"
     "bulk-update-us-kanban-order": "/userstories/bulk_update_kanban_order"
     "userstories-filters": "/userstories/filters_data"
     "userstory-upvote": "/userstories/%s/upvote"
@@ -112,6 +123,7 @@ urls = {
     "task-downvote": "/tasks/%s/downvote"
     "task-watch": "/tasks/%s/watch"
     "task-unwatch": "/tasks/%s/unwatch"
+    "task-filters": "/tasks/filters_data"
 
     # Issues
     "issues": "/issues"
@@ -128,26 +140,30 @@ urls = {
     "wiki-links": "/wiki-links"
 
     # History
+    "history/epic": "/history/epic"
     "history/us": "/history/userstory"
     "history/issue": "/history/issue"
     "history/task": "/history/task"
-    "history/wiki": "/history/wiki"
+    "history/wiki": "/history/wiki/%s"
 
     # Attachments
+    "attachments/epic": "/epics/attachments"
     "attachments/us": "/userstories/attachments"
     "attachments/issue": "/issues/attachments"
     "attachments/task": "/tasks/attachments"
     "attachments/wiki_page": "/wiki/attachments"
 
     # Custom Attributess
+    "custom-attributes/epic": "/epic-custom-attributes"
     "custom-attributes/userstory": "/userstory-custom-attributes"
-    "custom-attributes/issue": "/issue-custom-attributes"
     "custom-attributes/task": "/task-custom-attributes"
+    "custom-attributes/issue": "/issue-custom-attributes"
 
     # Custom Attributess - Values
+    "custom-attributes-values/epic": "/epics/custom-attributes-values"
     "custom-attributes-values/userstory": "/userstories/custom-attributes-values"
-    "custom-attributes-values/issue": "/issues/custom-attributes-values"
     "custom-attributes-values/task": "/tasks/custom-attributes-values"
+    "custom-attributes-values/issue": "/issues/custom-attributes-values"
 
     # Webhooks
     "webhooks": "/webhooks"
@@ -156,6 +172,7 @@ urls = {
     "webhooklogs-resend": "/webhooklogs/%s/resend"
 
     # Reports - CSV
+    "epics-csv": "/epics/csv?uuid=%s"
     "userstories-csv": "/userstories/csv?uuid=%s"
     "tasks-csv": "/tasks/csv?uuid=%s"
     "issues-csv": "/issues/csv?uuid=%s"
@@ -217,6 +234,7 @@ module.run([
     "$tgRolesResourcesProvider",
     "$tgUserSettingsResourcesProvider",
     "$tgSprintsResourcesProvider",
+    "$tgEpicsResourcesProvider",
     "$tgUserstoriesResourcesProvider",
     "$tgTasksResourcesProvider",
     "$tgIssuesResourcesProvider",

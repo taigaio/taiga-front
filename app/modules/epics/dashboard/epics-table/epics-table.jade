@@ -1,0 +1,97 @@
+mixin epicSwitch(name, model)
+    div.check
+        input.activate-input(
+            id= name
+            name= name
+            type="checkbox"
+            ng-checked= model
+            ng-model= model
+        )
+        div
+        span.check-text.check-yes(translate="COMMON.YES")
+        span.check-text.check-no(translate="COMMON.NO")
+
+.epics-table.e2e-epic-table
+    .epics-table-header.e2e-epics-table-header
+        .vote(
+            translate="EPICS.TABLE.VOTES"
+            ng-if="vm.column.votes"
+        )
+        .name(
+            translate="EPICS.TABLE.NAME"
+        )
+        .project(
+            translate="EPICS.TABLE.PROJECT"
+            ng-if="vm.column.project"
+        )
+        .sprint(
+            translate="EPICS.TABLE.SPRINT"
+            ng-if="vm.column.sprint"
+        )
+        .assigned(
+            translate="EPICS.TABLE.ASSIGNED_TO"
+            ng-if="vm.column.assigned"
+        )
+        .status(
+            translate="EPICS.TABLE.STATUS"
+            ng-if="vm.column.status"
+        )
+        .progress(
+            translate="EPICS.TABLE.PROGRESS"
+            ng-if="vm.column.progress"
+        )
+        .epics-table-options-wrapper(
+            ng-mouseleave="vm.hideEpicTableOption()"
+        )
+            button.epics-table-option-button.e2e-epics-column-button(ng-click="vm.displayOptions = true")
+                span(translate="EPICS.TABLE.VIEW_OPTIONS")
+                tg-svg(svg-icon="icon-arrow-down")
+            form.epics-table-dropdown.e2e-epics-column-dropdown(
+                ng-show="vm.displayOptions"
+                ng-mouseenter="vm.keepEpicTableOption()"
+            )
+                .fieldset
+                    label.epics-table-options-vote(
+                        translate="EPICS.TABLE.VOTES"
+                        for="epicSwitch-votes"
+                    )
+                    +epicSwitch('switch-votes', 'vm.column.votes')
+                .fieldset
+                    label.epics-table-options-vote(
+                        translate="EPICS.TABLE.PROJECT"
+                        for="switch-project"
+                    )
+                    +epicSwitch('switch-project', 'vm.column.project')
+                .fieldset
+                    label.epics-table-options-vote(
+                        translate="EPICS.TABLE.SPRINT"
+                        for="switch-sprint"
+                    )
+                    +epicSwitch('switch-sprint', 'vm.column.sprint')
+                .fieldset
+                    label.epics-table-options-vote(
+                        translate="EPICS.TABLE.ASSIGNED_TO"
+                        for="switch-assigned"
+                    )
+                    +epicSwitch('switch-assigned', 'vm.column.assigned')
+                .fieldset
+                    label.epics-table-options-vote(
+                        translate="EPICS.TABLE.STATUS"
+                        for="switch-status"
+                    )
+                    +epicSwitch('switch-status', 'vm.column.status')
+                .fieldset
+                    label.epics-table-options-vote(
+                        translate="EPICS.TABLE.PROGRESS"
+                        for="switch-progress"
+                    )
+                    +epicSwitch('switch-progress', 'vm.column.progress')
+    .epics-table-body(tg-epics-sortable="vm.reorderEpic(epic, newIndex)")
+        .epics-table-body-row(
+            tg-repeat="epic in vm.epics track by epic.get('id')"
+            tg-bind-scope
+        )
+            tg-epic-row.e2e-epic(
+                epic="epic"
+                column="vm.column"
+            )

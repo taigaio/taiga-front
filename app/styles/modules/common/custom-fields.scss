@@ -4,7 +4,7 @@
         @include font-type(bold);
         align-content: space-between;
         align-items: center;
-        background: $whitish;
+        background: $mass-white;
         display: flex;
         justify-content: space-between;
         padding: .5rem 1rem;
@@ -13,10 +13,12 @@
         }
         .collapse {
             display: block;
+            transform: rotate(-90deg);
+            transition: .1s ease-out;
         }
-    }
-    .custom-fields-body {
-        @include slide(1000px, hidden, $min: 0);
+        .open {
+            transform: rotate(0);
+        }
     }
     .custom-field-single {
         border-bottom: 1px solid $whitish;

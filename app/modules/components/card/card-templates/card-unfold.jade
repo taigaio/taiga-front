@@ -1,0 +1,6 @@
+.card-unfold.ng-animate-disabled(
+    ng-click="vm.toggleFold()"
+    ng-if="vm.visible('unfold') && (vm.item.getIn(['model', 'tasks']).size || vm.item.get('images').size)"
+    role="button"
+)
+    tg-svg(svg-icon="icon-view-more")

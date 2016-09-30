@@ -176,41 +176,82 @@ common.prepare = function() {
 
 common.dragEnd = function(elm) {
     return browser.wait(async function() {
-        let count = await $$('.ui-sortable-helper').count();
+        let count = await $$('.gu-mirror').count();
 
         return count === 0;
-    }, 1000);
+    }, 5000);
 };
 
-common.drag = async function(elm, elm2, offset) {
-    // this code doesn't have sense (jquery ui + scroll drag + selenium = :( )
-    await browser.actions()
-        .mouseMove(elm)
-        .mouseDown()
-        .perform();
+common.drag = async function(elm, elm2, extrax = 0, extray = 0) {
+    var drag = `
+        var drag = arguments[0].origin;
+        var dest = arguments[0].dest;
+        var extrax = arguments[0].extrax;
+        var extray = arguments[0].extray;
 
-    await browser.actions()
-        .mouseMove(elm2, offset)
-        .perform();
+        function isScrolledIntoView(el) {
+            var elemTop = el.getBoundingClientRect().top;
+            var elemBottom = el.getBoundingClientRect().bottom;
 
-    await browser.sleep(60);
+            var isVisible = (elemTop >= 0) && (elemBottom <= window.innerHeight);
+            return isVisible;
+        }
 
-    await browser.actions()
-        .mouseMove({x: 10, y: -10}) // fire jqueryui mousemove event always
-        .perform();
+        function triggerMouseEvent (node, eventType, opts) {
+            var event = new CustomEvent(eventType);
+            event.initEvent (eventType, true, true);
 
-    await browser.sleep(60);
+            if(opts && opts.cords) {
+                event.pageX = opts.cords.x;
+                event.clientX = opts.cords.x;
+                event.pageY = opts.cords.y;
+                event.clientY = opts.cords.y - window.pageYOffset;
+                dest.scrollIntoView();
+            }
 
-    await browser.actions()
-        .mouseMove({x: -10, y: 10})
-        .perform();
+            event.which = 1;
 
-    await browser.sleep(60);
+            node.dispatchEvent(event);
+        }
 
-    return browser.actions()
-        .mouseUp()
-        .perform()
-        .then(common.dragEnd);
+        if (!isScrolledIntoView(drag)) {
+            drag.scrollIntoView();
+        }
+
+        triggerMouseEvent(drag, "mousedown");
+
+        triggerMouseEvent(document.documentElement, "mousemove", {
+            cords: {
+                x: $(dest).offset().left + extrax,
+                y: $(dest).offset().top + extray
+            }
+        });
+
+        if (!isScrolledIntoView(dest)) {
+            dest.scrollIntoView();
+        }
+
+        triggerMouseEvent(document.documentElement, "mousemove", {
+            cords: {
+                x: $(dest).offset().left + extrax,
+                y: $(dest).offset().top + extray
+            }
+        });
+
+        triggerMouseEvent(document.documentElement, "mouseup", {
+            cords: {
+                x: $(dest).offset().left + extrax,
+                y: $(dest).offset().top + extray
+            }
+        });
+    `;
+
+    return browser.executeScript(drag, {
+        origin: elm.getWebElement(),
+        dest: elm2.getWebElement(),
+        extrax: extrax,
+        extray: extray
+    }).then(common.dragEnd);
 };
 
 common.transitionend = function(selector, property) {

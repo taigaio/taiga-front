@@ -21,10 +21,13 @@ describe('wiki', function() {
     });
 
     it('add link', async function(){
+        let linkText = "Test link" + new Date().getTime();
+        await wikiHelper.links().addLink(linkText);
+
         let timestamp = new Date().getTime();
         currentWiki.slug = "test-link" + timestamp;
 
-        let linkText = "Test link" + timestamp;
+        linkText = "Test link" + timestamp;
         currentWiki.link = await wikiHelper.links().addLink(linkText);
     });
 
@@ -45,6 +48,17 @@ describe('wiki', function() {
         expect(url).to.be.equal(browser.params.glob.host + 'project/project-0/wiki/' + currentWiki.slug);
     });
 
+    utils.common.browserSkip('internet explorer', "drag & drop links", async function() {
+        let nameOld = await wikiHelper.links().getNameOf(0);
+
+        await wikiHelper.dragAndDropLinks(0, 1);
+
+        let nameNew = await wikiHelper.links().getNameOf(0);
+
+        expect(nameNew).to.be.equal(nameOld);
+
+    });
+
     it('remove link', async function() {
         wikiHelper.links().deleteLink(currentWiki.link);
         await utils.common.takeScreenshot("wiki", "deleting-the-created-link");
@@ -60,6 +74,7 @@ describe('wiki', function() {
         //preview
         wikiHelper.editor().preview();
         await utils.common.takeScreenshot("wiki", "home-edition-preview");
+        wikiHelper.editor().closePreview();
 
         //save
         wikiHelper.editor().save();
@@ -72,6 +87,28 @@ describe('wiki', function() {
         expect(newLastEditionDatetime).to.be.not.equal(lastEditionDatetime);
 
         await utils.common.takeScreenshot("wiki", "home-edition");
+    });
+
+    it('confirm close with ESC in lightbox', async function() {
+        wikiHelper.editor().enabledEditionMode();
+
+        browser.actions().sendKeys(protractor.Key.ESCAPE).perform();
+
+        await utils.lightbox.confirm.cancel();
+
+        let descriptionVisibility = await $('.view-wiki-content').isDisplayed();
+
+        expect(descriptionVisibility).to.be.false;
+
+        wikiHelper.editor().focus();
+
+        browser.actions().sendKeys(protractor.Key.ESCAPE).perform();
+
+        await utils.lightbox.confirm.ok();
+
+        descriptionVisibility = await $('.view-wiki-content').isDisplayed();
+
+        expect(descriptionVisibility).to.be.true;
     });
 
     it('attachments', sharedDetail.attachmentTesting);

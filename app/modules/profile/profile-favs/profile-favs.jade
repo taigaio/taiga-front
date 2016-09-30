@@ -28,6 +28,14 @@ section.profile-favs
             )
             a(
                 href=""
+                ng-if="::vm.enableFilterByEpics"
+                ng-click="vm.showEpicsOnly()"
+                ng-class="{active: vm.type === 'epic'}"
+                title="{{ 'USER.PROFILE_FAVS.FILTER_TYPE_EPICS_TITLE'|translate }}"
+                translate="{{ 'USER.PROFILE_FAVS.FILTER_TYPE_EPICS'|translate }}"
+            )
+            a(
+                href=""
                 ng-if="::vm.enableFilterByUserStories"
                 ng-click="vm.showUserStoriesOnly()"
                 ng-class="{active: vm.type === 'userstory'}",
@@ -65,6 +73,11 @@ section.profile-favs
                 item-type="project"
             )
             div(
+                ng-switch-when="epic"
+                tg-fav-item="item"
+                item-type="epic"
+            )
+            div(
                 ng-switch-when="userstory"
                 tg-fav-item="item"
                 item-type="userstory"
@@ -87,9 +100,20 @@ section.profile-favs
                 alt="{{ 'COMMON.LOADING'|translate }}"
             )
 
-    .empty-search-results(ng-if="vm.hasNoResults && !vm.isLoading")
+    .empty-small(ng-if="vm.hasNoResults && !vm.isLoading")
         img(
-            src="/#{v}/images/search-empty.png"
+            ng-if="vm.tabName === 'likes'"
+            src="/#{v}/images/empty/empty_like.png"
+            alt="{{ 'USER.PROFILE_FAVS.EMPTY_TITLE' | translate }}"
+        )
+        img(
+            ng-if="vm.tabName === 'upvotes'"
+            src="/#{v}/images/empty/empty_upvote.png"
+            alt="{{ 'USER.PROFILE_FAVS.EMPTY_TITLE' | translate }}"
+        )
+        img(
+            ng-if="vm.tabName === 'watchers'"
+            src="/#{v}/images/empty/empty_watch.png"
             alt="{{ 'USER.PROFILE_FAVS.EMPTY_TITLE' | translate }}"
         )
         p.title {{ 'USER.PROFILE_FAVS.EMPTY_TITLE' | translate }}

@@ -78,6 +78,7 @@ paths.modulesLocales = paths.app + "modules/**/locales/*.json";
 
 paths.sass = [
     paths.app + "**/*.scss",
+    "!" + paths.app + "**/*.mixin.scss",
     "!" + paths.app + "styles/bourbon/**/*.scss",
     "!" + paths.app + "styles/dependencies/**/*.scss",
     "!" + paths.app + "styles/extras/**/*.scss",
@@ -129,6 +130,7 @@ paths.coffee_order = [
     paths.app + "coffee/modules/backlog/*.coffee",
     paths.app + "coffee/modules/taskboard/*.coffee",
     paths.app + "coffee/modules/kanban/*.coffee",
+    paths.app + "coffee/modules/epics/*.coffee",
     paths.app + "coffee/modules/issues/*.coffee",
     paths.app + "coffee/modules/userstories/*.coffee",
     paths.app + "coffee/modules/tasks/*.coffee",
@@ -290,7 +292,11 @@ gulp.task("css-lint-app", function() {
     return gulp.src(cssFiles)
         .pipe(gulpif(!isDeploy, cache(csslint("csslintrc.json"), {
           success: function(csslintFile) {
-            return csslintFile.csslint.success;
+              if (csslintFile.csslint) {
+                  return csslintFile.csslint.success;
+              } else {
+                  return false;
+              }
           },
           value: function(csslintFile) {
             return {
@@ -353,6 +359,14 @@ gulp.task("compile-themes", function(cb) {
 });
 
 gulp.task("styles", function(cb) {
+    return runSequence("scss-lint",
+                       "sass-compile",
+                       ["app-css", "vendor-css"],
+                       "main-css",
+                       cb);
+});
+
+gulp.task("styles-lint", function(cb) {
     return runSequence("scss-lint",
                        "sass-compile",
                        "css-lint-app",
@@ -588,7 +602,7 @@ gulp.task("watch", function() {
     livereload.listen();
 
     gulp.watch(paths.jade, ["jade-watch"]);
-    gulp.watch(paths.sass_watch, ["styles"]);
+    gulp.watch(paths.sass_watch, ["styles-lint"]);
     gulp.watch(paths.styles_dependencies, ["styles-dependencies"]);
     gulp.watch(paths.svg, ["copy-svg"]);
     gulp.watch(paths.coffee, ["app-watch"]);

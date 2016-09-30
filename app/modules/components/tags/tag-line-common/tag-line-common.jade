@@ -1,0 +1,26 @@
+.tags-container
+    .tag(
+        ng-if="tag[1] && !vm.disableColorSelection"
+        ng-repeat="tag in vm.tags"
+        ng-style="{'border-left': '.3rem solid' + tag[1]}"
+    )
+        tg-tag(
+            tag="tag"
+            loading-remove-tag="vm.loadingRemoveTag"
+            project="vm.project"
+            on-delete-tag="vm.onDeleteTag({tag: tag})"
+            has-permissions="{{vm.checkPermissions()}}"
+        )
+    .tag(
+        ng-if="!tag[1] || vm.disableColorSelection"
+        ng-repeat="tag in vm.tags"
+    )
+        tg-tag(
+            tag="tag"
+            loading-remove-tag="vm.loadingRemoveTag"
+            on-delete-tag="vm.onDeleteTag({tag: tag})"
+            has-permissions="{{vm.checkPermissions()}}"
+        )
+
+include ../components/add-tag-button
+include ../components/add-tag-input

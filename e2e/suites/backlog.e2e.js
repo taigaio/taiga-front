@@ -5,8 +5,11 @@ var commonHelper = require('../helpers').common;
 var chai = require('chai');
 var chaiAsPromised = require('chai-as-promised');
 
+var sharedFilters = require('../shared/filters');
+
 chai.use(chaiAsPromised);
 var expect = chai.expect;
+
 
 describe('backlog', function() {
     before(async function() {
@@ -47,11 +50,7 @@ describe('backlog', function() {
             createUSLightbox.status(2).click();
 
             // tags
-            createUSLightbox.tags().sendKeys('aaa');
-            browser.actions().sendKeys(protractor.Key.ENTER).perform();
-
-            createUSLightbox.tags().sendKeys('bbb');
-            browser.actions().sendKeys(protractor.Key.ENTER).perform();
+            commonHelper.tags();
 
             // description
             createUSLightbox.description().sendKeys('test test');
@@ -144,11 +143,7 @@ describe('backlog', function() {
             editUSLightbox.status(3).click();
 
             // tags
-            editUSLightbox.tags().sendKeys('www');
-            browser.actions().sendKeys(protractor.Key.ENTER).perform();
-
-            editUSLightbox.tags().sendKeys('xxx');
-            browser.actions().sendKeys(protractor.Key.ENTER).perform();
+            editUSLightbox.tags();
 
             // description
             editUSLightbox.description().sendKeys('test test test test');
@@ -165,6 +160,7 @@ describe('backlog', function() {
             await editUSLightbox.waitClose();
         });
     });
+
 
     it('edit status inline', async function() {
         await backlogHelper.setUsStatus(0, 1);
@@ -199,12 +195,13 @@ describe('backlog', function() {
         expect(newUsCount).to.be.equal(usCount - 1);
     });
 
-    it.skip('drag backlog us', async function() {
+    it('drag backlog us', async function() {
         let dragableElements = backlogHelper.userStories();
 
-        let dragElement = dragableElements.get(1);
+        let dragElement = dragableElements.get(4);
         let dragElementHandler = dragElement.$('.icon-drag');
         let draggedElementRef = await backlogHelper.getUsRef(dragElement);
+
 
         await utils.common.drag(dragElementHandler, dragableElements.get(0));
         await browser.waitForAngular();
@@ -214,7 +211,7 @@ describe('backlog', function() {
         expect(firstElementTextRef).to.be.equal(draggedElementRef);
     });
 
-    it.skip('reorder multiple us', async function() {
+    it('reorder multiple us', async function() {
         let dragableElements = backlogHelper.userStories();
 
         let count = await dragableElements.count();
@@ -233,8 +230,7 @@ describe('backlog', function() {
         let ref2 = await backlogHelper.getUsRef(dragElement);
         draggedRefs.push(await backlogHelper.getUsRef(dragElement));
 
-        await utils.common.drag(dragElement, dragableElements.get(0));
-        await browser.sleep(200);
+        await utils.common.drag(dragElement.$('.icon-drag'), dragableElements.get(0));
 
         let elementRef1 = await backlogHelper.getUsRef(dragableElements.get(0));
         let elementRef2 = await backlogHelper.getUsRef(dragableElements.get(1));
@@ -243,7 +239,7 @@ describe('backlog', function() {
         expect(elementRef1).to.be.equal(draggedRefs[1]);
     });
 
-    it.skip('drag multiple us to milestone', async function() {
+    it('drag multiple us to milestone', async function() {
         let sprint = backlogHelper.sprints().get(0);
         let initUssSprintCount = await backlogHelper.getSprintUsertories(sprint).count();
 
@@ -256,7 +252,7 @@ describe('backlog', function() {
         let dragElement = dragableElements.get(0);
         let dragElementHandler = dragElement.$('.icon-drag');
 
-        await utils.common.drag(dragElementHandler, sprint);
+        await utils.common.drag(dragElementHandler, sprint.$('.sprint-table'));
         await browser.waitForAngular();
 
         let ussSprintCount = await backlogHelper.getSprintUsertories(sprint).count();
@@ -264,8 +260,8 @@ describe('backlog', function() {
         expect(ussSprintCount).to.be.equal(initUssSprintCount + 2);
     });
 
-    it.skip('drag us to milestone', async function() {
-        let sprint = backlogHelper.sprints().get(0);
+    it('drag us to milestone', async function() {
+        let sprint = backlogHelper.sprints().get(0).$('.sprint-table');
 
         let dragableElements = backlogHelper.userStories();
         let dragElement = dragableElements.get(0);
@@ -283,7 +279,7 @@ describe('backlog', function() {
         expect(ussSprintCount).to.be.equal(initUssSprintCount + 1);
     });
 
-    it('move to current sprint button', async function() {
+    it('move to lastest sprint button', async function() {
         let dragElement = backlogHelper.userStories().first();
 
         dragElement.$('input[type="checkbox"]').click();
@@ -292,7 +288,7 @@ describe('backlog', function() {
 
         let htmlChanges = await utils.common.outerHtmlChanges('.backlog-table-body');
 
-        $('#move-to-current-sprint').click();
+        $('.e2e-move-to-sprint').click();
 
         await htmlChanges();
 
@@ -303,7 +299,7 @@ describe('backlog', function() {
         expect(sprintRefs.indexOf(draggedRef)).to.be.not.equal(-1);
     });
 
-    it.skip('reorder milestone us', async function() {
+    it('reorder milestone us', async function() {
         let sprint = backlogHelper.sprints().get(0);
         let dragableElements = backlogHelper.getSprintUsertories(sprint);
 
@@ -318,7 +314,7 @@ describe('backlog', function() {
         expect(firstElementRef).to.be.equal(firstElementRef);
     });
 
-    it.skip('drag us from milestone to milestone', async function() {
+    it('drag us from milestone to milestone', async function() {
         let sprint1 = backlogHelper.sprints().get(0);
         let sprint2 = backlogHelper.sprints().get(1);
 
@@ -326,7 +322,7 @@ describe('backlog', function() {
 
         let dragElement = backlogHelper.getSprintUsertories(sprint1).get(0);
 
-        await utils.common.drag(dragElement, sprint2);
+        await utils.common.drag(dragElement, sprint2.$('.sprint-table'));
         await browser.waitForAngular();
 
         let firstElement = backlogHelper.getSprintUsertories(sprint2).get(0);
@@ -453,143 +449,9 @@ describe('backlog', function() {
         });
     });
 
-    describe('filters', function() {
-        it('show filters', async function() {
-            let transition = utils.common.transitionend('.menu-secondary.filters-bar', 'opacity');
-
-            $('#show-filters-button').click();
-
-            await transition();
-
-            utils.common.takeScreenshot('backlog', 'backlog-filters');
-        });
-
-        it('filter by subject', async function() {
-            let usCount = await backlogHelper.userStories().count();
-            let filterQ = element(by.model('filtersQ'));
-
-            let htmlChanges = await utils.common.outerHtmlChanges('.backlog-table-body');
-
-            await filterQ.sendKeys('add');
-
-            await htmlChanges();
-
-            let newUsCount = await backlogHelper.userStories().count();
-
-            expect(newUsCount).to.be.below(usCount);
-
-            htmlChanges = await utils.common.outerHtmlChanges('.backlog-table-body');
-
-            // clear status
-            await filterQ.clear();
-
-            await htmlChanges();
-        });
-
-        it('filter by ref', async function() {
-            let userstories = backlogHelper.userStories();
-            let filterQ = element(by.model('filtersQ'));
-            let htmlChanges = await utils.common.outerHtmlChanges('.backlog-table-body');
-
-            let ref = await backlogHelper.getTestingFilterRef();
-
-            ref = ref.replace('#', '');
-
-            await filterQ.sendKeys(ref);
-            await htmlChanges();
-
-            let newUsCount = await userstories.count();
-            expect(newUsCount).to.be.equal(1);
-
-            htmlChanges = await utils.common.outerHtmlChanges('.backlog-table-body');
-
-            // clear status
-            await filterQ.clear();
-
-            await htmlChanges();
-        });
-
-        it('filter by status', async function() {
-            let usCount = await backlogHelper.userStories().count();
-
-            let htmlChanges = await utils.common.outerHtmlChanges('.backlog-table-body');
-
-            $$('.filters-cats a').first().click();
-            $$('.filter-list a').first().click();
-
-            await htmlChanges();
-
-            let newUsCount = await backlogHelper.userStories().count();
-
-            expect(newUsCount).to.be.below(usCount);
-
-            //remove status
-            htmlChanges = await utils.common.outerHtmlChanges('.backlog-table-body');
-
-            $$('.filters-applied a').first().click();
-
-            await htmlChanges();
-
-            newUsCount = await backlogHelper.userStories().count();
-
-            expect(newUsCount).to.be.equal(usCount);
-
-            backlogHelper.goBackFilters();
-        });
-
-        it('filter by tags', async function() {
-            let usCount = await backlogHelper.userStories().count();
-            let htmlChanges = await utils.common.outerHtmlChanges('.backlog-table-body');
-
-            $$('.filters-cats a').get(1).click();
-            await browser.waitForAngular();
-
-            $$('.filter-list a').first().click();
-
-            await htmlChanges();
-
-            let newUsCount = await backlogHelper.userStories().count();
-
-            expect(newUsCount).to.be.below(usCount);
-
-            //remove tags
-            htmlChanges = await utils.common.outerHtmlChanges('.backlog-table-body');
-
-            $$('.filters-applied a').first().click();
-
-            await htmlChanges();
-
-            newUsCount = await backlogHelper.userStories().count();
-
-            expect(newUsCount).to.be.equal(usCount);
-        });
-
-        it('trying drag with filters open', async function() {
-            let dragableElements =  backlogHelper.userStories();
-            let dragElement = dragableElements.get(5);
-
-            await utils.common.drag(dragElement, dragableElements.get(0));
-
-            let waitErrorOpen = await utils.notifications.error.open();
-
-            expect(waitErrorOpen).to.be.true;
-
-            await utils.notifications.error.close();
-        });
-
-        it('hide filters', async function() {
-            let menu = $('.menu-secondary.filters-bar');
-            let transition = utils.common.transitionend('.menu-secondary.filters-bar', 'width');
-
-            $('#show-filters-button').click();
-
-            await transition();
-
-            let waitWidth = await menu.getCssValue('width');
-
-            expect(waitWidth).to.be.equal('0px');
-        });
-    });
+    describe('backlog filters', sharedFilters.bind(this, 'backlog', () => {
+        return backlogHelper.userStories().count();
+    }));
 
     describe('closed sprints', function() {
         async function createEmptyMilestone() {
@@ -606,12 +468,29 @@ describe('backlog', function() {
         }
 
         async function dragClosedUsToMilestone() {
-            await backlogHelper.setUsStatus(2, 5);
+            //create us
+            backlogHelper.openNewUs();
 
-            let dragElement =  backlogHelper.userStories().get(2);
+            let createUSLightbox = backlogHelper.getCreateEditUsLightbox();
+
+            await createUSLightbox.waitOpen();
+
+            createUSLightbox.subject().sendKeys('subject');
+
+            //closed status
+            createUSLightbox.status(5).click();
+
+            createUSLightbox.submit();
+
+            await utils.lightbox.close(createUSLightbox.el);
+
+            await backlogHelper.loadFullBacklog();
+
+            // drag us to milestone
+            let dragElement =  backlogHelper.userStories().last();
             let dragElementHandler = dragElement.$('.icon-drag');
 
-            let sprint = backlogHelper.sprints().last();
+            let sprint = backlogHelper.getClosedSprintTable();
             await utils.common.drag(dragElementHandler, sprint);
 
             return browser.waitForAngular();
@@ -638,21 +517,24 @@ describe('backlog', function() {
             expect(closedSprints).to.be.equal(0);
         });
 
-        it.skip('open sprint by drag open US to closed sprint', async function() {
+        it('open sprint by drag open US to closed sprint', async function() {
             backlogHelper.toggleClosedSprints();
 
-            await backlogHelper.setUsStatus(1, 0);
+            await backlogHelper.setUsStatus(1, 1);
 
-            let dragElement =  backlogHelper.userStories().get(0);
+            let dragElement =  backlogHelper.userStories().get(1);
             let dragElementHandler = dragElement.$('.icon-drag');
 
             let sprint = backlogHelper.sprints().last();
-            await utils.common.drag(dragElementHandler, sprint);
+
+            await backlogHelper.toggleSprint(sprint);
+
+            await utils.common.drag(dragElementHandler, sprint.$('.sprint-table'));
             await browser.waitForAngular();
 
-            let closedSprints = await backlogHelper.closedSprints().count();
+            let closedSprints = await $('.filter-closed-sprints').isPresent();
 
-            expect(closedSprints).to.be.equal(0);
+            expect(closedSprints).to.be.false;
         });
     });
 });

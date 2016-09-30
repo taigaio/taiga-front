@@ -28,6 +28,7 @@ class FavsBaseController
     _init: ->
         @.enableFilterByAll = true
         @.enableFilterByProjects = true
+        @.enableFilterByEpics = true
         @.enableFilterByUserStories = true
         @.enableFilterByTasks = true
         @.enableFilterByIssues = true
@@ -101,6 +102,12 @@ class FavsBaseController
             @._resetList()
             @.loadItems()
 
+    showEpicsOnly: ->
+        if @.type isnt "epic"
+            @.type = "epic"
+            @._resetList()
+            @.loadItems()
+
     showUserStoriesOnly: ->
         if @.type isnt "userstory"
             @.type = "userstory"
@@ -131,8 +138,10 @@ class ProfileLikedController extends FavsBaseController
 
     constructor: (@userService) ->
         super()
+        @.tabName = 'likes'
         @.enableFilterByAll = false
         @.enableFilterByProjects = false
+        @.enableFilterByEpics = false
         @.enableFilterByUserStories = false
         @.enableFilterByTasks = false
         @.enableFilterByIssues = false
@@ -154,8 +163,10 @@ class ProfileVotedController extends FavsBaseController
 
     constructor: (@userService) ->
         super()
+        @.tabName = 'upvotes'
         @.enableFilterByAll = true
         @.enableFilterByProjects = false
+        @.enableFilterByEpics = true
         @.enableFilterByUserStories = true
         @.enableFilterByTasks = true
         @.enableFilterByIssues = true
@@ -179,6 +190,7 @@ class ProfileWatchedController extends FavsBaseController
 
     constructor: (@userService) ->
         super()
+        @.tabName = 'watchers'
         @._getItems = @userService.getWatched
 
 

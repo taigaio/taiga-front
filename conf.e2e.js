@@ -2,8 +2,9 @@ require("babel-register");
 require("babel-polyfill");
 
 var utils = require('./e2e/utils');
+var argv = require('minimist')(process.argv.slice(2));
 
-exports.config = {
+var config = {
     seleniumAddress: 'http://localhost:4444/wd/hub',
     framework: 'mocha',
     params: {
@@ -37,6 +38,7 @@ exports.config = {
         issues: "e2e/suites/issues/*.e2e.js",
         tasks: "e2e/suites/tasks/*.e2e.js",
         userProfile: "e2e/suites/user-profile/*.e2e.js",
+        epics: "e2e/suites/epics/*.e2e.js",
         userStories: "e2e/suites/user-stories/*.e2e.js",
         backlog: "e2e/suites/backlog.e2e.js",
         home: "e2e/suites/home.e2e.js",
@@ -101,8 +103,6 @@ exports.config = {
         // };
         // browser.addMockModule('trackMouse', trackMouse);
 
-        var argv = require('minimist')(process.argv.slice(2));
-
         browser.params.glob.back = argv.back;
 
         require('./e2e/capabilities.js');
@@ -140,4 +140,53 @@ exports.config = {
             return browser.get(browser.params.glob.host);
         });
     }
+};
+
+
+if (argv.json) {
+    var fs = require('fs');
+    var dir = './e2e/reports';
+
+    if (!fs.existsSync(dir)){
+        fs.mkdirSync(dir);
+    }
+
+    var suites = argv.suite.split(',').join('-');
+
+    var reportFileName = 'report-' + suites + '-chrome.json';
+
+    if (argv.firefox) {
+        reportFileName = 'report-' + suites + '-firefox.json';
+    } else if (argv.ie) {
+        reportFileName = 'report-' + suites + '-ie.json';
+    }
+
+    process.env['MOCHA_REPORTER'] = 'JSON';
+    process.env['MOCHA_REPORTER_FILE'] = 'e2e/reports/' + reportFileName;
+
+    config.mochaOpts.reporter = 'reporter-file';
 }
+
+if (argv.firefox) {
+    config.capabilities = {
+         browserName: 'firefox'
+    };
+}
+
+if (argv.ie) {
+    config.capabilities = {
+         browserName: 'internet explorer',
+         version: '11'
+    };
+}
+
+if (argv.seleniumAddress) {
+    config.seleniumAddress = argv.seleniumAddress;
+}
+
+
+if (argv.host) {
+    config.params.glob.host = argv.host;
+}
+
+exports.config = config;

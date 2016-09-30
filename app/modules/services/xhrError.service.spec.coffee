@@ -28,20 +28,14 @@ describe "tgXhrErrorService", ->
 
         provide.value "$q", mocks.q
 
-    _mockLocation = () ->
-        mocks.location = {
-            path: sinon.spy(),
-            replace: sinon.spy()
+
+    _mockErrorHandling = () ->
+        mocks.errorHandling = {
+            notfound: sinon.stub(),
+            permissionDenied: sinon.stub()
         }
 
-        provide.value "$location", mocks.location
-
-    _mockNavUrls = () ->
-        mocks.navUrls = {
-            resolve: sinon.stub()
-        }
-
-        provide.value "$tgNavUrls", mocks.navUrls
+        provide.value "tgErrorHandlingService", mocks.errorHandling
 
     _inject = (callback) ->
         inject (_tgXhrErrorService_) ->
@@ -52,8 +46,7 @@ describe "tgXhrErrorService", ->
         module ($provide) ->
             provide = $provide
             _mockQ()
-            _mockLocation()
-            _mockNavUrls()
+            _mockErrorHandling()
 
             return null
 
@@ -70,23 +63,17 @@ describe "tgXhrErrorService", ->
             status: 404
         }
 
-        mocks.navUrls.resolve.withArgs("not-found").returns("not-found")
-
         xhrErrorService.response(xhr)
 
         expect(mocks.q.reject.withArgs(xhr)).to.be.calledOnce
-        expect(mocks.location.path.withArgs("not-found")).to.be.calledOnce
-        expect(mocks.location.replace).to.be.calledOnce
+        expect(mocks.errorHandling.notfound).to.be.calledOnce
 
     it "403 status redirect to permission-denied page", () ->
         xhr = {
             status: 403
         }
 
-        mocks.navUrls.resolve.withArgs("permission-denied").returns("permission-denied")
-
         xhrErrorService.response(xhr)
 
         expect(mocks.q.reject.withArgs(xhr)).to.be.calledOnce
-        expect(mocks.location.path.withArgs("permission-denied")).to.be.calledOnce
-        expect(mocks.location.replace).to.be.calledOnce
+        expect(mocks.errorHandling.permissionDenied).to.be.calledOnce

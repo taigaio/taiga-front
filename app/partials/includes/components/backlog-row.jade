@@ -1,23 +1,23 @@
-div.row.us-item-row(
+.row.us-item-row(
     ng-repeat="us in userstories track by us.id"
     tg-bind-scope
     ng-class="{blocked: us.is_blocked}"
     tg-class-permission="{'readonly': '!modify_us'}"
 )
-    div.input(tg-check-permission="modify_us")
+    .input(tg-check-permission="modify_us")
         input(
           type="checkbox"
           name=""
         )
-    div.votes(
+    .votes(
         ng-class="{'inactive': !us.total_voters, 'is-voted': us.is_voter}"
         title="{{ 'COMMON.VOTE_BUTTON.COUNTER_TITLE'|translate:{total:us.total_voters||0}:'messageformat' }}"
     )
         tg-svg(svg-icon="icon-upvote")
         span {{ ::us.total_voters }}
-    div.user-stories
-        div.tags-block(tg-colorize-tags="us.tags", tg-colorize-tags-type="backlog")
-        div.user-story-name
+    .user-stories
+        .tags-block(tg-colorize-tags="us.tags", tg-colorize-tags-type="backlog")
+        .user-story-name
             a.clickable(
                 href=""
                 tg-nav="project-userstories-detail:project=project.slug,ref=us.ref"
@@ -26,7 +26,12 @@ div.row.us-item-row(
             )
                 span(tg-bo-ref="us.ref")
                 span(ng-bind="us.subject")
-            div.us-settings
+                tg-belong-to-epics(
+                    format="pill"
+                    ng-if="us.epics"
+                    epics="us.epics"
+                )
+            .us-settings
                 a.e2e-edit.edit-story(
                     href=""
                     tg-check-permission="modify_us"

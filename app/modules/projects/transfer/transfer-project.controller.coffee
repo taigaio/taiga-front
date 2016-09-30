@@ -28,10 +28,11 @@ class TransferProject
         "tgCurrentUserService",
         "$tgNavUrls",
         "$translate",
-        "$tgConfirm"
+        "$tgConfirm",
+        "tgErrorHandlingService"
     ]
 
-    constructor: (@routeParams, @projectService, @location, @authService, @currentUserService, @navUrls, @translate, @confirmService) ->
+    constructor: (@routeParams, @projectService, @location, @authService, @currentUserService, @navUrls, @translate, @confirmService, @errorHandlingService) ->
 
     initialize: () ->
         @.projectId = @.project.get("id")
@@ -41,7 +42,7 @@ class TransferProject
 
     _validateToken: () ->
         return @projectService.transferValidateToken(@.projectId, @.token).then null, (data, status) =>
-            @location.path(@navUrls.resolve("not-found"))
+            @errorHandlingService.notfound()
 
     _refreshUserData: () ->
         return @authService.refresh().then () =>

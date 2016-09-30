@@ -47,14 +47,12 @@
         a {
             @include font-size(normal);
             @include font-type(text);
-            @include ellipsis($width: 90%);
             display: inline-block;
             margin-right: .5rem;
         }
     }
     .sprint {
         margin-bottom: 2rem;
-        overflow: hidden;
         header {
             position: relative;
         }
@@ -80,10 +78,11 @@
             }
         }
         .number {
-            @include font-size(small);
+            @include font-size(xsmall);
+            margin-right: .2rem;
         }
         .description {
-            @include font-size(x-small);
+            @include font-size(xsmall);
             line-height: .6rem;
             margin-top: 5px;
         }
@@ -182,7 +181,6 @@
             padding: 0 4px;
         }
         .us-name {
-            @include ellipsis(230px);
             display: block;
             &.closed {
                 color: lighten($gray-light, 5%);

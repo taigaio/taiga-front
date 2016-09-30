@@ -30,51 +30,25 @@ describe('User story detail', function(){
 
     it('tags edition', sharedDetail.tagsTesting);
 
-    it('description edition', sharedDetail.descriptionTesting);
+    describe('description', sharedDetail.descriptionTesting);
 
     it('status edition', sharedDetail.statusTesting.bind(this, 'Ready', 'In progress'));
 
     describe('assigned to edition', sharedDetail.assignedToTesting);
 
-    it('team requirement edition', async function() {
-      let requirementHelper = usDetailHelper.teamRequirement();
-      let isRequired = await requirementHelper.isRequired();
+    describe('team requirement edition', sharedDetail.teamRequirementTesting);
 
-      // Toggle
-      requirementHelper.toggleStatus();
-      let newIsRequired = await requirementHelper.isRequired();
-      expect(isRequired).to.be.not.equal(newIsRequired);
-
-      // Toggle again
-      requirementHelper.toggleStatus();
-      newIsRequired = await requirementHelper.isRequired();
-      expect(isRequired).to.be.equal(newIsRequired);
-    });
-
-    it('client requirement edition', async function() {
-      let requirementHelper = usDetailHelper.clientRequirement();
-      let isRequired = await requirementHelper.isRequired();
-
-      // Toggle
-      requirementHelper.toggleStatus();
-      let newIsRequired = await requirementHelper.isRequired();
-      expect(isRequired).to.be.not.equal(newIsRequired);
-
-      // Toggle again
-      requirementHelper.toggleStatus();
-      newIsRequired = await requirementHelper.isRequired();
-      expect(isRequired).to.be.equal(newIsRequired);
-    });
+    describe('client requirement edition', sharedDetail.clientRequirementTesting);
 
     describe('watchers edition', sharedDetail.watchersTesting);
 
-    it('history', sharedDetail.historyTesting);
+    it('history', sharedDetail.historyTesting.bind(this, "user-stories"));
 
     it('block', sharedDetail.blockTesting);
 
     it('attachments', sharedDetail.attachmentTesting);
 
-    describe('custom-fields', sharedDetail.customFields.bind(this, 0));
+    describe('custom-fields', sharedDetail.customFields.bind(this, 1));
 
     describe('related tasks', function() {
         it('create', async function() {

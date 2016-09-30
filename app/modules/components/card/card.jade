@@ -1,0 +1,16 @@
+.card-inner(
+    class="{{'zoom-' + vm.zoomLevel}}"
+    ng-class="{'card-blocked': vm.item.getIn(['model', 'is_blocked']), 'archived': vm.archived}"
+)
+    include card-templates/card-tags
+    include card-templates/card-owner
+    div(ng-if="vm.visible('owner')")
+        include card-templates/card-title
+    include card-templates/card-data
+    include card-templates/card-completion
+    include card-templates/card-tasks
+    tg-card-slideshow(
+        ng-if="vm.isSlideshowVisible()"
+        images="vm.item.get('images')"
+    )
+    include card-templates/card-unfold

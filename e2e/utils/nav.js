@@ -46,8 +46,23 @@ var actions = {
 
         return common.waitLoader();
     },
+
+    epics: async function() {
+        await common.link($('#nav-epics a'));
+
+        return common.waitLoader();
+    },
+
+    epic: async function(index) {
+        let epic = $$('.e2e-epic-row .name a').get(index);
+
+        await common.link(epic);
+
+        return common.waitLoader();
+    },
+
     backlog: async function() {
-        await common.link($('#nav-backlog a'));
+        await common.link($$('#nav-backlog a').first());
 
         return common.waitLoader();
     },
@@ -75,7 +90,7 @@ var actions = {
         return common.waitLoader();
     },
     task: async function(index) {
-        let task = $$('div[tg-taskboard-task] a.task-name').get(index);
+        let task = $$('tg-card .card-title a').get(index);
 
         await common.link(task);
 
@@ -99,6 +114,14 @@ var nav = {
     },
     issue: function(index) {
         this.actions.push(actions.issue.bind(null, index));
+        return this;
+    },
+    epics: function(index) {
+        this.actions.push(actions.epics.bind(null, index));
+        return this;
+    },
+    epic: function(index) {
+        this.actions.push(actions.epic.bind(null, index));
         return this;
     },
     backlog: function(index) {

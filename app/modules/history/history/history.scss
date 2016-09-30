@@ -1,0 +1,21 @@
+.activity {
+    align-items: flex-start;
+    border-bottom: 1px solid $whitish;
+    display: flex;
+    padding: 2rem 0;
+    .activity-avatar {
+        flex-shrink: 0;
+        margin-right: 1.5rem;
+        width: 60px;
+    }
+    .activity-data {
+        margin-bottom: 1rem;
+    }
+    .activity-creator {
+        color: $primary;
+        margin-right: .5rem;
+    }
+    .activity-date {
+        color: $gray-light;
+    }
+}

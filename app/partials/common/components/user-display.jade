@@ -1,0 +1,23 @@
+.user-avatar(ng-if="url")
+    a(
+        href="{{url}}"
+        title="{{user.full_name_display}}"
+    )
+        img(
+            ng-style="{'background-color': user.bg}"
+            ng-src="{{user.avatar}}"
+            alt="{{user.full_name_display}}"
+        )
+a.user-full-name(
+    ng-if="url"
+    href="{{url}}"
+    title="{{user.full_name_display}}"
+) {{user.full_name_display}}
+
+.user-avatar(ng-if="!url")
+    img(
+        ng-style="{'background-color': user.bg}"
+        ng-src="{{user.avatar}}"
+        alt="{{user.full_name_display}}"
+    )
+span.user-full-name(ng-if="!url") {{user.full_name_display}}

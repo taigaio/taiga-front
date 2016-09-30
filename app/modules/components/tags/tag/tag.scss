@@ -1,0 +1,21 @@
+.tag {
+    @include font-type(light);
+    @include font-size(small);
+    background: $mass-white;
+    border-radius: 0 5px 5px 0;
+    color: $grayer;
+    display: inline-block;
+    margin: 0 .5rem .5rem 0;
+    padding: .5rem;
+    text-align: center;
+    .icon-close {
+        @include svg-size(.7rem);
+        cursor: pointer;
+        fill: $red-light;
+        margin-left: .25rem;
+    }
+    .loading-spinner {
+        height: 1rem;
+        width: 1rem;
+    }
+}

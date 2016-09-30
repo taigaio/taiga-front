@@ -1,0 +1,37 @@
+.activity-diff {
+    .key {
+        @include font-type(bold);
+        background: $whitish;
+        margin-right: .5rem;
+        padding: .25rem;
+    }
+    .diff {
+        line-height: 1.6;
+    }
+    .icon-arrow-right {
+        @include svg-size(.75rem);
+        fill: $gray-light;
+        margin: 0 .5rem;
+    }
+    .diff-status-wrapper {
+        p {
+            display: inline-block;
+        }
+        ins {
+            background: lighten(rgba($primary-light, .3), 20%);
+            text-decoration: underline;
+        }
+        del {
+            background: rgba($red-light, .3);
+        }
+    }
+    .diff-color-wrapper {
+        align-items: center;
+        display: flex;
+        .diff {
+            display: inline-block;
+            height: 1.2rem;
+            width: 1.2rem;
+        }
+    }
+}

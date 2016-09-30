@@ -53,14 +53,16 @@ class ProjectProfileController extends mixOf(taiga.Controller, taiga.PageMixin)
         "tgAppMetaService",
         "$translate",
         "$tgAuth",
-        "tgCurrentUserService"
+        "tgCurrentUserService",
+        "tgErrorHandlingService"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @navUrls,
-                  @appMetaService, @translate, @tgAuth, @currentUserService) ->
+                  @appMetaService, @translate, @tgAuth, @currentUserService, @errorHandlingService) ->
         @scope.project = {}
 
         promise = @.loadInitialData()
+        @scope.projectTags = []
 
         promise.then =>
             sectionName = @translate.instant( @scope.sectionName)
@@ -83,18 +85,23 @@ class ProjectProfileController extends mixOf(taiga.Controller, taiga.PageMixin)
     loadProject: ->
         return @rs.projects.getBySlug(@params.pslug).then (project) =>
             if not project.i_am_admin
-                @location.path(@navUrls.resolve("permission-denied"))
+                @errorHandlingService.permissionDenied()
 
             @scope.projectId = project.id
             @scope.project = project
-            @scope.pointsList = _.sortBy(project.points, "order")
+            @scope.epicStatusList = _.sortBy(project.epic_statuses, "order")
             @scope.usStatusList = _.sortBy(project.us_statuses, "order")
+            @scope.pointsList = _.sortBy(project.points, "order")
             @scope.taskStatusList = _.sortBy(project.task_statuses, "order")
-            @scope.prioritiesList = _.sortBy(project.priorities, "order")
-            @scope.severitiesList = _.sortBy(project.severities, "order")
             @scope.issueTypesList = _.sortBy(project.issue_types, "order")
             @scope.issueStatusList = _.sortBy(project.issue_statuses, "order")
+            @scope.prioritiesList = _.sortBy(project.priorities, "order")
+            @scope.severitiesList = _.sortBy(project.severities, "order")
             @scope.$emit('project:loaded', project)
+
+            @scope.projectTags = _.map @scope.project.tags, (it) =>
+                return [it, @scope.project.tags_colors[it]]
+
             return project
 
     loadInitialData: ->
@@ -105,6 +112,21 @@ class ProjectProfileController extends mixOf(taiga.Controller, taiga.PageMixin)
 
     openDeleteLightbox: ->
         @rootscope.$broadcast("deletelightbox:new", @scope.project)
+
+    addTag: (name, color) ->
+        tags = _.clone(@scope.project.tags)
+
+        tags.push(name)
+
+        @scope.projectTags.push([name, null])
+        @scope.project.tags = tags
+
+    deleteTag: (tag) ->
+        tags = _.clone(@scope.project.tags)
+        _.pull(tags, tag[0])
+        _.remove @scope.projectTags, (it) => it[0] == tag[0]
+
+        @scope.project.tags = tags
 
 module.controller("ProjectProfileController", ProjectProfileController)
 
@@ -222,10 +244,12 @@ ProjectModulesDirective = ($repo, $confirm, $loading, projectService) ->
 
         $el.on "change", ".module-activation.module-direct-active input", (event) ->
             event.preventDefault()
-            submit()
+
+            $scope.$applyAsync(submit)
 
         $el.on "submit", "form", (event) ->
             event.preventDefault()
+
             submit()
 
         $el.on "click", ".save", (event) ->
@@ -401,6 +425,10 @@ class CsvExporterController extends taiga.Controller
             @._generateUuid()
 
 
+class CsvExporterEpicsController extends CsvExporterController
+    type: "epics"
+
+
 class CsvExporterUserstoriesController extends CsvExporterController
     type: "userstories"
 
@@ -413,6 +441,7 @@ class CsvExporterIssuesController extends CsvExporterController
     type: "issues"
 
 
+module.controller("CsvExporterEpicsController", CsvExporterEpicsController)
 module.controller("CsvExporterUserstoriesController", CsvExporterUserstoriesController)
 module.controller("CsvExporterTasksController", CsvExporterTasksController)
 module.controller("CsvExporterIssuesController", CsvExporterIssuesController)
@@ -421,6 +450,21 @@ module.controller("CsvExporterIssuesController", CsvExporterIssuesController)
 #############################################################################
 ## CSV Directive
 #############################################################################
+
+CsvEpicDirective = ($translate) ->
+    link = ($scope) ->
+        $scope.sectionTitle = "ADMIN.CSV.SECTION_TITLE_EPIC"
+
+    return {
+        controller: "CsvExporterEpicsController",
+        controllerAs: "ctrl",
+        templateUrl: "admin/project-csv.html",
+        link: link,
+        scope: true
+    }
+
+module.directive("tgCsvEpic", ["$translate", CsvEpicDirective])
+
 
 CsvUsDirective = ($translate) ->
     link = ($scope) ->

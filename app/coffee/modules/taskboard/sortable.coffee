@@ -37,17 +37,24 @@ module = angular.module("taigaBacklog")
 ## Sortable Directive
 #############################################################################
 
-TaskboardSortableDirective = ($repo, $rs, $rootscope) ->
+TaskboardSortableDirective = ($repo, $rs, $rootscope, $translate) ->
     link = ($scope, $el, $attrs) ->
-        bindOnce $scope, "tasks", (xx) ->
-            # If the user has not enough permissions we don't enable the sortable
-            if not ($scope.project.my_permissions.indexOf("modify_us") > -1)
+        unwatch = $scope.$watch "usTasks", (usTasks) ->
+            return if !usTasks || !usTasks.size
+
+            unwatch()
+
+            if not ($scope.project.my_permissions.indexOf("modify_task") > -1)
                 return
 
             oldParentScope = null
             newParentScope = null
             itemEl = null
             tdom = $el
+
+            filterError = ->
+                text = $translate.instant("BACKLOG.SORTABLE_FILTER_ERROR")
+                $tgConfirm.notify("error", text)
 
             deleteElement = (itemEl) ->
                 # Completelly remove item and its scope from dom
@@ -62,11 +69,22 @@ TaskboardSortableDirective = ($repo, $rs, $rootscope) ->
                 copySortSource: false,
                 copy: false,
                 mirrorContainer: $el[0],
-                moves: (item) -> return $(item).hasClass('taskboard-task')
+                accepts: (el, target) -> return !$(target).hasClass('taskboard-userstory-box')
+                moves: (item) ->
+                    return $(item).is('tg-card')
             })
 
             drake.on 'drag', (item) ->
                 oldParentScope = $(item).parent().scope()
+
+                if $el.hasClass("active-filters")
+                    filterError()
+
+                    setTimeout (() ->
+                        drake.cancel(true)
+                    ), 0
+
+                    return false
 
             drake.on 'dragend', (item) ->
                 parentEl = $(item).parent()
@@ -84,14 +102,15 @@ TaskboardSortableDirective = ($repo, $rs, $rootscope) ->
                     deleteElement(itemEl)
 
                 $scope.$apply ->
-                    $rootscope.$broadcast("taskboard:task:move", itemTask, newUsId, newStatusId, itemIndex)
+                    $rootscope.$broadcast("taskboard:task:move", itemTask, itemTask.getIn(['model', 'status']), newUsId, newStatusId, itemIndex)
+
 
             scroll = autoScroll([$('.taskboard-table-body')[0]], {
-                margin: 20,
+                margin: 100,
                 pixels: 30,
                 scrollWhenOutside: true,
                 autoScroll: () ->
-                    return this.down && drake.dragging;
+                    return this.down && drake.dragging
             })
 
             $scope.$on "$destroy", ->
@@ -105,5 +124,6 @@ module.directive("tgTaskboardSortable", [
     "$tgRepo",
     "$tgResources",
     "$rootScope",
+    "$translate",
     TaskboardSortableDirective
 ])

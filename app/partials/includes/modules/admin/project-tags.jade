@@ -1,0 +1,186 @@
+section
+    .admin-tags-section-wrapper-empty(
+        ng-if="!projectTagsAll.length && ctrl.loading"
+        tg-loading="ctrl.loading"
+    )
+
+    .admin-tags-section-wrapper
+        form.add-tag-container.new-value.hidden
+            tg-color-selector.color-column(
+                is-color-required="false"
+                init-color="newValue.color"
+                on-select-color="newValue.color = color"
+            )
+
+            .tag-name
+                input(
+                    name="tag"
+                    type="text"
+                    placeholder="{{'ADMIN.TYPES.PLACEHOLDER_WRITE_NAME' | translate}}",
+                    ng-model="newValue.tag"
+                    data-required="true"
+                    data-maxlength="255"
+                )
+
+            .options-column(tg-loading="loadingCreate")
+                a.add-new.e2e-save(href="")
+                    tg-svg(
+                        title="{{'COMMON.ADD' | translate}}",
+                        svg-icon="icon-save"
+                    )
+                a.delete-new(href="")
+                    tg-svg(
+                        title="{{'COMMON.CANCEL' | translate}}",
+                        svg-icon="icon-close"
+                    )
+
+        .empty-large.tags-empty(ng-if="!projectTagsAll.length && !ctrl.loading")
+            img(
+                src="/#{v}/images/empty/empty_field.png"
+                alt="{{'BACKLOG.EMPTY' | translate}}"
+            )
+            p.title(translate="ADMIN.PROJECT_VALUES_TAGS.EMPTY")
+
+        .table-header.table-tags-editor(
+            ng-if="projectTagsAll.length"
+        )
+            div.row.header-tag-row
+                .color-column(translate="COMMON.FIELDS.COLOR")
+                .status-name(translate="COMMON.FIELDS.NAME")
+                .color-filter
+                    input.e2e-tags-filter(
+                        id="filter-tags-input"
+                        type="text"
+                        name="name"
+                        ng-model="tagsFilter.name"
+                        ng-model-options="{debounce: 200}"
+                    )
+                    label(for="filter-tags-input")
+                        tg-svg(svg-icon="icon-search")
+
+        .table-main.table-admin-tags(
+            ng-if="projectTagsAll.length"
+        )
+            div(ng-show="!mixingTags.toTag")
+                .empty-large.admin-attributes-section-wrapper-empty(
+                    ng-show="!projectTags.length"
+                    tg-loading="ctrl.loading"
+                )
+                    img(
+                        src="/#{v}/images/empty/empty_moon.png"
+                        alt="{{'BACKLOG.EMPTY' | translate}}"
+                    )
+                    p(translate="ADMIN.PROJECT_VALUES_TAGS.EMPTY_SEARCH")
+
+                div.e2e-tag-row(
+                    ng-repeat="tag in projectTags"
+                    tg-bind-scope
+                )
+                    form(tg-bind-scope)
+                        .row.tag-row.table-main.visualization(ng-class="{{ ctrl.mixingClass(tag) }}")
+                            .color-column
+                                .current-color(
+                                    ng-style="{background: tag.color}"
+                                    ng-if="tag.color"
+                                )
+                                .current-color.empty-color(ng-if="!tag.color")
+
+                            .status-name
+                                span(tg-bo-html="tag.name")
+
+                            .options-column
+                                a.mix-tags(href="")
+                                    tg-svg(
+                                        title="{{'ADMIN.PROJECT_VALUES_TAGS.MIXING_MERGE' | translate}}"
+                                        svg-icon="icon-merge"
+                                    )
+                                    div.popover.merge-explanation
+                                        span(translate="ADMIN.PROJECT_VALUES_TAGS.MIXING_MERGE")
+
+                                a.edit-value(href="")
+                                    tg-svg(
+                                        svg-icon="icon-edit"
+                                        title="{{'ADMIN.COMMON.TITLE_ACTION_EDIT_VALUE' | translate}}"
+                                    )
+
+                                a.delete-tag(href="", tg-loading="loadingDelete")
+                                    tg-svg(
+                                        svg-icon="icon-trash"
+                                        title="{{'ADMIN.COMMON.TITLE_ACTION_DELETE_VALUE' | translate}}"
+                                    )
+
+                        .row.tag-row.table-main.edition.hidden
+                            tg-color-selector.color-column(
+                                is-color-required="false"
+                                ng-model="tag"
+                                init-color="tag.color"
+                                on-select-color="tag.color = color"
+                            )
+
+                            .status-name
+                                input(
+                                    name="to_tag"
+                                    type="text"
+                                    placeholder="{{'ADMIN.TYPES.PLACEHOLDER_WRITE_NAME' | translate}}",
+                                    ng-model="tag.name"
+                                    data-required="true"
+                                    data-maxlength="255"
+                                )
+
+                            .options-column(tg-loading="loadingEdit")
+                                a.save.e2e-save(href="")
+                                    tg-svg(
+                                        title="{{'COMMON.SAVE' | translate}}"
+                                        svg-icon="icon-save"
+                                     )
+                                a.cancel(href="")
+                                    tg-svg(
+                                        title="{{'COMMON.CANCEL' | translate}}"
+                                        svg-icon="icon-close"
+                                    )
+
+            div(ng-show="mixingTags.toTag")
+                div(
+                    ng-repeat="tag in projectTags"
+                    tg-bind-scope
+                )
+                    form(tg-bind-scope)
+                        .row.mixing-row.table-main.visualization(
+                            ng-class="ctrl.mixingClass(tag)"
+                        )
+                            .color-column
+                                .current-color(
+                                    ng-if="tag.color"
+                                    ng-style="{background: tag.color}"
+                                )
+                                .current-color.empty-color(
+                                    ng-if="!tag.color"
+                                )
+
+                            .status-name
+                                span(tg-bo-html="tag.name")
+
+                            .mixing-options-column(
+                                ng-if="mixingTags.toTag === tag.name"
+                                tg-loading="loadingMixing"
+                            )
+                                .mixing-help-text(
+                                    translate="ADMIN.PROJECT_VALUES_TAGS.MIXING_HELP_TEXT"
+                                )
+                                a.mixing-confirm.button-green(
+                                    href=""
+                                    ng-if="mixingTags.fromTags.length"
+                                    translate="ADMIN.PROJECT_VALUES_TAGS.MIXING_MERGE"
+                                )
+                                a.mixing-cancel.button-gray(
+                                    href=""
+                                    translate="COMMON.CANCEL"
+                                )
+
+                            .mixing-options-column(
+                                ng-if="mixingTags.fromTags.indexOf(tag.name) !== -1"
+                            )
+                                tg-svg.mixing-selected(
+                                    title="{{'ADMIN.PROJECT_VALUES_TAGS.SELECTED' | translate}}"
+                                    svg-icon="icon-merge"
+                                )

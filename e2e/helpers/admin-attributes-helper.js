@@ -34,6 +34,30 @@ helper.getSection = function(item) {
     };
 };
 
+helper.getTagsSection = function(item) {
+    let section = $$('.admin-attributes-section').get(item);
+
+    return {
+        el: section,
+        rows: function() {
+            return section.$$('.e2e-tag-row');
+        },
+        edit: async function(row) {
+            let editButton = row.$('.edit-value');
+
+            return browser.actions()
+                .mouseMove(editButton)
+                .click()
+                .perform();
+        }
+    };
+};
+
+
+helper.getTagsFilter = function() {
+    return $('.table-header .e2e-tags-filter');
+};
+
 helper.getStatusNames = function(section) {
     return section.$$('.status-name span').getText();
 };
@@ -92,6 +116,14 @@ helper.getGenericForm = function(form) {
 
     obj.name = function() {
         return form.$('.status-name input');
+    };
+
+    obj.colorBox = function() {
+        return form.$('.edition .e2e-open-color-selector');
+    };
+
+    obj.colorText = function() {
+        return form.$('.color-selector-dropdown input');
     };
 
     return obj;

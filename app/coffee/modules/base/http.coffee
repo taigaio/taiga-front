@@ -30,7 +30,7 @@ class HttpService extends taiga.Service
     constructor: (@http, @q, @storage, @rootScope, @cacheFactory, @translate) ->
         super()
 
-        @.cache = @cacheFactory("httpget");
+        @.cache = @cacheFactory("httpget")
     headers: ->
         headers = {}
 

@@ -51,29 +51,58 @@
         }
     }
     .level-field {
-        flex-basis: 75px;
+        flex-basis: 85px;
         flex-grow: 0;
         flex-shrink: 0;
         text-align: center;
-        width: 75px;
+        width: 85px;
     }
     .votes {
         color: $gray;
+        cursor: pointer;
         flex-basis: 75px;
         flex-shrink: 0;
         text-align: center;
         width: 75px;
+        &:hover {
+            color: $primary-light;
+            transition: all .2s linear;
+            svg {
+                fill: $primary-light;
+                transition: all .2s linear;
+            }
+        }
         &.inactive {
             color: $gray-light;
         }
-        &.is-voted {
-            color: $primary-light;
-        }
+    }
+    .icon-upvote {
+        @include svg-size(.75rem);
+        fill: $gray;
+        margin-right: .25rem;
+        vertical-align: middle;
+    }
+    .icon-arrow-up,
+    .icon-arrow-down {
+        @include svg-size(.7rem);
+        fill: $gray-light;
+        margin-left: .25rem;
+        vertical-align: middle;
+    }
+    .is-voted {
+        color: $primary-light;
+        transition: all .2s linear;
         svg {
-            @include svg-size(.75rem);
-            fill: $gray;
-            margin-right: .25rem;
-            vertical-align: middle;
+            fill: $primary-light;
+            transition: all .2s linear;
+        }
+        &:hover {
+            color: $red-light;
+            svg {
+                fill: $red-light;
+                transform: rotate(180deg);
+            }
+
         }
     }
     .subject {
@@ -151,21 +180,5 @@
     }
     .issue-status {
         display: inline-block;
-    }
-}
-
-.empty-issues {
-    margin-top: 4rem;
-    text-align: center;
-    img {
-        margin-bottom: 1rem;
-    }
-    .title {
-        @include font-size(large);
-        text-transform: uppercase;
-    }
-    p {
-        @include font-type(light);
-        margin: 0;
     }
 }

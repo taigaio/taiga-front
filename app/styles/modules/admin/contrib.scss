@@ -51,3 +51,23 @@
         }
     }
 }
+
+.contrib-form-wrapper {
+    align-items: center;
+    display: flex;
+    margin-bottom: 1rem;
+    input {
+        margin: 0;
+    }
+    .contrib-input {
+        border: 0;
+        flex: 5;
+        margin: 0;
+    }
+    .contrib-test {
+        border: 0;
+        flex: 1;
+        margin: 0;
+        margin-left: 1rem;
+    }
+}

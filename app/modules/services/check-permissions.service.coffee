@@ -19,7 +19,7 @@
 
 taiga = @.taiga
 
-class ChekcPermissionsService
+class CheckPermissionsService
     @.$inject = [
         "tgProjectService"
     ]
@@ -31,4 +31,4 @@ class ChekcPermissionsService
 
         return @projectService.project.get('my_permissions').indexOf(permission) != -1
 
-angular.module("taigaCommon").service("tgCheckPermissionsService", ChekcPermissionsService)
+angular.module("taigaCommon").service("tgCheckPermissionsService", CheckPermissionsService)

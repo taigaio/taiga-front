@@ -1,9 +1,13 @@
 figure.avatar
-    img(src!="<%- imgurl %>", alt!="<%- full_name %>")
+    img(
+        style!="background-color: <%- bg %>"
+        src!="<%- imgurl %>", alt!="<%- full_name %>"
+    )
     figcaption
-        span.name(ng-non-bindable) <%- full_name %>
+        div.name
+            span(ng-non-bindable) <%- full_name %>
             <% if (isOwner) { %>
-            tg-svg(
+            tg-svg.owner-badge(
                 svg-icon="icon-badge",
                 svg-title-translate="COMMON.OWNER"
             )

@@ -1,0 +1,32 @@
+.history-tabs {
+    background: $whitish;
+    display: flex;
+    flex-direction: row;
+    a {
+        display: inline-block;
+        padding: .75rem 1rem;
+        &:hover {
+            color: $primary;
+        }
+    }
+    .history-tab {
+        @include font-type(bold);
+        border-bottom: 3px solid transparent;
+        color: $gray-light;
+        transition: all .1s linear;
+        &.active {
+            border-bottom: 3px solid $grayer;
+            color: $grayer;
+        }
+    }
+    .order-comments {
+        @include font-type(light);
+        color: $grayer;
+        margin-left: auto;
+        transition: none;
+    }
+    .icon-arrow-up,
+    .icon-arrow-down {
+        @include svg-size(.75rem);
+    }
+}

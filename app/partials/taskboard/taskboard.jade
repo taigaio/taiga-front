@@ -4,11 +4,38 @@ div.wrapper(tg-taskboard, ng-controller="TaskboardController as ctrl",
             ng-init="section='backlog'")
     tg-project-menu
     section.main.taskboard
-        .taskboard-inner
+        tg-filter(
+          ng-show="ctrl.openFilter"
+          q="ctrl.filterQ"
+          filters="ctrl.filters"
+          custom-filters="ctrl.customFilters"
+          selected-filters="ctrl.selectedFilters"
+          customFilters="ctl.customFilters"
+          on-save-custom-filter="ctrl.saveCustomFilter(name)"
+          on-add-filter="ctrl.addFilter(filter)"
+          on-select-custom-filter="ctrl.selectCustomFilter(filter)"
+          on-remove-custom-filter="ctrl.removeCustomFilter(filter)"
+          on-remove-filter="ctrl.removeFilter(filter)"
+          on-change-q="ctrl.changeQ(q)"
+        )
+        .taskboard-header
             h1
                 span(tg-bo-bind="project.name", class="project-name-short")
                 span.green(tg-bo-bind="sprint.name")
                 span.date(tg-date-range="sprint.estimated_start,sprint.estimated_finish")
+            .taskboard-actions
+                tg-taskboard-zoom(
+                    ng-if="usTasks.size",
+                    on-zoom-change="ctrl.setZoom(zoomLevel, zoom)"
+                )
+                button.button-filter.e2e-open-filter(
+                    ng-click="ctrl.openFilter = !ctrl.openFilter"
+                )
+                    span.filter-num(ng-if="ctrl.selectedFilters.length") {{ctrl.selectedFilters.length}}
+                    tg-svg(svg-icon="icon-filters")
+
+        .taskboard-inner
+
             include ../includes/components/sprint-summary
 
             div.graphics-container

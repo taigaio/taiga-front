@@ -112,31 +112,23 @@ CustomAttributesValuesDirective = ($templates, $storage) ->
     link = ($scope, $el, $attrs, $ctrls) ->
         $ctrl = $ctrls[0]
         $model = $ctrls[1]
+        hash = collapsedHash($attrs.type)
+        $scope.collapsed = $storage.get(hash) or false
 
         bindOnce $scope, $attrs.ngModel, (value) ->
             $ctrl.initialize($attrs.type, value.id)
             $ctrl.loadCustomAttributesValues()
 
-        $el.on "click", ".custom-fields-header .collapse", ->
-            hash = collapsedHash($attrs.type)
-            collapsed = not($storage.get(hash) or false)
-            $storage.set(hash, collapsed)
-            if collapsed
-                $el.find(".custom-fields-header .icon").removeClass("open")
-                $el.find(".custom-fields-body").removeClass("open")
-            else
-                $el.find(".custom-fields-header .icon").addClass("open")
-                $el.find(".custom-fields-body").addClass("open")
+        $scope.toggleCollapse = () ->
+            $scope.collapsed = !$scope.collapsed
+            $storage.set(hash, $scope.collapsed)
 
         $scope.$on "$destroy", ->
             $el.off()
 
     templateFn = ($el, $attrs) ->
-        collapsed = $storage.get(collapsedHash($attrs.type)) or false
-
         return template({
             requiredEditionPerm: $attrs.requiredEditionPerm
-            collapsed: collapsed
         })
 
     return {

@@ -1,10 +1,11 @@
 //Table basic shared vars
 
-$column-width: 300px;
+$column-width: 296px;
 $column-folded-width: 30px;
 $column-flex: 0;
 $column-shrink: 0;
-$column-margin: 0 10px 0 0;
+$column-margin: 0 5px 0 0;
+$column-padding: .5rem 1rem;
 
 .kanban-table {
     display: flex;
@@ -12,7 +13,19 @@ $column-margin: 0 10px 0 0;
     height: 100%;
     overflow: hidden;
     width: 100%;
+    &.zoom-0 {
+        .task-column,
+        .task-colum-name {
+            max-width: $column-width / 2;
+        }
+        .task-colum-name span {
+            padding-right: 1rem;
+        }
+    }
     .vfold {
+        tg-card {
+            display: none;
+        }
         &.task-colum-name {
             align-items: center;
             display: flex;
@@ -36,9 +49,6 @@ $column-margin: 0 10px 0 0;
             min-width: $column-folded-width;
             width: $column-folded-width;
         }
-        .kanban-task {
-            display: none;
-        }
         .kanban-column-intro {
             display: none;
         }
@@ -46,11 +56,11 @@ $column-margin: 0 10px 0 0;
     .readonly {
         cursor: auto;
     }
+
 }
 
 .kanban-table-header {
-    margin-bottom: .5rem;
-    min-height: 40px;
+    min-height: 38px;
     position: relative;
     width: 100%;
     .kanban-table-inner {
@@ -58,10 +68,13 @@ $column-margin: 0 10px 0 0;
         overflow: hidden;
         position: absolute;
     }
+    .options {
+        display: flex;
+    }
     .task-colum-name {
         @include font-size(medium);
         align-items: center;
-        background: $whitish;
+        background: $mass-white;
         border-top: 3px solid $gray-light;
         color: $gray;
         display: flex;
@@ -71,7 +84,7 @@ $column-margin: 0 10px 0 0;
         justify-content: space-between;
         margin: $column-margin;
         max-width: $column-width;
-        padding: .5rem .5rem .5rem 1rem;
+        padding: $column-padding;
         position: relative;
         text-transform: uppercase;
         &:last-child {
@@ -110,6 +123,7 @@ $column-margin: 0 10px 0 0;
         max-width: $column-width;
         overflow-y: auto;
         widows: $column-width;
+        width: $column-width;
         &:last-child {
             margin-right: 0;
         }
@@ -131,7 +145,7 @@ $column-margin: 0 10px 0 0;
         }
     }
     .kanban-uses-box {
-        background: $whitish;
+        background: $mass-white;
     }
 }
 

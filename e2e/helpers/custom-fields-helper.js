@@ -44,14 +44,14 @@ helper.edit = async function(indexType, indexCustomField, name, desc, option) {
 };
 
 helper.drag = function(indexType, indexCustomField, indexNewPosition) {
-    let customField = helper.getCustomFiledsByType(indexType).get(indexCustomField);
-    let newPosition = helper.getCustomFiledsByType(indexType).get(indexNewPosition).getLocation();
+    let customField = helper.getCustomFiledsByType(indexType).get(indexCustomField).$('.e2e-drag');
+    let newPosition = helper.getCustomFiledsByType(indexType).get(indexNewPosition);
 
-    return utils.common.drag(customField, newPosition, {y: 30});
+    return utils.common.drag(customField, newPosition, 5, 25);
 };
 
 helper.getCustomFiledsByType = function(indexType) {
-    return $$('div[tg-project-custom-attributes]').get(indexType).$$('.js-sortable > div');
+    return $$('div[tg-project-custom-attributes]').get(indexType).$$('.e2e-item');
 };
 
 helper.delete = async function(indexType, indexCustomField) {
@@ -66,7 +66,7 @@ helper.delete = async function(indexType, indexCustomField) {
 };
 
 helper.getName = function(indexType, indexCustomField) {
-    return helper.getCustomFiledsByType(indexType).get(indexCustomField).$('.custom-name span').getText();
+    return helper.getCustomFiledsByType(indexType).get(indexCustomField).$('.js-view-custom-field .custom-name').getText();
 };
 
 helper.getDetailFields = function() {

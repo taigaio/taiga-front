@@ -1,0 +1,86 @@
+
+.epic-row.e2e-epic-row(
+    ng-class="{'is-blocked':  vm.epic.get('is_blocked'), 'is-closed': vm.epic.get('is_closed'), 'unfold': vm.displayUserStories, 'not-empty': vm.epic.getIn(['user_stories_counts', 'opened']) || vm.epic.getIn(['user_stories_counts', 'closed'])}"
+    ng-click="vm.toggleUserStoryList()"
+)
+    tg-svg.icon-drag(
+        svg-icon="icon-drag"
+        ng-if="vm.canEditEpics()"
+    )
+
+    .vote(
+        ng-if="vm.column.votes"
+        ng-class="{'is-voter': vm.epic.get('is_voter')}"
+    )
+        tg-svg(svg-icon='icon-upvote')
+        span {{::vm.epic.get('total_voters')}}
+
+    .name(ng-if="vm.column.name")
+        - var hash = "#";
+        a(
+            tg-nav="project-epics-detail:project=vm.project.slug,ref=vm.epic.get('ref')"
+            ng-attr-title="{{::vm.epic.get('subject')}}"
+        ) #{hash}{{::vm.epic.get('ref')}} {{::vm.epic.get('subject')}}
+        span.epic-pill(
+            ng-style="::{'background-color': vm.epic.get('color')}"
+            translate="EPICS.EPIC"
+        )
+        tg-svg(
+            svg-icon="icon-arrow-down"
+            ng-if="vm.epic.getIn(['user_stories_counts', 'opened']) || vm.epic.getIn(['user_stories_counts', 'closed'])"
+        )
+
+    .project(ng-if="vm.column.project")
+
+    .sprint(ng-if="vm.column.sprint")
+
+    .assigned.e2e-assigned-to(
+        ng-if="vm.column.assigned"
+        tg-loading="vm.assignLoader"
+    )
+        tg-assigned-to-component(
+            assigned-to="vm.epic.get('assigned_to_extra_info')"
+            project="vm.project"
+            on-remove-assigned="vm.updateAssignedTo()"
+            on-assign-to="vm.updateAssignedTo(member)"
+            tg-isolate-click
+        )
+
+    .status(
+        ng-if="vm.column.status && !vm.canEditEpics()"
+    )
+        span {{vm.epic.getIn(['status_extra_info', 'name'])}}
+    .status(
+        ng-if="vm.column.status && vm.canEditEpics()"
+        ng-mouseleave="vm.displayStatusList = false"
+        tg-isolate-click
+    )
+        button(
+            ng-click="vm.displayStatusList = true"
+            ng-style="{'color': vm.epic.getIn(['status_extra_info', 'color'])}"
+            tg-loading="vm.loadingStatus"
+        )
+            span.e2e-epic-status {{vm.epic.getIn(['status_extra_info', 'name'])}}
+            tg-svg(
+                svg-icon="icon-arrow-down"
+            )
+
+        ul.epic-statuses(ng-if="vm.displayStatusList")
+            li.e2e-edit-epic-status(
+                ng-repeat="status in vm.project.epic_statuses | orderBy:'order'"
+                ng-click="vm.updateStatus(status.id)"
+            ) {{status.name}}
+
+    .progress(ng-if="vm.column.progress")
+        .progress-bar
+        .progress-status(
+            ng-if="::vm.percentage"
+            ng-style="{'width':vm.percentage}"
+        )
+
+.epic-stories-wrapper(ng-if="vm.displayUserStories && vm.epicStories")
+    .epic-story(tg-repeat="story in vm.epicStories track by story.get('id')")
+        tg-story-row.e2e-story(
+            story="story"
+            column="vm.column"
+        )

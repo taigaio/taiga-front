@@ -27,6 +27,9 @@ tg-project-menu {
         padding: 1.1rem .8rem;
         position: relative;
     }
+    li {
+        position: relative;
+    }
     a:hover {
         background: rgba($black, .2);
         transition: color .3s linear;
@@ -98,5 +101,47 @@ tg-project-menu {
     }
     100% {
         opacity: 1;
+    }
+}
+
+.backlog-sprints-menu {
+    @include font-size(small);
+    animation: slideLeft 200ms ease-in-out both;
+    background: linear-gradient(to right, rgba($black, 1) 0%, rgba($black, .8) 100%);
+    color: $white;
+    display: block;
+    left: 50px;
+    opacity: 1;
+    padding: .4rem 1rem;
+    position: absolute;
+    top: 1rem;
+    transition: all .2s;
+    white-space: nowrap;
+    z-index: 99;
+    a {
+        color: $white;
+        padding: .6rem .8rem;
+        text-align: left;
+        text-transform: none;
+        &:nth-child(2) {
+            padding: 1rem .8rem .6rem;
+        }
+        &:last-child {
+            padding: .6rem .8rem .4rem;
+        }
+        &:hover {
+            background: none;
+        }
+    }
+    &::after {
+        background: rgba($blackish, 1);
+        content: '';
+        height: $label-arrow-wh;
+        left: calc(-#{$label-arrow-wh}/2);
+        position: absolute;
+        top: calc(1rem - #{$label-arrow-wh}/2);
+        transform: rotate(45deg);
+        width: $label-arrow-wh;
+        z-index: 98;
     }
 }

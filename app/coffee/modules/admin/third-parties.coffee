@@ -45,10 +45,11 @@ class WebhooksController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.
         "$tgLocation",
         "$tgNavUrls",
         "tgAppMetaService",
-        "$translate"
+        "$translate",
+        "tgErrorHandlingService"
     ]
 
-    constructor: (@scope, @repo, @rs, @params, @location, @navUrls, @appMetaService, @translate) ->
+    constructor: (@scope, @repo, @rs, @params, @location, @navUrls, @appMetaService, @translate, @errorHandlingService) ->
         bindMethods(@)
 
         @scope.sectionName = "ADMIN.WEBHOOKS.SECTION_NAME"
@@ -72,7 +73,7 @@ class WebhooksController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.
     loadProject: ->
         return @rs.projects.getBySlug(@params.pslug).then (project) =>
             if not project.i_am_admin
-                @location.path(@navUrls.resolve("permission-denied"))
+                @errorHandlingService.permissionDenied()
 
             @scope.projectId = project.id
             @scope.project = project
@@ -193,15 +194,22 @@ WebhookDirective = ($rs, $repo, $confirm, $loading, $translate) ->
 
         $el.on "click", ".toggle-history", (event) ->
             target = angular.element(event.currentTarget)
+
             if not webhook.logs? or webhook.logs.length == 0
                 updateLogs().then ->
                     #Waiting for ng-repeat to finish
                     timeout 0, ->
-                        $el.find(".webhooks-history").toggleClass("open")
+                        $el.find(".webhooks-history")
+                            .toggleClass("open")
+                            .slideToggle()
+
                         updateShowHideHistoryText()
 
             else
-                $el.find(".webhooks-history").toggleClass("open")
+                $el.find(".webhooks-history")
+                    .toggleClass("open")
+                    .slideToggle()
+
                 $scope.$apply () ->
                     updateShowHideHistoryText()
 
@@ -578,3 +586,50 @@ ValidOriginIpsDirective = ->
     }
 
 module.directive("tgValidOriginIps", ValidOriginIpsDirective)
+
+#############################################################################
+## Gogs Controller
+#############################################################################
+
+class GogsController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.FiltersMixin)
+    @.$inject = [
+        "$scope",
+        "$tgRepo",
+        "$tgResources",
+        "$routeParams",
+        "tgAppMetaService",
+        "$translate"
+    ]
+
+    constructor: (@scope, @repo, @rs, @params, @appMetaService, @translate) ->
+        bindMethods(@)
+
+        @scope.sectionName = @translate.instant("ADMIN.GOGS.SECTION_NAME")
+        @scope.project = {}
+
+        promise = @.loadInitialData()
+
+        promise.then () =>
+            title = @translate.instant("ADMIN.GOGS.PAGE_TITLE", {projectName: @scope.project.name})
+            description = @scope.project.description
+            @appMetaService.setAll(title, description)
+
+        promise.then null, @.onInitialDataError.bind(@)
+
+    loadModules: ->
+        return @rs.modules.list(@scope.projectId, "gogs").then (gogs) =>
+            @scope.gogs = gogs
+
+    loadProject: ->
+        return @rs.projects.getBySlug(@params.pslug).then (project) =>
+            @scope.projectId = project.id
+            @scope.project = project
+            @scope.$emit('project:loaded', project)
+            return project
+
+    loadInitialData: ->
+        promise = @.loadProject()
+        promise.then(=> @.loadModules())
+        return promise
+
+module.controller("GogsController", GogsController)

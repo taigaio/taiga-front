@@ -1,0 +1,108 @@
+include ../../../partials/common/components/wysiwyg.jade
+
+.comment-wrapper(ng-if="!vm.comment.delete_comment_date")
+    img.comment-avatar(
+        tg-avatar="vm.comment.user"
+        ng-alt="{{vm.comment.user.name}}"
+    )
+    .comment-main
+        .comment-data
+            span.comment-creator {{vm.comment.user.name}}
+            span.comment-date {{vm.comment.created_at | momentFormat:'DD MMM YYYY HH:mm'}}
+            .comment-edited(ng-if="vm.comment.edit_comment_date")
+                span(translate="COMMENTS.EDITED_COMMENT")
+                span {{vm.comment.edit_comment_date | momentFormat:'DD MMM YYYY HH:mm'}}
+                span.separator -
+                a(
+                    href=""
+                    title="COMMENTS.SHOW_HISTORY"
+                    ng-click="vm.displayCommentHistory()"
+                )
+                    span(translate="COMMENTS.SHOW_HISTORY")
+                    tg-svg(svg-icon="icon-bulk")
+        .comment-container
+            .comment-text.wysiwyg(
+                ng-if="!vm.editMode"
+                ng-bind-html="vm.comment.comment_html"
+            )
+            .comment-editor(
+                ng-if="vm.editMode"
+                ng-keyup="vm.checkCancelComment($event)"
+            )
+                .edit-comment(ng-model="vm.type")
+                    textarea(
+                        ng-model="vm.commentContent.comment"
+                    )
+                    .save-comment-wrapper
+                        button.button-green.save-comment(
+                            type="button"
+                            title="{{'COMMENTS.EDIT_COMMENT' | translate}}"
+                            translate="COMMENTS.EDIT_COMMENT"
+                            ng-disabled="!vm.commentContent.comment.length || vm.editing == vm.comment.id"
+                            ng-click="vm.onEditComment({commentId: vm.comment.id, commentData: vm.commentContent.comment})"
+                            tg-loading="vm.editing == vm.comment.id"
+                        )
+    .comment-options(ng-if="::vm.canEditDeleteComment()")
+        tg-svg.comment-option(
+            svg-icon="icon-edit"
+            svg-title-translate="COMMON.EDIT"
+            ng-click="vm.onEditMode({commentId: vm.comment.id})"
+            ng-if="!vm.editMode"
+        )
+        tg-svg.comment-option(
+            svg-icon="icon-close"
+            svg-title-translate="COMMON.CANCEL"
+            ng-click="vm.onEditMode({commentId: vm.comment.id})"
+            ng-if="vm.editMode"
+        )
+        tg-svg.comment-option(
+            svg-icon="icon-trash"
+            svg-title-translate="COMMON.DELETE"
+            ng-click="vm.onDeleteComment({commentId: vm.comment.id})"
+            ng-if="!vm.editMode"
+            tg-loading="vm.deleting == vm.comment.id"
+        )
+
+.deleted-comment-wrapper(
+    ng-if="vm.comment.delete_comment_date"
+)
+    .deleted-comment-main
+        span(
+            translate="COMMENTS.DELETED_INFO"
+            translate-values="{user: vm.comment.delete_comment_user.name }"
+        )
+        span - {{vm.comment.delete_comment_date | momentFormat:'DD MMM YYYY HH:mm'}}
+        a.toggle-deleted-comment(
+            href=""
+            ng-click="vm.showDeletedComment()"
+            ng-if="vm.hiddenDeletedComment"
+        )
+            span(translate="COMMENTS.SHOW_DELETED")
+            tg-svg(
+                svg-icon="icon-arrow-down"
+                svg-title-translate="COMMENTS.SHOW_DELETED"
+            )
+        a.toggle-deleted-comment(
+            href=""
+            ng-click="vm.hideDeletedComment()"
+            ng-if="!vm.hiddenDeletedComment"
+        )
+            span(translate="COMMENTS.HIDE_DELETED")
+            tg-svg(
+                svg-icon="icon-arrow-up"
+                svg-title-translate="COMMENTS.HIDE_DELETED"
+            )
+        a.restore-comment(
+            href=""
+            ng-click="vm.onRestoreDeletedComment({commentId: vm.comment.id})"
+            tg-loading="vm.editing == vm.comment.id"
+        )
+            tg-svg(
+                svg-icon="icon-reload"
+                svg-title-translate="COMMENTS.RESTORE"
+            )
+            span(translate="COMMENTS.RESTORE")
+    p.deleted-comment-comment(
+        ng-if="!vm.hiddenDeletedComment"
+        ng-bind-html="vm.comment.comment_html"
+    )

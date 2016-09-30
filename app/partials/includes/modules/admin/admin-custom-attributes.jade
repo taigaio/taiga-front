@@ -16,13 +16,13 @@ section.custom-fields-table.basic-table
 
     .table-body
         .js-sortable
-            div(
+            .e2e-item(
                 ng-repeat="attr in customAttributes track by attr.id"
                 tg-bind-scope
             )
                 form.js-form(tg-bind-scope)
                     div.row.single-custom-field.js-view-custom-field
-                        tg-svg(svg-icon="icon-drag")
+                        tg-svg.e2e-drag(svg-icon="icon-drag")
                         div.custom-name {{ attr.name }}
                         div.custom-description {{ attr.description }}
                         div.custom-field-type(ng-switch on="attr.type")

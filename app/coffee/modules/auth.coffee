@@ -37,12 +37,13 @@ class LoginPage
 
     constructor: (currentUserService, $location, $navUrls, $routeParams) ->
         if currentUserService.isAuthenticated()
-            url = $navUrls.resolve("home")
-            if $routeParams['next']
-                url = $routeParams['next']
-                $location.search('next', null)
+            if not $routeParams['force_login']
+                url = $navUrls.resolve("home")
+                if $routeParams['next']
+                    url = decodeURIComponent($routeParams['next'])
+                    $location.search('next', null)
 
-            $location.path(url)
+                $location.url(url)
 
 
 module.controller('LoginPage', LoginPage)
@@ -243,8 +244,9 @@ PublicRegisterMessageDirective = ($config, $navUrls, $routeParams, templates) ->
             return ""
 
         url = $navUrls.resolve("register")
-        if $routeParams['next'] and $routeParams['next'] != $navUrls.resolve("register")
-            nextUrl = encodeURIComponent($routeParams['next'])
+
+        if $routeParams['force_next']
+            nextUrl = encodeURIComponent($routeParams['force_next'])
             url += "?next=#{nextUrl}"
 
         return template({url:url})
@@ -259,7 +261,7 @@ module.directive("tgPublicRegisterMessage", ["$tgConfig", "$tgNavUrls", "$routeP
                                              "$tgTemplate", PublicRegisterMessageDirective])
 
 
-LoginDirective = ($auth, $confirm, $location, $config, $routeParams, $navUrls, $events, $translate) ->
+LoginDirective = ($auth, $confirm, $location, $config, $routeParams, $navUrls, $events, $translate, $window) ->
     link = ($scope, $el, $attrs) ->
         form = new checksley.Form($el.find("form.login-form"))
 
@@ -268,9 +270,16 @@ LoginDirective = ($auth, $confirm, $location, $config, $routeParams, $navUrls, $
         else
             $scope.nextUrl = $navUrls.resolve("home")
 
+        if $routeParams['force_next']
+            $scope.nextUrl = decodeURIComponent($routeParams['force_next'])
+
         onSuccess = (response) ->
             $events.setupConnection()
-            $location.url($scope.nextUrl)
+
+            if $scope.nextUrl.indexOf('http') == 0
+                $window.location.href = $scope.nextUrl
+            else
+                $location.url($scope.nextUrl)
 
         onError = (response) ->
             $confirm.notify("light-error", $translate.instant("LOGIN_FORM.ERROR_AUTH_INCORRECT"))
@@ -308,14 +317,14 @@ LoginDirective = ($auth, $confirm, $location, $config, $routeParams, $navUrls, $
     return {link:link}
 
 module.directive("tgLogin", ["$tgAuth", "$tgConfirm", "$tgLocation", "$tgConfig", "$routeParams",
-                             "$tgNavUrls", "$tgEvents", "$translate", LoginDirective])
+                             "$tgNavUrls", "$tgEvents", "$translate", "$window", LoginDirective])
 
 
 #############################################################################
 ## Register Directive
 #############################################################################
 
-RegisterDirective = ($auth, $confirm, $location, $navUrls, $config, $routeParams, $analytics, $translate) ->
+RegisterDirective = ($auth, $confirm, $location, $navUrls, $config, $routeParams, $analytics, $translate, $window) ->
     link = ($scope, $el, $attrs) ->
         if not $config.get("publicRegisterEnabled")
             $location.path($navUrls.resolve("not-found"))
@@ -324,12 +333,18 @@ RegisterDirective = ($auth, $confirm, $location, $navUrls, $config, $routeParams
         $scope.data = {}
         form = $el.find("form").checksley({onlyOneErrorElement: true})
 
-        $scope.nextUrl = $navUrls.resolve("home")
+        if $routeParams['next'] and $routeParams['next'] != $navUrls.resolve("login")
+            $scope.nextUrl = decodeURIComponent($routeParams['next'])
+        else
+            $scope.nextUrl = $navUrls.resolve("home")
 
         onSuccessSubmit = (response) ->
             $analytics.trackEvent("auth", "register", "user registration", 1)
 
-            $location.url($scope.nextUrl)
+            if $scope.nextUrl.indexOf('http') == 0
+                $window.location.href = $scope.nextUrl
+            else
+                $location.url($scope.nextUrl)
 
         onErrorSubmit = (response) ->
             if response.data._error_message
@@ -357,7 +372,7 @@ RegisterDirective = ($auth, $confirm, $location, $navUrls, $config, $routeParams
     return {link:link}
 
 module.directive("tgRegister", ["$tgAuth", "$tgConfirm", "$tgLocation", "$tgNavUrls", "$tgConfig",
-                                "$routeParams", "$tgAnalytics", "$translate", RegisterDirective])
+                                "$routeParams", "$tgAnalytics", "$translate", "$window", RegisterDirective])
 
 
 #############################################################################
@@ -458,13 +473,14 @@ module.directive("tgChangePasswordFromRecovery", ["$tgAuth", "$tgConfirm", "$tgL
 ## Invitation
 #############################################################################
 
-InvitationDirective = ($auth, $confirm, $location, $params, $navUrls, $analytics, $translate) ->
+InvitationDirective = ($auth, $confirm, $location, $params, $navUrls, $analytics, $translate, config) ->
     link = ($scope, $el, $attrs) ->
         token = $params.token
 
         promise = $auth.getInvitation(token)
         promise.then (invitation) ->
             $scope.invitation = invitation
+            $scope.publicRegisterEnabled = config.get("publicRegisterEnabled")
 
         promise.then null, (response) ->
             $location.path($navUrls.resolve("login"))
@@ -535,7 +551,7 @@ InvitationDirective = ($auth, $confirm, $location, $params, $navUrls, $analytics
     return {link:link}
 
 module.directive("tgInvitation", ["$tgAuth", "$tgConfirm", "$tgLocation", "$routeParams",
-                                  "$tgNavUrls", "$tgAnalytics", "$translate", InvitationDirective])
+                                  "$tgNavUrls", "$tgAnalytics", "$translate", "$tgConfig", InvitationDirective])
 
 
 #############################################################################

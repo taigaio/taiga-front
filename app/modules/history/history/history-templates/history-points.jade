@@ -1,0 +1,11 @@
+.diff-points-wrapper(ng-repeat="(key, diff) in vm.diff")
+    span.key(
+        translate="ACTIVITY.US_POINTS"
+        translate-values="{role: vm.diff.key}"
+    )
+    span.diff {{diff[0]}}
+    tg-svg.comment-option(
+        svg-icon="icon-arrow-right"
+        svg-title-translate="COMMON.EDIT"
+    )
+    span.diff {{diff[1]}}

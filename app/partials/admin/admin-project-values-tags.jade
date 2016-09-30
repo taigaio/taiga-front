@@ -1,0 +1,32 @@
+doctype html
+
+div.wrapper(
+    ng-controller="ProjectValuesSectionController",
+    ng-init="sectionName='ADMIN.PROJECT_VALUES_TAGS.TITLE'"
+)
+
+    tg-project-menu
+
+    sidebar.menu-secondary.sidebar.settings-nav(tg-admin-navigation="project-values")
+        include ../includes/modules/admin-menu
+
+    sidebar.menu-tertiary.sidebar(tg-admin-navigation="values-tags")
+        include ../includes/modules/admin-submenu-project-values
+
+    section.main.admin-common.admin-attributes.colors-table.tags-table(
+        tg-project-tags,
+        ng-controller="ProjectTagsController as ctrl"
+    )
+        header.header-with-actions
+            .title
+                include ../includes/components/mainTitle
+                p.admin-subtitle(translate="ADMIN.PROJECT_VALUES_TAGS.SUBTITLE")
+            .action-buttons
+                a.button.button-green.show-add-new(
+                    href=""
+                    title="{{ 'ADMIN.PROJECT_VALUES_TAGS.NEW_TAG'|translate }}"
+                    translate="ADMIN.PROJECT_VALUES_TAGS.NEW_TAG"
+                )
+
+        .admin-attributes-section
+            include ../includes/modules/admin/project-tags

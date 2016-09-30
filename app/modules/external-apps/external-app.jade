@@ -9,7 +9,10 @@ section.external-app-wrapper
     div.user-card.avatar
         .card-inner
             div.user-image
-                img(ng-src="{{::vm.user.get('photo')}}", alt="{{::vm.user.get('full_name_display')}}")
+                img(
+                    tg-avatar="vm.user"
+                    alt="{{::vm.user.get('full_name_display')}}"
+                )
             div.user-data
                 h3 {{ ::vm.user.get("full_name_display") }}
                 p {{ ::vm.user.get("email") }}

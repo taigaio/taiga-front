@@ -33,13 +33,13 @@
     }
     &.disabled,
     &[disabled] {
-        background: $whitish;
+        background: $mass-white;
         box-shadow: none;
         color: $gray-light;
         cursor: not-allowed;
         opacity: .65;
         &:hover {
-            background: $whitish;
+            background: $mass-white;
             color: $gray-light;
         }
     }
@@ -154,4 +154,27 @@ a.button-gray {
     color: $primary;
     display: inline-block;
     margin-top: .5rem;
+}
+
+.button-filter {
+    @extend %button;
+    background: $whitish;
+    margin-left: 1rem;
+    padding: .4rem .5rem;
+    position: relative;
+    &:hover {
+        background: $gray-light;
+        fill: $whitish;
+    }
+    .filter-num {
+        @include font-size(small);
+        @include font-type(medium);
+        background: $red;
+        border-radius: 50%;
+        height: 1rem;
+        left: -.5rem;
+        position: absolute;
+        top: -.5rem;
+        width: 1rem;
+    }
 }

@@ -1,11 +1,42 @@
 # Changelog #
 
 
-## 2.2.0 ???? (Unreleased)
+## 3.0.0 Stellaria Borealis (2016-10-02)
 
 ### Features
-- Show a confirmation notice when you exit edit mode by pressing ESC in the markdown inputs.
+- Add Epics.
 - Add the tribe button to link stories from tree.taiga.io with gigs in tribe.taiga.io.
+- Show a confirmation notice when you exit edit mode by pressing ESC in the markdown inputs.
+- Errors (not found, server error, permissions and blocked project) don't change the current url.
+- Neew Attachments image slider in preview mode.
+- New admin area to edit the tag colors used in your project.
+- Set color when add a new tags to epics, stories, tasks or issues.
+- Display the current user (me) at first in assignment lightbox (thanks to [@mikaoelitiana](https://github.com/mikaoelitiana))
+- Divide the user dashboard in two columns in large screens.
+- Upvote and downvote issues from the issues list.
+- Show points per role in statsection of the taskboard panel. (thanks to [@fmartingr](https://github.com/fmartingr))
+- Show a funny randon animals/color for users with no avatar (like project logos).
+- Show Open Sprints in the left navigation menu (backlog submenu).
+- Filters:
+    - Refactor the filter module.
+    - Add filters in the kanban panel.
+    - Add filter in the sprint taskboard panel.
+- Cards UI improvements:
+    - Add zoom levels.
+    - Show information according the zoom level.
+    - Show voters, watchers, taks and attachments.
+    - Improve performance.
+- Comments:
+    - Add a new permissions to allow add comments instead of use the existent modify permission for this purpose.
+    - Ability to edit comments, view edition history and redesign comments module UI.
+- Wiki:
+    - Drag & Drop ordering for wiki links.
+    - Add a list of all wiki pages
+    - Add Wiki history
+- Third party integrations:
+    - Included gogs as builtin integration.
+- i18n:
+  - Add norwegian Bokmal (nb) translation.
 
 ### Misc
 - Lots of small and not so small bugfixes.

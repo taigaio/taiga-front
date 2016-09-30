@@ -105,18 +105,3 @@
         }
     }
 }
-
-.empty-discover-results {
-    @include centered;
-    margin-top: 4rem;
-    text-align: center;
-    img {
-        margin-bottom: 1rem;
-    }
-    .title {
-        @include font-size(large);
-        @include font-type(light);
-        margin: 0;
-        text-transform: uppercase;
-    }
-}

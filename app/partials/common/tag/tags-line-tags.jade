@@ -1,8 +1,16 @@
 <% _.each(tags, function(tag) { %>
-span(class="tag", style!="border-left: 5px solid <%- tag.color %>;")
+<% if (tag.name == deleteTagLoading) { %>
+div(tg-loading="true")
+<% } else { %>
+span.tag(style!="border-left: 5px solid <%- tag.style %>;")
     span.tag-name <%- tag.name %>
     <% if (isEditable) { %>
-    a.remove-tag(href="", title="{{'COMMON.TAGS.DELETE' | translate}}")
+    a.remove-tag(
+        href=""
+        title="{{'COMMON.TAGS.DELETE' | translate}}"
+    )
         tg-svg(svg-icon="icon-close")
     <% } %>
+<% } %>
 <% }); %>
+div(tg-loading!="<%- loading %>")

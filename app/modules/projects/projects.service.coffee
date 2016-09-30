@@ -20,6 +20,7 @@
 taiga = @.taiga
 groupBy = @.taiga.groupBy
 
+
 class ProjectsService extends taiga.Service
     @.$inject = ["tgResources", "$projectUrl", "tgLightboxFactory"]
 
@@ -42,16 +43,6 @@ class ProjectsService extends taiga.Service
         url = @projectUrl.get(project.toJS())
 
         project = project.set("url", url)
-        colorized_tags = []
-
-        if project.get("tags")
-            tags = project.get("tags").sort()
-
-            colorized_tags = tags.map (tag) ->
-                color = project.get("tags_colors").get(tag)
-                return Immutable.fromJS({name: tag, color: color})
-
-            project = project.set("colorized_tags", colorized_tags)
 
         return project
 

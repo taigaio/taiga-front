@@ -1,0 +1,11 @@
+a.add-tag-button.ng-animate-disabled.e2e-show-tag-input(
+    ng-if="!vm.addTag && vm.checkPermissions()"
+    href="#"
+    title="{{'COMMON.TAGS.ADD' | translate}}"
+    ng-click="vm.displayTagInput()"
+)
+    tg-svg(
+        svg-icon="icon-add"
+        svg-title-translate="COMMON.TAGS.ADD"
+    )
+    span.add-tag-text(translate="COMMON.TAGS.ADD")

@@ -31,20 +31,24 @@
     }
     .webhook-service {
         flex-basis: 20%;
-        flex-grow: 0;
+        flex-shrink: 0;
     }
     .webhook-url {
-        flex-basis: 400px;
-        flex-grow: 8;
+        flex-basis: 60%;
+        flex-grow: 0;
+        flex-shrink: 0;
+        overflow: hidden;
         span {
-            @include ellipsis($width: 65%);
+            @include ellipsis(85%);
             color: $gray-light;
             display: inline-block;
             vertical-align: middle;
         }
         a {
             color: $primary;
+            cursor: pointer;
             margin-left: .5rem;
+            white-space: nowrap;
             &:hover {
                 color: $primary-light;
             }
@@ -54,7 +58,9 @@
         flex-basis: 100px;
         flex-grow: 0;
         flex-shrink: 0;
+        margin-left: auto;
         a {
+            cursor: pointer;
             display: inline-block;
             margin-right: .5rem;
         }
@@ -82,7 +88,7 @@
     }
 
     .webhooks-history {
-        @include slide(1000px, hidden, $min: 0);
+        display: none;
     }
 
     .history-single-wrapper {

@@ -110,7 +110,7 @@ describe('attributes - status', function() {
         expect(newStatuses.indexOf(newStatusName)).to.be.not.equal(-1);
     });
 
-    it.skip('drag', async function() {
+    it('drag', async function() {
         let section = adminAttributesHelper.getSection(0);
         let rows = section.rows();
         let statuses = await adminAttributesHelper.getStatusNames(section.el);

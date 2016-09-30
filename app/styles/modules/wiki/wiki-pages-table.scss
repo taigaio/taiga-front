@@ -1,0 +1,49 @@
+.wiki-pages-table {
+    display: flex;
+    .row {
+        padding: .5rem;
+    }
+    .title {
+        @include font-size(medium);
+        @include font-type(bold);
+    }
+    .table-main {
+        @include font-size(small);
+    }
+    .title-field {
+        flex-basis: 180px;
+        flex-grow: 1;
+        flex-shrink: 0;
+    }
+    .created-field,
+    .created-field,
+    .modified-field {
+        flex-basis: 10vw;
+        flex-grow: 0;
+        flex-shrink: 0;
+        margin-right: .5rem;
+    }
+    .editions-field {
+        flex-basis: 80px;
+        flex-grow: 0;
+        flex-shrink: 0;
+        margin-right: .5rem;
+        text-align: center;
+    }
+    .creator-field,
+    .last-modifier-field {
+        align-items: center;
+        display: flex;
+        flex-basis: 200px;
+        .user-avatar {
+            flex-grow: 0;
+            img {
+                height: 2rem;
+            }
+        }
+        .user-full-name {
+            flex-grow: 1;
+            padding: .5rem;
+        }
+    }
+}

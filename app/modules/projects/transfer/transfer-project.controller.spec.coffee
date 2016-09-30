@@ -28,6 +28,13 @@ describe "TransferProject", ->
         mocks.routeParams = {}
         provide.value "$routeParams", mocks.routeParams
 
+    _mockErrorHandlingService = () ->
+        mocks.errorHandlingService = {
+            notfound: sinon.stub()
+        }
+
+        provide.value "tgErrorHandlingService", mocks.errorHandlingService
+
     _mockProjectsService = () ->
         mocks.projectsService = {
             transferValidateToken: sinon.stub()
@@ -90,6 +97,7 @@ describe "TransferProject", ->
             _mockTgNavUrls()
             _mockTranslate()
             _mockTgConfirm()
+            _mockErrorHandlingService()
             return null
 
     _inject = (callback) ->
@@ -113,13 +121,13 @@ describe "TransferProject", ->
         mocks.auth.refresh.promise().resolve()
         mocks.routeParams.token = "BAD_TOKEN"
         mocks.currentUserService.getUser.returns(user)
-        mocks.projectsService.transferValidateToken.withArgs(1, "BAD_TOKEN").promise().reject()
+        mocks.projectsService.transferValidateToken.withArgs(1, "BAD_TOKEN").promise().reject(new Error('error'))
         mocks.tgNavUrls.resolve.withArgs("not-found").returns("/not-found")
 
         ctrl = $controller("TransferProjectController")
         ctrl.project = project
         ctrl.initialize().then () ->
-            expect(mocks.location.path).to.be.calledWith("/not-found")
+            expect(mocks.errorHandlingService.notfound).have.been.called
             done()
 
     it "valid token private project with max projects for user", (done) ->
@@ -247,7 +255,7 @@ describe "TransferProject", ->
                   expect(mocks.location.path).to.be.calledWith("/project/slug/")
                   expect(mocks.tgConfirm.notify).to.be.calledWith("success", "ACCEPTED_PROJECT_OWNERNSHIP", '', 5000)
 
-              done()
+                  done()
 
       it "transfer reject", (done) ->
           project = Immutable.fromJS({
@@ -262,7 +270,7 @@ describe "TransferProject", ->
           mocks.currentUserService.getUser.returns(user)
           mocks.projectsService.transferValidateToken.withArgs(1, "TOKEN").promise().resolve()
           mocks.projectsService.transferReject.withArgs(1, "TOKEN", "this is my reason").promise().resolve()
-          mocks.tgNavUrls.resolve.withArgs("project-admin-project-profile-details", {project: "slug"}).returns("/project/slug/")
+          mocks.tgNavUrls.resolve.withArgs("home", {project: "slug"}).returns("/project/slug/")
           mocks.translate.instant.withArgs("ADMIN.PROJECT_TRANSFER.REJECTED_PROJECT_OWNERNSHIP").returns("REJECTED_PROJECT_OWNERNSHIP")
 
           ctrl = $controller("TransferProjectController")
@@ -272,4 +280,4 @@ describe "TransferProject", ->
                   expect(mocks.location.path).to.be.calledWith("/project/slug/")
                   expect(mocks.tgConfirm.notify).to.be.calledWith("success", "REJECTED_PROJECT_OWNERNSHIP", '', 5000)
 
-              done()
+                  done()

@@ -84,7 +84,7 @@ describe('attributes - priorities', function() {
         expect(newPriorities.indexOf(newPriorityName)).to.be.not.equal(-1);
     });
 
-    it.skip('drag', async function() {
+    it('drag', async function() {
         let section = adminAttributesHelper.getSection(0);
         let rows = section.rows();
         let priorities = await adminAttributesHelper.getGenericNames(section.el);

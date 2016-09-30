@@ -1,34 +1,23 @@
 .wiki {
+    max-width: 1024px;
+    .wysiwyg {
+        margin-bottom: 0;
+    }
     .wiki-title {
         @include font-type(light);
-        @include font-size(larger);
-    }
-    .remove {
-        @include font-size(small);
-        color: $gray-light;
-        &:hover {
-            color: $red-light;
-            transition: color .1s linear;
-            .icon {
-                fill: $red-light;
-                transition: fill .1s linear;
-            }
-        }
-        .icon {
-            color: $gray-light;
-            margin-right: .2rem;
-        }
+        @include font-size(xxlarge);
+        margin-bottom: 0;
+        padding: 1rem;
     }
 }
 
 .wiki-content {
-    @include cursor-progress;
-    margin-bottom: 2rem;
+    @include font-size(large);
     position: relative;
     &.editable {
         &:hover {
             .wysiwyg {
-                background: $whitish;
+                background: $mass-white;
                 cursor: pointer;
             }
         }
@@ -44,7 +33,7 @@
     }
     .edit {
         @include svg-size(2rem);
-        background: $whitish;
+        background: $mass-white;
         left: 0;
         opacity: 0;
         padding: .2rem .5rem;

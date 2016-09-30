@@ -29,8 +29,6 @@ describe('discover search', () => {
 
             discoverHelper.searchFilter(3);
 
-            await htmlChanges();
-
             let url = await browser.getCurrentUrl();
 
             let projects = discoverHelper.searchProjects();
@@ -40,11 +38,14 @@ describe('discover search', () => {
         });
 
         it('search by text', async () => {
-            discoverHelper.searchInput().sendKeys('Project Example 0');
+            let projects = discoverHelper.searchProjects();
+            let projectTitle = projects.get(0).$('h2 a').getText();
+
+            discoverHelper.searchInput().sendKeys(projectTitle);
 
             discoverHelper.sendSearch();
 
-            let projects = discoverHelper.searchProjects();
+            projects = discoverHelper.searchProjects();
             expect(await projects.count()).to.be.equal(1);
         });
     });

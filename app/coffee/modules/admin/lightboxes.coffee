@@ -99,7 +99,14 @@ class LightboxAddMembersController
 
     _onErrorInvite: (response) ->
         @.submitInvites = false
-        @.form.setErrors(response.data)
+        errors = {}
+        _.each response.data.bulk_memberships, (value, index) =>
+            if value.email
+                errors["email-#{index}"] = value.email[0]
+            if value.role
+                errors["role-#{index}"] = value.role[0]
+
+        @.form.setErrors(errors)
         if response.data._error_message
             @confirm.notify("error", response.data._error_message)
 

@@ -1,14 +1,27 @@
-div.wiki-times-edited
-    span.number <%- totalEditions %>
-    span.description(translate="WIKI.SUMMARY.TIMES_EDITED")
+.wiki-username-edition
+    .avatar
+        img(
+            style!="background-color: <%- user.avatar.bg %>"
+            src!="<%- user.avatar.url %>"
+            alt!="<%- user.name %>"
+        )
+    .wiki-user-modification
+        span.description(translate="WIKI.SUMMARY.LAST_MODIFICATION")
+        span.username <%- user.name %>
 
-div.wiki-last-modified
+.wiki-last-modified
     span.number <%- lastModifiedDate %>
     span.description(translate="WIKI.SUMMARY.LAST_EDIT")
 
-div.wiki-username-edition
-    figure.avatar
-        img(src!="<%- user.imgUrl %>" alt!="<%- user.name %>")
-    div.wiki-user-modification
-        span.description(translate="WIKI.SUMMARY.LAST_MODIFICATION")
-        span.username <%- user.name %>
+.wiki-times-edited
+    span.number <%- totalEditions %>
+    span.description(translate="WIKI.SUMMARY.TIMES_EDITED")
+
+tg-svg.remove(
+    tg-check-permission="delete_wiki_page"
+    title="{{'WIKI.REMOVE' | translate}}"
+    ng-click="ctrl.delete()"
+    svg-icon="icon-trash"
+    ng-if="wiki.id"
+
+)

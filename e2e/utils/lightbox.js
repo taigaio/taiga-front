@@ -4,11 +4,17 @@ var lightbox = module.exports;
 var transition = 300;
 
 lightbox.exit = function(el) {
+    if (!el) {
+        el = $('.lightbox.open');
+    }
+
     if (typeof el === 'string' || el instanceof String) {
         el = $(el);
     }
 
     el.$('.close').click();
+
+    return lightbox.close(el);
 };
 
 lightbox.open = async function(el) {
@@ -22,7 +28,7 @@ lightbox.open = async function(el) {
         return common.hasClass(el, 'open');
     }, 4000);
 
-    await browser.sleep(transition);
+    await browser.sleep(transition + 100);
 
     if (open) {
         deferred.fulfill(true);
@@ -34,7 +40,6 @@ lightbox.open = async function(el) {
 };
 
 lightbox.close = async function(el) {
-    var deferred = protractor.promise.defer();
     var present = true;
 
     if (typeof el == 'string' || el instanceof String) {
@@ -43,22 +48,19 @@ lightbox.close = async function(el) {
 
     present = await el.isPresent();
 
-    if (!present) {
-        deferred.fulfill(true);
-    } else {
-        return browser.wait(function() {
-            return common.hasClass(el, 'open').then(function(open) {
+    if (present) {
+        try {
+            await browser.wait(async function() {
+                let open = await common.hasClass(el, 'open');
                 return !open;
-            });
-        }, 4000)
-            .then(function() {
-                return deferred.fulfill(true);
-            }, function() {
-                deferred.reject(new Error('Lightbox doesn\'t close'));
-            });
+            }, 4000);
+        } catch (e) {
+            new Error('Lightbox doesn\'t close')
+            return false;
+        }
     }
 
-    return deferred.promise;
+    return true;
 };
 
 lightbox.confirm = {};
@@ -68,6 +70,16 @@ lightbox.confirm.ok = async function() {
     await lightbox.open(lb);
 
     lb.$('.button-green').click();
+
+    await lightbox.close(lb);
+};
+
+
+lightbox.confirm.cancel = async function() {
+    let lb = $('.lightbox-generic-ask');
+    await lightbox.open(lb);
+
+    lb.$('.button-red').click();
 
     await lightbox.close(lb);
 };

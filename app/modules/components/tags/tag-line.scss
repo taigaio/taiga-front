@@ -1,0 +1,22 @@
+.tags-block {
+    align-content: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.add-tag-button {
+    color: $gray-light;
+    cursor: pointer;
+    display: inline-block;
+    &:hover {
+        color: $primary-light;
+    }
+    .icon-add {
+        @include svg-size(.9rem);
+        fill: currentColor;
+        margin: .5rem .25rem 0 0;
+    }
+    .add-tag-text {
+        @include font-size(small);
+    }
+}

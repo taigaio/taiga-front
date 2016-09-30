@@ -5,7 +5,36 @@ div.wrapper(tg-kanban, ng-controller="KanbanController as ctrl"
     tg-project-menu
 
     section.main.kanban
-        include ../includes/components/mainTitle
+        tg-filter(
+          ng-show="ctrl.openFilter"
+          q="ctrl.filterQ"
+          filters="ctrl.filters"
+          custom-filters="ctrl.customFilters"
+          selected-filters="ctrl.selectedFilters"
+          customFilters="ctl.customFilters"
+          on-save-custom-filter="ctrl.saveCustomFilter(name)"
+          on-add-filter="ctrl.addFilter(filter)"
+          on-select-custom-filter="ctrl.selectCustomFilter(filter)"
+          on-remove-custom-filter="ctrl.removeCustomFilter(filter)"
+          on-remove-filter="ctrl.removeFilter(filter)"
+          on-change-q="ctrl.changeQ(q)"
+        )
+
+        .kanban-header
+            include ../includes/components/mainTitle
+            .taskboard-actions
+                tg-kanban-board-zoom(
+                    ng-if="usByStatus.size",
+                    on-zoom-change="ctrl.setZoom(zoomLevel, zoom)"
+                )
+
+                button.button-filter.e2e-open-filter(
+                    ng-click="ctrl.openFilter = !ctrl.openFilter"
+                    title="{{ctrl.selectedFilters.length}} {{'COMMON.FILTERS.APPLIED_FILTERS_NUM' | translate}}"
+                )
+                    span.filter-num(ng-if="ctrl.selectedFilters.length") {{ctrl.selectedFilters.length}}
+                    tg-svg(svg-icon="icon-filters")
+
         include ../includes/modules/kanban-table
 
     div.lightbox.lightbox-generic-form.lb-create-edit-userstory(tg-lb-create-edit-userstory)

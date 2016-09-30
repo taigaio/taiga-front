@@ -28,9 +28,11 @@ addClass = (el, className) ->
     else
         el.className += ' ' + className
 
+
 nl2br = (str) =>
     breakTag = '<br />'
     return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2')
+
 
 bindMethods = (object) =>
     dependencies = _.keys(object)
@@ -38,10 +40,11 @@ bindMethods = (object) =>
     methods = []
 
     _.forIn object, (value, key) =>
-        if key not in dependencies
+        if key not in dependencies && _.isFunction(value)
             methods.push(key)
 
     _.bindAll(object, methods)
+
 
 bindOnce = (scope, attr, continuation) =>
     val = scope.$eval(attr)
@@ -74,6 +77,7 @@ slugify = (data) ->
         .replace(/&/g, '-and-')
         .replace(/[^\w\-]+/g, '')
         .replace(/\-\-+/g, '-')
+
 
 unslugify = (data) ->
     if data
@@ -165,12 +169,14 @@ sizeFormat = (input, precision=1) ->
     size = (input / Math.pow(1024, number)).toFixed(precision)
     return  "#{size} #{units[number]}"
 
+
 stripTags = (str, exception) ->
     if exception
         pattern = new RegExp('<(?!' + exception + '\s*\/?)[^>]+>', 'gi')
         return String(str).replace(pattern, '')
     else
         return String(str).replace(/<\/?[^>]+>/g, '')
+
 
 replaceTags = (str, tags, replace) ->
     # open tag
@@ -182,6 +188,7 @@ replaceTags = (str, tags, replace) ->
     str = str.replace(pattern, '</' + replace + '>')
 
     return str
+
 
 defineImmutableProperty = (obj, name, fn) =>
     Object.defineProperty obj, name, {
@@ -197,6 +204,7 @@ defineImmutableProperty = (obj, name, fn) =>
             return fn_result
     }
 
+
 _.mixin
     removeKeys: (obj, keys) ->
         _.chain([keys]).flatten().reduce(
@@ -211,9 +219,13 @@ _.mixin
             , [ [] ])
 
 
-
 isImage = (name) ->
     return name.match(/\.(jpe?g|png|gif|gifv|webm)/i) != null
+
+
+isPdf = (name) ->
+    return name.match(/\.(pdf)/i) != null
+
 
 patch = (oldImmutable, newImmutable) ->
     pathObj = {}
@@ -226,6 +238,18 @@ patch = (oldImmutable, newImmutable) ->
                 pathObj[key] = newValue
 
     return pathObj
+
+DEFAULT_COLOR_LIST = [
+    '#fce94f', '#edd400', '#c4a000', '#8ae234', '#73d216', '#4e9a06', '#d3d7cf',
+    '#fcaf3e', '#f57900', '#ce5c00', '#729fcf', '#3465a4', '#204a87', '#888a85',
+    '#ad7fa8', '#75507b', '#5c3566', '#ef2929', '#cc0000', '#a40000', '#222222'
+]
+
+getRandomDefaultColor = () ->
+    return _.sample(DEFAULT_COLOR_LIST)
+
+getDefaulColorList = () ->
+    return _.clone(DEFAULT_COLOR_LIST)
 
 taiga = @.taiga
 taiga.addClass = addClass
@@ -252,4 +276,7 @@ taiga.stripTags = stripTags
 taiga.replaceTags = replaceTags
 taiga.defineImmutableProperty = defineImmutableProperty
 taiga.isImage = isImage
+taiga.isPdf = isPdf
 taiga.patch = patch
+taiga.getRandomDefaultColor = getRandomDefaultColor
+taiga.getDefaulColorList = getDefaulColorList

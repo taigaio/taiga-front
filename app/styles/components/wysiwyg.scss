@@ -6,23 +6,44 @@
     h1 {
         @include font-size(xlarge);
         @include font-type(text);
-        line-height: 2.5rem;
+        font-size: 2.25em;
+        line-height: 1.2;
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+        padding-bottom: .5rem;
         text-transform: uppercase;
     }
     h2 {
-        @include font-size(large);
+        @include font-size(larger);
         @include font-type(bold);
-        margin-bottom: .5rem;
-        text-transform: uppercase;
+        line-height: 1.225;
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+        padding-bottom: .5rem;
     }
     h3 {
+        @include font-size(large);
         @include font-type(bold);
-        text-transform: uppercase;
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+        padding-bottom: .5rem;
+    }
+    h4 {
+        @include font-type(bold);
+        margin-bottom: 1rem;
+        margin-top: 1rem;
     }
     ul,
     ol {
+        line-height: 1.5;
         list-style-position: outside;
-        margin-left: 1rem;
+        margin-bottom: 0;
+        margin-top: 0;
+        padding-left: 2em;
+        ul,
+        ol {
+            padding-left: 1rem;
+        }
     }
     ul {
         list-style-type: disc;
@@ -53,6 +74,11 @@
     .codehilite {
         overflow: auto;
     }
+    blockquote {
+        p {
+            margin: 0;
+        }
+    }
     pre,
     code {
         @include font-size(small);
@@ -64,10 +90,11 @@
         overflow: auto;
         unicode-bidi: embed;
         white-space: pre-wrap;
+
     }
     pre {
         line-height: 1.4rem;
-        padding: .5rem;
+        padding: 1rem;
     }
     table {
         border: $gray-light 1px solid;
@@ -102,5 +129,8 @@
     textarea {
         background: $white;
         max-height: none;
+    }
+    hr {
+        border: 1px solid $whitish;
     }
 }

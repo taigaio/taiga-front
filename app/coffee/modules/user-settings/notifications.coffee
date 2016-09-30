@@ -44,10 +44,11 @@ class UserNotificationsController extends mixOf(taiga.Controller, taiga.PageMixi
         "$q",
         "$tgLocation",
         "$tgNavUrls",
-        "$tgAuth"
+        "$tgAuth",
+        "tgErrorHandlingService"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @navUrls, @auth) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @navUrls, @auth, @errorHandlingService) ->
         @scope.sectionName = "USER_SETTINGS.NOTIFICATIONS.SECTION_NAME"
         @scope.user = @auth.getUser()
         promise = @.loadInitialData()

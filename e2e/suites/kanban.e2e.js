@@ -2,6 +2,8 @@ var utils = require('../utils');
 var kanbanHelper = require('../helpers').kanban;
 var backlogHelper = require('../helpers').backlog;
 var commonHelper = require('../helpers').common;
+var filterHelper = require('../helpers/filters-helper');
+var sharedFilters = require('../shared/filters');
 
 var chai = require('chai');
 var chaiAsPromised = require('chai-as-promised');
@@ -16,6 +18,24 @@ describe('kanban', function() {
         await utils.common.waitLoader();
 
         utils.common.takeScreenshot('kanban', 'kanban');
+    });
+
+    it('zoom', async function() {
+        kanbanHelper.zoom(1);
+        await browser.sleep(1000);
+        utils.common.takeScreenshot('kanban', 'zoom1');
+
+        kanbanHelper.zoom(2);
+        await browser.sleep(1000);
+        utils.common.takeScreenshot('kanban', 'zoom2');
+
+        kanbanHelper.zoom(3);
+        await browser.sleep(1000);
+        utils.common.takeScreenshot('kanban', 'zoom3');
+
+        kanbanHelper.zoom(4);
+        await browser.sleep(1000);
+        utils.common.takeScreenshot('kanban', 'zoom4');
     });
 
     describe('create us', function() {
@@ -54,11 +74,7 @@ describe('kanban', function() {
             expect(totalPoints).to.be.equal('4');
 
             // tags
-            createUSLightbox.tags().sendKeys('www');
-            browser.actions().sendKeys(protractor.Key.ENTER).perform();
-
-            createUSLightbox.tags().sendKeys('xxx');
-            browser.actions().sendKeys(protractor.Key.ENTER).perform();
+            commonHelper.tags();
 
             // description
             createUSLightbox.description().sendKeys(formFields.description);
@@ -127,11 +143,7 @@ describe('kanban', function() {
             expect(totalPoints).to.be.equal('4');
 
             // tags
-            createUSLightbox.tags().sendKeys('www');
-            browser.actions().sendKeys(protractor.Key.ENTER).perform();
-
-            createUSLightbox.tags().sendKeys('xxx');
-            browser.actions().sendKeys(protractor.Key.ENTER).perform();
+            createUSLightbox.tags();
 
             // description
             createUSLightbox.description().sendKeys(formFields.description);
@@ -148,7 +160,6 @@ describe('kanban', function() {
             await utils.lightbox.close(createUSLightbox.el);
 
             let ussTitles = await kanbanHelper.getColumnUssTitles(0);
-
             let findSubject = ussTitles.indexOf(formFields.subject) !== -1;
 
             expect(findSubject).to.be.true;
@@ -205,34 +216,16 @@ describe('kanban', function() {
 
             expect(foldedColumns).to.be.equal(0);
         });
-
-        it('fold cars', async function() {
-            kanbanHelper.foldCards(0);
-
-            utils.common.takeScreenshot('kanban', 'fold-cards');
-
-            let minimized = await $$('.kanban-task-minimized').count();
-
-            expect(minimized).to.be.above(1);
-        });
-
-        it('unfold cars', async function() {
-            kanbanHelper.unFoldCards(0);
-
-            let minimized = await $$('.kanban-task-minimized').count();
-
-            expect(minimized).to.be.equal(0);
-        });
     });
 
-    it.skip('move us between columns', async function() {
+    it('move us between columns', async function() {
         let initOriginUsCount = await kanbanHelper.getBoxUss(0).count();
         let initDestinationUsCount = await kanbanHelper.getBoxUss(1).count();
 
         let usOrigin = kanbanHelper.getBoxUss(0).first();
         let destination = kanbanHelper.getColumns().get(1);
 
-        await utils.common.drag(usOrigin, destination);
+        await utils.common.drag(usOrigin, destination, 0, 10);
 
         browser.waitForAngular();
 
@@ -243,7 +236,7 @@ describe('kanban', function() {
         expect(destinationUsCount).to.be.equal(initDestinationUsCount + 1);
     });
 
-    describe.skip('archive', function() {
+    describe('archive', function() {
         it('move to archive', async function() {
             let initOriginUsCount = await kanbanHelper.getBoxUss(3).count();
 
@@ -252,7 +245,7 @@ describe('kanban', function() {
 
             await kanbanHelper.scrollRight();
 
-            await utils.common.drag(usOrigin, destination);
+            await utils.common.drag(usOrigin, destination, 0, 10);
 
             browser.waitForAngular();
 
@@ -264,7 +257,7 @@ describe('kanban', function() {
         });
 
         it('show archive', async function() {
-            $('.icon-open-eye').click();
+            $('.e2e-archived').click();
 
             await kanbanHelper.scrollRight();
 
@@ -276,7 +269,7 @@ describe('kanban', function() {
         });
 
         it('close archive', async function() {
-            $('.icon-closed-eye').click();
+            $('.e2e-archived').click();
 
             let usCount = await kanbanHelper.getBoxUss(5).count();
 
@@ -297,8 +290,12 @@ describe('kanban', function() {
 
         await lightbox.waitClose();
 
-        let usAssignedTo = await kanbanHelper.getBoxUss(0).get(0).$('.task-assigned').getText();
+        let usAssignedTo = await kanbanHelper.getBoxUss(0).get(0).$('.card-owner-name').getText();
 
         expect(assgnedToName).to.be.equal(usAssignedTo);
     });
+
+    describe('kanban filters', sharedFilters.bind(this, 'kanban', () => {
+        return kanbanHelper.getUss().count();
+    }));
 });

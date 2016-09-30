@@ -73,7 +73,7 @@ class AttachmentsFullService extends taiga.Service
 
                     resolve(attachment)
             else
-                reject(file)
+                reject(new Error(file))
 
     loadAttachments: (type, objId, projectId)->
         @attachmentsService.list(type, objId, projectId).then (files) =>
@@ -109,7 +109,7 @@ class AttachmentsFullService extends taiga.Service
             patch = {order: attachment.getIn(['file', 'order'])}
 
             promises.push @attachmentsService.patch(attachment.getIn(['file', 'id']), type, patch)
-
+            
         return Promise.all(promises).then () =>
             @._attachments = attachments
 

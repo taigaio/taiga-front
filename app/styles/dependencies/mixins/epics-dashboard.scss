@@ -1,0 +1,55 @@
+@mixin epics-table {
+    .project,
+    .assigned {
+        padding: .5rem;
+    }
+    .vote,
+    .status,
+    .sprint,
+    .name,
+    .progress {
+        padding: 1rem .5rem;
+    }
+    .vote {
+        flex-basis: 60px;
+        flex-grow: 0;
+        flex-shrink: 0;
+        flex-wrap: wrap;
+        text-align: center;
+    }
+    .assigned,
+    .project {
+        flex-basis: 100px;
+        flex-grow: 0;
+        flex-shrink: 0;
+        flex-wrap: wrap;
+        text-align: center;
+    }
+    .status,
+    .sprint {
+        flex-basis: 150px;
+        flex-grow: 0;
+        flex-shrink: 0;
+        flex-wrap: wrap;
+        max-width: 150px;
+        text-align: center;
+    }
+    .name,
+    .progress {
+        flex-basis: 20vw;
+        flex-grow: 1;
+        flex-shrink: 1;
+        max-width: 40vw;
+    }
+    .progress {
+        flex-shrink: 3;
+        margin-right: 1rem;
+        position: relative;
+    }
+    .sprint {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 90%;
+    }
+}

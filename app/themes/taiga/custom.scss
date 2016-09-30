@@ -15,7 +15,7 @@ body {
 
 // Secondary panel
 .menu-secondary {
-    background: $whitish;
+    background: $mass-white;
 }
 
 // Tertiary panel
@@ -25,7 +25,7 @@ body {
 
 // Extra bar panel
 .extrabar {
-    background: $whitish;
+    background: $mass-white;
 }
 
 
@@ -61,7 +61,7 @@ input[type="date"],
 input[type="password"],
 select,
 textarea {
-    background: lighten($whitish, 6%);
+    background: $mass-white;
     border-color: $gray-light;
     color: $grayer;
     @include placeholder {
@@ -82,7 +82,7 @@ textarea {
 
 // Blockquote
 blockquote {
-    border-left: 5px solid $whitish;
+    border-left: 5px solid $mass-white;
 }
 
 blockquote,
@@ -120,7 +120,7 @@ tg-project-menu {
 }
 
 .main-nav {
-    svg path {
+    svg {
         fill: $white;
     }
 }
@@ -132,7 +132,7 @@ tg-project-menu {
 //Taskboard table
 .taskboard-table-header {
     .task-colum-name {
-        background: lighten($whitish, 5%);
+        background: $mass-white;
         border-top: 3px solid $gray-light;
         .icon {
             fill: $gray-light;
@@ -141,7 +141,7 @@ tg-project-menu {
 }
 .taskboard-table-body {
     .taskboard-tasks-box {
-        background: lighten($whitish, 5%);
+        background: $mass-white;
     }
 }
 
@@ -152,7 +152,7 @@ tg-project-menu {
 //Kanban table
 .kanban-table-header {
     .task-colum-name {
-        background: lighten($whitish, 5%);
+        background: $mass-white;
         border-top: 3px solid $gray-light;
         .icon {
             color: $gray-light;
@@ -162,6 +162,6 @@ tg-project-menu {
 
 .kanban-table-body {
     .kanban-uses-box {
-        background: lighten($whitish, 5%);
+        background: $mass-white;
     }
 }

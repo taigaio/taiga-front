@@ -29,6 +29,9 @@ resourceProvider = ($repo) ->
         return $repo.queryOne(resource, objectId)
 
     service = {
+        epic: {
+            get: (objectId) -> _get(objectId, "custom-attributes-values/epic")
+        }
         userstory: {
             get: (objectId) -> _get(objectId, "custom-attributes-values/userstory")
         }

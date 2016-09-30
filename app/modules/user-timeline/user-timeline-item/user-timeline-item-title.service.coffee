@@ -35,7 +35,8 @@ class UserTimelineItemTitle
         'priority': 'ISSUES.FIELDS.PRIORITY',
         'type': 'ISSUES.FIELDS.TYPE',
         'is_iocaine': 'TASK.FIELDS.IS_IOCAINE',
-        'is_blocked': 'COMMON.FIELDS.IS_BLOCKED'
+        'is_blocked': 'COMMON.FIELDS.IS_BLOCKED',
+        'color': 'COMMON.FIELDS.COLOR'
     }
 
     _params: {
@@ -89,6 +90,18 @@ class UserTimelineItemTitle
 
             return @._getLink(url, text)
 
+        related_us_name: (timeline, event) ->
+            obj = timeline.getIn(["data", "userstory"])
+            url = "project-userstories-detail:project=timeline.getIn(['data', 'userstory', 'project', 'slug']),ref=timeline.getIn(['data', 'userstory', 'ref'])"
+            text = '#' + obj.get('ref') + ' ' + obj.get('subject')
+            return @._getLink(url, text)
+
+        epic_name: (timeline, event) ->
+            obj = timeline.getIn(["data", "epic"])
+            url = "project-epics-detail:project=timeline.getIn(['data', 'project', 'slug']),ref=timeline.getIn(['data', 'epic', 'ref'])"
+            text = '#' + obj.get('ref') + ' ' + obj.get('subject')
+            return @._getLink(url, text)
+
         obj_name: (timeline, event) ->
             obj = @._getTimelineObj(timeline, event)
             url = @._getDetailObjUrl(event)
@@ -122,9 +135,9 @@ class UserTimelineItemTitle
             "task": ["project-tasks-detail", ":project=timeline.getIn(['data', 'project', 'slug']),ref=timeline.getIn(['obj', 'ref'])"],
             "userstory": ["project-userstories-detail", ":project=timeline.getIn(['data', 'project', 'slug']),ref=timeline.getIn(['obj', 'ref'])"],
             "parent_userstory": ["project-userstories-detail", ":project=timeline.getIn(['data', 'project', 'slug']),ref=timeline.getIn(['obj', 'userstory', 'ref'])"],
-            "milestone": ["project-taskboard", ":project=timeline.getIn(['data', 'project', 'slug']),sprint=timeline.getIn(['obj', 'slug'])"]
+            "milestone": ["project-taskboard", ":project=timeline.getIn(['data', 'project', 'slug']),sprint=timeline.getIn(['obj', 'slug'])"],
+            "epic": ["project-epics-detail", ":project=timeline.getIn(['data', 'project', 'slug']),ref=timeline.getIn(['obj', 'ref'])"]
         }
-
         return url[event.obj][0] + url[event.obj][1]
 
     _getLink: (url, text, title) ->
@@ -153,7 +166,6 @@ class UserTimelineItemTitle
 
         timeline_type.translate_params.forEach (param) =>
             params[param] = @._translateTitleParams(param, timeline, event)
-
         return params
 
     getTitle: (timeline, event, type) ->

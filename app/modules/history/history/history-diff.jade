@@ -1,0 +1,64 @@
+.diff-wrapper(
+    ng-if="vm.type == 'points'"
+)
+    include history-templates/history-points
+
+.diff-wrapper(
+    ng-if="vm.type == 'attachments'"
+)
+    include history-templates/history-attachments
+
+.diff-wrapper(
+    ng-if="vm.type == 'milestone'"
+)
+    include history-templates/history-milestone
+
+.diff-wrapper(
+    ng-if="vm.type == 'status'"
+)
+    include history-templates/history-status
+
+.diff-wrapper(
+    ng-if="vm.type == 'subject'"
+)
+    include history-templates/history-subject
+
+.diff-wrapper(
+    ng-if="vm.type == 'description_diff'"
+)
+    include history-templates/history-description
+
+.diff-wrapper(
+    ng-if="vm.type == 'assigned_to'"
+)
+    include history-templates/history-assigned
+
+.diff-wrapper(
+    ng-if="vm.type == 'tags'"
+)
+    include history-templates/history-tags
+
+.diff-wrapper(
+    ng-if="vm.type == 'custom_attributes'"
+)
+    include history-templates/history-custom-attributes
+
+.diff-wrapper(
+    ng-if="vm.type == 'color'"
+)
+    include history-templates/history-color
+
+.diff-wrapper(
+    ng-if="vm.type == 'team_requirement'"
+)
+    include history-templates/team-requirement
+
+.diff-wrapper(
+    ng-if="vm.type == 'client_requirement'"
+)
+    include history-templates/client-requirement
+
+.diff-wrapper(
+    ng-if="vm.type == 'is_blocked'"
+)
+    include history-templates/blocked

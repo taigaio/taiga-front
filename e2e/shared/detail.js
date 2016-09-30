@@ -1,8 +1,10 @@
 var path = require('path');
+var utils = require('../utils');
 var detailHelper = require('../helpers').detail;
 var commonHelper = require('../helpers').common;
 var customFieldsHelper = require('../helpers/custom-fields-helper');
 var commonUtil = require('../utils/common');
+var lightbox = require('../utils/lightbox');
 var notifications = require('../utils/notifications');
 
 var chai = require('chai');
@@ -46,21 +48,47 @@ shared.tagsTesting = async function() {
     expect(newtagsText).to.be.not.eql(tagsText);
 }
 
-shared.descriptionTesting = async function() {
-    let descriptionHelper = detailHelper.description();
-    let description = await descriptionHelper.getInnerHtml();
-    let date = Date.now();
-    descriptionHelper.enabledEditionMode();
-    descriptionHelper.setText("New description " + date);
-    descriptionHelper.save();
+shared.descriptionTesting = function() {
+    it('confirm close with ESC', async function() {
+        let descriptionHelper = detailHelper.description();
 
-    let newDescription = await descriptionHelper.getInnerHtml();
-    let notificationOpen = await notifications.success.open();
+        descriptionHelper.enabledEditionMode();
 
-    expect(notificationOpen).to.be.equal.true;
-    expect(newDescription).to.be.not.equal(description);
+        browser.actions().sendKeys(protractor.Key.ESCAPE).perform();
 
-    await notifications.success.close();
+        await lightbox.confirm.cancel();
+
+        let descriptionVisibility = await $('.edit-description').isDisplayed();
+
+        expect(descriptionVisibility).to.be.true;
+
+        descriptionHelper.focus();
+
+        browser.actions().sendKeys(protractor.Key.ESCAPE).perform();
+
+        await lightbox.confirm.ok();
+
+        descriptionVisibility = await $('.edit-description').isDisplayed();
+
+        expect(descriptionVisibility).to.be.false;
+    });
+
+    it('edit', async function() {
+        let descriptionHelper = detailHelper.description();
+        let description = await descriptionHelper.getInnerHtml();
+        let date = Date.now();
+        descriptionHelper.enabledEditionMode();
+        descriptionHelper.setText("New description " + date);
+        descriptionHelper.save();
+
+        let newDescription = await descriptionHelper.getInnerHtml();
+        let notificationOpen = await notifications.success.open();
+
+        expect(notificationOpen).to.be.equal.true;
+        expect(newDescription).to.be.not.equal(description);
+
+        await notifications.success.close();
+    });
 }
 
 shared.statusTesting = async function(status1 , status2) {
@@ -164,29 +192,50 @@ shared.assignedToTesting = function() {
     });
 }
 
-shared.historyTesting = async function() {
+shared.historyTesting = async function(screenshotsFolder) {
     let historyHelper = detailHelper.history();
+
+
     //Adding a comment
     historyHelper.selectCommentsTab();
+    await utils.common.takeScreenshot(screenshotsFolder, "show comments tab");
 
     let commentsCounter = await historyHelper.countComments();
     let date = Date.now();
-    await historyHelper.addComment("New comment " + date);
-    let newCommentsCounter = await historyHelper.countComments();
 
+    await historyHelper.addComment("New comment " + date);
+    await utils.common.takeScreenshot(screenshotsFolder, "new coment");
+
+    let newCommentsCounter = await historyHelper.countComments();
     expect(newCommentsCounter).to.be.equal(commentsCounter+1);
+
+    //Edit last comment
+    historyHelper.editLastComment();
+    let editComment = detailHelper.editComment();
+    editComment.updateText("This is the new and updated text");
+    editComment.saveComment();
+    await utils.common.takeScreenshot(screenshotsFolder, "edit comment");
+
+    //Show versions from last comment edited
+    historyHelper.showVersionsLastComment();
+    await utils.common.takeScreenshot(screenshotsFolder, "show comment versions");
+
+    historyHelper.closeVersionsLastComment();
 
     //Deleting last comment
     let deletedCommentsCounter = await historyHelper.countDeletedComments();
     await historyHelper.deleteLastComment();
+
     let newDeletedCommentsCounter = await historyHelper.countDeletedComments();
     expect(newDeletedCommentsCounter).to.be.equal(deletedCommentsCounter+1);
+    await utils.common.takeScreenshot(screenshotsFolder, "deleted comment");
 
     //Restore last comment
     deletedCommentsCounter = await historyHelper.countDeletedComments();
     await historyHelper.restoreLastComment();
     newDeletedCommentsCounter = await historyHelper.countDeletedComments();
     expect(newDeletedCommentsCounter).to.be.equal(deletedCommentsCounter-1);
+    await utils.common.takeScreenshot(screenshotsFolder, "restored comment");
 
     //Store comment with a modification
     commentsCounter = await historyHelper.countComments();
@@ -194,7 +243,8 @@ shared.historyTesting = async function() {
     historyHelper.writeComment("New comment " + date);
     let title = detailHelper.title();
     title.setTitle('changed');
-    title.save();
+    await title.save();
+    await utils.notifications.success.close();
 
     newCommentsCounter = await historyHelper.countComments();
 
@@ -202,10 +252,11 @@ shared.historyTesting = async function() {
 
     //Check activity
     await historyHelper.selectActivityTab();
+    await utils.common.takeScreenshot(screenshotsFolder, "show activity tab");
 
     let activitiesCounter = await historyHelper.countActivities();
 
-    expect(activitiesCounter).to.be.least(newCommentsCounter);
+    expect(newCommentsCounter).to.be.least(1);
 }
 
 shared.blockTesting = async function() {
@@ -223,12 +274,12 @@ shared.blockTesting = async function() {
     let descriptionText = await $('.block-description').getText();
     expect(descriptionText).to.be.equal('This is a testing block reason');
 
-    let isDisplayed = $('.block-description').isDisplayed();
+    let isDisplayed = $('.block-desc-container').isDisplayed();
     expect(isDisplayed).to.be.equal.true;
 
     blockHelper.unblock();
 
-    isDisplayed = $('.block-description').isDisplayed();
+    isDisplayed = $('.block-desc-container').isDisplayed();
     expect(isDisplayed).to.be.equal.false;
 
     await notifications.success.close();
@@ -240,6 +291,7 @@ shared.attachmentTesting = async function() {
 
     // Uploading attachment
     let attachmentsLength = await attachmentHelper.countAttachments();
+
     var fileToUpload = commonUtil.uploadFilePath();
 
     await attachmentHelper.upload(fileToUpload, 'This is the testing name ' + date);
@@ -262,7 +314,6 @@ shared.attachmentTesting = async function() {
     await attachmentHelper.renameLastAttchment('This is the new testing name ' + date);
     name = await attachmentHelper.getLastAttachmentName();
     expect(name).to.be.equal('This is the new testing name ' + date);
-
     // Deprecating
     let deprecatedAttachmentsLength = await attachmentHelper.countDeprecatedAttachments();
     await attachmentHelper.deprecateLastAttachment();
@@ -287,6 +338,28 @@ shared.attachmentTesting = async function() {
     expect(countImages).to.be.above(0);
 
     attachmentHelper.list();
+
+    // Gallery images
+    var fileToUploadImage = commonUtil.uploadImagePath();
+
+    await attachmentHelper.upload(fileToUploadImage, 'testing image ' + date);
+
+    await attachmentHelper.upload(fileToUpload, 'testing image ' + date);
+
+    await attachmentHelper.upload(fileToUploadImage, 'testing image ' + date);
+
+    attachmentHelper.attachmentLinks().last().click();
+
+    await attachmentHelper.previewLightbox();
+    let previewSrc = await attachmentHelper.getPreviewSrc();
+
+    await attachmentHelper.nextPreview();
+
+    let previewSrc2 = await attachmentHelper.getPreviewSrc();
+
+    await lightbox.exit();
+
+    expect(previewSrc).not.to.be.equal(previewSrc2);
 
     // Deleting
     attachmentsLength = await attachmentHelper.countAttachments();
@@ -476,3 +549,37 @@ shared.customFields = function(typeIndex) {
         expect(fieldText).to.be.equal('test text2 edit');
     });
 };
+
+shared.teamRequirementTesting = function() {
+    it('team requirement edition', async function() {
+      let requirementHelper = detailHelper.teamRequirement();
+      let isRequired = await requirementHelper.isRequired();
+
+      // Toggle
+      requirementHelper.toggleStatus();
+      let newIsRequired = await requirementHelper.isRequired();
+      expect(isRequired).to.be.not.equal(newIsRequired);
+
+      // Toggle again
+      requirementHelper.toggleStatus();
+      newIsRequired = await requirementHelper.isRequired();
+      expect(isRequired).to.be.equal(newIsRequired);
+    });
+}
+
+shared.clientRequirementTesting = function () {
+    it('client requirement edition', async function() {
+      let requirementHelper = detailHelper.clientRequirement();
+      let isRequired = await requirementHelper.isRequired();
+
+      // Toggle
+      requirementHelper.toggleStatus();
+      let newIsRequired = await requirementHelper.isRequired();
+      expect(isRequired).to.be.not.equal(newIsRequired);
+
+      // Toggle again
+      requirementHelper.toggleStatus();
+      newIsRequired = await requirementHelper.isRequired();
+      expect(isRequired).to.be.equal(newIsRequired);
+    });
+}

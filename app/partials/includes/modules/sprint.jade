@@ -1,6 +1,7 @@
 header(tg-backlog-sprint-header, ng-model="sprint")
 
-div.sprint-progress-bar(tg-progress-bar="100 * sprint.closed_points / sprint.total_points")
+.summary-progress-wrapper
+    div.sprint-progress-bar(tg-progress-bar="100 * sprint.closed_points / sprint.total_points")
 
 div.sprint-table(tg-bind-scope, ng-class="{'sprint-empty-wrapper': !sprint.user_stories.length}")
     div.sprint-empty(ng-if="!sprint.user_stories.length")
@@ -18,6 +19,11 @@ div.sprint-table(tg-bind-scope, ng-class="{'sprint-empty-wrapper': !sprint.user_
                                 ng-class="{closed: us.is_closed, blocked: us.is_blocked}")
                 span(tg-bo-ref="us.ref")
                 span(tg-bo-bind="us.subject")
+                tg-belong-to-epics(
+                    format="pill"
+                    ng-if="us.epics"
+                    epics="us.epics"
+                )
         div.column-points.width-1(tg-bo-bind="us.total_points",
                                   ng-class="{closed: us.is_closed, blocked: us.is_blocked}")
 

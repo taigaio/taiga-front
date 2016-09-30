@@ -1,0 +1,19 @@
+.entry-wrapper
+    img.entry-avatar(
+        tg-avatar="entry.user"
+        ng-alt="{{entry.user.name}}"
+    )
+    .entry-main
+        .entry-data
+            span.entry-creator {{entry.user.full_name_display}}
+            span.entry-date {{entry.date | momentFormat:'DD MMM YYYY HH:mm'}}
+            tg-svg.display-full-entry(
+                svg-icon="icon-arrow-down"
+                ng-class="{'inactive': !displayFullEntry}"
+                ng-click="displayFullEntry=!displayFullEntry"
+                ng-show="entry.comment.length >= 75"
+            )
+        .entry-text(
+            ng-class="{'ellipsed': !displayFullEntry && entry.comment.length >= 75, 'blurry': entry.comment.length >= 75 && !displayFullEntry}"
+            ng-bind-html="entry.comment_html"
+        )

@@ -29,7 +29,7 @@ describe('Issue detail', async function(){
 
     it('tags edition', sharedDetail.tagsTesting);
 
-    it('description edition', sharedDetail.descriptionTesting);
+    describe('description', sharedDetail.descriptionTesting);
 
     it('status edition', sharedDetail.statusTesting.bind(this, 'In progress', 'Ready for test'));
 
@@ -37,13 +37,13 @@ describe('Issue detail', async function(){
 
     describe('watchers edition', sharedDetail.watchersTesting);
 
-    it('history', sharedDetail.historyTesting);
+    it('history', sharedDetail.historyTesting.bind(this, "issues"));
 
     it('block', sharedDetail.blockTesting);
 
     it('attachments', sharedDetail.attachmentTesting);
 
-    describe('custom-fields', sharedDetail.customFields.bind(this, 2));
+    describe('custom-fields', sharedDetail.customFields.bind(this, 3));
 
     it('screenshot', async function() {
         await utils.common.takeScreenshot("issues", "detail updated");
@@ -57,4 +57,5 @@ describe('Issue detail', async function(){
             expect(url).not.to.be.equal(issueUrl);
         });
     });
+
 });

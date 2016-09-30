@@ -7,7 +7,7 @@ helper.getHeaderColumns = function() {
 };
 
 helper.openNewUsLb = function(column) {
-    helper.getHeaderColumns().get(column).$$('.option').get(4).click();
+    helper.getHeaderColumns().get(column).$$('.option').get(2).click();
 };
 
 helper.getColumns = function() {
@@ -15,15 +15,31 @@ helper.getColumns = function() {
 };
 
 helper.getColumnUssTitles = function(column) {
-    return helper.getColumns().$$('.task-name').getText();
+    return helper.getColumns().$$('.e2e-title').getText();
 };
 
 helper.getBoxUss = function(column) {
-    return helper.getColumns().get(column).$$('.kanban-task');
+    return helper.getColumns().get(column).$$('tg-card');
 };
 
-helper.editUs = function(column, us) {
-    helper.getColumns().get(column).$$('.edit-us').get(us).click();
+helper.getUss = function() {
+    return $$('tg-card');
+};
+
+helper.editUs = async function(column, us) {
+    let editionZone = helper.getColumns().get(column).$$('.card-owner-actions').get(us);
+
+    await browser
+        .actions()
+        .mouseMove(editionZone)
+        .perform();
+
+    return browser
+        .actions()
+        .mouseMove(editionZone)
+        .mouseMove(editionZone.$('.e2e-edit'))
+        .click()
+        .perform();
 };
 
 helper.openBulkUsLb = function(column) {
@@ -42,22 +58,18 @@ helper.unFoldColumn = function(column) {
     columnNode.$$('.options a').get(1).click();
 };
 
-helper.foldCards = function(column) {
-    let columnNode = helper.getHeaderColumns().get(column);
-
-    columnNode.$$('.options a').get(2).click();
-};
-
-helper.unFoldCards = function(column) {
-    let columnNode = helper.getHeaderColumns().get(column);
-
-    columnNode.$$('.options a').get(3).click();
-};
-
 helper.scrollRight = function() {
     return browser.executeScript('$(".kanban-table-body:last").scrollLeft(10000);');
 };
 
 helper.watchersLinks = function() {
-    return $$('.task-assigned');
+    return $$('.e2e-assign');
+};
+
+helper.zoom = async function(level) {
+    return  browser
+        .actions()
+        .mouseMove($('tg-board-zoom'), {y: 14, x: level * 49})
+        .click()
+        .perform();
 };

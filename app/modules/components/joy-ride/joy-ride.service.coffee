@@ -138,7 +138,7 @@ class JoyRideService extends taiga.Service
 
               if @checkPermissionsService.check('add_us')
                   steps.push({
-                        element: '.icon-plus',
+                        element: '.add-action',
                         position: 'bottom',
                         joyride: {
                             title: @translate.instant('JOYRIDE.KANBAN.STEP3.TITLE')

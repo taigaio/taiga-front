@@ -35,6 +35,8 @@
         "ONE_ITEM_LINE": "En post per rad ...",
         "NEW_BULK": "Lägg till flera nya",
         "RELATED_TASKS": "Besläktade uppgifter",
+        "PREVIOUS": "Previous",
+        "NEXT": "Nästa",
         "LOGOUT": "Logga  ut",
         "EXTERNAL_USER": "en extern användare",
         "GENERIC_ERROR": "En av våra Oompa Loompier säger {{error}}.",
@@ -45,6 +47,11 @@
         "CAPSLOCK_WARNING": "Be careful! You are using capital letters in an input field that is case sensitive.",
         "CONFIRM_CLOSE_EDIT_MODE_TITLE": "Are you sure you want to close the edit mode?",
         "CONFIRM_CLOSE_EDIT_MODE_MESSAGE": "Remember that if you close the edit mode without saving all the changes will be lost",
+        "RELATED_USERSTORIES": "Related user stories",
+        "CARD": {
+            "ASSIGN_TO": "Assign To",
+            "EDIT": "Edit card"
+        },
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Det här värdet är felaktigt. ",
             "TYPE_EMAIL": "Värdet måste vara en giltig e-postadress",
@@ -115,8 +122,9 @@
         "USER_STORY": "Användarhistorie",
         "TASK": "Uppgift",
         "ISSUE": "ärende",
+        "EPIC": "Epic",
         "TAGS": {
-            "PLACEHOLDER": "Det är jag! Tagga mig ...",
+            "PLACEHOLDER": "Enter tag",
             "DELETE": "Ta bort etikett",
             "ADD": "Lägg till etikett"
         },
@@ -193,12 +201,29 @@
             "CONFIRM_DELETE": "Remeber that all values in this custom field will be deleted.\n Are you sure you want to continue?"
         },
         "FILTERS": {
-            "TITLE": "filter",
+            "TITLE": "Filter",
             "INPUT_PLACEHOLDER": "Titel eller referens",
             "TITLE_ACTION_FILTER_BUTTON": "sök",
-            "BREADCRUMB_TITLE": "tillbaka till kategorierna",
-            "BREADCRUMB_FILTERS": "Filter",
-            "BREADCRUMB_STATUS": "status"
+            "INPUT_SEARCH_PLACEHOLDER": "Titel eller referens",
+            "TITLE_ACTION_SEARCH": "Sök",
+            "ACTION_SAVE_CUSTOM_FILTER": "spara som anpassad filter",
+            "PLACEHOLDER_FILTER_NAME": "Skriv filternamnet och tryck på <Enter>",
+            "APPLIED_FILTERS_NUM": "filters applied",
+            "CATEGORIES": {
+                "TYPE": "Typ",
+                "STATUS": "Status",
+                "SEVERITY": "Allvarsgrad",
+                "PRIORITIES": "Prioritet",
+                "TAGS": "Etiketter",
+                "ASSIGNED_TO": "Tilldelad till",
+                "CREATED_BY": "Skapad av",
+                "CUSTOM_FILTERS": "Anpassad filter",
+                "EPIC": "Epic"
+            },
+            "CONFIRM_DELETE": {
+                "TITLE": "Ta bort anpassad filter.",
+                "MESSAGE": "anpassad filter  '{{customFilterName}}'"
+            }
         },
         "WYSIWYG": {
             "H1_BUTTON": "Första nivån snart klar",
@@ -228,9 +253,18 @@
             "PREVIEW_BUTTON": "Förhandsvisa",
             "EDIT_BUTTON": "Redigera",
             "ATTACH_FILE_HELP": "Attach files by dragging & dropping on the textarea above.",
+            "ATTACH_FILE_HELP_SAVE_FIRST": "Save first before if you want to attach files by dragging & dropping on the textarea above.",
             "MARKDOWN_HELP": "Hjälp för markeringssyntax"
         },
         "PERMISIONS_CATEGORIES": {
+            "EPICS": {
+                "NAME": "Epics",
+                "VIEW_EPICS": "View epics",
+                "ADD_EPICS": "Add epics",
+                "MODIFY_EPICS": "Modify epics",
+                "COMMENT_EPICS": "Comment epics",
+                "DELETE_EPICS": "Delete epics"
+            },
             "SPRINTS": {
                 "NAME": "Sprintar",
                 "VIEW_SPRINTS": "Visa sprintar",
@@ -243,6 +277,7 @@
                 "VIEW_USER_STORIES": "Visa användarhistorier",
                 "ADD_USER_STORIES": "Lägg till användarhistorier",
                 "MODIFY_USER_STORIES": "Modifiera användarhistorier",
+                "COMMENT_USER_STORIES": "Comment user stories",
                 "DELETE_USER_STORIES": "Ta bort användarhistorier"
             },
             "TASKS": {
@@ -250,6 +285,7 @@
                 "VIEW_TASKS": "Visa uppgifter",
                 "ADD_TASKS": "Lägg till uppgifter",
                 "MODIFY_TASKS": "Modifiera uppgifter",
+                "COMMENT_TASKS": "Comment tasks",
                 "DELETE_TASKS": "Ta bort uppgift"
             },
             "ISSUES": {
@@ -257,6 +293,7 @@
                 "VIEW_ISSUES": "Visa ärenden",
                 "ADD_ISSUES": "Lägg till ärenden",
                 "MODIFY_ISSUES": "Modifiera ärenden",
+                "COMMENT_ISSUES": "Comment issues",
                 "DELETE_ISSUES": "Ta bort uppgifter"
             },
             "WIKI": {
@@ -366,6 +403,41 @@
         "WATCHING_SECTION": "Bevakar",
         "DASHBOARD": "Projects Dashboard"
     },
+    "EPICS": {
+        "TITLE": "EPICS",
+        "SECTION_NAME": "Epics",
+        "EPIC": "EPIC",
+        "PAGE_TITLE": "Epics - {{projectName}}",
+        "PAGE_DESCRIPTION": "The epics list of the project {{projectName}}: {{projectDescription}}",
+        "DASHBOARD": {
+            "ADD": "+ ADD EPIC",
+            "UNASSIGNED": "Ej tilldelad"
+        },
+        "EMPTY": {
+            "TITLE": "It looks like there aren't any epics yet",
+            "EXPLANATION": "Epics are items at a higher level that encompass user stories.<br />Epics are at the top of the hierarchy and can be used to group user stories together.",
+            "HELP": "Learn more about epics"
+        },
+        "TABLE": {
+            "VOTES": "Röster",
+            "NAME": "Namn",
+            "PROJECT": "Projekt",
+            "SPRINT": "Sprint",
+            "ASSIGNED_TO": "Assigned",
+            "STATUS": "Status",
+            "PROGRESS": "Progress",
+            "VIEW_OPTIONS": "View options"
+        },
+        "CREATE": {
+            "TITLE": "New Epic",
+            "PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this epic",
+            "TEAM_REQUIREMENT": "Team requirement",
+            "CLIENT_REQUIREMENT": "Client requirement",
+            "BLOCKED": "Blockerad",
+            "BLOCKED_NOTE_PLACEHOLDER": "Why is this epic blocked?",
+            "CREATE_EPIC": "Create epic"
+        }
+    },
     "PROJECTS": {
         "PAGE_TITLE": "Mina projekt - Taiga",
         "PAGE_DESCRIPTION": "En lista med alla dina projekt som du kan organisera eller skapa ett nytt. ",
@@ -402,7 +474,8 @@
     "ADMIN": {
         "COMMON": {
             "TITLE_ACTION_EDIT_VALUE": "Redigera",
-            "TITLE_ACTION_DELETE_VALUE": "Ta bort"
+            "TITLE_ACTION_DELETE_VALUE": "Ta bort",
+            "TITLE_ACTION_DELETE_TAG": "Ta bort etikett"
         },
         "HELP": "Behöver du hjälp? Besök hjälpsidorna!",
         "PROJECT_DEFAULT_VALUES": {
@@ -435,6 +508,8 @@
             "TITLE": "Moduler",
             "ENABLE": "Aktivera",
             "DISABLE": "Avvaktivera",
+            "EPICS": "Epics",
+            "EPICS_DESCRIPTION": "Visualize and manage the most strategic part of your project",
             "BACKLOG": "Inkorg",
             "BACKLOG_DESCRIPTION": "Hantera dina användarhistorier för att organisera visningar av kommande och prioriterade jobb. ",
             "NUMBER_SPRINTS": "Expected number of sprints",
@@ -497,6 +572,7 @@
             "REGENERATE_SUBTITLE": "Du kan ändra CSV för datalänken. Den tidigare länken tas bort. Är du säker på det? "
         },
         "CSV": {
+            "SECTION_TITLE_EPIC": "epics reports",
             "SECTION_TITLE_US": "rapporter för användarhistorier",
             "SECTION_TITLE_TASK": "Rapport för uppgifter",
             "SECTION_TITLE_ISSUE": "Rapporter för ärenden",
@@ -509,6 +585,8 @@
         "CUSTOM_FIELDS": {
             "TITLE": "Anpassade fält",
             "SUBTITLE": "Specificera anpassade fält för användarhistorier, uppgifter och ärenden. ",
+            "EPIC_DESCRIPTION": "Epics custom fields",
+            "EPIC_ADD": "Add a custom field in epics",
             "US_DESCRIPTION": "Användarhistorier för anpassade fält",
             "US_ADD": "Lägg till ett anpassad fält i användarhistorien",
             "TASK_DESCRIPTION": "Anpassade fält för uppgifter",
@@ -546,7 +624,8 @@
         "PROJECT_VALUES_STATUS": {
             "TITLE": "Status",
             "SUBTITLE": "Specificera status för dina användarhistorier, uppgifter och ärenden ska ha i olika faser. ",
-            "US_TITLE": "US statuser",
+            "EPIC_TITLE": "Epic Statuses",
+            "US_TITLE": "User Story Statuses",
             "TASK_TITLE": "Status för uppgifter",
             "ISSUE_TITLE": "Status för ärenden"
         },
@@ -555,6 +634,17 @@
             "SUBTITLE": "Specificera typer av ärenden",
             "ISSUE_TITLE": "Ärendetyper",
             "ACTION_ADD": "Lägg till ny {{objName}}"
+        },
+        "PROJECT_VALUES_TAGS": {
+            "TITLE": "Etiketter",
+            "SUBTITLE": "View and edit the color of your tags",
+            "EMPTY": "Currently there are no tags",
+            "EMPTY_SEARCH": "It looks like nothing was found with your search criteria",
+            "ACTION_ADD": "Lägg till etikett",
+            "NEW_TAG": "New tag",
+            "MIXING_HELP_TEXT": "Select the tags that you want to merge",
+            "MIXING_MERGE": "Merge Tags",
+            "SELECTED": "Selected"
         },
         "ROLES": {
             "PAGE_TITLE": "Roller - {{projectName}}",
@@ -587,6 +677,10 @@
         "GITHUB": {
             "SECTION_NAME": "Github",
             "PAGE_TITLE": "Github - {{projectName}}"
+        },
+        "GOGS": {
+            "SECTION_NAME": "Gogs",
+            "PAGE_TITLE": "Gogs - {{projectName}}"
         },
         "WEBHOOKS": {
             "PAGE_TITLE": "Webbkrok - {{projectName}}",
@@ -643,13 +737,14 @@
             "DEFAULT_DELETE_MESSAGE": "den här invitationen till {{email}}"
         },
         "DEFAULT_VALUES": {
+            "LABEL_EPIC_STATUS": "Default value for epic status selector",
+            "LABEL_US_STATUS": "Default value for user story status selector",
             "LABEL_POINTS": "Standardvärde för poängväljaren",
-            "LABEL_US": "Standardvärde för US-statusväljare",
             "LABEL_TASK_STATUS": "Standardvärdet för val av uppgiftsstatus",
-            "LABEL_PRIORITY": "Standardvärde för val av prioritet",
-            "LABEL_SEVERITY": "Standardvärde för val av allvarlighet",
             "LABEL_ISSUE_TYPE": "Standardvärde för ärendetyp-väljare",
-            "LABEL_ISSUE_STATUS": "Standardvärde för väljare för ärendestatus"
+            "LABEL_ISSUE_STATUS": "Standardvärde för väljare för ärendestatus",
+            "LABEL_PRIORITY": "Standardvärde för val av prioritet",
+            "LABEL_SEVERITY": "Standardvärde för val av allvarlighet"
         },
         "STATUS": {
             "PLACEHOLDER_WRITE_STATUS_NAME": "Skriv ett namn för den nya statusen"
@@ -681,7 +776,8 @@
             "PRIORITIES": "Prioritet",
             "SEVERITIES": "Allvarsgrad",
             "TYPES": "Typ",
-            "CUSTOM_FIELDS": "Anpassade fält"
+            "CUSTOM_FIELDS": "Anpassade fält",
+            "TAGS": "Etiketter"
         },
         "SUBMENU_PROJECT_PROFILE": {
             "TITLE": "Projektprofil"
@@ -751,6 +847,8 @@
             "FILTER_TYPE_ALL_TITLE": "Visa alla",
             "FILTER_TYPE_PROJECTS": "Projekt",
             "FILTER_TYPE_PROJECT_TITLES": "Visa bara projekt",
+            "FILTER_TYPE_EPICS": "Epics",
+            "FILTER_TYPE_EPIC_TITLES": "Show only epics",
             "FILTER_TYPE_USER_STORIES": "Berättelser",
             "FILTER_TYPE_USER_STORIES_TITLES": "Visa endast användarhistorier",
             "FILTER_TYPE_TASKS": "Uppgift",
@@ -950,8 +1048,8 @@
         "CREATE_MEMBER": {
             "PLACEHOLDER_INVITATION_TEXT": "(Valfritt) Lägg till en personlig hälsning till invitationen. Berätta något trevligt till din nya projektmedlem ;-)",
             "PLACEHOLDER_TYPE_EMAIL": "Skriv in en e-postadress",
-            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "Unfortunately, this project can't have more than <strong>{{maxMembers}}</strong> members.<br> If you would like to increase the current limit, please contact the administrator.",
-            "LIMIT_USERS_WARNING_MESSAGE": "Unfortunately, this project can't have more than <strong>{{maxMembers}}</strong> members."
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "You are about to reach the maximum number of members allowed for this project, <strong>{{maxMembers}}</strong> members. If you would like to increase the current limit, please contact the administrator.",
+            "LIMIT_USERS_WARNING_MESSAGE": "You are about to reach the maximum number of members allowed for this project, <strong>{{maxMembers}}</strong> members."
         },
         "LEAVE_PROJECT_WARNING": {
             "TITLE": "Unfortunately, this project can't be left without an owner",
@@ -970,10 +1068,30 @@
             "BUTTON": "Ask this project member to become the new project owner"
         }
     },
+    "EPIC": {
+        "PAGE_TITLE": "{{epicSubject}} - Epic {{epicRef}} - {{projectName}}",
+        "PAGE_DESCRIPTION": "Status: {{epicStatus }}. Description: {{epicDescription}}",
+        "SECTION_NAME": "Epic",
+        "TITLE_LIGHTBOX_UNLINK_RELATED_USERSTORY": "Unlink related userstory",
+        "MSG_LIGHTBOX_UNLINK_RELATED_USERSTORY": "It will delete the link to the related userstory '{{subject}}'",
+        "ERROR_UNLINK_RELATED_USERSTORY": "We have not been able to unlink: {{errorMessage}}",
+        "CREATE_RELATED_USERSTORIES": "Create a relationship with",
+        "NEW_USERSTORY": "Ny användarhistorie",
+        "EXISTING_USERSTORY": "Existing user story",
+        "CHOOSE_PROJECT_FOR_CREATION": "What's the project?",
+        "SUBJECT": "Titel",
+        "SUBJECT_BULK_MODE": "Subject (bulk insert)",
+        "CHOOSE_PROJECT_FROM": "What's the project?",
+        "CHOOSE_USERSTORY": "What's the user story?",
+        "NO_USERSTORIES": "This project has no User Stories yet. Please select another project.",
+        "FILTER_USERSTORIES": "Filter user stories",
+        "LIGHTBOX_TITLE_BLOKING_EPIC": "Blocking epic",
+        "ACTION_DELETE": "Delete epic"
+    },
     "US": {
         "PAGE_TITLE": "{{userStorySubject}} - Användarhistorier {{userStoryRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Status: {{userStoryStatus }}. avslutad{{userStoryProgressPercentage}}% ({{userStoryClosedTasks}} av {{userStoryTotalTasks}} tasks closed). Poäng: {{userStoryPoints}}. Beskrivning: {{userStoryDescription}}",
-        "SECTION_NAME": "Detaljer för användarhistorier",
+        "SECTION_NAME": "Användarhistorie",
         "LINK_TASKBOARD": "Uppgiftstavla",
         "TITLE_LINK_TASKBOARD": "Gå till uppgiftstavlan",
         "TOTAL_POINTS": "totalpoäng",
@@ -984,14 +1102,23 @@
         "EXTERNAL_REFERENCE": "Denna användarhistorien är skapat från",
         "GO_TO_EXTERNAL_REFERENCE": "Gå till början",
         "BLOCKED": "Användarhistorien är blockerad",
-        "PREVIOUS": "tidigare användarhistorie",
-        "NEXT": "nästa användarhistorie",
         "TITLE_DELETE_ACTION": "Ta bort användarhistorien",
         "LIGHTBOX_TITLE_BLOKING_US": "Blockera oss",
         "TASK_COMPLETED": "{{totalClosedTasks}}/{{totalTasks}} uppgifter kompletta",
         "ASSIGN": "Lägg till användarhistorie",
         "NOT_ESTIMATED": "Ej beräknad",
         "TOTAL_US_POINTS": "Total US-poäng",
+        "TRIBE": {
+            "PUBLISH": "Publish as Gig in Taiga Tribe",
+            "PUBLISH_INFO": "More info",
+            "PUBLISH_TITLE": "More info on publishing in Taiga Tribe",
+            "PUBLISHED_AS_GIG": "Story published as Gig in Taiga Tribe",
+            "EDIT_LINK": "Edit link",
+            "CLOSE": "Close",
+            "SYNCHRONIZE_LINK": "synchronize with Taiga Tribe",
+            "PUBLISH_MORE_INFO_TITLE": "Do you need somebody for this task?",
+            "PUBLISH_MORE_INFO_TEXT": "<p>If you need help with a particular piece of work you can easily create gigs on<a href='taigatribe.com' title='Taiga Tribe'> Taiga Tribe </a> and receive help from all over the world. You will be able to control and manage the gig enjoying a great community eager to contribute.</p><p><a href='taigatribe.com' title='Taiga Tribe'> TaigaTribe </a>  was born as a Taiga sibling. Both platforms can live separately but we believe that there is much power in using them combined so we are making sure the integration works like a charm.</p>"
+        },
         "FIELDS": {
             "TEAM_REQUIREMENT": "Teamets behov",
             "CLIENT_REQUIREMENT": "Kräver beställare",
@@ -999,28 +1126,47 @@
         }
     },
     "COMMENTS": {
-        "DELETED_INFO": "Kommentar raderad av {{user}} den {{date}}",
+        "DELETED_INFO": "Comment deleted by {{user}}",
         "TITLE": "Kommentarer",
+        "COMMENTS_COUNT": "{{comments}} Comments",
+        "ORDER": "Order",
+        "OLDER_FIRST": "Older first",
+        "RECENT_FIRST": "Recent first",
         "COMMENT": "Kommentarer",
+        "EDIT_COMMENT": "Edit comment",
+        "EDITED_COMMENT": "Edited:",
+        "SHOW_HISTORY": "View historic",
         "TYPE_NEW_COMMENT": "Skriv en ny kommentar här",
         "SHOW_DELETED": "Visa raderade kommentarer",
         "HIDE_DELETED": "Dölj raderade kommentarer",
         "DELETE": "Ta bort kommentar",
-        "RESTORE": "Hämta tillbaka tidigare kommentarer"
+        "RESTORE": "Hämta tillbaka tidigare kommentarer",
+        "HISTORY": {
+            "TITLE": "Aktiviteter"
+        }
     },
     "ACTIVITY": {
         "SHOW_ACTIVITY": "Visa aktiviteter",
         "DATETIME": "YYYY-MM-DD HH:mm",
         "SHOW_MORE": "+ Visa tidigare poster ({{showMore}} more)",
         "TITLE": "Aktiviteter",
+        "ACTIVITIES_COUNT": "{{activities}} Activities",
         "REMOVED": "borttaget",
         "ADDED": "lagt till",
-        "US_POINTS": "US-poäng ({{name}})",
-        "NEW_ATTACHMENT": "ny bilaga",
-        "DELETED_ATTACHMENT": "ta bort bifogad fil",
-        "UPDATED_ATTACHMENT": "uppdaterad bilaga {{filename}}",
-        "DELETED_CUSTOM_ATTRIBUTE": "raderad anpassad atribut",
+        "TAGS_ADDED": "tags added:",
+        "TAGS_REMOVED": "tags removed:",
+        "US_POINTS": "{{role}} points",
+        "NEW_ATTACHMENT": "new attachment:",
+        "DELETED_ATTACHMENT": "deleted attachment:",
+        "UPDATED_ATTACHMENT": "updated attachment ({{filename}}):",
+        "CREATED_CUSTOM_ATTRIBUTE": "created custom attribute",
+        "UPDATED_CUSTOM_ATTRIBUTE": "updated custom attribute",
         "SIZE_CHANGE": "Gjorde {size, plural, one{one change} other{# changes}}",
+        "BECAME_DEPRECATED": "became deprecated",
+        "BECAME_UNDEPRECATED": "became undeprecated",
+        "TEAM_REQUIREMENT": "Teamets behov",
+        "CLIENT_REQUIREMENT": "Kräver beställare",
+        "BLOCKED": "Blockerad",
         "VALUES": {
             "YES": "ja",
             "NO": "nej",
@@ -1052,12 +1198,14 @@
             "TAGS": "etiketter",
             "ATTACHMENTS": "bilagor",
             "IS_DEPRECATED": "undviks",
+            "IS_NOT_DEPRECATED": "is not deprecated",
             "ORDER": "sortera",
             "BACKLOG_ORDER": "sortera inkorgen",
             "SPRINT_ORDER": "sortera sprintar",
             "KANBAN_ORDER": "kanban-sortering",
             "TASKBOARD_ORDER": "Sortera uppgiftstavlan",
-            "US_ORDER": "sortera US"
+            "US_ORDER": "sortera US",
+            "COLOR": "färg"
         }
     },
     "BACKLOG": {
@@ -1109,7 +1257,8 @@
             "CLOSED_TASKS": "stängd<br />uppgifer",
             "IOCAINE_DOSES": "iocaine<br />doser",
             "SHOW_STATISTICS_TITLE": "Visa statistik",
-            "TOGGLE_BAKLOG_GRAPH": "Visa/Dölj burn down-graf"
+            "TOGGLE_BAKLOG_GRAPH": "Visa/Dölj burn down-graf",
+            "POINTS_PER_ROLE": "Points per role"
         },
         "SUMMARY": {
             "PROJECT_POINTS": "projekt<br/>poäng",
@@ -1122,9 +1271,7 @@
             "TITLE": "Filter",
             "REMOVE": "Ta bort filter",
             "HIDE": "Dölj filter",
-            "SHOW": "Visa filter",
-            "FILTER_CATEGORY_STATUS": "Status",
-            "FILTER_CATEGORY_TAGS": "Etiketter"
+            "SHOW": "Visa filter"
         },
         "SPRINTS": {
             "TITLE": "SPRINTAR",
@@ -1179,7 +1326,7 @@
     "TASK": {
         "PAGE_TITLE": "{{taskSubject}} - Uppgift {{taskRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Status: {{taskStatus }}. Beskrivning: {{taskDescription}}",
-        "SECTION_NAME": "Detaljer för uppgiften",
+        "SECTION_NAME": "Uppgift",
         "LINK_TASKBOARD": "Uppgiftstavla",
         "TITLE_LINK_TASKBOARD": "Gå till uppgiftstavlan",
         "PLACEHOLDER_SUBJECT": "Skriv in den nya uppgiftens titel",
@@ -1189,8 +1336,6 @@
         "ORIGIN_US": "Den här uppgiften är skapad från",
         "TITLE_LINK_GO_ORIGIN": "Gå till användarhistorie",
         "BLOCKED": "Uppgiften är blockerad",
-        "PREVIOUS": "tidigare uppgift",
-        "NEXT": "ny uppgift",
         "TITLE_DELETE_ACTION": "Ta bort uppgift",
         "LIGHTBOX_TITLE_BLOKING_TASK": "Blockerad uppgift",
         "FIELDS": {
@@ -1228,16 +1373,13 @@
         "PAGE_TITLE": "Ärenden - {{projectName}}",
         "PAGE_DESCRIPTION": "Ärenden som listas för projektet {{projectName}}: {{projectDescription}}",
         "LIST_SECTION_NAME": "Ärenden",
-        "SECTION_NAME": "Detaljer för ärenden ",
+        "SECTION_NAME": "ärende",
         "ACTION_NEW_ISSUE": "+ NYTT ÄRENDE",
         "ACTION_PROMOTE_TO_US": "Flytta till användarhistorie",
-        "PLACEHOLDER_FILTER_NAME": "Skriv filternamnet och tryck på <Enter>",
         "PROMOTED": "Ärendet har flyttats till US:",
         "EXTERNAL_REFERENCE": "Den här uppgiften är skapat från",
         "GO_TO_EXTERNAL_REFERENCE": "Gå till början",
         "BLOCKED": "Det här ärendet är blockerad",
-        "TITLE_PREVIOUS_ISSUE": "tidigare ärende",
-        "TITLE_NEXT_ISSUE": "nästa ärende",
         "ACTION_DELETE": "Ta bort ärende",
         "LIGHTBOX_TITLE_BLOKING_ISSUE": "Blockerad ärende",
         "FIELDS": {
@@ -1248,28 +1390,6 @@
         "CONFIRM_PROMOTE": {
             "TITLE": "Flytta det här ärendet till en ny användarhistorie",
             "MESSAGE": "Är du säker på att du vill skapa en ny US från det här ärendet?"
-        },
-        "FILTERS": {
-            "TITLE": "Filter",
-            "INPUT_SEARCH_PLACEHOLDER": "Titel eller referens",
-            "TITLE_ACTION_SEARCH": "Sök",
-            "ACTION_SAVE_CUSTOM_FILTER": "spara som anpassad filter",
-            "BREADCRUMB": "Filter",
-            "TITLE_BREADCRUMB": "Filter",
-            "CATEGORIES": {
-                "TYPE": "Typ",
-                "STATUS": "Status",
-                "SEVERITY": "Allvarsgrad",
-                "PRIORITIES": "Prioritet",
-                "TAGS": "Etiketter",
-                "ASSIGNED_TO": "Tilldelad till",
-                "CREATED_BY": "Skapad av",
-                "CUSTOM_FILTERS": "Anpassad filter"
-            },
-            "CONFIRM_DELETE": {
-                "TITLE": "Ta bort anpassad filter.",
-                "MESSAGE": "anpassad filter  '{{customFilterName}}'"
-            }
         },
         "TABLE": {
             "COLUMNS": {
@@ -1316,6 +1436,7 @@
     "SEARCH": {
         "PAGE_TITLE": "Sök  - {{projectName}}",
         "PAGE_DESCRIPTION": "Sök på vad som helst, användarhistorier, uppgifter, ärenden och wiki-innehåll i projektet {{projectName}}: {{projectDescription}}",
+        "FILTER_EPICS": "Epics",
         "FILTER_USER_STORIES": "Användarhistorier",
         "FILTER_ISSUES": "Ärenden",
         "FILTER_TASKS": "Uppgift",
@@ -1417,13 +1538,24 @@
         "DELETE_LIGHTBOX_TITLE": "Ta bort Wiki-sida",
         "DELETE_LINK_TITLE": "Delete Wiki link",
         "NAVIGATION": {
-            "SECTION_NAME": "Länkar",
-            "ACTION_ADD_LINK": "Lägg till länk"
+            "HOME": "Main Page",
+            "SECTION_NAME": "BOOKMARKS",
+            "ACTION_ADD_LINK": "Add bookmark",
+            "ALL_PAGES": "All wiki pages"
         },
         "SUMMARY": {
             "TIMES_EDITED": "gånger <br/> ändrad",
             "LAST_EDIT": "senaste <br/> ändring",
             "LAST_MODIFICATION": "senast modifierad"
+        },
+        "SECTION_PAGES_LIST": "All pages",
+        "PAGES_LIST_COLUMNS": {
+            "TITLE": "Title",
+            "EDITIONS": "Editions",
+            "CREATED": "Skapad",
+            "MODIFIED": "Modified",
+            "CREATOR": "Creator",
+            "LAST_MODIFIER": "Last modifier"
         }
     },
     "HINTS": {
@@ -1447,6 +1579,8 @@
         "TASK_CREATED_WITH_US": "{{username}} har skapat en ny uppgift {{obj_name}} i {{project_name}} som hör till US {{us_name}}",
         "WIKI_CREATED": "{{username}} skapade en ny wiki-sida {{obj_name}} i {{project_name}}",
         "MILESTONE_CREATED": "{{username}} har skapad en ny sprint {{obj_name}} i {{project_name}}",
+        "EPIC_CREATED": "{{username}} has created a new epic {{obj_name}} in {{project_name}}",
+        "EPIC_RELATED_USERSTORY_CREATED": "{{username}} has related the userstory {{related_us_name}} to the epic {{epic_name}} in {{project_name}}",
         "NEW_PROJECT": "{{username}} skapade projektet {{project_name}}",
         "MILESTONE_UPDATED": "{{username}} har uppdaterad sprinten {{obj_name}}",
         "US_UPDATED": "{{username}} har uppdaterad egenskapen \"{{field_name}}\" i US {{obj_name}}",
@@ -1459,9 +1593,13 @@
         "TASK_UPDATED_WITH_US": "{{username}} har uppdaterad egenskapen \"{{field_name}}\" för uppgiften {{obj_name}} som tillhör US {{us_name}}",
         "TASK_UPDATED_WITH_US_NEW_VALUE": "{{username}} har uppdaterad egenskapen \"{{field_name}}\" för uppgiften {{obj_name}} som tillhör US {{us_name}} till {{new_value}}",
         "WIKI_UPDATED": "{{username}} har uppdaterad wiki-sidan {{obj_name}}",
+        "EPIC_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the epic {{obj_name}}",
+        "EPIC_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the epic {{obj_name}} to {{new_value}}",
+        "EPIC_UPDATED_WITH_NEW_COLOR": "{{username}} has updated the \"{{field_name}}\" of the epic {{obj_name}} to <span class=\"new-color\" style=\"background: {{new_value}}\"></span>",
         "NEW_COMMENT_US": "{{username}} har kommenterad i {{obj_name}}",
         "NEW_COMMENT_ISSUE": "{{username}} har kommenterad i ärendet  {{obj_name}}",
         "NEW_COMMENT_TASK": "{{username}} har kommenterad uppgiften {{obj_name}}",
+        "NEW_COMMENT_EPIC": "{{username}} has commented in the epic {{obj_name}}",
         "NEW_MEMBER": "{{project_name}} har en ny medlem",
         "US_ADDED_MILESTONE": "{{username}} har lagt till US {{obj_name}} till {{sprint_name}}",
         "US_MOVED": "{{username}} har flyttat US {{obj_name}}",

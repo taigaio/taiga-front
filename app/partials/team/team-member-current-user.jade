@@ -1,7 +1,7 @@
 .row
     .username
         .avatar
-            img(tg-bo-src="currentUser.photo", tg-bo-alt="currentUser.full_name_display")
+            img(tg-avatar="currentUser", tg-bo-alt="currentUser.full_name_display")
 
             .avatar-data
                 .name
@@ -23,7 +23,7 @@
     .member-stats(
         tg-team-member-stats
         stats="stats"
-        user="currentUser.user"
+        user="currentUser.id"
         issuesEnabled="issuesEnabled"
         tasksenabled="tasksEnabled"
         wikienabled="wikiEnabled"

@@ -48,11 +48,12 @@ class RolesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fil
         "$tgLocation",
         "$tgNavUrls",
         "tgAppMetaService",
-        "$translate"
+        "$translate",
+        "tgErrorHandlingService"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @navUrls,
-                  @appMetaService, @translate) ->
+                  @appMetaService, @translate, @errorHandlingService) ->
         bindMethods(@)
 
         @scope.sectionName = "ADMIN.MENU.PERMISSIONS"
@@ -71,7 +72,7 @@ class RolesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fil
     loadProject: ->
         return @rs.projects.getBySlug(@params.pslug).then (project) =>
             if not project.i_am_admin
-                @location.path(@navUrls.resolve("permission-denied"))
+                @errorHandlingService.permissionDenied()
 
             @scope.projectId = project.id
             @scope.project = project
@@ -98,6 +99,7 @@ class RolesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fil
 
             @scope.roles = roles
             @scope.role = @scope.roles[0]
+
             return roles
 
     loadInitialData: ->
@@ -351,6 +353,18 @@ RolePermissionsDirective = ($rootscope, $repo, $confirm, $compile) ->
 
             categories = []
 
+            epicPermissions = [
+                { key: "view_epics", name: "COMMON.PERMISIONS_CATEGORIES.EPICS.VIEW_EPICS"}
+                { key: "add_epic", name: "COMMON.PERMISIONS_CATEGORIES.EPICS.ADD_EPICS"}
+                { key: "modify_epic", name: "COMMON.PERMISIONS_CATEGORIES.EPICS.MODIFY_EPICS"}
+                { key: "comment_epic", name: "COMMON.PERMISIONS_CATEGORIES.EPICS.COMMENT_EPICS"}
+                { key: "delete_epic", name: "COMMON.PERMISIONS_CATEGORIES.EPICS.DELETE_EPICS"}
+            ]
+            categories.push({
+                name: "COMMON.PERMISIONS_CATEGORIES.EPICS.NAME" ,
+                permissions: setActivePermissions(epicPermissions)
+            })
+
             milestonePermissions = [
                 { key: "view_milestones", name: "COMMON.PERMISIONS_CATEGORIES.SPRINTS.VIEW_SPRINTS"}
                 { key: "add_milestone", name: "COMMON.PERMISIONS_CATEGORIES.SPRINTS.ADD_SPRINTS"}
@@ -366,6 +380,7 @@ RolePermissionsDirective = ($rootscope, $repo, $confirm, $compile) ->
                 { key: "view_us", name: "COMMON.PERMISIONS_CATEGORIES.USER_STORIES.VIEW_USER_STORIES"}
                 { key: "add_us", name: "COMMON.PERMISIONS_CATEGORIES.USER_STORIES.ADD_USER_STORIES"}
                 { key: "modify_us", name: "COMMON.PERMISIONS_CATEGORIES.USER_STORIES.MODIFY_USER_STORIES"}
+                { key: "comment_us", name: "COMMON.PERMISIONS_CATEGORIES.USER_STORIES.COMMENT_USER_STORIES"}
                 { key: "delete_us", name: "COMMON.PERMISIONS_CATEGORIES.USER_STORIES.DELETE_USER_STORIES"}
             ]
             categories.push({
@@ -377,6 +392,7 @@ RolePermissionsDirective = ($rootscope, $repo, $confirm, $compile) ->
                 { key: "view_tasks", name: "COMMON.PERMISIONS_CATEGORIES.TASKS.VIEW_TASKS"}
                 { key: "add_task", name: "COMMON.PERMISIONS_CATEGORIES.TASKS.ADD_TASKS"}
                 { key: "modify_task", name: "COMMON.PERMISIONS_CATEGORIES.TASKS.MODIFY_TASKS"}
+                { key: "comment_task", name: "COMMON.PERMISIONS_CATEGORIES.USER_STORIES.COMMENT_TASKS"}
                 { key: "delete_task", name: "COMMON.PERMISIONS_CATEGORIES.TASKS.DELETE_TASKS"}
             ]
             categories.push({
@@ -388,6 +404,7 @@ RolePermissionsDirective = ($rootscope, $repo, $confirm, $compile) ->
                 { key: "view_issues", name: "COMMON.PERMISIONS_CATEGORIES.ISSUES.VIEW_ISSUES"}
                 { key: "add_issue", name: "COMMON.PERMISIONS_CATEGORIES.ISSUES.ADD_ISSUES"}
                 { key: "modify_issue", name: "COMMON.PERMISIONS_CATEGORIES.ISSUES.MODIFY_ISSUES"}
+                { key: "comment_issue", name: "COMMON.PERMISIONS_CATEGORIES.USER_STORIES.COMMENT_ISSUES"}
                 { key: "delete_issue", name: "COMMON.PERMISIONS_CATEGORIES.ISSUES.DELETE_ISSUES"}
             ]
             categories.push({

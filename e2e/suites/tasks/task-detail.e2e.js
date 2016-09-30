@@ -31,7 +31,7 @@ describe('Task detail', function(){
 
     it('tags edition', sharedDetail.tagsTesting);
 
-    it('description edition', sharedDetail.descriptionTesting);
+    describe('description', sharedDetail.descriptionTesting);
 
     it('status edition', sharedDetail.statusTesting.bind(this, 'In progress', 'Ready for test'));
 
@@ -53,13 +53,13 @@ describe('Task detail', function(){
       expect(newIsIocaine).to.be.equal(isIocaine);
     });
 
-    it('history', sharedDetail.historyTesting);
+    it('history', sharedDetail.historyTesting.bind(this, "tasks"));
 
     it('block', sharedDetail.blockTesting);
 
     it('attachments', sharedDetail.attachmentTesting);
 
-    describe('custom-fields', sharedDetail.customFields.bind(this, 1));
+    describe('custom-fields', sharedDetail.customFields.bind(this, 2));
 
     it('screenshot', async function() {
         await utils.common.takeScreenshot("tasks", "detail updated");

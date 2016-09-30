@@ -1,0 +1,11 @@
+.history-tabs {
+    .order-comments {
+        @include font-type(light);
+        margin-left: auto;
+        transition: none;
+    }
+    .icon-arrow-up,
+    .icon-arrow-down {
+        @include svg-size(.75rem);
+    }
+}

@@ -21,9 +21,12 @@ DutyDirective = (navurls, $translate) ->
     link = (scope, el, attrs, ctrl) ->
         scope.vm = {}
         scope.vm.duty = scope.duty
+        scope.vm.type = scope.type
 
         scope.vm.getDutyType = () ->
             if scope.vm.duty
+                if scope.vm.duty.get('_name') == "epics"
+                    return $translate.instant("COMMON.EPIC")
                 if scope.vm.duty.get('_name') == "userstories"
                     return $translate.instant("COMMON.USER_STORY")
                 if scope.vm.duty.get('_name') == "tasks"
@@ -34,7 +37,8 @@ DutyDirective = (navurls, $translate) ->
     return {
         templateUrl: "home/duties/duty.html"
         scope: {
-            "duty": "=tgDuty"
+            "duty": "=tgDuty",
+            "type": "@"
         }
         link: link
     }

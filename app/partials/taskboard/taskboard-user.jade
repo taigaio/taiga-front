@@ -1,6 +1,15 @@
 figure.avatar.avatar-assigned-to
     a(href='#', title="{{'TASKBOARD.TITLE_ACTION_ASSIGN' | translate}}", ng-class="{'not-clickable': !clickable}")
-        img(ng-src='{{imgurl}}')
+        img(
+            ng-style="{'background-color': avatar.bg}"
+            ng-src='{{avatar.url}}'
+        )
 figure.avatar.avatar-task-link
-  a(tg-nav='project-tasks-detail:project=project.slug,ref=task.ref', ng-attr-title='{{task.subject}}')
-    img(ng-src='{{imgurl}}')
+  a(
+      tg-nav='project-tasks-detail:project=project.slug,ref=task.ref'
+      ng-attr-title='{{task.subject}}'
+  )
+        img(
+            ng-style="{'background-color': avatar.bg}"
+            ng-src='{{avatar.url}}'
+        )

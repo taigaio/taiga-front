@@ -26,3 +26,10 @@ svg {
 a[ng-click] svg {
     pointer-events: auto;
 }
+
+// chrome url break
+tg-card {
+    .card-title span:last-child {
+        word-break: break-word;
+    }
+}

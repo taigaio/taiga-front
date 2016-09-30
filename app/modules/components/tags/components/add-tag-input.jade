@@ -1,0 +1,33 @@
+.add-tag-input(
+    novalidate
+    ng-if="vm.addTag && vm.checkPermissions()"
+    tg-loading="vm.loadingAddTag"
+)
+    input.tag-input.e2e-add-tag-input(
+        type="text"
+        placeholder="{{'COMMON.TAGS.PLACEHOLDER' | translate}}"
+        autofocus
+        ng-model="vm.newTag.name"
+        ng-model-options="{debounce: 200}"
+    )
+
+    tg-tags-dropdown(
+        ng-if="!vm.disableColorSelection"
+        ng-show="vm.newTag.name.length",
+        color-array="vm.colorArray",
+        tag="vm.newTag",
+        on-select-tag="vm.addNewTag(name, color)"
+    )
+
+    tg-color-selector(
+        ng-if="!vm.disableColorSelection"
+        on-select-color="vm.selectColor(color)"
+        is-color-required="false"
+    )
+
+    tg-svg.save(
+        ng-show="vm.newTag.name.length"
+        svg-icon="icon-save"
+        svg-title-translate="COMMON.TAGS.ADD"
+        ng-click="vm.addNewTag(vm.newTag.name, vm.newTag.color)"
+    )

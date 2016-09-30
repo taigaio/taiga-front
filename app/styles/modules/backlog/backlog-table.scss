@@ -28,7 +28,7 @@
             flex-shrink: 0;
         }
         .user-stories {
-            overflow: hidden;
+            // overflow: hidden;
             width: 100%;
         }
         .status {
@@ -183,6 +183,9 @@
     }
     .gu-transit {
         background: $whitish;
+    }
+    .sortable-placeholder {
+        background: $mass-white;
         height: 40px;
         width: 100%;
         * {
@@ -279,25 +282,5 @@
             max-height: 3rem;
             max-width: 3rem;
         }
-    }
-}
-
-.empty-backlog {
-    @include font-type(light);
-    padding: 2rem;
-    text-align: center;
-    .row {
-        display: none;
-    }
-    img {
-        margin-bottom: 1rem;
-    }
-    .title {
-        @include font-size(large);
-        margin-bottom: .5rem;
-        text-transform: uppercase;
-    }
-    a {
-        color: $primary;
     }
 }

@@ -1,0 +1,10 @@
+.epic-header-container {
+    display: flex;
+    .color-selector {
+        margin-right: .5rem;
+    }
+    tg-detail-header {
+        flex: 1;
+        width: 100%;
+    }
+}

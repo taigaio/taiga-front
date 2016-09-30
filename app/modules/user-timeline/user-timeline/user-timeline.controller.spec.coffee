@@ -49,7 +49,7 @@ describe "UserTimelineController", ->
             $rootScope = _$rootScope_
 
     it "timelineList should be an array", () ->
-        $scope = $rootScope.$new();
+        $scope = $rootScope.$new()
 
         mocks.userTimelineService.getUserTimeline = sinon.stub().returns(true)
 
@@ -63,7 +63,7 @@ describe "UserTimelineController", ->
         it "project timeline sequence", () ->
             mocks.userTimelineService.getProjectTimeline = sinon.stub().withArgs(4).returns(true)
 
-            $scope = $rootScope.$new();
+            $scope = $rootScope.$new()
 
             myCtrl = controller("UserTimeline", $scope, {
                 projectId: 4
@@ -74,7 +74,7 @@ describe "UserTimelineController", ->
         it "currentUser timeline sequence", () ->
             mocks.userTimelineService.getProfileTimeline = sinon.stub().withArgs(2).returns(true)
 
-            $scope = $rootScope.$new();
+            $scope = $rootScope.$new()
 
             myCtrl = controller("UserTimeline", $scope, {
                 currentUser: true,
@@ -86,7 +86,7 @@ describe "UserTimelineController", ->
         it "currentUser timeline sequence", () ->
             mocks.userTimelineService.getUserTimeline = sinon.stub().withArgs(2).returns(true)
 
-            $scope = $rootScope.$new();
+            $scope = $rootScope.$new()
 
             myCtrl = controller("UserTimeline", $scope, {
                 user: Immutable.Map({id: 2})
@@ -99,7 +99,7 @@ describe "UserTimelineController", ->
 
         beforeEach () ->
             mocks.userTimelineService.getUserTimeline = sinon.stub().returns({})
-            $scope = $rootScope.$new();
+            $scope = $rootScope.$new()
             myCtrl = controller("UserTimeline", $scope, {
                 user: Immutable.Map({id: 2})
             })

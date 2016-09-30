@@ -168,6 +168,8 @@ RelatedTaskCreateFormDirective = ($repo, $compile, $confirm, $tgmodel, $loading,
             $scope.newTask = $tgmodel.make_model("tasks", newTask)
 
         render = ->
+            return if $scope.openNewRelatedTask
+
             $scope.openNewRelatedTask = true
 
             $el.on "keyup", "input", (event)->
@@ -229,7 +231,7 @@ RelatedTasksDirective = ($repo, $rs, $rootscope) ->
     link = ($scope, $el, $attrs) ->
         loadTasks = ->
             return $rs.tasks.list($scope.projectId, null, $scope.usId).then (tasks) =>
-                $scope.tasks = _.sortBy(tasks, 'ref')
+                $scope.tasks = _.sortBy(tasks, (x) => [x.us_order, x.ref])
                 return tasks
 
         _isVisible = ->
@@ -267,9 +269,9 @@ RelatedTasksDirective = ($repo, $rs, $rootscope) ->
 module.directive("tgRelatedTasks", ["$tgRepo", "$tgResources", "$rootScope", RelatedTasksDirective])
 
 
-RelatedTaskAssignedToInlineEditionDirective = ($repo, $rootscope, $translate) ->
+RelatedTaskAssignedToInlineEditionDirective = ($repo, $rootscope, $translate, avatarService) ->
     template = _.template("""
-    <img src="<%- imgurl %>" alt="<%- name %>"/>
+    <img style="background-color: <%- bg %>" src="<%- imgurl %>" alt="<%- name %>"/>
     <figcaption><%- name %></figcaption>
     """)
 
@@ -277,11 +279,15 @@ RelatedTaskAssignedToInlineEditionDirective = ($repo, $rootscope, $translate) ->
         updateRelatedTask = (task) ->
             ctx = {
                 name: $translate.instant("COMMON.ASSIGNED_TO.NOT_ASSIGNED"),
-                imgurl: "/" + window._version + "/images/unnamed.png"
             }
+
             member = $scope.usersById[task.assigned_to]
+
+            avatar = avatarService.getAvatar(member)
+            ctx.imgurl = avatar.url
+            ctx.bg = avatar.bg
+
             if member
-                ctx.imgurl = member.photo
                 ctx.name = member.full_name_display
 
             $el.find(".avatar").html(template(ctx))
@@ -320,5 +326,5 @@ RelatedTaskAssignedToInlineEditionDirective = ($repo, $rootscope, $translate) ->
 
     return {link: link}
 
-module.directive("tgRelatedTaskAssignedToInlineEdition", ["$tgRepo", "$rootScope", "$translate",
+module.directive("tgRelatedTaskAssignedToInlineEdition", ["$tgRepo", "$rootScope", "$translate", "tgAvatarService",
                                                           RelatedTaskAssignedToInlineEditionDirective])

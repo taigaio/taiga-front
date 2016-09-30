@@ -464,13 +464,70 @@
     };
 
 
+    var createPointCB = function createPointCB(object){
+        // A persistent object (as opposed to returned object) is used to save memory
+        // This is good to prevent layout thrashing, or for games, and such
+
+        // NOTE
+        // This uses IE fixes which should be OK to remove some day. :)
+        // Some speed will be gained by removal of these.
+
+        // pointCB should be saved in a variable on return
+        // This allows the usage of element.removeEventListener
+
+        return function pointCB(event){
+
+            event = event || window.event; // IE-ism
+            object.target = event.target || event.srcElement || event.originalTarget;
+            object.element = this;
+            object.type = event.type;
+
+            // Support touch
+            // http://www.creativebloq.com/javascript/make-your-site-work-touch-devices-51411644
+
+            if(event.targetTouches){
+                object.x = event.targetTouches[0].clientX;
+                object.y = event.targetTouches[0].clientY;
+                object.pageX = event.pageX;
+                object.pageY = event.pageY;
+            }else{
+
+                // If pageX/Y aren't available and clientX/Y are,
+                // calculate pageX/Y - logic taken from jQuery.
+                // (This is to support old IE)
+                // NOTE Hopefully this can be removed soon.
+
+                if (event.pageX === null && event.clientX !== null) {
+                    var eventDoc = (event.target && event.target.ownerDocument) || document;
+                    var doc = eventDoc.documentElement;
+                    var body = eventDoc.body;
+
+                    object.pageX = event.clientX +
+                        (doc && doc.scrollLeft || body && body.scrollLeft || 0) -
+                        (doc && doc.clientLeft || body && body.clientLeft || 0);
+                    object.pageY = event.clientY +
+                        (doc && doc.scrollTop  || body && body.scrollTop  || 0) -
+                        (doc && doc.clientTop  || body && body.clientTop  || 0 );
+                }else{
+                    object.pageX = event.pageX;
+                    object.pageY = event.pageY;
+                }
+
+                // pageX, and pageY change with page scroll
+                // so we're not going to use those for x, and y.
+                // NOTE Most browsers also alias clientX/Y with x/y
+                // so that's something to consider down the road.
+
+                object.x = event.clientX;
+                object.y = event.clientY;
+            }
+
+        };
+
+        //NOTE Remember accessibility, Aria roles, and labels.
+    };
 
     // Autscroller
-
-    function AutoScrollerFactory(element, options){
-        return new AutoScroller(element, options);
-    }
-
     function AutoScroller(elements, options){
         var self = this, pixels = 2;
         options = options || {};
@@ -479,7 +536,10 @@
         this.scrolling = false;
         this.scrollWhenOutside = options.scrollWhenOutside || false;
 
-        this.point = pointer(elements);
+        var point = {}, pointCB = createPointCB(point), down = false;
+
+        window.addEventListener('mousemove', pointCB, false);
+        window.addEventListener('touchmove', pointCB, false);
 
         if(!isNaN(options.pixels)){
             pixels = options.pixels;
@@ -494,12 +554,30 @@
         }
 
         this.destroy = function() {
-            this.point.destroy();
+            window.removeEventListener('mousemove', pointCB, false);
+            window.removeEventListener('touchmove', pointCB, false);
+            window.removeEventListener('mousedown', onDown, false);
+            window.removeEventListener('touchstart', onDown, false);
+            window.removeEventListener('mouseup', onUp, false);
+            window.removeEventListener('touchend', onUp, false);
         };
+
+        var hasWindow = null, temp = [];
+        for(var i=0; i<elements.length; i++){
+            if(elements[i] === window){
+                hasWindow = window;
+                break;
+            }else{
+                temp.push(elements[i])
+            }
+        }
+
+        elements = temp;
+        temp = null;
 
         Object.defineProperties(this, {
             down: {
-                get: function(){ return self.point.down; }
+                get: function(){ return down; }
             },
             interval: {
                 get: function(){ return 1/pixels * 1000; }
@@ -510,48 +588,105 @@
             }
         });
 
-        this.point.on('move', function(el, rect){
+        window.addEventListener('mousedown', onDown, false);
+        window.addEventListener('touchstart', onDown, false);
+        window.addEventListener('mouseup', onUp, false);
+        window.addEventListener('touchend', onUp, false);
 
-            if(!el) return;
+        function onDown(){
+            down = true;
+        }
+
+        function onUp(){
+            down = false;
+        }
+
+        var n = 0, current;
+
+        window.addEventListener('mousemove', onMove, false);
+        window.addEventListener('touchmove', onMove, false);
+
+        function onMove(event){
+
             if(!self.autoScroll()) return;
-            if(!self.scrollWhenOutside && this.outside(el)) return;
+            if(!event.target) return;
+            var target = event.target, last;
 
-            if(self.point.y < rect.top + self.margin){
+            if(!current || !inside(point, current)){
+                if(!current && target){
+                    current = null;
+                    while(target = target.parentNode){
+                        for(var i=0; i<elements.length; i++){
+                            if(elements[i] === target && inside(point, elements[i])){
+                                current = elements[i];
+                                break;
+                            }
+                        }
+                    }
+                }else{
+                    last = current;
+                    current = null;
+                    for(var i=0; i<elements.length; i++){
+                        if(elements[i] !== last && inside(point, elements[i])){
+                            current = elements[i];
+                        }
+                    }
+                }
+            }
+
+            if(hasWindow){
+                autoScroll(hasWindow);
+            }
+
+            if(!current) return;
+
+            autoScroll(current);
+        }
+
+        function autoScroll(el){
+            var rect = getRect(el);
+
+            if(point.y < rect.top + self.margin){
                 autoScrollV(el, -1, rect);
-            }else if(self.point.y > rect.bottom - self.margin){
+            }else if(point.y > rect.bottom - self.margin){
                 autoScrollV(el, 1, rect);
             }
 
-            if(self.point.x < rect.left + self.margin){
+            if(point.x < rect.left + self.margin){
                 autoScrollH(el, -1, rect);
-            }else if(self.point.x > rect.right - self.margin){
+            }else if(point.x > rect.right - self.margin){
                 autoScrollH(el, 1, rect);
             }
-        });
+        }
+
+
 
         function autoScrollV(el, amount, rect){
-            //if(!self.down) return;
+
             if(!self.autoScroll()) return;
-            if(!self.scrollWhenOutside && self.point.outside(el)) return;
+            if(!self.scrollWhenOutside && !inside(point, el, rect)) return;
+
             if(el === window){
                 window.scrollTo(el.pageXOffset, el.pageYOffset + amount);
             }else{
+
                 el.scrollTop = el.scrollTop + amount;
             }
 
             setTimeout(function(){
-                if(self.point.y < rect.top + self.margin){
+                if(point.y < rect.top + self.margin){
                     autoScrollV(el, amount, rect);
-                }else if(self.point.y > rect.bottom - self.margin){
+                }else if(point.y > rect.bottom - self.margin){
                     autoScrollV(el, amount, rect);
                 }
             }, self.interval);
         }
 
         function autoScrollH(el, amount, rect){
-            //if(!self.down) return;
+
             if(!self.autoScroll()) return;
-            if(!self.scrollWhenOutside && self.point.outside(el)) return;
+            if(!self.scrollWhenOutside && !inside(point, el, rect)) return;
+
             if(el === window){
                 window.scrollTo(el.pageXOffset + amount, el.pageYOffset);
             }else{
@@ -559,14 +694,45 @@
             }
 
             setTimeout(function(){
-                if(self.point.x < rect.left + self.margin){
+                if(point.x < rect.left + self.margin){
                     autoScrollH(el, amount, rect);
-                }else if(self.point.x > rect.right - self.margin){
+                }else if(point.x > rect.right - self.margin){
                     autoScrollH(el, amount, rect);
                 }
             }, self.interval);
         }
 
+    }
+
+    function getRect(el){
+        if(el === window){
+            return {
+                top: 0,
+                left: 0,
+                right: window.innerWidth,
+                bottom: window.innerHeight,
+                width: window.innerWidth,
+                height: window.innerHeight
+            };
+
+        }else{
+            try{
+                return el.getBoundingClientRect();
+            }catch(e){
+                throw new TypeError("Can't call getBoundingClientRect on "+el);
+            }
+
+        }
+    }
+
+    function inside(point, el, rect){
+        rect = rect || getRect(el);
+        return (point.y > rect.top && point.y < rect.bottom &&
+                point.x > rect.left && point.x < rect.right);
+    }
+
+    function AutoScrollerFactory(element, options){
+        return new AutoScroller(element, options);
     }
 
     window.autoScroll = AutoScrollerFactory;

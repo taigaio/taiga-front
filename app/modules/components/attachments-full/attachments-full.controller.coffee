@@ -26,10 +26,11 @@ class AttachmentsFullController
         "$tgConfig",
         "$tgStorage",
         "tgAttachmentsFullService",
-        "tgProjectService"
+        "tgProjectService",
+        "tgAttachmentsPreviewService"
     ]
 
-    constructor: (@translate, @confirm, @config, @storage, @attachmentsFullService, @projectService) ->
+    constructor: (@translate, @confirm, @config, @storage, @attachmentsFullService, @projectService, @attachmentsPreviewService) ->
         @.mode = @storage.get('attachment-mode', 'list')
 
         @.maxFileSize = @config.get("maxUploadFileSize", null)
@@ -64,6 +65,8 @@ class AttachmentsFullController
         @attachmentsFullService.loadAttachments(@.type, @.objId, @.projectId)
 
     deleteAttachment: (toDeleteAttachment) ->
+        @attachmentsPreviewService.fileId = null
+
         title = @translate.instant("ATTACHMENT.TITLE_LIGHTBOX_DELETE_ATTACHMENT")
         message = @translate.instant("ATTACHMENT.MSG_LIGHTBOX_DELETE_ATTACHMENT", {
             fileName: toDeleteAttachment.getIn(['file', 'name'])

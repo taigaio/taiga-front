@@ -35,6 +35,8 @@
         "ONE_ITEM_LINE": "Yksi riviä kohti...",
         "NEW_BULK": "Lisää monta",
         "RELATED_TASKS": "Liittyvät tehtävät",
+        "PREVIOUS": "Previous",
+        "NEXT": "Seuraava",
         "LOGOUT": "Kirjaudu ulos",
         "EXTERNAL_USER": "ulkoinen käyttäjä",
         "GENERIC_ERROR": "Oompa Loompas havaitsivat virheen {{error}}.",
@@ -45,6 +47,11 @@
         "CAPSLOCK_WARNING": "Be careful! You are using capital letters in an input field that is case sensitive.",
         "CONFIRM_CLOSE_EDIT_MODE_TITLE": "Are you sure you want to close the edit mode?",
         "CONFIRM_CLOSE_EDIT_MODE_MESSAGE": "Remember that if you close the edit mode without saving all the changes will be lost",
+        "RELATED_USERSTORIES": "Related user stories",
+        "CARD": {
+            "ASSIGN_TO": "Assign To",
+            "EDIT": "Edit card"
+        },
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Tämä arvo vaikuttaa virheelliseltä.",
             "TYPE_EMAIL": "Tämän pitäisi olla toimiva sähköpostiosoite.",
@@ -115,8 +122,9 @@
         "USER_STORY": "Käyttäjätarina",
         "TASK": "Task",
         "ISSUE": "Issue",
+        "EPIC": "Epic",
         "TAGS": {
-            "PLACEHOLDER": "Anna avainsana...",
+            "PLACEHOLDER": "Enter tag",
             "DELETE": "Poista avainsana",
             "ADD": "Lisää avainsana"
         },
@@ -193,12 +201,29 @@
             "CONFIRM_DELETE": "Remeber that all values in this custom field will be deleted.\n Are you sure you want to continue?"
         },
         "FILTERS": {
-            "TITLE": "suodattimet",
+            "TITLE": "Suodattimet",
             "INPUT_PLACEHOLDER": "Aihe tai viittaus",
             "TITLE_ACTION_FILTER_BUTTON": "hae",
-            "BREADCRUMB_TITLE": "takaisin kategorioihin",
-            "BREADCRUMB_FILTERS": "Suodattimet",
-            "BREADCRUMB_STATUS": "tila"
+            "INPUT_SEARCH_PLACEHOLDER": "Otsikko tai viittaus",
+            "TITLE_ACTION_SEARCH": "Hae",
+            "ACTION_SAVE_CUSTOM_FILTER": "tallenna omaksi suodattimeksi",
+            "PLACEHOLDER_FILTER_NAME": "Anna suodattimen nimi ja paina enter",
+            "APPLIED_FILTERS_NUM": "filters applied",
+            "CATEGORIES": {
+                "TYPE": "Tyyppi",
+                "STATUS": "Tila",
+                "SEVERITY": "Vakavuus",
+                "PRIORITIES": "Kiireellisyydet",
+                "TAGS": "Avainsanat",
+                "ASSIGNED_TO": "Tekijä",
+                "CREATED_BY": "Luoja",
+                "CUSTOM_FILTERS": "Omat suodattimet",
+                "EPIC": "Epic"
+            },
+            "CONFIRM_DELETE": {
+                "TITLE": "Poista oma suodatin",
+                "MESSAGE": "oma suodatin '{{customFilterName}}'"
+            }
         },
         "WYSIWYG": {
             "H1_BUTTON": "Päätason otsikko",
@@ -228,9 +253,18 @@
             "PREVIEW_BUTTON": "Esikatselu",
             "EDIT_BUTTON": "Muokkaa",
             "ATTACH_FILE_HELP": "Attach files by dragging & dropping on the textarea above.",
+            "ATTACH_FILE_HELP_SAVE_FIRST": "Save first before if you want to attach files by dragging & dropping on the textarea above.",
             "MARKDOWN_HELP": "Merkintätavan ohjeet"
         },
         "PERMISIONS_CATEGORIES": {
+            "EPICS": {
+                "NAME": "Epics",
+                "VIEW_EPICS": "View epics",
+                "ADD_EPICS": "Add epics",
+                "MODIFY_EPICS": "Modify epics",
+                "COMMENT_EPICS": "Comment epics",
+                "DELETE_EPICS": "Delete epics"
+            },
             "SPRINTS": {
                 "NAME": "Kierrokset",
                 "VIEW_SPRINTS": "Katso kierroksia",
@@ -243,6 +277,7 @@
                 "VIEW_USER_STORIES": "Katso käyttäjätarinoita",
                 "ADD_USER_STORIES": "Lisää käyttäjätarinoita",
                 "MODIFY_USER_STORIES": "Muokkaa käyttäjätarinoita",
+                "COMMENT_USER_STORIES": "Comment user stories",
                 "DELETE_USER_STORIES": "Poista käyttäjätarinoita"
             },
             "TASKS": {
@@ -250,6 +285,7 @@
                 "VIEW_TASKS": "Katsot tehtäviä",
                 "ADD_TASKS": "Lisää tehtäviä",
                 "MODIFY_TASKS": "Muokkaa tehtäviä",
+                "COMMENT_TASKS": "Comment tasks",
                 "DELETE_TASKS": "Poista tehtäviä"
             },
             "ISSUES": {
@@ -257,6 +293,7 @@
                 "VIEW_ISSUES": "Katso pyyntöjä",
                 "ADD_ISSUES": "Lisää pyyntöjä",
                 "MODIFY_ISSUES": "Muokkaa pyyntöjä",
+                "COMMENT_ISSUES": "Comment issues",
                 "DELETE_ISSUES": "Poista pyyntöjä"
             },
             "WIKI": {
@@ -366,6 +403,41 @@
         "WATCHING_SECTION": "Watching",
         "DASHBOARD": "Projects Dashboard"
     },
+    "EPICS": {
+        "TITLE": "EPICS",
+        "SECTION_NAME": "Epics",
+        "EPIC": "EPIC",
+        "PAGE_TITLE": "Epics - {{projectName}}",
+        "PAGE_DESCRIPTION": "The epics list of the project {{projectName}}: {{projectDescription}}",
+        "DASHBOARD": {
+            "ADD": "+ ADD EPIC",
+            "UNASSIGNED": "Tekijä puuttuu"
+        },
+        "EMPTY": {
+            "TITLE": "It looks like there aren't any epics yet",
+            "EXPLANATION": "Epics are items at a higher level that encompass user stories.<br />Epics are at the top of the hierarchy and can be used to group user stories together.",
+            "HELP": "Learn more about epics"
+        },
+        "TABLE": {
+            "VOTES": "Ääniä",
+            "NAME": "Nimi",
+            "PROJECT": "Projekti",
+            "SPRINT": "Kierros",
+            "ASSIGNED_TO": "Assigned",
+            "STATUS": "Tila",
+            "PROGRESS": "Progress",
+            "VIEW_OPTIONS": "View options"
+        },
+        "CREATE": {
+            "TITLE": "New Epic",
+            "PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this epic",
+            "TEAM_REQUIREMENT": "Team requirement",
+            "CLIENT_REQUIREMENT": "Client requirement",
+            "BLOCKED": "Suljettu",
+            "BLOCKED_NOTE_PLACEHOLDER": "Why is this epic blocked?",
+            "CREATE_EPIC": "Create epic"
+        }
+    },
     "PROJECTS": {
         "PAGE_TITLE": "My projects - Taiga",
         "PAGE_DESCRIPTION": "A list with all your projects, you can reorder or create a new one.",
@@ -402,7 +474,8 @@
     "ADMIN": {
         "COMMON": {
             "TITLE_ACTION_EDIT_VALUE": "Muokkaa arvoa",
-            "TITLE_ACTION_DELETE_VALUE": "Poista arvo"
+            "TITLE_ACTION_DELETE_VALUE": "Poista arvo",
+            "TITLE_ACTION_DELETE_TAG": "Poista avainsana"
         },
         "HELP": "Tarvitsetko apua? Katso tukisivuilta.",
         "PROJECT_DEFAULT_VALUES": {
@@ -435,6 +508,8 @@
             "TITLE": "Modulit",
             "ENABLE": "Aktivoi",
             "DISABLE": "Passivoi",
+            "EPICS": "Epics",
+            "EPICS_DESCRIPTION": "Visualize and manage the most strategic part of your project",
             "BACKLOG": "Odottavat",
             "BACKLOG_DESCRIPTION": "Hallinnoi käyttäjätarinoita: järjestele ja priorisoi työtä.",
             "NUMBER_SPRINTS": "Expected number of sprints",
@@ -497,6 +572,7 @@
             "REGENERATE_SUBTITLE": "Jos muutata CSV-datan URLia, edellien lakkaa toimimasta. Oletko varma?"
         },
         "CSV": {
+            "SECTION_TITLE_EPIC": "epics reports",
             "SECTION_TITLE_US": "käyttäjätarinoiden raportit",
             "SECTION_TITLE_TASK": "tehtävien raportit",
             "SECTION_TITLE_ISSUE": "pyyntöjen raportit",
@@ -509,6 +585,8 @@
         "CUSTOM_FIELDS": {
             "TITLE": "Omat kentät",
             "SUBTITLE": "Määritele omia kenttiä käyttäjätarinoihin, tehtäviin ja pyytöihin",
+            "EPIC_DESCRIPTION": "Epics custom fields",
+            "EPIC_ADD": "Add a custom field in epics",
             "US_DESCRIPTION": "Käyttäjätarinoiden omat kentät",
             "US_ADD": "Lisää käyttäjätarinoihin oma kenttä",
             "TASK_DESCRIPTION": "Tehtävien omat kentät",
@@ -546,7 +624,8 @@
         "PROJECT_VALUES_STATUS": {
             "TITLE": "Tila",
             "SUBTITLE": "Määrittele tilat joiden kautta käyttäjätarinasi, tehtäväsi ja pyyntösi kulkevat",
-            "US_TITLE": "Kt tilat",
+            "EPIC_TITLE": "Epic Statuses",
+            "US_TITLE": "User Story Statuses",
             "TASK_TITLE": "Tehtävien tilat",
             "ISSUE_TITLE": "Pyyntöjen tilat"
         },
@@ -555,6 +634,17 @@
             "SUBTITLE": "Määrittele pyyntöjen tyypit",
             "ISSUE_TITLE": "Pyyntöjen tyypit",
             "ACTION_ADD": "Lisää uusi {{objName}}"
+        },
+        "PROJECT_VALUES_TAGS": {
+            "TITLE": "Avainsanat",
+            "SUBTITLE": "View and edit the color of your tags",
+            "EMPTY": "Currently there are no tags",
+            "EMPTY_SEARCH": "It looks like nothing was found with your search criteria",
+            "ACTION_ADD": "Lisää avainsana",
+            "NEW_TAG": "New tag",
+            "MIXING_HELP_TEXT": "Select the tags that you want to merge",
+            "MIXING_MERGE": "Merge Tags",
+            "SELECTED": "Selected"
         },
         "ROLES": {
             "PAGE_TITLE": "Roles - {{projectName}}",
@@ -587,6 +677,10 @@
         "GITHUB": {
             "SECTION_NAME": "Github",
             "PAGE_TITLE": "Github - {{projectName}}"
+        },
+        "GOGS": {
+            "SECTION_NAME": "Gogs",
+            "PAGE_TITLE": "Gogs - {{projectName}}"
         },
         "WEBHOOKS": {
             "PAGE_TITLE": "Webhooks - {{projectName}}",
@@ -643,13 +737,14 @@
             "DEFAULT_DELETE_MESSAGE": "kutsu sähköpostiin {{email}}"
         },
         "DEFAULT_VALUES": {
+            "LABEL_EPIC_STATUS": "Default value for epic status selector",
+            "LABEL_US_STATUS": "Default value for user story status selector",
             "LABEL_POINTS": "Oletukset pisteiden valintaan",
-            "LABEL_US": "Oletukset käyttäjätarinoiden tiloiksi",
             "LABEL_TASK_STATUS": "Oletukset tehtävien tilaksi",
-            "LABEL_PRIORITY": "Oletus arvo tärkeyden valiintaan",
-            "LABEL_SEVERITY": "Oletukset vakavuudeksi",
             "LABEL_ISSUE_TYPE": "Oletukset pyyntöjen tyypeiksi",
-            "LABEL_ISSUE_STATUS": "Oletukset pyyntöjen statuksiksi"
+            "LABEL_ISSUE_STATUS": "Oletukset pyyntöjen statuksiksi",
+            "LABEL_PRIORITY": "Oletus arvo tärkeyden valiintaan",
+            "LABEL_SEVERITY": "Oletukset vakavuudeksi"
         },
         "STATUS": {
             "PLACEHOLDER_WRITE_STATUS_NAME": "Anna uuden tilan nimi"
@@ -681,7 +776,8 @@
             "PRIORITIES": "Tärkeydet",
             "SEVERITIES": "Vakavuudet",
             "TYPES": "Tyypit",
-            "CUSTOM_FIELDS": "Omat kentät"
+            "CUSTOM_FIELDS": "Omat kentät",
+            "TAGS": "Avainsanat"
         },
         "SUBMENU_PROJECT_PROFILE": {
             "TITLE": "Projektin profiili"
@@ -751,6 +847,8 @@
             "FILTER_TYPE_ALL_TITLE": "Show all",
             "FILTER_TYPE_PROJECTS": "Projektit",
             "FILTER_TYPE_PROJECT_TITLES": "Show only projects",
+            "FILTER_TYPE_EPICS": "Epics",
+            "FILTER_TYPE_EPIC_TITLES": "Show only epics",
             "FILTER_TYPE_USER_STORIES": "Stories",
             "FILTER_TYPE_USER_STORIES_TITLES": "Show only user stories",
             "FILTER_TYPE_TASKS": "Tehtävät",
@@ -950,8 +1048,8 @@
         "CREATE_MEMBER": {
             "PLACEHOLDER_INVITATION_TEXT": "(Vapaaehtoinen) Lisää oma kuvaus kutsuusi uusille jäsenille ;-)",
             "PLACEHOLDER_TYPE_EMAIL": "Anna sähköposti",
-            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "Unfortunately, this project can't have more than <strong>{{maxMembers}}</strong> members.<br> If you would like to increase the current limit, please contact the administrator.",
-            "LIMIT_USERS_WARNING_MESSAGE": "Unfortunately, this project can't have more than <strong>{{maxMembers}}</strong> members."
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "You are about to reach the maximum number of members allowed for this project, <strong>{{maxMembers}}</strong> members. If you would like to increase the current limit, please contact the administrator.",
+            "LIMIT_USERS_WARNING_MESSAGE": "You are about to reach the maximum number of members allowed for this project, <strong>{{maxMembers}}</strong> members."
         },
         "LEAVE_PROJECT_WARNING": {
             "TITLE": "Unfortunately, this project can't be left without an owner",
@@ -970,10 +1068,30 @@
             "BUTTON": "Ask this project member to become the new project owner"
         }
     },
+    "EPIC": {
+        "PAGE_TITLE": "{{epicSubject}} - Epic {{epicRef}} - {{projectName}}",
+        "PAGE_DESCRIPTION": "Status: {{epicStatus }}. Description: {{epicDescription}}",
+        "SECTION_NAME": "Epic",
+        "TITLE_LIGHTBOX_UNLINK_RELATED_USERSTORY": "Unlink related userstory",
+        "MSG_LIGHTBOX_UNLINK_RELATED_USERSTORY": "It will delete the link to the related userstory '{{subject}}'",
+        "ERROR_UNLINK_RELATED_USERSTORY": "We have not been able to unlink: {{errorMessage}}",
+        "CREATE_RELATED_USERSTORIES": "Create a relationship with",
+        "NEW_USERSTORY": "Uusi käyttäjätarina",
+        "EXISTING_USERSTORY": "Existing user story",
+        "CHOOSE_PROJECT_FOR_CREATION": "What's the project?",
+        "SUBJECT": "Aihe",
+        "SUBJECT_BULK_MODE": "Subject (bulk insert)",
+        "CHOOSE_PROJECT_FROM": "What's the project?",
+        "CHOOSE_USERSTORY": "What's the user story?",
+        "NO_USERSTORIES": "This project has no User Stories yet. Please select another project.",
+        "FILTER_USERSTORIES": "Filter user stories",
+        "LIGHTBOX_TITLE_BLOKING_EPIC": "Blocking epic",
+        "ACTION_DELETE": "Delete epic"
+    },
     "US": {
         "PAGE_TITLE": "{{userStorySubject}} - User Story {{userStoryRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Status: {{userStoryStatus }}. Completed {{userStoryProgressPercentage}}% ({{userStoryClosedTasks}} of {{userStoryTotalTasks}} tasks closed). Points: {{userStoryPoints}}. Description: {{userStoryDescription}}",
-        "SECTION_NAME": "Käyttäjätarinan tiedot",
+        "SECTION_NAME": "Käyttäjätarina",
         "LINK_TASKBOARD": "Tehtävätaulu",
         "TITLE_LINK_TASKBOARD": "Siirry tehtävätauluun",
         "TOTAL_POINTS": "total points",
@@ -984,14 +1102,23 @@
         "EXTERNAL_REFERENCE": "Tämä Kt oon luotu täältä: ",
         "GO_TO_EXTERNAL_REFERENCE": "Palaa alkuun",
         "BLOCKED": "Tämä käyttäjätarina on suljettu",
-        "PREVIOUS": "edellinen käyttäjätarina",
-        "NEXT": "seuraava käyttäjätarina",
         "TITLE_DELETE_ACTION": "Poista käyttäjätarina",
         "LIGHTBOX_TITLE_BLOKING_US": "Meitä estää",
         "TASK_COMPLETED": "{{totalClosedTasks}}/{{totalTasks}} tehtyä tehtävää",
         "ASSIGN": "Käyttäjätarinan tekijä",
         "NOT_ESTIMATED": "Ei arvioitu",
         "TOTAL_US_POINTS": "Kt pisteet yhteensä",
+        "TRIBE": {
+            "PUBLISH": "Publish as Gig in Taiga Tribe",
+            "PUBLISH_INFO": "More info",
+            "PUBLISH_TITLE": "More info on publishing in Taiga Tribe",
+            "PUBLISHED_AS_GIG": "Story published as Gig in Taiga Tribe",
+            "EDIT_LINK": "Edit link",
+            "CLOSE": "Close",
+            "SYNCHRONIZE_LINK": "synchronize with Taiga Tribe",
+            "PUBLISH_MORE_INFO_TITLE": "Do you need somebody for this task?",
+            "PUBLISH_MORE_INFO_TEXT": "<p>If you need help with a particular piece of work you can easily create gigs on<a href='taigatribe.com' title='Taiga Tribe'> Taiga Tribe </a> and receive help from all over the world. You will be able to control and manage the gig enjoying a great community eager to contribute.</p><p><a href='taigatribe.com' title='Taiga Tribe'> TaigaTribe </a>  was born as a Taiga sibling. Both platforms can live separately but we believe that there is much power in using them combined so we are making sure the integration works like a charm.</p>"
+        },
         "FIELDS": {
             "TEAM_REQUIREMENT": "Tiimin vaatimus",
             "CLIENT_REQUIREMENT": "Asiakkaan vaatimus",
@@ -999,28 +1126,47 @@
         }
     },
     "COMMENTS": {
-        "DELETED_INFO": "{{user}} poisti kommentin {{date}}",
+        "DELETED_INFO": "Comment deleted by {{user}}",
         "TITLE": "Kommentit",
+        "COMMENTS_COUNT": "{{comments}} Comments",
+        "ORDER": "Order",
+        "OLDER_FIRST": "Older first",
+        "RECENT_FIRST": "Recent first",
         "COMMENT": "Kommentti",
+        "EDIT_COMMENT": "Edit comment",
+        "EDITED_COMMENT": "Edited:",
+        "SHOW_HISTORY": "View historic",
         "TYPE_NEW_COMMENT": "Lisää uusi kommentti tässä",
         "SHOW_DELETED": "Näytä poistettu kommentti",
         "HIDE_DELETED": "Piilota poistettu kommentti",
         "DELETE": "Delete comment",
-        "RESTORE": "Palauta kommentti"
+        "RESTORE": "Palauta kommentti",
+        "HISTORY": {
+            "TITLE": "Aktiivisuus"
+        }
     },
     "ACTIVITY": {
         "SHOW_ACTIVITY": "Näytä tapahtumat",
         "DATETIME": "DD.MM.YY - HH:mm",
         "SHOW_MORE": "+ Näytä edelliset rivit ({{showMore}} lisää)",
         "TITLE": "Aktiivisuus",
+        "ACTIVITIES_COUNT": "{{activities}} Activities",
         "REMOVED": "poistettu",
         "ADDED": "lisätty",
-        "US_POINTS": "Kt pisteet ({{name}})",
-        "NEW_ATTACHMENT": "uusi liite",
-        "DELETED_ATTACHMENT": "poistettu liite",
-        "UPDATED_ATTACHMENT": "päivitetty liite {{filename}}",
-        "DELETED_CUSTOM_ATTRIBUTE": "poista oma attribuutti",
+        "TAGS_ADDED": "tags added:",
+        "TAGS_REMOVED": "tags removed:",
+        "US_POINTS": "{{role}} points",
+        "NEW_ATTACHMENT": "new attachment:",
+        "DELETED_ATTACHMENT": "deleted attachment:",
+        "UPDATED_ATTACHMENT": "updated attachment ({{filename}}):",
+        "CREATED_CUSTOM_ATTRIBUTE": "created custom attribute",
+        "UPDATED_CUSTOM_ATTRIBUTE": "updated custom attribute",
         "SIZE_CHANGE": "Tehty {size, plural, one{muutos} other{# muutosta}}",
+        "BECAME_DEPRECATED": "became deprecated",
+        "BECAME_UNDEPRECATED": "became undeprecated",
+        "TEAM_REQUIREMENT": "Tiimin vaatimus",
+        "CLIENT_REQUIREMENT": "Asiakkaan vaatimus",
+        "BLOCKED": "Suljettu",
         "VALUES": {
             "YES": "Kyllä",
             "NO": "ei",
@@ -1052,12 +1198,14 @@
             "TAGS": "avainsanat",
             "ATTACHMENTS": "liitteet",
             "IS_DEPRECATED": "on vanhentunut",
+            "IS_NOT_DEPRECATED": "is not deprecated",
             "ORDER": "järjestys",
             "BACKLOG_ORDER": "odottavien järjestys",
             "SPRINT_ORDER": "kierroksen järjestys",
             "KANBAN_ORDER": "kanban järjestys",
             "TASKBOARD_ORDER": "Tehtävätaulun järjestys",
-            "US_ORDER": "kt järjestys"
+            "US_ORDER": "kt järjestys",
+            "COLOR": "väri"
         }
     },
     "BACKLOG": {
@@ -1109,7 +1257,8 @@
             "CLOSED_TASKS": "suljettu<br/>tehtävää",
             "IOCAINE_DOSES": "myrkkye-<br/>annosta",
             "SHOW_STATISTICS_TITLE": "Näytä tilastot",
-            "TOGGLE_BAKLOG_GRAPH": "Show/Hide burndown graph"
+            "TOGGLE_BAKLOG_GRAPH": "Show/Hide burndown graph",
+            "POINTS_PER_ROLE": "Points per role"
         },
         "SUMMARY": {
             "PROJECT_POINTS": "projekti<br/>pistettä",
@@ -1122,9 +1271,7 @@
             "TITLE": "Suodattimet",
             "REMOVE": "Poista suodattimet",
             "HIDE": "Piilota suodattimet",
-            "SHOW": "Näytä suodattimet",
-            "FILTER_CATEGORY_STATUS": "Tila",
-            "FILTER_CATEGORY_TAGS": "Avainsanat"
+            "SHOW": "Näytä suodattimet"
         },
         "SPRINTS": {
             "TITLE": "KIERROKSET",
@@ -1179,7 +1326,7 @@
     "TASK": {
         "PAGE_TITLE": "{{taskSubject}} - Task {{taskRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Status: {{taskStatus }}. Description: {{taskDescription}}",
-        "SECTION_NAME": "Tehtävän tiedot",
+        "SECTION_NAME": "Task",
         "LINK_TASKBOARD": "Tehtävätaulu",
         "TITLE_LINK_TASKBOARD": "Siirry tehtävätauluun",
         "PLACEHOLDER_SUBJECT": "Anna tehtävän aihe",
@@ -1189,8 +1336,6 @@
         "ORIGIN_US": "Tämä tehtävä on luotu",
         "TITLE_LINK_GO_ORIGIN": "Siirry käyttäjätarinaan",
         "BLOCKED": "Tämä tehtävä on suljettu",
-        "PREVIOUS": "edellinen tehtävä",
-        "NEXT": "seuraava tehtävä",
         "TITLE_DELETE_ACTION": "Poista tehtävä",
         "LIGHTBOX_TITLE_BLOKING_TASK": "Estävä tehtävä",
         "FIELDS": {
@@ -1228,16 +1373,13 @@
         "PAGE_TITLE": "Issues - {{projectName}}",
         "PAGE_DESCRIPTION": "The issues list panel of the project {{projectName}}: {{projectDescription}}",
         "LIST_SECTION_NAME": "Pyynnöt",
-        "SECTION_NAME": "Pyynnön tiedot",
+        "SECTION_NAME": "Issue",
         "ACTION_NEW_ISSUE": "+ UUSI PYYNTÖ",
         "ACTION_PROMOTE_TO_US": "Liitä käyttäjätarinaan",
-        "PLACEHOLDER_FILTER_NAME": "Anna suodattimen nimi ja paina enter",
         "PROMOTED": "Tämä pyyntö on liitetty Kthen:",
         "EXTERNAL_REFERENCE": "Tämä pyyntö on luotu täältä:",
         "GO_TO_EXTERNAL_REFERENCE": "Palaa alkuun",
         "BLOCKED": "Tämä pyyntö on estetty",
-        "TITLE_PREVIOUS_ISSUE": "edellinen pyyntö",
-        "TITLE_NEXT_ISSUE": "seuraava pyyntö",
         "ACTION_DELETE": "Poista pyyntö",
         "LIGHTBOX_TITLE_BLOKING_ISSUE": "Estävä pyyntö",
         "FIELDS": {
@@ -1248,28 +1390,6 @@
         "CONFIRM_PROMOTE": {
             "TITLE": "Liitä tämä pyyntö uuteen käyttäjätarinaan",
             "MESSAGE": "Haluatko varmasti lisätä uuden käyttäjätarinan tästä pyynnöstä?"
-        },
-        "FILTERS": {
-            "TITLE": "Suodattimet",
-            "INPUT_SEARCH_PLACEHOLDER": "Otsikko tai viittaus",
-            "TITLE_ACTION_SEARCH": "Hae",
-            "ACTION_SAVE_CUSTOM_FILTER": "tallenna omaksi suodattimeksi",
-            "BREADCRUMB": "Suodattimet",
-            "TITLE_BREADCRUMB": "Suodattimet",
-            "CATEGORIES": {
-                "TYPE": "Tyyppi",
-                "STATUS": "Tila",
-                "SEVERITY": "Vakavuus",
-                "PRIORITIES": "Tärkeydet",
-                "TAGS": "Avainsanat",
-                "ASSIGNED_TO": "Tekijä",
-                "CREATED_BY": "Luoja",
-                "CUSTOM_FILTERS": "Omat suodattimet"
-            },
-            "CONFIRM_DELETE": {
-                "TITLE": "Poista oma suodatin",
-                "MESSAGE": "oma suodatin '{{customFilterName}}'"
-            }
         },
         "TABLE": {
             "COLUMNS": {
@@ -1316,6 +1436,7 @@
     "SEARCH": {
         "PAGE_TITLE": "Search - {{projectName}}",
         "PAGE_DESCRIPTION": "Search anything, user stories, issues, tasks or wiki pages, in the project {{projectName}}: {{projectDescription}}",
+        "FILTER_EPICS": "Epics",
         "FILTER_USER_STORIES": "Käyttäjätarinat",
         "FILTER_ISSUES": "Pyynnöt",
         "FILTER_TASKS": "Tehtävät",
@@ -1417,13 +1538,24 @@
         "DELETE_LIGHTBOX_TITLE": "Poista wiki-sivu",
         "DELETE_LINK_TITLE": "Delete Wiki link",
         "NAVIGATION": {
-            "SECTION_NAME": "Linkit",
-            "ACTION_ADD_LINK": "Lisää linkki"
+            "HOME": "Main Page",
+            "SECTION_NAME": "BOOKMARKS",
+            "ACTION_ADD_LINK": "Add bookmark",
+            "ALL_PAGES": "All wiki pages"
         },
         "SUMMARY": {
             "TIMES_EDITED": "kertaa<br/>muokattu",
             "LAST_EDIT": "viimeinen<br/>muokkaus",
             "LAST_MODIFICATION": "viimeinen muokkaus"
+        },
+        "SECTION_PAGES_LIST": "All pages",
+        "PAGES_LIST_COLUMNS": {
+            "TITLE": "Title",
+            "EDITIONS": "Editions",
+            "CREATED": "Luotu",
+            "MODIFIED": "Modified",
+            "CREATOR": "Creator",
+            "LAST_MODIFIER": "Last modifier"
         }
     },
     "HINTS": {
@@ -1447,6 +1579,8 @@
         "TASK_CREATED_WITH_US": "{{username}} has created a new task {{obj_name}} in {{project_name}} which belongs to the US {{us_name}}",
         "WIKI_CREATED": "{{username}} has created a new wiki page {{obj_name}} in {{project_name}}",
         "MILESTONE_CREATED": "{{username}} has created a new sprint {{obj_name}} in {{project_name}}",
+        "EPIC_CREATED": "{{username}} has created a new epic {{obj_name}} in {{project_name}}",
+        "EPIC_RELATED_USERSTORY_CREATED": "{{username}} has related the userstory {{related_us_name}} to the epic {{epic_name}} in {{project_name}}",
         "NEW_PROJECT": "{{username}} created the project {{project_name}}",
         "MILESTONE_UPDATED": "{{username}} has updated the sprint {{obj_name}}",
         "US_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the US {{obj_name}}",
@@ -1459,9 +1593,13 @@
         "TASK_UPDATED_WITH_US": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} which belongs to the US {{us_name}}",
         "TASK_UPDATED_WITH_US_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} which belongs to the US {{us_name}} to {{new_value}}",
         "WIKI_UPDATED": "{{username}} has updated the wiki page {{obj_name}}",
+        "EPIC_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the epic {{obj_name}}",
+        "EPIC_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the epic {{obj_name}} to {{new_value}}",
+        "EPIC_UPDATED_WITH_NEW_COLOR": "{{username}} has updated the \"{{field_name}}\" of the epic {{obj_name}} to <span class=\"new-color\" style=\"background: {{new_value}}\"></span>",
         "NEW_COMMENT_US": "{{username}} has commented in the US {{obj_name}}",
         "NEW_COMMENT_ISSUE": "{{username}} has commented in the issue {{obj_name}}",
         "NEW_COMMENT_TASK": "{{username}} has commented in the task {{obj_name}}",
+        "NEW_COMMENT_EPIC": "{{username}} has commented in the epic {{obj_name}}",
         "NEW_MEMBER": "{{project_name}} has a new member",
         "US_ADDED_MILESTONE": "{{username}} has added the US {{obj_name}} to {{sprint_name}}",
         "US_MOVED": "{{username}} has moved the US {{obj_name}}",

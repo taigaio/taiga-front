@@ -1,0 +1,19 @@
+section.activities
+    .activities-wrapper
+        .activity(ng-repeat="activity in activities track by activity.id")
+            img.activity-avatar(
+                tg-avatar="activity.user"
+                ng-alt="{{activity.user.name}}"
+            )
+            .activity-main
+                .activity-data
+                    span.activity-creator {{activity.user.name}}
+                    span.activity-date {{activity.created_at | momentFormat:'DD MMM YYYY HH:mm'}}
+                p.activity-text(ng-if="activity.comment") {{activity.comment}}
+
+                .activity-diff(
+                    ng-repeat="(key, diff) in activity.values_diff"
+                    tg-history-diff
+                    type='key'
+                    diff='diff'
+                )

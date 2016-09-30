@@ -1,0 +1,159 @@
+.comments {
+    clear: both;
+    .add-comment {
+        margin-top: 1rem;
+        textarea {
+            height: 3rem;
+        }
+        .preview-icon,
+        .edit {
+            position: absolute;
+            right: 1rem;
+        }
+    }
+    .save-comment-wrapper {
+        align-items: flex-end;
+        display: flex;
+        flex-direction: column;
+    }
+    .save-comment {
+        margin-top: 1rem;
+        padding: .5rem 4rem;
+    }
+
+}
+.comment {
+    display: block;
+    .comment-wrapper {
+        align-items: flex-start;
+        border-bottom: 1px solid $whitish;
+        display: flex;
+        padding: 2rem 0;
+        &:hover {
+            .comment-option {
+                opacity: 1;
+            }
+        }
+    }
+    .comment-main {
+        width: 100%;
+    }
+    .comment-avatar {
+        flex-shrink: 0;
+        margin-right: 1.5rem;
+        width: 60px;
+    }
+    .comment-data {
+        align-items: center;
+        display: flex;
+        justify-content: flex-start;
+        margin-bottom: 1rem;
+    }
+    .comment-creator {
+        color: $primary;
+        margin-right: .5rem;
+    }
+    .comment-date {
+        @include font-size(small);
+        color: $gray-light;
+    }
+    .comment-edited {
+        @include font-size(small);
+        background: $whitish;
+        margin: 0 .5rem;
+        padding: .25rem;
+        .separator {
+            margin: 0 .25rem;
+        }
+        a {
+            color: $primary;
+            fill: $primary;
+        }
+        svg {
+            @include svg-size(.75rem);
+            margin: 0 0 0 .25rem;
+        }
+    }
+    .comment-options {
+        align-items: center;
+        align-self: stretch;
+        display: flex;
+        flex-basis: 50px;
+        flex-shrink: 0;
+        margin-left: 1.5rem;
+        .comment-option {
+            cursor: pointer;
+            opacity: 0;
+        }
+        .icon-edit {
+            fill: $gray-light;
+            margin-right: .5rem;
+            &:hover {
+                fill: $gray;
+            }
+        }
+        .icon-close {
+            fill: $gray-light;
+            margin-right: .5rem;
+            &:hover {
+                fill: $red;
+            }
+        }
+        .icon-trash {
+            fill: $red-light;
+            &:hover {
+                fill: $red;
+            }
+        }
+    }
+    .deleted-comment-wrapper {
+        border-bottom: 1px solid $whitish;
+        padding: 1rem 0;
+        width: 100%;
+    }
+    .deleted-comment-main {
+        @include font-size(xsmall);
+        color: $gray-light;
+        display: flex;
+        width: 100%;
+    }
+    .toggle-deleted-comment {
+        color: $primary;
+        fill: $primary;
+        margin: 0 1rem;
+        transition: none;
+        .icon-arrow-down,
+        .icon-arrow-up {
+            @include svg-size(.8rem);
+            margin-left: .25rem;
+        }
+    }
+    .restore-comment {
+        margin-left: auto;
+        transition: all .2s;
+        &:hover {
+            color: $primary;
+            fill: $primary;
+        }
+        .icon-reload {
+            @include svg-size(.8rem);
+            margin-right: .25rem;
+        }
+    }
+    .deleted-comment-comment {
+        margin-top: 1rem;
+    }
+    .comment-editor {
+        textarea {
+            height: 5rem;
+            min-height: 5rem;
+        }
+    }
+}
+
+.comment-text {
+    &.wysiwyg {
+        margin-bottom: 0;
+        padding: 0;
+    }
+}

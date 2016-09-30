@@ -35,6 +35,8 @@
         "ONE_ITEM_LINE": "Eén item per regel...",
         "NEW_BULK": "Nieuwe bulk toevoeging",
         "RELATED_TASKS": "Gerelateerde taken",
+        "PREVIOUS": "Previous",
+        "NEXT": "Volgende",
         "LOGOUT": "Afmelden",
         "EXTERNAL_USER": "een extern gebruiker",
         "GENERIC_ERROR": "Een van onze Oempa Loempa's zegt {{error}}.",
@@ -45,6 +47,11 @@
         "CAPSLOCK_WARNING": "Be careful! You are using capital letters in an input field that is case sensitive.",
         "CONFIRM_CLOSE_EDIT_MODE_TITLE": "Are you sure you want to close the edit mode?",
         "CONFIRM_CLOSE_EDIT_MODE_MESSAGE": "Remember that if you close the edit mode without saving all the changes will be lost",
+        "RELATED_USERSTORIES": "Related user stories",
+        "CARD": {
+            "ASSIGN_TO": "Assign To",
+            "EDIT": "Edit card"
+        },
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Deze waarde lijkt ongeldig te zijn",
             "TYPE_EMAIL": "Deze waarde moet een geldig emailadres bevatten",
@@ -115,8 +122,9 @@
         "USER_STORY": "User story",
         "TASK": "Taak",
         "ISSUE": "Issue",
+        "EPIC": "Epic",
         "TAGS": {
-            "PLACEHOLDER": "Ik ben 'm! Tag me...",
+            "PLACEHOLDER": "Enter tag",
             "DELETE": "Verwijder tag",
             "ADD": "Tag tovoegen"
         },
@@ -193,12 +201,29 @@
             "CONFIRM_DELETE": "Remeber that all values in this custom field will be deleted.\n Are you sure you want to continue?"
         },
         "FILTERS": {
-            "TITLE": "filters",
+            "TITLE": "Filters",
             "INPUT_PLACEHOLDER": "Onderwerp of referentie",
             "TITLE_ACTION_FILTER_BUTTON": "zoek",
-            "BREADCRUMB_TITLE": "terug naar categorieën",
-            "BREADCRUMB_FILTERS": "Filters",
-            "BREADCRUMB_STATUS": "status"
+            "INPUT_SEARCH_PLACEHOLDER": "Onderwerp of ref.",
+            "TITLE_ACTION_SEARCH": "Zoek",
+            "ACTION_SAVE_CUSTOM_FILTER": "Als eigen filter opslaan",
+            "PLACEHOLDER_FILTER_NAME": "Geef de filternaam in en druk op enter",
+            "APPLIED_FILTERS_NUM": "filters applied",
+            "CATEGORIES": {
+                "TYPE": "Type",
+                "STATUS": "Status",
+                "SEVERITY": "Ernst",
+                "PRIORITIES": "Prioriteit",
+                "TAGS": "Tags",
+                "ASSIGNED_TO": "Toegewezen aan",
+                "CREATED_BY": "Aangemaakt door",
+                "CUSTOM_FILTERS": "Eigen filters",
+                "EPIC": "Epic"
+            },
+            "CONFIRM_DELETE": {
+                "TITLE": "Verwijder eigen filter",
+                "MESSAGE": "de eigen filter '{{customFilterName}}'"
+            }
         },
         "WYSIWYG": {
             "H1_BUTTON": "Eerste niveau heading",
@@ -228,9 +253,18 @@
             "PREVIEW_BUTTON": "Voorbeeld",
             "EDIT_BUTTON": "Bewerk",
             "ATTACH_FILE_HELP": "Attach files by dragging & dropping on the textarea above.",
+            "ATTACH_FILE_HELP_SAVE_FIRST": "Save first before if you want to attach files by dragging & dropping on the textarea above.",
             "MARKDOWN_HELP": "Markdown syntax help"
         },
         "PERMISIONS_CATEGORIES": {
+            "EPICS": {
+                "NAME": "Epics",
+                "VIEW_EPICS": "View epics",
+                "ADD_EPICS": "Add epics",
+                "MODIFY_EPICS": "Modify epics",
+                "COMMENT_EPICS": "Comment epics",
+                "DELETE_EPICS": "Delete epics"
+            },
             "SPRINTS": {
                 "NAME": "Sprints",
                 "VIEW_SPRINTS": "Sprints bekijken",
@@ -243,6 +277,7 @@
                 "VIEW_USER_STORIES": "Bekijk user stories",
                 "ADD_USER_STORIES": "User stories toevoegen",
                 "MODIFY_USER_STORIES": "user stories bewerken",
+                "COMMENT_USER_STORIES": "Comment user stories",
                 "DELETE_USER_STORIES": "Verwijderd user stories"
             },
             "TASKS": {
@@ -250,6 +285,7 @@
                 "VIEW_TASKS": "Bekijk taken",
                 "ADD_TASKS": "Taak toevoegen",
                 "MODIFY_TASKS": "Bewerk taken",
+                "COMMENT_TASKS": "Comment tasks",
                 "DELETE_TASKS": "Verwijder taken"
             },
             "ISSUES": {
@@ -257,6 +293,7 @@
                 "VIEW_ISSUES": "Bekijk issues",
                 "ADD_ISSUES": "Issues toevoegen",
                 "MODIFY_ISSUES": "Bewerk issues",
+                "COMMENT_ISSUES": "Comment issues",
                 "DELETE_ISSUES": "Issues verwijderen"
             },
             "WIKI": {
@@ -366,6 +403,41 @@
         "WATCHING_SECTION": "Volgers",
         "DASHBOARD": "Projects Dashboard"
     },
+    "EPICS": {
+        "TITLE": "EPICS",
+        "SECTION_NAME": "Epics",
+        "EPIC": "EPIC",
+        "PAGE_TITLE": "Epics - {{projectName}}",
+        "PAGE_DESCRIPTION": "The epics list of the project {{projectName}}: {{projectDescription}}",
+        "DASHBOARD": {
+            "ADD": "+ ADD EPIC",
+            "UNASSIGNED": "Niet toegewezen"
+        },
+        "EMPTY": {
+            "TITLE": "It looks like there aren't any epics yet",
+            "EXPLANATION": "Epics are items at a higher level that encompass user stories.<br />Epics are at the top of the hierarchy and can be used to group user stories together.",
+            "HELP": "Learn more about epics"
+        },
+        "TABLE": {
+            "VOTES": "Stemmen",
+            "NAME": "Naam",
+            "PROJECT": "Project",
+            "SPRINT": "Sprint",
+            "ASSIGNED_TO": "Assigned",
+            "STATUS": "Status",
+            "PROGRESS": "Progress",
+            "VIEW_OPTIONS": "View options"
+        },
+        "CREATE": {
+            "TITLE": "New Epic",
+            "PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this epic",
+            "TEAM_REQUIREMENT": "Team requirement",
+            "CLIENT_REQUIREMENT": "Client requirement",
+            "BLOCKED": "Geblokkeerd",
+            "BLOCKED_NOTE_PLACEHOLDER": "Why is this epic blocked?",
+            "CREATE_EPIC": "Create epic"
+        }
+    },
     "PROJECTS": {
         "PAGE_TITLE": "Mijn projecten - Taiga",
         "PAGE_DESCRIPTION": "Een lijst met al jouw projecten, je kunt deze herodenen of een nieuwe aanmaken.",
@@ -402,7 +474,8 @@
     "ADMIN": {
         "COMMON": {
             "TITLE_ACTION_EDIT_VALUE": "Bewerk waarde",
-            "TITLE_ACTION_DELETE_VALUE": "Verwijder waarde"
+            "TITLE_ACTION_DELETE_VALUE": "Verwijder waarde",
+            "TITLE_ACTION_DELETE_TAG": "Verwijder tag"
         },
         "HELP": "Help je hulp nodig? Bekijk onze support pagina!",
         "PROJECT_DEFAULT_VALUES": {
@@ -435,6 +508,8 @@
             "TITLE": "Modules",
             "ENABLE": "Inschakelen",
             "DISABLE": "Uitschakelen",
+            "EPICS": "Epics",
+            "EPICS_DESCRIPTION": "Visualize and manage the most strategic part of your project",
             "BACKLOG": "Backlog",
             "BACKLOG_DESCRIPTION": "Organiseer je user stories om een duidelijk overzicht van aankomend en geprioritiseerd werk te behouden.",
             "NUMBER_SPRINTS": "Expected number of sprints",
@@ -497,6 +572,7 @@
             "REGENERATE_SUBTITLE": "Je staat op het punt de CSV data toegang url te veranderen. De vorige url zal worden uitgeschakeld. Ben je zeker dat je ermee door wil gaan?"
         },
         "CSV": {
+            "SECTION_TITLE_EPIC": "epics reports",
             "SECTION_TITLE_US": "user stories rapporten",
             "SECTION_TITLE_TASK": "taak rapporten",
             "SECTION_TITLE_ISSUE": "Issues rapport",
@@ -509,6 +585,8 @@
         "CUSTOM_FIELDS": {
             "TITLE": "Eigen velden",
             "SUBTITLE": "Specifieer de aangepaste velden voor je user stories, taken en issues",
+            "EPIC_DESCRIPTION": "Epics custom fields",
+            "EPIC_ADD": "Add a custom field in epics",
             "US_DESCRIPTION": "Eigen velden user stories",
             "US_ADD": "Voeg eigen velden toe in user stories",
             "TASK_DESCRIPTION": "Eigen velden taken",
@@ -546,7 +624,8 @@
         "PROJECT_VALUES_STATUS": {
             "TITLE": "Status",
             "SUBTITLE": "Specifieer de statussen waar je user stories, taken en issues door zullen gaan",
-            "US_TITLE": "US statussen",
+            "EPIC_TITLE": "Epic Statuses",
+            "US_TITLE": "User Story Statuses",
             "TASK_TITLE": "Taak statussen",
             "ISSUE_TITLE": "Issue statussen"
         },
@@ -555,6 +634,17 @@
             "SUBTITLE": "Specifieer de types die je issues kunnen hebben",
             "ISSUE_TITLE": "Issues types",
             "ACTION_ADD": "Voeg nieuwe {{objName}} toe"
+        },
+        "PROJECT_VALUES_TAGS": {
+            "TITLE": "Tags",
+            "SUBTITLE": "View and edit the color of your tags",
+            "EMPTY": "Currently there are no tags",
+            "EMPTY_SEARCH": "It looks like nothing was found with your search criteria",
+            "ACTION_ADD": "Tag tovoegen",
+            "NEW_TAG": "New tag",
+            "MIXING_HELP_TEXT": "Select the tags that you want to merge",
+            "MIXING_MERGE": "Merge Tags",
+            "SELECTED": "Selected"
         },
         "ROLES": {
             "PAGE_TITLE": "Rollen - {{projectName}}",
@@ -587,6 +677,10 @@
         "GITHUB": {
             "SECTION_NAME": "Github",
             "PAGE_TITLE": "Github - {{projectName}}"
+        },
+        "GOGS": {
+            "SECTION_NAME": "Gogs",
+            "PAGE_TITLE": "Gogs - {{projectName}}"
         },
         "WEBHOOKS": {
             "PAGE_TITLE": "Webhooks - {{projectName}}",
@@ -643,13 +737,14 @@
             "DEFAULT_DELETE_MESSAGE": "de uitnodiging naar {{email}}"
         },
         "DEFAULT_VALUES": {
+            "LABEL_EPIC_STATUS": "Default value for epic status selector",
+            "LABEL_US_STATUS": "Default value for user story status selector",
             "LABEL_POINTS": "Standaard waarde voor punten selectie",
-            "LABEL_US": "Standaard waarde voor US status selectie",
             "LABEL_TASK_STATUS": "Standaard waarde voor taak status selectie",
-            "LABEL_PRIORITY": "Standaard waarde voor prioriteit selectie",
-            "LABEL_SEVERITY": "Standaard waarde voor ernst selectie",
             "LABEL_ISSUE_TYPE": "Standaard waarde voor issue type selectie",
-            "LABEL_ISSUE_STATUS": "Standaard waarde voor issue status selectie"
+            "LABEL_ISSUE_STATUS": "Standaard waarde voor issue status selectie",
+            "LABEL_PRIORITY": "Standaard waarde voor prioriteit selectie",
+            "LABEL_SEVERITY": "Standaard waarde voor ernst selectie"
         },
         "STATUS": {
             "PLACEHOLDER_WRITE_STATUS_NAME": "Geef een naam voor de nieuwe status"
@@ -681,7 +776,8 @@
             "PRIORITIES": "Prioriteiten",
             "SEVERITIES": "Ernst",
             "TYPES": "Types",
-            "CUSTOM_FIELDS": "Eigen velden"
+            "CUSTOM_FIELDS": "Eigen velden",
+            "TAGS": "Tags"
         },
         "SUBMENU_PROJECT_PROFILE": {
             "TITLE": "Project profiel"
@@ -751,6 +847,8 @@
             "FILTER_TYPE_ALL_TITLE": "Alles weergeven",
             "FILTER_TYPE_PROJECTS": "Projecten",
             "FILTER_TYPE_PROJECT_TITLES": "Enkel projecten weergeven",
+            "FILTER_TYPE_EPICS": "Epics",
+            "FILTER_TYPE_EPIC_TITLES": "Show only epics",
             "FILTER_TYPE_USER_STORIES": "Verhalen",
             "FILTER_TYPE_USER_STORIES_TITLES": "Enkel verhalen van gebruikers weergeven",
             "FILTER_TYPE_TASKS": "Taken",
@@ -950,8 +1048,8 @@
         "CREATE_MEMBER": {
             "PLACEHOLDER_INVITATION_TEXT": "(Optioneel) Voeg een gepersonaliseerd bericht toe aan je uitnodiging. Vertel iets leuks aan je nieuwe leden ;-)",
             "PLACEHOLDER_TYPE_EMAIL": "Type en E-mail",
-            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "Unfortunately, this project can't have more than <strong>{{maxMembers}}</strong> members.<br> If you would like to increase the current limit, please contact the administrator.",
-            "LIMIT_USERS_WARNING_MESSAGE": "Unfortunately, this project can't have more than <strong>{{maxMembers}}</strong> members."
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "You are about to reach the maximum number of members allowed for this project, <strong>{{maxMembers}}</strong> members. If you would like to increase the current limit, please contact the administrator.",
+            "LIMIT_USERS_WARNING_MESSAGE": "You are about to reach the maximum number of members allowed for this project, <strong>{{maxMembers}}</strong> members."
         },
         "LEAVE_PROJECT_WARNING": {
             "TITLE": "Unfortunately, this project can't be left without an owner",
@@ -970,10 +1068,30 @@
             "BUTTON": "Ask this project member to become the new project owner"
         }
     },
+    "EPIC": {
+        "PAGE_TITLE": "{{epicSubject}} - Epic {{epicRef}} - {{projectName}}",
+        "PAGE_DESCRIPTION": "Status: {{epicStatus }}. Description: {{epicDescription}}",
+        "SECTION_NAME": "Epic",
+        "TITLE_LIGHTBOX_UNLINK_RELATED_USERSTORY": "Unlink related userstory",
+        "MSG_LIGHTBOX_UNLINK_RELATED_USERSTORY": "It will delete the link to the related userstory '{{subject}}'",
+        "ERROR_UNLINK_RELATED_USERSTORY": "We have not been able to unlink: {{errorMessage}}",
+        "CREATE_RELATED_USERSTORIES": "Create a relationship with",
+        "NEW_USERSTORY": "Nieuwe user story",
+        "EXISTING_USERSTORY": "Existing user story",
+        "CHOOSE_PROJECT_FOR_CREATION": "What's the project?",
+        "SUBJECT": "Onderwerp",
+        "SUBJECT_BULK_MODE": "Subject (bulk insert)",
+        "CHOOSE_PROJECT_FROM": "What's the project?",
+        "CHOOSE_USERSTORY": "What's the user story?",
+        "NO_USERSTORIES": "This project has no User Stories yet. Please select another project.",
+        "FILTER_USERSTORIES": "Filter user stories",
+        "LIGHTBOX_TITLE_BLOKING_EPIC": "Blocking epic",
+        "ACTION_DELETE": "Delete epic"
+    },
     "US": {
         "PAGE_TITLE": "{{userStorySubject}} - User Story {{userStoryRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Status: {{userStoryStatus }}. Voltooid {{userStoryProgressPercentage}}% ({{userStoryClosedTasks}} van {{userStoryTotalTasks}} taken gesloten). Punten: {{userStoryPoints}}. Omschrijving: {{userStoryDescription}}",
-        "SECTION_NAME": "User story details",
+        "SECTION_NAME": "User story",
         "LINK_TASKBOARD": "Taakbord",
         "TITLE_LINK_TASKBOARD": "Ga naar het dashboard",
         "TOTAL_POINTS": "totaal aantal punten",
@@ -984,14 +1102,23 @@
         "EXTERNAL_REFERENCE": "Deze US is aangemaakt vanaf",
         "GO_TO_EXTERNAL_REFERENCE": "Ga naar bron",
         "BLOCKED": "Deze user story is geblokkeerd",
-        "PREVIOUS": "Vorige user story",
-        "NEXT": "volgende user story",
         "TITLE_DELETE_ACTION": "Verwijder user story",
         "LIGHTBOX_TITLE_BLOKING_US": "User story blokkeren",
         "TASK_COMPLETED": "{{totalClosedTasks}}/{{totalTasks}} taken afgewerkt",
         "ASSIGN": "User story toewijzen",
         "NOT_ESTIMATED": "Niet ingeschat",
         "TOTAL_US_POINTS": "Totaal US punten",
+        "TRIBE": {
+            "PUBLISH": "Publish as Gig in Taiga Tribe",
+            "PUBLISH_INFO": "More info",
+            "PUBLISH_TITLE": "More info on publishing in Taiga Tribe",
+            "PUBLISHED_AS_GIG": "Story published as Gig in Taiga Tribe",
+            "EDIT_LINK": "Edit link",
+            "CLOSE": "Close",
+            "SYNCHRONIZE_LINK": "synchronize with Taiga Tribe",
+            "PUBLISH_MORE_INFO_TITLE": "Do you need somebody for this task?",
+            "PUBLISH_MORE_INFO_TEXT": "<p>If you need help with a particular piece of work you can easily create gigs on<a href='taigatribe.com' title='Taiga Tribe'> Taiga Tribe </a> and receive help from all over the world. You will be able to control and manage the gig enjoying a great community eager to contribute.</p><p><a href='taigatribe.com' title='Taiga Tribe'> TaigaTribe </a>  was born as a Taiga sibling. Both platforms can live separately but we believe that there is much power in using them combined so we are making sure the integration works like a charm.</p>"
+        },
         "FIELDS": {
             "TEAM_REQUIREMENT": "Eisen team",
             "CLIENT_REQUIREMENT": "Requirement van de klant",
@@ -999,28 +1126,47 @@
         }
     },
     "COMMENTS": {
-        "DELETED_INFO": "Opmerking verwijderd door {{user}} op {{date}}",
+        "DELETED_INFO": "Comment deleted by {{user}}",
         "TITLE": "Reacties",
+        "COMMENTS_COUNT": "{{comments}} Comments",
+        "ORDER": "Order",
+        "OLDER_FIRST": "Older first",
+        "RECENT_FIRST": "Recent first",
         "COMMENT": "Reageer",
+        "EDIT_COMMENT": "Edit comment",
+        "EDITED_COMMENT": "Edited:",
+        "SHOW_HISTORY": "View historic",
         "TYPE_NEW_COMMENT": "Type hier nieuw commentaar",
         "SHOW_DELETED": "Toon verwijderd commentaar",
         "HIDE_DELETED": "Verberg verwijderde opmerkingen",
         "DELETE": "Delete comment",
-        "RESTORE": "Opmerking herstellen"
+        "RESTORE": "Opmerking herstellen",
+        "HISTORY": {
+            "TITLE": "Activiteit"
+        }
     },
     "ACTIVITY": {
         "SHOW_ACTIVITY": "Toon activiteit",
         "DATETIME": "DD MMM YYYY HH:mm",
         "SHOW_MORE": "+ Toon vorige items ({{showMore}} meer)",
         "TITLE": "Activiteit",
+        "ACTIVITIES_COUNT": "{{activities}} Activities",
         "REMOVED": "verwijderd",
         "ADDED": "toegevoegd",
-        "US_POINTS": "US punten ({{name}})",
-        "NEW_ATTACHMENT": "Nieuwe bijlage",
-        "DELETED_ATTACHMENT": "verwijderd bijlage",
-        "UPDATED_ATTACHMENT": "bijlage {{filename}} bijgewerkt",
-        "DELETED_CUSTOM_ATTRIBUTE": "eigen attribuut verwijderen",
+        "TAGS_ADDED": "tags added:",
+        "TAGS_REMOVED": "tags removed:",
+        "US_POINTS": "{{role}} points",
+        "NEW_ATTACHMENT": "new attachment:",
+        "DELETED_ATTACHMENT": "deleted attachment:",
+        "UPDATED_ATTACHMENT": "updated attachment ({{filename}}):",
+        "CREATED_CUSTOM_ATTRIBUTE": "created custom attribute",
+        "UPDATED_CUSTOM_ATTRIBUTE": "updated custom attribute",
         "SIZE_CHANGE": "{size, plural, one{één verandering} other{# veranderingen}} gemaakt",
+        "BECAME_DEPRECATED": "became deprecated",
+        "BECAME_UNDEPRECATED": "became undeprecated",
+        "TEAM_REQUIREMENT": "Eisen team",
+        "CLIENT_REQUIREMENT": "Requirement van de klant",
+        "BLOCKED": "Geblokkeerd",
         "VALUES": {
             "YES": "ja",
             "NO": "nee",
@@ -1052,12 +1198,14 @@
             "TAGS": "tags",
             "ATTACHMENTS": "bijlagen",
             "IS_DEPRECATED": "is verourderd",
+            "IS_NOT_DEPRECATED": "is not deprecated",
             "ORDER": "volgorde",
             "BACKLOG_ORDER": "backlog volgorde",
             "SPRINT_ORDER": "sprint volgorde",
             "KANBAN_ORDER": "kanban volgorde",
             "TASKBOARD_ORDER": "taakbord volgorde",
-            "US_ORDER": "us volgorde"
+            "US_ORDER": "us volgorde",
+            "COLOR": "kleur"
         }
     },
     "BACKLOG": {
@@ -1109,7 +1257,8 @@
             "CLOSED_TASKS": "gesloten<br/>taken",
             "IOCAINE_DOSES": "iocaine<br />dosissen",
             "SHOW_STATISTICS_TITLE": "Toon statistieken",
-            "TOGGLE_BAKLOG_GRAPH": "Toon/Verstop burndown grafiek"
+            "TOGGLE_BAKLOG_GRAPH": "Toon/Verstop burndown grafiek",
+            "POINTS_PER_ROLE": "Points per role"
         },
         "SUMMARY": {
             "PROJECT_POINTS": "project<br/>punten",
@@ -1122,9 +1271,7 @@
             "TITLE": "Filters",
             "REMOVE": "Filters verwijderd",
             "HIDE": "Filters verbergen",
-            "SHOW": "Toon filters",
-            "FILTER_CATEGORY_STATUS": "Status",
-            "FILTER_CATEGORY_TAGS": "Tags"
+            "SHOW": "Toon filters"
         },
         "SPRINTS": {
             "TITLE": "SPRINTS",
@@ -1179,7 +1326,7 @@
     "TASK": {
         "PAGE_TITLE": "{{taskSubject}} - Taak {{taskRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Status: {{taskStatus }}. Omschrijving: {{taskDescription}}",
-        "SECTION_NAME": "Taak details",
+        "SECTION_NAME": "Taak",
         "LINK_TASKBOARD": "Taakbord",
         "TITLE_LINK_TASKBOARD": "Ga naar het taakbord",
         "PLACEHOLDER_SUBJECT": "Type het nieuwe onderwerp voor de taak",
@@ -1189,8 +1336,6 @@
         "ORIGIN_US": "Deze taak werd aangemaakt vanaf",
         "TITLE_LINK_GO_ORIGIN": "Ga naar user story",
         "BLOCKED": "Deze taak is geblokkeerd",
-        "PREVIOUS": "vorige taak",
-        "NEXT": "volgende taak",
         "TITLE_DELETE_ACTION": "Verwijder taak",
         "LIGHTBOX_TITLE_BLOKING_TASK": "Blokkerende taak",
         "FIELDS": {
@@ -1228,16 +1373,13 @@
         "PAGE_TITLE": "Issues - {{projectName}}",
         "PAGE_DESCRIPTION": "Het issue lijst overzicht van het project {{projectName}}: {{projectDescription}}",
         "LIST_SECTION_NAME": "Issues",
-        "SECTION_NAME": "Issue details",
+        "SECTION_NAME": "Issue",
         "ACTION_NEW_ISSUE": "+ nieuw probleem",
         "ACTION_PROMOTE_TO_US": "Promoveer tot User Story",
-        "PLACEHOLDER_FILTER_NAME": "Geef de filternaam in en druk op enter",
         "PROMOTED": "Dit issue is gepromoveerd tot US:",
         "EXTERNAL_REFERENCE": "Dit issue is aangemaakt vanaf",
         "GO_TO_EXTERNAL_REFERENCE": "Ga naar bron",
         "BLOCKED": "Dit issue is geblokkeerd",
-        "TITLE_PREVIOUS_ISSUE": "vorig issue",
-        "TITLE_NEXT_ISSUE": "volgend issue",
         "ACTION_DELETE": "Verwijderd issue",
         "LIGHTBOX_TITLE_BLOKING_ISSUE": "Blokkerend issue",
         "FIELDS": {
@@ -1248,28 +1390,6 @@
         "CONFIRM_PROMOTE": {
             "TITLE": "Bevorder dit issue tot een nieuwe user story",
             "MESSAGE": "Weet je zeker dat je een nieuw US van dit issue wilt maken?"
-        },
-        "FILTERS": {
-            "TITLE": "Filters",
-            "INPUT_SEARCH_PLACEHOLDER": "Onderwerp of ref.",
-            "TITLE_ACTION_SEARCH": "Zoek",
-            "ACTION_SAVE_CUSTOM_FILTER": "Als eigen filter opslaan",
-            "BREADCRUMB": "Filters",
-            "TITLE_BREADCRUMB": "Filters",
-            "CATEGORIES": {
-                "TYPE": "Type",
-                "STATUS": "Status",
-                "SEVERITY": "Ernst",
-                "PRIORITIES": "Prioriteiten",
-                "TAGS": "Tags",
-                "ASSIGNED_TO": "Toegewezen aan",
-                "CREATED_BY": "Aangemaakt door",
-                "CUSTOM_FILTERS": "Eigen filters"
-            },
-            "CONFIRM_DELETE": {
-                "TITLE": "Verwijder eigen filter",
-                "MESSAGE": "de eigen filter '{{customFilterName}}'"
-            }
         },
         "TABLE": {
             "COLUMNS": {
@@ -1316,6 +1436,7 @@
     "SEARCH": {
         "PAGE_TITLE": "Zoek - {{projectName}}",
         "PAGE_DESCRIPTION": "Zoek op alles, user stories, issues, taken, wiki pagina's, in het project {{projectName}}: {{projectDescription}}",
+        "FILTER_EPICS": "Epics",
         "FILTER_USER_STORIES": "User Stories",
         "FILTER_ISSUES": "Issues",
         "FILTER_TASKS": "Taken",
@@ -1417,13 +1538,24 @@
         "DELETE_LIGHTBOX_TITLE": "Verwijderd wiki pagina",
         "DELETE_LINK_TITLE": "Delete Wiki link",
         "NAVIGATION": {
-            "SECTION_NAME": "Links",
-            "ACTION_ADD_LINK": "Link toevoegen"
+            "HOME": "Main Page",
+            "SECTION_NAME": "BOOKMARKS",
+            "ACTION_ADD_LINK": "Add bookmark",
+            "ALL_PAGES": "All wiki pages"
         },
         "SUMMARY": {
             "TIMES_EDITED": "keer <br/>bewerkt",
             "LAST_EDIT": "laatst <br />bewerkt",
             "LAST_MODIFICATION": "laatste wijziging"
+        },
+        "SECTION_PAGES_LIST": "All pages",
+        "PAGES_LIST_COLUMNS": {
+            "TITLE": "Title",
+            "EDITIONS": "Editions",
+            "CREATED": "Aangemaakt",
+            "MODIFIED": "Modified",
+            "CREATOR": "Creator",
+            "LAST_MODIFIER": "Last modifier"
         }
     },
     "HINTS": {
@@ -1447,6 +1579,8 @@
         "TASK_CREATED_WITH_US": "{{username}} heeft de nieuwe taak {{obj_name}} aangemakt in {{project_name}} die hoort bij de US {{us_name}}",
         "WIKI_CREATED": "{{username}} heeft een nieuwe Wiki-pagina aangemaakt {{obj_name}} in {{project_name}}",
         "MILESTONE_CREATED": "{{username}} heeft een nieuwe sprint aangemaakt {{obj_name}} in {{project_name}}",
+        "EPIC_CREATED": "{{username}} has created a new epic {{obj_name}} in {{project_name}}",
+        "EPIC_RELATED_USERSTORY_CREATED": "{{username}} has related the userstory {{related_us_name}} to the epic {{epic_name}} in {{project_name}}",
         "NEW_PROJECT": "{{username}} heeft een nieuw project aangemaakt {{project_name}}",
         "MILESTONE_UPDATED": "{{username}} heeft de sprint {{obj_name}} bijgewerkt",
         "US_UPDATED": "{{username}} heeft de eigenschap \"{{field_name}}\" van de US {{obj_name}} bijgewerkt",
@@ -1459,9 +1593,13 @@
         "TASK_UPDATED_WITH_US": "{{username}} heeft de eigenschap \"{{field_name}}\" van de taak {{obj_name}} die behoort tot de US {{us_name}} bijgewerkt",
         "TASK_UPDATED_WITH_US_NEW_VALUE": "{{username}} heeft de eigenschap \"{{field_name}}\" van de taak {{obj_name}} die behoort tot de US {{us_name}} gewijzigd naar {{new_value}}",
         "WIKI_UPDATED": "{{username}} heeft de wiki pagina {{obj_name}} bijgewerkt",
+        "EPIC_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the epic {{obj_name}}",
+        "EPIC_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the epic {{obj_name}} to {{new_value}}",
+        "EPIC_UPDATED_WITH_NEW_COLOR": "{{username}} has updated the \"{{field_name}}\" of the epic {{obj_name}} to <span class=\"new-color\" style=\"background: {{new_value}}\"></span>",
         "NEW_COMMENT_US": "{{username}} heeft gereageerd op de US {{obj_name}}",
         "NEW_COMMENT_ISSUE": "{{username}} heeft gereageerd op het issue {{obj_name}}",
         "NEW_COMMENT_TASK": "{{username}} heeft gereageerd op de taak {{obj_name}}",
+        "NEW_COMMENT_EPIC": "{{username}} has commented in the epic {{obj_name}}",
         "NEW_MEMBER": "{{project_name}} heeft een nieuw lid",
         "US_ADDED_MILESTONE": "{{username}} heeft de US {{obj_name}} toegevoegd aan {{sprint_name}}",
         "US_MOVED": "{{username}} heeft de user story {{obj_name}} verplaatst",

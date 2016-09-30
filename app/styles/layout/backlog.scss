@@ -1,21 +1,43 @@
+.backlog-filter {
+    align-items: stretch;
+    display: flex;
+    opacity: 0;
+    overflow: hidden;
+    position: relative;
+    transition: all .2s linear;
+    width: 0;
+    tg-filter {
+        transform: translateX(-260px);
+        transition: all .2s linear;
+    }
+    &.active {
+        opacity: 1;
+        transition: all .2s linear;
+        width: 260px;
+        tg-filter {
+            transform: translateX(0);
+        }
+    }
+}
 .backlog-menu {
-    background: $whitish;
+    background: $mass-white;
     color: $blackish;
     display: flex;
     justify-content: space-between;
     margin-bottom: 1rem;
-    .trans-button {
+    .menu-button {
+        border-radius: 0;
         color: $blackish;
         display: inline-block;
         padding: .4rem 1.5rem;
         &.active,
         &:hover {
-            background: darken($whitish, 10%);
-            color: $grayer;
+            background: $whitish;
+            color: $gray;
         }
         &.active {
             &:hover {
-                background: lighten($gray, 30%);
+                background: darken($whitish, 10%);
             }
         }
         &.move-to-sprint {

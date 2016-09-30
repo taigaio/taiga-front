@@ -45,11 +45,12 @@ class TeamController extends mixOf(taiga.Controller, taiga.PageMixin)
         "tgAppMetaService",
         "$tgAuth",
         "$translate",
-        "tgProjectService"
+        "tgProjectService",
+        "tgErrorHandlingService"
     ]
 
     constructor: (@scope, @rootscope, @repo, @rs, @params, @q, @location, @navUrls, @appMetaService, @auth,
-                  @translate, @projectService) ->
+                  @translate, @projectService, @errorHandlingService) ->
         @scope.sectionName = "TEAM.SECTION_NAME"
 
         promise = @.loadInitialData()
@@ -79,6 +80,8 @@ class TeamController extends mixOf(taiga.Controller, taiga.PageMixin)
         @scope.totals = {}
         for member in @scope.activeUsers
             @scope.totals[member.id] = 0
+
+        console.log @scope.activeUsers
 
         # Get current user
         @scope.currentUser = _.find(@scope.activeUsers, {id: user?.id})

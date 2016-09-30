@@ -8,11 +8,30 @@
         }
         .row {
             padding-left: 50px;
+            &:hover {
+                background: transparent;
+            }
         }
     }
-    .table-main {
-        .row:hover {
-            background: lighten($primary, 60%);
+    .row {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        padding: 1rem;
+        &:last-child {
+            border: 0;
+        }
+        &.edition {
+            padding-left: 3rem;
+            .current-color {
+                cursor: pointer;
+            }
+        }
+        &.hidden {
+            display: none;
+        }
+        &:hover {
+            background: lighten(rgba($primary-light, .2), 30%);
             cursor: move;
             transition: background .2s ease-in;
             .icon {
@@ -24,39 +43,11 @@
                 transition: opacity .3s linear;
             }
         }
-        .options-column {
-            a {
-                display: inline-block;
-            }
-        }
-    }
-    form {
-        &:last-child {
-            .row {
-                border: 0;
-            }
-        }
-    }
-    .row {
-        align-items: center;
-        border-bottom: 1px solid $whitish;
-        display: flex;
-        justify-content: center;
-        padding: 1rem;
-        &:last-child {
-            border: 0;
-        }
-        &.edition {
-            .current-color {
-                cursor: pointer;
-            }
-        }
-        &.edition,
-        &.new-value {
+        &.no-draggable {
             padding-left: 50px;
-        }
-        &.hidden {
-            display: none;
+            &:hover {
+                cursor: auto;
+            }
         }
         .color-column {
             flex-basis: 60px;
@@ -70,16 +61,22 @@
         .status-wip-limit {
             flex-basis: 100px;
             flex-grow: 1;
+            flex-shrink: 0;
         }
-        .status-name {
+        .status-name,
+        .color-name {
             flex-basis: 150px;
-            flex-grow: 6;
+            flex-grow: 1;
+            flex-shrink: 0;
             padding: 0 10px;
             position: relative;
             span {
                 @include ellipsis(100%);
                 display: block;
             }
+        }
+        .color-name {
+            flex-basis: 100px;
         }
         .status-slug {
             flex-basis: 150px;
@@ -105,7 +102,15 @@
             padding: 0 0 0 10px;
             text-align: center;
         }
+
     }
+    .options-column {
+        a {
+            cursor: pointer;
+            display: inline-block;
+        }
+    }
+
     .row-edit {
         .options-column {
             opacity: 1;
@@ -113,18 +118,19 @@
     }
 
     .current-color {
-        background-color: $gray-light;
+        background-color: $whitish;
         border-radius: 2px;
         height: 40px;
         width: 40px;
     }
+
     .icon {
         cursor: pointer;
         fill: $gray-light;
         margin-right: 1rem;
         opacity: 0;
         &:hover {
-            fill: $primary;
+            fill: $primary-light;
             transition: all .2s ease-in;
         }
         &.icon-check {
@@ -132,13 +138,20 @@
             fill: $primary;
             opacity: 1;
         }
+        &.icon-merge {
+            cursor: default;
+            opacity: 1;
+        }
+        &.icon-search {
+            cursor: none;
+            fill: $primary;
+            opacity: 1;
+        }
         &.icon-drag {
             cursor: move;
         }
         &.icon-trash {
-            &:hover {
-                fill: $red-light;
-            }
+            fill: $red-light;
         }
     }
     .gu-mirror {

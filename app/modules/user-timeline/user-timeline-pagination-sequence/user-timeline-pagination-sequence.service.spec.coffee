@@ -144,7 +144,7 @@ describe "tgUserTimelinePaginationSequenceService", ->
 
         config.minItems = 1
 
-        config.map = (item) => item + 1;
+        config.map = (item) => item + 1
 
         seq = userTimelinePaginationSequenceService.generate(config)
 
