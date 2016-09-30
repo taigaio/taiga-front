@@ -258,7 +258,7 @@
         },
         "PERMISIONS_CATEGORIES": {
             "EPICS": {
-                "NAME": "Epics",
+                "NAME": "Épicas",
                 "VIEW_EPICS": "View epics",
                 "ADD_EPICS": "Add epics",
                 "MODIFY_EPICS": "Modify epics",
@@ -404,19 +404,19 @@
         "DASHBOARD": "Dashboard de proyecto"
     },
     "EPICS": {
-        "TITLE": "EPICS",
-        "SECTION_NAME": "Epics",
-        "EPIC": "EPIC",
-        "PAGE_TITLE": "Epics - {{projectName}}",
-        "PAGE_DESCRIPTION": "The epics list of the project {{projectName}}: {{projectDescription}}",
+        "TITLE": "ÉPICAS",
+        "SECTION_NAME": "Épicas",
+        "EPIC": "Épica",
+        "PAGE_TITLE": "Épicas - {{projectName}}",
+        "PAGE_DESCRIPTION": "El listado de épicas del proyecto {{projectName}}: {{projectDescription}}",
         "DASHBOARD": {
-            "ADD": "+ ADD EPIC",
+            "ADD": "+ AÑADIR ÉPICA",
             "UNASSIGNED": "No asignado"
         },
         "EMPTY": {
-            "TITLE": "It looks like there aren't any epics yet",
+            "TITLE": "Parece que todavía no hay épicas.",
             "EXPLANATION": "Epics are items at a higher level that encompass user stories.<br />Epics are at the top of the hierarchy and can be used to group user stories together.",
-            "HELP": "Learn more about epics"
+            "HELP": "Aprende más sobre Épicas"
         },
         "TABLE": {
             "VOTES": "Votos",
@@ -429,7 +429,7 @@
             "VIEW_OPTIONS": "View options"
         },
         "CREATE": {
-            "TITLE": "New Epic",
+            "TITLE": "Nueva Épica",
             "PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this epic",
             "TEAM_REQUIREMENT": "Team requirement",
             "CLIENT_REQUIREMENT": "Client requirement",
@@ -508,7 +508,7 @@
             "TITLE": "Módulos",
             "ENABLE": "Activado",
             "DISABLE": "Desactivado",
-            "EPICS": "Epics",
+            "EPICS": "Épicas",
             "EPICS_DESCRIPTION": "Visualize and manage the most strategic part of your project",
             "BACKLOG": "Backlog",
             "BACKLOG_DESCRIPTION": "Gestiona tus historias de usuario para mantener una vista organizada y priorizada de los próximos trabajos que deberás afrontar. ",
@@ -847,7 +847,7 @@
             "FILTER_TYPE_ALL_TITLE": "Mostrar todos",
             "FILTER_TYPE_PROJECTS": "Proyectos",
             "FILTER_TYPE_PROJECT_TITLES": "Mostrar sólo proyectos",
-            "FILTER_TYPE_EPICS": "Epics",
+            "FILTER_TYPE_EPICS": "Épicas",
             "FILTER_TYPE_EPIC_TITLES": "Show only epics",
             "FILTER_TYPE_USER_STORIES": "Historias",
             "FILTER_TYPE_USER_STORIES_TITLES": "Mostrar sólo historias de usuario",
@@ -1069,7 +1069,7 @@
         }
     },
     "EPIC": {
-        "PAGE_TITLE": "{{epicSubject}} - Epic {{epicRef}} - {{projectName}}",
+        "PAGE_TITLE": "{{epicSubject}} - Épica {{epicRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Status: {{epicStatus }}. Description: {{epicDescription}}",
         "SECTION_NAME": "Epic",
         "TITLE_LIGHTBOX_UNLINK_RELATED_USERSTORY": "Unlink related userstory",
@@ -1436,7 +1436,7 @@
     "SEARCH": {
         "PAGE_TITLE": "Buscar - {{projectName}}",
         "PAGE_DESCRIPTION": "Busca cualquier cosa: historias de usuario, peticiones, tareas o páginas del wiki en el proyecto {{projectName}}: {{projectDescription}}",
-        "FILTER_EPICS": "Epics",
+        "FILTER_EPICS": "Épicas",
         "FILTER_USER_STORIES": "Historias de Usuario",
         "FILTER_ISSUES": "Peticiones",
         "FILTER_TASKS": "Tareas",

@@ -218,7 +218,7 @@
                 "ASSIGNED_TO": "Atribuído a",
                 "CREATED_BY": "Criado por",
                 "CUSTOM_FILTERS": "Filtros personalizados",
-                "EPIC": "Epic"
+                "EPIC": "Épico"
             },
             "CONFIRM_DELETE": {
                 "TITLE": "Apagar filtro personalizado",
