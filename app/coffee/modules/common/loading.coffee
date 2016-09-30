@@ -59,6 +59,7 @@ TgLoadingService = ($compile) ->
 
             start: ->
                 target = service.settings.target
+
                 service.settings.classes.map (className) -> target.removeClass(className)
 
                 if not target.hasClass('loading') && !service.settings.template
@@ -109,6 +110,7 @@ LoadingDirective = ($loading) ->
         template = $el.html()
 
         $scope.$watch attr.tgLoading, (showLoading) =>
+
             if showLoading
                 currentLoading = $loading()
                     .target($el)
@@ -120,6 +122,7 @@ LoadingDirective = ($loading) ->
                  currentLoading.finish()
 
     return {
+        priority: 99999,
         link:link
     }
 
