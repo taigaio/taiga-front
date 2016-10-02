@@ -26,10 +26,13 @@ DiscoverSearchBarDirective = () ->
         templateUrl: 'discover/components/discover-search-bar/discover-search-bar.html',
         bindToController: true,
         scope: {
-            q: "="
+            q: "=",
             filter: "=",
             onChange: "&"
         },
+        compile: (element, attrs) ->
+            if !attrs.q
+                attrs.q = ''
         link: link
     }
 
