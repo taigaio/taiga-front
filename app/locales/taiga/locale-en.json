@@ -755,7 +755,8 @@
         },
         "US_STATUS": {
             "ACTION_ADD_STATUS": "Add new status",
-            "IS_ARCHIVED_COLUMN": "Is archived?",
+            "IS_ARCHIVED_COLUMN": "Archived",
+            "IS_CLOSED_COLUMN": "Closed",
             "WIP_LIMIT_COLUMN": "WIP Limit",
             "PLACEHOLDER_WRITE_NAME": "Write a name for the new status"
         },
