@@ -75,7 +75,7 @@
     span(translate="ISSUES.EXTERNAL_REFERENCE")
     a(
         target="_blank"
-        ng-href="::vm.item.external_reference[1]"
+        ng-href="{{::vm.item.external_reference[1]}}"
         ng-title="{{'ISSUES.GO_TO_EXTERNAL_REFERENCE' | translate}}"
     )
         span {{ ::vm.item.external_reference[1] }}
