@@ -58,10 +58,14 @@ module = angular.module("taigaCommon")
 #############################################################################
 ## WYSIWYG markitup editor directive
 #############################################################################
-MarkitupDirective = ($rootscope, $rs, $selectedText, $template, $compile, $translate) ->
+MarkitupDirective = ($rootscope, $rs, $selectedText, $template, $compile, $translate, projectService) ->
     previewTemplate = $template.get("common/wysiwyg/wysiwyg-markitup-preview.html", true)
 
     link = ($scope, $el, $attrs, $model) ->
+        if not $scope.project
+            # for backward compatibility
+            $scope.project = projectService.project.toJS()
+
         element = angular.element($el)
         previewDomNode = $("<div/>", {class: "preview"})
 
@@ -83,7 +87,7 @@ MarkitupDirective = ($rootscope, $rs, $selectedText, $template, $compile, $trans
             markdownDomNode = element.parents(".markdown")
             markItUpDomNode = element.parents(".markItUp")
 
-            $rs.mdrender.render($scope.projectId || $scope.vm.projectId, $model.$modelValue).then (data) ->
+            $rs.mdrender.render($scope.project.id, $model.$modelValue).then (data) ->
                 html = previewTemplate({data: data.data})
                 html = $compile(html)($scope)
 
@@ -384,7 +388,7 @@ MarkitupDirective = ($rootscope, $rs, $selectedText, $template, $compile, $trans
                                 return false
 
                             cancelablePromise.abort() if cancelablePromise
-                            cancelablePromise = $rs.search.do($scope.projectId || $scope.vm.projectId, term)
+                            cancelablePromise = $rs.search.do($scope.project.id, term)
 
                             cancelablePromise.then (res) =>
                                 # ignore wikipages if they're the only results. can't exclude them in search
@@ -440,7 +444,7 @@ MarkitupDirective = ($rootscope, $rs, $selectedText, $template, $compile, $trans
                         search: (term, callback) ->
                             term = taiga.slugify(term)
 
-                            $rs.search.do($scope.projectId || $scope.vm.projectId, term).then (res) =>
+                            $rs.search.do($scope.project.id, term).then (res) =>
                                 if res.count < 1
                                     callback([])
 
@@ -482,4 +486,4 @@ MarkitupDirective = ($rootscope, $rs, $selectedText, $template, $compile, $trans
     return {link:link, require:"ngModel"}
 
 module.directive("tgMarkitup", ["$rootScope", "$tgResources", "$selectedText", "$tgTemplate", "$compile",
-                                "$translate", MarkitupDirective])
+                                "$translate", "tgProjectService", MarkitupDirective])
