@@ -601,7 +601,7 @@ AssignedToLightboxDirective = (lightboxService, lightboxKeyboardNavigationServic
             ctx = {
                 selected: selected
                 users: _.slice(users, 0, 5)
-                showMore: visibleUsers
+                showMore: users.length > 5
             }
 
             html = usersTemplate(ctx)
