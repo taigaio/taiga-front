@@ -25,13 +25,15 @@
     .item-origin-issue,
     .task-belongs-to,
     .belong-to-epics-wrapper,
-    .block-desc-container {
+    .block-desc-container,
+    .issue-external-reference {
         @include font-size(small);
         margin-top: .5rem;
     }
     .item-generated-us,
     .task-belongs-to,
-    .item-origin-issue {
+    .item-origin-issue,
+    .issue-external-reference {
         a {
             cursor: pointer;
             padding: 0 .2rem;
