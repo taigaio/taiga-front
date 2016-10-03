@@ -69,7 +69,6 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         bindMethods(@)
 
         @scope.sectionName = "Issues"
-        @scope.filters = {}
         @.voting = false
 
         return if @.applyStoredFilters(@params.pslug, @.filtersHashSuffix)
@@ -560,10 +559,6 @@ IssueStatusInlineEditionDirective = ($repo, $template, $rootscope) ->
             event.stopPropagation()
             target = angular.element(event.currentTarget)
 
-            for filter in $scope.filters.status
-                if filter.id == issue.status
-                    filter.count--
-
             issue.status = target.data("status-id")
             $el.find(".pop-status").popover().close()
             updateIssueStatus($el, issue, $scope.issueStatusById)
@@ -571,12 +566,7 @@ IssueStatusInlineEditionDirective = ($repo, $template, $rootscope) ->
             $scope.$apply () ->
                 $repo.save(issue).then ->
                     $ctrl.loadIssues()
-
-                for filter in $scope.filters.status
-                    if filter.id == issue.status
-                        filter.count++
-
-                $rootscope.$broadcast("filters:issueupdate", $scope.filters)
+                    $ctrl.generateFilters()
 
         taiga.bindOnce $scope, "project", (project) ->
             $el.append(selectionTemplate({ 'statuses':  project.issue_statuses }))
