@@ -69,6 +69,16 @@ helper.openAssignTo = function(index) {
     $$('.issue-assignedto').get(index).click();
 };
 
+helper.changeStatus = function(index, statusIndex) {
+    let status = $$('.issue-status').get(index);
+
+    return utils.popover.open(status, statusIndex);
+};
+
+helper.getStatus = function() {
+    return $$('.issue-status').getText();
+};
+
 helper.getAssignTo = function(index) {
     return $$('.assigned-field figcaption').get(index).getText();
 };

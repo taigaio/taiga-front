@@ -123,6 +123,18 @@ describe('issues list', function() {
         expect(issueUserName).to.be.equal(newUserName);
     });
 
+    it('change status', async function() {
+        await issuesHelper.changeStatus(0, 1);
+
+        let oldStatus = issuesHelper.getStatus(0);
+
+        await issuesHelper.changeStatus(1, 1);
+
+        let newStatus = issuesHelper.getStatus(0);
+
+        expect(oldStatus).not.to.be.equal(newStatus);
+    });
+
     describe('issues filters', sharedFilters.bind(this, 'issues', () => {
         return issuesHelper.getIssues().count();
     }));
