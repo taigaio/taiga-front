@@ -11,6 +11,7 @@
         "CANCEL": "Отмена",
         "ACCEPT": "Принимаю",
         "DELETE": "Удалить",
+        "UNLINK": "Unlink",
         "CREATE": "Создать",
         "ADD": "Добавить",
         "COPY_TO_CLIPBOARD": "Копировать: Ctrl+C",
@@ -754,7 +755,8 @@
         },
         "US_STATUS": {
             "ACTION_ADD_STATUS": "Добавить новый статус",
-            "IS_ARCHIVED_COLUMN": "В архиве?",
+            "IS_ARCHIVED_COLUMN": "Архивирована",
+            "IS_CLOSED_COLUMN": "Закрыта",
             "WIP_LIMIT_COLUMN": "Лимит текущей работы",
             "PLACEHOLDER_WRITE_NAME": "Укажите название для нового статуса"
         },

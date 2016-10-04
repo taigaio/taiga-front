@@ -11,6 +11,7 @@
         "CANCEL": "Peru",
         "ACCEPT": "Hyväksy",
         "DELETE": "Poista",
+        "UNLINK": "Unlink",
         "CREATE": "Luo uusi",
         "ADD": "Lisää",
         "COPY_TO_CLIPBOARD": "Kopio leikekirjalle: Ctrl+C",
@@ -755,6 +756,7 @@
         "US_STATUS": {
             "ACTION_ADD_STATUS": "Lisää uusi tila",
             "IS_ARCHIVED_COLUMN": "Arkistoitu",
+            "IS_CLOSED_COLUMN": "Suljettu",
             "WIP_LIMIT_COLUMN": "WIP raja",
             "PLACEHOLDER_WRITE_NAME": "Anna uuden tilan nimi"
         },

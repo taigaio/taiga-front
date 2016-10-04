@@ -11,6 +11,7 @@
         "CANCEL": "Avbryt",
         "ACCEPT": "Aksepter",
         "DELETE": "Slett",
+        "UNLINK": "Unlink",
         "CREATE": "Opprett",
         "ADD": "Legg til",
         "COPY_TO_CLIPBOARD": "Kopier til utklippstavlen: Ctrl+C",
@@ -754,7 +755,8 @@
         },
         "US_STATUS": {
             "ACTION_ADD_STATUS": "Legg til ny status",
-            "IS_ARCHIVED_COLUMN": "Er arkivert?",
+            "IS_ARCHIVED_COLUMN": "Arkivert",
+            "IS_CLOSED_COLUMN": "Lukket",
             "WIP_LIMIT_COLUMN": "WIP Grense",
             "PLACEHOLDER_WRITE_NAME": "Skriv et navn til den nye statusen"
         },

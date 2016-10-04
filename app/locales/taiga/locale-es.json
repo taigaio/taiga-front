@@ -11,6 +11,7 @@
         "CANCEL": "Cancelar",
         "ACCEPT": "Aceptar",
         "DELETE": "Borrar",
+        "UNLINK": "Unlink",
         "CREATE": "Crear",
         "ADD": "Añadir",
         "COPY_TO_CLIPBOARD": "Copiar en el portapapeles: Ctrl+C",
@@ -49,8 +50,8 @@
         "CONFIRM_CLOSE_EDIT_MODE_MESSAGE": "Recuerde que si cierra el modo de edicion sin guardar todos los cambios se perderán",
         "RELATED_USERSTORIES": "Related user stories",
         "CARD": {
-            "ASSIGN_TO": "Assign To",
-            "EDIT": "Edit card"
+            "ASSIGN_TO": "Asignado a",
+            "EDIT": "Editar tarjeta"
         },
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Este valor parece inválido.",
@@ -122,9 +123,9 @@
         "USER_STORY": "Historia de usuario",
         "TASK": "Tarea",
         "ISSUE": "Petición",
-        "EPIC": "Epic",
+        "EPIC": "Épica",
         "TAGS": {
-            "PLACEHOLDER": "Enter tag",
+            "PLACEHOLDER": "Introducir etiqueta",
             "DELETE": "Borrar etiqueta",
             "ADD": "Añadir etiqueta"
         },
@@ -208,7 +209,7 @@
             "TITLE_ACTION_SEARCH": "Buscar",
             "ACTION_SAVE_CUSTOM_FILTER": "guardar como filtro personalizado",
             "PLACEHOLDER_FILTER_NAME": "Escribe un nombre para el filtro y pulsa enter",
-            "APPLIED_FILTERS_NUM": "filters applied",
+            "APPLIED_FILTERS_NUM": "filtros usados",
             "CATEGORIES": {
                 "TYPE": "Tipo",
                 "STATUS": "Estado",
@@ -218,7 +219,7 @@
                 "ASSIGNED_TO": "Asignado a",
                 "CREATED_BY": "Creada por",
                 "CUSTOM_FILTERS": "Filtros personalizados",
-                "EPIC": "Epic"
+                "EPIC": "Épica"
             },
             "CONFIRM_DELETE": {
                 "TITLE": "Eliminar filtros personalizados",
@@ -259,11 +260,11 @@
         "PERMISIONS_CATEGORIES": {
             "EPICS": {
                 "NAME": "Épicas",
-                "VIEW_EPICS": "View epics",
-                "ADD_EPICS": "Add epics",
-                "MODIFY_EPICS": "Modify epics",
-                "COMMENT_EPICS": "Comment epics",
-                "DELETE_EPICS": "Delete epics"
+                "VIEW_EPICS": "Ver épica",
+                "ADD_EPICS": "Añadir épica",
+                "MODIFY_EPICS": "Modificar épica",
+                "COMMENT_EPICS": "Comentar épica",
+                "DELETE_EPICS": "Borrar épica"
             },
             "SPRINTS": {
                 "NAME": "Sprints",
@@ -423,19 +424,19 @@
             "NAME": "Nombre",
             "PROJECT": "Proyecto",
             "SPRINT": "Sprint",
-            "ASSIGNED_TO": "Assigned",
+            "ASSIGNED_TO": "Asignado",
             "STATUS": "Estado",
-            "PROGRESS": "Progress",
-            "VIEW_OPTIONS": "View options"
+            "PROGRESS": "En curso",
+            "VIEW_OPTIONS": "Ver opciones"
         },
         "CREATE": {
             "TITLE": "Nueva Épica",
-            "PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this epic",
-            "TEAM_REQUIREMENT": "Team requirement",
-            "CLIENT_REQUIREMENT": "Client requirement",
+            "PLACEHOLDER_DESCRIPTION": "Por favor añade un texto descriptivo para ayudar a otros usuarios a entender mejor esta historia.",
+            "TEAM_REQUIREMENT": "Requerido por el equipo",
+            "CLIENT_REQUIREMENT": "Requerido por el Cliente",
             "BLOCKED": "Bloqueada",
             "BLOCKED_NOTE_PLACEHOLDER": "Why is this epic blocked?",
-            "CREATE_EPIC": "Create epic"
+            "CREATE_EPIC": "Crear épica"
         }
     },
     "PROJECTS": {
@@ -585,8 +586,8 @@
         "CUSTOM_FIELDS": {
             "TITLE": "Atributos personalizados",
             "SUBTITLE": "Especifica los atributos personalizados para las historias de usuario, tareas y peticiones",
-            "EPIC_DESCRIPTION": "Epics custom fields",
-            "EPIC_ADD": "Add a custom field in epics",
+            "EPIC_DESCRIPTION": "Campos personalizados para épicas",
+            "EPIC_ADD": "Añadir campos personalizados en épicas",
             "US_DESCRIPTION": "Atributos personalizados de historias de usuario",
             "US_ADD": "Añadir un atributo personalizado en las historias de usuario",
             "TASK_DESCRIPTION": "Atributos personalizados de tareas",
@@ -754,7 +755,8 @@
         },
         "US_STATUS": {
             "ACTION_ADD_STATUS": "Añadir nuevo estado",
-            "IS_ARCHIVED_COLUMN": "¿Archivar?",
+            "IS_ARCHIVED_COLUMN": "Archivada",
+            "IS_CLOSED_COLUMN": "Cerrada",
             "WIP_LIMIT_COLUMN": "Límite WIP",
             "PLACEHOLDER_WRITE_NAME": "Escribe un nombre para el nuevo estado"
         },
@@ -848,7 +850,7 @@
             "FILTER_TYPE_PROJECTS": "Proyectos",
             "FILTER_TYPE_PROJECT_TITLES": "Mostrar sólo proyectos",
             "FILTER_TYPE_EPICS": "Épicas",
-            "FILTER_TYPE_EPIC_TITLES": "Show only epics",
+            "FILTER_TYPE_EPIC_TITLES": "Mostrar sólo épicas",
             "FILTER_TYPE_USER_STORIES": "Historias",
             "FILTER_TYPE_USER_STORIES_TITLES": "Mostrar sólo historias de usuario",
             "FILTER_TYPE_TASKS": "Tareas",
@@ -1070,18 +1072,18 @@
     },
     "EPIC": {
         "PAGE_TITLE": "{{epicSubject}} - Épica {{epicRef}} - {{projectName}}",
-        "PAGE_DESCRIPTION": "Status: {{epicStatus }}. Description: {{epicDescription}}",
-        "SECTION_NAME": "Epic",
+        "PAGE_DESCRIPTION": "Estado: {{taskStatus}}. Descripción: {{taskDescription}}",
+        "SECTION_NAME": "Épica",
         "TITLE_LIGHTBOX_UNLINK_RELATED_USERSTORY": "Unlink related userstory",
         "MSG_LIGHTBOX_UNLINK_RELATED_USERSTORY": "It will delete the link to the related userstory '{{subject}}'",
         "ERROR_UNLINK_RELATED_USERSTORY": "We have not been able to unlink: {{errorMessage}}",
-        "CREATE_RELATED_USERSTORIES": "Create a relationship with",
+        "CREATE_RELATED_USERSTORIES": "Crear relación con",
         "NEW_USERSTORY": "Nueva historia de usuario",
-        "EXISTING_USERSTORY": "Existing user story",
-        "CHOOSE_PROJECT_FOR_CREATION": "What's the project?",
+        "EXISTING_USERSTORY": "Historia de usuario existente",
+        "CHOOSE_PROJECT_FOR_CREATION": "¿Qué es el proyecto?",
         "SUBJECT": "Asunto",
         "SUBJECT_BULK_MODE": "Subject (bulk insert)",
-        "CHOOSE_PROJECT_FROM": "What's the project?",
+        "CHOOSE_PROJECT_FROM": "¿Qué es el proyecto?",
         "CHOOSE_USERSTORY": "What's the user story?",
         "NO_USERSTORIES": "This project has no User Stories yet. Please select another project.",
         "FILTER_USERSTORIES": "Filter user stories",
@@ -1258,7 +1260,7 @@
             "IOCAINE_DOSES": "dosis de<br >iocaína",
             "SHOW_STATISTICS_TITLE": "Ver estadísticas",
             "TOGGLE_BAKLOG_GRAPH": "Ver/Ocultar gráfica de burndown",
-            "POINTS_PER_ROLE": "Points per role"
+            "POINTS_PER_ROLE": "Puntos por rol"
         },
         "SUMMARY": {
             "PROJECT_POINTS": "puntos<br /> proyecto",
@@ -1539,9 +1541,9 @@
         "DELETE_LINK_TITLE": "Eliminar enlace de la Wiki",
         "NAVIGATION": {
             "HOME": "Principal",
-            "SECTION_NAME": "BOOKMARKS",
-            "ACTION_ADD_LINK": "Add bookmark",
-            "ALL_PAGES": "All wiki pages"
+            "SECTION_NAME": "MARCADORES",
+            "ACTION_ADD_LINK": "Añadir marcador",
+            "ALL_PAGES": "Todas las páginas de la wiki"
         },
         "SUMMARY": {
             "TIMES_EDITED": "veces <br />editada",

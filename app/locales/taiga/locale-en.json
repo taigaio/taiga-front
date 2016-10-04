@@ -11,6 +11,7 @@
         "CANCEL": "Cancel",
         "ACCEPT": "Accept",
         "DELETE": "Delete",
+        "UNLINK": "Unlink",
         "CREATE": "Create",
         "ADD": "Add",
         "COPY_TO_CLIPBOARD": "Copy to clipboard: Ctrl+C",

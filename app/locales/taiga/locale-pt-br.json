@@ -11,6 +11,7 @@
         "CANCEL": "Cancelar",
         "ACCEPT": "Aceitar",
         "DELETE": "Apagar",
+        "UNLINK": "Unlink",
         "CREATE": "Criar",
         "ADD": "Adicionar",
         "COPY_TO_CLIPBOARD": "Copiar para a área de transferência: Ctrl+C",
@@ -754,7 +755,8 @@
         },
         "US_STATUS": {
             "ACTION_ADD_STATUS": "Adicionar novo status",
-            "IS_ARCHIVED_COLUMN": "Está arquivado?",
+            "IS_ARCHIVED_COLUMN": "Arquivado",
+            "IS_CLOSED_COLUMN": "Fechado",
             "WIP_LIMIT_COLUMN": "Limite WIP",
             "PLACEHOLDER_WRITE_NAME": "Digite um nome para o novo status"
         },

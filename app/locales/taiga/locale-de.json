@@ -11,6 +11,7 @@
         "CANCEL": "Abbrechen",
         "ACCEPT": "Akzeptieren",
         "DELETE": "Löschen",
+        "UNLINK": "Unlink",
         "CREATE": "Erzeugen",
         "ADD": "Hinzufügen",
         "COPY_TO_CLIPBOARD": "Ins Clipboard übernehmen: Strg+C",
@@ -754,7 +755,8 @@
         },
         "US_STATUS": {
             "ACTION_ADD_STATUS": "Neuen Status hinzufügen",
-            "IS_ARCHIVED_COLUMN": "Wurde es archiviert?",
+            "IS_ARCHIVED_COLUMN": "Archiviert",
+            "IS_CLOSED_COLUMN": "Geschlossen",
             "WIP_LIMIT_COLUMN": "WIP Limit",
             "PLACEHOLDER_WRITE_NAME": "Benennen Sie den neuen Status"
         },
