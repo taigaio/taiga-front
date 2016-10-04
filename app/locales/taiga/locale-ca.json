@@ -11,6 +11,7 @@
         "CANCEL": "Següent",
         "ACCEPT": "Acceptar",
         "DELETE": "Esborrar",
+        "UNLINK": "Unlink",
         "CREATE": "Crear",
         "ADD": "Afegir",
         "COPY_TO_CLIPBOARD": "Copia al portapapers: Ctrl + C",
@@ -754,7 +755,8 @@
         },
         "US_STATUS": {
             "ACTION_ADD_STATUS": "Afegeix un estat nou",
-            "IS_ARCHIVED_COLUMN": "Es arxivat?",
+            "IS_ARCHIVED_COLUMN": "Archived",
+            "IS_CLOSED_COLUMN": "Tancat",
             "WIP_LIMIT_COLUMN": "Limit WIP",
             "PLACEHOLDER_WRITE_NAME": "Escriviu un nom per al nou estat"
         },

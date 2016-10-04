@@ -11,6 +11,7 @@
         "CANCEL": "İptal",
         "ACCEPT": "Kabul et",
         "DELETE": "Sil",
+        "UNLINK": "Unlink",
         "CREATE": "Oluştur",
         "ADD": "Ekle",
         "COPY_TO_CLIPBOARD": "Panoya kopyala: Ctrl+C",
@@ -754,7 +755,8 @@
         },
         "US_STATUS": {
             "ACTION_ADD_STATUS": "Yeni durum ekle",
-            "IS_ARCHIVED_COLUMN": "Arşivlensin?",
+            "IS_ARCHIVED_COLUMN": "Arşivlenmiş",
+            "IS_CLOSED_COLUMN": "Kapatılmış",
             "WIP_LIMIT_COLUMN": "WIP Sınır",
             "PLACEHOLDER_WRITE_NAME": "Yeni durum için bir isim yaz"
         },

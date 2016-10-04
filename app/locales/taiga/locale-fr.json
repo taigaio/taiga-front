@@ -11,6 +11,7 @@
         "CANCEL": "Annuler",
         "ACCEPT": "Accepter",
         "DELETE": "Supprimer",
+        "UNLINK": "Unlink",
         "CREATE": "Créer",
         "ADD": "Ajouter",
         "COPY_TO_CLIPBOARD": "Copier dans le presse-papier : Ctrl+C",
@@ -41,8 +42,8 @@
         "EXTERNAL_USER": "un utilisateur externe",
         "GENERIC_ERROR": "L'un de nos Oompa Loompas dit {{error}}.",
         "IOCAINE_TEXT": "Vous vous sentez un peu submergé(e) par une tâche ? Soyez certains d'en informer les autres en cliquant sur Iocaine lors de la modification de la tâche. Il est possible de s'immuniser contre ce poison (fictif) en consommant de petites quantités en heures supplémentaires, tout comme il est possible de s'améliorer en acceptant parfois de nouveaux défis !",
-        "CLIENT_REQUIREMENT": "Un besoin client est un nouveau besoin qui n'était pas prévu et qu'il est nécessaire d'intégrer au projet",
-        "TEAM_REQUIREMENT": "Un besoin projet est un besoin qui est nécessaire au projet mais qui ne doit avoir aucun impact pour le client",
+        "CLIENT_REQUIREMENT": "Une exigence client est une nouvelle exigence exprimée par le client, qui n'était pas prévue dans le projet initial, et qu'il est nécessaire d'intégrer",
+        "TEAM_REQUIREMENT": "Une exigence équipe est une exigence exprimée par l'équipe qui doit être rajoutée au projet, sans que cela n'ait d'impact pour le client",
         "OWNER": "Propriétaire du Projet",
         "CAPSLOCK_WARNING": "Attention ! Vous utilisez des majuscules dans un champ qui est sensible à la casse.",
         "CONFIRM_CLOSE_EDIT_MODE_TITLE": "Êtes-vous sûr de vouloir fermer le mode Édition ?",
@@ -407,14 +408,14 @@
         "TITLE": "ÉPOPÉES",
         "SECTION_NAME": "Épopées",
         "EPIC": "ÉPOPÉE",
-        "PAGE_TITLE": "Epics - {{projectName}}",
-        "PAGE_DESCRIPTION": "The epics list of the project {{projectName}}: {{projectDescription}}",
+        "PAGE_TITLE": "Épopées - {{projectName}}",
+        "PAGE_DESCRIPTION": "Liste des épopées du projet {{projectName}}: {{projectDescription}}",
         "DASHBOARD": {
             "ADD": "+ AJOUTER ÉPOPÉE",
             "UNASSIGNED": "Non affecté"
         },
         "EMPTY": {
-            "TITLE": "It looks like there aren't any epics yet",
+            "TITLE": "Il semble n'y avoir aucune épopée pour l'instant",
             "EXPLANATION": "Epics are items at a higher level that encompass user stories.<br />Epics are at the top of the hierarchy and can be used to group user stories together.",
             "HELP": "En savoir plus sur les épopées"
         },
@@ -431,8 +432,8 @@
         "CREATE": {
             "TITLE": "Nouvelle épopée",
             "PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this epic",
-            "TEAM_REQUIREMENT": "Besoin projet",
-            "CLIENT_REQUIREMENT": "Besoin client",
+            "TEAM_REQUIREMENT": "Exigence équipe",
+            "CLIENT_REQUIREMENT": "Exigence client",
             "BLOCKED": "Bloqué",
             "BLOCKED_NOTE_PLACEHOLDER": "Pourquoi cette épopée est-elle bloquée ?",
             "CREATE_EPIC": "Créer une épopée"
@@ -754,7 +755,8 @@
         },
         "US_STATUS": {
             "ACTION_ADD_STATUS": "Ajouter un nouveau status",
-            "IS_ARCHIVED_COLUMN": "Est archivé ?",
+            "IS_ARCHIVED_COLUMN": "Archivé",
+            "IS_CLOSED_COLUMN": "Fermé",
             "WIP_LIMIT_COLUMN": "Limite de Work In Progress",
             "PLACEHOLDER_WRITE_NAME": "Donnez un nom au nouvel état"
         },
@@ -1069,7 +1071,7 @@
         }
     },
     "EPIC": {
-        "PAGE_TITLE": "{{epicSubject}} - Epic {{epicRef}} - {{projectName}}",
+        "PAGE_TITLE": "{{epicSubject}} - Épopée {{epicRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Status: {{epicStatus }}. Description: {{epicDescription}}",
         "SECTION_NAME": "Épopée",
         "TITLE_LIGHTBOX_UNLINK_RELATED_USERSTORY": "Unlink related userstory",
@@ -1120,8 +1122,8 @@
             "PUBLISH_MORE_INFO_TEXT": "<p>If you need help with a particular piece of work you can easily create gigs on<a href='taigatribe.com' title='Taiga Tribe'> Taiga Tribe </a> and receive help from all over the world. You will be able to control and manage the gig enjoying a great community eager to contribute.</p><p><a href='taigatribe.com' title='Taiga Tribe'> TaigaTribe </a>  was born as a Taiga sibling. Both platforms can live separately but we believe that there is much power in using them combined so we are making sure the integration works like a charm.</p>"
         },
         "FIELDS": {
-            "TEAM_REQUIREMENT": "Besoin projet",
-            "CLIENT_REQUIREMENT": "Besoin client",
+            "TEAM_REQUIREMENT": "Exigence équipe",
+            "CLIENT_REQUIREMENT": "Exigence client",
             "FINISH_DATE": "Date de fin"
         }
     },
@@ -1164,8 +1166,8 @@
         "SIZE_CHANGE": "A fait {size, plural, one{une modification} other{# modifications}}",
         "BECAME_DEPRECATED": "devenu obsolète",
         "BECAME_UNDEPRECATED": "n'est plus obsolète",
-        "TEAM_REQUIREMENT": "Besoin projet",
-        "CLIENT_REQUIREMENT": "Besoin client",
+        "TEAM_REQUIREMENT": "Exigence équipe",
+        "CLIENT_REQUIREMENT": "Exigence client",
         "BLOCKED": "Bloqué",
         "VALUES": {
             "YES": "oui",
@@ -1192,8 +1194,8 @@
             "IS_BLOCKED": "est bloqué",
             "BLOCKED_NOTE": "note bloquée",
             "POINTS": "points",
-            "CLIENT_REQUIREMENT": "besoin client",
-            "TEAM_REQUIREMENT": "besoin projet",
+            "CLIENT_REQUIREMENT": "exigence client",
+            "TEAM_REQUIREMENT": "exigence équipe",
             "IS_IOCAINE": "est sous iocaine",
             "TAGS": "mots-clés",
             "ATTACHMENTS": "pièces jointes",
@@ -1238,8 +1240,8 @@
             "YAXIS_LABEL": "Points",
             "OPTIMAL": "Le nombre optimal de points pour le sprint \"{{sprintName}}\" devrait être {{value}}",
             "REAL": "Le nombre réel de points pour le sprint \"{{sprintName}}\" est {{value}}",
-            "INCREMENT_TEAM": "Le nombre de points ajoutés par les besoins projet pour le sprint  \"{{sprintName}}\" est {{value}}",
-            "INCREMENT_CLIENT": "Le nombre de points ajoutés par les besoins client pour le sprint \"{{sprintName}}\" est {{value}}"
+            "INCREMENT_TEAM": "Le nombre de points ajoutés par les exigences équipe pour le sprint  \"{{sprintName}}\" est {{value}}",
+            "INCREMENT_CLIENT": "Le nombre de points ajoutés par les exigences client pour le sprint \"{{sprintName}}\" est {{value}}"
         },
         "TAGS": {
             "TOGGLE": "Afficher/Cacher les mots-clés",
@@ -1431,7 +1433,7 @@
         "ARCHIVED": "Vous avez archivé",
         "UNDO_ARCHIVED": "Refaites glisser pour annuler",
         "PLACEHOLDER_CARD_TITLE": "Ce sont vos récits utilisateurs",
-        "PLACEHOLDER_CARD_TEXT": "Les récits peuvent avoir des sous-tâches pour séparer les besoins"
+        "PLACEHOLDER_CARD_TEXT": "Les récits peuvent avoir des sous-tâches pour séparer les exigences"
     },
     "SEARCH": {
         "PAGE_TITLE": "Chercher - {{projectName}}",
@@ -1654,7 +1656,7 @@
             },
             "STEP2": {
                 "TITLE": "Backlog du produit",
-                "TEXT": "Le backlog est la liste des besoins (récits utilisateur) pour le projet. C'est ici que vous préparerez vos sprints."
+                "TEXT": "Le backlog est la liste des exigences (récits utilisateur) pour le projet. C'est ici que vous préparerez vos sprints."
             },
             "STEP3": {
                 "TITLE": "Sprints",
@@ -1662,7 +1664,7 @@
             },
             "STEP4": {
                 "TITLE": "Récits utilisateur",
-                "TEXT": "Ce sont les besoins de niveau élevé. Vous pouvez les ajouter au backlog et les glisser dans le sprint pour lequel elle devront être livrées."
+                "TEXT": "Ce sont les exigences du projet de niveau élevé. Vous pouvez les ajouter au backlog et les glisser dans le sprint pour lequel elles devront être livrées."
             }
         },
         "KANBAN": {
@@ -1672,7 +1674,7 @@
             },
             "STEP2": {
                 "TITLE": "Récits utilisateur & Tâches",
-                "TEXT": "Les récits utilisateur sont les besoins de niveau élevé. Vous pouvez les déplacer dans différentes colonnes."
+                "TEXT": "Les récits utilisateur sont les exigences du projet de niveau élevé. Vous pouvez les déplacer dans différentes colonnes."
             },
             "STEP3": {
                 "TITLE": "Ajout de récits utilisateur",

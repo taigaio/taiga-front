@@ -11,6 +11,7 @@
         "CANCEL": "取消",
         "ACCEPT": "接受",
         "DELETE": "刪除",
+        "UNLINK": "Unlink",
         "CREATE": "創建",
         "ADD": "新增",
         "COPY_TO_CLIPBOARD": "複製到剪貼簿：Ctrl+C",
@@ -754,7 +755,8 @@
         },
         "US_STATUS": {
             "ACTION_ADD_STATUS": "增加新狀態",
-            "IS_ARCHIVED_COLUMN": "是否歸檔",
+            "IS_ARCHIVED_COLUMN": "歸檔",
+            "IS_CLOSED_COLUMN": "關閉",
             "WIP_LIMIT_COLUMN": "WIP限制",
             "PLACEHOLDER_WRITE_NAME": "為此新狀態命名"
         },

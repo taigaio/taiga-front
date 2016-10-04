@@ -11,6 +11,7 @@
         "CANCEL": "Annuleren",
         "ACCEPT": "Accepteren",
         "DELETE": "Verwijder",
+        "UNLINK": "Unlink",
         "CREATE": "Aanmaken",
         "ADD": "Toevoegen",
         "COPY_TO_CLIPBOARD": "Kopieër naar klembord: Ctrl+C",
@@ -754,7 +755,8 @@
         },
         "US_STATUS": {
             "ACTION_ADD_STATUS": "Nieuwe status toevoegen",
-            "IS_ARCHIVED_COLUMN": "Is gearchiveerd?",
+            "IS_ARCHIVED_COLUMN": "Gearchiveerd",
+            "IS_CLOSED_COLUMN": "Gesloten",
             "WIP_LIMIT_COLUMN": "WIP limiet",
             "PLACEHOLDER_WRITE_NAME": "Schrijf een naam voor de nieuwe status"
         },
