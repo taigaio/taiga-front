@@ -97,6 +97,10 @@ class LightboxService extends taiga.Service
                 scope.$destroy() if scope
                 $el.remove()
 
+
+    getLightboxOpen: ->
+        return $(".lightbox.open")
+
     closeAll: ->
         docEl = angular.element(document)
         for lightboxEl in docEl.find(".lightbox.open")
