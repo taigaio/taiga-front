@@ -730,8 +730,10 @@ class ProjectTagsController extends taiga.Controller
             @.loading = false
 
     filterAndSortTags: =>
+        @scope.projectTags = _.sortBy @scope.projectTagsAll, (it) -> it.name.toLowerCase()
+
         @scope.projectTags = _.filter(
-            _.sortBy(@scope.projectTagsAll, "name"),
+            @scope.projectTags,
             (tag) => tag.name.indexOf(@scope.tagsFilter.name) != -1
         )
 
