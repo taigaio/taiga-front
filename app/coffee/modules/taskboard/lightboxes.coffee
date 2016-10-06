@@ -171,9 +171,6 @@ CreateEditTaskDirective = ($repo, $model, $rs, $rootscope, $loading, lightboxSer
                 deleteAttachments(data)
                     .then () => createAttachments(data)
                     .then () =>
-                        currentLoading.finish()
-                        lightboxService.close($el)
-
                         $rs.tasks.getByRef(data.project, data.ref, params).then (task) ->
                             $rootscope.$broadcast(broadcastEvent, task)
 
