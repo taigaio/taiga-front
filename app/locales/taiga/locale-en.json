@@ -1249,6 +1249,12 @@
             "SHOW": "Show tags",
             "HIDE": "Hide tags"
         },
+        "FORECASTING": {
+            "TITLE": "Velocity forecasting",
+            "BACKLOG": "Display backlog",
+            "NEW_SPRINT": "Candidate User Stories for your next sprint based on your velocity. Click to create a new sprint.",
+            "CURRENT_SPRINT": "Candidate User Stories for your sprint based on your velocity. Click to add to current sprint."
+        },
         "TABLE": {
             "COLUMN_US": "User Stories",
             "TITLE_COLUMN_POINTS": "Select view per Role"

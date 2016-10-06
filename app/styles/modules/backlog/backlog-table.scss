@@ -145,6 +145,10 @@
 }
 
 .backlog-table-body {
+    &.forecasted-stories {
+        border: .5rem solid $mass-white;
+        border-bottom: 0;
+    }
     .row {
         border-bottom: 1px solid darken($whitish, 4%);
         cursor: move;

@@ -109,6 +109,7 @@ urls = {
     "bulk-update-us-milestone": "/userstories/bulk_update_milestone"
     "bulk-update-us-miles-order": "/userstories/bulk_update_sprint_order"
     "bulk-update-us-kanban-order": "/userstories/bulk_update_kanban_order"
+    "bulk-update-us-milestone": "/userstories/bulk_update_milestone"
     "userstories-filters": "/userstories/filters_data"
     "userstory-upvote": "/userstories/%s/upvote"
     "userstory-downvote": "/userstories/%s/downvote"

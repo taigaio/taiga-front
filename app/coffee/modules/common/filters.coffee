@@ -127,3 +127,11 @@ darkerFilter = ->
 
 
 module.filter("darker", darkerFilter)
+
+inArray = ($filter) ->
+    return (list, arrayFilter, element) ->
+        if arrayFilter
+            filter = $filter("filter")
+            return filter list, (listItem) ->
+                return arrayFilter.indexOf(listItem[element]) != -1
+module.filter("inArray", ["$filter", inArray])

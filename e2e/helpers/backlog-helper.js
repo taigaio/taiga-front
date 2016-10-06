@@ -131,6 +131,22 @@ helper.openNewUs = function() {
     $$('.new-us a').get(0).click();
 };
 
+helper.velocityForecasting = function() {
+    return $$('.e2e-velocity-forecasting');
+};
+
+helper.openVelocityForecasting = function() {
+    $$('.e2e-velocity-forecasting').click();
+};
+
+helper.createSprintFromForecasting = function() {
+    $$('.e2e-velocity-forecasting-add').click();
+    let sprintName = 'sprintName' + new Date().getTime();
+    $('.e2e-sprint-name')
+        .sendKeys(sprintName)
+        .sendKeys(protractor.Key.ENTER);
+};
+
 helper.openUsBacklogEdit = function(item) {
     $$('.backlog-table-body .e2e-edit').get(item).click();
 };

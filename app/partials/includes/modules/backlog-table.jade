@@ -10,7 +10,7 @@ div.backlog-table-header
 
 div.backlog-table-body(
     tg-backlog-sortable,
-    ng-class="{'show-tags': ctrl.showTags, 'active-filters': ctrl.activeFilters}"
+    ng-class="{'show-tags': ctrl.showTags, 'active-filters': ctrl.activeFilters, 'forecasted-stories': ctrl.displayVelocity}"
     infinite-scroll="ctrl.loadUserstories()"
     infinite-scroll-disabled="ctrl.disablePagination || !ctrl.firstLoadComplete"
     infinite-scroll-immediate-check='false'
