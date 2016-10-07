@@ -12,6 +12,6 @@ div.wrapper
                 p(translate="AUTH.INVITED_YOU")
                 p.project-name(tg-bo-bind="invitation.project_name")
 
-            div.invitation-form(ng-class="{'public-register-disabled': !publicRegisterEnabled}")
+            div.invitation-form
                 include ../includes/modules/invitation-login-form
                 include ../includes/modules/invitation-register-form
