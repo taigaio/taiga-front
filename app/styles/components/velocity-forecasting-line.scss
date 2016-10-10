@@ -1,0 +1,26 @@
+.velocity-forecasting-line {
+    @include font-size(xsmall);
+    background: lighten($whitish, 10%);
+    border-bottom: 1px solid $whitish;
+    box-shadow: inset 0 0 .4rem $whitish;
+    color: $gray-light;
+    cursor: pointer;
+    justify-content: center;
+    padding: 1.5rem 0;
+    text-align: center;
+    transition: color .2s;
+    &:hover {
+        color: $primary;
+    }
+    .forecasting-sprint {
+        background: $primary;
+        border-radius: 2px;
+        margin-right: .5rem;
+        padding: .05rem .2rem 0;
+        vertical-align: middle;
+    }
+    svg {
+        @include svg-size(.7rem);
+        fill: $white;
+    }
+}

@@ -120,8 +120,10 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             @confirm.notify("success")
             @analytics.trackEvent("userstory", "create", "bulk create userstory on backlog", 1)
 
-        @scope.$on "sprintform:create:success", =>
-            @.loadSprints()
+        @scope.$on "sprintform:create:success", (e, data, ussToMove) =>
+            @.loadSprints().then () =>
+                @scope.$broadcast("sprintform:create:success:callback", ussToMove)
+
             @.loadProjectStats()
             @confirm.notify("success")
             @analytics.trackEvent("sprint", "create", "create sprint on backlog", 1)
@@ -542,32 +544,63 @@ module.controller("BacklogController", BacklogController)
 ## Backlog Directive
 #############################################################################
 
-BacklogDirective = ($repo, $rootscope, $translate) ->
+BacklogDirective = ($repo, $rootscope, $compile, $translate, $rs) ->
     ## Doom line Link
     doomLineTemplate = _.template("""
     <div class="doom-line"><span><%- text %></span></div>
     """)
 
+    velocityForecastingTemplate = _.template("""
+    <div class="velocity-forecasting-line">
+        <tg-svg class="forecasting-sprint" svg-icon="icon-add" svg-title-translate="<%- text %>"></tg-svg>
+        <%- text %>
+    </div>
+    """)
+
     linkDoomLine = ($scope, $el, $attrs, $ctrl) ->
-        reloadDoomLine = ->
+        reloadLines = ->
             if $scope.stats? and $scope.stats.total_points? and $scope.stats.total_points != 0
                 removeDoomlineDom()
+                removeVelocityForecastingDom()
 
                 stats = $scope.stats
 
                 total_points = stats.total_points
                 current_sum = stats.assigned_points
+                backlog_points_sum = 0
 
                 return if not $scope.userstories
 
+                doomLineAdded = false
+                velocityForecastingAdded = false
+
                 for us, i in $scope.userstories
                     current_sum += us.total_points
+                    backlog_points_sum += us.total_points
 
-                    if current_sum > total_points
+                    if stats.speed > 0 &&
+                      !velocityForecastingAdded &&
+                      backlog_points_sum > stats.speed
+                        domElement = $el.find('.backlog-table-body .us-item-row')[i]
+                        addVelocityForecasting(domElement)
+
+                        velocityForecastingAdded = true
+
+                    if !doomLineAdded && current_sum > total_points
                         domElement = $el.find('.backlog-table-body .us-item-row')[i]
                         addDoomLineDom(domElement)
 
+                        doomLineAdded = true
+
+                    if doomLineAdded && velocityForecastingAdded
                         break
+
+        removeVelocityForecastingDom = ->
+            $el.find(".velocity-forecasting-line").remove()
+
+        addVelocityForecasting = (element) ->
+            text = $translate.instant("BACKLOG.VELOCITY_FORECASTING")
+            $(element).before($compile(velocityForecastingTemplate({"text": text}))($scope))
 
         removeDoomlineDom = ->
             $el.find(".doom-line").remove()
@@ -580,8 +613,8 @@ BacklogDirective = ($repo, $rootscope, $translate) ->
             rowElements = $el.find('.backlog-table-body .us-item-row')
             return _.map(rowElements, (x) -> angular.element(x))
 
-        $scope.$on("userstories:loaded", reloadDoomLine)
-        $scope.$watch("stats", reloadDoomLine)
+        $scope.$on("userstories:loaded", reloadLines)
+        $scope.$watch("stats", reloadLines)
 
     ## Move to current sprint link
 
@@ -611,7 +644,7 @@ BacklogDirective = ($repo, $rootscope, $translate) ->
             # Update the total of points
             sprint.total_points += totalExtraPoints
 
-            $repo.saveAll(selectedUss).then ->
+            $rs.userstories.bulkUpdateMilestone($scope.project.id, $scope.sprints[0].id, selectedUss).then =>
                 $ctrl.loadSprints()
                 $ctrl.loadProjectStats()
 
@@ -622,6 +655,9 @@ BacklogDirective = ($repo, $rootscope, $translate) ->
 
         moveToLatestSprint = (selectedUss) ->
             moveUssToSprint(selectedUss, $scope.sprints[0])
+
+        $scope.$on "sprintform:create:success:callback", (e, ussToMove) ->
+            _.partial(moveToCurrentSprint, ussToMove)()
 
         shiftPressed = false
         lastChecked = null
@@ -641,6 +677,23 @@ BacklogDirective = ($repo, $rootscope, $translate) ->
             shiftPressed = !!event.shiftKey
 
             return true
+
+        $el.on "click", ".velocity-forecasting-line", (event) ->
+            ussToMoveDom = $('.velocity-forecasting-line').prevAll('.us-item-row')
+
+            ussToMove = _.map ussToMoveDom, (item) ->
+                itemScope = $(item).scope()
+                return itemScope.us
+
+            if $scope.currentSprint
+                ussToMove = _.map ussToMove, (us) ->
+                    us.milestone = $scope.currentSprint.id
+
+                    return us
+
+                $scope.$apply(_.partial(moveToCurrentSprint, ussToMove))
+            else
+                $rootscope.$broadcast("sprintform:create", $scope.projectId, ussToMove)
 
         # Enable move to current sprint only when there are selected us's
         $el.on "change", ".backlog-table-body input:checkbox", (event) ->
@@ -756,7 +809,7 @@ BacklogDirective = ($repo, $rootscope, $translate) ->
     return {link: link}
 
 
-module.directive("tgBacklog", ["$tgRepo", "$rootScope", "$translate", BacklogDirective])
+module.directive("tgBacklog", ["$tgRepo", "$rootScope", "$compile", "$translate", "$tgResources", BacklogDirective])
 
 #############################################################################
 ## User story points directive

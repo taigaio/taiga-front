@@ -38,6 +38,7 @@
 - i18n:
   - Add norwegian Bokmal (nb) translation.
 
+
 ### Misc
 - Lots of small and not so small bugfixes.
 

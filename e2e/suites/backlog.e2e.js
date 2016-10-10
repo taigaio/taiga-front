@@ -537,4 +537,73 @@ describe('backlog', function() {
             expect(closedSprints).to.be.false;
         });
     });
+
+    describe('velocity forecasting', function() {
+        async function createEmptyMilestone() {
+            backlogHelper.openNewMilestone();
+
+            let createMilestoneLightbox = backlogHelper.getCreateEditMilestone();
+
+            await createMilestoneLightbox.waitOpen();
+
+            createMilestoneLightbox.name().sendKeys('sprintName' + new Date().getTime());
+            createMilestoneLightbox.submit();
+
+            return createMilestoneLightbox.waitClose();
+        }
+
+        async function dragClosedUsToMilestone() {
+            //create us
+            backlogHelper.openNewUs();
+
+            let createUSLightbox = backlogHelper.getCreateEditUsLightbox();
+
+            await createUSLightbox.waitOpen();
+
+            createUSLightbox.subject().sendKeys('subject');
+
+            //closed status
+            createUSLightbox.status(5).click();
+
+            createUSLightbox.submit();
+
+            await utils.lightbox.close(createUSLightbox.el);
+
+            await backlogHelper.loadFullBacklog();
+
+            //points
+            let total = await backlogHelper.userStories().count() - 1;
+
+            await backlogHelper.setUsPoints(total, 1, 11);
+            await backlogHelper.setUsPoints(total, 2, 11);
+            await backlogHelper.setUsPoints(total, 3, 11);
+
+            // drag us to milestone
+            let dragElement =  backlogHelper.userStories().last();
+            let dragElementHandler = dragElement.$('.icon-drag');
+
+            let sprint = backlogHelper.getClosedSprintTable();
+            await utils.common.drag(dragElementHandler, sprint);
+
+            return browser.waitForAngular();
+        }
+
+        before(async function() {
+            await createEmptyMilestone();
+            await dragClosedUsToMilestone();
+
+            utils.common.takeScreenshot('backlog', 'velocity-forecasting');
+        });
+
+        it('add to the current sprint', async function() {
+            let total = await backlogHelper.userStories().count();
+
+            let velocityForecasting = backlogHelper.velocityForecasting();
+            velocityForecasting.click();
+
+            let newtotal = await backlogHelper.userStories().count();
+
+            expect(newtotal).to.be.below(total);
+        });
+    });
 });
