@@ -15,5 +15,6 @@
     "termsOfServiceUrl": null,
     "maxUploadFileSize": null,
     "contribPlugins": [],
-    "tribeHost": null
+    "tribeHost": null,
+    "gravatar": true
 }
