@@ -5,11 +5,6 @@
                 ng-class="{'is-iocaine': vm.item.getIn(['model', 'is_iocaine'])}"
                 tg-avatar="vm.item.get('assigned_to')"
             )
-            tg-svg(
-                ng-if="vm.item.getIn(['model', 'is_iocaine'])"
-                svg-icon="icon-iocaine"
-                svg-title="COMMON.IOCAINE_TEXT"
-            )
         span.card-owner-name(ng-if="vm.visible('owner')") {{vm.item.getIn(['assigned_to', 'full_name'])}}
         div(ng-if="!vm.visible('owner')")
             include card-title
