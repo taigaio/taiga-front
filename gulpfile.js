@@ -176,7 +176,7 @@ paths.libs = [
     paths.vendor + "raven-js/dist/raven.js",
     paths.vendor + "l.js/l.js",
     paths.vendor + "messageformat/locale/*.js",
-    paths.vendor + "ngInfiniteScroll/build/ng-infinite-scroll.js",
+    paths.vendor + "ngInfiniteScroll/dist/ng-infinite-scroll.js",
     paths.vendor + "immutable/dist/immutable.js",
     paths.vendor + "intro.js/intro.js",
     paths.vendor + "dragula.js/dist/dragula.js",
