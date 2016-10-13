@@ -69,7 +69,7 @@
     "angular-translate-loader-partial": "~2.10.0",
     "angular-translate-loader-static-files": "~2.10.0",
     "angular-translate-interpolation-messageformat": "~2.10.0",
-    "ngInfiniteScroll": "^1.3.1",
+    "ng-infinite-scroll-npm-is-better-than-bower": "^1.3.0",
     "immutable": "~3.8.1",
     "bluebird": "~3.3.5",
     "intro.js": "~2.1.0",
