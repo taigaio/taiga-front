@@ -79,16 +79,6 @@
         line-height: 0;
         position: relative;
     }
-    .icon-iocaine {
-        @include svg-size(1.2rem);
-        background: rgba($blackish, .8);
-        border-radius: 4px 0 0;
-        bottom: .25rem;
-        fill: $whitish;
-        padding: .25rem;
-        position: absolute;
-        right: .5rem;
-    }
     .is-iocaine {
         filter: hue-rotate(265deg) saturate(3);
     }
@@ -164,18 +154,24 @@
     .statistic {
         align-content: center;
         display: flex;
-        margin-left: .75rem;
+        margin-left: .5rem;
         &.active {
             color: $primary-light;
             svg {
                 fill: currentColor;
             }
         }
+        &.card-iocaine {
+            cursor: help;
+        }
     }
     .icon {
         @include svg-size(.75rem);
         fill: lighten($gray-light, 25%);
         margin-right: .2rem;
+    }
+    .icon-iocaine {
+        fill: $purple-eggplant;
     }
 }
 
