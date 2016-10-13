@@ -98,6 +98,7 @@ BacklogSprintHeaderDirective = ($navUrls, $template, $compile, $translate) ->
 
             start = moment(sprint.estimated_start).format(prettyDate)
             finish = moment(sprint.estimated_finish).format(prettyDate)
+
             estimatedDateRange = "#{start}-#{finish}"
 
             ctx = {
@@ -117,11 +118,8 @@ BacklogSprintHeaderDirective = ($navUrls, $template, $compile, $translate) ->
             compiledTemplate = $compile(template)(templateScope)
             $el.html(compiledTemplate)
 
-        $scope.$watch $attrs.ngModel, (sprint) ->
+        $scope.$watch "sprint", (sprint) ->
             render(sprint)
-
-        $scope.$on "sprintform:edit:success", ->
-            render($model.$modelValue)
 
         $scope.$on "$destroy", ->
             $el.off()
@@ -129,7 +127,6 @@ BacklogSprintHeaderDirective = ($navUrls, $template, $compile, $translate) ->
     return {
         link: link
         restrict: "EA"
-        require: "ngModel"
     }
 
 module.directive("tgBacklogSprintHeader", ["$tgNavUrls", "$tgTemplate", "$compile", "$translate"

@@ -31,6 +31,16 @@ class Model
         @.setAttrs(data)
         @.initialize()
 
+    realClone: ->
+        attrs = _.cloneDeep(@._attrs)
+
+        instance =  new Model(@._name, attrs, @._dataTypes)
+
+        instance._modifiedAttrs = _.cloneDeep(@._modifiedAttrs)
+        instance._isModified = _.cloneDeep(@._isModified)
+
+        return instance        
+
     clone: ->
         instance = new Model(@._name, @._attrs, @._dataTypes)
         instance._modifiedAttrs = @._modifiedAttrs
