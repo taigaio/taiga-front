@@ -6,7 +6,7 @@ form
         input.sprint-name(
             type="text"
             name="name"
-            ng-model="sprint.name"
+            ng-model="newSprint.name"
             ng-model-options="{ debounce: 200 }"
             data-required="true"
             data-maxlength="500"
@@ -19,16 +19,16 @@ form
             input.date-start(
                 type="text"
                 name="estimated_start"
-                ng-model="sprint.estimated_start"
+                picker-value="{{newSprint.estimated_start}}"
                 data-required="true"
-                tg-date-selector
+                tg-date-selector                
                 placeholder="{{'LIGHTBOX.ADD_EDIT_SPRINT.PLACEHOLDER_SPRINT_START' | translate}}"
             )
         div
             input.date-end(
                 type="text"
                 name="estimated_finish"
-                ng-model="sprint.estimated_finish"
+                picker-value="{{newSprint.estimated_finish}}"
                 data-required="true"
                 tg-date-selector
                 placeholder="{{'LIGHTBOX.ADD_EDIT_SPRINT.PLACEHOLDER_SPRINT_END' | translate}}"

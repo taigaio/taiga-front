@@ -37,11 +37,12 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading,
         hasErrors = false
         createSprint = true
         form = null
+        $scope.newSprint = {}
 
         resetSprint = () ->
             form.reset() if form
 
-            $scope.sprint = {
+            $scope.newSprint = {
                 project: null
                 name: null
                 estimated_start: null
@@ -62,19 +63,23 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading,
                 return
 
             hasErrors = false
-            newSprint = angular.copy($scope.sprint)
             broadcastEvent = null
 
+            estimated_start = $('.date-start').val()
+            estimated_end = $('.date-end').val()
+
             if createSprint
-                newSprint.estimated_start = moment(newSprint.estimated_start, prettyDate).format("YYYY-MM-DD")
-                newSprint.estimated_finish = moment(newSprint.estimated_finish,prettyDate).format("YYYY-MM-DD")
+                newSprint = angular.copy($scope.newSprint)
+                newSprint.estimated_start = moment(estimated_start, prettyDate).format("YYYY-MM-DD")
+                newSprint.estimated_finish = moment(estimated_end, prettyDate).format("YYYY-MM-DD")
+
                 promise = $repo.create("milestones", newSprint)
                 broadcastEvent = "sprintform:create:success"
             else
-                newSprint.setAttr("estimated_start",
-                                  moment(newSprint.estimated_start, prettyDate).format("YYYY-MM-DD"))
-                newSprint.setAttr("estimated_finish",
-                                  moment(newSprint.estimated_finish, prettyDate).format("YYYY-MM-DD"))
+                newSprint = $scope.newSprint.realClone()
+                newSprint.estimated_start =  moment(estimated_start, prettyDate).format("YYYY-MM-DD")
+                newSprint.estimated_finish = moment(estimated_end, prettyDate).format("YYYY-MM-DD")
+
                 promise = $repo.save(newSprint)
                 broadcastEvent = "sprintform:edit:success"
 
@@ -85,6 +90,13 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading,
             promise.then (data) ->
                 currentLoading.finish()
                 $scope.sprintsCounter += 1 if createSprint
+
+                $scope.sprints = _.map $scope.sprints, (it) ->
+                    if it.id == data.id
+                        return data
+                    else
+                        return it
+
                 $rootscope.$broadcast(broadcastEvent, data)
 
                 lightboxService.close($el)
@@ -100,19 +112,19 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading,
 
         remove = ->
             title = $translate.instant("LIGHTBOX.DELETE_SPRINT.TITLE")
-            message = $scope.sprint.name
+            message = $scope.newSprint.name
 
             $confirm.askOnDelete(title, message).then (askResponse) =>
                 onSuccess = ->
                     askResponse.finish()
                     $scope.milestonesCounter -= 1
                     lightboxService.close($el)
-                    $rootscope.$broadcast("sprintform:remove:success", $scope.sprint)
+                    $rootscope.$broadcast("sprintform:remove:success", $scope.newSprint)
 
                 onError = ->
                     askResponse.finish(false)
                     $confirm.notify("error")
-                $repo.remove($scope.sprint).then(onSuccess, onError)
+                $repo.remove($scope.newSprint).then(onSuccess, onError)
 
         getLastSprint = ->
             openSprints = _.filter $scope.sprints, (sprint) ->
@@ -131,9 +143,9 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading,
 
             createSprint = true
             prettyDate = $translate.instant("COMMON.PICKERDATE.FORMAT")
-            $scope.sprint.project = projectId
-            $scope.sprint.name = null
-            $scope.sprint.slug = null
+            $scope.newSprint.project = projectId
+            $scope.newSprint.name = null
+            $scope.newSprint.slug = null
 
             lastSprint = getLastSprint()
 
@@ -141,19 +153,19 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading,
 
             if lastSprint
                 estimatedStart = moment(lastSprint.estimated_finish)
-            else if $scope.sprint.estimated_start
-                estimatedStart = moment($scope.sprint.estimated_start)
+            else if $scope.newSprint.estimated_start
+                estimatedStart = moment($scope.newSprint.estimated_start)
 
-            $scope.sprint.estimated_start = estimatedStart.format(prettyDate)
+            $scope.newSprint.estimated_start = estimatedStart.format(prettyDate)
 
             estimatedFinish = moment().add(2, "weeks")
 
             if lastSprint
                 estimatedFinish = moment(lastSprint.estimated_finish).add(2, "weeks")
-            else if $scope.sprint.estimated_finish
-                estimatedFinish = moment($scope.sprint.estimated_finish)
+            else if $scope.newSprint.estimated_finish
+                estimatedFinish = moment($scope.newSprint.estimated_finish)
 
-            $scope.sprint.estimated_finish = estimatedFinish.format(prettyDate)
+            $scope.newSprint.estimated_finish = estimatedFinish.format(prettyDate)
 
             lastSprintNameDom = $el.find(".last-sprint-name")
             if lastSprint?.name?
@@ -179,10 +191,10 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading,
             createSprint = false
             prettyDate = $translate.instant("COMMON.PICKERDATE.FORMAT")
 
-            $scope.$apply ->
-                $scope.sprint = sprint
-                $scope.sprint.estimated_start = moment($scope.sprint.estimated_start).format(prettyDate)
-                $scope.sprint.estimated_finish = moment($scope.sprint.estimated_finish).format(prettyDate)
+            $scope.$apply () ->
+                $scope.newSprint = sprint.realClone()
+                $scope.newSprint.estimated_start = moment($scope.newSprint.estimated_start).format(prettyDate)
+                $scope.newSprint.estimated_finish = moment($scope.newSprint.estimated_finish).format(prettyDate)
 
             $el.find(".delete-sprint").removeClass("hidden")
 

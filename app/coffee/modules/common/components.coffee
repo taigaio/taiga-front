@@ -64,27 +64,30 @@ DateSelectorDirective = ($rootscope, datePickerConfigService) ->
 
             _.merge(datePickerConfig, {
                 field: $el[0]
-                onSelect: (date) =>
-                    selectedDate = date
-                onOpen: =>
-                    $el.picker.setDate(selectedDate) if selectedDate?
             })
 
             $el.picker = new Pikaday(datePickerConfig)
 
-        unbind = $rootscope.$on "$translateChangeEnd", (ctx) => initialize()
+        unbind = $rootscope.$on "$translateChangeEnd", (ctx) =>
+            $el.picker.destroy() if $el.picker
+            initialize()
 
-        $scope.$watch $attrs.ngModel, (val) ->
-            initialize() if val? and not $el.picker
-            $el.picker.setDate(val) if val?
+        $attrs.$observe "pickerValue", (val) ->
+            $el.val(val)
+
+            if val?
+                $el.picker.destroy() if $el.picker
+                initialize()
+
+            $el.picker.setDate(val)
 
         $scope.$on "$destroy", ->
             $el.off()
             unbind()
+            $el.picker.destroy()
 
     return {
         link: link
-        require: "ngModel"
     }
 
 module.directive("tgDateSelector", ["$rootScope", "tgDatePickerConfigService", DateSelectorDirective])
