@@ -10,6 +10,13 @@
         ng-if="vm.item.getIn(['model', 'total_points'])"
     ) {{"COMMON.FIELDS.POINTS" | translate}} {{vm.item.getIn(['model', 'total_points'])}}
     .card-statistics
+        .statistic.card-iocaine(
+            ng-if="vm.item.getIn(['model', 'is_iocaine'])"
+            title="{{'COMMON.IOCAINE_TEXT' | translate}}"
+        )
+            tg-svg(
+                svg-icon="icon-iocaine"
+            )
         .statistic.card-votes(ng-class="{'active': vm.item.getIn(['model', 'is_voter'])}")
             tg-svg(svg-icon="icon-upvote")
             span {{vm.item.getIn(['model', 'total_voters'])}}
