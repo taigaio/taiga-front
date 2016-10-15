@@ -45,6 +45,7 @@ Resource = (urlsService, http) ->
         params = {
             project: projectId
         }
+
         return http.get(url, params, httpOptions)
             .then (result) ->
                 return Immutable.fromJS(result.data)
@@ -52,13 +53,19 @@ Resource = (urlsService, http) ->
     service.listInEpic = (epicIid) ->
         url = urlsService.resolve("userstories")
 
-        params = {
-            'epic': epicIid,
-            'order_by': 'epic_order',
-            'include_tasks': true
+        httpOptions = {
+            headers: {
+                "x-disable-pagination": "1"
+            }
         }
 
-        return http.get(url, params)
+        params = {
+            epic: epicIid,
+            order_by: 'epic_order',
+            include_tasks: true
+        }
+
+        return http.get(url, params, httpOptions)
             .then (result) ->
                 return Immutable.fromJS(result.data)
 
