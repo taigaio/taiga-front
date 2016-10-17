@@ -135,6 +135,7 @@
         }
     }
     .sprint-table {
+        min-height: 2rem; // drag & drop
         .sprint-empty {
             @include font-type(light);
             background: darken($whitish, 5%);
