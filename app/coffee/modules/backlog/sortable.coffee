@@ -45,7 +45,7 @@ BacklogSortableDirective = () ->
 
             initIsBacklog = false
 
-            drake = dragula([$el[0], $('.empty-backlog')[0]], {
+            drake = dragula([$el[0], $('.js-empty-backlog')[0]], {
                 copySortSource: false,
                 copy: false,
                 isContainer: (el) -> return el.classList.contains('sprint-table'),
@@ -76,7 +76,8 @@ BacklogSortableDirective = () ->
                 $('.doom-line').remove()
 
                 parent = $(item).parent()
-                isBacklog = parent.hasClass('backlog-table-body') || parent.hasClass('empty-backlog')
+
+                isBacklog = parent.hasClass('backlog-table-body') || parent.hasClass('js-empty-backlog')
 
                 if initIsBacklog || isBacklog
                     sameContainer = (initIsBacklog == isBacklog)
