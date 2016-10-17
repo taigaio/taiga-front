@@ -60,7 +60,8 @@ $column-padding: .5rem 1rem;
 }
 
 .kanban-table-header {
-    min-height: 38px;
+    flex-basis: 2.2rem;
+    min-height: 2.2rem;
     position: relative;
     width: 100%;
     .kanban-table-inner {
