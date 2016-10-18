@@ -57,6 +57,7 @@
             .icon {
                 @include svg-size(1.5rem);
                 fill: currentColor;
+                margin-right: .3rem;
                 vertical-align: text-top;
             }
             .template-name {
