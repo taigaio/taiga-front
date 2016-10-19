@@ -137,7 +137,18 @@ class FiltersMixin
         selectedFilters = _.filter list, (it) ->
             selectedIds.indexOf(_.toString(it.id)) != -1
 
-        return _.map selectedFilters, (it) ->
+        invalidTags = _.filter selectedIds, (it) ->
+            return !_.find selectedFilters, (sit) -> _.toString(sit.id) == it
+
+        invalidAppliedTags =  _.map invalidTags, (it) ->
+            return {
+                id: it
+                key: type + ":" + it
+                dataType: type,
+                name: it
+            }
+
+        validAppliedTags = _.map selectedFilters, (it) ->
             return {
                 id: it.id
                 key: type + ":" + it.id
@@ -145,6 +156,8 @@ class FiltersMixin
                 name: it.name
                 color: it.color
             }
+
+        return invalidAppliedTags.concat(validAppliedTags)
 
 taiga.FiltersMixin = FiltersMixin
 
