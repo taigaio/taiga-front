@@ -47,11 +47,11 @@
         "OWNER": "Project Owner",
         "CAPSLOCK_WARNING": "Be careful! You are using capital letters in an input field that is case sensitive.",
         "CONFIRM_CLOSE_EDIT_MODE_TITLE": "Are you sure you want to close the edit mode?",
-        "CONFIRM_CLOSE_EDIT_MODE_MESSAGE": "Remember that if you close the edit mode without saving all the changes will be lost",
+        "CONFIRM_CLOSE_EDIT_MODE_MESSAGE": "Kom ihåg att alla ändringar kommer förloras om du stänger utan att spara",
         "RELATED_USERSTORIES": "Related user stories",
         "CARD": {
-            "ASSIGN_TO": "Assign To",
-            "EDIT": "Edit card"
+            "ASSIGN_TO": "Tilldela Till",
+            "EDIT": "Ändra kort"
         },
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Det här värdet är felaktigt. ",
@@ -77,7 +77,7 @@
             "MAX_CHECK": "Du måste välja %s val eller mindre.",
             "RANGE_CHECK": "Du måste välja mellan %s och %s val.",
             "EQUAL_TO": "Det här värdet skulle vara det samma. ",
-            "LINEWIDTH": "One or more lines is perhaps too long. Try to keep under %s characters.",
+            "LINEWIDTH": "En eller fler rader är kanske för långa. Försök hålla det under % bokstäver.",
             "PIKADAY": "Invalid date format, please use DD MMM YYYY (like 23 Mar 1984)"
         },
         "PICKERDATE": {
@@ -557,10 +557,10 @@
             "PROJECT_OWNER": "Project owner",
             "REQUEST_OWNERSHIP": "Request ownership",
             "REQUEST_OWNERSHIP_CONFIRMATION_TITLE": "Do you want to become the new project owner?",
-            "REQUEST_OWNERSHIP_DESC": "Request that current project owner {{name}} transfer ownership of this project to you.",
+            "REQUEST_OWNERSHIP_DESC": "Begär att den nuvarande projektägaren {{namn}} överför ägarskap av det här projektet till dig.",
             "REQUEST_OWNERSHIP_BUTTON": "Förfrågan",
-            "REQUEST_OWNERSHIP_SUCCESS": "We'll notify the project owner",
-            "CHANGE_OWNER": "Change owner",
+            "REQUEST_OWNERSHIP_SUCCESS": "Vi noterar projektägaren",
+            "CHANGE_OWNER": "Ända ägare",
             "CHANGE_OWNER_SUCCESS_TITLE": "Ok, your request has been sent!",
             "CHANGE_OWNER_SUCCESS_DESC": "We will notify you by email if the project ownership request is accepted or declined"
         },
@@ -798,16 +798,16 @@
             "ACCEPTED_PROJECT_OWNERNSHIP": "Congratulations! You're now the new project owner.",
             "REJECTED_PROJECT_OWNERNSHIP": "OK. We'll contact the current project owner",
             "ACCEPT": "Acceptera",
-            "REJECT": "Reject",
+            "REJECT": "Avvisa",
             "PROPOSE_OWNERSHIP": "<strong>{{owner}}</strong>, the current owner of the project <strong>{{project}}</strong> has asked that you become the new  project owner.",
-            "ADD_COMMENT": "Would you like to add a comment for the project owner?",
-            "UNLIMITED_PROJECTS": "Unlimited",
+            "ADD_COMMENT": "Vill du lämna en kommentar till projektägaren?",
+            "UNLIMITED_PROJECTS": "Obegränsad",
             "OWNER_MESSAGE": {
                 "PRIVATE": "Please remember that you can own up to <strong>{{maxProjects}}</strong> private projects. You currently own <strong>{{currentProjects}}</strong> private projects",
                 "PUBLIC": "Please remember that you can own up to <strong>{{maxProjects}}</strong> public projects. You currently own <strong>{{currentProjects}}</strong> public projects"
             },
             "CANT_BE_OWNED": "At the moment you cannot become an owner of a project of this type. If you would like to become the owner of this project, please contact the administrator so they change your account settings to enable project ownership.",
-            "CHANGE_MY_PLAN": "Change my plan"
+            "CHANGE_MY_PLAN": "Ändra min plan"
         }
     },
     "USER": {
@@ -1116,9 +1116,9 @@
             "PUBLISH_TITLE": "More info on publishing in Taiga Tribe",
             "PUBLISHED_AS_GIG": "Story published as Gig in Taiga Tribe",
             "EDIT_LINK": "Edit link",
-            "CLOSE": "Close",
-            "SYNCHRONIZE_LINK": "synchronize with Taiga Tribe",
-            "PUBLISH_MORE_INFO_TITLE": "Do you need somebody for this task?",
+            "CLOSE": "Stäng",
+            "SYNCHRONIZE_LINK": "synkronisera med Taiga Tribe",
+            "PUBLISH_MORE_INFO_TITLE": "Behöver du någon för den här uppgiften?",
             "PUBLISH_MORE_INFO_TEXT": "<p>If you need help with a particular piece of work you can easily create gigs on<a href='taigatribe.com' title='Taiga Tribe'> Taiga Tribe </a> and receive help from all over the world. You will be able to control and manage the gig enjoying a great community eager to contribute.</p><p><a href='taigatribe.com' title='Taiga Tribe'> TaigaTribe </a>  was born as a Taiga sibling. Both platforms can live separately but we believe that there is much power in using them combined so we are making sure the integration works like a charm.</p>"
         },
         "FIELDS": {
@@ -1282,7 +1282,7 @@
             "TITLE_LINK_TASKBOARD": "Gå till uppgiftspanelen för \"{{name}}\"",
             "NUMBER_SPRINTS": "<br/>sprintar\n",
             "EMPTY": "Det är inga sprintar än",
-            "WARNING_EMPTY_SPRINT_ANONYMOUS": "This sprint has no User Stories",
+            "WARNING_EMPTY_SPRINT_ANONYMOUS": "Den här sprinten har inga användarhistorier",
             "WARNING_EMPTY_SPRINT": "Här kan du föra in användarhistorier från inkorgen för att starta en ny sprint",
             "TITLE_ACTION_NEW_SPRINT": "Lägg till ny sprint",
             "TEXT_ACTION_NEW_SPRINT": "Du kanske vill skapa en ny sprint i ditt projekt",
@@ -1525,7 +1525,7 @@
         "CHOOSE_TEMPLATE_INFO": "More info",
         "PROJECT_DETAILS": "Project Details",
         "PUBLIC_PROJECT": "Public Project",
-        "PRIVATE_PROJECT": "Private Project",
+        "PRIVATE_PROJECT": "Privat Projekt",
         "CREATE_PROJECT": "Skapa projekt",
         "MAX_PRIVATE_PROJECTS": "You've reached the maximum number of private projects",
         "MAX_PUBLIC_PROJECTS": "Unfortunately, you've reached the maximum number of public projects",
@@ -1538,11 +1538,11 @@
         "PLACEHOLDER_PAGE": "Skriv din wiki-sida",
         "REMOVE": "Ta bort den här wiki-sidan",
         "DELETE_LIGHTBOX_TITLE": "Ta bort Wiki-sida",
-        "DELETE_LINK_TITLE": "Delete Wiki link",
+        "DELETE_LINK_TITLE": "Ta bort wiki-länk",
         "NAVIGATION": {
-            "HOME": "Main Page",
-            "SECTION_NAME": "BOOKMARKS",
-            "ACTION_ADD_LINK": "Add bookmark",
+            "HOME": "Huvudsida",
+            "SECTION_NAME": "BOKMÄRKEN",
+            "ACTION_ADD_LINK": "Lägg till bokmärke",
             "ALL_PAGES": "All wiki pages"
         },
         "SUMMARY": {
@@ -1550,7 +1550,7 @@
             "LAST_EDIT": "senaste <br/> ändring",
             "LAST_MODIFICATION": "senast modifierad"
         },
-        "SECTION_PAGES_LIST": "All pages",
+        "SECTION_PAGES_LIST": "Alla sidor",
         "PAGES_LIST_COLUMNS": {
             "TITLE": "Title",
             "EDITIONS": "Editions",
@@ -1570,7 +1570,7 @@
         "HINT2_TEXT": "Arbetsgrupper kan skapa anpassade flexibla fält för att använda specifika data som passar arbetsflödet. ",
         "HINT3_TITLE": "Omorganizera dina projekt så de blir mera relevanta för dig",
         "HINT3_TEXT": "De 10 projekten är listad och du har åtkomst till dem på verktyglinjen på toppen av sidan. ",
-        "HINT4_TITLE": "Did you forget what were you working on?",
+        "HINT4_TITLE": "Har du glömt vad du jobbade på?",
         "HINT4_TEXT": "Du behöver inte bekymra dig. På vårt instrumentpanel vill du hitta öppna uppgifter, ärenden och användarhistorier sorterad efter hur du arbetar med dem. "
     },
     "TIMELINE": {
@@ -1686,7 +1686,7 @@
     "DISCOVER": {
         "PAGE_TITLE": "Discover projects - Taiga",
         "PAGE_DESCRIPTION": "Searchable directory of Public Projects in Taiga. Explore backlogs, timelines, issues, and teams. Check out the most liked or most active projects. Filter by Kanban or Scrum.",
-        "DISCOVER_TITLE": "Discover projects",
+        "DISCOVER_TITLE": "Upptäck projekt",
         "DISCOVER_SUBTITLE": "{projects, plural, one{One public project to discover} other{# public projects to discover}}",
         "MOST_ACTIVE": "Most active",
         "MOST_ACTIVE_EMPTY": "There are no ACTIVE projects yet",
@@ -1700,11 +1700,11 @@
             "ALL": "Alla",
             "KANBAN": "Kanban",
             "SCRUM": "Scrum",
-            "PEOPLE": "Looking for people",
-            "WEEK": "Last week",
+            "PEOPLE": "Letar efter människor",
+            "WEEK": "Förra veckan",
             "MONTH": "Last month",
-            "YEAR": "Last year",
-            "ALL_TIME": "All time",
+            "YEAR": "Förra året",
+            "ALL_TIME": "All tid",
             "CLEAR": "Clear filters"
         },
         "SEARCH": {

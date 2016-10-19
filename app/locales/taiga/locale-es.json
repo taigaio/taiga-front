@@ -11,7 +11,7 @@
         "CANCEL": "Cancelar",
         "ACCEPT": "Aceptar",
         "DELETE": "Borrar",
-        "UNLINK": "Unlink",
+        "UNLINK": "Desvincular",
         "CREATE": "Crear",
         "ADD": "Añadir",
         "COPY_TO_CLIPBOARD": "Copiar en el portapapeles: Ctrl+C",
@@ -36,7 +36,7 @@
         "ONE_ITEM_LINE": "Un elemento por línea...",
         "NEW_BULK": "Nueva inserción en bloque",
         "RELATED_TASKS": "Tareas relacionadas",
-        "PREVIOUS": "Previous",
+        "PREVIOUS": "Anterior",
         "NEXT": "Siguiente",
         "LOGOUT": "Cerrar sesión",
         "EXTERNAL_USER": "un usuario externo",
@@ -48,7 +48,7 @@
         "CAPSLOCK_WARNING": "¡Cuidado!. Esta usando mayusculas en un campo sensible a mayusculas",
         "CONFIRM_CLOSE_EDIT_MODE_TITLE": "¿Seguro que desea cerrar el modo de edición?",
         "CONFIRM_CLOSE_EDIT_MODE_MESSAGE": "Recuerde que si cierra el modo de edicion sin guardar todos los cambios se perderán",
-        "RELATED_USERSTORIES": "Related user stories",
+        "RELATED_USERSTORIES": "Historias de usuario relacionadas",
         "CARD": {
             "ASSIGN_TO": "Asignado a",
             "EDIT": "Editar tarjeta"
@@ -416,7 +416,7 @@
         },
         "EMPTY": {
             "TITLE": "Parece que todavía no hay épicas.",
-            "EXPLANATION": "Epics are items at a higher level that encompass user stories.<br />Epics are at the top of the hierarchy and can be used to group user stories together.",
+            "EXPLANATION": "Las épicas son ítems a un nivel mas elevado que engloban historias de usuario. <br />Las épicas estan al tope de la jerarquia y pueden ser usadas para agrupar historias de usuario.",
             "HELP": "Aprende más sobre Épicas"
         },
         "TABLE": {
@@ -435,7 +435,7 @@
             "TEAM_REQUIREMENT": "Requerido por el equipo",
             "CLIENT_REQUIREMENT": "Requerido por el Cliente",
             "BLOCKED": "Bloqueada",
-            "BLOCKED_NOTE_PLACEHOLDER": "Why is this epic blocked?",
+            "BLOCKED_NOTE_PLACEHOLDER": "Porque esta esta épica bloqueada?",
             "CREATE_EPIC": "Crear épica"
         }
     },
@@ -510,7 +510,7 @@
             "ENABLE": "Activado",
             "DISABLE": "Desactivado",
             "EPICS": "Épicas",
-            "EPICS_DESCRIPTION": "Visualize and manage the most strategic part of your project",
+            "EPICS_DESCRIPTION": "Visualizar y administrar la parte mas estrategica del proyecto.",
             "BACKLOG": "Backlog",
             "BACKLOG_DESCRIPTION": "Gestiona tus historias de usuario para mantener una vista organizada y priorizada de los próximos trabajos que deberás afrontar. ",
             "NUMBER_SPRINTS": "Numero esperado de sprints",
@@ -573,7 +573,7 @@
             "REGENERATE_SUBTITLE": "Vas a cambiar la url de acceso a los datos en formato CSV. La url anterior se deshabilitará. ¿Estás seguro?"
         },
         "CSV": {
-            "SECTION_TITLE_EPIC": "epics reports",
+            "SECTION_TITLE_EPIC": "Reportes de épicas.",
             "SECTION_TITLE_US": "informes de historias de usuario",
             "SECTION_TITLE_TASK": "Informes de tareas",
             "SECTION_TITLE_ISSUE": "informes de peticiones",
@@ -625,8 +625,8 @@
         "PROJECT_VALUES_STATUS": {
             "TITLE": "Estado",
             "SUBTITLE": "Especifica los estado que atravesarán tus historias de usuario, tareas y peticiones",
-            "EPIC_TITLE": "Epic Statuses",
-            "US_TITLE": "User Story Statuses",
+            "EPIC_TITLE": "Estados de Epicas",
+            "US_TITLE": "Estados de historias de usuario",
             "TASK_TITLE": "Estados de Tarea",
             "ISSUE_TITLE": "Estados de la petición"
         },
@@ -638,14 +638,14 @@
         },
         "PROJECT_VALUES_TAGS": {
             "TITLE": "Etiquetas",
-            "SUBTITLE": "View and edit the color of your tags",
+            "SUBTITLE": "Ver y editar el color de sus etiquetas.",
             "EMPTY": "Actualmente no hay etiquetas",
             "EMPTY_SEARCH": "Parece que no se encontro nada con este criterio de busqueda",
             "ACTION_ADD": "Añadir etiqueta",
-            "NEW_TAG": "New tag",
-            "MIXING_HELP_TEXT": "Select the tags that you want to merge",
-            "MIXING_MERGE": "Merge Tags",
-            "SELECTED": "Selected"
+            "NEW_TAG": "Nueva etiqueta",
+            "MIXING_HELP_TEXT": "Seleccione las etiquetas que quiere agrupar",
+            "MIXING_MERGE": "Agrupar Etiquetas",
+            "SELECTED": "Seleccionado"
         },
         "ROLES": {
             "PAGE_TITLE": "Roles - {{projectName}}",
@@ -738,8 +738,8 @@
             "DEFAULT_DELETE_MESSAGE": "la invitación enviada a"
         },
         "DEFAULT_VALUES": {
-            "LABEL_EPIC_STATUS": "Default value for epic status selector",
-            "LABEL_US_STATUS": "Default value for user story status selector",
+            "LABEL_EPIC_STATUS": "Valor por defecto para el selector de estado de épicas.",
+            "LABEL_US_STATUS": "Valor por defecto para el selector de estado de historias de usuario.",
             "LABEL_POINTS": "Valor por defecto para el selector de puntos",
             "LABEL_TASK_STATUS": "Valor por defecto para el selector de estado de tarea",
             "LABEL_ISSUE_TYPE": "Valor por defecto para el selector de tipo de la petición",
@@ -1050,8 +1050,8 @@
         "CREATE_MEMBER": {
             "PLACEHOLDER_INVITATION_TEXT": "(Opcional) Añade un texto personalizado a la invitación. Dile algo encantador a tus nuevos miembros ;-)",
             "PLACEHOLDER_TYPE_EMAIL": "Escribe un email",
-            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "You are about to reach the maximum number of members allowed for this project, <strong>{{maxMembers}}</strong> members. If you would like to increase the current limit, please contact the administrator.",
-            "LIMIT_USERS_WARNING_MESSAGE": "You are about to reach the maximum number of members allowed for this project, <strong>{{maxMembers}}</strong> members."
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "Usted esta a punto de alcanzar el maximo numero de miembros permitidos para este proyecto, <strong>{{maxMembers}}</strong> miembros. Si desea aumentar el limite actual, por favor contacte al administrador.",
+            "LIMIT_USERS_WARNING_MESSAGE": "Usted esta a punto de alcanzar el maximo numero de miembros permitidos para este proyecto, <strong>{{maxMembers}}</strong> miembros."
         },
         "LEAVE_PROJECT_WARNING": {
             "TITLE": "Por desgracia, este proyecto no puede ser dejado sin dueño",
@@ -1074,9 +1074,9 @@
         "PAGE_TITLE": "{{epicSubject}} - Épica {{epicRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Estado: {{taskStatus}}. Descripción: {{taskDescription}}",
         "SECTION_NAME": "Épica",
-        "TITLE_LIGHTBOX_UNLINK_RELATED_USERSTORY": "Unlink related userstory",
-        "MSG_LIGHTBOX_UNLINK_RELATED_USERSTORY": "It will delete the link to the related userstory '{{subject}}'",
-        "ERROR_UNLINK_RELATED_USERSTORY": "We have not been able to unlink: {{errorMessage}}",
+        "TITLE_LIGHTBOX_UNLINK_RELATED_USERSTORY": "Desvincular historia de usuario relacionada.",
+        "MSG_LIGHTBOX_UNLINK_RELATED_USERSTORY": "Se eliminara el vinculo a la historia de usuario relacionada '{{subject}}'",
+        "ERROR_UNLINK_RELATED_USERSTORY": "No se ha podido desvincular:  {{errorMessage}}",
         "CREATE_RELATED_USERSTORIES": "Crear relación con",
         "NEW_USERSTORY": "Nueva historia de usuario",
         "EXISTING_USERSTORY": "Historia de usuario existente",
@@ -1084,11 +1084,11 @@
         "SUBJECT": "Asunto",
         "SUBJECT_BULK_MODE": "Subject (bulk insert)",
         "CHOOSE_PROJECT_FROM": "¿Qué es el proyecto?",
-        "CHOOSE_USERSTORY": "What's the user story?",
-        "NO_USERSTORIES": "This project has no User Stories yet. Please select another project.",
-        "FILTER_USERSTORIES": "Filter user stories",
+        "CHOOSE_USERSTORY": "Cual es la historia de usuario?",
+        "NO_USERSTORIES": "Este proyecto no tiene historias de usuario todavia. Por favor, seleccione otro proyecto.",
+        "FILTER_USERSTORIES": "Filtrar historias de usuario",
         "LIGHTBOX_TITLE_BLOKING_EPIC": "Blocking epic",
-        "ACTION_DELETE": "Delete epic"
+        "ACTION_DELETE": "Borrar epic"
     },
     "US": {
         "PAGE_TITLE": "{{userStorySubject}} - Historia de Usuario {{userStoryRef}} - {{projectName}}",
@@ -1581,8 +1581,8 @@
         "TASK_CREATED_WITH_US": "{{username}} ha creado una nueva tarea {{obj_name}} en {{project_name}} que proviene de la historia {{us_name}}",
         "WIKI_CREATED": "{{username}} ha creado una nueva página de wiki {{obj_name}} en {{project_name}}\n",
         "MILESTONE_CREATED": "{{username}} ha creado un nuevo sprint {{obj_name}} en {{project_name}}",
-        "EPIC_CREATED": "{{username}} has created a new epic {{obj_name}} in {{project_name}}",
-        "EPIC_RELATED_USERSTORY_CREATED": "{{username}} has related the userstory {{related_us_name}} to the epic {{epic_name}} in {{project_name}}",
+        "EPIC_CREATED": "{{username}} ha creado una nueva épica {{obj_name}} en {{project_name}}.",
+        "EPIC_RELATED_USERSTORY_CREATED": "{{username}} ha relacionado la historia de usuario {{related_us_name}} con la épica {{epic_name}} en {{project_name}}.",
         "NEW_PROJECT": "{{username}} creó el proyecto {{project_name}}",
         "MILESTONE_UPDATED": "{{username}} ha actualizado el sprint {{obj_name}}",
         "US_UPDATED": "{{username}} ha actualizado el atributo \"{{field_name}}\" de la historia {{obj_name}}",
@@ -1595,13 +1595,13 @@
         "TASK_UPDATED_WITH_US": "{{username}} ha actualizado el atributo \"{{field_name}}\" de la tarea {{obj_name}} que proviene de la historia {{us_name}}",
         "TASK_UPDATED_WITH_US_NEW_VALUE": "{{username}} ha actualizado el atributo \"{{field_name}}\" de la tarea {{obj_name}} que pertenece a la historia {{us_name}} a {{new_value}}",
         "WIKI_UPDATED": "{{username}} ha actualizado la página del wiki {{obj_name}}",
-        "EPIC_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the epic {{obj_name}}",
-        "EPIC_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the epic {{obj_name}} to {{new_value}}",
-        "EPIC_UPDATED_WITH_NEW_COLOR": "{{username}} has updated the \"{{field_name}}\" of the epic {{obj_name}} to <span class=\"new-color\" style=\"background: {{new_value}}\"></span>",
+        "EPIC_UPDATED": "{{username}} ha actualizado el atributo \"{{field_name}}\" de la épica {{obj_name}}",
+        "EPIC_UPDATED_WITH_NEW_VALUE": "{{username}} ha actualizado el atrubuto \"{{field_name}}\" de la épica {{obj_name}} a {{new_value}}",
+        "EPIC_UPDATED_WITH_NEW_COLOR": "{{username}} ha actualizado el atributo \"{{field_name}}\" de la épica {{obj_name}} a <span class=\"new-color\" style=\"background: {{new_value}}\"></span>",
         "NEW_COMMENT_US": "{{username}} ha añadido un comentado en la historia {{obj_name}}",
         "NEW_COMMENT_ISSUE": "{{username}} ha añadido un comentado en la petición {{obj_name}}",
         "NEW_COMMENT_TASK": "{{username}} ha añadido un comentado en la tarea {{obj_name}}",
-        "NEW_COMMENT_EPIC": "{{username}} has commented in the epic {{obj_name}}",
+        "NEW_COMMENT_EPIC": "{{username}} ha comentado en la épica {{obj_name}}",
         "NEW_MEMBER": "{{project_name}} tiene un nuevo miembro",
         "US_ADDED_MILESTONE": "{{username}} ha añadido la historia {{obj_name}} a {{sprint_name}}",
         "US_MOVED": "{{username}} ha movido la historia {{obj_name}}",
