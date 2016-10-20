@@ -18,16 +18,12 @@
 ###
 
 
-HistoryEntryDirective = (lightboxService) ->
+HistoryEntryDirective = () ->
     return {
         scope: {
             entry: "<"
         },
         templateUrl:"history/history-lightbox/history-entry.html",
     }
-
-HistoryEntryDirective.$inject = [
-    "lightboxService"
-]
 
 angular.module('taigaHistory').directive("tgHistoryEntry", HistoryEntryDirective)
