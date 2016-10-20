@@ -17,10 +17,8 @@
 # File: comment.directive.coffee
 ###
 
-module = angular.module('taigaHistory')
 
 HistoryEntryDirective = (lightboxService) ->
-
     return {
         scope: {
             entry: "<"
@@ -28,4 +26,8 @@ HistoryEntryDirective = (lightboxService) ->
         templateUrl:"history/history-lightbox/history-entry.html",
     }
 
-module.directive("tgHistoryEntry", HistoryEntryDirective)
+HistoryEntryDirective.$inject = [
+    "lightboxService"
+]
+
+angular.module('taigaHistory').directive("tgHistoryEntry", HistoryEntryDirective)
