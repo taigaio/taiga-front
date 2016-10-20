@@ -28,18 +28,38 @@ class EpicsService
     ]
 
     constructor: (@projectService, @attachmentsService, @resources, @xhrError) ->
-        @._epics = Immutable.List()
+        @.clear()
+
         taiga.defineImmutableProperty @, 'epics', () => return @._epics
 
     clear: () ->
+        @._loadingEpics = false
+        @._disablePagination = false
+        @._page = 1
         @._epics = Immutable.List()
 
-    fetchEpics: () ->
-        return @resources.epics.list(@projectService.project.get('id'))
-            .then (epics) =>
-                @._epics = epics
+    fetchEpics: (reset = false) ->
+        @._loadingEpics = true
+        @._disablePagination = true
+
+        return @resources.epics.list(@projectService.project.get('id'), @._page)
+            .then (result) =>
+                if reset
+                    @.clear()
+                    @._epics = result.list
+                else
+                    @._epics = @._epics.concat(result.list)
+
+                @._loadingEpics = false
+
+                @._disablePagination = !result.headers('x-pagination-next')
             .catch (xhr) =>
                 @xhrError.response(xhr)
+
+    nextPage: () ->
+        @._page++
+
+        @.fetchEpics()
 
     listRelatedUserStories: (epic) ->
         return @resources.userstories.listInEpic(epic.get('id'))
@@ -52,8 +72,7 @@ class EpicsService
                 promises = _.map attachments.toJS(), (attachment) =>
                     @attachmentsService.upload(attachment.file, epic.get('id'), epic.get('project'), 'epic')
 
-                Promise.all(promises).then () =>
-                    @.fetchEpics()
+                Promise.all(promises).then(@.fetchEpics.bind(this, true))
 
     reorderEpic: (epic, newIndex) ->
         withoutMoved = @.epics.filter (it) => it.get('id') != epic.get('id')
@@ -72,9 +91,8 @@ class EpicsService
             epics_order: newOrder,
             version: epic.get('version')
         }
+
         return @resources.epics.reorder(epic.get('id'), data, setOrders)
-            .then () =>
-                @.fetchEpics()
 
     reorderRelatedUserstory: (epic, epicUserstories, userstory, newIndex) ->
         withoutMoved = epicUserstories.filter (it) => it.get('id') != userstory.get('id')
@@ -98,6 +116,13 @@ class EpicsService
             .then () =>
                 return @.listRelatedUserStories(epic)
 
+    replaceEpic: (epic) ->
+        @._epics = @._epics.map (it) ->
+            if it.get('id') == epic.get('id')
+                return epic
+                
+            return it
+
     updateEpicStatus: (epic, statusId) ->
         data = {
             status: statusId,
@@ -105,8 +130,7 @@ class EpicsService
         }
 
         return @resources.epics.patch(epic.get('id'), data)
-            .then () =>
-                @.fetchEpics()
+            .then(@.replaceEpic.bind(this))
 
     updateEpicAssignedTo: (epic, userId) ->
         data = {
@@ -115,7 +139,6 @@ class EpicsService
         }
 
         return @resources.epics.patch(epic.get('id'), data)
-            .then () =>
-                @.fetchEpics()
+            .then(@.replaceEpic.bind(this))
 
 angular.module('taigaEpics').service('tgEpicsService', EpicsService)

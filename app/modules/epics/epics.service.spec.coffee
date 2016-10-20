@@ -91,13 +91,50 @@ describe "tgEpicsService", ->
         expect(epicsService._epics.size).to.be.equal(0)
 
     it "fetch epics success", () ->
-        epics = Immutable.fromJS([
+        result = {}
+        result.list = Immutable.fromJS([
             { id: 111 }
             { id: 112 }
         ])
-        promise = mocks.tgResources.epics.list.withArgs(1).promise().resolve(epics)
-        epicsService.fetchEpics().then () ->
-            expect(epicsService.epics).to.be.equal(epics)
+
+        result.headers = () -> true
+
+        promise = mocks.tgResources.epics.list.withArgs(1).promise()
+
+        fetchPromise = epicsService.fetchEpics()
+
+        expect(epicsService._loadingEpics).to.be.true
+        expect(epicsService._disablePagination).to.be.true
+
+        promise.resolve(result)
+
+        fetchPromise.then () ->
+            expect(epicsService.epics).to.be.equal(result.list)
+            expect(epicsService._loadingEpics).to.be.false
+            expect(epicsService._disablePagination).to.be.false
+
+    it "fetch epics success, last page", () ->
+        result = {}
+        result.list = Immutable.fromJS([
+            { id: 111 }
+            { id: 112 }
+        ])
+
+        result.headers = () -> false
+
+        promise = mocks.tgResources.epics.list.withArgs(1).promise()
+
+        fetchPromise = epicsService.fetchEpics()
+
+        expect(epicsService._loadingEpics).to.be.true
+        expect(epicsService._disablePagination).to.be.true
+
+        promise.resolve(result)
+
+        fetchPromise.then () ->
+            expect(epicsService.epics).to.be.equal(result.list)
+            expect(epicsService._loadingEpics).to.be.false
+            expect(epicsService._disablePagination).to.be.true
 
     it "fetch epics error", () ->
         epics = Immutable.fromJS([
@@ -107,6 +144,23 @@ describe "tgEpicsService", ->
         promise = mocks.tgResources.epics.list.withArgs(1).promise().reject(new Error("error"))
         epicsService.fetchEpics().then () ->
             expect(mocks.tgXhrErrorService.response.withArgs(new Error("error"))).have.been.calledOnce
+
+    it "replace epic", () ->
+        epics = Immutable.fromJS([
+            { id: 111 }
+            { id: 112 }
+        ])
+
+        epicsService._epics = epics
+
+        epic = Immutable.Map({
+            id: 112,
+            title: "title1"
+        })
+
+        epicsService.replaceEpic(epic)
+
+        expect(epicsService._epics.get(1)).to.be.equal(epic)
 
     it "list related userstories", () ->
         epic = Immutable.fromJS({
@@ -155,9 +209,9 @@ describe "tgEpicsService", ->
             .promise()
             .resolve()
 
-        epicsService.fetchEpics = sinon.stub()
+        epicsService.replaceEpic = sinon.stub()
         epicsService.updateEpicStatus(epic, 33).then () ->
-            expect(epicsService.fetchEpics).have.been.calledOnce
+            expect(epicsService.replaceEpic).have.been.calledOnce
 
     it "Update epic assigned to", () ->
         epic = Immutable.fromJS({
@@ -171,9 +225,9 @@ describe "tgEpicsService", ->
             .promise()
             .resolve()
 
-        epicsService.fetchEpics = sinon.stub()
+        epicsService.replaceEpic = sinon.stub()
         epicsService.updateEpicAssignedTo(epic, 33).then () ->
-            expect(epicsService.fetchEpics).have.been.calledOnce
+            expect(epicsService.replaceEpic).have.been.calledOnce
 
     it "reorder epic", () ->
       epicsService._epics = Immutable.fromJS([
@@ -199,9 +253,7 @@ describe "tgEpicsService", ->
           .promise()
           .resolve()
 
-      epicsService.fetchEpics = sinon.stub()
-      epicsService.reorderEpic(epicsService._epics.get(2), 1).then () ->
-          expect(epicsService.fetchEpics).have.been.calledOnce
+      epicsService.reorderEpic(epicsService._epics.get(2), 1)
 
     it "reorder related userstory in epic", () ->
       epic = Immutable.fromJS({

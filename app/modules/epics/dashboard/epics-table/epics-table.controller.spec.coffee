@@ -32,6 +32,7 @@ describe "EpicTable", ->
     _mockTgEpicsService = () ->
         mocks.tgEpicsService = {
             createEpic: sinon.stub()
+            nextPage: sinon.stub()
         }
         provide.value "tgEpicsService", mocks.tgEpicsService
 
@@ -55,3 +56,10 @@ describe "EpicTable", ->
         epicTableCtrl.displayOptions = true
         epicTableCtrl.toggleEpicTableOptions()
         expect(epicTableCtrl.displayOptions).to.be.false
+
+    it "next page", () ->
+        epicTableCtrl = controller "EpicsTableCtrl"
+
+        epicTableCtrl.nextPage()
+
+        expect(mocks.tgEpicsService.nextPage).to.have.been.calledOnce

@@ -33,13 +33,17 @@ Resource = (urlsService, http) ->
             .then (result) ->
                 return Immutable.fromJS(result.data)
 
-    service.list = (projectId) ->
+    service.list = (projectId, page=0) ->
         url = urlsService.resolve("epics")
 
-        params = {project: projectId}
+        params = {project: projectId, page: page}
 
         return http.get(url, params)
-            .then (result) -> Immutable.fromJS(result.data)
+            .then (result) ->
+                return {
+                    list: Immutable.fromJS(result.data)
+                    headers: result.headers
+                }
 
     service.patch = (id, patch) ->
         url = urlsService.resolve("epics") + "/#{id}"
@@ -59,6 +63,7 @@ Resource = (urlsService, http) ->
         options = {"headers": {"set-orders": JSON.stringify(setOrders)}}
 
         return http.patch(url, data, null, options)
+            .then (result) -> Immutable.fromJS(result.data)
 
     service.addRelatedUserstory = (epicId, userstoryId) ->
         url = urlsService.resolve("epic-related-userstories", epicId)
