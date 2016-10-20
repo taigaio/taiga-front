@@ -15,7 +15,7 @@ include ../../../partials/common/components/wysiwyg.jade
                 span.separator -
                 a(
                     href=""
-                    title="COMMENTS.SHOW_HISTORY"
+                    title="{{'COMMENTS.SHOW_HISTORY' | translate}}"
                     ng-click="vm.displayCommentHistory()"
                 )
                     span(translate="COMMENTS.SHOW_HISTORY")
@@ -74,6 +74,7 @@ include ../../../partials/common/components/wysiwyg.jade
         span - {{vm.comment.delete_comment_date | momentFormat:'DD MMM YYYY HH:mm'}}
         a.toggle-deleted-comment(
             href=""
+            title="{{ 'COMMENTS.SHOW_DELETED' | translate }}"
             ng-click="vm.showDeletedComment()"
             ng-if="vm.hiddenDeletedComment"
         )
@@ -84,6 +85,7 @@ include ../../../partials/common/components/wysiwyg.jade
             )
         a.toggle-deleted-comment(
             href=""
+            title="{{'COMMENTS.HIDE_DELETED' | translate}}"
             ng-click="vm.hideDeletedComment()"
             ng-if="!vm.hiddenDeletedComment"
         )
@@ -94,6 +96,7 @@ include ../../../partials/common/components/wysiwyg.jade
             )
         a.restore-comment(
             href=""
+            title="{{'COMMENTS.RESTORE' | translate}}"
             ng-click="vm.onRestoreDeletedComment({commentId: vm.comment.id})"
             tg-loading="vm.editing == vm.comment.id"
         )
