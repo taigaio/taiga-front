@@ -17,8 +17,6 @@
 # File: comment.directive.coffee
 ###
 
-module = angular.module('taigaHistory')
-
 LightboxDisplayHistoricDirective = (lightboxService) ->
     link = (scope, el, attrs, ctrl) ->
         ctrl._loadHistoric()
@@ -37,4 +35,8 @@ LightboxDisplayHistoricDirective = (lightboxService) ->
         link: link
     }
 
-module.directive("tgLbDisplayHistoric", LightboxDisplayHistoricDirective)
+LightboxDisplayHistoricDirective.$inject = [
+    "lightboxService"
+]
+
+angular.module('taigaHistory').directive("tgLbDisplayHistoric", LightboxDisplayHistoricDirective)
