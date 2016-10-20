@@ -86,7 +86,13 @@ mixin epicSwitch(name, model)
                         for="switch-progress"
                     )
                     +epicSwitch('switch-progress', 'vm.column.progress')
-    .epics-table-body(tg-epics-sortable="vm.reorderEpic(epic, newIndex)")
+    
+    .epics-table-body(
+        tg-epics-sortable="vm.reorderEpic(epic, newIndex)"
+        infinite-scroll="vm.nextPage()"
+        infinite-scroll-disabled="vm.disabledEpicsPagination"
+        infinite-scroll-immediate-check="false"
+    )
         .epics-table-body-row(
             tg-repeat="epic in vm.epics track by epic.get('id')"
             tg-bind-scope
@@ -95,3 +101,5 @@ mixin epicSwitch(name, model)
                 epic="epic"
                 column="vm.column"
             )
+            
+        div(tg-loading="vm.loadingEpics")
