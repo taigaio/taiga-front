@@ -2,6 +2,15 @@
 
 .epics-table {
     margin-top: 2rem;
+    .loading {
+        margin: 2% auto;
+        width: 3rem;
+        img {
+            @include loading-spinner;
+            max-height: 3rem;
+            max-width: 3rem;
+        }
+    }
 }
 
 .epics-table-header {

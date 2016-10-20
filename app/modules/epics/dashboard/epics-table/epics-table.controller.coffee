@@ -41,6 +41,8 @@ class EpicsTableController
         }
 
         taiga.defineImmutableProperty @, 'epics', () => return @epicsService.epics
+        taiga.defineImmutableProperty @, 'disabledEpicsPagination', () => return @epicsService._disablePagination
+        taiga.defineImmutableProperty @, 'loadingEpics', () => return @epicsService._loadingEpics
 
     toggleEpicTableOptions: () ->
         @.displayOptions = !@.displayOptions
@@ -49,6 +51,9 @@ class EpicsTableController
         @epicsService.reorderEpic(epic, newIndex)
             .then null, () => # on error
                 @confirm.notify("error")
+
+    nextPage: () ->
+        @epicsService.nextPage()
 
     hoverEpicTableOption: () ->
         if @.timer
