@@ -107,23 +107,13 @@ $column-padding: .5rem 1rem;
     tg-svg {
         display: block;
         margin-right: .3rem;
-        svg {
-            @include font-size(medium);
-            fill: $gray-light;
-            transition: fill .2s linear;
-        }
         &:hover {
             cursor: pointer;
-            svg {
-                fill: $primary;
-            }
         }
         &.hfold,
         &.hunfold {
             display: inline-block;
-            svg {
-                transform: rotate(90deg);
-            }
+            transform: rotate(90deg);
         }
     }
 }
