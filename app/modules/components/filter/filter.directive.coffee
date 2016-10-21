@@ -19,6 +19,12 @@
 
 FilterDirective = () ->
     link = (scope, el, attrs, ctrl) ->
+        unwatch = scope.$watch "vm.defaultQ", (q) ->
+            if q && !scope.vm.filtersForm.$dirty
+                scope.vm.q = q
+                unwatch()
+            else if scope.vm.filtersForm.$dirty
+                unwatch()
 
     return {
         scope: {
@@ -29,7 +35,7 @@ FilterDirective = () ->
             onRemoveCustomFilter: "&",
             onSaveCustomFilter: "&",
             customFilters: "<",
-            q: "<",
+            defaultQ: "=q",
             filters: "<"
             customFilters: "<"
             selectedFilters: "<"
