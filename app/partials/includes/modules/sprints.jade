@@ -29,7 +29,7 @@ section.sprints
             tg-check-permission="add_milestone"
         )
 
-    div.sprint.sprint-open(ng-repeat="sprint in openSprints track by sprint.id",
+    div.sprint.sprint-open(ng-repeat="sprint in ctrl.openSprints() track by sprint.id",
                            tg-backlog-sprint="sprint",
                            tg-sprint-sortable)
         include sprint

@@ -239,7 +239,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
                 sprint.user_stories = _.sortBy(sprint.user_stories, "sprint_order")
 
             @scope.sprints = sprints
-            @scope.openSprints = _.filter(sprints, (sprint) => not sprint.closed).reverse()
+
             @scope.closedSprints =  [] if !@scope.closedSprints
 
             @scope.sprintsCounter = sprints.length
@@ -249,6 +249,9 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             @scope.currentSprint = @.findCurrentSprint()
 
             return sprints
+
+    openSprints: ->
+        return _.filter(@scope.sprints, (sprint) => not sprint.closed).reverse()
 
     loadAllPaginatedUserstories: () ->
         page = @.page
