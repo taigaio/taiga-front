@@ -63,4 +63,8 @@ section.profile-projects
                     tg-nav="user-profile:username=contact.get('username')"
                     title="{{::contact.get('full_name')}}"
                 )
-                    tg-avatar="contact"
+                    img(
+                        tg-avatar="contact"
+                        alt="{{::contact.get('full_name')}}"
+                    )
+                    
