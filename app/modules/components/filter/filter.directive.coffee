@@ -26,6 +26,14 @@ FilterDirective = () ->
             else if scope.vm.filtersForm.$dirty
                 unwatch()
 
+        attrs.$observe "open", (open) ->
+            open = scope.$eval(open)
+
+            if open
+                el.addClass('open')
+            else
+                el.removeClass('open')
+
     return {
         scope: {
             onChangeQ: "&",

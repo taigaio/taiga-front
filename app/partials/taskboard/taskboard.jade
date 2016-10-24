@@ -5,7 +5,7 @@ div.wrapper(tg-taskboard, ng-controller="TaskboardController as ctrl",
     tg-project-menu
     section.main.taskboard
         tg-filter(
-          ng-show="ctrl.openFilter"
+          open="{{ctrl.openFilter}}"
           q="ctrl.filterQ"
           filters="ctrl.filters"
           custom-filters="ctrl.customFilters"

@@ -6,7 +6,7 @@ div.wrapper(tg-kanban, ng-controller="KanbanController as ctrl"
 
     section.main.kanban
         tg-filter(
-          ng-show="ctrl.openFilter"
+          open="{{ctrl.openFilter}}"
           q="ctrl.filterQ"
           filters="ctrl.filters"
           custom-filters="ctrl.customFilters"
