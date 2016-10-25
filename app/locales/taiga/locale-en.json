@@ -194,6 +194,7 @@
             "BUTTON_TITLE": "Upvote/Downvote this item",
             "COUNTER_TITLE": "{total, plural, one{one vote} other{# votes}}"
         },
+
         "CUSTOM_ATTRIBUTES": {
             "CUSTOM_FIELDS": "Custom Fields",
             "SAVE": "Save Custom Field",
@@ -519,6 +520,7 @@
             "RECRUITING": "Is this project looking for people?",
             "RECRUITING_MESSAGE": "Who are you looking for?",
             "RECRUITING_PLACEHOLDER": "Define the profiles you are looking for",
+            "FEEDBACK": "Receive feedback from Taiga users?",
             "PUBLIC_PROJECT": "Public project",
             "PRIVATE_PROJECT": "Private project",
             "PRIVATE_OR_PUBLIC": "What's the difference between public and private projects?",
@@ -959,6 +961,10 @@
                 "UNWATCH": "Unwatch",
                 "UNWATCH_TITLE": "Unwatch this project"
             }
+        },
+        "CONTACT_BUTTON": {
+            "CONTACT_TITLE": "Contact the project team",
+            "CONTACT_BUTTON": "Contact the project"
         }
     },
     "LIGHTBOX": {
@@ -1044,6 +1050,12 @@
             "TITLE": "Who do you want to be the new project owner?",
             "ADD_COMMENT": "Add comment",
             "BUTTON": "Ask this project member to become the new project owner"
+        },
+        "CONTACT_PROJECT": {
+            "TITLE": "Send an email to",
+            "WARNING": "The email will be received by the project admins",
+            "PLACEHOLDER": "Write your message",
+            "SEND": "Send"
         }
     },
     "EPIC": {

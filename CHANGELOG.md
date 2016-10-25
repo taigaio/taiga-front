@@ -1,7 +1,9 @@
 # Changelog #
 
-
 ## 3.1.0 No name yet (no date yet)
+
+### Features
+- Contact with the project: if the projects have this module enabled Taiga users can contact them.
 - Velocity forecasting. Create sprints according to team velocity.
 - Remove bower
 - Add new wysiwyg editor (like the Medunm editor) with emojis, local storage changes, mentions...

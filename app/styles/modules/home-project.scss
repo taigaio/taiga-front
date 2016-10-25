@@ -79,9 +79,16 @@
         h3 {
             @include font-size(small);
         }
+        .is-empty {
+            margin-bottom: .5rem;
+        }
         p {
             @include font-size(small);
             @include font-type(light);
+            margin-bottom: .5rem;
+        }
+        .contact-team {
+            margin-bottom: 1rem;
         }
     }
     .involved-data {

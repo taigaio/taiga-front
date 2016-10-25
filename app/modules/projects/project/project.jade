@@ -25,6 +25,10 @@ div.wrapper
                     div.track-buttons-container(ng-if="vm.user")
                         tg-like-project-button(project="vm.project")
                         tg-watch-project-button(project="vm.project")
+                        tg-contact-project-button(
+                            ng-if="vm.project.get('is_contact_activated')"
+                            project="vm.project"
+                        )
 
                     div.track-container(ng-if="!vm.user")
                         .list-itemtype-track
@@ -56,9 +60,13 @@ div.wrapper
                         src="/#{v}/images/looking-for-people.png"
                         title="{{'PROJECT.LOOKING_FOR_PEOPLE' | translate}}"
                     )
-                    h3 {{'PROJECT.LOOKING_FOR_PEOPLE' | translate}}
-                    p(ng-if="vm.project.get('looking_for_people_note')")
-                        | {{::vm.project.get('looking_for_people_note')}}
+                    h3(ng-class="{'is-empty': !vm.project.get('looking_for_people_note')}") {{'PROJECT.LOOKING_FOR_PEOPLE' | translate}}
+                    p(ng-if="vm.project.get('looking_for_people_note')") {{::vm.project.get('looking_for_people_note')}}
+                    tg-contact-project-button(
+                        ng-if="vm.project.get('is_contact_activated')"
+                        project="vm.project"
+                        layout="large"
+                    )
 
                 h2.title {{"PROJECT.SECTION.TEAM" | translate}}
                 ul.involved-team

@@ -1,5 +1,4 @@
-a.track-button.watch-button.watch-container(
-    href="",
+button.track-button.watch-button(
     title="{{ 'PROJECT.WATCH_BUTTON.BUTTON_TITLE' | translate }}"
     ng-click="vm.toggleWatcherOptions()"
     ng-class="{'active': vm.project.get('is_watcher')}"
@@ -7,24 +6,25 @@ a.track-button.watch-button.watch-container(
     span.track-inner
         span.track-icon
             tg-svg(svg-icon="icon-watch")
-        span(ng-if="!vm.project.get('is_watcher')", translate="PROJECT.WATCH_BUTTON.WATCH")
-        span(ng-if="vm.project.get('is_watcher')", translate="PROJECT.WATCH_BUTTON.WATCHING")
+        span(
+            ng-if="!vm.project.get('is_watcher')"
+            translate="PROJECT.WATCH_BUTTON.WATCH"
+        )
+        span(
+            ng-if="vm.project.get('is_watcher')"
+            translate="PROJECT.WATCH_BUTTON.WATCHING"
+        )
         tg-svg.watch-options-arrow(svg-icon="icon-arrow-down")
 
     span.track-button-counter(
-        title="{{ 'PROJECT.WATCH_BUTTON.COUNTER_TITLE'|translate:{total:vm.project.get(\"total_watchers\")||0}:'messageformat' }}",
+        title="{{ 'PROJECT.WATCH_BUTTON.COUNTER_TITLE'|translate:{total:vm.project.get(\"total_watchers\")||0}:'messageformat' }}"
         tg-loading="vm.loading"
-    )
-        | {{ vm.project.get('total_watchers') }}
+    ) {{ vm.project.get('total_watchers') }}
 
 ul.watch-options(
     ng-class="{'hidden': !vm.showWatchOptions}"
     ng-mouseleave="vm.closeWatcherOptions()"
 )
-    //- NOTIFY LEVEL CHOICES:
-    //-   1 - Only involved
-    //-   2 - Receive all
-    //-   3 - No notifications
 
     li
         a(
