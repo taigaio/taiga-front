@@ -147,6 +147,12 @@
 
         var items = $(container).find('.' + multipleSortableClass);
 
+        _.forEach(items, function(item, index) {
+            $(item)
+                .data('position', null)
+                .data('dragMultipleIndex', null);
+        });
+
         $(elm)
             .data('dragmultiple:originalPosition', $(elm).position())
             .data('dragMultipleActive', true);
