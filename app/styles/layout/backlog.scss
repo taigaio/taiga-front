@@ -25,23 +25,15 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 1rem;
+    @include breakpoint(laptop) {
+        flex-direction: column;
+    }
     .menu-button {
-        border-radius: 0;
-        color: $blackish;
-        display: inline-block;
-        padding: .4rem 1.5rem;
-        &.active,
-        &:hover {
-            background: $whitish;
-            color: $gray;
-        }
-        &.active {
-            &:hover {
-                background: darken($whitish, 10%);
-            }
-        }
         &.move-to-sprint {
             display: none;
+        }
+        .icon-move {
+            margin-right: .25rem;
         }
     }
     .button-bulk {
@@ -68,5 +60,25 @@
     &.is-checked,
     &:hover {
         background: $white;
+    }
+}
+
+.forecasting-add-sprint {
+    @include font-size(small);
+    background: $mass-white;
+    cursor: pointer;
+    padding: .5rem 0;
+    text-align: center;
+    &:hover {
+        background: darken($mass-white, 3%);
+        transition: background .2s;
+    }
+    .icon-add {
+        @include svg-size(1.75rem);
+        background: $primary-light;
+        fill: $white;
+        margin-right: 1rem;
+        padding: .25rem;
+        vertical-align: middle;
     }
 }

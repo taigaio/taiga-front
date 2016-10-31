@@ -59,6 +59,23 @@
         color: $blackish;
     }
 }
+
+.menu-button {
+    @extend %button;
+    border-radius: 0;
+    color: $blackish;
+    &:hover {
+        background: $whitish;
+        color: $gray;
+    }
+    &:visited {
+        color: $blackish;
+    }
+    span {
+        color: $blackish;
+    }
+}
+
 .submit-button {
     width: 100%;
 }

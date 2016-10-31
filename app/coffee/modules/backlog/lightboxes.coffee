@@ -38,6 +38,7 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading,
         createSprint = true
         form = null
         $scope.newSprint = {}
+        ussToAdd = null
 
         resetSprint = () ->
             form.reset() if form
@@ -97,7 +98,10 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading,
                     else
                         return it
 
-                $rootscope.$broadcast(broadcastEvent, data)
+                if broadcastEvent == "sprintform:create:success" && ussToAdd
+                    $rootscope.$broadcast(broadcastEvent, data, ussToAdd)
+                else
+                    $rootscope.$broadcast(broadcastEvent, data)
 
                 lightboxService.close($el)
 
@@ -135,7 +139,8 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading,
 
             return sortedSprints[sortedSprints.length - 1]
 
-        $scope.$on "sprintform:create", (event, projectId) ->
+         $scope.$on "sprintform:create", (event, projectId, uss) ->
+            ussToAdd = uss
             resetSprint()
 
             form = $el.find("form").checksley()

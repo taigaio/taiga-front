@@ -1,5 +1,7 @@
 # Changelog #
 
+## 3.1.0 No name yet (no date yet)
+- Velocity forecasting. Create sprints according to team velocity.
 
 ## 3.0.0 Stellaria Borealis (2016-10-02)
 
