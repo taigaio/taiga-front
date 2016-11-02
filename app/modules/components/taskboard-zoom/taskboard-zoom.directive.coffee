@@ -27,7 +27,7 @@ TaskboardZoomDirective = (storage) ->
             ["ref"],
             ["subject"],
             ["owner", "tags", "extra_info", "unfold"],
-            ["attachments"],
+            ["attachments", "empty_extra_info"],
             ["related_tasks"]
         ]
 

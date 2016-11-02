@@ -27,7 +27,7 @@ KanbanBoardZoomDirective = (storage, projectService) ->
             ["subject"],
             ["owner", "tags", "extra_info", "unfold"],
             ["attachments"],
-            ["related_tasks"]
+            ["related_tasks", "empty_extra_info"]
         ]
 
         getZoomView = (zoomIndex = 0) ->
