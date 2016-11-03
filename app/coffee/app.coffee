@@ -529,7 +529,10 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
                         .search("force_next", search.force_next)
                 else
                     $location.url($navUrls.resolve("login"))
-                        .search("next", nextUrl)
+                        .search({
+                            "unauthorized": true
+                            "next": nextUrl
+                        })
 
             return $q.reject(response)
 

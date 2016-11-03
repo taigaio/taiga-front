@@ -32,10 +32,11 @@ class LoginPage
         'tgCurrentUserService',
         '$location',
         '$tgNavUrls',
-        '$routeParams'
+        '$routeParams',
+        '$tgAuth'
     ]
 
-    constructor: (currentUserService, $location, $navUrls, $routeParams) ->
+    constructor: (currentUserService, $location, $navUrls, $routeParams, $auth) ->
         if currentUserService.isAuthenticated()
             if not $routeParams['force_login']
                 url = $navUrls.resolve("home")
@@ -43,7 +44,11 @@ class LoginPage
                     url = decodeURIComponent($routeParams['next'])
                     $location.search('next', null)
 
-                $location.url(url)
+                if $routeParams['unauthorized']
+                    $auth.clear()
+                    $auth.removeToken()
+                else
+                    $location.url(url)
 
 
 module.controller('LoginPage', LoginPage)
