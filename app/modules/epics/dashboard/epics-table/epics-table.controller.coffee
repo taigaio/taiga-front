@@ -18,19 +18,22 @@
 ###
 
 taiga = @.taiga
-
+generateHash = @.taiga.generateHash
 
 class EpicsTableController
     @.$inject = [
         "$tgConfirm",
         "tgEpicsService",
-        "$timeout"
+        "$timeout",
+        "$tgStorage",
+        "tgProjectService"
     ]
 
-    constructor: (@confirm, @epicsService, @timeout) ->
+    constructor: (@confirm, @epicsService, @timeout, @storage, @projectService) ->
+        @.hash = generateHash([@projectService.project.get('id'), 'epics'])
         @.displayOptions = false
         @.displayVotes = true
-        @.column = {
+        @.column = @storage.get(@.hash, {
             votes: true,
             name: true,
             project: true,
@@ -38,7 +41,7 @@ class EpicsTableController
             assigned: true,
             status: true,
             progress: true
-        }
+        })
 
         taiga.defineImmutableProperty @, 'epics', () => return @epicsService.epics
         taiga.defineImmutableProperty @, 'disabledEpicsPagination', () => return @epicsService._disablePagination
@@ -61,5 +64,8 @@ class EpicsTableController
 
     hideEpicTableOption: () ->
         return @.timer = @timeout (=> @.displayOptions = false), 400
+
+    updateViewOptions: () ->
+        @storage.set(@.hash, @.column)
 
 angular.module("taigaEpics").controller("EpicsTableCtrl", EpicsTableController)
