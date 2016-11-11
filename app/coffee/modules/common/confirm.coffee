@@ -207,12 +207,15 @@ class ConfirmService extends taiga.Service
 
         return defered.promise
 
-    loader: (title, message) ->
+    loader: (title, message, spin=false) ->
         el = angular.element(".lightbox-generic-loading")
 
         # Render content
         el.find(".title").html(title) if title
         el.find(".message").html(message) if message
+
+        if spin
+            el.find(".spin").removeClass("hidden")
 
         return {
             start: => @lightboxService.open(el)

@@ -1,0 +1,40 @@
+.create-project-invite-avatar {
+    cursor: pointer;
+    display: block;
+    margin-right: .25rem;
+    &:hover {
+        @include empty-color(47);
+        border: 0;
+        opacity: .9;
+        transition: all .2s;
+        transition-delay: .2s;
+    }
+    &.disabled {
+        opacity: .3;
+        transition: opacity .2s;
+        &:hover {
+            @include empty-color(23);
+            border: 0;
+            opacity: .6;
+            transition: all .2s ease-in;
+            &::after {
+                background: $grayer;
+                left: 24px;
+                top: 8px;
+                transform: rotate(0);
+                transform-origin: center;
+            }
+            &::before {
+                background: $grayer;
+                right: 22px;
+                top: 8px;
+                transform: rotate(90deg);
+                transform-origin: center;
+            }
+        }
+    }
+    img {
+        cursor: pointer;
+        width: 3rem;
+    }
+}

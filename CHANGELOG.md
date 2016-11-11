@@ -11,6 +11,7 @@
 - Add thumbnails and preview for PSD files.
 - Add thumbnails and preview for SVG files.
 - Improve add-members form: Now users can select between their contacts or type an email.
+- New project creation with importing
 - i18n:
   - Add japanese (ja) translation.
   - Add korean (ko) translation.

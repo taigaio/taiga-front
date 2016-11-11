@@ -27,7 +27,6 @@ FileChangeDirective = ($parse) ->
         scope.$on "$destroy", -> el.off()
 
     return {
-        require: "ngModel",
         restrict: "A",
         link: link
     }

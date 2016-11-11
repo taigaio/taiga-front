@@ -126,6 +126,54 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
             controllerAs: "vm"
         }
     )
+
+    # Project
+    $routeProvider.when("/project/new",
+        {
+            title: "PROJECT.CREATE.TITLE",
+            templateUrl: "projects/create/create-project.html",
+            loader: true,
+            controller: "CreateProjectCtrl",
+            controllerAs: "vm"
+        }
+    )
+
+    # Project - scrum
+    $routeProvider.when("/project/new/scrum",
+        {
+            title: "PROJECT.CREATE.TITLE",
+            template: "<tg-create-project-form type=\"scrum\"></tg-create-project-form>",
+            loader: true
+        }
+    )
+
+    # Project - kanban
+    $routeProvider.when("/project/new/kanban",
+        {
+            title: "PROJECT.CREATE.TITLE",
+            template: "<tg-create-project-form type=\"kanban\"></tg-create-project-form>",
+            loader: true
+        }
+    )
+
+    # Project - duplicate
+    $routeProvider.when("/project/new/duplicate",
+        {
+            title: "PROJECT.CREATE.TITLE",
+            template: "<tg-duplicate-project></tg-duplicate-project>",
+            loader: true
+        }
+    )
+
+    # Project - import
+    $routeProvider.when("/project/new/import/:platform?",
+        {
+            title: "PROJECT.CREATE.TITLE",
+            template: "<tg-import-project></tg-import-project>",
+            loader: true
+        }
+    )
+
     # Project
     $routeProvider.when("/project/:pslug/",
         {

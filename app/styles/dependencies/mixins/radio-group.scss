@@ -1,0 +1,19 @@
+@mixin radio-group {
+    input {
+        opacity: 0;
+        &:checked+svg {
+            fill: rgba($primary, .6);
+            stroke: rgba($primary, .1);
+        }
+    }
+    svg {
+        fill: $whitish;
+        stroke: darken($whitish, 10%);
+        stroke-width: 1px;
+        vertical-align: middle;
+    }
+    .control-indicator {
+        padding-left: .25rem;
+        @include font-type(normal);
+    }
+}

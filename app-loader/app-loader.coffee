@@ -15,6 +15,7 @@ window.taigaConfig = {
     "privacyPolicyUrl": null,
     "termsOfServiceUrl": null,
     "maxUploadFileSize": null,
+    "importers": [],
     "contribPlugins": []
 }
 

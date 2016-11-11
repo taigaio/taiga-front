@@ -1,0 +1,13 @@
+fieldset
+    label(
+        translate="PROJECT.COMMON.DETAILS"
+        for="project-name"
+    )
+    input.e2e-create-project-title(
+        type="text"
+        ng-model="vm.projectForm.name"
+        placeholder="{{'PROJECT.COMMON.PROJECT_TITLE' | translate}}"
+        name="project-name"
+        data-required="true"
+        required
+    )

@@ -1,0 +1,238 @@
+@mixin create-project {
+    @include centered;
+    max-width: 800px;
+
+    fieldset {
+        margin-bottom: 1rem;
+    }
+
+    label {
+        @include font-size(small);
+        display: block;
+        margin-bottom: 0.25rem;
+
+        .mumble {
+            @include font-type(light);
+            margin-left: 0.25rem;
+        }
+    }
+
+    &-check {
+        @include font-type(bold);
+        position: relative;
+
+        span {
+            display: block;
+        }
+
+        .description {
+            @include font-type(normal);
+        }
+
+        .check {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+    }
+
+    &-description,
+    &-title {
+        text-align: center;
+    }
+
+    &-title {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 0;
+
+        tg-svg {
+            display: flex;
+        }
+
+        .icon {
+            @include svg-size(1.5rem);
+            margin-right: 0.5rem;
+            vertical-align: middle;
+        }
+    }
+
+    &-description {
+        color: $gray-light;
+        margin-bottom: 2rem;
+    }
+
+    &-limit {
+        @include font-type(light);
+        @include font-size(small);
+        color: $gray;
+    }
+
+    &-import-type {
+        @include btn-group;
+
+        input {
+            display: none;
+        }
+
+        label {
+            background: $mass-white;
+        }
+    }
+
+    &-privacity {
+        @include btn-group;
+
+        input {
+            display: none;
+        }
+
+        label {
+            background: $mass-white;
+        }
+    }
+
+    &-type {
+        @include font-type(bold);
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 2rem;
+        text-transform: uppercase;
+
+        span {
+            margin-left: 0.5rem;
+        }
+    }
+
+    &-selector {
+        a {
+            align-items: center;
+            border-bottom: 1px solid $whitish;
+            color: $grayer;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+        li {
+            &:hover {
+                background: rgba($primary, .1);
+                transition: background 0.3s ease-in;
+            }
+
+            &:first-child {
+                border-top: 1px solid $whitish;
+            }
+        }
+
+        &-icon {
+            align-self: flex-start;
+            padding: 1.5rem 1rem;
+
+            .icon {
+                @include svg-size(2.25rem);
+            }
+        }
+
+        &-template-wrapper {
+            flex: 1;
+            padding: 1.25rem;
+        }
+
+        &-template {
+            @include font-type(bold);
+            text-transform: uppercase;
+        }
+
+        &-description {
+            @include font-type(light);
+        }
+
+        &-long-description {
+            margin-top: 1rem;
+            max-height: 120px;
+            overflow: hidden;
+            transition: all 0.3s 0.2s cubic-bezier(0, 0, .53, 1.32);
+
+            &.ng-hide {
+                line-height: 0;
+                max-height: 0;
+            }
+        }
+
+        &-question {
+            position: absolute;
+            right: 1.5rem;
+            top: 1.5rem;
+
+            &:hover {
+                svg {
+                    fill: $primary;
+                    transition: fill 0.2s linear;
+                }
+            }
+
+            svg {
+                @include svg-size(1.2rem);
+                fill: $grayer;
+            }
+        }
+
+        p {
+            margin-bottom: 0;
+        }
+    }
+
+    &-action {
+        display: flex;
+        margin: 3rem 0 0;
+
+        button {
+            @include font-size(large);
+            padding: 0.75rem;
+        }
+
+        &-submit {
+            flex: 4;
+            margin-left: 1rem;
+        }
+
+        &-back,
+        &-cancel {
+            color: currentColor;
+
+            &:hover {
+                color: $primary-light;
+            }
+        }
+
+        &-cancel {
+            flex: 1;
+        }
+
+        &-back {
+            width: 10%;
+        }
+    }
+    &-warning {
+        @include font-size(small);
+        padding: 1rem;
+        text-align: center;
+        .icon-exclamation {
+            fill: $red-light;
+            margin-right: .5rem;
+            vertical-align: middle;
+        }
+        a {
+            color: $primary;
+            display: inline-block;
+            margin-left: .25rem;
+        }
+    }
+    .spin {
+        text-align: center;
+        width: 100%;
+    }
+}

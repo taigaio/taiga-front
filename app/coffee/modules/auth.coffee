@@ -105,6 +105,7 @@ class AuthService extends taiga.Service
             return @rootscope.user
 
         userData = @storage.get("userInfo")
+
         if userData
             user = @model.make_model("users", userData)
             @rootscope.user = user

@@ -1,0 +1,34 @@
+.import-project-selector
+    div(ng-include="'projects/create/import/import-header.html'")
+
+    .import-project-selector
+
+        .import-project-selector-service
+            img(
+                ng-src="{{vm.logo}}"
+            )
+
+        .import-project-selector-boards
+            form.import-project-selector-filter(ng-if="vm.projects.size > 5")
+                input(
+                    ng-model="vm.searchText"
+                    placeholder="{{ vm.search }}"
+                )
+                tg-svg(
+                    svg-icon="icon-search"
+                    title="{{'SEARCH.TITLE_ACTION_SEARCH' | translate}}"
+                )
+
+            ul.import-project-board-list
+                li.import-project-selector-title(
+                    ng-repeat="project in vm.projects | toMutable | orderBy:'name' | filter:vm.searchText track by project.id"
+                    ng-click="vm.selectProject(project)"
+                ) {{project.name}}
+
+            .create-project-action
+                button.trans-button.create-project-action-cancel(
+                    type="button"
+                    ng-click="vm.onCancel()"
+                    title="{{'COMMON.CANCEL' | translate}}"
+                    translate="COMMON.CANCEL"
+                )

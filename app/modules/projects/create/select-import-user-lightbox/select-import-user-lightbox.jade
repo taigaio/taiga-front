@@ -1,0 +1,90 @@
+tg-lightbox-close(on-close="vm.onClose()")
+
+.form(ng-if="vm.visible")
+    .candidate-user
+        .avatar.empty(ng-if="!vm.user.get('avatar')") {{vm.user.get('full_name')[0].toUpperCase() || vm.user.get('username')[0].toUpperCase()}}
+        .avatar(ng-if="vm.user.get('avatar')") 
+            img(ng-src="{{vm.user.get('avatar')}}")
+        p {{vm.user.get('full_name') || vm.user.get('username')}}
+
+    h2.title(translate="PROJECT.IMPORT.WHO_IS")
+
+    div.create-project-warning(ng-if="!vm.limitMembersPublicProject.valid && !vm.isPrivate")
+        tg-svg(svg-icon="icon-exclamation")
+        span(
+            translate="PROJECT.IMPORT.PROJECT_RESTRICTIONS.ACCOUNT_ALLOW_MEMBERS",
+            translate-values="{'members': vm.limitMembersPublicProject.max}"
+        )
+
+    div.create-project-warning(ng-if="!vm.limitMembersPrivateProject.valid && vm.isPrivate")
+        tg-svg(svg-icon="icon-exclamation")
+        span(
+            translate="PROJECT.IMPORT.PROJECT_RESTRICTIONS.ACCOUNT_ALLOW_MEMBERS",
+            translate-values="{'members': vm.limitMembersPrivateProject.max}"
+        )
+
+    form(ng-if="vm.mode == 'mail'", ng-submit="vm.assignUser()")
+        div.create-project-warning
+            tg-svg(svg-icon="icon-exclamation")
+            span(translate="PROJECT.IMPORT.WARNING_MAIL_USER")
+            
+        fieldset
+            label(
+                translate="PROJECT.IMPORT.WRITE_EMAIL_LABEL"
+                for="user-name"
+            )
+
+            .group
+                input(
+                    name="user-name"
+                    type="text",
+                    data-maxlength="500",
+                    ng-model="vm.userEmail"
+                )
+                button.button-green.submit-button(
+                    type="submit",
+                    title="{{'PROJECT.IMPORT.ASSIGN' | translate}}",
+                    translate="PROJECT.IMPORT.ASSIGN"
+                )
+
+        .search-user-mode
+            p
+                a(
+                    href=""
+                    ng-click="vm.mode = 'search'"
+                ) {{'PROJECT.IMPORT.SEARCH_CONTACT' | translate}}
+
+    div(ng-if="vm.mode == 'search'")
+        fieldset
+            input(
+                type="text",
+                data-maxlength="500",
+                placeholder="{{'LIGHTBOX.ASSIGNED_TO.SEARCH' | translate}}",
+                ng-model="vm.usersSearch"
+            )
+
+        .assigned-to-list
+            .user-list-single(
+                ng-repeat="user in vm.selectableUsers | toMutable | filter: vm.usersSearch | orderBy:'full_name_display' | limitTo: 5 as filteredCollection",
+                ng-click="vm.selectUser(user)"
+            )
+                .user-list-avatar
+                    a(
+                        href="#"
+                        title="{{'COMMON.ASSIGNED_TO.TITLE' | translate}}"
+                    )
+                        img(tg-avatar="user")
+                a.user-list-name(
+                    href=""
+                    title="{{user.full_name_display || user.full_name}}"
+                ) {{user.full_name_display || user.full_name}}
+
+            .more-users(ng-if="filteredCollection.length >= 5")
+                span(translate="COMMON.ASSIGNED_TO.TOO_MANY")
+
+        .search-user-mode
+            p
+                a(
+                    href=""
+                    ng-click="vm.mode = 'mail'"
+                ) {{'PROJECT.IMPORT.WRITE_EMAIL' | translate}}

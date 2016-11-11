@@ -47,6 +47,7 @@ var config = {
         search: "e2e/suites/search.e2e.js",
         team: "e2e/suites/team.e2e.js",
         discover: "e2e/suites/discover/*.e2e.js",
+        createProject: "e2e/suites/create-project/*.e2e.js",
         transferProject: "e2e/suites/transfer-project.e2e.js",
         compileModules: "app/modules/compile-modules/**/*.e2e.js"
     },

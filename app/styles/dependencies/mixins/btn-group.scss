@@ -1,0 +1,45 @@
+@mixin btn-group {
+    display: flex;
+    fieldset {
+        &:first-child {
+            label {
+                border-radius: .25rem 0 0 .25rem;
+            }
+        }
+        &:last-child {
+            label {
+                border-radius: 0 .25rem .25rem 0;
+            }
+        }
+    }
+    label {
+        align-items: center;
+        background: $mass-white;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        padding: .75rem;
+        text-transform: uppercase;
+        &:hover {
+            background: darken($mass-white, 5%);
+            transition: background .2s linear;
+        }
+        .icon {
+            margin-right: .25rem;
+        }
+    }
+    input {
+        &:checked+label {
+            background: darken($mass-white, 10%);
+            @include font-type(bold);
+        }
+        &:disabled+label {
+            cursor: not-allowed;
+            color: lighten($gray-light, 15%);
+            .icon {
+                color: lighten($gray-light, 15%);
+            }
+        }
+    }
+}

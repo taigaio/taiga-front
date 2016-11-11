@@ -1,0 +1,55 @@
+.import-project {
+    &-from-site {
+        align-items: center;
+        border-bottom: 1px solid $whitish;
+        color: $grayer;
+        cursor: pointer;
+        display: flex;
+        padding: 1rem;
+        position: relative;
+
+        &:hover {
+            background: rgba($primary, .1);
+            transition: background .3s ease-in;
+        }
+        &:first-child {
+            border-top: 1px solid $whitish;
+            .import-project-name {
+                margin: 0;
+            }
+            .import-project-logo img {
+                padding: 0 .9rem 0 1rem;
+                width: 5.1rem;
+            }
+        }
+    }
+    &-logo {
+        align-self: flex-start;
+        margin-right: .5rem;
+        img {
+            padding: 0 1rem;
+            width: 5rem;
+        }
+    }
+    &-name-wrapper {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        justify-content: center;
+    }
+    &-description {
+        @include font-type(light);
+        margin-bottom: 0;
+    }
+    &-url {
+        margin-top: .5rem;
+    }
+    &-input {
+        vertical-align: middle;
+    }
+    &-button {
+        background: $primary;
+        color: $white;
+        padding: .25rem 1rem;
+    }
+}

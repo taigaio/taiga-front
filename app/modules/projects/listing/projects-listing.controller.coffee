@@ -19,14 +19,10 @@
 
 class ProjectsListingController
     @.$inject = [
-        "tgCurrentUserService",
-        "tgProjectsService",
+        "tgCurrentUserService"
     ]
 
-    constructor: (@currentUserService, @projectsService) ->
+    constructor: (@currentUserService) ->
         taiga.defineImmutableProperty(@, "projects", () => @currentUserService.projects.get("all"))
-
-    newProject: ->
-        @projectsService.newProject()
 
 angular.module("taigaProjects").controller("ProjectsListing", ProjectsListingController)
