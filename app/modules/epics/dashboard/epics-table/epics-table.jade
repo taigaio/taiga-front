@@ -6,6 +6,7 @@ mixin epicSwitch(name, model)
             type="checkbox"
             ng-checked= model
             ng-model= model
+            ng-change="vm.updateViewOptions()"
         )
         div
         span.check-text.check-yes(translate="COMMON.YES")
@@ -46,7 +47,7 @@ mixin epicSwitch(name, model)
             button.epics-table-option-button.e2e-epics-column-button(ng-click="vm.displayOptions = true")
                 span(translate="EPICS.TABLE.VIEW_OPTIONS")
                 tg-svg(svg-icon="icon-arrow-down")
-            form.epics-table-dropdown.e2e-epics-column-dropdown(
+            form.epics-table-dropdown.e2e-epics-column-dropdown.ng-hide(
                 ng-show="vm.displayOptions"
                 ng-mouseenter="vm.keepEpicTableOption()"
             )
@@ -86,7 +87,7 @@ mixin epicSwitch(name, model)
                         for="switch-progress"
                     )
                     +epicSwitch('switch-progress', 'vm.column.progress')
-    
+
     .epics-table-body(
         tg-epics-sortable="vm.reorderEpic(epic, newIndex)"
         infinite-scroll="vm.nextPage()"
@@ -101,5 +102,5 @@ mixin epicSwitch(name, model)
                 epic="epic"
                 column="vm.column"
             )
-            
+
         div(tg-loading="vm.loadingEpics")
