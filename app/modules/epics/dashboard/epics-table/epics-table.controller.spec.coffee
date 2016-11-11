@@ -36,11 +36,30 @@ describe "EpicTable", ->
         }
         provide.value "tgEpicsService", mocks.tgEpicsService
 
+    _mockTgProjectService = () ->
+        mocks.tgProjectService = {
+            project: Immutable.fromJS({
+                'id': 3
+            })
+        }
+        provide.value "tgProjectService", mocks.tgProjectService
+
+    _mockTgStorageService = () ->
+        mocks.tgStorage = {
+            get: sinon.stub(),
+            set: sinon.spy()
+        }
+
+        mocks.tgStorage.get.returns({col1: true})
+        provide.value "$tgStorage", mocks.tgStorage
+
     _mocks = () ->
         module ($provide) ->
             provide = $provide
             _mockTgConfirm()
             _mockTgEpicsService()
+            _mockTgStorageService()
+            _mockTgProjectService()
             return null
 
     beforeEach ->
@@ -63,3 +82,8 @@ describe "EpicTable", ->
         epicTableCtrl.nextPage()
 
         expect(mocks.tgEpicsService.nextPage).to.have.been.calledOnce
+
+    it "storage view options", () ->
+        epicTableCtrl = controller "EpicsTableCtrl"
+
+        expect(epicTableCtrl.column).to.be.eql({col1: true})
