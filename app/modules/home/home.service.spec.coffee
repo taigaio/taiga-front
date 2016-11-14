@@ -87,7 +87,7 @@ describe "tgHome", ->
 
         mocks.resources.epics.listInAllProjects
             .withArgs(sinon.match({
-                is_closed: false
+                status__is_closed: false
                 assigned_to: userId
             }))
             .promise()
@@ -95,7 +95,7 @@ describe "tgHome", ->
 
         mocks.resources.epics.listInAllProjects
             .withArgs(sinon.match({
-                is_closed: false
+                status__is_closed: false
                 watchers: userId
             }))
             .promise()
