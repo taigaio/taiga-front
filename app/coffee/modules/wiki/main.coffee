@@ -150,6 +150,7 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
                 ctx = {project: @scope.projectSlug}
                 @location.path(@navUrls.resolve("project-wiki", ctx))
                 @confirm.notify("success")
+                @.loadWiki()
 
             onError = =>
                 askResponse.finish(false)
