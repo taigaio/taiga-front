@@ -574,8 +574,10 @@ ChangeEmailDirective = ($repo, $model, $auth, $confirm, $location, $params, $nav
                 $repo.queryOne("users", $auth.getUser().id).then (data) =>
                     $auth.setUser(data)
                     $location.path($navUrls.resolve("home"))
+                    $location.replace()
             else
                 $location.path($navUrls.resolve("login"))
+                $location.replace()
 
             text = $translate.instant("CHANGE_EMAIL_FORM.SUCCESS")
             $confirm.success(text)
