@@ -197,6 +197,12 @@
         margin: 1rem 0;
         padding: 1rem 2rem;
         text-align: center;
+        a {
+            color: $primary;
+            &:hover {
+                color: $primary-light;
+            }
+        }
     }
     .help-text {
         @include font-size(small);
