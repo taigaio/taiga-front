@@ -28,8 +28,7 @@ AvatarDirective = (avatarService) ->
             avatar = avatarService.getAvatar(user, attributeName)
 
             el.attr('src', avatar.url)
-            if avatar.bg
-                el.css('background', avatar.bg)
+            el.css('background', avatar.bg or "")
 
     return {
         link: link
