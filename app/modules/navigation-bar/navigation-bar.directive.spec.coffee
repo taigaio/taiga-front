@@ -130,19 +130,3 @@ describe "navigationBarDirective", () ->
         expect(mocks.locationService.url.calledWith("/login")).to.be.true
         expect(mocks.locationService.search.calledWith({next: encodeURIComponent(nextUrl)})).to.be.true
         expect(vm.publicRegisterEnabled).to.be.true
-
-    it "navigation bar register", () ->
-        mocks.navUrls.resolve.withArgs("register").returns("/register")
-        nextUrl = "/discover/search?order_by=-total_activity_last_month"
-        mocks.locationService.url.returns(nextUrl)
-        elm = createDirective()
-        scope.$apply()
-        vm = elm.isolateScope().vm
-        expect(mocks.locationService.url.callCount).to.be.equal(0)
-        expect(mocks.locationService.search.callCount).to.be.equal(0)
-        vm.register()
-        expect(mocks.locationService.url.callCount).to.be.equal(2)
-        expect(mocks.locationService.search.callCount).to.be.equal(1)
-        expect(mocks.locationService.url.calledWith("/register")).to.be.true
-        expect(mocks.locationService.search.calledWith({next: encodeURIComponent(nextUrl)})).to.be.true
-        expect(vm.publicRegisterEnabled).to.be.true
