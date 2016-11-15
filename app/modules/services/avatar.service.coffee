@@ -58,7 +58,7 @@ class AvatarService
 
         photo = null
 
-        if  user instanceof Immutable.Map
+        if user instanceof Immutable.Map
             gravatar = user.get('gravatar_id')
             photo = user.get(avatarParamName)
         else
