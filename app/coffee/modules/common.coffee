@@ -305,10 +305,8 @@ class QueueModelTransformation extends taiga.Service
 
             transformation(clone)
 
-            if comment.length
-                clone.comment = comment
-
             success = () =>
+                clone.comment = comment
                 @.scope[@.prop] = clone
 
                 defered.resolve.apply(null, arguments)

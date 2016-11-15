@@ -178,12 +178,25 @@ MarkitupDirective = ($rootscope, $rs, $selectedText, $template, $compile, $trans
                     break
 
             value = markItUp.textarea.value
+
+            selectionEndIndex = 0
+            selectionStartIndex = 0
+            # if no selection presented - find start/end selection indices
+            if markItUp.selection.length != 0
+                selectionEndIndex = startIndex - 2
+                selectionStartIndex = selectionEndIndex - markItUp.selection.length
+
             url = value.substring(startIndex, endIndex).replace('<<<', '').replace('>>>', '')
             url = url.replace('(', '%28').replace(')', '%29')
             url = url.replace('[', '%5B').replace(']', '%5D')
             value = value.substring(0, startIndex) + url + value.substring(endIndex+3, value.length)
             markItUp.textarea.value = value
             markItUp.donotparse = undefined
+
+            # if selection indices present - select area
+            if selectionStartIndex > 0 and selectionEndIndex > 0
+                markItUp.textarea.setSelectionRange(selectionStartIndex,selectionEndIndex) if typeof markItUp.textarea.setSelectionRange == 'function'
+
 
         markdownTitle = (markItUp, char) ->
             heading = ""
