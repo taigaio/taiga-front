@@ -32,11 +32,6 @@ NavigationBarDirective = (currentUserService, navigationBarService, locationServ
             locationService.url(navUrlsService.resolve("login"))
             locationService.search({next: nextUrl})
 
-        scope.vm.register = ->
-            nextUrl = encodeURIComponent(locationService.url())
-            locationService.url(navUrlsService.resolve("register"))
-            locationService.search({next: nextUrl})
-
         scope.$on "$routeChangeSuccess", () ->
             if locationService.path() == "/"
                 scope.vm.active = true

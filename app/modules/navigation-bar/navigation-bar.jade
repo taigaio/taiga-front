@@ -30,9 +30,9 @@ nav.navbar(ng-if="vm.isEnabledHeader")
             translate="LOGIN_COMMON.ACTION_SIGN_IN"
         )
         a.register(
-            ng-click="vm.register()"
+            href="#"
             ng-if="vm.publicRegisterEnabled"
-            href="#",
+            tg-nav="register"
             title="{{ 'REGISTER_FORM.ACTION_SIGN_UP' | translate }}"
             translate="REGISTER_FORM.ACTION_SIGN_UP"
         )
