@@ -53,36 +53,36 @@ class ProjectValuesSectionController extends mixOf(taiga.Controller, taiga.PageM
         "$tgNavUrls",
         "tgAppMetaService",
         "$translate",
-        "tgErrorHandlingService"
+        "tgErrorHandlingService",
+        "tgProjectService"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @navUrls,
-                  @appMetaService, @translate, @errorHandlingService) ->
+                  @appMetaService, @translate, @errorHandlingService, @projectService) ->
         @scope.project = {}
 
-        promise = @.loadInitialData()
+        @.loadInitialData()
 
-        promise.then () =>
-            sectionName = @translate.instant(@scope.sectionName)
+        sectionName = @translate.instant(@scope.sectionName)
 
-            title = @translate.instant("ADMIN.PROJECT_VALUES.PAGE_TITLE", {
-                "sectionName": sectionName,
-                "projectName": @scope.project.name
-            })
-            description = @scope.project.description
-            @appMetaService.setAll(title, description)
+        title = @translate.instant("ADMIN.PROJECT_VALUES.PAGE_TITLE", {
+            "sectionName": sectionName,
+            "projectName": @scope.project.name
+        })
 
-        promise.then null, @.onInitialDataError.bind(@)
+        description = @scope.project.description
+        @appMetaService.setAll(title, description)
 
     loadProject: ->
-        return @rs.projects.getBySlug(@params.pslug).then (project) =>
-            if not project.i_am_admin
-                @errorHandlingService.permissionDenied()
+        project = @projectService.project.toJS()
 
-            @scope.projectId = project.id
-            @scope.project = project
-            @scope.$emit('project:loaded', project)
-            return project
+        if not project.i_am_admin
+            @errorHandlingService.permissionDenied()
+
+        @scope.projectId = project.id
+        @scope.project = project
+        @scope.$emit('project:loaded', project)
+        return project
 
     loadInitialData: ->
         promise = @.loadProject()
@@ -106,8 +106,11 @@ class ProjectValuesController extends taiga.Controller
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs) ->
         @scope.$on("admin:project-values:move", @.moveValue)
-        @rootscope.$on("project:loaded", @.loadValues)
 
+        unwatch = @scope.$watch "resource", (resource) =>
+            if resource
+                @.loadValues()
+                unwatch()
     loadValues: =>
         return @rs[@scope.resource].listValues(@scope.projectId, @scope.type).then (values) =>
             @scope.values = values

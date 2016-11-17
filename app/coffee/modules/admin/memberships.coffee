@@ -50,11 +50,12 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin, tai
         "$translate",
         "$tgAuth",
         "tgLightboxFactory",
-        "tgErrorHandlingService"
+        "tgErrorHandlingService",
+        "tgProjectService"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @navUrls, @analytics,
-                  @appMetaService, @translate, @auth, @lightboxFactory, @errorHandlingService) ->
+                  @appMetaService, @translate, @auth, @lightboxFactory, @errorHandlingService, @projectService) ->
         bindMethods(@)
 
         @scope.project = {}
@@ -74,17 +75,18 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin, tai
             @analytics.trackEvent("membership", "create", "create memberships on admin", 1)
 
     loadProject: ->
-        return @rs.projects.getBySlug(@params.pslug).then (project) =>
-            if not project.i_am_admin
-                @errorHandlingService.permissionDenied()
+        project = @projectService.project.toJS()
 
-            @scope.projectId = project.id
-            @scope.project = project
+        if not project.i_am_admin
+            @errorHandlingService.permissionDenied()
 
-            @scope.canAddUsers = project.max_memberships == null || project.max_memberships > project.total_memberships
+        @scope.projectId = project.id
+        @scope.project = project
 
-            @scope.$emit('project:loaded', project)
-            return project
+        @scope.canAddUsers = project.max_memberships == null || project.max_memberships > project.total_memberships
+
+        @scope.$emit('project:loaded', project)
+        return project
 
     loadMembers: ->
         httpFilters = @.getUrlFilters()
@@ -99,11 +101,12 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin, tai
             return data
 
     loadInitialData: ->
-        return @.loadProject().then () =>
-            return @q.all([
-                @.loadMembers(),
-                @auth.refresh()
-            ])
+        @.loadProject()
+
+        return @q.all([
+            @.loadMembers(),
+            @auth.refresh()
+        ])
 
     getUrlFilters: ->
         filters = _.pick(@location.search(), "page")

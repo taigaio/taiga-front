@@ -58,14 +58,16 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         "$translate",
         "tgErrorHandlingService",
         "$tgStorage",
-        "tgFilterRemoteStorageService"
+        "tgFilterRemoteStorageService",
+        "tgProjectService",
+        "tgUserActivityService"
     ]
 
     filtersHashSuffix: "issues-filters"
     myFiltersHashSuffix: "issues-my-filters"
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @urls, @params, @q, @location, @appMetaService,
-                  @navUrls, @events, @analytics, @translate, @errorHandlingService, @storage, @filterRemoteStorageService) ->
+                  @navUrls, @events, @analytics, @translate, @errorHandlingService, @storage, @filterRemoteStorageService, @projectService) ->
         bindMethods(@)
 
         @scope.sectionName = "Issues"
@@ -286,24 +288,25 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
 
     loadProject: ->
-        return @rs.projects.getBySlug(@params.pslug).then (project) =>
-            if not project.is_issues_activated
-                @errorHandlingService.permissionDenied()
+        project = @projectService.project.toJS()
 
-            @scope.projectId = project.id
-            @scope.project = project
-            @scope.$emit('project:loaded', project)
+        if not project.is_issues_activated
+            @errorHandlingService.permissionDenied()
 
-            @scope.issueStatusById = groupBy(project.issue_statuses, (x) -> x.id)
-            @scope.issueStatusList = _.sortBy(project.issue_statuses, "order")
-            @scope.severityById = groupBy(project.severities, (x) -> x.id)
-            @scope.severityList = _.sortBy(project.severities, "order")
-            @scope.priorityById = groupBy(project.priorities, (x) -> x.id)
-            @scope.priorityList = _.sortBy(project.priorities, "order")
-            @scope.issueTypes = _.sortBy(project.issue_types, "order")
-            @scope.issueTypeById = groupBy(project.issue_types, (x) -> x.id)
+        @scope.projectId = project.id
+        @scope.project = project
+        @scope.$emit('project:loaded', project)
 
-            return project
+        @scope.issueStatusById = groupBy(project.issue_statuses, (x) -> x.id)
+        @scope.issueStatusList = _.sortBy(project.issue_statuses, "order")
+        @scope.severityById = groupBy(project.severities, (x) -> x.id)
+        @scope.severityList = _.sortBy(project.severities, "order")
+        @scope.priorityById = groupBy(project.priorities, (x) -> x.id)
+        @scope.priorityList = _.sortBy(project.priorities, "order")
+        @scope.issueTypes = _.sortBy(project.issue_types, "order")
+        @scope.issueTypeById = groupBy(project.issue_types, (x) -> x.id)
+
+        return project
 
     # We need to guarantee that the last petition done here is the finally used
     # When searching by text loadIssues can be called fastly with different parameters and
@@ -328,13 +331,13 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         return promise
 
     loadInitialData: ->
-        promise = @.loadProject()
-        return promise.then (project) =>
-            @.fillUsersAndRoles(project.members, project.roles)
-            @.initializeSubscription()
-            @.generateFilters()
+        project = @.loadProject()
 
-            return @.loadIssues()
+        @.fillUsersAndRoles(project.members, project.roles)
+        @.initializeSubscription()
+        @.generateFilters()
+
+        return @.loadIssues()
 
     # Functions used from templates
     addNewIssue: ->
