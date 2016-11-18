@@ -32,25 +32,24 @@ class ContribController extends taiga.Controller
         "$routeParams",
         "$tgRepo",
         "$tgResources",
-        "$tgConfirm"
+        "$tgConfirm",
+        "tgProjectService"
     ]
 
-    constructor: (@rootScope, @scope, @params, @repo, @rs, @confirm) ->
+    constructor: (@rootScope, @scope, @params, @repo, @rs, @confirm, @projectService) ->
         @scope.currentPlugin = _.head(_.filter(@rootScope.adminPlugins, {"slug": @params.plugin}))
         @scope.projectSlug = @params.pslug
 
-        promise = @.loadInitialData()
-
-        promise.then null, =>
-            @confirm.notify("error")
+        @.loadInitialData()
 
     loadProject: ->
-        return @rs.projects.getBySlug(@params.pslug).then (project) =>
-            @scope.projectId = project.id
-            @scope.project = project
-            @scope.$emit('project:loaded', project)
-            @scope.$broadcast('project:loaded', project)
-            return project
+        project = @projectService.project.toJS()
+
+        @scope.projectId = project.id
+        @scope.project = project
+        @scope.$emit('project:loaded', project)
+        @scope.$broadcast('project:loaded', project)
+        return project
 
     loadInitialData: ->
         return @.loadProject()

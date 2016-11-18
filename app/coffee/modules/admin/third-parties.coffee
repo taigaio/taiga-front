@@ -46,10 +46,11 @@ class WebhooksController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.
         "$tgNavUrls",
         "tgAppMetaService",
         "$translate",
-        "tgErrorHandlingService"
+        "tgErrorHandlingService",
+        "tgProjectService"
     ]
 
-    constructor: (@scope, @repo, @rs, @params, @location, @navUrls, @appMetaService, @translate, @errorHandlingService) ->
+    constructor: (@scope, @repo, @rs, @params, @location, @navUrls, @appMetaService, @translate, @errorHandlingService, @projectService) ->
         bindMethods(@)
 
         @scope.sectionName = "ADMIN.WEBHOOKS.SECTION_NAME"
@@ -71,21 +72,20 @@ class WebhooksController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.
             @scope.webhooks = webhooks
 
     loadProject: ->
-        return @rs.projects.getBySlug(@params.pslug).then (project) =>
-            if not project.i_am_admin
-                @errorHandlingService.permissionDenied()
+        project = @projectService.project.toJS()
 
-            @scope.projectId = project.id
-            @scope.project = project
-            @scope.$emit('project:loaded', project)
-            return project
+        if not project.i_am_admin
+            @errorHandlingService.permissionDenied()
+
+        @scope.projectId = project.id
+        @scope.project = project
+        @scope.$emit('project:loaded', project)
+        return project
 
     loadInitialData: ->
-        promise = @.loadProject()
-        promise.then =>
-            @.loadWebhooks()
+        @.loadProject()
 
-        return promise
+        return @.loadWebhooks()
 
 module.controller("WebhooksController", WebhooksController)
 
@@ -309,10 +309,11 @@ class GithubController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         "$tgResources",
         "$routeParams",
         "tgAppMetaService",
-        "$translate"
+        "$translate",
+        "tgProjectService"
     ]
 
-    constructor: (@scope, @repo, @rs, @params, @appMetaService, @translate) ->
+    constructor: (@scope, @repo, @rs, @params, @appMetaService, @translate, @projectService) ->
         bindMethods(@)
 
         @scope.sectionName = @translate.instant("ADMIN.GITHUB.SECTION_NAME")
@@ -332,16 +333,16 @@ class GithubController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             @scope.github = github
 
     loadProject: ->
-        return @rs.projects.getBySlug(@params.pslug).then (project) =>
-            @scope.projectId = project.id
-            @scope.project = project
-            @scope.$emit('project:loaded', project)
-            return project
+        project = @projectService.project.toJS()
+
+        @scope.projectId = project.id
+        @scope.project = project
+        @scope.$emit('project:loaded', project)
+        return project
 
     loadInitialData: ->
         promise = @.loadProject()
-        promise.then(=> @.loadModules())
-        return promise
+        return @.loadModules()
 
 module.controller("GithubController", GithubController)
 
@@ -357,10 +358,11 @@ class GitlabController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         "$tgResources",
         "$routeParams",
         "tgAppMetaService",
-        "$translate"
+        "$translate",
+        "tgProjectService"
     ]
 
-    constructor: (@scope, @repo, @rs, @params, @appMetaService, @translate) ->
+    constructor: (@scope, @repo, @rs, @params, @appMetaService, @translate, @projectService) ->
         bindMethods(@)
 
         @scope.sectionName = @translate.instant("ADMIN.GITLAB.SECTION_NAME")
@@ -382,16 +384,16 @@ class GitlabController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             @scope.gitlab = gitlab
 
     loadProject: ->
-        return @rs.projects.getBySlug(@params.pslug).then (project) =>
-            @scope.projectId = project.id
-            @scope.project = project
-            @scope.$emit('project:loaded', project)
-            return project
+        project = @projectService.project.toJS()
+
+        @scope.projectId = project.id
+        @scope.project = project
+        @scope.$emit('project:loaded', project)
+        return project
 
     loadInitialData: ->
-        promise = @.loadProject()
-        promise.then(=> @.loadModules())
-        return promise
+        @.loadProject()
+        return @.loadModules()
 
 module.controller("GitlabController", GitlabController)
 
@@ -407,10 +409,11 @@ class BitbucketController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
         "$tgResources",
         "$routeParams",
         "tgAppMetaService",
-        "$translate"
+        "$translate",
+        "tgProjectService"
     ]
 
-    constructor: (@scope, @repo, @rs, @params, @appMetaService, @translate) ->
+    constructor: (@scope, @repo, @rs, @params, @appMetaService, @translate, @projectService) ->
         bindMethods(@)
 
         @scope.sectionName = @translate.instant("ADMIN.BITBUCKET.SECTION_NAME")
@@ -432,16 +435,16 @@ class BitbucketController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
             @scope.bitbucket = bitbucket
 
     loadProject: ->
-        return @rs.projects.getBySlug(@params.pslug).then (project) =>
-            @scope.projectId = project.id
-            @scope.project = project
-            @scope.$emit('project:loaded', project)
-            return project
+        project = @projectService.project.toJS()
+
+        @scope.projectId = project.id
+        @scope.project = project
+        @scope.$emit('project:loaded', project)
+        return project
 
     loadInitialData: ->
-        promise = @.loadProject()
-        promise.then(=> @.loadModules())
-        return promise
+        @.loadProject()
+        return @.loadModules()
 
 module.controller("BitbucketController", BitbucketController)
 
@@ -598,10 +601,11 @@ class GogsController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Filt
         "$tgResources",
         "$routeParams",
         "tgAppMetaService",
-        "$translate"
+        "$translate",
+        "tgProjectService"
     ]
 
-    constructor: (@scope, @repo, @rs, @params, @appMetaService, @translate) ->
+    constructor: (@scope, @repo, @rs, @params, @appMetaService, @translate, @projectService) ->
         bindMethods(@)
 
         @scope.sectionName = @translate.instant("ADMIN.GOGS.SECTION_NAME")
@@ -621,15 +625,15 @@ class GogsController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Filt
             @scope.gogs = gogs
 
     loadProject: ->
-        return @rs.projects.getBySlug(@params.pslug).then (project) =>
-            @scope.projectId = project.id
-            @scope.project = project
-            @scope.$emit('project:loaded', project)
-            return project
+        project = @projectService.project.toJS()
+
+        @scope.projectId = project.id
+        @scope.project = project
+        @scope.$emit('project:loaded', project)
+        return project
 
     loadInitialData: ->
-        promise = @.loadProject()
-        promise.then(=> @.loadModules())
-        return promise
+        @.loadProject()
+        return @.loadModules()
 
 module.controller("GogsController", GogsController)

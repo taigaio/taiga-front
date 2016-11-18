@@ -59,7 +59,8 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         "$tgQueueModelTransformation",
         "tgErrorHandlingService",
         "$tgStorage",
-        "tgFilterRemoteStorageService"
+        "tgFilterRemoteStorageService",
+        "tgProjectService"
     ]
 
     storeCustomFiltersName: 'backlog-custom-filters'
@@ -69,7 +70,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @appMetaService, @navUrls,
                   @events, @analytics, @translate, @loading, @rs2, @modelTransform, @errorHandlingService,
-                  @storage, @filterRemoteStorageService) ->
+                  @storage, @filterRemoteStorageService, @projectService) ->
         bindMethods(@)
 
         @.backlogOrder = {}
@@ -341,28 +342,29 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
                 break
 
     loadProject: ->
-        return @rs.projects.getBySlug(@params.pslug).then (project) =>
-            if not project.is_backlog_activated
-                @errorHandlingService.permissionDenied()
+        project = @projectService.project.toJS()
 
-            @scope.projectId = project.id
-            @scope.project = project
-            @scope.closedMilestones = !!project.total_closed_milestones
-            @scope.$emit('project:loaded', project)
-            @scope.points = _.sortBy(project.points, "order")
-            @scope.pointsById = groupBy(project.points, (x) -> x.id)
-            @scope.usStatusById = groupBy(project.us_statuses, (x) -> x.id)
-            @scope.usStatusList = _.sortBy(project.us_statuses, "id")
-            return project
+        if not project.is_backlog_activated
+            @errorHandlingService.permissionDenied()
+
+        @scope.projectId = project.id
+        @scope.project = project
+        @scope.closedMilestones = !!project.total_closed_milestones
+        @scope.$emit('project:loaded', project)
+        @scope.points = _.sortBy(project.points, "order")
+        @scope.pointsById = groupBy(project.points, (x) -> x.id)
+        @scope.usStatusById = groupBy(project.us_statuses, (x) -> x.id)
+        @scope.usStatusList = _.sortBy(project.us_statuses, "id")
+
+        return project
 
     loadInitialData: ->
-        promise = @.loadProject()
-        promise.then (project) =>
-            @.fillUsersAndRoles(project.members, project.roles)
-            @.initializeSubscription()
+        project = @.loadProject()
 
-        return promise
-            .then(=> @.loadBacklog())
+        @.fillUsersAndRoles(project.members, project.roles)
+        @.initializeSubscription()
+
+        return @.loadBacklog()
             .then(=> @.generateFilters())
             .then(=> @scope.$emit("backlog:loaded"))
 

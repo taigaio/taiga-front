@@ -52,11 +52,12 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$tgNavUrls",
         "$tgAnalytics",
         "$translate",
-        "tgErrorHandlingService"
+        "tgErrorHandlingService",
+        "tgProjectService"
     ]
 
     constructor: (@scope, @rootscope, @repo, @model, @confirm, @rs, @params, @q, @location,
-                  @filter, @log, @appMetaService, @navUrls, @analytics, @translate, @errorHandlingService) ->
+                  @filter, @log, @appMetaService, @navUrls, @analytics, @translate, @errorHandlingService, @projectService) ->
         @scope.$on("wiki:links:move", @.moveLink)
         @scope.projectSlug = @params.pslug
         @scope.wikiSlug = @params.slug
@@ -86,14 +87,15 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         @appMetaService.setAll(title, description)
 
     loadProject: ->
-        return @rs.projects.getBySlug(@params.pslug).then (project) =>
-            if not project.is_wiki_activated
-                @errorHandlingService.permissionDenied()
+        project = @projectService.project.toJS()
 
-            @scope.projectId = project.id
-            @scope.project = project
-            @scope.$emit('project:loaded', project)
-            return project
+        if not project.is_wiki_activated
+            @errorHandlingService.permissionDenied()
+
+        @scope.projectId = project.id
+        @scope.project = project
+        @scope.$emit('project:loaded', project)
+        return project
 
     loadWiki: ->
         promise = @rs.wiki.getBySlug(@scope.projectId, @params.slug)
@@ -130,10 +132,10 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
             @scope.wikiTitle = selectedWikiLink.title if selectedWikiLink?
 
     loadInitialData: ->
-        promise = @.loadProject()
-        return promise.then (project) =>
-            @.fillUsersAndRoles(project.members, project.roles)
-            @q.all([@.loadWikiLinks(), @.loadWiki()]).then @.checkLinksPerms.bind(this)
+        project = @.loadProject()
+
+        @.fillUsersAndRoles(project.members, project.roles)
+        @q.all([@.loadWikiLinks(), @.loadWiki()]).then @.checkLinksPerms.bind(this)
 
     checkLinksPerms: ->
         if @scope.project.my_permissions.indexOf("add_wiki_link") != -1 ||

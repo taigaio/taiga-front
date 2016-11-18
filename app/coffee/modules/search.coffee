@@ -49,23 +49,22 @@ class SearchController extends mixOf(taiga.Controller, taiga.PageMixin)
         "tgAppMetaService",
         "$tgNavUrls",
         "$translate",
-        "tgErrorHandlingService"
+        "tgErrorHandlingService",
+        "tgProjectService"
     ]
 
-    constructor: (@scope, @repo, @rs, @params, @q, @location, @appMetaService, @navUrls, @translate, @errorHandlingService) ->
+    constructor: (@scope, @repo, @rs, @params, @q, @location, @appMetaService, @navUrls, @translate, @errorHandlingService, @projectService) ->
         @scope.sectionName = "Search"
 
-        promise = @.loadInitialData()
+        @.loadInitialData()
 
-        promise.then () =>
-            title = @translate.instant("SEARCH.PAGE_TITLE", {projectName: @scope.project.name})
-            description = @translate.instant("SEARCH.PAGE_DESCRIPTION", {
-                projectName: @scope.project.name,
-                projectDescription: @scope.project.description
-            })
-            @appMetaService.setAll(title, description)
+        title = @translate.instant("SEARCH.PAGE_TITLE", {projectName: @scope.project.name})
+        description = @translate.instant("SEARCH.PAGE_DESCRIPTION", {
+            projectName: @scope.project.name,
+            projectDescription: @scope.project.description
+        })
 
-        promise.then null, @.onInitialDataError.bind(@)
+        @appMetaService.setAll(title, description)
 
         # Search input watcher
         @scope.searchTerm = null
@@ -85,17 +84,18 @@ class SearchController extends mixOf(taiga.Controller, taiga.PageMixin)
         return defered.promise
 
     loadProject: ->
-        return @rs.projects.getBySlug(@params.pslug).then (project) =>
-            @scope.project = project
-            @scope.$emit('project:loaded', project)
+        project = @projectService.project.toJS()
 
-            @scope.epicStatusById = groupBy(project.epic_statuses, (x) -> x.id)
-            @scope.issueStatusById = groupBy(project.issue_statuses, (x) -> x.id)
-            @scope.taskStatusById = groupBy(project.task_statuses, (x) -> x.id)
-            @scope.severityById = groupBy(project.severities, (x) -> x.id)
-            @scope.priorityById = groupBy(project.priorities, (x) -> x.id)
-            @scope.usStatusById = groupBy(project.us_statuses, (x) -> x.id)
-            return project
+        @scope.project = project
+        @scope.$emit('project:loaded', project)
+
+        @scope.epicStatusById = groupBy(project.epic_statuses, (x) -> x.id)
+        @scope.issueStatusById = groupBy(project.issue_statuses, (x) -> x.id)
+        @scope.taskStatusById = groupBy(project.task_statuses, (x) -> x.id)
+        @scope.severityById = groupBy(project.severities, (x) -> x.id)
+        @scope.priorityById = groupBy(project.priorities, (x) -> x.id)
+        @scope.usStatusById = groupBy(project.us_statuses, (x) -> x.id)
+        return project
 
     loadSearchData: (term = "") ->
         @scope.loading = true
@@ -112,9 +112,10 @@ class SearchController extends mixOf(taiga.Controller, taiga.PageMixin)
         return @._promise
 
     loadInitialData: ->
-        return @.loadProject().then (project) =>
-            @scope.projectId = project.id
-            @.fillUsersAndRoles(project.members, project.roles)
+        project = @.loadProject()
+
+        @scope.projectId = project.id
+        @.fillUsersAndRoles(project.members, project.roles)
 
 module.controller("SearchController", SearchController)
 

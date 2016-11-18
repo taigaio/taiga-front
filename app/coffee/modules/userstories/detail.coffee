@@ -52,11 +52,12 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$translate",
         "$tgQueueModelTransformation",
         "tgErrorHandlingService",
-        "$tgConfig"
+        "$tgConfig",
+        "tgProjectService"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location,
-                  @log, @appMetaService, @navUrls, @analytics, @translate, @modelTransform, @errorHandlingService, @configService) ->
+                  @log, @appMetaService, @navUrls, @analytics, @translate, @modelTransform, @errorHandlingService, @configService, @projectService) ->
         bindMethods(@)
 
         @scope.usRef = @params.usref
@@ -123,16 +124,17 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
             @scope.onDeleteGoToUrl = @navUrls.resolve("project-kanban", ctx)
 
     loadProject: ->
-        return @rs.projects.getBySlug(@params.pslug).then (project) =>
-            @scope.projectId = project.id
-            @scope.project = project
-            @scope.$emit('project:loaded', project)
-            @scope.statusList = project.us_statuses
-            @scope.statusById = groupBy(project.us_statuses, (x) -> x.id)
-            @scope.taskStatusById = groupBy(project.task_statuses, (x) -> x.id)
-            @scope.pointsList = _.sortBy(project.points, "order")
-            @scope.pointsById = groupBy(@scope.pointsList, (e) -> e.id)
-            return project
+        project = @projectService.project.toJS()
+
+        @scope.projectId = project.id
+        @scope.project = project
+        @scope.$emit('project:loaded', project)
+        @scope.statusList = project.us_statuses
+        @scope.statusById = groupBy(project.us_statuses, (x) -> x.id)
+        @scope.taskStatusById = groupBy(project.task_statuses, (x) -> x.id)
+        @scope.pointsList = _.sortBy(project.points, "order")
+        @scope.pointsById = groupBy(@scope.pointsList, (e) -> e.id)
+        return project
 
     loadUs: ->
         httpParams = _.pick(@location.search(), "milestone", "no-milestone", "kanban-status")
@@ -180,10 +182,9 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
             return tasks
 
     loadInitialData: ->
-        promise = @.loadProject()
-        return promise.then (project) =>
-            @.fillUsersAndRoles(project.members, project.roles)
-            @.loadUs().then(=> @q.all([@.loadSprint(), @.loadTasks()]))
+        project = @.loadProject()
+        @.fillUsersAndRoles(project.members, project.roles)
+        @.loadUs().then(=> @q.all([@.loadSprint(), @.loadTasks()]))
 
     ###
     # Note: This methods (onUpvote() and onDownvote()) are related to tg-vote-button.

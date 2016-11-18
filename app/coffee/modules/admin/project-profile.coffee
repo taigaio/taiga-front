@@ -54,15 +54,17 @@ class ProjectProfileController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$translate",
         "$tgAuth",
         "tgCurrentUserService",
-        "tgErrorHandlingService"
+        "tgErrorHandlingService",
+        "tgProjectService",
+        "$tgModel"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @navUrls,
-                  @appMetaService, @translate, @tgAuth, @currentUserService, @errorHandlingService) ->
+                  @appMetaService, @translate, @tgAuth, @currentUserService, @errorHandlingService, @projectService, @model) ->
         @scope.project = {}
 
-        promise = @.loadInitialData()
         @scope.projectTags = []
+        promise = @.loadInitialData()
 
         promise.then =>
             sectionName = @translate.instant( @scope.sectionName)
@@ -83,32 +85,33 @@ class ProjectProfileController extends mixOf(taiga.Controller, taiga.PageMixin)
             @appMetaService.setAll(title, description)
 
     loadProject: ->
-        return @rs.projects.getBySlug(@params.pslug).then (project) =>
-            if not project.i_am_admin
-                @errorHandlingService.permissionDenied()
+        project = @projectService.project.toJS()
+        project = @model.make_model("projects", project)
 
-            @scope.projectId = project.id
-            @scope.project = project
-            @scope.epicStatusList = _.sortBy(project.epic_statuses, "order")
-            @scope.usStatusList = _.sortBy(project.us_statuses, "order")
-            @scope.pointsList = _.sortBy(project.points, "order")
-            @scope.taskStatusList = _.sortBy(project.task_statuses, "order")
-            @scope.issueTypesList = _.sortBy(project.issue_types, "order")
-            @scope.issueStatusList = _.sortBy(project.issue_statuses, "order")
-            @scope.prioritiesList = _.sortBy(project.priorities, "order")
-            @scope.severitiesList = _.sortBy(project.severities, "order")
-            @scope.$emit('project:loaded', project)
+        if not project.i_am_admin
+            @errorHandlingService.permissionDenied()
 
-            @scope.projectTags = _.map @scope.project.tags, (it) =>
-                return [it, @scope.project.tags_colors[it]]
+        @scope.projectId = project.id
+        @scope.project = project
+        @scope.epicStatusList = _.sortBy(project.epic_statuses, "order")
+        @scope.usStatusList = _.sortBy(project.us_statuses, "order")
+        @scope.pointsList = _.sortBy(project.points, "order")
+        @scope.taskStatusList = _.sortBy(project.task_statuses, "order")
+        @scope.issueTypesList = _.sortBy(project.issue_types, "order")
+        @scope.issueStatusList = _.sortBy(project.issue_statuses, "order")
+        @scope.prioritiesList = _.sortBy(project.priorities, "order")
+        @scope.severitiesList = _.sortBy(project.severities, "order")
+        @scope.$emit('project:loaded', project)
 
-            return project
+        @scope.projectTags = _.map @scope.project.tags, (it) =>
+            return [it, @scope.project.tags_colors[it]]
+
+        return project
 
     loadInitialData: ->
-        return @q.all([
-            @.loadProject(),
-            @tgAuth.refresh()
-        ])
+        @.loadProject()
+
+        return @tgAuth.refresh()
 
     openDeleteLightbox: ->
         @rootscope.$broadcast("deletelightbox:new", @scope.project)
@@ -158,9 +161,9 @@ ProjectProfileDirective = ($repo, $confirm, $loading, $navurls, $location, proje
                 })
                 $location.path(newUrl)
 
-                $ctrl.loadInitialData()
+                projectService.fetchProject().then () =>
+                    $ctrl.loadInitialData()
 
-                projectService.fetchProject()
                 currentUserService.loadProjects()
 
             promise.then null, (data) ->

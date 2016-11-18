@@ -51,11 +51,12 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$tgAnalytics",
         "$translate",
         "$tgQueueModelTransformation",
-        "tgErrorHandlingService"
+        "tgErrorHandlingService",
+        "tgProjectService"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location,
-                  @log, @appMetaService, @navUrls, @analytics, @translate, @modelTransform, @errorHandlingService) ->
+                  @log, @appMetaService, @navUrls, @analytics, @translate, @modelTransform, @errorHandlingService, @projectService) ->
         bindMethods(@)
 
         @scope.taskRef = @params.taskref
@@ -106,13 +107,14 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
                 @scope.onDeleteGoToUrl = @navUrls.resolve("project-userstories-detail", ctx)
 
     loadProject: ->
-        return @rs.projects.getBySlug(@params.pslug).then (project) =>
-            @scope.projectId = project.id
-            @scope.project = project
-            @scope.$emit('project:loaded', project)
-            @scope.statusList = project.task_statuses
-            @scope.statusById = groupBy(project.task_statuses, (x) -> x.id)
-            return project
+        project = @projectService.project.toJS()
+
+        @scope.projectId = project.id
+        @scope.project = project
+        @scope.$emit('project:loaded', project)
+        @scope.statusList = project.task_statuses
+        @scope.statusById = groupBy(project.task_statuses, (x) -> x.id)
+        return project
 
     loadTask: ->
         return @rs.tasks.getByRef(@scope.projectId, @params.taskref).then (task) =>
@@ -150,10 +152,10 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
                 return us
 
     loadInitialData: ->
-        promise = @.loadProject()
-        return promise.then (project) =>
-            @.fillUsersAndRoles(project.members, project.roles)
-            @.loadTask().then(=> @q.all([@.loadSprint(), @.loadUserStory()]))
+        project = @.loadProject()
+
+        @.fillUsersAndRoles(project.members, project.roles)
+        return @.loadTask().then(=> @q.all([@.loadSprint(), @.loadUserStory()]))
 
     ###
     # Note: This methods (onUpvote() and onDownvote()) are related to tg-vote-button.

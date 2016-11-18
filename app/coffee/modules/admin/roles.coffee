@@ -49,11 +49,12 @@ class RolesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fil
         "$tgNavUrls",
         "tgAppMetaService",
         "$translate",
-        "tgErrorHandlingService"
+        "tgErrorHandlingService",
+        "tgProjectService"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @navUrls,
-                  @appMetaService, @translate, @errorHandlingService) ->
+                  @appMetaService, @translate, @errorHandlingService, @projectService) ->
         bindMethods(@)
 
         @scope.sectionName = "ADMIN.MENU.PERMISSIONS"
@@ -70,17 +71,18 @@ class RolesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fil
         promise.then null, @.onInitialDataError.bind(@)
 
     loadProject: ->
-        return @rs.projects.getBySlug(@params.pslug).then (project) =>
-            if not project.i_am_admin
-                @errorHandlingService.permissionDenied()
+        project = @projectService.project.toJS()
 
-            @scope.projectId = project.id
-            @scope.project = project
+        if not project.i_am_admin
+            @errorHandlingService.permissionDenied()
 
-            @scope.$emit('project:loaded', project)
-            @scope.anyComputableRole = _.some(_.map(project.roles, (point) -> point.computable))
+        @scope.projectId = project.id
+        @scope.project = project
 
-            return project
+        @scope.$emit('project:loaded', project)
+        @scope.anyComputableRole = _.some(_.map(project.roles, (point) -> point.computable))
+
+        return project
 
     loadRoles: ->
         return @rs.roles.list(@scope.projectId).then (roles) =>
@@ -103,9 +105,12 @@ class RolesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fil
             return roles
 
     loadInitialData: ->
-        promise = @.loadProject()
-        promise.then(=> @.loadRoles())
-        return promise
+        @.loadProject()
+        return @.loadRoles()
+
+    forceLoadProject: () ->
+        @projectService.fetchProject () =>
+            @.loadProject()
 
     setRole: (role) ->
         @scope.role = role
@@ -126,7 +131,7 @@ class RolesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fil
         warning = @translate.instant("ADMIN.ROLES.WARNING_DELETE_ROLE")
         return @confirm.askChoice(title, subtitle, choices, replacement, warning).then (response) =>
             onSuccess = =>
-                @.loadProject()
+                @.forceLoadProject()
                 @.loadRoles().finally =>
                     response.finish()
             onError = =>
@@ -137,7 +142,7 @@ class RolesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fil
     _enableComputable: =>
         onSuccess = =>
             @confirm.notify("success")
-            @.loadProject()
+            @.forceLoadProject()
 
         onError = =>
             @confirm.notify("error")
@@ -150,7 +155,7 @@ class RolesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fil
             onSuccess = =>
                 response.finish()
                 @confirm.notify("success")
-                @.loadProject()
+                @.forceLoadProject()
             onError = =>
                 response.finish()
                 @confirm.notify("error")
@@ -264,7 +269,7 @@ NewRoleDirective = ($tgrepo, $confirm) ->
                     $scope.roles.splice(insertPosition, 0, role)
                     $ctrl.setRole(role)
                     $el.find(".add-button").show()
-                    $ctrl.loadProject()
+                    $ctrl.forceLoadProject()
 
                 onError = ->
                     $confirm.notify("error")
@@ -474,7 +479,7 @@ RolePermissionsDirective = ($rootscope, $repo, $confirm, $compile) ->
                     renderResume(target.parents(".category-config"), categories[categoryId])
                     $rootscope.$broadcast("projects:reload")
                     $confirm.notify("success")
-                    $ctrl.loadProject()
+                    $ctrl.forceLoadProject()
 
                 onError = ->
                     $confirm.notify("error")

@@ -58,7 +58,8 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         "$tgModel",
         "tgKanbanUserstories",
         "$tgStorage",
-        "tgFilterRemoteStorageService"
+        "tgFilterRemoteStorageService",
+        "tgProjectService"
     ]
 
     storeCustomFiltersName: 'kanban-custom-filters'
@@ -66,7 +67,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @rs2, @params, @q, @location,
                   @appMetaService, @navUrls, @events, @analytics, @translate, @errorHandlingService,
-                  @model, @kanbanUserstoriesService, @storage, @filterRemoteStorageService) ->
+                  @model, @kanbanUserstoriesService, @storage, @filterRemoteStorageService, @projectService) ->
         bindMethods(@)
         @kanbanUserstoriesService.reset()
         @.openFilter = false
@@ -237,20 +238,21 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         ])
 
     loadProject: ->
-        return @rs.projects.getBySlug(@params.pslug).then (project) =>
-            if not project.is_kanban_activated
-                @errorHandlingService.permissionDenied()
+        project = @projectService.project.toJS()
 
-            @scope.projectId = project.id
-            @scope.project = project
-            @scope.projectId = project.id
-            @scope.points = _.sortBy(project.points, "order")
-            @scope.pointsById = groupBy(project.points, (x) -> x.id)
-            @scope.usStatusById = groupBy(project.us_statuses, (x) -> x.id)
-            @scope.usStatusList = _.sortBy(project.us_statuses, "order")
+        if not project.is_kanban_activated
+            @errorHandlingService.permissionDenied()
 
-            @scope.$emit("project:loaded", project)
-            return project
+        @scope.projectId = project.id
+        @scope.project = project
+        @scope.projectId = project.id
+        @scope.points = _.sortBy(project.points, "order")
+        @scope.pointsById = groupBy(project.points, (x) -> x.id)
+        @scope.usStatusById = groupBy(project.us_statuses, (x) -> x.id)
+        @scope.usStatusList = _.sortBy(project.us_statuses, "order")
+
+        @scope.$emit("project:loaded", project)
+        return project
 
     initializeSubscription: ->
         routingKey1 = "changes.project.#{@scope.projectId}.userstories"
@@ -258,12 +260,12 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             @.loadUserstories()
 
     loadInitialData: ->
-        promise = @.loadProject()
-        return promise.then (project) =>
-            @.fillUsersAndRoles(project.members, project.roles)
-            @.initializeSubscription()
-            @.loadKanban()
-            @.generateFilters()
+        project = @.loadProject()
+
+        @.fillUsersAndRoles(project.members, project.roles)
+        @.initializeSubscription()
+        @.loadKanban()
+        @.generateFilters()
 
     # Utils methods
 
