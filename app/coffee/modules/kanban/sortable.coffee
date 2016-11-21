@@ -65,7 +65,6 @@ KanbanSortableDirective = ($repo, $rs, $rootscope) ->
             drake = dragula(containers, {
                 copySortSource: false,
                 copy: false,
-                mirrorContainer: tdom[0],
                 moves: (item) ->
                     return $(item).is('tg-card')
             })

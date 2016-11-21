@@ -68,7 +68,6 @@ TaskboardSortableDirective = ($repo, $rs, $rootscope, $translate) ->
             drake = dragula(containers, {
                 copySortSource: false,
                 copy: false,
-                mirrorContainer: $el[0],
                 accepts: (el, target) -> return !$(target).hasClass('taskboard-userstory-box')
                 moves: (item) ->
                     return $(item).is('tg-card')
