@@ -1,19 +1,29 @@
-.diff-custom-new(
+.diff-status-wrapper(
     ng-if="vm.diff.new.length"
     ng-repeat="newCustom in vm.diff.new"
 )
     span.key(translate="ACTIVITY.CREATED_CUSTOM_ATTRIBUTE")
     span.diff ({{newCustom.name}})
-    span.diff {{newCustom.value}}
-    
-.diff-custom-new(
+
+    span(ng-if="newCustom.type == 'richtext'")
+        p.diff(tg-bo-html="newCustom.value_diff")
+
+    span(ng-if="newCustom.type != 'richtext'")
+        span.diff {{newCustom.value}}
+
+.diff-status-wrapper(
     ng-if="vm.diff.changed.length"
     ng-repeat="changeCustom in vm.diff.changed"
 )
     span.key(translate="ACTIVITY.UPDATED_CUSTOM_ATTRIBUTE")
     span.diff ({{changeCustom.name}})
-    span.diff {{changeCustom.changes.value[0]}}
-    tg-svg(
-        svg-icon="icon-arrow-right"
-    )
-    span.diff {{changeCustom.changes.value[1]}}
+
+    span(ng-if="changeCustom.type == 'richtext'")
+        p.diff(tg-bo-html="changeCustom.value_diff")
+
+    span(ng-if="changeCustom.type != 'richtext'")
+        span.diff {{changeCustom.changes.value[0]}}
+        tg-svg(
+            svg-icon="icon-arrow-right"
+        )
+        span.diff {{changeCustom.changes.value[1]}}

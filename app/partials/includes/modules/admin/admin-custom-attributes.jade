@@ -31,6 +31,10 @@ section.custom-fields-table.basic-table
                                 translate="ADMIN.CUSTOM_FIELDS.FIELD_TYPE_TEXT"
                             )
                             span(
+                                ng-switch-when="richtext"
+                                translate="ADMIN.CUSTOM_FIELDS.FIELD_TYPE_RICHTEXT"
+                            )
+                            span(
                                 ng-switch-when="multiline"
                                 translate="ADMIN.CUSTOM_FIELDS.FIELD_TYPE_MULTI"
                             )
