@@ -41,7 +41,7 @@
         "LOGOUT": "Déconnexion",
         "EXTERNAL_USER": "un utilisateur externe",
         "GENERIC_ERROR": "L'un de nos Oompa Loompas dit {{error}}.",
-        "IOCAINE_TEXT": "Vous vous sentez un peu submergé(e) par une tâche ? Soyez certains d'en informer les autres en cliquant sur Iocaine lors de la modification de la tâche. Il est possible de s'immuniser contre ce poison (fictif) en consommant de petites quantités en heures supplémentaires, tout comme il est possible de s'améliorer en acceptant parfois de nouveaux défis !",
+        "IOCAINE_TEXT": "This member is feeling a bit overwhelmed by this task. Will become immune to the iocaine poison over time with your help. For now, may need a hug.",
         "CLIENT_REQUIREMENT": "Une exigence client est une nouvelle exigence exprimée par le client, qui n'était pas prévue dans le projet initial, et qu'il est nécessaire d'intégrer",
         "TEAM_REQUIREMENT": "Une exigence équipe est une exigence exprimée par l'équipe qui doit être rajoutée au projet, sans que cela n'ait d'impact pour le client",
         "OWNER": "Propriétaire du Projet",
@@ -227,32 +227,7 @@
             }
         },
         "WYSIWYG": {
-            "H1_BUTTON": "Premier niveau de titre",
-            "H1_SAMPLE_TEXT": "Votre titre ici…",
-            "H2_BUTTON": "Deuxième niveau de titre",
-            "H2_SAMPLE_TEXT": "Votre titre ici…",
-            "H3_BUTTON": "Troisième niveau de titre",
-            "H3_SAMPLE_TEXT": "Votre titre ici…",
-            "BOLD_BUTTON": "Gras",
-            "BOLD_BUTTON_SAMPLE_TEXT": "Votre texte ici…",
-            "ITALIC_BUTTON": "Italique",
-            "ITALIC_SAMPLE_TEXT": "Votre texte ici…",
-            "STRIKE_BUTTON": "Barré",
-            "STRIKE_SAMPLE_TEXT": "Votre texte ici…",
-            "BULLETED_LIST_BUTTON": "Liste à puces",
-            "BULLETED_LIST_SAMPLE_TEXT": "Votre texte ici…",
-            "NUMERIC_LIST_BUTTON": "Liste numérotée",
-            "NUMERIC_LIST_SAMPLE_TEXT": "Votre texte ici…",
-            "PICTURE_BUTTON": "Image",
-            "PICTURE_SAMPLE_TEXT": "Votre texte alternatif à l'image ici…",
-            "LINK_BUTTON": "Lien",
-            "LINK_SAMPLE_TEXT": "Votre texte de lien ici…",
-            "QUOTE_BLOCK_BUTTON": "Bloc de citation",
-            "QUOTE_BLOCK_SAMPLE_TEXT": "Votre texte ici…",
-            "CODE_BLOCK_BUTTON": "Bloc de code",
-            "CODE_BLOCK_SAMPLE_TEXT": "Votre texte ici…",
-            "PREVIEW_BUTTON": "Aperçu",
-            "EDIT_BUTTON": "Modifier",
+            "OUTDATED": "Another person has made changes while you were editing. Check the new version on the activiy tab before you save your changes.",
             "ATTACH_FILE_HELP": "Joindre des fichiers en glissant et déposant ceux-ci sur la zone de texte ci-dessus.",
             "ATTACH_FILE_HELP_SAVE_FIRST": "Enregistrez d'abord si vous voulez joindre des fichiers en glissant et déposant ceux-ci sur la zone de texte ci-dessus.",
             "MARKDOWN_HELP": "Aide sur la syntaxe Markdown"
@@ -1111,15 +1086,15 @@
         "NOT_ESTIMATED": "Non estimé",
         "TOTAL_US_POINTS": "Total des points RU",
         "TRIBE": {
-            "PUBLISH": "Publish as Gig in Taiga Tribe",
+            "PUBLISH": "Publier en tant que Gig sur Taiga Tribe ",
             "PUBLISH_INFO": "Plus d'informations",
-            "PUBLISH_TITLE": "More info on publishing in Taiga Tribe",
-            "PUBLISHED_AS_GIG": "Story published as Gig in Taiga Tribe",
+            "PUBLISH_TITLE": "Plus d'informations sur la publication dans Taiga Tribe",
+            "PUBLISHED_AS_GIG": "Histoire publiée comme Gig dans Taiga Tribe",
             "EDIT_LINK": "Modifier le lien",
             "CLOSE": "Fermer",
-            "SYNCHRONIZE_LINK": "synchronize with Taiga Tribe",
+            "SYNCHRONIZE_LINK": "se synchroniser avec Taiga Tribe",
             "PUBLISH_MORE_INFO_TITLE": "Avez-vous besoin de quelqu'un pour cette tâche ?",
-            "PUBLISH_MORE_INFO_TEXT": "<p>If you need help with a particular piece of work you can easily create gigs on<a href='taigatribe.com' title='Taiga Tribe'> Taiga Tribe </a> and receive help from all over the world. You will be able to control and manage the gig enjoying a great community eager to contribute.</p><p><a href='taigatribe.com' title='Taiga Tribe'> TaigaTribe </a>  was born as a Taiga sibling. Both platforms can live separately but we believe that there is much power in using them combined so we are making sure the integration works like a charm.</p>"
+            "PUBLISH_MORE_INFO_TEXT": "<p> Si vous avez besoin d'aide pour un travail particulier, vous pouvez facilement créer des annonces sur <a href='taigatribe.com' title='Taiga Tribe'> Taiga Tribe </a> et recevoir de l'aide de tout le monde. Vous serez en mesure de contrôler et de gérer l'annonce tout en bénéficiant d'une grande communauté désireuse d'aider. </ p> \n<p> <a href='taigatribe.com' title='Taiga Tribe'> TaigaTribe </a> est né en tant que frère de Taiga. Les deux plates-formes peuvent vivre séparément, mais comme nous croyons qu'il est très puissant de les utiliser ensemble, nous faisons en sorte que l'intégration fonctionne comme un charme. </ p>"
         },
         "FIELDS": {
             "TEAM_REQUIREMENT": "Exigence équipe",
@@ -1247,6 +1222,12 @@
             "TOGGLE": "Afficher/Cacher les mots-clés",
             "SHOW": "Montrer les mots-clés",
             "HIDE": "Cacher les mots-clés"
+        },
+        "FORECASTING": {
+            "TITLE": "Velocity forecasting",
+            "BACKLOG": "Display backlog",
+            "NEW_SPRINT": "Candidate User Stories for your next sprint based on your velocity. Click to create a new sprint.",
+            "CURRENT_SPRINT": "Candidate User Stories for your sprint based on your velocity. Click to add to current sprint."
         },
         "TABLE": {
             "COLUMN_US": "Récits utilisateur",

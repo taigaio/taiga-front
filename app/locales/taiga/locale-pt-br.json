@@ -11,7 +11,7 @@
         "CANCEL": "Cancelar",
         "ACCEPT": "Aceitar",
         "DELETE": "Apagar",
-        "UNLINK": "Unlink",
+        "UNLINK": "Separar",
         "CREATE": "Criar",
         "ADD": "Adicionar",
         "COPY_TO_CLIPBOARD": "Copiar para a área de transferência: Ctrl+C",
@@ -41,17 +41,17 @@
         "LOGOUT": "Sair",
         "EXTERNAL_USER": "um usuário externo",
         "GENERIC_ERROR": "Um Oompa Loompas disse {{error}}.",
-        "IOCAINE_TEXT": "Se sentindo sobrecarregado por uma tarefa? Assegure-se de que os outros saibam disso clicando em Iocaine quando estiver editando a tarefa. É possível se tornar imune a essse veneno mortal (fictício) consumindo pequenas quantidades ao longo do tempo, assim como é possível ficar melhor no que faz, ocasionalmente, por assumir desafios extras!",
+        "IOCAINE_TEXT": "This member is feeling a bit overwhelmed by this task. Will become immune to the iocaine poison over time with your help. For now, may need a hug.",
         "CLIENT_REQUIREMENT": "Requisito de cliente é um novo requisito que não foi anteriormente previsto e que necessita se tornar uma parte do projeto.",
         "TEAM_REQUIREMENT": "Requisito de time é um requisito que deve existir no projeto, mas que não deve ter nenhum custo para o cliente.",
         "OWNER": "Dono do Projeto",
         "CAPSLOCK_WARNING": "Seja cuidadoso! Você está escrevendo em letras maiúsculas e esse campo é case sensitive, ou seja, trata com distinção as letras maiúsculas das minúsculas.",
         "CONFIRM_CLOSE_EDIT_MODE_TITLE": "Você tem certeza que quer fechar o modo de edição?",
         "CONFIRM_CLOSE_EDIT_MODE_MESSAGE": "Lembre-se que se você fechar o modo de edição sem salvar, todas as mudanças serão perdidas",
-        "RELATED_USERSTORIES": "Related user stories",
+        "RELATED_USERSTORIES": "Histórias de usuário relacionadas",
         "CARD": {
-            "ASSIGN_TO": "Assign To",
-            "EDIT": "Edit card"
+            "ASSIGN_TO": "Atribuir a",
+            "EDIT": "Editar cartão"
         },
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Este valor parece ser inválido.",
@@ -125,7 +125,7 @@
         "ISSUE": "Problema",
         "EPIC": "Épico",
         "TAGS": {
-            "PLACEHOLDER": "Enter tag",
+            "PLACEHOLDER": "Inserir tag",
             "DELETE": "Apagar tag",
             "ADD": "Adicionar tag"
         },
@@ -199,7 +199,7 @@
             "SAVE": "Salvar Campo Personalizado",
             "EDIT": "Editar Campo Personalizado",
             "DELETE": "Apagar atributo personalizado",
-            "CONFIRM_DELETE": "Remeber that all values in this custom field will be deleted.\n Are you sure you want to continue?"
+            "CONFIRM_DELETE": "Lembre-se que todos os valores neste campo customizado serão deletados.\nVocê tem certeza que quer continuar?"
         },
         "FILTERS": {
             "TITLE": "Filtros",
@@ -209,7 +209,7 @@
             "TITLE_ACTION_SEARCH": "Procurar",
             "ACTION_SAVE_CUSTOM_FILTER": "salve como filtro personalizado",
             "PLACEHOLDER_FILTER_NAME": "Digite o nome do filtro e pressione Enter",
-            "APPLIED_FILTERS_NUM": "filters applied",
+            "APPLIED_FILTERS_NUM": "filtros aplicados",
             "CATEGORIES": {
                 "TYPE": "Tipo",
                 "STATUS": "Status",
@@ -227,44 +227,19 @@
             }
         },
         "WYSIWYG": {
-            "H1_BUTTON": "Primeira caixa de cabeçalho",
-            "H1_SAMPLE_TEXT": "Seu título aqui...",
-            "H2_BUTTON": "Segundo caixa de cabeçalho",
-            "H2_SAMPLE_TEXT": "Seu título aqui...",
-            "H3_BUTTON": "Terceira caixa de cabeçalho",
-            "H3_SAMPLE_TEXT": "Seu título aqui...",
-            "BOLD_BUTTON": "Negrito",
-            "BOLD_BUTTON_SAMPLE_TEXT": "Seu texto aqui...",
-            "ITALIC_BUTTON": "Itálico",
-            "ITALIC_SAMPLE_TEXT": "Seu texto aqui...",
-            "STRIKE_BUTTON": "Riscar",
-            "STRIKE_SAMPLE_TEXT": "Seu texto aqui...",
-            "BULLETED_LIST_BUTTON": "Lista de marcadores",
-            "BULLETED_LIST_SAMPLE_TEXT": "Seu texto aqui...",
-            "NUMERIC_LIST_BUTTON": "Lista numérica",
-            "NUMERIC_LIST_SAMPLE_TEXT": "Seu texto aqui...",
-            "PICTURE_BUTTON": "Imagem",
-            "PICTURE_SAMPLE_TEXT": "Seu texto alternativo para a imagem aqui...",
-            "LINK_BUTTON": "Link",
-            "LINK_SAMPLE_TEXT": "Seu texto para o link vai aqui...",
-            "QUOTE_BLOCK_BUTTON": "Bloco de citação",
-            "QUOTE_BLOCK_SAMPLE_TEXT": "Seu texto aqui...",
-            "CODE_BLOCK_BUTTON": "Bloco de código",
-            "CODE_BLOCK_SAMPLE_TEXT": "Seu texto aqui...",
-            "PREVIEW_BUTTON": "Pré Visualizar",
-            "EDIT_BUTTON": "Editar",
+            "OUTDATED": "Another person has made changes while you were editing. Check the new version on the activiy tab before you save your changes.",
             "ATTACH_FILE_HELP": "Anexe arquivos arrastando e soltando na área de texto acima.",
-            "ATTACH_FILE_HELP_SAVE_FIRST": "Save first before if you want to attach files by dragging & dropping on the textarea above.",
+            "ATTACH_FILE_HELP_SAVE_FIRST": "Salve os arquivos primeiro se você quiser anexar arquivos arrastando e soltando na área de texto acima.",
             "MARKDOWN_HELP": "Ajuda de sintaxe markdown"
         },
         "PERMISIONS_CATEGORIES": {
             "EPICS": {
                 "NAME": "Épicos",
-                "VIEW_EPICS": "View epics",
-                "ADD_EPICS": "Add epics",
-                "MODIFY_EPICS": "Modify epics",
-                "COMMENT_EPICS": "Comment epics",
-                "DELETE_EPICS": "Delete epics"
+                "VIEW_EPICS": "Ver épicos",
+                "ADD_EPICS": "Adicionar épicos",
+                "MODIFY_EPICS": "Modificar épicos",
+                "COMMENT_EPICS": "Comentar épicos",
+                "DELETE_EPICS": "Deletar épicos"
             },
             "SPRINTS": {
                 "NAME": "Sprints",
@@ -286,7 +261,7 @@
                 "VIEW_TASKS": "Ver tarefas",
                 "ADD_TASKS": "Adicionar uma nova Tarefa",
                 "MODIFY_TASKS": "Modificar tarefa",
-                "COMMENT_TASKS": "Comment tasks",
+                "COMMENT_TASKS": "Comentar tarefas",
                 "DELETE_TASKS": "Apagar tarefas"
             },
             "ISSUES": {
@@ -294,7 +269,7 @@
                 "VIEW_ISSUES": "Ver problemas",
                 "ADD_ISSUES": "Adicionar problemas",
                 "MODIFY_ISSUES": "Modificar problemas",
-                "COMMENT_ISSUES": "Comment issues",
+                "COMMENT_ISSUES": "Comentar problemas",
                 "DELETE_ISSUES": "Apagar problemas"
             },
             "WIKI": {
@@ -408,15 +383,15 @@
         "TITLE": "ÉPICOS",
         "SECTION_NAME": "Épicos",
         "EPIC": "ÉPICO",
-        "PAGE_TITLE": "Epics - {{projectName}}",
-        "PAGE_DESCRIPTION": "The epics list of the project {{projectName}}: {{projectDescription}}",
+        "PAGE_TITLE": "Épico - {{projectName}}",
+        "PAGE_DESCRIPTION": "A lista de épicos do projeto {{projectName}}: {{projectDescription}}",
         "DASHBOARD": {
             "ADD": "+ ADICIONAR ÉPICO",
             "UNASSIGNED": "Não-atribuído"
         },
         "EMPTY": {
-            "TITLE": "It looks like there aren't any epics yet",
-            "EXPLANATION": "Epics are items at a higher level that encompass user stories.<br />Epics are at the top of the hierarchy and can be used to group user stories together.",
+            "TITLE": "Parece que não há nenhum épico ainda",
+            "EXPLANATION": "Épicos são itens em um nível mais alto que contêm histórias de usuário.<br />Épicos são o topo da hierarquia e podem ser usados para agrupar histórias.",
             "HELP": "Saiba mais sobre épicos"
         },
         "TABLE": {
@@ -424,16 +399,16 @@
             "NAME": "Nome",
             "PROJECT": "Projeto",
             "SPRINT": "Sprint",
-            "ASSIGNED_TO": "Assigned",
+            "ASSIGNED_TO": "Atribuído",
             "STATUS": "Status",
             "PROGRESS": "Progresso",
             "VIEW_OPTIONS": "Ver opções"
         },
         "CREATE": {
             "TITLE": "Novo Épico",
-            "PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this epic",
-            "TEAM_REQUIREMENT": "Team requirement",
-            "CLIENT_REQUIREMENT": "Client requirement",
+            "PLACEHOLDER_DESCRIPTION": "Por favor, adicione um texto descritivo para ajudar outras pessoas a entenderem melhor este épico",
+            "TEAM_REQUIREMENT": "Requisitos da equipe",
+            "CLIENT_REQUIREMENT": "Requisitos do cliente",
             "BLOCKED": "Bloqueado",
             "BLOCKED_NOTE_PLACEHOLDER": "Por que esse épico está bloqueado?",
             "CREATE_EPIC": "Criar épico"
@@ -510,7 +485,7 @@
             "ENABLE": "Habilitar",
             "DISABLE": "Desabilitar",
             "EPICS": "Épicos",
-            "EPICS_DESCRIPTION": "Visualize and manage the most strategic part of your project",
+            "EPICS_DESCRIPTION": "Visualize e gerencie a parte mais estratégica do seu projeto",
             "BACKLOG": "Backlog",
             "BACKLOG_DESCRIPTION": "Gerencie suas histórias de usuários para manter uma visualização organizada de trabalhos futuros e priorizados.",
             "NUMBER_SPRINTS": "Número de sprints esperadas",
@@ -562,7 +537,7 @@
             "REQUEST_OWNERSHIP_SUCCESS": "Vamos notificar o dono do projeto",
             "CHANGE_OWNER": "Mudar dono",
             "CHANGE_OWNER_SUCCESS_TITLE": "Ok, sua requisição foi enviada!",
-            "CHANGE_OWNER_SUCCESS_DESC": "We will notify you by email if the project ownership request is accepted or declined"
+            "CHANGE_OWNER_SUCCESS_DESC": "Nós notificaremos você por email se a requisição de propriedade do projeto for aceita ou recusada"
         },
         "REPORTS": {
             "TITLE": "Relatórios",
@@ -573,7 +548,7 @@
             "REGENERATE_SUBTITLE": "Você está prestes a alterar a url de acesso a dados do CSV. A URL anterior será desabilitada. Você está certo disso?"
         },
         "CSV": {
-            "SECTION_TITLE_EPIC": "epics reports",
+            "SECTION_TITLE_EPIC": "relatórios de épicos",
             "SECTION_TITLE_US": "Relatórios de histórias de usuários",
             "SECTION_TITLE_TASK": "relatórios de tarefas",
             "SECTION_TITLE_ISSUE": "relatórios de problemas",
@@ -586,8 +561,8 @@
         "CUSTOM_FIELDS": {
             "TITLE": "Campos Personalizados",
             "SUBTITLE": "Especificar campos personalizados para histórias de usuários, tarefas e problemas",
-            "EPIC_DESCRIPTION": "Epics custom fields",
-            "EPIC_ADD": "Add a custom field in epics",
+            "EPIC_DESCRIPTION": "Campos personalizados dos épicos",
+            "EPIC_ADD": "Adicionar campos personalizados em épicos",
             "US_DESCRIPTION": "Campos personalizados das histórias de usuários",
             "US_ADD": "Adicionar campo personalizado nas histórias de usuários",
             "TASK_DESCRIPTION": "Campos personalizados das Tarefas",
@@ -625,8 +600,8 @@
         "PROJECT_VALUES_STATUS": {
             "TITLE": "Status",
             "SUBTITLE": "Especifique os status pelos quais suas histórias de usuários, tarefas e problemas passarão",
-            "EPIC_TITLE": "Epic Statuses",
-            "US_TITLE": "User Story Statuses",
+            "EPIC_TITLE": "Estados do Épico",
+            "US_TITLE": "Status de história de usuário",
             "TASK_TITLE": "Estados da Tarefa",
             "ISSUE_TITLE": "Estados do problema"
         },
@@ -638,7 +613,7 @@
         },
         "PROJECT_VALUES_TAGS": {
             "TITLE": "Tags",
-            "SUBTITLE": "View and edit the color of your tags",
+            "SUBTITLE": "Ver e editar as cores das suas tags",
             "EMPTY": "Atualmente não há tags",
             "EMPTY_SEARCH": "Parece que nada foi encontrado com os critérios de sua pesquisa.",
             "ACTION_ADD": "Adicionar tag",
@@ -738,8 +713,8 @@
             "DEFAULT_DELETE_MESSAGE": "o convite para {{email}}"
         },
         "DEFAULT_VALUES": {
-            "LABEL_EPIC_STATUS": "Default value for epic status selector",
-            "LABEL_US_STATUS": "Default value for user story status selector",
+            "LABEL_EPIC_STATUS": "Valor padrão para seletor de status de épico",
+            "LABEL_US_STATUS": "Valor padrão para seletor de status da história de usuário",
             "LABEL_POINTS": "Valores padrões para o seletor de pontos",
             "LABEL_TASK_STATUS": "Valor padrão para seletor de status de tarefa",
             "LABEL_ISSUE_TYPE": "Valor padrão para seletor de tipo de problema ",
@@ -799,14 +774,14 @@
             "REJECTED_PROJECT_OWNERNSHIP": "OK. Entraremos em contato com o atual dono do projeto.",
             "ACCEPT": "Aceitar",
             "REJECT": "Rejeitar",
-            "PROPOSE_OWNERSHIP": "<strong>{{owner}}</strong>, the current owner of the project <strong>{{project}}</strong> has asked that you become the new  project owner.",
-            "ADD_COMMENT": "Would you like to add a comment for the project owner?",
+            "PROPOSE_OWNERSHIP": "<strong>{{owner}}</strong>, o atual dono do projeto <strong>{{project}}</strong> te pediu para ser o novo dono do projeto.",
+            "ADD_COMMENT": "Você gostaria de adicionar um comentário para o dono do projeto?",
             "UNLIMITED_PROJECTS": "Ilimitado",
             "OWNER_MESSAGE": {
-                "PRIVATE": "Please remember that you can own up to <strong>{{maxProjects}}</strong> private projects. You currently own <strong>{{currentProjects}}</strong> private projects",
-                "PUBLIC": "Please remember that you can own up to <strong>{{maxProjects}}</strong> public projects. You currently own <strong>{{currentProjects}}</strong> public projects"
+                "PRIVATE": "Por favor, lembre-se que você pode ser dono de até <strong>{{maxProjects}}</strong> projetos privados. Você, atualmente, é dono de <strong>{{currentProjects}}</strong> projetos privados",
+                "PUBLIC": "Por favor, lembre-se que você pode ser dono de até <strong>{{maxProjects}}</strong> projetos públicos. Você, atualmente, é dono de <strong>{{currentProjects}}</strong> projetos públicos"
             },
-            "CANT_BE_OWNED": "At the moment you cannot become an owner of a project of this type. If you would like to become the owner of this project, please contact the administrator so they change your account settings to enable project ownership.",
+            "CANT_BE_OWNED": "No momento, você não pode se tornar dono de um projeto desse tipo. Se você quiser se tornar dono desse projeto, por favor, entre em contato com os administradores para mudarem as configurações da sua conta para habilitar a propriedade do projeto.",
             "CHANGE_MY_PLAN": "Mudar meu plano"
         }
     },
@@ -850,7 +825,7 @@
             "FILTER_TYPE_PROJECTS": "Projetos",
             "FILTER_TYPE_PROJECT_TITLES": "Mostrar somente projetos",
             "FILTER_TYPE_EPICS": "Épicos",
-            "FILTER_TYPE_EPIC_TITLES": "Show only epics",
+            "FILTER_TYPE_EPIC_TITLES": "Mostrar somente épicos",
             "FILTER_TYPE_USER_STORIES": "Histórias",
             "FILTER_TYPE_USER_STORIES_TITLES": "Mostrar apenas histórias de usuários",
             "FILTER_TYPE_TASKS": "Tarefas",
@@ -940,26 +915,26 @@
             "PROJECT_RESTRICTIONS": {
                 "PROJECT_MEMBERS_DESC": "O projeto que você está tentando importar tem {{members}} membros e infelizmente seu plano atual tem um limite máximo de {{max_memberships}} membros por projeto. Se você deseja aumentar este limite entre em contato com o administrador.",
                 "PRIVATE_PROJECTS_SPACE": {
-                    "TITLE": "Unfortunately, your current plan does not allow for additional private projects",
-                    "DESC": "The project you are trying to import is private. Unfortunately, your current plan does not allow for additional private projects."
+                    "TITLE": "Infelizmente, seu plano atual não permite projetos privados adicionais.",
+                    "DESC": "O projeto que você está tentando importar é privado. Infelizmente, seu plano plano atual não permite projetos privados adicionais."
                 },
                 "PUBLIC_PROJECTS_SPACE": {
-                    "TITLE": "Unfortunately, your current plan does not allow for additional public projects",
-                    "DESC": "The project you are trying to import is public. Unfortunately, your current plan does not allow additional public projects."
+                    "TITLE": "Infelizmente, seu plano atual não permite projetos públicos adicionais.",
+                    "DESC": "O projeto que você está tentando importar é público. Infelizmente, seu plano plano atual não permite projetos públicos adicionais."
                 },
                 "PRIVATE_PROJECTS_MEMBERS": {
-                    "TITLE": "Your current plan allows for a maximum of {{max_memberships}} members per private project"
+                    "TITLE": "Seu plano atual permite um máximo de {{max_memberships}} membros por projeto privado"
                 },
                 "PUBLIC_PROJECTS_MEMBERS": {
-                    "TITLE": "Your current plan allows for a maximum of {{max_memberships}} members per public project."
+                    "TITLE": "Seu plano atual permite um máximo de {{max_memberships}} membros por projeto público."
                 },
                 "PRIVATE_PROJECTS_SPACE_MEMBERS": {
-                    "TITLE": "Unfortunately your current plan doesn't allow additional private projects or an increase of more than {{max_memberships}} members per private project",
+                    "TITLE": "Infelizmente, seu plano atual não permite projetos privados adicionais ou um aumento de mais de {{max_memberships}} membros por projeto privado.",
                     "DESC": "O projeto que você está tentando importar é privado e tem {{members}} membros."
                 },
                 "PUBLIC_PROJECTS_SPACE_MEMBERS": {
-                    "TITLE": "Unfortunately your current plan doesn't allow additional public projects or an increase of more than {{max_memberships}} members per public project",
-                    "DESC": "The project that you are trying to import is public and has more than {{members}} members."
+                    "TITLE": "Infelizmente, seu plano atual não permite projetos públicos adicionais ou um aumento de mais de {{max_memberships}} membros por projeto público.",
+                    "DESC": "O projeto que você está tentando importar é público e tem mais que {{members}} membros."
                 }
             }
         },
@@ -1050,8 +1025,8 @@
         "CREATE_MEMBER": {
             "PLACEHOLDER_INVITATION_TEXT": "(Opcional) Adicione uma mensagem de texto ao convite. Diga algo animador para os novos membros ;-)",
             "PLACEHOLDER_TYPE_EMAIL": "Digite um Email",
-            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "You are about to reach the maximum number of members allowed for this project, <strong>{{maxMembers}}</strong> members. If you would like to increase the current limit, please contact the administrator.",
-            "LIMIT_USERS_WARNING_MESSAGE": "You are about to reach the maximum number of members allowed for this project, <strong>{{maxMembers}}</strong> members."
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "Você está próximo de atingir o número máximo de membros permitidos para este projeto, <strong>{{maxMembers}}</strong> membros. Se você deseja aumentar este limite, por favor entre em contato com o administrador.",
+            "LIMIT_USERS_WARNING_MESSAGE": "Você está próximo de atingir o número máximo de membros permitidos para este projeto, <strong>{{maxMembers}}</strong> membros."
         },
         "LEAVE_PROJECT_WARNING": {
             "TITLE": "Infelizmente, este projeto não pode ficar sem um dono",
@@ -1071,24 +1046,24 @@
         }
     },
     "EPIC": {
-        "PAGE_TITLE": "{{epicSubject}} - Epic {{epicRef}} - {{projectName}}",
-        "PAGE_DESCRIPTION": "Status: {{epicStatus }}. Description: {{epicDescription}}",
+        "PAGE_TITLE": "{{epicSubject}} - Épico {{epicRef}} - {{projectName}}",
+        "PAGE_DESCRIPTION": "Estado: {{epicStatus }}. Descrição: {{epicDescription}}",
         "SECTION_NAME": "Épico",
-        "TITLE_LIGHTBOX_UNLINK_RELATED_USERSTORY": "Unlink related userstory",
-        "MSG_LIGHTBOX_UNLINK_RELATED_USERSTORY": "It will delete the link to the related userstory '{{subject}}'",
-        "ERROR_UNLINK_RELATED_USERSTORY": "We have not been able to unlink: {{errorMessage}}",
-        "CREATE_RELATED_USERSTORIES": "Create a relationship with",
+        "TITLE_LIGHTBOX_UNLINK_RELATED_USERSTORY": "Separar história de usuário relacionada",
+        "MSG_LIGHTBOX_UNLINK_RELATED_USERSTORY": "Excluirá a ligação para a história de usuário relacionada '{{subject}}'",
+        "ERROR_UNLINK_RELATED_USERSTORY": "Não fomos capazes de separar: {{errorMessage}}",
+        "CREATE_RELATED_USERSTORIES": "Criar um relacionamento com",
         "NEW_USERSTORY": "Nova história de usuário",
-        "EXISTING_USERSTORY": "Existing user story",
-        "CHOOSE_PROJECT_FOR_CREATION": "What's the project?",
+        "EXISTING_USERSTORY": "História de usuário existente",
+        "CHOOSE_PROJECT_FOR_CREATION": "Qual é o projeto?",
         "SUBJECT": "Assunto",
-        "SUBJECT_BULK_MODE": "Subject (bulk insert)",
-        "CHOOSE_PROJECT_FROM": "What's the project?",
-        "CHOOSE_USERSTORY": "What's the user story?",
-        "NO_USERSTORIES": "This project has no User Stories yet. Please select another project.",
-        "FILTER_USERSTORIES": "Filter user stories",
-        "LIGHTBOX_TITLE_BLOKING_EPIC": "Blocking epic",
-        "ACTION_DELETE": "Delete epic"
+        "SUBJECT_BULK_MODE": "Sujeito (inserção em lote)",
+        "CHOOSE_PROJECT_FROM": "Qual é o projeto?",
+        "CHOOSE_USERSTORY": "Qual é a história de usuário?",
+        "NO_USERSTORIES": "Esse projeto ainda não possui Histórias de Usuário. Por favor, selecione outro projeto.",
+        "FILTER_USERSTORIES": "Filtrar histórias de usuário",
+        "LIGHTBOX_TITLE_BLOKING_EPIC": "Épico bloqueador",
+        "ACTION_DELETE": "Apagar épico"
     },
     "US": {
         "PAGE_TITLE": "{{userStorySubject}} - História de Usuário {{userStoryRef}} - {{projectName}}",
@@ -1200,7 +1175,7 @@
             "TAGS": "tags",
             "ATTACHMENTS": "anexos",
             "IS_DEPRECATED": "está obsoleto",
-            "IS_NOT_DEPRECATED": "is not deprecated",
+            "IS_NOT_DEPRECATED": "não está obsoleto",
             "ORDER": "ordem",
             "BACKLOG_ORDER": "requisição do backlog",
             "SPRINT_ORDER": "ordem de sprint ",
@@ -1248,6 +1223,12 @@
             "SHOW": "Exibir tags",
             "HIDE": "Esconder tags"
         },
+        "FORECASTING": {
+            "TITLE": "Velocity forecasting",
+            "BACKLOG": "Display backlog",
+            "NEW_SPRINT": "Candidate User Stories for your next sprint based on your velocity. Click to create a new sprint.",
+            "CURRENT_SPRINT": "Candidate User Stories for your sprint based on your velocity. Click to add to current sprint."
+        },
         "TABLE": {
             "COLUMN_US": "Histórias de Usuários",
             "TITLE_COLUMN_POINTS": "Selecionar exibição por função"
@@ -1260,7 +1241,7 @@
             "IOCAINE_DOSES": "iocaine<br />doses",
             "SHOW_STATISTICS_TITLE": "Mostrar estatísticas",
             "TOGGLE_BAKLOG_GRAPH": "Mostrar/Esconder gráfico de burndown",
-            "POINTS_PER_ROLE": "Points per role"
+            "POINTS_PER_ROLE": "Pontos por regra"
         },
         "SUMMARY": {
             "PROJECT_POINTS": "pontos do<br />projeto",
@@ -1527,9 +1508,9 @@
         "PUBLIC_PROJECT": "Projeto Público",
         "PRIVATE_PROJECT": "Projeto Privado",
         "CREATE_PROJECT": "Criar projeto",
-        "MAX_PRIVATE_PROJECTS": "You've reached the maximum number of private projects",
+        "MAX_PRIVATE_PROJECTS": "Você atingiu o número máximo de projetos privados",
         "MAX_PUBLIC_PROJECTS": "Infelizmente, você atingiu o número máximo de projetos públicos",
-        "CHANGE_PLANS": "change plans"
+        "CHANGE_PLANS": "mudar planos"
     },
     "WIKI": {
         "PAGE_TITLE": "{{wikiPageName}} - Wiki - {{projectName}}",
@@ -1541,8 +1522,8 @@
         "DELETE_LINK_TITLE": "Remover link de Wiki",
         "NAVIGATION": {
             "HOME": "Página principal",
-            "SECTION_NAME": "BOOKMARKS",
-            "ACTION_ADD_LINK": "Add bookmark",
+            "SECTION_NAME": "MARCADORES",
+            "ACTION_ADD_LINK": "Adicionar marcador",
             "ALL_PAGES": "Todas as páginas wiki"
         },
         "SUMMARY": {
@@ -1569,7 +1550,7 @@
         "HINT2_TITLE": "Você sabia que pode criar campos personalizados?",
         "HINT2_TEXT": "Equipes agora podem personalizar campos, um jeito flexível de inserir dados específicos para uso em seu próprio fluxo de trabalho.",
         "HINT3_TITLE": "Reordene seus projetos para evidenciar os mais relevantes para você.",
-        "HINT3_TEXT": "The 10 projects are listed in the direct access bar at the top.",
+        "HINT3_TEXT": "Os 10 projetos estão listados na barra de acesso direto, no topo.",
         "HINT4_TITLE": "Você esqueceu onde está trabalhando?",
         "HINT4_TEXT": "Não se preocupe, no seu painel você vai encontrar suas tarefas abertas, problemas, e histórias de usuários na ordem em que você trabalhou nelas."
     },
@@ -1581,8 +1562,8 @@
         "TASK_CREATED_WITH_US": "{{username}} criou nova tarefa {{obj_name}} em {{project_name}} que pertence a História de Usuário {{us_name}}",
         "WIKI_CREATED": "{{username}} criou uma página wiki {{obj_name}} em {{project_name}}",
         "MILESTONE_CREATED": "{{username}} criou uma nova sprint {{obj_name}} em {{project_name}}",
-        "EPIC_CREATED": "{{username}} has created a new epic {{obj_name}} in {{project_name}}",
-        "EPIC_RELATED_USERSTORY_CREATED": "{{username}} has related the userstory {{related_us_name}} to the epic {{epic_name}} in {{project_name}}",
+        "EPIC_CREATED": "{{username}} criou um novo épico {{obj_name}} em {{project_name}}",
+        "EPIC_RELATED_USERSTORY_CREATED": "{{username}} relacionou a história de usuário {{related_us_name}} ao épico {{epic_name}} em {{project_name}}",
         "NEW_PROJECT": "{{username}} criou o projeto {{project_name}}",
         "MILESTONE_UPDATED": "{{username}} atualizou a sprint {{obj_name}}",
         "US_UPDATED": "{{username}} atualizou o atributo \"{{field_name}}\" da História de Usuário {{obj_name}}",
@@ -1595,13 +1576,13 @@
         "TASK_UPDATED_WITH_US": "{{username}} atualizou o atributo \"{{field_name}}\" da tarefa {{obj_name}}  que pertence à História de Usuário {{us_name}}",
         "TASK_UPDATED_WITH_US_NEW_VALUE": "{{username}} atualizou o atributo \"{{field_name}}\" da tarefa {{obj_name}} que pertence à História de Usuário {{us_name}} para {{new_value}}",
         "WIKI_UPDATED": "{{username}} atualizou a página wiki {{obj_name}}",
-        "EPIC_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the epic {{obj_name}}",
-        "EPIC_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the epic {{obj_name}} to {{new_value}}",
-        "EPIC_UPDATED_WITH_NEW_COLOR": "{{username}} has updated the \"{{field_name}}\" of the epic {{obj_name}} to <span class=\"new-color\" style=\"background: {{new_value}}\"></span>",
+        "EPIC_UPDATED": "{{username}} atualizou o atributo \"{{field_name}}\" do épico {{obj_name}}",
+        "EPIC_UPDATED_WITH_NEW_VALUE": "{{username}} atualizou o atributo \"{{field_name}}\" do épico {{obj_name}} para {{new_value}}",
+        "EPIC_UPDATED_WITH_NEW_COLOR": "{{username}} atualizou o \"{{field_name}}\" do épico {{obj_name}} para <span class=\"new-color\" style=\"background: {{new_value}}\"></span>",
         "NEW_COMMENT_US": "{{username}} comentou na História de Usuário {{obj_name}}",
         "NEW_COMMENT_ISSUE": "{{username}} comentou no problema {{obj_name}}",
         "NEW_COMMENT_TASK": "{{username}} comentou na tarefa {{obj_name}}",
-        "NEW_COMMENT_EPIC": "{{username}} has commented in the epic {{obj_name}}",
+        "NEW_COMMENT_EPIC": "{{username}} comentou no épico {{obj_name}}",
         "NEW_MEMBER": "{{project_name}} tem um membro novo",
         "US_ADDED_MILESTONE": "{{username}} adicionou a História de Usuário {{obj_name}} a {{sprint_name}}",
         "US_MOVED": "{{username}} moveu a História de Usuário {{obj_name}}",
@@ -1694,7 +1675,7 @@
         "MOST_LIKED_EMPTY": "Não existe projetos curtidos ainda",
         "VIEW_MORE": "Visualizar mais",
         "RECRUITING": "Este projeto esta procurando colaboradores",
-        "FEATURED": "Featured Projects",
+        "FEATURED": "Projetos em destaque",
         "EMPTY": "Não há projetos para exibir sob esse critério de pesquisa.<br> Tente novamente!",
         "FILTERS": {
             "ALL": "Tudo",

@@ -11,7 +11,7 @@
         "CANCEL": "Abbrechen",
         "ACCEPT": "Akzeptieren",
         "DELETE": "Löschen",
-        "UNLINK": "Unlink",
+        "UNLINK": "Verknüpfung auflösen",
         "CREATE": "Erzeugen",
         "ADD": "Hinzufügen",
         "COPY_TO_CLIPBOARD": "Ins Clipboard übernehmen: Strg+C",
@@ -36,12 +36,12 @@
         "ONE_ITEM_LINE": "Ein Eintrag pro Zeile...",
         "NEW_BULK": "Neue Massenerstellung",
         "RELATED_TASKS": "Verbundene Aufgaben",
-        "PREVIOUS": "Previous",
+        "PREVIOUS": "Zurück",
         "NEXT": "Weiter",
         "LOGOUT": "Ausloggen",
         "EXTERNAL_USER": "ein externer Benutzer",
         "GENERIC_ERROR": "Eins unserer Helferlein sagt {{error}}.",
-        "IOCAINE_TEXT": "Fühlen Sie sich von einer Aufgabe etwas erdrückt? Stellen Sie sicher, dass andere davon erfahren, indem Sie auf Locaine klicken, wenn Sie eine Aufgabe ändern. Es ist möglich, gegen dieses (fiktive) tödliche Gift immun zu werden, indem man kleine Mengen über einen Zeitraum hinweg einnimmt. Genauso, wie es möglich ist, besser in dem zu werden, was man tut, indem man gelegentlich zusätzliche Herausforderungen annimmt!",
+        "IOCAINE_TEXT": "This member is feeling a bit overwhelmed by this task. Will become immune to the iocaine poison over time with your help. For now, may need a hug.",
         "CLIENT_REQUIREMENT": "Client requirement is new requirement that was not previously expected and it is required to be part of the project",
         "TEAM_REQUIREMENT": "Team requirement is a requirement that must exist in the project but should have no cost for the client",
         "OWNER": "Projekteigentümer",
@@ -50,8 +50,8 @@
         "CONFIRM_CLOSE_EDIT_MODE_MESSAGE": "Beachten Sie, dass alle Änderungen verloren gehen, wenn Sie den Bearbeitungsmodus schließen, ohne vorher zu speichern.",
         "RELATED_USERSTORIES": "Related user stories",
         "CARD": {
-            "ASSIGN_TO": "Assign To",
-            "EDIT": "Edit card"
+            "ASSIGN_TO": "Zuweisen an",
+            "EDIT": "Karte bearbeiten"
         },
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Dieser Wert scheint ungültig zu sein.",
@@ -125,7 +125,7 @@
         "ISSUE": "Ticket",
         "EPIC": "Epic",
         "TAGS": {
-            "PLACEHOLDER": "Enter tag",
+            "PLACEHOLDER": "Gib einen Tag ein",
             "DELETE": "Schlagwort löschen",
             "ADD": "Schlagwort hinzufügen"
         },
@@ -198,7 +198,7 @@
             "CUSTOM_FIELDS": "Benutzerdefinierte Felder",
             "SAVE": "Benutzerdefiniertes Feld speichern",
             "EDIT": "Benutzerdefiniertes Feld bearbeiten",
-            "DELETE": "Benutzerattribut löschen",
+            "DELETE": "benutzerdefiniertes Attribut löschen",
             "CONFIRM_DELETE": "Alle Werte in benutzerdefinierten Feldern werden gelöscht.\n Sind Sie sicher, dass Sie fortfahren wollen?"
         },
         "FILTERS": {
@@ -209,7 +209,7 @@
             "TITLE_ACTION_SEARCH": "Suche",
             "ACTION_SAVE_CUSTOM_FILTER": "Als Benutzerfilter speichern",
             "PLACEHOLDER_FILTER_NAME": "Benennen Sie den Filter und drücken Sie die Eingabetaste",
-            "APPLIED_FILTERS_NUM": "filters applied",
+            "APPLIED_FILTERS_NUM": "Filter wurden angewandt",
             "CATEGORIES": {
                 "TYPE": "Arten",
                 "STATUS": "Status",
@@ -227,32 +227,7 @@
             }
         },
         "WYSIWYG": {
-            "H1_BUTTON": "Überschrift 1",
-            "H1_SAMPLE_TEXT": "Titel...",
-            "H2_BUTTON": "Überschrift 2",
-            "H2_SAMPLE_TEXT": "Titel...",
-            "H3_BUTTON": "Überschrift 3",
-            "H3_SAMPLE_TEXT": "Titel...",
-            "BOLD_BUTTON": "Fettschrift",
-            "BOLD_BUTTON_SAMPLE_TEXT": "Text...",
-            "ITALIC_BUTTON": "Kursivschrift",
-            "ITALIC_SAMPLE_TEXT": "Text...",
-            "STRIKE_BUTTON": "Treffer",
-            "STRIKE_SAMPLE_TEXT": "Text...",
-            "BULLETED_LIST_BUTTON": "Aufzählung",
-            "BULLETED_LIST_SAMPLE_TEXT": "Text...",
-            "NUMERIC_LIST_BUTTON": "Numerische Liste",
-            "NUMERIC_LIST_SAMPLE_TEXT": "Text...",
-            "PICTURE_BUTTON": "Bild",
-            "PICTURE_SAMPLE_TEXT": "Alternativtext zum Bild...",
-            "LINK_BUTTON": "Link",
-            "LINK_SAMPLE_TEXT": "Linktext...",
-            "QUOTE_BLOCK_BUTTON": "Blockzitat",
-            "QUOTE_BLOCK_SAMPLE_TEXT": "Text...",
-            "CODE_BLOCK_BUTTON": "Kodeblock",
-            "CODE_BLOCK_SAMPLE_TEXT": "Text...",
-            "PREVIEW_BUTTON": "Vorschau",
-            "EDIT_BUTTON": "Bearbeiten",
+            "OUTDATED": "Another person has made changes while you were editing. Check the new version on the activiy tab before you save your changes.",
             "ATTACH_FILE_HELP": "Dateien per Drag & Drop auf das obere Textfeld anhängen.",
             "ATTACH_FILE_HELP_SAVE_FIRST": "Save first before if you want to attach files by dragging & dropping on the textarea above.",
             "MARKDOWN_HELP": "Markdown syntax Hilfe"
@@ -260,11 +235,11 @@
         "PERMISIONS_CATEGORIES": {
             "EPICS": {
                 "NAME": "Epics",
-                "VIEW_EPICS": "View epics",
-                "ADD_EPICS": "Add epics",
-                "MODIFY_EPICS": "Modify epics",
-                "COMMENT_EPICS": "Comment epics",
-                "DELETE_EPICS": "Delete epics"
+                "VIEW_EPICS": "Epics anzeigen",
+                "ADD_EPICS": "Epics hinzufügen",
+                "MODIFY_EPICS": "Epics verändern",
+                "COMMENT_EPICS": "Epics kommentieren",
+                "DELETE_EPICS": "Epics löschen"
             },
             "SPRINTS": {
                 "NAME": "Sprints",
@@ -278,7 +253,7 @@
                 "VIEW_USER_STORIES": "User-Stories ansehen",
                 "ADD_USER_STORIES": "User-Stories hinzufügen",
                 "MODIFY_USER_STORIES": "User-Stories modifizieren",
-                "COMMENT_USER_STORIES": "Comment user stories",
+                "COMMENT_USER_STORIES": "User-Stories kommentieren",
                 "DELETE_USER_STORIES": "User-Stories löschen"
             },
             "TASKS": {
@@ -286,7 +261,7 @@
                 "VIEW_TASKS": "Aufgaben ansehen",
                 "ADD_TASKS": "Aufgaben hinzufügen",
                 "MODIFY_TASKS": "Aufgaben ändern",
-                "COMMENT_TASKS": "Comment tasks",
+                "COMMENT_TASKS": "Aufgaben kommentieren",
                 "DELETE_TASKS": "Aufgaben löschen"
             },
             "ISSUES": {
@@ -294,7 +269,7 @@
                 "VIEW_ISSUES": "Tickets ansehen",
                 "ADD_ISSUES": "Tickets hinzufügen",
                 "MODIFY_ISSUES": "Tickets ändern",
-                "COMMENT_ISSUES": "Comment issues",
+                "COMMENT_ISSUES": "Tickets kommentieren",
                 "DELETE_ISSUES": "Tickets löschen"
             },
             "WIKI": {
@@ -409,14 +384,14 @@
         "SECTION_NAME": "Epics",
         "EPIC": "EPIC",
         "PAGE_TITLE": "Epics - {{projectName}}",
-        "PAGE_DESCRIPTION": "The epics list of the project {{projectName}}: {{projectDescription}}",
+        "PAGE_DESCRIPTION": "Die Liste der Epics dieses Projekts {{projectName}}: {{projectDescription}}",
         "DASHBOARD": {
             "ADD": "+ EPIC HINZUFÜGEN",
             "UNASSIGNED": "Nicht zugeordnet"
         },
         "EMPTY": {
-            "TITLE": "It looks like there aren't any epics yet",
-            "EXPLANATION": "Epics are items at a higher level that encompass user stories.<br />Epics are at the top of the hierarchy and can be used to group user stories together.",
+            "TITLE": "Es sind noch keine Epics vorhanden",
+            "EXPLANATION": "Epics sind Elemente, die User-Stories umfassen.<br />Sie stehen dabei an oberster Stelle in der Hierarchie und können dazu verwendet werden, User-Stories zu gruppieren.",
             "HELP": "Erfahren Sie mehr über Epics"
         },
         "TABLE": {
@@ -427,11 +402,11 @@
             "ASSIGNED_TO": "Zugewiesen",
             "STATUS": "Status",
             "PROGRESS": "Fortschritt",
-            "VIEW_OPTIONS": "View options"
+            "VIEW_OPTIONS": "Zeige Optionen"
         },
         "CREATE": {
             "TITLE": "Neues Epic",
-            "PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this epic",
+            "PLACEHOLDER_DESCRIPTION": "Bitte beschreiben Sie dieses Epic zum leichteren Verständnis",
             "TEAM_REQUIREMENT": "Team-Anforderung",
             "CLIENT_REQUIREMENT": "Kunden-Anforderung",
             "BLOCKED": "Blockiert",
@@ -573,7 +548,7 @@
             "REGENERATE_SUBTITLE": "Sie sind im Begriff, die CSV data access URL zu ändern. Die vorherige URL wird deaktiviert. Sind Sie sicher?"
         },
         "CSV": {
-            "SECTION_TITLE_EPIC": "epics reports",
+            "SECTION_TITLE_EPIC": "Epics Berichte",
             "SECTION_TITLE_US": "User-Stories Berichte",
             "SECTION_TITLE_TASK": "Aufgabenberichte",
             "SECTION_TITLE_ISSUE": "Ticket Berichte",
@@ -586,8 +561,8 @@
         "CUSTOM_FIELDS": {
             "TITLE": "Benutzerfelder",
             "SUBTITLE": "Spezifizieren Sie die Benutzerfelder für Ihre User-Stories, Aufgaben und Tickets.",
-            "EPIC_DESCRIPTION": "Epics custom fields",
-            "EPIC_ADD": "Add a custom field in epics",
+            "EPIC_DESCRIPTION": "Benutzerdefinierte Felder der Epics",
+            "EPIC_ADD": "Benutzerdefiniertes Feld bei Epics hinzufügen",
             "US_DESCRIPTION": "Benutzerdefinierte Felder der User-Story",
             "US_ADD": "Benutzerdefiniertes Feld bei User-Stories hinzufügen",
             "TASK_DESCRIPTION": "Aufgaben benutzerdefinierte Felder",
@@ -625,8 +600,8 @@
         "PROJECT_VALUES_STATUS": {
             "TITLE": "Status",
             "SUBTITLE": "Spezifizieren Sie die Status, die Ihre User-Stories, Aufgaben und Tickets durchlaufen werden.",
-            "EPIC_TITLE": "Epic Statuses",
-            "US_TITLE": "User Story Statuses",
+            "EPIC_TITLE": "Epic Status",
+            "US_TITLE": "User-Story Status",
             "TASK_TITLE": "Aufgaben-Status",
             "ISSUE_TITLE": "Ticket-Status"
         },
@@ -639,13 +614,13 @@
         "PROJECT_VALUES_TAGS": {
             "TITLE": "Schlagwörter",
             "SUBTITLE": "View and edit the color of your tags",
-            "EMPTY": "Currently there are no tags",
+            "EMPTY": "Zur Zeit sind keine Tags vorhanden",
             "EMPTY_SEARCH": "Es sieht so aus, als konnte zu Ihren Suchkriterien nichts passendes gefunden werden.",
             "ACTION_ADD": "Schlagwort hinzufügen",
-            "NEW_TAG": "New tag",
-            "MIXING_HELP_TEXT": "Select the tags that you want to merge",
-            "MIXING_MERGE": "Merge Tags",
-            "SELECTED": "Selected"
+            "NEW_TAG": "Neuer Tag",
+            "MIXING_HELP_TEXT": "Wähle die Tags aus, die zu zusammenführen willst",
+            "MIXING_MERGE": "Tags zusammenführen",
+            "SELECTED": "Ausgewählt"
         },
         "ROLES": {
             "PAGE_TITLE": "Rollen - {{projectName}}",
@@ -850,7 +825,7 @@
             "FILTER_TYPE_PROJECTS": "Projekte",
             "FILTER_TYPE_PROJECT_TITLES": "Nur Projekte anzeigen",
             "FILTER_TYPE_EPICS": "Epics",
-            "FILTER_TYPE_EPIC_TITLES": "Show only epics",
+            "FILTER_TYPE_EPIC_TITLES": "Nur Epics anzeigen",
             "FILTER_TYPE_USER_STORIES": "Stories",
             "FILTER_TYPE_USER_STORIES_TITLES": "Nur User-Stories anzeigen",
             "FILTER_TYPE_TASKS": "Aufgaben",
@@ -1050,8 +1025,8 @@
         "CREATE_MEMBER": {
             "PLACEHOLDER_INVITATION_TEXT": "(Optional) Fügen Sie einen persönlichen Text zur Einladung hinzu. Erzählen Sie Ihren neuen Mitgliedern etwas Schönes. ;-)",
             "PLACEHOLDER_TYPE_EMAIL": "Geben Sie eine E-Mail ein",
-            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "You are about to reach the maximum number of members allowed for this project, <strong>{{maxMembers}}</strong> members. If you would like to increase the current limit, please contact the administrator.",
-            "LIMIT_USERS_WARNING_MESSAGE": "You are about to reach the maximum number of members allowed for this project, <strong>{{maxMembers}}</strong> members."
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "Dieses Projekt erreicht bald die maximale Anzahl von <strong>{{maxMembers}}</strong> Mitgliedern. Wenn Sie diese Grenze erhöhen möchten, kontaktieren Sie bitte den Administrator.",
+            "LIMIT_USERS_WARNING_MESSAGE": "Dieses Projekt erreicht bald die maximale Anzahl von <strong>{{maxMembers}}</strong> Mitgliedern."
         },
         "LEAVE_PROJECT_WARNING": {
             "TITLE": "Das Projekt kann nicht ohne einen Projektleiter existieren.",
@@ -1072,23 +1047,23 @@
     },
     "EPIC": {
         "PAGE_TITLE": "{{epicSubject}} - Epic {{epicRef}} - {{projectName}}",
-        "PAGE_DESCRIPTION": "Status: {{epicStatus }}. Description: {{epicDescription}}",
+        "PAGE_DESCRIPTION": "Status: {{epicStatus }}. Beschreibung: {{epicDescription}}",
         "SECTION_NAME": "Epic",
-        "TITLE_LIGHTBOX_UNLINK_RELATED_USERSTORY": "Unlink related userstory",
-        "MSG_LIGHTBOX_UNLINK_RELATED_USERSTORY": "It will delete the link to the related userstory '{{subject}}'",
-        "ERROR_UNLINK_RELATED_USERSTORY": "We have not been able to unlink: {{errorMessage}}",
+        "TITLE_LIGHTBOX_UNLINK_RELATED_USERSTORY": "Verknüpfung zur zugehören User-Story lösen",
+        "MSG_LIGHTBOX_UNLINK_RELATED_USERSTORY": "Dies wird die Verknüpfung zur zugehörigen User-Story '{{subject}}' löschen",
+        "ERROR_UNLINK_RELATED_USERSTORY": "Die Verknüpfung konnte nicht gelöscht werden: {{errorMessage}}",
         "CREATE_RELATED_USERSTORIES": "Create a relationship with",
         "NEW_USERSTORY": "Neue User-Story",
-        "EXISTING_USERSTORY": "Existing user story",
+        "EXISTING_USERSTORY": "Bestehende User-Story",
         "CHOOSE_PROJECT_FOR_CREATION": "What's the project?",
         "SUBJECT": "Thema",
         "SUBJECT_BULK_MODE": "Subject (bulk insert)",
         "CHOOSE_PROJECT_FROM": "What's the project?",
         "CHOOSE_USERSTORY": "What's the user story?",
         "NO_USERSTORIES": "This project has no User Stories yet. Please select another project.",
-        "FILTER_USERSTORIES": "Filter user stories",
+        "FILTER_USERSTORIES": "User-Stories filter",
         "LIGHTBOX_TITLE_BLOKING_EPIC": "Blocking epic",
-        "ACTION_DELETE": "Delete epic"
+        "ACTION_DELETE": "Epic löschen"
     },
     "US": {
         "PAGE_TITLE": "{{userStorySubject}} - User-Story {{userStoryRef}} - {{projectName}}",
@@ -1160,12 +1135,12 @@
         "US_POINTS": "{{role}} points",
         "NEW_ATTACHMENT": "neuer Anhang:",
         "DELETED_ATTACHMENT": "gelöschter Anhang:",
-        "UPDATED_ATTACHMENT": "updated attachment ({{filename}}):",
-        "CREATED_CUSTOM_ATTRIBUTE": "created custom attribute",
-        "UPDATED_CUSTOM_ATTRIBUTE": "updated custom attribute",
+        "UPDATED_ATTACHMENT": "Anhang aktualisiert ({{filename}}):",
+        "CREATED_CUSTOM_ATTRIBUTE": "benutzerdefiniertes Attribut erstellt",
+        "UPDATED_CUSTOM_ATTRIBUTE": "benutzerdefiniertes Attribut aktualisiert",
         "SIZE_CHANGE": "Machte {size, plural, one{eine Änderung} other{# Änderungen}}",
         "BECAME_DEPRECATED": "ist veraltet",
-        "BECAME_UNDEPRECATED": "became undeprecated",
+        "BECAME_UNDEPRECATED": "ist wieder aktuell",
         "TEAM_REQUIREMENT": "Team Anforderung",
         "CLIENT_REQUIREMENT": "Kundenanforderung",
         "BLOCKED": "Blockiert",
@@ -1247,6 +1222,12 @@
             "TOGGLE": "Sichtbarkeit des Schlagwortes umschalten",
             "SHOW": "Schlagwörter anzeigen",
             "HIDE": "Schlagwörter ausblenden"
+        },
+        "FORECASTING": {
+            "TITLE": "Velocity forecasting",
+            "BACKLOG": "Display backlog",
+            "NEW_SPRINT": "Candidate User Stories for your next sprint based on your velocity. Click to create a new sprint.",
+            "CURRENT_SPRINT": "Candidate User Stories for your sprint based on your velocity. Click to add to current sprint."
         },
         "TABLE": {
             "COLUMN_US": "User-Stories",

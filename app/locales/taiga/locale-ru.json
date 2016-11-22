@@ -11,7 +11,7 @@
         "CANCEL": "Отмена",
         "ACCEPT": "Принимаю",
         "DELETE": "Удалить",
-        "UNLINK": "Unlink",
+        "UNLINK": "Отсоединить",
         "CREATE": "Создать",
         "ADD": "Добавить",
         "COPY_TO_CLIPBOARD": "Копировать: Ctrl+C",
@@ -41,14 +41,14 @@
         "LOGOUT": "Выйти",
         "EXTERNAL_USER": "внешний пользователь",
         "GENERIC_ERROR": "Один из Умпа-Лумп говорит {{error}}.",
-        "IOCAINE_TEXT": "Чувствуете, что задание берет верх над вами? Дайте другим знать об этом, нажав на \"Иокаин\", когда редактируете задание. Возможно стать неуязвимым к этому (выдуманному) смертельном яду, потребляя небольшие количества время от времени, так же как возможно стать лучше в том, что вы делаете, временами беря на себя дополнительные препятствия!",
+        "IOCAINE_TEXT": "This member is feeling a bit overwhelmed by this task. Will become immune to the iocaine poison over time with your help. For now, may need a hug.",
         "CLIENT_REQUIREMENT": "Client requirement is new requirement that was not previously expected and it is required to be part of the project",
         "TEAM_REQUIREMENT": "Team requirement is a requirement that must exist in the project but should have no cost for the client",
         "OWNER": "Владелец проекта",
         "CAPSLOCK_WARNING": "Be careful! You are using capital letters in an input field that is case sensitive.",
         "CONFIRM_CLOSE_EDIT_MODE_TITLE": "Are you sure you want to close the edit mode?",
         "CONFIRM_CLOSE_EDIT_MODE_MESSAGE": "Remember that if you close the edit mode without saving all the changes will be lost",
-        "RELATED_USERSTORIES": "Related user stories",
+        "RELATED_USERSTORIES": "Связанные пользовательские истории",
         "CARD": {
             "ASSIGN_TO": "Assign To",
             "EDIT": "Edit card"
@@ -125,7 +125,7 @@
         "ISSUE": "Запрос",
         "EPIC": "Epic",
         "TAGS": {
-            "PLACEHOLDER": "Enter tag",
+            "PLACEHOLDER": "Ввести тэг",
             "DELETE": "Удалить тэг",
             "ADD": "Добавить тэг"
         },
@@ -227,32 +227,7 @@
             }
         },
         "WYSIWYG": {
-            "H1_BUTTON": "Заголовок первого уровня",
-            "H1_SAMPLE_TEXT": "Ваш заголовок здесь...",
-            "H2_BUTTON": "Заголовок второго уровня",
-            "H2_SAMPLE_TEXT": "Ваш заголовок здесь...",
-            "H3_BUTTON": "Заголовок третьего уровня",
-            "H3_SAMPLE_TEXT": "Ваш заголовок здесь...",
-            "BOLD_BUTTON": "Полужирный",
-            "BOLD_BUTTON_SAMPLE_TEXT": "Ваш текст здесь...",
-            "ITALIC_BUTTON": "Курсив",
-            "ITALIC_SAMPLE_TEXT": "Ваш текст здесь...",
-            "STRIKE_BUTTON": "Зачёркнутый",
-            "STRIKE_SAMPLE_TEXT": "Ваш текст здесь...",
-            "BULLETED_LIST_BUTTON": "Маркированный список",
-            "BULLETED_LIST_SAMPLE_TEXT": "Ваш текст здесь...",
-            "NUMERIC_LIST_BUTTON": "Нумерованный список",
-            "NUMERIC_LIST_SAMPLE_TEXT": "Ваш текст здесь...",
-            "PICTURE_BUTTON": "Изображение",
-            "PICTURE_SAMPLE_TEXT": "Альтернативный текст для изображения...",
-            "LINK_BUTTON": "Ссылка",
-            "LINK_SAMPLE_TEXT": "Ваш текст для ссылки здесь...",
-            "QUOTE_BLOCK_BUTTON": "Блок с цитатой",
-            "QUOTE_BLOCK_SAMPLE_TEXT": "Ваш текст здесь...",
-            "CODE_BLOCK_BUTTON": "Блок кода",
-            "CODE_BLOCK_SAMPLE_TEXT": "Ваш текст здесь...",
-            "PREVIEW_BUTTON": "Предварительный просмотр",
-            "EDIT_BUTTON": "Редактировать",
+            "OUTDATED": "Another person has made changes while you were editing. Check the new version on the activiy tab before you save your changes.",
             "ATTACH_FILE_HELP": "Attach files by dragging & dropping on the textarea above.",
             "ATTACH_FILE_HELP_SAVE_FIRST": "Save first before if you want to attach files by dragging & dropping on the textarea above.",
             "MARKDOWN_HELP": "Помощь по синтаксису Markdown"
@@ -260,11 +235,11 @@
         "PERMISIONS_CATEGORIES": {
             "EPICS": {
                 "NAME": "Epics",
-                "VIEW_EPICS": "View epics",
-                "ADD_EPICS": "Add epics",
-                "MODIFY_EPICS": "Modify epics",
+                "VIEW_EPICS": "Посмотреть эпосы",
+                "ADD_EPICS": "Добавить эпосы",
+                "MODIFY_EPICS": "Изменить эпосы",
                 "COMMENT_EPICS": "Comment epics",
-                "DELETE_EPICS": "Delete epics"
+                "DELETE_EPICS": "Удалить эпосы"
             },
             "SPRINTS": {
                 "NAME": "Спринты",
@@ -408,15 +383,15 @@
         "TITLE": "EPICS",
         "SECTION_NAME": "Epics",
         "EPIC": "EPIC",
-        "PAGE_TITLE": "Epics - {{projectName}}",
-        "PAGE_DESCRIPTION": "The epics list of the project {{projectName}}: {{projectDescription}}",
+        "PAGE_TITLE": "Эпосы - {{projectName}}",
+        "PAGE_DESCRIPTION": "Список эпосов этого проекта {{projectName}}: {{projectDescription}}",
         "DASHBOARD": {
             "ADD": "+ ADD EPIC",
             "UNASSIGNED": "Не назначено"
         },
         "EMPTY": {
-            "TITLE": "It looks like there aren't any epics yet",
-            "EXPLANATION": "Epics are items at a higher level that encompass user stories.<br />Epics are at the top of the hierarchy and can be used to group user stories together.",
+            "TITLE": "Похоже, здесь пока нет ни одного эпоса ",
+            "EXPLANATION": "Эпосы - это сущности высокого уровня, которые направляют пользовательские истории.<br/>Эпосы находятся на вершине иерархии и могут быть использованы, чтобы связывать вместе пользовательские истории.",
             "HELP": "Learn more about epics"
         },
         "TABLE": {
@@ -431,7 +406,7 @@
         },
         "CREATE": {
             "TITLE": "New Epic",
-            "PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this epic",
+            "PLACEHOLDER_DESCRIPTION": "Пожалуйста, добавьте описание, чтобы другие лучше поняли этот эпос",
             "TEAM_REQUIREMENT": "Team requirement",
             "CLIENT_REQUIREMENT": "Client requirement",
             "BLOCKED": "Заблокирован",
@@ -573,7 +548,7 @@
             "REGENERATE_SUBTITLE": "Вы собираетесь изменить ссылку доступа к данным CSV. Прежний вариант ссылки перестанет работать. Вы уверены?"
         },
         "CSV": {
-            "SECTION_TITLE_EPIC": "epics reports",
+            "SECTION_TITLE_EPIC": "отчёты о эпосах",
             "SECTION_TITLE_US": "Отчёты по пользовательским историям",
             "SECTION_TITLE_TASK": "отчёты о задачах",
             "SECTION_TITLE_ISSUE": "отчёты о запросах",
@@ -586,8 +561,8 @@
         "CUSTOM_FIELDS": {
             "TITLE": "Пользовательские поля",
             "SUBTITLE": "Укажите специальные поля для ваших пользовательских историй, задач и запросов",
-            "EPIC_DESCRIPTION": "Epics custom fields",
-            "EPIC_ADD": "Add a custom field in epics",
+            "EPIC_DESCRIPTION": "Специальные поля эпосов",
+            "EPIC_ADD": "Добавить специальное поле для эпосов",
             "US_DESCRIPTION": "Специальные поля для пользовательских историй",
             "US_ADD": "Добавить специальное поле для пользовательских историй",
             "TASK_DESCRIPTION": "Специальные поля задач",
@@ -625,8 +600,8 @@
         "PROJECT_VALUES_STATUS": {
             "TITLE": "Статус",
             "SUBTITLE": "Укажите, какие статусы будут принимать ваши пользовательские истории, задачи и запросы",
-            "EPIC_TITLE": "Epic Statuses",
-            "US_TITLE": "User Story Statuses",
+            "EPIC_TITLE": "Статусы Эпоса",
+            "US_TITLE": "Статусы пользовательских историй",
             "TASK_TITLE": "Статус задач",
             "ISSUE_TITLE": "Статусы запроса"
         },
@@ -755,7 +730,7 @@
         },
         "US_STATUS": {
             "ACTION_ADD_STATUS": "Добавить новый статус",
-            "IS_ARCHIVED_COLUMN": "Архивирована",
+            "IS_ARCHIVED_COLUMN": "В архиве",
             "IS_CLOSED_COLUMN": "Закрыта",
             "WIP_LIMIT_COLUMN": "Лимит текущей работы",
             "PLACEHOLDER_WRITE_NAME": "Укажите название для нового статуса"
@@ -850,7 +825,7 @@
             "FILTER_TYPE_PROJECTS": "Проекты",
             "FILTER_TYPE_PROJECT_TITLES": "Показать только проекты",
             "FILTER_TYPE_EPICS": "Epics",
-            "FILTER_TYPE_EPIC_TITLES": "Show only epics",
+            "FILTER_TYPE_EPIC_TITLES": "Показывать только эпосы",
             "FILTER_TYPE_USER_STORIES": "Истории",
             "FILTER_TYPE_USER_STORIES_TITLES": "Показывать только пользовательские истории",
             "FILTER_TYPE_TASKS": "Задачи",
@@ -1071,15 +1046,15 @@
         }
     },
     "EPIC": {
-        "PAGE_TITLE": "{{epicSubject}} - Epic {{epicRef}} - {{projectName}}",
-        "PAGE_DESCRIPTION": "Status: {{epicStatus }}. Description: {{epicDescription}}",
+        "PAGE_TITLE": "{{epicSubject}} - Эпос {{epicRef}} - {{projectName}}",
+        "PAGE_DESCRIPTION": "Статус: {{epicStatus }}. Описание: {{epicDescription}}",
         "SECTION_NAME": "Epic",
         "TITLE_LIGHTBOX_UNLINK_RELATED_USERSTORY": "Unlink related userstory",
         "MSG_LIGHTBOX_UNLINK_RELATED_USERSTORY": "It will delete the link to the related userstory '{{subject}}'",
         "ERROR_UNLINK_RELATED_USERSTORY": "We have not been able to unlink: {{errorMessage}}",
-        "CREATE_RELATED_USERSTORIES": "Create a relationship with",
+        "CREATE_RELATED_USERSTORIES": "Создать связь с",
         "NEW_USERSTORY": "Новая пользовательская история",
-        "EXISTING_USERSTORY": "Existing user story",
+        "EXISTING_USERSTORY": "Существующая пользовательская история",
         "CHOOSE_PROJECT_FOR_CREATION": "What's the project?",
         "SUBJECT": "Тема",
         "SUBJECT_BULK_MODE": "Subject (bulk insert)",
@@ -1088,7 +1063,7 @@
         "NO_USERSTORIES": "This project has no User Stories yet. Please select another project.",
         "FILTER_USERSTORIES": "Filter user stories",
         "LIGHTBOX_TITLE_BLOKING_EPIC": "Blocking epic",
-        "ACTION_DELETE": "Delete epic"
+        "ACTION_DELETE": "Удалить эпос"
     },
     "US": {
         "PAGE_TITLE": "{{userStorySubject}} - Пользовательская История {{userStoryRef}} - {{projectName}}",
@@ -1248,6 +1223,12 @@
             "SHOW": "Показать теги",
             "HIDE": "Скрыть тэги"
         },
+        "FORECASTING": {
+            "TITLE": "Velocity forecasting",
+            "BACKLOG": "Display backlog",
+            "NEW_SPRINT": "Candidate User Stories for your next sprint based on your velocity. Click to create a new sprint.",
+            "CURRENT_SPRINT": "Candidate User Stories for your sprint based on your velocity. Click to add to current sprint."
+        },
         "TABLE": {
             "COLUMN_US": "Пользовательские Истории",
             "TITLE_COLUMN_POINTS": "Выберите вид для Роли"
@@ -1255,9 +1236,9 @@
         "SPRINT_SUMMARY": {
             "TOTAL_POINTS": "всего<br />очков",
             "COMPLETED_POINTS": "получено<br />очков",
-            "OPEN_TASKS": "открыть <br /> задачи",
+            "OPEN_TASKS": "открытые <br /> задачи",
             "CLOSED_TASKS": "завершённые <br /> задачи",
-            "IOCAINE_DOSES": "иокаина<br />дозы",
+            "IOCAINE_DOSES": "дозы<br />иокаина",
             "SHOW_STATISTICS_TITLE": "Показать статистику",
             "TOGGLE_BAKLOG_GRAPH": "Показать/Скрыть график решения задач",
             "POINTS_PER_ROLE": "Points per role"
@@ -1543,7 +1524,7 @@
             "HOME": "Главная страница",
             "SECTION_NAME": "ЗАКЛАДКИ",
             "ACTION_ADD_LINK": "Добавить закладку",
-            "ALL_PAGES": "All wiki pages"
+            "ALL_PAGES": "Все wiki-страницы"
         },
         "SUMMARY": {
             "TIMES_EDITED": "раз <br />отредактировано",
