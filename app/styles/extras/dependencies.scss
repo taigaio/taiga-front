@@ -1,5 +1,5 @@
 // Bourbon
-@import '../../../vendor/bourbon/app/assets/stylesheets/bourbon';
+@import '../../../node_modules/bourbon/core/bourbon';
 
 //#################################################
 //             dependencies
@@ -22,3 +22,13 @@
 @import '../dependencies/mixins/svg';
 @import '../dependencies/mixins/track-buttons';
 @import '../dependencies/mixins/empty-color';
+
+//deprecated
+@mixin placeholder {
+  $placeholders: ":-webkit-input" ":-moz" "-moz" "-ms-input";
+  @each $placeholder in $placeholders {
+    &:#{$placeholder}-placeholder {
+      @content;
+    }
+  }
+}

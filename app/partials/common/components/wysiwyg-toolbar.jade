@@ -1,0 +1,58 @@
+.editor(ng-class="{'edit-mode': editMode, 'read-mode': !editMode}")
+    div(ng-if="outdated")
+        p.outdated {{'COMMON.WYSIWYG.OUTDATED' | translate}}
+
+    .medium.wysiwyg(
+        type="text",
+        ng-show="mode == 'html'"
+    )
+
+    textarea.markdown.e2e-markdown-textarea(
+        placeholder="{{placeholder}}"
+        ng-change="changeMarkdown()"
+        ng-model="markdown"
+        ng-show="mode == 'markdown' && editMode"
+    )
+
+    .markdown(
+        ng-class="{empty: !markdown.length}"
+        ng-click="editMode = true"
+        ng-show="mode == 'markdown' && !editMode"
+    )
+        p(ng-if="markdown.length") {{markdown}}
+        p.markdown-editor-placeholder.wysiwyg(ng-if="!markdown.length") {{placeholder}}
+
+    .mode-editor(ng-if="editMode")
+        span.e2e-markdown-mode(
+            ng-if="mode=='html'"
+            ng-click="setMode('markdown')"
+        ) Markdown Mode
+
+        span.e2e-html-mode(
+            ng-if="mode=='markdown'"
+            ng-click="setMode('html')"
+        ) HTML Mode
+
+        a.help-markdown(
+            ng-if="mode=='markdown'"
+            href="https://tree.taiga.io/support/misc/taiga-markdown-syntax/"
+            target="_blank"
+            title="{{'COMMON.WYSIWYG.MARKDOWN_HELP' | translate}}"
+        )
+            tg-svg(svg-icon="icon-question")
+            span(translate="COMMON.WYSIWYG.MARKDOWN_HELP")
+
+.tools(ng-if="editMode")
+    a.e2e-save-editor(
+        ng-class="{disabled: required && !markdown.length}"
+        tg-loading="saving"
+        href="#",
+        ng-click="save()"
+    )
+        tg-svg(svg-icon="icon-save")
+    a.e2e-cancel-editor(
+        href="#",
+        ng-click="cancel()"
+        title="{{ 'COMMON.CANCEL' | translate }}"
+    )
+        tg-svg(svg-icon="icon-close")

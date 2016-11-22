@@ -92,15 +92,16 @@ Loader = ($rootscope) ->
 
     return {
         pageLoaded: pageLoaded
+        open: () -> open
         start: (auto=false) ->
             if !open
                 start()
                 autoClose() if auto
         onStart: (fn) ->
-            $rootscope.$on("loader:start", fn)
+            return $rootscope.$on("loader:start", fn)
 
         onEnd: (fn) ->
-            $rootscope.$on("loader:end", fn)
+            return $rootscope.$on("loader:end", fn)
 
         logRequest: () ->
             requestCount++

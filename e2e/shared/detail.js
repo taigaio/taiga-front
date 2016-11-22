@@ -6,6 +6,7 @@ var customFieldsHelper = require('../helpers/custom-fields-helper');
 var commonUtil = require('../utils/common');
 var lightbox = require('../utils/lightbox');
 var notifications = require('../utils/notifications');
+var sharedWysiwyg = require('./wysiwyg').wysiwygTesting;
 
 var chai = require('chai');
 var chaiAsPromised = require('chai-as-promised');
@@ -46,49 +47,6 @@ shared.tagsTesting = async function() {
     let newtagsText = await tagsHelper.getTagsText();
 
     expect(newtagsText).to.be.not.eql(tagsText);
-}
-
-shared.descriptionTesting = function() {
-    it('confirm close with ESC', async function() {
-        let descriptionHelper = detailHelper.description();
-
-        descriptionHelper.enabledEditionMode();
-
-        browser.actions().sendKeys(protractor.Key.ESCAPE).perform();
-
-        await lightbox.confirm.cancel();
-
-        let descriptionVisibility = await $('.edit-description').isDisplayed();
-
-        expect(descriptionVisibility).to.be.true;
-
-        descriptionHelper.focus();
-
-        browser.actions().sendKeys(protractor.Key.ESCAPE).perform();
-
-        await lightbox.confirm.ok();
-
-        descriptionVisibility = await $('.edit-description').isDisplayed();
-
-        expect(descriptionVisibility).to.be.false;
-    });
-
-    it('edit', async function() {
-        let descriptionHelper = detailHelper.description();
-        let description = await descriptionHelper.getInnerHtml();
-        let date = Date.now();
-        descriptionHelper.enabledEditionMode();
-        descriptionHelper.setText("New description " + date);
-        descriptionHelper.save();
-
-        let newDescription = await descriptionHelper.getInnerHtml();
-        let notificationOpen = await notifications.success.open();
-
-        expect(notificationOpen).to.be.equal.true;
-        expect(newDescription).to.be.not.equal(description);
-
-        await notifications.success.close();
-    });
 }
 
 shared.statusTesting = async function(status1 , status2) {
@@ -195,68 +153,9 @@ shared.assignedToTesting = function() {
 shared.historyTesting = async function(screenshotsFolder) {
     let historyHelper = detailHelper.history();
 
-
-    //Adding a comment
-    historyHelper.selectCommentsTab();
-    await utils.common.takeScreenshot(screenshotsFolder, "show comments tab");
-
-    let commentsCounter = await historyHelper.countComments();
-    let date = Date.now();
-
-    await historyHelper.addComment("New comment " + date);
-    await utils.common.takeScreenshot(screenshotsFolder, "new coment");
-
-    let newCommentsCounter = await historyHelper.countComments();
-    expect(newCommentsCounter).to.be.equal(commentsCounter+1);
-
-    //Edit last comment
-    historyHelper.editLastComment();
-    let editComment = detailHelper.editComment();
-    editComment.updateText("This is the new and updated text");
-    editComment.saveComment();
-    await utils.common.takeScreenshot(screenshotsFolder, "edit comment");
-
-    //Show versions from last comment edited
-    historyHelper.showVersionsLastComment();
-    await utils.common.takeScreenshot(screenshotsFolder, "show comment versions");
-
-    historyHelper.closeVersionsLastComment();
-
-    //Deleting last comment
-    let deletedCommentsCounter = await historyHelper.countDeletedComments();
-    await historyHelper.deleteLastComment();
-
-    let newDeletedCommentsCounter = await historyHelper.countDeletedComments();
-    expect(newDeletedCommentsCounter).to.be.equal(deletedCommentsCounter+1);
-    await utils.common.takeScreenshot(screenshotsFolder, "deleted comment");
-
-    //Restore last comment
-    deletedCommentsCounter = await historyHelper.countDeletedComments();
-    await historyHelper.restoreLastComment();
-    newDeletedCommentsCounter = await historyHelper.countDeletedComments();
-    expect(newDeletedCommentsCounter).to.be.equal(deletedCommentsCounter-1);
-    await utils.common.takeScreenshot(screenshotsFolder, "restored comment");
-
-    //Store comment with a modification
-    commentsCounter = await historyHelper.countComments();
-
-    historyHelper.writeComment("New comment " + date);
-    let title = detailHelper.title();
-    title.setTitle('changed');
-    await title.save();
-    await utils.notifications.success.close();
-
-    newCommentsCounter = await historyHelper.countComments();
-
-    expect(newCommentsCounter).to.be.equal(commentsCounter+1);
-
     //Check activity
     await historyHelper.selectActivityTab();
     await utils.common.takeScreenshot(screenshotsFolder, "show activity tab");
-
-    let activitiesCounter = await historyHelper.countActivities();
-
-    expect(newCommentsCounter).to.be.least(1);
 }
 
 shared.blockTesting = async function() {

@@ -496,40 +496,37 @@ DeleteButtonDirective = ($log, $repo, $confirm, $location, $template) ->
 module.directive("tgDeleteButton", ["$log", "$tgRepo", "$tgConfirm", "$tgLocation", "$tgTemplate", DeleteButtonDirective])
 
 #############################################################################
-## Editable description directive
+## Editable subject directive
 #############################################################################
 
-EditableDescriptionDirective = ($rootscope, $repo, $confirm, $compile, $loading, $selectedText, $modelTransform, $template, $translate) ->
-    template = $template.get("common/components/editable-description.html")
-    noDescriptionMegEditMode = $template.get("common/components/editable-description-msg-edit-mode.html")
-    noDescriptionMegReadMode = $template.get("common/components/editable-description-msg-read-mode.html")
+EditableSubjectDirective = ($rootscope, $repo, $confirm, $loading, $modelTransform, $template) ->
+    template = $template.get("common/components/editable-subject.html")
 
     link = ($scope, $el, $attrs, $model) ->
-        $el.find('.edit-description').hide()
-        $el.find('.view-description .edit').hide()
 
         $scope.$on "object:updated", () ->
-            $el.find('.edit-description').hide()
-            $el.find('.view-description').show()
+            $el.find('.edit-subject').hide()
+            $el.find('.view-subject').show()
 
         isEditable = ->
             return $scope.project.my_permissions.indexOf($attrs.requiredPerm) != -1
 
-        save = (description) ->
+        save = (subject) ->
             currentLoading = $loading()
                 .target($el.find('.save-container'))
                 .start()
 
             transform = $modelTransform.save (item) ->
-                item.description = description
+
+                item.subject  = subject
 
                 return item
 
-            transform.then ->
+            transform.then =>
                 $confirm.notify("success")
                 $rootscope.$broadcast("object:updated")
-                $el.find('.edit-description').hide()
-                $el.find('.view-description').show()
+                $el.find('.edit-subject').hide()
+                $el.find('.view-subject').show()
 
             transform.then null, ->
                 $confirm.notify("error")
@@ -537,59 +534,42 @@ EditableDescriptionDirective = ($rootscope, $repo, $confirm, $compile, $loading,
             transform.finally ->
                 currentLoading.finish()
 
-        cancelEdition = () ->
-            $scope.item.revert()
-            $el.find('.edit-description').hide()
-            $el.find('.view-description').show()
+            return transform
 
-        $el.on "mouseup", ".view-description", (event) ->
-            # We want to dettect the a inside the div so we use the target and
-            # not the currentTarget
-            target = angular.element(event.target)
+        $el.click ->
             return if not isEditable()
-            return if target.is('a')
-            return if $selectedText.get().length
-
-            $el.find('.edit-description').show()
-            $el.find('.view-description').hide()
-            $el.find('textarea').focus()
-
-        $el.on "click", "a", (event) ->
-            target = angular.element(event.target)
-            href = target.attr('href')
-            if href.indexOf("#") == 0
-                event.preventDefault()
-                $('body').scrollTop($(href).offset().top)
+            $el.find('.edit-subject').show()
+            $el.find('.view-subject').hide()
+            $el.find('input').focus()
 
         $el.on "click", ".save", (e) ->
             e.preventDefault()
 
-            description = $scope.item.description
-            save(description)
+            subject = $scope.item.subject
+            save(subject)
 
-        $el.on "keydown", "textarea", (event) ->
-            return if event.keyCode != 27
+        $el.on "keyup", "input", (event) ->
+            if event.keyCode == 13
+                subject = $scope.item.subject
+                save(subject)
+            else if event.keyCode == 27
+                $scope.$apply () => $model.$modelValue.revert()
 
-            $scope.$applyAsync () ->
-                title = $translate.instant("COMMON.CONFIRM_CLOSE_EDIT_MODE_TITLE")
-                message = $translate.instant("COMMON.CONFIRM_CLOSE_EDIT_MODE_MESSAGE")
-                $confirm.ask(title, null, message).then (askResponse) ->
-                    cancelEdition()
-                    askResponse.finish()
+                $el.find('.edit-subject').hide()
+                $el.find('.view-subject').show()
+
+        $el.find('.edit-subject').hide()
 
         $scope.$watch $attrs.ngModel, (value) ->
             return if not value
-
             $scope.item = value
-            if isEditable()
-                $el.find('.view-description .edit').show()
-                $el.find('.view-description .us-content').addClass('editable')
-                $scope.noDescriptionMsg = $compile(noDescriptionMegEditMode)($scope)
-            else
-                $scope.noDescriptionMsg = $compile(noDescriptionMegReadMode)($scope)
+
+            if not isEditable()
+                $el.find('.view-subject .edit').remove()
 
         $scope.$on "$destroy", ->
             $el.off()
+
 
     return {
         link: link
@@ -598,81 +578,8 @@ EditableDescriptionDirective = ($rootscope, $repo, $confirm, $compile, $loading,
         template: template
     }
 
-module.directive("tgEditableDescription", [
-    "$rootScope",
-    "$tgRepo",
-    "$tgConfirm",
-    "$compile",
-    "$tgLoading",
-    "$selectedText",
-    "$tgQueueModelTransformation",
-    "$tgTemplate",
-    "$translate",
-    EditableDescriptionDirective])
-
-
-
-EditableWysiwyg = (attachmentsService, attachmentsFullService) ->
-    link = ($scope, $el, $attrs, $model) ->
-
-        isInEditMode = ->
-            return $el.find('textarea').is(':visible') and $model.$modelValue.id
-
-
-        uploadFile = (file, type) ->
-            return if !attachmentsService.validate(file)
-
-            return attachmentsFullService.addAttachment($model.$modelValue.project, $model.$modelValue.id, type, file).then (result) ->
-                if taiga.isImage(result.getIn(['file', 'name']))
-                    return '![' + result.getIn(['file', 'name']) + '](' + result.getIn(['file', 'url']) + ')'
-                else
-                    return '[' + result.getIn(['file', 'name']) + '](' + result.getIn(['file', 'url']) + ')'
-
-        $el.on 'dragover', (e) ->
-            textarea = $el.find('textarea').focus()
-
-            return false
-
-        $el.on 'drop', (e) ->
-            e.stopPropagation()
-            e.preventDefault()
-
-            if isInEditMode()
-                dataTransfer = e.dataTransfer || (e.originalEvent && e.originalEvent.dataTransfer)
-
-                textarea = $el.find('textarea')
-
-                textarea.addClass('in-progress')
-
-                type = $model.$modelValue['_name']
-
-                if type == "userstories"
-                    type = "us"
-                else if type == "tasks"
-                    type = "task"
-                else if type == "issues"
-                    type = "issue"
-                else if type == "wiki"
-                    type = "wiki_page"
-
-                promises = _.map dataTransfer.files, (file) ->
-                    return uploadFile(file, type)
-
-                Promise.all(promises).then (result) ->
-                    textarea = $el.find('textarea')
-
-                    $.markItUp({ replaceWith: result.join(' ') })
-
-                    textarea.removeClass('in-progress')
-
-    return {
-        link: link
-        restrict: "EA"
-        require: "ngModel"
-    }
-
-module.directive("tgEditableWysiwyg", ["tgAttachmentsService", "tgAttachmentsFullService", EditableWysiwyg])
-
+module.directive("tgEditableSubject", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", "$tgQueueModelTransformation",
+                                       "$tgTemplate", EditableSubjectDirective])
 
 #############################################################################
 ## Common list directives

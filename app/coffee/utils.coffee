@@ -251,6 +251,16 @@ getRandomDefaultColor = () ->
 getDefaulColorList = () ->
     return _.clone(DEFAULT_COLOR_LIST)
 
+getMatches = (string, regex, index) ->
+    index || (index = 1)
+    matches = []
+    match = null
+
+    while match = regex.exec(string)
+        matches.push(match[index])
+
+    return matches
+
 taiga = @.taiga
 taiga.addClass = addClass
 taiga.nl2br = nl2br
@@ -280,3 +290,4 @@ taiga.isPdf = isPdf
 taiga.patch = patch
 taiga.getRandomDefaultColor = getRandomDefaultColor
 taiga.getDefaulColorList = getDefaulColorList
+taiga.getMatches = getMatches

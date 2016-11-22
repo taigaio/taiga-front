@@ -39,6 +39,7 @@ Every code patch accepted in taiga codebase is licensed under [AGPL v3.0](http:/
 
 Please read carefully [our license](https://github.com/taigaio/taiga-front/blob/master/LICENSE) and ask us if you have any questions.
 
+Emoji provided free by [Twemoji](https://github.com/twitter/twemoji)
 
 #### Bug reports, enhancements and support ####
 
@@ -125,14 +126,12 @@ sass -v             # should return Sass 3.3.8 (Maptastic Maple)
 
 Complete process for all OS at: http://sass-lang.com/install
 
-**Node + Bower + Gulp**
+**Node + Gulp**
 
 We recommend using [nvm](https://github.com/creationix/nvm) to manage different node versions
 ```
 npm install -g gulp
-npm install -g bower
 npm install
-bower install
 gulp
 ```
 

@@ -28,7 +28,6 @@ class CommentController
 
     constructor: (@currentUserService, @permissionService, @lightboxFactory) ->
         @.hiddenDeletedComment = true
-        @.commentContent = angular.copy(@.comment)
 
     showDeletedComment: () ->
         @.hiddenDeletedComment = false
@@ -44,6 +43,9 @@ class CommentController
         if @currentUserService.getUser()
             @.user = @currentUserService.getUser()
             return @.user.get('id') == @.comment.user.pk || @permissionService.check('modify_project')
+
+    saveComment: (text, cb) ->
+        @.onEditComment({commentId: @.comment.id, commentData: text, callback: cb})
 
     displayCommentHistory: () ->
         @lightboxFactory.create('tg-lb-display-historic', {

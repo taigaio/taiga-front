@@ -39,7 +39,7 @@ class Model
         instance._modifiedAttrs = _.cloneDeep(@._modifiedAttrs)
         instance._isModified = _.cloneDeep(@._isModified)
 
-        return instance        
+        return instance
 
     clone: ->
         instance = new Model(@._name, @._attrs, @._dataTypes)
