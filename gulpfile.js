@@ -69,7 +69,7 @@ paths.images = paths.app + "images/**/*";
 paths.svg = paths.app + "svg/**/*";
 paths.css_vendor = [
     paths.modules + "intro.js/introjs.css",
-    paths.modules + "dragula.js/dist/dragula.css",
+    paths.modules + "dragula/dist/dragula.css",
     paths.modules + "awesomplete/awesomplete.css",
     paths.app + "styles/vendor/*.css",
     paths.modules + "medium-editor/dist/css/medium-editor.css",
