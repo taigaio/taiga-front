@@ -409,12 +409,8 @@ module.directive("tgKanbanArchivedStatusIntro", ["$translate", "tgKanbanUserstor
 ## Kanban Squish Column Directive
 #############################################################################
 
-KanbanSquishColumnDirective = (rs) ->
+KanbanSquishColumnDirective = (rs, projectService) ->
     link = ($scope, $el, $attrs) ->
-        $scope.$on "project:loaded", (event, project) ->
-            $scope.folds = rs.kanban.getStatusColumnModes(project.id)
-            updateTableWidth()
-
         $scope.foldStatus = (status) ->
             $scope.folds[status.id] = !!!$scope.folds[status.id]
             rs.kanban.storeStatusColumnModes($scope.projectId, $scope.folds)
@@ -432,9 +428,12 @@ KanbanSquishColumnDirective = (rs) ->
 
             $el.find('.kanban-table-inner').css("width", totalWidth)
 
+        $scope.folds = rs.kanban.getStatusColumnModes(projectService.project.get('id'))
+        updateTableWidth()
+
     return {link: link}
 
-module.directive("tgKanbanSquishColumn", ["$tgResources", KanbanSquishColumnDirective])
+module.directive("tgKanbanSquishColumn", ["$tgResources", "tgProjectService", KanbanSquishColumnDirective])
 
 #############################################################################
 ## Kanban WIP Limit Directive
