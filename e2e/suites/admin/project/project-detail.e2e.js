@@ -67,6 +67,21 @@ describe('project detail', function() {
         expect(utils.notifications.success.open()).to.be.eventually.equal(true);
     });
 
+    it('receive feedback', async function() {
+        let checked = !! await adminHelper.receiveFeedback().getAttribute('checked');
+
+        if(!checked) {
+            adminHelper.togglereceiveFeedback();
+        }
+
+        $('button[type="submit"]').click();
+
+        checked = !! await adminHelper.receiveFeedback().getAttribute('checked');
+
+        expect(checked).to.be.true;
+        expect(utils.notifications.success.open()).to.be.eventually.equal(true);
+    });
+
     it('edit logo', async function() {
         let imageContainer = $('.image-container');
 

@@ -1,5 +1,4 @@
-a.track-button.like-button.like-container(
-    href="",
+button.track-button.like-button(
     title="{{ 'PROJECT.LIKE_BUTTON.BUTTON_TITLE' | translate }}"
     ng-click="vm.toggleLike()"
     ng-class="{'active':vm.project.get('is_fan'), 'is-hover':vm.project.get('is_fan') && vm.isMouseOver}"
@@ -21,9 +20,7 @@ a.track-button.like-button.like-container(
             ng-if="vm.project.get('is_fan') && vm.isMouseOver"
             translate="PROJECT.LIKE_BUTTON.UNLIKE"
         )
-
     span.track-button-counter(
         title="{{ 'PROJECT.LIKE_BUTTON.COUNTER_TITLE'|translate:{total:vm.project.get(\"total_fans\")||0}:'messageformat' }}",
         tg-loading="vm.loading"
-    )
-        | {{ vm.project.get('total_fans') }}
+    ) {{ vm.project.get('total_fans') }}

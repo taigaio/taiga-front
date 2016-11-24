@@ -1,0 +1,10 @@
+button.track-button.contact-team.e2e-contact-team(
+    title="{{ 'PROJECT.CONTACT_BUTTON.CONTACT_TITLE' | translate }}"
+    ng-click="vm.launchContactForm()"
+    ng-class="{'contact-team-large': vm.layout == 'large'}"
+)
+    tg-svg(svg-icon="icon-mail")
+    span(
+        ng-if="vm.layout == 'large'"
+        translate="PROJECT.CONTACT_BUTTON.CONTACT_BUTTON"
+    )

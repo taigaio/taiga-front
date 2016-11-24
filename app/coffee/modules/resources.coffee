@@ -74,6 +74,7 @@ urls = {
     "project-unlike": "/projects/%s/unlike"
     "project-watch": "/projects/%s/watch"
     "project-unwatch": "/projects/%s/unwatch"
+    "project-contact": "contact"
     "project-transfer-validate-token": "/projects/%s/transfer_validate_token"
     "project-transfer-accept": "/projects/%s/transfer_accept"
     "project-transfer-reject": "/projects/%s/transfer_reject"

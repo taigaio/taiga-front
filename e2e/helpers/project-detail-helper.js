@@ -14,6 +14,14 @@ helper.toggleIsLookingForPeople = function() {
     helper.lookingForPeople().click();
 };
 
+helper.receiveFeedback = function() {
+    return $$('.get-feedback input').get(0);
+};
+
+helper.togglereceiveFeedback = function() {
+    helper.receiveFeedback().click();
+};
+
 helper.editLogo = function() {
     let inputFile = $('#logo-field');
 
