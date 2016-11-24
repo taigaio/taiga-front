@@ -62,3 +62,8 @@
     ng-if="vm.type == 'is_blocked'"
 )
     include history-templates/blocked
+
+.diff-wrapper(
+    ng-if="vm.type == 'type'"
+)
+    include history-templates/history-type
