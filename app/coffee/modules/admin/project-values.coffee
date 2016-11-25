@@ -719,14 +719,16 @@ class ProjectTagsController extends taiga.Controller
         "$tgConfirm",
         "$tgResources",
         "$tgModel",
+        "tgProjectService"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @model) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @model, @projectService) ->
         @.loading = true
-        @rootscope.$on("project:loaded", @.loadTags)
+        @.loadTags()
 
     loadTags: =>
-        return @rs.projects.tagsColors(@scope.projectId).then (tags) =>
+        project = @projectService.project.toJS()
+        return @rs.projects.tagsColors(project.id).then (tags) =>
             @scope.projectTagsAll = _.map tags.getAttrs(), (color, name) =>
                 @model.make_model('tag', {name: name, color: color})
             @.filterAndSortTags()
