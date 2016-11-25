@@ -71,6 +71,9 @@
         padding: 0 1rem 0 2rem;
         &.js-value-view-mode {
             white-space: pre-line;
+            &.wysiwyg {
+                white-space: normal;
+            }
         }
     }
     form {

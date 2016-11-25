@@ -7,14 +7,19 @@
             <%- description %>
         <% } %>
 
+    <% if (type=="url") { %>
     .custom-field-value.js-value-view-mode
         span
-            <% if (type=="url") { %>
             a(href!="<%- value %>")
                 <%- value %>
-            <% } else { %>
+    <% } else if (type=="richtext") { %>
+    .custom-field-value.js-value-view-mode.wysiwyg
+        div(ng-bind-html!="\'<%- value %>\'|markdownToHTML")
+    <% } else { %>
+    .custom-field-value.js-value-view-mode
+        span
             <%- value %>
-            <% } %>
+    <% } %>
 
     <% if (isEditable) { %>
     .custom-field-options

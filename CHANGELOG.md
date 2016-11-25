@@ -5,8 +5,9 @@
 ### Features
 - Contact with the project: if the projects have this module enabled Taiga users can contact them.
 - Velocity forecasting. Create sprints according to team velocity.
-- Remove bower
+- Remove bower, now use only npm packages.
 - Add new wysiwyg editor (like the Medunm editor) with emojis, local storage changes, mentions...
+- Add rich text custom fields (with a wysiwyg editor like descreption or comments).
 
 ### Misc
 - Lots of small and not so small bugfixes.

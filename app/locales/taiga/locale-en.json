@@ -573,6 +573,7 @@
             "ISSUE_DESCRIPTION": "Issues custom fields",
             "ISSUE_ADD": "Add a custom field in issues",
             "FIELD_TYPE_TEXT": "Text",
+            "FIELD_TYPE_RICHTEXT": "Rich text",
             "FIELD_TYPE_MULTI": "Multi-line",
             "FIELD_TYPE_DATE": "Date",
             "FIELD_TYPE_URL": "Url"

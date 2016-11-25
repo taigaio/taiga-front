@@ -32,6 +32,7 @@ module = angular.module("taigaCommon")
 
 # Custom attributes types (see taiga-back/taiga/projects/custom_attributes/choices.py)
 TEXT_TYPE = "text"
+RICHTEXT_TYPE = "url"
 MULTILINE_TYPE = "multiline"
 DATE_TYPE = "date"
 URL_TYPE = "url"
@@ -53,6 +54,10 @@ TYPE_CHOICES = [
     {
         key: URL_TYPE,
         name: "ADMIN.CUSTOM_FIELDS.FIELD_TYPE_URL"
+    },
+    {
+        key: RICHTEXT_TYPE,
+        name: "ADMIN.CUSTOM_FIELDS.FIELD_TYPE_RICHTEXT"
     }
 ]
 
@@ -193,6 +198,15 @@ CustomAttributeValueDirective = ($template, $selectedText, $compile, $translate,
             requiredEditionPerm = $attrs.requiredEditionPerm
             return permissions.indexOf(requiredEditionPerm) > -1
 
+        $scope.saveCustomRichText = (markdown, callback) =>
+            attributeValue.value = markdown
+            $ctrl.updateAttributeValue(attributeValue).then ->
+                callback()
+                render(attributeValue, false)
+
+        $scope.cancelCustomRichText= () =>
+            render(attributeValue, false)
+
         submit = debounce 2000, (event) =>
             event.preventDefault()
 
@@ -214,6 +228,9 @@ CustomAttributeValueDirective = ($template, $selectedText, $compile, $translate,
 
         # Bootstrap
         attributeValue = $scope.$eval($attrs.tgCustomAttributeValue)
+        if attributeValue.value == null or attributeValue.value == undefined
+            attributeValue.value = ""
+        $scope.customAttributeValue = attributeValue
         render(attributeValue)
 
         ## Actions (on view mode)

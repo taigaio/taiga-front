@@ -13,6 +13,8 @@ form.custom-field-single.editable
         input#custom-field-value(name="value", type="text", value!="<%- value %>")
         <% } else if (type=="multiline") { %>
         textarea#custom-field-value(name="value") <%- value %>
+        <% } else if (type=="richtext") { %>
+        tg-custom-field-edit-wysiwyg()
         <% } else if (type=="date") { %>
         input#custom-field-value(name="value", type="text", data-pikaday, value!="<%- value %>")
         <% } else if (type=="url") { %>
@@ -21,6 +23,8 @@ form.custom-field-single.editable
         input#custom-field-value(name="value", type="text", value!="<%- value %>")
         <% } %>
 
+    <% if (type != "richtext") { %>
     div.custom-field-options
         a.js-save-description(href="", title="{{'COMMON.CUSTOM_ATTRIBUTES.SAVE' | translate}}")
             tg-svg(svg-icon="icon-save")
+    <% } %>
