@@ -440,25 +440,27 @@ class ProjectCustomAttributesController extends mixOf(taiga.Controller, taiga.Pa
         "$tgLocation",
         "$tgNavUrls",
         "tgAppMetaService",
-        "$translate"
+        "$translate",
+        "tgProjectService"
     ]
 
     constructor: (@scope, @rootscope, @repo, @rs, @params, @q, @location, @navUrls, @appMetaService,
-                  @translate) ->
+                  @translate, @projectService) ->
         @scope.TYPE_CHOICES = TYPE_CHOICES
+        @scope.project = @projectService.project.toJS()
+        @scope.projectId = @scope.project.id
 
-        @scope.project = {}
+        sectionName = @translate.instant(@scope.sectionName)
+        title = @translate.instant("ADMIN.CUSTOM_ATTRIBUTES.PAGE_TITLE", {
+            "sectionName": sectionName,
+            "projectName": @scope.project.name
+        })
+        description = @scope.project.description
+        @appMetaService.setAll(title, description)
 
-        @rootscope.$on "project:loaded", =>
+        @scope.init = (type) =>
+            @scope.type = type
             @.loadCustomAttributes()
-
-            sectionName = @translate.instant(@scope.sectionName)
-            title = @translate.instant("ADMIN.CUSTOM_ATTRIBUTES.PAGE_TITLE", {
-                "sectionName": sectionName,
-                "projectName": @scope.project.name
-            })
-            description = @scope.project.description
-            @appMetaService.setAll(title, description)
 
     #########################
     # Custom Attribute
