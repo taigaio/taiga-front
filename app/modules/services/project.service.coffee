@@ -38,7 +38,7 @@ class ProjectService
         taiga.defineImmutableProperty @, "sectionsBreadcrumb", () => return @._sectionsBreadcrumb
         taiga.defineImmutableProperty @, "activeMembers", () => return @._activeMembers
 
-        @.autoRefresh()
+        @.autoRefresh() if !window.localStorage.e2e
 
     cleanProject: () ->
         @._project = null

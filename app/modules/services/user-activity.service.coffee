@@ -27,6 +27,8 @@ class UserActivityService
     idleTimeout: 60 * 5 * 1000
 
     constructor: (@timeout) ->
+        return null if window.localStorage.e2e
+
         window.addEventListener('mousemove', @.resetTimer.bind(this), false)
         window.addEventListener('mousedown', @.resetTimer.bind(this), false)
         window.addEventListener('keypress', @.resetTimer.bind(this), false)
