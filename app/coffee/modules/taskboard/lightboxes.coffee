@@ -212,7 +212,7 @@ CreateBulkTasksDirective = ($repo, $rs, $rootscope, $loading, lightboxService, $
 
             promise = $rs.tasks.bulkCreate(projectId, sprintId, usId, data)
             promise.then (result) ->
-                result =  _.map(result, (x) => $model.make_model('userstories', x))
+                result =  _.map(result, (x) => $model.make_model('tasks', x))
                 currentLoading.finish()
                 $rootscope.$broadcast("taskform:bulk:success", result)
                 lightboxService.close($el)
