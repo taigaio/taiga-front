@@ -8,6 +8,9 @@
 - Remove bower, now use only npm packages.
 - Add new wysiwyg editor (like the Medunm editor) with emojis, local storage changes, mentions...
 - Add rich text custom fields (with a wysiwyg editor like descreption or comments).
+- i18n:
+  - Add japanese (ja) translation.
+  - Add chinese simplified (zh-Hans) translation.
 
 ### Misc
 - Lots of small and not so small bugfixes.

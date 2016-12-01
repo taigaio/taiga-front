@@ -1,0 +1,1699 @@
+{
+    "COMMON": {
+        "YES": "はい",
+        "NO": "いいえ",
+        "OR": "または",
+        "LOADING": "ロード中...",
+        "LOADING_PROJECT": "プロジェクトを読み込んでいます...",
+        "DATE": "YYYY年MM月DD日",
+        "DATETIME": "YYYY年MM月DD日 HH時mm分",
+        "SAVE": "保存",
+        "CANCEL": "キャンセル",
+        "ACCEPT": "はい",
+        "DELETE": "削除",
+        "UNLINK": "リンク解除",
+        "CREATE": "作成",
+        "ADD": "追加",
+        "COPY_TO_CLIPBOARD": "クリップボードにコピー: Ctrl+C",
+        "EDIT": "編集",
+        "DRAG": "ドラッグ",
+        "TAG_LINE": "あなたのアジャイルでフリーでオープンソースなマネジメントツールです",
+        "TAG_LINE_2": "LOVE YOUR PROJECT",
+        "BLOCK": "ブロック",
+        "BLOCK_TITLE": "Block this item for example if it has a dependency that can not be satisfied",
+        "BLOCKED": "ブロック中",
+        "UNBLOCK": "ブロック解除",
+        "UNBLOCK_TITLE": "ブロックを解除する",
+        "BLOCKED_NOTE": "なぜこれはブロックされているのか？",
+        "BLOCKED_REASON": "理由を説明してください",
+        "CREATED_BY": "{{fullDisplayName}} によって作成",
+        "FROM": "from",
+        "TO": "to",
+        "CLOSE": "閉じる",
+        "GO_HOME": "ホームに戻る",
+        "PLUGINS": "プラグイン",
+        "BETA": "これはベータ版です！",
+        "ONE_ITEM_LINE": "１行に１アイテム",
+        "NEW_BULK": "一括登録",
+        "RELATED_TASKS": "関連タスク",
+        "PREVIOUS": "前",
+        "NEXT": "次へ",
+        "LOGOUT": "ログアウト",
+        "EXTERNAL_USER": "外部ユーザー",
+        "GENERIC_ERROR": "ウンパルンパのひとりが「{{error}}」と言っています。",
+        "IOCAINE_TEXT": "This member is feeling a bit overwhelmed by this task. Will become immune to the iocaine poison over time with your help. For now, may need a hug.",
+        "CLIENT_REQUIREMENT": "Client requirement is new requirement that was not previously expected and it is required to be part of the project",
+        "TEAM_REQUIREMENT": "Team requirement is a requirement that must exist in the project but should have no cost for the client",
+        "OWNER": "プロジェクトオーナー",
+        "CAPSLOCK_WARNING": "Be careful! You are using capital letters in an input field that is case sensitive.",
+        "CONFIRM_CLOSE_EDIT_MODE_TITLE": "本当にこの編集画面を閉じてもよろしいですか？",
+        "CONFIRM_CLOSE_EDIT_MODE_MESSAGE": "Remember that if you close the edit mode without saving all the changes will be lost",
+        "RELATED_USERSTORIES": "関連するユーザーストーリー",
+        "CARD": {
+            "ASSIGN_TO": "アサイン",
+            "EDIT": "編集"
+        },
+        "FORM_ERRORS": {
+            "DEFAULT_MESSAGE": "無効な値です",
+            "TYPE_EMAIL": "有効なメールアドレスでなければいけません",
+            "TYPE_URL": "有効なURLでなければいけません",
+            "TYPE_URLSTRICT": "有効なURLでなければいけません",
+            "TYPE_NUMBER": "有効な数字でなければいけません",
+            "TYPE_DIGITS": "アラビア数字でなければいけません",
+            "TYPE_DATEISO": "YYYY-MM-DD の形式でなければいけません (例: 2038年01月23日)",
+            "TYPE_ALPHANUM": "半角英数字でなければなりません",
+            "TYPE_PHONE": "有効な電話番号でなければいけません",
+            "NOTNULL": "null以外でなければいけません",
+            "NOT_BLANK": "空欄にできません",
+            "REQUIRED": "必須です",
+            "REGEXP": "無効な値です",
+            "MIN": "この値は %s 以上でなければいけません",
+            "MAX": "この値は %s 以下でなければいけません",
+            "RANGE": "この値は %s と %s の間でなければいけません",
+            "MIN_LENGTH": "文字数が短すぎます。%s 文字以上にしてください。",
+            "MAX_LENGTH": "入力した値が長すぎます。%s 文字以下にしてください。",
+            "RANGE_LENGTH": "文字数が無効です。%s から %s 文字の間でなければいけません ",
+            "MIN_CHECK": "%s 以上選択してください。",
+            "MAX_CHECK": "選択できるのは %s までです",
+            "RANGE_CHECK": "選択できるのは %s から %s までです",
+            "EQUAL_TO": "この値は同じでなければいけません",
+            "LINEWIDTH": "One or more lines is perhaps too long. Try to keep under %s characters.",
+            "PIKADAY": "無効なデータフォーマットです。DD MMM YYYYの形式で入力してください。（例：23 Mar 1984）"
+        },
+        "PICKERDATE": {
+            "FORMAT": "YYYY年MM月DD日",
+            "IS_RTL": "false",
+            "FIRST_DAY_OF_WEEK": "1",
+            "PREV_MONTH": "先月",
+            "NEXT_MONTH": "翌月",
+            "MONTHS": {
+                "JAN": "1月",
+                "FEB": "2月",
+                "MAR": "3月",
+                "APR": "4月",
+                "MAY": "5月",
+                "JUN": "6月",
+                "JUL": "7月",
+                "AUG": "8月",
+                "SEP": "9月",
+                "OCT": "10月",
+                "NOV": "11月",
+                "DEC": "12月"
+            },
+            "WEEK_DAYS": {
+                "SUN": "日曜",
+                "MON": "月曜",
+                "TUE": "火曜",
+                "WED": "水曜",
+                "THU": "木曜日",
+                "FRI": "金曜",
+                "SAT": "土曜"
+            },
+            "WEEK_DAYS_SHORT": {
+                "SUN": "日",
+                "MON": "月",
+                "TUE": "火",
+                "WED": "水",
+                "THU": "木",
+                "FRI": "金",
+                "SAT": "土"
+            }
+        },
+        "SEE_USER_PROFILE": "{{username }} のプロフィールを見る",
+        "USER_STORY": "User story",
+        "TASK": "タスク",
+        "ISSUE": "課題",
+        "EPIC": "エピック",
+        "TAGS": {
+            "PLACEHOLDER": "タグを入力",
+            "DELETE": "タグを削除",
+            "ADD": "タグを追加"
+        },
+        "DESCRIPTION": {
+            "EMPTY": "空欄だと退屈です…。説明を追加してください。",
+            "NO_DESCRIPTION": "説明はありません"
+        },
+        "FIELDS": {
+            "SUBJECT": "題名",
+            "NAME": "名前",
+            "URL": "URL",
+            "DESCRIPTION": "説明",
+            "VALUE": "値",
+            "SLUG": "スラッグ",
+            "COLOR": "色",
+            "IS_CLOSED": "クローズ",
+            "STATUS": "ステータス",
+            "TYPE": "タイプ",
+            "SEVERITY": "深刻度",
+            "PRIORITY": "優先度",
+            "ASSIGNED_TO": "担当者",
+            "POINTS": "ポイント",
+            "BLOCKED_NOTE": "ブロックノート",
+            "IS_BLOCKED": "はブロックされています。",
+            "REF": "参照",
+            "VOTES": "投票",
+            "SPRINT": "スプリント"
+        },
+        "ROLES": {
+            "ALL": "すべて"
+        },
+        "ASSIGNED_TO": {
+            "NOT_ASSIGNED": "未アサイン",
+            "ASSIGN": "アサイン",
+            "DELETE_ASSIGNMENT": "アサインを解除",
+            "REMOVE_ASSIGNED": "Remove assigned",
+            "TOO_MANY": "…ユーザーが多すぎます。フィルタを継続してください。",
+            "CONFIRM_UNASSIGNED": "本当にこのアサインから外れてもよろしいですか？",
+            "TITLE_ACTION_EDIT_ASSIGNMENT": "アサインを編集",
+            "SELF": "自分が担当する"
+        },
+        "STATUS": {
+            "CLOSED": "終了",
+            "OPEN": "オープン"
+        },
+        "WATCHERS": {
+            "WATCHERS": "ウォッチャー",
+            "ADD": "ウォッチャー追加",
+            "TITLE_ADD": "プロジェクトメンバーをウォッチャーリストへ追加",
+            "DELETE": "ウォッチャーを削除",
+            "TITLE_LIGHTBOX_DELETE_WARTCHER": "ウォッチャーの削除..."
+        },
+        "WATCH_BUTTON": {
+            "WATCH": "フォロー",
+            "WATCHING": "フォロー中",
+            "UNWATCH": "フォローをやめる",
+            "WATCHERS": "ウォッチャー",
+            "BUTTON_TITLE": "この項目のフォローを有効/無効にする",
+            "COUNTER_TITLE": "{total, plural, one{one watcher} other{# 人がフォロー中}}"
+        },
+        "VOTE_BUTTON": {
+            "UPVOTE": "賛成",
+            "UPVOTED": "賛成",
+            "DOWNVOTE": "反対",
+            "VOTERS": "投票者",
+            "BUTTON_TITLE": "賛成/反対の投票を行う",
+            "COUNTER_TITLE": "{total, plural, one{one vote} other{# 人が賛成}}"
+        },
+        "CUSTOM_ATTRIBUTES": {
+            "CUSTOM_FIELDS": "カスタムフィールド",
+            "SAVE": "カスタムフィールドを保存",
+            "EDIT": "カスタムフィールドを編集",
+            "DELETE": "カスタム属性を削除",
+            "CONFIRM_DELETE": "このカスタムフィールドのすべての値が削除されることになります。\n本当にこのまま続行してもよろしいですか？"
+        },
+        "FILTERS": {
+            "TITLE": "フィルター",
+            "INPUT_PLACEHOLDER": "Subject or reference",
+            "TITLE_ACTION_FILTER_BUTTON": "検索",
+            "INPUT_SEARCH_PLACEHOLDER": "Subject or ref",
+            "TITLE_ACTION_SEARCH": "検索",
+            "ACTION_SAVE_CUSTOM_FILTER": "カスタムフィルターとして保存する",
+            "PLACEHOLDER_FILTER_NAME": "Write the filter name and press enter",
+            "APPLIED_FILTERS_NUM": "フィルター適用中",
+            "CATEGORIES": {
+                "TYPE": "タイプ",
+                "STATUS": "ステータス",
+                "SEVERITY": "深刻度",
+                "PRIORITIES": "優先度",
+                "TAGS": "タグ",
+                "ASSIGNED_TO": "担当者",
+                "CREATED_BY": "作成者",
+                "CUSTOM_FILTERS": "カスタムフィルター",
+                "EPIC": "エピック"
+            },
+            "CONFIRM_DELETE": {
+                "TITLE": "カスタムフィルターを削除",
+                "MESSAGE": "カスタムフィルター '{{customFilterName}}'"
+            }
+        },
+        "WYSIWYG": {
+            "OUTDATED": "Another person has made changes while you were editing. Check the new version on the activiy tab before you save your changes.",
+            "ATTACH_FILE_HELP": "テキストエリアへドラッグ＆ドロップでファイルを添付",
+            "ATTACH_FILE_HELP_SAVE_FIRST": "Save first before if you want to attach files by dragging & dropping on the textarea above.",
+            "MARKDOWN_HELP": "Markdown記法のヘルプ"
+        },
+        "PERMISIONS_CATEGORIES": {
+            "EPICS": {
+                "NAME": "エピック",
+                "VIEW_EPICS": "エピックの表示",
+                "ADD_EPICS": "エピックの追加",
+                "MODIFY_EPICS": "エピックの変更",
+                "COMMENT_EPICS": "複数のエピックにコメントする",
+                "DELETE_EPICS": "エピックの削除"
+            },
+            "SPRINTS": {
+                "NAME": "スプリント",
+                "VIEW_SPRINTS": "スプリントの表示",
+                "ADD_SPRINTS": "スプリントの追加",
+                "MODIFY_SPRINTS": "スプリントの変更",
+                "DELETE_SPRINTS": "スプリントの削除"
+            },
+            "USER_STORIES": {
+                "NAME": "ユーザーストーリー",
+                "VIEW_USER_STORIES": "ユーザーストーリーの表示",
+                "ADD_USER_STORIES": "ユーザーストーリーの追加",
+                "MODIFY_USER_STORIES": "ユーザーストーリーの変更",
+                "COMMENT_USER_STORIES": "複数のユーザーストーリーにコメントする",
+                "DELETE_USER_STORIES": "ユーザーストーリーの削除"
+            },
+            "TASKS": {
+                "NAME": "タスク",
+                "VIEW_TASKS": "タスクの表示",
+                "ADD_TASKS": "タスクの追加",
+                "MODIFY_TASKS": "タスクの変更",
+                "COMMENT_TASKS": "複数のタスクにコメントする",
+                "DELETE_TASKS": "タスクの削除"
+            },
+            "ISSUES": {
+                "NAME": "課題",
+                "VIEW_ISSUES": "課題の表示",
+                "ADD_ISSUES": "課題の追加",
+                "MODIFY_ISSUES": "課題の変更",
+                "COMMENT_ISSUES": "複数の課題にコメントする",
+                "DELETE_ISSUES": "課題の削除"
+            },
+            "WIKI": {
+                "NAME": "Wiki",
+                "VIEW_WIKI_PAGES": "Wikiページの表示",
+                "ADD_WIKI_PAGES": "Wikiページの追加",
+                "MODIFY_WIKI_PAGES": "Wikiページの変更",
+                "DELETE_WIKI_PAGES": "Wikiページの削除",
+                "VIEW_WIKI_LINKS": "Wikiリンクの表示",
+                "ADD_WIKI_LINKS": "Wikiリンクの追加",
+                "DELETE_WIKI_LINKS": "Wikiリンクの削除"
+            }
+        },
+        "META": {
+            "PAGE_TITLE": "Taiga",
+            "PAGE_DESCRIPTION": "Taiga is a project management platform for startups and agile developers & designers who want a simple, beautiful tool that makes work truly enjoyable."
+        }
+    },
+    "LOGIN": {
+        "PAGE_TITLE": "ログイン - Taiga",
+        "PAGE_DESCRIPTION": "仕事を本当に楽しくする美しくてシンプルなツールを求めている、スタートアップやアジャイル開発者及びデザイナーのためのプロジェクトマネジメント基盤、Taigaにログインしましょう。"
+    },
+    "AUTH": {
+        "INVITED_YOU": "があなたをプロジェクトに参加するよう招待しています",
+        "NOT_REGISTERED_YET": "未登録ですか？",
+        "REGISTER": "登録",
+        "CREATE_ACCOUNT": "こちらから無料でアカウントを作成"
+    },
+    "LOGIN_COMMON": {
+        "HEADER": "すでにログインしたことがあります",
+        "PLACEHOLDER_AUTH_NAME": "ユーザー名 または メールアドレス",
+        "LINK_FORGOT_PASSWORD": "忘れましたか？",
+        "TITLE_LINK_FORGOT_PASSWORD": "パスワードを忘れましたか？",
+        "ACTION_ENTER": "決定",
+        "ACTION_SIGN_IN": "ログイン",
+        "PLACEHOLDER_AUTH_PASSWORD": "パスワード"
+    },
+    "LOGIN_FORM": {
+        "ERROR_AUTH_INCORRECT": "「あなたのユーザー名/メールアドレス または パスワードが間違っている」とウンパルンパたちが言っています。",
+        "SUCCESS": "ウンパルンパたちは嬉しいみたいですよ。Taigaへようこそ。"
+    },
+    "REGISTER": {
+        "PAGE_TITLE": "登録 - Taiga",
+        "PAGE_DESCRIPTION": "仕事を本当に楽しくする美しくてシンプルなツールを求めるスタートアップや、アジャイル開発者及びデザイナーのためのプロジェクトマネジメントプラットフォーム、Taigaにあなたのアカウントを作成しましょう。"
+    },
+    "REGISTER_FORM": {
+        "TITLE": "新しいTaigaアカウントを登録する (無料)",
+        "PLACEHOLDER_NAME": "ユーザー名を記入",
+        "PLACEHOLDER_FULL_NAME": "フルネームを記入",
+        "PLACEHOLDER_EMAIL": "メールアドレスを記入",
+        "PLACEHOLDER_PASSWORD": "パスワードを設定 (大文字・小文字を区別)",
+        "ACTION_SIGN_UP": "サインアップ",
+        "TITLE_LINK_LOGIN": "ログイン",
+        "LINK_LOGIN": "登録の準備は整いましたか？ ログイン"
+    },
+    "FORGOT_PASSWORD": {
+        "PAGE_TITLE": "パスワードを忘れました - Taiga",
+        "PAGE_DESCRIPTION": "新しいパスワードを取得するためにユーザー名 または メールアドレスを記入することで、Taigaに再びアクセスできます。"
+    },
+    "FORGOT_PASSWORD_FORM": {
+        "TITLE": "おっと、パスワードを忘れてしまいましたか？",
+        "SUBTITLE": "新しく始めるためにユーザー名 または メールアドレスを入力",
+        "PLACEHOLDER_FIELD": "ユーザー名 または メール",
+        "ACTION_RESET_PASSWORD": "パスワードをリセット",
+        "LINK_CANCEL": "いいえ、戻ります。私はそれを覚えていると思います。",
+        "SUCCESS_TITLE": "Inboxを確認してください",
+        "SUCCESS_TEXT": "新しいパスワードを設定するための指示を記載したメールを送信しました",
+        "ERROR": "「あなたのアカウントはまだ登録されていない」とウンパルンパたちが言っています。"
+    },
+    "CHANGE_PASSWORD": {
+        "PAGE_TITLE": "パスワードの変更 - Taiga",
+        "PAGE_DESCRIPTION": "あなたのTaigaアカウントに新しいパスワードを設定します。そして、いくつかの鉄分豊富な食品を摂取しましょう！脳にとって良いことです :-P",
+        "SECTION_NAME": "パスワード変更",
+        "FIELD_CURRENT_PASSWORD": "現在のパスワード",
+        "PLACEHOLDER_CURRENT_PASSWORD": "現在のパスワード (パスワードが未設定の場合は空)",
+        "FIELD_NEW_PASSWORD": "新しいパスワード",
+        "PLACEHOLDER_NEW_PASSWORD": "新しいパスワードを入力",
+        "FIELD_RETYPE_PASSWORD": "新しいパスワードを再入力",
+        "PLACEHOLDER_RETYPE_PASSWORD": "新しいパスワードを再入力",
+        "ERROR_PASSWORD_MATCH": "パスワードが一致しません。"
+    },
+    "CHANGE_PASSWORD_RECOVERY_FORM": {
+        "TITLE": "新しいTaigaのパスを作成",
+        "SUBTITLE": "そして、いくつかの鉄分豊富な食品を摂取しましょう！脳にとって良いことです :-P",
+        "PLACEHOLDER_NEW_PASSWORD": "新しいパスワード",
+        "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "新しいパスワードを再入力",
+        "ACTION_RESET_PASSWORD": "パスワードをリセット",
+        "ERROR": "ウンパルンパたちはあなたのパスワード復元依頼を見つけられないようです。もう一度お試しください。",
+        "SUCCESS": "ウンパルンパたちはあなたの新しいパスワードを保存しました。<br /> 新しい方のパスワードで<strong>サインイン</strong> してみてください。"
+    },
+    "INVITATION": {
+        "PAGE_TITLE": "招待を受諾する - Taiga",
+        "PAGE_DESCRIPTION": "仕事を本当に楽しくする美しくてシンプルなツールを求めるスタートアップや、アジャイル開発者及びデザイナーのためのプロジェクトマネジメントプラットフォーム、Taigaのプロジェクトへの招待を受諾"
+    },
+    "INVITATION_LOGIN_FORM": {
+        "NOT_FOUND": "「あなたの招待を確認できなかった」とウンパルンパたちが言っています。",
+        "SUCCESS": "プロジェクトへの参加に成功しました, {{project_name}}へようこそ",
+        "ERROR": "「あなたのアカウントはまだ登録されていないか無効なパスワードが入力された」とウンパルンパたちが言っています。"
+    },
+    "HOME": {
+        "PAGE_TITLE": "ホーム - Taiga",
+        "PAGE_DESCRIPTION": "The Taiga home page with your main projects and all your assigned and watched user stories, tasks and issues",
+        "EMPTY_WORKING_ON": "<strong>何も表示されていませんか？</strong> Taigaで作業を始めると、ここにあなたが取り組んでいるユーザーストーリー、タスク、課題が表示されます。",
+        "EMPTY_WATCHING": "ユーザーストーリー、タスク、課題を<strong>フォロー</strong>して変更が発生した際に通知を受け取りましょう。",
+        "EMPTY_PROJECT_LIST": "参加中のプロジェクトがありません",
+        "WORKING_ON_SECTION": "取り組んでいる作業",
+        "WATCHING_SECTION": "フォロー中",
+        "DASHBOARD": "プロジェクトのダッシュボート"
+    },
+    "EPICS": {
+        "TITLE": "エピック",
+        "SECTION_NAME": "エピック",
+        "EPIC": "エピック",
+        "PAGE_TITLE": "エピック - {{projectName}}",
+        "PAGE_DESCRIPTION": "エピックの一覧 {{projectName}}: {{projectDescription}}",
+        "DASHBOARD": {
+            "ADD": "エピックを追加",
+            "UNASSIGNED": "未アサイン"
+        },
+        "EMPTY": {
+            "TITLE": "まだエピックが無いようです",
+            "EXPLANATION": "エピックはユーザーストーリーを包含する、より上の階層のものです。<br />階級のトップにあり、ユーザーストーリーをグループ化してまとめるのにも用いられます。",
+            "HELP": "エピックについて"
+        },
+        "TABLE": {
+            "VOTES": "投票",
+            "NAME": "名前",
+            "PROJECT": "プロジェクト",
+            "SPRINT": "スプリント",
+            "ASSIGNED_TO": "アサイン済",
+            "STATUS": "ステータス",
+            "PROGRESS": "進捗",
+            "VIEW_OPTIONS": "オプションの表示"
+        },
+        "CREATE": {
+            "TITLE": "新しいエピック",
+            "PLACEHOLDER_DESCRIPTION": "このエピックを他の人が理解できるように説明を加えて下さい",
+            "TEAM_REQUIREMENT": "チームからの要求",
+            "CLIENT_REQUIREMENT": "お客様からの要求",
+            "BLOCKED": "ブロック中",
+            "BLOCKED_NOTE_PLACEHOLDER": "なぜこのエピックはブロックされているのか？",
+            "CREATE_EPIC": "エピックを作成"
+        }
+    },
+    "PROJECTS": {
+        "PAGE_TITLE": "マイ プロジェクト - Taiga",
+        "PAGE_DESCRIPTION": "A list with all your projects, you can reorder or create a new one.",
+        "MY_PROJECTS": "マイ プロジェクト"
+    },
+    "ATTACHMENT": {
+        "SECTION_NAME": "添付ファイル",
+        "TITLE": "{{ fileName }} が {{ date }} にアップロードされました",
+        "LIST_VIEW_MODE": "ライブビューモード",
+        "GALLERY_VIEW_MODE": "ギャラリービューモード",
+        "DESCRIPTION": "要約を入力",
+        "DEPRECATED": "(非推奨)",
+        "DEPRECATED_FILE": "推奨されませんか？",
+        "ADD": "新しい添付ファイルを追加する。 {{maxFileSizeMsg}}",
+        "DROP": "添付ファイルをここにドロップ！",
+        "SHOW_DEPRECATED": "+ 非推奨のアタッチメントを表示する",
+        "HIDE_DEPRECATED": "- 非推奨のアタッチメントを隠す",
+        "COUNT_DEPRECATED": "({{ counter }} deprecated)",
+        "MAX_UPLOAD_SIZE": "アップロード上限サイズは {{maxFileSize}} です",
+        "DATE": "YYYY年MM月DD日 hh時mm分",
+        "ERROR_UPLOAD_ATTACHMENT": "'{{fileName}}'のアップロードに失敗. {{errorMessage}}",
+        "TITLE_LIGHTBOX_DELETE_ATTACHMENT": "添付ファイルの削除...",
+        "MSG_LIGHTBOX_DELETE_ATTACHMENT": "添付ファイル '{{fileName}}'",
+        "ERROR_DELETE_ATTACHMENT": " 削除に失敗: {{errorMessage}}",
+        "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) はウンパルンパたちには重すぎます。({{maxFileSize}})より少ないもので試してください。",
+        "FIELDS": {
+            "IS_DEPRECATED": "は非推奨です。"
+        }
+    },
+    "PAGINATION": {
+        "PREVIOUS": "前へ",
+        "NEXT": "次へ"
+    },
+    "ADMIN": {
+        "COMMON": {
+            "TITLE_ACTION_EDIT_VALUE": "値を編集",
+            "TITLE_ACTION_DELETE_VALUE": "値を削除",
+            "TITLE_ACTION_DELETE_TAG": "タグを削除"
+        },
+        "HELP": "手助けが必要な場合はサポートページをチェックしてください。",
+        "PROJECT_DEFAULT_VALUES": {
+            "TITLE": "初期値設定",
+            "SUBTITLE": "プルダウン項目の初期値を設定してください。"
+        },
+        "MEMBERSHIPS": {
+            "TITLE": "メンバー管理",
+            "PAGE_TITLE": "メンバーシップ - {{projectName}}",
+            "ADD_BUTTON": "+ 新規メンバー",
+            "ADD_BUTTON_TITLE": "新規メンバーを追加",
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_ADMIN": "このプロジェクトは許可されている最大メンバー数<strong>({{members}}名)</strong>に達しました。",
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "このプロジェクトは許可されている最大メンバー数<strong>({{members}}名)</strong>に達しました。上限を増やしたい場合は管理者にお問い合わせください。"
+        },
+        "PROJECT_EXPORT": {
+            "TITLE": "エクスポート",
+            "SUBTITLE": "エクスポートの実行によりプロジェクトのバックアップを作成することができます。<br>また、バックアップをベースとして新しいプロジェクトを作成することも可能です。",
+            "EXPORT_BUTTON": "エクスポート",
+            "EXPORT_BUTTON_TITLE": "プロジェクトをエクスポート",
+            "LOADING_TITLE": "ダンプファイルを生成中",
+            "DUMP_READY": "ダンプファイルの用意が出来ました！",
+            "LOADING_MESSAGE": "このページを閉じないでください。",
+            "ASYNC_MESSAGE": "準備が出来たらメールで通知します。",
+            "SYNC_MESSAGE": "ダウンロードが自動で開始されない場合は<a href='{{url}}' download title='Download the dump file'>こちらをクリック</a>してください。",
+            "ERROR": "ウンパルンパたちはダンプファイルの生成に手こずっているようです。もう一度お試しください。",
+            "ERROR_BUSY": "すみません、ウンパルンパたちはとても忙しいようです。しばらくしてからまたお試しください。",
+            "ERROR_MESSAGE": "ウンパルンパたちはダンプファイルの生成に手こずっているようです。{{message}}"
+        },
+        "MODULES": {
+            "TITLE": "モジュール",
+            "ENABLE": "有効",
+            "DISABLE": "無効",
+            "EPICS": "エピック",
+            "EPICS_DESCRIPTION": "Visualize and manage the most strategic part of your project",
+            "BACKLOG": "バックログ",
+            "BACKLOG_DESCRIPTION": "ユーザーストーリーが適切にメンテナンスされるよう管理し、優先順位に基づく作業を行うためのビュー",
+            "NUMBER_SPRINTS": "予測されるスプリント数",
+            "NUMBER_SPRINTS_HELP": "0に設定した場合、無制限となります",
+            "NUMBER_US_POINTS": "予測されるストーリーポイントの合計",
+            "NUMBER_US_POINTS_HELP": "0に設定した場合、無制限となります",
+            "KANBAN": "かんばん",
+            "KANBAN_DESCRIPTION": "このかんばんを利用して、無駄のない方法でプロジェクトを整理しましょう。",
+            "ISSUES": "課題",
+            "ISSUES_DESCRIPTION": "プロジェクトのバグ追跡、質問、機能改善に関する議論などが行えるようになります。",
+            "WIKI": "Wiki",
+            "WIKI_DESCRIPTION": "他のメンバーと協力してコンテンツを編集することができます。<br>プロジェクトの情報を文書化するのにぴったりです。",
+            "MEETUP": "会議",
+            "MEETUP_DESCRIPTION": "あなたが利用しているビデオ会議システムを選択してください。",
+            "SELECT_VIDEOCONFERENCE": "ビデオ会議システムを選択",
+            "SALT_CHAT_ROOM": "Add a prefix to the chatroom name",
+            "JITSI_CHAT_ROOM": "Jitsi",
+            "APPEARIN_CHAT_ROOM": "AppearIn",
+            "TALKY_CHAT_ROOM": "Talky",
+            "CUSTOM_CHAT_ROOM": "カスタム",
+            "URL_CHAT_ROOM": "チャットルームのURL"
+        },
+        "PROJECT_PROFILE": {
+            "PAGE_TITLE": "{{sectionName}} - プロジェクトプロフィール - {{projectName}}",
+            "PROJECT_DETAILS": "プロジェクト詳細",
+            "PROJECT_NAME": "プロジェクト名",
+            "PROJECT_SLUG": "プロジェクトのスラッグ",
+            "TAGS": "タグ",
+            "DESCRIPTION": "説明",
+            "RECRUITING": "プロジェクトメンバーを探していますか？",
+            "RECRUITING_MESSAGE": "どんな人を探していますか？",
+            "RECRUITING_PLACEHOLDER": "探している人のプロフィールを記載してください",
+            "PUBLIC_PROJECT": "パブリック プロジェクト",
+            "PRIVATE_PROJECT": "非公開プロジェクト",
+            "PRIVATE_OR_PUBLIC": "パブリックプロジェクトとプライベートプロジェクトの違いは何ですか？",
+            "DELETE": "このプロジェクトを削除",
+            "LOGO_HELP": "画像は縦横80ピクセルに変換されます。",
+            "CHANGE_LOGO": "ロゴを変更",
+            "ACTION_USE_DEFAULT_LOGO": "デフォルトのイメージを使用する",
+            "MAX_PRIVATE_PROJECTS": "あなたの現在のプランで許可されている非公開プロジェクトの上限数に達しました。",
+            "MAX_PRIVATE_PROJECTS_MEMBERS": "非公開プロジェクトの最大メンバー数を超えました。",
+            "MAX_PUBLIC_PROJECTS": "あなたの現在のプランで許可されている公開プロジェクトの上限数に達しました。",
+            "MAX_PUBLIC_PROJECTS_MEMBERS": "The project exceeds your maximum number of members for public projects",
+            "PROJECT_OWNER": "プロジェクトオーナー",
+            "REQUEST_OWNERSHIP": "Request ownership",
+            "REQUEST_OWNERSHIP_CONFIRMATION_TITLE": "Do you want to become the new project owner?",
+            "REQUEST_OWNERSHIP_DESC": "Request that current project owner {{name}} transfer ownership of this project to you.",
+            "REQUEST_OWNERSHIP_BUTTON": "リクエスト",
+            "REQUEST_OWNERSHIP_SUCCESS": "プロジェクトオーナーに通知します。",
+            "CHANGE_OWNER": "オーナーを変更",
+            "CHANGE_OWNER_SUCCESS_TITLE": "あなたのリクエストが送信されました！",
+            "CHANGE_OWNER_SUCCESS_DESC": "We will notify you by email if the project ownership request is accepted or declined"
+        },
+        "REPORTS": {
+            "TITLE": "レポート",
+            "SUBTITLE": "オリジナルのレポートを作成するためにプロジェクトのデータをCSVで出力することができます。",
+            "DESCRIPTION": "CSVのダウンロードボタンまたは生成されたURLへアクセスしてファイルを入手し、お好みのテキストエディタや表計算ソフトで開いてください。データの可視化や分析を簡単に行うことが可能です。",
+            "HELP": "このファイルをどうやって表計算ソフトで活用すればいいですか？",
+            "REGENERATE_TITLE": "URLが変更されます",
+            "REGENERATE_SUBTITLE": "CSV出力用のURLを変更しようとしています。前回のURLは無効化されます。よろしいですか？"
+        },
+        "CSV": {
+            "SECTION_TITLE_EPIC": "エピックレポート",
+            "SECTION_TITLE_US": "ユーザーストーリーを出力する",
+            "SECTION_TITLE_TASK": "タスクを出力する",
+            "SECTION_TITLE_ISSUE": "課題を出力する",
+            "DOWNLOAD": "CSVのダウンロード",
+            "URL_FIELD_PLACEHOLDER": "CSV出力用のURLを作成してください",
+            "TITLE_REGENERATE_URL": "CSV出力用のURLを作成",
+            "ACTION_GENERATE_URL": "URL を生成",
+            "ACTION_REGENERATE": "再作成"
+        },
+        "CUSTOM_FIELDS": {
+            "TITLE": "カスタムフィールド",
+            "SUBTITLE": "ユーザーストーリー、タスク、課題のためのカスタムフィールドを明記してください。",
+            "EPIC_DESCRIPTION": "エピックカスタムフィールド",
+            "EPIC_ADD": "複数のエピックにカスタムフィールドを追加",
+            "US_DESCRIPTION": "ユーザーストーリーのカスタムフィールド",
+            "US_ADD": "ユーザーストーリーにカスタムフィールドを追加",
+            "TASK_DESCRIPTION": "タスクカスタムフィールド",
+            "TASK_ADD": "タスクにカスタムフィールドを追加",
+            "ISSUE_DESCRIPTION": "課題のカスタムフィールド",
+            "ISSUE_ADD": "課題にカスタムフィールドを追加",
+            "FIELD_TYPE_TEXT": "テキスト",
+            "FIELD_TYPE_MULTI": "マルチライン",
+            "FIELD_TYPE_DATE": "日時",
+            "FIELD_TYPE_URL": "Url"
+        },
+        "PROJECT_VALUES": {
+            "PAGE_TITLE": "{{sectionName}} - Project values - {{projectName}}",
+            "REPLACEMENT": "この値を持つすべてのアイテムはこちらに変更されます:",
+            "ERROR_DELETE_ALL": "すべての値を削除することはできません。"
+        },
+        "PROJECT_VALUES_POINTS": {
+            "TITLE": "ポイント",
+            "SUBTITLE": "予測されるユーザーストーリーのポイントを定義することができます。",
+            "US_TITLE": "ユーザーストーリーのポイント",
+            "ACTION_ADD": "新規ポイントを追加"
+        },
+        "PROJECT_VALUES_PRIORITIES": {
+            "TITLE": "優先度",
+            "SUBTITLE": "課題の優先度を定義することができます。",
+            "ISSUE_TITLE": "課題の優先度",
+            "ACTION_ADD": "新しい優先度を追加"
+        },
+        "PROJECT_VALUES_SEVERITIES": {
+            "TITLE": "深刻度",
+            "SUBTITLE": "課題の深刻度を定義することができます。",
+            "ISSUE_TITLE": "課題の深刻度",
+            "ACTION_ADD": "新しい深刻度を追加"
+        },
+        "PROJECT_VALUES_STATUS": {
+            "TITLE": "ステータス",
+            "SUBTITLE": "ユーザーストーリー、タスク、課題のステータスを定義することができます。",
+            "EPIC_TITLE": "エピックステータス",
+            "US_TITLE": "ユーザーストーリーステータス",
+            "TASK_TITLE": "タスクのステータス",
+            "ISSUE_TITLE": "課題のステータス"
+        },
+        "PROJECT_VALUES_TYPES": {
+            "TITLE": "タイプ",
+            "SUBTITLE": "課題のタイプを定義することができます。",
+            "ISSUE_TITLE": "課題のタイプ",
+            "ACTION_ADD": "新しい {{objName}} を追加"
+        },
+        "PROJECT_VALUES_TAGS": {
+            "TITLE": "タグ",
+            "SUBTITLE": "タグの色を編集",
+            "EMPTY": "タグは現在ありません。",
+            "EMPTY_SEARCH": "検索条件に当てはまるものはありませんでした。",
+            "ACTION_ADD": "タグを追加",
+            "NEW_TAG": "新規タグ",
+            "MIXING_HELP_TEXT": "マージしたいタグを選択してください。",
+            "MIXING_MERGE": "Merge Tags",
+            "SELECTED": "Selected"
+        },
+        "ROLES": {
+            "PAGE_TITLE": "役割 - {{projectName}}",
+            "WARNING_NO_ROLE": "Be careful, no role in your project will be able to estimate the point value for user stories",
+            "HELP_ROLE_ENABLED": "この設定を有効にするとメンバーがこの役割にアサインされた際、ユーザーストーリーのポイントに反映されます。",
+            "DISABLE_COMPUTABLE_ALERT_TITLE": "Are you sure you want to disable this role estimations?",
+            "DISABLE_COMPUTABLE_ALERT_SUBTITLE": "If you disable estimation permissions for role {{roleName}} all previous estimations made by this role will be removed",
+            "COUNT_MEMBERS": "{{ role.members_count }} members with this role",
+            "TITLE_DELETE_ROLE": "役割を削除",
+            "REPLACEMENT_ROLE": "All the users with this role will be moved to",
+            "WARNING_DELETE_ROLE": "Be careful! All role estimations will be removed",
+            "ERROR_DELETE_ALL": "すべての値を削除することはできません",
+            "EXTERNAL_USER": "外部ユーザー"
+        },
+        "THIRD_PARTIES": {
+            "SECRET_KEY": "シークレットキー",
+            "PAYLOAD_URL": "Payload URL",
+            "VALID_IPS": "Valid origin IPs (separated by ,)"
+        },
+        "BITBUCKET": {
+            "SECTION_NAME": "Bitbucket",
+            "PAGE_TITLE": "Bitbucket - {{projectName}}",
+            "INFO_VERIFYING_IP": "Bitbucket requests are not signed so the best way of verifying the origin is by IP. If the field is empty there will be no IP validation."
+        },
+        "GITLAB": {
+            "SECTION_NAME": "Gitlab",
+            "PAGE_TITLE": "Gitlab - {{projectName}}",
+            "INFO_VERIFYING_IP": "Gitlab requests are not signed so the best way of verifying the origin is by IP. If the field is empty there will be no IP validation."
+        },
+        "GITHUB": {
+            "SECTION_NAME": "Github",
+            "PAGE_TITLE": "Github - {{projectName}}"
+        },
+        "GOGS": {
+            "SECTION_NAME": "Gogs",
+            "PAGE_TITLE": "Gogs - {{projectName}}"
+        },
+        "WEBHOOKS": {
+            "PAGE_TITLE": "Webhooks - {{projectName}}",
+            "SECTION_NAME": "Webhooks",
+            "SUBTITLE": "Webhookは外部サービスへコメントやユーザーストーリーといったTaigaのイベントを通知します。",
+            "ADD_NEW": "新規Webhookを追加",
+            "TYPE_NAME": "サービス名を入力",
+            "TYPE_PAYLOAD_URL": "サービスペイロードのURLを入力",
+            "TYPE_SERVICE_SECRET": "サービスのシークレットキーを入力",
+            "SAVE": "Webhookを保存",
+            "CANCEL": "Webhookをキャンセル",
+            "SHOW_HISTORY": "(履歴を表示)",
+            "TEST": "Webhookをテスト",
+            "EDIT": "Webhookを編集",
+            "DELETE": "Webhookを削除",
+            "REQUEST": "リクエスト",
+            "RESEND_REQUEST": "リクエストを再送",
+            "HEADERS": "ヘッダー",
+            "PAYLOAD": "Payload",
+            "RESPONSE": "レスポンス",
+            "DATE": "YYYY年MM月DD日 hh時mm分ss秒",
+            "ACTION_HIDE_HISTORY": "(履歴を非表示)",
+            "ACTION_HIDE_HISTORY_TITLE": "履歴を非表示",
+            "ACTION_SHOW_HISTORY": "(履歴を表示)",
+            "ACTION_SHOW_HISTORY_TITLE": "履歴を表示",
+            "WEBHOOK_NAME": "Webhook '{{name}}'"
+        },
+        "CUSTOM_ATTRIBUTES": {
+            "PAGE_TITLE": "{{sectionName}} - カスタム属性 - {{projectName}}",
+            "ADD": "カスタムフィールド追加",
+            "EDIT": "カスタムフィールドを編集",
+            "DELETE": "カスタムフィールドを削除",
+            "SAVE_TITLE": "カスタムフィールドを保存",
+            "CANCEL_TITLE": "作成するのをやめる",
+            "SET_FIELD_NAME": "カスタムフィールド名を設定",
+            "SET_FIELD_DESCRIPTION": "カスタムフィールドの説明を設定",
+            "FIELD_TYPE_DEFAULT": "-- 1つ選択 --",
+            "ACTION_UPDATE": "カスタムフィールドを更新",
+            "ACTION_CANCEL_EDITION": "編集をキャンセル"
+        },
+        "MEMBERSHIP": {
+            "COLUMN_MEMBER": "メンバー",
+            "COLUMN_ADMIN": "管理",
+            "COLUMN_ROLE": "役割",
+            "COLUMN_STATUS": "ステータス",
+            "STATUS_ACTIVE": "有効",
+            "STATUS_PENDING": "Pending",
+            "DELETE_MEMBER": "メンバーを削除",
+            "RESEND": "再送信",
+            "SUCCESS_SEND_INVITATION": "招待メールを '{{email}}' へもう一度送りました。",
+            "ERROR_SEND_INVITATION": "招待はまだ送られていません。",
+            "SUCCESS_DELETE": "{{message}} を削除しました",
+            "ERROR_DELETE": "{{message}} を削除できませんでした",
+            "DEFAULT_DELETE_MESSAGE": "{{email}} への招待メール"
+        },
+        "DEFAULT_VALUES": {
+            "LABEL_EPIC_STATUS": "エピックステータスの初期値",
+            "LABEL_US_STATUS": "ユーザーストーリーステータスの初期値",
+            "LABEL_POINTS": "ポイントの初期値",
+            "LABEL_TASK_STATUS": "タスクステータスの初期値",
+            "LABEL_ISSUE_TYPE": "課題タイプの初期値",
+            "LABEL_ISSUE_STATUS": "課題ステータスの初期値",
+            "LABEL_PRIORITY": "優先度の初期値",
+            "LABEL_SEVERITY": "深刻度の初期値"
+        },
+        "STATUS": {
+            "PLACEHOLDER_WRITE_STATUS_NAME": "新しいステータス名を記入"
+        },
+        "TYPES": {
+            "PLACEHOLDER_WRITE_NAME": "新しいエレメント名を記入"
+        },
+        "US_STATUS": {
+            "ACTION_ADD_STATUS": "ステータスを追加",
+            "IS_ARCHIVED_COLUMN": "アーカイブ",
+            "IS_CLOSED_COLUMN": "終了",
+            "WIP_LIMIT_COLUMN": "WIP制限",
+            "PLACEHOLDER_WRITE_NAME": "新しいステータス名を記入"
+        },
+        "MENU": {
+            "TITLE": "管理",
+            "PROJECT": "プロジェクト",
+            "ATTRIBUTES": "属性",
+            "MEMBERS": "メンバー",
+            "PERMISSIONS": "権限",
+            "INTEGRATIONS": "インテグレーション",
+            "PLUGINS": "プラグイン"
+        },
+        "SUBMENU_PROJECT_ATTRIBUTES": {
+            "TITLE": "属性"
+        },
+        "SUBMENU_PROJECT_VALUES": {
+            "STATUS": "ステータス",
+            "POINTS": "ポイント",
+            "PRIORITIES": "優先度",
+            "SEVERITIES": "深刻度",
+            "TYPES": "タイプ",
+            "CUSTOM_FIELDS": "カスタムフィールド",
+            "TAGS": "タグ"
+        },
+        "SUBMENU_PROJECT_PROFILE": {
+            "TITLE": "プロジェクトプロフィール"
+        },
+        "SUBMENU_ROLES": {
+            "TITLE": "役割",
+            "ACTION_NEW_ROLE": "+ 新規役割",
+            "TITLE_ACTION_NEW_ROLE": "新しい役割を追加"
+        },
+        "SUBMENU_THIDPARTIES": {
+            "TITLE": "サービス"
+        },
+        "PROJECT_TRANSFER": {
+            "DO_YOU_ACCEPT_PROJECT_OWNERNSHIP": "新しいプロジェクトオーナーとなりますか？",
+            "PRIVATE": "プライベート",
+            "ACCEPTED_PROJECT_OWNERNSHIP": "おめでとうございます！あなたが新しいプロジェクトオーナーです。",
+            "REJECTED_PROJECT_OWNERNSHIP": "OK. We'll contact the current project owner",
+            "ACCEPT": "はい",
+            "REJECT": "却下",
+            "PROPOSE_OWNERSHIP": "プロジェクト <strong>{{project}}</strong> の現在のプロジェクトオーナー <strong>{{owner}}</strong> が、あなたに新しいプロジェクトオーナーになるようリクエストしています。",
+            "ADD_COMMENT": "プロジェクトオーナーにコメントしますか？",
+            "UNLIMITED_PROJECTS": "Unlimited",
+            "OWNER_MESSAGE": {
+                "PRIVATE": "あなたが持てる非公開プロジェクトは最大<strong>{{maxProjects}}</strong>個までです。現在<strong>{{currentProjects}}</strong>個持っています。",
+                "PUBLIC": "あなたが持てる公開プロジェクトは最大<strong>{{maxProjects}}</strong>個までです。現在<strong>{{currentProjects}}</strong>個持っています。"
+            },
+            "CANT_BE_OWNED": "At the moment you cannot become an owner of a project of this type. If you would like to become the owner of this project, please contact the administrator so they change your account settings to enable project ownership.",
+            "CHANGE_MY_PLAN": "プランを変更"
+        }
+    },
+    "USER": {
+        "PROFILE": {
+            "PAGE_TITLE": "{{userFullName}} (@{{userUsername}})",
+            "EDIT": "プロフィールを編集",
+            "FOLLOW": "フォロー",
+            "CLOSED_US": "終了した<br>ストーリー",
+            "PROJECTS": "プロジェクト",
+            "PROJECTS_EMPTY": "{{username}} はまだプロジェクトに参加していません",
+            "CONTACTS": "連絡先",
+            "CONTACTS_EMPTY": "{{username}} はまだ連絡先を持っていません",
+            "CURRENT_USER_CONTACTS_EMPTY": "あなたへのコンタクトはまだありません。",
+            "CURRENT_USER_CONTACTS_EMPTY_EXPLAIN": "Taigaで一緒に仕事をしたメンバーは自動的に連絡先へ追加されます",
+            "REPORT": "悪用を報告",
+            "TABS": {
+                "ACTIVITY_TAB": "タイムライン",
+                "ACTIVITY_TAB_TITLE": "このユーザのすべてのアクティビティーを表示する",
+                "PROJECTS_TAB": "プロジェクト",
+                "PROJECTS_TAB_TITLE": "ユーザーが参加しているプロジェクト",
+                "LIKES_TAB": "いいね",
+                "LIKES_TAB_TITLE": "このユーザーが「いいね」と評価したすべての内容を表示",
+                "VOTES_TAB": "投票",
+                "VOTES_TAB_TITLE": "このユーザーが「賛成」したすべての内容を表示",
+                "WATCHED_TAB": "フォロー",
+                "WATCHED_TAB_TITLE": "このユーザーが「フォロー」したすべての内容を表示",
+                "CONTACTS_TAB": "連絡先",
+                "CONTACTS_TAB_TITLE": "このユーザーが「コンタクト」したすべての内容を表示"
+            }
+        },
+        "PROFILE_SIDEBAR": {
+            "TITLE": "プロフィール",
+            "DESCRIPTION": "すべてのメンバーはあなたが完了させた作業、あなたが今取り組んでいる作業を確認することができます。自己紹介を追記してあなたについてもっと知ってもらいましょう！",
+            "ADD_INFO": "編集する"
+        },
+        "PROFILE_FAVS": {
+            "FILTER_INPUT_PLACEHOLDER": "入力してください",
+            "FILTER_TYPE_ALL": "すべて",
+            "FILTER_TYPE_ALL_TITLE": "すべてを表示",
+            "FILTER_TYPE_PROJECTS": "プロジェクト",
+            "FILTER_TYPE_PROJECT_TITLES": "プロジェクトのみ表示",
+            "FILTER_TYPE_EPICS": "エピック",
+            "FILTER_TYPE_EPIC_TITLES": "エピックのみ表示",
+            "FILTER_TYPE_USER_STORIES": "ストーリー",
+            "FILTER_TYPE_USER_STORIES_TITLES": "ユーザーストーリーを表示",
+            "FILTER_TYPE_TASKS": "タスク",
+            "FILTER_TYPE_TASK_TITLES": "タスクのみ表示",
+            "FILTER_TYPE_ISSUES": "課題",
+            "FILTER_TYPE_ISSUES_TITLE": "課題のみ表示",
+            "EMPTY_TITLE": "表示するものがありません。"
+        }
+    },
+    "PROJECT": {
+        "PAGE_TITLE": "{{projectName}}",
+        "WELCOME": "ようこそ",
+        "SECTION_PROJECTS": "プロジェクト",
+        "HELP": "最も良く使うプロジェクトがトップになるように順序を入れ替えてみましょう。<br/> トップ10のプロジェクトが上のナビゲーションバーのプロジェクトリストに現れます。",
+        "PRIVATE": "プライベート プロジェクト",
+        "LOOKING_FOR_PEOPLE": "プロジェクトはメンバーを探しています",
+        "FANS_COUNTER_TITLE": "{total, plural, one{one fan} other{# 人のファン}}",
+        "WATCHERS_COUNTER_TITLE": "{total, plural, one{one watcher} other{# 人がフォロー中}}",
+        "MEMBERS_COUNTER_TITLE": "{total, plural, one{one member} other{# 人のメンバー}}",
+        "BLOCKED_PROJECT": {
+            "BLOCKED": "ブロックされたプロジェクト",
+            "THIS_PROJECT_IS_BLOCKED": "このプロジェクトは一時的にブロックされています。",
+            "TO_UNBLOCK_CONTACT_THE_ADMIN_STAFF": "プロジェクトのブロックを解除したい場合は管理者にお問い合わせください。"
+        },
+        "STATS": {
+            "PROJECT": "プロジェクト<br/> ポイント",
+            "DEFINED": "定義された<br/> ポイント",
+            "ASSIGNED": "アサイン済み<br/> ポイント",
+            "CLOSED": "closed<br/> points"
+        },
+        "SECTION": {
+            "SEARCH": "検索",
+            "TIMELINE": "タイムライン",
+            "BACKLOG": "バックログ",
+            "KANBAN": "かんばん",
+            "ISSUES": "課題",
+            "WIKI": "Wiki",
+            "TEAM": "チーム",
+            "MEETUP": "会議",
+            "ADMIN": "管理"
+        },
+        "NAVIGATION": {
+            "SECTION_TITLE": "あなたのプロジェクト",
+            "PLACEHOLDER_SEARCH": "検索...",
+            "ACTION_CREATE_PROJECT": "プロジェクトを作成",
+            "ACTION_IMPORT_PROJECT": "プロジェクトをインポート",
+            "MANAGE_PROJECTS": "プロジェクト管理",
+            "TITLE_CREATE_PROJECT": "プロジェクトを作成",
+            "TITLE_IMPORT_PROJECT": "プロジェクトをインポート",
+            "TITLE_PRVIOUS_PROJECT": "前のプロジェクトを表示",
+            "TITLE_NEXT_PROJECT": "次のプロジェクトを表示",
+            "HELP_TITLE": "Taiga サポートページ",
+            "HELP": "ヘルプ",
+            "HOMEPAGE": "ホームページ",
+            "FEEDBACK_TITLE": "フィードバックを送る",
+            "FEEDBACK": "フィードバック",
+            "NOTIFICATIONS_TITLE": "通知設定を編集",
+            "NOTIFICATIONS": "通知",
+            "ORGANIZATIONS_TITLE": "あなたの組織を編集してください",
+            "ORGANIZATIONS": "組織を編集",
+            "SETTINGS_TITLE": "設定を編集",
+            "SETTINGS": "設定",
+            "VIEW_PROFILE_TITLE": "プロフィールを表示",
+            "VIEW_PROFILE": "プロフィールを表示",
+            "EDIT_PROFILE_TITLE": "プロフィールを編集",
+            "EDIT_PROFILE": "プロフィールを編集",
+            "CHANGE_PASSWORD_TITLE": "パスワード変更",
+            "CHANGE_PASSWORD": "パスワード変更",
+            "DASHBOARD_TITLE": "ダッシュボード",
+            "DISCOVER_TITLE": "トレンドプロジェクトを探す",
+            "NEW_ITEM": "新規",
+            "DISCOVER": "Discover",
+            "ACTION_REORDER": "ドラッグ&ドロップで入れ替え"
+        },
+        "IMPORT": {
+            "TITLE": "プロジェクトをインポート中",
+            "UPLOADING_FILE": "ダンプファイルをアップロード中",
+            "DESCRIPTION": "このプロセスには時間がかかります。ウィンドウを開いたままにしていてください。",
+            "ASYNC_IN_PROGRESS_TITLE": "ウンパルンパたちがあなたのプロジェクトをインポートしています。",
+            "ASYNC_IN_PROGRESS_MESSAGE": "この処理には時間がかかります。<br/>準備が出来たらメールで通知します。",
+            "UPLOAD_IN_PROGRESS_MESSAGE": "{{totalSize}} 中 {{uploadedSize}} アップロード済み",
+            "ERROR": "ウンパルンパたちはダンプファイルのインポートに手こずっているようです。もう一度お試しください。",
+            "ERROR_TOO_MANY_REQUEST": "すみません、ウンパルンパたちはとても忙しいようです。しばらくしてからまたお試しください。",
+            "ERROR_MESSAGE": "ウンパルンパたちはダンプファイルのインポートに手こずっているようです。　　\n{{error_message}}",
+            "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) はウンパルンパたちには重すぎます。({{maxFileSize}})より少ないもので試してください。",
+            "SYNC_SUCCESS": "プロジェクトのインポートに成功しました",
+            "PROJECT_RESTRICTIONS": {
+                "PROJECT_MEMBERS_DESC": "インポートしようとしているプロジェクトのメンバー数は{{members}}名ですが、あなたの現在のプランでは1プロジェクトごとに最大{{max_memberships}}名のみ許可されています。 上限を増やしたい場合は管理者にお問い合わせください。",
+                "PRIVATE_PROJECTS_SPACE": {
+                    "TITLE": "現在のプランではこれ以上の非公開プロジェクトは許可されていません。",
+                    "DESC": "インポートしようとしているプロジェクトは非公開プロジェクトです。現在のプランではこれ以上の非公開プロジェクトは許可されていません。"
+                },
+                "PUBLIC_PROJECTS_SPACE": {
+                    "TITLE": "現在のプランではこれ以上の公開プロジェクトは許可されていません。",
+                    "DESC": "インポートしようとしているプロジェクトは公開プロジェクトです。現在のプランではこれ以上の公開プロジェクトは許可されていません。"
+                },
+                "PRIVATE_PROJECTS_MEMBERS": {
+                    "TITLE": "現在のプランでは非公開プロジェクトごとに最大{{max_memberships}}名のメンバーが許可されています。"
+                },
+                "PUBLIC_PROJECTS_MEMBERS": {
+                    "TITLE": "現在のプランでは公開プロジェクトごとに最大{{max_memberships}}名のメンバーが許可されています。"
+                },
+                "PRIVATE_PROJECTS_SPACE_MEMBERS": {
+                    "TITLE": "現在のプランではこれ以上の非公開プロジェクトの作成や、一つの非公開プロジェクトに{{max_memberships}}名を超えるメンバーを追加することはできません。",
+                    "DESC": "インポートしようとしているのは非公開プロジェクトで{{members}}名のメンバーがいます。"
+                },
+                "PUBLIC_PROJECTS_SPACE_MEMBERS": {
+                    "TITLE": "現在のプランではこれ以上の公開プロジェクトの作成や、一つの公開プロジェクトに{{max_memberships}}名を超えるメンバーを追加することはできません。",
+                    "DESC": "インポートしようとしているのは公開プロジェクトで{{members}}名以上のメンバーがいます。"
+                }
+            }
+        },
+        "LIKE_BUTTON": {
+            "LIKE": "いいね",
+            "LIKED": "いいね",
+            "UNLIKE": "「いいね」を取り消す",
+            "BUTTON_TITLE": "Like or unlike this project",
+            "COUNTER_TITLE": "{total, plural, one{one fan} other{# 人のファン}}"
+        },
+        "WATCH_BUTTON": {
+            "BUTTON_TITLE": "このプロジェクトをフォローして通知ポリシーを設定してください",
+            "WATCH": "フォロー",
+            "WATCHING": "フォロー中",
+            "COUNTER_TITLE": "{total, plural, one{one watcher} other{# 人がフォロー中}}",
+            "OPTIONS": {
+                "NOTIFY_ALL": "すべての通知を受信する",
+                "NOTIFY_ALL_TITLE": "このプロジェクトのすべての通知を受信する",
+                "NOTIFY_INVOLVED": "関連するものだけ",
+                "NOTIFY_INVOLVED_TITLE": "Recive notificacions only when you are involved",
+                "UNWATCH": "フォローをやめる",
+                "UNWATCH_TITLE": "プロジェクトのフォローをやめる"
+            }
+        }
+    },
+    "LIGHTBOX": {
+        "DELETE_ACCOUNT": {
+            "SECTION_NAME": "Taigaアカウントを削除",
+            "CONFIRM": "本当にあなたのTaigaアカウントを削除してもよろしいですか？",
+            "NEWSLETTER_LABEL_TEXT": "ニュースレターを購読しない",
+            "CANCEL": "設定に戻る",
+            "ACCEPT": "アカウントを削除する",
+            "BLOCK_PROJECT": "あなたが所有しているプロジェクトは、あなたのアカウント削除後に<strong>ブロック</strong>されることを覚えておいてください。あなたのアカウントが削除されてプロジェクトがブロックされる前にプロジェクトの所有権を他のメンバーに譲渡してください。",
+            "SUBTITLE": "お別れすることになって残念です。またのご利用をお待ちしております :("
+        },
+        "DELETE_PROJECT": {
+            "TITLE": "プロジェクトを削除",
+            "QUESTION": "本当にこのプロジェクトを削除していいですか？",
+            "SUBTITLE": "プロジェクトのすべてのデータ (ユーザーストーリー、タスク、課題、スプリント、Wikiページ) が失われます！ :-(",
+            "CONFIRM": "はい、問題ありません"
+        },
+        "ASSIGNED_TO": {
+            "SELECT": "アサインする",
+            "SEARCH": "ユーザーを検索"
+        },
+        "ADD_MEMBER": {
+            "TITLE": "新しいメンバー",
+            "HELP_TEXT": "ユーザーが既にTaigaに登録されている場合、自動的に追加されます。そうでない場合は招待状が送信されます。"
+        },
+        "CREATE_ISSUE": {
+            "TITLE": "課題を追加"
+        },
+        "FEEDBACK": {
+            "TITLE": "我々に教えてください...",
+            "COMMENT": "...バグ、提案、何かクールなことやTaigaを利用していて発生した悪夢など（英語で記載してください）",
+            "ACTION_SEND": "フィードバックを送る"
+        },
+        "SEARCH": {
+            "TITLE": "検索",
+            "PLACEHOLDER_SEARCH": "何をお探しですか？"
+        },
+        "ADD_EDIT_SPRINT": {
+            "TITLE": "新しいスプリント",
+            "PLACEHOLDER_SPRINT_NAME": "スプリント名",
+            "PLACEHOLDER_SPRINT_START": "見積もり開始",
+            "PLACEHOLDER_SPRINT_END": "見積もり終了",
+            "ACTION_DELETE_SPRINT": "このスプリントを削除しますか？",
+            "TITLE_ACTION_DELETE_SPRINT": "スプリントを削除",
+            "LAST_SPRINT_NAME": "last sprint is <strong> {{lastSprint}} ;-) </strong>"
+        },
+        "CREATE_EDIT_TASK": {
+            "TITLE": "新しいタスク",
+            "PLACEHOLDER_SUBJECT": "タスク名",
+            "PLACEHOLDER_STATUS": "タスクステータス",
+            "OPTION_UNASSIGNED": "未アサイン",
+            "PLACEHOLDER_SHORT_DESCRIPTION": "要約を入力",
+            "ACTION_EDIT": "タスクを編集"
+        },
+        "CREATE_EDIT_US": {
+            "TITLE": "新規 US",
+            "PLACEHOLDER_DESCRIPTION": "このユーザーストーリーを他の人が理解できるように説明を加えてください",
+            "NEW_US": "新しいユーザーストーリー",
+            "EDIT_US": "ユーザーストーリーを編集"
+        },
+        "DELETE_SPRINT": {
+            "TITLE": "スプリントを削除"
+        },
+        "CREATE_MEMBER": {
+            "PLACEHOLDER_INVITATION_TEXT": "（オプション）招待する際のメッセージを追加できます。新メンバーに素敵なメッセージを伝えましょう！",
+            "PLACEHOLDER_TYPE_EMAIL": "メールアドレスを入力",
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "このプロジェクトで許可されている最大メンバー数<strong>{{maxMembers}}</strong>名に達しようとしています。上限を増やしたい場合は管理者にお問い合わせください。",
+            "LIMIT_USERS_WARNING_MESSAGE": "このプロジェクトで許可されている最大メンバー数<strong>{{maxMembers}}</strong>名に達しようとしています。"
+        },
+        "LEAVE_PROJECT_WARNING": {
+            "TITLE": "オーナーが不在となるため、プロジェクトを離脱することができません。",
+            "CURRENT_USER_OWNER": {
+                "DESC": "現在、あなたはこのプロジェクトのオーナーです。プロジェクトを去る前にオーナーの権限を他の誰かに譲渡してください。",
+                "BUTTON": "プロジェクトのオーナーを変更する"
+            },
+            "OTHER_USER_OWNER": {
+                "DESC": "現在のプロジェクトのプロジェクトオーナーを削除することはできません。まず新しいプロジェクトオーナーを割り当ててください。",
+                "BUTTON": "プロジェクトオーナーの変更をリクエストする。"
+            }
+        },
+        "CHANGE_OWNER": {
+            "TITLE": "誰を新しいプロジェクトオーナーにしたいですか？",
+            "ADD_COMMENT": "コメントを追加",
+            "BUTTON": "このメンバーを新しいプロジェクトオーナーにする。"
+        }
+    },
+    "EPIC": {
+        "PAGE_TITLE": "{{epicSubject}} - エピック {{epicRef}} - {{projectName}}",
+        "PAGE_DESCRIPTION": "ステータス: {{epicStatus }}. 説明: {{epicDescription}}",
+        "SECTION_NAME": "エピック",
+        "TITLE_LIGHTBOX_UNLINK_RELATED_USERSTORY": "関連するユーザーストーリーのリンクを削除",
+        "MSG_LIGHTBOX_UNLINK_RELATED_USERSTORY": "関連するユーザーストーリー '{{subject}}' とのリンクが削除されます。",
+        "ERROR_UNLINK_RELATED_USERSTORY": "リンクの削除に失敗: {{errorMessage}}",
+        "CREATE_RELATED_USERSTORIES": "関連付ける",
+        "NEW_USERSTORY": "新しいユーザーストーリー",
+        "EXISTING_USERSTORY": "既存のユーザーストーリー",
+        "CHOOSE_PROJECT_FOR_CREATION": "プロジェクトとは？",
+        "SUBJECT": "題名",
+        "SUBJECT_BULK_MODE": "題名 (一括登録)",
+        "CHOOSE_PROJECT_FROM": "プロジェクトとは？",
+        "CHOOSE_USERSTORY": "ユーザーストーリーとは？",
+        "NO_USERSTORIES": "このプロジェクトにはユーザーストーリーがまだありません。別のプロジェクトを選択してください。",
+        "FILTER_USERSTORIES": "ユーザーストーリーをフィルター",
+        "LIGHTBOX_TITLE_BLOKING_EPIC": "ブロックしているエピック",
+        "ACTION_DELETE": "エピックの削除"
+    },
+    "US": {
+        "PAGE_TITLE": "{{userStorySubject}} - ユーザーストーリー {{userStoryRef}} - {{projectName}}",
+        "PAGE_DESCRIPTION": "ステータス: {{userStoryStatus }}. 進捗 {{userStoryProgressPercentage}}% ({{userStoryTotalTasks}}中{{userStoryClosedTasks}}タスク完了). ポイント: {{userStoryPoints}}. 説明: {{userStoryDescription}}",
+        "SECTION_NAME": "ユーザーストーリー",
+        "LINK_TASKBOARD": "タスクボード",
+        "TITLE_LINK_TASKBOARD": "タスクボードに移動",
+        "TOTAL_POINTS": "合計ポイント",
+        "ADD": "+ 新規ユーザーストーリーを追加する",
+        "ADD_BULK": "新規ユーザーストーリーを一括で追加する",
+        "PROMOTED": "This US has been promoted from Issue:",
+        "TITLE_LINK_GO_TO_ISSUE": "課題へ移動",
+        "EXTERNAL_REFERENCE": "This US has been created from",
+        "GO_TO_EXTERNAL_REFERENCE": "originへ移動",
+        "BLOCKED": "このユーザーストーリーはブロックされています",
+        "TITLE_DELETE_ACTION": "ユーザーストーリーを削除",
+        "LIGHTBOX_TITLE_BLOKING_US": "Blocking us",
+        "TASK_COMPLETED": "{{totalClosedTasks}}/{{totalTasks}} タスク完了",
+        "ASSIGN": "ユーザーストーリーの割当",
+        "NOT_ESTIMATED": "見積もりが行われていません",
+        "TOTAL_US_POINTS": "合計ユーザーストーリーポイント",
+        "TRIBE": {
+            "PUBLISH": "Publish as Gig in Taiga Tribe",
+            "PUBLISH_INFO": "詳細表示",
+            "PUBLISH_TITLE": "More info on publishing in Taiga Tribe",
+            "PUBLISHED_AS_GIG": "Story published as Gig in Taiga Tribe",
+            "EDIT_LINK": "リンクを編集",
+            "CLOSE": "Close",
+            "SYNCHRONIZE_LINK": "synchronize with Taiga Tribe",
+            "PUBLISH_MORE_INFO_TITLE": "このタスクに誰か必要ですか？",
+            "PUBLISH_MORE_INFO_TEXT": "<p>If you need help with a particular piece of work you can easily create gigs on<a href='taigatribe.com' title='Taiga Tribe'> Taiga Tribe </a> and receive help from all over the world. You will be able to control and manage the gig enjoying a great community eager to contribute.</p><p><a href='taigatribe.com' title='Taiga Tribe'> TaigaTribe </a>  was born as a Taiga sibling. Both platforms can live separately but we believe that there is much power in using them combined so we are making sure the integration works like a charm.</p>"
+        },
+        "FIELDS": {
+            "TEAM_REQUIREMENT": "チームからの要求",
+            "CLIENT_REQUIREMENT": "お客様からの要求",
+            "FINISH_DATE": "終了日"
+        }
+    },
+    "COMMENTS": {
+        "DELETED_INFO": "{{user}}によってコメントは削除されました。",
+        "TITLE": "コメント",
+        "COMMENTS_COUNT": "{{comments}}コメント",
+        "ORDER": "Order",
+        "OLDER_FIRST": "古い順",
+        "RECENT_FIRST": "新しい順",
+        "COMMENT": "コメント",
+        "EDIT_COMMENT": "コメントを編集",
+        "EDITED_COMMENT": "Edited:",
+        "SHOW_HISTORY": "View historic",
+        "TYPE_NEW_COMMENT": "新しいコメントをここに入力",
+        "SHOW_DELETED": "削除済コメントを表示",
+        "HIDE_DELETED": "削除済コメントを隠す",
+        "DELETE": "コメントを削除",
+        "RESTORE": "コメントを復元",
+        "HISTORY": {
+            "TITLE": "アクティビティ"
+        }
+    },
+    "ACTIVITY": {
+        "SHOW_ACTIVITY": "アクティビティを表示",
+        "DATETIME": "YYYY年MM月DD日 HH時mm分",
+        "SHOW_MORE": "+ 前のエントリーを表示 ({{showMore}} more)",
+        "TITLE": "アクティビティ",
+        "ACTIVITIES_COUNT": "{{activities}} Activities",
+        "REMOVED": "削除",
+        "ADDED": "追加",
+        "TAGS_ADDED": "tags added:",
+        "TAGS_REMOVED": "tags removed:",
+        "US_POINTS": "{{role}} ポイント",
+        "NEW_ATTACHMENT": "新しい添付ファイル:",
+        "DELETED_ATTACHMENT": "削除された添付ファイル:",
+        "UPDATED_ATTACHMENT": "更新された添付ファイル ({{filename}}):",
+        "CREATED_CUSTOM_ATTRIBUTE": "カスタム属性を作成しました",
+        "UPDATED_CUSTOM_ATTRIBUTE": "カスタム属性を更新しました",
+        "SIZE_CHANGE": "Made {size, plural, one{one change} other{# changes}}",
+        "BECAME_DEPRECATED": "became deprecated",
+        "BECAME_UNDEPRECATED": "became undeprecated",
+        "TEAM_REQUIREMENT": "チームからの要求",
+        "CLIENT_REQUIREMENT": "お客様からの要求",
+        "BLOCKED": "ブロック中",
+        "VALUES": {
+            "YES": "はい",
+            "NO": "no",
+            "EMPTY": "空",
+            "UNASSIGNED": "未割当"
+        },
+        "FIELDS": {
+            "SUBJECT": "題名",
+            "NAME": "名前",
+            "DESCRIPTION": "説明",
+            "CONTENT": "コンテンツ",
+            "STATUS": "ステータス",
+            "IS_CLOSED": "is closed",
+            "FINISH_DATE": "完了日",
+            "TYPE": "タイプ",
+            "PRIORITY": "優先度",
+            "SEVERITY": "深刻度",
+            "ASSIGNED_TO": "割り当てる",
+            "WATCHERS": "ウォッチャー",
+            "MILESTONE": "スプリント",
+            "USER_STORY": "ユーザーストーリー",
+            "PROJECT": "プロジェクト",
+            "IS_BLOCKED": "はブロックされています。",
+            "BLOCKED_NOTE": "ブロックノート",
+            "POINTS": "ポイント",
+            "CLIENT_REQUIREMENT": "お客様からの要求",
+            "TEAM_REQUIREMENT": "チームからの要求",
+            "IS_IOCAINE": "is iocaine",
+            "TAGS": "タグ",
+            "ATTACHMENTS": "添付ファイル",
+            "IS_DEPRECATED": "は非推奨です。",
+            "IS_NOT_DEPRECATED": "is not deprecated",
+            "ORDER": "表示順",
+            "BACKLOG_ORDER": "バックログオーダー",
+            "SPRINT_ORDER": "スプリントオーダー",
+            "KANBAN_ORDER": "かんばんオーダー",
+            "TASKBOARD_ORDER": "タスクボードオーダー",
+            "US_ORDER": "ユーザーストーリー順",
+            "COLOR": "色"
+        }
+    },
+    "BACKLOG": {
+        "PAGE_TITLE": "バックログ - {{projectName}}",
+        "PAGE_DESCRIPTION": "The backlog panel, with user stories and sprints of the project {{projectName}}: {{projectDescription}}",
+        "SECTION_NAME": "バックログ",
+        "CUSTOMIZE_GRAPH": "バックロググラフのカスタマイズ",
+        "CUSTOMIZE_GRAPH_TEXT": "To have a nice graph that helps you follow the evolution of the project you have to set up the points and sprints through the",
+        "CUSTOMIZE_GRAPH_ADMIN": "管理",
+        "CUSTOMIZE_GRAPH_TITLE": "管理ユーザーでポイントとスプリントを設定してください。",
+        "MOVE_US_TO_CURRENT_SPRINT": "現在のスプリントに移動",
+        "MOVE_US_TO_LATEST_SPRINT": "最新のスプリントに移動",
+        "SHOW_FILTERS": "フィルターを表示",
+        "SHOW_TAGS": "タグを表示",
+        "EMPTY": "バックログが空です！",
+        "CREATE_NEW_US": "新規US作成",
+        "CREATE_NEW_US_EMPTY_HELP": "新しくユーザーストーリーを作成してください。",
+        "EXCESS_OF_POINTS": "Excess of points",
+        "PENDING_POINTS": "Pending Points",
+        "CLOSED_POINTS": "closed",
+        "COMPACT_SPRINT": "Compact Sprint",
+        "GO_TO_TASKBOARD": "タスクボード {{::name}} へ移動",
+        "EDIT_SPRINT": "スプリントを編集",
+        "TOTAL_POINTS": "合計",
+        "STATUS_NAME": "ステータス名",
+        "SORTABLE_FILTER_ERROR": "You can't drop on backlog when filters are open",
+        "DOOMLINE": "Project Scope [Doomline]",
+        "CHART": {
+            "XAXIS_LABEL": "スプリント",
+            "YAXIS_LABEL": "ポイント",
+            "OPTIMAL": "Optimal pending points for sprint \"{{sprintName}}\" should be {{value}}",
+            "REAL": "Real pending points for sprint \"{{sprintName}}\" is {{value}}",
+            "INCREMENT_TEAM": "Incremented points by team requirements for sprint \"{{sprintName}}\" is {{value}}",
+            "INCREMENT_CLIENT": "Incremented points by client requirements for sprint \"{{sprintName}}\" is {{value}}"
+        },
+        "TAGS": {
+            "TOGGLE": "タグ表示を固定",
+            "SHOW": "タグを表示",
+            "HIDE": "タグを非表示"
+        },
+        "FORECASTING": {
+            "TITLE": "Velocity forecasting",
+            "BACKLOG": "バックログを表示",
+            "NEW_SPRINT": "Candidate User Stories for your next sprint based on your velocity. Click to create a new sprint.",
+            "CURRENT_SPRINT": "Candidate User Stories for your sprint based on your velocity. Click to add to current sprint."
+        },
+        "TABLE": {
+            "COLUMN_US": "User Stories",
+            "TITLE_COLUMN_POINTS": "役割ごとにビューを選択"
+        },
+        "SPRINT_SUMMARY": {
+            "TOTAL_POINTS": "合計<br />ポイント",
+            "COMPLETED_POINTS": "完了済み<br/> ポイント",
+            "OPEN_TASKS": "オープン<br />タスク",
+            "CLOSED_TASKS": "完了済み<br />タスク",
+            "IOCAINE_DOSES": "iocaine<br />doses",
+            "SHOW_STATISTICS_TITLE": "Show statistics",
+            "TOGGLE_BAKLOG_GRAPH": "バーンダウングラフ 表示/非表示",
+            "POINTS_PER_ROLE": "役割ごとのポイント"
+        },
+        "SUMMARY": {
+            "PROJECT_POINTS": "プロジェクト<br/> ポイント",
+            "DEFINED_POINTS": "定義された<br/> ポイント",
+            "CLOSED_POINTS": "closed<br />points",
+            "POINTS_PER_SPRINT": "ポイント /<br />スプリント"
+        },
+        "FILTERS": {
+            "TOGGLE": "フィルター表示を固定",
+            "TITLE": "フィルター",
+            "REMOVE": "フィルターを削除",
+            "HIDE": "フィルターを非表示",
+            "SHOW": "フィルターを表示"
+        },
+        "SPRINTS": {
+            "TITLE": "スプリント",
+            "DATE": "YYYY年MM月DD日",
+            "LINK_TASKBOARD": "スプリントタスクボード",
+            "TITLE_LINK_TASKBOARD": "タスクボード{{name}}へ移動",
+            "NUMBER_SPRINTS": "<br/>スプリント",
+            "EMPTY": "まだスプリントはありません",
+            "WARNING_EMPTY_SPRINT_ANONYMOUS": "This sprint has no User Stories",
+            "WARNING_EMPTY_SPRINT": "新しいスプリントを始めるために、バックログからストーリーをここにドロップしてください。",
+            "TITLE_ACTION_NEW_SPRINT": "新しいスプリントを追加",
+            "TEXT_ACTION_NEW_SPRINT": "新しくスプリントをプロジェクトに作成してください。",
+            "ACTION_SHOW_CLOSED_SPRINTS": "終了したスプリントを表示",
+            "ACTION_HIDE_CLOSED_SPRINTS": "終了したスプリントを非表示"
+        }
+    },
+    "ERROR": {
+        "TEXT1": "何かよくないことが発生したようですがウンパルンパたちは問題なく作業しています。",
+        "NOT_FOUND": "見つかりません",
+        "NOT_FOUND_TEXT": "Error 404. 参照しようとしているページはすでに存在しません。TAIGAホームページに戻って探してみてください。",
+        "PERMISSION_DENIED": "権限がありません",
+        "PERMISSION_DENIED_TEXT": "このページへのアクセスが許可されていません。",
+        "VERSION_ERROR": "以前、Taigaの中の誰かが変更をしたためウンパルンパたちはあなたの変更を適用できません。リロードをしてもう一度適用してみてください。(現在の変更は失われます)"
+    },
+    "TASKBOARD": {
+        "PAGE_TITLE": "{{sprintName}} - スプリントタスクボード - {{projectName}}",
+        "PAGE_DESCRIPTION": "Sprint {{sprintName}} (from {{startDate}} to {{endDate}}) of {{projectName}}. Completed {{completedPercentage}}% ({{completedPoints}} of {{totalPoints}} points). {{openTasks}} opened tasks of {{totalTasks}}.",
+        "SECTION_NAME": "タスクボード",
+        "TITLE_ACTION_ADD": "新規タスクを追加",
+        "TITLE_ACTION_ADD_BULK": "新規タスクを一括で追加する",
+        "TITLE_ACTION_ASSIGN": "タスクをアサイン",
+        "TITLE_ACTION_EDIT": "タスクを編集",
+        "PLACEHOLDER_CARD_TITLE": "This could be a task",
+        "PLACEHOLDER_CARD_TEXT": "ストーリーを分割しタスクとして別管理する。",
+        "TABLE": {
+            "COLUMN": "ユーザーストーリー",
+            "TITLE_ACTION_FOLD": "列をたたむ",
+            "TITLE_ACTION_UNFOLD": "列をひろげる",
+            "TITLE_ACTION_FOLD_ROW": "行をたたむ",
+            "TITLE_ACTION_UNFOLD_ROW": "行をひろげる",
+            "FIELD_POINTS": "ポイント",
+            "ROW_UNASSIGED_TASKS_TITLE": "未アサイン タスク"
+        },
+        "CHARTS": {
+            "XAXIS_LABEL": "Days",
+            "YAXIS_LABEL": "ポイント",
+            "OPTIMAL": "Optimal pending points for day {{formattedDate}} should be {{roundedValue}}",
+            "REAL": "Real pending points for day {{formattedDate}} is {{roundedValue}}",
+            "DATE": "YYYY年MM月DD日"
+        }
+    },
+    "TASK": {
+        "PAGE_TITLE": "{{taskSubject}} - タスク {{taskRef}} - {{projectName}}",
+        "PAGE_DESCRIPTION": "ステータス: {{taskStatus }}. 説明: {{taskDescription}}",
+        "SECTION_NAME": "タスク",
+        "LINK_TASKBOARD": "タスクボード",
+        "TITLE_LINK_TASKBOARD": "タスクボードに移動",
+        "PLACEHOLDER_SUBJECT": "新しいタスク名を入力",
+        "TITLE_SELECT_STATUS": "ステータス名",
+        "OWNER_US": "このタスクはこちらに属しています。",
+        "TITLE_LINK_GO_OWNER": "ユーザーストーリーに移動",
+        "ORIGIN_US": "このタスクはこちらから作成されました。",
+        "TITLE_LINK_GO_ORIGIN": "ユーザーストーリーに移動",
+        "BLOCKED": "このタスクはブロックされています。",
+        "TITLE_DELETE_ACTION": "タスクを削除",
+        "LIGHTBOX_TITLE_BLOKING_TASK": "Blocking task",
+        "FIELDS": {
+            "MILESTONE": "スプリント",
+            "USER_STORY": "ユーザーストーリー",
+            "IS_IOCAINE": "Is iocaine"
+        },
+        "ACTION_IOCAINE": "Iocaine",
+        "TITLE_ACTION_IOCAINE": "Feeling a bit overwhelmed by a task? Make sure others know about it by clicking on Iocaine when editing a task. It's possible to become immune to this (fictional) deadly poison by consuming small amounts over time just as it's possible to get better at what you do by occasionally taking on extra challenges!"
+    },
+    "NOTIFICATION": {
+        "OK": "すべてOKです",
+        "WARNING": "おっと、何か問題があったようです",
+        "WARNING_TEXT": "あなたの変更がセーブされなかったことにウンパルンパたちは悲しんでいます！",
+        "SAVED": "ウンパルンパたちがすべての変更を保存しました。",
+        "CLOSE": "通知を閉じる",
+        "MAIL": "メールでの通知",
+        "ASK_DELETE": "本当に削除してもよろしいですか？"
+    },
+    "CANCEL_ACCOUNT": {
+        "TITLE": "アカウントを解約する",
+        "SUBTITLE": "Taigaを脱会されてしまうのは残念です。楽しくご利用頂いていたことを祈ります。:)",
+        "PLACEHOLDER_INPUT_TOKEN": "アカウントトークンをキャンセル",
+        "ACTION_LEAVING": "はい、離脱します！",
+        "SUCCESS": "ウンパルンパたちがあなたのアカウントを削除しました。"
+    },
+    "CHANGE_EMAIL_FORM": {
+        "TITLE": "メール変更",
+        "SUBTITLE": "One click more and your email will be updated!",
+        "PLACEHOLDER_INPUT_TOKEN": "メールトークンを変更",
+        "ACTION_CHANGE_EMAIL": "メール変更",
+        "SUCCESS": "Our Oompa Loompas updated your email"
+    },
+    "ISSUES": {
+        "PAGE_TITLE": "課題 - {{projectName}}",
+        "PAGE_DESCRIPTION": "課題一覧パネル {{projectName}}: {{projectDescription}}",
+        "LIST_SECTION_NAME": "課題",
+        "SECTION_NAME": "課題",
+        "ACTION_NEW_ISSUE": "+ 新規 ISSUE",
+        "ACTION_PROMOTE_TO_US": "ユーザーストーリーに変更する",
+        "PROMOTED": "This issue has been promoted to US:",
+        "EXTERNAL_REFERENCE": "This issue has been created from",
+        "GO_TO_EXTERNAL_REFERENCE": "originへ移動",
+        "BLOCKED": "この課題はブロックされています",
+        "ACTION_DELETE": "Issue を削除",
+        "LIGHTBOX_TITLE_BLOKING_ISSUE": "ブロックしている Issue",
+        "FIELDS": {
+            "PRIORITY": "優先度",
+            "SEVERITY": "深刻度",
+            "TYPE": "タイプ"
+        },
+        "CONFIRM_PROMOTE": {
+            "TITLE": "このIssueを新しいユーザーストーリーに変更",
+            "MESSAGE": "この課題から新しいユーザーストーリーを作成しますか？"
+        },
+        "TABLE": {
+            "COLUMNS": {
+                "TYPE": "タイプ",
+                "SEVERITY": "深刻度",
+                "PRIORITY": "優先度",
+                "SUBJECT": "題名",
+                "VOTES": "投票",
+                "STATUS": "ステータス",
+                "CREATED": "作成",
+                "ASSIGNED_TO": "担当者"
+            },
+            "TITLE_ACTION_CHANGE_STATUS": "ステータスを変更",
+            "TITLE_ACTION_ASSIGNED_TO": "担当者",
+            "BLOCKED": "ブロック中",
+            "EMPTY": {
+                "TITLE": "レポートが必要な課題はありません :-)",
+                "SUBTITLE": "課題は見つかりましたか？"
+            }
+        }
+    },
+    "ISSUE": {
+        "PAGE_TITLE": "{{issueSubject}} - 課題 {{issueRef}} - {{projectName}}",
+        "PAGE_DESCRIPTION": "ステータス: {{issueStatus }}. タイプ: {{issueType}}, 優先度: {{issuePriority}}. 深刻度: {{issueSeverity}}. 説明: {{issueDescription}}"
+    },
+    "KANBAN": {
+        "PAGE_TITLE": "かんばん - {{projectName}}",
+        "PAGE_DESCRIPTION": "The kanban panel, with user stories of the project {{projectName}}: {{projectDescription}}",
+        "SECTION_NAME": "かんばん",
+        "TITLE_ACTION_FOLD": "列をたたむ",
+        "TITLE_ACTION_UNFOLD": "列をひろげる",
+        "TITLE_ACTION_FOLD_CARDS": "カードをたたむ",
+        "TITLE_ACTION_UNFOLD_CARDS": "カードをひろげる",
+        "TITLE_ACTION_ADD_US": "新規ユーザーストーリーを追加する",
+        "TITLE_ACTION_ADD_BULK": "新規ユーザーストーリーを一括で追加する",
+        "ACTION_SHOW_ARCHIVED": "アーカイブ済を表示",
+        "ACTION_HIDE_ARCHIVED": "アーカイブ済を隠す",
+        "HIDDEN_USER_STORIES": "The user stories in this status are hidden by default",
+        "ARCHIVED": "アーカイブしました",
+        "UNDO_ARCHIVED": "アンドゥするにはドラッグ&ドロップしてください",
+        "PLACEHOLDER_CARD_TITLE": "These are your User Stories",
+        "PLACEHOLDER_CARD_TEXT": "Stories might also have subtasks to separate requirements"
+    },
+    "SEARCH": {
+        "PAGE_TITLE": "検索 - {{projectName}}",
+        "PAGE_DESCRIPTION": "ユーザーストーリー、課題、タスク、Wikiページ、その他何でもこのプロジェクトを検索 {{projectName}}: {{projectDescription}}",
+        "FILTER_EPICS": "エピック",
+        "FILTER_USER_STORIES": "User Stories",
+        "FILTER_ISSUES": "課題",
+        "FILTER_TASKS": "タスク",
+        "FILTER_WIKI": "Wikiページ",
+        "PLACEHOLDER_SEARCH": "検索...",
+        "TITLE_ACTION_SEARCH": "検索",
+        "EMPTY_TITLE": "It looks like nothing was found with your search criteria.",
+        "EMPTY_DESCRIPTION": "Maybe try one of the tabs above or search again"
+    },
+    "TEAM": {
+        "PAGE_TITLE": "チーム - {{projectName}}",
+        "PAGE_DESCRIPTION": "The team panel to show all the members of the project {{projectName}}: {{projectDescription}}",
+        "SECTION_NAME": "チーム",
+        "APP_TITLE": "チーム - {{projectName}}",
+        "PLACEHOLDER_INPUT_SEARCH": "フルネームで検索する",
+        "COLUMN_MR_WOLF": "Mr. Wolf",
+        "EXPLANATION_COLUMN_MR_WOLF": "課題を閉じる",
+        "COLUMN_IOCAINE": "Iocaine Drinker",
+        "EXPLANATION_COLUMN_IOCAINE": "Iocaine doses ingested",
+        "COLUMN_CERVANTES": "Cervantes",
+        "EXPLANATION_COLUMN_CERVANTES": "Wiki ページを編集しました",
+        "COLUMN_BUG_HUNTER": "バグハンター",
+        "EXPLANATION_COLUMN_BUG_HUNTER": "報告されている課題",
+        "COLUMN_NIGHT_SHIFT": "Night Shift",
+        "EXPLANATION_COLUMN_NIGHT_SHIFT": "完了タスク",
+        "COLUMN_TOTAL_POWER": "Total Power",
+        "EXPLANATION_COLUMN_TOTAL_POWER": "合計ポイント",
+        "SECTION_TITLE_TEAM": "チーム >",
+        "SECTION_FILTER_ALL": "すべて",
+        "CONFIRM_LEAVE_PROJECT": "本当にこのプロジェクトから脱退していいですか？",
+        "ACTION_LEAVE_PROJECT": "このプロジェクトから離脱する"
+    },
+    "USER_SETTINGS": {
+        "AVATAR_MAX_SIZE": "[最大サイズ: {{maxFileSize}}]",
+        "MENU": {
+            "SECTION_TITLE": "ユーザー設定",
+            "USER_PROFILE": "ユーザープロフィール",
+            "CHANGE_PASSWORD": "パスワード変更",
+            "EMAIL_NOTIFICATIONS": "メール通知"
+        },
+        "NOTIFICATIONS": {
+            "SECTION_NAME": "メール通知",
+            "COLUMN_PROJECT": "プロジェクト",
+            "COLUMN_RECEIVE_ALL": "すべて受信",
+            "COLUMN_ONLY_INVOLVED": "関連するものだけ",
+            "COLUMN_NO_NOTIFICATIONS": "通知なし",
+            "OPTION_ALL": "すべて",
+            "OPTION_INVOLVED": "Involved",
+            "OPTION_NONE": "なし"
+        },
+        "POPOVER": {
+            "USER_PROFILE": "ユーザープロフィール",
+            "CHANGE_PASSWORD": "パスワードを変更",
+            "NOTIFICATIONS": "通知",
+            "FEEDBACK": "フィードバック",
+            "TITLE_AVATAR": "ユーザー設定"
+        }
+    },
+    "USER_PROFILE": {
+        "IMAGE_HELP": "画像は縦横80ピクセルに変換されます。",
+        "ACTION_CHANGE_IMAGE": "変更",
+        "ACTION_USE_GRAVATAR": "デフォルトのイメージを使用する",
+        "ACTION_DELETE_ACCOUNT": "Taigaアカウントを削除",
+        "CHANGE_EMAIL_SUCCESS": "<strong>メールボックスを確認してください！</strong><br />新しいメールアドレスを設定するための手順を送信しました。",
+        "CHANGE_PHOTO": "写真を変更",
+        "FIELD": {
+            "USERNAME": "ユーザー名",
+            "EMAIL": "メール",
+            "FULL_NAME": "フルネーム",
+            "PLACEHOLDER_FULL_NAME": "Set your full name (ex. Íñigo Montoya)",
+            "BIO": "自己紹介（最大で全角１０５文字まで）",
+            "PLACEHOLDER_BIO": "あなたについて教えてください",
+            "LANGUAGE": "言語",
+            "LANGUAGE_DEFAULT": "-- デフォルトの言語を使用 --",
+            "THEME": "テーマ",
+            "THEME_DEFAULT": "-- デフォルトのテーマを使用 --"
+        }
+    },
+    "WIZARD": {
+        "SECTION_TITLE_CREATE_PROJECT": "プロジェクトを作成",
+        "CREATE_PROJECT_TEXT": "フレッシュでクリーン。わくわくしますね！",
+        "CHOOSE_TEMPLATE": "どちらのテンプレートがあなたのプロジェクトに適していますか？",
+        "CHOOSE_TEMPLATE_TITLE": "プロジェクトテンプレートの詳細",
+        "CHOOSE_TEMPLATE_INFO": "詳細表示",
+        "PROJECT_DETAILS": "プロジェクト詳細",
+        "PUBLIC_PROJECT": "パブリック プロジェクト",
+        "PRIVATE_PROJECT": "プライベート プロジェクト",
+        "CREATE_PROJECT": "プロジェクトを作成",
+        "MAX_PRIVATE_PROJECTS": "非公開プロジェクトの上限に達しました。",
+        "MAX_PUBLIC_PROJECTS": "公開プロジェクトの上限に達しました。",
+        "CHANGE_PLANS": "プランを変更"
+    },
+    "WIKI": {
+        "PAGE_TITLE": "{{wikiPageName}} - Wiki - {{projectName}}",
+        "PAGE_DESCRIPTION": "{{lastModifiedDate}} に最後に編集がありました。(合計 {{totalEditions}} 件) 内容: {{ wikiPageContent }}",
+        "DATETIME": "YYYY年MM月DD日 HH時mm分",
+        "PLACEHOLDER_PAGE": "Wikiページを作成",
+        "REMOVE": "このWikiページを削除",
+        "DELETE_LIGHTBOX_TITLE": "Wikiページを削除",
+        "DELETE_LINK_TITLE": "Wikiリンクを削除",
+        "NAVIGATION": {
+            "HOME": "メインページ",
+            "SECTION_NAME": "ブックマーク",
+            "ACTION_ADD_LINK": "ブックマークを追加する",
+            "ALL_PAGES": "全Wikiページ"
+        },
+        "SUMMARY": {
+            "TIMES_EDITED": "編集 <br />回数",
+            "LAST_EDIT": "最終 <br />編集",
+            "LAST_MODIFICATION": "最後の変更"
+        },
+        "SECTION_PAGES_LIST": "全ページ",
+        "PAGES_LIST_COLUMNS": {
+            "TITLE": "タイトル",
+            "EDITIONS": "Editions",
+            "CREATED": "作成",
+            "MODIFIED": "Modified",
+            "CREATOR": "作者",
+            "LAST_MODIFIER": "最後の変更者"
+        }
+    },
+    "HINTS": {
+        "SECTION_NAME": "ヒント",
+        "LINK": "利用方法を知りたい場合はサポートページを訪れてください",
+        "LINK_TITLE": "サポートページへ行く",
+        "HINT1_TITLE": "Did you know you can import and export projects?",
+        "HINT1_TEXT": "ひとつのTaigaアカウントの全てのデータを抽出し、別のアカウントへ移すことができます。",
+        "HINT2_TITLE": "カスタムフィールドが作れるのはご存知ですか？",
+        "HINT2_TEXT": "Teams can now create custom fields as a flexible means to enter specific data useful for their particular workflow.",
+        "HINT3_TITLE": "Reorder your projects to feature those most relevant to you.",
+        "HINT3_TEXT": "最上部にあるダイレクトアクセスバーに10プロジェクトまで表示されます。",
+        "HINT4_TITLE": "Did you forget what were you working on?",
+        "HINT4_TEXT": "ご心配なさらないでください。ダッシュボードではあなたが取り組んだ順番にオープンなタスク、課題、ユーザーストーリーが表示されます。"
+    },
+    "TIMELINE": {
+        "UPLOAD_ATTACHMENT": "{{username}} さんが新しい添付ファイル {{obj_name}} をアップロードしました",
+        "US_CREATED": "{{username}} さんが新しいユーザーストーリー {{obj_name}} を作成しました（ {{project_name}} ）",
+        "ISSUE_CREATED": "{{username}} さんが新しい課題 {{obj_name}} を作成しました（ {{project_name}} ）",
+        "TASK_CREATED": "{{username}} さんが新しいタスク {{obj_name}} を作成しました（ {{project_name}} ）",
+        "TASK_CREATED_WITH_US": "{{username}} さんが新しいタスク {{obj_name}} をユーザーストーリー {{us_name}} に作成しました（ {{project_name}} ）",
+        "WIKI_CREATED": "{{username}} さんが新しいwikiページ {{obj_name}} を作成しました（ {{project_name}} ）",
+        "MILESTONE_CREATED": "{{username}} さんがスプリント {{obj_name}} を作成しました（ {{project_name}} ）",
+        "EPIC_CREATED": "{{username}} さんが {{project_name}} で新しいエピック {{obj_name}} を作成しました",
+        "EPIC_RELATED_USERSTORY_CREATED": "{{username}} さんが {{project_name}} でユーザーストーリー {{related_us_name}} をエピック {{epic_name}} に関連付けました",
+        "NEW_PROJECT": "{{username}} がプロジェクト {{project_name}} を作成しました",
+        "MILESTONE_UPDATED": "{{username}} がスプリント {{obj_name}} を更新しました",
+        "US_UPDATED": "{{username}} さんがユーザーストーリー {{obj_name}} の属性 \"{{field_name}}\" を更新しました ",
+        "US_UPDATED_WITH_NEW_VALUE": "{{username}} さんがユーザーストーリー {{obj_name}} の属性 \"{{field_name}}\" を {{new_value}} に更新しました",
+        "US_UPDATED_POINTS": "{{username}} さんがユーザーストーリー {{obj_name}} における役割 '{{role_name}}' のポイントを {{new_value}} に更新しました",
+        "ISSUE_UPDATED": "{{username}} さんが課題 {{obj_name}} の属性 \"{{field_name}}\" を更新しました",
+        "ISSUE_UPDATED_WITH_NEW_VALUE": "{{username}} さんが課題 {{obj_name}} の属性 \"{{field_name}}\"  を {{new_value}} に更新しました",
+        "TASK_UPDATED": "{{username}} が {{obj_name}}  の {{field_name}} を {{new_value}} に更新しました",
+        "TASK_UPDATED_WITH_NEW_VALUE": "{{username}} が {{obj_name}}  の {{field_name}} を {{new_value}} に更新しました",
+        "TASK_UPDATED_WITH_US": "{{username}} さんがユーザーストーリー {{us_name}} のタスク {{obj_name}} の属性 \"{{field_name}}\" を更新しました",
+        "TASK_UPDATED_WITH_US_NEW_VALUE": "{{username}} さんがユーザーストーリー {{us_name}} のタスク {{obj_name}} における属性 \"{{field_name}}\" を {{new_value}} に更新しました",
+        "WIKI_UPDATED": "{{username}} さんがWikiページ {{obj_name}} を更新しました",
+        "EPIC_UPDATED": "{{username}} さんがエピック {{obj_name}} の属性 \"{{field_name}}\" を更新しました",
+        "EPIC_UPDATED_WITH_NEW_VALUE": "{{username}} さんがエピック {{obj_name}} の属性 \"{{field_name}}\" を {{new_value}} に更新しました",
+        "EPIC_UPDATED_WITH_NEW_COLOR": "{{username}} さんが エピック {{obj_name}} の \"{{field_name}}\" を <span class=\"new-color\" style=\"background: {{new_value}}\"></span> に更新しました",
+        "NEW_COMMENT_US": "{{username}} さんがユーザーストーリー {{obj_name}} にコメントしました",
+        "NEW_COMMENT_ISSUE": "{{username}} さんが課題 {{obj_name}} にコメントしました",
+        "NEW_COMMENT_TASK": "{{username}} さんがタスク {{obj_name}} にコメントしました",
+        "NEW_COMMENT_EPIC": "{{username}} さんがエピック {{obj_name}} にコメントしました",
+        "NEW_MEMBER": "{{project_name}} に新規メンバーが追加されました",
+        "US_ADDED_MILESTONE": "{{username}} さんがユーザーストーリー {{obj_name}} に {{sprint_name}} を追加しました",
+        "US_MOVED": "{{username}} さんがユーザーストーリー {{obj_name}} を移動しました",
+        "US_REMOVED_FROM_MILESTONE": "{{username}} さんがユーザーストーリー {{obj_name}} をバックログに追加しました",
+        "BLOCKED": "{{username}} さんが {{obj_name}} をブロックしました",
+        "UNBLOCKED": "{{username}} さんが {{obj_name}} のブロックを解除しました",
+        "NEW_USER": "{{username}} さんが Taiga に参加しました"
+    },
+    "LEGAL": {
+        "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>When creating a new account, you agree to our <br /></span><a href=\"{{ termsOfServiceUrl }}\" title=\"See terms of service\" target=\"_blank\">terms of service</a><span> and </span><a href=\"{{ privacyPolicyUrl }}\" title=\"See privacy policy\" target=\"_blank\">privacy policy</a>."
+    },
+    "EXTERNAL_APP": {
+        "PAGE_TITLE": "An external app requires authentication",
+        "PAGE_DESCRIPTION": "An external app requires authentication",
+        "AUTHORIZATION_REQUEST": "{{application}} にあなたのTaigaアカウントを使用することを許可しますか？",
+        "LOGIN_WITH_ANOTHER_USER": "別のユーザーでログイン",
+        "AUTHORIZE_APP": "Authorize app",
+        "CANCEL": "キャンセル"
+    },
+    "JOYRIDE": {
+        "NAV": {
+            "NEXT": "次へ",
+            "BACK": "戻る",
+            "SKIP": "スキップ",
+            "DONE": "完了"
+        },
+        "DASHBOARD": {
+            "STEP1": {
+                "TITLE": "あなたのプロジェクト",
+                "TEXT": "Welcome! Here you will find the projects you are involved on."
+            },
+            "STEP2": {
+                "TITLE": "取り組んでいる作業",
+                "TEXT": "あなたが取り組んでいるユーザーストーリー、タスク、課題です。"
+            },
+            "STEP3": {
+                "TITLE": "フォロー中",
+                "TEXT1": "And right here you will find the ones in your projects that you want to know about.",
+                "TEXT2": "You are already working with Taiga ;)"
+            },
+            "STEP4": {
+                "TITLE": "さあ始めましょう",
+                "TEXT1": "You can start by creating your first Taiga project.",
+                "TEXT2": "グッドラック！"
+            }
+        },
+        "BACKLOG": {
+            "STEP1": {
+                "TITLE": "プロジェクト概要",
+                "TEXT1": "Here you will see the state of your project.",
+                "TEXT2": "You can change every kind of project settings through the admin."
+            },
+            "STEP2": {
+                "TITLE": "プロダクト バックログ",
+                "TEXT": "The backlog is the list of requirements (User Stories) for the project. Here is where you will plan your sprints."
+            },
+            "STEP3": {
+                "TITLE": "スプリント",
+                "TEXT": "Sprints are short periods of time (usually 2 weeks) during which specific work has to be completed and delivered."
+            },
+            "STEP4": {
+                "TITLE": "User Stories",
+                "TEXT": "Those are the requirements at high level. You can add them to the backlog and drag them to the sprint in which it should be delivered."
+            }
+        },
+        "KANBAN": {
+            "STEP1": {
+                "TITLE": "ワークフローのカスタマイズ",
+                "TEXT": "Set up the columns you need to map your workflow statuses through the admin."
+            },
+            "STEP2": {
+                "TITLE": "ユーザーストーリー＆タスク",
+                "TEXT": "User Stories are the requirements at high level. You can drag them to different columns."
+            },
+            "STEP3": {
+                "TITLE": "Adding User Stories",
+                "TEXT1": "You may want to add a single User Story (add US icon) or a group of them (bulk icon)",
+                "TEXT2": "グッドラック！"
+            }
+        }
+    },
+    "DISCOVER": {
+        "PAGE_TITLE": "プロジェクトを探す - Taiga",
+        "PAGE_DESCRIPTION": "Searchable directory of Public Projects in Taiga. Explore backlogs, timelines, issues, and teams. Check out the most liked or most active projects. Filter by Kanban or Scrum.",
+        "DISCOVER_TITLE": "プロジェクトを探す",
+        "DISCOVER_SUBTITLE": "{projects, plural, one{One public project to discover} other{# 件のプロジェクトが見つかりました}}",
+        "MOST_ACTIVE": "最も活発なプロジェクト",
+        "MOST_ACTIVE_EMPTY": "アクティブなプロジェクトはまだありません。",
+        "MOST_LIKED": "最も好まれているプロジェクト",
+        "MOST_LIKED_EMPTY": "「いいね」されたプロジェクトはまだありません",
+        "VIEW_MORE": "もっと見る",
+        "RECRUITING": "プロジェクトはメンバーを探しています",
+        "FEATURED": "注目プロジェクト",
+        "EMPTY": "該当するプロジェクトがありませんでした。<br> 検索条件を変えて再度試してみてください！",
+        "FILTERS": {
+            "ALL": "すべて",
+            "KANBAN": "かんばん",
+            "SCRUM": "スクラム",
+            "PEOPLE": "人",
+            "WEEK": "先週",
+            "MONTH": "先月",
+            "YEAR": "昨年",
+            "ALL_TIME": "すべて",
+            "CLEAR": "フィルターをクリア"
+        },
+        "SEARCH": {
+            "PAGE_TITLE": "検索結果 - プロジェクトを探す - Taiga",
+            "PAGE_DESCRIPTION": "Searchable directory of Public Projects in Taiga. Explore backlogs, timelines, issues, and teams. Check out the most liked or most active projects. Filter by Kanban or Scrum.",
+            "INPUT_PLACEHOLDER": "入力してください",
+            "ACTION_TITLE": "検索",
+            "RESULTS": "検索結果"
+        }
+    }
+}
