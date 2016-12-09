@@ -23,22 +23,16 @@ $dropdown-width: 350px;
         display: flex;
     }
     .nav-left {
-        >a {
+        a {
             color: $white;
             padding: .5rem 1.5rem;
-            &.logo {
-                background: rgba($black, .2);
-                padding: .4rem .75rem;
-            }
-            svg {
-                height: 1.6rem;
-                max-height: 1.6rem;
-                max-width: 2rem;
-                width: 1.6rem;
-            }
-            path {
-                fill: $white;
-            }
+        }
+        .logo {
+            background: rgba($black, .2);
+            padding: .3rem .75rem;
+        }
+        svg {
+            @include svg-size(1.6rem);
         }
     }
     .nav-right {
@@ -47,15 +41,16 @@ $dropdown-width: 350px;
             color: $white;
             padding: .5rem 2rem;
         }
+        svg {
+            @include svg-size(1.2rem);
+            fill: rgba($primary-dark, .8);
+            transition: all .2s linear;
+        }
     }
     a {
         color: $white;
         display: inline-block;
         transition: all .2s linear;
-        svg {
-            fill: rgba($primary-dark, .8);
-            transition: all .2s linear;
-        }
         &:hover {
             background: rgba($black, .2);
             color: $primary-light;
@@ -79,12 +74,6 @@ $dropdown-width: 350px;
         height: 2.5rem;
         margin-left: .5rem;
         vertical-align: middle;
-    }
-    svg {
-        height: 1.2rem;
-        max-height: 1.2rem;
-        max-width: 1.2rem;
-        width: 1.2rem;
     }
     .topnav-dropdown-wrapper {
         position: relative;
@@ -163,9 +152,6 @@ $dropdown-width: 350px;
         &.see-more-projects-btn {
             margin-bottom: .3rem;
         }
-        &.import-project-button {
-            padding: .8rem 1rem;
-        }
         &.create-project-btn {
             flex: 1;
         }
@@ -176,16 +162,6 @@ $dropdown-width: 350px;
                 position: relative;
                 top: .25rem;
             }
-        }
-    }
-    .import-project-button {
-        &:hover {
-            svg {
-                fill: $primary-light;
-            }
-        }
-        svg {
-            fill: $white;
         }
     }
     .create-options {
