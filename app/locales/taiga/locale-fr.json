@@ -1094,7 +1094,7 @@
             "CLOSE": "Fermer",
             "SYNCHRONIZE_LINK": "se synchroniser avec Taiga Tribe",
             "PUBLISH_MORE_INFO_TITLE": "Avez-vous besoin de quelqu'un pour cette tâche ?",
-            "PUBLISH_MORE_INFO_TEXT": "<p> Si vous avez besoin d'aide pour un travail particulier, vous pouvez facilement créer des annonces sur <a href='taigatribe.com' title='Taiga Tribe'> Taiga Tribe </a> et recevoir de l'aide de tout le monde. Vous serez en mesure de contrôler et de gérer l'annonce tout en bénéficiant d'une grande communauté désireuse d'aider. </ p> \n<p> <a href='taigatribe.com' title='Taiga Tribe'> TaigaTribe </a> est né en tant que frère de Taiga. Les deux plates-formes peuvent vivre séparément, mais comme nous croyons qu'il est très puissant de les utiliser ensemble, nous faisons en sorte que l'intégration fonctionne comme un charme. </ p>"
+            "PUBLISH_MORE_INFO_TEXT": "<p> Si vous avez besoin d'aide pour un travail particulier, vous pouvez facilement créer des annonces sur <a href='http://taigatribe.com' title='Taiga Tribe'> Taiga Tribe </a> et recevoir de l'aide de tout le monde. Vous serez en mesure de contrôler et de gérer l'annonce tout en bénéficiant d'une grande communauté désireuse d'aider. </ p> \n<p> <a href='http://taigatribe.com' title='Taiga Tribe'> TaigaTribe </a> est né en tant que frère de Taiga. Les deux plates-formes peuvent vivre séparément, mais comme nous croyons qu'il est très puissant de les utiliser ensemble, nous faisons en sorte que l'intégration fonctionne comme un charme. </ p>"
         },
         "FIELDS": {
             "TEAM_REQUIREMENT": "Exigence équipe",

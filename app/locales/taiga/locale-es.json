@@ -1094,7 +1094,7 @@
             "CLOSE": "Cerrar",
             "SYNCHRONIZE_LINK": "sincronizar con la Tribu Taiga",
             "PUBLISH_MORE_INFO_TITLE": "Necesita a alguien para esta tarea?",
-            "PUBLISH_MORE_INFO_TEXT": "<p>SI necesita ayuda con una parte especifica del trabajo puede crear facilmente gigs en<a href='taigatribe.com' title='Taiga Tribe'> la Tribu Taiga </a> y recibir ayuda de todo el mundo. Tendra la habilidad de manejar y controlar su gig disfrutando de una comunidad dispuesta a colaborar.</p><p><a href='taigatribe.com' title='Tribu Taiga'> la Tribu Taiga </a>  nacio como una rama de Taiga. Ambas plataformas viven separadas Pero creemos que hay mucho poder al usarlas combinadamente y asi aseguramos que la integracion funciona muy bien.</p>"
+            "PUBLISH_MORE_INFO_TEXT": "<p>SI necesita ayuda con una parte especifica del trabajo puede crear facilmente gigs en<a href='http://taigatribe.com' title='Taiga Tribe'> la Tribu Taiga </a> y recibir ayuda de todo el mundo. Tendra la habilidad de manejar y controlar su gig disfrutando de una comunidad dispuesta a colaborar.</p><p><a href='http://taigatribe.com' title='Tribu Taiga'> la Tribu Taiga </a>  nacio como una rama de Taiga. Ambas plataformas viven separadas Pero creemos que hay mucho poder al usarlas combinadamente y asi aseguramos que la integracion funciona muy bien.</p>"
         },
         "FIELDS": {
             "TEAM_REQUIREMENT": "Requerido por el Equipo",
