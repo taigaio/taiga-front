@@ -101,6 +101,8 @@ class WysiwygMentionService
 
                             result = result.concat(items)
 
+                    result = _.sortBy result, ["ref"]
+
                     resolve(result.slice(0, 10))
 
 
