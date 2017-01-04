@@ -105,7 +105,7 @@ WikiNavDirective = ($tgrepo, $log, $location, $confirm, $analytics, $loading, $t
                 target = angular.element(event.currentTarget)
                 linkId = target.parents('.wiki-link').data('id')
 
-                title = $translate.instant("WIKI.DELETE_LIGHTBOX_TITLE")
+                title = $translate.instant("WIKI.DELETE_LINK_TITLE")
                 message = $scope.wikiLinks[linkId].title
 
                 $confirm.askOnDelete(title, message).then (askResponse) =>
