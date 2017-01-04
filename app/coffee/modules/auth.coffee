@@ -205,9 +205,6 @@ class AuthService extends taiga.Service
     acceptInvitiationWithNewUser: (data) ->
         return @.register(data, "private", false)
 
-    acceptInvitiationWithExistingUser: (data) ->
-        return @.register(data, "private", true)
-
     forgotPassword: (data) ->
         url = @urls.resolve("users-password-recovery")
         data = _.clone(data, false)
@@ -478,7 +475,7 @@ module.directive("tgChangePasswordFromRecovery", ["$tgAuth", "$tgConfirm", "$tgL
 ## Invitation
 #############################################################################
 
-InvitationDirective = ($auth, $confirm, $location, $params, $navUrls, $analytics, $translate, config) ->
+InvitationDirective = ($auth, $confirm, $location, $config, $params, $navUrls, $analytics, $translate, config) ->
     link = ($scope, $el, $attrs) ->
         token = $params.token
 
@@ -515,7 +512,14 @@ InvitationDirective = ($auth, $confirm, $location, $params, $navUrls, $analytics
             if not loginForm.validate()
                 return
 
-            promise = $auth.acceptInvitiationWithExistingUser($scope.dataLogin)
+            loginFormType = $config.get("loginFormType", "normal")
+            data = $scope.dataLogin
+
+            promise = $auth.login({
+                username: data.username,
+                password: data.password,
+                invitation_token: data.token
+            }, loginFormType)
             promise.then(onSuccessSubmitLogin, onErrorSubmitLogin)
 
         $el.on "submit", "form.login-form", submitLogin
@@ -555,7 +559,7 @@ InvitationDirective = ($auth, $confirm, $location, $params, $navUrls, $analytics
 
     return {link:link}
 
-module.directive("tgInvitation", ["$tgAuth", "$tgConfirm", "$tgLocation", "$routeParams",
+module.directive("tgInvitation", ["$tgAuth", "$tgConfirm", "$tgLocation", "$tgConfig", "$routeParams",
                                   "$tgNavUrls", "$tgAnalytics", "$translate", "$tgConfig", InvitationDirective])
 
 
