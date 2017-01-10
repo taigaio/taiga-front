@@ -106,11 +106,11 @@ CreateIssueDirective = ($repo, $confirm, $rootscope, lightboxService, $loading, 
             value = trim(tag[0].toLowerCase())
 
             tags = $scope.project.tags
-            itemtags = _.clone($scope.us.tags)
+            itemtags = _.clone($scope.issue.tags)
 
             _.remove itemtags, (tag) -> tag[0] == value
 
-            $scope.us.tags = itemtags
+            $scope.issue.tags = itemtags
 
             _.pull($scope.issue.tags, value)
 
