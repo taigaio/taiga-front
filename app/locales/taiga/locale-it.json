@@ -518,6 +518,7 @@
             "RECRUITING": "Il progetto cerca persone?",
             "RECRUITING_MESSAGE": "Chi stai cercando?",
             "RECRUITING_PLACEHOLDER": "Definisci il profilo che stai cercando",
+            "FEEDBACK": "Receive feedback from Taiga users?",
             "PUBLIC_PROJECT": "Progetto pubblico",
             "PRIVATE_PROJECT": "Progetto privato",
             "PRIVATE_OR_PUBLIC": "Quale è la differenza tra progetto privato e pubblico?",
@@ -570,6 +571,7 @@
             "ISSUE_DESCRIPTION": "Campi personalizzati",
             "ISSUE_ADD": "Aggiungi un campo personalizzato alla criticitá",
             "FIELD_TYPE_TEXT": "Testo",
+            "FIELD_TYPE_RICHTEXT": "Rich text",
             "FIELD_TYPE_MULTI": "Multilinea",
             "FIELD_TYPE_DATE": "Data",
             "FIELD_TYPE_URL": "Url"
@@ -958,6 +960,10 @@
                 "UNWATCH": "Non osservare",
                 "UNWATCH_TITLE": "Non osservare il progetto"
             }
+        },
+        "CONTACT_BUTTON": {
+            "CONTACT_TITLE": "Contact the project team",
+            "CONTACT_BUTTON": "Contact the project"
         }
     },
     "LIGHTBOX": {
@@ -1043,6 +1049,12 @@
             "TITLE": "Chi vuoi che sia il nuovo proprietario del progetto?",
             "ADD_COMMENT": "Aggiungi commento",
             "BUTTON": "Chiedi a questo membro di diventare il nuovo proprietario del progetto"
+        },
+        "CONTACT_PROJECT": {
+            "TITLE": "Send an email to",
+            "WARNING": "The email will be received by the project admins",
+            "PLACEHOLDER": "Write your message",
+            "SEND": "Send"
         }
     },
     "EPIC": {
@@ -1094,7 +1106,7 @@
             "CLOSE": "Chiudi",
             "SYNCHRONIZE_LINK": "sincronizza con Taiga Tribe",
             "PUBLISH_MORE_INFO_TITLE": "Hai bisogno di qualcuno per questo task?",
-            "PUBLISH_MORE_INFO_TEXT": "<p>Se hai bisogno di aiuto per un particolare lavoro puoi creare facilmente annunci on <a href='taigatribe.com' title='Taiga Tribe'> Taiga Tribe </a> e ricevere aiuto da tutto il mondo. Sarai in grado di controllare e gestire l'annuncio godendo di una fantastica comunità vogliosa di contribuire.</p><p><a href='taigatribe.com' title='Taiga Tribe'> Taiga Tribe </a> è nato come fratello di Taiga. Entrambe le piattaforme posso vivere separatamente, ma noi crediamo sia molto potente usarle insieme e vogliamo essere certi che l'integrazione funziona senza problemi.</p>"
+            "PUBLISH_MORE_INFO_TEXT": "<p>If you need help with a particular piece of work you can easily create gigs on<a href='http://taigatribe.com' title='Taiga Tribe'> Taiga Tribe </a> and receive help from all over the world. You will be able to control and manage the gig enjoying a great community eager to contribute.</p><p><a href='http://taigatribe.com' title='Taiga Tribe'> TaigaTribe </a>  was born as a Taiga sibling. Both platforms can live separately but we believe that there is much power in using them combined so we are making sure the integration works like a charm.</p>"
         },
         "FIELDS": {
             "TEAM_REQUIREMENT": "Requisito del team",

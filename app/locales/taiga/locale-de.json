@@ -308,7 +308,7 @@
         "PLACEHOLDER_AUTH_PASSWORD": "Passwort"
     },
     "LOGIN_FORM": {
-        "ERROR_AUTH_INCORRECT": "Laut unseren Helferlein ist Dein Benutzername/Deine E-Mail-Adresse oder Dein Passwort nicht korrekt. (Bitte achte auf die Groß- und Kleinschreibung.)",
+        "ERROR_AUTH_INCORRECT": "Laut unserem Helferlein ist Dein Benutzername/Deine E-Mail-Adresse oder Dein Passwort nicht korrekt. (Bitte achte auf die Groß- und Kleinschreibung.)",
         "SUCCESS": "Herzlich willkommen bei Taiga, unsere Helferlein freuen sich."
     },
     "REGISTER": {
@@ -358,7 +358,7 @@
         "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "Wiederholen Sie die Eingabe des neuen Passworts",
         "ACTION_RESET_PASSWORD": "Passwort zurücksetzen",
         "ERROR": "Unsere Helferelein haben Probleme deine Anfrage zum Zurücksetzen des Passworts zu finden. Probiere es einfach nochmal.",
-        "SUCCESS": "Unsere Oompa Loompas haben das neue Passwort gespeichert.<br /> <strong>Hier</strong> gehts zum login."
+        "SUCCESS": "Unsere Helferlein haben das neue Passwort gespeichert.<br /> <strong>Hier</strong> gehts zum login."
     },
     "INVITATION": {
         "PAGE_TITLE": "Einladung Annahme - Taiga",
@@ -440,7 +440,7 @@
         "ERROR_DELETE_ATTACHMENT": "Es war uns nicht möglich, zu löschen: {{errorMessage}}",
         "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) ist zu schwierig für unsere Helferlein, versuchen Sie es bitte mit einer kleineren Datei als ({{maxFileSize}})",
         "FIELDS": {
-            "IS_DEPRECATED": "ist verworfen"
+            "IS_DEPRECATED": "ist veraltet"
         }
     },
     "PAGINATION": {
@@ -486,7 +486,7 @@
             "DISABLE": "Deaktivieren",
             "EPICS": "Epics",
             "EPICS_DESCRIPTION": "Visualisieren und verwalten Sie den strategischsten Teil Ihres Projektes",
-            "BACKLOG": "Auftragsliste",
+            "BACKLOG": "Backlog",
             "BACKLOG_DESCRIPTION": "Verwalten Sie Ihre User-Stories, um einen organisierten Überblick der anstehenden und priorisierten Aufgaben zu erhalten.",
             "NUMBER_SPRINTS": "Erwartete Anzahl an Sprints",
             "NUMBER_SPRINTS_HELP": "0 für eine unbestimmte Anzahl",
@@ -516,8 +516,9 @@
             "TAGS": "Schlagwörter",
             "DESCRIPTION": "Beschreibung",
             "RECRUITING": "Is this project looking for people?",
-            "RECRUITING_MESSAGE": "Who are you looking for?",
+            "RECRUITING_MESSAGE": "Wen suchst du denn?",
             "RECRUITING_PLACEHOLDER": "Define the profiles you are looking for",
+            "FEEDBACK": "Receive feedback from Taiga users?",
             "PUBLIC_PROJECT": "Öffentliches Projekt",
             "PRIVATE_PROJECT": "Privates Projekt",
             "PRIVATE_OR_PUBLIC": "Was ist der Unterschied zwischen öffentlichen und privaten Projekten?",
@@ -570,6 +571,7 @@
             "ISSUE_DESCRIPTION": "Tickets benutzerdefinierte Felder",
             "ISSUE_ADD": "Fügen Sie den Tickets ein benutzerdefiniertes Feld hinzu",
             "FIELD_TYPE_TEXT": "Text",
+            "FIELD_TYPE_RICHTEXT": "Rich text",
             "FIELD_TYPE_MULTI": "Mehrzeilig",
             "FIELD_TYPE_DATE": "Datum",
             "FIELD_TYPE_URL": "Url"
@@ -859,7 +861,7 @@
         "SECTION": {
             "SEARCH": "Suche",
             "TIMELINE": "Zeitlinie",
-            "BACKLOG": "Auftragsliste",
+            "BACKLOG": "Backlog",
             "KANBAN": "Kanban",
             "ISSUES": "Tickets",
             "WIKI": "Wiki",
@@ -958,6 +960,10 @@
                 "UNWATCH": "Nicht beobachten",
                 "UNWATCH_TITLE": "Nicht beobachten"
             }
+        },
+        "CONTACT_BUTTON": {
+            "CONTACT_TITLE": "Contact the project team",
+            "CONTACT_BUTTON": "Contact the project"
         }
     },
     "LIGHTBOX": {
@@ -1043,6 +1049,12 @@
             "TITLE": "Wen möchtest du zum neuen Projektleiter ernennen?",
             "ADD_COMMENT": "Kommentar hinzufügen",
             "BUTTON": "Fragen Sie dieses Projektmitglied, um Projektleiter zu werden"
+        },
+        "CONTACT_PROJECT": {
+            "TITLE": "Send an email to",
+            "WARNING": "The email will be received by the project admins",
+            "PLACEHOLDER": "Write your message",
+            "SEND": "Send"
         }
     },
     "EPIC": {
@@ -1094,7 +1106,7 @@
             "CLOSE": "Schließen",
             "SYNCHRONIZE_LINK": "mit Taiga Tribe synchronisieren",
             "PUBLISH_MORE_INFO_TITLE": "Brauchen Sie jemanden für diese Aufgabe?",
-            "PUBLISH_MORE_INFO_TEXT": "<p>If you need help with a particular piece of work you can easily create gigs on<a href='taigatribe.com' title='Taiga Tribe'> Taiga Tribe </a> and receive help from all over the world. You will be able to control and manage the gig enjoying a great community eager to contribute.</p><p><a href='taigatribe.com' title='Taiga Tribe'> TaigaTribe </a>  was born as a Taiga sibling. Both platforms can live separately but we believe that there is much power in using them combined so we are making sure the integration works like a charm.</p>"
+            "PUBLISH_MORE_INFO_TEXT": "<p>If you need help with a particular piece of work you can easily create gigs on<a href='http://taigatribe.com' title='Taiga Tribe'> Taiga Tribe </a> and receive help from all over the world. You will be able to control and manage the gig enjoying a great community eager to contribute.</p><p><a href='http://taigatribe.com' title='Taiga Tribe'> TaigaTribe </a>  was born as a Taiga sibling. Both platforms can live separately but we believe that there is much power in using them combined so we are making sure the integration works like a charm.</p>"
         },
         "FIELDS": {
             "TEAM_REQUIREMENT": "Team Anforderung",
@@ -1186,15 +1198,15 @@
         }
     },
     "BACKLOG": {
-        "PAGE_TITLE": "Auftragsliste - {{projectName}}",
-        "PAGE_DESCRIPTION": "Das Auftragslisten-Panel mit User-Stories und Sprints des Projekts. {{projectName}}: {{projectDescription}}",
-        "SECTION_NAME": "Auftragsliste",
+        "PAGE_TITLE": "Backlog - {{projectName}}",
+        "PAGE_DESCRIPTION": "Das Backlog-Panel mit User-Stories und Sprints des Projekts. {{projectName}}: {{projectDescription}}",
+        "SECTION_NAME": "Backlog",
         "CUSTOMIZE_GRAPH": "Personalisiere deinen Backloggraph",
         "CUSTOMIZE_GRAPH_TEXT": "Um schöne Graphen, die Dir bei der Entwicklung Deines Projekts helfen, zu sehen, musst du Estimatepoints und Sprints einstellen",
         "CUSTOMIZE_GRAPH_ADMIN": "Administrator",
         "CUSTOMIZE_GRAPH_TITLE": "Stelle Points und Sprints über das Adminpanel ein",
         "MOVE_US_TO_CURRENT_SPRINT": "Zum aktuellen Sprint wechseln",
-        "MOVE_US_TO_LATEST_SPRINT": "Move to latest Sprint",
+        "MOVE_US_TO_LATEST_SPRINT": "Zum aktuellen Sprint wechseln.",
         "SHOW_FILTERS": "Filter zeigen",
         "SHOW_TAGS": "Tags anzeigen",
         "EMPTY": "Das Backlog ist leer!",
@@ -1225,7 +1237,7 @@
         },
         "FORECASTING": {
             "TITLE": "Velocity forecasting",
-            "BACKLOG": "Display backlog",
+            "BACKLOG": "Backlog anzeigen",
             "NEW_SPRINT": "Candidate User Stories for your next sprint based on your velocity. Click to create a new sprint.",
             "CURRENT_SPRINT": "Candidate User Stories for your sprint based on your velocity. Click to add to current sprint."
         },
@@ -1264,7 +1276,7 @@
             "NUMBER_SPRINTS": "<br/>Sprints",
             "EMPTY": "Derzeit sind keine Sprints vorhanden",
             "WARNING_EMPTY_SPRINT_ANONYMOUS": "Dieser Sprint enthält keiner User Stories",
-            "WARNING_EMPTY_SPRINT": "Ziehe Stories aus deiner Auftragsliste her, um einen neuen Sprint zu starten",
+            "WARNING_EMPTY_SPRINT": "Ziehe Stories aus deinem Backlog hierher, um einen neuen Sprint zu starten",
             "TITLE_ACTION_NEW_SPRINT": "Neuen Sprint hinzufügen",
             "TEXT_ACTION_NEW_SPRINT": "Du möchtest einen neuen Sprint in Deinem Projekt erstellen",
             "ACTION_SHOW_CLOSED_SPRINTS": "Geschlossene Sprints anzeigen",
@@ -1582,11 +1594,11 @@
         "NEW_COMMENT_US": "{{username}} schrieb einen Kommentar in der User-Story {{obj_name}}",
         "NEW_COMMENT_ISSUE": "{{username}} schrieb einen Kommentar im Ticket {{obj_name}}",
         "NEW_COMMENT_TASK": "{{username}} schrieb einen Kommentar in der Aufgabe {{obj_name}}",
-        "NEW_COMMENT_EPIC": "{{username}} has commented in the epic {{obj_name}}",
+        "NEW_COMMENT_EPIC": "{{username}} hat das Epic {{obj_name}} kommentiert",
         "NEW_MEMBER": "{{project_name}} hat ein neues Mitglied",
         "US_ADDED_MILESTONE": "{{username}} fügte dem Sprint {{sprint_name}} die User-Story {{obj_name}} hinzu",
         "US_MOVED": "{{username}} wurde in die Story {{obj_name}} verschoben",
-        "US_REMOVED_FROM_MILESTONE": "{{username}} fügte der Auftragsliste die User-Story {{obj_name}} hinzu",
+        "US_REMOVED_FROM_MILESTONE": "{{username}} fügte dem Backlog die User-Story {{obj_name}} hinzu",
         "BLOCKED": "{{username}} vermerkte die Blockierung von {{obj_name}}",
         "UNBLOCKED": "{{username}} hob die Blockierung von {{obj_name}} auf",
         "NEW_USER": "{{username}} ist Taiga beigetreten"
@@ -1637,7 +1649,7 @@
             },
             "STEP2": {
                 "TITLE": "Produkt Backlog",
-                "TEXT": "Die Auftragsliste zeigt dir alle Anforderungen (User Stories) für das Projekt an. Hier kannst du auch deine Sprints planen."
+                "TEXT": "Das Backlog zeigt dir alle Anforderungen (User Stories) für das Projekt an. Hier kannst du auch deine Sprints planen."
             },
             "STEP3": {
                 "TITLE": "Sprints",
@@ -1645,7 +1657,7 @@
             },
             "STEP4": {
                 "TITLE": "User-Stories",
-                "TEXT": "Dies sind die Anforderungen. Du kannst sie der Auftragsliste hinzufügen und sie zu einem Sprint hinzufügen."
+                "TEXT": "Dies sind die Anforderungen. Du kannst sie dem Backlog hinzufügen und sie zu einem Sprint hinzufügen."
             }
         },
         "KANBAN": {

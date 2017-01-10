@@ -47,7 +47,7 @@
         "OWNER": "プロジェクトオーナー",
         "CAPSLOCK_WARNING": "Be careful! You are using capital letters in an input field that is case sensitive.",
         "CONFIRM_CLOSE_EDIT_MODE_TITLE": "本当にこの編集画面を閉じてもよろしいですか？",
-        "CONFIRM_CLOSE_EDIT_MODE_MESSAGE": "Remember that if you close the edit mode without saving all the changes will be lost",
+        "CONFIRM_CLOSE_EDIT_MODE_MESSAGE": "保存せずに編集画面を閉じた場合、すべての変更が失われます。",
         "RELATED_USERSTORIES": "関連するユーザーストーリー",
         "CARD": {
             "ASSIGN_TO": "アサイン",
@@ -77,7 +77,7 @@
             "MAX_CHECK": "選択できるのは %s までです",
             "RANGE_CHECK": "選択できるのは %s から %s までです",
             "EQUAL_TO": "この値は同じでなければいけません",
-            "LINEWIDTH": "One or more lines is perhaps too long. Try to keep under %s characters.",
+            "LINEWIDTH": "行がおそらく長すぎます。%s文字以内におさえてください。",
             "PIKADAY": "無効なデータフォーマットです。DD MMM YYYYの形式で入力してください。（例：23 Mar 1984）"
         },
         "PICKERDATE": {
@@ -208,7 +208,7 @@
             "INPUT_SEARCH_PLACEHOLDER": "Subject or ref",
             "TITLE_ACTION_SEARCH": "検索",
             "ACTION_SAVE_CUSTOM_FILTER": "カスタムフィルターとして保存する",
-            "PLACEHOLDER_FILTER_NAME": "Write the filter name and press enter",
+            "PLACEHOLDER_FILTER_NAME": "フィルター名を入力しエンターキーを押してください。",
             "APPLIED_FILTERS_NUM": "フィルター適用中",
             "CATEGORIES": {
                 "TYPE": "タイプ",
@@ -227,16 +227,16 @@
             }
         },
         "WYSIWYG": {
-            "OUTDATED": "Another person has made changes while you were editing. Check the new version on the activiy tab before you save your changes.",
+            "OUTDATED": "あなたが編集中に別のユーザーが変更を加えました。あなたの変更点を保存する前に、アクティビティタブで新しいバージョンを確認してください。",
             "ATTACH_FILE_HELP": "テキストエリアへドラッグ＆ドロップでファイルを添付",
-            "ATTACH_FILE_HELP_SAVE_FIRST": "Save first before if you want to attach files by dragging & dropping on the textarea above.",
+            "ATTACH_FILE_HELP_SAVE_FIRST": "上部テキストエリアへ添付ファイルをドラッグ&ドロップしたい場合、先に保存してください。",
             "MARKDOWN_HELP": "Markdown記法のヘルプ"
         },
         "PERMISIONS_CATEGORIES": {
             "EPICS": {
                 "NAME": "エピック",
                 "VIEW_EPICS": "エピックの表示",
-                "ADD_EPICS": "エピックの追加",
+                "ADD_EPICS": "エピックを追加",
                 "MODIFY_EPICS": "エピックの変更",
                 "COMMENT_EPICS": "複数のエピックにコメントする",
                 "DELETE_EPICS": "エピックの削除"
@@ -244,14 +244,14 @@
             "SPRINTS": {
                 "NAME": "スプリント",
                 "VIEW_SPRINTS": "スプリントの表示",
-                "ADD_SPRINTS": "スプリントの追加",
+                "ADD_SPRINTS": "スプリントを追加",
                 "MODIFY_SPRINTS": "スプリントの変更",
                 "DELETE_SPRINTS": "スプリントの削除"
             },
             "USER_STORIES": {
                 "NAME": "ユーザーストーリー",
                 "VIEW_USER_STORIES": "ユーザーストーリーの表示",
-                "ADD_USER_STORIES": "ユーザーストーリーの追加",
+                "ADD_USER_STORIES": "ユーザーストーリーを追加",
                 "MODIFY_USER_STORIES": "ユーザーストーリーの変更",
                 "COMMENT_USER_STORIES": "複数のユーザーストーリーにコメントする",
                 "DELETE_USER_STORIES": "ユーザーストーリーの削除"
@@ -259,7 +259,7 @@
             "TASKS": {
                 "NAME": "タスク",
                 "VIEW_TASKS": "タスクの表示",
-                "ADD_TASKS": "タスクの追加",
+                "ADD_TASKS": "タスクを追加",
                 "MODIFY_TASKS": "タスクの変更",
                 "COMMENT_TASKS": "複数のタスクにコメントする",
                 "DELETE_TASKS": "タスクの削除"
@@ -267,7 +267,7 @@
             "ISSUES": {
                 "NAME": "課題",
                 "VIEW_ISSUES": "課題の表示",
-                "ADD_ISSUES": "課題の追加",
+                "ADD_ISSUES": "課題を追加",
                 "MODIFY_ISSUES": "課題の変更",
                 "COMMENT_ISSUES": "複数の課題にコメントする",
                 "DELETE_ISSUES": "課題の削除"
@@ -275,11 +275,11 @@
             "WIKI": {
                 "NAME": "Wiki",
                 "VIEW_WIKI_PAGES": "Wikiページの表示",
-                "ADD_WIKI_PAGES": "Wikiページの追加",
+                "ADD_WIKI_PAGES": "Wikiページを追加",
                 "MODIFY_WIKI_PAGES": "Wikiページの変更",
                 "DELETE_WIKI_PAGES": "Wikiページの削除",
                 "VIEW_WIKI_LINKS": "Wikiリンクの表示",
-                "ADD_WIKI_LINKS": "Wikiリンクの追加",
+                "ADD_WIKI_LINKS": "Wikiリンクを追加",
                 "DELETE_WIKI_LINKS": "Wikiリンクの削除"
             }
         },
@@ -485,7 +485,7 @@
             "ENABLE": "有効",
             "DISABLE": "無効",
             "EPICS": "エピック",
-            "EPICS_DESCRIPTION": "Visualize and manage the most strategic part of your project",
+            "EPICS_DESCRIPTION": "あなたのプロジェクトの最も戦略的な部分を視覚化し、管理する",
             "BACKLOG": "バックログ",
             "BACKLOG_DESCRIPTION": "ユーザーストーリーが適切にメンテナンスされるよう管理し、優先順位に基づく作業を行うためのビュー",
             "NUMBER_SPRINTS": "予測されるスプリント数",
@@ -501,7 +501,7 @@
             "MEETUP": "会議",
             "MEETUP_DESCRIPTION": "あなたが利用しているビデオ会議システムを選択してください。",
             "SELECT_VIDEOCONFERENCE": "ビデオ会議システムを選択",
-            "SALT_CHAT_ROOM": "Add a prefix to the chatroom name",
+            "SALT_CHAT_ROOM": "チャットルーム名に接頭辞を追加",
             "JITSI_CHAT_ROOM": "Jitsi",
             "APPEARIN_CHAT_ROOM": "AppearIn",
             "TALKY_CHAT_ROOM": "Talky",
@@ -518,6 +518,7 @@
             "RECRUITING": "プロジェクトメンバーを探していますか？",
             "RECRUITING_MESSAGE": "どんな人を探していますか？",
             "RECRUITING_PLACEHOLDER": "探している人のプロフィールを記載してください",
+            "FEEDBACK": "Receive feedback from Taiga users?",
             "PUBLIC_PROJECT": "パブリック プロジェクト",
             "PRIVATE_PROJECT": "非公開プロジェクト",
             "PRIVATE_OR_PUBLIC": "パブリックプロジェクトとプライベートプロジェクトの違いは何ですか？",
@@ -570,6 +571,7 @@
             "ISSUE_DESCRIPTION": "課題のカスタムフィールド",
             "ISSUE_ADD": "課題にカスタムフィールドを追加",
             "FIELD_TYPE_TEXT": "テキスト",
+            "FIELD_TYPE_RICHTEXT": "Rich text",
             "FIELD_TYPE_MULTI": "マルチライン",
             "FIELD_TYPE_DATE": "日時",
             "FIELD_TYPE_URL": "Url"
@@ -619,7 +621,7 @@
             "ACTION_ADD": "タグを追加",
             "NEW_TAG": "新規タグ",
             "MIXING_HELP_TEXT": "マージしたいタグを選択してください。",
-            "MIXING_MERGE": "Merge Tags",
+            "MIXING_MERGE": "タグを結合",
             "SELECTED": "Selected"
         },
         "ROLES": {
@@ -686,7 +688,7 @@
         },
         "CUSTOM_ATTRIBUTES": {
             "PAGE_TITLE": "{{sectionName}} - カスタム属性 - {{projectName}}",
-            "ADD": "カスタムフィールド追加",
+            "ADD": "カスタムフィールドを追加",
             "EDIT": "カスタムフィールドを編集",
             "DELETE": "カスタムフィールドを削除",
             "SAVE_TITLE": "カスタムフィールドを保存",
@@ -776,7 +778,7 @@
             "REJECT": "却下",
             "PROPOSE_OWNERSHIP": "プロジェクト <strong>{{project}}</strong> の現在のプロジェクトオーナー <strong>{{owner}}</strong> が、あなたに新しいプロジェクトオーナーになるようリクエストしています。",
             "ADD_COMMENT": "プロジェクトオーナーにコメントしますか？",
-            "UNLIMITED_PROJECTS": "Unlimited",
+            "UNLIMITED_PROJECTS": "無制限",
             "OWNER_MESSAGE": {
                 "PRIVATE": "あなたが持てる非公開プロジェクトは最大<strong>{{maxProjects}}</strong>個までです。現在<strong>{{currentProjects}}</strong>個持っています。",
                 "PUBLIC": "あなたが持てる公開プロジェクトは最大<strong>{{maxProjects}}</strong>個までです。現在<strong>{{currentProjects}}</strong>個持っています。"
@@ -790,7 +792,7 @@
             "PAGE_TITLE": "{{userFullName}} (@{{userUsername}})",
             "EDIT": "プロフィールを編集",
             "FOLLOW": "フォロー",
-            "CLOSED_US": "終了した<br>ストーリー",
+            "CLOSED_US": "完了したユーザーストーリー",
             "PROJECTS": "プロジェクト",
             "PROJECTS_EMPTY": "{{username}} はまだプロジェクトに参加していません",
             "CONTACTS": "連絡先",
@@ -958,6 +960,10 @@
                 "UNWATCH": "フォローをやめる",
                 "UNWATCH_TITLE": "プロジェクトのフォローをやめる"
             }
+        },
+        "CONTACT_BUTTON": {
+            "CONTACT_TITLE": "Contact the project team",
+            "CONTACT_BUTTON": "Contact the project"
         }
     },
     "LIGHTBOX": {
@@ -1023,7 +1029,7 @@
             "TITLE": "スプリントを削除"
         },
         "CREATE_MEMBER": {
-            "PLACEHOLDER_INVITATION_TEXT": "（オプション）招待する際のメッセージを追加できます。新メンバーに素敵なメッセージを伝えましょう！",
+            "PLACEHOLDER_INVITATION_TEXT": "(任意) 招待する際のメッセージを追加できます。新メンバーに素敵な言葉を贈りましょう ;-)",
             "PLACEHOLDER_TYPE_EMAIL": "メールアドレスを入力",
             "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "このプロジェクトで許可されている最大メンバー数<strong>{{maxMembers}}</strong>名に達しようとしています。上限を増やしたい場合は管理者にお問い合わせください。",
             "LIMIT_USERS_WARNING_MESSAGE": "このプロジェクトで許可されている最大メンバー数<strong>{{maxMembers}}</strong>名に達しようとしています。"
@@ -1043,6 +1049,12 @@
             "TITLE": "誰を新しいプロジェクトオーナーにしたいですか？",
             "ADD_COMMENT": "コメントを追加",
             "BUTTON": "このメンバーを新しいプロジェクトオーナーにする。"
+        },
+        "CONTACT_PROJECT": {
+            "TITLE": "Send an email to",
+            "WARNING": "The email will be received by the project admins",
+            "PLACEHOLDER": "Write your message",
+            "SEND": "Send"
         }
     },
     "EPIC": {
@@ -1074,7 +1086,7 @@
         "TOTAL_POINTS": "合計ポイント",
         "ADD": "+ 新規ユーザーストーリーを追加する",
         "ADD_BULK": "新規ユーザーストーリーを一括で追加する",
-        "PROMOTED": "This US has been promoted from Issue:",
+        "PROMOTED": "このユーザーストーリーはこちらの課題から発展:",
         "TITLE_LINK_GO_TO_ISSUE": "課題へ移動",
         "EXTERNAL_REFERENCE": "This US has been created from",
         "GO_TO_EXTERNAL_REFERENCE": "originへ移動",
@@ -1094,7 +1106,7 @@
             "CLOSE": "Close",
             "SYNCHRONIZE_LINK": "synchronize with Taiga Tribe",
             "PUBLISH_MORE_INFO_TITLE": "このタスクに誰か必要ですか？",
-            "PUBLISH_MORE_INFO_TEXT": "<p>If you need help with a particular piece of work you can easily create gigs on<a href='taigatribe.com' title='Taiga Tribe'> Taiga Tribe </a> and receive help from all over the world. You will be able to control and manage the gig enjoying a great community eager to contribute.</p><p><a href='taigatribe.com' title='Taiga Tribe'> TaigaTribe </a>  was born as a Taiga sibling. Both platforms can live separately but we believe that there is much power in using them combined so we are making sure the integration works like a charm.</p>"
+            "PUBLISH_MORE_INFO_TEXT": "<p>If you need help with a particular piece of work you can easily create gigs on<a href='http://taigatribe.com' title='Taiga Tribe'> Taiga Tribe </a> and receive help from all over the world. You will be able to control and manage the gig enjoying a great community eager to contribute.</p><p><a href='http://taigatribe.com' title='Taiga Tribe'> TaigaTribe </a>  was born as a Taiga sibling. Both platforms can live separately but we believe that there is much power in using them combined so we are making sure the integration works like a charm.</p>"
         },
         "FIELDS": {
             "TEAM_REQUIREMENT": "チームからの要求",
@@ -1106,7 +1118,7 @@
         "DELETED_INFO": "{{user}}によってコメントは削除されました。",
         "TITLE": "コメント",
         "COMMENTS_COUNT": "{{comments}}コメント",
-        "ORDER": "Order",
+        "ORDER": "順番",
         "OLDER_FIRST": "古い順",
         "RECENT_FIRST": "新しい順",
         "COMMENT": "コメント",
@@ -1201,7 +1213,7 @@
         "CREATE_NEW_US": "新規US作成",
         "CREATE_NEW_US_EMPTY_HELP": "新しくユーザーストーリーを作成してください。",
         "EXCESS_OF_POINTS": "Excess of points",
-        "PENDING_POINTS": "Pending Points",
+        "PENDING_POINTS": "保留ポイント",
         "CLOSED_POINTS": "closed",
         "COMPACT_SPRINT": "Compact Sprint",
         "GO_TO_TASKBOARD": "タスクボード {{::name}} へ移動",
@@ -1214,7 +1226,7 @@
             "XAXIS_LABEL": "スプリント",
             "YAXIS_LABEL": "ポイント",
             "OPTIMAL": "Optimal pending points for sprint \"{{sprintName}}\" should be {{value}}",
-            "REAL": "Real pending points for sprint \"{{sprintName}}\" is {{value}}",
+            "REAL": "スプリント \"{{sprintName}}\" の実際の保留ポイントは {{value}} です",
             "INCREMENT_TEAM": "Incremented points by team requirements for sprint \"{{sprintName}}\" is {{value}}",
             "INCREMENT_CLIENT": "Incremented points by client requirements for sprint \"{{sprintName}}\" is {{value}}"
         },
@@ -1227,7 +1239,7 @@
             "TITLE": "Velocity forecasting",
             "BACKLOG": "バックログを表示",
             "NEW_SPRINT": "Candidate User Stories for your next sprint based on your velocity. Click to create a new sprint.",
-            "CURRENT_SPRINT": "Candidate User Stories for your sprint based on your velocity. Click to add to current sprint."
+            "CURRENT_SPRINT": "あなたの作業速度をもとにしたスプリント向けのユーザーストーリー候補。現在のスプリントに追加するにはクリックしてください。"
         },
         "TABLE": {
             "COLUMN_US": "User Stories",
@@ -1239,7 +1251,7 @@
             "OPEN_TASKS": "オープン<br />タスク",
             "CLOSED_TASKS": "完了済み<br />タスク",
             "IOCAINE_DOSES": "iocaine<br />doses",
-            "SHOW_STATISTICS_TITLE": "Show statistics",
+            "SHOW_STATISTICS_TITLE": "統計を表示",
             "TOGGLE_BAKLOG_GRAPH": "バーンダウングラフ 表示/非表示",
             "POINTS_PER_ROLE": "役割ごとのポイント"
         },
@@ -1281,7 +1293,7 @@
     },
     "TASKBOARD": {
         "PAGE_TITLE": "{{sprintName}} - スプリントタスクボード - {{projectName}}",
-        "PAGE_DESCRIPTION": "Sprint {{sprintName}} (from {{startDate}} to {{endDate}}) of {{projectName}}. Completed {{completedPercentage}}% ({{completedPoints}} of {{totalPoints}} points). {{openTasks}} opened tasks of {{totalTasks}}.",
+        "PAGE_DESCRIPTION": "スプリント {{sprintName}} ({{startDate}}から{{endDate}}まで) / {{projectName}}。{{completedPercentage}}% ({{totalPoints}}中{{completedPoints}}ポイント) 完了。{{totalTasks}}タスク中{{openTasks}}タスクが未完了。",
         "SECTION_NAME": "タスクボード",
         "TITLE_ACTION_ADD": "新規タスクを追加",
         "TITLE_ACTION_ADD_BULK": "新規タスクを一括で追加する",
@@ -1302,7 +1314,7 @@
             "XAXIS_LABEL": "Days",
             "YAXIS_LABEL": "ポイント",
             "OPTIMAL": "Optimal pending points for day {{formattedDate}} should be {{roundedValue}}",
-            "REAL": "Real pending points for day {{formattedDate}} is {{roundedValue}}",
+            "REAL": "{{formattedDate}} の実際の保留ポイントは {{roundedValue}} です",
             "DATE": "YYYY年MM月DD日"
         }
     },
@@ -1347,10 +1359,10 @@
     },
     "CHANGE_EMAIL_FORM": {
         "TITLE": "メール変更",
-        "SUBTITLE": "One click more and your email will be updated!",
+        "SUBTITLE": "あとはクリックだけであなたのメールアドレスが更新されます！",
         "PLACEHOLDER_INPUT_TOKEN": "メールトークンを変更",
         "ACTION_CHANGE_EMAIL": "メール変更",
-        "SUCCESS": "Our Oompa Loompas updated your email"
+        "SUCCESS": "ウンパルンパたちがあなたのメールアドレスを更新しました"
     },
     "ISSUES": {
         "PAGE_TITLE": "課題 - {{projectName}}",
@@ -1359,8 +1371,8 @@
         "SECTION_NAME": "課題",
         "ACTION_NEW_ISSUE": "+ 新規 ISSUE",
         "ACTION_PROMOTE_TO_US": "ユーザーストーリーに変更する",
-        "PROMOTED": "This issue has been promoted to US:",
-        "EXTERNAL_REFERENCE": "This issue has been created from",
+        "PROMOTED": "この課題はこちらのユーザーストーリーへ発展:",
+        "EXTERNAL_REFERENCE": "課題の作成元: ",
         "GO_TO_EXTERNAL_REFERENCE": "originへ移動",
         "BLOCKED": "この課題はブロックされています",
         "ACTION_DELETE": "Issue を削除",
@@ -1406,8 +1418,8 @@
         "TITLE_ACTION_UNFOLD": "列をひろげる",
         "TITLE_ACTION_FOLD_CARDS": "カードをたたむ",
         "TITLE_ACTION_UNFOLD_CARDS": "カードをひろげる",
-        "TITLE_ACTION_ADD_US": "新規ユーザーストーリーを追加する",
-        "TITLE_ACTION_ADD_BULK": "新規ユーザーストーリーを一括で追加する",
+        "TITLE_ACTION_ADD_US": "新規ユーザーストーリーを追加",
+        "TITLE_ACTION_ADD_BULK": "新規ユーザーストーリーを一括追加",
         "ACTION_SHOW_ARCHIVED": "アーカイブ済を表示",
         "ACTION_HIDE_ARCHIVED": "アーカイブ済を隠す",
         "HIDDEN_USER_STORIES": "The user stories in this status are hidden by default",
@@ -1436,7 +1448,7 @@
         "APP_TITLE": "チーム - {{projectName}}",
         "PLACEHOLDER_INPUT_SEARCH": "フルネームで検索する",
         "COLUMN_MR_WOLF": "Mr. Wolf",
-        "EXPLANATION_COLUMN_MR_WOLF": "課題を閉じる",
+        "EXPLANATION_COLUMN_MR_WOLF": "完了した課題",
         "COLUMN_IOCAINE": "Iocaine Drinker",
         "EXPLANATION_COLUMN_IOCAINE": "Iocaine doses ingested",
         "COLUMN_CERVANTES": "Cervantes",
@@ -1658,7 +1670,7 @@
                 "TEXT": "User Stories are the requirements at high level. You can drag them to different columns."
             },
             "STEP3": {
-                "TITLE": "Adding User Stories",
+                "TITLE": "ユーザーストーリーを追加中",
                 "TEXT1": "You may want to add a single User Story (add US icon) or a group of them (bulk icon)",
                 "TEXT2": "グッドラック！"
             }

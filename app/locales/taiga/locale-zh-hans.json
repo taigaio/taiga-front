@@ -18,8 +18,8 @@
         "EDIT": "编辑",
         "DRAG": "拖拽",
         "TAG_LINE": "你的敏捷、免费和开源的项目管理工具",
-        "TAG_LINE_2": "爱你的项目",
-        "BLOCK": "冻结",
+        "TAG_LINE_2": "你喜欢的项目",
+        "BLOCK": "锁定",
         "BLOCK_TITLE": "冻结：例如它有一个依赖不能满足，那么请冻结此项",
         "BLOCKED": "已冻结",
         "UNBLOCK": "解除冻结",
@@ -305,7 +305,7 @@
         "TITLE_LINK_FORGOT_PASSWORD": "您忘记密码了吗",
         "ACTION_ENTER": "回车",
         "ACTION_SIGN_IN": "登录",
-        "PLACEHOLDER_AUTH_PASSWORD": "密码（大小写有别）"
+        "PLACEHOLDER_AUTH_PASSWORD": "密码(大小写敏感)"
     },
     "LOGIN_FORM": {
         "ERROR_AUTH_INCORRECT": "根据我们的系统记录，你的账户名称/电子邮件或密码并不正确",
@@ -320,18 +320,18 @@
         "PLACEHOLDER_NAME": "填写一个用户账号(注意大小写)",
         "PLACEHOLDER_FULL_NAME": "填写你的全名",
         "PLACEHOLDER_EMAIL": "填写你的电子邮件",
-        "PLACEHOLDER_PASSWORD": "设定密码（注意大小写不同）",
+        "PLACEHOLDER_PASSWORD": "设置密码(大小写敏感)",
         "ACTION_SIGN_UP": "注册",
         "TITLE_LINK_LOGIN": "登录",
         "LINK_LOGIN": "你是否已注册? 登录"
     },
     "FORGOT_PASSWORD": {
         "PAGE_TITLE": "忘记密码 - Taiga",
-        "PAGE_DESCRIPTION": "输入用户名或电子邮件以获取新密码，可以再重新登录Taiga"
+        "PAGE_DESCRIPTION": "请输入你的用户名或电子邮件地址获取新密码重新登录Taiga"
     },
     "FORGOT_PASSWORD_FORM": {
         "TITLE": "你是否忘了密码？",
-        "SUBTITLE": "输入你的账户名称或电子邮件以进行注册",
+        "SUBTITLE": "输入你的用户名称或电子邮件进行注册",
         "PLACEHOLDER_FIELD": "用户名称或电子邮件",
         "ACTION_RESET_PASSWORD": "重设密码",
         "LINK_CANCEL": "不，请带我回去，我记起来了",
@@ -340,7 +340,7 @@
         "ERROR": "根据我们的系统记录，你尚未注册"
     },
     "CHANGE_PASSWORD": {
-        "PAGE_TITLE": "更新密码 - Taiga",
+        "PAGE_TITLE": "修改密码 - Taiga",
         "PAGE_DESCRIPTION": "设定Taiga账户密码！你也许该吃点含铁丰富的食物，它对你的大脑有益处:p",
         "SECTION_NAME": "更新密码",
         "FIELD_CURRENT_PASSWORD": "当前密码",
@@ -349,7 +349,7 @@
         "PLACEHOLDER_NEW_PASSWORD": "输入新密码",
         "FIELD_RETYPE_PASSWORD": "重新输入新密码",
         "PLACEHOLDER_RETYPE_PASSWORD": "重新输入新密码",
-        "ERROR_PASSWORD_MATCH": "密码不符"
+        "ERROR_PASSWORD_MATCH": "密码不匹配"
     },
     "CHANGE_PASSWORD_RECOVERY_FORM": {
         "TITLE": "创建新Taiga通过",
@@ -357,7 +357,7 @@
         "PLACEHOLDER_NEW_PASSWORD": "新密码",
         "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "重新输入新密码",
         "ACTION_RESET_PASSWORD": "重设密码",
-        "ERROR": "我们的Oompa Loompas找不到你的请求来覆盖你的密码。尝试再请求一次。",
+        "ERROR": "我们的系统无法响应恢复密码的请求。请再尝试一次。",
         "SUCCESS": "系统已储存你的新密码<br />试试 <strong>用它登录</strong>"
     },
     "INVITATION": {
@@ -381,7 +381,7 @@
     },
     "EPICS": {
         "TITLE": "史诗",
-        "SECTION_NAME": "史诗",
+        "SECTION_NAME": "用户故事",
         "EPIC": "史诗",
         "PAGE_TITLE": "史诗 - {{projectName}}",
         "PAGE_DESCRIPTION": "项目的史诗列表{{projectName}}：{{projectDescription}}",
@@ -409,7 +409,7 @@
             "PLACEHOLDER_DESCRIPTION": "请添加一些描述文字来帮助其他人更好的了解这个史诗",
             "TEAM_REQUIREMENT": "团队需求",
             "CLIENT_REQUIREMENT": "客户需求",
-            "BLOCKED": "已封锁",
+            "BLOCKED": "已锁定",
             "BLOCKED_NOTE_PLACEHOLDER": "为什么这个史诗被冻结了？",
             "CREATE_EPIC": "创建史诗"
         }
@@ -423,7 +423,7 @@
         "SECTION_NAME": "附件",
         "TITLE": "{{ fileName }} 上传于 {{ date }}",
         "LIST_VIEW_MODE": "列表视图模式",
-        "GALLERY_VIEW_MODE": "画廊视图模式",
+        "GALLERY_VIEW_MODE": "缩略图模式",
         "DESCRIPTION": "输入一段简短描述",
         "DEPRECATED": "(已废弃)",
         "DEPRECATED_FILE": "废弃?",
@@ -518,6 +518,7 @@
             "RECRUITING": "这个项目是否在招人？",
             "RECRUITING_MESSAGE": "你在寻找什么人？",
             "RECRUITING_PLACEHOLDER": "定义简介",
+            "FEEDBACK": "Receive feedback from Taiga users?",
             "PUBLIC_PROJECT": "公开项目",
             "PRIVATE_PROJECT": "私有项目",
             "PRIVATE_OR_PUBLIC": "公开项目与私有项目有什么区别？",
@@ -570,6 +571,7 @@
             "ISSUE_DESCRIPTION": "问题自定义字段",
             "ISSUE_ADD": "在问题中加入自定义字段",
             "FIELD_TYPE_TEXT": "单行文字",
+            "FIELD_TYPE_RICHTEXT": "Rich text",
             "FIELD_TYPE_MULTI": "多行文字",
             "FIELD_TYPE_DATE": "日期",
             "FIELD_TYPE_URL": "链接"
@@ -789,7 +791,7 @@
         "PROFILE": {
             "PAGE_TITLE": "{{userFullName}} (@{{userUsername}})",
             "EDIT": "编辑个人资料",
-            "FOLLOW": "追踪",
+            "FOLLOW": "关注",
             "CLOSED_US": "关闭用户故事",
             "PROJECTS": "项目",
             "PROJECTS_EMPTY": "{{username}} 尚无项目",
@@ -958,13 +960,17 @@
                 "UNWATCH": "取消关注",
                 "UNWATCH_TITLE": "取消关注这个项目"
             }
+        },
+        "CONTACT_BUTTON": {
+            "CONTACT_TITLE": "Contact the project team",
+            "CONTACT_BUTTON": "Contact the project"
         }
     },
     "LIGHTBOX": {
         "DELETE_ACCOUNT": {
             "SECTION_NAME": "删除Taiga账户",
             "CONFIRM": "你确定要删除Taiga账户吗？",
-            "NEWSLETTER_LABEL_TEXT": "不愿再收到电子月报",
+            "NEWSLETTER_LABEL_TEXT": "不愿再收到任何信息",
             "CANCEL": "返回设置",
             "ACCEPT": "删除账号",
             "BLOCK_PROJECT": "请注意，在你删除你的账户之后，所有属于你的项目都会被<strong>冻结</strong>。如果你确实希望一个项目被冻结，在你删除你的账户之前，请将所有权转移至该项目的其他成员名下。",
@@ -1043,6 +1049,12 @@
             "TITLE": "你希望谁作为项目的新的所有者？",
             "ADD_COMMENT": "评论",
             "BUTTON": "要求这位项目成员作为新的项目所有者"
+        },
+        "CONTACT_PROJECT": {
+            "TITLE": "Send an email to",
+            "WARNING": "The email will be received by the project admins",
+            "PLACEHOLDER": "Write your message",
+            "SEND": "Send"
         }
     },
     "EPIC": {
@@ -1094,7 +1106,7 @@
             "CLOSE": "关闭",
             "SYNCHRONIZE_LINK": "与Taiga Tribe同步",
             "PUBLISH_MORE_INFO_TITLE": "你是否需要其他人来做这个任务？",
-            "PUBLISH_MORE_INFO_TEXT": "<p>如果你在工作中的某个特殊的地方需要帮助，你可以很容易地在<a href='taigatribe.com' title='Taiga Tribe'> Taiga Tribe </a>创建gig并接受来自世界各地的帮助。你将能够控制并管理这个gig并享受一个渴望贡献的伟大社区。</p><p><a href='taigatribe.com' title='Taiga Tribe'> TaigaTribe </a>作为Taiga的姊妹存在。两个平台可以相互独立，但是我们相信联合使用他们会更为强大，所以我们确信集成工作将会非常成功</p>"
+            "PUBLISH_MORE_INFO_TEXT": "<p>If you need help with a particular piece of work you can easily create gigs on<a href='http://taigatribe.com' title='Taiga Tribe'> Taiga Tribe </a> and receive help from all over the world. You will be able to control and manage the gig enjoying a great community eager to contribute.</p><p><a href='http://taigatribe.com' title='Taiga Tribe'> TaigaTribe </a>  was born as a Taiga sibling. Both platforms can live separately but we believe that there is much power in using them combined so we are making sure the integration works like a charm.</p>"
         },
         "FIELDS": {
             "TEAM_REQUIREMENT": "团队要求",
@@ -1226,8 +1238,8 @@
         "FORECASTING": {
             "TITLE": "速度预测",
             "BACKLOG": "显示待办任务",
-            "NEW_SPRINT": "Candidate User Stories for your next sprint based on your velocity. Click to create a new sprint.",
-            "CURRENT_SPRINT": "Candidate User Stories for your sprint based on your velocity. Click to add to current sprint."
+            "NEW_SPRINT": "根据进度确定下一个冲刺目标的候选用户故事。点击创建新的冲刺目标。",
+            "CURRENT_SPRINT": "根据进度确定当前冲刺目标的候选用户故事。点击创建当前的冲刺目标。"
         },
         "TABLE": {
             "COLUMN_US": "用户故事",

@@ -518,6 +518,7 @@
             "RECRUITING": "這個專案是否在徵人",
             "RECRUITING_MESSAGE": "你在找誰？",
             "RECRUITING_PLACEHOLDER": "定義你要找的資訊",
+            "FEEDBACK": "Receive feedback from Taiga users?",
             "PUBLIC_PROJECT": "公開專案",
             "PRIVATE_PROJECT": "不公開專案",
             "PRIVATE_OR_PUBLIC": "公開專案和私密專案有何差異?",
@@ -570,6 +571,7 @@
             "ISSUE_DESCRIPTION": "問題客製化欄位",
             "ISSUE_ADD": "在問題中加入客制欄位",
             "FIELD_TYPE_TEXT": "單行文字",
+            "FIELD_TYPE_RICHTEXT": "Rich text",
             "FIELD_TYPE_MULTI": "多行",
             "FIELD_TYPE_DATE": "日期",
             "FIELD_TYPE_URL": "Url"
@@ -958,6 +960,10 @@
                 "UNWATCH": "不觀注",
                 "UNWATCH_TITLE": "不再觀注此專案"
             }
+        },
+        "CONTACT_BUTTON": {
+            "CONTACT_TITLE": "Contact the project team",
+            "CONTACT_BUTTON": "Contact the project"
         }
     },
     "LIGHTBOX": {
@@ -1043,6 +1049,12 @@
             "TITLE": "Who do you want to be the new project owner?",
             "ADD_COMMENT": "Add comment",
             "BUTTON": "Ask this project member to become the new project owner"
+        },
+        "CONTACT_PROJECT": {
+            "TITLE": "Send an email to",
+            "WARNING": "The email will be received by the project admins",
+            "PLACEHOLDER": "Write your message",
+            "SEND": "Send"
         }
     },
     "EPIC": {
@@ -1094,7 +1106,7 @@
             "CLOSE": "Close",
             "SYNCHRONIZE_LINK": "synchronize with Taiga Tribe",
             "PUBLISH_MORE_INFO_TITLE": "Do you need somebody for this task?",
-            "PUBLISH_MORE_INFO_TEXT": "<p>If you need help with a particular piece of work you can easily create gigs on<a href='taigatribe.com' title='Taiga Tribe'> Taiga Tribe </a> and receive help from all over the world. You will be able to control and manage the gig enjoying a great community eager to contribute.</p><p><a href='taigatribe.com' title='Taiga Tribe'> TaigaTribe </a>  was born as a Taiga sibling. Both platforms can live separately but we believe that there is much power in using them combined so we are making sure the integration works like a charm.</p>"
+            "PUBLISH_MORE_INFO_TEXT": "<p>If you need help with a particular piece of work you can easily create gigs on<a href='http://taigatribe.com' title='Taiga Tribe'> Taiga Tribe </a> and receive help from all over the world. You will be able to control and manage the gig enjoying a great community eager to contribute.</p><p><a href='http://taigatribe.com' title='Taiga Tribe'> TaigaTribe </a>  was born as a Taiga sibling. Both platforms can live separately but we believe that there is much power in using them combined so we are making sure the integration works like a charm.</p>"
         },
         "FIELDS": {
             "TEAM_REQUIREMENT": "團隊要求",
