@@ -47,4 +47,12 @@ class CreateProjectController
             description: @.project.get("description")
         }
 
+    displayHelp: (type, $event) ->
+        console.log type, $event
+        if type == 'scrum'
+            @.displayScrumDesc = !@.displayScrumDesc
+        if type == 'kanban'
+            @.displayKanbanDesc = !@.displayKanbanDesc
+        $event.stopPropagation()
+
 angular.module("taigaProjects").controller("CreateProjectCtrl", CreateProjectController)

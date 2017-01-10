@@ -977,7 +977,7 @@
         "IMPORT": {
             "TITLE": "Import Project",
             "DESCRIPTION": "Fresh and clean. So exciting!",
-            "IMPORT": "Import",
+            "IMPORT": "Import from Taiga, Trello, Jira, Github, Pivotal Tracker, Asana...",
             "ARCHIVED": "Archived",
             "ARCHIVED_DESCRIPTION": "You have archived projects, Do you want to import your archived projects?",
             "LINKS": "Links with Trello",

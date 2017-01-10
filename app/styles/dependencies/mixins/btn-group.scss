@@ -35,9 +35,10 @@
             @include font-type(bold);
         }
         &:disabled+label {
-            color: $whitish;
+            cursor: not-allowed;
+            color: lighten($gray-light, 15%);
             .icon {
-                fill: $whitish;
+                color: lighten($gray-light, 15%);
             }
         }
     }

@@ -35,7 +35,18 @@ $create-project-padding: 1.25rem;
         text-align: center;
     }
     &-title {
+        align-items: center;
+        display: flex;
+        justify-content: center;
         margin-bottom: 0;
+        tg-svg {
+            display: flex;
+        }
+        .icon {
+            @include svg-size(1.5rem);
+            margin-right: .5rem;
+            vertical-align: middle;
+        }
     }
     &-description {
         color: $gray-light;
@@ -103,7 +114,7 @@ $create-project-padding: 1.25rem;
         margin-top: 1rem;
         max-height: 120px;
         overflow: hidden;
-        transition: all .3s ease-out;
+        transition: all .2s cubic-bezier(0, 0, .53, 1.32);
         &.ng-hide {
             line-height: 0;
             max-height: 0;
@@ -137,12 +148,21 @@ $create-project-padding: 1.25rem;
         @include font-size(large);
         padding: 12px;
     }
-    .create-project-action-submit {
+    &-submit {
         flex: 4;
         margin-left: 1rem;
     }
-    .create-project-action-cancel {
+    &-cancel,
+    &-back {
         color: currentColor;
+        &:hover {
+            color: $primary-light;
+        }
+    }
+    &-cancel {
         flex: 1;
+    }
+    &-back {
+        width: 10%;
     }
 }

@@ -17,7 +17,7 @@
                     .create-project-selector-question
                         tg-svg(
                             svg-icon="icon-question"
-                            ng-click="vm.displayScrumDesc = !vm.displayScrumDesc"
+                            ng-click="vm.displayHelp('scrum', $event)"
                         )
                     .create-project-selector-long-description(ng-show="vm.displayScrumDesc")
                         p(translate="PROJECT.CREATE.TEMPLATE_SCRUM_LONGDESC")
@@ -35,7 +35,7 @@
                     .create-project-selector-question
                         tg-svg(
                             svg-icon="icon-question"
-                            ng-click="vm.displayKanbanDesc = !vm.displayKanbanDesc"
+                            ng-click="vm.displayHelp('kanban', $event)"
                         )
                     .create-project-selector-long-description(ng-show="vm.displayKanbanDesc")
                         p(translate="PROJECT.CREATE.TEMPLATE_KANBAN_LONGDESC")

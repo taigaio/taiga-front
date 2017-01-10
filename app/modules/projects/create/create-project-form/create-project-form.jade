@@ -1,15 +1,19 @@
 .create-project
-    div
-        h1.create-project-title(translate="PROJECT.CREATE.TITLE")
-        h3.create-project-description(translate="PROJECT.CREATE.FRESH")
-
-        .create-project-type(ng-if="vm.type == 'scrum'")
-            tg-svg(svg-icon="icon-scrum")
-            span(translate="PROJECT.CREATE.TEMPLATE_SCRUM")
-
-        .create-project-type(ng-if="vm.type == 'kanban'")
-            tg-svg(svg-icon="icon-kanban")
-            span(translate="PROJECT.CREATE.TEMPLATE_KANBAN")
+    h1.create-project-title(ng-if="vm.type == 'scrum'")
+        tg-svg(svg-icon="icon-scrum")
+        span(translate="PROJECT.CREATE.TEMPLATE_SCRUM")
+    h3.create-project-description(
+        ng-if="vm.type == 'scrum'"
+        translate="PROJECT.CREATE.TEMPLATE_SCRUM_DESC"
+    )
+    
+    h1.create-project-title(ng-if="vm.type == 'kanban'")
+        tg-svg(svg-icon="icon-kanban")
+        span(translate="PROJECT.CREATE.TEMPLATE_KANBAN")
+    h3.create-project-description(
+        ng-if="vm.type == 'kanban'"
+        translate="PROJECT.CREATE.TEMPLATE_KANBAN_DESC"
+    )
 
     form(ng-submit="vm.submit()")
         fieldset

@@ -26,7 +26,9 @@ class DuplicateProjectController
     ]
 
     constructor: (@currentUserService, @projectsService, @location, @urlservice) ->
-        @.projects = @currentUserService.projects.get("all")
+        allProjects = @currentUserService.projects.get("all")
+        @.projects = allProjects.filter (project) =>
+            !project.get('blocked_code')
         @.user = @currentUserService.getUser()
         @.canCreatePublicProjects = @currentUserService.canCreatePublicProjects()
         @.canCreatePrivateProjects = @currentUserService.canCreatePrivateProjects()
@@ -52,12 +54,15 @@ class DuplicateProjectController
 
     checkUsersLimit: (members) ->
         size = members.size
+        @.limitMembersPrivateProject = undefined
+        @.limitMembersPublicProject = undefined
         if @.duplicatedProject.is_private
             @.limitMembersPublicProject = false
             @.limitMembersPrivateProject = @.user.get('max_memberships_private_projects') < size
-        else
+        else if !@.duplicatedProject.is_private && @.user.get('max_memberships_public_projects')
             @.limitMembersPrivateProject = false
             @.limitMembersPublicProject = @.user.get('max_memberships_public_projects') < size
+
 
     onDuplicateProject: () ->
         projectId = @.referenceProject.get('id')

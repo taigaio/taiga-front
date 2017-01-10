@@ -1,7 +1,4 @@
 .import-project {
-    .back {
-        color: $primary;
-    }
     &-from-site {
         background: $mass-white;
         color: $grayer;
@@ -12,19 +9,6 @@
         &:hover {
             background: rgba($primary, .1);
             transition: background .3s ease-in;
-        }
-    }
-    h1 {
-        align-items: center;
-        display: flex;
-        justify-content: center;
-        .icon {
-            @include svg-size(1.2rem);
-        }
-        span {
-            @include font-size(medium);
-            @include font-type(bold);
-            padding-left: .5rem;
         }
     }
 }
