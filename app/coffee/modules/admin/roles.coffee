@@ -47,6 +47,7 @@ class RolesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fil
         "$q",
         "$tgLocation",
         "$tgNavUrls",
+        "$tgModel",
         "tgAppMetaService",
         "$translate",
         "tgErrorHandlingService",
@@ -54,7 +55,7 @@ class RolesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fil
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @navUrls,
-                  @appMetaService, @translate, @errorHandlingService, @projectService) ->
+                  @model, @appMetaService, @translate, @errorHandlingService, @projectService) ->
         bindMethods(@)
 
         @scope.sectionName = "ADMIN.MENU.PERMISSIONS"
@@ -72,6 +73,7 @@ class RolesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fil
 
     loadProject: ->
         project = @projectService.project.toJS()
+        project = @model.make_model("projects", project)
 
         if not project.i_am_admin
             @errorHandlingService.permissionDenied()
