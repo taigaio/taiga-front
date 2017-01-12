@@ -54,7 +54,7 @@ class WysiwygService
         return html
 
     replaceEmojiNameByImgs: (text) ->
-        emojiIds = taiga.getMatches(text, /:([^: ]*):/g)
+        emojiIds = taiga.getMatches(text, /:([\w ]*):/g)
 
         for emojiId in emojiIds
             regexImgs = new RegExp(':' + emojiId + ':', 'g')
