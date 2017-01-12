@@ -30,6 +30,9 @@ Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoad
     isCodeBlockSelected = (range, elm) ->
         return !!$(range.endContainer).parentsUntil('.editor', 'code').length
 
+    refreshCodeBlockHightlight = (elm) ->
+        wysiwygCodeHightlighterService.refreshCodeLanguageSelectors(elm)
+
     removeCodeBlockAndHightlight = (range, elm) ->
         code = $(range.endContainer).closest('code')[0]
         pre = code.parentNode
@@ -237,8 +240,16 @@ Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoad
                 $scope.cancel()
                 askResponse.finish()
 
+        # firefox adds br instead of new lines inside <code>, taiga must replace the br by \n before sending to the server
+        replaceCodeBrToNl = () ->
+            html = $('<div></div>').html(editorMedium.html())
+            html.find('code br').replaceWith('\n')
+
+            return html.html()
+
         updateMarkdownWithCurrentHtml = () ->
-            $scope.markdown = wysiwygService.getMarkdown(editorMedium.html())
+            html = replaceCodeBrToNl()
+            $scope.markdown = wysiwygService.getMarkdown(html)
 
         localSave = (markdown) ->
             if $scope.storageKey

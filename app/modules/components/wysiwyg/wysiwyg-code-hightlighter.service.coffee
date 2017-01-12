@@ -59,17 +59,29 @@ class WysiwygCodeHightlighterService
                         if lan
                             tab.innerText = lan
                             @.updatePositionCodeTab(code.parentElement, tab)
+
+                            languageClass = _.find code.classList, (className) ->
+                                return className && className.indexOf('language-') != -1
+
+                            code.classList.remove(languageClass.replace('language-', ''))
+                            code.classList.remove(languageClass)
+
                             code.classList.add('language-' + lan)
                             code.classList.add(lan)
 
                 document.body.appendChild(tab)
 
-                code.classList.add(id)
                 code.dataset.tab = tab
+
+
+                if !code.dataset.tabId
+                    code.dataset.tabId = id
+                    code.classList.add(id)
+
+                tab.dataset.tabId = code.dataset.tabId
 
                 tab.classList.add('code-language-selector') # styles
                 tab.classList.add('medium-' + mediumInstance.id) # used to delete
-                tab.dataset.tabId = id
 
                 @.updatePositionCodeTab(code.parentElement, tab)
 
@@ -158,10 +170,16 @@ class WysiwygCodeHightlighterService
         codes.each (index, code) ->
             code.innerHTML = code.innerText
 
+    # firefox adds br instead of new lines inside <code>
+    replaceCodeBrToNl: (code) ->
+        $(code).find('br').replaceWith('\n')
+
     addHightlighter: (element) ->
         codes = $(element).find('code')
 
         codes.each (index, code) =>
+            @.replaceCodeBrToNl(code)
+
             lan = @.getLanguageInClassList(code.classList)
 
             if lan
