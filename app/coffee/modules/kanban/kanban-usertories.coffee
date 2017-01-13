@@ -170,9 +170,14 @@ class KanbanUserstoriesService extends taiga.Service
         userstories = @.userstoriesRaw
         userstories = _.map userstories, (usModel) =>
             us = {}
+
+            model = usModel.getAttrs()
+
             us.foldStatusChanged = @.foldStatusChanged[usModel.id]
-            us.model = usModel.getAttrs()
-            us.images = _.filter usModel.attachments, (it) -> return !!it.thumbnail_card_url
+
+            us.model = model
+            us.images = _.filter model.attachments, (it) -> return !!it.thumbnail_card_url
+
             us.id = usModel.id
             us.assigned_to = @.usersById[usModel.assigned_to]
             us.colorized_tags = _.map us.model.tags, (tag) =>

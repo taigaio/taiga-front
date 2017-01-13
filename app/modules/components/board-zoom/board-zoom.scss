@@ -36,6 +36,7 @@ $contrast: 2;
 
 .range-slider {
     -webkit-appearance: none;
+    display: block;
     margin: $thumb-height / 2 0;
     width: $track-width;
 

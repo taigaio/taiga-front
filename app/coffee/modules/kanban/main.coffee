@@ -77,6 +77,10 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         @scope.sectionName = @translate.instant("KANBAN.SECTION_NAME")
         @.initializeEventHandlers()
 
+        taiga.defineImmutableProperty @.scope, "usByStatus", () =>
+            return @kanbanUserstoriesService.usByStatus
+
+    firstLoad: () ->
         promise = @.loadInitialData()
 
         # On Success
@@ -91,15 +95,28 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         # On Error
         promise.then null, @.onInitialDataError.bind(@)
 
-        taiga.defineImmutableProperty @.scope, "usByStatus", () =>
-            return @kanbanUserstoriesService.usByStatus
-
     setZoom: (zoomLevel, zoom) ->
-        if @.zoomLevel != zoomLevel
-            @kanbanUserstoriesService.resetFolds()
+        if @.zoomLevel == zoomLevel
+            return null
+
+        @.isFirstLoad = !@.zoomLevel
+
+        previousZoomLevel = @.zoomLevel
 
         @.zoomLevel = zoomLevel
         @.zoom = zoom
+
+        if @.isFirstLoad
+            @.firstLoad().then () =>
+                @.isFirstLoad = false
+                @kanbanUserstoriesService.resetFolds()
+
+        else if @.zoomLevel > 1 && previousZoomLevel <= 1
+            @.zoomLoading = true
+
+            @.loadUserstories().then () =>
+                @.zoomLoading = false
+                @kanbanUserstoriesService.resetFolds()
 
     filtersReloadContent: () ->
         @.loadUserstories().then () =>
@@ -182,12 +199,14 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         return @rs.projects.tagsColors(@scope.projectId).then (tags_colors) =>
             @scope.project.tags_colors = tags_colors._attrs
 
-    loadUserstories: ->
+    loadUserstories: () ->
         params = {
-            status__is_archived: false,
-            include_attachments: true,
-            include_tasks: true
+            status__is_archived: false
         }
+
+        if @.zoomLevel > 1
+            params.include_attachments = 1
+            params.include_tasks = 1
 
         params = _.merge params, @location.search()
 
@@ -423,13 +442,18 @@ KanbanSquishColumnDirective = (rs, projectService) ->
                     return 40
                 else
                     return 310
+
             totalWidth = _.reduce columnWidths, (total, width) ->
                 return total + width
 
             $el.find('.kanban-table-inner').css("width", totalWidth)
 
-        $scope.folds = rs.kanban.getStatusColumnModes(projectService.project.get('id'))
-        updateTableWidth()
+        unwatch = $scope.$watch 'usByStatus', (usByStatus) ->
+            if usByStatus.size
+                $scope.folds = rs.kanban.getStatusColumnModes(projectService.project.get('id'))
+                updateTableWidth()
+
+                unwatch()
 
     return {link: link}
 

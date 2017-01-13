@@ -72,6 +72,10 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
         @scope.sectionName = @translate.instant("TASKBOARD.SECTION_NAME")
         @.initializeEventHandlers()
 
+        taiga.defineImmutableProperty @.scope, "usTasks", () =>
+            return @taskboardTasksService.usTasks
+
+    firstLoad: () ->
         promise = @.loadInitialData()
 
         # On Success
@@ -79,15 +83,27 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
         # On Error
         promise.then null, @.onInitialDataError.bind(@)
 
-        taiga.defineImmutableProperty @.scope, "usTasks", () =>
-            return @taskboardTasksService.usTasks
-
     setZoom: (zoomLevel, zoom) ->
-        if @.zoomLevel != zoomLevel
-            @taskboardTasksService.resetFolds()
+        if @.zoomLevel == zoomLevel
+            return null
+
+        @.isFirstLoad = !@.zoomLevel
+
+        previousZoomLevel = @.zoomLevel
 
         @.zoomLevel = zoomLevel
         @.zoom = zoom
+
+        if @.isFirstLoad
+            @.firstLoad().then () =>
+                @.isFirstLoad = false
+                @taskboardTasksService.resetFolds()
+
+        else if @.zoomLevel > 1 && previousZoomLevel <= 1
+            @.zoomLoading = true
+            @.loadTasks().then () =>
+                @.zoomLoading = false
+                @taskboardTasksService.resetFolds()
 
         if @.zoomLevel == '0'
             @rootscope.$broadcast("sprint:zoom0")
@@ -342,9 +358,10 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
             return sprint
 
     loadTasks: ->
-        params = {
-            include_attachments: true,
-        }
+        params = {}
+
+        if @.zoomLevel > 1
+            params.include_attachments = 1
 
         params = _.merge params, @location.search()
 

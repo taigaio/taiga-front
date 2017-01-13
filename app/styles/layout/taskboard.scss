@@ -10,6 +10,10 @@
     .graphics-container {
         @include slide(300px, hidden);
     }
+    .zoom-loading img {
+        display: block;
+        margin-right: 1rem;
+    }
 }
 
 .taskboard-header {

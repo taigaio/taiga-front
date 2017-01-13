@@ -30,9 +30,12 @@ resourceProvider = ($repo, $http, $urls, $storage, $q) ->
     service = {}
     hashSuffix = "userstories-queryparams"
 
-    service.get = (projectId, usId) ->
+    service.get = (projectId, usId, extraParams) ->
         params = service.getQueryParams(projectId)
         params.project = projectId
+
+        params = _.extend({}, params, extraParams)
+
         return $repo.queryOne("userstories", usId, params)
 
     service.getByRef = (projectId, ref, extraParams = {}) ->
@@ -64,6 +67,7 @@ resourceProvider = ($repo, $http, $urls, $storage, $q) ->
         params = {"project": projectId}
         params = _.extend({}, params, filters or {})
         service.storeQueryParams(projectId, params)
+
         return $repo.queryMany("userstories", params)
 
     service.bulkCreate = (projectId, status, bulk) ->
