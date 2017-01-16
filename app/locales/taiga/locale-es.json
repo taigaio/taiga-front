@@ -962,7 +962,7 @@
             }
         },
         "CONTACT_BUTTON": {
-            "CONTACT_TITLE": "Contact the project team",
+            "CONTACT_TITLE": "Contacta con el equipo de proyecto",
             "CONTACT_BUTTON": "Contact the project"
         }
     },
@@ -1051,10 +1051,10 @@
             "BUTTON": "Pregunte a este usuario para convertirlo en el nuero dueño del proyecto"
         },
         "CONTACT_PROJECT": {
-            "TITLE": "Send an email to",
-            "WARNING": "The email will be received by the project admins",
+            "TITLE": "Enviar email a",
+            "WARNING": "Los administradores del proyecto recibirán el email",
             "PLACEHOLDER": "Write your message",
-            "SEND": "Send"
+            "SEND": "Enviar"
         }
     },
     "EPIC": {

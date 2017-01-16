@@ -41,7 +41,7 @@
         "LOGOUT": "Déconnexion",
         "EXTERNAL_USER": "un utilisateur externe",
         "GENERIC_ERROR": "L'un de nos Oompa Loompas dit {{error}}.",
-        "IOCAINE_TEXT": "This member is feeling a bit overwhelmed by this task. Will become immune to the iocaine poison over time with your help. For now, may need a hug.",
+        "IOCAINE_TEXT": "Ce membre se sent un peu dépassé par cette tâche. Deviendra immunisé contre le poison iocane au fil du temps avec votre aide. Pour l'instant, il peut avoir besoin d'une étreinte.",
         "CLIENT_REQUIREMENT": "Une exigence client est une nouvelle exigence exprimée par le client, qui n'était pas prévue dans le projet initial, et qu'il est nécessaire d'intégrer",
         "TEAM_REQUIREMENT": "Une exigence équipe est une exigence exprimée par l'équipe qui doit être rajoutée au projet, sans que cela n'ait d'impact pour le client",
         "OWNER": "Propriétaire du Projet",
@@ -227,7 +227,7 @@
             }
         },
         "WYSIWYG": {
-            "OUTDATED": "Another person has made changes while you were editing. Check the new version on the activiy tab before you save your changes.",
+            "OUTDATED": "Une autre personne a apportée des modifications lors de l'édition. Vérifiez la nouvelle version dans l'onglet Activité avant d'enregistrer vos modifications.",
             "ATTACH_FILE_HELP": "Joindre des fichiers en glissant et déposant ceux-ci sur la zone de texte ci-dessus.",
             "ATTACH_FILE_HELP_SAVE_FIRST": "Enregistrez d'abord si vous voulez joindre des fichiers en glissant et déposant ceux-ci sur la zone de texte ci-dessus.",
             "MARKDOWN_HELP": "Aide sur la syntaxe Markdown"
@@ -518,7 +518,7 @@
             "RECRUITING": "Est-ce que ce projet recherche des membres ?",
             "RECRUITING_MESSAGE": "Qui cherchez-vous ?",
             "RECRUITING_PLACEHOLDER": "Définissez le profil que vous recherchez",
-            "FEEDBACK": "Receive feedback from Taiga users?",
+            "FEEDBACK": "Recevoir les commentaires des utilisateurs de Taiga?",
             "PUBLIC_PROJECT": "Projet public",
             "PRIVATE_PROJECT": "Projet privé",
             "PRIVATE_OR_PUBLIC": "Quelle est la différence entre les projets publics et privés ?",
@@ -571,7 +571,7 @@
             "ISSUE_DESCRIPTION": "Champs personnalisés des tickets",
             "ISSUE_ADD": "Ajouter un champ personnalisé dans les tickets",
             "FIELD_TYPE_TEXT": "Texte",
-            "FIELD_TYPE_RICHTEXT": "Rich text",
+            "FIELD_TYPE_RICHTEXT": "Texte riche",
             "FIELD_TYPE_MULTI": "Multiligne",
             "FIELD_TYPE_DATE": "Date",
             "FIELD_TYPE_URL": "Url"
@@ -962,8 +962,8 @@
             }
         },
         "CONTACT_BUTTON": {
-            "CONTACT_TITLE": "Contact the project team",
-            "CONTACT_BUTTON": "Contact the project"
+            "CONTACT_TITLE": "Contactez l'équipe du projet",
+            "CONTACT_BUTTON": "Contactez le projet"
         }
     },
     "LIGHTBOX": {
@@ -1051,10 +1051,10 @@
             "BUTTON": "Demander à ce membre du projet de devenir le nouveau propriétaire"
         },
         "CONTACT_PROJECT": {
-            "TITLE": "Send an email to",
-            "WARNING": "The email will be received by the project admins",
-            "PLACEHOLDER": "Write your message",
-            "SEND": "Send"
+            "TITLE": "Envoyer un email à",
+            "WARNING": "L'email sera reçu par les administrateurs du projet",
+            "PLACEHOLDER": "Ecrire votre message",
+            "SEND": "Envoyer"
         }
     },
     "EPIC": {
@@ -1236,10 +1236,10 @@
             "HIDE": "Cacher les mots-clés"
         },
         "FORECASTING": {
-            "TITLE": "Velocity forecasting",
-            "BACKLOG": "Display backlog",
-            "NEW_SPRINT": "Candidate User Stories for your next sprint based on your velocity. Click to create a new sprint.",
-            "CURRENT_SPRINT": "Candidate User Stories for your sprint based on your velocity. Click to add to current sprint."
+            "TITLE": "Prévision de la vitesse",
+            "BACKLOG": "Afficher le carnet de commandes",
+            "NEW_SPRINT": "Histoires d'utilisateurs pour votre prochain sprint en fonction de votre vitesse. Cliquez ici pour créer un nouveau sprint.",
+            "CURRENT_SPRINT": "Histoires d'utilisateur candidat pour votre sprint basé sur votre vitesse. Cliquez ici pour ajouter au sprint actuel."
         },
         "TABLE": {
             "COLUMN_US": "Récits utilisateur",

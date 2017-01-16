@@ -10,6 +10,7 @@
 - Add rich text custom fields (with a wysiwyg editor like descreption or comments).
 - i18n:
   - Add japanese (ja) translation.
+  - Add korean (ko) translation.
   - Add chinese simplified (zh-Hans) translation.
 
 ### Misc
