@@ -25,13 +25,14 @@
 CommentEditWysiwyg = (attachmentsFullService) ->
     link = ($scope, $el, $attrs) ->
         types = {
+            epics: "epic",
             userstories: "us",
             issues: "issue",
             tasks: "task"
         }
 
         uploadFile = (file, cb) ->
-            return attachmentsFullService.addAttachment($scope.vm.projectId, $scope.vm.comment.comment.id, types[$scope.vm.comment.comment._name], file).then (result) ->
+            return attachmentsFullService.addAttachment($scope.vm.projectId, $scope.vm.comment.comment.id, types[$scope.vm.comment.comment._name], file, true, true).then (result) ->
                 cb(result.getIn(['file', 'name']), result.getIn(['file', 'url']))
 
         $scope.uploadFiles = (files, cb) ->

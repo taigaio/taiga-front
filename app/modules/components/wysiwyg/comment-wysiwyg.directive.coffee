@@ -32,13 +32,14 @@ CommentWysiwyg = (attachmentsFullService) ->
             $scope.vm.onAddComment({callback: cb})
 
         types = {
+            epics: "epic",
             userstories: "us",
             issues: "issue",
             tasks: "task"
         }
 
         uploadFile = (file, cb) ->
-            return attachmentsFullService.addAttachment($scope.vm.projectId, $scope.vm.type.id, types[$scope.vm.type._name], file).then (result) ->
+            return attachmentsFullService.addAttachment($scope.vm.projectId, $scope.vm.type.id, types[$scope.vm.type._name], file, true, true).then (result) ->
                 cb(result.getIn(['file', 'name']), result.getIn(['file', 'url']))
 
         $scope.onChange = (markdown) ->
