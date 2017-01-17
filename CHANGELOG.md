@@ -8,6 +8,8 @@
 - Remove bower, now use only npm packages.
 - Add new wysiwyg editor (like the Medunm editor) with emojis, local storage changes, mentions...
 - Add rich text custom fields (with a wysiwyg editor like descreption or comments).
+- Add thumbnails and preview for PSD files.
+- Add thumbnails and preview for SVG files.
 - i18n:
   - Add japanese (ja) translation.
   - Add korean (ko) translation.

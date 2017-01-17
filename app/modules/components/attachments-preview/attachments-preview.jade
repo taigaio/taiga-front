@@ -10,8 +10,8 @@
             tg-svg(svg-icon="icon-arrow-left")
 
         a(href="{{vm.current.get('url')}}", title="{{vm.current.get('description')}}", target="_blank", download="{{vm.current.get('name')}}")
-            tg-preload-image(preload-src="{{vm.getCurrent().get('url')}}")
-                 img(ng-src="{{vm.getCurrent().get('url')}}")
+            tg-preload-image(preload-src="{{vm.current.get('preview_url') || vm.getCurrent().get('url')}}")
+                 img(ng-src="{{vm.current.get('preview_url') || vm.getCurrent().get('url')}}")
 
         a.next(
             href="#",

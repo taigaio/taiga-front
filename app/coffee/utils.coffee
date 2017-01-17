@@ -220,7 +220,7 @@ _.mixin
 
 
 isImage = (name) ->
-    return name.match(/\.(jpe?g|png|gif|gifv|webm)/i) != null
+    return name.match(/\.(jpe?g|png|gif|gifv|webm|svg|psd)/i) != null
 
 
 isPdf = (name) ->
