@@ -24,7 +24,7 @@
         border-bottom: 1px solid $whitish;
         display: flex;
         justify-content: flex-start;
-        padding: 1rem;
+        padding: .7rem;
         &:hover {
             .custom-field-options {
                 opacity: 1;
@@ -83,5 +83,42 @@
         input {
             width: 100%;
         }
+    }
+}
+
+.custom-fields-body {
+    display: flex;
+    flex-wrap: wrap;
+    &.collapse-fields {
+        .custom-attribute {
+            flex-basis: 50%;
+            @include breakpoint(laptop) {
+                flex-basis: 100%;
+                &:nth-child(even) {
+                    padding: 0;
+                }
+                &:nth-child(odd) {
+                    padding: 0;
+                }
+            }
+            &:nth-child(even) {
+                padding: 0 0 0 2rem;
+            }
+            &:nth-child(odd) {
+                padding: 0 2rem 0 0;
+            }
+        }
+    }
+    .custom-attribute {
+        flex-basis: 100%;
+        &:nth-child(even) {
+            padding: 0;
+        }
+        &:nth-child(odd) {
+            padding: 0;
+        }
+    }
+    .custom-field-single {
+        height: 100%;
     }
 }
