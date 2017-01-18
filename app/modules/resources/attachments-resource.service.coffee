@@ -58,7 +58,7 @@ Resource = (urlsService, http, config, $rootScope, $q, storage) ->
 
         return http.patch(url, patch)
 
-    service.create = (type, projectId, objectId, file) ->
+    service.create = (type, projectId, objectId, file, from_comment) ->
         urlname = "attachments/#{type}"
 
         url = urlsService.resolve(urlname)
@@ -116,6 +116,7 @@ Resource = (urlsService, http, config, $rootScope, $q, storage) ->
         data.append("project", projectId)
         data.append("object_id", objectId)
         data.append("attached_file", file)
+        data.append("from_comment", from_comment)
 
         xhr = new XMLHttpRequest()
         xhr.upload.addEventListener("progress", uploadProgress, false)
