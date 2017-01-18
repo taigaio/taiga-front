@@ -5,6 +5,10 @@
     margin: 0 .6rem .6rem;
     overflow: hidden;
     transition: box-shadow .2s ease-in;
+    .loading-extra.loading {
+        padding: .2rem;
+        text-align: center;
+    }
     &:hover {
         box-shadow: 3px 3px 6px darken($whitish, 10%);
     }

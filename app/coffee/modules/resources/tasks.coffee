@@ -33,9 +33,12 @@ resourceProvider = ($repo, $http, $urls, $storage) ->
     hashSuffixStatusColumnModes = "tasks-statuscolumnmodels"
     hashSuffixUsRowModes = "tasks-usrowmodels"
 
-    service.get = (projectId, taskId) ->
+    service.get = (projectId, taskId, extraParams) ->
         params = service.getQueryParams(projectId)
         params.project = projectId
+
+        params = _.extend({}, params, extraParams)
+
         return $repo.queryOne("tasks", taskId, params)
 
     service.getByRef = (projectId, ref, extraParams) ->

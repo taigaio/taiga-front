@@ -1,7 +1,10 @@
 doctype html
 
-div.wrapper(tg-taskboard, ng-controller="TaskboardController as ctrl",
-            ng-init="section='backlog'")
+div.wrapper(
+    tg-taskboard,
+    ng-controller="TaskboardController as ctrl",
+    ng-init="section='backlog'"
+)
     tg-project-menu
     section.main.taskboard
         tg-filter(
@@ -24,8 +27,8 @@ div.wrapper(tg-taskboard, ng-controller="TaskboardController as ctrl",
                 span.green(tg-bo-bind="sprint.name")
                 span.date(tg-date-range="sprint.estimated_start,sprint.estimated_finish")
             .taskboard-actions
+                .zoom-loading(tg-loading="ctrl.zoomLoading")
                 tg-taskboard-zoom(
-                    ng-if="usTasks.size",
                     on-zoom-change="ctrl.setZoom(zoomLevel, zoom)"
                 )
                 button.button-filter.e2e-open-filter(
