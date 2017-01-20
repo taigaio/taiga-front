@@ -13,6 +13,14 @@ tg-filter {
     z-index: 1;
     .filters-applied {
         padding: 0 1rem 1rem;
+        .single-filter {
+            &:hover {
+                color: currentColor;
+                cursor: default;
+                opacity: .5;
+                transition: none;
+            }
+        }
     }
     h1,
     form {
@@ -69,7 +77,7 @@ tg-filter {
         transition: color .2s ease-in;
         &:hover,
         &.selected {
-            background-color: rgba(darken($whitish, 20%), 1);
+            background-color: rgba(darken($whitish, 10%), 1);
             color: $grayer;
             transition: background-color .2s ease-in;
             .icon {
@@ -92,7 +100,7 @@ tg-filter {
     @include font-type(text);
     @include clearfix;
     align-items: center;
-    background: darken($whitish, 10%); // Fallback
+    background: darken($whitish, 5%);
     cursor: pointer;
     display: flex;
     justify-content: space-between;
@@ -101,7 +109,7 @@ tg-filter {
     padding-right: .5rem;
     position: relative;
     &:hover {
-        color: $grayer;
+        background: darken($whitish, 8%);
         opacity: 1;
         transition: opacity .2s linear;
     }
@@ -127,6 +135,7 @@ tg-filter {
         top: 0;
     }
     .remove-filter {
+        cursor: pointer;
         display: block;
         svg {
             fill: $gray;

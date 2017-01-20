@@ -270,7 +270,7 @@ gulp.task("scss-lint", [], function() {
     var sassFiles = paths.sass.concat(themes.current.customScss, ignore);
 
     return gulp.src(sassFiles)
-        .pipe(gulpif(!isDeploy, cache(scsslint({endless: true, sync: true, config: "scsslint.yml"}), {
+        .pipe(gulpif(!isDeploy, cache(scsslint({endless: true, sync: true, config: ".scss-lint.yml"}), {
           success: function(scsslintFile) {
             return scsslintFile.scsslint.success;
           },
