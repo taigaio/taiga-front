@@ -84,7 +84,7 @@ You need transifex-client, install it.
 
  1. Install transifex-client, use
 
-       $ pip install --upgrade transifex-client==0.11.1.beta
+       $ pip install --upgrade transifex-client==0.12.2
 
  2. Create ~/.transifexrc file:
 
