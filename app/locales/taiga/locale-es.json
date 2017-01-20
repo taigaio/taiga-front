@@ -41,7 +41,7 @@
         "LOGOUT": "Cerrar sesión",
         "EXTERNAL_USER": "un usuario externo",
         "GENERIC_ERROR": "Uno de nuestros Oompa Loompas dice {{error}}.",
-        "IOCAINE_TEXT": "This member is feeling a bit overwhelmed by this task. Will become immune to the iocaine poison over time with your help. For now, may need a hug.",
+        "IOCAINE_TEXT": "Este miembro se siente un poco abrumado por esta tarea. Será inmune al veneno de la iocaína con el tiempo con tu ayuda, Ahora, puede necesitar un abrazo ;-).",
         "CLIENT_REQUIREMENT": "Requerimiento de cliente es un nuevo requisito que no se esperaba y es necesario que forme parte del proyecto.",
         "TEAM_REQUIREMENT": "Requerimiento del equipo es un nuevo requisito que debe existir en el proyecto pero que no conllevará ningún coste para el cliente.",
         "OWNER": "Dueño del proyecto",
@@ -227,7 +227,7 @@
             }
         },
         "WYSIWYG": {
-            "OUTDATED": "Another person has made changes while you were editing. Check the new version on the activiy tab before you save your changes.",
+            "OUTDATED": "Otra persona ha realizado cambios durante tu edición. Comprueba la nueva versión en la pestaña de activiy antes de guardar los cambios.",
             "ATTACH_FILE_HELP": "Adjunte archivos arrastrando y soltando dentro del area de texto",
             "ATTACH_FILE_HELP_SAVE_FIRST": "Si desea guardar adjuntos guarde primero, luego arrastre y suelte los archivos en el area de texto mas arriba",
             "MARKDOWN_HELP": "Ayuda de sintaxis Markdown"
@@ -518,7 +518,7 @@
             "RECRUITING": "¿Este proyecto está buscando a gente?",
             "RECRUITING_MESSAGE": "¿Qué estás buscando?",
             "RECRUITING_PLACEHOLDER": "Define el perfil de lo que estás buscando",
-            "FEEDBACK": "Receive feedback from Taiga users?",
+            "FEEDBACK": "¿Recibir feedback de los usuarios de Taiga?",
             "PUBLIC_PROJECT": "Proyecto público",
             "PRIVATE_PROJECT": "Proyecto privado",
             "PRIVATE_OR_PUBLIC": "¿Cuál es la diferencia entre proyecto público y privado?",
@@ -571,7 +571,7 @@
             "ISSUE_DESCRIPTION": "Atributos personalizados de peticiones",
             "ISSUE_ADD": "Añadir un atributo personalizado en las peticiones",
             "FIELD_TYPE_TEXT": "Texto",
-            "FIELD_TYPE_RICHTEXT": "Rich text",
+            "FIELD_TYPE_RICHTEXT": "Texto enriquecido",
             "FIELD_TYPE_MULTI": "Multilínea",
             "FIELD_TYPE_DATE": "Fecha",
             "FIELD_TYPE_URL": "Url"
@@ -963,7 +963,7 @@
         },
         "CONTACT_BUTTON": {
             "CONTACT_TITLE": "Contacta con el equipo de proyecto",
-            "CONTACT_BUTTON": "Contact the project"
+            "CONTACT_BUTTON": "Contacta con el proyecto"
         }
     },
     "LIGHTBOX": {
@@ -1053,7 +1053,7 @@
         "CONTACT_PROJECT": {
             "TITLE": "Enviar email a",
             "WARNING": "Los administradores del proyecto recibirán el email",
-            "PLACEHOLDER": "Write your message",
+            "PLACEHOLDER": "Escribe tu mensaje",
             "SEND": "Enviar"
         }
     },
@@ -1106,7 +1106,7 @@
             "CLOSE": "Cerrar",
             "SYNCHRONIZE_LINK": "sincronizar con la Tribu Taiga",
             "PUBLISH_MORE_INFO_TITLE": "Necesita a alguien para esta tarea?",
-            "PUBLISH_MORE_INFO_TEXT": "<p>If you need help with a particular piece of work you can easily create gigs on<a href='http://taigatribe.com' title='Taiga Tribe'> Taiga Tribe </a> and receive help from all over the world. You will be able to control and manage the gig enjoying a great community eager to contribute.</p><p><a href='http://taigatribe.com' title='Taiga Tribe'> TaigaTribe </a>  was born as a Taiga sibling. Both platforms can live separately but we believe that there is much power in using them combined so we are making sure the integration works like a charm.</p>"
+            "PUBLISH_MORE_INFO_TEXT": "<p> Si necesitas ayuda con una tarea en particular, puedes crear 'gigs' en <a href='http://taigatribe.com' title='Taiga Tribe'>Taiga Tribe</a> y recibir ayuda de todo el mundo. Podrás controlar y gestionar el 'gig' disfrutando de una gran comunidad deseosa de contribuir.</ p> <p> <a href='http://taigatribe.com' title='Taiga Tribe'>TaigaTribe</a> es el hermano ideal de Taiga. Ambas plataformas pueden vivir separadamente pero creemos que hay mucho poder en usarlas combinadas, por lo que estamos asegurándonos de que la integración entre ambas funcione como un tiro.</p>"
         },
         "FIELDS": {
             "TEAM_REQUIREMENT": "Requerido por el Equipo",
@@ -1236,10 +1236,10 @@
             "HIDE": "Ocultar etiquetas"
         },
         "FORECASTING": {
-            "TITLE": "Velocity forecasting",
-            "BACKLOG": "Display backlog",
-            "NEW_SPRINT": "Candidate User Stories for your next sprint based on your velocity. Click to create a new sprint.",
-            "CURRENT_SPRINT": "Candidate User Stories for your sprint based on your velocity. Click to add to current sprint."
+            "TITLE": "Previsión de velocidad",
+            "BACKLOG": "Mostrar el backlog",
+            "NEW_SPRINT": "Historias de Usuarios candidatas para el próximo sprint, basado en tu velocidad. Haga clic para crear un nuevo sprint.",
+            "CURRENT_SPRINT": "Historias de Usuarios candidatas para el sprint, basado en tu velocidad. Haga clic para añadirlas al sprint en curso."
         },
         "TABLE": {
             "COLUMN_US": "Historias de Usuario",
