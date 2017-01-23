@@ -56,6 +56,23 @@ Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoad
 
         wysiwygCodeHightlighterService.addCodeLanguageSelectors(elm)
 
+
+    AlignRightButton = MediumEditor.extensions.button.extend({
+        name: 'rtl',
+        init: () ->
+            this.button = this.document.createElement('button')
+            this.button.classList.add('medium-editor-action')
+            this.button.innerHTML = '<b>RTL</b>'
+            this.button.title = 'RTL'
+            this.on(this.button, 'click', this.handleClick.bind(this))
+
+        getButton: () ->
+            return this.button
+        handleClick: (event) ->
+            document.execCommand('justifyRight', false)
+
+    })
+
     # MediumEditor extension to add <code>
     CodeButton = MediumEditor.extensions.button.extend({
         name: 'code',
@@ -294,12 +311,14 @@ Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoad
                         'h3',
                         'quote',
                         'removeFormat',
+                        'rtl',
                         'code'
                     ]
                 },
                 extensions: {
                     code: new CodeButton(),
                     autolist: new AutoList(),
+                    alignright: new AlignRightButton(),
                     mediumMention: new MentionExtension({
                         getItems: (mention, mentionCb) ->
                             wysiwygMentionService.search(mention).then(mentionCb)
