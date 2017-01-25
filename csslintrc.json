@@ -21,5 +21,6 @@
     "floats": false,
     "fallback-colors": false,
     "adjoining-classes": false,
-    "qualified-headings": false
+    "qualified-headings": false,
+    "outline-none": false
 }

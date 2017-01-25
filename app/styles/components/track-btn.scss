@@ -11,13 +11,13 @@
     padding: 0;
     &.active {
         .track-inner {
-            background: rgba($primary-light, .2);
+            background: rgba($primary-light, .4);
         }
         .icon {
             fill: $primary;
         }
         .track-button-counter {
-            background: rgba($primary-light, .4);
+            background: rgba($primary-light, .6);
         }
     }
     &.is-hover {
