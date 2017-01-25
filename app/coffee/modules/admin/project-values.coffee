@@ -134,7 +134,7 @@ module.controller("ProjectValuesController", ProjectValuesController)
 ## Project values directive
 #############################################################################
 
-ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame, $translate, $rootscope) ->
+ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame, $translate, $rootscope, projectService) ->
     ## Drag & Drop Link
 
     linkDragAndDrop = ($scope, $el, $attrs) ->
@@ -213,6 +213,8 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame, $tra
                 row = target.parents(".row.table-main")
                 row.addClass("hidden")
                 row.siblings(".visualization").removeClass('hidden')
+
+                projectService.fetchProject()
 
             promise.then null, (data) ->
                 form.setErrors(data)
@@ -328,7 +330,7 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame, $tra
     return {link:link}
 
 module.directive("tgProjectValues", ["$log", "$tgRepo", "$tgConfirm", "$tgLocation", "animationFrame",
-                                     "$translate", "$rootScope", ProjectValuesDirective])
+                                     "$translate", "$rootScope", "tgProjectService", ProjectValuesDirective])
 
 
 #############################################################################
