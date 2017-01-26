@@ -28,25 +28,30 @@ describe('admin - members', function() {
             adminMembershipsHelper.openNewMemberLightbox();
 
             await newMemberLightbox.waitOpen();
-            utils.common.takeScreenshot('memberships', 'new-member');
+            utils.common.takeScreenshot('memberships', 'add-new-member');
         });
 
-        it('add members row', async function() {
+        it('add contacts', async function() {
+            newMemberLightbox.addSuggested(0);
+            newMemberLightbox.addNew();
             newMemberLightbox.newEmail('xxx' + new Date().getTime() + '@xx.es');
+            newMemberLightbox.addNew();
             newMemberLightbox.newEmail('xxx' + new Date().getTime() + '@xx.es');
-            newMemberLightbox.newEmail('xxx' + new Date().getTime() + '@xx.es');
-
-            let membersRows = await newMemberLightbox.getRows().count();
-
-            expect(membersRows).to.be.equal(3 + 1);
+            utils.common.takeScreenshot('memberships', 'add-new-member-form');
         });
 
         it('delete members row', async function() {
-            newMemberLightbox.deleteRow(2);
+            newMemberLightbox.deleteInvited(2);
 
-            let membersRows = await newMemberLightbox.getRows().count();
+            let invitedRows = await newMemberLightbox.getInviteds().count();
 
-            expect(membersRows).to.be.equal(2 + 1);
+            expect(invitedRows).to.be.equal(2);
+        });
+
+        it('set roles', async function() {
+            newMemberLightbox.setRole(0);
+            newMemberLightbox.setRole(1);
+            utils.common.takeScreenshot('memberships', 'add-new-member-form-active');
         });
 
         it('submit', async function() {

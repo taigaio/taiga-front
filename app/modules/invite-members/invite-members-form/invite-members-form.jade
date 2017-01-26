@@ -1,0 +1,69 @@
+form.invite-members-form(ng-submit="vm.sendInvites(vm.inviteContacts)")
+    ul.invite-members-form-list
+        li.invite-members-single.e2e-invite-members-single(
+            ng-repeat="contact in vm.contactsToInvite | toMutable track by contact.id"
+        )
+            .invite-members-single-data
+                img.invite-members-single-avatar(
+                    tg-avatar="contact"
+                    alt="{{contact.full_name}}"
+                )
+                span.invite-members-single-name {{contact.full_name}}
+                a.invite-members-single-remove.e2e-invite-members-single-remove(
+                    href=""
+                    ng-click="vm.onRemoveInvitedContact({contact: contact})"
+                    translate="LIGHTBOX.ADD_MEMBER.REMOVE"
+                )
+            select.invite-members-single-role.e2e-invite-members-single-role(
+                ng-model="vm.rolesValues[contact.username]"
+                id="add-member-suggest-role-dropdown"
+                ng-options="role.id as role.name for role in vm.roles | toMutable track by role.id"
+                required
+            )
+                option(
+                    value=""
+                    selected="selected"
+                    translate="LIGHTBOX.ADD_MEMBER.CHOOSE_ROLE"
+                )
+        li.invite-members-single.e2e-invite-members-single(
+            ng-repeat="userMail in vm.emailsToInvite | toMutable"
+        )
+            .invite-members-single-data
+                span.invite-members-single-email {{userMail.email}}
+                a.invite-members-single-remove.e2e-invite-members-single-remove(
+                    href=""
+                    ng-click="vm.onRemoveInvitedEmail({email: userMail})"
+                    translate="LIGHTBOX.ADD_MEMBER.REMOVE"
+                )
+            select.invite-members-single-role.e2e-invite-members-single-role(
+                ng-model="vm.rolesValues[userMail.email]"
+                id="add-email-suggest-role-dropdown"
+                ng-options="role.id as role.name for role in vm.roles | toMutable track by role.id"
+                required
+            )
+                option(
+                    value=""
+                    translate="LIGHTBOX.ADD_MEMBER.CHOOSE_ROLE"
+                )
+    .invite-members-single-new.e2e-invite-members-single-new(
+        ng-if="vm.contactsToInvite.size + vm.emailsToInvite.size < vm.membersLimit"
+    )
+        tg-svg.invite-members-single-new-btn(
+            svg-icon="icon-add"
+            ng-click="vm.onDisplayContactList()"
+        )
+    tg-lightbox-add-members-warning-message(
+        ng-if="vm.showWarningMessage"
+        project="vm.project"
+    )
+    textarea.invite-members-single-msg(
+        ng-model="vm.inviteContactsMessage"
+        placeholder="{{'LIGHTBOX.ADD_MEMBER.PLACEHOLDER_INVITATION_TEXT' | translate}}"
+    )
+    button.button-green.invite-members-single-send.e2e-invite-members-single-send(
+        type="submit"
+        translate="LIGHTBOX.ADD_MEMBER.INVITE"
+        ng-disabled="!vm.areRolesValidated"
+        tg-loading="vm.loading"
+    )
+    p.invite-members-single-help(translate="LIGHTBOX.ADD_MEMBER.HELP_TEXT")

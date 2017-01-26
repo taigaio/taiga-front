@@ -18,17 +18,28 @@ helper.getNewMemberLightbox = function() {
             return utils.lightbox.close(el);
         },
         newEmail: function(email) {
-            el.$$('input').last().sendKeys(email);
-            el.$('.add-fieldset').click();
+            el.$$('input').clear();
+            el.$$('input').sendKeys(email);
+            el.$('.e2e-add-member-suggest-filter-addmail').click();
         },
-        getRows: function() {
-            return el.$$('.add-single-member');
+        addSuggested: function(index) {
+            el.$$('.e2e-add-member-suggest-single').get(index).click();
         },
-        deleteRow: function(index) {
-            el.$$('.remove-fieldset').get(index).click();
+        addNew: function() {
+            return el.$$('.e2e-invite-members-single-new').click();
+        },
+        setRole: function(index) {
+            let select = el.$$('.e2e-invite-members-single-role').get(index);
+            select.$('option:last-child').click();
+        },
+        getInviteds: function() {
+            return el.$$('.e2e-invite-members-single')
+        },
+        deleteInvited: function(index) {
+            el.$$('.e2e-invite-members-single-remove').get(index).click();
         },
         submit: function() {
-            return el.$('.submit-button').click();
+            return el.$('.e2e-invite-members-single-send').click();
         }
     };
 

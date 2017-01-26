@@ -1,0 +1,31 @@
+.add-member-suggest
+    form.add-member-suggest-filter
+        input.add-member-suggest-filter-input(
+            type="text"
+            ng-model="vm.contactQuery"
+            placeholder="{{'LIGHTBOX.ADD_MEMBER.PLACEHOLDER' | translate}}"
+            ng-keyup="vm.filterContacts()"
+        )
+
+        span.add-member-suggest-filter-hint(
+            ng-if="!vm.filteredContacts.size"
+            ng-class="{'to-send': vm.isEmail()}"
+            translate="LIGHTBOX.ADD_MEMBER.ADD_EMAIL"
+        )
+
+        button.add-member-suggest-filter-addmail.e2e-add-member-suggest-filter-addmail(
+            ng-click="vm.onInviteEmail({email: vm.contactQuery})"
+            ng-if="vm.isEmail()"
+        )
+            tg-svg(svg-icon="icon-add-user")
+
+    ul.add-member-suggest-list
+        li.add-member-suggest-single.e2e-add-member-suggest-single(
+            tg-repeat="contact in vm.filteredContacts"
+            ng-click="vm.setInvited(contact)"
+        )
+            img.add-member-suggest-avatar(
+                tg-avatar="contact"
+                alt="{{contact.get('full_name_display')}}"
+            )
+            span.add-member-suggest-name {{contact.get('full_name_display')}}

@@ -222,6 +222,8 @@ _.mixin
 isImage = (name) ->
     return name.match(/\.(jpe?g|png|gif|gifv|webm|svg|psd)/i) != null
 
+isEmail = (name) ->
+    return name? and name.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/) != null
 
 isPdf = (name) ->
     return name.match(/\.(pdf)/i) != null
@@ -286,6 +288,7 @@ taiga.stripTags = stripTags
 taiga.replaceTags = replaceTags
 taiga.defineImmutableProperty = defineImmutableProperty
 taiga.isImage = isImage
+taiga.isEmail = isEmail
 taiga.isPdf = isPdf
 taiga.patch = patch
 taiga.getRandomDefaultColor = getRandomDefaultColor
