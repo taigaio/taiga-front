@@ -98,6 +98,7 @@ class WysiwygService
             converters: [cleanIssueConverter, codeLanguageConverter]
         })
 
+
         return markdown
 
     getHTML: (text) ->

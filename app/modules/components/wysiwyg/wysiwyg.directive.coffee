@@ -72,7 +72,11 @@ Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoad
         getButton: () ->
             return this.button
         handleClick: (event) ->
-            document.execCommand('justifyRight', false)
+            range = MediumEditor.selection.getSelectionRange(document)
+            if range.commonAncestorContainer.parentNode.style.textAlign == 'right'
+                document.execCommand('justifyLeft', false)
+            else
+                document.execCommand('justifyRight', false)
 
     })
 
@@ -106,6 +110,13 @@ Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoad
                 removeCodeBlockAndHightlight(range, this.base)
             else
                 addCodeBlockAndHightlight(range, this.base)
+    })
+
+    CustomPasteHandler = MediumEditor.extensions.paste.extend({
+        doPaste: (pastedHTML, pastedPlain, editable) ->
+            html = MediumEditor.util.htmlEntities(pastedPlain);
+
+            MediumEditor.util.insertHTMLCommand(this.document, html);
     })
 
     # bug
@@ -369,6 +380,7 @@ Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoad
                     ]
                 },
                 extensions: {
+                    paste: new CustomPasteHandler(),
                     code: new CodeButton(),
                     autolist: new AutoList(),
                     alignright: new AlignRightButton(),
@@ -397,6 +409,24 @@ Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoad
 
             mediumInstance.subscribe 'editableDrop', (event) ->
                 $scope.onUploadFile({files: event.dataTransfer.files, cb: uploadEnd})
+
+            editorMedium.on 'keydown', (e) ->
+                code = if e.keyCode then e.keyCode else e.which
+                range = MediumEditor.selection.getSelectionRange(document)
+                codeBlock = isCodeBlockSelected(range, document)
+                selection = window.getSelection()
+
+                if code == 13 && !e.shiftKey && selection.focusOffset == _.trimEnd(selection.focusNode.textContent).length
+                    e.preventDefault()
+                    document.execCommand('insertHTML', false, '<p id="last-p"><br/></p>')
+
+                    lastP = $('#last-p').attr('id', '')
+
+                    range = document.createRange()
+                    range.selectNodeContents(lastP[0])
+                    range.collapse(true);
+
+                    MediumEditor.selection.selectRange(document, range)
 
             mediumInstance.subscribe 'editableKeydown', (e) ->
                 code = if e.keyCode then e.keyCode else e.which
