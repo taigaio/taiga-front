@@ -250,6 +250,14 @@ tg-wysiwyg {
 }
 
 // Override medium styles
-.medium-editor-toolbar li .medium-editor-button-active {
-    color: $primary-light;
+.medium-editor-toolbar {
+    li .medium-editor-button-active {
+        color: $primary-light;
+    }
+    svg {
+        fill: $white;
+    }
+    button:hover svg {
+        fill: $primary-light;
+    }
 }

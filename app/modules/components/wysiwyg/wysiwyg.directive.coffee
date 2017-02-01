@@ -60,9 +60,12 @@ Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoad
     AlignRightButton = MediumEditor.extensions.button.extend({
         name: 'rtl',
         init: () ->
+            option = _.find this.base.options.toolbar.buttons, (it) ->
+                it.name == 'rtl'
+
             this.button = this.document.createElement('button')
             this.button.classList.add('medium-editor-action')
-            this.button.innerHTML = '<b>RTL</b>'
+            this.button.innerHTML = option.contentDefault || '<b>RTL</b>'
             this.button.title = 'RTL'
             this.on(this.button, 'click', this.handleClick.bind(this))
 
@@ -73,13 +76,21 @@ Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoad
 
     })
 
+    getIcon = (icon) ->
+        return """<svg class="icon icon-#{icon}">
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="##{icon}"></use>
+        </svg>"""
+
     # MediumEditor extension to add <code>
     CodeButton = MediumEditor.extensions.button.extend({
         name: 'code',
         init: () ->
+            option = _.find this.base.options.toolbar.buttons, (it) ->
+                it.name == 'code'
+
             this.button = this.document.createElement('button')
             this.button.classList.add('medium-editor-action')
-            this.button.innerHTML = '<b>Code</b>'
+            this.button.innerHTML = option.contentDefault || '<b>Code</b>'
             this.button.title = 'Code'
             this.on(this.button, 'click', this.handleClick.bind(this))
 
@@ -299,20 +310,62 @@ Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoad
                 },
                 toolbar: {
                     buttons: [
-                        'bold',
-                        'italic',
-                        'strikethrough',
-                        'anchor',
-                        'image',
-                        'orderedlist',
-                        'unorderedlist',
-                        'h1',
-                        'h2',
-                        'h3',
-                        'quote',
-                        'removeFormat',
-                        'rtl',
-                        'code'
+                        {
+                            name: 'bold',
+                            contentDefault: getIcon('editor-bold')
+                        },
+                        {
+                            name: 'italic',
+                            contentDefault: getIcon('editor-italic')
+                        },
+                        {
+                            name: 'strikethrough',
+                            contentDefault: getIcon('editor-cross-out')
+                        },
+                        {
+                            name: 'anchor',
+                            contentDefault: getIcon('editor-link')
+                        },
+                        {
+                            name: 'image',
+                            contentDefault: getIcon('editor-image')
+                        },
+                        {
+                            name: 'orderedlist',
+                            contentDefault: getIcon('editor-list-n')
+                        },
+                        {
+                            name: 'unorderedlist',
+                            contentDefault: getIcon('editor-list-o')
+                        },
+                        {
+                            name: 'h1',
+                            contentDefault: getIcon('editor-h1')
+                        },
+                        {
+                            name: 'h2',
+                            contentDefault: getIcon('editor-h2')
+                        },
+                        {
+                            name: 'h3',
+                            contentDefault: getIcon('editor-h3')
+                        },
+                        {
+                            name: 'quote',
+                            contentDefault: getIcon('editor-quote')
+                        },
+                        {
+                            name: 'removeFormat',
+                            contentDefault: getIcon('editor-no-format')
+                        },
+                        {
+                            name: 'rtl',
+                            contentDefault: getIcon('editor-rtl')
+                        },
+                        {
+                            name: 'code',
+                            contentDefault: getIcon('editor-code')
+                        }
                     ]
                 },
                 extensions: {
