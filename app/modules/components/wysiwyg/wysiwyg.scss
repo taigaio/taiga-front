@@ -88,22 +88,18 @@
             margin: 0;
         }
     }
-    pre,
-    code {
+    pre:not([class*="language-"]) {
         @include font-size(small);
         background: lighten($grayer, 10%);
         color: $whitish;
         direction: ltr;
         font-family: 'courier new', 'monospace';
+        line-height: 1.4rem;
         margin-bottom: 1rem;
         overflow: auto;
+        padding: 1rem;
         unicode-bidi: embed;
         white-space: pre-wrap;
-
-    }
-    pre {
-        line-height: 1.4rem;
-        padding: 1rem;
     }
     table {
         border: $gray-light 1px solid;
