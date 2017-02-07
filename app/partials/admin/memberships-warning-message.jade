@@ -1,11 +1,11 @@
 p.member-limit-warning(
-    ng-if="project.i_am_owner == true"
+    ng-if="project.get('i_am_owner') == true"
     translate="LIGHTBOX.CREATE_MEMBER.LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER"
-    translate-values="{maxMembers: project.max_memberships}"
+    translate-values="{maxMembers: project.get('max_memberships')}"
 )
 
 p.member-limit-warning(
-    ng-if="project.i_am_owner == false"
+    ng-if="project.get('i_am_owner') == false"
     translate="LIGHTBOX.CREATE_MEMBER.LIMIT_USERS_WARNING_MESSAGE"
-    translate-values="{maxMembers: project.max_memberships}"
+    translate-values="{maxMembers: project.get('max_memberships')}"
 )

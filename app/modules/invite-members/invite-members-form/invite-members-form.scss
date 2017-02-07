@@ -1,0 +1,67 @@
+.invite-members-form {
+    border-top: 1px solid $whitish;
+    margin: 0 5rem;
+    .invite-members-form-list {
+        margin: 0;
+        margin-bottom: 1rem;
+    }
+    .invite-members-single {
+        align-items: center;
+        border-bottom: 1px solid $whitish;
+        display: flex;
+        justify-content: space-between;
+        padding: 1rem;
+    }
+    .invite-members-single-data {
+        align-items: center;
+        display: flex;
+        flex: 1;
+    }
+    .invite-members-single-avatar {
+        height: 4rem;
+        margin-right: 1rem;
+        width: 4rem;
+    }
+    .invite-members-single-remove {
+        color: $red-light;
+        margin-left: 1rem;
+        transition: color .2s;
+        &:hover {
+            color: $red;
+        }
+    }
+    .invite-members-single-role {
+        flex-basis: 40%;
+        flex-shrink: 0;
+    }
+    .invite-members-single-new {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        padding: 1rem 0;
+        .invite-members-single-new-btn {
+            cursor: pointer;
+        }
+        .icon-add {
+            @include svg-size(2rem);
+            fill: $grayer;
+            transition: fill .2s;
+        }
+        &:hover {
+            .icon-add {
+                fill: $primary-light;
+            }
+        }
+    }
+    .invite-members-single-send {
+        @include font-size(large);
+        display: block;
+        margin: 1.5rem 0 1rem;
+        padding: 1rem;
+        width: 100%;
+    }
+    .invite-members-single-help {
+        @include font-size(small);
+        @include font-type(light);
+    }
+}

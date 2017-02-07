@@ -1,0 +1,18 @@
+tg-lightbox-close
+.add-members-wrapper
+    h2.title(translate="LIGHTBOX.ADD_MEMBER.TITLE")
+    tg-suggest-add-members(
+        ng-show="!vm.displayContactList"
+        contacts="vm.contacts"
+        on-invite-suggested="vm.inviteSuggested(contact)"
+        on-invite-email="vm.inviteEmail(email)"
+    )
+    tg-invite-members-form(
+        ng-show="vm.displayContactList"
+        on-display-contact-list="vm.displayContactList = false"
+        contacts-to-invite="vm.contactsToInvite"
+        emails-to-invite="vm.emailsToInvite"
+        on-remove-invited-contact="vm.removeContact(contact)"
+        on-remove-invited-email="vm.removeEmail(email)"
+        on-send-invites="vm.submit(invites)"
+    )
