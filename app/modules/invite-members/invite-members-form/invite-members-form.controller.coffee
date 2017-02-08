@@ -67,10 +67,11 @@ class InviteMembersFormController
             @.inviteContactsMessage
         )
             .then (response) => # On success
-                @.loading = false
-                @lightboxService.closeAll()
-                @rootScope.$broadcast("membersform:new:success")
-                @confirm.notify('success')
+                @projectService.fetchProject().then =>
+                    @.loading = false
+                    @lightboxService.closeAll()
+                    @rootScope.$broadcast("membersform:new:success")
+                    @confirm.notify('success')
             .catch (response) => # On error
                 @.loading = false
                 if response.data._error_message

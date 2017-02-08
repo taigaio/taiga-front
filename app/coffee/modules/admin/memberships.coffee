@@ -395,7 +395,7 @@ module.directive("tgMembershipsRowRoleSelector", ["$log", "$tgRepo", "$tgConfirm
 #############################################################################
 
 MembershipsRowActionsDirective = ($log, $repo, $rs, $confirm, $compile, $translate, $location,
-                                  $navUrls, lightboxFactory) ->
+                                  $navUrls, lightboxFactory, projectService) ->
     activedTemplate = """
     <div class="active"
          translate="ADMIN.MEMBERSHIP.STATUS_ACTIVE">
@@ -458,7 +458,8 @@ MembershipsRowActionsDirective = ($log, $repo, $rs, $confirm, $compile, $transla
                         if $scope.page > 1 && ($scope.count - 1) <= $scope.paginatedBy
                             $ctrl.selectFilter("page", $scope.page - 1)
 
-                        $ctrl.loadInitialData()
+                        projectService.fetchProject().then =>
+                            $ctrl.loadInitialData()
                     else
                         $location.path($navUrls.resolve("home"))
 
@@ -495,7 +496,7 @@ MembershipsRowActionsDirective = ($log, $repo, $rs, $confirm, $compile, $transla
 
 module.directive("tgMembershipsRowActions", ["$log", "$tgRepo", "$tgResources", "$tgConfirm", "$compile",
                                              "$translate", "$tgLocation", "$tgNavUrls", "tgLightboxFactory",
-                                             MembershipsRowActionsDirective])
+                                             "tgProjectService", MembershipsRowActionsDirective])
 
 
 #############################################################################
