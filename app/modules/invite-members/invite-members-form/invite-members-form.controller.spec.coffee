@@ -26,6 +26,7 @@ describe "InviteMembersFormController", ->
     _mockProjectService = () ->
         mocks.projectService = {
             project: sinon.stub()
+            fetchProject: sinon.stub()
         }
 
         provide.value "tgProjectService", mocks.projectService
@@ -118,7 +119,7 @@ describe "InviteMembersFormController", ->
         inviteMembersFormCtrl.inviteContactsMessage = 'Message'
         inviteMembersFormCtrl.loading = true
 
-        promise = mocks.tgResources.memberships.bulkCreateMemberships.withArgs(
+        mocks.tgResources.memberships.bulkCreateMemberships.withArgs(
             1,
             [{
                 'role_id': 1
@@ -126,6 +127,8 @@ describe "InviteMembersFormController", ->
             }],
             'Message'
         ).promise().resolve()
+
+        mocks.projectService.fetchProject.withArgs().promise().resolve()
 
         inviteMembersFormCtrl.sendInvites().then () ->
             expect(inviteMembersFormCtrl.loading).to.be.false
