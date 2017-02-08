@@ -228,8 +228,8 @@
         },
         "WYSIWYG": {
             "OUTDATED": "あなたが編集中に別のユーザーが変更を加えました。あなたの変更点を保存する前に、アクティビティタブで新しいバージョンを確認してください。",
-            "ATTACH_FILE_HELP": "テキストエリアへドラッグ＆ドロップでファイルを添付",
-            "ATTACH_FILE_HELP_SAVE_FIRST": "上部テキストエリアへ添付ファイルをドラッグ&ドロップしたい場合、先に保存してください。",
+            "ATTACH_FILE_HELP": "Attach files by dragging & dropping on the text area above.",
+            "ATTACH_FILE_HELP_SAVE_FIRST": "Save first before if you want to attach files by dragging & dropping on the text area above.",
             "MARKDOWN_HELP": "Markdown記法のヘルプ"
         },
         "PERMISIONS_CATEGORIES": {
@@ -571,7 +571,7 @@
             "ISSUE_DESCRIPTION": "課題のカスタムフィールド",
             "ISSUE_ADD": "課題にカスタムフィールドを追加",
             "FIELD_TYPE_TEXT": "テキスト",
-            "FIELD_TYPE_RICHTEXT": "Rich text",
+            "FIELD_TYPE_RICHTEXT": "リッチテキスト",
             "FIELD_TYPE_MULTI": "マルチライン",
             "FIELD_TYPE_DATE": "日時",
             "FIELD_TYPE_URL": "Url"
@@ -988,6 +988,12 @@
         },
         "ADD_MEMBER": {
             "TITLE": "新しいメンバー",
+            "PLACEHOLDER": "Filter users or write an email to invite",
+            "ADD_EMAIL": "Add email",
+            "REMOVE": "Remove",
+            "INVITE": "Invite",
+            "CHOOSE_ROLE": "Choose a role",
+            "PLACEHOLDER_INVITATION_TEXT": "(Optional) Add a personalized text to the invitation. Tell something lovely to your new members ;-)",
             "HELP_TEXT": "ユーザーが既にTaigaに登録されている場合、自動的に追加されます。そうでない場合は招待状が送信されます。"
         },
         "CREATE_ISSUE": {
@@ -1051,10 +1057,10 @@
             "BUTTON": "このメンバーを新しいプロジェクトオーナーにする。"
         },
         "CONTACT_PROJECT": {
-            "TITLE": "Send an email to",
+            "TITLE": "メールを送る",
             "WARNING": "The email will be received by the project admins",
-            "PLACEHOLDER": "Write your message",
-            "SEND": "Send"
+            "PLACEHOLDER": "メッセージを書いてください",
+            "SEND": "送信"
         }
     },
     "EPIC": {
@@ -1214,7 +1220,7 @@
         "CREATE_NEW_US_EMPTY_HELP": "新しくユーザーストーリーを作成してください。",
         "EXCESS_OF_POINTS": "Excess of points",
         "PENDING_POINTS": "保留ポイント",
-        "CLOSED_POINTS": "closed",
+        "CLOSED_POINTS": "完了",
         "COMPACT_SPRINT": "Compact Sprint",
         "GO_TO_TASKBOARD": "タスクボード {{::name}} へ移動",
         "EDIT_SPRINT": "スプリントを編集",
@@ -1311,7 +1317,7 @@
             "ROW_UNASSIGED_TASKS_TITLE": "未アサイン タスク"
         },
         "CHARTS": {
-            "XAXIS_LABEL": "Days",
+            "XAXIS_LABEL": "日",
             "YAXIS_LABEL": "ポイント",
             "OPTIMAL": "Optimal pending points for day {{formattedDate}} should be {{roundedValue}}",
             "REAL": "{{formattedDate}} の実際の保留ポイントは {{roundedValue}} です",

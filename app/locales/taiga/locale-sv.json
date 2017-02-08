@@ -36,7 +36,7 @@
         "ONE_ITEM_LINE": "En post per rad ...",
         "NEW_BULK": "Lägg till flera nya",
         "RELATED_TASKS": "Besläktade uppgifter",
-        "PREVIOUS": "Previous",
+        "PREVIOUS": "Föregående",
         "NEXT": "Nästa",
         "LOGOUT": "Logga  ut",
         "EXTERNAL_USER": "en extern användare",
@@ -228,8 +228,8 @@
         },
         "WYSIWYG": {
             "OUTDATED": "Another person has made changes while you were editing. Check the new version on the activiy tab before you save your changes.",
-            "ATTACH_FILE_HELP": "Attach files by dragging & dropping on the textarea above.",
-            "ATTACH_FILE_HELP_SAVE_FIRST": "Save first before if you want to attach files by dragging & dropping on the textarea above.",
+            "ATTACH_FILE_HELP": "Attach files by dragging & dropping on the text area above.",
+            "ATTACH_FILE_HELP_SAVE_FIRST": "Save first before if you want to attach files by dragging & dropping on the text area above.",
             "MARKDOWN_HELP": "Hjälp för markeringssyntax"
         },
         "PERMISIONS_CATEGORIES": {
@@ -602,7 +602,7 @@
         "PROJECT_VALUES_STATUS": {
             "TITLE": "Status",
             "SUBTITLE": "Specificera status för dina användarhistorier, uppgifter och ärenden ska ha i olika faser. ",
-            "EPIC_TITLE": "Epic Statuses",
+            "EPIC_TITLE": "Status för Epics",
             "US_TITLE": "User Story Statuses",
             "TASK_TITLE": "Status för uppgifter",
             "ISSUE_TITLE": "Status för ärenden"
@@ -963,7 +963,7 @@
         },
         "CONTACT_BUTTON": {
             "CONTACT_TITLE": "Contact the project team",
-            "CONTACT_BUTTON": "Contact the project"
+            "CONTACT_BUTTON": "Kontakta projektet"
         }
     },
     "LIGHTBOX": {
@@ -988,6 +988,12 @@
         },
         "ADD_MEMBER": {
             "TITLE": "Ny medlem",
+            "PLACEHOLDER": "Filter users or write an email to invite",
+            "ADD_EMAIL": "Add email",
+            "REMOVE": "Remove",
+            "INVITE": "Invite",
+            "CHOOSE_ROLE": "Choose a role",
+            "PLACEHOLDER_INVITATION_TEXT": "(Optional) Add a personalized text to the invitation. Tell something lovely to your new members ;-)",
             "HELP_TEXT": "Om användaren redan är registrerad på Taiga vill hen bli lagt till automatiskt. I annat fall vill de motta en invitation. "
         },
         "CREATE_ISSUE": {
@@ -1038,7 +1044,7 @@
             "TITLE": "Unfortunately, this project can't be left without an owner",
             "CURRENT_USER_OWNER": {
                 "DESC": "You are the current owner of this project. Before leaving, please transfer ownership to someone else.",
-                "BUTTON": "Change the project owner"
+                "BUTTON": "Ändra projektägaren"
             },
             "OTHER_USER_OWNER": {
                 "DESC": "Unfortunately, you can't delete a member who is also the current project owner. First, please assign a new project owner.",
@@ -1051,9 +1057,9 @@
             "BUTTON": "Ask this project member to become the new project owner"
         },
         "CONTACT_PROJECT": {
-            "TITLE": "Send an email to",
+            "TITLE": "Skicka ett e-postmeddelande till",
             "WARNING": "The email will be received by the project admins",
-            "PLACEHOLDER": "Write your message",
+            "PLACEHOLDER": "Skriv ditt meddelande",
             "SEND": "Send"
         }
     },
@@ -1124,7 +1130,7 @@
         "COMMENT": "Kommentarer",
         "EDIT_COMMENT": "Redigera kommentar",
         "EDITED_COMMENT": "Redigerad:",
-        "SHOW_HISTORY": "View historic",
+        "SHOW_HISTORY": "Se historik",
         "TYPE_NEW_COMMENT": "Skriv en ny kommentar här",
         "SHOW_DELETED": "Visa raderade kommentarer",
         "HIDE_DELETED": "Dölj raderade kommentarer",

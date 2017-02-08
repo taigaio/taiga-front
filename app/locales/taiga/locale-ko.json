@@ -228,8 +228,8 @@
         },
         "WYSIWYG": {
             "OUTDATED": "편집하는 동안 다른 사람이 변경했습니다. 변경 사항을 저장하기 전에 활성 탭에서 새 버전을 확인하십시오.",
-            "ATTACH_FILE_HELP": "위의 텍스트 영역에 파일을 드래그 & 드랍하여 첨부하십시오.",
-            "ATTACH_FILE_HELP_SAVE_FIRST": "저장하기 전에 파일을 업로드하고 싶다면 텍스트 입련란에 파일을 드래그 & 드랍해주세요.",
+            "ATTACH_FILE_HELP": "Attach files by dragging & dropping on the text area above.",
+            "ATTACH_FILE_HELP_SAVE_FIRST": "Save first before if you want to attach files by dragging & dropping on the text area above.",
             "MARKDOWN_HELP": "마크다운 문법 도움말"
         },
         "PERMISIONS_CATEGORIES": {
@@ -988,6 +988,12 @@
         },
         "ADD_MEMBER": {
             "TITLE": "새 회원",
+            "PLACEHOLDER": "Filter users or write an email to invite",
+            "ADD_EMAIL": "Add email",
+            "REMOVE": "Remove",
+            "INVITE": "Invite",
+            "CHOOSE_ROLE": "Choose a role",
+            "PLACEHOLDER_INVITATION_TEXT": "(Optional) Add a personalized text to the invitation. Tell something lovely to your new members ;-)",
             "HELP_TEXT": "타이가에 이미 등록한 사용자라면 자동으로 프로젝트에 추가될 겁니다. 등록하지 않은 사용자라면 초대장이 발송됩니다."
         },
         "CREATE_ISSUE": {

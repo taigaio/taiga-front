@@ -41,7 +41,7 @@
         "LOGOUT": "Esci",
         "EXTERNAL_USER": "un utente esterno",
         "GENERIC_ERROR": "C'é uno dei nostri Oompa Loompa che dice {{error}}.",
-        "IOCAINE_TEXT": "This member is feeling a bit overwhelmed by this task. Will become immune to the iocaine poison over time with your help. For now, may need a hug.",
+        "IOCAINE_TEXT": "Questo membro si sente un po' sopraffatto da questo compito. In futuro diventerà immune a tutto questo, ma per ora, potrebbe sentire il bisogno di un abbraccio.",
         "CLIENT_REQUIREMENT": "Requisito del Cliente è un nuovo requisito che non era stato previsto ed ora è stato richiesto come requisito del progetto",
         "TEAM_REQUIREMENT": "Requisito del Team è un requisito che deve esistere nel progetto ma non deve avere costi per il cliente",
         "OWNER": "Proprietario Progetto",
@@ -228,8 +228,8 @@
         },
         "WYSIWYG": {
             "OUTDATED": "Another person has made changes while you were editing. Check the new version on the activiy tab before you save your changes.",
-            "ATTACH_FILE_HELP": "Allega file trascinandoli nell'area qui sopra",
-            "ATTACH_FILE_HELP_SAVE_FIRST": "Se vuoi allegare file trascinandoli nell'area qui sopra, prima salva",
+            "ATTACH_FILE_HELP": "Attach files by dragging & dropping on the text area above.",
+            "ATTACH_FILE_HELP_SAVE_FIRST": "Save first before if you want to attach files by dragging & dropping on the text area above.",
             "MARKDOWN_HELP": "Aiuto per la sintassi Markdown"
         },
         "PERMISIONS_CATEGORIES": {
@@ -518,7 +518,7 @@
             "RECRUITING": "Il progetto cerca persone?",
             "RECRUITING_MESSAGE": "Chi stai cercando?",
             "RECRUITING_PLACEHOLDER": "Definisci il profilo che stai cercando",
-            "FEEDBACK": "Receive feedback from Taiga users?",
+            "FEEDBACK": "RIcevere opinioni da utenti Taiga?",
             "PUBLIC_PROJECT": "Progetto pubblico",
             "PRIVATE_PROJECT": "Progetto privato",
             "PRIVATE_OR_PUBLIC": "Quale è la differenza tra progetto privato e pubblico?",
@@ -571,7 +571,7 @@
             "ISSUE_DESCRIPTION": "Campi personalizzati",
             "ISSUE_ADD": "Aggiungi un campo personalizzato alla criticitá",
             "FIELD_TYPE_TEXT": "Testo",
-            "FIELD_TYPE_RICHTEXT": "Rich text",
+            "FIELD_TYPE_RICHTEXT": "Testo con formattazione",
             "FIELD_TYPE_MULTI": "Multilinea",
             "FIELD_TYPE_DATE": "Data",
             "FIELD_TYPE_URL": "Url"
@@ -962,8 +962,8 @@
             }
         },
         "CONTACT_BUTTON": {
-            "CONTACT_TITLE": "Contact the project team",
-            "CONTACT_BUTTON": "Contact the project"
+            "CONTACT_TITLE": "Contatta il team di progetto",
+            "CONTACT_BUTTON": "Contatta il progetto"
         }
     },
     "LIGHTBOX": {
@@ -988,6 +988,12 @@
         },
         "ADD_MEMBER": {
             "TITLE": "Nuovo Membro",
+            "PLACEHOLDER": "Filter users or write an email to invite",
+            "ADD_EMAIL": "Add email",
+            "REMOVE": "Remove",
+            "INVITE": "Invite",
+            "CHOOSE_ROLE": "Choose a role",
+            "PLACEHOLDER_INVITATION_TEXT": "(Optional) Add a personalized text to the invitation. Tell something lovely to your new members ;-)",
             "HELP_TEXT": "Se gli utenti sono già registrati su Taiga, verranno aggiunti automaticamente. In caso contrario, riceveranno un invito."
         },
         "CREATE_ISSUE": {
@@ -1051,10 +1057,10 @@
             "BUTTON": "Chiedi a questo membro di diventare il nuovo proprietario del progetto"
         },
         "CONTACT_PROJECT": {
-            "TITLE": "Send an email to",
-            "WARNING": "The email will be received by the project admins",
-            "PLACEHOLDER": "Write your message",
-            "SEND": "Send"
+            "TITLE": "Inviare un'email a",
+            "WARNING": "Questa email sarà ricevuta dagli amministratori di progetto",
+            "PLACEHOLDER": "Scrivi il tuo messaggio",
+            "SEND": "Invia"
         }
     },
     "EPIC": {
@@ -1236,7 +1242,7 @@
             "HIDE": "Nascondi tag"
         },
         "FORECASTING": {
-            "TITLE": "Velocity forecasting",
+            "TITLE": "Previsione di velocità",
             "BACKLOG": "Display backlog",
             "NEW_SPRINT": "Candidate User Stories for your next sprint based on your velocity. Click to create a new sprint.",
             "CURRENT_SPRINT": "Candidate User Stories for your sprint based on your velocity. Click to add to current sprint."

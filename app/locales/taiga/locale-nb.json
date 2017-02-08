@@ -228,8 +228,8 @@
         },
         "WYSIWYG": {
             "OUTDATED": "Another person has made changes while you were editing. Check the new version on the activiy tab before you save your changes.",
-            "ATTACH_FILE_HELP": "Legg ved filer ved å dra og slippe på tekstområdet ovenfor.",
-            "ATTACH_FILE_HELP_SAVE_FIRST": "Save first before if you want to attach files by dragging & dropping on the textarea above.",
+            "ATTACH_FILE_HELP": "Attach files by dragging & dropping on the text area above.",
+            "ATTACH_FILE_HELP_SAVE_FIRST": "Save first before if you want to attach files by dragging & dropping on the text area above.",
             "MARKDOWN_HELP": "Markdown syntaks hjelp"
         },
         "PERMISIONS_CATEGORIES": {
@@ -988,6 +988,12 @@
         },
         "ADD_MEMBER": {
             "TITLE": "Nytt medlem",
+            "PLACEHOLDER": "Filter users or write an email to invite",
+            "ADD_EMAIL": "Add email",
+            "REMOVE": "Remove",
+            "INVITE": "Invite",
+            "CHOOSE_ROLE": "Choose a role",
+            "PLACEHOLDER_INVITATION_TEXT": "(Optional) Add a personalized text to the invitation. Tell something lovely to your new members ;-)",
             "HELP_TEXT": "Hvis brukere allerede er registrerte på Taiga, vil de bli lagt til automatisk. Ellers vil de motta en invitasjon."
         },
         "CREATE_ISSUE": {

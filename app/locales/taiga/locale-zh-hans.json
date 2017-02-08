@@ -228,8 +228,8 @@
         },
         "WYSIWYG": {
             "OUTDATED": "在你编辑期间其他人做过变更，保存前请先检查新版本",
-            "ATTACH_FILE_HELP": "拖拽到上面的文本区域来添加附件",
-            "ATTACH_FILE_HELP_SAVE_FIRST": "如果你希望通过拖拽到上面的文本区域来添加附件，在此之前请先保存。",
+            "ATTACH_FILE_HELP": "Attach files by dragging & dropping on the text area above.",
+            "ATTACH_FILE_HELP_SAVE_FIRST": "Save first before if you want to attach files by dragging & dropping on the text area above.",
             "MARKDOWN_HELP": "Markdown 语法帮助"
         },
         "PERMISIONS_CATEGORIES": {
@@ -988,6 +988,12 @@
         },
         "ADD_MEMBER": {
             "TITLE": "新成员",
+            "PLACEHOLDER": "Filter users or write an email to invite",
+            "ADD_EMAIL": "Add email",
+            "REMOVE": "Remove",
+            "INVITE": "Invite",
+            "CHOOSE_ROLE": "Choose a role",
+            "PLACEHOLDER_INVITATION_TEXT": "(Optional) Add a personalized text to the invitation. Tell something lovely to your new members ;-)",
             "HELP_TEXT": "如果用户已注册Taiga账户，他们会自动被加入。否则他们会收到一封加入的邀请信"
         },
         "CREATE_ISSUE": {

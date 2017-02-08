@@ -228,8 +228,8 @@
         },
         "WYSIWYG": {
             "OUTDATED": "Otra persona ha realizado cambios durante tu edición. Comprueba la nueva versión en la pestaña de activiy antes de guardar los cambios.",
-            "ATTACH_FILE_HELP": "Adjunte archivos arrastrando y soltando dentro del area de texto",
-            "ATTACH_FILE_HELP_SAVE_FIRST": "Si desea guardar adjuntos guarde primero, luego arrastre y suelte los archivos en el area de texto mas arriba",
+            "ATTACH_FILE_HELP": "Attach files by dragging & dropping on the text area above.",
+            "ATTACH_FILE_HELP_SAVE_FIRST": "Save first before if you want to attach files by dragging & dropping on the text area above.",
             "MARKDOWN_HELP": "Ayuda de sintaxis Markdown"
         },
         "PERMISIONS_CATEGORIES": {
@@ -988,6 +988,12 @@
         },
         "ADD_MEMBER": {
             "TITLE": "Nuevo miembro",
+            "PLACEHOLDER": "Filter users or write an email to invite",
+            "ADD_EMAIL": "Add email",
+            "REMOVE": "Remove",
+            "INVITE": "Invite",
+            "CHOOSE_ROLE": "Choose a role",
+            "PLACEHOLDER_INVITATION_TEXT": "(Optional) Add a personalized text to the invitation. Tell something lovely to your new members ;-)",
             "HELP_TEXT": "Si los usuarios ya están registrado en Taiga, se añadirán automáticamente. De lo contrario recibirán una invitación."
         },
         "CREATE_ISSUE": {
