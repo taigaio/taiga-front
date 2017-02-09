@@ -993,7 +993,7 @@
             "REMOVE": "Remove",
             "INVITE": "Invite",
             "CHOOSE_ROLE": "Choose a role",
-            "PLACEHOLDER_INVITATION_TEXT": "(Optional) Add a personalized text to the invitation. Tell something lovely to your new members ;-)",
+            "PLACEHOLDER_INVITATION_TEXT": "(Valfritt) Lägg till en personlig hälsning till invitationen. Berätta något trevligt till din nya projektmedlem ;-)",
             "HELP_TEXT": "Om användaren redan är registrerad på Taiga vill hen bli lagt till automatiskt. I annat fall vill de motta en invitation. "
         },
         "CREATE_ISSUE": {

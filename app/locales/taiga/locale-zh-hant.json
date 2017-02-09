@@ -993,7 +993,7 @@
             "REMOVE": "Remove",
             "INVITE": "Invite",
             "CHOOSE_ROLE": "Choose a role",
-            "PLACEHOLDER_INVITATION_TEXT": "(Optional) Add a personalized text to the invitation. Tell something lovely to your new members ;-)",
+            "PLACEHOLDER_INVITATION_TEXT": "(非必要) 加上一段私人文字在邀請信，告訴你的新成員一些好事  ;-)",
             "HELP_TEXT": "如果用戶已註冊Taiga帳戶，他們會自動被加入。否則他們會收到一封加入的邀請信"
         },
         "CREATE_ISSUE": {

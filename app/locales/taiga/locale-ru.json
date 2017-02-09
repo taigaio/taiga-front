@@ -993,7 +993,7 @@
             "REMOVE": "Remove",
             "INVITE": "Invite",
             "CHOOSE_ROLE": "Choose a role",
-            "PLACEHOLDER_INVITATION_TEXT": "(Optional) Add a personalized text to the invitation. Tell something lovely to your new members ;-)",
+            "PLACEHOLDER_INVITATION_TEXT": "(Необязательно) Добавьте персональный текст в приглашение. Скажите что-нибудь приятное вашим новым участникам ;-)",
             "HELP_TEXT": "Если пользователи уже зарегистрированы в Тайге они добавятся автоматически. В противном случае им будет отправлено приглашение."
         },
         "CREATE_ISSUE": {

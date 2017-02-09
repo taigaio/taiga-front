@@ -993,7 +993,7 @@
             "REMOVE": "Remove",
             "INVITE": "Invite",
             "CHOOSE_ROLE": "Choose a role",
-            "PLACEHOLDER_INVITATION_TEXT": "(Optional) Add a personalized text to the invitation. Tell something lovely to your new members ;-)",
+            "PLACEHOLDER_INVITATION_TEXT": "(Vapaaehtoinen) Lisää oma kuvaus kutsuusi uusille jäsenille ;-)",
             "HELP_TEXT": "Taigan käyttäjät lisätään automaattisesti, muille lähetetään kutsu."
         },
         "CREATE_ISSUE": {

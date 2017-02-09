@@ -993,7 +993,7 @@
             "REMOVE": "Remove",
             "INVITE": "Invite",
             "CHOOSE_ROLE": "Choose a role",
-            "PLACEHOLDER_INVITATION_TEXT": "(Optional) Add a personalized text to the invitation. Tell something lovely to your new members ;-)",
+            "PLACEHOLDER_INVITATION_TEXT": "(선택사항) 초대장에 특별한 메시지를 적으세요. 새로운 회원에게 멋진 말을 전해주세요 ;-)",
             "HELP_TEXT": "타이가에 이미 등록한 사용자라면 자동으로 프로젝트에 추가될 겁니다. 등록하지 않은 사용자라면 초대장이 발송됩니다."
         },
         "CREATE_ISSUE": {

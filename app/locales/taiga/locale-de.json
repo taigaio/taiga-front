@@ -993,7 +993,7 @@
             "REMOVE": "Remove",
             "INVITE": "Invite",
             "CHOOSE_ROLE": "Choose a role",
-            "PLACEHOLDER_INVITATION_TEXT": "(Optional) Add a personalized text to the invitation. Tell something lovely to your new members ;-)",
+            "PLACEHOLDER_INVITATION_TEXT": "(Optional) Fügen Sie einen persönlichen Text zur Einladung hinzu. Erzählen Sie Ihren neuen Mitgliedern etwas Schönes. ;-)",
             "HELP_TEXT": "Wenn Benutzer schon bei Taiga registriert sind, werden diese automatisch hinzugefügt. Ansonsten erhalten sie eine Einladung."
         },
         "CREATE_ISSUE": {
