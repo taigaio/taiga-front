@@ -1,0 +1,8 @@
+fieldset.create-project-invite
+    .create-project-invite-avatars
+        tg-single-member(
+            tg-repeat="member in vm.members track by member.get('id')"
+            avatar="member"
+            ng-click="vm.toggleInviteMember(member)"
+        )
+            

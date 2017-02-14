@@ -84,14 +84,7 @@ section.projects-empty(ng-if="vm.projects != undefined && vm.projects.size === 0
     p(translate="HOME.EMPTY_PROJECT_LIST")
     a.create-project-button.button-green(
         href="#"
-        ng-click="vm.newProject()"
+        tg-nav="create-project"
         title="{{'PROJECT.NAVIGATION.TITLE_CREATE_PROJECT' | translate}}"
         translate="PROJECT.NAVIGATION.ACTION_CREATE_PROJECT"
     )
-    span(tg-import-project-button)
-        a.import-project-button.button-blackish(
-            href="#"
-            title="{{'PROJECT.NAVIGATION.TITLE_IMPORT_PROJECT' | translate}}"
-            translate="PROJECT.NAVIGATION.ACTION_IMPORT_PROJECT"
-        )
-        input.import-file.hidden(type="file")

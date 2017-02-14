@@ -1,0 +1,68 @@
+.create-project(ng-if="vm.inDefaultStep")
+    .create-project-wrapper
+        h1.create-project-title(translate="PROJECT.CREATE.TITLE")
+        h3.create-project-description(translate="PROJECT.CREATE.CHOOSE_TEMPLATE")
+        ul.create-project-selector.e2e-create-project-selector
+            li
+                .create-project-selector-icon
+                    tg-svg(svg-icon="icon-scrum")
+                .create-project-selector-template-wrapper
+                    a.create-project-selector-template(
+                        href="#"
+                        tg-nav=""
+                        title="{{'PROJECT.CREATE.TEMPLATE_SCRUM' | translate}}",
+                        translate="PROJECT.CREATE.TEMPLATE_SCRUM"
+                    )
+                    p.create-project-selector-description(translate="PROJECT.CREATE.TEMPLATE_SCRUM_DESC")
+                    .create-project-selector-question
+                        tg-svg(
+                            svg-icon="icon-question"
+                            ng-click="vm.displayScrumDesc = !vm.displayScrumDesc"
+                        )
+                    .create-project-selector-long-description(ng-show="vm.displayScrumDesc")
+                        p(translate="PROJECT.CREATE.TEMPLATE_SCRUM_LONGDESC")
+            li
+                .create-project-selector-icon
+                    tg-svg(svg-icon="icon-kanban")
+                .create-project-selector-template-wrapper
+                    a.create-project-selector-template(
+                        href="#"
+                        tg-nav=""
+                        title="{{'PROJECT.CREATE.TEMPLATE_KANBAN' | translate}}",
+                        translate="PROJECT.CREATE.TEMPLATE_KANBAN"
+                    )
+                    p.create-project-selector-description(translate="PROJECT.CREATE.TEMPLATE_KANBAN_DESC")
+                    .create-project-selector-question
+                        tg-svg(
+                            svg-icon="icon-question"
+                            ng-click="vm.displayKanbanDesc = !vm.displayKanbanDesc"
+                        )
+                    .create-project-selector-long-description(ng-show="vm.displayKanbanDesc")
+                        p(translate="PROJECT.CREATE.TEMPLATE_KANBAN_LONGDESC")
+            li.e2e-duplicate-project(ng-click="vm.getStep('duplicate')")
+                .create-project-selector-icon
+                    tg-svg(svg-icon="icon-duplicate")
+                .create-project-selector-template-wrapper
+                    a.create-project-selector-template(
+                        href="#"
+                        tg-nav=""
+                        title="{{'PROJECT.CREATE.DUPLICATE' | translate}}",
+                        translate="PROJECT.CREATE.DUPLICATE"
+                    )
+                    p.create-project-selector-description(translate="PROJECT.CREATE.DUPLICATE_DESC")
+            li
+                .create-project-selector-icon
+                    tg-svg(svg-icon="icon-upload")
+                .create-project-selector-template-wrapper
+                    a.create-project-selector-template(
+                        href="#"
+                        tg-nav=""
+                        title="{{'PROJECT.CREATE.IMPORT' | translate}}",
+                        translate="PROJECT.CREATE.IMPORT"
+                    )
+                    p.create-project-selector-description(translate="PROJECT.CREATE.IMPORT_DESC")
+
+tg-duplicate-project(
+    ng-if="vm.inStepDuplicateProject"
+    on-cancel-project-duplication="vm.getStep('home')"
+)

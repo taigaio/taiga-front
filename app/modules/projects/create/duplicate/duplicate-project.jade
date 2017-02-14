@@ -1,0 +1,123 @@
+.create-project
+    h1.create-project-title(translate="PROJECT.DUPLICATE.TITLE")
+    h3.create-project-description(translate="PROJECT.DUPLICATE.DESCRIPTION")
+    form.duplicate-project.e2e-duplicate-project
+        fieldset.duplicate-project-reference.e2e-duplicate-project-reference
+            select(
+                ng-model="vm.duplicatedProject.project"
+                ng-change="vm.getReferenceProject(vm.duplicatedProject.project)"
+                data-required="true"
+                ng-options="p.slug as p.name for p in vm.projects | toMutable"
+                id="project-selector-dropdown"
+                autofocus
+            )
+                option(
+                    value="" 
+                    disabled 
+                    selected
+                    translate="PROJECT.DUPLICATE.SELECT_PLACEHOLDER"
+                )
+        fieldset.duplicate-project-title
+            label(
+                translate="PROJECT.DUPLICATE.DETAILS"
+                for="project-name"
+            )
+            input.e2e-duplicate-project-title(
+                type="text"
+                ng-model="vm.duplicatedProject.name"
+                placeholder="{{'PROJECT.DUPLICATE.PROJECT_TITLE' | translate}}"
+                name="project-name"
+                data-required="true"
+                required
+            )
+        fieldset.duplicate-project-description
+            textarea.e2e-duplicate-project-description(
+                ng-model="vm.duplicatedProject.description"
+                placeholder="{{'PROJECT.DUPLICATE.PROJECT_DESCRIPTION' | translate}}"
+                data-required="true"
+                required
+            ) 
+        p.duplicate-project-limit(
+            ng-if="!vm.canCreatePrivateProjects.valid"
+            translate="PROJECT.CREATE.MAX_PRIVATE_PROJECTS"
+        )
+        p.duplicate-project-limit(
+            ng-if="!vm.canCreatePublicProjects.valid"
+            translate="PROJECT.CREATE.MAX_PUBLIC_PROJECTS"
+        )
+        
+        .duplicate-project-privacity(role="group")
+            fieldset
+                input(
+                    type="radio"
+                    name="is_private"
+                    id="template-public"
+                    data-required="true"
+                    aria-hidden="true"
+                    ng-value="false"
+                    ng-model="vm.duplicatedProject.is_private"
+                    required
+                    ng-disabled="!vm.canCreatePublicProjects.valid"
+                    ng-checked="!vm.referenceProject.get('is_private')"
+                    ng-change="vm.checkUsersLimit(vm.duplicatedProject.users)"
+                )
+                label.duplicate-project-privacity-label(for="template-public")
+                    tg-svg(svg-icon="icon-discover")
+                    span(translate="PROJECT.CREATE.PUBLIC_PROJECT")
+            fieldset
+                input(
+                    type="radio"
+                    name="is_private"
+                    id="template-private"
+                    data-required="true"
+                    ng-value="true"
+                    ng-model="vm.duplicatedProject.is_private"
+                    aria-hidden="true"
+                    required
+                    ng-disabled="!vm.canCreatePrivateProjects.valid"
+                    ng-checked="vm.referenceProject.get('is_private')"
+                    ng-change="vm.checkUsersLimit(vm.duplicatedProject.users)"
+                )
+                label.duplicate-project-privacity-label(for="template-private")
+                    tg-svg(svg-icon="icon-lock")
+                    span(translate="PROJECT.CREATE.PRIVATE_PROJECT")
+        
+        label(ng-if="vm.invitedMembers")
+            span(translate="PROJECT.CREATE.INVITE")
+            span.mumble(
+                ng-if="vm.displayUserWarning"
+                translate="PROJECT.CREATE.SOLO_PROJECT"
+            )
+            span.mumble(translate="PROJECT.CREATE.INVITE_LATER")
+        
+        tg-invite-members(
+            ng-if="vm.invitedMembers"
+            members="vm.invitedMembers"
+            on-set-invited-members="vm.setInvitedMembers(members)"
+        )
+        
+        p.duplicate-project-limit(
+            ng-if="vm.duplicatedProject.is_private && vm.limitMembersPrivateProject"
+            translate="PROJECT.CREATE.MAX_MEMBERS"
+        )
+        p.duplicate-project-limit(
+            ng-if="!vm.duplicatedProject.is_private && vm.limitMembersPublicProject"
+            translate="PROJECT.CREATE.MAX_MEMBERS"
+        )
+
+        .create-project-action
+            button.trans-button.create-project-action-cancel(
+                type="button"
+                ng-click="vm.onCancelProjectDuplication()"
+                title="{{'PROJECT.CREATE.BACK' | translate}}"
+                translate="PROJECT.CREATE.BACK"
+            )
+            button.button-green.create-project-action-duplicate.e2e-create-project-action-duplicate(
+                type="submit"
+                ng-click="vm.onDuplicateProject()"
+                title="{{'PROJECT.CREATE.TITLE' | translate}}"
+                ng-disabled="!vm.duplicatedProject.name || !vm.duplicatedProject.description || !vm.referenceProject || vm.loading || vm.limitMembersPrivateProject || vm.limitMembersPublicProject"
+                tg-loading="vm.loading"
+                translate="PROJECT.CREATE.TITLE"
+            )
+                

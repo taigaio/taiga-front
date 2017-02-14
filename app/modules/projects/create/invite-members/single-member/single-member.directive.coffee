@@ -14,15 +14,22 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: projects-listing.controller.coffee
+# File: single-member.directive.coffee
 ###
 
-class ProjectsListingController
-    @.$inject = [
-        "tgCurrentUserService"
-    ]
+SingleMemberDirective = () ->
 
-    constructor: (@currentUserService) ->
-        taiga.defineImmutableProperty(@, "projects", () => @currentUserService.projects.get("all"))
+    link = (scope, el, attr, ctrl) ->
+        scope.isUserDisabled = false
 
-angular.module("taigaProjects").controller("ProjectsListing", ProjectsListingController)
+    return {
+        link: link,
+        templateUrl:"projects/create/invite-members/single-member/single-member.html",
+        scope: {
+            avatar: "="
+        }
+    }
+
+SingleMemberDirective.$inject = []
+
+angular.module("taigaProjects").directive("tgSingleMember", SingleMemberDirective)

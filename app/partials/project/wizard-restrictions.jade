@@ -1,7 +1,0 @@
-div.create-warning(ng-if="!canCreatePrivateProjects.valid && canCreatePrivateProjects.reason == 'max_private_projects'")
-    tg-svg(svg-icon="icon-exclamation")
-    span {{ 'WIZARD.MAX_PRIVATE_PROJECTS' | translate }}
-
-div.create-warning(ng-if="!canCreatePublicProjects.valid && canCreatePublicProjects.reason == 'max_public_projects'")
-    tg-svg(svg-icon="icon-exclamation")
-    span {{ 'WIZARD.MAX_PUBLIC_PROJECTS' | translate }}

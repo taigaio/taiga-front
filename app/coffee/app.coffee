@@ -126,6 +126,18 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
             controllerAs: "vm"
         }
     )
+
+    # Project
+    $routeProvider.when("/project/new",
+        {
+            title: "PROJECT.CREATE.TITLE",
+            templateUrl: "projects/create/create-project.html",
+            loader: true,
+            controller: "CreateProjectCtrl",
+            controllerAs: "vm"
+        }
+    )
+
     # Project
     $routeProvider.when("/project/:pslug/",
         {

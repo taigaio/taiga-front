@@ -37,19 +37,6 @@ class RepositoryService extends taiga.Service
     resolveUrlForAttributeModel: (model) ->
         return @urls.resolve(model.getName(), model.parent)
 
-    create: (name, data, dataTypes={}, extraParams={}) ->
-        defered = @q.defer()
-        url = @urls.resolve(name)
-
-        promise = @http.post(url, JSON.stringify(data), extraParams)
-        promise.success (_data, _status) =>
-            defered.resolve(@model.make_model(name, _data, null, dataTypes))
-
-        promise.error (data, status) =>
-            defered.reject(data)
-
-        return defered.promise
-
     remove: (model, params={}) ->
         defered = @q.defer()
         url = @.resolveUrlForModel(model)

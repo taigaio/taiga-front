@@ -62,7 +62,7 @@ urls = {
     "cancel-account": "/cancel-account/:token"
     "register": "/register"
     "invitation": "/invitation/:token"
-    "create-project": "/create-project"
+    "create-project": "/project/new"
 
     "profile": "/profile"
     "user-profile": "/profile/:username"

@@ -1,0 +1,96 @@
+$create-project-padding: 1.25rem;
+
+.create-project {
+    @include centered;
+    max-width: 800px;
+    &-title,
+    &-description {
+        text-align: center;
+    }
+    &-title {
+        margin-bottom: 0;
+    }
+    &-description {
+        color: $gray-light;
+        margin-bottom: 2rem;
+    }
+}
+
+.create-project-selector {
+    li {
+        background: $mass-white;
+        color: $grayer;
+        cursor: pointer;
+        display: flex;
+        margin-bottom: .5rem;
+        position: relative;
+        &:hover {
+            background: rgba($primary, .1);
+            transition: background .3s ease-in;
+        }
+    }
+    &-icon {
+        background: rgba($grayer, .1);
+        padding: 1.75rem 1.25rem 0;
+        .icon {
+            @include svg-size(1.6rem);
+        }
+    }
+    &-template-wrapper {
+        flex: 1;
+        padding: 1.25rem;
+    }
+    &-template {
+        @include font-type(bold);
+        text-transform: uppercase;
+    }
+    &-description {
+        @include font-type(light);
+    }
+    &-long-description {
+        margin-top: 1rem;
+        max-height: 120px;
+        overflow: hidden;
+        transition: all .3s ease-out;
+        &.ng-hide {
+            line-height: 0;
+            max-height: 0;
+        }
+    }
+    &-question {
+        position: absolute;
+        right: 1.5rem;
+        top: 1.5rem;
+        &:hover {
+            svg {
+                fill: $primary;
+                transition: fill .2s linear;
+            }
+        }
+        svg {
+            @include svg-size(1.2rem);
+            fill: $grayer;
+
+        }
+    }
+    p {
+        margin-bottom: 0;
+    }
+}
+
+.create-project-action {
+    display: flex;
+    margin-bottom: 0;
+    button {
+        @include font-size(large);
+        padding: 12px;
+    }
+    .create-project-action-duplicate {
+        flex: 4;
+        margin-left: 1rem;
+    }
+    .create-project-action-cancel {
+        color: currentColor;
+        flex: 1;
+    }
+}

@@ -14,15 +14,27 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: projects-listing.controller.coffee
+# File: invite-members.directive.coffee
 ###
 
-class ProjectsListingController
-    @.$inject = [
-        "tgCurrentUserService"
-    ]
+InviteMembersDirective = () ->
 
-    constructor: (@currentUserService) ->
-        taiga.defineImmutableProperty(@, "projects", () => @currentUserService.projects.get("all"))
+    link = (scope, el, attr, ctrl) ->
+        scope.$watch 'vm.members', (members) ->
+            ctrl.members = members
 
-angular.module("taigaProjects").controller("ProjectsListing", ProjectsListingController)
+    return {
+        link: link,
+        templateUrl:"projects/create/invite-members/invite-members.html",
+        controller: "InviteMembersCtrl",
+        controllerAs: "vm",
+        bindToController: true,
+        scope: {
+            members: '=',
+            onSetInvitedMembers: '&'
+        }
+    }
+
+InviteMembersDirective.$inject = []
+
+angular.module("taigaProjects").directive("tgInviteMembers", InviteMembersDirective)

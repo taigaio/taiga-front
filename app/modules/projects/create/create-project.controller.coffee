@@ -14,15 +14,22 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: projects-listing.controller.coffee
+# File: project.controller.coffee
 ###
 
-class ProjectsListingController
-    @.$inject = [
-        "tgCurrentUserService"
-    ]
+class CreateProjectController
+    @.$inject = []
 
-    constructor: (@currentUserService) ->
-        taiga.defineImmutableProperty(@, "projects", () => @currentUserService.projects.get("all"))
+    constructor: () ->
+        @.inDefaultStep = true
 
-angular.module("taigaProjects").controller("ProjectsListing", ProjectsListingController)
+    getStep: (step) ->
+        if step == 'home'
+            @.inDefaultStep = true
+            @.inStepDuplicateProject = false
+        else if step == 'duplicate'
+            @.inDefaultStep = false
+            @.inStepDuplicateProject = true
+
+
+angular.module("taigaProjects").controller("CreateProjectCtrl", CreateProjectController)

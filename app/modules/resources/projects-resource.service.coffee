@@ -22,6 +22,35 @@ pagination = () ->
 Resource = (urlsService, http, paginateResponseService) ->
     service = {}
 
+    # create: (name, data, dataTypes={}, extraParams={}) ->
+    #     defered = @q.defer()
+    #     url = @urls.resolve(name)
+    #
+    #     promise = @http.post(url, JSON.stringify(data), extraParams)
+    #     promise.success (_data, _status) =>
+    #         defered.resolve(@model.make_model(name, _data, null, dataTypes))
+    #
+    #     promise.error (data, status) =>
+    #         defered.reject(data)
+    #
+    #     return defered.promise
+
+    service.duplicate = (projectId, data) ->
+
+        url = urlsService.resolve("projects")
+        url = "#{url}/#{projectId}/duplicate"
+
+        members = data.users.map (member) => {"id": member}
+
+        params = {
+            "name": data.name,
+            "description": data.description,
+            "is_private": data.is_private,
+            "users": members
+        }
+
+        return http.post(url, params)
+
     service.getProjects = (params = {}, pagination = true) ->
         url = urlsService.resolve("projects")
 
