@@ -61,7 +61,7 @@ TagOptionDirective = () ->
     link = (scope, el) ->
         stop()
 
-        $(document).on "keydown.tags-keyboard-navigation", (event) =>
+        $(el).parent().on "keydown.tags-keyboard-navigation", (event) =>
             code = if event.keyCode then event.keyCode else event.which
 
             if code == 40 || code == 38
