@@ -27,17 +27,17 @@ nav.history-tabs
 
         span(
             translate="COMMENTS.OLDER_FIRST"
-            ng-if="onReverse"
+            ng-if="!onReverse"
         )
         tg-svg(
             svg-icon="icon-arrow-down"
-            ng-if="onReverse"
+            ng-if="!onReverse"
         )
         span(
             translate="COMMENTS.RECENT_FIRST"
-            ng-if="!onReverse"
+            ng-if="onReverse"
         )
         tg-svg(
             svg-icon="icon-arrow-up"
-            ng-if="!onReverse"
+            ng-if="onReverse"
         )
