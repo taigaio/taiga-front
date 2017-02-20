@@ -4,6 +4,9 @@
 [![Managed with Taiga.io](https://tree.taiga.io/support/images/taiga-badge-gh.png)](https://taiga.io "Managed with Taiga.io")
 [![Build Status](https://travis-ci.org/taigaio/taiga-front.svg?branch=public-header-bar)](https://travis-ci.org/taigaio/taiga-front)
 [![Dependency Status](https://www.versioneye.com/user/projects/561ba659a193340f280013f4/badge.svg?style=flat)](https://www.versioneye.com/user/projects/561ba659a193340f280013f4)
+[![Issue Count](https://codeclimate.com/github/davehenton/taiga-front/badges/issue_count.svg)](https://codeclimate.com/github/davehenton/taiga-front)
+[![Code Climate](https://codeclimate.com/github/davehenton/taiga-front/badges/gpa.svg)](https://codeclimate.com/github/davehenton/taiga-front)
+
 
 
 ## Get the compiled version ##
