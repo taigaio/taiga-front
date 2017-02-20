@@ -378,11 +378,7 @@ Svg = () ->
     <svg class="{{ 'icon ' + svgIcon }}">
         <use xlink:href="" ng-attr-xlink:href="{{ '#' + svgIcon }}">
             <title ng-if="svgTitle">{{svgTitle}}</title>
-            <title
-                ng-if="svgTitleTranslate"
-                translate="{{svgTitleTranslate}}"
-                translate-values="{{svgTitleTranslateValues}}"
-                ></title>
+            <title ng-if="svgTitleTranslate">{{svgTitleTranslate | translate: svgTitleTranslateValues}}</title>
         </use>
     </svg>
     """

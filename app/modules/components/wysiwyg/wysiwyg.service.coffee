@@ -66,8 +66,7 @@ class WysiwygService
         return text
 
     removeTrailingListBr: (text) ->
-        regex = new RegExp(/<li>(.*?)<br><\/li>/, 'g')
-        return text.replace(regex, '<li>$1</li>')
+        return text.replace(/<li>(.*?)<br><\/li>/g, '<li>$1</li>')
 
     getMarkdown: (html) ->
         # https://github.com/yabwe/medium-editor/issues/543

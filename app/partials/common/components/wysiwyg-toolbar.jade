@@ -8,8 +8,8 @@
     )
 
     textarea.markdown.e2e-markdown-textarea(
-        placeholder="{{placeholder}}"
-        ng-change="changeMarkdown()"
+        ng-attr-placeholder="{{placeholder}}"
+        ng-change="changeMarkdown(markdown)"
         ng-model="markdown"
         ng-show="mode == 'markdown' && editMode"
     )
@@ -47,12 +47,12 @@
         ng-class="{disabled: required && !markdown.length}"
         tg-loading="saving"
         href="#",
-        ng-click="save()"
+        ng-click="save($event)"
     )
         tg-svg(svg-icon="icon-save")
     a.e2e-cancel-editor(
         href="#",
-        ng-click="cancel()"
+        ng-click="cancel($event)"
         title="{{ 'COMMON.CANCEL' | translate }}"
     )
         tg-svg(svg-icon="icon-close")

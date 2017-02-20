@@ -148,6 +148,7 @@ Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoad
         $scope.required = !!$attrs.$attr.required
         $scope.editMode = isEditOnly || false
         $scope.mode = $storage.get('editor-mode', 'html')
+        $scope.markdown = ''
 
         wysiwygService.loadEmojis()
 
@@ -166,7 +167,9 @@ Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoad
             $scope.mode = mode
             mediumInstance.trigger('editableBlur', {}, editorMedium[0])
 
-        $scope.save = () ->
+        $scope.save = (e) ->
+            e.preventDefault() if e
+
             if $scope.mode == 'html'
                 updateMarkdownWithCurrentHtml()
 
@@ -179,7 +182,9 @@ Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoad
 
             return
 
-        $scope.cancel = () ->
+        $scope.cancel = (e) ->
+            e.preventDefault() if e
+
             if !isEditOnly
                 $scope.editMode = false
 
