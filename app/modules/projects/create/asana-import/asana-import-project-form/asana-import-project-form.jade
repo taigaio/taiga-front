@@ -1,0 +1,63 @@
+.import-project-asana-form
+    div(ng-include="'projects/create/import/import-header.html'")
+
+    .spin(tg-loading="vm.fetchingUsers")
+
+    form(
+        ng-if="!vm.fetchingUsers",
+        name="projectForm",
+        ng-submit="vm.saveForm()"
+    )
+        div(ng-include="'projects/create/import-project-form-common/name.html'")
+        div(ng-include="'projects/create/import-project-form-common/description.html'")
+        .create-project-import-type(role="group")
+            fieldset
+                input(
+                    type="radio"
+                    name="project_type"
+                    id="template-scrum"
+                    data-required="true"
+                    aria-hidden="true"
+                    ng-value="'scrum'"
+                    ng-model="vm.projectForm.project_type"
+                    required
+                )
+                label(for="template-scrum")
+                    tg-svg(svg-icon="icon-scrum")
+                    span(translate="PROJECT.IMPORT.ASANA.SCRUM_PROJECT")
+            fieldset
+                input(
+                    type="radio"
+                    name="project_type"
+                    id="template-kanban"
+                    data-required="true"
+                    aria-hidden="true"
+                    ng-value="'kanban'"
+                    ng-model="vm.projectForm.project_type"
+                    required
+                )
+                label(for="template-kanban")
+                    tg-svg(svg-icon="icon-kanban")
+                    span(translate="PROJECT.IMPORT.ASANA.KANBAN_PROJECT")
+
+        p.create-project-import-type-info(
+            ng-if="vm.projectForm.project_type == 'scrum'"
+            translate='PROJECT.IMPORT.ASANA.CREATE_AS_SCRUM_DESCRIPTION'
+        )
+        p.create-project-import-type-info(
+            ng-if="vm.projectForm.project_type == 'kanban'"
+            translate='PROJECT.IMPORT.ASANA.CREATE_AS_KANBAN_DESCRIPTION'
+        )
+        div(ng-include="'projects/create/import-project-form-common/project-privacy.html'")
+        tg-create-project-restrictions(
+            is-private="vm.projectForm.is_private"
+            can-create-public-projects="vm.canCreatePublicProjects"
+            can-create-private-projects="vm.canCreatePrivateProjects"
+        )
+        tg-create-project-members-restrictions(
+            is-private="vm.projectForm.is_private"
+            limit-members-private-project="vm.limitMembersPrivateProject"
+            limit-members-public-project="vm.limitMembersPublicProject"
+        )
+        div(ng-include="'projects/create/import-project-form-common/links.html'")
+        div(ng-include="'projects/create/import-project-form-common/actions.html'")

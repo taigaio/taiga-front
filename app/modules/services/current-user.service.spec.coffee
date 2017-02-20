@@ -219,7 +219,9 @@ describe "tgCurrentUserService", ->
         expect(result).to.be.eql({
             valid: false,
             reason: 'max_private_projects',
-            type: 'private_project'
+            type: 'private_project',
+            current: 1,
+            max: 1
         })
 
     it "the user can create private projects", () ->
@@ -254,7 +256,9 @@ describe "tgCurrentUserService", ->
         expect(result).to.be.eql({
             valid: false,
             reason: 'max_public_projects',
-            type: 'public_project'
+            type: 'public_project',
+            current: 1,
+            max: 1
         })
 
     it "the user can create public projects", () ->
@@ -321,7 +325,9 @@ describe "tgCurrentUserService", ->
         expect(result).to.be.eql({
             valid: false
             reason: 'max_public_projects'
-            type: 'public_project'
+            type: 'public_project',
+            current: 1,
+            max: 1
         })
 
 
@@ -348,7 +354,9 @@ describe "tgCurrentUserService", ->
         expect(result).to.be.eql({
             valid: false
             reason: 'max_members_public_projects'
-            type: 'public_project'
+            type: 'public_project',
+            current: 5,
+            max: 4
         })
 
     it "the user can own private project", () ->
@@ -398,7 +406,9 @@ describe "tgCurrentUserService", ->
         expect(result).to.be.eql({
             valid: false
             reason: 'max_private_projects'
-            type: 'private_project'
+            type: 'private_project',
+            current: 1,
+            max: 1
         })
 
 
@@ -425,5 +435,7 @@ describe "tgCurrentUserService", ->
         expect(result).to.be.eql({
             valid: false
             reason: 'max_members_private_projects'
-            type: 'private_project'
+            type: 'private_project',
+            current: 5,
+            max: 4
         })

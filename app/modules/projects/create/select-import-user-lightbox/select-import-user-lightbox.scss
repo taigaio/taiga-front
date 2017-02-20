@@ -1,0 +1,54 @@
+tg-select-import-user-lightbox {
+    .form {
+        flex-basis: 600px;
+        flex-grow: 0;
+        width: 600px;
+    }
+    .candidate-user {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        padding-bottom: 1.5rem;
+        p {
+            margin-bottom: 0;
+        }
+        .empty {
+            margin-right: .5rem;
+        }
+        .user-list-avatar {
+            background-color: $red;
+            height: 32px;
+            margin-right: .5rem;
+            width: 32px;
+        }
+    }
+    .error {
+        color: $red-light;
+        text-align: center;
+    }
+    .more-users {
+        padding: .5rem;
+        text-align: center;
+    }
+    .group {
+        display: flex;
+        input {
+            flex-grow: 2;
+            margin-right: .5rem;
+        }
+        .submit-button {
+            flex-grow: 0;
+            width: auto;
+        }
+    }
+    .search-user-mode {
+        border-top: 1px solid $gray-light;
+        margin-top: 1rem;
+        padding-top: 1rem;
+        text-align: center;
+    }
+    label {
+        display: block;
+        padding-bottom: .5rem;
+    }
+}

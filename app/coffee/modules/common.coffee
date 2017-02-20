@@ -216,6 +216,9 @@ module.directive("tgToggleComment", ToggleCommentDirective)
 
 ProjectUrl = ($navurls) ->
     get = (project) ->
+        if project.toJS
+            project = project.toJS()
+
         ctx = {project: project.slug}
 
         if project.is_backlog_activated and project.my_permissions.indexOf("view_us") > -1
@@ -353,12 +356,18 @@ module.directive("tgCapslock", [Capslock])
 
 LightboxClose = () ->
     template = """
-        <a class="close" href="" title="{{'COMMON.CLOSE' | translate}}">
+        <a class="close" ng-click="onClose()" href="" title="{{'COMMON.CLOSE' | translate}}">
             <tg-svg svg-icon="icon-close"></tg-svg>
         </a>
     """
 
+    link = (scope, elm, attrs) ->
+
     return {
+        scope: {
+            onClose: '&'
+        },
+        link: link,
         template: template
     }
 

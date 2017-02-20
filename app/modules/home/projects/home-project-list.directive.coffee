@@ -17,14 +17,11 @@
 # File: home-project-list.directive.coffee
 ###
 
-HomeProjectListDirective = (currentUserService, projectsService) ->
+HomeProjectListDirective = (currentUserService) ->
     link = (scope, el, attrs, ctrl) ->
         scope.vm = {}
 
         taiga.defineImmutableProperty(scope.vm, "projects", () -> currentUserService.projects.get("recents"))
-
-        scope.vm.newProject = ->
-            projectsService.newProject()
 
     directive = {
         templateUrl: "home/projects/home-project-list.html"
@@ -35,8 +32,7 @@ HomeProjectListDirective = (currentUserService, projectsService) ->
     return directive
 
 HomeProjectListDirective.$inject = [
-    "tgCurrentUserService",
-    "tgProjectsService"
+    "tgCurrentUserService"
 ]
 
 angular.module("taigaHome").directive("tgHomeProjectList", HomeProjectListDirective)

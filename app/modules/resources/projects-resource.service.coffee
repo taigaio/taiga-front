@@ -22,6 +22,28 @@ pagination = () ->
 Resource = (urlsService, http, paginateResponseService) ->
     service = {}
 
+    service.create = (data) ->
+        url = urlsService.resolve('projects')
+
+        return http.post(url, JSON.stringify(data))
+            .then (result) => return Immutable.fromJS(result.data)
+
+    service.duplicate = (projectId, data) ->
+
+        url = urlsService.resolve("projects")
+        url = "#{url}/#{projectId}/duplicate"
+
+        members = data.users.map (member) => {"id": member}
+
+        params = {
+            "name": data.name,
+            "description": data.description,
+            "is_private": data.is_private,
+            "users": members
+        }
+
+        return http.post(url, params)
+
     service.getProjects = (params = {}, pagination = true) ->
         url = urlsService.resolve("projects")
 

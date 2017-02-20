@@ -1,0 +1,25 @@
+.import-project-trello-form.create-project
+    div(ng-include="'projects/create/import/import-header.html'")
+
+    .spin(tg-loading="vm.fetchingUsers")
+
+    form(
+        ng-if="!vm.fetchingUsers",
+        name="projectForm",
+        ng-submit="vm.saveForm()"
+    )
+        div(ng-include="'projects/create/import-project-form-common/name.html'")
+        div(ng-include="'projects/create/import-project-form-common/description.html'")
+        div(ng-include="'projects/create/import-project-form-common/project-privacy.html'")
+        tg-create-project-restrictions(
+            is-private="vm.projectForm.is_private"
+            can-create-public-projects="vm.canCreatePublicProjects"
+            can-create-private-projects="vm.canCreatePrivateProjects"
+        )
+        tg-create-project-members-restrictions(
+            is-private="vm.projectForm.is_private"
+            limit-members-private-project="vm.limitMembersPrivateProject"
+            limit-members-public-project="vm.limitMembersPublicProject"
+        )
+        div(ng-include="'projects/create/import-project-form-common/links.html'")
+        div(ng-include="'projects/create/import-project-form-common/actions.html'")

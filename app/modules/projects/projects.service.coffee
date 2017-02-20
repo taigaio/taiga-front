@@ -22,9 +22,15 @@ groupBy = @.taiga.groupBy
 
 
 class ProjectsService extends taiga.Service
-    @.$inject = ["tgResources", "$projectUrl", "tgLightboxFactory"]
+    @.$inject = ["tgResources", "$projectUrl"]
 
-    constructor: (@rs, @projectUrl, @lightboxFactory) ->
+    constructor: (@rs, @projectUrl) ->
+
+    create: (data) ->
+        return @rs.projects.create(data)
+
+    duplicate: (projectId, data) ->
+        return @rs.projects.duplicate(projectId, data)
 
     getProjectBySlug: (projectSlug) ->
         return @rs.projects.getProjectBySlug(projectSlug)
@@ -45,11 +51,6 @@ class ProjectsService extends taiga.Service
         project = project.set("url", url)
 
         return project
-
-    newProject: ->
-        @lightboxFactory.create("tg-lb-create-project", {
-            "class": "wizard-create-project lightbox"
-        })
 
     bulkUpdateProjectsOrder: (sortData) ->
         return @rs.projects.bulkUpdateOrder(sortData)

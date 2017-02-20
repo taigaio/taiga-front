@@ -46,12 +46,6 @@ describe "tgProjectsService", ->
 
         provide.value "$projectUrl", mocks.projectUrl
 
-    _mockLightboxFactory = () ->
-        mocks.lightboxFactory = {
-            create: sinon.stub()
-        }
-
-        provide.value "tgLightboxFactory", mocks.lightboxFactory
 
     _inject = (callback) ->
         inject (_$q_, _$rootScope_, _tgProjectsService_) ->
@@ -65,7 +59,6 @@ describe "tgProjectsService", ->
             provide = $provide
             _mockResources()
             _mockProjectUrl()
-            _mockLightboxFactory()
             _mockAuthService()
 
             return null
@@ -74,13 +67,6 @@ describe "tgProjectsService", ->
         module "taigaProjects"
         _mocks()
         _inject()
-
-    it "newProject, create the wizard lightbox", () ->
-        projectsService.newProject()
-
-        expect(mocks.lightboxFactory.create).to.have.been.calledWith("tg-lb-create-project", {
-            "class": "wizard-create-project lightbox"
-        })
 
     it "bulkUpdateProjectsOrder and then fetch projects again", () ->
         projects_order = [

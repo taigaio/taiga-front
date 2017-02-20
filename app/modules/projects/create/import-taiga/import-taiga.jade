@@ -1,0 +1,15 @@
+input.hidden(
+    tg-file-change="vm.importTaiga(files)"
+    type="file"
+)
+.import-project-logo
+    img(
+        src="/#{v}/images/logo-color.png"
+        alt="Taiga Logo"
+    )
+.import-project-name-wrapper
+    p.import-project-name(
+        href="#"
+        title="Taiga"
+    ) Taiga
+    p.import-project-description(translate="PROJECT.IMPORT.TAIGA.SELECTOR")

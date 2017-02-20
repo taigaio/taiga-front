@@ -1,0 +1,69 @@
+.create-project
+    .create-project-wrapper
+        h1.create-project-title(translate="PROJECT.CREATE.TITLE")
+        h3.create-project-description(translate="PROJECT.CREATE.CHOOSE_TEMPLATE")
+        ul.create-project-selector.e2e-create-project-selector
+            li
+                a.e2e-create-project-scrum(
+                    title="{{'PROJECT.CREATE.TEMPLATE_SCRUM' | translate}}",
+                    tg-nav="create-project-scrum"
+                    href=""
+                )
+                    .create-project-selector-icon
+                        tg-svg(svg-icon="icon-scrum")
+                    .create-project-selector-template-wrapper
+                        p.create-project-selector-template(translate="PROJECT.CREATE.TEMPLATE_SCRUM")
+                        p.create-project-selector-description(translate="PROJECT.CREATE.TEMPLATE_SCRUM_DESC")
+                        .create-project-selector-question
+                            tg-svg(
+                                svg-icon="icon-question"
+                                ng-click="vm.displayHelp('scrum', $event)"
+                            )
+                        .create-project-selector-long-description(ng-show="vm.displayScrumDesc")
+                            p(translate="PROJECT.CREATE.TEMPLATE_SCRUM_LONGDESC")
+            li
+                a.e2e-create-project-kanban(
+                    tg-nav="create-project-kanban"
+                    title="{{'PROJECT.CREATE.TEMPLATE_KANBAN' | translate}}",
+                    href=""
+                )
+                    .create-project-selector-icon
+                        tg-svg(svg-icon="icon-kanban")
+
+                    .create-project-selector-template-wrapper
+                        p.create-project-selector-template(translate="PROJECT.CREATE.TEMPLATE_KANBAN")
+                        p.create-project-selector-description(translate="PROJECT.CREATE.TEMPLATE_KANBAN_DESC")
+                        .create-project-selector-question
+                            tg-svg(
+                                svg-icon="icon-question"
+                                ng-click="vm.displayHelp('kanban', $event)"
+                            )
+                        .create-project-selector-long-description(ng-show="vm.displayKanbanDesc")
+                            p(translate="PROJECT.CREATE.TEMPLATE_KANBAN_LONGDESC")
+            li
+                a.e2e-duplicate-project(
+                    tg-nav="create-project-duplicate"
+                    title="{{'PROJECT.CREATE.DUPLICATE' | translate}}",
+                    href=""
+                )
+                    .create-project-selector-icon
+                        tg-svg(svg-icon="icon-duplicate")
+                    .create-project-selector-template-wrapper
+                        p.create-project-selector-template(translate="PROJECT.CREATE.DUPLICATE")
+                        p.create-project-selector-description(translate="PROJECT.CREATE.DUPLICATE_DESC")
+
+            li
+                a(
+                    tg-nav="create-project-import"
+                    title="{{'PROJECT.CREATE.IMPORT' | translate}}",
+                    href=""
+                )
+                    .create-project-selector-icon
+                        tg-svg(svg-icon="icon-upload")
+                    .create-project-selector-template-wrapper
+                        p.create-project-selector-template(
+                            href="#"
+                            title="{{'PROJECT.CREATE.IMPORT' | translate}}",
+                            translate="PROJECT.CREATE.IMPORT"
+                        )
+                        p.create-project-selector-description(translate="PROJECT.CREATE.IMPORT_DESC")

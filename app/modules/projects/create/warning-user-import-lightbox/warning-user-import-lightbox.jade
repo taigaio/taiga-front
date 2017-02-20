@@ -1,0 +1,8 @@
+tg-lightbox-close(on-close="onClose()")
+
+.create-project.import-project
+    h1(translate="PROJECT.IMPORT.WARNING.TITLE")
+    p(translate="PROJECT.IMPORT.WARNING.DESCRIPTION")
+    .actions
+        button.button.button-gray(translate="PROJECT.IMPORT.WARNING.CHECK", ng-click="onClose()")
+        button.button.button-green(type="submit", translate="PROJECT.IMPORT.IMPORT", ng-click="onConfirm()")
