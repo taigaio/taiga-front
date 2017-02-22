@@ -261,8 +261,9 @@ helper.blockLightbox = function() {
         waitClose: function() {
             return utils.notifications.success.close();
         },
-        fill: function(text) {
+        fill: async function(text) {
             el.$('textarea').sendKeys(text);
+            await browser.waitForAngular();
         },
         submit: async function() {
             el.$('a.button-green').click();
