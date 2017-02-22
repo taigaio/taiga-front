@@ -3,22 +3,29 @@
 ## 3.1.0 No name yet (no date yet)
 
 ### Features
+- New project creation form: Now you can:
+    - duplicate a project.
+    - import from Taiga.
+    - import from Trello.
+    - import from Jira.
+    - import from GitHub.
+    - import from Asana.
+- Improve add-members form: Now users can select between their contacts or type an email.
 - Contact with the project: if the projects have this module enabled Taiga users can contact them.
 - Velocity forecasting. Create sprints according to team velocity.
-- Remove bower, now use only npm packages.
 - Add new wysiwyg editor (like the Medunm editor) with emojis, local storage changes, mentions...
 - Add rich text custom fields (with a wysiwyg editor like descreption or comments).
-- Add thumbnails and preview for PSD files.
-- Add thumbnails and preview for SVG files.
-- Improve add-members form: Now users can select between their contacts or type an email.
-- New project creation with importing
+- Add thumbnails and preview for:
+    - PSD files.
+    - SVG files.
 - i18n:
-  - Add japanese (ja) translation.
-  - Add korean (ko) translation.
-  - Add chinese simplified (zh-Hans) translation.
+    - Add japanese (ja) translation.
+    - Add korean (ko) translation.
+    - Add chinese simplified (zh-Hans) translation.
 
 ### Misc
 - Lots of small and not so small bugfixes.
+- Remove bower, now use only npm packages.
 
 
 ## 3.0.0 Stellaria Borealis (2016-10-02)
