@@ -137,6 +137,8 @@ describe('user profile - votes', function() {
 
             let endTotal = await $$('div[infinite-scroll] > div').count();
 
+            console.log(startTotal, endTotal);
+
             let hasMoreItems = startTotal < endTotal;
 
             expect(hasMoreItems).to.be.equal(true);
@@ -205,9 +207,9 @@ describe('user profile - votes', function() {
             await utils.common.clear($('div.searchbox > input'));
             await htmlChanges();
 
-            filteredItems = await $$('div[infinite-scroll] > div').count();
+            let unfilteredItems = await $$('div[infinite-scroll] > div').count();
 
-            expect(allItems).to.be.equal(filteredItems);
+            expect(unfilteredItems).to.be.not.equal(filteredItems);
         });
 
     });

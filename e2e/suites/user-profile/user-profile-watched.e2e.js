@@ -16,7 +16,7 @@ describe('user profile - watched', function() {
 
             $$('.tab').get(3).click();
 
-            await helper.waitLoader();
+            await browser.waitForAngular();
 
             utils.common.takeScreenshot('user-profile', 'current-user-watched');
         });
