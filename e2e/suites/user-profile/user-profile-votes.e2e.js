@@ -137,8 +137,6 @@ describe('user profile - votes', function() {
 
             let endTotal = await $$('div[infinite-scroll] > div').count();
 
-            console.log(startTotal, endTotal);
-
             let hasMoreItems = startTotal < endTotal;
 
             expect(hasMoreItems).to.be.equal(true);
