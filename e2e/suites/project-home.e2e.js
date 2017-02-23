@@ -90,7 +90,7 @@ describe('project home', function() {
         await form.$('.e2e-lightbox-contact-project-message').sendKeys('contact');
         form.$('.e2e-lightbox-contact-project-button').click();
         await utils.notifications.success.open();
-
+        await utils.notifications.success.close();
     });
 
     it('unwatch', async function() {
