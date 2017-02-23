@@ -43,6 +43,7 @@ module.exports = function(name, counter) {
     });
 
     it('save custom filters', async () => {
+        await filterHelper.openCustomFiltersCategory()
         let len = await counter();
         let customFiltersSize = await filterHelper.getCustomFilters().count();
 
@@ -50,6 +51,8 @@ module.exports = function(name, counter) {
         await filterHelper.saveFilter("custom-filter");
         await filterHelper.clearFilters();
         await filterHelper.firterByLastCustomFilter();
+
+        await browser.sleep(200);
 
         let newLength = await counter();
         let newCustomFiltersSize = await filterHelper.getCustomFilters().count();
