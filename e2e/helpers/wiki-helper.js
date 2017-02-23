@@ -82,7 +82,7 @@ helper.editor = function(){
         },
 
         getInnerHtml: async function(text){
-            let wikiText = await el.$(".view-wiki-content .wysiwyg").getInnerHtml();
+            let wikiText = await el.$(".view-wiki-content .wysiwyg").getAttribute("innerHTML");
             return wikiText;
         },
 

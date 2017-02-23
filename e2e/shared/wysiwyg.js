@@ -153,7 +153,7 @@ shared.wysiwygTestingComments = function(parentSelector, section) {
 
         htmlMode();
 
-        let html = await editor.getInnerHtml();
+        let html = await editor.getAttribute("innerHTML");
 
         expect(html).to.be.eql('<p><em>test2</em></p>\n');
 
@@ -229,7 +229,7 @@ shared.wysiwygTestingComments = function(parentSelector, section) {
 
         $$('.medium-mention li').get(2).click();
 
-        let html = await editor.getInnerHtml();
+        let html = await editor.getAttribute("innerHTML");
 
         expect(html).to.be.eql('<p><a href="/profile/user8">@user8</a>&nbsp;</p>');
 
@@ -251,7 +251,7 @@ shared.wysiwygTestingComments = function(parentSelector, section) {
 
         $$('.medium-mention li').get(2).click();
 
-        let html = await editor.getInnerHtml();
+        let html = await editor.getAttribute("innerHTML");
 
         expect(html).to.include('1f604.png');
 
@@ -267,13 +267,13 @@ shared.wysiwygTestingComments = function(parentSelector, section) {
     });
 
     it('cancel', async () => {
-        let prevHtml = await editor.getInnerHtml();
+        let prevHtml = await editor.getAttribute("innerHTML");
 
         await edit(editor, editorWrapper, 'xxx yyy zzz');
 
         await cancelEdition(editorWrapper);
 
-        let html = await editor.getInnerHtml();
+        let html = await editor.getAttribute("innerHTML");
 
         expect(html).to.be.equal(prevHtml);
     });
@@ -362,7 +362,7 @@ shared.wysiwygTesting = function(parentSelector) {
 
         resetSelection();
 
-        let html = await editor.getInnerHtml();
+        let html = await editor.getAttribute("innerHTML");
 
         expect(html).to.be.eql('<p><b>test</b></p>');
 
@@ -388,7 +388,7 @@ shared.wysiwygTesting = function(parentSelector) {
 
         htmlMode();
 
-        let html = await editor.getInnerHtml();
+        let html = await editor.getAttribute("innerHTML");
 
         expect(html).to.be.eql('<p><em>test2</em></p>\n');
     });
@@ -455,7 +455,7 @@ shared.wysiwygTesting = function(parentSelector) {
 
         $$('.medium-mention li').get(2).click();
 
-        let html = await editor.getInnerHtml();
+        let html = await editor.getAttribute("innerHTML");
 
         expect(html).to.be.eql('<p><a href="/profile/user8">@user8</a>&nbsp;</p>');
 
@@ -475,7 +475,7 @@ shared.wysiwygTesting = function(parentSelector) {
 
         $$('.medium-mention li').get(2).click();
 
-        let html = await editor.getInnerHtml();
+        let html = await editor.getAttribute("innerHTML");
 
         expect(html).to.include('1f604.png');
 
@@ -487,13 +487,13 @@ shared.wysiwygTesting = function(parentSelector) {
     });
 
     it('cancel', async () => {
-        let prevHtml = await editor.getInnerHtml();
+        let prevHtml = await editor.getAttribute("innerHTML");
 
         await edit(editor, editorWrapper, 'xxx yyy zzz');
 
         await cancelEdition(editorWrapper);
 
-        let html = await editor.getInnerHtml();
+        let html = await editor.getAttribute("innerHTML");
 
         expect(html).to.be.equal(prevHtml);
     });

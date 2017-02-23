@@ -60,7 +60,7 @@ describe('home', function() {
         });
 
         it('projects menu has the new order', async function() {
-            var firstElementText = await $$('div[tg-dropdown-project-list] ul a span').first().getInnerHtml();
+            var firstElementText = await $$('div[tg-dropdown-project-list] ul a span').first().getAttribute("innerHTML");
 
             expect(firstElementText).to.be.equal(draggedElementText);
         });

@@ -328,11 +328,11 @@ common.outerHtmlChanges = async function(el='body') {
         el = $(el);
     }
 
-    let html = await el.getOuterHtml();
+    let html = await el.getAttribute('outerHTML');
 
     return function() {
        return browser.wait(async function() {
-           let newhtml = await el.getOuterHtml();
+           let newhtml = await el.getAttribute('outerHTML');
 
            return html !== newhtml;
         }, 5000).then(function() {
@@ -346,11 +346,11 @@ common.innerHtmlChanges = async function(el='body') {
         el = $(el);
     }
 
-    let html = await el.getInnerHtml();
+    let html = await el.getAttribute('innerHTML');
 
     return function() {
        return browser.wait(async function() {
-           let newhtml = await el.getOuterHtml();
+           let newhtml = await el.getAttribute('outerHTML');
 
            return html !== newhtml;
         }, 5000).then(function() {

@@ -38,7 +38,7 @@ helper.description = function(){
         },
 
         getInnerHtml: async function(text){
-            let html = await el.$(".wysiwyg.editable").getInnerHtml();
+            let html = await el.$(".wysiwyg.editable").getAttribute("innerHTML");
             return html;
         },
 
@@ -109,7 +109,7 @@ helper.statusSelector = function() {
             return this.getSelectedStatus();
         },
         getSelectedStatus: async function(){
-            return el.$$('.detail-status-inner .e2e-status').first().getInnerHtml();
+            return el.$$('.detail-status-inner .e2e-status').first().getAttribute("innerHTML");
         }
     };
 
