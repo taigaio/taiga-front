@@ -18,17 +18,18 @@ describe('custom-fields', function() {
     describe('create custom fields', function() {
           describe('epics', function() {
               let typeIndex = 0;
+              let timestamp = new Date().getTime();
 
               it('create', async function() {
                   let oldCountCustomFields = await customFieldsHelper.getCustomFiledsByType(typeIndex).count();
 
-                  await customFieldsHelper.create(typeIndex, 'test1-text', 'desc1', 1);
+                  await customFieldsHelper.create(typeIndex, 'test1-text'+timestamp, 'desc1', 1);
 
                   // debounce :(
                   await utils.notifications.success.open();
                   await browser.sleep(2000);
 
-                  await customFieldsHelper.create(typeIndex, 'test1-multi', 'desc1', 3);
+                  await customFieldsHelper.create(typeIndex, 'test1-multi'+timestamp, 'desc1', 3);
 
                   // debounce :(
                   await utils.notifications.success.open();
@@ -40,7 +41,7 @@ describe('custom-fields', function() {
               });
 
               it('edit', async function() {
-                  customFieldsHelper.edit(typeIndex, 0, 'edit', 'desc2', 2);
+                  customFieldsHelper.edit(typeIndex, 0, 'edit'+timestamp, 'desc2', 2);
 
                   let open = await utils.notifications.success.open();
 
@@ -74,17 +75,18 @@ describe('custom-fields', function() {
 
         describe('userstories', function() {
             let typeIndex = 1;
+            let timestamp = new Date().getTime();
 
             it('create', async function() {
                 let oldCountCustomFields = await customFieldsHelper.getCustomFiledsByType(typeIndex).count();
 
-                await customFieldsHelper.create(typeIndex, 'test1-text', 'desc1', 1);
+                await customFieldsHelper.create(typeIndex, 'test1-text'+timestamp, 'desc1', 1);
 
                 // debounce :(
                 await utils.notifications.success.open();
                 await browser.sleep(2000);
 
-                await customFieldsHelper.create(typeIndex, 'test1-multi', 'desc1', 3);
+                await customFieldsHelper.create(typeIndex, 'test1-multi'+timestamp, 'desc1', 3);
 
                 // debounce :(
                 await utils.notifications.success.open();
@@ -96,7 +98,7 @@ describe('custom-fields', function() {
             });
 
             it('edit', async function() {
-                await customFieldsHelper.edit(typeIndex, 0, 'edit', 'desc2', 1);
+                await customFieldsHelper.edit(typeIndex, 0, 'edit'+timestamp, 'desc2', 1);
 
                 let open = await utils.notifications.success.open();
 
@@ -130,15 +132,16 @@ describe('custom-fields', function() {
 
         describe('tasks', function() {
             let typeIndex = 2;
+            let timestamp = new Date().getTime();
 
             it('create', async function() {
                 let oldCountCustomFields = await customFieldsHelper.getCustomFiledsByType(typeIndex).count();
-                await customFieldsHelper.create(typeIndex, 'test1-text', 'desc1', 1);
+                await customFieldsHelper.create(typeIndex, 'test1-text'+timestamp, 'desc1', 1);
                 // debounce :(
                 await utils.notifications.success.open();
                 await browser.sleep(2500);
 
-                await customFieldsHelper.create(typeIndex, 'test1-multi', 'desc1', 3);
+                await customFieldsHelper.create(typeIndex, 'test1-multi'+timestamp, 'desc1', 3);
                 // debounce :(
                 await utils.notifications.success.open();
                 await browser.sleep(2500);
@@ -149,7 +152,7 @@ describe('custom-fields', function() {
             });
 
             it('edit', async function() {
-                customFieldsHelper.edit(typeIndex, 0, 'edit', 'desc2', 2);
+                customFieldsHelper.edit(typeIndex, 0, 'edit'+timestamp, 'desc2', 2);
 
                 let open = await utils.notifications.success.open();
 
@@ -183,17 +186,18 @@ describe('custom-fields', function() {
 
         describe('issues', function() {
             let typeIndex = 3;
+            let timestamp = new Date().getTime();
 
             it('create', async function() {
                 let oldCountCustomFields = await customFieldsHelper.getCustomFiledsByType(typeIndex).count();
 
-                await customFieldsHelper.create(typeIndex, 'test1-text', 'desc1', 1);
+                await customFieldsHelper.create(typeIndex, 'test1-text'+timestamp, 'desc1', 1);
 
                 // debounce :(
                 await utils.notifications.success.open();
                 await browser.sleep(2000);
 
-                await customFieldsHelper.create(typeIndex, 'test1-multi', 'desc1', 3);
+                await customFieldsHelper.create(typeIndex, 'test1-multi'+timestamp, 'desc1', 3);
 
                 // debounce :(
                 await utils.notifications.success.open();
@@ -205,7 +209,7 @@ describe('custom-fields', function() {
             });
 
             it('edit', async function() {
-                customFieldsHelper.edit(typeIndex, 0, 'edit', 'desc2', 2);
+                customFieldsHelper.edit(typeIndex, 0, 'edit'+timestamp, 'desc2', 2);
 
                 let open = await utils.notifications.success.open();
 
