@@ -47,7 +47,7 @@ describe('auth', function() {
 
             let url = await browser.getCurrentUrl();
 
-            expect(url).to.be.equal(browser.params.glob.host + 'login?next=' + encodeURIComponent('/' + path));
+            expect(url).to.be.equal(browser.params.glob.host + 'login?unauthorized&next=' + encodeURIComponent('/' + path));
         });
 
         it("login redirect to the previous one", async function() {
