@@ -476,7 +476,7 @@ describe('backlog', function() {
 
             expect(sprintCount).is.below(newSprintCount);
         });
-        it.only('hide forecasting if no velocity', async function() {
+        it('hide forecasting if no velocity', async function() {
             browser.get(browser.params.glob.host + 'project/project-5/backlog');
             await utils.common.waitLoader();
 

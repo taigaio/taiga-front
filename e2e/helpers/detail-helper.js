@@ -12,7 +12,12 @@ helper.title = function() {
         },
 
         setTitle: function(title) {
-            el.$('.e2e-detail-edit').click();
+            browser
+                .actions()
+                .mouseMove(el.$('.e2e-detail-edit'))
+                .click()
+                .perform();
+
             el.$('.e2e-title-input').clear().sendKeys(title);
         },
 

@@ -23,16 +23,21 @@
 ###
 
 class WysiwygCodeHightlighterService
-    constructor: () ->
-        if !@.languages
-            @.loadLanguages()
+    getLanguages: () ->
+        return new Promise (resolve, reject) =>
+            if @.languages
+                resolve(@.languages)
+            else if @.loadPromise
+                @.loadPromise.then () => resolve(@.languages)
+            else
+                @.loadPromise = $.getJSON("/#{window._version}/prism/prism-languages.json").then (_languages_) =>
+                    @.loadPromise = null
+                    @.languages = _.map _languages_, (it) ->
+                        it.url = "/#{window._version}/prism/" + it.file
 
-    loadLanguages: () ->
-        $.getJSON("/#{window._version}/prism/prism-languages.json").then (_languages_) =>
-            @.languages = _.map _languages_, (it) ->
-                it.url = "/#{window._version}/prism/" + it.file
+                        return it
 
-                return it
+                    resolve(@.languages)
 
     getLanguageInClassList: (classes) ->
         lan = _.find @.languages, (it) ->
@@ -41,123 +46,6 @@ class WysiwygCodeHightlighterService
 
         return if lan then lan.name else null
 
-    addCodeLanguageSelectors: (mediumInstance) ->
-        $(mediumInstance.elements[0]).find('code').each (index, code) =>
-            if !code.classList.contains('has-code-lan-selector')
-                code.classList.add('has-code-lan-selector') # prevent multi instanciate
-
-                currentLan = @.getLanguageInClassList(code.classList)
-                code.parentNode.classList.add('language-' + currentLan)
-
-                id = new Date().getTime()
-
-                text = document.createTextNode(currentLan || 'text')
-
-                tab = document.createElement('div')
-                tab.appendChild(text)
-                tab.addEventListener 'click', () =>
-                    @.searchLanguage tab, (lan) =>
-                        if lan
-                            tab.innerText = lan
-                            @.updatePositionCodeTab(code.parentElement, tab)
-
-                            languageClass = _.find code.classList, (className) ->
-                                return className && className.indexOf('language-') != -1
-
-                            if languageClass
-                                code.classList.remove(languageClass.replace('language-', ''))
-                                code.classList.remove(languageClass)
-
-                            code.classList.add('language-' + lan)
-                            code.classList.add(lan)
-
-                document.body.appendChild(tab)
-
-                code.dataset.tab = tab
-
-                if !code.dataset.tabId
-                    code.dataset.tabId = id
-                    code.classList.add(id)
-
-                tab.dataset.tabId = code.dataset.tabId
-
-                tab.classList.add('code-language-selector') # styles
-                tab.classList.add('medium-' + mediumInstance.id) # used to delete
-
-                @.updatePositionCodeTab(code.parentElement, tab)
-
-    removeCodeLanguageSelectors: (mediumInstance) ->
-        return if !mediumInstance || !mediumInstance.elements
-
-        $(mediumInstance.elements[0]).find('code').each (index, code) ->
-            $(code).removeClass('has-code-lan-selector')
-
-        $('.medium-' + mediumInstance.id).remove()
-
-    updatePositionCodeTab: (node, tab) ->
-        preRects = node.getBoundingClientRect()
-
-        tab.style.top = (preRects.top + $(window).scrollTop()) + 'px'
-        tab.style.left = (preRects.left + preRects.width - tab.offsetWidth) + 'px'
-
-    getCodeLanHTML: (filter = '') ->
-        template = _.template("""
-        <% _.forEach(lans, function(lan) { %>
-          <li><%- lan %></li><% });
-        %>
-        """);
-
-        filteresLans = _.map @.languages, (it) -> it.name
-
-        if filter.length
-            filteresLans = _.filter filteresLans, (it) ->
-                return it.indexOf(filter) != -1
-
-        return template({ 'lans': filteresLans });
-
-    searchLanguage: (tab, cb) ->
-        search = document.createElement('div')
-
-        search.className = 'code-language-search'
-
-        preRects = tab.getBoundingClientRect()
-        search.style.top = (preRects.top + $(window).scrollTop() + preRects.height) + 'px'
-        search.style.left = preRects.left + 'px'
-
-        input = document.createElement('input')
-        input.setAttribute('type', 'text')
-
-        ul = document.createElement('ul')
-
-        ul.innerHTML = @.getCodeLanHTML()
-
-        search.appendChild(input)
-        search.appendChild(ul)
-
-        document.body.appendChild(search)
-
-        input.focus()
-
-        close = () ->
-            search.remove()
-            $(document.body).off('.leave-search-codelan')
-
-        clickedInSearchBox = (target) ->
-            return $(search).is(target) || !!$(search).has(target).length
-
-        $(document.body).on 'mouseup.leave-search-codelan', (e) ->
-            if !clickedInSearchBox(e.target)
-                cb(null)
-                close()
-
-        $(input).on 'keyup', (e) =>
-            filter = e.currentTarget.value
-            ul.innerHTML = @.getCodeLanHTML(filter)
-
-        $(ul).on 'click', 'li', (e) ->
-            cb(e.currentTarget.innerText)
-            close()
-
     loadLanguage: (lan) ->
         return new Promise (resolve) ->
             if !Prism.languages[lan]
@@ -165,35 +53,22 @@ class WysiwygCodeHightlighterService
             else
                 resolve()
 
-    removeHightlighter: (element) ->
-        codes = $(element).find('code')
-
-        codes.each (index, code) ->
-            code.innerHTML = code.innerText
-
     # firefox adds br instead of new lines inside <code>
     replaceCodeBrToNl: (code) ->
         $(code).find('br').replaceWith('\n')
 
+     hightlightCode: (code) ->
+        @.replaceCodeBrToNl(code)
+
+        lan = @.getLanguageInClassList(code.classList)
+
+        if lan
+            @.loadLanguage(lan).then () -> Prism.highlightElement(code)
+
     addHightlighter: (element) ->
         codes = $(element).find('code')
 
-        codes.each (index, code) =>
-            @.replaceCodeBrToNl(code)
-
-            lan = @.getLanguageInClassList(code.classList)
-
-            if lan
-                @.loadLanguage(lan).then () -> Prism.highlightElement(code)
-
-    updateCodeLanguageSelector: (mediumInstance) ->
-        $('.medium-' + mediumInstance.id).each (index, tab) =>
-            node = $('.' + tab.dataset.tabId)
-
-            if !node.length
-                tab.remove()
-            else
-                @.updatePositionCodeTab(node.parent()[0], tab)
+        codes.each (index, code) => @.hightlightCode(code)
 
 angular.module("taigaComponents")
     .service("tgWysiwygCodeHightlighterService", WysiwygCodeHightlighterService)

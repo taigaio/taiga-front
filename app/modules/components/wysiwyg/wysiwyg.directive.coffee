@@ -26,36 +26,78 @@ taiga = @.taiga
 bindOnce = @.taiga.bindOnce
 
 Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoader, wysiwygCodeHightlighterService, wysiwygMentionService, analytics) ->
+    removeSelections = () ->
+        if window.getSelection
+            if window.getSelection().empty
+                window.getSelection().empty();
+        else if window.getSelection().removeAllRanges
+            window.getSelection().removeAllRanges()
 
-    isCodeBlockSelected = (range, elm) ->
-        return !!$(range.endContainer).parentsUntil('.editor', 'code').length
+        else if document.selection
+            document.selection.empty()
 
-    refreshCodeBlockHightlight = (elm) ->
-        wysiwygCodeHightlighterService.refreshCodeLanguageSelectors(elm)
+    getRangeCodeBlock = (range) ->
+        return $(range.endContainer).parentsUntil('.editor', 'code')
 
-    removeCodeBlockAndHightlight = (range, elm) ->
-        code = $(range.endContainer).closest('code')[0]
+    isCodeBlockSelected = (range) ->
+        return !!getRangeCodeBlock(range).length
+
+    removeCodeBlockAndHightlight = (selection, mediumInstance) ->
+        if $(selection).is('code')
+            code = selection
+        else
+            code = $(selection).closest('code')[0]
+
         pre = code.parentNode
 
         p = document.createElement('p')
         p.innerText = code.innerText
 
         pre.parentNode.replaceChild(p, pre)
-
-        wysiwygCodeHightlighterService.removeCodeLanguageSelectors(elm)
+        mediumInstance.checkContentChanged(mediumInstance.elements[0])
 
     addCodeBlockAndHightlight = (range, elm) ->
         pre = document.createElement('pre')
         code = document.createElement('code')
 
-        pre.appendChild(code)
+        console.log range.startContainer.parentNode.nextSibling
+
+        if !range.startContainer.parentNode.nextSibling
+            $('<br/>').insertAfter(range.startContainer.parentNode)
+
+        start = range.startContainer.parentNode.nextSibling
+
         code.appendChild(range.extractContents())
-        range.insertNode(pre)
 
-        elm.checkContentChanged()
+        pre.appendChild(code)
 
-        wysiwygCodeHightlighterService.addCodeLanguageSelectors(elm)
+        start.parentNode.insertBefore(pre, start)
 
+        refreshCodeBlocks(elm)
+
+    refreshCodeBlocks = (mediumInstance) ->
+        # clean empty <p> content editable adds it when range.extractContents has been execute it
+        for mainChildren in mediumInstance.elements[0].children
+            if mainChildren && mainChildren.tagName.toLowerCase() == 'p' && !mainChildren.innerText.length
+                mainChildren.parentNode.removeChild(mainChildren)
+
+        preList = mediumInstance.elements[0].querySelectorAll('pre')
+
+        for pre in preList
+            # prevent edit a pre
+            pre.setAttribute('contenteditable', false)
+
+            if pre.nextElementSibling && pre.nextElementSibling.nodeName.toLowerCase() == 'p' && !pre.nextElementSibling.children.length
+                pre.nextElementSibling.appendChild(document.createElement('br'))
+
+            # add p after every pre
+            else if !pre.nextElementSibling || pre.nextElementSibling.nodeName.toLowerCase() != 'p'
+                p = document.createElement('p')
+                p.appendChild(document.createElement('br'))
+
+                pre.parentNode.insertBefore(p, pre.nextSibling)
+
+        mediumInstance.checkContentChanged(mediumInstance.elements[0])
 
     AlignRightButton = MediumEditor.extensions.button.extend({
         name: 'rtl',
@@ -107,9 +149,16 @@ Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoad
             range = MediumEditor.selection.getSelectionRange(self.document)
 
             if isCodeBlockSelected(range, this.base)
-                removeCodeBlockAndHightlight(range, this.base)
+                removeCodeBlockAndHightlight(range.endContainer, this.base)
             else
                 addCodeBlockAndHightlight(range, this.base)
+                removeSelections()
+
+            toolbar = this.base.getExtensionByName('toolbar')
+
+            if toolbar
+                toolbar.hideToolbar()
+
     })
 
     CustomPasteHandler = MediumEditor.extensions.paste.extend({
@@ -141,6 +190,7 @@ Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoad
         mediumInstance = null
         editorMedium = $el.find('.medium')
         editorMarkdown = $el.find('.markdown')
+        codeBlockSelected = null
 
         isEditOnly = !!$attrs.$attr.editonly
         notPersist = !!$attrs.$attr.notPersist
@@ -149,12 +199,47 @@ Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoad
         $scope.editMode = isEditOnly || false
         $scope.mode = $storage.get('editor-mode', 'html')
         $scope.markdown = ''
+        $scope.codeEditorVisible = false
+        $scope.codeLans = []
 
         wysiwygService.loadEmojis()
+
+        wysiwygCodeHightlighterService.getLanguages().then (codeLans) ->
+            $scope.codeLans = codeLans
 
         setHtmlMedium = (markdown) ->
             html = wysiwygService.getHTML(markdown)
             editorMedium.html(html)
+            wysiwygCodeHightlighterService.addHightlighter(mediumInstance.elements[0])
+            refreshCodeBlocks(mediumInstance)
+
+        $scope.saveSnippet = (lan, code) ->
+            $scope.codeEditorVisible = false
+            codeBlockSelected.innerText = code
+            codePre = codeBlockSelected.parentNode
+
+            if lan == 'remove-formating'
+                    codeBlockSelected.className = ''
+                    codePre.className = ''
+
+                    removeCodeBlockAndHightlight(codeBlockSelected, mediumInstance)
+            else if _.trim(code).length
+                if lan
+                    codeBlockSelected.className = 'language-' + lan
+                    codePre.className = 'language-' + lan
+                else
+                    codeBlockSelected.className = ''
+                    codePre.className = ''
+
+                wysiwygCodeHightlighterService.hightlightCode(codeBlockSelected)
+                mediumInstance.checkContentChanged(mediumInstance.elements[0])
+            else
+                codeBlockSelected.parentNode.parentNode.removeChild(codeBlockSelected.parentNode)
+                mediumInstance.checkContentChanged(mediumInstance.elements[0])
+
+            throttleChange()
+
+            return null
 
         $scope.setMode = (mode) ->
             $storage.set('editor-mode', mode)
@@ -191,7 +276,7 @@ Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoad
             if notPersist
                 clean()
             else if $scope.mode == 'html'
-                setHtmlMedium($scope.content)
+                setHtmlMedium($scope.content || null)
 
             $scope.markdown = $scope.content
 
@@ -206,19 +291,6 @@ Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoad
         clean = () ->
             $scope.markdown = ''
             editorMedium.html('')
-
-        refreshExtras = () ->
-            animationFrame.add () ->
-                if $scope.mode == 'html'
-                    if $scope.editMode
-                        wysiwygCodeHightlighterService.addCodeLanguageSelectors(mediumInstance)
-                        wysiwygCodeHightlighterService.removeHightlighter(mediumInstance.elements[0])
-                    else
-                        wysiwygCodeHightlighterService.addHightlighter(mediumInstance.elements[0])
-                        wysiwygCodeHightlighterService.removeCodeLanguageSelectors(mediumInstance)
-                else
-                    wysiwygCodeHightlighterService.removeHightlighter(mediumInstance.elements[0])
-                    wysiwygCodeHightlighterService.removeCodeLanguageSelectors(mediumInstance)
 
         saveEnd = () ->
             $scope.saving  = false
@@ -305,7 +377,6 @@ Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoad
         change = () ->
             if $scope.mode == 'html'
                 updateMarkdownWithCurrentHtml()
-                wysiwygCodeHightlighterService.updateCodeLanguageSelector(mediumInstance)
 
             localSave($scope.markdown)
 
@@ -415,24 +486,6 @@ Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoad
             mediumInstance.subscribe 'editableDrop', (event) ->
                 $scope.onUploadFile({files: event.dataTransfer.files, cb: uploadEnd})
 
-            editorMedium.on 'keydown', (e) ->
-                code = if e.keyCode then e.keyCode else e.which
-                range = MediumEditor.selection.getSelectionRange(document)
-                codeBlock = isCodeBlockSelected(range, document)
-                selection = window.getSelection()
-
-                if code == 13 && !e.shiftKey && selection.focusOffset == _.trimEnd(selection.focusNode.textContent).length
-                    e.preventDefault()
-                    document.execCommand('insertHTML', false, '<p id="last-p"><br/></p>')
-
-                    lastP = $('#last-p').attr('id', '')
-
-                    range = document.createRange()
-                    range.selectNodeContents(lastP[0])
-                    range.collapse(true);
-
-                    MediumEditor.selection.selectRange(document, range)
-
             mediumInstance.subscribe 'editableKeydown', (e) ->
                 code = if e.keyCode then e.keyCode else e.which
 
@@ -452,12 +505,18 @@ Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoad
 
             $scope.editMode = editMode
 
-            $scope.$applyAsync(refreshExtras)
+            $scope.$applyAsync () ->
+                wysiwygCodeHightlighterService.addHightlighter(mediumInstance.elements[0])
+                refreshCodeBlocks(mediumInstance)
 
-            $scope.$watch () ->
-                return $scope.mode + ":" + $scope.editMode
-            , () ->
-                $scope.$applyAsync(refreshExtras)
+        $(editorMedium[0]).on 'dblclick', 'pre', (e) ->
+            $scope.$applyAsync () ->
+                $scope.codeEditorVisible = true
+
+                codeBlockSelected = e.currentTarget.querySelector('code')
+
+                $scope.currentCodeLanguage = wysiwygCodeHightlighterService.getLanguageInClassList(codeBlockSelected.classList)
+                $scope.code = codeBlockSelected.innerText
 
         unwatch = $scope.$watch 'content', (content) ->
             if !_.isUndefined(content)
@@ -466,7 +525,7 @@ Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoad
                 if !mediumInstance && isDraft()
                     $scope.editMode = true
 
-                if $scope.markdown == content
+                if ($scope.markdown.length || content.length) && $scope.markdown == content
                     return
 
                 content = getCurrentContent()
@@ -487,7 +546,6 @@ Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoad
 
         $scope.$on "$destroy", () ->
             if mediumInstance
-                wysiwygCodeHightlighterService.removeCodeLanguageSelectors(mediumInstance)
                 mediumInstance.destroy()
 
     return {

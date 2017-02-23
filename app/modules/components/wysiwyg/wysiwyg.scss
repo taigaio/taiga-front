@@ -90,12 +90,12 @@
     }
     pre:not([class*="language-"]) {
         @include font-size(small);
-        background: lighten($grayer, 10%);
+        background: $code-bg;
         color: $whitish;
         direction: ltr;
         font-family: 'courier new', 'monospace';
         line-height: 1.4rem;
-        margin-bottom: 1rem;
+        margin-bottom: .5rem;
         overflow: auto;
         padding: 1rem;
         unicode-bidi: embed;
@@ -165,6 +165,12 @@
 tg-wysiwyg {
     display: flex;
     margin-bottom: 2rem;
+    div[contenteditable="true"] *:last-child {
+        margin-bottom: 0;
+    }
+    pre {
+        cursor: pointer;
+    }
     .outdated {
         color: $red;
     }
@@ -191,6 +197,7 @@ tg-wysiwyg {
     .medium-editor-placeholder,
     .markdown-editor-placeholder {
         color: $gray-light;
+        overflow: visible;
         padding-left: 1rem;
         &::after { // overwrite medium css
             color: $gray-light;
