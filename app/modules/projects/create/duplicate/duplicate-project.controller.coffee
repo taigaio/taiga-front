@@ -44,7 +44,7 @@ class DuplicateProjectController
     refreshReferenceProject: (slug) ->
         @projectsService.getProjectBySlug(slug).then (project) =>
             @.referenceProject = project
-            @.members = project.get('members')
+            @.members = project.get('members').filter (it) => return it.get('id') != @.user.get('id')
             @.invitedMembers = @.members.map (it) -> return it.get('id')
             @.checkUsersLimit()
 
@@ -63,6 +63,7 @@ class DuplicateProjectController
     submit: () ->
         projectId = @.referenceProject.get('id')
         data = @.projectForm
+        data.users = @.invitedMembers
 
         @.formSubmitLoading = true
         @projectsService.duplicate(projectId, data).then (newProject) =>

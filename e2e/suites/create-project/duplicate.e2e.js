@@ -20,6 +20,7 @@ describe('create-duplicate-delete project', function() {
         let projectName = 'duplicated-project-' + Date.now();
         newProjectScreen.fillNameAndDescription(projectName, 'Lorem Ipsum')
         await newProjectScreen.createProject();
+        await browser.waitForAngular();
         let url = await browser.getCurrentUrl();
         expect(url).to.be.equal(browser.params.glob.host + 'project/admin-' + projectName + '/');
     });
