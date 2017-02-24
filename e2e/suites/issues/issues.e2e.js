@@ -13,7 +13,7 @@ describe('issues list', function() {
     before(async function() {
         browser.get(browser.params.glob.host + 'project/project-3/issues');
 
-        await utils.common.waitLoader();
+        await browser.waitForAngular();
 
         utils.common.takeScreenshot('issues', 'issues');
     });
@@ -95,13 +95,10 @@ describe('issues list', function() {
 
         // test every column order
         for(let i = 0; i < 7; i++) {
-            let htmlChanges = await utils.common.outerHtmlChanges(table);
             issuesHelper.clickColumn(i);
-            await htmlChanges();
-
-            htmlChanges = await utils.common.outerHtmlChanges(table);
+            await browser.waitForAngular();
             issuesHelper.clickColumn(i);
-            await htmlChanges();
+            await browser.waitForAngular();
         }
     });
 
