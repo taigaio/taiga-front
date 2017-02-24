@@ -491,7 +491,8 @@ common.createProject = async function(members = []) {
     let projectDescription = 'description ' + Date.now();
     await newProjectScreen.fillNameAndDescription(projectName, projectDescription);
     await newProjectScreen.createProject();
-    let url = await browser.getCurrentUrl();
+    let projectUrl = await browser.getCurrentUrl()
+    let projectSlug = projectUrl.split('/')[4];
 
     if (members.length) {
         var adminMembershipsHelper = require('../helpers').adminMemberships;
@@ -517,6 +518,7 @@ common.createProject = async function(members = []) {
 
         await newMemberLightbox.waitClose();
     }
+    return projectSlug;
 };
 
 common.getTransferProjectToken = function(projectSlug, username) {
