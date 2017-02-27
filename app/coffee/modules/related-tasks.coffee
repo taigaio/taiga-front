@@ -34,6 +34,8 @@ RelatedTaskRowDirective = ($repo, $compile, $confirm, $rootscope, $loading, $tem
     templateEdit = $template.get("task/related-task-row-edit.html", true)
 
     link = ($scope, $el, $attrs, $model) ->
+        @childScope = $scope.$new()
+
         saveTask = debounce 2000, (task) ->
             task.subject = $el.find('input').val()
 
@@ -53,7 +55,10 @@ RelatedTaskRowDirective = ($repo, $compile, $confirm, $rootscope, $loading, $tem
             return promise
 
         renderEdit = (task) ->
-            $el.html($compile(templateEdit({task: task}))($scope))
+            @childScope.$destroy()
+            @childScope = $scope.$new()
+            $el.off()
+            $el.html($compile(templateEdit({task: task}))(childScope))
 
             $el.find(".task-name input").val(task.subject)
 
@@ -72,6 +77,8 @@ RelatedTaskRowDirective = ($repo, $compile, $confirm, $rootscope, $loading, $tem
                 renderView($model.$modelValue)
 
         renderView = (task) ->
+            @childScope.$destroy()
+            @childScope = $scope.$new()
             $el.off()
 
             perms = {
@@ -79,7 +86,7 @@ RelatedTaskRowDirective = ($repo, $compile, $confirm, $rootscope, $loading, $tem
                 delete_task: $scope.project.my_permissions.indexOf("delete_task") != -1
             }
 
-            $el.html($compile(templateView({task: task, perms: perms}))($scope))
+            $el.html($compile(templateView({task: task, perms: perms}))(childScope))
 
             $el.on "click", ".edit-task", ->
                 renderEdit($model.$modelValue)
