@@ -87,7 +87,11 @@ describe "DuplicateProjectController", ->
             }
         ])
 
-
+        ctrl.user = Immutable.fromJS([
+            {
+                id: 1
+            }
+        ])
 
         ctrl.canCreatePublicProjects = mocks.currentUserService.canCreatePublicProjects()
         ctrl.canCreatePrivateProjects = mocks.currentUserService.canCreatePublicProjects()
@@ -125,7 +129,7 @@ describe "DuplicateProjectController", ->
 
         ctrl.refreshReferenceProject(slug).then () ->
             expect(ctrl.referenceProject).to.be.equal(project)
-            expect(ctrl.members).to.be.equal(project.get('members'))
+            expect(ctrl.members.toJS()).to.be.eql(project.get('members').toJS())
             expect(ctrl.invitedMembers.toJS()).to.be.eql([1, 2, 3])
 
     it 'check users limits', () ->
