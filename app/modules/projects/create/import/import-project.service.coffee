@@ -39,6 +39,7 @@ class ImportProjectService extends taiga.Service
             if result.status == 202 # Async mode
                 title = @translate.instant('PROJECT.IMPORT.ASYNC_IN_PROGRESS_TITLE')
                 message = @translate.instant('PROJECT.IMPORT.ASYNC_IN_PROGRESS_MESSAGE')
+                @location.path(@tgNavUrls.resolve('home'))
                 @confirm.success(title, message)
             else # result.status == 201 # Sync mode
                 ctx = {project: result.data.slug}
