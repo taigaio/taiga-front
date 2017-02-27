@@ -939,7 +939,7 @@
             "DUPLICATE": "Duplicate project",
             "DUPLICATE_DESC": "Start clean and keep your configuration",
             "IMPORT": "Import project",
-            "IMPORT_DESC": "Import from Taiga, Trello, Jira, Github...",
+            "IMPORT_DESC": "Import your project from multiple platforms into Taiga",
             "INVITE": "Invite to the project",
             "SOLO_PROJECT": "You'll be alone in this project",
             "INVITE_LATER": "(You'll be able to invite more members later)",
@@ -972,6 +972,7 @@
         },
         "IMPORT": {
             "TITLE": "Import Project",
+            "DESCRIPTION": "Import your project from multiple platforms into Taiga",
             "IMPORT": "Import",
             "ARCHIVED": "Archived",
             "ARCHIVED_DESCRIPTION": "You have archived projects, Do you want to import your archived projects?",
