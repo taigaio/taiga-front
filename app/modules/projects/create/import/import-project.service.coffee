@@ -34,7 +34,8 @@ class ImportProjectService extends taiga.Service
         return promise.then(@.importSuccess.bind(this), @.importError.bind(this))
 
     importSuccess: (result) ->
-        return @currentUserService.loadProjects().then () =>
+        promise = @currentUserService.loadProjects()
+        promise.then () =>
             if result.status == 202 # Async mode
                 title = @translate.instant('PROJECT.IMPORT.ASYNC_IN_PROGRESS_TITLE')
                 message = @translate.instant('PROJECT.IMPORT.ASYNC_IN_PROGRESS_MESSAGE')
@@ -44,9 +45,11 @@ class ImportProjectService extends taiga.Service
                 @location.path(@tgNavUrls.resolve('project-admin-project-profile-details', ctx))
                 msg = @translate.instant('PROJECT.IMPORT.SYNC_SUCCESS')
                 @confirm.notify('success', msg)
+        return promise
 
     importError: (result) ->
-        return @tgAuth.refresh().then () =>
+        promise = @tgAuth.refresh()
+        promise.then () =>
             restrictionError = @.getRestrictionError(result)
 
             if restrictionError
@@ -63,6 +66,7 @@ class ImportProjectService extends taiga.Service
                     errorMsg = @translate.instant("PROJECT.IMPORT.ERROR_MESSAGE", {error_message: result.data._error_message})
 
                 @confirm.notify("error", errorMsg)
+        return promise
 
     getRestrictionError: (result) ->
         if result.headers

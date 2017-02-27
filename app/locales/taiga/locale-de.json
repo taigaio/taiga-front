@@ -202,9 +202,9 @@
             "CONFIRM_DELETE": "Alle Werte in benutzerdefinierten Feldern werden gelöscht.\n Sind Sie sicher, dass Sie fortfahren wollen?"
         },
         "FILTERS": {
-            "TITLE": "Filter",
             "INPUT_PLACEHOLDER": "Betreff oder Verweis",
             "TITLE_ACTION_FILTER_BUTTON": "suche",
+            "TITLE": "Filter",
             "INPUT_SEARCH_PLACEHOLDER": "Thema oder ref",
             "TITLE_ACTION_SEARCH": "Suche",
             "ACTION_SAVE_CUSTOM_FILTER": "Als Benutzerfilter speichern",
@@ -873,10 +873,8 @@
             "SECTION_TITLE": "Ihre Projekte",
             "PLACEHOLDER_SEARCH": "Suchen...",
             "ACTION_CREATE_PROJECT": "Projekt anlegen",
-            "ACTION_IMPORT_PROJECT": "Projekt importieren",
             "MANAGE_PROJECTS": "Projekte verwalten",
             "TITLE_CREATE_PROJECT": "Projekt anlegen",
-            "TITLE_IMPORT_PROJECT": "Projekt importieren",
             "TITLE_PRVIOUS_PROJECT": "Frühere Projekte anzeigen",
             "TITLE_NEXT_PROJECT": "Weitere Projekte zeigen",
             "HELP_TITLE": "Taiga Support Seite",
@@ -902,44 +900,6 @@
             "DISCOVER": "Entdecken",
             "ACTION_REORDER": "Benutzen Sie Drag & Drop zum neuen Ordnen"
         },
-        "IMPORT": {
-            "TITLE": "Projekt importieren",
-            "UPLOADING_FILE": "Exportdatei wird hochgeladen",
-            "DESCRIPTION": "Dieser Vorgang kann etwas dauern. Bitte schliessen Sie das Fenster nicht!",
-            "ASYNC_IN_PROGRESS_TITLE": "Unsere Helferlein importieren Ihr Projekt",
-            "ASYNC_IN_PROGRESS_MESSAGE": "Dieser Vorgang könnte ein paar Minuten benötigen <br/> Nach Fertigstellung benachrichtigen wir Sie per E-Mail.",
-            "UPLOAD_IN_PROGRESS_MESSAGE": "Hochgeladen {{uploadedSize}} von {{totalSize}}",
-            "ERROR": "Unsere Helferlein haben Probleme beim Importieren Ihrer Daten. Bitte versuchen Sie es erneut.",
-            "ERROR_TOO_MANY_REQUEST": "Entschuldigung, unsere Helferlein sind zur Zeit sehr beschäftigt. Bitte versuchen Sie es in ein paar Minuten erneut.",
-            "ERROR_MESSAGE": "Unsere Helferlein haben Probleme beim Importieren Ihrer Datei: {{error_message}}",
-            "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) ist zu schwierig für unsere Helferlein, versuchen Sie es bitte mit einer kleineren Datei als ({{maxFileSize}})",
-            "SYNC_SUCCESS": "Ihr Projekt wurde erfolgreich importiert",
-            "PROJECT_RESTRICTIONS": {
-                "PROJECT_MEMBERS_DESC": "Das Projekt, dass Sie importieren möchten, hat {{members}} Mitglieder. Leider erlaubt ihr derzeitiger Plan nicht mehr als {{max_memberships}} Mitglieder pro Projekt. Wenn Sie diese Grenze erhöhen möchten, kontaktieren Sie bitte den Administrator.",
-                "PRIVATE_PROJECTS_SPACE": {
-                    "TITLE": "Leider erlaubt Ihr derzeitiger Plan keine weiteren privaten Projekte anzulegen.",
-                    "DESC": "Das Projekt, das Sie versuchen zu importieren, ist privat. Leider erlaubt Ihr derzeitiger Plan keine weiteren privaten Projekte hinzuzufügen."
-                },
-                "PUBLIC_PROJECTS_SPACE": {
-                    "TITLE": "Leider erlaubt Ihr derzeitiger Plan keine weiteren öffentlichen Projekte anzulegen.",
-                    "DESC": "Das Projekt, das Sie versuchen zu importieren, ist öffentlich. Leider erlaubt Ihr derzeitiger Plan keine weiteren öffentlichen Projekte hinzuzufügen."
-                },
-                "PRIVATE_PROJECTS_MEMBERS": {
-                    "TITLE": "Ihr derzeitiger Plan erlaubt maximal {{max_memberships}} Mitglieder pro privatem Projekt"
-                },
-                "PUBLIC_PROJECTS_MEMBERS": {
-                    "TITLE": "Ihr derzeitiger Plan erlaubt maximal {{max_memberships}} Mitglieder pro öffentlichem Projekt"
-                },
-                "PRIVATE_PROJECTS_SPACE_MEMBERS": {
-                    "TITLE": "Leider erlaubt Ihr derzeitiger Plan keine weiteren privaten Projekte anzulegen oder eine Erhöhung von mehr als {{max_memberships}} Mitglieder pro privatem Projekt",
-                    "DESC": "Das Projekt, dass Sie importieren möchten, ist privat und hat {{members}} Mitglieder."
-                },
-                "PUBLIC_PROJECTS_SPACE_MEMBERS": {
-                    "TITLE": "Leider erlaubt Ihr derzeitiger Plan keine weiteren öffentlichen Projekte anzulegen oder eine Erhöhung von mehr als {{max_memberships}} Mitglieder pro öffentlichem Projekt",
-                    "DESC": "Das Projekt, dass Sie importieren möchten, ist öffentlich und hat mehr als {{members}} Mitglieder."
-                }
-            }
-        },
         "LIKE_BUTTON": {
             "LIKE": "Gefällt mir",
             "LIKED": "Gefällt mir",
@@ -964,6 +924,160 @@
         "CONTACT_BUTTON": {
             "CONTACT_TITLE": "Contact the project team",
             "CONTACT_BUTTON": "Contact the project"
+        },
+        "CREATE": {
+            "TITLE": "Projekt erstellen",
+            "FRESH": "Frisch und sauber. Wie aufregend!",
+            "CHOOSE_TEMPLATE": "Which template fits your project better?",
+            "TEMPLATE_SCRUM": "Scrum",
+            "TEMPLATE_SCRUM_DESC": "Prioritize and solve your tasks in short time cycles.",
+            "TEMPLATE_SCRUM_LONGDESC": "Scrum is an iterative and incremental agile software development methodology for managing product development.\nThe product backlog is what will ultimately be delivered, ordered into the sequence in which it should be delivered. Product Backlogs are broken into manageable, executable chunks named sprints. Every certain amount of time the team initiates a new sprint and commits to deliver a certain number of user stories from the backlog, in accordance with their skills, abilities and resources. The project advances as the backlog becomes depleted.",
+            "TEMPLATE_KANBAN": "Kanban",
+            "TEMPLATE_KANBAN_DESC": "Keep a constant workflow on independent tasks",
+            "TEMPLATE_KANBAN_LONGDESC": "The Kanban methodology is used to divide project development (any sort of project) into stages.\nA kanban card is like an index card or post-it note that details every task (or user story) in a project that needs to be completed. The Kanban board is used to move each card from one state of completion to the next and in so doing, helps track progress.",
+            "DUPLICATE": "Duplicate project",
+            "DUPLICATE_DESC": "Start clean and keep your configuration",
+            "IMPORT": "Projekt importieren",
+            "IMPORT_DESC": "Import your project from multiple platforms into Taiga",
+            "INVITE": "Invite to the project",
+            "SOLO_PROJECT": "You'll be alone in this project",
+            "INVITE_LATER": "(You'll be able to invite more members later)",
+            "BACK": "Zurück",
+            "MAX_PRIVATE_PROJECTS": "Unfortunately, You've reached the maximum number of private projects.\nIf you would like to increase the current limit please contact the administrator.",
+            "MAX_PUBLIC_PROJECTS": "Unfortunately, You've reached the maximum number of public projects.\nIf you would like to increase the current limit please contact the administrator.",
+            "PUBLIC_PROJECT": "Öffentliches Projekt",
+            "PRIVATE_PROJECT": "Privates Projekt",
+            "MAX_MEMBERS": "Unfortunately, your current plan allows for a maximum of {{max_memberships}} members per project.\n Unselect some members or contact the administrator."
+        },
+        "COMMON": {
+            "DETAILS": "New project details",
+            "PROJECT_TITLE": "Project Name",
+            "PROJECT_DESCRIPTION": "Project Description"
+        },
+        "DUPLICATE": {
+            "TITLE": "Duplicate Project",
+            "DESCRIPTION": "Start clean and keep your configuration",
+            "SELECT_PLACEHOLDER": "Choose an existing project to duplicate",
+            "DETAILS": "New project details",
+            "CREATE_PROJECT_TEXT": "Frisch und sauber. Wie aufregend!",
+            "CHOOSE_TEMPLATE_TITLE": "Mehr Infos über Projekt-Templates",
+            "CHOOSE_TEMPLATE_INFO": "Weitere Infos",
+            "PROJECT_DETAILS": "Projekt Details",
+            "PUBLIC_PROJECT": "Öffentliches Projekt",
+            "PRIVATE_PROJECT": "Privates Projekt",
+            "CREATE_PROJECT": "Projekt anlegen",
+            "CHANGE_PLANS": "Änderungs-Pläne"
+        },
+        "IMPORT": {
+            "TITLE": "Import Project",
+            "DESCRIPTION": "Import your project from multiple platforms into Taiga",
+            "ASYNC_IN_PROGRESS_TITLE": "Unsere Helferlein importieren Ihr Projekt",
+            "ASYNC_IN_PROGRESS_MESSAGE": "Dieser Vorgang könnte ein paar Minuten benötigen <br/> Nach Fertigstellung benachrichtigen wir Sie per E-Mail.",
+            "UPLOAD_IN_PROGRESS_MESSAGE": "Hochgeladen {{uploadedSize}} von {{totalSize}}",
+            "ERROR": "Unsere Helferlein haben Probleme beim Importieren Ihrer Daten. Bitte versuchen Sie es erneut.",
+            "ERROR_TOO_MANY_REQUEST": "Entschuldigung, unsere Helferlein sind zur Zeit sehr beschäftigt. Bitte versuchen Sie es in ein paar Minuten erneut.",
+            "ERROR_MESSAGE": "Unsere Helferlein haben Probleme beim Importieren Ihrer Datei: {{error_message}}",
+            "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) ist zu schwierig für unsere Helferlein, versuchen Sie es bitte mit einer kleineren Datei als ({{maxFileSize}})",
+            "SYNC_SUCCESS": "Ihr Projekt wurde erfolgreich importiert",
+            "IMPORT": "Import",
+            "ARCHIVED": "Archiviert",
+            "ARCHIVED_DESCRIPTION": "You have archived projects, Do you want to import your archived projects?",
+            "WHO_IS": "Their tasks will be assigned to ...",
+            "WRITE_EMAIL": "Or if you want, write the email that their use in Taiga",
+            "SEARCH_CONTACT": "Or if you want, search in your contacts",
+            "WRITE_EMAIL_LABEL": "Write the email that their use in Taiga",
+            "EMAIL_NOT_FOUND": "We did not find any users with that email",
+            "ACCEEDE": "Acceede",
+            "PROJECT_MEMBERS": "Projektmitglieder",
+            "PROCESS_DESCRIPTION": "Tell us who from Taiga you want to assign the tasks of {{platform}}",
+            "MATCH": "Is <strong>{{user_external}}</strong> the same person as <strong>{{user_internal}}</strong>?",
+            "CHOOSE": "Select user",
+            "LINKS": "Links with {{platform}}",
+            "LINKS_DESCRIPTION": "Do you want to keep the link of each item with the original {{platform}} card?",
+            "WARNING_MAIL_USER": "Note that if the user does not have a Taiga account we will not be able to assign the tasks to him.",
+            "ASSIGN": "Zuweisen",
+            "PROJECT_RESTRICTIONS": {
+                "PROJECT_MEMBERS_DESC_PRIVATE": "The project you are trying to import has {{members}} members including you, unfortunately, your current plan allows for a maximum of {{max_memberships}} members per private project. If you would like to increase that limit please contact the administrator.",
+                "PROJECT_MEMBERS_DESC_PUBLIC": "The project you are trying to import has {{members}} members including you, unfortunately, your current plan allows for a maximum of {{max_memberships}} members per public project. If you would like to increase that limit please contact the administrator.",
+                "ACCOUNT_ALLOW_MEMBERS": "Your account only allows {{members}} members",
+                "PRIVATE_PROJECTS_SPACE": {
+                    "TITLE": "Leider erlaubt Ihr derzeitiger Plan keine weiteren privaten Projekte anzulegen.",
+                    "DESC": "Das Projekt, das Sie versuchen zu importieren, ist privat. Leider erlaubt Ihr derzeitiger Plan keine weiteren privaten Projekte hinzuzufügen."
+                },
+                "PUBLIC_PROJECTS_SPACE": {
+                    "TITLE": "Leider erlaubt Ihr derzeitiger Plan keine weiteren öffentlichen Projekte anzulegen.",
+                    "DESC": "Das Projekt, das Sie versuchen zu importieren, ist öffentlich. Leider erlaubt Ihr derzeitiger Plan keine weiteren öffentlichen Projekte hinzuzufügen."
+                },
+                "PRIVATE_PROJECTS_MEMBERS": {
+                    "TITLE": "Ihr derzeitiger Plan erlaubt maximal {{max_memberships}} Mitglieder pro privatem Projekt"
+                },
+                "PUBLIC_PROJECTS_MEMBERS": {
+                    "TITLE": "Ihr derzeitiger Plan erlaubt maximal {{max_memberships}} Mitglieder pro öffentlichem Projekt"
+                },
+                "PRIVATE_PROJECTS_SPACE_MEMBERS": {
+                    "TITLE": "Leider erlaubt Ihr derzeitiger Plan keine weiteren privaten Projekte anzulegen oder eine Erhöhung von mehr als {{max_memberships}} Mitglieder pro privatem Projekt",
+                    "DESC": "Das Projekt, dass Sie importieren möchten, ist privat und hat {{members}} Mitglieder."
+                },
+                "PUBLIC_PROJECTS_SPACE_MEMBERS": {
+                    "TITLE": "Leider erlaubt Ihr derzeitiger Plan keine weiteren öffentlichen Projekte anzulegen oder eine Erhöhung von mehr als {{max_memberships}} Mitglieder pro öffentlichem Projekt",
+                    "DESC": "Das Projekt, dass Sie importieren möchten, ist öffentlich und hat mehr als {{members}} Mitglieder."
+                }
+            },
+            "IN_PROGRESS": {
+                "TITLE": "Projekt importieren",
+                "DESCRIPTION": "Dieser Vorgang kann etwas dauern. Bitte schliessen Sie das Fenster nicht!"
+            },
+            "WARNING": {
+                "TITLE": "Some taks will be unassigned",
+                "DESCRIPTION": "There are still unidentified people. The cards assigned to these people will remain unassigned. Check all the contacts to not lose that information.",
+                "CHECK": "Check contacts"
+            },
+            "TAIGA": {
+                "SELECTOR": "Import your Taiga project"
+            },
+            "TRELLO": {
+                "TITLE": "Trello",
+                "SELECTOR": "Import your Trello boards into Taiga",
+                "CHOOSE_BOARD": "Choose board that you want to import"
+            },
+            "GITHUB": {
+                "TITLE": "Github",
+                "SELECTOR": "Import your Github project issues",
+                "CHOOSE_BOARD": "Find the project you want to import",
+                "PROJECT_MEMBERS": "Projektmitglieder",
+                "HOW_DO_YOU_WANT_TO_IMPORT": "How do you want to import your issues into Taiga?",
+                "KANBAN_PROJECT": "As user stories in a kanban project",
+                "KANBAN_PROJECT_DESCRIPTION": "After that you can enable scrum with backlog.",
+                "SCRUM_PROJECT": "As user stories in a scrum project",
+                "SCRUM_PROJECT_DESCRIPTION": "After that you can enable kanban mode.",
+                "ISSUES_PROJECT": "As issues",
+                "ISSUES_PROJECT_DESCRIPTION": "You will not able to use your issues in kanban or scrum mode. You will be able to enable kanban or scrum for new user stories"
+            },
+            "ASANA": {
+                "TITLE": "Asana",
+                "SELECTOR": "Import your Asana project and choose how to manage it",
+                "CHOOSE_BOARD": "Choose project that you want to import",
+                "KANBAN_PROJECT": "Kanban",
+                "SCRUM_PROJECT": "Scrum",
+                "CREATE_AS_SCRUM_DESCRIPTION": "The tasks and sub-tasks of your project will be created as Taiga user stories and tasks.",
+                "CREATE_AS_KANBAN_DESCRIPTION": "The tasks and sub-tasks of your project will be created as Taiga user stories and tasks.",
+                "PROJECT_MEMBERS": "Projektmitglieder"
+            },
+            "JIRA": {
+                "TITLE": "Jira",
+                "CHOOSE_PROJECT": "Choose project or board that you want to import",
+                "SELECTOR": "Import your Jira project and choose how to manage it",
+                "URL": "Your Jira URL",
+                "PROJECT_MEMBERS": "Projektmitglieder",
+                "KANBAN_PROJECT": "Kanban",
+                "SCRUM_PROJECT": "Scrum",
+                "ISSUES_PROJECT": "Tickets",
+                "CREATE_AS_SCRUM_DESCRIPTION": "The issues and sub-issues of your project will be created as Taiga user stories and tasks.",
+                "CREATE_AS_KANBAN_DESCRIPTION": "The issues and sub-issues of your project will be created as Taiga user stories and tasks.",
+                "CREATE_AS_ISSUES_DESCRIPTION": "What do you want to do with sub-issues from the Jira project? (Taiga doesn't allow sub-issues)",
+                "CREATE_NEW_ISSUES": "Convert sub-issues to new Taiga issues",
+                "NOT_CREATE_NEW_ISSUES": "Do not import sub-issues"
+            }
         }
     },
     "LIGHTBOX": {
@@ -1515,20 +1629,6 @@
             "THEME": "Theme",
             "THEME_DEFAULT": "-- Standard-Theme benutzen --"
         }
-    },
-    "WIZARD": {
-        "SECTION_TITLE_CREATE_PROJECT": "Projekt erstellen",
-        "CREATE_PROJECT_TEXT": "Frisch und sauber. Wie aufregend!",
-        "CHOOSE_TEMPLATE": "Welches Template passt am besten zu Ihrem Projekt?",
-        "CHOOSE_TEMPLATE_TITLE": "Mehr Infos über Projekt-Templates",
-        "CHOOSE_TEMPLATE_INFO": "Weitere Infos",
-        "PROJECT_DETAILS": "Projekt Details",
-        "PUBLIC_PROJECT": "Öffentliches Projekt",
-        "PRIVATE_PROJECT": "Privates Projekt",
-        "CREATE_PROJECT": "Projekt anlegen",
-        "MAX_PRIVATE_PROJECTS": "Sie haben die maximale Anzahl privater Projekte erreicht",
-        "MAX_PUBLIC_PROJECTS": "Leider haben Sie die maximale Anzahl öffentlicher Projekte erreicht",
-        "CHANGE_PLANS": "Änderungs-Pläne"
     },
     "WIKI": {
         "PAGE_TITLE": "{{wikiPageName}} - Wiki - {{projectName}}",

@@ -202,9 +202,9 @@
             "CONFIRM_DELETE": "请记住，在这个自定义字段中的所有值都会被删除。你确定继续吗？"
         },
         "FILTERS": {
-            "TITLE": "过滤器",
             "INPUT_PLACEHOLDER": "标题或参考",
             "TITLE_ACTION_FILTER_BUTTON": "搜索",
+            "TITLE": "过滤器",
             "INPUT_SEARCH_PLACEHOLDER": "主旨或参考",
             "TITLE_ACTION_SEARCH": "搜索",
             "ACTION_SAVE_CUSTOM_FILTER": "储存为定制过滤器",
@@ -873,10 +873,8 @@
             "SECTION_TITLE": "你的项目",
             "PLACEHOLDER_SEARCH": "搜索",
             "ACTION_CREATE_PROJECT": "创建项目",
-            "ACTION_IMPORT_PROJECT": "导入项目",
             "MANAGE_PROJECTS": "管理项目",
             "TITLE_CREATE_PROJECT": "创建项目",
-            "TITLE_IMPORT_PROJECT": "导入项目",
             "TITLE_PRVIOUS_PROJECT": "显示过去项目",
             "TITLE_NEXT_PROJECT": "显示下一个任务",
             "HELP_TITLE": "Taiga支持页",
@@ -902,44 +900,6 @@
             "DISCOVER": "发现",
             "ACTION_REORDER": "通过拖动来改变显示顺序"
         },
-        "IMPORT": {
-            "TITLE": "导入项目中",
-            "UPLOADING_FILE": "上传倾倒档案",
-            "DESCRIPTION": "这个过桯要花点时间，请保持视窗开启",
-            "ASYNC_IN_PROGRESS_TITLE": "我们正在导入你的项目",
-            "ASYNC_IN_PROGRESS_MESSAGE": "这个过程要花上一点时间<br/> 当弄好时我们会发给你一封邮件",
-            "UPLOAD_IN_PROGRESS_MESSAGE": "已上传 {{totalSize}}中的{{uploadedSize}}",
-            "ERROR": "系统在滙进你倒入的资料时遇上一些问题，请再试一次",
-            "ERROR_TOO_MANY_REQUEST": "抱歉系统繁忙中，请稍后再试试",
-            "ERROR_MESSAGE": "我们的系统无法导入你的资料",
-            "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) 超过系统设置的附件体积上限, 请重传小一点的附件 ({{maxFileSize}})",
-            "SYNC_SUCCESS": "你的项目已成功导入",
-            "PROJECT_RESTRICTIONS": {
-                "PROJECT_MEMBERS_DESC": "你正在导入的项目有 {{members}} 位成员，不幸的是，根据你当前的计划，每个项目最多允许 {{max_memberships}} 位成员。如果你希望增加这个限制请联系管理员。",
-                "PRIVATE_PROJECTS_SPACE": {
-                    "TITLE": "对不起，你当前的计划不允许额外的私有项目",
-                    "DESC": "你尝试导入的项目是私有的。不幸的是，你当前的计划不允许额外的私有项目。"
-                },
-                "PUBLIC_PROJECTS_SPACE": {
-                    "TITLE": "对不起，你当前的计划不允许额外的公开项目",
-                    "DESC": "你尝试导入的项目是公开的。不幸的是，你当前的计划不允许额外的公开项目。"
-                },
-                "PRIVATE_PROJECTS_MEMBERS": {
-                    "TITLE": "你当前的计划允许每个私有项目最多 {{max_memberships}} 位成员。"
-                },
-                "PUBLIC_PROJECTS_MEMBERS": {
-                    "TITLE": "你当前的计划允许每个项目最多 {{max_memberships}} 位成员。"
-                },
-                "PRIVATE_PROJECTS_SPACE_MEMBERS": {
-                    "TITLE": "对不起，你当前的计划不允许额外的私有项目或者每个私有项目多于 {{max_memberships}} 位成员",
-                    "DESC": "你正在试图导入的项目是私有的并且有 {{members}} 位成员。"
-                },
-                "PUBLIC_PROJECTS_SPACE_MEMBERS": {
-                    "TITLE": "对不起，你当前的计划不允许额外的公开项目或者每个公开项目多于 {{max_memberships}} 位成员",
-                    "DESC": "你正在试图导入的项目是公开的并且有多于 {{members}} 位成员。"
-                }
-            }
-        },
         "LIKE_BUTTON": {
             "LIKE": "点赞",
             "LIKED": "已点赞",
@@ -964,6 +924,160 @@
         "CONTACT_BUTTON": {
             "CONTACT_TITLE": "Contact the project team",
             "CONTACT_BUTTON": "Contact the project"
+        },
+        "CREATE": {
+            "TITLE": "创建项目",
+            "FRESH": "清新与整洁，让人兴奋的项目",
+            "CHOOSE_TEMPLATE": "Which template fits your project better?",
+            "TEMPLATE_SCRUM": "冲刺",
+            "TEMPLATE_SCRUM_DESC": "Prioritize and solve your tasks in short time cycles.",
+            "TEMPLATE_SCRUM_LONGDESC": "Scrum is an iterative and incremental agile software development methodology for managing product development.\nThe product backlog is what will ultimately be delivered, ordered into the sequence in which it should be delivered. Product Backlogs are broken into manageable, executable chunks named sprints. Every certain amount of time the team initiates a new sprint and commits to deliver a certain number of user stories from the backlog, in accordance with their skills, abilities and resources. The project advances as the backlog becomes depleted.",
+            "TEMPLATE_KANBAN": "看板",
+            "TEMPLATE_KANBAN_DESC": "Keep a constant workflow on independent tasks",
+            "TEMPLATE_KANBAN_LONGDESC": "The Kanban methodology is used to divide project development (any sort of project) into stages.\nA kanban card is like an index card or post-it note that details every task (or user story) in a project that needs to be completed. The Kanban board is used to move each card from one state of completion to the next and in so doing, helps track progress.",
+            "DUPLICATE": "Duplicate project",
+            "DUPLICATE_DESC": "Start clean and keep your configuration",
+            "IMPORT": "导入项目",
+            "IMPORT_DESC": "Import your project from multiple platforms into Taiga",
+            "INVITE": "Invite to the project",
+            "SOLO_PROJECT": "You'll be alone in this project",
+            "INVITE_LATER": "(You'll be able to invite more members later)",
+            "BACK": "后退",
+            "MAX_PRIVATE_PROJECTS": "Unfortunately, You've reached the maximum number of private projects.\nIf you would like to increase the current limit please contact the administrator.",
+            "MAX_PUBLIC_PROJECTS": "Unfortunately, You've reached the maximum number of public projects.\nIf you would like to increase the current limit please contact the administrator.",
+            "PUBLIC_PROJECT": "公开项目",
+            "PRIVATE_PROJECT": "私有项目",
+            "MAX_MEMBERS": "Unfortunately, your current plan allows for a maximum of {{max_memberships}} members per project.\n Unselect some members or contact the administrator."
+        },
+        "COMMON": {
+            "DETAILS": "New project details",
+            "PROJECT_TITLE": "Project Name",
+            "PROJECT_DESCRIPTION": "Project Description"
+        },
+        "DUPLICATE": {
+            "TITLE": "Duplicate Project",
+            "DESCRIPTION": "Start clean and keep your configuration",
+            "SELECT_PLACEHOLDER": "Choose an existing project to duplicate",
+            "DETAILS": "New project details",
+            "CREATE_PROJECT_TEXT": "清新与整洁，让人兴奋的项目",
+            "CHOOSE_TEMPLATE_TITLE": "了解关于项目模板的更多知识",
+            "CHOOSE_TEMPLATE_INFO": "更多信息",
+            "PROJECT_DETAILS": "项目细节",
+            "PUBLIC_PROJECT": "公开项目",
+            "PRIVATE_PROJECT": "私有项目",
+            "CREATE_PROJECT": "创建项目",
+            "CHANGE_PLANS": "改变计划"
+        },
+        "IMPORT": {
+            "TITLE": "Import Project",
+            "DESCRIPTION": "Import your project from multiple platforms into Taiga",
+            "ASYNC_IN_PROGRESS_TITLE": "我们正在导入你的项目",
+            "ASYNC_IN_PROGRESS_MESSAGE": "这个过程要花上一点时间<br/> 当弄好时我们会发给你一封邮件",
+            "UPLOAD_IN_PROGRESS_MESSAGE": "已上传 {{totalSize}}中的{{uploadedSize}}",
+            "ERROR": "系统在滙进你倒入的资料时遇上一些问题，请再试一次",
+            "ERROR_TOO_MANY_REQUEST": "抱歉系统繁忙中，请稍后再试试",
+            "ERROR_MESSAGE": "我们的系统无法导入你的资料",
+            "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) 超过系统设置的附件体积上限, 请重传小一点的附件 ({{maxFileSize}})",
+            "SYNC_SUCCESS": "你的项目已成功导入",
+            "IMPORT": "Import",
+            "ARCHIVED": "归档",
+            "ARCHIVED_DESCRIPTION": "You have archived projects, Do you want to import your archived projects?",
+            "WHO_IS": "Their tasks will be assigned to ...",
+            "WRITE_EMAIL": "Or if you want, write the email that their use in Taiga",
+            "SEARCH_CONTACT": "Or if you want, search in your contacts",
+            "WRITE_EMAIL_LABEL": "Write the email that their use in Taiga",
+            "EMAIL_NOT_FOUND": "We did not find any users with that email",
+            "ACCEEDE": "Acceede",
+            "PROJECT_MEMBERS": "项目成员",
+            "PROCESS_DESCRIPTION": "Tell us who from Taiga you want to assign the tasks of {{platform}}",
+            "MATCH": "Is <strong>{{user_external}}</strong> the same person as <strong>{{user_internal}}</strong>?",
+            "CHOOSE": "Select user",
+            "LINKS": "Links with {{platform}}",
+            "LINKS_DESCRIPTION": "Do you want to keep the link of each item with the original {{platform}} card?",
+            "WARNING_MAIL_USER": "Note that if the user does not have a Taiga account we will not be able to assign the tasks to him.",
+            "ASSIGN": "指派",
+            "PROJECT_RESTRICTIONS": {
+                "PROJECT_MEMBERS_DESC_PRIVATE": "The project you are trying to import has {{members}} members including you, unfortunately, your current plan allows for a maximum of {{max_memberships}} members per private project. If you would like to increase that limit please contact the administrator.",
+                "PROJECT_MEMBERS_DESC_PUBLIC": "The project you are trying to import has {{members}} members including you, unfortunately, your current plan allows for a maximum of {{max_memberships}} members per public project. If you would like to increase that limit please contact the administrator.",
+                "ACCOUNT_ALLOW_MEMBERS": "Your account only allows {{members}} members",
+                "PRIVATE_PROJECTS_SPACE": {
+                    "TITLE": "对不起，你当前的计划不允许额外的私有项目",
+                    "DESC": "你尝试导入的项目是私有的。不幸的是，你当前的计划不允许额外的私有项目。"
+                },
+                "PUBLIC_PROJECTS_SPACE": {
+                    "TITLE": "对不起，你当前的计划不允许额外的公开项目",
+                    "DESC": "你尝试导入的项目是公开的。不幸的是，你当前的计划不允许额外的公开项目。"
+                },
+                "PRIVATE_PROJECTS_MEMBERS": {
+                    "TITLE": "你当前的计划允许每个私有项目最多 {{max_memberships}} 位成员。"
+                },
+                "PUBLIC_PROJECTS_MEMBERS": {
+                    "TITLE": "你当前的计划允许每个项目最多 {{max_memberships}} 位成员。"
+                },
+                "PRIVATE_PROJECTS_SPACE_MEMBERS": {
+                    "TITLE": "对不起，你当前的计划不允许额外的私有项目或者每个私有项目多于 {{max_memberships}} 位成员",
+                    "DESC": "你正在试图导入的项目是私有的并且有 {{members}} 位成员。"
+                },
+                "PUBLIC_PROJECTS_SPACE_MEMBERS": {
+                    "TITLE": "对不起，你当前的计划不允许额外的公开项目或者每个公开项目多于 {{max_memberships}} 位成员",
+                    "DESC": "你正在试图导入的项目是公开的并且有多于 {{members}} 位成员。"
+                }
+            },
+            "IN_PROGRESS": {
+                "TITLE": "导入项目中",
+                "DESCRIPTION": "这个过桯要花点时间，请保持视窗开启"
+            },
+            "WARNING": {
+                "TITLE": "Some taks will be unassigned",
+                "DESCRIPTION": "There are still unidentified people. The cards assigned to these people will remain unassigned. Check all the contacts to not lose that information.",
+                "CHECK": "Check contacts"
+            },
+            "TAIGA": {
+                "SELECTOR": "Import your Taiga project"
+            },
+            "TRELLO": {
+                "TITLE": "Trello",
+                "SELECTOR": "Import your Trello boards into Taiga",
+                "CHOOSE_BOARD": "Choose board that you want to import"
+            },
+            "GITHUB": {
+                "TITLE": "Github",
+                "SELECTOR": "Import your Github project issues",
+                "CHOOSE_BOARD": "Find the project you want to import",
+                "PROJECT_MEMBERS": "项目成员",
+                "HOW_DO_YOU_WANT_TO_IMPORT": "How do you want to import your issues into Taiga?",
+                "KANBAN_PROJECT": "As user stories in a kanban project",
+                "KANBAN_PROJECT_DESCRIPTION": "After that you can enable scrum with backlog.",
+                "SCRUM_PROJECT": "As user stories in a scrum project",
+                "SCRUM_PROJECT_DESCRIPTION": "After that you can enable kanban mode.",
+                "ISSUES_PROJECT": "As issues",
+                "ISSUES_PROJECT_DESCRIPTION": "You will not able to use your issues in kanban or scrum mode. You will be able to enable kanban or scrum for new user stories"
+            },
+            "ASANA": {
+                "TITLE": "Asana",
+                "SELECTOR": "Import your Asana project and choose how to manage it",
+                "CHOOSE_BOARD": "Choose project that you want to import",
+                "KANBAN_PROJECT": "看板",
+                "SCRUM_PROJECT": "冲刺",
+                "CREATE_AS_SCRUM_DESCRIPTION": "The tasks and sub-tasks of your project will be created as Taiga user stories and tasks.",
+                "CREATE_AS_KANBAN_DESCRIPTION": "The tasks and sub-tasks of your project will be created as Taiga user stories and tasks.",
+                "PROJECT_MEMBERS": "项目成员"
+            },
+            "JIRA": {
+                "TITLE": "Jira",
+                "CHOOSE_PROJECT": "Choose project or board that you want to import",
+                "SELECTOR": "Import your Jira project and choose how to manage it",
+                "URL": "Your Jira URL",
+                "PROJECT_MEMBERS": "项目成员",
+                "KANBAN_PROJECT": "看板",
+                "SCRUM_PROJECT": "冲刺",
+                "ISSUES_PROJECT": "问题",
+                "CREATE_AS_SCRUM_DESCRIPTION": "The issues and sub-issues of your project will be created as Taiga user stories and tasks.",
+                "CREATE_AS_KANBAN_DESCRIPTION": "The issues and sub-issues of your project will be created as Taiga user stories and tasks.",
+                "CREATE_AS_ISSUES_DESCRIPTION": "What do you want to do with sub-issues from the Jira project? (Taiga doesn't allow sub-issues)",
+                "CREATE_NEW_ISSUES": "Convert sub-issues to new Taiga issues",
+                "NOT_CREATE_NEW_ISSUES": "Do not import sub-issues"
+            }
         }
     },
     "LIGHTBOX": {
@@ -1515,20 +1629,6 @@
             "THEME": "主题",
             "THEME_DEFAULT": "-- 使用默认主题--"
         }
-    },
-    "WIZARD": {
-        "SECTION_TITLE_CREATE_PROJECT": "创建项目",
-        "CREATE_PROJECT_TEXT": "清新与整洁，让人兴奋的项目",
-        "CHOOSE_TEMPLATE": "哪个模板最适合你的项目？",
-        "CHOOSE_TEMPLATE_TITLE": "了解关于项目模板的更多知识",
-        "CHOOSE_TEMPLATE_INFO": "更多信息",
-        "PROJECT_DETAILS": "项目细节",
-        "PUBLIC_PROJECT": "公开项目",
-        "PRIVATE_PROJECT": "私有项目",
-        "CREATE_PROJECT": "创建项目",
-        "MAX_PRIVATE_PROJECTS": "你已经达到了私有项目的最大成员数目",
-        "MAX_PUBLIC_PROJECTS": "对不起，你已经达了公开项目的最大成员上限",
-        "CHANGE_PLANS": "改变计划"
     },
     "WIKI": {
         "PAGE_TITLE": "{{wikiPageName}} - 维基 - {{projectName}}",
