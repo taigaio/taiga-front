@@ -1,13 +1,13 @@
 @mixin import-project-selector {
-     @include centered;
+    @include centered;
     max-width: 800px;
     .import-project-selector {
 
         &-service {
             img {
+                display: block;
                 margin: 1rem auto;
                 width: 4rem;
-                display: block;
             }
         }
 
@@ -47,7 +47,7 @@
     max-width: 800px;
     .avatar {
         width: 48px;
-    }    
+    }
     &-title {
         @include font-size(normal);
         @include font-type(bold);
@@ -73,17 +73,18 @@
     &-row {
         align-items: center;
         border-bottom: 1px solid $whitish;
+        border-top: 1px solid $whitish;
         display: flex;
-        padding: .5rem 0;
         justify-content: space-between;
+        padding: .5rem 0;
 
-        &:first-child {
-            border-top: 1px solid $whitish;
-        }
-
-        &:last-child {
-            border: 0;
-        }
+        // &:first-child {
+        //     border-top: 1px solid $whitish;
+        // }
+        //
+        // &:last-child {
+        //     border: 0;
+        // }
 
         &:hover {
             .import-project-members-delete {
@@ -127,9 +128,9 @@
     &-match {
         color: $gray-light;
         button {
+            background: $white;
             border-radius: 50%;
             padding: .25rem .5rem;
-            background: $white;
             svg {
                 @include svg-size(.75rem);
             }
@@ -160,8 +161,8 @@
 
     &-choose {
         color: $primary;
-        text-transform: lowercase;
         padding-right: 0;
+        text-transform: lowercase;
         &:hover {
             color: $primary-light;
         }
