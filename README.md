@@ -1,10 +1,8 @@
 # Taiga Front #
 
-![Kaleidos Project](http://kaleidos.net/static/img/badge.png "Kaleidos Project")
-[![Managed with Taiga.io](https://tree.taiga.io/support/images/taiga-badge-gh.png)](https://taiga.io "Managed with Taiga.io")
-[![Build Status](https://travis-ci.org/taigaio/taiga-front.svg?branch=public-header-bar)](https://travis-ci.org/taigaio/taiga-front)
-[![Dependency Status](https://www.versioneye.com/user/projects/561ba659a193340f280013f4/badge.svg?style=flat)](https://www.versioneye.com/user/projects/561ba659a193340f280013f4)
-
+![Kaleidos Project](http://kaleidos.net/static/img/badge.svg "Kaleidos Project")
+[![Managed with Taiga.io](https://img.shields.io/badge/managed%20with-TAIGA.io-709f14.svg)](https://tree.taiga.io/project/taiga/ "Managed with Taiga.io")
+[![Build Status](https://img.shields.io/travis/taigaio/taiga-front.svg)](https://travis-ci.org/taigaio/taiga-front "Build Status")
 
 ## Get the compiled version ##
 
