@@ -27,8 +27,8 @@ ImportProjectSelectorDirective = () ->
             projects: '<',
             onCancel: '&',
             onSelectProject: '&',
-            platfrom: '@',
             logo: '@',
+            noProjectsMsg: '@',
             search: '@'
         }
     }
