@@ -4,6 +4,7 @@
 tg-import-project-selector(
     logo="/#{v}/images/import-logos/jira.png"
     search="{{ 'PROJECT.IMPORT.JIRA.CHOOSE_PROJECT' | translate }}"
+    no-projects-msg="{{ 'PROJECT.IMPORT.JIRA.NO_PROJECTS' | translate }}"
     projects="vm.projects"
     on-cancel="vm.onCancel()"
     on-select-project="vm.onSelectProject(project)"

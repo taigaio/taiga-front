@@ -1,6 +1,7 @@
 tg-import-project-selector(
     logo="/#{v}/images/import-logos/trello.png"
-    search="{{ 'PROJECT.IMPORT.TRELLO.CHOOSE_BOARD' | translate }}"
+    search="{{ 'PROJECT.IMPORT.TRELLO.CHOOSE_PROJECT' | translate }}"
+    no-projects-msg="{{ 'PROJECT.IMPORT.TRELLO.NO_PROJECTS' | translate }}"
     projects="vm.projects"
     on-cancel="vm.onCancel()"
     on-select-project="vm.onSelectProject(project)"

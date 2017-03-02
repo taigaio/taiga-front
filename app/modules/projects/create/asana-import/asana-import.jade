@@ -4,7 +4,8 @@
 
 tg-import-project-selector(
     logo="/#{v}/images/import-logos/asana.png"
-    search="{{ 'PROJECT.IMPORT.ASANA.CHOOSE_BOARD' | translate }}"
+    search="{{ 'PROJECT.IMPORT.ASANA.CHOOSE_PROJECT' | translate }}"
+    no-projects-msg="{{ 'PROJECT.IMPORT.ASANA.NO_PROJECTS' | translate }}"
     projects="vm.projects"
     on-cancel="vm.onCancel()"
     on-select-project="vm.onSelectProject(project)"

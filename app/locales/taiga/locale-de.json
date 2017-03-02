@@ -996,6 +996,11 @@
             "LINKS_DESCRIPTION": "Do you want to keep the link of each item with the original {{platform}} card?",
             "WARNING_MAIL_USER": "Note that if the user does not have a Taiga account we will not be able to assign the tasks to him.",
             "ASSIGN": "Zuweisen",
+            "PROJECT_SELECTOR": {
+                "NO_RESULTS": "It looks like nothing was found with your search criteria",
+                "ACTION_SEARCH": "search",
+                "ACTION_BACK": "Back"
+            },
             "PROJECT_RESTRICTIONS": {
                 "PROJECT_MEMBERS_DESC_PRIVATE": "The project you are trying to import has {{members}} members including you, unfortunately, your current plan allows for a maximum of {{max_memberships}} members per private project. If you would like to increase that limit please contact the administrator.",
                 "PROJECT_MEMBERS_DESC_PUBLIC": "The project you are trying to import has {{members}} members including you, unfortunately, your current plan allows for a maximum of {{max_memberships}} members per public project. If you would like to increase that limit please contact the administrator.",
@@ -1038,12 +1043,14 @@
             "TRELLO": {
                 "TITLE": "Trello",
                 "SELECTOR": "Import your Trello boards into Taiga",
-                "CHOOSE_BOARD": "Choose board that you want to import"
+                "CHOOSE_PROJECT": "Choose board that you want to import",
+                "NO_PROJECTS": "It seems you have no boards in Trello"
             },
             "GITHUB": {
                 "TITLE": "Github",
                 "SELECTOR": "Import your Github project issues",
-                "CHOOSE_BOARD": "Find the project you want to import",
+                "CHOOSE_PROJECT": "Find the project you want to import",
+                "NO_PROJECTS": "It seems you have no porjects in GitHub",
                 "PROJECT_MEMBERS": "Projektmitglieder",
                 "HOW_DO_YOU_WANT_TO_IMPORT": "How do you want to import your issues into Taiga?",
                 "KANBAN_PROJECT": "As user stories in a kanban project",
@@ -1056,7 +1063,8 @@
             "ASANA": {
                 "TITLE": "Asana",
                 "SELECTOR": "Import your Asana project and choose how to manage it",
-                "CHOOSE_BOARD": "Choose project that you want to import",
+                "CHOOSE_PROJECT": "Choose project that you want to import",
+                "NO_PROJECTS": "It seems you have no porjects in Asana",
                 "KANBAN_PROJECT": "Kanban",
                 "SCRUM_PROJECT": "Scrum",
                 "CREATE_AS_SCRUM_DESCRIPTION": "The tasks and sub-tasks of your project will be created as Taiga user stories and tasks.",
@@ -1065,8 +1073,9 @@
             },
             "JIRA": {
                 "TITLE": "Jira",
-                "CHOOSE_PROJECT": "Choose project or board that you want to import",
                 "SELECTOR": "Import your Jira project and choose how to manage it",
+                "CHOOSE_PROJECT": "Choose project or board that you want to import",
+                "NO_PROJECTS": "It seems you have no porjects or boards in Jira",
                 "URL": "Your Jira URL",
                 "PROJECT_MEMBERS": "Projektmitglieder",
                 "KANBAN_PROJECT": "Kanban",
