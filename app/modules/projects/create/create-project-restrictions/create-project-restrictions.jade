@@ -1,10 +1,10 @@
-div.create-project-warning(
+.create-project-warning(
     ng-if="isPrivate && !canCreatePrivateProjects.valid && canCreatePrivateProjects.reason == 'max_private_projects'"
 )
     tg-svg(svg-icon="icon-exclamation")
     span {{ 'PROJECT.CREATE.MAX_PRIVATE_PROJECTS' | translate }}
 
-div.create-project-warning(
+.create-project-warning(
     ng-if="!isPrivate && !canCreatePublicProjects.valid && canCreatePublicProjects.reason == 'max_public_projects'"
 )
     tg-svg(svg-icon="icon-exclamation")

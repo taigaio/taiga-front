@@ -218,8 +218,10 @@
     }
     &-warning {
         @include font-size(small);
+        border: 1px solid $red-light;
+        display: flex;
         padding: 1rem;
-        text-align: center;
+        margin-bottom: 1rem;
         .icon-exclamation {
             fill: $red-light;
             margin-right: .5rem;

@@ -1,9 +1,21 @@
-tg-warning-user-import-lightbox {
+.warning-users-import-lightbox {
+    max-width: 600px;
+    .warning-users-import-title {
+        text-align: center;
+    }
     .actions {
         display: flex;
-        justify-content: center;
-        button:first-child {
-            margin-right: .5rem;
+        margin: 2rem;
+        button {
+            flex: 1;
+            &:first-child {
+                flex: 0;
+                flex-basis: 40%;
+                margin-right: .5rem;
+            }
+        }
+        .button-trans {
+            color: $grayer;
         }
     }
 }
