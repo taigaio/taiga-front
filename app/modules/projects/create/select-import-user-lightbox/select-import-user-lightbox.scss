@@ -27,7 +27,9 @@ tg-select-import-user-lightbox {
         text-align: center;
     }
     .more-users {
-        padding: .5rem;
+        @include font-type(light);
+        @include font-size(small);
+        padding: 1rem;
         text-align: center;
     }
     .group {
@@ -42,10 +44,16 @@ tg-select-import-user-lightbox {
         }
     }
     .search-user-mode {
-        border-top: 1px solid $gray-light;
-        margin-top: 1rem;
-        padding-top: 1rem;
-        text-align: center;
+        @include font-size(small);
+        background: none;
+        margin-top: 2rem;
+        padding: .5rem;
+        text-align: left;
+        transition: .2s;
+        width: 100%;
+        &:hover {
+            color: $primary;
+        }
     }
     label {
         display: block;

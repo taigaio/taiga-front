@@ -47,12 +47,9 @@ tg-lightbox-close(on-close="vm.onClose()")
                     translate="PROJECT.IMPORT.ASSIGN"
                 )
 
-        .search-user-mode
-            p
-                a(
-                    href=""
-                    ng-click="vm.mode = 'search'"
-                ) {{'PROJECT.IMPORT.SEARCH_CONTACT' | translate}}
+        button.search-user-mode(
+            ng-click="vm.mode = 'search'"
+        ) {{'PROJECT.IMPORT.SEARCH_CONTACT' | translate}}
 
     div(ng-if="vm.mode == 'search'")
         fieldset
@@ -82,9 +79,6 @@ tg-lightbox-close(on-close="vm.onClose()")
             .more-users(ng-if="filteredCollection.length >= 5")
                 span(translate="COMMON.ASSIGNED_TO.TOO_MANY")
 
-        .search-user-mode
-            p
-                a(
-                    href=""
-                    ng-click="vm.mode = 'mail'"
-                ) {{'PROJECT.IMPORT.WRITE_EMAIL' | translate}}
+        button.search-user-mode(
+            ng-click="vm.mode = 'mail'"
+        ) {{'PROJECT.IMPORT.WRITE_EMAIL' | translate}}
