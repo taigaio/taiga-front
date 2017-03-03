@@ -19,7 +19,6 @@
 
 SelectImportUserLightboxDirective = (lightboxService, lightboxKeyboardNavigationService) ->
     link = (scope, el, attrs, ctrl) ->
-        pepe = () ->
         scope.$watch 'vm.visible', (visible) ->
             if visible && !el.hasClass('open')
                 ctrl.start()

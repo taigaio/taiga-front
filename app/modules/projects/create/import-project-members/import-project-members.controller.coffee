@@ -55,6 +55,8 @@ class ImportProjectMembersController
         user = user.set('user', externalUser)
         user = user.set('taigaUser', taigaUser)
 
+        console.log user
+
         @.selectedUsers = @.selectedUsers.push(user)
         @.discardSuggestedUser(externalUser)
 

@@ -9,11 +9,8 @@ tg-select-import-user-lightbox {
         display: flex;
         justify-content: center;
         padding-bottom: 1.5rem;
-        p {
-            margin-bottom: 0;
-        }
-        .empty {
-            margin-right: .5rem;
+        .candidate-user-name {
+            margin-left: .5rem;
         }
         .user-list-avatar {
             background-color: $red;

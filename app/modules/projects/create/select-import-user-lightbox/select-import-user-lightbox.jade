@@ -5,7 +5,7 @@ tg-lightbox-close(on-close="vm.onClose()")
         .avatar.empty(ng-if="!vm.user.get('avatar')") {{vm.user.get('full_name')[0].toUpperCase() || vm.user.get('username')[0].toUpperCase()}}
         .avatar(ng-if="vm.user.get('avatar')") 
             img(ng-src="{{vm.user.get('avatar')}}")
-        p {{vm.user.get('full_name') || vm.user.get('username')}}
+        span.candidate-user-name {{vm.user.get('full_name') || vm.user.get('username')}}
 
     h2.title(translate="PROJECT.IMPORT.WHO_IS")
 
