@@ -3,6 +3,19 @@ import os
 
 ROOT_PATH = os.path.dirname(os.path.dirname(__file__))
 DEFAULT_LOCALE_PATH = os.path.join(ROOT_PATH, "app/locales/taiga/locale-en.json")
+WHITELIST = [
+    'ADMIN.PROJECT_VALUES_PRIORITIES.ACTION_ADD',
+    'ADMIN.PROJECT_VALUES_SEVERITIES.ACTION_ADD',
+    'ADMIN.PROJECT_VALUES_TYPES.ACTION_ADD',
+    'HINTS.HINT1_TITLE',
+    'HINTS.HINT1_TEXT',
+    'HINTS.HINT2_TITLE',
+    'HINTS.HINT2_TEXT',
+    'HINTS.HINT3_TITLE',
+    'HINTS.HINT3_TEXT',
+    'HINTS.HINT4_TITLE',
+    'HINTS.HINT4_TEXT',
+]
 
 
 def keywords(key, value):
@@ -28,6 +41,8 @@ def read_file(path):
 
 
 def check_keyword(keyword, files_text):
+    if keyword in WHITELIST:
+        return True
     for text in files_text:
         if text.find(keyword) != -1:
             return True
