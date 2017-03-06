@@ -4,7 +4,6 @@
         "NO": "Nej",
         "OR": "eller",
         "LOADING": "Laddar...",
-        "LOADING_PROJECT": "Laddar projekt...",
         "DATE": "YYYY-MM-DD",
         "DATETIME": "YYYY-MM-DD HH:mm",
         "SAVE": "Spara",
@@ -27,12 +26,9 @@
         "BLOCKED_NOTE": "Varför är denna blockerad?",
         "BLOCKED_REASON": "Vänligen förklara orsaken",
         "CREATED_BY": "Skapad av {{fullDisplayName}}",
-        "FROM": "från",
-        "TO": "till ",
         "CLOSE": "stäng",
         "GO_HOME": "Ta mig hem",
         "PLUGINS": "Insticksprogram",
-        "BETA": "Vi betatestar!",
         "ONE_ITEM_LINE": "En post per rad ...",
         "NEW_BULK": "Lägg till flera nya",
         "RELATED_TASKS": "Besläktade uppgifter",
@@ -148,7 +144,6 @@
             "PRIORITY": "Prioritet",
             "ASSIGNED_TO": "Tilldelad till",
             "POINTS": "Poäng",
-            "BLOCKED_NOTE": "blockerad notering",
             "IS_BLOCKED": "är blockerad",
             "REF": "Ref. ",
             "VOTES": "Röster",
@@ -187,10 +182,6 @@
             "COUNTER_TITLE": "{total, plural, one{one watcher} other{# watchers}}"
         },
         "VOTE_BUTTON": {
-            "UPVOTE": "Rösta för",
-            "UPVOTED": "Rösta för",
-            "DOWNVOTE": "Rösta emot",
-            "VOTERS": "Röstande",
             "BUTTON_TITLE": "Rösta för / Rösta emot den här posten",
             "COUNTER_TITLE": "{total, plural, one{one vote} other{# votes}}"
         },
@@ -205,7 +196,6 @@
             "INPUT_PLACEHOLDER": "Titel eller referens",
             "TITLE_ACTION_FILTER_BUTTON": "sök",
             "TITLE": "Filter",
-            "INPUT_SEARCH_PLACEHOLDER": "Titel eller referens",
             "TITLE_ACTION_SEARCH": "Sök",
             "ACTION_SAVE_CUSTOM_FILTER": "spara som anpassad filter",
             "PLACEHOLDER_FILTER_NAME": "Skriv filternamnet och tryck på <Enter>",
@@ -220,16 +210,10 @@
                 "CREATED_BY": "Skapad av",
                 "CUSTOM_FILTERS": "Anpassad filter",
                 "EPIC": "Epost"
-            },
-            "CONFIRM_DELETE": {
-                "TITLE": "Ta bort anpassad filter.",
-                "MESSAGE": "anpassad filter  '{{customFilterName}}'"
             }
         },
         "WYSIWYG": {
             "OUTDATED": "Another person has made changes while you were editing. Check the new version on the activiy tab before you save your changes.",
-            "ATTACH_FILE_HELP": "Attach files by dragging & dropping on the text area above.",
-            "ATTACH_FILE_HELP_SAVE_FIRST": "Save first before if you want to attach files by dragging & dropping on the text area above.",
             "MARKDOWN_HELP": "Hjälp för markeringssyntax"
         },
         "PERMISIONS_CATEGORIES": {
@@ -282,10 +266,6 @@
                 "ADD_WIKI_LINKS": "Lägg till wiki-länkar",
                 "DELETE_WIKI_LINKS": "Ta bort wiki-länkar"
             }
-        },
-        "META": {
-            "PAGE_TITLE": "Taiga",
-            "PAGE_DESCRIPTION": "Taiga är ett projekthanteringsverktyg för nystartade företag och agila utvecklings- och designteam som behöver enkla, vackra verktyg som det är trevligt att jobba med. "
         }
     },
     "LOGIN": {
@@ -341,7 +321,6 @@
     },
     "CHANGE_PASSWORD": {
         "PAGE_TITLE": "Byt ditt lösenord - Taiga",
-        "PAGE_DESCRIPTION": "Skapa ett nytt lösenord för din Taiga-konto och hej! du kanske behöver äta något järnrik kost. Det är bra för hjärnan. :P",
         "SECTION_NAME": "Byt lösenord",
         "FIELD_CURRENT_PASSWORD": "Befintligt lösenord",
         "PLACEHOLDER_CURRENT_PASSWORD": "Ditt nuvarande lösenord (eller tomt om du inte har något lösenord än)",
@@ -366,8 +345,7 @@
     },
     "INVITATION_LOGIN_FORM": {
         "NOT_FOUND": "Våra Oompa Loompier kan inte hitta din invitation.",
-        "SUCCESS": "Du har nu blitt medlem i det här projektet. Välkommen till {{project_name}}",
-        "ERROR": "Enligt våra Oompa Loompier är du inte registrerad än eller ditt lösenord är fel. "
+        "SUCCESS": "Du har nu blitt medlem i det här projektet. Välkommen till {{project_name}}"
     },
     "HOME": {
         "PAGE_TITLE": "Hem - Taiga",
@@ -438,10 +416,7 @@
         "TITLE_LIGHTBOX_DELETE_ATTACHMENT": "Ta bort bilagan ...",
         "MSG_LIGHTBOX_DELETE_ATTACHMENT": "bifogad '{{fileName}}'",
         "ERROR_DELETE_ATTACHMENT": "Vi klarade inte att ta bort: {{errorMessage}}",
-        "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) är för tungt för våra Oompa Loompier. Försök med något mindre än ({{maxFileSize}})",
-        "FIELDS": {
-            "IS_DEPRECATED": "undviks"
-        }
+        "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) är för tungt för våra Oompa Loompier. Försök med något mindre än ({{maxFileSize}})"
     },
     "PAGINATION": {
         "PREVIOUS": "Förra",
@@ -477,13 +452,10 @@
             "ASYNC_MESSAGE": "Vi vill skicka dig ett e-postmeddelande när vi är klara.",
             "SYNC_MESSAGE": "Om hämtningen inte startar automatiskt, klick <a href='{{url}}' download title='Hämta hämtningsfilen här'>här</a>.",
             "ERROR": "Våra Oompa Loompier har vissa problemer med att skapa din hämtningsfil. Vänligen försök på nytt!",
-            "ERROR_BUSY": "Beklagar. Våra oompa loompier är mycket upptagna. Vänligen försök på nytt om några minuter. ",
-            "ERROR_MESSAGE": "Våra Oompa Loompier har vissa problem med att skapa din hämtfil: {{message}}"
+            "ERROR_BUSY": "Beklagar. Våra oompa loompier är mycket upptagna. Vänligen försök på nytt om några minuter. "
         },
         "MODULES": {
             "TITLE": "Moduler",
-            "ENABLE": "Aktivera",
-            "DISABLE": "Avvaktivera",
             "EPICS": "Epos",
             "EPICS_DESCRIPTION": "Visualisera och hantera den mest strategiska delen av ditt projekt",
             "BACKLOG": "Inkorg",
@@ -512,7 +484,6 @@
             "PAGE_TITLE": "{{sectionName}} - Projektprofil - {{projectName}}",
             "PROJECT_DETAILS": "Projektdetaljer",
             "PROJECT_NAME": "Projektnamn",
-            "PROJECT_SLUG": "Projektslugg",
             "TAGS": "Etiketter",
             "DESCRIPTION": "Beskrivning",
             "RECRUITING": "Letar detta projekt efter personer? ",
@@ -523,7 +494,6 @@
             "PRIVATE_PROJECT": "Privata projekt",
             "PRIVATE_OR_PUBLIC": "Vad är skillnaden mellan publika och privata projekt?",
             "DELETE": "Ta bort projekt",
-            "LOGO_HELP": "Bilden kommer skalas till 80x80px.",
             "CHANGE_LOGO": "Ändra logga",
             "ACTION_USE_DEFAULT_LOGO": "Use default image",
             "MAX_PRIVATE_PROJECTS": "You've reached the maximum number of private projects allowed by your current plan",
@@ -653,8 +623,8 @@
             "INFO_VERIFYING_IP": "Gitlab-förfrågningar är inte signerade. Det bästa är att kontrollera ursprunglig IP-adress. Om fältet är tomt vill det inte bli någon IP-kontroll."
         },
         "GITHUB": {
-            "SECTION_NAME": "Github",
-            "PAGE_TITLE": "Github - {{projectName}}"
+            "SECTION_NAME": "GitHub",
+            "PAGE_TITLE": "GitHub - {{projectName}}"
         },
         "GOGS": {
             "SECTION_NAME": "Gogs",
@@ -663,7 +633,6 @@
         "WEBHOOKS": {
             "PAGE_TITLE": "Webbkrok - {{projectName}}",
             "SECTION_NAME": "Webbkrokar",
-            "SUBTITLE": "Webbkrokar notifierar externa tjänster om händelser i Taiga, till exempel kommentarer, användarhistorier ...",
             "ADD_NEW": "Lägg till en ny Webbkrok",
             "TYPE_NAME": "Skriv in tjänstens namn",
             "TYPE_PAYLOAD_URL": "Skriv in länken till tjänsten",
@@ -709,7 +678,6 @@
             "DELETE_MEMBER": "Ta bort medlem",
             "RESEND": "Skicka på nytt",
             "SUCCESS_SEND_INVITATION": "Vi har skickat på nytt invitationen till  '{{email}}'.",
-            "ERROR_SEND_INVITATION": "Vi har inte skickat invitationen",
             "SUCCESS_DELETE": "Vi har tagit bort {{message}}.",
             "ERROR_DELETE": "Vi har inte lyckats att ta bort {{message}}.",
             "DEFAULT_DELETE_MESSAGE": "den här invitationen till {{email}}"
@@ -738,16 +706,11 @@
             "PLACEHOLDER_WRITE_NAME": "Skriv ett namn för den nya statusen"
         },
         "MENU": {
-            "TITLE": "Administrator",
             "PROJECT": "Projekt",
             "ATTRIBUTES": "Egenskaper",
             "MEMBERS": "Medlemmar",
             "PERMISSIONS": "Behörigheter",
-            "INTEGRATIONS": "Integrationer",
-            "PLUGINS": "Insticksprogram"
-        },
-        "SUBMENU_PROJECT_ATTRIBUTES": {
-            "TITLE": "Egenskaper"
+            "INTEGRATIONS": "Integrationer"
         },
         "SUBMENU_PROJECT_VALUES": {
             "STATUS": "Status",
@@ -758,16 +721,10 @@
             "CUSTOM_FIELDS": "Anpassade fält",
             "TAGS": "Etiketter"
         },
-        "SUBMENU_PROJECT_PROFILE": {
-            "TITLE": "Projektprofil"
-        },
         "SUBMENU_ROLES": {
             "TITLE": "Roller",
             "ACTION_NEW_ROLE": "+ Ny roll",
             "TITLE_ACTION_NEW_ROLE": "Lägg till ny roll"
-        },
-        "SUBMENU_THIDPARTIES": {
-            "TITLE": "Tjänster"
         },
         "PROJECT_TRANSFER": {
             "DO_YOU_ACCEPT_PROJECT_OWNERNSHIP": "Would you like to become the new project owner?",
@@ -783,15 +740,13 @@
                 "PRIVATE": "Please remember that you can own up to <strong>{{maxProjects}}</strong> private projects. You currently own <strong>{{currentProjects}}</strong> private projects",
                 "PUBLIC": "Please remember that you can own up to <strong>{{maxProjects}}</strong> public projects. You currently own <strong>{{currentProjects}}</strong> public projects"
             },
-            "CANT_BE_OWNED": "At the moment you cannot become an owner of a project of this type. If you would like to become the owner of this project, please contact the administrator so they change your account settings to enable project ownership.",
-            "CHANGE_MY_PLAN": "Ändra min plan"
+            "CANT_BE_OWNED": "At the moment you cannot become an owner of a project of this type. If you would like to become the owner of this project, please contact the administrator so they change your account settings to enable project ownership."
         }
     },
     "USER": {
         "PROFILE": {
             "PAGE_TITLE": "{{userFullName}} (@{{userUsername}})",
             "EDIT": "Ändra profil",
-            "FOLLOW": "Följ",
             "CLOSED_US": "Stängd US",
             "PROJECTS": "Projekt",
             "PROJECTS_EMPTY": "{{username}} har inga projekt än",
@@ -799,7 +754,6 @@
             "CONTACTS_EMPTY": "{{username}} har inte några kontakter än",
             "CURRENT_USER_CONTACTS_EMPTY": "Du har inga kontakter än",
             "CURRENT_USER_CONTACTS_EMPTY_EXPLAIN": "De du arbetar med på Taiga vill automatiskt bli dina kontakter. ",
-            "REPORT": "Rapportera misbruk",
             "TABS": {
                 "ACTIVITY_TAB": "Tidslinje",
                 "ACTIVITY_TAB_TITLE": "Visa alla aktiviteter för den här användaren",
@@ -825,13 +779,13 @@
             "FILTER_TYPE_ALL": "Alla",
             "FILTER_TYPE_ALL_TITLE": "Visa alla",
             "FILTER_TYPE_PROJECTS": "Projekt",
-            "FILTER_TYPE_PROJECT_TITLES": "Visa bara projekt",
+            "FILTER_TYPE_PROJECTS_TITLE": "Visa bara projekt",
             "FILTER_TYPE_EPICS": "Epos",
-            "FILTER_TYPE_EPIC_TITLES": "Visa endast epos",
+            "FILTER_TYPE_EPICS_TITLE": "Visa endast epos",
             "FILTER_TYPE_USER_STORIES": "Berättelser",
-            "FILTER_TYPE_USER_STORIES_TITLES": "Visa endast användarhistorier",
+            "FILTER_TYPE_USER_STORIES_TITLE": "Visa endast användarhistorier",
             "FILTER_TYPE_TASKS": "Uppgift",
-            "FILTER_TYPE_TASK_TITLES": "Visar endast uppgifter",
+            "FILTER_TYPE_TASKS_TITLE": "Visar endast uppgifter",
             "FILTER_TYPE_ISSUES": "Ärenden",
             "FILTER_TYPE_ISSUES_TITLE": "Visa bara ärenden ",
             "EMPTY_TITLE": "Det verkar som om vi inte har något att visa just nu"
@@ -839,8 +793,6 @@
     },
     "PROJECT": {
         "PAGE_TITLE": "{{projectName}}",
-        "WELCOME": "Välkommen",
-        "SECTION_PROJECTS": "Projekt",
         "HELP": "Organisera dina projekt och sätt in de mest använda här. <br/> De första 10 toppprojekten vill visas i toppnavigeringens projektlista. ",
         "PRIVATE": "Privata projekt",
         "LOOKING_FOR_PEOPLE": "Detta projekt söker efter fler personer",
@@ -851,12 +803,6 @@
             "BLOCKED": "Blockerat projekt",
             "THIS_PROJECT_IS_BLOCKED": "Detta projekt är tillfälligt blockerat",
             "TO_UNBLOCK_CONTACT_THE_ADMIN_STAFF": "Kontakta administratören för att avblockera dina projekt."
-        },
-        "STATS": {
-            "PROJECT": "projekt<br/> poäng",
-            "DEFINED": "definierad<br/> poäng",
-            "ASSIGNED": "tilldelad<br/> poäng",
-            "CLOSED": "stängd<br/> poäng"
         },
         "SECTION": {
             "SEARCH": "Sök",
@@ -870,13 +816,9 @@
             "ADMIN": "Administrator"
         },
         "NAVIGATION": {
-            "SECTION_TITLE": "Dina projekt",
-            "PLACEHOLDER_SEARCH": "Sök i ...",
             "ACTION_CREATE_PROJECT": "Skapa projekt",
             "MANAGE_PROJECTS": "Hantera projekt",
             "TITLE_CREATE_PROJECT": "Skapa projekt",
-            "TITLE_PRVIOUS_PROJECT": "Visa tidigare projekt",
-            "TITLE_NEXT_PROJECT": "Visa nästa projekt",
             "HELP_TITLE": "Taiga hjälpsida",
             "HELP": "Hjälp",
             "HOMEPAGE": "Webbplats",
@@ -884,10 +826,6 @@
             "FEEDBACK": "Återkoppling",
             "NOTIFICATIONS_TITLE": "Ändra inställningar för dina notifieringar",
             "NOTIFICATIONS": "Notifieringar",
-            "ORGANIZATIONS_TITLE": "Ändra dina organisationer",
-            "ORGANIZATIONS": "Ändra organizationer",
-            "SETTINGS_TITLE": "Ändra inställningarna",
-            "SETTINGS": "Inställningar",
             "VIEW_PROFILE_TITLE": "Visa profil",
             "VIEW_PROFILE": "Visa profil",
             "EDIT_PROFILE_TITLE": "Ändra din profil",
@@ -896,9 +834,7 @@
             "CHANGE_PASSWORD": "Byt lösenord",
             "DASHBOARD_TITLE": "Instrumentpanel",
             "DISCOVER_TITLE": "Upptäck nya rörliga projekt",
-            "NEW_ITEM": "Ny",
-            "DISCOVER": "Upptäck",
-            "ACTION_REORDER": "Dra & släpp för att sortera"
+            "DISCOVER": "Upptäck"
         },
         "LIKE_BUTTON": {
             "LIKE": "Gillar",
@@ -927,7 +863,6 @@
         },
         "CREATE": {
             "TITLE": "Skapa projekt",
-            "FRESH": "Fräscht och rent. Så trevligt!",
             "CHOOSE_TEMPLATE": "Which template fits your project better?",
             "TEMPLATE_SCRUM": "Scrum",
             "TEMPLATE_SCRUM_DESC": "Prioritize and solve your tasks in short time cycles.",
@@ -946,8 +881,7 @@
             "MAX_PRIVATE_PROJECTS": "Unfortunately, You've reached the maximum number of private projects.\nIf you would like to increase the current limit please contact the administrator.",
             "MAX_PUBLIC_PROJECTS": "Unfortunately, You've reached the maximum number of public projects.\nIf you would like to increase the current limit please contact the administrator.",
             "PUBLIC_PROJECT": "Public Project",
-            "PRIVATE_PROJECT": "Privat Projekt",
-            "MAX_MEMBERS": "Unfortunately, your current plan allows for a maximum of {{max_memberships}} members per project.\n Unselect some members or contact the administrator."
+            "PRIVATE_PROJECT": "Privat Projekt"
         },
         "COMMON": {
             "DETAILS": "New project details",
@@ -957,16 +891,7 @@
         "DUPLICATE": {
             "TITLE": "Duplicate Project",
             "DESCRIPTION": "Start clean and keep your configuration",
-            "SELECT_PLACEHOLDER": "Choose an existing project to duplicate",
-            "DETAILS": "New project details",
-            "CREATE_PROJECT_TEXT": "Fräscht och rent. Så trevligt!",
-            "CHOOSE_TEMPLATE_TITLE": "More info about project templates",
-            "CHOOSE_TEMPLATE_INFO": "More info",
-            "PROJECT_DETAILS": "Project Details",
-            "PUBLIC_PROJECT": "Public Project",
-            "PRIVATE_PROJECT": "Privat Projekt",
-            "CREATE_PROJECT": "Skapa projekt",
-            "CHANGE_PLANS": "change plans"
+            "SELECT_PLACEHOLDER": "Choose an existing project to duplicate"
         },
         "IMPORT": {
             "TITLE": "Import Project",
@@ -980,13 +905,10 @@
             "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) är för tungt för våra Oompa Loompier. Försök med något mindre än ({{maxFileSize}})",
             "SYNC_SUCCESS": "Ditt projekt är korrekt importerad",
             "IMPORT": "Import",
-            "ARCHIVED": "Arkiverad",
-            "ARCHIVED_DESCRIPTION": "You have archived projects, Do you want to import your archived projects?",
             "WHO_IS": "Their tasks will be assigned to ...",
-            "WRITE_EMAIL": "Or if you want, write the email that their use in Taiga",
+            "WRITE_EMAIL": "Or if you want, write the email that this user uses in Taiga",
             "SEARCH_CONTACT": "Or if you want, search in your contacts",
-            "WRITE_EMAIL_LABEL": "Write the email that their use in Taiga",
-            "EMAIL_NOT_FOUND": "We did not find any users with that email",
+            "WRITE_EMAIL_LABEL": "Write the email that this user uses in Taiga",
             "ACCEEDE": "Acceede",
             "PROJECT_MEMBERS": "Project Members",
             "PROCESS_DESCRIPTION": "Tell us who from Taiga you want to assign the tasks of {{platform}}",
@@ -998,8 +920,8 @@
             "ASSIGN": "Tilldela",
             "PROJECT_SELECTOR": {
                 "NO_RESULTS": "It looks like nothing was found with your search criteria",
-                "ACTION_SEARCH": "search",
-                "ACTION_BACK": "Back"
+                "ACTION_SEARCH": "sök",
+                "ACTION_BACK": "Baksida"
             },
             "PROJECT_RESTRICTIONS": {
                 "PROJECT_MEMBERS_DESC_PRIVATE": "The project you are trying to import has {{members}} members including you, unfortunately, your current plan allows for a maximum of {{max_memberships}} members per private project. If you would like to increase that limit please contact the administrator.",
@@ -1041,43 +963,36 @@
                 "SELECTOR": "Import your Taiga project"
             },
             "TRELLO": {
-                "TITLE": "Trello",
                 "SELECTOR": "Import your Trello boards into Taiga",
                 "CHOOSE_PROJECT": "Choose board that you want to import",
                 "NO_PROJECTS": "It seems you have no boards in Trello"
             },
             "GITHUB": {
-                "TITLE": "Github",
-                "SELECTOR": "Import your Github project issues",
+                "SELECTOR": "Import your GitHub project issues",
                 "CHOOSE_PROJECT": "Find the project you want to import",
                 "NO_PROJECTS": "It seems you have no porjects in GitHub",
-                "PROJECT_MEMBERS": "Project Members",
                 "HOW_DO_YOU_WANT_TO_IMPORT": "How do you want to import your issues into Taiga?",
                 "KANBAN_PROJECT": "As user stories in a kanban project",
                 "KANBAN_PROJECT_DESCRIPTION": "After that you can enable scrum with backlog.",
                 "SCRUM_PROJECT": "As user stories in a scrum project",
                 "SCRUM_PROJECT_DESCRIPTION": "After that you can enable kanban mode.",
                 "ISSUES_PROJECT": "As issues",
-                "ISSUES_PROJECT_DESCRIPTION": "You will not able to use your issues in kanban or scrum mode. You will be able to enable kanban or scrum for new user stories"
+                "ISSUES_PROJECT_DESCRIPTION": "You will not be able to use your issues in kanban or scrum mode. You will be able to enable kanban or scrum for new user stories"
             },
             "ASANA": {
-                "TITLE": "Asana",
                 "SELECTOR": "Import your Asana project and choose how to manage it",
                 "CHOOSE_PROJECT": "Choose project that you want to import",
                 "NO_PROJECTS": "It seems you have no porjects in Asana",
                 "KANBAN_PROJECT": "Kanban",
                 "SCRUM_PROJECT": "Scrum",
                 "CREATE_AS_SCRUM_DESCRIPTION": "The tasks and sub-tasks of your project will be created as Taiga user stories and tasks.",
-                "CREATE_AS_KANBAN_DESCRIPTION": "The tasks and sub-tasks of your project will be created as Taiga user stories and tasks.",
-                "PROJECT_MEMBERS": "Project Members"
+                "CREATE_AS_KANBAN_DESCRIPTION": "The tasks and sub-tasks of your project will be created as Taiga user stories and tasks."
             },
             "JIRA": {
-                "TITLE": "Jira",
                 "SELECTOR": "Import your Jira project and choose how to manage it",
                 "CHOOSE_PROJECT": "Choose project or board that you want to import",
                 "NO_PROJECTS": "It seems you have no porjects or boards in Jira",
                 "URL": "Your Jira URL",
-                "PROJECT_MEMBERS": "Project Members",
                 "KANBAN_PROJECT": "Kanban",
                 "SCRUM_PROJECT": "Scrum",
                 "ISSUES_PROJECT": "Frågor",
@@ -1091,13 +1006,10 @@
     },
     "LIGHTBOX": {
         "DELETE_ACCOUNT": {
-            "SECTION_NAME": "Ta bort konto",
             "CONFIRM": "Är du säker på att du vill radera kontot?",
-            "NEWSLETTER_LABEL_TEXT": "Jag vill inte motta flera nyhetsbrev",
             "CANCEL": "Tillbaka till inställningar",
             "ACCEPT": "Ta bort konto",
-            "BLOCK_PROJECT": "Notera att alla projekt du äger kommer bli <strong>blockerade</strong> efter att du raderar ditt konto. Om du vill blockera ett projekt, överför ägandet till en annan medlem för respektive projekt innan du raderar ditt konto. ",
-            "SUBTITLE": "Vad tråkigt att du lämnar. Vi kommer finnas här om du någonsin skulle överväga oss igen! :("
+            "BLOCK_PROJECT": "Notera att alla projekt du äger kommer bli <strong>blockerade</strong> efter att du raderar ditt konto. Om du vill blockera ett projekt, överför ägandet till en annan medlem för respektive projekt innan du raderar ditt konto. "
         },
         "DELETE_PROJECT": {
             "TITLE": "Ta bort projekt",
@@ -1217,15 +1129,9 @@
         "ADD_BULK": "Lägg till flera nya användarhistorier",
         "PROMOTED": "Denna US har blivit flyttat från ärende: ",
         "TITLE_LINK_GO_TO_ISSUE": "Gå till ärende",
-        "EXTERNAL_REFERENCE": "Denna användarhistorien är skapat från",
-        "GO_TO_EXTERNAL_REFERENCE": "Gå till början",
-        "BLOCKED": "Användarhistorien är blockerad",
         "TITLE_DELETE_ACTION": "Ta bort användarhistorien",
         "LIGHTBOX_TITLE_BLOKING_US": "Blockera oss",
-        "TASK_COMPLETED": "{{totalClosedTasks}}/{{totalTasks}} uppgifter kompletta",
-        "ASSIGN": "Lägg till användarhistorie",
         "NOT_ESTIMATED": "Ej beräknad",
-        "TOTAL_US_POINTS": "Total US-poäng",
         "TRIBE": {
             "PUBLISH": "Publish as Gig in Taiga Tribe",
             "PUBLISH_INFO": "More info",
@@ -1239,19 +1145,15 @@
         },
         "FIELDS": {
             "TEAM_REQUIREMENT": "Teamets behov",
-            "CLIENT_REQUIREMENT": "Kräver beställare",
-            "FINISH_DATE": "Färdig datum"
+            "CLIENT_REQUIREMENT": "Kräver beställare"
         }
     },
     "COMMENTS": {
         "DELETED_INFO": "Kommentar raderad av {{user}}",
-        "TITLE": "Kommentarer",
         "COMMENTS_COUNT": "{{comments}} Kommentarer",
-        "ORDER": "Sortera",
         "OLDER_FIRST": "Äldre först",
         "RECENT_FIRST": "Senast först",
         "COMMENT": "Kommentarer",
-        "EDIT_COMMENT": "Redigera kommentar",
         "EDITED_COMMENT": "Redigerad:",
         "SHOW_HISTORY": "Se historik",
         "TYPE_NEW_COMMENT": "Skriv en ny kommentar här",
@@ -1264,13 +1166,8 @@
         }
     },
     "ACTIVITY": {
-        "SHOW_ACTIVITY": "Visa aktiviteter",
-        "DATETIME": "YYYY-MM-DD HH:mm",
-        "SHOW_MORE": "+ Visa tidigare poster ({{showMore}} more)",
         "TITLE": "Aktiviteter",
         "ACTIVITIES_COUNT": "{{activities}} Aktiviteter",
-        "REMOVED": "borttaget",
-        "ADDED": "lagt till",
         "TAGS_ADDED": "taggar tillagda",
         "TAGS_REMOVED": "tags removed:",
         "US_POINTS": "{{role}} points",
@@ -1279,50 +1176,21 @@
         "UPDATED_ATTACHMENT": "updated attachment ({{filename}}):",
         "CREATED_CUSTOM_ATTRIBUTE": "created custom attribute",
         "UPDATED_CUSTOM_ATTRIBUTE": "updated custom attribute",
-        "SIZE_CHANGE": "Gjorde {size, plural, one{one change} other{# changes}}",
         "BECAME_DEPRECATED": "became deprecated",
         "BECAME_UNDEPRECATED": "became undeprecated",
         "TEAM_REQUIREMENT": "Teamets behov",
         "CLIENT_REQUIREMENT": "Kräver beställare",
         "BLOCKED": "Blockerad",
         "VALUES": {
-            "YES": "ja",
-            "NO": "nej",
-            "EMPTY": "tom",
             "UNASSIGNED": "otilldelad"
         },
         "FIELDS": {
             "SUBJECT": "titel",
-            "NAME": "namn",
             "DESCRIPTION": "beskrivning",
-            "CONTENT": "innehåll",
             "STATUS": "status",
-            "IS_CLOSED": "är stängd",
-            "FINISH_DATE": "färdig datum",
             "TYPE": "typ",
-            "PRIORITY": "prioritet",
-            "SEVERITY": "Allvarsgrad",
             "ASSIGNED_TO": "tilldelad till",
-            "WATCHERS": "bevakare",
             "MILESTONE": "sprint",
-            "USER_STORY": "Användarhistorie",
-            "PROJECT": "projekt",
-            "IS_BLOCKED": "är blockerad",
-            "BLOCKED_NOTE": "blockerad notering",
-            "POINTS": "poäng",
-            "CLIENT_REQUIREMENT": "kräver beställare",
-            "TEAM_REQUIREMENT": "krav arbetsgrupp",
-            "IS_IOCAINE": "är Iocaine",
-            "TAGS": "etiketter",
-            "ATTACHMENTS": "bilagor",
-            "IS_DEPRECATED": "undviks",
-            "IS_NOT_DEPRECATED": "is not deprecated",
-            "ORDER": "sortera",
-            "BACKLOG_ORDER": "sortera inkorgen",
-            "SPRINT_ORDER": "sortera sprintar",
-            "KANBAN_ORDER": "kanban-sortering",
-            "TASKBOARD_ORDER": "Sortera uppgiftstavlan",
-            "US_ORDER": "sortera US",
             "COLOR": "färg"
         }
     },
@@ -1336,8 +1204,6 @@
         "CUSTOMIZE_GRAPH_TITLE": "Lägg till poäng och sprintar via Administratorn",
         "MOVE_US_TO_CURRENT_SPRINT": "Flytta till nuvarande sprint",
         "MOVE_US_TO_LATEST_SPRINT": "Move to latest Sprint",
-        "SHOW_FILTERS": "Visa filter",
-        "SHOW_TAGS": "Visa etiketter",
         "EMPTY": "Inkorgen är tom!",
         "CREATE_NEW_US": "Skapa en ny US",
         "CREATE_NEW_US_EMPTY_HELP": "Du kanske vill skapa en ny användarhistorie",
@@ -1392,8 +1258,6 @@
         },
         "FILTERS": {
             "TOGGLE": "Växla filtrens synlighet",
-            "TITLE": "Filter",
-            "REMOVE": "Ta bort filter",
             "HIDE": "Dölj filter",
             "SHOW": "Visa filter"
         },
@@ -1402,7 +1266,6 @@
             "DATE": "YYYY-MM-DD",
             "LINK_TASKBOARD": "Sprint uppgiftspanel",
             "TITLE_LINK_TASKBOARD": "Gå till uppgiftspanelen för \"{{name}}\"",
-            "NUMBER_SPRINTS": "<br/>sprintar\n",
             "EMPTY": "Det är inga sprintar än",
             "WARNING_EMPTY_SPRINT_ANONYMOUS": "Den här sprinten har inga användarhistorier",
             "WARNING_EMPTY_SPRINT": "Här kan du föra in användarhistorier från inkorgen för att starta en ny sprint",
@@ -1427,7 +1290,6 @@
         "TITLE_ACTION_ADD": "Lägg till en ny uppgift",
         "TITLE_ACTION_ADD_BULK": "Lägg till några flera nya uppgifter",
         "TITLE_ACTION_ASSIGN": "Tilldela uppgift",
-        "TITLE_ACTION_EDIT": "Ändra uppgiften",
         "PLACEHOLDER_CARD_TITLE": "Det har kan vara en uppgift",
         "PLACEHOLDER_CARD_TEXT": "Dela användarhistorier upp i uppgifter och spåra dem separat",
         "TABLE": {
@@ -1457,17 +1319,11 @@
         "TITLE_SELECT_STATUS": "Status namn",
         "OWNER_US": "Den här uppgiften tillhör",
         "TITLE_LINK_GO_OWNER": "Gå till användarhistorie",
-        "ORIGIN_US": "Den här uppgiften är skapad från",
-        "TITLE_LINK_GO_ORIGIN": "Gå till användarhistorie",
-        "BLOCKED": "Uppgiften är blockerad",
         "TITLE_DELETE_ACTION": "Ta bort uppgift",
         "LIGHTBOX_TITLE_BLOKING_TASK": "Blockerad uppgift",
         "FIELDS": {
-            "MILESTONE": "Sprint",
-            "USER_STORY": "Användarhistorie",
             "IS_IOCAINE": "Är iocaine"
         },
-        "ACTION_IOCAINE": "Iocaine",
         "TITLE_ACTION_IOCAINE": "Känner du dig lite bortkommen med en uppgift? Försäkra dig om att andra känner till uppgiften när du klickar på Iocaine-knappen när du ändrar uppgiften. Det är möjligt att bli immun till det här (påhittade) dödliga giftet om du tar små mängder över tid - och du kan även så småningom om bli bättre på vad du gör när du då och då tar på dig större utmaningar!"
     },
     "NOTIFICATION": {
@@ -1496,14 +1352,12 @@
     "ISSUES": {
         "PAGE_TITLE": "Ärenden - {{projectName}}",
         "PAGE_DESCRIPTION": "Ärenden som listas för projektet {{projectName}}: {{projectDescription}}",
-        "LIST_SECTION_NAME": "Ärenden",
         "SECTION_NAME": "ärende",
         "ACTION_NEW_ISSUE": "+ NYTT ÄRENDE",
         "ACTION_PROMOTE_TO_US": "Flytta till användarhistorie",
         "PROMOTED": "Ärendet har flyttats till US:",
         "EXTERNAL_REFERENCE": "Den här uppgiften är skapat från",
         "GO_TO_EXTERNAL_REFERENCE": "Gå till början",
-        "BLOCKED": "Det här ärendet är blockerad",
         "ACTION_DELETE": "Ta bort ärende",
         "LIGHTBOX_TITLE_BLOKING_ISSUE": "Blockerad ärende",
         "FIELDS": {
@@ -1545,15 +1399,11 @@
         "SECTION_NAME": "Kanban",
         "TITLE_ACTION_FOLD": "Vika i hop kolumnen",
         "TITLE_ACTION_UNFOLD": "Veckla ut kolumnen",
-        "TITLE_ACTION_FOLD_CARDS": "Vika ut kortet",
-        "TITLE_ACTION_UNFOLD_CARDS": "Vika ut korten",
         "TITLE_ACTION_ADD_US": "Lägg till ny användarhistorie",
         "TITLE_ACTION_ADD_BULK": "Lägg till flera nya",
         "ACTION_SHOW_ARCHIVED": "Visa arkiverad",
         "ACTION_HIDE_ARCHIVED": "Dölj arkiverad",
         "HIDDEN_USER_STORIES": "Användarhistorien för den här statusen är dolt som standard",
-        "ARCHIVED": "Du har arkiverad",
-        "UNDO_ARCHIVED": "Dra & släpp på nytt för att göra om",
         "PLACEHOLDER_CARD_TITLE": "Detta är dina användarhistorier",
         "PLACEHOLDER_CARD_TEXT": "Användarhistorier behöver även underuppgifter för att separera kraven."
     },
@@ -1574,7 +1424,6 @@
         "PAGE_TITLE": "Team - {{projectName}}",
         "PAGE_DESCRIPTION": "Panelen för arbetsgrupper visar alla medlemmar i projektet {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Arbetsgrupp",
-        "APP_TITLE": "Arbetsgrupp - {{projectName}}",
         "PLACEHOLDER_INPUT_SEARCH": "Sök på hela namnet ...",
         "COLUMN_MR_WOLF": "Herr Hansson",
         "EXPLANATION_COLUMN_MR_WOLF": "Stängda ärenden",
@@ -1610,18 +1459,9 @@
             "OPTION_ALL": "Alla",
             "OPTION_INVOLVED": "Involverad",
             "OPTION_NONE": "Ingen"
-        },
-        "POPOVER": {
-            "USER_PROFILE": "Användarprofil",
-            "CHANGE_PASSWORD": "Ändra lösenord",
-            "NOTIFICATIONS": "Notifieringar",
-            "FEEDBACK": "Återkoppling",
-            "TITLE_AVATAR": "Inställningar för användare"
         }
     },
     "USER_PROFILE": {
-        "IMAGE_HELP": "Bilden kommer skalas till 80x80px.",
-        "ACTION_CHANGE_IMAGE": "Ändra",
         "ACTION_USE_GRAVATAR": "Use default image",
         "ACTION_DELETE_ACCOUNT": "Ta bort Taiga-kontot",
         "CHANGE_EMAIL_SUCCESS": "<strong>Kontrollera din inbox!</strong><br/>Vi har skickad dig ett e-postmeddelande<br/> med instruktioner för hur du sätter upp din nya adress",
@@ -1643,7 +1483,6 @@
         "PAGE_TITLE": "{{wikiPageName}} - Wiki - {{projectName}}",
         "PAGE_DESCRIPTION": "Senaste ändringar utförd {{lastModifiedDate}} ({{totalEditions}} editions in total) Innehållt: {{ wikiPageContent }}",
         "DATETIME": "YYYY-MM-DD HH:mm",
-        "PLACEHOLDER_PAGE": "Skriv din wiki-sida",
         "REMOVE": "Ta bort den här wiki-sidan",
         "DELETE_LIGHTBOX_TITLE": "Ta bort Wiki-sida",
         "DELETE_LINK_TITLE": "Ta bort wiki-länk",
@@ -1801,7 +1640,6 @@
         "MOST_LIKED": "Most liked",
         "MOST_LIKED_EMPTY": "There are no LIKED projects yet",
         "VIEW_MORE": "View more",
-        "RECRUITING": "Detta projekt söker efter personer",
         "FEATURED": "Featured Projects",
         "EMPTY": "There are no projects to show with this search criteria.<br> Try again!",
         "FILTERS": {
