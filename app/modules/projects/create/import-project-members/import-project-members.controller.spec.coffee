@@ -315,6 +315,7 @@ describe "ImportProjectMembersCtrl", ->
         ctrl = $controller("ImportProjectMembersCtrl")
 
         ctrl.isImportMoreUsersDisabled = sinon.stub().returns(false)
+        ctrl.displayEmailSelector = false
 
         ctrl.userContacts = Immutable.fromJS([1])
         ctrl.currentUser = 2
@@ -322,14 +323,16 @@ describe "ImportProjectMembersCtrl", ->
         ctrl.refreshSelectableUsers()
 
         expect(ctrl.selectableUsers.toJS()).to.be.eql([1, 2])
+        expect(ctrl.displayEmailSelector).to.be.true
 
 
-     it "refresh selectable users array with the selected ones", () ->
+     it.only "refresh selectable users array with the selected ones", () ->
         ctrl = $controller("ImportProjectMembersCtrl")
 
         ctrl.getDistinctSelectedTaigaUsers = sinon.stub().returns(Immutable.fromJS([
             {taigaUser: 1}
         ]))
+        ctrl.displayEmailSelector = false
 
         ctrl.isImportMoreUsersDisabled = sinon.stub().returns(true)
 
@@ -339,6 +342,7 @@ describe "ImportProjectMembersCtrl", ->
         ctrl.refreshSelectableUsers()
 
         expect(ctrl.selectableUsers.toJS()).to.be.eql([1, 2])
+        expect(ctrl.displayEmailSelector).to.be.false
 
     it "import more user disable in private project", () ->
         ctrl = $controller("ImportProjectMembersCtrl")
