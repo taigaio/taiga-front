@@ -1,6 +1,6 @@
 # Changelog #
 
-## 3.1.0 No name yet (no date yet)
+## 3.1.0 Perovskia Atriplicifolia (2017-03-10)
 
 ### Features
 - New project creation form: Now you can:
