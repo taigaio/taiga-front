@@ -6,7 +6,7 @@ var MentionExtension = MediumEditor.Extension.extend({
         this.subscribe('blur', this.cancel.bind(this));
     },
     isEditMode: function() {
-        return !this.base.origElements.parentNode.classList.contains('read-mode')
+        return !this.base.origElements.parentNode.classList.contains('read-mode');
     },
     cancel: function() {
         if (this.isEditMode()) {
@@ -248,7 +248,7 @@ var MentionExtension = MediumEditor.Extension.extend({
                 li.innerText = '@' + it.username;
             }
 
-            li.addEventListener('click', this.selectMention.bind(this, it));
+            li.addEventListener('mousedown', this.selectMention.bind(this, it));
 
             ul.appendChild(li);
         }.bind(this));

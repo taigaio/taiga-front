@@ -56,3 +56,12 @@
         title="{{ 'COMMON.CANCEL' | translate }}"
     )
         tg-svg(svg-icon="icon-close")
+
+tg-wysiwyg-code-lightbox.lightbox.lightbox-generic-form(
+  languages="codeLans"
+  code-language="currentCodeLanguage"
+  code="code"
+  visible="codeEditorVisible"
+  on-close="codeEditorVisible = false"
+  on-save="saveSnippet(lan, code)"
+)

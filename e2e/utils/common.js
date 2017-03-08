@@ -20,6 +20,20 @@ common.getElm = function(el) {
     return deferred.promise;
 };
 
+common.waitElementNotPresent = function(el) {
+    return browser.wait(function() {
+        return el.isPresent().then(function(present) {
+            return !present;
+        });
+    });
+};
+
+common.waitElementPresent = function(el) {
+    return browser.wait(function() {
+        return el.isPresent();
+    });
+};
+
 common.hasClass = async function (element, cls) {
     let classes = await element.getAttribute('class');
 
