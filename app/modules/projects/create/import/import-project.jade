@@ -3,20 +3,20 @@
 
     ul.import-project-from
         li.import-project-from-site(
-            tg-click-input-file,
+            tg-click-input-file
             tg-import-taiga
         )
-        li.import-project-from-site(ng-click="vm.unfoldOptions('jira')", ng-if="vm.isActiveImporter('jira')")
+        li.import-project-from-site(
+            ng-click="vm.unfoldOptions('jira')"
+            ng-if="vm.isActiveImporter('jira')"
+        )
             .import-project-logo
                 img(
                     src="/#{v}/images/import-logos/jira.png"
                     alt="Jira Logo"
                 )
             .import-project-name-wrapper
-                a.import-project-name(
-                    href="#"
-                    title="Jira"
-                ) Jira
+                span.import-project-name Jira
                 p.import-project-description(translate="PROJECT.IMPORT.JIRA.SELECTOR")
                 fieldset.import-project-url(ng-if="vm.unfoldedOptions == 'jira'")
                     label(
@@ -33,46 +33,47 @@
                         title="{{'PROJECT.IMPORT.ACCEEDE' | translate}}"
                         translate="PROJECT.IMPORT.ACCEEDE"
                     )
-        li.import-project-from-site(ng-click="vm.select('github')", ng-if="vm.isActiveImporter('github')")
+        li.import-project-from-site(
+            ng-click="vm.select('github')"
+            ng-if="vm.isActiveImporter('github')"
+        )
             .import-project-logo
                 img(
                     src="/#{v}/images/import-logos/github.png"
                     alt="Github Logo"
                 )
             .import-project-name-wrapper
-                a.import-project-name(
-                    href="#"
-                    title="Github"
-                ) Github
+                span.import-project-name Github
                 p.import-project-description(translate="PROJECT.IMPORT.GITHUB.SELECTOR")
-        li.import-project-from-site(ng-click="vm.select('trello')", ng-if="vm.isActiveImporter('trello')")
+        li.import-project-from-site(
+            ng-click="vm.select('trello')"
+            ng-if="vm.isActiveImporter('trello')"
+        )
             .import-project-logo
                 img(
                     src="/#{v}/images/import-logos/trello.png"
                     alt="Trello Logo"
                 )
             .import-project-name-wrapper
-                a.import-project-name(
-                    href="#"
-                    title="Trello"
-                ) Trello
+                span.import-project-name Trello
                 p.import-project-description(translate="PROJECT.IMPORT.TRELLO.SELECTOR")
-        li.import-project-from-site(ng-click="vm.select('asana')", ng-if="vm.isActiveImporter('asana')")
+        li.import-project-from-site(
+            ng-click="vm.select('asana')"
+            ng-if="vm.isActiveImporter('asana')"
+        )
             .import-project-logo
                 img(
                     src="/#{v}/images/import-logos/asana.png"
                     alt="Asana Logo"
                 )
             .import-project-name-wrapper
-                a.import-project-name(
-                    href="#"
-                    title="Asana"
-                ) Asana
+                span.import-project-name Asana
                 p.import-project-description(translate="PROJECT.IMPORT.ASANA.SELECTOR")
 
     .create-project-action
-        a.trans-button.create-project-action-back(
-            tg-nav="create-project",
+        button.trans-button.create-project-action-cancel(
+            type="button"
+            ng-click="vm.backToCreate()"
             title="{{'PROJECT.CREATE.BACK' | translate}}"
             translate="PROJECT.CREATE.BACK"
         )

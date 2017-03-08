@@ -110,4 +110,7 @@ class ImportProjectController
     cancelCurrentImport: () ->
         @location.url(@tgNavUrls.resolve('create-project-import'))
 
+    backToCreate: () ->
+        @location.url(@tgNavUrls.resolve('create-project'))
+
 angular.module("taigaProjects").controller("ImportProjectCtrl", ImportProjectController)

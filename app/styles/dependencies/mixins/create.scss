@@ -36,26 +36,26 @@
         }
     }
 
-    &-description,
-    &-title {
-        text-align: center;
-    }
-
-    &-title {
+    &-title-wrapper {
         align-items: center;
         display: flex;
         justify-content: center;
         margin-bottom: 0;
 
-        tg-svg {
-            display: flex;
+        .create-project-title {
+            display: inline-block;
         }
-
         .icon {
-            @include svg-size(1.5rem);
+            @include svg-size(1.75rem);
             margin-right: .5rem;
             vertical-align: middle;
         }
+    }
+
+    &-title,
+    &-description {
+        margin: 0;
+        text-align: center;
     }
 
     &-description {
@@ -115,6 +115,9 @@
             display: flex;
             justify-content: center;
             position: relative;
+            &:hover {
+                color: currentColor;
+            }
         }
         li {
             &:hover {
