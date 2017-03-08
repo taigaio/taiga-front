@@ -339,7 +339,7 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService,
             inserted = _.find itemtags, (it) -> it[0] == value
 
             if !inserted
-                itemtags.push([tag , color])
+                itemtags.push([value , color])
                 $scope.us.tags = itemtags
 
         $scope.deleteTag = (tag) ->
