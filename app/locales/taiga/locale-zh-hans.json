@@ -570,7 +570,7 @@
             "ACTION_ADD": "新增严重程度"
         },
         "PROJECT_VALUES_STATUS": {
-            "TITLE": "状态",
+            "TITLE": "Statuses",
             "SUBTITLE": "指明你的用户故事，任务以及问题经历的状态",
             "EPIC_TITLE": "史诗状态",
             "US_TITLE": "用户故事状态",

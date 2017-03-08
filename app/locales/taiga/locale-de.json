@@ -570,7 +570,7 @@
             "ACTION_ADD": "Neue Gewichtung hinzufügen"
         },
         "PROJECT_VALUES_STATUS": {
-            "TITLE": "Status",
+            "TITLE": "Statuses",
             "SUBTITLE": "Spezifizieren Sie die Status, die Ihre User-Stories, Aufgaben und Tickets durchlaufen werden.",
             "EPIC_TITLE": "Epic Status",
             "US_TITLE": "User-Story Status",

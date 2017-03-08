@@ -570,7 +570,7 @@
             "ACTION_ADD": "심각도 추가하기"
         },
         "PROJECT_VALUES_STATUS": {
-            "TITLE": "상태",
+            "TITLE": "Statuses",
             "SUBTITLE": "유저 스토리, 태스크 그리고 이슈의 상태를 지정하세요.",
             "EPIC_TITLE": "에픽 상태",
             "US_TITLE": "유저 스토리 상태",

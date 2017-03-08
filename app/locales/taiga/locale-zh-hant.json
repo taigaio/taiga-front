@@ -570,7 +570,7 @@
             "ACTION_ADD": "新增急迫性"
         },
         "PROJECT_VALUES_STATUS": {
-            "TITLE": "狀態",
+            "TITLE": "Statuses",
             "SUBTITLE": "指明你的使用者故事狀態，任務以及經歷問題　",
             "EPIC_TITLE": "Epic Statuses",
             "US_TITLE": "User Story Statuses",

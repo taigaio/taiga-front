@@ -570,7 +570,7 @@
             "ACTION_ADD": "Yeni önem derecesi ekle"
         },
         "PROJECT_VALUES_STATUS": {
-            "TITLE": "Durum",
+            "TITLE": "Statuses",
             "SUBTITLE": "Hikayeleriniz, işleriniz ve sorunlarınızın alabileceği durumları tanımlayın",
             "EPIC_TITLE": "Epic Statuses",
             "US_TITLE": "User Story Statuses",

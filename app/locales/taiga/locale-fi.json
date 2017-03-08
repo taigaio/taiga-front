@@ -570,7 +570,7 @@
             "ACTION_ADD": "Lisää uusi vakavuus"
         },
         "PROJECT_VALUES_STATUS": {
-            "TITLE": "Tila",
+            "TITLE": "Statuses",
             "SUBTITLE": "Määrittele tilat joiden kautta käyttäjätarinasi, tehtäväsi ja pyyntösi kulkevat",
             "EPIC_TITLE": "Epic Statuses",
             "US_TITLE": "User Story Statuses",

@@ -570,7 +570,7 @@
             "ACTION_ADD": "Aggiungi una nuova criticità."
         },
         "PROJECT_VALUES_STATUS": {
-            "TITLE": "Stato",
+            "TITLE": "Statuses",
             "SUBTITLE": "Specifica lo stato delle storie utente, i compiti e i problemi saranno affrontati",
             "EPIC_TITLE": "Stati dell'epic",
             "US_TITLE": "Stati della storia utente",

@@ -570,7 +570,7 @@
             "ACTION_ADD": "Añadir nueva gravedad"
         },
         "PROJECT_VALUES_STATUS": {
-            "TITLE": "Estado",
+            "TITLE": "Statuses",
             "SUBTITLE": "Especifica los estado que atravesarán tus historias de usuario, tareas y peticiones",
             "EPIC_TITLE": "Estados de Epicas",
             "US_TITLE": "Estados de historias de usuario",

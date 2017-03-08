@@ -570,7 +570,7 @@
             "ACTION_ADD": "Ajouter un niveau de gravité"
         },
         "PROJECT_VALUES_STATUS": {
-            "TITLE": "Statut",
+            "TITLE": "Statuses",
             "SUBTITLE": "Spécifiez les statuts que vont prendre vos récits utilisateur, tâches et tickets",
             "EPIC_TITLE": "Statuts d'épopée",
             "US_TITLE": "Statuts de récit utilisateur",

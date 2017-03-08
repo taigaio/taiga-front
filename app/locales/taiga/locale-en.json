@@ -571,7 +571,7 @@
             "ACTION_ADD": "Add new severity"
         },
         "PROJECT_VALUES_STATUS": {
-            "TITLE": "Status",
+            "TITLE": "Statuses",
             "SUBTITLE": "Specify the statuses your user stories, tasks and issues will go through",
             "EPIC_TITLE": "Epic Statuses",
             "US_TITLE": "User Story Statuses",

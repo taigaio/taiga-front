@@ -570,7 +570,7 @@
             "ACTION_ADD": "新しい深刻度を追加"
         },
         "PROJECT_VALUES_STATUS": {
-            "TITLE": "ステータス",
+            "TITLE": "Statuses",
             "SUBTITLE": "ユーザーストーリー、タスク、課題のステータスを定義することができます。",
             "EPIC_TITLE": "エピックステータス",
             "US_TITLE": "ユーザーストーリーステータス",

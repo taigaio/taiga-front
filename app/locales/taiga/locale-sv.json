@@ -570,7 +570,7 @@
             "ACTION_ADD": "Lägg till ny allvarlighetsgrad"
         },
         "PROJECT_VALUES_STATUS": {
-            "TITLE": "Status",
+            "TITLE": "Statuses",
             "SUBTITLE": "Specificera status för dina användarhistorier, uppgifter och ärenden ska ha i olika faser. ",
             "EPIC_TITLE": "Status för Epics",
             "US_TITLE": "User Story Statuses",

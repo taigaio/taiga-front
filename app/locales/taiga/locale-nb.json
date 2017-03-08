@@ -570,7 +570,7 @@
             "ACTION_ADD": "Legg til ny alvorlighetsgrad"
         },
         "PROJECT_VALUES_STATUS": {
-            "TITLE": "Status",
+            "TITLE": "Statuses",
             "SUBTITLE": "Angi statusene som dine brukerhistorier, oppgaver og hendelser vil følge",
             "EPIC_TITLE": "Epic Statuses",
             "US_TITLE": "User Story Statuses",

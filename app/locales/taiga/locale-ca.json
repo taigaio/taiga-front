@@ -570,7 +570,7 @@
             "ACTION_ADD": "Afegir nova severitat"
         },
         "PROJECT_VALUES_STATUS": {
-            "TITLE": "Estat",
+            "TITLE": "Statuses",
             "SUBTITLE": "Especifica els estats de les vostres històries d'usuari, tasques i incidències",
             "EPIC_TITLE": "Epic Statuses",
             "US_TITLE": "User Story Statuses",

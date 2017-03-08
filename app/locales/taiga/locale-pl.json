@@ -570,7 +570,7 @@
             "ACTION_ADD": "Dodaj nową ważność"
         },
         "PROJECT_VALUES_STATUS": {
-            "TITLE": "Status",
+            "TITLE": "Statuses",
             "SUBTITLE": "Zdefiniuj statusy dla historyjek użytkownika, zadań i zgłoszeń.",
             "EPIC_TITLE": "Epic Statuses",
             "US_TITLE": "User Story Statuses",

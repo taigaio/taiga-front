@@ -570,7 +570,7 @@
             "ACTION_ADD": "Nieuwe ernst toevoegen"
         },
         "PROJECT_VALUES_STATUS": {
-            "TITLE": "Status",
+            "TITLE": "Statuses",
             "SUBTITLE": "Specifieer de statussen waar je user stories, taken en issues door zullen gaan",
             "EPIC_TITLE": "Epic Statuses",
             "US_TITLE": "User Story Statuses",
