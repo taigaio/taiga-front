@@ -38,9 +38,12 @@
                 translate="LOGIN_COMMON.ACTION_SIGN_IN"
             )
 
-        fieldset(
-            ng-repeat="plugin in contribPlugins|filter:{type: 'auth'}"
-            ng-include="plugin.template"
-        )
+        .contrib-plugins-wrapper(ng-if="contribPlugins.length")
+            label(translate="LOGIN_COMMON.ALT_LOGIN")
+
+            fieldset(
+                ng-repeat="plugin in contribPlugins|filter:{type: 'auth'}"
+                ng-include="plugin.template"
+            )
 
     tg-public-register-message
