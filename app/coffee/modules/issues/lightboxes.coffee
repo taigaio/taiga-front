@@ -78,6 +78,10 @@ CreateIssueDirective = ($repo, $confirm, $rootscope, lightboxService, $loading, 
         $scope.addAttachment = (attachment) ->
             attachmentsToAdd = attachmentsToAdd.push(attachment)
 
+        $scope.deleteAttachment = (attachment) ->
+            attachmentsToAdd = attachmentsToAdd.filter (it) ->
+                return it.get('name') != attachment.get('name')
+
         $scope.addTag = (tag, color) ->
             value = trim(tag.toLowerCase())
 

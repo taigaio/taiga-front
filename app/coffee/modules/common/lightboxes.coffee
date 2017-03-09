@@ -315,6 +315,9 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService,
             attachmentsToAdd = attachmentsToAdd.push(attachment)
 
         $scope.deleteAttachment = (attachment) ->
+            attachmentsToAdd = attachmentsToAdd.filter (it) ->
+                return it.get('name') != attachment.get('name')
+
             if attachment.get("id")
                 attachmentsToDelete = attachmentsToDelete.push(attachment)
 
