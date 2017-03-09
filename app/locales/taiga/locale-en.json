@@ -215,6 +215,7 @@
         },
         "WYSIWYG": {
             "CODE_SNIPPET": "Code Snippet",
+            "DB_CLICK": "double click to edit",
             "SELECT_LANGUAGE_PLACEHOLDER": "Select Language",
             "SELECT_LANGUAGE_REMOVE_FORMATING": "Remove formatting",
             "OUTDATED": "Another person has made changes while you were editing. Check the new version on the activiy tab before you save your changes.",
