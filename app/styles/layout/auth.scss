@@ -23,7 +23,7 @@
     }
     .logo {
         @include font-size(xxlarge);
-        @include font-type(text);
+        @include font-type(light);
         color: $white;
         margin-bottom: 1rem;
         text-align: center;

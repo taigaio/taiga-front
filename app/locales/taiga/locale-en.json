@@ -290,7 +290,8 @@
         "TITLE_LINK_FORGOT_PASSWORD": "Did you forget your password?",
         "ACTION_ENTER": "Enter",
         "ACTION_SIGN_IN": "Login",
-        "PLACEHOLDER_AUTH_PASSWORD": "Password (case sensitive)"
+        "PLACEHOLDER_AUTH_PASSWORD": "Password (case sensitive)",
+        "ALT_LOGIN": "Or login with"
     },
     "LOGIN_FORM": {
         "ERROR_AUTH_INCORRECT": "According to our Oompa Loompas, your username/email or password are incorrect.",

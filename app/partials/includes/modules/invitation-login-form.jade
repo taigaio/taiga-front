@@ -30,10 +30,15 @@ form.login-form
         )
 
     fieldset
-        a.button-login.button-blackish.submit-button(
+        button.button-green.submit-button(
             type="submit"
-            title="{{'LOGIN_COMMON.ACTION_ENTER' | translate}}"
             translate="LOGIN_COMMON.ACTION_ENTER"
         )
+        
+    .contrib-plugins-wrapper(ng-if="contribPlugins.length")
+        label(translate="LOGIN_COMMON.ALT_LOGIN")
 
-    fieldset(ng-repeat="plugin in contribPlugins|filter:{type: 'auth'}", ng-include="plugin.template")
+        fieldset(
+            ng-repeat="plugin in contribPlugins|filter:{type: 'auth'}"
+            ng-include="plugin.template"
+        )
