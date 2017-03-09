@@ -251,7 +251,11 @@ describe "tgEpicsService", ->
       mocks.tgResources.epics.reorder
           .withArgs(3, {epics_order: 2, version: 1}, {1: 1})
           .promise()
-          .resolve()
+          .resolve(Immutable.fromJS({
+              id: 3
+              epics_order: 3
+              version: 2
+          }))
 
       epicsService.reorderEpic(epicsService._epics.get(2), 1)
 
