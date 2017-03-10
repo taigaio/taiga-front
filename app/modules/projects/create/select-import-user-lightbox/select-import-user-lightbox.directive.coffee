@@ -40,9 +40,10 @@ SelectImportUserLightboxDirective = (lightboxService, lightboxKeyboardNavigation
             onClose: '&',
             onSelectUser: '&',
             selectableUsers: '<',
-            isPrivate: '=',
-            limitMembersPrivateProject: '=',
-            limitMembersPublicProject: '='
+            isPrivate: '<',
+            limitMembersPrivateProject: '<',
+            limitMembersPublicProject: '<',
+            displayEmailSelector: '<'
         },
         templateUrl: 'projects/create/select-import-user-lightbox/select-import-user-lightbox.html'
         link: link

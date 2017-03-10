@@ -26,6 +26,7 @@ class ImportProjectMembersController
     constructor: (@currentUserService, @userService) ->
         @.selectImportUserLightbox = false
         @.warningImportUsers = false
+        @.displayEmailSelector = true
         @.cancelledUsers = Immutable.List()
         @.selectedUsers = Immutable.List()
         @.selectableUsers = Immutable.List()
@@ -56,6 +57,7 @@ class ImportProjectMembersController
         user = user.set('taigaUser', taigaUser)
 
         @.selectedUsers = @.selectedUsers.push(user)
+
         @.discardSuggestedUser(externalUser)
 
         @.refreshSelectableUsers()
@@ -130,8 +132,10 @@ class ImportProjectMembersController
             users = @.getDistinctSelectedTaigaUsers()
 
             @.selectableUsers = users.map (it) -> return it.get('taigaUser')
+            @.displayEmailSelector = false
         else
             @.selectableUsers = @.userContacts
+            @.displayEmailSelector = true
 
         @.selectableUsers = @.selectableUsers.push(@.currentUser)
 

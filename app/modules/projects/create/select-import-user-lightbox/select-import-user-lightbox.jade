@@ -23,7 +23,10 @@ tg-lightbox-close(on-close="vm.onClose()")
             translate-values="{'members': vm.limitMembersPrivateProject.max}"
         )
 
-    form(ng-if="vm.mode == 'mail'", ng-submit="vm.assignUser()")
+    form(
+        ng-if="vm.mode == 'mail'"
+        ng-submit="vm.assignUser()"
+    )
         div.create-project-warning
             tg-svg(svg-icon="icon-exclamation")
             span(translate="PROJECT.IMPORT.WARNING_MAIL_USER")
@@ -73,12 +76,13 @@ tg-lightbox-close(on-close="vm.onClose()")
                         img(tg-avatar="user")
                 a.user-list-name(
                     href=""
-                    title="{{user.full_name_display || user.full_name}}"
-                ) {{user.full_name_display || user.full_name}}
+                    title="{{user.full_name_display || user.full_name || user}}"
+                ) {{user.full_name_display || user.full_name || user}}
 
-            .more-users(ng-if="filteredCollection.length >= 5")
+            .more-users(ng-if="filteredCollection.length > 5")
                 span(translate="COMMON.ASSIGNED_TO.TOO_MANY")
 
         button.search-user-mode(
             ng-click="vm.mode = 'mail'"
+            ng-if="vm.displayEmailSelector"
         ) {{'PROJECT.IMPORT.WRITE_EMAIL' | translate}}
