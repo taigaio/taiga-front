@@ -89,6 +89,9 @@ Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoad
 
             pre.setAttribute('title', $translate.instant("COMMON.WYSIWYG.DB_CLICK"))
 
+            # prevent text selection in firefox
+            pre.addEventListener 'mousedown', (e) -> e.preventDefault()
+
             if pre.nextElementSibling && pre.nextElementSibling.nodeName.toLowerCase() == 'p' && !pre.nextElementSibling.children.length
                 pre.nextElementSibling.appendChild(document.createElement('br'))
 
