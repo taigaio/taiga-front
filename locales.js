@@ -1,4 +1,4 @@
-var glob = require('glob')
+var glob = require('glob');
 var inquirer = require('inquirer');
 var fs = require('fs');
 var _ = require('lodash');
@@ -28,13 +28,14 @@ inquirer.prompt([question], function( answer ) {
     if (answer.command === 'find-duplicates') findDuplicates();
 });
 
+findDuplicates();
+
 function replaceKeys() {
     question()
         .then(searchKey)
         .then(printFiles)
         .then(confirm)
-        .then(replace)
-
+        .then(replace);
 
     function question() {
         return new Promise(function (resolve, reject) {
@@ -120,7 +121,8 @@ function replaceKeys() {
 
 
 function findDuplicates() {
-    glob(app + 'locales/*.json', {}, function (er, files) {
+    glob(app + 'locales/taiga/*.json', {}, function (er, files) {
+        console.log(files);
         files.forEach(duplicates);
     });
 

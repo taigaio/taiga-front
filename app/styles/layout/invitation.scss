@@ -5,6 +5,7 @@
     background-size: cover;
     display: flex;
     flex: 1;
+    height: 100vh;
     justify-content: center;
     z-index: 999;
     .invitation-container {
@@ -105,6 +106,12 @@
         width: 400px;
         .login-form {
             border-right: 0;
+        }
+    }
+
+    .contrib-plugins-wrapper {
+        label {
+            color: $whitish;
         }
     }
 }

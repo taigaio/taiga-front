@@ -1,5 +1,3 @@
-include ../../../partials/common/components/wysiwyg.jade
-
 section.comments
     .comments-wrapper
         tg-comment.comment(
@@ -15,25 +13,11 @@ section.comments
             on-edit-mode="vm.onEditMode({commentId: commentId})"
             on-delete-comment="vm.onDeleteComment({commentId: commentId})"
             on-restore-deleted-comment="vm.onRestoreDeletedComment({commentId: commentId})"
-            on-edit-comment="vm.onEditComment({commentId: commentId, commentData: commentData})"
+            on-edit-comment="vm.onEditComment({commentId: commentId, commentData: commentData, callback: callback})"
         )
-    tg-editable-wysiwyg.add-comment(
-        ng-model="vm.type"
+
+    tg-comment-wysiwyg(
         tg-check-permission="{{::vm.canAddCommentPermission}}"
-        tg-toggle-comment
+        on-update="updateComment(text)"
+        type="vm.type"
     )
-        textarea(
-            ng-attr-placeholder="{{'COMMENTS.TYPE_NEW_COMMENT' | translate}}"
-            tg-markitup="tg-markitup"
-            ng-model="vm.type.comment"
-        )
-        +wysihelp
-        .save-comment-wrapper
-            button.button-green.save-comment(
-                type="button"
-                title="{{'COMMENTS.COMMENT' | translate}}"
-                translate="COMMENTS.COMMENT"
-                ng-disabled="!vm.type.comment.length || vm.loading"
-                ng-click="vm.onAddComment()"
-                tg-loading="vm.loading"
-            )

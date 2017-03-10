@@ -32,3 +32,8 @@
         max-width: 800px;
     }
 }
+
+.empty-filter {
+    @extend %empty;
+    margin-top: 1rem;
+}

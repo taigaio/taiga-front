@@ -1,5 +1,5 @@
 ###
-# Copyright (C) 2014-2016 Taiga Agile LLC <taiga@taiga.io>
+# Copyright (C) 2014-2017 Taiga Agile LLC <taiga@taiga.io>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -25,6 +25,14 @@ FilterDirective = () ->
                 unwatch()
             else if scope.vm.filtersForm.$dirty
                 unwatch()
+
+        attrs.$observe "open", (open) ->
+            open = scope.$eval(open)
+
+            if open
+                el.addClass('open')
+            else
+                el.removeClass('open')
 
     return {
         scope: {

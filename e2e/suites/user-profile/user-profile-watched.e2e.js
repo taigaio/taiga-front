@@ -16,7 +16,7 @@ describe('user profile - watched', function() {
 
             $$('.tab').get(3).click();
 
-            await helper.waitLoader();
+            await browser.waitForAngular();
 
             utils.common.takeScreenshot('user-profile', 'current-user-watched');
         });
@@ -42,62 +42,62 @@ describe('user profile - watched', function() {
         });
 
         it('watched tab - filter projects', async function() {
-            let allItems = await $('div[infinite-scroll]').getInnerHtml();
+            let allItems = await $('div[infinite-scroll]').getAttribute("innerHTML");
 
             await $$('div.filters > a').get(1).click();
 
             await browser.waitForAngular();
 
-            let filteredItems = await $('div[infinite-scroll]').getInnerHtml();
+            let filteredItems = await $('div[infinite-scroll]').getAttribute("innerHTML");
 
             expect(allItems).to.be.not.equal(filteredItems);
         });
 
 
         it('watched tab - filter epics', async function() {
-            let allItems = await $('div[infinite-scroll]').getInnerHtml();
+            let allItems = await $('div[infinite-scroll]').getAttribute("innerHTML");
 
             await $$('div.filters > a').get(2).click();
 
             await browser.waitForAngular();
 
-            let filteredItems = await $('div[infinite-scroll]').getInnerHtml();
+            let filteredItems = await $('div[infinite-scroll]').getAttribute("innerHTML");
 
             expect(allItems).to.be.not.equal(filteredItems);
         });
 
         it('watched tab - filter user stories', async function() {
-            let allItems = await $('div[infinite-scroll]').getInnerHtml();
+            let allItems = await $('div[infinite-scroll]').getAttribute("innerHTML");
 
             await $$('div.filters > a').get(3).click();
 
             await browser.waitForAngular();
 
-            let filteredItems = await $('div[infinite-scroll]').getInnerHtml();
+            let filteredItems = await $('div[infinite-scroll]').getAttribute("innerHTML");
 
             expect(allItems).to.be.not.equal(filteredItems);
         });
 
         it('watched tab - filter tasks', async function() {
-            let allItems = await $('div[infinite-scroll]').getInnerHtml();
+            let allItems = await $('div[infinite-scroll]').getAttribute("innerHTML");
 
             await $$('div.filters > a').get(4).click();
 
             await browser.waitForAngular();
 
-            let filteredItems = await $('div[infinite-scroll]').getInnerHtml();
+            let filteredItems = await $('div[infinite-scroll]').getAttribute("innerHTML");
 
             expect(allItems).to.be.not.equal(filteredItems);
         });
 
         it('watched tab - filter issues', async function() {
-            let allItems = await $('div[infinite-scroll]').getInnerHtml();
+            let allItems = await $('div[infinite-scroll]').getAttribute("innerHTML");
 
             await $$('div.filters > a').get(5).click();
 
             await browser.waitForAngular();
 
-            let filteredItems = await $('div[infinite-scroll]').getInnerHtml();
+            let filteredItems = await $('div[infinite-scroll]').getAttribute("innerHTML");
 
             expect(allItems).to.be.not.equal(filteredItems);
         });
@@ -157,61 +157,61 @@ describe('user profile - watched', function() {
         });
 
         it('watched tab - filter projects', async function() {
-            let allItems = await $('div[infinite-scroll]').getInnerHtml();
+            let allItems = await $('div[infinite-scroll]').getAttribute("innerHTML");
 
             await $$('div.filters > a').get(1).click();
 
             await browser.waitForAngular();
 
-            let filteredItems = await $('div[infinite-scroll]').getInnerHtml();
+            let filteredItems = await $('div[infinite-scroll]').getAttribute("innerHTML");
 
             expect(allItems).to.be.not.equal(filteredItems);
         });
 
         it('watched tab - filter epics', async function() {
-            let allItems = await $('div[infinite-scroll]').getInnerHtml();
+            let allItems = await $('div[infinite-scroll]').getAttribute("innerHTML");
 
             await $$('div.filters > a').get(2).click();
 
             await browser.waitForAngular();
 
-            let filteredItems = await $('div[infinite-scroll]').getInnerHtml();
+            let filteredItems = await $('div[infinite-scroll]').getAttribute("innerHTML");
 
             expect(allItems).to.be.not.equal(filteredItems);
         });
 
         it('watched tab - filter user stories', async function() {
-            let allItems = await $('div[infinite-scroll]').getInnerHtml();
+            let allItems = await $('div[infinite-scroll]').getAttribute("innerHTML");
 
             await $$('div.filters > a').get(3).click();
 
             await browser.waitForAngular();
 
-            let filteredItems = await $('div[infinite-scroll]').getInnerHtml();
+            let filteredItems = await $('div[infinite-scroll]').getAttribute("innerHTML");
 
             expect(allItems).to.be.not.equal(filteredItems);
         });
 
         it('watched tab - filter tasks', async function() {
-            let allItems = await $('div[infinite-scroll]').getInnerHtml();
+            let allItems = await $('div[infinite-scroll]').getAttribute("innerHTML");
 
             await $$('div.filters > a').get(4).click();
 
             await browser.waitForAngular();
 
-            let filteredItems = await $('div[infinite-scroll]').getInnerHtml();
+            let filteredItems = await $('div[infinite-scroll]').getAttribute("innerHTML");
 
             expect(allItems).to.be.not.equal(filteredItems);
         });
 
         it('watched tab - filter issues', async function() {
-            let allItems = await $('div[infinite-scroll]').getInnerHtml();
+            let allItems = await $('div[infinite-scroll]').getAttribute("innerHTML");
 
             await $$('div.filters > a').get(5).click();
 
             await browser.waitForAngular();
 
-            let filteredItems = await $('div[infinite-scroll]').getInnerHtml();
+            let filteredItems = await $('div[infinite-scroll]').getAttribute("innerHTML");
 
             expect(allItems).to.be.not.equal(filteredItems);
         });

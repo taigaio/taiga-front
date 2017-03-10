@@ -70,8 +70,8 @@ class AttachmentsService
 
         @confirm.notify("error", message)
 
-    upload: (file, objId, projectId, type) ->
-        promise = @rs.attachments.create(type, projectId, objId, file)
+    upload: (file, objId, projectId, type, from_comment = false) ->
+        promise = @rs.attachments.create(type, projectId, objId, file, from_comment)
 
         promise.then null, @.saveError.bind(this, file)
 

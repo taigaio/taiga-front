@@ -36,12 +36,15 @@ $contrast: 2;
 
 .range-slider {
     -webkit-appearance: none;
+    display: block;
     margin: $thumb-height / 2 0;
     width: $track-width;
 
     &:focus {
+        outline: 0;
+
         &::-webkit-slider-runnable-track {
-            background: lighten($track-color, $contrast);
+            background: lighten($primary-dark, $contrast);
         }
         &::-webkit-slider-thumb {
             box-shadow: 0 0 0 4px $thumb-shadow;

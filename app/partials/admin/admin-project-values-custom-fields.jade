@@ -20,27 +20,27 @@ div.wrapper(
         div.admin-attributes-section(
             tg-project-custom-attributes,
             ng-controller="ProjectCustomAttributesController as ctrl",
-            ng-init="type='epic'; customFieldSectionTitle='ADMIN.CUSTOM_FIELDS.EPIC_DESCRIPTION'; customFieldButtonTitle='ADMIN.CUSTOM_FIELDS.EPIC_ADD'"
+            ng-init="init('epic'); customFieldSectionTitle='ADMIN.CUSTOM_FIELDS.EPIC_DESCRIPTION'; customFieldButtonTitle='ADMIN.CUSTOM_FIELDS.EPIC_ADD'"
         )
             include ../includes/modules/admin/admin-custom-attributes
 
         div.admin-attributes-section(
             tg-project-custom-attributes,
             ng-controller="ProjectCustomAttributesController as ctrl",
-            ng-init="type='userstory'; customFieldSectionTitle='ADMIN.CUSTOM_FIELDS.US_DESCRIPTION'; customFieldButtonTitle='ADMIN.CUSTOM_FIELDS.US_ADD'"
+            ng-init="init('userstory'); customFieldSectionTitle='ADMIN.CUSTOM_FIELDS.US_DESCRIPTION'; customFieldButtonTitle='ADMIN.CUSTOM_FIELDS.US_ADD'"
         )
             include ../includes/modules/admin/admin-custom-attributes
 
         div.admin-attributes-section(
             tg-project-custom-attributes,
             ng-controller="ProjectCustomAttributesController as ctrl",
-            ng-init="type='task'; customFieldSectionTitle='ADMIN.CUSTOM_FIELDS.TASK_DESCRIPTION'; customFieldButtonTitle='ADMIN.CUSTOM_FIELDS.TASK_ADD'"
+            ng-init="init('task'); customFieldSectionTitle='ADMIN.CUSTOM_FIELDS.TASK_DESCRIPTION'; customFieldButtonTitle='ADMIN.CUSTOM_FIELDS.TASK_ADD'"
         )
             include ../includes/modules/admin/admin-custom-attributes
 
         div.admin-attributes-section(
             tg-project-custom-attributes,
             ng-controller="ProjectCustomAttributesController as ctrl",
-            ng-init="type='issue'; customFieldSectionTitle='ADMIN.CUSTOM_FIELDS.ISSUE_DESCRIPTION'; customFieldButtonTitle='ADMIN.CUSTOM_FIELDS.ISSUE_ADD'"
+            ng-init="init('issue'); customFieldSectionTitle='ADMIN.CUSTOM_FIELDS.ISSUE_DESCRIPTION'; customFieldButtonTitle='ADMIN.CUSTOM_FIELDS.ISSUE_ADD'"
         )
             include ../includes/modules/admin/admin-custom-attributes

@@ -16,7 +16,7 @@ describe('user profile - likes', function() {
 
             $$('.tab').get(1).click();
 
-            await helper.waitLoader();
+            await browser.waitForAngular();
 
             utils.common.takeScreenshot('user-profile', 'current-user-likes');
         });

@@ -1,10 +1,10 @@
 ###
-# Copyright (C) 2014-2016 Andrey Antukh <niwi@niwi.nz>
-# Copyright (C) 2014-2016 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014-2016 David Barragán Merino <bameda@dbarragan.com>
-# Copyright (C) 2014-2016 Alejandro Alonso <alejandro.alonso@kaleidos.net>
-# Copyright (C) 2014-2016 Juan Francisco Alcántara <juanfran.alcantara@kaleidos.net>
-# Copyright (C) 2014-2016 Xavi Julian <xavier.julian@kaleidos.net>
+# Copyright (C) 2014-2017 Andrey Antukh <niwi@niwi.nz>
+# Copyright (C) 2014-2017 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014-2017 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2017 Alejandro Alonso <alejandro.alonso@kaleidos.net>
+# Copyright (C) 2014-2017 Juan Francisco Alcántara <juanfran.alcantara@kaleidos.net>
+# Copyright (C) 2014-2017 Xavi Julian <xavier.julian@kaleidos.net>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -30,9 +30,12 @@ resourceProvider = ($repo, $http, $urls, $storage, $q) ->
     service = {}
     hashSuffix = "userstories-queryparams"
 
-    service.get = (projectId, usId) ->
+    service.get = (projectId, usId, extraParams) ->
         params = service.getQueryParams(projectId)
         params.project = projectId
+
+        params = _.extend({}, params, extraParams)
+
         return $repo.queryOne("userstories", usId, params)
 
     service.getByRef = (projectId, ref, extraParams = {}) ->
@@ -64,6 +67,7 @@ resourceProvider = ($repo, $http, $urls, $storage, $q) ->
         params = {"project": projectId}
         params = _.extend({}, params, filters or {})
         service.storeQueryParams(projectId, params)
+
         return $repo.queryMany("userstories", params)
 
     service.bulkCreate = (projectId, status, bulk) ->
@@ -106,6 +110,17 @@ resourceProvider = ($repo, $http, $urls, $storage, $q) ->
     service.bulkUpdateKanbanOrder = (projectId, data) ->
         url = $urls.resolve("bulk-update-us-kanban-order")
         params = {project_id: projectId, bulk_stories: data}
+        return $http.post(url, params)
+
+    service.bulkUpdateMilestone = (projectId, milestoneId, data) ->
+        url = $urls.resolve("bulk-update-us-milestone")
+        data = _.map data, (us) ->
+            return {
+                us_id: us.id
+                order: us.order
+            }
+
+        params = {project_id: projectId, milestone_id: milestoneId, bulk_stories: data}
         return $http.post(url, params)
 
     service.listValues = (projectId, type) ->

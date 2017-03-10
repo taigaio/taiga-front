@@ -1,5 +1,5 @@
 ###
-# Copyright (C) 2014-2016 Taiga Agile LLC <taiga@taiga.io>
+# Copyright (C) 2014-2017 Taiga Agile LLC <taiga@taiga.io>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -157,12 +157,15 @@ class TaskboardTasksService extends taiga.Service
         for taskModel in tasks
             if usTasks[taskModel.user_story]? and usTasks[taskModel.user_story][taskModel.status]?
                 task = {}
+
+                model = taskModel.getAttrs()
+
                 task.foldStatusChanged = @.foldStatusChanged[taskModel.id]
-                task.model = taskModel.getAttrs()
-                task.images = _.filter taskModel.attachments, (it) -> return !!it.thumbnail_card_url
+                task.model = model
+                task.images = _.filter model.attachments, (it) -> return !!it.thumbnail_card_url
                 task.id = taskModel.id
                 task.assigned_to = @.usersById[taskModel.assigned_to]
-                task.colorized_tags = _.map task.model.tags, (tag) =>                    
+                task.colorized_tags = _.map task.model.tags, (tag) =>
                     return {name: tag[0], color: tag[1]}
 
                 usTasks[taskModel.user_story][taskModel.status].push(task)

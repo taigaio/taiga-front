@@ -14,7 +14,7 @@ describe('project home', function() {
         await utils.common.takeScreenshot("project", "home-like");
 
         //reset
-        let link = $('tg-like-project-button a');
+        let link = $('tg-like-project-button button');
         let likeActive = await utils.common.hasClass(link, 'active');
 
         if (!likeActive) {
@@ -47,7 +47,7 @@ describe('project home', function() {
     });
 */
     it('unlike', async function() {
-        let link = $('tg-like-project-button a');
+        let link = $('tg-like-project-button button');
         let likesCounterOld = parseInt(await link.$('.track-button-counter').getText(), 10);
 
         link.click();
@@ -62,7 +62,7 @@ describe('project home', function() {
     });
 
     it('like', async function() {
-        let link = $('tg-like-project-button a');
+        let link = $('tg-like-project-button button');
         let likesCounterOld = parseInt(await link.$('.track-button-counter').getText(), 10);
 
         link.click();
@@ -77,8 +77,24 @@ describe('project home', function() {
         expect(likesCounter).to.be.equal(likesCounterOld + 1);
     });
 
+    it('contact project', async function() {
+        $('tg-contact-project-button > .e2e-contact-team').click();
+
+        let contactProjectLb = $('div[tg-lb-contact-project]');
+
+        await utils.lightbox.open(contactProjectLb);
+        await utils.common.takeScreenshot("project", "contact-form");
+
+        let form = $('.e2e-lightbox-contact-project');
+
+        await form.$('.e2e-lightbox-contact-project-message').sendKeys('contact');
+        form.$('.e2e-lightbox-contact-project-button').click();
+        await utils.notifications.success.open();
+        await utils.notifications.success.close();
+    });
+
     it('unwatch', async function() {
-        let link = $('tg-watch-project-button > a');
+        let link = $('tg-watch-project-button > button');
         let watchOptions = $('tg-watch-project-button .watch-options');
         let watchCounterOld = parseInt(await link.$('.track-button-counter').getText(), 10);
 
@@ -104,7 +120,7 @@ describe('project home', function() {
     });
 
     it('watch', async function() {
-        let link = $('tg-watch-project-button > a');
+        let link = $('tg-watch-project-button > button');
         let watchOptions = $('tg-watch-project-button .watch-options');
         let watchCounterOld = parseInt(await link.$('.track-button-counter').getText(), 10);
 

@@ -15,5 +15,5 @@
             )
         .entry-text(
             ng-class="{'ellipsed': !displayFullEntry && entry.comment.length >= 75, 'blurry': entry.comment.length >= 75 && !displayFullEntry}"
-            ng-bind-html="entry.comment_html"
+            ng-bind-html="entry.comment | markdownToHTML"
         )

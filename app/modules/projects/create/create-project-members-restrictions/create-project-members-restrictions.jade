@@ -1,0 +1,13 @@
+div.create-project-warning(ng-if="!limitMembersPublicProject.valid && !isPrivate")
+    tg-svg(svg-icon="icon-exclamation")
+    span(
+        translate="PROJECT.IMPORT.PROJECT_RESTRICTIONS.PROJECT_MEMBERS_DESC_PUBLIC",
+        translate-values="{'members': limitMembersPublicProject.current, 'max_memberships': limitMembersPublicProject.max}"
+    )
+
+div.create-project-warning(ng-if="!limitMembersPrivateProject.valid && isPrivate")
+    tg-svg(svg-icon="icon-exclamation")
+    span(
+        translate="PROJECT.IMPORT.PROJECT_RESTRICTIONS.PROJECT_MEMBERS_DESC_PRIVATE",
+        translate-values="{'members': limitMembersPrivateProject.current, 'max_memberships': limitMembersPrivateProject.max}"
+    )

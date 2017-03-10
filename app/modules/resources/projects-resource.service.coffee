@@ -1,5 +1,5 @@
 ###
-# Copyright (C) 2014-2016 Taiga Agile LLC <taiga@taiga.io>
+# Copyright (C) 2014-2017 Taiga Agile LLC <taiga@taiga.io>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -21,6 +21,28 @@ pagination = () ->
 
 Resource = (urlsService, http, paginateResponseService) ->
     service = {}
+
+    service.create = (data) ->
+        url = urlsService.resolve('projects')
+
+        return http.post(url, JSON.stringify(data))
+            .then (result) => return Immutable.fromJS(result.data)
+
+    service.duplicate = (projectId, data) ->
+
+        url = urlsService.resolve("projects")
+        url = "#{url}/#{projectId}/duplicate"
+
+        members = data.users.map (member) => {"id": member}
+
+        params = {
+            "name": data.name,
+            "description": data.description,
+            "is_private": data.is_private,
+            "users": members
+        }
+
+        return http.post(url, params)
 
     service.getProjects = (params = {}, pagination = true) ->
         url = urlsService.resolve("projects")
@@ -107,6 +129,15 @@ Resource = (urlsService, http, paginateResponseService) ->
     service.unwatchProject = (projectId) ->
         url = urlsService.resolve("project-unwatch", projectId)
         return http.post(url)
+
+    service.contactProject = (projectId, message) ->
+        params = {
+            project: projectId,
+            comment: message
+        }
+
+        url = urlsService.resolve("project-contact")
+        return http.post(url, params)
 
     service.transferValidateToken = (projectId, token) ->
         data = {

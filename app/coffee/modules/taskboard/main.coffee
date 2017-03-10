@@ -1,10 +1,10 @@
 ###
-# Copyright (C) 2014-2016 Andrey Antukh <niwi@niwi.nz>
-# Copyright (C) 2014-2016 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014-2016 David Barragán Merino <bameda@dbarragan.com>
-# Copyright (C) 2014-2016 Alejandro Alonso <alejandro.alonso@kaleidos.net>
-# Copyright (C) 2014-2016 Juan Francisco Alcántara <juanfran.alcantara@kaleidos.net>
-# Copyright (C) 2014-2016 Xavi Julian <xavier.julian@kaleidos.net>
+# Copyright (C) 2014-2017 Andrey Antukh <niwi@niwi.nz>
+# Copyright (C) 2014-2017 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014-2017 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2017 Alejandro Alonso <alejandro.alonso@kaleidos.net>
+# Copyright (C) 2014-2017 Juan Francisco Alcántara <juanfran.alcantara@kaleidos.net>
+# Copyright (C) 2014-2017 Xavi Julian <xavier.julian@kaleidos.net>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -72,6 +72,10 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
         @scope.sectionName = @translate.instant("TASKBOARD.SECTION_NAME")
         @.initializeEventHandlers()
 
+        taiga.defineImmutableProperty @.scope, "usTasks", () =>
+            return @taskboardTasksService.usTasks
+
+    firstLoad: () ->
         promise = @.loadInitialData()
 
         # On Success
@@ -79,15 +83,27 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
         # On Error
         promise.then null, @.onInitialDataError.bind(@)
 
-        taiga.defineImmutableProperty @.scope, "usTasks", () =>
-            return @taskboardTasksService.usTasks
-
     setZoom: (zoomLevel, zoom) ->
-        if @.zoomLevel != zoomLevel
-            @taskboardTasksService.resetFolds()
+        if @.zoomLevel == zoomLevel
+            return null
+
+        @.isFirstLoad = !@.zoomLevel
+
+        previousZoomLevel = @.zoomLevel
 
         @.zoomLevel = zoomLevel
         @.zoom = zoom
+
+        if @.isFirstLoad
+            @.firstLoad().then () =>
+                @.isFirstLoad = false
+                @taskboardTasksService.resetFolds()
+
+        else if @.zoomLevel > 1 && previousZoomLevel <= 1
+            @.zoomLoading = true
+            @.loadTasks().then () =>
+                @.zoomLoading = false
+                @taskboardTasksService.resetFolds()
 
         if @.zoomLevel == '0'
             @rootscope.$broadcast("sprint:zoom0")
@@ -342,9 +358,10 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
             return sprint
 
     loadTasks: ->
-        params = {
-            include_attachments: true,
-        }
+        params = {}
+
+        if @.zoomLevel > 1
+            params.include_attachments = 1
 
         params = _.merge params, @location.search()
 

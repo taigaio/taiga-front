@@ -1,10 +1,10 @@
 ###
-# Copyright (C) 2014-2016 Andrey Antukh <niwi@niwi.nz>
-# Copyright (C) 2014-2016 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014-2016 David Barragán Merino <bameda@dbarragan.com>
-# Copyright (C) 2014-2016 Alejandro Alonso <alejandro.alonso@kaleidos.net>
-# Copyright (C) 2014-2016 Juan Francisco Alcántara <juanfran.alcantara@kaleidos.net>
-# Copyright (C) 2014-2016 Xavi Julian <xavier.julian@kaleidos.net>
+# Copyright (C) 2014-2017 Andrey Antukh <niwi@niwi.nz>
+# Copyright (C) 2014-2017 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014-2017 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2017 Alejandro Alonso <alejandro.alonso@kaleidos.net>
+# Copyright (C) 2014-2017 Juan Francisco Alcántara <juanfran.alcantara@kaleidos.net>
+# Copyright (C) 2014-2017 Xavi Julian <xavier.julian@kaleidos.net>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -54,11 +54,12 @@ class EpicDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$tgNavUrls",
         "$translate",
         "$tgQueueModelTransformation",
-        "tgErrorHandlingService"
+        "tgErrorHandlingService",
+        "tgProjectService"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @rs2, @params, @q, @location,
-                  @log, @appMetaService, @analytics, @navUrls, @translate, @modelTransform, @errorHandlingService) ->
+                  @log, @appMetaService, @analytics, @navUrls, @translate, @modelTransform, @errorHandlingService, @projectService) ->
         bindMethods(@)
 
         @scope.epicRef = @params.epicref
@@ -102,14 +103,15 @@ class EpicDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
        @scope.onDeleteGoToUrl = @navUrls.resolve("project-epics", ctx)
 
     loadProject: ->
-        return @rs.projects.getBySlug(@params.pslug).then (project) =>
-            @scope.projectId = project.id
-            @scope.project = project
-            @scope.immutableProject = Immutable.fromJS(project._attrs)
-            @scope.$emit('project:loaded', project)
-            @scope.statusList = project.epic_statuses
-            @scope.statusById = groupBy(project.epic_statuses, (x) -> x.id)
-            return project
+        project = @projectService.project.toJS()
+
+        @scope.projectId = project.id
+        @scope.project = project
+        @scope.immutableProject = @projectService.project
+        @scope.$emit('project:loaded', project)
+        @scope.statusList = project.epic_statuses
+        @scope.statusById = groupBy(project.epic_statuses, (x) -> x.id)
+        return project
 
     loadEpic: ->
         return @rs.epics.getByRef(@scope.projectId, @params.epicref).then (epic) =>
@@ -139,10 +141,10 @@ class EpicDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
               @scope.userstories = data
 
     loadInitialData: ->
-        promise = @.loadProject()
-        return promise.then (project) =>
-            @.fillUsersAndRoles(project.members, project.roles)
-            @.loadEpic().then(=> @.loadUserstories())
+        project = @.loadProject()
+
+        @.fillUsersAndRoles(project.members, project.roles)
+        @.loadEpic().then(=> @.loadUserstories())
 
     ###
     # Note: This methods (onUpvote() and onDownvote()) are related to tg-vote-button.

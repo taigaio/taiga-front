@@ -8,7 +8,8 @@
     $arrow-top: '',
     $arrow-left: '',
     $arrow-bottom: '',
-    $arrow-height: 15px
+    $arrow-height: 15px,
+    $align: 'center'
 ) {
     @include font-type(light);
     @include font-size(small);
@@ -25,7 +26,7 @@
     top: #{$top};
     width: $width;
     z-index: 99;
-    text-align: center;
+    text-align: $align;
     a {
         @include font-size(small);
         border-bottom: 1px solid $grayer;

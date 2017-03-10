@@ -1,5 +1,16 @@
 .comments {
     clear: both;
+    tg-wysiwyg {
+        margin-top: 1.5rem;
+    }
+    .read-mode {
+        border: 1px solid $gray-light;
+        height: 55px;
+        .medium-editor-placeholder,
+        .markdown-editor-placeholder {
+            height: 55px;
+        }
+    }
     .add-comment {
         margin-top: 1rem;
         textarea {
@@ -20,7 +31,6 @@
         margin-top: 1rem;
         padding: .5rem 4rem;
     }
-
 }
 .comment {
     display: block;
@@ -143,15 +153,10 @@
     .deleted-comment-comment {
         margin-top: 1rem;
     }
-    .comment-editor {
-        textarea {
-            height: 5rem;
-            min-height: 5rem;
-        }
-    }
 }
 
 .comment-text {
+    max-width: 80rem;
     &.wysiwyg {
         margin-bottom: 0;
         padding: 0;

@@ -84,7 +84,7 @@
         position: relative;
         transition: background .2s ease-in;
         .pop-type {
-            @include popover(150px, '', 30px, '', '');
+            @include popover(150px, 30px, 30px, '', '', 0, '', '', '', 15px, 'left');
         }
     }
     .severity-data {
@@ -95,7 +95,7 @@
         position: relative;
         transition: background .2s ease-in;
         .pop-severity {
-            @include popover(150px, '', 30px, '', '');
+            @include popover(150px, 30px, 30px, '', '', 0, '', '', '', 15px, 'left');
         }
     }
     .priority-data {
@@ -106,7 +106,7 @@
         position: relative;
         transition: background .2s ease-in;
         .pop-priority {
-            @include popover(150px, '', 30px, '', '');
+            @include popover(150px, 30px, 30px, '', '', 0, '', '', '', 15px, 'left');
         }
     }
 }

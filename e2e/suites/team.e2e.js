@@ -61,7 +61,7 @@ describe('team', function() {
 
     it('team filled', async function() {
         let total = await teamHelper.team().count();
-        expect(total).to.be.equal(10);
+        expect(total).to.be.equal(9);
     });
 
     it('search username', async function() {

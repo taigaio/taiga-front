@@ -8,8 +8,9 @@ chai.use(chaiAsPromised);
 var expect = chai.expect;
 
 describe('transfer project', () => {
+    let projectSlug = '';
     before(async () => {
-        await utils.common.createProject(['user5@taigaio.demo']);
+        projectSlug = await utils.common.createProject(['user5@taigaio.demo']);
 
         await utils.nav
             .init()
@@ -22,7 +23,7 @@ describe('transfer project', () => {
 
         await lb.waitOpen();
 
-        lb.search('Alicia Flores');
+        lb.search('Angela Perez');
         lb.select(0);
         lb.addComment('text');
 
@@ -41,9 +42,9 @@ describe('transfer project', () => {
     });
 
     it('reject', async () => {
-        let token = await utils.common.getTransferProjectToken('admin-aaa', 'user5');
+        let token = await utils.common.getTransferProjectToken(projectSlug, 'user5');
 
-        browser.get(browser.params.glob.host + 'project/admin-aaa/transfer/' + token);
+        browser.get(browser.params.glob.host + 'project/'+ projectSlug +'/transfer/' + token);
 
         await utils.common.waitLoader();
 
@@ -57,9 +58,9 @@ describe('transfer project', () => {
     });
 
     it('accept', async () => {
-        let token = await utils.common.getTransferProjectToken('admin-aaa', 'user5');
+        let token = await utils.common.getTransferProjectToken(projectSlug, 'user5');
 
-        browser.get(browser.params.glob.host + 'project/admin-aaa/transfer/' + token);
+        browser.get(browser.params.glob.host + 'project/' + projectSlug + '/transfer/' + token);
 
         await utils.common.waitLoader();
 
@@ -78,9 +79,9 @@ describe('transfer project', () => {
             max_memberships_public_projects: 0
         });
 
-        let token = await utils.common.getTransferProjectToken('admin-aaa', 'user5');
+        let token = await utils.common.getTransferProjectToken(projectSlug, 'user5');
 
-        browser.get(browser.params.glob.host + 'project/admin-aaa/transfer/' + token);
+        browser.get(browser.params.glob.host + 'project/'+ projectSlug +'/transfer/' + token);
 
         await utils.common.waitLoader();
 

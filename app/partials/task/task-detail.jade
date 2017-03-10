@@ -43,7 +43,12 @@ div.wrapper(
                 )
                 tg-created-by-display.ticket-created-by(ng-model="task")
 
-        section.duty-content(tg-editable-description, tg-editable-wysiwyg, ng-model="task", required-perm="modify_task")
+        section.duty-content
+            tg-item-wysiwyg(
+                type="task",
+                model="task",
+                required-perm="modify_task"
+            )
 
         // Custom Fields
         tg-custom-attributes-values(

@@ -1,0 +1,86 @@
+.import-project-members
+    div(ng-include="'projects/create/import/import-header.html'")
+
+    h2.import-project-members-title(translate="PROJECT.IMPORT.PROJECT_MEMBERS")
+    p(
+        translate="PROJECT.IMPORT.PROCESS_DESCRIPTION",
+        translate-values="{'platform': vm.platform}"
+    )
+
+    tg-create-project-members-restrictions(
+        is-private="vm.project.get('is_private')"
+        limit-members-private-project="vm.limitMembersPrivateProject"
+        limit-members-public-project="vm.limitMembersPublicProject"
+    )
+
+    .import-project-members-system(ng-if="vm.members.size")
+        .import-project-members-logo
+            img(ng-src="{{vm.logo}}")
+        .import-project-members-logo
+            img(
+                src="/#{v}/images/logo-color.png"
+                alt="Taiga Logo"
+            )
+
+    ul(ng-if="vm.members.size")
+        li.import-project-members-row(tg-repeat="member in vm.members track by member.get('id')")
+            .import-project-members-single
+                .avatar.empty(ng-if="!member.get('avatar')") {{member.get('full_name')[0].toUpperCase()}}
+                .avatar(ng-if="member.get('avatar')") 
+                    img(ng-src="{{member.get('avatar')}}")
+                span.import-project-members-username {{member.get('full_name') || member.get('username') }}
+
+            .import-project-members-actions
+                .import-project-members-match(ng-if="vm.showSuggestedMatch(member)")
+                    span(
+                        translate="PROJECT.IMPORT.MATCH"
+                        translate-values="{user_external:member.get('full_name'), user_internal: member.getIn(['user', 'full_name'])}"
+                    )
+                    button.import-project-members-match-true(ng-click="vm.confirmUser(member, member.get('user'))")
+                        tg-svg(svg-icon="icon-check-empty")
+                    button.import-project-members-match-false(ng-click="vm.discardSuggestedUser(member)")
+                        tg-svg(svg-icon="icon-close")
+
+                .import-project-members-selected(ng-if="vm.getUser(member) && !vm.showSuggestedMatch(member)")
+                    button.import-project-members-delete(ng-click="vm.unselectUser(member)")
+                        tg-svg(svg-icon="icon-close")
+                    span {{vm.getUser(member).get('full_name') || vm.getUser(member)}}
+                    span.import-project-members-selected-img
+                        img(tg-avatar="vm.getUser(member)")
+
+                button.button.button-trans.import-project-members-choose.ng-animate-disabled(
+                    ng-if="!vm.getUser(member) && !vm.showSuggestedMatch(member)"
+                    ng-click="vm.searchUser(member)"
+                    translate="PROJECT.IMPORT.CHOOSE"
+                )
+
+    .create-project-action
+        button.trans-button.create-project-action-cancel(
+            type="button"
+            ng-click="vm.onCancel()"
+            title="{{'PROJECT.CREATE.BACK' | translate}}"
+            translate="PROJECT.CREATE.BACK"
+        )
+        button.button.button-green.create-project-action-submit(
+            ng-if="vm.members.size > 0"
+            ng-click="vm.beforeSubmitUsers()"
+            translate="PROJECT.IMPORT.IMPORT"
+        )
+
+    tg-select-import-user-lightbox.lightbox(
+       is-private="vm.project.get('is_private')"
+       limit-members-private-project="vm.limitMembersPrivateProject"
+       limit-members-public-project="vm.limitMembersPublicProject"
+       visible="vm.selectImportUserLightbox"
+       user="vm.searchingUser"
+       display-email-selector="vm.displayEmailSelector"
+       selectable-users="vm.selectableUsers"
+       on-close="vm.selectImportUserLightbox = false"
+       on-select-user="vm.confirmUser(user, taigaUser)"
+    )
+
+    tg-warning-user-import-lightbox.lightbox(
+        visible="vm.warningImportUsers"
+        on-confirm="vm.submit()"
+        on-close="vm.warningImportUsers = false"
+    )

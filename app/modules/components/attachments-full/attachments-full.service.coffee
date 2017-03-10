@@ -1,5 +1,5 @@
 ###
-# Copyright (C) 2014-2016 Taiga Agile LLC <taiga@taiga.io>
+# Copyright (C) 2014-2017 Taiga Agile LLC <taiga@taiga.io>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -47,12 +47,12 @@ class AttachmentsFullService extends taiga.Service
         else
             @._attachmentsVisible = @._attachments.filter (it) -> !it.getIn(['file', 'is_deprecated'])
 
-    addAttachment: (projectId, objId, type, file, editable = true) ->
+    addAttachment: (projectId, objId, type, file, editable = true, comment = false) ->
         return new Promise (resolve, reject) =>
             if @attachmentsService.validate(file)
                 @.uploadingAttachments.push(file)
 
-                promise = @attachmentsService.upload(file, objId, projectId, type)
+                promise = @attachmentsService.upload(file, objId, projectId, type, comment)
                 promise.then (file) =>
                     @.uploadingAttachments = @.uploadingAttachments.filter (uploading) ->
                         return uploading.name != file.get('name')
@@ -62,7 +62,8 @@ class AttachmentsFullService extends taiga.Service
                     attachment = attachment.merge({
                         file: file,
                         editable: editable,
-                        loading: false
+                        loading: false,
+                        from_comment: comment
                     })
 
                     @._attachments = @._attachments.push(attachment)

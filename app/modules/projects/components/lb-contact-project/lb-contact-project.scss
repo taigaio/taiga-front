@@ -1,0 +1,29 @@
+.lightbox-contact-project {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    &-container {
+        max-width: 600px;
+        text-align: center;
+        width: 90%;
+    }
+    &-logo {
+        width: 5rem;
+    }
+    &-title {
+        margin: 0;
+    }
+    &-name {
+        @include font-size(larger);
+        color: $primary;
+        margin-bottom: 1rem;
+    }
+    &-message {
+        max-height: 400px;
+    }
+    &-button {
+        display: block;
+        margin-top: .5rem;
+        width: 100%;
+    }
+}

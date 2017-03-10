@@ -11,11 +11,12 @@
         span.detail-subject.e2e-title-subject(
             ng-if="!vm.permissions.canEdit"
         ) {{vm.item.subject}}
-        tg-svg.detail-edit.e2e-detail-edit(
+        a(
+            href=""
             ng-if="vm.permissions.canEdit"
-            svg-icon="icon-edit"
             ng-click="vm.editSubject(true)"
         )
+            tg-svg.detail-edit.e2e-detail-edit(svg-icon="icon-edit")
 
     .edit-title-wrapper(ng-if="vm.editMode")
         input.edit-title-input.e2e-title-input(

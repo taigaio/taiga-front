@@ -17,11 +17,8 @@ div.wrapper(
                 span.green(translate="PROJECT.SECTION.WIKI")
 
         h2.wiki-title(ng-bind='wikiTitle')
-        section.wiki-content(
-            tg-editable-wysiwyg,
-            tg-editable-wiki-content,
-            ng-model="wiki"
-        )
+
+        tg-wiki-wysiwyg(model="wiki")
 
         .summary.wiki-summary(
             tg-wiki-summary

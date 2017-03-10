@@ -1,0 +1,46 @@
+.import-project-selector
+    div(ng-include="'projects/create/import/import-header.html'")
+
+    .import-project-selector
+
+        .import-project-selector-service
+            img(
+                ng-src="{{vm.logo}}"
+            )
+
+        .import-project-selector-boards
+            form.import-project-selector-filter(ng-if="vm.projects.size > 5")
+                input(
+                    ng-model="vm.searchText"
+                    placeholder="{{ vm.search }}"
+                )
+                tg-svg(
+                    svg-icon="icon-search"
+                    title="{{ 'PROJECT.IMPORT.PROJECT_SELECTOR.ACTION_SEARCH' | translate }}"
+                )
+
+            ul.import-project-board-list
+                li.import-project-selector-title(
+                    ng-repeat="project in vm.projects | toMutable | orderBy:'name' | filter:vm.searchText as filteredProjects track by project.id"
+                    ng-click="vm.selectProject(project)"
+                ) {{project.name}}
+
+            .import-project-board-no-projects.empty-large(ng-if="vm.projects.size == 0")
+                img(
+                    src="/#{v}/images/empty/empty_tex.png",
+                    alt="{{ vm.noProjectsMsg }}"
+                    aria-hidden="true"
+                    role="presentation"
+                )
+                p.title {{ vm.noProjectsMsg }}
+
+            .import-project-board-no-results.empty-filter(ng-if="vm.projects.size > 0 && filteredProjects.length == 0")
+                p(translate="PROJECT.IMPORT.PROJECT_SELECTOR.NO_RESULTS")
+
+            .create-project-action
+                button.trans-button.create-project-action-cancel(
+                    type="button"
+                    ng-click="vm.onCancel()"
+                    title="{{'PROJECT.IMPORT.PROJECT_SELECTOR.ACTION_BACK' | translate}}"
+                    translate="PROJECT.IMPORT.PROJECT_SELECTOR.ACTION_BACK"
+                )

@@ -1,6 +1,7 @@
 var utils = require('../utils');
 var sharedDetail = require('../shared/detail');
 var wikiHelper = require('../helpers').wiki;
+var sharedWysiwyg = require('../shared/wysiwyg').wysiwygTesting;
 
 var chai = require('chai');
 var chaiAsPromised = require('chai-as-promised');
@@ -64,52 +65,7 @@ describe('wiki', function() {
         await utils.common.takeScreenshot("wiki", "deleting-the-created-link");
     });
 
-    it('edition', async function() {
-        let timesEdited = wikiHelper.editor().getTimesEdited();
-        let lastEditionDatetime = wikiHelper.editor().getLastEditionDateTime();
-        wikiHelper.editor().enabledEditionMode();
-        let settingText = "This is the new text" + new Date().getTime();
-        wikiHelper.editor().setText(settingText);
-
-        //preview
-        wikiHelper.editor().preview();
-        await utils.common.takeScreenshot("wiki", "home-edition-preview");
-        wikiHelper.editor().closePreview();
-
-        //save
-        wikiHelper.editor().save();
-        let newHtml = await wikiHelper.editor().getInnerHtml();
-        let newTimesEdited = wikiHelper.editor().getTimesEdited();
-        let newLastEditionDatetime = wikiHelper.editor().getLastEditionDateTime();
-
-        expect(newHtml).to.be.equal("<p>" + settingText + "</p>");
-        expect(newTimesEdited).to.be.eventually.equal(timesEdited+1);
-        expect(newLastEditionDatetime).to.be.not.equal(lastEditionDatetime);
-
-        await utils.common.takeScreenshot("wiki", "home-edition");
-    });
-
-    it('confirm close with ESC in lightbox', async function() {
-        wikiHelper.editor().enabledEditionMode();
-
-        browser.actions().sendKeys(protractor.Key.ESCAPE).perform();
-
-        await utils.lightbox.confirm.cancel();
-
-        let descriptionVisibility = await $('.view-wiki-content').isDisplayed();
-
-        expect(descriptionVisibility).to.be.false;
-
-        wikiHelper.editor().focus();
-
-        browser.actions().sendKeys(protractor.Key.ESCAPE).perform();
-
-        await utils.lightbox.confirm.ok();
-
-        descriptionVisibility = await $('.view-wiki-content').isDisplayed();
-
-        expect(descriptionVisibility).to.be.true;
-    });
+    describe('wiki editor', sharedWysiwyg.bind(this, '.wiki'));
 
     it('attachments', sharedDetail.attachmentTesting);
 
@@ -117,29 +73,5 @@ describe('wiki', function() {
         await wikiHelper.editor().delete();
 
         expect(browser.getCurrentUrl()).to.be.eventually.equal(browser.params.glob.host + 'project/project-0/wiki/home');
-    });
-
-    it('Custom keyboard actions', async function(){
-        wikiHelper.editor().enabledEditionMode();
-
-        wikiHelper.editor().setText("- aa");
-        browser.actions().sendKeys(protractor.Key.ENTER).perform();
-        let text = await wikiHelper.editor().getText();
-        expect(text).to.be.equal("- aa\n- ");
-
-        wikiHelper.editor().setText("- ");
-        browser.actions().sendKeys(protractor.Key.ENTER).perform();
-        text = await wikiHelper.editor().getText();
-        expect(text).to.be.equal("\n");
-
-        wikiHelper.editor().setText("- bbcc");
-        browser.actions().sendKeys(protractor.Key.ARROW_LEFT).sendKeys(protractor.Key.ARROW_LEFT).sendKeys(protractor.Key.ENTER).perform();
-        text = await wikiHelper.editor().getText();
-        expect(text).to.be.equal("- bb\n- cc");
-
-        wikiHelper.editor().setText("- aa");
-        browser.actions().sendKeys(protractor.Key.HOME).sendKeys(protractor.Key.ENTER).perform();
-        text = await wikiHelper.editor().getText();
-        expect(text).to.be.equal("\n- aa");
     });
 });

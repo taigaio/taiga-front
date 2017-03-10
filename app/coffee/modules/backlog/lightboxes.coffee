@@ -1,10 +1,10 @@
 ###
-# Copyright (C) 2014-2016 Andrey Antukh <niwi@niwi.nz>
-# Copyright (C) 2014-2016 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014-2016 David Barragán Merino <bameda@dbarragan.com>
-# Copyright (C) 2014-2016 Alejandro Alonso <alejandro.alonso@kaleidos.net>
-# Copyright (C) 2014-2016 Juan Francisco Alcántara <juanfran.alcantara@kaleidos.net>
-# Copyright (C) 2014-2016 Xavi Julian <xavier.julian@kaleidos.net>
+# Copyright (C) 2014-2017 Andrey Antukh <niwi@niwi.nz>
+# Copyright (C) 2014-2017 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014-2017 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2017 Alejandro Alonso <alejandro.alonso@kaleidos.net>
+# Copyright (C) 2014-2017 Juan Francisco Alcántara <juanfran.alcantara@kaleidos.net>
+# Copyright (C) 2014-2017 Xavi Julian <xavier.julian@kaleidos.net>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -38,6 +38,7 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading,
         createSprint = true
         form = null
         $scope.newSprint = {}
+        ussToAdd = null
 
         resetSprint = () ->
             form.reset() if form
@@ -97,7 +98,10 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading,
                     else
                         return it
 
-                $rootscope.$broadcast(broadcastEvent, data)
+                if broadcastEvent == "sprintform:create:success" && ussToAdd
+                    $rootscope.$broadcast(broadcastEvent, data, ussToAdd)
+                else
+                    $rootscope.$broadcast(broadcastEvent, data)
 
                 lightboxService.close($el)
 
@@ -135,7 +139,8 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading,
 
             return sortedSprints[sortedSprints.length - 1]
 
-        $scope.$on "sprintform:create", (event, projectId) ->
+         $scope.$on "sprintform:create", (event, projectId, uss) ->
+            ussToAdd = uss
             resetSprint()
 
             form = $el.find("form").checksley()

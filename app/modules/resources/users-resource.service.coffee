@@ -1,5 +1,5 @@
 ###
-# Copyright (C) 2014-2016 Taiga Agile LLC <taiga@taiga.io>
+# Copyright (C) 2014-2017 Taiga Agile LLC <taiga@taiga.io>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -50,8 +50,11 @@ Resource = (urlsService, http, paginateResponseService) ->
             .then (result) ->
                 return Immutable.fromJS(result.data)
 
-    service.getContacts = (userId) ->
+    service.getContacts = (userId, excludeProjectId) ->
         url = urlsService.resolve("user-contacts", userId)
+
+        params = {}
+        params.exclude_project = excludeProjectId if excludeProjectId?
 
         httpOptions = {
             headers: {
@@ -59,7 +62,7 @@ Resource = (urlsService, http, paginateResponseService) ->
             }
         }
 
-        return http.get(url, {}, httpOptions)
+        return http.get(url, params, httpOptions)
             .then (result) ->
                 return Immutable.fromJS(result.data)
 

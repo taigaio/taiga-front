@@ -1,10 +1,10 @@
 ###
-# Copyright (C) 2014-2016 Andrey Antukh <niwi@niwi.nz>
-# Copyright (C) 2014-2016 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014-2016 David Barragán Merino <bameda@dbarragan.com>
-# Copyright (C) 2014-2016 Alejandro Alonso <alejandro.alonso@kaleidos.net>
-# Copyright (C) 2014-2016 Juan Francisco Alcántara <juanfran.alcantara@kaleidos.net>
-# Copyright (C) 2014-2016 Xavi Julian <xavier.julian@kaleidos.net>
+# Copyright (C) 2014-2017 Andrey Antukh <niwi@niwi.nz>
+# Copyright (C) 2014-2017 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014-2017 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2017 Alejandro Alonso <alejandro.alonso@kaleidos.net>
+# Copyright (C) 2014-2017 Juan Francisco Alcántara <juanfran.alcantara@kaleidos.net>
+# Copyright (C) 2014-2017 Xavi Julian <xavier.julian@kaleidos.net>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -216,6 +216,9 @@ module.directive("tgToggleComment", ToggleCommentDirective)
 
 ProjectUrl = ($navurls) ->
     get = (project) ->
+        if project.toJS
+            project = project.toJS()
+
         ctx = {project: project.slug}
 
         if project.is_backlog_activated and project.my_permissions.indexOf("view_us") > -1
@@ -353,12 +356,18 @@ module.directive("tgCapslock", [Capslock])
 
 LightboxClose = () ->
     template = """
-        <a class="close" href="" title="{{'COMMON.CLOSE' | translate}}">
+        <a class="close" ng-click="onClose()" href="" title="{{'COMMON.CLOSE' | translate}}">
             <tg-svg svg-icon="icon-close"></tg-svg>
         </a>
     """
 
+    link = (scope, elm, attrs) ->
+
     return {
+        scope: {
+            onClose: '&'
+        },
+        link: link,
         template: template
     }
 
@@ -369,11 +378,7 @@ Svg = () ->
     <svg class="{{ 'icon ' + svgIcon }}">
         <use xlink:href="" ng-attr-xlink:href="{{ '#' + svgIcon }}">
             <title ng-if="svgTitle">{{svgTitle}}</title>
-            <title
-                ng-if="svgTitleTranslate"
-                translate="{{svgTitleTranslate}}"
-                translate-values="{{svgTitleTranslateValues}}"
-                ></title>
+            <title ng-if="svgTitleTranslate">{{svgTitleTranslate | translate: svgTitleTranslateValues}}</title>
         </use>
     </svg>
     """
@@ -390,14 +395,22 @@ Svg = () ->
 
 module.directive("tgSvg", [Svg])
 
-Autofocus = ($timeout) ->
+Autofocus = ($timeout, $parse, animationFrame) ->
   return {
     restrict: 'A',
-    link : ($scope, $element) ->
-      $timeout -> $element[0].focus()
+    link : ($scope, $element, attrs) ->
+        if attrs.ngShow
+            model = $parse(attrs.ngShow)
+
+            $scope.$watch model, (value) ->
+                if value == true
+                    $timeout () -> $element[0].focus()
+
+        else
+            $timeout () -> $element[0].focus()
   }
 
-module.directive('tgAutofocus', ['$timeout', Autofocus])
+module.directive('tgAutofocus', ['$timeout', '$parse', "animationFrame", Autofocus])
 
 module.directive 'tgPreloadImage', () ->
     spinner = "<img class='loading-spinner' src='/" + window._version + "/svg/spinner-circle.svg' alt='loading...' />"

@@ -1,5 +1,5 @@
 ###
-# Copyright (C) 2014-2016 Taiga Agile LLC <taiga@taiga.io>
+# Copyright (C) 2014-2017 Taiga Agile LLC <taiga@taiga.io>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -27,7 +27,7 @@ KanbanBoardZoomDirective = (storage, projectService) ->
             ["subject"],
             ["owner", "tags", "extra_info", "unfold"],
             ["attachments"],
-            ["related_tasks"]
+            ["related_tasks", "empty_extra_info"]
         ]
 
         getZoomView = (zoomIndex = 0) ->

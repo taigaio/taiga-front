@@ -1,10 +1,10 @@
 ###
-# Copyright (C) 2014-2016 Andrey Antukh <niwi@niwi.nz>
-# Copyright (C) 2014-2016 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014-2016 David Barragán Merino <bameda@dbarragan.com>
-# Copyright (C) 2014-2016 Alejandro Alonso <alejandro.alonso@kaleidos.net>
-# Copyright (C) 2014-2016 Juan Francisco Alcántara <juanfran.alcantara@kaleidos.net>
-# Copyright (C) 2014-2016 Xavi Julian <xavier.julian@kaleidos.net>
+# Copyright (C) 2014-2017 Andrey Antukh <niwi@niwi.nz>
+# Copyright (C) 2014-2017 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014-2017 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2017 Alejandro Alonso <alejandro.alonso@kaleidos.net>
+# Copyright (C) 2014-2017 Juan Francisco Alcántara <juanfran.alcantara@kaleidos.net>
+# Copyright (C) 2014-2017 Xavi Julian <xavier.julian@kaleidos.net>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -58,7 +58,8 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         "$tgModel",
         "tgKanbanUserstories",
         "$tgStorage",
-        "tgFilterRemoteStorageService"
+        "tgFilterRemoteStorageService",
+        "tgProjectService"
     ]
 
     storeCustomFiltersName: 'kanban-custom-filters'
@@ -66,7 +67,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @rs2, @params, @q, @location,
                   @appMetaService, @navUrls, @events, @analytics, @translate, @errorHandlingService,
-                  @model, @kanbanUserstoriesService, @storage, @filterRemoteStorageService) ->
+                  @model, @kanbanUserstoriesService, @storage, @filterRemoteStorageService, @projectService) ->
         bindMethods(@)
         @kanbanUserstoriesService.reset()
         @.openFilter = false
@@ -76,6 +77,10 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         @scope.sectionName = @translate.instant("KANBAN.SECTION_NAME")
         @.initializeEventHandlers()
 
+        taiga.defineImmutableProperty @.scope, "usByStatus", () =>
+            return @kanbanUserstoriesService.usByStatus
+
+    firstLoad: () ->
         promise = @.loadInitialData()
 
         # On Success
@@ -90,15 +95,28 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         # On Error
         promise.then null, @.onInitialDataError.bind(@)
 
-        taiga.defineImmutableProperty @.scope, "usByStatus", () =>
-            return @kanbanUserstoriesService.usByStatus
-
     setZoom: (zoomLevel, zoom) ->
-        if @.zoomLevel != zoomLevel
-            @kanbanUserstoriesService.resetFolds()
+        if @.zoomLevel == zoomLevel
+            return null
+
+        @.isFirstLoad = !@.zoomLevel
+
+        previousZoomLevel = @.zoomLevel
 
         @.zoomLevel = zoomLevel
         @.zoom = zoom
+
+        if @.isFirstLoad
+            @.firstLoad().then () =>
+                @.isFirstLoad = false
+                @kanbanUserstoriesService.resetFolds()
+
+        else if @.zoomLevel > 1 && previousZoomLevel <= 1
+            @.zoomLoading = true
+
+            @.loadUserstories().then () =>
+                @.zoomLoading = false
+                @kanbanUserstoriesService.resetFolds()
 
     filtersReloadContent: () ->
         @.loadUserstories().then () =>
@@ -181,12 +199,14 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         return @rs.projects.tagsColors(@scope.projectId).then (tags_colors) =>
             @scope.project.tags_colors = tags_colors._attrs
 
-    loadUserstories: ->
+    loadUserstories: () ->
         params = {
-            status__is_archived: false,
-            include_attachments: true,
-            include_tasks: true
+            status__is_archived: false
         }
+
+        if @.zoomLevel > 1
+            params.include_attachments = 1
+            params.include_tasks = 1
 
         params = _.merge params, @location.search()
 
@@ -237,20 +257,21 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         ])
 
     loadProject: ->
-        return @rs.projects.getBySlug(@params.pslug).then (project) =>
-            if not project.is_kanban_activated
-                @errorHandlingService.permissionDenied()
+        project = @projectService.project.toJS()
 
-            @scope.projectId = project.id
-            @scope.project = project
-            @scope.projectId = project.id
-            @scope.points = _.sortBy(project.points, "order")
-            @scope.pointsById = groupBy(project.points, (x) -> x.id)
-            @scope.usStatusById = groupBy(project.us_statuses, (x) -> x.id)
-            @scope.usStatusList = _.sortBy(project.us_statuses, "order")
+        if not project.is_kanban_activated
+            @errorHandlingService.permissionDenied()
 
-            @scope.$emit("project:loaded", project)
-            return project
+        @scope.projectId = project.id
+        @scope.project = project
+        @scope.projectId = project.id
+        @scope.points = _.sortBy(project.points, "order")
+        @scope.pointsById = groupBy(project.points, (x) -> x.id)
+        @scope.usStatusById = groupBy(project.us_statuses, (x) -> x.id)
+        @scope.usStatusList = _.sortBy(project.us_statuses, "order")
+
+        @scope.$emit("project:loaded", project)
+        return project
 
     initializeSubscription: ->
         routingKey1 = "changes.project.#{@scope.projectId}.userstories"
@@ -258,12 +279,12 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             @.loadUserstories()
 
     loadInitialData: ->
-        promise = @.loadProject()
-        return promise.then (project) =>
-            @.fillUsersAndRoles(project.members, project.roles)
-            @.initializeSubscription()
-            @.loadKanban()
-            @.generateFilters()
+        project = @.loadProject()
+
+        @.fillUsersAndRoles(project.members, project.roles)
+        @.initializeSubscription()
+        @.loadKanban()
+        @.generateFilters()
 
     # Utils methods
 
@@ -407,12 +428,8 @@ module.directive("tgKanbanArchivedStatusIntro", ["$translate", "tgKanbanUserstor
 ## Kanban Squish Column Directive
 #############################################################################
 
-KanbanSquishColumnDirective = (rs) ->
+KanbanSquishColumnDirective = (rs, projectService) ->
     link = ($scope, $el, $attrs) ->
-        $scope.$on "project:loaded", (event, project) ->
-            $scope.folds = rs.kanban.getStatusColumnModes(project.id)
-            updateTableWidth()
-
         $scope.foldStatus = (status) ->
             $scope.folds[status.id] = !!!$scope.folds[status.id]
             rs.kanban.storeStatusColumnModes($scope.projectId, $scope.folds)
@@ -425,14 +442,22 @@ KanbanSquishColumnDirective = (rs) ->
                     return 40
                 else
                     return 310
+
             totalWidth = _.reduce columnWidths, (total, width) ->
                 return total + width
 
             $el.find('.kanban-table-inner').css("width", totalWidth)
 
+        unwatch = $scope.$watch 'usByStatus', (usByStatus) ->
+            if usByStatus.size
+                $scope.folds = rs.kanban.getStatusColumnModes(projectService.project.get('id'))
+                updateTableWidth()
+
+                unwatch()
+
     return {link: link}
 
-module.directive("tgKanbanSquishColumn", ["$tgResources", KanbanSquishColumnDirective])
+module.directive("tgKanbanSquishColumn", ["$tgResources", "tgProjectService", KanbanSquishColumnDirective])
 
 #############################################################################
 ## Kanban WIP Limit Directive

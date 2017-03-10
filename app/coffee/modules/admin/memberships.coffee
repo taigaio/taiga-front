@@ -1,10 +1,10 @@
 ###
-# Copyright (C) 2014-2016 Andrey Antukh <niwi@niwi.nz>
-# Copyright (C) 2014-2016 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014-2016 David Barragán Merino <bameda@dbarragan.com>
-# Copyright (C) 2014-2016 Alejandro Alonso <alejandro.alonso@kaleidos.net>
-# Copyright (C) 2014-2016 Juan Francisco Alcántara <juanfran.alcantara@kaleidos.net>
-# Copyright (C) 2014-2016 Xavi Julian <xavier.julian@kaleidos.net>
+# Copyright (C) 2014-2017 Andrey Antukh <niwi@niwi.nz>
+# Copyright (C) 2014-2017 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014-2017 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2017 Alejandro Alonso <alejandro.alonso@kaleidos.net>
+# Copyright (C) 2014-2017 Juan Francisco Alcántara <juanfran.alcantara@kaleidos.net>
+# Copyright (C) 2014-2017 Xavi Julian <xavier.julian@kaleidos.net>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -50,11 +50,12 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin, tai
         "$translate",
         "$tgAuth",
         "tgLightboxFactory",
-        "tgErrorHandlingService"
+        "tgErrorHandlingService",
+        "tgProjectService"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @navUrls, @analytics,
-                  @appMetaService, @translate, @auth, @lightboxFactory, @errorHandlingService) ->
+                  @appMetaService, @translate, @auth, @lightboxFactory, @errorHandlingService, @projectService) ->
         bindMethods(@)
 
         @scope.project = {}
@@ -74,17 +75,18 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin, tai
             @analytics.trackEvent("membership", "create", "create memberships on admin", 1)
 
     loadProject: ->
-        return @rs.projects.getBySlug(@params.pslug).then (project) =>
-            if not project.i_am_admin
-                @errorHandlingService.permissionDenied()
+        project = @projectService.project.toJS()
 
-            @scope.projectId = project.id
-            @scope.project = project
+        if not project.i_am_admin
+            @errorHandlingService.permissionDenied()
 
-            @scope.canAddUsers = project.max_memberships == null || project.max_memberships > project.total_memberships
+        @scope.projectId = project.id
+        @scope.project = project
 
-            @scope.$emit('project:loaded', project)
-            return project
+        @scope.canAddUsers = project.max_memberships == null || project.max_memberships > project.total_memberships
+
+        @scope.$emit('project:loaded', project)
+        return project
 
     loadMembers: ->
         httpFilters = @.getUrlFilters()
@@ -99,11 +101,12 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin, tai
             return data
 
     loadInitialData: ->
-        return @.loadProject().then () =>
-            return @q.all([
-                @.loadMembers(),
-                @auth.refresh()
-            ])
+        @.loadProject()
+
+        return @q.all([
+            @.loadMembers(),
+            @auth.refresh()
+        ])
 
     getUrlFilters: ->
         filters = _.pick(@location.search(), "page")
@@ -392,7 +395,7 @@ module.directive("tgMembershipsRowRoleSelector", ["$log", "$tgRepo", "$tgConfirm
 #############################################################################
 
 MembershipsRowActionsDirective = ($log, $repo, $rs, $confirm, $compile, $translate, $location,
-                                  $navUrls, lightboxFactory) ->
+                                  $navUrls, lightboxFactory, projectService) ->
     activedTemplate = """
     <div class="active"
          translate="ADMIN.MEMBERSHIP.STATUS_ACTIVE">
@@ -455,7 +458,8 @@ MembershipsRowActionsDirective = ($log, $repo, $rs, $confirm, $compile, $transla
                         if $scope.page > 1 && ($scope.count - 1) <= $scope.paginatedBy
                             $ctrl.selectFilter("page", $scope.page - 1)
 
-                        $ctrl.loadInitialData()
+                        projectService.fetchProject().then =>
+                            $ctrl.loadInitialData()
                     else
                         $location.path($navUrls.resolve("home"))
 
@@ -492,7 +496,7 @@ MembershipsRowActionsDirective = ($log, $repo, $rs, $confirm, $compile, $transla
 
 module.directive("tgMembershipsRowActions", ["$log", "$tgRepo", "$tgResources", "$tgConfirm", "$compile",
                                              "$translate", "$tgLocation", "$tgNavUrls", "tgLightboxFactory",
-                                             MembershipsRowActionsDirective])
+                                             "tgProjectService", MembershipsRowActionsDirective])
 
 
 #############################################################################

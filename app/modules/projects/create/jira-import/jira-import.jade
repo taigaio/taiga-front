@@ -1,0 +1,31 @@
+.create-project.import-project(ng-if="vm.step == 'autorization-jira'")
+        p autorization...
+
+tg-import-project-selector(
+    logo="/#{v}/images/import-logos/jira.png"
+    search="{{ 'PROJECT.IMPORT.JIRA.CHOOSE_PROJECT' | translate }}"
+    no-projects-msg="{{ 'PROJECT.IMPORT.JIRA.NO_PROJECTS' | translate }}"
+    projects="vm.projects"
+    on-cancel="vm.onCancel()"
+    on-select-project="vm.onSelectProject(project)"
+    ng-if="vm.step == 'project-select-jira'"
+)
+
+tg-jira-import-project-form(
+    ng-if="vm.step == 'project-form-jira'"
+    project="vm.project"
+    members="vm.members"
+    fetching-users="vm.fetchingUsers"
+    on-save-project-details="vm.onSaveProjectDetails(project)"
+    on-cancel-form="vm.step = 'project-select-jira'"
+)
+
+tg-import-project-members(
+    ng-if="vm.step == 'project-members-jira'"
+    platform="Jira"
+    logo="/#{v}/images/import-logos/jira.png"
+    project="vm.project"
+    members="vm.members"
+    on-submit="vm.submitUserSelection(users)"
+    on-cancel="vm.onCancelMemberSelection()"
+)

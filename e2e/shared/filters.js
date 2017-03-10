@@ -43,21 +43,16 @@ module.exports = function(name, counter) {
     });
 
     it('save custom filters', async () => {
-        let len = await counter();
         let customFiltersSize = await filterHelper.getCustomFilters().count();
 
         await filterHelper.firterByCategoryWithContent();
         await filterHelper.saveFilter("custom-filter");
         await filterHelper.clearFilters();
-        await filterHelper.firterByLastCustomFilter();
 
-        let newLength = await counter();
         let newCustomFiltersSize = await filterHelper.getCustomFilters().count();
 
-        expect(newLength).to.be.below(len);
         expect(newCustomFiltersSize).to.be.equal(customFiltersSize + 1);
 
-        await filterHelper.clearFilters();
     });
 
     it('remove custom filters', async () => {

@@ -22,6 +22,7 @@ helper.epic = function() {
             $('.e2e-create-epic-blocked').click();
             $('.e2e-create-epic-blocked-note').clear().sendKeys(date + description);
             $('.e2e-create-epic-button').click();
+            await browser.waitForAngular();
         },
         displayUserStoriesinEpic: async function() {
             utils.common.takeScreenshot("epics", "epics-child-closed");
@@ -79,6 +80,7 @@ helper.epic = function() {
             $('.e2e-epics-column-button').click();
             utils.common.takeScreenshot("epics", "epics-edit-columns");
             $$('.e2e-epics-column-dropdown .check').first().click();
+            await browser.waitForAngular();
         }
     }
 

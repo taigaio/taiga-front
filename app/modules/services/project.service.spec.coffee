@@ -1,5 +1,5 @@
 ###
-# Copyright (C) 2014-2016 Taiga Agile LLC <taiga@taiga.io>
+# Copyright (C) 2014-2017 Taiga Agile LLC <taiga@taiga.io>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -19,6 +19,7 @@
 
 describe "tgProjectService", ->
     $provide = null
+    $interval = null
     mocks = {}
     projectService = null
 
@@ -28,6 +29,14 @@ describe "tgProjectService", ->
         }
 
         $provide.value "tgProjectsService", mocks.projectsService
+
+    _mockUserActivityService = () ->
+        mocks.userActivityService = {
+            onInactive: sinon.stub(),
+            onActive: sinon.stub()
+        }
+
+        $provide.value "tgUserActivityService", mocks.userActivityService
 
     _mockXhrErrorService = () ->
         mocks.xhrErrorService = {
@@ -42,6 +51,7 @@ describe "tgProjectService", ->
 
             _mockProjectsService()
             _mockXhrErrorService()
+            _mockUserActivityService()
 
             return null
 
@@ -49,8 +59,9 @@ describe "tgProjectService", ->
         _mocks()
 
     _inject = () ->
-        inject (_tgProjectService_) ->
+        inject (_tgProjectService_, _$interval_) ->
             projectService = _tgProjectService_
+            $interval = _$interval_
 
     beforeEach ->
         module "taigaCommon"
@@ -157,3 +168,35 @@ describe "tgProjectService", ->
 
         expect(perm1).to.be.true
         expect(perm2).to.be.false
+
+    it "autorefresh project interval", () ->
+        projectService.fetchProject = sinon.spy()
+
+        expect(projectService.fetchProject).not.to.have.been.called
+
+        $interval.flush(60 * 11 * 1000)
+
+        expect(projectService.fetchProject).to.have.been.called
+
+    it "cancel interval on user inactivity", () ->
+        $interval.cancel = sinon.spy()
+
+        projectService.fetchProject = sinon.spy()
+
+        expect($interval.cancel).not.to.have.been.called
+
+        mocks.userActivityService.onInactive.callArg(0)
+
+        expect($interval.cancel).to.have.been.called
+
+    it "fech project if the user restars the activity", () ->
+        projectService.fetchProject = sinon.spy()
+        projectService.autoRefresh = sinon.spy()
+
+        expect(projectService.fetchProject).not.to.have.been.called
+        expect(projectService.autoRefresh).not.to.have.been.called
+
+        mocks.userActivityService.onActive.callArg(0)
+
+        expect(projectService.fetchProject).to.have.been.called
+        expect(projectService.autoRefresh).to.have.been.called

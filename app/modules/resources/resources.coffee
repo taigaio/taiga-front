@@ -1,5 +1,5 @@
 ###
-# Copyright (C) 2014-2016 Taiga Agile LLC <taiga@taiga.io>
+# Copyright (C) 2014-2017 Taiga Agile LLC <taiga@taiga.io>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -28,7 +28,11 @@ services = [
     "tgAttachmentsResource",
     "tgStatsResource",
     "tgWikiHistory",
-    "tgEpicsResource"
+    "tgEpicsResource",
+    "tgTrelloImportResource",
+    "tgJiraImportResource",
+    "tgGithubImportResource",
+    "tgAsanaImportResource"
 ]
 
 Resources = ($injector) ->
@@ -39,7 +43,7 @@ Resources = ($injector) ->
 
         for serviceProperty in Object.keys(service)
             if @[serviceProperty]
-                console.warm("repeated resource " + serviceProperty)
+                console.warn("repeated resource " + serviceProperty)
 
             @[serviceProperty] = service[serviceProperty]
 

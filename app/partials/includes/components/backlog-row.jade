@@ -1,9 +1,10 @@
 .row.us-item-row(
-    ng-repeat="us in userstories track by us.id"
+    ng-repeat="us in userstories | inArray:visibleUserStories:'ref'"
     tg-bind-scope
     ng-class="{blocked: us.is_blocked}"
     tg-class-permission="{'readonly': '!modify_us'}"
 )
+
     .input(tg-check-permission="modify_us")
         input(
           type="checkbox"

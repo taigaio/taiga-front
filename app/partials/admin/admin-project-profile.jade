@@ -119,6 +119,18 @@ div.wrapper(
                             ng-model="project.looking_for_people_note"
                             placeholder="{{ 'ADMIN.PROJECT_PROFILE.RECRUITING_PLACEHOLDER' | translate }}"
                         )
+                        
+                fieldset.get-feedback
+                    .get-feedback-inner
+                        span {{ 'ADMIN.PROJECT_PROFILE.FEEDBACK' | translate }}
+                        div.check
+                            input(
+                                type="checkbox",
+                                ng-model="project.is_contact_activated"
+                            )
+                            div
+                            span.check-text.check-yes(translate="COMMON.YES")
+                            span.check-text.check-no(translate="COMMON.NO")
 
                 tg-admin-project-restrictions(project="project")
 

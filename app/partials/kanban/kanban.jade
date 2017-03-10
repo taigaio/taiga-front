@@ -1,12 +1,15 @@
 doctype html
 
-div.wrapper(tg-kanban, ng-controller="KanbanController as ctrl"
-            ng-init="section='kanban'")
+div.wrapper(
+    tg-kanban,
+    ng-controller="KanbanController as ctrl"
+    ng-init="section='kanban'"
+)
     tg-project-menu
 
     section.main.kanban
         tg-filter(
-          ng-show="ctrl.openFilter"
+          open="{{ctrl.openFilter}}"
           q="ctrl.filterQ"
           filters="ctrl.filters"
           custom-filters="ctrl.customFilters"
@@ -23,8 +26,8 @@ div.wrapper(tg-kanban, ng-controller="KanbanController as ctrl"
         .kanban-header
             include ../includes/components/mainTitle
             .taskboard-actions
+                .zoom-loading(tg-loading="ctrl.zoomLoading")
                 tg-kanban-board-zoom(
-                    ng-if="usByStatus.size",
                     on-zoom-change="ctrl.setZoom(zoomLevel, zoom)"
                 )
 

@@ -1,10 +1,10 @@
 ###
-# Copyright (C) 2014-2016 Andrey Antukh <niwi@niwi.nz>
-# Copyright (C) 2014-2016 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014-2016 David Barragán Merino <bameda@dbarragan.com>
-# Copyright (C) 2014-2016 Alejandro Alonso <alejandro.alonso@kaleidos.net>
-# Copyright (C) 2014-2016 Juan Francisco Alcántara <juanfran.alcantara@kaleidos.net>
-# Copyright (C) 2014-2016 Xavi Julian <xavier.julian@kaleidos.net>
+# Copyright (C) 2014-2017 Andrey Antukh <niwi@niwi.nz>
+# Copyright (C) 2014-2017 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014-2017 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2017 Alejandro Alonso <alejandro.alonso@kaleidos.net>
+# Copyright (C) 2014-2017 Juan Francisco Alcántara <juanfran.alcantara@kaleidos.net>
+# Copyright (C) 2014-2017 Xavi Julian <xavier.julian@kaleidos.net>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -59,7 +59,8 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         "$tgQueueModelTransformation",
         "tgErrorHandlingService",
         "$tgStorage",
-        "tgFilterRemoteStorageService"
+        "tgFilterRemoteStorageService",
+        "tgProjectService"
     ]
 
     storeCustomFiltersName: 'backlog-custom-filters'
@@ -69,7 +70,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @appMetaService, @navUrls,
                   @events, @analytics, @translate, @loading, @rs2, @modelTransform, @errorHandlingService,
-                  @storage, @filterRemoteStorageService) ->
+                  @storage, @filterRemoteStorageService, @projectService) ->
         bindMethods(@)
 
         @.backlogOrder = {}
@@ -86,6 +87,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         @showTags = false
         @activeFilters = false
         @scope.showGraphPlaceholder = null
+        @displayVelocity = false
 
         @.initializeEventHandlers()
 
@@ -120,8 +122,10 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             @confirm.notify("success")
             @analytics.trackEvent("userstory", "create", "bulk create userstory on backlog", 1)
 
-        @scope.$on "sprintform:create:success", =>
-            @.loadSprints()
+        @scope.$on "sprintform:create:success", (e, data, ussToMove) =>
+            @.loadSprints().then () =>
+                @scope.$broadcast("sprintform:create:success:callback", ussToMove)
+
             @.loadProjectStats()
             @confirm.notify("success")
             @analytics.trackEvent("sprint", "create", "create sprint on backlog", 1)
@@ -181,6 +185,17 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
     toggleActiveFilters: ->
         @activeFilters = !@activeFilters
 
+    toggleVelocityForecasting: ->
+        @displayVelocity = !@displayVelocity
+        if !@displayVelocity
+            @scope.visibleUserStories = _.map @scope.userstories, (it) ->
+                return it.ref
+        else
+            @scope.visibleUserStories = _.map @.forecastedStories, (it) ->
+                return it.ref
+        scopeDefer @scope, =>
+            @scope.$broadcast("userstories:loaded")
+
     loadProjectStats: ->
         return @rs.projects.stats(@scope.projectId).then (stats) =>
             @scope.stats = stats
@@ -192,6 +207,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
                 @scope.stats.completedPercentage = 0
 
             @scope.showGraphPlaceholder = !(stats.total_points? && stats.total_milestones?)
+            @.calculateForecasting()
             return stats
 
     setMilestonesOrder: (sprints) ->
@@ -275,6 +291,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         promise = @rs.userstories.listUnassigned(@scope.projectId, params, pageSize)
 
         return promise.then (result) =>
+
             userstories = result[0]
             header = result[1]
 
@@ -283,6 +300,8 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
             # NOTE: Fix order of USs because the filter orderBy does not work propertly in the partials files
             @scope.userstories = @scope.userstories.concat(_.sortBy(userstories, "backlog_order"))
+            @scope.visibleUserStories = _.map @scope.userstories, (it) ->
+                return it.ref
 
             for it in @scope.userstories
                 @.backlogOrder[it.id] = it.backlog_order
@@ -305,31 +324,47 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             @.loadProjectStats(),
             @.loadSprints(),
             @.loadUserstories()
-        ])
+        ]).then(@.calculateForecasting)
+
+    calculateForecasting: ->
+        stats = @scope.stats
+        total_points = stats.total_points
+        current_sum = stats.assigned_points
+        backlog_points_sum = 0
+        @forecastedStories = []
+
+        for us in @scope.userstories
+            current_sum += us.total_points
+            backlog_points_sum += us.total_points
+            @forecastedStories.push(us)
+
+            if stats.speed > 0 && backlog_points_sum > stats.speed
+                break
 
     loadProject: ->
-        return @rs.projects.getBySlug(@params.pslug).then (project) =>
-            if not project.is_backlog_activated
-                @errorHandlingService.permissionDenied()
+        project = @projectService.project.toJS()
 
-            @scope.projectId = project.id
-            @scope.project = project
-            @scope.closedMilestones = !!project.total_closed_milestones
-            @scope.$emit('project:loaded', project)
-            @scope.points = _.sortBy(project.points, "order")
-            @scope.pointsById = groupBy(project.points, (x) -> x.id)
-            @scope.usStatusById = groupBy(project.us_statuses, (x) -> x.id)
-            @scope.usStatusList = _.sortBy(project.us_statuses, "id")
-            return project
+        if not project.is_backlog_activated
+            @errorHandlingService.permissionDenied()
+
+        @scope.projectId = project.id
+        @scope.project = project
+        @scope.closedMilestones = !!project.total_closed_milestones
+        @scope.$emit('project:loaded', project)
+        @scope.points = _.sortBy(project.points, "order")
+        @scope.pointsById = groupBy(project.points, (x) -> x.id)
+        @scope.usStatusById = groupBy(project.us_statuses, (x) -> x.id)
+        @scope.usStatusList = _.sortBy(project.us_statuses, "id")
+
+        return project
 
     loadInitialData: ->
-        promise = @.loadProject()
-        promise.then (project) =>
-            @.fillUsersAndRoles(project.members, project.roles)
-            @.initializeSubscription()
+        project = @.loadProject()
 
-        return promise
-            .then(=> @.loadBacklog())
+        @.fillUsersAndRoles(project.members, project.roles)
+        @.initializeSubscription()
+
+        return @.loadBacklog()
             .then(=> @.generateFilters())
             .then(=> @scope.$emit("backlog:loaded"))
 
@@ -545,7 +580,7 @@ module.controller("BacklogController", BacklogController)
 ## Backlog Directive
 #############################################################################
 
-BacklogDirective = ($repo, $rootscope, $translate) ->
+BacklogDirective = ($repo, $rootscope, $translate, $rs) ->
     ## Doom line Link
     doomLineTemplate = _.template("""
     <div class="doom-line"><span><%- text %></span></div>
@@ -553,11 +588,13 @@ BacklogDirective = ($repo, $rootscope, $translate) ->
 
     linkDoomLine = ($scope, $el, $attrs, $ctrl) ->
         reloadDoomLine = ->
-            if $scope.stats? and $scope.stats.total_points? and $scope.stats.total_points != 0
+            if $scope.displayVelocity
+                removeDoomlineDom()
+
+            if $scope.stats? and $scope.stats.total_points? and $scope.stats.total_points != 0 and !$scope.displayVelocity?
                 removeDoomlineDom()
 
                 stats = $scope.stats
-
                 total_points = stats.total_points
                 current_sum = stats.assigned_points
 
@@ -584,6 +621,7 @@ BacklogDirective = ($repo, $rootscope, $translate) ->
             return _.map(rowElements, (x) -> angular.element(x))
 
         $scope.$on("userstories:loaded", reloadDoomLine)
+        $scope.$on("userstories:forecast", removeDoomlineDom)
         $scope.$watch("stats", reloadDoomLine)
 
     ## Move to current sprint link
@@ -614,9 +652,11 @@ BacklogDirective = ($repo, $rootscope, $translate) ->
             # Update the total of points
             sprint.total_points += totalExtraPoints
 
-            $repo.saveAll(selectedUss).then ->
+            $rs.userstories.bulkUpdateMilestone($scope.project.id, $scope.sprints[0].id, selectedUss).then =>
                 $ctrl.loadSprints()
                 $ctrl.loadProjectStats()
+                $ctrl.toggleVelocityForecasting()
+                $ctrl.calculateForecasting()
 
             $el.find(".move-to-sprint").hide()
 
@@ -625,6 +665,9 @@ BacklogDirective = ($repo, $rootscope, $translate) ->
 
         moveToLatestSprint = (selectedUss) ->
             moveUssToSprint(selectedUss, $scope.sprints[0])
+
+        $scope.$on "sprintform:create:success:callback", (e, ussToMove) ->
+            _.partial(moveToCurrentSprint, ussToMove)()
 
         shiftPressed = false
         lastChecked = null
@@ -639,6 +682,7 @@ BacklogDirective = ($repo, $rootscope, $translate) ->
                 moveToSprintDom.show()
             else
                 moveToSprintDom.hide()
+
 
         $(window).on "keydown.shift-pressed keyup.shift-pressed", (event) ->
             shiftPressed = !!event.shiftKey
@@ -684,6 +728,22 @@ BacklogDirective = ($repo, $rootscope, $translate) ->
             $ctrl.toggleShowTags()
 
             showHideTags($ctrl)
+
+        $el.on "click", ".forecasting-add-sprint", (event) ->
+            ussToMoveList = $ctrl.forecastedStories
+            if $scope.currentSprint
+                ussToMove = _.map ussToMoveList, (us, index) ->
+                    us.milestone = $scope.currentSprint.id
+                    us.order = index
+                    return us
+
+                $scope.$apply(_.partial(moveToCurrentSprint, ussToMove))
+            else
+                ussToMove = _.map ussToMoveList, (us, index) ->
+                    us.order = index
+                    return us
+
+                $rootscope.$broadcast("sprintform:create", $scope.projectId, ussToMove)
 
     showHideTags = ($ctrl) ->
         elm = angular.element("#show-tags")
@@ -759,7 +819,7 @@ BacklogDirective = ($repo, $rootscope, $translate) ->
     return {link: link}
 
 
-module.directive("tgBacklog", ["$tgRepo", "$rootScope", "$translate", BacklogDirective])
+module.directive("tgBacklog", ["$tgRepo", "$rootScope", "$translate", "$tgResources", BacklogDirective])
 
 #############################################################################
 ## User story points directive

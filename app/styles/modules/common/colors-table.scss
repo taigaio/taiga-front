@@ -79,9 +79,16 @@
             flex-basis: 100px;
         }
         .status-slug {
+            display: none;
             flex-basis: 150px;
             flex-grow: 6;
             padding: 0 10px;
+            @include breakpoint(desktop) {
+                display: block;
+            }
+            span {
+                @include ellipsis(100%);
+            }
         }
         .options-column {
             max-width: 100px;
@@ -94,13 +101,17 @@
             text-align: center;
         }
         .is-closed-column {
-            max-width: 130px;
+            max-width: 100px;
             text-align: center;
         }
         .status-wip-limit {
-            max-width: 130px;
+            display: none;
+            max-width: 100px;
             padding: 0 0 0 10px;
             text-align: center;
+            @include breakpoint(desktop) {
+                display: block;
+            }
         }
 
     }
@@ -163,4 +174,5 @@
             visibility: hidden;
         }
     }
+
 }

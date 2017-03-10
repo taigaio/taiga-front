@@ -1,5 +1,5 @@
 ###
-# Copyright (C) 2014-2016 Taiga Agile LLC <taiga@taiga.io>
+# Copyright (C) 2014-2017 Taiga Agile LLC <taiga@taiga.io>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -40,12 +40,6 @@ describe "homeProjectListDirective", () ->
 
         provide.value "tgCurrentUserService", mocks.currentUserService
 
-    _mockTgProjectsService = () ->
-        mocks.projectsService = {
-            newProject: sinon.stub()
-        }
-        provide.value "tgProjectsService", mocks.projectsService
-
     _mockTranslateFilter = () ->
         mockTranslateFilter = (value) ->
             return value
@@ -55,7 +49,6 @@ describe "homeProjectListDirective", () ->
         module ($provide) ->
             provide = $provide
             _mockTgCurrentUserService()
-            _mockTgProjectsService()
             _mockTranslateFilter()
             return null
 
@@ -82,11 +75,3 @@ describe "homeProjectListDirective", () ->
         elm = createDirective()
         scope.$apply()
         expect(elm.isolateScope().vm.projects.size).to.be.equal(3)
-
-    it "home project list directive newProject", () ->
-        elm = createDirective()
-        scope.$apply()
-
-        expect(mocks.projectsService.newProject.callCount).to.be.equal(0)
-        elm.isolateScope().vm.newProject()
-        expect(mocks.projectsService.newProject.callCount).to.be.equal(1)

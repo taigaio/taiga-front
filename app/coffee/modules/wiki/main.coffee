@@ -1,10 +1,10 @@
 ###
-# Copyright (C) 2014-2016 Andrey Antukh <niwi@niwi.nz>
-# Copyright (C) 2014-2016 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014-2016 David Barragán Merino <bameda@dbarragan.com>
-# Copyright (C) 2014-2016 Alejandro Alonso <alejandro.alonso@kaleidos.net>
-# Copyright (C) 2014-2016 Juan Francisco Alcántara <juanfran.alcantara@kaleidos.net>
-# Copyright (C) 2014-2016 Xavi Julian <xavier.julian@kaleidos.net>
+# Copyright (C) 2014-2017 Andrey Antukh <niwi@niwi.nz>
+# Copyright (C) 2014-2017 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014-2017 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2017 Alejandro Alonso <alejandro.alonso@kaleidos.net>
+# Copyright (C) 2014-2017 Juan Francisco Alcántara <juanfran.alcantara@kaleidos.net>
+# Copyright (C) 2014-2017 Xavi Julian <xavier.julian@kaleidos.net>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -52,11 +52,12 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$tgNavUrls",
         "$tgAnalytics",
         "$translate",
-        "tgErrorHandlingService"
+        "tgErrorHandlingService",
+        "tgProjectService"
     ]
 
     constructor: (@scope, @rootscope, @repo, @model, @confirm, @rs, @params, @q, @location,
-                  @filter, @log, @appMetaService, @navUrls, @analytics, @translate, @errorHandlingService) ->
+                  @filter, @log, @appMetaService, @navUrls, @analytics, @translate, @errorHandlingService, @projectService) ->
         @scope.$on("wiki:links:move", @.moveLink)
         @scope.projectSlug = @params.pslug
         @scope.wikiSlug = @params.slug
@@ -86,14 +87,15 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         @appMetaService.setAll(title, description)
 
     loadProject: ->
-        return @rs.projects.getBySlug(@params.pslug).then (project) =>
-            if not project.is_wiki_activated
-                @errorHandlingService.permissionDenied()
+        project = @projectService.project.toJS()
 
-            @scope.projectId = project.id
-            @scope.project = project
-            @scope.$emit('project:loaded', project)
-            return project
+        if not project.is_wiki_activated
+            @errorHandlingService.permissionDenied()
+
+        @scope.projectId = project.id
+        @scope.project = project
+        @scope.$emit('project:loaded', project)
+        return project
 
     loadWiki: ->
         promise = @rs.wiki.getBySlug(@scope.projectId, @params.slug)
@@ -130,10 +132,10 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
             @scope.wikiTitle = selectedWikiLink.title if selectedWikiLink?
 
     loadInitialData: ->
-        promise = @.loadProject()
-        return promise.then (project) =>
-            @.fillUsersAndRoles(project.members, project.roles)
-            @q.all([@.loadWikiLinks(), @.loadWiki()]).then @.checkLinksPerms.bind(this)
+        project = @.loadProject()
+
+        @.fillUsersAndRoles(project.members, project.roles)
+        @q.all([@.loadWikiLinks(), @.loadWiki()]).then @.checkLinksPerms.bind(this)
 
     checkLinksPerms: ->
         if @scope.project.my_permissions.indexOf("add_wiki_link") != -1 ||
@@ -150,6 +152,7 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
                 ctx = {project: @scope.projectSlug}
                 @location.path(@navUrls.resolve("project-wiki", ctx))
                 @confirm.notify("success")
+                @.loadWiki()
 
             onError = =>
                 askResponse.finish(false)
@@ -215,126 +218,82 @@ WikiSummaryDirective = ($log, $template, $compile, $translate, avatarService) ->
 
 module.directive("tgWikiSummary", ["$log", "$tgTemplate", "$compile", "$translate",  "tgAvatarService", WikiSummaryDirective])
 
+WikiWysiwyg = ($modelTransform, $rootscope, $confirm, attachmentsFullService,
+$qqueue, $repo, $analytics, wikiHistoryService) ->
+    link = ($scope, $el, $attrs) ->
+        $scope.editableDescription = false
 
-#############################################################################
-## Editable Wiki Content Directive
-#############################################################################
-
-EditableWikiContentDirective = ($window, $document, $repo, $confirm, $loading, $analytics, $qqueue, $translate,
-                                $wikiHistoryService) ->
-    link = ($scope, $el, $attrs, $model) ->
-        isEditable = ->
-            return $scope.project.my_permissions.indexOf("modify_wiki_page") != -1
-
-        switchToEditMode = ->
-            $el.find('.edit-wiki-content').show()
-            $el.find('.view-wiki-content').hide()
-            $el.find('textarea').focus()
-
-        switchToReadMode = ->
-            $el.find('.edit-wiki-content').hide()
-            $el.find('.view-wiki-content').show()
-
-        disableEdition = ->
-            $el.find(".view-wiki-content .edit").remove()
-            $el.find(".edit-wiki-content").remove()
-
-        cancelEdition = ->
-            return if not $model.$modelValue.id
-
-            $model.$modelValue.revert()
-            switchToReadMode()
-
-        getSelectedText = ->
-            if $window.getSelection
-                return $window.getSelection().toString()
-            else if $document.selection
-                return $document.selection.createRange().text
-            return null
-
-        save = $qqueue.bindAdd (wiki) ->
+        $scope.saveDescription = $qqueue.bindAdd (description, cb) ->
             onSuccess = (wikiPage) ->
-                if not wiki.id?
+                if not $scope.item.id?
                     $analytics.trackEvent("wikipage", "create", "create wiki page", 1)
 
-                $model.$setViewValue wikiPage.clone()
-
-                $wikiHistoryService.loadHistoryEntries()
+                wikiHistoryService.loadHistoryEntries()
                 $confirm.notify("success")
-                switchToReadMode()
 
             onError = ->
                 $confirm.notify("error")
 
-            currentLoading = $loading()
-                .target($el.find('.save'))
-                .start()
+            $scope.item.content =  description
 
-            if wiki.id?
-                promise = $repo.save(wiki).then(onSuccess, onError)
+            if $scope.item.id?
+                promise = $repo.save($scope.item).then(onSuccess, onError)
             else
-                promise = $repo.create("wiki", wiki).then(onSuccess, onError)
+                promise = $repo.create("wiki", $scope.item).then(onSuccess, onError)
 
-            promise.finally ->
-                currentLoading.finish()
+            promise.finally(cb)
 
-        $el.on "click", "a", (event) ->
-            target = angular.element(event.currentTarget)
-            href = target.attr('href')
+        uploadFile = (file, cb) ->
+            return attachmentsFullService.addAttachment($scope.project.id, $scope.item.id, 'wiki_page', file).then (result) ->
+                cb(result.getIn(['file', 'name']), result.getIn(['file', 'url']))
 
-            if href.indexOf("#") == 0
-                event.preventDefault()
-                $('body').scrollTop($(href).offset().top)
+        $scope.uploadFiles = (files, cb) ->
+            for file in files
+                uploadFile(file, cb)
 
-        $el.on "mousedown", ".view-wiki-content", (event) ->
-            target = angular.element(event.target)
-            return if not isEditable()
-            return if event.button == 2
+        $scope.$watch $attrs.model, (value) ->
+            return if not value
+            $scope.item = value
+            $scope.version = value.version
+            $scope.storageKey = $scope.project.id + "-" + value.id + "-" + $attrs.type
 
-        $el.on "mouseup", ".view-wiki-content", (event) ->
-            target = angular.element(event.target)
-            return if getSelectedText()
-            return if not isEditable()
-            return if target.is('a')
-            return if target.is('pre')
+        $scope.$watch 'project', (project) ->
+            return if !project
 
-            switchToEditMode()
-
-        $el.on "click", ".save", debounce 2000, ->
-            save($scope.wiki)
-
-        $el.on "click", ".cancel", ->
-            $scope.$apply(cancelEdition)
-
-        $el.on "keydown", "textarea", (event) ->
-            return if event.keyCode != 27
-            $scope.$applyAsync () ->
-                title = $translate.instant("COMMON.CONFIRM_CLOSE_EDIT_MODE_TITLE")
-                message = $translate.instant("COMMON.CONFIRM_CLOSE_EDIT_MODE_MESSAGE")
-                $confirm.ask(title, null, message).then (askResponse) ->
-                    cancelEdition()
-                    askResponse.finish()
-
-        $scope.$watch $attrs.ngModel, (wikiPage) ->
-            return if not wikiPage
-
-            if isEditable()
-                $el.addClass('editable')
-                if not wikiPage.id? or $.trim(wikiPage.content).length == 0
-                    switchToEditMode()
-            else
-                disableEdition()
-
-        $scope.$on "$destroy", ->
-            $el.off()
+            $scope.editableDescription = project.my_permissions.indexOf("modify_wiki_page") != -1
 
     return {
-        link: link
-        restrict: "EA"
-        require: "ngModel"
-        templateUrl: "wiki/editable-wiki-content.html"
+        scope: true,
+        link: link,
+        template: """
+            <div>
+                <tg-wysiwyg
+                    ng-if="editableDescription"
+                    version='version'
+                    storage-key='storageKey'
+                    content='item.content'
+                    on-save='saveDescription(text, cb)'
+                    on-upload-file='uploadFiles(files, cb)'>
+                </tg-wysiwyg>
+
+                <div
+                    class="wysiwyg"
+                    ng-if="!editableDescription && item.content.length"
+                    ng-bind-html="item.content | markdownToHTML"></div>
+
+                <div
+                    class="wysiwyg"
+                    ng-if="!editableDescription && !item.content.length">
+                    {{'COMMON.DESCRIPTION.NO_DESCRIPTION' | translate}}
+                </div>
+            </div>
+        """
     }
 
-module.directive("tgEditableWikiContent", ["$window", "$document", "$tgRepo", "$tgConfirm", "$tgLoading",
-                                           "$tgAnalytics", "$tgQqueue", "$translate", "tgWikiHistoryService",
-                                           EditableWikiContentDirective])
+module.directive("tgWikiWysiwyg", [
+    "$tgQueueModelTransformation",
+    "$rootScope",
+    "$tgConfirm",
+    "tgAttachmentsFullService",
+    "$tgQqueue", "$tgRepo", "$tgAnalytics", "tgWikiHistoryService"
+    WikiWysiwyg])

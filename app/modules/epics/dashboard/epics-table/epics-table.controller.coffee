@@ -51,6 +51,9 @@ class EpicsTableController
         @.displayOptions = !@.displayOptions
 
     reorderEpic: (epic, newIndex) ->
+        if epic.get('epics_order') == newIndex
+            return null
+
         @epicsService.reorderEpic(epic, newIndex)
             .then null, () => # on error
                 @confirm.notify("error")

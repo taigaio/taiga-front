@@ -1,10 +1,10 @@
 ###
-# Copyright (C) 2014-2016 Andrey Antukh <niwi@niwi.nz>
-# Copyright (C) 2014-2016 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014-2016 David Barragán Merino <bameda@dbarragan.com>
-# Copyright (C) 2014-2016 Alejandro Alonso <alejandro.alonso@kaleidos.net>
-# Copyright (C) 2014-2016 Juan Francisco Alcántara <juanfran.alcantara@kaleidos.net>
-# Copyright (C) 2014-2016 Xavi Julian <xavier.julian@kaleidos.net>
+# Copyright (C) 2014-2017 Andrey Antukh <niwi@niwi.nz>
+# Copyright (C) 2014-2017 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014-2017 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2017 Alejandro Alonso <alejandro.alonso@kaleidos.net>
+# Copyright (C) 2014-2017 Juan Francisco Alcántara <juanfran.alcantara@kaleidos.net>
+# Copyright (C) 2014-2017 Xavi Julian <xavier.julian@kaleidos.net>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -126,6 +126,54 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
             controllerAs: "vm"
         }
     )
+
+    # Project
+    $routeProvider.when("/project/new",
+        {
+            title: "PROJECT.CREATE.TITLE",
+            templateUrl: "projects/create/create-project.html",
+            loader: true,
+            controller: "CreateProjectCtrl",
+            controllerAs: "vm"
+        }
+    )
+
+    # Project - scrum
+    $routeProvider.when("/project/new/scrum",
+        {
+            title: "PROJECT.CREATE.TITLE",
+            template: "<tg-create-project-form type=\"scrum\"></tg-create-project-form>",
+            loader: true
+        }
+    )
+
+    # Project - kanban
+    $routeProvider.when("/project/new/kanban",
+        {
+            title: "PROJECT.CREATE.TITLE",
+            template: "<tg-create-project-form type=\"kanban\"></tg-create-project-form>",
+            loader: true
+        }
+    )
+
+    # Project - duplicate
+    $routeProvider.when("/project/new/duplicate",
+        {
+            title: "PROJECT.CREATE.TITLE",
+            template: "<tg-duplicate-project></tg-duplicate-project>",
+            loader: true
+        }
+    )
+
+    # Project - import
+    $routeProvider.when("/project/new/import/:platform?",
+        {
+            title: "PROJECT.CREATE.TITLE",
+            template: "<tg-import-project></tg-import-project>",
+            loader: true
+        }
+    )
+
     # Project
     $routeProvider.when("/project/:pslug/",
         {

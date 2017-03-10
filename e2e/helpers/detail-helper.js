@@ -12,7 +12,12 @@ helper.title = function() {
         },
 
         setTitle: function(title) {
-            el.$('.e2e-detail-edit').click();
+            browser
+                .actions()
+                .mouseMove(el.$('.e2e-detail-edit'))
+                .click()
+                .perform();
+
             el.$('.e2e-title-input').clear().sendKeys(title);
         },
 
@@ -38,7 +43,7 @@ helper.description = function(){
         },
 
         getInnerHtml: async function(text){
-            let html = await el.$(".wysiwyg.editable").getInnerHtml();
+            let html = await el.$(".wysiwyg.editable").getAttribute("innerHTML");
             return html;
         },
 
@@ -109,7 +114,7 @@ helper.statusSelector = function() {
             return this.getSelectedStatus();
         },
         getSelectedStatus: async function(){
-            return el.$$('.detail-status-inner .e2e-status').first().getInnerHtml();
+            return el.$$('.detail-status-inner .e2e-status').first().getAttribute("innerHTML");
         }
     };
 
@@ -146,24 +151,6 @@ helper.assignedTo = function() {
     return obj;
 };
 
-helper.editComment = function() {
-  let el = $('.comment-editor');
-  let obj = {
-      el:el,
-
-      updateText: function (text) {
-          el.$('textarea').sendKeys(text);
-      },
-
-      saveComment: async function () {
-          el.$('.save-comment').click();
-          await browser.waitForAngular();
-      }
-  }
-  return obj;
-
-};
-
 helper.history = function() {
     let el = $('section.history');
     let obj = {
@@ -177,16 +164,6 @@ helper.history = function() {
         selectActivityTab: async function() {
             el.$('.e2e-activity-tab').click();
             await browser.waitForAngular();
-        },
-
-        addComment: async function(comment) {
-            obj.writeComment(comment);
-            el.$('.save-comment').click();
-            await browser.waitForAngular();
-        },
-
-        writeComment: function(comment) {
-            el.$('textarea[tg-markitup]').sendKeys(comment);
         },
 
         countComments: async function() {
@@ -227,6 +204,10 @@ helper.history = function() {
             await browser.waitForAngular();
         },
 
+        getComments: function() {
+            return $$('tg-comment');
+        },
+
         showVersionsLastComment: async function() {
           el.$$(".comment-edited a").last().click();
           await browser.waitForAngular();
@@ -252,11 +233,11 @@ helper.history = function() {
             el.$$(".deleted-comment-wrapper .restore-comment").last().click();
             await browser.waitForAngular();
         }
-    }
+    };
 
     return obj;
 
-}
+};
 
 helper.block = function() {
     let el = $('tg-block-button');
@@ -285,8 +266,9 @@ helper.blockLightbox = function() {
         waitClose: function() {
             return utils.notifications.success.close();
         },
-        fill: function(text) {
+        fill: async function(text) {
             el.$('textarea').sendKeys(text);
+            await browser.waitForAngular();
         },
         submit: async function() {
             el.$('a.button-green').click();

@@ -2,42 +2,35 @@ var utils = require('../utils');
 
 var helper = module.exports;
 
-helper.openWizard = function() {
+helper.openCreateProjectPage = function() {
     $$('.create-project-btn').get(1).click();
 };
 
-helper.createProjectLightbox = function() {
+helper.newProjectScreen = function() {
     let obj = {
-        el: function() {
-            return $('div[tg-lb-create-project]');
+        selectDuplicateOption: function() {
+            return utils.common.link($('.e2e-duplicate-project'));
         },
-        waitOpen: function() {
-            return utils.lightbox.open(obj.el());
+        selectScrumOption: function() {
+            return utils.common.link($('.e2e-create-project-scrum'));
         },
-        waitClose: function() {
-            return utils.lightbox.close(obj.el());
+        selectKanbanOption: function() {
+            return utils.common.link($('.e2e-create-project-kanban'));
         },
-        next: async function() {
-            $('.wizard-step.active .button-green').click();
-
-            await browser.sleep(1000);
+        selectProjectToDuplicate: function() {
+            return $$('.e2e-duplicate-project-reference option').get(1).click();
         },
-        submit: function() {
-            return $('div[tg-lb-create-project]  .button-green').click();
+        fillNameAndDescription: async function(name, title){
+          await $('.e2e-create-project-title').sendKeys(name);
+          await $('.e2e-create-project-description').sendKeys(title);
         },
-        name: function() {
-            return $$('div[tg-lb-create-project] input[type="text"]').get(0);
-        },
-        description: function() {
-            return $('div[tg-lb-create-project] textarea');
-        },
-        errors: function() {
-            return $$('.checksley-error-list li');
+        createProject: function() {
+            return $('.e2e-create-project-action-submit').click();
         }
     };
 
     return obj;
-};
+}
 
 helper.delete = async function() {
     $('.delete-project').click();

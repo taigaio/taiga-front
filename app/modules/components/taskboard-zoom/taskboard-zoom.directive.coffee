@@ -1,5 +1,5 @@
 ###
-# Copyright (C) 2014-2016 Taiga Agile LLC <taiga@taiga.io>
+# Copyright (C) 2014-2017 Taiga Agile LLC <taiga@taiga.io>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -27,7 +27,7 @@ TaskboardZoomDirective = (storage) ->
             ["ref"],
             ["subject"],
             ["owner", "tags", "extra_info", "unfold"],
-            ["attachments"],
+            ["attachments", "empty_extra_info"],
             ["related_tasks"]
         ]
 

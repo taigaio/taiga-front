@@ -1,0 +1,32 @@
+.create-project.import-project(ng-if="vm.step == 'autorization-asana'")
+        p autorization...
+
+
+tg-import-project-selector(
+    logo="/#{v}/images/import-logos/asana.png"
+    search="{{ 'PROJECT.IMPORT.ASANA.CHOOSE_PROJECT' | translate }}"
+    no-projects-msg="{{ 'PROJECT.IMPORT.ASANA.NO_PROJECTS' | translate }}"
+    projects="vm.projects"
+    on-cancel="vm.onCancel()"
+    on-select-project="vm.onSelectProject(project)"
+    ng-if="vm.step == 'project-select-asana'"
+)
+
+tg-asana-import-project-form(
+    ng-if="vm.step == 'project-form-asana'"
+    project="vm.project"
+    members="vm.members"
+    fetching-users="vm.fetchingUsers"
+    on-save-project-details="vm.onSaveProjectDetails(project)"
+    on-cancel-form="vm.step = 'project-select-asana'"
+)
+
+tg-import-project-members(
+    ng-if="vm.step == 'project-members-asana'"
+    platform="Asana"
+    logo="/#{v}/images/import-logos/asana.png"
+    project="vm.project"
+    members="vm.members"
+    on-submit="vm.submitUserSelection(users)"
+    on-cancel="vm.onCancelMemberSelection()"
+)

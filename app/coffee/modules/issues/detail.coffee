@@ -1,10 +1,10 @@
 ###
-# Copyright (C) 2014-2016 Andrey Antukh <niwi@niwi.nz>
-# Copyright (C) 2014-2016 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014-2016 David Barragán Merino <bameda@dbarragan.com>
-# Copyright (C) 2014-2016 Alejandro Alonso <alejandro.alonso@kaleidos.net>
-# Copyright (C) 2014-2016 Juan Francisco Alcántara <juanfran.alcantara@kaleidos.net>
-# Copyright (C) 2014-2016 Xavi Julian <xavier.julian@kaleidos.net>
+# Copyright (C) 2014-2017 Andrey Antukh <niwi@niwi.nz>
+# Copyright (C) 2014-2017 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014-2017 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2017 Alejandro Alonso <alejandro.alonso@kaleidos.net>
+# Copyright (C) 2014-2017 Juan Francisco Alcántara <juanfran.alcantara@kaleidos.net>
+# Copyright (C) 2014-2017 Xavi Julian <xavier.julian@kaleidos.net>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -53,11 +53,12 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$tgNavUrls",
         "$translate",
         "$tgQueueModelTransformation",
-        "tgErrorHandlingService"
+        "tgErrorHandlingService",
+        "tgProjectService"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location,
-                  @log, @appMetaService, @analytics, @navUrls, @translate, @modelTransform, @errorHandlingService) ->
+                  @log, @appMetaService, @analytics, @navUrls, @translate, @modelTransform, @errorHandlingService, @projectService) ->
         bindMethods(@)
 
         @scope.issueRef = @params.issueref
@@ -112,19 +113,20 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
            @scope.onDeleteGoToUrl = @navUrls.resolve("project", ctx)
 
     loadProject: ->
-        return @rs.projects.getBySlug(@params.pslug).then (project) =>
-            @scope.projectId = project.id
-            @scope.project = project
-            @scope.$emit('project:loaded', project)
-            @scope.statusList = project.issue_statuses
-            @scope.statusById = groupBy(project.issue_statuses, (x) -> x.id)
-            @scope.typeById = groupBy(project.issue_types, (x) -> x.id)
-            @scope.typeList = _.sortBy(project.issue_types, "order")
-            @scope.severityList = project.severities
-            @scope.severityById = groupBy(project.severities, (x) -> x.id)
-            @scope.priorityList = project.priorities
-            @scope.priorityById = groupBy(project.priorities, (x) -> x.id)
-            return project
+        project = @projectService.project.toJS()
+
+        @scope.projectId = project.id
+        @scope.project = project
+        @scope.$emit('project:loaded', project)
+        @scope.statusList = project.issue_statuses
+        @scope.statusById = groupBy(project.issue_statuses, (x) -> x.id)
+        @scope.typeById = groupBy(project.issue_types, (x) -> x.id)
+        @scope.typeList = _.sortBy(project.issue_types, "order")
+        @scope.severityList = project.severities
+        @scope.severityById = groupBy(project.severities, (x) -> x.id)
+        @scope.priorityList = project.priorities
+        @scope.priorityById = groupBy(project.priorities, (x) -> x.id)
+        return project
 
     loadIssue: ->
         return @rs.issues.getByRef(@scope.projectId, @params.issueref).then (issue) =>
@@ -149,10 +151,11 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
                 @scope.nextUrl = @navUrls.resolve("project-issues-detail", ctx)
 
     loadInitialData: ->
-        promise = @.loadProject()
-        return promise.then (project) =>
-            @.fillUsersAndRoles(project.members, project.roles)
-            @.loadIssue()
+        project = @.loadProject()
+
+        @.fillUsersAndRoles(project.members, project.roles)
+
+        return @.loadIssue()
 
     ###
     # Note: This methods (onUpvote() and onDownvote()) are related to tg-vote-button.

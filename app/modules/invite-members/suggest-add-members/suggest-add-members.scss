@@ -1,0 +1,78 @@
+.add-member-suggest {
+    .add-member-suggest-list {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 2rem 0 0;
+    }
+
+    .add-member-suggest-filter {
+        align-items: center;
+        display: flex;
+        padding: 0 15rem;
+        position: relative;
+    }
+
+    .add-member-suggest-filter-input {
+        flex: 1;
+        margin-right: .25rem;
+    }
+
+    .add-member-suggest-filter-hint {
+        @include font-size(xsmall);
+        color: $gray-light;
+        position: absolute;
+        right: 16rem;
+        top: .5rem;
+        &.to-send {
+            right: 19rem;
+        }
+    }
+
+    .add-member-suggest-filter-addmail {
+        background: $grayer;
+        border-radius: .25rem;
+        padding: .5rem .75rem;
+        transition: background .2s linear;
+
+        &:hover {
+            background: $blackish;
+        }
+
+        svg {
+            @include svg-size(1.3rem);
+            fill: $white;
+        }
+    }
+
+    .add-member-suggest-single {
+        align-items: center;
+        background: $white;
+        border-bottom: 1px solid $whitish;
+        cursor: pointer;
+        display: flex;
+        flex-basis: calc(25% - 1rem);
+        flex-grow: 0;
+        flex-shrink: 0;
+        margin-right: 1rem;
+        padding: .2rem;
+        transition: .2s linear;
+
+        &:hover {
+            background: rgba($primary-light, .1);
+        }
+
+        &:nth-child(4n) {
+            margin-right: 0;
+        }
+    }
+
+    .add-member-suggest-avatar {
+        height: 5rem;
+        margin: .5rem;
+        width: 5rem;
+    }
+
+    .add-member-suggest-name {
+        @include font-type(light);
+    }
+}

@@ -33,18 +33,6 @@ describe('home', function() {
             await utils.common.waitLoader();
             utils.common.takeScreenshot("home", "projects");
         });
-
-        it('open create project lightbox', async function() {
-            $('.master .create-project-btn').click();
-
-            return expect(await utils.lightbox.open('div[tg-lb-create-project]')).to.be.equal(true);
-        });
-
-        it('close create project lightbox', async function() {
-            $('div[tg-lb-create-project] .close').click();
-
-            return expect(await utils.lightbox.close('div[tg-lb-create-project]')).to.be.equal(true);
-        });
     });
 
     describe("project drag and drop", function() {
@@ -72,7 +60,7 @@ describe('home', function() {
         });
 
         it('projects menu has the new order', async function() {
-            var firstElementText = await $$('div[tg-dropdown-project-list] ul a span').first().getInnerHtml();
+            var firstElementText = await $$('div[tg-dropdown-project-list] ul a span').first().getAttribute("innerHTML");
 
             expect(firstElementText).to.be.equal(draggedElementText);
         });

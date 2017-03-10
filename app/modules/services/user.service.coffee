@@ -1,5 +1,5 @@
 ###
-# Copyright (C) 2014-2016 Taiga Agile LLC <taiga@taiga.io>
+# Copyright (C) 2014-2017 Taiga Agile LLC <taiga@taiga.io>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -30,8 +30,8 @@ class UserService extends taiga.Service
     getUserByUserName: (username) ->
         return @rs.users.getUserByUsername(username)
 
-    getContacts: (userId) ->
-        return @rs.users.getContacts(userId)
+    getContacts: (userId, excludeProjectId) ->
+        return @rs.users.getContacts(userId, excludeProjectId)
 
     getLiked: (userId, pageNumber, objectType, textQuery) ->
         return @rs.users.getLiked(userId, pageNumber, objectType, textQuery)

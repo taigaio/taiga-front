@@ -1,0 +1,32 @@
+.create-project
+    .create-project-title-wrapper(ng-if="vm.type == 'scrum'")
+        tg-svg(svg-icon="icon-scrum")
+        h1.create-project-title(translate="PROJECT.CREATE.TEMPLATE_SCRUM")
+    h3.create-project-description(
+        ng-if="vm.type == 'scrum'"
+        translate="PROJECT.CREATE.TEMPLATE_SCRUM_DESC"
+    )
+
+    .create-project-title-wrapper(ng-if="vm.type == 'kanban'")
+        tg-svg(svg-icon="icon-kanban")
+        h1.create-project-title(translate="PROJECT.CREATE.TEMPLATE_KANBAN")
+    h3.create-project-description(
+        ng-if="vm.type == 'kanban'"
+        translate="PROJECT.CREATE.TEMPLATE_KANBAN_DESC"
+    )
+
+    form(
+        name="projectForm",
+        ng-submit="vm.submit()"
+    )
+        div(ng-include="'projects/create/import-project-form-common/name.html'")
+        div(ng-include="'projects/create/import-project-form-common/description.html'")
+        div(ng-include="'projects/create/import-project-form-common/project-privacy.html'")
+
+        tg-create-project-restrictions(
+            is-private="vm.projectForm.is_private"
+            can-create-public-projects="vm.canCreatePublicProjects"
+            can-create-private-projects="vm.canCreatePrivateProjects"
+        )
+
+        div(ng-include="'projects/create/import-project-form-common/actions.html'")

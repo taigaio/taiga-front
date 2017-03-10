@@ -1,5 +1,5 @@
 ###
-# Copyright (C) 2014-2016 Taiga Agile LLC <taiga@taiga.io>
+# Copyright (C) 2014-2017 Taiga Agile LLC <taiga@taiga.io>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -75,24 +75,42 @@ class EpicsService
                 Promise.all(promises).then(@.fetchEpics.bind(this, true))
 
     reorderEpic: (epic, newIndex) ->
+        orderList = {}
+        @._epics.forEach (it) ->
+            orderList[it.get('id')] = it.get('epics_order')
+
         withoutMoved = @.epics.filter (it) => it.get('id') != epic.get('id')
         beforeDestination = withoutMoved.slice(0, newIndex)
+        afterDestination = withoutMoved.slice(newIndex)
 
         previous = beforeDestination.last()
         newOrder = if !previous then 0 else previous.get('epics_order') + 1
 
+        orderList[epic.get('id')] = newOrder
+
         previousWithTheSameOrder = beforeDestination.filter (it) =>
             it.get('epics_order') == previous.get('epics_order')
+
         setOrders = _.fromPairs previousWithTheSameOrder.map((it) =>
             [it.get('id'), it.get('epics_order')]
         ).toJS()
+
+        afterDestination.forEach (it) -> orderList[it.get('id')] = it.get('epics_order') + 1
+
+        @._epics = @._epics.map (it) -> it.set('epics_order', orderList[it.get('id')])
+        @._epics = @._epics.sortBy (it) -> it.get('epics_order')
 
         data = {
             epics_order: newOrder,
             version: epic.get('version')
         }
 
-        return @resources.epics.reorder(epic.get('id'), data, setOrders)
+        return @resources.epics.reorder(epic.get('id'), data, setOrders).then (newEpic) =>
+            @._epics = @._epics.map (it) ->
+                if it.get('id') == newEpic.get('id')
+                    return newEpic
+
+                return it
 
     reorderRelatedUserstory: (epic, epicUserstories, userstory, newIndex) ->
         withoutMoved = epicUserstories.filter (it) => it.get('id') != userstory.get('id')
@@ -120,7 +138,7 @@ class EpicsService
         @._epics = @._epics.map (it) ->
             if it.get('id') == epic.get('id')
                 return epic
-                
+
             return it
 
     updateEpicStatus: (epic, statusId) ->

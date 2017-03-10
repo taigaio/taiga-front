@@ -1,10 +1,10 @@
 ###
-# Copyright (C) 2014-2016 Andrey Antukh <niwi@niwi.nz>
-# Copyright (C) 2014-2016 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014-2016 David Barragán Merino <bameda@dbarragan.com>
-# Copyright (C) 2014-2016 Alejandro Alonso <alejandro.alonso@kaleidos.net>
-# Copyright (C) 2014-2016 Juan Francisco Alcántara <juanfran.alcantara@kaleidos.net>
-# Copyright (C) 2014-2016 Xavi Julian <xavier.julian@kaleidos.net>
+# Copyright (C) 2014-2017 Andrey Antukh <niwi@niwi.nz>
+# Copyright (C) 2014-2017 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014-2017 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2017 Alejandro Alonso <alejandro.alonso@kaleidos.net>
+# Copyright (C) 2014-2017 Juan Francisco Alcántara <juanfran.alcantara@kaleidos.net>
+# Copyright (C) 2014-2017 Xavi Julian <xavier.julian@kaleidos.net>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -105,6 +105,7 @@ class AuthService extends taiga.Service
             return @rootscope.user
 
         userData = @storage.get("userInfo")
+
         if userData
             user = @model.make_model("users", userData)
             @rootscope.user = user
@@ -204,9 +205,6 @@ class AuthService extends taiga.Service
 
     acceptInvitiationWithNewUser: (data) ->
         return @.register(data, "private", false)
-
-    acceptInvitiationWithExistingUser: (data) ->
-        return @.register(data, "private", true)
 
     forgotPassword: (data) ->
         url = @urls.resolve("users-password-recovery")
@@ -478,7 +476,7 @@ module.directive("tgChangePasswordFromRecovery", ["$tgAuth", "$tgConfirm", "$tgL
 ## Invitation
 #############################################################################
 
-InvitationDirective = ($auth, $confirm, $location, $params, $navUrls, $analytics, $translate, config) ->
+InvitationDirective = ($auth, $confirm, $location, $config, $params, $navUrls, $analytics, $translate, config) ->
     link = ($scope, $el, $attrs) ->
         token = $params.token
 
@@ -515,7 +513,14 @@ InvitationDirective = ($auth, $confirm, $location, $params, $navUrls, $analytics
             if not loginForm.validate()
                 return
 
-            promise = $auth.acceptInvitiationWithExistingUser($scope.dataLogin)
+            loginFormType = $config.get("loginFormType", "normal")
+            data = $scope.dataLogin
+
+            promise = $auth.login({
+                username: data.username,
+                password: data.password,
+                invitation_token: data.token
+            }, loginFormType)
             promise.then(onSuccessSubmitLogin, onErrorSubmitLogin)
 
         $el.on "submit", "form.login-form", submitLogin
@@ -555,7 +560,7 @@ InvitationDirective = ($auth, $confirm, $location, $params, $navUrls, $analytics
 
     return {link:link}
 
-module.directive("tgInvitation", ["$tgAuth", "$tgConfirm", "$tgLocation", "$routeParams",
+module.directive("tgInvitation", ["$tgAuth", "$tgConfirm", "$tgLocation", "$tgConfig", "$routeParams",
                                   "$tgNavUrls", "$tgAnalytics", "$translate", "$tgConfig", InvitationDirective])
 
 

@@ -3,7 +3,7 @@
     ng-class="{'empty-tasks': !vm.item.getIn(['model', 'tasks']).size}"
 )
     span.card-estimation(
-        ng-if="vm.item.getIn(['model', 'total_points']) === null",
+        ng-if="vm.item.getIn(['model', 'total_points']) === null && vm.visible('empty_extra_info')",
         translate="US.NOT_ESTIMATED"
     )
     span.card-estimation(
@@ -17,12 +17,18 @@
             tg-svg(
                 svg-icon="icon-iocaine"
             )
-        .statistic.card-votes(ng-class="{'active': vm.item.getIn(['model', 'is_voter'])}")
+        .statistic.card-votes(
+            ng-class="{'active': vm.item.getIn(['model', 'is_voter'])}"
+            ng-if="vm.item.getIn(['model', 'total_voters']) || vm.visible('empty_extra_info')"
+        )
             tg-svg(svg-icon="icon-upvote")
             span {{vm.item.getIn(['model', 'total_voters'])}}
-        .statistic.card-watchers
+        .statistic.card-watchers(ng-if="vm.item.getIn(['model', 'watchers']).size || vm.visible('empty_extra_info')")
             tg-svg(svg-icon="icon-watch")
             span {{vm.item.getIn(['model', 'watchers']).size}}
-        .statistic.card-attachments(ng-if="vm.item.getIn(['model', 'attachments']).size")
+        .statistic.card-comments(ng-if="vm.item.getIn(['model', 'total_comments']) || vm.visible('empty_extra_info')")
+            tg-svg(svg-icon="icon-bubble-empty")
+            span {{vm.item.getIn(['model', 'total_comments'])}}
+        .statistic.card-attachments(ng-if="vm.item.getIn(['model', 'attachments']).size || vm.visible('empty_extra_info')")
            tg-svg(svg-icon="icon-attachment")
            span {{vm.item.getIn(['model', 'attachments']).size}}

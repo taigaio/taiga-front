@@ -32,15 +32,17 @@ helper.createRelatedTasks = function(name, status, assigned_to) {
 
     let form = $('.related-task-create-form');
 
-    return helper.relatedTaskForm(form, status, assigned_to);
+    return helper.relatedTaskForm(form, name, status, assigned_to);
 };
 
-helper.editRelatedTasks = function(taskIndex, name, status, assigned_to) {
+helper.editRelatedTasks = async function(taskIndex, name, status, assigned_to) {
     let task = helper.relatedTasks().get(taskIndex);
 
     task.$('.edit-task').click();
 
-    return helper.relatedTaskForm(task, status, assigned_to);
+    helper.relatedTaskForm(task, name, status, assigned_to);
+
+    await browser.sleep(30000);
 };
 
 helper.editRelatedTasksEnabled = function() {

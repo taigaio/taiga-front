@@ -449,6 +449,43 @@ describe('backlog', function() {
         });
     });
 
+    describe('velocity forecasting', function() {
+        it('show', async function() {
+            browser.get(browser.params.glob.host + 'project/project-1/backlog');
+            await utils.common.waitLoader();
+
+            let usCount = await backlogHelper.userStories().count();
+
+            await backlogHelper.openVelocityForecasting();
+            utils.common.takeScreenshot('backlog', 'velocity-forecasting');
+
+            let newUsCount = await backlogHelper.userStories().count();
+
+            expect(newUsCount).is.below(usCount);
+        });
+        it('create sprint from forecasting',  async function() {
+            browser.get(browser.params.glob.host + 'project/project-1/backlog');
+            await utils.common.waitLoader();
+
+            let sprintCount = await backlogHelper.sprintsOpen().count();
+
+            backlogHelper.openVelocityForecasting();
+            backlogHelper.createSprintFromForecasting();
+
+            let newSprintCount = await backlogHelper.sprintsOpen().count();
+
+            expect(sprintCount).is.below(newSprintCount);
+        });
+        it('hide forecasting if no velocity', async function() {
+            browser.get(browser.params.glob.host + 'project/project-5/backlog');
+            await utils.common.waitLoader();
+
+            let forecasting = await backlogHelper.velocityForecasting();
+
+            expect(forecasting).to.be.empty;
+        });
+    });
+
     describe('backlog filters', sharedFilters.bind(this, 'backlog', () => {
         return backlogHelper.userStories().count();
     }));

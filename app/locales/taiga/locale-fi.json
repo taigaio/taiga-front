@@ -4,7 +4,6 @@
         "NO": "Ei",
         "OR": "or",
         "LOADING": "Ladataan...",
-        "LOADING_PROJECT": "Ladataan projektia...",
         "DATE": "DD.MM.YY",
         "DATETIME": "DD.MM.YY - HH:mm",
         "SAVE": "Tallenna",
@@ -27,12 +26,9 @@
         "BLOCKED_NOTE": "Why is this blocked?",
         "BLOCKED_REASON": "Ole hyvä ja anna syy",
         "CREATED_BY": "Luonut {{fullDisplayName}}",
-        "FROM": "käyttäjältä",
-        "TO": "käyttäjälle",
         "CLOSE": "sulje",
         "GO_HOME": "Vie minut kotiin",
         "PLUGINS": "Pluginit",
-        "BETA": "Tämä on beta-versio!",
         "ONE_ITEM_LINE": "Yksi riviä kohti...",
         "NEW_BULK": "Lisää monta",
         "RELATED_TASKS": "Liittyvät tehtävät",
@@ -41,7 +37,7 @@
         "LOGOUT": "Kirjaudu ulos",
         "EXTERNAL_USER": "ulkoinen käyttäjä",
         "GENERIC_ERROR": "Oompa Loompas havaitsivat virheen {{error}}.",
-        "IOCAINE_TEXT": "Jos tehtävä ahdistaa, merkitse se myrkylliseksi. Ajan mittaa pieninä annoksina saattaa kastokykysi myrkkyä vastaan parantua.",
+        "IOCAINE_TEXT": "This member is feeling a bit overwhelmed by this task. Will become immune to the iocaine poison over time with your help. For now, may need a hug.",
         "CLIENT_REQUIREMENT": "Client requirement is new requirement that was not previously expected and it is required to be part of the project",
         "TEAM_REQUIREMENT": "Team requirement is a requirement that must exist in the project but should have no cost for the client",
         "OWNER": "Project Owner",
@@ -148,7 +144,6 @@
             "PRIORITY": "Tärkeys",
             "ASSIGNED_TO": "Tekijä",
             "POINTS": "Pisteet",
-            "BLOCKED_NOTE": "estetty muistiinpano",
             "IS_BLOCKED": "on estetty",
             "REF": "Ref",
             "VOTES": "Ääniä",
@@ -187,10 +182,6 @@
             "COUNTER_TITLE": "{total, plural, one{one watcher} other{# watchers}}"
         },
         "VOTE_BUTTON": {
-            "UPVOTE": "Upvote",
-            "UPVOTED": "Upvoted",
-            "DOWNVOTE": "Downvote",
-            "VOTERS": "Voters",
             "BUTTON_TITLE": "Upvote/Downvote this item",
             "COUNTER_TITLE": "{total, plural, one{one vote} other{# votes}}"
         },
@@ -202,10 +193,9 @@
             "CONFIRM_DELETE": "Remeber that all values in this custom field will be deleted.\n Are you sure you want to continue?"
         },
         "FILTERS": {
-            "TITLE": "Suodattimet",
             "INPUT_PLACEHOLDER": "Aihe tai viittaus",
             "TITLE_ACTION_FILTER_BUTTON": "hae",
-            "INPUT_SEARCH_PLACEHOLDER": "Otsikko tai viittaus",
+            "TITLE": "Suodattimet",
             "TITLE_ACTION_SEARCH": "Hae",
             "ACTION_SAVE_CUSTOM_FILTER": "tallenna omaksi suodattimeksi",
             "PLACEHOLDER_FILTER_NAME": "Anna suodattimen nimi ja paina enter",
@@ -220,41 +210,10 @@
                 "CREATED_BY": "Luoja",
                 "CUSTOM_FILTERS": "Omat suodattimet",
                 "EPIC": "Epic"
-            },
-            "CONFIRM_DELETE": {
-                "TITLE": "Poista oma suodatin",
-                "MESSAGE": "oma suodatin '{{customFilterName}}'"
             }
         },
         "WYSIWYG": {
-            "H1_BUTTON": "Päätason otsikko",
-            "H1_SAMPLE_TEXT": "Nimikkeesei tänne...",
-            "H2_BUTTON": "Toisen tason otsikko",
-            "H2_SAMPLE_TEXT": "Nimikkeesi tänne...",
-            "H3_BUTTON": "Kolmannen tason otsikko",
-            "H3_SAMPLE_TEXT": "Nimikkeesi tänne...",
-            "BOLD_BUTTON": "Lihavoitu",
-            "BOLD_BUTTON_SAMPLE_TEXT": "Kirjoita tänne...",
-            "ITALIC_BUTTON": "Kursiivi",
-            "ITALIC_SAMPLE_TEXT": "Kirjoita tänne...",
-            "STRIKE_BUTTON": "Lakko",
-            "STRIKE_SAMPLE_TEXT": "Kirjoita tänne...",
-            "BULLETED_LIST_BUTTON": "Numeroimaton lista",
-            "BULLETED_LIST_SAMPLE_TEXT": "Kirjoita tänne...",
-            "NUMERIC_LIST_BUTTON": "Numeroitu lista",
-            "NUMERIC_LIST_SAMPLE_TEXT": "Kirjoita tänne...",
-            "PICTURE_BUTTON": "Kuva",
-            "PICTURE_SAMPLE_TEXT": "Vaihtoehtoinen kuvan teksti tänne...",
-            "LINK_BUTTON": "Linkki",
-            "LINK_SAMPLE_TEXT": "Linkkiteksti tänne...",
-            "QUOTE_BLOCK_BUTTON": "Lainaus",
-            "QUOTE_BLOCK_SAMPLE_TEXT": "Kirjoita tänne...",
-            "CODE_BLOCK_BUTTON": "Koodi-lohko",
-            "CODE_BLOCK_SAMPLE_TEXT": "Kirjoita tänne...",
-            "PREVIEW_BUTTON": "Esikatselu",
-            "EDIT_BUTTON": "Muokkaa",
-            "ATTACH_FILE_HELP": "Attach files by dragging & dropping on the textarea above.",
-            "ATTACH_FILE_HELP_SAVE_FIRST": "Save first before if you want to attach files by dragging & dropping on the textarea above.",
+            "OUTDATED": "Another person has made changes while you were editing. Check the new version on the activiy tab before you save your changes.",
             "MARKDOWN_HELP": "Merkintätavan ohjeet"
         },
         "PERMISIONS_CATEGORIES": {
@@ -307,10 +266,6 @@
                 "ADD_WIKI_LINKS": "Lisää wiki-linkkejä",
                 "DELETE_WIKI_LINKS": "Poista wiki-linkkejä"
             }
-        },
-        "META": {
-            "PAGE_TITLE": "Taiga",
-            "PAGE_DESCRIPTION": "Taiga is a project management platform for startups and agile developers & designers who want a simple, beautiful tool that makes work truly enjoyable."
         }
     },
     "LOGIN": {
@@ -366,7 +321,6 @@
     },
     "CHANGE_PASSWORD": {
         "PAGE_TITLE": "Change you password - Taiga",
-        "PAGE_DESCRIPTION": "Set a new password for your Taiga account and hey!, you may want to eat some more iron-rich food, it's good for your brain :P",
         "SECTION_NAME": "Muuta salasanaa",
         "FIELD_CURRENT_PASSWORD": "Nykyinen salasana",
         "PLACEHOLDER_CURRENT_PASSWORD": "Nykyinen salasanasi (tai on tyhjä jos sinulla ei vielä ole)",
@@ -391,8 +345,7 @@
     },
     "INVITATION_LOGIN_FORM": {
         "NOT_FOUND": "Our Oompa Loompas can't find your invitation.",
-        "SUCCESS": "Olet onnistuneesti liittynyt projektiin {{project_name}}. Tervetuloa!",
-        "ERROR": "Oompa Loompas sanovat että käyttäjänimesi tai sähköpostisi tai salasanasi on väärä."
+        "SUCCESS": "Olet onnistuneesti liittynyt projektiin {{project_name}}. Tervetuloa!"
     },
     "HOME": {
         "PAGE_TITLE": "Home - Taiga",
@@ -463,10 +416,7 @@
         "TITLE_LIGHTBOX_DELETE_ATTACHMENT": "Poista liite...",
         "MSG_LIGHTBOX_DELETE_ATTACHMENT": "liite '{{fileName}}'",
         "ERROR_DELETE_ATTACHMENT": "Emme pystyneet poistamaan: {{errorMessage}}",
-        "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) on liian iso Oompa Loompaseille, kokeile pienemmällä kuin ({{maxFileSize}})",
-        "FIELDS": {
-            "IS_DEPRECATED": "on vanhentunut"
-        }
+        "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) on liian iso Oompa Loompaseille, kokeile pienemmällä kuin ({{maxFileSize}})"
     },
     "PAGINATION": {
         "PREVIOUS": "Edellinen",
@@ -502,13 +452,10 @@
             "ASYNC_MESSAGE": "Lähetämme sähköpostia, kun on valmista.",
             "SYNC_MESSAGE": "Jos lataus ei ala automaattisesti klikkaa <a href='{{url}}' download title='Lataa varmuuskopio'>tästä</a>.",
             "ERROR": "Oompa Loompas eivät onnistuneet tekemään tiedostoasi. Yritä uudelleen.",
-            "ERROR_BUSY": "Valitettavasti Oompa Loompas ovat kiireisiä juuri. Yritä kohta uudestaan.",
-            "ERROR_MESSAGE": "Oompa Loompas eivät onnistuneet luomaan tiedostoasi: {{message}}"
+            "ERROR_BUSY": "Valitettavasti Oompa Loompas ovat kiireisiä juuri. Yritä kohta uudestaan."
         },
         "MODULES": {
             "TITLE": "Modulit",
-            "ENABLE": "Aktivoi",
-            "DISABLE": "Passivoi",
             "EPICS": "Epics",
             "EPICS_DESCRIPTION": "Visualize and manage the most strategic part of your project",
             "BACKLOG": "Odottavat",
@@ -537,17 +484,16 @@
             "PAGE_TITLE": "{{sectionName}} - Projektin profiili - {{projectName}}",
             "PROJECT_DETAILS": "Projektin tiedot",
             "PROJECT_NAME": "Projektin nimi",
-            "PROJECT_SLUG": "Projektin hukka-aika",
             "TAGS": "Avainsanat",
             "DESCRIPTION": "Kuvaus",
             "RECRUITING": "Is this project looking for people?",
             "RECRUITING_MESSAGE": "Who are you looking for?",
             "RECRUITING_PLACEHOLDER": "Define the profiles you are looking for",
+            "FEEDBACK": "Receive feedback from Taiga users?",
             "PUBLIC_PROJECT": "Julkinen projekti",
             "PRIVATE_PROJECT": "Yksityinen projekti",
             "PRIVATE_OR_PUBLIC": "What's the difference between public and private projects?",
             "DELETE": "Poista tämä projekti",
-            "LOGO_HELP": "The image will be scaled to 80x80px.",
             "CHANGE_LOGO": "Change logo",
             "ACTION_USE_DEFAULT_LOGO": "Use default image",
             "MAX_PRIVATE_PROJECTS": "You've reached the maximum number of private projects allowed by your current plan",
@@ -595,6 +541,7 @@
             "ISSUE_DESCRIPTION": "Pyyntöjen omat kentät",
             "ISSUE_ADD": "Lisää oma kenttä pyynnöille",
             "FIELD_TYPE_TEXT": "Text",
+            "FIELD_TYPE_RICHTEXT": "Rich text",
             "FIELD_TYPE_MULTI": "Multi-line",
             "FIELD_TYPE_DATE": "Date",
             "FIELD_TYPE_URL": "Url"
@@ -623,7 +570,7 @@
             "ACTION_ADD": "Lisää uusi vakavuus"
         },
         "PROJECT_VALUES_STATUS": {
-            "TITLE": "Tila",
+            "TITLE": "Statuses",
             "SUBTITLE": "Määrittele tilat joiden kautta käyttäjätarinasi, tehtäväsi ja pyyntösi kulkevat",
             "EPIC_TITLE": "Epic Statuses",
             "US_TITLE": "User Story Statuses",
@@ -676,8 +623,8 @@
             "INFO_VERIFYING_IP": "Gitlab pyynnöt eivät ole allekirjoitettuja joten tarkista IP. Jos IP on tyhjä, ei sitä tarkisteta."
         },
         "GITHUB": {
-            "SECTION_NAME": "Github",
-            "PAGE_TITLE": "Github - {{projectName}}"
+            "SECTION_NAME": "GitHub",
+            "PAGE_TITLE": "GitHub - {{projectName}}"
         },
         "GOGS": {
             "SECTION_NAME": "Gogs",
@@ -686,7 +633,6 @@
         "WEBHOOKS": {
             "PAGE_TITLE": "Webhooks - {{projectName}}",
             "SECTION_NAME": "Webhookit",
-            "SUBTITLE": "Webhookit ilmoittvat ulkoisille palveluille Taigan kommenteista, käyttäjätarinoista ...",
             "ADD_NEW": "Lisää webhook",
             "TYPE_NAME": "Anna palvelun nimi",
             "TYPE_PAYLOAD_URL": "Anna palvelun yhteysosoite (URL)",
@@ -732,7 +678,6 @@
             "DELETE_MEMBER": "Poista jäsen",
             "RESEND": "Resend",
             "SUCCESS_SEND_INVITATION": "Olemme lähettäneet kutsun uudelleen osoitteeseen '{{email}}'.",
-            "ERROR_SEND_INVITATION": "Olemme lähettäneet kutsun.",
             "SUCCESS_DELETE": "Olemme poistaneet viestin {{message}}.",
             "ERROR_DELETE": "Emme pystyneet poistamaan viestiä {{message}}.",
             "DEFAULT_DELETE_MESSAGE": "kutsu sähköpostiin {{email}}"
@@ -761,16 +706,11 @@
             "PLACEHOLDER_WRITE_NAME": "Anna uuden tilan nimi"
         },
         "MENU": {
-            "TITLE": "Hallinnoi",
             "PROJECT": "Projekti",
             "ATTRIBUTES": "Attribuutit",
             "MEMBERS": "Jäsenet",
             "PERMISSIONS": "Oikeudet",
-            "INTEGRATIONS": "Intergraatiot",
-            "PLUGINS": "Pluginit"
-        },
-        "SUBMENU_PROJECT_ATTRIBUTES": {
-            "TITLE": "Attribuutit"
+            "INTEGRATIONS": "Intergraatiot"
         },
         "SUBMENU_PROJECT_VALUES": {
             "STATUS": "Tila",
@@ -781,16 +721,10 @@
             "CUSTOM_FIELDS": "Omat kentät",
             "TAGS": "Avainsanat"
         },
-        "SUBMENU_PROJECT_PROFILE": {
-            "TITLE": "Projektin profiili"
-        },
         "SUBMENU_ROLES": {
             "TITLE": "Roolit",
             "ACTION_NEW_ROLE": "+ Uusi rooli",
             "TITLE_ACTION_NEW_ROLE": "Lisää uusi rooli"
-        },
-        "SUBMENU_THIDPARTIES": {
-            "TITLE": "Palvelut"
         },
         "PROJECT_TRANSFER": {
             "DO_YOU_ACCEPT_PROJECT_OWNERNSHIP": "Would you like to become the new project owner?",
@@ -806,15 +740,13 @@
                 "PRIVATE": "Please remember that you can own up to <strong>{{maxProjects}}</strong> private projects. You currently own <strong>{{currentProjects}}</strong> private projects",
                 "PUBLIC": "Please remember that you can own up to <strong>{{maxProjects}}</strong> public projects. You currently own <strong>{{currentProjects}}</strong> public projects"
             },
-            "CANT_BE_OWNED": "At the moment you cannot become an owner of a project of this type. If you would like to become the owner of this project, please contact the administrator so they change your account settings to enable project ownership.",
-            "CHANGE_MY_PLAN": "Change my plan"
+            "CANT_BE_OWNED": "At the moment you cannot become an owner of a project of this type. If you would like to become the owner of this project, please contact the administrator so they change your account settings to enable project ownership."
         }
     },
     "USER": {
         "PROFILE": {
             "PAGE_TITLE": "{{userFullName}} (@{{userUsername}})",
             "EDIT": "Edit profile",
-            "FOLLOW": "Follow",
             "CLOSED_US": "Closed US",
             "PROJECTS": "Projektit",
             "PROJECTS_EMPTY": "{{username}} doesn't' have projects yet",
@@ -822,7 +754,6 @@
             "CONTACTS_EMPTY": "{{username}} doesn't have contacts yet",
             "CURRENT_USER_CONTACTS_EMPTY": "You don't have contacts yet",
             "CURRENT_USER_CONTACTS_EMPTY_EXPLAIN": "The people with whom you work at Taiga will be your contacts automatically",
-            "REPORT": "Report Abuse",
             "TABS": {
                 "ACTIVITY_TAB": "Timeline",
                 "ACTIVITY_TAB_TITLE": "Show all the activity of this user",
@@ -848,13 +779,13 @@
             "FILTER_TYPE_ALL": "Kaikki",
             "FILTER_TYPE_ALL_TITLE": "Show all",
             "FILTER_TYPE_PROJECTS": "Projektit",
-            "FILTER_TYPE_PROJECT_TITLES": "Show only projects",
+            "FILTER_TYPE_PROJECTS_TITLE": "Show only projects",
             "FILTER_TYPE_EPICS": "Epics",
-            "FILTER_TYPE_EPIC_TITLES": "Show only epics",
+            "FILTER_TYPE_EPICS_TITLE": "Show only epics",
             "FILTER_TYPE_USER_STORIES": "Stories",
-            "FILTER_TYPE_USER_STORIES_TITLES": "Show only user stories",
+            "FILTER_TYPE_USER_STORIES_TITLE": "Show only user stories",
             "FILTER_TYPE_TASKS": "Tehtävät",
-            "FILTER_TYPE_TASK_TITLES": "Show only tasks",
+            "FILTER_TYPE_TASKS_TITLE": "Show only tasks",
             "FILTER_TYPE_ISSUES": "Pyynnöt",
             "FILTER_TYPE_ISSUES_TITLE": "Show only issues",
             "EMPTY_TITLE": "It looks like there's nothing to show here."
@@ -862,8 +793,6 @@
     },
     "PROJECT": {
         "PAGE_TITLE": "{{projectName}}",
-        "WELCOME": "Tervetuloa",
-        "SECTION_PROJECTS": "Projektit",
         "HELP": "Reorder your projects to set in the top the most used ones.<br/> The top 10 projects will appear in the top navigation bar project list",
         "PRIVATE": "Yksityinen projekti",
         "LOOKING_FOR_PEOPLE": "This project is looking for people",
@@ -874,12 +803,6 @@
             "BLOCKED": "Blocked project",
             "THIS_PROJECT_IS_BLOCKED": "This project is temporarily blocked",
             "TO_UNBLOCK_CONTACT_THE_ADMIN_STAFF": "In order to unblock your projects, contact the administrator."
-        },
-        "STATS": {
-            "PROJECT": "projekti<br/> pisteet",
-            "DEFINED": "määritely<br/> pistettä",
-            "ASSIGNED": "kohdistettu<br/> pistettä",
-            "CLOSED": "suljettu<br/> pistettä"
         },
         "SECTION": {
             "SEARCH": "Hae",
@@ -893,15 +816,9 @@
             "ADMIN": "Hallinnoi"
         },
         "NAVIGATION": {
-            "SECTION_TITLE": "Projektisi",
-            "PLACEHOLDER_SEARCH": "Hae täältä...",
             "ACTION_CREATE_PROJECT": "Luo projekti",
-            "ACTION_IMPORT_PROJECT": "Import project",
             "MANAGE_PROJECTS": "Manage projects",
             "TITLE_CREATE_PROJECT": "Create project",
-            "TITLE_IMPORT_PROJECT": "Import project",
-            "TITLE_PRVIOUS_PROJECT": "Näytä aikaisemmat projektit",
-            "TITLE_NEXT_PROJECT": "Näytä seuraavat projektit",
             "HELP_TITLE": "Taiga Support Page",
             "HELP": "Help",
             "HOMEPAGE": "Homepage",
@@ -909,10 +826,6 @@
             "FEEDBACK": "Palaute",
             "NOTIFICATIONS_TITLE": "Edit your notification settings",
             "NOTIFICATIONS": "Ilmoitukset",
-            "ORGANIZATIONS_TITLE": "Edit your organizations",
-            "ORGANIZATIONS": "Edit organizations",
-            "SETTINGS_TITLE": "Edit your settings",
-            "SETTINGS": "Settings",
             "VIEW_PROFILE_TITLE": "View Profile",
             "VIEW_PROFILE": "View Profile",
             "EDIT_PROFILE_TITLE": "Edit your profile",
@@ -921,24 +834,99 @@
             "CHANGE_PASSWORD": "Muuta salasanaa",
             "DASHBOARD_TITLE": "Dashboard",
             "DISCOVER_TITLE": "Discover trending projects",
-            "NEW_ITEM": "Uusi",
-            "DISCOVER": "Discover",
-            "ACTION_REORDER": "Drag & drop to reorder"
+            "DISCOVER": "Discover"
+        },
+        "LIKE_BUTTON": {
+            "LIKE": "Like",
+            "LIKED": "Liked",
+            "UNLIKE": "Unlike",
+            "BUTTON_TITLE": "Like or unlike this project",
+            "COUNTER_TITLE": "{total, plural, one{one fan} other{# fans}}"
+        },
+        "WATCH_BUTTON": {
+            "BUTTON_TITLE": "Watch this project and set notification policy",
+            "WATCH": "Watch",
+            "WATCHING": "Seuraa",
+            "COUNTER_TITLE": "{total, plural, one{one watcher} other{# watchers}}",
+            "OPTIONS": {
+                "NOTIFY_ALL": "Receive all notifications",
+                "NOTIFY_ALL_TITLE": "Receive all notifications for this project",
+                "NOTIFY_INVOLVED": "Only involved",
+                "NOTIFY_INVOLVED_TITLE": "Recive notificacions only when you are involved",
+                "UNWATCH": "Unwatch",
+                "UNWATCH_TITLE": "Unwatch this project"
+            }
+        },
+        "CONTACT_BUTTON": {
+            "CONTACT_TITLE": "Contact the project team",
+            "CONTACT_BUTTON": "Contact the project"
+        },
+        "CREATE": {
+            "TITLE": "Luo projekti",
+            "CHOOSE_TEMPLATE": "Which template fits your project better?",
+            "TEMPLATE_SCRUM": "Scrum",
+            "TEMPLATE_SCRUM_DESC": "Prioritize and solve your tasks in short time cycles.",
+            "TEMPLATE_SCRUM_LONGDESC": "Scrum is an iterative and incremental agile software development methodology for managing product development.\nThe product backlog is what will ultimately be delivered, ordered into the sequence in which it should be delivered. Product Backlogs are broken into manageable, executable chunks named sprints. Every certain amount of time the team initiates a new sprint and commits to deliver a certain number of user stories from the backlog, in accordance with their skills, abilities and resources. The project advances as the backlog becomes depleted.",
+            "TEMPLATE_KANBAN": "Kanban",
+            "TEMPLATE_KANBAN_DESC": "Keep a constant workflow on independent tasks",
+            "TEMPLATE_KANBAN_LONGDESC": "The Kanban methodology is used to divide project development (any sort of project) into stages.\nA kanban card is like an index card or post-it note that details every task (or user story) in a project that needs to be completed. The Kanban board is used to move each card from one state of completion to the next and in so doing, helps track progress.",
+            "DUPLICATE": "Duplicate project",
+            "DUPLICATE_DESC": "Start clean and keep your configuration",
+            "IMPORT": "Luo projekti tiedostosta",
+            "IMPORT_DESC": "Import your project from multiple platforms into Taiga",
+            "INVITE": "Invite to the project",
+            "SOLO_PROJECT": "You'll be alone in this project",
+            "INVITE_LATER": "(You'll be able to invite more members later)",
+            "BACK": "Palvelin",
+            "MAX_PRIVATE_PROJECTS": "Unfortunately, You've reached the maximum number of private projects.\nIf you would like to increase the current limit please contact the administrator.",
+            "MAX_PUBLIC_PROJECTS": "Unfortunately, You've reached the maximum number of public projects.\nIf you would like to increase the current limit please contact the administrator.",
+            "PUBLIC_PROJECT": "Public Project",
+            "PRIVATE_PROJECT": "Private Project"
+        },
+        "COMMON": {
+            "DETAILS": "New project details",
+            "PROJECT_TITLE": "Project Name",
+            "PROJECT_DESCRIPTION": "Project Description"
+        },
+        "DUPLICATE": {
+            "TITLE": "Duplicate Project",
+            "DESCRIPTION": "Start clean and keep your configuration",
+            "SELECT_PLACEHOLDER": "Choose an existing project to duplicate"
         },
         "IMPORT": {
-            "TITLE": "Luetaan sisään projektia",
-            "UPLOADING_FILE": "Ladataan tiedostoa",
-            "DESCRIPTION": "Tämä voi kestää hetken, pidä ikkuna auki.",
+            "TITLE": "Import Project",
+            "DESCRIPTION": "Import your project from multiple platforms into Taiga",
             "ASYNC_IN_PROGRESS_TITLE": " Oompa Loompas tuovat projektia",
             "ASYNC_IN_PROGRESS_MESSAGE": "Tämä voi kestää muutaman minuutin <br/>Lähetämme sähköpostin on valmista",
             "UPLOAD_IN_PROGRESS_MESSAGE": "LAdattu {{uploadedSize}} / {{totalSize}}",
             "ERROR": "Oompa Loompas eivät onnistuneet tuomaan tiedostoasi. Yritä uudestaan.",
-            "ERROR_TOO_MANY_REQUEST": "Oompa Loompas ovat kiireisiä juuri nyt. Yritä hetken päästä uudelleen.",
+            "ERROR_TOO_MANY_REQUEST": "Valitettavasti Oompa Loompas ovat kiireisiä juuri. Yritä kohta uudestaan.",
             "ERROR_MESSAGE": "Oompa Loompas eivät pysty lukemaan tiedostoasi: {{error_message}}",
             "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) on liian iso Oompa Loompaseille, kokeile pienemmällä kuin ({{maxFileSize}})",
             "SYNC_SUCCESS": "Projektisi on tuotu sisään onnistuneesti",
+            "IMPORT": "Import",
+            "WHO_IS": "Their tasks will be assigned to ...",
+            "WRITE_EMAIL": "Or if you want, write the email that this user uses in Taiga",
+            "SEARCH_CONTACT": "Or if you want, search in your contacts",
+            "WRITE_EMAIL_LABEL": "Write the email that this user uses in Taiga",
+            "ACCEEDE": "Acceede",
+            "PROJECT_MEMBERS": "Project Members",
+            "PROCESS_DESCRIPTION": "Tell us who from Taiga you want to assign the tasks of {{platform}}",
+            "MATCH": "Is <strong>{{user_external}}</strong> the same person as <strong>{{user_internal}}</strong>?",
+            "CHOOSE": "Select user",
+            "LINKS": "Links with {{platform}}",
+            "LINKS_DESCRIPTION": "Do you want to keep the link of each item with the original {{platform}} card?",
+            "WARNING_MAIL_USER": "Note that if the user does not have a Taiga account we will not be able to assign the tasks to him.",
+            "ASSIGN": "Assign",
+            "PROJECT_SELECTOR": {
+                "NO_RESULTS": "It looks like nothing was found with your search criteria",
+                "ACTION_SEARCH": "hae",
+                "ACTION_BACK": "Palvelin"
+            },
             "PROJECT_RESTRICTIONS": {
-                "PROJECT_MEMBERS_DESC": "The project you are trying to import has {{members}} members, unfortunately, your current plan allows for a maximum of {{max_memberships}} members per project. If you would like to increase that limit please contact the administrator.",
+                "PROJECT_MEMBERS_DESC_PRIVATE": "The project you are trying to import has {{members}} members including you, unfortunately, your current plan allows for a maximum of {{max_memberships}} members per private project. If you would like to increase that limit please contact the administrator.",
+                "PROJECT_MEMBERS_DESC_PUBLIC": "The project you are trying to import has {{members}} members including you, unfortunately, your current plan allows for a maximum of {{max_memberships}} members per public project. If you would like to increase that limit please contact the administrator.",
+                "ACCOUNT_ALLOW_MEMBERS": "Your account only allows {{members}} members",
                 "PRIVATE_PROJECTS_SPACE": {
                     "TITLE": "Unfortunately, your current plan does not allow for additional private projects",
                     "DESC": "The project you are trying to import is private. Unfortunately, your current plan does not allow for additional private projects."
@@ -961,39 +949,67 @@
                     "TITLE": "Unfortunately your current plan doesn't allow additional public projects or an increase of more than {{max_memberships}} members per public project",
                     "DESC": "The project that you are trying to import is public and has more than {{members}} members."
                 }
-            }
-        },
-        "LIKE_BUTTON": {
-            "LIKE": "Like",
-            "LIKED": "Liked",
-            "UNLIKE": "Unlike",
-            "BUTTON_TITLE": "Like or unlike this project",
-            "COUNTER_TITLE": "{total, plural, one{one fan} other{# fans}}"
-        },
-        "WATCH_BUTTON": {
-            "BUTTON_TITLE": "Watch this project and set notification policy",
-            "WATCH": "Watch",
-            "WATCHING": "Seuraa",
-            "COUNTER_TITLE": "{total, plural, one{one watcher} other{# watchers}}",
-            "OPTIONS": {
-                "NOTIFY_ALL": "Receive all notifications",
-                "NOTIFY_ALL_TITLE": "Receive all notifications for this project",
-                "NOTIFY_INVOLVED": "Only involved",
-                "NOTIFY_INVOLVED_TITLE": "Recive notificacions only when you are involved",
-                "UNWATCH": "Unwatch",
-                "UNWATCH_TITLE": "Unwatch this project"
+            },
+            "IN_PROGRESS": {
+                "TITLE": "Luetaan sisään projektia",
+                "DESCRIPTION": "Tämä voi kestää hetken, pidä ikkuna auki."
+            },
+            "WARNING": {
+                "TITLE": "Some taks will be unassigned",
+                "DESCRIPTION": "There are still unidentified people. The cards assigned to these people will remain unassigned. Check all the contacts to not lose that information.",
+                "CHECK": "Check contacts"
+            },
+            "TAIGA": {
+                "SELECTOR": "Import your Taiga project"
+            },
+            "TRELLO": {
+                "SELECTOR": "Import your Trello boards into Taiga",
+                "CHOOSE_PROJECT": "Choose board that you want to import",
+                "NO_PROJECTS": "It seems you have no boards in Trello"
+            },
+            "GITHUB": {
+                "SELECTOR": "Import your GitHub project issues",
+                "CHOOSE_PROJECT": "Find the project you want to import",
+                "NO_PROJECTS": "It seems you have no porjects in GitHub",
+                "HOW_DO_YOU_WANT_TO_IMPORT": "How do you want to import your issues into Taiga?",
+                "KANBAN_PROJECT": "As user stories in a kanban project",
+                "KANBAN_PROJECT_DESCRIPTION": "After that you can enable scrum with backlog.",
+                "SCRUM_PROJECT": "As user stories in a scrum project",
+                "SCRUM_PROJECT_DESCRIPTION": "After that you can enable kanban mode.",
+                "ISSUES_PROJECT": "As issues",
+                "ISSUES_PROJECT_DESCRIPTION": "You will not be able to use your issues in kanban or scrum mode. You will be able to enable kanban or scrum for new user stories"
+            },
+            "ASANA": {
+                "SELECTOR": "Import your Asana project and choose how to manage it",
+                "CHOOSE_PROJECT": "Choose project that you want to import",
+                "NO_PROJECTS": "It seems you have no porjects in Asana",
+                "KANBAN_PROJECT": "Kanban",
+                "SCRUM_PROJECT": "Scrum",
+                "CREATE_AS_SCRUM_DESCRIPTION": "The tasks and sub-tasks of your project will be created as Taiga user stories and tasks.",
+                "CREATE_AS_KANBAN_DESCRIPTION": "The tasks and sub-tasks of your project will be created as Taiga user stories and tasks."
+            },
+            "JIRA": {
+                "SELECTOR": "Import your Jira project and choose how to manage it",
+                "CHOOSE_PROJECT": "Choose project or board that you want to import",
+                "NO_PROJECTS": "It seems you have no porjects or boards in Jira",
+                "URL": "Your Jira URL",
+                "KANBAN_PROJECT": "Kanban",
+                "SCRUM_PROJECT": "Scrum",
+                "ISSUES_PROJECT": "Pyynnöt",
+                "CREATE_AS_SCRUM_DESCRIPTION": "The issues and sub-issues of your project will be created as Taiga user stories and tasks.",
+                "CREATE_AS_KANBAN_DESCRIPTION": "The issues and sub-issues of your project will be created as Taiga user stories and tasks.",
+                "CREATE_AS_ISSUES_DESCRIPTION": "What do you want to do with sub-issues from the Jira project? (Taiga doesn't allow sub-issues)",
+                "CREATE_NEW_ISSUES": "Convert sub-issues to new Taiga issues",
+                "NOT_CREATE_NEW_ISSUES": "Do not import sub-issues"
             }
         }
     },
     "LIGHTBOX": {
         "DELETE_ACCOUNT": {
-            "SECTION_NAME": "Poista Taiga-tunnus",
             "CONFIRM": "Haluatko varmasti poistaa Taiga-tunnuksesi?",
-            "NEWSLETTER_LABEL_TEXT": "En halua uutiskirjettä enää",
             "CANCEL": "Back to settings",
             "ACCEPT": "Delete account",
-            "BLOCK_PROJECT": "Note that all the projects you own projects will be <strong>blocked</strong> after you delete your account. If you do want a project blocked, transfer ownership to another member of each project prior to deleting your account.",
-            "SUBTITLE": "Sorry to see you go. We'll be here if you should ever consider us again! :("
+            "BLOCK_PROJECT": "Note that all the projects you own projects will be <strong>blocked</strong> after you delete your account. If you do want a project blocked, transfer ownership to another member of each project prior to deleting your account."
         },
         "DELETE_PROJECT": {
             "TITLE": "Poista projekti",
@@ -1007,6 +1023,12 @@
         },
         "ADD_MEMBER": {
             "TITLE": "Uusi jäsen",
+            "PLACEHOLDER": "Filter users or write an email to invite",
+            "ADD_EMAIL": "Add email",
+            "REMOVE": "Remove",
+            "INVITE": "Invite",
+            "CHOOSE_ROLE": "Choose a role",
+            "PLACEHOLDER_INVITATION_TEXT": "(Vapaaehtoinen) Lisää oma kuvaus kutsuusi uusille jäsenille ;-)",
             "HELP_TEXT": "Taigan käyttäjät lisätään automaattisesti, muille lähetetään kutsu."
         },
         "CREATE_ISSUE": {
@@ -1068,6 +1090,12 @@
             "TITLE": "Who do you want to be the new project owner?",
             "ADD_COMMENT": "Add comment",
             "BUTTON": "Ask this project member to become the new project owner"
+        },
+        "CONTACT_PROJECT": {
+            "TITLE": "Send an email to",
+            "WARNING": "The email will be received by the project admins",
+            "PLACEHOLDER": "Write your message",
+            "SEND": "Send"
         }
     },
     "EPIC": {
@@ -1101,15 +1129,9 @@
         "ADD_BULK": "Lisää monta käyttäjätarinaa",
         "PROMOTED": "Tämä Kt on liitetty pyyntöön:",
         "TITLE_LINK_GO_TO_ISSUE": "Siirry pyyntöön",
-        "EXTERNAL_REFERENCE": "Tämä Kt oon luotu täältä: ",
-        "GO_TO_EXTERNAL_REFERENCE": "Palaa alkuun",
-        "BLOCKED": "Tämä käyttäjätarina on suljettu",
         "TITLE_DELETE_ACTION": "Poista käyttäjätarina",
         "LIGHTBOX_TITLE_BLOKING_US": "Meitä estää",
-        "TASK_COMPLETED": "{{totalClosedTasks}}/{{totalTasks}} tehtyä tehtävää",
-        "ASSIGN": "Käyttäjätarinan tekijä",
         "NOT_ESTIMATED": "Ei arvioitu",
-        "TOTAL_US_POINTS": "Kt pisteet yhteensä",
         "TRIBE": {
             "PUBLISH": "Publish as Gig in Taiga Tribe",
             "PUBLISH_INFO": "More info",
@@ -1119,23 +1141,19 @@
             "CLOSE": "Close",
             "SYNCHRONIZE_LINK": "synchronize with Taiga Tribe",
             "PUBLISH_MORE_INFO_TITLE": "Do you need somebody for this task?",
-            "PUBLISH_MORE_INFO_TEXT": "<p>If you need help with a particular piece of work you can easily create gigs on<a href='taigatribe.com' title='Taiga Tribe'> Taiga Tribe </a> and receive help from all over the world. You will be able to control and manage the gig enjoying a great community eager to contribute.</p><p><a href='taigatribe.com' title='Taiga Tribe'> TaigaTribe </a>  was born as a Taiga sibling. Both platforms can live separately but we believe that there is much power in using them combined so we are making sure the integration works like a charm.</p>"
+            "PUBLISH_MORE_INFO_TEXT": "<p>If you need help with a particular piece of work you can easily create gigs on<a href='http://taigatribe.com' title='Taiga Tribe'> Taiga Tribe </a> and receive help from all over the world. You will be able to control and manage the gig enjoying a great community eager to contribute.</p><p><a href='http://taigatribe.com' title='Taiga Tribe'> TaigaTribe </a>  was born as a Taiga sibling. Both platforms can live separately but we believe that there is much power in using them combined so we are making sure the integration works like a charm.</p>"
         },
         "FIELDS": {
             "TEAM_REQUIREMENT": "Tiimin vaatimus",
-            "CLIENT_REQUIREMENT": "Asiakkaan vaatimus",
-            "FINISH_DATE": "Loppupvm"
+            "CLIENT_REQUIREMENT": "Asiakkaan vaatimus"
         }
     },
     "COMMENTS": {
         "DELETED_INFO": "Comment deleted by {{user}}",
-        "TITLE": "Kommentit",
         "COMMENTS_COUNT": "{{comments}} Comments",
-        "ORDER": "Order",
         "OLDER_FIRST": "Older first",
         "RECENT_FIRST": "Recent first",
         "COMMENT": "Kommentti",
-        "EDIT_COMMENT": "Edit comment",
         "EDITED_COMMENT": "Edited:",
         "SHOW_HISTORY": "View historic",
         "TYPE_NEW_COMMENT": "Lisää uusi kommentti tässä",
@@ -1148,13 +1166,8 @@
         }
     },
     "ACTIVITY": {
-        "SHOW_ACTIVITY": "Näytä tapahtumat",
-        "DATETIME": "DD.MM.YY - HH:mm",
-        "SHOW_MORE": "+ Näytä edelliset rivit ({{showMore}} lisää)",
         "TITLE": "Aktiivisuus",
         "ACTIVITIES_COUNT": "{{activities}} Activities",
-        "REMOVED": "poistettu",
-        "ADDED": "lisätty",
         "TAGS_ADDED": "tags added:",
         "TAGS_REMOVED": "tags removed:",
         "US_POINTS": "{{role}} points",
@@ -1163,50 +1176,21 @@
         "UPDATED_ATTACHMENT": "updated attachment ({{filename}}):",
         "CREATED_CUSTOM_ATTRIBUTE": "created custom attribute",
         "UPDATED_CUSTOM_ATTRIBUTE": "updated custom attribute",
-        "SIZE_CHANGE": "Tehty {size, plural, one{muutos} other{# muutosta}}",
         "BECAME_DEPRECATED": "became deprecated",
         "BECAME_UNDEPRECATED": "became undeprecated",
         "TEAM_REQUIREMENT": "Tiimin vaatimus",
         "CLIENT_REQUIREMENT": "Asiakkaan vaatimus",
         "BLOCKED": "Suljettu",
         "VALUES": {
-            "YES": "Kyllä",
-            "NO": "ei",
-            "EMPTY": "tyhjä",
             "UNASSIGNED": "ilman tekijää"
         },
         "FIELDS": {
             "SUBJECT": "aihe",
-            "NAME": "nimi",
             "DESCRIPTION": "kuvaus",
-            "CONTENT": "sisältö",
             "STATUS": "tila",
-            "IS_CLOSED": "on suljettu",
-            "FINISH_DATE": "loppupvm",
             "TYPE": "tyyppi",
-            "PRIORITY": "tärkeys",
-            "SEVERITY": "vakavuus",
             "ASSIGNED_TO": "tekijä on",
-            "WATCHERS": "vahdit",
             "MILESTONE": "kierros",
-            "USER_STORY": "käyttäjätarina",
-            "PROJECT": "projekti",
-            "IS_BLOCKED": "on estetty",
-            "BLOCKED_NOTE": "estetty muistiinpano",
-            "POINTS": "pisteet",
-            "CLIENT_REQUIREMENT": "asiakkaan vaatimus",
-            "TEAM_REQUIREMENT": "tiimin vaatimus",
-            "IS_IOCAINE": "myrkyllinen",
-            "TAGS": "avainsanat",
-            "ATTACHMENTS": "liitteet",
-            "IS_DEPRECATED": "on vanhentunut",
-            "IS_NOT_DEPRECATED": "is not deprecated",
-            "ORDER": "järjestys",
-            "BACKLOG_ORDER": "odottavien järjestys",
-            "SPRINT_ORDER": "kierroksen järjestys",
-            "KANBAN_ORDER": "kanban järjestys",
-            "TASKBOARD_ORDER": "Tehtävätaulun järjestys",
-            "US_ORDER": "kt järjestys",
             "COLOR": "väri"
         }
     },
@@ -1220,8 +1204,6 @@
         "CUSTOMIZE_GRAPH_TITLE": "Set up the points and sprints through the Admin",
         "MOVE_US_TO_CURRENT_SPRINT": "Siirrä nykyiseen kierrokseen",
         "MOVE_US_TO_LATEST_SPRINT": "Move to latest Sprint",
-        "SHOW_FILTERS": "Näytä suodattimet",
-        "SHOW_TAGS": "Näytä avainsanat",
         "EMPTY": "The backlog is empty!",
         "CREATE_NEW_US": "Luo uusi Kt",
         "CREATE_NEW_US_EMPTY_HELP": "Voit haluta lisätä uuden käyttäjätarinan",
@@ -1248,6 +1230,12 @@
             "SHOW": "Näytä avainsanat",
             "HIDE": "Piilota avainsanat"
         },
+        "FORECASTING": {
+            "TITLE": "Velocity forecasting",
+            "BACKLOG": "Display backlog",
+            "NEW_SPRINT": "Candidate User Stories for your next sprint based on your velocity. Click to create a new sprint.",
+            "CURRENT_SPRINT": "Candidate User Stories for your sprint based on your velocity. Click to add to current sprint."
+        },
         "TABLE": {
             "COLUMN_US": "Käyttäjätarinat",
             "TITLE_COLUMN_POINTS": "Valitse näkymä roolille"
@@ -1270,8 +1258,6 @@
         },
         "FILTERS": {
             "TOGGLE": "Vaihda suodattimien näkyvyyttä",
-            "TITLE": "Suodattimet",
-            "REMOVE": "Poista suodattimet",
             "HIDE": "Piilota suodattimet",
             "SHOW": "Näytä suodattimet"
         },
@@ -1280,7 +1266,6 @@
             "DATE": "DD.MM.YY",
             "LINK_TASKBOARD": "Kierroksien tehtävätaulu",
             "TITLE_LINK_TASKBOARD": "Siirry tehtävätauluun {{name}}",
-            "NUMBER_SPRINTS": "<br/>kierroksia",
             "EMPTY": "There are no sprints yet",
             "WARNING_EMPTY_SPRINT_ANONYMOUS": "This sprint has no User Stories",
             "WARNING_EMPTY_SPRINT": "Drop here Stories from your backlog to start a new sprint",
@@ -1305,7 +1290,6 @@
         "TITLE_ACTION_ADD": "Lisää uusi tehtävä",
         "TITLE_ACTION_ADD_BULK": "Lisää monta tehtävää",
         "TITLE_ACTION_ASSIGN": "Valitse tekijä",
-        "TITLE_ACTION_EDIT": "Muokkaa tehtävää",
         "PLACEHOLDER_CARD_TITLE": "This could be a task",
         "PLACEHOLDER_CARD_TEXT": "Split Stories into tasks to track them separately",
         "TABLE": {
@@ -1335,17 +1319,11 @@
         "TITLE_SELECT_STATUS": "Tilan nimi",
         "OWNER_US": "Tehtävä kuuluu käyttäjälle ",
         "TITLE_LINK_GO_OWNER": "Siirry käyttäjätarinaan",
-        "ORIGIN_US": "Tämä tehtävä on luotu",
-        "TITLE_LINK_GO_ORIGIN": "Siirry käyttäjätarinaan",
-        "BLOCKED": "Tämä tehtävä on suljettu",
         "TITLE_DELETE_ACTION": "Poista tehtävä",
         "LIGHTBOX_TITLE_BLOKING_TASK": "Estävä tehtävä",
         "FIELDS": {
-            "MILESTONE": "Kierros",
-            "USER_STORY": "Käyttäjätarina",
             "IS_IOCAINE": "Myrkyllinen"
         },
-        "ACTION_IOCAINE": "Myrkky",
         "TITLE_ACTION_IOCAINE": "Rasittaako tehtävä? Kerro muillekin klikkaamalla myrkyn kuvaketta. Sattaa myös helpottaa jatkossa jos nautit vähitellen."
     },
     "NOTIFICATION": {
@@ -1374,14 +1352,12 @@
     "ISSUES": {
         "PAGE_TITLE": "Issues - {{projectName}}",
         "PAGE_DESCRIPTION": "The issues list panel of the project {{projectName}}: {{projectDescription}}",
-        "LIST_SECTION_NAME": "Pyynnöt",
         "SECTION_NAME": "Issue",
         "ACTION_NEW_ISSUE": "+ UUSI PYYNTÖ",
         "ACTION_PROMOTE_TO_US": "Liitä käyttäjätarinaan",
         "PROMOTED": "Tämä pyyntö on liitetty Kthen:",
         "EXTERNAL_REFERENCE": "Tämä pyyntö on luotu täältä:",
         "GO_TO_EXTERNAL_REFERENCE": "Palaa alkuun",
-        "BLOCKED": "Tämä pyyntö on estetty",
         "ACTION_DELETE": "Poista pyyntö",
         "LIGHTBOX_TITLE_BLOKING_ISSUE": "Estävä pyyntö",
         "FIELDS": {
@@ -1423,15 +1399,11 @@
         "SECTION_NAME": "Kanban",
         "TITLE_ACTION_FOLD": "Kavenna sarake",
         "TITLE_ACTION_UNFOLD": "Laajenna sarake",
-        "TITLE_ACTION_FOLD_CARDS": "Kavenna kortit",
-        "TITLE_ACTION_UNFOLD_CARDS": "Laajenna kortit",
         "TITLE_ACTION_ADD_US": "Lisää uusi käyttäjätarina",
         "TITLE_ACTION_ADD_BULK": "Lisää monta",
         "ACTION_SHOW_ARCHIVED": "Näytä arkisto",
         "ACTION_HIDE_ARCHIVED": "Piilota arkisto",
         "HIDDEN_USER_STORIES": "Käyttäjätarinat tällä alueella ovat oletuksena piilotettuna",
-        "ARCHIVED": "Olet arkistoitu",
-        "UNDO_ARCHIVED": "Raahaa ja pudota uudelleen peruaksesi",
         "PLACEHOLDER_CARD_TITLE": "These are your User Stories",
         "PLACEHOLDER_CARD_TEXT": "Stories might also have subtasks to separate requirements"
     },
@@ -1452,7 +1424,6 @@
         "PAGE_TITLE": "Team - {{projectName}}",
         "PAGE_DESCRIPTION": "The team panel to show all the members of the project {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Tiimi",
-        "APP_TITLE": "TIIMI - {{projectName}}",
         "PLACEHOLDER_INPUT_SEARCH": "Etsi koko nimellä...",
         "COLUMN_MR_WOLF": "Mr. Wolf",
         "EXPLANATION_COLUMN_MR_WOLF": "Suljetut pyynnöt",
@@ -1488,18 +1459,9 @@
             "OPTION_ALL": "Kaikki",
             "OPTION_INVOLVED": "Osallisena",
             "OPTION_NONE": "Ei yhtään"
-        },
-        "POPOVER": {
-            "USER_PROFILE": "Käyttäjäprofiili",
-            "CHANGE_PASSWORD": "Muuta salasanaa",
-            "NOTIFICATIONS": "Ilmoitukset",
-            "FEEDBACK": "Palaute",
-            "TITLE_AVATAR": "Käyttäjän asetukset"
         }
     },
     "USER_PROFILE": {
-        "IMAGE_HELP": "The image will be scaled to 80x80px.",
-        "ACTION_CHANGE_IMAGE": "Muuta",
         "ACTION_USE_GRAVATAR": "Use default image",
         "ACTION_DELETE_ACCOUNT": "Poista Taiga-tunnus",
         "CHANGE_EMAIL_SUCCESS": "<strong>Tarkista sähköpostisi!</strong><br />Lähetimme ohjeet<br /><strong>{{email}}</strong><br />uuden osoitteen asettamiseen",
@@ -1517,25 +1479,10 @@
             "THEME_DEFAULT": "-- use default theme --"
         }
     },
-    "WIZARD": {
-        "SECTION_TITLE_CREATE_PROJECT": "Luo projekti",
-        "CREATE_PROJECT_TEXT": "Täysin koskematon. Jännittävää!",
-        "CHOOSE_TEMPLATE": "Which template fits your project best?",
-        "CHOOSE_TEMPLATE_TITLE": "More info about project templates",
-        "CHOOSE_TEMPLATE_INFO": "More info",
-        "PROJECT_DETAILS": "Project Details",
-        "PUBLIC_PROJECT": "Public Project",
-        "PRIVATE_PROJECT": "Private Project",
-        "CREATE_PROJECT": "Luo projekti",
-        "MAX_PRIVATE_PROJECTS": "You've reached the maximum number of private projects",
-        "MAX_PUBLIC_PROJECTS": "Unfortunately, you've reached the maximum number of public projects",
-        "CHANGE_PLANS": "change plans"
-    },
     "WIKI": {
         "PAGE_TITLE": "{{wikiPageName}} - Wiki - {{projectName}}",
         "PAGE_DESCRIPTION": "Last edition on {{lastModifiedDate}} ({{totalEditions}} editions in total) Content: {{ wikiPageContent }}",
         "DATETIME": "DD.MM.YY - HH:mm",
-        "PLACEHOLDER_PAGE": "Kirjoita wiki-sivu",
         "REMOVE": "Poista tämä wiki-sivu",
         "DELETE_LIGHTBOX_TITLE": "Poista wiki-sivu",
         "DELETE_LINK_TITLE": "Delete Wiki link",
@@ -1693,7 +1640,6 @@
         "MOST_LIKED": "Most liked",
         "MOST_LIKED_EMPTY": "There are no LIKED projects yet",
         "VIEW_MORE": "View more",
-        "RECRUITING": "This project is looking for people",
         "FEATURED": "Featured Projects",
         "EMPTY": "There are no projects to show with this search criteria.<br> Try again!",
         "FILTERS": {

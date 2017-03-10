@@ -1,5 +1,5 @@
 ###
-# Copyright (C) 2014-2016 Taiga Agile LLC <taiga@taiga.io>
+# Copyright (C) 2014-2017 Taiga Agile LLC <taiga@taiga.io>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -251,7 +251,11 @@ describe "tgEpicsService", ->
       mocks.tgResources.epics.reorder
           .withArgs(3, {epics_order: 2, version: 1}, {1: 1})
           .promise()
-          .resolve()
+          .resolve(Immutable.fromJS({
+              id: 3
+              epics_order: 3
+              version: 2
+          }))
 
       epicsService.reorderEpic(epicsService._epics.get(2), 1)
 

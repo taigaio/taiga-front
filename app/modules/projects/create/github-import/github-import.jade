@@ -1,0 +1,32 @@
+.create-project.import-project(ng-if="vm.step == 'autorization-github'")
+    p autorization...
+
+
+tg-import-project-selector(
+    logo="/#{v}/images/import-logos/github.png"
+    search="{{ 'PROJECT.IMPORT.GITHUB.CHOOSE_PROJECT' | translate }}"
+    no-projects-msg="{{ 'PROJECT.IMPORT.GITHUB.NO_PROJECTS' | translate }}"
+    projects="vm.projects"
+    on-cancel="vm.onCancel()"
+    on-select-project="vm.onSelectProject(project)"
+    ng-if="vm.step == 'project-select-github'"
+)
+
+tg-github-import-project-form(
+    ng-if="vm.step == 'project-form-github'"
+    project="vm.project"
+    members="vm.members"
+    fetching-users="vm.fetchingUsers"
+    on-save-project-details="vm.onSaveProjectDetails(project)"
+    on-cancel-form="vm.step = 'project-select-github'"
+)
+
+tg-import-project-members(
+    ng-if="vm.step == 'project-members-github'"
+    platform="Github"
+    logo="/#{v}/images/import-logos/github.png"
+    project="vm.project"
+    members="vm.members"
+    on-submit="vm.submitUserSelection(users)"
+    on-cancel="vm.onCancelMemberSelection()"
+)

@@ -1,5 +1,5 @@
 ###
-# Copyright (C) 2014-2016 Taiga Agile LLC <taiga@taiga.io>
+# Copyright (C) 2014-2017 Taiga Agile LLC <taiga@taiga.io>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -61,7 +61,7 @@ TagOptionDirective = () ->
     link = (scope, el) ->
         stop()
 
-        $(document).on "keydown.tags-keyboard-navigation", (event) =>
+        $(el).parent().on "keydown.tags-keyboard-navigation", (event) =>
             code = if event.keyCode then event.keyCode else event.which
 
             if code == 40 || code == 38

@@ -1,0 +1,266 @@
+.wysiwyg {
+    line-height: 1.4rem;
+    overflow: auto;
+    padding: 1rem;
+    h1 {
+        @include font-size(xlarge);
+        @include font-type(text);
+        font-size: 2.25em;
+        line-height: 1.2;
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+        padding-bottom: .5rem;
+        text-transform: uppercase;
+    }
+    h2 {
+        @include font-size(larger);
+        @include font-type(bold);
+        line-height: 1.225;
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+        padding-bottom: .5rem;
+    }
+    h3 {
+        @include font-size(large);
+        @include font-type(bold);
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+        padding-bottom: .5rem;
+    }
+    h4 {
+        @include font-type(bold);
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+    }
+    ul,
+    ol {
+        line-height: 1.5;
+        list-style-position: outside;
+        margin-bottom: 1rem;
+        margin-top: 0;
+        padding-left: 2em;
+        ul,
+        ol {
+            padding-left: 1rem;
+        }
+    }
+    ul {
+        list-style-type: disc;
+    }
+    .list-stye-none {
+        list-style: none;
+    }
+    b {
+        font-weight: bold;
+    }
+    i {
+        font-style: italic;
+    }
+    dl {
+        dt {
+            font-size: 1em;
+            font-style: italic;
+            font-weight: bold;
+            margin-top: 16px;
+            padding: 0;
+        }
+        dd {
+            margin-bottom: 16px;
+            padding: 0 16px;
+        }
+    }
+    a {
+        color: $primary;
+        cursor: pointer;
+        &:hover {
+            color: $primary-light;
+        }
+    }
+    p {
+        margin-bottom: 1rem;
+        word-wrap: break-word;
+    }
+    .codehilite {
+        overflow: auto;
+    }
+    blockquote {
+        p {
+            margin: 0;
+        }
+    }
+    pre:not([class*="language-"]) {
+        @include font-size(small);
+        background: $code-bg;
+        color: $whitish;
+        direction: ltr;
+        font-family: 'courier new', 'monospace';
+        line-height: 1.4rem;
+        margin-bottom: .5rem;
+        overflow: auto;
+        padding: 1rem;
+        unicode-bidi: embed;
+        white-space: pre-wrap;
+    }
+    table {
+        border: $gray-light 1px solid;
+        margin-bottom: 1rem;
+        tbody {
+            tr:last-child {
+                border-bottom: 0;
+            }
+        }
+    }
+    tr {
+        border-bottom: $gray-light 1px solid;
+
+    }
+    th {
+        border-right: $gray-light 1px solid;
+        padding: 1rem 1rem 1rem .5rem;
+        &:last-child {
+            border-right: 0;
+        }
+    }
+    td {
+        border-right: $gray-light 1px solid;
+        padding: .5rem;
+        &:last-child {
+            border-right: 0;
+        }
+    }
+    img {
+        max-width: 100%;
+    }
+    textarea {
+        background: $white;
+        max-height: none;
+    }
+    hr {
+        border: 1px solid $whitish;
+    }
+}
+
+.medium-editor-mention-panel {
+    background-color: $white;
+    border: 1px solid $gray-light;
+    position: absolute;
+    ul {
+        margin-bottom: 0;
+    }
+    li {
+        border-top: 1px solid $gray-light;
+        cursor: pointer;
+        padding: 2px 5px;
+        &:first-child {
+            border-top: 0;
+        }
+        &:hover,
+        &.active {
+            background-color: $primary-dark;
+            color: $white;
+        }
+    }
+}
+
+tg-wysiwyg {
+    display: flex;
+    margin-bottom: 2rem;
+    div[contenteditable="true"] *:last-child {
+        margin-bottom: 0;
+    }
+    pre {
+        cursor: pointer;
+    }
+    .outdated {
+        color: $red;
+    }
+    .tools {
+        padding-left: 1rem;
+        a {
+            display: block;
+            margin-bottom: .5rem;
+        }
+        svg {
+            fill: $gray-light;
+        }
+    }
+    .editor {
+        width: 100%;
+    }
+    .mode-editor {
+        span {
+            color: $gray-light;
+            cursor: pointer;
+            margin-right: .5rem;
+        }
+    }
+    .medium-editor-placeholder,
+    .markdown-editor-placeholder {
+        color: $gray-light;
+        overflow: visible;
+        padding-left: 1rem;
+        &::after { // overwrite medium css
+            color: $gray-light;
+            font-style: normal;
+        }
+    }
+    .markdown:not(.empty) {
+        p {
+            margin-bottom: 0;
+            white-space: pre-wrap;
+        }
+    }
+    .read-mode {
+        cursor: pointer;
+    }
+    .edit-mode {
+        .markdown,
+        .medium {
+            border: 1px solid $gray-light;
+        }
+        .medium-editor-element {
+            min-height: 10rem;
+        }
+    }
+    .mention {
+        font-weight: bold;
+    }
+}
+
+.code-language-selector {
+    @include font-size(xsmall);
+    background-color: $white;
+    border: 1px solid $gray-light;
+    cursor: pointer;
+    padding: .2rem .5rem 0;
+    position: absolute;
+}
+
+.code-language-search {
+    @include font-size(xsmall);
+    background-color: $white;
+    border: 1px solid $gray-light;
+    position: absolute;
+    ul {
+        cursor: pointer;
+        margin-bottom: 0;
+        max-height: 20vh;
+        overflow-y: scroll;
+    }
+    li {
+        padding: .2rem .5rem;
+    }
+}
+
+// Override medium styles
+.medium-editor-toolbar {
+    li .medium-editor-button-active {
+        color: $primary-light;
+    }
+    svg {
+        fill: $white;
+    }
+    button:hover svg {
+        fill: $primary-light;
+    }
+}

@@ -4,7 +4,6 @@
         "NO": "Hayır",
         "OR": "veya",
         "LOADING": "Yükleniyor...",
-        "LOADING_PROJECT": "Proje yükleniyor...",
         "DATE": "DD MM YYYY",
         "DATETIME": "DD MM YYYY HH:mm",
         "SAVE": "Kaydet",
@@ -27,12 +26,9 @@
         "BLOCKED_NOTE": "Bu niye engelli?",
         "BLOCKED_REASON": "Lütfen sebebini açıklayın",
         "CREATED_BY": "{{fullDisplayName}} tarafından oluşturuldu",
-        "FROM": "den",
-        "TO": "kime",
         "CLOSE": "kapat",
         "GO_HOME": "Ana sayfaya götür beni",
         "PLUGINS": "Eklentiler",
-        "BETA": "Betadayız!",
         "ONE_ITEM_LINE": "Her satıra bir kalem...",
         "NEW_BULK": "Yeni toplu ekleme",
         "RELATED_TASKS": "İlişkili görevler",
@@ -41,7 +37,7 @@
         "LOGOUT": "Çıkış",
         "EXTERNAL_USER": "bir dış kullanıcı",
         "GENERIC_ERROR": "Honki ponkilerimizden biri derki; {{error}}.",
-        "IOCAINE_TEXT": "Bir görev size ağır geldi ve bunaldınız mı? Diğerlerinin bu durumdan haberi olması için bir görevi düzenlerken baldıran zehrinin üzerine tıklayın.  Nasıl ki zaman zaman ekstra meydan okumalarla bir işte gittikce iyi olmanız mümkünse, zaman içerisinde küçük dozlar alarak bu ölümcül zehre de bağışıklık kazanabilmek mümkün!",
+        "IOCAINE_TEXT": "This member is feeling a bit overwhelmed by this task. Will become immune to the iocaine poison over time with your help. For now, may need a hug.",
         "CLIENT_REQUIREMENT": "Müşteri gereksinimi, daha önceden belli olmayan ama projeye dahil olması gereken bir gereksinimdir",
         "TEAM_REQUIREMENT": "Takım gereksinimi, müsteriyi ilgilendirmeyen, ama projede yer alması zorunlu olan bir gereksinimdir.",
         "OWNER": "Project Owner",
@@ -148,7 +144,6 @@
             "PRIORITY": "Öncelik",
             "ASSIGNED_TO": "Atanmış",
             "POINTS": "Puanlar",
-            "BLOCKED_NOTE": "engel notu",
             "IS_BLOCKED": "engellendi ",
             "REF": "Ref",
             "VOTES": "Oylar",
@@ -187,10 +182,6 @@
             "COUNTER_TITLE": "{total, plural, one{bir takipçi} other{# takipçi}}"
         },
         "VOTE_BUTTON": {
-            "UPVOTE": "Oy ver",
-            "UPVOTED": "Oy verildi",
-            "DOWNVOTE": "Karşı oy ver",
-            "VOTERS": "Oylayıcılar",
             "BUTTON_TITLE": "Bu konuya oy/karşı oy ver",
             "COUNTER_TITLE": "{total, plural, one{bir oy} other{# oy}}"
         },
@@ -202,10 +193,9 @@
             "CONFIRM_DELETE": "Bu özel alandaki tüm bilgiler silinecek.\nDevam etmek istediğinize emin misiniz?"
         },
         "FILTERS": {
-            "TITLE": "Filtreler",
             "INPUT_PLACEHOLDER": "Konu yada referans",
             "TITLE_ACTION_FILTER_BUTTON": "ara",
-            "INPUT_SEARCH_PLACEHOLDER": "Konu ya da ref",
+            "TITLE": "Filtreler",
             "TITLE_ACTION_SEARCH": "Ara",
             "ACTION_SAVE_CUSTOM_FILTER": "özel filtre olarak kaydet",
             "PLACEHOLDER_FILTER_NAME": "Filtre adı yazın ve enter a basın",
@@ -220,41 +210,10 @@
                 "CREATED_BY": "Oluşturan",
                 "CUSTOM_FILTERS": "Özel filtreler",
                 "EPIC": "Epic"
-            },
-            "CONFIRM_DELETE": {
-                "TITLE": "Özel filtre sil",
-                "MESSAGE": "'{{customFilterName}}' özel filtresi"
             }
         },
         "WYSIWYG": {
-            "H1_BUTTON": "İlk Düzey Başlık",
-            "H1_SAMPLE_TEXT": "Başlığınız...",
-            "H2_BUTTON": "İkinci Düzey Başlık",
-            "H2_SAMPLE_TEXT": "Başlığınız...",
-            "H3_BUTTON": "Üçüncü Düzey Başlık",
-            "H3_SAMPLE_TEXT": "Başlığınız...",
-            "BOLD_BUTTON": "Kalın",
-            "BOLD_BUTTON_SAMPLE_TEXT": "Yazınız buraya...",
-            "ITALIC_BUTTON": "Eğik",
-            "ITALIC_SAMPLE_TEXT": "Yazınız buraya...",
-            "STRIKE_BUTTON": "Üstünü çiz",
-            "STRIKE_SAMPLE_TEXT": "Yazınız buraya..",
-            "BULLETED_LIST_BUTTON": "Maddeler",
-            "BULLETED_LIST_SAMPLE_TEXT": "Yazınız buraya...",
-            "NUMERIC_LIST_BUTTON": "Sayısal Liste",
-            "NUMERIC_LIST_SAMPLE_TEXT": "Yazınız buraya..",
-            "PICTURE_BUTTON": "Resim",
-            "PICTURE_SAMPLE_TEXT": "Resminize alternatif yazıyı buraya...",
-            "LINK_BUTTON": "Bağlantı",
-            "LINK_SAMPLE_TEXT": "Bağlantınız...",
-            "QUOTE_BLOCK_BUTTON": "Alıntı Bloku",
-            "QUOTE_BLOCK_SAMPLE_TEXT": "Metni buraya yazın...",
-            "CODE_BLOCK_BUTTON": "Kod Bloğu",
-            "CODE_BLOCK_SAMPLE_TEXT": "Yazınız buraya..",
-            "PREVIEW_BUTTON": "Ön izleme",
-            "EDIT_BUTTON": "Düzenle",
-            "ATTACH_FILE_HELP": "Attach files by dragging & dropping on the textarea above.",
-            "ATTACH_FILE_HELP_SAVE_FIRST": "Save first before if you want to attach files by dragging & dropping on the textarea above.",
+            "OUTDATED": "Another person has made changes while you were editing. Check the new version on the activiy tab before you save your changes.",
             "MARKDOWN_HELP": "Markdown yazım kılavuzu"
         },
         "PERMISIONS_CATEGORIES": {
@@ -307,10 +266,6 @@
                 "ADD_WIKI_LINKS": "Wiki bağlantıları ekle",
                 "DELETE_WIKI_LINKS": "Wiki bağlantılarını sil"
             }
-        },
-        "META": {
-            "PAGE_TITLE": "Taiga",
-            "PAGE_DESCRIPTION": "Taiga; yeni girişimciler, çevik geliştiriciler ve tasarımcılar için çalışmaları gerçekten eğlenceli hale getiren basit, güzel bir proje yönetim platformudur."
         }
     },
     "LOGIN": {
@@ -366,7 +321,6 @@
     },
     "CHANGE_PASSWORD": {
         "PAGE_TITLE": "Parolayı değiştirin - Taiga",
-        "PAGE_DESCRIPTION": "Taiga hesabınız için yeni bir parola belirleyin, ha bir de, bol demirli besinlere yönelmek isteyebilirisiniz belki, beyine iyi gelir :P",
         "SECTION_NAME": "Parolayı değiştir",
         "FIELD_CURRENT_PASSWORD": "Şimdiki parola",
         "PLACEHOLDER_CURRENT_PASSWORD": "Şimdiki parolanız (boş da olabilir eger parola belirlemediyseniz)",
@@ -391,8 +345,7 @@
     },
     "INVITATION_LOGIN_FORM": {
         "NOT_FOUND": "Umpa Lumpalarımız davetiyenize ulaşamıyor.",
-        "SUCCESS": "Projeye katılımınız başarıyla gerçekleşti.  {{project_name}} 'ye hoş geldiniz.",
-        "ERROR": "Honki ponkilerimize göre, ya henüz kayıtlı değilsiniz ya da gerçersiz bir parola girdiniz"
+        "SUCCESS": "Projeye katılımınız başarıyla gerçekleşti.  {{project_name}} 'ye hoş geldiniz."
     },
     "HOME": {
         "PAGE_TITLE": "AnaSayfa - Taiga",
@@ -463,10 +416,7 @@
         "TITLE_LIGHTBOX_DELETE_ATTACHMENT": "Ek sil",
         "MSG_LIGHTBOX_DELETE_ATTACHMENT": "ek '{{fileName}}'",
         "ERROR_DELETE_ATTACHMENT": "Silemiyoruz: {{errorMessage}}",
-        "ERROR_MAX_SIZE_EXCEEDED": "({{fileSize}}) boyutundaki '{{fileName}}' dosya honki ponkilerimiz için oldukça ağır geldi, ({{maxFileSize}}) boyutundan daha küçük bir şeylerle deneyin",
-        "FIELDS": {
-            "IS_DEPRECATED": "kaldırıldı"
-        }
+        "ERROR_MAX_SIZE_EXCEEDED": "({{fileSize}}) boyutundaki '{{fileName}}' dosya honki ponkilerimiz için oldukça ağır geldi, ({{maxFileSize}}) boyutundan daha küçük bir şeylerle deneyin"
     },
     "PAGINATION": {
         "PREVIOUS": "Önceki",
@@ -502,13 +452,10 @@
             "ASYNC_MESSAGE": "Hazır olduğunda size bir e-posta göndereceğiz.",
             "SYNC_MESSAGE": "Eğer indirme otomatik olarak başlamıyor ise  <a href='{{url}}' download title='Döküm dosyasını indirin'>buraya</a> tıklayın.",
             "ERROR": "Bizim Honki ponkiler döküm dosyasını oluştururken birkaç hata ile karşılaştı. Lütfen yeniden deneyin.",
-            "ERROR_BUSY": "Üzgünüz, bizim honki ponkiler şu anda çok meşgul. Lütfen bir kaç dakika içinde yeniden deneyin.",
-            "ERROR_MESSAGE": "Honki ponkiler döküm dosyanızı oluştururken birkaç problem yaşadı: {{message}}"
+            "ERROR_BUSY": "Üzgünüz, bizim honki ponkiler şu anda çok meşgul. Lütfen bir kaç dakika içinde yeniden deneyin."
         },
         "MODULES": {
             "TITLE": "Modüller",
-            "ENABLE": "Etkinleştir",
-            "DISABLE": "Pasifleştir",
             "EPICS": "Epics",
             "EPICS_DESCRIPTION": "Visualize and manage the most strategic part of your project",
             "BACKLOG": "Havuz",
@@ -537,17 +484,16 @@
             "PAGE_TITLE": "{{sectionName}} - Proje profili- {{projectName}}",
             "PROJECT_DETAILS": "Proje detayları",
             "PROJECT_NAME": "Proje adı",
-            "PROJECT_SLUG": "Proje satırı",
             "TAGS": "Etiketler",
             "DESCRIPTION": "Tanım",
             "RECRUITING": "Bu proje insan arıyor mu?",
             "RECRUITING_MESSAGE": "Ne aramıştınız?",
             "RECRUITING_PLACEHOLDER": "Aradığınız özellikleri yazın",
+            "FEEDBACK": "Receive feedback from Taiga users?",
             "PUBLIC_PROJECT": "Açık Proje",
             "PRIVATE_PROJECT": "Gizli proje",
             "PRIVATE_OR_PUBLIC": "Açık ve özel projeler arasındaki fark nedir?",
             "DELETE": "Bu projeyi sil",
-            "LOGO_HELP": "Resim 80×80 piksel boyutuna ölçeklenecek. ",
             "CHANGE_LOGO": "Logoyu değiştir",
             "ACTION_USE_DEFAULT_LOGO": "Varsayılan resmi kullan",
             "MAX_PRIVATE_PROJECTS": "You've reached the maximum number of private projects allowed by your current plan",
@@ -595,6 +541,7 @@
             "ISSUE_DESCRIPTION": "Sorunlar için özel alanlar",
             "ISSUE_ADD": "Sorunlara yeni bir özel alan ekle",
             "FIELD_TYPE_TEXT": "Metin",
+            "FIELD_TYPE_RICHTEXT": "Rich text",
             "FIELD_TYPE_MULTI": "Çoklu-satır",
             "FIELD_TYPE_DATE": "Tarih",
             "FIELD_TYPE_URL": "Url"
@@ -623,7 +570,7 @@
             "ACTION_ADD": "Yeni önem derecesi ekle"
         },
         "PROJECT_VALUES_STATUS": {
-            "TITLE": "Durum",
+            "TITLE": "Statuses",
             "SUBTITLE": "Hikayeleriniz, işleriniz ve sorunlarınızın alabileceği durumları tanımlayın",
             "EPIC_TITLE": "Epic Statuses",
             "US_TITLE": "User Story Statuses",
@@ -676,8 +623,8 @@
             "INFO_VERIFYING_IP": "Gitlab istekleri imzalı değiller bu yüzden IP kaynağını doğrulamak en iyi yol. Eğer alan boş bırakılırsa IP doğrulaması yapılmayacak."
         },
         "GITHUB": {
-            "SECTION_NAME": "Github",
-            "PAGE_TITLE": "Github - {{projectName}}"
+            "SECTION_NAME": "GitHub",
+            "PAGE_TITLE": "GitHub - {{projectName}}"
         },
         "GOGS": {
             "SECTION_NAME": "Gogs",
@@ -686,7 +633,6 @@
         "WEBHOOKS": {
             "PAGE_TITLE": "Webhooks - {{projectName}}",
             "SECTION_NAME": "Webhooks",
-            "SUBTITLE": "Webhook, Taiga da meydana gelen yorum, kullanıcı hikayeleri gibi olaylar hakkında dış servisleri bilgilendirir...",
             "ADD_NEW": "Yeni bir Webhook Ekle",
             "TYPE_NAME": "Servis adını girin",
             "TYPE_PAYLOAD_URL": "Servis paket URL'sini yazın",
@@ -732,7 +678,6 @@
             "DELETE_MEMBER": "Üye sil",
             "RESEND": "Yeniden gönder",
             "SUCCESS_SEND_INVITATION": "Davetiyeyi  '{{email}}' adresine yeniden gönderdik.",
-            "ERROR_SEND_INVITATION": "Henüz bir davetiye göndermedik",
             "SUCCESS_DELETE": "{{message}} 'i sildik",
             "ERROR_DELETE": "Silemiyoruz  {{message}}.",
             "DEFAULT_DELETE_MESSAGE": "davetiye {{email}} "
@@ -761,16 +706,11 @@
             "PLACEHOLDER_WRITE_NAME": "Yeni durum için bir isim yaz"
         },
         "MENU": {
-            "TITLE": "Yönetim",
             "PROJECT": "Proje",
             "ATTRIBUTES": "Öznitelikler",
             "MEMBERS": "Üyeler",
             "PERMISSIONS": "İzinler",
-            "INTEGRATIONS": "Bütünleştirmeler",
-            "PLUGINS": "Eklentiler"
-        },
-        "SUBMENU_PROJECT_ATTRIBUTES": {
-            "TITLE": "Öznitelikler"
+            "INTEGRATIONS": "Bütünleştirmeler"
         },
         "SUBMENU_PROJECT_VALUES": {
             "STATUS": "Durum",
@@ -781,16 +721,10 @@
             "CUSTOM_FIELDS": "Özel alanlar",
             "TAGS": "Etiketler "
         },
-        "SUBMENU_PROJECT_PROFILE": {
-            "TITLE": "Proje Profili"
-        },
         "SUBMENU_ROLES": {
             "TITLE": "Roller",
             "ACTION_NEW_ROLE": "+ Yeni rol",
             "TITLE_ACTION_NEW_ROLE": "Yeni rol ekle"
-        },
-        "SUBMENU_THIDPARTIES": {
-            "TITLE": "Servisler"
         },
         "PROJECT_TRANSFER": {
             "DO_YOU_ACCEPT_PROJECT_OWNERNSHIP": "Would you like to become the new project owner?",
@@ -806,15 +740,13 @@
                 "PRIVATE": "Please remember that you can own up to <strong>{{maxProjects}}</strong> private projects. You currently own <strong>{{currentProjects}}</strong> private projects",
                 "PUBLIC": "Please remember that you can own up to <strong>{{maxProjects}}</strong> public projects. You currently own <strong>{{currentProjects}}</strong> public projects"
             },
-            "CANT_BE_OWNED": "At the moment you cannot become an owner of a project of this type. If you would like to become the owner of this project, please contact the administrator so they change your account settings to enable project ownership.",
-            "CHANGE_MY_PLAN": "Change my plan"
+            "CANT_BE_OWNED": "At the moment you cannot become an owner of a project of this type. If you would like to become the owner of this project, please contact the administrator so they change your account settings to enable project ownership."
         }
     },
     "USER": {
         "PROFILE": {
             "PAGE_TITLE": "{{userFullName}} (@{{userUsername}})",
             "EDIT": "Profili Düzenle",
-            "FOLLOW": "Takip et",
             "CLOSED_US": "Kapatılmış KH",
             "PROJECTS": "Projeler",
             "PROJECTS_EMPTY": "{{username}} kullanıcısının henüz bir projesi yok",
@@ -822,7 +754,6 @@
             "CONTACTS_EMPTY": "{{username}}  kullanıcısının henüz irtibat kişileri yok",
             "CURRENT_USER_CONTACTS_EMPTY": "Henüz irtibat kişileriniz yok",
             "CURRENT_USER_CONTACTS_EMPTY_EXPLAIN": "Taiga ile çalışan kişiler otomatik olarak irtibat kişileriniz olacaktır",
-            "REPORT": "Kötüye Kullanımı Raporla",
             "TABS": {
                 "ACTIVITY_TAB": "Zaman Çizelgesi",
                 "ACTIVITY_TAB_TITLE": "Bu kullanıcı için tüm eylemleri göster",
@@ -848,13 +779,13 @@
             "FILTER_TYPE_ALL": "Hepsi",
             "FILTER_TYPE_ALL_TITLE": "Hepsini göster",
             "FILTER_TYPE_PROJECTS": "Projeler",
-            "FILTER_TYPE_PROJECT_TITLES": "Sadece projeleri görüntüle",
+            "FILTER_TYPE_PROJECTS_TITLE": "Sadece projeleri görüntüle",
             "FILTER_TYPE_EPICS": "Epics",
-            "FILTER_TYPE_EPIC_TITLES": "Show only epics",
+            "FILTER_TYPE_EPICS_TITLE": "Show only epics",
             "FILTER_TYPE_USER_STORIES": "Hikayeler",
-            "FILTER_TYPE_USER_STORIES_TITLES": "Sadece kullanıcı hikayelerini göster",
+            "FILTER_TYPE_USER_STORIES_TITLE": "Sadece kullanıcı hikayelerini göster",
             "FILTER_TYPE_TASKS": "Görevler",
-            "FILTER_TYPE_TASK_TITLES": "Sadece görevleri göster",
+            "FILTER_TYPE_TASKS_TITLE": "Sadece görevleri göster",
             "FILTER_TYPE_ISSUES": "Sorunlar ",
             "FILTER_TYPE_ISSUES_TITLE": "Sadece sorunları göster",
             "EMPTY_TITLE": "Görünüşe göre burada gösterilecek bir şey yok."
@@ -862,8 +793,6 @@
     },
     "PROJECT": {
         "PAGE_TITLE": "{{projectName}}",
-        "WELCOME": "Hoşgeldiniz",
-        "SECTION_PROJECTS": "Projeler",
         "HELP": "En çok kullanılan projelerinizi en üste koymak için yeniden sıralayın.<br/> Top 10 projeler gezinti çubuğunun proje listesinin başında gösterilecektir.",
         "PRIVATE": "Gizli proje",
         "LOOKING_FOR_PEOPLE": "Bu proje ahalisini arıyor",
@@ -874,12 +803,6 @@
             "BLOCKED": "Blocked project",
             "THIS_PROJECT_IS_BLOCKED": "This project is temporarily blocked",
             "TO_UNBLOCK_CONTACT_THE_ADMIN_STAFF": "In order to unblock your projects, contact the administrator."
-        },
-        "STATS": {
-            "PROJECT": "proje<br/> puanlar",
-            "DEFINED": "tanımlı<br/> puanlar",
-            "ASSIGNED": "atanmış<br/> puanlar",
-            "CLOSED": "kapatılmış<br/> puanlar"
         },
         "SECTION": {
             "SEARCH": "Ara",
@@ -893,15 +816,9 @@
             "ADMIN": "Yönetim"
         },
         "NAVIGATION": {
-            "SECTION_TITLE": "Projeleriniz",
-            "PLACEHOLDER_SEARCH": "Aranan konum...",
             "ACTION_CREATE_PROJECT": "Proje Oluştur",
-            "ACTION_IMPORT_PROJECT": "Projeyi İçe Aktar",
             "MANAGE_PROJECTS": "Projeleri yönet",
             "TITLE_CREATE_PROJECT": "Proje oluştur",
-            "TITLE_IMPORT_PROJECT": "Projeyi İçe Aktar",
-            "TITLE_PRVIOUS_PROJECT": "Önceki projeleri göster",
-            "TITLE_NEXT_PROJECT": "Sonraki projeleri göster",
             "HELP_TITLE": "Taiga Destek Sayfası",
             "HELP": "Yardım",
             "HOMEPAGE": "Ana sayfa",
@@ -909,10 +826,6 @@
             "FEEDBACK": "Geribildirim",
             "NOTIFICATIONS_TITLE": "Bildirim ayarlarını düzenle",
             "NOTIFICATIONS": "Bildirimler",
-            "ORGANIZATIONS_TITLE": "Organizasyonunuzu düzenleyin",
-            "ORGANIZATIONS": "Organizasyonları düzenle",
-            "SETTINGS_TITLE": "Ayarlarınızı düzenleyin",
-            "SETTINGS": "Ayarlar",
             "VIEW_PROFILE_TITLE": "Profili Görüntüle",
             "VIEW_PROFILE": "Profili Görüntüle",
             "EDIT_PROFILE_TITLE": "Profilini düzenle",
@@ -921,14 +834,68 @@
             "CHANGE_PASSWORD": "Parolayı değiştir",
             "DASHBOARD_TITLE": "Pano",
             "DISCOVER_TITLE": "Trend projeleri keşfet",
-            "NEW_ITEM": "Yeni",
-            "DISCOVER": "Keşfet",
-            "ACTION_REORDER": "Yeniden sıralamak için sürükleyin ve bırakın"
+            "DISCOVER": "Keşfet"
+        },
+        "LIKE_BUTTON": {
+            "LIKE": "Beğen",
+            "LIKED": "Beğendi",
+            "UNLIKE": "Beğenme",
+            "BUTTON_TITLE": "Bu projeyi beğen ya da beğenme",
+            "COUNTER_TITLE": "{total, plural, one{bir meraklı} other{# meraklı}}"
+        },
+        "WATCH_BUTTON": {
+            "BUTTON_TITLE": "Bu projeyi izle ve bildirim politikasını ayarla",
+            "WATCH": "İzle",
+            "WATCHING": "İzliyor",
+            "COUNTER_TITLE": "{total, plural, one{bir takipçi} other{# takipçi}}",
+            "OPTIONS": {
+                "NOTIFY_ALL": "Bütün bildirimleri al",
+                "NOTIFY_ALL_TITLE": "Bu proje için tüm bildirimleri al",
+                "NOTIFY_INVOLVED": "Sadece ilgililer",
+                "NOTIFY_INVOLVED_TITLE": "Sadece ilgilendiğiniz bildirimleri alın",
+                "UNWATCH": "İzleme",
+                "UNWATCH_TITLE": "Bu projeyi izleme"
+            }
+        },
+        "CONTACT_BUTTON": {
+            "CONTACT_TITLE": "Contact the project team",
+            "CONTACT_BUTTON": "Contact the project"
+        },
+        "CREATE": {
+            "TITLE": "Proje Oluştur",
+            "CHOOSE_TEMPLATE": "Which template fits your project better?",
+            "TEMPLATE_SCRUM": "Scrum",
+            "TEMPLATE_SCRUM_DESC": "Prioritize and solve your tasks in short time cycles.",
+            "TEMPLATE_SCRUM_LONGDESC": "Scrum is an iterative and incremental agile software development methodology for managing product development.\nThe product backlog is what will ultimately be delivered, ordered into the sequence in which it should be delivered. Product Backlogs are broken into manageable, executable chunks named sprints. Every certain amount of time the team initiates a new sprint and commits to deliver a certain number of user stories from the backlog, in accordance with their skills, abilities and resources. The project advances as the backlog becomes depleted.",
+            "TEMPLATE_KANBAN": "Kanban",
+            "TEMPLATE_KANBAN_DESC": "Keep a constant workflow on independent tasks",
+            "TEMPLATE_KANBAN_LONGDESC": "The Kanban methodology is used to divide project development (any sort of project) into stages.\nA kanban card is like an index card or post-it note that details every task (or user story) in a project that needs to be completed. The Kanban board is used to move each card from one state of completion to the next and in so doing, helps track progress.",
+            "DUPLICATE": "Duplicate project",
+            "DUPLICATE_DESC": "Start clean and keep your configuration",
+            "IMPORT": "Projeyi İçe Aktar",
+            "IMPORT_DESC": "Import your project from multiple platforms into Taiga",
+            "INVITE": "Invite to the project",
+            "SOLO_PROJECT": "You'll be alone in this project",
+            "INVITE_LATER": "(You'll be able to invite more members later)",
+            "BACK": "Arka",
+            "MAX_PRIVATE_PROJECTS": "Unfortunately, You've reached the maximum number of private projects.\nIf you would like to increase the current limit please contact the administrator.",
+            "MAX_PUBLIC_PROJECTS": "Unfortunately, You've reached the maximum number of public projects.\nIf you would like to increase the current limit please contact the administrator.",
+            "PUBLIC_PROJECT": "Public Project",
+            "PRIVATE_PROJECT": "Private Project"
+        },
+        "COMMON": {
+            "DETAILS": "New project details",
+            "PROJECT_TITLE": "Project Name",
+            "PROJECT_DESCRIPTION": "Project Description"
+        },
+        "DUPLICATE": {
+            "TITLE": "Duplicate Project",
+            "DESCRIPTION": "Start clean and keep your configuration",
+            "SELECT_PLACEHOLDER": "Choose an existing project to duplicate"
         },
         "IMPORT": {
-            "TITLE": "Proje İçe Aktarılıyor",
-            "UPLOADING_FILE": "Döküm dosyanız karşıya yükleniyor",
-            "DESCRIPTION": "Bu işlem biraz sürecek, lütfen pencereyi kapatmayın.",
+            "TITLE": "Import Project",
+            "DESCRIPTION": "Import your project from multiple platforms into Taiga",
             "ASYNC_IN_PROGRESS_TITLE": "Bizim honki ponkiler projenizi içeriye aktarıyor",
             "ASYNC_IN_PROGRESS_MESSAGE": "Bu işlem bir kaç dakika sürecek <br/> Hazır olduğunda bir e-posta göndereceğiz",
             "UPLOAD_IN_PROGRESS_MESSAGE": "{{totalSize}} in {{uploadedSize}} kadarı karşıya yüklendi",
@@ -937,8 +904,29 @@
             "ERROR_MESSAGE": "Honki ponkilerimiz döküm dosyanızı içeri aktarırken birkaç problem yaşadı: {{error_message}}",
             "ERROR_MAX_SIZE_EXCEEDED": "({{fileSize}}) boyutundaki '{{fileName}}' dosya honki ponkilerimiz için oldukça ağır geldi, ({{maxFileSize}}) boyutundan daha küçük bir şeylerle deneyin",
             "SYNC_SUCCESS": "Projeniz başarıyla içe aktarıldı",
+            "IMPORT": "Import",
+            "WHO_IS": "Their tasks will be assigned to ...",
+            "WRITE_EMAIL": "Or if you want, write the email that this user uses in Taiga",
+            "SEARCH_CONTACT": "Or if you want, search in your contacts",
+            "WRITE_EMAIL_LABEL": "Write the email that this user uses in Taiga",
+            "ACCEEDE": "Acceede",
+            "PROJECT_MEMBERS": "Project Members",
+            "PROCESS_DESCRIPTION": "Tell us who from Taiga you want to assign the tasks of {{platform}}",
+            "MATCH": "Is <strong>{{user_external}}</strong> the same person as <strong>{{user_internal}}</strong>?",
+            "CHOOSE": "Select user",
+            "LINKS": "Links with {{platform}}",
+            "LINKS_DESCRIPTION": "Do you want to keep the link of each item with the original {{platform}} card?",
+            "WARNING_MAIL_USER": "Note that if the user does not have a Taiga account we will not be able to assign the tasks to him.",
+            "ASSIGN": "Ata",
+            "PROJECT_SELECTOR": {
+                "NO_RESULTS": "It looks like nothing was found with your search criteria",
+                "ACTION_SEARCH": "ara",
+                "ACTION_BACK": "Arka"
+            },
             "PROJECT_RESTRICTIONS": {
-                "PROJECT_MEMBERS_DESC": "The project you are trying to import has {{members}} members, unfortunately, your current plan allows for a maximum of {{max_memberships}} members per project. If you would like to increase that limit please contact the administrator.",
+                "PROJECT_MEMBERS_DESC_PRIVATE": "The project you are trying to import has {{members}} members including you, unfortunately, your current plan allows for a maximum of {{max_memberships}} members per private project. If you would like to increase that limit please contact the administrator.",
+                "PROJECT_MEMBERS_DESC_PUBLIC": "The project you are trying to import has {{members}} members including you, unfortunately, your current plan allows for a maximum of {{max_memberships}} members per public project. If you would like to increase that limit please contact the administrator.",
+                "ACCOUNT_ALLOW_MEMBERS": "Your account only allows {{members}} members",
                 "PRIVATE_PROJECTS_SPACE": {
                     "TITLE": "Unfortunately, your current plan does not allow for additional private projects",
                     "DESC": "The project you are trying to import is private. Unfortunately, your current plan does not allow for additional private projects."
@@ -961,39 +949,67 @@
                     "TITLE": "Unfortunately your current plan doesn't allow additional public projects or an increase of more than {{max_memberships}} members per public project",
                     "DESC": "The project that you are trying to import is public and has more than {{members}} members."
                 }
-            }
-        },
-        "LIKE_BUTTON": {
-            "LIKE": "Beğen",
-            "LIKED": "Beğendi",
-            "UNLIKE": "Beğenme",
-            "BUTTON_TITLE": "Bu projeyi beğen ya da beğenme",
-            "COUNTER_TITLE": "{total, plural, one{bir meraklı} other{# meraklı}}"
-        },
-        "WATCH_BUTTON": {
-            "BUTTON_TITLE": "Bu projeyi izle ve bildirim politikasını ayarla",
-            "WATCH": "İzle",
-            "WATCHING": "İzliyor",
-            "COUNTER_TITLE": "{total, plural, one{bir takipçi} other{# takipçi}}",
-            "OPTIONS": {
-                "NOTIFY_ALL": "Bütün bildirimleri al",
-                "NOTIFY_ALL_TITLE": "Bu proje için tüm bildirimleri al",
-                "NOTIFY_INVOLVED": "Sadece ilgililer",
-                "NOTIFY_INVOLVED_TITLE": "Sadece ilgilendiğiniz bildirimleri alın",
-                "UNWATCH": "İzleme",
-                "UNWATCH_TITLE": "Bu projeyi izleme"
+            },
+            "IN_PROGRESS": {
+                "TITLE": "Proje İçe Aktarılıyor",
+                "DESCRIPTION": "Bu işlem biraz sürecek, lütfen pencereyi kapatmayın."
+            },
+            "WARNING": {
+                "TITLE": "Some taks will be unassigned",
+                "DESCRIPTION": "There are still unidentified people. The cards assigned to these people will remain unassigned. Check all the contacts to not lose that information.",
+                "CHECK": "Check contacts"
+            },
+            "TAIGA": {
+                "SELECTOR": "Import your Taiga project"
+            },
+            "TRELLO": {
+                "SELECTOR": "Import your Trello boards into Taiga",
+                "CHOOSE_PROJECT": "Choose board that you want to import",
+                "NO_PROJECTS": "It seems you have no boards in Trello"
+            },
+            "GITHUB": {
+                "SELECTOR": "Import your GitHub project issues",
+                "CHOOSE_PROJECT": "Find the project you want to import",
+                "NO_PROJECTS": "It seems you have no porjects in GitHub",
+                "HOW_DO_YOU_WANT_TO_IMPORT": "How do you want to import your issues into Taiga?",
+                "KANBAN_PROJECT": "As user stories in a kanban project",
+                "KANBAN_PROJECT_DESCRIPTION": "After that you can enable scrum with backlog.",
+                "SCRUM_PROJECT": "As user stories in a scrum project",
+                "SCRUM_PROJECT_DESCRIPTION": "After that you can enable kanban mode.",
+                "ISSUES_PROJECT": "As issues",
+                "ISSUES_PROJECT_DESCRIPTION": "You will not be able to use your issues in kanban or scrum mode. You will be able to enable kanban or scrum for new user stories"
+            },
+            "ASANA": {
+                "SELECTOR": "Import your Asana project and choose how to manage it",
+                "CHOOSE_PROJECT": "Choose project that you want to import",
+                "NO_PROJECTS": "It seems you have no porjects in Asana",
+                "KANBAN_PROJECT": "Kanban",
+                "SCRUM_PROJECT": "Scrum",
+                "CREATE_AS_SCRUM_DESCRIPTION": "The tasks and sub-tasks of your project will be created as Taiga user stories and tasks.",
+                "CREATE_AS_KANBAN_DESCRIPTION": "The tasks and sub-tasks of your project will be created as Taiga user stories and tasks."
+            },
+            "JIRA": {
+                "SELECTOR": "Import your Jira project and choose how to manage it",
+                "CHOOSE_PROJECT": "Choose project or board that you want to import",
+                "NO_PROJECTS": "It seems you have no porjects or boards in Jira",
+                "URL": "Your Jira URL",
+                "KANBAN_PROJECT": "Kanban",
+                "SCRUM_PROJECT": "Scrum",
+                "ISSUES_PROJECT": "Sorunlar",
+                "CREATE_AS_SCRUM_DESCRIPTION": "The issues and sub-issues of your project will be created as Taiga user stories and tasks.",
+                "CREATE_AS_KANBAN_DESCRIPTION": "The issues and sub-issues of your project will be created as Taiga user stories and tasks.",
+                "CREATE_AS_ISSUES_DESCRIPTION": "What do you want to do with sub-issues from the Jira project? (Taiga doesn't allow sub-issues)",
+                "CREATE_NEW_ISSUES": "Convert sub-issues to new Taiga issues",
+                "NOT_CREATE_NEW_ISSUES": "Do not import sub-issues"
             }
         }
     },
     "LIGHTBOX": {
         "DELETE_ACCOUNT": {
-            "SECTION_NAME": "Taiga Hesabını Sil",
             "CONFIRM": "Taiga hesabınızı silmek istediğinizden emin misiniz?",
-            "NEWSLETTER_LABEL_TEXT": "Bundan böyle bülteninizi almak istemiyorum.",
             "CANCEL": "Back to settings",
             "ACCEPT": "Delete account",
-            "BLOCK_PROJECT": "Note that all the projects you own projects will be <strong>blocked</strong> after you delete your account. If you do want a project blocked, transfer ownership to another member of each project prior to deleting your account.",
-            "SUBTITLE": "Sorry to see you go. We'll be here if you should ever consider us again! :("
+            "BLOCK_PROJECT": "Note that all the projects you own projects will be <strong>blocked</strong> after you delete your account. If you do want a project blocked, transfer ownership to another member of each project prior to deleting your account."
         },
         "DELETE_PROJECT": {
             "TITLE": "Proje Sil",
@@ -1007,6 +1023,12 @@
         },
         "ADD_MEMBER": {
             "TITLE": "Yeni üye",
+            "PLACEHOLDER": "Filter users or write an email to invite",
+            "ADD_EMAIL": "Add email",
+            "REMOVE": "Remove",
+            "INVITE": "Invite",
+            "CHOOSE_ROLE": "Choose a role",
+            "PLACEHOLDER_INVITATION_TEXT": "(Opsiyonel) Davetinize kişiselleştirilmiş bir metin ekleyin. Yeni üyelerinize tatlı bir şeyler söyleyin ;-)",
             "HELP_TEXT": "Eğer kullanıcılar önceden Taigaya kayıt olmuşlarsa, otomatik olarak ekleneceklerdir. Eğer olmamışlarsa bir davet mektubu alacaklardır."
         },
         "CREATE_ISSUE": {
@@ -1068,6 +1090,12 @@
             "TITLE": "Who do you want to be the new project owner?",
             "ADD_COMMENT": "Add comment",
             "BUTTON": "Ask this project member to become the new project owner"
+        },
+        "CONTACT_PROJECT": {
+            "TITLE": "Send an email to",
+            "WARNING": "The email will be received by the project admins",
+            "PLACEHOLDER": "Write your message",
+            "SEND": "Send"
         }
     },
     "EPIC": {
@@ -1101,15 +1129,9 @@
         "ADD_BULK": "Toplu halde yeni Kullanıcı Hikayeleri ekle",
         "PROMOTED": "Bu hikayenin temelindeki sorun:",
         "TITLE_LINK_GO_TO_ISSUE": "Talebe git",
-        "EXTERNAL_REFERENCE": "Bu KH 'ni oluşturulduğu",
-        "GO_TO_EXTERNAL_REFERENCE": "Kökenine git ",
-        "BLOCKED": "Bu kullanıcı hikayesi engelli",
         "TITLE_DELETE_ACTION": "Kullanıcı Hikayesi Sil",
         "LIGHTBOX_TITLE_BLOKING_US": "Bizi engelleyen",
-        "TASK_COMPLETED": "{{totalClosedTasks}}/{{totalTasks}} tamamlanan görevler",
-        "ASSIGN": "Kullanıcı Hikayesini Ata",
         "NOT_ESTIMATED": "Kestirim yapılmamış",
-        "TOTAL_US_POINTS": "Toplam KH puanları",
         "TRIBE": {
             "PUBLISH": "Publish as Gig in Taiga Tribe",
             "PUBLISH_INFO": "More info",
@@ -1119,23 +1141,19 @@
             "CLOSE": "Close",
             "SYNCHRONIZE_LINK": "synchronize with Taiga Tribe",
             "PUBLISH_MORE_INFO_TITLE": "Do you need somebody for this task?",
-            "PUBLISH_MORE_INFO_TEXT": "<p>If you need help with a particular piece of work you can easily create gigs on<a href='taigatribe.com' title='Taiga Tribe'> Taiga Tribe </a> and receive help from all over the world. You will be able to control and manage the gig enjoying a great community eager to contribute.</p><p><a href='taigatribe.com' title='Taiga Tribe'> TaigaTribe </a>  was born as a Taiga sibling. Both platforms can live separately but we believe that there is much power in using them combined so we are making sure the integration works like a charm.</p>"
+            "PUBLISH_MORE_INFO_TEXT": "<p>If you need help with a particular piece of work you can easily create gigs on<a href='http://taigatribe.com' title='Taiga Tribe'> Taiga Tribe </a> and receive help from all over the world. You will be able to control and manage the gig enjoying a great community eager to contribute.</p><p><a href='http://taigatribe.com' title='Taiga Tribe'> TaigaTribe </a>  was born as a Taiga sibling. Both platforms can live separately but we believe that there is much power in using them combined so we are making sure the integration works like a charm.</p>"
         },
         "FIELDS": {
             "TEAM_REQUIREMENT": "Takım Gereksinimi",
-            "CLIENT_REQUIREMENT": "İstemci Gereksinimi",
-            "FINISH_DATE": "Bitiş tarihi"
+            "CLIENT_REQUIREMENT": "İstemci Gereksinimi"
         }
     },
     "COMMENTS": {
         "DELETED_INFO": "Comment deleted by {{user}}",
-        "TITLE": "Yorumlar",
         "COMMENTS_COUNT": "{{comments}} Comments",
-        "ORDER": "Order",
         "OLDER_FIRST": "Older first",
         "RECENT_FIRST": "Recent first",
         "COMMENT": "Yorum Yap",
-        "EDIT_COMMENT": "Edit comment",
         "EDITED_COMMENT": "Edited:",
         "SHOW_HISTORY": "View historic",
         "TYPE_NEW_COMMENT": "Buraya yeni bir yorum yazın",
@@ -1148,13 +1166,8 @@
         }
     },
     "ACTIVITY": {
-        "SHOW_ACTIVITY": "Eylemleri göster",
-        "DATETIME": "DD MMM YYYY HH:mm",
-        "SHOW_MORE": "+ Önceki girdileri göster ({{showMore}} daha fazla)",
         "TITLE": "Aktivite",
         "ACTIVITIES_COUNT": "{{activities}} Activities",
-        "REMOVED": "silindi",
-        "ADDED": "eklendi",
         "TAGS_ADDED": "tags added:",
         "TAGS_REMOVED": "tags removed:",
         "US_POINTS": "{{role}} points",
@@ -1163,50 +1176,21 @@
         "UPDATED_ATTACHMENT": "updated attachment ({{filename}}):",
         "CREATED_CUSTOM_ATTRIBUTE": "created custom attribute",
         "UPDATED_CUSTOM_ATTRIBUTE": "updated custom attribute",
-        "SIZE_CHANGE": "Yapılan {size, plural, one{tek değişiklik} other{# değişiklikler}}",
         "BECAME_DEPRECATED": "became deprecated",
         "BECAME_UNDEPRECATED": "became undeprecated",
         "TEAM_REQUIREMENT": "Takım Gereksinimi",
         "CLIENT_REQUIREMENT": "İstemci Gereksinimi",
         "BLOCKED": "Engelli",
         "VALUES": {
-            "YES": "evet",
-            "NO": "hayır",
-            "EMPTY": "boş",
             "UNASSIGNED": "atama yok"
         },
         "FIELDS": {
             "SUBJECT": "konu",
-            "NAME": "isim",
             "DESCRIPTION": "tanım",
-            "CONTENT": "içerik",
             "STATUS": "durum",
-            "IS_CLOSED": "kapatıldı",
-            "FINISH_DATE": "bitiş tarihi",
             "TYPE": "tip",
-            "PRIORITY": "öncelik",
-            "SEVERITY": "önem derecesi",
             "ASSIGNED_TO": "atanmış",
-            "WATCHERS": "izleyiciler",
             "MILESTONE": "koşu",
-            "USER_STORY": "kullanıcı hikayesi",
-            "PROJECT": "proje",
-            "IS_BLOCKED": "engellendi",
-            "BLOCKED_NOTE": "engel notu",
-            "POINTS": "puanlar",
-            "CLIENT_REQUIREMENT": "istemci gereksinimi",
-            "TEAM_REQUIREMENT": "takım gereksinimi",
-            "IS_IOCAINE": "baldıran zehri",
-            "TAGS": "etiketler",
-            "ATTACHMENTS": "ekler",
-            "IS_DEPRECATED": "kaldırıldı",
-            "IS_NOT_DEPRECATED": "is not deprecated",
-            "ORDER": "sıra",
-            "BACKLOG_ORDER": "havuz sıralaması",
-            "SPRINT_ORDER": "koşu sırası",
-            "KANBAN_ORDER": "kanban sırası",
-            "TASKBOARD_ORDER": "Görev panosu sırası",
-            "US_ORDER": "kh sırası",
             "COLOR": "renk"
         }
     },
@@ -1220,8 +1204,6 @@
         "CUSTOMIZE_GRAPH_TITLE": "Yönetimden puan ve koşuları ayarlayın",
         "MOVE_US_TO_CURRENT_SPRINT": "Şimdiki Koşuya Taşı",
         "MOVE_US_TO_LATEST_SPRINT": "Son koşuya taşı",
-        "SHOW_FILTERS": "Filtreleri göster",
-        "SHOW_TAGS": "Etiketleri göster",
         "EMPTY": "Havuz bomboş!",
         "CREATE_NEW_US": "Yeni bir KH oluştur",
         "CREATE_NEW_US_EMPTY_HELP": "Yeni bir kullanıcı hikayesi oluşturmak isteyebilirsiniz",
@@ -1248,6 +1230,12 @@
             "SHOW": "Etiketleri göster",
             "HIDE": "Etiketleri gizler"
         },
+        "FORECASTING": {
+            "TITLE": "Velocity forecasting",
+            "BACKLOG": "Display backlog",
+            "NEW_SPRINT": "Candidate User Stories for your next sprint based on your velocity. Click to create a new sprint.",
+            "CURRENT_SPRINT": "Candidate User Stories for your sprint based on your velocity. Click to add to current sprint."
+        },
         "TABLE": {
             "COLUMN_US": "Kullanıcı Hikayeleri ",
             "TITLE_COLUMN_POINTS": "Her rol için görünüm seç"
@@ -1270,8 +1258,6 @@
         },
         "FILTERS": {
             "TOGGLE": "Filtrelerin görünürlüğünü değiştir",
-            "TITLE": "Filtreler",
-            "REMOVE": "Filtreleri Sil",
             "HIDE": "Filtreleri Gizle",
             "SHOW": "Filtreleri Göster"
         },
@@ -1280,7 +1266,6 @@
             "DATE": "DD MM YYYY",
             "LINK_TASKBOARD": "Koşu İş Panosu",
             "TITLE_LINK_TASKBOARD": "\"{{name}}\" görev panosuna git",
-            "NUMBER_SPRINTS": "<br/>koşular",
             "EMPTY": "Henüz hiç koşu yok",
             "WARNING_EMPTY_SPRINT_ANONYMOUS": "Bu koşuda hiç kullanıcı hikayesi yok.",
             "WARNING_EMPTY_SPRINT": "Yeni bir koşu başlatmak icin havuzdan buraya hikaye taşıyın",
@@ -1305,7 +1290,6 @@
         "TITLE_ACTION_ADD": "Yeni bir Görev ekle",
         "TITLE_ACTION_ADD_BULK": "Toplu halde yeni bir kaç görev ekle",
         "TITLE_ACTION_ASSIGN": "Görev ata",
-        "TITLE_ACTION_EDIT": "Görevi düzenle",
         "PLACEHOLDER_CARD_TITLE": "Bu bir görev olabilir",
         "PLACEHOLDER_CARD_TEXT": "Hikayeleri ve görevleri birbirinden ayırın ve öyle izleyin",
         "TABLE": {
@@ -1335,17 +1319,11 @@
         "TITLE_SELECT_STATUS": "Durum Adı",
         "OWNER_US": "Bu görevin ait olduğu",
         "TITLE_LINK_GO_OWNER": "Kullanıcı hikayesine git",
-        "ORIGIN_US": "Bu görevin oluşturulduğu",
-        "TITLE_LINK_GO_ORIGIN": "Kullanıcı hikayesine git",
-        "BLOCKED": "Bu iş engelli",
         "TITLE_DELETE_ACTION": "Görev Sil",
         "LIGHTBOX_TITLE_BLOKING_TASK": "Engelleyen iş",
         "FIELDS": {
-            "MILESTONE": "Koşu",
-            "USER_STORY": "Kullanıcı hikayesi",
             "IS_IOCAINE": "baldıran zehri"
         },
-        "ACTION_IOCAINE": "baldıran zehri",
         "TITLE_ACTION_IOCAINE": "Bir görev size ağır geldi ve bunaldınız mı? Diğerlerinin bu durumdan haberi olması için bir görevi düzenlerken baldıran zehrinin(temsili) üzerine tıklayın.  Nasıl ki zaman zaman ekstra meydan okumalarla bir işte gittikçe iyi olmanız mümkünse, zaman içerisinde küçük dozlar alarak bu ölümcül zehre de bağışıklık kazanabilmek mümkün!"
     },
     "NOTIFICATION": {
@@ -1374,14 +1352,12 @@
     "ISSUES": {
         "PAGE_TITLE": "Sorunlar - {{projectName}}",
         "PAGE_DESCRIPTION": "{{projectName}} projesinin sorun listesi paneli: {{projectDescription}}",
-        "LIST_SECTION_NAME": "Sorunlar",
         "SECTION_NAME": "Sorun",
         "ACTION_NEW_ISSUE": "+ YENİ SORUN",
         "ACTION_PROMOTE_TO_US": "Kullanıcı Hikayesine Terfi Ettir",
         "PROMOTED": "Bu sorun, kullanıcı hikayesine yükseltildi:",
         "EXTERNAL_REFERENCE": "Bu talebin oluşturulduğu ",
         "GO_TO_EXTERNAL_REFERENCE": "Kökenine git",
-        "BLOCKED": "Bu sorun engelli",
         "ACTION_DELETE": "Sorun sil",
         "LIGHTBOX_TITLE_BLOKING_ISSUE": "Engelleyen sorun",
         "FIELDS": {
@@ -1423,15 +1399,11 @@
         "SECTION_NAME": "Kanban",
         "TITLE_ACTION_FOLD": "Sütun Katla",
         "TITLE_ACTION_UNFOLD": "Sütun katını aç",
-        "TITLE_ACTION_FOLD_CARDS": "Kartları katla",
-        "TITLE_ACTION_UNFOLD_CARDS": "Kartların katlarını aç",
         "TITLE_ACTION_ADD_US": "Yeni Kullanıcı Hikayesi Ekle",
         "TITLE_ACTION_ADD_BULK": "Yeni toplu ekle",
         "ACTION_SHOW_ARCHIVED": "Arşivlenmişleri Göster",
         "ACTION_HIDE_ARCHIVED": "Arşivlenmişleri gizle",
         "HIDDEN_USER_STORIES": "Bu durumdaki kullanıcı hikayeleri otomatik olarak gizlenir",
-        "ARCHIVED": "Arşivlendiniz",
-        "UNDO_ARCHIVED": "Geri almak için tutun ve sürükleyin",
         "PLACEHOLDER_CARD_TITLE": "Bunlar Kullanıcı Hikayeleriniz",
         "PLACEHOLDER_CARD_TEXT": "Gereksinimleri ayrıştırmak için hikayeler alt görevlere sahip olabilirler"
     },
@@ -1452,7 +1424,6 @@
         "PAGE_TITLE": "Takım - {{projectName}}",
         "PAGE_DESCRIPTION": "Projedeki üyelerin tümünü göstermek için takım paneli {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Takım",
-        "APP_TITLE": "TAKIM - {{projectName}}",
         "PLACEHOLDER_INPUT_SEARCH": "Tam ad ile ara",
         "COLUMN_MR_WOLF": "Reyiz",
         "EXPLANATION_COLUMN_MR_WOLF": "Kapatılmış sorunlar",
@@ -1488,18 +1459,9 @@
             "OPTION_ALL": "Hepsi",
             "OPTION_INVOLVED": "İlgili",
             "OPTION_NONE": "Hiçbiri"
-        },
-        "POPOVER": {
-            "USER_PROFILE": "Kullanıcı Profili",
-            "CHANGE_PASSWORD": "Parolayı Değiştir",
-            "NOTIFICATIONS": "Bildirimler",
-            "FEEDBACK": "Geribildirim",
-            "TITLE_AVATAR": "Kullanıcı tercihleri"
         }
     },
     "USER_PROFILE": {
-        "IMAGE_HELP": "Resim 80×80 piksel boyutuna ölçeklenecek.",
-        "ACTION_CHANGE_IMAGE": "Değiştir",
         "ACTION_USE_GRAVATAR": "Varsayılan resmi kullan",
         "ACTION_DELETE_ACCOUNT": "Taiga hesabını sil",
         "CHANGE_EMAIL_SUCCESS": "<strong>Gelen kutunuzu kontrol edin!</strong><br />Yeni adresinizi belirlemek için gerekli<br />  yönergeleri içeren postayı gönderdik",
@@ -1517,25 +1479,10 @@
             "THEME_DEFAULT": "-- varsayılan temayı kullan --"
         }
     },
-    "WIZARD": {
-        "SECTION_TITLE_CREATE_PROJECT": "Proje Oluştur",
-        "CREATE_PROJECT_TEXT": "Taze ve temiz. Heycan verici!",
-        "CHOOSE_TEMPLATE": "Which template fits your project best?",
-        "CHOOSE_TEMPLATE_TITLE": "More info about project templates",
-        "CHOOSE_TEMPLATE_INFO": "More info",
-        "PROJECT_DETAILS": "Project Details",
-        "PUBLIC_PROJECT": "Public Project",
-        "PRIVATE_PROJECT": "Private Project",
-        "CREATE_PROJECT": "Proje oluştur",
-        "MAX_PRIVATE_PROJECTS": "You've reached the maximum number of private projects",
-        "MAX_PUBLIC_PROJECTS": "Unfortunately, you've reached the maximum number of public projects",
-        "CHANGE_PLANS": "change plans"
-    },
     "WIKI": {
         "PAGE_TITLE": "{{wikiPageName}} - Wiki - {{projectName}}",
         "PAGE_DESCRIPTION": "Son sürüm {{lastModifiedDate}} ({{totalEditions}} toplamda sürüm sayısı) İçerik: {{ wikiPageContent }}",
         "DATETIME": "DD MMM YYYY HH:mm",
-        "PLACEHOLDER_PAGE": "Wiki sayfanı yaz ",
         "REMOVE": "Bu wiki sayfasını sil",
         "DELETE_LIGHTBOX_TITLE": "Wiki Sayfası Sil",
         "DELETE_LINK_TITLE": "Delete Wiki link",
@@ -1693,7 +1640,6 @@
         "MOST_LIKED": "En beğenilen",
         "MOST_LIKED_EMPTY": "Henüz BEĞENİLEN proje yok",
         "VIEW_MORE": "Daha fazlası",
-        "RECRUITING": "Bu proje ahalisini arıyor",
         "FEATURED": "Önemli projeler",
         "EMPTY": "Bu arama ölçütlerine göre gösterilebilecek bir proje çıkmadı.<br> Tekrar deneyin!",
         "FILTERS": {

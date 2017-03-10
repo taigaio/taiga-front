@@ -32,6 +32,8 @@
         a.icon-delete(
             href=""
             title="{{'COMMON.DELETE' | translate}}"
+            ng-if="!vm.attachment.get('editable')"
+            tg-check-permission="modify_{{vm.type}}"
             ng-click="vm.delete()"
         )
             tg-svg(svg-icon="icon-trash")

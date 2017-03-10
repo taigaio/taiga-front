@@ -20,6 +20,20 @@ common.getElm = function(el) {
     return deferred.promise;
 };
 
+common.waitElementNotPresent = function(el) {
+    return browser.wait(function() {
+        return el.isPresent().then(function(present) {
+            return !present;
+        });
+    });
+};
+
+common.waitElementPresent = function(el) {
+    return browser.wait(function() {
+        return el.isPresent();
+    });
+};
+
 common.hasClass = async function (element, cls) {
     let classes = await element.getAttribute('class');
 
@@ -328,11 +342,11 @@ common.outerHtmlChanges = async function(el='body') {
         el = $(el);
     }
 
-    let html = await el.getOuterHtml();
+    let html = await el.getAttribute('outerHTML');
 
     return function() {
        return browser.wait(async function() {
-           let newhtml = await el.getOuterHtml();
+           let newhtml = await el.getAttribute('outerHTML');
 
            return html !== newhtml;
         }, 5000).then(function() {
@@ -346,11 +360,11 @@ common.innerHtmlChanges = async function(el='body') {
         el = $(el);
     }
 
-    let html = await el.getInnerHtml();
+    let html = await el.getAttribute('innerHTML');
 
     return function() {
        return browser.wait(async function() {
-           let newhtml = await el.getOuterHtml();
+           let newhtml = await el.getAttribute('outerHTML');
 
            return html !== newhtml;
         }, 5000).then(function() {
@@ -481,23 +495,18 @@ common.closeJoyride = async function() {
 };
 
 common.createProject = async function(members = []) {
-    var createProject = require('../helpers').createProject;
-    var notifications = require('./notifications');
+    var createProjectHelper = require('../helpers/create-project-helper');
+    var newProjectScreen = createProjectHelper.newProjectScreen();
 
-    browser.get(browser.params.glob.host + 'projects/');
+    browser.get(browser.params.glob.host + 'project/new');
     await common.waitLoader();
-
-    let lb = createProject.createProjectLightbox();
-
-    createProject.openWizard();
-
-    await lb.waitOpen();
-
-    lb.name().sendKeys('aaa');
-
-    lb.description().sendKeys('bbb');
-
-    await lb.submit();
+    await newProjectScreen.selectScrumOption();
+    let projectName = 'name ' + Date.now();
+    let projectDescription = 'description ' + Date.now();
+    await newProjectScreen.fillNameAndDescription(projectName, projectDescription);
+    await newProjectScreen.createProject();
+    let projectUrl = await browser.getCurrentUrl()
+    let projectSlug = projectUrl.split('/')[4];
 
     if (members.length) {
         var adminMembershipsHelper = require('../helpers').adminMemberships;
@@ -516,12 +525,14 @@ common.createProject = async function(members = []) {
 
         for(var i = 0; i < members.length; i++) {
             newMemberLightbox.newEmail(members[i]);
+            newMemberLightbox.setRole(0);
         }
 
         newMemberLightbox.submit();
 
         await newMemberLightbox.waitClose();
     }
+    return projectSlug;
 };
 
 common.getTransferProjectToken = function(projectSlug, username) {

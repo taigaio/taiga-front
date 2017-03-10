@@ -1,5 +1,5 @@
 ###
-# Copyright (C) 2014-2016 Taiga Agile LLC <taiga@taiga.io>
+# Copyright (C) 2014-2017 Taiga Agile LLC <taiga@taiga.io>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -19,14 +19,10 @@
 
 class ProjectsListingController
     @.$inject = [
-        "tgCurrentUserService",
-        "tgProjectsService",
+        "tgCurrentUserService"
     ]
 
-    constructor: (@currentUserService, @projectsService) ->
+    constructor: (@currentUserService) ->
         taiga.defineImmutableProperty(@, "projects", () => @currentUserService.projects.get("all"))
-
-    newProject: ->
-        @projectsService.newProject()
 
 angular.module("taigaProjects").controller("ProjectsListing", ProjectsListingController)

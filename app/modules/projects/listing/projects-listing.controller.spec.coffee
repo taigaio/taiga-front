@@ -1,5 +1,5 @@
 ###
-# Copyright (C) 2014-2016 Taiga Agile LLC <taiga@taiga.io>
+# Copyright (C) 2014-2017 Taiga Agile LLC <taiga@taiga.io>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -43,16 +43,11 @@ describe "ProjectsListingController", ->
     _mockProjectsService = () ->
         stub = sinon.stub()
 
-        mocks.projectsService = {
-            newProject: sinon.stub()
-        }
-
         provide.value "tgProjectsService", mocks.projectsService
 
     _mocks = () ->
         module ($provide) ->
             provide = $provide
-            _mockProjectsService()
             _mockCurrentUserService()
 
             return null
@@ -70,11 +65,3 @@ describe "ProjectsListingController", ->
             $scope: {}
 
         expect(pageCtrl.projects).to.be.equal(projects.get('all'))
-
-    it "new project", () ->
-        pageCtrl = controller "ProjectsListing",
-            $scope: {}
-
-        pageCtrl.newProject()
-
-        expect(mocks.projectsService.newProject).to.be.calledOnce

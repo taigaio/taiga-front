@@ -5,32 +5,23 @@
     .avatar {
         align-items: center;
         display: flex;
-        justify-content: flex-start;
-        figcaption {
-            margin-left: 1rem;
-            width: 75%;
-            span {
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-                width: 100%;
-            }
-        }
         img {
-            flex-basis: 35px;
-            flex-grow: 1;
-            max-width: 35px;
+            border-radius: 4px;
+            flex-grow: 0;
+            margin: 0 .5rem 0 .3rem;
+            width: 50px;
         }
-        .name,
-        .email {
-            display: block;
-            width: 100%;
+        .data {
+            @include font-type(light);
+            @include font-size(small);
+            color: $gray;
+            margin-top: .2rem;
         }
-        .name {
-            @include font-type(bold);
-        }
-        .email {
-            color: $gray-light;
+        .pending {
+            @include font-type(normal);
+            color: $red-light;
+            display: inline-block;
+            padding-left: .3rem;
         }
     }
     .header-role,

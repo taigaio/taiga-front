@@ -1,10 +1,10 @@
 ###
-# Copyright (C) 2014-2016 Andrey Antukh <niwi@niwi.nz>
-# Copyright (C) 2014-2016 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014-2016 David Barragán Merino <bameda@dbarragan.com>
-# Copyright (C) 2014-2016 Alejandro Alonso <alejandro.alonso@kaleidos.net>
-# Copyright (C) 2014-2016 Juan Francisco Alcántara <juanfran.alcantara@kaleidos.net>
-# Copyright (C) 2014-2016 Xavi Julian <xavier.julian@kaleidos.net>
+# Copyright (C) 2014-2017 Andrey Antukh <niwi@niwi.nz>
+# Copyright (C) 2014-2017 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014-2017 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2017 Alejandro Alonso <alejandro.alonso@kaleidos.net>
+# Copyright (C) 2014-2017 Juan Francisco Alcántara <juanfran.alcantara@kaleidos.net>
+# Copyright (C) 2014-2017 Xavi Julian <xavier.julian@kaleidos.net>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -74,6 +74,7 @@ urls = {
     "project-unlike": "/projects/%s/unlike"
     "project-watch": "/projects/%s/watch"
     "project-unwatch": "/projects/%s/unwatch"
+    "project-contact": "contact"
     "project-transfer-validate-token": "/projects/%s/transfer_validate_token"
     "project-transfer-accept": "/projects/%s/transfer_accept"
     "project-transfer-reject": "/projects/%s/transfer_reject"
@@ -109,6 +110,7 @@ urls = {
     "bulk-update-us-milestone": "/userstories/bulk_update_milestone"
     "bulk-update-us-miles-order": "/userstories/bulk_update_sprint_order"
     "bulk-update-us-kanban-order": "/userstories/bulk_update_kanban_order"
+    "bulk-update-us-milestone": "/userstories/bulk_update_milestone"
     "userstories-filters": "/userstories/filters_data"
     "userstory-upvote": "/userstories/%s/upvote"
     "userstory-downvote": "/userstories/%s/downvote"
@@ -201,6 +203,31 @@ urls = {
 
     # Stats
     "stats-discover": "/stats/discover"
+
+    # Importers
+    "importers-trello-auth-url": "/importers/trello/auth_url"
+    "importers-trello-authorize": "/importers/trello/authorize"
+    "importers-trello-list-projects": "/importers/trello/list_projects"
+    "importers-trello-list-users": "/importers/trello/list_users"
+    "importers-trello-import-project": "/importers/trello/import_project"
+
+    "importers-jira-auth-url": "/importers/jira/auth_url"
+    "importers-jira-authorize": "/importers/jira/authorize"
+    "importers-jira-list-projects": "/importers/jira/list_projects"
+    "importers-jira-list-users": "/importers/jira/list_users"
+    "importers-jira-import-project": "/importers/jira/import_project"
+
+    "importers-github-auth-url": "/importers/github/auth_url"
+    "importers-github-authorize": "/importers/github/authorize"
+    "importers-github-list-projects": "/importers/github/list_projects"
+    "importers-github-list-users": "/importers/github/list_users"
+    "importers-github-import-project": "/importers/github/import_project"
+
+    "importers-asana-auth-url": "/importers/asana/auth_url"
+    "importers-asana-authorize": "/importers/asana/authorize"
+    "importers-asana-list-projects": "/importers/asana/list_projects"
+    "importers-asana-list-users": "/importers/asana/list_users"
+    "importers-asana-import-project": "/importers/asana/import_project"
 }
 
 # Initialize api urls service

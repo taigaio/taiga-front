@@ -1,0 +1,57 @@
+.create-project
+    h1.create-project-title(translate="PROJECT.DUPLICATE.TITLE")
+    h3.create-project-description(translate="PROJECT.DUPLICATE.DESCRIPTION")
+    form.duplicate-project.e2e-duplicate-project(
+        name="projectForm"
+        ng-submit="vm.submit()"
+    )
+        fieldset.duplicate-project-reference.e2e-duplicate-project-reference
+            select(
+                ng-model="vm.projectForm.project"
+                ng-change="vm.refreshReferenceProject(vm.projectForm.project)"
+                data-required="true"
+                ng-options="p.slug as p.name for p in vm.projects | toMutable| filter:{blocked_code: '!'}"
+                id="project-selector-dropdown"
+                autofocus
+            )
+                option(
+                    value=""
+                    disabled
+                    selected
+                    translate="PROJECT.DUPLICATE.SELECT_PLACEHOLDER"
+                )
+
+        div(ng-include="'projects/create/import-project-form-common/name.html'")
+        div(ng-include="'projects/create/import-project-form-common/description.html'")
+
+        div(ng-include="'projects/create/import-project-form-common/project-privacy.html'")
+        tg-create-project-restrictions(
+            is-private="vm.projectForm.is_private"
+            can-create-public-projects="vm.canCreatePublicProjects"
+            can-create-private-projects="vm.canCreatePrivateProjects"
+        )
+
+
+        label(ng-if="vm.invitedMembers")
+            span(translate="PROJECT.CREATE.INVITE")
+            span.mumble(
+                ng-if="vm.displayUserWarning"
+                translate="PROJECT.CREATE.SOLO_PROJECT"
+            )
+            span.mumble(translate="PROJECT.CREATE.INVITE_LATER")
+
+        tg-invite-members(
+            ng-if="vm.members.size"
+            members="vm.members"
+            invited-members="vm.invitedMembers"
+            on-toggle-invited-member="vm.toggleInvitedMember(member)"
+        )
+
+        tg-create-project-members-restrictions(
+            ng-if="vm.referenceProject"
+            is-private="vm.projectForm.is_private"
+            limit-members-private-project="vm.limitMembersPrivateProject"
+            limit-members-public-project="vm.limitMembersPublicProject"
+        )
+
+        div(ng-include="'projects/create/import-project-form-common/actions.html'")

@@ -1,10 +1,11 @@
-figure.avatar
+.avatar
     img(
+        src!="<%- imgurl %>"
+        alt!="<%- full_name %>"
         style!="background-color: <%- bg %>"
-        src!="<%- imgurl %>", alt!="<%- full_name %>"
     )
-    figcaption
-        div.name
+    .user-data
+        .name
             span(ng-non-bindable) <%- full_name %>
             <% if (isOwner) { %>
             tg-svg.owner-badge(
@@ -12,6 +13,8 @@ figure.avatar
                 svg-title-translate="COMMON.OWNER"
             )
             <% }  %>
-        div
-            span.pending <%- pending %>
+        .data
             span.email <%- email %>
+            <% if (pending) { %>
+            span.pending <%- pending %>
+            <% }  %>

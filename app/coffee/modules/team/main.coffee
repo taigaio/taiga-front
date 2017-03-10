@@ -1,10 +1,10 @@
 ###
-# Copyright (C) 2014-2016 Andrey Antukh <niwi@niwi.nz>
-# Copyright (C) 2014-2016 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014-2016 David Barragán Merino <bameda@dbarragan.com>
-# Copyright (C) 2014-2016 Alejandro Alonso <alejandro.alonso@kaleidos.net>
-# Copyright (C) 2014-2016 Juan Francisco Alcántara <juanfran.alcantara@kaleidos.net>
-# Copyright (C) 2014-2016 Xavi Julian <xavier.julian@kaleidos.net>
+# Copyright (C) 2014-2017 Andrey Antukh <niwi@niwi.nz>
+# Copyright (C) 2014-2017 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014-2017 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2017 Alejandro Alonso <alejandro.alonso@kaleidos.net>
+# Copyright (C) 2014-2017 Juan Francisco Alcántara <juanfran.alcantara@kaleidos.net>
+# Copyright (C) 2014-2017 Xavi Julian <xavier.julian@kaleidos.net>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -88,17 +88,18 @@ class TeamController extends mixOf(taiga.Controller, taiga.PageMixin)
         @scope.memberships = _.reject(@scope.activeUsers, {id: user?.id})
 
     loadProject: ->
-        return @rs.projects.getBySlug(@params.pslug).then (project) =>
-            @scope.projectId = project.id
-            @scope.project = project
-            @scope.$emit('project:loaded', project)
+        project = @projectService.project.toJS()
 
-            @scope.issuesEnabled = project.is_issues_activated
-            @scope.tasksEnabled = project.is_kanban_activated or project.is_backlog_activated
-            @scope.wikiEnabled = project.is_wiki_activated
-            @scope.owner = project.owner.id
+        @scope.projectId = project.id
+        @scope.project = project
+        @scope.$emit('project:loaded', project)
 
-            return project
+        @scope.issuesEnabled = project.is_issues_activated
+        @scope.tasksEnabled = project.is_kanban_activated or project.is_backlog_activated
+        @scope.wikiEnabled = project.is_wiki_activated
+        @scope.owner = project.owner.id
+
+        return project
 
     loadMemberStats: ->
         return @rs.projects.memberStats(@scope.projectId).then (stats) =>
@@ -132,16 +133,16 @@ class TeamController extends mixOf(taiga.Controller, taiga.PageMixin)
         return stats
 
     loadInitialData: ->
-        promise = @.loadProject()
-        return promise.then (project) =>
-            @.fillUsersAndRoles(project.members, project.roles)
-            @.loadMembers()
+        project = @.loadProject()
 
-            userRoles = _.map @scope.users, (user) -> user.role
+        @.fillUsersAndRoles(project.members, project.roles)
+        @.loadMembers()
 
-            @scope.roles = _.filter @scope.roles, (role) -> userRoles.indexOf(role.id) != -1
+        userRoles = _.map @scope.users, (user) -> user.role
 
-            return @.loadMemberStats()
+        @scope.roles = _.filter @scope.roles, (role) -> userRoles.indexOf(role.id) != -1
+
+        return @.loadMemberStats()
 
 module.controller("TeamController", TeamController)
 

@@ -1,5 +1,5 @@
 ###
-# Copyright (C) 2014-2016 Taiga Agile LLC <taiga@taiga.io>
+# Copyright (C) 2014-2017 Taiga Agile LLC <taiga@taiga.io>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -22,10 +22,12 @@ taiga = @.taiga
 class ProjectService
     @.$inject = [
         "tgProjectsService",
-        "tgXhrErrorService"
+        "tgXhrErrorService",
+        "tgUserActivityService",
+        "$interval"
     ]
 
-    constructor: (@projectsService, @xhrError) ->
+    constructor: (@projectsService, @xhrError, @userActivityService, @interval) ->
         @._project = null
         @._section = null
         @._sectionsBreadcrumb = Immutable.List()
@@ -36,11 +38,23 @@ class ProjectService
         taiga.defineImmutableProperty @, "sectionsBreadcrumb", () => return @._sectionsBreadcrumb
         taiga.defineImmutableProperty @, "activeMembers", () => return @._activeMembers
 
+        @.autoRefresh() if !window.localStorage.e2e
+
     cleanProject: () ->
         @._project = null
         @._activeMembers = Immutable.List()
         @._section = null
         @._sectionsBreadcrumb = Immutable.List()
+
+    autoRefresh: () ->
+        intervalId = @interval () =>
+            @.fetchProject()
+        , 60 * 10 * 1000
+
+        @userActivityService.onInactive () => @interval.cancel(intervalId)
+        @userActivityService.onActive () =>
+            @.fetchProject()
+            @.autoRefresh()
 
     setSection: (section) ->
         @._section = section
@@ -68,6 +82,8 @@ class ProjectService
             else resolve()
 
     fetchProject: () ->
+        return if !@.project
+
         pslug = @.project.get('slug')
 
         return @projectsService.getProjectBySlug(pslug).then (project) => @.setProject(project)

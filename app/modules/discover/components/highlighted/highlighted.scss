@@ -76,6 +76,7 @@
     }
     .empty-highlighted-project {
         border: 2px dashed $whitish;
+        flex: 1;
         padding: 2rem;
         text-align: center;
         svg {

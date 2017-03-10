@@ -1,13 +1,18 @@
 @import '../dependencies/mixins/profile-form';
 .project-details {
     @include profile-form;
-    .looking-for-people {
+    .looking-for-people,
+    .get-feedback {
         @include font-type(light);
         border-bottom: 1px solid $whitish;
-        border-top: 1px solid $whitish;
         padding: 1rem 0;
     }
-    .looking-for-people-selector {
+    .looking-for-people {
+        border-top: 1px solid $whitish;
+        margin-bottom: 0;
+    }
+    .looking-for-people-selector,
+    .get-feedback-inner {
         align-items: center;
         display: flex;
         svg {

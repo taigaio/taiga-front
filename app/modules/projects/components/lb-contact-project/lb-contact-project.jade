@@ -1,0 +1,27 @@
+tg-lightbox-close
+
+form.lightbox-contact-project-container
+    img.lightbox-contact-project-logo(
+        ng-if="vm.project.logo_big_url"
+        alt="{{vm.project.get('name')}}"
+        ng-src="vm.project.logo_big_url"
+    )
+    img.lightbox-contact-project-logo(
+        ng-if="!vm.project.logo_big_url"
+        tg-project-logo-big-src="vm.project"
+        alt="{{vm.project.get('name')}}"
+    )
+    h2.lightbox-contact-project-title(translate="LIGHTBOX.CONTACT_PROJECT.TITLE")
+    h3.lightbox-contact-project-name {{vm.project.get('name')}}
+    p(translate="LIGHTBOX.CONTACT_PROJECT.WARNING")
+    textarea.lightbox-contact-project-message.e2e-lightbox-contact-project-message(
+        ng-model="vm.contact.message"
+        required
+        placeholder="{{'LIGHTBOX.CONTACT_PROJECT.PLACEHOLDER' | translate}}"
+    )
+    button.button-green.lightbox-contact-project-button.e2e-lightbox-contact-project-button(
+        translate="LIGHTBOX.CONTACT_PROJECT.SEND"
+        ng-click="vm.contactProject()"
+        tg-loading="vm.sendingFeedback"
+        ng-disabled="!vm.contact.message.length"
+    )

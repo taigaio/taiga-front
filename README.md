@@ -1,10 +1,8 @@
 # Taiga Front #
 
-![Kaleidos Project](http://kaleidos.net/static/img/badge.png "Kaleidos Project")
-[![Managed with Taiga](https://taiga.io/media/support/attachments/article-22/banner-gh.png)](https://taiga.io "Managed with Taiga")
-[![Build Status](https://travis-ci.org/taigaio/taiga-front.svg?branch=public-header-bar)](https://travis-ci.org/taigaio/taiga-front)
-[![Dependency Status](https://www.versioneye.com/user/projects/561ba659a193340f280013f4/badge.svg?style=flat)](https://www.versioneye.com/user/projects/561ba659a193340f280013f4)
-
+![Kaleidos Project](http://kaleidos.net/static/img/badge.svg "Kaleidos Project")
+[![Managed with Taiga.io](https://img.shields.io/badge/managed%20with-TAIGA.io-709f14.svg)](https://tree.taiga.io/project/taiga/ "Managed with Taiga.io")
+[![Build Status](https://img.shields.io/travis/taigaio/taiga-front.svg)](https://travis-ci.org/taigaio/taiga-front "Build Status")
 
 ## Get the compiled version ##
 
@@ -39,6 +37,7 @@ Every code patch accepted in taiga codebase is licensed under [AGPL v3.0](http:/
 
 Please read carefully [our license](https://github.com/taigaio/taiga-front/blob/master/LICENSE) and ask us if you have any questions.
 
+Emoji provided free by [Twemoji](https://github.com/twitter/twemoji)
 
 #### Bug reports, enhancements and support ####
 
@@ -125,14 +124,12 @@ sass -v             # should return Sass 3.3.8 (Maptastic Maple)
 
 Complete process for all OS at: http://sass-lang.com/install
 
-**Node + Bower + Gulp**
+**Node + Gulp**
 
 We recommend using [nvm](https://github.com/creationix/nvm) to manage different node versions
 ```
 npm install -g gulp
-npm install -g bower
 npm install
-bower install
 gulp
 ```
 

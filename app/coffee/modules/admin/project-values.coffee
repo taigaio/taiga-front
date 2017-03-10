@@ -1,10 +1,10 @@
 ###
-# Copyright (C) 2014-2016 Andrey Antukh <niwi@niwi.nz>
-# Copyright (C) 2014-2016 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014-2016 David Barragán Merino <bameda@dbarragan.com>
-# Copyright (C) 2014-2016 Alejandro Alonso <alejandro.alonso@kaleidos.net>
-# Copyright (C) 2014-2016 Juan Francisco Alcántara <juanfran.alcantara@kaleidos.net>
-# Copyright (C) 2014-2016 Xavi Julian <xavier.julian@kaleidos.net>
+# Copyright (C) 2014-2017 Andrey Antukh <niwi@niwi.nz>
+# Copyright (C) 2014-2017 Jesús Espino Garcia <jespinog@gmail.com>
+# Copyright (C) 2014-2017 David Barragán Merino <bameda@dbarragan.com>
+# Copyright (C) 2014-2017 Alejandro Alonso <alejandro.alonso@kaleidos.net>
+# Copyright (C) 2014-2017 Juan Francisco Alcántara <juanfran.alcantara@kaleidos.net>
+# Copyright (C) 2014-2017 Xavi Julian <xavier.julian@kaleidos.net>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -53,36 +53,36 @@ class ProjectValuesSectionController extends mixOf(taiga.Controller, taiga.PageM
         "$tgNavUrls",
         "tgAppMetaService",
         "$translate",
-        "tgErrorHandlingService"
+        "tgErrorHandlingService",
+        "tgProjectService"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @navUrls,
-                  @appMetaService, @translate, @errorHandlingService) ->
+                  @appMetaService, @translate, @errorHandlingService, @projectService) ->
         @scope.project = {}
 
-        promise = @.loadInitialData()
+        @.loadInitialData()
 
-        promise.then () =>
-            sectionName = @translate.instant(@scope.sectionName)
+        sectionName = @translate.instant(@scope.sectionName)
 
-            title = @translate.instant("ADMIN.PROJECT_VALUES.PAGE_TITLE", {
-                "sectionName": sectionName,
-                "projectName": @scope.project.name
-            })
-            description = @scope.project.description
-            @appMetaService.setAll(title, description)
+        title = @translate.instant("ADMIN.PROJECT_VALUES.PAGE_TITLE", {
+            "sectionName": sectionName,
+            "projectName": @scope.project.name
+        })
 
-        promise.then null, @.onInitialDataError.bind(@)
+        description = @scope.project.description
+        @appMetaService.setAll(title, description)
 
     loadProject: ->
-        return @rs.projects.getBySlug(@params.pslug).then (project) =>
-            if not project.i_am_admin
-                @errorHandlingService.permissionDenied()
+        project = @projectService.project.toJS()
 
-            @scope.projectId = project.id
-            @scope.project = project
-            @scope.$emit('project:loaded', project)
-            return project
+        if not project.i_am_admin
+            @errorHandlingService.permissionDenied()
+
+        @scope.projectId = project.id
+        @scope.project = project
+        @scope.$emit('project:loaded', project)
+        return project
 
     loadInitialData: ->
         promise = @.loadProject()
@@ -106,8 +106,11 @@ class ProjectValuesController extends taiga.Controller
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs) ->
         @scope.$on("admin:project-values:move", @.moveValue)
-        @rootscope.$on("project:loaded", @.loadValues)
 
+        unwatch = @scope.$watch "resource", (resource) =>
+            if resource
+                @.loadValues()
+                unwatch()
     loadValues: =>
         return @rs[@scope.resource].listValues(@scope.projectId, @scope.type).then (values) =>
             @scope.values = values
@@ -131,7 +134,7 @@ module.controller("ProjectValuesController", ProjectValuesController)
 ## Project values directive
 #############################################################################
 
-ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame, $translate, $rootscope) ->
+ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame, $translate, $rootscope, projectService) ->
     ## Drag & Drop Link
 
     linkDragAndDrop = ($scope, $el, $attrs) ->
@@ -210,6 +213,8 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame, $tra
                 row = target.parents(".row.table-main")
                 row.addClass("hidden")
                 row.siblings(".visualization").removeClass('hidden')
+
+                projectService.fetchProject()
 
             promise.then null, (data) ->
                 form.setErrors(data)
@@ -325,7 +330,7 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame, $tra
     return {link:link}
 
 module.directive("tgProjectValues", ["$log", "$tgRepo", "$tgConfirm", "$tgLocation", "animationFrame",
-                                     "$translate", "$rootScope", ProjectValuesDirective])
+                                     "$translate", "$rootScope", "tgProjectService", ProjectValuesDirective])
 
 
 #############################################################################
@@ -403,6 +408,7 @@ module.directive("tgColorSelection", ColorSelectionDirective)
 # Custom attributes types (see taiga-back/taiga/projects/custom_attributes/choices.py)
 TEXT_TYPE = "text"
 MULTILINE_TYPE = "multiline"
+RICHTEXT_TYPE = "richtext"
 DATE_TYPE = "date"
 URL_TYPE = "url"
 
@@ -415,6 +421,10 @@ TYPE_CHOICES = [
     {
         key: MULTILINE_TYPE,
         name: "ADMIN.CUSTOM_FIELDS.FIELD_TYPE_MULTI"
+    },
+    {
+        key: RICHTEXT_TYPE,
+        name: "ADMIN.CUSTOM_FIELDS.FIELD_TYPE_RICHTEXT"
     },
     {
         key: DATE_TYPE,
@@ -437,25 +447,27 @@ class ProjectCustomAttributesController extends mixOf(taiga.Controller, taiga.Pa
         "$tgLocation",
         "$tgNavUrls",
         "tgAppMetaService",
-        "$translate"
+        "$translate",
+        "tgProjectService"
     ]
 
     constructor: (@scope, @rootscope, @repo, @rs, @params, @q, @location, @navUrls, @appMetaService,
-                  @translate) ->
+                  @translate, @projectService) ->
         @scope.TYPE_CHOICES = TYPE_CHOICES
+        @scope.project = @projectService.project.toJS()
+        @scope.projectId = @scope.project.id
 
-        @scope.project = {}
+        sectionName = @translate.instant(@scope.sectionName)
+        title = @translate.instant("ADMIN.CUSTOM_ATTRIBUTES.PAGE_TITLE", {
+            "sectionName": sectionName,
+            "projectName": @scope.project.name
+        })
+        description = @scope.project.description
+        @appMetaService.setAll(title, description)
 
-        @rootscope.$on "project:loaded", =>
+        @scope.init = (type) =>
+            @scope.type = type
             @.loadCustomAttributes()
-
-            sectionName = @translate.instant(@scope.sectionName)
-            title = @translate.instant("ADMIN.CUSTOM_ATTRIBUTES.PAGE_TITLE", {
-                "sectionName": sectionName,
-                "projectName": @scope.project.name
-            })
-            description = @scope.project.description
-            @appMetaService.setAll(title, description)
 
     #########################
     # Custom Attribute
@@ -716,22 +728,26 @@ class ProjectTagsController extends taiga.Controller
         "$tgConfirm",
         "$tgResources",
         "$tgModel",
+        "tgProjectService"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @model) ->
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @model, @projectService) ->
         @.loading = true
-        @rootscope.$on("project:loaded", @.loadTags)
+        @.loadTags()
 
     loadTags: =>
-        return @rs.projects.tagsColors(@scope.projectId).then (tags) =>
+        project = @projectService.project.toJS()
+        return @rs.projects.tagsColors(project.id).then (tags) =>
             @scope.projectTagsAll = _.map tags.getAttrs(), (color, name) =>
                 @model.make_model('tag', {name: name, color: color})
             @.filterAndSortTags()
             @.loading = false
 
     filterAndSortTags: =>
+        @scope.projectTags = _.sortBy @scope.projectTagsAll, (it) -> it.name.toLowerCase()
+
         @scope.projectTags = _.filter(
-            _.sortBy(@scope.projectTagsAll, "name"),
+            @scope.projectTags,
             (tag) => tag.name.indexOf(@scope.tagsFilter.name) != -1
         )
 
