@@ -18,8 +18,6 @@
 ###
 
 SuggestAddMembersDirective = (lightboxService) ->
-    @.inject = ['lightboxService']
-
     return {
         scope: {},
         templateUrl:"invite-members/suggest-add-members/suggest-add-members.html",
