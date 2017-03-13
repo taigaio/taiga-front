@@ -67,6 +67,8 @@
     }
 
     .add-member-suggest-avatar {
+        flex-grow: 0;
+        flex-shrink: 0;
         height: 5rem;
         margin: .5rem;
         width: 5rem;
