@@ -21,11 +21,11 @@
 
     ul.add-member-suggest-list
         li.add-member-suggest-single.e2e-add-member-suggest-single(
-            ng-repeat="contact in vm.filteredContacts | toMutable | limitTo: 12 | orderBy:'full_name_display'"
+            tg-repeat="contact in vm.filteredContacts"
             ng-click="vm.setInvited(contact)"
         )
             img.add-member-suggest-avatar(
                 tg-avatar="contact"
-                alt="{{contact.full_name_display}}"
+                alt="{{contact.get('full_name_display')}}"
             )
-            span.add-member-suggest-name {{contact.full_name_display}}
+            span.add-member-suggest-name {{contact.get('full_name_display')}}
