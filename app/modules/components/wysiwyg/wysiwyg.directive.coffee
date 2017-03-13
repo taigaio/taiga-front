@@ -60,14 +60,14 @@ Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoad
         pre = document.createElement('pre')
         code = document.createElement('code')
 
-        console.log range.startContainer.parentNode.nextSibling
-
         if !range.startContainer.parentNode.nextSibling
             $('<br/>').insertAfter(range.startContainer.parentNode)
 
-        start = range.startContainer.parentNode.nextSibling
+        start = range.endContainer.parentNode.nextSibling
 
-        code.appendChild(range.extractContents())
+        extract = range.extractContents()
+
+        code.appendChild(extract)
 
         pre.appendChild(code)
 
@@ -78,7 +78,7 @@ Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoad
     refreshCodeBlocks = (mediumInstance) ->
         # clean empty <p> content editable adds it when range.extractContents has been execute it
         for mainChildren in mediumInstance.elements[0].children
-            if mainChildren && mainChildren.tagName.toLowerCase() == 'p' && !mainChildren.innerText.length
+            if mainChildren && mainChildren.tagName.toLowerCase() == 'p' && !mainChildren.innerHTML.trim().length
                 mainChildren.parentNode.removeChild(mainChildren)
 
         preList = mediumInstance.elements[0].querySelectorAll('pre')
