@@ -18,6 +18,7 @@
 ###
 
 SuggestAddMembersDirective = (lightboxService) ->
+
     return {
         scope: {},
         templateUrl:"invite-members/suggest-add-members/suggest-add-members.html",
@@ -25,7 +26,7 @@ SuggestAddMembersDirective = (lightboxService) ->
         controllerAs: "vm",
         bindToController: {
             contacts: '=',
-            filteredContacts: '<contacts',
+            filteredContacts: '<',
             onInviteSuggested: '&',
             onInviteEmail: '&'
         }

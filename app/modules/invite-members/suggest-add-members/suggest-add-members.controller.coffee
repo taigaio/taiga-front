@@ -31,7 +31,7 @@ class SuggestAddMembersController
     filterContacts: () ->
         @.filteredContacts = @.contacts.filter( (contact) =>
             contact.get('full_name_display').toLowerCase().includes(@.contactQuery.toLowerCase()) || contact.get('username').toLowerCase().includes(@.contactQuery.toLowerCase());
-        )
+        ).slice(0,12)
 
     setInvited: (contact) ->
         @.onInviteSuggested({'contact': contact})
