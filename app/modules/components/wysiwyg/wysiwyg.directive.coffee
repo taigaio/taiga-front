@@ -266,6 +266,9 @@ Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoad
             if $scope.mode == 'html'
                 updateMarkdownWithCurrentHtml()
 
+            html = wysiwygService.getHTML($scope.markdown)
+            editorMedium.html(html)
+
             return if $scope.required && !$scope.markdown.length
 
             $scope.saving  = true

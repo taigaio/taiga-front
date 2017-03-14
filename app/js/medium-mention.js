@@ -196,7 +196,7 @@ var MentionExtension = MediumEditor.Extension.extend({
             e.stopPropagation();
 
             var event = document.createEvent('HTMLEvents');
-            event.initEvent('click', true, false);
+            event.initEvent('mousedown', true, false);
 
             active.dispatchEvent(event);
 
