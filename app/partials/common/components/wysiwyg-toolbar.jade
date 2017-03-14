@@ -4,7 +4,7 @@
 
     .medium.wysiwyg(
         type="text",
-        ng-show="mode == 'html'"
+        ng-show="mode == 'html' || !editMode"
     )
 
     textarea.markdown.e2e-markdown-textarea(
@@ -13,14 +13,6 @@
         ng-model="markdown"
         ng-show="mode == 'markdown' && editMode"
     )
-
-    .markdown(
-        ng-class="{empty: !markdown.length}"
-        ng-click="editMode = true"
-        ng-show="mode == 'markdown' && !editMode"
-    )
-        p(ng-if="markdown.length") {{markdown}}
-        p.markdown-editor-placeholder.wysiwyg(ng-if="!markdown.length") {{placeholder}}
 
     .mode-editor(ng-if="editMode")
         span.e2e-markdown-mode(
