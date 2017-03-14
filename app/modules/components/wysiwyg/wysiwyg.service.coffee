@@ -23,7 +23,12 @@
 ###
 
 class WysiwygService
-    constructor: (@wysiwygCodeHightlighterService) ->
+    @.$inject = [
+        "tgWysiwygCodeHightlighterService",
+        "tgProjectService",
+        "$tgNavUrls"
+    ]
+    constructor: (@wysiwygCodeHightlighterService, @projectService, @navurls) ->
 
     searchEmojiByName: (name) ->
         return _.filter @.emojis, (it) -> it.name.indexOf(name) != -1
@@ -65,6 +70,20 @@ class WysiwygService
 
         return text
 
+    replaceUrls: (html) ->
+        el = document.createElement( 'html' )
+        el.innerHTML = html
+
+        links = el.querySelectorAll('a')
+
+        for link in links
+            if link.getAttribute('href').indexOf('/profile/') != -1
+                link.parentNode.replaceChild(document.createTextNode(link.innerText), link)
+            else if link.getAttribute('href').indexOf('/t/') != -1
+                link.parentNode.replaceChild(document.createTextNode(link.innerText), link)
+
+        return el.innerHTML
+
     removeTrailingListBr: (text) ->
         return text.replace(/<li>(.*?)<br><\/li>/g, '<li>$1</li>')
 
@@ -90,6 +109,7 @@ class WysiwygService
 
         html = html.replace(/&nbsp;(<\/.*>)/g, "$1")
         html = @.replaceImgsByEmojiName(html)
+        html = @.replaceUrls(html)
         html = @.removeTrailingListBr(html)
 
         markdown = toMarkdown(html, {
@@ -97,8 +117,28 @@ class WysiwygService
             converters: [cleanIssueConverter, codeLanguageConverter]
         })
 
-
         return markdown
+
+    autoLinkHTML: (html) ->
+        return Autolinker.link(html, {
+            mention: 'twitter',
+            hashtag: 'twitter',
+            replaceFn: (match) =>
+                if  match.getType() == 'mention'
+                    profileUrl = @navurls.resolve('user-profile', {
+                        project: @projectService.project.get('slug'),
+                        username: match.getMention()
+                    })
+
+                    return '<a class="autolink" href="' + profileUrl + '">@' + match.getMention() + '</a>'
+                else if match.getType() == 'hashtag'
+                    url = @navurls.resolve('project-detail-ref', {
+                        project: @projectService.project.get('slug'),
+                        ref: match.getHashtag()
+                    })
+
+                    return '<a class="autolink" href="' + url + '">#' + match.getHashtag() + '</a>'
+        })
 
     getHTML: (text) ->
         return "" if !text || !text.length
@@ -106,16 +146,18 @@ class WysiwygService
         options = {
             breaks: true
         }
-
         text = @.replaceEmojiNameByImgs(text)
 
         md = window.markdownit({
             breaks: true
         })
 
+        md.use(window.markdownitLazyHeaders)
+
         result = md.render(text)
+        result = @.autoLinkHTML(result)
 
         return result
 
 angular.module("taigaComponents")
-    .service("tgWysiwygService", ["tgWysiwygCodeHightlighterService", WysiwygService])
+    .service("tgWysiwygService", WysiwygService)

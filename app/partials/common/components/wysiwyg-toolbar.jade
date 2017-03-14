@@ -34,7 +34,7 @@
             tg-svg(svg-icon="icon-question")
             span(translate="COMMON.WYSIWYG.MARKDOWN_HELP")
 
-.tools(ng-if="editMode")
+.tools(ng-class="{\"visible\": editMode}")
     a.e2e-save-editor(
         ng-class="{disabled: required && !markdown.length}"
         tg-loading="saving"

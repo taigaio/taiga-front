@@ -185,6 +185,15 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
         }
     )
 
+    # Project ref detail
+    $routeProvider.when("/project/:pslug/t/:ref",
+        {
+            loader: true,
+            controller: "DetailController",
+            template: ""
+        }
+    )
+
     $routeProvider.when("/project/:pslug/search",
         {
             templateUrl: "search/search.html",

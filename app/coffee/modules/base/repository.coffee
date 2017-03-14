@@ -230,6 +230,7 @@ class RepositoryService extends taiga.Service
         params.issue = options.issueref if options.issueref?
         params.milestone = options.sslug if options.sslug?
         params.wikipage = options.wikipage if options.wikipage?
+        params.ref = options.ref if options.ref?
 
         cache = not (options.wikipage or options.sslug)
         return @.queryOneRaw("resolver", null, params, {cache: cache})
