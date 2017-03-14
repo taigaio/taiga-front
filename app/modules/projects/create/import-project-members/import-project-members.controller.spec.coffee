@@ -326,7 +326,7 @@ describe "ImportProjectMembersCtrl", ->
         expect(ctrl.displayEmailSelector).to.be.true
 
 
-     it.only "refresh selectable users array with the selected ones", () ->
+     it "refresh selectable users array with the selected ones", () ->
         ctrl = $controller("ImportProjectMembersCtrl")
 
         ctrl.getDistinctSelectedTaigaUsers = sinon.stub().returns(Immutable.fromJS([

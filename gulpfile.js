@@ -187,12 +187,14 @@ paths.libs = [
     paths.modules + "highlight.js/lib/highlight.js",
     paths.modules + "prismjs/prism.js",
     paths.modules + "medium-editor-autolist/dist/autolist.js",
+    paths.modules + "autolinker/dist/Autolinker.js",
     paths.app + "js/dom-autoscroller.js",
     paths.app + "js/dragula-drag-multiple.js",
     paths.app + "js/tg-repeat.js",
     paths.app + "js/sha1-custom.js",
     paths.app + "js/murmurhash3_gc.js",
-    paths.app + "js/medium-mention.js"
+    paths.app + "js/medium-mention.js",
+    paths.app + "js/markdown-it-lazy-headers.js"
 ];
 
 paths.libs.forEach(function(file) {

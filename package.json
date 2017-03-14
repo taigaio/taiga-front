@@ -109,6 +109,7 @@
     "angular-translate-interpolation-messageformat": "2.10.0",
     "angular-translate-loader-partial": "2.10.0",
     "angular-translate-loader-static-files": "2.10.0",
+    "autolinker": "^1.4.2",
     "awesomplete": "^1.0.0",
     "bluebird": "^3.4.6",
     "bourbon": "git+https://github.com/thoughtbot/bourbon.git",

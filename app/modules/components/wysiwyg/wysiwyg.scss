@@ -176,6 +176,13 @@ tg-wysiwyg {
     }
     .tools {
         padding-left: 1rem;
+        &:not(.visible) {
+            opacity: 0;
+            pointer-events: none;
+            a {
+                cursor: default;
+            }
+        }
         a {
             display: block;
             margin-bottom: .5rem;
@@ -212,6 +219,9 @@ tg-wysiwyg {
     }
     .read-mode {
         cursor: pointer;
+    }
+    .medium {
+        border: 1px solid transparent;
     }
     .edit-mode {
         .markdown,
