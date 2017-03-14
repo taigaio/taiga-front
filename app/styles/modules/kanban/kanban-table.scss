@@ -63,11 +63,11 @@ $column-padding: .5rem 1rem;
     flex-basis: 2.4rem;
     min-height: 2.4rem;
     position: relative;
-    width: 100%;
     .kanban-table-inner {
         display: flex;
         overflow: hidden;
         position: absolute;
+        width: 100%;
     }
     .options {
         display: flex;
