@@ -59,6 +59,7 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
     constructor: (@scope, @rootscope, @repo, @model, @confirm, @rs, @params, @q, @location,
                   @filter, @log, @appMetaService, @navUrls, @analytics, @translate, @errorHandlingService, @projectService) ->
         @scope.$on("wiki:links:move", @.moveLink)
+        @scope.$on("wikipage:add", @.loadWiki)
         @scope.projectSlug = @params.pslug
         @scope.wikiSlug = @params.slug
         @scope.wikiTitle = @scope.wikiSlug
@@ -97,7 +98,7 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         @scope.$emit('project:loaded', project)
         return project
 
-    loadWiki: ->
+    loadWiki: =>
         promise = @rs.wiki.getBySlug(@scope.projectId, @params.slug)
         promise.then (wiki) =>
             @scope.wiki = wiki
@@ -227,6 +228,7 @@ $qqueue, $repo, $analytics, wikiHistoryService) ->
             onSuccess = (wikiPage) ->
                 if not $scope.item.id?
                     $analytics.trackEvent("wikipage", "create", "create wiki page", 1)
+                    $scope.$emit("wikipage:add")
 
                 wikiHistoryService.loadHistoryEntries()
                 $confirm.notify("success")
