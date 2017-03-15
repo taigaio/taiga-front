@@ -653,7 +653,12 @@ BacklogDirective = ($repo, $rootscope, $translate, $rs) ->
             # Update the total of points
             sprint.total_points += totalExtraPoints
 
-            $rs.userstories.bulkUpdateMilestone($scope.project.id, $scope.sprints[0].id, selectedUss).then =>
+            data = _.map selectedUss, (us) ->
+                return {
+                    us_id: us.id
+                    order: us.sprint_order
+                }
+            $rs.userstories.bulkUpdateMilestone($scope.project.id, $scope.sprints[0].id, data).then =>
                 $ctrl.loadSprints()
                 $ctrl.loadProjectStats()
                 $ctrl.toggleVelocityForecasting()
