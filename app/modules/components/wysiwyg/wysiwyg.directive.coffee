@@ -76,6 +76,8 @@ Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoad
         refreshCodeBlocks(elm)
 
     refreshCodeBlocks = (mediumInstance) ->
+        return if !mediumInstance
+
         # clean empty <p> content editable adds it when range.extractContents has been execute it
         for mainChildren in mediumInstance.elements[0].children
             if mainChildren && mainChildren.tagName.toLowerCase() == 'p' && !mainChildren.innerHTML.trim().length
@@ -493,6 +495,7 @@ Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoad
                 $scope.$applyAsync () ->
                     if !$scope.editMode
                         setEditMode(true)
+                        refreshCodeBlocks(mediumInstance)
 
             mediumInstance.subscribe 'editableDrop', (event) ->
                 $scope.onUploadFile({files: event.dataTransfer.files, cb: uploadEnd})
