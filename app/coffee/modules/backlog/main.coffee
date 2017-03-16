@@ -479,6 +479,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
         # refresh order
         @scope.userstories = _.sortBy @scope.userstories, (it) => @.backlogOrder[it.id]
+        @scope.visibleUserStories = _.map @scope.userstories, (it) -> return it.ref
 
         for sprint in @scope.sprints
             sprint.user_stories = _.sortBy sprint.user_stories, (it) => @.milestonesOrder[sprint.id][it.id]
