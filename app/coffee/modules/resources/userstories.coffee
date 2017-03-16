@@ -102,6 +102,11 @@ resourceProvider = ($repo, $http, $urls, $storage, $q) ->
         params = {project_id: projectId, bulk_stories: data}
         return $http.post(url, params)
 
+    service.bulkUpdateMilestone = (projectId, milestoneId, data) ->
+        url = $urls.resolve("bulk-update-us-milestone")
+        params = {project_id: projectId, milestone_id: milestoneId, bulk_stories: data}
+        return $http.post(url, params)
+
     service.bulkUpdateKanbanOrder = (projectId, data) ->
         url = $urls.resolve("bulk-update-us-kanban-order")
         params = {project_id: projectId, bulk_stories: data}
@@ -111,7 +116,7 @@ resourceProvider = ($repo, $http, $urls, $storage, $q) ->
         url = $urls.resolve("bulk-update-us-milestone")
         data = _.map data, (us) ->
             return {
-                us_id: us.id || us.us_id
+                us_id: us.id
                 order: us.order
             }
 
