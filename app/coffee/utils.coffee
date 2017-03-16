@@ -259,7 +259,10 @@ getMatches = (string, regex, index) ->
     match = null
 
     while match = regex.exec(string)
-        matches.push(match[index])
+        if index == -1
+            matches.push(match)
+        else
+            matches.push(match[index])
 
     return matches
 

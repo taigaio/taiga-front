@@ -70,6 +70,15 @@ class WysiwygService
 
         return text
 
+    pipeLinks: (text) ->
+        return text.replace /\[\[(.*?)\]\]/g, (match, p1, offset, str) ->
+            linkParams = p1.split('|')
+
+            link = linkParams[0]
+            title = linkParams[1] || linkParams[0]
+
+            return '[' + title + '](' + link  + ')'
+
     replaceUrls: (html) ->
         el = document.createElement( 'html' )
         el.innerHTML = html
@@ -146,7 +155,9 @@ class WysiwygService
         options = {
             breaks: true
         }
+
         text = @.replaceEmojiNameByImgs(text)
+        text = @.pipeLinks(text)
 
         md = window.markdownit({
             breaks: true
