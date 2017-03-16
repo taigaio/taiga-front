@@ -150,7 +150,7 @@ module.directive("tgCustomAttributesValues", ["$tgTemplate", "$tgStorage", "$tra
                                               CustomAttributesValuesDirective])
 
 
-CustomAttributeValueDirective = ($template, $selectedText, $compile, $translate, datePickerConfigService) ->
+CustomAttributeValueDirective = ($template, $selectedText, $compile, $translate, datePickerConfigService, wysiwygService) ->
     template = $template.get("custom-attributes/custom-attribute-value.html", true)
     templateEdit = $template.get("custom-attributes/custom-attribute-value-edit.html", true)
 
@@ -173,9 +173,13 @@ CustomAttributeValueDirective = ($template, $selectedText, $compile, $translate,
                 type: attributeValue.type
             }
 
+            scope = $scope.$new()
+            scope.attributeHtml = wysiwygService.getHTML(value)
+
             if editable and (edit or not value)
                 html = templateEdit(ctx)
-                html = $compile(html)($scope)
+
+                html = $compile(html)(scope)
                 $el.html(html)
 
                 if attributeValue.type == DATE_TYPE
@@ -190,7 +194,7 @@ CustomAttributeValueDirective = ($template, $selectedText, $compile, $translate,
                     $el.picker = new Pikaday(datePickerConfig)
             else
                 html = template(ctx)
-                html = $compile(html)($scope)
+                html = $compile(html)(scope)
                 $el.html(html)
 
         isEditable = ->
@@ -206,6 +210,8 @@ CustomAttributeValueDirective = ($template, $selectedText, $compile, $translate,
 
         $scope.cancelCustomRichText= () =>
             render(attributeValue, false)
+
+            return null
 
         submit = debounce 2000, (event) =>
             event.preventDefault()
@@ -270,4 +276,4 @@ CustomAttributeValueDirective = ($template, $selectedText, $compile, $translate,
     }
 
 module.directive("tgCustomAttributeValue", ["$tgTemplate", "$selectedText", "$compile", "$translate",
-                                            "tgDatePickerConfigService", CustomAttributeValueDirective])
+                                            "tgDatePickerConfigService", "tgWysiwygService", CustomAttributeValueDirective])
