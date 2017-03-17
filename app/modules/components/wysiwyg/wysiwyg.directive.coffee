@@ -98,7 +98,7 @@ Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoad
                 pre.nextElementSibling.appendChild(document.createElement('br'))
 
             # add p after every pre
-            else if !pre.nextElementSibling || pre.nextElementSibling.nodeName.toLowerCase() != 'p'
+            else if !pre.nextElementSibling || ['p', 'ul', 'h1', 'h2', 'h3'].indexOf(pre.nextElementSibling.nodeName.toLowerCase()) == -1
                 p = document.createElement('p')
                 p.appendChild(document.createElement('br'))
 
@@ -221,7 +221,9 @@ Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoad
             html = wysiwygService.getHTML(markdown)
             editorMedium.html(html)
             wysiwygCodeHightlighterService.addHightlighter(mediumInstance.elements[0])
-            refreshCodeBlocks(mediumInstance)
+
+            if $scope.editMode
+                refreshCodeBlocks(mediumInstance)
 
         $scope.saveSnippet = (lan, code) ->
             $scope.codeEditorVisible = false
@@ -268,8 +270,7 @@ Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoad
             if $scope.mode == 'html'
                 updateMarkdownWithCurrentHtml()
 
-            html = wysiwygService.getHTML($scope.markdown)
-            editorMedium.html(html)
+            setHtmlMedium($scope.markdown)
 
             return if $scope.required && !$scope.markdown.length
 
