@@ -62,7 +62,6 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         @scope.$on("wikipage:add", @.loadWiki)
         @scope.projectSlug = @params.pslug
         @scope.wikiSlug = @params.slug
-        @scope.wikiTitle = @scope.wikiSlug
         @scope.sectionName = "Wiki"
         @scope.linksVisible = false
 
@@ -76,7 +75,7 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
 
     _setMeta: ->
         title =  @translate.instant("WIKI.PAGE_TITLE", {
-            wikiPageName: @scope.wikiTitle
+            wikiPageName: @scope.wikiSlug
             projectName: @scope.project.name
         })
         description =  @translate.instant("WIKI.PAGE_DESCRIPTION", {
@@ -130,7 +129,6 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
                 })
 
             selectedWikiLink = _.find(wikiLinks, {href: @scope.wikiSlug})
-            @scope.wikiTitle = selectedWikiLink.title if selectedWikiLink?
 
     loadInitialData: ->
         project = @.loadProject()
@@ -145,7 +143,7 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
 
     delete: ->
         title = @translate.instant("WIKI.DELETE_LIGHTBOX_TITLE")
-        message = @scope.wikiTitle
+        message = @scope.wikiSlug
 
         @confirm.askOnDelete(title, message).then (askResponse) =>
             onSuccess = =>
