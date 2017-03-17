@@ -51,7 +51,6 @@ class WikiPagesListController extends mixOf(taiga.Controller, taiga.PageMixin)
                   @navUrls, @errorHandlingService, @projectService) ->
         @scope.projectSlug = @params.pslug
         @scope.wikiSlug = @params.slug
-        @scope.wikiTitle = @scope.wikiSlug
         @scope.sectionName = "Wiki"
         @scope.linksVisible = false
 
@@ -87,7 +86,6 @@ class WikiPagesListController extends mixOf(taiga.Controller, taiga.PageMixin)
                 })
 
             selectedWikiLink = _.find(wikiLinks, {href: @scope.wikiSlug})
-            @scope.wikiTitle = selectedWikiLink.title if selectedWikiLink?
 
     loadInitialData: ->
         project = @.loadProject()
