@@ -28,9 +28,10 @@ class ImportProjectController
         '$routeParams',
         '$tgNavUrls',
         '$tgConfig',
+        '$tgConfirm',
     ]
 
-    constructor: (@trelloService, @jiraService, @githubService, @asanaService, @location, @window, @routeParams, @tgNavUrls, @config) ->
+    constructor: (@trelloService, @jiraService, @githubService, @asanaService, @location, @window, @routeParams, @tgNavUrls, @config, @confirm) ->
 
     start: ->
         @.token = null
@@ -88,7 +89,9 @@ class ImportProjectController
                 @window.open(url, "_self")
         else if from == "jira"
             @jiraService.getAuthUrl(@.jiraUrl).then (url) =>
-                @window.open(url, "_self")
+                @window.open url, "_self"
+            , (err) =>
+                @confirm.notify('error', err)
         else if from == "github"
             callbackUri = @location.absUrl() + "/github"
             @githubService.getAuthUrl(callbackUri).then (url) =>

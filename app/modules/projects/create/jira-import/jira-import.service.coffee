@@ -41,10 +41,12 @@ class JiraImportService extends taiga.Service
             @resources.jiraImporter.importProject(@.url, @.token, name, description, projectId, userBindings, keepExternalReference, isPrivate, projectType, importerType)
 
     getAuthUrl: (url) ->
-        return new Promise (resolve) =>
+        return new Promise (resolve, reject) =>
             @resources.jiraImporter.getAuthUrl(url).then (response) =>
                 @.authUrl = response.data.url
                 resolve(@.authUrl)
+            , (err) =>
+                reject(err.data._error_message)
 
     authorize: () ->
         return new Promise (resolve, reject) =>
