@@ -73,11 +73,11 @@ describe "ColorSelector", ->
         colorSelectorCtrl.onSelectDropdownColor = sinon.stub()
 
         event = {which: 13, preventDefault: sinon.stub()}
-        color = "#fabada"
+        customColor = "#fabada"
 
-        colorSelectorCtrl.color = color
+        colorSelectorCtrl.customColor = customColor
 
         colorSelectorCtrl.onKeyDown(event)
         expect(event.preventDefault).have.been.called
         expect(colorSelectorCtrl.onSelectDropdownColor).have.been.called
-        expect(colorSelectorCtrl.onSelectDropdownColor).have.been.calledWith(color)
+        expect(colorSelectorCtrl.onSelectDropdownColor).have.been.calledWith(customColor)
