@@ -18,6 +18,9 @@
             .import-project-name-wrapper
                 span.import-project-name Jira
                 p.import-project-description(translate="PROJECT.IMPORT.JIRA.SELECTOR")
+                a(target="_blank",
+                  href="https://tree.taiga.io/support/importers/jira-importer/"
+                  translate="PROJECT.IMPORT.JIRA.HOW_TO_CONFIGURE_IT")
                 fieldset.import-project-url(ng-if="vm.unfoldedOptions == 'jira'")
                     label(
                         for="jira-host"
