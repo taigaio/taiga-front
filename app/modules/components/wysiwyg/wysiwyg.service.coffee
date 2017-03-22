@@ -145,8 +145,43 @@ class WysiwygService
 
         return markdown
 
+    parseMentionMatches: (text) ->
+        serviceName = 'twitter'
+        tagBuilder = this.tagBuilder
+        matches = []
+
+        regex = /@[^\s]{1,50}[^.\s]/g
+        m = regex.exec(text)
+
+        while m != null
+            offset = m.index
+            prevChar = text.charAt( offset - 1 )
+
+            if m.index == regex.lastIndex
+                regex.lastIndex++
+
+            m.forEach (match, groupIndex) ->
+                matches.push( new Autolinker.match.Mention({
+                    tagBuilder    : tagBuilder,
+                    matchedText   : match,
+                    offset        : offset,
+                    serviceName   : serviceName,
+                    mention       : match.slice(1)
+                }))
+
+            m = regex.exec(text)
+
+        return matches
+
     autoLinkHTML: (html) ->
-        return Autolinker.link(html, {
+        # override Autolink parser
+
+        matchRegexStr = String(Autolinker.matcher.Mention.prototype.matcherRegexes.twitter)
+        if matchRegexStr.indexOf('.') == -1
+            matchRegexStr = '@[^\s]{1,50}[^.\s]'
+            #Autolinker.matcher.Mention.prototype.matcherRegexes.twitter = new RegExp(matchRegexStr, 'g')      
+
+        autolinker = new Autolinker({
             mention: 'twitter',
             hashtag: 'twitter',
             replaceFn: (match) =>
@@ -166,6 +201,10 @@ class WysiwygService
                     return '<a class="autolink" href="' + url + '">#' + match.getHashtag() + '</a>'
         })
 
+        Autolinker.matcher.Mention.prototype.parseMatches = @.parseMentionMatches.bind(autolinker)
+
+        return autolinker.link(html);
+
     getHTML: (text) ->
         return "" if !text || !text.length
 
@@ -181,7 +220,6 @@ class WysiwygService
         })
 
         md.use(window.markdownitLazyHeaders)
-
         result = md.render(text)
         result = @.searchWikiLinks(result)
 
