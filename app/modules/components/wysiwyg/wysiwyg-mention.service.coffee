@@ -46,6 +46,9 @@ class WysiwygMentionService
             for prop in searchProps
                 if taiga.slugify(user[prop]).indexOf(term) >= 0
                     return true
+                else if user[prop].indexOf(term) >= 0
+                    return true
+
             return false
 
          users = users.slice(0, 10).map (it) =>
