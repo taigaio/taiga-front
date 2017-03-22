@@ -93,6 +93,23 @@ class WysiwygService
 
         return el.innerHTML
 
+    searchWikiLinks: (html) ->
+        el = document.createElement( 'html' )
+        el.innerHTML = html
+
+        links = el.querySelectorAll('a')
+
+        for link in links
+            if link.getAttribute('href').indexOf('/') == -1
+                url = @navurls.resolve('project-wiki-page', {
+                    project: @projectService.project.get('slug'),
+                    slug: link.getAttribute('href')
+                })
+
+                link.setAttribute('href', url)
+
+        return el.innerHTML
+
     removeTrailingListBr: (text) ->
         return text.replace(/<li>(.*?)<br><\/li>/g, '<li>$1</li>')
 
@@ -166,6 +183,8 @@ class WysiwygService
         md.use(window.markdownitLazyHeaders)
 
         result = md.render(text)
+        result = @.searchWikiLinks(result)
+
         result = @.autoLinkHTML(result)
 
         return result
