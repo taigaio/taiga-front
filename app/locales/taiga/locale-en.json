@@ -996,7 +996,7 @@
             },
             "JIRA": {
                 "SELECTOR": "Import your Jira project and choose how to manage it",
-                "HOW_TO_CONFIGURE_IT": "(How to configure it)",
+                "HOW_TO_CONFIGURE": "(configuration help)",
                 "CHOOSE_PROJECT": "Choose project or board that you want to import",
                 "NO_PROJECTS": "It seems you have no porjects or boards in Jira",
                 "URL": "Your Jira URL",
