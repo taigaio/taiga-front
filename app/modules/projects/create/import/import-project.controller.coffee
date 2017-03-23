@@ -76,7 +76,8 @@ class ImportProjectController
             jiraOauthToken = locationSearch.oauth_token
 
             if jiraOauthToken
-                return @jiraService.authorize().then ((data) =>
+                jiraOauthVerifier = locationSearch.oauth_verifier
+                return @jiraService.authorize(jiraOauthVerifier).then ((data) =>
                     @location.search({token: data.token, url: data.url})
                 ), @.cancelCurrentImport.bind(this)
             else

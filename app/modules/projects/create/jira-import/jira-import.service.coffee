@@ -48,9 +48,9 @@ class JiraImportService extends taiga.Service
             , (err) =>
                 reject(err.data._error_message)
 
-    authorize: () ->
+    authorize: (oauth_verifier) ->
         return new Promise (resolve, reject) =>
-            @resources.jiraImporter.authorize().then ((response) =>
+            @resources.jiraImporter.authorize(oauth_verifier).then ((response) =>
                 @.token = response.data.token
                 @.url = response.data.url
                 resolve(response.data)
