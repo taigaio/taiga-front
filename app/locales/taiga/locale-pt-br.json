@@ -9,7 +9,7 @@
         "SAVE": "Salvar",
         "CANCEL": "Cancelar",
         "ACCEPT": "Aceitar",
-        "DELETE": "Apagar",
+        "DELETE": "Excluir",
         "UNLINK": "Separar",
         "CREATE": "Criar",
         "ADD": "Adicionar",
@@ -37,7 +37,7 @@
         "LOGOUT": "Sair",
         "EXTERNAL_USER": "um usuário externo",
         "GENERIC_ERROR": "Um Oompa Loompas disse {{error}}.",
-        "IOCAINE_TEXT": "This member is feeling a bit overwhelmed by this task. Will become immune to the iocaine poison over time with your help. For now, may need a hug.",
+        "IOCAINE_TEXT": "Este membro está se sentindo um pouco oprimido por esta tarefa. Ficará imune ao veneno de iocaína ao longo do tempo com sua ajuda. Por agora, pode precisar de um abraço.",
         "CLIENT_REQUIREMENT": "Requisito de cliente é um novo requisito que não foi anteriormente previsto e que necessita se tornar uma parte do projeto.",
         "TEAM_REQUIREMENT": "Requisito de time é um requisito que deve existir no projeto, mas que não deve ter nenhum custo para o cliente.",
         "OWNER": "Dono do Projeto",
@@ -122,7 +122,7 @@
         "EPIC": "Épico",
         "TAGS": {
             "PLACEHOLDER": "Inserir tag",
-            "DELETE": "Apagar tag",
+            "DELETE": "Excluir tag",
             "ADD": "Adicionar tag"
         },
         "DESCRIPTION": {
@@ -155,7 +155,7 @@
         "ASSIGNED_TO": {
             "NOT_ASSIGNED": "Não assinado",
             "ASSIGN": "Atribuir",
-            "DELETE_ASSIGNMENT": "Apagar atribuição",
+            "DELETE_ASSIGNMENT": "Excluir atribuição",
             "REMOVE_ASSIGNED": "Remover assinatura",
             "TOO_MANY": "...muitos usuários, continue filtrando",
             "CONFIRM_UNASSIGNED": "Você tem certeza que deseja deixar sem ",
@@ -170,8 +170,8 @@
             "WATCHERS": "Observadores",
             "ADD": "Adicionar observadores",
             "TITLE_ADD": "Adicionar um membro do projeto para a lista de observadores",
-            "DELETE": "Apagar observador",
-            "TITLE_LIGHTBOX_DELETE_WARTCHER": "Apagar observador..."
+            "DELETE": "Excluir observador",
+            "TITLE_LIGHTBOX_DELETE_WARTCHER": "Excluir observador..."
         },
         "WATCH_BUTTON": {
             "WATCH": "Observar",
@@ -189,8 +189,8 @@
             "CUSTOM_FIELDS": "Campos Personalizados",
             "SAVE": "Salvar Campo Personalizado",
             "EDIT": "Editar Campo Personalizado",
-            "DELETE": "Apagar atributo personalizado",
-            "CONFIRM_DELETE": "Lembre-se que todos os valores neste campo customizado serão deletados.\nVocê tem certeza que quer continuar?"
+            "DELETE": "Excluir atributo personalizado",
+            "CONFIRM_DELETE": "Lembre-se que todos os valores neste campo customizado serão excluídos.\nVocê tem certeza que quer continuar?"
         },
         "FILTERS": {
             "INPUT_PLACEHOLDER": "Assunto ou referência",
@@ -213,6 +213,10 @@
             }
         },
         "WYSIWYG": {
+            "CODE_SNIPPET": "Code Snippet",
+            "DB_CLICK": "double click to edit",
+            "SELECT_LANGUAGE_PLACEHOLDER": "Select Language",
+            "SELECT_LANGUAGE_REMOVE_FORMATING": "Remove formatting",
             "OUTDATED": "Another person has made changes while you were editing. Check the new version on the activiy tab before you save your changes.",
             "MARKDOWN_HELP": "Ajuda de sintaxe markdown"
         },
@@ -223,14 +227,14 @@
                 "ADD_EPICS": "Adicionar épicos",
                 "MODIFY_EPICS": "Modificar épicos",
                 "COMMENT_EPICS": "Comentar épicos",
-                "DELETE_EPICS": "Deletar épicos"
+                "DELETE_EPICS": "Excluir épicos"
             },
             "SPRINTS": {
                 "NAME": "Sprints",
                 "VIEW_SPRINTS": "Ver sprints",
                 "ADD_SPRINTS": "Adicionar sprints",
                 "MODIFY_SPRINTS": "Modificar sprints",
-                "DELETE_SPRINTS": "Apagar sprints"
+                "DELETE_SPRINTS": "Excluir sprints"
             },
             "USER_STORIES": {
                 "NAME": "Histórias de Usuários",
@@ -238,7 +242,7 @@
                 "ADD_USER_STORIES": "Adicionar histórias de usuários",
                 "MODIFY_USER_STORIES": "Modificar histórias de usuários",
                 "COMMENT_USER_STORIES": "Comentar histórias de usuário",
-                "DELETE_USER_STORIES": "Apagar histórias de usuários"
+                "DELETE_USER_STORIES": "Excluir histórias de usuários"
             },
             "TASKS": {
                 "NAME": "Tarefas",
@@ -246,7 +250,7 @@
                 "ADD_TASKS": "Adicionar uma nova Tarefa",
                 "MODIFY_TASKS": "Modificar tarefa",
                 "COMMENT_TASKS": "Comentar tarefas",
-                "DELETE_TASKS": "Apagar tarefas"
+                "DELETE_TASKS": "Excluir tarefas"
             },
             "ISSUES": {
                 "NAME": "Problemas",
@@ -254,17 +258,17 @@
                 "ADD_ISSUES": "Adicionar problemas",
                 "MODIFY_ISSUES": "Modificar problemas",
                 "COMMENT_ISSUES": "Comentar problemas",
-                "DELETE_ISSUES": "Apagar problemas"
+                "DELETE_ISSUES": "Excluir problemas"
             },
             "WIKI": {
                 "NAME": "Wiki",
                 "VIEW_WIKI_PAGES": "Exibir páginas da wiki",
                 "ADD_WIKI_PAGES": "Adicionar páginas wiki",
                 "MODIFY_WIKI_PAGES": "Modificar páginas wiki",
-                "DELETE_WIKI_PAGES": "Apagar páginas wiki",
+                "DELETE_WIKI_PAGES": "Excluir páginas wiki",
                 "VIEW_WIKI_LINKS": "Exibir links da wiki",
                 "ADD_WIKI_LINKS": "Adicionar links da wiki",
-                "DELETE_WIKI_LINKS": "Apagar links da wiki"
+                "DELETE_WIKI_LINKS": "Excluir links da wiki"
             }
         }
     },
@@ -285,7 +289,8 @@
         "TITLE_LINK_FORGOT_PASSWORD": "Esqueceu sua senha?",
         "ACTION_ENTER": "Entre",
         "ACTION_SIGN_IN": "Entrar",
-        "PLACEHOLDER_AUTH_PASSWORD": "Senha (case sensitive)"
+        "PLACEHOLDER_AUTH_PASSWORD": "Senha (case sensitive)",
+        "ALT_LOGIN": "Or login with"
     },
     "LOGIN_FORM": {
         "ERROR_AUTH_INCORRECT": "De acordo com nossos Oompa Loompas, seu nome de usuario/email ou senha estão incorretos.",
@@ -413,9 +418,9 @@
         "MAX_UPLOAD_SIZE": "Tamanho máximo de upload é  {{maxFileSize}}",
         "DATE": "DD MMM YYYY [at] hh:mm",
         "ERROR_UPLOAD_ATTACHMENT": "Não fomos capazes de carregar '{{fileName}}'.\n{{errorMessage}}",
-        "TITLE_LIGHTBOX_DELETE_ATTACHMENT": "Apagar anexo...",
+        "TITLE_LIGHTBOX_DELETE_ATTACHMENT": "Excluir anexo...",
         "MSG_LIGHTBOX_DELETE_ATTACHMENT": "o anexo '{{fileName}}'",
-        "ERROR_DELETE_ATTACHMENT": "Não fomos capazes de apagar: {{errorMessage}}",
+        "ERROR_DELETE_ATTACHMENT": "Não fomos capazes de excluir: {{errorMessage}}",
         "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) é muito pesado para nossos Oompa Loompas, tente algo menor que ({{maxFileSize}})"
     },
     "PAGINATION": {
@@ -425,8 +430,8 @@
     "ADMIN": {
         "COMMON": {
             "TITLE_ACTION_EDIT_VALUE": "Editar valor",
-            "TITLE_ACTION_DELETE_VALUE": "Apagar valor",
-            "TITLE_ACTION_DELETE_TAG": "Apagar tag"
+            "TITLE_ACTION_DELETE_VALUE": "Excluir valor",
+            "TITLE_ACTION_DELETE_TAG": "Excluir tag"
         },
         "HELP": "Você precisa de ajuda? Verifique nossa pagina de suporte!",
         "PROJECT_DEFAULT_VALUES": {
@@ -469,7 +474,7 @@
             "ISSUES": "Problemas",
             "ISSUES_DESCRIPTION": "Acompanhe os bugs, problemas e melhorias relacionados ao seu projeto. Não perca nada!",
             "WIKI": "Wiki",
-            "WIKI_DESCRIPTION": "Adicione, modifique ou apague conteúdo em colaboração com outras pessoas. Este é o local certo pra documentação do seu projeto.",
+            "WIKI_DESCRIPTION": "Adicione, modifique ou exclua conteúdo em colaboração com outras pessoas. Este é o local certo pra documentação do seu projeto.",
             "MEETUP": "Reunião",
             "MEETUP_DESCRIPTION": "Selecione seu sistema de videoconferência.",
             "SELECT_VIDEOCONFERENCE": "Selecione um sistema de videoconferência",
@@ -489,11 +494,11 @@
             "RECRUITING": "Este projeto esta a procura de colaboradores?",
             "RECRUITING_MESSAGE": "O que você está procurando?",
             "RECRUITING_PLACEHOLDER": "Defina o perfil que você procura?",
-            "FEEDBACK": "Receive feedback from Taiga users?",
+            "FEEDBACK": "Receber notificações de usuários Taiga?",
             "PUBLIC_PROJECT": "Projeto Publico",
             "PRIVATE_PROJECT": "Projeto Privado",
             "PRIVATE_OR_PUBLIC": "Qual a diferença entre projeto público e privado?",
-            "DELETE": "Apagar este projeto",
+            "DELETE": "Excluir este projeto",
             "CHANGE_LOGO": "Alterar logo",
             "ACTION_USE_DEFAULT_LOGO": "Usar imagem padrão",
             "MAX_PRIVATE_PROJECTS": "Você atingiu o número máximo de projetos privados permitidos para seu plano atual.",
@@ -541,7 +546,7 @@
             "ISSUE_DESCRIPTION": "Campos personalizados dos problemas",
             "ISSUE_ADD": "Adicionar um campo personalizado em problemas ",
             "FIELD_TYPE_TEXT": "Texto",
-            "FIELD_TYPE_RICHTEXT": "Rich text",
+            "FIELD_TYPE_RICHTEXT": "Texto rico",
             "FIELD_TYPE_MULTI": "Multi-linha",
             "FIELD_TYPE_DATE": "Data",
             "FIELD_TYPE_URL": "Url"
@@ -549,7 +554,7 @@
         "PROJECT_VALUES": {
             "PAGE_TITLE": "{{sectionName}} - Valores do projeto - {{projectName}}",
             "REPLACEMENT": "Todos os itens com este valor serão modificados para",
-            "ERROR_DELETE_ALL": "Você não pode apagar todos os valores."
+            "ERROR_DELETE_ALL": "Você não pode excluir todos os valores."
         },
         "PROJECT_VALUES_POINTS": {
             "TITLE": "Pontos",
@@ -570,7 +575,7 @@
             "ACTION_ADD": "Adicionar nova gravidade"
         },
         "PROJECT_VALUES_STATUS": {
-            "TITLE": "Statuses",
+            "TITLE": "Status",
             "SUBTITLE": "Especifique os status pelos quais suas histórias de usuários, tarefas e problemas passarão",
             "EPIC_TITLE": "Estados do Épico",
             "US_TITLE": "Status de história de usuário",
@@ -601,10 +606,10 @@
             "DISABLE_COMPUTABLE_ALERT_TITLE": "Você tem certeza que quer desativar esta permissão de estimativas?",
             "DISABLE_COMPUTABLE_ALERT_SUBTITLE": "Se você desativar a permissão de estimativas para esta regra  {{roleName}} todas estimativas feitas anteriormente por esta regra serão removidas.",
             "COUNT_MEMBERS": "{{ role.members_count }} membros com a mesma função",
-            "TITLE_DELETE_ROLE": "Apagar Função",
+            "TITLE_DELETE_ROLE": "Excluir Função",
             "REPLACEMENT_ROLE": "Todos os usuários com essa função serão movidos para",
             "WARNING_DELETE_ROLE": "Cuidado! Todas as estimativas de papéis serão removidas",
-            "ERROR_DELETE_ALL": "Você não pode apagar todos os valores",
+            "ERROR_DELETE_ALL": "Você não pode excluir todos os valores",
             "EXTERNAL_USER": "Usuário externo"
         },
         "THIRD_PARTIES": {
@@ -642,7 +647,7 @@
             "SHOW_HISTORY": "(Mostrar história)",
             "TEST": "Testar Webhook",
             "EDIT": "Editar Webhook",
-            "DELETE": "Apagar Webhook",
+            "DELETE": "Excluir Webhook",
             "REQUEST": "Solicitação",
             "RESEND_REQUEST": "Reenviar pedido",
             "HEADERS": "Cabeçalhos",
@@ -659,7 +664,7 @@
             "PAGE_TITLE": "{{sectionName}} - Atributos personalizados - {{projectName}}",
             "ADD": "Adicionar campos personalizados",
             "EDIT": "Editar Campo Personalizado",
-            "DELETE": "Apagar campo personalizado",
+            "DELETE": "Excluir campo personalizado",
             "SAVE_TITLE": "Salvar Campo Personalizado",
             "CANCEL_TITLE": "Cancelar criação",
             "SET_FIELD_NAME": "Definir nome do  seu campo personalizados",
@@ -675,11 +680,11 @@
             "COLUMN_STATUS": "Status",
             "STATUS_ACTIVE": "Ativo",
             "STATUS_PENDING": "Pendente",
-            "DELETE_MEMBER": "Apagar membro",
+            "DELETE_MEMBER": "Excluir membro",
             "RESEND": "Reenviar",
             "SUCCESS_SEND_INVITATION": "Enviamos novamente um convite para '{{email}}'.",
-            "SUCCESS_DELETE": "Nós apagamos {{message}}.",
-            "ERROR_DELETE": "Nós não fomos capaz de apagar {{message}}.",
+            "SUCCESS_DELETE": "Nós excluimos {{message}}.",
+            "ERROR_DELETE": "Nós não fomos capaz de excluir {{message}}.",
             "DEFAULT_DELETE_MESSAGE": "o convite para {{email}}"
         },
         "DEFAULT_VALUES": {
@@ -858,22 +863,22 @@
             }
         },
         "CONTACT_BUTTON": {
-            "CONTACT_TITLE": "Contact the project team",
-            "CONTACT_BUTTON": "Contact the project"
+            "CONTACT_TITLE": "Contatar o time do projeto",
+            "CONTACT_BUTTON": "Contatar o projeto"
         },
         "CREATE": {
             "TITLE": "Criar Projeto",
-            "CHOOSE_TEMPLATE": "Which template fits your project better?",
+            "CHOOSE_TEMPLATE": "Qual modelo se encaixa melhor no seu projeto?",
             "TEMPLATE_SCRUM": "Scrum",
-            "TEMPLATE_SCRUM_DESC": "Prioritize and solve your tasks in short time cycles.",
+            "TEMPLATE_SCRUM_DESC": "Priorize e resolva suas tarefas em curtos ciclos de tempo.",
             "TEMPLATE_SCRUM_LONGDESC": "Scrum is an iterative and incremental agile software development methodology for managing product development.\nThe product backlog is what will ultimately be delivered, ordered into the sequence in which it should be delivered. Product Backlogs are broken into manageable, executable chunks named sprints. Every certain amount of time the team initiates a new sprint and commits to deliver a certain number of user stories from the backlog, in accordance with their skills, abilities and resources. The project advances as the backlog becomes depleted.",
             "TEMPLATE_KANBAN": "Kanban",
-            "TEMPLATE_KANBAN_DESC": "Keep a constant workflow on independent tasks",
+            "TEMPLATE_KANBAN_DESC": "Mantenha um fluxo de trabalho constante em tarefas independentes",
             "TEMPLATE_KANBAN_LONGDESC": "The Kanban methodology is used to divide project development (any sort of project) into stages.\nA kanban card is like an index card or post-it note that details every task (or user story) in a project that needs to be completed. The Kanban board is used to move each card from one state of completion to the next and in so doing, helps track progress.",
             "DUPLICATE": "Duplicate project",
-            "DUPLICATE_DESC": "Start clean and keep your configuration",
+            "DUPLICATE_DESC": "Inicie limpo e mantenha suas configurações",
             "IMPORT": "Importar projeto",
-            "IMPORT_DESC": "Import your project from multiple platforms into Taiga",
+            "IMPORT_DESC": "Importar seu projeto de múltiplas plataformas para o Taiga",
             "INVITE": "Invite to the project",
             "SOLO_PROJECT": "You'll be alone in this project",
             "INVITE_LATER": "(You'll be able to invite more members later)",
@@ -884,18 +889,18 @@
             "PRIVATE_PROJECT": "Projeto Privado"
         },
         "COMMON": {
-            "DETAILS": "New project details",
-            "PROJECT_TITLE": "Project Name",
-            "PROJECT_DESCRIPTION": "Project Description"
+            "DETAILS": "Detalhes do novo projeto",
+            "PROJECT_TITLE": "Nome do Projeto",
+            "PROJECT_DESCRIPTION": "Descrição do Projeto"
         },
         "DUPLICATE": {
-            "TITLE": "Duplicate Project",
-            "DESCRIPTION": "Start clean and keep your configuration",
-            "SELECT_PLACEHOLDER": "Choose an existing project to duplicate"
+            "TITLE": "Duplicar Projeto",
+            "DESCRIPTION": "Inicie limpo e mantenha suas configurações",
+            "SELECT_PLACEHOLDER": "Escolha um projeto existente para duplicar"
         },
         "IMPORT": {
-            "TITLE": "Import Project",
-            "DESCRIPTION": "Import your project from multiple platforms into Taiga",
+            "TITLE": "Importar Projeto",
+            "DESCRIPTION": "Importar seu projeto de múltiplas plataformas para o Taiga",
             "ASYNC_IN_PROGRESS_TITLE": "Nossos Oompa Loompas estão importando seu projeto",
             "ASYNC_IN_PROGRESS_MESSAGE": "Este processo pode levar alguns minutos <br/> Enviaremos um email a você assim que estiver pronto",
             "UPLOAD_IN_PROGRESS_MESSAGE": "Enviado {{uploadedSize}} de {{totalSize}}",
@@ -990,6 +995,7 @@
             },
             "JIRA": {
                 "SELECTOR": "Import your Jira project and choose how to manage it",
+                "HOW_TO_CONFIGURE": "(configuration help)",
                 "CHOOSE_PROJECT": "Choose project or board that you want to import",
                 "NO_PROJECTS": "It seems you have no porjects or boards in Jira",
                 "URL": "Your Jira URL",
@@ -1006,14 +1012,14 @@
     },
     "LIGHTBOX": {
         "DELETE_ACCOUNT": {
-            "CONFIRM": "Você tem certeza que quer apagar sua conta Taiga?",
+            "CONFIRM": "Você tem certeza que quer excluir sua conta Taiga?",
             "CANCEL": "Voltar para configurações",
-            "ACCEPT": "Remover conta",
-            "BLOCK_PROJECT": "Note que todos os projetos em que você é o dono serão <strong>bloqueados</strong> depois que você apagar sua conta. Se você quer um projeto bloqueado, transfira a posse para outro membro de cada projeto antes de apagar sua conta."
+            "ACCEPT": "Excluir conta",
+            "BLOCK_PROJECT": "Note que todos os projetos em que você é o dono serão <strong>bloqueados</strong> depois que você excluir sua conta. Se você quer um projeto bloqueado, transfira a posse para outro membro de cada projeto antes de excluir sua conta."
         },
         "DELETE_PROJECT": {
-            "TITLE": "Apagar projeto",
-            "QUESTION": "Você tem certeza que quer apagar este projeto?",
+            "TITLE": "Excluir projeto",
+            "QUESTION": "Você tem certeza que quer excluir este projeto?",
             "SUBTITLE": "Todas as informações do projeto (histórias, tarefas, problemas, sprints e páginas de wiki) serão perdidas! :-(",
             "CONFIRM": "Sim, eu tenho certeza"
         },
@@ -1023,11 +1029,11 @@
         },
         "ADD_MEMBER": {
             "TITLE": "Novo Membro",
-            "PLACEHOLDER": "Filter users or write an email to invite",
+            "PLACEHOLDER": "Filtre usuários ou escreva um email para convidá-los",
             "ADD_EMAIL": "Adicione e-mail.",
-            "REMOVE": "Remove",
-            "INVITE": "Invite",
-            "CHOOSE_ROLE": "Choose a role",
+            "REMOVE": "Remover",
+            "INVITE": "Convidar",
+            "CHOOSE_ROLE": "Escolha um papel",
             "PLACEHOLDER_INVITATION_TEXT": "(Opcional) Adicione uma mensagem de texto ao convite. Diga algo animador para os novos membros ;-)",
             "HELP_TEXT": "Se os usuários já estiverem registrados no Taiga, eles serão adicionados automaticamente. Caso contrário, eles receberão um convite."
         },
@@ -1048,8 +1054,8 @@
             "PLACEHOLDER_SPRINT_NAME": "nome da sprint",
             "PLACEHOLDER_SPRINT_START": "Inicio Estimado",
             "PLACEHOLDER_SPRINT_END": "Estimativa de Termino",
-            "ACTION_DELETE_SPRINT": "Você quer apagar esta sprint?",
-            "TITLE_ACTION_DELETE_SPRINT": "apagar sprint",
+            "ACTION_DELETE_SPRINT": "Você quer excluir esta sprint?",
+            "TITLE_ACTION_DELETE_SPRINT": "excluir sprint",
             "LAST_SPRINT_NAME": "última sprint é <strong>{{lastSprint}} ;-) </strong>"
         },
         "CREATE_EDIT_TASK": {
@@ -1067,7 +1073,7 @@
             "EDIT_US": "Editar história de usuário"
         },
         "DELETE_SPRINT": {
-            "TITLE": "Apagar sprint"
+            "TITLE": "Excluir sprint"
         },
         "CREATE_MEMBER": {
             "PLACEHOLDER_INVITATION_TEXT": "(Opcional) Adicione uma mensagem de texto ao convite. Diga algo animador para os novos membros ;-)",
@@ -1082,7 +1088,7 @@
                 "BUTTON": "Mude o dono do projeto"
             },
             "OTHER_USER_OWNER": {
-                "DESC": "Infelizmnete, você não pode apagar um membro que também é o dono de um projeto. Primeiro designe um novo proprietário para o projeto.",
+                "DESC": "Infelizmente, você não pode excluir um membro que também é o dono de um projeto. Primeiro designe um novo proprietário para o projeto.",
                 "BUTTON": "Solicite a mudança do dono do projeto"
             }
         },
@@ -1092,10 +1098,10 @@
             "BUTTON": "Pedir a este membro do projeto para se tornar o novo dono do projeto"
         },
         "CONTACT_PROJECT": {
-            "TITLE": "Send an email to",
-            "WARNING": "The email will be received by the project admins",
-            "PLACEHOLDER": "Write your message",
-            "SEND": "Send"
+            "TITLE": "Enviar um e-mail para",
+            "WARNING": "O e-mail será recebido pelos administradores do projeto",
+            "PLACEHOLDER": "Escreva sua mensagem",
+            "SEND": "Enviar"
         }
     },
     "EPIC": {
@@ -1103,7 +1109,7 @@
         "PAGE_DESCRIPTION": "Estado: {{epicStatus }}. Descrição: {{epicDescription}}",
         "SECTION_NAME": "Épico",
         "TITLE_LIGHTBOX_UNLINK_RELATED_USERSTORY": "Separar história de usuário relacionada",
-        "MSG_LIGHTBOX_UNLINK_RELATED_USERSTORY": "Excluirá a ligação para a história de usuário relacionada '{{subject}}'",
+        "MSG_LIGHTBOX_UNLINK_RELATED_USERSTORY": "Excluirá a ligação para a história de usuário relacionada à '{{subject}}'",
         "ERROR_UNLINK_RELATED_USERSTORY": "Não fomos capazes de separar: {{errorMessage}}",
         "CREATE_RELATED_USERSTORIES": "Criar um relacionamento com",
         "NEW_USERSTORY": "Nova história de usuário",
@@ -1116,7 +1122,7 @@
         "NO_USERSTORIES": "Esse projeto ainda não possui Histórias de Usuário. Por favor, selecione outro projeto.",
         "FILTER_USERSTORIES": "Filtrar histórias de usuário",
         "LIGHTBOX_TITLE_BLOKING_EPIC": "Épico bloqueador",
-        "ACTION_DELETE": "Apagar épico"
+        "ACTION_DELETE": "Excluir épico"
     },
     "US": {
         "PAGE_TITLE": "{{userStorySubject}} - História de Usuário {{userStoryRef}} - {{projectName}}",
@@ -1136,7 +1142,7 @@
             "PUBLISH": "Publicar como Gig no Taiga Tribe",
             "PUBLISH_INFO": "Mais informações",
             "PUBLISH_TITLE": "Mais informações sobre como publicar na Tribo Taiga",
-            "PUBLISHED_AS_GIG": "Story published as Gig in Taiga Tribe",
+            "PUBLISHED_AS_GIG": "História publicada como Apresentação na Tribo Taiga",
             "EDIT_LINK": "Editar link",
             "CLOSE": "Fechar",
             "SYNCHRONIZE_LINK": "sincronizar com a Tribo Taiga",
@@ -1149,7 +1155,7 @@
         }
     },
     "COMMENTS": {
-        "DELETED_INFO": "Comentário apagado por {{user}}",
+        "DELETED_INFO": "Comentário excluído por {{user}}",
         "COMMENTS_COUNT": "{{comments}} comentários",
         "OLDER_FIRST": "Antigos primeiro",
         "RECENT_FIRST": "Recentes primeiro",
@@ -1157,9 +1163,9 @@
         "EDITED_COMMENT": "Editado:",
         "SHOW_HISTORY": "Ver histórico",
         "TYPE_NEW_COMMENT": "Escreva um novo comentário aqui",
-        "SHOW_DELETED": "Mostrar comentários apagados",
-        "HIDE_DELETED": "Esconder comentário apagado",
-        "DELETE": "Apagar comentário",
+        "SHOW_DELETED": "Mostrar comentários excluídos",
+        "HIDE_DELETED": "Esconder comentário excluído",
+        "DELETE": "Excluir comentário",
         "RESTORE": "Restaurar comentário",
         "HISTORY": {
             "TITLE": "Atividade"
@@ -1172,7 +1178,7 @@
         "TAGS_REMOVED": "tags removidas:",
         "US_POINTS": "{{role}} pontos",
         "NEW_ATTACHMENT": "novo anexo:",
-        "DELETED_ATTACHMENT": "anexo apagado:",
+        "DELETED_ATTACHMENT": "anexo excluído:",
         "UPDATED_ATTACHMENT": "anexo atualizado ({{filename}}):",
         "CREATED_CUSTOM_ATTRIBUTE": "atributo personalizado criado",
         "UPDATED_CUSTOM_ATTRIBUTE": "atributo personalizado atualizado",
@@ -1319,7 +1325,7 @@
         "TITLE_SELECT_STATUS": "Nome de Status",
         "OWNER_US": "Esta tarefa pertence a ",
         "TITLE_LINK_GO_OWNER": "Ir para história de usuário",
-        "TITLE_DELETE_ACTION": "Apagar Tarefa",
+        "TITLE_DELETE_ACTION": "Excluir Tarefa",
         "LIGHTBOX_TITLE_BLOKING_TASK": "Tarefa bloqueadora",
         "FIELDS": {
             "IS_IOCAINE": "É Iocaine"
@@ -1333,7 +1339,7 @@
         "SAVED": "Nossos Oompa Loompas salvaram todas as suas mudanças!",
         "CLOSE": "Fechar Notificação",
         "MAIL": "Notificações por Email",
-        "ASK_DELETE": "Você tem certeza que quer apagar?"
+        "ASK_DELETE": "Você tem certeza que quer excluir?"
     },
     "CANCEL_ACCOUNT": {
         "TITLE": "Cancelar sua conta",
@@ -1358,7 +1364,7 @@
         "PROMOTED": "Esse problema foi promovido para história de usuário",
         "EXTERNAL_REFERENCE": "Esse problema foi criado a partir de",
         "GO_TO_EXTERNAL_REFERENCE": "Ir para a origem",
-        "ACTION_DELETE": "Problema apagado",
+        "ACTION_DELETE": "Problema excluído",
         "LIGHTBOX_TITLE_BLOKING_ISSUE": "Problema que está bloqueando",
         "FIELDS": {
             "PRIORITY": "Prioridade",
@@ -1463,7 +1469,7 @@
     },
     "USER_PROFILE": {
         "ACTION_USE_GRAVATAR": "Usar imagem padrão",
-        "ACTION_DELETE_ACCOUNT": "Apagar conta Taiga",
+        "ACTION_DELETE_ACCOUNT": "Excluir conta Taiga",
         "CHANGE_EMAIL_SUCCESS": "<strong>Verifique sua caixa de entrada!</strong><br />Enviamos um e-mail para sua conta<br />com as instruções para definir seu novo endereço",
         "CHANGE_PHOTO": "Mudar foto",
         "FIELD": {
@@ -1484,8 +1490,8 @@
         "PAGE_DESCRIPTION": "Ultima edição em {{lastModifiedDate}} ({{totalEditions}} total de edições) Conteúdo: {{ wikiPageContent }}",
         "DATETIME": "DD MMM YYYY HH:mm",
         "REMOVE": "Remover essa página wiki",
-        "DELETE_LIGHTBOX_TITLE": "Apagar página Wiki",
-        "DELETE_LINK_TITLE": "Remover link de Wiki",
+        "DELETE_LIGHTBOX_TITLE": "Excluir página Wiki",
+        "DELETE_LINK_TITLE": "Excluir link de Wiki",
         "NAVIGATION": {
             "HOME": "Página principal",
             "SECTION_NAME": "MARCADORES",
