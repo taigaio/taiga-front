@@ -40,7 +40,8 @@ class ColorSelectorController
             @.colorList = _.dropRight(@.colorList)
 
     setColor: (color) ->
-        @.color = @.initColor
+        @.color = color
+        @.customColor = color
 
     resetColor: () ->
         if @.isColorRequired and not @.color
@@ -48,6 +49,7 @@ class ColorSelectorController
 
     toggleColorList: () ->
         @.displayColorList = !@.displayColorList
+        @.setColor(@.initColor)
         @.resetColor()
 
     onSelectDropdownColor: (color) ->
@@ -57,8 +59,8 @@ class ColorSelectorController
 
     onKeyDown: (event) ->
         if event.which == 13 # ENTER
-            if @.color or not @.isColorRequired
-                @.onSelectDropdownColor(@.color)
+            if @.customColor or not @.isColorRequired
+                @.onSelectDropdownColor(@.customColor)
             event.preventDefault()
 
 

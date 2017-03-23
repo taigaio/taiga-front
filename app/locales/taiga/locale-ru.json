@@ -17,7 +17,7 @@
         "EDIT": "Редактировать",
         "DRAG": "Перетащите",
         "TAG_LINE": "Ваш свободный, agile инструмент управления проектами с открытым исходным кодом",
-        "TAG_LINE_2": "Любит ваши проекты",
+        "TAG_LINE_2": "Любите свой проект",
         "BLOCK": "Блокировать",
         "BLOCK_TITLE": "Заблокировать это, например, если имеются зависимости, которые не могут быть удовлетворены",
         "BLOCKED": "Заблокирован",
@@ -213,6 +213,10 @@
             }
         },
         "WYSIWYG": {
+            "CODE_SNIPPET": "Code Snippet",
+            "DB_CLICK": "double click to edit",
+            "SELECT_LANGUAGE_PLACEHOLDER": "Выбор языка",
+            "SELECT_LANGUAGE_REMOVE_FORMATING": "Remove formatting",
             "OUTDATED": "Another person has made changes while you were editing. Check the new version on the activiy tab before you save your changes.",
             "MARKDOWN_HELP": "Помощь по синтаксису Markdown"
         },
@@ -285,7 +289,8 @@
         "TITLE_LINK_FORGOT_PASSWORD": "Вы забыли свой пароль?",
         "ACTION_ENTER": "Ввод",
         "ACTION_SIGN_IN": "Логин",
-        "PLACEHOLDER_AUTH_PASSWORD": "Пароль (чувствителен к регистру)"
+        "PLACEHOLDER_AUTH_PASSWORD": "Пароль (чувствителен к регистру)",
+        "ALT_LOGIN": "Or login with"
     },
     "LOGIN_FORM": {
         "ERROR_AUTH_INCORRECT": "Oompa Loompas считает, что ваше имя пользователя, электронная почта или пароль неправильные.",
@@ -489,7 +494,7 @@
             "RECRUITING": "Этот проект ищет людей?",
             "RECRUITING_MESSAGE": "Кого вы ищете?",
             "RECRUITING_PLACEHOLDER": "Уточните, какие профили вы ищете",
-            "FEEDBACK": "Receive feedback from Taiga users?",
+            "FEEDBACK": "Получать обратную связь от пользователей Тайги?",
             "PUBLIC_PROJECT": "Публичный проект",
             "PRIVATE_PROJECT": "Закрытый проект",
             "PRIVATE_OR_PUBLIC": "В чём разница между публичными и приватными проектами?",
@@ -570,7 +575,7 @@
             "ACTION_ADD": "Добавить новую степень важности"
         },
         "PROJECT_VALUES_STATUS": {
-            "TITLE": "Statuses",
+            "TITLE": "Статусы",
             "SUBTITLE": "Укажите, какие статусы будут принимать ваши пользовательские истории, задачи и запросы",
             "EPIC_TITLE": "Статусы Эпоса",
             "US_TITLE": "Статусы пользовательских историй",
@@ -874,7 +879,7 @@
             "DUPLICATE_DESC": "Start clean and keep your configuration",
             "IMPORT": "Импортировать проект",
             "IMPORT_DESC": "Import your project from multiple platforms into Taiga",
-            "INVITE": "Invite to the project",
+            "INVITE": "Пригласить в проект",
             "SOLO_PROJECT": "You'll be alone in this project",
             "INVITE_LATER": "(You'll be able to invite more members later)",
             "BACK": "Бэкенд разработчик",
@@ -885,8 +890,8 @@
         },
         "COMMON": {
             "DETAILS": "New project details",
-            "PROJECT_TITLE": "Project Name",
-            "PROJECT_DESCRIPTION": "Project Description"
+            "PROJECT_TITLE": "Название проекта",
+            "PROJECT_DESCRIPTION": "Описание проекта"
         },
         "DUPLICATE": {
             "TITLE": "Duplicate Project",
@@ -904,7 +909,7 @@
             "ERROR_MESSAGE": "У Oompa Loompas возникли проблемы при импорте резервной копии: {{error_message}}",
             "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) это слишком много для наших Умпа-Лумп, попробуйте еще раз с размером меньшим, чем ({{maxFileSize}})",
             "SYNC_SUCCESS": "Импорт проекта выполнен успешно",
-            "IMPORT": "Import",
+            "IMPORT": "Импортировать",
             "WHO_IS": "Their tasks will be assigned to ...",
             "WRITE_EMAIL": "Or if you want, write the email that this user uses in Taiga",
             "SEARCH_CONTACT": "Or if you want, search in your contacts",
@@ -913,7 +918,7 @@
             "PROJECT_MEMBERS": "Участники проекта",
             "PROCESS_DESCRIPTION": "Tell us who from Taiga you want to assign the tasks of {{platform}}",
             "MATCH": "Is <strong>{{user_external}}</strong> the same person as <strong>{{user_internal}}</strong>?",
-            "CHOOSE": "Select user",
+            "CHOOSE": "Выбрать пользователя",
             "LINKS": "Links with {{platform}}",
             "LINKS_DESCRIPTION": "Do you want to keep the link of each item with the original {{platform}} card?",
             "WARNING_MAIL_USER": "Note that if the user does not have a Taiga account we will not be able to assign the tasks to him.",
@@ -960,7 +965,7 @@
                 "CHECK": "Check contacts"
             },
             "TAIGA": {
-                "SELECTOR": "Import your Taiga project"
+                "SELECTOR": "Импортируйте свой проект из Тайги"
             },
             "TRELLO": {
                 "SELECTOR": "Import your Trello boards into Taiga",
@@ -990,6 +995,7 @@
             },
             "JIRA": {
                 "SELECTOR": "Import your Jira project and choose how to manage it",
+                "HOW_TO_CONFIGURE": "(configuration help)",
                 "CHOOSE_PROJECT": "Choose project or board that you want to import",
                 "NO_PROJECTS": "It seems you have no porjects or boards in Jira",
                 "URL": "Your Jira URL",
@@ -1024,10 +1030,10 @@
         "ADD_MEMBER": {
             "TITLE": "Новый участник",
             "PLACEHOLDER": "Filter users or write an email to invite",
-            "ADD_EMAIL": "Add email",
-            "REMOVE": "Remove",
-            "INVITE": "Invite",
-            "CHOOSE_ROLE": "Choose a role",
+            "ADD_EMAIL": "Добавить электронную почту",
+            "REMOVE": "Удалить",
+            "INVITE": "Пригласить",
+            "CHOOSE_ROLE": "Выберите роль",
             "PLACEHOLDER_INVITATION_TEXT": "(Необязательно) Добавьте персональный текст в приглашение. Скажите что-нибудь приятное вашим новым участникам ;-)",
             "HELP_TEXT": "Если пользователи уже зарегистрированы в Тайге они добавятся автоматически. В противном случае им будет отправлено приглашение."
         },
@@ -1095,7 +1101,7 @@
             "TITLE": "Send an email to",
             "WARNING": "The email will be received by the project admins",
             "PLACEHOLDER": "Write your message",
-            "SEND": "Send"
+            "SEND": "Отправить"
         }
     },
     "EPIC": {
@@ -1114,7 +1120,7 @@
         "CHOOSE_PROJECT_FROM": "What's the project?",
         "CHOOSE_USERSTORY": "What's the user story?",
         "NO_USERSTORIES": "This project has no User Stories yet. Please select another project.",
-        "FILTER_USERSTORIES": "Filter user stories",
+        "FILTER_USERSTORIES": "Фильтровать ПИ",
         "LIGHTBOX_TITLE_BLOKING_EPIC": "Blocking epic",
         "ACTION_DELETE": "Удалить эпос"
     },

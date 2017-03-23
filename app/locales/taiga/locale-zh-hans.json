@@ -213,6 +213,10 @@
             }
         },
         "WYSIWYG": {
+            "CODE_SNIPPET": "Code Snippet",
+            "DB_CLICK": "double click to edit",
+            "SELECT_LANGUAGE_PLACEHOLDER": "Select Language",
+            "SELECT_LANGUAGE_REMOVE_FORMATING": "Remove formatting",
             "OUTDATED": "在你编辑期间其他人做过变更，保存前请先检查新版本",
             "MARKDOWN_HELP": "Markdown 语法帮助"
         },
@@ -285,7 +289,8 @@
         "TITLE_LINK_FORGOT_PASSWORD": "您忘记密码了吗",
         "ACTION_ENTER": "回车",
         "ACTION_SIGN_IN": "登录",
-        "PLACEHOLDER_AUTH_PASSWORD": "密码(大小写敏感)"
+        "PLACEHOLDER_AUTH_PASSWORD": "密码(大小写敏感)",
+        "ALT_LOGIN": "Or login with"
     },
     "LOGIN_FORM": {
         "ERROR_AUTH_INCORRECT": "根据我们的系统记录，你的账户名称/电子邮件或密码并不正确",
@@ -570,7 +575,7 @@
             "ACTION_ADD": "新增严重程度"
         },
         "PROJECT_VALUES_STATUS": {
-            "TITLE": "Statuses",
+            "TITLE": "状态",
             "SUBTITLE": "指明你的用户故事，任务以及问题经历的状态",
             "EPIC_TITLE": "史诗状态",
             "US_TITLE": "用户故事状态",
@@ -865,13 +870,13 @@
             "TITLE": "创建项目",
             "CHOOSE_TEMPLATE": "哪个模板更适合你的项目？",
             "TEMPLATE_SCRUM": "冲刺",
-            "TEMPLATE_SCRUM_DESC": "Prioritize and solve your tasks in short time cycles.",
+            "TEMPLATE_SCRUM_DESC": "优先考虑和解决的时间周期短的任务.",
             "TEMPLATE_SCRUM_LONGDESC": "Scrum is an iterative and incremental agile software development methodology for managing product development.\nThe product backlog is what will ultimately be delivered, ordered into the sequence in which it should be delivered. Product Backlogs are broken into manageable, executable chunks named sprints. Every certain amount of time the team initiates a new sprint and commits to deliver a certain number of user stories from the backlog, in accordance with their skills, abilities and resources. The project advances as the backlog becomes depleted.",
             "TEMPLATE_KANBAN": "看板",
-            "TEMPLATE_KANBAN_DESC": "Keep a constant workflow on independent tasks",
+            "TEMPLATE_KANBAN_DESC": "在独立的任务上保持恒定的工作流",
             "TEMPLATE_KANBAN_LONGDESC": "The Kanban methodology is used to divide project development (any sort of project) into stages.\nA kanban card is like an index card or post-it note that details every task (or user story) in a project that needs to be completed. The Kanban board is used to move each card from one state of completion to the next and in so doing, helps track progress.",
             "DUPLICATE": "复制项目",
-            "DUPLICATE_DESC": "Start clean and keep your configuration",
+            "DUPLICATE_DESC": "开始清洁并保持您的配置",
             "IMPORT": "导入项目",
             "IMPORT_DESC": "从多平台导入你的项目到Taiga",
             "INVITE": "邀请加入项目",
@@ -879,7 +884,7 @@
             "INVITE_LATER": "(你可以在之后邀请更多成员)",
             "BACK": "后退",
             "MAX_PRIVATE_PROJECTS": "很抱歉，你创建的私有项目数量已到达限制。如果想创建更多私有项目，请联系管理员",
-            "MAX_PUBLIC_PROJECTS": "Unfortunately, You've reached the maximum number of public projects.\nIf you would like to increase the current limit please contact the administrator.",
+            "MAX_PUBLIC_PROJECTS": "不幸的是，你已经达到了公开项目的最大数量限制。\n如果您想增加当前限制数量，请与管理员联系。",
             "PUBLIC_PROJECT": "公开项目",
             "PRIVATE_PROJECT": "私有项目"
         },
@@ -890,7 +895,7 @@
         },
         "DUPLICATE": {
             "TITLE": "复制项目",
-            "DESCRIPTION": "Start clean and keep your configuration",
+            "DESCRIPTION": "开始清洁并保持您的配置 ",
             "SELECT_PLACEHOLDER": "选择一个已存在的项目来复制"
         },
         "IMPORT": {
@@ -905,18 +910,18 @@
             "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) 超过系统设置的附件体积上限, 请重传小一点的附件 ({{maxFileSize}})",
             "SYNC_SUCCESS": "你的项目已成功导入",
             "IMPORT": "导入",
-            "WHO_IS": "Their tasks will be assigned to ...",
-            "WRITE_EMAIL": "Or if you want, write the email that this user uses in Taiga",
-            "SEARCH_CONTACT": "Or if you want, search in your contacts",
-            "WRITE_EMAIL_LABEL": "Write the email that this user uses in Taiga",
+            "WHO_IS": "他们的任务将被分配给…",
+            "WRITE_EMAIL": "或者如果你愿意，写下这个用户在Taiga使用的电子邮件",
+            "SEARCH_CONTACT": "或者如果你愿意，在你的联系人中检索",
+            "WRITE_EMAIL_LABEL": "写下这个用户在Taiga使用的电子邮件",
             "ACCEEDE": "Acceede",
             "PROJECT_MEMBERS": "项目成员",
-            "PROCESS_DESCRIPTION": "Tell us who from Taiga you want to assign the tasks of {{platform}}",
+            "PROCESS_DESCRIPTION": "告诉我们你想要分配{{platform}}的任务给来自Taiga中的谁",
             "MATCH": "<strong>{{user_external}}</strong> 与<strong>{{user_internal}}</strong>是同一个人吗？",
             "CHOOSE": "选择用户",
-            "LINKS": "Links with {{platform}}",
-            "LINKS_DESCRIPTION": "Do you want to keep the link of each item with the original {{platform}} card?",
-            "WARNING_MAIL_USER": "Note that if the user does not have a Taiga account we will not be able to assign the tasks to him.",
+            "LINKS": "与{{platform}}链接",
+            "LINKS_DESCRIPTION": "是否要保留每个条目与原{{platform}} 卡片的链接？",
+            "WARNING_MAIL_USER": "注意，如果用户没有Taiga的帐户将无法分配任务给他。 ",
             "ASSIGN": "指派",
             "PROJECT_SELECTOR": {
                 "NO_RESULTS": "看起来没有符合你的搜索条件的结果",
@@ -990,6 +995,7 @@
             },
             "JIRA": {
                 "SELECTOR": "Import your Jira project and choose how to manage it",
+                "HOW_TO_CONFIGURE": "(configuration help)",
                 "CHOOSE_PROJECT": "Choose project or board that you want to import",
                 "NO_PROJECTS": "It seems you have no porjects or boards in Jira",
                 "URL": "Your Jira URL",
