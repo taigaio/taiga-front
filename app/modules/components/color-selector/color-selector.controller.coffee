@@ -49,7 +49,7 @@ class ColorSelectorController
 
     toggleColorList: () ->
         @.displayColorList = !@.displayColorList
-        @.setColor(@.initColor)
+        @.customColor = @.color
         @.resetColor()
 
     onSelectDropdownColor: (color) ->
