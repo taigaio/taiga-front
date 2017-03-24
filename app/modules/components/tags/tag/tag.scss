@@ -1,4 +1,5 @@
-.tag {
+// this :not(code) prevent to override prismjs (wysiwyg) styles
+:not(code) > .tag {
     @include font-type(light);
     @include font-size(small);
     background: $mass-white;
