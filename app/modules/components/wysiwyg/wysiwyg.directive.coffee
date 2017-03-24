@@ -490,13 +490,7 @@ Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoad
                 e.stopPropagation()
 
                 if e.target.href
-                    window.open(e.target.href)
-
-            mediumInstance.subscribe 'focus', (event) ->
-                $scope.$applyAsync () ->
-                    if !$scope.editMode
-                        setEditMode(true)
-                        refreshCodeBlocks(mediumInstance)
+                    window.open(e.target.href)                                                 
 
             mediumInstance.subscribe 'editableDrop', (event) ->
                 $scope.onUploadFile({files: event.dataTransfer.files, cb: uploadEnd})
@@ -523,6 +517,16 @@ Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoad
             $scope.$applyAsync () ->
                 wysiwygCodeHightlighterService.addHightlighter(mediumInstance.elements[0])
                 refreshCodeBlocks(mediumInstance)
+
+        $(editorMedium[0]).on 'mousedown', (e) -> 
+            if e.target.href
+                e.preventDefault()
+                e.stopPropagation()
+            else
+                $scope.$applyAsync () ->
+                    if !$scope.editMode
+                        setEditMode(true)
+                        refreshCodeBlocks(mediumInstance)                   
 
         $(editorMedium[0]).on 'dblclick', 'pre', (e) ->
             $scope.$applyAsync () ->
@@ -561,6 +565,7 @@ Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoad
 
         $scope.$on "$destroy", () ->
             if mediumInstance
+                $(editorMedium[0]).off() if editorMedium.length
                 mediumInstance.destroy()
 
     return {
