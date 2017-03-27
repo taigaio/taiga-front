@@ -32,6 +32,7 @@ var gulp = require("gulp"),
     path = require('path'),
     addsrc = require('gulp-add-src'),
     jsonminify = require('gulp-jsonminify'),
+    classPrefix = require('gulp-class-prefix'),
     coffeelint = require('gulp-coffeelint');
 
 var argv = require('minimist')(process.argv.slice(2));
@@ -74,7 +75,6 @@ paths.css_vendor = [
     paths.app + "styles/vendor/*.css",
     paths.modules + "medium-editor/dist/css/medium-editor.css",
     paths.modules + "medium-editor/dist/css/themes/default.css",
-    paths.modules + "highlight.js/styles/default.css",
     paths.modules + "prismjs/themes/prism-okaidia.css"
 ];
 paths.locales = paths.app + "locales/**/*.json";
@@ -184,8 +184,8 @@ paths.libs = [
     paths.modules + "medium-editor/dist/js/medium-editor.js",
     paths.modules + "to-markdown/dist/to-markdown.js",
     paths.modules + "markdown-it/dist/markdown-it.js",
-    paths.modules + "highlight.js/lib/highlight.js",
     paths.modules + "prismjs/prism.js",
+    paths.modules + "prismjs/plugins/custom-class/prism-custom-class.js",
     paths.modules + "medium-editor-autolist/dist/autolist.js",
     paths.modules + "autolinker/dist/Autolinker.js",
     paths.app + "js/dom-autoscroller.js",
@@ -336,7 +336,12 @@ gulp.task("app-css", function() {
 });
 
 gulp.task("vendor-css", function() {
+    var isPrism = function(file) {
+        return file.path.indexOf('prism-okaidia') !== -1;
+    };
+
     return gulp.src(paths.css_vendor)
+        .pipe(gulpif(isPrism, classPrefix('prism-')))
         .pipe(concat("vendor.css"))
         .pipe(gulp.dest(paths.tmp));
 });
