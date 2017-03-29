@@ -154,6 +154,9 @@
     background-color: $white;
     border: 1px solid $gray-light;
     position: absolute;
+    &:empty {
+        border: 0;
+    }
     ul {
         margin-bottom: 0;
     }
@@ -284,4 +287,3 @@ tg-wysiwyg {
         fill: $primary-light;
     }
 }
-
