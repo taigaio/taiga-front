@@ -801,9 +801,9 @@
         "HELP": "Sortieren Sie Ihre Projekte nach Wichtigkeit.<br/> Die ersten 10 Projekte erscheinen prominent in der Projektliste der Navigationsleiste.",
         "PRIVATE": "Privates Projekt",
         "LOOKING_FOR_PEOPLE": "Dieses Projekt sucht nach Mitarbeitern",
-        "FANS_COUNTER_TITLE": "{total, plural, one{ein Fan} andere{# Fans}}",
-        "WATCHERS_COUNTER_TITLE": "{total, plural, one{ein Beobachter} andere{# Beobachter}}",
-        "MEMBERS_COUNTER_TITLE": "{total, plural, one{one member} andere{# members}}",
+        "FANS_COUNTER_TITLE": "{total, plural, one{ein Fan} other{# Fans}}",
+        "WATCHERS_COUNTER_TITLE": "{total, plural, one{ein Beobachter} other{# Beobachter}}",
+        "MEMBERS_COUNTER_TITLE": "{total, plural, one{one member} other{# members}}",
         "BLOCKED_PROJECT": {
             "BLOCKED": "Blockiertes Projekt",
             "THIS_PROJECT_IS_BLOCKED": "Dieses Projekt ist vorrübergehend blockiert",
