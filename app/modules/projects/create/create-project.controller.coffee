@@ -22,13 +22,16 @@ class CreateProjectController
         "tgAppMetaService",
         "$translate",
         "tgProjectService",
-        "$location"
+        "$location",
+        "$tgAuth"
     ]
 
-    constructor: (@appMetaService, @translate, @projectService, @location) ->
+    constructor: (@appMetaService, @translate, @projectService, @location, @authService) ->
         taiga.defineImmutableProperty @, "project", () => return @projectService.project
 
         @appMetaService.setfn @._setMeta.bind(this)
+
+        @authService.refresh()
 
         @.displayScrumDesc = false
         @.displayKanbanDesc = false
