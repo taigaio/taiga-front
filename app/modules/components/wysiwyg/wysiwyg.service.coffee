@@ -79,6 +79,13 @@ class WysiwygService
 
             return '[' + title + '](' + link  + ')'
 
+
+    linkTitleWithSpaces: (text) ->
+        link = /\[[^\]]*\]\(([^\)]*)\)/g # [Title-with-spaces](Title with spaces)
+
+        return text.replace link, (match, p1, offset, str) ->
+            return match.replace /\(.*\)/, '(' + taiga.slugify(p1) + ')'
+
     replaceUrls: (html) ->
         el = document.createElement( 'html' )
         el.innerHTML = html
@@ -213,7 +220,8 @@ class WysiwygService
         }
 
         text = @.replaceEmojiNameByImgs(text)
-        text = @.pipeLinks(text)
+        text = @.linkTitleWithSpaces(text)
+        text = @.pipeLinks(text)        
 
         md = window.markdownit({
             breaks: true
