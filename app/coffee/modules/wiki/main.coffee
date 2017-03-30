@@ -255,7 +255,7 @@ $qqueue, $repo, $analytics, wikiHistoryService) ->
             return if not value
             $scope.item = value
             $scope.version = value.version
-            $scope.storageKey = $scope.project.id + "-" + value.id + "-" + $attrs.type
+            $scope.storageKey = $scope.project.id + "-" + value.id + "-wiki" 
 
         $scope.$watch 'project', (project) ->
             return if !project
