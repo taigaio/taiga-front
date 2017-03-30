@@ -56,7 +56,7 @@ Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoad
         pre.parentNode.replaceChild(p, pre)
         mediumInstance.checkContentChanged(mediumInstance.elements[0])
 
-    addCodeBlockAndHightlight = (range, elm) ->
+    addCodeBlockAndHightlight = (range, mediumInstance) ->
         pre = document.createElement('pre')
         code = document.createElement('code')
 
@@ -73,7 +73,8 @@ Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoad
 
         start.parentNode.insertBefore(pre, start)
 
-        refreshCodeBlocks(elm)
+        refreshCodeBlocks(mediumInstance)
+        mediumInstance.checkContentChanged(mediumInstance.elements[0])
 
     refreshCodeBlocks = (mediumInstance) ->
         return if !mediumInstance
@@ -103,8 +104,6 @@ Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoad
                 p.appendChild(document.createElement('br'))
 
                 pre.parentNode.insertBefore(p, pre.nextSibling)
-
-        mediumInstance.checkContentChanged(mediumInstance.elements[0])
 
     AlignRightButton = MediumEditor.extensions.button.extend({
         name: 'rtl',
@@ -297,6 +296,7 @@ Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoad
             discardLocalStorage()
             mediumInstance.trigger('blur', {}, editorMedium[0])
             $scope.outdated = false
+            refreshCodeBlocks(mediumInstance)
 
             $scope.onCancel()
 
