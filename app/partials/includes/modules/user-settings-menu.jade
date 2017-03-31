@@ -10,6 +10,9 @@ section.admin-menu
             li#usersettingsmenu-mail-notifications
                 a(href="", tg-nav="user-settings-mail-notifications", title="{{ 'USER_SETTINGS.MENU.EMAIL_NOTIFICATIONS' | translate }}")
                     span.title(translate="USER_SETTINGS.MENU.EMAIL_NOTIFICATIONS")
+            li#usersettingsmenu-live-notifications
+                a(href="", tg-nav="user-settings-live-notifications", title="{{ 'USER_SETTINGS.MENU.DESKTOP_NOTIFICATIONS' | translate }}")
+                    span.title(translate="USER_SETTINGS.MENU.DESKTOP_NOTIFICATIONS")
             li#usersettings-contrib(ng-repeat="plugin in userSettingsPlugins")
                 a(
                     href=""

@@ -122,6 +122,7 @@ Resource = (urlsService, http, paginateResponseService) ->
     service.watchProject = (projectId, notifyLevel) ->
         data = {
             notify_level: notifyLevel
+            live_notify_level: notifyLevel
         }
         url = urlsService.resolve("project-watch", projectId)
         return http.post(url, data)
