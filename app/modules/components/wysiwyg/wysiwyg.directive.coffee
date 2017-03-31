@@ -25,7 +25,7 @@
 taiga = @.taiga
 bindOnce = @.taiga.bindOnce
 
-Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoader, wysiwygCodeHightlighterService, wysiwygMentionService, analytics) ->
+Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoader, wysiwygCodeHightlighterService, wysiwygMentionService, analytics, $location) ->
     removeSelections = () ->
         if window.getSelection
             if window.getSelection().empty
@@ -404,7 +404,6 @@ Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoad
                 editorMedium.html(html)
 
             mediumInstance = new MediumEditor(editorMedium[0], {
-                targetBlank: true,
                 imageDragging: false,
                 placeholder: {
                     text: $scope.placeholder
@@ -487,10 +486,14 @@ Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoad
                 $scope.$applyAsync(throttleChange)
 
             mediumInstance.subscribe "editableClick", (e) ->
-                e.stopPropagation()
+                r = new RegExp('^(?:[a-z]+:)?//', 'i')
 
-                if e.target.href
-                    window.open(e.target.href)                                                 
+                if e.target.href 
+                    if r.test(e.target.getAttribute('href')) || e.target.getAttribute('target') == '_blank'
+                        e.stopPropagation()
+                        window.open(e.target.href)                                                 
+                    else 
+                        $location.url(e.target.href)
 
             mediumInstance.subscribe 'editableDrop', (event) ->
                 $scope.onUploadFile({files: event.dataTransfer.files, cb: uploadEnd})
@@ -593,5 +596,6 @@ angular.module("taigaComponents").directive("tgWysiwyg", [
     "tgWysiwygCodeHightlighterService",
     "tgWysiwygMentionService",
     "$tgAnalytics",
+    "$location",
     Medium
 ])
