@@ -220,8 +220,8 @@ class WysiwygService
         }
 
         text = @.replaceEmojiNameByImgs(text)
-        text = @.linkTitleWithSpaces(text)
         text = @.pipeLinks(text)        
+        text = @.linkTitleWithSpaces(text)
 
         md = window.markdownit({
             breaks: true
