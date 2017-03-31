@@ -62,6 +62,7 @@ class EventsService
             path = _.trimStart(url, "/")
             url = "#{scheme}//#{loc.host}/#{path}"
 
+        @.error = false
         @.ws = new @win.WebSocket(url)
         @.ws.addEventListener("open", @.onOpen)
         @.ws.addEventListener("message", @.onMessage)
