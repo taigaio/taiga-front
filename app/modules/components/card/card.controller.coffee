@@ -24,7 +24,8 @@ class CardController
         return @.zoom.indexOf(name) != -1
 
     hasTasks: () ->
-        return @.item.getIn(['model', 'tasks']).size > 0
+        tasks = @.item.getIn(['model', 'tasks'])
+        return tasks and tasks.size > 0
 
     hasVisibleAttachments: () ->
         return @.item.get('images').size > 0
