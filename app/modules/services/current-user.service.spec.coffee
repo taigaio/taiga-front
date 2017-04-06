@@ -172,7 +172,16 @@ describe "tgCurrentUserService", ->
 
         expect(currentUserService._user).to.be.null
 
-    it "disable joyride", () ->
+    it "disable joyride for anon user", () ->
+        currentUserService.isAuthenticated = sinon.stub()
+        currentUserService.isAuthenticated.returns(false)
+        currentUserService.disableJoyRide()
+
+        expect(mocks.resources.user.setUserStorage).to.have.not.been.called
+
+    it "disable joyride for logged user", () ->
+        currentUserService.isAuthenticated = sinon.stub()
+        currentUserService.isAuthenticated.returns(true)
         currentUserService.disableJoyRide()
 
         expect(mocks.resources.user.setUserStorage).to.have.been.calledWith('joyride', {
