@@ -153,6 +153,7 @@
   - Add polish (pl) translation.
   - Add portuguese (Brazil) (pt_BR) translation.
   - Add russian (ru) translation.
+  - Add Portuguese Brazil (ptbr) translation.
 
 ### Misc
 - Improve performance: Show cropped images in timelines.
