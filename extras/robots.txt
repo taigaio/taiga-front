@@ -1,0 +1,6 @@
+User-agent: *
+Disallow:
+
+# You rush a miracle man, you get rotten miracles.
+#
+#                            -- Miracle Max --
