@@ -213,6 +213,10 @@
             }
         },
         "WYSIWYG": {
+            "CODE_SNIPPET": "Code Snippet",
+            "DB_CLICK": "double click to edit",
+            "SELECT_LANGUAGE_PLACEHOLDER": "Select Language",
+            "SELECT_LANGUAGE_REMOVE_FORMATING": "Remove formatting",
             "OUTDATED": "Another person has made changes while you were editing. Check the new version on the activiy tab before you save your changes.",
             "MARKDOWN_HELP": "Markdown syntax help"
         },
@@ -285,7 +289,8 @@
         "TITLE_LINK_FORGOT_PASSWORD": "Ben je je wachtwoord vergeten?",
         "ACTION_ENTER": "Enter",
         "ACTION_SIGN_IN": "Log in",
-        "PLACEHOLDER_AUTH_PASSWORD": "Wachtwoord (hoofdlettergevoelig)"
+        "PLACEHOLDER_AUTH_PASSWORD": "Wachtwoord (hoofdlettergevoelig)",
+        "ALT_LOGIN": "Or login with"
     },
     "LOGIN_FORM": {
         "ERROR_AUTH_INCORRECT": "Volgens onze Oempa-Loempa's, zijn je gebruikers/email of wachtwoord incorrect.",
@@ -990,6 +995,7 @@
             },
             "JIRA": {
                 "SELECTOR": "Import your Jira project and choose how to manage it",
+                "HOW_TO_CONFIGURE": "(configuration help)",
                 "CHOOSE_PROJECT": "Choose project or board that you want to import",
                 "NO_PROJECTS": "It seems you have no porjects or boards in Jira",
                 "URL": "Your Jira URL",

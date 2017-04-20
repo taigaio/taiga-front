@@ -112,17 +112,6 @@ resourceProvider = ($repo, $http, $urls, $storage, $q) ->
         params = {project_id: projectId, bulk_stories: data}
         return $http.post(url, params)
 
-    service.bulkUpdateMilestone = (projectId, milestoneId, data) ->
-        url = $urls.resolve("bulk-update-us-milestone")
-        data = _.map data, (us) ->
-            return {
-                us_id: us.id
-                order: us.order
-            }
-
-        params = {project_id: projectId, milestone_id: milestoneId, bulk_stories: data}
-        return $http.post(url, params)
-
     service.listValues = (projectId, type) ->
         params = {"project": projectId}
         service.storeQueryParams(projectId, params)

@@ -213,6 +213,10 @@
             }
         },
         "WYSIWYG": {
+            "CODE_SNIPPET": "Fragmento de código",
+            "DB_CLICK": "double click to edit",
+            "SELECT_LANGUAGE_PLACEHOLDER": "Selecciona un lenguaje",
+            "SELECT_LANGUAGE_REMOVE_FORMATING": "Eliminar formato",
             "OUTDATED": "Otra persona ha realizado cambios durante tu edición. Comprueba la nueva versión en la pestaña de activiy antes de guardar los cambios.",
             "MARKDOWN_HELP": "Ayuda de sintaxis Markdown"
         },
@@ -285,7 +289,8 @@
         "TITLE_LINK_FORGOT_PASSWORD": "¿Olvidó su contraseña?",
         "ACTION_ENTER": "Entrar",
         "ACTION_SIGN_IN": "Iniciar sesión",
-        "PLACEHOLDER_AUTH_PASSWORD": "Contraseña (distingue mayúsculas y minúsculas)"
+        "PLACEHOLDER_AUTH_PASSWORD": "Contraseña (distingue mayúsculas y minúsculas)",
+        "ALT_LOGIN": "Or login with"
     },
     "LOGIN_FORM": {
         "ERROR_AUTH_INCORRECT": "Nuestros Oompa Loompas indican que tu nombre de usuario/correo o contraseña son incorrectos",
@@ -570,7 +575,7 @@
             "ACTION_ADD": "Añadir nueva gravedad"
         },
         "PROJECT_VALUES_STATUS": {
-            "TITLE": "Statuses",
+            "TITLE": "Estados",
             "SUBTITLE": "Especifica los estado que atravesarán tus historias de usuario, tareas y peticiones",
             "EPIC_TITLE": "Estados de Epicas",
             "US_TITLE": "Estados de historias de usuario",
@@ -990,6 +995,7 @@
             },
             "JIRA": {
                 "SELECTOR": "Importa tu proyecto de Jira y elije cómo gestionarlo",
+                "HOW_TO_CONFIGURE": "(configuration help)",
                 "CHOOSE_PROJECT": "Elige el proyecto o panel que quieres importar",
                 "NO_PROJECTS": "Parece que no tienes proyectos o paneles en Jira",
                 "URL": "Tu URL de Jira",

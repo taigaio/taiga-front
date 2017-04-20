@@ -74,6 +74,7 @@ urls = {
 
     "blocked-project": "/blocked-project/:project"
     "project": "/project/:project"
+    "project-detail-ref": "/project/:project/t/:ref"
     "project-backlog": "/project/:project/backlog"
     "project-taskboard": "/project/:project/taskboard/:sprint"
     "project-kanban": "/project/:project/kanban"

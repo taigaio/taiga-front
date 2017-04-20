@@ -213,6 +213,10 @@
             }
         },
         "WYSIWYG": {
+            "CODE_SNIPPET": "Code Snippet",
+            "DB_CLICK": "double click to edit",
+            "SELECT_LANGUAGE_PLACEHOLDER": "Select Language",
+            "SELECT_LANGUAGE_REMOVE_FORMATING": "Remove formatting",
             "OUTDATED": "あなたが編集中に別のユーザーが変更を加えました。あなたの変更点を保存する前に、アクティビティタブで新しいバージョンを確認してください。",
             "MARKDOWN_HELP": "Markdown記法のヘルプ"
         },
@@ -285,7 +289,8 @@
         "TITLE_LINK_FORGOT_PASSWORD": "パスワードを忘れましたか？",
         "ACTION_ENTER": "決定",
         "ACTION_SIGN_IN": "ログイン",
-        "PLACEHOLDER_AUTH_PASSWORD": "パスワード"
+        "PLACEHOLDER_AUTH_PASSWORD": "パスワード",
+        "ALT_LOGIN": "Or login with"
     },
     "LOGIN_FORM": {
         "ERROR_AUTH_INCORRECT": "「あなたのユーザー名/メールアドレス または パスワードが間違っている」とウンパルンパたちが言っています。",
@@ -990,6 +995,7 @@
             },
             "JIRA": {
                 "SELECTOR": "Import your Jira project and choose how to manage it",
+                "HOW_TO_CONFIGURE": "(configuration help)",
                 "CHOOSE_PROJECT": "Choose project or board that you want to import",
                 "NO_PROJECTS": "It seems you have no porjects or boards in Jira",
                 "URL": "Your Jira URL",

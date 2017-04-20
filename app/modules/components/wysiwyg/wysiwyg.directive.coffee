@@ -25,7 +25,7 @@
 taiga = @.taiga
 bindOnce = @.taiga.bindOnce
 
-Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoader, wysiwygCodeHightlighterService, wysiwygMentionService, analytics) ->
+Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoader, wysiwygCodeHightlighterService, wysiwygMentionService, analytics, $location) ->
     removeSelections = () ->
         if window.getSelection
             if window.getSelection().empty
@@ -56,29 +56,32 @@ Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoad
         pre.parentNode.replaceChild(p, pre)
         mediumInstance.checkContentChanged(mediumInstance.elements[0])
 
-    addCodeBlockAndHightlight = (range, elm) ->
+    addCodeBlockAndHightlight = (range, mediumInstance) ->
         pre = document.createElement('pre')
         code = document.createElement('code')
-
-        console.log range.startContainer.parentNode.nextSibling
 
         if !range.startContainer.parentNode.nextSibling
             $('<br/>').insertAfter(range.startContainer.parentNode)
 
-        start = range.startContainer.parentNode.nextSibling
+        start = range.endContainer.parentNode.nextSibling
 
-        code.appendChild(range.extractContents())
+        extract = range.extractContents()
+
+        code.appendChild(extract)
 
         pre.appendChild(code)
 
         start.parentNode.insertBefore(pre, start)
 
-        refreshCodeBlocks(elm)
+        refreshCodeBlocks(mediumInstance)
+        mediumInstance.checkContentChanged(mediumInstance.elements[0])
 
     refreshCodeBlocks = (mediumInstance) ->
+        return if !mediumInstance
+
         # clean empty <p> content editable adds it when range.extractContents has been execute it
         for mainChildren in mediumInstance.elements[0].children
-            if mainChildren && mainChildren.tagName.toLowerCase() == 'p' && !mainChildren.innerText.length
+            if mainChildren && mainChildren.tagName.toLowerCase() == 'p' && !mainChildren.innerHTML.trim().length
                 mainChildren.parentNode.removeChild(mainChildren)
 
         preList = mediumInstance.elements[0].querySelectorAll('pre')
@@ -96,13 +99,11 @@ Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoad
                 pre.nextElementSibling.appendChild(document.createElement('br'))
 
             # add p after every pre
-            else if !pre.nextElementSibling || pre.nextElementSibling.nodeName.toLowerCase() != 'p'
+            else if !pre.nextElementSibling || ['p', 'ul', 'h1', 'h2', 'h3'].indexOf(pre.nextElementSibling.nodeName.toLowerCase()) == -1
                 p = document.createElement('p')
                 p.appendChild(document.createElement('br'))
 
                 pre.parentNode.insertBefore(p, pre.nextSibling)
-
-        mediumInstance.checkContentChanged(mediumInstance.elements[0])
 
     AlignRightButton = MediumEditor.extensions.button.extend({
         name: 'rtl',
@@ -219,7 +220,9 @@ Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoad
             html = wysiwygService.getHTML(markdown)
             editorMedium.html(html)
             wysiwygCodeHightlighterService.addHightlighter(mediumInstance.elements[0])
-            refreshCodeBlocks(mediumInstance)
+
+            if $scope.editMode
+                refreshCodeBlocks(mediumInstance)
 
         $scope.saveSnippet = (lan, code) ->
             $scope.codeEditorVisible = false
@@ -266,6 +269,8 @@ Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoad
             if $scope.mode == 'html'
                 updateMarkdownWithCurrentHtml()
 
+            setHtmlMedium($scope.markdown)
+
             return if $scope.required && !$scope.markdown.length
 
             $scope.saving  = true
@@ -291,6 +296,7 @@ Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoad
             discardLocalStorage()
             mediumInstance.trigger('blur', {}, editorMedium[0])
             $scope.outdated = false
+            refreshCodeBlocks(mediumInstance)
 
             $scope.onCancel()
 
@@ -398,7 +404,6 @@ Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoad
                 editorMedium.html(html)
 
             mediumInstance = new MediumEditor(editorMedium[0], {
-                targetBlank: true,
                 imageDragging: false,
                 placeholder: {
                     text: $scope.placeholder
@@ -481,15 +486,14 @@ Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoad
                 $scope.$applyAsync(throttleChange)
 
             mediumInstance.subscribe "editableClick", (e) ->
-                e.stopPropagation()
+                r = new RegExp('^(?:[a-z]+:)?//', 'i')
 
-                if e.target.href
-                    window.open(e.target.href)
-
-            mediumInstance.subscribe 'focus', (event) ->
-                $scope.$applyAsync () ->
-                    if !$scope.editMode
-                        setEditMode(true)
+                if e.target.href 
+                    if r.test(e.target.getAttribute('href')) || e.target.getAttribute('target') == '_blank'
+                        e.stopPropagation()
+                        window.open(e.target.href)                                                 
+                    else 
+                        $location.url(e.target.href)
 
             mediumInstance.subscribe 'editableDrop', (event) ->
                 $scope.onUploadFile({files: event.dataTransfer.files, cb: uploadEnd})
@@ -516,6 +520,16 @@ Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoad
             $scope.$applyAsync () ->
                 wysiwygCodeHightlighterService.addHightlighter(mediumInstance.elements[0])
                 refreshCodeBlocks(mediumInstance)
+
+        $(editorMedium[0]).on 'mousedown', (e) -> 
+            if e.target.href
+                e.preventDefault()
+                e.stopPropagation()
+            else
+                $scope.$applyAsync () ->
+                    if !$scope.editMode
+                        setEditMode(true)
+                        refreshCodeBlocks(mediumInstance)                   
 
         $(editorMedium[0]).on 'dblclick', 'pre', (e) ->
             $scope.$applyAsync () ->
@@ -554,6 +568,7 @@ Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoad
 
         $scope.$on "$destroy", () ->
             if mediumInstance
+                $(editorMedium[0]).off() if editorMedium.length
                 mediumInstance.destroy()
 
     return {
@@ -581,5 +596,6 @@ angular.module("taigaComponents").directive("tgWysiwyg", [
     "tgWysiwygCodeHightlighterService",
     "tgWysiwygMentionService",
     "$tgAnalytics",
+    "$location",
     Medium
 ])

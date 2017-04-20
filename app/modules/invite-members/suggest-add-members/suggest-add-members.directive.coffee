@@ -18,6 +18,11 @@
 ###
 
 SuggestAddMembersDirective = (lightboxService) ->
+    link = (scope, el, attrs, ctrl) ->
+        scope.$watch "vm.contacts", (contacts) =>
+            if contacts
+                ctrl.filterContacts()
+
     return {
         scope: {},
         templateUrl:"invite-members/suggest-add-members/suggest-add-members.html",
@@ -25,10 +30,10 @@ SuggestAddMembersDirective = (lightboxService) ->
         controllerAs: "vm",
         bindToController: {
             contacts: '=',
-            filteredContacts: '<contacts',
             onInviteSuggested: '&',
             onInviteEmail: '&'
-        }
+        },
+        link: link
     }
 
 angular.module("taigaAdmin").directive("tgSuggestAddMembers", ["lightboxService", SuggestAddMembersDirective])

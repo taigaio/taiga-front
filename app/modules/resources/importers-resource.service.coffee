@@ -70,9 +70,9 @@ JiraResource = (urlsService, http) ->
         url = urlsService.resolve("importers-jira-auth-url") + "?url=" + jira_url
         return http.get(url)
 
-    service.authorize = () ->
+    service.authorize = (oauth_verifier) ->
         url = urlsService.resolve("importers-jira-authorize")
-        return http.post(url)
+        return http.post(url, {oauth_verifier: oauth_verifier})
 
     service.listProjects = (jira_url, token) ->
         url = urlsService.resolve("importers-jira-list-projects")

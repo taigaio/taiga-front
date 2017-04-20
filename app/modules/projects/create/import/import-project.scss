@@ -40,6 +40,10 @@
     &-description {
         @include font-type(light);
         margin-bottom: 0;
+        a {
+            color: $primary;
+            margin-left: .3rem;
+        }
     }
     &-url {
         margin-top: .5rem;
@@ -50,6 +54,6 @@
     &-button {
         background: $primary;
         color: $white;
-        padding: .25rem 1rem;
+        padding: .4rem 1rem;
     }
 }

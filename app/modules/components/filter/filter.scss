@@ -29,6 +29,7 @@ tg-filter {
     input {
         background: $grayer;
         color: $white;
+        padding-right: 2rem;
         @include placeholder {
             color: $gray-light;
         }

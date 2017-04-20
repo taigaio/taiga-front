@@ -213,6 +213,10 @@
             }
         },
         "WYSIWYG": {
+            "CODE_SNIPPET": "코드 스니펫",
+            "DB_CLICK": "double click to edit",
+            "SELECT_LANGUAGE_PLACEHOLDER": "언어 선택",
+            "SELECT_LANGUAGE_REMOVE_FORMATING": "포매팅 제거",
             "OUTDATED": "편집하는 동안 다른 사람이 변경했습니다. 변경 사항을 저장하기 전에 활성 탭에서 새 버전을 확인하십시오.",
             "MARKDOWN_HELP": "마크다운 문법 도움말"
         },
@@ -285,7 +289,8 @@
         "TITLE_LINK_FORGOT_PASSWORD": "비밀번호를 잊었나요?",
         "ACTION_ENTER": "들어가기",
         "ACTION_SIGN_IN": "로그인",
-        "PLACEHOLDER_AUTH_PASSWORD": "비밀번호 (대소문자 구분)"
+        "PLACEHOLDER_AUTH_PASSWORD": "비밀번호 (대소문자 구분)",
+        "ALT_LOGIN": "Or login with"
     },
     "LOGIN_FORM": {
         "ERROR_AUTH_INCORRECT": "움파룸파가 말하길, 아이디나 이메일, 비밀번호 중 하나가 틀렸다고 하네요.",
@@ -570,7 +575,7 @@
             "ACTION_ADD": "심각도 추가하기"
         },
         "PROJECT_VALUES_STATUS": {
-            "TITLE": "Statuses",
+            "TITLE": "상태",
             "SUBTITLE": "유저 스토리, 태스크 그리고 이슈의 상태를 지정하세요.",
             "EPIC_TITLE": "에픽 상태",
             "US_TITLE": "유저 스토리 상태",
@@ -863,39 +868,39 @@
         },
         "CREATE": {
             "TITLE": "프로젝트 생성하기",
-            "CHOOSE_TEMPLATE": "Which template fits your project better?",
+            "CHOOSE_TEMPLATE": "당신의 프로젝트에 가장 적합한 템플릿이 무엇입니까?",
             "TEMPLATE_SCRUM": "스크럼",
-            "TEMPLATE_SCRUM_DESC": "Prioritize and solve your tasks in short time cycles.",
+            "TEMPLATE_SCRUM_DESC": "짧은 시간 주기로 작업 우선 순위 지정 및 해결",
             "TEMPLATE_SCRUM_LONGDESC": "Scrum is an iterative and incremental agile software development methodology for managing product development.\nThe product backlog is what will ultimately be delivered, ordered into the sequence in which it should be delivered. Product Backlogs are broken into manageable, executable chunks named sprints. Every certain amount of time the team initiates a new sprint and commits to deliver a certain number of user stories from the backlog, in accordance with their skills, abilities and resources. The project advances as the backlog becomes depleted.",
             "TEMPLATE_KANBAN": "칸반",
-            "TEMPLATE_KANBAN_DESC": "Keep a constant workflow on independent tasks",
+            "TEMPLATE_KANBAN_DESC": "독립적인 태스크에 대해 지속적인 워크플로 유지",
             "TEMPLATE_KANBAN_LONGDESC": "The Kanban methodology is used to divide project development (any sort of project) into stages.\nA kanban card is like an index card or post-it note that details every task (or user story) in a project that needs to be completed. The Kanban board is used to move each card from one state of completion to the next and in so doing, helps track progress.",
-            "DUPLICATE": "Duplicate project",
-            "DUPLICATE_DESC": "Start clean and keep your configuration",
+            "DUPLICATE": "프로젝트 복사",
+            "DUPLICATE_DESC": "정리를 시작하고 설정을 유지",
             "IMPORT": "프로젝트 불러오기",
-            "IMPORT_DESC": "Import your project from multiple platforms into Taiga",
-            "INVITE": "Invite to the project",
-            "SOLO_PROJECT": "You'll be alone in this project",
-            "INVITE_LATER": "(You'll be able to invite more members later)",
+            "IMPORT_DESC": "여러 플랫폼의 당신의 프로젝트를 타이가로 가져오십시오.",
+            "INVITE": "프로젝트로 초대",
+            "SOLO_PROJECT": "이 프로젝트에 당신 혼자 남을 것입니다.",
+            "INVITE_LATER": "(나중에 더 많은 회원을 초대 할 수 있습니다.)",
             "BACK": "이전",
-            "MAX_PRIVATE_PROJECTS": "Unfortunately, You've reached the maximum number of private projects.\nIf you would like to increase the current limit please contact the administrator.",
-            "MAX_PUBLIC_PROJECTS": "Unfortunately, You've reached the maximum number of public projects.\nIf you would like to increase the current limit please contact the administrator.",
+            "MAX_PRIVATE_PROJECTS": "비공개 프로젝트 수 제한에 도달하였습니다.\n제한을 늘리고 싶다면 관리자에게 연락하세요.",
+            "MAX_PUBLIC_PROJECTS": "공개 프로젝트 수 제한에 도달하였습니다.\n제한을 늘리고 싶다면 관리자에게 문의해주세요.",
             "PUBLIC_PROJECT": "공개된 프로젝트",
             "PRIVATE_PROJECT": "비공개 프로젝트"
         },
         "COMMON": {
-            "DETAILS": "New project details",
-            "PROJECT_TITLE": "Project Name",
-            "PROJECT_DESCRIPTION": "Project Description"
+            "DETAILS": "새로운 프로젝트 세부사항",
+            "PROJECT_TITLE": "프로젝트 이름",
+            "PROJECT_DESCRIPTION": "프로젝트 설명"
         },
         "DUPLICATE": {
-            "TITLE": "Duplicate Project",
-            "DESCRIPTION": "Start clean and keep your configuration",
-            "SELECT_PLACEHOLDER": "Choose an existing project to duplicate"
+            "TITLE": "프로젝트 복사",
+            "DESCRIPTION": "정리를 시작하고 설정을 유지",
+            "SELECT_PLACEHOLDER": "복제 할 기존 프로젝트 선택"
         },
         "IMPORT": {
-            "TITLE": "Import Project",
-            "DESCRIPTION": "Import your project from multiple platforms into Taiga",
+            "TITLE": "프로젝트 가져오기",
+            "DESCRIPTION": "여러 플랫폼의 당신의 프로젝트를 타이가로 가져오십시오.",
             "ASYNC_IN_PROGRESS_TITLE": "움파룸파가 프로젝트를 불러오고 있습니다.",
             "ASYNC_IN_PROGRESS_MESSAGE": "이 작업은 몇 분 정도 걸립니다.<br/> 작업이 끝나면 이메일로 알려드릴게요.",
             "UPLOAD_IN_PROGRESS_MESSAGE": "{{totalSize}} 중 {{uploadedSize}} 만큼 업로드했습니다",
@@ -904,18 +909,18 @@
             "ERROR_MESSAGE": "움파룸파가 덤프 파일을 불러올 수 없습니다. 다시 한 번 시도해주세요. {{error_message}}",
             "ERROR_MAX_SIZE_EXCEEDED": "우리 움파룸파에게 '{{fileName}}' ({{fileSize}}) 는 너무 커요. ({{maxFileSize}}) 보다 작은 크기로 다시 시도해주세요.",
             "SYNC_SUCCESS": "프로젝트를 불러오는 데 성공했습니다.",
-            "IMPORT": "Import",
-            "WHO_IS": "Their tasks will be assigned to ...",
-            "WRITE_EMAIL": "Or if you want, write the email that this user uses in Taiga",
-            "SEARCH_CONTACT": "Or if you want, search in your contacts",
-            "WRITE_EMAIL_LABEL": "Write the email that this user uses in Taiga",
+            "IMPORT": "가져오기",
+            "WHO_IS": "이 태스크들을 할당 ...",
+            "WRITE_EMAIL": "원한다면, 사용자가 사용하는 이메일을 타이가에 작성하십시오.",
+            "SEARCH_CONTACT": "또는 연락처에서 찾습니다.",
+            "WRITE_EMAIL_LABEL": "Tagia에서 사용자가 사용할 이메일을 작성",
             "ACCEEDE": "Acceede",
             "PROJECT_MEMBERS": "프로젝트 회원",
-            "PROCESS_DESCRIPTION": "Tell us who from Taiga you want to assign the tasks of {{platform}}",
-            "MATCH": "Is <strong>{{user_external}}</strong> the same person as <strong>{{user_internal}}</strong>?",
-            "CHOOSE": "Select user",
-            "LINKS": "Links with {{platform}}",
-            "LINKS_DESCRIPTION": "Do you want to keep the link of each item with the original {{platform}} card?",
+            "PROCESS_DESCRIPTION": "Tagia에서 {{platform}}의 태스크들을 누구에게 할당할 것인지 알려주세요.",
+            "MATCH": "외부의 <strong>{{user_external}}</strong> 사용자는 내부의 <strong>{{user_internal}}</strong> 사용자와 동일인입니까?",
+            "CHOOSE": "사용자 선택",
+            "LINKS": "{{platform}}과 연결",
+            "LINKS_DESCRIPTION": "{{platform}} 카드와 모든 아이템들의 연결을 유지하시겠습니까?",
             "WARNING_MAIL_USER": "Note that if the user does not have a Taiga account we will not be able to assign the tasks to him.",
             "ASSIGN": "할당",
             "PROJECT_SELECTOR": {
@@ -926,7 +931,7 @@
             "PROJECT_RESTRICTIONS": {
                 "PROJECT_MEMBERS_DESC_PRIVATE": "The project you are trying to import has {{members}} members including you, unfortunately, your current plan allows for a maximum of {{max_memberships}} members per private project. If you would like to increase that limit please contact the administrator.",
                 "PROJECT_MEMBERS_DESC_PUBLIC": "The project you are trying to import has {{members}} members including you, unfortunately, your current plan allows for a maximum of {{max_memberships}} members per public project. If you would like to increase that limit please contact the administrator.",
-                "ACCOUNT_ALLOW_MEMBERS": "Your account only allows {{members}} members",
+                "ACCOUNT_ALLOW_MEMBERS": "당신의 계정은 오직 {{members}} 회원만 허가되어있습니다.",
                 "PRIVATE_PROJECTS_SPACE": {
                     "TITLE": "안타깝게도, 당신의 설정에는 추가 비공개 프로젝트가 허용되어있지 않습니다.",
                     "DESC": "가져오기하려는 프로젝트가 비공개 되어있습니다. 안타깝게도, 현재 당신의 설정에는 추가 비공개 프로젝트가 허용되어있지 않습니다."
@@ -955,52 +960,53 @@
                 "DESCRIPTION": "이 과정은 시간이 걸릴 수 있습니다. 이 창을 닫지 마세요."
             },
             "WARNING": {
-                "TITLE": "Some taks will be unassigned",
+                "TITLE": "일부 태스크는 할당되지 않을 것입니다.",
                 "DESCRIPTION": "There are still unidentified people. The cards assigned to these people will remain unassigned. Check all the contacts to not lose that information.",
-                "CHECK": "Check contacts"
+                "CHECK": "연락처 확인"
             },
             "TAIGA": {
-                "SELECTOR": "Import your Taiga project"
+                "SELECTOR": "타이가 프로젝트 가져오기"
             },
             "TRELLO": {
-                "SELECTOR": "Import your Trello boards into Taiga",
-                "CHOOSE_PROJECT": "Choose board that you want to import",
-                "NO_PROJECTS": "It seems you have no boards in Trello"
+                "SELECTOR": "타이가로 트렐로 보드 가져오기",
+                "CHOOSE_PROJECT": "가져오고 싶은 보드를 선택하세요.",
+                "NO_PROJECTS": "트렐로에 당신의 보드가 없는 것 같군요."
             },
             "GITHUB": {
-                "SELECTOR": "Import your GitHub project issues",
-                "CHOOSE_PROJECT": "Find the project you want to import",
-                "NO_PROJECTS": "It seems you have no porjects in GitHub",
-                "HOW_DO_YOU_WANT_TO_IMPORT": "How do you want to import your issues into Taiga?",
-                "KANBAN_PROJECT": "As user stories in a kanban project",
-                "KANBAN_PROJECT_DESCRIPTION": "After that you can enable scrum with backlog.",
-                "SCRUM_PROJECT": "As user stories in a scrum project",
-                "SCRUM_PROJECT_DESCRIPTION": "After that you can enable kanban mode.",
-                "ISSUES_PROJECT": "As issues",
+                "SELECTOR": "깃헙 프로젝트 이슈 가져오기",
+                "CHOOSE_PROJECT": "가져오고 싶은 프로젝트를 찾으세요.",
+                "NO_PROJECTS": "깃헙에 당신의 프로젝트가 없는 것 같군요.",
+                "HOW_DO_YOU_WANT_TO_IMPORT": "타이가로 당신의 이슈들을 어떻게 가져오고 싶습니까?",
+                "KANBAN_PROJECT": "칸반 프로젝트의 유저 스토리",
+                "KANBAN_PROJECT_DESCRIPTION": "이후에 스크럼과 백로그를 활성화할 수 있습니다.",
+                "SCRUM_PROJECT": "스크럼 프로젝트의 유저 스토리",
+                "SCRUM_PROJECT_DESCRIPTION": "이후에 칸반모드를 활성화할 수 있습니다.",
+                "ISSUES_PROJECT": "이슈",
                 "ISSUES_PROJECT_DESCRIPTION": "You will not be able to use your issues in kanban or scrum mode. You will be able to enable kanban or scrum for new user stories"
             },
             "ASANA": {
-                "SELECTOR": "Import your Asana project and choose how to manage it",
-                "CHOOSE_PROJECT": "Choose project that you want to import",
-                "NO_PROJECTS": "It seems you have no porjects in Asana",
+                "SELECTOR": "가져올 Asana 프로젝트와 어떻게 관리할지를 선택하세요.",
+                "CHOOSE_PROJECT": "가져오고 싶은 프로젝트를 선택하세요.",
+                "NO_PROJECTS": "Asana에 당신의 프로젝트가 없는 것 같군요.",
                 "KANBAN_PROJECT": "칸반",
                 "SCRUM_PROJECT": "스크럼",
-                "CREATE_AS_SCRUM_DESCRIPTION": "The tasks and sub-tasks of your project will be created as Taiga user stories and tasks.",
-                "CREATE_AS_KANBAN_DESCRIPTION": "The tasks and sub-tasks of your project will be created as Taiga user stories and tasks."
+                "CREATE_AS_SCRUM_DESCRIPTION": "당신의 프로젝트에서 태스크와 하위 태스크는 Taiga 유저 스토리와 태스크로 작성됩니다.",
+                "CREATE_AS_KANBAN_DESCRIPTION": "당신의 프로젝트에서 태스크와 하위 태스크는 Taiga 유저 스토리와 태스크로 작성됩니다."
             },
             "JIRA": {
-                "SELECTOR": "Import your Jira project and choose how to manage it",
-                "CHOOSE_PROJECT": "Choose project or board that you want to import",
-                "NO_PROJECTS": "It seems you have no porjects or boards in Jira",
-                "URL": "Your Jira URL",
+                "SELECTOR": "가져올 Jira 프로젝트와 어떻게 관리할지를 선택하세요",
+                "HOW_TO_CONFIGURE": "(configuration help)",
+                "CHOOSE_PROJECT": "가져오고 싶은 프로젝트나 보드를 선택하세요.",
+                "NO_PROJECTS": "Jira에 당신의 프로젝트가나 보드가 없는 것 같군요.",
+                "URL": "당신의 Jira URL",
                 "KANBAN_PROJECT": "칸반",
                 "SCRUM_PROJECT": "스크럼",
                 "ISSUES_PROJECT": "이슈",
                 "CREATE_AS_SCRUM_DESCRIPTION": "The issues and sub-issues of your project will be created as Taiga user stories and tasks.",
                 "CREATE_AS_KANBAN_DESCRIPTION": "The issues and sub-issues of your project will be created as Taiga user stories and tasks.",
                 "CREATE_AS_ISSUES_DESCRIPTION": "What do you want to do with sub-issues from the Jira project? (Taiga doesn't allow sub-issues)",
-                "CREATE_NEW_ISSUES": "Convert sub-issues to new Taiga issues",
-                "NOT_CREATE_NEW_ISSUES": "Do not import sub-issues"
+                "CREATE_NEW_ISSUES": "하위 이슈를 새로운 타이가 이슈로 변경",
+                "NOT_CREATE_NEW_ISSUES": "하위 이슈를 가져오지 마십시오."
             }
         }
     },

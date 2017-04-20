@@ -16,3 +16,4 @@ scss-lint.log
 e2e/screenshots/
 e2e/reports/
 app/modules/compile-modules/
+yarn.lock

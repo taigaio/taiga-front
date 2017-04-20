@@ -86,7 +86,7 @@ class AvatarService
             logoUrl = encodeURIComponent(root + logo.src)
 
             return {
-                url: 'https://www.gravatar.com/avatar/' + gravatar + "?d=" + logoUrl,
+                url: 'https://www.gravatar.com/avatar/' + gravatar + "?s=200&d=" + logoUrl,
                 bg: logo.color
             }
 

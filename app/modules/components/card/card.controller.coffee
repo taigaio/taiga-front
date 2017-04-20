@@ -23,6 +23,13 @@ class CardController
     visible: (name) ->
         return @.zoom.indexOf(name) != -1
 
+    hasTasks: () ->
+        tasks = @.item.getIn(['model', 'tasks'])
+        return tasks and tasks.size > 0
+
+    hasVisibleAttachments: () ->
+        return @.item.get('images').size > 0
+
     toggleFold: () ->
         @.onToggleFold({id: @.item.get('id')})
 

@@ -7,14 +7,6 @@ _:-ms-fullscreen,
     }
 }
 
-
-// External lybrary makes weird things. Please destroy
-.markItUpEditor {
-    @include font-size(small);
-    line-height: 1.5;
-    font-family: monospace;
-}
-
 // Prevent IE Bug when the user clicks in the svg path the js event click doesn't work
 
 svg {

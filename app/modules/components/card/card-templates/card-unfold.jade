@@ -1,6 +1,6 @@
 .card-unfold.ng-animate-disabled(
     ng-click="vm.toggleFold()"
-    ng-if="vm.visible('unfold')"
+    ng-if="vm.visible('unfold') && (vm.hasTasks() || vm.hasVisibleAttachments())"
     role="button"
 )
     tg-svg(svg-icon="icon-view-more")

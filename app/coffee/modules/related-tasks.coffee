@@ -77,16 +77,12 @@ RelatedTaskRowDirective = ($repo, $compile, $confirm, $rootscope, $loading, $tem
                 renderView($model.$modelValue)
 
         renderView = (task) ->
-            @childScope.$destroy()
-            @childScope = $scope.$new()
-            $el.off()
-
             perms = {
                 modify_task: $scope.project.my_permissions.indexOf("modify_task") != -1
                 delete_task: $scope.project.my_permissions.indexOf("delete_task") != -1
             }
 
-            $el.html($compile(templateView({task: task, perms: perms}))(childScope))
+            $el.html($compile(templateView({task: task, perms: perms}))($scope))
 
             $el.on "click", ".edit-task", ->
                 renderEdit($model.$modelValue)

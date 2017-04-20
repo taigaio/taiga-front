@@ -72,6 +72,9 @@ class CurrentUserService
             .then (projects) => @.setProjects(projects)
 
     disableJoyRide: (section) ->
+        if !@.isAuthenticated()
+            return
+
         if section
             @._joyride[section] = false
         else

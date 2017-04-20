@@ -46,8 +46,8 @@ var MentionExtension = MediumEditor.Extension.extend({
             var endChar = this.selection.getRangeAt(0).startOffset;
             var textContent = this.selection.focusNode.textContent;
 
-            this.word = this.getLastWord(textContent);
             textContent = textContent.substring(0, endChar);
+            this.word = this.getLastWord(textContent);
 
             if (this.word.length > 1 && ['@', '#', ':'].indexOf(this.word[0]) != -1) {
                 this.wrap();
@@ -196,7 +196,7 @@ var MentionExtension = MediumEditor.Extension.extend({
             e.stopPropagation();
 
             var event = document.createEvent('HTMLEvents');
-            event.initEvent('click', true, false);
+            event.initEvent('mousedown', true, false);
 
             active.dispatchEvent(event);
 

@@ -59,9 +59,9 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
     constructor: (@scope, @rootscope, @repo, @model, @confirm, @rs, @params, @q, @location,
                   @filter, @log, @appMetaService, @navUrls, @analytics, @translate, @errorHandlingService, @projectService) ->
         @scope.$on("wiki:links:move", @.moveLink)
+        @scope.$on("wikipage:add", @.loadWiki)
         @scope.projectSlug = @params.pslug
         @scope.wikiSlug = @params.slug
-        @scope.wikiTitle = @scope.wikiSlug
         @scope.sectionName = "Wiki"
         @scope.linksVisible = false
 
@@ -75,7 +75,7 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
 
     _setMeta: ->
         title =  @translate.instant("WIKI.PAGE_TITLE", {
-            wikiPageName: @scope.wikiTitle
+            wikiPageName: @scope.wikiSlug
             projectName: @scope.project.name
         })
         description =  @translate.instant("WIKI.PAGE_DESCRIPTION", {
@@ -97,7 +97,7 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         @scope.$emit('project:loaded', project)
         return project
 
-    loadWiki: ->
+    loadWiki: =>
         promise = @rs.wiki.getBySlug(@scope.projectId, @params.slug)
         promise.then (wiki) =>
             @scope.wiki = wiki
@@ -129,7 +129,6 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
                 })
 
             selectedWikiLink = _.find(wikiLinks, {href: @scope.wikiSlug})
-            @scope.wikiTitle = selectedWikiLink.title if selectedWikiLink?
 
     loadInitialData: ->
         project = @.loadProject()
@@ -144,7 +143,7 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
 
     delete: ->
         title = @translate.instant("WIKI.DELETE_LIGHTBOX_TITLE")
-        message = @scope.wikiTitle
+        message = @scope.wikiSlug
 
         @confirm.askOnDelete(title, message).then (askResponse) =>
             onSuccess = =>
@@ -227,6 +226,7 @@ $qqueue, $repo, $analytics, wikiHistoryService) ->
             onSuccess = (wikiPage) ->
                 if not $scope.item.id?
                     $analytics.trackEvent("wikipage", "create", "create wiki page", 1)
+                    $scope.$emit("wikipage:add")
 
                 wikiHistoryService.loadHistoryEntries()
                 $confirm.notify("success")
@@ -255,7 +255,7 @@ $qqueue, $repo, $analytics, wikiHistoryService) ->
             return if not value
             $scope.item = value
             $scope.version = value.version
-            $scope.storageKey = $scope.project.id + "-" + value.id + "-" + $attrs.type
+            $scope.storageKey = $scope.project.id + "-" + value.id + "-wiki" 
 
         $scope.$watch 'project', (project) ->
             return if !project

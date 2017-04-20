@@ -23,6 +23,10 @@
 ###
 
 class WysiwygCodeHightlighterService
+    constructor: () ->
+        Prism.plugins.customClass.prefix('prism-')
+        Prism.plugins.customClass.map({})        
+        
     getLanguages: () ->
         return new Promise (resolve, reject) =>
             if @.languages

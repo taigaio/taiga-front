@@ -1,3 +1,4 @@
+// this :not(code) prevent to override prismjs (wysiwyg) styles
 .tag {
     @include font-type(light);
     @include font-size(small);

@@ -14,7 +14,7 @@
                 <%- value %>
     <% } else if (type=="richtext") { %>
     .custom-field-value.js-value-view-mode.wysiwyg
-        div(ng-bind-html!="\'<%- value %>\'|markdownToHTML")
+        div(ng-bind-html="attributeHtml")
     <% } else { %>
     .custom-field-value.js-value-view-mode
         span

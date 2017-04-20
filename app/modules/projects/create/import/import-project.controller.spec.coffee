@@ -68,6 +68,13 @@ describe "ImportProjectCtrl", ->
 
         $provide.value("$window", mocks.window)
 
+    _mockConfirm = ->
+        mocks.confirm = {
+            notify: sinon.stub()
+        }
+
+        $provide.value("$tgConfirm", mocks.confirm)
+
     _mockLocation = ->
         mocks.location = {
             search: sinon.stub()
@@ -98,6 +105,7 @@ describe "ImportProjectCtrl", ->
             _mockJiraImportService()
             _mockAsanaImportService()
             _mockWindow()
+            _mockConfirm()
             _mockLocation()
             _mockTgNavUrls()
             _mockRouteParams()
