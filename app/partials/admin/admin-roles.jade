@@ -34,6 +34,9 @@ div.wrapper.roles(ng-controller="RolesController as ctrl",
 
         div.any-computable-role(ng-hide="anyComputableRole", translate="ADMIN.ROLES.WARNING_NO_ROLE")
 
+        div.general-category.external-user(ng-if="role.external_user")
+            span(translate="ADMIN.ROLES.NOTE_EXTERNAL_USERS")
+
         div.general-category(ng-if="!role.external_user")
             span(translate="ADMIN.ROLES.HELP_ROLE_ENABLED")
             div.check
