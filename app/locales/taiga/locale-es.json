@@ -217,7 +217,7 @@
             "DB_CLICK": "double click to edit",
             "SELECT_LANGUAGE_PLACEHOLDER": "Selecciona un lenguaje",
             "SELECT_LANGUAGE_REMOVE_FORMATING": "Eliminar formato",
-            "OUTDATED": "Otra persona ha realizado cambios durante tu edición. Comprueba la nueva versión en la pestaña de activiy antes de guardar los cambios.",
+            "OUTDATED": "Otra persona ha realizado cambios durante tu edición. Comprueba la nueva versión en la pestaña de activity antes de guardar los cambios.",
             "MARKDOWN_HELP": "Ayuda de sintaxis Markdown"
         },
         "PERMISIONS_CATEGORIES": {
