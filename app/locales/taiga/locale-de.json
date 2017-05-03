@@ -44,7 +44,7 @@
         "CAPSLOCK_WARNING": "Achtung! Sie verwenden Großbuchstaben in einem Eingabefeld, dass Groß- und Kleinschreibung berücksichtigt.",
         "CONFIRM_CLOSE_EDIT_MODE_TITLE": "Sind Sie sicher, dass Sie den Bearbeitungsmodus beenden möchten?",
         "CONFIRM_CLOSE_EDIT_MODE_MESSAGE": "Beachten Sie, dass alle Änderungen verloren gehen, wenn Sie den Bearbeitungsmodus schließen, ohne vorher zu speichern.",
-        "RELATED_USERSTORIES": "Related user stories",
+        "RELATED_USERSTORIES": "Verwandte User Stories",
         "CARD": {
             "ASSIGN_TO": "Zuweisen an",
             "EDIT": "Karte bearbeiten"
@@ -217,7 +217,7 @@
             "DB_CLICK": "double click to edit",
             "SELECT_LANGUAGE_PLACEHOLDER": "Select Language",
             "SELECT_LANGUAGE_REMOVE_FORMATING": "Remove formatting",
-            "OUTDATED": "Another person has made changes while you were editing. Check the new version on the activiy tab before you save your changes.",
+            "OUTDATED": "Another person has made changes while you were editing. Check the new version on the activity tab before you save your changes.",
             "MARKDOWN_HELP": "Markdown syntax Hilfe"
         },
         "PERMISIONS_CATEGORIES": {
@@ -290,7 +290,7 @@
         "ACTION_ENTER": "Eingabe",
         "ACTION_SIGN_IN": "Login",
         "PLACEHOLDER_AUTH_PASSWORD": "Passwort",
-        "ALT_LOGIN": "Or login with"
+        "ALT_LOGIN": "Oder einloggen mit"
     },
     "LOGIN_FORM": {
         "ERROR_AUTH_INCORRECT": "Laut unserem Helferlein ist Dein Benutzername/Deine E-Mail-Adresse oder Dein Passwort nicht korrekt. (Bitte achte auf die Groß- und Kleinschreibung.)",
@@ -494,7 +494,7 @@
             "RECRUITING": "Is this project looking for people?",
             "RECRUITING_MESSAGE": "Wen suchst du denn?",
             "RECRUITING_PLACEHOLDER": "Define the profiles you are looking for",
-            "FEEDBACK": "Receive feedback from Taiga users?",
+            "FEEDBACK": "Feedback von Taiga-Nutzern erhalten?",
             "PUBLIC_PROJECT": "Öffentliches Projekt",
             "PRIVATE_PROJECT": "Privates Projekt",
             "PRIVATE_OR_PUBLIC": "Was ist der Unterschied zwischen öffentlichen und privaten Projekten?",
@@ -575,7 +575,7 @@
             "ACTION_ADD": "Neue Gewichtung hinzufügen"
         },
         "PROJECT_VALUES_STATUS": {
-            "TITLE": "Statuses",
+            "TITLE": "Status",
             "SUBTITLE": "Spezifizieren Sie die Status, die Ihre User-Stories, Aufgaben und Tickets durchlaufen werden.",
             "EPIC_TITLE": "Epic Status",
             "US_TITLE": "User-Story Status",
@@ -590,7 +590,7 @@
         },
         "PROJECT_VALUES_TAGS": {
             "TITLE": "Schlagwörter",
-            "SUBTITLE": "View and edit the color of your tags",
+            "SUBTITLE": "Farben der Tags anzeigen und verändern",
             "EMPTY": "Zur Zeit sind keine Tags vorhanden",
             "EMPTY_SEARCH": "Es sieht so aus, als konnte zu Ihren Suchkriterien nichts passendes gefunden werden.",
             "ACTION_ADD": "Schlagwort hinzufügen",
@@ -610,7 +610,8 @@
             "REPLACEMENT_ROLE": "Alle Benutzer mit dieser Rolle werden verschoben nach",
             "WARNING_DELETE_ROLE": "Achtung! Alle Rollenverteilungen werden entfernt.",
             "ERROR_DELETE_ALL": "Sie können nicht alle Werte löschen",
-            "EXTERNAL_USER": "Externer Benutzer"
+            "EXTERNAL_USER": "Externer Benutzer",
+            "NOTE_EXTERNAL_USERS": "<strong>Note:</strong> by External User we mean any anonymous user not belonging to the Taiga platform, including search engines. Please use this role with care."
         },
         "THIRD_PARTIES": {
             "SECRET_KEY": "Geheimschlüssel",
@@ -801,9 +802,9 @@
         "HELP": "Sortieren Sie Ihre Projekte nach Wichtigkeit.<br/> Die ersten 10 Projekte erscheinen prominent in der Projektliste der Navigationsleiste.",
         "PRIVATE": "Privates Projekt",
         "LOOKING_FOR_PEOPLE": "Dieses Projekt sucht nach Mitarbeitern",
-        "FANS_COUNTER_TITLE": "{total, plural, one{ein Fan} andere{# Fans}}",
-        "WATCHERS_COUNTER_TITLE": "{total, plural, one{ein Beobachter} andere{# Beobachter}}",
-        "MEMBERS_COUNTER_TITLE": "{total, plural, one{one member} andere{# members}}",
+        "FANS_COUNTER_TITLE": "{total, plural, one{ein Fan} other{# Fans}}",
+        "WATCHERS_COUNTER_TITLE": "{total, plural, one{ein Beobachter} other{# Beobachter}}",
+        "MEMBERS_COUNTER_TITLE": "{total, plural, one{one member} other{# members}}",
         "BLOCKED_PROJECT": {
             "BLOCKED": "Blockiertes Projekt",
             "THIS_PROJECT_IS_BLOCKED": "Dieses Projekt ist vorrübergehend blockiert",
@@ -863,7 +864,7 @@
             }
         },
         "CONTACT_BUTTON": {
-            "CONTACT_TITLE": "Contact the project team",
+            "CONTACT_TITLE": "Kontaktiere das Projekt-Team",
             "CONTACT_BUTTON": "Contact the project"
         },
         "CREATE": {
@@ -873,12 +874,12 @@
             "TEMPLATE_SCRUM_DESC": "Prioritize and solve your tasks in short time cycles.",
             "TEMPLATE_SCRUM_LONGDESC": "Scrum is an iterative and incremental agile software development methodology for managing product development.\nThe product backlog is what will ultimately be delivered, ordered into the sequence in which it should be delivered. Product Backlogs are broken into manageable, executable chunks named sprints. Every certain amount of time the team initiates a new sprint and commits to deliver a certain number of user stories from the backlog, in accordance with their skills, abilities and resources. The project advances as the backlog becomes depleted.",
             "TEMPLATE_KANBAN": "Kanban",
-            "TEMPLATE_KANBAN_DESC": "Keep a constant workflow on independent tasks",
+            "TEMPLATE_KANBAN_DESC": "Halte einen konstanten Workflow bei unabhängigen Aufgaben",
             "TEMPLATE_KANBAN_LONGDESC": "The Kanban methodology is used to divide project development (any sort of project) into stages.\nA kanban card is like an index card or post-it note that details every task (or user story) in a project that needs to be completed. The Kanban board is used to move each card from one state of completion to the next and in so doing, helps track progress.",
-            "DUPLICATE": "Duplicate project",
-            "DUPLICATE_DESC": "Start clean and keep your configuration",
+            "DUPLICATE": "Projekt duplizieren",
+            "DUPLICATE_DESC": "Starte sauber und behalte Deine Konfiguration",
             "IMPORT": "Projekt importieren",
-            "IMPORT_DESC": "Import your project from multiple platforms into Taiga",
+            "IMPORT_DESC": "Importiere Dein Projekt von verschiedenen Plattformen zu Taiga",
             "INVITE": "Invite to the project",
             "SOLO_PROJECT": "You'll be alone in this project",
             "INVITE_LATER": "(You'll be able to invite more members later)",
@@ -890,17 +891,17 @@
         },
         "COMMON": {
             "DETAILS": "New project details",
-            "PROJECT_TITLE": "Project Name",
-            "PROJECT_DESCRIPTION": "Project Description"
+            "PROJECT_TITLE": "Projektname",
+            "PROJECT_DESCRIPTION": "Projekt-Beschreibung"
         },
         "DUPLICATE": {
-            "TITLE": "Duplicate Project",
-            "DESCRIPTION": "Start clean and keep your configuration",
-            "SELECT_PLACEHOLDER": "Choose an existing project to duplicate"
+            "TITLE": "Projekt duplizieren",
+            "DESCRIPTION": "Starte sauber und behalte Deine Konfiguration",
+            "SELECT_PLACEHOLDER": "Wähle ein bestehendes Projekt zum Duplizieren aus"
         },
         "IMPORT": {
-            "TITLE": "Import Project",
-            "DESCRIPTION": "Import your project from multiple platforms into Taiga",
+            "TITLE": "Projekt importieren",
+            "DESCRIPTION": "Importiere Dein Projekt von verschiedenen Plattformen zu Taiga",
             "ASYNC_IN_PROGRESS_TITLE": "Unsere Helferlein importieren Ihr Projekt",
             "ASYNC_IN_PROGRESS_MESSAGE": "Dieser Vorgang könnte ein paar Minuten benötigen <br/> Nach Fertigstellung benachrichtigen wir Sie per E-Mail.",
             "UPLOAD_IN_PROGRESS_MESSAGE": "Hochgeladen {{uploadedSize}} von {{totalSize}}",
@@ -1029,11 +1030,11 @@
         },
         "ADD_MEMBER": {
             "TITLE": "Neues Mitglied",
-            "PLACEHOLDER": "Filter users or write an email to invite",
-            "ADD_EMAIL": "Add email",
-            "REMOVE": "Remove",
-            "INVITE": "Invite",
-            "CHOOSE_ROLE": "Choose a role",
+            "PLACEHOLDER": "Nach Nutzern suchen oder per E-Mail einladen",
+            "ADD_EMAIL": "E-Mail hinzufügen",
+            "REMOVE": "Entfernen",
+            "INVITE": "Einladen",
+            "CHOOSE_ROLE": "Rolle auswählen",
             "PLACEHOLDER_INVITATION_TEXT": "(Optional) Fügen Sie einen persönlichen Text zur Einladung hinzu. Erzählen Sie Ihren neuen Mitgliedern etwas Schönes. ;-)",
             "HELP_TEXT": "Wenn Benutzer schon bei Taiga registriert sind, werden diese automatisch hinzugefügt. Ansonsten erhalten sie eine Einladung."
         },
@@ -1098,10 +1099,10 @@
             "BUTTON": "Fragen Sie dieses Projektmitglied, um Projektleiter zu werden"
         },
         "CONTACT_PROJECT": {
-            "TITLE": "Send an email to",
-            "WARNING": "The email will be received by the project admins",
-            "PLACEHOLDER": "Write your message",
-            "SEND": "Send"
+            "TITLE": "Sende eine E-Mail an",
+            "WARNING": "Die E-Mail wird von den Projekt-Administratoren empfangen",
+            "PLACEHOLDER": "Schreibe Deine Nachricht",
+            "SEND": "Senden"
         }
     },
     "EPIC": {
@@ -1119,7 +1120,7 @@
         "SUBJECT_BULK_MODE": "Subject (bulk insert)",
         "CHOOSE_PROJECT_FROM": "What's the project?",
         "CHOOSE_USERSTORY": "What's the user story?",
-        "NO_USERSTORIES": "This project has no User Stories yet. Please select another project.",
+        "NO_USERSTORIES": "Dieses Projekt hat zurzeit keine User Stories. Bitte wähle ein anderes Projekt.",
         "FILTER_USERSTORIES": "User-Stories filter",
         "LIGHTBOX_TITLE_BLOKING_EPIC": "Blocking epic",
         "ACTION_DELETE": "Epic löschen"
@@ -1138,6 +1139,7 @@
         "TITLE_DELETE_ACTION": "User-Story löschen",
         "LIGHTBOX_TITLE_BLOKING_US": "Blockiert uns",
         "NOT_ESTIMATED": "Nicht eingeschätzt",
+        "OWNER_US": "This User Story belongs to",
         "TRIBE": {
             "PUBLISH": "Als Gig in Taiga Tribe veröffentlichen",
             "PUBLISH_INFO": "Weitere Infos",
@@ -1161,7 +1163,7 @@
         "RECENT_FIRST": "Letzte zuerst",
         "COMMENT": "Kommentieren",
         "EDITED_COMMENT": "Bearbeitet:",
-        "SHOW_HISTORY": "View historic",
+        "SHOW_HISTORY": "Verlauf anzeigen",
         "TYPE_NEW_COMMENT": "Geben Sie hier einen neuen Kommentar ein",
         "SHOW_DELETED": "Gelöschten Kommentar anzeigen",
         "HIDE_DELETED": "Gelöschten Kommentar ausblenden",

@@ -213,11 +213,11 @@
             }
         },
         "WYSIWYG": {
-            "CODE_SNIPPET": "Code Snippet",
-            "DB_CLICK": "double click to edit",
-            "SELECT_LANGUAGE_PLACEHOLDER": "Select Language",
+            "CODE_SNIPPET": "代码块",
+            "DB_CLICK": "双击进行编辑",
+            "SELECT_LANGUAGE_PLACEHOLDER": "选择语言",
             "SELECT_LANGUAGE_REMOVE_FORMATING": "Remove formatting",
-            "OUTDATED": "在你编辑期间其他人做过变更，保存前请先检查新版本",
+            "OUTDATED": "Another person has made changes while you were editing. Check the new version on the activity tab before you save your changes.",
             "MARKDOWN_HELP": "Markdown 语法帮助"
         },
         "PERMISIONS_CATEGORIES": {
@@ -610,7 +610,8 @@
             "REPLACEMENT_ROLE": "和此角色有关的用户都将被移除",
             "WARNING_DELETE_ROLE": "小心！所有角色估算都将被移除",
             "ERROR_DELETE_ALL": "你不能删除所有值",
-            "EXTERNAL_USER": "外部用户"
+            "EXTERNAL_USER": "外部用户",
+            "NOTE_EXTERNAL_USERS": "<strong>Note:</strong> by External User we mean any anonymous user not belonging to the Taiga platform, including search engines. Please use this role with care."
         },
         "THIRD_PARTIES": {
             "SECRET_KEY": "密钥",
@@ -965,7 +966,7 @@
                 "CHECK": "Check contacts"
             },
             "TAIGA": {
-                "SELECTOR": "Import your Taiga project"
+                "SELECTOR": "导入您的Taigo项目"
             },
             "TRELLO": {
                 "SELECTOR": "Import your Trello boards into Taiga",
@@ -973,7 +974,7 @@
                 "NO_PROJECTS": "It seems you have no boards in Trello"
             },
             "GITHUB": {
-                "SELECTOR": "Import your GitHub project issues",
+                "SELECTOR": "导入你在GitHub上的问题",
                 "CHOOSE_PROJECT": "查找你想要导入的项目",
                 "NO_PROJECTS": "It seems you have no porjects in GitHub",
                 "HOW_DO_YOU_WANT_TO_IMPORT": "How do you want to import your issues into Taiga?",
@@ -1138,6 +1139,7 @@
         "TITLE_DELETE_ACTION": "删除用户故事",
         "LIGHTBOX_TITLE_BLOKING_US": "封锁中的用户故事",
         "NOT_ESTIMATED": "无预估",
+        "OWNER_US": "This User Story belongs to",
         "TRIBE": {
             "PUBLISH": "以Gig的形式在Taiga Tribe中发布",
             "PUBLISH_INFO": "更多信息",

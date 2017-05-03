@@ -217,7 +217,7 @@
             "DB_CLICK": "double click to edit",
             "SELECT_LANGUAGE_PLACEHOLDER": "Select Language",
             "SELECT_LANGUAGE_REMOVE_FORMATING": "Remove formatting",
-            "OUTDATED": "Another person has made changes while you were editing. Check the new version on the activiy tab before you save your changes.",
+            "OUTDATED": "Another person has made changes while you were editing. Check the new version on the activity tab before you save your changes.",
             "MARKDOWN_HELP": "Ajuda de sintaxe markdown"
         },
         "PERMISIONS_CATEGORIES": {
@@ -610,7 +610,8 @@
             "REPLACEMENT_ROLE": "Todos os usuários com essa função serão movidos para",
             "WARNING_DELETE_ROLE": "Cuidado! Todas as estimativas de papéis serão removidas",
             "ERROR_DELETE_ALL": "Você não pode excluir todos os valores",
-            "EXTERNAL_USER": "Usuário externo"
+            "EXTERNAL_USER": "Usuário externo",
+            "NOTE_EXTERNAL_USERS": "<strong>Note:</strong> by External User we mean any anonymous user not belonging to the Taiga platform, including search engines. Please use this role with care."
         },
         "THIRD_PARTIES": {
             "SECRET_KEY": "Chave secreta",
@@ -1138,6 +1139,7 @@
         "TITLE_DELETE_ACTION": "Apagar história de usuário",
         "LIGHTBOX_TITLE_BLOKING_US": "História de usuário bloqueadora",
         "NOT_ESTIMATED": "Não estimado",
+        "OWNER_US": "This User Story belongs to",
         "TRIBE": {
             "PUBLISH": "Publicar como Gig no Taiga Tribe",
             "PUBLISH_INFO": "Mais informações",

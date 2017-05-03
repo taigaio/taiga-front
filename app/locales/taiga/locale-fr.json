@@ -214,10 +214,10 @@
         },
         "WYSIWYG": {
             "CODE_SNIPPET": "Code Snippet",
-            "DB_CLICK": "double click to edit",
+            "DB_CLICK": "double cliquer pour modifier",
             "SELECT_LANGUAGE_PLACEHOLDER": "Sélectionnez la langue",
             "SELECT_LANGUAGE_REMOVE_FORMATING": "Retirer la mise en forme",
-            "OUTDATED": "Une autre personne a apportée des modifications lors de l'édition. Vérifiez la nouvelle version dans l'onglet Activité avant d'enregistrer vos modifications.",
+            "OUTDATED": "Another person has made changes while you were editing. Check the new version on the activity tab before you save your changes.",
             "MARKDOWN_HELP": "Aide sur la syntaxe Markdown"
         },
         "PERMISIONS_CATEGORIES": {
@@ -241,7 +241,7 @@
                 "VIEW_USER_STORIES": "Afficher les récits utilisateur",
                 "ADD_USER_STORIES": "Ajouter des récits utilisateur",
                 "MODIFY_USER_STORIES": "Modifier les récits utilisateur",
-                "COMMENT_USER_STORIES": "Commenter les histoires utilisateur",
+                "COMMENT_USER_STORIES": "Commenter les récits utilisateur",
                 "DELETE_USER_STORIES": "Supprimer des récits utilisateur"
             },
             "TASKS": {
@@ -290,7 +290,7 @@
         "ACTION_ENTER": "Entrer",
         "ACTION_SIGN_IN": "Se connecter",
         "PLACEHOLDER_AUTH_PASSWORD": "Mot de passe (sensible à la casse)",
-        "ALT_LOGIN": "Or login with"
+        "ALT_LOGIN": "Ou connectez vous avec"
     },
     "LOGIN_FORM": {
         "ERROR_AUTH_INCORRECT": "D'après nos Oompa Loompas, votre nom d'utilisateur / adresse courriel ou votre mot de passe sont incorrects.",
@@ -467,7 +467,7 @@
             "BACKLOG_DESCRIPTION": "Gérez votre récits utilisateur pour garder une vue organisée des travaux à venir et priorisés.",
             "NUMBER_SPRINTS": "Nombre prévu de sprints",
             "NUMBER_SPRINTS_HELP": "0 pour un nombre indéterminé",
-            "NUMBER_US_POINTS": "Total prévu de points d'histoire",
+            "NUMBER_US_POINTS": "Total prévu de points de récit",
             "NUMBER_US_POINTS_HELP": "0 pour un nombre indéterminé",
             "KANBAN": "Kanban",
             "KANBAN_DESCRIPTION": "Organisez votre projet de manière agile avec ce tableau.",
@@ -610,7 +610,8 @@
             "REPLACEMENT_ROLE": "Tous les utilisateurs avec ce rôle seront déplacés dans",
             "WARNING_DELETE_ROLE": "Attention ! Toutes les estimations du rôle vont être supprimées",
             "ERROR_DELETE_ALL": "Vous ne pouvez pas supprimer toutes les valeurs",
-            "EXTERNAL_USER": "Utilisateur externe"
+            "EXTERNAL_USER": "Utilisateur externe",
+            "NOTE_EXTERNAL_USERS": "<strong>Note:</strong> by External User we mean any anonymous user not belonging to the Taiga platform, including search engines. Please use this role with care."
         },
         "THIRD_PARTIES": {
             "SECRET_KEY": "Clé secrète",
@@ -995,7 +996,7 @@
             },
             "JIRA": {
                 "SELECTOR": "Importer votre projet Jira et choisissez comment le suivre",
-                "HOW_TO_CONFIGURE": "(configuration help)",
+                "HOW_TO_CONFIGURE": "(comment configurer)",
                 "CHOOSE_PROJECT": "Choisissez le projet ou le tableau que vous souhaitez importer",
                 "NO_PROJECTS": "Il semble que vous n'aillez ni projet ni tableau dans Jira",
                 "URL": "Votre URL Jira",
@@ -1138,11 +1139,12 @@
         "TITLE_DELETE_ACTION": "Supprimer le récit utilisateur",
         "LIGHTBOX_TITLE_BLOKING_US": "Bloque le RU",
         "NOT_ESTIMATED": "Non estimé",
+        "OWNER_US": "This User Story belongs to",
         "TRIBE": {
             "PUBLISH": "Publier en tant que Gig sur Taiga Tribe ",
             "PUBLISH_INFO": "Plus d'informations",
             "PUBLISH_TITLE": "Plus d'informations sur la publication dans Taiga Tribe",
-            "PUBLISHED_AS_GIG": "Histoire publiée comme Gig dans Taiga Tribe",
+            "PUBLISHED_AS_GIG": "Récit publiée comme Gig dans Taiga Tribe",
             "EDIT_LINK": "Modifier le lien",
             "CLOSE": "Fermer",
             "SYNCHRONIZE_LINK": "se synchroniser avec Taiga Tribe",
@@ -1239,8 +1241,8 @@
         "FORECASTING": {
             "TITLE": "Prévision de la vitesse",
             "BACKLOG": "Afficher le carnet de commandes",
-            "NEW_SPRINT": "Histoires d'utilisateurs pour votre prochain sprint en fonction de votre vitesse. Cliquez ici pour créer un nouveau sprint.",
-            "CURRENT_SPRINT": "Histoires d'utilisateur candidat pour votre sprint basé sur votre vitesse. Cliquez ici pour ajouter au sprint actuel."
+            "NEW_SPRINT": "Récits utilisateur candidats pour votre prochain sprint en fonction de votre vitesse. Cliquez ici pour créer un nouveau sprint.",
+            "CURRENT_SPRINT": "Récits utilisateur candidat pour votre sprint basé sur votre vitesse. Cliquez ici pour ajouter au sprint actuel."
         },
         "TABLE": {
             "COLUMN_US": "Récits utilisateur",
