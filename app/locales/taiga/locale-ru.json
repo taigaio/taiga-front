@@ -37,7 +37,7 @@
         "LOGOUT": "Выйти",
         "EXTERNAL_USER": "внешний пользователь",
         "GENERIC_ERROR": "Один из Умпа-Лумп говорит {{error}}.",
-        "IOCAINE_TEXT": "This member is feeling a bit overwhelmed by this task. Will become immune to the iocaine poison over time with your help. For now, may need a hug.",
+        "IOCAINE_TEXT": "Пользователь не справляется с этой задачей. Возможно со временем Вы сможете ему помочь. Сейчас, просто обнимите его.",
         "CLIENT_REQUIREMENT": "Client requirement is new requirement that was not previously expected and it is required to be part of the project",
         "TEAM_REQUIREMENT": "Team requirement is a requirement that must exist in the project but should have no cost for the client",
         "OWNER": "Владелец проекта",
@@ -199,7 +199,7 @@
             "TITLE_ACTION_SEARCH": "Поиск",
             "ACTION_SAVE_CUSTOM_FILTER": "сохранить как специальный фильтр",
             "PLACEHOLDER_FILTER_NAME": "Введите название фильтра и нажмите \"ввод\"",
-            "APPLIED_FILTERS_NUM": "filters applied",
+            "APPLIED_FILTERS_NUM": "фильтры применены",
             "CATEGORIES": {
                 "TYPE": "Тип",
                 "STATUS": "Статус",
@@ -213,11 +213,11 @@
             }
         },
         "WYSIWYG": {
-            "CODE_SNIPPET": "Code Snippet",
-            "DB_CLICK": "double click to edit",
+            "CODE_SNIPPET": "Блок Кода",
+            "DB_CLICK": "двойной клик для редактирования",
             "SELECT_LANGUAGE_PLACEHOLDER": "Выбор языка",
-            "SELECT_LANGUAGE_REMOVE_FORMATING": "Remove formatting",
-            "OUTDATED": "Another person has made changes while you were editing. Check the new version on the activiy tab before you save your changes.",
+            "SELECT_LANGUAGE_REMOVE_FORMATING": "Убрать форматирование",
+            "OUTDATED": "Another person has made changes while you were editing. Check the new version on the activity tab before you save your changes.",
             "MARKDOWN_HELP": "Помощь по синтаксису Markdown"
         },
         "PERMISIONS_CATEGORIES": {
@@ -226,7 +226,7 @@
                 "VIEW_EPICS": "Посмотреть эпосы",
                 "ADD_EPICS": "Добавить эпосы",
                 "MODIFY_EPICS": "Изменить эпосы",
-                "COMMENT_EPICS": "Comment epics",
+                "COMMENT_EPICS": "Комментировать эпик",
                 "DELETE_EPICS": "Удалить эпосы"
             },
             "SPRINTS": {
@@ -290,7 +290,7 @@
         "ACTION_ENTER": "Ввод",
         "ACTION_SIGN_IN": "Логин",
         "PLACEHOLDER_AUTH_PASSWORD": "Пароль (чувствителен к регистру)",
-        "ALT_LOGIN": "Or login with"
+        "ALT_LOGIN": "Или войдите с помощью"
     },
     "LOGIN_FORM": {
         "ERROR_AUTH_INCORRECT": "Oompa Loompas считает, что ваше имя пользователя, электронная почта или пароль неправильные.",
@@ -546,7 +546,7 @@
             "ISSUE_DESCRIPTION": "Специальные поля запросов",
             "ISSUE_ADD": "Добавить специальное поле для запросов",
             "FIELD_TYPE_TEXT": "Текст",
-            "FIELD_TYPE_RICHTEXT": "Rich text",
+            "FIELD_TYPE_RICHTEXT": "Форматируемый текст",
             "FIELD_TYPE_MULTI": "Многостроковое",
             "FIELD_TYPE_DATE": "Дата",
             "FIELD_TYPE_URL": "Url"
@@ -610,7 +610,8 @@
             "REPLACEMENT_ROLE": "Все пользователи этой роли будут перемещены в",
             "WARNING_DELETE_ROLE": "Be careful! All role estimations will be removed",
             "ERROR_DELETE_ALL": "Вы не можете удалить все значения",
-            "EXTERNAL_USER": "Внешний пользователь"
+            "EXTERNAL_USER": "Внешний пользователь",
+            "NOTE_EXTERNAL_USERS": "<strong>Note:</strong> by External User we mean any anonymous user not belonging to the Taiga platform, including search engines. Please use this role with care."
         },
         "THIRD_PARTIES": {
             "SECRET_KEY": "Секретный ключ",
@@ -689,7 +690,7 @@
         },
         "DEFAULT_VALUES": {
             "LABEL_EPIC_STATUS": "Default value for epic status selector",
-            "LABEL_US_STATUS": "Default value for user story status selector",
+            "LABEL_US_STATUS": "Выбор значения статуса по умолчанию для пользовательской истории",
             "LABEL_POINTS": "Значения по умолчанию для выбора очков",
             "LABEL_TASK_STATUS": "Значение по умолчанию для статуса задачи",
             "LABEL_ISSUE_TYPE": "Значение по умолчанию для типа запроса",
@@ -863,44 +864,44 @@
             }
         },
         "CONTACT_BUTTON": {
-            "CONTACT_TITLE": "Contact the project team",
-            "CONTACT_BUTTON": "Contact the project"
+            "CONTACT_TITLE": "Связаться с командой проекта",
+            "CONTACT_BUTTON": "Связаться с проектом"
         },
         "CREATE": {
             "TITLE": "Создать проект",
-            "CHOOSE_TEMPLATE": "Which template fits your project better?",
+            "CHOOSE_TEMPLATE": "Какой из шаблонов лучше подходит Вашему проекту?",
             "TEMPLATE_SCRUM": "Scrum",
-            "TEMPLATE_SCRUM_DESC": "Prioritize and solve your tasks in short time cycles.",
-            "TEMPLATE_SCRUM_LONGDESC": "Scrum is an iterative and incremental agile software development methodology for managing product development.\nThe product backlog is what will ultimately be delivered, ordered into the sequence in which it should be delivered. Product Backlogs are broken into manageable, executable chunks named sprints. Every certain amount of time the team initiates a new sprint and commits to deliver a certain number of user stories from the backlog, in accordance with their skills, abilities and resources. The project advances as the backlog becomes depleted.",
+            "TEMPLATE_SCRUM_DESC": "Регулярно выставляйте приоритеты вашим задачам и меняйте их статусы",
+            "TEMPLATE_SCRUM_LONGDESC": "Скрам это методология управления процессом разработки программного обеспечения построенная на коротких итерациях и постепенном прогрессе. Бэклог по продукту это те задачи которые нужно сделать, отсортированные в порядке приоритета. Бэклоги разбиваются на относительно короткие, управляемые куски - спринты. На основании возможностей, навыков и ресурсов команды в каждый спринт вносится несколько выбранных пользовательских историй из бэклога. На каждый спринт выделяется оговоренный период времени. С развитием проекта бэклог уменьшается.",
             "TEMPLATE_KANBAN": "Kanban",
-            "TEMPLATE_KANBAN_DESC": "Keep a constant workflow on independent tasks",
+            "TEMPLATE_KANBAN_DESC": "Придерживайтесь одинаковых принципов работы над независимыми задачами",
             "TEMPLATE_KANBAN_LONGDESC": "The Kanban methodology is used to divide project development (any sort of project) into stages.\nA kanban card is like an index card or post-it note that details every task (or user story) in a project that needs to be completed. The Kanban board is used to move each card from one state of completion to the next and in so doing, helps track progress.",
-            "DUPLICATE": "Duplicate project",
-            "DUPLICATE_DESC": "Start clean and keep your configuration",
+            "DUPLICATE": "Клонировать проект",
+            "DUPLICATE_DESC": "Начните сначала и сохраняйте вашу конфигурацию",
             "IMPORT": "Импортировать проект",
-            "IMPORT_DESC": "Import your project from multiple platforms into Taiga",
+            "IMPORT_DESC": "Импортируйте Ваши проекты в Taiga из других систем ",
             "INVITE": "Пригласить в проект",
-            "SOLO_PROJECT": "You'll be alone in this project",
-            "INVITE_LATER": "(You'll be able to invite more members later)",
+            "SOLO_PROJECT": "Вы единственный пользователь в этом проекте",
+            "INVITE_LATER": "(Вы сможете пригласить больше пользователей позже)",
             "BACK": "Бэкенд разработчик",
-            "MAX_PRIVATE_PROJECTS": "Unfortunately, You've reached the maximum number of private projects.\nIf you would like to increase the current limit please contact the administrator.",
-            "MAX_PUBLIC_PROJECTS": "Unfortunately, You've reached the maximum number of public projects.\nIf you would like to increase the current limit please contact the administrator.",
+            "MAX_PRIVATE_PROJECTS": "К сожалению Вы исчерпали количество приватных проектов. Если Вы хотите увеличить текущий лимит, пожалуйста обратитесь к администратору.",
+            "MAX_PUBLIC_PROJECTS": "К сожалению, Вы исчерпали количество публичных проектов. Если Вы хотите увеличить лимит, пожалуйста свяжитесь с администратором.",
             "PUBLIC_PROJECT": "Public Project",
             "PRIVATE_PROJECT": "Частный проект"
         },
         "COMMON": {
-            "DETAILS": "New project details",
+            "DETAILS": "Новые свойства проекта",
             "PROJECT_TITLE": "Название проекта",
             "PROJECT_DESCRIPTION": "Описание проекта"
         },
         "DUPLICATE": {
-            "TITLE": "Duplicate Project",
-            "DESCRIPTION": "Start clean and keep your configuration",
-            "SELECT_PLACEHOLDER": "Choose an existing project to duplicate"
+            "TITLE": "Клонировать проект",
+            "DESCRIPTION": "Начните сначала и сохраняйте вашу конфигурацию",
+            "SELECT_PLACEHOLDER": "Выберите имеющийся проект чтобы его клонировать"
         },
         "IMPORT": {
-            "TITLE": "Import Project",
-            "DESCRIPTION": "Import your project from multiple platforms into Taiga",
+            "TITLE": "Импортировать проект",
+            "DESCRIPTION": "Импортируйте Ваши проекты в Taiga из других систем ",
             "ASYNC_IN_PROGRESS_TITLE": "Oompa Loompas импортирует ваш проект",
             "ASYNC_IN_PROGRESS_MESSAGE": "Этот процесс может занять несколько минут <br/> Мы отправим вам email, когда всё будет готово",
             "UPLOAD_IN_PROGRESS_MESSAGE": "Загружено {{uploadedSize}} размера {{totalSize}}",
@@ -910,16 +911,16 @@
             "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) это слишком много для наших Умпа-Лумп, попробуйте еще раз с размером меньшим, чем ({{maxFileSize}})",
             "SYNC_SUCCESS": "Импорт проекта выполнен успешно",
             "IMPORT": "Импортировать",
-            "WHO_IS": "Their tasks will be assigned to ...",
-            "WRITE_EMAIL": "Or if you want, write the email that this user uses in Taiga",
-            "SEARCH_CONTACT": "Or if you want, search in your contacts",
-            "WRITE_EMAIL_LABEL": "Write the email that this user uses in Taiga",
-            "ACCEEDE": "Acceede",
+            "WHO_IS": "Их задачи будут переданы ...",
+            "WRITE_EMAIL": "Или, если Вы хотите, напишите почтовое сообщение этому пользователю Taiga",
+            "SEARCH_CONTACT": "Или, если Вы хотите, поищите в Ваших контактах",
+            "WRITE_EMAIL_LABEL": "Написать почтовое сообщение на адрес используемый этим пользователем Taiga",
+            "ACCEEDE": "Согласиться",
             "PROJECT_MEMBERS": "Участники проекта",
-            "PROCESS_DESCRIPTION": "Tell us who from Taiga you want to assign the tasks of {{platform}}",
-            "MATCH": "Is <strong>{{user_external}}</strong> the same person as <strong>{{user_internal}}</strong>?",
+            "PROCESS_DESCRIPTION": "Сообщите нам кому из Taiga Вы хотите назначить на выполнения задач проекта {{platform}}",
+            "MATCH": "<strong>{{user_external}}</strong> это <strong>{{user_internal}}</strong>?",
             "CHOOSE": "Выбрать пользователя",
-            "LINKS": "Links with {{platform}}",
+            "LINKS": "Связь с {{platform}}",
             "LINKS_DESCRIPTION": "Do you want to keep the link of each item with the original {{platform}} card?",
             "WARNING_MAIL_USER": "Note that if the user does not have a Taiga account we will not be able to assign the tasks to him.",
             "ASSIGN": "Назначить",
@@ -931,7 +932,7 @@
             "PROJECT_RESTRICTIONS": {
                 "PROJECT_MEMBERS_DESC_PRIVATE": "The project you are trying to import has {{members}} members including you, unfortunately, your current plan allows for a maximum of {{max_memberships}} members per private project. If you would like to increase that limit please contact the administrator.",
                 "PROJECT_MEMBERS_DESC_PUBLIC": "The project you are trying to import has {{members}} members including you, unfortunately, your current plan allows for a maximum of {{max_memberships}} members per public project. If you would like to increase that limit please contact the administrator.",
-                "ACCOUNT_ALLOW_MEMBERS": "Your account only allows {{members}} members",
+                "ACCOUNT_ALLOW_MEMBERS": "Ваш аккаунт позволяет использовать  {{members}}  пользователей.",
                 "PRIVATE_PROJECTS_SPACE": {
                     "TITLE": "Unfortunately, your current plan does not allow for additional private projects",
                     "DESC": "The project you are trying to import is private. Unfortunately, your current plan does not allow for additional private projects."
@@ -960,53 +961,53 @@
                 "DESCRIPTION": "Этот процесс может занять некоторое время. Пожалуйста, сохраняйте это окно открытым."
             },
             "WARNING": {
-                "TITLE": "Some taks will be unassigned",
-                "DESCRIPTION": "There are still unidentified people. The cards assigned to these people will remain unassigned. Check all the contacts to not lose that information.",
-                "CHECK": "Check contacts"
+                "TITLE": "Некоторые задачи останутся не распределенными",
+                "DESCRIPTION": "Неидентифицируемые пользователи все еще остались. Задачи назначенные таким пользователям останутся нераспределенными. Проверьте все контактные данные чтобы не потерять информацию о них.",
+                "CHECK": "Контакты"
             },
             "TAIGA": {
                 "SELECTOR": "Импортируйте свой проект из Тайги"
             },
             "TRELLO": {
-                "SELECTOR": "Import your Trello boards into Taiga",
-                "CHOOSE_PROJECT": "Choose board that you want to import",
-                "NO_PROJECTS": "It seems you have no boards in Trello"
+                "SELECTOR": "Импортируйте Ваши доски из Trello в Taiga",
+                "CHOOSE_PROJECT": "Выберите доску которую Вы хотите импортировать",
+                "NO_PROJECTS": "Кажется у вас нет досок в Trello"
             },
             "GITHUB": {
-                "SELECTOR": "Import your GitHub project issues",
-                "CHOOSE_PROJECT": "Find the project you want to import",
-                "NO_PROJECTS": "It seems you have no porjects in GitHub",
-                "HOW_DO_YOU_WANT_TO_IMPORT": "How do you want to import your issues into Taiga?",
-                "KANBAN_PROJECT": "As user stories in a kanban project",
-                "KANBAN_PROJECT_DESCRIPTION": "After that you can enable scrum with backlog.",
-                "SCRUM_PROJECT": "As user stories in a scrum project",
-                "SCRUM_PROJECT_DESCRIPTION": "After that you can enable kanban mode.",
-                "ISSUES_PROJECT": "As issues",
-                "ISSUES_PROJECT_DESCRIPTION": "You will not be able to use your issues in kanban or scrum mode. You will be able to enable kanban or scrum for new user stories"
+                "SELECTOR": "Импортируйте задачи из Вашего проекта на Github",
+                "CHOOSE_PROJECT": "Выберите проект который Вы хотите импортировать",
+                "NO_PROJECTS": "Кажется у Вас нет проектов на Github",
+                "HOW_DO_YOU_WANT_TO_IMPORT": "Как Вы хотите импортировать Ваши задачи в Taiga?",
+                "KANBAN_PROJECT": "Как пользовательские истории  в Канбан проекте",
+                "KANBAN_PROJECT_DESCRIPTION": "Далее Вы сможете включить Скрам с бэклогом.",
+                "SCRUM_PROJECT": "Как пользовательские истории в Скрам проекте",
+                "SCRUM_PROJECT_DESCRIPTION": "Далее Вы сможете включить режим Канбан.",
+                "ISSUES_PROJECT": "Как задачи",
+                "ISSUES_PROJECT_DESCRIPTION": "Вы не сможете использовать Ваши задачи в Канбан и Скрам режимах. Вы сможете включить Канбан и Скрам для новых пользовательских историй."
             },
             "ASANA": {
-                "SELECTOR": "Import your Asana project and choose how to manage it",
-                "CHOOSE_PROJECT": "Choose project that you want to import",
-                "NO_PROJECTS": "It seems you have no porjects in Asana",
+                "SELECTOR": "Импортируйте Ваш проект из Asana и выберите как управлять им",
+                "CHOOSE_PROJECT": "Выберите проект который Вы хотите импортировать",
+                "NO_PROJECTS": "Кажется в Вас нет проектов в Asana",
                 "KANBAN_PROJECT": "Kanban",
                 "SCRUM_PROJECT": "Scrum",
-                "CREATE_AS_SCRUM_DESCRIPTION": "The tasks and sub-tasks of your project will be created as Taiga user stories and tasks.",
-                "CREATE_AS_KANBAN_DESCRIPTION": "The tasks and sub-tasks of your project will be created as Taiga user stories and tasks."
+                "CREATE_AS_SCRUM_DESCRIPTION": "Задачи и подзадачи Вашего проекта будут созданы как пользовательские истории и задачи Taiga соответственно.",
+                "CREATE_AS_KANBAN_DESCRIPTION": "Задачи и подзадачи Вашего проекта будут созданы как пользовательские истории и задачи Taiga соответственно."
             },
             "JIRA": {
-                "SELECTOR": "Import your Jira project and choose how to manage it",
-                "HOW_TO_CONFIGURE": "(configuration help)",
-                "CHOOSE_PROJECT": "Choose project or board that you want to import",
-                "NO_PROJECTS": "It seems you have no porjects or boards in Jira",
-                "URL": "Your Jira URL",
+                "SELECTOR": "Импортируйте Ваш проект из Jira и выберите как управлять им",
+                "HOW_TO_CONFIGURE": "(помощь в конфигурации)",
+                "CHOOSE_PROJECT": "Выберите проект или доску которую Вы хотите импортировать",
+                "NO_PROJECTS": "Кажется у Вас нет проектов и досок в Jira",
+                "URL": "URL Вашей Jira",
                 "KANBAN_PROJECT": "Kanban",
                 "SCRUM_PROJECT": "Scrum",
                 "ISSUES_PROJECT": "Запросы",
-                "CREATE_AS_SCRUM_DESCRIPTION": "The issues and sub-issues of your project will be created as Taiga user stories and tasks.",
-                "CREATE_AS_KANBAN_DESCRIPTION": "The issues and sub-issues of your project will be created as Taiga user stories and tasks.",
-                "CREATE_AS_ISSUES_DESCRIPTION": "What do you want to do with sub-issues from the Jira project? (Taiga doesn't allow sub-issues)",
-                "CREATE_NEW_ISSUES": "Convert sub-issues to new Taiga issues",
-                "NOT_CREATE_NEW_ISSUES": "Do not import sub-issues"
+                "CREATE_AS_SCRUM_DESCRIPTION": "Задачи и подзадачи Вашего проекта будут созданы как пользовательские истории и задачи Taiga соответственно.",
+                "CREATE_AS_KANBAN_DESCRIPTION": "Задачи и подзадачи Вашего проекта будут созданы как пользовательские истории и задачи Taiga соответственно.",
+                "CREATE_AS_ISSUES_DESCRIPTION": "Что Вы хотите сделать с подзадачами из проекта Jira (в Тайге нет подзадач)",
+                "CREATE_NEW_ISSUES": "Конвертировать подзадачи в новые задачи Taiga",
+                "NOT_CREATE_NEW_ISSUES": "Не импортировать подзадачи"
             }
         }
     },
@@ -1029,7 +1030,7 @@
         },
         "ADD_MEMBER": {
             "TITLE": "Новый участник",
-            "PLACEHOLDER": "Filter users or write an email to invite",
+            "PLACEHOLDER": "Выберите пользователей или отправьте приглашение по почте",
             "ADD_EMAIL": "Добавить электронную почту",
             "REMOVE": "Удалить",
             "INVITE": "Пригласить",
@@ -1098,9 +1099,9 @@
             "BUTTON": "Предложить участнику проекта стать его новым владельцем"
         },
         "CONTACT_PROJECT": {
-            "TITLE": "Send an email to",
-            "WARNING": "The email will be received by the project admins",
-            "PLACEHOLDER": "Write your message",
+            "TITLE": "Отправить почтовое сообщение",
+            "WARNING": "Сообщение будет отправлено администраторам проекта",
+            "PLACEHOLDER": "Напишите Ваше сообщение",
             "SEND": "Отправить"
         }
     },
@@ -1108,20 +1109,20 @@
         "PAGE_TITLE": "{{epicSubject}} - Эпос {{epicRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Статус: {{epicStatus }}. Описание: {{epicDescription}}",
         "SECTION_NAME": "Epic",
-        "TITLE_LIGHTBOX_UNLINK_RELATED_USERSTORY": "Unlink related userstory",
-        "MSG_LIGHTBOX_UNLINK_RELATED_USERSTORY": "It will delete the link to the related userstory '{{subject}}'",
-        "ERROR_UNLINK_RELATED_USERSTORY": "We have not been able to unlink: {{errorMessage}}",
+        "TITLE_LIGHTBOX_UNLINK_RELATED_USERSTORY": "Открепить пользовательскую историю",
+        "MSG_LIGHTBOX_UNLINK_RELATED_USERSTORY": "Вы собираетесь удалить ссылку на прикрепленную пользовательскую историю '{{subject}}'",
+        "ERROR_UNLINK_RELATED_USERSTORY": "Мы не смогли открепить ссылку: {{errorMessage}}",
         "CREATE_RELATED_USERSTORIES": "Создать связь с",
         "NEW_USERSTORY": "Новая пользовательская история",
         "EXISTING_USERSTORY": "Существующая пользовательская история",
-        "CHOOSE_PROJECT_FOR_CREATION": "What's the project?",
+        "CHOOSE_PROJECT_FOR_CREATION": "Какой проект Вам нужен?",
         "SUBJECT": "Тема",
-        "SUBJECT_BULK_MODE": "Subject (bulk insert)",
-        "CHOOSE_PROJECT_FROM": "What's the project?",
-        "CHOOSE_USERSTORY": "What's the user story?",
-        "NO_USERSTORIES": "This project has no User Stories yet. Please select another project.",
+        "SUBJECT_BULK_MODE": "Тема (массовое заполнение)",
+        "CHOOSE_PROJECT_FROM": "Какой проект Вам нужен?",
+        "CHOOSE_USERSTORY": "Опишите пользовательскую историю",
+        "NO_USERSTORIES": "В проекте нет ни одной пользовательской истории. Пожалуйста выберите другой проект.",
         "FILTER_USERSTORIES": "Фильтровать ПИ",
-        "LIGHTBOX_TITLE_BLOKING_EPIC": "Blocking epic",
+        "LIGHTBOX_TITLE_BLOKING_EPIC": "Блокирующая задача",
         "ACTION_DELETE": "Удалить эпос"
     },
     "US": {
@@ -1138,6 +1139,7 @@
         "TITLE_DELETE_ACTION": "Удалить пользовательскую историю",
         "LIGHTBOX_TITLE_BLOKING_US": "Блокирующая ПИ",
         "NOT_ESTIMATED": "Не оценено",
+        "OWNER_US": "This User Story belongs to",
         "TRIBE": {
             "PUBLISH": "Publish as Gig in Taiga Tribe",
             "PUBLISH_INFO": "Больше инфо",
@@ -1237,10 +1239,10 @@
             "HIDE": "Скрыть тэги"
         },
         "FORECASTING": {
-            "TITLE": "Velocity forecasting",
-            "BACKLOG": "Display backlog",
-            "NEW_SPRINT": "Candidate User Stories for your next sprint based on your velocity. Click to create a new sprint.",
-            "CURRENT_SPRINT": "Candidate User Stories for your sprint based on your velocity. Click to add to current sprint."
+            "TITLE": "Прогноз скорости выполнения",
+            "BACKLOG": "Отобразить бэклог",
+            "NEW_SPRINT": "Предлагаемые к выполнению в следующем спринте пользовательские истории на основании Вашей скорости выполнения. Нажмите для создания нового спринта.",
+            "CURRENT_SPRINT": "Предлагаемые к выполнению в следующем спринте пользовательские истории на основании Вашей скорости выполнения. Нажмите для добавления в текущий спринт."
         },
         "TABLE": {
             "COLUMN_US": "Пользовательские Истории",
@@ -1534,8 +1536,8 @@
         "TASK_CREATED_WITH_US": "{{username}} создал новую задачу {{obj_name}} в {{project_name}}, которая принадлежит ПИ {{us_name}}",
         "WIKI_CREATED": "{{username}} создал новую вики-страницу {{obj_name}} в {{project_name}}",
         "MILESTONE_CREATED": "{{username}} создал новый спринт {{obj_name}} в {{project_name}}",
-        "EPIC_CREATED": "{{username}} has created a new epic {{obj_name}} in {{project_name}}",
-        "EPIC_RELATED_USERSTORY_CREATED": "{{username}} has related the userstory {{related_us_name}} to the epic {{epic_name}} in {{project_name}}",
+        "EPIC_CREATED": "{{username}} создал новый эпик {{obj_name}} в проекте {{project_name}}",
+        "EPIC_RELATED_USERSTORY_CREATED": "{{username}} прикрепил пользовательскую историю  {{related_us_name}} к эпику {{epic_name}} в проекте {{project_name}}",
         "NEW_PROJECT": "{{username}} создал проект {{project_name}}",
         "MILESTONE_UPDATED": "{{username}} обновил спринт {{obj_name}}",
         "US_UPDATED": "{{username}} обновил атрибут \"{{field_name}}\" ПИ {{obj_name}}",
@@ -1549,12 +1551,12 @@
         "TASK_UPDATED_WITH_US_NEW_VALUE": "{{username}} установил атрибут \"{{field_name}}\" задачи {{obj_name}}, которая принадлежит ПИ {{us_name}}, на {{new_value}}",
         "WIKI_UPDATED": "{{username}} обновил вики-страницу {{obj_name}}",
         "EPIC_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the epic {{obj_name}}",
-        "EPIC_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the epic {{obj_name}} to {{new_value}}",
-        "EPIC_UPDATED_WITH_NEW_COLOR": "{{username}} has updated the \"{{field_name}}\" of the epic {{obj_name}} to <span class=\"new-color\" style=\"background: {{new_value}}\"></span>",
+        "EPIC_UPDATED_WITH_NEW_VALUE": "{{username}} обновил атрибут поля \"{{field_name}}\" эпика {{obj_name}} на {{new_value}}",
+        "EPIC_UPDATED_WITH_NEW_COLOR": "{{username}} обновил поле \"{{field_name}}\" эпика {{obj_name}} на <span class=\"new-color\" style=\"background: {{new_value}}\"></span>",
         "NEW_COMMENT_US": "{{username}} прокомментировал ПИ {{obj_name}}",
         "NEW_COMMENT_ISSUE": "{{username}} прокомментировал запрос {{obj_name}}",
         "NEW_COMMENT_TASK": "{{username}} прокомментировал задачу {{obj_name}}",
-        "NEW_COMMENT_EPIC": "{{username}} has commented in the epic {{obj_name}}",
+        "NEW_COMMENT_EPIC": "{{username}} написал комментарий в эпике {{obj_name}}",
         "NEW_MEMBER": "У {{project_name}} появился новый участник",
         "US_ADDED_MILESTONE": "{{username}} добавил ПИ {{obj_name}} для {{sprint_name}}",
         "US_MOVED": "{{username}} переместил ПИ {{obj_name}}",

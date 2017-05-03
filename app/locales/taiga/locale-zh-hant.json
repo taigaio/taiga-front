@@ -217,7 +217,7 @@
             "DB_CLICK": "double click to edit",
             "SELECT_LANGUAGE_PLACEHOLDER": "Select Language",
             "SELECT_LANGUAGE_REMOVE_FORMATING": "Remove formatting",
-            "OUTDATED": "Another person has made changes while you were editing. Check the new version on the activiy tab before you save your changes.",
+            "OUTDATED": "Another person has made changes while you were editing. Check the new version on the activity tab before you save your changes.",
             "MARKDOWN_HELP": "Markdown 語法協助"
         },
         "PERMISIONS_CATEGORIES": {
@@ -610,7 +610,8 @@
             "REPLACEMENT_ROLE": "和此角色有關的使用者都將遭移除　",
             "WARNING_DELETE_ROLE": "Be careful! All role estimations will be removed",
             "ERROR_DELETE_ALL": "你不能刪除所有數值",
-            "EXTERNAL_USER": "外部使用者"
+            "EXTERNAL_USER": "外部使用者",
+            "NOTE_EXTERNAL_USERS": "<strong>Note:</strong> by External User we mean any anonymous user not belonging to the Taiga platform, including search engines. Please use this role with care."
         },
         "THIRD_PARTIES": {
             "SECRET_KEY": "Secret key",
@@ -1138,6 +1139,7 @@
         "TITLE_DELETE_ACTION": "刪除使用者故事",
         "LIGHTBOX_TITLE_BLOKING_US": "封鎖中的使用者故事",
         "NOT_ESTIMATED": "無預估",
+        "OWNER_US": "This User Story belongs to",
         "TRIBE": {
             "PUBLISH": "Publish as Gig in Taiga Tribe",
             "PUBLISH_INFO": "More info",
