@@ -79,16 +79,6 @@ class WysiwygService
 
             return '[' + title + '](' + link  + ')'
 
-
-    linkTitleWithSpaces: (text) ->
-        link = /\[[^\]]*\]\(([^\)]*)\)/g # [Title-with-spaces](Title with spaces)
-
-        return text.replace link, (match, p1, offset, str) ->
-            if p1.indexOf(' ') >= 0
-                return match.replace /\(.*\)/, '(' + taiga.slugify(p1) + ')'
-            else
-                return match
-
     replaceUrls: (html) ->
         el = document.createElement( 'html' )
         el.innerHTML = html
@@ -185,7 +175,7 @@ class WysiwygService
 
     autoLinkHTML: (html) ->
         # override Autolink parser
-        
+
         matchRegexStr = String(Autolinker.matcher.Mention.prototype.matcherRegexes.twitter)
         if matchRegexStr.indexOf('.') == -1
             matchRegexStr = '@[^\s]{1,50}[^.\s]'
@@ -222,8 +212,7 @@ class WysiwygService
         }
 
         text = @.replaceEmojiNameByImgs(text)
-        text = @.pipeLinks(text)        
-        text = @.linkTitleWithSpaces(text)
+        text = @.pipeLinks(text)
 
         md = window.markdownit({
             breaks: true
