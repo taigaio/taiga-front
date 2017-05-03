@@ -25,6 +25,7 @@
 taiga = @.taiga
 
 mixOf = @.taiga.mixOf
+scopeDefer = @.taiga.scopeDefer
 trim = @.taiga.trim
 toString = @.taiga.toString
 joinStr = @.taiga.joinStr
@@ -101,7 +102,9 @@ class ProjectProfileController extends mixOf(taiga.Controller, taiga.PageMixin)
         @scope.issueStatusList = _.sortBy(project.issue_statuses, "order")
         @scope.prioritiesList = _.sortBy(project.priorities, "order")
         @scope.severitiesList = _.sortBy(project.severities, "order")
-        @scope.$emit('project:loaded', project)
+
+        scopeDefer @scope, =>
+            @scope.$emit('project:loaded', project)
 
         @scope.projectTags = _.map @scope.project.tags, (it) =>
             return [it, @scope.project.tags_colors[it]]
