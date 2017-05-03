@@ -47,7 +47,7 @@
         "RELATED_USERSTORIES": "Related user stories",
         "CARD": {
             "ASSIGN_TO": "Atanmış",
-            "EDIT": "Edit card"
+            "EDIT": "Kartı düzenle"
         },
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Bu değer geçersiz gözüküyor",
@@ -73,8 +73,8 @@
             "MAX_CHECK": "%s seçenek ya da daha azını seçmek zorunlu.",
             "RANGE_CHECK": "%s ve %s seçenekleri arasında bir seçim yapmak zorunludu.",
             "EQUAL_TO": "Bu değer aynı olmalı.",
-            "LINEWIDTH": "One or more lines is perhaps too long. Try to keep under %s characters.",
-            "PIKADAY": "Invalid date format, please use DD MMM YYYY (like 23 Mar 1984)"
+            "LINEWIDTH": "Satırların uzunluğu sistem için çok fazla olabilir. %s karakterden kısa tutmaya çalışınız.",
+            "PIKADAY": "Hatalı tarih biçimi, lütfen GG AAA YYYY (örnek 23 Mar 1984) biçimini kullanın"
         },
         "PICKERDATE": {
             "FORMAT": "DD MM YYYY",
@@ -213,20 +213,20 @@
             }
         },
         "WYSIWYG": {
-            "CODE_SNIPPET": "Code Snippet",
-            "DB_CLICK": "double click to edit",
+            "CODE_SNIPPET": "Kod Parçacığı",
+            "DB_CLICK": "düzenlemek için çift tıklayın",
             "SELECT_LANGUAGE_PLACEHOLDER": "Diş Seçin",
-            "SELECT_LANGUAGE_REMOVE_FORMATING": "Remove formatting",
-            "OUTDATED": "Another person has made changes while you were editing. Check the new version on the activiy tab before you save your changes.",
+            "SELECT_LANGUAGE_REMOVE_FORMATING": "Biçemi kaldır",
+            "OUTDATED": "Another person has made changes while you were editing. Check the new version on the activity tab before you save your changes.",
             "MARKDOWN_HELP": "Markdown yazım kılavuzu"
         },
         "PERMISIONS_CATEGORIES": {
             "EPICS": {
                 "NAME": "Destanlar",
-                "VIEW_EPICS": "View epics",
-                "ADD_EPICS": "Add epics",
-                "MODIFY_EPICS": "Modify epics",
-                "COMMENT_EPICS": "Comment epics",
+                "VIEW_EPICS": "Destanları gör",
+                "ADD_EPICS": "Destan ekle",
+                "MODIFY_EPICS": "Destan düzenle",
+                "COMMENT_EPICS": "Destanlara yorum ekleme",
                 "DELETE_EPICS": "Destanları sil"
             },
             "SPRINTS": {
@@ -241,7 +241,7 @@
                 "VIEW_USER_STORIES": "Kullanıcı hikayelerini gör",
                 "ADD_USER_STORIES": "Kullanıcı hikayeleri ekle",
                 "MODIFY_USER_STORIES": "Kullanıcı hikayelerini değiştir",
-                "COMMENT_USER_STORIES": "Comment user stories",
+                "COMMENT_USER_STORIES": "Kullanıcı hikayelerine yorum ekleyebilme",
                 "DELETE_USER_STORIES": "Kullanıcı hikayelerini sil"
             },
             "TASKS": {
@@ -249,7 +249,7 @@
                 "VIEW_TASKS": "Görevler gör",
                 "ADD_TASKS": "Görevleri ekle",
                 "MODIFY_TASKS": "Görevleri değiştir",
-                "COMMENT_TASKS": "Comment tasks",
+                "COMMENT_TASKS": "Görevlere yorum ekleyebilme",
                 "DELETE_TASKS": "Görevleri sil"
             },
             "ISSUES": {
@@ -257,7 +257,7 @@
                 "VIEW_ISSUES": "Sorunları gör",
                 "ADD_ISSUES": "Sorunları ekle",
                 "MODIFY_ISSUES": "Sorunları değiştir",
-                "COMMENT_ISSUES": "Comment issues",
+                "COMMENT_ISSUES": "Taleplere yorum ekleyebilme",
                 "DELETE_ISSUES": "Sorunları sil"
             },
             "WIKI": {
@@ -290,7 +290,7 @@
         "ACTION_ENTER": "Giriş",
         "ACTION_SIGN_IN": "Giriş",
         "PLACEHOLDER_AUTH_PASSWORD": "Parola (büyük küçük harf duyarlı)",
-        "ALT_LOGIN": "Or login with"
+        "ALT_LOGIN": "Ya da böyle girin"
     },
     "LOGIN_FORM": {
         "ERROR_AUTH_INCORRECT": "Umpa Lumpalarımıza göre, kullanıcı adınızı / e-posta adresinizi ya da parolanızı yanlış girdiniz.",
@@ -511,7 +511,7 @@
             "REQUEST_OWNERSHIP_DESC": "Request that current project owner {{name}} transfer ownership of this project to you.",
             "REQUEST_OWNERSHIP_BUTTON": "Talep",
             "REQUEST_OWNERSHIP_SUCCESS": "We'll notify the project owner",
-            "CHANGE_OWNER": "Change owner",
+            "CHANGE_OWNER": "Sahibi değiştir",
             "CHANGE_OWNER_SUCCESS_TITLE": "İsteminiz gönderildi!",
             "CHANGE_OWNER_SUCCESS_DESC": "We will notify you by email if the project ownership request is accepted or declined"
         },
@@ -575,10 +575,10 @@
             "ACTION_ADD": "Yeni önem derecesi ekle"
         },
         "PROJECT_VALUES_STATUS": {
-            "TITLE": "Statuses",
+            "TITLE": "Durumlar",
             "SUBTITLE": "Hikayeleriniz, işleriniz ve sorunlarınızın alabileceği durumları tanımlayın",
             "EPIC_TITLE": "Epic Statuses",
-            "US_TITLE": "User Story Statuses",
+            "US_TITLE": "Kullanıcı hikayelerinin durumları",
             "TASK_TITLE": "Görev Durumları",
             "ISSUE_TITLE": "Sorun Durumları"
         },
@@ -592,7 +592,7 @@
             "TITLE": "Etiketler ",
             "SUBTITLE": "Etiketin rengini gör ve düzenle",
             "EMPTY": "Henüz etiket yok",
-            "EMPTY_SEARCH": "It looks like nothing was found with your search criteria",
+            "EMPTY_SEARCH": "Arama kriterlerinize uyan bir kayıt bulunamadı",
             "ACTION_ADD": "Etiket ekle",
             "NEW_TAG": "Yeni etiket",
             "MIXING_HELP_TEXT": "Birleştirmek istediğiniz etiketleri seçiniz",
@@ -610,7 +610,8 @@
             "REPLACEMENT_ROLE": "Bu role sahip kullanıcıların taşınacağı",
             "WARNING_DELETE_ROLE": "Be careful! All role estimations will be removed",
             "ERROR_DELETE_ALL": "Bütün değerleri silemezsiniz",
-            "EXTERNAL_USER": "Dış kullanıcı"
+            "EXTERNAL_USER": "Dış kullanıcı",
+            "NOTE_EXTERNAL_USERS": "<strong>Note:</strong> by External User we mean any anonymous user not belonging to the Taiga platform, including search engines. Please use this role with care."
         },
         "THIRD_PARTIES": {
             "SECRET_KEY": "Gizli anahtar",
@@ -732,14 +733,14 @@
             "TITLE_ACTION_NEW_ROLE": "Yeni rol ekle"
         },
         "PROJECT_TRANSFER": {
-            "DO_YOU_ACCEPT_PROJECT_OWNERNSHIP": "Would you like to become the new project owner?",
+            "DO_YOU_ACCEPT_PROJECT_OWNERNSHIP": "Yeni proje sahibi olmak ister misiniz?",
             "PRIVATE": "Gizli",
             "ACCEPTED_PROJECT_OWNERNSHIP": "Congratulations! You're now the new project owner.",
             "REJECTED_PROJECT_OWNERNSHIP": "OK. We'll contact the current project owner",
             "ACCEPT": "Kabul et",
             "REJECT": "Reddet",
             "PROPOSE_OWNERSHIP": "<strong>{{owner}}</strong>, the current owner of the project <strong>{{project}}</strong> has asked that you become the new  project owner.",
-            "ADD_COMMENT": "Would you like to add a comment for the project owner?",
+            "ADD_COMMENT": "Proje sahibine yorum göndermek ister misiniz?",
             "UNLIMITED_PROJECTS": "Sınırsız",
             "OWNER_MESSAGE": {
                 "PRIVATE": "Please remember that you can own up to <strong>{{maxProjects}}</strong> private projects. You currently own <strong>{{currentProjects}}</strong> private projects",
@@ -864,7 +865,7 @@
         },
         "CONTACT_BUTTON": {
             "CONTACT_TITLE": "Proje ekibiyle bağlantıya geçin",
-            "CONTACT_BUTTON": "Contact the project"
+            "CONTACT_BUTTON": "Proje ile bağlantıya geç"
         },
         "CREATE": {
             "TITLE": "Proje Oluştur",
@@ -889,7 +890,7 @@
             "PRIVATE_PROJECT": "Gizli Proje"
         },
         "COMMON": {
-            "DETAILS": "New project details",
+            "DETAILS": "Proje detayları",
             "PROJECT_TITLE": "Proje Adı",
             "PROJECT_DESCRIPTION": "Proje Tanımı"
         },
@@ -924,35 +925,35 @@
             "WARNING_MAIL_USER": "Note that if the user does not have a Taiga account we will not be able to assign the tasks to him.",
             "ASSIGN": "Ata",
             "PROJECT_SELECTOR": {
-                "NO_RESULTS": "It looks like nothing was found with your search criteria",
+                "NO_RESULTS": "Arama kriterlerinize uyan bir kayıt bulunamadı",
                 "ACTION_SEARCH": "ara",
                 "ACTION_BACK": "Arka"
             },
             "PROJECT_RESTRICTIONS": {
                 "PROJECT_MEMBERS_DESC_PRIVATE": "The project you are trying to import has {{members}} members including you, unfortunately, your current plan allows for a maximum of {{max_memberships}} members per private project. If you would like to increase that limit please contact the administrator.",
                 "PROJECT_MEMBERS_DESC_PUBLIC": "The project you are trying to import has {{members}} members including you, unfortunately, your current plan allows for a maximum of {{max_memberships}} members per public project. If you would like to increase that limit please contact the administrator.",
-                "ACCOUNT_ALLOW_MEMBERS": "Your account only allows {{members}} members",
+                "ACCOUNT_ALLOW_MEMBERS": "Hesabınız sadece {{members}} kişiye izin veriyor",
                 "PRIVATE_PROJECTS_SPACE": {
                     "TITLE": "Unfortunately, your current plan does not allow for additional private projects",
-                    "DESC": "The project you are trying to import is private. Unfortunately, your current plan does not allow for additional private projects."
+                    "DESC": "İçe aktarmaya çalıştığınız proje gizli. Maalesef var olan ödeme planınız daha fazla gizli proje yaratmanıza izin vermiyor"
                 },
                 "PUBLIC_PROJECTS_SPACE": {
-                    "TITLE": "Unfortunately, your current plan does not allow for additional public projects",
-                    "DESC": "The project you are trying to import is public. Unfortunately, your current plan does not allow additional public projects."
+                    "TITLE": "Maalesef var olan ödeme planınız daha fazla açık proje yaratmanıza izin vermiyor",
+                    "DESC": "İçe aktarmaya çalıştığınız proje açık bir proje. Maalesef şu anki ödeme planınız daha fazla açık projeye izin vermiyor."
                 },
                 "PRIVATE_PROJECTS_MEMBERS": {
-                    "TITLE": "Your current plan allows for a maximum of {{max_memberships}} members per private project"
+                    "TITLE": "Var olan ödeme planınız gizli proje başına {{max_memberships}} kullanıcıya izin veriyor."
                 },
                 "PUBLIC_PROJECTS_MEMBERS": {
-                    "TITLE": "Your current plan allows for a maximum of {{max_memberships}} members per public project."
+                    "TITLE": "Var olan ödeme planınız açık proje başına {{max_memberships}} kullanıcıya izin veriyor."
                 },
                 "PRIVATE_PROJECTS_SPACE_MEMBERS": {
-                    "TITLE": "Unfortunately your current plan doesn't allow additional private projects or an increase of more than {{max_memberships}} members per private project",
-                    "DESC": "The project that you are trying to import is private and has {{members}} members."
+                    "TITLE": "Maalesef şu anki ödeme planınız daha fazla gizli proje eklemenize ya da gizli proje başına {{max_memberships}} kullanıcıdan fazla kullanıcı eklemenize izin vermiyor",
+                    "DESC": "İçe aktarmaya çalıştığınız proje gizli ve {{members}} kullanıcısı var."
                 },
                 "PUBLIC_PROJECTS_SPACE_MEMBERS": {
-                    "TITLE": "Unfortunately your current plan doesn't allow additional public projects or an increase of more than {{max_memberships}} members per public project",
-                    "DESC": "The project that you are trying to import is public and has more than {{members}} members."
+                    "TITLE": "Maalesef şu anki ödeme planınız daha fazla açık proje eklemenize ya da açık proje başına {{max_memberships}} kullanıcıdan fazla kullanıcı eklemenize izin vermiyor",
+                    "DESC": "İçe aktarmak istediğiniz proje açık ve {{members}} kullanıcıdan daha fazla kullanıcı içeriyor."
                 }
             },
             "IN_PROGRESS": {
@@ -960,53 +961,53 @@
                 "DESCRIPTION": "Bu işlem biraz sürecek, lütfen pencereyi kapatmayın."
             },
             "WARNING": {
-                "TITLE": "Some taks will be unassigned",
-                "DESCRIPTION": "There are still unidentified people. The cards assigned to these people will remain unassigned. Check all the contacts to not lose that information.",
-                "CHECK": "Check contacts"
+                "TITLE": "Bazı görevler atanmamış olacak",
+                "DESCRIPTION": "Hala belirlenemeyen kişiler var. Bu kişilere atanmış kartlar atanmamış olarak kalacak. Veri kaybetmemek için ilişkili kişileri kontrol edin.",
+                "CHECK": "İrtibat kişilerini kontrol edin"
             },
             "TAIGA": {
-                "SELECTOR": "Import your Taiga project"
+                "SELECTOR": "Taiga projenizi içe aktarın"
             },
             "TRELLO": {
-                "SELECTOR": "Import your Trello boards into Taiga",
-                "CHOOSE_PROJECT": "Choose board that you want to import",
-                "NO_PROJECTS": "It seems you have no boards in Trello"
+                "SELECTOR": "Trello panolarınızı Taiga'ya aktarın",
+                "CHOOSE_PROJECT": "İçe aktarmak istediğiniz panoyu seçin",
+                "NO_PROJECTS": "Trello içinde panonuz yok"
             },
             "GITHUB": {
-                "SELECTOR": "Import your GitHub project issues",
-                "CHOOSE_PROJECT": "Find the project you want to import",
-                "NO_PROJECTS": "It seems you have no porjects in GitHub",
-                "HOW_DO_YOU_WANT_TO_IMPORT": "How do you want to import your issues into Taiga?",
+                "SELECTOR": "GitHub proje taleplerini içe aktar",
+                "CHOOSE_PROJECT": "İçe aktarmak istediğiniz projeyi bulun",
+                "NO_PROJECTS": "GitHub'da projeniz yok",
+                "HOW_DO_YOU_WANT_TO_IMPORT": "Taleplerinizi Taiga'ya nasıl aktarmak istersiniz?",
                 "KANBAN_PROJECT": "Kanban projesine kullanıcı hikayesi olarak",
-                "KANBAN_PROJECT_DESCRIPTION": "After that you can enable scrum with backlog.",
-                "SCRUM_PROJECT": "As user stories in a scrum project",
-                "SCRUM_PROJECT_DESCRIPTION": "After that you can enable kanban mode.",
-                "ISSUES_PROJECT": "As issues",
-                "ISSUES_PROJECT_DESCRIPTION": "You will not be able to use your issues in kanban or scrum mode. You will be able to enable kanban or scrum for new user stories"
+                "KANBAN_PROJECT_DESCRIPTION": "Bundan sonra scrum havuzunu açabileceksiniz.",
+                "SCRUM_PROJECT": "Scrum projesinde kullanıcı hikayesi olarak",
+                "SCRUM_PROJECT_DESCRIPTION": "Bundan sonra kanban modunu etkinleştirebilirsiniz.",
+                "ISSUES_PROJECT": "Talep olarak",
+                "ISSUES_PROJECT_DESCRIPTION": "Taleplerinizi kanban ya da scrum modunda kullanamayacaksınız. Yeni kullanıcı hikayeleri için kanban ve scrum'ı açabileceksiniz."
             },
             "ASANA": {
-                "SELECTOR": "Import your Asana project and choose how to manage it",
-                "CHOOSE_PROJECT": "Choose project that you want to import",
-                "NO_PROJECTS": "It seems you have no porjects in Asana",
+                "SELECTOR": "Asana projenizi içe aktarın ve nasıl yöneteceğiniz seçin",
+                "CHOOSE_PROJECT": "İçe aktarmak istediğiniz projeyi seçiniz",
+                "NO_PROJECTS": "Asana da projeniz yok",
                 "KANBAN_PROJECT": "Kanban",
                 "SCRUM_PROJECT": "Scrum",
-                "CREATE_AS_SCRUM_DESCRIPTION": "The tasks and sub-tasks of your project will be created as Taiga user stories and tasks.",
-                "CREATE_AS_KANBAN_DESCRIPTION": "The tasks and sub-tasks of your project will be created as Taiga user stories and tasks."
+                "CREATE_AS_SCRUM_DESCRIPTION": "Projenizin görev ve alt görevleri, Taiga kullanıcı hikayeleri ve görevleri olarak oluşturulacak.",
+                "CREATE_AS_KANBAN_DESCRIPTION": "Projenizin görev ve alt görevleri, Taiga kullanıcı hikayeleri ve görevleri olarak oluşturulacak."
             },
             "JIRA": {
-                "SELECTOR": "Import your Jira project and choose how to manage it",
+                "SELECTOR": "Jira projenizi içe aktarın ve nasıl yöneteceğiniz seçin",
                 "HOW_TO_CONFIGURE": "(configuration help)",
-                "CHOOSE_PROJECT": "Choose project or board that you want to import",
+                "CHOOSE_PROJECT": "İçe aktarmak istediğiniz proje ya da panoyu seçiniz",
                 "NO_PROJECTS": "It seems you have no porjects or boards in Jira",
-                "URL": "Your Jira URL",
+                "URL": "Jira URL'niz",
                 "KANBAN_PROJECT": "Kanban",
                 "SCRUM_PROJECT": "Scrum",
                 "ISSUES_PROJECT": "Sorunlar",
-                "CREATE_AS_SCRUM_DESCRIPTION": "The issues and sub-issues of your project will be created as Taiga user stories and tasks.",
-                "CREATE_AS_KANBAN_DESCRIPTION": "The issues and sub-issues of your project will be created as Taiga user stories and tasks.",
-                "CREATE_AS_ISSUES_DESCRIPTION": "What do you want to do with sub-issues from the Jira project? (Taiga doesn't allow sub-issues)",
-                "CREATE_NEW_ISSUES": "Convert sub-issues to new Taiga issues",
-                "NOT_CREATE_NEW_ISSUES": "Do not import sub-issues"
+                "CREATE_AS_SCRUM_DESCRIPTION": "Projenizin talep ve alt talepleri, Taiga kullanıcı hikayeleri ve görevleri olarak yaratılacak.",
+                "CREATE_AS_KANBAN_DESCRIPTION": "Projenizin talep ve alt talepleri, Taiga kullanıcı hikayeleri ve görevleri olarak yaratılacak.",
+                "CREATE_AS_ISSUES_DESCRIPTION": "Jira projenizin alt taleplerini ne yapmak istersiniz? (Taiga alt taleplere izin vermez)",
+                "CREATE_NEW_ISSUES": "Alt talepleri yeni Taiga taleplerine çevir.",
+                "NOT_CREATE_NEW_ISSUES": "Alt talepleri aktarma"
             }
         }
     },
@@ -1015,7 +1016,7 @@
             "CONFIRM": "Taiga hesabınızı silmek istediğinizden emin misiniz?",
             "CANCEL": "Ayarlara dön",
             "ACCEPT": "Hesabı sil",
-            "BLOCK_PROJECT": "Note that all the projects you own projects will be <strong>blocked</strong> after you delete your account. If you do want a project blocked, transfer ownership to another member of each project prior to deleting your account."
+            "BLOCK_PROJECT": "Hesabınızı sildiğinizde sahibi olduğunuz tüm projeler <strong>bloke</strong> edilecek. Eğer bunu istemiyorsanız hesabınızı silmeden önce projelerinizin sahipliğini diğer üyelere devredin."
         },
         "DELETE_PROJECT": {
             "TITLE": "Proje Sil",
@@ -1082,23 +1083,23 @@
             "LIMIT_USERS_WARNING_MESSAGE": "You are about to reach the maximum number of members allowed for this project, <strong>{{maxMembers}}</strong> members."
         },
         "LEAVE_PROJECT_WARNING": {
-            "TITLE": "Unfortunately, this project can't be left without an owner",
+            "TITLE": "Maalesef bu proje sahipsiz olarak terkedilemez",
             "CURRENT_USER_OWNER": {
                 "DESC": "You are the current owner of this project. Before leaving, please transfer ownership to someone else.",
                 "BUTTON": "Change the project owner"
             },
             "OTHER_USER_OWNER": {
                 "DESC": "Unfortunately, you can't delete a member who is also the current project owner. First, please assign a new project owner.",
-                "BUTTON": "Request project owner change"
+                "BUTTON": "Proje sahibi değişikliği iste"
             }
         },
         "CHANGE_OWNER": {
-            "TITLE": "Who do you want to be the new project owner?",
+            "TITLE": "Kimin yeni proje sahibi olmasını istersiniz?",
             "ADD_COMMENT": "Yorum ekle",
-            "BUTTON": "Ask this project member to become the new project owner"
+            "BUTTON": "Şu proje katılımcısından yeni proje sahibi olmasını iste"
         },
         "CONTACT_PROJECT": {
-            "TITLE": "Send an email to",
+            "TITLE": "e-posta gönder",
             "WARNING": "Bu e-posta proje yöneticileri tarafından alıncak",
             "PLACEHOLDER": "Mesajınızı yazın",
             "SEND": "Gönder"
@@ -1110,15 +1111,15 @@
         "SECTION_NAME": "Destan",
         "TITLE_LIGHTBOX_UNLINK_RELATED_USERSTORY": "İlgili kullanıcı hikayesinin ilişkisini kaldırın",
         "MSG_LIGHTBOX_UNLINK_RELATED_USERSTORY": "It will delete the link to the related userstory '{{subject}}'",
-        "ERROR_UNLINK_RELATED_USERSTORY": "We have not been able to unlink: {{errorMessage}}",
-        "CREATE_RELATED_USERSTORIES": "Create a relationship with",
+        "ERROR_UNLINK_RELATED_USERSTORY": "Bağlantıyı koparamıyoruz: {{errorMessage}}",
+        "CREATE_RELATED_USERSTORIES": "İlişki yarat: ",
         "NEW_USERSTORY": "Yeni kullanıcı hikayesi",
         "EXISTING_USERSTORY": "Var olan kullanıcı hikayesi",
         "CHOOSE_PROJECT_FOR_CREATION": "Proje nedir?",
         "SUBJECT": "Konu",
-        "SUBJECT_BULK_MODE": "Subject (bulk insert)",
+        "SUBJECT_BULK_MODE": "Konu (toplu giriş)",
         "CHOOSE_PROJECT_FROM": "Proje nedir?",
-        "CHOOSE_USERSTORY": "What's the user story?",
+        "CHOOSE_USERSTORY": "Kullanıcı hikayesi nedir?",
         "NO_USERSTORIES": "Bu projenin henüz Kullanıcı Hikayesi yok. Lütfen başka proje seçiniz.",
         "FILTER_USERSTORIES": "Filter user stories",
         "LIGHTBOX_TITLE_BLOKING_EPIC": "Blocking epic",
@@ -1138,8 +1139,9 @@
         "TITLE_DELETE_ACTION": "Kullanıcı Hikayesi Sil",
         "LIGHTBOX_TITLE_BLOKING_US": "Bizi engelleyen",
         "NOT_ESTIMATED": "Kestirim yapılmamış",
+        "OWNER_US": "This User Story belongs to",
         "TRIBE": {
-            "PUBLISH": "Publish as Gig in Taiga Tribe",
+            "PUBLISH": "Taiga Tribe'da Gig olarak yayınla",
             "PUBLISH_INFO": "Daha fazla bilgi",
             "PUBLISH_TITLE": "More info on publishing in Taiga Tribe",
             "PUBLISHED_AS_GIG": "Story published as Gig in Taiga Tribe",
@@ -1160,8 +1162,8 @@
         "OLDER_FIRST": "Eskiden yeniye",
         "RECENT_FIRST": "Yeniden eskiye",
         "COMMENT": "Yorum Yap",
-        "EDITED_COMMENT": "Edited:",
-        "SHOW_HISTORY": "View historic",
+        "EDITED_COMMENT": "Düzenlendi:",
+        "SHOW_HISTORY": "Tarihçe gör",
         "TYPE_NEW_COMMENT": "Buraya yeni bir yorum yazın",
         "SHOW_DELETED": "Silinmiş yorumları göster",
         "HIDE_DELETED": "Silinmiş yorumu gizle",
@@ -1174,15 +1176,15 @@
     "ACTIVITY": {
         "TITLE": "Aktivite",
         "ACTIVITIES_COUNT": "{{activities}} Aktivite",
-        "TAGS_ADDED": "tags added:",
-        "TAGS_REMOVED": "tags removed:",
-        "US_POINTS": "{{role}} points",
+        "TAGS_ADDED": "eklenen etiketler:",
+        "TAGS_REMOVED": "etiketler kaldırıldı:",
+        "US_POINTS": "{{role}} puanı",
         "NEW_ATTACHMENT": "yeni eklenti:",
         "DELETED_ATTACHMENT": "silinmiş eklenti:",
-        "UPDATED_ATTACHMENT": "updated attachment ({{filename}}):",
-        "CREATED_CUSTOM_ATTRIBUTE": "created custom attribute",
-        "UPDATED_CUSTOM_ATTRIBUTE": "updated custom attribute",
-        "BECAME_DEPRECATED": "became deprecated",
+        "UPDATED_ATTACHMENT": "eklenti güncellendi ({{filename}}):",
+        "CREATED_CUSTOM_ATTRIBUTE": "özel öznitelik yaratıldı",
+        "UPDATED_CUSTOM_ATTRIBUTE": "özel öznitelik güncellendi",
+        "BECAME_DEPRECATED": "kaldırıldı olarak işaretlendi",
         "BECAME_UNDEPRECATED": "became undeprecated",
         "TEAM_REQUIREMENT": "Takım Gereksinimi",
         "CLIENT_REQUIREMENT": "İstemci Gereksinimi",
@@ -1238,7 +1240,7 @@
         },
         "FORECASTING": {
             "TITLE": "Velocity forecasting",
-            "BACKLOG": "Display backlog",
+            "BACKLOG": "Havuzu göster",
             "NEW_SPRINT": "Candidate User Stories for your next sprint based on your velocity. Click to create a new sprint.",
             "CURRENT_SPRINT": "Candidate User Stories for your sprint based on your velocity. Click to add to current sprint."
         },
@@ -1254,7 +1256,7 @@
             "IOCAINE_DOSES": "baldıran zehri<br /> dozu",
             "SHOW_STATISTICS_TITLE": "İstatistikleri göster",
             "TOGGLE_BAKLOG_GRAPH": "Eritme grafiğini göster/gizle",
-            "POINTS_PER_ROLE": "Points per role"
+            "POINTS_PER_ROLE": "Rol başına düşen puan"
         },
         "SUMMARY": {
             "PROJECT_POINTS": "proje<br/> puanları",
@@ -1505,11 +1507,11 @@
         },
         "SECTION_PAGES_LIST": "Tüm sayfalar",
         "PAGES_LIST_COLUMNS": {
-            "TITLE": "Title",
+            "TITLE": "Başlık",
             "EDITIONS": "Editions",
             "CREATED": "Oluşturuldu",
             "MODIFIED": "Değiştirilmiş",
-            "CREATOR": "Creator",
+            "CREATOR": "Başlatan",
             "LAST_MODIFIER": "Son düzenleyen"
         }
     },
@@ -1550,11 +1552,11 @@
         "WIKI_UPDATED": "{{obj_name}} adlı wiki sayfası {{username}} tarafından güncellendi",
         "EPIC_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the epic {{obj_name}}",
         "EPIC_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the epic {{obj_name}} to {{new_value}}",
-        "EPIC_UPDATED_WITH_NEW_COLOR": "{{username}} has updated the \"{{field_name}}\" of the epic {{obj_name}} to <span class=\"new-color\" style=\"background: {{new_value}}\"></span>",
+        "EPIC_UPDATED_WITH_NEW_COLOR": "{{username}}, {{obj_name}} adlı destanın \"{{field_name}}\"  alanını <span class=\"new-color\" style=\"background: {{new_value}}\"></span> olarak değiştirdi",
         "NEW_COMMENT_US": " {{obj_name}} KH'sine {{username}} tarafından yorum yapıldı",
         "NEW_COMMENT_ISSUE": " {{obj_name}} talebine {{username}} tarafından yorum yapıldı",
         "NEW_COMMENT_TASK": " {{obj_name}} görevine {{username}} tarafından yorum yapıldı",
-        "NEW_COMMENT_EPIC": "{{username}} has commented in the epic {{obj_name}}",
+        "NEW_COMMENT_EPIC": "{{username}}, {{obj_name}} destanına bir yorum ekledi",
         "NEW_MEMBER": "{{project_name}} projesi yeni bir üyeye sahip",
         "US_ADDED_MILESTONE": " {{username}}, {{sprint_name}} koşusuna {{obj_name}} hikayesini ekledi",
         "US_MOVED": "{{username}}, {{obj_name}} hikayesini taşıdı",
@@ -1660,7 +1662,7 @@
             "CLEAR": "Filtreleri kaldır"
         },
         "SEARCH": {
-            "PAGE_TITLE": "Search - Discover projects - Taiga",
+            "PAGE_TITLE": "Arama - Proje keşfedin - Taiga",
             "PAGE_DESCRIPTION": "Searchable directory of Public Projects in Taiga. Explore backlogs, timelines, issues, and teams. Check out the most liked or most active projects. Filter by Kanban or Scrum.",
             "INPUT_PLACEHOLDER": "Birşeyler yazın...",
             "ACTION_TITLE": "Ara",

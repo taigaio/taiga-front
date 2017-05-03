@@ -214,10 +214,10 @@
         },
         "WYSIWYG": {
             "CODE_SNIPPET": "Fragmento de código",
-            "DB_CLICK": "double click to edit",
+            "DB_CLICK": "doble click para editar",
             "SELECT_LANGUAGE_PLACEHOLDER": "Selecciona un lenguaje",
             "SELECT_LANGUAGE_REMOVE_FORMATING": "Eliminar formato",
-            "OUTDATED": "Otra persona ha realizado cambios durante tu edición. Comprueba la nueva versión en la pestaña de activiy antes de guardar los cambios.",
+            "OUTDATED": "Another person has made changes while you were editing. Check the new version on the activity tab before you save your changes.",
             "MARKDOWN_HELP": "Ayuda de sintaxis Markdown"
         },
         "PERMISIONS_CATEGORIES": {
@@ -290,7 +290,7 @@
         "ACTION_ENTER": "Entrar",
         "ACTION_SIGN_IN": "Iniciar sesión",
         "PLACEHOLDER_AUTH_PASSWORD": "Contraseña (distingue mayúsculas y minúsculas)",
-        "ALT_LOGIN": "Or login with"
+        "ALT_LOGIN": "O haz login con"
     },
     "LOGIN_FORM": {
         "ERROR_AUTH_INCORRECT": "Nuestros Oompa Loompas indican que tu nombre de usuario/correo o contraseña son incorrectos",
@@ -610,7 +610,8 @@
             "REPLACEMENT_ROLE": "Todos los usuarios con este rol serán movidos a",
             "WARNING_DELETE_ROLE": "¡Ten cuidado! Todas las estimaciones de roles serán eliminados",
             "ERROR_DELETE_ALL": "No puedes eliminar todos los valores",
-            "EXTERNAL_USER": "Usuario externo"
+            "EXTERNAL_USER": "Usuario externo",
+            "NOTE_EXTERNAL_USERS": "<strong>Note:</strong> by External User we mean any anonymous user not belonging to the Taiga platform, including search engines. Please use this role with care."
         },
         "THIRD_PARTIES": {
             "SECRET_KEY": "Secret key",
@@ -995,7 +996,7 @@
             },
             "JIRA": {
                 "SELECTOR": "Importa tu proyecto de Jira y elije cómo gestionarlo",
-                "HOW_TO_CONFIGURE": "(configuration help)",
+                "HOW_TO_CONFIGURE": "(ayuda de configuración)",
                 "CHOOSE_PROJECT": "Elige el proyecto o panel que quieres importar",
                 "NO_PROJECTS": "Parece que no tienes proyectos o paneles en Jira",
                 "URL": "Tu URL de Jira",
@@ -1138,6 +1139,7 @@
         "TITLE_DELETE_ACTION": "Borrar Historia de Usuario",
         "LIGHTBOX_TITLE_BLOKING_US": "Historia bloqueada",
         "NOT_ESTIMATED": "No estimada",
+        "OWNER_US": "This User Story belongs to",
         "TRIBE": {
             "PUBLISH": "Publicar como Gig en la Tribu Taiga",
             "PUBLISH_INFO": "Mas información",

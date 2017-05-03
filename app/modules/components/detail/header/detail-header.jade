@@ -37,7 +37,7 @@
 
 //- User Story belongs to epic
 .belong-to-epics-wrapper(ng-if="vm.item.epics")
-    span This User Story belongs to
+    span(translate="US.OWNER_US")
     tg-belong-to-epics(
         ng-if="::vm.item.epics"
         epics="::vm.item.epics"
