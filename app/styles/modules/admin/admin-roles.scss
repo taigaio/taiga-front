@@ -48,6 +48,9 @@
         display: flex;
         justify-content: flex-end;
         padding-bottom: 2rem;
+        &.external-user {
+            justify-content: flex-start;
+        }
         .check {
             margin-left: .5rem;
             input {
