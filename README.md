@@ -140,6 +140,7 @@ And go in your browser to: http://localhost:9001/
 If you want to run e2e tests
 
 ```
+apt-get install -y openjdk-7-jre-headless
 npm install -g protractor
 npm install -g mocha
 npm install -g babel@5
