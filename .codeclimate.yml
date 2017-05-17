@@ -1,0 +1,32 @@
+---
+engines:
+  csslint:
+    enabled: false
+  coffeelint:
+    enabled: false
+  duplication:
+    enabled: true
+    config:
+      languages:
+      - ruby
+      - javascript
+      - python
+      - php
+  eslint:
+    enabled: true
+  fixme:
+    enabled: true
+  radon:
+    enabled: true
+ratings:
+  paths:
+  - "**.css"
+  - "**.coffee"
+  - "**.inc"
+  - "**.js"
+  - "**.jsx"
+  - "**.module"
+  - "**.php"
+  - "**.py"
+  - "**.rb"
+exclude_paths: []
