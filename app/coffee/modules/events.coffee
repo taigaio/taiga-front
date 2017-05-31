@@ -204,7 +204,6 @@ class EventsService
     ###########################################
     onOpen: ->
         @.connected = true
-        @.startHeartBeatMessages()
 
         @log.debug("WebSocket connection opened")
         token = @auth.getToken()
@@ -215,6 +214,7 @@ class EventsService
         }
 
         @.sendMessage(message)
+        @.startHeartBeatMessages()
         @.notifications()
 
     onMessage: (event) ->
