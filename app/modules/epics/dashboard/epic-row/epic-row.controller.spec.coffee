@@ -68,8 +68,8 @@ describe "EpicRow", ->
                     is_closed: false
                 }
                 user_stories_counts: {
-                    opened: 10,
-                    closed: 10
+                    total: 10,
+                    progress: 5
                 }
             })
         }
@@ -83,8 +83,8 @@ describe "EpicRow", ->
                     is_closed: false
                 }
                 user_stories_counts: {
-                    opened: 0,
-                    closed: 0
+                    total: 10,
+                    progress: 0
                 }
             })
         }
