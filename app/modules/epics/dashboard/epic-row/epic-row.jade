@@ -27,7 +27,7 @@
         )
         tg-svg(
             svg-icon="icon-arrow-down"
-            ng-if="vm.epic.getIn(['user_stories_counts', 'opened']) || vm.epic.getIn(['user_stories_counts', 'closed'])"
+            ng-if="vm.epic.getIn(['user_stories_counts', 'total'])"
         )
 
     .project(ng-if="vm.column.project")
