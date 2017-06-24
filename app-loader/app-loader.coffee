@@ -50,8 +50,8 @@ loadPlugin = (pluginPath) ->
             else
                 resolve()
 
-        fail = () ->
-            console.error("error loading", pluginPath)
+        fail = (a, errorStr, e) ->
+            console.error("error loading", pluginPath, e)
 
         $.getJSON(pluginPath).then(success, fail)
 
