@@ -193,6 +193,7 @@ class UsFiltersMixin
         filters.status = urlfilters.status
         filters.assigned_to = urlfilters.assigned_to
         filters.owner = urlfilters.owner
+        filters.epic = urlfilters.epic
 
         @filterRemoteStorageService.getFilters(@scope.projectId, @.storeCustomFiltersName).then (userFilters) =>
             userFilters[name] = filters
