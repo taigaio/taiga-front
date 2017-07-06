@@ -30,7 +30,7 @@ class RelatedUserStoriesController
         @.showCreateRelatedUserstoriesLightbox = false
 
     showRelatedUserStoriesSection: () ->
-        return @projectService.hasPermission("view_epics") or @.userstories?.legth > 0
+        return @projectService.hasPermission("view_epics") or @.userstories?.length > 0
 
     userCanSort: () ->
         return @projectService.hasPermission("modify_epic")
