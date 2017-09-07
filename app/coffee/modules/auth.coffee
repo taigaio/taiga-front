@@ -343,6 +343,7 @@ RegisterDirective = ($auth, $confirm, $location, $navUrls, $config, $routeParams
 
         onSuccessSubmit = (response) ->
             $analytics.trackEvent("auth", "register", "user registration", 1)
+            $analytics.addEcStep("register", null, null)
 
             if $scope.nextUrl.indexOf('http') == 0
                 $window.location.href = $scope.nextUrl

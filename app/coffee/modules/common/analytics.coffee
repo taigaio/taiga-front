@@ -48,6 +48,7 @@ class AnalyticsService extends taiga.Service
 
         @win.ga("create", @.accountId, "auto")
         @win.ga("require", "displayfeatures")
+        @win.ga("require", "ec")
 
         if @.trackRoutes and (not @.ignoreFirstPageLoad)
             @win.ga("send", "pageview", @.getUrl())
@@ -84,6 +85,27 @@ class AnalyticsService extends taiga.Service
 
         @win.ga("send", "event", category, action, label, value)
 
+    addEcStep: (step, currentPlan, selectedPlan) ->
+        option = {
+            "currentPlan": currentPlan,
+            "selectedPlan": selectedPlan,
+        }
+
+        if step == "register"
+            stepId = 1
+        else if step == "change-plan"
+            stepId = 2
+        else if step == "select-plan"
+            stepId = 3
+        else if step == "confirm-plan"
+            stepId = 4
+        else if step == "plan-changed"
+            stepId = 5
+
+        ga('ec:setAction','checkout', {
+            'step': stepId,
+            'Option': option
+        })
 
 module.service("$tgAnalytics", AnalyticsService)
 
