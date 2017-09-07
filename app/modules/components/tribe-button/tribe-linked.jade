@@ -19,14 +19,17 @@
             href="{{::vm.tribeHost}}/gigs/{{gigId}}"
             title="gigTitle"
             target="_blank"
+            rel="nofollow"
         ) {{gigTitle}}
 
         a.delete-link(
             href="{{::vm.tribeHost}}/gigs/{{gigId}}/link-with-task-manager?from=taiga"
             title="{{ 'US.TRIBE.EDIT_LINK' | translate }}"
+            rel="nofollow"
         ) {{ 'US.TRIBE.EDIT_LINK' | translate }}
 
         a.synchronize-link.button-tribe(
             ng-href="{{::vm.tribeHost}}/gigs/sync/{{gigId}}?from=taiga"
             title="{{ 'US.TRIBE.SINCHRONIZE_LINK' }}"
+            rel="nofollow"
         ) {{ 'US.TRIBE.SYNCHRONIZE_LINK' | translate }}
