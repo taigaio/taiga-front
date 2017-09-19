@@ -18,6 +18,7 @@
 ###
 
 module = angular.module('taigaEpics')
+debounceLeading = @.taiga.debounceLeading
 
 RelatedUserstoriesCreateDirective = (@lightboxService) ->
     link = (scope, el, attrs, ctrl) ->
@@ -37,6 +38,7 @@ RelatedUserstoriesCreateDirective = (@lightboxService) ->
             existingUserstoryForm.setErrors(errors)
 
         scope.showLightbox = (selectedProjectId) ->
+            ctrl.loadProjects()
             scope.selectProject(selectedProjectId).then () =>
                 lightboxService.open(el.find(".lightbox-create-related-user-stories"))
 
@@ -53,10 +55,11 @@ RelatedUserstoriesCreateDirective = (@lightboxService) ->
         scope.selectProject = (selectedProjectId) ->
             scope.selectedUserstory = null
             scope.searchUserstory = ""
-            ctrl.selectProject(selectedProjectId)
+            ctrl.filterUss(selectedProjectId, scope.searchUserstory)
 
-        scope.onUpdateSearchUserstory = () ->
+        scope.onUpdateSearchUserstory = debounceLeading 300, () ->
             scope.selectedUserstory = null
+            ctrl.filterUss(scope.selectedProject, scope.searchUserstory)
 
     return {
         link: link,
