@@ -28,17 +28,19 @@ class RelatedUserstoriesCreateController
     ]
 
     constructor: (@currentUserService, @rs, @confirm, @analytics) ->
-        @.projects = @currentUserService.projects.get("all")
+        @.projects = null
         @.projectUserstories = Immutable.List()
         @.loading = false
 
-    selectProject: (selectedProjectId, onSelectedProject) ->
-        @rs.userstories.listAllInProject(selectedProjectId).then (data) =>
+    loadProjects: () ->
+        if @.projects == null
+            @.projects = @currentUserService.projects.get("all")
+
+    filterUss: (selectedProjectId, filterText) ->
+        @rs.userstories.listInAllProjects({project: selectedProjectId, q: filterText}, true).then (data) =>
             excludeIds = @.epicUserstories.map((us) -> us.get('id'))
             filteredData = data.filter((us) -> excludeIds.indexOf(us.get('id')) == -1)
             @.projectUserstories = filteredData
-            if onSelectedProject
-                onSelectedProject()
 
     saveRelatedUserStory: (selectedUserstoryId, onSavedRelatedUserstory) ->
         # This method assumes the following methods are binded to the controller:

@@ -20,14 +20,15 @@
 Resource = (urlsService, http) ->
     service = {}
 
-    service.listInAllProjects = (params) ->
+    service.listInAllProjects = (params, pagination=false) ->
         url = urlsService.resolve("userstories")
 
-        httpOptions = {
-            headers: {
-                "x-disable-pagination": "1"
+        if !pagination
+            httpOptions = {
+                headers: {
+                    "x-disable-pagination": "1"
+                }
             }
-        }
 
         return http.get(url, params, httpOptions)
             .then (result) ->

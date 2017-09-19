@@ -110,13 +110,8 @@ a.add-button.e2e-add-userstory-button(
                 translate="COMMON.SAVE"
                 ng-show="relatedWithSelector=='new-user-story'"
             )
-            
-        p(
-            ng-show="relatedWithSelector=='existing-user-story' && !vm.projectUserstories.size"
-            translate="EPIC.NO_USERSTORIES"
-        )
 
-        fieldset.existing-user-story(ng-show="relatedWithSelector=='existing-user-story' && vm.projectUserstories.size")
+        fieldset.existing-user-story(ng-show="relatedWithSelector=='existing-user-story'")
             label(
                 translate="EPIC.CHOOSE_USERSTORY"
                 for="userstory-filter"
@@ -129,7 +124,7 @@ a.add-button.e2e-add-userstory-button(
                 ng-change="onUpdateSearchUserstory()"
             )
 
-            form.existing-user-story-form
+            form.existing-user-story-form(ng-show="relatedWithSelector=='existing-user-story' && vm.projectUserstories.size")
                 select.userstory.e2e-userstories-select(
                     size="5"
                     ng-model="selectedUserstory"
@@ -140,9 +135,14 @@ a.add-button.e2e-add-userstory-button(
                         value=""
                     )
                     option(
-                        ng-repeat="us in vm.projectUserstories | toMutable  | byRef:searchUserstory track by us.id"
+                        ng-repeat="us in vm.projectUserstories | toMutable track by us.id"
                         value="{{ ::us.id }}"
                     ) #{hash}{{::us.ref}} {{::us.subject}}
+
+            p.no-stories-found(
+                ng-show="relatedWithSelector=='existing-user-story' && !vm.projectUserstories.size"
+                translate="EPIC.NO_USERSTORIES_FOUND"
+            )
 
             button.button-green.e2e-select-related-userstory-button(
                 href=""
