@@ -102,9 +102,29 @@ class AnalyticsService extends taiga.Service
         else if step == "plan-changed"
             stepId = 5
 
-        ga('ec:setAction','checkout', {
+        @win.ga('ec:setAction','checkout', {
             'step': stepId,
             'Option': option
+        })
+
+    addEcImpression: (plan, page, position) ->
+        @win.ga('ec:addImpression', {
+           'id': plan.plan_id,
+           'name': plan.name,
+           'list': page,
+           'position': position,
+        })
+
+    setEcAddProduct: (plan) ->
+        @win.ga('ec:addProduct', {
+           'id': plan.plan_id,
+           'name': plan.name,
+           'position': 1,
+        })
+
+    setEcSetAction: (action, page) ->
+        @win.ga('ec:setAction', action, {
+            'list': page
         })
 
 module.service("$tgAnalytics", AnalyticsService)
