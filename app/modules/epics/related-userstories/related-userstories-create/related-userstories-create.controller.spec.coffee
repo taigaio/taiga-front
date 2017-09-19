@@ -90,7 +90,6 @@ describe "RelatedUserstoriesCreate", ->
             }
         ])
 
-        onSelectedProjectCallback = sinon.stub()
         userstories = Immutable.fromJS([
             {
                 id: 11
@@ -108,7 +107,7 @@ describe "RelatedUserstoriesCreate", ->
         ])
 
         promise = mocks.tgResources.userstories.listAllInProject.withArgs(1).promise().resolve(userstories)
-        RelatedUserstoriesCreateCtrl.selectProject(1, onSelectedProjectCallback).then () ->
+        RelatedUserstoriesCreateCtrl.filterUss(1, "").then () ->
             expect(RelatedUserstoriesCreateCtrl.projectUserstories.toJS()).to.eql(filteredUserstories.toJS())
             done()
 
