@@ -37,10 +37,11 @@ class RelatedUserstoriesCreateController
             @.projects = @currentUserService.projects.get("all")
 
     filterUss: (selectedProjectId, filterText) ->
-        @rs.userstories.listInAllProjects({project: selectedProjectId, q: filterText}, true).then (data) =>
+        promise = @rs.userstories.listInAllProjects({project: selectedProjectId, q: filterText}, true).then (data) =>
             excludeIds = @.epicUserstories.map((us) -> us.get('id'))
             filteredData = data.filter((us) -> excludeIds.indexOf(us.get('id')) == -1)
             @.projectUserstories = filteredData
+        promise
 
     saveRelatedUserStory: (selectedUserstoryId, onSavedRelatedUserstory) ->
         # This method assumes the following methods are binded to the controller:
