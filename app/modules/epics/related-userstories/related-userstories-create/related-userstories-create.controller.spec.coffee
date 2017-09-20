@@ -44,7 +44,7 @@ describe "RelatedUserstoriesCreate", ->
     _mockTgResources = () ->
         mocks.tgResources = {
             userstories: {
-                listAllInProject: sinon.stub()
+                listInAllProjects: sinon.stub()
             }
             epics: {
                 deleteRelatedUserstory: sinon.stub()
@@ -106,7 +106,7 @@ describe "RelatedUserstoriesCreate", ->
             }
         ])
 
-        promise = mocks.tgResources.userstories.listAllInProject.withArgs(1).promise().resolve(userstories)
+        promise = mocks.tgResources.userstories.listInAllProjects.withArgs({project:1, q:""}).promise().resolve(userstories)
         RelatedUserstoriesCreateCtrl.filterUss(1, "").then () ->
             expect(RelatedUserstoriesCreateCtrl.projectUserstories.toJS()).to.eql(filteredUserstories.toJS())
             done()
