@@ -35,7 +35,11 @@ loadStylesheet = (path) ->
 loadPlugin = (pluginPath) ->
     return new Promise (resolve, reject) ->
         success = (plugin) ->
-            window.taigaContribPlugins.push(plugin)
+            if plugin.isPack
+                for item in plugin.plugins
+                    window.taigaContribPlugins.push(item)
+            else
+                window.taigaContribPlugins.push(plugin)
 
             if plugin.css
                 loadStylesheet(plugin.css)
@@ -47,7 +51,7 @@ loadPlugin = (pluginPath) ->
                 resolve()
 
         fail = () ->
-            console.error("error loading", pluginPath);
+            console.error("error loading", pluginPath)
 
         $.getJSON(pluginPath).then(success, fail)
 
