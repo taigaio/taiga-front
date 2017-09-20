@@ -11,9 +11,11 @@ css = ""
 for plugin in plugins:
     if "js" in plugin:
         js += open("./dist{}".format(plugin['js']), "r").read()
+        js += "\n";
         del plugin["js"]
     if "css" in plugin:
-        js += open("./dist{}".format(plugin['css']), "r").read()
+        css += open("./dist{}".format(plugin['css']), "r").read()
+        css += "\n";
         del plugin["css"]
 
 os.makedirs("./dist/plugins/packed", exist_ok=True)
