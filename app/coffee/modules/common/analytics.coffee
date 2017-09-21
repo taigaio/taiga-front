@@ -115,14 +115,14 @@ class AnalyticsService extends taiga.Service
            'position': position,
         })
 
-    setEcAddProduct: (plan) ->
+    addEcProduct: (plan) ->
         @win.ga('ec:addProduct', {
            'id': plan.plan_id,
            'name': plan.name,
            'position': 1,
         })
 
-    setEcSetAction: (action, page) ->
+    setEcAction: (action, page) ->
         @win.ga('ec:setAction', action, {
             'list': page
         })
