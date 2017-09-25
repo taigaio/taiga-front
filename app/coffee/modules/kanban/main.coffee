@@ -315,6 +315,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             if headers && headers['taiga-info-order-updated']
                 order = JSON.parse(headers['taiga-info-order-updated'])
                 @kanbanUserstoriesService.assignOrders(order)
+            @scope.$broadcast("redraw:wip")
 
         return promise
 
@@ -463,13 +464,13 @@ module.directive("tgKanbanSquishColumn", ["$tgResources", "tgProjectService", Ka
 ## Kanban WIP Limit Directive
 #############################################################################
 
-KanbanWipLimitDirective = ->
+KanbanWipLimitDirective = ($timeout) ->
     link = ($scope, $el, $attrs) ->
         status = $scope.$eval($attrs.tgKanbanWipLimit)
 
         redrawWipLimit = =>
             $el.find(".kanban-wip-limit").remove()
-            timeout 200, =>
+            $timeout =>
                 element = $el.find("tg-card")[status.wip_limit]
                 if element
                     angular.element(element).before("<div class='kanban-wip-limit'></div>")
@@ -485,4 +486,4 @@ KanbanWipLimitDirective = ->
 
     return {link: link}
 
-module.directive("tgKanbanWipLimit", KanbanWipLimitDirective)
+module.directive("tgKanbanWipLimit", ["$timeout", KanbanWipLimitDirective])
