@@ -648,6 +648,15 @@ gulp.task("copy-extras", function() {
         .pipe(gulp.dest(paths.dist + "/"));
 });
 
+gulp.task("link-images", function(cb) {
+    try {
+        fs.unlinkSync(paths.dist+"images");
+    } catch (exception) {
+    }
+    fs.symlinkSync("./"+version+"/images", paths.dist+"images");
+    cb();
+});
+
 gulp.task("copy", [
     "copy-fonts",
     "copy-theme-fonts",
@@ -731,6 +740,7 @@ gulp.task("deploy", function(cb) {
         "jade-deploy",
         "app-deploy",
         "jslibs-deploy",
+        "link-images",
         "compile-themes"
     ], cb);
 });
