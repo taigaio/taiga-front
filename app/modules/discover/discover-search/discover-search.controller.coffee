@@ -22,11 +22,13 @@ class DiscoverSearchController
         '$routeParams',
         'tgDiscoverProjectsService',
         '$route',
+        '$tgLocation',
+        '$tgAnalytics',
         'tgAppMetaService',
         '$translate'
     ]
 
-    constructor: (@routeParams, @discoverProjectsService, @route, @appMetaService, @translate) ->
+    constructor: (@routeParams, @discoverProjectsService, @route, @location, @analytics, @appMetaService, @translate) ->
         @.page = 1
 
         taiga.defineImmutableProperty @, "searchResult", () => return @discoverProjectsService.searchResult
@@ -43,6 +45,7 @@ class DiscoverSearchController
         title = @translate.instant("DISCOVER.SEARCH.PAGE_TITLE")
         description = @translate.instant("DISCOVER.SEARCH.PAGE_DESCRIPTION")
         @appMetaService.setAll(title, description)
+        @analytics.trackPage(@location.url(), "Discover Search")
 
     fetch: () ->
         @.page = 1
@@ -105,6 +108,7 @@ class DiscoverSearchController
             filter: @.filter,
             text: @.q
         })
+        @analytics.trackPage(@location.url(), "Discover Search")
 
         @.fetchByGlobalSearch()
 
@@ -114,6 +118,7 @@ class DiscoverSearchController
         @route.updateParams({
             order_by: orderBy
         })
+        @analytics.trackPage(@location.url(), "Discover Search")
 
         @.fetchByOrderBy()
 
