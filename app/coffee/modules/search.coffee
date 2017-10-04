@@ -177,7 +177,7 @@ module.directive("tgSearchBox", SearchBoxDirective)
 ## Search Directive
 #############################################################################
 
-SearchDirective = ($log, $compile, $templatecache, $routeparams, $location) ->
+SearchDirective = ($log, $compile, $templatecache, $routeparams, $location, $analytics) ->
     linkTable = ($scope, $el, $attrs, $ctrl) ->
         applyAutoTab = true
         activeSectionName = "userstories"
@@ -261,6 +261,7 @@ SearchDirective = ($log, $compile, $templatecache, $routeparams, $location) ->
 
         $scope.$watch "searchTerm", (searchTerm) ->
             $location.search("text", searchTerm) if searchTerm != undefined
+            $analytics.trackPage($location.url(), "Search")
 
         $el.on "click", ".search-filter li > a", (event) ->
             event.preventDefault()
@@ -288,5 +289,5 @@ SearchDirective = ($log, $compile, $templatecache, $routeparams, $location) ->
 
     return {link:link}
 
-module.directive("tgSearch", ["$log", "$compile", "$templateCache", "$routeParams", "$tgLocation",
+module.directive("tgSearch", ["$log", "$compile", "$templateCache", "$routeParams", "$tgLocation", "$tgAnalytics",
                               SearchDirective])
