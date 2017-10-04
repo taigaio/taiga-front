@@ -716,7 +716,7 @@ gulp.task("express", function() {
         res.sendFile("index.html", {root: __dirname + "/dist/"});
     });
 
-    app.listen(9002);
+    app.listen(9001);
 });
 
 //Rerun the task when a file changes
