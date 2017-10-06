@@ -413,7 +413,7 @@
         "ADD": "Afegeix un nou adjunt. {{maxFileSizeMsg}}",
         "DROP": "Deixa els adjunts ací",
         "SHOW_DEPRECATED": "+ mostra els adjunts obsolets",
-        "HIDE_DEPRECATED": "- Amagar els adjunts obsolets",
+        "HIDE_DEPRECATED": "- amagar els adjunts obsolets",
         "COUNT_DEPRECATED": "({{ counter }} obsolet)",
         "MAX_UPLOAD_SIZE": "El tamany màxim de pujada es ",
         "DATE": "DD MMM YYYY [at] hh:mm",
@@ -1121,6 +1121,7 @@
         "CHOOSE_PROJECT_FROM": "What's the project?",
         "CHOOSE_USERSTORY": "What's the user story?",
         "NO_USERSTORIES": "This project has no User Stories yet. Please select another project.",
+        "NO_USERSTORIES_FOUND": "It looks like nothing was found with your search criteria",
         "FILTER_USERSTORIES": "Filter user stories",
         "LIGHTBOX_TITLE_BLOKING_EPIC": "Blocking epic",
         "ACTION_DELETE": "Delete epic"

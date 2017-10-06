@@ -40,8 +40,8 @@
         "IOCAINE_TEXT": "This member is feeling a bit overwhelmed by this task. Will become immune to the iocaine poison over time with your help. For now, may need a hug.",
         "CLIENT_REQUIREMENT": "Client requirement is new requirement that was not previously expected and it is required to be part of the project",
         "TEAM_REQUIREMENT": "Team requirement is a requirement that must exist in the project but should have no cost for the client",
-        "OWNER": "Project Owner",
-        "CAPSLOCK_WARNING": "Be careful! You are using capital letters in an input field that is case sensitive.",
+        "OWNER": "專案主持人",
+        "CAPSLOCK_WARNING": "請注意，此欄位大小寫有區別，目前輸入法切換至大寫模式",
         "CONFIRM_CLOSE_EDIT_MODE_TITLE": "Are you sure you want to close the edit mode?",
         "CONFIRM_CLOSE_EDIT_MODE_MESSAGE": "Remember that if you close the edit mode without saving all the changes will be lost",
         "RELATED_USERSTORIES": "Related user stories",
@@ -321,7 +321,7 @@
         "ACTION_RESET_PASSWORD": "重設密碼 ",
         "LINK_CANCEL": "不，請帶我回去，我記起來了",
         "SUCCESS_TITLE": "Check your inbox!",
-        "SUCCESS_TEXT": "We sent you an email with the instructions to set a new password",
+        "SUCCESS_TEXT": "已將重設密碼的郵件寄送至您的電子信箱",
         "ERROR": "按我們的記錄，你尚未註冊"
     },
     "CHANGE_PASSWORD": {
@@ -413,7 +413,7 @@
         "ADD": "加入新附件 {{maxFileSizeMsg}}",
         "DROP": "在此移除附件 ",
         "SHOW_DEPRECATED": "+ 顯示棄用的附件",
-        "HIDE_DEPRECATED": "+ 隱藏棄用的附件",
+        "HIDE_DEPRECATED": "- 隱藏棄用的附件",
         "COUNT_DEPRECATED": "({{ counter }} 遭棄用)",
         "MAX_UPLOAD_SIZE": "上傳檔案最大容量限制 {{maxFileSize}}",
         "DATE": "DD MMM YYYY [at] hh:mm",
@@ -501,7 +501,7 @@
             "DELETE": "刪除此專案",
             "CHANGE_LOGO": "更改圖標",
             "ACTION_USE_DEFAULT_LOGO": "使用設預圖片",
-            "MAX_PRIVATE_PROJECTS": "You've reached the maximum number of private projects allowed by your current plan",
+            "MAX_PRIVATE_PROJECTS": "\b您已到達目前會員等級的私有專案數上限",
             "MAX_PRIVATE_PROJECTS_MEMBERS": "The maximum number of members for private projects has been exceeded",
             "MAX_PUBLIC_PROJECTS": "Unfortunately, you've reached the maximum number of public projects allowed by your current plan",
             "MAX_PUBLIC_PROJECTS_MEMBERS": "The project exceeds your maximum number of members for public projects",
@@ -549,7 +549,7 @@
             "FIELD_TYPE_RICHTEXT": "Rich text",
             "FIELD_TYPE_MULTI": "多行",
             "FIELD_TYPE_DATE": "日期",
-            "FIELD_TYPE_URL": "Url"
+            "FIELD_TYPE_URL": "網址"
         },
         "PROJECT_VALUES": {
             "PAGE_TITLE": "{{sectionName}} - 專案數值 - {{projectName}}",
@@ -597,7 +597,7 @@
             "NEW_TAG": "New tag",
             "MIXING_HELP_TEXT": "Select the tags that you want to merge",
             "MIXING_MERGE": "Merge Tags",
-            "SELECTED": "Selected"
+            "SELECTED": "已選擇"
         },
         "ROLES": {
             "PAGE_TITLE": "角色- {{projectName}}",
@@ -808,7 +808,7 @@
         "BLOCKED_PROJECT": {
             "BLOCKED": "Blocked project",
             "THIS_PROJECT_IS_BLOCKED": "This project is temporarily blocked",
-            "TO_UNBLOCK_CONTACT_THE_ADMIN_STAFF": "In order to unblock your projects, contact the administrator."
+            "TO_UNBLOCK_CONTACT_THE_ADMIN_STAFF": "欲解鎖專案請聯絡管理員"
         },
         "SECTION": {
             "SEARCH": "搜尋",
@@ -1014,8 +1014,8 @@
     "LIGHTBOX": {
         "DELETE_ACCOUNT": {
             "CONFIRM": "你確定要刪除Taiga帳戶嗎？",
-            "CANCEL": "Back to settings",
-            "ACCEPT": "Delete account",
+            "CANCEL": "回到設定",
+            "ACCEPT": "移除帳號",
             "BLOCK_PROJECT": "Note that all the projects you own projects will be <strong>blocked</strong> after you delete your account. If you do want a project blocked, transfer ownership to another member of each project prior to deleting your account."
         },
         "DELETE_PROJECT": {
@@ -1032,9 +1032,9 @@
             "TITLE": "新成員",
             "PLACEHOLDER": "Filter users or write an email to invite",
             "ADD_EMAIL": "Add email",
-            "REMOVE": "Remove",
+            "REMOVE": "移除",
             "INVITE": "Invite",
-            "CHOOSE_ROLE": "Choose a role",
+            "CHOOSE_ROLE": "選擇角色",
             "PLACEHOLDER_INVITATION_TEXT": "(非必要) 加上一段私人文字在邀請信，告訴你的新成員一些好事  ;-)",
             "HELP_TEXT": "如果用戶已註冊Taiga帳戶，他們會自動被加入。否則他們會收到一封加入的邀請信"
         },
@@ -1121,6 +1121,7 @@
         "CHOOSE_PROJECT_FROM": "What's the project?",
         "CHOOSE_USERSTORY": "What's the user story?",
         "NO_USERSTORIES": "This project has no User Stories yet. Please select another project.",
+        "NO_USERSTORIES_FOUND": "It looks like nothing was found with your search criteria",
         "FILTER_USERSTORIES": "Filter user stories",
         "LIGHTBOX_TITLE_BLOKING_EPIC": "Blocking epic",
         "ACTION_DELETE": "Delete epic"
@@ -1146,7 +1147,7 @@
             "PUBLISH_TITLE": "More info on publishing in Taiga Tribe",
             "PUBLISHED_AS_GIG": "Story published as Gig in Taiga Tribe",
             "EDIT_LINK": "Edit link",
-            "CLOSE": "Close",
+            "CLOSE": "關閉",
             "SYNCHRONIZE_LINK": "synchronize with Taiga Tribe",
             "PUBLISH_MORE_INFO_TITLE": "Do you need somebody for this task?",
             "PUBLISH_MORE_INFO_TEXT": "<p>If you need help with a particular piece of work you can easily create gigs on<a href='http://taigatribe.com' title='Taiga Tribe'> Taiga Tribe </a> and receive help from all over the world. You will be able to control and manage the gig enjoying a great community eager to contribute.</p><p><a href='http://taigatribe.com' title='Taiga Tribe'> TaigaTribe </a>  was born as a Taiga sibling. Both platforms can live separately but we believe that there is much power in using them combined so we are making sure the integration works like a charm.</p>"
@@ -1162,7 +1163,7 @@
         "OLDER_FIRST": "Older first",
         "RECENT_FIRST": "Recent first",
         "COMMENT": "評論",
-        "EDITED_COMMENT": "Edited:",
+        "EDITED_COMMENT": "已編輯",
         "SHOW_HISTORY": "View historic",
         "TYPE_NEW_COMMENT": "在此輸入一個新的評論",
         "SHOW_DELETED": "顯示遭刪除的評論 ",
@@ -1179,8 +1180,8 @@
         "TAGS_ADDED": "tags added:",
         "TAGS_REMOVED": "tags removed:",
         "US_POINTS": "{{role}} points",
-        "NEW_ATTACHMENT": "new attachment:",
-        "DELETED_ATTACHMENT": "deleted attachment:",
+        "NEW_ATTACHMENT": "新增附件",
+        "DELETED_ATTACHMENT": "刪除附件",
         "UPDATED_ATTACHMENT": "updated attachment ({{filename}}):",
         "CREATED_CUSTOM_ATTRIBUTE": "created custom attribute",
         "UPDATED_CUSTOM_ATTRIBUTE": "updated custom attribute",

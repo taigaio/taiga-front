@@ -51,7 +51,7 @@
         },
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "無効な値です",
-            "TYPE_EMAIL": "有効なメールアドレスでなければいけません",
+            "TYPE_EMAIL": "有効なメールアドレスでなければいけません。",
             "TYPE_URL": "有効なURLでなければいけません",
             "TYPE_URLSTRICT": "有効なURLでなければいけません",
             "TYPE_NUMBER": "有効な数字でなければいけません",
@@ -214,8 +214,8 @@
         },
         "WYSIWYG": {
             "CODE_SNIPPET": "Code Snippet",
-            "DB_CLICK": "double click to edit",
-            "SELECT_LANGUAGE_PLACEHOLDER": "Select Language",
+            "DB_CLICK": "ダブルクリックして編集",
+            "SELECT_LANGUAGE_PLACEHOLDER": "言語を選択",
             "SELECT_LANGUAGE_REMOVE_FORMATING": "Remove formatting",
             "OUTDATED": "Another person has made changes while you were editing. Check the new version on the activity tab before you save your changes.",
             "MARKDOWN_HELP": "Markdown記法のヘルプ"
@@ -274,7 +274,7 @@
     },
     "LOGIN": {
         "PAGE_TITLE": "ログイン - Taiga",
-        "PAGE_DESCRIPTION": "仕事を本当に楽しくする美しくてシンプルなツールを求めている、スタートアップやアジャイル開発者及びデザイナーのためのプロジェクトマネジメント基盤、Taigaにログインしましょう。"
+        "PAGE_DESCRIPTION": "スタートアップ、デベロッパー、デザイナーのための、仕事を真から楽しくするシンプルで美しいプロジェクトマネージメントツール、Taigaにログインしましょう。"
     },
     "AUTH": {
         "INVITED_YOU": "があなたをプロジェクトに参加するよう招待しています",
@@ -286,7 +286,7 @@
         "HEADER": "すでにログインしたことがあります",
         "PLACEHOLDER_AUTH_NAME": "ユーザー名 または メールアドレス",
         "LINK_FORGOT_PASSWORD": "忘れましたか？",
-        "TITLE_LINK_FORGOT_PASSWORD": "パスワードを忘れましたか？",
+        "TITLE_LINK_FORGOT_PASSWORD": "パスワードをお忘れですか？",
         "ACTION_ENTER": "決定",
         "ACTION_SIGN_IN": "ログイン",
         "PLACEHOLDER_AUTH_PASSWORD": "パスワード",
@@ -298,7 +298,7 @@
     },
     "REGISTER": {
         "PAGE_TITLE": "登録 - Taiga",
-        "PAGE_DESCRIPTION": "仕事を本当に楽しくする美しくてシンプルなツールを求めるスタートアップや、アジャイル開発者及びデザイナーのためのプロジェクトマネジメントプラットフォーム、Taigaにあなたのアカウントを作成しましょう。"
+        "PAGE_DESCRIPTION": "スタートアップ、デベロッパー、デザイナーのための、仕事を真から楽しくするシンプルで美しいプロジェクトマネージメントツール、Taigaのアカウントを作成しましょう。"
     },
     "REGISTER_FORM": {
         "TITLE": "新しいTaigaアカウントを登録する (無料)",
@@ -312,7 +312,7 @@
     },
     "FORGOT_PASSWORD": {
         "PAGE_TITLE": "パスワードを忘れました - Taiga",
-        "PAGE_DESCRIPTION": "新しいパスワードを取得するためにユーザー名 または メールアドレスを記入することで、Taigaに再びアクセスできます。"
+        "PAGE_DESCRIPTION": "ユーザー名 または メールアドレスを記入して新しいパスワードを取得しすれば、Taigaに再びアクセスできます。"
     },
     "FORGOT_PASSWORD_FORM": {
         "TITLE": "おっと、パスワードを忘れてしまいましたか？",
@@ -346,7 +346,7 @@
     },
     "INVITATION": {
         "PAGE_TITLE": "招待を受諾する - Taiga",
-        "PAGE_DESCRIPTION": "仕事を本当に楽しくする美しくてシンプルなツールを求めるスタートアップや、アジャイル開発者及びデザイナーのためのプロジェクトマネジメントプラットフォーム、Taigaのプロジェクトへの招待を受諾"
+        "PAGE_DESCRIPTION": "スタートアップ、デベロッパー、デザイナーのための、仕事を真から楽しくするシンプルで美しいプロジェクトマネージメントツール、Taigaへの招待を受諾します。"
     },
     "INVITATION_LOGIN_FORM": {
         "NOT_FOUND": "「あなたの招待を確認できなかった」とウンパルンパたちが言っています。",
@@ -354,9 +354,9 @@
     },
     "HOME": {
         "PAGE_TITLE": "ホーム - Taiga",
-        "PAGE_DESCRIPTION": "The Taiga home page with your main projects and all your assigned and watched user stories, tasks and issues",
+        "PAGE_DESCRIPTION": "あなたのメインプロジェクト、担当あるいはフォローしているユーザーストーリー、タスク、課題が表示されるTaigaのホームページです。",
         "EMPTY_WORKING_ON": "<strong>何も表示されていませんか？</strong> Taigaで作業を始めると、ここにあなたが取り組んでいるユーザーストーリー、タスク、課題が表示されます。",
-        "EMPTY_WATCHING": "ユーザーストーリー、タスク、課題を<strong>フォロー</strong>して変更が発生した際に通知を受け取りましょう。",
+        "EMPTY_WATCHING": "ユーザーストーリー、タスク、課題を<strong>フォロー</strong>して変更が発生した際に通知を受け取りましょう。:)",
         "EMPTY_PROJECT_LIST": "参加中のプロジェクトがありません",
         "WORKING_ON_SECTION": "取り組んでいる作業",
         "WATCHING_SECTION": "フォロー中",
@@ -506,14 +506,14 @@
             "MAX_PUBLIC_PROJECTS": "あなたの現在のプランで許可されている公開プロジェクトの上限数に達しました。",
             "MAX_PUBLIC_PROJECTS_MEMBERS": "The project exceeds your maximum number of members for public projects",
             "PROJECT_OWNER": "プロジェクトオーナー",
-            "REQUEST_OWNERSHIP": "オーナーシップを要求",
-            "REQUEST_OWNERSHIP_CONFIRMATION_TITLE": "新しいプロジェクトのオーナーになりますか？",
-            "REQUEST_OWNERSHIP_DESC": "Request that current project owner {{name}} transfer ownership of this project to you.",
+            "REQUEST_OWNERSHIP": "オーナー権限を要求",
+            "REQUEST_OWNERSHIP_CONFIRMATION_TITLE": "新しいプロジェクトオーナーになりますか？",
+            "REQUEST_OWNERSHIP_DESC": "現在のプロジェクトオーナー {{name}} に、このプロジェクトのオーナー権限をあなたに移すよう要求",
             "REQUEST_OWNERSHIP_BUTTON": "リクエスト",
             "REQUEST_OWNERSHIP_SUCCESS": "プロジェクトオーナーに通知します",
             "CHANGE_OWNER": "オーナーを変更",
             "CHANGE_OWNER_SUCCESS_TITLE": "あなたのリクエストが送信されました！",
-            "CHANGE_OWNER_SUCCESS_DESC": "We will notify you by email if the project ownership request is accepted or declined"
+            "CHANGE_OWNER_SUCCESS_DESC": "プロジェクトのオーナー権限要求が承認または拒否されことをメールでお知らせします"
         },
         "REPORTS": {
             "TITLE": "レポート",
@@ -575,7 +575,7 @@
             "ACTION_ADD": "新しい深刻度を追加"
         },
         "PROJECT_VALUES_STATUS": {
-            "TITLE": "Statuses",
+            "TITLE": "ステータス",
             "SUBTITLE": "ユーザーストーリー、タスク、課題のステータスを定義することができます。",
             "EPIC_TITLE": "エピックステータス",
             "US_TITLE": "ユーザーストーリーステータス",
@@ -595,9 +595,9 @@
             "EMPTY_SEARCH": "検索条件に当てはまるものはありませんでした。",
             "ACTION_ADD": "タグを追加",
             "NEW_TAG": "新規タグ",
-            "MIXING_HELP_TEXT": "マージしたいタグを選択してください。",
+            "MIXING_HELP_TEXT": "マージしたいタグを選択",
             "MIXING_MERGE": "タグを結合",
-            "SELECTED": "Selected"
+            "SELECTED": "選択中"
         },
         "ROLES": {
             "PAGE_TITLE": "役割 - {{projectName}}",
@@ -735,18 +735,18 @@
         "PROJECT_TRANSFER": {
             "DO_YOU_ACCEPT_PROJECT_OWNERNSHIP": "新しいプロジェクトオーナーとなりますか？",
             "PRIVATE": "プライベート",
-            "ACCEPTED_PROJECT_OWNERNSHIP": "おめでとうございます！あなたが新しいプロジェクトオーナーです。",
-            "REJECTED_PROJECT_OWNERNSHIP": "OK. We'll contact the current project owner",
+            "ACCEPTED_PROJECT_OWNERNSHIP": "おめでとうございます！　あなたが新しいプロジェクトオーナーです。",
+            "REJECTED_PROJECT_OWNERNSHIP": "承知致しました。現在のプロジェクトオーナーに連絡します",
             "ACCEPT": "はい",
             "REJECT": "却下",
-            "PROPOSE_OWNERSHIP": "プロジェクト <strong>{{project}}</strong> の現在のプロジェクトオーナー <strong>{{owner}}</strong> が、あなたに新しいプロジェクトオーナーになるようリクエストしています。",
+            "PROPOSE_OWNERSHIP": "プロジェクト <strong>{{project}}</strong> の現在のオーナー <strong>{{owner}}</strong> が、あなたに新しいプロジェクトオーナーになるよう要求しています。",
             "ADD_COMMENT": "プロジェクトオーナーにコメントしますか？",
             "UNLIMITED_PROJECTS": "無制限",
             "OWNER_MESSAGE": {
                 "PRIVATE": "あなたが持てる非公開プロジェクトは最大<strong>{{maxProjects}}</strong>個までです。現在<strong>{{currentProjects}}</strong>個持っています。",
                 "PUBLIC": "あなたが持てる公開プロジェクトは最大<strong>{{maxProjects}}</strong>個までです。現在<strong>{{currentProjects}}</strong>個持っています。"
             },
-            "CANT_BE_OWNED": "この種類のプロジェクトのオーナーには現在なれません。このプロジェクトのオーナーになりたい場合は管理者に問い合わせて、プロジェクトオーナー権限を変更してもらってください。"
+            "CANT_BE_OWNED": "あなたは現在、このタイプのプロジェクトオーナーにはなれません。このプロジェクトのオーナーになりたい場合は管理者に問い合わせてオーナー権限を変更してもらってください。"
         }
     },
     "USER": {
@@ -858,30 +858,30 @@
                 "NOTIFY_ALL": "すべての通知を受信する",
                 "NOTIFY_ALL_TITLE": "このプロジェクトのすべての通知を受信する",
                 "NOTIFY_INVOLVED": "関連するものだけ",
-                "NOTIFY_INVOLVED_TITLE": "Recive notificacions only when you are involved",
+                "NOTIFY_INVOLVED_TITLE": "あなたが携わっている時のみ通知を受信",
                 "UNWATCH": "フォローをやめる",
                 "UNWATCH_TITLE": "プロジェクトのフォローをやめる"
             }
         },
         "CONTACT_BUTTON": {
-            "CONTACT_TITLE": "Contact the project team",
+            "CONTACT_TITLE": "プロジェクトチームに連絡",
             "CONTACT_BUTTON": "Contact the project"
         },
         "CREATE": {
             "TITLE": "プロジェクトを作成",
-            "CHOOSE_TEMPLATE": "Which template fits your project better?",
+            "CHOOSE_TEMPLATE": "どちらのテンプレートがあなたのプロジェクトにより適していますか？",
             "TEMPLATE_SCRUM": "スクラム",
             "TEMPLATE_SCRUM_DESC": "Prioritize and solve your tasks in short time cycles.",
             "TEMPLATE_SCRUM_LONGDESC": "Scrum is an iterative and incremental agile software development methodology for managing product development.\nThe product backlog is what will ultimately be delivered, ordered into the sequence in which it should be delivered. Product Backlogs are broken into manageable, executable chunks named sprints. Every certain amount of time the team initiates a new sprint and commits to deliver a certain number of user stories from the backlog, in accordance with their skills, abilities and resources. The project advances as the backlog becomes depleted.",
             "TEMPLATE_KANBAN": "かんばん",
             "TEMPLATE_KANBAN_DESC": "Keep a constant workflow on independent tasks",
             "TEMPLATE_KANBAN_LONGDESC": "The Kanban methodology is used to divide project development (any sort of project) into stages.\nA kanban card is like an index card or post-it note that details every task (or user story) in a project that needs to be completed. The Kanban board is used to move each card from one state of completion to the next and in so doing, helps track progress.",
-            "DUPLICATE": "Duplicate project",
+            "DUPLICATE": "プロジェクトを複製",
             "DUPLICATE_DESC": "Start clean and keep your configuration",
             "IMPORT": "プロジェクトをインポート",
-            "IMPORT_DESC": "Import your project from multiple platforms into Taiga",
-            "INVITE": "Invite to the project",
-            "SOLO_PROJECT": "You'll be alone in this project",
+            "IMPORT_DESC": "複数プラットフォームからのプロジェクトをTaigaにインポート",
+            "INVITE": "プロジェクトに招待",
+            "SOLO_PROJECT": "このプロジェクトで独りになります",
             "INVITE_LATER": "(You'll be able to invite more members later)",
             "BACK": "バックエンド",
             "MAX_PRIVATE_PROJECTS": "Unfortunately, You've reached the maximum number of private projects.\nIf you would like to increase the current limit please contact the administrator.",
@@ -892,16 +892,16 @@
         "COMMON": {
             "DETAILS": "New project details",
             "PROJECT_TITLE": "プロジェクト名",
-            "PROJECT_DESCRIPTION": "Project Description"
+            "PROJECT_DESCRIPTION": "プロジェクト概要"
         },
         "DUPLICATE": {
-            "TITLE": "Duplicate Project",
+            "TITLE": "プロジェクトを複製",
             "DESCRIPTION": "Start clean and keep your configuration",
-            "SELECT_PLACEHOLDER": "Choose an existing project to duplicate"
+            "SELECT_PLACEHOLDER": "複製する既存プロジェクトを選択"
         },
         "IMPORT": {
-            "TITLE": "Import Project",
-            "DESCRIPTION": "Import your project from multiple platforms into Taiga",
+            "TITLE": "プロジェクトをインポート",
+            "DESCRIPTION": "複数プラットフォームからのプロジェクトをTaigaにインポート",
             "ASYNC_IN_PROGRESS_TITLE": "ウンパルンパたちがあなたのプロジェクトをインポートしています。",
             "ASYNC_IN_PROGRESS_MESSAGE": "この処理には時間がかかります。<br/>準備が出来たらメールで通知します。",
             "UPLOAD_IN_PROGRESS_MESSAGE": "{{totalSize}} 中 {{uploadedSize}} アップロード済み",
@@ -910,16 +910,16 @@
             "ERROR_MESSAGE": "ウンパルンパたちはダンプファイルのインポートに手こずっているようです。　　\n{{error_message}}",
             "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) はウンパルンパたちには重すぎます。({{maxFileSize}})より少ないもので試してください。",
             "SYNC_SUCCESS": "プロジェクトのインポートに成功しました",
-            "IMPORT": "Import",
+            "IMPORT": "インポート",
             "WHO_IS": "Their tasks will be assigned to ...",
-            "WRITE_EMAIL": "Or if you want, write the email that this user uses in Taiga",
+            "WRITE_EMAIL": "あるいは必要であれば、このユーザーがTaigaで使用しているメールアドレスを記入",
             "SEARCH_CONTACT": "Or if you want, search in your contacts",
-            "WRITE_EMAIL_LABEL": "Write the email that this user uses in Taiga",
+            "WRITE_EMAIL_LABEL": "Taigaでこのユーザーが使用しているメールアドレスを記入",
             "ACCEEDE": "Acceede",
             "PROJECT_MEMBERS": "プロジェクトメンバー",
             "PROCESS_DESCRIPTION": "Tell us who from Taiga you want to assign the tasks of {{platform}}",
             "MATCH": "Is <strong>{{user_external}}</strong> the same person as <strong>{{user_internal}}</strong>?",
-            "CHOOSE": "Select user",
+            "CHOOSE": "ユーザーを選択",
             "LINKS": "Links with {{platform}}",
             "LINKS_DESCRIPTION": "Do you want to keep the link of each item with the original {{platform}} card?",
             "WARNING_MAIL_USER": "Note that if the user does not have a Taiga account we will not be able to assign the tasks to him.",
@@ -963,51 +963,51 @@
             "WARNING": {
                 "TITLE": "Some taks will be unassigned",
                 "DESCRIPTION": "There are still unidentified people. The cards assigned to these people will remain unassigned. Check all the contacts to not lose that information.",
-                "CHECK": "Check contacts"
+                "CHECK": "コンタクトを確認"
             },
             "TAIGA": {
-                "SELECTOR": "Import your Taiga project"
+                "SELECTOR": "Taigaプロジェクトをインポート"
             },
             "TRELLO": {
-                "SELECTOR": "Import your Trello boards into Taiga",
+                "SELECTOR": "TrelloボードをTaigaにインポート",
                 "CHOOSE_PROJECT": "Choose board that you want to import",
                 "NO_PROJECTS": "It seems you have no boards in Trello"
             },
             "GITHUB": {
-                "SELECTOR": "Import your GitHub project issues",
-                "CHOOSE_PROJECT": "Find the project you want to import",
-                "NO_PROJECTS": "It seems you have no porjects in GitHub",
-                "HOW_DO_YOU_WANT_TO_IMPORT": "How do you want to import your issues into Taiga?",
+                "SELECTOR": "GitHubプロジェクト課題をインポート",
+                "CHOOSE_PROJECT": "インポートしたいプロジェクトを検索",
+                "NO_PROJECTS": "GitHubプロジェクトがないようです",
+                "HOW_DO_YOU_WANT_TO_IMPORT": "課題をどのようにTaigaにインポートしたいですか？",
                 "KANBAN_PROJECT": "As user stories in a kanban project",
                 "KANBAN_PROJECT_DESCRIPTION": "After that you can enable scrum with backlog.",
                 "SCRUM_PROJECT": "As user stories in a scrum project",
                 "SCRUM_PROJECT_DESCRIPTION": "After that you can enable kanban mode.",
-                "ISSUES_PROJECT": "As issues",
-                "ISSUES_PROJECT_DESCRIPTION": "You will not be able to use your issues in kanban or scrum mode. You will be able to enable kanban or scrum for new user stories"
+                "ISSUES_PROJECT": "課題として",
+                "ISSUES_PROJECT_DESCRIPTION": "課題をカンバンまたはスクラムモードで使うことはできません。新しいユーザーストーリーからカンバンまたはスクラムを有効にすることができます。"
             },
             "ASANA": {
-                "SELECTOR": "Import your Asana project and choose how to manage it",
-                "CHOOSE_PROJECT": "Choose project that you want to import",
-                "NO_PROJECTS": "It seems you have no porjects in Asana",
+                "SELECTOR": "Asanaプロジェクトをインポートし管理方法を選択",
+                "CHOOSE_PROJECT": "インポートしたいプロジェクトを選択",
+                "NO_PROJECTS": "Asanaにプロジェクトがないようです",
                 "KANBAN_PROJECT": "かんばん",
                 "SCRUM_PROJECT": "スクラム",
-                "CREATE_AS_SCRUM_DESCRIPTION": "The tasks and sub-tasks of your project will be created as Taiga user stories and tasks.",
-                "CREATE_AS_KANBAN_DESCRIPTION": "The tasks and sub-tasks of your project will be created as Taiga user stories and tasks."
+                "CREATE_AS_SCRUM_DESCRIPTION": "あなたのプロジェクトのタスクとサブタスクはTaigaユーザーストーリーとタスクとして作成されます。",
+                "CREATE_AS_KANBAN_DESCRIPTION": "あなたのプロジェクトのタスクとサブタスクはTaigaユーザーストーリーとタスクとして作成されます。"
             },
             "JIRA": {
-                "SELECTOR": "Import your Jira project and choose how to manage it",
-                "HOW_TO_CONFIGURE": "(configuration help)",
-                "CHOOSE_PROJECT": "Choose project or board that you want to import",
-                "NO_PROJECTS": "It seems you have no porjects or boards in Jira",
-                "URL": "Your Jira URL",
+                "SELECTOR": "Jiraプロジェクトをインポートし管理方法を選択",
+                "HOW_TO_CONFIGURE": "(設定ヘルプ)",
+                "CHOOSE_PROJECT": "インポートしたいプロジェクトまたはボードを選択",
+                "NO_PROJECTS": "Jiraにプロジェクトやボードがないようです",
+                "URL": "Jira URL",
                 "KANBAN_PROJECT": "かんばん",
                 "SCRUM_PROJECT": "スクラム",
                 "ISSUES_PROJECT": "課題",
-                "CREATE_AS_SCRUM_DESCRIPTION": "The issues and sub-issues of your project will be created as Taiga user stories and tasks.",
-                "CREATE_AS_KANBAN_DESCRIPTION": "The issues and sub-issues of your project will be created as Taiga user stories and tasks.",
-                "CREATE_AS_ISSUES_DESCRIPTION": "What do you want to do with sub-issues from the Jira project? (Taiga doesn't allow sub-issues)",
-                "CREATE_NEW_ISSUES": "Convert sub-issues to new Taiga issues",
-                "NOT_CREATE_NEW_ISSUES": "Do not import sub-issues"
+                "CREATE_AS_SCRUM_DESCRIPTION": "あなたのプロジェクトの課題とサブ課題はTaigaユーザーストーリーとタスクとして作成されます。",
+                "CREATE_AS_KANBAN_DESCRIPTION": "あなたのプロジェクトの課題とサブ課題はTaigaユーザーストーリーとタスクとして作成されます。",
+                "CREATE_AS_ISSUES_DESCRIPTION": "Jiraプロジェクトからのサブ課題をどうしますか？ (Taigaはサブ課題というものを許可しません)",
+                "CREATE_NEW_ISSUES": "サブ課題を新しいTaiga課題に変換する",
+                "NOT_CREATE_NEW_ISSUES": "サブ課題をインポートしないでください"
             }
         }
     },
@@ -1016,7 +1016,7 @@
             "CONFIRM": "本当にあなたのTaigaアカウントを削除してもよろしいですか？",
             "CANCEL": "設定に戻る",
             "ACCEPT": "アカウントを削除する",
-            "BLOCK_PROJECT": "あなたが所有しているプロジェクトは、あなたのアカウント削除後に<strong>ブロック</strong>されることを覚えておいてください。あなたのアカウントが削除されてプロジェクトがブロックされる前にプロジェクトの所有権を他のメンバーに譲渡してください。"
+            "BLOCK_PROJECT": "あなたが所有しているプロジェクトは、あなたのアカウント削除後に<strong>ブロック</strong>されることを覚えておいてください。あなたのアカウントが削除されてプロジェクトがブロックされる前にプロジェクトのオーナー権限を他のメンバーに譲渡してください。"
         },
         "DELETE_PROJECT": {
             "TITLE": "プロジェクトを削除",
@@ -1085,18 +1085,18 @@
         "LEAVE_PROJECT_WARNING": {
             "TITLE": "オーナーが不在となるため、プロジェクトを離脱することができません。",
             "CURRENT_USER_OWNER": {
-                "DESC": "現在、あなたはこのプロジェクトのオーナーです。プロジェクトを去る前にオーナーの権限を他の誰かに譲渡してください。",
-                "BUTTON": "プロジェクトのオーナーを変更する"
+                "DESC": "現在、あなたはこのプロジェクトのオーナーです。プロジェクトを離脱する前にオーナー権限を他の誰かに譲渡してください。",
+                "BUTTON": "プロジェクトのオーナーを変更"
             },
             "OTHER_USER_OWNER": {
-                "DESC": "現在のプロジェクトのプロジェクトオーナーを削除することはできません。まず新しいプロジェクトオーナーを割り当ててください。",
-                "BUTTON": "プロジェクトオーナーの変更をリクエストする。"
+                "DESC": "現在のプロジェクトのオーナーになっているメンバーを削除することはできません。まず新しいプロジェクトオーナーを指名してください。",
+                "BUTTON": "プロジェクトオーナーの変更をリクエスト"
             }
         },
         "CHANGE_OWNER": {
             "TITLE": "誰を新しいプロジェクトオーナーにしたいですか？",
             "ADD_COMMENT": "コメントを追加",
-            "BUTTON": "このメンバーを新しいプロジェクトオーナーにする。"
+            "BUTTON": "新しいプロジェクトオーナーとなるようこのメンバーに要求"
         },
         "CONTACT_PROJECT": {
             "TITLE": "メールを送る",
@@ -1121,6 +1121,7 @@
         "CHOOSE_PROJECT_FROM": "プロジェクトとは？",
         "CHOOSE_USERSTORY": "ユーザーストーリーとは？",
         "NO_USERSTORIES": "このプロジェクトにはユーザーストーリーがまだありません。別のプロジェクトを選択してください。",
+        "NO_USERSTORIES_FOUND": "検索条件に当てはまるものはありませんでした。",
         "FILTER_USERSTORIES": "ユーザーストーリーをフィルター",
         "LIGHTBOX_TITLE_BLOKING_EPIC": "ブロックしているエピック",
         "ACTION_DELETE": "エピックの削除"
@@ -1141,13 +1142,13 @@
         "NOT_ESTIMATED": "見積もりが行われていません",
         "OWNER_US": "This User Story belongs to",
         "TRIBE": {
-            "PUBLISH": "Publish as Gig in Taiga Tribe",
+            "PUBLISH": "Taiga Tribeでギグとして発行",
             "PUBLISH_INFO": "詳細表示",
-            "PUBLISH_TITLE": "More info on publishing in Taiga Tribe",
-            "PUBLISHED_AS_GIG": "Story published as Gig in Taiga Tribe",
+            "PUBLISH_TITLE": "Taiga Tribeへの発行に関する情報",
+            "PUBLISHED_AS_GIG": "Taiga Tribeでギグとして発行されたストーリー",
             "EDIT_LINK": "リンクを編集",
             "CLOSE": "Close",
-            "SYNCHRONIZE_LINK": "synchronize with Taiga Tribe",
+            "SYNCHRONIZE_LINK": "Taiga Tribeと同期",
             "PUBLISH_MORE_INFO_TITLE": "このタスクに誰か必要ですか？",
             "PUBLISH_MORE_INFO_TEXT": "<p>If you need help with a particular piece of work you can easily create gigs on<a href='http://taigatribe.com' title='Taiga Tribe'> Taiga Tribe </a> and receive help from all over the world. You will be able to control and manage the gig enjoying a great community eager to contribute.</p><p><a href='http://taigatribe.com' title='Taiga Tribe'> TaigaTribe </a>  was born as a Taiga sibling. Both platforms can live separately but we believe that there is much power in using them combined so we are making sure the integration works like a charm.</p>"
         },
@@ -1215,7 +1216,7 @@
         "EMPTY": "バックログが空です！",
         "CREATE_NEW_US": "新規US作成",
         "CREATE_NEW_US_EMPTY_HELP": "新しくユーザーストーリーを作成してください。",
-        "EXCESS_OF_POINTS": "Excess of points",
+        "EXCESS_OF_POINTS": "ポイント超過",
         "PENDING_POINTS": "保留ポイント",
         "CLOSED_POINTS": "完了",
         "COMPACT_SPRINT": "Compact Sprint",
@@ -1241,7 +1242,7 @@
         "FORECASTING": {
             "TITLE": "Velocity forecasting",
             "BACKLOG": "バックログを表示",
-            "NEW_SPRINT": "Candidate User Stories for your next sprint based on your velocity. Click to create a new sprint.",
+            "NEW_SPRINT": "あなたの作業速度をもとにした次のスプリントのユーザーストーリー候補。新しくスプリントを作成するにはクリックしてください。",
             "CURRENT_SPRINT": "あなたの作業速度をもとにしたスプリント向けのユーザーストーリー候補。現在のスプリントに追加するにはクリックしてください。"
         },
         "TABLE": {
@@ -1275,7 +1276,7 @@
             "LINK_TASKBOARD": "スプリントタスクボード",
             "TITLE_LINK_TASKBOARD": "タスクボード{{name}}へ移動",
             "EMPTY": "まだスプリントはありません",
-            "WARNING_EMPTY_SPRINT_ANONYMOUS": "This sprint has no User Stories",
+            "WARNING_EMPTY_SPRINT_ANONYMOUS": "このスプリントにはユーザーストーリーがありません",
             "WARNING_EMPTY_SPRINT": "新しいスプリントを始めるために、バックログからストーリーをここにドロップしてください。",
             "TITLE_ACTION_NEW_SPRINT": "新しいスプリントを追加",
             "TEXT_ACTION_NEW_SPRINT": "新しくスプリントをプロジェクトに作成してください。",
@@ -1328,7 +1329,7 @@
         "OWNER_US": "このタスクはこちらに属しています。",
         "TITLE_LINK_GO_OWNER": "ユーザーストーリーに移動",
         "TITLE_DELETE_ACTION": "タスクを削除",
-        "LIGHTBOX_TITLE_BLOKING_TASK": "Blocking task",
+        "LIGHTBOX_TITLE_BLOKING_TASK": "ブロックしているタスク",
         "FIELDS": {
             "IS_IOCAINE": "Is iocaine"
         },
@@ -1361,20 +1362,20 @@
         "PAGE_TITLE": "課題 - {{projectName}}",
         "PAGE_DESCRIPTION": "課題一覧パネル {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "課題",
-        "ACTION_NEW_ISSUE": "+ 新規 ISSUE",
+        "ACTION_NEW_ISSUE": "+ 新規課題",
         "ACTION_PROMOTE_TO_US": "ユーザーストーリーに変更する",
         "PROMOTED": "この課題はこちらのユーザーストーリーへ発展:",
         "EXTERNAL_REFERENCE": "課題の作成元: ",
         "GO_TO_EXTERNAL_REFERENCE": "originへ移動",
-        "ACTION_DELETE": "Issue を削除",
-        "LIGHTBOX_TITLE_BLOKING_ISSUE": "ブロックしている Issue",
+        "ACTION_DELETE": "課題を削除",
+        "LIGHTBOX_TITLE_BLOKING_ISSUE": "ブロックしている課題",
         "FIELDS": {
             "PRIORITY": "優先度",
             "SEVERITY": "深刻度",
             "TYPE": "タイプ"
         },
         "CONFIRM_PROMOTE": {
-            "TITLE": "このIssueを新しいユーザーストーリーに変更",
+            "TITLE": "この課題を新しいユーザーストーリーに変更",
             "MESSAGE": "この課題から新しいユーザーストーリーを作成しますか？"
         },
         "TABLE": {
@@ -1441,7 +1442,7 @@
         "EXPLANATION_COLUMN_CERVANTES": "Wiki ページを編集しました",
         "COLUMN_BUG_HUNTER": "バグハンター",
         "EXPLANATION_COLUMN_BUG_HUNTER": "報告されている課題",
-        "COLUMN_NIGHT_SHIFT": "Night Shift",
+        "COLUMN_NIGHT_SHIFT": "ナイトシフト",
         "EXPLANATION_COLUMN_NIGHT_SHIFT": "完了タスク",
         "COLUMN_TOTAL_POWER": "Total Power",
         "EXPLANATION_COLUMN_TOTAL_POWER": "合計ポイント",
@@ -1478,7 +1479,7 @@
             "USERNAME": "ユーザー名",
             "EMAIL": "メール",
             "FULL_NAME": "フルネーム",
-            "PLACEHOLDER_FULL_NAME": "Set your full name (ex. Íñigo Montoya)",
+            "PLACEHOLDER_FULL_NAME": "フルネームを入力 (例. Íñigo Montoya)",
             "BIO": "自己紹介（最大で全角１０５文字まで）",
             "PLACEHOLDER_BIO": "あなたについて教えてください",
             "LANGUAGE": "言語",
@@ -1573,7 +1574,7 @@
         "PAGE_DESCRIPTION": "An external app requires authentication",
         "AUTHORIZATION_REQUEST": "{{application}} にあなたのTaigaアカウントを使用することを許可しますか？",
         "LOGIN_WITH_ANOTHER_USER": "別のユーザーでログイン",
-        "AUTHORIZE_APP": "Authorize app",
+        "AUTHORIZE_APP": "アプリを許可",
         "CANCEL": "キャンセル"
     },
     "JOYRIDE": {
@@ -1599,7 +1600,7 @@
             },
             "STEP4": {
                 "TITLE": "さあ始めましょう",
-                "TEXT1": "You can start by creating your first Taiga project.",
+                "TEXT1": "最初のTaigaプロジェクトを作成して始めてみましょう。",
                 "TEXT2": "グッドラック！"
             }
         },
@@ -1640,7 +1641,7 @@
     },
     "DISCOVER": {
         "PAGE_TITLE": "プロジェクトを探す - Taiga",
-        "PAGE_DESCRIPTION": "Searchable directory of Public Projects in Taiga. Explore backlogs, timelines, issues, and teams. Check out the most liked or most active projects. Filter by Kanban or Scrum.",
+        "PAGE_DESCRIPTION": "検索できるTaigaの公開プロジェクトディレクトリ。バックログ、タイムライン、課題、そしてチームを探してみてください。最も人気な、あるいは活気のあるプロジェクトも見つけられます。カンバンやスクラムでフィルターしてみるのも良いかもしれません。",
         "DISCOVER_TITLE": "プロジェクトを探す",
         "DISCOVER_SUBTITLE": "{projects, plural, one{One public project to discover} other{# 件のプロジェクトが見つかりました}}",
         "MOST_ACTIVE": "最も活発なプロジェクト",
@@ -1663,7 +1664,7 @@
         },
         "SEARCH": {
             "PAGE_TITLE": "検索結果 - プロジェクトを探す - Taiga",
-            "PAGE_DESCRIPTION": "Searchable directory of Public Projects in Taiga. Explore backlogs, timelines, issues, and teams. Check out the most liked or most active projects. Filter by Kanban or Scrum.",
+            "PAGE_DESCRIPTION": "検索できるTaigaの公開プロジェクトディレクトリ。バックログ、タイムライン、課題、そしてチームを探してみてください。最も人気な、あるいは活気のあるプロジェクトも見つけられます。カンバンやスクラムでフィルターしてみるのも良いかもしれません。",
             "INPUT_PLACEHOLDER": "入力してください",
             "ACTION_TITLE": "検索",
             "RESULTS": "検索結果"

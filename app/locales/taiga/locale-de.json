@@ -213,11 +213,11 @@
             }
         },
         "WYSIWYG": {
-            "CODE_SNIPPET": "Code Snippet",
-            "DB_CLICK": "double click to edit",
-            "SELECT_LANGUAGE_PLACEHOLDER": "Select Language",
-            "SELECT_LANGUAGE_REMOVE_FORMATING": "Remove formatting",
-            "OUTDATED": "Another person has made changes while you were editing. Check the new version on the activity tab before you save your changes.",
+            "CODE_SNIPPET": "Codeschnipsel",
+            "DB_CLICK": "Doppelklick zum Bearbeiten",
+            "SELECT_LANGUAGE_PLACEHOLDER": "Sprache wählen",
+            "SELECT_LANGUAGE_REMOVE_FORMATING": "Lösche Formatierung",
+            "OUTDATED": "Eine andere Person hat, während deiner Bearbeitung, Änderungen vorgenommen. Überprüfe die neue Version in der Aktivitätstabelle, bevor du deine Änderungen speicherst",
             "MARKDOWN_HELP": "Markdown syntax Hilfe"
         },
         "PERMISIONS_CATEGORIES": {
@@ -355,8 +355,8 @@
     "HOME": {
         "PAGE_TITLE": "Home - Taiga",
         "PAGE_DESCRIPTION": "Die Taiga Homepage mit Ihren wichtigsten Projekten und all Ihren zugeordneten und beobachteten User-Stories, Aufgaben und Tickets.",
-        "EMPTY_WORKING_ON": "<strong>Es sieht hier noch leer aus, oder?</strong> Beginne mit Taiga zu arbeiten und du wirst hier Storys, Tasks und Issues an denen gearbeitet wird sehen.",
-        "EMPTY_WATCHING": "<strong>Folge</strong> User Stories, Tasks, Issues in deinem Projekt und erhalte Benachrichtigungen, wenn sich etwas ändert. :)",
+        "EMPTY_WORKING_ON": "<strong>Es sieht hier noch leer aus, oder?</strong> Beginne mit Taiga zu arbeiten und du wirst hier Storys, Tasks und Tickets an denen gearbeitet wird sehen.",
+        "EMPTY_WATCHING": "<strong>Folge</strong> User Stories, Tasks, Tickets in deinem Projekt und erhalte Benachrichtigungen, wenn sich etwas ändert. :)",
         "EMPTY_PROJECT_LIST": "Sie haben noch keine Projekte",
         "WORKING_ON_SECTION": "Zuletzt bearbeitet",
         "WATCHING_SECTION": "Beobachtet",
@@ -491,7 +491,7 @@
             "PROJECT_NAME": "Projektname",
             "TAGS": "Schlagwörter",
             "DESCRIPTION": "Beschreibung",
-            "RECRUITING": "Is this project looking for people?",
+            "RECRUITING": "Auf der Suche nach Mitgliedern?",
             "RECRUITING_MESSAGE": "Wen suchst du denn?",
             "RECRUITING_PLACEHOLDER": "Define the profiles you are looking for",
             "FEEDBACK": "Feedback von Taiga-Nutzern erhalten?",
@@ -546,7 +546,7 @@
             "ISSUE_DESCRIPTION": "Tickets benutzerdefinierte Felder",
             "ISSUE_ADD": "Fügen Sie den Tickets ein benutzerdefiniertes Feld hinzu",
             "FIELD_TYPE_TEXT": "Text",
-            "FIELD_TYPE_RICHTEXT": "Rich text",
+            "FIELD_TYPE_RICHTEXT": "Rich Text",
             "FIELD_TYPE_MULTI": "Mehrzeilig",
             "FIELD_TYPE_DATE": "Datum",
             "FIELD_TYPE_URL": "Url"
@@ -689,8 +689,8 @@
             "DEFAULT_DELETE_MESSAGE": "die Einladung an {{email}}"
         },
         "DEFAULT_VALUES": {
-            "LABEL_EPIC_STATUS": "Default value for epic status selector",
-            "LABEL_US_STATUS": "Default value for user story status selector",
+            "LABEL_EPIC_STATUS": "Standardwert für Epic Status",
+            "LABEL_US_STATUS": "Standardwert für Userstory Status",
             "LABEL_POINTS": "Vorgegebener Wert für Punkteauswahl",
             "LABEL_TASK_STATUS": "Vorgegebene Auswahl für den Aufgaben-Status",
             "LABEL_ISSUE_TYPE": "Vorgegebener Wert für Ticketartauswahl",
@@ -865,13 +865,13 @@
         },
         "CONTACT_BUTTON": {
             "CONTACT_TITLE": "Kontaktiere das Projekt-Team",
-            "CONTACT_BUTTON": "Contact the project"
+            "CONTACT_BUTTON": "Kontaktiere das Projekt"
         },
         "CREATE": {
             "TITLE": "Projekt erstellen",
-            "CHOOSE_TEMPLATE": "Which template fits your project better?",
+            "CHOOSE_TEMPLATE": "Welches Template passt am besten zu Ihrem Projekt?",
             "TEMPLATE_SCRUM": "Scrum",
-            "TEMPLATE_SCRUM_DESC": "Prioritize and solve your tasks in short time cycles.",
+            "TEMPLATE_SCRUM_DESC": "Priorisiere und löse deine Aufgaben in kurzen Zeitintervallen",
             "TEMPLATE_SCRUM_LONGDESC": "Scrum is an iterative and incremental agile software development methodology for managing product development.\nThe product backlog is what will ultimately be delivered, ordered into the sequence in which it should be delivered. Product Backlogs are broken into manageable, executable chunks named sprints. Every certain amount of time the team initiates a new sprint and commits to deliver a certain number of user stories from the backlog, in accordance with their skills, abilities and resources. The project advances as the backlog becomes depleted.",
             "TEMPLATE_KANBAN": "Kanban",
             "TEMPLATE_KANBAN_DESC": "Halte einen konstanten Workflow bei unabhängigen Aufgaben",
@@ -880,9 +880,9 @@
             "DUPLICATE_DESC": "Starte sauber und behalte Deine Konfiguration",
             "IMPORT": "Projekt importieren",
             "IMPORT_DESC": "Importiere Dein Projekt von verschiedenen Plattformen zu Taiga",
-            "INVITE": "Invite to the project",
-            "SOLO_PROJECT": "You'll be alone in this project",
-            "INVITE_LATER": "(You'll be able to invite more members later)",
+            "INVITE": "Lade jemanden in dieses Projekt ein",
+            "SOLO_PROJECT": "Du bist alleine in diesem Projekt",
+            "INVITE_LATER": "(Später kannst du mehr Mitglieder einladen)",
             "BACK": "Zurück",
             "MAX_PRIVATE_PROJECTS": "Unfortunately, You've reached the maximum number of private projects.\nIf you would like to increase the current limit please contact the administrator.",
             "MAX_PUBLIC_PROJECTS": "Unfortunately, You've reached the maximum number of public projects.\nIf you would like to increase the current limit please contact the administrator.",
@@ -890,7 +890,7 @@
             "PRIVATE_PROJECT": "Privates Projekt"
         },
         "COMMON": {
-            "DETAILS": "New project details",
+            "DETAILS": "Projekt Details",
             "PROJECT_TITLE": "Projektname",
             "PROJECT_DESCRIPTION": "Projekt-Beschreibung"
         },
@@ -910,19 +910,19 @@
             "ERROR_MESSAGE": "Unsere Helferlein haben Probleme beim Importieren Ihrer Datei: {{error_message}}",
             "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) ist zu schwierig für unsere Helferlein, versuchen Sie es bitte mit einer kleineren Datei als ({{maxFileSize}})",
             "SYNC_SUCCESS": "Ihr Projekt wurde erfolgreich importiert",
-            "IMPORT": "Import",
-            "WHO_IS": "Their tasks will be assigned to ...",
-            "WRITE_EMAIL": "Or if you want, write the email that this user uses in Taiga",
-            "SEARCH_CONTACT": "Or if you want, search in your contacts",
-            "WRITE_EMAIL_LABEL": "Write the email that this user uses in Taiga",
+            "IMPORT": "Importieren",
+            "WHO_IS": "Ihre Aufgaben werden zugewiesen an ...",
+            "WRITE_EMAIL": "Oder wenn du willst, schreibe die Email, welcher der User in Taiga benützt",
+            "SEARCH_CONTACT": "Oder such in deinen Kontakten, wenn du willst",
+            "WRITE_EMAIL_LABEL": "Schreibe eine Email, das dieser User Taiga benützt",
             "ACCEEDE": "Acceede",
             "PROJECT_MEMBERS": "Projektmitglieder",
-            "PROCESS_DESCRIPTION": "Tell us who from Taiga you want to assign the tasks of {{platform}}",
-            "MATCH": "Is <strong>{{user_external}}</strong> the same person as <strong>{{user_internal}}</strong>?",
-            "CHOOSE": "Select user",
-            "LINKS": "Links with {{platform}}",
-            "LINKS_DESCRIPTION": "Do you want to keep the link of each item with the original {{platform}} card?",
-            "WARNING_MAIL_USER": "Note that if the user does not have a Taiga account we will not be able to assign the tasks to him.",
+            "PROCESS_DESCRIPTION": "Sage uns, wem aus Taiga du die Aufgaben aus {{platform}} zuweisen möchtest",
+            "MATCH": "Ist <strong>{{user_external}}</strong> die selbe Person als <strong>{{user_internal}}</strong>?",
+            "CHOOSE": "Wähle User",
+            "LINKS": "Links mit {{platform}}",
+            "LINKS_DESCRIPTION": "Möchtest du den Link von jedem Item mit der originalen {{platform}} Informationen behalten?",
+            "WARNING_MAIL_USER": "Wenn der User keinen Taiga Account besitzt, können ihm keine Aufgaben zugewiesen werden",
             "ASSIGN": "Zuweisen",
             "PROJECT_SELECTOR": {
                 "NO_RESULTS": "Es sieht so aus, als konnte zu Ihren Suchkriterien nichts passendes gefunden werden.",
@@ -932,7 +932,7 @@
             "PROJECT_RESTRICTIONS": {
                 "PROJECT_MEMBERS_DESC_PRIVATE": "The project you are trying to import has {{members}} members including you, unfortunately, your current plan allows for a maximum of {{max_memberships}} members per private project. If you would like to increase that limit please contact the administrator.",
                 "PROJECT_MEMBERS_DESC_PUBLIC": "The project you are trying to import has {{members}} members including you, unfortunately, your current plan allows for a maximum of {{max_memberships}} members per public project. If you would like to increase that limit please contact the administrator.",
-                "ACCOUNT_ALLOW_MEMBERS": "Your account only allows {{members}} members",
+                "ACCOUNT_ALLOW_MEMBERS": "Dieser Account erlaubt nur {{members}} Mitglieder",
                 "PRIVATE_PROJECTS_SPACE": {
                     "TITLE": "Leider erlaubt Ihr derzeitiger Plan keine weiteren privaten Projekte anzulegen.",
                     "DESC": "Das Projekt, das Sie versuchen zu importieren, ist privat. Leider erlaubt Ihr derzeitiger Plan keine weiteren privaten Projekte hinzuzufügen."
@@ -961,53 +961,53 @@
                 "DESCRIPTION": "Dieser Vorgang kann etwas dauern. Bitte schliessen Sie das Fenster nicht!"
             },
             "WARNING": {
-                "TITLE": "Some taks will be unassigned",
-                "DESCRIPTION": "There are still unidentified people. The cards assigned to these people will remain unassigned. Check all the contacts to not lose that information.",
-                "CHECK": "Check contacts"
+                "TITLE": "Einige Tasks werden noch nicht zugewiesen",
+                "DESCRIPTION": "Es gibt immer noch nicht identifizierte Personen. Die Objekte, die diesen Personen zugewiesen sind, werden in Taiga nicht ohne Zuweisung erstellt. Überprüfe alle Kontakte, um Informationsverlust zu vermeiden",
+                "CHECK": "Überprüfe Kontakte"
             },
             "TAIGA": {
-                "SELECTOR": "Import your Taiga project"
+                "SELECTOR": "Importiere dein Taiga Projekt"
             },
             "TRELLO": {
-                "SELECTOR": "Import your Trello boards into Taiga",
-                "CHOOSE_PROJECT": "Choose board that you want to import",
-                "NO_PROJECTS": "It seems you have no boards in Trello"
+                "SELECTOR": "Importiere Trello Projekt in Taiga",
+                "CHOOSE_PROJECT": "Wähle Board welches importiert werden soll",
+                "NO_PROJECTS": "Bist du sicher, dass du in Trello Boards besitzt "
             },
             "GITHUB": {
-                "SELECTOR": "Import your GitHub project issues",
-                "CHOOSE_PROJECT": "Find the project you want to import",
-                "NO_PROJECTS": "It seems you have no porjects in GitHub",
-                "HOW_DO_YOU_WANT_TO_IMPORT": "How do you want to import your issues into Taiga?",
-                "KANBAN_PROJECT": "As user stories in a kanban project",
-                "KANBAN_PROJECT_DESCRIPTION": "After that you can enable scrum with backlog.",
-                "SCRUM_PROJECT": "As user stories in a scrum project",
-                "SCRUM_PROJECT_DESCRIPTION": "After that you can enable kanban mode.",
-                "ISSUES_PROJECT": "As issues",
-                "ISSUES_PROJECT_DESCRIPTION": "You will not be able to use your issues in kanban or scrum mode. You will be able to enable kanban or scrum for new user stories"
+                "SELECTOR": "Importiere Github Projekt Issues",
+                "CHOOSE_PROJECT": "Finde das Projekt, welches du importieren möchtest",
+                "NO_PROJECTS": "Es scheint, als hättest du keinen Projekte in Github",
+                "HOW_DO_YOU_WANT_TO_IMPORT": "Wie willst du deine Probleme in Taiga importieren?",
+                "KANBAN_PROJECT": "Als Userstories in einem Kanban Projekt",
+                "KANBAN_PROJECT_DESCRIPTION": "Danach kannst du Scrum mit dem Backlog aktivieren",
+                "SCRUM_PROJECT": "Als Userstory in einem Scrum Projekt",
+                "SCRUM_PROJECT_DESCRIPTION": "Danach ist der Kanban Modus aktivierbar",
+                "ISSUES_PROJECT": "Als Ticket",
+                "ISSUES_PROJECT_DESCRIPTION": "Diese Tickets sind im Kanban oder Scrum Modus nicht verfügbar. Wenn neue Userstories angelegt werden, ist der Kanban oder Scrum Modus verfügbar "
             },
             "ASANA": {
-                "SELECTOR": "Import your Asana project and choose how to manage it",
-                "CHOOSE_PROJECT": "Choose project that you want to import",
-                "NO_PROJECTS": "It seems you have no porjects in Asana",
+                "SELECTOR": "Importiere dein Asana Projekt und entscheide, wie du es verwalten willst",
+                "CHOOSE_PROJECT": "Wähle das Projekt, welches importiert werden soll",
+                "NO_PROJECTS": "Es scheint, als hättest du keine Projekte in Asana",
                 "KANBAN_PROJECT": "Kanban",
                 "SCRUM_PROJECT": "Scrum",
-                "CREATE_AS_SCRUM_DESCRIPTION": "The tasks and sub-tasks of your project will be created as Taiga user stories and tasks.",
-                "CREATE_AS_KANBAN_DESCRIPTION": "The tasks and sub-tasks of your project will be created as Taiga user stories and tasks."
+                "CREATE_AS_SCRUM_DESCRIPTION": "Die Aufgaben und Teilaufgaben von deinem Projekt werden als Taiga Userstories und Taiga Aufgaben erzeugt",
+                "CREATE_AS_KANBAN_DESCRIPTION": "Die Aufgaben und Teilaufgaben von deinem Projekt werden als Taiga Userstories und Taiga Aufgaben erzeugt"
             },
             "JIRA": {
-                "SELECTOR": "Import your Jira project and choose how to manage it",
-                "HOW_TO_CONFIGURE": "(configuration help)",
-                "CHOOSE_PROJECT": "Choose project or board that you want to import",
-                "NO_PROJECTS": "It seems you have no porjects or boards in Jira",
-                "URL": "Your Jira URL",
+                "SELECTOR": "Importiere dein Jira Projekt und entscheide, wie du es verwalten willst",
+                "HOW_TO_CONFIGURE": "(Konfigurationshilfe)",
+                "CHOOSE_PROJECT": "Wähle Projekt oder Board welches importiert werden soll",
+                "NO_PROJECTS": "Es scheint, dass keine Projekte oder Boards in Jira bestehen",
+                "URL": "Deine Jira URL",
                 "KANBAN_PROJECT": "Kanban",
                 "SCRUM_PROJECT": "Scrum",
                 "ISSUES_PROJECT": "Tickets",
-                "CREATE_AS_SCRUM_DESCRIPTION": "The issues and sub-issues of your project will be created as Taiga user stories and tasks.",
-                "CREATE_AS_KANBAN_DESCRIPTION": "The issues and sub-issues of your project will be created as Taiga user stories and tasks.",
-                "CREATE_AS_ISSUES_DESCRIPTION": "What do you want to do with sub-issues from the Jira project? (Taiga doesn't allow sub-issues)",
-                "CREATE_NEW_ISSUES": "Convert sub-issues to new Taiga issues",
-                "NOT_CREATE_NEW_ISSUES": "Do not import sub-issues"
+                "CREATE_AS_SCRUM_DESCRIPTION": "Die Tickets und Sub-Tickets von deinem Projekt werden als Taiga Userstories und Taiga Aufgaben erstellt",
+                "CREATE_AS_KANBAN_DESCRIPTION": "Die Tickets und Sub-Tickets von deinem Projekt werden als Taiga Userstories und Taiga Aufgaben erstellt",
+                "CREATE_AS_ISSUES_DESCRIPTION": "Was möchtest du mit den Sub-Tickets aus dem Jira Projekt tun? (Taiga erlaubt keine Sub-Tickets) ",
+                "CREATE_NEW_ISSUES": " Konvertiere Sub-Tickets zu neuen Taiga Tickets",
+                "NOT_CREATE_NEW_ISSUES": "Importiere keine Sub-Tickets"
             }
         }
     },
@@ -1112,17 +1112,18 @@
         "TITLE_LIGHTBOX_UNLINK_RELATED_USERSTORY": "Verknüpfung zur zugehören User-Story lösen",
         "MSG_LIGHTBOX_UNLINK_RELATED_USERSTORY": "Dies wird die Verknüpfung zur zugehörigen User-Story '{{subject}}' löschen",
         "ERROR_UNLINK_RELATED_USERSTORY": "Die Verknüpfung konnte nicht gelöscht werden: {{errorMessage}}",
-        "CREATE_RELATED_USERSTORIES": "Create a relationship with",
+        "CREATE_RELATED_USERSTORIES": "Erstelle eine Verbindung mit",
         "NEW_USERSTORY": "Neue User-Story",
         "EXISTING_USERSTORY": "Bestehende User-Story",
-        "CHOOSE_PROJECT_FOR_CREATION": "What's the project?",
+        "CHOOSE_PROJECT_FOR_CREATION": "Welches Projekt?",
         "SUBJECT": "Thema",
-        "SUBJECT_BULK_MODE": "Subject (bulk insert)",
-        "CHOOSE_PROJECT_FROM": "What's the project?",
-        "CHOOSE_USERSTORY": "What's the user story?",
+        "SUBJECT_BULK_MODE": "Thema (Mehrfacheingaben möglich)",
+        "CHOOSE_PROJECT_FROM": "Welches Projekt?",
+        "CHOOSE_USERSTORY": "Beschreibe die Userstory",
         "NO_USERSTORIES": "Dieses Projekt hat zurzeit keine User Stories. Bitte wähle ein anderes Projekt.",
+        "NO_USERSTORIES_FOUND": "Es sieht so aus, als konnte zu Ihren Suchkriterien nichts passendes gefunden werden.",
         "FILTER_USERSTORIES": "User-Stories filter",
-        "LIGHTBOX_TITLE_BLOKING_EPIC": "Blocking epic",
+        "LIGHTBOX_TITLE_BLOKING_EPIC": "Blocke Epic",
         "ACTION_DELETE": "Epic löschen"
     },
     "US": {
@@ -1139,11 +1140,11 @@
         "TITLE_DELETE_ACTION": "User-Story löschen",
         "LIGHTBOX_TITLE_BLOKING_US": "Blockiert uns",
         "NOT_ESTIMATED": "Nicht eingeschätzt",
-        "OWNER_US": "This User Story belongs to",
+        "OWNER_US": "Userstory gehört",
         "TRIBE": {
             "PUBLISH": "Als Gig in Taiga Tribe veröffentlichen",
             "PUBLISH_INFO": "Weitere Infos",
-            "PUBLISH_TITLE": "More info on publishing in Taiga Tribe",
+            "PUBLISH_TITLE": "Mehr Infos zum Veröffentlichen in Taiga Tribe",
             "PUBLISHED_AS_GIG": "Story veröffentlicht als Gig in Taiga Tribe",
             "EDIT_LINK": "Link bearbeiten",
             "CLOSE": "Schließen",
@@ -1239,7 +1240,7 @@
             "HIDE": "Schlagwörter ausblenden"
         },
         "FORECASTING": {
-            "TITLE": "Velocity forecasting",
+            "TITLE": "Velocity Vorhersage",
             "BACKLOG": "Backlog anzeigen",
             "NEW_SPRINT": "Candidate User Stories for your next sprint based on your velocity. Click to create a new sprint.",
             "CURRENT_SPRINT": "Candidate User Stories for your sprint based on your velocity. Click to add to current sprint."
@@ -1470,7 +1471,7 @@
         }
     },
     "USER_PROFILE": {
-        "ACTION_USE_GRAVATAR": "Use default image",
+        "ACTION_USE_GRAVATAR": "Standardbild verwenden",
         "ACTION_DELETE_ACCOUNT": "Ihr Taiga Benutzerkonto löschen",
         "CHANGE_EMAIL_SUCCESS": "<strong>Sehen Sie in Ihren Posteingang!</strong><br />Wir haben eine E-Mail an Ihr Konto gesendet<br />mit der Anleitung, wie Sie Ihre neue Adresse anlegen",
         "CHANGE_PHOTO": "Foto ändern",
@@ -1508,7 +1509,7 @@
         "SECTION_PAGES_LIST": "Alle Seiten",
         "PAGES_LIST_COLUMNS": {
             "TITLE": "Titel",
-            "EDITIONS": "Editions",
+            "EDITIONS": "Ausgaben",
             "CREATED": "Erstellt",
             "MODIFIED": "Geändert",
             "CREATOR": "Ersteller",
@@ -1536,8 +1537,8 @@
         "TASK_CREATED_WITH_US": "{{username}} erstellte die neue Aufgabe {{obj_name}} in {{project_name}}, die zur User-Story {{us_name}} gehört",
         "WIKI_CREATED": "{{username}} erstellte die neue Wiki Seite {{obj_name}} in {{project_name}}",
         "MILESTONE_CREATED": "{{username}} erstellte den neuen Sprint {{obj_name}} in {{project_name}}",
-        "EPIC_CREATED": "{{username}} has created a new epic {{obj_name}} in {{project_name}}",
-        "EPIC_RELATED_USERSTORY_CREATED": "{{username}} has related the userstory {{related_us_name}} to the epic {{epic_name}} in {{project_name}}",
+        "EPIC_CREATED": "{{username}} hat einen neuen Epic {{obj_name}} in {{project_name}} erstellt",
+        "EPIC_RELATED_USERSTORY_CREATED": "{{username}} hat die Userstory  {{related_us_name}} mit der Epic  {{epic_name}}  im Projekt {{project_name}} verbunden",
         "NEW_PROJECT": "{{username}} erstellte das Projekt {{project_name}}",
         "MILESTONE_UPDATED": "{{username}} aktualisierte den Sprint {{obj_name}}",
         "US_UPDATED": "{{username}} aktualisierte das Attribut \"{{field_name}}\" der User-Story {{obj_name}}",
@@ -1550,9 +1551,9 @@
         "TASK_UPDATED_WITH_US": "{{username}} aktualisierte das Attribut \"{{field_name}}\" der Aufgabe {{obj_name}} von User-Story {{us_name}}",
         "TASK_UPDATED_WITH_US_NEW_VALUE": "{{username}} aktualisierte das Attribut \"{{field_name}}\" der Aufgabe {{obj_name}} die zu der User-Story gehört {{us_name}} zu {{new_value}}",
         "WIKI_UPDATED": "{{username}} aktualisierte die WIKI Seite {{obj_name}}",
-        "EPIC_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the epic {{obj_name}}",
-        "EPIC_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the epic {{obj_name}} to {{new_value}}",
-        "EPIC_UPDATED_WITH_NEW_COLOR": "{{username}} has updated the \"{{field_name}}\" of the epic {{obj_name}} to <span class=\"new-color\" style=\"background: {{new_value}}\"></span>",
+        "EPIC_UPDATED": "Attribut \"{{field_name}}\" des Epics {{obj_name}} wurde von {{username}} aktualisiert",
+        "EPIC_UPDATED_WITH_NEW_VALUE": "Attribut \"{{field_name}}\" des Epics {{obj_name}} wurde von {{username}} zu <span class=\"new-color\" style=\"background: {{new_value}}\"></span> aktualisiert",
+        "EPIC_UPDATED_WITH_NEW_COLOR": "Feld \"{{field_name}}\" des Epics {{obj_name}} wurde von {{username}} zu <span class=\"new-color\" style=\"background: {{new_value}}\"></span> aktualisiert",
         "NEW_COMMENT_US": "{{username}} schrieb einen Kommentar in der User-Story {{obj_name}}",
         "NEW_COMMENT_ISSUE": "{{username}} schrieb einen Kommentar im Ticket {{obj_name}}",
         "NEW_COMMENT_TASK": "{{username}} schrieb einen Kommentar in der Aufgabe {{obj_name}}",
@@ -1639,22 +1640,22 @@
         }
     },
     "DISCOVER": {
-        "PAGE_TITLE": "Discover projects - Taiga",
+        "PAGE_TITLE": "Entdecke Projekte  - Taiga",
         "PAGE_DESCRIPTION": "Searchable directory of Public Projects in Taiga. Explore backlogs, timelines, issues, and teams. Check out the most liked or most active projects. Filter by Kanban or Scrum.",
-        "DISCOVER_TITLE": "Discover projects",
-        "DISCOVER_SUBTITLE": "{projects, plural, one{One public project to discover} other{# public projects to discover}}",
+        "DISCOVER_TITLE": "Endecke Projekte",
+        "DISCOVER_SUBTITLE": "{projects, plural, one{Ein öffentliches Projekt verfügbar} other{# öffentliche Projekte verfügbar}}",
         "MOST_ACTIVE": "Most active",
         "MOST_ACTIVE_EMPTY": "There are no ACTIVE projects yet",
         "MOST_LIKED": "Most liked",
         "MOST_LIKED_EMPTY": "There are no LIKED projects yet",
-        "VIEW_MORE": "View more",
-        "FEATURED": "Featured Projects",
-        "EMPTY": "There are no projects to show with this search criteria.<br> Try again!",
+        "VIEW_MORE": "Zeige mehr",
+        "FEATURED": "Empfohlene Projekte",
+        "EMPTY": "Es existieren keine Projekte mit den angegebenen Kriterien <br> Versuche es nochmal!",
         "FILTERS": {
             "ALL": "Alle",
             "KANBAN": "Kanban",
             "SCRUM": "Scrum",
-            "PEOPLE": "Looking for people",
+            "PEOPLE": "Auf der Suche nach Mitgliedern?",
             "WEEK": "Letzte Woche",
             "MONTH": "Letzter Monat",
             "YEAR": "Letztes Jahr",
@@ -1662,7 +1663,7 @@
             "CLEAR": "Filter zurücksetzen"
         },
         "SEARCH": {
-            "PAGE_TITLE": "Search - Discover projects - Taiga",
+            "PAGE_TITLE": "Suche - Entdecke Projekte - Taiga",
             "PAGE_DESCRIPTION": "Searchable directory of Public Projects in Taiga. Explore backlogs, timelines, issues, and teams. Check out the most liked or most active projects. Filter by Kanban or Scrum.",
             "INPUT_PLACEHOLDER": "Geben sie etwas ein...",
             "ACTION_TITLE": "Suche",

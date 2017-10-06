@@ -1121,6 +1121,7 @@
         "CHOOSE_PROJECT_FROM": "Proje nedir?",
         "CHOOSE_USERSTORY": "Kullanıcı hikayesi nedir?",
         "NO_USERSTORIES": "Bu projenin henüz Kullanıcı Hikayesi yok. Lütfen başka proje seçiniz.",
+        "NO_USERSTORIES_FOUND": "Arama kriterlerinize uyan bir kayıt bulunamadı",
         "FILTER_USERSTORIES": "Filter user stories",
         "LIGHTBOX_TITLE_BLOKING_EPIC": "Blocking epic",
         "ACTION_DELETE": "Destan sil"

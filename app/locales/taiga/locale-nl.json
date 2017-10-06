@@ -74,7 +74,7 @@
             "RANGE_CHECK": "Je moet tussen %s en %s keuzes selecteren.",
             "EQUAL_TO": "Deze waarde zou hetzelfde moeten zijn.",
             "LINEWIDTH": "One or more lines is perhaps too long. Try to keep under %s characters.",
-            "PIKADAY": "Invalid date format, please use DD MMM YYYY (like 23 Mar 1984)"
+            "PIKADAY": "Ongeldige datum, gebruik DD MMM YYYY (vb 23 mar 1984)"
         },
         "PICKERDATE": {
             "FORMAT": "DD MMM YYYY",
@@ -160,14 +160,14 @@
             "TOO_MANY": "...te veel gebruikers, blijf filteren",
             "CONFIRM_UNASSIGNED": "Weet je zeker dat je deze niet wilt toewijzen?",
             "TITLE_ACTION_EDIT_ASSIGNMENT": "Toewijzing bewerken",
-            "SELF": "Assign to me"
+            "SELF": "Aan mezelf toewijzen"
         },
         "STATUS": {
             "CLOSED": "Gesloten",
             "OPEN": "Open"
         },
         "WATCHERS": {
-            "WATCHERS": "Watchers",
+            "WATCHERS": "Volgers",
             "ADD": "Add watchers",
             "TITLE_ADD": "Add a project member to the watchers list",
             "DELETE": "Verwijder waarnemer",
@@ -177,7 +177,7 @@
             "WATCH": "Bekijk",
             "WATCHING": "Volgers",
             "UNWATCH": "Unwatch",
-            "WATCHERS": "Watchers",
+            "WATCHERS": "Volgers",
             "BUTTON_TITLE": "Watch/Unwatch this item",
             "COUNTER_TITLE": "{total, plural, one{one watcher} other{# watchers}}"
         },
@@ -227,7 +227,7 @@
                 "ADD_EPICS": "Add epics",
                 "MODIFY_EPICS": "Modify epics",
                 "COMMENT_EPICS": "Comment epics",
-                "DELETE_EPICS": "Delete epics"
+                "DELETE_EPICS": "Verwijder epics"
             },
             "SPRINTS": {
                 "NAME": "Sprints",
@@ -369,7 +369,7 @@
         "PAGE_TITLE": "Epics - {{projectName}}",
         "PAGE_DESCRIPTION": "The epics list of the project {{projectName}}: {{projectDescription}}",
         "DASHBOARD": {
-            "ADD": "+ ADD EPIC",
+            "ADD": "+ NIEUWE EPIC",
             "UNASSIGNED": "Niet toegewezen"
         },
         "EMPTY": {
@@ -382,9 +382,9 @@
             "NAME": "Naam",
             "PROJECT": "Project",
             "SPRINT": "Sprint",
-            "ASSIGNED_TO": "Assigned",
+            "ASSIGNED_TO": "Toegewezen",
             "STATUS": "Status",
-            "PROGRESS": "Progress",
+            "PROGRESS": "Vooruitgang",
             "VIEW_OPTIONS": "View options"
         },
         "CREATE": {
@@ -734,14 +734,14 @@
         },
         "PROJECT_TRANSFER": {
             "DO_YOU_ACCEPT_PROJECT_OWNERNSHIP": "Would you like to become the new project owner?",
-            "PRIVATE": "Private",
+            "PRIVATE": "Verborgen",
             "ACCEPTED_PROJECT_OWNERNSHIP": "Congratulations! You're now the new project owner.",
             "REJECTED_PROJECT_OWNERNSHIP": "OK. We'll contact the current project owner",
             "ACCEPT": "Accepteren",
-            "REJECT": "Reject",
+            "REJECT": "Afwijzen",
             "PROPOSE_OWNERSHIP": "<strong>{{owner}}</strong>, the current owner of the project <strong>{{project}}</strong> has asked that you become the new  project owner.",
             "ADD_COMMENT": "Would you like to add a comment for the project owner?",
-            "UNLIMITED_PROJECTS": "Unlimited",
+            "UNLIMITED_PROJECTS": "Ongelimiteerd",
             "OWNER_MESSAGE": {
                 "PRIVATE": "Please remember that you can own up to <strong>{{maxProjects}}</strong> private projects. You currently own <strong>{{currentProjects}}</strong> private projects",
                 "PUBLIC": "Please remember that you can own up to <strong>{{maxProjects}}</strong> public projects. You currently own <strong>{{currentProjects}}</strong> public projects"
@@ -919,7 +919,7 @@
             "PROJECT_MEMBERS": "Project Members",
             "PROCESS_DESCRIPTION": "Tell us who from Taiga you want to assign the tasks of {{platform}}",
             "MATCH": "Is <strong>{{user_external}}</strong> the same person as <strong>{{user_internal}}</strong>?",
-            "CHOOSE": "Select user",
+            "CHOOSE": "Kies gebruiker",
             "LINKS": "Links with {{platform}}",
             "LINKS_DESCRIPTION": "Do you want to keep the link of each item with the original {{platform}} card?",
             "WARNING_MAIL_USER": "Note that if the user does not have a Taiga account we will not be able to assign the tasks to him.",
@@ -1031,7 +1031,7 @@
         "ADD_MEMBER": {
             "TITLE": "Nieuwe gebruiker",
             "PLACEHOLDER": "Filter users or write an email to invite",
-            "ADD_EMAIL": "Add email",
+            "ADD_EMAIL": "Voeg e-mail toe",
             "REMOVE": "Remove",
             "INVITE": "Invite",
             "CHOOSE_ROLE": "Choose a role",
@@ -1121,6 +1121,7 @@
         "CHOOSE_PROJECT_FROM": "What's the project?",
         "CHOOSE_USERSTORY": "What's the user story?",
         "NO_USERSTORIES": "This project has no User Stories yet. Please select another project.",
+        "NO_USERSTORIES_FOUND": "It looks like nothing was found with your search criteria",
         "FILTER_USERSTORIES": "Filter user stories",
         "LIGHTBOX_TITLE_BLOKING_EPIC": "Blocking epic",
         "ACTION_DELETE": "Delete epic"
@@ -1507,7 +1508,7 @@
         },
         "SECTION_PAGES_LIST": "All pages",
         "PAGES_LIST_COLUMNS": {
-            "TITLE": "Title",
+            "TITLE": "Titel",
             "EDITIONS": "Editions",
             "CREATED": "Aangemaakt",
             "MODIFIED": "Modified",
@@ -1556,7 +1557,7 @@
         "NEW_COMMENT_US": "{{username}} heeft gereageerd op de US {{obj_name}}",
         "NEW_COMMENT_ISSUE": "{{username}} heeft gereageerd op het issue {{obj_name}}",
         "NEW_COMMENT_TASK": "{{username}} heeft gereageerd op de taak {{obj_name}}",
-        "NEW_COMMENT_EPIC": "{{username}} has commented in the epic {{obj_name}}",
+        "NEW_COMMENT_EPIC": "{{username}} heeft gereageerd op de epic {{obj_name}}",
         "NEW_MEMBER": "{{project_name}} heeft een nieuw lid",
         "US_ADDED_MILESTONE": "{{username}} heeft de US {{obj_name}} toegevoegd aan {{sprint_name}}",
         "US_MOVED": "{{username}} heeft de user story {{obj_name}} verplaatst",
@@ -1598,9 +1599,9 @@
                 "TEXT2": "You are already working with Taiga ;)"
             },
             "STEP4": {
-                "TITLE": "Let’s start",
+                "TITLE": "Laten we beginnen",
                 "TEXT1": "You can start by creating your first Taiga project.",
-                "TEXT2": "Good luck!"
+                "TEXT2": "Veel succes!"
             }
         },
         "BACKLOG": {
@@ -1634,7 +1635,7 @@
             "STEP3": {
                 "TITLE": "Adding User Stories",
                 "TEXT1": "You may want to add a single User Story (add US icon) or a group of them (bulk icon)",
-                "TEXT2": "Good luck!"
+                "TEXT2": "Veel succes!"
             }
         }
     },
@@ -1647,7 +1648,7 @@
         "MOST_ACTIVE_EMPTY": "There are no ACTIVE projects yet",
         "MOST_LIKED": "Most liked",
         "MOST_LIKED_EMPTY": "There are no LIKED projects yet",
-        "VIEW_MORE": "View more",
+        "VIEW_MORE": "Meer",
         "FEATURED": "Featured Projects",
         "EMPTY": "There are no projects to show with this search criteria.<br> Try again!",
         "FILTERS": {
@@ -1655,11 +1656,11 @@
             "KANBAN": "Kanban",
             "SCRUM": "Scrum",
             "PEOPLE": "Looking for people",
-            "WEEK": "Last week",
-            "MONTH": "Last month",
-            "YEAR": "Last year",
+            "WEEK": "Vorige week",
+            "MONTH": "Vorige maand",
+            "YEAR": "Vorig jaar",
             "ALL_TIME": "All time",
-            "CLEAR": "Clear filters"
+            "CLEAR": "Filters ongedaan maken"
         },
         "SEARCH": {
             "PAGE_TITLE": "Search - Discover projects - Taiga",
