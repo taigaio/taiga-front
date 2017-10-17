@@ -129,6 +129,6 @@ class AnalyticsService extends taiga.Service
         @win.ga('ec:setAction', action, {
             'list': page
         })
-        @.trackEvent("ecommerce", "set-action", action, page)
+        @.trackEvent("ecommerce", "set-action", (action+page), 0)
 
 module.service("$tgAnalytics", AnalyticsService)
