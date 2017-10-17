@@ -106,6 +106,7 @@ class AnalyticsService extends taiga.Service
             'step': stepId,
             'Option': option
         })
+        @.trackEvent("ecommerce", "add-step", step, stepId)
 
     addEcImpression: (plan, page, position) ->
         @win.ga('ec:addImpression', {
@@ -114,6 +115,7 @@ class AnalyticsService extends taiga.Service
            'list': page,
            'position': position,
         })
+        @.trackEvent("ecommerce", "add-impression", plan.name, plan.plan_id)
 
     addEcProduct: (plan) ->
         @win.ga('ec:addProduct', {
@@ -121,11 +123,12 @@ class AnalyticsService extends taiga.Service
            'name': plan.name,
            'position': 1,
         })
+        @.trackEvent("ecommerce", "add-product", plan.name, plan.plan_id)
 
     setEcAction: (action, page) ->
         @win.ga('ec:setAction', action, {
             'list': page
         })
+        @.trackEvent("ecommerce", "set-action", action, page)
 
 module.service("$tgAnalytics", AnalyticsService)
-
