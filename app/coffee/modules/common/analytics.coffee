@@ -86,6 +86,9 @@ class AnalyticsService extends taiga.Service
         @win.ga("send", "event", category, action, label, value)
 
     addEcStep: (step, currentPlan, selectedPlan) ->
+        return if not @.initialized
+        return if not @win.ga
+
         option = {
             "currentPlan": currentPlan,
             "selectedPlan": selectedPlan,
@@ -109,6 +112,9 @@ class AnalyticsService extends taiga.Service
         @.trackEvent("ecommerce", "add-step", step, stepId)
 
     addEcImpression: (plan, page, position) ->
+        return if not @.initialized
+        return if not @win.ga
+
         @win.ga('ec:addImpression', {
            'id': plan.plan_id,
            'name': plan.name,
@@ -117,18 +123,36 @@ class AnalyticsService extends taiga.Service
         })
         @.trackEvent("ecommerce", "add-impression", plan.name, plan.plan_id)
 
-    addEcProduct: (plan) ->
-        @win.ga('ec:addProduct', {
-           'id': plan.plan_id,
-           'name': plan.name,
-           'position': 1,
-        })
-        @.trackEvent("ecommerce", "add-product", plan.name, plan.plan_id)
+    addEcProduct: (plan_id, plan_name, plan_price) ->
+        return if not @.initialized
+        return if not @win.ga
 
-    setEcAction: (action, page) ->
-        @win.ga('ec:setAction', action, {
-            'list': page
+        @win.ga('ec:addProduct', {
+            'id': plan.plan_id,
+            'name': plan.name,
+            'price': plan.price,
+            'category': "plans",
+            'quantity': 1,
+            'position': 1,
         })
-        @.trackEvent("ecommerce", "set-action", (action+page), 0)
+        @win.ga('send', 'event', 'checkout', 'Collect Payment Info')
+
+    addEcPurchase: (plan_id, plan_name, plan_price) ->
+        return if not @.initialized
+        return if not @win.ga
+
+        @win.ga('ec:addProduct', {
+            'id': plan_id,
+            'name': plan_name,
+            'price': plan_price,
+            'category': "plans",
+            'quantity': 1,
+            'position': 1,
+        })
+        @win.ga('ec:setAction','purchase', {
+            'id': response.data.data.subscriptionId,
+            'revenue': plan_price,
+        })
+        @win.ga('send', 'event', 'checkout', 'Plan checkout')
 
 module.service("$tgAnalytics", AnalyticsService)
