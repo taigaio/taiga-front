@@ -128,9 +128,9 @@ class AnalyticsService extends taiga.Service
         return if not @win.ga
 
         @win.ga('ec:addProduct', {
-            'id': plan.plan_id,
-            'name': plan.name,
-            'price': plan.price,
+            'id': plan_id,
+            'name': plan_name,
+            'price': plan_price,
             'category': "plans",
             'quantity': 1,
             'position': 1,
