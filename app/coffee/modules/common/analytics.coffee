@@ -155,4 +155,10 @@ class AnalyticsService extends taiga.Service
         })
         @win.ga('send', 'event', 'checkout', 'Plan checkout')
 
+    setEcAction: (action, page) ->
+        @win.ga('ec:setAction', action, {
+            'list': page
+        })
+        @.trackEvent("ecommerce", "set-action", (action+page), 0)
+
 module.service("$tgAnalytics", AnalyticsService)
