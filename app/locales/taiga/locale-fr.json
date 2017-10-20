@@ -277,7 +277,7 @@
         "PAGE_DESCRIPTION": "Connectez-vous à Taiga, une plateforme de gestion de projets pour les startups, les développeurs et les designers agiles qui veulent un outil simple, beau et qui rend le travail vraiment agréable."
     },
     "AUTH": {
-        "INVITED_YOU": "vous a invité-e à rejoindre le projet",
+        "INVITED_YOU": "vous a invité à rejoindre le projet",
         "NOT_REGISTERED_YET": "Pas encore inscrit?",
         "REGISTER": "S'inscrire",
         "CREATE_ACCOUNT": "créer votre compte gratuit ici"
