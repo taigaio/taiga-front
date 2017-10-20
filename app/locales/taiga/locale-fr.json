@@ -897,7 +897,7 @@
         "DUPLICATE": {
             "TITLE": "Dupliquer le projet",
             "DESCRIPTION": "Repartir de rien en conservant vos configurations",
-            "SELECT_PLACEHOLDER": "Choissisez un projet existant à dupliquer"
+            "SELECT_PLACEHOLDER": "Choisissez un projet existant à dupliquer"
         },
         "IMPORT": {
             "TITLE": "Import un projet",
@@ -1034,7 +1034,7 @@
             "ADD_EMAIL": "Ajouter une adresse courriel",
             "REMOVE": "Supprimer",
             "INVITE": "Inviter",
-            "CHOOSE_ROLE": "Choissisez un rôle",
+            "CHOOSE_ROLE": "Choisissez un rôle",
             "PLACEHOLDER_INVITATION_TEXT": "(Optionnel) Ajoutez un texte personnalisé à l'invitation. Dites quelque chose de gentil à vos nouveaux membres ;-)",
             "HELP_TEXT": "Si vos utilisateurs sont déjà inscrits sur Taiga, ils seront automatiquement ajoutés. Sinon, ils recevront une invitation."
         },
