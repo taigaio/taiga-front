@@ -150,7 +150,7 @@ class AnalyticsService extends taiga.Service
             'position': 1,
         })
         @win.ga('ec:setAction','purchase', {
-            'id': response.data.data.subscriptionId,
+            'id': plan_id,
             'revenue': plan_price,
         })
         @win.ga('send', 'event', 'checkout', 'Plan checkout')
