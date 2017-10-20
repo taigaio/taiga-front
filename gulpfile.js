@@ -648,7 +648,7 @@ gulp.task("copy-extras", function() {
         .pipe(gulp.dest(paths.dist + "/"));
 });
 
-gulp.task("link-images", function(cb) {
+gulp.task("link-images", ["copy-images"], function(cb) {
     try {
         fs.unlinkSync(paths.dist+"images");
     } catch (exception) {
