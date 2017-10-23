@@ -24,7 +24,7 @@ BelongToEpicsDirective = () ->
     link = (scope, el, attrs) ->
         scope.$watch 'epics', (epics) ->
             if epics && !epics.isIterable
-              scope.epics = Immutable.fromJS(epics)
+              scope.immutable_epics = Immutable.fromJS(epics)
 
     templateUrl = (el, attrs) ->
         if attrs.format
