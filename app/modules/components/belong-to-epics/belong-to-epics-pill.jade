@@ -1,5 +1,5 @@
 - var hash = "#";
-span.belong-to-epic-pill-wrapper(tg-repeat="epic in epics track by epic.get('id')")
+span.belong-to-epic-pill-wrapper(tg-repeat="epic in immutable_epics track by epic.get('id')")
     .belong-to-epic-pill(
         ng-style="{'background': epic.get('color'), 'border-color': '{{ epic.get('color') | darker: -0.2 }}'}"
         title="#{hash}{{epic.get('ref')}} {{epic.get('subject')}}"
