@@ -371,6 +371,8 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService,
                 status: status
                 is_archived: false
                 tags: []
+                subject: ""
+                description: ""
             })
 
             # Update texts for creation
@@ -478,24 +480,32 @@ CreateEditUserstoryDirective = ($repo, $model, $rs, $rootScope, lightboxService,
 
         submitButton = $el.find(".submit-button")
 
-        $el.on "submit", "form", submit
-
-        $el.on "click", ".close", (event) ->
-            event.preventDefault()
-
-            $scope.$apply ->
-                $scope.us.revert()
-
-            lightboxService.close($el)
-
-        $el.keydown (event) ->
-            code = if event.keyCode then event.keyCode else event.which
-            if code == 27
+        close = () =>
+            if !$scope.us.isModified()
                 lightboxService.close($el)
                 $scope.$apply ->
                     $scope.us.revert()
+            else
+                $confirm.ask($translate.instant("LIGHTBOX.CREATE_EDIT_US.CONFIRM_CLOSE")).then (result) ->
+                    lightboxService.close($el)
+                    $scope.us.revert()
+                    result.finish()
+
+        $el.on "submit", "form", submit
+
+        $el.find('.close').on "click", (event) ->
+            event.preventDefault()
+            event.stopPropagation()
+            close()
+
+        $el.keydown (event) ->
+            event.stopPropagation()
+            code = if event.keyCode then event.keyCode else event.which
+            if code == 27
+                close()
 
         $scope.$on "$destroy", ->
+            $el.find('.close').off()
             $el.off()
 
     return {link: link}
