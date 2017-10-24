@@ -105,7 +105,7 @@ class AnalyticsService extends taiga.Service
         })
         @.trackEvent("ecommerce", "add-step", step, stepId)
 
-    addEcImpression: (plan, plan_price, page, position) ->
+    addEcImpression: (plan, page, position) ->
         return if not @.initialized
         return if not @win.ga
 
@@ -118,7 +118,6 @@ class AnalyticsService extends taiga.Service
         @win.ga('ec:addProduct', {
             'id': plan.plan_id,
             'name': plan.name,
-            'price': plan_price,
             'category': "plans",
             'quantity': 1,
             'position': 1,
