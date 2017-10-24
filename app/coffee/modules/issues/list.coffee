@@ -511,10 +511,9 @@ IssuesDirective = ($log, $location, $template, $compile) ->
             currentOrder = $ctrl.getOrderBy()
             newOrder = target.data("fieldname")
 
-            if newOrder == 'total_voters'
-                finalOrder = if currentOrder == newOrder then newOrder else "-#{newOrder}"
-            else
-                finalOrder = if currentOrder == newOrder then "-#{newOrder}" else newOrder
+            if newOrder == 'total_voters' and currentOrder != "-total_voters"
+                currentOrder = "total_voters"
+            finalOrder = if currentOrder == newOrder then "-#{newOrder}" else newOrder
 
             $scope.$apply ->
                 $ctrl.replaceFilter("order_by", finalOrder)
