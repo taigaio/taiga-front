@@ -1017,7 +1017,7 @@
             "CONFIRM": "Are you sure you want to delete your Taiga account?",
             "CANCEL": "Back to settings",
             "ACCEPT": "Delete account",
-            "BLOCK_PROJECT": "Note that all the projects you own projects will be <strong>blocked</strong> after you delete your account. If you do want a project blocked, transfer ownership to another member of each project prior to deleting your account."
+            "BLOCK_PROJECT": "Note that all the projects you own projects will be <strong>blocked</strong> after you delete your account. If you do not want a project blocked, transfer ownership to another member of each project prior to deleting your account. "
         },
         "DELETE_PROJECT": {
             "TITLE": "Delete project",
