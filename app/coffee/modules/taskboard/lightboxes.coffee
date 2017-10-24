@@ -27,7 +27,7 @@ bindOnce = @.taiga.bindOnce
 debounce = @.taiga.debounce
 trim = @.taiga.trim
 
-CreateEditTaskDirective = ($repo, $model, $rs, $rootscope, $loading, lightboxService, $translate, $q, attachmentsService) ->
+CreateEditTaskDirective = ($repo, $model, $rs, $rootscope, $loading, lightboxService, $translate, $q, $confirm, attachmentsService) ->
     link = ($scope, $el, attrs) ->
         $scope.isNew = true
 
@@ -100,15 +100,17 @@ CreateEditTaskDirective = ($repo, $model, $rs, $rootscope, $loading, lightboxSer
             _.pull($scope.task.tags, value)
 
         $scope.$on "taskform:new", (ctx, sprintId, usId) ->
-            $scope.task = {
+            $scope.task = $model.make_model('tasks', {
                 project: $scope.projectId
                 milestone: sprintId
                 user_story: usId
                 is_archived: false
                 status: $scope.project.default_task_status
                 assigned_to: null
-                tags: []
-            }
+                tags: [],
+                subject: "",
+                description: "",
+            })
             $scope.isNew = true
             $scope.attachments = Immutable.List()
 
@@ -187,7 +189,30 @@ CreateEditTaskDirective = ($repo, $model, $rs, $rootscope, $loading, lightboxSer
 
         $el.on "submit", "form", submit
 
+        close = () =>
+            if !$scope.task.isModified()
+                lightboxService.close($el)
+                $scope.$apply ->
+                    $scope.task.revert()
+            else
+                $confirm.ask($translate.instant("LIGHTBOX.CREATE_EDIT_TASK.CONFIRM_CLOSE")).then (result) ->
+                    lightboxService.close($el)
+                    $scope.task.revert()
+                    result.finish()
+
+        $el.find('.close').on "click", (event) ->
+            event.preventDefault()
+            event.stopPropagation()
+            close()
+
+        $el.keydown (event) ->
+            event.stopPropagation()
+            code = if event.keyCode then event.keyCode else event.which
+            if code == 27
+                close()
+
         $scope.$on "$destroy", ->
+            $el.find('.close').off()
             $el.off()
 
     return {link: link}
@@ -250,6 +275,7 @@ module.directive("tgLbCreateEditTask", [
     "lightboxService",
     "$translate",
     "$q",
+    "$tgConfirm",
     "tgAttachmentsService",
     CreateEditTaskDirective
 ])

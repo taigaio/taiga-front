@@ -1066,13 +1066,15 @@
             "PLACEHOLDER_STATUS": "Task status",
             "OPTION_UNASSIGNED": "Unassigned",
             "PLACEHOLDER_SHORT_DESCRIPTION": "Type a short description",
-            "ACTION_EDIT": "Edit task"
+            "ACTION_EDIT": "Edit task",
+            "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?"
         },
         "CREATE_EDIT_US": {
             "TITLE": "New US",
             "PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this US",
             "NEW_US": "New user story",
-            "EDIT_US": "Edit user story"
+            "EDIT_US": "Edit user story",
+            "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?"
         },
         "DELETE_SPRINT": {
             "TITLE": "Delete sprint"
