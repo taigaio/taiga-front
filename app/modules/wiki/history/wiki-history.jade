@@ -1,11 +1,13 @@
 nav.history-tabs(ng-if="vm.historyEntries.count()>0")
-    a.history-tab.active(
+    a.history-tab(
+        ng-class="{active: vm.toggle}"
+        ng-click="vm.toggle = !vm.toggle"
         href=""
         title="{{ACTIVITY.TITLE}}"
         translate="ACTIVITY.TITLE"
     )
 
-section.wiki-history(ng-if="vm.historyEntries.count()>0")
+section.wiki-history(ng-if="vm.historyEntries.count()>0 && vm.toggle")
     tg-wiki-history-entry.wiki-history-entry(
         tg-repeat="historyEntry in vm.historyEntries"
         history-entry="historyEntry"
