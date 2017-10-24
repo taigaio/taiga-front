@@ -47,8 +47,8 @@ class AnalyticsService extends taiga.Service
         @.injectAnalytics()
 
         @win.ga("create", @.accountId, "auto")
-        @win.ga("require", "displayfeatures")
         @win.ga("require", "ec")
+        @win.ga("require", "displayfeatures")
 
         if @.trackRoutes and (not @.ignoreFirstPageLoad)
             @win.ga("send", "pageview", @.getUrl())
@@ -85,14 +85,9 @@ class AnalyticsService extends taiga.Service
 
         @win.ga("send", "event", category, action, label, value)
 
-    addEcStep: (step, currentPlan, selectedPlan) ->
+    addEcStep: (step) ->
         return if not @.initialized
         return if not @win.ga
-
-        option = {
-            "currentPlan": currentPlan,
-            "selectedPlan": selectedPlan,
-        }
 
         if step == "register"
             stepId = 1
@@ -107,11 +102,10 @@ class AnalyticsService extends taiga.Service
 
         @win.ga('ec:setAction','checkout', {
             'step': stepId,
-            'Option': option
         })
         @.trackEvent("ecommerce", "add-step", step, stepId)
 
-    addEcImpression: (plan, page, position) ->
+    addEcImpression: (plan, plan_price, page, position) ->
         return if not @.initialized
         return if not @win.ga
 
@@ -121,6 +115,15 @@ class AnalyticsService extends taiga.Service
            'list': page,
            'position': position,
         })
+        @win.ga('ec:addProduct', {
+            'id': plan.plan_id,
+            'name': plan.name,
+            'price': plan_price,
+            'category': "plans",
+            'quantity': 1,
+            'position': 1,
+        })
+        @win.ga('ec:setAction','detail')
         @.trackEvent("ecommerce", "add-impression", plan.name, plan.plan_id)
 
     addEcProduct: (plan_id, plan_name, plan_price) ->
@@ -135,7 +138,17 @@ class AnalyticsService extends taiga.Service
             'quantity': 1,
             'position': 1,
         })
-        @win.ga('send', 'event', 'checkout', 'Collect Payment Info')
+        @win.ga('ec:setAction','add')
+        @win.ga('send', 'event', 'add-to-cart', 'Collect Payment Info')
+        @win.ga('ec:addProduct', {
+            'id': plan_id,
+            'name': plan_name,
+            'price': plan_price,
+            'category': "plans",
+            'quantity': 1,
+            'position': 1,
+        })
+        @.addEcStep("confirm-plan")
 
     addEcPurchase: (plan_id, plan_name, plan_price) ->
         return if not @.initialized
