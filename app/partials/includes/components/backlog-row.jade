@@ -26,7 +26,7 @@
                 title="#{{ us.ref }} {{ us.subject }}"
             )
                 span(tg-bo-ref="us.ref")
-                span(ng-bind="us.subject")
+                span(ng-bind-html="us.subject | emojify")
                 tg-belong-to-epics(
                     format="pill"
                     ng-if="us.epics"

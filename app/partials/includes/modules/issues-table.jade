@@ -53,7 +53,7 @@ section.issues-table.basic-table(ng-class="{empty: !issues.length}")
                     ng-if="issue.is_blocked"
                     title="{{issue.blocked_note}}"
                 ) {{'ISSUES.TABLE.BLOCKED' | translate}}
-                span(ng-bind="issue.subject")
+                span(ng-bind-html="issue.subject | emojify")
 
 
         div.issue-field(tg-issue-status-inline-edition="issue")

@@ -8,7 +8,8 @@ tg-svg.icon-drag(
     a(
         tg-nav="project-userstories-detail:project=vm.userstory.getIn(['project_extra_info', 'slug']),ref=vm.userstory.get('ref')"
         ng-attr-title="{{vm.userstory.get('subject')}}"
-    ) #{hash}{{vm.userstory.get('ref')}} {{vm.userstory.get('subject')}}
+        ng-bind-html="'#'+vm.userstory.get('ref')+' '+vm.userstory.get('subject') | emojify"
+    )
 
     tg-belong-to-epics(
         format="pill"

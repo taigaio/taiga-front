@@ -39,6 +39,11 @@ describe "dutyDirective", () ->
             return value
         provide.value "translateFilter", mockTranslateFilter
 
+    _mockEmojifyFilter = () ->
+        mockEmojifyFilter = (value) ->
+            return value
+        provide.value "emojifyFilter", mockEmojifyFilter
+
     _mockTgProjectsService = () ->
         mockTgProjectsService = {
             projectsById: {
@@ -60,6 +65,7 @@ describe "dutyDirective", () ->
             _mockTgProjectsService()
             _mockTranslate()
             _mockTranslateFilter()
+            _mockEmojifyFilter()
             return null
 
     beforeEach ->

@@ -18,7 +18,7 @@ div.sprint-table(tg-bind-scope, ng-class="{'sprint-empty-wrapper': !sprint.user_
                                 tg-bo-title="'#' + us.ref + ' ' +  us.subject",
                                 ng-class="{closed: us.is_closed, blocked: us.is_blocked}")
                 span(tg-bo-ref="us.ref")
-                span(tg-bo-bind="us.subject")
+                span(tg-bind-html="us.subject | emojify")
                 tg-belong-to-epics(
                     format="pill"
                     ng-if="us.epics"
