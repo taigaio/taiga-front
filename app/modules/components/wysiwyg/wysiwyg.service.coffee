@@ -26,49 +26,13 @@ class WysiwygService
     @.$inject = [
         "tgWysiwygCodeHightlighterService",
         "tgProjectService",
-        "$tgNavUrls"
+        "$tgNavUrls",
+        "$tgEmojis"
     ]
-    constructor: (@wysiwygCodeHightlighterService, @projectService, @navurls) ->
+    constructor: (@wysiwygCodeHightlighterService, @projectService, @navurls, @emojis) ->
 
     searchEmojiByName: (name) ->
-        return _.filter @.emojis, (it) -> it.name.indexOf(name) != -1
-
-    setEmojiImagePath: (emojis) ->
-        @.emojis = _.map emojis, (it) ->
-            it.image = "/#{window._version}/emojis/" + it.image
-
-            return it
-
-    loadEmojis: () ->
-        $.getJSON("/#{window._version}/emojis/emojis-data.json").then(@.setEmojiImagePath.bind(this))
-
-    getEmojiById: (id) ->
-        return _.find  @.emojis, (it) -> it.id == id
-
-    getEmojiByName: (name) ->
-        return _.find @.emojis, (it) -> it.name == name
-
-    replaceImgsByEmojiName: (html) ->
-        emojiIds = taiga.getMatches(html, /emojis\/([^"]+).png"/gi)
-
-        for emojiId in emojiIds
-            regexImgs = new RegExp('<img(.*)' + emojiId + '[^>]+\>', 'g')
-            emoji = @.getEmojiById(emojiId)
-            html = html.replace(regexImgs, ':' + emoji.name + ':')
-
-        return html
-
-    replaceEmojiNameByImgs: (text) ->
-        emojiIds = taiga.getMatches(text, /:([\w ]*):/g)
-
-        for emojiId in emojiIds
-            regexImgs = new RegExp(':' + emojiId + ':', 'g')
-            emoji = @.getEmojiByName(emojiId)
-
-            if emoji
-                text = text.replace(regexImgs, '![alt](' + emoji.image + ')')
-
-        return text
+        return @emojis.searchByName(name)
 
     pipeLinks: (text) ->
         return text.replace /\[\[(.*?)\]\]/g, (match, p1, offset, str) ->
@@ -134,7 +98,7 @@ class WysiwygService
          }
 
         html = html.replace(/&nbsp;(<\/.*>)/g, "$1")
-        html = @.replaceImgsByEmojiName(html)
+        html = @emojis.replaceImgsByEmojiName(html)
         html = @.replaceUrls(html)
         html = @.removeTrailingListBr(html)
 
@@ -211,7 +175,7 @@ class WysiwygService
             breaks: true
         }
 
-        text = @.replaceEmojiNameByImgs(text)
+        text = @emojis.replaceEmojiNameByImgs(text)
         text = @.pipeLinks(text)
 
         md = window.markdownit({

@@ -18,7 +18,15 @@ form(name="vm.filtersForm")
 .filters-step-cat
     .filters-applied
         .single-filter.ng-animate-disabled(ng-repeat="it in vm.selectedFilters track by it.key")
-            span.name(ng-attr-style="{{it.color ? 'border-left: 3px solid ' + it.color: ''}}") {{it.name}}
+            span.name(
+                ng-attr-style="{{it.color ? 'border-left: 3px solid ' + it.color: ''}}"
+                ng-if="it.dataType === 'tags'"
+                ng-bind-html="it.name | emojify"
+            )
+            span.name(
+                ng-if="it.dataType !== 'tags'"
+                ng-attr-style="{{it.color ? 'border-left: 3px solid ' + it.color: ''}}"
+            ) {{it.name}}
             a.remove-filter.e2e-remove-filter(
                ng-click="vm.unselectFilter(it)"
                href=""
@@ -77,7 +85,15 @@ form(name="vm.filtersForm")
                         ng-if="!vm.isFilterSelected(filter, it) && !(it.count == 0 && filter.hideEmpty)"
                         ng-click="vm.selectFilter(filter, it)"
                     )
-                        span.name(ng-attr-style="{{it.color ? 'border-left: 3px solid ' + it.color: ''}}") {{it.name}}
+                        span.name(
+                            ng-if="filter.dataType === 'tags'",
+                            ng-attr-style="{{it.color ? 'border-left: 3px solid ' + it.color: ''}}"
+                            ng-bind-html="it.name | emojify"
+                        )
+                        span.name(
+                            ng-if="filter.dataType !== 'tags'",
+                            ng-attr-style="{{it.color ? 'border-left: 3px solid ' + it.color: ''}}"
+                        ) {{it.name}}
                         span.number.e2e-filter-count(ng-if="it.count > 0") {{it.count}}
 
             li.custom-filters.e2e-custom-filters(

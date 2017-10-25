@@ -23,6 +23,7 @@
 ###
 
 @taiga = taiga = {}
+taiga.emojis = window.emojis
 @.taigaContribPlugins = @.taigaContribPlugins or window.taigaContribPlugins or []
 
 # Generic function for generate hash from a arbitrary length

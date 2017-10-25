@@ -143,3 +143,12 @@ inArray = ($filter) ->
             return filter list, (listItem) ->
                 return arrayFilter.indexOf(listItem[element]) != -1
 module.filter("inArray", ["$filter", inArray])
+
+emojify = ($emojis) ->
+    return (input) ->
+        if input
+            return $emojis.replaceEmojiNameByHtmlImgs(_.escape(input))
+
+        return ""
+
+module.filter("emojify", ["$tgEmojis", emojify])
