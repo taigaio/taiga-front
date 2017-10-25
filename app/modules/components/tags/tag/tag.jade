@@ -1,4 +1,4 @@
-span {{ tag[0] }}
+span(ng-bind-html="tag[0] | emojify")
 tg-svg.icon-close.e2e-delete-tag(
     ng-if="hasPermissions"
     svg-icon="icon-close"
