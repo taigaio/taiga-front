@@ -20,7 +20,8 @@
         a(
             tg-nav="project-epics-detail:project=vm.project.slug,ref=vm.epic.get('ref')"
             ng-attr-title="{{::vm.epic.get('subject')}}"
-        ) #{hash}{{::vm.epic.get('ref')}} {{::vm.epic.get('subject')}}
+            ng-bind-html="'#'+vm.epic.get('ref')+' '+vm.epic.get('subject') | emojify"
+        )
         span.epic-pill(
             ng-style="::{'background-color': vm.epic.get('color')}"
             translate="EPICS.EPIC"

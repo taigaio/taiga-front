@@ -53,25 +53,29 @@
                 ng-if="::vm.item.get('type') === 'epic'"
                 tg-nav="project-epics-detail:project=vm.item.get('project_slug'),ref=vm.item.get('ref')"
                 title="#{{ ::vm.item.get('ref') }} {{ ::vm.item.get('subject') }}"
-            ) {{ ::vm.item.get('subject') }}
+                ng-bind-html="vm.item.get('subject') | emojify"
+            )
             a.ticket-title(
                 href="#"
                 ng-if="::vm.item.get('type') === 'userstory'"
                 tg-nav="project-userstories-detail:project=vm.item.get('project_slug'),ref=vm.item.get('ref')"
                 title="#{{ ::vm.item.get('ref') }} {{ ::vm.item.get('subject') }}"
-            ) {{ ::vm.item.get('subject') }}
+                ng-bind-html="vm.item.get('subject') | emojify"
+            )
             a.ticket-title(
                 href="#"
                 ng-if="::vm.item.get('type') === 'task'"
                 tg-nav="project-tasks-detail:project=vm.item.get('project_slug'),ref=vm.item.get('ref')"
                 title="#{{ ::vm.item.get('ref') }} {{ ::vm.item.get('subject') }}"
-            ) {{ ::vm.item.get('subject') }}
+                ng-bind-html="vm.item.get('subject') | emojify"
+            )
             a.ticket-title(
                 href="#"
                 ng-if="::vm.item.get('type') === 'issue'"
                 tg-nav="project-issues-detail:project=vm.item.get('project_slug'),ref=vm.item.get('ref')"
                 title="#{{ ::vm.item.get('ref') }} {{ ::vm.item.get('subject') }}"
-            ) {{ ::vm.item.get('subject') }}
+                ng-bind-html="vm.item.get('subject') | emojify"
+            )
 
     div.list-itemtype-track
         span.list-itemtype-track-likers(
