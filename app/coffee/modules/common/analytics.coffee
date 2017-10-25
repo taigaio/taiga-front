@@ -125,6 +125,20 @@ class AnalyticsService extends taiga.Service
         @win.ga('ec:setAction','detail')
         @.trackEvent("ecommerce", "add-impression", plan.name, plan.plan_id)
 
+    addEcClickProduct: (plan) ->
+        return if not @.initialized
+        return if not @win.ga
+
+        @win.ga('ec:addProduct', {
+            'id': plan.plan_id,
+            'name': plan.name,
+            'category': "plans",
+            'quantity': 1,
+            'position': 1,
+        })
+        @win.ga('ec:setAction','click')
+        @.trackEvent("ecommerce", "add-click", plan.name, plan.plan_id)
+
     addEcProduct: (plan_id, plan_name, plan_price) ->
         return if not @.initialized
         return if not @win.ga
