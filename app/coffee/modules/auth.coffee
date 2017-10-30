@@ -343,7 +343,6 @@ RegisterDirective = ($auth, $confirm, $location, $navUrls, $config, $routeParams
 
         onSuccessSubmit = (response) ->
             $analytics.trackEvent("auth", "register", "user registration", 1)
-            $analytics.addEcStep("register", null, null)
 
             if $scope.nextUrl.indexOf('http') == 0
                 $window.location.href = $scope.nextUrl
@@ -534,7 +533,6 @@ InvitationDirective = ($auth, $confirm, $location, $config, $params, $navUrls, $
         onSuccessSubmitRegister = (response) ->
             $analytics.trackEvent("auth", "invitationAccept", "invitation accept with new user", 1)
             $analytics.trackEvent("auth", "register", "user registration", 1)
-            $analytics.addEcStep("register", null, null)
 
             $location.path($navUrls.resolve("project", {project: $scope.invitation.project_slug}))
             $confirm.notify("success", "You've successfully joined this project",
