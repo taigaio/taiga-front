@@ -144,20 +144,6 @@ class AnalyticsService extends taiga.Service
             position++
         @.trackEvent("ecommerce", "list-plans")
 
-    addEcClickProduct: (plan) ->
-        return if not @.initialized
-        return if not @win.ga
-
-        @win.ga('ec:addProduct', {
-            'id': plan.plan_id,
-            'name': plan.name,
-            'category': "plans",
-            'quantity': 1,
-            'position': 1,
-        })
-        @win.ga('ec:setAction','click')
-        @.trackEvent("ecommerce", "add-click", plan.name, plan.plan_id)
-
     ecAddToCart: (plan_id, plan_name, plan_price) ->
         return if not @.initialized
         return if not @win.ga
@@ -185,13 +171,13 @@ class AnalyticsService extends taiga.Service
             'quantity': 1,
             'position': 1,
         })
-        @.addEcStep("confirm-plan")
+        @.ecStep("confirm-plan")
 
     ecPurchase: (plan_id, plan_name, plan_price) ->
         return if not @.initialized
         return if not @win.ga
 
-        @.addEcStep("plan-changed")
+        @.ecStep("plan-changed")
 
         @win.ga('ec:addProduct', {
             'id': plan_id,
