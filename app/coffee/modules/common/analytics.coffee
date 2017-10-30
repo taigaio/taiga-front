@@ -142,7 +142,7 @@ class AnalyticsService extends taiga.Service
                'position': position,
             })
             position++
-        @.trackEvent("ecommerce", "add-impression", plan.name, plan.plan_id)
+        @.trackEvent("ecommerce", "list-plans")
 
     addEcClickProduct: (plan) ->
         return if not @.initialized
