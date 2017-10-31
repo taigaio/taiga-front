@@ -85,22 +85,6 @@ class AnalyticsService extends taiga.Service
 
         @win.ga("send", "event", category, action, label, value)
 
-    ecStep: (step) ->
-        return if not @.initialized
-        return if not @win.ga
-
-        if step == "register"
-            stepId = 1
-        else if step == "change-plan"
-            stepId = 2
-        else if step == "select-plan"
-            stepId = 3
-        else if step == "confirm-plan"
-            stepId = 4
-        else if step == "plan-changed"
-            stepId = 5
-
-
     ecViewPlan: (plan) ->
         return if not @.initialized
         return if not @win.ga
@@ -171,13 +155,24 @@ class AnalyticsService extends taiga.Service
             'quantity': 1,
             'position': 1,
         })
-        @.ecStep("confirm-plan")
+        @win.ga('ec:setAction','checkout', {'step': 1,})
+        @.trackEvent("ecommerce", "start-checkout", step, stepId)
 
     ecPurchase: (plan_id, plan_name, plan_price) ->
         return if not @.initialized
         return if not @win.ga
 
-        @.ecStep("plan-changed")
+        @win.ga('ec:addProduct', {
+            'id': plan_id,
+            'name': plan_name,
+            'price': plan_price,
+            'category': "plans",
+            'quantity': 1,
+            'position': 1,
+        })
+
+        @win.ga('ec:setAction','checkout', {'step': 2,})
+        @.trackEvent("ecommerce", "start-checkout", step, stepId)
 
         @win.ga('ec:addProduct', {
             'id': plan_id,
