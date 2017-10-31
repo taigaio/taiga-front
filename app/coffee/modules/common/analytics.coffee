@@ -156,7 +156,7 @@ class AnalyticsService extends taiga.Service
             'position': 1,
         })
         @win.ga('ec:setAction','checkout', {'step': 1,})
-        @.trackEvent("ecommerce", "start-checkout", step, stepId)
+        @.trackEvent("ecommerce", "start-checkout", "start", 1)
 
     ecPurchase: (plan_id, plan_name, plan_price) ->
         return if not @.initialized
@@ -172,7 +172,7 @@ class AnalyticsService extends taiga.Service
         })
 
         @win.ga('ec:setAction','checkout', {'step': 2,})
-        @.trackEvent("ecommerce", "start-checkout", step, stepId)
+        @.trackEvent("ecommerce", "end-checkout", "end", 2)
 
         @win.ga('ec:addProduct', {
             'id': plan_id,
