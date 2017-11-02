@@ -67,10 +67,11 @@ class AuthService extends taiga.Service
                  "$tgConfig",
                  "$translate",
                  "tgCurrentUserService",
-                 "tgThemeService"]
+                 "tgThemeService",
+                 "$tgAnalytics"]
 
     constructor: (@rootscope, @storage, @model, @rs, @http, @urls, @config, @translate, @currentUserService,
-                  @themeService) ->
+                  @themeService, @analytics) ->
         super()
 
         userModel = @.getUser()
@@ -84,6 +85,7 @@ class AuthService extends taiga.Service
             @currentUserService.setUser(@.userData)
         else
             @.userData = null
+        @analytics.setUserId()
 
     _getUserTheme: ->
         return @rootscope.user?.theme || @config.get("defaultTheme") || "taiga" # load on index.jade
@@ -182,7 +184,7 @@ class AuthService extends taiga.Service
 
         @._setTheme()
         @._setLocales()
-
+        @analytics.setUserId()
 
     register: (data, type, existing) ->
         url = @urls.resolve("auth-register")
