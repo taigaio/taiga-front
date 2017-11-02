@@ -59,6 +59,12 @@ class AnalyticsService extends taiga.Service
                 @.trackPage(@.getUrl(), "Taiga")
 
         @.initialized = true
+        @.setUserId()
+
+    setUserId: ->
+        return if not @.initialized
+        return if not @win.ga
+        @win.ga('set', 'userId', @rootscope?.user?.uuid)
 
     getUrl: ->
         return @location.path()
