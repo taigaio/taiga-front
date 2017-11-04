@@ -28,6 +28,22 @@ describe "DiscoverSearch", ->
 
         $provide.value "$translate", mocks.translate
 
+    _mockTgLocation = () ->
+        mocks.mockTgLocation = {
+            url: sinon.stub()
+            search: sinon.stub()
+        }
+
+        $provide.value "$tgLocation", mocks.mockTgLocation
+
+    _mockTgAnalytics = () ->
+        mocks.tgAnalytics = {
+            trackEvent: sinon.stub(),
+            trackPage: sinon.stub()
+        }
+
+        $provide.value "$tgAnalytics", mocks.tgAnalytics
+
     _mockAppMetaService = () ->
         mocks.appMetaService = {
             setAll: sinon.spy()
@@ -63,6 +79,8 @@ describe "DiscoverSearch", ->
             _mockAppMetaService()
             _mockRoute()
             _mockRouteParams()
+            _mockTgLocation()
+            _mockTgAnalytics()
             _mockDiscoverProjects()
 
             return null
