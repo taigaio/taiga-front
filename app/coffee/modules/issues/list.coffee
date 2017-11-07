@@ -137,6 +137,7 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         filters.priority = urlfilters.priority
         filters.assigned_to = urlfilters.assigned_to
         filters.owner = urlfilters.owner
+        filters.role = urlfilters.role
 
         @filterRemoteStorageService.getFilters(@scope.projectId, @.myFiltersHashSuffix).then (userFilters) =>
             userFilters[name] = filters
@@ -157,6 +158,7 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         loadFilters.priority = urlfilters.priority
         loadFilters.assigned_to = urlfilters.assigned_to
         loadFilters.owner = urlfilters.owner
+        loadFilters.role = urlfilters.role
         loadFilters.q = urlfilters.q
 
         return @q.all([
@@ -204,6 +206,15 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                 it.name = it.full_name
 
                 return it
+            role = _.map data.roles, (it) ->
+                if it.id
+                    it.id = it.id.toString()
+                else
+                    it.id = "null"
+
+                it.name = it.name || "Unassigned"
+
+                return it
 
             @.selectedFilters = []
 
@@ -233,6 +244,10 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
             if loadFilters.priority
                 selected = @.formatSelectedFilters("priority", priority, loadFilters.priority)
+                @.selectedFilters = @.selectedFilters.concat(selected)
+
+            if loadFilters.role
+                selected = @.formatSelectedFilters("role", role, loadFilters.role)
                 @.selectedFilters = @.selectedFilters.concat(selected)
 
             @.filterQ = loadFilters.q
@@ -269,6 +284,11 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                     title: @translate.instant("COMMON.FILTERS.CATEGORIES.ASSIGNED_TO"),
                     dataType: "assigned_to",
                     content: assignedTo
+                },
+                {
+                    title: @translate.instant("COMMON.FILTERS.CATEGORIES.ROLE"),
+                    dataType: "role",
+                    content: role
                 },
                 {
                     title: @translate.instant("COMMON.FILTERS.CATEGORIES.CREATED_BY"),
