@@ -67,7 +67,7 @@ div.kanban-table(
 
                 tg-card.card.ng-animate-disabled(
                     tg-repeat="us in usByStatus.get(s.id.toString()) track by us.getIn(['model', 'id'])",
-                    ng-class="{'kanban-task-maximized': ctrl.isMaximized(s.id), 'kanban-task-minimized': ctrl.isMinimized(s.id)}"
+                    ng-class="{'kanban-task-maximized': ctrl.isMaximized(s.id), 'kanban-task-minimized': ctrl.isMinimized(s.id), 'kanban-task-selected': ctrl.selectedUss[us.get('id')], 'ui-multisortable-multiple': ctrl.selectedUss[us.get('id')]}"
                     tg-class-permission="{'readonly': '!modify_task'}"
                     tg-bind-scope,
                     on-toggle-fold="ctrl.toggleFold(id)"
@@ -78,6 +78,7 @@ div.kanban-table(
                     zoom="ctrl.zoom"
                     zoom-level="ctrl.zoomLevel"
                     archived="ctrl.isUsInArchivedHiddenStatus(us.get('id'))"
+                    ng-click="$event.ctrlKey && ctrl.toggleSelectedUs(us.get('id'))"
                 )
 
                 div.kanban-column-intro(ng-if="s.is_archived", tg-kanban-archived-status-intro="s")

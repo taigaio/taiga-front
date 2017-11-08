@@ -148,9 +148,63 @@ $column-padding: .5rem 1rem;
     .kanban-uses-box {
         background: $mass-white;
     }
+    .kanban-task-selected {
+        &.card:not(.gu-transit-multi) {
+            // border: 1px solid $primary-light;
+            box-shadow: 0 0 0 1px $primary-light, 2px 2px 4px darken($whitish, 10%);
+        }
+    }
 }
 
 .kanban-table-inner {
     display: flex;
     flex-wrap: nowrap;
+}
+
+.card-transit-multi {
+    background: darken($whitish, 2%);
+    border: 1px dashed darken($whitish, 8%);
+    display: none;
+    opacity: 1;
+    padding: 1rem;
+    .fake-img,
+    .fake-text {
+        background: darken($whitish, 8%);
+    }
+    .fake-us {
+        display: flex;
+        margin-bottom: 1rem;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+    .column {
+        padding-left: 0.5rem;
+        width: 100%;
+    }
+    .fake-img {
+        flex-basis: 48px;
+        flex-shrink: 0;
+        height: 48px;
+        width: 48px;
+    }
+    .fake-text {
+        height: 1rem;
+        margin-bottom: 1rem;
+        width: 80%;
+        &:last-child {
+            margin-bottom: 0;
+            width: 40%;
+        }
+    }
+}
+
+.card.gu-transit-multi {
+    .card-transit-multi {
+        display: block;
+    }
+    .card-inner {
+        display: none;
+    }
 }
