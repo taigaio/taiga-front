@@ -26,6 +26,7 @@ NavigationBarDirective = (currentUserService, navigationBarService, locationServ
         taiga.defineImmutableProperty(scope.vm, "isEnabledHeader", () -> navigationBarService.isEnabledHeader())
 
         scope.vm.publicRegisterEnabled = config.get("publicRegisterEnabled")
+        scope.vm.supportUrl = config.get("supportUrl")
 
         scope.vm.login = ->
             nextUrl = encodeURIComponent(locationService.url())
