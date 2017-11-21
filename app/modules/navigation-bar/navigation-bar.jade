@@ -16,7 +16,7 @@ nav.navbar(ng-if="vm.isEnabledHeader")
             include ../../svg/logo.svg
 
         a(
-            href="https://tree.taiga.io/support/",
+            href="{{ vm.supportUrl }}",
             target="_blank",
             title="{{'PROJECT.NAVIGATION.HELP_TITLE' | translate}}",
             translate="PROJECT.NAVIGATION.HELP"
