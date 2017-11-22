@@ -161,7 +161,7 @@ class AuthService extends taiga.Service
             user = @model.make_model("users", user)
 
             @.setUser(user)
-            @rootscope.broadcast("auth:refresh", user)
+            @rootscope.$broadcast("auth:refresh", user)
             return user
 
     login: (data, type) ->
@@ -176,7 +176,7 @@ class AuthService extends taiga.Service
             user = @model.make_model("users", data.data)
             @.setToken(user.auth_token)
             @.setUser(user)
-            @rootscope.broadcast("auth:login", user)
+            @rootscope.$broadcast("auth:login", user)
             return user
 
     logout: ->
@@ -186,7 +186,7 @@ class AuthService extends taiga.Service
 
         @._setTheme()
         @._setLocales()
-        @rootscope.broadcast("auth:logout")
+        @rootscope.$broadcast("auth:logout")
         @analytics.setUserId()
 
     register: (data, type, existing) ->
@@ -203,7 +203,7 @@ class AuthService extends taiga.Service
             user = @model.make_model("users", response.data)
             @.setToken(user.auth_token)
             @.setUser(user)
-            @rootscope.broadcast("auth:register", user)
+            @rootscope.$broadcast("auth:register", user)
             return user
 
     getInvitation: (token) ->
