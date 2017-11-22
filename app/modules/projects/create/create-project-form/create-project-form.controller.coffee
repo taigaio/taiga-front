@@ -23,10 +23,11 @@ class CreatetProjectFormController
         "tgProjectsService",
         "$projectUrl",
         "$location",
-        "$tgNavUrls"
+        "$tgNavUrls",
+        "$tgAnalytics"
    ]
 
-    constructor: (@currentUserService, @projectsService, @projectUrl, @location, @navUrls) ->
+    constructor: (@currentUserService, @projectsService, @projectUrl, @location, @navUrls, @analytics) ->
         @.projectForm = {
             is_private: false
         }
@@ -46,6 +47,7 @@ class CreatetProjectFormController
         @.formSubmitLoading = true
 
         @projectsService.create(@.projectForm).then (project) =>
+            @analytics.trackEvent("project", "create", "project creation", {slug: project.get('slug'), id: project.get('id')})
             @location.url(@projectUrl.get(project))
 
     onCancelForm: () ->

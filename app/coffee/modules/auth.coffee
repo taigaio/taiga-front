@@ -270,7 +270,7 @@ module.directive("tgPublicRegisterMessage", ["$tgConfig", "$tgNavUrls", "$routeP
                                              "$tgTemplate", PublicRegisterMessageDirective])
 
 
-LoginDirective = ($auth, $confirm, $location, $config, $routeParams, $navUrls, $events, $translate, $window) ->
+LoginDirective = ($auth, $confirm, $location, $config, $routeParams, $navUrls, $events, $translate, $window, $analytics) ->
     link = ($scope, $el, $attrs) ->
         form = new checksley.Form($el.find("form.login-form"))
 
@@ -284,6 +284,7 @@ LoginDirective = ($auth, $confirm, $location, $config, $routeParams, $navUrls, $
 
         onSuccess = (response) ->
             $events.setupConnection()
+            $analytics.trackEvent("auth", "login", "user login", 1)
 
             if $scope.nextUrl.indexOf('http') == 0
                 $window.location.href = $scope.nextUrl
@@ -326,7 +327,7 @@ LoginDirective = ($auth, $confirm, $location, $config, $routeParams, $navUrls, $
     return {link:link}
 
 module.directive("tgLogin", ["$tgAuth", "$tgConfirm", "$tgLocation", "$tgConfig", "$routeParams",
-                             "$tgNavUrls", "$tgEvents", "$translate", "$window", LoginDirective])
+                             "$tgNavUrls", "$tgEvents", "$translate", "$window", "$tgAnalytics", LoginDirective])
 
 
 #############################################################################

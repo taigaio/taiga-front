@@ -26,10 +26,11 @@ class CreateEpicController
     @.$inject = [
         "$tgConfirm"
         "tgProjectService",
-        "tgEpicsService"
+        "tgEpicsService",
+        "$tgAnalytics"
     ]
 
-    constructor: (@confirm, @projectService, @epicsService) ->
+    constructor: (@confirm, @projectService, @epicsService, @analytics) ->
         # NOTE: To use Checksley setFormErrors() and validateForm()
         #       are defined in the directive.
 
@@ -53,6 +54,7 @@ class CreateEpicController
 
         @epicsService.createEpic(@.newEpic, @.attachments)
             .then (response) => # On success
+                @analytics.trackEvent("epic", "create", "create epic", 1)
                 @.onCreateEpic()
                 @.loading = false
             .catch (response) => # On error

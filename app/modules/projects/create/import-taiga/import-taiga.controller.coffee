@@ -22,12 +22,15 @@ class ImportTaigaController
         '$tgConfirm',
         '$tgResources',
         'tgImportProjectService',
-        '$translate'
+        '$translate',
+        '$tgAnalytics',
     ]
 
-    constructor: (@confirm, @rs, @importProjectService, @translate) ->
+    constructor: (@confirm, @rs, @importProjectService, @translate, @analytics) ->
 
     importTaiga: (files) ->
+        @analytics.trackEvent("import", "taiga", "Start import from taiga", 1)
+
         file = files[0]
 
         loader = @confirm.loader(@translate.instant('PROJECT.IMPORT.IN_PROGRESS.TITLE'), @translate.instant('PROJECT.IMPORT.IN_PROGRESS.DESCRIPTION'), true)
