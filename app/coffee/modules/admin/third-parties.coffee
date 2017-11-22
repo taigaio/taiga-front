@@ -235,7 +235,7 @@ module.directive("tgWebhook", ["$tgResources", "$tgRepo", "$tgConfirm", "$tgLoad
 ## New webhook Directive
 #############################################################################
 
-NewWebhookDirective = ($rs, $repo, $confirm, $loading) ->
+NewWebhookDirective = ($rs, $repo, $confirm, $loading, $analytics) ->
     link = ($scope, $el, $attrs) ->
         webhook = $scope.$eval($attrs.tgWebhook)
         formDOMNode = $el.find(".new-webhook-form")
@@ -266,6 +266,7 @@ NewWebhookDirective = ($rs, $repo, $confirm, $loading) ->
             $scope.newValue.project = $scope.project.id
             promise = $repo.create("webhooks", $scope.newValue)
             promise.then =>
+                $analytics.trackEvent("webhooks", "create", "Create new webhook", 1)
                 $scope.$emit("webhooks:reload")
                 initializeNewValue()
 
@@ -295,7 +296,7 @@ NewWebhookDirective = ($rs, $repo, $confirm, $loading) ->
 
     return {link:link}
 
-module.directive("tgNewWebhook", ["$tgResources", "$tgRepo", "$tgConfirm", "$tgLoading", NewWebhookDirective])
+module.directive("tgNewWebhook", ["$tgResources", "$tgRepo", "$tgConfirm", "$tgLoading", "$tgAnalytics", NewWebhookDirective])
 
 
 #############################################################################
@@ -464,7 +465,7 @@ module.directive("tgSelectInputText", SelectInputText)
 ## GithubWebhooks Directive
 #############################################################################
 
-GithubWebhooksDirective = ($repo, $confirm, $loading) ->
+GithubWebhooksDirective = ($repo, $confirm, $loading, $analytics) ->
     link = ($scope, $el, $attrs) ->
         form = $el.find("form").checksley({"onlyOneErrorElement": true})
         submit = debounce 2000, (event) =>
@@ -478,6 +479,7 @@ GithubWebhooksDirective = ($repo, $confirm, $loading) ->
 
             promise = $repo.saveAttribute($scope.github, "github")
             promise.then ->
+                $analytics.trackEvent("github-webhook", "created-or-changed", "Create or changed github webhook", 1)
                 currentLoading.finish()
                 $confirm.notify("success")
 
@@ -493,14 +495,14 @@ GithubWebhooksDirective = ($repo, $confirm, $loading) ->
 
     return {link:link}
 
-module.directive("tgGithubWebhooks", ["$tgRepo", "$tgConfirm", "$tgLoading", GithubWebhooksDirective])
+module.directive("tgGithubWebhooks", ["$tgRepo", "$tgConfirm", "$tgLoading", "$tgAnalytics", GithubWebhooksDirective])
 
 
 #############################################################################
 ## GitlabWebhooks Directive
 #############################################################################
 
-GitlabWebhooksDirective = ($repo, $confirm, $loading) ->
+GitlabWebhooksDirective = ($repo, $confirm, $loading, $analytics) ->
     link = ($scope, $el, $attrs) ->
         form = $el.find("form").checksley({"onlyOneErrorElement": true})
         submit = debounce 2000, (event) =>
@@ -514,6 +516,7 @@ GitlabWebhooksDirective = ($repo, $confirm, $loading) ->
 
             promise = $repo.saveAttribute($scope.gitlab, "gitlab")
             promise.then ->
+                $analytics.trackEvent("gitlab-webhook", "created-or-changed", "Create or changed gitlab webhook", 1)
                 currentLoading.finish()
                 $confirm.notify("success")
                 $scope.$emit("project:modules:reload")
@@ -530,14 +533,14 @@ GitlabWebhooksDirective = ($repo, $confirm, $loading) ->
 
     return {link:link}
 
-module.directive("tgGitlabWebhooks", ["$tgRepo", "$tgConfirm", "$tgLoading", GitlabWebhooksDirective])
+module.directive("tgGitlabWebhooks", ["$tgRepo", "$tgConfirm", "$tgLoading", "$tgAnalytics", GitlabWebhooksDirective])
 
 
 #############################################################################
 ## BitbucketWebhooks Directive
 #############################################################################
 
-BitbucketWebhooksDirective = ($repo, $confirm, $loading) ->
+BitbucketWebhooksDirective = ($repo, $confirm, $loading, $analytics) ->
     link = ($scope, $el, $attrs) ->
         form = $el.find("form").checksley({"onlyOneErrorElement": true})
         submit = debounce 2000, (event) =>
@@ -551,6 +554,7 @@ BitbucketWebhooksDirective = ($repo, $confirm, $loading) ->
 
             promise = $repo.saveAttribute($scope.bitbucket, "bitbucket")
             promise.then ->
+                $analytics.trackEvent("bitbucket-webhook", "created-or-changed", "Create or changed bitbucket webhook", 1)
                 currentLoading.finish()
                 $confirm.notify("success")
                 $scope.$emit("project:modules:reload")
@@ -567,7 +571,7 @@ BitbucketWebhooksDirective = ($repo, $confirm, $loading) ->
 
     return {link:link}
 
-module.directive("tgBitbucketWebhooks", ["$tgRepo", "$tgConfirm", "$tgLoading", BitbucketWebhooksDirective])
+module.directive("tgBitbucketWebhooks", ["$tgRepo", "$tgConfirm", "$tgLoading", "$tgAnalytics", BitbucketWebhooksDirective])
 
 
 #############################################################################
@@ -636,4 +640,37 @@ class GogsController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Filt
         @.loadProject()
         return @.loadModules()
 
+GogsWebhooksDirective = ($repo, $confirm, $loading, $analytics) ->
+    link = ($scope, $el, $attrs) ->
+        form = $el.find("form").checksley({"onlyOneErrorElement": true})
+        submit = debounce 2000, (event) =>
+            event.preventDefault()
+
+            return if not form.validate()
+
+            currentLoading = $loading()
+                .target(submitButton)
+                .start()
+
+            promise = $repo.saveAttribute($scope.gogs, "gogs")
+            promise.then ->
+                $analytics.trackEvent("gogs-webhook", "create-or-change", "Create or change gogs webhook", 1)
+                currentLoading.finish()
+                $confirm.notify("success")
+                $scope.$emit("project:modules:reload")
+
+            promise.then null, (data) ->
+                currentLoading.finish()
+                form.setErrors(data)
+                if data._error_message
+                    $confirm.notify("error", data._error_message)
+
+        submitButton = $el.find(".submit-button")
+
+        $el.on "submit", "form", submit
+        $el.on "click", ".submit-button", submit
+
+    return {link:link}
+
 module.controller("GogsController", GogsController)
+module.directive("tgGogsWebhooks", ["$tgRepo", "$tgConfirm", "$tgLoading", "$tgAnalytics", GogsWebhooksDirective])

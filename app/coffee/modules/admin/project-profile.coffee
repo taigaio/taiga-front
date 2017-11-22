@@ -141,7 +141,7 @@ module.controller("ProjectProfileController", ProjectProfileController)
 ## Project Profile Directive
 #############################################################################
 
-ProjectProfileDirective = ($repo, $confirm, $loading, $navurls, $location, projectService, currentUserService) ->
+ProjectProfileDirective = ($repo, $confirm, $loading, $navurls, $location, projectService, currentUserService, $analytics) ->
     link = ($scope, $el, $attrs) ->
         $ctrl = $el.controller()
 
@@ -155,9 +155,24 @@ ProjectProfileDirective = ($repo, $confirm, $loading, $navurls, $location, proje
                 .target(submitButton)
                 .start()
 
+            privacyChanged = $scope.project.isAttributeModified("is_private")
             promise = $repo.save($scope.project)
             promise.then ->
                 currentLoading.finish()
+                if privacyChanged && $scope.project.is_private
+                    $analytics.trackEvent(
+                        "project-privacy-changed",
+                        "from-public-to-private",
+                        "Change project privacy from public to private",
+                        1
+                    )
+                else if privacyChanged && !$scope.project.is_private
+                    $analytics.trackEvent(
+                        "project-privacy-changed",
+                        "from-private-to-public",
+                        "Change project privacy from private to public",
+                        1
+                    )
                 $confirm.notify("success")
                 newUrl = $navurls.resolve("project-admin-project-profile-details", {
                     project: $scope.project.slug
@@ -182,7 +197,8 @@ ProjectProfileDirective = ($repo, $confirm, $loading, $navurls, $location, proje
     return {link:link}
 
 module.directive("tgProjectProfile", ["$tgRepo", "$tgConfirm", "$tgLoading", "$tgNavUrls", "$tgLocation",
-                                      "tgProjectService", "tgCurrentUserService", ProjectProfileDirective])
+                                      "tgProjectService", "tgCurrentUserService", "$tgAnalytics",
+                                      ProjectProfileDirective])
 
 
 #############################################################################
@@ -295,7 +311,7 @@ module.directive("tgProjectModules", ["$tgRepo", "$tgConfirm", "$tgLoading", "tg
 ## Project Export Directive
 #############################################################################
 
-ProjectExportDirective = ($window, $rs, $confirm, $translate) ->
+ProjectExportDirective = ($window, $rs, $confirm, $translate, $analytics) ->
     link = ($scope, $el, $attrs) ->
         buttonsEl = $el.find(".admin-project-export-buttons")
         showButtons = -> buttonsEl.removeClass("hidden")
@@ -354,6 +370,7 @@ ProjectExportDirective = ($window, $rs, $confirm, $translate) ->
             event.preventDefault()
 
             onSuccess = (result) =>
+                $analytics.trackEvent("exporter", "export-project", "Exported project", 1)
                 if result.status == 202 # Async mode
                     showExportResultAsyncMode()
                 else #result.status == 200 # Sync mode
@@ -380,7 +397,7 @@ ProjectExportDirective = ($window, $rs, $confirm, $translate) ->
     return {link:link}
 
 module.directive("tgProjectExport", ["$window", "$tgResources", "$tgConfirm", "$translate",
-                                     ProjectExportDirective])
+                                     "$tgAnalytics", ProjectExportDirective])
 
 
 #############################################################################

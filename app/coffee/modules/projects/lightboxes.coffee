@@ -33,7 +33,7 @@ module = angular.module("taigaProject")
 ## Delete Project Lightbox Directive
 #############################################################################
 
-DeleteProjectDirective = ($repo, $rootscope, $auth, $location, $navUrls, $confirm, lightboxService, tgLoader, currentUserService) ->
+DeleteProjectDirective = ($repo, $rootscope, $auth, $location, $navUrls, $confirm, lightboxService, tgLoader, currentUserService, $analytics) ->
     link = ($scope, $el, $attrs) ->
         projectToDelete = null
         $scope.$on "deletelightbox:new", (ctx, project)->
@@ -50,6 +50,7 @@ DeleteProjectDirective = ($repo, $rootscope, $auth, $location, $navUrls, $confir
             promise = $repo.remove(projectToDelete)
 
             promise.then (data) ->
+                $analytics.trackEvent("projects", "delete", "Delete project", 1)
                 tgLoader.pageLoaded()
                 $rootscope.$broadcast("projects:reload")
                 $location.path($navUrls.resolve("home"))
@@ -72,4 +73,5 @@ DeleteProjectDirective = ($repo, $rootscope, $auth, $location, $navUrls, $confir
     return {link:link}
 
 module.directive("tgLbDeleteProject", ["$tgRepo", "$rootScope", "$tgAuth", "$tgLocation", "$tgNavUrls",
-                                       "$tgConfirm", "lightboxService", "tgLoader", "tgCurrentUserService", DeleteProjectDirective])
+                                       "$tgConfirm", "lightboxService", "tgLoader", "tgCurrentUserService",
+                                       "$tgAnalytics", DeleteProjectDirective])

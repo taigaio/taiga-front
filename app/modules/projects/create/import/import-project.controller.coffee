@@ -29,15 +29,21 @@ class ImportProjectController
         '$tgNavUrls',
         '$tgConfig',
         '$tgConfirm',
+        '$tgAnalytics',
     ]
 
-    constructor: (@trelloService, @jiraService, @githubService, @asanaService, @location, @window, @routeParams, @tgNavUrls, @config, @confirm) ->
+    constructor: (@trelloService, @jiraService, @githubService, @asanaService,
+                  @location, @window, @routeParams, @tgNavUrls, @config, @confirm,
+                  @analytics) ->
 
     start: ->
         @.token = null
         @.from = @routeParams.platform
 
         locationSearch = @location.search()
+
+        if @.from
+            @analytics.trackEvent("import", @.from, "Start import from "+@.from, 1)
 
         if @.from == "asana"
             asanaOauthToken = locationSearch.code
