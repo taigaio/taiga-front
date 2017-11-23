@@ -70,7 +70,7 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                   @navUrls, @events, @analytics, @translate, @errorHandlingService, @storage, @filterRemoteStorageService, @projectService) ->
         bindMethods(@)
 
-        @scope.sectionName = "Issues"
+        @scope.sectionName = @translate.instant("PROJECT.SECTION.ISSUES")
         @.voting = false
 
         return if @.applyStoredFilters(@params.pslug, @.filtersHashSuffix)
