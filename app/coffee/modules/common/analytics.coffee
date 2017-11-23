@@ -86,7 +86,6 @@ class AnalyticsService extends taiga.Service
         })
 
     trackEvent: (category, action, label, value) ->
-        console.log("TRACK EVENT: ", category, action, label, value)
         return if not @.initialized
         return if not @win.ga
 
