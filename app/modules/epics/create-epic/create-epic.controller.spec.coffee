@@ -43,12 +43,20 @@ describe "EpicRow", ->
         }
         provide.value "tgEpicsService", mocks.tgEpicsService
 
+    _mockTgAnalytics = ->
+        mocks.tgAnalytics = {
+            trackEvent: sinon.stub()
+        }
+
+        provide.value("$tgAnalytics", mocks.tgAnalytics)
+
     _mocks = () ->
         module ($provide) ->
             provide = $provide
             _mockTgConfirm()
             _mockTgProjectService()
             _mockTgEpicsService()
+            _mockTgAnalytics()
             return null
 
     beforeEach ->

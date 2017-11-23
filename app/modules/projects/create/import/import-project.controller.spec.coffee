@@ -96,6 +96,13 @@ describe "ImportProjectCtrl", ->
 
         $provide.value("$tgNavUrls", mocks.tgNavUrls)
 
+    _mockTgAnalytics = ->
+        mocks.tgAnalytics = {
+            trackEvent: sinon.stub()
+        }
+
+        $provide.value("$tgAnalytics", mocks.tgAnalytics)
+
     _mocks = ->
         module (_$provide_) ->
             $provide = _$provide_
@@ -110,6 +117,7 @@ describe "ImportProjectCtrl", ->
             _mockTgNavUrls()
             _mockRouteParams()
             _mockConfig()
+            _mockTgAnalytics()
 
             return null
 

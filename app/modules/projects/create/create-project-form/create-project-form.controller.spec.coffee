@@ -58,6 +58,13 @@ describe "CreateProjectFormCtrl", ->
 
         $provide.value("$location", mocks.location)
 
+    _mockTgAnalytics = ->
+        mocks.tgAnalytics = {
+            trackEvent: sinon.stub()
+        }
+
+        $provide.value("$tgAnalytics", mocks.tgAnalytics)
+
     _mocks = ->
         module (_$provide_) ->
             $provide = _$provide_
@@ -67,6 +74,7 @@ describe "CreateProjectFormCtrl", ->
             _mockProjectUrl()
             _mockLocation()
             _mockNavUrlsService()
+            _mockTgAnalytics()
 
             return null
 
@@ -88,7 +96,7 @@ describe "CreateProjectFormCtrl", ->
 
         ctrl.projectForm = 'form'
 
-        mocks.projectsService.create.withArgs('form').promise().resolve('project1')
+        mocks.projectsService.create.withArgs('form').promise().resolve(Immutable.fromJS({slug: 'project1', id: 1}))
         mocks.projectUrl.get.returns('project-url')
 
         ctrl.submit().then () ->
