@@ -147,7 +147,7 @@ class AnalyticsService extends taiga.Service
             'position': 1,
         })
         @win.ga('ec:setAction','add')
-        @win.ga('send', 'event', 'add-to-cart', 'Collect Payment Info')
+        @.trackEvent('ecommerce', 'add-to-cart', 'Collect Payment Info', null)
 
     ecConfirmChange: (plan_id, plan_name, plan_price) ->
         return if not @.initialized
@@ -192,6 +192,6 @@ class AnalyticsService extends taiga.Service
             'id': plan_id,
             'revenue': plan_price,
         })
-        @win.ga('send', 'event', 'checkout', 'Plan checkout')
+        @.trackEvent('ecommerce', 'checkout', 'Plan checkout', null)
 
 module.service("$tgAnalytics", AnalyticsService)
