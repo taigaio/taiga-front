@@ -539,7 +539,6 @@ InvitationDirective = ($auth, $confirm, $location, $config, $params, $navUrls, $
 
         onSuccessSubmitRegister = (response) ->
             $analytics.trackEvent("auth", "invitationAccept", "invitation accept with new user", 1)
-            $analytics.trackEvent("auth", "register", "user registration", 1)
 
             $location.path($navUrls.resolve("project", {project: $scope.invitation.project_slug}))
             $confirm.notify("success", "You've successfully joined this project",
