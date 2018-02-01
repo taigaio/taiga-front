@@ -1290,7 +1290,7 @@
         "NOT_FOUND": "Nie znaleziono",
         "NOT_FOUND_TEXT": "Błąd 404 - strona której szukasz nie istnieje. Wróć do strony głównej Taiga i zobacz, czy znajdziesz tam to, czego szukasz.",
         "PERMISSION_DENIED": "Dostęp zabroniony",
-        "PERMISSION_DENIED_TEXT": "You don't have permission to access to this page.",
+        "PERMISSION_DENIED_TEXT": "You don't have permission to access this page.",
         "VERSION_ERROR": "Odśwież i zastosuj zmiany ponownie gdyż może ktoś przed Tobą zapisał jakieś zmiany."
     },
     "TASKBOARD": {

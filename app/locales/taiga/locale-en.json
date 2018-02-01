@@ -1292,7 +1292,7 @@
         "NOT_FOUND": "Not found",
         "NOT_FOUND_TEXT": "Error 404. The page you are looking for no longer exists. Perhaps you can return back to TAIGA homepage and see if you can find what you are looking for.",
         "PERMISSION_DENIED": "Permission denied",
-        "PERMISSION_DENIED_TEXT": "You don't have permission to access to this page.",
+        "PERMISSION_DENIED_TEXT": "You don't have permission to access this page.",
         "VERSION_ERROR": "Someone inside Taiga has changed this before and our Oompa Loompas cannot apply your changes. Please reload and apply your changes again (they will be lost)."
     },
     "TASKBOARD": {
