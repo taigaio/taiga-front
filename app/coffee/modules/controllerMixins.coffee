@@ -207,7 +207,7 @@ class UsFiltersMixin
             @filterRemoteStorageService.storeFilters(@scope.projectId, userFilters, @.storeCustomFiltersName).then(@.generateFilters)
             @.generateFilters()
 
-    generateFilters: ->
+    generateFilters: (milestone) ->
         @.storeFilters(@params.pslug, @location.search(), @.storeFiltersName)
 
         urlfilters = @location.search()
@@ -220,6 +220,9 @@ class UsFiltersMixin
         loadFilters.owner = urlfilters.owner
         loadFilters.epic = urlfilters.epic
         loadFilters.q = urlfilters.q
+
+        if milestone
+            loadFilters.milestone = milestone
 
         return @q.all([
             @rs.userstories.filtersData(loadFilters),

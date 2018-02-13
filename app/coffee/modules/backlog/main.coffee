@@ -365,7 +365,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         @.initializeSubscription()
 
         return @.loadBacklog()
-            .then(=> @.generateFilters())
+            .then(=> @.generateFilters(milestone = "null"))
             .then(=> @scope.$emit("backlog:loaded"))
 
     prepareBulkUpdateData: (uses, field="backlog_order") ->
