@@ -299,6 +299,108 @@ module.directive("tgWatchers", ["$rootScope", "$tgConfirm", "$tgRepo", "$tgQueue
                                 "$translate", WatchersDirective])
 
 
+
+#############################################################################
+## Assigned Users directive
+#############################################################################
+
+AssignedUsersDirective = ($rootscope, $confirm, $repo, $modelTransform, $template, $compile, $translate) ->
+    # You have to include a div with the tg-lb-assignedusers directive in the page
+    # where use this directive
+
+    link = ($scope, $el, $attrs, $model) ->
+        isEditable = ->
+            return $scope.project?.my_permissions?.indexOf($attrs.requiredPerm) != -1
+        isAssigned = ->
+            return $scope.assignedUsers.length > 0
+
+        save = (assignedUsers) ->
+            transform = $modelTransform.save (item) ->
+                item.assignedUsers = assignedUsers
+                return item
+
+            transform.then ->
+                console.log(assignedUserId)
+                assignedUsers = _.map(assignedUsers, (assignedUserId) -> $scope.usersById[assignedUserId])
+                renderAssignedUsers(assignedUsers)
+                $rootscope.$broadcast("object:updated")
+
+            transform.then null, ->
+                $confirm.notify("error")
+
+        openAssignedUsers = ->
+            item = _.clone($model.$modelValue, false)
+            $rootscope.$broadcast("assignedUser:add", item)
+
+        deleteAssignedUser = (assignedUserIds) ->
+            transform = $modelTransform.save (item) ->
+                item.assignedUsers = assignedUserIds
+
+                return item
+
+            transform.then () ->
+                item = $modelTransform.getObj()
+                assignedUsers = _.map(item.assignedUsers, (assignedUserId) -> $scope.usersById[assignedUserId])
+                renderAssignedUsers(assignedUsers)
+                $rootscope.$broadcast("object:updated")
+
+            transform.then null, ->
+                item.revert()
+                $confirm.notify("error")
+
+        renderAssignedUsers = (assignedUsers) ->
+            $scope.assignedUsers = assignedUsers
+            $scope.isEditable = isEditable()
+            $scope.isAssigned = isAssigned()
+            $scope.openAssignedUsers = openAssignedUsers
+            console.log('rendering...')
+
+        $el.on "click", ".js-delete-watcher", (event) ->
+            event.preventDefault()
+            return if not isEditable()
+            target = angular.element(event.currentTarget)
+            watcherId = target.data("watcher-id")
+
+            title = $translate.instant("COMMON.WATCHERS.TITLE_LIGHTBOX_DELETE_WARTCHER")
+            message = $scope.usersById[watcherId].full_name_display
+
+            $confirm.askOnDelete(title, message).then (askResponse) =>
+                askResponse.finish()
+
+                watcherIds = _.clone($model.$modelValue.watchers, false)
+                watcherIds = _.pull(watcherIds, watcherId)
+
+                deleteWatcher(watcherIds)
+
+        $scope.$on "assignedUser:added", (ctx, assignedUserId) ->
+
+            assignedUsers = _.clone($model.$modelValue.assigned_users, false)
+            assignedUsers.push(assignedUserId)
+            assignedUsers = _.uniq(assignedUsers)
+ 
+            save(assignedUsers)
+
+        $scope.$watch $attrs.ngModel, (item) ->
+            return if not item?
+            assignedUsers = _.map(item.assigned_users, (assignedUserId) -> $scope.usersById[assignedUserId])
+            assignedUsers = _.filter assignedUsers, (it) -> return !!it
+
+            renderAssignedUsers(assignedUsers)
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {
+        scope: true,
+        templateUrl: "common/components/assigned-users.html",
+        link:link,
+        require:"ngModel"
+    }
+
+module.directive("tgAssignedUsers", ["$rootScope", "$tgConfirm", "$tgRepo", "$tgQueueModelTransformation", "$tgTemplate", "$compile",
+                                "$translate", AssignedUsersDirective])
+
+
 #############################################################################
 ## Assigned to directive
 #############################################################################

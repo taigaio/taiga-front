@@ -693,8 +693,102 @@ AssignedToLightboxDirective = (lightboxService, lightboxKeyboardNavigationServic
         link:link
     }
 
-
 module.directive("tgLbAssignedto", ["lightboxService", "lightboxKeyboardNavigationService", "$tgTemplate", "$compile", "tgAvatarService", AssignedToLightboxDirective])
+
+
+#############################################################################
+## Assigned Users Lightbox directive
+#############################################################################
+
+AssignedUsersLightboxDirective = ($repo, lightboxService, lightboxKeyboardNavigationService, $template, $compile, avatarService) ->
+    link = ($scope, $el, $attrs) ->
+        selectedItem = null
+        usersTemplate = $template.get("common/lightbox/lightbox-assigned-to-users.html", true)
+
+        # Get prefiltered users by text
+        # and without now watched users.
+        getFilteredUsers = (text="") ->
+            _filterUsers = (text, user) ->
+                if selectedItem && _.find(selectedItem.assignedUsers, (x) -> x == user.id)
+                    return false
+
+                username = user.full_name_display.toUpperCase()
+                text = text.toUpperCase()
+                return _.includes(username, text)
+
+            users = _.clone($scope.activeUsers, true)
+            users = _.filter(users, _.partial(_filterUsers, text))
+            return users
+
+        # Render the specific list of users.
+        render = (users) ->
+            visibleUsers = _.slice(users, 0, 5)
+
+            visibleUsers = _.map visibleUsers, (user) ->
+                user.avatar = avatarService.getAvatar(user)
+
+                return user
+
+            ctx = {
+                selected: false
+                users: visibleUsers
+                showMore: users.length > 5
+            }
+
+            html = usersTemplate(ctx)
+            html = $compile(html)($scope)
+            $el.find(".ticket-watchers").html(html)
+
+        closeLightbox = () ->
+            lightboxKeyboardNavigationService.stop()
+            lightboxService.close($el)
+
+        $scope.$on "assignedUser:add", (ctx, item) ->
+            console.log(item)
+            selectedItem = item
+
+            users = getFilteredUsers()
+            render(users)
+
+            lightboxService.open($el).then ->
+                $el.find("input").focus()
+                lightboxKeyboardNavigationService.init($el)
+
+        $scope.$watch "usersSearch", (searchingText) ->
+            if not searchingText?
+                return
+
+            users = getFilteredUsers(searchingText)
+            render(users)
+            $el.find("input").focus()
+
+        $el.on "click", ".user-list-single", debounce 200, (event) ->
+            closeLightbox()
+
+            event.preventDefault()
+            target = angular.element(event.currentTarget)
+
+            $scope.$apply ->
+                $scope.usersSearch = null
+                $scope.$broadcast("assignedUser:added", target.data("user-id"))
+
+        $el.on "click", ".close", (event) ->
+            event.preventDefault()
+
+            closeLightbox()
+
+            $scope.$apply ->
+                $scope.usersSearch = null
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {
+        templateUrl: "common/lightbox/lightbox-users.html"
+        link:link
+    }
+
+module.directive("tgLbAssignedUsers", ["$tgRepo", "lightboxService", "lightboxKeyboardNavigationService", "$tgTemplate", "$compile", "tgAvatarService", AssignedUsersLightboxDirective])
 
 
 #############################################################################

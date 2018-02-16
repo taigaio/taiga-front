@@ -101,6 +101,12 @@ div.wrapper(
             required-perm="modify_us"
         )
 
+        section.ticket-assigned-users(
+            tg-assigned-users
+            ng-model="us"
+            required-perm="modify_us"
+        )
+
         section.ticket-watch-buttons
             div.ticket-watch(
                 tg-watch-button
@@ -154,4 +160,5 @@ div.wrapper(
         ng-model="us"
     )
     div.lightbox.lightbox-select-user(tg-lb-assignedto)
+    div.lightbox.lightbox-select-user(tg-lb-assigned-users)
     div.lightbox.lightbox-select-user(tg-lb-watchers)
