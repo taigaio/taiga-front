@@ -213,11 +213,11 @@
             }
         },
         "WYSIWYG": {
-            "CODE_SNIPPET": "Pedaço de código",
-            "DB_CLICK": "duplo clique para editar",
-            "SELECT_LANGUAGE_PLACEHOLDER": "Selecione sua linguagem",
-            "SELECT_LANGUAGE_REMOVE_FORMATING": "Remove formatação",
-            "OUTDATED": "Outra pessoa fez mudanças enquanto estava editando. Verifique a nova versão na guia atividade antes de salvar suas alterações.",
+            "CODE_SNIPPET": "Code Snippet",
+            "DB_CLICK": "double click to edit",
+            "SELECT_LANGUAGE_PLACEHOLDER": "Select Language",
+            "SELECT_LANGUAGE_REMOVE_FORMATING": "Remove formatting",
+            "OUTDATED": "Another person has made changes while you were editing. Check the new version on the activity tab before you save your changes.",
             "MARKDOWN_HELP": "Ajuda de sintaxe markdown"
         },
         "PERMISIONS_CATEGORIES": {
@@ -290,7 +290,7 @@
         "ACTION_ENTER": "Entre",
         "ACTION_SIGN_IN": "Entrar",
         "PLACEHOLDER_AUTH_PASSWORD": "Senha (case sensitive)",
-        "ALT_LOGIN": "Ou entre com"
+        "ALT_LOGIN": "Or login with"
     },
     "LOGIN_FORM": {
         "ERROR_AUTH_INCORRECT": "De acordo com nossos Oompa Loompas, seu nome de usuario/email ou senha estão incorretos.",
@@ -611,7 +611,7 @@
             "WARNING_DELETE_ROLE": "Cuidado! Todas as estimativas de papéis serão removidas",
             "ERROR_DELETE_ALL": "Você não pode excluir todos os valores",
             "EXTERNAL_USER": "Usuário externo",
-            "NOTE_EXTERNAL_USERS": "<strong>Nota:</strong> Por usuário externo, nos referimos a qualquer usuário anônimo que não pertença à plataforma Taiga, incluindo os motores de busca. Use esse papel com cuidado."
+            "NOTE_EXTERNAL_USERS": "<strong>Note:</strong> by External User we mean any anonymous user not belonging to the Taiga platform, including search engines. Please use this role with care."
         },
         "THIRD_PARTIES": {
             "SECRET_KEY": "Chave secreta",
@@ -872,20 +872,20 @@
             "CHOOSE_TEMPLATE": "Qual modelo se encaixa melhor no seu projeto?",
             "TEMPLATE_SCRUM": "Scrum",
             "TEMPLATE_SCRUM_DESC": "Priorize e resolva suas tarefas em curtos ciclos de tempo.",
-            "TEMPLATE_SCRUM_LONGDESC": "Scrum é uma metodologia de desenvolvimento de software agilizável e incremental para gerenciar o desenvolvimento de produtos.\nO backlog do produto é o que será finalmente entregue, ordenado na sequência em que deve ser entregue. Os Backlogs de produtos são divididos em pedaços executáveis ​​gerenciáveis, denominados sprints. Toda certa quantidade de tempo que a equipe inicia um novo sprint e compromete-se a entregar um certo número de histórias de usuários do backlog, de acordo com suas habilidades, habilidades e recursos. O projeto avança à medida que o backlog se torna esgotado.",
+            "TEMPLATE_SCRUM_LONGDESC": "Scrum is an iterative and incremental agile software development methodology for managing product development.\nThe product backlog is what will ultimately be delivered, ordered into the sequence in which it should be delivered. Product Backlogs are broken into manageable, executable chunks named sprints. Every certain amount of time the team initiates a new sprint and commits to deliver a certain number of user stories from the backlog, in accordance with their skills, abilities and resources. The project advances as the backlog becomes depleted.",
             "TEMPLATE_KANBAN": "Kanban",
             "TEMPLATE_KANBAN_DESC": "Mantenha um fluxo de trabalho constante em tarefas independentes",
-            "TEMPLATE_KANBAN_LONGDESC": "A metodologia Kanban é usada para dividir o desenvolvimento do projeto (qualquer tipo de projeto) em etapas.Um cartão kanban é como um cartão de índice ou uma nota post-it que detalha cada tarefa (ou história do usuário) em um projeto que precisa ser concluído. O quadro Kanban é usado para mover cada cartão de um estado de conclusão para o próximo e, ao fazê-lo, ajuda a rastrear o progresso.",
-            "DUPLICATE": "Projeto duplicado",
+            "TEMPLATE_KANBAN_LONGDESC": "The Kanban methodology is used to divide project development (any sort of project) into stages.\nA kanban card is like an index card or post-it note that details every task (or user story) in a project that needs to be completed. The Kanban board is used to move each card from one state of completion to the next and in so doing, helps track progress.",
+            "DUPLICATE": "Duplicate project",
             "DUPLICATE_DESC": "Inicie limpo e mantenha suas configurações",
             "IMPORT": "Importar projeto",
             "IMPORT_DESC": "Importar seu projeto de múltiplas plataformas para o Taiga",
-            "INVITE": "Convidar para o projeto",
-            "SOLO_PROJECT": "Você estará sozinho neste projeto",
-            "INVITE_LATER": "(Você poderá convidar mais membros depois)",
+            "INVITE": "Invite to the project",
+            "SOLO_PROJECT": "You'll be alone in this project",
+            "INVITE_LATER": "(You'll be able to invite more members later)",
             "BACK": "Back",
-            "MAX_PRIVATE_PROJECTS": "Infelizmente, você atingiu o número máximo de projetos privados. Se você quiser aumentar o limite atual, entre em contato com o administrador.",
-            "MAX_PUBLIC_PROJECTS": "Infelizmente, você atingiu o número máximo de projetos públicos.\nSe você quiser aumentar o limite atual, entre em contato com o administrador.",
+            "MAX_PRIVATE_PROJECTS": "Unfortunately, You've reached the maximum number of private projects.\nIf you would like to increase the current limit please contact the administrator.",
+            "MAX_PUBLIC_PROJECTS": "Unfortunately, You've reached the maximum number of public projects.\nIf you would like to increase the current limit please contact the administrator.",
             "PUBLIC_PROJECT": "Projeto Público",
             "PRIVATE_PROJECT": "Projeto Privado"
         },
@@ -910,19 +910,19 @@
             "ERROR_MESSAGE": "Nossos Oompa Loompas tiveram alguns problemas ao importar seu arquivo de despejo: {{error_message}}",
             "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) é muito pesado para nossos Oompa Loompas, tente algo menor que ({{maxFileSize}})",
             "SYNC_SUCCESS": "Seu projeto foi importado com sucesso",
-            "IMPORT": "Importar",
-            "WHO_IS": "As tarefas deles serão atribuídas para",
-            "WRITE_EMAIL": "Ou se você quiser, escreva o email que este usuário utiliza no Taiga",
-            "SEARCH_CONTACT": "Ou se você quiser, pesquise em seus contatos",
-            "WRITE_EMAIL_LABEL": "Escreva o email que este usuário utiliza no Taiga",
-            "ACCEEDE": "Aderir",
+            "IMPORT": "Import",
+            "WHO_IS": "Their tasks will be assigned to ...",
+            "WRITE_EMAIL": "Or if you want, write the email that this user uses in Taiga",
+            "SEARCH_CONTACT": "Or if you want, search in your contacts",
+            "WRITE_EMAIL_LABEL": "Write the email that this user uses in Taiga",
+            "ACCEEDE": "Acceede",
             "PROJECT_MEMBERS": "Membros do Projeto",
-            "PROCESS_DESCRIPTION": "Diga-nos quem da Taiga você deseja atribuir as tarefas de {{platform}}",
-            "MATCH": "É<strong>{{user_external}}</strong> a mesma pessoa que <strong>{{user_internal}}</strong>?",
-            "CHOOSE": "Selecione o usuário",
-            "LINKS": "Links com {{platform}}",
-            "LINKS_DESCRIPTION": "Deseja manter o link de cada item com o cartão {{platform}} original?",
-            "WARNING_MAIL_USER": "Observe que, se o usuário não tiver uma conta na Taiga, não poderemos lhe atribuir as tarefas.",
+            "PROCESS_DESCRIPTION": "Tell us who from Taiga you want to assign the tasks of {{platform}}",
+            "MATCH": "Is <strong>{{user_external}}</strong> the same person as <strong>{{user_internal}}</strong>?",
+            "CHOOSE": "Select user",
+            "LINKS": "Links with {{platform}}",
+            "LINKS_DESCRIPTION": "Do you want to keep the link of each item with the original {{platform}} card?",
+            "WARNING_MAIL_USER": "Note that if the user does not have a Taiga account we will not be able to assign the tasks to him.",
             "ASSIGN": "Atribuir",
             "PROJECT_SELECTOR": {
                 "NO_RESULTS": "Parece que nada foi encontrado com os critérios de sua pesquisa.",
@@ -930,9 +930,9 @@
                 "ACTION_BACK": "Back"
             },
             "PROJECT_RESTRICTIONS": {
-                "PROJECT_MEMBERS_DESC_PRIVATE": "O projeto que você está tentando importar tem {{members}} membros incluindo você, infelizmente, seu plano atual permite um máximo de {{max_memberships}} membros por projeto privado. Se você gostaria de aumentar esse limite, entre em contato com o administrador.",
-                "PROJECT_MEMBERS_DESC_PUBLIC": "O projeto que você está tentando importar tem {{members}} membros incluindo você, infelizmente, seu plano atual permite um máximo de {{max_memberships}} membros por projeto público. Se você gostaria de aumentar esse limite, entre em contato com o administrador.",
-                "ACCOUNT_ALLOW_MEMBERS": "Sua conta só permite {{members}} membros",
+                "PROJECT_MEMBERS_DESC_PRIVATE": "The project you are trying to import has {{members}} members including you, unfortunately, your current plan allows for a maximum of {{max_memberships}} members per private project. If you would like to increase that limit please contact the administrator.",
+                "PROJECT_MEMBERS_DESC_PUBLIC": "The project you are trying to import has {{members}} members including you, unfortunately, your current plan allows for a maximum of {{max_memberships}} members per public project. If you would like to increase that limit please contact the administrator.",
+                "ACCOUNT_ALLOW_MEMBERS": "Your account only allows {{members}} members",
                 "PRIVATE_PROJECTS_SPACE": {
                     "TITLE": "Infelizmente, seu plano atual não permite projetos privados adicionais.",
                     "DESC": "O projeto que você está tentando importar é privado. Infelizmente, seu plano plano atual não permite projetos privados adicionais."
@@ -961,53 +961,53 @@
                 "DESCRIPTION": "Este processo pode levar algum tempo, mantenha a janela aberta por favor."
             },
             "WARNING": {
-                "TITLE": "Algumas tarefas não serão atribuídas",
-                "DESCRIPTION": "Ainda há pessoas não identificadas. Os cartões atribuídos a essas pessoas permanecerão não atribuídos. Verifique todos os contatos para não perder essa informação.",
-                "CHECK": "Verificar contatos"
+                "TITLE": "Some taks will be unassigned",
+                "DESCRIPTION": "There are still unidentified people. The cards assigned to these people will remain unassigned. Check all the contacts to not lose that information.",
+                "CHECK": "Check contacts"
             },
             "TAIGA": {
-                "SELECTOR": "Importe seu projeto Taiga"
+                "SELECTOR": "Import your Taiga project"
             },
             "TRELLO": {
-                "SELECTOR": "Importe seu quadro Trello para o Taiga",
-                "CHOOSE_PROJECT": "Escolha o quadro que você deseja importar",
-                "NO_PROJECTS": "Parece que você não possui quadros no Trello"
+                "SELECTOR": "Import your Trello boards into Taiga",
+                "CHOOSE_PROJECT": "Choose board that you want to import",
+                "NO_PROJECTS": "It seems you have no boards in Trello"
             },
             "GITHUB": {
-                "SELECTOR": "Importe seus problemas de projeto Github",
-                "CHOOSE_PROJECT": "Ache o projeto que deseja importar",
-                "NO_PROJECTS": "Parece que você não tem nenhum projeto no GitHub",
-                "HOW_DO_YOU_WANT_TO_IMPORT": "Como você quer importar seus problemas para o Taiga?",
-                "KANBAN_PROJECT": "Como histórias de usuários em um projeto kanban",
-                "KANBAN_PROJECT_DESCRIPTION": "Depois disso, você pode ativar o scrum com backlog.",
-                "SCRUM_PROJECT": "Como histórias de usuário em um projeto de Scrum",
-                "SCRUM_PROJECT_DESCRIPTION": "Depois disso você pode habilitar o modo kanban.",
-                "ISSUES_PROJECT": "Como problemas",
-                "ISSUES_PROJECT_DESCRIPTION": "Você não sera capaz de usar seus problemas no modo kanban ou scrum. Você poderá habilitar o kanban ou scrum para novas histórias de usuário"
+                "SELECTOR": "Import your GitHub project issues",
+                "CHOOSE_PROJECT": "Find the project you want to import",
+                "NO_PROJECTS": "It seems you have no porjects in GitHub",
+                "HOW_DO_YOU_WANT_TO_IMPORT": "How do you want to import your issues into Taiga?",
+                "KANBAN_PROJECT": "As user stories in a kanban project",
+                "KANBAN_PROJECT_DESCRIPTION": "After that you can enable scrum with backlog.",
+                "SCRUM_PROJECT": "As user stories in a scrum project",
+                "SCRUM_PROJECT_DESCRIPTION": "After that you can enable kanban mode.",
+                "ISSUES_PROJECT": "As issues",
+                "ISSUES_PROJECT_DESCRIPTION": "You will not be able to use your issues in kanban or scrum mode. You will be able to enable kanban or scrum for new user stories"
             },
             "ASANA": {
-                "SELECTOR": "Importe seu projeto Asana e escolha como administra-lo",
-                "CHOOSE_PROJECT": "Escolha o projeto que deseja importar",
-                "NO_PROJECTS": "Parece que você não tem nenhum projeto no Asana",
+                "SELECTOR": "Import your Asana project and choose how to manage it",
+                "CHOOSE_PROJECT": "Choose project that you want to import",
+                "NO_PROJECTS": "It seems you have no porjects in Asana",
                 "KANBAN_PROJECT": "Kanban",
                 "SCRUM_PROJECT": "Scrum",
-                "CREATE_AS_SCRUM_DESCRIPTION": "As tarefas e sub tarefas de seu projeto serão criados como história de usuário Taiga e tarefas.",
-                "CREATE_AS_KANBAN_DESCRIPTION": "As tarefas e sub tarefas de seu projeto serão criados como história de usuário Taiga e tarefas."
+                "CREATE_AS_SCRUM_DESCRIPTION": "The tasks and sub-tasks of your project will be created as Taiga user stories and tasks.",
+                "CREATE_AS_KANBAN_DESCRIPTION": "The tasks and sub-tasks of your project will be created as Taiga user stories and tasks."
             },
             "JIRA": {
-                "SELECTOR": "Importe seu projeto Jira e escolha como gerenciá-lo",
-                "HOW_TO_CONFIGURE": "(Ajuda de configuração)",
-                "CHOOSE_PROJECT": "Escolha o projeto ou quadro que deseja importar",
-                "NO_PROJECTS": "Parece que você não tem projetos ou quadros no Jira",
-                "URL": "Sua url Jira",
+                "SELECTOR": "Import your Jira project and choose how to manage it",
+                "HOW_TO_CONFIGURE": "(configuration help)",
+                "CHOOSE_PROJECT": "Choose project or board that you want to import",
+                "NO_PROJECTS": "It seems you have no porjects or boards in Jira",
+                "URL": "Your Jira URL",
                 "KANBAN_PROJECT": "Kanban",
                 "SCRUM_PROJECT": "Scrum",
                 "ISSUES_PROJECT": "Tipos de problemas",
-                "CREATE_AS_SCRUM_DESCRIPTION": "Os problemas e sub problemas do seu projeto serão criados como histórias de usuário Taiga e tarefas.",
-                "CREATE_AS_KANBAN_DESCRIPTION": "Os problemas e sub problemas do seu projeto serão criados como histórias de usuário Taiga e tarefas.",
-                "CREATE_AS_ISSUES_DESCRIPTION": "O que você quer fazer com os sub problemas do projeto Jira? (Taiga não permite sub problemas)",
-                "CREATE_NEW_ISSUES": "Converta sub problemas para novos problemas Taiga",
-                "NOT_CREATE_NEW_ISSUES": "Não importe sub problemas"
+                "CREATE_AS_SCRUM_DESCRIPTION": "The issues and sub-issues of your project will be created as Taiga user stories and tasks.",
+                "CREATE_AS_KANBAN_DESCRIPTION": "The issues and sub-issues of your project will be created as Taiga user stories and tasks.",
+                "CREATE_AS_ISSUES_DESCRIPTION": "What do you want to do with sub-issues from the Jira project? (Taiga doesn't allow sub-issues)",
+                "CREATE_NEW_ISSUES": "Convert sub-issues to new Taiga issues",
+                "NOT_CREATE_NEW_ISSUES": "Do not import sub-issues"
             }
         }
     },
@@ -1121,7 +1121,6 @@
         "CHOOSE_PROJECT_FROM": "Qual é o projeto?",
         "CHOOSE_USERSTORY": "Qual é a história de usuário?",
         "NO_USERSTORIES": "Esse projeto ainda não possui Histórias de Usuário. Por favor, selecione outro projeto.",
-        "NO_USERSTORIES_FOUND": "Parece que nada foi encontrado com os critérios de sua pesquisa.",
         "FILTER_USERSTORIES": "Filtrar histórias de usuário",
         "LIGHTBOX_TITLE_BLOKING_EPIC": "Épico bloqueador",
         "ACTION_DELETE": "Excluir épico"
@@ -1140,7 +1139,7 @@
         "TITLE_DELETE_ACTION": "Apagar história de usuário",
         "LIGHTBOX_TITLE_BLOKING_US": "História de usuário bloqueadora",
         "NOT_ESTIMATED": "Não estimado",
-        "OWNER_US": "Esta história de usuário pertence a",
+        "OWNER_US": "This User Story belongs to",
         "TRIBE": {
             "PUBLISH": "Publicar como Gig no Taiga Tribe",
             "PUBLISH_INFO": "Mais informações",
@@ -1150,7 +1149,7 @@
             "CLOSE": "Fechar",
             "SYNCHRONIZE_LINK": "sincronizar com a Tribo Taiga",
             "PUBLISH_MORE_INFO_TITLE": "Você precisa de alguém para esta tarefa?",
-            "PUBLISH_MORE_INFO_TEXT": "<p>Se você precisar de ajuda com um determinado trabalho, você pode facilmente criar trabalhos em<a href='http://taigatribe.com' title='Taiga Tribe'> Taiga Tribe </a> E receber ajuda de todo o mundo. Você será capaz de controlar e gerenciar o trabalho desfrutando de uma grande comunidade ansiosa para contribuir.</p><p><a href='http://taigatribe.com' title='Taiga Tribe'> TaigaTribe </a>  Nasceu como um irmão gêmeo taiga. Ambas as plataformas podem viver separadamente, mas acreditamos que há muito poder em usá-las combinadas, então estamos assegurando que a integração funcione como um charme.</p>"
+            "PUBLISH_MORE_INFO_TEXT": "<p>If you need help with a particular piece of work you can easily create gigs on<a href='http://taigatribe.com' title='Taiga Tribe'> Taiga Tribe </a> and receive help from all over the world. You will be able to control and manage the gig enjoying a great community eager to contribute.</p><p><a href='http://taigatribe.com' title='Taiga Tribe'> TaigaTribe </a>  was born as a Taiga sibling. Both platforms can live separately but we believe that there is much power in using them combined so we are making sure the integration works like a charm.</p>"
         },
         "FIELDS": {
             "TEAM_REQUIREMENT": "Requisitos da Equipe",
@@ -1240,10 +1239,10 @@
             "HIDE": "Esconder tags"
         },
         "FORECASTING": {
-            "TITLE": "Projeção de velocidade",
-            "BACKLOG": "Exibir backlog",
-            "NEW_SPRINT": "Candidatos a Histórias do Usuário do para o seu próximo sprint com base na sua velocidade. Clique para criar um novo sprint.",
-            "CURRENT_SPRINT": "Candidatos a Histórias do Usuário do para o seu próximo sprint com base na sua velocidade. Clique para adicionar ao sprint atual."
+            "TITLE": "Velocity forecasting",
+            "BACKLOG": "Display backlog",
+            "NEW_SPRINT": "Candidate User Stories for your next sprint based on your velocity. Click to create a new sprint.",
+            "CURRENT_SPRINT": "Candidate User Stories for your sprint based on your velocity. Click to add to current sprint."
         },
         "TABLE": {
             "COLUMN_US": "Histórias de Usuários",
@@ -1626,7 +1625,7 @@
         "KANBAN": {
             "STEP1": {
                 "TITLE": "Personalize seu fluxo de trabalho",
-                "TEXT": "Configure as colunas que você precisa para mapear seu workflow através do Admin"
+                "TEXT": "Set up the columns you need to map your workflow statuses through the admin."
             },
             "STEP2": {
                 "TITLE": "Histórias de Usuários & Atividades",

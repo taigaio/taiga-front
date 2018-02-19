@@ -1121,7 +1121,6 @@
         "CHOOSE_PROJECT_FROM": "Mikä on projekti?",
         "CHOOSE_USERSTORY": "Mikä on käyttäjätarina?",
         "NO_USERSTORIES": "This project has no User Stories yet. Please select another project.",
-        "NO_USERSTORIES_FOUND": "Ei hakutuloksia",
         "FILTER_USERSTORIES": "Suodata käyttäjätarinoita",
         "LIGHTBOX_TITLE_BLOKING_EPIC": "Blocking epic",
         "ACTION_DELETE": "Poista eepos"

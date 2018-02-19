@@ -217,7 +217,7 @@
             "DB_CLICK": "double cliquer pour modifier",
             "SELECT_LANGUAGE_PLACEHOLDER": "Sélectionnez la langue",
             "SELECT_LANGUAGE_REMOVE_FORMATING": "Retirer la mise en forme",
-            "OUTDATED": "Quelqu'un d'autre a fait des modifications en même temps que vous. Vérifiez la nouvelle version dans l'onglet Activité avant de sauvegarder vos changements.",
+            "OUTDATED": "Another person has made changes while you were editing. Check the new version on the activity tab before you save your changes.",
             "MARKDOWN_HELP": "Aide sur la syntaxe Markdown"
         },
         "PERMISIONS_CATEGORIES": {
@@ -273,7 +273,7 @@
         }
     },
     "LOGIN": {
-        "PAGE_TITLE": "Connexion - Taiga",
+        "PAGE_TITLE": "Se connecter - Taiga",
         "PAGE_DESCRIPTION": "Connectez-vous à Taiga, une plateforme de gestion de projets pour les startups, les développeurs et les designers agiles qui veulent un outil simple, beau et qui rend le travail vraiment agréable."
     },
     "AUTH": {
@@ -611,7 +611,7 @@
             "WARNING_DELETE_ROLE": "Attention ! Toutes les estimations du rôle vont être supprimées",
             "ERROR_DELETE_ALL": "Vous ne pouvez pas supprimer toutes les valeurs",
             "EXTERNAL_USER": "Utilisateur externe",
-            "NOTE_EXTERNAL_USERS": "<strong>Note :</strong> par Utilisateur Extérieur nous voulons dire n'importe qui n'appartenant pas à la plateforme Taiga, moteurs de recherche inclus. Attention à utiliser ce rôle avec prudence."
+            "NOTE_EXTERNAL_USERS": "<strong>Note:</strong> by External User we mean any anonymous user not belonging to the Taiga platform, including search engines. Please use this role with care."
         },
         "THIRD_PARTIES": {
             "SECRET_KEY": "Clé secrète",
@@ -1121,7 +1121,6 @@
         "CHOOSE_PROJECT_FROM": "Quel est le projet ?",
         "CHOOSE_USERSTORY": "Quel est le récit utilisateur ?",
         "NO_USERSTORIES": "Ce projet n'a pas encore de récits utilisateur. Merci de choisir un autre projet.",
-        "NO_USERSTORIES_FOUND": "Il semble qu'aucun résultat ne correspond à vos critères de recherche",
         "FILTER_USERSTORIES": "Filtrer les récits utilisateur",
         "LIGHTBOX_TITLE_BLOKING_EPIC": "Bloquer l'épopée",
         "ACTION_DELETE": "Supprimer l'épopée"
@@ -1140,12 +1139,12 @@
         "TITLE_DELETE_ACTION": "Supprimer le récit utilisateur",
         "LIGHTBOX_TITLE_BLOKING_US": "Bloque le RU",
         "NOT_ESTIMATED": "Non estimé",
-        "OWNER_US": "Ce récit Utilisateur fait partie de ",
+        "OWNER_US": "This User Story belongs to",
         "TRIBE": {
             "PUBLISH": "Publier en tant que Gig sur Taiga Tribe ",
             "PUBLISH_INFO": "Plus d'informations",
             "PUBLISH_TITLE": "Plus d'informations sur la publication dans Taiga Tribe",
-            "PUBLISHED_AS_GIG": "Récit publié comme Gig dans Taiga Tribe",
+            "PUBLISHED_AS_GIG": "Récit publiée comme Gig dans Taiga Tribe",
             "EDIT_LINK": "Modifier le lien",
             "CLOSE": "Fermer",
             "SYNCHRONIZE_LINK": "se synchroniser avec Taiga Tribe",
@@ -1333,7 +1332,7 @@
         "FIELDS": {
             "IS_IOCAINE": "est sous iocaine"
         },
-        "TITLE_ACTION_IOCAINE": "Vous vous sentez un peu dépassé(e) par une tâche ? Assurez-vous que les autres le sachent en cliquant sur locaine en éditant une tâche. Il est possible de s'immuniser contre ce poison (fictif) en en consommant de faibles doses pendant un moment tout comme il est possible de devenir meilleur à ce que vous faîtes en relevant quelques défis à l'occasion !"
+        "TITLE_ACTION_IOCAINE": "Vous vous sentez un peu dépassé(e) par une tâche ? Assurez-vous que les autres le savent en cliquant sur locaine en éditant une tâche. Il est possible de s'immuniser contre ce poison (fictif) en en consommant de faibles doses pendant un moment tout comme il est possible de devenir meilleur à ce que vous faîtes en relevant quelques défis à l'occasion !"
     },
     "NOTIFICATION": {
         "OK": "Tout est ok",

@@ -412,7 +412,7 @@
         "DEPRECATED_FILE": "Устаревший?",
         "ADD": "Добавить вложение. {{maxFileSizeMsg}}",
         "DROP": "Перетяните вложение сюда",
-        "SHOW_DEPRECATED": "+ Показать устаревшие приложения",
+        "SHOW_DEPRECATED": "Показать устаревшие приложения",
         "HIDE_DEPRECATED": "- спрятать устаревшие приложения",
         "COUNT_DEPRECATED": "({{ counter }} устарело)",
         "MAX_UPLOAD_SIZE": "Максимальный объем для загрузки {{maxFileSize}}",
@@ -1121,7 +1121,6 @@
         "CHOOSE_PROJECT_FROM": "Какой проект Вам нужен?",
         "CHOOSE_USERSTORY": "Опишите пользовательскую историю",
         "NO_USERSTORIES": "В проекте нет ни одной пользовательской истории. Пожалуйста выберите другой проект.",
-        "NO_USERSTORIES_FOUND": "It looks like nothing was found with your search criteria",
         "FILTER_USERSTORIES": "Фильтровать ПИ",
         "LIGHTBOX_TITLE_BLOKING_EPIC": "Блокирующая задача",
         "ACTION_DELETE": "Удалить эпос"

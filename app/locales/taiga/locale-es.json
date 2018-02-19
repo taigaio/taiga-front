@@ -217,7 +217,7 @@
             "DB_CLICK": "doble click para editar",
             "SELECT_LANGUAGE_PLACEHOLDER": "Selecciona un lenguaje",
             "SELECT_LANGUAGE_REMOVE_FORMATING": "Eliminar formato",
-            "OUTDATED": "Otra persona ha realizado cambios mientras tu estabas editando. Revisa la nueva versión en la pestaña de actividad antes de guardar tus cambios.",
+            "OUTDATED": "Another person has made changes while you were editing. Check the new version on the activity tab before you save your changes.",
             "MARKDOWN_HELP": "Ayuda de sintaxis Markdown"
         },
         "PERMISIONS_CATEGORIES": {
@@ -412,7 +412,7 @@
         "DEPRECATED_FILE": "¿Desactualizado?",
         "ADD": "Agrega nuevos adjunto. {{maxFileSizeMsg}}",
         "DROP": "¡Arrastre los archivos adjuntos aquí!",
-        "SHOW_DEPRECATED": "+ mostrar adjuntos obsoletos",
+        "SHOW_DEPRECATED": "+ muestra adjuntos desactualizados",
         "HIDE_DEPRECATED": "- ocultar adjuntos obsoletos",
         "COUNT_DEPRECATED": "({{ counter }} obsoletos)\n",
         "MAX_UPLOAD_SIZE": "El tamaño máximo de subida es de {{maxFileSize}}",
@@ -611,7 +611,7 @@
             "WARNING_DELETE_ROLE": "¡Ten cuidado! Todas las estimaciones de roles serán eliminados",
             "ERROR_DELETE_ALL": "No puedes eliminar todos los valores",
             "EXTERNAL_USER": "Usuario externo",
-            "NOTE_EXTERNAL_USERS": "<strong>Nota:</strong> por Usuario Externo entendemos cualquier usuario anónimo no perteneciente a la plataforma Taiga, incluyendo motores de búsqueda. Por favor, usa este rol con cuidado."
+            "NOTE_EXTERNAL_USERS": "<strong>Note:</strong> by External User we mean any anonymous user not belonging to the Taiga platform, including search engines. Please use this role with care."
         },
         "THIRD_PARTIES": {
             "SECRET_KEY": "Secret key",
@@ -1121,7 +1121,6 @@
         "CHOOSE_PROJECT_FROM": "¿Qué es el proyecto?",
         "CHOOSE_USERSTORY": "Cual es la historia de usuario?",
         "NO_USERSTORIES": "Este proyecto no tiene historias de usuario todavia. Por favor, seleccione otro proyecto.",
-        "NO_USERSTORIES_FOUND": "Parece que no se encontro nada con este criterio de busqueda",
         "FILTER_USERSTORIES": "Filtrar historias de usuario",
         "LIGHTBOX_TITLE_BLOKING_EPIC": "Bloqueo de épica",
         "ACTION_DELETE": "Borrar epic"
@@ -1140,7 +1139,7 @@
         "TITLE_DELETE_ACTION": "Borrar Historia de Usuario",
         "LIGHTBOX_TITLE_BLOKING_US": "Historia bloqueada",
         "NOT_ESTIMATED": "No estimada",
-        "OWNER_US": "Esta Historia de Usuario pertenece a",
+        "OWNER_US": "This User Story belongs to",
         "TRIBE": {
             "PUBLISH": "Publicar como Gig en la Tribu Taiga",
             "PUBLISH_INFO": "Mas información",
