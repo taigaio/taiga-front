@@ -216,7 +216,7 @@
             "CODE_SNIPPET": "代码块",
             "DB_CLICK": "双击进行编辑",
             "SELECT_LANGUAGE_PLACEHOLDER": "选择语言",
-            "SELECT_LANGUAGE_REMOVE_FORMATING": "Remove formatting",
+            "SELECT_LANGUAGE_REMOVE_FORMATING": "删除格式",
             "OUTDATED": "Another person has made changes while you were editing. Check the new version on the activity tab before you save your changes.",
             "MARKDOWN_HELP": "Markdown 语法帮助"
         },
@@ -290,7 +290,7 @@
         "ACTION_ENTER": "回车",
         "ACTION_SIGN_IN": "登录",
         "PLACEHOLDER_AUTH_PASSWORD": "密码(大小写敏感)",
-        "ALT_LOGIN": "Or login with"
+        "ALT_LOGIN": "或登录为"
     },
     "LOGIN_FORM": {
         "ERROR_AUTH_INCORRECT": "根据我们的系统记录，你的账户名称/电子邮件或密码并不正确",
@@ -413,7 +413,7 @@
         "ADD": "加入新附件 {{maxFileSizeMsg}}",
         "DROP": "将附件拖到这里来！",
         "SHOW_DEPRECATED": "+ 显示废弃的附件",
-        "HIDE_DEPRECATED": "+ 隐藏废弃的附件",
+        "HIDE_DEPRECATED": "- 隐藏废弃的附件",
         "COUNT_DEPRECATED": "({{ counter }} 遭废弃)",
         "MAX_UPLOAD_SIZE": "上传文档最大体积限制 {{maxFileSize}}",
         "DATE": "DD MMM YYYY [at] hh:mm",
@@ -932,7 +932,7 @@
             "PROJECT_RESTRICTIONS": {
                 "PROJECT_MEMBERS_DESC_PRIVATE": "The project you are trying to import has {{members}} members including you, unfortunately, your current plan allows for a maximum of {{max_memberships}} members per private project. If you would like to increase that limit please contact the administrator.",
                 "PROJECT_MEMBERS_DESC_PUBLIC": "The project you are trying to import has {{members}} members including you, unfortunately, your current plan allows for a maximum of {{max_memberships}} members per public project. If you would like to increase that limit please contact the administrator.",
-                "ACCOUNT_ALLOW_MEMBERS": "Your account only allows {{members}} members",
+                "ACCOUNT_ALLOW_MEMBERS": "您的账户只允许 {{members}} 成员",
                 "PRIVATE_PROJECTS_SPACE": {
                     "TITLE": "对不起，你当前的计划不允许额外的私有项目",
                     "DESC": "你尝试导入的项目是私有的。不幸的是，你当前的计划不允许额外的私有项目。"
@@ -961,9 +961,9 @@
                 "DESCRIPTION": "这个过桯要花点时间，请保持视窗开启"
             },
             "WARNING": {
-                "TITLE": "Some taks will be unassigned",
+                "TITLE": "一些已分配的任务将被取消",
                 "DESCRIPTION": "There are still unidentified people. The cards assigned to these people will remain unassigned. Check all the contacts to not lose that information.",
-                "CHECK": "Check contacts"
+                "CHECK": "检查联系人"
             },
             "TAIGA": {
                 "SELECTOR": "导入您的Taigo项目"
@@ -976,7 +976,7 @@
             "GITHUB": {
                 "SELECTOR": "导入你在GitHub上的问题",
                 "CHOOSE_PROJECT": "查找你想要导入的项目",
-                "NO_PROJECTS": "It seems you have no porjects in GitHub",
+                "NO_PROJECTS": "似乎你在GitHub上没有项目",
                 "HOW_DO_YOU_WANT_TO_IMPORT": "How do you want to import your issues into Taiga?",
                 "KANBAN_PROJECT": "As user stories in a kanban project",
                 "KANBAN_PROJECT_DESCRIPTION": "After that you can enable scrum with backlog.",
@@ -986,9 +986,9 @@
                 "ISSUES_PROJECT_DESCRIPTION": "You will not be able to use your issues in kanban or scrum mode. You will be able to enable kanban or scrum for new user stories"
             },
             "ASANA": {
-                "SELECTOR": "Import your Asana project and choose how to manage it",
+                "SELECTOR": "导入你的Asana项目并选择如何管理该项目",
                 "CHOOSE_PROJECT": "选择你想导入的项目",
-                "NO_PROJECTS": "It seems you have no porjects in Asana",
+                "NO_PROJECTS": "似乎你在Asana上没有项目",
                 "KANBAN_PROJECT": "看板",
                 "SCRUM_PROJECT": "冲刺",
                 "CREATE_AS_SCRUM_DESCRIPTION": "The tasks and sub-tasks of your project will be created as Taiga user stories and tasks.",
@@ -1114,13 +1114,14 @@
         "ERROR_UNLINK_RELATED_USERSTORY": "无法断开链接：{{errorMessage}}",
         "CREATE_RELATED_USERSTORIES": "创建关系",
         "NEW_USERSTORY": "新建用户故事",
-        "EXISTING_USERSTORY": "退出用户故事",
+        "EXISTING_USERSTORY": "已有用户故事",
         "CHOOSE_PROJECT_FOR_CREATION": "项目是什么",
         "SUBJECT": "主题",
         "SUBJECT_BULK_MODE": "题目(批量插入)",
         "CHOOSE_PROJECT_FROM": "项目是什么",
         "CHOOSE_USERSTORY": "用户故事是什么",
         "NO_USERSTORIES": "该项目无用户故事。请选择其他项目。",
+        "NO_USERSTORIES_FOUND": "看起来没有符合你的搜索条件的结果",
         "FILTER_USERSTORIES": "过滤用户故事",
         "LIGHTBOX_TITLE_BLOKING_EPIC": "屏蔽史诗",
         "ACTION_DELETE": "删除史诗"
@@ -1139,7 +1140,7 @@
         "TITLE_DELETE_ACTION": "删除用户故事",
         "LIGHTBOX_TITLE_BLOKING_US": "封锁中的用户故事",
         "NOT_ESTIMATED": "无预估",
-        "OWNER_US": "This User Story belongs to",
+        "OWNER_US": "此User Story属于",
         "TRIBE": {
             "PUBLISH": "以Gig的形式在Taiga Tribe中发布",
             "PUBLISH_INFO": "更多信息",
