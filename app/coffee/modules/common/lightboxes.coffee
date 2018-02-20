@@ -646,7 +646,6 @@ AssignedToLightboxDirective = (lightboxService, lightboxKeyboardNavigationServic
             selectedItem = item
             assignedToId = item.assigned_to
             selectedUser = $scope.usersById[assignedToId]
-
             render(selectedUser)
             lightboxService.open($el).then ->
                 $el.find('input').focus()
@@ -706,10 +705,10 @@ AssignedUsersLightboxDirective = ($repo, lightboxService, lightboxKeyboardNaviga
         usersTemplate = $template.get("common/lightbox/lightbox-assigned-to-users.html", true)
 
         # Get prefiltered users by text
-        # and without now watched users.
+        # and without now assigned users.
         getFilteredUsers = (text="") ->
             _filterUsers = (text, user) ->
-                if selectedItem && _.find(selectedItem.assignedUsers, (x) -> x == user.id)
+                if selectedItem && _.find(selectedItem.assigned_users, (x) -> x == user.id)
                     return false
 
                 username = user.full_name_display.toUpperCase()
@@ -737,16 +736,14 @@ AssignedUsersLightboxDirective = ($repo, lightboxService, lightboxKeyboardNaviga
 
             html = usersTemplate(ctx)
             html = $compile(html)($scope)
-            $el.find(".ticket-watchers").html(html)
+            $el.find(".assigned-to-list").html(html)
 
         closeLightbox = () ->
             lightboxKeyboardNavigationService.stop()
             lightboxService.close($el)
 
-        $scope.$on "assignedUser:add", (ctx, item) ->
-            console.log(item)
+        $scope.$on "assigned-user:add", (ctx, item) ->
             selectedItem = item
-
             users = getFilteredUsers()
             render(users)
 
@@ -770,7 +767,7 @@ AssignedUsersLightboxDirective = ($repo, lightboxService, lightboxKeyboardNaviga
 
             $scope.$apply ->
                 $scope.usersSearch = null
-                $scope.$broadcast("assignedUser:added", target.data("user-id"))
+                $scope.$broadcast("assigned-user:added", target.data("user-id"), selectedItem)
 
         $el.on "click", ".close", (event) ->
             event.preventDefault()
@@ -784,7 +781,7 @@ AssignedUsersLightboxDirective = ($repo, lightboxService, lightboxKeyboardNaviga
             $el.off()
 
     return {
-        templateUrl: "common/lightbox/lightbox-users.html"
+        templateUrl: "common/lightbox/lightbox-assigned-users.html"
         link:link
     }
 

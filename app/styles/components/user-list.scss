@@ -92,3 +92,35 @@
         }
     }
 }
+
+.ticket-assigned-users {
+    @include user-list;
+    margin-top: 1rem;
+    .user-list-single {
+        flex-grow: 1;
+        &:hover {
+            .remove-user {
+                opacity: 1;
+                transition: opacity .2s ease-in;
+            }
+        }
+    }
+    .user-list-name {
+        @include font-type(text);
+        flex: 1;
+        position: relative;
+    }
+    .remove-user {
+        cursor: pointer;
+        fill: currentColor;
+        opacity: 0;
+        position: absolute;
+        right: .5rem;
+        top: 0;
+        transition: all .2s ease-in;
+        &:hover {
+            fill: $red;
+            transition: color .3s ease-in;
+        }
+    }
+}

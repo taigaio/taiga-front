@@ -292,7 +292,6 @@ class QueueModelTransformation extends taiga.Service
 
     save: (transformation) ->
         defered = @q.defer()
-
         @qqueue.add () =>
             obj = @.getObj()
             comment = obj.comment

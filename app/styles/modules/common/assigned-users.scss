@@ -1,0 +1,139 @@
+.ticket-assigned-users {
+    align-items: center;
+    border-bottom: 1px solid $gray-light;
+    border-top: 1px solid $gray-light;
+    margin-bottom: 1rem;
+    padding: .5rem 0;
+    position: relative;
+
+    .loading-spinner {
+        @include loading-spinner;
+        margin: 1rem auto;
+        max-height: 2rem;
+        max-width: 2rem;
+    }
+
+    .assigned-title {
+        @include font-size(small);
+        @include font-type(light);
+        color: $gray;
+        display: block;
+        margin: .2rem 0 .25rem;
+    }
+
+    .tg-assigned-users {
+        align-items: center;
+        position: relative;
+    }
+
+    .tg-add-assigned {
+        margin-top: .25rem;
+
+        .add-assigned {
+            fill: $gray;
+            opacity: 1;
+            right: .5rem;
+            top: 2rem;
+            &:hover {
+                cursor: pointer;
+                fill: $red;
+                transition: fill .2s;
+            }
+        }
+
+        span {
+            @include font-size(small);
+            @include font-type(light);
+            color: $gray;
+            margin: .2rem .5rem;
+        }
+    }
+
+    .assigned-users-options {
+        align-content: center;
+        display: flex;
+        a {
+            margin-right: .2rem;
+        }
+    }
+
+    .user-assigned,
+    .assign-to-me {
+        color: $primary;
+        &.editable {
+            color: $primary;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+        .icon {
+            vertical-align: middle;
+        }
+    }
+
+    .not-assigned-users {
+        align-items: center;
+        display: flex;
+
+        .assigned-title {
+            @include font-size(small);
+            @include font-type(light);
+            color: $gray;
+            display: block;
+            margin: .2rem 0 .25rem;
+        }
+        .assigned-to {
+            flex-grow: 1;
+            margin-left: .5rem;
+        }
+
+        .assigned-to-options {
+            align-content: center;
+            display: flex;
+            a {
+                margin-right: .2rem;
+            }
+        }
+        .user-assigned,
+        .assign-to-me {
+            color: $primary;
+            cursor: default;
+            &:hover {
+                cursor: pointer;
+            }
+            .icon {
+                fill: currentColor;
+                height: .75rem;
+                width: .75rem;
+            }
+        }
+    }
+
+    .user-avatar {
+        flex-basis: 3rem;
+        flex-shrink: 0;
+        position: relative;
+        img {
+            width: 100%;
+        }
+        &.is-iocaine {
+            img {
+                filter: hue-rotate(150deg) saturate(200%);
+            }
+        }
+        .iocaine-symbol {
+            left: -.5rem;
+            position: absolute;
+            top: -.75rem;
+            z-index: 9;
+            svg {
+                background: $grayer;
+                border-radius: .25rem;
+                fill: $white;
+                min-height: 1.75rem;
+                min-width: 1.75rem;
+                padding: .25rem;
+            }
+        }
+    }
+}

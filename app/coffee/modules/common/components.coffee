@@ -230,7 +230,6 @@ WatchersDirective = ($rootscope, $confirm, $repo, $modelTransform, $template, $c
                 watchers = _.map(watchers, (watcherId) -> $scope.usersById[watcherId])
                 renderWatchers(watchers)
                 $rootscope.$broadcast("object:updated")
-
             transform.then null, ->
                 $confirm.notify("error")
 
@@ -304,7 +303,7 @@ module.directive("tgWatchers", ["$rootScope", "$tgConfirm", "$tgRepo", "$tgQueue
 ## Assigned Users directive
 #############################################################################
 
-AssignedUsersDirective = ($rootscope, $confirm, $repo, $modelTransform, $template, $compile, $translate) ->
+AssignedUsersDirective = ($rootscope, $confirm, $repo, $modelTransform, $template, $compile, $translate, $currentUserService) ->
     # You have to include a div with the tg-lb-assignedusers directive in the page
     # where use this directive
 
@@ -314,27 +313,42 @@ AssignedUsersDirective = ($rootscope, $confirm, $repo, $modelTransform, $templat
         isAssigned = ->
             return $scope.assignedUsers.length > 0
 
-        save = (assignedUsers) ->
+        save = (assignedUsers, assignedToUser) ->
             transform = $modelTransform.save (item) ->
-                item.assignedUsers = assignedUsers
+                item.assigned_users = assignedUsers
+                if not item.assigned_to
+                    item.assigned_to = assignedToUser
                 return item
 
             transform.then ->
-                console.log(assignedUserId)
                 assignedUsers = _.map(assignedUsers, (assignedUserId) -> $scope.usersById[assignedUserId])
                 renderAssignedUsers(assignedUsers)
-                $rootscope.$broadcast("object:updated")
+                result = $rootscope.$broadcast("object:updated")
 
             transform.then null, ->
                 $confirm.notify("error")
 
         openAssignedUsers = ->
             item = _.clone($model.$modelValue, false)
-            $rootscope.$broadcast("assignedUser:add", item)
+            $rootscope.$broadcast("assigned-user:add", item)
+
+        assignToMe = ->
+            return if not isEditable()
+            currentUserId = $currentUserService.getUser().get('id')
+            assignedUsers = _.clone($model.$modelValue.assigned_users, false)
+            assignedUsers.push(currentUserId)
+            assignedUsers = _.uniq(assignedUsers)
+            save(assignedUsers, currentUserId)
 
         deleteAssignedUser = (assignedUserIds) ->
             transform = $modelTransform.save (item) ->
-                item.assignedUsers = assignedUserIds
+                item.assigned_users = assignedUserIds
+
+                # Update as
+                if item.assigned_to not in assignedUserIds and assignedUserIds.length > 0
+                    item.assigned_to = assignedUserIds[0]
+                if assignedUserIds.length == 0
+                    item.assigned_to = null
 
                 return item
 
@@ -353,32 +367,32 @@ AssignedUsersDirective = ($rootscope, $confirm, $repo, $modelTransform, $templat
             $scope.isEditable = isEditable()
             $scope.isAssigned = isAssigned()
             $scope.openAssignedUsers = openAssignedUsers
-            console.log('rendering...')
+            $scope.assignToMe = assignToMe
 
-        $el.on "click", ".js-delete-watcher", (event) ->
+        $el.on "click", ".remove-user", (event) ->
             event.preventDefault()
             return if not isEditable()
             target = angular.element(event.currentTarget)
-            watcherId = target.data("watcher-id")
+            assignedUserId = target.data("assigned-user-id")
 
-            title = $translate.instant("COMMON.WATCHERS.TITLE_LIGHTBOX_DELETE_WARTCHER")
-            message = $scope.usersById[watcherId].full_name_display
+            title = $translate.instant("COMMON.ASSIGNED_USERS.TITLE_LIGHTBOX_DELETE_ASSIGNED")
+            message = $scope.usersById[assignedUserId].full_name_display
 
             $confirm.askOnDelete(title, message).then (askResponse) =>
                 askResponse.finish()
 
-                watcherIds = _.clone($model.$modelValue.watchers, false)
-                watcherIds = _.pull(watcherIds, watcherId)
+                assignedUserIds = _.clone($model.$modelValue.assigned_users, false)
+                assignedUserIds = _.pull(assignedUserIds, assignedUserId)
 
-                deleteWatcher(watcherIds)
+                deleteAssignedUser(assignedUserIds)
 
-        $scope.$on "assignedUser:added", (ctx, assignedUserId) ->
-
+        $scope.$on "assigned-user:added", (ctx, assignedUserId) ->
             assignedUsers = _.clone($model.$modelValue.assigned_users, false)
             assignedUsers.push(assignedUserId)
             assignedUsers = _.uniq(assignedUsers)
- 
-            save(assignedUsers)
+
+            # Save assigned_users and assignedUserId for assign_to legacy attribute
+            save(assignedUsers, assignedUserId)
 
         $scope.$watch $attrs.ngModel, (item) ->
             return if not item?
@@ -398,7 +412,7 @@ AssignedUsersDirective = ($rootscope, $confirm, $repo, $modelTransform, $templat
     }
 
 module.directive("tgAssignedUsers", ["$rootScope", "$tgConfirm", "$tgRepo", "$tgQueueModelTransformation", "$tgTemplate", "$compile",
-                                "$translate", AssignedUsersDirective])
+                                "$translate", "tgCurrentUserService", AssignedUsersDirective])
 
 
 #############################################################################
@@ -488,7 +502,6 @@ AssignedToDirective = ($rootscope, $confirm, $repo, $loading, $modelTransform, $
 
         $scope.$on "assigned-to:added", (ctx, userId, item) ->
             return if item.id != $model.$modelValue.id
-
             save(userId)
 
         $scope.$watch $attrs.ngModel, (instance) ->

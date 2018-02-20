@@ -1,0 +1,8 @@
+tg-lightbox-close
+
+div.form
+    h2.title(translate="COMMON.ASSIGNED_USERS.ADD")
+    fieldset
+        input(type="text", data-maxlength="500", placeholder="{{'LIGHTBOX.ASSIGNED_TO.SEARCH' | translate}}", ng-model="usersSearch")
+    div.assigned-to-list
+        //- The content of this is rendered by directive

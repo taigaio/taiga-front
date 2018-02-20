@@ -170,6 +170,11 @@
             "PAST_DUE": "past due",
             "NO_LONGER_APPLICABLE": "no longer applicable"
         },
+        "ASSIGNED_USERS": {
+            "ADD": "Select assigned user",
+            "ADD_ASSIGNED": "Add assigned",
+            "TITLE_LIGHTBOX_DELETE_ASSIGNED": "Delete assigned..."
+        },
         "STATUS": {
             "CLOSED": "Closed",
             "OPEN": "Open"
