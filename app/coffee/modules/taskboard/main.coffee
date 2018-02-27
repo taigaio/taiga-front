@@ -134,6 +134,16 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
 
             @filterRemoteStorageService.storeFilters(@scope.projectId, userFilters, 'tasks-custom-filters').then(@.generateFilters)
 
+    isFilterDataTypeSelected: (filterDataType) ->
+        if (@.selectedFilters.length == 0)
+            return false
+
+        for filter in @.selectedFilters
+            if (filter['dataType'] == filterDataType)
+                return true
+
+        return false
+
     saveCustomFilter: (name) ->
         filters = {}
         urlfilters = @location.search()
@@ -310,9 +320,9 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
 
         @taskboardTasksService.replaceModel(taskModel)
 
-        promise = @repo.save(taskModel)
-        promise.then null, ->
-            console.log "FAIL" # TODO
+        @repo.save(taskModel).then =>
+            if @.isFilterDataTypeSelected('assigned_to') || @.isFilterDataTypeSelected('role')
+                @.loadTasks()
 
     initializeSubscription: ->
         routingKey = "changes.project.#{@scope.projectId}.tasks"
@@ -456,6 +466,9 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
             if headers && headers['taiga-info-order-updated']
                 order = JSON.parse(headers['taiga-info-order-updated'])
                 @taskboardTasksService.assignOrders(order)
+
+            if @.isFilterDataTypeSelected('status')
+                @.loadTasks()
 
             @.loadSprintStats()
 

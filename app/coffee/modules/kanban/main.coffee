@@ -200,7 +200,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         @kanbanUserstoriesService.replaceModel(usModel)
 
         @repo.save(usModel).then =>
-            if @.isFilterDataTypeSelected('assigned_to')
+            if @.isFilterDataTypeSelected('assigned_to') || @.isFilterDataTypeSelected('role')
                 @.filtersReloadContent()
 
     refreshTagsColors: ->
