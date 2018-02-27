@@ -208,6 +208,16 @@ class UsFiltersMixin
             @filterRemoteStorageService.storeFilters(@scope.projectId, userFilters, @.storeCustomFiltersName).then(@.generateFilters)
             @.generateFilters()
 
+    isFilterDataTypeSelected: (filterDataType) ->
+        if (@.selectedFilters.length == 0)
+            return false
+
+        for filter in @.selectedFilters
+            if (filter['dataType'] == filterDataType)
+                return true
+
+        return false
+
     generateFilters: (milestone) ->
         @.storeFilters(@params.pslug, @location.search(), @.storeFiltersName)
 
