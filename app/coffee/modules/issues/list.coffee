@@ -655,13 +655,15 @@ IssueAssignedToInlineEditionDirective = ($repo, $rootscope, $translate, avatarSe
                 $el.unbind("click")
                 $el.find("a").addClass("not-clickable")
 
-        $scope.$on "assigned-to:added", (ctx, userId, updatedIssue) =>
+        $scope.$on "assigned-to:added", (ctx, userId, updatedIssue) ->
             if updatedIssue.id == issue.id
                 updatedIssue.assigned_to = userId
-                $repo.save(updatedIssue)
-                updateIssue(updatedIssue)
+                $repo.save(issue).then ->
+                    updateIssue(updatedIssue)
+                    $ctrl.loadIssues()
+                    $ctrl.generateFilters()
 
-        $scope.$watch $attrs.tgIssueAssignedToInlineEdition, (val) =>
+        $scope.$watch $attrs.tgIssueAssignedToInlineEdition, (val) ->
             updateIssue(val)
 
         $scope.$on "$destroy", ->
