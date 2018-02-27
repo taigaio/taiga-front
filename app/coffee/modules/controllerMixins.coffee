@@ -209,13 +209,9 @@ class UsFiltersMixin
             @.generateFilters()
 
     isFilterDataTypeSelected: (filterDataType) ->
-        if (@.selectedFilters.length == 0)
-            return false
-
         for filter in @.selectedFilters
             if (filter['dataType'] == filterDataType)
                 return true
-
         return false
 
     generateFilters: (milestone) ->

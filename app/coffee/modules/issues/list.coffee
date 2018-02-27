@@ -128,13 +128,9 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             @filterRemoteStorageService.storeFilters(@scope.projectId, userFilters, @.myFiltersHashSuffix).then(@.generateFilters)
 
     isFilterDataTypeSelected: (filterDataType) ->
-        if (@.selectedFilters.length == 0)
-            return false
-
         for filter in @.selectedFilters
             if (filter['dataType'] == filterDataType)
                 return true
-
         return false
 
     saveCustomFilter: (name) ->

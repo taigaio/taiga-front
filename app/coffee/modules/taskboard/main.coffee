@@ -135,13 +135,9 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
             @filterRemoteStorageService.storeFilters(@scope.projectId, userFilters, 'tasks-custom-filters').then(@.generateFilters)
 
     isFilterDataTypeSelected: (filterDataType) ->
-        if (@.selectedFilters.length == 0)
-            return false
-
         for filter in @.selectedFilters
             if (filter['dataType'] == filterDataType)
                 return true
-
         return false
 
     saveCustomFilter: (name) ->
