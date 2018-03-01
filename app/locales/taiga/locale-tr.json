@@ -207,6 +207,7 @@
                 "PRIORITIES": "Öncelikler",
                 "TAGS": "Etiketler ",
                 "ASSIGNED_TO": "Atanmış",
+                "ROLE": "Rol",
                 "CREATED_BY": "Oluşturan",
                 "CUSTOM_FILTERS": "Özel filtreler",
                 "EPIC": "Destan"

@@ -207,6 +207,7 @@
                 "PRIORITIES": "优先级",
                 "TAGS": "标签",
                 "ASSIGNED_TO": "指派给",
+                "ROLE": "角色",
                 "CREATED_BY": "由创建",
                 "CUSTOM_FILTERS": "定制过滤器",
                 "EPIC": "史诗"
