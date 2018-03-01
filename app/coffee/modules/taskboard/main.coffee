@@ -317,6 +317,7 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
         @taskboardTasksService.replaceModel(taskModel)
 
         @repo.save(taskModel).then =>
+            @.generateFilters()
             if @.isFilterDataTypeSelected('assigned_to') || @.isFilterDataTypeSelected('role')
                 @.loadTasks()
 
@@ -463,10 +464,11 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
                 order = JSON.parse(headers['taiga-info-order-updated'])
                 @taskboardTasksService.assignOrders(order)
 
+            @.loadSprintStats()
+            @.generateFilters()
             if @.isFilterDataTypeSelected('status')
                 @.loadTasks()
 
-            @.loadSprintStats()
 
     ## Template actions
     addNewTask: (type, us) ->

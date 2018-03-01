@@ -200,6 +200,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         @kanbanUserstoriesService.replaceModel(usModel)
 
         @repo.save(usModel).then =>
+            @.generateFilters()
             if @.isFilterDataTypeSelected('assigned_to') || @.isFilterDataTypeSelected('role')
                 @.filtersReloadContent()
 
@@ -336,6 +337,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                     @kanbanUserstoriesService.assignOrders(order)
                 @scope.$broadcast("redraw:wip")
 
+                @.generateFilters()
                 if @.isFilterDataTypeSelected('status')
                     @.filtersReloadContent()
 
