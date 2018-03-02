@@ -10,7 +10,11 @@ div.kanban-table(
                                tg-bo-title="s.name",
                                ng-class='{vfold:folds[s.id]}',
                                tg-class-permission="{'readonly': '!modify_task'}")
-                span(tg-bo-bind="s.name")
+                div.title
+                    div.name(tg-bo-bind="s.name")
+                    div.counter
+                        span(tg-bo-bind="usByStatus.get(s.id.toString()).size")
+                        span(tg-bo-bind="' / ' + s.wip_limit", ng-if="s.wip_limit")
                 div.options
                     a.option(
                         href=""
