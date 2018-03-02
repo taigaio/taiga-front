@@ -92,17 +92,17 @@ $column-padding: .5rem 1rem;
             margin-right: 0;
         }
         .title {
-          width: 100%;
-          display: flex;
-          align-items: flex-end;
-          .counter {
-            margin: 0em .5rem;
-            @include font-size(xsmall);
-            line-height: 1.6;
-          }
-          .name {
-            @include ellipsis(65%);
-          }
+            align-items: flex-end;
+            display: flex;
+            width: 100%;
+            .counter {
+                @include font-size(xsmall);
+                line-height: 1.6;
+                margin: 0 .5rem;
+            }
+            .name {
+                @include ellipsis(65%);
+            }
         }
         .option {
             margin-right: .3rem;
@@ -190,7 +190,7 @@ $column-padding: .5rem 1rem;
         }
     }
     .column {
-        padding-left: 0.5rem;
+        padding-left: .5rem;
         width: 100%;
     }
     .fake-img {
