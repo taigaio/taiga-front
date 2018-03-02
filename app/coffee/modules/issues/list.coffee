@@ -127,6 +127,12 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             delete userFilters[customFilter.id]
             @filterRemoteStorageService.storeFilters(@scope.projectId, userFilters, @.myFiltersHashSuffix).then(@.generateFilters)
 
+    isFilterDataTypeSelected: (filterDataType) ->
+        for filter in @.selectedFilters
+            if (filter['dataType'] == filterDataType)
+                return true
+        return false
+
     saveCustomFilter: (name) ->
         filters = {}
         urlfilters = @location.search()
@@ -588,8 +594,9 @@ IssueStatusInlineEditionDirective = ($repo, $template, $rootscope) ->
 
             $scope.$apply () ->
                 $repo.save(issue).then ->
-                    $ctrl.loadIssues()
                     $ctrl.generateFilters()
+                    if $ctrl.isFilterDataTypeSelected('status')
+                        $ctrl.loadIssues()
 
         taiga.bindOnce $scope, "project", (project) ->
             $el.append(selectionTemplate({ 'statuses':  project.issue_statuses }))
@@ -655,13 +662,17 @@ IssueAssignedToInlineEditionDirective = ($repo, $rootscope, $translate, avatarSe
                 $el.unbind("click")
                 $el.find("a").addClass("not-clickable")
 
-        $scope.$on "assigned-to:added", (ctx, userId, updatedIssue) =>
+        $scope.$on "assigned-to:added", (ctx, userId, updatedIssue) ->
             if updatedIssue.id == issue.id
                 updatedIssue.assigned_to = userId
-                $repo.save(updatedIssue)
-                updateIssue(updatedIssue)
+                $repo.save(issue).then ->
+                    updateIssue(updatedIssue)
+                    $ctrl.generateFilters()
+                    if $ctrl.isFilterDataTypeSelected('assigned_to') \
+                    || $ctrl.isFilterDataTypeSelected('role')
+                        $ctrl.loadIssues()
 
-        $scope.$watch $attrs.tgIssueAssignedToInlineEdition, (val) =>
+        $scope.$watch $attrs.tgIssueAssignedToInlineEdition, (val) ->
             updateIssue(val)
 
         $scope.$on "$destroy", ->

@@ -199,9 +199,10 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
         @kanbanUserstoriesService.replaceModel(usModel)
 
-        promise = @repo.save(usModel)
-        promise.then null, ->
-            console.log "FAIL" # TODO
+        @repo.save(usModel).then =>
+            @.generateFilters()
+            if @.isFilterDataTypeSelected('assigned_to') || @.isFilterDataTypeSelected('role')
+                @.filtersReloadContent()
 
     refreshTagsColors: ->
         return @rs.projects.tagsColors(@scope.projectId).then (tags_colors) =>
@@ -302,14 +303,14 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
     moveUs: (ctx, usList, newStatusId, index) ->
         @.cleanSelectedUss()
         
-        usList = _.map usList, (us) => 
+        usList = _.map usList, (us) =>
             return @kanbanUserstoriesService.getUsModel(us.id)
 
         data = @kanbanUserstoriesService.move(usList, newStatusId, index)
 
         promise = @rs.userstories.bulkUpdateKanbanOrder(@scope.projectId, data.bulkOrders)
 
-        promise.then () => 
+        promise.then () =>
             # saving
             # drag single or different status
             options = {
@@ -323,7 +324,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                 include_tasks: true
             }
 
-            promises = _.map usList, (us) => 
+            promises = _.map usList, (us) =>
                 @repo.save(us, true, params, options, true)
 
             promise = @q.all(promises)
@@ -334,7 +335,14 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                 if headers && headers['taiga-info-order-updated']
                     order = JSON.parse(headers['taiga-info-order-updated'])
                     @kanbanUserstoriesService.assignOrders(order)
-                @scope.$broadcast("redraw:wip")       
+                @scope.$broadcast("redraw:wip")
+
+                @.generateFilters()
+                if @.isFilterDataTypeSelected('status')
+                    @.filtersReloadContent()
+
+                return promise
+
 
 module.controller("KanbanController", KanbanController)
 
