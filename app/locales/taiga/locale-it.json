@@ -207,6 +207,7 @@
                 "PRIORITIES": "Priorità",
                 "TAGS": "Tag",
                 "ASSIGNED_TO": "Assegnato a",
+                "ROLE": "Ruolo",
                 "CREATED_BY": "Creato da",
                 "CUSTOM_FILTERS": "Filtri personalizzati",
                 "EPIC": "Epic"

@@ -207,6 +207,7 @@
                 "PRIORITIES": "Prioriteter",
                 "TAGS": "Etiketter",
                 "ASSIGNED_TO": "Tildelt til",
+                "ROLE": "Rolle",
                 "CREATED_BY": "Laget av",
                 "CUSTOM_FILTERS": "Egendefinert filtre",
                 "EPIC": "Epic"

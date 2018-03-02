@@ -207,6 +207,7 @@
                 "PRIORITIES": "Prioritats",
                 "TAGS": "Etiquetes",
                 "ASSIGNED_TO": "Assignat a",
+                "ROLE": "Rol",
                 "CREATED_BY": "Creat per",
                 "CUSTOM_FILTERS": "Filtres personalitzats",
                 "EPIC": "Epic"

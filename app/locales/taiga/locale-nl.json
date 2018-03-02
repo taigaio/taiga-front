@@ -207,6 +207,7 @@
                 "PRIORITIES": "Prioriteit",
                 "TAGS": "Tags",
                 "ASSIGNED_TO": "Toegewezen aan",
+                "ROLE": "Rol",
                 "CREATED_BY": "Aangemaakt door",
                 "CUSTOM_FILTERS": "Eigen filters",
                 "EPIC": "Epic"

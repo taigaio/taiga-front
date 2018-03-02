@@ -207,6 +207,7 @@
                 "PRIORITIES": "Приоритеты",
                 "TAGS": "Тэги",
                 "ASSIGNED_TO": "Назначено",
+                "ROLE": "Роль",
                 "CREATED_BY": "Создано",
                 "CUSTOM_FILTERS": "Собственные фильтры",
                 "EPIC": "Epic"
@@ -217,7 +218,7 @@
             "DB_CLICK": "двойной клик для редактирования",
             "SELECT_LANGUAGE_PLACEHOLDER": "Выбор языка",
             "SELECT_LANGUAGE_REMOVE_FORMATING": "Убрать форматирование",
-            "OUTDATED": "Another person has made changes while you were editing. Check the new version on the activity tab before you save your changes.",
+            "OUTDATED": "Другой пользователь внес изменения в систему. Проверьте новую версию на вкладке активности, прежде чем вы сохраните ваши изменения.",
             "MARKDOWN_HELP": "Помощь по синтаксису Markdown"
         },
         "PERMISIONS_CATEGORIES": {
@@ -611,7 +612,7 @@
             "WARNING_DELETE_ROLE": "Be careful! All role estimations will be removed",
             "ERROR_DELETE_ALL": "Вы не можете удалить все значения",
             "EXTERNAL_USER": "Внешний пользователь",
-            "NOTE_EXTERNAL_USERS": "<strong>Note:</strong> by External User we mean any anonymous user not belonging to the Taiga platform, including search engines. Please use this role with care."
+            "NOTE_EXTERNAL_USERS": "<strong>Примечание:</strong> под 'внешним пользователем' мы имеем ввиду анонимного пользователя, не имеющего платформы Taiga, включая поисковые движки. Пожалуйста, используйте этот функционал с осторожностью."
         },
         "THIRD_PARTIES": {
             "SECRET_KEY": "Секретный ключ",
@@ -689,7 +690,7 @@
             "DEFAULT_DELETE_MESSAGE": "приглашение на {{email}}"
         },
         "DEFAULT_VALUES": {
-            "LABEL_EPIC_STATUS": "Default value for epic status selector",
+            "LABEL_EPIC_STATUS": "Значение по умолчанию для селектора эпического статуса",
             "LABEL_US_STATUS": "Выбор значения статуса по умолчанию для пользовательской истории",
             "LABEL_POINTS": "Значения по умолчанию для выбора очков",
             "LABEL_TASK_STATUS": "Значение по умолчанию для статуса задачи",
@@ -875,7 +876,7 @@
             "TEMPLATE_SCRUM_LONGDESC": "Скрам это методология управления процессом разработки программного обеспечения построенная на коротких итерациях и постепенном прогрессе. Бэклог по продукту это те задачи которые нужно сделать, отсортированные в порядке приоритета. Бэклоги разбиваются на относительно короткие, управляемые куски - спринты. На основании возможностей, навыков и ресурсов команды в каждый спринт вносится несколько выбранных пользовательских историй из бэклога. На каждый спринт выделяется оговоренный период времени. С развитием проекта бэклог уменьшается.",
             "TEMPLATE_KANBAN": "Kanban",
             "TEMPLATE_KANBAN_DESC": "Придерживайтесь одинаковых принципов работы над независимыми задачами",
-            "TEMPLATE_KANBAN_LONGDESC": "The Kanban methodology is used to divide project development (any sort of project) into stages.\nA kanban card is like an index card or post-it note that details every task (or user story) in a project that needs to be completed. The Kanban board is used to move each card from one state of completion to the next and in so doing, helps track progress.",
+            "TEMPLATE_KANBAN_LONGDESC": "Метод \"Канбан\" используется, чтобы разделить разработку проекта (проекта любого типа) на стадии. В этой методологоии, карточки похожи на примечания, которые описывают каждую задачу (или пользовательскую историю) проекта, который должен быть выполнен. Карточки в системе, построенной на методе \"Канбан\", обычно переводятся из одного состояния завершенности в другое, таким образом позволяя отслеживать прогресс всего проекта.",
             "DUPLICATE": "Клонировать проект",
             "DUPLICATE_DESC": "Начните сначала и сохраняйте вашу конфигурацию",
             "IMPORT": "Импортировать проект",
@@ -922,7 +923,7 @@
             "CHOOSE": "Выбрать пользователя",
             "LINKS": "Связь с {{platform}}",
             "LINKS_DESCRIPTION": "Do you want to keep the link of each item with the original {{platform}} card?",
-            "WARNING_MAIL_USER": "Note that if the user does not have a Taiga account we will not be able to assign the tasks to him.",
+            "WARNING_MAIL_USER": "Заметьте, если у пользователя нету аккаунта Taiga, мы не сможем назначить ему задачи.",
             "ASSIGN": "Назначить",
             "PROJECT_SELECTOR": {
                 "NO_RESULTS": "It looks like nothing was found with your search criteria",
@@ -1140,7 +1141,7 @@
         "TITLE_DELETE_ACTION": "Удалить пользовательскую историю",
         "LIGHTBOX_TITLE_BLOKING_US": "Блокирующая ПИ",
         "NOT_ESTIMATED": "Не оценено",
-        "OWNER_US": "This User Story belongs to",
+        "OWNER_US": "Эта пользовательская история принадлежит",
         "TRIBE": {
             "PUBLISH": "Publish as Gig in Taiga Tribe",
             "PUBLISH_INFO": "Больше инфо",
@@ -1551,7 +1552,7 @@
         "TASK_UPDATED_WITH_US": "{{username}} изменил атрибут \"{{field_name}}\" задачи {{obj_name}}, которая принадлежит ПИ {{us_name}}",
         "TASK_UPDATED_WITH_US_NEW_VALUE": "{{username}} установил атрибут \"{{field_name}}\" задачи {{obj_name}}, которая принадлежит ПИ {{us_name}}, на {{new_value}}",
         "WIKI_UPDATED": "{{username}} обновил вики-страницу {{obj_name}}",
-        "EPIC_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the epic {{obj_name}}",
+        "EPIC_UPDATED": "{{username}} обновил атрибут \"{{field_name}}\" ПИ {{obj_name}}",
         "EPIC_UPDATED_WITH_NEW_VALUE": "{{username}} обновил атрибут поля \"{{field_name}}\" эпика {{obj_name}} на {{new_value}}",
         "EPIC_UPDATED_WITH_NEW_COLOR": "{{username}} обновил поле \"{{field_name}}\" эпика {{obj_name}} на <span class=\"new-color\" style=\"background: {{new_value}}\"></span>",
         "NEW_COMMENT_US": "{{username}} прокомментировал ПИ {{obj_name}}",
