@@ -1,5 +1,23 @@
 # Changelog #
 
+## 3.2.0 Betula nana (2018-03-07)
+
+### Features
+- Emojis support on subjects and tags.
+- Add "confirm dialog" before closing edit lightboxes.
+- Wiki activity hidden by default.
+- Allow ascending votes ordering in issues list.
+- Add multiple drag in Kanban.
+- Show US counter and wip limit in Kanban columns title.
+- Add role filtering in US.
+
+
+## 3.1.3 (2018-02-28)
+
+### Features
+- Minor bug fixes.
+
+
 ## 3.1.0 Perovskia Atriplicifolia (2017-03-10)
 
 ### Features
