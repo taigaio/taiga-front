@@ -1,11 +1,19 @@
-- var hash = "#";
-span.belong-to-epic-text-wrapper(tg-repeat="epic in immutable_epics track by epic.get('id')")
-    a.belong-to-epic-text(
-        href=""
-        tg-nav="project-epics-detail:project=epic.getIn(['project', 'slug']),ref=epic.get('ref')"
-        ng-bind-html="'#'+epic.get('ref')+' '+epic.get('subject') | emojify"
-    )
-    span.belong-to-epic-label(
-        ng-style="::{'background-color': epic.get('color')}"
-        translate="EPICS.EPIC"
-    )
+span(ng-if="epicsLength > 0", translate="US.OWNER_US")
+span(ng-if="epicsLength > 1") :
+ul.belong-to-epics-list(ng-class="{'unique': epicsLength == 1 }")
+    li.belong-to-epic-text-wrapper(tg-repeat="epic in immutable_epics track by epic.get('id')")
+        a.belong-to-epic-text(
+            href=""
+            tg-nav="project-epics-detail:project=epic.getIn(['project', 'slug']),ref=epic.get('ref')"
+            ng-bind-html="'#'+epic.get('ref')+' '+epic.get('subject') | emojify"
+        )
+        span.belong-to-epic-label(
+            ng-style="::{'background-color': epic.get('color')}"
+            translate="EPICS.EPIC"
+        )
+        a.remove-epic-relationship(
+            title="{{'US.REMOVE_RELATIONSHIP_WITH_EPIC' | translate}}"
+            href=""
+            ng-click="removeEpicRelationship(epic)"
+        )
+            tg-svg(svg-icon="icon-close")

@@ -36,8 +36,10 @@ resourceProvider = ($config, $repo, $http, $urls, $auth, $q, $translate) ->
     service.getBySlug = (projectSlug) ->
         return $repo.queryOne("projects", "by_slug?slug=#{projectSlug}")
 
-    service.list = ->
-        return $repo.queryMany("projects")
+    service.list = (filters) ->
+        params = {"order_by": "user_order"}
+        params = _.extend({}, params, filters or {})
+        return $repo.queryMany("projects", params)
 
     service.listByMember = (memberId) ->
         params = {"member": memberId, "order_by": "user_order"}

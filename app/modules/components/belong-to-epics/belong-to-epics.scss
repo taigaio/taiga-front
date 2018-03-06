@@ -1,11 +1,55 @@
 .belong-to-epic-pill-wrapper {
     display: inline-block;
     position: relative;
-    &:hover {
-        .belong-to-epic-pill-data {
-            display: block;
+    &:hover .belong-to-epic-pill-data {
+        display: block;
+    }
+}
+
+.belong-to-epics-list {
+    margin-bottom: .5rem;
+    svg {
+        position: relative;
+        top: .1rem;
+    }
+    &.unique {
+        display: inline-block;
+        li {
+            display: inline-block;
+            svg {
+                top: .2rem;
+            }
         }
     }
+}
+
+.belong-to-epic-text-wrapper {
+    display: flex;
+    flex-basis: 25%;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding-top: .25rem;
+    .remove-epic-relationship {
+        display: inline-block;
+        line-height: .5rem;
+        margin-left: .5rem;
+        svg {
+            visibility: hidden;
+        }
+    }
+    &:hover .remove-epic-relationship svg {
+        visibility: visible;
+    }
+}
+
+.belong-to-epic-label {
+    @include font-type(light);
+    @include font-size(xsmall);
+    background: $grayer;
+    border-radius: .25rem;
+    color: $white;
+    margin: 0 .5rem;
+    padding: .1rem .25rem;
 }
 
 .belong-to-epic-pill {
@@ -16,21 +60,4 @@
     margin: 0 .1rem;
     position: relative;
     width: .7rem;
-}
-
-.belong-to-epic-text-wrapper {
-    margin-right: 1rem;
-}
-
-.belong-to-epic-text {
-    margin-left: .25rem;
-}
-.belong-to-epic-label {
-    @include font-type(light);
-    @include font-size(xsmall);
-    background: $grayer;
-    border-radius: .25rem;
-    color: $white;
-    margin: 0 .5rem;
-    padding: .1rem .25rem;
 }

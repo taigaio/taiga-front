@@ -19,12 +19,43 @@
 
 module = angular.module('taigaEpics')
 
-BelongToEpicsDirective = () ->
+BelongToEpicsDirective = ($translate, $confirm, $rs, $rs2, lightboxService) ->
 
     link = (scope, el, attrs) ->
         scope.$watch 'epics', (epics) ->
+            updateEpics(epics)
+
+        scope.$on "related-epics:changed", (ctx, userStory)->
+            $rs.userstories.getByRef(userStory.project, userStory.ref, {}).then (us) ->
+                scope.item.epics = us.epics
+                updateEpics(us.epics)
+
+        scope.removeEpicRelationship = (epic) ->
+            title = $translate.instant("LIGHTBOX.REMOVE_RELATIONSHIP_WITH_EPIC.TITLE")
+            message = $translate.instant(
+                "LIGHTBOX.REMOVE_RELATIONSHIP_WITH_EPIC.MESSAGE",
+                { epicSubject:  epic.get('subject') }
+            )
+
+            $confirm.askOnDelete(title, message).then (askResponse) ->
+                onSuccess = ->
+                    askResponse.finish()
+                    scope.$broadcast("related-epics:changed", scope.item)
+
+                onError = ->
+                    askResponse.finish(false)
+                    $confirm.notify("error")
+
+                epicId = epic.get('id')
+                usId = scope.item.id
+                $rs2.epics.deleteRelatedUserstory(epicId, usId).then(onSuccess, onError)
+
+        updateEpics = (epics) ->
+            scope.epicsLength = 0
+            scope.immutable_epics = []
             if epics && !epics.isIterable
-              scope.immutable_epics = Immutable.fromJS(epics)
+                scope.epicsLength = epics.length
+                scope.immutable_epics = Immutable.fromJS(epics)
 
     templateUrl = (el, attrs) ->
         if attrs.format
@@ -34,10 +65,13 @@ BelongToEpicsDirective = () ->
     return {
         link: link,
         scope: {
-            epics: '='
+            epics: '=',
+            item: "="
         },
         templateUrl: templateUrl
     }
 
 
-module.directive("tgBelongToEpics", BelongToEpicsDirective)
+module.directive("tgBelongToEpics", [
+    "$translate", "$tgConfirm", "$tgResources", "tgResources", "lightboxService",
+    BelongToEpicsDirective])
