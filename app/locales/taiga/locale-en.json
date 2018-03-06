@@ -1127,6 +1127,10 @@
         "DELETE_SPRINT": {
             "TITLE": "Delete sprint"
         },
+        "REMOVE_RELATIONSHIP_WITH_EPIC": {
+            "TITLE": "Remove relationship with Epic",
+            "MESSAGE": "the relationship of this User Story with the Epic {{epicSubject}}"
+        },
         "CREATE_MEMBER": {
             "PLACEHOLDER_INVITATION_TEXT": "(Optional) Add a personalized text to the invitation. Tell something lovely to your new members ;-)",
             "PLACEHOLDER_TYPE_EMAIL": "Type an Email",
@@ -1167,6 +1171,18 @@
                 "IN_THREE_MONTHS": "In three months"
             },
             "TITLE_ACTION_DELETE_DUE_DATE": "Delete due date"
+        },
+        "RELATE_TO_EPIC": {
+            "TITLE": "Relate to Epic",
+            "EXISTING_EPIC": "Existing epic",
+            "NEW_EPIC": "New epic",
+            "CHOOSE_PROJECT_FOR_CREATION": "What's the project?",
+            "CHOOSE_PROJECT_FROM": "What's the project?",
+            "SUBJECT": "Subject",
+            "SUBJECT_BULK_MODE": "Subject (bulk insert)",
+            "CHOOSE_EPIC": "What's the epic?",
+            "FILTER_EPICS": "Filter epics",
+            "NO_EPICS_FOUND": "It looks like nothing was found with your search criteria"
         }
     },
     "EPIC": {
@@ -1205,6 +1221,8 @@
         "LIGHTBOX_TITLE_BLOKING_US": "Blocking us",
         "NOT_ESTIMATED": "Not estimated",
         "OWNER_US": "This User Story belongs to",
+        "RELATE_TO_EPIC": "Relate to Epic",
+        "REMOVE_RELATIONSHIP_WITH_EPIC": "Remove Epic relationship",
         "TRIBE": {
             "PUBLISH": "Publish as Gig in Taiga Tribe",
             "PUBLISH_INFO": "More info",

@@ -854,7 +854,6 @@
     }
 }
 
-
 .ticket-detail-settings .lightbox-assign-sprint-to-issue {
     .lightbox-assign-related-sprint {
         width: 700px;
@@ -883,6 +882,92 @@
     button {
         width: 100%;
     }
+}
 
 
+.lightbox-relate-to-epic {
+    .lightbox-create-related-epic-wrapper {
+        max-width: 600px;
+        width: 90%;
+    }
+    .related-with-selector {
+        display: flex;
+        margin-bottom: 1rem;
+        input {
+            display: none;
+            &:checked+label {
+                background: $primary-light;
+                color: $white;
+                transition: background .2s ease-in;
+            }
+            &:checked+label:hover {
+                background: $primary-light;
+            }
+            +label {
+                background: rgba($whitish, .7);
+                cursor: pointer;
+                display: block;
+                padding: 2rem 1rem;
+                text-align: center;
+                text-transform: uppercase;
+                transition: background .2s ease-in;
+            }
+            +label:hover {
+                background: rgba($primary-light, .3);
+                transition: background .2s ease-in;
+            }
+        }
+        .related-with-selector-single {
+            flex: 1;
+            &:first-child {
+                margin-right: .5rem;
+            }
+        }
+    }
+    fieldset {
+        label {
+            display: inline-block;
+            margin-bottom: .5rem;
+        }
+    }
+    .new-epic-title {
+        align-items: flex-end;
+        display: flex;
+    }
+    .existing-epic-form,
+    .new-epic-form {
+        margin-bottom: 1rem;
+    }
+    .no-epics-found {
+        padding: 1rem 0 0;
+    }
+    .new-epic-options {
+        display: flex;
+        margin-left: auto;
+        input {
+            display: none;
+            &:checked+label {
+                background: $primary-light;
+                color: $white;
+                fill: $white;
+                transition: background .2s ease-in;
+            }
+            +label {
+                background: $mass-white;
+                color: $grayer;
+                cursor: pointer;
+                display: block;
+                padding: .5rem;
+                transition: background .2s ease-in;
+            }
+            +label:hover {
+                background: $primary-light;
+                color: $white;
+                fill: $white;
+            }
+        }
+    }
+    button {
+        width: 100%;
+    }
 }

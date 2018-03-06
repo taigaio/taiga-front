@@ -30,6 +30,22 @@
         @include font-size(small);
         margin-top: .5rem;
     }
+    .relate-to-epic-button {
+        color: $gray-light;
+        cursor: pointer;
+        display: inline-block;
+        &:hover {
+            color: $primary-light;
+        }
+        .icon-epics {
+            @include svg-size(.9rem);
+            fill: currentColor;
+            margin: .5rem .25rem 0 0;
+        }
+        .relate-to-epic-text {
+            @include font-size(small);
+        }
+    }
     .item-generated-us,
     .task-belongs-to,
     .item-origin-issue,

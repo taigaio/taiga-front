@@ -64,15 +64,23 @@ class EpicsService
     listRelatedUserStories: (epic) ->
         return @resources.userstories.listInEpic(epic.get('id'))
 
-    createEpic: (epicData, attachments) ->
-        epicData.project = @projectService.project.get('id')
+    createEpic: (epicData, attachments, projectId) ->
+        if projectId
+            epicData.project = projectId
+        else
+            epicData.project = @projectService.project.get('id')
 
         return @resources.epics.post(epicData)
             .then (epic) =>
-                promises = _.map attachments.toJS(), (attachment) =>
-                    @attachmentsService.upload(attachment.file, epic.get('id'), epic.get('project'), 'epic')
+                if !attachments
+                    return epic
+                else
+                    promises = _.map attachments.toJS(), (attachment) =>
+                        @attachmentsService.upload(
+                            attachment.file, epic.get('id'), epic.get('project'), 'epic')
 
-                Promise.all(promises).then(@.fetchEpics.bind(this, true))
+                    Promise.all(promises).then(@.fetchEpics.bind(this, true))
+
 
     reorderEpic: (epic, newIndex) ->
         orderList = {}

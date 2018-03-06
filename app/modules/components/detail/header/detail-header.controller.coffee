@@ -92,4 +92,7 @@ class StoryHeaderController
             return item
         return transform.then(onEditSubjectSuccess, onEditSubjectError)
 
+    relateToEpic: (us) ->
+        @rootScope.$broadcast("relate-to-epic:add", us)
+
 module.controller("StoryHeaderCtrl", StoryHeaderController)

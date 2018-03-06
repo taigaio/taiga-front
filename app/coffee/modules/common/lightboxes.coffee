@@ -1123,3 +1123,119 @@ module.directive("tgLbCreateEdit", [
     "$compile",
     CreateEditDirective
 ])
+
+
+#############################################################################
+## RelateToEpic Lightbox Directive
+#############################################################################
+
+debounceLeading = @.taiga.debounceLeading
+
+RelateToEpicLightboxDirective = ($rootScope, $confirm, lightboxService, tgCurrentUserService
+tgResources, $tgResources, $epicsService, tgAnalytics) ->
+    link = ($scope, $el, $attrs) ->
+        us = null
+
+        $scope.projects = null
+        $scope.projectEpics = Immutable.List()
+        $scope.loading = false
+
+        newEpicForm = $el.find(".new-epic-form").checksley()
+        existingEpicForm = $el.find(".existing-epic-form").checksley()
+
+        loadProjects = ->
+            if $scope.projects == null
+                $tgResources.projects.list({
+                    blocked_code: 'null',
+                    is_epics_activated: true
+                }).then (data) ->
+                    $scope.projects = data
+
+        filterEpics = (selectedProjectId, filterText) ->
+            tgResources.epics.listInAllProjects(
+                {
+                    is_epics_activated: true,
+                    project__blocked_code: 'null',
+                    project: selectedProjectId,
+                    q: filterText
+                }, true).then (data) ->
+                    excludeIds = []
+                    if (us.epics)
+                        excludeIds = us.epics.map((epic) -> epic.id)
+                    filteredData = data.filter((epic) -> excludeIds.indexOf(epic.get('id')) == -1)
+                    $scope.projectEpics = filteredData
+
+        $el.on "click", ".close", (event) ->
+            event.preventDefault()
+            lightboxService.close($el)
+
+        $scope.$on "relate-to-epic:add", (ctx, item) ->
+            us = item
+            $scope.selectedEpic = null
+            $scope.searchEpic = ""
+            loadProjects()
+            filterEpics(item.projectId, $scope.searchEpic).then () ->
+                lightboxService.open($el).then ->
+                    $el.find('input').focus
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+        $scope.onUpdateSearchEpic = debounceLeading 300, () ->
+            $scope.selectedEpic = null
+            filterEpics($scope.selectedProject, $scope.searchEpic)
+
+        $scope.saveRelatedEpic = (selectedEpicId, onSavedRelatedEpic) ->
+            return if not existingEpicForm.validate()
+
+            $scope.loading = true
+
+            onError = (data) ->
+                $scope.loading = false
+                $confirm.notify("error")
+                existingEpicForm.setErrors(data)
+
+            onSuccess = (data) ->
+                tgAnalytics.trackEvent(
+                    "user story related epic", "create", "create related epic on user story", 1)
+                $scope.loading = false
+                $rootScope.$broadcast("related-epics:changed", us)
+                lightboxService.close($el)
+
+            usId = us.id
+            tgResources.epics.addRelatedUserstory(selectedEpicId, usId).then(
+                onSuccess, onError)
+
+        $scope.createEpic = (selectedProjectId, epicSubject) ->
+            return if not newEpicForm.validate()
+
+            @.loading = true
+
+            onError = (data)->
+                $scope.loading = false
+                $confirm.notify("error")
+                newEpicForm.setErrors(errors)
+
+            onSuccess = () ->
+                tgAnalytics.trackEvent(
+                    "user story related epic", "create", "create related epic on user story", 1)
+                $scope.loading = false
+                $rootScope.$broadcast("related-epics:changed", us)
+                lightboxService.close($el)
+
+            onCreateEpic = (epic) ->
+                epicId = epic.get('id')
+                usId = us.id
+                tgResources.epics.addRelatedUserstory(epicId, usId).then(onSuccess, onError)
+
+            $epicsService.createEpic(
+                {subject: epicSubject}, null, selectedProjectId).then(onCreateEpic, onError)
+
+    return {
+        templateUrl: "common/lightbox/lightbox-relate-to-epic.html"
+        link:link
+    }
+
+module.directive("tgLbRelatetoepic", [
+    "$rootScope", "$tgConfirm", "lightboxService", "tgCurrentUserService", "tgResources",
+    "$tgResources", "tgEpicsService", "$tgAnalytics", RelateToEpicLightboxDirective])

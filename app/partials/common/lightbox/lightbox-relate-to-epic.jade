@@ -1,0 +1,106 @@
+tg-lightbox-close
+
+.lightbox-create-related-epic-wrapper
+    h2.title(translate="LIGHTBOX.RELATE_TO_EPIC.TITLE")
+
+    .related-with-selector(tg-check-permission="add_epic")
+        .related-with-selector-single
+            input(
+                type="radio"
+                name="related-with-selector"
+                id="existing-epic"
+                value="existing-epic"
+                ng-model="relatedWithSelector"
+                ng-init="relatedWithSelector='existing-epic'"
+            )
+            label.e2e-existing-epic-label(for="existing-epic")
+                span.name {{ 'LIGHTBOX.RELATE_TO_EPIC.EXISTING_EPIC' | translate}}
+
+        .related-with-selector-single
+            input(
+                type="radio"
+                name="related-with-selector"
+                id="new-epic"
+                value="new-epic"
+                ng-model="relatedWithSelector"
+            )
+            label.e2e-new-epic-label(for="new-epic")
+                span.name {{ 'LIGHTBOX.RELATE_TO_EPIC.NEW_EPIC' | translate}}
+        
+    fieldset.project-selector
+        label(
+            ng-if="relatedWithSelector=='new-epic'"
+            translate="LIGHTBOX.RELATE_TO_EPIC.CHOOSE_PROJECT_FOR_CREATION"
+            for="project-selector-dropdown"
+        )
+        label(
+            ng-if="relatedWithSelector=='existing-epic'"
+            translate="LIGHTBOX.RELATE_TO_EPIC.CHOOSE_PROJECT_FROM"
+            for="project-selector-dropdown"
+        )
+        select(
+            ng-model="selectedProject"
+            ng-change="selectProject(selectedProject)"
+            data-required="true"
+            ng-options="p.id as p.name for p in projects | toMutable"
+            id="project-selector-dropdown"
+        )
+
+    fieldset(ng-show="relatedWithSelector=='new-epic'")
+        .new-epic-title
+            label(translate="LIGHTBOX.RELATE_TO_EPIC.SUBJECT")
+        form.new-epic-form
+            .single-creation
+                input.e2e-new-epic-input-text(
+                    type="text"
+                    ng-model="epicSubject"
+                    data-required="true"
+                )
+
+        button.button-green.create-epic.e2e-create-epic-button.ng-animate-disabled(
+            href=""
+            ng-click="createEpic(selectedProject, epicSubject)"
+            tg-loading="loading"
+            translate="COMMON.SAVE"
+        )
+
+    fieldset.existing-epic(ng-show="relatedWithSelector=='existing-epic'")
+        label(
+            translate="LIGHTBOX.RELATE_TO_EPIC.CHOOSE_EPIC"
+            for="epic-filter"
+        )
+        input.epic-filter.e2e-filter-userstories-input(
+            id="epic-filter"
+            type="text"
+            placeholder="{{'LIGHTBOX.RELATE_TO_EPIC.FILTER_EPICS' | translate}}"
+            ng-model="searchEpic"
+            ng-change="onUpdateSearchEpic()"
+        )
+
+        form.existing-epic-form(ng-show="relatedWithSelector=='existing-epic' && projectEpics.size")
+            select.epic.e2e-userstories-select(
+                size="5"
+                ng-model="selectedEpic"
+                data-required="true"
+            )
+                - var hash = "#";
+                option.hidden(
+                    value=""
+                )
+                option(
+                    ng-repeat="epic in projectEpics | toMutable track by epic.id"
+                    value="{{ ::epic.id }}"
+                ) #{hash}{{::epic.ref}} {{::epic.subject}}
+
+        p.no-stories-found(
+            ng-show="relatedWithSelector=='existing-epic' && !projectEpics.size"
+            translate="LIGHTBOX.RELATE_TO_EPIC.NO_EPICS_FOUND"
+        )
+
+        button.button-green.e2e-select-related-epic-button(
+            href=""
+            ng-click="saveRelatedEpic(selectedEpic, closeLightbox)"
+            tg-loading="loading"
+            translate="COMMON.SAVE"
+        )
+
