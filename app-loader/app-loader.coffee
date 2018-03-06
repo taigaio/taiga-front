@@ -12,6 +12,7 @@ window.taigaConfig = {
     "defaultTheme": "taiga",
     "publicRegisterEnabled": true,
     "feedbackEnabled": true,
+    "supportUrl": null,
     "privacyPolicyUrl": null,
     "termsOfServiceUrl": null,
     "maxUploadFileSize": null,
