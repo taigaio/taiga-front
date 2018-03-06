@@ -23,6 +23,7 @@ DropdownUserDirective = (authService, configService, locationService,
     link = (scope, el, attrs, ctrl) ->
         scope.vm = {}
         scope.vm.isFeedbackEnabled = configService.get("feedbackEnabled")
+        scope.vm.supportUrl = configService.get("supportUrl")
         taiga.defineImmutableProperty(scope.vm, "user", () -> authService.userData)
 
         scope.vm.logout = ->
