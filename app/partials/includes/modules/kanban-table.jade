@@ -13,7 +13,11 @@ div.kanban-table(
                 div.title
                     div.name(tg-bo-bind="s.name")
                     div.counter
-                        span(tg-bo-bind="usByStatus.get(s.id.toString()).size")
+                        span(ng-if="usByStatus.get(s.id.toString()).size") {{ usByStatus.get(s.id.toString()).size }}
+                        span(
+                            ng-if="!usByStatus.get(s.id.toString()).size"
+                            ng-class='{hidden:!s.wip_limit}'
+                        ) 0
                         span(tg-bo-bind="' / ' + s.wip_limit", ng-if="s.wip_limit")
                 div.options
                     a.option(
