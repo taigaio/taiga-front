@@ -128,6 +128,9 @@ tg-filter {
         @include ellipsis(100%);
         display: block;
         width: 100%;
+        img {
+            vertical-align: middle;
+        }
     }
     .number {
         background: darken($whitish, 20%); // Fallback

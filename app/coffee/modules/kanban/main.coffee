@@ -71,6 +71,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         bindMethods(@)
         @kanbanUserstoriesService.reset()
         @.openFilter = false
+        @.selectedUss = {}
 
         return if @.applyStoredFilters(@params.pslug, "kanban-filters")
 
@@ -79,6 +80,13 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
         taiga.defineImmutableProperty @.scope, "usByStatus", () =>
             return @kanbanUserstoriesService.usByStatus
+
+    cleanSelectedUss: () ->
+        for key of @.selectedUss
+            @.selectedUss[key] = false
+
+    toggleSelectedUs: (usId) ->
+        @.selectedUss[usId] = !@.selectedUss[usId]
 
     firstLoad: () ->
         promise = @.loadInitialData()
@@ -191,9 +199,10 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
         @kanbanUserstoriesService.replaceModel(usModel)
 
-        promise = @repo.save(usModel)
-        promise.then null, ->
-            console.log "FAIL" # TODO
+        @repo.save(usModel).then =>
+            @.generateFilters()
+            if @.isFilterDataTypeSelected('assigned_to') || @.isFilterDataTypeSelected('role')
+                @.filtersReloadContent()
 
     refreshTagsColors: ->
         return @rs.projects.tagsColors(@scope.projectId).then (tags_colors) =>
@@ -291,36 +300,49 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
     prepareBulkUpdateData: (uses, field="kanban_order") ->
         return _.map(uses, (x) -> {"us_id": x.id, "order": x[field]})
 
-    moveUs: (ctx, us, oldStatusId, newStatusId, index) ->
-        us = @kanbanUserstoriesService.getUsModel(us.get('id'))
-        newStatus = @scope.usStatusById[newStatusId]
-        if newStatus.is_archived and !@scope.usByStatus.get(newStatusId.toString())
-            moveUpdateData = @kanbanUserstoriesService.moveToEnd(us.id, newStatusId)
-        else
-            moveUpdateData = @kanbanUserstoriesService.move(us.id, newStatusId, index)
+    moveUs: (ctx, usList, newStatusId, index) ->
+        @.cleanSelectedUss()
+        
+        usList = _.map usList, (us) =>
+            return @kanbanUserstoriesService.getUsModel(us.id)
 
-        params = {
-            include_attachments: true,
-            include_tasks: true
-        }
+        data = @kanbanUserstoriesService.move(usList, newStatusId, index)
 
-        options = {
-            headers: {
-                "set-orders": JSON.stringify(moveUpdateData.set_orders)
+        promise = @rs.userstories.bulkUpdateKanbanOrder(@scope.projectId, data.bulkOrders)
+
+        promise.then () =>
+            # saving
+            # drag single or different status
+            options = {
+                headers: {
+                    "set-orders": JSON.stringify(data.setOrders)
+                }
             }
-        }
 
-        promise = @repo.save(us, true, params, options, true)
+            params = {
+                include_attachments: true,
+                include_tasks: true
+            }
 
-        promise = promise.then (result) =>
-            headers = result[1]
+            promises = _.map usList, (us) =>
+                @repo.save(us, true, params, options, true)
 
-            if headers && headers['taiga-info-order-updated']
-                order = JSON.parse(headers['taiga-info-order-updated'])
-                @kanbanUserstoriesService.assignOrders(order)
-            @scope.$broadcast("redraw:wip")
+            promise = @q.all(promises)
 
-        return promise
+            promise.then (result) =>
+                headers = result[1]
+
+                if headers && headers['taiga-info-order-updated']
+                    order = JSON.parse(headers['taiga-info-order-updated'])
+                    @kanbanUserstoriesService.assignOrders(order)
+                @scope.$broadcast("redraw:wip")
+
+                @.generateFilters()
+                if @.isFilterDataTypeSelected('status')
+                    @.filtersReloadContent()
+
+                return promise
+
 
 module.controller("KanbanController", KanbanController)
 

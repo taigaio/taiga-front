@@ -207,6 +207,7 @@
                 "PRIORITIES": "Prioritet",
                 "TAGS": "Etiketter",
                 "ASSIGNED_TO": "Tilldelad till",
+                "ROLE": "Roll",
                 "CREATED_BY": "Skapad av",
                 "CUSTOM_FILTERS": "Anpassad filter",
                 "EPIC": "Epost"

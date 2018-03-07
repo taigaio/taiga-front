@@ -58,14 +58,14 @@ TagsDirective = ->
 module.directive("tgTags", TagsDirective)
 
 
-ColorizeTagsBacklogDirective = ->
+ColorizeTagsBacklogDirective = ($emojis) ->
     template = _.template("""
         <% _.each(tags, function(tag) { %>
             <% if (tag[1] !== null) { %>
             <span class="tag"
                   style="border-left: 5px solid <%- tag[1] %>"
                   title="<%- tag[0] %>">
-                  <%- tag[0] %>
+                  <%= emojify(tag[0]) %>
             </span>
             <% } %>
         <% }) %>
@@ -73,7 +73,7 @@ ColorizeTagsBacklogDirective = ->
             <% if (tag[1] === null) { %>
             <span class="tag"
                   title="<%- tag[0] %>">
-                  <%- tag[0] %>
+                  <%= emojify(tag[0]) %>
             </span>
             <% } %>
         <% }) %>
@@ -81,7 +81,7 @@ ColorizeTagsBacklogDirective = ->
 
     link = ($scope, $el, $attrs, $ctrl) ->
         render = (tags) ->
-            html = template({tags: tags})
+            html = template({tags: tags, emojify: (text) -> $emojis.replaceEmojiNameByHtmlImgs(_.escape(text))})
             $el.html(html)
 
         $scope.$watch $attrs.tgColorizeBacklogTags, (tags) ->
@@ -92,7 +92,7 @@ ColorizeTagsBacklogDirective = ->
 
     return {link: link}
 
-module.directive("tgColorizeBacklogTags", ColorizeTagsBacklogDirective)
+module.directive("tgColorizeBacklogTags", ["$tgEmojis", ColorizeTagsBacklogDirective])
 
 
 #############################################################################

@@ -29,7 +29,7 @@ debounce = @.taiga.debounce
 module = angular.module("taigaRelatedTasks", [])
 
 
-RelatedTaskRowDirective = ($repo, $compile, $confirm, $rootscope, $loading, $template, $translate) ->
+RelatedTaskRowDirective = ($repo, $compile, $confirm, $rootscope, $loading, $template, $translate, $emojis) ->
     templateView = $template.get("task/related-task-row.html", true)
     templateEdit = $template.get("task/related-task-row-edit.html", true)
 
@@ -82,7 +82,11 @@ RelatedTaskRowDirective = ($repo, $compile, $confirm, $rootscope, $loading, $tem
                 delete_task: $scope.project.my_permissions.indexOf("delete_task") != -1
             }
 
-            $el.html($compile(templateView({task: task, perms: perms}))($scope))
+            $el.html($compile(templateView({
+                task: task,
+                perms: perms,
+                emojify: (text) -> $emojis.replaceEmojiNameByHtmlImgs(_.escape(text))
+            }))($scope))
 
             $el.on "click", ".edit-task", ->
                 renderEdit($model.$modelValue)
@@ -119,7 +123,7 @@ RelatedTaskRowDirective = ($repo, $compile, $confirm, $rootscope, $loading, $tem
     return {link:link, require:"ngModel"}
 
 module.directive("tgRelatedTaskRow", ["$tgRepo", "$compile", "$tgConfirm", "$rootScope", "$tgLoading",
-                                      "$tgTemplate", "$translate", RelatedTaskRowDirective])
+                                      "$tgTemplate", "$translate", "$tgEmojis", RelatedTaskRowDirective])
 
 
 RelatedTaskCreateFormDirective = ($repo, $compile, $confirm, $tgmodel, $loading, $analytics) ->

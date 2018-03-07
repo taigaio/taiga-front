@@ -7,10 +7,12 @@
         span.detail-subject.e2e-title-subject(
             ng-click="vm.editSubject(true)"
             ng-if="vm.permissions.canEdit"
-        ) {{vm.item.subject}}
+            ng-bind-html="vm.item.subject | emojify"
+        )
         span.detail-subject.e2e-title-subject(
             ng-if="!vm.permissions.canEdit"
-        ) {{vm.item.subject}}
+            ng-bind-html="vm.item.subject | emojify"
+        )
         a(
             href=""
             ng-if="vm.permissions.canEdit"
@@ -55,7 +57,7 @@
         title="{{'TASK.TITLE_LINK_GO_OWNER' | translate}}"
     )
         span.item-ref {{'#' + vm.item.user_story_extra_info.ref}}
-        span {{::vm.item.user_story_extra_info.subject}}
+        span(ng-bind-html="vm.item.user_story_extra_info.subject | emojify")
         tg-belong-to-epics(
             ng-if="::vm.item.user_story_extra_info.epics"
             epics="::vm.item.user_story_extra_info.epics"
@@ -69,7 +71,8 @@
         ng-repeat="userstory in vm.item.generated_user_stories track by userstory.id"
         tg-check-permission="view_us"
         tg-nav="project-userstories-detail:project=vm.project.slug,ref=userstory.ref"
-    ) {{'#' + userstory.ref}} {{userstory.subject}}
+        ng-bind-html="'#'+userstory.ref+' '+userstory.subject | emojify"
+    )
 
 //- Issue origin from github
 .issue-external-reference(ng-if="vm.item.external_reference")
@@ -91,7 +94,7 @@
         title="{{'US.TITLE_LINK_GO_TO_ISSUE' | translate}}"
     )
         span.item-ref {{'#' + vm.item.origin_issue.ref}}
-        span {{vm.item.origin_issue.subject}}
+        span(ng-bind-html="vm.item.origin_issue.subject | emojify")
 
 //- Blocked description
 .block-desc-container(ng-show="vm.item.is_blocked")

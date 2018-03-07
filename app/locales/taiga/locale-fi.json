@@ -207,6 +207,7 @@
                 "PRIORITIES": "Kiireellisyydet",
                 "TAGS": "Avainsanat",
                 "ASSIGNED_TO": "Tekijä",
+                "ROLE": "Rooli",
                 "CREATED_BY": "Luoja",
                 "CUSTOM_FILTERS": "Omat suodattimet",
                 "EPIC": "Eepos"

@@ -127,6 +127,12 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             delete userFilters[customFilter.id]
             @filterRemoteStorageService.storeFilters(@scope.projectId, userFilters, @.myFiltersHashSuffix).then(@.generateFilters)
 
+    isFilterDataTypeSelected: (filterDataType) ->
+        for filter in @.selectedFilters
+            if (filter['dataType'] == filterDataType)
+                return true
+        return false
+
     saveCustomFilter: (name) ->
         filters = {}
         urlfilters = @location.search()
@@ -137,6 +143,7 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         filters.priority = urlfilters.priority
         filters.assigned_to = urlfilters.assigned_to
         filters.owner = urlfilters.owner
+        filters.role = urlfilters.role
 
         @filterRemoteStorageService.getFilters(@scope.projectId, @.myFiltersHashSuffix).then (userFilters) =>
             userFilters[name] = filters
@@ -157,6 +164,7 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         loadFilters.priority = urlfilters.priority
         loadFilters.assigned_to = urlfilters.assigned_to
         loadFilters.owner = urlfilters.owner
+        loadFilters.role = urlfilters.role
         loadFilters.q = urlfilters.q
 
         return @q.all([
@@ -204,6 +212,15 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                 it.name = it.full_name
 
                 return it
+            role = _.map data.roles, (it) ->
+                if it.id
+                    it.id = it.id.toString()
+                else
+                    it.id = "null"
+
+                it.name = it.name || "Unassigned"
+
+                return it
 
             @.selectedFilters = []
 
@@ -233,6 +250,10 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
             if loadFilters.priority
                 selected = @.formatSelectedFilters("priority", priority, loadFilters.priority)
+                @.selectedFilters = @.selectedFilters.concat(selected)
+
+            if loadFilters.role
+                selected = @.formatSelectedFilters("role", role, loadFilters.role)
                 @.selectedFilters = @.selectedFilters.concat(selected)
 
             @.filterQ = loadFilters.q
@@ -269,6 +290,11 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                     title: @translate.instant("COMMON.FILTERS.CATEGORIES.ASSIGNED_TO"),
                     dataType: "assigned_to",
                     content: assignedTo
+                },
+                {
+                    title: @translate.instant("COMMON.FILTERS.CATEGORIES.ROLE"),
+                    dataType: "role",
+                    content: role
                 },
                 {
                     title: @translate.instant("COMMON.FILTERS.CATEGORIES.CREATED_BY"),
@@ -485,10 +511,9 @@ IssuesDirective = ($log, $location, $template, $compile) ->
             currentOrder = $ctrl.getOrderBy()
             newOrder = target.data("fieldname")
 
-            if newOrder == 'total_voters'
-                finalOrder = if currentOrder == newOrder then newOrder else "-#{newOrder}"
-            else
-                finalOrder = if currentOrder == newOrder then "-#{newOrder}" else newOrder
+            if newOrder == 'total_voters' and currentOrder != "-total_voters"
+                currentOrder = "total_voters"
+            finalOrder = if currentOrder == newOrder then "-#{newOrder}" else newOrder
 
             $scope.$apply ->
                 $ctrl.replaceFilter("order_by", finalOrder)
@@ -568,8 +593,9 @@ IssueStatusInlineEditionDirective = ($repo, $template, $rootscope) ->
 
             $scope.$apply () ->
                 $repo.save(issue).then ->
-                    $ctrl.loadIssues()
                     $ctrl.generateFilters()
+                    if $ctrl.isFilterDataTypeSelected('status')
+                        $ctrl.loadIssues()
 
         taiga.bindOnce $scope, "project", (project) ->
             $el.append(selectionTemplate({ 'statuses':  project.issue_statuses }))
@@ -635,13 +661,17 @@ IssueAssignedToInlineEditionDirective = ($repo, $rootscope, $translate, avatarSe
                 $el.unbind("click")
                 $el.find("a").addClass("not-clickable")
 
-        $scope.$on "assigned-to:added", (ctx, userId, updatedIssue) =>
+        $scope.$on "assigned-to:added", (ctx, userId, updatedIssue) ->
             if updatedIssue.id == issue.id
                 updatedIssue.assigned_to = userId
-                $repo.save(updatedIssue)
-                updateIssue(updatedIssue)
+                $repo.save(issue).then ->
+                    updateIssue(updatedIssue)
+                    $ctrl.generateFilters()
+                    if $ctrl.isFilterDataTypeSelected('assigned_to') \
+                    || $ctrl.isFilterDataTypeSelected('role')
+                        $ctrl.loadIssues()
 
-        $scope.$watch $attrs.tgIssueAssignedToInlineEdition, (val) =>
+        $scope.$watch $attrs.tgIssueAssignedToInlineEdition, (val) ->
             updateIssue(val)
 
         $scope.$on "$destroy", ->

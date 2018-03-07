@@ -13,7 +13,8 @@
         a(
             tg-nav="project-userstories-detail:project=vm.story.getIn(['project_extra_info', 'slug']),ref=vm.story.get('ref')"
             ng-attr-title="{{::vm.story.get('subject')}}"
-        ) #{hash}{{::vm.story.get('ref')}} {{::vm.story.get('subject')}}
+            ng-bind-html="'#'+vm.story.get('ref')+' '+vm.story.get('subject') | emojify"
+        )
         tg-belong-to-epics(
             ng-if="vm.story.get('epics')"
             format="pill"

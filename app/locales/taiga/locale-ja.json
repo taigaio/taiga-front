@@ -207,6 +207,7 @@
                 "PRIORITIES": "優先度",
                 "TAGS": "タグ",
                 "ASSIGNED_TO": "担当者",
+                "ROLE": "役割",
                 "CREATED_BY": "作成者",
                 "CUSTOM_FILTERS": "カスタムフィルター",
                 "EPIC": "エピック"

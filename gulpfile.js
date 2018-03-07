@@ -448,20 +448,6 @@ gulp.task("emoji", function(cb) {
         return emoji.has_img_twitter;
     });
 
-    emojis = emojis.map(function(emoji) {
-        return {
-            name: emoji.short_name,
-            image: emoji.image,
-            id: emoji.unified.toLowerCase()
-        };
-    });
-
-    emojis = emojis.sort(function(a, b) {
-        if(a.name < b.name) return -1;
-        if(a.name > b.name) return 1;
-        return 0;
-    });
-
     emojis.forEach(function(emoji) {
         Jimp.read(emojiPath + "img-twitter-64/" + emoji.image, function (err, lenna) {
             if (err) throw err;
@@ -471,6 +457,22 @@ gulp.task("emoji", function(cb) {
                 .quality(100)
                 .write(__dirname + '/emojis/' + emoji.image);
         });
+    });
+
+    emojis = emojis.map(function(emoji) {
+        return emoji.short_names.map(function(name) {
+            return {
+                name: name,
+                image: emoji.image,
+                id: emoji.unified.toLowerCase()
+            };
+        });
+    }).reduce(function(x, y) { return x.concat(y) }, []);
+
+    emojis = emojis.sort(function(a, b) {
+        if(a.name < b.name) return -1;
+        if(a.name > b.name) return 1;
+        return 0;
     });
 
     var emojisStr = JSON.stringify(emojis);

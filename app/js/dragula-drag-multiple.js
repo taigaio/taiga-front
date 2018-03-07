@@ -7,8 +7,8 @@
     var reset = function(elm) {
         $(elm)
             .removeAttr('style')
-            .removeClass('tg-backlog-us-mirror')
-            .removeClass('backlog-us-mirror')
+            .removeClass('tg-multiple-drag-mirror')
+            .removeClass('multiple-drag-mirror')
             .data('dragMultipleIndex', null)
             .data('dragMultipleActive', false);
     };
@@ -40,6 +40,8 @@
         var currentTop = shadow.position().top;
         var height = shadow.outerHeight();
 
+        $('.gu-transit').addClass('gu-transit-multi');
+
         _.forEach(dragMultiple.items.draggingItems, function(elm, index) {
             var elmIndex = parseInt(elm.data('dragMultipleIndex'), 10);
             var top = currentTop + (elmIndex * height);
@@ -57,21 +59,20 @@
 
         refreshOriginal();
 
-        var current = dragMultiple.items.elm;
-        var container = dragMultiple.items.container;
-
         document.documentElement.removeEventListener('mousemove', removeEventFn);
 
         // reset
         dragMultiple.items = {};
 
         $('.' + mainClass).removeClass(mainClass);
-        $('.tg-backlog-us-mirror').remove();
-        $('.backlog-us-mirror').removeClass('backlog-us-mirror');
+        $('.tg-multiple-drag-mirror').remove();
+        $('.multiple-drag-mirror').removeClass('multiple-drag-mirror');
 
-        $('.tg-backlog-us-dragging')
-            .removeClass('tg-backlog-us-dragging')
+        $('.tg-multiple-drag-dragging')
+            .removeClass('tg-multiple-drag-dragging')
             .show();
+
+        $('.gu-transit-multi').removeClass('gu-transit-multi');
 
         return $('.' + multipleSortableClass);
     };
@@ -180,8 +181,8 @@
             clone = $(item).clone(true);
 
             clone
-                .addClass('backlog-us-mirror')
-                .addClass('tg-backlog-us-mirror')
+                .addClass('multiple-drag-mirror')
+                .addClass('tg-multiple-drag-mirror')
                 .data('dragmultiple:originalPosition', $(item).position())
                 .data('dragMultipleActive', true)
                 .css({
@@ -194,7 +195,7 @@
 
             $(item)
                 .hide()
-                .addClass('tg-backlog-us-dragging');
+                .addClass('tg-multiple-drag-dragging');
 
             return clone;
         });

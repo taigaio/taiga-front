@@ -251,8 +251,6 @@ Qqueue = ($q) ->
         bindAdd: (fn) =>
             return (args...) =>
                 lastPromise = lastPromise.then () => fn.apply(@, args)
-
-            return qqueue
         add: (fn) =>
             if !lastPromise
                 lastPromise = fn()

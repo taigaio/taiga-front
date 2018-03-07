@@ -68,7 +68,7 @@ BacklogSortableDirective = () ->
                 window.dragMultiple.start(item, container)
 
             drake.on 'cloned', (item) ->
-                $(item).addClass('backlog-us-mirror')
+                $(item).addClass('multiple-drag-mirror')
 
             drake.on 'dragend', (item) ->
                 parent = $(item).parent()

@@ -207,6 +207,7 @@
                 "PRIORITIES": "우선순위",
                 "TAGS": "태그",
                 "ASSIGNED_TO": "할당됨",
+                "ROLE": "역할",
                 "CREATED_BY": "생성함",
                 "CUSTOM_FILTERS": "사용자 정의 필터",
                 "EPIC": "에픽"

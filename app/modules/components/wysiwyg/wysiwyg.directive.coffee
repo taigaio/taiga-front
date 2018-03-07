@@ -208,8 +208,6 @@ Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoad
         $scope.codeEditorVisible = false
         $scope.codeLans = []
 
-        wysiwygService.loadEmojis()
-
         wysiwygCodeHightlighterService.getLanguages().then (codeLans) ->
             $scope.codeLans = codeLans
 

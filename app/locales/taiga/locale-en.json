@@ -207,6 +207,7 @@
                 "PRIORITIES": "Priorities",
                 "TAGS": "Tags",
                 "ASSIGNED_TO": "Assigned to",
+                "ROLE": "Role",
                 "CREATED_BY": "Created by",
                 "CUSTOM_FILTERS": "Custom filters",
                 "EPIC": "Epic"
@@ -1016,7 +1017,7 @@
             "CONFIRM": "Are you sure you want to delete your Taiga account?",
             "CANCEL": "Back to settings",
             "ACCEPT": "Delete account",
-            "BLOCK_PROJECT": "Note that all the projects you own projects will be <strong>blocked</strong> after you delete your account. If you do want a project blocked, transfer ownership to another member of each project prior to deleting your account."
+            "BLOCK_PROJECT": "Note that all the projects you own projects will be <strong>blocked</strong> after you delete your account. If you do not want a project blocked, transfer ownership to another member of each project prior to deleting your account. "
         },
         "DELETE_PROJECT": {
             "TITLE": "Delete project",
@@ -1065,13 +1066,15 @@
             "PLACEHOLDER_STATUS": "Task status",
             "OPTION_UNASSIGNED": "Unassigned",
             "PLACEHOLDER_SHORT_DESCRIPTION": "Type a short description",
-            "ACTION_EDIT": "Edit task"
+            "ACTION_EDIT": "Edit task",
+            "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?"
         },
         "CREATE_EDIT_US": {
             "TITLE": "New US",
             "PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this US",
             "NEW_US": "New user story",
-            "EDIT_US": "Edit user story"
+            "EDIT_US": "Edit user story",
+            "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?"
         },
         "DELETE_SPRINT": {
             "TITLE": "Delete sprint"

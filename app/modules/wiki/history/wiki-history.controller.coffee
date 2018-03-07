@@ -28,6 +28,7 @@ class WikiHistoryController
 
     constructor: (@wikiHistoryService) ->
         taiga.defineImmutableProperty @, 'historyEntries', () => return @wikiHistoryService.historyEntries
+        @.toggle = false
 
     initializeHistoryEntries: (wikiId) ->
         if wikiId

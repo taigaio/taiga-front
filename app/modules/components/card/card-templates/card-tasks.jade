@@ -4,4 +4,5 @@ ul.card-tasks(ng-if="vm.isRelatedTasksVisible()")
             href="#"
             tg-nav="project-tasks-detail:project=vm.project.slug,ref=task.get('ref')",
             ng-class="{'closed-task': task.get('is_closed'), 'blocked-task': task.get('is_blocked')}"
-        ) {{"#" + task.get('ref')}} {{task.get('subject')}}
+            ng-bind-html="'#'+task.get('ref')+' '+task.get('subject') | emojify"
+        )

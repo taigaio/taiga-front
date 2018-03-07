@@ -3,7 +3,8 @@ span.belong-to-epic-text-wrapper(tg-repeat="epic in immutable_epics track by epi
     a.belong-to-epic-text(
         href=""
         tg-nav="project-epics-detail:project=epic.getIn(['project', 'slug']),ref=epic.get('ref')"
-    ) #{hash}{{epic.get('id')}} {{epic.get('subject')}}
+        ng-bind-html="'#'+epic.get('ref')+' '+epic.get('subject') | emojify"
+    )
     span.belong-to-epic-label(
         ng-style="::{'background-color': epic.get('color')}"
         translate="EPICS.EPIC"

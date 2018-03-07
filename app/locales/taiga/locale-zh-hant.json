@@ -207,6 +207,7 @@
                 "PRIORITIES": "優先性",
                 "TAGS": "標籤",
                 "ASSIGNED_TO": "指派給 ",
+                "ROLE": "角色",
                 "CREATED_BY": "由創建",
                 "CUSTOM_FILTERS": "客製過濾器 ",
                 "EPIC": "Epic"

@@ -48,7 +48,6 @@ KanbanSortableDirective = ($repo, $rs, $rootscope) ->
             if not ($scope.project.my_permissions.indexOf("modify_us") > -1)
                 return
 
-            oldParentScope = null
             newParentScope = null
             itemEl = null
             tdom = $el
@@ -70,23 +69,44 @@ KanbanSortableDirective = ($repo, $rs, $rootscope) ->
             })
 
             drake.on 'drag', (item) ->
-                oldParentScope = $(item).parent().scope()
+                window.dragMultiple.start(item, containers)
+
+            drake.on 'cloned', (item, dropTarget) ->
+                $(item).addClass('multiple-drag-mirror')
 
             drake.on 'dragend', (item) ->
                 parentEl = $(item).parent()
-                itemEl = $(item)
-                itemUs = itemEl.scope().us
-                itemIndex = itemEl.index()
                 newParentScope = parentEl.scope()
 
                 newStatusId = newParentScope.s.id
-                oldStatusId = oldParentScope.s.id
+                dragMultipleItems = window.dragMultiple.stop()
 
-                if newStatusId != oldStatusId
-                    deleteElement(itemEl)
+                # if it is not drag multiple
+                if !dragMultipleItems.length
+                    dragMultipleItems = [item]
 
-                $scope.$apply ->
-                    $rootscope.$broadcast("kanban:us:move", itemUs, itemUs.getIn(['model', 'status']), newStatusId, itemIndex)
+                firstElement = dragMultipleItems[0]     
+                index = $(firstElement).index()  
+                newStatus = newParentScope.s.id
+
+                usList = _.map dragMultipleItems, (item) -> $(item).scope().us   
+
+                finalUsList = _.map usList, (item)  -> 
+                    return {
+                        id: item.get('id'),
+                        oldStatusId: item.getIn(['model', 'status'])
+                    }
+
+                $scope.$apply ->   
+                    _.each usList, (item, key) => 
+                        oldStatus = item.getIn(['model', 'status'])
+                        sameContainer = newStatus == oldStatus
+
+                        if !sameContainer
+                            itemEl = $(dragMultipleItems[key])
+                            deleteElement(itemEl)
+
+                    $rootscope.$broadcast("kanban:us:move", finalUsList, newStatus, index)
 
             scroll = autoScroll(containers, {
                 margin: 100,
