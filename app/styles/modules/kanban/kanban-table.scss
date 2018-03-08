@@ -33,6 +33,9 @@ $column-padding: .5rem 1rem;
             opacity: .8;
             padding: .5rem 0;
             transition: opacity .3s linear;
+            .title {
+                display: none;
+            }
             .option:not(.hunfold),
             span {
                 display: none;
