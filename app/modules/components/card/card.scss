@@ -3,6 +3,7 @@
     cursor: move;
     display: block;
     margin: 0 .6rem .6rem;
+    outline: none;
     overflow: hidden;
     transition: box-shadow .2s ease-in;
     .loading-extra.loading {
@@ -232,6 +233,7 @@
     display: flex;
     justify-content: center;
     margin: 0;
+    outline: none;
     padding: .25rem;
     &:hover {
         background: linear-gradient(to bottom, $white, darken($white, 1%));

@@ -1,6 +1,7 @@
-h2.card-title
+h2.card-title()
     a(
         href=""
+        tg-ctrl-click-disable
         tg-nav="{{vm.getNavKey()}}:project=vm.project.slug,ref=vm.item.getIn(['model', 'ref'])",
         tg-nav-get-params="{\"kanban-status\": {{vm.item.getIn(['model', 'status'])}}}"
         title="#{{ ::vm.item.getIn(['model', 'ref']) }} {{ vm.item.getIn(['model', 'subject'])}}"
