@@ -1,5 +1,5 @@
 .card-unfold.ng-animate-disabled(
-    ng-click="!$event.ctrlKey && vm.toggleFold()"
+    ng-click="!$event.ctrlKey && !$event.metaKey && vm.toggleFold()"
     ng-if="vm.visible('unfold') && (vm.hasTasks() || vm.hasVisibleAttachments())"
     role="button"
 )

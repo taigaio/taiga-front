@@ -23,7 +23,7 @@
         tg-check-permission="{{vm.getPermissionsKey()}}"
     )
         a.e2e-assign.card-owner-assign(
-            ng-click="!$event.ctrlKey && vm.onClickAssignedTo({id: vm.item.get('id')})"
+            ng-click="!$event.ctrlKey && !$event.metaKey && vm.onClickAssignedTo({id: vm.item.get('id')})"
             href=""
           )
             tg-svg(svg-icon="icon-add-user")
@@ -31,7 +31,7 @@
 
         a.e2e-edit.card-edit(
             href=""
-            ng-click="!$event.ctrlKey && vm.onClickEdit({id: vm.item.get('id')})"
+            ng-click="!$event.ctrlKey && !$event.metaKey && vm.onClickEdit({id: vm.item.get('id')})"
             tg-loading="vm.item.get('loading')"
         )
             tg-svg(svg-icon="icon-edit")

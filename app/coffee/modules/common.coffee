@@ -456,3 +456,17 @@ module.directive 'tgPreloadImage', () ->
 
                 preload(src, onLoad)
     }
+
+
+#############################################################################
+## Disable link href when Ctrl Key is pressed
+#############################################################################
+
+CtrlClickDisable = () ->
+    link = ($scope, $el, $attrs) ->
+        $el.on "click", ($event) ->
+            if ($event.ctrlKey || $event.metaKey)
+                $event.preventDefault()
+    return {link: link}
+
+module.directive("tgCtrlClickDisable", CtrlClickDisable)
