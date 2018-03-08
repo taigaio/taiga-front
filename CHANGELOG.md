@@ -1,6 +1,6 @@
 # Changelog #
 
-## Unreleased
+## 3.2.1 (2018-03-08)
 
 ### Misc
 - Fix multiple drag in macOS.
