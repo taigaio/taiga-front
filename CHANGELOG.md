@@ -1,5 +1,11 @@
 # Changelog #
 
+## Unreleased
+
+### Misc
+- Fix multiple drag in macOS.
+- Repair collapsed column style.
+
 ## 3.2.0 Betula nana (2018-03-07)
 
 ### Features
