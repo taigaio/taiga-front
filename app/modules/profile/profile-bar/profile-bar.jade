@@ -1,7 +1,7 @@
 section.profile-bar
     div.profile-image-wrapper(ng-class="::{'is-current-user': vm.isCurrentUser}")
         img.profile-img(
-            tg-avatar="vm.user"
+            tg-avatar-big="vm.user"
             alt="{{::vm.user.get('full_name')}}"
         )
         a.profile-edition(title="{{ 'USER.PROFILE.EDIT' | translate }}", tg-nav="user-settings-user-profile", translate="USER.PROFILE.EDIT")
