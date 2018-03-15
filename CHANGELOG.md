@@ -1,4 +1,10 @@
-# Changelog #
+# Changelog
+
+## 3.2.2 (2018-03-15)
+
+### Misc
+
+- Minor bug fixes.
 
 ## 3.2.1 (2018-03-08)
 

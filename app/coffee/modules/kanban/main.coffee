@@ -302,13 +302,13 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
     moveUs: (ctx, usList, newStatusId, index) ->
         @.cleanSelectedUss()
-        
+
         usList = _.map usList, (us) =>
             return @kanbanUserstoriesService.getUsModel(us.id)
 
         data = @kanbanUserstoriesService.move(usList, newStatusId, index)
 
-        promise = @rs.userstories.bulkUpdateKanbanOrder(@scope.projectId, data.bulkOrders)
+        promise = @rs.userstories.bulkUpdateKanbanOrder(@scope.projectId, newStatusId, data.bulkOrders)
 
         promise.then () =>
             # saving
