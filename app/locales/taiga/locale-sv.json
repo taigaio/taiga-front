@@ -1017,7 +1017,7 @@
             "CONFIRM": "Är du säker på att du vill radera kontot?",
             "CANCEL": "Tillbaka till inställningar",
             "ACCEPT": "Ta bort konto",
-            "BLOCK_PROJECT": "Notera att alla projekt du äger kommer bli <strong>blockerade</strong> efter att du raderar ditt konto. Om du vill blockera ett projekt, överför ägandet till en annan medlem för respektive projekt innan du raderar ditt konto. "
+            "BLOCK_PROJECT": "Note that all the projects you own projects will be <strong>blocked</strong> after you delete your account. If you do not want a project blocked, transfer ownership to another member of each project prior to deleting your account."
         },
         "DELETE_PROJECT": {
             "TITLE": "Ta bort projekt",
@@ -1066,13 +1066,15 @@
             "PLACEHOLDER_STATUS": "Status för uppgift",
             "OPTION_UNASSIGNED": "Otilldelad",
             "PLACEHOLDER_SHORT_DESCRIPTION": "Skriv en kort beskrivning",
-            "ACTION_EDIT": "Ändra uppgiften"
+            "ACTION_EDIT": "Ändra uppgiften",
+            "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?"
         },
         "CREATE_EDIT_US": {
             "TITLE": "Nytt US",
             "PLACEHOLDER_DESCRIPTION": "Vänligen lägg till en beskrivande text för att hjälpa andra att förstå den här användarhistorien. ",
             "NEW_US": "Ny användarhistorie",
-            "EDIT_US": "Ändra användarhistorien"
+            "EDIT_US": "Ändra användarhistorien",
+            "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?"
         },
         "DELETE_SPRINT": {
             "TITLE": "Ta bort sprint"

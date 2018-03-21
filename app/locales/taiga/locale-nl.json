@@ -1017,7 +1017,7 @@
             "CONFIRM": "Weet je zeker dat je je Taiga account wilt verwijderen?",
             "CANCEL": "Back to settings",
             "ACCEPT": "Delete account",
-            "BLOCK_PROJECT": "Note that all the projects you own projects will be <strong>blocked</strong> after you delete your account. If you do want a project blocked, transfer ownership to another member of each project prior to deleting your account."
+            "BLOCK_PROJECT": "Note that all the projects you own projects will be <strong>blocked</strong> after you delete your account. If you do not want a project blocked, transfer ownership to another member of each project prior to deleting your account."
         },
         "DELETE_PROJECT": {
             "TITLE": "Verwijder project",
@@ -1066,13 +1066,15 @@
             "PLACEHOLDER_STATUS": "Taak status",
             "OPTION_UNASSIGNED": "Niet toegewezen",
             "PLACEHOLDER_SHORT_DESCRIPTION": "Geef een korte beschrijving",
-            "ACTION_EDIT": "Bewerk taak"
+            "ACTION_EDIT": "Bewerk taak",
+            "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?"
         },
         "CREATE_EDIT_US": {
             "TITLE": "Nieuwe US",
             "PLACEHOLDER_DESCRIPTION": "Voeg alstublieft een omschrijvende tekst toe om anderen deze US beter te helpen begrijpen",
             "NEW_US": "Nieuwe user story",
-            "EDIT_US": "Beschrijf user story"
+            "EDIT_US": "Beschrijf user story",
+            "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?"
         },
         "DELETE_SPRINT": {
             "TITLE": "Verwijder sprint"

@@ -1066,13 +1066,15 @@
             "PLACEHOLDER_STATUS": "Statut de la tâche",
             "OPTION_UNASSIGNED": "Non affecté",
             "PLACEHOLDER_SHORT_DESCRIPTION": "Saisissez une description courte",
-            "ACTION_EDIT": "Modifier la tâche"
+            "ACTION_EDIT": "Modifier la tâche",
+            "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?"
         },
         "CREATE_EDIT_US": {
             "TITLE": "Nouveau récit utilisateur",
             "PLACEHOLDER_DESCRIPTION": "Veuillez ajouter une description pour aider les autres à mieux comprendre ce récit utilisateur",
             "NEW_US": "Nouveau récit utilisateur",
-            "EDIT_US": "Modifier le récit utilisateur"
+            "EDIT_US": "Modifier le récit utilisateur",
+            "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?"
         },
         "DELETE_SPRINT": {
             "TITLE": "Supprimer le sprint"

@@ -1017,7 +1017,7 @@
             "CONFIRM": "你確定要刪除Taiga帳戶嗎？",
             "CANCEL": "回到設定",
             "ACCEPT": "移除帳號",
-            "BLOCK_PROJECT": "Note that all the projects you own projects will be <strong>blocked</strong> after you delete your account. If you do want a project blocked, transfer ownership to another member of each project prior to deleting your account."
+            "BLOCK_PROJECT": "Note that all the projects you own projects will be <strong>blocked</strong> after you delete your account. If you do not want a project blocked, transfer ownership to another member of each project prior to deleting your account."
         },
         "DELETE_PROJECT": {
             "TITLE": "刪除專案",
@@ -1066,13 +1066,15 @@
             "PLACEHOLDER_STATUS": "任務狀態",
             "OPTION_UNASSIGNED": "未指派",
             "PLACEHOLDER_SHORT_DESCRIPTION": "輸入一段簡短描述",
-            "ACTION_EDIT": "編輯任務 "
+            "ACTION_EDIT": "編輯任務 ",
+            "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?"
         },
         "CREATE_EDIT_US": {
             "TITLE": "新使用者故事",
             "PLACEHOLDER_DESCRIPTION": "請加上一些描述文字以幫助其它人易了解此使用者故事",
             "NEW_US": "新使用者故事",
-            "EDIT_US": "編輯使用者故事"
+            "EDIT_US": "編輯使用者故事",
+            "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?"
         },
         "DELETE_SPRINT": {
             "TITLE": "刪除衝刺任務"

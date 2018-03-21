@@ -1017,7 +1017,7 @@
             "CONFIRM": "Haluatko varmasti poistaa Taiga-tunnuksesi?",
             "CANCEL": "Takaisin asetuksiin",
             "ACCEPT": "Poista tili",
-            "BLOCK_PROJECT": "Note that all the projects you own projects will be <strong>blocked</strong> after you delete your account. If you do want a project blocked, transfer ownership to another member of each project prior to deleting your account."
+            "BLOCK_PROJECT": "Note that all the projects you own projects will be <strong>blocked</strong> after you delete your account. If you do not want a project blocked, transfer ownership to another member of each project prior to deleting your account."
         },
         "DELETE_PROJECT": {
             "TITLE": "Poista projekti",
@@ -1066,13 +1066,15 @@
             "PLACEHOLDER_STATUS": "Tehtävän tila",
             "OPTION_UNASSIGNED": "Ilman tekijää",
             "PLACEHOLDER_SHORT_DESCRIPTION": "Kirjoita lyhyt kuvaus",
-            "ACTION_EDIT": "Muokkaa tehtävää"
+            "ACTION_EDIT": "Muokkaa tehtävää",
+            "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?"
         },
         "CREATE_EDIT_US": {
             "TITLE": "Uusi Kt",
             "PLACEHOLDER_DESCRIPTION": "Lisää kuvaus jotta muut ymmärtäisivät käyttäjätarinasi paremmin",
             "NEW_US": "Uusi käyttäjätarina",
-            "EDIT_US": "Muokkaa käyttäjätarinaa"
+            "EDIT_US": "Muokkaa käyttäjätarinaa",
+            "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?"
         },
         "DELETE_SPRINT": {
             "TITLE": "Poista kierros"

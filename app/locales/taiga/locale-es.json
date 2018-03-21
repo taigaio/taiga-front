@@ -1017,7 +1017,7 @@
             "CONFIRM": "¿Está seguro que deseas eliminar tu cuenta de Taiga?",
             "CANCEL": "Volver a los ajustes",
             "ACCEPT": "Eliminar cuenta",
-            "BLOCK_PROJECT": "Recuerde que todos los proyectos de los cuales usted es dueño seran <strong>bloqueados</strong> despues de eliminar su cuenta. si desea mantener un proyecto bloqueado, transfiera el dominio a otro usuario en cada proyecto antes de eliminar la cuenta."
+            "BLOCK_PROJECT": "Recuerde que todos los proyectos de los cuales usted es dueño serán <strong>bloqueados</strong> después de eliminar su cuenta. Si no desea que un proyecto sea bloqueado, transfiera la propiedad de cada proyecto a otro usuario antes de eliminar la cuenta."
         },
         "DELETE_PROJECT": {
             "TITLE": "Borrar proyecto",
@@ -1066,13 +1066,15 @@
             "PLACEHOLDER_STATUS": "Estado de tarea",
             "OPTION_UNASSIGNED": "No asignada",
             "PLACEHOLDER_SHORT_DESCRIPTION": "Escribe una breve descripción",
-            "ACTION_EDIT": "Editar tarea"
+            "ACTION_EDIT": "Editar tarea",
+            "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?"
         },
         "CREATE_EDIT_US": {
             "TITLE": "Nueva Historia de Usuario",
             "PLACEHOLDER_DESCRIPTION": "Por favor añade un texto descriptivo que pueda ayudar a otros a entender mejor esta historia.",
             "NEW_US": "Nueva historia de usuario",
-            "EDIT_US": "Editar historia de usuario"
+            "EDIT_US": "Editar historia de usuario",
+            "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?"
         },
         "DELETE_SPRINT": {
             "TITLE": "Borrar sprint"

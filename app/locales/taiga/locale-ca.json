@@ -1017,7 +1017,7 @@
             "CONFIRM": "Segur que vols borrar el teu compte de Taiga? ",
             "CANCEL": "Back to settings",
             "ACCEPT": "Delete account",
-            "BLOCK_PROJECT": "Note that all the projects you own projects will be <strong>blocked</strong> after you delete your account. If you do want a project blocked, transfer ownership to another member of each project prior to deleting your account."
+            "BLOCK_PROJECT": "Note that all the projects you own projects will be <strong>blocked</strong> after you delete your account. If you do not want a project blocked, transfer ownership to another member of each project prior to deleting your account."
         },
         "DELETE_PROJECT": {
             "TITLE": "Esborrar projecte",
@@ -1066,13 +1066,15 @@
             "PLACEHOLDER_STATUS": "Estat de la tasca",
             "OPTION_UNASSIGNED": "Sense assignar",
             "PLACEHOLDER_SHORT_DESCRIPTION": "Escriu una descripció curta",
-            "ACTION_EDIT": "Editar tasca"
+            "ACTION_EDIT": "Editar tasca",
+            "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?"
         },
         "CREATE_EDIT_US": {
             "TITLE": "Nova US",
             "PLACEHOLDER_DESCRIPTION": "Per favor afegix una descripció per que altres puguen entendre millor aquesta US",
             "NEW_US": "Nova història d'usuari",
-            "EDIT_US": "Edita història d'usuari"
+            "EDIT_US": "Edita història d'usuari",
+            "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?"
         },
         "DELETE_SPRINT": {
             "TITLE": "Esborrar sprint"

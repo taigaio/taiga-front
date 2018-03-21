@@ -278,7 +278,7 @@
         "PAGE_DESCRIPTION": "スタートアップ、デベロッパー、デザイナーのための、仕事を真から楽しくするシンプルで美しいプロジェクトマネージメントツール、Taigaにログインしましょう。"
     },
     "AUTH": {
-        "INVITED_YOU": "があなたをプロジェクトに参加するよう招待しています",
+        "INVITED_YOU": "があなたをプロジェクトに招待しています",
         "NOT_REGISTERED_YET": "未登録ですか？",
         "REGISTER": "登録",
         "CREATE_ACCOUNT": "こちらから無料でアカウントを作成"
@@ -291,7 +291,7 @@
         "ACTION_ENTER": "決定",
         "ACTION_SIGN_IN": "ログイン",
         "PLACEHOLDER_AUTH_PASSWORD": "パスワード",
-        "ALT_LOGIN": "Or login with"
+        "ALT_LOGIN": "または次でログイン"
     },
     "LOGIN_FORM": {
         "ERROR_AUTH_INCORRECT": "「あなたのユーザー名/メールアドレス または パスワードが間違っている」とウンパルンパたちが言っています。",
@@ -1066,13 +1066,15 @@
             "PLACEHOLDER_STATUS": "タスクステータス",
             "OPTION_UNASSIGNED": "未アサイン",
             "PLACEHOLDER_SHORT_DESCRIPTION": "要約を入力",
-            "ACTION_EDIT": "タスクを編集"
+            "ACTION_EDIT": "タスクを編集",
+            "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?"
         },
         "CREATE_EDIT_US": {
             "TITLE": "新規 US",
             "PLACEHOLDER_DESCRIPTION": "このユーザーストーリーを他の人が理解できるように説明を加えてください",
             "NEW_US": "新しいユーザーストーリー",
-            "EDIT_US": "ユーザーストーリーを編集"
+            "EDIT_US": "ユーザーストーリーを編集",
+            "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?"
         },
         "DELETE_SPRINT": {
             "TITLE": "スプリントを削除"

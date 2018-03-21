@@ -1066,13 +1066,15 @@
             "PLACEHOLDER_STATUS": "Situazione del compito",
             "OPTION_UNASSIGNED": "Non assegnato",
             "PLACEHOLDER_SHORT_DESCRIPTION": "Inserisci una descrizione breve",
-            "ACTION_EDIT": "Modifica compito"
+            "ACTION_EDIT": "Modifica compito",
+            "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?"
         },
         "CREATE_EDIT_US": {
             "TITLE": "Nuova storia utente",
             "PLACEHOLDER_DESCRIPTION": "Aggiungere un testo descrittivo che aiuti gli altri nel comprendere questa storia utente",
             "NEW_US": "Nuova storia utente",
-            "EDIT_US": "Modifica la storia utente"
+            "EDIT_US": "Modifica la storia utente",
+            "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?"
         },
         "DELETE_SPRINT": {
             "TITLE": "Cancella sprint"

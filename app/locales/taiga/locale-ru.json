@@ -1017,7 +1017,7 @@
             "CONFIRM": "Вы уверены, что хотите удалить ваш аккаунт?",
             "CANCEL": "Вернуться к настройкам",
             "ACCEPT": "Удалить аккаунт",
-            "BLOCK_PROJECT": "Note that all the projects you own projects will be <strong>blocked</strong> after you delete your account. If you do want a project blocked, transfer ownership to another member of each project prior to deleting your account."
+            "BLOCK_PROJECT": "Note that all the projects you own projects will be <strong>blocked</strong> after you delete your account. If you do not want a project blocked, transfer ownership to another member of each project prior to deleting your account."
         },
         "DELETE_PROJECT": {
             "TITLE": "Удалить проект",
@@ -1066,13 +1066,15 @@
             "PLACEHOLDER_STATUS": "Статус задачи",
             "OPTION_UNASSIGNED": "Не назначено",
             "PLACEHOLDER_SHORT_DESCRIPTION": "Введите краткое описание",
-            "ACTION_EDIT": "Редактировать задачу"
+            "ACTION_EDIT": "Редактировать задачу",
+            "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?"
         },
         "CREATE_EDIT_US": {
             "TITLE": "Новая ПИ",
             "PLACEHOLDER_DESCRIPTION": "Пожалуйста, добавьте описание, чтобы другие лучше поняли эту ПИ",
             "NEW_US": "Новая пользовательская история",
-            "EDIT_US": "Изменить пользовательскую историю"
+            "EDIT_US": "Изменить пользовательскую историю",
+            "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?"
         },
         "DELETE_SPRINT": {
             "TITLE": "Удалить спринт"

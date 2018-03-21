@@ -1066,13 +1066,15 @@
             "PLACEHOLDER_STATUS": "태스크 상태",
             "OPTION_UNASSIGNED": "할당되지 않음",
             "PLACEHOLDER_SHORT_DESCRIPTION": "간단한 설명을 입력하세요",
-            "ACTION_EDIT": "태스크 수정하기"
+            "ACTION_EDIT": "태스크 수정하기",
+            "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?"
         },
         "CREATE_EDIT_US": {
             "TITLE": "새 유저 스토리",
             "PLACEHOLDER_DESCRIPTION": "다른 사용자들이 이 유저 스토리에 대해 이해할 수 있도록 설명을 입력해주세요.",
             "NEW_US": "새 유저 스토리",
-            "EDIT_US": "유저 스토리 수정하기"
+            "EDIT_US": "유저 스토리 수정하기",
+            "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?"
         },
         "DELETE_SPRINT": {
             "TITLE": "스프린트 삭제하기"

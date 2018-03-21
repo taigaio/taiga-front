@@ -1066,13 +1066,15 @@
             "PLACEHOLDER_STATUS": "任务状态",
             "OPTION_UNASSIGNED": "未指派",
             "PLACEHOLDER_SHORT_DESCRIPTION": "输入一段简短描述",
-            "ACTION_EDIT": "编辑任务"
+            "ACTION_EDIT": "编辑任务",
+            "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?"
         },
         "CREATE_EDIT_US": {
             "TITLE": "新建用户故事",
             "PLACEHOLDER_DESCRIPTION": "请加上一些描述文字以帮助其它人了解此用户故事",
             "NEW_US": "新建用户故事",
-            "EDIT_US": "编辑用户故事"
+            "EDIT_US": "编辑用户故事",
+            "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?"
         },
         "DELETE_SPRINT": {
             "TITLE": "删除冲刺任务"

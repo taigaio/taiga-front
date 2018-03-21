@@ -1066,13 +1066,15 @@
             "PLACEHOLDER_STATUS": "Oppgavestatus",
             "OPTION_UNASSIGNED": "Ikke tildelt",
             "PLACEHOLDER_SHORT_DESCRIPTION": "Skriv en kort beskrivelse",
-            "ACTION_EDIT": "Rediger oppgave"
+            "ACTION_EDIT": "Rediger oppgave",
+            "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?"
         },
         "CREATE_EDIT_US": {
             "TITLE": "Ny BH",
             "PLACEHOLDER_DESCRIPTION": "Vennligst legg til en beskrivende tekst for bedre å hjelpe andre til å forstå denne BH",
             "NEW_US": "Ny brukerhistorie",
-            "EDIT_US": "Rediger brukerhistorie"
+            "EDIT_US": "Rediger brukerhistorie",
+            "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?"
         },
         "DELETE_SPRINT": {
             "TITLE": "Slett sprint"

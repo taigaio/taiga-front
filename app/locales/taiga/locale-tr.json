@@ -1066,13 +1066,15 @@
             "PLACEHOLDER_STATUS": "Görev durumu",
             "OPTION_UNASSIGNED": "Atama Yok",
             "PLACEHOLDER_SHORT_DESCRIPTION": "Kısa bir tanım yaz",
-            "ACTION_EDIT": "Görevi düzenle"
+            "ACTION_EDIT": "Görevi düzenle",
+            "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?"
         },
         "CREATE_EDIT_US": {
             "TITLE": "Yeni KH",
             "PLACEHOLDER_DESCRIPTION": "Lütfen bu KH ye betimleyici bilgiler girerek diğerlerinin daha iyi anlamasına yardımcı olunuz.",
             "NEW_US": "Yeni kullanıcı hikayesi",
-            "EDIT_US": "Kullanıcı hikayesini düzenle"
+            "EDIT_US": "Kullanıcı hikayesini düzenle",
+            "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?"
         },
         "DELETE_SPRINT": {
             "TITLE": "Koşuyu sil"

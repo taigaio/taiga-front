@@ -1066,13 +1066,15 @@
             "PLACEHOLDER_STATUS": "Aufgaben-Status",
             "OPTION_UNASSIGNED": "Nicht zugeordnet",
             "PLACEHOLDER_SHORT_DESCRIPTION": "Geben Sie eine kurze Beschreibung ein",
-            "ACTION_EDIT": "Aufgabe bearbeiten"
+            "ACTION_EDIT": "Aufgabe bearbeiten",
+            "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?"
         },
         "CREATE_EDIT_US": {
             "TITLE": "Neue User-Story",
             "PLACEHOLDER_DESCRIPTION": "Fügen Sie bitte einen Beschreibungstext hinzu, um anderen diese User-Story näher zu erläutern",
             "NEW_US": "Neue User-Story",
-            "EDIT_US": "User-Story bearbeiten"
+            "EDIT_US": "User-Story bearbeiten",
+            "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?"
         },
         "DELETE_SPRINT": {
             "TITLE": "Sprint löschen"
