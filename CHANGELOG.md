@@ -1,5 +1,12 @@
 # Changelog
 
+## 3.2.3 (2018-04-04)
+
+### Misc
+
+- Minor bug fixes.
+- Update locales.
+
 ## 3.2.2 (2018-03-15)
 
 ### Misc
