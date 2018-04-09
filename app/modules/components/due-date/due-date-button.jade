@@ -1,0 +1,9 @@
+a.due-date-button.button-gray.is-editable(
+    href=""
+    ng-if="vm.visible()"
+    ng-disabled="vm.disabled()"
+    ng-class="vm.color()"
+    ng-attr-title="{{ vm.title() }}"
+    ng-click="vm.setDueDate()"
+)
+    tg-svg(svg-icon="icon-clock")

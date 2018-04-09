@@ -127,6 +127,14 @@ div.wrapper(
             ) {{'US.TRIBE.PUBLISH_INFO' | translate}}
 
         section.ticket-detail-settings
+            tg-due-date(
+                tg-check-permission="modify_us"
+                due-date="us.due_date"
+                due-date-status="us.due_date_status"
+                is-closed="us.is_closed"
+                item="us"
+                format="button"
+            )
             tg-us-team-requirement-button(ng-model="us")
             tg-us-client-requirement-button(ng-model="us")
             tg-block-button(
