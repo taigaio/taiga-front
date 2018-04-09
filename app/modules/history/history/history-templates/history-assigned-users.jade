@@ -1,0 +1,13 @@
+.diff-status-wrapper
+    span.key(
+        translate="ACTIVITY.FIELDS.ASSIGNED_USERS"
+    )
+    span.diff(ng-if="vm.diff[0]") {{vm.diff[0]}}
+    span.diff(ng-if="!vm.diff[0]" translate="ACTIVITY.VALUES.UNASSIGNED")
+
+    tg-svg(
+        svg-icon="icon-arrow-right"
+    )
+
+    span.diff(ng-if="vm.diff[1]") {{vm.diff[1]}}
+    span.diff(ng-if="!vm.diff[1]" translate="ACTIVITY.VALUES.UNASSIGNED")
