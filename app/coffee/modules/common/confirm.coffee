@@ -86,8 +86,10 @@ class ConfirmService extends taiga.Service
 
         return defered.promise
 
-    askOnDelete: (title, message) ->
-        return @.ask(title, @translate.instant("NOTIFICATION.ASK_DELETE"), message)
+    askOnDelete: (title, message, subtitle) ->
+        if not subtitle?
+            subtitle = @translate.instant("NOTIFICATION.ASK_DELETE")
+        return @.ask(title, subtitle, message)
 
     askChoice: (title, subtitle, choices, replacement, warning, lightboxSelector=".lightbox-ask-choice") ->
         defered = @q.defer()

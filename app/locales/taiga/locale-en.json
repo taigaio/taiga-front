@@ -1076,6 +1076,10 @@
             "EDIT_US": "Edit user story",
             "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?"
         },
+        "DELETE_DUE_DATE": {
+            "TITLE": "Delete due date",
+            "SUBTITLE": "Are you sure you want to delete this due date?"
+        },
         "DELETE_SPRINT": {
             "TITLE": "Delete sprint"
         },
@@ -1106,6 +1110,19 @@
             "WARNING": "The email will be received by the project admins",
             "PLACEHOLDER": "Write your message",
             "SEND": "Send"
+        },
+        "SET_DUE_DATE": {
+            "TITLE": "Set due date",
+            "PLACEHOLDER_DUE_DATE": "Select date",
+            "REASON_FOR_DUE_DATE": "Reason for the due date",
+            "PLACEHOLDER_REASON_FOR_DUE_DATE": "Is this due date due to something?",
+            "SUGGESTIONS": {
+                "IN_ONE_WEEK": "In one week",
+                "IN_TWO_WEEKS": "In two weeks",
+                "IN_ONE_MONTH": "In one month",
+                "IN_THREE_MONTHS": "In three months"
+            },
+            "TITLE_ACTION_DELETE_DUE_DATE": "Delete due date"
         }
     },
     "EPIC": {

@@ -54,10 +54,10 @@ class LightboxService extends taiga.Service
         @animationFrame.add ->
             $el.addClass("open")
             $el.one "transitionend", =>
-                firstField = $el.find('input,textarea').first()
+                firstField = $el.find('input:not(.no-focus),textarea:not(.no-focus)').first()
 
                 if firstField.length
-                    $el.find('input,textarea').first().focus()
+                    firstField.focus()
                 else if document.activeElement
                     $(document.activeElement).blur()
 
@@ -802,3 +802,73 @@ LightboxLeaveProjectWarningDirective = (lightboxService, $template, $compile) ->
     }
 
 module.directive("tgLightboxLeaveProjectWarning", ["lightboxService", LightboxLeaveProjectWarningDirective])
+
+
+#############################################################################
+## Set Due Date Lightbox Directive
+#############################################################################
+
+SetDueDateDirective = (lightboxService, $loading, $translate, $confirm, $modelTransform) ->
+    link = ($scope, $el, attrs) ->
+        prettyDate = $translate.instant("COMMON.PICKERDATE.FORMAT")
+        lightboxService.open($el)
+
+        if ($scope.object.due_date)
+            $scope.new_due_date = moment($scope.object.due_date).format(prettyDate)
+
+        $el.on "click", ".suggestion", (event) ->
+            target = angular.element(event.currentTarget)
+            quantity = target.data('quantity')
+            unit = target.data('unit')
+            value = moment().add(quantity, unit).format(prettyDate)
+            $el.find(".due-date").val(value)
+
+        save = ->
+            currentLoading = $loading()
+                .target($el.find(".submit-button"))
+                .start()
+
+            transform = $modelTransform.save (object) ->
+                new_due_date = $('.due-date').val()
+                object.due_date = if (new_due_date) \
+                    then moment(new_due_date, prettyDate).format("YYYY-MM-DD") \
+                    else null
+                return object
+
+            transform.then ->
+                $confirm.notify("success")
+
+            transform.then null, ->
+                $confirm.notify("error")
+
+            transform.finally ->
+                currentLoading.finish()
+                lightboxService.close($el)
+
+        $el.on "click", ".submit-button", (event) ->
+            event.preventDefault()
+            save()
+
+        remove = ->
+            title = $translate.instant("LIGHTBOX.DELETE_DUE_DATE.TITLE")
+            subtitle = $translate.instant("LIGHTBOX.DELETE_DUE_DATE.SUBTITLE")
+            message = moment($scope.object.due_date).format(prettyDate)
+
+            $confirm.askOnDelete(title, message, subtitle).then (askResponse) ->
+                askResponse.finish()
+                $('.due-date').val(null)
+                $scope.object.due_date_reason = null
+                save()
+
+        $el.on "click", ".delete-due-date", (event) ->
+            event.preventDefault()
+            remove()
+
+    return {
+        templateUrl: 'common/lightbox/lightbox-due-date.html',
+        link: link,
+        scope: true
+    }
+
+module.directive("tgLbSetDueDate", ["lightboxService", "$tgLoading", "$translate", "$tgConfirm"
+                                    "$tgQueueModelTransformation", SetDueDateDirective])
