@@ -147,7 +147,9 @@
             "IS_BLOCKED": "is blocked",
             "REF": "Ref",
             "VOTES": "Votes",
-            "SPRINT": "Sprint"
+            "SPRINT": "Sprint",
+            "DUE_DATE": "Due date",
+            "DUE_DATE_REASON": "Due date reason"
         },
         "ROLES": {
             "ALL": "All"

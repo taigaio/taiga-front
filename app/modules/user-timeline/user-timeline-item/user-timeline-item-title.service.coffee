@@ -36,7 +36,9 @@ class UserTimelineItemTitle
         'type': 'ISSUES.FIELDS.TYPE',
         'is_iocaine': 'TASK.FIELDS.IS_IOCAINE',
         'is_blocked': 'COMMON.FIELDS.IS_BLOCKED',
-        'color': 'COMMON.FIELDS.COLOR'
+        'color': 'COMMON.FIELDS.COLOR',
+        'due_date': 'COMMON.FIELDS.DUE_DATE',
+        'due_date_reason': 'COMMON.FIELDS.DUE_DATE_REASON',
     }
 
     _params: {
