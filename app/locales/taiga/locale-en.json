@@ -143,6 +143,7 @@
             "SEVERITY": "Severity",
             "PRIORITY": "Priority",
             "ASSIGNED_TO": "Assigned to",
+            "ASSIGNED_USERS": "Assigned users",
             "POINTS": "Points",
             "IS_BLOCKED": "is blocked",
             "REF": "Ref",

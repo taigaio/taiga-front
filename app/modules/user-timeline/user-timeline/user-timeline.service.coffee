@@ -33,6 +33,7 @@ class UserTimelineService extends taiga.Service
         'status',
         'subject',
         'description_diff',
+        'assigned_users',
         'assigned_to',
         'points',
         'severity',

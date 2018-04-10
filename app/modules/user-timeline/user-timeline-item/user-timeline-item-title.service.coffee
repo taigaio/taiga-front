@@ -31,6 +31,7 @@ class UserTimelineItemTitle
         'description_diff': 'COMMON.FIELDS.DESCRIPTION',
         'points': 'COMMON.FIELDS.POINTS',
         'assigned_to': 'COMMON.FIELDS.ASSIGNED_TO',
+        'assigned_users': 'COMMON.FIELDS.ASSIGNED_USERS',
         'severity': 'ISSUES.FIELDS.SEVERITY',
         'priority': 'ISSUES.FIELDS.PRIORITY',
         'type': 'ISSUES.FIELDS.TYPE',
@@ -172,7 +173,8 @@ class UserTimelineItemTitle
 
     getTitle: (timeline, event, type) ->
         params = @._getParams(timeline, event, type)
-
+        # console.log(timeline)
+        # console.log(event)
         paramsKeys = {}
         Object.keys(params).forEach (key) -> paramsKeys[key] = '{{' +key + '}}'
 
