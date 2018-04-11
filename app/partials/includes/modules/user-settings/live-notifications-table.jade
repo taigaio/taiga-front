@@ -1,0 +1,12 @@
+section.policy-table
+    div.policy-table-header
+        div.policy-table-row
+            div.policy-table-project
+                span(translate="USER_SETTINGS.NOTIFICATIONS.COLUMN_PROJECT")
+            div.policy-table-all
+                span(translate="USER_SETTINGS.NOTIFICATIONS.COLUMN_RECEIVE_ALL")
+            div.policy-table-involved
+                span(translate="USER_SETTINGS.NOTIFICATIONS.COLUMN_ONLY_INVOLVED")
+            div.policy-table-none
+                span(translate="USER_SETTINGS.NOTIFICATIONS.COLUMN_NO_NOTIFICATIONS")
+    div.policy-table-body(tg-user-live-notifications-list, ng-model="notifyPolicies")

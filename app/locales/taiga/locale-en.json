@@ -1370,6 +1370,7 @@
         "SAVED": "Our Oompa Loompas saved all your changes!",
         "CLOSE": "Close notification",
         "MAIL": "Notifications By Mail",
+        "DESKTOP": "Messages by desktop notifications",
         "ASK_DELETE": "Are you sure you want to delete?"
     },
     "CANCEL_ACCOUNT": {
@@ -1485,9 +1486,11 @@
             "SECTION_TITLE": "User Settings",
             "USER_PROFILE": "User profile",
             "CHANGE_PASSWORD": "Change password",
-            "EMAIL_NOTIFICATIONS": "Email notifications"
+            "EMAIL_NOTIFICATIONS": "Email notifications",
+            "DESKTOP_NOTIFICATIONS": "Desktop notifications"
         },
         "NOTIFICATIONS": {
+            "LIVE_SECTION_NAME": "Desktop Notifications",
             "SECTION_NAME": "Email Notifications",
             "COLUMN_PROJECT": "Project",
             "COLUMN_RECEIVE_ALL": "Receive All",

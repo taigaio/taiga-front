@@ -451,6 +451,8 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
         {templateUrl: "user/user-change-password.html"})
     $routeProvider.when("/user-settings/mail-notifications",
         {templateUrl: "user/mail-notifications.html"})
+    $routeProvider.when("/user-settings/live-notifications",
+        {templateUrl: "user/live-notifications.html"})
     $routeProvider.when("/change-email/:email_token",
         {templateUrl: "user/change-email.html"})
     $routeProvider.when("/cancel-account/:cancel_token",

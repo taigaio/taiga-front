@@ -1,0 +1,19 @@
+doctype html
+
+div.wrapper(
+    tg-user-live-notifications
+    ng-controller="UserLiveNotificationsController as ctrl",
+    ng-init="section='live-notifications'"
+)
+
+    sidebar.menu-secondary.sidebar.settings-nav(tg-user-settings-navigation="live-notifications")
+        include ../includes/modules/user-settings-menu
+
+    section.main.admin-common
+        header
+            h1
+                span.green {{sectionName | translate}}
+
+        p.total(translate="NOTIFICATION.DESKTOP")
+
+        include ../includes/modules/user-settings/live-notifications-table
