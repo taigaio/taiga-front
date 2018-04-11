@@ -1,0 +1,44 @@
+tg-lightbox-close
+
+form
+    h2.title(translate="LIGHTBOX.SET_DUE_DATE.TITLE")
+
+    fieldset.date
+        input.due-date.no-focus(
+            type="text"
+            name="due_date"
+            picker-value="{{ new_due_date }}"
+            data-required="true"
+            tg-date-selector
+            placeholder="{{'LIGHTBOX.SET_DUE_DATE.PLACEHOLDER_DUE_DATE' | translate}}"
+        )
+
+        ul.due-date-suggestions
+            li.suggestion.clickable(data-quantity=1, data-unit="weeks")
+                span {{ 'LIGHTBOX.SET_DUE_DATE.SUGGESTIONS.IN_ONE_WEEK' | translate }}
+            li.suggestion.clickable(data-quantity=2, data-unit="weeks")
+                span {{ 'LIGHTBOX.SET_DUE_DATE.SUGGESTIONS.IN_TWO_WEEKS' | translate }}
+            li.suggestion.clickable(data-quantity=1, data-unit="months")
+                span {{ 'LIGHTBOX.SET_DUE_DATE.SUGGESTIONS.IN_ONE_MONTH' | translate }}
+            li.suggestion.clickable(data-quantity=3, data-unit="months")
+                span {{ 'LIGHTBOX.SET_DUE_DATE.SUGGESTIONS.IN_THREE_MONTHS' | translate }}
+
+    fieldset.reason
+        span {{ 'LIGHTBOX.SET_DUE_DATE.REASON_FOR_DUE_DATE' | translate }}
+        textarea.due-date-reason.no-focus(
+            name="due_date_reason"
+            ng-attr-placeholder="{{'LIGHTBOX.SET_DUE_DATE.PLACEHOLDER_REASON_FOR_DUE_DATE' | translate}}"
+            ng-model="object.due_date_reason"
+        )
+
+    button.button-green.submit-button(
+        type="submit"
+        title="{{'COMMON.SAVE' | translate}}"
+        translate="COMMON.SAVE"
+    )
+
+    a.delete-due-date(
+        href=""
+        title="{{'LIGHTBOX.SET_DUE_DATE.TITLE_ACTION_DELETE_DUE_DATE' | translate}}"
+    )
+        tg-svg(svg-icon="icon-trash")

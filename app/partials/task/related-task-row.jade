@@ -3,7 +3,11 @@
         tg-nav="project-tasks-detail:project=project.slug,ref=task.ref")
         span #<%- task.ref %>
         span(ng-non-bindable) <%= emojify(task.subject) %>
-
+    tg-due-date(
+        due-date="task.due_date"
+        due-date-status="task.due_date_status"
+        ng-if="task.due_date"
+    )
 .task-settings
     <% if(perms.modify_task) { %>
     a.edit-task(
