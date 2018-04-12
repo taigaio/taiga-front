@@ -88,6 +88,8 @@ class EventsService
             @rootScope.$digest()
 
     liveNotifications: ->
+        if not @.auth.userData?
+            return
         userId = @.auth.userData.get('id')
 
         subscribe = () =>
