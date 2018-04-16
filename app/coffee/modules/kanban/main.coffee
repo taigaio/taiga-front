@@ -153,6 +153,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
         @scope.$on("assigned-to:added", @.onAssignedToChanged)
         @scope.$on("assigned-user:added", @.onAssignedUsersChanged)
+        @scope.$on("assigned-user:deleted", @.onAssignedUsersDeleted)
         @scope.$on("kanban:us:move", @.moveUs)
         @scope.$on("kanban:show-userstories-for-status", @.loadUserStoriesForStatus)
         @scope.$on("kanban:hide-userstories-for-status", @.hideUserStoriesForStatus)
@@ -216,6 +217,23 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         usModel.assigned_users = assignedUsers
         if not usModel.assigned_to
             usModel.assigned_to = userid
+        @kanbanUserstoriesService.replaceModel(usModel)
+
+        promise = @repo.save(usModel)
+        promise.then null, ->
+            console.log "FAIL" # TODO
+
+    onAssignedUsersDeleted: (ctx, userid, usModel) ->
+        assignedUsersIds = _.clone(usModel.assigned_users, false)
+        assignedUsersIds = _.pull(assignedUsersIds, userid)
+        assignedUsersIds = _.uniq(assignedUsersIds)
+        usModel.assigned_users = assignedUsersIds
+
+        # Update as
+        if usModel.assigned_to not in assignedUsersIds and assignedUsersIds.length > 0
+            usModel.assigned_to = assignedUsersIds[0]
+        if assignedUsersIds.length == 0
+            usModel.assigned_to = null
 
         @kanbanUserstoriesService.replaceModel(usModel)
 
