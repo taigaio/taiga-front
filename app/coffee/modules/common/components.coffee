@@ -386,6 +386,12 @@ AssignedUsersDirective = ($rootscope, $confirm, $repo, $modelTransform, $templat
 
                 deleteAssignedUser(assignedUserIds)
 
+        $scope.$on "assigned-user:deleted", (ctx, assignedUserId) ->
+            assignedUsersIds = _.clone($model.$modelValue.assigned_users, false)
+            assignedUsersIds = _.pull(assignedUsersIds, assignedUserId)
+            assignedUsersIds = _.uniq(assignedUsersIds)
+            deleteAssignedUser(assignedUsersIds)
+
         $scope.$on "assigned-user:added", (ctx, assignedUserId) ->
             assignedUsers = _.clone($model.$modelValue.assigned_users, false)
             assignedUsers.push(assignedUserId)

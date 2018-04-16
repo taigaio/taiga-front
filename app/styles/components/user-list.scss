@@ -12,6 +12,19 @@
             border: 0;
         }
     }
+    .user-list-multiple {
+        align-content: center;
+        align-items: center;
+        background: transparent;
+        border-bottom: 1px solid $whitish;
+        display: flex;
+        padding: .25rem 0;
+        vertical-align: middle;
+
+        &:last-child {
+            border: 0;
+        }
+    }
     .user-list-avatar {
         flex-basis: 3rem;
         margin-right: .25rem;
@@ -44,6 +57,37 @@
             background: rgba(lighten($primary-light, 30%), .3);
             cursor: pointer;
             margin-bottom: 1rem;
+            position: relative;
+            transition: background .3s linear;
+            transition-delay: .1s;
+        }
+        .remove-assigned-to {
+            display: block;
+            fill: $grayer;
+            opacity: 1;
+            position: absolute;
+            right: 1rem;
+            top: 1.5rem;
+            transition: all .2s ease-in;
+            &:hover {
+                fill: $red;
+            }
+        }
+    }
+
+    .user-list-multiple {
+        &:hover,
+        &.selected {
+            background: rgba(lighten($primary-light, 30%), .3);
+            cursor: pointer;
+        }
+        &:hover {
+            transition: background .3s linear;
+            transition-delay: .2s;
+        }
+        &.is-active {
+            background: rgba(lighten($primary-light, 30%), .3);
+            cursor: pointer;
             position: relative;
             transition: background .3s linear;
             transition-delay: .1s;
