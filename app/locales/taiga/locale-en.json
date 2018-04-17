@@ -1225,6 +1225,7 @@
         "CLIENT_REQUIREMENT": "Client Requirement",
         "BLOCKED": "Blocked",
         "VALUES": {
+            "NOT_SET": "not set",
             "UNASSIGNED": "unassigned"
         },
         "FIELDS": {
@@ -1234,6 +1235,7 @@
             "TYPE": "type",
             "ASSIGNED_TO": "assigned to",
             "ASSIGNED_USERS": "assigned users",
+            "DUE_DATE": "due date",
             "MILESTONE": "sprint",
             "COLOR": "color"
         }

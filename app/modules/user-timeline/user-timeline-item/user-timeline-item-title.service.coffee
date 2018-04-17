@@ -72,6 +72,14 @@ class UserTimelineItemTitle
                 if value == null && timeline.getIn(["data", "value_diff", "key"]) == 'assigned_to'
                     value = @translate.instant('ACTIVITY.VALUES.UNASSIGNED')
 
+                # due date
+                else if timeline.getIn(["data", "value_diff", "key"]) == 'due_date'
+                    if value
+                        prettyDate = @translate.instant("COMMON.PICKERDATE.FORMAT")
+                        value = moment(value, "YYYY-MM-DD").format(prettyDate)
+                    else
+                        value = @translate.instant('ACTIVITY.VALUES.NOT_SET')
+
                 new_value = value
             else
                 new_value = timeline.getIn(["data", "value_diff", "value"]).first().get(1)
