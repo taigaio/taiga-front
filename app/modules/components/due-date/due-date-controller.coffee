@@ -42,7 +42,7 @@ class DueDateController
 
     title: () ->
         if @.format == 'button'
-            return if @.dueDate then @._formatTitle() else 'EDIT DUE DATE'
+            return if @.dueDate then @._formatTitle() else 'Edit due date'
 
         return @._formatTitle()
 
@@ -61,7 +61,6 @@ class DueDateController
         return "#{formatedDate} (#{@translate.instant(titles[@.dueDateStatus])})"
 
     setDueDate: () ->
-        event.preventDefault()
         return if @.disabled()
         @tgLightboxFactory.create(
             "tg-lb-set-due-date",
