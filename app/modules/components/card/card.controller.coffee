@@ -39,11 +39,11 @@ class CardController
     closedTasksPercent: () ->
         return @.getClosedTasks().size * 100 / @.item.getIn(['model', 'tasks']).size
 
-    getPermissionsKey: () ->
-        if @.type == 'task'
-            return 'modify_task'
-        else
-            return 'modify_us'
+    getModifyPermisionKey: () ->
+        return  if @.type == 'task' then 'modify_task' else 'modify_us'
+
+    getDeletePermisionKey: () ->
+        return  if @.type == 'task' then 'delete_task' else 'delete_us'
 
     _setVisibility: () ->
         visibility = {

@@ -308,6 +308,9 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
             @.refreshTagsColors().then () =>
                 @taskboardTasksService.replaceModel(task)
 
+        @scope.$on "taskboard:task:deleted", (event, task) =>
+            @.loadTasks()
+
         @scope.$on("taskboard:task:move", @.taskMove)
         @scope.$on("assigned-to:added", @.onAssignedToChanged)
 
@@ -432,7 +435,7 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
     editTask: (id) ->
         task = @.taskboardTasksService.getTask(id)
 
-        task = task.set('loading', true)
+        task = task.set('loading-edit', true)
         @taskboardTasksService.replace(task)
 
         @rs.tasks.getByRef(task.getIn(['model', 'project']), task.getIn(['model', 'ref'])).then (editingTask) =>
@@ -440,6 +443,25 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
                 @rootscope.$broadcast("taskform:edit", editingTask, attachments.toJS())
                 task = task.set('loading', false)
                 @taskboardTasksService.replace(task)
+
+    deleteTask: (id) ->
+        task = @.taskboardTasksService.getTask(id)
+        task = task.set('loading-delete', true)
+
+        @rs.tasks.getByRef(task.getIn(['model', 'project']), task.getIn(['model', 'ref']))
+        .then (deletingTask) =>
+            task = task.set('loading-delete', false)
+            title = @translate.instant("TASK.TITLE_DELETE_ACTION")
+            message = deletingTask.subject
+            @confirm.askOnDelete(title, message).then (askResponse) =>
+                promise = @repo.remove(deletingTask)
+                promise.then =>
+                    @scope.$broadcast("taskboard:task:deleted")
+                    askResponse.finish()
+                promise.then null, ->
+                    askResponse.finish(false)
+                    @confirm.notify("error")
+
 
     taskMove: (ctx, task, oldStatusId, usId, statusId, order) ->
         task = @taskboardTasksService.getTaskModel(task.get('id'))

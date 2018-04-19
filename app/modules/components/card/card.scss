@@ -119,6 +119,14 @@
             fill: currentColor;
         }
     }
+    .card-actions {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 .5rem;
+    }
+    .card-delete:hover {
+        color: $red-light;
+    }
     .icon {
         @include svg-size(1.2rem);
         display: inline-block;
@@ -129,7 +137,7 @@
         align-items: center;
         cursor: pointer;
         display: flex;
-        padding: .6rem 1rem;
+        padding: .6rem .5rem;
     }
 }
 

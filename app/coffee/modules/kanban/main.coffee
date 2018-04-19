@@ -151,6 +151,9 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             @.refreshTagsColors().then () =>
                 @kanbanUserstoriesService.replaceModel(us)
 
+        @scope.$on "kanban:us:deleted", (event, us) =>
+            @.filtersReloadContent()
+
         @scope.$on("assigned-to:added", @.onAssignedToChanged)
         @scope.$on("assigned-user:added", @.onAssignedUsersChanged)
         @scope.$on("assigned-user:deleted", @.onAssignedUsersDeleted)
@@ -167,7 +170,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
     editUs: (id) ->
         us = @kanbanUserstoriesService.getUs(id)
-        us = us.set('loading', true)
+        us = us.set('loading-edit', true)
         @kanbanUserstoriesService.replace(us)
 
         @rs.userstories.getByRef(us.getIn(['model', 'project']), us.getIn(['model', 'ref']))
@@ -175,8 +178,26 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             @rs2.attachments.list("us", us.get('id'), us.getIn(['model', 'project'])).then (attachments) =>
                 @rootscope.$broadcast("usform:edit", editingUserStory, attachments.toJS())
 
-                us = us.set('loading', false)
+                us = us.set('loading-edit', false)
                 @kanbanUserstoriesService.replace(us)
+
+    deleteUs: (id) ->
+        us = @kanbanUserstoriesService.getUs(id)
+        us = us.set('loading-delete', true)
+
+        @rs.userstories.getByRef(us.getIn(['model', 'project']), us.getIn(['model', 'ref']))
+        .then (deletingUserStory) =>
+            us = us.set('loading-delete', false)
+            title = @translate.instant("US.TITLE_DELETE_ACTION")
+            message = deletingUserStory.subject
+            @confirm.askOnDelete(title, message).then (askResponse) =>
+                promise = @repo.remove(deletingUserStory)
+                promise.then =>
+                    @scope.$broadcast("kanban:us:deleted")
+                    askResponse.finish()
+                promise.then null, ->
+                    askResponse.finish(false)
+                    @confirm.notify("error")
 
     showPlaceHolder: (statusId) ->
         if @scope.usStatusList[0].id == statusId &&
