@@ -1130,7 +1130,7 @@
             "TITLE": "Set due date",
             "PLACEHOLDER_DUE_DATE": "Select date",
             "REASON_FOR_DUE_DATE": "Reason for the due date",
-            "PLACEHOLDER_REASON_FOR_DUE_DATE": "Is this due date due to something?",
+            "PLACEHOLDER_REASON_FOR_DUE_DATE": "Why does this US need a due date?",
             "SUGGESTIONS": {
                 "IN_ONE_WEEK": "In one week",
                 "IN_TWO_WEEKS": "In two weeks",
@@ -1380,7 +1380,7 @@
         "SAVED": "Our Oompa Loompas saved all your changes!",
         "CLOSE": "Close notification",
         "MAIL": "Notifications By Mail",
-        "DESKTOP": "Messages by desktop notifications",
+        "DESKTOP": "Desktop notifications using browser alerts",
         "ASK_DELETE": "Are you sure you want to delete?"
     },
     "CANCEL_ACCOUNT": {
