@@ -625,6 +625,7 @@ PromoteIssueToUsButtonDirective = ($rootScope, $repo, $confirm, $translate) ->
                 tags: issue.tags
                 is_blocked: issue.is_blocked
                 blocked_note: issue.blocked_note
+                due_date: issue.due_date
             }
 
             onSuccess = ->
