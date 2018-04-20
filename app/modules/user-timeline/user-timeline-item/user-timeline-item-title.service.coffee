@@ -72,6 +72,10 @@ class UserTimelineItemTitle
                 if value == null && timeline.getIn(["data", "value_diff", "key"]) == 'assigned_to'
                     value = @translate.instant('ACTIVITY.VALUES.UNASSIGNED')
 
+                # assigned_users to unasigned
+                if value == null && timeline.getIn(["data", "value_diff", "key"]) == 'assigned_users'
+                    value = @translate.instant('ACTIVITY.VALUES.UNASSIGNED')
+
                 # due date
                 else if timeline.getIn(["data", "value_diff", "key"]) == 'due_date'
                     if value
