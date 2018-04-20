@@ -779,7 +779,7 @@ AssignedUsersLightboxDirective = ($repo, lightboxService, lightboxKeyboardNaviga
 
             $scope.$apply ->
                 $scope.usersSearch = null
-                $scope.$broadcast("assigned-user:added", target.data("user-id"))
+                $scope.$broadcast("assigned-user:added", target.data("user-id"), selectedItem)
 
         $el.on "click", ".remove-assigned-to", (event) ->
             event.preventDefault()
@@ -788,7 +788,7 @@ AssignedUsersLightboxDirective = ($repo, lightboxService, lightboxKeyboardNaviga
 
             $scope.$apply ->
                 $scope.usersSearch = null
-                $scope.$broadcast("assigned-user:deleted", target.data("user-id"))
+                $scope.$broadcast("assigned-user:deleted", target.data("user-id"), selectedItem)
             closeLightbox()
 
         $el.on "click", ".close", (event) ->
