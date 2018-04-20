@@ -56,6 +56,10 @@ tg-due-date .due-date-icon {
     top: .25rem;
 }
 
+.issues-table .subject .due-date-icon {
+    top: 0;
+}
+
 .card-statistics .due-date-icon {
     margin: 0;
     svg {
