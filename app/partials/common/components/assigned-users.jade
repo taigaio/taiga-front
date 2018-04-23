@@ -12,7 +12,7 @@
             //- .iocaine-symbol(ng-if="isIocaine" title="{{ 'TASK.TITLE_ACTION_IOCAINE' | translate }}")
             //- tg-svg(svg-icon="icon-iocaine")
         .assigned-to
-            .assigned-users-options
+            .assigned-users-options(ng-if="isEditable")
                 a(
                     href=""
                     title="{{ 'COMMON.ASSIGNED_TO.TITLE_ACTION_EDIT_ASSIGNMENT'|translate }}"
@@ -22,14 +22,15 @@
                 )
                     span.assigned-name {{ "COMMON.ASSIGNED_TO.ASSIGN" | translate }}
 
-                span(translate="COMMON.OR")
-                | &nbsp;
-                a.assign-to-me(
-                    href="#"
-                    title="{{'COMMON.ASSIGNED_TO.SELF' | translate}}"
-                    ng-click="assignToMe()"
-                )
-                    span {{ "COMMON.ASSIGNED_TO.SELF" | translate }}
+                span(ng-if="!isAssigned")
+                    span(translate="COMMON.OR")
+                    | &nbsp;
+                    a.assign-to-me(
+                        href="#"
+                        title="{{'COMMON.ASSIGNED_TO.SELF' | translate}}"
+                        ng-click="assignToMe()"
+                    )
+                        span {{ "COMMON.ASSIGNED_TO.SELF" | translate }}
 
     .user-list-single(ng-repeat="assignedUser in assignedUsers")
         .user-list-avatar
@@ -51,7 +52,8 @@
                 title="{{'COMMON.ASSIGNED_TO.DELETE_ASSIGNMENT' | translate}}"
             )
 
-.tg-add-assigned(ng-if="isAssigned")
+
+.tg-add-assigned(ng-if="isAssigned && isEditable")
     tg-svg.add-assigned(
                 ng-if="isEditable",
                 data-assigned-user-id="{{assignedUser.id}}",

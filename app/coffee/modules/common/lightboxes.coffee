@@ -703,7 +703,7 @@ AssignedUsersLightboxDirective = ($repo, lightboxService, lightboxKeyboardNaviga
     link = ($scope, $el, $attrs) ->
         selectedUsers = []
         selectedItem = null
-        usersTemplate = $template.get("common/lightbox/lightbox-assigned-to-users.html", true)
+        usersTemplate = $template.get("common/lightbox/lightbox-assigned-users-users.html", true)
 
         normalizeString = (string) ->
             normalizedString = string
