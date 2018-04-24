@@ -169,7 +169,7 @@
         "DUE_DATE": {
             "TITLE_ACTION_SET_DUE_DATE": "Set due date",
             "DUE_SOON": "due soon",
-            "PAST_DUE": "past due",
+            "PAST_DUE": "past due date",
             "NO_LONGER_APPLICABLE": "no longer applicable"
         },
         "ASSIGNED_USERS": {
