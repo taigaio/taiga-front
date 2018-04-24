@@ -79,6 +79,9 @@
     .card-owner-info {
         align-items: center;
         display: flex;
+        &.multiple .card-owner-avatar img {
+            margin-right: .45rem;
+        }
     }
     .card-owner-avatar {
         line-height: 0;

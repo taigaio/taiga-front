@@ -27,6 +27,10 @@ class CardController
         tasks = @.item.getIn(['model', 'tasks'])
         return tasks and tasks.size > 0
 
+    hasMultipleAssignedUsers: () ->
+        assignedUsers = @.item.getIn(['model', 'assigned_users'])
+        return assignedUsers and assignedUsers.size > 1
+
     hasVisibleAttachments: () ->
         return @.item.get('images').size > 0
 
