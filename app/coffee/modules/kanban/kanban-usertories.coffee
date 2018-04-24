@@ -223,6 +223,12 @@ class KanbanUserstoriesService extends taiga.Service
 
             us.id = usModel.id
             us.assigned_to = @.usersById[usModel.assigned_to]
+            us.assigned_users = []
+
+            usModel.assigned_users.forEach (assignedUserId) =>
+                assignedUserData = @.usersById[assignedUserId]
+                us.assigned_users.push(assignedUserData)
+
             us.colorized_tags = _.map us.model.tags, (tag) =>
                 return {name: tag[0], color: tag[1]}
 

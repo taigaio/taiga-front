@@ -1,11 +1,20 @@
 .card-owner
-    .card-owner-info(ng-if="vm.item.get('assigned_to')")
+    .card-owner-info(ng-if="vm.item.get('assigned_to') && (!vm.hasMultipleAssignedUsers() || !vm.visible('owner'))")
         .card-owner-avatar
             img(
                 ng-class="{'is-iocaine': vm.item.getIn(['model', 'is_iocaine'])}"
                 tg-avatar="vm.item.get('assigned_to')"
             )
-        span.card-owner-name(ng-if="vm.visible('owner')") {{vm.item.getIn(['assigned_to', 'full_name'])}}
+        span.card-owner-name(ng-if="vm.visible('owner') && !vm.hasMultipleAssignedUsers()") {{vm.item.getIn(['assigned_to', 'full_name'])}}
+        div(ng-if="!vm.visible('owner')")
+            include card-title
+
+    .card-owner-info.multiple(ng-if="vm.item.get('assigned_to') && vm.hasMultipleAssignedUsers() && vm.visible('owner')")
+        .card-owner-avatar(tg-repeat="assignedUser in vm.item.get('assigned_users')")
+            img(
+                ng-class="{'is-iocaine': vm.item.getIn(['model', 'is_iocaine'])}"
+                tg-avatar="assignedUser"
+            )
         div(ng-if="!vm.visible('owner')")
             include card-title
 
