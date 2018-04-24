@@ -1,5 +1,5 @@
 ###
-# Copyright (C) 2014-2015 Taiga Agile LLC <taiga@taiga.io>
+# Copyright (C) 2014-2018 Taiga Agile LLC <taiga@taiga.io>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -14,31 +14,30 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: card.directive.coffee
+# File: due-date.directive.coffee
 ###
 
 module = angular.module("taigaComponents")
 
-cardDirective = () ->
+dueDateDirective = () ->
+    templateUrl = (el, attrs) ->
+        if attrs.format
+            return "components/due-date/due-date-" + attrs.format + ".html"
+        return "components/due-date/due-date-icon.html"
+
     return {
         link: (scope) ->
-
-        controller: "Card",
+        controller: "DueDate",
         controllerAs: "vm",
         bindToController: true,
-        templateUrl: "components/card/card.html",
+        templateUrl: templateUrl,
         scope: {
-            onToggleFold: "&",
-            onClickAssignedTo: "&",
-            onClickEdit: "&",
-            onClickDelete: "&",
-            project: "=",
-            item: "=",
-            zoom: "=",
-            zoomLevel: "=",
-            archived: "=",
-            type: "@"
+            dueDate: '=',
+            dueDateStatus: '=',
+            isClosed: '=',
+            item: '=',
+            format: '@'
         }
     }
 
-module.directive('tgCard', cardDirective)
+module.directive('tgDueDate', dueDateDirective)

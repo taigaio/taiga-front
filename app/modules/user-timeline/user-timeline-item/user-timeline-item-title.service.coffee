@@ -31,12 +31,15 @@ class UserTimelineItemTitle
         'description_diff': 'COMMON.FIELDS.DESCRIPTION',
         'points': 'COMMON.FIELDS.POINTS',
         'assigned_to': 'COMMON.FIELDS.ASSIGNED_TO',
+        'assigned_users': 'COMMON.FIELDS.ASSIGNED_USERS',
         'severity': 'ISSUES.FIELDS.SEVERITY',
         'priority': 'ISSUES.FIELDS.PRIORITY',
         'type': 'ISSUES.FIELDS.TYPE',
         'is_iocaine': 'TASK.FIELDS.IS_IOCAINE',
         'is_blocked': 'COMMON.FIELDS.IS_BLOCKED',
-        'color': 'COMMON.FIELDS.COLOR'
+        'color': 'COMMON.FIELDS.COLOR',
+        'due_date': 'COMMON.FIELDS.DUE_DATE',
+        'due_date_reason': 'COMMON.FIELDS.DUE_DATE_REASON',
     }
 
     _params: {
@@ -68,6 +71,18 @@ class UserTimelineItemTitle
                 # assigned to unasigned
                 if value == null && timeline.getIn(["data", "value_diff", "key"]) == 'assigned_to'
                     value = @translate.instant('ACTIVITY.VALUES.UNASSIGNED')
+
+                # assigned_users to unasigned
+                if value == null && timeline.getIn(["data", "value_diff", "key"]) == 'assigned_users'
+                    value = @translate.instant('ACTIVITY.VALUES.UNASSIGNED')
+
+                # due date
+                else if timeline.getIn(["data", "value_diff", "key"]) == 'due_date'
+                    if value
+                        prettyDate = @translate.instant("COMMON.PICKERDATE.FORMAT")
+                        value = moment(value, "YYYY-MM-DD").format(prettyDate)
+                    else
+                        value = @translate.instant('ACTIVITY.VALUES.NOT_SET')
 
                 new_value = value
             else
@@ -170,7 +185,8 @@ class UserTimelineItemTitle
 
     getTitle: (timeline, event, type) ->
         params = @._getParams(timeline, event, type)
-
+        # console.log(timeline)
+        # console.log(event)
         paramsKeys = {}
         Object.keys(params).forEach (key) -> paramsKeys[key] = '{{' +key + '}}'
 

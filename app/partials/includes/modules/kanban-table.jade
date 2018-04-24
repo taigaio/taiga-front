@@ -80,7 +80,8 @@ div.kanban-table(
                     tg-bind-scope,
                     on-toggle-fold="ctrl.toggleFold(id)"
                     on-click-edit="ctrl.editUs(id)"
-                    on-click-assigned-to="ctrl.changeUsAssignedTo(id)"
+                    on-click-delete="ctrl.deleteUs(id)"
+                    on-click-assigned-to="ctrl.changeUsAssignedUsers(id)"
                     project="project"
                     item="us"
                     zoom="ctrl.zoom"

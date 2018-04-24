@@ -1,0 +1,64 @@
+.assigned-title(ng-if="!isAssigned") {{ "COMMON.ASSIGNED_TO.NOT_ASSIGNED" | translate }}
+.assigned-title(ng-if="isAssigned") {{ "COMMON.FIELDS.ASSIGNED_TO" | translate }}
+
+.tg-assigned-users
+    .not-assigned-users(ng-if="!isAssigned")
+        .user-avatar(ng-class="{'is-iocaine': isIocaine}")
+            img(
+                tg-avatar=""
+                alt="{{ 'COMMON.ASSIGNED_TO.ASSIGN' | translate }}"
+            )
+
+            //- .iocaine-symbol(ng-if="isIocaine" title="{{ 'TASK.TITLE_ACTION_IOCAINE' | translate }}")
+            //- tg-svg(svg-icon="icon-iocaine")
+        .assigned-to
+            .assigned-users-options(ng-if="isEditable")
+                a(
+                    href=""
+                    title="{{ 'COMMON.ASSIGNED_TO.TITLE_ACTION_EDIT_ASSIGNMENT'|translate }}"
+                    class="user-assigned"
+                    ng-class="{editable: isEditable}"
+                    ng-click="openAssignedUsers()"
+                )
+                    span.assigned-name {{ "COMMON.ASSIGNED_TO.ASSIGN" | translate }}
+
+                span(ng-if="!isAssigned")
+                    span(translate="COMMON.OR")
+                    | &nbsp;
+                    a.assign-to-me(
+                        href="#"
+                        title="{{'COMMON.ASSIGNED_TO.SELF' | translate}}"
+                        ng-click="assignToMe()"
+                    )
+                        span {{ "COMMON.ASSIGNED_TO.SELF" | translate }}
+
+    .user-list-single(ng-repeat="assignedUser in assignedUsers")
+        .user-list-avatar
+            img(
+                tg-avatar="assignedUser"
+                alt="{{assignedUser.full_name_display}}"
+            )
+        .user-list-name.assigned-users-options
+            a(
+                href=""
+                title="{{ 'COMMON.ASSIGNED_TO.TITLE_ACTION_EDIT_ASSIGNMENT'|translate }}"
+                class!="user-assigned <% if (isEditable) { %>editable<% }; %>"
+            )
+                span.assigned-name {{assignedUser.full_name_display}}
+            tg-svg.remove-user(
+                ng-if="isEditable",
+                data-assigned-user-id="{{assignedUser.id}}"
+                svg-icon="icon-close",
+                title="{{'COMMON.ASSIGNED_TO.DELETE_ASSIGNMENT' | translate}}"
+            )
+
+
+.tg-add-assigned(ng-if="isAssigned && isEditable")
+    tg-svg.add-assigned(
+                ng-if="isEditable",
+                data-assigned-user-id="{{assignedUser.id}}",
+                ng-click="openAssignedUsers()",
+                svg-icon="icon-add",
+                title="{{'COMMON.ASSIGNED_USERS.ADD_ASSIGNED' | translate}}"
+            )
+    span {{ "COMMON.ASSIGNED_USERS.ADD_ASSIGNED" | translate }}

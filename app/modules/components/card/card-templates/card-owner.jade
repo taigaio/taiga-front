@@ -20,7 +20,7 @@
 
     .card-owner-actions(
         ng-if="vm.visible('owner')"
-        tg-check-permission="{{vm.getPermissionsKey()}}"
+        tg-check-permission="{{vm.getModifyPermisionKey()}}"
     )
         a.e2e-assign.card-owner-assign(
             ng-click="!$event.ctrlKey && !$event.metaKey && vm.onClickAssignedTo({id: vm.item.get('id')})"
@@ -29,10 +29,20 @@
             tg-svg(svg-icon="icon-add-user")
             span(translate="COMMON.CARD.ASSIGN_TO")
 
-        a.e2e-edit.card-edit(
-            href=""
-            ng-click="!$event.ctrlKey && !$event.metaKey && vm.onClickEdit({id: vm.item.get('id')})"
-            tg-loading="vm.item.get('loading')"
-        )
-            tg-svg(svg-icon="icon-edit")
-            span(translate="COMMON.CARD.EDIT")
+        div.card-actions
+            a.e2e-edit.card-edit(
+                href=""
+                ng-click="!$event.ctrlKey && !$event.metaKey && vm.onClickEdit({id: vm.item.get('id')})"
+                tg-loading="vm.item.get('loading-edit')"
+                title="{{ 'COMMON.CARD.EDIT' | translate }}"
+            )
+                tg-svg(svg-icon="icon-edit")
+
+            a.e2e-edit.card-delete(
+                href=""
+                ng-click="!$event.ctrlKey && !$event.metaKey && vm.onClickDelete({id: vm.item.get('id')})"
+                tg-loading="vm.item.get('loading-delete')"
+                title="{{ 'COMMON.CARD.DELETE' | translate }}"
+                tg-check-permission="{{vm.getDeletePermisionKey()}}"
+            )
+                tg-svg(svg-icon="icon-trash")

@@ -1,5 +1,15 @@
 # Changelog
 
+## 3.3.0 Picea mariana (2018-04-26)
+
+### Features
+
+- Add "live notifications" to Taiga:
+    - Add configuration in profile area.
+- Add "due date" in US, Tasks and Issues.
+- Add multiple assignement only in US.
+- Delete cards in Kanban and sprint Taskboard.
+
 ## 3.2.3 (2018-04-04)
 
 ### Misc

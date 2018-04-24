@@ -27,6 +27,11 @@
             )
                 span(tg-bo-ref="us.ref")
                 span(ng-bind-html="us.subject | emojify")
+                tg-due-date(
+                    due-date="us.due_date"
+                    due-date-status="us.due_date_status"
+                    ng-if="us.due_date"
+                )
                 tg-belong-to-epics(
                     format="pill"
                     ng-if="us.epics"

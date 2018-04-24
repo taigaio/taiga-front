@@ -54,10 +54,10 @@ class LightboxService extends taiga.Service
         @animationFrame.add ->
             $el.addClass("open")
             $el.one "transitionend", =>
-                firstField = $el.find('input,textarea').first()
+                firstField = $el.find('input:not(.no-focus),textarea:not(.no-focus)').first()
 
                 if firstField.length
-                    $el.find('input,textarea').first().focus()
+                    firstField.focus()
                 else if document.activeElement
                     $(document.activeElement).blur()
 
@@ -646,7 +646,6 @@ AssignedToLightboxDirective = (lightboxService, lightboxKeyboardNavigationServic
             selectedItem = item
             assignedToId = item.assigned_to
             selectedUser = $scope.usersById[assignedToId]
-
             render(selectedUser)
             lightboxService.open($el).then ->
                 $el.find('input').focus()
@@ -693,8 +692,119 @@ AssignedToLightboxDirective = (lightboxService, lightboxKeyboardNavigationServic
         link:link
     }
 
-
 module.directive("tgLbAssignedto", ["lightboxService", "lightboxKeyboardNavigationService", "$tgTemplate", "$compile", "tgAvatarService", AssignedToLightboxDirective])
+
+
+#############################################################################
+## Assigned Users Lightbox directive
+#############################################################################
+
+AssignedUsersLightboxDirective = ($repo, lightboxService, lightboxKeyboardNavigationService, $template, $compile, avatarService) ->
+    link = ($scope, $el, $attrs) ->
+        selectedUsers = []
+        selectedItem = null
+        usersTemplate = $template.get("common/lightbox/lightbox-assigned-users-users.html", true)
+
+        normalizeString = (string) ->
+            normalizedString = string
+            normalizedString = normalizedString.replace("Á", "A").replace("Ä", "A").replace("À", "A")
+            normalizedString = normalizedString.replace("É", "E").replace("Ë", "E").replace("È", "E")
+            normalizedString = normalizedString.replace("Í", "I").replace("Ï", "I").replace("Ì", "I")
+            normalizedString = normalizedString.replace("Ó", "O").replace("Ö", "O").replace("Ò", "O")
+            normalizedString = normalizedString.replace("Ú", "U").replace("Ü", "U").replace("Ù", "U")
+            return normalizedString
+
+        filterUsers = (text, user) ->
+            username = user.full_name_display.toUpperCase()
+            username = normalizeString(username)
+            text = text.toUpperCase()
+            text = normalizeString(text)
+
+            return _.includes(username, text)
+
+        # Render the specific list of users.
+        render = (assignedUsersIds, text) ->
+            users = _.clone($scope.activeUsers, true)
+            users = _.sortBy(users, (o) -> if o.id is $scope.user.id then 0 else o.id)
+            users = _.filter(users, _.partial(filterUsers, text)) if text?
+
+            # Add selected users
+            selected = []
+            _.map users, (user) ->
+                if user.id in assignedUsersIds
+                    user.avatar = avatarService.getAvatar(user)
+                    selected.push(user)
+
+            # Filter users in searchs
+
+            visible = []
+            _.map users, (user) ->
+                if user.id not in assignedUsersIds
+                    user.avatar = avatarService.getAvatar(user)
+                    visible.push(user)
+
+            ctx = {
+                selected: selected
+                users:  _.slice(visible, 0, 5)
+                showMore: users.length > 5
+            }
+
+            html = usersTemplate(ctx)
+            html = $compile(html)($scope)
+            $el.find(".assigned-to-list").html(html)
+
+        closeLightbox = () ->
+            lightboxKeyboardNavigationService.stop()
+            lightboxService.close($el)
+
+        $scope.$on "assigned-user:add", (ctx, item) ->
+            selectedItem = item
+            selectedUsers = item.assigned_users
+            render(selectedUsers)
+
+            lightboxService.open($el).then ->
+                $el.find("input").focus()
+                lightboxKeyboardNavigationService.init($el)
+
+        $scope.$watch "usersSearch", (searchingText) ->
+            if searchingText?
+                render(selectedUsers, searchingText)
+                $el.find('input').focus()
+
+        $el.on "click", ".user-list-single", debounce 200, (event) ->
+            closeLightbox()
+
+            event.preventDefault()
+            target = angular.element(event.currentTarget)
+
+            $scope.$apply ->
+                $scope.usersSearch = null
+                $scope.$broadcast("assigned-user:added", target.data("user-id"), selectedItem)
+
+        $el.on "click", ".remove-assigned-to", (event) ->
+            event.preventDefault()
+            target = angular.element(event.currentTarget)
+            event.stopPropagation()
+
+            $scope.$apply ->
+                $scope.usersSearch = null
+                $scope.$broadcast("assigned-user:deleted", target.data("user-id"), selectedItem)
+            closeLightbox()
+
+        $el.on "click", ".close", (event) ->
+            event.preventDefault()
+
+            closeLightbox()
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {
+        templateUrl: "common/lightbox/lightbox-assigned-users.html"
+        link:link
+    }
+
+module.directive("tgLbAssignedUsers", ["$tgRepo", "lightboxService", "lightboxKeyboardNavigationService", "$tgTemplate", "$compile", "tgAvatarService", AssignedUsersLightboxDirective])
 
 
 #############################################################################
@@ -802,3 +912,73 @@ LightboxLeaveProjectWarningDirective = (lightboxService, $template, $compile) ->
     }
 
 module.directive("tgLightboxLeaveProjectWarning", ["lightboxService", LightboxLeaveProjectWarningDirective])
+
+
+#############################################################################
+## Set Due Date Lightbox Directive
+#############################################################################
+
+SetDueDateDirective = (lightboxService, $loading, $translate, $confirm, $modelTransform) ->
+    link = ($scope, $el, attrs) ->
+        prettyDate = $translate.instant("COMMON.PICKERDATE.FORMAT")
+        lightboxService.open($el)
+
+        if ($scope.object.due_date)
+            $scope.new_due_date = moment($scope.object.due_date).format(prettyDate)
+
+        $el.on "click", ".suggestion", (event) ->
+            target = angular.element(event.currentTarget)
+            quantity = target.data('quantity')
+            unit = target.data('unit')
+            value = moment().add(quantity, unit).format(prettyDate)
+            $el.find(".due-date").val(value)
+
+        save = ->
+            currentLoading = $loading()
+                .target($el.find(".submit-button"))
+                .start()
+
+            transform = $modelTransform.save (object) ->
+                new_due_date = $('.due-date').val()
+                object.due_date = if (new_due_date) \
+                    then moment(new_due_date, prettyDate).format("YYYY-MM-DD") \
+                    else null
+                return object
+
+            transform.then ->
+                $confirm.notify("success")
+
+            transform.then null, ->
+                $confirm.notify("error")
+
+            transform.finally ->
+                currentLoading.finish()
+                lightboxService.close($el)
+
+        $el.on "click", ".submit-button", (event) ->
+            event.preventDefault()
+            save()
+
+        remove = ->
+            title = $translate.instant("LIGHTBOX.DELETE_DUE_DATE.TITLE")
+            subtitle = $translate.instant("LIGHTBOX.DELETE_DUE_DATE.SUBTITLE")
+            message = moment($scope.object.due_date).format(prettyDate)
+
+            $confirm.askOnDelete(title, message, subtitle).then (askResponse) ->
+                askResponse.finish()
+                $('.due-date').val(null)
+                $scope.object.due_date_reason = null
+                save()
+
+        $el.on "click", ".delete-due-date", (event) ->
+            event.preventDefault()
+            remove()
+
+    return {
+        templateUrl: 'common/lightbox/lightbox-due-date.html',
+        link: link,
+        scope: true
+    }
+
+module.directive("tgLbSetDueDate", ["lightboxService", "$tgLoading", "$translate", "$tgConfirm"
+                                    "$tgQueueModelTransformation", SetDueDateDirective])

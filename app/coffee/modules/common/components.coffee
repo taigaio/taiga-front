@@ -230,7 +230,6 @@ WatchersDirective = ($rootscope, $confirm, $repo, $modelTransform, $template, $c
                 watchers = _.map(watchers, (watcherId) -> $scope.usersById[watcherId])
                 renderWatchers(watchers)
                 $rootscope.$broadcast("object:updated")
-
             transform.then null, ->
                 $confirm.notify("error")
 
@@ -297,6 +296,129 @@ WatchersDirective = ($rootscope, $confirm, $repo, $modelTransform, $template, $c
 
 module.directive("tgWatchers", ["$rootScope", "$tgConfirm", "$tgRepo", "$tgQueueModelTransformation", "$tgTemplate", "$compile",
                                 "$translate", WatchersDirective])
+
+
+
+#############################################################################
+## Assigned Users directive
+#############################################################################
+
+AssignedUsersDirective = ($rootscope, $confirm, $repo, $modelTransform, $template, $compile, $translate, $currentUserService) ->
+    # You have to include a div with the tg-lb-assignedusers directive in the page
+    # where use this directive
+
+    link = ($scope, $el, $attrs, $model) ->
+        isEditable = ->
+            return $scope.project?.my_permissions?.indexOf($attrs.requiredPerm) != -1
+        isAssigned = ->
+            return $scope.assignedUsers.length > 0
+
+        save = (assignedUsers, assignedToUser) ->
+            transform = $modelTransform.save (item) ->
+                item.assigned_users = assignedUsers
+                if not item.assigned_to
+                    item.assigned_to = assignedToUser
+                return item
+
+            transform.then ->
+                assignedUsers = _.map(assignedUsers, (assignedUserId) -> $scope.usersById[assignedUserId])
+                renderAssignedUsers(assignedUsers)
+                result = $rootscope.$broadcast("object:updated")
+
+            transform.then null, ->
+                $confirm.notify("error")
+
+        openAssignedUsers = ->
+            item = _.clone($model.$modelValue, false)
+            $rootscope.$broadcast("assigned-user:add", item)
+
+        assignToMe = ->
+            return if not isEditable()
+            currentUserId = $currentUserService.getUser().get('id')
+            assignedUsers = _.clone($model.$modelValue.assigned_users, false)
+            assignedUsers.push(currentUserId)
+            assignedUsers = _.uniq(assignedUsers)
+            save(assignedUsers, currentUserId)
+
+        deleteAssignedUser = (assignedUserIds) ->
+            transform = $modelTransform.save (item) ->
+                item.assigned_users = assignedUserIds
+
+                # Update as
+                if item.assigned_to not in assignedUserIds and assignedUserIds.length > 0
+                    item.assigned_to = assignedUserIds[0]
+                if assignedUserIds.length == 0
+                    item.assigned_to = null
+
+                return item
+
+            transform.then () ->
+                item = $modelTransform.getObj()
+                assignedUsers = _.map(item.assignedUsers, (assignedUserId) -> $scope.usersById[assignedUserId])
+                renderAssignedUsers(assignedUsers)
+                $rootscope.$broadcast("object:updated")
+
+            transform.then null, ->
+                item.revert()
+                $confirm.notify("error")
+
+        renderAssignedUsers = (assignedUsers) ->
+            $scope.assignedUsers = assignedUsers
+            $scope.isEditable = isEditable()
+            $scope.isAssigned = isAssigned()
+            $scope.openAssignedUsers = openAssignedUsers
+            $scope.assignToMe = assignToMe
+
+        $el.on "click", ".remove-user", (event) ->
+            event.preventDefault()
+            return if not isEditable()
+            target = angular.element(event.currentTarget)
+            assignedUserId = target.data("assigned-user-id")
+
+            title = $translate.instant("COMMON.ASSIGNED_USERS.TITLE_LIGHTBOX_DELETE_ASSIGNED")
+            message = $scope.usersById[assignedUserId].full_name_display
+
+            $confirm.askOnDelete(title, message).then (askResponse) =>
+                askResponse.finish()
+
+                assignedUserIds = _.clone($model.$modelValue.assigned_users, false)
+                assignedUserIds = _.pull(assignedUserIds, assignedUserId)
+
+                deleteAssignedUser(assignedUserIds)
+
+        $scope.$on "assigned-user:deleted", (ctx, assignedUserId) ->
+            assignedUsersIds = _.clone($model.$modelValue.assigned_users, false)
+            assignedUsersIds = _.pull(assignedUsersIds, assignedUserId)
+            assignedUsersIds = _.uniq(assignedUsersIds)
+            deleteAssignedUser(assignedUsersIds)
+
+        $scope.$on "assigned-user:added", (ctx, assignedUserId) ->
+            assignedUsers = _.clone($model.$modelValue.assigned_users, false)
+            assignedUsers.push(assignedUserId)
+            assignedUsers = _.uniq(assignedUsers)
+
+            # Save assigned_users and assignedUserId for assign_to legacy attribute
+            save(assignedUsers, assignedUserId)
+
+        $scope.$watch $attrs.ngModel, (item) ->
+            return if not item?
+            assignedUsers = _.map(item.assigned_users, (assignedUserId) -> $scope.usersById[assignedUserId])
+            assignedUsers = _.filter assignedUsers, (it) -> return !!it
+
+            renderAssignedUsers(assignedUsers)
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {
+        scope: true,
+        templateUrl: "common/components/assigned-users.html",
+        link:link,
+        require:"ngModel"
+    }
+
+module.directive("tgAssignedUsers", ["$rootScope", "$tgConfirm", "$tgRepo", "$tgQueueModelTransformation", "$tgTemplate", "$compile",
+                                "$translate", "tgCurrentUserService", AssignedUsersDirective])
 
 
 #############################################################################
@@ -386,7 +508,6 @@ AssignedToDirective = ($rootscope, $confirm, $repo, $loading, $modelTransform, $
 
         $scope.$on "assigned-to:added", (ctx, userId, item) ->
             return if item.id != $model.$modelValue.id
-
             save(userId)
 
         $scope.$watch $attrs.ngModel, (instance) ->

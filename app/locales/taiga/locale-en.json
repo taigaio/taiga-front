@@ -47,7 +47,8 @@
         "RELATED_USERSTORIES": "Related user stories",
         "CARD": {
             "ASSIGN_TO": "Assign To",
-            "EDIT": "Edit card"
+            "EDIT": "Edit card",
+            "DELETE": "Delete card"
         },
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "This value seems to be invalid.",
@@ -143,11 +144,14 @@
             "SEVERITY": "Severity",
             "PRIORITY": "Priority",
             "ASSIGNED_TO": "Assigned to",
+            "ASSIGNED_USERS": "Assigned users",
             "POINTS": "Points",
             "IS_BLOCKED": "is blocked",
             "REF": "Ref",
             "VOTES": "Votes",
-            "SPRINT": "Sprint"
+            "SPRINT": "Sprint",
+            "DUE_DATE": "Due date",
+            "DUE_DATE_REASON": "Due date reason"
         },
         "ROLES": {
             "ALL": "All"
@@ -161,6 +165,17 @@
             "CONFIRM_UNASSIGNED": "Are you sure you want to leave it unassigned?",
             "TITLE_ACTION_EDIT_ASSIGNMENT": "Edit assignment",
             "SELF": "Assign to me"
+        },
+        "DUE_DATE": {
+            "TITLE_ACTION_SET_DUE_DATE": "Set due date",
+            "DUE_SOON": "due soon",
+            "PAST_DUE": "past due",
+            "NO_LONGER_APPLICABLE": "no longer applicable"
+        },
+        "ASSIGNED_USERS": {
+            "ADD": "Select assigned user",
+            "ADD_ASSIGNED": "Add assigned",
+            "TITLE_LIGHTBOX_DELETE_ASSIGNED": "Delete assigned..."
         },
         "STATUS": {
             "CLOSED": "Closed",
@@ -1076,6 +1091,10 @@
             "EDIT_US": "Edit user story",
             "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?"
         },
+        "DELETE_DUE_DATE": {
+            "TITLE": "Delete due date",
+            "SUBTITLE": "Are you sure you want to delete this due date?"
+        },
         "DELETE_SPRINT": {
             "TITLE": "Delete sprint"
         },
@@ -1106,6 +1125,19 @@
             "WARNING": "The email will be received by the project admins",
             "PLACEHOLDER": "Write your message",
             "SEND": "Send"
+        },
+        "SET_DUE_DATE": {
+            "TITLE": "Set due date",
+            "PLACEHOLDER_DUE_DATE": "Select date",
+            "REASON_FOR_DUE_DATE": "Reason for the due date",
+            "PLACEHOLDER_REASON_FOR_DUE_DATE": "Why does this US need a due date?",
+            "SUGGESTIONS": {
+                "IN_ONE_WEEK": "In one week",
+                "IN_TWO_WEEKS": "In two weeks",
+                "IN_ONE_MONTH": "In one month",
+                "IN_THREE_MONTHS": "In three months"
+            },
+            "TITLE_ACTION_DELETE_DUE_DATE": "Delete due date"
         }
     },
     "EPIC": {
@@ -1194,6 +1226,7 @@
         "CLIENT_REQUIREMENT": "Client Requirement",
         "BLOCKED": "Blocked",
         "VALUES": {
+            "NOT_SET": "not set",
             "UNASSIGNED": "unassigned"
         },
         "FIELDS": {
@@ -1202,6 +1235,8 @@
             "STATUS": "status",
             "TYPE": "type",
             "ASSIGNED_TO": "assigned to",
+            "ASSIGNED_USERS": "assigned users",
+            "DUE_DATE": "due date",
             "MILESTONE": "sprint",
             "COLOR": "color"
         }
@@ -1345,6 +1380,7 @@
         "SAVED": "Our Oompa Loompas saved all your changes!",
         "CLOSE": "Close notification",
         "MAIL": "Notifications By Mail",
+        "DESKTOP": "Desktop notifications using browser alerts",
         "ASK_DELETE": "Are you sure you want to delete?"
     },
     "CANCEL_ACCOUNT": {
@@ -1460,9 +1496,11 @@
             "SECTION_TITLE": "User Settings",
             "USER_PROFILE": "User profile",
             "CHANGE_PASSWORD": "Change password",
-            "EMAIL_NOTIFICATIONS": "Email notifications"
+            "EMAIL_NOTIFICATIONS": "Email notifications",
+            "DESKTOP_NOTIFICATIONS": "Desktop notifications"
         },
         "NOTIFICATIONS": {
+            "LIVE_SECTION_NAME": "Desktop Notifications",
             "SECTION_NAME": "Email Notifications",
             "COLUMN_PROJECT": "Project",
             "COLUMN_RECEIVE_ALL": "Receive All",

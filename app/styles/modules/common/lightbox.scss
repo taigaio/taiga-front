@@ -540,3 +540,63 @@
         width: 500px;
     }
 }
+
+.lightbox-set-due-date {
+    z-index: 9999;
+    form {
+        flex-basis: 600px;
+        flex-flow: 0;
+        max-width: 600px;
+    }
+    .date {
+        margin: 2rem 0 1rem;
+    }
+    .reason textarea {
+        margin-top: .5rem;
+    }
+    .due-date-suggestions {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin: 1rem 0 .5rem;
+    }
+    .suggestion {
+        background: rgba($gray-lighter, .2);
+        color: $gray-lighter;
+        justify-content: flex-start;
+        margin: 0 .5rem .5rem;
+        min-height: 2rem;
+        padding: .5rem .75rem;
+        position: relative;
+        &:first-child {
+            margin-left: 0;
+        }
+        &:nth-child(4n + 4) {
+            margin-right: 0;
+        }
+        &.clickable {
+            &:hover,
+            &.active {
+                background: rgba($primary-light, .9);
+                color: $white;
+            }
+        }
+    }
+    .delete-due-date {
+        @include font-size(small);
+        color: $gray;
+        float: right;
+        margin: 1rem .25rem 0 0;
+        transition: color .3s linear;
+        .icon {
+            fill: currentColor;
+        }
+        &:hover {
+            color: $red;
+            transition: color .3s linear;
+            .icon {
+                fill: currentColor;
+            }
+        }
+    }
+}

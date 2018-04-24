@@ -1,0 +1,48 @@
+//- <% if (selected) { %>
+<% _.each(selected, function(user) { %>
+.user-list-multiple.is-active(data-user-id!="<%- user.id %>")
+    .user-list-avatar
+        a(
+            href=""
+            title="{{'COMMON.ASSIGNED_TO' | translate}}"
+        )
+            img(
+                style!="background: <%- user.avatar.bg %>"
+                src!="<%- user.avatar.url %>"
+            )
+    a.user-list-name(
+        href=""
+        title!="<%- user.full_name_display %>"
+        ng-non-bindable
+    )
+        | <%-user.full_name_display %>
+    tg-svg.remove-assigned-to(
+        svg-icon="icon-close",
+        svg-title-translate="COMMON.ASSIGNED_TO.REMOVE_ASSIGNED",
+        data-user-id!="<%- user.id %>"
+    )
+<% }) %>
+
+<% _.each(users, function(user) { %>
+.user-list-single(data-user-id!="<%- user.id %>")
+    .user-list-avatar
+        a(
+            href="#"
+            title="{{'COMMON.ASSIGNED_TO.TITLE' | translate}}"
+        )
+            img(
+                style!="background: <%- user.avatar.bg %>"
+                src!="<%- user.avatar.url %>"
+            )
+    a.user-list-name(
+        href=""
+        title!="<%- user.full_name_display %>"
+        ng-non-bindable
+    )
+        | <%- user.full_name_display %>
+<% }) %>
+
+<% if (showMore) { %>
+.more-watchers
+    span(translate="COMMON.ASSIGNED_TO.TOO_MANY")
+<% } %>

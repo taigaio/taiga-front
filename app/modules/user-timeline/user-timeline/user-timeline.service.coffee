@@ -33,6 +33,7 @@ class UserTimelineService extends taiga.Service
         'status',
         'subject',
         'description_diff',
+        'assigned_users',
         'assigned_to',
         'points',
         'severity',
@@ -48,7 +49,9 @@ class UserTimelineService extends taiga.Service
         'blocked',
         'moveInBacklog',
         'milestone',
-        'color'
+        'color',
+        'due_date',
+        'due_date_reason'
     ]
 
     _invalid: [
