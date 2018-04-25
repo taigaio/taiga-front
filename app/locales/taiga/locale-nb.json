@@ -47,7 +47,8 @@
         "RELATED_USERSTORIES": "Related user stories",
         "CARD": {
             "ASSIGN_TO": "Assign To",
-            "EDIT": "Edit card"
+            "EDIT": "Edit card",
+            "DELETE": "Delete card"
         },
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Denne verdien virker å være ugyldig",
@@ -143,11 +144,14 @@
             "SEVERITY": "Alvorlighetsgrad",
             "PRIORITY": "Prioritet",
             "ASSIGNED_TO": "Tildelt til",
+            "ASSIGNED_USERS": "Assigned users",
             "POINTS": "Poeng",
             "IS_BLOCKED": "er blokkert",
             "REF": "Ref",
             "VOTES": "Stemmer",
-            "SPRINT": "Sprint"
+            "SPRINT": "Sprint",
+            "DUE_DATE": "Due date",
+            "DUE_DATE_REASON": "Due date reason"
         },
         "ROLES": {
             "ALL": "Alle"
@@ -161,6 +165,17 @@
             "CONFIRM_UNASSIGNED": "Er du sikker på at du vil la den være ikke tildelt?",
             "TITLE_ACTION_EDIT_ASSIGNMENT": "Rediger tildeling",
             "SELF": "Tildel til meg"
+        },
+        "DUE_DATE": {
+            "TITLE_ACTION_SET_DUE_DATE": "Set due date",
+            "DUE_SOON": "due soon",
+            "PAST_DUE": "past due date",
+            "NO_LONGER_APPLICABLE": "no longer applicable"
+        },
+        "ASSIGNED_USERS": {
+            "ADD": "Select assigned user",
+            "ADD_ASSIGNED": "Add assigned",
+            "TITLE_LIGHTBOX_DELETE_ASSIGNED": "Delete assigned..."
         },
         "STATUS": {
             "CLOSED": "Lukket",
@@ -1076,6 +1091,10 @@
             "EDIT_US": "Rediger brukerhistorie",
             "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?"
         },
+        "DELETE_DUE_DATE": {
+            "TITLE": "Delete due date",
+            "SUBTITLE": "Are you sure you want to delete this due date?"
+        },
         "DELETE_SPRINT": {
             "TITLE": "Slett sprint"
         },
@@ -1106,6 +1125,19 @@
             "WARNING": "The email will be received by the project admins",
             "PLACEHOLDER": "Write your message",
             "SEND": "Send"
+        },
+        "SET_DUE_DATE": {
+            "TITLE": "Set due date",
+            "PLACEHOLDER_DUE_DATE": "Select date",
+            "REASON_FOR_DUE_DATE": "Reason for the due date",
+            "PLACEHOLDER_REASON_FOR_DUE_DATE": "Why does this US need a due date?",
+            "SUGGESTIONS": {
+                "IN_ONE_WEEK": "In one week",
+                "IN_TWO_WEEKS": "In two weeks",
+                "IN_ONE_MONTH": "In one month",
+                "IN_THREE_MONTHS": "In three months"
+            },
+            "TITLE_ACTION_DELETE_DUE_DATE": "Delete due date"
         }
     },
     "EPIC": {
@@ -1194,6 +1226,7 @@
         "CLIENT_REQUIREMENT": "Klientkrav",
         "BLOCKED": "Blokkert",
         "VALUES": {
+            "NOT_SET": "not set",
             "UNASSIGNED": "ikke tildelt"
         },
         "FIELDS": {
@@ -1202,6 +1235,8 @@
             "STATUS": "status",
             "TYPE": "type",
             "ASSIGNED_TO": "tildelt til",
+            "ASSIGNED_USERS": "assigned users",
+            "DUE_DATE": "due date",
             "MILESTONE": "sprint",
             "COLOR": "farge"
         }
@@ -1345,6 +1380,7 @@
         "SAVED": "Våre Oompa Loompaer har lagret alle endringer!",
         "CLOSE": "Lukk melding",
         "MAIL": "Varsler per Epost",
+        "DESKTOP": "Desktop notifications using browser alerts",
         "ASK_DELETE": "Er du sikker på at du vil slette?"
     },
     "CANCEL_ACCOUNT": {
@@ -1460,9 +1496,11 @@
             "SECTION_TITLE": "Brukerinstillinger",
             "USER_PROFILE": "Brukerprofil",
             "CHANGE_PASSWORD": "Endre passord",
-            "EMAIL_NOTIFICATIONS": "Epost-varsler"
+            "EMAIL_NOTIFICATIONS": "Epost-varsler",
+            "DESKTOP_NOTIFICATIONS": "Desktop notifications"
         },
         "NOTIFICATIONS": {
+            "LIVE_SECTION_NAME": "Desktop Notifications",
             "SECTION_NAME": "E-postvarsler",
             "COLUMN_PROJECT": "Prosjekt",
             "COLUMN_RECEIVE_ALL": "Motta alle",

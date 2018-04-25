@@ -47,7 +47,8 @@
         "RELATED_USERSTORIES": "Related user stories",
         "CARD": {
             "ASSIGN_TO": "Atanmış",
-            "EDIT": "Kartı düzenle"
+            "EDIT": "Kartı düzenle",
+            "DELETE": "Delete card"
         },
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Bu değer geçersiz gözüküyor",
@@ -143,11 +144,14 @@
             "SEVERITY": "Önem Derecesi",
             "PRIORITY": "Öncelik",
             "ASSIGNED_TO": "Atanmış",
+            "ASSIGNED_USERS": "Assigned users",
             "POINTS": "Puanlar",
             "IS_BLOCKED": "engellendi ",
             "REF": "Ref",
             "VOTES": "Oylar",
-            "SPRINT": "Koşu"
+            "SPRINT": "Koşu",
+            "DUE_DATE": "Due date",
+            "DUE_DATE_REASON": "Due date reason"
         },
         "ROLES": {
             "ALL": "Hepsi"
@@ -161,6 +165,17 @@
             "CONFIRM_UNASSIGNED": "Atanmamış şekilde bırakmak istediğinizden emin misiniz?",
             "TITLE_ACTION_EDIT_ASSIGNMENT": "Atama düzenle",
             "SELF": "Bana ata"
+        },
+        "DUE_DATE": {
+            "TITLE_ACTION_SET_DUE_DATE": "Set due date",
+            "DUE_SOON": "due soon",
+            "PAST_DUE": "past due date",
+            "NO_LONGER_APPLICABLE": "no longer applicable"
+        },
+        "ASSIGNED_USERS": {
+            "ADD": "Select assigned user",
+            "ADD_ASSIGNED": "Add assigned",
+            "TITLE_LIGHTBOX_DELETE_ASSIGNED": "Delete assigned..."
         },
         "STATUS": {
             "CLOSED": "Kapalı",
@@ -1076,6 +1091,10 @@
             "EDIT_US": "Kullanıcı hikayesini düzenle",
             "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?"
         },
+        "DELETE_DUE_DATE": {
+            "TITLE": "Delete due date",
+            "SUBTITLE": "Are you sure you want to delete this due date?"
+        },
         "DELETE_SPRINT": {
             "TITLE": "Koşuyu sil"
         },
@@ -1106,6 +1125,19 @@
             "WARNING": "Bu e-posta proje yöneticileri tarafından alıncak",
             "PLACEHOLDER": "Mesajınızı yazın",
             "SEND": "Gönder"
+        },
+        "SET_DUE_DATE": {
+            "TITLE": "Set due date",
+            "PLACEHOLDER_DUE_DATE": "Select date",
+            "REASON_FOR_DUE_DATE": "Reason for the due date",
+            "PLACEHOLDER_REASON_FOR_DUE_DATE": "Why does this US need a due date?",
+            "SUGGESTIONS": {
+                "IN_ONE_WEEK": "In one week",
+                "IN_TWO_WEEKS": "In two weeks",
+                "IN_ONE_MONTH": "In one month",
+                "IN_THREE_MONTHS": "In three months"
+            },
+            "TITLE_ACTION_DELETE_DUE_DATE": "Delete due date"
         }
     },
     "EPIC": {
@@ -1194,6 +1226,7 @@
         "CLIENT_REQUIREMENT": "İstemci Gereksinimi",
         "BLOCKED": "Engelli",
         "VALUES": {
+            "NOT_SET": "not set",
             "UNASSIGNED": "atama yok"
         },
         "FIELDS": {
@@ -1202,6 +1235,8 @@
             "STATUS": "durum",
             "TYPE": "tip",
             "ASSIGNED_TO": "atanmış",
+            "ASSIGNED_USERS": "assigned users",
+            "DUE_DATE": "due date",
             "MILESTONE": "koşu",
             "COLOR": "renk"
         }
@@ -1345,6 +1380,7 @@
         "SAVED": "Honki ponkilerimiz tüm değişikliklerinizi kaydetti!",
         "CLOSE": "Bildirimleri kapat",
         "MAIL": "Posta ile Bildirim",
+        "DESKTOP": "Desktop notifications using browser alerts",
         "ASK_DELETE": "Silmek istediğinizden emin misiniz?"
     },
     "CANCEL_ACCOUNT": {
@@ -1460,9 +1496,11 @@
             "SECTION_TITLE": "Kullanıcı Ayarları",
             "USER_PROFILE": "Kullanıcı profili",
             "CHANGE_PASSWORD": "Parolayı değiştir",
-            "EMAIL_NOTIFICATIONS": "E-posta bildirimleri"
+            "EMAIL_NOTIFICATIONS": "E-posta bildirimleri",
+            "DESKTOP_NOTIFICATIONS": "Desktop notifications"
         },
         "NOTIFICATIONS": {
+            "LIVE_SECTION_NAME": "Desktop Notifications",
             "SECTION_NAME": "E-posta Bildirimleri",
             "COLUMN_PROJECT": "Proje",
             "COLUMN_RECEIVE_ALL": "Hepsini al",

@@ -47,7 +47,8 @@
         "RELATED_USERSTORIES": "Related user stories",
         "CARD": {
             "ASSIGN_TO": "Assign To",
-            "EDIT": "Edit card"
+            "EDIT": "Edit card",
+            "DELETE": "Delete card"
         },
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "該數值似乎為無效",
@@ -143,11 +144,14 @@
             "SEVERITY": "急迫性",
             "PRIORITY": "優先性",
             "ASSIGNED_TO": "指派給 ",
+            "ASSIGNED_USERS": "Assigned users",
             "POINTS": "點數",
             "IS_BLOCKED": "封鎖",
             "REF": "Ref",
             "VOTES": "投票數",
-            "SPRINT": "衝刺任務"
+            "SPRINT": "衝刺任務",
+            "DUE_DATE": "Due date",
+            "DUE_DATE_REASON": "Due date reason"
         },
         "ROLES": {
             "ALL": "所有"
@@ -161,6 +165,17 @@
             "CONFIRM_UNASSIGNED": "你確定要讓它無任何指派嗎？",
             "TITLE_ACTION_EDIT_ASSIGNMENT": "編輯指派",
             "SELF": "指派給我"
+        },
+        "DUE_DATE": {
+            "TITLE_ACTION_SET_DUE_DATE": "Set due date",
+            "DUE_SOON": "due soon",
+            "PAST_DUE": "past due date",
+            "NO_LONGER_APPLICABLE": "no longer applicable"
+        },
+        "ASSIGNED_USERS": {
+            "ADD": "Select assigned user",
+            "ADD_ASSIGNED": "Add assigned",
+            "TITLE_LIGHTBOX_DELETE_ASSIGNED": "Delete assigned..."
         },
         "STATUS": {
             "CLOSED": "關閉",
@@ -1076,6 +1091,10 @@
             "EDIT_US": "編輯使用者故事",
             "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?"
         },
+        "DELETE_DUE_DATE": {
+            "TITLE": "Delete due date",
+            "SUBTITLE": "Are you sure you want to delete this due date?"
+        },
         "DELETE_SPRINT": {
             "TITLE": "刪除衝刺任務"
         },
@@ -1106,6 +1125,19 @@
             "WARNING": "The email will be received by the project admins",
             "PLACEHOLDER": "Write your message",
             "SEND": "Send"
+        },
+        "SET_DUE_DATE": {
+            "TITLE": "Set due date",
+            "PLACEHOLDER_DUE_DATE": "Select date",
+            "REASON_FOR_DUE_DATE": "Reason for the due date",
+            "PLACEHOLDER_REASON_FOR_DUE_DATE": "Why does this US need a due date?",
+            "SUGGESTIONS": {
+                "IN_ONE_WEEK": "In one week",
+                "IN_TWO_WEEKS": "In two weeks",
+                "IN_ONE_MONTH": "In one month",
+                "IN_THREE_MONTHS": "In three months"
+            },
+            "TITLE_ACTION_DELETE_DUE_DATE": "Delete due date"
         }
     },
     "EPIC": {
@@ -1194,6 +1226,7 @@
         "CLIENT_REQUIREMENT": "客戶要求",
         "BLOCKED": "已封鎖",
         "VALUES": {
+            "NOT_SET": "not set",
             "UNASSIGNED": "未指派"
         },
         "FIELDS": {
@@ -1202,6 +1235,8 @@
             "STATUS": "狀態",
             "TYPE": "類型",
             "ASSIGNED_TO": "指派給 ",
+            "ASSIGNED_USERS": "assigned users",
+            "DUE_DATE": "due date",
             "MILESTONE": "衝刺任務",
             "COLOR": "顏色"
         }
@@ -1345,6 +1380,7 @@
         "SAVED": "我們系統已儲存你所有變動",
         "CLOSE": "關閉通知",
         "MAIL": "透過郵件通知",
+        "DESKTOP": "Desktop notifications using browser alerts",
         "ASK_DELETE": "你確定要刪除嗎？"
     },
     "CANCEL_ACCOUNT": {
@@ -1460,9 +1496,11 @@
             "SECTION_TITLE": "使用者設定",
             "USER_PROFILE": "使用者設定檔案",
             "CHANGE_PASSWORD": "更換密碼 ",
-            "EMAIL_NOTIFICATIONS": "電子郵件通知"
+            "EMAIL_NOTIFICATIONS": "電子郵件通知",
+            "DESKTOP_NOTIFICATIONS": "Desktop notifications"
         },
         "NOTIFICATIONS": {
+            "LIVE_SECTION_NAME": "Desktop Notifications",
             "SECTION_NAME": "電子郵件通知",
             "COLUMN_PROJECT": "專案",
             "COLUMN_RECEIVE_ALL": "接收所有",

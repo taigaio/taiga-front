@@ -47,7 +47,8 @@
         "RELATED_USERSTORIES": "関連するユーザーストーリー",
         "CARD": {
             "ASSIGN_TO": "アサイン",
-            "EDIT": "編集"
+            "EDIT": "編集",
+            "DELETE": "Delete card"
         },
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "無効な値です",
@@ -143,11 +144,14 @@
             "SEVERITY": "深刻度",
             "PRIORITY": "優先度",
             "ASSIGNED_TO": "担当者",
+            "ASSIGNED_USERS": "Assigned users",
             "POINTS": "ポイント",
             "IS_BLOCKED": "はブロックされています。",
             "REF": "参照",
             "VOTES": "投票",
-            "SPRINT": "スプリント"
+            "SPRINT": "スプリント",
+            "DUE_DATE": "Due date",
+            "DUE_DATE_REASON": "Due date reason"
         },
         "ROLES": {
             "ALL": "すべて"
@@ -161,6 +165,17 @@
             "CONFIRM_UNASSIGNED": "本当にこのアサインから外れてもよろしいですか？",
             "TITLE_ACTION_EDIT_ASSIGNMENT": "アサインを編集",
             "SELF": "自分が担当する"
+        },
+        "DUE_DATE": {
+            "TITLE_ACTION_SET_DUE_DATE": "Set due date",
+            "DUE_SOON": "due soon",
+            "PAST_DUE": "past due date",
+            "NO_LONGER_APPLICABLE": "no longer applicable"
+        },
+        "ASSIGNED_USERS": {
+            "ADD": "Select assigned user",
+            "ADD_ASSIGNED": "Add assigned",
+            "TITLE_LIGHTBOX_DELETE_ASSIGNED": "Delete assigned..."
         },
         "STATUS": {
             "CLOSED": "終了",
@@ -1076,6 +1091,10 @@
             "EDIT_US": "ユーザーストーリーを編集",
             "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?"
         },
+        "DELETE_DUE_DATE": {
+            "TITLE": "Delete due date",
+            "SUBTITLE": "Are you sure you want to delete this due date?"
+        },
         "DELETE_SPRINT": {
             "TITLE": "スプリントを削除"
         },
@@ -1106,6 +1125,19 @@
             "WARNING": "プロジェクト管理者がメールを受信します",
             "PLACEHOLDER": "メッセージを書いてください",
             "SEND": "送信"
+        },
+        "SET_DUE_DATE": {
+            "TITLE": "Set due date",
+            "PLACEHOLDER_DUE_DATE": "Select date",
+            "REASON_FOR_DUE_DATE": "Reason for the due date",
+            "PLACEHOLDER_REASON_FOR_DUE_DATE": "Why does this US need a due date?",
+            "SUGGESTIONS": {
+                "IN_ONE_WEEK": "In one week",
+                "IN_TWO_WEEKS": "In two weeks",
+                "IN_ONE_MONTH": "In one month",
+                "IN_THREE_MONTHS": "In three months"
+            },
+            "TITLE_ACTION_DELETE_DUE_DATE": "Delete due date"
         }
     },
     "EPIC": {
@@ -1194,6 +1226,7 @@
         "CLIENT_REQUIREMENT": "お客様からの要求",
         "BLOCKED": "ブロック中",
         "VALUES": {
+            "NOT_SET": "not set",
             "UNASSIGNED": "未割当"
         },
         "FIELDS": {
@@ -1202,6 +1235,8 @@
             "STATUS": "ステータス",
             "TYPE": "タイプ",
             "ASSIGNED_TO": "割り当てる",
+            "ASSIGNED_USERS": "assigned users",
+            "DUE_DATE": "due date",
             "MILESTONE": "スプリント",
             "COLOR": "色"
         }
@@ -1345,6 +1380,7 @@
         "SAVED": "ウンパルンパたちがすべての変更を保存しました。",
         "CLOSE": "通知を閉じる",
         "MAIL": "メールでの通知",
+        "DESKTOP": "Desktop notifications using browser alerts",
         "ASK_DELETE": "本当に削除してもよろしいですか？"
     },
     "CANCEL_ACCOUNT": {
@@ -1460,9 +1496,11 @@
             "SECTION_TITLE": "ユーザー設定",
             "USER_PROFILE": "ユーザープロフィール",
             "CHANGE_PASSWORD": "パスワード変更",
-            "EMAIL_NOTIFICATIONS": "メール通知"
+            "EMAIL_NOTIFICATIONS": "メール通知",
+            "DESKTOP_NOTIFICATIONS": "Desktop notifications"
         },
         "NOTIFICATIONS": {
+            "LIVE_SECTION_NAME": "Desktop Notifications",
             "SECTION_NAME": "メール通知",
             "COLUMN_PROJECT": "プロジェクト",
             "COLUMN_RECEIVE_ALL": "すべて受信",

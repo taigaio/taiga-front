@@ -47,7 +47,8 @@
         "RELATED_USERSTORIES": "Связанные пользовательские истории",
         "CARD": {
             "ASSIGN_TO": "Assign To",
-            "EDIT": "Edit card"
+            "EDIT": "Edit card",
+            "DELETE": "Delete card"
         },
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Кажется, это значение некорректно.",
@@ -143,11 +144,14 @@
             "SEVERITY": "Важность",
             "PRIORITY": "Приоритет",
             "ASSIGNED_TO": "Назначено",
+            "ASSIGNED_USERS": "Assigned users",
             "POINTS": "Очки",
             "IS_BLOCKED": "заблокирован",
             "REF": "Ссылка",
             "VOTES": "Голоса",
-            "SPRINT": "Спринт"
+            "SPRINT": "Спринт",
+            "DUE_DATE": "Due date",
+            "DUE_DATE_REASON": "Due date reason"
         },
         "ROLES": {
             "ALL": "Все"
@@ -161,6 +165,17 @@
             "CONFIRM_UNASSIGNED": "Вы уверены что не хотите назначить ответственного?",
             "TITLE_ACTION_EDIT_ASSIGNMENT": "Изменить назначение",
             "SELF": "Назначено мне"
+        },
+        "DUE_DATE": {
+            "TITLE_ACTION_SET_DUE_DATE": "Set due date",
+            "DUE_SOON": "due soon",
+            "PAST_DUE": "past due date",
+            "NO_LONGER_APPLICABLE": "no longer applicable"
+        },
+        "ASSIGNED_USERS": {
+            "ADD": "Select assigned user",
+            "ADD_ASSIGNED": "Add assigned",
+            "TITLE_LIGHTBOX_DELETE_ASSIGNED": "Delete assigned..."
         },
         "STATUS": {
             "CLOSED": "Закрыт",
@@ -1076,6 +1091,10 @@
             "EDIT_US": "Изменить пользовательскую историю",
             "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?"
         },
+        "DELETE_DUE_DATE": {
+            "TITLE": "Delete due date",
+            "SUBTITLE": "Are you sure you want to delete this due date?"
+        },
         "DELETE_SPRINT": {
             "TITLE": "Удалить спринт"
         },
@@ -1106,6 +1125,19 @@
             "WARNING": "Сообщение будет отправлено администраторам проекта",
             "PLACEHOLDER": "Напишите Ваше сообщение",
             "SEND": "Отправить"
+        },
+        "SET_DUE_DATE": {
+            "TITLE": "Set due date",
+            "PLACEHOLDER_DUE_DATE": "Select date",
+            "REASON_FOR_DUE_DATE": "Reason for the due date",
+            "PLACEHOLDER_REASON_FOR_DUE_DATE": "Why does this US need a due date?",
+            "SUGGESTIONS": {
+                "IN_ONE_WEEK": "In one week",
+                "IN_TWO_WEEKS": "In two weeks",
+                "IN_ONE_MONTH": "In one month",
+                "IN_THREE_MONTHS": "In three months"
+            },
+            "TITLE_ACTION_DELETE_DUE_DATE": "Delete due date"
         }
     },
     "EPIC": {
@@ -1194,6 +1226,7 @@
         "CLIENT_REQUIREMENT": "Требование клиента",
         "BLOCKED": "Заблокирован",
         "VALUES": {
+            "NOT_SET": "not set",
             "UNASSIGNED": "нет ответственного"
         },
         "FIELDS": {
@@ -1202,6 +1235,8 @@
             "STATUS": "cтатус",
             "TYPE": "тип",
             "ASSIGNED_TO": "назначено на",
+            "ASSIGNED_USERS": "assigned users",
+            "DUE_DATE": "due date",
             "MILESTONE": "спринт",
             "COLOR": "цвет"
         }
@@ -1345,6 +1380,7 @@
         "SAVED": "Oompa Loompas сохранил изменения!",
         "CLOSE": "закрыть уведомление",
         "MAIL": "Уведомления почтой",
+        "DESKTOP": "Desktop notifications using browser alerts",
         "ASK_DELETE": "Вы уверены, что хотите удалить?"
     },
     "CANCEL_ACCOUNT": {
@@ -1460,9 +1496,11 @@
             "SECTION_TITLE": "Настройки пользователя",
             "USER_PROFILE": "Профиль пользователя",
             "CHANGE_PASSWORD": "Изменить пароль",
-            "EMAIL_NOTIFICATIONS": "Уведомления почтой"
+            "EMAIL_NOTIFICATIONS": "Уведомления почтой",
+            "DESKTOP_NOTIFICATIONS": "Desktop notifications"
         },
         "NOTIFICATIONS": {
+            "LIVE_SECTION_NAME": "Desktop Notifications",
             "SECTION_NAME": "Уведомления почтой",
             "COLUMN_PROJECT": "Проект",
             "COLUMN_RECEIVE_ALL": "Получать все",

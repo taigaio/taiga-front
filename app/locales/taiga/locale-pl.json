@@ -47,7 +47,8 @@
         "RELATED_USERSTORIES": "Powiązane historyjki użytkownika",
         "CARD": {
             "ASSIGN_TO": "Przypisz Do",
-            "EDIT": "Edit card"
+            "EDIT": "Edit card",
+            "DELETE": "Delete card"
         },
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Nieprawidłowa wartość",
@@ -143,11 +144,14 @@
             "SEVERITY": "Ważność",
             "PRIORITY": "Priorytet",
             "ASSIGNED_TO": "Przydzielone do",
+            "ASSIGNED_USERS": "Assigned users",
             "POINTS": "Punkty",
             "IS_BLOCKED": "zablokowana",
             "REF": "Ref",
             "VOTES": "Głosy",
-            "SPRINT": "Sprint"
+            "SPRINT": "Sprint",
+            "DUE_DATE": "Due date",
+            "DUE_DATE_REASON": "Due date reason"
         },
         "ROLES": {
             "ALL": "Wszystko"
@@ -161,6 +165,17 @@
             "CONFIRM_UNASSIGNED": "Jesteś pewny, że chcesz pozostawić nieprzypisane?",
             "TITLE_ACTION_EDIT_ASSIGNMENT": "Edytuj przypisanie",
             "SELF": "Przypisz do mnie"
+        },
+        "DUE_DATE": {
+            "TITLE_ACTION_SET_DUE_DATE": "Set due date",
+            "DUE_SOON": "due soon",
+            "PAST_DUE": "past due date",
+            "NO_LONGER_APPLICABLE": "no longer applicable"
+        },
+        "ASSIGNED_USERS": {
+            "ADD": "Select assigned user",
+            "ADD_ASSIGNED": "Add assigned",
+            "TITLE_LIGHTBOX_DELETE_ASSIGNED": "Delete assigned..."
         },
         "STATUS": {
             "CLOSED": "Zamknięte",
@@ -1076,6 +1091,10 @@
             "EDIT_US": "Zmień historyjkę użytkownika",
             "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?"
         },
+        "DELETE_DUE_DATE": {
+            "TITLE": "Delete due date",
+            "SUBTITLE": "Are you sure you want to delete this due date?"
+        },
         "DELETE_SPRINT": {
             "TITLE": "Usuń sprint"
         },
@@ -1106,6 +1125,19 @@
             "WARNING": "The email will be received by the project admins",
             "PLACEHOLDER": "Write your message",
             "SEND": "Wyślij"
+        },
+        "SET_DUE_DATE": {
+            "TITLE": "Set due date",
+            "PLACEHOLDER_DUE_DATE": "Select date",
+            "REASON_FOR_DUE_DATE": "Reason for the due date",
+            "PLACEHOLDER_REASON_FOR_DUE_DATE": "Why does this US need a due date?",
+            "SUGGESTIONS": {
+                "IN_ONE_WEEK": "In one week",
+                "IN_TWO_WEEKS": "In two weeks",
+                "IN_ONE_MONTH": "In one month",
+                "IN_THREE_MONTHS": "In three months"
+            },
+            "TITLE_ACTION_DELETE_DUE_DATE": "Delete due date"
         }
     },
     "EPIC": {
@@ -1194,6 +1226,7 @@
         "CLIENT_REQUIREMENT": "Wymaganie klienta",
         "BLOCKED": "Zablokowane",
         "VALUES": {
+            "NOT_SET": "not set",
             "UNASSIGNED": "nieprzypisany"
         },
         "FIELDS": {
@@ -1202,6 +1235,8 @@
             "STATUS": "status",
             "TYPE": "typ",
             "ASSIGNED_TO": "przypisane do",
+            "ASSIGNED_USERS": "assigned users",
+            "DUE_DATE": "due date",
             "MILESTONE": "sprint",
             "COLOR": "kolor"
         }
@@ -1345,6 +1380,7 @@
         "SAVED": "Wszystkie zmiany zapisane!",
         "CLOSE": "Zamknij powiadomienie",
         "MAIL": "Powiadomienia na e-mail",
+        "DESKTOP": "Desktop notifications using browser alerts",
         "ASK_DELETE": "Czy na pewno chcesz usunąć?"
     },
     "CANCEL_ACCOUNT": {
@@ -1460,9 +1496,11 @@
             "SECTION_TITLE": "Ustawienia użytkownika",
             "USER_PROFILE": "Profil użytkownika",
             "CHANGE_PASSWORD": "Zmień hasło",
-            "EMAIL_NOTIFICATIONS": "Powiadomienia e-mail"
+            "EMAIL_NOTIFICATIONS": "Powiadomienia e-mail",
+            "DESKTOP_NOTIFICATIONS": "Desktop notifications"
         },
         "NOTIFICATIONS": {
+            "LIVE_SECTION_NAME": "Desktop Notifications",
             "SECTION_NAME": "Powiadomienia przez e-mail",
             "COLUMN_PROJECT": "Projekt",
             "COLUMN_RECEIVE_ALL": "Otrzymuj wszystkie",
