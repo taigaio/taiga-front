@@ -1,4 +1,4 @@
-.detail-title-wrapper.e2e-story-header
+.detail-title-wrapper.e2e-story-header(ng-class="{readonly: !vm.permissions.canEdit}")
     h2.detail-title-text.ng-animate-disabled(
         ng-show="!vm.editMode"
         ng-hide="vm.editMode"

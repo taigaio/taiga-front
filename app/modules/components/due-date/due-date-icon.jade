@@ -1,7 +1,6 @@
-span.due-date-icon
-    tg-svg(
-        ng-if="vm.visible()"
-        svg-icon="icon-clock"
-        ng-class="vm.color()"
-        ng-attr-title="{{ vm.title() }}"
-    )
+tg-svg.due-date-icon(
+    ng-if="vm.visible()"
+    svg-icon="icon-clock"
+    ng-class="vm.color()"
+    ng-attr-title="{{ vm.title() }}"
+)
