@@ -26,44 +26,43 @@ tg-due-date .due-date-button {
     }
 }
 
-tg-due-date .due-date-icon {
+.due-date-icon {
     display: inline-block;
-    line-height: .1rem;
     margin: 0 .25rem;
     position: relative;
-    top: .1rem;
     svg {
         fill: $gray-light;
-        height: 1.1rem;
         transition: fill .2s ease-in;
-        width: 1.1rem;
     }
-    .closed svg {
+    &.closed svg {
         fill: $gray-lighter;
     }
-    .due-set svg {
+    &.due-set svg {
         fill: $yellow-green;
     }
-    .due-soon svg {
+    &.due-soon svg {
         fill: $my-sin;
     }
-    .past-due svg {
+    &.past-due svg {
         fill: $red-light;
     }
 }
 
-.backlog-table-body .user-story-name .due-date-icon {
-    top: .25rem;
+.backlog-table-body .user-story-name,
+.related-tasks .task-name {
+    .due-date-icon {
+        top: .1rem;
+    }
 }
 
 .issues-table .subject .due-date-icon {
-    top: 0;
+    top: .25rem;
 }
 
 .card-statistics .due-date-icon {
-    margin: 0;
+    margin: .1rem 0 0;
     svg {
-        height: 1rem;
-        width: 1rem;
+        height: .9rem;
+        width: .9rem;
     }
 }

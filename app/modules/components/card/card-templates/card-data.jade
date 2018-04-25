@@ -2,7 +2,7 @@
     ng-if="vm.visible('extra_info')"
     ng-class="{'empty-tasks': !vm.item.getIn(['model', 'tasks']).size}"
 )
-    span.card-estimation(
+    span.card-estimation.not-estimated(
         ng-if="vm.item.getIn(['model', 'total_points']) === null && vm.visible('empty_extra_info')",
         translate="US.NOT_ESTIMATED"
     )

@@ -160,6 +160,9 @@
     font-size: 14px;
     justify-content: space-between;
     padding: 0 1rem .5rem;
+    .card-estimation.not-estimated {
+        font-size: .8125rem;
+    }
 }
 
 .card-statistics {
@@ -179,6 +182,12 @@
         }
         &.card-iocaine {
             cursor: help;
+        }
+        &.card-votes {
+            margin-left: .2rem;
+        }
+        &.card-due-date {
+            margin-left: .1rem;
         }
     }
     .icon {

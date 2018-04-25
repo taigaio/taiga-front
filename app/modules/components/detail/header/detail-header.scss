@@ -74,9 +74,15 @@
         margin-left: .75rem;
         opacity: 0;
         transition: opacity .2s;
+    }
+    .detail-edit,
+    .due-date-icon {
         svg {
-            @include svg-size(1.25rem);
+            @include svg-size(1.3rem);
         }
+    }
+    &.readonly .due-date-icon {
+        margin-left: 2.7rem;
     }
 }
 
