@@ -1645,7 +1645,7 @@
     "DISCOVER": {
         "PAGE_TITLE": "Entdecke Projekte  - Taiga",
         "PAGE_DESCRIPTION": "Searchable directory of Public Projects in Taiga. Explore backlogs, timelines, issues, and teams. Check out the most liked or most active projects. Filter by Kanban or Scrum.",
-        "DISCOVER_TITLE": "Endecke Projekte",
+        "DISCOVER_TITLE": "Entdecke Projekte",
         "DISCOVER_SUBTITLE": "{projects, plural, one{Ein öffentliches Projekt verfügbar} other{# öffentliche Projekte verfügbar}}",
         "MOST_ACTIVE": "Most active",
         "MOST_ACTIVE_EMPTY": "There are no ACTIVE projects yet",
