@@ -14,6 +14,16 @@
     include history-templates/history-milestone
 
 .diff-wrapper(
+    ng-if="vm.type == 'priority'"
+)
+    include history-templates/history-priority
+
+.diff-wrapper(
+    ng-if="vm.type == 'severity'"
+)
+    include history-templates/history-severity
+
+.diff-wrapper(
     ng-if="vm.type == 'status'"
 )
     include history-templates/history-status
