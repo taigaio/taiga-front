@@ -1,12 +1,12 @@
-tg-due-date .due-date-button {
+.due-date-button,
+[disabled].due-date-button {
     background: $gray-light;
     display: inline-block;
     margin-right: .5rem;
     padding: 1rem;
     transition: background .2s linear;
     transition-delay: .1s;
-    &.closed,
-    &.closed[disabled] {
+    &.closed {
         background: $gray-lighter;
     }
     &.due-set {
