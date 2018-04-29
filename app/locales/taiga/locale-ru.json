@@ -1232,6 +1232,8 @@
         "FIELDS": {
             "SUBJECT": "название",
             "DESCRIPTION": "описание",
+            "PRIORITY": "приоритет",
+            "SEVERITY": "важность",
             "STATUS": "cтатус",
             "TYPE": "тип",
             "ASSIGNED_TO": "назначено на",

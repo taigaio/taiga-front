@@ -1232,6 +1232,8 @@
         "FIELDS": {
             "SUBJECT": "주제",
             "DESCRIPTION": "설명",
+            "PRIORITY": "우선 순위",
+            "SEVERITY": "심각도",
             "STATUS": "상태",
             "TYPE": "타입",
             "ASSIGNED_TO": "할당됨",

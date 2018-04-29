@@ -1232,6 +1232,8 @@
         "FIELDS": {
             "SUBJECT": "titel",
             "DESCRIPTION": "beskrivning",
+            "PRIORITY": "prioritet",
+            "SEVERITY": "Allvarsgrad",
             "STATUS": "status",
             "TYPE": "typ",
             "ASSIGNED_TO": "tilldelad till",

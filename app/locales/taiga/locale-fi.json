@@ -1232,6 +1232,8 @@
         "FIELDS": {
             "SUBJECT": "aihe",
             "DESCRIPTION": "kuvaus",
+            "PRIORITY": "kiireellisyys",
+            "SEVERITY": "vakavuus",
             "STATUS": "tila",
             "TYPE": "tyyppi",
             "ASSIGNED_TO": "tekijä on",

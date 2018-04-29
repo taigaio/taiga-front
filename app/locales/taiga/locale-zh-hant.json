@@ -1232,6 +1232,8 @@
         "FIELDS": {
             "SUBJECT": "主旨",
             "DESCRIPTION": "描述",
+            "PRIORITY": "優先性",
+            "SEVERITY": "急迫性",
             "STATUS": "狀態",
             "TYPE": "類型",
             "ASSIGNED_TO": "指派給 ",

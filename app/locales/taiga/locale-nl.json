@@ -1232,6 +1232,8 @@
         "FIELDS": {
             "SUBJECT": "onderwerp",
             "DESCRIPTION": "beschrijving",
+            "PRIORITY": "prioriteit",
+            "SEVERITY": "erstniveau",
             "STATUS": "status",
             "TYPE": "type",
             "ASSIGNED_TO": "toegewezen aan",

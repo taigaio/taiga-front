@@ -1232,6 +1232,8 @@
         "FIELDS": {
             "SUBJECT": "subjekt",
             "DESCRIPTION": "beskrivelse",
+            "PRIORITY": "prioritet",
+            "SEVERITY": "alvorlighetsgrad",
             "STATUS": "status",
             "TYPE": "type",
             "ASSIGNED_TO": "tildelt til",

@@ -1232,6 +1232,8 @@
         "FIELDS": {
             "SUBJECT": "konu",
             "DESCRIPTION": "tanım",
+            "PRIORITY": "öncelik",
+            "SEVERITY": "önem derecesi",
             "STATUS": "durum",
             "TYPE": "tip",
             "ASSIGNED_TO": "atanmış",

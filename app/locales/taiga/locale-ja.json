@@ -1232,6 +1232,8 @@
         "FIELDS": {
             "SUBJECT": "題名",
             "DESCRIPTION": "説明",
+            "PRIORITY": "優先度",
+            "SEVERITY": "深刻度",
             "STATUS": "ステータス",
             "TYPE": "タイプ",
             "ASSIGNED_TO": "割り当てる",

@@ -1232,6 +1232,8 @@
         "FIELDS": {
             "SUBJECT": "descripció",
             "DESCRIPTION": "descripció",
+            "PRIORITY": "prioritat",
+            "SEVERITY": "severitat",
             "STATUS": "Estats",
             "TYPE": "tipus",
             "ASSIGNED_TO": "Assignat a",

@@ -1232,6 +1232,8 @@
         "FIELDS": {
             "SUBJECT": "Thema",
             "DESCRIPTION": "Beschreibung",
+            "PRIORITY": "Priorität",
+            "SEVERITY": "Gewichtung",
             "STATUS": "Status",
             "TYPE": "Typen",
             "ASSIGNED_TO": "zugewiesen an",

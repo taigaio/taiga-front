@@ -1232,6 +1232,8 @@
         "FIELDS": {
             "SUBJECT": "temat",
             "DESCRIPTION": "opis",
+            "PRIORITY": "priorytet",
+            "SEVERITY": "ważność",
             "STATUS": "status",
             "TYPE": "typ",
             "ASSIGNED_TO": "przypisane do",
