@@ -107,7 +107,7 @@ describe "tgHome", ->
         mocks.resources.userstories.listInAllProjects
             .withArgs(sinon.match({
                 is_closed: false
-                assigned_users: userId
+                assigned_to: userId
             }))
             .promise()
             .resolve(Immutable.fromJS([{id: 1, ref: 1, project: "1"}]))
