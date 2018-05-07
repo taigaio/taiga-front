@@ -194,11 +194,11 @@
             "UNWATCH": "خروج از نظارت",
             "WATCHERS": "بررسی‌کنندگان",
             "BUTTON_TITLE": "بررسی یا عدم بررسی این آیتم",
-            "COUNTER_TITLE": "{مجموع، جمع، یک{یک بررسی کننده} سایر{# بررسی‌کنندگان}}"
+            "COUNTER_TITLE": "{total, plural, one{one watcher} other{# watchers}}"
         },
         "VOTE_BUTTON": {
             "BUTTON_TITLE": "رأی مثبت یا منفی برای این آیتم",
-            "COUNTER_TITLE": "{مجموع، جمع، یک{یک دیدگاه} سایر{# دیدگاه‌ها}}"
+            "COUNTER_TITLE": "{total, plural, one{one vote} other{# votes}}"
         },
         "CUSTOM_ATTRIBUTES": {
             "CUSTOM_FIELDS": "ویژگی‌های سفارشی",
@@ -819,8 +819,8 @@
         "PRIVATE": "پروژه‌ی خصوصی",
         "LOOKING_FOR_PEOPLE": "این پروژه در انتظار عضو است",
         "FANS_COUNTER_TITLE": "{total, plural, one{one fan} other{# fans}}",
-        "WATCHERS_COUNTER_TITLE": "{مجموع، جمع، یک{یک بررسی کننده} سایر{# بررسی‌کنندگان}}",
-        "MEMBERS_COUNTER_TITLE": "{مجموع، جمع، یک{یک عضو} سایر{# اعضا}}",
+        "WATCHERS_COUNTER_TITLE": "{total, plural, one{one watcher} other{# watchers}}",
+        "MEMBERS_COUNTER_TITLE": "{total, plural, one{one member} other{# members}}",
         "BLOCKED_PROJECT": {
             "BLOCKED": "پروژه مسدودشده",
             "THIS_PROJECT_IS_BLOCKED": "این پروژه موقتاً مسدود شده است",
@@ -863,13 +863,13 @@
             "LIKED": "لایک‌شده",
             "UNLIKE": "دیسلایک",
             "BUTTON_TITLE": "لایک یا دیسلایک کردن این پروژه",
-            "COUNTER_TITLE": "{مجموع، جمع، یک{یک طرفدار} سایر{# طرفداران}}"
+            "COUNTER_TITLE": "{total, plural, one{one fan} other{# fans}}"
         },
         "WATCH_BUTTON": {
             "BUTTON_TITLE": "نظارت بر این پروژه و تنظیم نوتیفیکیشن‌ها",
             "WATCH": "نظارت",
             "WATCHING": "در حال بررسی",
-            "COUNTER_TITLE": "{مجموع، جمع، یک{یک بررسی کننده} سایر{# بررسی‌کنندگان}}",
+            "COUNTER_TITLE": "{total, plural, one{one watcher} other{# watchers}}",
             "OPTIONS": {
                 "NOTIFY_ALL": "دریافت تمام نوتیفیکیشن‌ها",
                 "NOTIFY_ALL_TITLE": "دریافت تمام نوتیفیکیشن‌های مربوط به این پروژه",
@@ -1686,7 +1686,7 @@
         "PAGE_TITLE": "کشف پروژه‌ها - تایگا",
         "PAGE_DESCRIPTION": "دایرکتوری قابل‌جست‌وجو پروژه‌های عمومی در تایگا. لیست امور ناتمام، تایم‌لاین‌ها، موضوعات و تیم‌ها را پیدا کنید. پروژه‌هایی با بیشتری لایک یا پروژه‌های فعال را بررسی کنید. از فیلتر کانبان یا اسکرام استفاده کنید.",
         "DISCOVER_TITLE": "کشف پروژه‌ها",
-        "DISCOVER_SUBTITLE": "{پروژه‌ها، جمع، یک{یک پروژه‌ی عمومی} سایر{# پروژه‌ی عمومی}}",
+        "DISCOVER_SUBTITLE": "{projects, plural, one{One public project to discover} other{# public projects to discover}}",
         "MOST_ACTIVE": "بیشترین فعالیت",
         "MOST_ACTIVE_EMPTY": "در حال حاضر پروژه‌ی فعالی وجود ندارد",
         "MOST_LIKED": "با بیشتری لایک",
