@@ -164,8 +164,12 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
     addNewUs: (type, statusId) ->
         switch type
-            when "standard" then @rootscope.$broadcast("usform:new",
-                                                       @scope.projectId, statusId, @scope.usStatusList)
+            when "standard" then  @rootscope.$broadcast("genericform:new",
+                {
+                    'objType': 'us',
+                    'project': @scope.project,
+                    'statusList': @scope.usStatusList
+                })
             when "bulk" then @rootscope.$broadcast("usform:bulk",
                                                    @scope.projectId, statusId)
 
@@ -175,9 +179,15 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         @kanbanUserstoriesService.replace(us)
 
         @rs.userstories.getByRef(us.getIn(['model', 'project']), us.getIn(['model', 'ref']))
-         .then (editingUserStory) =>
-            @rs2.attachments.list("us", us.get('id'), us.getIn(['model', 'project'])).then (attachments) =>
-                @rootscope.$broadcast("usform:edit", editingUserStory, attachments.toJS())
+        .then (editingUserStory) =>
+            @rs2.attachments.list(
+                "us", us.get('id'), us.getIn(['model', 'project'])).then (attachments) =>
+                    @rootscope.$broadcast("genericform:edit", {
+                        'objType': 'us',
+                        'obj': editingUserStory,
+                        'statusList': @scope.usStatusList,
+                        'attachments': attachments.toJS()
+                    })
 
                 us = us.set('loading-edit', false)
                 @kanbanUserstoriesService.replace(us)

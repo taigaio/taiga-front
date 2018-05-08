@@ -1,0 +1,65 @@
+.user-avatar(ng-class!="{ 'is-iocaine': isIocaine }")
+    img(
+      style="background-color: {{ bg }}"
+      src="{{ avatar.url }}"
+      alt="{{ fullName }}"
+    )
+    .iocaine-symbol(
+        ng-if="isIocaine"
+        title="{{ 'TASK.TITLE_ACTION_IOCAINE' | translate }}"
+    )
+       tg-svg(svg-icon="icon-iocaine")
+
+
+.assigned-to
+    .assigned-to-options
+        span.assigned-name(
+            ng-if="!isEditable && fullNameVisible"
+        ) {{ fullName }}
+
+        span.users-dropdown.user-assigned(
+            title="{{ 'COMMON.ASSIGNED_TO.TITLE_ACTION_EDIT_ASSIGNMENT'|translate }}"
+            ng-class="{ 'editable': isEditable }"
+            ng-if="isEditable"
+        )
+            span.assigned-name
+                span(ng-if="fullNameVisible") {{ fullName }}
+
+        div.pop-users.popover
+            input.users-search(
+                type="text"
+                data-maxlength="500"
+                placeholder="{{'LIGHTBOX.ASSIGNED_TO.SEARCH' | translate}}"
+                ng-model="usersSearch"
+            )
+            a.user-list-single(
+                href=""
+                data-user-id="{{ user.id }}"
+                title="{{ user.full_name_display }}"
+                ng-repeat="user in users"
+            )
+                img.user-list-avatar(
+                    style="background: {{user.avatar.bg }}"
+                    src="{{ user.avatar.url }}"
+                )
+                span.user-list-name(
+                    href=""
+                    title="{{ user.full_name_display }}"
+                ) {{ user.full_name_display }}
+            .show-more(ng-if="showMore")
+                span(translate="COMMON.ASSIGNED_TO.TOO_MANY")
+
+        span(translate="COMMON.OR", ng-if="isUnassigned")
+        div(ng-if="isUnassigned")
+            a.assign-to-me(
+                href="#"
+                title="{{'COMMON.ASSIGNED_TO.SELF' | translate}}"
+            )
+                span {{ "COMMON.ASSIGNED_TO.SELF" | translate }}
+
+    tg-svg.remove-user(
+        ng-if="isEditable && !isUnassigned"
+        svg-icon="icon-close",
+        title="{{'COMMON.ASSIGNED_TO.DELETE_ASSIGNMENT' | translate}}"
+    )
+

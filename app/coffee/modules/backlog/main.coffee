@@ -541,7 +541,12 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
         return @rs.userstories.getByRef(projectId, ref).then (us) =>
             @rs2.attachments.list("us", us.id, projectId).then (attachments) =>
-                @rootscope.$broadcast("usform:edit", us, attachments.toJS())
+                @rootscope.$broadcast("genericform:edit", {
+                    'objType': 'us',
+                    'statusList': @scope.usStatusList,
+                    'obj': us,
+                    'attachments': attachments.toJS()
+                })
                 currentLoading.finish()
 
     deleteUserStory: (us) ->
@@ -566,8 +571,12 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
     addNewUs: (type) ->
         switch type
-            when "standard" then @rootscope.$broadcast("usform:new", @scope.projectId,
-                                                       @scope.project.default_us_status, @scope.usStatusList)
+            when "standard" then @rootscope.$broadcast("genericform:new",
+                {
+                    'objType': 'us',
+                    'project': @scope.project,
+                    'statusList': @scope.usStatusList
+                })
             when "bulk" then @rootscope.$broadcast("usform:bulk", @scope.projectId,
                                                    @scope.project.default_us_status)
 
@@ -575,13 +584,13 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         @rootscope.$broadcast("sprintform:create", @scope.projectId)
 
     findCurrentSprint: () ->
-      currentDate = new Date().getTime()
+        currentDate = new Date().getTime()
 
-      return  _.find @scope.sprints, (sprint) ->
-          start = moment(sprint.estimated_start, 'YYYY-MM-DD').format('x')
-          end = moment(sprint.estimated_finish, 'YYYY-MM-DD').format('x')
+        return  _.find @scope.sprints, (sprint) ->
+            start = moment(sprint.estimated_start, 'YYYY-MM-DD').format('x')
+            end = moment(sprint.estimated_finish, 'YYYY-MM-DD').format('x')
 
-          return currentDate >= start && currentDate <= end
+            return currentDate >= start && currentDate <= end
 
 module.controller("BacklogController", BacklogController)
 

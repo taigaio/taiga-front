@@ -21,9 +21,8 @@
             tg-svg.detail-edit.e2e-detail-edit(svg-icon="icon-edit")
         tg-due-date(
             due-date="vm.item.due_date"
-            due-date-status="vm.item.due_date_status"
-            ng-if="vm.item.due_date"
             is-closed="vm.item.is_closed"
+            ng-if="vm.item.due_date"
         )
     .edit-title-wrapper(ng-if="vm.editMode")
         input.edit-title-input.e2e-title-input(

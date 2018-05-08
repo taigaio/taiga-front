@@ -114,12 +114,11 @@ div.wrapper(
 
         section.ticket-detail-settings
             tg-due-date(
-                tg-check-permission="modify_issue"
                 due-date="issue.due_date"
-                due-date-status="issue.due_date_status"
+                format="button"
                 is-closed="issue.is_closed"
                 item="issue"
-                format="button"
+                tg-check-permission="modify_issue"
             )
             tg-promote-issue-to-us-button(
                 tg-check-permission="add_us",

@@ -103,12 +103,11 @@ div.wrapper(
 
         section.ticket-detail-settings
             tg-due-date(
-                tg-check-permission="modify_task"
                 due-date="task.due_date"
-                due-date-status="task.due_date_status"
+                format="button"
                 is-closed="task.is_closed"
                 item="task"
-                format="button"
+                tg-check-permission="modify_task"
             )
             tg-task-is-iocaine-button(ng-model="task")
             tg-block-button(tg-check-permission="modify_task", ng-model="task")

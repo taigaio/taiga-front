@@ -600,3 +600,229 @@
         }
     }
 }
+
+
+.lightbox-create-edit {
+    z-index: 9998;
+    $control-height: 30px;
+    $spacing: 15px;
+    $width: 700px;
+    $pop-width: 203px;
+    $sidebar-width: 220px;
+    form {
+        flex-basis: $width;
+        max-width: $width;
+        width: $width;
+    }
+    .form-wrapper {
+        display: flex;
+        flex-basis: $width;
+        flex-direction: row;
+        flex-grow: 0;
+        margin-bottom: $spacing*2;
+        main {
+            flex-grow: 1;
+            margin-right: $spacing;
+        }
+        .sidebar {
+            border-left: 2px solid $whitish;
+            padding-left: $spacing;
+            width: $sidebar-width;
+        }
+    }
+    .status-button {
+        display: flex;
+        position: relative;
+    }
+    .status-dropdown {
+        align-content: center;
+        color: $white;
+        cursor: pointer;
+        display: flex;
+        flex-basis: 100%;
+        height: $control-height;
+        padding: .25rem .5rem;
+        .status-text {
+            flex-grow: 1;
+            text-transform: uppercase;
+        }
+        svg {
+            fill: $white;
+            height: .9rem;
+            width: .9rem;
+        }
+    }
+
+    .popover {
+        a {
+            color: $white;
+            display: block;
+            padding: .5rem 1rem;
+            text-align: left;
+            &:hover,
+            &.active {
+                color: $primary-light;
+            }
+        }
+    }
+
+    .ticket-assigned-to {
+        border: 0;
+        padding: 0;
+        &.single-assign {
+            margin: 0;
+        }
+        &.multiple-assign {
+            align-items: start;
+            flex-direction: column;
+            margin: 0;
+        }
+        .assigned-to-options {
+            display: block;
+        }
+        .remove-user {
+            top: 1.2rem;
+        }
+    }
+
+    .user-list {
+        display: flex;
+        width: 100%;
+        $item-size: 44.75px;
+        .user-list-item {
+            margin-right: .5rem;
+            width: $item-size;
+            img {
+                height: $item-size;
+                width: $item-size;
+            }
+            &:last-child {
+                margin-right: 0;
+            }
+            &.counter {
+                background: $gray-lighter;
+                color: $gray-light;
+                font-weight: 400;
+                height: $item-size;
+                line-height: $item-size;
+                text-align: center;
+            }
+        }
+    }
+
+    .tg-add-assigned {
+        align-items: center;
+        display: flex;
+        margin: .25rem 0 .75rem;
+        .add-assigned {
+            fill: $gray;
+            opacity: 1;
+            right: .5rem;
+            top: 2rem;
+            &:hover {
+                cursor: pointer;
+                fill: $red;
+                transition: fill .2s;
+            }
+        }
+
+        span {
+            @include font-size(small);
+            @include font-type(light);
+            color: $gray;
+            margin: .2rem .5rem;
+        }
+    }
+
+    .users-dropdown {
+        position: relative;
+    }
+
+    .pop-status {
+        @include popover($pop-width, $control-height - 2px);
+    }
+
+    .pop-users {
+        @include popover($pop-width, 60px, 0, '', '', 16px, -7px, ($pop-width / 3));
+        &.multiple {
+            top: 84px;
+            &:after {
+                left: 30px;
+            }
+        }
+        ul {
+            margin-bottom: .5rem;
+        }
+        li {
+            border-bottom: 1px solid $gray-light;
+            &:last-child {
+                border: 0;
+            }
+        }
+        .user-list-single {
+            align-content: center;
+            align-items: center;
+            display: flex;
+            flex-direction: row;
+            flex-grow: 0;
+            padding: .5rem 0;
+            &.selected {
+                color: $primary;
+            }
+        }
+        .user-list-avatar {
+            height: 32px;
+            margin-right: .5rem;
+            width: 32px;
+        }
+        .user-list-name {
+            @include font-type(text);
+            flex-grow: 1;
+            position: relative;
+        }
+
+        .remove svg {
+            fill: $whitish;
+            height: .8rem;
+            width: .8rem;
+        }
+
+        .show-more {
+            border-top: 1px solid $gray-light;
+            padding-top: .5rem;
+            text-align: center;
+        }
+    }
+
+    .ticket-data-container {
+        margin: 0;
+        padding: 0 0 .1rem;
+        .ticket-status .priority-data {
+            margin: 0;
+        }
+    }
+
+    .ticket-estimation .points-per-role {
+        margin: 0;
+    }
+
+    .ticket-detail-settings {
+        height: 52px;
+        justify-content: left;
+        margin: 1rem 0 0;
+        label {
+            border: 0;
+            padding: 12px 13px;
+            width: auto;
+        }
+        .item-block,
+        .item-unblock {
+            display: block;
+            margin: 0;
+        }
+    }
+
+    .blocked-note {
+        margin-top: .5rem;
+    }
+}

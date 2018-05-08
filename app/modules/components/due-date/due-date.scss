@@ -6,23 +6,42 @@
     padding: 1rem;
     transition: background .2s linear;
     transition-delay: .1s;
-    &.closed {
+    &.closed,
+    &.text-button.closed:hover {
         background: $gray-lighter;
+        border-color: $gray-lighter;
     }
-    &.due-set {
+    &.due-set,
+    &.text-button.due-set:hover {
         background: $yellow-green;
+        border-color: $yellow-green;
     }
-    &.due-soon {
+    &.due-soon,
+    &.text-button.due-soon:hover {
         background: $my-sin;
+        border-color: $my-sin;
     }
-    &.past-due {
+    &.past-due,
+    &.text-button.past-due:hover {
         background: $red-light;
+        border-color: $red-light;
     }
     &:hover {
         background: $gray;
     }
     &.editable {
         cursor: pointer;
+    }
+    &.text-button {
+        color: $white;
+        margin: 0;
+        padding: .5rem;
+        &.not-set:hover {
+            color: $white;
+        }
+        &.not-set {
+            color: $gray;
+        }
     }
 }
 
@@ -64,5 +83,41 @@
     svg {
         height: .9rem;
         width: .9rem;
+    }
+}
+
+.due-date-button-wrapper {
+    display: flex;
+    position: relative;
+}
+
+.date-picker-container {
+    overflow: visible;
+}
+
+.date-picker-popover {
+    background: $white;
+    border: 1px solid $gray;
+    display: none;
+    left: 0;
+    overflow: visible;
+    position: absolute;
+    top: 56px;
+    width: auto;
+    .pika-single {
+        border: 0;
+    }
+}
+
+.date-picker-popover-footer {
+    padding: .2rem .5rem;
+    text-align: right;
+    svg {
+        fill: $gray;
+        height: 1rem;
+        width: 1rem;
+    }
+    a:hover svg {
+        fill: $red;
     }
 }
