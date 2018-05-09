@@ -1,6 +1,6 @@
 [main]
 host = https://www.transifex.com
-lang_map = sr@latin:sr-latn, zh-Hans:zh-hans, zh-Hant:zh-hant, pt_BR:pt-br
+lang_map = sr@latin:sr-latn, zh-Hans:zh-hans, zh-Hant:zh-hant, pt_BR:pt-br, fa_IR:fa
 
 [taiga-front.locale-enjson]
 file_filter = app/locales/taiga/locale-<lang>.json
