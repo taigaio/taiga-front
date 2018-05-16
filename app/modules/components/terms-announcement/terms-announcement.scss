@@ -1,0 +1,73 @@
+.terms-announcement {
+    $animation-steps-duration: .5s;
+    align-content: center;
+    background: $tribe-primary;
+    display: flex;
+    height: 0;
+    justify-content: center;
+    overflow: hidden;
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    transition: width $animation-steps-duration, height $animation-steps-duration;
+    transition-delay: $animation-steps-duration;
+    width: 0;
+    z-index: 99;
+    .terms-announcement-inner {
+        opacity: 0;
+        transition: opacity $animation-steps-duration;
+        width: 100%;
+    }
+    &.visible {
+        height: 146px;
+        pointer-events: auto;
+        transition-delay: 0s;
+        width: 100%;
+        .terms-announcement-inner {
+            opacity: 1;
+            transition: opacity $animation-steps-duration $animation-steps-duration;
+        }
+    }
+}
+
+.terms-announcement-inner {
+    display: flex;
+    max-width: 1200px;
+    .announcement-decoration {
+        align-self: flex-end;
+        margin-right: 1rem;
+    }
+    .text {
+        padding: 1.25rem 3rem 1.25rem 2rem;
+        position: relative;
+        width: 100%;
+    }
+    .title {
+        @include font-type(bold);
+        @include font-size(larger);
+        color: $tribe-secondary;
+        margin-bottom: .5rem;
+    }
+    .warning {
+        color: $tribe-secondary;
+        a {
+            @include font-type(bold);
+            color: $tribe-secondary;
+        }
+    }
+    .close {
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 1rem;
+        svg {
+            @include svg-size(2rem);
+            fill: lighten($tribe-secondary, 15%);
+            pointer-events: none;
+            transition: fill .2s;
+            &:hover {
+                fill: $tribe-secondary;
+            }
+        }
+    }
+}
