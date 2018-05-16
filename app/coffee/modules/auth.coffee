@@ -234,6 +234,10 @@ class AuthService extends taiga.Service
         data = _.clone(data, false)
         return @http.post(url, data)
 
+    exportProfile: () ->
+        url = @urls.resolve("users-export")
+        return @http.post(url)
+
 module.service("$tgAuth", AuthService)
 
 

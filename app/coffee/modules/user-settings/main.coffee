@@ -47,10 +47,11 @@ class UserSettingsController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$tgAuth",
         "$translate",
         "tgErrorHandlingService"
+        "$window"
     ]
 
     constructor: (@scope, @rootscope, @config, @repo, @confirm, @rs, @params, @q, @location, @navUrls,
-                  @auth, @translate, @errorHandlingService) ->
+                  @auth, @translate, @errorHandlingService, @window) ->
         @scope.sectionName = "USER_SETTINGS.MENU.SECTION_TITLE"
 
         @scope.project = {}
@@ -89,6 +90,18 @@ class UserSettingsController extends mixOf(taiga.Controller, taiga.PageMixin)
         return @scope.user.theme ||
                @config.get("defaultTheme") ||
                "taiga"
+
+    exportProfile: ->
+        onSuccess = (result) ->
+            dumpUrl = result.data.url
+            @window.open(dumpUrl, "_blank")
+
+        onError = (response) =>
+            if response.data?._error_message
+                @confirm.notify("error", response.data._error_message)
+
+        @auth.exportProfile().then(onSuccess, onError)
+
 
 module.controller("UserSettingsController", UserSettingsController)
 
