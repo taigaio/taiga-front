@@ -116,6 +116,14 @@ div.wrapper(
                         title="{{'COMMON.SAVE' | translate}}",
                         translate="COMMON.SAVE"
                     )
+
+                div.actions
+                    a.download-profile(
+                        href=""
+                        title="{{'USER_PROFILE.ACTION_DOWNLOAD_PROFILE' | translate}}"
+                        ng-click="ctrl.exportProfile()"
+                        translate="USER_PROFILE.ACTION_DOWNLOAD_PROFILE"
+                    )
                     a.delete-account(
                         href=""
                         title="{{'USER_PROFILE.ACTION_DELETE_ACCOUNT' | translate}}"
