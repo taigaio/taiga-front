@@ -792,7 +792,7 @@ init = ($log, $rootscope, $auth, $events, $analytics, $translate, $location, $na
     # Load user
     if $auth.isAuthenticated()
         user = $auth.getUser()
-
+        $auth.showTerms()
     # Analytics
     $analytics.initialize()
 

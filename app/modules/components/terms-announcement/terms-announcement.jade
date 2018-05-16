@@ -1,0 +1,12 @@
+.terms-announcement(ng-class="{visible: vm.open}")
+    .terms-announcement-inner
+        img.anouncement-decoration(src="/#{v}/images/notification-decoration.png", alt="Loading...")
+        .text
+            h2.title {{vm.title}}
+            p.warning(ng-bind-html="vm.desc")
+            a.close(
+              ng-click="vm.close()"
+              href=""
+              ng-title="COMMON.CLOSE | translate"
+            )
+                tg-svg(svg-icon="icon-close")
