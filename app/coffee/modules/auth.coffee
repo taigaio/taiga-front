@@ -243,7 +243,7 @@ class AuthService extends taiga.Service
         user = @.getUser()
         if not user or user.read_new_terms
             return
-        @termsAnnouncementService.show('GDPR', 'General Data Protection Regulation - Read more!')
+        @termsAnnouncementService.show()
 
 module.service("$tgAuth", AuthService)
 

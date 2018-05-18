@@ -45,13 +45,17 @@ div.register-form-container(tg-register)
                 placeholder="{{'REGISTER_FORM.PLACEHOLDER_PASSWORD' | translate}}"
             )
 
+        //- Only displays terms notice when terms plugin is loaded.
+        tg-terms-of-service-and-privacy-policy-notice(target="data.accepted_terms")
+
         fieldset
             button.button-register.button-green.submit-button(
                 type="submit"
+                ng-disabled="data.accepted_terms == false"
                 title="{{'REGISTER_FORM.ACTION_SIGN_UP' | translate}}"
                 translate="REGISTER_FORM.ACTION_SIGN_UP"
             )
-            
+
         .contrib-plugins-wrapper(ng-if="contribPlugins.length")
             label(translate="LOGIN_COMMON.ALT_LOGIN")
 
@@ -59,9 +63,6 @@ div.register-form-container(tg-register)
                 ng-repeat="plugin in contribPlugins|filter:{type: 'auth'}"
                 ng-include="plugin.template"
             )
-
-        //- Only displays terms notice when terms plugin is loaded.
-        tg-terms-of-service-and-privacy-policy-notice
 
         a.register-text-top(
             href=""

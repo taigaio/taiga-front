@@ -6,6 +6,7 @@
     flex-direction: row;
     justify-content: center;
     left: 0;
+    overflow-y: auto;
     position: fixed;
     right: 0;
     top: 0;
@@ -45,10 +46,17 @@
     }
     .login-text,
     .register-text {
-        text-align: center;
-        a:hover {
-            color: $primary-light;
+        margin-left: .5rem;
+        padding-bottom: 1rem;
+        a {
+            text-decoration: underline;
+            &:hover {
+                color: $primary-light;
+            }
         }
+    }
+    .register-terms {
+        margin: .5rem 0 .75rem;
     }
     .button {
         color: $white;
