@@ -23,8 +23,11 @@
 ###
 
 
-TermsAnnouncementDirective = (TermsAnnouncementService, $repo, $auth) ->
+TermsAnnouncementDirective = (TermsAnnouncementService, $repo, $auth, $config) ->
     link = (scope, el, attrs) ->
+        scope.privacyPolicyUrl = $config.get("privacyPolicyUrl")
+        scope.termsOfServiceUrl = $config.get("termsOfServiceUrl")
+        scope.GDPRUrl = $config.get("GDPRUrl")
 
     return {
         restrict: "AE",
@@ -35,7 +38,7 @@ TermsAnnouncementDirective = (TermsAnnouncementService, $repo, $auth) ->
                 TermsAnnouncementService.open = false
                 user = $auth.getUser()
 
-                onSuccess = (data) =>
+                onSuccess = (data) ->
                     $auth.setUser(data)
 
                 user.read_new_terms = true
@@ -44,12 +47,6 @@ TermsAnnouncementDirective = (TermsAnnouncementService, $repo, $auth) ->
             Object.defineProperties(this, {
                 open: {
                     get: () -> return TermsAnnouncementService.open
-                },
-                title: {
-                    get: () -> return TermsAnnouncementService.title
-                },
-                desc: {
-                    get: () -> return TermsAnnouncementService.desc
                 }
             })
         link: link,
@@ -59,7 +56,8 @@ TermsAnnouncementDirective = (TermsAnnouncementService, $repo, $auth) ->
 TermsAnnouncementDirective.$inject = [
     "tgTermsAnnouncementService",
     "$tgRepo",
-    "$tgAuth"
+    "$tgAuth",
+    "$tgConfig"
 ]
 
 angular.module("taigaComponents")

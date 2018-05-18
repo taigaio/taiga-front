@@ -14,18 +14,14 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: notification.service.coffee
+# File: terms-announcement.service.coffee
 ###
 
 class TermsAnnouncementService extends taiga.Service
     constructor: () ->
         @.open = false
-        @.title = ""
-        @.desc = ""
 
-    show: (title, desc) ->
+    show: () ->
         @.open = true
-        @.title = title
-        @.desc = desc
 
 angular.module("taigaComponents").service("tgTermsAnnouncementService", TermsAnnouncementService)

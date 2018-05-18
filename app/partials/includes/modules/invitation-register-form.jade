@@ -43,12 +43,13 @@ form.register-form
             placeholder="{{'REGISTER_FORM.PLACEHOLDER_PASSWORD' | translate}}"
         )
 
+    //- Only displays terms notice when terms plugin is loaded.
+    tg-terms-of-service-and-privacy-policy-notice(target="dataRegister.accepted_terms")
+
     fieldset
         button.button-register.button-green.submit-button(
             type="submit"
+            ng-disabled="dataRegister.accepted_terms == false"
             title="{{'REGISTER_FORM.ACTION_SIGN_UP' | translate}}"
             translate="REGISTER_FORM.ACTION_SIGN_UP"
         )
-        
-    //- Only displays terms notice when terms plugin is loaded.
-    tg-terms-of-service-and-privacy-policy-notice

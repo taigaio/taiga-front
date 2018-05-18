@@ -3,7 +3,6 @@
     align-content: center;
     background: $tribe-primary;
     display: flex;
-    height: 0;
     justify-content: center;
     overflow: hidden;
     pointer-events: none;
@@ -19,7 +18,7 @@
         width: 100%;
     }
     &.visible {
-        height: 146px;
+        min-height: 146px;
         pointer-events: auto;
         transition-delay: 0s;
         width: 100%;
@@ -35,6 +34,7 @@
     max-width: 1200px;
     .announcement-decoration {
         align-self: flex-end;
+        height: auto;
         margin-right: 1rem;
     }
     .text {
@@ -58,16 +58,19 @@
     .close {
         display: block;
         position: absolute;
-        right: 0;
+        right: .5rem;
         top: 1rem;
         svg {
             @include svg-size(2rem);
-            fill: lighten($tribe-secondary, 15%);
+            fill: $mass-white;
             pointer-events: none;
             transition: fill .2s;
             &:hover {
                 fill: $tribe-secondary;
             }
         }
+    }
+    a {
+        color: $mass-white;
     }
 }

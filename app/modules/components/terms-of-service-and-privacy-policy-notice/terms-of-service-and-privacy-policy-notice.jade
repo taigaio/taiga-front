@@ -1,5 +1,10 @@
-p.register-text(
-    ng-if="privacyPolicyUrl && termsOfServiceUrl"
-    translate="LEGAL.TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD"
-    translate-values="{termsOfServiceUrl: termsOfServiceUrl, privacyPolicyUrl: privacyPolicyUrl}"
-)
+p.register-terms(ng-if="privacyPolicyUrl && termsOfServiceUrl")
+    input.accepted_terms(
+        type="checkbox"
+        data-required="true"
+        name="accepted_terms"
+    )
+    span.register-text(
+        translate="LEGAL.TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD"
+        translate-values="{termsOfServiceUrl: termsOfServiceUrl, privacyPolicyUrl: privacyPolicyUrl}"
+    )

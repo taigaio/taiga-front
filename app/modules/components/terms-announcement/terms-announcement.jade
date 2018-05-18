@@ -1,9 +1,14 @@
-.terms-announcement(ng-class="{visible: vm.open}")
+.terms-announcement(ng-class="{visible: vm.open && privacyPolicyUrl && termsOfServiceUrl && GDPRUrl}")
     .terms-announcement-inner
-        img.anouncement-decoration(src="/#{v}/images/notification-decoration.png", alt="Loading...")
+        img.announcement-decoration(src="/#{v}/images/notification-decoration.png", alt="Loading...")
         .text
-            h2.title {{vm.title}}
-            p.warning(ng-bind-html="vm.desc")
+            h2.title {{'LEGAL.GDPR_ANNOUNCEMENT_TITLE' | translate}}
+            p.warning {{ 'LEGAL.GDPR_ANNOUNCEMENT_DESCRIPTION' | translate }}
+            a.gig-title(
+                href="{{ GDPRUrl }}"
+                target="_blank"
+                rel="nofollow"
+            ) {{'LEGAL.GDPR_ANNOUNCEMENT_INFOLINK' | translate}}
             a.close(
               ng-click="vm.close()"
               href=""
