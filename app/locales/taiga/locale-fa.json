@@ -48,7 +48,7 @@
         "CARD": {
             "ASSIGN_TO": "اختصاص یافته به",
             "EDIT": "ویرایش کارت",
-            "DELETE": "Delete card"
+            "DELETE": "حذف کارت"
         },
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "مقدار نامعتبر است.",
@@ -144,14 +144,14 @@
             "SEVERITY": "اهمیت",
             "PRIORITY": "اولویت",
             "ASSIGNED_TO": "اختصاص یافته به",
-            "ASSIGNED_USERS": "Assigned users",
+            "ASSIGNED_USERS": "کاربران اختصاص یافته",
             "POINTS": "امتیاز",
             "IS_BLOCKED": "مسدود شده است",
             "REF": "ریفرنس",
             "VOTES": "رأی",
             "SPRINT": "پیشرفت",
-            "DUE_DATE": "Due date",
-            "DUE_DATE_REASON": "Due date reason"
+            "DUE_DATE": "موعد تحویل",
+            "DUE_DATE_REASON": "دلیل موعد تحویل"
         },
         "ROLES": {
             "ALL": "همه"
@@ -167,15 +167,15 @@
             "SELF": "اختصاص به من"
         },
         "DUE_DATE": {
-            "TITLE_ACTION_SET_DUE_DATE": "Set due date",
-            "DUE_SOON": "due soon",
-            "PAST_DUE": "past due date",
-            "NO_LONGER_APPLICABLE": "no longer applicable"
+            "TITLE_ACTION_SET_DUE_DATE": "تنظیم موعد تحویل",
+            "DUE_SOON": "موعد تحویل نزدیک است",
+            "PAST_DUE": "موعد تحویل قبلی",
+            "NO_LONGER_APPLICABLE": "دیگر قابل اجرا نیست"
         },
         "ASSIGNED_USERS": {
-            "ADD": "Select assigned user",
-            "ADD_ASSIGNED": "Add assigned",
-            "TITLE_LIGHTBOX_DELETE_ASSIGNED": "Delete assigned..."
+            "ADD": "انتخاب کاربر اختصاص یافته",
+            "ADD_ASSIGNED": "اضافه کردن اختصاص یافته",
+            "TITLE_LIGHTBOX_DELETE_ASSIGNED": "حذف اختصاص یافته..."
         },
         "STATUS": {
             "CLOSED": "بسته‌شده",
@@ -194,11 +194,11 @@
             "UNWATCH": "خروج از نظارت",
             "WATCHERS": "بررسی‌کنندگان",
             "BUTTON_TITLE": "بررسی یا عدم بررسی این آیتم",
-            "COUNTER_TITLE": "{total, plural, one{one watcher} other{# watchers}}"
+            "COUNTER_TITLE": "{total, plural, one{یک بررسی کننده} other{#بررسی کنندگان}}"
         },
         "VOTE_BUTTON": {
             "BUTTON_TITLE": "رأی مثبت یا منفی برای این آیتم",
-            "COUNTER_TITLE": "{total, plural, one{one vote} other{# votes}}"
+            "COUNTER_TITLE": "{total, plural, one{یک رای} other{# آراء}}"
         },
         "CUSTOM_ATTRIBUTES": {
             "CUSTOM_FIELDS": "ویژگی‌های سفارشی",
@@ -818,9 +818,9 @@
         "HELP": "ترتیب پروژه‌های خود را تغییر دهید تا در صدر پروژه‌های پراستفاده قرار گیرند.<br/>10 پروژه‌ی پراستفاده در لیست پروژه‌های نوار ناوبری بالا نمایش داده می‌شود.",
         "PRIVATE": "پروژه‌ی خصوصی",
         "LOOKING_FOR_PEOPLE": "این پروژه در انتظار عضو است",
-        "FANS_COUNTER_TITLE": "{total, plural, one{one fan} other{# fans}}",
-        "WATCHERS_COUNTER_TITLE": "{total, plural, one{one watcher} other{# watchers}}",
-        "MEMBERS_COUNTER_TITLE": "{total, plural, one{one member} other{# members}}",
+        "FANS_COUNTER_TITLE": "{total, plural, one{یک طرفدار} other{# طرفداران}}",
+        "WATCHERS_COUNTER_TITLE": "{total, plural, one{یک بررسی کننده} other{#بررسی کنندگان}}",
+        "MEMBERS_COUNTER_TITLE": "{total, plural, one{یک عضو} other{# اعضا}}",
         "BLOCKED_PROJECT": {
             "BLOCKED": "پروژه مسدودشده",
             "THIS_PROJECT_IS_BLOCKED": "این پروژه موقتاً مسدود شده است",
@@ -863,13 +863,13 @@
             "LIKED": "لایک‌شده",
             "UNLIKE": "دیسلایک",
             "BUTTON_TITLE": "لایک یا دیسلایک کردن این پروژه",
-            "COUNTER_TITLE": "{total, plural, one{one fan} other{# fans}}"
+            "COUNTER_TITLE": "{total, plural, one{یک طرفدار} other{# طرفداران}}"
         },
         "WATCH_BUTTON": {
             "BUTTON_TITLE": "نظارت بر این پروژه و تنظیم نوتیفیکیشن‌ها",
             "WATCH": "نظارت",
             "WATCHING": "در حال بررسی",
-            "COUNTER_TITLE": "{total, plural, one{one watcher} other{# watchers}}",
+            "COUNTER_TITLE": "{total, plural, one{یک بررسی کننده} other{#بررسی کنندگان}}",
             "OPTIONS": {
                 "NOTIFY_ALL": "دریافت تمام نوتیفیکیشن‌ها",
                 "NOTIFY_ALL_TITLE": "دریافت تمام نوتیفیکیشن‌های مربوط به این پروژه",
@@ -1092,8 +1092,8 @@
             "CONFIRM_CLOSE": "شما تغییرات را ذخیره نکرده‌اید\nآیا از بستن این فرم اطمینان دارید؟"
         },
         "DELETE_DUE_DATE": {
-            "TITLE": "Delete due date",
-            "SUBTITLE": "Are you sure you want to delete this due date?"
+            "TITLE": "حذف موعد تحویل",
+            "SUBTITLE": "آیا از حذف موعد تحویل اطمینان دارید؟"
         },
         "DELETE_SPRINT": {
             "TITLE": "حذف پیشرفت"
@@ -1127,17 +1127,17 @@
             "SEND": "ارسال"
         },
         "SET_DUE_DATE": {
-            "TITLE": "Set due date",
-            "PLACEHOLDER_DUE_DATE": "Select date",
-            "REASON_FOR_DUE_DATE": "Reason for the due date",
-            "PLACEHOLDER_REASON_FOR_DUE_DATE": "Why does this US need a due date?",
+            "TITLE": "تنظیم موعد تحویل",
+            "PLACEHOLDER_DUE_DATE": "انتخاب تاریخ",
+            "REASON_FOR_DUE_DATE": "دلیل برای موعد تحویل",
+            "PLACEHOLDER_REASON_FOR_DUE_DATE": "چرا این US به تاریخ تحویل نیاز دارد؟",
             "SUGGESTIONS": {
-                "IN_ONE_WEEK": "In one week",
-                "IN_TWO_WEEKS": "In two weeks",
-                "IN_ONE_MONTH": "In one month",
-                "IN_THREE_MONTHS": "In three months"
+                "IN_ONE_WEEK": "در یک هفته",
+                "IN_TWO_WEEKS": "در دو هفته",
+                "IN_ONE_MONTH": "در یک ماه",
+                "IN_THREE_MONTHS": "در سه ماه"
             },
-            "TITLE_ACTION_DELETE_DUE_DATE": "Delete due date"
+            "TITLE_ACTION_DELETE_DUE_DATE": "حذف موعد تحویل"
         }
     },
     "EPIC": {
@@ -1226,7 +1226,7 @@
         "CLIENT_REQUIREMENT": "نیازمندی‌های مشتری",
         "BLOCKED": "مسدودشده",
         "VALUES": {
-            "NOT_SET": "not set",
+            "NOT_SET": "انتخاب نشده",
             "UNASSIGNED": "آزاد"
         },
         "FIELDS": {
@@ -1237,8 +1237,8 @@
             "STATUS": "وضعیت",
             "TYPE": "نوع",
             "ASSIGNED_TO": "تخصیص یافته به",
-            "ASSIGNED_USERS": "assigned users",
-            "DUE_DATE": "due date",
+            "ASSIGNED_USERS": "کاربران اختصاص یافته",
+            "DUE_DATE": "موعد تحویل",
             "MILESTONE": "پیشرفت",
             "COLOR": "رنگ"
         }
@@ -1382,7 +1382,7 @@
         "SAVED": "اومپا لومپا تغییرات شما را ذخیره کرد",
         "CLOSE": "بستن نوتیفیکیشن",
         "MAIL": "نوتیفیکیشن از طریق ایمیل",
-        "DESKTOP": "Desktop notifications using browser alerts",
+        "DESKTOP": "اعلانهای دسکتاپ با استفاده از هشدار مرورگر",
         "ASK_DELETE": "آیا در مورد حذف کردن، مطمئن هستید؟"
     },
     "CANCEL_ACCOUNT": {
@@ -1499,10 +1499,10 @@
             "USER_PROFILE": "پروفایل کاربری",
             "CHANGE_PASSWORD": "تغییر رمز عبور",
             "EMAIL_NOTIFICATIONS": "نوتیفیکیشن‌های ایمیلی",
-            "DESKTOP_NOTIFICATIONS": "Desktop notifications"
+            "DESKTOP_NOTIFICATIONS": "اعلانیه‌های دسکتاپ"
         },
         "NOTIFICATIONS": {
-            "LIVE_SECTION_NAME": "Desktop Notifications",
+            "LIVE_SECTION_NAME": "اعلانیه‌های دسکتاپ",
             "SECTION_NAME": "نوتیفیکیشن‌های ایمیلی",
             "COLUMN_PROJECT": "پروژه",
             "COLUMN_RECEIVE_ALL": "دریافت همه",
@@ -1686,7 +1686,7 @@
         "PAGE_TITLE": "کشف پروژه‌ها - تایگا",
         "PAGE_DESCRIPTION": "دایرکتوری قابل‌جست‌وجو پروژه‌های عمومی در تایگا. لیست امور ناتمام، تایم‌لاین‌ها، موضوعات و تیم‌ها را پیدا کنید. پروژه‌هایی با بیشتری لایک یا پروژه‌های فعال را بررسی کنید. از فیلتر کانبان یا اسکرام استفاده کنید.",
         "DISCOVER_TITLE": "کشف پروژه‌ها",
-        "DISCOVER_SUBTITLE": "{projects, plural, one{One public project to discover} other{# public projects to discover}}",
+        "DISCOVER_SUBTITLE": "{projects, plural, one{یک پروژه عمومی} other{# پروژه‌های عمومی}}",
         "MOST_ACTIVE": "بیشترین فعالیت",
         "MOST_ACTIVE_EMPTY": "در حال حاضر پروژه‌ی فعالی وجود ندارد",
         "MOST_LIKED": "با بیشتری لایک",
