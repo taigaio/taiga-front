@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+## 3.3.4 (2018-05-24)
+
+### Misc
+
+- Add features to fulfill GDPR.
+
 ## 3.3.3 (2018-05-10)
 
 ### Misc
