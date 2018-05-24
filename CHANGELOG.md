@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## 3.3.5 (2018-05-24)
+
+### Misc
+
+- Update locales.
+
 ## 3.3.4 (2018-05-24)
 
 ### Misc
