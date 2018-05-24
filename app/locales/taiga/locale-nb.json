@@ -1516,6 +1516,7 @@
     "USER_PROFILE": {
         "ACTION_USE_GRAVATAR": "Bruk standardbilde",
         "ACTION_DELETE_ACCOUNT": "Slett Taiga-konto",
+        "ACTION_DOWNLOAD_PROFILE": "Download Taiga profile",
         "CHANGE_EMAIL_SUCCESS": "<strong>Sjekk din innboks!</strong><br />Vi har sent en epost til din konto <br />med instruksjonene for å velge ny epostadresse.",
         "CHANGE_PHOTO": "Endre bilde",
         "FIELD": {
@@ -1610,7 +1611,10 @@
         "NEW_USER": "{{username}} har sluttet seg til Taiga"
     },
     "LEGAL": {
-        "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>Når du lager en ny konto godtar du våre <br /></span><a href=\"{{ termsOfServiceUrl }}\" title=\"Se brukervilkår\" target=\"_blank\">brukervilkår</a><span> og </span><a href=\"{{ privacyPolicyUrl }}\" title=\"Se personvernregler\" target=\"_blank\">personvernregler</a>."
+        "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>When creating a new account, you agree to our </span><a href=\"{{ termsOfServiceUrl }}\" title=\"See terms of service\" target=\"_blank\">terms of service</a><span> and </span><a href=\"{{ privacyPolicyUrl }}\" title=\"See privacy policy\" target=\"_blank\">privacy policy</a>.",
+        "GDPR_ANNOUNCEMENT_TITLE": "General Data Protection Regulation (GDPR)",
+        "GDPR_ANNOUNCEMENT_DESCRIPTION": "You saw this comming, right? Updates to our Terms of Service",
+        "GDPR_ANNOUNCEMENT_INFOLINK": "Please read our announcement here"
     },
     "EXTERNAL_APP": {
         "PAGE_TITLE": "En ekstern app krever autentisering",

@@ -1516,6 +1516,7 @@
     "USER_PROFILE": {
         "ACTION_USE_GRAVATAR": "Varsayılan resmi kullan",
         "ACTION_DELETE_ACCOUNT": "Taiga hesabını sil",
+        "ACTION_DOWNLOAD_PROFILE": "Download Taiga profile",
         "CHANGE_EMAIL_SUCCESS": "<strong>Gelen kutunuzu kontrol edin!</strong><br />Yeni adresinizi belirlemek için gerekli<br />  yönergeleri içeren postayı gönderdik",
         "CHANGE_PHOTO": "Resim değiştir",
         "FIELD": {
@@ -1610,7 +1611,10 @@
         "NEW_USER": "{{username}}  Taiga ya katıldı"
     },
     "LEGAL": {
-        "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>Yeni bir hesap açarak <br /></span><a href=\"{{ termsOfServiceUrl }}\" title=\"Hizmet koşulları\" target=\"_blank\">hizmet koşullarımızı</a><span> ve </span><a href=\"{{ privacyPolicyUrl }}\" title=\"Gizlilik koşulları\" target=\"_blank\">gizlilik koşullarımızı</a> kabul etmiş olursunuz."
+        "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>When creating a new account, you agree to our </span><a href=\"{{ termsOfServiceUrl }}\" title=\"See terms of service\" target=\"_blank\">terms of service</a><span> and </span><a href=\"{{ privacyPolicyUrl }}\" title=\"See privacy policy\" target=\"_blank\">privacy policy</a>.",
+        "GDPR_ANNOUNCEMENT_TITLE": "General Data Protection Regulation (GDPR)",
+        "GDPR_ANNOUNCEMENT_DESCRIPTION": "You saw this comming, right? Updates to our Terms of Service",
+        "GDPR_ANNOUNCEMENT_INFOLINK": "Please read our announcement here"
     },
     "EXTERNAL_APP": {
         "PAGE_TITLE": "Bir dış uygulama oturum açmayı gerektiriyor",

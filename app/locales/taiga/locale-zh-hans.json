@@ -1516,6 +1516,7 @@
     "USER_PROFILE": {
         "ACTION_USE_GRAVATAR": "使用默认图片",
         "ACTION_DELETE_ACCOUNT": "删除Taiga账户",
+        "ACTION_DOWNLOAD_PROFILE": "Download Taiga profile",
         "CHANGE_EMAIL_SUCCESS": "<strong>检查你的收信箱</strong><br />我们送出了一封信<br />里面有设定你新电子邮件的相关指示",
         "CHANGE_PHOTO": "变更照片",
         "FIELD": {
@@ -1610,7 +1611,10 @@
         "NEW_USER": "{{username}} 已加入 Taiga"
     },
     "LEGAL": {
-        "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>当创建一个新账户时，说明你已经同意我们的<br /></span><a href=\"{{ termsOfServiceUrl }}\" title=\"查看服务条款\" target=\"_blank\">服务条款</a><span>和</span><a href=\"{{ privacyPolicyUrl }}\" title=\"查看隐私策略\" target=\"_blank\">隐私策略</a>."
+        "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>When creating a new account, you agree to our </span><a href=\"{{ termsOfServiceUrl }}\" title=\"See terms of service\" target=\"_blank\">terms of service</a><span> and </span><a href=\"{{ privacyPolicyUrl }}\" title=\"See privacy policy\" target=\"_blank\">privacy policy</a>.",
+        "GDPR_ANNOUNCEMENT_TITLE": "General Data Protection Regulation (GDPR)",
+        "GDPR_ANNOUNCEMENT_DESCRIPTION": "You saw this comming, right? Updates to our Terms of Service",
+        "GDPR_ANNOUNCEMENT_INFOLINK": "Please read our announcement here"
     },
     "EXTERNAL_APP": {
         "PAGE_TITLE": "一个外部应用需要验证",

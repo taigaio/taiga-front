@@ -1516,6 +1516,7 @@
     "USER_PROFILE": {
         "ACTION_USE_GRAVATAR": "استفاده از تصویر پیش‌فرض",
         "ACTION_DELETE_ACCOUNT": "حذف حساب کاربری تایگا",
+        "ACTION_DOWNLOAD_PROFILE": "Download Taiga profile",
         "CHANGE_EMAIL_SUCCESS": "<strong>ایمیل خود را چک کنید!</strong><br /> ایمیلی به حساب کاربری شما ارسال کردیم <br /> که در آن دستورالعمل تنظیم آدرس جدید شما ذکر شده است",
         "CHANGE_PHOTO": "تغییر عکس",
         "FIELD": {
@@ -1610,7 +1611,10 @@
         "NEW_USER": "{{username}} به تایگا پیوست"
     },
     "LEGAL": {
-        "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>در زمان ایجاد حساب کاربری جدید، شما با <br /></span><a href=\"{{ termsOfServiceUrl }}\" title=\"See terms of service\" target=\"_blank\">قوانین استفاده‌</a><span>و</span><a href=\"{{ privacyPolicyUrl }}\" title=\"See privacy policy\" target=\"_blank\">قوانین حفظ حریم خصوصی</a> موافقت کرده‌اید."
+        "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>When creating a new account, you agree to our </span><a href=\"{{ termsOfServiceUrl }}\" title=\"See terms of service\" target=\"_blank\">terms of service</a><span> and </span><a href=\"{{ privacyPolicyUrl }}\" title=\"See privacy policy\" target=\"_blank\">privacy policy</a>.",
+        "GDPR_ANNOUNCEMENT_TITLE": "General Data Protection Regulation (GDPR)",
+        "GDPR_ANNOUNCEMENT_DESCRIPTION": "You saw this comming, right? Updates to our Terms of Service",
+        "GDPR_ANNOUNCEMENT_INFOLINK": "Please read our announcement here"
     },
     "EXTERNAL_APP": {
         "PAGE_TITLE": "یک اپلیکیشن خارجی درخواست تأیید دسترسی دارد",
