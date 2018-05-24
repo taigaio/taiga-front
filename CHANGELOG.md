@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## 3.3.6 (2018-05-24)
+
+### Misc
+
+- Minor bug fix regarding GDPR notification.
+
 ## 3.3.5 (2018-05-24)
 
 ### Misc
