@@ -23,7 +23,7 @@
 ###
 
 
-TermsAnnouncementDirective = (TermsAnnouncementService, $repo, $auth, $config) ->
+TermsAnnouncementDirective = (TermsAnnouncementService, $repo, $auth, $config, $model) ->
     link = (scope, el, attrs) ->
         scope.privacyPolicyUrl = $config.get("privacyPolicyUrl")
         scope.termsOfServiceUrl = $config.get("termsOfServiceUrl")
@@ -38,10 +38,18 @@ TermsAnnouncementDirective = (TermsAnnouncementService, $repo, $auth, $config) -
                 TermsAnnouncementService.open = false
                 user = $auth.getUser()
 
+                # We need to force initialization of rootscope user if localstorage user
+                # doesn't have the 'read_new_terms' key
+                if user.read_new_terms == undefined
+                    userData = user.getAttrs()
+                    userData.read_new_terms = false
+                    user = $model.make_model("users", userData)
+
+                user.read_new_terms = true
+
                 onSuccess = (data) ->
                     $auth.setUser(data)
 
-                user.read_new_terms = true
                 $repo.save(user).then(onSuccess)
 
             Object.defineProperties(this, {
@@ -57,7 +65,8 @@ TermsAnnouncementDirective.$inject = [
     "tgTermsAnnouncementService",
     "$tgRepo",
     "$tgAuth",
-    "$tgConfig"
+    "$tgConfig",
+    "$tgModel"
 ]
 
 angular.module("taigaComponents")
