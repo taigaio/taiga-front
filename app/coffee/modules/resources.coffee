@@ -85,9 +85,12 @@ urls = {
     # Project Values - Choises
     "epic-statuses": "/epic-statuses"
     "userstory-statuses": "/userstory-statuses"
+    "userstory-due-date-statuses": "/userstory-duedates"
     "points": "/points"
     "task-statuses": "/task-statuses"
+    "task-due-date-statuses": "/task-due-date-statuses"
     "issue-statuses": "/issue-statuses"
+    "issue-due-date-statuses": "/issue-due-date-statuses"
     "issue-types": "/issue-types"
     "priorities": "/priorities"
     "severities": "/severities"

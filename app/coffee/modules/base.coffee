@@ -109,6 +109,7 @@ urls = {
     "project-admin-project-values-types": "/project/:project/admin/project-values/types"
     "project-admin-project-values-custom-fields": "/project/:project/admin/project-values/custom-fields"
     "project-admin-project-values-tags": "/project/:project/admin/project-values/tags"
+    "project-admin-project-values-due-dates": "/project/:project/admin/project-values/due-dates"
 
     "project-admin-memberships": "/project/:project/admin/memberships"
     "project-admin-roles": "/project/:project/admin/roles"

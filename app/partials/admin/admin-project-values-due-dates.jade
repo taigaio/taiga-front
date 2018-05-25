@@ -1,0 +1,34 @@
+doctype html
+
+div.wrapper(ng-controller="ProjectValuesSectionController",
+            ng-init="sectionName='ADMIN.PROJECT_DUE_DATE_STATUS.TITLE'")
+
+    tg-project-menu
+
+    sidebar.menu-secondary.sidebar.settings-nav(tg-admin-navigation="project-values")
+        include ../includes/modules/admin-menu
+
+    sidebar.menu-tertiary.sidebar(tg-admin-navigation="values-due-dates")
+        include ../includes/modules/admin-submenu-project-values
+
+    section.main.admin-common.admin-attributes
+        include ../includes/components/mainTitle
+        p.admin-subtitle(translate="ADMIN.PROJECT_DUE_DATE_STATUS.SUBTITLE")
+
+        div.admin-attributes-section(tg-project-values, type="userstory-due-date-statuses",
+            ng-controller="ProjectValuesController as ctrl",
+            ng-init="section='admin'; resource='userstories'; type='userstory-due-date-statuses'; sectionName='ADMIN.PROJECT_DUE_DATE_STATUS.US_TITLE'",
+            objName="status")
+            include ../includes/modules/admin/project-due-date-status
+
+        div.admin-attributes-section(tg-project-values, type="task-due-date-statuses",
+            ng-controller="ProjectValuesController as ctrl",
+            ng-init="section='admin'; resource='tasks'; type='task-due-date-statuses'; sectionName='ADMIN.PROJECT_DUE_DATE_STATUS.TASK_TITLE'"
+            objName="status")
+            include ../includes/modules/admin/project-due-date-status
+
+        div.admin-attributes-section(tg-project-values, type="issue-due-date-statuses",
+            ng-controller="ProjectValuesController as ctrl",
+            ng-init="section='admin'; resource='issues'; type='issue-due-date-statuses'; sectionName='ADMIN.PROJECT_DUE_DATE_STATUS.ISSUE_TITLE'",
+            objName="status")
+            include ../includes/modules/admin/project-due-date-status
