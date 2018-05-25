@@ -619,6 +619,13 @@
             "MIXING_MERGE": "Merge Tags",
             "SELECTED": "Selected"
         },
+        "PROJECT_DUE_DATE_STATUS": {
+            "TITLE": "Due dates statuses",
+            "SUBTITLE": "Specify the due date statuses your user stories, tasks and issues will go through",
+            "US_TITLE": "User Story Due Date Statuses",
+            "TASK_TITLE": "Task Due Date Statuses",
+            "ISSUE_TITLE": "Issue Due Date Statuses"
+        },
         "ROLES": {
             "PAGE_TITLE": "Roles - {{projectName}}",
             "WARNING_NO_ROLE": "Be careful, no role in your project will be able to estimate the point value for user stories",
@@ -745,7 +752,8 @@
             "SEVERITIES": "Severities",
             "TYPES": "Types",
             "CUSTOM_FIELDS": "Custom fields",
-            "TAGS": "Tags"
+            "TAGS": "Tags",
+            "DUE_DATES": "Due dates"
         },
         "SUBMENU_ROLES": {
             "TITLE": "Roles",

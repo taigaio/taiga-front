@@ -385,6 +385,12 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
             section: "admin"
         }
     )
+    $routeProvider.when("/project/:pslug/admin/project-values/due-dates",
+        {
+            templateUrl: "admin/admin-project-values-due-dates.html",
+            section: "admin"
+        }
+    )
     $routeProvider.when("/project/:pslug/admin/memberships",
         {
             templateUrl: "admin/admin-memberships.html",

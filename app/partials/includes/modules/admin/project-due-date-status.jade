@@ -1,0 +1,100 @@
+section.colors-table.admin-status-table
+    div.project-values-title
+        h2 {{ sectionName | translate }}
+        a.button.button-gray.show-add-new(href="", title="{{'ADMIN.US_STATUS.ACTION_ADD_STATUS' | translate}}")
+            span(translate="ADMIN.US_STATUS.ACTION_ADD_STATUS")
+
+    div.table-header
+        div.row
+            div.color-column(translate="COMMON.FIELDS.COLOR")
+            div.status-name(translate="COMMON.FIELDS.NAME")
+            div.status-slug(translate="COMMON.FIELDS.SLUG")
+            div.thresold-column(translate="COMMON.FIELDS.THRESHOLD")
+            div.options-column
+
+    div.table-main
+        div.sortable
+            div(ng-repeat="value in values", tg-bind-scope)
+                form(tg-bind-scope)
+                    div.row.table-main.visualization
+                        tg-svg(svg-icon="icon-drag")
+                        div.color-column
+                            div.current-color(ng-style="{background: value.color}")
+
+                        div.status-name
+                            span {{ value.name }}
+
+                        div.status-slug
+                            span {{ value.slug }}
+
+                        div.is-closed-column
+                            span {{ value.days_to_due }}
+
+                        div.options-column
+                            a.edit-value(href="")
+                                tg-svg(
+                                    title="{{'ADMIN.COMMON.TITLE_ACTION_EDIT_VALUE' | translate}}",
+                                    svg-icon="icon-edit"
+                                )
+                            a.delete-value(href="")
+                                tg-svg(
+                                    title="{{'ADMIN.COMMON.TITLE_ACTION_DELETE_VALUE' | translate}}"
+                                    svg-icon="icon-trash"
+                                )
+
+                    div.row.table-main.edition.hidden
+                        div.color-column(
+                            tg-color-selection
+                            ng-model="value"
+                        )
+                            div.current-color(ng-style="{background: value.color}")
+                            include ../../components/select-color
+
+                        div.status-name
+                            input(
+                                name="name"
+                                type="text"
+                                placeholder="{{'ADMIN.STATUS.PLACEHOLDER_WRITE_STATUS_NAME' | translate}}"
+                                ng-model="value.name"
+                                data-required="true"
+                                data-maxlength="255"
+                            )
+
+                        div.thresold-column
+                            input(type="number", name="days_to_due", ng-model="value.days_to_due")
+
+                        div.options-column
+                            a.save.e2e-save(href="", title="{{'COMMON.SAVE' | translate}}")
+                                tg-svg(svg-icon="icon-save")
+
+                            a.cancel(href="", title="{{'COMMON.CANCEL' | translate}}")
+                                tg-svg.cancel(svg-icon="icon-close")
+
+        form
+            div.row.table-main.new-value.hidden
+                div.color-column(
+                    tg-color-selection
+                    ng-model="newValue"
+                )
+                    div.current-color(ng-style="{background: newValue.color}")
+                    include ../../components/select-color
+
+                div.status-name
+                    input(
+                        name="name"
+                        type="text"
+                        placeholder="{{'ADMIN.STATUS.PLACEHOLDER_WRITE_STATUS_NAME' | translate}}"
+                        ng-model="newValue.name"
+                        data-required="true"
+                        data-maxlength="255"
+                    )
+
+                div.thresold-column
+                    input(type="number")
+
+                div.options-column
+                    a.add-new.e2e-save(href="", title="{{'COMMON.ADD' | translate}}")
+                        tg-svg(svg-icon="icon-save")
+
+                    a.delete-new(href="", title="{{'COMMON.CANCEL' | translate}}")
+                        tg-svg(svg-icon="icon-close")
