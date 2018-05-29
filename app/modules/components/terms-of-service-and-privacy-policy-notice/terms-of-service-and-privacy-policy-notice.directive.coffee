@@ -29,6 +29,9 @@ TermsOfServiceAndPrivacyPolicyNoticeDirective = ($config) ->
         scope.termsOfServiceUrl = $config.get("termsOfServiceUrl")
         scope.target = false
 
+        if !scope.privacyPolicyUrl || !scope.termsOfServiceUrl
+            scope.target = true
+
         el.on "change", "input[name='accepted_terms']", (event) ->
             target = angular.element(event.currentTarget)
             scope.target = target.is(":checked")
