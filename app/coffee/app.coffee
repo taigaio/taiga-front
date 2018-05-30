@@ -753,7 +753,7 @@ i18nInit = (lang, $translate) ->
 
 
 init = ($log, $rootscope, $auth, $events, $analytics, $translate, $location, $navUrls, appMetaService,
-        loaderService, navigationBarService, errorHandlingService, lightboxService) ->
+        loaderService, navigationBarService, errorHandlingService, lightboxService, $tgConfig) ->
     $log.debug("Initialize application")
 
     $rootscope.$on '$translatePartialLoaderStructureChanged', () ->
@@ -782,6 +782,9 @@ init = ($log, $rootscope, $auth, $events, $analytics, $translate, $location, $na
     $rootscope.$on "$translateChangeEnd", (e, ctx) ->
         lang = ctx.language
         i18nInit(lang, $translate)
+        # RTL
+        rtlLanguages = $tgConfig.get("rtlLanguages", [])
+        $rootscope.isRTL = rtlLanguages.indexOf(lang) > -1
 
     # bluebird
     Promise.setScheduler (cb) ->
@@ -930,5 +933,6 @@ module.run([
     "tgNavigationBarService",
     "tgErrorHandlingService",
     "lightboxService",
+    "$tgConfig",
     init
 ])
