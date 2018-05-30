@@ -2,6 +2,15 @@
 
 ## Unreleased
 
+## 3.3.7 (2018-05-31)
+
+### Misc
+
+- Fix bug unable to sign up when no privacyPolicyUrl or termsOfServiceUrl
+  settings were defined.
+
+- Update locales.
+
 ## 3.3.6 (2018-05-24)
 
 ### Misc
