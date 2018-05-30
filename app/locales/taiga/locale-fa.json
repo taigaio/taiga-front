@@ -4,8 +4,8 @@
         "NO": "خیر",
         "OR": "یا",
         "LOADING": "در حال بارگذاری ...",
-        "DATE": "روز ماه سال",
-        "DATETIME": "روز ماه سال ساعت:دقیقه",
+        "DATE": "DD MMM YYYY",
+        "DATETIME": "DD MMM YYYY HH:mm",
         "SAVE": "ذخیره کردن",
         "CANCEL": "لغو",
         "ACCEPT": "پذیرفتن",
@@ -78,8 +78,8 @@
             "PIKADAY": "فرمت تاریخ نامعتبر، لطفاً از فرمت روز ماه سال (مثل 23 مارس 1984) استفاده کنید"
         },
         "PICKERDATE": {
-            "FORMAT": "روز ماه سال",
-            "IS_RTL": "غلط",
+            "FORMAT": "DD MMM YYYY",
+            "IS_RTL": "true",
             "FIRST_DAY_OF_WEEK": "1",
             "PREV_MONTH": "ما قبلی",
             "NEXT_MONTH": "ماه بعدی",
@@ -670,7 +670,7 @@
             "HEADERS": "هدرها",
             "PAYLOAD": "ظرفیت",
             "RESPONSE": "پاسخ",
-            "DATE": "روز ماه سال در ساعت:دقیقه:ثانیه",
+            "DATE": "DD MMM YYYY [at] hh:mm:ss",
             "ACTION_HIDE_HISTORY": "(مخفی کردن سوابق)",
             "ACTION_HIDE_HISTORY_TITLE": "مخفی کردن جزئیات سوابق",
             "ACTION_SHOW_HISTORY": "(نمایش سوابق)",
@@ -1312,7 +1312,7 @@
         },
         "SPRINTS": {
             "TITLE": "پیشرفت‌ها",
-            "DATE": "روز ماه سال",
+            "DATE": "DD MMM YYYY",
             "LINK_TASKBOARD": "بورد وظایف و پیشرفت‌ها",
             "TITLE_LINK_TASKBOARD": "رفتن به بورد وظایف \"{{name}}\"",
             "EMPTY": "تاکنون پیشرفتی وجود نداشته",
@@ -1355,7 +1355,7 @@
             "YAXIS_LABEL": "امتیاز",
             "OPTIMAL": "امتیاز معلق بهینه برای روز {{formattedDate}} می‌بایست {{roundedValue}} باشد",
             "REAL": "امتیاز واقعی معلق برای روز {{formattedDate}} برابر است با {{roundedValue}}",
-            "DATE": "روز ماه سال"
+            "DATE": "DD MMMM YYYY"
         }
     },
     "TASK": {
@@ -1535,7 +1535,7 @@
     "WIKI": {
         "PAGE_TITLE": "{{wikiPageName}} - ویکی - {{projectName}}",
         "PAGE_DESCRIPTION": "آخرین ویرایش در {{lastModifiedDate}} ({{totalEditions}} ویرایش در مجموع) محتویات: {{ wikiPageContent }}",
-        "DATETIME": "روز ماه سال ساعت:دقیقه",
+        "DATETIME": "DD MMM YYYY HH:mm",
         "REMOVE": "حذف این صفحه‌ی ویکی",
         "DELETE_LIGHTBOX_TITLE": "حذف صفحه‌ی ویکی",
         "DELETE_LINK_TITLE": "حذف لینک ویکی",
