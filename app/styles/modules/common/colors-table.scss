@@ -58,11 +58,17 @@
         .is-archived-column,
         .is-closed-column,
         .options-column,
+        .thresold-column,
+        .before-after-column,
         .status-wip-limit {
             flex-basis: 100px;
             flex-grow: 1;
             flex-shrink: 0;
         }
+        .before-after-column {
+            padding: 0 10px;
+        }
+
         .status-name,
         .color-name {
             flex-basis: 150px;
@@ -115,6 +121,43 @@
         }
 
     }
+
+    .before-after-selector {
+        display: flex;
+        font-size: .9rem;
+        input {
+            display: none;
+            +label {
+                background: rgba($whitish, .7);
+                cursor: pointer;
+                display: block;
+                padding: .5rem .25rem;
+                text-align: center;
+                text-transform: uppercase;
+                transition: background .2s ease-in;
+            }
+            +label:hover {
+                background: rgba($primary-light, .3);
+                transition: background .2s ease-in;
+            }
+        }
+        .before-after-selector-single {
+            flex: 1;
+            margin-right: .25rem;
+            &:last-child {
+                margin-right: 0;
+            }
+            &.checked label {
+                background: $primary-light;
+                color: $white;
+                transition: background .2s ease-in;
+            }
+            &.checked label:hover {
+                background: $primary-light;
+            }
+        }
+    }
+
     .options-column {
         a {
             cursor: pointer;

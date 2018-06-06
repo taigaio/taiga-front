@@ -23,6 +23,7 @@
             due-date="vm.item.due_date"
             is-closed="vm.item.is_closed"
             ng-if="vm.item.due_date"
+            obj-type="{{ vm.objType }}"
         )
     .edit-title-wrapper(ng-if="vm.editMode")
         input.edit-title-input.e2e-title-input(

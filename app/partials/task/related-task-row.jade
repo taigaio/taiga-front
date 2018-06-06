@@ -5,6 +5,7 @@
         span(ng-non-bindable) <%= emojify(task.subject) %>
     tg-due-date(
         due-date="task.due_date"
+        obj-type="task"
         ng-if="task.due_date"
     )
 .task-settings

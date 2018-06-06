@@ -1,7 +1,7 @@
 label.due-date-button.button-gray.is-editable(
     ng-if="vm.visible()"
     ng-disabled="vm.disabled()"
-    ng-class="vm.color()"
+    ng-style="{background: vm.color()}"
     ng-attr-title="{{ vm.title() }}"
     ng-click="vm.setDueDate()"
 )

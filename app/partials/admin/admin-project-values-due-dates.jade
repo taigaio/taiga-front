@@ -15,20 +15,20 @@ div.wrapper(ng-controller="ProjectValuesSectionController",
         include ../includes/components/mainTitle
         p.admin-subtitle(translate="ADMIN.PROJECT_DUE_DATE_STATUS.SUBTITLE")
 
-        div.admin-attributes-section(tg-project-values, type="userstory-due-date-statuses",
-            ng-controller="ProjectValuesController as ctrl",
-            ng-init="section='admin'; resource='userstories'; type='userstory-due-date-statuses'; sectionName='ADMIN.PROJECT_DUE_DATE_STATUS.US_TITLE'",
+        div.admin-attributes-section(tg-project-due-dates-values, type="userstory-due-dates",
+            ng-controller="ProjectDueDatesValuesController as ctrl",
+            ng-init="section='admin'; resource='userstories'; type='userstory-due-dates'; sectionName='ADMIN.PROJECT_DUE_DATE_STATUS.US_TITLE'",
             objName="status")
             include ../includes/modules/admin/project-due-date-status
 
-        div.admin-attributes-section(tg-project-values, type="task-due-date-statuses",
-            ng-controller="ProjectValuesController as ctrl",
-            ng-init="section='admin'; resource='tasks'; type='task-due-date-statuses'; sectionName='ADMIN.PROJECT_DUE_DATE_STATUS.TASK_TITLE'"
+        div.admin-attributes-section(tg-project-due-dates-values, type="task-due-dates",
+            ng-controller="ProjectDueDatesValuesController as ctrl",
+            ng-init="section='admin'; resource='tasks'; type='task-due-dates'; sectionName='ADMIN.PROJECT_DUE_DATE_STATUS.TASK_TITLE'"
             objName="status")
             include ../includes/modules/admin/project-due-date-status
 
-        div.admin-attributes-section(tg-project-values, type="issue-due-date-statuses",
-            ng-controller="ProjectValuesController as ctrl",
-            ng-init="section='admin'; resource='issues'; type='issue-due-date-statuses'; sectionName='ADMIN.PROJECT_DUE_DATE_STATUS.ISSUE_TITLE'",
+        div.admin-attributes-section(tg-project-due-dates-values, type="issue-due-dates",
+            ng-controller="ProjectDueDatesValuesController as ctrl",
+            ng-init="section='admin'; resource='issues'; type='issue-due-dates'; sectionName='ADMIN.PROJECT_DUE_DATE_STATUS.ISSUE_TITLE'",
             objName="status")
             include ../includes/modules/admin/project-due-date-status

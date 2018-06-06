@@ -1,7 +1,7 @@
 .due-date-button-wrapper
     label.due-date-button.button-gray.is-editable.date-picker-popover-trigger(
         ng-disabled="vm.disabled()"
-        ng-class="vm.color()"
+        ng-style="{background: vm.color()}"
         ng-attr-title="{{ vm.title() }}"
     )
         tg-svg(svg-icon="icon-clock")

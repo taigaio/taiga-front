@@ -1,15 +1,15 @@
 section.colors-table.admin-status-table
     div.project-values-title
         h2 {{ sectionName | translate }}
-        a.button.button-gray.show-add-new(href="", title="{{'ADMIN.US_STATUS.ACTION_ADD_STATUS' | translate}}")
-            span(translate="ADMIN.US_STATUS.ACTION_ADD_STATUS")
+        a.button.button-gray.show-add-new(href="", title="{{'ADMIN.PROJECT_DUE_DATE_STATUS.ACTION_ADD_STATUS' | translate}}")
+            span(translate="ADMIN.PROJECT_DUE_DATE_STATUS.ACTION_ADD_STATUS")
 
     div.table-header
         div.row
             div.color-column(translate="COMMON.FIELDS.COLOR")
             div.status-name(translate="COMMON.FIELDS.NAME")
-            div.status-slug(translate="COMMON.FIELDS.SLUG")
-            div.thresold-column(translate="COMMON.FIELDS.THRESHOLD")
+            div.thresold-column(translate="ADMIN.PROJECT_DUE_DATE_STATUS.DAYS_TO_DUE_DATE")
+            div.before-after-column(translate="ADMIN.PROJECT_DUE_DATE_STATUS.BEFORE_AFTER")
             div.options-column
 
     div.table-main
@@ -24,11 +24,13 @@ section.colors-table.admin-status-table
                         div.status-name
                             span {{ value.name }}
 
-                        div.status-slug
-                            span {{ value.slug }}
+                        div.thresold-column
+                            span(ng-if="value.days_to_due_abs != null") {{ value.days_to_due_abs }}
 
-                        div.is-closed-column
-                            span {{ value.days_to_due }}
+                        div.before-after-column
+                            span(ng-if="value.days_to_due_abs", ng-switch="value.days_to_due >= 0")
+                                span(ng-switch-when="true") {{ 'ADMIN.PROJECT_DUE_DATE_STATUS.BEFORE' | translate }}
+                                span(ng-switch-when="false") {{ 'ADMIN.PROJECT_DUE_DATE_STATUS.AFTER' | translate }}
 
                         div.options-column
                             a.edit-value(href="")
@@ -36,7 +38,7 @@ section.colors-table.admin-status-table
                                     title="{{'ADMIN.COMMON.TITLE_ACTION_EDIT_VALUE' | translate}}",
                                     svg-icon="icon-edit"
                                 )
-                            a.delete-value(href="")
+                            a.delete-value(href="", ng-if="!value.by_default")
                                 tg-svg(
                                     title="{{'ADMIN.COMMON.TITLE_ACTION_DELETE_VALUE' | translate}}"
                                     svg-icon="icon-trash"
@@ -60,8 +62,33 @@ section.colors-table.admin-status-table
                                 data-maxlength="255"
                             )
 
-                        div.thresold-column
-                            input(type="number", name="days_to_due", ng-model="value.days_to_due")
+                        div.thresold-column(ng-if="!value.by_default")
+                            input.days-to-due-abs(type="number", min="0", name="days_to_due_abs", ng-model="value.days_to_due_abs")
+
+                        div.before-after-column
+                            div.before-after-selector(ng-if="!value.by_default && value.days_to_due_abs != 0")
+                                .before-after-selector-single(ng-class="{'checked': value.sign > 0 }")
+                                    input(
+                                        type='radio'
+                                        id="due-date-status-before"
+                                        name="due-date-status-after"
+                                        ng-model="value.sign"
+                                        value="1"
+                                    )
+                                    label.days-to-due-sign(
+                                        for="due-date-status-before",
+                                    ) {{ 'ADMIN.PROJECT_DUE_DATE_STATUS.BEFORE' | translate }}
+                                .before-after-selector-single(ng-class="{'checked': value.sign < 0 }")
+                                    input(
+                                        type='radio'
+                                        id="due-date-status-after"
+                                        name="due-date-status-after"
+                                        ng-model="value.sign"
+                                        value="-1"
+                                    )
+                                    label.days-to-due-sign(
+                                        for="due-date-status-after",
+                                    ) {{ 'ADMIN.PROJECT_DUE_DATE_STATUS.AFTER' | translate }}
 
                         div.options-column
                             a.save.e2e-save(href="", title="{{'COMMON.SAVE' | translate}}")
@@ -90,7 +117,13 @@ section.colors-table.admin-status-table
                     )
 
                 div.thresold-column
-                    input(type="number")
+                    input(
+                        name="days_to_due"
+                        type="number"
+                        placeholder="{{'ADMIN.STATUS.PLACEHOLDER_DAYS_TO_DUE_DATE' | translate}}"
+                        ng-model="newValue.days_to_due"
+                        data-required="true"
+                    )
 
                 div.options-column
                     a.add-new.e2e-save(href="", title="{{'COMMON.ADD' | translate}}")

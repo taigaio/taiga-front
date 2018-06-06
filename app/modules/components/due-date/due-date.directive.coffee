@@ -70,6 +70,7 @@ dueDateDirective = ($translate, datePickerConfigService) ->
             dueDate: '=',
             isClosed: '=',
             item: '=',
+            objType: '@',
             format: '@',
             notAutoSave: '='
         }
