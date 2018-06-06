@@ -22,9 +22,15 @@ class DueDateController
         "$translate"
         "tgLightboxFactory"
         "tgProjectService"
+        "$rootScope"
     ]
 
-    constructor: (@translate, @tgLightboxFactory, @projectService) ->
+    constructor: (@translate, @tgLightboxFactory, @projectService,  @rootscope) ->
+        @.defaultConfig = [
+            {"color": "#9dce0a", "name": "normal due", "days_to_due": null, "by_default": true},
+            {"color": "#ff9900", "name": "due soon", "days_to_due": 14, "by_default": false},
+            {"color": "#ff8a84", "name": "past due", "days_to_due": 0, "by_default": false}
+        ]
 
     visible: () ->
         return @.format == 'button' or @.dueDate?
@@ -33,14 +39,7 @@ class DueDateController
         return @.isClosed
 
     color: () ->
-        colors = {
-            'no_longer_applicable': 'closed',
-            'due_soon': 'due-soon',
-            'past_due': 'past-due',
-            'set': 'due-set',
-            'not_set': 'not-set',
-        }
-        return colors[@status()] or ''
+        return @.getStatus()?.color || null
 
     title: () ->
         if @.dueDate
@@ -49,36 +48,48 @@ class DueDateController
             return @translate.instant('COMMON.DUE_DATE.TITLE_ACTION_SET_DUE_DATE')
         return ''
 
-    status: () ->
+    getStatus: (options) ->
         if !@.dueDate
-            return 'not_set'
+            return null
 
         project = @projectService.project.toJS()
-        project.due_soon_threshold = 14  # TODO get value from taiga-back
+        options = project["#{@.objType}_duedates"]
+
+        if !options
+            options = @.defaultConfig
+
+        return @._getAppearance(options)
+
+    _getDefaultAppearance: (options) ->
+        defaultAppearance = null
+        _.map options, (option) ->
+            if option.by_default == true
+                defaultAppearance = option
+        return defaultAppearance
+
+    _getAppearance: (options) ->
+        currentAppearance = @._getDefaultAppearance(options)
+        options = _.sortBy(options, (o) -> - o.days_to_due) # sort desc
+
         dueDate = moment(@.dueDate)
         now = moment()
+        _.map options, (appearance) ->
+            if appearance.days_to_due == null
+                return
+            limitDate = moment(dueDate - moment.duration(appearance.days_to_due, "days"))
+            if now >= limitDate
+                currentAppearance = appearance
 
-        if @.isClosed
-            return 'no_longer_applicable'
-        else if now > dueDate
-            return 'past_due'
-        else if now.add(moment.duration(project.due_soon_threshold, "days")) >= dueDate
-            return 'due_soon'
-        return 'set'
+        return currentAppearance
 
     _formatTitle: () ->
-        titles = {
-            'no_longer_applicable': 'COMMON.DUE_DATE.NO_LONGER_APPLICABLE',
-            'due_soon': 'COMMON.DUE_DATE.DUE_SOON',
-            'past_due': 'COMMON.DUE_DATE.PAST_DUE',
-        }
         prettyDate = @translate.instant("COMMON.PICKERDATE.FORMAT")
         formatedDate = moment(@.dueDate).format(prettyDate)
 
-        status = @status()
-        if not titles[status]
-            return formatedDate
-        return "#{formatedDate} (#{@translate.instant(titles[status])})"
+        status = @.getStatus()
+        if status?.name
+            return "#{formatedDate} (#{status.name})"
+        return formatedDate
 
     setDueDate: () ->
         return if @.disabled()

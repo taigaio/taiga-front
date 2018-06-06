@@ -115,8 +115,12 @@ resourceProvider = ($repo, $http, $urls, $storage, $q) ->
     service.listValues = (projectId, type) ->
         params = {"project": projectId}
         service.storeQueryParams(projectId, params)
-        console.log type
         return $repo.queryMany(type, params)
+
+    service.createDefaultValues = (projectId, type) ->
+        data = {"project_id": projectId}
+        url = $urls.resolve("#{type}-create-default")
+        return $http.post(url, data)
 
     service.storeQueryParams = (projectId, params) ->
         ns = "#{projectId}:#{hashSuffix}"

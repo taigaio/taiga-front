@@ -376,7 +376,7 @@ module.directive("tgLightboxClose", [LightboxClose])
 
 Svg = () ->
     template = """
-    <svg class="{{ 'icon ' + svgIcon }}">
+    <svg class="{{ 'icon ' + svgIcon }}" style="fill: {{ svgFill }}">
         <use xlink:href="" ng-attr-xlink:href="{{ '#' + svgIcon }}">
             <title ng-if="svgTitle">{{svgTitle}}</title>
             <title ng-if="svgTitleTranslate">{{svgTitleTranslate | translate: svgTitleTranslateValues}}</title>
@@ -389,7 +389,8 @@ Svg = () ->
             svgIcon: "@",
             svgTitle: "@",
             svgTitleTranslate: "@",
-            svgTitleTranslateValues: "="
+            svgTitleTranslateValues: "=",
+            svgFill: "="
         },
         template: template
     }

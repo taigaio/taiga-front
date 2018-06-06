@@ -620,11 +620,16 @@
             "SELECTED": "Selected"
         },
         "PROJECT_DUE_DATE_STATUS": {
-            "TITLE": "Due dates statuses",
-            "SUBTITLE": "Specify the due date statuses your user stories, tasks and issues will go through",
-            "US_TITLE": "User Story Due Date Statuses",
-            "TASK_TITLE": "Task Due Date Statuses",
-            "ISSUE_TITLE": "Issue Due Date Statuses"
+            "TITLE": "Due Dates",
+            "SUBTITLE": "Specify the due dates your user stories, tasks and issues will go through if selected",
+            "US_TITLE": "User Story Due Date status",
+            "ACTION_ADD_STATUS": "Add new status",
+            "TASK_TITLE": "Task Due Date status",
+            "ISSUE_TITLE": "Issue Due Date status",
+            "DAYS_TO_DUE_DATE": "Days to due date",
+            "BEFORE_AFTER": "Before/after",
+            "BEFORE": "Before",
+            "AFTER": "After"
         },
         "ROLES": {
             "PAGE_TITLE": "Roles - {{projectName}}",
@@ -726,7 +731,8 @@
             "LABEL_SEVERITY": "Default value for severity selector"
         },
         "STATUS": {
-            "PLACEHOLDER_WRITE_STATUS_NAME": "Write a name for the new status"
+            "PLACEHOLDER_WRITE_STATUS_NAME": "Write a name for the new status",
+            "PLACEHOLDER_DAYS_TO_DUE_DATE": "Write a number of days to due date"
         },
         "TYPES": {
             "PLACEHOLDER_WRITE_NAME": "Write a name for the new element"

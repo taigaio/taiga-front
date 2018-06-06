@@ -32,6 +32,11 @@ class StoryHeaderController
         @.editMode = false
         @.loadingSubject = false
         @.originalSubject = @.item.subject
+        @.objType = {
+            'tasks': 'task',
+            'issues': 'issue',
+            'userstories': 'us',
+        }[@.item._name]
 
     _checkNav: () ->
         if @.item.neighbors.previous?.ref?
