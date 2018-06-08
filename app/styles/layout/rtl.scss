@@ -1,0 +1,749 @@
+.rtl {
+    .navbar .nav-right {
+        margin: 0;
+        .user-avatar {
+            padding-left: 0;
+            padding-right: 2em;
+            text-align: left; 
+        }
+        img {
+            margin-left: 0;
+            margin-right: .5rem;
+        }
+    }
+    .admin-menu li a {
+        padding: 1rem 1rem 1rem 0;
+    }
+
+    h1 span {
+        margin-left: .5rem;
+        margin-right: 0;
+    }
+
+    blockquote {
+        border-left: 0;
+        border-right: 5px solid $mass-white;
+    }
+
+    .tag {
+        border-color: transparent;
+        border-radius: 5px 0 0 5px;
+        border-width: 0 3px 0 0;
+        margin: 0 0 .5rem .5rem;
+        .icon-close {
+            margin-left: 0;
+            margin-right: .25rem;
+        }
+    }
+
+    .home-wrapper .working-on-container {
+        margin-left: 1rem;
+        margin-right: 0;
+    }
+
+    .home-project .project-card-logo {
+        margin-left: .5rem;
+        margin-right: 0;
+    }
+
+    .home-project .project-card-statistics svg {
+        margin-left: .25rem;
+        margin-right: 0;
+    }
+
+    .contact-team-large .icon-mail {
+        margin-left: .5rem;
+        margin-right: 0;
+    }
+
+    .user-profile .project-details-image {
+        margin-left: 2rem;
+        margin-right: 0;
+    }
+
+    .single-project .project-logo {
+        margin-left: 1rem;
+        margin-right: 0;
+    }
+
+    .profile-timeline .activity-item .profile-contact-picture,
+    .profile-timeline .activity-item .profile-member-picture {
+        margin-left: 1rem;
+        margin-right: 0;
+    }
+
+    .profile-timeline .activity-item {
+        padding: 1rem 0 1rem .5rem;
+        .activity-date {
+            left: .5rem;
+            right: auto;
+        }
+        .activity-info {
+            margin-left: 130px;
+            margin-right: 0;
+        }
+        blockquote {
+            margin-left: 0;
+            margin-right: calc(35px + 1rem);
+        }
+    }
+
+    .profile-timeline .single-attachment .icon {
+        margin-left: .5rem;
+        margin-right: 0;
+    }
+
+    .project-data .involved-team li {
+        margin-left: .13rem;
+        margin-right: 0;
+    }
+
+    .project-details-form-data .actions .delete-account {
+        text-align: left;
+    }
+
+    .project-data .timeline {
+        margin-left: 1rem;
+        margin-right: 0;
+    }
+
+    .track-icon {
+        margin-left: .5rem;
+        margin-right: 0;
+    }
+
+    .watch-options-arrow {
+        margin-left: 0;
+        margin-right: auto;
+    }
+
+    .ticket-estimation .ticket-role-points .icon-arrow-down {
+        margin-left: 0;
+        margin-right: .25rem;
+    }
+
+    .ticket-watch {
+        .ticket-watch-button {
+            margin-left: .25rem;
+            margin-right: 0;
+        }
+        svg {
+            margin-left: .25rem;
+            margin-right: 0;
+        }
+    }
+
+    .related-tasks-body {
+        .task-assignedto .icon {
+            left: .5rem;
+            right: 0;
+        }
+        .avatar figcaption {
+            margin-left: 0;
+            margin-right: .5rem;
+        }
+        .task-name {
+            margin-left: 1rem;
+            margin-right: 0;
+            span {
+                margin-left: .25rem;
+                margin-right: 0;
+            }
+        }
+    }
+
+    tg-filter .search-action {
+        left: .7rem;
+        right: auto;
+    }
+
+    .issues-table .issue-field,
+    .issues-table .assigned-field,
+    .issues-table .created-field,
+    .issues-table .assigned-field {
+        text-align: right;  
+    }
+
+    .issues-table .issue-field .icon,
+    .issues-table .assigned-field .icon,
+    .issues-table .created-field .icon,
+    .issues-table .assigned-field .icon {
+        margin-left: 0;
+        margin-right: .25rem;
+    }
+
+    .icon-arrow-left,
+    .icon-arrow-right {
+        transform: scaleX(-1);
+    }
+
+    .issues-table {
+        .pop-status {
+            left: auto;
+            right: 0;
+        }
+        .icon-upvote {
+            margin-left: .25rem;
+            margin-right: 0;
+        }
+        .subject {
+            padding-left: 1rem;
+            padding-right: 0;
+            a {
+                text-align: right;
+            }
+        }
+        .issue-assignedto .icon {
+            left: 0;
+            right: auto;
+        }
+        .avatar figcaption {
+            margin-left: 0;
+            margin-right: .5rem;
+        }
+    }
+
+    .single-filter {
+        padding-left: .5rem;
+        padding-right: 0;
+        .number {
+            left: 0;
+            right: auto;
+        }
+        .name {
+            border-color: transparent;
+            border-style: solid;
+            border-width: 0 3px 0 0;
+        }
+    }
+
+    .discover-header .search-button {
+        left: 1rem;
+        right: auto;
+    }
+
+    .highlighted .header svg {
+        margin-left: 0;
+        margin-right: .5rem;
+        &.icon-activity,
+        &.icon-like {
+            margin-left: .5rem;
+            margin-right: 0;
+        }
+    }
+
+    .highlighted tg-most-liked {
+        margin-left: 8%;
+        margin-right: 0;
+    }
+
+    .highlighted-project {
+        .statistic {
+            margin-left: .5rem;
+            margin-right: 0;
+        }
+        .project-statistics svg {
+            margin-left: .25rem;
+            margin-right: 0;
+        }
+
+        .project-logo {
+            margin-left: 1rem;
+            margin-right: 0;
+        }
+    }
+
+    .featured-project {
+        .project-card-logo {
+            margin-left: .5rem;
+            margin-right: 0;
+        }
+        .project-card-statistics svg {
+            margin-left: .25rem;
+            margin-right: 0;
+        }
+    }
+
+    .project-list-wrapper {
+        .project-list {
+            margin-left: 2rem;
+            margin-right: 0;
+        }
+        .list-itemtype-project .list-itemtype-project-image {
+            margin-left: 1rem;
+            margin-right: 0;
+        }
+    }
+
+    .create-project-selector-question {
+        left: 1.5rem;
+        right: auto;
+    }
+
+    .create-project-title-wrapper .icon {
+        margin-left: .5rem;
+        margin-right: 0;
+    }
+
+    .create-project-privacity label .icon {
+        margin-left: .25rem;
+        margin-right: 0;
+    }
+
+    .create-project-action-submit {
+        margin-left: 0;
+        margin-right: 1rem;
+    }
+
+    .summary-progress-bar {
+        margin-left: 10px;
+        margin-right: 0;
+    }
+
+    .empty-burndown svg {
+        margin-left: 2rem;
+        margin-right: 0;
+    }
+
+    .backlog-menu .button-bulk {
+        margin-left: 0;
+        margin-right: .2rem;
+    }
+
+    .ticket-header .detail-status {
+        margin-left: 0;
+        margin-right: .25rem;
+    }
+
+    .ticket-status {
+        .level-name {
+            float: left;
+        }
+        .level {
+            margin-left: .5rem;
+            margin-right: 0;
+        }
+    }
+
+    .ticket-data-container .icon {
+        margin-left: 0;
+        margin-right: .25rem;
+    }
+
+    .ticket-assigned-to {
+        .assigned-to {
+            margin-left: 0;
+            margin-right: .5rem;
+        }
+    }
+
+    .user-list-avatar {
+        margin-left: .25rem;
+        margin-right: 0;
+    }
+
+    .user-list-name {
+        margin-left: 0; 
+        margin-right: .5rem;
+    }
+
+    .assigned-to-list .user-list-multiple .remove-assigned-to,
+    .assigned-to-list .user-list-single .remove-assigned-to,
+    .ticket-watchers .delete-watcher,
+    .ticket-assigned-to .remove-user,
+    .ticket-assigned-users .remove-user {
+        left: .5rem;
+        right: auto;
+    }
+
+    .lightbox .close {
+        left: 3rem;
+        right: auto;
+    }
+
+    .comment .comment-avatar,
+    .activity .activity-avatar {
+        margin-left: 1.5rem;
+        margin-right: 0;
+    }
+
+    .comment .comment-creator {
+        margin-left: .5rem;
+        margin-right: 0;
+    }
+
+    tg-wysiwyg .tools {
+        padding-left: 0;
+        padding-right: 1rem;
+    }
+
+    .add-tag-button .icon-add {
+        margin: .5rem 0 0 .25rem;
+    }
+
+    .add-tag-input .save {
+        margin: .5rem .5rem 0 0;
+    }
+
+    .issue-nav {
+        left: 1rem;
+        right: auto;
+    }
+
+    .upvote-btn {
+        margin-left: .3rem;
+        margin-right: 0;
+    }
+
+    .taskboard-table-header .taskboard-table-inner {
+        margin-left: 1rem;
+    }
+    .taskboard-table-header .task-colum-name {
+        margin: 0 0 0 5px;
+    }
+
+    .kanban-table-header {
+        margin-left: -3.7rem;
+        .task-colum-name {
+            margin: 0 0 0 5px;
+        }
+    }
+
+    .taskboard-table-body .task-column,
+    .kanban-table-body .task-column {
+        margin: 0 0 0 5px;
+        &:last-child {
+            margin-left: 0;
+            margin-right: initial;
+        }
+    }
+
+    .backlog-table-body {
+        .votes svg {
+            margin-left: .25rem;
+            margin-right: 0;
+        }
+        .user-story-name a {
+            text-align: right;
+        }
+    }
+
+    .backlog-table-header .backlog-table-title {
+        padding-left: 1rem;
+        padding-right: 0;
+    }
+
+    .backlog-table-header .backlog-table-title .status,
+    .backlog-table-header .row .status,
+    .backlog-table-body .backlog-table-title .status,
+    .backlog-table-body .row .status {
+        flex-basis: 150px;
+        text-align: right;
+    }
+
+    .backlog-table-header .backlog-table-title .user-stories,
+    .backlog-table-header .row .user-stories,
+    .backlog-table-body .backlog-table-title .user-stories,
+    .backlog-table-body .row .user-stories {
+        text-align: right;
+    }
+
+    .backlog-table-header .status .icon,
+    .backlog-table-header .points .icon,
+    .backlog-table-body .status .icon,
+    .backlog-table-body .points .icon {
+        margin-left: 0;
+        margin-right: .2rem;
+    }
+
+    .sprints {
+        .sprint-table {
+            .column-us {
+                text-align: right;
+            }
+            .column-points {
+                text-align: left;
+            }
+        }
+        .sprint .edit-sprint {
+            left: 0;
+            margin-left: .5rem;
+            margin-right: 0;
+            right: auto;
+        }
+    }
+
+    .epic-row .progress-bar,
+    .epic-row .progress-status {
+        left: auto;
+        right: 0;
+    }
+
+    .ticket-created-by {
+        .user-avatar {
+            margin-left: 0;
+            margin-right: .5rem;
+        }
+        .created-by .created-date {
+            margin-left: 0;
+            margin-right: .5rem;
+        }
+        .created-by .created-title,
+        .created-by .created-date {
+            text-align: left;
+        }
+    }
+
+    tg-wysiwyg .medium-editor-placeholder,
+    tg-wysiwyg .markdown-editor-placeholder {
+        padding-left: 0;
+        padding-right: 1rem;
+        text-align: right;
+    }
+
+    .attachments-header {
+        button {
+            margin-left: .2rem;
+            margin-right: 0;
+        }
+        label {
+            margin-left: 0;
+            margin-right: .25rem;
+        }
+    }
+
+    .attachment-list {
+        .attachment-comments,
+        .editable-attachment-comment {
+            margin-left: .5rem;
+            margin-right: 0;
+        }
+        .editable-attachment-deprecated input {
+            margin-left: .2rem;
+            margin-right: 0;
+        }
+    }
+
+    .more-attachments .more-attachments-num {
+        margin-left: 0;
+        margin-right: .5rem;
+    }
+
+    .single-attachment .attachment-name {
+        padding-left: 1rem;
+        padding-right: 0;
+        svg {
+            margin-left: .25rem;
+            margin-right: 0;
+        }
+    }
+
+    .wiki-nav .add-button svg {
+        margin-left: .5rem;
+        margin-right: 0;
+    }
+
+    .wiki-pages-table {
+        .title-field,
+        .created-field,
+        .modified-field,
+        .last-modifier-field,
+        .creator-field {
+            text-align: right;
+        }
+    }
+
+    .wiki-summary div {
+        margin-left: 1.25rem;
+        margin-right: 0;
+    }
+
+    .summary .number {
+        margin-left: .3rem;
+        margin-right: 0;
+    }
+
+    .table-team {
+        .avatar .avatar-data {
+            margin-left: 0;
+            margin-right: 1rem;
+            text-align: right;
+        }
+        .leave-project .icon {
+            margin-left: .2rem;
+            margin-right: 0;
+        }
+    }
+
+    .belong-to-epic-text-wrapper {
+        margin-left: 1rem;
+        margin-right: 0;
+    }
+
+    .epics-table-options-wrapper {
+        left: .5rem;
+        right: auto;
+    }
+
+    .epics-table-dropdown {
+        left: 0;
+        right: auto;
+    }
+
+    .story-row .icon-upvote,
+    .epic-row .icon-upvote {
+        margin-left: .25rem;
+        margin-right: 0;
+    }
+
+    .story-row {
+        margin-left: 0;
+        margin-right: 4rem;
+    }
+
+    .epic-row .icon-arrow-down {
+        margin-left: 0;
+        margin-right: .1rem;
+    }
+
+    .epic-header-container .color-selector {
+        margin-left: .5rem;
+        margin-right: 0;
+    }
+
+    .related-userstories-header .related-userstories-title {
+        margin-left: 0;
+        margin-right: 1rem;
+    }
+
+    tg-related-userstory-row {
+        .userstory-name {
+            margin-left: 1rem;
+            margin-right: 0;
+            span {
+                margin-left: 0;
+                margin-right: .25rem;
+            }
+        }
+        .avatar figcaption {
+            margin-left: 0;
+            margin-right: .5rem;
+        }
+    }
+
+    .card-owner-actions .icon {
+        margin-left: .25rem;
+        margin-right: 0;
+    }
+
+    .card-owner {
+        img {
+            margin-left: .5rem;
+            margin-right: 0;
+        }
+        .card-owner-avatar img {
+            margin-left: .45rem;
+            margin-right: 0;
+        }
+    }
+
+    .card-statistics {
+        .statistic {
+            margin-left: .5rem;
+            margin-right: .5rem;
+        } 
+        .icon {
+            margin-left: .2rem;
+            margin-right: 0;
+        }
+    }
+
+    .lightbox-create-related-user-stories {
+        .related-with-selector .related-with-selector-single:first-child {
+            margin-left: .5rem;
+            margin-right: 0;
+        }
+        .new-user-story-options {
+            margin-left: 0;
+            margin-right: auto;
+        }
+    }
+
+    .lightbox-generic-form .settings fieldset {
+        margin-left: .5rem;
+        margin-right: 0;
+    }
+
+    .ticket-estimation .popover {
+        left: auto;
+        right: .5rem;
+        &:after {
+            left: auto;
+            right: 10px;
+        }
+    }
+
+    .profile {
+        .timeline-wrapper {
+            margin-left: 3.5rem;
+            margin-right: 0;
+        }
+
+        .profile-bar {
+            margin-left: 1rem;
+            margin-right: 0;
+        }
+    }
+
+    .profile-content-tabs .icon {
+        margin-left: .5rem;
+        margin-right: 0;
+    }
+    .profile-sidebar h4 .icon {
+        margin-left: .3rem;
+        margin-right: auto;
+    }
+
+    .profile-filter .searchbox input {
+        margin-left: 1rem;
+        margin-right: 0;
+    }
+    .profile-filter .searchbox .icon-search {
+        margin-left: .5rem;
+        margin-right: 0;
+    }
+
+    .list-itemtype-ticket .list-itemtype-track .list-itemtype-track-likers,
+    .list-itemtype-project .list-itemtype-track .list-itemtype-track-likers,
+    .list-itemtype-ticket .list-itemtype-avatar,
+    .list-itemtype-project .list-itemtype-project-image {
+        margin-left: .5rem;
+        margin-right: 0;
+    }
+
+    .list-itemtype-ticket .list-itemtype-track-likers .icon,
+    .list-itemtype-ticket .list-itemtype-track-watchers .icon,
+    .list-itemtype-project .list-itemtype-track-likers .icon,
+    .list-itemtype-project .list-itemtype-track-watchers .icon {
+        margin-left: .25rem;
+        margin-right: 0;
+    }
+
+    .list-itemtype-ticket.blocked-project .icon-blocked-project {
+        margin-left: 0;
+        margin-right: .25rem;
+    }
+
+    .list-itemtype-ticket .list-itemtype-ticket-data {
+        margin-left: 1rem;
+        margin-right: 0;
+    }
+
+    .list-itemtype-user .list-itemtype-avatar {
+        margin-left: .75rem;
+        margin-right: 0; 
+    }
+
+}
+
+

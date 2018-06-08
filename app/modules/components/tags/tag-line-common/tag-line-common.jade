@@ -2,7 +2,7 @@
     .tag(
         ng-if="tag[1] && !vm.disableColorSelection"
         ng-repeat="tag in vm.tags"
-        ng-style="{'border-left': '.3rem solid' + tag[1]}"
+        ng-style="{'border-color': tag[1]}"
     )
         tg-tag(
             tag="tag"

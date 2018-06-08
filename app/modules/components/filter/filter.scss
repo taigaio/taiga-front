@@ -126,6 +126,9 @@ tg-filter {
     }
     .name {
         @include ellipsis(100%);
+        border-color: transparent;
+        border-style: solid;
+        border-width: 0 0 0 3px;
         display: block;
         width: 100%;
         img {

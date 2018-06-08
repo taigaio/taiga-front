@@ -30,6 +30,10 @@
         @include breakpoint(laptop) {
             order: 2;
         }
+        .tag {
+            border-color: transparent;
+            border-style: solid;
+        }
     }
 }
 

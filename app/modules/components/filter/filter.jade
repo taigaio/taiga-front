@@ -19,13 +19,13 @@ form(name="vm.filtersForm")
     .filters-applied
         .single-filter.ng-animate-disabled(ng-repeat="it in vm.selectedFilters track by it.key")
             span.name(
-                ng-attr-style="{{it.color ? 'border-left: 3px solid ' + it.color: ''}}"
+                ng-attr-style="{{it.color ? 'border-color: ' + it.color: ''}}"
                 ng-if="it.dataType === 'tags'"
                 ng-bind-html="it.name | emojify"
             )
             span.name(
                 ng-if="it.dataType !== 'tags'"
-                ng-attr-style="{{it.color ? 'border-left: 3px solid ' + it.color: ''}}"
+                ng-attr-style="{{it.color ? 'border-color: ' + it.color: ''}}"
             ) {{it.name}}
             a.remove-filter.e2e-remove-filter(
                ng-click="vm.unselectFilter(it)"
@@ -87,12 +87,12 @@ form(name="vm.filtersForm")
                     )
                         span.name(
                             ng-if="filter.dataType === 'tags'",
-                            ng-attr-style="{{it.color ? 'border-left: 3px solid ' + it.color: ''}}"
+                            ng-attr-style="{{it.color ? 'border-color: ' + it.color: ''}}"
                             ng-bind-html="it.name | emojify"
                         )
                         span.name(
                             ng-if="filter.dataType !== 'tags'",
-                            ng-attr-style="{{it.color ? 'border-left: 3px solid ' + it.color: ''}}"
+                            ng-attr-style="{{it.color ? 'border-color: ' + it.color: ''}}"
                         ) {{it.name}}
                         span.number.e2e-filter-count(ng-if="it.count > 0") {{it.count}}
 
