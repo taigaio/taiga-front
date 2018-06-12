@@ -19,5 +19,6 @@
     "contribPlugins": [],
     "tribeHost": null,
     "importers": [],
-    "gravatar": true
+    "gravatar": true,
+    "rtlLanguages": ["fa"]
 }

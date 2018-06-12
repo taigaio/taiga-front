@@ -51,6 +51,8 @@ svg {
 //Datepicker
 .pika-single {
     // scss-lint:disable ImportantRule
+    min-width: 240px;
+    width: auto;
     z-index: 999999;
     .pika-title {
         color: $grayer;
