@@ -4,7 +4,7 @@
         .user-avatar {
             padding-left: 0;
             padding-right: 2em;
-            text-align: left; 
+            text-align: left;
         }
         img {
             margin-left: 0;
@@ -161,7 +161,7 @@
     .issues-table .assigned-field,
     .issues-table .created-field,
     .issues-table .assigned-field {
-        text-align: right;  
+        text-align: right;
     }
 
     .issues-table .issue-field .icon,
@@ -343,7 +343,7 @@
     }
 
     .user-list-name {
-        margin-left: 0; 
+        margin-left: 0;
         margin-right: .5rem;
     }
 
@@ -651,7 +651,7 @@
         .statistic {
             margin-left: .5rem;
             margin-right: .5rem;
-        } 
+        }
         .icon {
             margin-left: .2rem;
             margin-right: 0;
@@ -677,7 +677,7 @@
     .ticket-estimation .popover {
         left: auto;
         right: .5rem;
-        &:after {
+        &::after {
             left: auto;
             right: 10px;
         }
@@ -741,7 +741,7 @@
 
     .list-itemtype-user .list-itemtype-avatar {
         margin-left: .75rem;
-        margin-right: 0; 
+        margin-right: 0;
     }
 
 }
