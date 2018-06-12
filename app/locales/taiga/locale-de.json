@@ -19,11 +19,11 @@
         "TAG_LINE": "Dein agiles, freies und quelloffenes Projekt-Management Tool",
         "TAG_LINE_2": "LIEBE DEIN PROJEKT",
         "BLOCK": "Blockieren",
-        "BLOCK_TITLE": "Block this item for example if it has a dependency that can not be satisfied",
+        "BLOCK_TITLE": "Blockiere dieses Item, zum Beispiel wenn es Abhänigkeiten besitzt die noch nicht erfüllt sind",
         "BLOCKED": "Blockiert",
         "UNBLOCK": "Blockierung aufheben",
-        "UNBLOCK_TITLE": "Unblock this item",
-        "BLOCKED_NOTE": "Why is this blocked?",
+        "UNBLOCK_TITLE": "Dieses Item freigeben",
+        "BLOCKED_NOTE": "Wieso ist es blockiert?",
         "BLOCKED_REASON": "Bitte erklären Sie den Grund",
         "CREATED_BY": "Erstellt durch {{fullDisplayName}}",
         "CLOSE": "schließen",
@@ -37,7 +37,7 @@
         "LOGOUT": "Ausloggen",
         "EXTERNAL_USER": "ein externer Benutzer",
         "GENERIC_ERROR": "Eins unserer Helferlein sagt {{error}}.",
-        "IOCAINE_TEXT": "This member is feeling a bit overwhelmed by this task. Will become immune to the iocaine poison over time with your help. For now, may need a hug.",
+        "IOCAINE_TEXT": "Dieses Mitglied fühlt sich ein bisschen überfordert mit dieser Aufgabe. Mit der Zeit und deiner Hilfe wird er gegen das Iocaine Pulver immun werden. Aber jetzt braucht er eine Umarmung.",
         "CLIENT_REQUIREMENT": "Client requirement is new requirement that was not previously expected and it is required to be part of the project",
         "TEAM_REQUIREMENT": "Team requirement is a requirement that must exist in the project but should have no cost for the client",
         "OWNER": "Projekteigentümer",
@@ -48,7 +48,7 @@
         "CARD": {
             "ASSIGN_TO": "Zuweisen an",
             "EDIT": "Karte bearbeiten",
-            "DELETE": "Delete card"
+            "DELETE": "Karte Löschen"
         },
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Dieser Wert scheint ungültig zu sein.",
@@ -144,14 +144,14 @@
             "SEVERITY": "Gewichtung",
             "PRIORITY": "Priorität",
             "ASSIGNED_TO": "Zugewiesen an",
-            "ASSIGNED_USERS": "Assigned users",
+            "ASSIGNED_USERS": "Zugewiesene Benutzer",
             "POINTS": "Punkte",
             "IS_BLOCKED": "wird blockiert",
             "REF": "Ref",
             "VOTES": "Stimmen",
             "SPRINT": "Sprint",
-            "DUE_DATE": "Due date",
-            "DUE_DATE_REASON": "Due date reason"
+            "DUE_DATE": "Fälligkeitsdatum",
+            "DUE_DATE_REASON": "Grund des Fälligkeitsdatum"
         },
         "ROLES": {
             "ALL": "Alle"
@@ -167,15 +167,15 @@
             "SELF": "An mich zuweisen"
         },
         "DUE_DATE": {
-            "TITLE_ACTION_SET_DUE_DATE": "Set due date",
-            "DUE_SOON": "due soon",
-            "PAST_DUE": "past due date",
-            "NO_LONGER_APPLICABLE": "no longer applicable"
+            "TITLE_ACTION_SET_DUE_DATE": "Fälligkeitsdatum setzen",
+            "DUE_SOON": "bald fällig",
+            "PAST_DUE": "nach Fälligkeitsdatum",
+            "NO_LONGER_APPLICABLE": "nicht länger anwendbar"
         },
         "ASSIGNED_USERS": {
-            "ADD": "Select assigned user",
-            "ADD_ASSIGNED": "Add assigned",
-            "TITLE_LIGHTBOX_DELETE_ASSIGNED": "Delete assigned..."
+            "ADD": "Zugewiesenen Benutzer wählen",
+            "ADD_ASSIGNED": "Zugewiesenen hinzufügen",
+            "TITLE_LIGHTBOX_DELETE_ASSIGNED": "Zugewiesenen löschen..."
         },
         "STATUS": {
             "CLOSED": "Geschlossen",
@@ -299,7 +299,7 @@
         "CREATE_ACCOUNT": "Ein kostenloses Benutzerkonto anlegen"
     },
     "LOGIN_COMMON": {
-        "HEADER": "Ich bin bereits bei Taiga angemeldet",
+        "HEADER": "Ich bin bereits bei Taiga registriert",
         "PLACEHOLDER_AUTH_NAME": "Benutzername oder E-Mail-Adresse",
         "LINK_FORGOT_PASSWORD": "Haben Sie es vergessen?",
         "TITLE_LINK_FORGOT_PASSWORD": "Haben Sie Ihr Passwort vergessen?",
@@ -323,7 +323,7 @@
         "PLACEHOLDER_EMAIL": "Deine E-Mail",
         "PLACEHOLDER_PASSWORD": "Setzen Sie ein Passwort (Groß- und Kleinschreibung beachten)",
         "ACTION_SIGN_UP": "Anmelden",
-        "TITLE_LINK_LOGIN": "anmelden",
+        "TITLE_LINK_LOGIN": "Anmelden",
         "LINK_LOGIN": "Sind Sie bereits registriert? Loggen Sie sich ein"
     },
     "FORGOT_PASSWORD": {
@@ -332,7 +332,7 @@
     },
     "FORGOT_PASSWORD_FORM": {
         "TITLE": "Huch, hast Du Dein Passwort vergessen?",
-        "SUBTITLE": "Gib Deinen Benutzernamen oder Deine E-Mail-Adresse ein, um einen neuen zu erhalten.",
+        "SUBTITLE": "Gib Deinen Benutzernamen oder Deine E-Mail-Adresse ein, um einen neues zu erhalten.",
         "PLACEHOLDER_FIELD": "Benutzername oder E-Mail-Adresse",
         "ACTION_RESET_PASSWORD": "Passwort zurücksetzen",
         "LINK_CANCEL": "Nein, bring mich zurück. Ich denke, ich erinnere mich daran.",
@@ -361,7 +361,7 @@
         "SUCCESS": "Unsere Helferlein haben das neue Passwort gespeichert.<br /> <strong>Hier</strong> gehts zum login."
     },
     "INVITATION": {
-        "PAGE_TITLE": "Einladung Annahme - Taiga",
+        "PAGE_TITLE": "Einladungs Annahme - Taiga",
         "PAGE_DESCRIPTION": "Nehmen Sie die Einladung an und treten Sie einem Projekt in Taiga bei, einer Projekt-Management Plattform für Neugründer und agile Entwickler und Designer, die ein unkompliziertes und ansprechendes Tool möchten, das die Arbeit wirklich angenehm macht."
     },
     "INVITATION_LOGIN_FORM": {
@@ -376,7 +376,7 @@
         "EMPTY_PROJECT_LIST": "Sie haben noch keine Projekte",
         "WORKING_ON_SECTION": "Zuletzt bearbeitet",
         "WATCHING_SECTION": "Beobachtet",
-        "DASHBOARD": "ProjeKte Dashboard"
+        "DASHBOARD": "Projekt Dashboard"
     },
     "EPICS": {
         "TITLE": "EPICS",
@@ -424,8 +424,8 @@
         "LIST_VIEW_MODE": "List view mode",
         "GALLERY_VIEW_MODE": "Gallery view mode",
         "DESCRIPTION": "Geben Sie eine kurze Beschreibung ein",
-        "DEPRECATED": "(verworfen)",
-        "DEPRECATED_FILE": "Verworfen?",
+        "DEPRECATED": "verworfen",
+        "DEPRECATED_FILE": "Verwerfen?",
         "ADD": "Neuen Anhang hinzufügen. {{maxFileSizeMsg}}",
         "DROP": "Ziehe Anhänge hierher!",
         "SHOW_DEPRECATED": "+ verworfene Anhänge zeigen",
@@ -627,7 +627,7 @@
             "WARNING_DELETE_ROLE": "Achtung! Alle Rollenverteilungen werden entfernt.",
             "ERROR_DELETE_ALL": "Sie können nicht alle Werte löschen",
             "EXTERNAL_USER": "Externer Benutzer",
-            "NOTE_EXTERNAL_USERS": "<strong>Note:</strong> by External User we mean any anonymous user not belonging to the Taiga platform, including search engines. Please use this role with care."
+            "NOTE_EXTERNAL_USERS": "<strong>Beachte:</strong>Mit Externen Benutzern meinen wir anonyme Benutzer, die nicht zur Taiga Plattform gehören, einschließlich Suchmaschinen. Bitte benutze diese Rolle mit Vorsicht."
         },
         "THIRD_PARTIES": {
             "SECRET_KEY": "Geheimschlüssel",
@@ -947,7 +947,7 @@
             },
             "PROJECT_RESTRICTIONS": {
                 "PROJECT_MEMBERS_DESC_PRIVATE": "The project you are trying to import has {{members}} members including you, unfortunately, your current plan allows for a maximum of {{max_memberships}} members per private project. If you would like to increase that limit please contact the administrator.",
-                "PROJECT_MEMBERS_DESC_PUBLIC": "The project you are trying to import has {{members}} members including you, unfortunately, your current plan allows for a maximum of {{max_memberships}} members per public project. If you would like to increase that limit please contact the administrator.",
+                "PROJECT_MEMBERS_DESC_PUBLIC": "Das Projekt, dass Sie importieren möchten, hat {{members}} Mitglieder. Leider erlaubt ihr derzeitiger Plan nicht mehr als {{max_memberships}} Mitglieder pro öffentlichen Projekt. Wenn Sie diese Grenze erhöhen möchten, kontaktieren Sie bitte den Administrator.",
                 "ACCOUNT_ALLOW_MEMBERS": "Dieser Account erlaubt nur {{members}} Mitglieder",
                 "PRIVATE_PROJECTS_SPACE": {
                     "TITLE": "Leider erlaubt Ihr derzeitiger Plan keine weiteren privaten Projekte anzulegen.",
@@ -1030,9 +1030,9 @@
     "LIGHTBOX": {
         "DELETE_ACCOUNT": {
             "CONFIRM": "Sind Sie sicher, dass Sie Ihr Taiga Benutzerkonto löschen wollen?",
-            "CANCEL": "Zurück zu Einstellungen",
+            "CANCEL": "Zurück zu den Einstellungen",
             "ACCEPT": "Benutzerkonto löschen",
-            "BLOCK_PROJECT": "Beachten Sie, dass alle Projekte die Sie besitzen, <strong>gesperrt</ strong> werden, nachdem Sie Ihr Konto gelöscht haben. Wenn Sie möchten, dass Ihre Projekte nicht gesperrt werden, ernennen Sie ein anderes Mitglied zum Projektleiter für jedes Projekt, bevor Sie Ihr Konto löschen."
+            "BLOCK_PROJECT": "Beachten Sie, dass alle Projekte die Sie besitzen, <strong>gesperrt</strong> werden, nachdem Sie Ihr Konto gelöscht haben. Wenn Sie möchten, dass Ihre Projekte nicht gesperrt werden, ernennen Sie ein anderes Mitglied zum Projektleiter für jedes Projekt, bevor Sie Ihr Konto löschen."
         },
         "DELETE_PROJECT": {
             "TITLE": "Projekt löschen",
@@ -1082,18 +1082,18 @@
             "OPTION_UNASSIGNED": "Nicht zugeordnet",
             "PLACEHOLDER_SHORT_DESCRIPTION": "Geben Sie eine kurze Beschreibung ein",
             "ACTION_EDIT": "Aufgabe bearbeiten",
-            "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?"
+            "CONFIRM_CLOSE": "Du hast deine Änderungen noch nicht gespeichert.\nBist du sicher, dass du dieses Formular schließen möchtest?"
         },
         "CREATE_EDIT_US": {
             "TITLE": "Neue User-Story",
             "PLACEHOLDER_DESCRIPTION": "Fügen Sie bitte einen Beschreibungstext hinzu, um anderen diese User-Story näher zu erläutern",
             "NEW_US": "Neue User-Story",
             "EDIT_US": "User-Story bearbeiten",
-            "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?"
+            "CONFIRM_CLOSE": "Du hast deine Änderungen noch nicht gespeichert.\nBist du sicher, dass du dieses Formular schließen möchtest?"
         },
         "DELETE_DUE_DATE": {
-            "TITLE": "Delete due date",
-            "SUBTITLE": "Are you sure you want to delete this due date?"
+            "TITLE": "Fälligkeitsdatum löschen",
+            "SUBTITLE": "Bist du sicher, dass du dieses Fälligkeitsdatum löschen willst?"
         },
         "DELETE_SPRINT": {
             "TITLE": "Sprint löschen"
@@ -1127,17 +1127,17 @@
             "SEND": "Senden"
         },
         "SET_DUE_DATE": {
-            "TITLE": "Set due date",
-            "PLACEHOLDER_DUE_DATE": "Select date",
-            "REASON_FOR_DUE_DATE": "Reason for the due date",
-            "PLACEHOLDER_REASON_FOR_DUE_DATE": "Why does this US need a due date?",
+            "TITLE": "Fälligkeitsdatum setzen",
+            "PLACEHOLDER_DUE_DATE": "Fälligkeitsdatum wählen",
+            "REASON_FOR_DUE_DATE": "Grund des Fälligkeitsdatums",
+            "PLACEHOLDER_REASON_FOR_DUE_DATE": "Wieso benötigt diese US ein Fälligkeitsdatum?",
             "SUGGESTIONS": {
-                "IN_ONE_WEEK": "In one week",
-                "IN_TWO_WEEKS": "In two weeks",
-                "IN_ONE_MONTH": "In one month",
-                "IN_THREE_MONTHS": "In three months"
+                "IN_ONE_WEEK": "In einer Woche",
+                "IN_TWO_WEEKS": "In zwei Wochen",
+                "IN_ONE_MONTH": "In einem Monat",
+                "IN_THREE_MONTHS": "In drei Monaten"
             },
-            "TITLE_ACTION_DELETE_DUE_DATE": "Delete due date"
+            "TITLE_ACTION_DELETE_DUE_DATE": "Fälligkeitsdatum löschen"
         }
     },
     "EPIC": {
@@ -1220,13 +1220,13 @@
         "UPDATED_ATTACHMENT": "Anhang aktualisiert ({{filename}}):",
         "CREATED_CUSTOM_ATTRIBUTE": "benutzerdefiniertes Attribut erstellt",
         "UPDATED_CUSTOM_ATTRIBUTE": "benutzerdefiniertes Attribut aktualisiert",
-        "BECAME_DEPRECATED": "ist veraltet",
+        "BECAME_DEPRECATED": "wurde verworfen",
         "BECAME_UNDEPRECATED": "ist wieder aktuell",
         "TEAM_REQUIREMENT": "Team Anforderung",
         "CLIENT_REQUIREMENT": "Kundenanforderung",
         "BLOCKED": "Blockiert",
         "VALUES": {
-            "NOT_SET": "not set",
+            "NOT_SET": "nicht gesetzt",
             "UNASSIGNED": "nicht zugeordnet"
         },
         "FIELDS": {
@@ -1237,8 +1237,8 @@
             "STATUS": "Status",
             "TYPE": "Typen",
             "ASSIGNED_TO": "zugewiesen an",
-            "ASSIGNED_USERS": "assigned users",
-            "DUE_DATE": "due date",
+            "ASSIGNED_USERS": "Zugewiesener Benutzer",
+            "DUE_DATE": "Fälligkeitsdatum",
             "MILESTONE": "Sprint",
             "COLOR": "Farbe"
         }
@@ -1382,7 +1382,7 @@
         "SAVED": "Die Helferlein haben Ihre Änderungen gespeichert!",
         "CLOSE": "Benachrichtigung schließen",
         "MAIL": "Benachrichtigungen per Mail",
-        "DESKTOP": "Desktop notifications using browser alerts",
+        "DESKTOP": "Desktopbenachrichtigung mittels Browserbenachtichtigung",
         "ASK_DELETE": "Möchten Sie wirklich löschen?"
     },
     "CANCEL_ACCOUNT": {
@@ -1499,10 +1499,10 @@
             "USER_PROFILE": "Benutzerprofil",
             "CHANGE_PASSWORD": "Passwort ändern",
             "EMAIL_NOTIFICATIONS": "E-Mail Benachrichtigungen",
-            "DESKTOP_NOTIFICATIONS": "Desktop notifications"
+            "DESKTOP_NOTIFICATIONS": "Desktopbenachrichtigungen"
         },
         "NOTIFICATIONS": {
-            "LIVE_SECTION_NAME": "Desktop Notifications",
+            "LIVE_SECTION_NAME": "Desktopbenachrichtigungen",
             "SECTION_NAME": "E-Mail-Benachrichtigungen",
             "COLUMN_PROJECT": "Projekt",
             "COLUMN_RECEIVE_ALL": "Alle erhalten",
@@ -1516,7 +1516,7 @@
     "USER_PROFILE": {
         "ACTION_USE_GRAVATAR": "Standardbild verwenden",
         "ACTION_DELETE_ACCOUNT": "Ihr Taiga Benutzerkonto löschen",
-        "ACTION_DOWNLOAD_PROFILE": "Download Taiga profile",
+        "ACTION_DOWNLOAD_PROFILE": "Taiga Profil herunterladen",
         "CHANGE_EMAIL_SUCCESS": "<strong>Sehen Sie in Ihren Posteingang!</strong><br />Wir haben eine E-Mail an Ihr Konto gesendet<br />mit der Anleitung, wie Sie Ihre neue Adresse anlegen",
         "CHANGE_PHOTO": "Foto ändern",
         "FIELD": {
@@ -1611,10 +1611,10 @@
         "NEW_USER": "{{username}} ist Taiga beigetreten"
     },
     "LEGAL": {
-        "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>When creating a new account, you agree to our </span><a href=\"{{ termsOfServiceUrl }}\" title=\"See terms of service\" target=\"_blank\">terms of service</a><span> and </span><a href=\"{{ privacyPolicyUrl }}\" title=\"See privacy policy\" target=\"_blank\">privacy policy</a>.",
-        "GDPR_ANNOUNCEMENT_TITLE": "General Data Protection Regulation (GDPR)",
-        "GDPR_ANNOUNCEMENT_DESCRIPTION": "You saw this comming, right? Updates to our Terms of Service",
-        "GDPR_ANNOUNCEMENT_INFOLINK": "Please read our announcement here"
+        "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>Beim Erstellen eines neuen Accounts, stimmst du unseren</span><a href=\"{{ termsOfServiceUrl }}\" title=\"See terms of service\" target=\"_blank\">Nutzungsbedingungen</a><span>und</span><a href=\"{{ privacyPolicyUrl }}\" title=\"See privacy policy\" target=\"_blank\">Datenschutzbestimmungen</a>zu.",
+        "GDPR_ANNOUNCEMENT_TITLE": "Datenschutz-Grundverordnung (DSGVO)",
+        "GDPR_ANNOUNCEMENT_DESCRIPTION": "Das hast du kommen sehen, oder? Aktualisierungen zu unseren Nutzungsbedingungen",
+        "GDPR_ANNOUNCEMENT_INFOLINK": "Bitte lies unsere Ankündigung "
     },
     "EXTERNAL_APP": {
         "PAGE_TITLE": "Eine externe Anwendung benötigt eine Genehmigung",

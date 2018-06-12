@@ -309,8 +309,8 @@
         "ALT_LOGIN": "Tai kirjaudu käyttäen"
     },
     "LOGIN_FORM": {
-        "ERROR_AUTH_INCORRECT": "Oompa Loompas sanovat että käyttäjänimesi tai sähköpostisi tai salasanasi on väärä.",
-        "SUCCESS": "Oompa Loompas ovat onnellisia, tervetuloa Taigaan."
+        "ERROR_AUTH_INCORRECT": "Käyttäjänimesi tai sähköpostisi tai salasanasi on väärä.",
+        "SUCCESS": "Oompa Loompat ovat onnellisia, tervetuloa Taigaan."
     },
     "REGISTER": {
         "PAGE_TITLE": "Rekisteröidy - Taiga",
@@ -331,7 +331,7 @@
         "PAGE_DESCRIPTION": "Enter your username or email to get a new password and you can access to Taiga again."
     },
     "FORGOT_PASSWORD_FORM": {
-        "TITLE": "Oops, unohditko salasanasi?",
+        "TITLE": "Hups, unohditko salasanasi?",
         "SUBTITLE": "Anna käyttäjänimesi tai sähköpostisi saadaksesi uuden",
         "PLACEHOLDER_FIELD": "Käyttäjänimi tai sähköposti",
         "ACTION_RESET_PASSWORD": "Uusi salsanasi",

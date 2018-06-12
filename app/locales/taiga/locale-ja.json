@@ -46,9 +46,9 @@
         "CONFIRM_CLOSE_EDIT_MODE_MESSAGE": "保存せずに編集画面を閉じた場合、すべての変更が失われます。",
         "RELATED_USERSTORIES": "関連するユーザーストーリー",
         "CARD": {
-            "ASSIGN_TO": "アサイン",
+            "ASSIGN_TO": "割当",
             "EDIT": "編集",
-            "DELETE": "Delete card"
+            "DELETE": "カードを削除"
         },
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "無効な値です",
@@ -143,37 +143,37 @@
             "TYPE": "タイプ",
             "SEVERITY": "深刻度",
             "PRIORITY": "優先度",
-            "ASSIGNED_TO": "担当者",
-            "ASSIGNED_USERS": "Assigned users",
+            "ASSIGNED_TO": "割当",
+            "ASSIGNED_USERS": "割当ユーザー",
             "POINTS": "ポイント",
             "IS_BLOCKED": "はブロックされています。",
             "REF": "参照",
             "VOTES": "投票",
             "SPRINT": "スプリント",
-            "DUE_DATE": "Due date",
-            "DUE_DATE_REASON": "Due date reason"
+            "DUE_DATE": "締切日",
+            "DUE_DATE_REASON": "締切日理由"
         },
         "ROLES": {
             "ALL": "すべて"
         },
         "ASSIGNED_TO": {
-            "NOT_ASSIGNED": "未アサイン",
-            "ASSIGN": "アサイン",
-            "DELETE_ASSIGNMENT": "アサインを解除",
-            "REMOVE_ASSIGNED": "Remove assigned",
+            "NOT_ASSIGNED": "未割当",
+            "ASSIGN": "割当",
+            "DELETE_ASSIGNMENT": "割当を削除",
+            "REMOVE_ASSIGNED": "割当を解除",
             "TOO_MANY": "…ユーザーが多すぎます。フィルタを継続してください。",
             "CONFIRM_UNASSIGNED": "本当にこのアサインから外れてもよろしいですか？",
-            "TITLE_ACTION_EDIT_ASSIGNMENT": "アサインを編集",
-            "SELF": "自分が担当する"
+            "TITLE_ACTION_EDIT_ASSIGNMENT": "割当を編集",
+            "SELF": "自分に割当"
         },
         "DUE_DATE": {
-            "TITLE_ACTION_SET_DUE_DATE": "Set due date",
+            "TITLE_ACTION_SET_DUE_DATE": "締切日を設定",
             "DUE_SOON": "due soon",
             "PAST_DUE": "past due date",
             "NO_LONGER_APPLICABLE": "no longer applicable"
         },
         "ASSIGNED_USERS": {
-            "ADD": "Select assigned user",
+            "ADD": "割当ユーザーを選択",
             "ADD_ASSIGNED": "Add assigned",
             "TITLE_LIGHTBOX_DELETE_ASSIGNED": "Delete assigned..."
         },
@@ -221,7 +221,7 @@
                 "SEVERITY": "深刻度",
                 "PRIORITIES": "優先度",
                 "TAGS": "タグ",
-                "ASSIGNED_TO": "担当者",
+                "ASSIGNED_TO": "割当",
                 "ROLE": "役割",
                 "CREATED_BY": "作成者",
                 "CUSTOM_FILTERS": "カスタムフィルター",
@@ -386,7 +386,7 @@
         "PAGE_DESCRIPTION": "エピックの一覧 {{projectName}}: {{projectDescription}}",
         "DASHBOARD": {
             "ADD": "エピックを追加",
-            "UNASSIGNED": "未アサイン"
+            "UNASSIGNED": "未割当"
         },
         "EMPTY": {
             "TITLE": "まだエピックが無いようです",
@@ -398,7 +398,7 @@
             "NAME": "名前",
             "PROJECT": "プロジェクト",
             "SPRINT": "スプリント",
-            "ASSIGNED_TO": "アサイン済",
+            "ASSIGNED_TO": "割当済",
             "STATUS": "ステータス",
             "PROGRESS": "進捗",
             "VIEW_OPTIONS": "オプションの表示"
@@ -415,7 +415,7 @@
     },
     "PROJECTS": {
         "PAGE_TITLE": "マイ プロジェクト - Taiga",
-        "PAGE_DESCRIPTION": "A list with all your projects, you can reorder or create a new one.",
+        "PAGE_DESCRIPTION": "あなたの全てのプロジェクトのリストです。順序の入れ替えや新規作成ができます。",
         "MY_PROJECTS": "マイ プロジェクト"
     },
     "ATTACHMENT": {
@@ -568,7 +568,7 @@
             "FIELD_TYPE_URL": "Url"
         },
         "PROJECT_VALUES": {
-            "PAGE_TITLE": "{{sectionName}} - Project values - {{projectName}}",
+            "PAGE_TITLE": "{{sectionName}} - プロジェクト値 - {{projectName}}",
             "REPLACEMENT": "この値を持つすべてのアイテムはこちらに変更されます:",
             "ERROR_DELETE_ALL": "すべての値を削除することはできません。"
         },
@@ -618,10 +618,10 @@
         "ROLES": {
             "PAGE_TITLE": "役割 - {{projectName}}",
             "WARNING_NO_ROLE": "Be careful, no role in your project will be able to estimate the point value for user stories",
-            "HELP_ROLE_ENABLED": "この設定を有効にするとメンバーがこの役割にアサインされた際、ユーザーストーリーのポイントに反映されます。",
-            "DISABLE_COMPUTABLE_ALERT_TITLE": "Are you sure you want to disable this role estimations?",
+            "HELP_ROLE_ENABLED": "この設定を有効にするとメンバーがこの役割に割り当てられた際にユーザーストーリーのポイントに反映されます。",
+            "DISABLE_COMPUTABLE_ALERT_TITLE": "本当に役割見積もりを無効にしてもよろしいですか？",
             "DISABLE_COMPUTABLE_ALERT_SUBTITLE": "If you disable estimation permissions for role {{roleName}} all previous estimations made by this role will be removed",
-            "COUNT_MEMBERS": "{{ role.members_count }} members with this role",
+            "COUNT_MEMBERS": "{{ role.members_count }} 名がこの役割を担当",
             "TITLE_DELETE_ROLE": "役割を削除",
             "REPLACEMENT_ROLE": "All the users with this role will be moved to",
             "WARNING_DELETE_ROLE": "Be careful! All role estimations will be removed",
@@ -696,7 +696,7 @@
             "COLUMN_ROLE": "役割",
             "COLUMN_STATUS": "ステータス",
             "STATUS_ACTIVE": "有効",
-            "STATUS_PENDING": "Pending",
+            "STATUS_PENDING": "保留",
             "DELETE_MEMBER": "メンバーを削除",
             "RESEND": "再送信",
             "SUCCESS_SEND_INVITATION": "招待メールを '{{email}}' へもう一度送りました。",
@@ -762,7 +762,7 @@
                 "PRIVATE": "あなたが持てる非公開プロジェクトは最大<strong>{{maxProjects}}</strong>個までです。現在<strong>{{currentProjects}}</strong>個持っています。",
                 "PUBLIC": "あなたが持てる公開プロジェクトは最大<strong>{{maxProjects}}</strong>個までです。現在<strong>{{currentProjects}}</strong>個持っています。"
             },
-            "CANT_BE_OWNED": "あなたは現在、このタイプのプロジェクトオーナーにはなれません。このプロジェクトのオーナーになりたい場合は管理者に問い合わせてオーナー権限を変更してもらってください。"
+            "CANT_BE_OWNED": "現在あなたはこのタイプのプロジェクトのオーナーにはなれません。このプロジェクトのオーナーになりたい場合は管理者に問い合わせてオーナー権限を変更してもらってください。"
         }
     },
     "USER": {
@@ -891,7 +891,7 @@
             "TEMPLATE_SCRUM_LONGDESC": "Scrum is an iterative and incremental agile software development methodology for managing product development.\nThe product backlog is what will ultimately be delivered, ordered into the sequence in which it should be delivered. Product Backlogs are broken into manageable, executable chunks named sprints. Every certain amount of time the team initiates a new sprint and commits to deliver a certain number of user stories from the backlog, in accordance with their skills, abilities and resources. The project advances as the backlog becomes depleted.",
             "TEMPLATE_KANBAN": "かんばん",
             "TEMPLATE_KANBAN_DESC": "Keep a constant workflow on independent tasks",
-            "TEMPLATE_KANBAN_LONGDESC": "The Kanban methodology is used to divide project development (any sort of project) into stages.\nA kanban card is like an index card or post-it note that details every task (or user story) in a project that needs to be completed. The Kanban board is used to move each card from one state of completion to the next and in so doing, helps track progress.",
+            "TEMPLATE_KANBAN_LONGDESC": "かんばん方法論はプロジェクト開発（あらゆる種類のプロジェクト）を工程ごとに区切るのに使われます。\nかんばんカードはインデックスカードやポストイットのようなもので、プロジェクト内の全ての達成する必要のあるタスク（またはユーザーストーリー）がそれぞれのカードに詳細に書かれています。かんばんボードでは各カードを一つの工程が完了するたびに次の工程に動かし、進捗管理をしていきます。",
             "DUPLICATE": "プロジェクトを複製",
             "DUPLICATE_DESC": "Start clean and keep your configuration",
             "IMPORT": "プロジェクトをインポート",
@@ -900,13 +900,13 @@
             "SOLO_PROJECT": "このプロジェクトで独りになります",
             "INVITE_LATER": "(You'll be able to invite more members later)",
             "BACK": "バックエンド",
-            "MAX_PRIVATE_PROJECTS": "Unfortunately, You've reached the maximum number of private projects.\nIf you would like to increase the current limit please contact the administrator.",
-            "MAX_PUBLIC_PROJECTS": "Unfortunately, You've reached the maximum number of public projects.\nIf you would like to increase the current limit please contact the administrator.",
+            "MAX_PRIVATE_PROJECTS": "残念ながら許可されている非公開プロジェクトの上限数に達しました。\nもし現在の上限を増やしたい場合は管理者にお問い合わせください。",
+            "MAX_PUBLIC_PROJECTS": "残念ながら許可されている公開プロジェクトの上限数に達しました。\nもし現在の上限を増やしたい場合は管理者にお問い合わせください。",
             "PUBLIC_PROJECT": "パブリック プロジェクト",
             "PRIVATE_PROJECT": "プライベート プロジェクト"
         },
         "COMMON": {
-            "DETAILS": "New project details",
+            "DETAILS": "新規プロジェクト詳細",
             "PROJECT_TITLE": "プロジェクト名",
             "PROJECT_DESCRIPTION": "プロジェクト概要"
         },
@@ -933,21 +933,21 @@
             "WRITE_EMAIL_LABEL": "Taigaでこのユーザーが使用しているメールアドレスを記入",
             "ACCEEDE": "Acceede",
             "PROJECT_MEMBERS": "プロジェクトメンバー",
-            "PROCESS_DESCRIPTION": "Tell us who from Taiga you want to assign the tasks of {{platform}}",
+            "PROCESS_DESCRIPTION": "{{platform}}のタスクを割り当てたいTaigaユーザーを教えてください。",
             "MATCH": "Is <strong>{{user_external}}</strong> the same person as <strong>{{user_internal}}</strong>?",
             "CHOOSE": "ユーザーを選択",
             "LINKS": "Links with {{platform}}",
             "LINKS_DESCRIPTION": "Do you want to keep the link of each item with the original {{platform}} card?",
-            "WARNING_MAIL_USER": "Note that if the user does not have a Taiga account we will not be able to assign the tasks to him.",
-            "ASSIGN": "アサイン",
+            "WARNING_MAIL_USER": "指定したユーザーがTaigaアカウントを持っていない場合、タスクを割り当てることはできません。",
+            "ASSIGN": "割当",
             "PROJECT_SELECTOR": {
                 "NO_RESULTS": "検索条件に当てはまるものはありませんでした。",
                 "ACTION_SEARCH": "検索",
                 "ACTION_BACK": "バックエンド"
             },
             "PROJECT_RESTRICTIONS": {
-                "PROJECT_MEMBERS_DESC_PRIVATE": "The project you are trying to import has {{members}} members including you, unfortunately, your current plan allows for a maximum of {{max_memberships}} members per private project. If you would like to increase that limit please contact the administrator.",
-                "PROJECT_MEMBERS_DESC_PUBLIC": "The project you are trying to import has {{members}} members including you, unfortunately, your current plan allows for a maximum of {{max_memberships}} members per public project. If you would like to increase that limit please contact the administrator.",
+                "PROJECT_MEMBERS_DESC_PRIVATE": "インポートしようとしているプロジェクトのメンバー数はあなたを含めて{{members}}名ですが、あなたの現在のプランでは非公開プロジェクト1つにつき最大{{max_memberships}}名までしか許可されていません。 上限を増やしたい場合は管理者にお問い合わせください。",
+                "PROJECT_MEMBERS_DESC_PUBLIC": "インポートしようとしているプロジェクトのメンバー数はあなたを含めて{{members}}名ですが、あなたの現在のプランでは公開プロジェクト1つにつき最大{{max_memberships}}名までしか許可されていません。 上限を増やしたい場合は管理者にお問い合わせください。",
                 "ACCOUNT_ALLOW_MEMBERS": "Your account only allows {{members}} members",
                 "PRIVATE_PROJECTS_SPACE": {
                     "TITLE": "現在のプランではこれ以上の非公開プロジェクトは許可されていません。",
@@ -977,7 +977,7 @@
                 "DESCRIPTION": "このプロセスには時間がかかります。ウィンドウを開いたままにしていてください。"
             },
             "WARNING": {
-                "TITLE": "Some taks will be unassigned",
+                "TITLE": "いくつかのタスクは未割当になります",
                 "DESCRIPTION": "There are still unidentified people. The cards assigned to these people will remain unassigned. Check all the contacts to not lose that information.",
                 "CHECK": "コンタクトを確認"
             },
@@ -1041,7 +1041,7 @@
             "CONFIRM": "はい、問題ありません"
         },
         "ASSIGNED_TO": {
-            "SELECT": "アサインする",
+            "SELECT": "割り当てる",
             "SEARCH": "ユーザーを検索"
         },
         "ADD_MEMBER": {
@@ -1079,21 +1079,21 @@
             "TITLE": "新しいタスク",
             "PLACEHOLDER_SUBJECT": "タスク名",
             "PLACEHOLDER_STATUS": "タスクステータス",
-            "OPTION_UNASSIGNED": "未アサイン",
+            "OPTION_UNASSIGNED": "未割当",
             "PLACEHOLDER_SHORT_DESCRIPTION": "要約を入力",
             "ACTION_EDIT": "タスクを編集",
-            "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?"
+            "CONFIRM_CLOSE": "変更をまだ保存していません。\n本当にフォームを閉じてもよろしいですか？"
         },
         "CREATE_EDIT_US": {
             "TITLE": "新規 US",
             "PLACEHOLDER_DESCRIPTION": "このユーザーストーリーを他の人が理解できるように説明を加えてください",
             "NEW_US": "新しいユーザーストーリー",
             "EDIT_US": "ユーザーストーリーを編集",
-            "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?"
+            "CONFIRM_CLOSE": "変更をまだ保存していません。\n本当にフォームを閉じてもよろしいですか？"
         },
         "DELETE_DUE_DATE": {
-            "TITLE": "Delete due date",
-            "SUBTITLE": "Are you sure you want to delete this due date?"
+            "TITLE": "締切日を削除",
+            "SUBTITLE": "本当にこの終了日を削除してもよろしいですか？"
         },
         "DELETE_SPRINT": {
             "TITLE": "スプリントを削除"
@@ -1111,7 +1111,7 @@
                 "BUTTON": "プロジェクトのオーナーを変更"
             },
             "OTHER_USER_OWNER": {
-                "DESC": "現在のプロジェクトのオーナーになっているメンバーを削除することはできません。まず新しいプロジェクトオーナーを指名してください。",
+                "DESC": "現在のプロジェクトのオーナーになっているメンバーを削除することはできません。まず新しいプロジェクトオーナーを割り当ててください。",
                 "BUTTON": "プロジェクトオーナーの変更をリクエスト"
             }
         },
@@ -1127,17 +1127,17 @@
             "SEND": "送信"
         },
         "SET_DUE_DATE": {
-            "TITLE": "Set due date",
-            "PLACEHOLDER_DUE_DATE": "Select date",
-            "REASON_FOR_DUE_DATE": "Reason for the due date",
-            "PLACEHOLDER_REASON_FOR_DUE_DATE": "Why does this US need a due date?",
+            "TITLE": "締切日を設定",
+            "PLACEHOLDER_DUE_DATE": "日付を選択",
+            "REASON_FOR_DUE_DATE": "締切日の設定理由",
+            "PLACEHOLDER_REASON_FOR_DUE_DATE": "なぜこのユーザーストーリーに締切日が必要なのでしょうか？",
             "SUGGESTIONS": {
-                "IN_ONE_WEEK": "In one week",
+                "IN_ONE_WEEK": "1週間以内",
                 "IN_TWO_WEEKS": "In two weeks",
-                "IN_ONE_MONTH": "In one month",
-                "IN_THREE_MONTHS": "In three months"
+                "IN_ONE_MONTH": "1ヶ月以内",
+                "IN_THREE_MONTHS": "3ヶ月以内"
             },
-            "TITLE_ACTION_DELETE_DUE_DATE": "Delete due date"
+            "TITLE_ACTION_DELETE_DUE_DATE": "締切日を削除"
         }
     },
     "EPIC": {
@@ -1182,7 +1182,7 @@
             "PUBLISH_TITLE": "Taiga Tribeへの発行に関する情報",
             "PUBLISHED_AS_GIG": "Taiga Tribeでギグとして発行されたストーリー",
             "EDIT_LINK": "リンクを編集",
-            "CLOSE": "Close",
+            "CLOSE": "閉じる",
             "SYNCHRONIZE_LINK": "Taiga Tribeと同期",
             "PUBLISH_MORE_INFO_TITLE": "このタスクに誰か必要ですか？",
             "PUBLISH_MORE_INFO_TEXT": "<p>If you need help with a particular piece of work you can easily create gigs on<a href='http://taigatribe.com' title='Taiga Tribe'> Taiga Tribe </a> and receive help from all over the world. You will be able to control and manage the gig enjoying a great community eager to contribute.</p><p><a href='http://taigatribe.com' title='Taiga Tribe'> TaigaTribe </a>  was born as a Taiga sibling. Both platforms can live separately but we believe that there is much power in using them combined so we are making sure the integration works like a charm.</p>"
@@ -1236,16 +1236,16 @@
             "SEVERITY": "深刻度",
             "STATUS": "ステータス",
             "TYPE": "タイプ",
-            "ASSIGNED_TO": "割り当てる",
-            "ASSIGNED_USERS": "assigned users",
-            "DUE_DATE": "due date",
+            "ASSIGNED_TO": "割当",
+            "ASSIGNED_USERS": "割当ユーザー",
+            "DUE_DATE": "締切日",
             "MILESTONE": "スプリント",
             "COLOR": "色"
         }
     },
     "BACKLOG": {
         "PAGE_TITLE": "バックログ - {{projectName}}",
-        "PAGE_DESCRIPTION": "The backlog panel, with user stories and sprints of the project {{projectName}}: {{projectDescription}}",
+        "PAGE_DESCRIPTION": "バックログパネルです。次のプロジェクトのユーザーストーリーとスプリントが記録されています：{{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "バックログ",
         "CUSTOMIZE_GRAPH": "バックロググラフのカスタマイズ",
         "CUSTOMIZE_GRAPH_TEXT": "To have a nice graph that helps you follow the evolution of the project you have to set up the points and sprints through the",
@@ -1338,9 +1338,9 @@
         "SECTION_NAME": "タスクボード",
         "TITLE_ACTION_ADD": "新規タスクを追加",
         "TITLE_ACTION_ADD_BULK": "新規タスクを一括で追加する",
-        "TITLE_ACTION_ASSIGN": "タスクをアサイン",
+        "TITLE_ACTION_ASSIGN": "タスクの割当",
         "PLACEHOLDER_CARD_TITLE": "This could be a task",
-        "PLACEHOLDER_CARD_TEXT": "ストーリーを分割しタスクとして別管理する。",
+        "PLACEHOLDER_CARD_TEXT": "ストーリーを分割しタスクとして別管理",
         "TABLE": {
             "COLUMN": "ユーザーストーリー",
             "TITLE_ACTION_FOLD": "列をたたむ",
@@ -1348,7 +1348,7 @@
             "TITLE_ACTION_FOLD_ROW": "行をたたむ",
             "TITLE_ACTION_UNFOLD_ROW": "行をひろげる",
             "FIELD_POINTS": "ポイント",
-            "ROW_UNASSIGED_TASKS_TITLE": "未アサイン タスク"
+            "ROW_UNASSIGED_TASKS_TITLE": "未割当タスク"
         },
         "CHARTS": {
             "XAXIS_LABEL": "日",
@@ -1382,7 +1382,7 @@
         "SAVED": "ウンパルンパたちがすべての変更を保存しました。",
         "CLOSE": "通知を閉じる",
         "MAIL": "メールでの通知",
-        "DESKTOP": "Desktop notifications using browser alerts",
+        "DESKTOP": "ブラウザアラートを使ったデスクトップ通知",
         "ASK_DELETE": "本当に削除してもよろしいですか？"
     },
     "CANCEL_ACCOUNT": {
@@ -1428,10 +1428,10 @@
                 "VOTES": "投票",
                 "STATUS": "ステータス",
                 "CREATED": "作成",
-                "ASSIGNED_TO": "担当者"
+                "ASSIGNED_TO": "割当"
             },
             "TITLE_ACTION_CHANGE_STATUS": "ステータスを変更",
-            "TITLE_ACTION_ASSIGNED_TO": "担当者",
+            "TITLE_ACTION_ASSIGNED_TO": "割当",
             "BLOCKED": "ブロック中",
             "EMPTY": {
                 "TITLE": "レポートが必要な課題はありません :-)",
@@ -1445,7 +1445,7 @@
     },
     "KANBAN": {
         "PAGE_TITLE": "かんばん - {{projectName}}",
-        "PAGE_DESCRIPTION": "The kanban panel, with user stories of the project {{projectName}}: {{projectDescription}}",
+        "PAGE_DESCRIPTION": "かんばんパネルです。次のプロジェクトのユーザーストーリーが記載されています：{{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "かんばん",
         "TITLE_ACTION_FOLD": "列をたたむ",
         "TITLE_ACTION_UNFOLD": "列をひろげる",
@@ -1453,13 +1453,13 @@
         "TITLE_ACTION_ADD_BULK": "新規ユーザーストーリーを一括追加",
         "ACTION_SHOW_ARCHIVED": "アーカイブ済を表示",
         "ACTION_HIDE_ARCHIVED": "アーカイブ済を隠す",
-        "HIDDEN_USER_STORIES": "The user stories in this status are hidden by default",
-        "PLACEHOLDER_CARD_TITLE": "These are your User Stories",
+        "HIDDEN_USER_STORIES": "このステータスのユーザーストーリーはデフォルトで非表示となります",
+        "PLACEHOLDER_CARD_TITLE": "あなたのユーザーストーリーです",
         "PLACEHOLDER_CARD_TEXT": "Stories might also have subtasks to separate requirements"
     },
     "SEARCH": {
         "PAGE_TITLE": "検索 - {{projectName}}",
-        "PAGE_DESCRIPTION": "ユーザーストーリー、課題、タスク、Wikiページ、その他何でもこのプロジェクトを検索 {{projectName}}: {{projectDescription}}",
+        "PAGE_DESCRIPTION": "ユーザーストーリー、課題、タスク、Wikiページ、その他何でもこのプロジェクト内を検索： {{projectName}}: {{projectDescription}}",
         "FILTER_EPICS": "エピック",
         "FILTER_USER_STORIES": "User Stories",
         "FILTER_ISSUES": "課題",
@@ -1499,7 +1499,7 @@
             "USER_PROFILE": "ユーザープロフィール",
             "CHANGE_PASSWORD": "パスワード変更",
             "EMAIL_NOTIFICATIONS": "メール通知",
-            "DESKTOP_NOTIFICATIONS": "Desktop notifications"
+            "DESKTOP_NOTIFICATIONS": "デスクトップ通知"
         },
         "NOTIFICATIONS": {
             "LIVE_SECTION_NAME": "Desktop Notifications",
@@ -1564,11 +1564,11 @@
         "SECTION_NAME": "ヒント",
         "LINK": "利用方法を知りたい場合はサポートページを訪れてください",
         "LINK_TITLE": "サポートページへ行く",
-        "HINT1_TITLE": "Did you know you can import and export projects?",
+        "HINT1_TITLE": "プロジェクトのインポートやエクスポートができるのをご存知でしたか？",
         "HINT1_TEXT": "ひとつのTaigaアカウントの全てのデータを抽出し、別のアカウントへ移すことができます。",
         "HINT2_TITLE": "カスタムフィールドが作れるのはご存知ですか？",
         "HINT2_TEXT": "Teams can now create custom fields as a flexible means to enter specific data useful for their particular workflow.",
-        "HINT3_TITLE": "Reorder your projects to feature those most relevant to you.",
+        "HINT3_TITLE": "あなたに最も関連性のあるプロジェクトを見つけやすくするために順序を入れ替えてみましょう。",
         "HINT3_TEXT": "最上部にあるダイレクトアクセスバーに10プロジェクトまで表示されます。",
         "HINT4_TITLE": "Did you forget what were you working on?",
         "HINT4_TEXT": "ご心配なさらないでください。ダッシュボードではあなたが取り組んだ順番にオープンなタスク、課題、ユーザーストーリーが表示されます。"
@@ -1617,8 +1617,8 @@
         "GDPR_ANNOUNCEMENT_INFOLINK": "Please read our announcement here"
     },
     "EXTERNAL_APP": {
-        "PAGE_TITLE": "An external app requires authentication",
-        "PAGE_DESCRIPTION": "An external app requires authentication",
+        "PAGE_TITLE": "外部アプリでは認証が必要です",
+        "PAGE_DESCRIPTION": "外部アプリでは認証が必要です",
         "AUTHORIZATION_REQUEST": "{{application}} にあなたのTaigaアカウントを使用することを許可しますか？",
         "LOGIN_WITH_ANOTHER_USER": "別のユーザーでログイン",
         "AUTHORIZE_APP": "アプリを許可",
@@ -1654,7 +1654,7 @@
         "BACKLOG": {
             "STEP1": {
                 "TITLE": "プロジェクト概要",
-                "TEXT1": "Here you will see the state of your project.",
+                "TEXT1": "ここではあなたのプロジェクトの進捗を見ることができます。",
                 "TEXT2": "管理でプロジェクトの全ての設定を変更できます。"
             },
             "STEP2": {
