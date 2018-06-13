@@ -2,6 +2,16 @@
 
 ## Unreleased
 
+## 3.3.8 (2018-06-14)
+
+### Features
+
+- Add Right-To-Left (RTL) support.
+
+### Misc
+
+- Update locales.
+
 ## 3.3.7 (2018-05-31)
 
 ### Misc
