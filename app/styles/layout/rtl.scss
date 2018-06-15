@@ -157,6 +157,19 @@
         right: auto;
     }
 
+    .taskboard tg-filter {
+        left: auto;
+        right: 0;
+        transform: translateX(260px);
+        &.open {
+            transform: translateX(0);
+        }
+    }
+
+    .issues-options .button-bulk {
+        margin-left: 0;
+        margin-right: .2rem;
+    }
     .issues-table .issue-field,
     .issues-table .assigned-field,
     .issues-table .created-field,
@@ -744,6 +757,119 @@
         margin-right: 0;
     }
 
+    // Admin
+    .admin-submenu ul a {
+        padding: 1rem 1rem 1rem 0;
+    }
+
+    .admin-functionalities .module-desc {
+        margin: 0 0 0 2rem;
+    }
+    .admin-functionalities .module-icon {
+        margin: 0 0 0 .5rem;
+    }
+
+    .project-details .project-details-image {
+        margin-left: 2rem;
+        margin-right: 0;
+    }
+
+    .admin-project-profile-owner-actions .owner-info {
+        padding-left: 0;
+        padding-right: .5rem;
+    }
+
+    .admin-roles .general-category .check {
+        margin-left: 0;
+        margin-right: .5rem;
+    }
+
+    .help-button svg {
+        margin-left: .5rem;
+        margin-right: 0;
+    }
+
+    .project-details .private-or-public svg {
+        margin-left: .5rem;
+        margin-right: 0;
+    }
+
+    .project-csv .option-wrapper {
+        border-left: 1px solid $gray-light;
+        border-radius: 5px 0 0 5px;
+        border-right: 0;
+    }
+    .colors-table .table-header .row {
+        padding-left: 0;
+        padding-right: 50px;
+    }
+
+    .basic-table .row {
+        text-align: right;
+    }
+
+    .admin-membership-table .avatar img {
+        margin: 0 .3rem 0 .5rem;
+    }
+
+    .admin-membership-table .row-role {
+        padding-left: 1rem;
+        padding-right: 0;
+    }
+
+    .category-config .icon {
+        transform: scaleX(-1);
+    }
+
+    .project-details .looking-for-people-selector .check,
+    .project-details .get-feedback-inner .check {
+        margin-left: 0;
+        margin-right: auto;
+    }
+
+    .check input {
+        left: auto;
+        right: -10px;
+        &:checked + div {
+            margin-left: 0;
+            margin-right: 50%;
+        }
+        &:checked ~ .check-yes {
+            left: .3rem;
+            right: auto;
+        }
+        ~ .check-no {
+            left: auto;
+            right: .375rem;
+        }
+    }
+
+    .notification-message-success {
+        left: -370px;
+        right: auto;
+        &.active {
+            animation: animSlideRTL 2000ms;
+        }
+        &.inactive {
+            animation: animSlideOutRTL .5s;
+        }
+    }
+
+    // Generated with Bounce.js. Edit at https://goo.gl/ER5vpf
+    @keyframes animSlideRTL {
+        0% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+        4.1% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 232.117, 0, 0, 1); }
+        8.11% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 357.804, 0, 0, 1); }
+        12.11% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 407.374, 0, 0, 1); }
+        16.12% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 417.342, 0, 0, 1); }
+        27.23% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 403.135, 0, 0, 1); }
+        38.34% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 399.585, 0, 0, 1); }
+        60.56% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 400.01, 0, 0, 1); }
+        82.78% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 400, 0, 0, 1); }
+        100% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 400, 0, 0, 1); }
+    }
+    @keyframes animSlideOutRTL {
+        100% { opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 30, 0, 0, 0, 1); }
+        0% { opacity: 0; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 30, 0, 0, 0, 1); }
+    }
 }
-
-
