@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+## 3.3.9 (2018-06-21)
+
+### Misc
+
+- Update locales.
+
+- Improve RTL styles.
+
 ## 3.3.8 (2018-06-14)
 
 ### Features
