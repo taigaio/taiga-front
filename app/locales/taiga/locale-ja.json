@@ -328,7 +328,7 @@
     },
     "FORGOT_PASSWORD": {
         "PAGE_TITLE": "パスワードを忘れました - Taiga",
-        "PAGE_DESCRIPTION": "ユーザー名 または メールアドレスを記入して新しいパスワードを取得しすれば、Taigaに再びアクセスできます。"
+        "PAGE_DESCRIPTION": "ユーザー名 または メールアドレスを記入して新しいパスワードを取得すれば、Taigaに再びアクセスできます。"
     },
     "FORGOT_PASSWORD_FORM": {
         "TITLE": "おっと、パスワードを忘れてしまいましたか？",
@@ -336,8 +336,8 @@
         "PLACEHOLDER_FIELD": "ユーザー名 または メールアドレス",
         "ACTION_RESET_PASSWORD": "パスワードをリセット",
         "LINK_CANCEL": "いいえ、戻ります。私はそれを覚えていると思います。",
-        "SUCCESS_TITLE": "Inboxを確認してください",
-        "SUCCESS_TEXT": "新しいパスワードを設定するための指示を記載したメールを送信しました",
+        "SUCCESS_TITLE": "メールボックスを確認してください",
+        "SUCCESS_TEXT": "新しいパスワードを設定するための手順を記載したメールを送信しました",
         "ERROR": "「あなたのアカウントはまだ登録されていない」とウンパルンパたちが言っています。"
     },
     "CHANGE_PASSWORD": {
@@ -358,7 +358,7 @@
         "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "新しいパスワードを再入力",
         "ACTION_RESET_PASSWORD": "パスワードをリセット",
         "ERROR": "ウンパルンパたちはあなたのパスワード復元依頼を見つけられないようです。もう一度お試しください。",
-        "SUCCESS": "ウンパルンパたちはあなたの新しいパスワードを保存しました。<br /> 新しい方のパスワードで<strong>サインイン</strong> してみてください。"
+        "SUCCESS": "ウンパルンパたちはあなたの新しいパスワードを保存しました。<br /> 新しいパスワードで<strong>サインイン</strong> してみてください。"
     },
     "INVITATION": {
         "PAGE_TITLE": "招待を受諾する - Taiga",
@@ -887,13 +887,13 @@
             "TITLE": "プロジェクトを作成",
             "CHOOSE_TEMPLATE": "どちらのテンプレートがあなたのプロジェクトにより適していますか？",
             "TEMPLATE_SCRUM": "スクラム",
-            "TEMPLATE_SCRUM_DESC": "Prioritize and solve your tasks in short time cycles.",
+            "TEMPLATE_SCRUM_DESC": "短時間のサイクルでタスクの優先順位付けと解決を行います。",
             "TEMPLATE_SCRUM_LONGDESC": "Scrum is an iterative and incremental agile software development methodology for managing product development.\nThe product backlog is what will ultimately be delivered, ordered into the sequence in which it should be delivered. Product Backlogs are broken into manageable, executable chunks named sprints. Every certain amount of time the team initiates a new sprint and commits to deliver a certain number of user stories from the backlog, in accordance with their skills, abilities and resources. The project advances as the backlog becomes depleted.",
             "TEMPLATE_KANBAN": "かんばん",
-            "TEMPLATE_KANBAN_DESC": "Keep a constant workflow on independent tasks",
+            "TEMPLATE_KANBAN_DESC": "独立したタスクで一定のワークフローを維持します。",
             "TEMPLATE_KANBAN_LONGDESC": "かんばん方法論はプロジェクト開発（あらゆる種類のプロジェクト）を工程ごとに区切るのに使われます。\nかんばんカードはインデックスカードやポストイットのようなもので、プロジェクト内の全ての達成する必要のあるタスク（またはユーザーストーリー）がそれぞれのカードに詳細に書かれています。かんばんボードでは各カードを一つの工程が完了するたびに次の工程に動かし、進捗管理をしていきます。",
             "DUPLICATE": "プロジェクトを複製",
-            "DUPLICATE_DESC": "Start clean and keep your configuration",
+            "DUPLICATE_DESC": "設定を維持したままプロジェクトを始めます。",
             "IMPORT": "プロジェクトをインポート",
             "IMPORT_DESC": "複数プラットフォームからのプロジェクトをTaigaにインポート",
             "INVITE": "プロジェクトに招待",
@@ -912,7 +912,7 @@
         },
         "DUPLICATE": {
             "TITLE": "プロジェクトを複製",
-            "DESCRIPTION": "Start clean and keep your configuration",
+            "DESCRIPTION": "設定を維持したままプロジェクトを始めます。",
             "SELECT_PLACEHOLDER": "複製する既存プロジェクトを選択"
         },
         "IMPORT": {
@@ -1248,7 +1248,7 @@
         "PAGE_DESCRIPTION": "バックログパネルです。次のプロジェクトのユーザーストーリーとスプリントが記録されています：{{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "バックログ",
         "CUSTOMIZE_GRAPH": "バックロググラフのカスタマイズ",
-        "CUSTOMIZE_GRAPH_TEXT": "To have a nice graph that helps you follow the evolution of the project you have to set up the points and sprints through the",
+        "CUSTOMIZE_GRAPH_TEXT": "プロジェクトの進化に役立つ素敵なグラフを表示するには、ポイントとスプリントを設定する必要があります。",
         "CUSTOMIZE_GRAPH_ADMIN": "管理",
         "CUSTOMIZE_GRAPH_TITLE": "管理ユーザーでポイントとスプリントを設定してください。",
         "MOVE_US_TO_CURRENT_SPRINT": "現在のスプリントに移動",
@@ -1516,7 +1516,7 @@
     "USER_PROFILE": {
         "ACTION_USE_GRAVATAR": "デフォルトのイメージを使用する",
         "ACTION_DELETE_ACCOUNT": "Taigaアカウントを削除",
-        "ACTION_DOWNLOAD_PROFILE": "Download Taiga profile",
+        "ACTION_DOWNLOAD_PROFILE": "Taigaプロフィールをダウンロード",
         "CHANGE_EMAIL_SUCCESS": "<strong>メールボックスを確認してください！</strong><br />新しいメールアドレスを設定するための手順を送信しました。",
         "CHANGE_PHOTO": "写真を変更",
         "FIELD": {
@@ -1570,7 +1570,7 @@
         "HINT2_TEXT": "Teams can now create custom fields as a flexible means to enter specific data useful for their particular workflow.",
         "HINT3_TITLE": "あなたに最も関連性のあるプロジェクトを見つけやすくするために順序を入れ替えてみましょう。",
         "HINT3_TEXT": "最上部にあるダイレクトアクセスバーに10プロジェクトまで表示されます。",
-        "HINT4_TITLE": "Did you forget what were you working on?",
+        "HINT4_TITLE": "何をしているのか忘れましたか？",
         "HINT4_TEXT": "ご心配なさらないでください。ダッシュボードではあなたが取り組んだ順番にオープンなタスク、課題、ユーザーストーリーが表示されます。"
     },
     "TIMELINE": {
@@ -1634,7 +1634,7 @@
         "DASHBOARD": {
             "STEP1": {
                 "TITLE": "あなたのプロジェクト",
-                "TEXT": "Welcome! Here you will find the projects you are involved on."
+                "TEXT": "ようこそ！ここであなたが関わっているプロジェクトが見つかります。"
             },
             "STEP2": {
                 "TITLE": "取り組んでいる作業",
@@ -1642,8 +1642,8 @@
             },
             "STEP3": {
                 "TITLE": "フォロー中",
-                "TEXT1": "And right here you will find the ones in your projects that you want to know about.",
-                "TEXT2": "You are already working with Taiga ;)"
+                "TEXT1": "そして、ここでは、あなたが知りたいプロジェクトの内容が見みつかるでしょう。",
+                "TEXT2": "あなたはもうTaigaで作業しています ;)"
             },
             "STEP4": {
                 "TITLE": "さあ始めましょう",

@@ -48,7 +48,7 @@
         "CARD": {
             "ASSIGN_TO": "Atribuir a",
             "EDIT": "Editar cartão",
-            "DELETE": "Delete card"
+            "DELETE": "Excluir cartão"
         },
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Este valor parece ser inválido.",
@@ -144,7 +144,7 @@
             "SEVERITY": "Gravidade",
             "PRIORITY": "Prioridade",
             "ASSIGNED_TO": "Atribuído a",
-            "ASSIGNED_USERS": "Assigned users",
+            "ASSIGNED_USERS": "Usuários atribuídos",
             "POINTS": "Pontos",
             "IS_BLOCKED": "está bloqueada",
             "REF": "Ref",
@@ -170,7 +170,7 @@
             "TITLE_ACTION_SET_DUE_DATE": "Set due date",
             "DUE_SOON": "due soon",
             "PAST_DUE": "past due date",
-            "NO_LONGER_APPLICABLE": "no longer applicable"
+            "NO_LONGER_APPLICABLE": "Não é mais aplicável"
         },
         "ASSIGNED_USERS": {
             "ADD": "Select assigned user",
@@ -1082,14 +1082,14 @@
             "OPTION_UNASSIGNED": "Não assinalado",
             "PLACEHOLDER_SHORT_DESCRIPTION": "Escreva uma curta descrição",
             "ACTION_EDIT": "Editar tarefa",
-            "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?"
+            "CONFIRM_CLOSE": "Você não salvou as alterações.\nTem certeza que deseja fechar o formulário?"
         },
         "CREATE_EDIT_US": {
             "TITLE": "Nova História de Usuário",
             "PLACEHOLDER_DESCRIPTION": "Por favor, adicione um texto descritivo para ajudar outras pessoas a entenderem melhor esta história de usuário",
             "NEW_US": "Nova história de usuário",
             "EDIT_US": "Editar história de usuário",
-            "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?"
+            "CONFIRM_CLOSE": "Você não salvou as alterações.\nTem certeza que deseja fechar o formulário?"
         },
         "DELETE_DUE_DATE": {
             "TITLE": "Delete due date",
@@ -1132,10 +1132,10 @@
             "REASON_FOR_DUE_DATE": "Reason for the due date",
             "PLACEHOLDER_REASON_FOR_DUE_DATE": "Why does this US need a due date?",
             "SUGGESTIONS": {
-                "IN_ONE_WEEK": "In one week",
-                "IN_TWO_WEEKS": "In two weeks",
-                "IN_ONE_MONTH": "In one month",
-                "IN_THREE_MONTHS": "In three months"
+                "IN_ONE_WEEK": "Em uma semana",
+                "IN_TWO_WEEKS": "Em duas semanas",
+                "IN_ONE_MONTH": "Em um mês",
+                "IN_THREE_MONTHS": "Em três meses"
             },
             "TITLE_ACTION_DELETE_DUE_DATE": "Delete due date"
         }
@@ -1237,7 +1237,7 @@
             "STATUS": "status",
             "TYPE": "Digite",
             "ASSIGNED_TO": "Assinado à",
-            "ASSIGNED_USERS": "assigned users",
+            "ASSIGNED_USERS": "Usuários atribuídos",
             "DUE_DATE": "due date",
             "MILESTONE": "sprint",
             "COLOR": "cor"
@@ -1382,7 +1382,7 @@
         "SAVED": "Nossos Oompa Loompas salvaram todas as suas mudanças!",
         "CLOSE": "Fechar Notificação",
         "MAIL": "Notificações por Email",
-        "DESKTOP": "Desktop notifications using browser alerts",
+        "DESKTOP": "Notificações da área de trabalho usando alertas do navegador",
         "ASK_DELETE": "Você tem certeza que quer excluir?"
     },
     "CANCEL_ACCOUNT": {
@@ -1499,10 +1499,10 @@
             "USER_PROFILE": "Perfil do Usuário",
             "CHANGE_PASSWORD": "Alterar senha",
             "EMAIL_NOTIFICATIONS": "Notificações por email",
-            "DESKTOP_NOTIFICATIONS": "Desktop notifications"
+            "DESKTOP_NOTIFICATIONS": "Notificações da área de trabalho"
         },
         "NOTIFICATIONS": {
-            "LIVE_SECTION_NAME": "Desktop Notifications",
+            "LIVE_SECTION_NAME": "Notificações da área de trabalho",
             "SECTION_NAME": "Notificações por email",
             "COLUMN_PROJECT": "Projeto",
             "COLUMN_RECEIVE_ALL": "Receber todos",
@@ -1611,10 +1611,10 @@
         "NEW_USER": "{{username}} ingressou no Taiga"
     },
     "LEGAL": {
-        "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>When creating a new account, you agree to our </span><a href=\"{{ termsOfServiceUrl }}\" title=\"See terms of service\" target=\"_blank\">terms of service</a><span> and </span><a href=\"{{ privacyPolicyUrl }}\" title=\"See privacy policy\" target=\"_blank\">privacy policy</a>.",
+        "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>Ao criar uma nova conta, você concorda com nossos </span><a href=\"{{ termsOfServiceUrl }}\" title=\"See terms of service\" target=\"_blank\">termos de serviço</a><span> e </span><a href=\"{{ privacyPolicyUrl }}\" title=\"See privacy policy\" target=\"_blank\">política de privacidade</a>.",
         "GDPR_ANNOUNCEMENT_TITLE": "General Data Protection Regulation (GDPR)",
-        "GDPR_ANNOUNCEMENT_DESCRIPTION": "You saw this comming, right? Updates to our Terms of Service",
-        "GDPR_ANNOUNCEMENT_INFOLINK": "Please read our announcement here"
+        "GDPR_ANNOUNCEMENT_DESCRIPTION": "Você viu isso chegando, certo? Atualizações aos nossos Termos de Serviço",
+        "GDPR_ANNOUNCEMENT_INFOLINK": "Por favor, leia nossa declaração aqui"
     },
     "EXTERNAL_APP": {
         "PAGE_TITLE": "Um app externo requer autenticação",
