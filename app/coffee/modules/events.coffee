@@ -204,7 +204,7 @@ class EventsService
         subscription = {
             scope: scope,
             routingKey: routingKey,
-            callback: _.debounce(callback, 500, {"leading": true, "trailing": false})
+            callback: callback
         }
 
         message = {
