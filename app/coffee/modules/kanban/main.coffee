@@ -343,7 +343,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
     initializeSubscription: ->
         routingKey1 = "changes.project.#{@scope.projectId}.userstories"
-        @events.subscribe @scope, routingKey1, debounceLeading(300, (message) =>
+        @events.subscribe @scope, routingKey1, debounceLeading(500, (message) =>
             @.loadUserstories())
 
     loadInitialData: ->
