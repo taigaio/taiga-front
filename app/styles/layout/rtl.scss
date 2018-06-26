@@ -157,7 +157,8 @@
         right: auto;
     }
 
-    .taskboard tg-filter {
+    .taskboard tg-filter,
+    .kanban tg-filter {
         left: auto;
         right: 0;
         transform: translateX(260px);
