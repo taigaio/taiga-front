@@ -30,6 +30,7 @@ bindOnce = @.taiga.bindOnce
 scopeDefer = @.taiga.scopeDefer
 timeout = @.taiga.timeout
 bindMethods = @.taiga.bindMethods
+debounceLeading = @.taiga.debounceLeading
 
 module = angular.module("taigaTaskboard")
 
@@ -326,8 +327,8 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
 
     initializeSubscription: ->
         routingKey = "changes.project.#{@scope.projectId}.tasks"
-        @events.subscribe @scope, routingKey, (message) =>
-            @.loadTaskboard()
+        @events.subscribe @scope, routingKey, debounceLeading(500, (message) =>
+            @.loadTaskboard())
 
         routingKey1 = "changes.project.#{@scope.projectId}.userstories"
         @events.subscribe @scope, routingKey1, (message) =>

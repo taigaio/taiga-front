@@ -31,6 +31,7 @@ bindOnce = @.taiga.bindOnce
 groupBy = @.taiga.groupBy
 timeout = @.taiga.timeout
 bindMethods = @.taiga.bindMethods
+debounceLeading = @.taiga.debounceLeading
 
 module = angular.module("taigaKanban")
 
@@ -342,8 +343,8 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
     initializeSubscription: ->
         routingKey1 = "changes.project.#{@scope.projectId}.userstories"
-        @events.subscribe @scope, routingKey1, (message) =>
-            @.loadUserstories()
+        @events.subscribe @scope, routingKey1, debounceLeading(500, (message) =>
+            @.loadUserstories())
 
     loadInitialData: ->
         project = @.loadProject()
