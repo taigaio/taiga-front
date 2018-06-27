@@ -222,6 +222,7 @@
                 "PRIORITIES": "اولویت‌ها",
                 "TAGS": "برچسب‌ها",
                 "ASSIGNED_TO": "اختصاص یافته به",
+                "ASSIGNED_USERS": "کاربران اختصاص یافته",
                 "ROLE": "قش",
                 "CREATED_BY": "ایجاد توسط",
                 "CUSTOM_FILTERS": "فیلترهای سفارشی",

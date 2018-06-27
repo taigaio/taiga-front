@@ -222,6 +222,7 @@
                 "PRIORITIES": "優先性",
                 "TAGS": "標籤",
                 "ASSIGNED_TO": "指派給 ",
+                "ASSIGNED_USERS": "Assigned users",
                 "ROLE": "角色",
                 "CREATED_BY": "由創建",
                 "CUSTOM_FILTERS": "客製過濾器 ",

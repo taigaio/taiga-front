@@ -222,6 +222,7 @@
                 "PRIORITIES": "Öncelikler",
                 "TAGS": "Etiketler ",
                 "ASSIGNED_TO": "Atanmış",
+                "ASSIGNED_USERS": "Assigned users",
                 "ROLE": "Rol",
                 "CREATED_BY": "Oluşturan",
                 "CUSTOM_FILTERS": "Özel filtreler",

@@ -222,6 +222,7 @@
                 "PRIORITIES": "優先度",
                 "TAGS": "タグ",
                 "ASSIGNED_TO": "割当",
+                "ASSIGNED_USERS": "割当ユーザー",
                 "ROLE": "役割",
                 "CREATED_BY": "作成者",
                 "CUSTOM_FILTERS": "カスタムフィルター",
