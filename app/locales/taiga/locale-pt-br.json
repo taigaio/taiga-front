@@ -222,6 +222,7 @@
                 "PRIORITIES": "Prioridades",
                 "TAGS": "Tags",
                 "ASSIGNED_TO": "Atribuído a",
+                "ASSIGNED_USERS": "Usuários atribuídos",
                 "ROLE": "Função",
                 "CREATED_BY": "Criado por",
                 "CUSTOM_FILTERS": "Filtros personalizados",
