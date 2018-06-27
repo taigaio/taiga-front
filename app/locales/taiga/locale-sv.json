@@ -222,6 +222,7 @@
                 "PRIORITIES": "Prioritet",
                 "TAGS": "Etiketter",
                 "ASSIGNED_TO": "Tilldelad till",
+                "ASSIGNED_USERS": "Assigned users",
                 "ROLE": "Roll",
                 "CREATED_BY": "Skapad av",
                 "CUSTOM_FILTERS": "Anpassad filter",

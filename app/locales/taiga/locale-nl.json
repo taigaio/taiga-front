@@ -222,6 +222,7 @@
                 "PRIORITIES": "Prioriteit",
                 "TAGS": "Tags",
                 "ASSIGNED_TO": "Toegewezen aan",
+                "ASSIGNED_USERS": "Assigned users",
                 "ROLE": "Rol",
                 "CREATED_BY": "Aangemaakt door",
                 "CUSTOM_FILTERS": "Eigen filters",

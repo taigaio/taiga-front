@@ -222,6 +222,7 @@
                 "PRIORITIES": "Приоритеты",
                 "TAGS": "Тэги",
                 "ASSIGNED_TO": "Назначено",
+                "ASSIGNED_USERS": "Assigned users",
                 "ROLE": "Роль",
                 "CREATED_BY": "Создано",
                 "CUSTOM_FILTERS": "Собственные фильтры",
