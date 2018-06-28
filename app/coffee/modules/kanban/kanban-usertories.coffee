@@ -95,7 +95,7 @@ class KanbanUserstoriesService extends taiga.Service
 
     move: (usList, statusId, index) ->
         initialLength = usList.length
-
+        
         usByStatus = _.filter @.userstoriesRaw, (it) =>
             return it.status == statusId
 
@@ -130,19 +130,19 @@ class KanbanUserstoriesService extends taiga.Service
 
             previousWithTheSameOrder = _.filter(beforeDestination, (it) =>
                 it.kanban_order == @.order[previous.id]
-            )
+            )   
             for it, key in afterDestination # increase position of the us after the dragged us's
                 @.order[it.id] = @.order[previous.id] + key + initialLength + 1
-                it.kanban_order = @.order[it.id]
+                it.kanban_order = @.order[it.id] 
 
             setNextOrders = _.map(afterDestination, (it) =>
                 {us_id: it.id, order: @.order[it.id]}
-            )
+            )                          
 
             # we must send the USs previous to the dropped USs to tell the backend
             # which USs are before the dropped USs, if they have the same value to
             # order, the backend doens't know after which one do you want to drop
-            # the USs
+            # the USs     
             if previousWithTheSameOrder.length > 1
                 setPreviousOrders = _.map(previousWithTheSameOrder, (it) =>
                     {us_id: it.id, order: @.order[it.id]}
@@ -153,7 +153,7 @@ class KanbanUserstoriesService extends taiga.Service
             us.kanban_order = startIndex + key
             @.order[us.id] = us.kanban_order
 
-            modifiedUs.push({us_id: us.id, order: us.kanban_order})
+            modifiedUs.push({us_id: us.id, order: us.kanban_order})           
 
         @.refresh()
 
