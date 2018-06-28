@@ -223,7 +223,6 @@ class UsFiltersMixin
         loadFilters.project = @scope.projectId
         loadFilters.tags = urlfilters.tags
         loadFilters.status = urlfilters.status
-        loadFilters.assigned_users = urlfilters.assigned_users
         loadFilters.assigned_to = urlfilters.assigned_to
         loadFilters.owner = urlfilters.owner
         loadFilters.epic = urlfilters.epic
@@ -250,15 +249,6 @@ class UsFiltersMixin
                 return it
             tagsWithAtLeastOneElement = _.filter tags, (tag) ->
                 return tag.count > 0
-            assignedUsers = _.map data.assigned_users, (it) ->
-                if it.id
-                    it.id = it.id.toString()
-                else
-                    it.id = "null"
-
-                it.name = it.full_name || "Unassigned"
-
-                return it
             assignedTo = _.map data.assigned_to, (it) ->
                 if it.id
                     it.id = it.id.toString()
@@ -302,10 +292,6 @@ class UsFiltersMixin
                 selected = @.formatSelectedFilters("tags", tags, loadFilters.tags)
                 @.selectedFilters = @.selectedFilters.concat(selected)
 
-            if loadFilters.assigned_users
-                selected = @.formatSelectedFilters("assigned_users", assignedUsers, loadFilters.assigned_users)
-                @.selectedFilters = @.selectedFilters.concat(selected)
-
             if loadFilters.assigned_to
                 selected = @.formatSelectedFilters("assigned_to", assignedTo, loadFilters.assigned_to)
                 @.selectedFilters = @.selectedFilters.concat(selected)
@@ -338,9 +324,9 @@ class UsFiltersMixin
                     totalTaggedElements: tagsWithAtLeastOneElement.length
                 },
                 {
-                    title: @translate.instant("COMMON.FILTERS.CATEGORIES.ASSIGNED_USERS"),
-                    dataType: "assigned_users",
-                    content: assignedUsers
+                    title: @translate.instant("COMMON.FILTERS.CATEGORIES.ASSIGNED_TO"),
+                    dataType: "assigned_to",
+                    content: assignedTo
                 },
                 {
                     title: @translate.instant("COMMON.FILTERS.CATEGORIES.ROLE"),
