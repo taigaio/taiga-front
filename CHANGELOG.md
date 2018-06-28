@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## 3.3.12 (2018-06-27)
+
+### Misc
+
+- Temporary remove assigned users filters.
+
 ## 3.3.11 (2018-06-27)
 
 ### Misc
