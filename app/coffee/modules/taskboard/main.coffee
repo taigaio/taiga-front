@@ -57,12 +57,14 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
         "$translate",
         "tgErrorHandlingService",
         "tgTaskboardTasks",
+        "tgTaskboardIssues",
         "$tgStorage",
         "tgFilterRemoteStorageService"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @rs2, @params, @q, @appMetaService, @location, @navUrls,
-                  @events, @analytics, @translate, @errorHandlingService, @taskboardTasksService, @storage, @filterRemoteStorageService) ->
+                  @events, @analytics, @translate, @errorHandlingService, @taskboardTasksService,
+                  @taskboardIssuesService, @storage, @filterRemoteStorageService) ->
         bindMethods(@)
         @taskboardTasksService.reset()
         @scope.userstories = []
@@ -75,6 +77,9 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
 
         taiga.defineImmutableProperty @.scope, "usTasks", () =>
             return @taskboardTasksService.usTasks
+
+        taiga.defineImmutableProperty @.scope, "milestoneIssues", () =>
+            return @taskboardIssuesService.milestoneIssues
 
     firstLoad: () ->
         promise = @.loadInitialData()
@@ -388,6 +393,14 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
 
             return sprint
 
+    loadIssues: ->
+        params = {}
+        params = _.merge params, @location.search()
+
+        return @rs.issues.listInProject(@scope.projectId, @scope.sprintId, params).then (issues) =>
+            @taskboardIssuesService.init(@scope.project, @scope.usersById)
+            @taskboardIssuesService.set(issues)
+
     loadTasks: ->
         params = {}
 
@@ -395,7 +408,7 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
             params.include_attachments = 1
 
         params = _.merge params, @location.search()
-
+        console.log '@scope.sprintId tasks', @scope.sprintId
         return @rs.tasks.list(@scope.projectId, @scope.sprintId, null, params).then (tasks) =>
             @taskboardTasksService.init(@scope.project, @scope.usersById)
             @taskboardTasksService.set(tasks)
@@ -404,7 +417,10 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
         return @q.all([
             @.refreshTagsColors(),
             @.loadSprintStats(),
-            @.loadSprint().then(=> @.loadTasks())
+            @.loadSprint().then(=>
+                @.loadTasks()
+                @.loadIssues()
+            )
         ])
 
     loadInitialData: ->
@@ -515,6 +531,11 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
                 })
             when "bulk" then @rootscope.$broadcast("taskform:bulk", @scope.sprintId, us?.id)
 
+    addNewIssue: (type, us) ->
+        switch type
+            when "standard" then @rootscope.$broadcast("taskform:new", @scope.sprintId, us?.id)
+            when "bulk" then @rootscope.$broadcast("taskform:bulk", @scope.sprintId, us?.id)
+
     toggleFold: (id) ->
         @taskboardTasksService.toggleFold(id)
 
@@ -608,12 +629,8 @@ TaskboardSquishColumnDirective = (rs) ->
 
             recalculateTaskboardWidth()
 
-        $scope.foldUs = (us) ->
-            if !us
-                $scope.usFolded[null] = !!!$scope.usFolded[null]
-            else
-                $scope.usFolded[us.id] = !!!$scope.usFolded[us.id]
-
+        $scope.foldUs = (rowId) ->
+            $scope.usFolded[rowId] = !!!$scope.usFolded[rowId]
             rs.tasks.storeUsRowModes($scope.projectId, $scope.sprintId, $scope.usFolded)
 
             recalculateTaskboardWidth()
@@ -658,6 +675,13 @@ TaskboardSquishColumnDirective = (rs) ->
                 return total + width
 
             $el.find('.taskboard-table-inner').css("width", totalWidth)
+
+            columnWidths.pop()
+            issuesRowWidth = _.reduce columnWidths, (total, width) ->
+                return total + width
+
+            issuesBoxWidth = $el.find('.issues-row .taskboard-issues-box').outerWidth(true)
+            $el.find('.issues-row').css("width", issuesRowWidth)
 
         recalculateStatusColumnWidth = (statusId) =>
             #unassigned ceil

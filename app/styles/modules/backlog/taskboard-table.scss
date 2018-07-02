@@ -1,10 +1,12 @@
 //Table basic shared vars
-
+$margin: 5px;
 $column-width: 300px;
 $column-flex: 1;
 $column-shrink: 0;
-$column-margin: 0 5px 0 0;
+$column-margin: 0 $margin 0 0;
 $column-padding: .5rem 1rem;
+
+$issues-column-width: $column-width - $margin * 4;
 
 @mixin fold {
     .card {
@@ -133,7 +135,20 @@ $column-padding: .5rem 1rem;
         &:last-child {
             margin-right: 0;
         }
+
     }
+    .issues-cell {
+        display: flex;
+        flex-direction: row;
+        max-width: inherit;
+        width: 100%;
+        .card {
+            flex-basis: $issues-column-width;
+            flex-grow: $column-flex;
+            flex-shrink: 1;
+        }
+    }
+
     .row-fold {
         @include fold;
     }
@@ -173,6 +188,15 @@ $column-padding: .5rem 1rem;
                 display: none;
             }
         }
+    }
+    .issues-row {
+        display: flex;
+        margin-bottom: .25rem;
+        // margin-top: 1rem;
+        // border-top: 1rem solid;
+        // border-top-color: black;
+        min-height: 10rem;
+        width: auto;
     }
     .taskboard-userstory-box {
         padding: .5rem .5rem .5rem 1.5rem;

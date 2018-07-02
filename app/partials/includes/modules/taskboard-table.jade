@@ -35,14 +35,14 @@ div.taskboard-table(
                 div.taskboard-userstory-box.task-column(tg-bo-title="us.blocked_note")
                     tg-svg.vfold.fold-action(
                         svg-icon="icon-fold-row",
-                        ng-click='foldUs(us)'
+                        ng-click='foldUs(us.id)'
                         title="{{'TASKBOARD.TABLE.TITLE_ACTION_FOLD_ROW' | translate}}"
                         ng-class='{hidden:usFolded[us.id]}'
                     )
 
                     tg-svg.vunfold.fold-action(
                         svg-icon="icon-unfold-row",
-                        ng-click='foldUs(us)'
+                        ng-click='foldUs(us.id)'
                         title="{{'TASKBOARD.TABLE.TITLE_ACTION_UNFOLD_ROW' | translate}}"
                         ng-class='{hidden:!usFolded[us.id]}'
                     )
@@ -95,14 +95,14 @@ div.taskboard-table(
                     a.vfold(
                         href=""
                         title="{{'TASKBOARD.TABLE.TITLE_ACTION_FOLD_ROW' | translate}}"
-                        ng-click='foldUs()'
+                        ng-click='foldUs(null)'
                         ng-class="{hidden:usFolded[null]}"
                     )
                         tg-svg.fold-action(svg-icon="icon-fold-row")
                     a.vunfold(
                         href=""
                         title="{{'TASKBOARD.TABLE.TITLE_ACTION_UNFOLD_ROW' | translate}}"
-                        ng-click='foldUs()'
+                        ng-click='foldUs(null)'
                         ng-class="{hidden:!usFolded[null]}"
                     )
                         tg-svg.fold-action(svg-icon="icon-unfold-row")
@@ -135,4 +135,40 @@ div.taskboard-table(
                         zoom="ctrl.zoom"
                         zoom-level="ctrl.zoomLevel"
                         type="task"
+                    )
+        div.issues-row
+            div.taskboard-issues-box.task-column
+                a.vfold(
+                    href=""
+                    title="{{'TASKBOARD.TABLE.TITLE_ACTION_FOLD_ROW' | translate}}"
+                    ng-click='foldUs(0)'
+                    ng-class="{hidden:usFolded[0]}"
+                )
+                    tg-svg.fold-action(svg-icon="icon-fold-row")
+                a.vunfold(
+                    href=""
+                    title="{{'TASKBOARD.TABLE.TITLE_ACTION_UNFOLD_ROW' | translate}}"
+                    ng-click='foldUs(0)'
+                    ng-class="{hidden:!usFolded[0]}"
+                )
+                    tg-svg.fold-action(svg-icon="icon-unfold-row")
+                h3.task-colum-name(translate="TASKBOARD.TABLE.ROW_ISSUES_TITLE")
+                include ../components/addnewissue.jade
+
+            div.taskboard-tasks-box.issues-cell
+                div
+                    tg-card.card.ng-animate-disabled(
+                        tg-repeat="issue in milestoneIssues"
+                        ng-class="{'kanban-task-maximized': ctrl.isMaximized(s.id), 'kanban-task-minimized': ctrl.isMinimized(s.id)}"
+                        tg-class-permission="{'readonly': '!modify_task'}"
+                        tg-bind-scope,
+                        on-toggle-fold="ctrl.toggleFold(id)"
+                        on-click-edit="ctrl.editTask(id)"
+                        on-click-delete="ctrl.deleteTask(id)"
+                        on-click-assigned-to="ctrl.changeTaskAssignedTo(id)"
+                        project="project"
+                        item="issue"
+                        zoom="ctrl.zoom"
+                        zoom-level="ctrl.zoomLevel"
+                        type="issue"
                     )

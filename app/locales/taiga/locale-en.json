@@ -1346,6 +1346,8 @@
         "SECTION_NAME": "Taskboard",
         "TITLE_ACTION_ADD": "Add a new Task",
         "TITLE_ACTION_ADD_BULK": "Add some new Tasks in bulk",
+        "TITLE_ACTION_ADD_ISSUE": "Add a new Issue",
+        "TITLE_ACTION_ADD_ISSUE_BULK": "Add some new Issues in bulk",
         "TITLE_ACTION_ASSIGN": "Assign task",
         "PLACEHOLDER_CARD_TITLE": "This could be a task",
         "PLACEHOLDER_CARD_TEXT": "Split Stories into tasks to track them separately",
@@ -1356,7 +1358,8 @@
             "TITLE_ACTION_FOLD_ROW": "Fold Row",
             "TITLE_ACTION_UNFOLD_ROW": "Unfold Row",
             "FIELD_POINTS": "points",
-            "ROW_UNASSIGED_TASKS_TITLE": "Unassigned tasks"
+            "ROW_UNASSIGED_TASKS_TITLE": "Unassigned tasks",
+            "ROW_ISSUES_TITLE": "Sprint Issues"
         },
         "CHARTS": {
             "XAXIS_LABEL": "Days",

@@ -22,7 +22,7 @@ Resource = (urlsService, http) ->
 
     service.listInAllProjects = (params) ->
         url = urlsService.resolve("tasks")
-
+        console.log 'resoruce tasks url', url
         httpOptions = {
             headers: {
                 "x-disable-pagination": "1"

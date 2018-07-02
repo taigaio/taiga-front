@@ -1,0 +1,13 @@
+tg-svg.add-action(
+    tg-check-permission="add_task",
+    title="{{'TASKBOARD.TITLE_ACTION_ADD_ISSUE' | translate}}",
+    ng-click="ctrl.addNewIssue('standard', issue)",
+    svg-icon="icon-add"
+)
+
+tg-svg.bulk-action(
+    title="{{'TASKBOARD.TITLE_ACTION_ADD_ISSUE_BULK' | translate}}",
+    ng-click="ctrl.addNewIssue('bulk', issue)",
+    tg-check-permission="add_issue",
+    svg-icon="icon-bulk"
+)
