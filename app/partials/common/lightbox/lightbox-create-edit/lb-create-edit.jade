@@ -1,7 +1,7 @@
 tg-lightbox-close
 
 form
-    h2.title(translate="LIGHTBOX.CREATE_EDIT.TITLE_NEW")
+    h2.title {{ text.title }}
     div.form-wrapper
         main
             fieldset
@@ -57,10 +57,6 @@ form
 
             block options
 
-    button.button-green.submit-button(
-        type="submit"
-        title="{{'COMMON.CREATE' | translate}}"
-        translate="COMMON.CREATE"
-    )
+    button.button-green.submit-button(type="submit") {{ text.action }}
 
     div.lightbox.lightbox-select-user(tg-lb-assignedto)

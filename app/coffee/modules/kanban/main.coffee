@@ -167,8 +167,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             when "standard" then  @rootscope.$broadcast("genericform:new",
                 {
                     'objType': 'us',
-                    'project': @scope.project,
-                    'statusList': @scope.usStatusList
+                    'project': @scope.project
                 })
             when "bulk" then @rootscope.$broadcast("usform:bulk",
                                                    @scope.projectId, statusId)

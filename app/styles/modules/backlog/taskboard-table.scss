@@ -6,8 +6,6 @@ $column-shrink: 0;
 $column-margin: 0 $margin 0 0;
 $column-padding: .5rem 1rem;
 
-$issues-column-width: $column-width - $margin * 4;
-
 @mixin fold {
     .card {
         align-self: flex-start;
@@ -30,8 +28,8 @@ $issues-column-width: $column-width - $margin * 4;
             }
         }
     }
-    &.task-column,
-    .task-column {
+    &.taskboard-column,
+    .taskboard-column {
         align-content: flex-start;
         display: flex;
         flex-direction: column;
@@ -125,7 +123,7 @@ $issues-column-width: $column-width - $margin * 4;
     margin-bottom: 5rem;
     overflow: auto;
     width: 100%;
-    .task-column {
+    .taskboard-column {
         flex-basis: $column-width;
         flex-grow: $column-flex;
         flex-shrink: $column-shrink;
@@ -137,17 +135,6 @@ $issues-column-width: $column-width - $margin * 4;
         }
 
     }
-    .issues-cell {
-        display: flex;
-        flex-direction: row;
-        max-width: inherit;
-        width: 100%;
-        .card {
-            flex-basis: $issues-column-width;
-            flex-grow: $column-flex;
-            flex-shrink: 1;
-        }
-    }
 
     .row-fold {
         @include fold;
@@ -155,25 +142,25 @@ $issues-column-width: $column-width - $margin * 4;
     .column-fold {
         @include fold;
     }
-    .task-row {
+    .taskboard-row {
         display: flex;
         margin-bottom: .25rem;
         min-height: 10rem;
         width: 100%;
         &.blocked {
-            .taskboard-userstory-box {
+            .taskboard-row-title-box {
                 background: rgba($red, .6);
 
             }
-            .taskboard-userstory-box svg,
-            .taskboard-userstory-box svg:hover,
+            .taskboard-row-title-box svg,
+            .taskboard-row-title-box svg:hover,
             .points-value,
             .points-value:hover {
                 color: $white;
                 fill: $white;
                 transition: color .3s linear;
             }
-            .taskboard-tasks-box {
+            .taskboard-cards-box {
                 background: rgba($red, .1);
             }
         }
@@ -188,23 +175,36 @@ $issues-column-width: $column-width - $margin * 4;
                 display: none;
             }
         }
+        &.issues-row {
+            .taskboard-cards-box {
+                align-content: flex-start;
+                align-items: flex-start;
+                display: flex;
+                flex-wrap: wrap;
+                max-height: 400px;
+                width: 100%;
+            }
+            .card {
+                cursor: default;
+                height: auto;
+            }
+        }
+        &.issues-row:not(.row-fold) {
+            .taskboard-cards-box {
+                flex-direction: column;
+            }
+            .card {
+                width: 280px;
+            }
+        }
     }
-    .issues-row {
-        display: flex;
-        margin-bottom: .25rem;
-        // margin-top: 1rem;
-        // border-top: 1rem solid;
-        // border-top-color: black;
-        min-height: 10rem;
-        width: auto;
-    }
-    .taskboard-userstory-box {
+    .taskboard-row-title-box {
         padding: .5rem .5rem .5rem 1.5rem;
     }
 
 }
 
-.taskboard-userstory-box {
+.taskboard-row-title-box {
     position: relative;
     .us-title {
         @include font-size(normal);

@@ -58,7 +58,7 @@ KanbanSortableDirective = ($repo, $rs, $rootscope) ->
                 itemEl.off()
                 itemEl.remove()
 
-            containers = _.map $el.find('.task-column'), (item) ->
+            containers = _.map $el.find('.taskboard-column'), (item) ->
                 return item
 
             drake = dragula(containers, {

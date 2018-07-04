@@ -543,7 +543,6 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             @rs2.attachments.list("us", us.id, projectId).then (attachments) =>
                 @rootscope.$broadcast("genericform:edit", {
                     'objType': 'us',
-                    'statusList': @scope.usStatusList,
                     'obj': us,
                     'attachments': attachments.toJS()
                 })
@@ -574,8 +573,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             when "standard" then @rootscope.$broadcast("genericform:new",
                 {
                     'objType': 'us',
-                    'project': @scope.project,
-                    'statusList': @scope.usStatusList
+                    'project': @scope.project
                 })
             when "bulk" then @rootscope.$broadcast("usform:bulk", @scope.projectId,
                                                    @scope.project.default_us_status)

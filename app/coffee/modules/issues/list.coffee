@@ -370,12 +370,7 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         project = @projectService.project.toJS()
         @rootscope.$broadcast("genericform:new", {
             'objType': 'issue',
-            'statusList': @scope.issueStatusList,
-            'project': project,
-            'severityList': @scope.severityList,
-            'priorityList': @scope.priorityList,
-            'typeById': groupBy(project.issue_types, (x) -> x.id),
-            'typeList': _.sortBy(project.issue_types, "order")
+            'project': project
         })
 
     addIssuesInBulk: ->

@@ -31,8 +31,11 @@ div.taskboard-table(
 
     div.taskboard-table-body(tg-taskboard-table-height-fixer)
         div.taskboard-table-inner
-            div.task-row(ng-repeat="us in userstories track by us.id", ng-class="{blocked: us.is_blocked, 'row-fold':usFolded[us.id]}")
-                div.taskboard-userstory-box.task-column(tg-bo-title="us.blocked_note")
+            div.taskboard-row(
+                ng-repeat="us in userstories track by us.id",
+                ng-class="{blocked: us.is_blocked, 'row-fold':usFolded[us.id]}"
+            )
+                div.taskboard-row-title-box.taskboard-column(tg-bo-title="us.blocked_note")
                     tg-svg.vfold.fold-action(
                         svg-icon="icon-fold-row",
                         ng-click='foldUs(us.id)'
@@ -65,7 +68,7 @@ div.taskboard-table(
                     include ../components/addnewtask
 
 
-                div.taskboard-tasks-box.task-column(
+                div.taskboard-cards-box.taskboard-column(
                     ng-repeat="st in ::taskStatusList track by st.id",
                     class="squish-status-{{st.id}}",
                     ng-class="{'column-fold':statusesFolded[st.id]}",
@@ -90,8 +93,8 @@ div.taskboard-table(
                         zoom-level="ctrl.zoomLevel"
                         type="task"
                     )
-            div.task-row(ng-init="us = null", ng-class="{'row-fold':usFolded[null]}")
-                div.taskboard-userstory-box.task-column
+            div.taskboard-row(ng-init="us = null", ng-class="{'row-fold':usFolded[null]}")
+                div.taskboard-row-title-box.taskboard-column
                     a.vfold(
                         href=""
                         title="{{'TASKBOARD.TABLE.TITLE_ACTION_FOLD_ROW' | translate}}"
@@ -110,7 +113,7 @@ div.taskboard-table(
                         span(translate="TASKBOARD.TABLE.ROW_UNASSIGED_TASKS_TITLE")
                     include ../components/addnewtask.jade
 
-                div.taskboard-tasks-box.task-column(
+                div.taskboard-cards-box.taskboard-column(
                     ng-repeat="st in ::taskStatusList track by st.id",
                     class="squish-status-{{st.id}}",
                     ng-class="{'column-fold':statusesFolded[st.id]}",
@@ -136,8 +139,8 @@ div.taskboard-table(
                         zoom-level="ctrl.zoomLevel"
                         type="task"
                     )
-        div.issues-row
-            div.taskboard-issues-box.task-column
+        div.taskboard-row.issues-row(ng-class="{'row-fold':usFolded[0]}")
+            div.taskboard-row-title-box.taskboard-column
                 a.vfold(
                     href=""
                     title="{{'TASKBOARD.TABLE.TITLE_ACTION_FOLD_ROW' | translate}}"
@@ -155,20 +158,19 @@ div.taskboard-table(
                 h3.task-colum-name(translate="TASKBOARD.TABLE.ROW_ISSUES_TITLE")
                 include ../components/addnewissue.jade
 
-            div.taskboard-tasks-box.issues-cell
-                div
-                    tg-card.card.ng-animate-disabled(
-                        tg-repeat="issue in milestoneIssues"
-                        ng-class="{'kanban-task-maximized': ctrl.isMaximized(s.id), 'kanban-task-minimized': ctrl.isMinimized(s.id)}"
-                        tg-class-permission="{'readonly': '!modify_task'}"
-                        tg-bind-scope,
-                        on-toggle-fold="ctrl.toggleFold(id)"
-                        on-click-edit="ctrl.editTask(id)"
-                        on-click-delete="ctrl.deleteTask(id)"
-                        on-click-assigned-to="ctrl.changeTaskAssignedTo(id)"
-                        project="project"
-                        item="issue"
-                        zoom="ctrl.zoom"
-                        zoom-level="ctrl.zoomLevel"
-                        type="issue"
-                    )
+            div.taskboard-cards-box
+                tg-card.card.ng-animate-disabled(
+                    tg-repeat="issue in milestoneIssues"
+                    class="kanban-task-minimized"
+                    tg-class-permission="{'readonly': '!modify_issue'}"
+                    tg-bind-scope,
+                    on-toggle-fold="ctrl.toggleFold(id)"
+                    on-click-edit="ctrl.editIssue(id)"
+                    on-click-delete="ctrl.deleteTask(id)"
+                    on-click-assigned-to="ctrl.changeIssueAssignedTo(id)"
+                    project="project"
+                    item="issue"
+                    zoom="ctrl.zoom"
+                    zoom-level="ctrl.zoomLevel"
+                    type="issue"
+                )

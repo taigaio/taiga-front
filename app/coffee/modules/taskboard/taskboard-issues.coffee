@@ -46,7 +46,6 @@ class TaskboardIssuesService extends taiga.Service
         return _.find @.issuesRaw, (issue) -> return issue.id == id
 
     replaceModel: (issue) ->
-        console.log 'replacesModel'
         @.issuesRaw = _.map @.issuesRaw, (item) ->
             if issue.id == item.id
                 return issue
@@ -58,7 +57,6 @@ class TaskboardIssuesService extends taiga.Service
     refresh: ->
         issues = []
         for issueModel in @.issuesRaw
-            console.log issueModel
             issue = {}
 
             model = issueModel.getAttrs()
@@ -73,6 +71,5 @@ class TaskboardIssuesService extends taiga.Service
             issues.push(issue)
 
         @.milestoneIssues = Immutable.fromJS(issues)
-        console.log @.milestoneIssues, 'milestoneIssues'
 
 angular.module("taigaKanban").service("tgTaskboardIssues", TaskboardIssuesService)

@@ -314,21 +314,40 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
             @.refreshTagsColors().then () =>
                 @taskboardTasksService.replaceModel(task)
 
+        @scope.$on "issueform:new:success", (event, issue) =>
+            @.refreshTagsColors().then () =>
+                @taskboardIssuesService.add(issue)
+
+            @analytics.trackEvent("issue", "create", "create issue on taskboard", 1)
+
+        @scope.$on "issueform:edit:success", (event, issue) =>
+            @.refreshTagsColors().then () =>
+                @taskboardIssuesService.replaceModel(issue)
+
         @scope.$on "taskboard:task:deleted", (event, task) =>
             @.loadTasks()
 
         @scope.$on("taskboard:task:move", @.taskMove)
         @scope.$on("assigned-to:added", @.onAssignedToChanged)
 
-    onAssignedToChanged: (ctx, userid, taskModel) ->
-        taskModel.assigned_to = userid
+    onAssignedToChanged: (ctx, userid, model) ->
+        if model.getName() == 'tasks'
+            model.assigned_to = userid
+            @taskboardTasksService.replaceModel(model)
 
-        @taskboardTasksService.replaceModel(taskModel)
+            @repo.save(model).then =>
+                @.generateFilters()
+                if @.isFilterDataTypeSelected('assigned_to') || @.isFilterDataTypeSelected('role')
+                    @.loadTasks()
+        if model.getName() == 'issues'
+            model.assigned_to = userid
+            @taskboardIssuesService.replaceModel(model)
 
-        @repo.save(taskModel).then =>
-            @.generateFilters()
-            if @.isFilterDataTypeSelected('assigned_to') || @.isFilterDataTypeSelected('role')
-                @.loadTasks()
+            @repo.save(model).then =>
+                @.generateFilters()
+                if @.isFilterDataTypeSelected('assigned_to') || @.isFilterDataTypeSelected('role')
+                    @.loadIssues()
+
 
     initializeSubscription: ->
         routingKey = "changes.project.#{@scope.projectId}.tasks"
@@ -408,7 +427,6 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
             params.include_attachments = 1
 
         params = _.merge params, @location.search()
-        console.log '@scope.sprintId tasks', @scope.sprintId
         return @rs.tasks.list(@scope.projectId, @scope.sprintId, null, params).then (tasks) =>
             @taskboardTasksService.init(@scope.project, @scope.usersById)
             @taskboardTasksService.set(tasks)
@@ -462,12 +480,30 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
                 @rootscope.$broadcast("genericform:edit", {
                     'objType': 'task',
                     'obj': editingTask,
-                    'statusList': @scope.taskStatusList,
+                    'project': @scope.project,
+                    'sprintId': @scope.sprintId,
                     'attachments': attachments.toJS()
                 })
 
-                task = task.set('loading', false)
+                task = task.set('loading-edit', false)
                 @taskboardTasksService.replace(task)
+
+    editIssue: (id) ->
+        issue = @.taskboardIssuesService.getIssue(id)
+        issue = issue.set('loading-edit', true)
+
+        @rs.issues.getByRef(issue.getIn(['model', 'project']), issue.getIn(['model', 'ref']))
+        .then (editingIssue) =>
+            @rs2.attachments.list("issue", issue.get('id'), issue.getIn(['model', 'project']))
+            .then (attachments) =>
+                @rootscope.$broadcast("genericform:edit", {
+                    'objType': 'issue',
+                    'obj': editingIssue,
+                    'project': @scope.project,
+                    'sprintId': @scope.sprintId,
+                    'attachments': attachments.toJS()
+                })
+                issue = issue.set('loading-edit', false)
 
     deleteTask: (id) ->
         task = @.taskboardTasksService.getTask(id)
@@ -525,14 +561,18 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
                     'objType': 'task',
                     'project': @scope.project,
                     'sprintId': @scope.sprintId,
-                    'usId': us?.id,
-                    'status': @scope.project.default_task_status,
-                    'statusList': @scope.taskStatusList
+                    'usId': us?.id
                 })
             when "bulk" then @rootscope.$broadcast("taskform:bulk", @scope.sprintId, us?.id)
 
     addNewIssue: (type, us) ->
         switch type
+            when "standard" then @rootscope.$broadcast("genericform:new",
+                {
+                    'objType': 'issue',
+                    'project': @scope.project,
+                    'sprintId': @scope.sprintId
+                })
             when "standard" then @rootscope.$broadcast("taskform:new", @scope.sprintId, us?.id)
             when "bulk" then @rootscope.$broadcast("taskform:bulk", @scope.sprintId, us?.id)
 
@@ -543,6 +583,11 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
         task = @taskboardTasksService.getTaskModel(id)
 
         @rootscope.$broadcast("assigned-to:add", task)
+
+    changeIssueAssignedTo: (id) ->
+        issue = @taskboardIssuesService.getIssueModel(id)
+
+        @rootscope.$broadcast("assigned-to:add", issue)
 
     setRolePoints: () ->
         computableRoles = _.filter(@scope.project.roles, "computable")
@@ -676,12 +721,14 @@ TaskboardSquishColumnDirective = (rs) ->
 
             $el.find('.taskboard-table-inner').css("width", totalWidth)
 
-            columnWidths.pop()
-            issuesRowWidth = _.reduce columnWidths, (total, width) ->
-                return total + width
+            issuesBoxWidth = $el.find('.issues-row .taskboard-row-title-box').outerWidth(true)
+            $el.find('.issues-row').css("width", totalWidth - columnWidths.pop())
 
-            issuesBoxWidth = $el.find('.issues-row .taskboard-issues-box').outerWidth(true)
-            $el.find('.issues-row').css("width", issuesRowWidth)
+            issuesCardBoxMaxHeight = if $scope.ctrl.zoomLevel == '0' then 260 else 390
+            $el.find('.issues-row .taskboard-cards-box').css("max-height", issuesCardBoxMaxHeight)
+
+            issueCardMaxWidth = if $scope.ctrl.zoomLevel == '0' then 128 else 280
+            $el.find('.issues-row .taskboard-cards-box .card').css("max-width", issueCardMaxWidth)
 
         recalculateStatusColumnWidth = (statusId) =>
             #unassigned ceil

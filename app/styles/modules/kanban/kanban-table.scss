@@ -14,7 +14,7 @@ $column-padding: .5rem 1rem;
     overflow: hidden;
     width: 100%;
     &.zoom-0 {
-        .task-column,
+        .taskboard-column,
         .task-colum-name {
             max-width: $column-width / 2;
         }
@@ -45,7 +45,7 @@ $column-padding: .5rem 1rem;
             }
         }
         &.task-colum-name,
-        &.task-column {
+        &.taskboard-column {
             flex-flow: 1;
             max-width: $column-folded-width;
             min-height: 2.5rem;
@@ -129,7 +129,7 @@ $column-padding: .5rem 1rem;
     overflow: hidden;
     overflow-x: auto;
     width: 100%;
-    .task-column {
+    .taskboard-column {
         flex-basis: $column-width;
         flex-grow: $column-flex;
         flex-shrink: $column-shrink;
