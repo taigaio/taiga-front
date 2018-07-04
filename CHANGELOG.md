@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+## 3.3.13 (2018-07-05)
+
+### Misc
+
+- Add assigned users filters.
+
+- Minor bug fixes.
+
 ## 3.3.12 (2018-06-27)
 
 ### Misc
