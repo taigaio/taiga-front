@@ -266,6 +266,10 @@ getMatches = (string, regex, index) ->
 
     return matches
 
+randomInt = (start, end) ->
+    interval = end - start
+    return start + Math.floor(Math.random()*(interval+1))
+
 taiga = @.taiga
 taiga.addClass = addClass
 taiga.nl2br = nl2br
@@ -297,3 +301,4 @@ taiga.patch = patch
 taiga.getRandomDefaultColor = getRandomDefaultColor
 taiga.getDefaulColorList = getDefaulColorList
 taiga.getMatches = getMatches
+taiga.randomInt = randomInt
