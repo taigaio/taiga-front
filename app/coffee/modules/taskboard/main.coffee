@@ -327,6 +327,9 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
         @scope.$on "taskboard:task:deleted", (event, task) =>
             @.loadTasks()
 
+        @scope.$on "taskboard:issue:deleted", (event, issue) =>
+            @.loadIssues()
+
         @scope.$on("taskboard:task:move", @.taskMove)
         @scope.$on("assigned-to:added", @.onAssignedToChanged)
 
@@ -523,6 +526,23 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
                     askResponse.finish(false)
                     @confirm.notify("error")
 
+    deleteIssue: (id) ->
+        issue = @.taskboardIssuesService.getIssue(id)
+        issue = issue.set('loading-delete', true)
+
+        @rs.issues.getByRef(issue.getIn(['model', 'project']), issue.getIn(['model', 'ref']))
+        .then (deletingIssue) =>
+            issue = issue.set('loading-delete', false)
+            title = @translate.instant("ISSUES.ACTION_DELETE")
+            message = deletingIssue.subject
+            @confirm.askOnDelete(title, message).then (askResponse) =>
+                promise = @repo.remove(deletingIssue)
+                promise.then =>
+                    @scope.$broadcast("taskboard:issue:deleted")
+                    askResponse.finish()
+                promise.then null, ->
+                    askResponse.finish(false)
+                    @confirm.notify("error")
 
     taskMove: (ctx, task, oldStatusId, usId, statusId, order) ->
         task = @taskboardTasksService.getTaskModel(task.get('id'))
