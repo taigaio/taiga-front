@@ -689,3 +689,43 @@ PromoteIssueToUsButtonDirective = ($rootScope, $repo, $confirm, $translate) ->
 
 module.directive("tgPromoteIssueToUsButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$translate"
                                               PromoteIssueToUsButtonDirective])
+
+#############################################################################
+## Add Issue to Sprint button directive
+#############################################################################
+
+AssignSprintToIssueButtonDirective = ($rootScope, $repo, $translate, lightboxService) ->
+    link = ($scope, $el, $attrs, $model) ->
+        $el.on "click", "a", (event) ->
+            event.preventDefault()
+            event.stopPropagation()
+            issue = $model.$modelValue
+
+            title = $translate.instant("ISSUES.ACTION_ASSIGN_SPRINT")
+
+            # scope.selectProject(selectedProjectId).then () =>
+            #     lightboxService.open(el.find(".lightbox-create-related-user-stories"))
+            # if ctrl.disabled()
+            #     return
+
+            # $el.find(".lightbox-assign-sprint-to-issue").popover().open()
+
+            lightboxService.open($el.find(".lightbox-assign-sprint-to-issue"))
+            # $scope.new = {
+            #     projectId: projectId,
+            #     milestoneId: milestoneId
+            # }
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {
+        link: link
+        restrict: "EA"
+        require: "ngModel"
+        templateUrl: "issue/assign-sprint-to-issue-button.html"
+
+    }
+
+module.directive("tgAssignSprintToIssueButton", ["$rootScope", "$tgRepo", "$translate"
+                 "lightboxService", AssignSprintToIssueButtonDirective] )

@@ -1424,6 +1424,8 @@
         "SECTION_NAME": "Issue",
         "ACTION_NEW_ISSUE": "+ NEW ISSUE",
         "ACTION_PROMOTE_TO_US": "Promote to User Story",
+        "ACTION_ASSIGN_SPRINT": "Add issue to Sprint",
+        "ACTION_REMOVE_FROM_SPRINT": "Remove issue from Sprint {{ sprintName }}",
         "PROMOTED": "This issue has been promoted to US:",
         "EXTERNAL_REFERENCE": "This issue has been created from",
         "GO_TO_EXTERNAL_REFERENCE": "Go to origin",
@@ -1431,6 +1433,8 @@
         "LIGHTBOX_TITLE_BLOKING_ISSUE": "Blocking issue",
         "LINK_TASKBOARD": "Taskboard",
         "TITLE_LINK_TASKBOARD": "Go to the taskboard",
+        "FILTER_SPRINTS": "Filter Sprints",
+        "CHOOSE_SPRINT": "What's the user Sprint?",
         "FIELDS": {
             "PRIORITY": "Priority",
             "SEVERITY": "Severity",
