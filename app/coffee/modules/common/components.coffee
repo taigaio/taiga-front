@@ -525,6 +525,266 @@ module.directive("tgAssignedTo", ["$rootScope", "$tgConfirm", "$tgRepo", "$tgLoa
                                   AssignedToDirective])
 
 
+
+#############################################################################
+## Assigned to (inline) directive
+#############################################################################
+
+AssignedToInlineDirective = ($rootscope, $confirm, $repo, $loading, $modelTransform, $template
+$translate, $compile, $currentUserService, avatarService) ->
+    link = ($scope, $el, $attrs, $model) ->
+        isEditable = ->
+            return $scope.project?.my_permissions?.indexOf($attrs.requiredPerm) != -1
+
+        normalizeString = (string) ->
+            normalizedString = string
+            normalizedString = normalizedString.replace("Á", "A").replace("Ä", "A").replace("À", "A")
+            normalizedString = normalizedString.replace("É", "E").replace("Ë", "E").replace("È", "E")
+            normalizedString = normalizedString.replace("Í", "I").replace("Ï", "I").replace("Ì", "I")
+            normalizedString = normalizedString.replace("Ó", "O").replace("Ö", "O").replace("Ò", "O")
+            normalizedString = normalizedString.replace("Ú", "U").replace("Ü", "U").replace("Ù", "U")
+            return normalizedString
+
+        filterUsers = (text, user) ->
+            username = user.full_name_display.toUpperCase()
+            username = normalizeString(username)
+            text = text.toUpperCase()
+            text = normalizeString(text)
+            return _.includes(username, text)
+
+        renderUserlist = (text) ->
+            users = _.clone($scope.activeUsers, true)
+            users = _.reject(users, {"id": $scope.selected.id}) if $scope.selected?
+            users = _.sortBy(users, (o) -> if o.id is $scope.user.id then 0 else o.id)
+            users = _.filter(users, _.partial(filterUsers, text)) if text?
+
+            visibleUsers = _.slice(users, 0, 5)
+            visibleUsers = _.map visibleUsers, (user) -> user.avatar = avatarService.getAvatar(user)
+
+            $scope.users = _.slice(users, 0, 5)
+            $scope.showMore = users.length > 5
+
+        renderUser = (assignedObject) ->
+            if assignedObject?.assigned_to
+                $scope.selected = assignedObject.assigned_to
+                assignedObject.assigned_to_extra_info = $scope.usersById[$scope.selected]
+                $scope.fullName = assignedObject.assigned_to_extra_info?.full_name_display
+                $scope.isUnassigned = false
+                $scope.avatar = avatarService.getAvatar(assignedObject.assigned_to_extra_info)
+                $scope.bg = $scope.avatar.bg
+                $scope.isIocaine = assignedObject?.is_iocaine
+            else
+                $scope.fullName = $translate.instant("COMMON.ASSIGNED_TO.ASSIGN")
+                $scope.isUnassigned = true
+                $scope.avatar = avatarService.getAvatar(null)
+                $scope.bg = null
+                $scope.isIocaine = false
+
+            $scope.fullNameVisible = !($scope.isUnassigned && !$currentUserService.isAuthenticated())
+            $scope.isEditable = isEditable()
+
+        $el.on "click", ".users-dropdown", (event) ->
+            event.preventDefault()
+            event.stopPropagation()
+            renderUserlist()
+            $scope.$apply()
+            $el.find(".pop-users").popover().open()
+
+        $el.on "click", ".users-search", (event) ->
+            event.stopPropagation()
+
+        $el.on "click", ".assign-to-me", (event) ->
+            event.preventDefault()
+            return if not isEditable()
+            $model.$modelValue.assigned_to = $currentUserService.getUser().get('id')
+            renderUser($model.$modelValue)
+            $scope.$apply()
+
+        $el.on "click", ".remove-user", (event) ->
+            event.preventDefault()
+            return if not isEditable()
+            $model.$modelValue.assigned_to  = null
+            renderUser()
+            $scope.$apply()
+
+        $scope.$watch "usersSearch", (searchingText) ->
+            if searchingText?
+                renderUserlist(searchingText)
+                $el.find('input').focus()
+
+        $el.on "click", ".user-list-single", (event) ->
+            event.preventDefault()
+            target = angular.element(event.currentTarget)
+            $model.$modelValue.assigned_to = target.data("user-id")
+            renderUser($model.$modelValue)
+            $scope.$apply()
+
+        $scope.$watch $attrs.ngModel, (instance) ->
+            renderUser(instance)
+
+        $scope.$on "isiocaine:changed", (ctx, instance) ->
+            renderUser(instance)
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {
+        link:link,
+        require:"ngModel",
+        templateUrl: "common/components/assigned-to-inline.html"
+    }
+
+module.directive("tgAssignedToInline", ["$rootScope", "$tgConfirm", "$tgRepo", "$tgLoading"
+"$tgQueueModelTransformation", "$tgTemplate", "$translate", "$compile","tgCurrentUserService"
+"tgAvatarService", AssignedToInlineDirective])
+
+
+#############################################################################
+## Assigned users (inline) directive
+#############################################################################
+
+AssignedUsersInlineDirective = ($rootscope, $confirm, $repo, $loading, $modelTransform, $template
+$translate, $compile, $currentUserService, avatarService) ->
+    link = ($scope, $el, $attrs, $model) ->
+        currentAssignedIds = []
+        currentAssignedTo = null
+
+        isAssigned = ->
+            return currentAssignedIds.length > 0
+
+        normalizeString = (string) ->
+            normalizedString = string
+            normalizedString = normalizedString.replace("Á", "A").replace("Ä", "A").replace("À", "A")
+            normalizedString = normalizedString.replace("É", "E").replace("Ë", "E").replace("È", "E")
+            normalizedString = normalizedString.replace("Í", "I").replace("Ï", "I").replace("Ì", "I")
+            normalizedString = normalizedString.replace("Ó", "O").replace("Ö", "O").replace("Ò", "O")
+            normalizedString = normalizedString.replace("Ú", "U").replace("Ü", "U").replace("Ù", "U")
+            return normalizedString
+
+        filterUsers = (text, user) ->
+            username = user.full_name_display.toUpperCase()
+            username = normalizeString(username)
+            text = text.toUpperCase()
+            text = normalizeString(text)
+            return _.includes(username, text)
+
+        renderUsersList = (text) ->
+            users = _.clone($scope.activeUsers, true)
+            users = _.sortBy(users, (o) -> if o.id is $scope.user.id then 0 else o.id)
+            users = _.filter(users, _.partial(filterUsers, text)) if text?
+
+            # Add selected users
+            selected = []
+            _.map users, (user) ->
+                if user.id in currentAssignedIds
+                    user.avatar = avatarService.getAvatar(user)
+                    selected.push(user)
+
+            # Filter users in searchs
+            visible = []
+            _.map users, (user) ->
+                if user.id not in currentAssignedIds
+                    user.avatar = avatarService.getAvatar(user)
+                    visible.push(user)
+
+            $scope.selected = _.slice(selected, 0, 5)
+            if $scope.selected.length < 5
+                $scope.users = _.slice(visible, 0, 5 - $scope.selected.length)
+            else
+                $scope.users = []
+            $scope.showMore = users.length > 5
+
+        renderUsers = () ->
+            assignedUsers = _.map(currentAssignedIds, (assignedUserId) -> $scope.usersById[assignedUserId])
+            assignedUsers = _.filter assignedUsers, (it) -> return !!it
+
+            $scope.hiddenUsers = if currentAssignedIds.length > 3 then currentAssignedIds.length - 3 else 0
+            $scope.assignedUsers = _.slice(assignedUsers, 0, 3)
+
+            $scope.isAssigned = isAssigned()
+
+        applyToModel = () ->
+            _.map currentAssignedIds, (userId) ->
+                if !$scope.usersById[userId]
+                    currentAssignedIds.splice(currentAssignedIds.indexOf(userId), 1)
+            if currentAssignedIds.length == 0
+                currentAssignedTo = null
+            else if currentAssignedIds.indexOf(currentAssignedTo) == -1 || !currentAssignedTo
+                currentAssignedTo = currentAssignedIds[0]
+            $model.$modelValue.setAttr('assigned_users', currentAssignedIds)
+            $model.$modelValue.assigned_to = currentAssignedTo
+
+        $el.on "click", ".users-dropdown", (event) ->
+            event.preventDefault()
+            event.stopPropagation()
+            renderUsersList()
+            $scope.$apply()
+            $el.find(".pop-users").popover().open()
+
+        $el.on "click", ".users-search", (event) ->
+            event.stopPropagation()
+
+        $el.on "click", ".assign-to-me", (event) ->
+            event.preventDefault()
+            currentAssignedIds.push($currentUserService.getUser().get('id'))
+            renderUsers()
+            applyToModel()
+            $scope.usersSearch = null
+            $scope.$apply()
+
+        $scope.$watch "usersSearch", (searchingText) ->
+            if searchingText?
+                renderUsersList(searchingText)
+                $el.find('input').focus()
+
+        $el.on "click", ".user-list-single", (event) ->
+            event.preventDefault()
+            target = angular.element(event.currentTarget)
+            index = currentAssignedIds.indexOf(target.data("user-id"))
+            if index == -1
+                currentAssignedIds.push(target.data("user-id"))
+            else
+                currentAssignedIds.splice(index, 1)
+            renderUsers()
+            applyToModel()
+            $el.find(".pop-users").popover().close()
+            $scope.usersSearch = null
+            $scope.$apply()
+
+        $el.on "click", ".remove-user", (event) ->
+            event.preventDefault()
+            target = angular.element(event.currentTarget)
+            index = currentAssignedIds.indexOf(target.data("user-id"))
+            if index > -1
+                currentAssignedIds.splice(index, 1)
+            renderUsers()
+            applyToModel()
+            $scope.$apply()
+
+        $scope.$watch $attrs.ngModel, (item) ->
+            return if not item?
+            currentAssignedIds = []
+            assigned_to = null
+
+            if item.assigned_users?
+                currentAssignedIds = item.assigned_users
+            assigned_to = item.assigned_to
+            renderUsers()
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {
+        link:link,
+        require: "ngModel",
+        templateUrl: "common/components/assigned-users-inline.html"
+    }
+
+module.directive("tgAssignedUsersInline", ["$rootScope", "$tgConfirm", "$tgRepo",
+"$tgLoading", "$tgQueueModelTransformation", "$tgTemplate", "$translate", "$compile",
+"tgCurrentUserService", "tgAvatarService", AssignedUsersInlineDirective])
+
+
 #############################################################################
 ## Block Button directive
 #############################################################################

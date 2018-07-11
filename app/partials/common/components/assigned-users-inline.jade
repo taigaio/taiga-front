@@ -1,0 +1,117 @@
+div(ng-if="isAssigned")
+    .user-list(ng-if="assignedUsers.length > 1")
+        .user-list-item(ng-repeat="assignedUser in assignedUsers")
+            img(
+                tg-avatar="assignedUser"
+                title="{{assignedUser.full_name_display}}"
+                alt="{{assignedUser.full_name_display}}"
+            )
+        .user-list-item.counter(ng-if="hiddenUsers")
+            span +{{ hiddenUsers }}
+
+    .ticket-assigned-to.single-assign(ng-if="assignedUsers.length == 1")
+        .user-avatar
+            img(
+                tg-avatar="assignedUsers[0]"
+                title="{{assignedUsers[0].full_name_display}}"
+                alt="{{assignedUsers[0].full_name_display}}"
+            )
+        .assigned-to
+            .assigned-users-options
+                span.user-assigned {{ assignedUsers[0].full_name_display }}
+            tg-svg.remove-user(
+                svg-icon="icon-close",
+                title="{{'COMMON.ASSIGNED_TO.DELETE_ASSIGNMENT' | translate}}"
+                data-user-id="{{ assignedUsers[0].id }}"
+            )
+
+    div.add-assigned
+        a.users-dropdown.tg-add-assigned(
+            href=""
+            ng-click="openAssignedUsers()"
+        )
+            tg-svg.add-assigned(
+                data-assigned-user-id="{{assignedUser.id}}",
+                svg-icon="icon-add",
+                title="{{'COMMON.ASSIGNED_USERS.ADD_ASSIGNED' | translate}}"
+            )
+            span {{ "COMMON.ASSIGNED_USERS.ADD_ASSIGNED" | translate }}
+
+
+.ticket-assigned-to(ng-if="!isAssigned")
+    .user-avatar
+        img(
+            tg-avatar=""
+            alt="{{ 'COMMON.ASSIGNED_TO.ASSIGN' | translate }}"
+        )
+    .assigned-to
+        .assigned-users-options
+            a.users-dropdown.user-assigned(
+                href=""
+                title="{{ 'COMMON.ASSIGNED_TO.TITLE_ACTION_EDIT_ASSIGNMENT'|translate }}"
+                class="user-assigned"
+            )
+                span.assigned-name {{ "COMMON.ASSIGNED_TO.ASSIGN" | translate }}
+            | &nbsp;
+            span(translate="COMMON.OR")
+            | &nbsp;
+            a.assign-to-me(
+                href="#"
+                title="{{'COMMON.ASSIGNED_TO.SELF' | translate}}"
+            )
+                span {{ "COMMON.ASSIGNED_TO.SELF" | translate }}
+
+div.pop-users.popover(ng-class="{'multiple': assignedUsers.length > 0}")
+    input.users-search(
+        type="text"
+        data-maxlength="500"
+        placeholder="{{'LIGHTBOX.ASSIGNED_TO.SEARCH' | translate}}"
+        ng-model="usersSearch"
+    )
+    a.user-list-single.selected(
+        href=""
+        data-user-id="{{ user.id }}"
+        title="{{ user.full_name_display }}"
+        ng-repeat="user in selected"
+        ng-class="{'selected': selected.indexOf(user) == -1 }"
+    )
+        img.user-list-avatar(
+            style="background: {{user.avatar.bg }}"
+            src="{{ user.avatar.url }}"
+        )
+        span.user-list-name(
+            href=""
+            title="{{ user.full_name_display }}"
+        ) {{ user.full_name_display }}
+        tg-svg.remove(
+            href=""
+            data-user-id="{{ user.id }}"
+            ng-if="selected.indexOf(user) > -1"
+            svg-icon="icon-close",
+            title="{{'COMMON.ASSIGNED_TO.DELETE_ASSIGNMENT' | translate}}"
+        )
+
+    a.user-list-single(
+        href=""
+        data-user-id="{{ user.id }}"
+        title="{{ user.full_name_display }}"
+        ng-repeat="user in users"
+    )
+        img.user-list-avatar(
+            style="background: {{user.avatar.bg }}"
+            src="{{ user.avatar.url }}"
+        )
+        span.user-list-name(
+            href=""
+            title="{{ user.full_name_display }}"
+        ) {{ user.full_name_display }}
+        tg-svg.remove(
+            href=""
+            data-user-id="{{ user.id }}"
+            ng-if="selected.indexOf(user) > -1"
+            svg-icon="icon-close",
+            title="{{'COMMON.ASSIGNED_TO.DELETE_ASSIGNMENT' | translate}}"
+        )
+
+    .show-more(ng-if="showMore")
+        span(translate="COMMON.ASSIGNED_TO.TOO_MANY")

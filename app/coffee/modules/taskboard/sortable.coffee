@@ -62,13 +62,13 @@ TaskboardSortableDirective = ($repo, $rs, $rootscope, $translate) ->
                 itemEl.off()
                 itemEl.remove()
 
-            containers = _.map $el.find('.task-column'), (item) ->
+            containers = _.map $el.find('.taskboard-column'), (item) ->
                 return item
 
             drake = dragula(containers, {
                 copySortSource: false,
                 copy: false,
-                accepts: (el, target) -> return !$(target).hasClass('taskboard-userstory-box')
+                accepts: (el, target) -> return !$(target).hasClass('taskboard-row-title-box')
                 moves: (item) ->
                     return $(item).is('tg-card')
             })

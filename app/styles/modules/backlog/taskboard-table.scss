@@ -1,9 +1,9 @@
 //Table basic shared vars
-
+$margin: 5px;
 $column-width: 300px;
 $column-flex: 1;
 $column-shrink: 0;
-$column-margin: 0 5px 0 0;
+$column-margin: 0 $margin 0 0;
 $column-padding: .5rem 1rem;
 
 @mixin fold {
@@ -28,8 +28,8 @@ $column-padding: .5rem 1rem;
             }
         }
     }
-    &.task-column,
-    .task-column {
+    &.taskboard-column,
+    .taskboard-column {
         align-content: flex-start;
         display: flex;
         flex-direction: column;
@@ -123,7 +123,7 @@ $column-padding: .5rem 1rem;
     margin-bottom: 5rem;
     overflow: auto;
     width: 100%;
-    .task-column {
+    .taskboard-column {
         flex-basis: $column-width;
         flex-grow: $column-flex;
         flex-shrink: $column-shrink;
@@ -133,32 +133,34 @@ $column-padding: .5rem 1rem;
         &:last-child {
             margin-right: 0;
         }
+
     }
+
     .row-fold {
         @include fold;
     }
     .column-fold {
         @include fold;
     }
-    .task-row {
+    .taskboard-row {
         display: flex;
         margin-bottom: .25rem;
         min-height: 10rem;
         width: 100%;
         &.blocked {
-            .taskboard-userstory-box {
+            .taskboard-row-title-box {
                 background: rgba($red, .6);
 
             }
-            .taskboard-userstory-box svg,
-            .taskboard-userstory-box svg:hover,
+            .taskboard-row-title-box svg,
+            .taskboard-row-title-box svg:hover,
             .points-value,
             .points-value:hover {
                 color: $white;
                 fill: $white;
                 transition: color .3s linear;
             }
-            .taskboard-tasks-box {
+            .taskboard-cards-box {
                 background: rgba($red, .1);
             }
         }
@@ -173,14 +175,36 @@ $column-padding: .5rem 1rem;
                 display: none;
             }
         }
+        &.issues-row {
+            .taskboard-cards-box {
+                align-content: flex-start;
+                align-items: flex-start;
+                display: flex;
+                flex-wrap: wrap;
+                max-height: 400px;
+                width: 100%;
+            }
+            .card {
+                cursor: default;
+                height: auto;
+            }
+        }
+        &.issues-row:not(.row-fold) {
+            .taskboard-cards-box {
+                flex-direction: column;
+            }
+            .card {
+                width: 280px;
+            }
+        }
     }
-    .taskboard-userstory-box {
+    .taskboard-row-title-box {
         padding: .5rem .5rem .5rem 1.5rem;
     }
 
 }
 
-.taskboard-userstory-box {
+.taskboard-row-title-box {
     position: relative;
     .us-title {
         @include font-size(normal);
