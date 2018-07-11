@@ -150,12 +150,18 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
                 }
                 @scope.nextUrl = @navUrls.resolve("project-issues-detail", ctx)
 
+    loadSprint: ->
+        if @scope.issue.milestone
+            return @rs.sprints.get(@scope.issue.project, @scope.issue.milestone).then (sprint) =>
+                @scope.sprint = sprint
+                return sprint
+
     loadInitialData: ->
         project = @.loadProject()
 
         @.fillUsersAndRoles(project.members, project.roles)
 
-        return @.loadIssue()
+        return @.loadIssue().then(=> @.loadSprint())
 
     ###
     # Note: This methods (onUpvote() and onDownvote()) are related to tg-vote-button.

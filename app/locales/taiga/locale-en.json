@@ -1429,6 +1429,8 @@
         "GO_TO_EXTERNAL_REFERENCE": "Go to origin",
         "ACTION_DELETE": "Delete issue",
         "LIGHTBOX_TITLE_BLOKING_ISSUE": "Blocking issue",
+        "LINK_TASKBOARD": "Taskboard",
+        "TITLE_LINK_TASKBOARD": "Go to the taskboard",
         "FIELDS": {
             "PRIORITY": "Priority",
             "SEVERITY": "Severity",

@@ -9,6 +9,15 @@ div.wrapper(
     div.main.us-detail
         div.us-detail-header.header-with-actions
             include ../includes/components/mainTitle
+            .action-buttons
+                a.button-gray(
+                    href=""
+                    tg-check-permission="view_milestones"
+                    tg-nav="project-taskboard:project=project.slug,sprint=sprint.slug"
+                    ng-if="sprint && project.is_backlog_activated"
+                    title="{{'ISSUES.TITLE_LINK_TASKBOARD' | translate}}"
+                    translate="ISSUES.LINK_TASKBOARD"
+                )
 
         section.us-story-main-data
             header
