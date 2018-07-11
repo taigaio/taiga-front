@@ -33,20 +33,21 @@ module = angular.module("taigaIssues")
 ## Issue Bulk Create Lightbox Directive
 #############################################################################
 
-CreateBulkIssuesDirective = ($repo, $rs, $confirm, $rootscope, $loading, lightboxService) ->
+CreateBulkIssuesDirective = ($repo, $rs, $confirm, $rootscope, $loading, lightboxService, $model) ->
     link = ($scope, $el, attrs) ->
         form = null
 
-        $scope.$on "issueform:bulk", (ctx, projectId, status)->
+        $scope.$on "issueform:bulk", (ctx, projectId, milestoneId, status)->
             form.reset() if form
 
             lightboxService.open($el)
             $scope.new = {
-                projectId: projectId
+                projectId: projectId,
+                milestoneId: milestoneId,
                 bulk: ""
             }
 
-        submit = debounce 2000, (event) =>
+        submit = debounce 2000, (event) ->
             event.preventDefault()
 
             form = $el.find("form").checksley()
@@ -59,9 +60,11 @@ CreateBulkIssuesDirective = ($repo, $rs, $confirm, $rootscope, $loading, lightbo
 
             data = $scope.new.bulk
             projectId = $scope.new.projectId
+            milestoneId = $scope.new.milestoneId
 
-            promise = $rs.issues.bulkCreate(projectId, data)
+            promise = $rs.issues.bulkCreate(projectId, milestoneId, data)
             promise.then (result) ->
+                result =  _.map(result.data, (x) -> $model.make_model('issues', x))
                 currentLoading.finish()
                 $rootscope.$broadcast("issueform:new:success", result)
                 lightboxService.close($el)
@@ -81,4 +84,4 @@ CreateBulkIssuesDirective = ($repo, $rs, $confirm, $rootscope, $loading, lightbo
     return {link: link}
 
 module.directive("tgLbCreateBulkIssues", ["$tgRepo", "$tgResources", "$tgConfirm", "$rootScope", "$tgLoading",
-                                          "lightboxService", CreateBulkIssuesDirective])
+                                          "lightboxService", "$tgModel", CreateBulkIssuesDirective])

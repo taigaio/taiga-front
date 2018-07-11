@@ -594,7 +594,7 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
                     'sprintId': @scope.sprintId
                 })
             when "standard" then @rootscope.$broadcast("taskform:new", @scope.sprintId, us?.id)
-            when "bulk" then @rootscope.$broadcast("taskform:bulk", @scope.sprintId, us?.id)
+            when "bulk" then @rootscope.$broadcast("issueform:bulk", @scope.projectId, @scope.sprintId)
 
     toggleFold: (id) ->
         @taskboardTasksService.toggleFold(id)
