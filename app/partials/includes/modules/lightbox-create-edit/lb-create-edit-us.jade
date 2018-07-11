@@ -1,0 +1,44 @@
+extends lb-create-edit
+
+block options
+    section.ticket-assigned-to.multiple-assign(
+        tg-assigned-users-inline
+        ng-model="obj"
+        required-perm="modify_{{ objType }}"
+    )
+    div.ticket-estimation
+        tg-lb-us-estimation(ng-model="obj")
+
+    div.ticket-detail-settings
+        tg-due-date-popover(
+            due-date="obj.due_date"
+            is-closed="obj.is_closed"
+            item="obj"
+            not-auto-save="true"
+        )
+        div
+            label.button-gray.team-requirement(
+                for="team-requirement"
+                title="{{ 'COMMON.TEAM_REQUIREMENT' | translate }}"
+                ng-class="{ 'active': isTeamRequirement() }"
+            )
+                tg-svg(svg-icon="icon-team-requirement")
+        div
+            label.button-gray.client-requirement(
+                for="client-requirement"
+                title="{{ 'COMMON.CLIENT_REQUIREMENT' | translate }}"
+                ng-class="{ 'active': isClientRequirement() }"
+            )
+                tg-svg(svg-icon="icon-client-requirement")
+
+        div
+            label.button-gray.is-blocked(
+                title="{{ 'COMMON.BLOCK_TITLE' | translate }}"
+                ng-class="{ 'button-red item-unblock': obj.is_blocked, 'item-block': !obj.is_blocked }"
+            )
+                tg-svg(svg-icon="icon-lock")
+
+    tg-blocking-message-input(
+        watch="obj.is_blocked"
+        ng-model="obj.blocked_note"
+    )

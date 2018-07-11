@@ -355,10 +355,12 @@ IssueTypeButtonDirective = ($rootScope, $repo, $confirm, $loading, $modelTransfo
     template = $template.get("issue/issue-type-button.html", true)
 
     link = ($scope, $el, $attrs, $model) ->
+        notAutoSave = $scope.$eval($attrs.notAutoSave)
+
         isEditable = ->
             return $scope.project.my_permissions.indexOf("modify_issue") != -1
 
-        render = (issue) =>
+        render = (issue) ->
             type = $scope.typeById[issue.type]
 
             html = template({
@@ -373,6 +375,11 @@ IssueTypeButtonDirective = ($rootScope, $repo, $confirm, $loading, $modelTransfo
 
         save = (type) ->
             $.fn.popover().closeAll()
+
+            if notAutoSave
+                $model.$modelValue.type = type
+                $scope.$apply()
+                return
 
             currentLoading = $loading()
                 .target($el.find(".level-name"))
@@ -445,10 +452,12 @@ IssueSeverityButtonDirective = ($rootScope, $repo, $confirm, $loading, $modelTra
     template = $template.get("issue/issue-severity-button.html", true)
 
     link = ($scope, $el, $attrs, $model) ->
+        notAutoSave = $scope.$eval($attrs.notAutoSave)
+
         isEditable = ->
             return $scope.project.my_permissions.indexOf("modify_issue") != -1
 
-        render = (issue) =>
+        render = (issue) ->
             severity = $scope.severityById[issue.severity]
 
             html = template({
@@ -463,6 +472,11 @@ IssueSeverityButtonDirective = ($rootScope, $repo, $confirm, $loading, $modelTra
 
         save = (severity) ->
             $.fn.popover().closeAll()
+
+            if notAutoSave
+                $model.$modelValue.severity = severity
+                $scope.$apply()
+                return
 
             currentLoading = $loading()
                 .target($el.find(".level-name"))
@@ -536,10 +550,12 @@ IssuePriorityButtonDirective = ($rootScope, $repo, $confirm, $loading, $modelTra
     template = $template.get("issue/issue-priority-button.html", true)
 
     link = ($scope, $el, $attrs, $model) ->
+        notAutoSave = $scope.$eval($attrs.notAutoSave)
+
         isEditable = ->
             return $scope.project.my_permissions.indexOf("modify_issue") != -1
 
-        render = (issue) =>
+        render = (issue) ->
             priority = $scope.priorityById[issue.priority]
 
             html = template({
@@ -554,6 +570,11 @@ IssuePriorityButtonDirective = ($rootScope, $repo, $confirm, $loading, $modelTra
 
         save = (priority) ->
             $.fn.popover().closeAll()
+
+            if notAutoSave
+                $model.$modelValue.priority = priority
+                $scope.$apply()
+                return
 
             currentLoading = $loading()
                 .target($el.find(".level-name"))

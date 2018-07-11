@@ -1,0 +1,66 @@
+tg-lightbox-close
+
+form
+    h2.title(translate="LIGHTBOX.CREATE_EDIT.TITLE_NEW")
+    div.form-wrapper
+        main
+            fieldset
+                input(
+                    type="text"
+                    name="subject"
+                    ng-model-options="{ debounce: 200 }"
+                    ng-model="obj.subject"
+                    placeholder="{{'COMMON.FIELDS.SUBJECT' | translate}}"
+                    data-required="true"
+                    data-maxlength="500"
+                )
+
+            fieldset
+                tg-tag-line-common.tags-block(
+                    ng-if="project && createEditOpen"
+                    project="project"
+                    tags="obj.tags"
+                    permissions="add_{{objType}}"
+                    on-add-tag="addTag(name, color)"
+                    on-delete-tag="deleteTag(tag)"
+                )
+
+            fieldset
+                textarea.description(
+                    rows=7
+                    name="description"
+                    ng-model="obj.description"
+                    ng-model-options="{ debounce: 200 }"
+                    ng-attr-placeholder="{{'LIGHTBOX.CREATE_EDIT.PLACEHOLDER_DESCRIPTION' | translate}}"
+                )
+            fieldset
+                section
+                tg-attachments-simple(
+                    attachments="attachments",
+                    on-add="addAttachment(attachment)"
+                    on-delete="deleteAttachment(attachment)"
+                )
+
+        sidebar.sidebar.ticket-data
+            fieldset.status-button
+                div.status-dropdown.editable(style="background-color:{{ selectedStatus.color }}")
+                    span.status-text {{ selectedStatus.name }}
+                    tg-svg(svg-icon="icon-arrow-down")
+
+                ul.pop-status.popover
+                    li(ng-repeat="s in statusList")
+                        a.status(
+                            href=""
+                            title="{{ s.name }}"
+                            data-status-id="{{ s.id }}"
+                        ) {{ s.name }}
+
+            block options
+
+    button.button-green.submit-button(
+        type="submit"
+        title="{{'COMMON.CREATE' | translate}}"
+        translate="COMMON.CREATE"
+    )
+
+    div.lightbox.lightbox-select-user(tg-lb-assignedto)

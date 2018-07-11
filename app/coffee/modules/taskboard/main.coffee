@@ -439,9 +439,17 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
         task = task.set('loading-edit', true)
         @taskboardTasksService.replace(task)
 
-        @rs.tasks.getByRef(task.getIn(['model', 'project']), task.getIn(['model', 'ref'])).then (editingTask) =>
-             @rs2.attachments.list("task", task.get('id'), task.getIn(['model', 'project'])).then (attachments) =>
-                @rootscope.$broadcast("taskform:edit", editingTask, attachments.toJS())
+        @rs.tasks.getByRef(task.getIn(['model', 'project']), task.getIn(['model', 'ref']))
+        .then (editingTask) =>
+            @rs2.attachments.list("task", task.get('id'), task.getIn(['model', 'project']))
+            .then (attachments) =>
+                @rootscope.$broadcast("genericform:edit", {
+                    'objType': 'task',
+                    'obj': editingTask,
+                    'statusList': @scope.taskStatusList,
+                    'attachments': attachments.toJS()
+                })
+
                 task = task.set('loading', false)
                 @taskboardTasksService.replace(task)
 
@@ -496,7 +504,15 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
     ## Template actions
     addNewTask: (type, us) ->
         switch type
-            when "standard" then @rootscope.$broadcast("taskform:new", @scope.sprintId, us?.id)
+            when "standard" then @rootscope.$broadcast("genericform:new",
+                {
+                    'objType': 'task',
+                    'project': @scope.project,
+                    'sprintId': @scope.sprintId,
+                    'usId': us?.id,
+                    'status': @scope.project.default_task_status,
+                    'statusList': @scope.taskStatusList
+                })
             when "bulk" then @rootscope.$broadcast("taskform:bulk", @scope.sprintId, us?.id)
 
     toggleFold: (id) ->

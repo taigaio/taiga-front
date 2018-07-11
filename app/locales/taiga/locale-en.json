@@ -150,7 +150,9 @@
             "VOTES": "Votes",
             "SPRINT": "Sprint",
             "DUE_DATE": "Due date",
-            "DUE_DATE_REASON": "Due date reason"
+            "DUE_DATE_REASON": "Due date reason",
+            "CLIENT_REQUIREMENT": "Client requirement",
+            "TEAM_REQUIREMENT": "Team requirement"
         },
         "ROLES": {
             "ALL": "All"
@@ -1089,6 +1091,12 @@
             "PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this US",
             "NEW_US": "New user story",
             "EDIT_US": "Edit user story",
+            "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?"
+        },
+        "CREATE_EDIT": {
+            "PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this {{ objName }}",
+            "NEW": "New {{ objName }}",
+            "EDIT": "Edit {{ objName }}",
             "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?"
         },
         "DELETE_DUE_DATE": {
