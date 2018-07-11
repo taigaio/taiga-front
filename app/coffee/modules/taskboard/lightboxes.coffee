@@ -28,6 +28,9 @@ debounce = @.taiga.debounce
 trim = @.taiga.trim
 
 
+module = angular.module("taigaTaskboard")
+
+
 CreateBulkTasksDirective = ($repo, $rs, $rootscope, $loading, lightboxService, $model) ->
     link = ($scope, $el, attrs) ->
         $scope.form = {data: "", usId: null}
@@ -71,9 +74,6 @@ CreateBulkTasksDirective = ($repo, $rs, $rootscope, $loading, lightboxService, $
             $el.off()
 
     return {link: link}
-
-
-module = angular.module("taigaTaskboard")
 
 module.directive("tgLbCreateBulkTasks", [
     "$tgRepo",
