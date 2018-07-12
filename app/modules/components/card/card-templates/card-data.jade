@@ -2,13 +2,21 @@
     ng-if="vm.visible('extra_info')"
     ng-class="{'empty-tasks': !vm.item.getIn(['model', 'tasks']).size}"
 )
-    span.card-estimation.not-estimated(
-        ng-if="vm.item.getIn(['model', 'total_points']) === null && vm.visible('empty_extra_info')",
-        translate="US.NOT_ESTIMATED"
-    )
-    span.card-estimation(
-        ng-if="vm.item.getIn(['model', 'total_points'])"
-    ) {{"COMMON.FIELDS.POINTS" | translate}} {{vm.item.getIn(['model', 'total_points'])}}
+    span(ng-switch="vm.item.get('modelName') == 'issues'")
+        span(ng-switch-when="true")
+            span.card-status-tag(
+                ng-if="vm.item.get('status')"
+                ng-style="{color: vm.item.getIn(['status', 'color'])}"
+            ) {{ vm.item.getIn(['status', 'name']) }}
+        span(ng-switch-when="false")
+            span.card-estimation.not-estimated(
+                ng-if="vm.item.getIn(['model', 'total_points']) === null && vm.visible('empty_extra_info')",
+                translate="US.NOT_ESTIMATED"
+            )
+            span.card-estimation(
+                ng-if="vm.item.getIn(['model', 'total_points'])"
+            ) {{"COMMON.FIELDS.POINTS" | translate}} {{vm.item.getIn(['model', 'total_points'])}}
+
     .card-statistics
         tg-due-date.statistic.card-due-date(
             due-date="vm.item.getIn(['model', 'due_date'])"

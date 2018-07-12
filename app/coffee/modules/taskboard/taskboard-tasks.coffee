@@ -140,6 +140,9 @@ class TaskboardTasksService extends taiga.Service
         return {"task_id": task.id, "order": @.order[task.id], "set_orders": setOrders}
 
     refresh: ->
+        if !@.project
+            return
+
         @.tasksRaw = _.sortBy @.tasksRaw, (it) => @.order[it.id]
 
         tasks = @.tasksRaw

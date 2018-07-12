@@ -107,7 +107,7 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
 
         else if @.zoomLevel > 1 && previousZoomLevel <= 1
             @.zoomLoading = true
-            @.loadTasks().then () =>
+            @q.all([@.loadTasks(), @.loadIssues()]).then () =>
                 @.zoomLoading = false
                 @taskboardTasksService.resetFolds()
 
@@ -320,6 +320,10 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
 
             @analytics.trackEvent("issue", "create", "create issue on taskboard", 1)
 
+        @scope.$on "issueform:add:success", (event, issue) =>
+            @.refreshTagsColors().then () =>
+                @taskboardIssuesService.add(issue)
+
         @scope.$on "issueform:edit:success", (event, issue) =>
             @.refreshTagsColors().then () =>
                 @taskboardIssuesService.replaceModel(issue)
@@ -376,6 +380,8 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
             @scope.taskStatusList = _.sortBy(project.task_statuses, "order")
             @scope.usStatusList = _.sortBy(project.us_statuses, "order")
             @scope.usStatusById = groupBy(project.us_statuses, (e) -> e.id)
+            @scope.issueStatusById = groupBy(project.issue_statuses, (e) -> e.id)
+            @scope.milestonesById = groupBy(project.milestones, (e) -> e.id)
 
             @scope.$emit('project:loaded', project)
 
@@ -417,10 +423,14 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
 
     loadIssues: ->
         params = {}
+
+        if @.zoomLevel > 1
+            params.include_attachments = 1
+
         params = _.merge params, @location.search()
 
         return @rs.issues.listInProject(@scope.projectId, @scope.sprintId, params).then (issues) =>
-            @taskboardIssuesService.init(@scope.project, @scope.usersById)
+            @taskboardIssuesService.init(@scope.project, @scope.usersById, @scope.issueStatusById)
             @taskboardIssuesService.set(issues)
 
     loadTasks: ->
@@ -544,6 +554,26 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
                     askResponse.finish(false)
                     @confirm.notify("error")
 
+    removeIssueFromSprint: (id) ->
+        issue = @.taskboardIssuesService.getIssue(id)
+        issue = issue.set('loading-delete', true)
+
+        @rs.issues.getByRef(issue.getIn(['model', 'project']), issue.getIn(['model', 'ref']))
+        .then (removingIssue) =>
+            issue = issue.set('loading-delete', false)
+            title = @translate.instant("ISSUES.CONFIRM_REMOVE_FROM_SPRINT.TITLE")
+            subtitle = @translate.instant("ISSUES.CONFIRM_REMOVE_FROM_SPRINT.MESSAGE")
+            message = removingIssue.subject
+            @confirm.askOnDelete(title, message, subtitle).then (askResponse) =>
+                removingIssue.milestone = null
+                promise = @repo.save(removingIssue)
+                promise.then =>
+                    @.taskboardIssuesService.remove(removingIssue)
+                    askResponse.finish()
+                promise.then null, ->
+                    askResponse.finish(false)
+                    @confirm.notify("error")
+
     taskMove: (ctx, task, oldStatusId, usId, statusId, order) ->
         task = @taskboardTasksService.getTaskModel(task.get('id'))
 
@@ -587,17 +617,26 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
 
     addNewIssue: (type, us) ->
         switch type
-            when "standard" then @rootscope.$broadcast("genericform:new",
+            when "standard" then @rootscope.$broadcast("genericform:new-or-existing",
                 {
                     'objType': 'issue',
                     'project': @scope.project,
-                    'sprintId': @scope.sprintId
+                    'sprintId': @scope.sprintId,
+                    'existingOptions': {
+                        targetField: 'milestone',
+                        targetValue: @scope.sprintId,
+                        targetsById: @scope.milestonesById,
+                        title: "#{@translate.instant("COMMON.FIELDS.SPRINT")} #{@scope.sprint.name}",
+                    }
                 })
             when "standard" then @rootscope.$broadcast("taskform:new", @scope.sprintId, us?.id)
             when "bulk" then @rootscope.$broadcast("issueform:bulk", @scope.projectId, @scope.sprintId)
 
-    toggleFold: (id) ->
-        @taskboardTasksService.toggleFold(id)
+    toggleFold: (id,  modelName) ->
+        if modelName == 'issues'
+            @taskboardIssuesService.toggleFold(id)
+        else if modelName == 'tasks'
+            @taskboardTasksService.toggleFold(id)
 
     changeTaskAssignedTo: (id) ->
         task = @taskboardTasksService.getTaskModel(id)

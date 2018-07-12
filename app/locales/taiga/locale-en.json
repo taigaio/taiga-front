@@ -48,7 +48,8 @@
         "CARD": {
             "ASSIGN_TO": "Assign To",
             "EDIT": "Edit card",
-            "DELETE": "Delete card"
+            "DELETE": "Delete card",
+            "REMOVE_ISSUE_FROM_SPRINT": "Remove issue from sprint"
         },
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "This value seems to be invalid.",
@@ -1097,7 +1098,12 @@
             "PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this {{ objName }}",
             "NEW": "New {{ objName }}",
             "EDIT": "Edit {{ objName }}",
-            "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?"
+            "ADD_EXISTING": "Add {{ objName }} to {{ targetName }}",
+            "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?",
+            "EXISTING_OBJECT": "Existing {{ objName }}",
+            "NEW_OBJECT": "New {{ objName }}",
+            "CHOOSE_EXISTING": "What's the {{ objName }}?",
+            "NO_ITEMS_FOUND": "It looks like nothing was found with your search criteria"
         },
         "DELETE_DUE_DATE": {
             "TITLE": "Delete due date",
@@ -1351,6 +1357,8 @@
         "TITLE_ACTION_ASSIGN": "Assign task",
         "PLACEHOLDER_CARD_TITLE": "This could be a task",
         "PLACEHOLDER_CARD_TEXT": "Split Stories into tasks to track them separately",
+        "NEW_ISSUE": "New issue",
+        "EXISTING_ISSUE": "Existing issue",
         "TABLE": {
             "COLUMN": "User story",
             "TITLE_ACTION_FOLD": "Fold column",
@@ -1425,6 +1433,10 @@
             "PRIORITY": "Priority",
             "SEVERITY": "Severity",
             "TYPE": "Type"
+        },
+        "CONFIRM_REMOVE_FROM_SPRINT": {
+            "TITLE": "Remove issue from sprint",
+            "MESSAGE": "Are you sure you want to remove this issue from the sprint?"
         },
         "CONFIRM_PROMOTE": {
             "TITLE": "Promote this issue to a new user story",

@@ -779,7 +779,13 @@ CreateEditDirective = (
 $log, $repo, $model, $rs, $rootScope, lightboxService, $loading, $translate,
 $confirm, $q, attachmentsService, $template, $compile) ->
     link = ($scope, $el, attrs) ->
+        schema = null
+        objType = null
         form = null
+
+        attachmentsToAdd = Immutable.List()
+        attachmentsToDelete = Immutable.List()
+
         schemas = {
             us: {
                 objName: 'User Story',
@@ -851,67 +857,50 @@ $confirm, $q, attachmentsService, $template, $compile) ->
             }
         }
 
-        attachmentsToAdd = Immutable.List()
-        attachmentsToDelete = Immutable.List()
-
         $scope.$on "genericform:new", (ctx, data) ->
-            if beforeMount('new', data, ['project'])
-                mountCreateForm(data)
-                afterMount()
+            getSchema(data)
+            $scope.mode = 'new'
+            $scope.getOrCreate = false
+            mount(data)
+
+        $scope.$on "genericform:new-or-existing", (ctx, data) ->
+            getSchema(data)
+            $scope.mode = 'add-existing'
+            $scope.getOrCreate = true
+            $scope.existingFilterText = ''
+            $scope.existingItems = {}
+            $scope.existingOptions = data.existingOptions
+            mount(data)
 
         $scope.$on "genericform:edit", (ctx, data) ->
-            if beforeMount('edit', data, ['project', 'obj', 'attachments'])
-                mountUpdateForm(data)
-                afterMount()
+            getSchema(data)
+            $scope.mode = 'edit'
+            $scope.getOrCreate = false
+            mount(data)
 
-        beforeMount = (mode, data, requiredAttrs) ->
-            form.reset() if form
-
-            # Get form schema
-            if !data.objType || !schemas[data.objType]
-                return $log.error(
-                    "Invalid objType `#{data.objType}` for `genericform:#{mode}` event")
+        getSchema = (data) ->
             $scope.objType = data.objType
-            $scope.schema = schemas[data.objType]
+            if !$scope.objType || !schemas[$scope.objType]
+                return $log.error("Invalid objType `#{$scope.objType}` for `genericform` event")
+            schema = schemas[$scope.objType]
 
-            # Get required attrs of the directive
-            getAttrs(mode, data, requiredAttrs)
+        mount = (data) ->
+            $scope.objName = schema.objName
+            if $scope.mode == 'edit'
+                $scope.obj = data.obj
+                $scope.attachments = Immutable.fromJS(data.attachments)
+            else
+                $scope.obj = $model.make_model(schema.model, schema.initialData(data))
+                $scope.attachments = Immutable.List()
 
-            return true
+            _.map schema.data($scope.project), (value, key) ->
+                $scope[key] = value
 
-        mountCreateForm = (data) ->
-            $scope.obj = $model.make_model($scope.schema.model, $scope.schema.initialData(data))
-            $scope.isNew = true
-            $scope.attachments = Immutable.List()
-            $scope.text = {
-                title: $translate.instant("LIGHTBOX.CREATE_EDIT.NEW", { objName: $scope.schema.objName })
-                action: $translate.instant("COMMON.CREATE")
-            }
-            render()
-
-        mountUpdateForm = (data) ->
-            $scope.isNew = false
-            $scope.attachments = Immutable.fromJS($scope.attachments)
-            $scope.text = {
-                title: $translate.instant("LIGHTBOX.CREATE_EDIT.EDIT", { objName: $scope.schema.objName })
-                action: $translate.instant("COMMON.SAVE")
-            }
-            render()
-
-        afterMount = () ->
+            form.reset() if form
             resetAttachments()
-            setStatus($scope.obj?.status)
-
- 
-            $scope.createEditOpen = true
-            lightboxService.open $el, () ->
-                $scope.createEditOpen = false
-
-        getAttrs = (mode, data, attrs) ->
-            for attr in attrs
-                if !data[attr]
-                    return $log.error "`#{attr}` attribute required in `genericform:#{mode}` event"
-                $scope[attr] = data[attr]
+            setStatus($scope.obj.status)
+            $scope.lightboxOpen = true
+            lightboxService.open($el)
 
         resetAttachments = () ->
             attachmentsToAdd = Immutable.List()
@@ -929,7 +918,6 @@ $confirm, $q, attachmentsService, $template, $compile) ->
 
         $scope.addTag = (tag, color) ->
             value = trim(tag.toLowerCase())
-
             tags = $scope.project.tags
             projectTags = $scope.project.tags_colors
 
@@ -940,11 +928,9 @@ $confirm, $q, attachmentsService, $template, $compile) ->
                 tags.push(value)
 
             projectTags[tag] = color || null
-
             $scope.project.tags = tags
 
             itemtags = _.clone($scope.obj.tags)
-
             inserted = _.find itemtags, (it) -> it[0] == value
 
             if !inserted
@@ -953,98 +939,117 @@ $confirm, $q, attachmentsService, $template, $compile) ->
 
         $scope.deleteTag = (tag) ->
             value = trim(tag[0].toLowerCase())
-
             tags = $scope.project.tags
             itemtags = _.clone($scope.obj.tags)
 
             _.remove itemtags, (tag) -> tag[0] == value
-
             $scope.obj.tags = itemtags
-
             _.pull($scope.obj.tags, value)
-
 
         createAttachments = (obj) ->
             promises = _.map attachmentsToAdd.toJS(), (attachment) ->
-                attachmentsService.upload(
-                    attachment.file, obj.id, $scope.obj.project, $scope.objType)
-
+                attachmentsService.upload(attachment.file, obj.id, $scope.obj.project, $scope.objType)
             return $q.all(promises)
 
         deleteAttachments = (obj) ->
             promises = _.map attachmentsToDelete.toJS(), (attachment) ->
                 return attachmentsService.delete($scope.objType, attachment.id)
-
             return $q.all(promises)
 
-        submit = debounce 2000, (event) ->
-            event.preventDefault()
+        addExisting = (ref) ->
+            currentLoading = $loading().target($el.find(".add-existing-button")).start()
+            selectedItem = $scope.existingItems[parseInt(ref)]
+            selectedItem.setAttr($scope.existingOptions.targetField, $scope.existingOptions.targetValue)
+            $repo.save(selectedItem, true).then (data) ->
+                currentLoading.finish()
+                lightboxService.close($el)
+                $rootScope.$broadcast("#{$scope.objType}form:add:success", selectedItem)
 
+        $scope.getTargetTitle = (item) ->
+            index = item[$scope.existingOptions.targetField]
+            return $scope.existingOptions.targetsById[index]?.name
+
+        $scope.existingFilterChanged = (value) ->
+            if value?
+                $rs[schema.model].listInAllProjects(
+                    { project: $scope.project.id, q: value }, true
+                ).then (data) ->
+                    $scope.existingItems = {}
+                    _.map(data, (itemModel) ->
+                        itemModel.html = itemModel.subject
+
+                        targetTitle = $scope.getTargetTitle(itemModel)
+                        if targetTitle
+                            itemModel.html = "#{itemModel.html} (#{targetTitle})"
+                            itemModel.class = 'strong'
+
+                        $scope.existingItems[itemModel.ref] = itemModel
+                    )
+
+        $scope.addExisting = (selectedItem) ->
+            event.preventDefault()
+            addExisting(selectedItem)
+
+        submit = debounce 2000, (event) ->
             form = $el.find("form").checksley()
             if not form.validate()
                 return
 
-            currentLoading = $loading().target(submitButton).start()
+            currentLoading = $loading().target($el.find(".submit-button")).start()
 
-            if $scope.isNew
-                promise = $repo.create($scope.schema.model, $scope.obj)
+            if $scope.mode == 'new'
+                promise = $repo.create(schema.model, $scope.obj)
                 broadcastEvent = "#{$scope.objType}form:new:success"
             else
+                if ($scope.obj.due_date instanceof moment)
+                    prettyDate = $translate.instant("COMMON.PICKERDATE.FORMAT")
+                    $scope.obj.due_date = $scope.obj.due_date.format("YYYY-MM-DD")
+
                 promise = $repo.save($scope.obj, true)
                 broadcastEvent = "#{$scope.objType}form:edit:success"
 
             promise.then (data) ->
-                deleteAttachments(data)
-                    .then () -> createAttachments(data)
-                    .then () ->
+                deleteAttachments(data).then () ->
+                    createAttachments(data).then () ->
                         currentLoading.finish()
-                        lightboxService.close($el)
-
-                        $rs[$scope.schema.model].getByRef(
-                            data.project, data.ref, $scope.schema.params).then (obj) ->
-                                $rootScope.$broadcast(broadcastEvent, obj)
-
+                        close()
+                        $rs[schema.model].getByRef(data.project, data.ref, schema.params).then (obj) ->
+                            $rootScope.$broadcast(broadcastEvent, obj)
             promise.then null, (data) ->
                 currentLoading.finish()
                 form.setErrors(data)
                 if data._error_message
                     $confirm.notify("error", data._error_message)
 
-        submitButton = $el.find(".submit-button")
-
-        close = () ->
+        checkClose = () ->
             if !$scope.obj.isModified()
-                lightboxService.close($el)
+                close()
                 $scope.$apply ->
                     $scope.obj.revert()
             else
                 $confirm.ask(
                     $translate.instant("LIGHTBOX.CREATE_EDIT.CONFIRM_CLOSE")).then (result) ->
-                        lightboxService.close($el)
-                        $scope.obj.revert()
                         result.finish()
+                        close()
+
+        close = () ->
+            delete $scope.objType
+            delete $scope.mode
+            $scope.lightboxOpen = false
+            lightboxService.close($el)
 
         $el.on "submit", "form", submit
 
         $el.find('.close').on "click", (event) ->
             event.preventDefault()
             event.stopPropagation()
-            close()
+            checkClose()
 
         $el.keydown (event) ->
             event.stopPropagation()
             code = if event.keyCode then event.keyCode else event.which
             if code == 27
-                close()
-
-        $scope.$on "$destroy", ->
-            $el.find('.close').off()
-            $el.off()
-
-        $scope.$watch "obj", ->
-            if !$scope.obj
-                return
-            setStatus($scope.obj.status)
+                checkClose()
 
         $el.on "click", ".status-dropdown", (event) ->
             event.preventDefault()
@@ -1080,28 +1085,30 @@ $confirm, $q, attachmentsService, $template, $compile) ->
             $scope.obj.is_iocaine = not $scope.obj.is_iocaine
             $scope.$broadcast("isiocaine:changed", $scope.obj)
 
-        setStatus = (id) ->
-            $scope.obj.status = id
-            $scope.selectedStatus = _.find $scope.statusList, (item) -> item.id == id
-
         $scope.isTeamRequirement = () ->
             return $scope.obj?.team_requirement
 
         $scope.isClientRequirement = () ->
             return $scope.obj?.client_requirement
 
-        render = () ->
-            templatePath = "common/lightbox/lightbox-create-edit/lb-create-edit-#{$scope.objType}.html"
-            template = $template.get(templatePath, true)
+        setStatus = (id) ->
+            $scope.obj.status = id
+            $scope.selectedStatus = _.find $scope.statusList, (item) -> item.id == id
+            $scope.obj.is_closed = $scope.selectedStatus.is_closed
 
-            _.map $scope.schema.data($scope.project), (value, key) ->
+        render = () ->
+            # templatePath = "common/lightbox/lightbox-create-edit/lb-create-edit-#{$scope.objType}.html"
+            # template = $template.get(templatePath, true)
+
+            _.map schema.data($scope.project), (value, key) ->
                 $scope[key] = value
 
-            html = $compile(template($scope))($scope)
-            $el.html(html)
+            # html = $compile(template($scope))($scope)
+            # $el.html(html)
 
     return {
         link: link
+        templateUrl: "common/lightbox/lightbox-create-edit/lb-create-edit.html"
     }
 
 module.directive("tgLbCreateEdit", [

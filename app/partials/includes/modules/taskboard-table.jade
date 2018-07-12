@@ -83,7 +83,7 @@ div.taskboard-table(
                         ng-class="{'kanban-task-maximized': ctrl.isMaximized(s.id), 'kanban-task-minimized': ctrl.isMinimized(s.id)}"
                         tg-class-permission="{'readonly': '!modify_task'}"
                         tg-bind-scope,
-                        on-toggle-fold="ctrl.toggleFold(id)"
+                        on-toggle-fold="ctrl.toggleFold(id, 'tasks')"
                         on-click-edit="ctrl.editTask(id)"
                         on-click-delete="ctrl.deleteTask(id)"
                         on-click-assigned-to="ctrl.changeTaskAssignedTo(id)"
@@ -129,7 +129,7 @@ div.taskboard-table(
                         tg-repeat="task in usTasks.getIn(['null', st.id.toString()]) track by task.get('id')"
                         ng-class="{'kanban-task-maximized': ctrl.isMaximized(s.id), 'kanban-task-minimized': ctrl.isMinimized(s.id)}"
                         tg-class-permission="{'readonly': '!modify_task'}"
-                        on-toggle-fold="ctrl.toggleFold(id)"
+                        on-toggle-fold="ctrl.toggleFold(id, 'tasks')"
                         on-click-edit="ctrl.editTask(id)"
                         on-click-delete="ctrl.deleteTask(id)"
                         on-click-assigned-to="ctrl.changeTaskAssignedTo(id)"
@@ -141,22 +141,23 @@ div.taskboard-table(
                     )
         div.taskboard-row.issues-row(ng-class="{'row-fold':usFolded[0]}")
             div.taskboard-row-title-box.taskboard-column
-                a.vfold(
-                    href=""
-                    title="{{'TASKBOARD.TABLE.TITLE_ACTION_FOLD_ROW' | translate}}"
-                    ng-click='foldUs(0)'
-                    ng-class="{hidden:usFolded[0]}"
-                )
-                    tg-svg.fold-action(svg-icon="icon-fold-row")
-                a.vunfold(
-                    href=""
-                    title="{{'TASKBOARD.TABLE.TITLE_ACTION_UNFOLD_ROW' | translate}}"
-                    ng-click='foldUs(0)'
-                    ng-class="{hidden:!usFolded[0]}"
-                )
-                    tg-svg.fold-action(svg-icon="icon-unfold-row")
-                h3.task-colum-name(translate="TASKBOARD.TABLE.ROW_ISSUES_TITLE")
-                include ../components/addnewissue.jade
+                div.task-colum-name
+                    a.toggle-fold.vfold(
+                        href=""
+                        title="{{'TASKBOARD.TABLE.TITLE_ACTION_FOLD_ROW' | translate}}"
+                        ng-click='foldUs(0)'
+                        ng-class="{hidden:usFolded[0]}"
+                    )
+                        tg-svg.fold-action(svg-icon="icon-fold-row")
+                    a.toggle-fold.vunfold(
+                        href=""
+                        title="{{'TASKBOARD.TABLE.TITLE_ACTION_UNFOLD_ROW' | translate}}"
+                        ng-click='foldUs(0)'
+                        ng-class="{hidden:!usFolded[0]}"
+                    )
+                        tg-svg.fold-action(svg-icon="icon-unfold-row")
+                    span.row-title(translate="TASKBOARD.TABLE.ROW_ISSUES_TITLE")
+                    include ../components/addnewissue.jade
 
             div.taskboard-cards-box
                 tg-card.card.ng-animate-disabled(
@@ -164,8 +165,9 @@ div.taskboard-table(
                     class="kanban-task-minimized"
                     tg-class-permission="{'readonly': '!modify_issue'}"
                     tg-bind-scope,
-                    on-toggle-fold="ctrl.toggleFold(id)"
+                    on-toggle-fold="ctrl.toggleFold(id, 'issues')"
                     on-click-edit="ctrl.editIssue(id)"
+                    on-click-remove="ctrl.removeIssueFromSprint(id)"
                     on-click-delete="ctrl.deleteIssue(id)"
                     on-click-assigned-to="ctrl.changeIssueAssignedTo(id)"
                     project="project"
