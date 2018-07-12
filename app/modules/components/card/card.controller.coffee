@@ -87,6 +87,8 @@ class CardController
     getNavKey: () ->
         if @.type == 'task'
             return 'project-tasks-detail'
+        else if @.type == 'issue'
+            return 'project-issues-detail'
         else
             return 'project-userstories-detail'
 

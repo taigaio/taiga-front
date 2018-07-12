@@ -567,10 +567,10 @@ $translate, $compile, $currentUserService, avatarService) ->
         renderUser = (assignedObject) ->
             if assignedObject?.assigned_to
                 $scope.selected = assignedObject.assigned_to
-                assignedObject.assigned_to_extra_info = $scope.usersById[$scope.selected]
-                $scope.fullName = assignedObject.assigned_to_extra_info?.full_name_display
+                assigned_to_extra_info = $scope.usersById[$scope.selected]
+                $scope.fullName = assigned_to_extra_info?.full_name_display
                 $scope.isUnassigned = false
-                $scope.avatar = avatarService.getAvatar(assignedObject.assigned_to_extra_info)
+                $scope.avatar = avatarService.getAvatar(assigned_to_extra_info)
                 $scope.bg = $scope.avatar.bg
                 $scope.isIocaine = assignedObject?.is_iocaine
             else

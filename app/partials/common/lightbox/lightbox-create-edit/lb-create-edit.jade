@@ -1,62 +1,139 @@
 tg-lightbox-close
 
-form
-    h2.title {{ text.title }}
-    div.form-wrapper
-        main
-            fieldset
-                input(
-                    type="text"
-                    name="subject"
-                    ng-model-options="{ debounce: 200 }"
-                    ng-model="obj.subject"
-                    placeholder="{{'COMMON.FIELDS.SUBJECT' | translate}}"
+form(ng-if="lightboxOpen")
+    h2.title(ng-switch="mode")
+        span(ng-switch-when="new") {{ 'LIGHTBOX.CREATE_EDIT.NEW' | translate: { objName: objName } }}
+        span(ng-switch-when="edit") {{ 'LIGHTBOX.CREATE_EDIT.EDIT' | translate: { objName: objName } }}
+        span(ng-switch-when="add-existing") {{ 'LIGHTBOX.CREATE_EDIT.ADD_EXISTING' | translate: { objName: objName, targetName: existingOptions.title } }}
+
+    .existing-or-new-selector(ng-show="getOrCreate == true")
+        .existing-or-new-selector-single
+            input(
+                type="radio"
+                name="related-with-selector"
+                id="add-existing"
+                value="add-existing"
+                ng-model="mode"
+            )
+            label.e2e-existing-user-story-label(for="add-existing")
+                span.name {{ 'LIGHTBOX.CREATE_EDIT.EXISTING_OBJECT' | translate: { objName: objName } }}
+
+        .existing-or-new-selector-single
+            input(
+                type="radio"
+                name="related-with-selector"
+                id="new"
+                value="new"
+                ng-model="mode"
+            )
+            label.e2e-new-userstory-label(for="new")
+                span.name {{ 'LIGHTBOX.CREATE_EDIT.NEW_OBJECT' | translate: { objName: objName } }}
+
+    div(ng-if="mode == 'add-existing'")
+        .existing-item-wrapper
+            label(for="existing-filter") {{ 'LIGHTBOX.CREATE_EDIT.CHOOSE_EXISTING' | translate: { objName: objName } }}
+            input.filter(
+                id="existing-filter"
+                name="existing-filter"
+                type="text"
+                ng-model="existingFilterText"
+                ng-model-options="{ debounce: 200 }"
+                ng-change="existingFilterChanged(existingFilterText)"
+            )
+
+            .existing-item(ng-show="existingItems")
+                select.userstory.e2e-userstories-select(
+                    size="5"
+                    ng-model="selectedItem"
                     data-required="true"
-                    data-maxlength="500"
+                )
+                    - var hash = "#";
+                    option.hidden(value="")
+                    option(
+                        ng-repeat="(ref, obj) in existingItems"
+                        ng-class="obj.class"
+                        value="{{ ::ref }}"
+                    ) #{hash}{{ ref }} {{ obj.html }}
+
+            p.no-stories-found(
+                ng-show="existingFilterText && !existingItems"
+                translate="EPIC.NO_USERSTORIES_FOUND"
+            ) {{ 'LIGHTBOX.CREATE_EDIT.NO_ITEMS_FOUND' | translate }}
+
+        button.button-green.add-existing-button(
+            ng-click="addExisting(selectedItem)"
+            ng-disabled="!selectedItem"
+        ) {{ 'COMMON.ADD' | translate }} {{ objName }}
+
+    div(ng-if="mode != 'add-existing'")
+        .form-wrapper
+            main
+                fieldset
+                    input(
+                        type="text"
+                        name="subject"
+                        ng-model-options="{ debounce: 200 }"
+                        ng-model="obj.subject"
+                        placeholder="{{ 'COMMON.FIELDS.SUBJECT' | translate }}"
+                        data-required="true"
+                        data-maxlength="500"
+                    )
+
+                fieldset
+                    tg-tag-line-common.tags-block(
+                        ng-if="project"
+                        project="project"
+                        tags="obj.tags"
+                        permissions="add_{{objType}}"
+                        on-add-tag="addTag(name, color)"
+                        on-delete-tag="deleteTag(tag)"
+                    )
+
+                fieldset
+                    textarea.description(
+                        rows=7
+                        name="description"
+                        ng-model="obj.description"
+                        ng-model-options="{ debounce: 200 }"
+                        ng-attr-placeholder="{{ 'LIGHTBOX.CREATE_EDIT.PLACEHOLDER_DESCRIPTION' | translate }}"
+                    )
+                fieldset
+                    section
+                    tg-attachments-simple(
+                        attachments="attachments",
+                        on-add="addAttachment(attachment)"
+                        on-delete="deleteAttachment(attachment)"
+                    )
+
+            sidebar.sidebar.ticket-data
+                fieldset.status-button
+                    div.status-dropdown.editable(style="background-color:{{ selectedStatus.color }}")
+                        span.status-text {{ selectedStatus.name }}
+                        tg-svg(svg-icon="icon-arrow-down")
+
+                    ul.pop-status.popover
+                        li(ng-repeat="s in statusList")
+                            a.status(
+                                href=""
+                                title="{{ s.name }}"
+                                data-status-id="{{ s.id }}"
+                            ) {{ s.name }}
+
+                div(ng-switch="objType")
+                    div(ng-switch-when="issue")
+                        include lb-create-edit-issue
+                    div(ng-switch-when="task")
+                        include lb-create-edit-task
+                    div(ng-switch-when="us")
+                        include lb-create-edit-us
+
+                tg-blocking-message-input(
+                    watch="obj.is_blocked"
+                    ng-model="obj.blocked_note"
                 )
 
-            fieldset
-                tg-tag-line-common.tags-block(
-                    ng-if="project && createEditOpen"
-                    project="project"
-                    tags="obj.tags"
-                    permissions="add_{{objType}}"
-                    on-add-tag="addTag(name, color)"
-                    on-delete-tag="deleteTag(tag)"
-                )
-
-            fieldset
-                textarea.description(
-                    rows=7
-                    name="description"
-                    ng-model="obj.description"
-                    ng-model-options="{ debounce: 200 }"
-                    ng-attr-placeholder="{{'LIGHTBOX.CREATE_EDIT.PLACEHOLDER_DESCRIPTION' | translate}}"
-                )
-            fieldset
-                section
-                tg-attachments-simple(
-                    attachments="attachments",
-                    on-add="addAttachment(attachment)"
-                    on-delete="deleteAttachment(attachment)"
-                )
-
-        sidebar.sidebar.ticket-data
-            fieldset.status-button
-                div.status-dropdown.editable(style="background-color:{{ selectedStatus.color }}")
-                    span.status-text {{ selectedStatus.name }}
-                    tg-svg(svg-icon="icon-arrow-down")
-
-                ul.pop-status.popover
-                    li(ng-repeat="s in statusList")
-                        a.status(
-                            href=""
-                            title="{{ s.name }}"
-                            data-status-id="{{ s.id }}"
-                        ) {{ s.name }}
-
-            block options
-
-    button.button-green.submit-button(type="submit") {{ text.action }}
+        button.button-green.submit-button(type="submit", ng-switch="mode")
+            span(ng-switch-when="new") {{ 'COMMON.CREATE' | translate }}
+            span(ng-switch-when="edit") {{ 'COMMON.SAVE' | translate }}
 
     div.lightbox.lightbox-select-user(tg-lb-assignedto)

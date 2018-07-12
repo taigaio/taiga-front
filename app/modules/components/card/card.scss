@@ -125,7 +125,7 @@
     .card-actions {
         display: flex;
         justify-content: space-between;
-        padding: 0 .5rem;
+        padding: 0 0 0 .5rem;
     }
     .card-delete:hover {
         color: $red-light;
@@ -160,6 +160,12 @@
     font-size: 14px;
     justify-content: space-between;
     padding: 0 1rem .5rem;
+    .card-status-tag {
+        font-size: .75rem;
+        height: .1rem;
+        line-height: .1rem;
+        padding: 0 .5em 0 0;
+    }
     .card-estimation.not-estimated {
         font-size: .8125rem;
     }

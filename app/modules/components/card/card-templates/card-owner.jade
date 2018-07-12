@@ -46,7 +46,14 @@
                 title="{{ 'COMMON.CARD.EDIT' | translate }}"
             )
                 tg-svg(svg-icon="icon-edit")
-
+            a.e2e-edit.card-edit(
+                href=""
+                ng-if="vm.item.get('modelName') == 'issues'"
+                ng-click="!$event.ctrlKey && !$event.metaKey && vm.onClickRemove({id: vm.item.get('id')})"
+                tg-loading="vm.item.get('loading-remove-from-sprint')"
+                title="{{ 'COMMON.CARD.REMOVE_ISSUE_FROM_SPRINT' | translate }}"
+            )
+                tg-svg(svg-icon="icon-close")
             a.e2e-edit.card-delete(
                 href=""
                 ng-click="!$event.ctrlKey && !$event.metaKey && vm.onClickDelete({id: vm.item.get('id')})"

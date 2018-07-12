@@ -22,24 +22,6 @@ module = angular.module("taigaComponents")
 dueDatePopoverDirective = ($translate, datePickerConfigService) ->
     return {
         link: (scope, el, attrs, ctrl) ->
-            prettyDate = $translate.instant("COMMON.PICKERDATE.FORMAT")
-            if ctrl.dueDate
-                ctrl.dueDate = moment(ctrl.dueDate, prettyDate)
-
-            el.on "click", ".date-picker-popover-trigger", (event) ->
-                if ctrl.disabled()
-                    return
-                event.preventDefault()
-                event.stopPropagation()
-                el.find(".date-picker-popover").popover().open()
-
-            el.on "click", ".date-picker-clean", (event) ->
-                event.preventDefault()
-                event.stopPropagation()
-                ctrl.dueDate = null
-                scope.$apply()
-                el.find(".date-picker-popover").popover().close()
-
             datePickerConfig = datePickerConfigService.get()
             _.merge(datePickerConfig, {
                 field: el.find('input.due-date')[0]
@@ -50,8 +32,27 @@ dueDatePopoverDirective = ($translate, datePickerConfigService) ->
                     el.find(".date-picker-popover").popover().close()
                     scope.$apply()
             })
-
             el.picker = new Pikaday(datePickerConfig)
+
+            el.on "click", ".date-picker-popover-trigger", (event) ->
+                if ctrl.disabled()
+                    return
+                event.preventDefault()
+                event.stopPropagation()
+                if !el.picker.getDate()
+                    el.picker.setDate(moment(ctrl.dueDate).format('YYYY-MM-DD'))
+                el.find(".date-picker-popover").popover().open()
+
+            el.on "click", ".date-picker-clean", (event) ->
+                event.preventDefault()
+                event.stopPropagation()
+                ctrl.dueDate = null
+                el.picker.setDate(ctrl.dueDate)
+                el.find(".date-picker-popover").popover().close()
+                scope.$apply()
+
+            scope.$on "status:changed", (ctx, status) ->
+                ctrl.isClosed = ctrl.item.is_closed
 
         controller: "DueDateCtrl",
         controllerAs: "vm",

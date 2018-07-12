@@ -21,23 +21,40 @@
         min-height: 4.5rem;
         resize: vertical;
     }
-    label {
-        @include font-size(xsmall);
-        background: $mass-white;
-        border: 1px solid $gray-light;
-        color: $grayer;
-        cursor: pointer;
-        display: block;
-        padding: 7px 30px;
-        transition: all .2s ease-in;
-        &:hover {
-            span {
+
+    .existing-or-new-selector {
+        display: flex;
+        margin-bottom: 2rem;
+        input {
+            display: none;
+            &:checked+label {
+                background: $primary-light;
                 color: $white;
+                transition: background .2s ease-in;
+            }
+            &:checked+label:hover {
+                background: $primary-light;
+            }
+            +label {
+                background: rgba($whitish, .7);
+                cursor: pointer;
+                display: block;
+                font-size: 1em;
+                padding: 2rem 1rem;
+                text-align: center;
+                text-transform: uppercase;
+                transition: background .2s ease-in;
+            }
+            +label:hover {
+                background: rgba($primary-light, .3);
+                transition: background .2s ease-in;
             }
         }
-        span {
-            color: $grayer;
-            vertical-align: middle;
+        .existing-or-new-selector-single {
+            flex: 1;
+            &:first-child {
+                margin-right: .5rem;
+            }
         }
     }
 
@@ -622,13 +639,24 @@
         margin-bottom: $spacing * 2;
         main {
             flex-grow: 1;
-            margin-right: $spacing;
+            max-width: $width - $sidebar-width;
         }
         .sidebar {
             border-left: 2px solid $whitish;
+            margin-left: $spacing;
             padding-left: $spacing;
+            $min-width: $sidebar-width;
             width: $sidebar-width;
         }
+    }
+    .existing-item-wrapper {
+        margin-bottom: $spacing * 2;
+        select .strong {
+            @include font-type(bold);
+        }
+    }
+    .add-existing-button {
+        width: 100%;
     }
     .status-button {
         display: flex;
