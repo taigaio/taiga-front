@@ -696,6 +696,14 @@ module.directive("tgPromoteIssueToUsButton", ["$rootScope", "$tgRepo", "$tgConfi
 
 AssignSprintToIssueButtonDirective = ($rootScope, $repo, $translate, lightboxService) ->
     link = ($scope, $el, $attrs, $model) ->
+
+        $scope.$watch $attrs.ngModel, (item) ->
+            return if not item
+            if item.milestone
+                $el.find('.assign-issue-button').addClass('button-set')
+            else
+                $el.find('.assign-issue-button').removeClass('button-set')
+
         $el.on "click", "a", (event) ->
             event.preventDefault()
             event.stopPropagation()

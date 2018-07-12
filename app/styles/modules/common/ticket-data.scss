@@ -194,6 +194,11 @@
         +input {
             display: none;
         }
+        &.button-set,
+        &.text-button.button-set:hover {
+            background: $yellow-green;
+            border-color: $yellow-green;
+        }
     }
     .item-block,
     .item-unblock {
