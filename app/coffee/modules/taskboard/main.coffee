@@ -361,6 +361,10 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
         @events.subscribe @scope, routingKey, debounceLeading(500, (message) =>
             @.loadTaskboard())
 
+        routingKey = "changes.project.#{@scope.projectId}.issues"
+        @events.subscribe @scope, routingKey, debounceLeading(500, (message) =>
+            @.loadIssues())
+
         routingKey1 = "changes.project.#{@scope.projectId}.userstories"
         @events.subscribe @scope, routingKey1, (message) =>
             @.refreshTagsColors()
