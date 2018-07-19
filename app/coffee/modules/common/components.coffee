@@ -24,6 +24,7 @@
 
 taiga = @.taiga
 bindOnce = @.taiga.bindOnce
+normalizeString = @.taiga.normalizeString
 
 module = angular.module("taigaCommon")
 
@@ -536,15 +537,6 @@ $translate, $compile, $currentUserService, avatarService) ->
         isEditable = ->
             return $scope.project?.my_permissions?.indexOf($attrs.requiredPerm) != -1
 
-        normalizeString = (string) ->
-            normalizedString = string
-            normalizedString = normalizedString.replace("Á", "A").replace("Ä", "A").replace("À", "A")
-            normalizedString = normalizedString.replace("É", "E").replace("Ë", "E").replace("È", "E")
-            normalizedString = normalizedString.replace("Í", "I").replace("Ï", "I").replace("Ì", "I")
-            normalizedString = normalizedString.replace("Ó", "O").replace("Ö", "O").replace("Ò", "O")
-            normalizedString = normalizedString.replace("Ú", "U").replace("Ü", "U").replace("Ù", "U")
-            return normalizedString
-
         filterUsers = (text, user) ->
             username = user.full_name_display.toUpperCase()
             username = normalizeString(username)
@@ -651,15 +643,6 @@ $translate, $compile, $currentUserService, avatarService) ->
 
         isAssigned = ->
             return currentAssignedIds.length > 0
-
-        normalizeString = (string) ->
-            normalizedString = string
-            normalizedString = normalizedString.replace("Á", "A").replace("Ä", "A").replace("À", "A")
-            normalizedString = normalizedString.replace("É", "E").replace("Ë", "E").replace("È", "E")
-            normalizedString = normalizedString.replace("Í", "I").replace("Ï", "I").replace("Ì", "I")
-            normalizedString = normalizedString.replace("Ó", "O").replace("Ö", "O").replace("Ò", "O")
-            normalizedString = normalizedString.replace("Ú", "U").replace("Ü", "U").replace("Ù", "U")
-            return normalizedString
 
         filterUsers = (text, user) ->
             username = user.full_name_display.toUpperCase()

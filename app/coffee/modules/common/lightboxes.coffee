@@ -29,6 +29,7 @@ timeout = @.taiga.timeout
 debounce = @.taiga.debounce
 sizeFormat = @.taiga.sizeFormat
 trim = @.taiga.trim
+normalizeString = @.taiga.normalizeString
 
 #############################################################################
 ## Common Lightbox Services
@@ -366,15 +367,6 @@ AssignedToLightboxDirective = (lightboxService, lightboxKeyboardNavigationServic
         selectedItem = null
         usersTemplate = $template.get("common/lightbox/lightbox-assigned-to-users.html", true)
 
-        normalizeString = (string) ->
-            normalizedString = string
-            normalizedString = normalizedString.replace("Á", "A").replace("Ä", "A").replace("À", "A")
-            normalizedString = normalizedString.replace("É", "E").replace("Ë", "E").replace("È", "E")
-            normalizedString = normalizedString.replace("Í", "I").replace("Ï", "I").replace("Ì", "I")
-            normalizedString = normalizedString.replace("Ó", "O").replace("Ö", "O").replace("Ò", "O")
-            normalizedString = normalizedString.replace("Ú", "U").replace("Ü", "U").replace("Ù", "U")
-            return normalizedString
-
         filterUsers = (text, user) ->
             username = user.full_name_display.toUpperCase()
             username = normalizeString(username)
@@ -473,15 +465,6 @@ AssignedUsersLightboxDirective = ($repo, lightboxService, lightboxKeyboardNaviga
         selectedUsers = []
         selectedItem = null
         usersTemplate = $template.get("common/lightbox/lightbox-assigned-users-users.html", true)
-
-        normalizeString = (string) ->
-            normalizedString = string
-            normalizedString = normalizedString.replace("Á", "A").replace("Ä", "A").replace("À", "A")
-            normalizedString = normalizedString.replace("É", "E").replace("Ë", "E").replace("È", "E")
-            normalizedString = normalizedString.replace("Í", "I").replace("Ï", "I").replace("Ì", "I")
-            normalizedString = normalizedString.replace("Ó", "O").replace("Ö", "O").replace("Ò", "O")
-            normalizedString = normalizedString.replace("Ú", "U").replace("Ü", "U").replace("Ù", "U")
-            return normalizedString
 
         filterUsers = (text, user) ->
             username = user.full_name_display.toUpperCase()
