@@ -1,0 +1,55 @@
+a.assign-issue-button.button-gray.is-editable(
+    href=""
+    tg-check-permission="add_us"
+    title="{{ 'ISSUES.ACTION_ASSIGN_SPRINT' | translate }}"
+    ng-class="{'button-set': issue.milestone}"
+)
+    tg-svg(svg-icon="icon-promote")
+
+
+.lightbox.lightbox-assign-sprint-to-issue
+    tg-lightbox-close
+
+    div.lightbox-assign-related-sprint
+        h2 "{{ 'ISSUES.ACTION_ASSIGN_SPRINT' | translate }}"
+
+        fieldset.existing-sprint
+            label(
+                translate="ISSUES.CHOOSE_SPRINT"
+                for="sprint-filter"
+            )
+            input.sprint-filter.e2e-filter-sprints-input(
+                id="sprint-filter"
+                type="text"
+                placeholder="{{'ISSUES.FILTER_SPRINTS' | translate}}"
+                ng-model="filterText"
+                ng-change="filterMilestones(filterText)"
+            )
+
+            form.existing-user-story-form
+                select.userstory.e2e-userstories-select(
+                    size="5"
+                    data-required="true"
+                    ng-model="selectedSprint"
+                )
+                    - var hash = "#";
+                    option.hidden(
+                        value=""
+                    )
+                    option(
+                        ng-repeat="milestone in milestones | toMutable track by milestone.id"
+                        value="{{ ::milestone.id }}"
+                    ) #{hash}{{::milestone.name}}
+
+            p.no-stories-found(
+                ng-show="!milestones.length"
+                translate="EPIC.NO_USERSTORIES_FOUND"
+            )
+
+            button.button-green.e2e-select-related-sprint-button(
+                href=""
+                ng-click="saveIssueToSprint(selectedSprint)"
+                ng-disabled="!selectedSprint"
+                tg-loading="vm.loading"
+                translate="COMMON.SAVE"
+            )
