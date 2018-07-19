@@ -618,7 +618,6 @@
     }
 }
 
-
 .lightbox-create-edit {
     z-index: 9998;
     $control-height: 30px;
@@ -853,4 +852,33 @@
     .blocked-note {
         margin-top: .5rem;
     }
+}
+
+
+.ticket-detail-settings .lightbox-assign-sprint-to-issue {
+    svg {
+        fill: initial;
+        max-height: initial;
+        max-width: initial;
+    }
+
+    fieldset {
+        label {
+            background: none;
+            display: inline-block;
+            margin-bottom: .5rem;
+            margin-right: 0;
+            padding: 0;
+
+            +input {
+                display: initial;
+            }
+        }
+    }
+
+    button {
+        width: 100%;
+    }
+
+
 }
