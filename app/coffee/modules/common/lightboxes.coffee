@@ -840,40 +840,43 @@ $confirm, $q, attachmentsService, $template, $compile) ->
             }
         }
 
-        $scope.$on "genericform:new", (ctx, data) ->
-            getSchema(data)
+        $scope.$on "genericform:new", (ctx, params) ->
+            getSchema(params)
             $scope.mode = 'new'
             $scope.getOrCreate = false
-            mount(data)
+            mount(params)
 
-        $scope.$on "genericform:new-or-existing", (ctx, data) ->
-            getSchema(data)
+        $scope.$on "genericform:new-or-existing", (ctx, params) ->
+            getSchema(params)
             $scope.mode = 'add-existing'
             $scope.getOrCreate = true
             $scope.existingFilterText = ''
-            $scope.existingItems = {}
-            $scope.existingOptions = data.existingOptions
-            mount(data)
+            $scope.existingItems = []
+            $rs[schema.model].listInAllProjects({ project: $scope.project.id }, true).then (data) ->
+                $scope.existingItems = data
+            mount(params)
 
-        $scope.$on "genericform:edit", (ctx, data) ->
-            getSchema(data)
+        $scope.$on "genericform:edit", (ctx, params) ->
+            getSchema(params)
             $scope.mode = 'edit'
             $scope.getOrCreate = false
-            mount(data)
+            mount(params)
 
-        getSchema = (data) ->
-            $scope.objType = data.objType
+        getSchema = (params) ->
+            _.map params, (value, key) ->
+                $scope[key] = value
+
             if !$scope.objType || !schemas[$scope.objType]
                 return $log.error("Invalid objType `#{$scope.objType}` for `genericform` event")
             schema = schemas[$scope.objType]
 
-        mount = (data) ->
+        mount = (params) ->
             $scope.objName = schema.objName
             if $scope.mode == 'edit'
-                $scope.obj = data.obj
-                $scope.attachments = Immutable.fromJS(data.attachments)
+                $scope.obj = params.obj
+                $scope.attachments = Immutable.fromJS(params.attachments)
             else
-                $scope.obj = $model.make_model(schema.model, schema.initialData(data))
+                $scope.obj = $model.make_model(schema.model, schema.initialData(params))
                 $scope.attachments = Immutable.List()
 
             _.map schema.data($scope.project), (value, key) ->
@@ -939,35 +942,13 @@ $confirm, $q, attachmentsService, $template, $compile) ->
                 return attachmentsService.delete($scope.objType, attachment.id)
             return $q.all(promises)
 
-        addExisting = (ref) ->
+        addExisting = (item) ->
             currentLoading = $loading().target($el.find(".add-existing-button")).start()
-            selectedItem = $scope.existingItems[parseInt(ref)]
-            selectedItem.setAttr($scope.existingOptions.targetField, $scope.existingOptions.targetValue)
-            $repo.save(selectedItem, true).then (data) ->
+            item.setAttr($scope.relatedField, $scope.relatedObjectId)
+            $repo.save(item, true).then (data) ->
                 currentLoading.finish()
                 lightboxService.close($el)
-                $rootScope.$broadcast("#{$scope.objType}form:add:success", selectedItem)
-
-        $scope.getTargetTitle = (item) ->
-            index = item[$scope.existingOptions.targetField]
-            return $scope.existingOptions.targetsById[index]?.name
-
-        $scope.existingFilterChanged = (value) ->
-            if value?
-                $rs[schema.model].listInAllProjects(
-                    { project: $scope.project.id, q: value }, true
-                ).then (data) ->
-                    $scope.existingItems = {}
-                    _.map(data, (itemModel) ->
-                        itemModel.html = itemModel.subject
-
-                        targetTitle = $scope.getTargetTitle(itemModel)
-                        if targetTitle
-                            itemModel.html = "#{itemModel.html} (#{targetTitle})"
-                            itemModel.class = 'strong'
-
-                        $scope.existingItems[itemModel.ref] = itemModel
-                    )
+                $rootScope.$broadcast("#{$scope.objType}form:add:success", item)
 
         $scope.addExisting = (selectedItem) ->
             event.preventDefault()
@@ -1078,16 +1059,6 @@ $confirm, $q, attachmentsService, $template, $compile) ->
             $scope.obj.status = id
             $scope.selectedStatus = _.find $scope.statusList, (item) -> item.id == id
             $scope.obj.is_closed = $scope.selectedStatus.is_closed
-
-        render = () ->
-            # templatePath = "common/lightbox/lightbox-create-edit/lb-create-edit-#{$scope.objType}.html"
-            # template = $template.get(templatePath, true)
-
-            _.map schema.data($scope.project), (value, key) ->
-                $scope[key] = value
-
-            # html = $compile(template($scope))($scope)
-            # $el.html(html)
 
     return {
         link: link

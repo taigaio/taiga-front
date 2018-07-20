@@ -1434,7 +1434,7 @@
         "LINK_TASKBOARD": "Taskboard",
         "TITLE_LINK_TASKBOARD": "Go to the taskboard",
         "FILTER_SPRINTS": "Filter Sprints",
-        "CHOOSE_SPRINT": "What's the user Sprint?",
+        "CHOOSE_SPRINT": "What's the Sprint?",
         "FIELDS": {
             "PRIORITY": "Priority",
             "SEVERITY": "Severity",

@@ -110,7 +110,10 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         @scope.$on "assign-sprint-to-issue:success", (ctx, milestoneId) =>
             @rootscope.$broadcast("object:updated")
             @scope.issue.milestone = milestoneId
-            @.loadSprint()
+            if milestoneId
+                @.loadSprint()
+            else
+                @scope.sprint = null
 
     initializeOnDeleteGoToUrl: ->
        ctx = {project: @scope.project.slug}
@@ -713,6 +716,7 @@ AssignSprintToIssueButtonDirective = ($rootScope, $rs, $repo, $loading, $transla
             issue = $model.$modelValue
             $rs.sprints.list($scope.projectId, null).then (data) ->
                 $scope.milestones = data.milestones
+                $scope.selectedSprintId = issue.milestone
                 avaliableMilestones = angular.copy($scope.milestones)
                 lightboxService.open($el.find(".lightbox-assign-sprint-to-issue"))
 
@@ -729,15 +733,13 @@ AssignSprintToIssueButtonDirective = ($rootScope, $rs, $repo, $loading, $transla
                 existsMilestone(filterText, milestone.name)
             )
 
-        $scope.saveIssueToSprint = (selectedSprintId) ->
-            currentLoading = $loading().target($el.find(".e2e-select-related-sprint-button")).start()
-            issue.setAttr('milestone', selectedSprintId)
+        $scope.saveIssueToSprint = (selectedSprint, event) ->
+            currentLoading = $loading().target($(event.currentTarget)).start()
+            issue.setAttr('milestone', selectedSprint.id)
             $repo.save(issue, true).then (data) ->
                 currentLoading.finish()
                 lightboxService.close($el.find(".lightbox-assign-sprint-to-issue"))
-                $scope.$broadcast("assign-sprint-to-issue:success", selectedSprintId)
-
-
+                $scope.$broadcast("assign-sprint-to-issue:success", selectedSprint.id)
 
     return {
         link: link

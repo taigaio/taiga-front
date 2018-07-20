@@ -385,7 +385,6 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
             @scope.usStatusList = _.sortBy(project.us_statuses, "order")
             @scope.usStatusById = groupBy(project.us_statuses, (e) -> e.id)
             @scope.issueStatusById = groupBy(project.issue_statuses, (e) -> e.id)
-            @scope.milestonesById = groupBy(project.milestones, (e) -> e.id)
 
             @scope.$emit('project:loaded', project)
 
@@ -623,15 +622,12 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
         switch type
             when "standard" then @rootscope.$broadcast("genericform:new-or-existing",
                 {
-                    'objType': 'issue',
-                    'project': @scope.project,
-                    'sprintId': @scope.sprintId,
-                    'existingOptions': {
-                        targetField: 'milestone',
-                        targetValue: @scope.sprintId,
-                        targetsById: @scope.milestonesById,
-                        title: "#{@translate.instant("COMMON.FIELDS.SPRINT")} #{@scope.sprint.name}",
-                    }
+                    objType: 'issue',
+                    project: @scope.project,
+                    sprintId: @scope.sprintId,
+                    relatedField: 'milestone',
+                    relatedObjectId: @scope.sprintId,
+                    title: "#{@translate.instant("COMMON.FIELDS.SPRINT")} #{@scope.sprint.name}",
                 })
             when "standard" then @rootscope.$broadcast("taskform:new", @scope.sprintId, us?.id)
             when "bulk" then @rootscope.$broadcast("issueform:bulk", @scope.projectId, @scope.sprintId)

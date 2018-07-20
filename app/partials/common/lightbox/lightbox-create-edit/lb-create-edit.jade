@@ -31,34 +31,16 @@ form(ng-if="lightboxOpen")
 
     div(ng-if="mode == 'add-existing'")
         .existing-item-wrapper
-            label(for="existing-filter") {{ 'LIGHTBOX.CREATE_EDIT.CHOOSE_EXISTING' | translate: { objName: objName } }}
-            input.filter(
-                id="existing-filter"
-                name="existing-filter"
-                type="text"
-                ng-model="existingFilterText"
-                ng-model-options="{ debounce: 200 }"
-                ng-change="existingFilterChanged(existingFilterText)"
+            tg-search-list(
+                label="{{ 'LIGHTBOX.CREATE_EDIT.CHOOSE_EXISTING' | translate: { objName: objName } }}"
+                placeholder="{{ 'ISSUES.FILTER_SPRINTS' | translate }}"
+                items="existingItems"
+                ng-model="selectedItem"
+                filter-by="['ref', 'subject']"
+                project="project"
+                item-type="{{ objType }}"
+                reset-on-change="true"
             )
-
-            .existing-item(ng-show="existingItems")
-                select.userstory.e2e-userstories-select(
-                    size="5"
-                    ng-model="selectedItem"
-                    data-required="true"
-                )
-                    - var hash = "#";
-                    option.hidden(value="")
-                    option(
-                        ng-repeat="(ref, obj) in existingItems"
-                        ng-class="obj.class"
-                        value="{{ ::ref }}"
-                    ) #{hash}{{ ref }} {{ obj.html }}
-
-            p.no-stories-found(
-                ng-show="existingFilterText && !existingItems"
-                translate="EPIC.NO_USERSTORIES_FOUND"
-            ) {{ 'LIGHTBOX.CREATE_EDIT.NO_ITEMS_FOUND' | translate }}
 
         button.button-green.add-existing-button(
             ng-click="addExisting(selectedItem)"

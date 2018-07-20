@@ -1,0 +1,23 @@
+fieldset.search-list
+    label(
+        for="items-filter"
+    ) {{ label }}
+    input.items-filter(
+        id="items-filter"
+        type="text"
+        placeholder="{{ placeholder }}"
+        ng-model="searchText"
+        ng-change="filterItems(searchText)"
+    )
+
+    ul
+        li.choice(
+            ng-repeat="item in items track by item.id"
+            ng-class="{ 'selected': item.id == currentSelected.id }"
+            data-choice-id="{{ item.id }}"
+        )
+            ng-include(src="templateUrl")
+
+    p.no-stories-found(
+        ng-show="!items.length"
+    ) {{ noItemsText }}

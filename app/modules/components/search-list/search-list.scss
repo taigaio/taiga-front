@@ -1,0 +1,36 @@
+.search-list {
+    ul {
+        background: $mass-white;
+        border: 1px solid $gray-light;
+        height: 200px;
+        margin: .25em 0 0;
+        max-height: 200px;
+        overflow-y: auto;
+    }
+    li {
+        cursor: pointer;
+        padding: .25em .5em;
+        &.selected {
+            background: $yellow-green;
+            color: $white;
+            .info {
+                color: $white;
+            }
+        }
+        ng-include {
+            display: flex;
+            width: 100%;
+            .title {
+                flex-grow: 1;
+                text-align: left;
+            }
+            .info {
+                color: $gray-lighter;
+                text-align: right;
+            }
+        }
+        .title span {
+            margin-right: .5em;
+        }
+    }
+}

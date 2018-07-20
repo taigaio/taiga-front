@@ -856,6 +856,10 @@
 
 
 .ticket-detail-settings .lightbox-assign-sprint-to-issue {
+    .lightbox-assign-related-sprint {
+        width: 700px;
+    }
+
     svg {
         fill: initial;
         max-height: initial;
