@@ -1,0 +1,41 @@
+//- <% if (selected) { %>
+<% _.each(selected, function(user) { %>
+.user-list-multiple.is-active
+    .user-list-avatar
+        a(
+            href=""
+            title!="<%- user %>"
+        )
+            img(
+                ng-src="/#{v}/images/user-noimage.png"
+            )
+    a.user-list-name(
+        href=""
+        title!="<%- user %>"
+        ng-non-bindable
+    )
+        | <%-user %>
+<% }) %>
+
+<% _.each(users, function(user) { %>
+.user-list-single
+    .user-list-avatar
+        a(
+            href="#"
+            title!="<%- user %>"
+        )
+            img(
+                ng-src="/#{v}/images/user-noimage.png"
+            )
+    a.user-list-name(
+        href=""
+        title!="<%- user %>"
+        ng-non-bindable
+    )
+        | <%- user %>
+<% }) %>
+
+<% if (showMore) { %>
+.more-users
+    span(translate="COMMON.ASSIGNED_TO.TOO_MANY")
+<% } %>

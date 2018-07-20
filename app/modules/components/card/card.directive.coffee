@@ -31,6 +31,7 @@ cardDirective = () ->
             onToggleFold: "&",
             onClickAssignedTo: "&",
             onClickEdit: "&",
+            onClickRemove: "&",
             onClickDelete: "&",
             project: "=",
             item: "=",

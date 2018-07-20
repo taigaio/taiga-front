@@ -9,6 +9,15 @@ div.wrapper(
     div.main.us-detail
         div.us-detail-header.header-with-actions
             include ../includes/components/mainTitle
+            .action-buttons
+                a.button-gray(
+                    href=""
+                    tg-check-permission="view_milestones"
+                    tg-nav="project-taskboard:project=project.slug,sprint=sprint.slug"
+                    ng-if="sprint && project.is_backlog_activated"
+                    title="{{'ISSUES.TITLE_LINK_TASKBOARD' | translate}}"
+                    translate="ISSUES.LINK_TASKBOARD"
+                )
 
         section.us-story-main-data
             header
@@ -114,15 +123,18 @@ div.wrapper(
 
         section.ticket-detail-settings
             tg-due-date(
-                tg-check-permission="modify_issue"
                 due-date="issue.due_date"
-                due-date-status="issue.due_date_status"
+                format="button"
                 is-closed="issue.is_closed"
                 item="issue"
-                format="button"
+                tg-check-permission="modify_issue"
             )
             tg-promote-issue-to-us-button(
                 tg-check-permission="add_us",
+                ng-model="issue"
+            )
+            tg-assign-sprint-to-issue-button(
+                tg-check-permission="modify_issue",
                 ng-model="issue"
             )
             tg-block-button(
@@ -135,6 +147,18 @@ div.wrapper(
                 on-delete-go-to-url="onDeleteGoToUrl",
                 ng-model="issue"
             )
+            tg-time-spent-button(
+                tg-check-permission="modify_issue",
+                ng-model="issue"
+            )  
+            
+        fieldset.time-spent-input.hidden
+            input(
+                type="number"
+                data-type="digits"
+                ng-attr-placeholder="{{'COMMON.TIME_SPENT_NOTE' | translate}}"
+            )
+
 
     div.lightbox.lightbox-block(tg-lb-block, ng-model="issue", title="ISSUES.LIGHTBOX_TITLE_BLOKING_ISSUE")
     div.lightbox.lightbox-select-user(tg-lb-assignedto)

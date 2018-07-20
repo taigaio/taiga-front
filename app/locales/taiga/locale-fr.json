@@ -24,6 +24,7 @@
         "UNBLOCK": "Débloquer",
         "UNBLOCK_TITLE": "Débloquer cet élément",
         "BLOCKED_NOTE": "Pourquoi est-ce bloqué ?",
+        "TIME_SPENT_NOTE": "Temps éstimé (minutes)",
         "BLOCKED_REASON": "Veuillez s'il vous plait indiquer la raison",
         "CREATED_BY": "Créé par {{fullDisplayName}}",
         "CLOSE": "clos",
@@ -512,6 +513,8 @@
             "RECRUITING_MESSAGE": "Qui cherchez-vous ?",
             "RECRUITING_PLACEHOLDER": "Définissez le profil que vous recherchez",
             "FEEDBACK": "Recevoir les commentaires des utilisateurs de Taiga?",
+            "ENABLE_TIME_SPENT_FEATURES": "Activer les fonctionalités de temps passé pour ce projet?",
+            "ENABLE_JOBEL_INTEGRATION_FEATURES": "Activer les fonctionalités d'intégration JOBEL pour ce projet?",
             "PUBLIC_PROJECT": "Projet public",
             "PRIVATE_PROJECT": "Projet privé",
             "PRIVATE_OR_PUBLIC": "Quelle est la différence entre les projets publics et privés ?",
@@ -836,7 +839,8 @@
             "WIKI": "Wiki",
             "TEAM": "Équipe",
             "MEETUP": "Meet up",
-            "ADMIN": "Admin"
+            "ADMIN": "Admin",
+            "WHOIS": "Whois"
         },
         "NAVIGATION": {
             "ACTION_CREATE_PROJECT": "Créer un projet",
@@ -1066,6 +1070,11 @@
         "SEARCH": {
             "TITLE": "Rechercher",
             "PLACEHOLDER_SEARCH": "Que cherchez-vous ?"
+        },
+        "WHOIS": {
+            "TITLE": "Recherche Whois",
+            "INPUT_PLACEHOLDER": "Qui cherchez-vous ?",
+            "SYNC_BUTTON": "Sync données"
         },
         "ADD_EDIT_SPRINT": {
             "TITLE": "Nouveau sprint",

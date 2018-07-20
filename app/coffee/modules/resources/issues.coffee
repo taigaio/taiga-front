@@ -51,9 +51,15 @@ resourceProvider = ($repo, $http, $urls, $storage, $q) ->
         service.storeQueryParams(projectId, params)
         return $repo.queryPaginated("issues", params, options)
 
-    service.bulkCreate = (projectId, data) ->
+    service.listInProject = (projectId, sprintId=null, params) ->
+        params = _.merge(params, {project: projectId})
+        params.milestone = sprintId if sprintId
+        service.storeQueryParams(projectId, params)
+        return $repo.queryMany("issues", params)
+
+    service.bulkCreate = (projectId, milestoneId, data) ->
         url = $urls.resolve("bulk-create-issues")
-        params = {project_id: projectId, bulk_issues: data}
+        params = {project_id: projectId,  milestone_id: milestoneId, bulk_issues: data}
         return $http.post(url, params)
 
     service.upvote = (issueId) ->

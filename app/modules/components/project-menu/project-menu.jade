@@ -1,6 +1,5 @@
 nav.menu(
     ng-if="vm.project"
-    ng-class="{'menu-fixed': vm.fixed}",
 )
     .menu-container
         ul.main-nav
@@ -116,3 +115,14 @@ nav.menu(
                 )
                     tg-svg(svg-icon="icon-settings")
                     span.helper(translate="PROJECT.SECTION.ADMIN")
+            
+            li#nav-whois(ng-if="vm.project.get('enable_jobel_integration_features')")
+                a(
+                    href=""
+                    ng-click="vm.whois()"
+                    ng-class="{active: vm.active == 'whois'}"
+                    aria-label="{{'PROJECT.SECTION.WHOIS' | translate}}"
+                    tabindex="9"
+                )
+                    tg-svg(svg-icon="icon-user")
+                    span.helper(translate="PROJECT.SECTION.WHOIS")

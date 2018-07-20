@@ -170,17 +170,19 @@
 }
 
 .ticket-detail-settings {
-    display: flex;
+    display: inline;
     justify-content: center;
     margin-top: 2rem;
     label,
+    .assign-issue-button,
     .item-block,
     .item-unblock,
     .promote-button,
     .button-delete {
         background: $gray-light;
         display: inline-block;
-        margin-right: .5rem;
+        margin-right: 1px;
+        margin-bottom: .5rem;
         padding: 1rem;
         transition: background .2s linear;
         transition-delay: .1s;
@@ -192,6 +194,11 @@
         }
         +input {
             display: none;
+        }
+        &.button-set,
+        &.text-button.button-set:hover {
+            background: $yellow-green;
+            border-color: $yellow-green;
         }
     }
     .item-block,
@@ -231,4 +238,26 @@
     a {
         display: block;
     }
+    .time-spent-button {
+        background: $gray-light;
+        display: inline-block;
+        margin-right: 1px;
+        margin-bottom: .5rem;
+        padding: 1rem;
+        transition: background .2s linear;
+        transition-delay: .1s;
+        &:hover {
+            background: #008000;
+        }
+        &.editable {
+            cursor: pointer;
+        }
+        +input {
+            display: none;
+        }
+    }
+}
+
+.time-spent-input {
+    margin-top: 1rem;
 }

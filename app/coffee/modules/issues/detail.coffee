@@ -30,6 +30,7 @@ joinStr = @.taiga.joinStr
 groupBy = @.taiga.groupBy
 bindOnce = @.taiga.bindOnce
 bindMethods = @.taiga.bindMethods
+normalizeString = @.taiga.normalizeString
 
 module = angular.module("taigaIssues")
 
@@ -58,7 +59,8 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location,
-                  @log, @appMetaService, @analytics, @navUrls, @translate, @modelTransform, @errorHandlingService, @projectService) ->
+                  @log, @appMetaService, @analytics, @navUrls, @translate, @modelTransform,
+                  @errorHandlingService, @projectService) ->
         bindMethods(@)
 
         @scope.issueRef = @params.issueref
@@ -105,6 +107,11 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         @scope.$on "custom-attributes-values:edit", =>
             @rootscope.$broadcast("object:updated")
 
+        @scope.$on "assign-sprint-to-issue:success", (ctx, milestoneId) =>
+            @rootscope.$broadcast("object:updated")
+            @scope.issue.milestone = milestoneId
+            @.loadSprint()
+
     initializeOnDeleteGoToUrl: ->
        ctx = {project: @scope.project.slug}
        if @scope.project.is_issues_activated
@@ -126,6 +133,8 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         @scope.severityById = groupBy(project.severities, (x) -> x.id)
         @scope.priorityList = project.priorities
         @scope.priorityById = groupBy(project.priorities, (x) -> x.id)
+        @scope.project.enableTimeSpentFeatures = project.enable_time_spent_features
+
         return project
 
     loadIssue: ->
@@ -150,12 +159,23 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
                 }
                 @scope.nextUrl = @navUrls.resolve("project-issues-detail", ctx)
 
+            if @scope.project.enableTimeSpentFeatures
+                $("div.created-time-spent").show()
+            else
+                $("div.created-time-spent").hide()
+
+    loadSprint: ->
+        if @scope.issue.milestone
+            return @rs.sprints.get(@scope.issue.project, @scope.issue.milestone).then (sprint) =>
+                @scope.sprint = sprint
+                return sprint
+
     loadInitialData: ->
         project = @.loadProject()
 
         @.fillUsersAndRoles(project.members, project.roles)
 
-        return @.loadIssue()
+        return @.loadIssue().then(=> @.loadSprint())
 
     ###
     # Note: This methods (onUpvote() and onDownvote()) are related to tg-vote-button.
@@ -355,10 +375,12 @@ IssueTypeButtonDirective = ($rootScope, $repo, $confirm, $loading, $modelTransfo
     template = $template.get("issue/issue-type-button.html", true)
 
     link = ($scope, $el, $attrs, $model) ->
+        notAutoSave = $scope.$eval($attrs.notAutoSave)
+
         isEditable = ->
             return $scope.project.my_permissions.indexOf("modify_issue") != -1
 
-        render = (issue) =>
+        render = (issue) ->
             type = $scope.typeById[issue.type]
 
             html = template({
@@ -373,6 +395,11 @@ IssueTypeButtonDirective = ($rootScope, $repo, $confirm, $loading, $modelTransfo
 
         save = (type) ->
             $.fn.popover().closeAll()
+
+            if notAutoSave
+                $model.$modelValue.type = type
+                $scope.$apply()
+                return
 
             currentLoading = $loading()
                 .target($el.find(".level-name"))
@@ -445,10 +472,12 @@ IssueSeverityButtonDirective = ($rootScope, $repo, $confirm, $loading, $modelTra
     template = $template.get("issue/issue-severity-button.html", true)
 
     link = ($scope, $el, $attrs, $model) ->
+        notAutoSave = $scope.$eval($attrs.notAutoSave)
+
         isEditable = ->
             return $scope.project.my_permissions.indexOf("modify_issue") != -1
 
-        render = (issue) =>
+        render = (issue) ->
             severity = $scope.severityById[issue.severity]
 
             html = template({
@@ -463,6 +492,11 @@ IssueSeverityButtonDirective = ($rootScope, $repo, $confirm, $loading, $modelTra
 
         save = (severity) ->
             $.fn.popover().closeAll()
+
+            if notAutoSave
+                $model.$modelValue.severity = severity
+                $scope.$apply()
+                return
 
             currentLoading = $loading()
                 .target($el.find(".level-name"))
@@ -536,10 +570,12 @@ IssuePriorityButtonDirective = ($rootScope, $repo, $confirm, $loading, $modelTra
     template = $template.get("issue/issue-priority-button.html", true)
 
     link = ($scope, $el, $attrs, $model) ->
+        notAutoSave = $scope.$eval($attrs.notAutoSave)
+
         isEditable = ->
             return $scope.project.my_permissions.indexOf("modify_issue") != -1
 
-        render = (issue) =>
+        render = (issue) ->
             priority = $scope.priorityById[issue.priority]
 
             html = template({
@@ -554,6 +590,11 @@ IssuePriorityButtonDirective = ($rootScope, $repo, $confirm, $loading, $modelTra
 
         save = (priority) ->
             $.fn.popover().closeAll()
+
+            if notAutoSave
+                $model.$modelValue.priority = priority
+                $scope.$apply()
+                return
 
             currentLoading = $loading()
                 .target($el.find(".level-name"))
@@ -662,3 +703,127 @@ PromoteIssueToUsButtonDirective = ($rootScope, $repo, $confirm, $translate) ->
 
 module.directive("tgPromoteIssueToUsButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$translate"
                                               PromoteIssueToUsButtonDirective])
+
+
+#############################################################################
+## Time spent button directive
+#############################################################################
+
+TimeSpentButtonDirective = ($rootScope, $translate, $loading, $modelTransform, $confirm) ->
+    link = ($scope, $el, $attrs, $model) ->
+        notAutoSave = $scope.$eval($attrs.notAutoSave)
+            
+        save = (issue, timeSpentValue) ->
+            $.fn.popover().closeAll()
+
+            if notAutoSave
+                $model.$modelValue.time_spent_note = timeSpentValue
+                $scope.$apply()
+                return
+
+            currentLoading = $loading()
+                .target($el.find(".time-spent-button"))
+                .start()
+
+            transform = $modelTransform.save (issue) ->
+                issue.time_spent_note = timeSpentValue
+
+                return issue
+
+            onSuccess = ->
+                $("div.created-time-spent").text(timeSpentValue + " minutes")
+                currentLoading.finish()
+                $confirm.notify("success")
+                $rootScope.$broadcast("object:updated");
+
+            onError = ->
+                $confirm.notify("error")
+                currentLoading.finish()
+
+            transform.then(onSuccess, onError)
+
+        $el.on "click", "a", (event) ->
+            event.preventDefault()
+
+            if $el.parent().parent().find(".time-spent-input").is(":hidden")
+                $el.parent().parent().find(".time-spent-input").removeClass("hidden")
+            else
+                issue = $model.$modelValue
+                timeSpentValue = $el.parent().parent().find(".time-spent-input input").val()
+
+                $el.parent().parent().find(".time-spent-input").addClass("hidden")
+                if timeSpentValue
+                    save(issue, timeSpentValue)
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+        if $scope.project.enable_time_spent_features
+            $el.removeClass("hidden")
+        else
+            $el.hide()
+        
+
+    return {
+        restrict: "AE"
+        require: "ngModel"
+        templateUrl: "issue/time-spent-button.html"
+        link: link
+    }
+
+module.directive("tgTimeSpentButton", ["$rootScope", "$translate", "$tgLoading", "$tgQueueModelTransformation", "$tgConfirm"
+                                              TimeSpentButtonDirective])
+
+#############################################################################
+## Add Issue to Sprint button directive
+#############################################################################
+
+AssignSprintToIssueButtonDirective = ($rootScope, $rs, $repo, $loading, $translate, lightboxService) ->
+    link = ($scope, $el, $attrs, $model) ->
+        avaliableMilestones = []
+        issue = null
+
+        $el.on "click", "a", (event) ->
+            event.preventDefault()
+            event.stopPropagation()
+            title = $translate.instant("ISSUES.ACTION_ASSIGN_SPRINT")
+            issue = $model.$modelValue
+            $rs.sprints.list($scope.projectId, null).then (data) ->
+                $scope.milestones = data.milestones
+                avaliableMilestones = angular.copy($scope.milestones)
+                lightboxService.open($el.find(".lightbox-assign-sprint-to-issue"))
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+        existsMilestone = (needle, haystack) ->
+            haystack = normalizeString(haystack.toUpperCase())
+            needle = normalizeString(needle.toUpperCase())
+            return _.includes(haystack, needle)
+
+        $scope.filterMilestones = (filterText) ->
+            $scope.milestones = avaliableMilestones.filter((milestone) ->
+                existsMilestone(filterText, milestone.name)
+            )
+
+        $scope.saveIssueToSprint = (selectedSprintId) ->
+            currentLoading = $loading().target($el.find(".e2e-select-related-sprint-button")).start()
+            issue.setAttr('milestone', selectedSprintId)
+            $repo.save(issue, true).then (data) ->
+                currentLoading.finish()
+                lightboxService.close($el.find(".lightbox-assign-sprint-to-issue"))
+                $scope.$broadcast("assign-sprint-to-issue:success", selectedSprintId)
+
+
+
+    return {
+        link: link
+        restrict: "EA"
+        require: "ngModel"
+        templateUrl: "issue/assign-sprint-to-issue-button.html"
+
+    }
+
+module.directive("tgAssignSprintToIssueButton", ["$rootScope", "$tgResources", "$tgRepo",
+                "$tgLoading", "$translate", "lightboxService",
+                AssignSprintToIssueButtonDirective] )

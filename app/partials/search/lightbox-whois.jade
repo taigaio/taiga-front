@@ -1,0 +1,26 @@
+tg-lightbox-close
+
+form
+    h2.title(translate="LIGHTBOX.WHOIS.TITLE")
+    fieldset
+        a.sync-data(
+            href=""
+            title="{{'LIGHTBOX.WHOIS.SYNC_BUTTON' | translate}}"
+            ng-click=""
+            tg-loading=""
+        )
+            tg-svg(
+                svg-icon="icon-reload"
+                svg-title-translate="LIGHTBOX.WHOIS.SYNC_BUTTON"
+            )
+        input(
+            type="text",
+            name="text",
+            id="whois-search-text",
+            placeholder="{{'LIGHTBOX.WHOIS.INPUT_PLACEHOLDER' | translate}}",
+            data-required="true",
+            autocomplete="off"
+        )
+
+    div.whois-results-list
+        //- The content of this is rendered by directive

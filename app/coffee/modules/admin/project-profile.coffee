@@ -141,7 +141,7 @@ module.controller("ProjectProfileController", ProjectProfileController)
 ## Project Profile Directive
 #############################################################################
 
-ProjectProfileDirective = ($repo, $confirm, $loading, $navurls, $location, projectService, currentUserService, $analytics) ->
+ProjectProfileDirective = ($repo, $confirm, $loading, $navurls, $location, projectService, currentUserService, $analytics, $translate) ->
     link = ($scope, $el, $attrs) ->
         $ctrl = $el.controller()
 
@@ -197,7 +197,7 @@ ProjectProfileDirective = ($repo, $confirm, $loading, $navurls, $location, proje
     return {link:link}
 
 module.directive("tgProjectProfile", ["$tgRepo", "$tgConfirm", "$tgLoading", "$tgNavUrls", "$tgLocation",
-                                      "tgProjectService", "tgCurrentUserService", "$tgAnalytics",
+                                      "tgProjectService", "tgCurrentUserService", "$tgAnalytics", "$translate",
                                       ProjectProfileDirective])
 
 

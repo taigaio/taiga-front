@@ -42,5 +42,12 @@
                 margin-left: 0;
             }
         }
+        .created-time-spent {
+            color: $red;
+            text-align: right;
+            @include breakpoint(laptop) {
+                text-align: left;
+            }
+        }
     }
 }

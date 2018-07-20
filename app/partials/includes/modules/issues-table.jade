@@ -56,7 +56,7 @@ section.issues-table.basic-table(ng-class="{empty: !issues.length}")
                 span(ng-bind-html="issue.subject | emojify")
                 tg-due-date(
                     due-date="issue.due_date"
-                    due-date-status="issue.due_date_status"
+                    is-closed="us.is_closed"
                     ng-if="issue.due_date"
                 )
 

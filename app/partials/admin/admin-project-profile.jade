@@ -132,6 +132,30 @@ div.wrapper(
                             span.check-text.check-yes(translate="COMMON.YES")
                             span.check-text.check-no(translate="COMMON.NO")
 
+                fieldset.enable-time-spent-features
+                    .enable-time-spent-features-inner
+                        span {{ 'ADMIN.PROJECT_PROFILE.ENABLE_TIME_SPENT_FEATURES' | translate }}
+                        div.check
+                            input(
+                                type="checkbox",
+                                ng-model="project.enable_time_spent_features"
+                            )
+                            div
+                            span.check-text.check-yes(translate="COMMON.YES")
+                            span.check-text.check-no(translate="COMMON.NO")
+
+                fieldset.enable-jobel-integration-features
+                    .enable-jobel-integration-features-inner
+                        span {{ 'ADMIN.PROJECT_PROFILE.ENABLE_JOBEL_INTEGRATION_FEATURES' | translate }}
+                        div.check
+                            input(
+                                type="checkbox",
+                                ng-model="project.enable_jobel_integration_features"
+                            )
+                            div
+                            span.check-text.check-yes(translate="COMMON.YES")
+                            span.check-text.check-no(translate="COMMON.NO")
+
                 tg-admin-project-restrictions(project="project")
 
                 fieldset

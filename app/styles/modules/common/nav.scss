@@ -5,15 +5,13 @@ tg-project-menu {
     display: inline-block;
     min-height: calc(100vh - 40px);
     min-width: 50px;
-    padding: 1rem 0;
     position: relative;
     text-transform: uppercase;
     z-index: 99;
     .menu {
-        &.menu-fixed {
-            position: fixed;
-            top: 1rem;
-        }
+        padding: 1rem 0;
+        top: 0;
+        position: sticky;
     }
 }
 

@@ -40,5 +40,6 @@ form
     a.delete-due-date(
         href=""
         title="{{'LIGHTBOX.SET_DUE_DATE.TITLE_ACTION_DELETE_DUE_DATE' | translate}}"
+        v-if="new_due_date"
     )
         tg-svg(svg-icon="icon-trash")
