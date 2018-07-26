@@ -58,7 +58,7 @@
     }
 
     .user-assigned,
-    .assign-to-me {
+    .self-assign {
         color: $primary;
         &.editable {
             color: $primary;
@@ -95,7 +95,7 @@
             }
         }
         .user-assigned,
-        .assign-to-me {
+        .self-assign {
             color: $primary;
             cursor: default;
             &:hover {

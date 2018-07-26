@@ -1,4 +1,3 @@
-//- <% if (selected) { %>
 <% _.each(selected, function(user) { %>
 .user-list-multiple.is-active(data-user-id!="<%- user.id %>")
     .user-list-avatar
@@ -23,26 +22,4 @@
     )
 <% }) %>
 
-<% _.each(users, function(user) { %>
-.user-list-single(data-user-id!="<%- user.id %>")
-    .user-list-avatar
-        a(
-            href="#"
-            title="{{'COMMON.ASSIGNED_TO.TITLE' | translate}}"
-        )
-            img(
-                style!="background: <%- user.avatar.bg %>"
-                src!="<%- user.avatar.url %>"
-            )
-    a.user-list-name(
-        href=""
-        title!="<%- user.full_name_display %>"
-        ng-non-bindable
-    )
-        | <%- user.full_name_display %>
-<% }) %>
-
-<% if (showMore) { %>
-.more-watchers
-    span(translate="COMMON.ASSIGNED_TO.TOO_MANY")
-<% } %>
+include ../../../partials/common/lightbox/lightbox-users-results
