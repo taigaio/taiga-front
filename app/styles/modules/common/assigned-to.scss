@@ -63,7 +63,7 @@
             }
         }
         .user-assigned,
-        .assign-to-me {
+        .self-assign {
             color: $primary;
             cursor: default;
             &:hover {
@@ -89,7 +89,7 @@
         }
     }
     .user-assigned,
-    .assign-to-me {
+    .self-assign {
         color: $primary;
         &:hover {
             color: currentColor;

@@ -8,9 +8,6 @@
                 tg-avatar=""
                 alt="{{ 'COMMON.ASSIGNED_TO.ASSIGN' | translate }}"
             )
-
-            //- .iocaine-symbol(ng-if="isIocaine" title="{{ 'TASK.TITLE_ACTION_IOCAINE' | translate }}")
-            //- tg-svg(svg-icon="icon-iocaine")
         .assigned-to
             .assigned-users-options(ng-if="isEditable")
                 a(
@@ -25,7 +22,7 @@
                 span(ng-if="!isAssigned")
                     span(translate="COMMON.OR")
                     | &nbsp;
-                    a.assign-to-me(
+                    a.self-assign(
                         href="#"
                         title="{{'COMMON.ASSIGNED_TO.SELF' | translate}}"
                         ng-click="assignToMe()"
@@ -51,7 +48,6 @@
                 svg-icon="icon-close",
                 title="{{'COMMON.ASSIGNED_TO.DELETE_ASSIGNMENT' | translate}}"
             )
-
 
 .tg-add-assigned(ng-if="isAssigned && isEditable")
     tg-svg.add-assigned(
