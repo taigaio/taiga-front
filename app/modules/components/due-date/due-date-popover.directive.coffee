@@ -39,7 +39,7 @@ dueDatePopoverDirective = ($translate, datePickerConfigService) ->
                     return
                 event.preventDefault()
                 event.stopPropagation()
-                if !el.picker.getDate()
+                if !el.picker.getDate() && ctrl.dueDate
                     el.picker.setDate(moment(ctrl.dueDate).format('YYYY-MM-DD'))
                 el.find(".date-picker-popover").popover().open()
 

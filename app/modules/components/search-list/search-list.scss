@@ -1,4 +1,16 @@
 .search-list {
+    .show-closed {
+        align-content: center;
+        align-items: center;
+        display: flex;
+        float: right;
+        font-size: .9em;
+        svg {
+            height: 1em;
+            margin-right: .25em;
+            width: 1em;
+        }
+    }
     ul {
         background: $mass-white;
         border: 1px solid $gray-light;
@@ -7,7 +19,7 @@
         max-height: 200px;
         overflow-y: auto;
     }
-    li {
+    .choice {
         cursor: pointer;
         padding: .25em .5em;
         &.selected {
@@ -15,6 +27,13 @@
             color: $white;
             .info {
                 color: $white;
+            }
+        }
+        &[disabled] {
+            color: $gray-lighter;
+            cursor: not-allowed;
+            .info {
+                color: $gray-lighter;
             }
         }
         ng-include {
@@ -25,7 +44,7 @@
                 text-align: left;
             }
             .info {
-                color: $gray-lighter;
+                color: $gray-light;
                 text-align: right;
             }
         }

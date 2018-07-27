@@ -704,22 +704,47 @@ module.directive("tgPromoteIssueToUsButton", ["$rootScope", "$tgRepo", "$tgConfi
 ## Add Issue to Sprint button directive
 #############################################################################
 
-AssignSprintToIssueButtonDirective = ($rootScope, $rs, $repo, $loading, $translate, lightboxService) ->
+AssignSprintToIssueButtonDirective = ($rootScope, $rs, $repo, $loading, $translate,
+lightboxService, $confirm) ->
     link = ($scope, $el, $attrs, $model) ->
         avaliableMilestones = []
         issue = null
 
-        $el.on "click", "a", (event) ->
+        $el.on "click", ".assign-issue-button.button-unset", (event) ->
             event.preventDefault()
             event.stopPropagation()
-            title = $translate.instant("ISSUES.ACTION_ASSIGN_SPRINT")
+            title = $translate.instant("ISSUES.ACTION_ATTACH_SPRINT")
             issue = $model.$modelValue
             $rs.sprints.list($scope.projectId, null).then (data) ->
                 $scope.milestones = data.milestones
-                $scope.selectedSprintId = issue.milestone
+                $scope.selectedSprint = issue.milestone
                 avaliableMilestones = angular.copy($scope.milestones)
                 lightboxService.open($el.find(".lightbox-assign-sprint-to-issue"))
 
+        $el.on "click", ".assign-issue-button.button-set", (event) ->
+            event.preventDefault()
+            event.stopPropagation()
+            issue = $model.$modelValue
+            $rs.sprints.list($scope.projectId, null).then (data) ->
+                currentSprint = _.find(data.milestones, { "id": issue.milestone })
+
+                title = $translate.instant("ISSUES.CONFIRM_DETACH_FROM_SPRINT.TITLE")
+                message = $translate.instant("ISSUES.CONFIRM_DETACH_FROM_SPRINT.MESSAGE")
+                message += " <strong>#{currentSprint.name}</strong>"
+
+                $confirm.ask(title, null, message).then (askResponse) ->
+                    onSuccess = ->
+                        $scope.$broadcast("assign-sprint-to-issue:success", null)
+                        askResponse.finish()
+                        lightboxService.close($el)
+
+                    onError = ->
+                        askResponse.finish(false)
+                        $confirm.notify("error")
+
+                    issue.setAttr('milestone', null)
+                    $repo.save(issue, true).then(onSuccess, onError)
+            
         $scope.$on "$destroy", ->
             $el.off()
 
@@ -750,5 +775,5 @@ AssignSprintToIssueButtonDirective = ($rootScope, $rs, $repo, $loading, $transla
     }
 
 module.directive("tgAssignSprintToIssueButton", ["$rootScope", "$tgResources", "$tgRepo",
-                "$tgLoading", "$translate", "lightboxService",
+                "$tgLoading", "$translate", "lightboxService", "$tgConfirm"
                 AssignSprintToIssueButtonDirective] )

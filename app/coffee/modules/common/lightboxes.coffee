@@ -840,6 +840,9 @@ $confirm, $q, attachmentsService, $template, $compile) ->
             }
         }
 
+        $scope.setMode = (value) ->
+            $scope.mode = value
+
         $scope.$on "genericform:new", (ctx, params) ->
             getSchema(params)
             $scope.mode = 'new'
@@ -851,9 +854,9 @@ $confirm, $q, attachmentsService, $template, $compile) ->
             $scope.mode = 'add-existing'
             $scope.getOrCreate = true
             $scope.existingFilterText = ''
-            $scope.existingItems = []
+
             $rs[schema.model].listInAllProjects({ project: $scope.project.id }, true).then (data) ->
-                $scope.existingItems = data
+                $scope.existingItems = angular.copy(data)
             mount(params)
 
         $scope.$on "genericform:edit", (ctx, params) ->
@@ -885,6 +888,7 @@ $confirm, $q, attachmentsService, $template, $compile) ->
             form.reset() if form
             resetAttachments()
             setStatus($scope.obj.status)
+            render()
             $scope.lightboxOpen = true
             lightboxService.open($el)
 
@@ -950,6 +954,9 @@ $confirm, $q, attachmentsService, $template, $compile) ->
                 lightboxService.close($el)
                 $rootScope.$broadcast("#{$scope.objType}form:add:success", item)
 
+        $scope.isDisabledExisting = (item) ->
+            return item && item[$scope.relatedField] == $scope.relatedObjectId
+
         $scope.addExisting = (selectedItem) ->
             event.preventDefault()
             addExisting(selectedItem)
@@ -976,7 +983,7 @@ $confirm, $q, attachmentsService, $template, $compile) ->
                 deleteAttachments(data).then () ->
                     createAttachments(data).then () ->
                         currentLoading.finish()
-                        close()
+                        lightboxService.close($el)
                         $rs[schema.model].getByRef(data.project, data.ref, schema.params).then (obj) ->
                             $rootScope.$broadcast(broadcastEvent, obj)
             promise.then null, (data) ->
@@ -987,20 +994,14 @@ $confirm, $q, attachmentsService, $template, $compile) ->
 
         checkClose = () ->
             if !$scope.obj.isModified()
-                close()
+                lightboxService.close($el)
                 $scope.$apply ->
                     $scope.obj.revert()
             else
                 $confirm.ask(
                     $translate.instant("LIGHTBOX.CREATE_EDIT.CONFIRM_CLOSE")).then (result) ->
                         result.finish()
-                        close()
-
-        close = () ->
-            delete $scope.objType
-            delete $scope.mode
-            $scope.lightboxOpen = false
-            lightboxService.close($el)
+                        lightboxService.close($el)
 
         $el.on "submit", "form", submit
 
@@ -1060,9 +1061,14 @@ $confirm, $q, attachmentsService, $template, $compile) ->
             $scope.selectedStatus = _.find $scope.statusList, (item) -> item.id == id
             $scope.obj.is_closed = $scope.selectedStatus.is_closed
 
+        render = (sprint) ->
+            template = $template.get("common/lightbox/lightbox-create-edit/lb-create-edit.html")
+            templateScope = $scope.$new()
+            compiledTemplate = $compile(template)(templateScope)
+            $el.html(compiledTemplate)
+
     return {
         link: link
-        templateUrl: "common/lightbox/lightbox-create-edit/lb-create-edit.html"
     }
 
 module.directive("tgLbCreateEdit", [

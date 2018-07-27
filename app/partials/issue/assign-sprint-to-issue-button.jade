@@ -1,17 +1,24 @@
-a.assign-issue-button.button-gray.is-editable(
+a.assign-issue-button.button-gray.is-editable.button-unset(
     href=""
-    tg-check-permission="add_us"
-    title="{{ 'ISSUES.ACTION_ASSIGN_SPRINT' | translate }}"
-    ng-class="{'button-set': issue.milestone}"
+    ng-show="!issue.milestone"
+    tg-check-permission="modify_issue"
+    title="{{ 'ISSUES.ACTION_ATTACH_SPRINT' | translate }}"
 )
-    tg-svg(svg-icon="icon-promote")
+    tg-svg(svg-icon="icon-attach")
 
+a.assign-issue-button.button-gray.is-editable.button-set(
+    href=""
+    ng-show="issue.milestone"
+    tg-check-permission="modify_issue"
+    title="{{ 'ISSUES.ACTION_DETACH_SPRINT' | translate }}"
+)
+    tg-svg(svg-icon="icon-detach")
 
 .lightbox.lightbox-assign-sprint-to-issue
     tg-lightbox-close
 
     div.lightbox-assign-related-sprint
-        h2.title {{ 'ISSUES.ACTION_ASSIGN_SPRINT' | translate }}
+        h2.title {{ 'ISSUES.ACTION_ATTACH_SPRINT' | translate }}
         tg-search-list(
             label="{{ 'ISSUES.CHOOSE_SPRINT' | translate }}"
             placeholder="{{ 'ISSUES.FILTER_SPRINTS' | translate }}"
@@ -26,4 +33,5 @@ a.assign-issue-button.button-gray.is-editable(
             ng-click="saveIssueToSprint(selectedSprint, $event)"
             tg-loading="vm.loading"
             translate="COMMON.SAVE"
+            ng-disabled="!selectedSprint"
         )

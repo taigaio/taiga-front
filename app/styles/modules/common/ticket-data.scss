@@ -200,6 +200,9 @@
             border-color: $yellow-green;
         }
     }
+    .assign-issue-button.button-set:hover {
+        background: $red-light;
+    }
     .item-block,
     .item-unblock {
         display: none;

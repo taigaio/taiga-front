@@ -1102,7 +1102,7 @@
             "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?",
             "EXISTING_OBJECT": "Existing {{ objName }}",
             "NEW_OBJECT": "New {{ objName }}",
-            "CHOOSE_EXISTING": "What's the {{ objName }}?",
+            "CHOOSE_EXISTING": "Which {{ objName }}?",
             "NO_ITEMS_FOUND": "It looks like nothing was found with your search criteria"
         },
         "DELETE_DUE_DATE": {
@@ -1164,11 +1164,11 @@
         "CREATE_RELATED_USERSTORIES": "Create a relationship with",
         "NEW_USERSTORY": "New user story",
         "EXISTING_USERSTORY": "Existing user story",
-        "CHOOSE_PROJECT_FOR_CREATION": "What's the project?",
+        "CHOOSE_PROJECT_FOR_CREATION": "Which project?",
         "SUBJECT": "Subject",
         "SUBJECT_BULK_MODE": "Subject (bulk insert)",
-        "CHOOSE_PROJECT_FROM": "What's the project?",
-        "CHOOSE_USERSTORY": "What's the user story?",
+        "CHOOSE_PROJECT_FROM": "Which project?",
+        "CHOOSE_USERSTORY": "Which user story?",
         "NO_USERSTORIES": "This project has no User Stories yet. Please select another project.",
         "NO_USERSTORIES_FOUND": "It looks like nothing was found with your search criteria",
         "FILTER_USERSTORIES": "Filter user stories",
@@ -1424,7 +1424,8 @@
         "SECTION_NAME": "Issue",
         "ACTION_NEW_ISSUE": "+ NEW ISSUE",
         "ACTION_PROMOTE_TO_US": "Promote to User Story",
-        "ACTION_ASSIGN_SPRINT": "Add issue to Sprint",
+        "ACTION_ATTACH_SPRINT": "Attach issue to Sprint",
+        "ACTION_DETACH_SPRINT": "Detach issue from Sprint",
         "ACTION_REMOVE_FROM_SPRINT": "Remove issue from Sprint {{ sprintName }}",
         "PROMOTED": "This issue has been promoted to US:",
         "EXTERNAL_REFERENCE": "This issue has been created from",
@@ -1434,15 +1435,16 @@
         "LINK_TASKBOARD": "Taskboard",
         "TITLE_LINK_TASKBOARD": "Go to the taskboard",
         "FILTER_SPRINTS": "Filter Sprints",
-        "CHOOSE_SPRINT": "What's the Sprint?",
+        "CHOOSE_SPRINT": "Which Sprint?",
         "FIELDS": {
             "PRIORITY": "Priority",
             "SEVERITY": "Severity",
             "TYPE": "Type"
         },
-        "CONFIRM_REMOVE_FROM_SPRINT": {
-            "TITLE": "Remove issue from sprint",
-            "MESSAGE": "Are you sure you want to remove this issue from the sprint?"
+        "FILTER_ISSUES": "Filter Issues",
+        "CONFIRM_DETACH_FROM_SPRINT": {
+            "TITLE": "Detach issue from Sprint",
+            "MESSAGE": "You are about to detach the issue from the sprint"
         },
         "CONFIRM_PROMOTE": {
             "TITLE": "Promote this issue to a new user story",
