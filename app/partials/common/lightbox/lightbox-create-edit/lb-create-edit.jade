@@ -4,10 +4,10 @@ form(ng-if="lightboxOpen")
     h2.title(ng-switch="mode")
         span(ng-switch-when="new") {{ 'LIGHTBOX.CREATE_EDIT.NEW' | translate: { objName: objName } }}
         span(ng-switch-when="edit") {{ 'LIGHTBOX.CREATE_EDIT.EDIT' | translate: { objName: objName } }}
-        span(ng-switch-when="add-existing") {{ 'LIGHTBOX.CREATE_EDIT.ADD_EXISTING' | translate: { objName: objName, targetName: existingOptions.title } }}
+        span(ng-switch-when="add-existing") {{ 'LIGHTBOX.CREATE_EDIT.ADD_EXISTING' | translate: { objName: objName, targetName: title } }}
 
     .existing-or-new-selector(ng-show="getOrCreate == true")
-        .existing-or-new-selector-single
+        .existing-or-new-selector-single(ng-click="setMode('add-existing')")
             input(
                 type="radio"
                 name="related-with-selector"
@@ -15,10 +15,10 @@ form(ng-if="lightboxOpen")
                 value="add-existing"
                 ng-model="mode"
             )
-            label.e2e-existing-user-story-label(for="add-existing")
+            label.e2e-existing-item-label(for="add-existing")
                 span.name {{ 'LIGHTBOX.CREATE_EDIT.EXISTING_OBJECT' | translate: { objName: objName } }}
 
-        .existing-or-new-selector-single
+        .existing-or-new-selector-single(ng-click="setMode('new')")
             input(
                 type="radio"
                 name="related-with-selector"
@@ -26,20 +26,20 @@ form(ng-if="lightboxOpen")
                 value="new"
                 ng-model="mode"
             )
-            label.e2e-new-userstory-label(for="new")
+            label.e2e-new-item-label(for="new")
                 span.name {{ 'LIGHTBOX.CREATE_EDIT.NEW_OBJECT' | translate: { objName: objName } }}
 
     div(ng-if="mode == 'add-existing'")
         .existing-item-wrapper
             tg-search-list(
                 label="{{ 'LIGHTBOX.CREATE_EDIT.CHOOSE_EXISTING' | translate: { objName: objName } }}"
-                placeholder="{{ 'ISSUES.FILTER_SPRINTS' | translate }}"
+                placeholder="{{ 'ISSUES.FILTER_ISSUES' | translate }}"
                 items="existingItems"
                 ng-model="selectedItem"
                 filter-by="['ref', 'subject']"
                 project="project"
                 item-type="{{ objType }}"
-                reset-on-change="true"
+                item-disabled="isDisabledExisting"
             )
 
         button.button-green.add-existing-button(

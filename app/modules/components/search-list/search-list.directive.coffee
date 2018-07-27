@@ -33,6 +33,13 @@ searchListDirective = ($translate) ->
         if scope.itemType == 'issue'
             scope.milestonesById = groupBy(scope.project.milestones, (e) -> e.id)
 
+        if scope.filterClosed
+            scope.showClosed = false
+
+            if scope.itemType == 'sprint'
+                scope.textShowClosed = $translate.instant("BACKLOG.SPRINTS.ACTION_SHOW_CLOSED_SPRINTS")
+                scope.textHideClosed = $translate.instant("BACKLOG.SPRINTS.ACTION_HIDE_CLOSED_SPRINTS")
+
         el.on "click", ".choice", (event) ->
             choiceId = parseInt($(event.currentTarget).data("choice-id"))
             value = if attrs.ngModel?.id != choiceId then itemsById[choiceId] else null
@@ -48,30 +55,45 @@ searchListDirective = ($translate) ->
                 value = value.toString()
             return normalizeString(value.toUpperCase())
 
-        el.on "blur", "#items-filter", (event) ->
-            filtering = false
+        resetSelected = () ->
+            scope.currentSelected = null
+            model.$setViewValue(null)
 
-        el.on "focus", "#items-filter", (event) ->
-            filtering = true
+        resetAll = () ->
+            resetSelected()
+            scope.searchText = ''
+            avaliableItems = angular.copy(scope.items)
+            itemsById = groupBy(avaliableItems, (x) -> x.id)
+
+
+        scope.isVisible = (item) ->
+            if !scope.filterClosed || scope.showClosed
+                return true
+            if (scope.itemType == 'sprint' && (item.closed || item.is_closed))
+                if (scope.currentSelected?.id == item.id)
+                    resetSelected()
+                return false
+            return true
+
+        scope.toggleShowClosed = (item) ->
+            scope.showClosed = !scope.showClosed
 
         scope.filterItems = (searchText) ->
-            scope.items = avaliableItems.filter((item) ->
+            scope.itemDisabled(null)
+            scope.filtering = true
+            scope.items = _.filter(avaliableItems, (item) ->
                 itemAttrs = item.getAttrs()
                 if Array.isArray(scope.filterBy)
                     _.some(scope.filterBy, (attr) -> isContainedIn(searchText, itemAttrs[attr]))
                 else
                     isContainedIn(searchText, itemAttrs[scope.filterBy])
             )
-            if scope.value
-                scope.value = _.find(scope.items, scope.currentSelected)
+            if !_.find(scope.items, scope.currentSelected)
+                resetSelected()
 
         scope.$watch 'items', (items) ->
-            if !filtering && items?.length
-                if scope.resetOnChange
-                    scope.currentSelected = null
-                    model.$setViewValue(null)
-                avaliableItems = angular.copy(items)
-                itemsById = groupBy(avaliableItems, (x) -> x.id)
+            if !scope.filtering && items
+                resetAll()
 
     return {
         link: link,
@@ -84,7 +106,8 @@ searchListDirective = ($translate) ->
             filterBy: '=',
             items: '=',
             itemType: '@',
-            resetOnChange: "="
+            filterClosed: '=',
+            itemDisabled: '='
         }
     }
 

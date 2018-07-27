@@ -564,8 +564,8 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
         @rs.issues.getByRef(issue.getIn(['model', 'project']), issue.getIn(['model', 'ref']))
         .then (removingIssue) =>
             issue = issue.set('loading-delete', false)
-            title = @translate.instant("ISSUES.CONFIRM_REMOVE_FROM_SPRINT.TITLE")
-            subtitle = @translate.instant("ISSUES.CONFIRM_REMOVE_FROM_SPRINT.MESSAGE")
+            title = @translate.instant("ISSUES.CONFIRM_DETACH_FROM_SPRINT.TITLE")
+            subtitle = @translate.instant("ISSUES.CONFIRM_DETACH_FROM_SPRINT.MESSAGE")
             message = removingIssue.subject
             @confirm.askOnDelete(title, message, subtitle).then (askResponse) =>
                 removingIssue.milestone = null

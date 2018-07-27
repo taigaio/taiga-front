@@ -2,6 +2,18 @@ fieldset.search-list
     label(
         for="items-filter"
     ) {{ label }}
+
+    a.show-closed(
+        href=""
+        ng-if="showClosedVisible"
+        ng-click="toggleShowClosed()"
+    )
+        span(ng-if="!showClosed")
+            tg-svg(svg-icon="icon-archive")
+            span {{ textShowClosed }} 
+        span(ng-if="showClosed")
+            tg-svg(svg-icon="icon-archive")
+            span {{ textHideClosed }}
     input.items-filter(
         id="items-filter"
         type="text"
@@ -9,12 +21,13 @@ fieldset.search-list
         ng-model="searchText"
         ng-change="filterItems(searchText)"
     )
-
     ul
         li.choice(
             ng-repeat="item in items track by item.id"
             ng-class="{ 'selected': item.id == currentSelected.id }"
             data-choice-id="{{ item.id }}"
+            ng-if="isVisible(item)"
+            ng-disabled="itemDisabled(item)"
         )
             ng-include(src="templateUrl")
 
