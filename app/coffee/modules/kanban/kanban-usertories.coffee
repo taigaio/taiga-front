@@ -132,6 +132,15 @@ class KanbanUserstoriesService extends taiga.Service
 
         else if !previous
             startIndex = 0
+
+            for it, key in afterDestination # increase position of the us after the dragged us's
+                @.order[it.id] = key + initialLength + 1
+                it.kanban_order = @.order[it.id]
+
+            setNextOrders = _.map(afterDestination, (it) =>
+                {us_id: it.id, order: @.order[it.id]}
+            )
+
         else if previous
             startIndex = @.order[previous.id] + 1
 
