@@ -94,6 +94,7 @@ class KanbanUserstoriesService extends taiga.Service
         @.refresh()
 
     move: (usList, statusId, index) ->
+
         initialLength = usList.length
 
         usByStatus = _.filter @.userstoriesRaw, (it) =>
@@ -123,7 +124,13 @@ class KanbanUserstoriesService extends taiga.Service
         setPreviousOrders = []
         setNextOrders = []
 
-        if !previous
+        isArchivedHiddenStatus = @.archivedStatus.indexOf(statusId) != -1 &&
+            @.statusHide.indexOf(statusId) != -1
+
+        if isArchivedHiddenStatus
+            startIndex = new Date().getTime()
+
+        else if !previous
             startIndex = 0
         else if previous
             startIndex = @.order[previous.id] + 1
