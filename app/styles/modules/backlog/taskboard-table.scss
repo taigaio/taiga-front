@@ -181,8 +181,8 @@ $column-padding: .5rem 1rem;
                 align-content: flex-start;
                 align-items: flex-start;
                 display: flex;
+                flex-direction: row;
                 flex-wrap: wrap;
-                max-height: 400px;
                 width: 100%;
             }
             .taskboard-row-title-box {
@@ -207,9 +207,6 @@ $column-padding: .5rem 1rem;
             }
         }
         &.issues-row:not(.row-fold) {
-            .taskboard-cards-box {
-                flex-direction: column;
-            }
             .card {
                 width: 280px;
             }
