@@ -49,7 +49,8 @@
             "ASSIGN_TO": "Assign To",
             "EDIT": "Edit card",
             "DELETE": "Delete card",
-            "REMOVE_ISSUE_FROM_SPRINT": "Remove issue from sprint"
+            "DELETE_ISSUE": "Delete issue",
+            "DETACH_ISSUE_FROM_SPRINT": "Detach issue from sprint"
         },
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "This value seems to be invalid.",
