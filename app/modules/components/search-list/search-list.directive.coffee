@@ -79,7 +79,6 @@ searchListDirective = ($translate) ->
             scope.showClosed = !scope.showClosed
 
         scope.filterItems = (searchText) ->
-            scope.itemDisabled(null)
             scope.filtering = true
             scope.items = _.filter(avaliableItems, (item) ->
                 itemAttrs = item.getAttrs()
@@ -107,7 +106,6 @@ searchListDirective = ($translate) ->
             items: '=',
             itemType: '@',
             filterClosed: '=',
-            itemDisabled: '='
         }
     }
 
