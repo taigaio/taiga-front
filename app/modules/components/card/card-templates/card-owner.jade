@@ -51,14 +51,14 @@
                 ng-if="vm.item.get('modelName') == 'issues'"
                 ng-click="!$event.ctrlKey && !$event.metaKey && vm.onClickRemove({id: vm.item.get('id')})"
                 tg-loading="vm.item.get('loading-remove-from-sprint')"
-                title="{{ 'COMMON.CARD.REMOVE_ISSUE_FROM_SPRINT' | translate }}"
+                title="{{ 'COMMON.CARD.DETACH_ISSUE_FROM_SPRINT' | translate }}"
             )
                 tg-svg(svg-icon="icon-close")
             a.e2e-edit.card-delete(
                 href=""
                 ng-click="!$event.ctrlKey && !$event.metaKey && vm.onClickDelete({id: vm.item.get('id')})"
                 tg-loading="vm.item.get('loading-delete')"
-                title="{{ 'COMMON.CARD.DELETE' | translate }}"
+                ng-attr-title="{{ vm.item.get('modelName') == 'issues' ? 'COMMON.CARD.DELETE_ISSUE' : 'COMMON.CARD.DELETE' | translate }}"
                 tg-check-permission="{{vm.getDeletePermisionKey()}}"
             )
                 tg-svg(svg-icon="icon-trash")
