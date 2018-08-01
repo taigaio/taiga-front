@@ -744,7 +744,7 @@ lightboxService, $confirm) ->
 
                     issue.setAttr('milestone', null)
                     $repo.save(issue, true).then(onSuccess, onError)
-            
+
         $scope.$on "$destroy", ->
             $el.off()
 
