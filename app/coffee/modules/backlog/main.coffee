@@ -477,6 +477,10 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         for it, key in afterDestination # increase position of the us after the dragged us's
             orderList[it.id] = startIndex + key + 1
 
+        setNextOrders = _.map(afterDestination, (it) =>
+            {us_id: it.id, order: orderList[it.id]}
+        )
+
         # refresh order
         @scope.userstories = _.sortBy @scope.userstories, (it) => @.backlogOrder[it.id]
         @scope.visibleUserStories = _.map @scope.userstories, (it) -> return it.ref
@@ -489,14 +493,16 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
         # saving
         if usList.length > 1 && (newSprintId != oldSprintId) # drag multiple to sprint
-            data = modifiedUs.concat(setPreviousOrders)
+            data = modifiedUs.concat(setPreviousOrders, setNextOrders)
             promise = @rs.userstories.bulkUpdateMilestone(project, newSprintId, data)
         else if usList.length > 1 # drag multiple in backlog
-            data = modifiedUs.concat(setPreviousOrders)
+            data = modifiedUs.concat(setPreviousOrders, setNextOrders)
             promise = @rs.userstories.bulkUpdateBacklogOrder(project, data)
         else  # drag single
             setOrders = {}
             for it in setPreviousOrders
+                setOrders[it.us_id] = it.order
+            for it in setNextOrders
                 setOrders[it.us_id] = it.order
 
             options = {
