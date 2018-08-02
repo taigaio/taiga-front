@@ -824,6 +824,7 @@ $confirm, $q, attachmentsService, $template, $compile) ->
                         severityList: _.sortBy(project.severities, "order")
                         priorityById: groupBy(project.priorities, (x) -> x.id)
                         priorityList: _.sortBy(project.priorities, "order")
+                        milestonesById: groupBy(project.milestones, (x) -> x.id)
                     }
                 initialData: (data) ->
                     return {
@@ -948,11 +949,43 @@ $confirm, $q, attachmentsService, $template, $compile) ->
 
         addExisting = (item) ->
             currentLoading = $loading().target($el.find(".add-existing-button")).start()
-            item.setAttr($scope.relatedField, $scope.relatedObjectId)
-            $repo.save(item, true).then (data) ->
+
+            if item.milestone
                 currentLoading.finish()
                 lightboxService.close($el)
-                $rootScope.$broadcast("#{$scope.objType}form:add:success", item)
+                sprintChangeConfirmAndSave(item)
+            else
+                onSuccess = ->
+                    currentLoading.finish()
+                    lightboxService.close($el)
+                    $rootScope.$broadcast("#{$scope.objType}form:add:success", item)
+                onError = ->
+                    currentLoading.finish()
+                    lightboxService.close($el)
+                saveItem(item, onSuccess, onError)
+
+        sprintChangeConfirmAndSave = (item) ->
+            oldSprintName = $scope.milestonesById[item.milestone].name
+            newSprintName = $scope.milestonesById[$scope.relatedObjectId].name
+            title = $translate.instant("ISSUES.CONFIRM_CHANGE_FROM_SPRINT.TITLE")
+            message = $translate.instant("ISSUES.CONFIRM_CHANGE_FROM_SPRINT.MESSAGE",
+                {oldSprintName: oldSprintName, newSprintName: newSprintName})
+
+            $confirm.ask(title, null, message).then (askResponse) ->
+                onSuccess = ->
+                    askResponse.finish()
+                    lightboxService.close($el)
+                    $rootScope.$broadcast("#{$scope.objType}form:add:success", item)
+
+                onError = ->
+                    askResponse.finish(false)
+                    $confirm.notify("error")
+                saveItem(item, onSuccess, onError)
+
+        saveItem = (item, onSuccess, onError) ->
+            item.setAttr($scope.relatedField, $scope.relatedObjectId)
+            $repo.save(item, true).then(onSuccess, onError)
+
 
         isDisabledExisting = (item) ->
             return item && item[$scope.relatedField] == $scope.relatedObjectId

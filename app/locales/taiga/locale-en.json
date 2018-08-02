@@ -1447,6 +1447,10 @@
             "TITLE": "Detach issue from Sprint",
             "MESSAGE": "You are about to detach the issue from the sprint"
         },
+        "CONFIRM_CHANGE_FROM_SPRINT": {
+            "TITLE": "Change issue from Sprint",
+            "MESSAGE": "Are you sure you want to change the issue sprint from {{ oldSprintName }} to {{ newSprintName }}"
+        },
         "CONFIRM_PROMOTE": {
             "TITLE": "Promote this issue to a new user story",
             "MESSAGE": "Are you sure you want to create a new US from this Issue?"
