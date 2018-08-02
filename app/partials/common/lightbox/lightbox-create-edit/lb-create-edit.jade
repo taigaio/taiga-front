@@ -44,7 +44,7 @@ form(ng-if="lightboxOpen")
 
         button.button-green.add-existing-button(
             ng-click="addExisting(selectedItem)"
-            ng-disabled="!selectedItem"
+            ng-disabled="!selectedItem || isDisabledExisting(selectedItem)"
         ) {{ 'COMMON.ADD' | translate }} {{ objName }}
 
     div(ng-if="mode != 'add-existing'")
