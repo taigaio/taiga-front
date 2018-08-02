@@ -27,6 +27,7 @@ fieldset.search-list
             ng-class="{ 'selected': item.id == currentSelected.id }"
             data-choice-id="{{ item.id }}"
             ng-if="isVisible(item)"
+            ng-disabled="itemDisabled(item)"
         )
             ng-include(src="templateUrl")
 
