@@ -8,7 +8,7 @@ a.assign-issue-button.button-gray.is-editable.button-unset(
 
 a.assign-issue-button.button-gray.is-editable.button-set(
     href=""
-    ng-show="issue.milestone"
+    ng-show="issue && issue.milestone"
     tg-check-permission="modify_issue"
     title="{{ 'ISSUES.ACTION_DETACH_SPRINT' | translate }}"
 )
