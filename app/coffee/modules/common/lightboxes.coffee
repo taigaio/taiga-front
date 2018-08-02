@@ -954,8 +954,11 @@ $confirm, $q, attachmentsService, $template, $compile) ->
                 lightboxService.close($el)
                 $rootScope.$broadcast("#{$scope.objType}form:add:success", item)
 
-        $scope.isDisabledExisting = (item) ->
+        isDisabledExisting = (item) ->
             return item && item[$scope.relatedField] == $scope.relatedObjectId
+
+        $scope.isDisabledExisting = (selectedItem) ->
+            isDisabledExisting(selectedItem)
 
         $scope.addExisting = (selectedItem) ->
             event.preventDefault()
