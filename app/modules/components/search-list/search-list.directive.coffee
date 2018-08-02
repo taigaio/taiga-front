@@ -106,6 +106,7 @@ searchListDirective = ($translate) ->
             items: '=',
             itemType: '@',
             filterClosed: '=',
+            itemDisabled: '='
         }
     }
 
