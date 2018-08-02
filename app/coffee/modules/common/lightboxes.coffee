@@ -806,7 +806,7 @@ $confirm, $q, attachmentsService, $template, $compile) ->
                         tags: []
                         milestone: data.sprintId
                         status: data.project.default_task_status
-                        user_story: data.us
+                        user_story: data.usId
                         is_archived: false
                     }
             },
