@@ -51,7 +51,7 @@ describe "DueDate", ->
                 return 'Set due date'
         }
         provide.value "$translate", mocks.$translate
-   
+
     _mockTgProjectService = () ->
         mocks.tgProjectService = {
             project: {
@@ -102,8 +102,8 @@ describe "DueDate", ->
 
     describe "when is set", ->
         normalDue = ['normal due', '#9dce0a']
-        dueSoon = ['due soon', '#ff8a84']
-        pastDue = ['past due', '#ff9900']
+        dueSoon = ['due soon', '#ff9900']
+        pastDue = ['past due', '#ff8a84']
 
         runs = [
             { objType: 'us', days: -1, expect: pastDue },
