@@ -6,9 +6,9 @@ a.assign-issue-button.button-gray.is-editable.button-unset(
 )
     tg-svg(svg-icon="icon-attach")
 
-a.assign-issue-button.button-gray.is-editable.button-set(
+a.assign-issue-button.button-green.is-editable.button-set(
     href=""
-    ng-show="issue && issue.milestone"
+    ng-show="issue.milestone"
     tg-check-permission="modify_issue"
     title="{{ 'ISSUES.ACTION_DETACH_SPRINT' | translate }}"
 )

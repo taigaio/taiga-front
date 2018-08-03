@@ -108,8 +108,8 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
             @rootscope.$broadcast("object:updated")
 
         @scope.$on "assign-sprint-to-issue:success", (ctx, milestoneId) =>
-            @rootscope.$broadcast("object:updated")
             @scope.issue.milestone = milestoneId
+            @rootscope.$broadcast("object:updated")
             if milestoneId
                 @.loadSprint()
             else
@@ -705,10 +705,19 @@ module.directive("tgPromoteIssueToUsButton", ["$rootScope", "$tgRepo", "$tgConfi
 #############################################################################
 
 AssignSprintToIssueButtonDirective = ($rootScope, $rs, $repo, $loading, $translate,
-lightboxService, $confirm) ->
+lightboxService, $modelTransform, $confirm) ->
     link = ($scope, $el, $attrs, $model) ->
         avaliableMilestones = []
         issue = null
+
+        $scope.$watch $attrs.ngModel, (item) ->
+            return if not item
+            if item.milestone
+                $el.find('.assign-issue-button.button-unset').removeClass('is-active')
+                $el.find('.assign-issue-button.button-set').addClass('is-active')
+            else
+                $el.find('.assign-issue-button.button-set').removeClass('is-active')
+                $el.find('.assign-issue-button.button-unset').addClass('is-active')
 
         $el.on "click", ".assign-issue-button.button-unset", (event) ->
             event.preventDefault()
@@ -742,8 +751,10 @@ lightboxService, $confirm) ->
                         askResponse.finish(false)
                         $confirm.notify("error")
 
-                    issue.setAttr('milestone', null)
-                    $repo.save(issue, true).then(onSuccess, onError)
+                    transform = $modelTransform.save (issue) ->
+                        issue.setAttr('milestone', null)
+                        return issue
+                    transform.then(onSuccess, onError)
 
         $scope.$on "$destroy", ->
             $el.off()
@@ -761,7 +772,12 @@ lightboxService, $confirm) ->
         $scope.saveIssueToSprint = (selectedSprint, event) ->
             currentLoading = $loading().target($(event.currentTarget)).start()
             issue.setAttr('milestone', selectedSprint.id)
-            $repo.save(issue, true).then (data) ->
+
+            transform = $modelTransform.save (item) ->
+                issue.setAttr('milestone', selectedSprint.id)
+                return item
+
+            transform.then ->
                 currentLoading.finish()
                 lightboxService.close($el.find(".lightbox-assign-sprint-to-issue"))
                 $scope.$broadcast("assign-sprint-to-issue:success", selectedSprint.id)
@@ -775,5 +791,5 @@ lightboxService, $confirm) ->
     }
 
 module.directive("tgAssignSprintToIssueButton", ["$rootScope", "$tgResources", "$tgRepo",
-                "$tgLoading", "$translate", "lightboxService", "$tgConfirm"
-                AssignSprintToIssueButtonDirective] )
+                "$tgLoading", "$translate", "lightboxService", "$tgQueueModelTransformation",
+                "$tgConfirm", AssignSprintToIssueButtonDirective] )
