@@ -85,20 +85,20 @@ KanbanSortableDirective = ($repo, $rs, $rootscope) ->
                 if !dragMultipleItems.length
                     dragMultipleItems = [item]
 
-                firstElement = dragMultipleItems[0]     
-                index = $(firstElement).index()  
+                firstElement = dragMultipleItems[0]
+                index = $(firstElement).index()
                 newStatus = newParentScope.s.id
 
-                usList = _.map dragMultipleItems, (item) -> $(item).scope().us   
+                usList = _.map dragMultipleItems, (item) -> $(item).scope().us
 
-                finalUsList = _.map usList, (item)  -> 
+                finalUsList = _.map usList, (item)  ->
                     return {
                         id: item.get('id'),
                         oldStatusId: item.getIn(['model', 'status'])
                     }
 
-                $scope.$apply ->   
-                    _.each usList, (item, key) => 
+                $scope.$apply ->
+                    _.each usList, (item, key) =>
                         oldStatus = item.getIn(['model', 'status'])
                         sameContainer = newStatus == oldStatus
 
