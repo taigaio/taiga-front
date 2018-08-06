@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## 3.3.15 (2018-08-06)
+
+### Misc
+
+- Filter by cards to find position in Kanban.
+
 ## 3.3.14 (2018-08-06)
 
 ### Misc
