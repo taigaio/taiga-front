@@ -114,6 +114,7 @@ class ProjectValuesController extends taiga.Controller
     loadValues: =>
         return @rs[@scope.resource].listValues(@scope.projectId, @scope.type).then (values) =>
             if values.length
+                @scope.values = values
                 @scope.maxValueOrder = _.maxBy(values, "order").order
             return values
 
