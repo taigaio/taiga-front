@@ -25,10 +25,10 @@ section.colors-table.admin-status-table
                             span {{ value.name }}
 
                         div.thresold-column
-                            span(ng-if="value.days_to_due_abs != null") {{ value.days_to_due_abs }}
+                            span(ng-if="value.days_to_due != null") {{ value.days_to_due_abs }}
 
                         div.before-after-column
-                            span(ng-if="value.days_to_due_abs", ng-switch="value.days_to_due >= 0")
+                            span(ng-if="value.days_to_due", ng-switch="value.days_to_due >= 0")
                                 span(ng-switch-when="true") {{ 'ADMIN.PROJECT_DUE_DATE_STATUS.BEFORE' | translate }}
                                 span(ng-switch-when="false") {{ 'ADMIN.PROJECT_DUE_DATE_STATUS.AFTER' | translate }}
 
@@ -63,7 +63,12 @@ section.colors-table.admin-status-table
                             )
 
                         div.thresold-column(ng-if="!value.by_default")
-                            input.days-to-due-abs(type="number", min="0", name="days_to_due_abs", ng-model="value.days_to_due_abs")
+                            input.days-to-due-abs(
+                                type="number"
+                                data-type="digits"
+                                min="0"
+                                name="days_to_due"
+                                ng-model="value.days_to_due_abs")
 
                         div.before-after-column
                             div.before-after-selector(ng-if="!value.by_default && value.days_to_due_abs != 0")
@@ -97,7 +102,7 @@ section.colors-table.admin-status-table
                             a.cancel(href="", title="{{'COMMON.CANCEL' | translate}}")
                                 tg-svg.cancel(svg-icon="icon-close")
 
-        form
+        form(tg-bind-scope)
             div.row.table-main.new-value.hidden
                 div.color-column(
                     tg-color-selection
@@ -117,16 +122,43 @@ section.colors-table.admin-status-table
                     )
 
                 div.thresold-column
-                    input(
-                        name="days_to_due"
+                    input.days-to-due-abs(
                         type="number"
+                        data-type="digits"
+                        min="0"
+                        name="days_to_due_abs"
                         placeholder="{{'ADMIN.STATUS.PLACEHOLDER_DAYS_TO_DUE_DATE' | translate}}"
-                        ng-model="newValue.days_to_due"
+                        ng-model="newValue.days_to_due_abs"
                         data-required="true"
                     )
 
+                div.before-after-column
+                    div.before-after-selector(ng-if="newValue.days_to_due_abs && newValue.days_to_due_abs != 0")
+                        .before-after-selector-single(ng-class="{'checked': newValue.sign > 0 }")
+                            input(
+                                type='radio'
+                                id="due-date-status-before"
+                                name="due-date-status-after"
+                                ng-model="newValue.sign"
+                                value="1"
+                            )
+                            label.days-to-due-sign(
+                                for="due-date-status-before",
+                            ) {{ 'ADMIN.PROJECT_DUE_DATE_STATUS.BEFORE' | translate }}
+                        .before-after-selector-single(ng-class="{'checked': newValue.sign < 0}")
+                            input(
+                                type='radio'
+                                id="due-date-status-after"
+                                name="due-date-status-after"
+                                ng-model="newValue.sign"
+                                value="-1"
+                            )
+                            label.days-to-due-sign(
+                                for="due-date-status-after",
+                            ) {{ 'ADMIN.PROJECT_DUE_DATE_STATUS.AFTER' | translate }}
+
                 div.options-column
-                    a.add-new.e2e-save(href="", title="{{'COMMON.ADD' | translate}}")
+                    a.add-new-due-date.e2e-save(href="", title="{{'COMMON.ADD' | translate}}")
                         tg-svg(svg-icon="icon-save")
 
                     a.delete-new(href="", title="{{'COMMON.CANCEL' | translate}}")
