@@ -415,8 +415,9 @@ ProjectDueDatesValues = ($log, $repo, $confirm, $location, animationFrame, $tran
             promise = $repo.create(valueType, $scope.newValue)
             promise.then (data) ->
                 target.addClass("hidden")
-                data.days_to_due_abs = data.days_to_due
-                data.sign = 1
+                data.sign = $scope.newValue.sign
+                data.days_to_due_abs = $scope.newValue.days_to_due_abs
+
                 $scope.values.push(data)
 
                 initializeNewValue()
