@@ -33,7 +33,6 @@ bindOnce = @.taiga.bindOnce
 debounce = @.taiga.debounce
 getDefaulColorList = @.taiga.getDefaulColorList
 
-
 module = angular.module("taigaAdmin")
 
 #############################################################################
@@ -270,9 +269,8 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame, $tra
             $scope.newValue.order = if $scope.maxValueOrder then $scope.maxValueOrder + 1 else 1
 
             promise = $repo.create(valueType, $scope.newValue)
-            promise.then (data) =>
+            promise.then (data) ->
                 target.addClass("hidden")
-
                 $scope.values.push(data)
                 $scope.maxValueOrder = data.order
                 initializeNewValue()
@@ -323,11 +321,6 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame, $tra
             else if event.keyCode == 27
                 $el.find(".new-value").addClass("hidden")
                 initializeNewValue()
-
-        $el.on "click", ".save", (event) ->
-            event.preventDefault()
-            target = angular.element(event.currentTarget)
-            saveValue(target)
 
         $el.on "click", ".save", (event) ->
             event.preventDefault()
@@ -387,6 +380,17 @@ ProjectDueDatesValues = ($log, $repo, $confirm, $location, animationFrame, $tran
     $translate, $rootscope, projectService)
 
     linkDueDateStatusValue = ($scope, $el, $attrs) ->
+        valueType = $attrs.type
+
+        initializeNewValue = ->
+            $scope.newValue = {
+                "name": ""
+                "days_to_due": 0
+                "sign": 1
+            }
+
+        initializeNewValue()
+
         _setDaysToDue = (value) ->
             value.days_to_due = value.days_to_due_abs * value.sign
 
@@ -394,7 +398,31 @@ ProjectDueDatesValues = ($log, $repo, $confirm, $location, animationFrame, $tran
             target = angular.element(event.currentTarget)
             row = target.parents(".row.table-main")
             formEl = target.parents("form")
-            return formEl.scope().value
+            if not formEl.scope().value
+                return formEl.scope().newValue
+            else
+                return formEl.scope().value
+
+        saveNewValue = (target) ->
+            formEl = target.parents("form")
+            form = formEl.checksley()
+            return if not form.validate()
+
+            $scope.newValue.project = $scope.project.id
+
+            $scope.newValue.order = if $scope.maxValueOrder then $scope.maxValueOrder + 1 else 1
+
+            promise = $repo.create(valueType, $scope.newValue)
+            promise.then (data) ->
+                target.addClass("hidden")
+                data.days_to_due_abs = data.days_to_due
+                data.sign = 1
+                $scope.values.push(data)
+
+                initializeNewValue()
+
+            promise.then null, (data) ->
+                form.setErrors(data)
 
         $el.on "input", ".days-to-due-abs", (event) ->
             event.preventDefault()
@@ -408,6 +436,11 @@ ProjectDueDatesValues = ($log, $repo, $confirm, $location, animationFrame, $tran
             $scope.$apply ->
                 value.sign = value.sign * -1
                 _setDaysToDue(value)
+
+        $el.on "click", ".add-new-due-date", debounce 2000, (event) ->
+            event.preventDefault()
+            target = $el.find(".new-value")
+            saveNewValue(target)
 
     return {
         link: ($scope, $el, $attrs) ->
