@@ -1173,7 +1173,7 @@
             "TITLE_ACTION_DELETE_DUE_DATE": "Delete due date"
         },
         "RELATE_TO_EPIC": {
-            "TITLE": "Relate to Epic",
+            "TITLE": "Link to Epic",
             "EXISTING_EPIC": "Existing epic",
             "NEW_EPIC": "New epic",
             "CHOOSE_PROJECT_FOR_CREATION": "What's the project?",
@@ -1190,7 +1190,7 @@
         "PAGE_DESCRIPTION": "Status: {{epicStatus }}. Description: {{epicDescription}}",
         "SECTION_NAME": "Epic",
         "TITLE_LIGHTBOX_UNLINK_RELATED_USERSTORY": "Unlink related userstory",
-        "MSG_LIGHTBOX_UNLINK_RELATED_USERSTORY": "It will delete the link to the related userstory '{{subject}}'",
+        "MSG_LIGHTBOX_UNLINK_RELATED_USERSTORY": "This action will remove the link to the related user story '{{subject}}'",
         "ERROR_UNLINK_RELATED_USERSTORY": "We have not been able to unlink: {{errorMessage}}",
         "CREATE_RELATED_USERSTORIES": "Create a relationship with",
         "NEW_USERSTORY": "New user story",
@@ -1221,7 +1221,7 @@
         "LIGHTBOX_TITLE_BLOKING_US": "Blocking us",
         "NOT_ESTIMATED": "Not estimated",
         "OWNER_US": "This User Story belongs to",
-        "RELATE_TO_EPIC": "Relate to Epic",
+        "RELATE_TO_EPIC": "Link to Epic",
         "REMOVE_RELATIONSHIP_WITH_EPIC": "Remove Epic relationship",
         "TRIBE": {
             "PUBLISH": "Publish as Gig in Taiga Tribe",
@@ -1435,7 +1435,8 @@
         "CLOSE": "Close notification",
         "MAIL": "Notifications By Mail",
         "DESKTOP": "Desktop notifications using browser alerts",
-        "ASK_DELETE": "Are you sure you want to delete?"
+        "ASK_DELETE": "Are you sure you want to delete?",
+        "ASK_REMOVE_LINK": "Are you sure you want to remove the link?"
     },
     "CANCEL_ACCOUNT": {
         "TITLE": "Cancel your account",
@@ -1480,8 +1481,8 @@
             "MESSAGE": "You are about to detach the issue from the sprint"
         },
         "CONFIRM_CHANGE_FROM_SPRINT": {
-            "TITLE": "Change issue from Sprint",
-            "MESSAGE": "Are you sure you want to change the issue sprint from {{ oldSprintName }} to {{ newSprintName }}"
+            "TITLE": "Move issue from another sprint",
+            "MESSAGE": "Are you sure you want to move the issue {{ issue }} from sprint {{ oldSprintName }} to sprint {{ newSprintName }}?"
         },
         "CONFIRM_PROMOTE": {
             "TITLE": "Promote this issue to a new user story",

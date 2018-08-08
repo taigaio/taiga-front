@@ -969,7 +969,7 @@ $confirm, $q, attachmentsService, $template, $compile) ->
             newSprintName = $scope.milestonesById[$scope.relatedObjectId].name
             title = $translate.instant("ISSUES.CONFIRM_CHANGE_FROM_SPRINT.TITLE")
             message = $translate.instant("ISSUES.CONFIRM_CHANGE_FROM_SPRINT.MESSAGE",
-                {oldSprintName: oldSprintName, newSprintName: newSprintName})
+                {issue: item.subject, oldSprintName: oldSprintName, newSprintName: newSprintName})
 
             $confirm.ask(title, null, message).then (askResponse) ->
                 onSuccess = ->
