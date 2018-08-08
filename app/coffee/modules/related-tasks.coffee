@@ -30,8 +30,8 @@ module = angular.module("taigaRelatedTasks", [])
 
 
 RelatedTaskRowDirective = ($repo, $compile, $confirm, $rootscope, $loading, $template, $translate, $emojis) ->
-    templateView = $template.get("task/related-taskboard-row.html", true)
-    templateEdit = $template.get("task/related-taskboard-row-edit.html", true)
+    templateView = $template.get("task/related-task-row.html", true)
+    templateEdit = $template.get("task/related-task-row-edit.html", true)
 
     link = ($scope, $el, $attrs, $model) ->
         @childScope = $scope.$new()

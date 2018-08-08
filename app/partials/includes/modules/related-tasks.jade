@@ -9,7 +9,7 @@ section.related-tasks(
         .row.single-related-task.js-related-task(
             ng-repeat="task in tasks"
             ng-class="{closed: task.is_closed, blocked: task.is_blocked, iocaine: task.is_iocaine}"
-            tg-related-taskboard-row
+            tg-related-task-row
             ng-model="task"
         )
         div(tg-related-task-create-form)
