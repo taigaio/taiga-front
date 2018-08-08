@@ -203,11 +203,15 @@
 
     .assign-issue-button {
         display: none;
+
+        &:hover {
+            background: $yellow-green;
+        }
         &.is-active {
             display: inline-block;
         }
-        &:hover {
-            background: $yellow-green;
+        &.button-set:hover {
+            background: $red-light;
         }
     }
 
