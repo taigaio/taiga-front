@@ -21,7 +21,7 @@
         tg-due-date.statistic.card-due-date(
             due-date="vm.item.getIn(['model', 'due_date'])"
             is-closed="vm.item.getIn(['model', 'is_closed'])"
-            obj-type="task"
+            obj-type="{{ vm.type }}"
         )
         .statistic.card-iocaine(
             ng-if="vm.item.getIn(['model', 'is_iocaine'])"
