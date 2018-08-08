@@ -45,7 +45,7 @@
                 tg-loading="vm.item.get('loading-edit')"
                 title="{{ 'COMMON.CARD.EDIT' | translate }}"
             )
-                tg-svg(svg-icon="icon-edit")
+                tg-svg(svg-icon="icon-edit", svg-title="{{ 'COMMON.CARD.EDIT' | translate }}")
             a.e2e-edit.card-edit(
                 href=""
                 ng-if="vm.item.get('modelName') == 'issues'"
@@ -53,7 +53,7 @@
                 tg-loading="vm.item.get('loading-remove-from-sprint')"
                 title="{{ 'COMMON.CARD.DETACH_ISSUE_FROM_SPRINT' | translate }}"
             )
-                tg-svg(svg-icon="icon-close")
+                tg-svg(svg-icon="icon-close", svg-title="{{ 'COMMON.CARD.DETACH_ISSUE_FROM_SPRINT' | translate }}")
             a.e2e-edit.card-delete(
                 href=""
                 ng-click="!$event.ctrlKey && !$event.metaKey && vm.onClickDelete({id: vm.item.get('id')})"
@@ -61,4 +61,4 @@
                 ng-attr-title="{{ vm.item.get('modelName') == 'issues' ? 'COMMON.CARD.DELETE_ISSUE' : 'COMMON.CARD.DELETE' | translate }}"
                 tg-check-permission="{{vm.getDeletePermisionKey()}}"
             )
-                tg-svg(svg-icon="icon-trash")
+                tg-svg(svg-icon="icon-trash", svg-title="{{ vm.item.get('modelName') == 'issues' ? 'COMMON.CARD.DELETE_ISSUE' : 'COMMON.CARD.DELETE' | translate }}")
