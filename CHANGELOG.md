@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## 3.3.16 (2018-08-08)
+
+- Fix another bug related with ordering US.
+
 ## 3.3.15 (2018-08-06)
 
 ### Misc
