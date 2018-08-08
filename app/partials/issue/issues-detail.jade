@@ -137,6 +137,7 @@ div.wrapper(
             tg-assign-sprint-to-issue-button(
                 tg-check-permission="modify_issue",
                 ng-model="issue"
+                ng-if="project.is_backlog_activated"
             )
             tg-block-button(
                 tg-check-permission="modify_issue",
