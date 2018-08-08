@@ -785,7 +785,7 @@ $confirm, $q, attachmentsService, $template, $compile) ->
                         description: ""
                         tags: []
                         points : {}
-                        status: data.project.default_us_status
+                        status: if data.statusId then data.statusId else data.project.default_us_status
                         is_archived: false
                     }
             }
