@@ -86,7 +86,7 @@ KanbanSortableDirective = ($repo, $rs, $rootscope) ->
                     dragMultipleItems = [item]
 
                 firstElement = dragMultipleItems[0]
-                index = $(firstElement).index('.card')
+                index = $(parentEl).find('tg-card').index(firstElement)
                 newStatus = newParentScope.s.id
 
                 usList = _.map dragMultipleItems, (item) -> $(item).scope().us
