@@ -443,6 +443,25 @@ ProjectDueDatesValues = ($log, $repo, $confirm, $location, animationFrame, $tran
             target = $el.find(".new-value")
             saveNewValue(target)
 
+        $el.on "click", ".delete-due-date", (event) ->
+            event.preventDefault()
+            target = angular.element(event.currentTarget)
+            formEl = target.parents("form")
+            value = formEl.scope().value
+
+            title = $translate.instant("LIGHTBOX.ADMIN_DUE_DATES.TITLE_ACTION_DELETE_DUE_DATE")
+            subtitle = $translate.instant("LIGHTBOX.ADMIN_DUE_DATES.SUBTITLE_ACTION_DELETE_DUE_DATE",
+                                          {due_date_status_name:  value.name})
+
+            $confirm.ask(title, subtitle).then (response) ->
+                onSucces = ->
+                    $ctrl.loadValues().finally ->
+                        response.finish()
+                onError = ->
+                    $confirm.notify("error")
+                $repo.remove(value).then(onSucces, onError)
+
+
     return {
         link: ($scope, $el, $attrs) ->
             parentDirective.link($scope, $el, $attrs)

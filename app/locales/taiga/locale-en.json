@@ -629,7 +629,7 @@
             "DAYS_TO_DUE_DATE": "Days to due date",
             "BEFORE_AFTER": "Before/after",
             "BEFORE": "Before",
-            "AFTER": "After"
+            "AFTER": "Past"
         },
         "ROLES": {
             "PAGE_TITLE": "Roles - {{projectName}}",
@@ -1171,6 +1171,10 @@
                 "IN_THREE_MONTHS": "In three months"
             },
             "TITLE_ACTION_DELETE_DUE_DATE": "Delete due date"
+        },
+        "ADMIN_DUE_DATES": {
+            "TITLE_ACTION_DELETE_DUE_DATE": "Delete due date",
+            "SUBTITLE_ACTION_DELETE_DUE_DATE": "Are you sure you want to delete the due date status {{due_date_status_name}}?"
         },
         "RELATE_TO_EPIC": {
             "TITLE": "Link to Epic",
