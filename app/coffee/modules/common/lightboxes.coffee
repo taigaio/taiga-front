@@ -1132,7 +1132,7 @@ module.directive("tgLbCreateEdit", [
 
 debounceLeading = @.taiga.debounceLeading
 
-RelateToEpicLightboxDirective = ($rootScope, $confirm, lightboxService, tgCurrentUserService
+RelateToEpicLightboxDirective = ($rootScope, $confirm, lightboxService, $tgCurrentUserService
 tgResources, $tgResources, $epicsService, tgAnalytics) ->
     link = ($scope, $el, $attrs) ->
         us = null
@@ -1147,11 +1147,7 @@ tgResources, $tgResources, $epicsService, tgAnalytics) ->
 
         loadProjects = ->
             if $scope.projects == null
-                $tgResources.projects.list({
-                    blocked_code: 'null',
-                    is_epics_activated: true
-                }).then (data) ->
-                    $scope.projects = data
+                $scope.projects = $tgCurrentUserService.projects.get("all")
 
         filterEpics = (selectedProjectId, filterText) ->
             tgResources.epics.listInAllProjects(
