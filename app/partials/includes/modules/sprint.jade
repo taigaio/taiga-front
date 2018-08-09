@@ -24,6 +24,12 @@ div.sprint-table(tg-bind-scope, ng-class="{'sprint-empty-wrapper': !sprint.user_
                     ng-if="us.epics"
                     epics="us.epics"
                 )
+                tg-due-date.due-date(
+                    due-date="us.due_date"
+                    is-closed="us.is_closed"
+                    ng-if="us.due_date"
+                    obj-type="us"
+                )
         div.column-points.width-1(tg-bo-bind="us.total_points",
                                   ng-class="{closed: us.is_closed, blocked: us.is_blocked}")
 
