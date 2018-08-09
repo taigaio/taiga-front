@@ -2,10 +2,11 @@
     span.key(
         translate="ACTIVITY.FIELDS.MILESTONE"
     )
-    span.diff(ng-if="vm.diff[0] != null") {{vm.diff[0]}}
-    span.diff(ng-if="vm.diff[0] == null") ...
+    span.diff(ng-if="vm.diff[0]") {{vm.diff[0]}}
+    span.diff(ng-if="!vm.diff[0]" translate="ACTIVITY.VALUES.NOT_SET")
     tg-svg(
         svg-icon="icon-arrow-right"
     )
-    span.diff(ng-if="vm.diff[1] != null") {{vm.diff[1]}}
-    span.diff(ng-if="vm.diff[1] == null") ...
+
+    span.diff(ng-if="vm.diff[1]") {{vm.diff[1]}}
+    span.diff(ng-if="!vm.diff[1]" translate="ACTIVITY.VALUES.NOT_SET")
