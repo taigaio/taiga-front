@@ -704,7 +704,7 @@ module.directive("tgPromoteIssueToUsButton", ["$rootScope", "$tgRepo", "$tgConfi
 ## Add Issue to Sprint button directive
 #############################################################################
 
-AssignSprintToIssueButtonDirective = ($rootScope, $rs, $repo, $loading, $translate,
+AssignSprintToIssueButtonDirective = ($rootscope, $rs, $repo, $loading, $translate,
 lightboxService, $modelTransform, $confirm) ->
     link = ($scope, $el, $attrs, $model) ->
         avaliableMilestones = []
@@ -743,9 +743,10 @@ lightboxService, $modelTransform, $confirm) ->
 
                 $confirm.ask(title, null, message).then (askResponse) ->
                     onSuccess = ->
-                        $scope.$broadcast("assign-sprint-to-issue:success", null)
+                        $rootscope.$broadcast("assign-sprint-to-issue:success", null)
                         askResponse.finish()
                         lightboxService.close($el)
+
 
                     onError = ->
                         askResponse.finish(false)
@@ -780,7 +781,7 @@ lightboxService, $modelTransform, $confirm) ->
             transform.then ->
                 currentLoading.finish()
                 lightboxService.close($el.find(".lightbox-assign-sprint-to-issue"))
-                $scope.$broadcast("assign-sprint-to-issue:success", selectedSprint.id)
+                $rootscope.$broadcast("assign-sprint-to-issue:success", selectedSprint.id)
 
     return {
         link: link

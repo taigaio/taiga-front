@@ -670,7 +670,7 @@ module.directive("tgLightboxLeaveProjectWarning", ["lightboxService", LightboxLe
 ## Set Due Date Lightbox Directive
 #############################################################################
 
-SetDueDateDirective = (lightboxService, $loading, $translate, $confirm, $modelTransform) ->
+SetDueDateDirective = ($rootscope, lightboxService, $loading, $translate, $confirm, $modelTransform) ->
     link = ($scope, $el, attrs) ->
         prettyDate = $translate.instant("COMMON.PICKERDATE.FORMAT")
         lightboxService.open($el)
@@ -717,6 +717,7 @@ SetDueDateDirective = (lightboxService, $loading, $translate, $confirm, $modelTr
             transform.finally ->
                 currentLoading.finish()
                 lightboxService.close($el)
+                $rootscope.$broadcast("object:updated")
 
         $el.on "click", ".submit-button", (event) ->
             event.preventDefault()
@@ -747,7 +748,7 @@ SetDueDateDirective = (lightboxService, $loading, $translate, $confirm, $modelTr
         scope: true
     }
 
-module.directive("tgLbSetDueDate", ["lightboxService", "$tgLoading", "$translate", "$tgConfirm"
+module.directive("tgLbSetDueDate", ["$rootScope", "lightboxService", "$tgLoading", "$translate", "$tgConfirm"
                                     "$tgQueueModelTransformation", SetDueDateDirective])
 
 
