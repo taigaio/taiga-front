@@ -62,9 +62,16 @@ div.taskboard-table(
                                 ng-if="us.epics"
                                 epics="us.epics"
                             )
-                    p.points-value
-                        span(ng-bind="us.total_points")
-                        span(translate="TASKBOARD.TABLE.FIELD_POINTS")
+                    div.us-data
+                        p.points-value
+                            span(ng-bind="us.total_points")
+                            span(translate="TASKBOARD.TABLE.FIELD_POINTS")
+                        tg-due-date.due-date(
+                            due-date="us.due_date"
+                            is-closed="us.is_closed"
+                            ng-if="us.due_date"
+                            obj-type="us"
+                        )
                     include ../components/addnewtask
 
 

@@ -233,6 +233,14 @@ $column-padding: .5rem 1rem;
             margin-right: .1rem;
         }
     }
+    .us-data {
+        display: flex;
+    }
+    .due-date {
+        tg-svg {
+            position: inherit;
+        }
+    }
     tg-svg {
         cursor: pointer;
         display: block;
