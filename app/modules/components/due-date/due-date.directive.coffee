@@ -31,7 +31,7 @@ dueDateDirective = ($translate, datePickerConfigService) ->
                 prettyDate = $translate.instant("COMMON.PICKERDATE.FORMAT")
                 if ctrl.dueDate
                     ctrl.dueDate = moment(ctrl.dueDate, prettyDate)
-  
+
                 el.on "click", ".date-picker-popover-trigger", (event) ->
                     if ctrl.disabled()
                         return
@@ -58,7 +58,7 @@ dueDateDirective = ($translate, datePickerConfigService) ->
                 })
 
                 el.picker = new Pikaday(datePickerConfig)
- 
+
             if attrs.format == 'button-popover'
                 renderDatePicker()
 
