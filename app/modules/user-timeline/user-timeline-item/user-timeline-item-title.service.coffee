@@ -40,6 +40,7 @@ class UserTimelineItemTitle
         'color': 'COMMON.FIELDS.COLOR',
         'due_date': 'COMMON.FIELDS.DUE_DATE',
         'due_date_reason': 'COMMON.FIELDS.DUE_DATE_REASON',
+        'milestone': 'COMMON.FIELDS.SPRINT',
     }
 
     _params: {
