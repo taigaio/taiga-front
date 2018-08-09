@@ -1139,6 +1139,7 @@ tgResources, $tgResources, $epicsService, tgAnalytics) ->
         $scope.projects = null
         $scope.projectEpics = Immutable.List()
         $scope.loading = false
+        $scope.selectedProject = $scope.project.id
 
         newEpicForm = $el.find(".new-epic-form").checksley()
         existingEpicForm = $el.find(".existing-epic-form").checksley()
@@ -1165,6 +1166,11 @@ tgResources, $tgResources, $epicsService, tgAnalytics) ->
                     filteredData = data.filter((epic) -> excludeIds.indexOf(epic.get('id')) == -1)
                     $scope.projectEpics = filteredData
 
+        selectProject = (selectedProjectId) ->
+            $scope.selectedEpic = null
+            $scope.searchEpic = ""
+            filterEpics(selectedProjectId, $scope.searchEpic)
+
         $el.on "click", ".close", (event) ->
             event.preventDefault()
             lightboxService.close($el)
@@ -1174,12 +1180,15 @@ tgResources, $tgResources, $epicsService, tgAnalytics) ->
             $scope.selectedEpic = null
             $scope.searchEpic = ""
             loadProjects()
-            filterEpics(item.projectId, $scope.searchEpic).then () ->
+            filterEpics($scope.selectedProject, $scope.searchEpic).then () ->
                 lightboxService.open($el).then ->
                     $el.find('input').focus
 
         $scope.$on "$destroy", ->
             $el.off()
+
+        $scope.selectProject = (selectedProjectId) ->
+            selectProject(selectedProjectId)
 
         $scope.onUpdateSearchEpic = debounceLeading 300, () ->
             $scope.selectedEpic = null
