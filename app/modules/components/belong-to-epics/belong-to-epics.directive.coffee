@@ -37,7 +37,7 @@ BelongToEpicsDirective = ($translate, $confirm, $rs, $rs2, lightboxService) ->
                 { epicSubject:  epic.get('subject') }
             )
 
-            $confirm.askOnDelete(title, message).then (askResponse) ->
+            $confirm.ask(title, null, message).then (askResponse) ->
                 onSuccess = ->
                     askResponse.finish()
                     scope.$broadcast("related-epics:changed", scope.item)
