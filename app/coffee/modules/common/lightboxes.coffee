@@ -1147,7 +1147,7 @@ tgResources, $tgResources, $epicsService, tgAnalytics) ->
 
         loadProjects = ->
             if $scope.projects == null
-                $scope.projects = $tgCurrentUserService.projects.get("all")
+                $scope.projects = $tgCurrentUserService.projects.get("unblocked")
 
         filterEpics = (selectedProjectId, filterText) ->
             tgResources.epics.listInAllProjects(

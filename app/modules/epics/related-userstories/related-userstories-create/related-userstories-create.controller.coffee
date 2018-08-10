@@ -34,7 +34,7 @@ class RelatedUserstoriesCreateController
 
     loadProjects: () ->
         if @.projects == null
-            @.projects = @currentUserService.projects.get("all")
+            @.projects = @currentUserService.projects.get("unblocked")
 
     filterUss: (selectedProjectId, filterText) ->
         promise = @rs.userstories.listInAllProjects({project: selectedProjectId, q: filterText}, true).then (data) =>
