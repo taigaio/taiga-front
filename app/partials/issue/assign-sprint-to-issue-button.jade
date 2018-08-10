@@ -11,8 +11,13 @@ a.assign-issue-button.button-green.is-editable.button-set(
     ng-show="issue.milestone"
     tg-check-permission="modify_issue"
     title="{{ 'ISSUES.ACTION_DETACH_SPRINT' | translate }}"
+    ng-mouseenter="detach=true"
+    ng-mouseleave="detach=false"
 )
-    tg-svg(svg-icon="icon-detach")
+    tg-svg(ng-show="detach"
+           svg-icon="icon-detach")
+    tg-svg(ng-show="!detach"
+           svg-icon="icon-attach")
 
 .lightbox.lightbox-assign-sprint-to-issue
     tg-lightbox-close
