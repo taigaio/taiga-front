@@ -116,6 +116,8 @@ class CurrentUserService
     setProjects: (projects) ->
         @._projects = @._projects.set("all", projects)
         @._projects = @._projects.set("recents", projects.slice(0, 10))
+        @._projects = @._projects.set("unblocked",
+                                      projects.filter((project) -> project.toJS().blocked_code == null))
 
         @._projectsById = Immutable.fromJS(groupBy(projects.toJS(), (p) -> p.id))
 
