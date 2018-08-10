@@ -48,7 +48,9 @@
         "CARD": {
             "ASSIGN_TO": "指派给",
             "EDIT": "编辑卡片",
-            "DELETE": "删除卡片"
+            "DELETE": "删除卡片",
+            "DELETE_ISSUE": "删除问题",
+            "DETACH_ISSUE_FROM_SPRINT": "Detach issue from sprint"
         },
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "该数值似乎为无效",
@@ -79,7 +81,6 @@
         },
         "PICKERDATE": {
             "FORMAT": "DD MMM YYYY",
-            "IS_RTL": "错误",
             "FIRST_DAY_OF_WEEK": "1",
             "PREV_MONTH": "上个月",
             "NEXT_MONTH": "下个月",
@@ -167,10 +168,7 @@
             "SELF": "指派给我"
         },
         "DUE_DATE": {
-            "TITLE_ACTION_SET_DUE_DATE": "设置截止日期",
-            "DUE_SOON": "马上到期",
-            "PAST_DUE": "已过期",
-            "NO_LONGER_APPLICABLE": "不再适用"
+            "TITLE_ACTION_SET_DUE_DATE": "设置截止日期"
         },
         "ASSIGNED_USERS": {
             "ADD": "选择指派人",
@@ -616,6 +614,18 @@
             "MIXING_MERGE": "合并标签",
             "SELECTED": "已选择"
         },
+        "PROJECT_DUE_DATE_STATUS": {
+            "TITLE": "Due Dates",
+            "SUBTITLE": "Specify the due dates your user stories, tasks and issues will go through if selected",
+            "US_TITLE": "User Story Due Date status",
+            "ACTION_ADD_STATUS": "增加新状态",
+            "TASK_TITLE": "Task Due Date status",
+            "ISSUE_TITLE": "Issue Due Date status",
+            "DAYS_TO_DUE_DATE": "Days to due date",
+            "BEFORE_AFTER": "Before/after",
+            "BEFORE": "Before",
+            "AFTER": "Past"
+        },
         "ROLES": {
             "PAGE_TITLE": "角色- {{projectName}}",
             "WARNING_NO_ROLE": "注意，你的项目中无角色可以评估用户故事的点数",
@@ -716,7 +726,8 @@
             "LABEL_SEVERITY": "严重程度选择器预设值"
         },
         "STATUS": {
-            "PLACEHOLDER_WRITE_STATUS_NAME": "为此新状态命名"
+            "PLACEHOLDER_WRITE_STATUS_NAME": "为此新状态命名",
+            "PLACEHOLDER_DAYS_TO_DUE_DATE": "Write a number of days to due date"
         },
         "TYPES": {
             "PLACEHOLDER_WRITE_NAME": "为此新元素命名"
@@ -742,7 +753,8 @@
             "SEVERITIES": "严重程度",
             "TYPES": "类型",
             "CUSTOM_FIELDS": "自定义字段",
-            "TAGS": "标签"
+            "TAGS": "标签",
+            "DUE_DATES": "Due dates"
         },
         "SUBMENU_ROLES": {
             "TITLE": "角色",
@@ -1055,9 +1067,6 @@
             "PLACEHOLDER_INVITATION_TEXT": "(非必要) 加上一段私人文字在邀请信，告诉你的新成员一些好事  ;-)",
             "HELP_TEXT": "如果用户已注册Taiga账户，他们会自动被加入。否则他们会收到一封加入的邀请信"
         },
-        "CREATE_ISSUE": {
-            "TITLE": "新增问题"
-        },
         "FEEDBACK": {
             "TITLE": "告诉我们你的故事",
             "COMMENT": "系统错误，有改进建议有乐趣，或者是你使用Taiga 上的恶梦？",
@@ -1076,21 +1085,15 @@
             "TITLE_ACTION_DELETE_SPRINT": "删除冲刺任务",
             "LAST_SPRINT_NAME": "最后冲刺任务 <strong> {{lastSprint}} ;-) </strong>"
         },
-        "CREATE_EDIT_TASK": {
-            "TITLE": "新任务",
-            "PLACEHOLDER_SUBJECT": "任务主旨",
-            "PLACEHOLDER_STATUS": "任务状态",
-            "OPTION_UNASSIGNED": "未指派",
-            "PLACEHOLDER_SHORT_DESCRIPTION": "输入一段简短描述",
-            "ACTION_EDIT": "编辑任务",
-            "CONFIRM_CLOSE": "你有更改没有保存。\n你确定要关闭该表单吗？"
-        },
-        "CREATE_EDIT_US": {
-            "TITLE": "新建用户故事",
-            "PLACEHOLDER_DESCRIPTION": "请加上一些描述文字以帮助其它人了解此用户故事",
-            "NEW_US": "新建用户故事",
-            "EDIT_US": "编辑用户故事",
-            "CONFIRM_CLOSE": "你有更改没有保存。\n你确定要关闭该表单吗？"
+        "CREATE_EDIT": {
+            "PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this {{ objName }}",
+            "NEW": "New {{ objName }}",
+            "EDIT": "Edit {{ objName }}",
+            "ADD_EXISTING": "Add {{ objName }} to {{ targetName }}",
+            "CONFIRM_CLOSE": "你有更改没有保存。\n你确定要关闭该表单吗？",
+            "EXISTING_OBJECT": "Existing {{ objName }}",
+            "NEW_OBJECT": "New {{ objName }}",
+            "CHOOSE_EXISTING": "Which {{ objName }}?"
         },
         "DELETE_DUE_DATE": {
             "TITLE": "删除截止日期",
@@ -1098,6 +1101,10 @@
         },
         "DELETE_SPRINT": {
             "TITLE": "删除冲刺任务"
+        },
+        "REMOVE_RELATIONSHIP_WITH_EPIC": {
+            "TITLE": "Remove relationship with Epic",
+            "MESSAGE": "the relationship of this User Story with the Epic {{epicSubject}}"
         },
         "CREATE_MEMBER": {
             "PLACEHOLDER_INVITATION_TEXT": "(非必要) 加上一段私人文字在邀请信，告诉你的新成员一些好事  ;-)",
@@ -1139,6 +1146,21 @@
                 "IN_THREE_MONTHS": "三月内"
             },
             "TITLE_ACTION_DELETE_DUE_DATE": "删除截止日期"
+        },
+        "ADMIN_DUE_DATES": {
+            "TITLE_ACTION_DELETE_DUE_DATE": "删除截止日期",
+            "SUBTITLE_ACTION_DELETE_DUE_DATE": "Are you sure you want to delete the due date status {{due_date_status_name}}?"
+        },
+        "RELATE_TO_EPIC": {
+            "TITLE": "Link to Epic",
+            "EXISTING_EPIC": "Existing epic",
+            "NEW_EPIC": "New epic",
+            "CHOOSE_PROJECT_FOR_CREATION": "项目是什么",
+            "CHOOSE_PROJECT_FROM": "项目是什么",
+            "SUBJECT": "主题",
+            "CHOOSE_EPIC": "What's the epic?",
+            "FILTER_EPICS": "Filter epics",
+            "NO_EPICS_FOUND": "看起来没有符合你的搜索条件的结果"
         }
     },
     "EPIC": {
@@ -1146,16 +1168,16 @@
         "PAGE_DESCRIPTION": "状态：{{epicStatus}}。描述：{{epicDescription}}",
         "SECTION_NAME": "史诗",
         "TITLE_LIGHTBOX_UNLINK_RELATED_USERSTORY": "断开相关用户故事链接",
-        "MSG_LIGHTBOX_UNLINK_RELATED_USERSTORY": "这将删除到相关用户故事的链接'{{subject}}'",
+        "MSG_LIGHTBOX_UNLINK_RELATED_USERSTORY": "This action will remove the link to the related user story '{{subject}}'",
         "ERROR_UNLINK_RELATED_USERSTORY": "无法断开链接：{{errorMessage}}",
         "CREATE_RELATED_USERSTORIES": "创建关系",
         "NEW_USERSTORY": "新建用户故事",
         "EXISTING_USERSTORY": "已有用户故事",
-        "CHOOSE_PROJECT_FOR_CREATION": "项目是什么",
+        "CHOOSE_PROJECT_FOR_CREATION": "Which project?",
         "SUBJECT": "主题",
         "SUBJECT_BULK_MODE": "题目(批量插入)",
-        "CHOOSE_PROJECT_FROM": "项目是什么",
-        "CHOOSE_USERSTORY": "用户故事是什么",
+        "CHOOSE_PROJECT_FROM": "Which project?",
+        "CHOOSE_USERSTORY": "Which user story?",
         "NO_USERSTORIES": "该项目无用户故事。请选择其他项目。",
         "NO_USERSTORIES_FOUND": "看起来没有符合你的搜索条件的结果",
         "FILTER_USERSTORIES": "过滤用户故事",
@@ -1177,6 +1199,8 @@
         "LIGHTBOX_TITLE_BLOKING_US": "封锁中的用户故事",
         "NOT_ESTIMATED": "无预估",
         "OWNER_US": "此User Story属于",
+        "RELATE_TO_EPIC": "Link to Epic",
+        "REMOVE_RELATIONSHIP_WITH_EPIC": "Remove Epic relationship",
         "TRIBE": {
             "PUBLISH": "以Gig的形式在Taiga Tribe中发布",
             "PUBLISH_INFO": "更多信息",
@@ -1187,10 +1211,6 @@
             "SYNCHRONIZE_LINK": "与Taiga Tribe同步",
             "PUBLISH_MORE_INFO_TITLE": "你是否需要其他人来做这个任务？",
             "PUBLISH_MORE_INFO_TEXT": "如果你在工作中的某个特殊的地方需要帮助，你可以很容易地在Taiga Tribe 创建gig并接受来自世界各地的帮助。你将能够控制并管理这个gig并享受一个渴望贡献的伟大社区。TaigaTribe 作为Taiga的姊妹存在。两个平台可以相互独立，但是我们相信联合使用他们会更为强大，所以我们确信集成工作将会非常有用。"
-        },
-        "FIELDS": {
-            "TEAM_REQUIREMENT": "团队要求",
-            "CLIENT_REQUIREMENT": "客户要求"
         }
     },
     "COMMENTS": {
@@ -1339,6 +1359,8 @@
         "SECTION_NAME": "任务板",
         "TITLE_ACTION_ADD": "增加新任务",
         "TITLE_ACTION_ADD_BULK": "批次加入新任务",
+        "TITLE_ACTION_ADD_ISSUE": "Add a new Issue",
+        "TITLE_ACTION_ADD_ISSUE_BULK": "Add some new Issues in bulk",
         "TITLE_ACTION_ASSIGN": "指派任务",
         "PLACEHOLDER_CARD_TITLE": "这可能是一个任务",
         "PLACEHOLDER_CARD_TEXT": "将用户故事拆分为多个任务以便单独跟踪",
@@ -1349,7 +1371,8 @@
             "TITLE_ACTION_FOLD_ROW": "隐藏列数",
             "TITLE_ACTION_UNFOLD_ROW": "未隐藏列数",
             "FIELD_POINTS": "点数",
-            "ROW_UNASSIGED_TASKS_TITLE": "未指派的任务"
+            "ROW_UNASSIGED_TASKS_TITLE": "未指派的任务",
+            "ROW_ISSUES_TITLE": "Sprint Issues"
         },
         "CHARTS": {
             "XAXIS_LABEL": "天数",
@@ -1384,7 +1407,8 @@
         "CLOSE": "关闭通知",
         "MAIL": "通过邮件通知",
         "DESKTOP": "使用浏览器警告作为桌面提醒",
-        "ASK_DELETE": "你确定要删除吗？"
+        "ASK_DELETE": "你确定要删除吗？",
+        "ASK_REMOVE_LINK": "Are you sure you want to remove the link?"
     },
     "CANCEL_ACCOUNT": {
         "TITLE": "注销您的账户",
@@ -1406,15 +1430,30 @@
         "SECTION_NAME": "问题",
         "ACTION_NEW_ISSUE": "+ 新问题",
         "ACTION_PROMOTE_TO_US": "提升到用户故事",
+        "ACTION_ATTACH_SPRINT": "Attach issue to Sprint",
+        "ACTION_DETACH_SPRINT": "Detach issue from Sprint",
         "PROMOTED": "此问题已提升为用户故事",
         "EXTERNAL_REFERENCE": "此问题的提出者是",
         "GO_TO_EXTERNAL_REFERENCE": "回到开头",
         "ACTION_DELETE": "删除议题",
         "LIGHTBOX_TITLE_BLOKING_ISSUE": "冻结中的问题",
+        "LINK_TASKBOARD": "任务板",
+        "TITLE_LINK_TASKBOARD": "到任务板去",
+        "FILTER_SPRINTS": "Filter Sprints",
+        "CHOOSE_SPRINT": "Which Sprint?",
         "FIELDS": {
             "PRIORITY": "优先级",
             "SEVERITY": "严重程度",
             "TYPE": "类型"
+        },
+        "FILTER_ISSUES": "Filter Issues",
+        "CONFIRM_DETACH_FROM_SPRINT": {
+            "TITLE": "Detach issue from Sprint",
+            "MESSAGE": "You are about to detach the issue from the sprint"
+        },
+        "CONFIRM_CHANGE_FROM_SPRINT": {
+            "TITLE": "Move issue from another sprint",
+            "MESSAGE": "Are you sure you want to move the issue {{ issue }} from sprint {{ oldSprintName }} to sprint {{ newSprintName }}?"
         },
         "CONFIRM_PROMOTE": {
             "TITLE": "将此问题提为用户故事",

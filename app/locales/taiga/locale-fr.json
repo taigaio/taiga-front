@@ -48,7 +48,9 @@
         "CARD": {
             "ASSIGN_TO": "Affecter à",
             "EDIT": "Modifier la carte",
-            "DELETE": "Delete card"
+            "DELETE": "Delete card",
+            "DELETE_ISSUE": "Supprimer le ticket",
+            "DETACH_ISSUE_FROM_SPRINT": "Detach issue from sprint"
         },
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Cette valeur semble être invalide.",
@@ -79,7 +81,6 @@
         },
         "PICKERDATE": {
             "FORMAT": "DD MMM YYYY",
-            "IS_RTL": "faux",
             "FIRST_DAY_OF_WEEK": "1",
             "PREV_MONTH": "Mois précédent",
             "NEXT_MONTH": "Mois suivant",
@@ -167,10 +168,7 @@
             "SELF": "Me l'affecter"
         },
         "DUE_DATE": {
-            "TITLE_ACTION_SET_DUE_DATE": "Set due date",
-            "DUE_SOON": "due soon",
-            "PAST_DUE": "past due date",
-            "NO_LONGER_APPLICABLE": "no longer applicable"
+            "TITLE_ACTION_SET_DUE_DATE": "Set due date"
         },
         "ASSIGNED_USERS": {
             "ADD": "Select assigned user",
@@ -616,6 +614,18 @@
             "MIXING_MERGE": "Fusionner des mots-clés",
             "SELECTED": "Sélectionné"
         },
+        "PROJECT_DUE_DATE_STATUS": {
+            "TITLE": "Due Dates",
+            "SUBTITLE": "Specify the due dates your user stories, tasks and issues will go through if selected",
+            "US_TITLE": "User Story Due Date status",
+            "ACTION_ADD_STATUS": "Ajouter un nouveau statut",
+            "TASK_TITLE": "Task Due Date status",
+            "ISSUE_TITLE": "Issue Due Date status",
+            "DAYS_TO_DUE_DATE": "Days to due date",
+            "BEFORE_AFTER": "Before/after",
+            "BEFORE": "Before",
+            "AFTER": "Past"
+        },
         "ROLES": {
             "PAGE_TITLE": "Rôles - {{projectName}}",
             "WARNING_NO_ROLE": "Attention, aucun rôle dans votre projet ne pourra estimer la valeur du point pour les récits utilisateurs",
@@ -716,7 +726,8 @@
             "LABEL_SEVERITY": "Valeur par défaut pour le sélecteur de gravité"
         },
         "STATUS": {
-            "PLACEHOLDER_WRITE_STATUS_NAME": "Entrez le nom du nouveau statut"
+            "PLACEHOLDER_WRITE_STATUS_NAME": "Entrez le nom du nouveau statut",
+            "PLACEHOLDER_DAYS_TO_DUE_DATE": "Write a number of days to due date"
         },
         "TYPES": {
             "PLACEHOLDER_WRITE_NAME": "Entrez un nom pour le nouvel élément"
@@ -742,7 +753,8 @@
             "SEVERITIES": "Gravité",
             "TYPES": "Types",
             "CUSTOM_FIELDS": "Champs personnalisés",
-            "TAGS": "Mots-clés"
+            "TAGS": "Mots-clés",
+            "DUE_DATES": "Due dates"
         },
         "SUBMENU_ROLES": {
             "TITLE": "Rôles",
@@ -1055,9 +1067,6 @@
             "PLACEHOLDER_INVITATION_TEXT": "(Optionnel) Ajoutez un texte personnalisé à l'invitation. Dites quelque chose de gentil à vos nouveaux membres ;-)",
             "HELP_TEXT": "Si vos utilisateurs sont déjà inscrits sur Taiga, ils seront automatiquement ajoutés. Sinon, ils recevront une invitation."
         },
-        "CREATE_ISSUE": {
-            "TITLE": "Ajouter un ticket"
-        },
         "FEEDBACK": {
             "TITLE": "Dites-nous quelque chose...",
             "COMMENT": "...un bug, des suggestions, quelque chose de cool... ou même votre pire cauchemar avec Taiga",
@@ -1076,21 +1085,15 @@
             "TITLE_ACTION_DELETE_SPRINT": "supprimer le sprint",
             "LAST_SPRINT_NAME": "le dernier sprint est <strong> {{lastSprint}} ;-) </strong>"
         },
-        "CREATE_EDIT_TASK": {
-            "TITLE": "Nouvelle tâche",
-            "PLACEHOLDER_SUBJECT": "L'objet de la tâche",
-            "PLACEHOLDER_STATUS": "Statut de la tâche",
-            "OPTION_UNASSIGNED": "Non affecté",
-            "PLACEHOLDER_SHORT_DESCRIPTION": "Saisissez une description courte",
-            "ACTION_EDIT": "Modifier la tâche",
-            "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?"
-        },
-        "CREATE_EDIT_US": {
-            "TITLE": "Nouveau récit utilisateur",
-            "PLACEHOLDER_DESCRIPTION": "Veuillez ajouter une description pour aider les autres à mieux comprendre ce récit utilisateur",
-            "NEW_US": "Nouveau récit utilisateur",
-            "EDIT_US": "Modifier le récit utilisateur",
-            "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?"
+        "CREATE_EDIT": {
+            "PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this {{ objName }}",
+            "NEW": "New {{ objName }}",
+            "EDIT": "Edit {{ objName }}",
+            "ADD_EXISTING": "Add {{ objName }} to {{ targetName }}",
+            "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?",
+            "EXISTING_OBJECT": "Existing {{ objName }}",
+            "NEW_OBJECT": "New {{ objName }}",
+            "CHOOSE_EXISTING": "Which {{ objName }}?"
         },
         "DELETE_DUE_DATE": {
             "TITLE": "Delete due date",
@@ -1098,6 +1101,10 @@
         },
         "DELETE_SPRINT": {
             "TITLE": "Supprimer le sprint"
+        },
+        "REMOVE_RELATIONSHIP_WITH_EPIC": {
+            "TITLE": "Remove relationship with Epic",
+            "MESSAGE": "the relationship of this User Story with the Epic {{epicSubject}}"
         },
         "CREATE_MEMBER": {
             "PLACEHOLDER_INVITATION_TEXT": "(Optionnel) Ajoutez un texte personnalisé à l'invitation. Dites quelque chose de gentil à vos nouveaux membres ;-)",
@@ -1139,6 +1146,21 @@
                 "IN_THREE_MONTHS": "In three months"
             },
             "TITLE_ACTION_DELETE_DUE_DATE": "Delete due date"
+        },
+        "ADMIN_DUE_DATES": {
+            "TITLE_ACTION_DELETE_DUE_DATE": "Delete due date",
+            "SUBTITLE_ACTION_DELETE_DUE_DATE": "Are you sure you want to delete the due date status {{due_date_status_name}}?"
+        },
+        "RELATE_TO_EPIC": {
+            "TITLE": "Link to Epic",
+            "EXISTING_EPIC": "Existing epic",
+            "NEW_EPIC": "New epic",
+            "CHOOSE_PROJECT_FOR_CREATION": "Quel est le projet ?",
+            "CHOOSE_PROJECT_FROM": "Quel est le projet ?",
+            "SUBJECT": "Objet",
+            "CHOOSE_EPIC": "What's the epic?",
+            "FILTER_EPICS": "Filter epics",
+            "NO_EPICS_FOUND": "Il semble qu'aucun résultat ne correspond à vos critères de recherche"
         }
     },
     "EPIC": {
@@ -1146,16 +1168,16 @@
         "PAGE_DESCRIPTION": "Statut : {{epicStatus }}. Description : {{epicDescription}}",
         "SECTION_NAME": "Épopée",
         "TITLE_LIGHTBOX_UNLINK_RELATED_USERSTORY": "Détacher le récit utilisateur",
-        "MSG_LIGHTBOX_UNLINK_RELATED_USERSTORY": "Cela va supprimer le lien vers le récit utilisateur \"{{subject}}\"",
+        "MSG_LIGHTBOX_UNLINK_RELATED_USERSTORY": "This action will remove the link to the related user story '{{subject}}'",
         "ERROR_UNLINK_RELATED_USERSTORY": "Nous n'avons pas réussi à supprimer le lien : {{errorMessage}}",
         "CREATE_RELATED_USERSTORIES": "Créer un lien avec",
         "NEW_USERSTORY": "Nouveau récit utilisateur",
         "EXISTING_USERSTORY": "Récit utilisateur existant",
-        "CHOOSE_PROJECT_FOR_CREATION": "Quel est le projet ?",
+        "CHOOSE_PROJECT_FOR_CREATION": "Which project?",
         "SUBJECT": "Objet",
         "SUBJECT_BULK_MODE": "Sujet (ajout en masse)",
-        "CHOOSE_PROJECT_FROM": "Quel est le projet ?",
-        "CHOOSE_USERSTORY": "Quel est le récit utilisateur ?",
+        "CHOOSE_PROJECT_FROM": "Which project?",
+        "CHOOSE_USERSTORY": "Which user story?",
         "NO_USERSTORIES": "Ce projet n'a pas encore de récits utilisateur. Merci de choisir un autre projet.",
         "NO_USERSTORIES_FOUND": "Il semble qu'aucun résultat ne correspond à vos critères de recherche",
         "FILTER_USERSTORIES": "Filtrer les récits utilisateur",
@@ -1177,6 +1199,8 @@
         "LIGHTBOX_TITLE_BLOKING_US": "Bloque le RU",
         "NOT_ESTIMATED": "Non estimé",
         "OWNER_US": "Ce récit Utilisateur fait partie de ",
+        "RELATE_TO_EPIC": "Link to Epic",
+        "REMOVE_RELATIONSHIP_WITH_EPIC": "Remove Epic relationship",
         "TRIBE": {
             "PUBLISH": "Publier en tant que Gig sur Taiga Tribe ",
             "PUBLISH_INFO": "Plus d'informations",
@@ -1187,10 +1211,6 @@
             "SYNCHRONIZE_LINK": "se synchroniser avec Taiga Tribe",
             "PUBLISH_MORE_INFO_TITLE": "Avez-vous besoin de quelqu'un pour cette tâche ?",
             "PUBLISH_MORE_INFO_TEXT": "<p>Si vous avez besoin d'un coup de main pour un élément en particulier, vous pouvez facilement créer un \"Gig\" sur <a href='http://taigatribe.com' title='Taiga Tribe'> Taiga Tribe </a> et recevoir de l'aide de la terre entière. Vous serez en mesure de contrôler et manager le \"Gig\", en profitant d'une grande communauté assoiffée de contribution.</p><p><a href='http://taigatribe.com' title='Taiga Tribe'> TaigaTribe </a> est née en jumelle de Taïga. les deux plateformes peuvent vivre séparément, mais nous croyons que leur plus grande force est dans la combinaison, et nous nous assurons donc que l'intégration fonctionne \"au poil\" !,</p>"
-        },
-        "FIELDS": {
-            "TEAM_REQUIREMENT": "Exigence équipe",
-            "CLIENT_REQUIREMENT": "Exigence client"
         }
     },
     "COMMENTS": {
@@ -1339,6 +1359,8 @@
         "SECTION_NAME": "Tableau des tâches",
         "TITLE_ACTION_ADD": "Ajouter une nouvelle tâche",
         "TITLE_ACTION_ADD_BULK": "Ajouter un nouveau lot de tâches",
+        "TITLE_ACTION_ADD_ISSUE": "Add a new Issue",
+        "TITLE_ACTION_ADD_ISSUE_BULK": "Add some new Issues in bulk",
         "TITLE_ACTION_ASSIGN": "Affecter une tâche",
         "PLACEHOLDER_CARD_TITLE": "Cela pourrait être une tâche",
         "PLACEHOLDER_CARD_TEXT": "Éclater les récits en tâches pour les suivre séparément",
@@ -1349,7 +1371,8 @@
             "TITLE_ACTION_FOLD_ROW": "Replier la ligne",
             "TITLE_ACTION_UNFOLD_ROW": "Déplier la ligne",
             "FIELD_POINTS": "points",
-            "ROW_UNASSIGED_TASKS_TITLE": "Tâches non assignées"
+            "ROW_UNASSIGED_TASKS_TITLE": "Tâches non assignées",
+            "ROW_ISSUES_TITLE": "Sprint Issues"
         },
         "CHARTS": {
             "XAXIS_LABEL": "Jours",
@@ -1384,7 +1407,8 @@
         "CLOSE": "Fermer la notification",
         "MAIL": "Notifications par courriel",
         "DESKTOP": "Desktop notifications using browser alerts",
-        "ASK_DELETE": "Etes-vous sûre de vouloir supprimer ?"
+        "ASK_DELETE": "Etes-vous sûre de vouloir supprimer ?",
+        "ASK_REMOVE_LINK": "Are you sure you want to remove the link?"
     },
     "CANCEL_ACCOUNT": {
         "TITLE": "Annuler votre compte",
@@ -1406,15 +1430,30 @@
         "SECTION_NAME": "Ticket",
         "ACTION_NEW_ISSUE": "+ NOUVEAU TICKET",
         "ACTION_PROMOTE_TO_US": "Promouvoir en récit utilisateur",
+        "ACTION_ATTACH_SPRINT": "Attach issue to Sprint",
+        "ACTION_DETACH_SPRINT": "Detach issue from Sprint",
         "PROMOTED": "Le ticket a été promu en récit utilisateur",
         "EXTERNAL_REFERENCE": "Ce ticket a été créé à partir de",
         "GO_TO_EXTERNAL_REFERENCE": "Aller à l'origine",
         "ACTION_DELETE": "Supprimer le ticket",
         "LIGHTBOX_TITLE_BLOKING_ISSUE": "Ticket bloquant",
+        "LINK_TASKBOARD": "Tableau des tâches",
+        "TITLE_LINK_TASKBOARD": "Aller au tableau des tâches",
+        "FILTER_SPRINTS": "Filter Sprints",
+        "CHOOSE_SPRINT": "Which Sprint?",
         "FIELDS": {
             "PRIORITY": "Priorité",
             "SEVERITY": "Gravité",
             "TYPE": "Type"
+        },
+        "FILTER_ISSUES": "Filter Issues",
+        "CONFIRM_DETACH_FROM_SPRINT": {
+            "TITLE": "Detach issue from Sprint",
+            "MESSAGE": "You are about to detach the issue from the sprint"
+        },
+        "CONFIRM_CHANGE_FROM_SPRINT": {
+            "TITLE": "Move issue from another sprint",
+            "MESSAGE": "Are you sure you want to move the issue {{ issue }} from sprint {{ oldSprintName }} to sprint {{ newSprintName }}?"
         },
         "CONFIRM_PROMOTE": {
             "TITLE": "Promouvoir ce ticket en nouveau récit utilisateur",

@@ -48,7 +48,9 @@
         "CARD": {
             "ASSIGN_TO": "Assign To",
             "EDIT": "Edit card",
-            "DELETE": "Delete card"
+            "DELETE": "Delete card",
+            "DELETE_ISSUE": "Slett hendelse",
+            "DETACH_ISSUE_FROM_SPRINT": "Detach issue from sprint"
         },
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Denne verdien virker å være ugyldig",
@@ -79,7 +81,6 @@
         },
         "PICKERDATE": {
             "FORMAT": "DD MMM YYYY",
-            "IS_RTL": "falsk",
             "FIRST_DAY_OF_WEEK": "1",
             "PREV_MONTH": "Forrige Måned",
             "NEXT_MONTH": "Neste Måned",
@@ -167,10 +168,7 @@
             "SELF": "Tildel til meg"
         },
         "DUE_DATE": {
-            "TITLE_ACTION_SET_DUE_DATE": "Set due date",
-            "DUE_SOON": "due soon",
-            "PAST_DUE": "past due date",
-            "NO_LONGER_APPLICABLE": "no longer applicable"
+            "TITLE_ACTION_SET_DUE_DATE": "Set due date"
         },
         "ASSIGNED_USERS": {
             "ADD": "Select assigned user",
@@ -616,6 +614,18 @@
             "MIXING_MERGE": "Merge Tags",
             "SELECTED": "Selected"
         },
+        "PROJECT_DUE_DATE_STATUS": {
+            "TITLE": "Due Dates",
+            "SUBTITLE": "Specify the due dates your user stories, tasks and issues will go through if selected",
+            "US_TITLE": "User Story Due Date status",
+            "ACTION_ADD_STATUS": "Legg til ny status",
+            "TASK_TITLE": "Task Due Date status",
+            "ISSUE_TITLE": "Issue Due Date status",
+            "DAYS_TO_DUE_DATE": "Days to due date",
+            "BEFORE_AFTER": "Before/after",
+            "BEFORE": "Before",
+            "AFTER": "Past"
+        },
         "ROLES": {
             "PAGE_TITLE": "Roller - {{projectName}}",
             "WARNING_NO_ROLE": "Vær forsiktig, ingen roller i ditt prosjekt vil kunne estimere poengverdier for brukerhistorier",
@@ -716,7 +726,8 @@
             "LABEL_SEVERITY": "Standardverdi for alvorlighetsgradsvelgeren"
         },
         "STATUS": {
-            "PLACEHOLDER_WRITE_STATUS_NAME": "Skriv et navn til den nye statusen"
+            "PLACEHOLDER_WRITE_STATUS_NAME": "Skriv et navn til den nye statusen",
+            "PLACEHOLDER_DAYS_TO_DUE_DATE": "Write a number of days to due date"
         },
         "TYPES": {
             "PLACEHOLDER_WRITE_NAME": "Skriv et navn til det nye elementet"
@@ -742,7 +753,8 @@
             "SEVERITIES": "Alvorlighetsgrad",
             "TYPES": "Typer",
             "CUSTOM_FIELDS": "Egendefinerte felter",
-            "TAGS": "Etiketter"
+            "TAGS": "Etiketter",
+            "DUE_DATES": "Due dates"
         },
         "SUBMENU_ROLES": {
             "TITLE": "Roller",
@@ -1055,9 +1067,6 @@
             "PLACEHOLDER_INVITATION_TEXT": "(Valgfritt) Legg til en egen tekst til invitasjonen. Fortell dine nye medlemmer noe fantastisk ;-)",
             "HELP_TEXT": "Hvis brukere allerede er registrerte på Taiga, vil de bli lagt til automatisk. Ellers vil de motta en invitasjon."
         },
-        "CREATE_ISSUE": {
-            "TITLE": "Legg til hendelse"
-        },
         "FEEDBACK": {
             "TITLE": "Fortell oss noe...",
             "COMMENT": "...en feil, noen forslag, noe kult... eller til og med ditt værste mareritt med Taiga",
@@ -1076,21 +1085,15 @@
             "TITLE_ACTION_DELETE_SPRINT": "slett sprint",
             "LAST_SPRINT_NAME": "siste sprinten er <strong> {{lastSprint}} ;-) </strong>"
         },
-        "CREATE_EDIT_TASK": {
-            "TITLE": "Ny oppgave",
-            "PLACEHOLDER_SUBJECT": "Subjekt til en oppgave",
-            "PLACEHOLDER_STATUS": "Oppgavestatus",
-            "OPTION_UNASSIGNED": "Ikke tildelt",
-            "PLACEHOLDER_SHORT_DESCRIPTION": "Skriv en kort beskrivelse",
-            "ACTION_EDIT": "Rediger oppgave",
-            "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?"
-        },
-        "CREATE_EDIT_US": {
-            "TITLE": "Ny BH",
-            "PLACEHOLDER_DESCRIPTION": "Vennligst legg til en beskrivende tekst for bedre å hjelpe andre til å forstå denne BH",
-            "NEW_US": "Ny brukerhistorie",
-            "EDIT_US": "Rediger brukerhistorie",
-            "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?"
+        "CREATE_EDIT": {
+            "PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this {{ objName }}",
+            "NEW": "New {{ objName }}",
+            "EDIT": "Edit {{ objName }}",
+            "ADD_EXISTING": "Add {{ objName }} to {{ targetName }}",
+            "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?",
+            "EXISTING_OBJECT": "Existing {{ objName }}",
+            "NEW_OBJECT": "New {{ objName }}",
+            "CHOOSE_EXISTING": "Which {{ objName }}?"
         },
         "DELETE_DUE_DATE": {
             "TITLE": "Delete due date",
@@ -1098,6 +1101,10 @@
         },
         "DELETE_SPRINT": {
             "TITLE": "Slett sprint"
+        },
+        "REMOVE_RELATIONSHIP_WITH_EPIC": {
+            "TITLE": "Remove relationship with Epic",
+            "MESSAGE": "the relationship of this User Story with the Epic {{epicSubject}}"
         },
         "CREATE_MEMBER": {
             "PLACEHOLDER_INVITATION_TEXT": "(Valgfritt) Legg til en egen tekst til invitasjonen. Fortell dine nye medlemmer noe fantastisk ;-)",
@@ -1139,6 +1146,21 @@
                 "IN_THREE_MONTHS": "In three months"
             },
             "TITLE_ACTION_DELETE_DUE_DATE": "Delete due date"
+        },
+        "ADMIN_DUE_DATES": {
+            "TITLE_ACTION_DELETE_DUE_DATE": "Delete due date",
+            "SUBTITLE_ACTION_DELETE_DUE_DATE": "Are you sure you want to delete the due date status {{due_date_status_name}}?"
+        },
+        "RELATE_TO_EPIC": {
+            "TITLE": "Link to Epic",
+            "EXISTING_EPIC": "Existing epic",
+            "NEW_EPIC": "New epic",
+            "CHOOSE_PROJECT_FOR_CREATION": "What's the project?",
+            "CHOOSE_PROJECT_FROM": "What's the project?",
+            "SUBJECT": "Subjekt",
+            "CHOOSE_EPIC": "What's the epic?",
+            "FILTER_EPICS": "Filter epics",
+            "NO_EPICS_FOUND": "It looks like nothing was found with your search criteria"
         }
     },
     "EPIC": {
@@ -1146,16 +1168,16 @@
         "PAGE_DESCRIPTION": "Status: {{epicStatus }}. Description: {{epicDescription}}",
         "SECTION_NAME": "Epic",
         "TITLE_LIGHTBOX_UNLINK_RELATED_USERSTORY": "Unlink related userstory",
-        "MSG_LIGHTBOX_UNLINK_RELATED_USERSTORY": "It will delete the link to the related userstory '{{subject}}'",
+        "MSG_LIGHTBOX_UNLINK_RELATED_USERSTORY": "This action will remove the link to the related user story '{{subject}}'",
         "ERROR_UNLINK_RELATED_USERSTORY": "We have not been able to unlink: {{errorMessage}}",
         "CREATE_RELATED_USERSTORIES": "Create a relationship with",
         "NEW_USERSTORY": "Ny brukerhistorie",
         "EXISTING_USERSTORY": "Existing user story",
-        "CHOOSE_PROJECT_FOR_CREATION": "What's the project?",
+        "CHOOSE_PROJECT_FOR_CREATION": "Which project?",
         "SUBJECT": "Subjekt",
         "SUBJECT_BULK_MODE": "Subject (bulk insert)",
-        "CHOOSE_PROJECT_FROM": "What's the project?",
-        "CHOOSE_USERSTORY": "What's the user story?",
+        "CHOOSE_PROJECT_FROM": "Which project?",
+        "CHOOSE_USERSTORY": "Which user story?",
         "NO_USERSTORIES": "This project has no User Stories yet. Please select another project.",
         "NO_USERSTORIES_FOUND": "It looks like nothing was found with your search criteria",
         "FILTER_USERSTORIES": "Filter user stories",
@@ -1177,6 +1199,8 @@
         "LIGHTBOX_TITLE_BLOKING_US": "Blokkerer oss",
         "NOT_ESTIMATED": "Ikke estimert",
         "OWNER_US": "This User Story belongs to",
+        "RELATE_TO_EPIC": "Link to Epic",
+        "REMOVE_RELATIONSHIP_WITH_EPIC": "Remove Epic relationship",
         "TRIBE": {
             "PUBLISH": "Publish as Gig in Taiga Tribe",
             "PUBLISH_INFO": "Mer info",
@@ -1187,10 +1211,6 @@
             "SYNCHRONIZE_LINK": "synchronize with Taiga Tribe",
             "PUBLISH_MORE_INFO_TITLE": "Do you need somebody for this task?",
             "PUBLISH_MORE_INFO_TEXT": "<p>If you need help with a particular piece of work you can easily create gigs on<a href='http://taigatribe.com' title='Taiga Tribe'> Taiga Tribe </a> and receive help from all over the world. You will be able to control and manage the gig enjoying a great community eager to contribute.</p><p><a href='http://taigatribe.com' title='Taiga Tribe'> TaigaTribe </a>  was born as a Taiga sibling. Both platforms can live separately but we believe that there is much power in using them combined so we are making sure the integration works like a charm.</p>"
-        },
-        "FIELDS": {
-            "TEAM_REQUIREMENT": "Team behov",
-            "CLIENT_REQUIREMENT": "Klientkrav"
         }
     },
     "COMMENTS": {
@@ -1339,6 +1359,8 @@
         "SECTION_NAME": "Oppgavetavle",
         "TITLE_ACTION_ADD": "Legg til en ny oppgave",
         "TITLE_ACTION_ADD_BULK": "Legg til noen nye Oppgaver samlet",
+        "TITLE_ACTION_ADD_ISSUE": "Add a new Issue",
+        "TITLE_ACTION_ADD_ISSUE_BULK": "Add some new Issues in bulk",
         "TITLE_ACTION_ASSIGN": "Tildel oppgave",
         "PLACEHOLDER_CARD_TITLE": "Dette kunne vært en oppgave",
         "PLACEHOLDER_CARD_TEXT": "Splitt historier inn i oppgaver og følg dem separat",
@@ -1349,7 +1371,8 @@
             "TITLE_ACTION_FOLD_ROW": "Brett Rad",
             "TITLE_ACTION_UNFOLD_ROW": "Brett ut Rad",
             "FIELD_POINTS": "poeng",
-            "ROW_UNASSIGED_TASKS_TITLE": "\nIkke tildelte oppgaver"
+            "ROW_UNASSIGED_TASKS_TITLE": "\nIkke tildelte oppgaver",
+            "ROW_ISSUES_TITLE": "Sprint Issues"
         },
         "CHARTS": {
             "XAXIS_LABEL": "Dager",
@@ -1384,7 +1407,8 @@
         "CLOSE": "Lukk melding",
         "MAIL": "Varsler per Epost",
         "DESKTOP": "Desktop notifications using browser alerts",
-        "ASK_DELETE": "Er du sikker på at du vil slette?"
+        "ASK_DELETE": "Er du sikker på at du vil slette?",
+        "ASK_REMOVE_LINK": "Are you sure you want to remove the link?"
     },
     "CANCEL_ACCOUNT": {
         "TITLE": "Kanseler din konto",
@@ -1406,15 +1430,30 @@
         "SECTION_NAME": "Hendelse",
         "ACTION_NEW_ISSUE": "+ NY HENDELSE",
         "ACTION_PROMOTE_TO_US": "Oppgrader til Brukerhistorie",
+        "ACTION_ATTACH_SPRINT": "Attach issue to Sprint",
+        "ACTION_DETACH_SPRINT": "Detach issue from Sprint",
         "PROMOTED": "Denne hendelsen har blitt oppgradert til BH",
         "EXTERNAL_REFERENCE": "Denne hendelsen har blitt opprettet av",
         "GO_TO_EXTERNAL_REFERENCE": "Gå til opphav",
         "ACTION_DELETE": "Slett hendelse",
         "LIGHTBOX_TITLE_BLOKING_ISSUE": "Blokker hendelse",
+        "LINK_TASKBOARD": "Oppgavetavle",
+        "TITLE_LINK_TASKBOARD": "Gå til oppgavetavlen",
+        "FILTER_SPRINTS": "Filter Sprints",
+        "CHOOSE_SPRINT": "Which Sprint?",
         "FIELDS": {
             "PRIORITY": "Prioritet",
             "SEVERITY": "Alvorlighetsgrad",
             "TYPE": "Type"
+        },
+        "FILTER_ISSUES": "Filter Issues",
+        "CONFIRM_DETACH_FROM_SPRINT": {
+            "TITLE": "Detach issue from Sprint",
+            "MESSAGE": "You are about to detach the issue from the sprint"
+        },
+        "CONFIRM_CHANGE_FROM_SPRINT": {
+            "TITLE": "Move issue from another sprint",
+            "MESSAGE": "Are you sure you want to move the issue {{ issue }} from sprint {{ oldSprintName }} to sprint {{ newSprintName }}?"
         },
         "CONFIRM_PROMOTE": {
             "TITLE": "Oppgrader denne henelsen til en ny brukerhistorie",

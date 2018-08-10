@@ -19,7 +19,7 @@
         "TAG_LINE": "Dein agiles, freies und quelloffenes Projekt-Management Tool",
         "TAG_LINE_2": "LIEBE DEIN PROJEKT",
         "BLOCK": "Blockieren",
-        "BLOCK_TITLE": "Blockiere dieses Item, zum Beispiel wenn es Abhänigkeiten besitzt die noch nicht erfüllt sind",
+        "BLOCK_TITLE": "Blockiere dieses Item, zum Beispiel wenn es Abhängigkeiten besitzt, die noch nicht erfüllt sind",
         "BLOCKED": "Blockiert",
         "UNBLOCK": "Blockierung aufheben",
         "UNBLOCK_TITLE": "Dieses Item freigeben",
@@ -37,7 +37,7 @@
         "LOGOUT": "Ausloggen",
         "EXTERNAL_USER": "ein externer Benutzer",
         "GENERIC_ERROR": "Eins unserer Helferlein sagt {{error}}.",
-        "IOCAINE_TEXT": "Dieses Mitglied fühlt sich ein bisschen überfordert mit dieser Aufgabe. Mit der Zeit und deiner Hilfe wird er gegen das Iocaine Pulver immun werden. Aber jetzt braucht er eine Umarmung.",
+        "IOCAINE_TEXT": "Dieses Mitglied fühlt sich ein bisschen überfordert mit dieser Aufgabe. Mit der Zeit und Ihrer Hilfe wird er gegen das Iocaine Pulver immun werden. Aber jetzt braucht er eine Umarmung.",
         "CLIENT_REQUIREMENT": "Client requirement is new requirement that was not previously expected and it is required to be part of the project",
         "TEAM_REQUIREMENT": "Team requirement is a requirement that must exist in the project but should have no cost for the client",
         "OWNER": "Projekteigentümer",
@@ -48,7 +48,9 @@
         "CARD": {
             "ASSIGN_TO": "Zuweisen an",
             "EDIT": "Karte bearbeiten",
-            "DELETE": "Karte Löschen"
+            "DELETE": "Karte Löschen",
+            "DELETE_ISSUE": "Ticket löschen",
+            "DETACH_ISSUE_FROM_SPRINT": "Detach issue from sprint"
         },
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Dieser Wert scheint ungültig zu sein.",
@@ -79,7 +81,6 @@
         },
         "PICKERDATE": {
             "FORMAT": "DD. MMM YYYY",
-            "IS_RTL": "falsch",
             "FIRST_DAY_OF_WEEK": "1",
             "PREV_MONTH": "Vorheriger Monat",
             "NEXT_MONTH": "Nächster Monat",
@@ -167,10 +168,7 @@
             "SELF": "An mich zuweisen"
         },
         "DUE_DATE": {
-            "TITLE_ACTION_SET_DUE_DATE": "Fälligkeitsdatum setzen",
-            "DUE_SOON": "bald fällig",
-            "PAST_DUE": "nach Fälligkeitsdatum",
-            "NO_LONGER_APPLICABLE": "nicht länger anwendbar"
+            "TITLE_ACTION_SET_DUE_DATE": "Fälligkeitsdatum setzen"
         },
         "ASSIGNED_USERS": {
             "ADD": "Zugewiesenen Benutzer wählen",
@@ -362,7 +360,7 @@
         "SUCCESS": "Unsere Helferlein haben das neue Passwort gespeichert.<br /> <strong>Hier</strong> gehts zum login."
     },
     "INVITATION": {
-        "PAGE_TITLE": "Einladungs Annahme - Taiga",
+        "PAGE_TITLE": "Annahme der Einladung - Taiga",
         "PAGE_DESCRIPTION": "Nehmen Sie die Einladung an und treten Sie einem Projekt in Taiga bei, einer Projekt-Management Plattform für Neugründer und agile Entwickler und Designer, die ein unkompliziertes und ansprechendes Tool möchten, das die Arbeit wirklich angenehm macht."
     },
     "INVITATION_LOGIN_FORM": {
@@ -616,6 +614,18 @@
             "MIXING_MERGE": "Tags zusammenführen",
             "SELECTED": "Ausgewählt"
         },
+        "PROJECT_DUE_DATE_STATUS": {
+            "TITLE": "Due Dates",
+            "SUBTITLE": "Specify the due dates your user stories, tasks and issues will go through if selected",
+            "US_TITLE": "User Story Due Date status",
+            "ACTION_ADD_STATUS": "Neuen Status hinzufügen",
+            "TASK_TITLE": "Task Due Date status",
+            "ISSUE_TITLE": "Issue Due Date status",
+            "DAYS_TO_DUE_DATE": "Days to due date",
+            "BEFORE_AFTER": "Before/after",
+            "BEFORE": "Before",
+            "AFTER": "Past"
+        },
         "ROLES": {
             "PAGE_TITLE": "Rollen - {{projectName}}",
             "WARNING_NO_ROLE": "Beachten Sie, keine Rolle in Ihrem Projekt wird in der Lage sein, die Punktevergabe für User-Stories einzuschätzen.",
@@ -628,7 +638,7 @@
             "WARNING_DELETE_ROLE": "Achtung! Alle Rollenverteilungen werden entfernt.",
             "ERROR_DELETE_ALL": "Sie können nicht alle Werte löschen",
             "EXTERNAL_USER": "Externer Benutzer",
-            "NOTE_EXTERNAL_USERS": "<strong>Beachte:</strong>Mit Externen Benutzern meinen wir anonyme Benutzer, die nicht zur Taiga Plattform gehören, einschließlich Suchmaschinen. Bitte benutze diese Rolle mit Vorsicht."
+            "NOTE_EXTERNAL_USERS": "<strong>Beachte:</strong>Mit Externen Benutzern meinen wir anonyme Benutzer, die nicht zur Taiga Plattform gehören, einschließlich Suchmaschinen. Bitte benutzen Sie diese Rolle mit Vorsicht."
         },
         "THIRD_PARTIES": {
             "SECRET_KEY": "Geheimschlüssel",
@@ -716,7 +726,8 @@
             "LABEL_SEVERITY": "Vorgegebener Wert für Gewichtungsauswahl"
         },
         "STATUS": {
-            "PLACEHOLDER_WRITE_STATUS_NAME": "Benennen Sie den neuen Status"
+            "PLACEHOLDER_WRITE_STATUS_NAME": "Benennen Sie den neuen Status",
+            "PLACEHOLDER_DAYS_TO_DUE_DATE": "Write a number of days to due date"
         },
         "TYPES": {
             "PLACEHOLDER_WRITE_NAME": "Geben Sie dem neuen Element einen Namen"
@@ -742,7 +753,8 @@
             "SEVERITIES": "Schweregrade",
             "TYPES": "Typen",
             "CUSTOM_FIELDS": "Benutzerdefinierte Felder",
-            "TAGS": "Schlagwörter"
+            "TAGS": "Schlagwörter",
+            "DUE_DATES": "Due dates"
         },
         "SUBMENU_ROLES": {
             "TITLE": "Rollen",
@@ -1055,9 +1067,6 @@
             "PLACEHOLDER_INVITATION_TEXT": "(Optional) Fügen Sie einen persönlichen Text zur Einladung hinzu. Erzählen Sie Ihren neuen Mitgliedern etwas Schönes. ;-)",
             "HELP_TEXT": "Wenn Benutzer schon bei Taiga registriert sind, werden diese automatisch hinzugefügt. Ansonsten erhalten sie eine Einladung."
         },
-        "CREATE_ISSUE": {
-            "TITLE": "Ticket hinzufügen"
-        },
         "FEEDBACK": {
             "TITLE": "Erzählen Sie uns etwas...",
             "COMMENT": "...einen Fehler, Anregungen, etwas Tolles... oder Ihren schlimmsten Alptraum mit Taiga.",
@@ -1076,28 +1085,26 @@
             "TITLE_ACTION_DELETE_SPRINT": "Sprint löschen",
             "LAST_SPRINT_NAME": "letzter Sprint ist <strong> {{lastSprint}} ;-) </strong>"
         },
-        "CREATE_EDIT_TASK": {
-            "TITLE": "Neue Aufgabe",
-            "PLACEHOLDER_SUBJECT": "Aufgaben Betreff",
-            "PLACEHOLDER_STATUS": "Aufgaben-Status",
-            "OPTION_UNASSIGNED": "Nicht zugeordnet",
-            "PLACEHOLDER_SHORT_DESCRIPTION": "Geben Sie eine kurze Beschreibung ein",
-            "ACTION_EDIT": "Aufgabe bearbeiten",
-            "CONFIRM_CLOSE": "Du hast deine Änderungen noch nicht gespeichert.\nBist du sicher, dass du dieses Formular schließen möchtest?"
-        },
-        "CREATE_EDIT_US": {
-            "TITLE": "Neue User-Story",
-            "PLACEHOLDER_DESCRIPTION": "Fügen Sie bitte einen Beschreibungstext hinzu, um anderen diese User-Story näher zu erläutern",
-            "NEW_US": "Neue User-Story",
-            "EDIT_US": "User-Story bearbeiten",
-            "CONFIRM_CLOSE": "Du hast deine Änderungen noch nicht gespeichert.\nBist du sicher, dass du dieses Formular schließen möchtest?"
+        "CREATE_EDIT": {
+            "PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this {{ objName }}",
+            "NEW": "New {{ objName }}",
+            "EDIT": "Edit {{ objName }}",
+            "ADD_EXISTING": "Add {{ objName }} to {{ targetName }}",
+            "CONFIRM_CLOSE": "Sie haben Ihre Änderungen noch nicht gespeichert.\nSind Sie sicher, dass Sie dieses Formular schließen möchten?",
+            "EXISTING_OBJECT": "Existing {{ objName }}",
+            "NEW_OBJECT": "New {{ objName }}",
+            "CHOOSE_EXISTING": "Which {{ objName }}?"
         },
         "DELETE_DUE_DATE": {
             "TITLE": "Fälligkeitsdatum löschen",
-            "SUBTITLE": "Bist du sicher, dass du dieses Fälligkeitsdatum löschen willst?"
+            "SUBTITLE": "Sind Sie sicher, dass Sie dieses Fälligkeitsdatum löschen wollen?"
         },
         "DELETE_SPRINT": {
             "TITLE": "Sprint löschen"
+        },
+        "REMOVE_RELATIONSHIP_WITH_EPIC": {
+            "TITLE": "Remove relationship with Epic",
+            "MESSAGE": "the relationship of this User Story with the Epic {{epicSubject}}"
         },
         "CREATE_MEMBER": {
             "PLACEHOLDER_INVITATION_TEXT": "(Optional) Fügen Sie einen persönlichen Text zur Einladung hinzu. Erzählen Sie Ihren neuen Mitgliedern etwas Schönes. ;-)",
@@ -1139,6 +1146,21 @@
                 "IN_THREE_MONTHS": "In drei Monaten"
             },
             "TITLE_ACTION_DELETE_DUE_DATE": "Fälligkeitsdatum löschen"
+        },
+        "ADMIN_DUE_DATES": {
+            "TITLE_ACTION_DELETE_DUE_DATE": "Fälligkeitsdatum löschen",
+            "SUBTITLE_ACTION_DELETE_DUE_DATE": "Are you sure you want to delete the due date status {{due_date_status_name}}?"
+        },
+        "RELATE_TO_EPIC": {
+            "TITLE": "Link to Epic",
+            "EXISTING_EPIC": "Existing epic",
+            "NEW_EPIC": "New epic",
+            "CHOOSE_PROJECT_FOR_CREATION": "Welches Projekt?",
+            "CHOOSE_PROJECT_FROM": "Welches Projekt?",
+            "SUBJECT": "Thema",
+            "CHOOSE_EPIC": "What's the epic?",
+            "FILTER_EPICS": "Filter epics",
+            "NO_EPICS_FOUND": "Es sieht so aus, als konnte zu Ihren Suchkriterien nichts passendes gefunden werden."
         }
     },
     "EPIC": {
@@ -1146,16 +1168,16 @@
         "PAGE_DESCRIPTION": "Status: {{epicStatus }}. Beschreibung: {{epicDescription}}",
         "SECTION_NAME": "Epic",
         "TITLE_LIGHTBOX_UNLINK_RELATED_USERSTORY": "Verknüpfung zur zugehören User-Story lösen",
-        "MSG_LIGHTBOX_UNLINK_RELATED_USERSTORY": "Dies wird die Verknüpfung zur zugehörigen User-Story '{{subject}}' löschen",
+        "MSG_LIGHTBOX_UNLINK_RELATED_USERSTORY": "This action will remove the link to the related user story '{{subject}}'",
         "ERROR_UNLINK_RELATED_USERSTORY": "Die Verknüpfung konnte nicht gelöscht werden: {{errorMessage}}",
         "CREATE_RELATED_USERSTORIES": "Erstelle eine Verbindung mit",
         "NEW_USERSTORY": "Neue User-Story",
         "EXISTING_USERSTORY": "Bestehende User-Story",
-        "CHOOSE_PROJECT_FOR_CREATION": "Welches Projekt?",
+        "CHOOSE_PROJECT_FOR_CREATION": "Which project?",
         "SUBJECT": "Thema",
         "SUBJECT_BULK_MODE": "Thema (Mehrfacheingaben möglich)",
-        "CHOOSE_PROJECT_FROM": "Welches Projekt?",
-        "CHOOSE_USERSTORY": "Beschreibe die Userstory",
+        "CHOOSE_PROJECT_FROM": "Which project?",
+        "CHOOSE_USERSTORY": "Which user story?",
         "NO_USERSTORIES": "Dieses Projekt hat zurzeit keine User Stories. Bitte wähle ein anderes Projekt.",
         "NO_USERSTORIES_FOUND": "Es sieht so aus, als konnte zu Ihren Suchkriterien nichts passendes gefunden werden.",
         "FILTER_USERSTORIES": "User-Stories filter",
@@ -1177,6 +1199,8 @@
         "LIGHTBOX_TITLE_BLOKING_US": "Blockiert uns",
         "NOT_ESTIMATED": "Nicht eingeschätzt",
         "OWNER_US": "Userstory gehört",
+        "RELATE_TO_EPIC": "Link to Epic",
+        "REMOVE_RELATIONSHIP_WITH_EPIC": "Remove Epic relationship",
         "TRIBE": {
             "PUBLISH": "Als Gig in Taiga Tribe veröffentlichen",
             "PUBLISH_INFO": "Weitere Infos",
@@ -1187,10 +1211,6 @@
             "SYNCHRONIZE_LINK": "mit Taiga Tribe synchronisieren",
             "PUBLISH_MORE_INFO_TITLE": "Brauchen Sie jemanden für diese Aufgabe?",
             "PUBLISH_MORE_INFO_TEXT": "<p>If you need help with a particular piece of work you can easily create gigs on<a href='http://taigatribe.com' title='Taiga Tribe'> Taiga Tribe </a> and receive help from all over the world. You will be able to control and manage the gig enjoying a great community eager to contribute.</p><p><a href='http://taigatribe.com' title='Taiga Tribe'> TaigaTribe </a>  was born as a Taiga sibling. Both platforms can live separately but we believe that there is much power in using them combined so we are making sure the integration works like a charm.</p>"
-        },
-        "FIELDS": {
-            "TEAM_REQUIREMENT": "Team Anforderung",
-            "CLIENT_REQUIREMENT": "Kundenanforderung"
         }
     },
     "COMMENTS": {
@@ -1339,6 +1359,8 @@
         "SECTION_NAME": "Taskboard",
         "TITLE_ACTION_ADD": "Neue Aufgabe hinzufügen",
         "TITLE_ACTION_ADD_BULK": "Mehrere Aufgaben hinzufügen",
+        "TITLE_ACTION_ADD_ISSUE": "Add a new Issue",
+        "TITLE_ACTION_ADD_ISSUE_BULK": "Add some new Issues in bulk",
         "TITLE_ACTION_ASSIGN": "Aufgabe zuweisen",
         "PLACEHOLDER_CARD_TITLE": "Das könnte ein Task sein",
         "PLACEHOLDER_CARD_TEXT": "Teile Stories in Tasks auf um sie einzeln zu verfolgen",
@@ -1349,7 +1371,8 @@
             "TITLE_ACTION_FOLD_ROW": "Reihe einklappen",
             "TITLE_ACTION_UNFOLD_ROW": "Reihe aufklappen",
             "FIELD_POINTS": "Punkte",
-            "ROW_UNASSIGED_TASKS_TITLE": "Nicht zugeordnete Aufgaben"
+            "ROW_UNASSIGED_TASKS_TITLE": "Nicht zugeordnete Aufgaben",
+            "ROW_ISSUES_TITLE": "Sprint Issues"
         },
         "CHARTS": {
             "XAXIS_LABEL": "Tage",
@@ -1384,7 +1407,8 @@
         "CLOSE": "Benachrichtigung schließen",
         "MAIL": "Benachrichtigungen per Mail",
         "DESKTOP": "Desktopbenachrichtigung mittels Browserbenachtichtigung",
-        "ASK_DELETE": "Möchten Sie wirklich löschen?"
+        "ASK_DELETE": "Möchten Sie wirklich löschen?",
+        "ASK_REMOVE_LINK": "Are you sure you want to remove the link?"
     },
     "CANCEL_ACCOUNT": {
         "TITLE": "Ihr Benutzerkonto löschen",
@@ -1406,15 +1430,30 @@
         "SECTION_NAME": "Ticket",
         "ACTION_NEW_ISSUE": "+ NEUES TICKET",
         "ACTION_PROMOTE_TO_US": "Zur User-Story aufwerten",
+        "ACTION_ATTACH_SPRINT": "Attach issue to Sprint",
+        "ACTION_DETACH_SPRINT": "Detach issue from Sprint",
         "PROMOTED": "Dieses Ticket wurde aufgewertet zu User-Story:",
         "EXTERNAL_REFERENCE": "Dieses Ticket wurde erstellt durch",
         "GO_TO_EXTERNAL_REFERENCE": "Zur Quelle wechseln",
         "ACTION_DELETE": "Ticket löschen",
         "LIGHTBOX_TITLE_BLOKING_ISSUE": "Blockierendes Ticket",
+        "LINK_TASKBOARD": "Taskboard",
+        "TITLE_LINK_TASKBOARD": "Zu Taskboard wechseln",
+        "FILTER_SPRINTS": "Filter Sprints",
+        "CHOOSE_SPRINT": "Which Sprint?",
         "FIELDS": {
             "PRIORITY": "Priorität",
             "SEVERITY": "Gewichtung",
             "TYPE": "Arten"
+        },
+        "FILTER_ISSUES": "Filter Issues",
+        "CONFIRM_DETACH_FROM_SPRINT": {
+            "TITLE": "Detach issue from Sprint",
+            "MESSAGE": "You are about to detach the issue from the sprint"
+        },
+        "CONFIRM_CHANGE_FROM_SPRINT": {
+            "TITLE": "Move issue from another sprint",
+            "MESSAGE": "Are you sure you want to move the issue {{ issue }} from sprint {{ oldSprintName }} to sprint {{ newSprintName }}?"
         },
         "CONFIRM_PROMOTE": {
             "TITLE": "Dieses Problem zur User-Story aufwerten",
@@ -1612,9 +1651,9 @@
         "NEW_USER": "{{username}} ist Taiga beigetreten"
     },
     "LEGAL": {
-        "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>Beim Erstellen eines neuen Accounts, stimmst du unseren</span><a href=\"{{ termsOfServiceUrl }}\" title=\"See terms of service\" target=\"_blank\">Nutzungsbedingungen</a><span>und</span><a href=\"{{ privacyPolicyUrl }}\" title=\"See privacy policy\" target=\"_blank\">Datenschutzbestimmungen</a>zu.",
+        "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>Beim Erstellen eines neuen Accounts, stimmen Sie unseren</span><a href=\"{{ termsOfServiceUrl }}\" title=\"See terms of service\" target=\"_blank\">Nutzungsbedingungen</a><span>und</span><a href=\"{{ privacyPolicyUrl }}\" title=\"See privacy policy\" target=\"_blank\">Datenschutzbestimmungen</a>zu.",
         "GDPR_ANNOUNCEMENT_TITLE": "Datenschutz-Grundverordnung (DSGVO)",
-        "GDPR_ANNOUNCEMENT_DESCRIPTION": "Das hast du kommen sehen, oder? Aktualisierungen zu unseren Nutzungsbedingungen",
+        "GDPR_ANNOUNCEMENT_DESCRIPTION": "Das haben Sie kommen sehen, oder? Aktualisierungen zu unseren Nutzungsbedingungen",
         "GDPR_ANNOUNCEMENT_INFOLINK": "Bitte lies unsere Ankündigung "
     },
     "EXTERNAL_APP": {

@@ -48,7 +48,9 @@
         "CARD": {
             "ASSIGN_TO": "割当",
             "EDIT": "編集",
-            "DELETE": "カードを削除"
+            "DELETE": "カードを削除",
+            "DELETE_ISSUE": "課題を削除",
+            "DETACH_ISSUE_FROM_SPRINT": "Detach issue from sprint"
         },
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "無効な値です",
@@ -79,7 +81,6 @@
         },
         "PICKERDATE": {
             "FORMAT": "YYYY年MM月DD日",
-            "IS_RTL": "false",
             "FIRST_DAY_OF_WEEK": "1",
             "PREV_MONTH": "先月",
             "NEXT_MONTH": "翌月",
@@ -167,10 +168,7 @@
             "SELF": "自分に割当"
         },
         "DUE_DATE": {
-            "TITLE_ACTION_SET_DUE_DATE": "締切日を設定",
-            "DUE_SOON": "due soon",
-            "PAST_DUE": "past due date",
-            "NO_LONGER_APPLICABLE": "no longer applicable"
+            "TITLE_ACTION_SET_DUE_DATE": "締切日を設定"
         },
         "ASSIGNED_USERS": {
             "ADD": "割当ユーザーを選択",
@@ -616,6 +614,18 @@
             "MIXING_MERGE": "タグを結合",
             "SELECTED": "選択中"
         },
+        "PROJECT_DUE_DATE_STATUS": {
+            "TITLE": "Due Dates",
+            "SUBTITLE": "Specify the due dates your user stories, tasks and issues will go through if selected",
+            "US_TITLE": "User Story Due Date status",
+            "ACTION_ADD_STATUS": "ステータスを追加",
+            "TASK_TITLE": "Task Due Date status",
+            "ISSUE_TITLE": "Issue Due Date status",
+            "DAYS_TO_DUE_DATE": "Days to due date",
+            "BEFORE_AFTER": "Before/after",
+            "BEFORE": "Before",
+            "AFTER": "Past"
+        },
         "ROLES": {
             "PAGE_TITLE": "役割 - {{projectName}}",
             "WARNING_NO_ROLE": "Be careful, no role in your project will be able to estimate the point value for user stories",
@@ -716,7 +726,8 @@
             "LABEL_SEVERITY": "深刻度の初期値"
         },
         "STATUS": {
-            "PLACEHOLDER_WRITE_STATUS_NAME": "新しいステータス名を記入"
+            "PLACEHOLDER_WRITE_STATUS_NAME": "新しいステータス名を記入",
+            "PLACEHOLDER_DAYS_TO_DUE_DATE": "Write a number of days to due date"
         },
         "TYPES": {
             "PLACEHOLDER_WRITE_NAME": "新しいエレメント名を記入"
@@ -742,7 +753,8 @@
             "SEVERITIES": "深刻度",
             "TYPES": "タイプ",
             "CUSTOM_FIELDS": "カスタムフィールド",
-            "TAGS": "タグ"
+            "TAGS": "タグ",
+            "DUE_DATES": "Due dates"
         },
         "SUBMENU_ROLES": {
             "TITLE": "役割",
@@ -1055,9 +1067,6 @@
             "PLACEHOLDER_INVITATION_TEXT": "(任意) 招待する際のメッセージを追加できます。新メンバーに素敵な言葉を贈りましょう ;-)",
             "HELP_TEXT": "ユーザーが既にTaigaに登録されている場合、自動的に追加されます。そうでない場合は招待状が送信されます。"
         },
-        "CREATE_ISSUE": {
-            "TITLE": "課題を追加"
-        },
         "FEEDBACK": {
             "TITLE": "我々に教えてください...",
             "COMMENT": "...バグ、提案、何かクールなことやTaigaを利用していて発生した悪夢など（英語で記載してください）",
@@ -1076,21 +1085,15 @@
             "TITLE_ACTION_DELETE_SPRINT": "スプリントを削除",
             "LAST_SPRINT_NAME": "最後のスプリントは<strong> {{lastSprint}}</strong>でした ;-) "
         },
-        "CREATE_EDIT_TASK": {
-            "TITLE": "新しいタスク",
-            "PLACEHOLDER_SUBJECT": "タスク名",
-            "PLACEHOLDER_STATUS": "タスクステータス",
-            "OPTION_UNASSIGNED": "未割当",
-            "PLACEHOLDER_SHORT_DESCRIPTION": "要約を入力",
-            "ACTION_EDIT": "タスクを編集",
-            "CONFIRM_CLOSE": "変更をまだ保存していません。\n本当にフォームを閉じてもよろしいですか？"
-        },
-        "CREATE_EDIT_US": {
-            "TITLE": "新規 US",
-            "PLACEHOLDER_DESCRIPTION": "このユーザーストーリーを他の人が理解できるように説明を加えてください",
-            "NEW_US": "新しいユーザーストーリー",
-            "EDIT_US": "ユーザーストーリーを編集",
-            "CONFIRM_CLOSE": "変更をまだ保存していません。\n本当にフォームを閉じてもよろしいですか？"
+        "CREATE_EDIT": {
+            "PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this {{ objName }}",
+            "NEW": "New {{ objName }}",
+            "EDIT": "Edit {{ objName }}",
+            "ADD_EXISTING": "Add {{ objName }} to {{ targetName }}",
+            "CONFIRM_CLOSE": "変更をまだ保存していません。\n本当にフォームを閉じてもよろしいですか？",
+            "EXISTING_OBJECT": "Existing {{ objName }}",
+            "NEW_OBJECT": "New {{ objName }}",
+            "CHOOSE_EXISTING": "Which {{ objName }}?"
         },
         "DELETE_DUE_DATE": {
             "TITLE": "締切日を削除",
@@ -1098,6 +1101,10 @@
         },
         "DELETE_SPRINT": {
             "TITLE": "スプリントを削除"
+        },
+        "REMOVE_RELATIONSHIP_WITH_EPIC": {
+            "TITLE": "Remove relationship with Epic",
+            "MESSAGE": "the relationship of this User Story with the Epic {{epicSubject}}"
         },
         "CREATE_MEMBER": {
             "PLACEHOLDER_INVITATION_TEXT": "(任意) 招待する際のメッセージを追加できます。新メンバーに素敵な言葉を贈りましょう ;-)",
@@ -1139,6 +1146,21 @@
                 "IN_THREE_MONTHS": "3ヶ月以内"
             },
             "TITLE_ACTION_DELETE_DUE_DATE": "締切日を削除"
+        },
+        "ADMIN_DUE_DATES": {
+            "TITLE_ACTION_DELETE_DUE_DATE": "締切日を削除",
+            "SUBTITLE_ACTION_DELETE_DUE_DATE": "Are you sure you want to delete the due date status {{due_date_status_name}}?"
+        },
+        "RELATE_TO_EPIC": {
+            "TITLE": "Link to Epic",
+            "EXISTING_EPIC": "Existing epic",
+            "NEW_EPIC": "New epic",
+            "CHOOSE_PROJECT_FOR_CREATION": "プロジェクトとは？",
+            "CHOOSE_PROJECT_FROM": "プロジェクトとは？",
+            "SUBJECT": "題名",
+            "CHOOSE_EPIC": "What's the epic?",
+            "FILTER_EPICS": "Filter epics",
+            "NO_EPICS_FOUND": "検索条件に当てはまるものはありませんでした。"
         }
     },
     "EPIC": {
@@ -1146,16 +1168,16 @@
         "PAGE_DESCRIPTION": "ステータス: {{epicStatus }}. 説明: {{epicDescription}}",
         "SECTION_NAME": "エピック",
         "TITLE_LIGHTBOX_UNLINK_RELATED_USERSTORY": "関連するユーザーストーリーのリンクを削除",
-        "MSG_LIGHTBOX_UNLINK_RELATED_USERSTORY": "関連するユーザーストーリー '{{subject}}' とのリンクが削除されます。",
+        "MSG_LIGHTBOX_UNLINK_RELATED_USERSTORY": "This action will remove the link to the related user story '{{subject}}'",
         "ERROR_UNLINK_RELATED_USERSTORY": "リンクの削除に失敗: {{errorMessage}}",
         "CREATE_RELATED_USERSTORIES": "関連付ける",
         "NEW_USERSTORY": "新しいユーザーストーリー",
         "EXISTING_USERSTORY": "既存のユーザーストーリー",
-        "CHOOSE_PROJECT_FOR_CREATION": "プロジェクトとは？",
+        "CHOOSE_PROJECT_FOR_CREATION": "Which project?",
         "SUBJECT": "題名",
         "SUBJECT_BULK_MODE": "題名 (一括登録)",
-        "CHOOSE_PROJECT_FROM": "プロジェクトとは？",
-        "CHOOSE_USERSTORY": "ユーザーストーリーとは？",
+        "CHOOSE_PROJECT_FROM": "Which project?",
+        "CHOOSE_USERSTORY": "Which user story?",
         "NO_USERSTORIES": "このプロジェクトにはユーザーストーリーがまだありません。別のプロジェクトを選択してください。",
         "NO_USERSTORIES_FOUND": "検索条件に当てはまるものはありませんでした。",
         "FILTER_USERSTORIES": "ユーザーストーリーをフィルター",
@@ -1177,6 +1199,8 @@
         "LIGHTBOX_TITLE_BLOKING_US": "Blocking us",
         "NOT_ESTIMATED": "見積もりが行われていません",
         "OWNER_US": "This User Story belongs to",
+        "RELATE_TO_EPIC": "Link to Epic",
+        "REMOVE_RELATIONSHIP_WITH_EPIC": "Remove Epic relationship",
         "TRIBE": {
             "PUBLISH": "Taiga Tribeでギグとして発行",
             "PUBLISH_INFO": "詳細表示",
@@ -1187,10 +1211,6 @@
             "SYNCHRONIZE_LINK": "Taiga Tribeと同期",
             "PUBLISH_MORE_INFO_TITLE": "このタスクに誰か必要ですか？",
             "PUBLISH_MORE_INFO_TEXT": "<p>If you need help with a particular piece of work you can easily create gigs on<a href='http://taigatribe.com' title='Taiga Tribe'> Taiga Tribe </a> and receive help from all over the world. You will be able to control and manage the gig enjoying a great community eager to contribute.</p><p><a href='http://taigatribe.com' title='Taiga Tribe'> TaigaTribe </a>  was born as a Taiga sibling. Both platforms can live separately but we believe that there is much power in using them combined so we are making sure the integration works like a charm.</p>"
-        },
-        "FIELDS": {
-            "TEAM_REQUIREMENT": "チームからの要求",
-            "CLIENT_REQUIREMENT": "お客様からの要求"
         }
     },
     "COMMENTS": {
@@ -1339,6 +1359,8 @@
         "SECTION_NAME": "タスクボード",
         "TITLE_ACTION_ADD": "新規タスクを追加",
         "TITLE_ACTION_ADD_BULK": "新規タスクを一括で追加する",
+        "TITLE_ACTION_ADD_ISSUE": "Add a new Issue",
+        "TITLE_ACTION_ADD_ISSUE_BULK": "Add some new Issues in bulk",
         "TITLE_ACTION_ASSIGN": "タスクの割当",
         "PLACEHOLDER_CARD_TITLE": "This could be a task",
         "PLACEHOLDER_CARD_TEXT": "ストーリーを分割しタスクとして別管理",
@@ -1349,7 +1371,8 @@
             "TITLE_ACTION_FOLD_ROW": "行をたたむ",
             "TITLE_ACTION_UNFOLD_ROW": "行をひろげる",
             "FIELD_POINTS": "ポイント",
-            "ROW_UNASSIGED_TASKS_TITLE": "未割当タスク"
+            "ROW_UNASSIGED_TASKS_TITLE": "未割当タスク",
+            "ROW_ISSUES_TITLE": "Sprint Issues"
         },
         "CHARTS": {
             "XAXIS_LABEL": "日",
@@ -1384,7 +1407,8 @@
         "CLOSE": "通知を閉じる",
         "MAIL": "メールでの通知",
         "DESKTOP": "ブラウザアラートを使ったデスクトップ通知",
-        "ASK_DELETE": "本当に削除してもよろしいですか？"
+        "ASK_DELETE": "本当に削除してもよろしいですか？",
+        "ASK_REMOVE_LINK": "Are you sure you want to remove the link?"
     },
     "CANCEL_ACCOUNT": {
         "TITLE": "アカウントを解約する",
@@ -1406,15 +1430,30 @@
         "SECTION_NAME": "課題",
         "ACTION_NEW_ISSUE": "+ 新規課題",
         "ACTION_PROMOTE_TO_US": "ユーザーストーリーに変更する",
+        "ACTION_ATTACH_SPRINT": "Attach issue to Sprint",
+        "ACTION_DETACH_SPRINT": "Detach issue from Sprint",
         "PROMOTED": "この課題はこちらのユーザーストーリーへ発展:",
         "EXTERNAL_REFERENCE": "課題の作成元: ",
         "GO_TO_EXTERNAL_REFERENCE": "originへ移動",
         "ACTION_DELETE": "課題を削除",
         "LIGHTBOX_TITLE_BLOKING_ISSUE": "ブロックしている課題",
+        "LINK_TASKBOARD": "タスクボード",
+        "TITLE_LINK_TASKBOARD": "タスクボードに移動",
+        "FILTER_SPRINTS": "Filter Sprints",
+        "CHOOSE_SPRINT": "Which Sprint?",
         "FIELDS": {
             "PRIORITY": "優先度",
             "SEVERITY": "深刻度",
             "TYPE": "タイプ"
+        },
+        "FILTER_ISSUES": "Filter Issues",
+        "CONFIRM_DETACH_FROM_SPRINT": {
+            "TITLE": "Detach issue from Sprint",
+            "MESSAGE": "You are about to detach the issue from the sprint"
+        },
+        "CONFIRM_CHANGE_FROM_SPRINT": {
+            "TITLE": "Move issue from another sprint",
+            "MESSAGE": "Are you sure you want to move the issue {{ issue }} from sprint {{ oldSprintName }} to sprint {{ newSprintName }}?"
         },
         "CONFIRM_PROMOTE": {
             "TITLE": "この課題を新しいユーザーストーリーに変更",
