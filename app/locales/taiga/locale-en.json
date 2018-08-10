@@ -1452,7 +1452,7 @@
             "MESSAGE": "You are about to detach the issue from the sprint"
         },
         "CONFIRM_CHANGE_FROM_SPRINT": {
-            "TITLE": "Move issue from another sprint",
+            "TITLE": "Attach issue to Sprint",
             "MESSAGE": "<strong>This issue is currently attached to sprint {{ oldSprintName }}</strong>. You are about to detach it from that sprint and attach it instead to sprint <strong>{{ newSprintName }}.</strong>"
         },
         "CONFIRM_PROMOTE": {
