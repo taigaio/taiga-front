@@ -171,6 +171,7 @@ $column-padding: .5rem 1rem;
                 @include ellipsis(100%);
             }
             .points-value,
+            .us-data,
             .icon-add,
             .icon-bulk {
                 display: none;
