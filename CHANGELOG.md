@@ -2,6 +2,15 @@
 
 ## Unreleased
 
+## 3.4.0 Pinus contorta (2018-08-13)
+
+### Features
+
+- Due dates administration (https://tree.taiga.io/project/taiga/issue/3069)
+- Issues to sprint (https://tree.taiga.io/project/taiga/issue/1181)
+- Link US to Epics - https://tree.taiga.io/project/taiga/issue/4732
+- New lightbox - https://tree.taiga.io/project/taiga/issue/3167
+
 ## 3.3.16 (2018-08-08)
 
 - Fix another bug related with ordering US.
