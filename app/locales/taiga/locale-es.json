@@ -50,7 +50,7 @@
             "EDIT": "Editar tarjeta",
             "DELETE": "Elimina tarjeta",
             "DELETE_ISSUE": "Borrar petición",
-            "DETACH_ISSUE_FROM_SPRINT": "Detach issue from sprint"
+            "DETACH_ISSUE_FROM_SPRINT": "Quitar petición de sprint"
         },
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Este valor parece inválido.",
@@ -615,16 +615,16 @@
             "SELECTED": "Seleccionado"
         },
         "PROJECT_DUE_DATE_STATUS": {
-            "TITLE": "Due Dates",
-            "SUBTITLE": "Specify the due dates your user stories, tasks and issues will go through if selected",
-            "US_TITLE": "User Story Due Date status",
+            "TITLE": "Fechas de Vencimiento",
+            "SUBTITLE": "Especificar fechas de vencimiento de tu historia de usuario, tareas y peticiones serán afectados si están seleccionadas",
+            "US_TITLE": "Vencimiento de historia de usuario",
             "ACTION_ADD_STATUS": "Añadir nuevo estado",
-            "TASK_TITLE": "Task Due Date status",
-            "ISSUE_TITLE": "Issue Due Date status",
-            "DAYS_TO_DUE_DATE": "Days to due date",
-            "BEFORE_AFTER": "Before/after",
-            "BEFORE": "Before",
-            "AFTER": "Past"
+            "TASK_TITLE": "Estado de vencimiento de tarea",
+            "ISSUE_TITLE": "Vencimiento de petición",
+            "DAYS_TO_DUE_DATE": "Días para vencimiento",
+            "BEFORE_AFTER": "Antes/Después",
+            "BEFORE": "Antes",
+            "AFTER": "Pasado"
         },
         "ROLES": {
             "PAGE_TITLE": "Roles - {{projectName}}",
@@ -727,7 +727,7 @@
         },
         "STATUS": {
             "PLACEHOLDER_WRITE_STATUS_NAME": "Escribe un nombre para el nuevo estado",
-            "PLACEHOLDER_DAYS_TO_DUE_DATE": "Write a number of days to due date"
+            "PLACEHOLDER_DAYS_TO_DUE_DATE": "Escribe numero de días para vencimiento"
         },
         "TYPES": {
             "PLACEHOLDER_WRITE_NAME": "Escribe un nombre para el nuevo elemento"
@@ -754,7 +754,7 @@
             "TYPES": "Tipos",
             "CUSTOM_FIELDS": "Atributos personalizados",
             "TAGS": "Etiquetas",
-            "DUE_DATES": "Due dates"
+            "DUE_DATES": "Vencimiento"
         },
         "SUBMENU_ROLES": {
             "TITLE": "Roles",
@@ -1086,14 +1086,14 @@
             "LAST_SPRINT_NAME": "el último sprint es <strong> {{lastSprint}} ;-) </strong>"
         },
         "CREATE_EDIT": {
-            "PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this {{ objName }}",
-            "NEW": "New {{ objName }}",
-            "EDIT": "Edit {{ objName }}",
-            "ADD_EXISTING": "Add {{ objName }} to {{ targetName }}",
+            "PLACEHOLDER_DESCRIPTION": "Por favor agrega texto descriptivo para entender mejor este {{ objName }}",
+            "NEW": "Nuevo {{ objName }}",
+            "EDIT": "Editar {{ objName }}",
+            "ADD_EXISTING": "Agregar {{ objName }} a {{ targetName }}",
             "CONFIRM_CLOSE": "Los cambios no están gurdados. ¿Seguro que quieres cerrar el formulario?",
-            "EXISTING_OBJECT": "Existing {{ objName }}",
-            "NEW_OBJECT": "New {{ objName }}",
-            "CHOOSE_EXISTING": "Which {{ objName }}?"
+            "EXISTING_OBJECT": "{{ objName }} existente",
+            "NEW_OBJECT": "Nuevo {{ objName }}",
+            "CHOOSE_EXISTING": "¿Cuál {{ objName }}?"
         },
         "DELETE_DUE_DATE": {
             "TITLE": "Borrar fecha de vencimiento",
@@ -1103,8 +1103,8 @@
             "TITLE": "Borrar sprint"
         },
         "REMOVE_RELATIONSHIP_WITH_EPIC": {
-            "TITLE": "Remove relationship with Epic",
-            "MESSAGE": "Are you sure you want to delete the relationship of this User Story with the Epic <strong>{{epicSubject}}</strong>"
+            "TITLE": "Quitar relación con Épica",
+            "MESSAGE": "¿Estás seguro que quieres eliminar la relación de la historia de usuario con la Épica <strong>{{epicSubject}}</strong>"
         },
         "CREATE_MEMBER": {
             "PLACEHOLDER_INVITATION_TEXT": "(Opcional) Añade un texto personalizado a la invitación. Dile algo encantador a tus nuevos miembros ;-)",
@@ -1149,17 +1149,17 @@
         },
         "ADMIN_DUE_DATES": {
             "TITLE_ACTION_DELETE_DUE_DATE": "Borrar fecha de vencimiento",
-            "SUBTITLE_ACTION_DELETE_DUE_DATE": "Are you sure you want to delete the due date status {{due_date_status_name}}?"
+            "SUBTITLE_ACTION_DELETE_DUE_DATE": "¿Estás seguro que quieres eliminar fecha de vencimiento de estado {{due_date_status_name}}?"
         },
         "RELATE_TO_EPIC": {
-            "TITLE": "Link to Epic",
-            "EXISTING_EPIC": "Existing epic",
-            "NEW_EPIC": "New epic",
+            "TITLE": "Enlace a Épica",
+            "EXISTING_EPIC": "Épica existente",
+            "NEW_EPIC": "Nueva Épica",
             "CHOOSE_PROJECT_FOR_CREATION": "¿Qué es el proyecto?",
             "CHOOSE_PROJECT_FROM": "¿Qué es el proyecto?",
             "SUBJECT": "Asunto",
-            "CHOOSE_EPIC": "What's the epic?",
-            "FILTER_EPICS": "Filter epics",
+            "CHOOSE_EPIC": "¿Cuál es la Épica?",
+            "FILTER_EPICS": "Filtrar épicas",
             "NO_EPICS_FOUND": "Parece que no se encontro nada con este criterio de busqueda"
         }
     },
@@ -1168,16 +1168,16 @@
         "PAGE_DESCRIPTION": "Estado: {{taskStatus}}. Descripción: {{taskDescription}}",
         "SECTION_NAME": "Épica",
         "TITLE_LIGHTBOX_UNLINK_RELATED_USERSTORY": "Desvincular historia de usuario relacionada.",
-        "MSG_LIGHTBOX_UNLINK_RELATED_USERSTORY": "This action will remove the link to the related user story '{{subject}}'",
+        "MSG_LIGHTBOX_UNLINK_RELATED_USERSTORY": "Esta acción quitará el enlace a la historia de usuario relacionada de '{{subject}}'",
         "ERROR_UNLINK_RELATED_USERSTORY": "No se ha podido desvincular:  {{errorMessage}}",
         "CREATE_RELATED_USERSTORIES": "Crear relación con",
         "NEW_USERSTORY": "Nueva historia de usuario",
         "EXISTING_USERSTORY": "Historia de usuario existente",
-        "CHOOSE_PROJECT_FOR_CREATION": "Which project?",
+        "CHOOSE_PROJECT_FOR_CREATION": "Cuál proyecto?",
         "SUBJECT": "Asunto",
         "SUBJECT_BULK_MODE": "Tema (inserción masiva)",
-        "CHOOSE_PROJECT_FROM": "Which project?",
-        "CHOOSE_USERSTORY": "Which user story?",
+        "CHOOSE_PROJECT_FROM": "¿Cuál proyecto?",
+        "CHOOSE_USERSTORY": "¿Cuál historia de usuario?",
         "NO_USERSTORIES": "Este proyecto no tiene historias de usuario todavia. Por favor, seleccione otro proyecto.",
         "NO_USERSTORIES_FOUND": "Parece que no se encontro nada con este criterio de busqueda",
         "FILTER_USERSTORIES": "Filtrar historias de usuario",
@@ -1199,8 +1199,8 @@
         "LIGHTBOX_TITLE_BLOKING_US": "Historia bloqueada",
         "NOT_ESTIMATED": "No estimada",
         "OWNER_US": "Esta Historia de Usuario pertenece a",
-        "RELATE_TO_EPIC": "Link to Epic",
-        "REMOVE_RELATIONSHIP_WITH_EPIC": "Remove Epic relationship",
+        "RELATE_TO_EPIC": "Enlace a Épica",
+        "REMOVE_RELATIONSHIP_WITH_EPIC": "Quitar relación a Épica",
         "TRIBE": {
             "PUBLISH": "Publicar como Gig en la Tribu Taiga",
             "PUBLISH_INFO": "Mas información",
@@ -1359,8 +1359,8 @@
         "SECTION_NAME": "Panel de Tareas",
         "TITLE_ACTION_ADD": "Añade una nueva tarea",
         "TITLE_ACTION_ADD_BULK": "Añadir nuevas tareas en bloque",
-        "TITLE_ACTION_ADD_ISSUE": "Add a new Issue",
-        "TITLE_ACTION_ADD_ISSUE_BULK": "Add some new Issues in bulk",
+        "TITLE_ACTION_ADD_ISSUE": "Agregar nueva petición",
+        "TITLE_ACTION_ADD_ISSUE_BULK": "Agrega nuevas peticiones masivas",
         "TITLE_ACTION_ASSIGN": "Asignar tarea",
         "PLACEHOLDER_CARD_TITLE": "Esto podría ser una tarea",
         "PLACEHOLDER_CARD_TEXT": "Divide las historias en tareas para controlarlas de manera separada",
@@ -1372,7 +1372,7 @@
             "TITLE_ACTION_UNFOLD_ROW": "Desplegar Fila",
             "FIELD_POINTS": "puntos",
             "ROW_UNASSIGED_TASKS_TITLE": "Tareas no asignadas",
-            "ROW_ISSUES_TITLE": "Sprint Issues"
+            "ROW_ISSUES_TITLE": "Peticiones de Sprint"
         },
         "CHARTS": {
             "XAXIS_LABEL": "Días",
@@ -1408,7 +1408,7 @@
         "MAIL": "Notificaciones Por Mail",
         "DESKTOP": "Notificaciones de escritorio usando alertas de navegador",
         "ASK_DELETE": "¿Esta seguro que desea eliminar?",
-        "ASK_REMOVE_LINK": "Are you sure you want to remove the link?"
+        "ASK_REMOVE_LINK": "¿Estás seguro de que quieres quitar el enlace?"
     },
     "CANCEL_ACCOUNT": {
         "TITLE": "Cancelar tu cuenta de usuario",
@@ -1430,8 +1430,8 @@
         "SECTION_NAME": "Petición",
         "ACTION_NEW_ISSUE": "+ NUEVA PETICIÓN",
         "ACTION_PROMOTE_TO_US": "Promover a Historia de Usuario",
-        "ACTION_ATTACH_SPRINT": "Attach issue to Sprint",
-        "ACTION_DETACH_SPRINT": "Detach issue from Sprint",
+        "ACTION_ATTACH_SPRINT": "Unir petición a Sprint",
+        "ACTION_DETACH_SPRINT": "Separar petición de Sprint",
         "PROMOTED": "Esta petición ha sido promovida a la historia:",
         "EXTERNAL_REFERENCE": "Esta petición ha sido creada a partir de ",
         "GO_TO_EXTERNAL_REFERENCE": "Ir al origen",
@@ -1439,21 +1439,21 @@
         "LIGHTBOX_TITLE_BLOKING_ISSUE": "Petición bloqueada",
         "LINK_TASKBOARD": "Panel de tareas",
         "TITLE_LINK_TASKBOARD": "Ir al panel de tareas",
-        "FILTER_SPRINTS": "Filter Sprints",
-        "CHOOSE_SPRINT": "Which Sprint?",
+        "FILTER_SPRINTS": "Filtrar Sprints",
+        "CHOOSE_SPRINT": "¿Cuál Sprint?",
         "FIELDS": {
             "PRIORITY": "Prioridad",
             "SEVERITY": "Gravedad",
             "TYPE": "Tipo"
         },
-        "FILTER_ISSUES": "Filter Issues",
+        "FILTER_ISSUES": "Filtrar peticiones",
         "CONFIRM_DETACH_FROM_SPRINT": {
-            "TITLE": "Detach issue from Sprint",
-            "MESSAGE": "You are about to detach the issue from the sprint"
+            "TITLE": "Separar petición de Sprint",
+            "MESSAGE": "Estás a punto de quitar petición de sprint"
         },
         "CONFIRM_CHANGE_FROM_SPRINT": {
-            "TITLE": "Attach issue to Sprint",
-            "MESSAGE": "<strong>This issue is currently attached to sprint {{ oldSprintName }}</strong>. You are about to detach it from that sprint and attach it instead to sprint <strong>{{ newSprintName }}.</strong>"
+            "TITLE": "Unir petición a Sprint",
+            "MESSAGE": "<strong>Esta petición actualmente está unida al sprint {{ oldSprintName }}</strong>. Estás a punto de quitarla del sprint y unirla al sprint <strong>{{ newSprintName }}.</strong>"
         },
         "CONFIRM_PROMOTE": {
             "TITLE": "Promover esta petición a una nueva historia de usuario",
@@ -1653,8 +1653,8 @@
     "LEGAL": {
         "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>Al crear una nueva cuenta, acepta </span><a href=\"{{ termsOfServiceUrl }}\" title=\"See terms of service\" target=\"_blank\">nuestras condiciones de servicio</a><span> y </span><a href=\"{{ privacyPolicyUrl }}\" title=\"See privacy policy\" target=\"_blank\">nuestra política de privacidad</a>.",
         "GDPR_ANNOUNCEMENT_TITLE": "Reglamento General de Protección de Datos (RGPD)",
-        "GDPR_ANNOUNCEMENT_DESCRIPTION": "You saw this comming, right? Updates to our Terms of Service",
-        "GDPR_ANNOUNCEMENT_INFOLINK": "Please read our announcement here"
+        "GDPR_ANNOUNCEMENT_DESCRIPTION": "Lo viste venir, cierto? Actualiza a nuestros Términos de Servicio",
+        "GDPR_ANNOUNCEMENT_INFOLINK": "Por favor lee nuestro anuncio aquí"
     },
     "EXTERNAL_APP": {
         "PAGE_TITLE": "Una aplicación externa requiere autenticación",
