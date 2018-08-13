@@ -39,7 +39,7 @@ normalizeString = @.taiga.normalizeString
 class LightboxService extends taiga.Service
     constructor: (@animationFrame, @q, @rootScope) ->
 
-    open: ($el, onClose, onEsc) ->
+    open: ($el, onClose, onEsc, ignoreEsc) ->
         @.onClose = onClose
 
         if _.isString($el)
@@ -66,14 +66,15 @@ class LightboxService extends taiga.Service
             lightboxContent.show()
             defered.resolve()
 
-        docEl = angular.element(document)
-        docEl.on "keydown.lightbox", (e) =>
-            code = if e.keyCode then e.keyCode else e.which
-            if code == 27
-                if onEsc
-                    @rootScope.$applyAsync(onEsc)
-                else
-                    @.close($el)
+        if !ignoreEsc
+            docEl = angular.element(document)
+            docEl.on "keydown.lightbox", (e) =>
+                code = if e.keyCode then e.keyCode else e.which
+                if code == 27
+                    if onEsc
+                        @rootScope.$applyAsync(onEsc)
+                    else
+                        @.close($el)
 
 
         return defered.promise
@@ -892,7 +893,7 @@ $confirm, $q, attachmentsService, $template, $compile) ->
             setStatus($scope.obj.status)
             render()
             $scope.lightboxOpen = true
-            lightboxService.open($el)
+            lightboxService.open($el, null, null, true)
 
         resetAttachments = () ->
             attachmentsToAdd = Immutable.List()
@@ -1020,7 +1021,7 @@ $confirm, $q, attachmentsService, $template, $compile) ->
                 deleteAttachments(data).then () ->
                     createAttachments(data).then () ->
                         currentLoading.finish()
-                        lightboxService.close($el)
+                        close()
                         $rs[schema.model].getByRef(data.project, data.ref, schema.params).then (obj) ->
                             $rootScope.$broadcast(broadcastEvent, obj)
             promise.then null, (data) ->
@@ -1031,14 +1032,27 @@ $confirm, $q, attachmentsService, $template, $compile) ->
 
         checkClose = () ->
             if !$scope.obj.isModified()
-                lightboxService.close($el)
+                close()
                 $scope.$apply ->
                     $scope.obj.revert()
             else
                 $confirm.ask(
-                    $translate.instant("LIGHTBOX.CREATE_EDIT.CONFIRM_CLOSE")).then (result) ->
+                    $translate.instant("LIGHTBOX.CREATE_EDIT.CONFIRM_CLOSE"))
+                    .then (result) ->
                         result.finish()
-                        lightboxService.close($el)
+                        close()
+
+        close = () ->
+            lightboxService.close($el)
+            $scope.lightboxOpen = false
+
+        docEl = angular.element(document)
+        docEl.on "keydown.lightbox-create-edit", (event) ->
+            if $scope.lightboxOpen
+                event.stopPropagation()
+                code = if event.keyCode then event.keyCode else event.which
+                if code == 27
+                    checkClose()
 
         $el.on "submit", "form", submit
 
@@ -1046,12 +1060,6 @@ $confirm, $q, attachmentsService, $template, $compile) ->
             event.preventDefault()
             event.stopPropagation()
             checkClose()
-
-        $el.keydown (event) ->
-            event.stopPropagation()
-            code = if event.keyCode then event.keyCode else event.which
-            if code == 27
-                checkClose()
 
         $el.on "click", ".status-dropdown", (event) ->
             event.preventDefault()
