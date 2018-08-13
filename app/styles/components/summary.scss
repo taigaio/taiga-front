@@ -121,6 +121,7 @@ $summary-background: $grayer;
 }
 
 .large-summary {
+    align-content: flex-start;
     align-items: stretch;
     justify-content: space-between;
     padding: .75rem 1rem;
@@ -128,14 +129,14 @@ $summary-background: $grayer;
         padding-top: .35rem;
     }
     .large-summary-wrapper {
-        align-content: center;
+        align-content: flex-start;
         display: flex;
         flex-wrap: wrap;
-        justify-content: flex-start;
     }
     .summary-progress-wrapper {
-        align-items: center;
+        align-items: flex-start;
         display: flex;
+        padding-top: .35rem;
     }
     .summary-progress-bar {
         flex-basis: 200px;
@@ -162,7 +163,7 @@ $summary-background: $grayer;
     .icon {
         @include svg-size(1.3rem);
         fill: currentColor;
-        margin-right: .4rem;
+        margin: .1rem .4rem 0 0;
         vertical-align: middle;
         &.icon-stats {
             color: $primary;
