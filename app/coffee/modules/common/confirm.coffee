@@ -82,7 +82,10 @@ class ConfirmService extends taiga.Service
             defered.reject()
             @.hide(el)
 
-        @lightboxService.open(el)
+        onEsc = () =>
+            @.hide(el)
+
+        @lightboxService.open(el, null, onEsc)
 
         return defered.promise
 
