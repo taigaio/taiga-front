@@ -34,13 +34,17 @@
             required
             ng-keydown="vm.onKeyDown($event)"
         )
-        button.edit-title-button.e2e-title-button(
+        button.edit-title-button.save-title-button.e2e-title-button(
             ng-click="vm.saveSubject()"
             tg-loading="vm.loadingSubject"
         )
             tg-svg(
                 svg-icon="icon-save"
             )
+        button.edit-title-button.cancel-title-button.e2e-cancel-title-button(
+            ng-click="vm.editSubject(false)"
+        )
+            tg-svg(svg-icon="icon-close")
 
 //- User Story belongs to epic
 .belong-to-epics-wrapper(ng-if="vm.item._name == 'userstories' && vm.project.is_epics_activated")

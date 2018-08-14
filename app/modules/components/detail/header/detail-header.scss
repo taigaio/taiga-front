@@ -114,11 +114,13 @@
     .edit-title-button {
         background: none;
         display: inline;
-        margin-left: 1rem;
         transition: fill .2s;
         &:hover {
             fill: $primary;
         }
+    }
+    .save-title-button {
+        margin-left: 1rem;
     }
 }
 
