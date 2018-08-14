@@ -112,6 +112,7 @@ describe "RelatedUserstoryRow", ->
 
     it "delete related userstory success", (done) ->
         RelatedUserstoryRowCtrl.epic = Immutable.fromJS({
+            subject: "SampleEpic"
             id: 123
         })
         RelatedUserstoryRowCtrl.userstory = Immutable.fromJS({
@@ -125,11 +126,11 @@ describe "RelatedUserstoryRow", ->
             finish: sinon.spy()
         }
 
-        mocks.translate.instant.withArgs("EPIC.TITLE_LIGHTBOX_UNLINK_RELATED_USERSTORY").returns("title")
-        mocks.translate.instant.withArgs("EPIC.MSG_LIGHTBOX_UNLINK_RELATED_USERSTORY", {subject: "Deleting"}).returns("message")
+        mocks.translate.instant.withArgs("LIGHTBOX.REMOVE_RELATIONSHIP_WITH_EPIC.TITLE").returns("title")
+        mocks.translate.instant.withArgs("LIGHTBOX.REMOVE_RELATIONSHIP_WITH_EPIC.MESSAGE", {epicSubject: "SampleEpic"}).returns("message")
 
-        mocks.tgConfirm.askOnDelete = sinon.stub()
-        mocks.tgConfirm.askOnDelete.withArgs("title", "message").promise().resolve(askResponse)
+        mocks.tgConfirm.ask = sinon.stub()
+        mocks.tgConfirm.ask.withArgs("title").promise().resolve(askResponse)
 
         promise = mocks.tgResources.epics.deleteRelatedUserstory.withArgs(123, 124).promise().resolve(true)
         RelatedUserstoryRowCtrl.onDeleteRelatedUserstory().then () ->
@@ -139,6 +140,7 @@ describe "RelatedUserstoryRow", ->
 
     it "delete related userstory error", (done) ->
         RelatedUserstoryRowCtrl.epic = Immutable.fromJS({
+            epicSubject: "SampleEpic"
             id: 123
         })
         RelatedUserstoryRowCtrl.userstory = Immutable.fromJS({
@@ -152,12 +154,12 @@ describe "RelatedUserstoryRow", ->
             finish: sinon.spy()
         }
 
-        mocks.translate.instant.withArgs("EPIC.TITLE_LIGHTBOX_UNLINK_RELATED_USERSTORY").returns("title")
-        mocks.translate.instant.withArgs("EPIC.MSG_LIGHTBOX_UNLINK_RELATED_USERSTORY", {subject: "Deleting"}).returns("message")
-        mocks.translate.instant.withArgs("EPIC.ERROR_UNLINK_RELATED_USERSTORY", {errorMessage: "message"}).returns("error message")
+        mocks.translate.instant.withArgs("LIGHTBOX.REMOVE_RELATIONSHIP_WITH_EPIC.TITLE").returns("title")
+        mocks.translate.instant.withArgs("LIGHTBOX.REMOVE_RELATIONSHIP_WITH_EPIC.MESSAGE", {epicSubject: "SampleEpic"}).returns("message")
+        mocks.translate.instant.withArgs("EPIC.ERROR_UNLINK_RELATED_USERSTORY").returns("error message")
 
-        mocks.tgConfirm.askOnDelete = sinon.stub()
-        mocks.tgConfirm.askOnDelete.withArgs("title", "message").promise().resolve(askResponse)
+        mocks.tgConfirm.ask = sinon.stub()
+        mocks.tgConfirm.ask.withArgs("title").promise().resolve(askResponse)
 
         promise = mocks.tgResources.epics.deleteRelatedUserstory.withArgs(123, 124).promise().reject(new Error("error"))
         RelatedUserstoryRowCtrl.onDeleteRelatedUserstory().then () ->
