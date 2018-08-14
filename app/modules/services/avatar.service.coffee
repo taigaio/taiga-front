@@ -46,6 +46,7 @@ class AvatarService
     getUnnamed: () ->
         return {
             url: "/#{window._version}/images/unnamed.png"
+            username: ''
         }
 
     getAvatar: (user, type) ->
@@ -61,9 +62,11 @@ class AvatarService
         if user instanceof Immutable.Map
             gravatar = user.get('gravatar_id')
             photo = user.get(avatarParamName)
+            username = "@#{user.get('username')}"
         else
             gravatar = user.gravatar_id
             photo = user[avatarParamName]
+            username = "@#{user.username}"
 
         return @.getUnnamed() if !gravatar
 
@@ -77,7 +80,8 @@ class AvatarService
 
             return {
                 url: root + logo.src,
-                bg: logo.color
+                bg: logo.color,
+                username: username
             }
         else
             root = location.protocol + '//' + location.host
@@ -87,7 +91,8 @@ class AvatarService
 
             return {
                 url: 'https://www.gravatar.com/avatar/' + gravatar + "?s=200&d=" + logoUrl,
-                bg: logo.color
+                bg: logo.color,
+                username: username
             }
 
 angular.module("taigaCommon").service("tgAvatarService", ["$tgConfig", AvatarService])

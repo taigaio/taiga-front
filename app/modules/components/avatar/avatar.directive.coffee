@@ -28,13 +28,15 @@ AvatarDirective = (avatarService) ->
             avatar = avatarService.getAvatar(user, attributeName)
 
             el.attr('src', avatar.url)
+            el.attr('title', "#{avatar.username}")
+            el.attr('alt', "#{avatar.username}")
             el.css('background', avatar.bg or "")
 
     return {
         link: link
         scope: {
-             avatar: "=tgAvatar"
-             avatarBig: "=tgAvatarBig"
+            avatar: "=tgAvatar"
+            avatarBig: "=tgAvatarBig"
         }
     }
 
