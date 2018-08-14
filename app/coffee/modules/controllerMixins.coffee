@@ -192,6 +192,7 @@ class UsFiltersMixin
         filters.tags = urlfilters.tags
         filters.status = urlfilters.status
         filters.assigned_to = urlfilters.assigned_to
+        filters.assigned_users = urlfilters.assigned_users
         filters.owner = urlfilters.owner
         filters.epic = urlfilters.epic
         filters.role = urlfilters.role
