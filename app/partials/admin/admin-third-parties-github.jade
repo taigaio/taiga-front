@@ -38,9 +38,8 @@ div.wrapper.roles(
                                 ng-model="github.webhooks_url"
                                 placeholder="{{'ADMIN.THIRD_PARTIES.PAYLOAD_URL' | translate}}"
                             )
-                            .option-wrapper.select-input-content
+                            .option-wrapper.select-input-content(title="{{'COMMON.COPY_TO_CLIPBOARD' | translate}}")
                                 tg-svg(svg-icon="icon-clipboard")
-                        .help-copy(translate="COMMON.COPY_TO_CLIPBOARD")
 
             button.button-green.submit-button(
                 type="submit"

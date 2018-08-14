@@ -450,15 +450,20 @@ class BitbucketController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
 module.controller("BitbucketController", BitbucketController)
 
 
-SelectInputText =  ->
+SelectInputText = ($translate, $confirm)->
     link = ($scope, $el, $attrs) ->
         $el.on "click", ".select-input-content", () ->
-            $el.find("input").select()
-            $el.find(".help-copy").addClass("visible")
+            source = $el.find("input")
+            if !source.val()
+                return
+
+            source.select()
+            document.execCommand 'copy'
+            $confirm.notify("success", $translate.instant("COMMON.COPIED_TO_CLIPBOARD"))
 
     return {link:link}
 
-module.directive("tgSelectInputText", SelectInputText)
+module.directive("tgSelectInputText", ["$translate", "$tgConfirm", SelectInputText])
 
 
 #############################################################################
