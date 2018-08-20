@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+## 3.4.1 (2018-08-21)
+
+### Misc
+
+- Add auto CTRL+C in admin icon for reports URL's.
+- Minor bug fixes.
+
 ## 3.4.0 Pinus contorta (2018-08-13)
 
 ### Features
