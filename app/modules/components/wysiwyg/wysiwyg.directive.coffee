@@ -352,7 +352,7 @@ Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoad
         discardLocalStorage = () ->
             $storage.remove($scope.storageKey)
 
-        cancelWithConfirmation = () ->
+        $scope.cancelWithConfirmation = () ->
             if $scope.content == $scope.markdown
                 $scope.cancel()
 
@@ -509,7 +509,7 @@ Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoad
 
                 if $scope.editMode && code == 27
                     e.stopPropagation()
-                    $scope.$applyAsync(cancelWithConfirmation)
+                    $scope.$applyAsync($scope.cancelWithConfirmation)
                 else if code == 27
                     editorMedium.blur()
 
