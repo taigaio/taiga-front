@@ -58,6 +58,10 @@ class StoryHeaderController
             canEdit: _.includes(@.project.my_permissions, @.requiredPerm)
         }
 
+    cancelEdit: () ->
+        @.editMode = false
+        @.item.subject = @.originalSubject
+
     editSubject: (value) ->
         selection = @window.getSelection()
         if selection.type != "Range"
