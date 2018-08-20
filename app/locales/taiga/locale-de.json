@@ -615,13 +615,13 @@
             "SELECTED": "Ausgewählt"
         },
         "PROJECT_DUE_DATE_STATUS": {
-            "TITLE": "Due Dates",
+            "TITLE": "Fällikeitstermine",
             "SUBTITLE": "Specify the due dates your user stories, tasks and issues will go through if selected",
             "US_TITLE": "User Story Due Date status",
             "ACTION_ADD_STATUS": "Neuen Status hinzufügen",
             "TASK_TITLE": "Task Due Date status",
-            "ISSUE_TITLE": "Issue Due Date status",
-            "DAYS_TO_DUE_DATE": "Days to due date",
+            "ISSUE_TITLE": "Status der Ticket Fälligkeit",
+            "DAYS_TO_DUE_DATE": "Tage bis zur Fällikeit",
             "BEFORE_AFTER": "Before/after",
             "BEFORE": "Before",
             "AFTER": "Past"
@@ -727,7 +727,7 @@
         },
         "STATUS": {
             "PLACEHOLDER_WRITE_STATUS_NAME": "Benennen Sie den neuen Status",
-            "PLACEHOLDER_DAYS_TO_DUE_DATE": "Write a number of days to due date"
+            "PLACEHOLDER_DAYS_TO_DUE_DATE": "Zahl der Tage bis zur Fälligkeit"
         },
         "TYPES": {
             "PLACEHOLDER_WRITE_NAME": "Geben Sie dem neuen Element einen Namen"
@@ -754,7 +754,7 @@
             "TYPES": "Typen",
             "CUSTOM_FIELDS": "Benutzerdefinierte Felder",
             "TAGS": "Schlagwörter",
-            "DUE_DATES": "Due dates"
+            "DUE_DATES": "Fälligkeiten"
         },
         "SUBMENU_ROLES": {
             "TITLE": "Rollen",
@@ -1087,12 +1087,12 @@
         },
         "CREATE_EDIT": {
             "PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this {{ objName }}",
-            "NEW": "New {{ objName }}",
-            "EDIT": "Edit {{ objName }}",
-            "ADD_EXISTING": "Add {{ objName }} to {{ targetName }}",
+            "NEW": "Neu {{ objName }}",
+            "EDIT": "Bearbeiten {{ objName }}",
+            "ADD_EXISTING": "{{ objName }} zu {{ targetName }} hinzufügen",
             "CONFIRM_CLOSE": "Sie haben Ihre Änderungen noch nicht gespeichert.\nSind Sie sicher, dass Sie dieses Formular schließen möchten?",
-            "EXISTING_OBJECT": "Existing {{ objName }}",
-            "NEW_OBJECT": "New {{ objName }}",
+            "EXISTING_OBJECT": "{{ objName }} existiert",
+            "NEW_OBJECT": "Neu {{ objName }}",
             "CHOOSE_EXISTING": "Which {{ objName }}?"
         },
         "DELETE_DUE_DATE": {
@@ -1103,7 +1103,7 @@
             "TITLE": "Sprint löschen"
         },
         "REMOVE_RELATIONSHIP_WITH_EPIC": {
-            "TITLE": "Remove relationship with Epic",
+            "TITLE": "Verbindung zum Epic entfernen",
             "MESSAGE": "Are you sure you want to delete the relationship of this User Story with the Epic <strong>{{epicSubject}}</strong>"
         },
         "CREATE_MEMBER": {
@@ -1154,12 +1154,12 @@
         "RELATE_TO_EPIC": {
             "TITLE": "Link to Epic",
             "EXISTING_EPIC": "Existing epic",
-            "NEW_EPIC": "New epic",
+            "NEW_EPIC": "Neues Epic",
             "CHOOSE_PROJECT_FOR_CREATION": "Welches Projekt?",
             "CHOOSE_PROJECT_FROM": "Welches Projekt?",
             "SUBJECT": "Thema",
-            "CHOOSE_EPIC": "What's the epic?",
-            "FILTER_EPICS": "Filter epics",
+            "CHOOSE_EPIC": "Beschreibe das Epic",
+            "FILTER_EPICS": "Epics Filtern",
             "NO_EPICS_FOUND": "Es sieht so aus, als konnte zu Ihren Suchkriterien nichts passendes gefunden werden."
         }
     },
@@ -1173,11 +1173,11 @@
         "CREATE_RELATED_USERSTORIES": "Erstelle eine Verbindung mit",
         "NEW_USERSTORY": "Neue User-Story",
         "EXISTING_USERSTORY": "Bestehende User-Story",
-        "CHOOSE_PROJECT_FOR_CREATION": "Which project?",
+        "CHOOSE_PROJECT_FOR_CREATION": "Welches Projekt?",
         "SUBJECT": "Thema",
         "SUBJECT_BULK_MODE": "Thema (Mehrfacheingaben möglich)",
-        "CHOOSE_PROJECT_FROM": "Which project?",
-        "CHOOSE_USERSTORY": "Which user story?",
+        "CHOOSE_PROJECT_FROM": "Welches Projekt?",
+        "CHOOSE_USERSTORY": "Beschreibung der User Story",
         "NO_USERSTORIES": "Dieses Projekt hat zurzeit keine User Stories. Bitte wähle ein anderes Projekt.",
         "NO_USERSTORIES_FOUND": "Es sieht so aus, als konnte zu Ihren Suchkriterien nichts passendes gefunden werden.",
         "FILTER_USERSTORIES": "User-Stories filter",
@@ -1359,8 +1359,8 @@
         "SECTION_NAME": "Taskboard",
         "TITLE_ACTION_ADD": "Neue Aufgabe hinzufügen",
         "TITLE_ACTION_ADD_BULK": "Mehrere Aufgaben hinzufügen",
-        "TITLE_ACTION_ADD_ISSUE": "Add a new Issue",
-        "TITLE_ACTION_ADD_ISSUE_BULK": "Add some new Issues in bulk",
+        "TITLE_ACTION_ADD_ISSUE": "Ein neues Ticket hinzufügen",
+        "TITLE_ACTION_ADD_ISSUE_BULK": "Stapel von neuen Tickets anlegen",
         "TITLE_ACTION_ASSIGN": "Aufgabe zuweisen",
         "PLACEHOLDER_CARD_TITLE": "Das könnte ein Task sein",
         "PLACEHOLDER_CARD_TEXT": "Teile Stories in Tasks auf um sie einzeln zu verfolgen",
@@ -1446,7 +1446,7 @@
             "SEVERITY": "Gewichtung",
             "TYPE": "Arten"
         },
-        "FILTER_ISSUES": "Filter Issues",
+        "FILTER_ISSUES": "Tickets Filtern",
         "CONFIRM_DETACH_FROM_SPRINT": {
             "TITLE": "Detach issue from Sprint",
             "MESSAGE": "You are about to detach the issue from the sprint"
