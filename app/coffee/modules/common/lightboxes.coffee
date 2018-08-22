@@ -996,7 +996,6 @@ $confirm, $q, attachmentsService, $template, $compile) ->
             isDisabledExisting(selectedItem)
 
         $scope.addExisting = (selectedItem) ->
-            event.preventDefault()
             addExisting(selectedItem)
 
         submit = debounce 2000, (event) ->
