@@ -12,8 +12,8 @@ section.issues-table.basic-table(ng-class="{empty: !issues.length}")
              | {{"ISSUES.TABLE.COLUMNS.SUBJECT" | translate}}
         div.issue-field(data-fieldname="status")
              | {{"ISSUES.TABLE.COLUMNS.STATUS" | translate}}
-        div.created-field(data-fieldname="created_date")
-             | {{"ISSUES.TABLE.COLUMNS.CREATED" | translate}}
+        div.modified-field(data-fieldname="modified_date")
+             | {{"ISSUES.TABLE.COLUMNS.MODIFIED" | translate}}
         div.assigned-field(data-fieldname="assigned_to")
              | {{"ISSUES.TABLE.COLUMNS.ASSIGNED_TO" | translate}}
 
@@ -73,10 +73,10 @@ section.issues-table.basic-table(ng-class="{empty: !issues.length}")
                     svg-icon="icon-arrow-down"
                 )
 
-        div.created-field(
-            tg-bo-bind="issue.created_date|momentFormat:'DD MMM YYYY'"
-            tg-bo-title="issue.created_date|momentFormat:'DD MMM YYYY HH:mm'"
+        div.modified-field(
+            title="{{ issue.modified_date|momentFormat:'DD MMM YYYY HH:mm' }}"
         )
+            {{ issue.modified_date|momentFormat:'DD MMM YYYY'}}
 
         div.assigned-field(tg-issue-assigned-to-inline-edition="issue")
             div.issue-assignedto(title="{{'ISSUES.TABLE.TITLE_ACTION_ASSIGNED_TO' | translate}}")

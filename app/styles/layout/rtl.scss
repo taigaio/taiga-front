@@ -172,15 +172,13 @@
         margin-right: .2rem;
     }
     .issues-table .issue-field,
-    .issues-table .assigned-field,
-    .issues-table .created-field,
+    .issues-table .modified-field,
     .issues-table .assigned-field {
         text-align: right;
     }
 
     .issues-table .issue-field .icon,
-    .issues-table .assigned-field .icon,
-    .issues-table .created-field .icon,
+    .issues-table .modified-field .icon,
     .issues-table .assigned-field .icon {
         margin-left: 0;
         margin-right: .25rem;

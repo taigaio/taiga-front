@@ -94,6 +94,23 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             @analytics.trackEvent("issue", "create", "create issue on issues list", 1)
             @.loadIssues()
 
+        @scope.$on "assigned-to:changed", =>
+            @.generateFilters()
+            if @.isFilterDataTypeSelected('assigned_to') ||\
+                @.isFilterDataTypeSelected('role') ||\
+                @.isOrderedBy('assigned_to') || @.isOrderedBy('modified')
+                    @.loadIssues()
+
+        @scope.$on "status:changed", =>
+            @.generateFilters()
+            if @.isFilterDataTypeSelected('status') ||\
+                @.isOrderedBy('status') || @.isOrderedBy('modified')
+                    @.loadIssues()
+
+    isOrderedBy: (fieldName) ->
+        pattern = new RegExp("-*"+fieldName)
+        return pattern.test(@location.search().order_by)
+
     changeQ: (q) ->
         @.unselectFilter("page")
         @.replaceFilter("q", q)
@@ -596,10 +613,8 @@ IssueStatusInlineEditionDirective = ($repo, $template, $rootscope) ->
             updateIssueStatus($el, issue, $scope.issueStatusById)
 
             $scope.$apply () ->
-                $repo.save(issue).then ->
-                    $ctrl.generateFilters()
-                    if $ctrl.isFilterDataTypeSelected('status')
-                        $ctrl.loadIssues()
+                $repo.save(issue).then (response) ->
+                    $rootscope.$broadcast("status:changed", response)
 
         taiga.bindOnce $scope, "project", (project) ->
             $el.append(selectionTemplate({ 'statuses':  project.issue_statuses }))
@@ -670,10 +685,7 @@ IssueAssignedToInlineEditionDirective = ($repo, $rootscope, $translate, avatarSe
                 updatedIssue.assigned_to = userId
                 $repo.save(issue).then ->
                     updateIssue(updatedIssue)
-                    $ctrl.generateFilters()
-                    if $ctrl.isFilterDataTypeSelected('assigned_to') \
-                    || $ctrl.isFilterDataTypeSelected('role')
-                        $ctrl.loadIssues()
+                    $rootscope.$broadcast("assigned-to:changed", updatedIssue)
 
         $scope.$watch $attrs.tgIssueAssignedToInlineEdition, (val) ->
             updateIssue(val)
