@@ -28,7 +28,7 @@
                     a.assign-to-me(
                         href="#"
                         title="{{'COMMON.ASSIGNED_TO.SELF' | translate}}"
-                        ng-click="assignToMe()"
+                        ng-click="selfAssign()"
                     )
                         span {{ "COMMON.ASSIGNED_TO.SELF" | translate }}
 
@@ -41,13 +41,14 @@
         .user-list-name.assigned-users-options
             a(
                 href=""
+                ng-click="assign()"
                 title="{{ 'COMMON.ASSIGNED_TO.TITLE_ACTION_EDIT_ASSIGNMENT'|translate }}"
                 class!="user-assigned <% if (isEditable) { %>editable<% }; %>"
             )
                 span.assigned-name {{assignedUser.full_name_display}}
             tg-svg.remove-user(
                 ng-if="isEditable",
-                data-assigned-user-id="{{assignedUser.id}}"
+                ng-click="unassign(assignedUser)"
                 svg-icon="icon-close",
                 title="{{'COMMON.ASSIGNED_TO.DELETE_ASSIGNMENT' | translate}}"
             )

@@ -1079,11 +1079,6 @@ $confirm, $q, attachmentsService, $template, $compile) ->
             $scope.$broadcast("status:changed", $scope.obj.status)
             $el.find(".pop-status").popover().close()
 
-        $el.on "click", ".users-dropdown", (event) ->
-            event.preventDefault()
-            event.stopPropagation()
-            $el.find(".pop-users").popover().open()
-
         $el.on "click", ".team-requirement", (event) ->
             $scope.obj.team_requirement = not $scope.obj.team_requirement
             $scope.$apply()
