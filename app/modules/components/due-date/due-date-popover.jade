@@ -9,7 +9,7 @@
         type="hidden"
         picker-value="{{ vm.dueDate }}"
     )
-    div.date-picker-popover
+    div.date-picker-popover(ng-hide="!open")
         div.date-picker-container
         div.date-picker-popover-footer(ng-if="vm.dueDate")
             a.date-picker-clean(href="", title="{{'LIGHTBOX.SET_DUE_DATE.TITLE_ACTION_DELETE_DUE_DATE' | translate}}")
