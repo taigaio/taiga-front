@@ -11,6 +11,31 @@
             margin-right: .5rem;
         }
     }
+
+    .main-nav {
+        $label-arrow-wh: 12px;
+        li:hover .helper {
+            background: linear-gradient(to left, rgba($black, 1) 0%, rgba($black, .8) 100%);
+            left: initial;
+            right: 50px;
+            &::after {
+                left: initial;
+                right: calc(-#{$label-arrow-wh}/2);
+            }
+        }
+        .backlog-sprints-menu {
+            background: linear-gradient(to left, rgba($black, 1) 0%, rgba($black, .8) 100%);
+            left: initial;
+            right: 50px;
+            &::after {
+                left: initial;
+                right: calc(-#{$label-arrow-wh}/2);
+            }
+            a {
+                text-align: right;
+            }
+        }
+    }
     .admin-menu li a {
         padding: 1rem 1rem 1rem 0;
     }
@@ -570,9 +595,16 @@
         margin-right: 0;
     }
 
-    .summary .number {
-        margin-left: .3rem;
-        margin-right: 0;
+    .summary {
+        .number {
+            margin-left: .3rem;
+            margin-right: 0;
+        }
+
+        .stats {
+            margin-left: initial;
+            margin-right: auto;
+        }
     }
 
     .table-team {
