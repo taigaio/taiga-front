@@ -36,7 +36,7 @@ class AnalyticsService extends taiga.Service
 
     initialize: ->
         if not @.accountId
-            @log.debug "Analytics: no acount id provided. Disabling."
+            @log.debug "Analytics: no account id provided. Disabling."
             return
 
         @.injectAnalytics()
