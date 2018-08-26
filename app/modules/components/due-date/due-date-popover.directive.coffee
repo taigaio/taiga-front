@@ -22,33 +22,38 @@ module = angular.module("taigaComponents")
 dueDatePopoverDirective = ($translate, datePickerConfigService) ->
     return {
         link: (scope, el, attrs, ctrl) ->
+            scope.open = false
+
             datePickerConfig = datePickerConfigService.get()
             _.merge(datePickerConfig, {
-                field: el.find('input.due-date')[0]
+                field: el.find('.due-date-button')[0]
                 container: el.find('.date-picker-container')[0]
-                bound: false
+                bound: true
+                onClose: () ->
+                    scope.open = false
+                    scope.$apply()
                 onSelect: () ->
                     ctrl.dueDate = this.getMoment().format('YYYY-MM-DD')
-                    el.find(".date-picker-popover").popover().close()
-                    scope.$apply()
             })
             el.picker = new Pikaday(datePickerConfig)
 
-            el.on "click", ".date-picker-popover-trigger", (event) ->
-                if ctrl.disabled()
+            el.on "click", ".due-date-button", (event) ->
+                if scope.open
+                    el.picker.hide()
                     return
-                event.preventDefault()
-                event.stopPropagation()
                 if !el.picker.getDate() && ctrl.dueDate
                     el.picker.setDate(moment(ctrl.dueDate).format('YYYY-MM-DD'))
-                el.find(".date-picker-popover").popover().open()
+                el.picker.show()
+                scope.open = true
+                scope.$apply()
 
             el.on "click", ".date-picker-clean", (event) ->
                 event.preventDefault()
                 event.stopPropagation()
                 ctrl.dueDate = null
                 el.picker.setDate(ctrl.dueDate)
-                el.find(".date-picker-popover").popover().close()
+                scope.open = false
+                el.picker.hide()
                 scope.$apply()
 
             scope.$on "status:changed", (ctx, status) ->

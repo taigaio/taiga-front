@@ -13,7 +13,8 @@
         "UNLINK": "リンク解除",
         "CREATE": "作成",
         "ADD": "追加",
-        "COPY_TO_CLIPBOARD": "クリップボードにコピー: Ctrl+C",
+        "COPY_TO_CLIPBOARD": "Copy to clipboard",
+        "COPIED_TO_CLIPBOARD": "Text has been copied to clipboard",
         "EDIT": "編集",
         "DRAG": "ドラッグ",
         "TAG_LINE": "あなたのアジャイルでフリーでオープンソースなマネジメントツールです",
@@ -1104,7 +1105,7 @@
         },
         "REMOVE_RELATIONSHIP_WITH_EPIC": {
             "TITLE": "Remove relationship with Epic",
-            "MESSAGE": "Are you sure you want to delete the relationship of this User Story with the Epic <strong>{{epicSubject}}</strong>"
+            "MESSAGE": "Are you sure you want to delete the relationship of this User Story with the Epic <strong>{{epicSubject}}</strong>?"
         },
         "CREATE_MEMBER": {
             "PLACEHOLDER_INVITATION_TEXT": "(任意) 招待する際のメッセージを追加できます。新メンバーに素敵な言葉を贈りましょう ;-)",
@@ -1167,8 +1168,6 @@
         "PAGE_TITLE": "{{epicSubject}} - エピック {{epicRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "ステータス: {{epicStatus }}. 説明: {{epicDescription}}",
         "SECTION_NAME": "エピック",
-        "TITLE_LIGHTBOX_UNLINK_RELATED_USERSTORY": "関連するユーザーストーリーのリンクを削除",
-        "MSG_LIGHTBOX_UNLINK_RELATED_USERSTORY": "This action will remove the link to the related user story '{{subject}}'",
         "ERROR_UNLINK_RELATED_USERSTORY": "リンクの削除に失敗: {{errorMessage}}",
         "CREATE_RELATED_USERSTORIES": "関連付ける",
         "NEW_USERSTORY": "新しいユーザーストーリー",
@@ -1407,8 +1406,7 @@
         "CLOSE": "通知を閉じる",
         "MAIL": "メールでの通知",
         "DESKTOP": "ブラウザアラートを使ったデスクトップ通知",
-        "ASK_DELETE": "本当に削除してもよろしいですか？",
-        "ASK_REMOVE_LINK": "Are you sure you want to remove the link?"
+        "ASK_DELETE": "本当に削除してもよろしいですか？"
     },
     "CANCEL_ACCOUNT": {
         "TITLE": "アカウントを解約する",

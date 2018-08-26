@@ -72,7 +72,8 @@ class AvatarService
 
         if photo
             return {
-                url: photo
+                url: photo,
+                username: username
             }
         else if location.host.indexOf('localhost') != -1 || !@config.get("gravatar", true)
             root = location.protocol + '//' + location.host

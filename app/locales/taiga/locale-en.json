@@ -1465,7 +1465,7 @@
                 "SUBJECT": "Subject",
                 "VOTES": "Votes",
                 "STATUS": "Status",
-                "CREATED": "Created",
+                "MODIFIED": "Modified",
                 "ASSIGNED_TO": "Assigned to"
             },
             "TITLE_ACTION_CHANGE_STATUS": "Change status",

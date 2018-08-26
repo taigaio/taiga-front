@@ -122,7 +122,7 @@
     }
     .issue-field,
     .assigned-field,
-    .created-field ,
+    .modified-field ,
     .assigned-field {
         flex-basis: 140px;
         flex-grow: 1;
@@ -173,7 +173,7 @@
         }
     }
     .level-field,
-    .created-field {
+    .modified-field {
         @include breakpoint(laptop) {
             display: none;
         }

@@ -13,7 +13,8 @@
         "UNLINK": "حذف پیوند",
         "CREATE": "ایجاد",
         "ADD": "اضافه کردن",
-        "COPY_TO_CLIPBOARD": "کپی کردن در کلیپ‌بورد: Ctrl+C",
+        "COPY_TO_CLIPBOARD": "Copy to clipboard",
+        "COPIED_TO_CLIPBOARD": "Text has been copied to clipboard",
         "EDIT": "ویرایش",
         "DRAG": "درگ",
         "TAG_LINE": "ابزار سریع، رایگان و متن‌باز مدیریت پروژه‌ی شما",
@@ -1104,7 +1105,7 @@
         },
         "REMOVE_RELATIONSHIP_WITH_EPIC": {
             "TITLE": "Remove relationship with Epic",
-            "MESSAGE": "Are you sure you want to delete the relationship of this User Story with the Epic <strong>{{epicSubject}}</strong>"
+            "MESSAGE": "Are you sure you want to delete the relationship of this User Story with the Epic <strong>{{epicSubject}}</strong>?"
         },
         "CREATE_MEMBER": {
             "PLACEHOLDER_INVITATION_TEXT": "(اختیاری) متنی برای دعوت‌نامه اضافه کنید و جملات جالبی برای اعضای جدید بنویسید  ;-)",
@@ -1167,8 +1168,6 @@
         "PAGE_TITLE": "{{epicSubject}} - Epic {{epicRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "وضعیت: {{epicStatus }}. توضیحات: {{epicDescription}}",
         "SECTION_NAME": "Epic",
-        "TITLE_LIGHTBOX_UNLINK_RELATED_USERSTORY": "حذف پیوند استوری‌های مرتبط کاربر",
-        "MSG_LIGHTBOX_UNLINK_RELATED_USERSTORY": "This action will remove the link to the related user story '{{subject}}'",
         "ERROR_UNLINK_RELATED_USERSTORY": "ما قادر به حذف پیوند نبوده‌ایم: {{errorMessage}}",
         "CREATE_RELATED_USERSTORIES": "ایجاد ارتباط با",
         "NEW_USERSTORY": "استوری کاربری جدید",
@@ -1407,8 +1406,7 @@
         "CLOSE": "بستن نوتیفیکیشن",
         "MAIL": "نوتیفیکیشن از طریق ایمیل",
         "DESKTOP": "اعلانهای دسکتاپ با استفاده از هشدار مرورگر",
-        "ASK_DELETE": "آیا در مورد حذف کردن، مطمئن هستید؟",
-        "ASK_REMOVE_LINK": "Are you sure you want to remove the link?"
+        "ASK_DELETE": "آیا در مورد حذف کردن، مطمئن هستید؟"
     },
     "CANCEL_ACCOUNT": {
         "TITLE": "کنسل کردن حساب کاربری",

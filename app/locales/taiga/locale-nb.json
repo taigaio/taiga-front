@@ -13,7 +13,8 @@
         "UNLINK": "Unlink",
         "CREATE": "Opprett",
         "ADD": "Legg til",
-        "COPY_TO_CLIPBOARD": "Kopier til utklippstavlen: Ctrl+C",
+        "COPY_TO_CLIPBOARD": "Copy to clipboard",
+        "COPIED_TO_CLIPBOARD": "Text has been copied to clipboard",
         "EDIT": "Endre",
         "DRAG": "Dra",
         "TAG_LINE": "Ditt smidige, gratis og åpen kildekode prosjektstyringsverktøy",
@@ -1104,7 +1105,7 @@
         },
         "REMOVE_RELATIONSHIP_WITH_EPIC": {
             "TITLE": "Remove relationship with Epic",
-            "MESSAGE": "Are you sure you want to delete the relationship of this User Story with the Epic <strong>{{epicSubject}}</strong>"
+            "MESSAGE": "Are you sure you want to delete the relationship of this User Story with the Epic <strong>{{epicSubject}}</strong>?"
         },
         "CREATE_MEMBER": {
             "PLACEHOLDER_INVITATION_TEXT": "(Valgfritt) Legg til en egen tekst til invitasjonen. Fortell dine nye medlemmer noe fantastisk ;-)",
@@ -1167,8 +1168,6 @@
         "PAGE_TITLE": "{{epicSubject}} - Epic {{epicRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Status: {{epicStatus }}. Description: {{epicDescription}}",
         "SECTION_NAME": "Epic",
-        "TITLE_LIGHTBOX_UNLINK_RELATED_USERSTORY": "Unlink related userstory",
-        "MSG_LIGHTBOX_UNLINK_RELATED_USERSTORY": "This action will remove the link to the related user story '{{subject}}'",
         "ERROR_UNLINK_RELATED_USERSTORY": "We have not been able to unlink: {{errorMessage}}",
         "CREATE_RELATED_USERSTORIES": "Create a relationship with",
         "NEW_USERSTORY": "Ny brukerhistorie",
@@ -1407,8 +1406,7 @@
         "CLOSE": "Lukk melding",
         "MAIL": "Varsler per Epost",
         "DESKTOP": "Desktop notifications using browser alerts",
-        "ASK_DELETE": "Er du sikker på at du vil slette?",
-        "ASK_REMOVE_LINK": "Are you sure you want to remove the link?"
+        "ASK_DELETE": "Er du sikker på at du vil slette?"
     },
     "CANCEL_ACCOUNT": {
         "TITLE": "Kanseler din konto",

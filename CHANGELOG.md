@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+## 3.4.2 (2018-08-27)
+
+### Misc
+
+- Fix pickadate conflicts
+- Modify meeting module URL checking
+- Minor bug fixes.
+
 ## 3.4.1 (2018-08-21)
 
 ### Misc

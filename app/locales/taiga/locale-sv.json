@@ -13,7 +13,8 @@
         "UNLINK": "Avlänka",
         "CREATE": "Skapa",
         "ADD": "Lägg till",
-        "COPY_TO_CLIPBOARD": "Kopiera till urklipp: Ctrl+C",
+        "COPY_TO_CLIPBOARD": "Copy to clipboard",
+        "COPIED_TO_CLIPBOARD": "Text has been copied to clipboard",
         "EDIT": "Redigera",
         "DRAG": "Dra",
         "TAG_LINE": "Ditt agila, gratis och öppen-källkod projekthanteringsverktyg",
@@ -1104,7 +1105,7 @@
         },
         "REMOVE_RELATIONSHIP_WITH_EPIC": {
             "TITLE": "Remove relationship with Epic",
-            "MESSAGE": "Are you sure you want to delete the relationship of this User Story with the Epic <strong>{{epicSubject}}</strong>"
+            "MESSAGE": "Are you sure you want to delete the relationship of this User Story with the Epic <strong>{{epicSubject}}</strong>?"
         },
         "CREATE_MEMBER": {
             "PLACEHOLDER_INVITATION_TEXT": "(Valfritt) Lägg till en personlig hälsning till invitationen. Berätta något trevligt till din nya projektmedlem ;-)",
@@ -1167,8 +1168,6 @@
         "PAGE_TITLE": "{{epicSubject}} - Epost {{epicRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Status: {{epicStatus }}. Beskrivning: {{epicDescription}}",
         "SECTION_NAME": "Epost",
-        "TITLE_LIGHTBOX_UNLINK_RELATED_USERSTORY": "Ta bort länkning till relaterade användningsfall ",
-        "MSG_LIGHTBOX_UNLINK_RELATED_USERSTORY": "This action will remove the link to the related user story '{{subject}}'",
         "ERROR_UNLINK_RELATED_USERSTORY": "Vi har inte lyckats att ta bort: {{errorMessage}}",
         "CREATE_RELATED_USERSTORIES": "Skapa en relation med",
         "NEW_USERSTORY": "Ny användarhistorie",
@@ -1407,8 +1406,7 @@
         "CLOSE": "Stäng avisering",
         "MAIL": "Notifieringar via e-post",
         "DESKTOP": "Desktop notifications using browser alerts",
-        "ASK_DELETE": "Är du säker på att du vill radera?",
-        "ASK_REMOVE_LINK": "Are you sure you want to remove the link?"
+        "ASK_DELETE": "Är du säker på att du vill radera?"
     },
     "CANCEL_ACCOUNT": {
         "TITLE": "Ta bort ditt konto",

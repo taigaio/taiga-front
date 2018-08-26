@@ -13,7 +13,8 @@
         "UNLINK": "Odłącz",
         "CREATE": "Stwórz",
         "ADD": "Dodaj",
-        "COPY_TO_CLIPBOARD": "Skopiuj do schowka: Ctrl+C",
+        "COPY_TO_CLIPBOARD": "Copy to clipboard",
+        "COPIED_TO_CLIPBOARD": "Text has been copied to clipboard",
         "EDIT": "Edycja",
         "DRAG": "Przeciągnij",
         "TAG_LINE": "Twoje zwinne, wolne, otwartoźródłowe narzędzie do zarządzania projektem",
@@ -1104,7 +1105,7 @@
         },
         "REMOVE_RELATIONSHIP_WITH_EPIC": {
             "TITLE": "Remove relationship with Epic",
-            "MESSAGE": "Are you sure you want to delete the relationship of this User Story with the Epic <strong>{{epicSubject}}</strong>"
+            "MESSAGE": "Are you sure you want to delete the relationship of this User Story with the Epic <strong>{{epicSubject}}</strong>?"
         },
         "CREATE_MEMBER": {
             "PLACEHOLDER_INVITATION_TEXT": "(Opcjonalne) Dodaj spersonalizowany tekst do zaproszenia. Napisz coś słodziachnego do nowego członka zespołu :)",
@@ -1167,8 +1168,6 @@
         "PAGE_TITLE": "{{epicSubject}} - Epic {{epicRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Status: {{epicStatus }}. Opis: {{epicDescription}}",
         "SECTION_NAME": "Epic",
-        "TITLE_LIGHTBOX_UNLINK_RELATED_USERSTORY": "Unlink related userstory",
-        "MSG_LIGHTBOX_UNLINK_RELATED_USERSTORY": "This action will remove the link to the related user story '{{subject}}'",
         "ERROR_UNLINK_RELATED_USERSTORY": "Nie byliśmy w stanie odlinkować: {{errorMessage}}",
         "CREATE_RELATED_USERSTORIES": "Stwórz relację z",
         "NEW_USERSTORY": "Nowa historyjka użytkownika",
@@ -1407,8 +1406,7 @@
         "CLOSE": "Zamknij powiadomienie",
         "MAIL": "Powiadomienia na e-mail",
         "DESKTOP": "Desktop notifications using browser alerts",
-        "ASK_DELETE": "Czy na pewno chcesz usunąć?",
-        "ASK_REMOVE_LINK": "Are you sure you want to remove the link?"
+        "ASK_DELETE": "Czy na pewno chcesz usunąć?"
     },
     "CANCEL_ACCOUNT": {
         "TITLE": "Unieważnij swoje konto",

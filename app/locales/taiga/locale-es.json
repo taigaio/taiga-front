@@ -13,7 +13,8 @@
         "UNLINK": "Desvincular",
         "CREATE": "Crear",
         "ADD": "Añadir",
-        "COPY_TO_CLIPBOARD": "Copiar en el portapapeles: Ctrl+C",
+        "COPY_TO_CLIPBOARD": "Copy to clipboard",
+        "COPIED_TO_CLIPBOARD": "Text has been copied to clipboard",
         "EDIT": "Editar",
         "DRAG": "Arrastra",
         "TAG_LINE": "Tu herramienta de gestión de proyecto ágil, gratuíta y de código abierto",
@@ -1104,7 +1105,7 @@
         },
         "REMOVE_RELATIONSHIP_WITH_EPIC": {
             "TITLE": "Quitar relación con Épica",
-            "MESSAGE": "¿Estás seguro que quieres eliminar la relación de la historia de usuario con la Épica <strong>{{epicSubject}}</strong>"
+            "MESSAGE": "Are you sure you want to delete the relationship of this User Story with the Epic <strong>{{epicSubject}}</strong>?"
         },
         "CREATE_MEMBER": {
             "PLACEHOLDER_INVITATION_TEXT": "(Opcional) Añade un texto personalizado a la invitación. Dile algo encantador a tus nuevos miembros ;-)",
@@ -1167,8 +1168,6 @@
         "PAGE_TITLE": "{{epicSubject}} - Épica {{epicRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Estado: {{taskStatus}}. Descripción: {{taskDescription}}",
         "SECTION_NAME": "Épica",
-        "TITLE_LIGHTBOX_UNLINK_RELATED_USERSTORY": "Desvincular historia de usuario relacionada.",
-        "MSG_LIGHTBOX_UNLINK_RELATED_USERSTORY": "Esta acción quitará el enlace a la historia de usuario relacionada de '{{subject}}'",
         "ERROR_UNLINK_RELATED_USERSTORY": "No se ha podido desvincular:  {{errorMessage}}",
         "CREATE_RELATED_USERSTORIES": "Crear relación con",
         "NEW_USERSTORY": "Nueva historia de usuario",
@@ -1407,8 +1406,7 @@
         "CLOSE": "Cerrar notificación",
         "MAIL": "Notificaciones Por Mail",
         "DESKTOP": "Notificaciones de escritorio usando alertas de navegador",
-        "ASK_DELETE": "¿Esta seguro que desea eliminar?",
-        "ASK_REMOVE_LINK": "¿Estás seguro de que quieres quitar el enlace?"
+        "ASK_DELETE": "¿Esta seguro que desea eliminar?"
     },
     "CANCEL_ACCOUNT": {
         "TITLE": "Cancelar tu cuenta de usuario",

@@ -13,7 +13,8 @@
         "UNLINK": "ontkoppel",
         "CREATE": "Aanmaken",
         "ADD": "Toevoegen",
-        "COPY_TO_CLIPBOARD": "Kopieër naar klembord: Ctrl+C",
+        "COPY_TO_CLIPBOARD": "Copy to clipboard",
+        "COPIED_TO_CLIPBOARD": "Text has been copied to clipboard",
         "EDIT": "Bewerk",
         "DRAG": "Sleep",
         "TAG_LINE": "Jouw agile, gratis en open source project management tool",
@@ -1104,7 +1105,7 @@
         },
         "REMOVE_RELATIONSHIP_WITH_EPIC": {
             "TITLE": "Remove relationship with Epic",
-            "MESSAGE": "Are you sure you want to delete the relationship of this User Story with the Epic <strong>{{epicSubject}}</strong>"
+            "MESSAGE": "Are you sure you want to delete the relationship of this User Story with the Epic <strong>{{epicSubject}}</strong>?"
         },
         "CREATE_MEMBER": {
             "PLACEHOLDER_INVITATION_TEXT": "(Optioneel) Voeg een gepersonaliseerd bericht toe aan je uitnodiging. Vertel iets leuks aan je nieuwe leden ;-)",
@@ -1167,8 +1168,6 @@
         "PAGE_TITLE": "{{epicSubject}} - Epic {{epicRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Status: {{epicStatus }}. Description: {{epicDescription}}",
         "SECTION_NAME": "Epic",
-        "TITLE_LIGHTBOX_UNLINK_RELATED_USERSTORY": "Unlink related userstory",
-        "MSG_LIGHTBOX_UNLINK_RELATED_USERSTORY": "This action will remove the link to the related user story '{{subject}}'",
         "ERROR_UNLINK_RELATED_USERSTORY": "We have not been able to unlink: {{errorMessage}}",
         "CREATE_RELATED_USERSTORIES": "Create a relationship with",
         "NEW_USERSTORY": "Nieuwe user story",
@@ -1407,8 +1406,7 @@
         "CLOSE": "Notificatie sluiten",
         "MAIL": "Notificaties per mail",
         "DESKTOP": "Desktop notifications using browser alerts",
-        "ASK_DELETE": "Weet je zeker dat je wilt verwijderen?",
-        "ASK_REMOVE_LINK": "Are you sure you want to remove the link?"
+        "ASK_DELETE": "Weet je zeker dat je wilt verwijderen?"
     },
     "CANCEL_ACCOUNT": {
         "TITLE": "Annuleer je account",

@@ -98,14 +98,14 @@
 .date-picker-popover {
     background: $white;
     border: 1px solid $gray;
-    display: none;
     left: 0;
     overflow: visible;
     position: absolute;
     top: 56px;
     width: auto;
-    .pika-single {
+    .pika-single.is-bound {
         border: 0;
+        box-shadow: none;
     }
 }
 
