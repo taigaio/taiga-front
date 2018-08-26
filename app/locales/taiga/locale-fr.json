@@ -13,7 +13,8 @@
         "UNLINK": "Détacher",
         "CREATE": "Créer",
         "ADD": "Ajouter",
-        "COPY_TO_CLIPBOARD": "Copier dans le presse-papier : Ctrl+C",
+        "COPY_TO_CLIPBOARD": "Copy to clipboard",
+        "COPIED_TO_CLIPBOARD": "Text has been copied to clipboard",
         "EDIT": "Éditer",
         "DRAG": "Faire glisser",
         "TAG_LINE": "Votre outil de gestion de projet agile, libre et open source",
@@ -1104,7 +1105,7 @@
         },
         "REMOVE_RELATIONSHIP_WITH_EPIC": {
             "TITLE": "Remove relationship with Epic",
-            "MESSAGE": "Are you sure you want to delete the relationship of this User Story with the Epic <strong>{{epicSubject}}</strong>"
+            "MESSAGE": "Are you sure you want to delete the relationship of this User Story with the Epic <strong>{{epicSubject}}</strong>?"
         },
         "CREATE_MEMBER": {
             "PLACEHOLDER_INVITATION_TEXT": "(Optionnel) Ajoutez un texte personnalisé à l'invitation. Dites quelque chose de gentil à vos nouveaux membres ;-)",
@@ -1167,8 +1168,6 @@
         "PAGE_TITLE": "{{epicSubject}} - Épopée {{epicRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Statut : {{epicStatus }}. Description : {{epicDescription}}",
         "SECTION_NAME": "Épopée",
-        "TITLE_LIGHTBOX_UNLINK_RELATED_USERSTORY": "Détacher le récit utilisateur",
-        "MSG_LIGHTBOX_UNLINK_RELATED_USERSTORY": "This action will remove the link to the related user story '{{subject}}'",
         "ERROR_UNLINK_RELATED_USERSTORY": "Nous n'avons pas réussi à supprimer le lien : {{errorMessage}}",
         "CREATE_RELATED_USERSTORIES": "Créer un lien avec",
         "NEW_USERSTORY": "Nouveau récit utilisateur",
@@ -1407,8 +1406,7 @@
         "CLOSE": "Fermer la notification",
         "MAIL": "Notifications par courriel",
         "DESKTOP": "Desktop notifications using browser alerts",
-        "ASK_DELETE": "Etes-vous sûre de vouloir supprimer ?",
-        "ASK_REMOVE_LINK": "Are you sure you want to remove the link?"
+        "ASK_DELETE": "Etes-vous sûre de vouloir supprimer ?"
     },
     "CANCEL_ACCOUNT": {
         "TITLE": "Annuler votre compte",

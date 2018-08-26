@@ -13,7 +13,8 @@
         "UNLINK": "Bağlantıyı Kopar",
         "CREATE": "Oluştur",
         "ADD": "Ekle",
-        "COPY_TO_CLIPBOARD": "Panoya kopyala: Ctrl+C",
+        "COPY_TO_CLIPBOARD": "Copy to clipboard",
+        "COPIED_TO_CLIPBOARD": "Text has been copied to clipboard",
         "EDIT": "Düzenle",
         "DRAG": "Sürükle",
         "TAG_LINE": "Çevik, ücretsiz ve açık kaynak proje yönetim aracınız",
@@ -1104,7 +1105,7 @@
         },
         "REMOVE_RELATIONSHIP_WITH_EPIC": {
             "TITLE": "Remove relationship with Epic",
-            "MESSAGE": "Are you sure you want to delete the relationship of this User Story with the Epic <strong>{{epicSubject}}</strong>"
+            "MESSAGE": "Are you sure you want to delete the relationship of this User Story with the Epic <strong>{{epicSubject}}</strong>?"
         },
         "CREATE_MEMBER": {
             "PLACEHOLDER_INVITATION_TEXT": "(Opsiyonel) Davetinize kişiselleştirilmiş bir metin ekleyin. Yeni üyelerinize tatlı bir şeyler söyleyin ;-)",
@@ -1167,8 +1168,6 @@
         "PAGE_TITLE": "{{epicSubject}} - Destan {{epicRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Durum: {{epicStatus }}. Açıklama: {{epicDescription}}",
         "SECTION_NAME": "Destan",
-        "TITLE_LIGHTBOX_UNLINK_RELATED_USERSTORY": "İlgili kullanıcı hikayesinin ilişkisini kaldırın",
-        "MSG_LIGHTBOX_UNLINK_RELATED_USERSTORY": "This action will remove the link to the related user story '{{subject}}'",
         "ERROR_UNLINK_RELATED_USERSTORY": "Bağlantıyı koparamıyoruz: {{errorMessage}}",
         "CREATE_RELATED_USERSTORIES": "İlişki yarat: ",
         "NEW_USERSTORY": "Yeni kullanıcı hikayesi",
@@ -1407,8 +1406,7 @@
         "CLOSE": "Bildirimleri kapat",
         "MAIL": "Posta ile Bildirim",
         "DESKTOP": "Desktop notifications using browser alerts",
-        "ASK_DELETE": "Silmek istediğinizden emin misiniz?",
-        "ASK_REMOVE_LINK": "Are you sure you want to remove the link?"
+        "ASK_DELETE": "Silmek istediğinizden emin misiniz?"
     },
     "CANCEL_ACCOUNT": {
         "TITLE": "Hesabınızı iptal edin",

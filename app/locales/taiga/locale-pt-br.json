@@ -13,7 +13,8 @@
         "UNLINK": "Separar",
         "CREATE": "Criar",
         "ADD": "Adicionar",
-        "COPY_TO_CLIPBOARD": "Copiar para a área de transferência: Ctrl+C",
+        "COPY_TO_CLIPBOARD": "Copy to clipboard",
+        "COPIED_TO_CLIPBOARD": "Text has been copied to clipboard",
         "EDIT": "Editar",
         "DRAG": "Arrastar",
         "TAG_LINE": "Sua ferramenta de código aberto, gratuita e ágil.",
@@ -1104,7 +1105,7 @@
         },
         "REMOVE_RELATIONSHIP_WITH_EPIC": {
             "TITLE": "Remove relationship with Epic",
-            "MESSAGE": "Are you sure you want to delete the relationship of this User Story with the Epic <strong>{{epicSubject}}</strong>"
+            "MESSAGE": "Are you sure you want to delete the relationship of this User Story with the Epic <strong>{{epicSubject}}</strong>?"
         },
         "CREATE_MEMBER": {
             "PLACEHOLDER_INVITATION_TEXT": "(Opcional) Adicione uma mensagem de texto ao convite. Diga algo animador para os novos membros ;-)",
@@ -1167,8 +1168,6 @@
         "PAGE_TITLE": "{{epicSubject}} - Épico {{epicRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Estado: {{epicStatus }}. Descrição: {{epicDescription}}",
         "SECTION_NAME": "Épico",
-        "TITLE_LIGHTBOX_UNLINK_RELATED_USERSTORY": "Separar história de usuário relacionada",
-        "MSG_LIGHTBOX_UNLINK_RELATED_USERSTORY": "This action will remove the link to the related user story '{{subject}}'",
         "ERROR_UNLINK_RELATED_USERSTORY": "Não fomos capazes de separar: {{errorMessage}}",
         "CREATE_RELATED_USERSTORIES": "Criar um relacionamento com",
         "NEW_USERSTORY": "Nova história de usuário",
@@ -1407,8 +1406,7 @@
         "CLOSE": "Fechar Notificação",
         "MAIL": "Notificações por Email",
         "DESKTOP": "Notificações da área de trabalho usando alertas do navegador",
-        "ASK_DELETE": "Você tem certeza que quer excluir?",
-        "ASK_REMOVE_LINK": "Are you sure you want to remove the link?"
+        "ASK_DELETE": "Você tem certeza que quer excluir?"
     },
     "CANCEL_ACCOUNT": {
         "TITLE": "Cancelar sua conta",

@@ -13,7 +13,8 @@
         "UNLINK": "断开链接",
         "CREATE": "创建",
         "ADD": "新增",
-        "COPY_TO_CLIPBOARD": "复制到剪贴板：Ctrl+C",
+        "COPY_TO_CLIPBOARD": "Copy to clipboard",
+        "COPIED_TO_CLIPBOARD": "Text has been copied to clipboard",
         "EDIT": "编辑",
         "DRAG": "拖拽",
         "TAG_LINE": "你的敏捷、免费和开源的项目管理工具",
@@ -1104,7 +1105,7 @@
         },
         "REMOVE_RELATIONSHIP_WITH_EPIC": {
             "TITLE": "Remove relationship with Epic",
-            "MESSAGE": "Are you sure you want to delete the relationship of this User Story with the Epic <strong>{{epicSubject}}</strong>"
+            "MESSAGE": "Are you sure you want to delete the relationship of this User Story with the Epic <strong>{{epicSubject}}</strong>?"
         },
         "CREATE_MEMBER": {
             "PLACEHOLDER_INVITATION_TEXT": "(非必要) 加上一段私人文字在邀请信，告诉你的新成员一些好事  ;-)",
@@ -1167,8 +1168,6 @@
         "PAGE_TITLE": "{{epicSubject}} - 史诗{{epicRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "状态：{{epicStatus}}。描述：{{epicDescription}}",
         "SECTION_NAME": "史诗",
-        "TITLE_LIGHTBOX_UNLINK_RELATED_USERSTORY": "断开相关用户故事链接",
-        "MSG_LIGHTBOX_UNLINK_RELATED_USERSTORY": "This action will remove the link to the related user story '{{subject}}'",
         "ERROR_UNLINK_RELATED_USERSTORY": "无法断开链接：{{errorMessage}}",
         "CREATE_RELATED_USERSTORIES": "创建关系",
         "NEW_USERSTORY": "新建用户故事",
@@ -1407,8 +1406,7 @@
         "CLOSE": "关闭通知",
         "MAIL": "通过邮件通知",
         "DESKTOP": "使用浏览器警告作为桌面提醒",
-        "ASK_DELETE": "你确定要删除吗？",
-        "ASK_REMOVE_LINK": "Are you sure you want to remove the link?"
+        "ASK_DELETE": "你确定要删除吗？"
     },
     "CANCEL_ACCOUNT": {
         "TITLE": "注销您的账户",
