@@ -12,7 +12,7 @@
 
 
 .assigned-to
-    .assigned-to-options
+    .assigned-to-actions
         span.assigned-name(
             ng-if="!isEditable && fullNameVisible"
         ) {{ fullName }}
@@ -51,7 +51,7 @@
 
         span(translate="COMMON.OR", ng-if="isUnassigned")
         div(ng-if="isUnassigned")
-            a.assign-to-me(
+            a.self-assign(
                 href="#"
                 ng-click="selfAssign()"
                 title="{{'COMMON.ASSIGNED_TO.SELF' | translate}}"

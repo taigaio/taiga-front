@@ -58,7 +58,7 @@
     }
 
     .user-assigned,
-    .assign-to-me {
+    .self-assign {
         color: $primary;
         &.editable {
             color: $primary;
@@ -87,7 +87,7 @@
             margin-left: .5rem;
         }
 
-        .assigned-to-options {
+        .assigned-to-actions {
             align-content: center;
             display: flex;
             a {
@@ -95,7 +95,7 @@
             }
         }
         .user-assigned,
-        .assign-to-me {
+        .self-assign {
             color: $primary;
             cursor: default;
             &:hover {

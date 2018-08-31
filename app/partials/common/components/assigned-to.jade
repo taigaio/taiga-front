@@ -11,34 +11,27 @@
        tg-svg(svg-icon="icon-iocaine")
 
 .assigned-to
-    .assigned-to-options
-        span.assigned-name(
-            ng-if="!isEditable && fullNameVisible"
-        ) {{ fullName }}
-
-        span.user-assigned(
-            title="{{ 'COMMON.ASSIGNED_TO.TITLE_ACTION_EDIT_ASSIGNMENT'|translate }}"
-            ng-class="{ 'editable': isEditable }"
-            ng-if="isEditable"
-            ng-click="assign()"
-        )
-            span.assigned-name
-                span(ng-if="fullNameVisible") {{ fullName }}
-
+    .assigned-to-actions
+        span(ng-if="fullNameVisible")
+            a.user-assigned.assigned-name(
+                ng-if="isEditable"
+                title="{{ 'COMMON.ASSIGNED_TO.TITLE_ACTION_EDIT_ASSIGNMENT' | translate }}"
+                ng-class="{ 'editable': isEditable }"
+                ng-click="assign()"
+            ) {{ fullName }}
+            span.assigned-name(
+                ng-if="!isEditable"
+            ) {{ fullName }}
         span(ng-if="isUnassigned")
-            | &nbsp;
-            span(translate="COMMON.OR")
-            | &nbsp;
-            a.assign-to-me(
-                href="#"
-                title="{{'COMMON.ASSIGNED_TO.SELF' | translate}}"
-                ng-click="selfAssign()"
-            )
-                span {{ "COMMON.ASSIGNED_TO.SELF" | translate }}
+            span(ng-if="fullNameVisible")
+                | &nbsp;
+                span(translate="COMMON.OR")
+                | &nbsp;
+            a.self-assign(href="#", ng-click="selfAssign()") {{ "COMMON.ASSIGNED_TO.SELF" | translate }}
 
     tg-svg.remove-user(
         ng-click="unassign()"
         ng-if="isEditable && !isUnassigned"
         svg-icon="icon-close",
-        title="{{'COMMON.ASSIGNED_TO.DELETE_ASSIGNMENT' | translate}}"
+        title="{{ 'COMMON.ASSIGNED_TO.DELETE_ASSIGNMENT' | translate }}"
     )
