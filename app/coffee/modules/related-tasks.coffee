@@ -237,9 +237,8 @@ module.directive("tgRelatedTaskCreateButton", ["$tgRepo", "$compile", "$tgConfir
 RelatedTasksDirective = ($repo, $rs, $rootscope) ->
     link = ($scope, $el, $attrs) ->
         loadTasks = ->
-            return $rs.tasks.list($scope.projectId, null, $scope.usId).then (tasks) =>
-                $scope.tasks = _.sortBy(tasks, (x) => [x.us_order, x.ref])
-                return tasks
+            return $rs.tasks.list($scope.projectId, null, $scope.usId).then (result) ->
+                Immutable.fromJS(result.data)
 
         _isVisible = ->
             if $scope.project
@@ -251,12 +250,18 @@ RelatedTasksDirective = ($repo, $rs, $rootscope) ->
                 return $scope.project.my_permissions.indexOf("modify_task") != -1
             return false
 
+        $scope.reorderTask = (task, newIndex) ->
+            $rootscope.$broadcast('task:reorder', task, newIndex)
+
         $scope.showRelatedTasks = ->
             return _isVisible() && ( _isEditable() ||  $scope.tasks?.length )
 
         $scope.$on "related-tasks:add", ->
             loadTasks().then ->
                 $rootscope.$broadcast("related-tasks:update")
+
+        $scope.$on "related-tasks:reordered", ->
+            loadTasks()
 
         $scope.$on "related-tasks:delete", ->
             loadTasks().then ->

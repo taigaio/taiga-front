@@ -57,7 +57,7 @@ resourceProvider = ($repo, $http, $urls, $storage) ->
         return $repo.queryOneRaw("task-filters", null, params)
 
     service.list = (projectId, sprintId=null, userStoryId=null, params) ->
-        params = _.merge(params, {project: projectId})
+        params = _.merge(params, {project: projectId, order_by: 'us_order'})
         params.milestone = sprintId if sprintId
         params.user_story = userStoryId if userStoryId
         service.storeQueryParams(projectId, params)
@@ -89,6 +89,14 @@ resourceProvider = ($repo, $http, $urls, $storage) ->
         url = $urls.resolve("bulk-update-task-taskboard-order")
         params = {project_id: projectId, bulk_tasks: data}
         return $http.post(url, params)
+
+    service.reorder = (id, data, setOrders) ->
+        url = $urls.resolve("tasks") + "/#{id}"
+
+        options = {"headers": {"set-orders": JSON.stringify(setOrders)}}
+
+        return $http.patch(url, data, null, options)
+            .then (result) -> result.data
 
     service.listValues = (projectId, type) ->
         params = {"project": projectId}

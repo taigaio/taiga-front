@@ -65,6 +65,25 @@
             width: 150px;
         }
     }
+    .single-related-task {
+        &:hover {
+            background: rgba($primary-light, .05);
+            .icon-drag {
+                opacity: 1;
+            }
+        }
+        .task-reorder {
+            display: flex;
+            margin-right: 1rem;
+        }
+        .icon-drag {
+            @include svg-size(.75rem);
+            cursor: move;
+            fill: $whitish;
+            opacity: 0;
+            transition: opacity .1s;
+        }
+    }
     .related-task-create-form {
         padding: 0;
         &.active {
