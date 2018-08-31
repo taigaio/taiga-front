@@ -19,7 +19,7 @@
 
 AssignedUsersInlineDirective = ($rootscope, $confirm, $repo, $loading, $modelTransform, $template
 $translate, $compile, $currentUserService, avatarService, $userListService) ->
-    link = ($scope, $el, $attrs, $ctrl) ->
+    link = ($scope, $el, $attrs, $model) ->
         currentAssignedIds = []
         currentAssignedTo = null
 
@@ -67,8 +67,8 @@ $translate, $compile, $currentUserService, avatarService, $userListService) ->
                 currentAssignedTo = null
             else if currentAssignedIds.indexOf(currentAssignedTo) == -1 || !currentAssignedTo
                 currentAssignedTo = currentAssignedIds[0]
-            $attr.ngModel.setAttr('assigned_users', currentAssignedIds)
-            $attr.ngModel.assigned_to = currentAssignedTo
+            $model.$modelValue.setAttr('assigned_users', currentAssignedIds)
+            $model.$modelValue.assigned_to = currentAssignedTo
 
         $el.on "click", ".users-dropdown", (event) ->
             event.preventDefault()
@@ -82,6 +82,19 @@ $translate, $compile, $currentUserService, avatarService, $userListService) ->
             renderUsers()
             applyToModel()
             $scope.usersSearch = null
+
+        $scope.unassign = (user) ->
+            assignedUserId = user.id
+
+            title = $translate.instant("COMMON.ASSIGNED_USERS.TITLE_LIGHTBOX_DELETE_ASSIGNED")
+            message = $scope.usersById[assignedUserId].full_name_display
+
+            $confirm.askOnDelete(title, message).then (askResponse) ->
+                users =  $model.$modelValue.assigned_users
+                users.splice(users.indexOf(assignedUserId), 1)
+                renderUsers()
+                applyToModel()
+                askResponse.finish()
 
         $el.on "click", ".users-search", (event) ->
             event.stopPropagation()
@@ -100,6 +113,7 @@ $translate, $compile, $currentUserService, avatarService, $userListService) ->
                 currentAssignedIds.push(target.data("user-id"))
             else
                 currentAssignedIds.splice(index, 1)
+            applyToModel()
             renderUsers()
             $el.find(".pop-users").popover().close()
             $scope.usersSearch = null
@@ -121,7 +135,8 @@ $translate, $compile, $currentUserService, avatarService, $userListService) ->
     return {
         scope: true,
         link:link,
-        templateUrl: "common/components/assigned-users-inline.html"
+        templateUrl: "common/components/assigned-users-inline.html",
+        require:"ngModel"
     }
 
 angular.module('taigaComponents').directive("tgAssignedUsersInline", ["$rootScope", "$tgConfirm",
