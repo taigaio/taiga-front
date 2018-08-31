@@ -554,8 +554,10 @@ InvitationDirective = ($auth, $confirm, $location, $config, $params, $navUrls, $
             $analytics.trackEvent("auth", "invitationAccept", "invitation accept with new user", 1)
 
             $location.path($navUrls.resolve("project", {project: $scope.invitation.project_slug}))
-            $confirm.notify("success", "You've successfully joined this project",
-                                       "Welcome to #{_.escape($scope.invitation.project_name)}")
+            text = $translate.instant("INVITATION_LOGIN_FORM.SUCCESS", {
+                "project_name": $scope.invitation.project_name
+            })
+            $confirm.notify("success", text)
 
         onErrorSubmitRegister = (response) ->
             if response.data._error_message
