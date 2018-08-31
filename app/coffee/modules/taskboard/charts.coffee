@@ -42,7 +42,7 @@ SprintGraphDirective = ($translate)->
         width = element.width()
         element.height(240)
 
-        days = _.map(dataToDraw, (x) -> moment(new Date(x.day).getTime()))
+        days = _.map(dataToDraw, (x) -> moment.utc(x.day))
 
         data = []
         data.unshift({
