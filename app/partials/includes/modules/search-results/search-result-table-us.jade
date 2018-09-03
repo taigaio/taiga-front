@@ -1,0 +1,26 @@
+div.search-result-table-container(ng-class="{'hidden': !userstories.length}", tg-bind-scope)
+    div.search-result-table-header
+        div.row.title
+            div.user-stories(translate="SEARCH.FILTER_USER_STORIES")
+            div.sprint(translate="COMMON.FIELDS.SPRINT")
+            div.status(translate="COMMON.FIELDS.STATUS")
+            div.points(translate="COMMON.FIELDS.POINTS")
+    div.search-result-table-body
+        div.row.table-main(ng-repeat="us in userstories track by us.id")
+            div.user-stories
+                div.user-story-name
+                    a(  
+                        href=""
+                        tg-nav="project-userstories-detail:project=project.slug,ref=us.ref"
+                    )
+                        span.ref(tg-bo-ref="us.ref")
+                        span {{ us.subject | emojify }}
+            div.sprint
+                div.sprint-link
+                    a(href="", tg-nav="project-taskboard:project=project.slug,sprint=us.milestone_slug",
+                        tg-bo-bind="us.milestone_name")
+            div.status(tg-listitem-us-status="us")
+            div.points(tg-bo-bind="us.total_points")
+
+div.empty-large(ng-class="{'hidden': userstories.length}")
+    include ./empty-search-results

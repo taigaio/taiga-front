@@ -1,0 +1,21 @@
+div.search-result-table-container(ng-class="{'hidden': !tasks.length}", tg-bind-scope)
+    div.search-result-table-header
+        div.row.title
+            div.user-stories(translate="SEARCH.FILTER_TASKS")
+            div.status(translate="COMMON.FIELDS.STATUS")
+            div.assigned-to(translate="COMMON.FIELDS.ASSIGNED_TO")
+    div.search-result-table-body
+        div.row.table-main(ng-repeat="task in tasks track by task.id")
+            div.user-stories
+                div.user-story-name
+                    a(
+                        href="",
+                        tg-nav="project-tasks-detail:project=project.slug,ref=task.ref"
+                    )
+                        span.ref(tg-bo-ref="task.ref")
+                        span {{ task.subject | emojify }}
+            div.status(tg-listitem-task-status="task")
+            div.assigned-to(tg-listitem-assignedto="task")
+
+div.empty-large(ng-class="{'hidden': tasks.length}")
+    include ./empty-search-results

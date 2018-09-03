@@ -1,0 +1,21 @@
+div.search-result-table-container(ng-class="{'hidden': !issues.length}", tg-bind-scope)
+    div.search-result-table-header
+        div.row.title
+            div.user-stories(translate="SEARCH.FILTER_ISSUES")
+            div.status(translate="COMMON.FIELDS.STATUS")
+            div.assigned-to(translate="COMMON.FIELDS.ASSIGNED_TO")
+    div.search-result-table-body
+        div.row.table-main(ng-repeat="issue in issues track by issue.id")
+            div.user-stories
+                div.user-story-name
+                    a(
+                        href="", 
+                        tg-nav="project-issues-detail:project=project.slug,ref=issue.ref"
+                    )
+                        span.ref(tg-bo-ref="issue.ref")
+                        span {{ issue.subject | emojify }}
+            div.status(tg-listitem-issue-status="issue")
+            div.assigned-to(tg-listitem-assignedto="issue")
+
+div.empty-large(ng-class="{'hidden': issues.length}")
+    include ./empty-search-results

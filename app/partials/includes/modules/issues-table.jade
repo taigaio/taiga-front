@@ -75,8 +75,7 @@ section.issues-table.basic-table(ng-class="{empty: !issues.length}")
 
         div.modified-field(
             title="{{ issue.modified_date|momentFormat:'DD MMM YYYY HH:mm' }}"
-        )
-            {{ issue.modified_date|momentFormat:'DD MMM YYYY'}}
+        ) {{ issue.modified_date|momentFormat:'DD MMM YYYY'}}
 
         div.assigned-field(tg-issue-assigned-to-inline-edition="issue")
             div.issue-assignedto(title="{{'ISSUES.TABLE.TITLE_ACTION_ASSIGNED_TO' | translate}}")
