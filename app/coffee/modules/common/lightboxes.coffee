@@ -362,27 +362,17 @@ module.directive("tgLbCreateBulkUserstories", [
 ## AssignedTo Lightbox Directive
 #############################################################################
 
-AssignedToLightboxDirective = (lightboxService, lightboxKeyboardNavigationService, $template, $compile, avatarService) ->
+AssignedToLightboxDirective = (lightboxService, lightboxKeyboardNavigationService, $template,
+$compile, avatarService, $userListService) ->
     link = ($scope, $el, $attrs) ->
         selectedUser = null
         selectedItem = null
         usersTemplate = $template.get("common/lightbox/lightbox-assigned-to-users.html", true)
 
-        filterUsers = (text, user) ->
-            username = user.full_name_display.toUpperCase()
-            username = normalizeString(username)
-            text = text.toUpperCase()
-            text = normalizeString(text)
-            return _.includes(username, text)
-
         render = (selected, text) ->
-            users = _.clone($scope.activeUsers, true)
-            users = _.reject(users, {"id": selected.id}) if selected?
-            users = _.sortBy(users, (o) -> if o.id is $scope.user.id then 0 else o.id)
-            users = _.filter(users, _.partial(filterUsers, text)) if text?
+            users = $userListService.searchUsers(text, selected)
 
             visibleUsers = _.slice(users, 0, 5)
-
             visibleUsers = _.map visibleUsers, (user) ->
                 user.avatar = avatarService.getAvatar(user)
 
@@ -454,32 +444,24 @@ AssignedToLightboxDirective = (lightboxService, lightboxKeyboardNavigationServic
         link:link
     }
 
-module.directive("tgLbAssignedto", ["lightboxService", "lightboxKeyboardNavigationService", "$tgTemplate", "$compile", "tgAvatarService", AssignedToLightboxDirective])
+module.directive("tgLbAssignedto", ["lightboxService", "lightboxKeyboardNavigationService",
+"$tgTemplate", "$compile", "tgAvatarService", "tgUserListService", AssignedToLightboxDirective])
 
 
 #############################################################################
 ## Assigned Users Lightbox directive
 #############################################################################
 
-AssignedUsersLightboxDirective = ($repo, lightboxService, lightboxKeyboardNavigationService, $template, $compile, avatarService) ->
+AssignedUsersLightboxDirective = ($repo, lightboxService, lightboxKeyboardNavigationService,
+$template, $compile, avatarService, $userListService) ->
     link = ($scope, $el, $attrs) ->
         selectedUsers = []
         selectedItem = null
         usersTemplate = $template.get("common/lightbox/lightbox-assigned-users-users.html", true)
 
-        filterUsers = (text, user) ->
-            username = user.full_name_display.toUpperCase()
-            username = normalizeString(username)
-            text = text.toUpperCase()
-            text = normalizeString(text)
-
-            return _.includes(username, text)
-
         # Render the specific list of users.
         render = (assignedUsersIds, text) ->
-            users = _.clone($scope.activeUsers, true)
-            users = _.sortBy(users, (o) -> if o.id is $scope.user.id then 0 else o.id)
-            users = _.filter(users, _.partial(filterUsers, text)) if text?
+            users = $userListService.searchUsers(text)
 
             # Add selected users
             selected = []
@@ -557,7 +539,9 @@ AssignedUsersLightboxDirective = ($repo, lightboxService, lightboxKeyboardNaviga
         link:link
     }
 
-module.directive("tgLbAssignedUsers", ["$tgRepo", "lightboxService", "lightboxKeyboardNavigationService", "$tgTemplate", "$compile", "tgAvatarService", AssignedUsersLightboxDirective])
+module.directive("tgLbAssignedUsers", ["$tgRepo", "lightboxService",
+"lightboxKeyboardNavigationService", "$tgTemplate", "$compile", "tgAvatarService",
+"tgUserListService", AssignedUsersLightboxDirective])
 
 
 #############################################################################
