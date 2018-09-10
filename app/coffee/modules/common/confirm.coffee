@@ -61,7 +61,7 @@ class ConfirmService extends taiga.Service
         # Render content
         el.find(".title").text(title) if title
         el.find(".subtitle").text(subtitle) if subtitle
-        el.find(".message").html(message) if message
+        el.find(".message").text(message) if message
 
         # Assign event handlers
         el.on "click.confirm-dialog", ".button-green", debounce 2000, (event) =>
