@@ -438,6 +438,19 @@ class CsvExporterController extends taiga.Controller
             response.finish() if response
         return promise
 
+    _deleteUuid: (response=null) =>
+        promise = @rs.projects["delete_#{@.type}_csv_uuid"](@scope.projectId)
+
+        promise.then (data) =>
+            @scope.csvUuid = data.data?.uuid
+
+        promise.then null, =>
+            @confirm.notify("error")
+
+        promise.finally ->
+            response.finish() if response
+        return promise
+
     regenerateUuid: ->
         if @scope.csvUuid
             title = @translate.instant("ADMIN.REPORTS.REGENERATE_TITLE")
@@ -446,6 +459,15 @@ class CsvExporterController extends taiga.Controller
             @confirm.ask(title, subtitle).then @._generateUuid
         else
             @._generateUuid()
+
+    deleteUuid: ->
+        if @scope.csvUuid
+            title = @translate.instant("ADMIN.REPORTS.DELETE_TITLE")
+            subtitle = @translate.instant("ADMIN.REPORTS.DELETE_SUBTITLE")
+
+            @confirm.ask(title, subtitle).then @._deleteUuid
+        else
+            @._deleteUuid()
 
 
 class CsvExporterEpicsController extends CsvExporterController

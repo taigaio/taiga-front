@@ -79,6 +79,22 @@ resourceProvider = ($config, $repo, $http, $urls, $auth, $q, $translate) ->
         url = "#{$urls.resolve("projects")}/#{projectId}/regenerate_issues_csv_uuid"
         return $http.post(url)
 
+    service.delete_epics_csv_uuid = (projectId) ->
+        url = "#{$urls.resolve("projects")}/#{projectId}/delete_epics_csv_uuid"
+        return $http.post(url)
+
+    service.delete_userstories_csv_uuid = (projectId) ->
+        url = "#{$urls.resolve("projects")}/#{projectId}/delete_userstories_csv_uuid"
+        return $http.post(url)
+
+    service.delete_tasks_csv_uuid = (projectId) ->
+        url = "#{$urls.resolve("projects")}/#{projectId}/delete_tasks_csv_uuid"
+        return $http.post(url)
+
+    service.delete_issues_csv_uuid = (projectId) ->
+        url = "#{$urls.resolve("projects")}/#{projectId}/delete_issues_csv_uuid"
+        return $http.post(url)
+
     service.leave = (projectId) ->
         url = "#{$urls.resolve("projects")}/#{projectId}/leave"
         return $http.post(url)
