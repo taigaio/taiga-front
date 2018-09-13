@@ -2,9 +2,9 @@ tg-lightbox-close
 
 form(ng-if="lightboxOpen")
     h2.title(ng-switch="mode")
-        span(ng-switch-when="new") {{ 'LIGHTBOX.CREATE_EDIT.NEW' | translate: { objName: objName } }}
-        span(ng-switch-when="edit") {{ 'LIGHTBOX.CREATE_EDIT.EDIT' | translate: { objName: objName } }}
-        span(ng-switch-when="add-existing") {{ 'LIGHTBOX.CREATE_EDIT.ADD_EXISTING' | translate: { objName: objName, targetName: title } }}
+        span(ng-switch-when="new") {{ 'LIGHTBOX.CREATE_EDIT.NEW_' + translationID | translate }}
+        span(ng-switch-when="edit") {{ 'LIGHTBOX.CREATE_EDIT.EDIT_' + translationID | translate }}
+        span(ng-switch-when="add-existing") {{ 'LIGHTBOX.CREATE_EDIT.ADD_EXISTING_' + translationID | translate: { targetName: targetName } }}
 
     .existing-or-new-selector(ng-show="getOrCreate == true")
         .existing-or-new-selector-single(ng-click="setMode('add-existing')")
@@ -16,7 +16,7 @@ form(ng-if="lightboxOpen")
                 ng-model="mode"
             )
             label.e2e-existing-item-label(for="add-existing")
-                span.name {{ 'LIGHTBOX.CREATE_EDIT.EXISTING_OBJECT' | translate: { objName: objName } }}
+                span.name {{ 'LIGHTBOX.CREATE_EDIT.EXISTING_' + translationID | translate }}
 
         .existing-or-new-selector-single(ng-click="setMode('new')")
             input(
@@ -27,13 +27,13 @@ form(ng-if="lightboxOpen")
                 ng-model="mode"
             )
             label.e2e-new-item-label(for="new")
-                span.name {{ 'LIGHTBOX.CREATE_EDIT.NEW_OBJECT' | translate: { objName: objName } }}
+                span.name {{ 'LIGHTBOX.CREATE_EDIT.NEW_' + translationID | translate }}
 
     div(ng-if="mode == 'add-existing'")
         .existing-item-wrapper
             tg-search-list(
-                label="{{ 'LIGHTBOX.CREATE_EDIT.CHOOSE_EXISTING' | translate: { objName: objName } }}"
-                placeholder="{{ 'ISSUES.FILTER_ISSUES' | translate }}"
+                label="{{ 'LIGHTBOX.CREATE_EDIT.CHOOSE_EXISTING_' + translationID | translate }}"
+                placeholder="{{ 'LIGHTBOX.CREATE_EDIT.FILTER_' + translationIDPlural | translate }}"
                 items="existingItems"
                 ng-model="selectedItem"
                 filter-by="['ref', 'subject']"
@@ -43,9 +43,9 @@ form(ng-if="lightboxOpen")
             )
 
         button.button-green.add-existing-button(
-            ng-click="addExisting(selectedItem)"
+            ng-click="addExistingToSprint(selectedItem)"
             ng-disabled="!selectedItem || isDisabledExisting(selectedItem)"
-        ) {{ 'COMMON.ADD' | translate }} {{ objName }}
+        ) {{ 'LIGHTBOX.CREATE_EDIT.ADD_' + translationID | translate }}
 
     div(ng-if="mode != 'add-existing'")
         .form-wrapper
@@ -77,7 +77,7 @@ form(ng-if="lightboxOpen")
                         name="description"
                         ng-model="obj.description"
                         ng-model-options="{ debounce: 200 }"
-                        ng-attr-placeholder="{{ 'LIGHTBOX.CREATE_EDIT.PLACEHOLDER_DESCRIPTION' | translate }}"
+                        ng-attr-placeholder="{{ 'LIGHTBOX.CREATE_EDIT.' + translationID + '_PLACEHOLDER_DESCRIPTION' | translate }}"
                     )
                 fieldset
                     section

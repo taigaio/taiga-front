@@ -628,7 +628,7 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
                     sprintId: @scope.sprintId,
                     relatedField: 'milestone',
                     relatedObjectId: @scope.sprintId,
-                    title: "#{@translate.instant("COMMON.FIELDS.SPRINT")} #{@scope.sprint.name}",
+                    targetName: @scope.sprint.name,
                 })
             when "standard" then @rootscope.$broadcast("taskform:new", @scope.sprintId, us?.id)
             when "bulk" then @rootscope.$broadcast("issueform:bulk", @scope.projectId, @scope.sprintId)

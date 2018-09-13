@@ -1091,14 +1091,21 @@
             "LAST_SPRINT_NAME": "last sprint is <strong> {{lastSprint}} ;-) </strong>"
         },
         "CREATE_EDIT": {
-            "PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this {{ objName }}",
-            "NEW": "New {{ objName }}",
-            "EDIT": "Edit {{ objName }}",
-            "ADD_EXISTING": "Add {{ objName }} to {{ targetName }}",
+            "TASK_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this Task",
+            "ISSUE_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this Issue",
+            "US_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this User Story",
+            "NEW_TASK": "New Task",
+            "NEW_ISSUE": "New Issue",
+            "NEW_US": "New User Story",
+            "EDIT_TASK": "Edit Task",
+            "EDIT_ISSUE": "Edit Issue",
+            "EDIT_US": "Edit User Story",
+            "ADD_EXISTING_ISSUE": "Add Issue to {{ targetName }}",
             "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?",
-            "EXISTING_OBJECT": "Existing {{ objName }}",
-            "NEW_OBJECT": "New {{ objName }}",
-            "CHOOSE_EXISTING": "Which {{ objName }}?"
+            "EXISTING_ISSUE": "Existing Issue",
+            "CHOOSE_EXISTING_ISSUE": "Which Issue?",
+            "ADD_ISSUE": "Add Issue",
+            "FILTER_ISSUES": "Filter Issues"
         },
         "DELETE_DUE_DATE": {
             "TITLE": "Delete due date",

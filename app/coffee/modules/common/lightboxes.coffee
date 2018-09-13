@@ -778,6 +778,8 @@ $confirm, $q, attachmentsService, $template, $compile) ->
                 params: { include_attachments: true, include_tasks: true },
                 data: (project) ->
                     return {
+                        translationID: 'US'
+                        translationIDPlural: 'US'
                         statusList: _.sortBy(project.us_statuses, "order")
                     }
                 initialData: (data) ->
@@ -797,6 +799,8 @@ $confirm, $q, attachmentsService, $template, $compile) ->
                 params: { include_attachments: true },
                 data: (project) ->
                     return {
+                        translationID: 'TASK'
+                        translationIDPlural: 'TASKS'
                         statusList: _.sortBy(project.task_statuses, "order")
                     }
                 initialData: (data) ->
@@ -818,6 +822,8 @@ $confirm, $q, attachmentsService, $template, $compile) ->
                 params: { include_attachments: true },
                 data: (project) ->
                     return {
+                        translationID: 'ISSUE'
+                        translationIDPlural: 'ISSUES'
                         project: project
                         statusList: _.sortBy(project.issue_statuses, "order")
                         typeById: groupBy(project.issue_types, (x) -> x.id)
@@ -949,7 +955,7 @@ $confirm, $q, attachmentsService, $template, $compile) ->
                 return attachmentsService.delete($scope.objType, attachment.id)
             return $q.all(promises)
 
-        addExisting = (item) ->
+        addExistingToSprint = (item) ->
             currentLoading = $loading().target($el.find(".add-existing-button")).start()
 
             if item.milestone
@@ -995,8 +1001,8 @@ $confirm, $q, attachmentsService, $template, $compile) ->
         $scope.isDisabledExisting = (selectedItem) ->
             isDisabledExisting(selectedItem)
 
-        $scope.addExisting = (selectedItem) ->
-            addExisting(selectedItem)
+        $scope.addExistingToSprint = (selectedItem) ->
+            addExistingToSprint(selectedItem)
 
         submit = debounce 2000, (event) ->
             form = $el.find("form").checksley()
