@@ -1,4 +1,5 @@
 import os, sys
+from pathlib import Path
 
 LICENSE = """###
 # Copyright (C) 2014-2018 Taiga Agile LLC
@@ -40,9 +41,10 @@ def proccess_dirs(path):
                 data = fr.read()
 
                 if CONTAIN_TEXT not in data:
+                    relative_path = Path(file_path).relative_to(path)
                     with open(file_path, "w") as fw:
                         fw.seek(0)
-                        fw.write(LICENSE.format(file_name=file_name, data=data))
+                        fw.write(LICENSE.format(file_name=relative_path, data=data))
 
 
 for dir_path in DIRS:
