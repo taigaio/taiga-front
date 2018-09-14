@@ -152,3 +152,12 @@ emojify = ($emojis) ->
         return ""
 
 module.filter("emojify", ["$tgEmojis", emojify])
+
+textToHTML = ($filter) ->
+    return (input) ->
+        if input
+            return input.replace(/\<(?!(\/?)(strong|br)(\/?)).*?\>/g, "")
+
+        return ""
+
+module.filter("textToHTML", ["$filter", textToHTML])

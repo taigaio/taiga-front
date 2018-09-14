@@ -42,9 +42,9 @@ NOTIFICATION_MSG = {
 
 
 class ConfirmService extends taiga.Service
-    @.$inject = ["$q", "lightboxService", "$tgLoading", "$translate"]
+    @.$inject = ["$q", "lightboxService", "$tgLoading", "$translate", "$filter"]
 
-    constructor: (@q, @lightboxService, @loading, @translate) ->
+    constructor: (@q, @lightboxService, @loading, @translate, @filter) ->
         bindMethods(@)
 
     hide: (el)->
@@ -61,7 +61,9 @@ class ConfirmService extends taiga.Service
         # Render content
         el.find(".title").text(title) if title
         el.find(".subtitle").text(subtitle) if subtitle
-        el.find(".message").text(message) if message
+        if message
+            message = @filter('textToHTML')(message)
+            el.find(".message").html(message)
 
         # Assign event handlers
         el.on "click.confirm-dialog", ".button-green", debounce 2000, (event) =>

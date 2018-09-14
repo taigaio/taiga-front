@@ -738,8 +738,10 @@ lightboxService, $modelTransform, $confirm) ->
                 currentSprint = _.find(data.milestones, { "id": issue.milestone })
 
                 title = $translate.instant("ISSUES.CONFIRM_DETACH_FROM_SPRINT.TITLE")
-                message = $translate.instant("ISSUES.CONFIRM_DETACH_FROM_SPRINT.MESSAGE")
-                message += " <strong>#{currentSprint.name}</strong>"
+                message = $translate.instant(
+                    "ISSUES.CONFIRM_DETACH_FROM_SPRINT.MESSAGE",
+                    {sprintName: currentSprint.name}
+                )
 
                 $confirm.ask(title, null, message).then (askResponse) ->
                     onSuccess = ->

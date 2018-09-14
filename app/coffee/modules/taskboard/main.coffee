@@ -566,7 +566,10 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
             issue = issue.set('loading-delete', false)
             title = @translate.instant("ISSUES.CONFIRM_DETACH_FROM_SPRINT.TITLE")
             message = @translate.instant("ISSUES.CONFIRM_DETACH_FROM_SPRINT.MESSAGE")
-            message += " <strong>#{@scope.sprint.name}</strong>"
+            message = @translate.instant(
+                "ISSUES.CONFIRM_DETACH_FROM_SPRINT.MESSAGE",
+                {sprintName: @scope.sprint.name}
+            )
 
             @confirm.ask(title, null, message).then (askResponse) =>
                 removingIssue.milestone = null
