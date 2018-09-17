@@ -333,13 +333,29 @@ AssignedUsersDirective = ($rootscope, $confirm, $repo, $modelTransform, $templat
             item = _.clone($model.$modelValue, false)
             $rootscope.$broadcast("assigned-user:add", item)
 
-        assignToMe = ->
+        $scope.selfAssign = () ->
             return if not isEditable()
             currentUserId = $currentUserService.getUser().get('id')
             assignedUsers = _.clone($model.$modelValue.assigned_users, false)
             assignedUsers.push(currentUserId)
             assignedUsers = _.uniq(assignedUsers)
             save(assignedUsers, currentUserId)
+
+        $scope.unassign = (user) ->
+            return if not isEditable()
+            target = angular.element(event.currentTarget)
+            assignedUserId = user.id
+
+            title = $translate.instant("COMMON.ASSIGNED_USERS.TITLE_LIGHTBOX_DELETE_ASSIGNED")
+            message = $scope.usersById[assignedUserId].full_name_display
+
+            $confirm.askOnDelete(title, message).then (askResponse) ->
+                askResponse.finish()
+
+                assignedUserIds = _.clone($model.$modelValue.assigned_users, false)
+                assignedUserIds = _.pull(assignedUserIds, assignedUserId)
+
+                deleteAssignedUser(assignedUserIds)
 
         deleteAssignedUser = (assignedUserIds) ->
             transform = $modelTransform.save (item) ->
@@ -368,24 +384,6 @@ AssignedUsersDirective = ($rootscope, $confirm, $repo, $modelTransform, $templat
             $scope.isEditable = isEditable()
             $scope.isAssigned = isAssigned()
             $scope.openAssignedUsers = openAssignedUsers
-            $scope.assignToMe = assignToMe
-
-        $el.on "click", ".remove-user", (event) ->
-            event.preventDefault()
-            return if not isEditable()
-            target = angular.element(event.currentTarget)
-            assignedUserId = target.data("assigned-user-id")
-
-            title = $translate.instant("COMMON.ASSIGNED_USERS.TITLE_LIGHTBOX_DELETE_ASSIGNED")
-            message = $scope.usersById[assignedUserId].full_name_display
-
-            $confirm.askOnDelete(title, message).then (askResponse) =>
-                askResponse.finish()
-
-                assignedUserIds = _.clone($model.$modelValue.assigned_users, false)
-                assignedUserIds = _.pull(assignedUserIds, assignedUserId)
-
-                deleteAssignedUser(assignedUserIds)
 
         $scope.$on "assigned-user:deleted", (ctx, assignedUserId) ->
             assignedUsersIds = _.clone($model.$modelValue.assigned_users, false)
@@ -418,15 +416,17 @@ AssignedUsersDirective = ($rootscope, $confirm, $repo, $modelTransform, $templat
         require:"ngModel"
     }
 
-module.directive("tgAssignedUsers", ["$rootScope", "$tgConfirm", "$tgRepo", "$tgQueueModelTransformation", "$tgTemplate", "$compile",
-                                "$translate", "tgCurrentUserService", AssignedUsersDirective])
+module.directive("tgAssignedUsers", ["$rootScope", "$tgConfirm", "$tgRepo",
+"$tgQueueModelTransformation", "$tgTemplate", "$compile", "$translate", "tgCurrentUserService",
+AssignedUsersDirective])
 
 
 #############################################################################
 ## Assigned to directive
 #############################################################################
 
-AssignedToDirective = ($rootscope, $confirm, $repo, $loading, $modelTransform, $template, $translate, $compile, $currentUserService, avatarService) ->
+AssignedToDirective = ($rootscope, $confirm, $repo, $loading, $modelTransform, $template,
+$translate, $compile, $currentUserService, avatarService) ->
     # You have to include a div with the tg-lb-assignedto directive in the page
     # where use this directive
     template = $template.get("common/components/assigned-to.html", true)
@@ -445,12 +445,10 @@ AssignedToDirective = ($rootscope, $confirm, $repo, $loading, $modelTransform, $
 
             transform = $modelTransform.save (item) ->
                 item.assigned_to = userId
-
                 return item
 
-            transform.then ->
+            transform.then (item) ->
                 currentLoading.finish()
-                renderAssignedTo($modelTransform.getObj())
                 $rootscope.$broadcast("object:updated")
 
             transform.then null, ->
@@ -459,60 +457,48 @@ AssignedToDirective = ($rootscope, $confirm, $repo, $loading, $modelTransform, $
 
             return transform
 
-        renderAssignedTo = (assignedObject) ->
-            avatar = avatarService.getAvatar(assignedObject?.assigned_to_extra_info)
-            bg = null
+        render = () ->
+            template = $template.get("common/components/assigned-to.html")
+            templateScope = $scope.$new()
+            compiledTemplate = $compile(template)(templateScope)
+            $el.html(compiledTemplate)
 
-            if assignedObject?.assigned_to?
-                fullName = assignedObject.assigned_to_extra_info.full_name_display
-                isUnassigned = false
-                bg = avatar.bg
-            else
-                fullName = $translate.instant("COMMON.ASSIGNED_TO.ASSIGN")
-                isUnassigned = true
+        $scope.assign = () ->
+            $rootscope.$broadcast("assigned-to:add", $model.$modelValue)
 
-            isIocaine = assignedObject?.is_iocaine
-
-            ctx = {
-                fullName: fullName
-                avatar: avatar.url
-                bg: bg
-                isUnassigned: isUnassigned
-                isEditable: isEditable()
-                isIocaine: isIocaine
-                fullNameVisible: !(isUnassigned && !$currentUserService.isAuthenticated())
-            }
-            html = $compile(template(ctx))($scope)
-            $el.html(html)
-
-        $el.on "click", ".user-assigned", (event) ->
-            event.preventDefault()
-            return if not isEditable()
-            $scope.$apply ->
-                $rootscope.$broadcast("assigned-to:add", $model.$modelValue)
-
-        $el.on "click", ".assign-to-me", (event) ->
-            event.preventDefault()
-            return if not isEditable()
-            $model.$modelValue.assigned_to = $currentUserService.getUser().get('id')
-            save($currentUserService.getUser().get('id'))
-
-        $el.on "click", ".remove-user", (event) ->
-            event.preventDefault()
-            return if not isEditable()
+        $scope.unassign = () ->
             title = $translate.instant("COMMON.ASSIGNED_TO.CONFIRM_UNASSIGNED")
-
-            $confirm.ask(title).then (response) =>
+            $confirm.ask(title).then (response) ->
                 response.finish()
-                $model.$modelValue.assigned_to  = null
                 save(null)
+
+        $scope.selfAssign = () ->
+            userId = $currentUserService.getUser().get('id')
+            save(userId)
 
         $scope.$on "assigned-to:added", (ctx, userId, item) ->
             return if item.id != $model.$modelValue.id
             save(userId)
 
         $scope.$watch $attrs.ngModel, (instance) ->
-            renderAssignedTo(instance)
+            if instance?.assigned_to
+                $scope.selected = instance.assigned_to
+                assigned_to_extra_info = $scope.usersById[$scope.selected]
+                $scope.fullName = assigned_to_extra_info?.full_name_display
+                $scope.isUnassigned = false
+                $scope.avatar = avatarService.getAvatar(assigned_to_extra_info)
+                $scope.bg = $scope.avatar.bg
+                $scope.isIocaine = instance?.is_iocaine
+            else
+                $scope.fullName = $translate.instant("COMMON.ASSIGNED_TO.ASSIGN")
+                $scope.isUnassigned = true
+                $scope.avatar = avatarService.getAvatar(null)
+                $scope.bg = null
+                $scope.isIocaine = false
+
+            $scope.fullNameVisible = !($scope.isUnassigned && !$currentUserService.isAuthenticated())
+            $scope.isEditable = isEditable()
+            render()
 
         $scope.$on "$destroy", ->
             $el.off()
@@ -522,8 +508,9 @@ AssignedToDirective = ($rootscope, $confirm, $repo, $loading, $modelTransform, $
         require:"ngModel"
     }
 
-module.directive("tgAssignedTo", ["$rootScope", "$tgConfirm", "$tgRepo", "$tgLoading", "$tgQueueModelTransformation", "$tgTemplate", "$translate", "$compile","tgCurrentUserService", "tgAvatarService",
-                                  AssignedToDirective])
+module.directive("tgAssignedTo", ["$rootScope", "$tgConfirm", "$tgRepo", "$tgLoading",
+"$tgQueueModelTransformation", "$tgTemplate", "$translate", "$compile","tgCurrentUserService",
+"tgAvatarService", AssignedToDirective])
 
 
 
@@ -544,7 +531,7 @@ $translate, $compile, $currentUserService, avatarService) ->
             text = normalizeString(text)
             return _.includes(username, text)
 
-        renderUserlist = (text) ->
+        renderUserList = (text) ->
             users = _.clone($scope.activeUsers, true)
             users = _.reject(users, {"id": $scope.selected.id}) if $scope.selected?
             users = _.sortBy(users, (o) -> if o.id is $scope.user.id then 0 else o.id)
@@ -575,33 +562,27 @@ $translate, $compile, $currentUserService, avatarService) ->
             $scope.fullNameVisible = !($scope.isUnassigned && !$currentUserService.isAuthenticated())
             $scope.isEditable = isEditable()
 
-        $el.on "click", ".users-dropdown", (event) ->
-            event.preventDefault()
-            event.stopPropagation()
-            renderUserlist()
-            $scope.$apply()
-            $el.find(".pop-users").popover().open()
-
         $el.on "click", ".users-search", (event) ->
             event.stopPropagation()
 
-        $el.on "click", ".assign-to-me", (event) ->
+        $el.on "click", ".users-dropdown", (event) ->
             event.preventDefault()
-            return if not isEditable()
+            event.stopPropagation()
+            renderUserList()
+            $scope.$apply()
+            $el.find(".pop-users").popover().open()
+
+        $scope.selfAssign = () ->
             $model.$modelValue.assigned_to = $currentUserService.getUser().get('id')
             renderUser($model.$modelValue)
-            $scope.$apply()
 
-        $el.on "click", ".remove-user", (event) ->
-            event.preventDefault()
-            return if not isEditable()
+        $scope.unassign = () ->
             $model.$modelValue.assigned_to  = null
             renderUser()
-            $scope.$apply()
 
         $scope.$watch "usersSearch", (searchingText) ->
             if searchingText?
-                renderUserlist(searchingText)
+                renderUserList(searchingText)
                 $el.find('input').focus()
 
         $el.on "click", ".user-list-single", (event) ->
@@ -704,16 +685,14 @@ $translate, $compile, $currentUserService, avatarService) ->
             $scope.$apply()
             $el.find(".pop-users").popover().open()
 
-        $el.on "click", ".users-search", (event) ->
-            event.stopPropagation()
-
-        $el.on "click", ".assign-to-me", (event) ->
-            event.preventDefault()
+        $scope.selfAssign = () ->
             currentAssignedIds.push($currentUserService.getUser().get('id'))
             renderUsers()
             applyToModel()
             $scope.usersSearch = null
-            $scope.$apply()
+
+        $el.on "click", ".users-search", (event) ->
+            event.stopPropagation()
 
         $scope.$watch "usersSearch", (searchingText) ->
             if searchingText?
@@ -722,6 +701,7 @@ $translate, $compile, $currentUserService, avatarService) ->
 
         $el.on "click", ".user-list-single", (event) ->
             event.preventDefault()
+            event.stopPropagation()
             target = angular.element(event.currentTarget)
             index = currentAssignedIds.indexOf(target.data("user-id"))
             if index == -1
@@ -729,19 +709,8 @@ $translate, $compile, $currentUserService, avatarService) ->
             else
                 currentAssignedIds.splice(index, 1)
             renderUsers()
-            applyToModel()
             $el.find(".pop-users").popover().close()
             $scope.usersSearch = null
-            $scope.$apply()
-
-        $el.on "click", ".remove-user", (event) ->
-            event.preventDefault()
-            target = angular.element(event.currentTarget)
-            index = currentAssignedIds.indexOf(target.data("user-id"))
-            if index > -1
-                currentAssignedIds.splice(index, 1)
-            renderUsers()
-            applyToModel()
             $scope.$apply()
 
         $scope.$watch $attrs.ngModel, (item) ->

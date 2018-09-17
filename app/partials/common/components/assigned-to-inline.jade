@@ -53,11 +53,13 @@
         div(ng-if="isUnassigned")
             a.assign-to-me(
                 href="#"
+                ng-click="selfAssign()"
                 title="{{'COMMON.ASSIGNED_TO.SELF' | translate}}"
             )
                 span {{ "COMMON.ASSIGNED_TO.SELF" | translate }}
 
     tg-svg.remove-user(
+        ng-click="unassign()"
         ng-if="isEditable && !isUnassigned"
         svg-icon="icon-close",
         title="{{'COMMON.ASSIGNED_TO.DELETE_ASSIGNMENT' | translate}}"
