@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+## 3.4.3 (2018-09-19)
+
+### Misc
+
+- Allow reorder tasks in US (https://tree.taiga.io/project/taiga/issue/5479)
+- Minor bug fixes.
+
 ## 3.4.2 (2018-08-27)
 
 ### Misc
