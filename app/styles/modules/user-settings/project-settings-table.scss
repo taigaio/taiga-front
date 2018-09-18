@@ -1,0 +1,28 @@
+.project-settings-table {
+    .project-settings-table-row {
+        align-items: center;
+        border-bottom: 1px solid $whitish;
+        display: flex;
+        justify-content: center;
+    }
+
+    .project-settings-table-header {
+        @include font-type(bold);
+        border-bottom: 2px solid $gray-light;
+    }
+
+    .project-settings-table-project ,
+    .project-settings-table-homepage {
+        padding: 1rem;
+    }
+
+    .project-settings-table-project {
+        flex-basis: 0;
+        flex-grow: 3;
+    }
+
+    .project-settings-table-homepage {
+        flex-basis: 0;
+        flex-grow: 1;
+    }
+}

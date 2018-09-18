@@ -173,6 +173,15 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
     # Project
     $routeProvider.when("/project/:pslug/",
         {
+            template: "",
+            loader: true,
+            controller: "ProjectRouter"
+        }
+    )
+
+    # Project
+    $routeProvider.when("/project/:pslug/timeline",
+        {
             templateUrl: "projects/project/project.html",
             loader: true,
             controller: "Project",
@@ -450,6 +459,8 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
         {templateUrl: "user/user-profile.html"})
     $routeProvider.when("/user-settings/user-change-password",
         {templateUrl: "user/user-change-password.html"})
+    $routeProvider.when("/user-settings/user-project-settings",
+        {templateUrl: "user/user-project-settings.html"})
     $routeProvider.when("/user-settings/mail-notifications",
         {templateUrl: "user/mail-notifications.html"})
     $routeProvider.when("/user-settings/live-notifications",
