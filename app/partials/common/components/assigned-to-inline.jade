@@ -12,7 +12,7 @@
 
 
 .assigned-to
-    .assigned-to-options
+    .assigned-to-actions
         span.assigned-name(
             ng-if="!isEditable && fullNameVisible"
         ) {{ fullName }}
@@ -51,13 +51,15 @@
 
         span(translate="COMMON.OR", ng-if="isUnassigned")
         div(ng-if="isUnassigned")
-            a.assign-to-me(
+            a.self-assign(
                 href="#"
+                ng-click="selfAssign()"
                 title="{{'COMMON.ASSIGNED_TO.SELF' | translate}}"
             )
                 span {{ "COMMON.ASSIGNED_TO.SELF" | translate }}
 
     tg-svg.remove-user(
+        ng-click="unassign()"
         ng-if="isEditable && !isUnassigned"
         svg-icon="icon-close",
         title="{{'COMMON.ASSIGNED_TO.DELETE_ASSIGNMENT' | translate}}"

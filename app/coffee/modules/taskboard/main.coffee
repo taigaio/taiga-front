@@ -1,10 +1,5 @@
 ###
-# Copyright (C) 2014-2017 Andrey Antukh <niwi@niwi.nz>
-# Copyright (C) 2014-2017 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014-2017 David Barragán Merino <bameda@dbarragan.com>
-# Copyright (C) 2014-2017 Alejandro Alonso <alejandro.alonso@kaleidos.net>
-# Copyright (C) 2014-2017 Juan Francisco Alcántara <juanfran.alcantara@kaleidos.net>
-# Copyright (C) 2014-2017 Xavi Julian <xavier.julian@kaleidos.net>
+# Copyright (C) 2014-2018 Taiga Agile LLC
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -19,7 +14,7 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: modules/taskboard.coffee
+# File: modules/taskboard/main.coffee
 ###
 
 taiga = @.taiga
@@ -566,7 +561,10 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
             issue = issue.set('loading-delete', false)
             title = @translate.instant("ISSUES.CONFIRM_DETACH_FROM_SPRINT.TITLE")
             message = @translate.instant("ISSUES.CONFIRM_DETACH_FROM_SPRINT.MESSAGE")
-            message += " <strong>#{@scope.sprint.name}</strong>"
+            message = @translate.instant(
+                "ISSUES.CONFIRM_DETACH_FROM_SPRINT.MESSAGE",
+                {sprintName: @scope.sprint.name}
+            )
 
             @confirm.ask(title, null, message).then (askResponse) =>
                 removingIssue.milestone = null
@@ -628,7 +626,7 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
                     sprintId: @scope.sprintId,
                     relatedField: 'milestone',
                     relatedObjectId: @scope.sprintId,
-                    title: "#{@translate.instant("COMMON.FIELDS.SPRINT")} #{@scope.sprint.name}",
+                    targetName: @scope.sprint.name,
                 })
             when "standard" then @rootscope.$broadcast("taskform:new", @scope.sprintId, us?.id)
             when "bulk" then @rootscope.$broadcast("issueform:bulk", @scope.projectId, @scope.sprintId)

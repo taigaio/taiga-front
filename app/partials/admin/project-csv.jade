@@ -18,3 +18,7 @@ section.project-csv(tg-select-input-text)
 
            tg-svg(svg-icon="icon-reload", ng-show="csvUrl")
            span(ng-Show="csvUrl", translate="ADMIN.CSV.ACTION_REGENERATE")
+
+        a(href="", ng-show="csvUrl" title="{{'ADMIN.CSV.TITLE_DELETE_URL' | translate}}", ng-click="ctrl.deleteUuid()")
+           tg-svg(svg-icon="icon-trash", ng-show="csvUrl")
+           span(ng-Show="csvUrl", translate="ADMIN.CSV.ACTION_DELETE_URL")

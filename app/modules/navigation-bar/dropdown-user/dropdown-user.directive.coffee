@@ -1,5 +1,5 @@
 ###
-# Copyright (C) 2014-2017 Taiga Agile LLC <taiga@taiga.io>
+# Copyright (C) 2014-2018 Taiga Agile LLC
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -14,7 +14,7 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: dropdown-user.directive.coffee
+# File: navigation-bar/dropdown-user/dropdown-user.directive.coffee
 ###
 
 DropdownUserDirective = (authService, configService, locationService,
@@ -23,7 +23,7 @@ DropdownUserDirective = (authService, configService, locationService,
     link = (scope, el, attrs, ctrl) ->
         scope.vm = {}
         scope.vm.isFeedbackEnabled = configService.get("feedbackEnabled")
-        scope.vm.supportUrl = configService.get("supportUrl")
+        scope.vm.customSupportUrl = configService.get("supportUrl")
         taiga.defineImmutableProperty(scope.vm, "user", () -> authService.userData)
 
         scope.vm.logout = ->

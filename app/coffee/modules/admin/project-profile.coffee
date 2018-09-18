@@ -1,10 +1,5 @@
 ###
-# Copyright (C) 2014-2017 Andrey Antukh <niwi@niwi.nz>
-# Copyright (C) 2014-2017 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014-2017 David Barragán Merino <bameda@dbarragan.com>
-# Copyright (C) 2014-2017 Alejandro Alonso <alejandro.alonso@kaleidos.net>
-# Copyright (C) 2014-2017 Juan Francisco Alcántara <juanfran.alcantara@kaleidos.net>
-# Copyright (C) 2014-2017 Xavi Julian <xavier.julian@kaleidos.net>
+# Copyright (C) 2014-2018 Taiga Agile LLC
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -438,6 +433,19 @@ class CsvExporterController extends taiga.Controller
             response.finish() if response
         return promise
 
+    _deleteUuid: (response=null) =>
+        promise = @rs.projects["delete_#{@.type}_csv_uuid"](@scope.projectId)
+
+        promise.then (data) =>
+            @scope.csvUuid = data.data?.uuid
+
+        promise.then null, =>
+            @confirm.notify("error")
+
+        promise.finally ->
+            response.finish() if response
+        return promise
+
     regenerateUuid: ->
         if @scope.csvUuid
             title = @translate.instant("ADMIN.REPORTS.REGENERATE_TITLE")
@@ -446,6 +454,15 @@ class CsvExporterController extends taiga.Controller
             @confirm.ask(title, subtitle).then @._generateUuid
         else
             @._generateUuid()
+
+    deleteUuid: ->
+        if @scope.csvUuid
+            title = @translate.instant("ADMIN.REPORTS.DELETE_TITLE")
+            subtitle = @translate.instant("ADMIN.REPORTS.DELETE_SUBTITLE")
+
+            @confirm.ask(title, subtitle).then @._deleteUuid
+        else
+            @._deleteUuid()
 
 
 class CsvExporterEpicsController extends CsvExporterController

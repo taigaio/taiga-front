@@ -22,13 +22,12 @@ div(ng-if="isAssigned")
             tg-svg.remove-user(
                 svg-icon="icon-close",
                 title="{{'COMMON.ASSIGNED_TO.DELETE_ASSIGNMENT' | translate}}"
-                data-user-id="{{ assignedUsers[0].id }}"
+                ng-click="unassign(assignedUsers[0])"
             )
 
     div.add-assigned
         a.users-dropdown.tg-add-assigned(
             href=""
-            ng-click="openAssignedUsers()"
         )
             tg-svg.add-assigned(
                 data-assigned-user-id="{{assignedUser.id}}",
@@ -49,14 +48,14 @@ div(ng-if="isAssigned")
             a.users-dropdown.user-assigned(
                 href=""
                 title="{{ 'COMMON.ASSIGNED_TO.TITLE_ACTION_EDIT_ASSIGNMENT'|translate }}"
-                class="user-assigned"
             )
                 span.assigned-name {{ "COMMON.ASSIGNED_TO.ASSIGN" | translate }}
             | &nbsp;
             span(translate="COMMON.OR")
             | &nbsp;
-            a.assign-to-me(
+            a.self-assign(
                 href="#"
+                ng-click="selfAssign()"
                 title="{{'COMMON.ASSIGNED_TO.SELF' | translate}}"
             )
                 span {{ "COMMON.ASSIGNED_TO.SELF" | translate }}
@@ -85,7 +84,7 @@ div.pop-users.popover(ng-class="{'multiple': assignedUsers.length > 0}")
         ) {{ user.full_name_display }}
         tg-svg.remove(
             href=""
-            data-user-id="{{ user.id }}"
+            ng-click="unassign(user)"
             ng-if="selected.indexOf(user) > -1"
             svg-icon="icon-close",
             title="{{'COMMON.ASSIGNED_TO.DELETE_ASSIGNMENT' | translate}}"

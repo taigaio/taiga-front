@@ -16,7 +16,8 @@ nav.navbar(ng-if="vm.isEnabledHeader")
             include ../../svg/logo.svg
 
         a(
-            href="{{ vm.supportUrl }}",
+            ng-if="vm.customSupportUrl"
+            href="{{ vm.customSupportUrl }}",
             target="_blank",
             title="{{'PROJECT.NAVIGATION.HELP_TITLE' | translate}}",
             translate="PROJECT.NAVIGATION.HELP"

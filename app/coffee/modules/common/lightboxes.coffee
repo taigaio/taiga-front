@@ -1,10 +1,5 @@
 ###
-# Copyright (C) 2014-2017 Andrey Antukh <niwi@niwi.nz>
-# Copyright (C) 2014-2017 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014-2017 David Barragán Merino <bameda@dbarragan.com>
-# Copyright (C) 2014-2017 Alejandro Alonso <alejandro.alonso@kaleidos.net>
-# Copyright (C) 2014-2017 Juan Francisco Alcántara <juanfran.alcantara@kaleidos.net>
-# Copyright (C) 2014-2017 Xavi Julian <xavier.julian@kaleidos.net>
+# Copyright (C) 2014-2018 Taiga Agile LLC
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -362,27 +357,17 @@ module.directive("tgLbCreateBulkUserstories", [
 ## AssignedTo Lightbox Directive
 #############################################################################
 
-AssignedToLightboxDirective = (lightboxService, lightboxKeyboardNavigationService, $template, $compile, avatarService) ->
+AssignedToLightboxDirective = (lightboxService, lightboxKeyboardNavigationService, $template,
+$compile, avatarService, $userListService) ->
     link = ($scope, $el, $attrs) ->
         selectedUser = null
         selectedItem = null
         usersTemplate = $template.get("common/lightbox/lightbox-assigned-to-users.html", true)
 
-        filterUsers = (text, user) ->
-            username = user.full_name_display.toUpperCase()
-            username = normalizeString(username)
-            text = text.toUpperCase()
-            text = normalizeString(text)
-            return _.includes(username, text)
-
         render = (selected, text) ->
-            users = _.clone($scope.activeUsers, true)
-            users = _.reject(users, {"id": selected.id}) if selected?
-            users = _.sortBy(users, (o) -> if o.id is $scope.user.id then 0 else o.id)
-            users = _.filter(users, _.partial(filterUsers, text)) if text?
+            users = $userListService.searchUsers(text, selected)
 
             visibleUsers = _.slice(users, 0, 5)
-
             visibleUsers = _.map visibleUsers, (user) ->
                 user.avatar = avatarService.getAvatar(user)
 
@@ -454,32 +439,24 @@ AssignedToLightboxDirective = (lightboxService, lightboxKeyboardNavigationServic
         link:link
     }
 
-module.directive("tgLbAssignedto", ["lightboxService", "lightboxKeyboardNavigationService", "$tgTemplate", "$compile", "tgAvatarService", AssignedToLightboxDirective])
+module.directive("tgLbAssignedto", ["lightboxService", "lightboxKeyboardNavigationService",
+"$tgTemplate", "$compile", "tgAvatarService", "tgUserListService", AssignedToLightboxDirective])
 
 
 #############################################################################
 ## Assigned Users Lightbox directive
 #############################################################################
 
-AssignedUsersLightboxDirective = ($repo, lightboxService, lightboxKeyboardNavigationService, $template, $compile, avatarService) ->
+AssignedUsersLightboxDirective = ($repo, lightboxService, lightboxKeyboardNavigationService,
+$template, $compile, avatarService, $userListService) ->
     link = ($scope, $el, $attrs) ->
         selectedUsers = []
         selectedItem = null
         usersTemplate = $template.get("common/lightbox/lightbox-assigned-users-users.html", true)
 
-        filterUsers = (text, user) ->
-            username = user.full_name_display.toUpperCase()
-            username = normalizeString(username)
-            text = text.toUpperCase()
-            text = normalizeString(text)
-
-            return _.includes(username, text)
-
         # Render the specific list of users.
         render = (assignedUsersIds, text) ->
-            users = _.clone($scope.activeUsers, true)
-            users = _.sortBy(users, (o) -> if o.id is $scope.user.id then 0 else o.id)
-            users = _.filter(users, _.partial(filterUsers, text)) if text?
+            users = $userListService.searchUsers(text)
 
             # Add selected users
             selected = []
@@ -557,7 +534,9 @@ AssignedUsersLightboxDirective = ($repo, lightboxService, lightboxKeyboardNaviga
         link:link
     }
 
-module.directive("tgLbAssignedUsers", ["$tgRepo", "lightboxService", "lightboxKeyboardNavigationService", "$tgTemplate", "$compile", "tgAvatarService", AssignedUsersLightboxDirective])
+module.directive("tgLbAssignedUsers", ["$tgRepo", "lightboxService",
+"lightboxKeyboardNavigationService", "$tgTemplate", "$compile", "tgAvatarService",
+"tgUserListService", AssignedUsersLightboxDirective])
 
 
 #############################################################################
@@ -778,6 +757,8 @@ $confirm, $q, attachmentsService, $template, $compile) ->
                 params: { include_attachments: true, include_tasks: true },
                 data: (project) ->
                     return {
+                        translationID: 'US'
+                        translationIDPlural: 'US'
                         statusList: _.sortBy(project.us_statuses, "order")
                     }
                 initialData: (data) ->
@@ -797,6 +778,8 @@ $confirm, $q, attachmentsService, $template, $compile) ->
                 params: { include_attachments: true },
                 data: (project) ->
                     return {
+                        translationID: 'TASK'
+                        translationIDPlural: 'TASKS'
                         statusList: _.sortBy(project.task_statuses, "order")
                     }
                 initialData: (data) ->
@@ -818,6 +801,8 @@ $confirm, $q, attachmentsService, $template, $compile) ->
                 params: { include_attachments: true },
                 data: (project) ->
                     return {
+                        translationID: 'ISSUE'
+                        translationIDPlural: 'ISSUES'
                         project: project
                         statusList: _.sortBy(project.issue_statuses, "order")
                         typeById: groupBy(project.issue_types, (x) -> x.id)
@@ -949,7 +934,7 @@ $confirm, $q, attachmentsService, $template, $compile) ->
                 return attachmentsService.delete($scope.objType, attachment.id)
             return $q.all(promises)
 
-        addExisting = (item) ->
+        addExistingToSprint = (item) ->
             currentLoading = $loading().target($el.find(".add-existing-button")).start()
 
             if item.milestone
@@ -995,8 +980,8 @@ $confirm, $q, attachmentsService, $template, $compile) ->
         $scope.isDisabledExisting = (selectedItem) ->
             isDisabledExisting(selectedItem)
 
-        $scope.addExisting = (selectedItem) ->
-            addExisting(selectedItem)
+        $scope.addExistingToSprint = (selectedItem) ->
+            addExistingToSprint(selectedItem)
 
         submit = debounce 2000, (event) ->
             form = $el.find("form").checksley()
@@ -1072,11 +1057,6 @@ $confirm, $q, attachmentsService, $template, $compile) ->
             $scope.$apply()
             $scope.$broadcast("status:changed", $scope.obj.status)
             $el.find(".pop-status").popover().close()
-
-        $el.on "click", ".users-dropdown", (event) ->
-            event.preventDefault()
-            event.stopPropagation()
-            $el.find(".pop-users").popover().open()
 
         $el.on "click", ".team-requirement", (event) ->
             $scope.obj.team_requirement = not $scope.obj.team_requirement

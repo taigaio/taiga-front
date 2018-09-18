@@ -1,55 +1,37 @@
-.user-avatar(class!="<% if (isIocaine) { %> is-iocaine <% }; %>")
+.user-avatar(ng-class!="{ 'is-iocaine': isIocaine }")
     img(
-      style!="background-color: <%- bg %>"
-      src!="<%- avatar %>"
-      alt!="<%- fullName %>"
+      style="background-color: {{ bg }}"
+      src="{{ avatar.url }}"
+      alt="{{ fullName }}"
     )
-    <% if (isIocaine) { %>
-    .iocaine-symbol(title="{{ 'TASK.TITLE_ACTION_IOCAINE' | translate }}")
+    .iocaine-symbol(
+        ng-if="isIocaine"
+        title="{{ 'TASK.TITLE_ACTION_IOCAINE' | translate }}"
+    )
        tg-svg(svg-icon="icon-iocaine")
-    <% }; %>
 
 .assigned-to
-    <% if (isUnassigned) { %>
-    .assigned-title {{ "COMMON.ASSIGNED_TO.NOT_ASSIGNED" | translate }}
-    <% } else { %>
-    .assigned-title {{ "COMMON.FIELDS.ASSIGNED_TO" | translate }}
-    <% }; %>
+    .assigned-to-actions
+        span(ng-if="fullNameVisible")
+            a.user-assigned.assigned-name(
+                ng-if="isEditable"
+                title="{{ 'COMMON.ASSIGNED_TO.TITLE_ACTION_EDIT_ASSIGNMENT' | translate }}"
+                ng-class="{ 'editable': isEditable }"
+                ng-click="assign()"
+            ) {{ fullName }}
+            span.assigned-name(
+                ng-if="!isEditable"
+            ) {{ fullName }}
+        span(ng-if="isUnassigned")
+            span(ng-if="fullNameVisible")
+                | &nbsp;
+                span(translate="COMMON.OR")
+                | &nbsp;
+            a.self-assign(href="#", ng-click="selfAssign()") {{ "COMMON.ASSIGNED_TO.SELF" | translate }}
 
-    .assigned-to-options
-        <% if (!isEditable && fullNameVisible) { %>
-        span.assigned-name(ng-non-bindable)
-            <%- fullName %>
-        <% }; %>
-
-        <% if (isEditable) { %>
-        a(
-            href=""
-            title="{{ 'COMMON.ASSIGNED_TO.TITLE_ACTION_EDIT_ASSIGNMENT'|translate }}"
-            class!="user-assigned <% if (isEditable) { %>editable<% }; %>"
-        )
-            span.assigned-name(ng-non-bindable)
-                <% if (fullNameVisible) { %>
-                <%- fullName %>
-                <% }; %>
-                <% if (!isUnassigned) { %>
-                tg-svg(svg-icon="icon-arrow-down")
-                <% }; %>
-        <% }; %>
-
-        <% if (isEditable && isUnassigned) { %>
-        span(translate="COMMON.OR")
-        | &nbsp;
-        a.assign-to-me(
-            href="#"
-            title="{{'COMMON.ASSIGNED_TO.SELF' | translate}}"
-        )
-            span {{ "COMMON.ASSIGNED_TO.SELF" | translate }}
-        <% }; %>
-
-    <% if (isEditable && !isUnassigned) { %>
     tg-svg.remove-user(
+        ng-click="unassign()"
+        ng-if="isEditable && !isUnassigned"
         svg-icon="icon-close",
-        title="{{'COMMON.ASSIGNED_TO.DELETE_ASSIGNMENT' | translate}}"
+        title="{{ 'COMMON.ASSIGNED_TO.DELETE_ASSIGNMENT' | translate }}"
     )
-    <% } %>

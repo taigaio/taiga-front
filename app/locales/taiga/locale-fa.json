@@ -13,8 +13,8 @@
         "UNLINK": "حذف پیوند",
         "CREATE": "ایجاد",
         "ADD": "اضافه کردن",
-        "COPY_TO_CLIPBOARD": "Copy to clipboard",
-        "COPIED_TO_CLIPBOARD": "Text has been copied to clipboard",
+        "COPY_TO_CLIPBOARD": "کپی کردن در کلیپ‌بورد",
+        "COPIED_TO_CLIPBOARD": "متن در کلیپ‌بورد کپی شد",
         "EDIT": "ویرایش",
         "DRAG": "درگ",
         "TAG_LINE": "ابزار سریع، رایگان و متن‌باز مدیریت پروژه‌ی شما",
@@ -151,7 +151,7 @@
             "IS_BLOCKED": "مسدود شده است",
             "REF": "ریفرنس",
             "VOTES": "رأی",
-            "SPRINT": "پیشرفت",
+            "SPRINT": "اسپرینت",
             "DUE_DATE": "موعد تحویل",
             "DUE_DATE_REASON": "دلیل موعد تحویل"
         },
@@ -246,11 +246,11 @@
                 "DELETE_EPICS": "حذف epicها"
             },
             "SPRINTS": {
-                "NAME": "پیشرفت‌ها",
-                "VIEW_SPRINTS": "نمایش پیشرفت‌ها",
-                "ADD_SPRINTS": "اضافه کردن پیشرفت‌ها",
-                "MODIFY_SPRINTS": "ویرایش پیشرفت‌ها",
-                "DELETE_SPRINTS": "حذف پیشرفت‌ها"
+                "NAME": "اسپرینت‌ها",
+                "VIEW_SPRINTS": "نمایش اسپرینت‌ها",
+                "ADD_SPRINTS": "اضافه کردن اسپرینت‌ها",
+                "MODIFY_SPRINTS": "ویرایش اسپرینت‌ها",
+                "DELETE_SPRINTS": "حذف اسپرینت‌ها"
             },
             "USER_STORIES": {
                 "NAME": "استوری‌های کاربر",
@@ -397,7 +397,7 @@
             "VOTES": "رأی",
             "NAME": "ام",
             "PROJECT": "پروژه",
-            "SPRINT": "پیشرفت",
+            "SPRINT": "اسپرینت",
             "ASSIGNED_TO": "محول شده",
             "STATUS": "عیت",
             "PROGRESS": "پیشرفت",
@@ -481,7 +481,7 @@
             "EPICS_DESCRIPTION": "مدیریت کردن و ترسیم گرافیکی مهم‌ترین بخش‌های استراتژیکی پروژه",
             "BACKLOG": "گزارش امور ناتمام",
             "BACKLOG_DESCRIPTION": "مدیریت کردن استوری‌های کاربری برای حفظ نظم نمایش کارهای بعدی و در اولویت.",
-            "NUMBER_SPRINTS": "پیش‌بینی تعداد پیشرفت‌ها",
+            "NUMBER_SPRINTS": "پیش‌بینی تعداد اسپرینت‌ها",
             "NUMBER_SPRINTS_HELP": "برای عدد نامشخص، 0 وارد کنید",
             "NUMBER_US_POINTS": "مجموع امتیاز استوری‌ها به صورت تخمینی",
             "NUMBER_US_POINTS_HELP": "برای عدد نامشخص، صفر وارد کنید",
@@ -537,7 +537,9 @@
             "DESCRIPTION": "فایل CSV یا لینک ایجادشده را کپی کنید و آن را در نرم‌افزار ویرایش متن یا اکسل باز کنید تا گزارش پروژه‌ی خود را تشکیل دهید. می‌توانید تمام داده‌ها را آنالیز کنید و نمودارهای گرافیکی ترسیم کنید.",
             "HELP": "چگونه از این در شیت خود استفاده کنم؟",
             "REGENERATE_TITLE": "تغییر URL",
-            "REGENERATE_SUBTITLE": "در حال تغییر پیوند دسترسی به داده‌های CSV هستید. لینک قبلی غیرفعال می‌شود. آیا مطمئن هستید؟"
+            "REGENERATE_SUBTITLE": "You are going to change the CSV data access url. The previous url will be disabled. Are you sure?",
+            "DELETE_TITLE": "Delete URL",
+            "DELETE_SUBTITLE": "You are going to delete the current CSV data access url. Are you sure?"
         },
         "CSV": {
             "SECTION_TITLE_EPIC": "گزارش epicها",
@@ -548,7 +550,9 @@
             "URL_FIELD_PLACEHOLDER": "لطفاً لینک CSV را مجدداً ایجاد کن",
             "TITLE_REGENERATE_URL": "بازسازی لینک CSV",
             "ACTION_GENERATE_URL": "ایجاد URL",
-            "ACTION_REGENERATE": "بازسازی"
+            "ACTION_REGENERATE": "بازسازی",
+            "TITLE_DELETE_URL": "Delete CSV url",
+            "ACTION_DELETE_URL": "حذف"
         },
         "CUSTOM_FIELDS": {
             "TITLE": "ویژگی‌های سفارشی",
@@ -616,16 +620,16 @@
             "SELECTED": "انتخاب شده"
         },
         "PROJECT_DUE_DATE_STATUS": {
-            "TITLE": "Due Dates",
+            "TITLE": "موعدهای تحویل",
             "SUBTITLE": "Specify the due dates your user stories, tasks and issues will go through if selected",
             "US_TITLE": "User Story Due Date status",
             "ACTION_ADD_STATUS": "اضافه کردن وضعیت جدید",
             "TASK_TITLE": "Task Due Date status",
             "ISSUE_TITLE": "Issue Due Date status",
-            "DAYS_TO_DUE_DATE": "Days to due date",
-            "BEFORE_AFTER": "Before/after",
-            "BEFORE": "Before",
-            "AFTER": "Past"
+            "DAYS_TO_DUE_DATE": "تعداد روز مانده تا موعد تحویل",
+            "BEFORE_AFTER": "قبل/بعد",
+            "BEFORE": "قبل",
+            "AFTER": "گذشته"
         },
         "ROLES": {
             "PAGE_TITLE": "نقش‌ها -  {{projectName}}",
@@ -902,7 +906,7 @@
             "CHOOSE_TEMPLATE": "کدام قالب برای پروژه‌ی شما مناسب‌تر است؟",
             "TEMPLATE_SCRUM": "اسکرام",
             "TEMPLATE_SCRUM_DESC": "وظایف خود را اولویت‌بندی کنید و در بازه‌ی زمانی کوتاه انجام دهید.",
-            "TEMPLATE_SCRUM_LONGDESC": "اسکرام روشی برای توسعه‌ی نرم‌افزار به صورت مرحله‌ای سریع و تدریجی است.\nگزارش امور ناتمام محصول چیزی است که با ترتیب مشخصی، ارایه می‌شود. گزارش امور ناتمام پروژه به بخش‌های قابل‌مدیریت و اجرایی به اسم پیشرفت‌ها تقسیم می‌شود.\nمقدار زمانی که تیم برای شروع و تکمیل پیشرفتی جدید و رسیدگی به تعدادی از استوری‌های کاربر در گزارش امور ناتمام نیاز دارد، متناسب با مهارت‌ها، توانمندی‌ها و منابع است. پروژه با خالی شدن گزارش امور ناتمام، پیشرفت می‌کند و تکمیل می‌شود.",
+            "TEMPLATE_SCRUM_LONGDESC": "اسکرام روشی برای توسعه‌ی نرم‌افزار به صورت مرحله‌ای سریع و تدریجی است.\nگزارش امور ناتمام محصول چیزی است که با ترتیب مشخصی، ارایه می‌شود. گزارش امور ناتمام پروژه به بخش‌های قابل‌مدیریت و اجرایی به اسم اسپرینت‌ها تقسیم می‌شود.\nمقدار زمانی که تیم برای شروع و تکمیل پیشرفتی جدید و رسیدگی به تعدادی از استوری‌های کاربر در گزارش امور ناتمام نیاز دارد، متناسب با مهارت‌ها، توانمندی‌ها و منابع است. پروژه با خالی شدن گزارش امور ناتمام، اسپرینت می‌کند و تکمیل می‌شود.",
             "TEMPLATE_KANBAN": "Kanban",
             "TEMPLATE_KANBAN_DESC": "حفظ جریان کاری ثابت در وظایف مستقل",
             "TEMPLATE_KANBAN_LONGDESC": "روش کانبان روشی برای تقسیم توسعه‌ی پروژه (هر نوع پروژه‌ای) به مراحل مختلف است.\nیک کارت کانبان مثل یک کارت اندیس یا یک یادداشت پستی است که جزئیات هر وظیفه (یا استوری کاربری) در پروژه که قرار است تکمیل شود را بیان می‌کند. بورد کانبان برای انتقال هر یک از کارت‌ها از یک وضعیت تکمیل شدن به وضعیت بعدی به کار می‌رود و به این ترتیب برای پیگیری پیشرفت کار مفید است.",
@@ -1051,7 +1055,7 @@
         "DELETE_PROJECT": {
             "TITLE": "حذف پروژه",
             "QUESTION": "آیا مطمئن هستید که می‌خواهید این پروژه را حذف کنید؟",
-            "SUBTITLE": "تمام اطلاعات پروژه (استوری‌های کاربر، وظایف، موضوعات، پیشرفت‌ها و صفحات ویکی) از بین خواهد رفت! :-(",
+            "SUBTITLE": "تمام اطلاعات پروژه (استوری‌های کاربر، وظایف، موضوعات، اسپرینت و صفحات ویکی) از بین خواهد رفت! :-(",
             "CONFIRM": "بله، مطمئن هستم."
         },
         "ASSIGNED_TO": {
@@ -1078,34 +1082,41 @@
             "PLACEHOLDER_SEARCH": "به دنبال چه هستید؟"
         },
         "ADD_EDIT_SPRINT": {
-            "TITLE": "پیشروی جدید",
-            "PLACEHOLDER_SPRINT_NAME": "نام پیشرفت",
+            "TITLE": "اسپرینت جدید",
+            "PLACEHOLDER_SPRINT_NAME": "نام اسپرینت",
             "PLACEHOLDER_SPRINT_START": "تخمین شروع",
             "PLACEHOLDER_SPRINT_END": "تخمین پایان",
-            "ACTION_DELETE_SPRINT": "آیا می‌خواهید این پیشروی را حذف کنید؟",
-            "TITLE_ACTION_DELETE_SPRINT": "حذف پیشرفت",
-            "LAST_SPRINT_NAME": "آخرین پیشرفت <strong>  {{lastSprint}} ;-)</strong> است"
+            "ACTION_DELETE_SPRINT": "آیا می‌خواهید این اسپرینت را حذف کنید؟",
+            "TITLE_ACTION_DELETE_SPRINT": "حذف اسپرینت",
+            "LAST_SPRINT_NAME": "آخرین اسپرینت <strong>  {{lastSprint}} ;-)</strong> است"
         },
         "CREATE_EDIT": {
-            "PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this {{ objName }}",
-            "NEW": "New {{ objName }}",
-            "EDIT": "Edit {{ objName }}",
-            "ADD_EXISTING": "Add {{ objName }} to {{ targetName }}",
+            "TASK_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this Task",
+            "ISSUE_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this Issue",
+            "US_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this User Story",
+            "NEW_TASK": "New Task",
+            "NEW_ISSUE": "New Issue",
+            "NEW_US": "New User Story",
+            "EDIT_TASK": "Edit Task",
+            "EDIT_ISSUE": "Edit Issue",
+            "EDIT_US": "Edit User Story",
+            "ADD_EXISTING_ISSUE": "Add Issue to {{ targetName }}",
             "CONFIRM_CLOSE": "شما تغییرات را ذخیره نکرده‌اید\nآیا از بستن این فرم اطمینان دارید؟",
-            "EXISTING_OBJECT": "Existing {{ objName }}",
-            "NEW_OBJECT": "New {{ objName }}",
-            "CHOOSE_EXISTING": "Which {{ objName }}?"
+            "EXISTING_ISSUE": "Existing Issue",
+            "CHOOSE_EXISTING_ISSUE": "Which Issue?",
+            "ADD_ISSUE": "اضافه کردن موضوع",
+            "FILTER_ISSUES": "فیلتر کردن موضوع‌ها"
         },
         "DELETE_DUE_DATE": {
             "TITLE": "حذف موعد تحویل",
             "SUBTITLE": "آیا از حذف موعد تحویل اطمینان دارید؟"
         },
         "DELETE_SPRINT": {
-            "TITLE": "حذف پیشرفت"
+            "TITLE": "حذف اسپرینت"
         },
         "REMOVE_RELATIONSHIP_WITH_EPIC": {
-            "TITLE": "Remove relationship with Epic",
-            "MESSAGE": "Are you sure you want to delete the relationship of this User Story with the Epic <strong>{{epicSubject}}</strong>?"
+            "TITLE": "حذف ارتباط با این Epic",
+            "MESSAGE": "Are you sure you want to remove the relationship of this User Story with the Epic <strong>{{epicSubject}}</strong>?"
         },
         "CREATE_MEMBER": {
             "PLACEHOLDER_INVITATION_TEXT": "(اختیاری) متنی برای دعوت‌نامه اضافه کنید و جملات جالبی برای اعضای جدید بنویسید  ;-)",
@@ -1153,14 +1164,14 @@
             "SUBTITLE_ACTION_DELETE_DUE_DATE": "Are you sure you want to delete the due date status {{due_date_status_name}}?"
         },
         "RELATE_TO_EPIC": {
-            "TITLE": "Link to Epic",
-            "EXISTING_EPIC": "Existing epic",
-            "NEW_EPIC": "New epic",
+            "TITLE": "مرتبط کردن به epic",
+            "EXISTING_EPIC": "epicموجود",
+            "NEW_EPIC": "epic جدید",
             "CHOOSE_PROJECT_FOR_CREATION": "پروژه چیست؟",
             "CHOOSE_PROJECT_FROM": "پروژه چیست؟",
             "SUBJECT": "موضوع",
             "CHOOSE_EPIC": "What's the epic?",
-            "FILTER_EPICS": "Filter epics",
+            "FILTER_EPICS": "فیلتر کردن epicها",
             "NO_EPICS_FOUND": "در ارتباط با آنچه جست‌وجو کرده‌اید، چیزی پیدا نشد"
         }
     },
@@ -1172,11 +1183,11 @@
         "CREATE_RELATED_USERSTORIES": "ایجاد ارتباط با",
         "NEW_USERSTORY": "استوری کاربری جدید",
         "EXISTING_USERSTORY": "استوری‌های کاربری موجود",
-        "CHOOSE_PROJECT_FOR_CREATION": "Which project?",
+        "CHOOSE_PROJECT_FOR_CREATION": "کدام پروژه؟",
         "SUBJECT": "موضوع",
         "SUBJECT_BULK_MODE": "موضوع (اضافه کردن گروهی)",
-        "CHOOSE_PROJECT_FROM": "Which project?",
-        "CHOOSE_USERSTORY": "Which user story?",
+        "CHOOSE_PROJECT_FROM": "کدام پروژه؟",
+        "CHOOSE_USERSTORY": "کدام استوری کاربر؟",
         "NO_USERSTORIES": "این پروژه استوری کاربری ندارد. لطفاً پروژه‌ی دیگری را انتخاب کنید.",
         "NO_USERSTORIES_FOUND": "در ارتباط با آنچه جست‌وجو کرده‌اید، چیزی پیدا نشد",
         "FILTER_USERSTORIES": "فیلتر کردن استوری‌های کاربر",
@@ -1198,8 +1209,8 @@
         "LIGHTBOX_TITLE_BLOKING_US": "مسدود کردن استوری‌های کاربری",
         "NOT_ESTIMATED": "تخمین زده نشده",
         "OWNER_US": "این استوری کاربری متعلق است به",
-        "RELATE_TO_EPIC": "Link to Epic",
-        "REMOVE_RELATIONSHIP_WITH_EPIC": "Remove Epic relationship",
+        "RELATE_TO_EPIC": "مرتبط کردن به epic",
+        "REMOVE_RELATIONSHIP_WITH_EPIC": "حذف ارتباط Epic",
         "TRIBE": {
             "PUBLISH": "انتشار به عنوان Gig در قبیله‌ی تایگا",
             "PUBLISH_INFO": "اطلاعات بیشتر",
@@ -1259,40 +1270,40 @@
             "ASSIGNED_TO": "تخصیص یافته به",
             "ASSIGNED_USERS": "کاربران اختصاص یافته",
             "DUE_DATE": "موعد تحویل",
-            "MILESTONE": "پیشرفت",
+            "MILESTONE": "اسپرینت",
             "COLOR": "رنگ"
         }
     },
     "BACKLOG": {
         "PAGE_TITLE": "گزارش امور ناتمام- {{projectName}}",
-        "PAGE_DESCRIPTION": "پنل گزارش امور ناتمام به همراه استوری‌های کاربر، پیشرفت پروژه  {{projectName}}: {{projectDescription}}",
+        "PAGE_DESCRIPTION": "پنل گزارش امور ناتمام به همراه استوری‌های کاربر، اسپرینت پروژه  {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "گزارش امور ناتمام",
         "CUSTOMIZE_GRAPH": "سفارشی کردن گراف گزارشات امور ناتمام شما",
-        "CUSTOMIZE_GRAPH_TEXT": "برای ایجاد گرافی خوب که پیشرفت پروژه را نشان دهد، می‌بایست امتیازات و پیشروی‌ها را از",
+        "CUSTOMIZE_GRAPH_TEXT": "برای ایجاد گرافی خوب که اسپرینت پروژه را نشان دهد، می‌بایست امتیازات و اسپرینت‌ها را از",
         "CUSTOMIZE_GRAPH_ADMIN": "ادمین",
-        "CUSTOMIZE_GRAPH_TITLE": "تنظیم امتیازات و پیشرفت‌ها از طریق ادمین",
-        "MOVE_US_TO_CURRENT_SPRINT": "انتقال به پیشرفت فعلی",
-        "MOVE_US_TO_LATEST_SPRINT": "انتقال به آخرین پیشرفت",
+        "CUSTOMIZE_GRAPH_TITLE": "تنظیم امتیازات و اسپرینت‌ها از طریق ادمین",
+        "MOVE_US_TO_CURRENT_SPRINT": "انتقال به اسپرینت فعلی",
+        "MOVE_US_TO_LATEST_SPRINT": "انتقال به آخرین اسپرینت",
         "EMPTY": "امور ناتمام خالی است!",
         "CREATE_NEW_US": "ایجاد یک استوری کاربری جدید",
         "CREATE_NEW_US_EMPTY_HELP": "شاید بخواهید استوری کاربری جدیدی ایجاد کنید",
         "EXCESS_OF_POINTS": "مازاد امتیازات",
         "PENDING_POINTS": "امتیازات معلق",
         "CLOSED_POINTS": "بسته شده",
-        "COMPACT_SPRINT": "پیشرفت‌های فشرده",
+        "COMPACT_SPRINT": "اسپرینت‌های فشرده",
         "GO_TO_TASKBOARD": "رفتن به بورد وظایف {{::name}}",
-        "EDIT_SPRINT": "ویرایش پیشرفت",
+        "EDIT_SPRINT": "ویرایش اسپرینت",
         "TOTAL_POINTS": "مجموع",
         "STATUS_NAME": "نام وضعیت",
         "SORTABLE_FILTER_ERROR": "زمانی که فیلترها باز است، نمی‌توانید روی گزارش امور ناتمام رها کنید",
         "DOOMLINE": "محدوده‌ی زمانی پروژه",
         "CHART": {
-            "XAXIS_LABEL": "پیشرفت‌ها",
+            "XAXIS_LABEL": "اسپرینت‌ها",
             "YAXIS_LABEL": "امتیاز",
-            "OPTIMAL": "امتیاز معلق بهینه برای پیشرفت \"{{sprintName}}\" می‌بایست {{value}} باشد",
-            "REAL": "امتیاز معلق واقعی برای پیشرفت \"{{sprintName}}\"، معادل {{value}} امتیاز است.",
-            "INCREMENT_TEAM": "امتیاز اضافی لازمه‌های تیمی برای پیشرفت \"{{sprintName}}\" معادل {{value}} است",
-            "INCREMENT_CLIENT": "امتیاز اضافی لازمه‌های مشتری برای پیشرفت \"{{sprintName}}\" معادل {{value}} است"
+            "OPTIMAL": "امتیاز معلق بهینه برای اسپرینت \"{{sprintName}}\" می‌بایست {{value}} باشد",
+            "REAL": "امتیاز معلق واقعی برای اسپرینت \"{{sprintName}}\"، معادل {{value}} امتیاز است.",
+            "INCREMENT_TEAM": "امتیاز اضافی لازمه‌های تیمی برای اسپرینت \"{{sprintName}}\" معادل {{value}} است",
+            "INCREMENT_CLIENT": "امتیاز اضافی لازمه‌های مشتری برای اسپرینت \"{{sprintName}}\" معادل {{value}} است"
         },
         "TAGS": {
             "TOGGLE": "تغییر وضعیت نمایش برچسب‌ها",
@@ -1302,8 +1313,8 @@
         "FORECASTING": {
             "TITLE": "پیش‌بینی سرعت",
             "BACKLOG": "نمایش لیست امور ناتمام",
-            "NEW_SPRINT": "استوری‌های کاربری توصیه‌شده برای پیشرفت بعدی شما با توجه به سرعت کار. برای ایجاد پیشرفت جدید کلیک کنید",
-            "CURRENT_SPRINT": "استوری‌های کاربری توصیه شده برای پیشرفت شما بر اساس سرعت کار. برای اضافه کردن پیشرفت فعلی، کلیک کنید."
+            "NEW_SPRINT": "استوری‌های کاربری توصیه‌شده برای اسپرینت بعدی شما با توجه به سرعت کار. برای ایجاد اسپرینت جدید کلیک کنید",
+            "CURRENT_SPRINT": "استوری‌های کاربری توصیه شده برای اسپرینت شما بر اساس سرعت کار. برای اضافه کردن اسپرینت فعلی، کلیک کنید."
         },
         "TABLE": {
             "COLUMN_US": "استوری‌های کاربر",
@@ -1323,7 +1334,7 @@
             "PROJECT_POINTS": "<br /> امتیاز پروژه",
             "DEFINED_POINTS": "<br /> امتیاز تعریف شده",
             "CLOSED_POINTS": "<br /> امتیاز بسته‌شده",
-            "POINTS_PER_SPRINT": "امتیاز/ <br />پیشرفت"
+            "POINTS_PER_SPRINT": "امتیاز/ <br />اسپرینت"
         },
         "FILTERS": {
             "TOGGLE": "تغییر نمایش فیلترها",
@@ -1331,17 +1342,17 @@
             "SHOW": "نمایش فیلترها"
         },
         "SPRINTS": {
-            "TITLE": "پیشرفت‌ها",
+            "TITLE": "اسپرینت‌ها",
             "DATE": "DD MMM YYYY",
-            "LINK_TASKBOARD": "بورد وظایف و پیشرفت‌ها",
+            "LINK_TASKBOARD": "بورد وظایف و اسپرینت‌ها",
             "TITLE_LINK_TASKBOARD": "رفتن به بورد وظایف \"{{name}}\"",
             "EMPTY": "تاکنون پیشرفتی وجود نداشته",
-            "WARNING_EMPTY_SPRINT_ANONYMOUS": "این پیشرفت هیچ استوری کاربری ندارد",
+            "WARNING_EMPTY_SPRINT_ANONYMOUS": "این اسپرینت هیچ استوری کاربری ندارد",
             "WARNING_EMPTY_SPRINT": "استوری‌های لیست اموم ناتمام را اینجا رها کنید تا پیشرفتی جدید را آغاز کنید",
-            "TITLE_ACTION_NEW_SPRINT": "اضافه کردن پیشرفت جدید",
-            "TEXT_ACTION_NEW_SPRINT": "ممکن است بخواهید پیشرفت جدیدی در پروژه‌ی خود اضافه کنید",
-            "ACTION_SHOW_CLOSED_SPRINTS": "نمایش پیشرفت‌های بسته‌شده",
-            "ACTION_HIDE_CLOSED_SPRINTS": "مخفی کردن پیشرفت‌های بسته‌شده"
+            "TITLE_ACTION_NEW_SPRINT": "اضافه کردن اسپرینت جدید",
+            "TEXT_ACTION_NEW_SPRINT": "ممکن است بخواهید اسپرینت جدیدی در پروژه‌ی خود اضافه کنید",
+            "ACTION_SHOW_CLOSED_SPRINTS": "نمایش اسپرینت‌های بسته‌شده",
+            "ACTION_HIDE_CLOSED_SPRINTS": "مخفی کردن اسپرینت‌های بسته‌شده"
         }
     },
     "ERROR": {
@@ -1353,13 +1364,13 @@
         "VERSION_ERROR": "یکی از اعضای تایگا قبلاً این مورد را تغییر داده و اومپا لومپای ما نمی‌تواند تغییرات شما را اعمال کند. لطفاً صفحه را از نو بارگذاری کنید و تغییرات خود را مجدداً انجام دهید (تغییرات حذف می‌شود)."
     },
     "TASKBOARD": {
-        "PAGE_TITLE": "{{sprintName}} - بورد پیشرفت وظایف - {{projectName}}",
-        "PAGE_DESCRIPTION": "پیشرفت {{sprintName}} (از {{startDate}} الی {{endDate}}) از {{projectName}}. درصد تکمیل:{{completedPercentage}}% ({{completedPoints}} از {{totalPoints}} امتیاز). {{openTasks}} وظایف باز  {{totalTasks}}.",
+        "PAGE_TITLE": "{{sprintName}} - بورد اسپرینت وظایف - {{projectName}}",
+        "PAGE_DESCRIPTION": "اسپرینت {{sprintName}} (از {{startDate}} الی {{endDate}}) از {{projectName}}. درصد تکمیل:{{completedPercentage}}% ({{completedPoints}} از {{totalPoints}} امتیاز). {{openTasks}} وظایف باز  {{totalTasks}}.",
         "SECTION_NAME": "برد وظایف",
         "TITLE_ACTION_ADD": "اضافه کردن وظیفه‌ی جدید",
         "TITLE_ACTION_ADD_BULK": "اضافه کردن تعدادی وظیفه‌ی جدید به صورت گروهی",
-        "TITLE_ACTION_ADD_ISSUE": "Add a new Issue",
-        "TITLE_ACTION_ADD_ISSUE_BULK": "Add some new Issues in bulk",
+        "TITLE_ACTION_ADD_ISSUE": "اضافه کردن موضوع جدید",
+        "TITLE_ACTION_ADD_ISSUE_BULK": " اضافه کردن تعدادی موضوع جدید به صورت گروهی ",
         "TITLE_ACTION_ASSIGN": "تخصیص وظیفه",
         "PLACEHOLDER_CARD_TITLE": "این می‌تواند یک وظیفه باشد",
         "PLACEHOLDER_CARD_TEXT": "تقسیم کردن استوری‌ها به وظایف برای دنبال کردن آنها به صورت جداگانه",
@@ -1437,17 +1448,17 @@
         "LIGHTBOX_TITLE_BLOKING_ISSUE": "مسدودسازی موضوعات",
         "LINK_TASKBOARD": "برد وظایف",
         "TITLE_LINK_TASKBOARD": "مراجعه به برد وظایف",
-        "FILTER_SPRINTS": "Filter Sprints",
-        "CHOOSE_SPRINT": "Which Sprint?",
+        "FILTER_SPRINTS": "فیلتر کردن اسپرینت‌ها",
+        "CHOOSE_SPRINT": "کدام اسپرینت؟",
         "FIELDS": {
             "PRIORITY": "اولویت",
             "SEVERITY": "اهمیت",
             "TYPE": "نوع"
         },
-        "FILTER_ISSUES": "Filter Issues",
+        "FILTER_ISSUES": "فیلتر کردن موضوع‌ها",
         "CONFIRM_DETACH_FROM_SPRINT": {
             "TITLE": "Detach issue from Sprint",
-            "MESSAGE": "You are about to detach the issue from the sprint"
+            "MESSAGE": "You are about to detach the issue from the sprint <strong>{{ sprintName }}<strong>"
         },
         "CONFIRM_CHANGE_FROM_SPRINT": {
             "TITLE": "Attach issue to Sprint",
@@ -1465,7 +1476,7 @@
                 "SUBJECT": "موضوع",
                 "VOTES": "رأی",
                 "STATUS": "عیت",
-                "CREATED": "ایجاد شده",
+                "MODIFIED": "تصحیح شده",
                 "ASSIGNED_TO": "اختصاص یافته به"
             },
             "TITLE_ACTION_CHANGE_STATUS": "تغییر وضعیت",
@@ -1549,6 +1560,12 @@
             "OPTION_ALL": "همه",
             "OPTION_INVOLVED": "مشترک",
             "OPTION_NONE": "هیچ کدام"
+        },
+        "PROJECT_SETTINGS": {
+            "CUSTOM_HOMEPAGE": "Custom Homepage",
+            "COLUMN_PROJECT": "پروژه",
+            "COLUMN_HOMEPAGE": "صفحه‌ی خانه",
+            "DEFAULT_VALUE": "Default"
         }
     },
     "USER_PROFILE": {
@@ -1618,11 +1635,11 @@
         "TASK_CREATED": "{{username}} وظیفه‌ی جدید {{obj_name}} را در {{project_name}} ایجاد کرده است",
         "TASK_CREATED_WITH_US": "{{username}} وظیفه‌ی جدید {{obj_name}} را در {{project_name}} ایجاد کرده است که به استوری کاربری {{us_name}} مربوط می‌شود",
         "WIKI_CREATED": "{{username}} صفحه‌ی ویکی جدید  {{obj_name}} در {{project_name}} ایجاد کرده است",
-        "MILESTONE_CREATED": "{{username}} پیشروی جدید {{obj_name}} در{{project_name}} ایجاد کرده است",
+        "MILESTONE_CREATED": "{{username}} اسپرینت جدید {{obj_name}} در{{project_name}} ایجاد کرده است",
         "EPIC_CREATED": "{{username}}  جدید epic {{obj_name}} را در {{project_name}} ایجاد کرده است",
         "EPIC_RELATED_USERSTORY_CREATED": "{{username}} استوری کاربری {{related_us_name}} را به epic{{epic_name}} در {{project_name}} مربوط کرده است",
         "NEW_PROJECT": "{{username}} پروژه‌ی  {{project_name}} را ایجاد کرده است",
-        "MILESTONE_UPDATED": "{{username}} پیشرفت {{obj_name}} را آپدیت کرده است",
+        "MILESTONE_UPDATED": "{{username}} اسپرینت {{obj_name}} را آپدیت کرده است",
         "US_UPDATED": "{{username}} خصوصیت \"{{field_name}}\" از استوری کاربری {{obj_name}} را آپدیت کرده است",
         "US_UPDATED_WITH_NEW_VALUE": "{{username}} خصوصیت \"{{field_name}}\" از استوری کاربری {{obj_name}} را به {{new_value}} آپدیت کرد",
         "US_UPDATED_POINTS": "{{username}} امتیازات '{{role_name}}' از استوری کاربری {{obj_name}}  را به {{new_value}} تغییر داده است",
@@ -1697,15 +1714,15 @@
             },
             "STEP2": {
                 "TITLE": "لیست امورناتمام محصول",
-                "TEXT": "گزارش امور ناتمام لیستی از نیازها (استوری‌های کاربری) برای پروژه است. در این بخش می‌توانید پیشرفت‌های خود را برنامه‌ریزی کنید."
+                "TEXT": "گزارش امور ناتمام لیستی از نیازها (استوری‌های کاربری) برای پروژه است. در این بخش می‌توانید اسپرینت‌های خود را برنامه‌ریزی کنید."
             },
             "STEP3": {
-                "TITLE": "پیشرفت‌ها",
-                "TEXT": "پیشرفت‌ها به بازه‌های زمانی کوچک (معمولاً ۲ هفته) گفته می‌شود که در طول این بازه‌ی زمانی می‌بایست کاری خاص تکمیل و تحویل داده شود."
+                "TITLE": "اسپرینت‌ها",
+                "TEXT": "اسپرینت‌ها به بازه‌های زمانی کوچک (معمولاً ۲ هفته) گفته می‌شود که در طول این بازه‌ی زمانی می‌بایست کاری خاص تکمیل و تحویل داده شود."
             },
             "STEP4": {
                 "TITLE": "استوری‌های کاربر",
-                "TEXT": "آنها لازمه‌های سطح بالا هستند. می‌توانید آنها را به لیست امور ناتمام اضافه کنید و آنها را درگ کرده و به پیشرفت‌هایی که باید تحویل شود، اضافه کنید."
+                "TEXT": "آنها لازمه‌های سطح بالا هستند. می‌توانید آنها را به لیست امور ناتمام اضافه کنید و آنها را درگ کرده و به اسپرینت‌هایی که باید تحویل شود، اضافه کنید."
             }
         },
         "KANBAN": {

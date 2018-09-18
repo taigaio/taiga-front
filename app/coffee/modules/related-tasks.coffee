@@ -1,10 +1,5 @@
 ###
-# Copyright (C) 2014-2017 Andrey Antukh <niwi@niwi.nz>
-# Copyright (C) 2014-2017 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014-2017 David Barragán Merino <bameda@dbarragan.com>
-# Copyright (C) 2014-2017 Alejandro Alonso <alejandro.alonso@kaleidos.net>
-# Copyright (C) 2014-2017 Juan Francisco Alcántara <juanfran.alcantara@kaleidos.net>
-# Copyright (C) 2014-2017 Xavi Julian <xavier.julian@kaleidos.net>
+# Copyright (C) 2014-2018 Taiga Agile LLC
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -237,9 +232,8 @@ module.directive("tgRelatedTaskCreateButton", ["$tgRepo", "$compile", "$tgConfir
 RelatedTasksDirective = ($repo, $rs, $rootscope) ->
     link = ($scope, $el, $attrs) ->
         loadTasks = ->
-            return $rs.tasks.list($scope.projectId, null, $scope.usId).then (tasks) =>
-                $scope.tasks = _.sortBy(tasks, (x) => [x.us_order, x.ref])
-                return tasks
+            return $rs.tasks.list($scope.projectId, null, $scope.usId).then (result) ->
+                Immutable.fromJS(result.data)
 
         _isVisible = ->
             if $scope.project
@@ -251,12 +245,18 @@ RelatedTasksDirective = ($repo, $rs, $rootscope) ->
                 return $scope.project.my_permissions.indexOf("modify_task") != -1
             return false
 
+        $scope.reorderTask = (task, newIndex) ->
+            $rootscope.$broadcast('task:reorder', task, newIndex)
+
         $scope.showRelatedTasks = ->
             return _isVisible() && ( _isEditable() ||  $scope.tasks?.length )
 
         $scope.$on "related-tasks:add", ->
             loadTasks().then ->
                 $rootscope.$broadcast("related-tasks:update")
+
+        $scope.$on "related-tasks:reordered", ->
+            loadTasks()
 
         $scope.$on "related-tasks:delete", ->
             loadTasks().then ->

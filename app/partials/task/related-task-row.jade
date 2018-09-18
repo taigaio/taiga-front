@@ -1,3 +1,10 @@
+.task-reorder
+    <% if(perms.modify_task) { %>
+    tg-svg.icon-drag(
+        svg-icon="icon-drag"
+    )
+    <% } %>
+
 .task-name
     a.clickable(
         tg-nav="project-tasks-detail:project=project.slug,ref=task.ref")

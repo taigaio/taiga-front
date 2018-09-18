@@ -537,7 +537,9 @@
             "DESCRIPTION": "Descarga el fichero CSV o copia la URL generada y abre tu editor de textos o hoja de cálculo favorito para realizar tus propios informes. Podrás visualizar y analizar todos los datos fácilmente.",
             "HELP": "¿Cómo puedo usar esto en mi hoja de cálculo?",
             "REGENERATE_TITLE": "Cambiar URL",
-            "REGENERATE_SUBTITLE": "Vas a cambiar la url de acceso a los datos en formato CSV. La url anterior se deshabilitará. ¿Estás seguro?"
+            "REGENERATE_SUBTITLE": "You are going to change the CSV data access url. The previous url will be disabled. Are you sure?",
+            "DELETE_TITLE": "Delete URL",
+            "DELETE_SUBTITLE": "You are going to delete the current CSV data access url. Are you sure?"
         },
         "CSV": {
             "SECTION_TITLE_EPIC": "Reportes de épicas.",
@@ -548,7 +550,9 @@
             "URL_FIELD_PLACEHOLDER": "Por favor regenera la url del origen CSV",
             "TITLE_REGENERATE_URL": "Regenerar url de origen CSV",
             "ACTION_GENERATE_URL": "Generar Url",
-            "ACTION_REGENERATE": "Regenerar"
+            "ACTION_REGENERATE": "Regenerar",
+            "TITLE_DELETE_URL": "Delete CSV url",
+            "ACTION_DELETE_URL": "Borrar"
         },
         "CUSTOM_FIELDS": {
             "TITLE": "Atributos personalizados",
@@ -1087,14 +1091,21 @@
             "LAST_SPRINT_NAME": "el último sprint es <strong> {{lastSprint}} ;-) </strong>"
         },
         "CREATE_EDIT": {
-            "PLACEHOLDER_DESCRIPTION": "Por favor agrega texto descriptivo para entender mejor este {{ objName }}",
-            "NEW": "Nuevo {{ objName }}",
-            "EDIT": "Editar {{ objName }}",
-            "ADD_EXISTING": "Agregar {{ objName }} a {{ targetName }}",
+            "TASK_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this Task",
+            "ISSUE_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this Issue",
+            "US_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this User Story",
+            "NEW_TASK": "New Task",
+            "NEW_ISSUE": "New Issue",
+            "NEW_US": "New User Story",
+            "EDIT_TASK": "Edit Task",
+            "EDIT_ISSUE": "Edit Issue",
+            "EDIT_US": "Edit User Story",
+            "ADD_EXISTING_ISSUE": "Add Issue to {{ targetName }}",
             "CONFIRM_CLOSE": "Los cambios no están gurdados. ¿Seguro que quieres cerrar el formulario?",
-            "EXISTING_OBJECT": "{{ objName }} existente",
-            "NEW_OBJECT": "Nuevo {{ objName }}",
-            "CHOOSE_EXISTING": "¿Cuál {{ objName }}?"
+            "EXISTING_ISSUE": "Existing Issue",
+            "CHOOSE_EXISTING_ISSUE": "Which Issue?",
+            "ADD_ISSUE": "Añadir petición",
+            "FILTER_ISSUES": "Filtrar peticiones"
         },
         "DELETE_DUE_DATE": {
             "TITLE": "Borrar fecha de vencimiento",
@@ -1105,7 +1116,7 @@
         },
         "REMOVE_RELATIONSHIP_WITH_EPIC": {
             "TITLE": "Quitar relación con Épica",
-            "MESSAGE": "Are you sure you want to delete the relationship of this User Story with the Epic <strong>{{epicSubject}}</strong>?"
+            "MESSAGE": "Are you sure you want to remove the relationship of this User Story with the Epic <strong>{{epicSubject}}</strong>?"
         },
         "CREATE_MEMBER": {
             "PLACEHOLDER_INVITATION_TEXT": "(Opcional) Añade un texto personalizado a la invitación. Dile algo encantador a tus nuevos miembros ;-)",
@@ -1447,7 +1458,7 @@
         "FILTER_ISSUES": "Filtrar peticiones",
         "CONFIRM_DETACH_FROM_SPRINT": {
             "TITLE": "Separar petición de Sprint",
-            "MESSAGE": "Estás a punto de quitar petición de sprint"
+            "MESSAGE": "You are about to detach the issue from the sprint <strong>{{ sprintName }}<strong>"
         },
         "CONFIRM_CHANGE_FROM_SPRINT": {
             "TITLE": "Unir petición a Sprint",
@@ -1465,7 +1476,7 @@
                 "SUBJECT": "Asunto",
                 "VOTES": "Votos",
                 "STATUS": "Estado",
-                "CREATED": "Creado",
+                "MODIFIED": "Modificado",
                 "ASSIGNED_TO": "Asignado a"
             },
             "TITLE_ACTION_CHANGE_STATUS": "Cambio de estado",
@@ -1549,6 +1560,12 @@
             "OPTION_ALL": "Todas",
             "OPTION_INVOLVED": "Involucrado",
             "OPTION_NONE": "Ninguna"
+        },
+        "PROJECT_SETTINGS": {
+            "CUSTOM_HOMEPAGE": "Custom Homepage",
+            "COLUMN_PROJECT": "Proyecto",
+            "COLUMN_HOMEPAGE": "Página de inicio",
+            "DEFAULT_VALUE": "Default"
         }
     },
     "USER_PROFILE": {

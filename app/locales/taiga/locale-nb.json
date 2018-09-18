@@ -537,7 +537,9 @@
             "DESCRIPTION": "Last ned en CSV fil eller kopier den genererte URL'en og åpne den i din favoritt tekstbehandler for å lage dine egne prosjektdatarapporter. Du vil kunne visualisere og analysere alle dine data enkelt.",
             "HELP": "Hvordan bruke dette i mitt eget regneark?",
             "REGENERATE_TITLE": "Endre URL",
-            "REGENERATE_SUBTITLE": "Dette vil endre CSV datatilgangsURLen. Den forrige URLen vil bli deaktivert. Er du sikker?"
+            "REGENERATE_SUBTITLE": "You are going to change the CSV data access url. The previous url will be disabled. Are you sure?",
+            "DELETE_TITLE": "Delete URL",
+            "DELETE_SUBTITLE": "You are going to delete the current CSV data access url. Are you sure?"
         },
         "CSV": {
             "SECTION_TITLE_EPIC": "epics reports",
@@ -548,7 +550,9 @@
             "URL_FIELD_PLACEHOLDER": "Venligst regenerer CSV url",
             "TITLE_REGENERATE_URL": "Regenerer CSV url",
             "ACTION_GENERATE_URL": "Generer URL",
-            "ACTION_REGENERATE": "Generer på nytt"
+            "ACTION_REGENERATE": "Generer på nytt",
+            "TITLE_DELETE_URL": "Delete CSV url",
+            "ACTION_DELETE_URL": "Slett"
         },
         "CUSTOM_FIELDS": {
             "TITLE": "Egendefinerte felter",
@@ -1087,14 +1091,21 @@
             "LAST_SPRINT_NAME": "siste sprinten er <strong> {{lastSprint}} ;-) </strong>"
         },
         "CREATE_EDIT": {
-            "PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this {{ objName }}",
-            "NEW": "New {{ objName }}",
-            "EDIT": "Edit {{ objName }}",
-            "ADD_EXISTING": "Add {{ objName }} to {{ targetName }}",
+            "TASK_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this Task",
+            "ISSUE_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this Issue",
+            "US_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this User Story",
+            "NEW_TASK": "New Task",
+            "NEW_ISSUE": "New Issue",
+            "NEW_US": "New User Story",
+            "EDIT_TASK": "Edit Task",
+            "EDIT_ISSUE": "Edit Issue",
+            "EDIT_US": "Edit User Story",
+            "ADD_EXISTING_ISSUE": "Add Issue to {{ targetName }}",
             "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?",
-            "EXISTING_OBJECT": "Existing {{ objName }}",
-            "NEW_OBJECT": "New {{ objName }}",
-            "CHOOSE_EXISTING": "Which {{ objName }}?"
+            "EXISTING_ISSUE": "Existing Issue",
+            "CHOOSE_EXISTING_ISSUE": "Which Issue?",
+            "ADD_ISSUE": "Legg til hendelse",
+            "FILTER_ISSUES": "Filter Issues"
         },
         "DELETE_DUE_DATE": {
             "TITLE": "Delete due date",
@@ -1105,7 +1116,7 @@
         },
         "REMOVE_RELATIONSHIP_WITH_EPIC": {
             "TITLE": "Remove relationship with Epic",
-            "MESSAGE": "Are you sure you want to delete the relationship of this User Story with the Epic <strong>{{epicSubject}}</strong>?"
+            "MESSAGE": "Are you sure you want to remove the relationship of this User Story with the Epic <strong>{{epicSubject}}</strong>?"
         },
         "CREATE_MEMBER": {
             "PLACEHOLDER_INVITATION_TEXT": "(Valgfritt) Legg til en egen tekst til invitasjonen. Fortell dine nye medlemmer noe fantastisk ;-)",
@@ -1447,7 +1458,7 @@
         "FILTER_ISSUES": "Filter Issues",
         "CONFIRM_DETACH_FROM_SPRINT": {
             "TITLE": "Detach issue from Sprint",
-            "MESSAGE": "You are about to detach the issue from the sprint"
+            "MESSAGE": "You are about to detach the issue from the sprint <strong>{{ sprintName }}<strong>"
         },
         "CONFIRM_CHANGE_FROM_SPRINT": {
             "TITLE": "Attach issue to Sprint",
@@ -1465,7 +1476,7 @@
                 "SUBJECT": "Subjekt",
                 "VOTES": "Stemmer",
                 "STATUS": "Status",
-                "CREATED": "Opprettet",
+                "MODIFIED": "Modified",
                 "ASSIGNED_TO": "Tildelt til"
             },
             "TITLE_ACTION_CHANGE_STATUS": "Endre status",
@@ -1549,6 +1560,12 @@
             "OPTION_ALL": "Alle",
             "OPTION_INVOLVED": "Involvert",
             "OPTION_NONE": "Ingen"
+        },
+        "PROJECT_SETTINGS": {
+            "CUSTOM_HOMEPAGE": "Custom Homepage",
+            "COLUMN_PROJECT": "Prosjekt",
+            "COLUMN_HOMEPAGE": "Hjemmeside",
+            "DEFAULT_VALUE": "Default"
         }
     },
     "USER_PROFILE": {

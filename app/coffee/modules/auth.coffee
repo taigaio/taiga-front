@@ -1,10 +1,5 @@
 ###
-# Copyright (C) 2014-2017 Andrey Antukh <niwi@niwi.nz>
-# Copyright (C) 2014-2017 Jesús Espino Garcia <jespinog@gmail.com>
-# Copyright (C) 2014-2017 David Barragán Merino <bameda@dbarragan.com>
-# Copyright (C) 2014-2017 Alejandro Alonso <alejandro.alonso@kaleidos.net>
-# Copyright (C) 2014-2017 Juan Francisco Alcántara <juanfran.alcantara@kaleidos.net>
-# Copyright (C) 2014-2017 Xavi Julian <xavier.julian@kaleidos.net>
+# Copyright (C) 2014-2018 Taiga Agile LLC
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -554,8 +549,10 @@ InvitationDirective = ($auth, $confirm, $location, $config, $params, $navUrls, $
             $analytics.trackEvent("auth", "invitationAccept", "invitation accept with new user", 1)
 
             $location.path($navUrls.resolve("project", {project: $scope.invitation.project_slug}))
-            $confirm.notify("success", "You've successfully joined this project",
-                                       "Welcome to #{_.escape($scope.invitation.project_name)}")
+            text = $translate.instant("INVITATION_LOGIN_FORM.SUCCESS", {
+                "project_name": $scope.invitation.project_name
+            })
+            $confirm.notify("success", text)
 
         onErrorSubmitRegister = (response) ->
             if response.data._error_message

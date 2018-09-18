@@ -1,0 +1,13 @@
+div.search-result-table-container(ng-class="{'hidden': !wikipages.length}", tg-bind-scope)
+    div.search-result-table-header
+        div.row.title
+            div.user-stories(translate="SEARCH.FILTER_WIKI")
+    div.search-result-table-body
+        div.row.table-main(ng-repeat="wikipage in wikipages track by wikipage.id")
+            div.user-stories
+                div.user-story-name
+                    a(href="", tg-nav="project-wiki-page:project=project.slug,slug=wikipage.slug",
+                        tg-bo-bind="wikipage.slug")
+
+div.empty-large(ng-class="{'hidden': wikipages.length}")
+    include ./empty-search-results

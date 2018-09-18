@@ -55,7 +55,7 @@
             display: block;
             margin: .2rem 0 .25rem;
         }
-        .assigned-to-options {
+        .assigned-to-actions {
             align-content: center;
             display: flex;
             a {
@@ -63,7 +63,7 @@
             }
         }
         .user-assigned,
-        .assign-to-me {
+        .self-assign {
             color: $primary;
             cursor: default;
             &:hover {
@@ -89,7 +89,7 @@
         }
     }
     .user-assigned,
-    .assign-to-me {
+    .self-assign {
         color: $primary;
         &:hover {
             color: currentColor;
