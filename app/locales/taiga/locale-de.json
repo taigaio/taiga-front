@@ -250,7 +250,7 @@
                 "VIEW_SPRINTS": "Sprints ansehen",
                 "ADD_SPRINTS": "Sprints hinzufügen",
                 "MODIFY_SPRINTS": "Sprints modifizieren",
-                "DELETE_SPRINTS": "Gelöschte Sprints"
+                "DELETE_SPRINTS": "Sprints löschen"
             },
             "USER_STORIES": {
                 "NAME": "User-Stories",
@@ -488,7 +488,7 @@
             "KANBAN": "Kanban",
             "KANBAN_DESCRIPTION": "Organisieren Sie Ihr Projekt auf übersichtliche Art.",
             "ISSUES": "Tickets",
-            "ISSUES_DESCRIPTION": "Verfolgen Sie Fehler, Fragen und Verbesserungen, die mit Ihrem Projekt verbunden sind. Vermissen Sie nichts!",
+            "ISSUES_DESCRIPTION": "Verfolgen Sie Fehler, Fragen und Verbesserungen, die mit Ihrem Projekt verbunden sind. Verpassen Sie nichts!",
             "WIKI": "Wiki",
             "WIKI_DESCRIPTION": "Fügen Sie Inhalte hinzu, ändern oder löschen Sie sie in Zusammenarbeit mit anderen. Dies ist der richtige Ort für Ihre Projektdokumentation.",
             "MEETUP": "Zusammentreffen",
@@ -537,7 +537,9 @@
             "DESCRIPTION": "Laden Sie eine CSV-Datei herunter oder kopieren Sie die generierte URL und öffnen Sie sie in Ihrem Lieblingstexteditor oder Tabellenkalkulationsprogramm um Ihre eigenen Projektdaten Berichte zu erstellen. So können Sie Ihre Daten einfach visualisieren und analysieren.",
             "HELP": "Wie kann ich dies in meiner eigenen Tabellenkalkulation nutzen?",
             "REGENERATE_TITLE": "Die URL ändern",
-            "REGENERATE_SUBTITLE": "Sie sind im Begriff, die CSV data access URL zu ändern. Die vorherige URL wird deaktiviert. Sind Sie sicher?"
+            "REGENERATE_SUBTITLE": "You are going to change the CSV data access url. The previous url will be disabled. Are you sure?",
+            "DELETE_TITLE": "Delete URL",
+            "DELETE_SUBTITLE": "You are going to delete the current CSV data access url. Are you sure?"
         },
         "CSV": {
             "SECTION_TITLE_EPIC": "Epics Berichte",
@@ -548,7 +550,9 @@
             "URL_FIELD_PLACEHOLDER": "Bitte erstellen Sie die CSV URL neu",
             "TITLE_REGENERATE_URL": "Erstellen Sie die CSV URL neu",
             "ACTION_GENERATE_URL": "URL erzeugen",
-            "ACTION_REGENERATE": "Neu erstellen"
+            "ACTION_REGENERATE": "Neu erstellen",
+            "TITLE_DELETE_URL": "Delete CSV url",
+            "ACTION_DELETE_URL": "Löschen"
         },
         "CUSTOM_FIELDS": {
             "TITLE": "Benutzerfelder",
@@ -623,9 +627,9 @@
             "TASK_TITLE": "Status der Aufgabenfälligkeit",
             "ISSUE_TITLE": "Status der Ticket Fälligkeit",
             "DAYS_TO_DUE_DATE": "Tage bis zur Fällikeit",
-            "BEFORE_AFTER": "Before/after",
-            "BEFORE": "Before",
-            "AFTER": "Past"
+            "BEFORE_AFTER": "Früher/später",
+            "BEFORE": "Früher",
+            "AFTER": "Nach"
         },
         "ROLES": {
             "PAGE_TITLE": "Rollen - {{projectName}}",
@@ -914,8 +918,8 @@
             "SOLO_PROJECT": "Sie sind alleine in diesem Projekt",
             "INVITE_LATER": "(Später können Sie weitere Mitglieder einladen)",
             "BACK": "Zurück",
-            "MAX_PRIVATE_PROJECTS": "Unfortunately, You've reached the maximum number of private projects.\nIf you would like to increase the current limit please contact the administrator.",
-            "MAX_PUBLIC_PROJECTS": "Unfortunately, You've reached the maximum number of public projects.\nIf you would like to increase the current limit please contact the administrator.",
+            "MAX_PRIVATE_PROJECTS": "Leider haben Sie die maximale Anzahl privater Projekte erreicht.\nBitte wenden Sie sich an den Administrator um diese Limite zu erhöhen.",
+            "MAX_PUBLIC_PROJECTS": "Leider haben Sie die maximale Anzahl öffentlicher Projekte erreicht.\nBitte wenden Sie sich an den Administrator um diese Limite zu erhöhen.",
             "PUBLIC_PROJECT": "Öffentliches Projekt",
             "PRIVATE_PROJECT": "Privates Projekt"
         },
@@ -945,7 +949,7 @@
             "WRITE_EMAIL": "Oder geben Sie die E-Mail Adresse eines Benutzers an",
             "SEARCH_CONTACT": "Oder suchen Sie in Ihren Kontakten",
             "WRITE_EMAIL_LABEL": "Schreibe eine Email, das dieser User Taiga benützt",
-            "ACCEEDE": "Acceede",
+            "ACCEEDE": "Erledigt",
             "PROJECT_MEMBERS": "Projektmitglieder",
             "PROCESS_DESCRIPTION": "Sagen Sie uns, wem aus Taiga die {{platform}} Aufgaben zugewiesen werden sollen",
             "MATCH": "Ist <strong>{{user_external}}</strong> die selbe Person als <strong>{{user_internal}}</strong>?",
@@ -1087,14 +1091,21 @@
             "LAST_SPRINT_NAME": "letzter Sprint ist <strong> {{lastSprint}} ;-) </strong>"
         },
         "CREATE_EDIT": {
-            "PLACEHOLDER_DESCRIPTION": "Bitte fügen Sie hier eine für andere verständliche {{ objName }} Beschreibung ein.",
-            "NEW": "Neu {{ objName }}",
-            "EDIT": "Bearbeiten {{ objName }}",
-            "ADD_EXISTING": "{{ objName }} zu {{ targetName }} hinzufügen",
+            "TASK_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this Task",
+            "ISSUE_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this Issue",
+            "US_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this User Story",
+            "NEW_TASK": "New Task",
+            "NEW_ISSUE": "New Issue",
+            "NEW_US": "New User Story",
+            "EDIT_TASK": "Edit Task",
+            "EDIT_ISSUE": "Edit Issue",
+            "EDIT_US": "Edit User Story",
+            "ADD_EXISTING_ISSUE": "Add Issue to {{ targetName }}",
             "CONFIRM_CLOSE": "Sie haben Ihre Änderungen noch nicht gespeichert.\nSind Sie sicher, dass Sie dieses Formular schließen möchten?",
-            "EXISTING_OBJECT": "{{ objName }} existiert",
-            "NEW_OBJECT": "Neu {{ objName }}",
-            "CHOOSE_EXISTING": "Welche/r/s {{ objName }}?"
+            "EXISTING_ISSUE": "Existing Issue",
+            "CHOOSE_EXISTING_ISSUE": "Which Issue?",
+            "ADD_ISSUE": "Ticket hinzufügen",
+            "FILTER_ISSUES": "Tickets Filtern"
         },
         "DELETE_DUE_DATE": {
             "TITLE": "Fälligkeitsdatum löschen",
@@ -1105,7 +1116,7 @@
         },
         "REMOVE_RELATIONSHIP_WITH_EPIC": {
             "TITLE": "Verbindung zum Epic entfernen",
-            "MESSAGE": "Are you sure you want to delete the relationship of this User Story with the Epic <strong>{{epicSubject}}</strong>?"
+            "MESSAGE": "Are you sure you want to remove the relationship of this User Story with the Epic <strong>{{epicSubject}}</strong>?"
         },
         "CREATE_MEMBER": {
             "PLACEHOLDER_INVITATION_TEXT": "(Optional) Fügen Sie einen persönlichen Text zur Einladung hinzu. Erzählen Sie Ihren neuen Mitgliedern etwas Schönes. ;-)",
@@ -1437,7 +1448,7 @@
         "LIGHTBOX_TITLE_BLOKING_ISSUE": "Blockierendes Ticket",
         "LINK_TASKBOARD": "Taskboard",
         "TITLE_LINK_TASKBOARD": "Zu Taskboard wechseln",
-        "FILTER_SPRINTS": "Filter Sprints",
+        "FILTER_SPRINTS": "Sprints filtern",
         "CHOOSE_SPRINT": "Welcher Sprint?",
         "FIELDS": {
             "PRIORITY": "Priorität",
@@ -1447,7 +1458,7 @@
         "FILTER_ISSUES": "Tickets Filtern",
         "CONFIRM_DETACH_FROM_SPRINT": {
             "TITLE": "Ticket vom Sprint lösen",
-            "MESSAGE": "Sie sind dabei das Ticket vom Sprint zu lösen"
+            "MESSAGE": "You are about to detach the issue from the sprint <strong>{{ sprintName }}<strong>"
         },
         "CONFIRM_CHANGE_FROM_SPRINT": {
             "TITLE": "Ticket an Sprint anhängen",
@@ -1465,7 +1476,7 @@
                 "SUBJECT": "Thema",
                 "VOTES": "Stimmen",
                 "STATUS": "Status",
-                "CREATED": "Erstellt",
+                "MODIFIED": "Geändert",
                 "ASSIGNED_TO": "Zugeordnet"
             },
             "TITLE_ACTION_CHANGE_STATUS": "Status wechseln",
@@ -1549,6 +1560,12 @@
             "OPTION_ALL": "Alle",
             "OPTION_INVOLVED": "Beteiligt",
             "OPTION_NONE": "Keine"
+        },
+        "PROJECT_SETTINGS": {
+            "CUSTOM_HOMEPAGE": "Custom Homepage",
+            "COLUMN_PROJECT": "Projekt",
+            "COLUMN_HOMEPAGE": "Homepage",
+            "DEFAULT_VALUE": "Default"
         }
     },
     "USER_PROFILE": {

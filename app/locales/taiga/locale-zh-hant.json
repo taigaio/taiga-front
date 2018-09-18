@@ -537,7 +537,9 @@
             "DESCRIPTION": "下載CSV檔案格式是複制生成網址到常用的文字編輯軟體/試算表，以保存你的專案資料報告。你可以輕易地視覺化和分析你的資料。",
             "HELP": "使用者故事預設欄位",
             "REGENERATE_TITLE": "改變網址",
-            "REGENERATE_SUBTITLE": "你將要改變CSV資料的連結網址，之前的網址將失效。你確定要這樣做嗎?"
+            "REGENERATE_SUBTITLE": "You are going to change the CSV data access url. The previous url will be disabled. Are you sure?",
+            "DELETE_TITLE": "Delete URL",
+            "DELETE_SUBTITLE": "You are going to delete the current CSV data access url. Are you sure?"
         },
         "CSV": {
             "SECTION_TITLE_EPIC": "epics reports",
@@ -548,7 +550,9 @@
             "URL_FIELD_PLACEHOLDER": "再次產生CSV 網址",
             "TITLE_REGENERATE_URL": "再次產生CSV 網址",
             "ACTION_GENERATE_URL": "產生網址",
-            "ACTION_REGENERATE": "再次產生"
+            "ACTION_REGENERATE": "再次產生",
+            "TITLE_DELETE_URL": "Delete CSV url",
+            "ACTION_DELETE_URL": "刪除"
         },
         "CUSTOM_FIELDS": {
             "TITLE": "客製化欄位",
@@ -1087,14 +1091,21 @@
             "LAST_SPRINT_NAME": "最後衝刺任務 <strong> {{lastSprint}} ;-) </strong>"
         },
         "CREATE_EDIT": {
-            "PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this {{ objName }}",
-            "NEW": "New {{ objName }}",
-            "EDIT": "Edit {{ objName }}",
-            "ADD_EXISTING": "Add {{ objName }} to {{ targetName }}",
+            "TASK_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this Task",
+            "ISSUE_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this Issue",
+            "US_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this User Story",
+            "NEW_TASK": "New Task",
+            "NEW_ISSUE": "New Issue",
+            "NEW_US": "New User Story",
+            "EDIT_TASK": "Edit Task",
+            "EDIT_ISSUE": "Edit Issue",
+            "EDIT_US": "Edit User Story",
+            "ADD_EXISTING_ISSUE": "Add Issue to {{ targetName }}",
             "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?",
-            "EXISTING_OBJECT": "Existing {{ objName }}",
-            "NEW_OBJECT": "New {{ objName }}",
-            "CHOOSE_EXISTING": "Which {{ objName }}?"
+            "EXISTING_ISSUE": "Existing Issue",
+            "CHOOSE_EXISTING_ISSUE": "Which Issue?",
+            "ADD_ISSUE": "新增問題 ",
+            "FILTER_ISSUES": "Filter Issues"
         },
         "DELETE_DUE_DATE": {
             "TITLE": "Delete due date",
@@ -1105,7 +1116,7 @@
         },
         "REMOVE_RELATIONSHIP_WITH_EPIC": {
             "TITLE": "Remove relationship with Epic",
-            "MESSAGE": "Are you sure you want to delete the relationship of this User Story with the Epic <strong>{{epicSubject}}</strong>?"
+            "MESSAGE": "Are you sure you want to remove the relationship of this User Story with the Epic <strong>{{epicSubject}}</strong>?"
         },
         "CREATE_MEMBER": {
             "PLACEHOLDER_INVITATION_TEXT": "(非必要) 加上一段私人文字在邀請信，告訴你的新成員一些好事  ;-)",
@@ -1447,7 +1458,7 @@
         "FILTER_ISSUES": "Filter Issues",
         "CONFIRM_DETACH_FROM_SPRINT": {
             "TITLE": "Detach issue from Sprint",
-            "MESSAGE": "You are about to detach the issue from the sprint"
+            "MESSAGE": "You are about to detach the issue from the sprint <strong>{{ sprintName }}<strong>"
         },
         "CONFIRM_CHANGE_FROM_SPRINT": {
             "TITLE": "Attach issue to Sprint",
@@ -1465,7 +1476,7 @@
                 "SUBJECT": "主旨",
                 "VOTES": "投票數",
                 "STATUS": "狀態",
-                "CREATED": "已創建",
+                "MODIFIED": "Modified",
                 "ASSIGNED_TO": "指派給 "
             },
             "TITLE_ACTION_CHANGE_STATUS": "改變狀態",
@@ -1549,6 +1560,12 @@
             "OPTION_ALL": "所有",
             "OPTION_INVOLVED": "涉入",
             "OPTION_NONE": "無"
+        },
+        "PROJECT_SETTINGS": {
+            "CUSTOM_HOMEPAGE": "Custom Homepage",
+            "COLUMN_PROJECT": "專案",
+            "COLUMN_HOMEPAGE": "首頁",
+            "DEFAULT_VALUE": "Default"
         }
     },
     "USER_PROFILE": {

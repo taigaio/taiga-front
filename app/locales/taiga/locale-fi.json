@@ -537,7 +537,9 @@
             "DESCRIPTION": "Download a CSV file or copy the generated URL and open it in your favourite text editor or spreadsheet to make your own project data reports. You will be able to visualize and analyze all your data easily.",
             "HELP": "Kuinka tätä käytetään omassa taulukossani?",
             "REGENERATE_TITLE": "Vaihda URL",
-            "REGENERATE_SUBTITLE": "Jos muutata CSV-datan URLia, edellien lakkaa toimimasta. Oletko varma?"
+            "REGENERATE_SUBTITLE": "You are going to change the CSV data access url. The previous url will be disabled. Are you sure?",
+            "DELETE_TITLE": "Delete URL",
+            "DELETE_SUBTITLE": "You are going to delete the current CSV data access url. Are you sure?"
         },
         "CSV": {
             "SECTION_TITLE_EPIC": "epics reports",
@@ -548,7 +550,9 @@
             "URL_FIELD_PLACEHOLDER": "Tee uusi CSV-url",
             "TITLE_REGENERATE_URL": "Tee uusi CSV-url",
             "ACTION_GENERATE_URL": "Luo URL",
-            "ACTION_REGENERATE": "Tee uusi"
+            "ACTION_REGENERATE": "Tee uusi",
+            "TITLE_DELETE_URL": "Delete CSV url",
+            "ACTION_DELETE_URL": "Poista"
         },
         "CUSTOM_FIELDS": {
             "TITLE": "Omat kentät",
@@ -1087,14 +1091,21 @@
             "LAST_SPRINT_NAME": "viimeinen kierros on <strong> {{lastSprint}} ;-) </strong>"
         },
         "CREATE_EDIT": {
-            "PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this {{ objName }}",
-            "NEW": "New {{ objName }}",
-            "EDIT": "Edit {{ objName }}",
-            "ADD_EXISTING": "Add {{ objName }} to {{ targetName }}",
+            "TASK_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this Task",
+            "ISSUE_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this Issue",
+            "US_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this User Story",
+            "NEW_TASK": "New Task",
+            "NEW_ISSUE": "New Issue",
+            "NEW_US": "New User Story",
+            "EDIT_TASK": "Edit Task",
+            "EDIT_ISSUE": "Edit Issue",
+            "EDIT_US": "Edit User Story",
+            "ADD_EXISTING_ISSUE": "Add Issue to {{ targetName }}",
             "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?",
-            "EXISTING_OBJECT": "Existing {{ objName }}",
-            "NEW_OBJECT": "New {{ objName }}",
-            "CHOOSE_EXISTING": "Which {{ objName }}?"
+            "EXISTING_ISSUE": "Existing Issue",
+            "CHOOSE_EXISTING_ISSUE": "Which Issue?",
+            "ADD_ISSUE": "Lisää pyyntö",
+            "FILTER_ISSUES": "Filter Issues"
         },
         "DELETE_DUE_DATE": {
             "TITLE": "Delete due date",
@@ -1105,7 +1116,7 @@
         },
         "REMOVE_RELATIONSHIP_WITH_EPIC": {
             "TITLE": "Remove relationship with Epic",
-            "MESSAGE": "Are you sure you want to delete the relationship of this User Story with the Epic <strong>{{epicSubject}}</strong>?"
+            "MESSAGE": "Are you sure you want to remove the relationship of this User Story with the Epic <strong>{{epicSubject}}</strong>?"
         },
         "CREATE_MEMBER": {
             "PLACEHOLDER_INVITATION_TEXT": "(Vapaaehtoinen) Lisää oma kuvaus kutsuusi uusille jäsenille ;-)",
@@ -1447,7 +1458,7 @@
         "FILTER_ISSUES": "Filter Issues",
         "CONFIRM_DETACH_FROM_SPRINT": {
             "TITLE": "Detach issue from Sprint",
-            "MESSAGE": "You are about to detach the issue from the sprint"
+            "MESSAGE": "You are about to detach the issue from the sprint <strong>{{ sprintName }}<strong>"
         },
         "CONFIRM_CHANGE_FROM_SPRINT": {
             "TITLE": "Attach issue to Sprint",
@@ -1465,7 +1476,7 @@
                 "SUBJECT": "Aihe",
                 "VOTES": "Ääniä",
                 "STATUS": "Tila",
-                "CREATED": "Luotu",
+                "MODIFIED": "Muokattu",
                 "ASSIGNED_TO": "Tekijä"
             },
             "TITLE_ACTION_CHANGE_STATUS": "Muuta tilaa",
@@ -1549,6 +1560,12 @@
             "OPTION_ALL": "Kaikki",
             "OPTION_INVOLVED": "Osallisena",
             "OPTION_NONE": "Ei yhtään"
+        },
+        "PROJECT_SETTINGS": {
+            "CUSTOM_HOMEPAGE": "Custom Homepage",
+            "COLUMN_PROJECT": "Projekti",
+            "COLUMN_HOMEPAGE": "Etusivu",
+            "DEFAULT_VALUE": "Default"
         }
     },
     "USER_PROFILE": {

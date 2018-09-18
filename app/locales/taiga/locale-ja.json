@@ -537,7 +537,9 @@
             "DESCRIPTION": "CSVのダウンロードボタンまたは生成されたURLへアクセスしてファイルを入手し、お好みのテキストエディタや表計算ソフトで開いてください。データの可視化や分析を簡単に行うことが可能です。",
             "HELP": "このファイルをどうやって表計算ソフトで活用すればいいですか？",
             "REGENERATE_TITLE": "URLが変更されます",
-            "REGENERATE_SUBTITLE": "CSV出力用のURLを変更しようとしています。前回のURLは無効化されます。よろしいですか？"
+            "REGENERATE_SUBTITLE": "You are going to change the CSV data access url. The previous url will be disabled. Are you sure?",
+            "DELETE_TITLE": "Delete URL",
+            "DELETE_SUBTITLE": "You are going to delete the current CSV data access url. Are you sure?"
         },
         "CSV": {
             "SECTION_TITLE_EPIC": "エピックレポート",
@@ -548,7 +550,9 @@
             "URL_FIELD_PLACEHOLDER": "CSV出力用のURLを作成してください",
             "TITLE_REGENERATE_URL": "CSV出力用のURLを作成",
             "ACTION_GENERATE_URL": "URL を生成",
-            "ACTION_REGENERATE": "再作成"
+            "ACTION_REGENERATE": "再作成",
+            "TITLE_DELETE_URL": "Delete CSV url",
+            "ACTION_DELETE_URL": "削除する"
         },
         "CUSTOM_FIELDS": {
             "TITLE": "カスタムフィールド",
@@ -1087,14 +1091,21 @@
             "LAST_SPRINT_NAME": "最後のスプリントは<strong> {{lastSprint}}</strong>でした ;-) "
         },
         "CREATE_EDIT": {
-            "PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this {{ objName }}",
-            "NEW": "New {{ objName }}",
-            "EDIT": "Edit {{ objName }}",
-            "ADD_EXISTING": "Add {{ objName }} to {{ targetName }}",
+            "TASK_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this Task",
+            "ISSUE_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this Issue",
+            "US_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this User Story",
+            "NEW_TASK": "New Task",
+            "NEW_ISSUE": "New Issue",
+            "NEW_US": "New User Story",
+            "EDIT_TASK": "Edit Task",
+            "EDIT_ISSUE": "Edit Issue",
+            "EDIT_US": "Edit User Story",
+            "ADD_EXISTING_ISSUE": "Add Issue to {{ targetName }}",
             "CONFIRM_CLOSE": "変更をまだ保存していません。\n本当にフォームを閉じてもよろしいですか？",
-            "EXISTING_OBJECT": "Existing {{ objName }}",
-            "NEW_OBJECT": "New {{ objName }}",
-            "CHOOSE_EXISTING": "Which {{ objName }}?"
+            "EXISTING_ISSUE": "Existing Issue",
+            "CHOOSE_EXISTING_ISSUE": "Which Issue?",
+            "ADD_ISSUE": "課題を追加",
+            "FILTER_ISSUES": "Filter Issues"
         },
         "DELETE_DUE_DATE": {
             "TITLE": "締切日を削除",
@@ -1105,7 +1116,7 @@
         },
         "REMOVE_RELATIONSHIP_WITH_EPIC": {
             "TITLE": "Remove relationship with Epic",
-            "MESSAGE": "Are you sure you want to delete the relationship of this User Story with the Epic <strong>{{epicSubject}}</strong>?"
+            "MESSAGE": "Are you sure you want to remove the relationship of this User Story with the Epic <strong>{{epicSubject}}</strong>?"
         },
         "CREATE_MEMBER": {
             "PLACEHOLDER_INVITATION_TEXT": "(任意) 招待する際のメッセージを追加できます。新メンバーに素敵な言葉を贈りましょう ;-)",
@@ -1447,7 +1458,7 @@
         "FILTER_ISSUES": "Filter Issues",
         "CONFIRM_DETACH_FROM_SPRINT": {
             "TITLE": "Detach issue from Sprint",
-            "MESSAGE": "You are about to detach the issue from the sprint"
+            "MESSAGE": "You are about to detach the issue from the sprint <strong>{{ sprintName }}<strong>"
         },
         "CONFIRM_CHANGE_FROM_SPRINT": {
             "TITLE": "Attach issue to Sprint",
@@ -1465,7 +1476,7 @@
                 "SUBJECT": "題名",
                 "VOTES": "投票",
                 "STATUS": "ステータス",
-                "CREATED": "作成",
+                "MODIFIED": "変更済み",
                 "ASSIGNED_TO": "割当"
             },
             "TITLE_ACTION_CHANGE_STATUS": "ステータスを変更",
@@ -1549,6 +1560,12 @@
             "OPTION_ALL": "すべて",
             "OPTION_INVOLVED": "Involved",
             "OPTION_NONE": "なし"
+        },
+        "PROJECT_SETTINGS": {
+            "CUSTOM_HOMEPAGE": "Custom Homepage",
+            "COLUMN_PROJECT": "プロジェクト",
+            "COLUMN_HOMEPAGE": "ホームページ",
+            "DEFAULT_VALUE": "Default"
         }
     },
     "USER_PROFILE": {

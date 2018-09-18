@@ -14,7 +14,7 @@
         "CREATE": "Skapa",
         "ADD": "Lägg till",
         "COPY_TO_CLIPBOARD": "Copy to clipboard",
-        "COPIED_TO_CLIPBOARD": "Text has been copied to clipboard",
+        "COPIED_TO_CLIPBOARD": "Texten är kopierad",
         "EDIT": "Redigera",
         "DRAG": "Dra",
         "TAG_LINE": "Ditt agila, gratis och öppen-källkod projekthanteringsverktyg",
@@ -537,7 +537,9 @@
             "DESCRIPTION": "Hämta en CSV-fil eller kopiera den genererade länken och öppna i din favorit ordbehandlare eller kalkylark för att skapa dina egna projektdatarapporter. Du kan lätt visualisera och analysera alla dina data. ",
             "HELP": "Hur använda i mitt eget kalkylark?",
             "REGENERATE_TITLE": "Ändra länken",
-            "REGENERATE_SUBTITLE": "Du kan ändra CSV för datalänken. Den tidigare länken tas bort. Är du säker på det? "
+            "REGENERATE_SUBTITLE": "You are going to change the CSV data access url. The previous url will be disabled. Are you sure?",
+            "DELETE_TITLE": "Delete URL",
+            "DELETE_SUBTITLE": "You are going to delete the current CSV data access url. Are you sure?"
         },
         "CSV": {
             "SECTION_TITLE_EPIC": "eposrapporter",
@@ -548,7 +550,9 @@
             "URL_FIELD_PLACEHOLDER": "Vänligen skapa en ny CSV-länk",
             "TITLE_REGENERATE_URL": "Skapa CSV länk",
             "ACTION_GENERATE_URL": "Skapa länk",
-            "ACTION_REGENERATE": "Regenerera"
+            "ACTION_REGENERATE": "Regenerera",
+            "TITLE_DELETE_URL": "Delete CSV url",
+            "ACTION_DELETE_URL": "Ta bort"
         },
         "CUSTOM_FIELDS": {
             "TITLE": "Anpassade fält",
@@ -1087,14 +1091,21 @@
             "LAST_SPRINT_NAME": "senaste sprint är <strong> {{lastSprint}} ;-) </strong>"
         },
         "CREATE_EDIT": {
-            "PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this {{ objName }}",
-            "NEW": "New {{ objName }}",
-            "EDIT": "Edit {{ objName }}",
-            "ADD_EXISTING": "Add {{ objName }} to {{ targetName }}",
+            "TASK_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this Task",
+            "ISSUE_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this Issue",
+            "US_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this User Story",
+            "NEW_TASK": "New Task",
+            "NEW_ISSUE": "New Issue",
+            "NEW_US": "New User Story",
+            "EDIT_TASK": "Edit Task",
+            "EDIT_ISSUE": "Edit Issue",
+            "EDIT_US": "Edit User Story",
+            "ADD_EXISTING_ISSUE": "Add Issue to {{ targetName }}",
             "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?",
-            "EXISTING_OBJECT": "Existing {{ objName }}",
-            "NEW_OBJECT": "New {{ objName }}",
-            "CHOOSE_EXISTING": "Which {{ objName }}?"
+            "EXISTING_ISSUE": "Existing Issue",
+            "CHOOSE_EXISTING_ISSUE": "Which Issue?",
+            "ADD_ISSUE": "Lägg till ärende",
+            "FILTER_ISSUES": "Filter Issues"
         },
         "DELETE_DUE_DATE": {
             "TITLE": "Delete due date",
@@ -1105,7 +1116,7 @@
         },
         "REMOVE_RELATIONSHIP_WITH_EPIC": {
             "TITLE": "Remove relationship with Epic",
-            "MESSAGE": "Are you sure you want to delete the relationship of this User Story with the Epic <strong>{{epicSubject}}</strong>?"
+            "MESSAGE": "Are you sure you want to remove the relationship of this User Story with the Epic <strong>{{epicSubject}}</strong>?"
         },
         "CREATE_MEMBER": {
             "PLACEHOLDER_INVITATION_TEXT": "(Valfritt) Lägg till en personlig hälsning till invitationen. Berätta något trevligt till din nya projektmedlem ;-)",
@@ -1447,7 +1458,7 @@
         "FILTER_ISSUES": "Filter Issues",
         "CONFIRM_DETACH_FROM_SPRINT": {
             "TITLE": "Detach issue from Sprint",
-            "MESSAGE": "You are about to detach the issue from the sprint"
+            "MESSAGE": "You are about to detach the issue from the sprint <strong>{{ sprintName }}<strong>"
         },
         "CONFIRM_CHANGE_FROM_SPRINT": {
             "TITLE": "Attach issue to Sprint",
@@ -1465,7 +1476,7 @@
                 "SUBJECT": "Titel",
                 "VOTES": "Röster",
                 "STATUS": "Status",
-                "CREATED": "Skapad",
+                "MODIFIED": "Modifierad",
                 "ASSIGNED_TO": "Tilldelad till"
             },
             "TITLE_ACTION_CHANGE_STATUS": "Ändra status",
@@ -1549,6 +1560,12 @@
             "OPTION_ALL": "Alla",
             "OPTION_INVOLVED": "Involverad",
             "OPTION_NONE": "Ingen"
+        },
+        "PROJECT_SETTINGS": {
+            "CUSTOM_HOMEPAGE": "Custom Homepage",
+            "COLUMN_PROJECT": "Projekt",
+            "COLUMN_HOMEPAGE": "Webbplats",
+            "DEFAULT_VALUE": "Default"
         }
     },
     "USER_PROFILE": {

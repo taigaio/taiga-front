@@ -537,7 +537,9 @@
             "DESCRIPTION": "Pobierz plik CSV lub skopiuj wygenerowany adres URL i otwórz go w edytorze tekstu lub arkuszu kalkulacyjnym, aby tworzyć własne raporty danych projektu. Będziesz mógł łatwo wizualizować i analizować wszystkie dane.",
             "HELP": "Jak mogę tego użyć we własnym arkuszu kalkulacyjnym?",
             "REGENERATE_TITLE": "Zmień link",
-            "REGENERATE_SUBTITLE": "Zamierzasz zmienić link dostępu do danych CSV. Poprzedni link będzie niedostępny. Czy jesteś pewien?"
+            "REGENERATE_SUBTITLE": "You are going to change the CSV data access url. The previous url will be disabled. Are you sure?",
+            "DELETE_TITLE": "Delete URL",
+            "DELETE_SUBTITLE": "You are going to delete the current CSV data access url. Are you sure?"
         },
         "CSV": {
             "SECTION_TITLE_EPIC": "epics reports",
@@ -548,7 +550,9 @@
             "URL_FIELD_PLACEHOLDER": "Proszę wygeneruj ponownie link do CSV",
             "TITLE_REGENERATE_URL": "Wygeneruj ponownie link do CSV",
             "ACTION_GENERATE_URL": "Wygeneruj link",
-            "ACTION_REGENERATE": "Wygeneruj ponownie"
+            "ACTION_REGENERATE": "Wygeneruj ponownie",
+            "TITLE_DELETE_URL": "Delete CSV url",
+            "ACTION_DELETE_URL": "Usuń"
         },
         "CUSTOM_FIELDS": {
             "TITLE": "Własne Pola",
@@ -1087,14 +1091,21 @@
             "LAST_SPRINT_NAME": "ostatni sprint to: <strong> {{lastSprint}} ;-) </strong>"
         },
         "CREATE_EDIT": {
-            "PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this {{ objName }}",
-            "NEW": "New {{ objName }}",
-            "EDIT": "Edit {{ objName }}",
-            "ADD_EXISTING": "Add {{ objName }} to {{ targetName }}",
+            "TASK_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this Task",
+            "ISSUE_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this Issue",
+            "US_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this User Story",
+            "NEW_TASK": "New Task",
+            "NEW_ISSUE": "New Issue",
+            "NEW_US": "New User Story",
+            "EDIT_TASK": "Edit Task",
+            "EDIT_ISSUE": "Edit Issue",
+            "EDIT_US": "Edit User Story",
+            "ADD_EXISTING_ISSUE": "Add Issue to {{ targetName }}",
             "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?",
-            "EXISTING_OBJECT": "Existing {{ objName }}",
-            "NEW_OBJECT": "New {{ objName }}",
-            "CHOOSE_EXISTING": "Which {{ objName }}?"
+            "EXISTING_ISSUE": "Existing Issue",
+            "CHOOSE_EXISTING_ISSUE": "Which Issue?",
+            "ADD_ISSUE": "Dodaj zgłoszenie",
+            "FILTER_ISSUES": "Filter Issues"
         },
         "DELETE_DUE_DATE": {
             "TITLE": "Delete due date",
@@ -1105,7 +1116,7 @@
         },
         "REMOVE_RELATIONSHIP_WITH_EPIC": {
             "TITLE": "Remove relationship with Epic",
-            "MESSAGE": "Are you sure you want to delete the relationship of this User Story with the Epic <strong>{{epicSubject}}</strong>?"
+            "MESSAGE": "Are you sure you want to remove the relationship of this User Story with the Epic <strong>{{epicSubject}}</strong>?"
         },
         "CREATE_MEMBER": {
             "PLACEHOLDER_INVITATION_TEXT": "(Opcjonalne) Dodaj spersonalizowany tekst do zaproszenia. Napisz coś słodziachnego do nowego członka zespołu :)",
@@ -1447,7 +1458,7 @@
         "FILTER_ISSUES": "Filter Issues",
         "CONFIRM_DETACH_FROM_SPRINT": {
             "TITLE": "Detach issue from Sprint",
-            "MESSAGE": "You are about to detach the issue from the sprint"
+            "MESSAGE": "You are about to detach the issue from the sprint <strong>{{ sprintName }}<strong>"
         },
         "CONFIRM_CHANGE_FROM_SPRINT": {
             "TITLE": "Attach issue to Sprint",
@@ -1465,7 +1476,7 @@
                 "SUBJECT": "Temat",
                 "VOTES": "Głosy",
                 "STATUS": "Status",
-                "CREATED": "Utworzone",
+                "MODIFIED": "Modified",
                 "ASSIGNED_TO": "Przypisane do"
             },
             "TITLE_ACTION_CHANGE_STATUS": "Zmień status",
@@ -1549,6 +1560,12 @@
             "OPTION_ALL": "Wszystkie",
             "OPTION_INVOLVED": "Z moim udziałem",
             "OPTION_NONE": "Żadne"
+        },
+        "PROJECT_SETTINGS": {
+            "CUSTOM_HOMEPAGE": "Custom Homepage",
+            "COLUMN_PROJECT": "Projekt",
+            "COLUMN_HOMEPAGE": "Strona startowa",
+            "DEFAULT_VALUE": "Default"
         }
     },
     "USER_PROFILE": {
