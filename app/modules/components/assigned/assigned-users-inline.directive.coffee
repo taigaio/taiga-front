@@ -73,6 +73,7 @@ $translate, $compile, $currentUserService, avatarService, $userListService) ->
         $el.on "click", ".users-dropdown", (event) ->
             event.preventDefault()
             event.stopPropagation()
+            $scope.usersSearch = ""
             renderUsersList()
             $scope.$apply()
             $el.find(".pop-users").popover().open()
@@ -84,17 +85,10 @@ $translate, $compile, $currentUserService, avatarService, $userListService) ->
             $scope.usersSearch = null
 
         $scope.unassign = (user) ->
-            assignedUserId = user.id
-
-            title = $translate.instant("COMMON.ASSIGNED_USERS.TITLE_LIGHTBOX_DELETE_ASSIGNED")
-            message = $scope.usersById[assignedUserId].full_name_display
-
-            $confirm.askOnDelete(title, message).then (askResponse) ->
-                users =  $model.$modelValue.assigned_users
-                users.splice(users.indexOf(assignedUserId), 1)
-                renderUsers()
-                applyToModel()
-                askResponse.finish()
+            userIndex = currentAssignedIds.indexOf(user.id)
+            currentAssignedIds.splice(userIndex, 1)
+            renderUsers()
+            applyToModel()
 
         $el.on "click", ".users-search", (event) ->
             event.stopPropagation()
