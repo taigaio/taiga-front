@@ -209,6 +209,9 @@
 .card-completion {
     margin: 0 1rem .5rem;
     position: relative;
+    &:hover .card-tooltip {
+        display: block;
+    }
     .card-completion-bar {
         background: $whitish;
         height: .4rem;
@@ -221,24 +224,18 @@
         left: 0;
         position: absolute;
         top: 0;
-        &:hover {
-            + .card-tooltip {
-                opacity: 1;
-            }
-        }
     }
     .card-tooltip {
         background: $blackish;
         border-radius: 5px;
         color: $white;
+        display: none;
         font-size: 14px;
         left: calc(25% - 50px);
-        opacity: 0;
         padding: .25rem 1rem;
         position: absolute;
         text-align: center;
         top: -2.25rem;
-        transition: opacity .2s;
         width: 100px;
         &::after {
             background: $black;
