@@ -18,14 +18,15 @@
 ###
 
 AssignedToInlineDirective = ($rootscope, $confirm, $repo, $loading, $modelTransform, $template
-$translate, $compile, $currentUserService, avatarService) ->
-    link = ($scope, $el, $attrs, $ctrl) ->
+$translate, $compile, $currentUserService, avatarService, $userListService) ->
+    link = ($scope, $el, $attr, $model) ->
         isEditable = ->
-            return $scope.project?.my_permissions?.indexOf($attrs.requiredPerm) != -1
+            return $scope.project?.my_permissions?.indexOf($attr.requiredPerm) != -1
 
         renderUserList = (text) ->
-            activeUsers = _.reject($scope.activeUsers, {"id": $scope.selected.id}) if $scope.selected?
-            users = $ctrl.getUserList(activeUsersactiveUsers, $scope.user.id, text)
+            selectedId = $model.$modelValue.assigned_to
+            users = $userListService.searchUsers(text)
+            users = _.reject(users, {"id": selectedId}) if selectedId
 
             visibleUsers = _.slice(users, 0, 5)
             visibleUsers = _.map visibleUsers, (user) -> user.avatar = avatarService.getAvatar(user)
@@ -58,16 +59,17 @@ $translate, $compile, $currentUserService, avatarService) ->
         $el.on "click", ".users-dropdown", (event) ->
             event.preventDefault()
             event.stopPropagation()
+            $scope.usersSearch = ""
             renderUserList()
             $scope.$apply()
             $el.find(".pop-users").popover().open()
 
         $scope.selfAssign = () ->
-            $attr.ngModel.assigned_to = $currentUserService.getUser().get('id')
-            renderUser($attr.ngModel)
+            $model.$modelValue.assigned_to = $currentUserService.getUser().get('id')
+            renderUser($model.$modelValue)
 
         $scope.unassign = () ->
-            $attr.ngModel.assigned_to  = null
+            $model.$modelValue.assigned_to  = null
             renderUser()
 
         $scope.$watch "usersSearch", (searchingText) ->
@@ -78,11 +80,11 @@ $translate, $compile, $currentUserService, avatarService) ->
         $el.on "click", ".user-list-single", (event) ->
             event.preventDefault()
             target = angular.element(event.currentTarget)
-            $attr.ngModel.assigned_to = target.data("user-id")
-            renderUser($attr.ngModel)
+            $model.$modelValue.assigned_to = target.data("user-id")
+            renderUser($model.$modelValue)
             $scope.$apply()
 
-        $scope.$watch $attrs.ngModel, (instance) ->
+        $scope.$watch $attr.ngModel, (instance) ->
             renderUser(instance)
 
         $scope.$on "isiocaine:changed", (ctx, instance) ->
@@ -94,8 +96,9 @@ $translate, $compile, $currentUserService, avatarService) ->
     return {
         link:link,
         templateUrl: "common/components/assigned-to-inline.html"
+        require:"ngModel"
     }
 
 angular.module('taigaComponents').directive("tgAssignedToInline", ["$rootScope", "$tgConfirm",
 "$tgRepo", "$tgLoading", "$tgQueueModelTransformation", "$tgTemplate", "$translate", "$compile",
-"tgCurrentUserService", "tgAvatarService", AssignedToInlineDirective])
+"tgCurrentUserService", "tgAvatarService", "tgUserListService", AssignedToInlineDirective])

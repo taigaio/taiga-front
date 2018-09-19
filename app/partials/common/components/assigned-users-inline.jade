@@ -95,6 +95,7 @@ div.pop-users.popover(ng-class="{'multiple': assignedUsers.length > 0}")
         data-user-id="{{ user.id }}"
         title="{{ user.full_name_display }}"
         ng-repeat="user in users"
+        ng-click="assign(user)"
     )
         img.user-list-avatar(
             style="background: {{user.avatar.bg }}"
