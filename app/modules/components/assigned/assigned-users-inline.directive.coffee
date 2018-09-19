@@ -73,20 +73,24 @@ $translate, $compile, $currentUserService, avatarService, $userListService) ->
         $el.on "click", ".users-dropdown", (event) ->
             event.preventDefault()
             event.stopPropagation()
-            $scope.usersSearch = ""
+            $scope.usersSearch = null
             renderUsersList()
             $scope.$apply()
             $el.find(".pop-users").popover().open()
+
+        $scope.assign = (user) ->
+            currentAssignedIds.push(user.id)
+            renderUsers()
+            applyToModel()
 
         $scope.selfAssign = () ->
             currentAssignedIds.push($currentUserService.getUser().get('id'))
             renderUsers()
             applyToModel()
-            $scope.usersSearch = null
 
         $scope.unassign = (user) ->
-            userIndex = currentAssignedIds.indexOf(user.id)
-            currentAssignedIds.splice(userIndex, 1)
+            index = currentAssignedIds.indexOf(user.id)
+            currentAssignedIds.splice(index, 1)
             renderUsers()
             applyToModel()
 
@@ -97,21 +101,6 @@ $translate, $compile, $currentUserService, avatarService, $userListService) ->
             if searchingText?
                 renderUsersList(searchingText)
                 $el.find('input').focus()
-
-        $el.on "click", ".user-list-single", (event) ->
-            event.preventDefault()
-            event.stopPropagation()
-            target = angular.element(event.currentTarget)
-            index = currentAssignedIds.indexOf(target.data("user-id"))
-            if index == -1
-                currentAssignedIds.push(target.data("user-id"))
-            else
-                currentAssignedIds.splice(index, 1)
-            applyToModel()
-            renderUsers()
-            $el.find(".pop-users").popover().close()
-            $scope.usersSearch = null
-            $scope.$apply()
 
         $scope.$watch $attrs.ngModel, (item) ->
             return if not item?
