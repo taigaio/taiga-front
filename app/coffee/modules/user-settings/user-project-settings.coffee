@@ -44,6 +44,7 @@ class UserProjectSettingsController extends mixOf(taiga.Controller, taiga.PageMi
 
     constructor: (@scope, @tgSections, @rs, @repo, @confirm) ->
         @scope.sections = @tgSections.list()
+
         promise = @.loadInitialData()
         promise.then null, @.onInitialDataError.bind(@)
 
@@ -59,5 +60,10 @@ class UserProjectSettingsController extends mixOf(taiga.Controller, taiga.PageMi
             @confirm.notify("error")
 
         @repo.save(projectSettings).then(onSuccess, onError)
+
+    filteredSections: (projectSettings) ->
+        return _.filter @scope.sections, (section) ->
+            section.id in projectSettings.allowed_sections
+
 
 module.controller("UserProjectSettingsController", UserProjectSettingsController)

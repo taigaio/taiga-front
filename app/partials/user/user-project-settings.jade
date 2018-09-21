@@ -28,6 +28,6 @@ div.wrapper(
                         select(
                             id="projects-settings-{{projectSettings.id}}-homepage-dropdown"
                             ng-model="projectSettings.homepage"
-                            ng-options="section.id as section.title for section in sections"
+                            ng-options="section.id as section.title for section in ctrl.filteredSections(projectSettings)"
                             ng-change="ctrl.updateCustomHomePage(projectSettings)"
                         )
