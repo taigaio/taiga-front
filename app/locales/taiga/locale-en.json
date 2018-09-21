@@ -848,6 +848,7 @@
         "SECTION": {
             "SEARCH": "Search",
             "TIMELINE": "Timeline",
+            "EPICS": "Epics",
             "BACKLOG": "Backlog",
             "KANBAN": "Kanban",
             "ISSUES": "Issues",
