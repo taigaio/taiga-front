@@ -43,23 +43,21 @@ class UserProjectSettingsController extends mixOf(taiga.Controller, taiga.PageMi
     ]
 
     constructor: (@scope, @tgSections, @rs, @repo, @confirm) ->
+        @scope.sections = @tgSections.list()
         promise = @.loadInitialData()
         promise.then null, @.onInitialDataError.bind(@)
-        @scope.sections = @tgSections.list()
 
     loadInitialData: ->
         return @rs.userProjectSettings.list().then (userProjectSettings) =>
             @scope.userProjectSettings = userProjectSettings
-            return userProjectSettings
 
-    updateCustomHomePage: (project, customHomePage) ->
+    updateCustomHomePage: (projectSettings) ->
         onSuccess = =>
             @confirm.notify("success")
 
         onError = =>
             @confirm.notify("error")
 
-        # @repo.save(project).then(onSuccess, onError)
-
+        @repo.save(projectSettings).then(onSuccess, onError)
 
 module.controller("UserProjectSettingsController", UserProjectSettingsController)

@@ -27,11 +27,7 @@ div.wrapper(
                     .project-settings-table-homepage
                         select(
                             id="projects-settings-{{projectSettings.id}}-homepage-dropdown"
+                            ng-model="projectSettings.homepage"
+                            ng-options="section.id as section.title for section in sections"
+                            ng-change="ctrl.updateCustomHomePage(projectSettings)"
                         )
-                            option(
-                                ng-value="null"
-                            ) {{ 'USER_SETTINGS.PROJECT_SETTINGS.DEFAULT_VALUE' | translate }}
-                            option(
-                                ng-repeat="section in sections"
-                                value="{{ section.id }}"
-                            ) {{ 'PROJECT.SECTION.' + section.title | translate }}

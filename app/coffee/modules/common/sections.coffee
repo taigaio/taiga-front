@@ -37,6 +37,11 @@ SECTIONS = {
 }
 
 class SectionsService extends taiga.Service
+    @.$inject = ["$translate"]
+
+    constructor: (@translate) ->
+        super()
+        _.map(SECTIONS, (x) => x.title = @translate.instant("PROJECT.SECTION.#{x.title}"))
     list: () ->
         return SECTIONS
 
