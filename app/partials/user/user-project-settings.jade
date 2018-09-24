@@ -11,7 +11,7 @@ div.wrapper(
     section.main.admin-common
         header
             h1
-                span.green {{ 'USER_SETTINGS.PROJECT_SETTINGS.CUSTOM_HOMEPAGE' | translate }}
+                span.green {{ 'USER_SETTINGS.PROJECT_SETTINGS.SET_START_PAGES' | translate }}
 
         section.project-settings-table
             div.custom-table-header
@@ -19,7 +19,7 @@ div.wrapper(
                     div.project-settings-table-project
                         span(translate="USER_SETTINGS.PROJECT_SETTINGS.COLUMN_PROJECT")
                     div.project-settings-table-homepage
-                        span(translate="USER_SETTINGS.PROJECT_SETTINGS.COLUMN_HOMEPAGE")
+                        span(translate="USER_SETTINGS.PROJECT_SETTINGS.COLUMN_STARTPAGE")
             div.project-settings-table-body
                 .project-settings-table-row(ng-repeat="projectSettings in userProjectSettings")
                     .project-settings-table-project

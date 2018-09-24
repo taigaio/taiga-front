@@ -26,14 +26,11 @@ module = angular.module("taigaCommon")
 
 SECTIONS = {
     1: {id: 1, title: 'TIMELINE', path:'timeline'}
-    2: {id: 2, title: 'SEARCH', path:'search'}
-    3: {id: 3, title: 'EPICS', path:'epics'}
-    4: {id: 4, title: 'BACKLOG', path:'backlog'}
-    5: {id: 5, title: 'KANBAN', path:'kanban'}
-    6: {id: 6, title: 'ISSUES', path:'issues'}
-    7: {id: 7, title: 'WIKI', path:'wiki'}
-    8: {id: 8, title: 'TEAM', path:'team'}
-    10: {id: 9, title: 'ADMIN', path:'admin'}
+    2: {id: 2, title: 'EPICS', path:'epics'}
+    3: {id: 3, title: 'BACKLOG', path:'backlog'}
+    4: {id: 4, title: 'KANBAN', path:'kanban'}
+    5: {id: 5, title: 'ISSUES', path:'issues'}
+    6: {id: 6, title: 'WIKI', path:'wiki'}
 }
 
 class SectionsService extends taiga.Service

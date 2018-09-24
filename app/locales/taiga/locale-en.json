@@ -1564,9 +1564,9 @@
             "OPTION_NONE": "None"
         },
         "PROJECT_SETTINGS": {
-            "CUSTOM_HOMEPAGE": "Custom Homepage",
+            "SET_START_PAGES": "Set start pages",
             "COLUMN_PROJECT": "Project",
-            "COLUMN_HOMEPAGE": "Homepage",
+            "COLUMN_STARTPAGE": "Start page",
             "DEFAULT_VALUE": "Default"
         }
     },
