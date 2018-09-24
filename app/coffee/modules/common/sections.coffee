@@ -33,8 +33,7 @@ SECTIONS = {
     6: {id: 6, title: 'ISSUES', path:'issues'}
     7: {id: 7, title: 'WIKI', path:'wiki'}
     8: {id: 8, title: 'TEAM', path:'team'}
-    9: {id: 9, title: 'MEETUP', path:'meetup'}
-    10: {id: 10, title: 'ADMIN', path:'admin'}
+    10: {id: 9, title: 'ADMIN', path:'admin'}
 }
 
 class SectionsService extends taiga.Service
