@@ -32,9 +32,9 @@ class ProjectRouterController
                 if section
                     @location.url("project/#{@routeParams.pslug}/#{section}")
                 else
-                    gotoDefaultProjectHomepage()
+                    @gotoDefaultProjectHomepage()
             .then null, ->
-                gotoDefaultProjectHomepage()
+                @gotoDefaultProjectHomepage()
 
     gotoDefaultProjectHomepage: () ->
         @location.url("project/#{@routeParams.pslug}/timeline")

@@ -11,10 +11,12 @@ div.wrapper(
     section.main.admin-common
         header
             h1
-                span.green {{ 'USER_SETTINGS.PROJECT_SETTINGS.SET_START_PAGES' | translate }}
+                span.green {{ 'USER_SETTINGS.PROJECT_SETTINGS.START_PAGES' | translate }}
+
+        p.total(translate="USER_SETTINGS.PROJECT_SETTINGS.START_PAGES_PER_PROJECT")
 
         section.project-settings-table
-            div.custom-table-header
+            div.project-settings-table-header
                 div.project-settings-table-row
                     div.project-settings-table-project
                         span(translate="USER_SETTINGS.PROJECT_SETTINGS.COLUMN_PROJECT")

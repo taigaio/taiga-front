@@ -1565,6 +1565,7 @@
         },
         "PROJECT_SETTINGS": {
             "SET_START_PAGES": "Set start pages",
+            "START_PAGES_PER_PROJECT": "Set start pages per project",
             "COLUMN_PROJECT": "Project",
             "COLUMN_STARTPAGE": "Start page",
             "DEFAULT_VALUE": "Default"
