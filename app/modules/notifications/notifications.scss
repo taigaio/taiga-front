@@ -1,0 +1,128 @@
+.notifications-page {
+    margin-top: 1.5em;
+    min-width: initial;
+    padding-bottom: 5em;
+    .header {
+        align-items: center;
+        background: $mass-white;
+        display: flex;
+        margin: 0;
+        padding: .5em 1em;
+    }
+    .title {
+        color: $black;
+        flex-grow: 1;
+        font-size: 1.8em;
+        line-height: 1.8em;
+        margin: 0;
+        text-transform: uppercase;
+    }
+
+    .action {
+        color: $primary;
+        font-size: 1em;
+        line-height: .75em;
+        margin-right: 1em;
+        &.disabled {
+            color: $gray-lighter;
+        }
+        &:not(.disabled):hover {
+            color: $primary-light;
+        }
+    }
+    .notifications-list .entry {
+        align-items: center;
+        font-size: .95rem;
+        margin: .5rem 0;
+        padding: 1rem .6rem;
+        &.new {
+            background-color: $primary-lighter;
+        }
+        .entry-content {
+            font-size: 1.05rem;
+        }
+        .entry-project {
+            max-width: initial;
+            text-overflow: initial;
+            white-space: initial;
+        }
+        .entry-avatar {
+            flex-basis: 3rem;
+            margin-right: 1rem;
+            width: 3rem;
+        }
+        .entry-date {
+            font-size: .85rem;
+            margin-right: .5rem;
+        }
+    }
+}
+
+.notifications-list {
+    .entry {
+        border-bottom: 1px solid $whitish;
+        color: $blackish;
+        display: flex;
+        font-size: .9rem;
+        margin: 0 .8rem;
+        padding: .8rem 0;
+        position: relative;
+        p {
+            line-height: 1.25em;
+            margin-bottom: 0;
+        }
+        a {
+            @include font-type(bold);
+            &.user-link,
+            &.project-link {
+                color: $blackish;
+            }
+            &.object-link {
+                color: $primary;
+            }
+            &:hover {
+                color: $primary-light;
+            }
+        }
+        .entry-avatar {
+            border-radius: .1rem;
+            flex-basis: 2.5rem;
+            flex-shrink: 0;
+            margin-right: .7rem;
+            vertical-align: center;
+            width: 2.5rem;
+            img {
+                width: 100%;
+            }
+        }
+        .entry-content {
+            flex-grow: 1;
+            line-height: 1.1em;
+            margin-right: .7rem;
+        }
+        .entry-project {
+            @include font-type(bold);
+            color: $gray-lighter;
+            display: inline-block;
+            font-size: .9rem;
+            margin-top: .5em;
+            max-width: 200px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .entry-date {
+            font-size: .7rem;
+            white-space: nowrap;
+        }
+    }
+    .spin {
+        margin: 5% auto;
+        width: 3rem;
+        img {
+            @include loading-spinner;
+            max-height: 3rem;
+            max-width: 3rem;
+        }
+    }
+}

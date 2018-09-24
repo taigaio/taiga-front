@@ -11,10 +11,11 @@
         border-bottom: 2px solid $gray-light;
     }
 
-    .policy-table-project ,
+    .policy-table-project,
     .policy-table-all,
     .policy-table-involved,
-    .policy-table-none {
+    .policy-table-none,
+    .policy-table-enabled {
         padding: 1rem;
     }
 
@@ -25,7 +26,8 @@
 
     .policy-table-all,
     .policy-table-involved,
-    .policy-table-none {
+    .policy-table-none,
+    .policy-table-enabled {
         flex-basis: 0;
         flex-grow: 1;
     }

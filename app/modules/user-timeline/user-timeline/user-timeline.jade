@@ -1,5 +1,5 @@
 section.profile-timeline
-    div(ng-if="!vm.timelineList.size")
+    div(ng-if="vm.loading")
          div.spin
             img(
                 src="/#{v}/svg/spinner-circle.svg"

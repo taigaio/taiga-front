@@ -54,4 +54,9 @@ nav.navbar(ng-if="vm.isEnabledHeader")
             tg-svg(svg-icon="icon-discover")
 
         div.topnav-dropdown-wrapper(ng-show="vm.projects.size", tg-dropdown-project-list)
+
+        div.topnav-dropdown-wrapper(
+            tg-dropdown-notifications
+        )
+
         div.topnav-dropdown-wrapper(tg-dropdown-user)

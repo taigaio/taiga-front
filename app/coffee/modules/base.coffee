@@ -123,8 +123,10 @@ urls = {
     "user-settings-user-project-settings": "/user-settings/user-project-settings"
     "user-settings-mail-notifications": "/user-settings/mail-notifications"
     "user-settings-live-notifications": "/user-settings/live-notifications"
+    "user-settings-web-notifications": "/user-settings/web-notifications"
     "user-settings-contrib": "/user-settings/contrib/:plugin"
 
+    "notifications": "/notifications"
 }
 
 init = ($log, $navurls) ->

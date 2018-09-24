@@ -150,6 +150,41 @@ Resource = (urlsService, http, paginateResponseService) ->
             result = Immutable.fromJS(result)
             return paginateResponseService(result)
 
+    service.getNotifications = (userId, page, onlyUnread) ->
+        params = {
+            page: page
+        }
+        if onlyUnread
+            params['only_unread'] = true
+
+        url = urlsService.resolve("notifications")
+
+        return http.get(url, params, {
+            headers: {
+                'x-lazy-pagination': true
+            }
+        }).then (result) ->
+            result = Immutable.fromJS(result)
+            paginateResponse = Immutable.Map({
+                "data": result.get("data").get("objects"),
+                "next": !!result.get("headers")("x-pagination-next"),
+                "prev": !!result.get("headers")("x-pagination-prev"),
+                "current": result.get("headers")("x-pagination-current"),
+                "count": result.get("headers")("x-pagination-count"),
+                "total": result.get("data").get("total")
+            })
+            return paginateResponse
+
+    service.setNotificationAsRead = (notificationId) ->
+        url = "#{urlsService.resolve("notifications")}/#{notificationId}/set-as-read"
+        return http.patch(url).then (result) ->
+            return result
+
+    service.setNotificationsAsRead = () ->
+        url = "#{urlsService.resolve("notifications")}/set-as-read"
+        return http.post(url).then (result) ->
+            return result
+
     return () ->
         return {"users": service}
 

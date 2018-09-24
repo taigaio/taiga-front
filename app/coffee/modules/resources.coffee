@@ -46,6 +46,7 @@ urls = {
     # User - Notification
     "permissions": "/permissions"
     "notify-policies": "/notify-policies"
+    "notifications": "/web-notifications"
 
     # User Project Settings
     "user-project-settings": "/user-project-settings"

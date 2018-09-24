@@ -1,0 +1,24 @@
+doctype html
+
+div.wrapper(
+    tg-user-web-notifications
+    ng-controller="UserWebNotificationsController as ctrl",
+    ng-init="section='web-notifications'"
+)
+
+    sidebar.menu-secondary.sidebar.settings-nav(tg-user-settings-navigation="web-notifications")
+        include ../includes/modules/user-settings-menu
+
+    section.main.admin-common
+        header
+            h1
+                span.green
+                    | {{sectionName | translate}}
+                    tg-svg.green(svg-icon="icon-bell")
+
+        p.total
+            span(translate="USER_SETTINGS.EVENTS.SECTION_DESCRIPTION")
+            | &nbsp;
+            small(translate="USER_SETTINGS.EVENTS.SECTION_DESCRIPTION_EXPANDED")
+
+        include ../includes/modules/user-settings/web-notifications-table

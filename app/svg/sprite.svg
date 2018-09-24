@@ -1,5 +1,13 @@
 <svg height="0" style="position: absolute; width: 0; height: 0;" version="1.1" width="0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
     <defs>
+        <symbol id="icon-bell" viewBox="0 0 100 100">
+            <title>bell</title>
+            <g transform="translate(0,-191.16665)">
+                <path style="fill-opacity:1;stroke-width:7.27812004;" 
+                d="m 52.916943,191.16665 c -7.112236,0 -13.04271,5.15386 -14.29523,11.91257 -18.460239,8.56605 -31.7004628,32.57982 -31.7890308,54.8856 l -0.01114,13.1094 H 99.011791 l -0.0232,-13.1094 c -0.08417,-22.30704 -13.315506,-46.3206 -31.778082,-54.8856 -1.252625,-6.75871 -7.182994,-11.91257 -14.295293,-11.91257 z M 38.360599,279.8647 v 1.15368 c 0.03368,8.75953 6.489039,15.97886 14.556344,15.9816 8.067957,-10e-4 14.503375,-7.22165 14.54548,-15.9816 l 0.01116,-1.15368 z" id="path10199" inkscape:connector-curvature="0">
+                </path>
+            </g>
+        </symbol>
         <symbol id="icon-iocaine" viewBox="0 0 1024 1024">
             <title>iocaine</title>
             <path

@@ -44,7 +44,7 @@ class UserLiveNotificationsController extends mixOf(taiga.Controller, taiga.Page
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @navUrls, @auth, @errorHandlingService) ->
-        @scope.sectionName = "USER_SETTINGS.NOTIFICATIONS.LIVE_SECTION_NAME"
+        @scope.sectionName = "USER_SETTINGS.EVENTS.LIVE_SECTION_NAME"
         @scope.user = @auth.getUser()
         promise = @.loadInitialData()
         promise.then null, @.onInitialDataError.bind(@)

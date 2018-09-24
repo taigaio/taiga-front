@@ -47,10 +47,13 @@ UserTimelinePaginationSequence = () ->
                 if items.size < config.minItems && response.get("next")
                     return getContent()
 
-                return Immutable.Map({
+                pagination = Immutable.Map({
                     items: items,
+                    total: response.get("total"),
                     next: response.get("next")
                 })
+
+                return pagination
 
         return {
             next: () -> next()

@@ -1,0 +1,26 @@
+a(
+    href=""
+    title="{{ 'EVENTS.TITLE' | translate }}"
+    tg-nav="notifications"
+    ng-mouseover="visible=true"
+)
+    tg-svg(svg-icon="icon-bell")
+    div.counter(ng-if="total", ng-class="{'active': newEvent}") {{ total }}
+div.navbar-dropdown-notifications(
+    ng-show="visible",
+    ng-mouseleave="visible=false"
+)
+    .header
+        span.notifications-title {{ 'EVENTS.MY_EVENTS' | translate }}
+        a(href="", ng-click="setAllAsRead()") {{ 'EVENTS.DISMISS_ALL' | translate }}
+        a(tg-nav="notifications") {{ 'EVENTS.VIEW_ALL' | translate }}
+
+    .notifications-wrapper
+        .empty(ng-if="!total && !loading")
+            span {{ 'EVENTS.NO_NEW_EVENTS' | translate }}
+
+        tg-notifications-list#my-notifications.dropdown-notifications-list(
+            only-unread="true",
+            infinite-scroll-container="#my-notifications"
+            infinite-scroll-distance="1"
+        )

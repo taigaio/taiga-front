@@ -37,7 +37,8 @@ $dropdown-width: 350px;
     }
     .nav-right {
         margin-left: auto;
-        a {
+        > a,
+        .topnav-dropdown-wrapper > a {
             color: $white;
             padding: .5rem 2rem;
         }
@@ -47,7 +48,8 @@ $dropdown-width: 350px;
             transition: all .2s linear;
         }
     }
-    a {
+    > a,
+    .topnav-dropdown-wrapper > a {
         color: $white;
         display: inline-block;
         transition: all .2s linear;
@@ -70,7 +72,7 @@ $dropdown-width: 350px;
         }
 
     }
-    img {
+    .user-avatar img {
         height: 2.5rem;
         margin-left: .5rem;
         vertical-align: middle;
@@ -167,5 +169,108 @@ $dropdown-width: 350px;
     .create-options {
         display: flex;
         flex-direction: row;
+    }
+}
+
+
+@keyframes highlightFadeOut {
+    0% {
+        background: $primary-light;
+        font-size: .75rem;
+        height: 22px;
+        left: 49px;
+        line-height: 22px;
+        top: -1px;
+        width: 22px;
+    }
+    20% {
+        font-size: .7rem;
+        height: 20px;
+        left: 50px;
+        line-height: 20px;
+        top: 0;
+        width: 20px;
+    }
+    100% {
+        background: $primary;
+    }
+}
+
+
+.topnav-dropdown-wrapper {
+    position: relative;
+    &:hover {
+        .navbar-dropdown-notifications {
+            animation: dropdownFade .2s cubic-bezier(.09, 0, .99, .01) both;
+            display: block;
+        }
+    }
+    .counter {
+        background: $primary;
+        border-radius: 50%;
+        color: $white;
+        font-size: .7rem;
+        height: 20px;
+        left: 50px;
+        line-height: 20px;
+        position: absolute;
+        text-align: center;
+        top: 0;
+        width: 20px;
+        &.active {
+            animation-duration: 2s;
+            animation-name: highlightFadeOut;
+        }
+    }
+    .navbar-dropdown-notifications {
+        $width: 450px;
+        background: $white;
+        border: 1px solid $whitish;
+        border-radius: 2px;
+        box-shadow: 0 0 3px 3px rgba($gray-lighter, .2);
+        color: $blackish;
+        display: none;
+        left: calc(50% - 450px/2);
+        margin-top: 1px;
+        min-width: 450px;
+        padding: 0;
+        position: absolute;
+        top: 2.4rem;
+        z-index: 999;
+
+        .empty {
+            color: $gray-light;
+            padding: 2.5em 0;
+            text-align: center;
+            width: 100%;
+        }
+        .header {
+            @include arrow('bottom', $mass-white, $mass-white, 1, 8);
+            background: $mass-white;
+            color: $gray;
+            display: flex;
+            flex-direction: row;
+            padding: .6rem 0 .5rem .7rem;
+            .notifications-title {
+                flex-grow: 1;
+                text-transform: uppercase;
+            }
+            a {
+                color: $gray-light;
+                font-size: .9rem;
+                padding: 0 .7rem 0 0;
+                text-align: right;
+            }
+            a:hover {
+                color: $primary;
+            }
+        }
+        .notifications-wrapper {
+            min-height: 100px;
+        }
+        .notifications-list {
+            max-height: 400px;
+            overflow-y: auto;
+        }
     }
 }

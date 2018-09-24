@@ -465,6 +465,8 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
         {templateUrl: "user/mail-notifications.html"})
     $routeProvider.when("/user-settings/live-notifications",
         {templateUrl: "user/live-notifications.html"})
+    $routeProvider.when("/user-settings/web-notifications",
+        {templateUrl: "user/web-notifications.html"})
     $routeProvider.when("/change-email/:email_token",
         {templateUrl: "user/change-email.html"})
     $routeProvider.when("/cancel-account/:cancel_token",
@@ -483,6 +485,19 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
                 requiresLogin: true
             },
             controller: "Profile",
+            controllerAs: "vm"
+        }
+    )
+
+    # Notifications
+    $routeProvider.when("/notifications",
+        {
+            templateUrl: "notifications/notifications.html",
+            loader: true,
+            access: {
+                requiresLogin: true
+            },
+            controller: "Notifications",
             controllerAs: "vm"
         }
     )
@@ -937,6 +952,7 @@ modules = [
     "taigaExternalApps",
     "taigaDiscover",
     "taigaHistory",
+    "taigaNotifications",
     "taigaWikiHistory",
     "taigaEpics",
     "taigaUtils"
