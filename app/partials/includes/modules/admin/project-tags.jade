@@ -86,7 +86,7 @@ section
                                 .current-color.empty-color(ng-if="!tag.color")
 
                             .status-name
-                                span(tg-bo-html="tag.name")
+                                span(ng-bind-html="tag.name | emojify")
 
                             .options-column
                                 a.mix-tags(href="")
@@ -158,7 +158,7 @@ section
                                 )
 
                             .status-name
-                                span(tg-bo-html="tag.name")
+                                span(ng-bind-html="tag.name | emojify")
 
                             .mixing-options-column(
                                 ng-if="mixingTags.toTag === tag.name"
