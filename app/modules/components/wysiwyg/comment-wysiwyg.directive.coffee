@@ -17,14 +17,18 @@
 # File: components/wysiwyg/comment-wysiwyg.directive.coffee
 ###
 
-CommentWysiwyg = (attachmentsFullService) ->
+CommentWysiwyg = ($modelTransform, $rootscope, $confirm, attachmentsFullService) ->
     link = ($scope, $el, $attrs) ->
         $scope.editableDescription = false
 
         $scope.saveComment = (description, cb) ->
             $scope.content = ''
             $scope.vm.type.comment = description
-            $scope.vm.onAddComment({callback: cb})
+
+            transform = $modelTransform.save (item) -> return
+            transform.then ->
+                $rootscope.$broadcast("object:updated")
+            transform.finally(cb)
 
         types = {
             epics: "epic",
@@ -70,4 +74,8 @@ CommentWysiwyg = (attachmentsFullService) ->
     }
 
 angular.module("taigaComponents")
-    .directive("tgCommentWysiwyg", ["tgAttachmentsFullService", CommentWysiwyg])
+    .directive("tgCommentWysiwyg", [
+        "$tgQueueModelTransformation",
+        "$rootScope",
+        "tgAttachmentsFullService",
+        CommentWysiwyg])

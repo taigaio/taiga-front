@@ -94,7 +94,7 @@ class HistorySectionController
             @.editing = null
 
     addComment: (cb) ->
-        @repo.save(@.type).then =>
+        return @repo.save(@.type).then =>
             @._loadHistory()
             cb()
 

@@ -33,13 +33,13 @@ class ImportTaigaController
 
         file = files[0]
 
-        loader = @confirm.loader(@translate.instant('PROJECT.IMPORT.IN_PROGRESS.TITLE'), @translate.instant('PROJECT.IMPORT.IN_PROGRESS.DESCRIPTION'), true)
+        loader = @confirm.loader(@translate.instant('PROJECT.IMPORT.IN_PROGRESS.TITLE'),
+            @translate.instant('PROJECT.IMPORT.IN_PROGRESS.DESCRIPTION'), true)
 
         loader.start()
 
         promise = @rs.projects.import(file, loader.update)
-
-        @importProjectService.importPromise(promise).finally () => loader.stop()
+        @importProjectService.importPromise(promise).finally () -> loader.stop()
 
         return
 

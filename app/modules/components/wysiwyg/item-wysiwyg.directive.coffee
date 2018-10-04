@@ -21,7 +21,6 @@
 ItemWysiwyg = ($modelTransform, $rootscope, $confirm, attachmentsFullService, $translate) ->
     link = ($scope, $el, $attrs) ->
         $scope.editableDescription = false
-
         $scope.saveDescription = (description, cb) ->
             transform = $modelTransform.save (item) ->
                 item.description = description
