@@ -28,7 +28,6 @@ class UserListService
 
     constructor: (@currentUserService, @projectService) ->
         @.currentUser = @currentUserService.getUser().toJS()
-        @.members = @projectService.project.toJS().members
 
     filterUsers: (text, user) ->
         username = user.full_name_display.toUpperCase()
@@ -38,7 +37,7 @@ class UserListService
         return _.includes(username, text)
 
     searchUsers: (text, excludedUser) ->
-        users = _.clone(@.members, true)
+        users = _.clone(@projectService.activeMembers.toJS(), true)
         users = _.reject(users, {"id": excludedUser.id}) if excludedUser
         users = _.sortBy(users, (o) => if o.id is @.currentUser.id then 0 else o.id)
         users = _.filter(users, _.partial(@.filterUsers, text)) if text?

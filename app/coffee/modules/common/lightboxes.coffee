@@ -366,7 +366,6 @@ $compile, avatarService, $userListService) ->
 
         render = (selected, text) ->
             users = $userListService.searchUsers(text, selected)
-
             visibleUsers = _.slice(users, 0, 5)
             visibleUsers = _.map visibleUsers, (user) ->
                 user.avatar = avatarService.getAvatar(user)

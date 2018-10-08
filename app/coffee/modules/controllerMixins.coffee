@@ -36,7 +36,7 @@ class PageMixin
         @scope.activeUsersById = groupBy(@scope.activeUsers, (e) -> e.id)
 
         @scope.users = _.sortBy(users, "full_name_display")
-        @scope.usersById = groupBy(@scope.users, (e) -> e.id)
+        @scope.usersById = groupBy(users, (e) -> e.id)
 
         @scope.roles = _.sortBy(roles, "order")
         computableRoles = _(@scope.project.members).map("role").uniq().value()
