@@ -9,6 +9,7 @@ section.profile-timeline
     div(
         infinite-scroll="vm.loadTimeline()"
         infinite-scroll-disabled="vm.scrollDisabled"
+        ng-if="vm.timelineList.size"
     )
         div(
             tg-repeat="timeline in vm.timelineList"

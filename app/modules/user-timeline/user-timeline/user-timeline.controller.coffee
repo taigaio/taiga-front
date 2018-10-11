@@ -39,6 +39,8 @@ class UserTimelineController extends mixOf(taiga.Controller, taiga.PageMixin, ta
         else
             @.timeline = @userTimelineService.getUserTimeline(@.user.get("id"))
 
+        @.loadTimeline()
+
     loadTimeline: () ->
         @.scrollDisabled = true
 
