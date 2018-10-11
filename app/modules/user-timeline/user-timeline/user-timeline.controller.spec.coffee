@@ -51,17 +51,19 @@ describe "UserTimelineController", ->
     it "timelineList should be an array", () ->
         $scope = $rootScope.$new()
 
-        mocks.userTimelineService.getUserTimeline = sinon.stub().returns(true)
+        mocks.userTimelineService.getUserTimeline = sinon.stub().returns({next: sinon.stub().promise()})
 
         myCtrl = controller("UserTimeline", $scope, {
-            user: Immutable.Map({id: 2})
+            user: Immutable.Map({id: 2}),
+            next: true
         })
 
         expect(myCtrl.timelineList.toJS()).is.an("array")
 
     describe "init timeline", () ->
         it "project timeline sequence", () ->
-            mocks.userTimelineService.getProjectTimeline = sinon.stub().withArgs(4).returns(true)
+            mocks.userTimelineService.getProjectTimeline =
+                sinon.stub().withArgs(4).returns({next: sinon.stub().promise()})
 
             $scope = $rootScope.$new()
 
@@ -69,10 +71,11 @@ describe "UserTimelineController", ->
                 projectId: 4
             })
 
-            expect(myCtrl.timeline).to.be.true
+            expect(myCtrl.timeline).to.have.property('next')
 
         it "currentUser timeline sequence", () ->
-            mocks.userTimelineService.getProfileTimeline = sinon.stub().withArgs(2).returns(true)
+            mocks.userTimelineService.getProfileTimeline =
+                sinon.stub().withArgs(2).returns({next: sinon.stub().promise()})
 
             $scope = $rootScope.$new()
 
@@ -81,10 +84,11 @@ describe "UserTimelineController", ->
                 user: Immutable.Map({id: 2})
             })
 
-            expect(myCtrl.timeline).to.be.true
+            expect(myCtrl.timeline).to.have.property('next')
 
         it "currentUser timeline sequence", () ->
-            mocks.userTimelineService.getUserTimeline = sinon.stub().withArgs(2).returns(true)
+            mocks.userTimelineService.getUserTimeline =
+                sinon.stub().withArgs(2).returns({next: sinon.stub().promise()})
 
             $scope = $rootScope.$new()
 
@@ -92,17 +96,18 @@ describe "UserTimelineController", ->
                 user: Immutable.Map({id: 2})
             })
 
-            expect(myCtrl.timeline).to.be.true
+            expect(myCtrl.timeline).to.have.property('next')
 
     describe "load timeline", () ->
         myCtrl = null
 
         beforeEach () ->
-            mocks.userTimelineService.getUserTimeline = sinon.stub().returns({})
+            mocks.userTimelineService.getUserTimeline = sinon.stub().returns({next: sinon.stub().promise()})
             $scope = $rootScope.$new()
             myCtrl = controller("UserTimeline", $scope, {
                 user: Immutable.Map({id: 2})
             })
+            myCtrl.scrollDisabled = false
 
         it "enable scroll on loadTimeline if there are more pages", (done) ->
             response = Immutable.Map({
