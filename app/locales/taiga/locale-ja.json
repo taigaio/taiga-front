@@ -1560,12 +1560,6 @@
             "OPTION_ALL": "すべて",
             "OPTION_INVOLVED": "Involved",
             "OPTION_NONE": "なし"
-        },
-        "PROJECT_SETTINGS": {
-            "CUSTOM_HOMEPAGE": "Custom Homepage",
-            "COLUMN_PROJECT": "プロジェクト",
-            "COLUMN_HOMEPAGE": "ホームページ",
-            "DEFAULT_VALUE": "Default"
         }
     },
     "USER_PROFILE": {

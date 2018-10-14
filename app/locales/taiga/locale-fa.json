@@ -1560,12 +1560,6 @@
             "OPTION_ALL": "همه",
             "OPTION_INVOLVED": "مشترک",
             "OPTION_NONE": "هیچ کدام"
-        },
-        "PROJECT_SETTINGS": {
-            "CUSTOM_HOMEPAGE": "Custom Homepage",
-            "COLUMN_PROJECT": "پروژه",
-            "COLUMN_HOMEPAGE": "صفحه‌ی خانه",
-            "DEFAULT_VALUE": "Default"
         }
     },
     "USER_PROFILE": {

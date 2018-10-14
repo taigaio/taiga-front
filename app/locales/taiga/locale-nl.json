@@ -1560,12 +1560,6 @@
             "OPTION_ALL": "Alles",
             "OPTION_INVOLVED": "Betrokken",
             "OPTION_NONE": "Geen"
-        },
-        "PROJECT_SETTINGS": {
-            "CUSTOM_HOMEPAGE": "Custom Homepage",
-            "COLUMN_PROJECT": "Project",
-            "COLUMN_HOMEPAGE": "Startpagina",
-            "DEFAULT_VALUE": "Default"
         }
     },
     "USER_PROFILE": {

@@ -13,8 +13,8 @@
         "UNLINK": "Détacher",
         "CREATE": "Créer",
         "ADD": "Ajouter",
-        "COPY_TO_CLIPBOARD": "Copy to clipboard",
-        "COPIED_TO_CLIPBOARD": "Text has been copied to clipboard",
+        "COPY_TO_CLIPBOARD": "Copier dans le presse-papier",
+        "COPIED_TO_CLIPBOARD": "Le texte a été copié dans le presse-papier",
         "EDIT": "Éditer",
         "DRAG": "Faire glisser",
         "TAG_LINE": "Votre outil de gestion de projet agile, libre et open source",
@@ -146,14 +146,14 @@
             "SEVERITY": "Gravité",
             "PRIORITY": "Priorité",
             "ASSIGNED_TO": "Affecté à",
-            "ASSIGNED_USERS": "Assigned users",
+            "ASSIGNED_USERS": "Utilisateurs assignés",
             "POINTS": "Points",
             "IS_BLOCKED": "est bloqué",
             "REF": "Réf.",
             "VOTES": "Votes",
             "SPRINT": "Sprint",
-            "DUE_DATE": "Due date",
-            "DUE_DATE_REASON": "Due date reason"
+            "DUE_DATE": "Échéance",
+            "DUE_DATE_REASON": "Raison de l’échéance"
         },
         "ROLES": {
             "ALL": "Tout"
@@ -169,7 +169,7 @@
             "SELF": "Me l'affecter"
         },
         "DUE_DATE": {
-            "TITLE_ACTION_SET_DUE_DATE": "Set due date"
+            "TITLE_ACTION_SET_DUE_DATE": "Définir l’échéance"
         },
         "ASSIGNED_USERS": {
             "ADD": "Select assigned user",
@@ -221,7 +221,7 @@
                 "PRIORITIES": "Priorités",
                 "TAGS": "Mots-clés",
                 "ASSIGNED_TO": "Affecté à",
-                "ASSIGNED_USERS": "Assigned users",
+                "ASSIGNED_USERS": "Utilisateurs assignés",
                 "ROLE": "Rôle",
                 "CREATED_BY": "Créé par",
                 "CUSTOM_FILTERS": "Filtres personnalisés",
@@ -537,9 +537,9 @@
             "DESCRIPTION": "Téléchargez un fichier CSV ou copier l'URL générée puis ouvrez la dans votre éditeur de texte ou tableur préféré pour créer votre propre rapports de projet. Vous pourrez facilement visualiser et analyser toutes vos données.",
             "HELP": "Comment utiliser ceci dans ma propre feuille de calcul?",
             "REGENERATE_TITLE": "Changer l'URL",
-            "REGENERATE_SUBTITLE": "You are going to change the CSV data access url. The previous url will be disabled. Are you sure?",
-            "DELETE_TITLE": "Delete URL",
-            "DELETE_SUBTITLE": "You are going to delete the current CSV data access url. Are you sure?"
+            "REGENERATE_SUBTITLE": "Vous êtes sur le point de changer l’URL d'accès aux données CSV. L'URL précédente sera désactivée. Êtes-vous sûr ?",
+            "DELETE_TITLE": "Supprimer l'URL",
+            "DELETE_SUBTITLE": "Vous êtes sur le point de changer l’URL d'accès aux données CSV. Êtes-vous sûr ?"
         },
         "CSV": {
             "SECTION_TITLE_EPIC": "rapports d'épopée",
@@ -551,7 +551,7 @@
             "TITLE_REGENERATE_URL": "Regénérer l'URL du CSV",
             "ACTION_GENERATE_URL": "Générer l'URL",
             "ACTION_REGENERATE": "Regénérer",
-            "TITLE_DELETE_URL": "Delete CSV url",
+            "TITLE_DELETE_URL": "Supprimer l'URL du CSV",
             "ACTION_DELETE_URL": "Supprimer"
         },
         "CUSTOM_FIELDS": {
@@ -620,8 +620,8 @@
             "SELECTED": "Sélectionné"
         },
         "PROJECT_DUE_DATE_STATUS": {
-            "TITLE": "Due Dates",
-            "SUBTITLE": "Specify the due dates your user stories, tasks and issues will go through if selected",
+            "TITLE": "Échéances",
+            "SUBTITLE": "Spécifiez les dates d’échéance que vont prendre vos récits utilisateur, tâches et tickets s'ils sont sélectionnés",
             "US_TITLE": "User Story Due Date status",
             "ACTION_ADD_STATUS": "Ajouter un nouveau statut",
             "TASK_TITLE": "Task Due Date status",
@@ -759,7 +759,7 @@
             "TYPES": "Types",
             "CUSTOM_FIELDS": "Champs personnalisés",
             "TAGS": "Mots-clés",
-            "DUE_DATES": "Due dates"
+            "DUE_DATES": "Échéances"
         },
         "SUBMENU_ROLES": {
             "TITLE": "Rôles",
@@ -1091,32 +1091,32 @@
             "LAST_SPRINT_NAME": "le dernier sprint est <strong> {{lastSprint}} ;-) </strong>"
         },
         "CREATE_EDIT": {
-            "TASK_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this Task",
-            "ISSUE_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this Issue",
-            "US_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this User Story",
-            "NEW_TASK": "New Task",
-            "NEW_ISSUE": "New Issue",
-            "NEW_US": "New User Story",
-            "EDIT_TASK": "Edit Task",
-            "EDIT_ISSUE": "Edit Issue",
-            "EDIT_US": "Edit User Story",
-            "ADD_EXISTING_ISSUE": "Add Issue to {{ targetName }}",
-            "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?",
+            "TASK_PLACEHOLDER_DESCRIPTION": "Veuillez ajouter une description pour aider les autres à mieux comprendre cette tâche",
+            "ISSUE_PLACEHOLDER_DESCRIPTION": "Veuillez ajouter une description pour aider les autres à mieux comprendre ce ticket",
+            "US_PLACEHOLDER_DESCRIPTION": "Veuillez ajouter une description pour aider les autres à mieux comprendre ce récit utilisateur",
+            "NEW_TASK": "Nouvelle tâche",
+            "NEW_ISSUE": "Nouveau ticket",
+            "NEW_US": "Ajouter un récit utilisateur",
+            "EDIT_TASK": "Modifier la tâche",
+            "EDIT_ISSUE": "Modifier le ticket",
+            "EDIT_US": "Modifier le récit utilisateur",
+            "ADD_EXISTING_ISSUE": "Ajouter un ticket à {{ targetName }}",
+            "CONFIRM_CLOSE": "Vous n’avez pas sauvegardé les modifications.\nÊtes-vous sûr de vouloir fermer le formulaire ?",
             "EXISTING_ISSUE": "Existing Issue",
             "CHOOSE_EXISTING_ISSUE": "Which Issue?",
             "ADD_ISSUE": "Ajouter un ticket",
             "FILTER_ISSUES": "Filter Issues"
         },
         "DELETE_DUE_DATE": {
-            "TITLE": "Delete due date",
-            "SUBTITLE": "Are you sure you want to delete this due date?"
+            "TITLE": "Supprimer l’échéance",
+            "SUBTITLE": "Êtes-vous sûr de vouloir supprimer cette échéance ?"
         },
         "DELETE_SPRINT": {
             "TITLE": "Supprimer le sprint"
         },
         "REMOVE_RELATIONSHIP_WITH_EPIC": {
-            "TITLE": "Remove relationship with Epic",
-            "MESSAGE": "Are you sure you want to remove the relationship of this User Story with the Epic <strong>{{epicSubject}}</strong>?"
+            "TITLE": "Retirer le lien avec l’épopée",
+            "MESSAGE": "Êtes-vous sûr de vouloir retirer le lien entre ce récit utilisateur et l’épopée <strong>{{epicSubject}}</strong> ?"
         },
         "CREATE_MEMBER": {
             "PLACEHOLDER_INVITATION_TEXT": "(Optionnel) Ajoutez un texte personnalisé à l'invitation. Dites quelque chose de gentil à vos nouveaux membres ;-)",
@@ -1147,24 +1147,24 @@
             "SEND": "Envoyer"
         },
         "SET_DUE_DATE": {
-            "TITLE": "Set due date",
-            "PLACEHOLDER_DUE_DATE": "Select date",
-            "REASON_FOR_DUE_DATE": "Reason for the due date",
-            "PLACEHOLDER_REASON_FOR_DUE_DATE": "Why does this US need a due date?",
+            "TITLE": "Définir l’échéance",
+            "PLACEHOLDER_DUE_DATE": "Sélectionner la date",
+            "REASON_FOR_DUE_DATE": "Raison pour la date d’échéance",
+            "PLACEHOLDER_REASON_FOR_DUE_DATE": "Pourquoi ce récit utilisateur nécessite-t-il une échéance ?",
             "SUGGESTIONS": {
                 "IN_ONE_WEEK": "In one week",
                 "IN_TWO_WEEKS": "In two weeks",
                 "IN_ONE_MONTH": "In one month",
                 "IN_THREE_MONTHS": "In three months"
             },
-            "TITLE_ACTION_DELETE_DUE_DATE": "Delete due date"
+            "TITLE_ACTION_DELETE_DUE_DATE": "Supprimer l’échéance"
         },
         "ADMIN_DUE_DATES": {
-            "TITLE_ACTION_DELETE_DUE_DATE": "Delete due date",
-            "SUBTITLE_ACTION_DELETE_DUE_DATE": "Are you sure you want to delete the due date status {{due_date_status_name}}?"
+            "TITLE_ACTION_DELETE_DUE_DATE": "Supprimer l’échéance",
+            "SUBTITLE_ACTION_DELETE_DUE_DATE": "Êtes-vous sûr de vouloir supprimer le statut de date d’échéance {{due_date_status_name}} ?"
         },
         "RELATE_TO_EPIC": {
-            "TITLE": "Link to Epic",
+            "TITLE": "Lien vers l'épopée",
             "EXISTING_EPIC": "Existing epic",
             "NEW_EPIC": "New epic",
             "CHOOSE_PROJECT_FOR_CREATION": "Quel est le projet ?",
@@ -1183,11 +1183,11 @@
         "CREATE_RELATED_USERSTORIES": "Créer un lien avec",
         "NEW_USERSTORY": "Nouveau récit utilisateur",
         "EXISTING_USERSTORY": "Récit utilisateur existant",
-        "CHOOSE_PROJECT_FOR_CREATION": "Which project?",
+        "CHOOSE_PROJECT_FOR_CREATION": "Quel projet ?",
         "SUBJECT": "Objet",
         "SUBJECT_BULK_MODE": "Sujet (ajout en masse)",
-        "CHOOSE_PROJECT_FROM": "Which project?",
-        "CHOOSE_USERSTORY": "Which user story?",
+        "CHOOSE_PROJECT_FROM": "Quel projet ?",
+        "CHOOSE_USERSTORY": "Quel récit utilisateur ?",
         "NO_USERSTORIES": "Ce projet n'a pas encore de récits utilisateur. Merci de choisir un autre projet.",
         "NO_USERSTORIES_FOUND": "Il semble qu'aucun résultat ne correspond à vos critères de recherche",
         "FILTER_USERSTORIES": "Filtrer les récits utilisateur",
@@ -1209,7 +1209,7 @@
         "LIGHTBOX_TITLE_BLOKING_US": "Bloque le RU",
         "NOT_ESTIMATED": "Non estimé",
         "OWNER_US": "Ce récit Utilisateur fait partie de ",
-        "RELATE_TO_EPIC": "Link to Epic",
+        "RELATE_TO_EPIC": "Lien vers l'épopée",
         "REMOVE_RELATIONSHIP_WITH_EPIC": "Remove Epic relationship",
         "TRIBE": {
             "PUBLISH": "Publier en tant que Gig sur Taiga Tribe ",
@@ -1369,8 +1369,8 @@
         "SECTION_NAME": "Tableau des tâches",
         "TITLE_ACTION_ADD": "Ajouter une nouvelle tâche",
         "TITLE_ACTION_ADD_BULK": "Ajouter un nouveau lot de tâches",
-        "TITLE_ACTION_ADD_ISSUE": "Add a new Issue",
-        "TITLE_ACTION_ADD_ISSUE_BULK": "Add some new Issues in bulk",
+        "TITLE_ACTION_ADD_ISSUE": "Ajouter un nouveau ticket",
+        "TITLE_ACTION_ADD_ISSUE_BULK": "Ajouter de nouveaux tickets en lot",
         "TITLE_ACTION_ASSIGN": "Affecter une tâche",
         "PLACEHOLDER_CARD_TITLE": "Cela pourrait être une tâche",
         "PLACEHOLDER_CARD_TEXT": "Éclater les récits en tâches pour les suivre séparément",
@@ -1416,7 +1416,7 @@
         "SAVED": "Nos Oompa Loompas ont sauvegardé toutes vos modifications !",
         "CLOSE": "Fermer la notification",
         "MAIL": "Notifications par courriel",
-        "DESKTOP": "Desktop notifications using browser alerts",
+        "DESKTOP": "Notifications du bureau grâce aux alertes du navigateur",
         "ASK_DELETE": "Etes-vous sûre de vouloir supprimer ?"
     },
     "CANCEL_ACCOUNT": {
@@ -1461,8 +1461,8 @@
             "MESSAGE": "You are about to detach the issue from the sprint <strong>{{ sprintName }}<strong>"
         },
         "CONFIRM_CHANGE_FROM_SPRINT": {
-            "TITLE": "Attach issue to Sprint",
-            "MESSAGE": "<strong>This issue is currently attached to sprint {{ oldSprintName }}</strong>. You are about to detach it from that sprint and attach it instead to sprint <strong>{{ newSprintName }}.</strong>"
+            "TITLE": "<br>",
+            "MESSAGE": "<strong>Ce ticket est actuellement attaché au sprint {{ oldSprintName }}</strong>. Vous êtes sur le point de le détacher de ce sprint afin de l’attacher au sprint <strong>{{ newSprintName }}</strong>."
         },
         "CONFIRM_PROMOTE": {
             "TITLE": "Promouvoir ce ticket en nouveau récit utilisateur",
@@ -1560,12 +1560,6 @@
             "OPTION_ALL": "Toutes",
             "OPTION_INVOLVED": "Impliqué",
             "OPTION_NONE": "Aucune"
-        },
-        "PROJECT_SETTINGS": {
-            "CUSTOM_HOMEPAGE": "Custom Homepage",
-            "COLUMN_PROJECT": "Projet",
-            "COLUMN_HOMEPAGE": "Page d'accueil",
-            "DEFAULT_VALUE": "Default"
         }
     },
     "USER_PROFILE": {

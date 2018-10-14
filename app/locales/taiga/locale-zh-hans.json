@@ -1560,12 +1560,6 @@
             "OPTION_ALL": "所有",
             "OPTION_INVOLVED": "相关",
             "OPTION_NONE": "无"
-        },
-        "PROJECT_SETTINGS": {
-            "CUSTOM_HOMEPAGE": "Custom Homepage",
-            "COLUMN_PROJECT": "项目",
-            "COLUMN_HOMEPAGE": "主页",
-            "DEFAULT_VALUE": "Default"
         }
     },
     "USER_PROFILE": {

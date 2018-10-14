@@ -1560,12 +1560,6 @@
             "OPTION_ALL": "Все",
             "OPTION_INVOLVED": "Вовлечен",
             "OPTION_NONE": "Нет"
-        },
-        "PROJECT_SETTINGS": {
-            "CUSTOM_HOMEPAGE": "Custom Homepage",
-            "COLUMN_PROJECT": "Проект",
-            "COLUMN_HOMEPAGE": "Домашняя страница",
-            "DEFAULT_VALUE": "Default"
         }
     },
     "USER_PROFILE": {

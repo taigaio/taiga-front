@@ -1560,12 +1560,6 @@
             "OPTION_ALL": "Kaikki",
             "OPTION_INVOLVED": "Osallisena",
             "OPTION_NONE": "Ei yhtään"
-        },
-        "PROJECT_SETTINGS": {
-            "CUSTOM_HOMEPAGE": "Custom Homepage",
-            "COLUMN_PROJECT": "Projekti",
-            "COLUMN_HOMEPAGE": "Etusivu",
-            "DEFAULT_VALUE": "Default"
         }
     },
     "USER_PROFILE": {

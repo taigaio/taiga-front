@@ -1560,12 +1560,6 @@
             "OPTION_ALL": "Hepsi",
             "OPTION_INVOLVED": "İlgili",
             "OPTION_NONE": "Hiçbiri"
-        },
-        "PROJECT_SETTINGS": {
-            "CUSTOM_HOMEPAGE": "Custom Homepage",
-            "COLUMN_PROJECT": "Proje",
-            "COLUMN_HOMEPAGE": "Ana sayfa",
-            "DEFAULT_VALUE": "Default"
         }
     },
     "USER_PROFILE": {

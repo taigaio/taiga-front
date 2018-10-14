@@ -1560,12 +1560,6 @@
             "OPTION_ALL": "Alle",
             "OPTION_INVOLVED": "Involvert",
             "OPTION_NONE": "Ingen"
-        },
-        "PROJECT_SETTINGS": {
-            "CUSTOM_HOMEPAGE": "Custom Homepage",
-            "COLUMN_PROJECT": "Prosjekt",
-            "COLUMN_HOMEPAGE": "Hjemmeside",
-            "DEFAULT_VALUE": "Default"
         }
     },
     "USER_PROFILE": {

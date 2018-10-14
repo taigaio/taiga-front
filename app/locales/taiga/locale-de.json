@@ -795,7 +795,7 @@
             "CURRENT_USER_CONTACTS_EMPTY": "Sie haben noch keine Kontakte",
             "CURRENT_USER_CONTACTS_EMPTY_EXPLAIN": "Die Leute, mit denen Sie auf Taiga zusammenarbeiten, werden automatisch zu Ihren Kontakten",
             "TABS": {
-                "ACTIVITY_TAB": "Zeitlinie",
+                "ACTIVITY_TAB": "Aktivität",
                 "ACTIVITY_TAB_TITLE": "Alle Aktivitäten dieses Benutzers anzeigen",
                 "PROJECTS_TAB": "Projekte",
                 "PROJECTS_TAB_TITLE": "Liste alle Projekte auf, bei denen der Benutzer Mitglied ist",
@@ -825,7 +825,7 @@
             "FILTER_TYPE_USER_STORIES": "Stories",
             "FILTER_TYPE_USER_STORIES_TITLE": "Nur User-Stories anzeigen",
             "FILTER_TYPE_TASKS": "Aufgaben",
-            "FILTER_TYPE_TASKS_TITLE": "Zeige nur Tasks",
+            "FILTER_TYPE_TASKS_TITLE": "Zeige nur Aufgaben",
             "FILTER_TYPE_ISSUES": "Tickets",
             "FILTER_TYPE_ISSUES_TITLE": "Nur Fehler anzeigen",
             "EMPTY_TITLE": "Es sieht so aus, als wäre hier nichts."
@@ -846,7 +846,7 @@
         },
         "SECTION": {
             "SEARCH": "Suche",
-            "TIMELINE": "Zeitlinie",
+            "TIMELINE": "Aktivität",
             "BACKLOG": "Backlog",
             "KANBAN": "Kanban",
             "ISSUES": "Tickets",
@@ -1198,8 +1198,8 @@
         "PAGE_TITLE": "{{userStorySubject}} - User-Story {{userStoryRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Status: {{userStoryStatus }}. Abgeschlossen {{userStoryProgressPercentage}}% ({{userStoryClosedTasks}} von {{userStoryTotalTasks}} Aufgaben geschlossen). Punkte: {{userStoryPoints}}. Beschreibung: {{userStoryDescription}}",
         "SECTION_NAME": "User-Story",
-        "LINK_TASKBOARD": "Taskboard",
-        "TITLE_LINK_TASKBOARD": "Zu Taskboard wechseln",
+        "LINK_TASKBOARD": "Aufgabenübersicht",
+        "TITLE_LINK_TASKBOARD": "Zur Aufgabenübersicht",
         "TOTAL_POINTS": "Gesamtpunkte",
         "ADD": "+ Neue User-Story anlegen",
         "ADD_BULK": "Mehrere neue User-Stories hinzufügen",
@@ -1366,13 +1366,13 @@
     "TASKBOARD": {
         "PAGE_TITLE": "{{sprintName}} - Sprint Taskboard - {{projectName}}",
         "PAGE_DESCRIPTION": "Sprint {{sprintName}} (von {{startDate}} zu {{endDate}}) von {{projectName}}. Abgeschlossen {{completedPercentage}}% ({{completedPoints}} von {{totalPoints}} points). {{openTasks}} offene Aufgaben von {{totalTasks}}.",
-        "SECTION_NAME": "Taskboard",
+        "SECTION_NAME": "Aufgabenübersicht",
         "TITLE_ACTION_ADD": "Neue Aufgabe hinzufügen",
         "TITLE_ACTION_ADD_BULK": "Mehrere Aufgaben hinzufügen",
         "TITLE_ACTION_ADD_ISSUE": "Ein neues Ticket hinzufügen",
         "TITLE_ACTION_ADD_ISSUE_BULK": "Stapel von neuen Tickets anlegen",
         "TITLE_ACTION_ASSIGN": "Aufgabe zuweisen",
-        "PLACEHOLDER_CARD_TITLE": "Das könnte ein Task sein",
+        "PLACEHOLDER_CARD_TITLE": "Das könnte eine \"Aufgabe\" sein",
         "PLACEHOLDER_CARD_TEXT": "Teile Stories in Tasks auf um sie einzeln zu verfolgen",
         "TABLE": {
             "COLUMN": "User-Story",
@@ -1396,8 +1396,8 @@
         "PAGE_TITLE": "{{taskSubject}} - Aufgabe {{taskRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Status: {{taskStatus }}. Beschreibung: {{taskDescription}}",
         "SECTION_NAME": "Aufgabe",
-        "LINK_TASKBOARD": "Taskboard",
-        "TITLE_LINK_TASKBOARD": "Zu Taskboard wechseln",
+        "LINK_TASKBOARD": "Aufgabenübersicht",
+        "TITLE_LINK_TASKBOARD": "Zur Aufgabenübersicht",
         "PLACEHOLDER_SUBJECT": "Betreff...",
         "TITLE_SELECT_STATUS": "Status Bezeichnung",
         "OWNER_US": "Diese Aufgabe gehört zu",
@@ -1416,7 +1416,7 @@
         "SAVED": "Die Helferlein haben Ihre Änderungen gespeichert!",
         "CLOSE": "Benachrichtigung schließen",
         "MAIL": "Benachrichtigungen per Mail",
-        "DESKTOP": "Desktopbenachrichtigung mittels Browserbenachtichtigung",
+        "DESKTOP": "Desktop Benachrichtigungen durch den Webbrowser",
         "ASK_DELETE": "Möchten Sie wirklich löschen?"
     },
     "CANCEL_ACCOUNT": {
@@ -1548,24 +1548,18 @@
             "USER_PROFILE": "Benutzerprofil",
             "CHANGE_PASSWORD": "Passwort ändern",
             "EMAIL_NOTIFICATIONS": "E-Mail Benachrichtigungen",
-            "DESKTOP_NOTIFICATIONS": "Desktopbenachrichtigungen"
+            "DESKTOP_NOTIFICATIONS": "Desktop Benachrichtigungen"
         },
         "NOTIFICATIONS": {
-            "LIVE_SECTION_NAME": "Desktopbenachrichtigungen",
+            "LIVE_SECTION_NAME": "Desktop Benachrichtigungen",
             "SECTION_NAME": "E-Mail-Benachrichtigungen",
             "COLUMN_PROJECT": "Projekt",
             "COLUMN_RECEIVE_ALL": "Alle erhalten",
-            "COLUMN_ONLY_INVOLVED": "Nur Einbezogene",
+            "COLUMN_ONLY_INVOLVED": "Bei Beteiligung",
             "COLUMN_NO_NOTIFICATIONS": "Keine Benachrichtigungen",
             "OPTION_ALL": "Alle",
             "OPTION_INVOLVED": "Beteiligt",
             "OPTION_NONE": "Keine"
-        },
-        "PROJECT_SETTINGS": {
-            "CUSTOM_HOMEPAGE": "Custom Homepage",
-            "COLUMN_PROJECT": "Projekt",
-            "COLUMN_HOMEPAGE": "Homepage",
-            "DEFAULT_VALUE": "Default"
         }
     },
     "USER_PROFILE": {
