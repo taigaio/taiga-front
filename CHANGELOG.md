@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+## 3.4.5 (2018-10-15)
+
+### Misc
+
+- Security bug fixes
+- Minor bug fixes.
+
 ## 3.4.4 (2018-09-19)
 
 ### Misc
