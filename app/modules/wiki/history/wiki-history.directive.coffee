@@ -25,7 +25,7 @@ module = angular.module('taigaWikiHistory')
 WikiHistoryDirective = () ->
     link = (scope, el, attrs, ctrl) ->
         bindOnce scope, 'vm.wikiId', (value) ->
-            ctrl.initializeHistoryEntries(value)
+            ctrl.initializeHistory(value)
 
     return {
         scope: {},

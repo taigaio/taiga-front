@@ -19,9 +19,14 @@
 
 module = angular.module('taigaHistory')
 
+bindOnce = @.taiga.bindOnce
+
 HistorySectionDirective = () ->
     link = (scope, el, attr, ctrl) ->
-        scope.$on "object:updated", -> ctrl._loadHistory(scope.type, scope.id)
+        scope.$on "object:updated", -> ctrl._loadActivity()
+
+        scope.$watch 'vm.id', (value) ->
+            ctrl._loadHistory()
 
     return {
         link: link,

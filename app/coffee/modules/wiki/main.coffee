@@ -213,7 +213,7 @@ WikiSummaryDirective = ($log, $template, $compile, $translate, avatarService) ->
 module.directive("tgWikiSummary", ["$log", "$tgTemplate", "$compile", "$translate",  "tgAvatarService", WikiSummaryDirective])
 
 WikiWysiwyg = ($modelTransform, $rootscope, $confirm, attachmentsFullService,
-$qqueue, $repo, $analytics, wikiHistoryService) ->
+$qqueue, $repo, $analytics, activityService) ->
     link = ($scope, $el, $attrs) ->
         $scope.editableDescription = false
 
@@ -223,7 +223,7 @@ $qqueue, $repo, $analytics, wikiHistoryService) ->
                     $analytics.trackEvent("wikipage", "create", "create wiki page", 1)
                     $scope.$emit("wikipage:add")
 
-                wikiHistoryService.loadHistoryEntries()
+                activityService.fetchEntries(true)
                 $confirm.notify("success")
 
             onError = ->
@@ -290,5 +290,5 @@ module.directive("tgWikiWysiwyg", [
     "$rootScope",
     "$tgConfirm",
     "tgAttachmentsFullService",
-    "$tgQqueue", "$tgRepo", "$tgAnalytics", "tgWikiHistoryService"
+    "$tgQqueue", "$tgRepo", "$tgAnalytics", "tgActivityService"
     WikiWysiwyg])

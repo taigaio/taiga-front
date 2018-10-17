@@ -23,11 +23,12 @@ CommentWysiwyg = ($modelTransform, $rootscope, $confirm, attachmentsFullService)
 
         $scope.saveComment = (description, cb) ->
             $scope.content = ''
-            $scope.vm.type.comment = description
+            $scope.type.comment = description
 
             transform = $modelTransform.save (item) -> return
             transform.then ->
-                $rootscope.$broadcast("object:updated")
+                if $scope.onAddComment
+                    $scope.onAddComment()
             transform.finally(cb)
 
         types = {
@@ -38,11 +39,11 @@ CommentWysiwyg = ($modelTransform, $rootscope, $confirm, attachmentsFullService)
         }
 
         uploadFile = (file, cb) ->
-            return attachmentsFullService.addAttachment($scope.vm.projectId, $scope.vm.type.id, types[$scope.vm.type._name], file, true, true).then (result) ->
+            return attachmentsFullService.addAttachment($scope.vm.projectId, $scope.type.id, types[$scope.type._name], file, true, true).then (result) ->
                 cb(result.getIn(['file', 'name']), result.getIn(['file', 'url']))
 
         $scope.onChange = (markdown) ->
-            $scope.vm.type.comment = markdown
+            $scope.type.comment = markdown
 
         $scope.uploadFiles = (files, cb) ->
             for file in files
@@ -50,13 +51,16 @@ CommentWysiwyg = ($modelTransform, $rootscope, $confirm, attachmentsFullService)
 
         $scope.content = ''
 
-        $scope.$watch "vm.type", (value) ->
+        $scope.$watch "type", (value) ->
             return if not value
 
             $scope.storageKey = "comment-" + value.project + "-" + value.id + "-" + value._name
 
     return {
-        scope: true,
+        scope: {
+            type: '=',
+            onAddComment: '&'
+        },
         link: link,
         template: """
             <div>
