@@ -54,6 +54,14 @@ describe "HistorySection", ->
         }
         provide.value "tgProjectService", mocks.tgProjectService
 
+    _mockTgActivityService = () ->
+        mocks.tgActivityService = {
+            init: sinon.stub()
+            fetchEntries: sinon.stub()
+            count: null
+        }
+        provide.value "tgActivityService", mocks.tgActivityService
+
     _mocks = () ->
         module ($provide) ->
             provide = $provide
@@ -61,6 +69,7 @@ describe "HistorySection", ->
             _mockTgRepo()
             _mocktgStorage()
             _mockTgProjectService()
+            _mockTgActivityService()
             return null
 
     beforeEach ->
@@ -70,61 +79,57 @@ describe "HistorySection", ->
 
         inject ($controller) ->
             controller = $controller
-        promise = mocks.tgResources.history.get.promise().resolve()
+        mocks.tgResources.history.get.promise().resolve()
+        mocks.tgActivityService.fetchEntries.promise().resolve()
 
-    it "load historic", (done) ->
+    it "load historic", () ->
         historyCtrl = controller "HistorySection"
 
-        historyCtrl._getComments = sinon.stub()
-        historyCtrl._getActivities = sinon.stub()
+        historyCtrl._loadComments = sinon.stub()
+        historyCtrl._loadActivity = sinon.stub()
 
-        name = "name"
-        id = 4
-
-        promise = mocks.tgResources.history.get.withArgs(name, id).promise().resolve()
-        historyCtrl._loadHistory().then (data) ->
-            expect(historyCtrl._getComments).have.been.calledWith(data)
-            expect(historyCtrl._getActivities).have.been.calledWith(data)
-            done()
+        historyCtrl._loadHistory()
+        expect(historyCtrl._loadComments).have.been.called
+        expect(historyCtrl._loadActivity).have.been.called
 
     it "get Comments older first", () ->
         historyCtrl = controller "HistorySection"
-
-        comments = ['comment3', 'comment2', 'comment1']
+        historyCtrl.name = 'foo'
+        historyCtrl.id = 3
         historyCtrl.reverse = false
 
-        historyCtrl._getComments(comments)
-        expect(historyCtrl.comments).to.be.eql(['comment3', 'comment2', 'comment1'])
-        expect(historyCtrl.commentsNum).to.be.equal(3)
+        comments = ['comment3', 'comment2', 'comment1']
+        mocks.tgResources.history.get.withArgs('foo', 3).promise().resolve(comments)
+
+        historyCtrl._loadComments().then () ->
+            expect(historyCtrl.comments).to.be.eql(['comment3', 'comment2', 'comment1'])
+            expect(historyCtrl.commentsNum).to.be.equal(3)
 
     it "get Comments newer first", () ->
         historyCtrl = controller "HistorySection"
-
-        comments = ['comment3', 'comment2', 'comment1']
+        historyCtrl.name = 'foo'
+        historyCtrl.id = 3
         historyCtrl.reverse = true
 
-        historyCtrl._getComments(comments)
-        expect(historyCtrl.comments).to.be.eql(['comment1', 'comment2', 'comment3'])
-        expect(historyCtrl.commentsNum).to.be.equal(3)
+        comments = ['comment3', 'comment2', 'comment1']
+        mocks.tgResources.history.get.withArgs('foo', 3).promise().resolve(comments)
+
+        historyCtrl._loadComments().then () ->
+            expect(historyCtrl.comments).to.be.eql(['comment1', 'comment2', 'comment3'])
+            expect(historyCtrl.commentsNum).to.be.equal(3)
 
     it "get activities", () ->
         historyCtrl = controller "HistorySection"
-        activities = {
-            'activity1': {
-                'values_diff': {"k1": [0, 1]}
-            },
-            'activity2': {
-                'values_diff': {"k2": [0, 1]}
-            },
-            'activity3': {
-                'values_diff': {"k3": [0, 1]}
-            },
-        }
 
-        historyCtrl._getActivities(activities)
+        activities = Immutable.List([
+            {id: 1, name: 'history entry 1'},
+            {id: 2, name: 'history entry 2'},
+            {id: 3, name: 'history entry 3'},
+        ])
+        mocks.tgActivityService.fetchEntries.withArgs().promise().resolve(activities)
 
-        historyCtrl.activities = activities
-        expect(historyCtrl.activitiesNum).to.be.equal(3)
+        historyCtrl._loadActivity().then () ->
+            expect(historyCtrl.activities.length).to.be.equal(3)
 
     it "on active history tab", () ->
         historyCtrl = controller "HistorySection"
@@ -140,7 +145,7 @@ describe "HistorySection", ->
 
     it "delete comment", () ->
         historyCtrl = controller "HistorySection"
-        historyCtrl._loadHistory = sinon.stub()
+        historyCtrl._loadComments = sinon.stub()
 
         historyCtrl.name = "type"
         historyCtrl.id = 1
@@ -149,7 +154,8 @@ describe "HistorySection", ->
         objectId = historyCtrl.id
         commentId = 7
 
-        deleteCommentPromise = mocks.tgResources.history.deleteComment.withArgs(type, objectId, commentId).promise()
+        deleteCommentPromise = mocks.tgResources.history.deleteComment
+        .withArgs(type, objectId, commentId).promise()
 
         ctrlPromise = historyCtrl.deleteComment(commentId)
         expect(historyCtrl.deleting).to.be.equal(7)
@@ -157,12 +163,12 @@ describe "HistorySection", ->
         deleteCommentPromise.resolve()
 
         ctrlPromise.then () ->
-            expect(historyCtrl._loadHistory).have.been.called
+            expect(historyCtrl._loadComments).have.been.called
             expect(historyCtrl.deleting).to.be.null
 
     it "edit comment", () ->
         historyCtrl = controller "HistorySection"
-        historyCtrl._loadHistory = sinon.stub()
+        historyCtrl._loadComments = sinon.stub()
 
         historyCtrl.name = "type"
         historyCtrl.id = 1
@@ -173,16 +179,17 @@ describe "HistorySection", ->
         objectId = historyCtrl.id
         commentId = activityId
 
-        promise = mocks.tgResources.history.editComment.withArgs(type, objectId, activityId, comment).promise().resolve()
+        promise = mocks.tgResources.history.editComment
+        .withArgs(type, objectId, activityId, comment).promise().resolve()
 
         historyCtrl.editing = 7
         historyCtrl.editComment(commentId, comment).then () ->
-            expect(historyCtrl._loadHistory).has.been.called
+            expect(historyCtrl._loadComments).has.been.called
             expect(historyCtrl.editing).to.be.null
 
     it "restore comment", () ->
         historyCtrl = controller "HistorySection"
-        historyCtrl._loadHistory = sinon.stub()
+        historyCtrl._loadComments = sinon.stub()
 
         historyCtrl.name = "type"
         historyCtrl.id = 1
@@ -196,12 +203,12 @@ describe "HistorySection", ->
 
         historyCtrl.editing = 7
         historyCtrl.restoreDeletedComment(commentId).then () ->
-            expect(historyCtrl._loadHistory).has.been.called
+            expect(historyCtrl._loadComments).has.been.called
             expect(historyCtrl.editing).to.be.null
 
     it "add comment", () ->
         historyCtrl = controller "HistorySection"
-        historyCtrl._loadHistory = sinon.stub()
+        historyCtrl._loadComments = sinon.stub()
 
         historyCtrl.type = "type"
         type = historyCtrl.type
@@ -210,18 +217,17 @@ describe "HistorySection", ->
 
         promise = mocks.tgRepo.save.withArgs(type).promise().resolve()
 
-        historyCtrl.addComment(cb).then () ->
-            expect(historyCtrl._loadHistory).has.been.called
-            expect(cb).to.have.been.called
+        historyCtrl.addComment()
+        expect(historyCtrl._loadComments).has.been.called
 
 
     it "order comments", () ->
         historyCtrl = controller "HistorySection"
-        historyCtrl._loadHistory = sinon.stub()
+        historyCtrl._loadComments = sinon.stub()
 
         historyCtrl.reverse = false
 
         historyCtrl.onOrderComments()
         expect(historyCtrl.reverse).to.be.true
         expect(mocks.tgStorage.set).has.been.calledWith("orderComments", historyCtrl.reverse)
-        expect(historyCtrl._loadHistory).has.been.called
+        expect(historyCtrl._loadComments).has.been.called

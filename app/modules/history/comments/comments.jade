@@ -18,6 +18,6 @@ section.comments
 
     tg-comment-wysiwyg(
         tg-check-permission="{{::vm.canAddCommentPermission}}"
-        on-update="updateComment(text)"
+        on-add-comment="vm.onAddComment()"
         type="vm.type"
     )

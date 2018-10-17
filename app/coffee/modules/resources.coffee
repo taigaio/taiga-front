@@ -152,7 +152,7 @@ urls = {
     "history/us": "/history/userstory"
     "history/issue": "/history/issue"
     "history/task": "/history/task"
-    "history/wiki": "/history/wiki/%s"
+    "history/wiki": "/history/wiki"
 
     # Attachments
     "attachments/epic": "/epics/attachments"

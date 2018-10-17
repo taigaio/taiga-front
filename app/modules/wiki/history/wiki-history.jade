@@ -6,8 +6,13 @@ nav.history-tabs(ng-if="vm.historyEntries.count()>0")
         title="{{ACTIVITY.TITLE}}"
         translate="ACTIVITY.TITLE"
     )
-
-section.wiki-history(ng-if="vm.historyEntries.count()>0 && vm.toggle")
+p {{ disablePagination }}
+section.wiki-history(
+    ng-if="vm.historyEntries.count()>0 && vm.toggle"
+    infinite-scroll="vm.nextPage()"
+    infinite-scroll-immediate-check="false"
+    infinite-scroll-disabled="vm.disablePagination"
+)
     tg-wiki-history-entry.wiki-history-entry(
         tg-repeat="historyEntry in vm.historyEntries"
         history-entry="historyEntry"

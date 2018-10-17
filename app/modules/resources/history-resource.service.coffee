@@ -14,29 +14,25 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: resources/wiki-resource.service.coffee
+# File: resources/history-resource.service.coffee
 ###
 
 Resource = (urlsService, http) ->
     service = {}
 
-    service.getWikiHistory = (wikiId) ->
-        url = urlsService.resolve("history/wiki", wikiId)
-
-        httpOptions = {
-            headers: {
-                "x-disable-pagination": "1"
-            }
-        }
-
-        return http.get(url, null, httpOptions)
+    service.getHistory = (historyType, contentType, objectId, page) ->
+        url = urlsService.resolve("history/#{contentType}", )
+        return http.get("#{url}/#{objectId}", {page: page, type: historyType})
             .then (result) ->
-                return Immutable.fromJS(result.data)
+                return {
+                    list: Immutable.fromJS(result.data)
+                    headers: result.headers
+                }
 
     return () ->
-        return {"wikiHistory": service}
+        return {"history": service}
 
 Resource.$inject = ["$tgUrls", "$tgHttp"]
 
 module = angular.module("taigaResources2")
-module.factory("tgWikiHistory", Resource)
+module.factory("tgHistory", Resource)
