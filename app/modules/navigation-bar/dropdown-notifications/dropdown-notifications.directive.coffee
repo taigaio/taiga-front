@@ -22,7 +22,7 @@ timeout = @.taiga.timeout
 DropdownNotificationsDirective = ($rootScope, notificationsService, currentUserService) ->
     link = ($scope, $el, $attrs, $ctrl) ->
         $scope.notificationsList = []
-        $scope.loading = true
+        $scope.loading = false
 
         $scope.$on "notifications:loaded", (event, total) ->
             $scope.loading = false

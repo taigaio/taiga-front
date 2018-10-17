@@ -60,13 +60,15 @@
 
 .notifications-list {
     .entry {
-        border-bottom: 1px solid $whitish;
         color: $blackish;
         display: flex;
         font-size: .9rem;
         margin: 0 .8rem;
         padding: .8rem 0;
         position: relative;
+        &:not(:last-child) {
+            border-bottom: 1px solid $whitish;
+        }
         p {
             line-height: 1.25em;
             margin-bottom: 0;

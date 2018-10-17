@@ -39,7 +39,6 @@ class NotificationsController extends mixOf(taiga.Controller, taiga.PageMixin, t
         @.user = @currentUserService.getUser()
         @.scrollDisabled = false
         @.initList()
-        @.initializeSubscription()
         @.loadNotifications()
 
         @rootScope.$on "notifications:updated", (event) =>
@@ -89,13 +88,5 @@ class NotificationsController extends mixOf(taiga.Controller, taiga.PageMixin, t
         @notificationsService.setNotificationsAsRead().then =>
             @rootScope.$emit("notifications:updated")
 
-    initializeSubscription: ->
-        routingKey = "web_notifications.#{@.user.get("id")}"
-        randomTimeout = taiga.randomInt(700, 1000)
-        @events.subscribe(
-            @scope,
-            routingKey,
-            debounceLeading(randomTimeout, (message) => @rootScope.$broadcast "notifications:updated")
-        )
 
 angular.module("taigaNotifications").controller("Notifications", NotificationsController)

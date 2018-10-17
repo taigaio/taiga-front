@@ -240,7 +240,8 @@ $dropdown-width: 350px;
 
         .empty {
             color: $gray-light;
-            padding: 2.5em 0;
+            font-size: .9em;
+            padding: 1.5em 0;
             text-align: center;
             width: 100%;
         }
@@ -250,23 +251,29 @@ $dropdown-width: 350px;
             color: $gray;
             display: flex;
             flex-direction: row;
-            padding: .6rem 0 .5rem .7rem;
+            padding: .6rem .75rem;
             .notifications-title {
                 flex-grow: 1;
                 text-transform: uppercase;
             }
-            a {
-                color: $gray-light;
-                font-size: .9rem;
-                padding: 0 .7rem 0 0;
-                text-align: right;
+        }
+        .action {
+            font-size: .9rem;
+            padding-left: 1.2rem;
+            text-align: right;
+            &.disabled {
+                color: $gray-lighter;
+                cursor: default;
             }
-            a:hover {
+            &:not(.disabled) {
                 color: $primary;
+            }
+            &:not(.disabled):hover {
+                color: $primary-light;
             }
         }
         .notifications-wrapper {
-            min-height: 100px;
+            min-height: 70px;
         }
         .notifications-list {
             max-height: 400px;

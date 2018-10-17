@@ -113,6 +113,16 @@ class EventsService
               if (permission == "granted")
                   subscribe()
 
+    webNotifications: ->
+        if not @.auth.userData?
+            return
+        userId = @.auth.userData.get('id')
+
+        routingKey = "web_notifications.#{userId}"
+        randomTimeout = taiga.randomInt(700, 1000)
+        @.subscribe null, routingKey, (data) =>
+            @rootScope.$broadcast "notifications:updated"
+
     ###########################################
     # Heartbeat (Ping - Pong)
     ###########################################
@@ -243,6 +253,7 @@ class EventsService
         @.startHeartBeatMessages()
         @.notifications()
         @.liveNotifications()
+        @.webNotifications()
 
     onMessage: (event) ->
         @.log.debug "WebSocket message received: #{event.data}"
