@@ -7,7 +7,6 @@
     margin-bottom: 2em;
     .row {
         border-bottom: 0;
-        padding: .5rem 0;
     }
     .table-header {
         @include font-type(bold);
@@ -34,13 +33,16 @@
                 cursor: default;
             }
         }
-        .custom-description {
-            color: $gray-light;
-        }
     }
     .single-custom-field {
         border-bottom: 1px solid $whitish;
         color: $gray;
+    }
+    .js-view-custom-field {
+        padding: .75rem 0;
+        .custom-extra-attr-wrapper {
+            margin-left: 1em;
+        }
     }
     .icon-drag {
         fill: $gray-light;
@@ -55,6 +57,13 @@
     .custom-name {
         flex-basis: 25%;
         flex-shrink: 0;
+        a {
+            padding: .5em;
+        }
+        svg {
+            height: 12px;
+            width: 12px;
+        }
     }
     .custom-description {
         @include ellipsis(100%);
@@ -62,7 +71,7 @@
         flex-grow: 8;
     }
     .custom-field-type {
-        flex-basis: 10%;
+        flex-basis: 12%;
         flex-grow: 0;
         flex-shrink: 0;
     }
@@ -95,7 +104,34 @@
             display: inline-block;
         }
     }
-    form {
+    .custom-field-extra {
+        align-items: center;
+        border-bottom: 1px solid $whitish;
+        color: $gray-light;
+        font-size: .95em;
+        padding: .25em 1.5em;
+    }
+    .js-view-custom-field-extra {
+        padding: .5em;
+    }
+    .js-edit-custom-field {
+        margin-left: .4rem;
+    }
+    .custom-extra-attr-wrapper {
+        flex-grow: 1;
+    }
+    .custom-extra-actions {
+        padding: .5em;
+        a {
+            color: $primary;
+        }
+        svg {
+            height: 10px;
+            margin-right: .25em;
+            width: 10px;
+        }
+    }
+    .js-form {
         .custom-options-wrapper {
             opacity: 1;
         }

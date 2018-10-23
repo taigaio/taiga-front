@@ -1,0 +1,33 @@
+.js-child-sortable(data-id="{{ attr.id }}")
+    .js-form(
+        ng-repeat="option in attr.extra track by $index"
+        tg-bind-scope
+    )
+        div.row.js-view-custom-field-extra
+            tg-svg.e2e-drag(svg-icon="icon-drag")
+            div.custom-extra-attr-wrapper
+                span {{ option }}
+
+        div.row.js-edit-custom-field-extra.hidden
+            div.custom-extra-attr-wrapper
+                input(
+                    type="text"
+                    name="name"
+                    ng-model="attr.extra[$index]"
+                    data-required="true"
+                    data-maxlength="64"
+                )
+            .custom-options
+                .custom-options-wrapper
+                    a.js-delete-custom-field-extra-button(
+                        href=""
+                        tabindex="-1"
+                        title="{{'ADMIN.CUSTOM_ATTRIBUTES.DELETE' | translate}}"
+                        ng-if="attr.extra.length > 1"
+                    )
+                        tg-svg(svg-icon="icon-trash")
+
+div.custom-extra-actions.hidden
+    a.js-add-option-custom-field-extra-button(href="")
+        tg-svg(svg-icon="icon-add")
+        span Add option

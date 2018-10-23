@@ -544,6 +544,9 @@ MULTILINE_TYPE = "multiline"
 RICHTEXT_TYPE = "richtext"
 DATE_TYPE = "date"
 URL_TYPE = "url"
+DROPDOWN_TYPE = "dropdown"
+CHECKBOX_TYPE = "checkbox"
+NUMBER_TYPE = "number"
 
 
 TYPE_CHOICES = [
@@ -566,6 +569,18 @@ TYPE_CHOICES = [
     {
         key: URL_TYPE,
         name: "ADMIN.CUSTOM_FIELDS.FIELD_TYPE_URL"
+    },
+    {
+        key: DROPDOWN_TYPE,
+        name: "ADMIN.CUSTOM_FIELDS.FIELD_TYPE_DROPDOWN"
+    },
+    {
+        key: CHECKBOX_TYPE,
+        name: "ADMIN.CUSTOM_FIELDS.FIELD_TYPE_CHECKBOX"
+    },
+    {
+        key: NUMBER_TYPE,
+        name: "ADMIN.CUSTOM_FIELDS.FIELD_TYPE_NUMBER"
     }
 ]
 
@@ -605,11 +620,19 @@ class ProjectCustomAttributesController extends mixOf(taiga.Controller, taiga.Pa
     #########################
     # Custom Attribute
     #########################
+    _parseAttributesExtra: () ->
+        @scope.customAttributes = _.map(@scope.customAttributes, (x) => @._parseAttributeExtra(x))
+
+    _parseAttributeExtra: (attr) ->
+        if (attr.type == 'dropdown' && !attr.extra)
+            attr.extra = ['']
+        return attr
 
     loadCustomAttributes: =>
         return @rs.customAttributes[@scope.type].list(@scope.projectId).then (customAttributes) =>
             @scope.customAttributes = customAttributes
             @scope.maxOrder = _.maxBy(customAttributes, "order")?.order
+            @._parseAttributesExtra()
             return customAttributes
 
     createCustomAttribute: (attrValues) =>
@@ -647,23 +670,63 @@ ProjectCustomAttributesDirective = ($log, $confirm, animationFrame, $translate) 
         $scope.$on "$destroy", ->
             $el.off()
 
+        $scope.isExtraVisible = {}
+
+        _manageFormEvent = (event, callback) ->
+            event.preventDefault()
+            formEl = angular.element(event.currentTarget).closest("form")
+            callback(formEl)
+
         ##################################
         # Drag & Drop
         ##################################
-        sortableEl = $el.find(".js-sortable")
-        drake = dragula([sortableEl[0]], {
-            direction: 'vertical',
-            copySortSource: false,
-            copy: false,
-            mirrorContainer: sortableEl[0],
-            moves: (item) -> return $(item).is('div[tg-bind-scope]')
-        })
 
-        drake.on 'dragend', (item) ->
-            itemEl = $(item)
-            itemAttr = itemEl.scope().attr
-            itemIndex = itemEl.index()
-            $ctrl.moveCustomAttributes(itemAttr, itemIndex)
+        initDraggable = ->
+            sortableEl = $el.find(".js-sortable")
+            drake = dragula([sortableEl[0]], {
+                direction: 'vertical',
+                copySortSource: false,
+                copy: false,
+                mirrorContainer: sortableEl[0],
+                moves: (item, source, handle) ->
+                    childItem = $(handle).closest('.js-child-sortable')
+                    if childItem[0]
+                        return false
+                    return $(item).is('div[tg-bind-scope]')
+            })
+
+            drake.on 'dragend', (item) ->
+                itemEl = $(item)
+                itemAttr = itemEl.scope().attr
+                itemIndex = itemEl.index()
+                $ctrl.moveCustomAttributes(itemAttr, itemIndex)
+                
+            sortableChildren = $el.find(".js-child-sortable")
+            for el in sortableChildren
+                drake[el] = dragula([el], {
+                    direction: 'vertical',
+                    copySortSource: false,
+                    copy: false,
+                    mirrorContainer: el,
+                    moves: (item) -> return $(item).is('div[tg-bind-scope]')
+                })
+
+                drake[el].on 'dragend', (item) ->
+                    itemEl = $(item)
+                    attrExtra = itemEl.scope().attr.extra
+
+                    sourceIndex = itemEl.scope().$index
+                    targetIndex = itemEl.index()
+
+                    value = attrExtra[sourceIndex]
+
+                    attrExtra.splice(sourceIndex, 1)
+                    attrExtra.splice(targetIndex, 0, value)
+
+                    itemEl.scope().attr.setAttr('extra', attrExtra)
+                    $ctrl.saveCustomAttribute(itemEl.scope().attr).then ->
+                        $confirm.notify("success")
+
 
         ##################################
         # New custom attribute
@@ -695,13 +758,13 @@ ProjectCustomAttributesDirective = ($log, $confirm, animationFrame, $translate) 
             form = formEl.checksley()
             return if not form.validate()
 
-            onSucces = =>
+            onSucces = ->
                 $ctrl.loadCustomAttributes()
                 hideCreateForm()
                 resetNewAttr()
                 $confirm.notify("success")
 
-            onError = (data) =>
+            onError = (data) ->
                 form.setErrors(data)
 
             attr = $scope.newAttr
@@ -714,6 +777,22 @@ ProjectCustomAttributesDirective = ($log, $confirm, animationFrame, $translate) 
             hideCreateForm()
             resetNewAttr()
 
+        initAttrType = (formEl) ->
+            attr =  if formEl.scope().newAttr then formEl.scope().newAttr else formEl.scope().attr
+
+            if attr.type isnt "dropdown"
+                return
+
+            if attr.extra?.length
+                return
+
+            attr.extra = ['']
+            if attr.id
+                showEditForm(formEl)
+            else
+                showExtra(-1)
+                formEl.scope().$apply()
+
         $scope.$watch "customAttributes", (customAttributes) ->
             return if not customAttributes
 
@@ -725,17 +804,16 @@ ProjectCustomAttributesDirective = ($log, $confirm, animationFrame, $translate) 
                 hideCreateForm()
                 showAddButton()
                 showCancelButton()
+                initDraggable()
+
+        $el.on "change", ".custom-field-type select", (event) ->
+            _manageFormEvent(event, initAttrType)
 
         $el.on "click", ".js-add-custom-field-button", (event) ->
-            event.preventDefault()
-            showCreateForm()
+            _manageFormEvent(event, showCreateForm)
 
         $el.on "click", ".js-create-custom-field-button", debounce 2000, (event) ->
-            event.preventDefault()
-            target = angular.element(event.currentTarget)
-            formEl = target.closest("form")
-
-            create(formEl)
+            _manageFormEvent(event, create)
 
         $el.on "click", ".js-cancel-new-custom-field-button", (event) ->
             event.preventDefault()
@@ -743,9 +821,7 @@ ProjectCustomAttributesDirective = ($log, $confirm, animationFrame, $translate) 
 
         $el.on "keyup", ".js-new-custom-field input", (event) ->
             if event.keyCode == 13 # Enter
-                target = angular.element(event.currentTarget)
-                formEl = target.closest("form")
-                create(formEl)
+                _manageFormEvent(event, create)
             else if event.keyCode == 27 # Esc
                 cancelCreate()
 
@@ -757,64 +833,56 @@ ProjectCustomAttributesDirective = ($log, $confirm, animationFrame, $translate) 
             formEl.find(".js-view-custom-field").addClass("hidden")
             formEl.find(".js-edit-custom-field").removeClass("hidden")
             formEl.find(".js-edit-custom-field input:visible").first().focus().select()
-
-        hideEditForm = (formEl) ->
-            formEl.find(".js-edit-custom-field").addClass("hidden")
-            formEl.find(".js-view-custom-field").removeClass("hidden")
-
-        revertChangesInCustomAttribute = (formEl) ->
-            $scope.$apply ->
-                formEl.scope().attr.revert()
+            formEl.find(".js-view-custom-field-extra").addClass("hidden")
+            formEl.find(".js-edit-custom-field-extra").removeClass("hidden")
+            formEl.find(".custom-extra-actions").removeClass("hidden")
+            showExtra(formEl.scope().attr.id)
+            $scope.$apply()
 
         update = (formEl) ->
             form = formEl.checksley()
             return if not form.validate()
-
-            onSucces = =>
+            onSucces = ->
                 $ctrl.loadCustomAttributes()
                 hideEditForm(formEl)
                 $confirm.notify("success")
 
-            onError = (data) =>
+            onError = (data) ->
                 form.setErrors(data)
 
             attr = formEl.scope().attr
+            attr.setAttr('extra', attr.extra)
             $ctrl.saveCustomAttribute(attr).then(onSucces, onError)
 
         cancelUpdate = (formEl) ->
             hideEditForm(formEl)
             revertChangesInCustomAttribute(formEl)
 
+        hideEditForm = (formEl) ->
+            formEl.find(".js-edit-custom-field").addClass("hidden")
+            formEl.find(".js-view-custom-field").removeClass("hidden")
+            formEl.find(".js-edit-custom-field-extra").addClass("hidden")
+            formEl.find(".js-view-custom-field-extra").removeClass("hidden")
+            formEl.find(".custom-extra-actions").addClass("hidden")
+
+        revertChangesInCustomAttribute = (formEl) ->
+            $scope.$apply ->
+                formEl.scope().attr.revert()
+
         $el.on "click", ".js-edit-custom-field-button", (event) ->
-            event.preventDefault()
-            target = angular.element(event.currentTarget)
-            formEl = target.closest("form")
+            _manageFormEvent(event, showEditForm)
 
-            showEditForm(formEl)
-
-        $el.on "click", ".js-update-custom-field-button", debounce 2000, (event) ->
-            event.preventDefault()
-            target = angular.element(event.currentTarget)
-            formEl = target.closest("form")
-
-            update(formEl)
+        $el.on "click", ".js-update-custom-field-button", debounce 1000, (event) ->
+            _manageFormEvent(event, update)
 
         $el.on "click", ".js-cancel-edit-custom-field-button", (event) ->
-            event.preventDefault()
-            target = angular.element(event.currentTarget)
-            formEl = target.closest("form")
-
-            cancelUpdate(formEl)
+            _manageFormEvent(event, cancelUpdate)
 
         $el.on "keyup", ".js-edit-custom-field input", (event) ->
             if event.keyCode == 13 # Enter
-                target = angular.element(event.currentTarget)
-                formEl = target.closest("form")
-                update(formEl)
+                _manageFormEvent(event, update)
             else if event.keyCode == 27 # Esc
-                target = angular.element(event.currentTarget)
-                formEl = target.closest("form")
-                cancelUpdate(formEl)
+                _manageFormEvent(event, cancelUpdate)
 
         ##################################
         # Delete custom attribute
@@ -837,16 +905,66 @@ ProjectCustomAttributesDirective = ($log, $confirm, animationFrame, $translate) 
                 $ctrl.deleteCustomAttribute(attr).then(onSucces, onError)
 
         $el.on "click", ".js-delete-custom-field-button", debounce 2000, (event) ->
-            event.preventDefault()
-            target = angular.element(event.currentTarget)
-            formEl = target.closest("form")
+            _manageFormEvent(event, deleteCustomAttribute)
 
-            deleteCustomAttribute(formEl)
+        ##################################
+        # Custom attribute extra
+        ##################################
+
+        $scope.toggleExtraVisible = (index) ->
+            if not $scope.isExtraVisible[index]
+                showExtra(index)
+            else
+                hideExtra(index)
+
+        showExtra = (index) ->
+            $scope.isExtraVisible[index] = true
+
+        hideExtra = (index) ->
+            $scope.isExtraVisible[index] = false
+    
+        _manageExtraFormEvent = (event, callback) ->
+            event.preventDefault()
+            formEl = angular.element(event.currentTarget).closest("form")
+            formExtraEl = angular.element(event.currentTarget).closest(".js-form")
+            callback(formEl, formExtraEl)
+
+        addExtraOption = (formEl, formExtraEl) ->
+            formScope = formEl.scope()
+            attrExtra = if formScope.newAttr then formScope.newAttr.extra else formScope.attr.extra
+            attrExtra.push("")
+            formScope.$apply()
+
+            formEl.find(".js-edit-custom-field-extra").last().removeClass("hidden")
+            formEl.find(".js-view-custom-field-extra").last().addClass("hidden")
+
+        removeExtraOption = (formEl, formExtraEl) ->
+            attrExtra = formEl.scope().attr.extra
+            attrExtra.splice(formExtraEl.scope().$index, 1)
+            formExtraEl.scope().$apply()
+
+        $el.on "keyup", ".js-edit-custom-field-extra input", (event) ->
+            if event.keyCode == 13 # Enter
+                _manageFormEvent(event, update)
+            else if event.keyCode == 27 # Esc
+                _manageFormEvent(event, cancelUpdate)
+
+        $el.on "keyup", ".js-new-custom-field-extra input", (event) ->
+            if event.keyCode == 13 # Enter
+                _manageFormEvent(event, create)
+            else if event.keyCode == 27 # Esc
+                cancelCreate()
+  
+        $el.on "click", ".js-add-option-custom-field-extra-button", debounce 500, (event) ->
+            _manageExtraFormEvent(event, addExtraOption)
+
+        $el.on "click", ".js-delete-custom-field-extra-button", debounce 500, (event) ->
+            _manageExtraFormEvent(event, removeExtraOption)
 
     return {link: link}
 
 module.directive("tgProjectCustomAttributes", ["$log", "$tgConfirm", "animationFrame", "$translate",
-                                               ProjectCustomAttributesDirective])
+ProjectCustomAttributesDirective])
 
 
 #############################################################################

@@ -23,7 +23,21 @@ section.custom-fields-table.basic-table
                 form.js-form(tg-bind-scope)
                     div.row.single-custom-field.js-view-custom-field
                         tg-svg.e2e-drag(svg-icon="icon-drag")
-                        div.custom-name {{ attr.name }}
+                        div.custom-name
+                            span {{ attr.name }}
+                            a(
+                                href=""
+                                ng-click="toggleExtraVisible(attr.id)"
+                                ng-if="attr.type == 'dropdown'"
+                            )
+                                tg-svg(
+                                    ng-if="!isExtraVisible[attr.id]"
+                                    svg-icon="icon-arrow-right"
+                                )
+                                tg-svg(
+                                    ng-if="isExtraVisible[attr.id]"
+                                    svg-icon="icon-arrow-down"
+                                )
                         div.custom-description {{ attr.description }}
                         div.custom-field-type(ng-switch on="attr.type")
                             span(
@@ -46,6 +60,18 @@ section.custom-fields-table.basic-table
                                 ng-switch-when="url"
                                 translate="ADMIN.CUSTOM_FIELDS.FIELD_TYPE_URL"
                             )
+                            span(
+                                ng-switch-when="dropdown"
+                                translate="ADMIN.CUSTOM_FIELDS.FIELD_TYPE_DROPDOWN"
+                            )
+                            span(
+                                ng-switch-when="checkbox"
+                                translate="ADMIN.CUSTOM_FIELDS.FIELD_TYPE_CHECKBOX"
+                            )
+                            span(
+                                ng-switch-when="number"
+                                translate="ADMIN.CUSTOM_FIELDS.FIELD_TYPE_NUMBER"
+                            )
                         .custom-options
                             .custom-options-wrapper
                                 a.js-edit-custom-field-button(
@@ -59,77 +85,84 @@ section.custom-fields-table.basic-table
                                     title="{{'ADMIN.CUSTOM_ATTRIBUTES.DELETE' | translate}}"
                                 )
                                     tg-svg(svg-icon="icon-trash")
-
-                    div.row.single-custom-field.js-edit-custom-field.hidden
-                        fieldset.custom-name
-                            input(
-                                type="text"
-                                name="name"
-                                placeholder="{{'ADMIN.CUSTOM_ATTRIBUTES.SET_FIELD_NAME' | translate}}"
-                                ng-model="attr.name"
-                                data-required="true"
-                                data-maxlength="64"
-                            )
-                        fieldset.custom-description
-                            input(
-                                type="text"
-                                name="description"
-                                placeholder="{{'ADMIN.CUSTOM_ATTRIBUTES.SET_FIELD_DESCRIPTION' | translate}}"
-                                ng-model="attr.description"
-                            )
-                        fieldset.custom-field-type
-                            select(
-                                ng-model="attr.type"
-                                ng-options="type.key as type.name|translate for type in TYPE_CHOICES"
-                            )
-                        fieldset.custom-options
-                            div.custom-options-wrapper
-                                a.js-update-custom-field-button(
-                                    href="",
-                                    title="{{'ADMIN.CUSTOM_ATTRIBUTES.ACTION_UPDATE' | translate}}"
+                    .js-edit-custom-field.hidden
+                        div.row.single-custom-field
+                            fieldset.custom-name
+                                input(
+                                    type="text"
+                                    name="name"
+                                    placeholder="{{'ADMIN.CUSTOM_ATTRIBUTES.SET_FIELD_NAME' | translate}}"
+                                    ng-model="attr.name"
+                                    data-required="true"
+                                    data-maxlength="64"
                                 )
-                                    tg-svg(svg-icon="icon-save")
-
-                                a.js-cancel-edit-custom-field-button(
-                                    href="",
-                                    title="{{'ADMIN.CUSTOM_ATTRIBUTES.ACTION_CANCEL_EDITION' | translate}}"
+                            fieldset.custom-description
+                                input(
+                                    type="text"
+                                    name="description"
+                                    placeholder="{{'ADMIN.CUSTOM_ATTRIBUTES.SET_FIELD_DESCRIPTION' | translate}}"
+                                    ng-model="attr.description"
                                 )
-                                    tg-svg(svg-icon="icon-close")
+                            fieldset.custom-field-type
+                                select(
+                                    ng-model="attr.type"
+                                    ng-options="type.key as type.name|translate for type in TYPE_CHOICES"
+                                )
+                            fieldset.custom-options
+                                div.custom-options-wrapper
+                                    a.js-update-custom-field-button(
+                                        href="",
+                                        title="{{'ADMIN.CUSTOM_ATTRIBUTES.ACTION_UPDATE' | translate}}"
+                                    )
+                                        tg-svg(svg-icon="icon-save")
 
-        form.row.single-custom-field.js-new-custom-field.hidden
-            fieldset.custom-name
-                input(
-                    type="text"
-                    name="name"
-                    placeholder="{{'ADMIN.CUSTOM_ATTRIBUTES.SET_FIELD_NAME' | translate}}"
-                    ng-model="newAttr.name"
-                    data-required="true"
-                    data-maxlength="64"
-                )
-            fieldset.custom-description
-                input(
-                    type="text"
-                    name="description"
-                    placeholder="{{'ADMIN.CUSTOM_ATTRIBUTES.SET_FIELD_DESCRIPTION' | translate}}"
-                    ng-model="newAttr.description"
-                )
-            fieldset.custom-field-type
-                select(
-                    ng-model="newAttr.type"
-                    ng-options="type.key as type.name|translate for type in TYPE_CHOICES"
-                )
-                    option(value="", translate="ADMIN.CUSTOM_ATTRIBUTES.FIELD_TYPE_DEFAULT")
+                                    a.js-cancel-edit-custom-field-button(
+                                        href="",
+                                        title="{{'ADMIN.CUSTOM_ATTRIBUTES.ACTION_CANCEL_EDITION' | translate}}"
+                                    )
+                                        tg-svg(svg-icon="icon-close")
 
-            fieldset.custom-options
-                div.custom-options-wrapper
-                    a.js-create-custom-field-button(
-                        href="",
-                        title="{{'ADMIN.CUSTOM_ATTRIBUTES.SAVE_TITLE' | translate}}"
+                    div.custom-field-extra(ng-show="attr.type == 'dropdown' && isExtraVisible[attr.id]")
+                        include admin-custom-attributes-extra
+
+        form(tg-bind-scope)
+            div.row.single-custom-field.js-new-custom-field.hidden
+                fieldset.custom-name
+                    input(
+                        type="text"
+                        name="name"
+                        placeholder="{{'ADMIN.CUSTOM_ATTRIBUTES.SET_FIELD_NAME' | translate}}"
+                        ng-model="newAttr.name"
+                        data-required="true"
+                        data-maxlength="64"
                     )
-                        tg-svg(svg-icon="icon-save")
-
-                    a.js-cancel-new-custom-field-button(
-                        href="",
-                        title="{{'ADMIN.CUSTOM_ATTRIBUTES.CANCEL_TITLE' | translate}}"
+                fieldset.custom-description
+                    input(
+                        type="text"
+                        name="description"
+                        placeholder="{{'ADMIN.CUSTOM_ATTRIBUTES.SET_FIELD_DESCRIPTION' | translate}}"
+                        ng-model="newAttr.description"
                     )
-                        tg-svg(svg-icon="icon-close")
+                fieldset.custom-field-type
+                    select(
+                        ng-model="newAttr.type"
+                        ng-options="type.key as type.name|translate for type in TYPE_CHOICES"
+                    )
+                        option(value="", translate="ADMIN.CUSTOM_ATTRIBUTES.FIELD_TYPE_DEFAULT")
+
+                fieldset.custom-options
+                    div.custom-options-wrapper
+                        a.js-create-custom-field-button(
+                            href="",
+                            title="{{'ADMIN.CUSTOM_ATTRIBUTES.SAVE_TITLE' | translate}}"
+                        )
+                            tg-svg(svg-icon="icon-save")
+
+                        a.js-cancel-new-custom-field-button(
+                            href="",
+                            title="{{'ADMIN.CUSTOM_ATTRIBUTES.CANCEL_TITLE' | translate}}"
+                        )
+                            tg-svg(svg-icon="icon-close")
+
+            div.custom-field-extra(ng-show="newAttr.type == 'dropdown' && isExtraVisible[-1]")
+                include admin-custom-attributes-new-extra

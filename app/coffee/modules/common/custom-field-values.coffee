@@ -31,6 +31,9 @@ RICHTEXT_TYPE = "url"
 MULTILINE_TYPE = "multiline"
 DATE_TYPE = "date"
 URL_TYPE = "url"
+DROPDOWN_TYPE = "dropdown"
+CHECKBOX_TYPE = "checkbox"
+NUMBER_TYPE = "number"
 
 
 TYPE_CHOICES = [
@@ -53,6 +56,18 @@ TYPE_CHOICES = [
     {
         key: RICHTEXT_TYPE,
         name: "ADMIN.CUSTOM_FIELDS.FIELD_TYPE_RICHTEXT"
+    },
+    {
+        key: DROPDOWN_TYPE,
+        name: "ADMIN.CUSTOM_FIELDS.FIELD_TYPE_DROPDOWN"
+    },
+    {
+        key: CHECKBOX_TYPE,
+        name: "ADMIN.CUSTOM_FIELDS.FIELD_TYPE_CHECKBOX"
+    },
+    {
+        key: NUMBER_TYPE,
+        name: "ADMIN.CUSTOM_FIELDS.FIELD_TYPE_NUMBER"
     }
 ]
 
@@ -155,8 +170,11 @@ CustomAttributeValueDirective = ($template, $selectedText, $compile, $translate,
         render = (attributeValue, edit=false) ->
             if attributeValue.type is DATE_TYPE and attributeValue.value
                 value = moment(attributeValue.value, "YYYY-MM-DD").format(prettyDate)
+            if attributeValue.type is NUMBER_TYPE and attributeValue.value
+                value = parseFloat(attributeValue.value)
             else
                 value = attributeValue.value
+
             editable = isEditable()
 
             ctx = {
@@ -164,12 +182,14 @@ CustomAttributeValueDirective = ($template, $selectedText, $compile, $translate,
                 name: attributeValue.name
                 description: attributeValue.description
                 value: value
-                isEditable: editable
                 type: attributeValue.type
+                isEditable: editable
             }
 
             scope = $scope.$new()
             scope.attributeHtml = wysiwygService.getHTML(value)
+            scope.extra = attributeValue.extra
+            scope.model = value
 
             if editable and (edit or not value)
                 html = templateEdit(ctx)
@@ -214,11 +234,19 @@ CustomAttributeValueDirective = ($template, $selectedText, $compile, $translate,
             form = $el.find("form").checksley()
             return if not form.validate()
 
-            input = $el.find("input[name=value], textarea[name='value']")
-            attributeValue.value = input.val()
-            if attributeValue.type is DATE_TYPE
-                if moment(attributeValue.value, prettyDate).isValid()
+            if attributeValue.type is DROPDOWN_TYPE
+                formControl = $el.find("select[name='value']")
+                attributeValue.value = formControl.val()
+            else if attributeValue.type is CHECKBOX_TYPE
+                formControl = $el.find("input[name=value]")
+                attributeValue.value = formControl[0].checked
+            else
+                formControl = $el.find("input[name=value], textarea[name='value']")
+                attributeValue.value = formControl.val()
+                if attributeValue.type is DATE_TYPE and moment(attributeValue.value, prettyDate).isValid()
                     attributeValue.value = moment(attributeValue.value, prettyDate).format("YYYY-MM-DD")
+                if attributeValue.type is NUMBER_TYPE
+                    attributeValue.value = parseFloat(attributeValue.value)
 
             $scope.$apply ->
                 $ctrl.updateAttributeValue(attributeValue).then ->

@@ -19,6 +19,24 @@ form.custom-field-single.editable
         input#custom-field-value(name="value", type="text", data-pikaday, value!="<%- value %>")
         <% } else if (type=="url") { %>
         input#custom-field-value(name="value", type="url", value!="<%- value %>")
+        <% } else if (type=="dropdown") { %>
+        select#custom-field-value(
+            name="value"
+            ng-model="model"
+        )
+            option(ng-repeat="option in extra", value="{{ option }}") {{ option }}
+        <% } else if (type=="number") { %>
+        input#custom-field-value(name="value", type="number", value!="<%- value %>")
+        <% } else if (type=="checkbox") { %>
+        div.check
+            input(
+                name="value"
+                type="checkbox",
+                ng-checked="model"
+            )
+            div
+            span.check-text.check-yes(translate="COMMON.YES")
+            span.check-text.check-no(translate="COMMON.NO")
         <% } else { %>
         input#custom-field-value(name="value", type="text", value!="<%- value %>")
         <% } %>
