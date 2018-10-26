@@ -1,4 +1,9 @@
 .admin-membership {
+
+    .header-message {
+        background: lighten($primary, 65%);
+        padding: 1rem;
+    }
     .limit-users-warning {
         @include font-size(small);
         color: $primary;

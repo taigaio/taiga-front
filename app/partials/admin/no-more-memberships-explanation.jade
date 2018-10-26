@@ -7,5 +7,5 @@ p.admin-subtitle(
 p.admin-subtitle(
     ng-if="project.i_am_owner == false"
     translate="ADMIN.MEMBERSHIPS.LIMIT_USERS_WARNING_MESSAGE_FOR_ADMIN"
-    translate-values="{members: project.total_memberships}"
+    translate-values="{members: project.total_memberships, owner_email: project.owner.username }"
 )
