@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## 3.4.6 (2018-10-30)
+
+### Misc
+
+- Update subscriptions messages
+
 ## 3.4.5 (2018-10-15)
 
 ### Misc
