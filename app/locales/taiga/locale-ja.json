@@ -459,7 +459,8 @@
             "PAGE_TITLE": "メンバーシップ - {{projectName}}",
             "ADD_BUTTON": "+ 新規メンバー",
             "ADD_BUTTON_TITLE": "新規メンバーを追加",
-            "LIMIT_USERS_WARNING_MESSAGE_FOR_ADMIN": "このプロジェクトは許可されている最大メンバー数<strong>({{members}}名)</strong>に達しました。",
+            "UPGRADE_BUTTON": "Upgrade your plan",
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_ADMIN": "If you would like to <strong>add more members</strong>, please contact the project owner <a href='mailto:{{ owner_email }}' title='{{ owner_email }}'>{{ owner_email }}</a>",
             "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "このプロジェクトは許可されている最大メンバー数<strong>({{members}}名)</strong>に達しました。上限を増やしたい場合は管理者にお問い合わせください。"
         },
         "PROJECT_EXPORT": {

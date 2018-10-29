@@ -459,7 +459,8 @@
             "PAGE_TITLE": "팀원 - {{projectName}}",
             "ADD_BUTTON": "회원 추가하기",
             "ADD_BUTTON_TITLE": "회원 추가하기",
-            "LIMIT_USERS_WARNING_MESSAGE_FOR_ADMIN": "안타깝게도, 프로젝트의 <strong>({{members}})</strong> 허용된 회원 수 제한에 도달했습니다. ",
+            "UPGRADE_BUTTON": "Upgrade your plan",
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_ADMIN": "If you would like to <strong>add more members</strong>, please contact the project owner <a href='mailto:{{ owner_email }}' title='{{ owner_email }}'>{{ owner_email }}</a>",
             "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "이 프로젝트는 허용된 최대 회원 수 <strong>({{members}})</strong> 명에 도달하였습니다. 더 많은 최대 회원 수를 할당받고 싶다면 관리자에게 문의하세요."
         },
         "PROJECT_EXPORT": {

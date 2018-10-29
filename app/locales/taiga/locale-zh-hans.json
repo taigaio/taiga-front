@@ -459,7 +459,8 @@
             "PAGE_TITLE": "成员资格 - {{projectName}}",
             "ADD_BUTTON": "+ 新成员",
             "ADD_BUTTON_TITLE": "增加新成员",
-            "LIMIT_USERS_WARNING_MESSAGE_FOR_ADMIN": "对不起，本项目已经达到它所允许的最多成员上限 <strong>({{members}})</strong>。",
+            "UPGRADE_BUTTON": "Upgrade your plan",
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_ADMIN": "If you would like to <strong>add more members</strong>, please contact the project owner <a href='mailto:{{ owner_email }}' title='{{ owner_email }}'>{{ owner_email }}</a>",
             "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "这个项目已经达到它的允许最多成员上限 <strong>({{members}})</strong>。如果你希望增加这个上限，请联系管理员。"
         },
         "PROJECT_EXPORT": {

@@ -459,7 +459,8 @@
             "PAGE_TITLE": "Mitgliedschaften - {{projectName}}",
             "ADD_BUTTON": "+ Neues Mitglied",
             "ADD_BUTTON_TITLE": "Neues Mitglied hinzufügen",
-            "LIMIT_USERS_WARNING_MESSAGE_FOR_ADMIN": "Leider hat dieses Projekt sein Limit von <strong>({{members}})</strong> Mitgliedern bereits erreicht",
+            "UPGRADE_BUTTON": "Upgrade your plan",
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_ADMIN": "If you would like to <strong>add more members</strong>, please contact the project owner <a href='mailto:{{ owner_email }}' title='{{ owner_email }}'>{{ owner_email }}</a>",
             "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "Dieses Projekt hat seine Grenze von <strong>({{members}})</strong> erlaubten Mitgliedern erreicht. Wenn Sie diese Grenze erhöhen möchten, kontaktieren Sie den Administrator."
         },
         "PROJECT_EXPORT": {

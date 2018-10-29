@@ -459,7 +459,8 @@
             "PAGE_TITLE": "Filiados - {{projectName}}",
             "ADD_BUTTON": "+ Novo Membro",
             "ADD_BUTTON_TITLE": "Adicionar novo membro",
-            "LIMIT_USERS_WARNING_MESSAGE_FOR_ADMIN": "Infelizmente, este projeto atingiu o número máximo de <strong>({{membros}})</strong> membros permitidos.",
+            "UPGRADE_BUTTON": "Upgrade your plan",
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_ADMIN": "If you would like to <strong>add more members</strong>, please contact the project owner <a href='mailto:{{ owner_email }}' title='{{ owner_email }}'>{{ owner_email }}</a>",
             "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "Este projeto atingiu o limite de <strong>({{members}})</strong> membros permitidos. Se você deseja aumentar este limite entre em contato com o administrador."
         },
         "PROJECT_EXPORT": {

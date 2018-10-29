@@ -459,7 +459,8 @@
             "PAGE_TITLE": "Medlemskap - {{projectName}}",
             "ADD_BUTTON": "+ Ny medlem",
             "ADD_BUTTON_TITLE": "Lägg till ny medlem",
-            "LIMIT_USERS_WARNING_MESSAGE_FOR_ADMIN": "Dessvärre har detta projekt nått sin gräns för <strong>({{members}})</strong> tillåtna medlemmar.",
+            "UPGRADE_BUTTON": "Upgrade your plan",
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_ADMIN": "If you would like to <strong>add more members</strong>, please contact the project owner <a href='mailto:{{ owner_email }}' title='{{ owner_email }}'>{{ owner_email }}</a>",
             "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "Detta projektet har nått sin gräns för <strong>({{members}})</strong> tillåtna medlemmar. Kontakta administratören om du vill utöka gränsen."
         },
         "PROJECT_EXPORT": {

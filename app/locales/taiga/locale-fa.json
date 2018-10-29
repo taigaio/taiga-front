@@ -459,7 +459,8 @@
             "PAGE_TITLE": "عضویت‌ها - {{projectName}}",
             "ADD_BUTTON": "+ افزودن عضو جدید",
             "ADD_BUTTON_TITLE": "اضافه کردن عضو جدید",
-            "LIMIT_USERS_WARNING_MESSAGE_FOR_ADMIN": "متأسفانه این پروژه به محدودیت <strong>({{members}})</strong>عضو مجاز آن رسیده است.",
+            "UPGRADE_BUTTON": "Upgrade your plan",
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_ADMIN": "If you would like to <strong>add more members</strong>, please contact the project owner <a href='mailto:{{ owner_email }}' title='{{ owner_email }}'>{{ owner_email }}</a>",
             "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "این پروژه به محدودیت <strong>({{members}})</strong>عضو مجاز خود رسیده است. اگر می‌خواهید محدودیت را افزایش دهید، با ادمین تماس بگیرید."
         },
         "PROJECT_EXPORT": {
