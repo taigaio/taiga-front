@@ -90,6 +90,11 @@ class MembershipsController extends mixOf(taiga.Controller, taiga.PageMixin, tai
             @scope.memberships = _.filter(data.models, (membership) ->
                                     membership.user == null or membership.is_user_active)
 
+            _.map(@scope.memberships, (member) =>
+                if member.is_owner
+                    @scope.projectOwnerEmail = member.user_email
+            )
+
             @scope.page = data.current
             @scope.count = data.count
             @scope.paginatedBy = data.paginatedBy
@@ -502,7 +507,8 @@ NoMoreMembershipsExplanationDirective = () ->
     return {
           templateUrl: "admin/no-more-memberships-explanation.html"
           scope: {
-              project: "="
+              project: "=",
+              ownerEmail: "="
           }
     }
 

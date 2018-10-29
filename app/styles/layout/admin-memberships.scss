@@ -1,8 +1,27 @@
 .admin-membership {
 
     .header-message {
-        background: lighten($primary, 65%);
+        background: $primary-background;
+        margin-top: 1rem;
         padding: 1rem;
+
+        .no-more-membership {
+            align-items: center;
+            color: $grayer;
+            display: flex;
+
+            strong,
+            a {
+                @include font-type(bold)
+            }
+            p {
+                color: $grayer;
+                flex-grow: 1;
+                margin: 0;
+                padding-left: 2rem;
+                padding-right: 1rem;
+            }
+        }
     }
     .limit-users-warning {
         @include font-size(small);
