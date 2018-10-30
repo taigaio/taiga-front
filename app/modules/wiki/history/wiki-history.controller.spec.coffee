@@ -22,18 +22,18 @@ describe "WikiHistorySection", ->
     controller = null
     mocks = {}
 
-    _mockTgActivityService = () ->
-        mocks.tgActivityService = {
-            init: sinon.stub(),
-            fetchEntries: sinon.stub()
+    _mockTgWikiHistoryService = () ->
+        mocks.tgWikiHistoryService = {
+            setWikiId: sinon.stub(),
+            loadHistoryEntries: sinon.stub()
         }
 
-        provide.value "tgActivityService", mocks.tgActivityService
+        provide.value "tgWikiHistoryService", mocks.tgWikiHistoryService
 
     _mocks = () ->
         module ($provide) ->
             provide = $provide
-            _mockTgActivityService()
+            _mockTgWikiHistoryService()
             return null
 
     beforeEach ->
@@ -44,19 +44,19 @@ describe "WikiHistorySection", ->
         inject ($controller) ->
             controller = $controller
 
-    it "initialize history entries with id", ->
+    it "initialize histori entries with id", ->
         wikiId = 42
 
         historyCtrl = controller "WikiHistoryCtrl"
-        historyCtrl.initializeHistory(wikiId)
+        historyCtrl.initializeHistoryEntries(wikiId)
 
-        expect(mocks.tgActivityService.init).to.be.calledOnce
-        expect(mocks.tgActivityService.init).to.be.calledWith('wiki', wikiId)
-        expect(mocks.tgActivityService.fetchEntries).to.be.calledOnce
+        expect(mocks.tgWikiHistoryService.setWikiId).to.be.calledOnce
+        expect(mocks.tgWikiHistoryService.setWikiId).to.be.calledWith(wikiId)
+        expect(mocks.tgWikiHistoryService.loadHistoryEntries).to.be.calledOnce
 
     it "initialize history entries without id",  ->
         historyCtrl = controller "WikiHistoryCtrl"
-        historyCtrl.initializeHistory()
+        historyCtrl.initializeHistoryEntries()
 
-        expect(mocks.tgActivityService.init).to.not.be.calledOnce
-        expect(mocks.tgActivityService.fetchEntries).to.be.calledOnce
+        expect(mocks.tgWikiHistoryService.setWikiId).to.not.be.calledOnce
+        expect(mocks.tgWikiHistoryService.loadHistoryEntries).to.be.calledOnce

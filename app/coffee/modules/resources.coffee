@@ -148,7 +148,7 @@ urls = {
     "history/us": "/history/userstory"
     "history/issue": "/history/issue"
     "history/task": "/history/task"
-    "history/wiki": "/history/wiki"
+    "history/wiki": "/history/wiki/%s"
 
     # Attachments
     "attachments/epic": "/epics/attachments"

@@ -23,25 +23,17 @@ module = angular.module("taigaWikiHistory")
 
 class WikiHistoryController
     @.$inject = [
-        "tgActivityService"
+        "tgWikiHistoryService"
     ]
 
-    constructor: (@activityService) ->
-        taiga.defineImmutableProperty @, 'historyEntries', () =>
-            return @activityService.entries
-        taiga.defineImmutableProperty @, 'disablePagination', () =>
-            return @activityService.disablePagination
+    constructor: (@wikiHistoryService) ->
+        taiga.defineImmutableProperty @, 'historyEntries', () => return @wikiHistoryService.historyEntries
         @.toggle = false
 
-    initializeHistory: (wikiId) ->
+    initializeHistoryEntries: (wikiId) ->
         if wikiId
-            @activityService.init('wiki', wikiId)
-        @.loadHistory()
+            @wikiHistoryService.setWikiId(wikiId)
 
-    loadHistory: ()->
-        @activityService.fetchEntries()
-
-    nextPage: () ->
-        @activityService.nextPage()
+        @wikiHistoryService.loadHistoryEntries()
 
 module.controller("WikiHistoryCtrl", WikiHistoryController)

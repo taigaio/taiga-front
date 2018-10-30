@@ -25,42 +25,30 @@ class HistorySectionController
         "$tgRepo",
         "$tgStorage",
         "tgProjectService",
-        "tgActivityService"
     ]
 
-    constructor: (@rs, @repo, @storage, @projectService, @activityService) ->
+    constructor: (@rs, @repo, @storage, @projectService) ->
         @.editing = null
         @.deleting = null
         @.editMode = {}
         @.viewComments = true
-
         @.reverse = @storage.get("orderComments")
-
-        taiga.defineImmutableProperty @, 'disabledActivityPagination', () =>
-            return @activityService.disablePagination
-        taiga.defineImmutableProperty @, 'loadingActivity', () =>
-            return @activityService.loading
+        @._loadHistory()
 
     _loadHistory: () ->
-        @._loadComments()
-        @._loadActivity()
+        @rs.history.get(@.name, @.id).then (history) =>
+            @._getComments(history)
+            @._getActivities(history)
 
-    _loadActivity: () ->
-        @activityService.init(@.name, @.id)
-        @activityService.fetchEntries().then (response) =>
-            @.activitiesNum = @activityService.count
-            @.activities = response.toJS()
+    _getComments: (comments) ->
+        @.comments = _.filter(comments, (item) -> item.comment != "")
+        if @.reverse
+            @.comments - _.reverse(@.comments)
+        @.commentsNum = @.comments.length
 
-    _loadComments: () ->
-        @rs.history.get(@.name, @.id).then (comments) =>
-            @.comments = _.filter(comments, (item) -> item.comment != "")
-            if @.reverse
-                @.comments - _.reverse(@.comments)
-            @.commentsNum = @.comments.length
-
-    nextActivityPage: () ->
-        @activityService.nextPage().then (response) =>
-            @.activities = response.toJS()
+    _getActivities: (activities) ->
+        @.activities =  _.filter(activities, (item) -> Object.keys(item.values_diff).length > 0)
+        @.activitiesNum = @.activities.length
 
     showHistorySection: () ->
         return @.showCommentTab() or @.showActivityTab()
@@ -83,7 +71,7 @@ class HistorySectionController
         activityId = commentId
         @.deleting = commentId
         return @rs.history.deleteComment(type, objectId, activityId).then =>
-            @._loadComments()
+            @._loadHistory()
             @.deleting = null
 
     editComment: (commentId, comment) ->
@@ -92,7 +80,7 @@ class HistorySectionController
         activityId = commentId
         @.editing = commentId
         return @rs.history.editComment(type, objectId, activityId, comment).then =>
-            @._loadComments()
+            @._loadHistory()
             @.toggleEditMode(commentId)
             @.editing = null
 
@@ -102,17 +90,17 @@ class HistorySectionController
         activityId = commentId
         @.editing = commentId
         return @rs.history.undeleteComment(type, objectId, activityId).then =>
-            @._loadComments()
+            @._loadHistory()
             @.editing = null
 
-    addComment: () ->
-        @.editMode = {}
-        @.editing = null
-        @._loadComments()
+    addComment: (cb) ->
+        return @repo.save(@.type).then =>
+            @._loadHistory()
+            cb()
 
     onOrderComments: () ->
         @.reverse = !@.reverse
         @storage.set("orderComments", @.reverse)
-        @._loadComments()
+        @._loadHistory()
 
 module.controller("HistorySection", HistorySectionController)

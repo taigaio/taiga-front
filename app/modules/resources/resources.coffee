@@ -27,7 +27,7 @@ services = [
     "tgExternalAppsResource",
     "tgAttachmentsResource",
     "tgStatsResource",
-    "tgHistory",
+    "tgWikiHistory",
     "tgEpicsResource",
     "tgTrelloImportResource",
     "tgJiraImportResource",

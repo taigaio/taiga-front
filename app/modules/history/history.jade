@@ -30,10 +30,7 @@ section.history(
         deleting="vm.deleting"
         project-id="vm.projectId"
     )
-    div(
+    tg-history(
         ng-if="!vm.viewComments"
-        infinite-scroll="vm.nextActivityPage()"
-        infinite-scroll-disabled="vm.disabledActivityPagination"
-        infinite-scroll-immediate-check="false"
+        activities="vm.activities"
     )
-        tg-history(activities="vm.activities")
