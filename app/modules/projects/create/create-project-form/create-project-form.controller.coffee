@@ -49,6 +49,7 @@ class CreatetProjectFormController
         @projectsService.create(@.projectForm).then (project) =>
             @analytics.trackEvent("project", "create", "project creation", {slug: project.get('slug'), id: project.get('id')})
             @location.url(@projectUrl.get(project))
+            @currentUserService.loadProjects()
 
     onCancelForm: () ->
         @location.path(@navUrls.resolve("create-project"))
