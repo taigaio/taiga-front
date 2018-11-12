@@ -43,7 +43,7 @@ class ProjectRouterController
         sections = @tgSections.list()
         project = @projectService.project.toJS()
 
-        @rs.userProjectSettings.list().then (userProjectSettings) ->
+        @rs.userProjectSettings.list({project: project.id}).then (userProjectSettings) ->
             settings = _.find(userProjectSettings, {"project": project.id})
             return if !settings
 
