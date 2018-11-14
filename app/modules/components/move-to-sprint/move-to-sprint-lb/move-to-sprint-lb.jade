@@ -1,0 +1,67 @@
+tg-lightbox-close
+
+.move-to-sprint-container
+  .move-to-sprint-header
+    h2.title {{ 'TASKBOARD.MOVE_TO_SPRINT.TITLE_ACTION_MOVE_UNFINISHED'|translate }}
+
+    ul
+      li.choice(ng-if="vm.ussCount")
+        span(ng-bind-html="'TASKBOARD.MOVE_TO_SPRINT.UNFINISHED_USER_STORIES_COUNT'|translate:{ total: vm.ussCount || 0 }:'messageformat'")
+        .check.js-check(ng-if="vm.hasManyItemTypes")
+            input(
+              type="checkbox"
+              ng-checked="vm.typesSelected['uss']"
+              ng-model="vm.typesSelected['uss']"
+              ng-change="vm.updateSelected('uss', vm.typesSelected['uss'])"
+            )
+            div
+            span.check-text.check-yes(translate="COMMON.YES")
+            span.check-text.check-no(translate="COMMON.NO")
+
+      li.choice(ng-if="vm.tasksCount")
+        span(ng-bind-html="'TASKBOARD.MOVE_TO_SPRINT.UNFINISHED_UNASSIGNED_TASKS_COUNT'|translate:{ total: vm.tasksCount || 0 }:'messageformat'")
+        .check.js-check(ng-if="vm.hasManyItemTypes")
+            input(
+              type="checkbox"
+              ng-checked="vm.typesSelected['tasks']"
+              ng-model="vm.typesSelected['tasks']"
+              ng-change="vm.updateSelected('tasks', vm.typesSelected['tasks'])"
+            )
+            div
+            span.check-text.check-yes(translate="COMMON.YES")
+            span.check-text.check-no(translate="COMMON.NO")
+
+      li.choice(ng-if="vm.issuesCount")
+        span(ng-bind-html="'TASKBOARD.MOVE_TO_SPRINT.UNFINISHED_ISSUES_COUNT'|translate:{ total: vm.issuesCount || 0 }:'messageformat'")
+        .check.js-check(ng-if="vm.hasManyItemTypes")
+            input(
+              type="checkbox"
+              ng-checked="vm.typesSelected['issues']"
+              ng-model="vm.typesSelected['issues']"
+              ng-change="vm.updateSelected('issues', vm.typesSelected['issues'])"
+            )
+            div
+            span.check-text.check-yes(translate="COMMON.YES")
+            span.check-text.check-no(translate="COMMON.NO")
+
+  .move-to-sprint-controls
+    fieldset
+      label {{ 'TASKBOARD.MOVE_TO_SPRINT.MOVE_TO_OPEN_SPRINT'|translate }}
+      select.sprint-select(
+          ng-model="vm.selectedSprintId"
+          ng-options="s.id as s.name for s in vm.sprints|filter: { id: '!' + vm.sprint.id }"
+          id="sprint-selector-dropdown"
+          autofocus
+      )
+          option(
+              value=""
+              disabled
+              selected
+              translate="TASKBOARD.MOVE_TO_SPRINT.SELECT_DESTINATION_PLACEHOLDER"
+          )
+    button.button-green.move-button(
+        href=""
+        ng-click="vm.submit()"
+        translate="COMMON.SAVE"
+        ng-disabled="!(vm.selectedSprintId && vm.someSelected)"
+    )

@@ -3,6 +3,7 @@
         "YES": "Yes",
         "NO": "No",
         "OR": "or",
+        "I_GET_IT": "OK, I get it",
         "LOADING": "Loading...",
         "DATE": "DD MMM YYYY",
         "DATETIME": "DD MMM YYYY HH:mm",
@@ -1392,6 +1393,19 @@
             "OPTIMAL": "Optimal pending points for day {{formattedDate}} should be {{roundedValue}}",
             "REAL": "Real pending points for day {{formattedDate}} is {{roundedValue}}",
             "DATE": "DD MMMM YYYY"
+        },
+        "MOVE_TO_SPRINT": {
+          "TITLE_ACTION_MOVE_UNFINISHED": "Move unfinished items to another sprint",
+          "TITLE_MOVE_UNFINISHED": "Move unfinished items to another open sprint",
+          "MOVE_TO_OPEN_SPRINT": "Move to open sprint",
+          "SELECT_DESTINATION_PLACEHOLDER": "Select destination",
+          "UNFINISHED_USER_STORIES_COUNT": "{total, plural, one{<strong>#</strong> unfinished user story} other{<strong>#</strong> unfinished user stories}}",
+          "UNFINISHED_UNASSIGNED_TASKS_COUNT": "{total, plural, one{<strong>#</strong> unfinished unnasigned task} other{<strong>#</strong> unfinished unnasigned tasks}}",
+          "UNFINISHED_ISSUES_COUNT": "{total, plural, one{<strong>#</strong> unfinished issue} other{<strong>#</strong> unfinished unnasigned issue}}",
+          "WARNING_ISSUES_NOT_MOVED_TITLE": "You just moved all user stories and taks, and the sprint'll be closed",
+          "WARNING_ISSUES_NOT_MOVED": "The issues'll remain in the sprint and don't be removed",
+          "WARNING_SPRINT_STILL_OPEN_TITLE": "{total, plural, one{You just moved # item!} other{You just moved # items!}}",
+          "WARNING_SPRINT_STILL_OPEN": "Please note that <strong>the sprint {{sprintName}} appears as open</strong> as long as still contains open items."
         }
     },
     "TASK": {

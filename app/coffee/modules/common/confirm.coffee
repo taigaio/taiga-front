@@ -163,7 +163,7 @@ class ConfirmService extends taiga.Service
 
         return defered.promise
 
-    success: (title, message, icon) ->
+    success: (title, message, icon, action) ->
         defered = @q.defer()
 
         el = angular.element(".lightbox-generic-success")
@@ -193,6 +193,9 @@ class ConfirmService extends taiga.Service
         # Render content
         el.find(".title").html(title) if title
         el.find(".message").html(message) if message
+        if action
+            el.find(".button-green").html(action)
+            el.find(".button-green").attr('title', action)
 
         # Assign event handlers
         el.on "click.confirm-dialog", ".button-green", (event) =>

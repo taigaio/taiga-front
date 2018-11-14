@@ -85,6 +85,11 @@ resourceProvider = ($repo, $http, $urls, $storage) ->
         params = {project_id: projectId, bulk_tasks: data}
         return $http.post(url, params)
 
+    service.bulkUpdateMilestone = (projectId, milestoneId, data) ->
+        url = $urls.resolve("bulk-update-task-milestone")
+        params = {project_id: projectId, milestone_id: milestoneId, bulk_tasks: data}
+        return $http.post(url, params)
+
     service.reorder = (id, data, setOrders) ->
         url = $urls.resolve("tasks") + "/#{id}"
 

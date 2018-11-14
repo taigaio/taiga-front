@@ -149,7 +149,7 @@ $summary-background: $grayer;
             margin: 0;
         }
         &.summary-completed-points,
-        &.summary-closed-tasks {
+        &.summary-move-unfinished {
             border-right: 1px solid $blackish;
             margin-right: 0;
             padding-right: 1rem;

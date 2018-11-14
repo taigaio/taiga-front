@@ -1,0 +1,15 @@
+.move-to-sprint-button {
+    color: $white;
+    &:not(.disabled) {
+        cursor: pointer;
+        &:hover {
+            color: $primary-light;
+        }
+    }
+    &.disabled {
+        opacity: .5;
+        &:hover {
+            color: $white;
+        }
+    }
+}

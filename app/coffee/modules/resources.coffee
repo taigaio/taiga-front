@@ -116,7 +116,6 @@ urls = {
     "bulk-update-us-milestone": "/userstories/bulk_update_milestone"
     "bulk-update-us-miles-order": "/userstories/bulk_update_sprint_order"
     "bulk-update-us-kanban-order": "/userstories/bulk_update_kanban_order"
-    "bulk-update-us-milestone": "/userstories/bulk_update_milestone"
     "userstories-filters": "/userstories/filters_data"
     "userstory-upvote": "/userstories/%s/upvote"
     "userstory-downvote": "/userstories/%s/downvote"
@@ -127,6 +126,7 @@ urls = {
     "tasks": "/tasks"
     "bulk-create-tasks": "/tasks/bulk_create"
     "bulk-update-task-taskboard-order": "/tasks/bulk_update_taskboard_order"
+    "bulk-update-task-milestone": "/tasks/bulk_update_milestone"
     "task-upvote": "/tasks/%s/upvote"
     "task-downvote": "/tasks/%s/downvote"
     "task-watch": "/tasks/%s/watch"
@@ -136,6 +136,7 @@ urls = {
     # Issues
     "issues": "/issues"
     "bulk-create-issues": "/issues/bulk_create"
+    "bulk-update-issue-milestone": "/issues/bulk_update_milestone"
     "issues-filters": "/issues/filters_data"
     "issue-upvote": "/issues/%s/upvote"
     "issue-downvote": "/issues/%s/downvote"

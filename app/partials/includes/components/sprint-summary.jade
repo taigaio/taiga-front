@@ -23,6 +23,16 @@ div.summary.large-summary
                     span.number(ng-bind="stats.completed_tasks|default:'--'")
                     span.description(translate="BACKLOG.SPRINT_SUMMARY.CLOSED_TASKS")
 
+                div.summary-stats.summary-move-unfinished
+                    tg-move-to-sprint(
+                        sprint="sprint"
+                        uss="userstories"
+                        unnasigned-tasks="usTasks.get('null')"
+                        issues="milestoneIssues"
+                        disabled="movingTask"
+                    )
+                    span.taskBoardLoading
+
                 div.summary-stats.summary-iocaine(title="{{'COMMON.IOCAINE_TEXT' | translate}}")
                     tg-svg(svg-icon="icon-iocaine")
                     span.number(ng-bind="stats.iocaine_doses|default:'--'")

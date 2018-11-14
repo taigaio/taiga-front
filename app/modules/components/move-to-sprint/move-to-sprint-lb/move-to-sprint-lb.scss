@@ -1,0 +1,32 @@
+.lightbox-move-to-sprint .move-to-sprint-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 550px;
+    width: 100%;
+    .move-to-sprint-header {
+        margin: 0 auto;
+        max-width: 400px;
+        text-align: center;
+        ul {
+            display: inline-block;
+            margin: .5em auto 2.5em;
+            width: auto;
+        }
+        li {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1em;
+        }
+        .check {
+            margin-left: 4em;
+        }
+    }
+    .move-to-sprint-controls {
+        .sprint-select {
+            margin-top: .5em;
+        }
+        .move-button {
+            width: 100%;
+        }
+    }
+}

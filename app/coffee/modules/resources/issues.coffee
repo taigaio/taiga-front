@@ -99,6 +99,11 @@ resourceProvider = ($repo, $http, $urls, $storage, $q) ->
         hash = generateHash([projectId, ns])
         return $storage.get(hash) or {}
 
+    service.bulkUpdateMilestone = (projectId, milestoneId, data) ->
+        url = $urls.resolve("bulk-update-issue-milestone")
+        params = {project_id: projectId, milestone_id: milestoneId, bulk_issues: data}
+        return $http.post(url, params)
+
     return (instance) ->
         instance.issues = service
 
