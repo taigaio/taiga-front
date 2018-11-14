@@ -1817,5 +1817,19 @@
             "ACTION_TITLE": "Search",
             "RESULTS": "Search results"
         }
+    },
+    "TIPS": {
+      "TIPS_TITLE": "Tip",
+      "TIP_PROJECTS_ORDER": "We suggest you place the projects you access the most closer to the top of the list.",
+      "TIP_VOTING": "One easy way to express interest in one item (user story, task or issue) is upvoting it.",
+      "TIP_ISSUES_TO_SPRINT": "You can attach issues to a particular sprint by using the pin icon in its detail view. ",
+      "TIP_DUE_DATE": "Some tasks need to be finished by a certain date, regardless of other considerations. You can activate the Due Date from its detail view.",
+      "TIP_IOCAIN": "If you feel a task is going to be (or is already) particularly tough for you, make it visible to others by activating the Iocaine status.",
+      "TIP_BLOCKED": "It is better to be explicit about a blocked task, feel free to mark it as blocked and add why.",
+      "TIP_PROMOTE": "Has an issue grown beyond its natural limits? Don't be shy and turn it into a user story from its detail view.",
+      "TIP_BULK": "Adding multiple tasks in one go is much easier with our \"bulk add\" option.",
+      "TIP_ZOOM": "Experiment with your sweet-spot KANBAN zoom level to get as much info of the cards as you want.",
+      "TIP_CUSTOM_FIELDS": "If you're an admin of the project, consider creating custom fields to expand the tasks' configuration.",
+      "TIP_SLIDE_ARROWS": "You can cycle over the results of a list, search or filter by clicking on the navigational arrows on the detail view of any one item."
     }
 }

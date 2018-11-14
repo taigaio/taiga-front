@@ -1,0 +1,15 @@
+div.tip(ng-class="tipColor")
+  p.title(translate="TIPS.TIPS_TITLE")
+
+  p(translate="{{ message }}")
+
+  div(ng-switch="contentType", translate-cloak="{{ message }}")
+    p(ng-switch-when="icon")
+      tg-svg(svg-icon="{{ icon }}")
+      span(ng-if="icon == 'icon-upvote'") 5
+
+    tg-board-zoom(ng-switch-when="range")
+
+    p.arrows(ng-switch-when="arrows")
+      tg-svg(svg-icon="icon-arrow-left")
+      tg-svg(svg-icon="icon-arrow-right")

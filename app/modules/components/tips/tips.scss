@@ -1,0 +1,67 @@
+//Tips colors
+$tip-color-1: #ae4fb0;
+$tip-color-2: #4e88df;
+$tip-color-3: #6360d6;
+$tip-color-4: #47b3a6;
+$tip-color-5: #d76969;
+
+$tips-colors: $tip-color-1 $tip-color-2 $tip-color-3 $tip-color-4 $tip-color-5;
+
+@each $current-color in $tips-colors {
+    $i: index($tips-colors, $current-color);
+    .loader .tip-color-#{$i} {
+        p {
+            color: $current-color;
+        }
+        svg {
+            fill: $current-color;
+            stroke: $current-color;
+        }
+    }
+}
+
+.tip {
+    text-align: center;
+    width: auto;
+    .translate-cloak {
+        display: none;
+    }
+    p {
+        display: flex;
+        font-size: 1.1em;
+        justify-content: center;
+        margin-bottom: 1em;
+        max-width: 440px;
+        &.title {
+            color: $black;
+            font-size: 1em;
+            margin-bottom: 1.75em;
+        }
+        &.range {
+            width: 1px;
+        }
+    }
+    svg {
+        height: 32px;
+        margin: 0 .3em;
+        width: 32px;
+        &.icon-upvote {
+            height: 30px;
+            width: 24px;
+        }
+    }
+    .range-slider {
+        display: initial;
+        width: 100px;
+    }
+    .arrows svg {
+        height: 40px;
+        margin: 0;
+        &.icon-arrow-left {
+            margin-left: 7px;
+        }
+        &.icon-arrow-right {
+            margin-left: -7px;
+        }
+    }
+}
