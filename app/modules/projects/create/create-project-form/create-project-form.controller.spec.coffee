@@ -32,7 +32,8 @@ describe "CreateProjectFormCtrl", ->
     _mockCurrentUserService = ->
         mocks.currentUserService = {
             canCreatePublicProjects: sinon.stub().returns({valid: true}),
-            canCreatePrivateProjects: sinon.stub().returns({valid: true})
+            canCreatePrivateProjects: sinon.stub().returns({valid: true}),
+            loadProjects: sinon.stub()
         }
 
         $provide.value("tgCurrentUserService", mocks.currentUserService)
