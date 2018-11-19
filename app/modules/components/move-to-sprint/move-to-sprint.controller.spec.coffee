@@ -31,10 +31,20 @@ describe "MoveToSprint", ->
 
         provide.value "tgLightboxFactory", mocks.tgLightboxFactory
 
+    _mockTgProjectService = () ->
+        mocks.tgProjectService = {
+            project: Immutable.fromJS({
+                my_permissions: ['modify_us', 'modify_task', 'modify_issue']
+            })
+        }
+
+        provide.value "tgProjectService", mocks.tgProjectService
+
     _mocks = () ->
         module ($provide) ->
             provide = $provide
             _mockTgLightboxFactory()
+            _mockTgProjectService()
             return null
 
     _inject = ->

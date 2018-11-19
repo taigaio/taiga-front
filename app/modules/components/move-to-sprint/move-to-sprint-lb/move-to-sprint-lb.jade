@@ -13,6 +13,7 @@ tg-lightbox-close
               ng-checked="vm.typesSelected['uss']"
               ng-model="vm.typesSelected['uss']"
               ng-change="vm.updateSelected('uss', vm.typesSelected['uss'])"
+              ng-disabled="!vm.sprints.length"
             )
             div
             span.check-text.check-yes(translate="COMMON.YES")
@@ -26,6 +27,7 @@ tg-lightbox-close
               ng-checked="vm.typesSelected['tasks']"
               ng-model="vm.typesSelected['tasks']"
               ng-change="vm.updateSelected('tasks', vm.typesSelected['tasks'])"
+              ng-disabled="!vm.sprints.length"
             )
             div
             span.check-text.check-yes(translate="COMMON.YES")
@@ -39,29 +41,32 @@ tg-lightbox-close
               ng-checked="vm.typesSelected['issues']"
               ng-model="vm.typesSelected['issues']"
               ng-change="vm.updateSelected('issues', vm.typesSelected['issues'])"
+              ng-disabled="!vm.sprints.length"
             )
             div
             span.check-text.check-yes(translate="COMMON.YES")
             span.check-text.check-no(translate="COMMON.NO")
 
   .move-to-sprint-controls
-    fieldset
-      label {{ 'TASKBOARD.MOVE_TO_SPRINT.MOVE_TO_OPEN_SPRINT'|translate }}
-      select.sprint-select(
-          ng-model="vm.selectedSprintId"
-          ng-options="s.id as s.name for s in vm.sprints|filter: { id: '!' + vm.sprint.id }"
-          id="sprint-selector-dropdown"
-          autofocus
+    p(ng-if="!vm.sprints.length") {{ 'TASKBOARD.MOVE_TO_SPRINT.NO_OPEN_SPRINTS'|translate }}
+    div(ng-if="vm.sprints.length > 0")
+      fieldset
+        label {{ 'TASKBOARD.MOVE_TO_SPRINT.MOVE_TO_OPEN_SPRINT'|translate }}
+        select.sprint-select(
+            ng-model="vm.selectedSprintId"
+            ng-options="s.id as s.name for s in vm.sprints"
+            id="sprint-selector-dropdown"
+            autofocus
+        )
+            option(
+                value=""
+                disabled
+                selected
+                translate="TASKBOARD.MOVE_TO_SPRINT.SELECT_DESTINATION_PLACEHOLDER"
+            )
+      button.button-green.move-button(
+          href=""
+          ng-click="vm.submit()"
+          translate="COMMON.SAVE"
+          ng-disabled="!(vm.selectedSprintId && vm.someSelected)"
       )
-          option(
-              value=""
-              disabled
-              selected
-              translate="TASKBOARD.MOVE_TO_SPRINT.SELECT_DESTINATION_PLACEHOLDER"
-          )
-    button.button-green.move-button(
-        href=""
-        ng-click="vm.submit()"
-        translate="COMMON.SAVE"
-        ng-disabled="!(vm.selectedSprintId && vm.someSelected)"
-    )

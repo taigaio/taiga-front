@@ -23,9 +23,15 @@ class MoveToSprintController
     @.$inject = [
       '$scope'
       'tgLightboxFactory'
+      'tgProjectService'
     ]
 
-    constructor: (@scope, @lightboxFactory) ->
+    constructor: (
+        @scope
+        @lightboxFactory
+        @projectService
+    ) ->
+        @.permissions = @projectService.project.get('my_permissions')
         @.hasOpenItems = false
         @.disabled = false
         @.openItems = {
@@ -58,7 +64,7 @@ class MoveToSprintController
             })
 
     getOpenUss: () ->
-        return if !@.uss
+        return if !@.uss or @.permissions.indexOf("modify_us") == -1
         @.openItems.uss = []
         @.uss.map (us) =>
             if us.is_closed is false
@@ -69,7 +75,7 @@ class MoveToSprintController
         @.hasOpenItems = @checkOpenItems()
 
     getOpenUnassignedTasks: () ->
-        return if !@.unnasignedTasks
+        return if !@.unnasignedTasks or @.permissions.indexOf("modify_task") == -1
         @.openItems.tasks = []
         @.unnasignedTasks.map (column) => column.map (task) =>
             if task.get('model').get('is_closed') is false
@@ -80,7 +86,7 @@ class MoveToSprintController
         @.hasOpenItems = @checkOpenItems()
 
     getOpenIssues: () ->
-        return if !@.issues
+        return if !@.issues or @.permissions.indexOf("modify_issue") == -1
         @.openItems.issues = []
         @.issues.map (issue) =>
             if issue.get('status').get('is_closed') is false

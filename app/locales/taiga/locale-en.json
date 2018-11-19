@@ -1401,6 +1401,7 @@
           "TITLE_ACTION_MOVE_UNFINISHED": "Move unfinished items to another sprint",
           "TITLE_MOVE_UNFINISHED": "Move unfinished items to another open sprint",
           "MOVE_TO_OPEN_SPRINT": "Move to open sprint",
+          "NO_OPEN_SPRINTS": "There are no other open sprints. Please create one first.",
           "SELECT_DESTINATION_PLACEHOLDER": "Select destination",
           "UNFINISHED_USER_STORIES_COUNT": "{total, plural, one{<strong>#</strong> unfinished user story} other{<strong>#</strong> unfinished user stories}}",
           "UNFINISHED_UNASSIGNED_TASKS_COUNT": "{total, plural, one{<strong>#</strong> unfinished unnasigned task} other{<strong>#</strong> unfinished unnasigned tasks}}",

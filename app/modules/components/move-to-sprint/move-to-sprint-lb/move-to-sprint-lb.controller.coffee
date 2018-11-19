@@ -69,7 +69,7 @@ class MoveToSprintLightboxController
 
     _loadSprints: () ->
         @rs.sprints.list(@.projectId, {closed: false}).then (data) =>
-            @.sprints = data.milestones
+            @.sprints = _.filter(data.milestones, (x) => x.id != @.sprint.id)
 
     updateSelected: (itemType, value) ->
         @.typesSelected[itemType] = value
