@@ -1382,7 +1382,7 @@
             "TITLE_ACTION_FOLD_ROW": "Ripiega la riga",
             "TITLE_ACTION_UNFOLD_ROW": "Rivela la riga",
             "FIELD_POINTS": "punti",
-            "ROW_UNASSIGED_TASKS_TITLE": "Compito non assegnato",
+            "ROW_STORYLESS_TASKS_TITLE": "Compito non assegnato",
             "ROW_ISSUES_TITLE": "Sprint Issues"
         },
         "CHARTS": {

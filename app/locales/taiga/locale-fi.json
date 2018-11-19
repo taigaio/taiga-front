@@ -1382,7 +1382,7 @@
             "TITLE_ACTION_FOLD_ROW": "Kavenna rivi",
             "TITLE_ACTION_UNFOLD_ROW": "Laajenna rivi",
             "FIELD_POINTS": "pisteet",
-            "ROW_UNASSIGED_TASKS_TITLE": "Poista tekijä",
+            "ROW_STORYLESS_TASKS_TITLE": "Poista tekijä",
             "ROW_ISSUES_TITLE": "Sprint Issues"
         },
         "CHARTS": {

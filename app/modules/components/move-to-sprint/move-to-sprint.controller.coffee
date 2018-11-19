@@ -41,7 +41,7 @@ class MoveToSprintController
         }
 
         @scope.$watch "vm.uss", () => @getOpenUss()
-        @scope.$watch "vm.unnasignedTasks", () => @getOpenUnassignedTasks()
+        @scope.$watch "vm.unnasignedTasks", () => @getOpenStorylessTasks()
         @scope.$watch "vm.issues", () => @getOpenIssues()
 
     checkOpenItems: () ->
@@ -74,7 +74,7 @@ class MoveToSprintController
                 })
         @.hasOpenItems = @checkOpenItems()
 
-    getOpenUnassignedTasks: () ->
+    getOpenStorylessTasks: () ->
         return if !@.unnasignedTasks or @.permissions.indexOf("modify_task") == -1
         @.openItems.tasks = []
         @.unnasignedTasks.map (column) => column.map (task) =>

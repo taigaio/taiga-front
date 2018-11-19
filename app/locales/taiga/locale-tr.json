@@ -1382,7 +1382,7 @@
             "TITLE_ACTION_FOLD_ROW": "Satın Katla",
             "TITLE_ACTION_UNFOLD_ROW": "Satır katını aç",
             "FIELD_POINTS": "puanlar",
-            "ROW_UNASSIGED_TASKS_TITLE": "Atanmamış görevler",
+            "ROW_STORYLESS_TASKS_TITLE": "Atanmamış görevler",
             "ROW_ISSUES_TITLE": "Sprint Issues"
         },
         "CHARTS": {

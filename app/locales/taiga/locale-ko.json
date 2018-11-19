@@ -1382,7 +1382,7 @@
             "TITLE_ACTION_FOLD_ROW": "행 접기",
             "TITLE_ACTION_UNFOLD_ROW": "행 접기",
             "FIELD_POINTS": "포인트",
-            "ROW_UNASSIGED_TASKS_TITLE": "할당되지 않은 태스크",
+            "ROW_STORYLESS_TASKS_TITLE": "할당되지 않은 태스크",
             "ROW_ISSUES_TITLE": "Sprint Issues"
         },
         "CHARTS": {

@@ -1382,7 +1382,7 @@
             "TITLE_ACTION_FOLD_ROW": "Brett Rad",
             "TITLE_ACTION_UNFOLD_ROW": "Brett ut Rad",
             "FIELD_POINTS": "poeng",
-            "ROW_UNASSIGED_TASKS_TITLE": "\nIkke tildelte oppgaver",
+            "ROW_STORYLESS_TASKS_TITLE": "\nIkke tildelte oppgaver",
             "ROW_ISSUES_TITLE": "Sprint Issues"
         },
         "CHARTS": {

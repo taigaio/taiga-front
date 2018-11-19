@@ -1387,7 +1387,7 @@
             "TITLE_ACTION_FOLD_ROW": "Fold Row",
             "TITLE_ACTION_UNFOLD_ROW": "Unfold Row",
             "FIELD_POINTS": "points",
-            "ROW_UNASSIGED_TASKS_TITLE": "Unassigned tasks",
+            "ROW_STORYLESS_TASKS_TITLE": "Storyless tasks",
             "ROW_ISSUES_TITLE": "Sprint Issues"
         },
         "CHARTS": {
@@ -1404,12 +1404,12 @@
           "NO_OPEN_SPRINTS": "There are no other open sprints. Please create one first.",
           "SELECT_DESTINATION_PLACEHOLDER": "Select destination",
           "UNFINISHED_USER_STORIES_COUNT": "{total, plural, one{<strong>#</strong> unfinished user story} other{<strong>#</strong> unfinished user stories}}",
-          "UNFINISHED_UNASSIGNED_TASKS_COUNT": "{total, plural, one{<strong>#</strong> unfinished unnasigned task} other{<strong>#</strong> unfinished unnasigned tasks}}",
-          "UNFINISHED_ISSUES_COUNT": "{total, plural, one{<strong>#</strong> unfinished issue} other{<strong>#</strong> unfinished unnasigned issue}}",
+          "UNFINISHED_STORYLESS_TASKS_COUNT": "{total, plural, one{<strong>#</strong> unfinished storyless task} other{<strong>#</strong> unfinished storyless tasks}}",
+          "UNFINISHED_ISSUES_COUNT": "{total, plural, one{<strong>#</strong> unfinished issue} other{<strong>#</strong> unfinished issue}}",
           "WARNING_ISSUES_NOT_MOVED_TITLE": "You just moved all user stories and taks, and the sprint'll be closed",
           "WARNING_ISSUES_NOT_MOVED": "The issues'll remain in the sprint and don't be removed",
           "WARNING_SPRINT_STILL_OPEN_TITLE": "{total, plural, one{You just moved # item!} other{You just moved # items!}}",
-          "WARNING_SPRINT_STILL_OPEN": "Please note that <strong>the sprint {{sprintName}} appears as open</strong> as long as still contains open items."
+          "WARNING_SPRINT_STILL_OPEN": "Please note that <strong>the sprint {{sprintName}} will remain open</strong> as long as it contains unfinished items."
         }
     },
     "TASK": {

@@ -1382,7 +1382,7 @@
             "TITLE_ACTION_FOLD_ROW": "Regel inklappen",
             "TITLE_ACTION_UNFOLD_ROW": "Regel uitklappen",
             "FIELD_POINTS": "punten",
-            "ROW_UNASSIGED_TASKS_TITLE": "Niet toegewezen taken",
+            "ROW_STORYLESS_TASKS_TITLE": "Niet toegewezen taken",
             "ROW_ISSUES_TITLE": "Sprint Issues"
         },
         "CHARTS": {

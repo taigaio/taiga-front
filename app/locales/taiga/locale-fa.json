@@ -1382,7 +1382,7 @@
             "TITLE_ACTION_FOLD_ROW": "جمع کردن ردیف",
             "TITLE_ACTION_UNFOLD_ROW": "گسترده کردن ردیف",
             "FIELD_POINTS": "امتیاز",
-            "ROW_UNASSIGED_TASKS_TITLE": "وظایف آزاد",
+            "ROW_STORYLESS_TASKS_TITLE": "وظایف آزاد",
             "ROW_ISSUES_TITLE": "Sprint Issues"
         },
         "CHARTS": {

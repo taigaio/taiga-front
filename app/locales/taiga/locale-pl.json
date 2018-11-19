@@ -1382,7 +1382,7 @@
             "TITLE_ACTION_FOLD_ROW": "Zwiń wiersz",
             "TITLE_ACTION_UNFOLD_ROW": "Rozwiń wiersz",
             "FIELD_POINTS": "punkty",
-            "ROW_UNASSIGED_TASKS_TITLE": "Nieprzypisane zadania",
+            "ROW_STORYLESS_TASKS_TITLE": "Nieprzypisane zadania",
             "ROW_ISSUES_TITLE": "Sprint Issues"
         },
         "CHARTS": {

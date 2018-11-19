@@ -1382,7 +1382,7 @@
             "TITLE_ACTION_FOLD_ROW": "Replier la ligne",
             "TITLE_ACTION_UNFOLD_ROW": "Déplier la ligne",
             "FIELD_POINTS": "points",
-            "ROW_UNASSIGED_TASKS_TITLE": "Tâches non assignées",
+            "ROW_STORYLESS_TASKS_TITLE": "Tâches non assignées",
             "ROW_ISSUES_TITLE": "Sprint Issues"
         },
         "CHARTS": {

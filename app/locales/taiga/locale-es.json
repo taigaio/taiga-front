@@ -1382,7 +1382,7 @@
             "TITLE_ACTION_FOLD_ROW": "Plegar Fila",
             "TITLE_ACTION_UNFOLD_ROW": "Desplegar Fila",
             "FIELD_POINTS": "puntos",
-            "ROW_UNASSIGED_TASKS_TITLE": "Tareas no asignadas",
+            "ROW_STORYLESS_TASKS_TITLE": "Tareas no asignadas",
             "ROW_ISSUES_TITLE": "Peticiones de Sprint"
         },
         "CHARTS": {

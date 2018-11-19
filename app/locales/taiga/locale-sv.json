@@ -1382,7 +1382,7 @@
             "TITLE_ACTION_FOLD_ROW": "Vika i hop raden",
             "TITLE_ACTION_UNFOLD_ROW": "Veckla ut rad",
             "FIELD_POINTS": "poäng",
-            "ROW_UNASSIGED_TASKS_TITLE": "Ej tilldelade uppgifter",
+            "ROW_STORYLESS_TASKS_TITLE": "Ej tilldelade uppgifter",
             "ROW_ISSUES_TITLE": "Sprint Issues"
         },
         "CHARTS": {

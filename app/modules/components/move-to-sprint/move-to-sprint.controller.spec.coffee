@@ -73,7 +73,7 @@ describe "MoveToSprint", ->
         it "is disabled by default", () ->
             expect(ctrl.hasOpenItems).to.be.false
 
-        it "is enabled when milestone has open user stories", () ->
+        it "is enabled when there are unfinished user stories", () ->
             ctrl.uss = [
                 { id: 1, is_closed: true, sprint_order: 5 }
                 { id: 2, is_closed: false, sprint_order: 6 }
@@ -86,7 +86,7 @@ describe "MoveToSprint", ->
               { us_id: 3, order: 7 }
             ])
 
-        it "is enabled when milestone has open unassigned tasks", () ->
+        it "is enabled when there are unfinished storyless tasks", () ->
             ctrl.unnasignedTasks = Immutable.fromJS([
               [
                 { model: { id: 1, is_closed: true, taskboard_order: 5 } }
@@ -94,14 +94,14 @@ describe "MoveToSprint", ->
               ],
               [{ model: { id: 3, is_closed: false, taskboard_order: 7 } }]
             ])
-            ctrl.getOpenUnassignedTasks()
+            ctrl.getOpenStorylessTasks()
             expect(ctrl.hasOpenItems).to.be.true
             expect(ctrl.openItems.tasks).to.be.eql([
               { task_id: 2, order: 6 }
               { task_id: 3, order: 7 }
             ])
 
-        it "is enabled when milestone has open issues", () ->
+        it "is enabled when there are unfinished issues", () ->
             ctrl.issues = Immutable.fromJS([
               { id: 1, status: { is_closed: true } }
               { id: 2, status: { is_closed: false } }
@@ -111,7 +111,7 @@ describe "MoveToSprint", ->
             expect(ctrl.openItems.issues).to.be.eql([{ issue_id: 2 }])
 
     describe "lightbox", ->
-        it "is opened on button click if has open items", () ->
+        it "is opened on button click if there are unfinished items", () ->
             ctrl.issues = Immutable.fromJS([
               { id: 1, status: { is_closed: false } }
             ])
@@ -119,6 +119,6 @@ describe "MoveToSprint", ->
             ctrl.openLightbox()
             expect(mocks.tgLightboxFactory.create).have.been.called
 
-        it "is not opened on button click if has no open items", () ->
+        it "is not opened on button click if there are no unfinished items", () ->
             ctrl.openLightbox()
             expect(mocks.tgLightboxFactory.create).not.have.been.called

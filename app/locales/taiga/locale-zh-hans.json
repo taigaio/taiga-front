@@ -1382,7 +1382,7 @@
             "TITLE_ACTION_FOLD_ROW": "隐藏列数",
             "TITLE_ACTION_UNFOLD_ROW": "未隐藏列数",
             "FIELD_POINTS": "点数",
-            "ROW_UNASSIGED_TASKS_TITLE": "未指派的任务",
+            "ROW_STORYLESS_TASKS_TITLE": "未指派的任务",
             "ROW_ISSUES_TITLE": "Sprint Issues"
         },
         "CHARTS": {

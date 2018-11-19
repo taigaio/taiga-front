@@ -20,7 +20,7 @@ tg-lightbox-close
             span.check-text.check-no(translate="COMMON.NO")
 
       li.choice(ng-if="vm.tasksCount")
-        span(ng-bind-html="'TASKBOARD.MOVE_TO_SPRINT.UNFINISHED_UNASSIGNED_TASKS_COUNT'|translate:{ total: vm.tasksCount || 0 }:'messageformat'")
+        span(ng-bind-html="'TASKBOARD.MOVE_TO_SPRINT.UNFINISHED_STORYLESS_TASKS_COUNT'|translate:{ total: vm.tasksCount || 0 }:'messageformat'")
         .check.js-check(ng-if="vm.hasManyItemTypes")
             input(
               type="checkbox"

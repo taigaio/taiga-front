@@ -1382,7 +1382,7 @@
             "TITLE_ACTION_FOLD_ROW": "Reihe einklappen",
             "TITLE_ACTION_UNFOLD_ROW": "Reihe aufklappen",
             "FIELD_POINTS": "Punkte",
-            "ROW_UNASSIGED_TASKS_TITLE": "Nicht zugeordnete Aufgaben",
+            "ROW_STORYLESS_TASKS_TITLE": "Nicht zugeordnete Aufgaben",
             "ROW_ISSUES_TITLE": "Sprint Tickets"
         },
         "CHARTS": {

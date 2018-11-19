@@ -1382,7 +1382,7 @@
             "TITLE_ACTION_FOLD_ROW": "Свернуть ряд",
             "TITLE_ACTION_UNFOLD_ROW": "Развернуть ряд",
             "FIELD_POINTS": "очков",
-            "ROW_UNASSIGED_TASKS_TITLE": "Не назначенные задачи",
+            "ROW_STORYLESS_TASKS_TITLE": "Не назначенные задачи",
             "ROW_ISSUES_TITLE": "Sprint Issues"
         },
         "CHARTS": {
