@@ -86,11 +86,12 @@ tg-project-menu {
         @include font-size(large);
     }
     .active {
-        background: rgba($black, .2);
-        color: $primary-light;
-        svg path {
-            fill: $primary-light;
+        background: rgba($white, .95);
+        color: $secondary-dark;
+        svg {
+            fill: $secondary-dark;
             opacity: 1;
+            stroke: $secondary-dark;
         }
     }
 }
