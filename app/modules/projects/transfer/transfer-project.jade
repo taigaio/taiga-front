@@ -9,7 +9,7 @@
             h3.transfer-project-title {{::vm.project.get("name")}}
             .transfer-project-statistics
                 span.transfer-project-private(ng-if="vm.project.get('is_private')")
-                    tg-svg(svg-icon="icon-lock")
+                    tg-svg(svg-icon="icon-key")
                     span(translate="ADMIN.PROJECT_TRANSFER.PRIVATE")
                 span.transfer-project-members
                     tg-svg(svg-icon="icon-team")

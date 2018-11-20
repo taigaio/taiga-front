@@ -31,14 +31,6 @@
 .list-itemtype-project {
     @include list-itemtype-common;
     justify-content: space-between;
-    &.blocked-project {
-        .list-itemtype-track,
-        .list-itemtype-project-image,
-        .list-itemtype-project-name,
-        .list-itemtype-project-description {
-            opacity: .4;
-        }
-    }
     h2 {
         @include font-size(large);
     }
@@ -47,6 +39,13 @@
     }
     .list-itemtype-project-data-wrapper {
         display: flex;
+        .icon-key {
+            fill: $gray-light;
+            height: 22px;
+            margin-left: .5rem;
+            padding-top: .5rem;
+            width: 22px;
+        }
     }
     .list-itemtype-project-image {
         flex-shrink: 0;
@@ -79,21 +78,6 @@
 .list-itemtype-ticket {
     @include list-itemtype-common;
     position: relative;
-    &.blocked-project {
-        .ticket-project,
-        .ticket-type,
-        .ticket-status,
-        .ticket-id,
-        .list-itemtype-avatar,
-        .list-itemtype-track,
-        .ticket-title {
-            opacity: .4;
-        }
-        .icon-blocked-project {
-            @include svg-size();
-            margin-left: .25rem;
-        }
-    }
     h2 {
         @include font-size(medium);
     }

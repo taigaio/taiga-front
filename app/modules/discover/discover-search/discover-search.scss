@@ -86,6 +86,10 @@
         color: $gray-light;
         display: inline-block;
         margin-right: .5rem;
+        svg {
+            fill: $gray-light;
+            stroke: $gray-light;
+        }
         &.active {
             color: $primary;
             svg {
