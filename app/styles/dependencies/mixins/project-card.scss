@@ -47,6 +47,9 @@
     .project-card-header {
         display: flex;
         flex-grow: 0;
+        .icon-badge {
+          fill: $primary-light;
+        }
     }
     .project-card-logo {
         display: inline-block;

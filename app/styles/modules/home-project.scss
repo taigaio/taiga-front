@@ -125,9 +125,11 @@
             @include svg-size(1.2rem);
             background: rgba($black, .5);
             bottom: 5%;
+            fill: $primary-light;
             padding: .1rem;
             position: absolute;
             right: 5%;
+            stroke: $primary-light;
         }
     }
 }

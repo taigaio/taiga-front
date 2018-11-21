@@ -40,7 +40,7 @@
             tg-svg(svg-icon="icon-watch")
             span {{vm.item.getIn(['model', 'watchers']).size}}
         .statistic.card-comments(ng-if="vm.item.getIn(['model', 'total_comments']) || vm.visible('empty_extra_info')")
-            tg-svg(svg-icon="icon-bubble-empty")
+            tg-svg(svg-icon="icon-meetup")
             span {{vm.item.getIn(['model', 'total_comments'])}}
         .statistic.card-attachments(ng-if="vm.item.getIn(['model', 'attachments']).size || vm.visible('empty_extra_info')")
            tg-svg(svg-icon="icon-attachment")

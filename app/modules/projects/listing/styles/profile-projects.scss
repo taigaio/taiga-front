@@ -28,6 +28,8 @@
         }
         .icon-blocked-project {
             @include svg-size();
+            fill: $white;
+            stroke: $red-light;
         }
     }
 }
