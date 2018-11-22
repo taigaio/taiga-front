@@ -25,8 +25,12 @@
         display: flex;
         margin-top: auto;
         svg {
-            &:not(.icon-key) {
+            &:not(.icon-private) {
                 @include svg-size(.75rem);
+            }
+            &.icon-private {
+              @include svg-size(1.2rem);
+              margin-left: 1em;
             }
             fill: currentColor;
             margin-right: .25rem;

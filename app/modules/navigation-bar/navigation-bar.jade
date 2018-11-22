@@ -49,6 +49,7 @@ nav.navbar(ng-if="vm.isEnabledHeader")
         a(
             href="#",
             tg-nav="discover",
+            ng-class="{active: vm.active}"
             title="{{'PROJECT.NAVIGATION.DISCOVER_TITLE' | translate}}",
         )
             tg-svg(svg-icon="icon-discover")

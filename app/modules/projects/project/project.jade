@@ -18,7 +18,7 @@ div.wrapper
                             span.project-name {{::vm.project.get("name")}}
                         tg-svg(
                             ng-if="::vm.project.get('is_private')"
-                            svg-icon="icon-key"
+                            svg-icon="icon-private"
                             svgTitleTranslate: "PROJECT.PRIVATE"
                         )
 

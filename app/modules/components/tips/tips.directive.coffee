@@ -30,7 +30,7 @@ tipsDirective = (tgLoader, $translate) ->
       { contentType: "icon", icon: "icon-promote", message: "PROMOTE"}
       { contentType: "icon", icon: "icon-bulk", message: "BULK"}
       { contentType: "range", message: "ZOOM"}
-      { message: "CUSTOM_FIELDS"}
+      { contentType: "icon", icon: "icon-settings", message: "CUSTOM_FIELDS"}
       { contentType: "arrows", message: "SLIDE_ARROWS"}
     ]
 
@@ -43,11 +43,12 @@ tipsDirective = (tgLoader, $translate) ->
 
         loadTip = () ->
             tip = tips[randomInt(tips.length - 1)]
-            scope.contentType = tip.contentType
-            scope.message = "TIPS.TIP_#{tip.message}"
-            scope.icon = tip.icon
-
-            scope.tipColor = "tip-color-#{randomInt(5)}"
+            scope.tip = {
+                contentType: tip.contentType
+                message: "TIPS.TIP_#{tip.message}"
+                icon: tip.icon
+                color: "tip-color-#{randomInt(5)}"
+            }
 
     return {
         link: link,

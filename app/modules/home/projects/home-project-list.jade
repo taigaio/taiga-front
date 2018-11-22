@@ -69,7 +69,7 @@ section.home-project-list(ng-if="vm.projects.size")
                     ng-if="::project.get('is_private')"
                     title="{{ 'PROJECT.PRIVATE' | translate }}"
                 )
-                    tg-svg(svg-icon="icon-key")
+                    tg-svg(svg-icon="icon-private")
     a.see-more-projects-btn.button-gray(
         href="#",
         ng-show="vm.projects.size",
