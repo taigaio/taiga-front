@@ -17,6 +17,8 @@
 # File: components/tips/tips.directive.coffee
 ###
 
+timeout = @.taiga.timeout
+
 module = angular.module("taigaComponents")
 
 tipsDirective = (tgLoader, $translate) ->
@@ -38,10 +40,19 @@ tipsDirective = (tgLoader, $translate) ->
         return Math.floor(Math.random() * size) + 1
 
     link = (scope, el, attrs) ->
+        scope.tipLoaded = false
+        waitingTimeout = null
+
         tgLoader.onStart () ->
-            loadTip()
+            waitingTimeout = timeout 1000, ->
+                loadTip()
+
+        tgLoader.onEnd () ->
+            clearTimeout(waitingTimeout)
+            scope.tipLoaded = false
 
         loadTip = () ->
+            scope.tipLoaded = true
             tip = tips[randomInt(tips.length - 1)]
             scope.tip = {
                 contentType: tip.contentType

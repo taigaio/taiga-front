@@ -1,9 +1,9 @@
-div.tip(ng-class="tip.color")
+div.tip(ng-if="tipLoaded", ng-class="tip.color")
   p.title(translate="TIPS.TIPS_TITLE")
 
   p(translate="{{ tip.message }}")
 
-  div(ng-switch="tip.contentType", translate-cloak="{{ tip.message }}")
+  div(ng-switch="tip.contentType")
     p(ng-switch-when="icon")
       tg-svg(svg-icon="{{ tip.icon }}")
       span(ng-if="tip.icon == 'icon-upvote'") 5
@@ -13,3 +13,6 @@ div.tip(ng-class="tip.color")
     p.arrows(ng-switch-when="arrows")
       tg-svg(svg-icon="icon-arrow-left")
       tg-svg(svg-icon="icon-arrow-right")
+
+div.tip(ng-if="!tipLoaded")
+  p(translate="COMMON.LOADING")
