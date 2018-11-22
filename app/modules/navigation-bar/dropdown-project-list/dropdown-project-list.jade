@@ -11,7 +11,7 @@ div.navbar-dropdown.dropdown-project-list
       li(tg-repeat="project in vm.projects track by project.get('id')")
         a(
             href="#"
-            tg-nav="project:project=project.get('slug')"
+            tg-nav="project:project=project.get('slug'),section=project.get('my_homepage')"
             ng-class="{'blocked-project': project.get('blocked_code')}"
         )
             span {{::project.get("name")}}

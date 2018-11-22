@@ -54,7 +54,7 @@ module.service("$tgNavUrls", NavigationUrlsService)
 ## Navigation Urls Directive
 #############################################################################
 
-NavigationUrlsDirective = ($navurls, $auth, $q, $location, lightboxService) ->
+NavigationUrlsDirective = ($navurls, $auth, $q, $location, lightboxService, tgSections) ->
     # Example:
     # link(tg-nav="project-backlog:project='sss',")
 
@@ -118,7 +118,13 @@ NavigationUrlsDirective = ($navurls, $auth, $q, $location, lightboxService) ->
                     user = $auth.getUser()
                     options.user = user.username if user
 
+                    if options['section']
+                        sections = tgSections.list()
+                        section = _.find(sections, {"id": options['section']})
+                        name = "#{name}-#{section.path}"
+
                     url = $navurls.resolve(name)
+
                     fullUrl = $navurls.formatUrl(url, options)
 
                     if $attrs.tgNavGetParams
@@ -159,4 +165,5 @@ NavigationUrlsDirective = ($navurls, $auth, $q, $location, lightboxService) ->
 
     return {link: link}
 
-module.directive("tgNav", ["$tgNavUrls", "$tgAuth", "$q", "$tgLocation", "lightboxService", NavigationUrlsDirective])
+module.directive("tgNav",
+    ["$tgNavUrls", "$tgAuth", "$q", "$tgLocation", "lightboxService", "$tgSections", NavigationUrlsDirective])

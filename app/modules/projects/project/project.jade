@@ -4,7 +4,7 @@ div.wrapper
         section.single-project-intro
             .project-logo(
                 href="#"
-                tg-nav="project:project=project.get('slug')"
+                tg-nav="project:project=project.get('slug'),section=project.get('my_homepage')"
                 title="{{::project.get('name')}}"
             )
                 img(

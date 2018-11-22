@@ -29,7 +29,7 @@ div(tg-discover-search)
                     .list-itemtype-project-left
                         a.list-itemtype-project-image(
                             href="#"
-                            tg-nav="project:project=project.get('slug')"
+                            tg-nav="project:project=project.get('slug'),section=project.get('my_homepage')"
                             title="{{ ::project.get('name') }}"
                         )
                             img(
@@ -40,7 +40,7 @@ div(tg-discover-search)
                             h2
                                 a(
                                     href="#"
-                                    tg-nav="project:project=project.get('slug')"
+                                    tg-nav="project:project=project.get('slug'),section=project.get('my_homepage')"
                                     title="{{ ::project.get('name') }}"
                                 ) {{project.get('name')}}
                                 tg-svg.look-for-people(

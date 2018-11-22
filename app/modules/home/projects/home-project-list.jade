@@ -7,12 +7,12 @@ section.home-project-list(ng-if="vm.projects.size")
     )
         .project-card-inner(
             href="#"
-            tg-nav="project:project=project.get('slug')"
+            tg-nav="project:project=project.get('slug'),section=project.get('my_homepage')"
         )
             .project-card-header
                 a.project-card-logo(
                     href="#"
-                    tg-nav="project:project=project.get('slug')"
+                    tg-nav="project:project=project.get('slug'),section=project.get('my_homepage')"
                     title="{{::project.get('name')}}"
                 )
                     img(
@@ -22,7 +22,7 @@ section.home-project-list(ng-if="vm.projects.size")
                 h3.project-card-name
                     a.project-title(
                         href="#"
-                        tg-nav="project:project=project.get('slug')"
+                        tg-nav="project:project=project.get('slug'),section=project.get('my_homepage')"
                         title="{{::project.get('name')}}"
                     ) {{::project.get('name')}}
 
