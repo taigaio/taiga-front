@@ -28,7 +28,9 @@ DropdownProjectListDirective = (currentUserService, projectsService) ->
 
     directive = {
         templateUrl: "navigation-bar/dropdown-project-list/dropdown-project-list.html"
-        scope: {}
+        scope: {
+            active: "="
+        }
         link: link
     }
 

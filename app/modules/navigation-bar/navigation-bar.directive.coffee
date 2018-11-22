@@ -34,10 +34,16 @@ NavigationBarDirective = (currentUserService, navigationBarService, locationServ
             locationService.search({next: nextUrl})
 
         scope.$on "$routeChangeSuccess", () ->
-            if locationService.path() == "/"
-                scope.vm.active = true
-            else
-                scope.vm.active = false
+            scope.vm.active = null
+            switch locationService.path()
+                when "/"
+                    scope.vm.active = 'dashboard'
+                when "/discover"
+                    scope.vm.active = 'discover'
+                when "/notifications"
+                    scope.vm.active = 'notifications'
+                when "/projects/"
+                    scope.vm.active = 'projects'
 
     directive = {
         templateUrl: "navigation-bar/navigation-bar.html"

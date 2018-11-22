@@ -40,7 +40,12 @@ $dropdown-width: 350px;
         > a,
         .topnav-dropdown-wrapper > a {
             color: $white;
-            padding: .5rem 2rem;
+            margin: 0 .75rem;
+            padding: .5rem 1rem;
+        }
+        .active {
+            background: rgba($white, .95);
+            color: $secondary-dark;
         }
         svg {
             @include svg-size(1.2rem);
@@ -48,24 +53,27 @@ $dropdown-width: 350px;
             transition: all .2s linear;
         }
     }
-    > a,
+    .nav-right > a,
     .topnav-dropdown-wrapper > a {
         color: $white;
         display: inline-block;
         transition: all .2s linear;
-        &:hover {
-            background: rgba($black, .2);
+        &:hover:not(.user-avatar) {
+            background: rgba($white, .95);
             color: $primary-light;
             svg {
-                fill: $white;
+                fill: $primary-light;
+                transition: all .2s linear;
             }
-
         }
         &.user-avatar {
             min-width: 200px;
             padding: 0;
             padding-left: 2rem;
             text-align: right;
+            &:hover {
+                background: rgba($black, .2);
+            }
             span {
                 padding-right: 1rem;
             }

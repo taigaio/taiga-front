@@ -3,6 +3,7 @@ a(
     title="{{ 'EVENTS.TITLE' | translate }}"
     tg-nav="notifications"
     ng-mouseover="visible=true"
+    ng-class="{'active': active}"
 )
     tg-svg(svg-icon="icon-bell")
     div.counter(ng-if="total", ng-class="{'active': newEvent}") {{ total }}

@@ -45,7 +45,9 @@ DropdownNotificationsDirective = ($rootScope, notificationsService, currentUserS
 
     directive = {
         templateUrl: "navigation-bar/dropdown-notifications/dropdown-notifications.html"
-        scope: true
+        scope: {
+            active: "="
+        }
         link: link
     }
 
