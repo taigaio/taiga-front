@@ -945,12 +945,13 @@ ProjectCustomAttributesDirective = ($log, $confirm, animationFrame, $translate) 
 
         addExtraOption = (formEl, formExtraEl) ->
             formScope = formEl.scope()
-            attrExtra = if formScope.newAttr then formScope.newAttr.extra else formScope.attr.extra
+            attrExtra = if formScope.newAttr?.extra then formScope.newAttr.extra else formScope.attr.extra
             attrExtra.push("")
             formScope.$apply()
 
             formEl.find(".js-edit-custom-field-extra").last().removeClass("hidden")
             formEl.find(".js-view-custom-field-extra").last().addClass("hidden")
+            formEl.find(".js-edit-custom-field-extra input").last().focus()
 
         removeExtraOption = (formEl, formExtraEl) ->
             attrExtra = formEl.scope().attr.extra
