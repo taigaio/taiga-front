@@ -106,8 +106,7 @@ class RolesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fil
         return @.loadRoles()
 
     forceLoadProject: () ->
-        @projectService.fetchProject () =>
-            @.loadProject()
+        @rootscope.$broadcast("admin:project-roles:updated")
 
     setRole: (role) ->
         @scope.role = role

@@ -63,6 +63,7 @@ class TagLineController
 
         onAddTagSuccess = (item) =>
             @rootScope.$broadcast("object:updated") #its a kind of magic.
+            @rootScope.$broadcast("tags:updated")
             @.addTag = false
             @.loadingAddTag = false
 

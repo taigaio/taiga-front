@@ -21,13 +21,14 @@ taiga = @.taiga
 
 class ProjectService
     @.$inject = [
+        "$rootScope",
         "tgProjectsService",
         "tgXhrErrorService",
         "tgUserActivityService",
         "$interval"
     ]
 
-    constructor: (@projectsService, @xhrError, @userActivityService, @interval) ->
+    constructor: (@rootScope,  @projectsService, @xhrError, @userActivityService, @interval) ->
         @._project = null
         @._section = null
         @._sectionsBreadcrumb = Immutable.List()
@@ -39,6 +40,23 @@ class ProjectService
         taiga.defineImmutableProperty @, "activeMembers", () => return @._activeMembers
 
         @.autoRefresh() if !window.localStorage.e2e
+        @.watchSignals()
+
+    watchSignals: () ->
+        fetchRequiredSignals = [
+            "admin:project-modules:updated"
+            "admin:project-roles:updated"
+            "admin:project-default-values:updated"
+            "admin:project-values:updated"
+            "admin:project-values:move"
+            "admin:project-custom-attributes:updated"
+            "tags:updated"
+        ]
+        for signal in fetchRequiredSignals
+            @rootScope.$on(signal, @.manageProjectSignal)
+
+    manageProjectSignal: (ctx) =>
+        @.fetchProject()
 
     cleanProject: () ->
         @._project = null

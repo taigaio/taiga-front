@@ -120,7 +120,8 @@ class ProjectValuesController extends taiga.Controller
         _.each values, (value, index) ->
             value.order = index
 
-        @repo.saveAll(values)
+        @repo.saveAll(values).then () =>
+            @rootscope.$broadcast("admin:project-values:updated")
 
 module.controller("ProjectValuesController", ProjectValuesController)
 
@@ -151,6 +152,7 @@ class ProjectDueDatesValuesController extends ProjectValuesController
         if !@rs[@scope.resource].createDefaultValues?
             return
         return @rs[@scope.resource].createDefaultValues(@scope.projectId, @scope.type).then (response) =>
+            @rootscope.$broadcast("admin:project-values:updated")
             values = response.data
             if values.length
                 @scope.maxValueOrder = _.maxBy(values, "order").order
@@ -244,10 +246,11 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame, $tra
 
             value = formEl.scope().value
             promise = $repo.save(value)
-            promise.then =>
+            promise.then ->
                 row = target.parents(".row.table-main")
                 row.addClass("hidden")
                 row.siblings(".visualization").removeClass('hidden')
+                $rootscope.$broadcast("admin:project-values:updated")
 
                 projectService.fetchProject()
 
@@ -269,6 +272,7 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame, $tra
                 $scope.values.push(data)
                 $scope.maxValueOrder = data.order
                 initializeNewValue()
+                $rootscope.$broadcast("admin:project-values:updated")
 
             promise.then null, (data) ->
                 form.setErrors(data)
@@ -349,6 +353,7 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame, $tra
             $confirm.askChoice(title, subtitle, choices, text).then (response) ->
                 onSucces = ->
                     $ctrl.loadValues().finally ->
+                        $rootscope.$broadcast("admin:project-values:updated")
                         response.finish()
                 onError = ->
                     $confirm.notify("error")
@@ -374,7 +379,8 @@ ProjectDueDatesValues = ($log, $repo, $confirm, $location, animationFrame, $tran
     parentDirective = ProjectValuesDirective($log, $repo, $confirm, $location, animationFrame,
     $translate, $rootscope, projectService)
 
-    linkDueDateStatusValue = ($scope, $el, $attrs) ->
+    linkDueDateStatusValue = ($scope, $el, $attrs, $ctrl) ->
+        $ctrl = $el.controller()
         valueType = $attrs.type
 
         initializeNewValue = ->
@@ -414,7 +420,7 @@ ProjectDueDatesValues = ($log, $repo, $confirm, $location, animationFrame, $tran
                 data.days_to_due_abs = $scope.newValue.days_to_due_abs
 
                 $scope.values.push(data)
-
+                $rootscope.$broadcast("admin:project-values:updated")
                 initializeNewValue()
 
             promise.then null, (data) ->
@@ -451,6 +457,7 @@ ProjectDueDatesValues = ($log, $repo, $confirm, $location, animationFrame, $tran
             $confirm.ask(title, subtitle).then (response) ->
                 onSucces = ->
                     $ctrl.loadValues().finally ->
+                        $rootscope.$broadcast("admin:project-values:updated")
                         response.finish()
                 onError = ->
                     $confirm.notify("error")
@@ -628,6 +635,9 @@ class ProjectCustomAttributesController extends mixOf(taiga.Controller, taiga.Pa
             attr.extra = ['']
         return attr
 
+    _onCustomAttributesModified: =>
+        @rootscope.$broadcast("admin:project-custom-attributes:updated")
+
     loadCustomAttributes: =>
         return @rs.customAttributes[@scope.type].list(@scope.projectId).then (customAttributes) =>
             @scope.customAttributes = customAttributes
@@ -636,13 +646,16 @@ class ProjectCustomAttributesController extends mixOf(taiga.Controller, taiga.Pa
             return customAttributes
 
     createCustomAttribute: (attrValues) =>
-        return @repo.create("custom-attributes/#{@scope.type}", attrValues)
+        return @repo.create("custom-attributes/#{@scope.type}", attrValues).then =>
+            @._onCustomAttributesModified()
 
     saveCustomAttribute: (attrModel) =>
-        return @repo.save(attrModel)
+        return @repo.save(attrModel).then =>
+            @._onCustomAttributesModified()
 
     deleteCustomAttribute: (attrModel) =>
-        return @repo.remove(attrModel)
+        return @repo.remove(attrModel).then =>
+            @._onCustomAttributesModified()
 
     moveCustomAttributes: (attrModel, newIndex) =>
         customAttributes = @scope.customAttributes
@@ -653,7 +666,8 @@ class ProjectCustomAttributesController extends mixOf(taiga.Controller, taiga.Pa
         _.each customAttributes, (val, idx) ->
             val.order = idx
 
-        @repo.saveAll(customAttributes)
+        @repo.saveAll(customAttributes).then =>
+            @._onCustomAttributesModified()
 
 
 module.controller("ProjectCustomAttributesController", ProjectCustomAttributesController)
@@ -1099,7 +1113,7 @@ ProjectTagsDirective = ($log, $repo, $confirm, $location, animationFrame, $trans
             if focus
                 $el.find(".new-value input:visible").first().focus()
 
-        saveValue = (target) =>
+        saveValue = (target) ->
             formEl = target.parents("form")
             form = formEl.checksley()
             return if not form.validate()
@@ -1110,18 +1124,19 @@ ProjectTagsDirective = ($log, $repo, $confirm, $location, animationFrame, $trans
 
             $scope.loadingEdit = true
             promise = $ctrl.editTag(originalTag.name, tag.name, tag.color)
-            promise.then =>
-                $ctrl.loadTags().then =>
+            promise.then ->
+                $ctrl.loadTags().then ->
                     row = target.parents(".row.table-main")
                     row.addClass("hidden")
                     $scope.loadingEdit = false
+                    $rootscope.$broadcast('tags:updated')
                     row.siblings(".visualization").removeClass('hidden')
 
             promise.then null, (response) ->
                 $scope.loadingEdit = false
                 form.setErrors(response.data)
 
-        saveNewValue = (target) =>
+        saveNewValue = (target) ->
             formEl = target.parents("form")
             formEl = target
             form = formEl.checksley()
@@ -1129,10 +1144,11 @@ ProjectTagsDirective = ($log, $repo, $confirm, $location, animationFrame, $trans
 
             $scope.loadingCreate = true
             promise = $ctrl.createTag($scope.newValue.tag, $scope.newValue.color)
-            promise.then (data) =>
-                $ctrl.loadTags().then =>
+            promise.then (data) ->
+                $ctrl.loadTags().then ->
                     $scope.loadingCreate = false
                     target.addClass("hidden")
+                    $rootscope.$broadcast('tags:updated')
                     initializeNewValue()
 
             promise.then null, (response) ->
@@ -1242,6 +1258,7 @@ ProjectTagsDirective = ($log, $repo, $confirm, $location, animationFrame, $trans
             $confirm.askOnDelete(title, tag.name).then (response) ->
                 onSucces = ->
                     $ctrl.loadTags().finally ->
+                        $rootscope.$broadcast('tags:updated')
                         response.finish()
                 onError = ->
                     $confirm.notify("error")
