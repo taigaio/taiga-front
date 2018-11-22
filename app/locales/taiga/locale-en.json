@@ -1409,7 +1409,7 @@
           "WARNING_ISSUES_NOT_MOVED_TITLE": "You just moved all user stories and taks, and the sprint'll be closed",
           "WARNING_ISSUES_NOT_MOVED": "The issues'll remain in the sprint and don't be removed",
           "WARNING_SPRINT_STILL_OPEN_TITLE": "{total, plural, one{You just moved # item!} other{You just moved # items!}}",
-          "WARNING_SPRINT_STILL_OPEN": "Please note that <strong>the sprint {{sprintName}} will remain open</strong> as long as it contains unfinished items."
+          "WARNING_SPRINT_STILL_OPEN": "Please note that the sprint {{sprintName}} <strong>will remain open</strong> as long as it contains unfinished items."
         }
     },
     "TASK": {

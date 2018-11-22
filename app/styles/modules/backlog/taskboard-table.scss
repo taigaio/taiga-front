@@ -178,9 +178,11 @@ $column-padding: .5rem 1rem;
             }
         }
         &.issues-row {
+            margin-top: 1em;
             .taskboard-cards-box {
                 align-content: flex-start;
                 align-items: flex-start;
+                border-top: 3px solid $gray-light;
                 display: flex;
                 flex-direction: row;
                 flex-wrap: wrap;
@@ -205,6 +207,7 @@ $column-padding: .5rem 1rem;
             .card {
                 cursor: default;
                 height: auto;
+                margin: .3rem .1rem .3rem .5rem;
             }
         }
         &.issues-row:not(.row-fold) {
