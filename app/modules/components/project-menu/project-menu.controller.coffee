@@ -29,7 +29,7 @@ class ProjectMenuController
 
     show: () ->
         @.project = @projectService.project
-
+        @.sprints = @.project.get('milestones')?.toJS()
         @.active = @._getActiveSection()
 
         @._setVideoConference()

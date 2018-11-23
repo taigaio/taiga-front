@@ -50,6 +50,9 @@ class ProjectService
             "admin:project-values:updated"
             "admin:project-values:move"
             "admin:project-custom-attributes:updated"
+            "sprintform:create:success"
+            "sprintform:edit:success"
+            "sprintform:remove:success"
             "tags:updated"
         ]
         for signal in fetchRequiredSignals

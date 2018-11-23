@@ -52,10 +52,10 @@ nav.menu(
                 span.backlog-sprints-menu(ng-show="backlogHover")
                   span(translate="PROJECT.SECTION.BACKLOG")
                   a(
-                      tg-repeat="sprint in vm.project.get('milestones') track by sprint.get('id')"
-                      ng-if="!sprint.get('closed')"
-                      tg-nav="project-taskboard:project=vm.project.get('slug'),sprint=sprint.get('slug')"
-                  ) {{::sprint.get('name')}}
+                      ng-repeat="sprint in vm.sprints track by sprint.id"
+                      ng-if="!sprint.closed"
+                      tg-nav="project-taskboard:project=vm.project.get('slug'),sprint=sprint.slug"
+                  ) {{sprint.name}}
 
             li#nav-kanban(ng-if="vm.menu.get('kanban')")
                 a(
