@@ -119,9 +119,8 @@ NavigationUrlsDirective = ($navurls, $auth, $q, $location, lightboxService, tgSe
                     options.user = user.username if user
 
                     if options['section']
-                        sections = tgSections.list()
-                        section = _.find(sections, {"id": options['section']})
-                        name = "#{name}-#{section.path}"
+                        path = tgSections.getPath(options['project'], options['section'])
+                        name = "#{name}-#{path}"
 
                     url = $navurls.resolve(name)
 

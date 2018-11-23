@@ -40,16 +40,12 @@ class ProjectRouterController
         @location.url("project/#{@routeParams.pslug}/timeline")
 
     getProjectHomepage: () ->
-        sections = @tgSections.list()
         project = @projectService.project.toJS()
 
-        @rs.userProjectSettings.list({project: project.id}).then (userProjectSettings) ->
+        @rs.userProjectSettings.list({project: project.id}).then (userProjectSettings) =>
             settings = _.find(userProjectSettings, {"project": project.id})
             return if !settings
 
-            section = _.find(sections, {"id": settings.homepage})
-            return if !section
-
-            return section.path
+            return @tgSections.getPath(project.slug, settings.homepage)
 
 angular.module("taigaProjects").controller("ProjectRouter", ProjectRouterController)
