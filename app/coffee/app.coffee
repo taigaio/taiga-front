@@ -780,7 +780,8 @@ i18nInit = (lang, $translate) ->
 
 
 init = ($log, $rootscope, $auth, $events, $analytics, $translate, $location, $navUrls, appMetaService,
-        loaderService, navigationBarService, errorHandlingService, lightboxService, $tgConfig) ->
+        loaderService, navigationBarService, errorHandlingService, lightboxService, $tgConfig,
+        projectService) ->
     $log.debug("Initialize application")
 
     $rootscope.$on '$translatePartialLoaderStructureChanged', () ->
@@ -868,6 +869,9 @@ init = ($log, $rootscope, $auth, $events, $analytics, $translate, $location, $na
     # Initialize error handling service when location change start
     $rootscope.$on '$locationChangeStart',  (event) ->
         errorHandlingService.init()
+
+        if projectService.project?.get('blocked_code')
+            errorHandlingService.block()
 
         if lightboxService.getLightboxOpen().length
             event.preventDefault();
@@ -1001,5 +1005,6 @@ module.run([
     "tgErrorHandlingService",
     "lightboxService",
     "$tgConfig",
+    "tgProjectService",
     init
 ])
