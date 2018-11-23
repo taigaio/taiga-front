@@ -1822,7 +1822,7 @@
     "TIPS": {
       "TIPS_TITLE": "Tip",
       "TIP_PROJECTS_ORDER": "You can sort projects on your project page by placing the ones most frequently accessed at the top.",
-      "TIP_VOTING": "You can solicit feedback from the community by asking them to upvote the tasks that most interest them.",
+      "TIP_VOTING": "Whether you ask your community or your other team members, upvoting items might serve as a way to detect explicit support for a particular task or issue.",
       "TIP_ISSUES_TO_SPRINT": "You can attach issues to a particular sprint by clicking on the pin icon in the detail view.",
       "TIP_DUE_DATE": "If you need to finish a task on a specific date, activate the DueDate from the detail view of the task.",
       "TIP_IOCAIN": "You can signal to team members that a task is being particularly troublesome by clicking on the iocaine button. Doing so indicates that you welcome help, patience and understanding.",
