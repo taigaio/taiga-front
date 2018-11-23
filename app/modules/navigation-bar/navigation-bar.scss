@@ -215,13 +215,24 @@ $dropdown-width: 350px;
         border-radius: 50%;
         color: $white;
         font-size: .7rem;
-        height: 20px;
-        left: 35px;
-        line-height: 20px;
+        height: 18px;
+        left: 37px;
+        line-height: 18px;
         position: absolute;
         text-align: center;
-        top: 0;
-        width: 20px;
+        top: 3px;
+        width: 18px;
+        &.small {
+            height: 17px;
+            line-height: 17px;
+            width: 17px;
+        }
+        &.large {
+            height: 22px;
+            line-height: 22px;
+            top: 2px;
+            width: 22px;
+        }
         &.active {
             animation-duration: 2s;
             animation-name: highlightFadeOut;

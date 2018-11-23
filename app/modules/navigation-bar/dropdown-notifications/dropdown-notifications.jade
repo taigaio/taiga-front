@@ -6,7 +6,7 @@ a(
     ng-class="{'active': active}"
 )
     tg-svg(svg-icon="icon-bell")
-    div.counter(ng-if="total", ng-class="{'active': newEvent}") {{ total }}
+    div.counter(ng-if="total", ng-class="{'active': newEvent, 'large': total > 99, 'small': total < 10}") {{ total }}
 div.navbar-dropdown-notifications(
     ng-show="visible",
     ng-mouseleave="visible=false"
