@@ -21,10 +21,11 @@ taiga = @.taiga
 
 class NotificationsService extends taiga.Service
     @.$inject = [
-        "tgResources",
-        "tgUserTimelinePaginationSequenceService",
-        "$translate",
+        "tgResources"
+        "tgUserTimelinePaginationSequenceService"
+        "$translate"
         "$tgNavUrls"
+        "$tgSections"
     ]
 
     _notificationTypes = [
@@ -86,10 +87,11 @@ class NotificationsService extends taiga.Service
     }
 
     constructor: (
-        @rs,
-        @userTimelinePaginationSequenceService,
-        @translate,
+        @rs
+        @userTimelinePaginationSequenceService
+        @translate
         @navUrls
+        @tgSections
     ) ->
 
     getNotificationsList: (userId, onlyUnread) ->
@@ -123,8 +125,13 @@ class NotificationsService extends taiga.Service
         type =  @._getType(notification)
 
         title = @._getTitle(notification, event_type, type)
-
         notification = notification.set('title_html', title)
+
+        projectSlug = notification.getIn(['data', 'project', 'slug'])
+        projectSectionPath = @tgSections.getPath(projectSlug)
+        projectUrl = @navUrls.resolve("project-#{projectSectionPath}", { project: projectSlug })
+        notification = notification.set('projectUrl', projectUrl)
+
         notification = notification.set('obj', @._getNotificationObject(notification))
 
         return notification

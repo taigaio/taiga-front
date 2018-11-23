@@ -32,5 +32,9 @@ section.notifications-list
                     )
             .entry-content
                 p(tg-compile-html="notification.get('title_html')")
-                span.entry-project {{::notification.getIn(['data', 'project', 'name'])}}
+                p
+                  a.entry-project(
+                    href=""
+                    ng-click="vm.setAsRead(notification, notification.get('projectUrl'))"
+                  ) {{::notification.getIn(['data', 'project', 'name'])}}
             .entry-date {{::notification.get('created') | momentFromNow}}
