@@ -40,7 +40,7 @@ $dropdown-width: 350px;
         > a,
         .topnav-dropdown-wrapper > a {
             color: $white;
-            margin: 0 .75rem;
+            margin: 0;
             padding: .5rem 1rem;
         }
         .active {
@@ -58,8 +58,8 @@ $dropdown-width: 350px;
         color: $white;
         display: inline-block;
         transition: all .2s linear;
-        &:hover:not(.user-avatar) {
-            background: rgba($white, .95);
+        &:hover {
+            background: rgba($black, .2);
             color: $primary-light;
             svg {
                 fill: $primary-light;
@@ -71,9 +71,6 @@ $dropdown-width: 350px;
             padding: 0;
             padding-left: 2rem;
             text-align: right;
-            &:hover {
-                background: rgba($black, .2);
-            }
             span {
                 padding-right: 1rem;
             }
@@ -219,7 +216,7 @@ $dropdown-width: 350px;
         color: $white;
         font-size: .7rem;
         height: 20px;
-        left: 52px;
+        left: 35px;
         line-height: 20px;
         position: absolute;
         text-align: center;
