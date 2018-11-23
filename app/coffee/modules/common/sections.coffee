@@ -44,7 +44,11 @@ class SectionsService extends taiga.Service
     getPath: (projectSlug, sectionId) ->
         projects = @currentUserService.projects.get("all")
         project = projects.find (p) -> return p.get('slug') == projectSlug
+
+        if not sectionId
+            sectionId = project.get('my_homepage')
         section = _.find(SECTIONS, {"id": sectionId})
+
         if !section or project?.get(section.enabled) is not true
             return "timeline"
 

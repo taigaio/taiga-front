@@ -871,6 +871,7 @@ init = ($log, $rootscope, $auth, $events, $analytics, $translate, $location, $na
         errorHandlingService.init()
 
         if projectService.project?.get('blocked_code')
+            projectService.setProject(null)
             errorHandlingService.block()
 
         if lightboxService.getLightboxOpen().length
