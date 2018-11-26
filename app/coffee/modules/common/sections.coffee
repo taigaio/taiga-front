@@ -24,17 +24,17 @@
 
 module = angular.module("taigaCommon")
 
-SECTIONS = {
-    1: {id: 1, title: 'TIMELINE', path:'timeline', enabled: ''}
-    2: {id: 2, title: 'EPICS', path:'epics', enabled: 'is_epics_activated'}
-    3: {id: 3, title: 'BACKLOG', path:'backlog', enabled: 'is_backlog_activated'}
-    4: {id: 4, title: 'KANBAN', path:'kanban', enabled: 'is_kanban_activated'}
-    5: {id: 5, title: 'ISSUES', path:'issues', enabled: 'is_issues_activated'}
-    6: {id: 6, title: 'WIKI', path:'wiki', enabled: 'is_wiki_activated'}
-}
-
 class SectionsService extends taiga.Service
     @.$inject = ["$translate", "tgCurrentUserService"]
+
+    SECTIONS = {
+        1: {id: 1, title: 'TIMELINE', path:'timeline', enabled: ''}
+        2: {id: 2, title: 'EPICS', path:'epics', enabled: 'is_epics_activated'}
+        3: {id: 3, title: 'BACKLOG', path:'backlog', enabled: 'is_backlog_activated'}
+        4: {id: 4, title: 'KANBAN', path:'kanban', enabled: 'is_kanban_activated'}
+        5: {id: 5, title: 'ISSUES', path:'issues', enabled: 'is_issues_activated'}
+        6: {id: 6, title: 'WIKI', path:'wiki', enabled: 'is_wiki_activated'}
+    }
 
     constructor: (@translate, @currentUserService) ->
         super()
@@ -42,15 +42,20 @@ class SectionsService extends taiga.Service
     list: () ->
         return SECTIONS
     getPath: (projectSlug, sectionId) ->
-        projects = @currentUserService.projects.get("all")
+        defaultHomePage = "timeline"
+
+        projects = @currentUserService.projects?.get("all")
         project = projects.find (p) -> return p.get('slug') == projectSlug
+
+        if not project
+            return defaultHomePage
 
         if not sectionId
             sectionId = project.get('my_homepage')
-        section = _.find(SECTIONS, {"id": sectionId})
 
+        section = _.find(SECTIONS, {"id": sectionId})
         if !section or project?.get(section.enabled) is not true
-            return "timeline"
+            return defaultHomePage
 
         return section.path
 
