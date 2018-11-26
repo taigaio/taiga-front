@@ -40,9 +40,10 @@ class UserProjectSettingsController extends mixOf(taiga.Controller, taiga.PageMi
         "$tgResources"
         "$tgRepo"
         "$tgConfirm"
+         "tgCurrentUserService"
     ]
 
-    constructor: (@scope, @tgSections, @rs, @repo, @confirm) ->
+    constructor: (@scope, @tgSections, @rs, @repo, @confirm, @currentUserService) ->
         @scope.sections = @tgSections.list()
 
         promise = @.loadInitialData()
@@ -54,6 +55,7 @@ class UserProjectSettingsController extends mixOf(taiga.Controller, taiga.PageMi
 
     updateCustomHomePage: (projectSettings) ->
         onSuccess = =>
+            @currentUserService.loadProjects()
             @confirm.notify("success")
 
         onError = =>
