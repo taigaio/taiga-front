@@ -7,10 +7,12 @@
     }
 
     label {
-        @include font-size(small);
         display: block;
         margin-bottom: .25rem;
-
+        max-height: 44px;
+        span {
+          @include font-size(small);
+        }
         .mumble {
             @include font-type(light);
             margin-left: .25rem;
@@ -90,6 +92,17 @@
 
         label {
             background: $mass-white;
+
+            .icon {
+              margin-right: .5em;
+            }
+        }
+
+        .icon-private {
+            width: 20px;
+            height: 20px;
+            line-height: 12px;
+            margin-top: 2px;
         }
     }
 
