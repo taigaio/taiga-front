@@ -42,7 +42,8 @@ class NotificationsController extends mixOf(taiga.Controller, taiga.PageMixin, t
         @.loadNotifications()
 
         @rootScope.$on "notifications:updated", (event) =>
-            @.reloadList()
+            if @.onlyUnread
+                @.reloadList()
 
     initList: ()->
         @.notificationsList = Immutable.List()
@@ -73,14 +74,13 @@ class NotificationsController extends mixOf(taiga.Controller, taiga.PageMixin, t
                 return @.notificationsList
 
     setAsRead: (notification, url) ->
-        @.loading = true
-        @scope.$emit("notifications:loading")
         @notificationsService.setNotificationAsRead(notification.get("id")).then =>
             if @location.$$url == url
                 @window.location.reload()
             else
-                @rootScope.$broadcast "notifications:updated"
                 @location.path(url)
+
+            @rootScope.$broadcast "notifications:updated"
 
     setAllAsRead: () ->
         @.loading = true
