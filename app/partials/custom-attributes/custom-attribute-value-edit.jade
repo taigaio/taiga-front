@@ -24,6 +24,7 @@ form.custom-field-single.editable
             name="value"
             ng-model="model"
         )
+            option
             option(ng-repeat="option in extra", value="{{ option }}") {{ option }}
         <% } else if (type=="number") { %>
         input#custom-field-value(name="value", type="number", value!="<%- value %>")
