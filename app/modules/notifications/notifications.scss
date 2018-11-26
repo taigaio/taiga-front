@@ -30,6 +30,11 @@
             color: $primary-light;
         }
     }
+    .empty {
+        margin: 4rem auto;
+        text-align: center;
+        width: 100%;
+    }
     .notifications-list .entry {
         align-items: center;
         font-size: .95rem;

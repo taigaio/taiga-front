@@ -5,36 +5,39 @@ section.notifications-list
                 src="/#{v}/svg/spinner-circle.svg"
                 alt="Loading..."
             )
-    div(
-        ng-if="!vm.loading"
-        infinite-scroll="vm.loadNotifications()"
-        infinite-scroll-disabled="vm.scrollDisabled"
-        ng-attr-infinite-scroll-container="vm.infiniteScrollContainer"
-        ng-attr-infinite-scroll-distance="vm.infiniteScrollDistance"
-    )
-        .entry(
-            tg-repeat="notification in vm.notificationsList"
-            ng-class="{'new': !notification.get('read')}"
+    div(ng-if="!vm.loading" )
+        .empty(ng-if="!vm.notificationsList.length")
+            span {{ 'EVENTS.NO_EVENTS_YET' | translate }}
+        div(
+            ng-if="vm.notificationsList.length"
+            infinite-scroll="vm.loadNotifications()"
+            infinite-scroll-disabled="vm.scrollDisabled"
+            ng-attr-infinite-scroll-container="vm.infiniteScrollContainer"
+            ng-attr-infinite-scroll-distance="vm.infiniteScrollDistance"
         )
-            .entry-avatar
-                // profile image with url
-                .profile-picture(ng-if="notification.getIn(['data', 'user', 'is_profile_visible'])")
-                    a(tg-nav="user-profile:username=notification.getIn(['data', 'user', 'username'])", title="{{::notification.getIn(['data', 'user', 'name']) }}")
+            .entry(
+                tg-repeat="notification in vm.notificationsList"
+                ng-class="{'new': !notification.get('read')}"
+            )
+                .entry-avatar
+                    // profile image with url
+                    .profile-picture(ng-if="notification.getIn(['data', 'user', 'is_profile_visible'])")
+                        a(tg-nav="user-profile:username=notification.getIn(['data', 'user', 'username'])", title="{{::notification.getIn(['data', 'user', 'name']) }}")
+                            img(
+                                tg-avatar="notification.getIn(['data', 'user'])"
+                                alt="{{::notification.getIn(['data', 'user', 'name'])}}"
+                            )
+                    // profile image without url
+                    .profile-picture(ng-if="!notification.getIn(['data', 'user', 'is_profile_visible'])")
                         img(
                             tg-avatar="notification.getIn(['data', 'user'])"
                             alt="{{::notification.getIn(['data', 'user', 'name'])}}"
                         )
-                // profile image without url
-                .profile-picture(ng-if="!notification.getIn(['data', 'user', 'is_profile_visible'])")
-                    img(
-                        tg-avatar="notification.getIn(['data', 'user'])"
-                        alt="{{::notification.getIn(['data', 'user', 'name'])}}"
-                    )
-            .entry-content
-                p(tg-compile-html="notification.get('title_html')")
-                p
-                  a.entry-project(
-                    href=""
-                    ng-click="vm.setAsRead(notification, notification.get('projectUrl'))"
-                  ) {{::notification.getIn(['data', 'project', 'name'])}}
-            .entry-date {{::notification.get('created') | momentFromNow}}
+                .entry-content
+                    p(tg-compile-html="notification.get('title_html')")
+                    p
+                      a.entry-project(
+                        href=""
+                        ng-click="vm.setAsRead(notification, notification.get('projectUrl'))"
+                      ) {{::notification.getIn(['data', 'project', 'name'])}}
+                .entry-date {{::notification.get('created') | momentFromNow}}

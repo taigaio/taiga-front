@@ -1705,6 +1705,7 @@
         "DISMISS_ALL": "Dismiss all",
         "VIEW_ALL": "View all",
         "NO_NEW_EVENTS": "No new events",
+        "NO_EVENTS_YET": "There are no events yet",
         "ASSIGNED_YOU": "{{username}} assigned you to {{obj_name}}",
         "ADDED_YOU_AS_WATCHER": "{{username}} added you as watcher on {{obj_name}}",
         "ADDED_YOU_AS_MEMBER": "{{username}} added you as member",
