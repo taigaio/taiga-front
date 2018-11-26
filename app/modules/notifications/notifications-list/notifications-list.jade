@@ -6,10 +6,10 @@ section.notifications-list
                 alt="Loading..."
             )
     div(ng-if="!vm.loading" )
-        .empty(ng-if="!vm.notificationsList.length")
+        .empty(ng-if="vm.notificationsList.size == 0 && !vm.onlyUnread")
             span {{ 'EVENTS.NO_EVENTS_YET' | translate }}
         div(
-            ng-if="vm.notificationsList.length"
+            ng-if="vm.notificationsList.size > 0"
             infinite-scroll="vm.loadNotifications()"
             infinite-scroll-disabled="vm.scrollDisabled"
             ng-attr-infinite-scroll-container="vm.infiniteScrollContainer"
