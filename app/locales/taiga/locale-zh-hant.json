@@ -3,6 +3,7 @@
         "YES": "Yes",
         "NO": "No",
         "OR": "or",
+        "I_GET_IT": "OK, I get it",
         "LOADING": "載入中...",
         "DATE": "DD MMM YYYY",
         "DATETIME": "DD MMM YYYY HH:mm",
@@ -32,7 +33,7 @@
         "PLUGINS": "外掛",
         "ONE_ITEM_LINE": "一行一物 ",
         "NEW_BULK": "新批次插入",
-        "RELATED_TASKS": "相關任務 ",
+        "SUBTASKS": "Subtasks",
         "PREVIOUS": "Previous",
         "NEXT": "下一個",
         "LOGOUT": "登出",
@@ -570,7 +571,10 @@
             "FIELD_TYPE_RICHTEXT": "Rich text",
             "FIELD_TYPE_MULTI": "多行",
             "FIELD_TYPE_DATE": "日期",
-            "FIELD_TYPE_URL": "網址"
+            "FIELD_TYPE_URL": "網址",
+            "FIELD_TYPE_DROPDOWN": "Dropdown",
+            "FIELD_TYPE_CHECKBOX": "Checkbox",
+            "FIELD_TYPE_NUMBER": "Number"
         },
         "PROJECT_VALUES": {
             "PAGE_TITLE": "{{sectionName}} - 專案數值 - {{projectName}}",
@@ -848,6 +852,7 @@
         "SECTION": {
             "SEARCH": "搜尋",
             "TIMELINE": "時間表",
+            "EPICS": "Epics",
             "BACKLOG": "待辦任務優先表",
             "KANBAN": "Kanban(看板)",
             "ISSUES": "問題 ",
@@ -1382,7 +1387,7 @@
             "TITLE_ACTION_FOLD_ROW": "隱藏列數",
             "TITLE_ACTION_UNFOLD_ROW": "未隱藏列數",
             "FIELD_POINTS": "點數",
-            "ROW_STORYLESS_TASKS_TITLE": "未指派的任務",
+            "ROW_STORYLESS_TASKS_TITLE": "Storyless tasks",
             "ROW_ISSUES_TITLE": "Sprint Issues"
         },
         "CHARTS": {
@@ -1391,6 +1396,20 @@
             "OPTIMAL": "一天最適待辦點數{formattedDate}應為{{roundedValue}}",
             "REAL": "一天真實的待辦點數 {{formattedDate}} is {{roundedValue}}",
             "DATE": "DD MMM YYYY"
+        },
+        "MOVE_TO_SPRINT": {
+            "TITLE_ACTION_MOVE_UNFINISHED": "Move unfinished items to another sprint",
+            "TITLE_MOVE_UNFINISHED": "Move unfinished items to another open sprint",
+            "MOVE_TO_OPEN_SPRINT": "Move to open sprint",
+            "NO_OPEN_SPRINTS": "There are no other open sprints. Please create one first.",
+            "SELECT_DESTINATION_PLACEHOLDER": "Select destination",
+            "UNFINISHED_USER_STORIES_COUNT": "{total, plural, one{<strong>#</strong> unfinished user story} other{<strong>#</strong> unfinished user stories}}",
+            "UNFINISHED_STORYLESS_TASKS_COUNT": "{total, plural, one{<strong>#</strong> unfinished storyless task} other{<strong>#</strong> unfinished storyless tasks}}",
+            "UNFINISHED_ISSUES_COUNT": "{total, plural, one{<strong>#</strong> unfinished issue} other{<strong>#</strong> unfinished issue}}",
+            "WARNING_ISSUES_NOT_MOVED_TITLE": "You just moved all user stories and taks, and the sprint'll be closed",
+            "WARNING_ISSUES_NOT_MOVED": "The issues'll remain in the sprint and don't be removed",
+            "WARNING_SPRINT_STILL_OPEN_TITLE": "{total, plural, one{You just moved # item!} other{You just moved # items!}}",
+            "WARNING_SPRINT_STILL_OPEN": "Please note that the sprint {{sprintName}} <strong>will remain open</strong> as long as it contains unfinished items."
         }
     },
     "TASK": {
@@ -1549,7 +1568,8 @@
             "USER_PROFILE": "使用者設定檔案",
             "CHANGE_PASSWORD": "更換密碼 ",
             "EMAIL_NOTIFICATIONS": "電子郵件通知",
-            "DESKTOP_NOTIFICATIONS": "Desktop notifications"
+            "DESKTOP_NOTIFICATIONS": "Desktop notifications",
+            "EVENTS": "Events"
         },
         "NOTIFICATIONS": {
             "LIVE_SECTION_NAME": "Desktop Notifications",
@@ -1561,6 +1581,20 @@
             "OPTION_ALL": "所有",
             "OPTION_INVOLVED": "涉入",
             "OPTION_NONE": "無"
+        },
+        "PROJECT_SETTINGS": {
+            "SET_START_PAGES": "Set start pages",
+            "START_PAGES_PER_PROJECT": "Set start pages per project",
+            "COLUMN_PROJECT": "Project",
+            "COLUMN_STARTPAGE": "Start page",
+            "DEFAULT_VALUE": "Default"
+        },
+        "EVENTS": {
+            "SECTION_NAME": "Events",
+            "SECTION_DESCRIPTION": "Important events in Taiga header",
+            "SECTION_DESCRIPTION_EXPANDED": "(direct mentions, updates in items that you are watching...)",
+            "COLUMN_ENABLED": "Enabled",
+            "COLUMN_PROJECT": "Project"
         }
     },
     "USER_PROFILE": {
@@ -1658,7 +1692,26 @@
         "US_REMOVED_FROM_MILESTONE": "{{username}} 新增使用者故事 {{obj_name}} 到待辦工作優先列表",
         "BLOCKED": "{{username}} 封鎖了 {{obj_name}}",
         "UNBLOCKED": "{{username}} 解除了封鎖 {{obj_name}}",
-        "NEW_USER": "{{username}} 已加入 Taiga"
+        "NEW_USER": "{{username}} 已加入 Taiga",
+        "ITEM_TYPES": {
+            "USERSTORY": "User Story",
+            "ISSUE": "Issue",
+            "TASK": "Task"
+        }
+    },
+    "EVENTS": {
+        "TITLE": "Events",
+        "MY_EVENTS": "My events",
+        "DISMISS_ALL": "Dismiss all",
+        "VIEW_ALL": "View all",
+        "NO_NEW_EVENTS": "No new events",
+        "NO_EVENTS_YET": "There are no events yet",
+        "ASSIGNED_YOU": "{{username}} assigned you to {{obj_name}}",
+        "ADDED_YOU_AS_WATCHER": "{{username}} added you as watcher on {{obj_name}}",
+        "ADDED_YOU_AS_MEMBER": "{{username}} added you as member",
+        "MENTIONED_YOU": "{{username}} mentioned you on {{obj_name}}",
+        "MENTIONED_YOU_IN_COMMENT": "{{username}} mentioned you in a comment on {{obj_name}}",
+        "COMMENTED": "{{username}} has commented on {{obj_name}}"
     },
     "LEGAL": {
         "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>When creating a new account, you agree to our </span><a href=\"{{ termsOfServiceUrl }}\" title=\"See terms of service\" target=\"_blank\">terms of service</a><span> and </span><a href=\"{{ privacyPolicyUrl }}\" title=\"See privacy policy\" target=\"_blank\">privacy policy</a>.",
@@ -1766,5 +1819,19 @@
             "ACTION_TITLE": "搜尋",
             "RESULTS": "搜尋結果"
         }
+    },
+    "TIPS": {
+        "TIPS_TITLE": "Tip",
+        "TIP_PROJECTS_ORDER": "You can sort projects on your project page by placing the ones most frequently accessed at the top.",
+        "TIP_VOTING": "Whether you ask your community or your other team members, upvoting items might serve as a way to detect explicit support for a particular task or issue.",
+        "TIP_ISSUES_TO_SPRINT": "You can attach issues to a particular sprint by clicking on the pin icon in the detail view.",
+        "TIP_DUE_DATE": "If you need to finish a task on a specific date, activate the DueDate from the detail view of the task.",
+        "TIP_IOCAIN": "You can signal to team members that a task is being particularly troublesome by clicking on the iocaine button. Doing so indicates that you welcome help, patience and understanding.",
+        "TIP_BLOCKED": "You can signal to other team members that something is preventing you from working on a particular task by marking it as \"blocked\"",
+        "TIP_PROMOTE": "Is your issue or task more complex than it first appeared? Go to the detail view and turn it into user story.",
+        "TIP_BULK": "If you want to add many tasks at once, choose bulk mode and write each task in a single line, one after the other.",
+        "TIP_ZOOM": "You can get a wider view of the kanban by reducing the information shown on the cards with the zoom control.",
+        "TIP_CUSTOM_FIELDS": "If you're an admin of the project, consider creating custom fields to expand the tasks' configuration.",
+        "TIP_SLIDE_ARROWS": "You can cycle over the results of a list, search or filter by clicking on the navigational arrows on the detail view of any one item."
     }
 }

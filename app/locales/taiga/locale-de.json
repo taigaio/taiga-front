@@ -3,6 +3,7 @@
         "YES": "Ja",
         "NO": "Nein",
         "OR": "oder",
+        "I_GET_IT": "OK, I get it",
         "LOADING": "Wird geladen...",
         "DATE": "DD. MMM YYYY",
         "DATETIME": "DD. MMM YYYY HH:mm",
@@ -32,7 +33,7 @@
         "PLUGINS": "Plugins",
         "ONE_ITEM_LINE": "Ein Eintrag pro Zeile...",
         "NEW_BULK": "Neue Massenerstellung",
-        "RELATED_TASKS": "Verbundene Aufgaben",
+        "SUBTASKS": "Subtasks",
         "PREVIOUS": "Zurück",
         "NEXT": "Weiter",
         "LOGOUT": "Ausloggen",
@@ -374,7 +375,7 @@
         "EMPTY_WORKING_ON": "<strong>Es sieht hier noch leer aus!</strong> Beginnen Sie mit Taiga zu arbeiten und hier werden die User-Storys, Aufgaben und Tickets angezeigt, an denen Sie arbeiten.",
         "EMPTY_WATCHING": "<strong>Folgen Sie</strong> User Stories, Aufgaben, Tickets in Ihrem Projekt und erhalte Benachrichtigungen, wenn sich etwas ändert.",
         "EMPTY_PROJECT_LIST": "Sie haben noch keine Projekte",
-        "WORKING_ON_SECTION": "Zuletzt bearbeitet",
+        "WORKING_ON_SECTION": "In Arbeit",
         "WATCHING_SECTION": "Beobachtet",
         "DASHBOARD": "Projekt Dashboard"
     },
@@ -539,8 +540,8 @@
             "HELP": "Wie kann ich dies in meiner eigenen Tabellenkalkulation nutzen?",
             "REGENERATE_TITLE": "Die URL ändern",
             "REGENERATE_SUBTITLE": "You are going to change the CSV data access url. The previous url will be disabled. Are you sure?",
-            "DELETE_TITLE": "Delete URL",
-            "DELETE_SUBTITLE": "You are going to delete the current CSV data access url. Are you sure?"
+            "DELETE_TITLE": "URL löschen",
+            "DELETE_SUBTITLE": "Sie sind dabei, die aktuelle URL für den CSV Daten Zugriff, zu löschen. Sind Sie sicher?"
         },
         "CSV": {
             "SECTION_TITLE_EPIC": "Epics Berichte",
@@ -552,7 +553,7 @@
             "TITLE_REGENERATE_URL": "Erstellen Sie die CSV URL neu",
             "ACTION_GENERATE_URL": "URL erzeugen",
             "ACTION_REGENERATE": "Neu erstellen",
-            "TITLE_DELETE_URL": "Delete CSV url",
+            "TITLE_DELETE_URL": "CSV URL löschen",
             "ACTION_DELETE_URL": "Löschen"
         },
         "CUSTOM_FIELDS": {
@@ -570,7 +571,10 @@
             "FIELD_TYPE_RICHTEXT": "Rich Text",
             "FIELD_TYPE_MULTI": "Mehrzeilig",
             "FIELD_TYPE_DATE": "Datum",
-            "FIELD_TYPE_URL": "Url"
+            "FIELD_TYPE_URL": "Url",
+            "FIELD_TYPE_DROPDOWN": "Dropdown",
+            "FIELD_TYPE_CHECKBOX": "Checkbox",
+            "FIELD_TYPE_NUMBER": "Number"
         },
         "PROJECT_VALUES": {
             "PAGE_TITLE": "{{sectionName}} - Projekt Werte - {{projectName}}",
@@ -713,7 +717,7 @@
             "COLUMN_ROLE": "Rolle",
             "COLUMN_STATUS": "Status",
             "STATUS_ACTIVE": "Aktiv",
-            "STATUS_PENDING": "Noch nicht erledigt",
+            "STATUS_PENDING": "Ausstehend",
             "DELETE_MEMBER": "Mitglied löschen",
             "RESEND": "Neu&nbsp;senden",
             "SUCCESS_SEND_INVITATION": "Wir haben die Einladung erneut versandt an '{{email}}'.",
@@ -848,6 +852,7 @@
         "SECTION": {
             "SEARCH": "Suche",
             "TIMELINE": "Aktivität",
+            "EPICS": "Epics",
             "BACKLOG": "Backlog",
             "KANBAN": "Kanban",
             "ISSUES": "Tickets",
@@ -1092,19 +1097,19 @@
             "LAST_SPRINT_NAME": "letzter Sprint ist <strong> {{lastSprint}} ;-) </strong>"
         },
         "CREATE_EDIT": {
-            "TASK_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this Task",
-            "ISSUE_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this Issue",
-            "US_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this User Story",
-            "NEW_TASK": "New Task",
-            "NEW_ISSUE": "New Issue",
-            "NEW_US": "New User Story",
-            "EDIT_TASK": "Edit Task",
-            "EDIT_ISSUE": "Edit Issue",
-            "EDIT_US": "Edit User Story",
-            "ADD_EXISTING_ISSUE": "Add Issue to {{ targetName }}",
+            "TASK_PLACEHOLDER_DESCRIPTION": "Bitte beschreiben Sie diese Aufgabe ausreichend, damit Beteiligte den Vorgang besser verstehen.",
+            "ISSUE_PLACEHOLDER_DESCRIPTION": "Bitte beschreiben Sie dieses Ticket ausreichend, damit Beteiligte den Vorgang besser verstehen.",
+            "US_PLACEHOLDER_DESCRIPTION": "Bitte beschreiben Sie diese User Story ausreichend, damit Beteiligte den Vorgang besser verstehen.",
+            "NEW_TASK": "Neue Aufgabe",
+            "NEW_ISSUE": "Neues Ticket",
+            "NEW_US": "Neue User Story",
+            "EDIT_TASK": "Aufgabe bearbeiten",
+            "EDIT_ISSUE": "Ticket bearbeiten",
+            "EDIT_US": "User Story bearbeiten",
+            "ADD_EXISTING_ISSUE": "Ticket zu {{ targetName }} hinzufügen",
             "CONFIRM_CLOSE": "Sie haben Ihre Änderungen noch nicht gespeichert.\nSind Sie sicher, dass Sie dieses Formular schließen möchten?",
-            "EXISTING_ISSUE": "Existing Issue",
-            "CHOOSE_EXISTING_ISSUE": "Which Issue?",
+            "EXISTING_ISSUE": "Existierendes Ticket",
+            "CHOOSE_EXISTING_ISSUE": "Welches Ticket?",
             "ADD_ISSUE": "Ticket hinzufügen",
             "FILTER_ISSUES": "Tickets Filtern"
         },
@@ -1208,7 +1213,7 @@
         "TITLE_LINK_GO_TO_ISSUE": "Zum Ticket wechseln",
         "TITLE_DELETE_ACTION": "User-Story löschen",
         "LIGHTBOX_TITLE_BLOKING_US": "Blockiert uns",
-        "NOT_ESTIMATED": "Nicht eingeschätzt",
+        "NOT_ESTIMATED": "Unbewertet",
         "OWNER_US": "Userstory gehört",
         "RELATE_TO_EPIC": "Mit Epic verbinden",
         "REMOVE_RELATIONSHIP_WITH_EPIC": "Verbindung mit Epic entfernen",
@@ -1225,7 +1230,7 @@
         }
     },
     "COMMENTS": {
-        "DELETED_INFO": "Kommentar gelöscht von {{user}}",
+        "DELETED_INFO": "Kommentar von {{user}} gelöscht",
         "COMMENTS_COUNT": "{{comments}} Kommentare",
         "OLDER_FIRST": "Ältere zuerst",
         "RECENT_FIRST": "Letzte zuerst",
@@ -1382,7 +1387,7 @@
             "TITLE_ACTION_FOLD_ROW": "Reihe einklappen",
             "TITLE_ACTION_UNFOLD_ROW": "Reihe aufklappen",
             "FIELD_POINTS": "Punkte",
-            "ROW_STORYLESS_TASKS_TITLE": "Nicht zugeordnete Aufgaben",
+            "ROW_STORYLESS_TASKS_TITLE": "Storyless tasks",
             "ROW_ISSUES_TITLE": "Sprint Tickets"
         },
         "CHARTS": {
@@ -1391,6 +1396,20 @@
             "OPTIMAL": "Optimale unerledigte Punkte für Tag {{formattedDate}} sollten sein {{roundedValue}}",
             "REAL": "Tatsächliche Anzahl unerledigter Punkte für Tag {{formattedDate}} ist {{roundedValue}}",
             "DATE": "DD. MMMM YYYY"
+        },
+        "MOVE_TO_SPRINT": {
+            "TITLE_ACTION_MOVE_UNFINISHED": "Move unfinished items to another sprint",
+            "TITLE_MOVE_UNFINISHED": "Move unfinished items to another open sprint",
+            "MOVE_TO_OPEN_SPRINT": "Move to open sprint",
+            "NO_OPEN_SPRINTS": "There are no other open sprints. Please create one first.",
+            "SELECT_DESTINATION_PLACEHOLDER": "Select destination",
+            "UNFINISHED_USER_STORIES_COUNT": "{total, plural, one{<strong>#</strong> unfinished user story} other{<strong>#</strong> unfinished user stories}}",
+            "UNFINISHED_STORYLESS_TASKS_COUNT": "{total, plural, one{<strong>#</strong> unfinished storyless task} other{<strong>#</strong> unfinished storyless tasks}}",
+            "UNFINISHED_ISSUES_COUNT": "{total, plural, one{<strong>#</strong> unfinished issue} other{<strong>#</strong> unfinished issue}}",
+            "WARNING_ISSUES_NOT_MOVED_TITLE": "You just moved all user stories and taks, and the sprint'll be closed",
+            "WARNING_ISSUES_NOT_MOVED": "The issues'll remain in the sprint and don't be removed",
+            "WARNING_SPRINT_STILL_OPEN_TITLE": "{total, plural, one{You just moved # item!} other{You just moved # items!}}",
+            "WARNING_SPRINT_STILL_OPEN": "Please note that the sprint {{sprintName}} <strong>will remain open</strong> as long as it contains unfinished items."
         }
     },
     "TASK": {
@@ -1549,7 +1568,8 @@
             "USER_PROFILE": "Benutzerprofil",
             "CHANGE_PASSWORD": "Passwort ändern",
             "EMAIL_NOTIFICATIONS": "E-Mail Benachrichtigungen",
-            "DESKTOP_NOTIFICATIONS": "Desktop Benachrichtigungen"
+            "DESKTOP_NOTIFICATIONS": "Desktop Benachrichtigungen",
+            "EVENTS": "Events"
         },
         "NOTIFICATIONS": {
             "LIVE_SECTION_NAME": "Desktop Benachrichtigungen",
@@ -1561,6 +1581,20 @@
             "OPTION_ALL": "Alle",
             "OPTION_INVOLVED": "Beteiligt",
             "OPTION_NONE": "Keine"
+        },
+        "PROJECT_SETTINGS": {
+            "SET_START_PAGES": "Set start pages",
+            "START_PAGES_PER_PROJECT": "Set start pages per project",
+            "COLUMN_PROJECT": "Project",
+            "COLUMN_STARTPAGE": "Start page",
+            "DEFAULT_VALUE": "Default"
+        },
+        "EVENTS": {
+            "SECTION_NAME": "Events",
+            "SECTION_DESCRIPTION": "Important events in Taiga header",
+            "SECTION_DESCRIPTION_EXPANDED": "(direct mentions, updates in items that you are watching...)",
+            "COLUMN_ENABLED": "Enabled",
+            "COLUMN_PROJECT": "Project"
         }
     },
     "USER_PROFILE": {
@@ -1658,7 +1692,26 @@
         "US_REMOVED_FROM_MILESTONE": "{{username}} fügte dem Backlog die User-Story {{obj_name}} hinzu",
         "BLOCKED": "{{username}} vermerkte die Blockierung von {{obj_name}}",
         "UNBLOCKED": "{{username}} hob die Blockierung von {{obj_name}} auf",
-        "NEW_USER": "{{username}} ist Taiga beigetreten"
+        "NEW_USER": "{{username}} ist Taiga beigetreten",
+        "ITEM_TYPES": {
+            "USERSTORY": "User Story",
+            "ISSUE": "Issue",
+            "TASK": "Task"
+        }
+    },
+    "EVENTS": {
+        "TITLE": "Events",
+        "MY_EVENTS": "My events",
+        "DISMISS_ALL": "Dismiss all",
+        "VIEW_ALL": "View all",
+        "NO_NEW_EVENTS": "No new events",
+        "NO_EVENTS_YET": "There are no events yet",
+        "ASSIGNED_YOU": "{{username}} assigned you to {{obj_name}}",
+        "ADDED_YOU_AS_WATCHER": "{{username}} added you as watcher on {{obj_name}}",
+        "ADDED_YOU_AS_MEMBER": "{{username}} added you as member",
+        "MENTIONED_YOU": "{{username}} mentioned you on {{obj_name}}",
+        "MENTIONED_YOU_IN_COMMENT": "{{username}} mentioned you in a comment on {{obj_name}}",
+        "COMMENTED": "{{username}} has commented on {{obj_name}}"
     },
     "LEGAL": {
         "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>Beim Erstellen eines neuen Accounts, stimmen Sie unseren</span><a href=\"{{ termsOfServiceUrl }}\" title=\"See terms of service\" target=\"_blank\">Nutzungsbedingungen</a><span>und</span><a href=\"{{ privacyPolicyUrl }}\" title=\"See privacy policy\" target=\"_blank\">Datenschutzbestimmungen</a>zu.",
@@ -1687,7 +1740,7 @@
                 "TEXT": "Willkommen! Hier werden Sie Ihre Projekte sehen."
             },
             "STEP2": {
-                "TITLE": "Zuletzt bearbeitet",
+                "TITLE": "In Arbeit",
                 "TEXT": "Hier werden Sie die User Stories, Aufgaben und Tickets sehen, an denen Sie arbeiten."
             },
             "STEP3": {
@@ -1766,5 +1819,19 @@
             "ACTION_TITLE": "Suche",
             "RESULTS": "Suchergebnisse"
         }
+    },
+    "TIPS": {
+        "TIPS_TITLE": "Tip",
+        "TIP_PROJECTS_ORDER": "You can sort projects on your project page by placing the ones most frequently accessed at the top.",
+        "TIP_VOTING": "Whether you ask your community or your other team members, upvoting items might serve as a way to detect explicit support for a particular task or issue.",
+        "TIP_ISSUES_TO_SPRINT": "You can attach issues to a particular sprint by clicking on the pin icon in the detail view.",
+        "TIP_DUE_DATE": "If you need to finish a task on a specific date, activate the DueDate from the detail view of the task.",
+        "TIP_IOCAIN": "You can signal to team members that a task is being particularly troublesome by clicking on the iocaine button. Doing so indicates that you welcome help, patience and understanding.",
+        "TIP_BLOCKED": "You can signal to other team members that something is preventing you from working on a particular task by marking it as \"blocked\"",
+        "TIP_PROMOTE": "Is your issue or task more complex than it first appeared? Go to the detail view and turn it into user story.",
+        "TIP_BULK": "If you want to add many tasks at once, choose bulk mode and write each task in a single line, one after the other.",
+        "TIP_ZOOM": "You can get a wider view of the kanban by reducing the information shown on the cards with the zoom control.",
+        "TIP_CUSTOM_FIELDS": "If you're an admin of the project, consider creating custom fields to expand the tasks' configuration.",
+        "TIP_SLIDE_ARROWS": "You can cycle over the results of a list, search or filter by clicking on the navigational arrows on the detail view of any one item."
     }
 }

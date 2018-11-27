@@ -3,9 +3,10 @@
         "YES": "Oui",
         "NO": "Non",
         "OR": "ou",
+        "I_GET_IT": "OK, I get it",
         "LOADING": "Veuillez patienter...",
-        "DATE": "DD MMM YYYY",
-        "DATETIME": "DD MMM YYYY HH:mm",
+        "DATE": "JJ MMM AAAA",
+        "DATETIME": "JJ MMM AAAA HH:mm",
         "SAVE": "Enregistrer",
         "CANCEL": "Annuler",
         "ACCEPT": "Accepter",
@@ -32,7 +33,7 @@
         "PLUGINS": "Plugins",
         "ONE_ITEM_LINE": "Un élément par ligne...",
         "NEW_BULK": "Nouvel ajout en bloc",
-        "RELATED_TASKS": "Tâches associées",
+        "SUBTASKS": "Subtasks",
         "PREVIOUS": "Précédent",
         "NEXT": "Suivant",
         "LOGOUT": "Déconnexion",
@@ -49,9 +50,9 @@
         "CARD": {
             "ASSIGN_TO": "Affecter à",
             "EDIT": "Modifier la carte",
-            "DELETE": "Delete card",
+            "DELETE": "Supprimer l’élément",
             "DELETE_ISSUE": "Supprimer le ticket",
-            "DETACH_ISSUE_FROM_SPRINT": "Detach issue from sprint"
+            "DETACH_ISSUE_FROM_SPRINT": "Détacher le ticket du sprint"
         },
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Cette valeur semble être invalide.",
@@ -172,9 +173,9 @@
             "TITLE_ACTION_SET_DUE_DATE": "Définir l’échéance"
         },
         "ASSIGNED_USERS": {
-            "ADD": "Select assigned user",
-            "ADD_ASSIGNED": "Add assigned",
-            "TITLE_LIGHTBOX_DELETE_ASSIGNED": "Delete assigned..."
+            "ADD": "Sélectionner un utilisateur affecté",
+            "ADD_ASSIGNED": "Ajouter un utilisateur affecté",
+            "TITLE_LIGHTBOX_DELETE_ASSIGNED": "Supprimer l'affectation"
         },
         "STATUS": {
             "CLOSED": "Fermé",
@@ -459,8 +460,8 @@
             "PAGE_TITLE": "Membres - {{projectName}}",
             "ADD_BUTTON": "+ Nouveau membre",
             "ADD_BUTTON_TITLE": "Ajouter un membre",
-            "UPGRADE_BUTTON": "Upgrade your plan",
-            "LIMIT_USERS_WARNING_MESSAGE_FOR_ADMIN": "If you would like to <strong>add more members</strong>, please contact the project owner <a href='mailto:{{ owner_email }}' title='{{ owner_email }}'>{{ owner_email }}</a>",
+            "UPGRADE_BUTTON": "Améliorer votre forfait",
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_ADMIN": "Si vous souhaitez <strong>ajouter plus de membres</strong>, veuillez contacter le propriétaire du projet <a href='mailto:{{ owner_email }}' title='{{ owner_email }}'>{{ owner_email }}</a>",
             "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "Ce projet a atteint sa limite de  <strong>({{members}})</strong> membres autorisés. Si vous désirez augmenter cette limite, merci de contacter l'administrateur."
         },
         "PROJECT_EXPORT": {
@@ -570,7 +571,10 @@
             "FIELD_TYPE_RICHTEXT": "Texte riche",
             "FIELD_TYPE_MULTI": "Multiligne",
             "FIELD_TYPE_DATE": "Date",
-            "FIELD_TYPE_URL": "Url"
+            "FIELD_TYPE_URL": "Url",
+            "FIELD_TYPE_DROPDOWN": "Dropdown",
+            "FIELD_TYPE_CHECKBOX": "Checkbox",
+            "FIELD_TYPE_NUMBER": "Number"
         },
         "PROJECT_VALUES": {
             "PAGE_TITLE": "{{sectionName}} - Valeurs du projet - {{projectName}}",
@@ -623,14 +627,14 @@
         "PROJECT_DUE_DATE_STATUS": {
             "TITLE": "Échéances",
             "SUBTITLE": "Spécifiez les dates d’échéance que vont prendre vos récits utilisateur, tâches et tickets s'ils sont sélectionnés",
-            "US_TITLE": "User Story Due Date status",
+            "US_TITLE": "Etat de la date d'échéance du récit utilisateur",
             "ACTION_ADD_STATUS": "Ajouter un nouveau statut",
-            "TASK_TITLE": "Task Due Date status",
-            "ISSUE_TITLE": "Issue Due Date status",
-            "DAYS_TO_DUE_DATE": "Days to due date",
-            "BEFORE_AFTER": "Before/after",
-            "BEFORE": "Before",
-            "AFTER": "Past"
+            "TASK_TITLE": "Etat de la date d'échéance de la tâche",
+            "ISSUE_TITLE": "Etat de la date d'échéance du ticket",
+            "DAYS_TO_DUE_DATE": "Nombre de jours jusqu'à la date d'échéance",
+            "BEFORE_AFTER": "Avant/après",
+            "BEFORE": "Avant",
+            "AFTER": "Hors délais"
         },
         "ROLES": {
             "PAGE_TITLE": "Rôles - {{projectName}}",
@@ -733,7 +737,7 @@
         },
         "STATUS": {
             "PLACEHOLDER_WRITE_STATUS_NAME": "Entrez le nom du nouveau statut",
-            "PLACEHOLDER_DAYS_TO_DUE_DATE": "Write a number of days to due date"
+            "PLACEHOLDER_DAYS_TO_DUE_DATE": "Renseigner le nombre de jours jusqu'à la date d'échéance"
         },
         "TYPES": {
             "PLACEHOLDER_WRITE_NAME": "Entrez un nom pour le nouvel élément"
@@ -848,6 +852,7 @@
         "SECTION": {
             "SEARCH": "Rechercher",
             "TIMELINE": "Chronologie",
+            "EPICS": "Epics",
             "BACKLOG": "Backlog",
             "KANBAN": "Kanban",
             "ISSUES": "Tickets",
@@ -1103,10 +1108,10 @@
             "EDIT_US": "Modifier le récit utilisateur",
             "ADD_EXISTING_ISSUE": "Ajouter un ticket à {{ targetName }}",
             "CONFIRM_CLOSE": "Vous n’avez pas sauvegardé les modifications.\nÊtes-vous sûr de vouloir fermer le formulaire ?",
-            "EXISTING_ISSUE": "Existing Issue",
-            "CHOOSE_EXISTING_ISSUE": "Which Issue?",
+            "EXISTING_ISSUE": "Ticket existant",
+            "CHOOSE_EXISTING_ISSUE": "Quel ticket ?",
             "ADD_ISSUE": "Ajouter un ticket",
-            "FILTER_ISSUES": "Filter Issues"
+            "FILTER_ISSUES": "Filtrer les tickets"
         },
         "DELETE_DUE_DATE": {
             "TITLE": "Supprimer l’échéance",
@@ -1153,10 +1158,10 @@
             "REASON_FOR_DUE_DATE": "Raison pour la date d’échéance",
             "PLACEHOLDER_REASON_FOR_DUE_DATE": "Pourquoi ce récit utilisateur nécessite-t-il une échéance ?",
             "SUGGESTIONS": {
-                "IN_ONE_WEEK": "In one week",
-                "IN_TWO_WEEKS": "In two weeks",
-                "IN_ONE_MONTH": "In one month",
-                "IN_THREE_MONTHS": "In three months"
+                "IN_ONE_WEEK": "Dans une semaine",
+                "IN_TWO_WEEKS": "Dans deux semaines",
+                "IN_ONE_MONTH": "Dans un mois",
+                "IN_THREE_MONTHS": "Dans trois mois"
             },
             "TITLE_ACTION_DELETE_DUE_DATE": "Supprimer l’échéance"
         },
@@ -1166,13 +1171,13 @@
         },
         "RELATE_TO_EPIC": {
             "TITLE": "Lien vers l'épopée",
-            "EXISTING_EPIC": "Existing epic",
-            "NEW_EPIC": "New epic",
+            "EXISTING_EPIC": "Épopée existante",
+            "NEW_EPIC": "Nouvelle épopée",
             "CHOOSE_PROJECT_FOR_CREATION": "Quel est le projet ?",
             "CHOOSE_PROJECT_FROM": "Quel est le projet ?",
             "SUBJECT": "Objet",
-            "CHOOSE_EPIC": "What's the epic?",
-            "FILTER_EPICS": "Filter epics",
+            "CHOOSE_EPIC": "Quelle est l’épopée ?",
+            "FILTER_EPICS": "Filtrer les épopées",
             "NO_EPICS_FOUND": "Il semble qu'aucun résultat ne correspond à vos critères de recherche"
         }
     },
@@ -1211,7 +1216,7 @@
         "NOT_ESTIMATED": "Non estimé",
         "OWNER_US": "Ce récit Utilisateur fait partie de ",
         "RELATE_TO_EPIC": "Lien vers l'épopée",
-        "REMOVE_RELATIONSHIP_WITH_EPIC": "Remove Epic relationship",
+        "REMOVE_RELATIONSHIP_WITH_EPIC": "Retirer le lien de l'épopée",
         "TRIBE": {
             "PUBLISH": "Publier en tant que Gig sur Taiga Tribe ",
             "PUBLISH_INFO": "Plus d'informations",
@@ -1258,7 +1263,7 @@
         "CLIENT_REQUIREMENT": "Exigence client",
         "BLOCKED": "Bloqué",
         "VALUES": {
-            "NOT_SET": "not set",
+            "NOT_SET": "Non renseigné",
             "UNASSIGNED": "non affecté"
         },
         "FIELDS": {
@@ -1269,8 +1274,8 @@
             "STATUS": "statut",
             "TYPE": "type",
             "ASSIGNED_TO": "affecté à",
-            "ASSIGNED_USERS": "assigned users",
-            "DUE_DATE": "due date",
+            "ASSIGNED_USERS": "Utilisateurs assignés",
+            "DUE_DATE": "Date d'échéance",
             "MILESTONE": "sprint",
             "COLOR": "couleur"
         }
@@ -1382,8 +1387,8 @@
             "TITLE_ACTION_FOLD_ROW": "Replier la ligne",
             "TITLE_ACTION_UNFOLD_ROW": "Déplier la ligne",
             "FIELD_POINTS": "points",
-            "ROW_STORYLESS_TASKS_TITLE": "Tâches non assignées",
-            "ROW_ISSUES_TITLE": "Sprint Issues"
+            "ROW_STORYLESS_TASKS_TITLE": "Storyless tasks",
+            "ROW_ISSUES_TITLE": "Tickets du sprint"
         },
         "CHARTS": {
             "XAXIS_LABEL": "Jours",
@@ -1391,6 +1396,20 @@
             "OPTIMAL": "Le nombre optimal de points pour le jour {{formattedDate}} devrait être {{roundedValue}}",
             "REAL": "Le nombre réel de points pour le jour {{formattedDate}} est {{roundedValue}}",
             "DATE": "DD MMMM YYYY"
+        },
+        "MOVE_TO_SPRINT": {
+            "TITLE_ACTION_MOVE_UNFINISHED": "Move unfinished items to another sprint",
+            "TITLE_MOVE_UNFINISHED": "Move unfinished items to another open sprint",
+            "MOVE_TO_OPEN_SPRINT": "Move to open sprint",
+            "NO_OPEN_SPRINTS": "There are no other open sprints. Please create one first.",
+            "SELECT_DESTINATION_PLACEHOLDER": "Select destination",
+            "UNFINISHED_USER_STORIES_COUNT": "{total, plural, one{<strong>#</strong> unfinished user story} other{<strong>#</strong> unfinished user stories}}",
+            "UNFINISHED_STORYLESS_TASKS_COUNT": "{total, plural, one{<strong>#</strong> unfinished storyless task} other{<strong>#</strong> unfinished storyless tasks}}",
+            "UNFINISHED_ISSUES_COUNT": "{total, plural, one{<strong>#</strong> unfinished issue} other{<strong>#</strong> unfinished issue}}",
+            "WARNING_ISSUES_NOT_MOVED_TITLE": "You just moved all user stories and taks, and the sprint'll be closed",
+            "WARNING_ISSUES_NOT_MOVED": "The issues'll remain in the sprint and don't be removed",
+            "WARNING_SPRINT_STILL_OPEN_TITLE": "{total, plural, one{You just moved # item!} other{You just moved # items!}}",
+            "WARNING_SPRINT_STILL_OPEN": "Please note that the sprint {{sprintName}} <strong>will remain open</strong> as long as it contains unfinished items."
         }
     },
     "TASK": {
@@ -1440,8 +1459,8 @@
         "SECTION_NAME": "Ticket",
         "ACTION_NEW_ISSUE": "+ NOUVEAU TICKET",
         "ACTION_PROMOTE_TO_US": "Promouvoir en récit utilisateur",
-        "ACTION_ATTACH_SPRINT": "Attach issue to Sprint",
-        "ACTION_DETACH_SPRINT": "Detach issue from Sprint",
+        "ACTION_ATTACH_SPRINT": "Attacher le ticket au sprint",
+        "ACTION_DETACH_SPRINT": "Détacher le ticket du sprint",
         "PROMOTED": "Le ticket a été promu en récit utilisateur",
         "EXTERNAL_REFERENCE": "Ce ticket a été créé à partir de",
         "GO_TO_EXTERNAL_REFERENCE": "Aller à l'origine",
@@ -1449,20 +1468,20 @@
         "LIGHTBOX_TITLE_BLOKING_ISSUE": "Ticket bloquant",
         "LINK_TASKBOARD": "Tableau des tâches",
         "TITLE_LINK_TASKBOARD": "Aller au tableau des tâches",
-        "FILTER_SPRINTS": "Filter Sprints",
-        "CHOOSE_SPRINT": "Which Sprint?",
+        "FILTER_SPRINTS": "Filtrer les sprints",
+        "CHOOSE_SPRINT": "Quel sprint ?",
         "FIELDS": {
             "PRIORITY": "Priorité",
             "SEVERITY": "Gravité",
             "TYPE": "Type"
         },
-        "FILTER_ISSUES": "Filter Issues",
+        "FILTER_ISSUES": "Filtrer les tickets",
         "CONFIRM_DETACH_FROM_SPRINT": {
-            "TITLE": "Detach issue from Sprint",
-            "MESSAGE": "You are about to detach the issue from the sprint <strong>{{ sprintName }}<strong>"
+            "TITLE": "Détacher le ticket du sprint",
+            "MESSAGE": "Vous êtes sur le point de détacher le ticket du sprint <strong>{{ sprintName }}<strong>"
         },
         "CONFIRM_CHANGE_FROM_SPRINT": {
-            "TITLE": "<br>",
+            "TITLE": "Attacher le ticket au sprint",
             "MESSAGE": "<strong>Ce ticket est actuellement attaché au sprint {{ oldSprintName }}</strong>. Vous êtes sur le point de le détacher de ce sprint afin de l’attacher au sprint <strong>{{ newSprintName }}</strong>."
         },
         "CONFIRM_PROMOTE": {
@@ -1549,10 +1568,11 @@
             "USER_PROFILE": "Profil utilisateur",
             "CHANGE_PASSWORD": "Modifier le mot de passe",
             "EMAIL_NOTIFICATIONS": "Notifications courriel",
-            "DESKTOP_NOTIFICATIONS": "Desktop notifications"
+            "DESKTOP_NOTIFICATIONS": "Notifications de bureau",
+            "EVENTS": "Events"
         },
         "NOTIFICATIONS": {
-            "LIVE_SECTION_NAME": "Desktop Notifications",
+            "LIVE_SECTION_NAME": "Notifications de bureau",
             "SECTION_NAME": "Notifications courriel",
             "COLUMN_PROJECT": "Projet",
             "COLUMN_RECEIVE_ALL": "Tout recevoir",
@@ -1561,12 +1581,26 @@
             "OPTION_ALL": "Toutes",
             "OPTION_INVOLVED": "Impliqué",
             "OPTION_NONE": "Aucune"
+        },
+        "PROJECT_SETTINGS": {
+            "SET_START_PAGES": "Set start pages",
+            "START_PAGES_PER_PROJECT": "Set start pages per project",
+            "COLUMN_PROJECT": "Project",
+            "COLUMN_STARTPAGE": "Start page",
+            "DEFAULT_VALUE": "Default"
+        },
+        "EVENTS": {
+            "SECTION_NAME": "Events",
+            "SECTION_DESCRIPTION": "Important events in Taiga header",
+            "SECTION_DESCRIPTION_EXPANDED": "(direct mentions, updates in items that you are watching...)",
+            "COLUMN_ENABLED": "Enabled",
+            "COLUMN_PROJECT": "Project"
         }
     },
     "USER_PROFILE": {
         "ACTION_USE_GRAVATAR": "Utiliser l'image par défaut",
         "ACTION_DELETE_ACCOUNT": "Supprime le compte Taiga",
-        "ACTION_DOWNLOAD_PROFILE": "Download Taiga profile",
+        "ACTION_DOWNLOAD_PROFILE": "Télécharger le profil Taïga",
         "CHANGE_EMAIL_SUCCESS": "<strong>Consultez votre messagerie !</strong><br />Nous vous avons envoyé un courriel<br />avec les instructions à suivre pour saisir votre nouvelle adresse",
         "CHANGE_PHOTO": "Changer la photo",
         "FIELD": {
@@ -1639,7 +1673,7 @@
         "US_UPDATED_WITH_NEW_VALUE": "{{username}} a mis l'attribut \"{{field_name}}\" à {{new_value}} pour le récit utilisateur {{obj_name}}",
         "US_UPDATED_POINTS": "{{username}} a mis à jour les points du rôle '{{role_name}}' de l'US {{obj_name}} à la valeur {{new_value}}",
         "ISSUE_UPDATED": "{{username}} a mis à jour l'attribut «{{field_name}}» du ticket {{obj_name}}",
-        "ISSUE_UPDATED_WITH_NEW_VALUE": "{{username}} a mis l'attribut \"{{field_name}}\" à {{new_value}} pour le ticket {{obj_name}}",
+        "ISSUE_UPDATED_WITH_NEW_VALUE": "{{username}} a mis à jour l'attribut \"{{field_name}}\" du ticket {{obj_name}} à {{new_value}}",
         "TASK_UPDATED": "{{username}} a mis l'attribut \"{{field_name}}\" à {{new_value}} pour la tâche {{obj_name}}",
         "TASK_UPDATED_WITH_NEW_VALUE": "{{username}} a mis l'attribut \"{{field_name}}\" à {{new_value}} pour la tâche {{obj_name}}",
         "TASK_UPDATED_WITH_US": "{{username}} a mis à jour l'attribut «{{field_name}}» de la tâche {{obj_name}} qui appartient au récit utilisateur {{us_name}}",
@@ -1658,13 +1692,32 @@
         "US_REMOVED_FROM_MILESTONE": "{{username}} a ajouté le récit utilisateur {{obj_name}} au carnet",
         "BLOCKED": "{{username}} a bloqué {{obj_name}}",
         "UNBLOCKED": "{{username}} a débloqué {{obj_name}}",
-        "NEW_USER": "{{username}} a rejoint Taiga"
+        "NEW_USER": "{{username}} a rejoint Taiga",
+        "ITEM_TYPES": {
+            "USERSTORY": "User Story",
+            "ISSUE": "Issue",
+            "TASK": "Task"
+        }
+    },
+    "EVENTS": {
+        "TITLE": "Events",
+        "MY_EVENTS": "My events",
+        "DISMISS_ALL": "Dismiss all",
+        "VIEW_ALL": "View all",
+        "NO_NEW_EVENTS": "No new events",
+        "NO_EVENTS_YET": "There are no events yet",
+        "ASSIGNED_YOU": "{{username}} assigned you to {{obj_name}}",
+        "ADDED_YOU_AS_WATCHER": "{{username}} added you as watcher on {{obj_name}}",
+        "ADDED_YOU_AS_MEMBER": "{{username}} added you as member",
+        "MENTIONED_YOU": "{{username}} mentioned you on {{obj_name}}",
+        "MENTIONED_YOU_IN_COMMENT": "{{username}} mentioned you in a comment on {{obj_name}}",
+        "COMMENTED": "{{username}} has commented on {{obj_name}}"
     },
     "LEGAL": {
-        "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>When creating a new account, you agree to our </span><a href=\"{{ termsOfServiceUrl }}\" title=\"See terms of service\" target=\"_blank\">terms of service</a><span> and </span><a href=\"{{ privacyPolicyUrl }}\" title=\"See privacy policy\" target=\"_blank\">privacy policy</a>.",
-        "GDPR_ANNOUNCEMENT_TITLE": "General Data Protection Regulation (GDPR)",
-        "GDPR_ANNOUNCEMENT_DESCRIPTION": "You saw this comming, right? Updates to our Terms of Service",
-        "GDPR_ANNOUNCEMENT_INFOLINK": "Please read our announcement here"
+        "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>Lors de la création d'un compte, vous acceptez nos </span> <a href=\"{{ termsOfServiceUrl }}\" title=\"See terms of service\" target=\"_blank\">conditions d'utilisation</a> <span>et</span> <a href=\"{{ privacyPolicyUrl }}\" title=\"See privacy policy\" target=\"_blank\">politique de confidentialité</a>.",
+        "GDPR_ANNOUNCEMENT_TITLE": "Règlement Général de Protection des Données (RGPD)",
+        "GDPR_ANNOUNCEMENT_DESCRIPTION": "Vous l'avez vu venir, non ? Mises à jour de nos conditions d'utilisation",
+        "GDPR_ANNOUNCEMENT_INFOLINK": "Veuillez lire notre annonce ici"
     },
     "EXTERNAL_APP": {
         "PAGE_TITLE": "Une application externe requiert l'authentification",
@@ -1766,5 +1819,19 @@
             "ACTION_TITLE": "Rechercher",
             "RESULTS": "Résultats de la recherche"
         }
+    },
+    "TIPS": {
+        "TIPS_TITLE": "Tip",
+        "TIP_PROJECTS_ORDER": "You can sort projects on your project page by placing the ones most frequently accessed at the top.",
+        "TIP_VOTING": "Whether you ask your community or your other team members, upvoting items might serve as a way to detect explicit support for a particular task or issue.",
+        "TIP_ISSUES_TO_SPRINT": "You can attach issues to a particular sprint by clicking on the pin icon in the detail view.",
+        "TIP_DUE_DATE": "If you need to finish a task on a specific date, activate the DueDate from the detail view of the task.",
+        "TIP_IOCAIN": "You can signal to team members that a task is being particularly troublesome by clicking on the iocaine button. Doing so indicates that you welcome help, patience and understanding.",
+        "TIP_BLOCKED": "You can signal to other team members that something is preventing you from working on a particular task by marking it as \"blocked\"",
+        "TIP_PROMOTE": "Is your issue or task more complex than it first appeared? Go to the detail view and turn it into user story.",
+        "TIP_BULK": "If you want to add many tasks at once, choose bulk mode and write each task in a single line, one after the other.",
+        "TIP_ZOOM": "You can get a wider view of the kanban by reducing the information shown on the cards with the zoom control.",
+        "TIP_CUSTOM_FIELDS": "If you're an admin of the project, consider creating custom fields to expand the tasks' configuration.",
+        "TIP_SLIDE_ARROWS": "You can cycle over the results of a list, search or filter by clicking on the navigational arrows on the detail view of any one item."
     }
 }
