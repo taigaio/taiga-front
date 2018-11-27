@@ -35,6 +35,7 @@ module = angular.module("taigaUserSettings")
 
 class UserProjectSettingsController extends mixOf(taiga.Controller, taiga.PageMixin)
     @.$inject = [
+        "$rootScope"
         "$scope"
         "$tgSections"
         "$tgResources"
@@ -43,7 +44,7 @@ class UserProjectSettingsController extends mixOf(taiga.Controller, taiga.PageMi
          "tgCurrentUserService"
     ]
 
-    constructor: (@scope, @tgSections, @rs, @repo, @confirm, @currentUserService) ->
+    constructor: (@rootScope, @scope, @tgSections, @rs, @repo, @confirm, @currentUserService) ->
         @scope.sections = @tgSections.list()
 
         promise = @.loadInitialData()
@@ -56,6 +57,7 @@ class UserProjectSettingsController extends mixOf(taiga.Controller, taiga.PageMi
     updateCustomHomePage: (projectSettings) ->
         onSuccess = =>
             @currentUserService.loadProjects()
+            @rootScope.$broadcast("dropdown-project-list:updated")
             @confirm.notify("success")
 
         onError = =>

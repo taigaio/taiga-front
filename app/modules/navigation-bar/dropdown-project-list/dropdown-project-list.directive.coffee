@@ -17,7 +17,7 @@
 # File: navigation-bar/dropdown-project-list/dropdown-project-list.directive.coffee
 ###
 
-DropdownProjectListDirective = (currentUserService, projectsService) ->
+DropdownProjectListDirective = (rootScope, currentUserService, projectsService) ->
     link = (scope, el, attrs, ctrl) ->
         scope.vm = {}
 
@@ -25,6 +25,11 @@ DropdownProjectListDirective = (currentUserService, projectsService) ->
 
         scope.vm.newProject = ->
             projectsService.newProject()
+
+        updateLinks = ->
+            el.find(".dropdown-project-list ul li a").data("fullUrl", "")
+
+        rootScope.$on("dropdown-project-list:updated", updateLinks)
 
     directive = {
         templateUrl: "navigation-bar/dropdown-project-list/dropdown-project-list.html"
@@ -37,6 +42,7 @@ DropdownProjectListDirective = (currentUserService, projectsService) ->
     return directive
 
 DropdownProjectListDirective.$inject = [
+    "$rootScope",
     "tgCurrentUserService",
     "tgProjectsService"
 ]
