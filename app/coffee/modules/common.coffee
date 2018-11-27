@@ -28,7 +28,7 @@ DataPickerConfig = ($translate, $config, $auth) ->
     return {
         get: () ->
             user = $auth.getUser()
-            lang = user.lang || $translate.preferredLanguage()
+            lang = user?.lang || $translate.preferredLanguage()
             rtlLanguages = $config.get("rtlLanguages", [])
             isRTL = rtlLanguages.indexOf(lang) > -1
             return {
