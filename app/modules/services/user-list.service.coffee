@@ -27,7 +27,7 @@ class UserListService
     ]
 
     constructor: (@currentUserService, @projectService) ->
-        @.currentUser = @currentUserService.getUser().toJS()
+        @.currentUser = @currentUserService.getUser()?.toJS()
 
     filterUsers: (text, user) ->
         username = user.full_name_display.toUpperCase()
