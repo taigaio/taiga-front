@@ -121,7 +121,7 @@ class EventsService
         routingKey = "web_notifications.#{userId}"
         randomTimeout = taiga.randomInt(700, 1000)
         @.subscribe null, routingKey, (data) =>
-            @rootScope.$broadcast "notifications:updated"
+            @rootScope.$broadcast "notifications:new"
 
     ###########################################
     # Heartbeat (Ping - Pong)

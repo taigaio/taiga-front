@@ -41,7 +41,7 @@ DropdownNotificationsDirective = ($rootScope, notificationsService, currentUserS
 
         $scope.setAllAsRead = () ->
             notificationsService.setNotificationsAsRead().then ->
-                $rootScope.$emit("notifications:updated")
+                $rootScope.$emit("notifications:dismiss-all")
 
     directive = {
         templateUrl: "navigation-bar/dropdown-notifications/dropdown-notifications.html"

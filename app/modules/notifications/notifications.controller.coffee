@@ -41,9 +41,15 @@ class NotificationsController extends mixOf(taiga.Controller, taiga.PageMixin, t
         @.initList()
         @.loadNotifications()
 
-        @rootScope.$on "notifications:updated", (event) =>
+        @rootScope.$on "notifications:dismiss", (event) =>
             if @.onlyUnread
                 @.reloadList()
+
+        @rootScope.$on "notifications:new", (event) =>
+            @.reloadList()
+
+        @rootScope.$on "notifications:dismiss-all", (event) =>
+            @.reloadList()
 
     initList: ()->
         @.notificationsList = Immutable.List()
@@ -80,13 +86,11 @@ class NotificationsController extends mixOf(taiga.Controller, taiga.PageMixin, t
             else
                 @location.path(url)
 
-            @rootScope.$broadcast "notifications:updated"
+            @rootScope.$broadcast "notifications:dismiss"
 
     setAllAsRead: () ->
-        @.loading = true
-        @scope.$emit("notifications:loading")
         @notificationsService.setNotificationsAsRead().then =>
-            @rootScope.$emit("notifications:updated")
+            @rootScope.$broadcast "notifications:dismiss-all"
 
 
 angular.module("taigaNotifications").controller("Notifications", NotificationsController)
