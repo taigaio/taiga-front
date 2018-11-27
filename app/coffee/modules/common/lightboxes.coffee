@@ -937,17 +937,13 @@ $confirm, $q, attachmentsService, $template, $compile) ->
             currentLoading = $loading().target($el.find(".add-existing-button")).start()
 
             if item.milestone
-                currentLoading.finish()
-                lightboxService.close($el)
                 sprintChangeConfirmAndSave(item)
             else
                 onSuccess = ->
-                    currentLoading.finish()
-                    lightboxService.close($el)
+                    close()
                     $rootScope.$broadcast("#{$scope.objType}form:add:success", item)
                 onError = ->
-                    currentLoading.finish()
-                    lightboxService.close($el)
+                    close()
                 saveItem(item, onSuccess, onError)
 
         sprintChangeConfirmAndSave = (item) ->
@@ -960,7 +956,8 @@ $confirm, $q, attachmentsService, $template, $compile) ->
             $confirm.ask(title, null, message).then (askResponse) ->
                 onSuccess = ->
                     askResponse.finish()
-                    lightboxService.close($el)
+                    lightboxService.closeAll()
+                    $scope.lightboxOpen = false
                     $rootScope.$broadcast("#{$scope.objType}form:add:success", item)
 
                 onError = ->
@@ -1005,8 +1002,9 @@ $confirm, $q, attachmentsService, $template, $compile) ->
                     createAttachments(data).then () ->
                         currentLoading.finish()
                         close()
-                        $rs[schema.model].getByRef(data.project, data.ref, schema.params).then (obj) ->
-                            $rootScope.$broadcast(broadcastEvent, obj)
+                        if data.ref
+                            $rs[schema.model].getByRef(data.project, data.ref, schema.params).then (obj) ->
+                                $rootScope.$broadcast(broadcastEvent, obj)
             promise.then null, (data) ->
                 currentLoading.finish()
                 form.setErrors(data)
@@ -1026,7 +1024,7 @@ $confirm, $q, attachmentsService, $template, $compile) ->
                         close()
 
         close = () ->
-            lightboxService.close($el)
+            lightboxService.closeAll()
             $scope.lightboxOpen = false
 
         docEl = angular.element(document)
