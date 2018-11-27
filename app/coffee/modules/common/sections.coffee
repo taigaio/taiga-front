@@ -45,8 +45,10 @@ class SectionsService extends taiga.Service
         defaultHomePage = "timeline"
 
         projects = @currentUserService.projects?.get("all")
-        project = projects.find (p) -> return p.get('slug') == projectSlug
+        if not projects
+            return defaultHomePage
 
+        project = projects.find (p) -> return p.get('slug') == projectSlug
         if not project
             return defaultHomePage
 
