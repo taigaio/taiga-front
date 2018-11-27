@@ -4,7 +4,7 @@ div.wrapper
             h1.title {{ 'EVENTS.MY_EVENTS' | translate }}
             a.action(
                 href="",
-                ng-if="!vm.notificationsList.get(0).get('read')",
+                ng-if="vm.notificationsList.size && !vm.notificationsList.get(0).get('read')",
                 ng-click="vm.setAllAsRead()") {{ 'EVENTS.DISMISS_ALL' | translate }}
-            span.action.disabled(ng-if="vm.notificationsList.get(0).get('read')") {{ 'EVENTS.DISMISS_ALL' | translate }}
+            span.action.disabled(ng-if="!vm.notificationsList.size || vm.notificationsList.get(0).get('read')") {{ 'EVENTS.DISMISS_ALL' | translate }}
         tg-notifications-list()
