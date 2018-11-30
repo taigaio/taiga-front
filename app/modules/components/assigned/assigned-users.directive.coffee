@@ -57,7 +57,6 @@ $translate, $currentUserService) ->
 
         $scope.unassign = (user) ->
             return if not isEditable()
-            target = angular.element(event.currentTarget)
             assignedUserId = user.id
 
             title = $translate.instant("COMMON.ASSIGNED_USERS.TITLE_LIGHTBOX_DELETE_ASSIGNED")
