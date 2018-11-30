@@ -65,7 +65,13 @@ div.taskboard-table(
                     div.us-data
                         p.points-value
                             span(ng-bind="us.total_points")
-                            span(translate="TASKBOARD.TABLE.FIELD_POINTS")
+                            span(ng-if="us.total_points"
+                                 translate="TASKBOARD.TABLE.FIELD_POINTS"
+                            )
+                            span.card-estimation.not-estimated(
+                                ng-if="!us.total_points",
+                                translate="US.NOT_ESTIMATED"
+                            )
                         tg-due-date.due-date(
                             due-date="us.due_date"
                             is-closed="us.is_closed"
