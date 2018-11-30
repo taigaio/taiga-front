@@ -1,4 +1,3 @@
-.assigned-title(ng-if="!isAssigned") {{ "COMMON.ASSIGNED_TO.NOT_ASSIGNED" | translate }}
 .assigned-title(ng-if="isAssigned") {{ "COMMON.FIELDS.ASSIGNED_TO" | translate }}
 
 .tg-assigned-users
@@ -31,7 +30,7 @@
                         ng-click="selfAssign()"
                     )
                         span {{ "COMMON.ASSIGNED_TO.SELF" | translate }}
-
+            .assigned-title(ng-if="!isAssigned && !isEditable") {{ "COMMON.ASSIGNED_TO.NOT_ASSIGNED" | translate }}
     .user-list-single(ng-repeat="assignedUser in assignedUsers")
         .user-list-avatar
             img(
