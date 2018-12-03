@@ -39,8 +39,17 @@
         .card-estimation {
             color: $white;
         }
+        .card-task a {
+            &.blocked-task {
+                color: $red;
+            }
+        }
         .card-owner-actions {
             background: rgba($red-light, .9);
+
+            a:hover {
+                color: $white;
+            }
         }
         svg {
             fill: $white;
