@@ -1,7 +1,7 @@
 div.ticket-watch-title(
     title="{{ 'COMMON.WATCH_BUTTON.COUNTER_TITLE'|translate:{total:vm.item.watchers.length||0}:'messageformat' }}",
     tg-loading="vm.loading"
-) {{ vm.item.watchers.length }} {{'COMMON.WATCHERS.WATCHERS' | translate}}
+) {{ 'COMMON.WATCH_BUTTON.COUNTER_TITLE'|translate:{total:vm.item.watchers.length||0}:'messageformat' }}
 
 div.ticket-watch-inner
     a.ticket-watch-button(

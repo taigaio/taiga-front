@@ -2,7 +2,7 @@ mixin counter
     span.track-button-counter(
         title="{{ 'COMMON.WATCH_BUTTON.COUNTER_TITLE'|translate:{total:vm.item.watchers.length||0}:'messageformat' }}",
         tg-loading="vm.loading"
-    ) {{ vm.item.watchers.length }}
+    ) {{ 'COMMON.WATCH_BUTTON.COUNTER_TITLE'|translate:{total:vm.item.watchers.length||0}:'messageformat' }}
 
 
 //- Registered user button
