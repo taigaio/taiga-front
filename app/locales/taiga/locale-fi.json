@@ -852,7 +852,7 @@
         "SECTION": {
             "SEARCH": "Hae",
             "TIMELINE": "Aikajana",
-            "EPICS": "Epics",
+            "EPICS": "Eepokset",
             "BACKLOG": "Odottavat",
             "KANBAN": "Kanban",
             "ISSUES": "Pyynnöt",
@@ -1585,7 +1585,7 @@
         "PROJECT_SETTINGS": {
             "SET_START_PAGES": "Set start pages",
             "START_PAGES_PER_PROJECT": "Set start pages per project",
-            "COLUMN_PROJECT": "Project",
+            "COLUMN_PROJECT": "Projekti",
             "COLUMN_STARTPAGE": "Start page",
             "DEFAULT_VALUE": "Default"
         },
@@ -1594,7 +1594,7 @@
             "SECTION_DESCRIPTION": "Important events in Taiga header",
             "SECTION_DESCRIPTION_EXPANDED": "(direct mentions, updates in items that you are watching...)",
             "COLUMN_ENABLED": "Enabled",
-            "COLUMN_PROJECT": "Project"
+            "COLUMN_PROJECT": "Projekti"
         }
     },
     "USER_PROFILE": {
@@ -1696,7 +1696,7 @@
         "ITEM_TYPES": {
             "USERSTORY": "User Story",
             "ISSUE": "Issue",
-            "TASK": "Task"
+            "TASK": "Tehtävä"
         }
     },
     "EVENTS": {

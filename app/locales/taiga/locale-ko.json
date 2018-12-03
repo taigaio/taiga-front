@@ -852,7 +852,7 @@
         "SECTION": {
             "SEARCH": "검색",
             "TIMELINE": "타임라인",
-            "EPICS": "Epics",
+            "EPICS": "에픽",
             "BACKLOG": "백로그",
             "KANBAN": "칸반",
             "ISSUES": "이슈",
@@ -1585,7 +1585,7 @@
         "PROJECT_SETTINGS": {
             "SET_START_PAGES": "Set start pages",
             "START_PAGES_PER_PROJECT": "Set start pages per project",
-            "COLUMN_PROJECT": "Project",
+            "COLUMN_PROJECT": "프로젝트",
             "COLUMN_STARTPAGE": "Start page",
             "DEFAULT_VALUE": "Default"
         },
@@ -1594,7 +1594,7 @@
             "SECTION_DESCRIPTION": "Important events in Taiga header",
             "SECTION_DESCRIPTION_EXPANDED": "(direct mentions, updates in items that you are watching...)",
             "COLUMN_ENABLED": "Enabled",
-            "COLUMN_PROJECT": "Project"
+            "COLUMN_PROJECT": "프로젝트"
         }
     },
     "USER_PROFILE": {
@@ -1695,8 +1695,8 @@
         "NEW_USER": "{{username}} 님이 타이가에 등록하였습니다.",
         "ITEM_TYPES": {
             "USERSTORY": "User Story",
-            "ISSUE": "Issue",
-            "TASK": "Task"
+            "ISSUE": "이슈",
+            "TASK": "태스크"
         }
     },
     "EVENTS": {

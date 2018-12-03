@@ -1696,7 +1696,7 @@
         "ITEM_TYPES": {
             "USERSTORY": "User Story",
             "ISSUE": "Issue",
-            "TASK": "Task"
+            "TASK": "Taak"
         }
     },
     "EVENTS": {

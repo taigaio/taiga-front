@@ -852,7 +852,7 @@
         "SECTION": {
             "SEARCH": "Ara",
             "TIMELINE": "Zaman Çizelgesi",
-            "EPICS": "Epics",
+            "EPICS": "Destanlar",
             "BACKLOG": "Havuz",
             "KANBAN": "Kanban",
             "ISSUES": "Sorunlar",
@@ -1585,7 +1585,7 @@
         "PROJECT_SETTINGS": {
             "SET_START_PAGES": "Set start pages",
             "START_PAGES_PER_PROJECT": "Set start pages per project",
-            "COLUMN_PROJECT": "Project",
+            "COLUMN_PROJECT": "Proje",
             "COLUMN_STARTPAGE": "Start page",
             "DEFAULT_VALUE": "Default"
         },
@@ -1594,7 +1594,7 @@
             "SECTION_DESCRIPTION": "Important events in Taiga header",
             "SECTION_DESCRIPTION_EXPANDED": "(direct mentions, updates in items that you are watching...)",
             "COLUMN_ENABLED": "Enabled",
-            "COLUMN_PROJECT": "Project"
+            "COLUMN_PROJECT": "Proje"
         }
     },
     "USER_PROFILE": {
@@ -1695,8 +1695,8 @@
         "NEW_USER": "{{username}}  Taiga ya katıldı",
         "ITEM_TYPES": {
             "USERSTORY": "User Story",
-            "ISSUE": "Issue",
-            "TASK": "Task"
+            "ISSUE": "Sorun",
+            "TASK": "Görev"
         }
     },
     "EVENTS": {

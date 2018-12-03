@@ -3,7 +3,7 @@
         "YES": "بله",
         "NO": "خیر",
         "OR": "یا",
-        "I_GET_IT": "OK, I get it",
+        "I_GET_IT": "اوکی گرفتم",
         "LOADING": "در حال بارگذاری ...",
         "DATE": "DD MMM YYYY",
         "DATETIME": "DD MMM YYYY HH:mm",
@@ -460,7 +460,7 @@
             "PAGE_TITLE": "عضویت‌ها - {{projectName}}",
             "ADD_BUTTON": "+ افزودن عضو جدید",
             "ADD_BUTTON_TITLE": "اضافه کردن عضو جدید",
-            "UPGRADE_BUTTON": "Upgrade your plan",
+            "UPGRADE_BUTTON": "برنامه را ارتقا بده",
             "LIMIT_USERS_WARNING_MESSAGE_FOR_ADMIN": "If you would like to <strong>add more members</strong>, please contact the project owner <a href='mailto:{{ owner_email }}' title='{{ owner_email }}'>{{ owner_email }}</a>",
             "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "این پروژه به محدودیت <strong>({{members}})</strong>عضو مجاز خود رسیده است. اگر می‌خواهید محدودیت را افزایش دهید، با ادمین تماس بگیرید."
         },
@@ -553,7 +553,7 @@
             "TITLE_REGENERATE_URL": "بازسازی لینک CSV",
             "ACTION_GENERATE_URL": "ایجاد URL",
             "ACTION_REGENERATE": "بازسازی",
-            "TITLE_DELETE_URL": "Delete CSV url",
+            "TITLE_DELETE_URL": "حذف آدرس CSV",
             "ACTION_DELETE_URL": "حذف"
         },
         "CUSTOM_FIELDS": {
@@ -572,9 +572,9 @@
             "FIELD_TYPE_MULTI": "چند خطی",
             "FIELD_TYPE_DATE": "تاریخ",
             "FIELD_TYPE_URL": "URL",
-            "FIELD_TYPE_DROPDOWN": "Dropdown",
-            "FIELD_TYPE_CHECKBOX": "Checkbox",
-            "FIELD_TYPE_NUMBER": "Number"
+            "FIELD_TYPE_DROPDOWN": "دراپ داون",
+            "FIELD_TYPE_CHECKBOX": "چک باکس",
+            "FIELD_TYPE_NUMBER": "اعداد"
         },
         "PROJECT_VALUES": {
             "PAGE_TITLE": "{{sectionName}} - مقادیر پروژه - {{projectName}}",
@@ -630,7 +630,7 @@
             "US_TITLE": "User Story Due Date status",
             "ACTION_ADD_STATUS": "اضافه کردن وضعیت جدید",
             "TASK_TITLE": "Task Due Date status",
-            "ISSUE_TITLE": "Issue Due Date status",
+            "ISSUE_TITLE": "وضعیت موعد سر رسید گزارش",
             "DAYS_TO_DUE_DATE": "تعداد روز مانده تا موعد تحویل",
             "BEFORE_AFTER": "قبل/بعد",
             "BEFORE": "قبل",
@@ -764,7 +764,7 @@
             "TYPES": "انواع",
             "CUSTOM_FIELDS": "ویژگی‌های سفارشی",
             "TAGS": "برچسب‌ها",
-            "DUE_DATES": "Due dates"
+            "DUE_DATES": "موعد سر رسید"
         },
         "SUBMENU_ROLES": {
             "TITLE": "نقش‌ها",
@@ -1103,13 +1103,13 @@
             "NEW_TASK": "New Task",
             "NEW_ISSUE": "New Issue",
             "NEW_US": "New User Story",
-            "EDIT_TASK": "Edit Task",
-            "EDIT_ISSUE": "Edit Issue",
-            "EDIT_US": "Edit User Story",
+            "EDIT_TASK": "ویرایش وضیفه",
+            "EDIT_ISSUE": "ویرایش موضوع",
+            "EDIT_US": "ویرایش گزارش کاربر",
             "ADD_EXISTING_ISSUE": "Add Issue to {{ targetName }}",
             "CONFIRM_CLOSE": "شما تغییرات را ذخیره نکرده‌اید\nآیا از بستن این فرم اطمینان دارید؟",
-            "EXISTING_ISSUE": "Existing Issue",
-            "CHOOSE_EXISTING_ISSUE": "Which Issue?",
+            "EXISTING_ISSUE": "گزارش موجود",
+            "CHOOSE_EXISTING_ISSUE": "کدام گزارش",
             "ADD_ISSUE": "اضافه کردن موضوع",
             "FILTER_ISSUES": "فیلتر کردن موضوع‌ها"
         },
@@ -1176,7 +1176,7 @@
             "CHOOSE_PROJECT_FOR_CREATION": "پروژه چیست؟",
             "CHOOSE_PROJECT_FROM": "پروژه چیست؟",
             "SUBJECT": "موضوع",
-            "CHOOSE_EPIC": "What's the epic?",
+            "CHOOSE_EPIC": "اپیک چیست؟",
             "FILTER_EPICS": "فیلتر کردن epicها",
             "NO_EPICS_FOUND": "در ارتباط با آنچه جست‌وجو کرده‌اید، چیزی پیدا نشد"
         }
@@ -1387,7 +1387,7 @@
             "TITLE_ACTION_FOLD_ROW": "جمع کردن ردیف",
             "TITLE_ACTION_UNFOLD_ROW": "گسترده کردن ردیف",
             "FIELD_POINTS": "امتیاز",
-            "ROW_STORYLESS_TASKS_TITLE": "Storyless tasks",
+            "ROW_STORYLESS_TASKS_TITLE": "وظایف بدون گزارش",
             "ROW_ISSUES_TITLE": "Sprint Issues"
         },
         "CHARTS": {
@@ -1400,9 +1400,9 @@
         "MOVE_TO_SPRINT": {
             "TITLE_ACTION_MOVE_UNFINISHED": "Move unfinished items to another sprint",
             "TITLE_MOVE_UNFINISHED": "Move unfinished items to another open sprint",
-            "MOVE_TO_OPEN_SPRINT": "Move to open sprint",
+            "MOVE_TO_OPEN_SPRINT": "برای باز کردن سرعتی حرکت دهید",
             "NO_OPEN_SPRINTS": "There are no other open sprints. Please create one first.",
-            "SELECT_DESTINATION_PLACEHOLDER": "Select destination",
+            "SELECT_DESTINATION_PLACEHOLDER": "هدف را انتخاب کنید",
             "UNFINISHED_USER_STORIES_COUNT": "{total, plural, one{<strong>#</strong> unfinished user story} other{<strong>#</strong> unfinished user stories}}",
             "UNFINISHED_STORYLESS_TASKS_COUNT": "{total, plural, one{<strong>#</strong> unfinished storyless task} other{<strong>#</strong> unfinished storyless tasks}}",
             "UNFINISHED_ISSUES_COUNT": "{total, plural, one{<strong>#</strong> unfinished issue} other{<strong>#</strong> unfinished issue}}",
@@ -1569,7 +1569,7 @@
             "CHANGE_PASSWORD": "تغییر رمز عبور",
             "EMAIL_NOTIFICATIONS": "نوتیفیکیشن‌های ایمیلی",
             "DESKTOP_NOTIFICATIONS": "اعلانیه‌های دسکتاپ",
-            "EVENTS": "Events"
+            "EVENTS": "رویداد ها"
         },
         "NOTIFICATIONS": {
             "LIVE_SECTION_NAME": "اعلانیه‌های دسکتاپ",
@@ -1583,18 +1583,18 @@
             "OPTION_NONE": "هیچ کدام"
         },
         "PROJECT_SETTINGS": {
-            "SET_START_PAGES": "Set start pages",
+            "SET_START_PAGES": "قرار دادن صفحات شروع",
             "START_PAGES_PER_PROJECT": "Set start pages per project",
-            "COLUMN_PROJECT": "Project",
-            "COLUMN_STARTPAGE": "Start page",
-            "DEFAULT_VALUE": "Default"
+            "COLUMN_PROJECT": "پروژه",
+            "COLUMN_STARTPAGE": "صفحه شروع",
+            "DEFAULT_VALUE": "پیش فرض"
         },
         "EVENTS": {
-            "SECTION_NAME": "Events",
-            "SECTION_DESCRIPTION": "Important events in Taiga header",
+            "SECTION_NAME": "رویداد ها",
+            "SECTION_DESCRIPTION": "رویداد های مهم در بالای صفحه تایگا.",
             "SECTION_DESCRIPTION_EXPANDED": "(direct mentions, updates in items that you are watching...)",
-            "COLUMN_ENABLED": "Enabled",
-            "COLUMN_PROJECT": "Project"
+            "COLUMN_ENABLED": "فعال شده است",
+            "COLUMN_PROJECT": "پروژه"
         }
     },
     "USER_PROFILE": {
@@ -1694,21 +1694,21 @@
         "UNBLOCKED": "{{username}} {{obj_name}} را از حالت مسدود خارج کرده است",
         "NEW_USER": "{{username}} به تایگا پیوست",
         "ITEM_TYPES": {
-            "USERSTORY": "User Story",
-            "ISSUE": "Issue",
-            "TASK": "Task"
+            "USERSTORY": "گزارش کاربر",
+            "ISSUE": "موضوع",
+            "TASK": "وظیفه"
         }
     },
     "EVENTS": {
-        "TITLE": "Events",
-        "MY_EVENTS": "My events",
-        "DISMISS_ALL": "Dismiss all",
-        "VIEW_ALL": "View all",
-        "NO_NEW_EVENTS": "No new events",
-        "NO_EVENTS_YET": "There are no events yet",
+        "TITLE": "رویداد ها",
+        "MY_EVENTS": "رویداد های من",
+        "DISMISS_ALL": "رد همه",
+        "VIEW_ALL": "بازدید همه",
+        "NO_NEW_EVENTS": "رویداد جدیدی وجود ندارد",
+        "NO_EVENTS_YET": "هنوز رویدادی وجود ندارد",
         "ASSIGNED_YOU": "{{username}} assigned you to {{obj_name}}",
         "ADDED_YOU_AS_WATCHER": "{{username}} added you as watcher on {{obj_name}}",
-        "ADDED_YOU_AS_MEMBER": "{{username}} added you as member",
+        "ADDED_YOU_AS_MEMBER": "{{username}} شما را به عنوان عضو افزود",
         "MENTIONED_YOU": "{{username}} mentioned you on {{obj_name}}",
         "MENTIONED_YOU_IN_COMMENT": "{{username}} mentioned you in a comment on {{obj_name}}",
         "COMMENTED": "{{username}} has commented on {{obj_name}}"
@@ -1821,7 +1821,7 @@
         }
     },
     "TIPS": {
-        "TIPS_TITLE": "Tip",
+        "TIPS_TITLE": "نکته",
         "TIP_PROJECTS_ORDER": "You can sort projects on your project page by placing the ones most frequently accessed at the top.",
         "TIP_VOTING": "Whether you ask your community or your other team members, upvoting items might serve as a way to detect explicit support for a particular task or issue.",
         "TIP_ISSUES_TO_SPRINT": "You can attach issues to a particular sprint by clicking on the pin icon in the detail view.",
