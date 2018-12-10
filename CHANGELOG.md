@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+## 4.0.3 (2018-12-11)
+
+### Misc
+
+- Update locales.
+- Remove tips
+- Minor bug fixes.
+
 ## 4.0.2 (2018-12-04)
 
 ### Misc
