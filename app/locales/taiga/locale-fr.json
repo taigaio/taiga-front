@@ -572,7 +572,7 @@
             "FIELD_TYPE_MULTI": "Multiligne",
             "FIELD_TYPE_DATE": "Date",
             "FIELD_TYPE_URL": "Url",
-            "FIELD_TYPE_DROPDOWN": "Dropdown",
+            "FIELD_TYPE_DROPDOWN": "Liste déroulante",
             "FIELD_TYPE_CHECKBOX": "Checkbox",
             "FIELD_TYPE_NUMBER": "Number"
         },
@@ -1569,7 +1569,7 @@
             "CHANGE_PASSWORD": "Modifier le mot de passe",
             "EMAIL_NOTIFICATIONS": "Notifications courriel",
             "DESKTOP_NOTIFICATIONS": "Notifications de bureau",
-            "EVENTS": "Events"
+            "EVENTS": "Événements"
         },
         "NOTIFICATIONS": {
             "LIVE_SECTION_NAME": "Notifications de bureau",
@@ -1587,10 +1587,10 @@
             "START_PAGES_PER_PROJECT": "Set start pages per project",
             "COLUMN_PROJECT": "Projet",
             "COLUMN_STARTPAGE": "Start page",
-            "DEFAULT_VALUE": "Default"
+            "DEFAULT_VALUE": "Valeur par défaut"
         },
         "EVENTS": {
-            "SECTION_NAME": "Events",
+            "SECTION_NAME": "Événements",
             "SECTION_DESCRIPTION": "Important events in Taiga header",
             "SECTION_DESCRIPTION_EXPANDED": "(direct mentions, updates in items that you are watching...)",
             "COLUMN_ENABLED": "Enabled",
@@ -1700,7 +1700,7 @@
         }
     },
     "EVENTS": {
-        "TITLE": "Events",
+        "TITLE": "Événements",
         "MY_EVENTS": "My events",
         "DISMISS_ALL": "Dismiss all",
         "VIEW_ALL": "View all",
