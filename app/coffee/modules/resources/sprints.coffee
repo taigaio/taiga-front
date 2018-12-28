@@ -21,7 +21,7 @@ taiga = @.taiga
 
 generateHash = taiga.generateHash
 
-resourceProvider = ($repo, $model, $storage) ->
+resourceProvider = ($repo, $model, $storage, $http, $urls) ->
     service = {}
 
     service.get = (projectId, sprintId) ->
@@ -52,9 +52,24 @@ resourceProvider = ($repo, $model, $storage) ->
                 open: parseInt(headers("Taiga-Info-Total-Opened-Milestones"), 10)
             }
 
+    service.moveUserStoriesMilestone = (currentMilestoneId, projectId, milestoneId, data) ->
+        url = $urls.resolve("move-userstories-to-milestone", currentMilestoneId)
+        params = {project_id: projectId, milestone_id: milestoneId, bulk_stories: data}
+        return $http.post(url, params)
+
+    service.moveTasksMilestone = (currentMilestoneId, projectId, milestoneId, data) ->
+        url = $urls.resolve("move-tasks-to-milestone", currentMilestoneId)
+        params = {project_id: projectId, milestone_id: milestoneId, bulk_tasks: data}
+        return $http.post(url, params)
+
+    service.moveIssuesMilestone = (currentMilestoneId, projectId, milestoneId, data) ->
+        url = $urls.resolve("move-issues-to-milestone", currentMilestoneId)
+        params = {project_id: projectId, milestone_id: milestoneId, bulk_issues: data}
+        return $http.post(url, params)
 
     return (instance) ->
         instance.sprints = service
 
 module = angular.module("taigaResources")
-module.factory("$tgSprintsResourcesProvider", ["$tgRepo", "$tgModel", "$tgStorage", resourceProvider])
+module.factory("$tgSprintsResourcesProvider",
+["$tgRepo", "$tgModel", "$tgStorage", "$tgHttp", "$tgUrls", resourceProvider])

@@ -85,7 +85,7 @@ class MoveToSprintLightboxController
         _.map @.openItems, (itemsList, itemsType) =>
             if not @.itemsToMove[itemsType]
                 itemsNotMoved[itemsType] = true
-        
+
         @.loading = true
 
         @moveItems().then () =>
@@ -99,7 +99,8 @@ class MoveToSprintLightboxController
         promises = []
         if  @.itemsToMove.uss
             promises.push(
-                @rs.userstories.bulkUpdateMilestone(
+                @rs.sprints.moveUserStoriesMilestone(
+                    @.sprint.id
                     @.projectId
                     @.selectedSprintId
                     @.itemsToMove.uss
@@ -107,7 +108,8 @@ class MoveToSprintLightboxController
             )
         if  @.itemsToMove.tasks
             promises.push(
-                @rs.tasks.bulkUpdateMilestone(
+                @rs.sprints.moveTasksMilestone(
+                    @.sprint.id
                     @.projectId
                     @.selectedSprintId
                     @.itemsToMove.tasks
@@ -115,7 +117,8 @@ class MoveToSprintLightboxController
             )
         if  @.itemsToMove.issues
             promises.push(
-                @rs.issues.bulkUpdateMilestone(
+                @rs.sprints.moveIssuesMilestone(
+                    @.sprint.id
                     @.projectId
                     @.selectedSprintId
                     @.itemsToMove.issues
