@@ -99,6 +99,9 @@ urls = {
 
     # Milestones/Sprints
     "milestones": "/milestones"
+    "move-userstories-to-milestone": "/milestones/%s/move_userstories_to_sprint"
+    "move-tasks-to-milestone": "/milestones/%s/move_tasks_to_sprint"
+    "move-issues-to-milestone": "/milestones/%s/move_issues_to_sprint"
 
     # Epics
     "epics": "/epics"
