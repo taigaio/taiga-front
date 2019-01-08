@@ -79,7 +79,7 @@
         flex-basis: 100px;
         flex-grow: 0;
         flex-shrink: 0;
-        opacity: 0;
+        opacity: 1;
         text-align: center;
         svg {
             cursor: pointer;
@@ -98,7 +98,7 @@
         }
     }
     .custom-options-wrapper {
-        opacity: 0;
+        opacity: 1;
         transition: opacity .3s linear;
         a {
             display: inline-block;
