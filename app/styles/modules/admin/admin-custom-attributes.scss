@@ -100,6 +100,9 @@
     .custom-options-wrapper {
         opacity: 0;
         transition: opacity .3s linear;
+        &:hover {
+            opacity: 1;
+        }
         a {
             display: inline-block;
         }
