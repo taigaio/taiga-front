@@ -172,18 +172,29 @@ taiga.FiltersMixin = FiltersMixin
 #############################################################################
 
 class UsFiltersMixin
+    excludePrefix: "exclude_"
+    filterCategories: [
+        "tags",
+        "status",
+        "assigned_users",
+        "assigned_to",
+        "owner",
+        "epic",
+        "role",
+    ]
+
     changeQ: (q) ->
         @.replaceFilter("q", q)
         @.filtersReloadContent()
         @.generateFilters()
 
     removeFilter: (filter) ->
-        @.unselectFilter(filter.dataType, filter.id)
+        @.unselectFilter(filter.dataType, filter.id, false, filter.mode)
         @.filtersReloadContent()
         @.generateFilters()
 
     addFilter: (newFilter) ->
-        @.selectFilter(newFilter.category.dataType, newFilter.filter.id)
+        @.selectFilter(newFilter.category.dataType, newFilter.filter.id, false, newFilter.mode)
         @.filtersReloadContent()
         @.generateFilters()
 
@@ -195,13 +206,11 @@ class UsFiltersMixin
     saveCustomFilter: (name) ->
         filters = {}
         urlfilters = @location.search()
-        filters.tags = urlfilters.tags
-        filters.status = urlfilters.status
-        filters.assigned_to = urlfilters.assigned_to
-        filters.assigned_users = urlfilters.assigned_users
-        filters.owner = urlfilters.owner
-        filters.epic = urlfilters.epic
-        filters.role = urlfilters.role
+
+        for key in @.filterCategories
+            excludeKey = @.excludePrefix.concat(key)
+            filters[key] = urlfilters[key]
+            filters[excludeKey] = urlfilters[excludeKey]
 
         @filterRemoteStorageService.getFilters(@scope.projectId, @.storeCustomFiltersName).then (userFilters) =>
             userFilters[name] = filters
@@ -228,14 +237,12 @@ class UsFiltersMixin
 
         loadFilters = {}
         loadFilters.project = @scope.projectId
-        loadFilters.tags = urlfilters.tags
-        loadFilters.status = urlfilters.status
-        loadFilters.assigned_users = urlfilters.assigned_users
-        loadFilters.assigned_to = urlfilters.assigned_to
-        loadFilters.owner = urlfilters.owner
-        loadFilters.epic = urlfilters.epic
-        loadFilters.role = urlfilters.role
         loadFilters.q = urlfilters.q
+
+        for key in @.filterCategories
+            excludeKey = @.excludePrefix.concat(key)
+            loadFilters[key] = urlfilters[key]
+            loadFilters[excludeKey] = urlfilters[excludeKey]
 
         if milestone
             loadFilters.milestone = milestone
@@ -246,18 +253,19 @@ class UsFiltersMixin
         ]).then (result) =>
             data = result[0]
             customFiltersRaw = result[1]
+            dataCollection = {}
 
-            statuses = _.map data.statuses, (it) ->
+            dataCollection.status = _.map data.statuses, (it) ->
                 it.id = it.id.toString()
 
                 return it
-            tags = _.map data.tags, (it) ->
+            dataCollection.tags = _.map data.tags, (it) ->
                 it.id = it.name
 
                 return it
-            tagsWithAtLeastOneElement = _.filter tags, (tag) ->
+            tagsWithAtLeastOneElement = _.filter dataCollection.tags, (tag) ->
                 return tag.count > 0
-            assignedUsers = _.map data.assigned_users, (it) ->
+            dataCollection.assigned_users = _.map data.assigned_users, (it) ->
                 if it.id
                     it.id = it.id.toString()
                 else
@@ -266,7 +274,7 @@ class UsFiltersMixin
                 it.name = it.full_name || "Unassigned"
 
                 return it
-            assignedTo = _.map data.assigned_to, (it) ->
+            dataCollection.assigned_to = _.map data.assigned_to, (it) ->
                 if it.id
                     it.id = it.id.toString()
                 else
@@ -275,7 +283,7 @@ class UsFiltersMixin
                 it.name = it.full_name || "Unassigned"
 
                 return it
-            role = _.map data.roles, (it) ->
+            dataCollection.role = _.map data.roles, (it) ->
                 if it.id
                     it.id = it.id.toString()
                 else
@@ -284,12 +292,12 @@ class UsFiltersMixin
                 it.name = it.name || "Unassigned"
 
                 return it
-            owner = _.map data.owners, (it) ->
+            dataCollection.owner = _.map data.owners, (it) ->
                 it.id = it.id.toString()
                 it.name = it.full_name
 
                 return it
-            epic = _.map data.epics, (it) ->
+            dataCollection.epic = _.map data.epics, (it) ->
                 if it.id
                     it.id = it.id.toString()
                     it.name = "##{it.ref} #{it.subject}"
@@ -301,33 +309,14 @@ class UsFiltersMixin
 
             @.selectedFilters = []
 
-            if loadFilters.status
-                selected = @.formatSelectedFilters("status", statuses, loadFilters.status)
-                @.selectedFilters = @.selectedFilters.concat(selected)
-
-            if loadFilters.tags
-                selected = @.formatSelectedFilters("tags", tags, loadFilters.tags)
-                @.selectedFilters = @.selectedFilters.concat(selected)
-
-            if loadFilters.assigned_users
-                selected = @.formatSelectedFilters("assigned_users", assignedUsers, loadFilters.assigned_users)
-                @.selectedFilters = @.selectedFilters.concat(selected)
-
-            if loadFilters.assigned_to
-                selected = @.formatSelectedFilters("assigned_to", assignedTo, loadFilters.assigned_to)
-                @.selectedFilters = @.selectedFilters.concat(selected)
-
-            if loadFilters.owner
-                selected = @.formatSelectedFilters("owner", owner, loadFilters.owner)
-                @.selectedFilters = @.selectedFilters.concat(selected)
-
-            if loadFilters.epic
-                selected = @.formatSelectedFilters("epic", epic, loadFilters.epic)
-                @.selectedFilters = @.selectedFilters.concat(selected)
-
-            if loadFilters.role
-                selected = @.formatSelectedFilters("role", role, loadFilters.role)
-                @.selectedFilters = @.selectedFilters.concat(selected)
+            for key in @.filterCategories
+                excludeKey = @.excludePrefix.concat(key)
+                if loadFilters[key]
+                    selected = @.formatSelectedFilters(key, dataCollection[key], loadFilters[key])
+                    @.selectedFilters = @.selectedFilters.concat(selected)
+                if loadFilters[excludeKey]
+                    selected = @.formatSelectedFilters(key, dataCollection[key], loadFilters[excludeKey], "exclude")
+                    @.selectedFilters = @.selectedFilters.concat(selected)
 
             @.filterQ = loadFilters.q
 
@@ -335,34 +324,34 @@ class UsFiltersMixin
                 {
                     title: @translate.instant("COMMON.FILTERS.CATEGORIES.STATUS"),
                     dataType: "status",
-                    content: statuses
+                    content: dataCollection.status
                 },
                 {
                     title: @translate.instant("COMMON.FILTERS.CATEGORIES.TAGS"),
                     dataType: "tags",
-                    content: tags,
+                    content: dataCollection.tags,
                     hideEmpty: true,
                     totalTaggedElements: tagsWithAtLeastOneElement.length
                 },
                 {
                     title: @translate.instant("COMMON.FILTERS.CATEGORIES.ASSIGNED_USERS"),
                     dataType: "assigned_users",
-                    content: assignedUsers
+                    content: dataCollection.assigned_users
                 },
                 {
                     title: @translate.instant("COMMON.FILTERS.CATEGORIES.ROLE"),
                     dataType: "role",
-                    content: role
+                    content: dataCollection.role
                 },
                 {
                     title: @translate.instant("COMMON.FILTERS.CATEGORIES.CREATED_BY"),
                     dataType: "owner",
-                    content: owner
+                    content: dataCollection.owner
                 },
                 {
                     title: @translate.instant("COMMON.FILTERS.CATEGORIES.EPIC"),
                     dataType: "epic",
-                    content: epic
+                    content: dataCollection.epic
                 }
             ]
 
