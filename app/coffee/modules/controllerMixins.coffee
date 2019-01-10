@@ -63,8 +63,14 @@ taiga.PageMixin = PageMixin
 # This mixin requires @location ($tgLocation), and @scope
 
 class FiltersMixin
-    selectFilter: (name, value, load=false) ->
+    excludePrefix: "exclude_"
+
+    selectFilter: (name, value, load=false, mode="include") ->
         params = @location.search()
+
+        if mode == "exclude"
+            name = @.excludePrefix.concat(name)
+
         if params[name] != undefined and name != "page"
             existing = _.map(taiga.toString(params[name]).split(","), (x) -> trim(x))
             existing.push(taiga.toString(value))
@@ -84,8 +90,11 @@ class FiltersMixin
         location = if load then @location else @location.noreload(@scope)
         location.search(filters)
 
-    unselectFilter: (name, value, load=false) ->
+    unselectFilter: (name, value, load=false, mode='include') ->
         params = @location.search()
+
+        if mode == "exclude"
+            name = @.excludePrefix.concat(name)
 
         if params[name] is undefined
             return
@@ -127,7 +136,7 @@ class FiltersMixin
 
         return @storage.get(hash) or {}
 
-    formatSelectedFilters: (type, list, urlIds) ->
+    formatSelectedFilters: (type, list, urlIds, mode="include") ->
         selectedIds = urlIds.split(',')
         selectedFilters = _.filter list, (it) ->
             selectedIds.indexOf(_.toString(it.id)) != -1
@@ -141,6 +150,7 @@ class FiltersMixin
                 key: type + ":" + it
                 dataType: type,
                 name: it
+                mode: mode
             }
 
         validAppliedTags = _.map selectedFilters, (it) ->
@@ -150,6 +160,7 @@ class FiltersMixin
                 dataType: type,
                 name: it.name
                 color: it.color
+                mode: mode
             }
 
         return invalidAppliedTags.concat(validAppliedTags)

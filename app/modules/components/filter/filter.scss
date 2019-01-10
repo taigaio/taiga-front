@@ -13,6 +13,10 @@ tg-filter {
     .filters-applied {
         padding: 0 1rem 1rem;
         .single-filter {
+            &.exclude {
+                background: $red-light;
+                text-decoration: line-through;
+            }
             &:hover {
                 color: currentColor;
                 cursor: default;

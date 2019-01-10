@@ -63,6 +63,7 @@ class FilterController
         filter = {
             category: filterCategory
             filter: filter
+            mode: @.filterMode
         }
 
         @.onAddFilter({filter: filter})
