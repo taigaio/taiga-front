@@ -161,14 +161,11 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
     saveCustomFilter: (name) ->
         filters = {}
         urlfilters = @location.search()
-        filters.tags = urlfilters.tags
-        filters.status = urlfilters.status
-        filters.type = urlfilters.type
-        filters.severity = urlfilters.severity
-        filters.priority = urlfilters.priority
-        filters.assigned_to = urlfilters.assigned_to
-        filters.owner = urlfilters.owner
-        filters.role = urlfilters.role
+
+        for key in @.filterCategories
+            excludeKey = @.excludePrefix.concat(key)
+            filters[key] = urlfilters[key]
+            filters[excludeKey] = urlfilters[excludeKey]
 
         @filterRemoteStorageService.getFilters(@scope.projectId, @.myFiltersHashSuffix).then (userFilters) =>
             userFilters[name] = filters
