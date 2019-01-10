@@ -61,6 +61,18 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
     filtersHashSuffix: "issues-filters"
     myFiltersHashSuffix: "issues-my-filters"
+    excludePrefix: "exclude_"
+    filterCategories: [
+        "tags",
+        "status",
+        "type",
+        "severity",
+        "priority",
+        "assigned_to",
+        "owner",
+        "role",
+    ]
+
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @urls, @params, @q, @location, @appMetaService,
                   @navUrls, @events, @analytics, @translate, @errorHandlingService, @storage, @filterRemoteStorageService, @projectService) ->
@@ -114,13 +126,13 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
     removeFilter: (filter) ->
         @.unselectFilter("page")
-        @.unselectFilter(filter.dataType, filter.id)
+        @.unselectFilter(filter.dataType, filter.id, false, filter.mode)
         @.loadIssues()
         @.generateFilters()
 
     addFilter: (newFilter) ->
         @.unselectFilter("page")
-        @.selectFilter(newFilter.category.dataType, newFilter.filter.id)
+        @.selectFilter(newFilter.category.dataType, newFilter.filter.id, false, newFilter.mode)
         @.loadIssues()
         @.generateFilters()
 
@@ -165,20 +177,16 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
     generateFilters: ->
         @.storeFilters(@params.pslug, @location.search(), @.filtersHashSuffix)
-
         urlfilters = @location.search()
 
         loadFilters = {}
         loadFilters.project = @scope.projectId
-        loadFilters.tags = urlfilters.tags
-        loadFilters.status = urlfilters.status
-        loadFilters.type = urlfilters.type
-        loadFilters.severity = urlfilters.severity
-        loadFilters.priority = urlfilters.priority
-        loadFilters.assigned_to = urlfilters.assigned_to
-        loadFilters.owner = urlfilters.owner
-        loadFilters.role = urlfilters.role
         loadFilters.q = urlfilters.q
+
+        for key in @.filterCategories
+            excludeKey = @.excludePrefix.concat(key)
+            loadFilters[key] = urlfilters[key]
+            loadFilters[excludeKey] = urlfilters[excludeKey]
 
         return @q.all([
             @rs.issues.filtersData(loadFilters),
@@ -186,32 +194,33 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         ]).then (result) =>
             data = result[0]
             customFiltersRaw = result[1]
+            dataCollection = {}
 
-            statuses = _.map data.statuses, (it) ->
+            dataCollection.statuses = _.map data.statuses, (it) ->
                 it.id = it.id.toString()
 
                 return it
-            type = _.map data.types, (it) ->
+            dataCollection.type = _.map data.types, (it) ->
                 it.id = it.id.toString()
 
                 return it
-            severity = _.map data.severities, (it) ->
+            dataCollection.severity = _.map data.severities, (it) ->
                 it.id = it.id.toString()
 
                 return it
-            priority = _.map data.priorities, (it) ->
+            dataCollection.priority = _.map data.priorities, (it) ->
                 it.id = it.id.toString()
 
                 return it
-            tags = _.map data.tags, (it) ->
+            dataCollection.tags = _.map data.tags, (it) ->
                 it.id = it.name
 
                 return it
 
-            tagsWithAtLeastOneElement = _.filter tags, (tag) ->
+            tagsWithAtLeastOneElement = _.filter dataCollection.tags, (tag) ->
                 return tag.count > 0
 
-            assignedTo = _.map data.assigned_to, (it) ->
+            dataCollection.assignedTo = _.map data.assigned_to, (it) ->
                 if it.id
                     it.id = it.id.toString()
                 else
@@ -220,12 +229,12 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                 it.name = it.full_name || "Unassigned"
 
                 return it
-            owner = _.map data.owners, (it) ->
+            dataCollection.owner = _.map data.owners, (it) ->
                 it.id = it.id.toString()
                 it.name = it.full_name
 
                 return it
-            role = _.map data.roles, (it) ->
+            dataCollection.role = _.map data.roles, (it) ->
                 if it.id
                     it.id = it.id.toString()
                 else
@@ -237,37 +246,14 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
             @.selectedFilters = []
 
-            if loadFilters.status
-                selected = @.formatSelectedFilters("status", statuses, loadFilters.status)
-                @.selectedFilters = @.selectedFilters.concat(selected)
-
-            if loadFilters.tags
-                selected = @.formatSelectedFilters("tags", tags, loadFilters.tags)
-                @.selectedFilters = @.selectedFilters.concat(selected)
-
-            if loadFilters.assigned_to
-                selected = @.formatSelectedFilters("assigned_to", assignedTo, loadFilters.assigned_to)
-                @.selectedFilters = @.selectedFilters.concat(selected)
-
-            if loadFilters.owner
-                selected = @.formatSelectedFilters("owner", owner, loadFilters.owner)
-                @.selectedFilters = @.selectedFilters.concat(selected)
-
-            if loadFilters.type
-                selected = @.formatSelectedFilters("type", type, loadFilters.type)
-                @.selectedFilters = @.selectedFilters.concat(selected)
-
-            if loadFilters.severity
-                selected = @.formatSelectedFilters("severity", severity, loadFilters.severity)
-                @.selectedFilters = @.selectedFilters.concat(selected)
-
-            if loadFilters.priority
-                selected = @.formatSelectedFilters("priority", priority, loadFilters.priority)
-                @.selectedFilters = @.selectedFilters.concat(selected)
-
-            if loadFilters.role
-                selected = @.formatSelectedFilters("role", role, loadFilters.role)
-                @.selectedFilters = @.selectedFilters.concat(selected)
+            for key in @.filterCategories
+                excludeKey = @.excludePrefix.concat(key)
+                if loadFilters[key]
+                    selected = @.formatSelectedFilters(key, dataCollection[key], loadFilters[key])
+                    @.selectedFilters = @.selectedFilters.concat(selected)
+                if loadFilters[excludeKey]
+                    selected = @.formatSelectedFilters(key, dataCollection[key], loadFilters[excludeKey], "exclude")
+                    @.selectedFilters = @.selectedFilters.concat(selected)
 
             @.filterQ = loadFilters.q
 
@@ -275,44 +261,44 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                 {
                     title: @translate.instant("COMMON.FILTERS.CATEGORIES.TYPE"),
                     dataType: "type",
-                    content: type
+                    content: dataCollection.type
                 },
                 {
                     title: @translate.instant("COMMON.FILTERS.CATEGORIES.SEVERITY"),
                     dataType: "severity",
-                    content: severity
+                    content: dataCollection.severity
                 },
                 {
                     title: @translate.instant("COMMON.FILTERS.CATEGORIES.PRIORITIES"),
                     dataType: "priority",
-                    content: priority
+                    content: dataCollection.priority
                 },
                 {
                     title: @translate.instant("COMMON.FILTERS.CATEGORIES.STATUS"),
                     dataType: "status",
-                    content: statuses
+                    content: dataCollection.statuses
                 },
                 {
                     title: @translate.instant("COMMON.FILTERS.CATEGORIES.TAGS"),
                     dataType: "tags",
-                    content: tags,
+                    content: dataCollection.tags,
                     hideEmpty: true,
                     totalTaggedElements: tagsWithAtLeastOneElement.length
                 },
                 {
                     title: @translate.instant("COMMON.FILTERS.CATEGORIES.ASSIGNED_TO"),
                     dataType: "assigned_to",
-                    content: assignedTo
+                    content: dataCollection.assignedTo
                 },
                 {
                     title: @translate.instant("COMMON.FILTERS.CATEGORIES.ROLE"),
                     dataType: "role",
-                    content: role
+                    content: dataCollection.role
                 },
                 {
                     title: @translate.instant("COMMON.FILTERS.CATEGORIES.CREATED_BY"),
                     dataType: "owner",
-                    content: owner
+                    content: dataCollection.owner
                 }
             ]
 
