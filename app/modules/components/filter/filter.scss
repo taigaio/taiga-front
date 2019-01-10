@@ -21,6 +21,76 @@ tg-filter {
             }
         }
     }
+    .filters-advanced {
+        @include font-type(light);
+        @include font-size(xsmall);
+        padding: 0 1rem 1rem;
+
+        a .icon {
+            margin-left: 5px;
+            vertical-align: bottom;
+            width: .5rem;
+        }
+
+        .filters-advanced-form {
+            padding: .5rem 0;
+            text-align: center;
+        }
+
+        .custom-radio {
+            display: inline;
+
+            input[type=radio] {
+                display: none;
+            }
+        }
+
+        .filter-mode {
+            cursor: pointer;
+            &.include {
+                margin-right: .75rem;
+            }
+            &.active .radio-mark-inner {
+                opacity: 1;
+            }
+            &.active.include {
+                color: $primary;
+            }
+            &.active.exclude {
+                color: $red-light;
+            }
+        }
+
+        .radio-mark,
+        .radio-mark-inner {
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .radio-mark {
+            background: $whitish;
+            height: 18px;
+            margin-right: 3px;
+            text-align: center;
+            width: 18px;
+        }
+
+        .radio-mark-inner {
+            height: 12px;
+            margin-top: 3px;
+            opacity: 0;
+            width: 12px;
+
+            &.include {
+                background: $primary;
+            }
+
+            &.exclude {
+                background: $red-light;
+            }
+        }
+    }
+
     h1,
     form {
         padding: 0 1rem;
@@ -55,6 +125,7 @@ tg-filter {
 
 .filters-cats {
     ul {
+        border-top: 1px solid $gray-light;
         margin-bottom: 0;
     }
     li {
