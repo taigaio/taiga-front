@@ -18,12 +18,22 @@
 ###
 
 class FilterController
-    @.$inject = []
+    @.$inject = ['$translate']
 
-    constructor: () ->
+    constructor: (@translate) ->
         @.opened = null
+        @.filterModeOptions = ["include", "exclude"]
+        @.filterModeLabels = {
+            "include": @translate.instant("COMMON.FILTERS.ADVANCED_FILTERS.INCLUDE"),
+            "exclude": @translate.instant("COMMON.FILTERS.ADVANCED_FILTERS.EXCLUDE"),
+        }
+        @.filterMode = 'include'
+        @.showAdvancedFilter = false
         @.customFilterForm = false
         @.customFilterName = ''
+
+    toggleAdvancedFilter: () ->
+        @.showAdvancedFilter = !@.showAdvancedFilter
 
     toggleFilterCategory: (filterName) ->
         if @.opened == filterName
