@@ -157,7 +157,6 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         @scope.$on("sprint:us:move", @.moveUs)
         @scope.$on "sprint:us:moved", () =>
             @.loadSprints()
-            @.loadClosedSprints()
             @.loadProjectStats()
 
         @scope.$on("backlog:load-closed-sprints", @.loadClosedSprints)
