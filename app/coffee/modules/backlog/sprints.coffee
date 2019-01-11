@@ -159,7 +159,7 @@ ToggleExcludeClosedSprintsVisualization = ($rootscope, $loading, $translate) ->
         $scope.$on "$destroy", ->
             $el.off()
 
-        $scope.$on "closed-sprints:reloaded", (ctx, sprints) =>
+        $scope.$on "closed-sprints:reloaded", (ctx, sprints) ->
             currentLoading.finish()
 
             if sprints.length > 0
