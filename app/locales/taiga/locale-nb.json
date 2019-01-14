@@ -3,7 +3,7 @@
         "YES": "Ja",
         "NO": "Nei",
         "OR": "eller",
-        "I_GET_IT": "OK, I get it",
+        "I_GET_IT": "OK, jeg forstår",
         "LOADING": "Laster...",
         "DATE": "DD MMM YYYY",
         "DATETIME": "DD MMM YYYY HH:mm",
@@ -11,11 +11,11 @@
         "CANCEL": "Avbryt",
         "ACCEPT": "Aksepter",
         "DELETE": "Slett",
-        "UNLINK": "Unlink",
+        "UNLINK": "Koble fra",
         "CREATE": "Opprett",
         "ADD": "Legg til",
-        "COPY_TO_CLIPBOARD": "Copy to clipboard",
-        "COPIED_TO_CLIPBOARD": "Text has been copied to clipboard",
+        "COPY_TO_CLIPBOARD": "Kopier til utklippstavle",
+        "COPIED_TO_CLIPBOARD": "Tekst kopiert til utklippstavlen",
         "EDIT": "Endre",
         "DRAG": "Dra",
         "TAG_LINE": "Ditt smidige, gratis og åpen kildekode prosjektstyringsverktøy",
@@ -239,7 +239,7 @@
         },
         "PERMISIONS_CATEGORIES": {
             "EPICS": {
-                "NAME": "Epics",
+                "NAME": "Episk",
                 "VIEW_EPICS": "View epics",
                 "ADD_EPICS": "Add epics",
                 "MODIFY_EPICS": "Modify epics",
@@ -307,7 +307,7 @@
         "ACTION_ENTER": "Enter",
         "ACTION_SIGN_IN": "Login",
         "PLACEHOLDER_AUTH_PASSWORD": "Passord (case sensitiv)",
-        "ALT_LOGIN": "Or login with"
+        "ALT_LOGIN": "Eller logg inn med"
     },
     "LOGIN_FORM": {
         "ERROR_AUTH_INCORRECT": "Ifølge våre Oompa Loompaer er ditt brukernavn, e-post eller passord feil.",
@@ -380,17 +380,17 @@
         "DASHBOARD": "Prosjektoversikt"
     },
     "EPICS": {
-        "TITLE": "EPICS",
-        "SECTION_NAME": "Epics",
-        "EPIC": "EPIC",
-        "PAGE_TITLE": "Epics - {{projectName}}",
-        "PAGE_DESCRIPTION": "The epics list of the project {{projectName}}: {{projectDescription}}",
+        "TITLE": "EPISK",
+        "SECTION_NAME": "Episk",
+        "EPIC": "EPISK",
+        "PAGE_TITLE": "Episk - {{projectName}}",
+        "PAGE_DESCRIPTION": "Liste over episke hendelser i prosjekt {{projectName}}: {{projectDescription}}",
         "DASHBOARD": {
-            "ADD": "+ ADD EPIC",
+            "ADD": "+ Legg til episk hendelse",
             "UNASSIGNED": "Ikke tildelt"
         },
         "EMPTY": {
-            "TITLE": "It looks like there aren't any epics yet",
+            "TITLE": "Det ser ut som det ikke finnes noen episke hendelser enda",
             "EXPLANATION": "Epics are items at a higher level that encompass user stories.<br />Epics are at the top of the hierarchy and can be used to group user stories together.",
             "HELP": "Learn more about epics"
         },
@@ -461,7 +461,7 @@
             "ADD_BUTTON": "+ Nytt medlem",
             "ADD_BUTTON_TITLE": "Legg til nytt medlem",
             "UPGRADE_BUTTON": "Upgrade your plan",
-            "LIMIT_USERS_WARNING_MESSAGE_FOR_ADMIN": "If you would like to <strong>add more members</strong>, please contact the project owner <a href='mailto:{{ owner_email }}' title='{{ owner_email }}'>{{ owner_email }}</a>",
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_ADMIN": "Dersom du ønsker å <strong>legge til flere medlemmer</strong>, kontakt prosjekteier <a href='mailto:{{ owner_email }}' title='{{ owner_email }}'>{{ owner_email }}</a>",
             "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "Dette prosjektet har nådd sin grense for <strong>({{members}})</strong> tillatte medlemmer. Dersom du ønsker å øke den grensen, venligst kontakt en administrator."
         },
         "PROJECT_EXPORT": {
@@ -479,7 +479,7 @@
         },
         "MODULES": {
             "TITLE": "Moduler",
-            "EPICS": "Epics",
+            "EPICS": "Episk",
             "EPICS_DESCRIPTION": "Visualize and manage the most strategic part of your project",
             "BACKLOG": "Backlog",
             "BACKLOG_DESCRIPTION": "Hold styr på dine brukerhistorier for å vedlikeholde en organisert visning over kommende og prioritert arbeid.",
@@ -825,7 +825,7 @@
             "FILTER_TYPE_ALL_TITLE": "Vis alle",
             "FILTER_TYPE_PROJECTS": "Prosjekter",
             "FILTER_TYPE_PROJECTS_TITLE": "Vis kun prosjekter",
-            "FILTER_TYPE_EPICS": "Epics",
+            "FILTER_TYPE_EPICS": "Episk",
             "FILTER_TYPE_EPICS_TITLE": "Show only epics",
             "FILTER_TYPE_USER_STORIES": "Historier",
             "FILTER_TYPE_USER_STORIES_TITLE": "Vis kun brukerhistorier",
@@ -852,7 +852,7 @@
         "SECTION": {
             "SEARCH": "Søk",
             "TIMELINE": "Tidslinje",
-            "EPICS": "Epics",
+            "EPICS": "Episk",
             "BACKLOG": "Backlog",
             "KANBAN": "Kanban",
             "ISSUES": "Hendelser",
@@ -1529,7 +1529,7 @@
     "SEARCH": {
         "PAGE_TITLE": "Søk - {{projectName}}",
         "PAGE_DESCRIPTION": "Søk etter hva som helst, brukerhistorier, hendelser, oppgaver or wiki-sider i prosjektet {{projectName}}: {{projectDescription}}",
-        "FILTER_EPICS": "Epics",
+        "FILTER_EPICS": "Episk",
         "FILTER_USER_STORIES": "Brukerhistorie",
         "FILTER_ISSUES": "Hendelser",
         "FILTER_TASKS": "Oppgaver",
