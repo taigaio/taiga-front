@@ -22,11 +22,27 @@ describe "Filter", ->
     $controller = null
     mocks = {}
 
+    _mockTranslate = ->
+        mocks.translate = {
+            instant: sinon.stub()
+        }
+
+        $provide.value("$translate", mocks.translate)
+
+    _mocks = ->
+        module (_$provide_) ->
+            $provide = _$provide_
+
+            _mockTranslate()
+
+            return null
+
     _inject = ->
         inject (_$controller_) ->
             $controller = _$controller_
 
     _setup = ->
+        _mocks()
         _inject()
 
     beforeEach ->
