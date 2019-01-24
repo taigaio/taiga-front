@@ -59,6 +59,7 @@ form(name="vm.filtersForm")
         a(
             ng-click="vm.toggleAdvancedFilter()"
             href=""
+            ng-class="{'collapsed': !vm.showAdvancedFilter, 'exclude': vm.filterMode == 'exclude'}"
         )
             span {{'COMMON.FILTERS.TITLE_ADVANCED_FILTER' | translate}}
             tg-svg.ng-animate-disabled(
