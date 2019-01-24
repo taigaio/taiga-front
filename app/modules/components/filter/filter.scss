@@ -1,3 +1,8 @@
+// custom colors
+$exclude-background: #fcc;
+$exclude-filter-text: #828282;
+$radio-mark-background: #d6d5d5;
+
 tg-filter {
     background-color: $mass-white;
     display: block;
@@ -14,7 +19,8 @@ tg-filter {
         padding: 0 1rem 1rem;
         .single-filter {
             &.exclude {
-                background: $red-light;
+                background: $exclude-background;
+                color: $exclude-filter-text;
                 text-decoration: line-through;
             }
             &:hover {
@@ -28,7 +34,13 @@ tg-filter {
     .filters-advanced {
         @include font-type(light);
         @include font-size(xsmall);
+        font-size: 10pt;
+        font-weight: 600;
         padding: 0 1rem 1rem;
+
+        .collapsed.exclude {
+            color: $red-light;
+        }
 
         a .icon {
             margin-left: 5px;
@@ -37,7 +49,7 @@ tg-filter {
         }
 
         .filters-advanced-form {
-            padding: .5rem 0;
+            padding: .75rem 0;
             text-align: center;
         }
 
@@ -51,6 +63,7 @@ tg-filter {
 
         .filter-mode {
             cursor: pointer;
+
             &.include {
                 margin-right: .75rem;
             }
@@ -72,18 +85,18 @@ tg-filter {
         }
 
         .radio-mark {
-            background: $whitish;
-            height: 18px;
+            background: $radio-mark-background;
+            height: 22px;
             margin-right: 3px;
             text-align: center;
-            width: 18px;
+            width: 22px;
         }
 
         .radio-mark-inner {
-            height: 12px;
-            margin-top: 3px;
+            height: 14px;
+            margin-top: 4px;
             opacity: 0;
-            width: 12px;
+            width: 14px;
 
             &.include {
                 background: $primary;
