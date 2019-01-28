@@ -33,7 +33,6 @@ FilterSlideDownDirective = () ->
 
                 $(el.context.nextSibling)
                     .css({
-                        "max-height": wrapperHeight - contentHeight,
                         "display": "block"
                     })
 
