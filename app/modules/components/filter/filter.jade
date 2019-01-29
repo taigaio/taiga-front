@@ -18,7 +18,7 @@ form(name="vm.filtersForm")
 .filters-step-cat
     .filters-applied
         .single-filter.ng-animate-disabled(
-            ng-repeat="it in vm.selectedFilters track by it.key"
+            ng-repeat="it in vm.selectedFilters | orderBy:'-mode' track by it.key"
             class="{{it.mode}}"
             )
             span.name(
