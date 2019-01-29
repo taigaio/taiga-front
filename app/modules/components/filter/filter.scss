@@ -1,6 +1,5 @@
 // custom colors
 $exclude-background: #fcc;
-$exclude-filter-text: #828282;
 $radio-mark-background: #d6d5d5;
 
 tg-filter {
@@ -22,13 +21,11 @@ tg-filter {
         .single-filter {
             &.exclude {
                 background: $exclude-background;
-                color: $exclude-filter-text;
                 text-decoration: line-through;
             }
             &:hover {
                 color: currentColor;
                 cursor: default;
-                opacity: .5;
                 transition: none;
             }
         }
@@ -202,11 +199,6 @@ tg-filter {
     opacity: .5;
     padding-right: .5rem;
     position: relative;
-    &:hover {
-        background: darken($whitish, 8%);
-        opacity: 1;
-        transition: opacity .2s linear;
-    }
     &.selected,
     &.active {
         color: $grayer;
