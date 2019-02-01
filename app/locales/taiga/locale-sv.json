@@ -215,6 +215,11 @@
             "ACTION_SAVE_CUSTOM_FILTER": "spara som anpassad filter",
             "PLACEHOLDER_FILTER_NAME": "Skriv filternamnet och tryck på <Enter>",
             "APPLIED_FILTERS_NUM": "applicerade filter",
+            "TITLE_ADVANCED_FILTER": "Advanced",
+            "ADVANCED_FILTERS": {
+                "INCLUDE": "Include",
+                "EXCLUDE": "Exclude"
+            },
             "CATEGORIES": {
                 "TYPE": "Typ",
                 "STATUS": "Status",

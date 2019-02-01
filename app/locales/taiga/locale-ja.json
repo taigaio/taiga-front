@@ -215,6 +215,11 @@
             "ACTION_SAVE_CUSTOM_FILTER": "カスタムフィルターとして保存する",
             "PLACEHOLDER_FILTER_NAME": "フィルター名を入力しエンターキーを押してください。",
             "APPLIED_FILTERS_NUM": "フィルター適用中",
+            "TITLE_ADVANCED_FILTER": "Advanced",
+            "ADVANCED_FILTERS": {
+                "INCLUDE": "Include",
+                "EXCLUDE": "Exclude"
+            },
             "CATEGORIES": {
                 "TYPE": "タイプ",
                 "STATUS": "ステータス",

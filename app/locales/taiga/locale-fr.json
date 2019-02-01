@@ -5,7 +5,7 @@
         "OR": "ou",
         "I_GET_IT": "OK, I get it",
         "LOADING": "Veuillez patienter...",
-        "DATE": "JJ MMM AAAA",
+        "DATE": "DD MMM YYYY",
         "DATETIME": "JJ MMM AAAA HH:mm",
         "SAVE": "Enregistrer",
         "CANCEL": "Annuler",
@@ -215,6 +215,11 @@
             "ACTION_SAVE_CUSTOM_FILTER": "sauvegarder en tant que filtre personnalisé",
             "PLACEHOLDER_FILTER_NAME": "Écrivez le nom du filtre et appuyez sur \"Entrée\"",
             "APPLIED_FILTERS_NUM": "filtres appliqués",
+            "TITLE_ADVANCED_FILTER": "Advanced",
+            "ADVANCED_FILTERS": {
+                "INCLUDE": "Include",
+                "EXCLUDE": "Exclude"
+            },
             "CATEGORIES": {
                 "TYPE": "Type",
                 "STATUS": "Statut",

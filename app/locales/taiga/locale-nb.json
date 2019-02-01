@@ -215,6 +215,11 @@
             "ACTION_SAVE_CUSTOM_FILTER": "lagre som egendefinert filter",
             "PLACEHOLDER_FILTER_NAME": "Skriv filternavnet og trykk enter",
             "APPLIED_FILTERS_NUM": "filters applied",
+            "TITLE_ADVANCED_FILTER": "Advanced",
+            "ADVANCED_FILTERS": {
+                "INCLUDE": "Include",
+                "EXCLUDE": "Exclude"
+            },
             "CATEGORIES": {
                 "TYPE": "Type",
                 "STATUS": "Status",

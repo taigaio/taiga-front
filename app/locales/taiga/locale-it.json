@@ -215,6 +215,11 @@
             "ACTION_SAVE_CUSTOM_FILTER": "salva come filtro personalizzato",
             "PLACEHOLDER_FILTER_NAME": "Scrivi il nome del filtro e premi invio",
             "APPLIED_FILTERS_NUM": "filtri impostati",
+            "TITLE_ADVANCED_FILTER": "Advanced",
+            "ADVANCED_FILTERS": {
+                "INCLUDE": "Include",
+                "EXCLUDE": "Exclude"
+            },
             "CATEGORIES": {
                 "TYPE": "Tipo",
                 "STATUS": "Stato",

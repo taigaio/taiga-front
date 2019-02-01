@@ -215,6 +215,11 @@
             "ACTION_SAVE_CUSTOM_FILTER": "зберегти як користувацький фільтр",
             "PLACEHOLDER_FILTER_NAME": "Напишіть ім'я фільтра та натисніть Enter",
             "APPLIED_FILTERS_NUM": "застосовані фільтри",
+            "TITLE_ADVANCED_FILTER": "Advanced",
+            "ADVANCED_FILTERS": {
+                "INCLUDE": "Include",
+                "EXCLUDE": "Exclude"
+            },
             "CATEGORIES": {
                 "TYPE": "Тип",
                 "STATUS": "Статус",

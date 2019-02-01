@@ -215,6 +215,11 @@
             "ACTION_SAVE_CUSTOM_FILTER": "tallenna omaksi suodattimeksi",
             "PLACEHOLDER_FILTER_NAME": "Anna suodattimen nimi ja paina enter",
             "APPLIED_FILTERS_NUM": "Suodattimet asetettu",
+            "TITLE_ADVANCED_FILTER": "Advanced",
+            "ADVANCED_FILTERS": {
+                "INCLUDE": "Include",
+                "EXCLUDE": "Exclude"
+            },
             "CATEGORIES": {
                 "TYPE": "Tyyppi",
                 "STATUS": "Tila",

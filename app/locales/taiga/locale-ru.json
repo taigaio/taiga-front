@@ -215,6 +215,11 @@
             "ACTION_SAVE_CUSTOM_FILTER": "сохранить как специальный фильтр",
             "PLACEHOLDER_FILTER_NAME": "Введите название фильтра и нажмите \"ввод\"",
             "APPLIED_FILTERS_NUM": "фильтры применены",
+            "TITLE_ADVANCED_FILTER": "Advanced",
+            "ADVANCED_FILTERS": {
+                "INCLUDE": "Include",
+                "EXCLUDE": "Exclude"
+            },
             "CATEGORIES": {
                 "TYPE": "Тип",
                 "STATUS": "Статус",

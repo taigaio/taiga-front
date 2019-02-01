@@ -215,6 +215,11 @@
             "ACTION_SAVE_CUSTOM_FILTER": "커스컴 필터 저장하기",
             "PLACEHOLDER_FILTER_NAME": "필터 이름을 쓰고 엔터키를 누르세요",
             "APPLIED_FILTERS_NUM": "적용된 필터",
+            "TITLE_ADVANCED_FILTER": "Advanced",
+            "ADVANCED_FILTERS": {
+                "INCLUDE": "Include",
+                "EXCLUDE": "Exclude"
+            },
             "CATEGORIES": {
                 "TYPE": "타입",
                 "STATUS": "상태",

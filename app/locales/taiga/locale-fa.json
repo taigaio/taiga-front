@@ -215,6 +215,11 @@
             "ACTION_SAVE_CUSTOM_FILTER": "ذخیره به عنوان فیلتر سفارشی",
             "PLACEHOLDER_FILTER_NAME": "نام فیلتر را وارد کرده و اینتر را فشار دهید",
             "APPLIED_FILTERS_NUM": "فیلترهای اعمال‌شده",
+            "TITLE_ADVANCED_FILTER": "Advanced",
+            "ADVANCED_FILTERS": {
+                "INCLUDE": "Include",
+                "EXCLUDE": "Exclude"
+            },
             "CATEGORIES": {
                 "TYPE": "نوع",
                 "STATUS": "عیت",

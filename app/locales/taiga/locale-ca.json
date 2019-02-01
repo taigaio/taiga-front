@@ -215,6 +215,11 @@
             "ACTION_SAVE_CUSTOM_FILTER": "Guarda com a filtre",
             "PLACEHOLDER_FILTER_NAME": "Escriu el filtre i pressiona Intro",
             "APPLIED_FILTERS_NUM": "filters applied",
+            "TITLE_ADVANCED_FILTER": "Advanced",
+            "ADVANCED_FILTERS": {
+                "INCLUDE": "Include",
+                "EXCLUDE": "Exclude"
+            },
             "CATEGORIES": {
                 "TYPE": "Tipus",
                 "STATUS": "Estats",

@@ -215,6 +215,11 @@
             "ACTION_SAVE_CUSTOM_FILTER": "özel filtre olarak kaydet",
             "PLACEHOLDER_FILTER_NAME": "Filtre adı yazın ve enter a basın",
             "APPLIED_FILTERS_NUM": "filtre uygulandı",
+            "TITLE_ADVANCED_FILTER": "Advanced",
+            "ADVANCED_FILTERS": {
+                "INCLUDE": "Include",
+                "EXCLUDE": "Exclude"
+            },
             "CATEGORIES": {
                 "TYPE": "Tip",
                 "STATUS": "Durum ",

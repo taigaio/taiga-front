@@ -215,6 +215,11 @@
             "ACTION_SAVE_CUSTOM_FILTER": "儲存為客製過濾器 ",
             "PLACEHOLDER_FILTER_NAME": "寫入過濾器名稱後按下enter ",
             "APPLIED_FILTERS_NUM": "filters applied",
+            "TITLE_ADVANCED_FILTER": "Advanced",
+            "ADVANCED_FILTERS": {
+                "INCLUDE": "Include",
+                "EXCLUDE": "Exclude"
+            },
             "CATEGORIES": {
                 "TYPE": "類型",
                 "STATUS": "狀態",

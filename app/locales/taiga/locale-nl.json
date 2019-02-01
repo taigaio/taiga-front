@@ -215,6 +215,11 @@
             "ACTION_SAVE_CUSTOM_FILTER": "Als eigen filter opslaan",
             "PLACEHOLDER_FILTER_NAME": "Geef de filternaam in en druk op enter",
             "APPLIED_FILTERS_NUM": "filters applied",
+            "TITLE_ADVANCED_FILTER": "Advanced",
+            "ADVANCED_FILTERS": {
+                "INCLUDE": "Include",
+                "EXCLUDE": "Exclude"
+            },
             "CATEGORIES": {
                 "TYPE": "Type",
                 "STATUS": "Status",

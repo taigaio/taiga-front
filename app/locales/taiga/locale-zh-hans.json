@@ -215,6 +215,11 @@
             "ACTION_SAVE_CUSTOM_FILTER": "储存为定制过滤器",
             "PLACEHOLDER_FILTER_NAME": "写入过滤器名称后按下enter",
             "APPLIED_FILTERS_NUM": "已用过滤器",
+            "TITLE_ADVANCED_FILTER": "Advanced",
+            "ADVANCED_FILTERS": {
+                "INCLUDE": "Include",
+                "EXCLUDE": "Exclude"
+            },
             "CATEGORIES": {
                 "TYPE": "类型",
                 "STATUS": "状态",
