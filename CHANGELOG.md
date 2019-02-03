@@ -2,6 +2,17 @@
 
 ## Unreleased
 
+## 4.1.0 (2019-02-04)
+
+### Misc
+
+- Minor fixes
+
+### Features
+
+- Negative filters
+- Activate Ukrainian language
+
 ## 4.0.4 (2019-01-15)
 
 ### Misc
