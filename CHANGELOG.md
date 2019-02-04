@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## 4.1.1 (2019-02-04)
+
+- Pin npm Flot dependence
+
 ## 4.1.0 (2019-02-04)
 
 ### Misc
