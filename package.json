@@ -99,7 +99,7 @@
     "scss-lint"
   ],
   "dependencies": {
-    "Flot": "git+https://github.com/flot/flot.git",
+    "Flot": "git+https://github.com/flot/flot.git#v0.8.3",
     "angular": "1.5.5",
     "angular-animate": "1.5.5",
     "angular-aria": "1.5.5",
