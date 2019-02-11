@@ -2,6 +2,7 @@
 .epic-row.e2e-epic-row(
     ng-class="{'is-blocked':  vm.epic.get('is_blocked'), 'is-closed': vm.epic.get('is_closed'), 'unfold': vm.displayUserStories, 'not-empty': vm.epic.getIn(['user_stories_counts', 'opened']) || vm.epic.getIn(['user_stories_counts', 'closed'])}"
     ng-click="vm.toggleUserStoryList()"
+    ng-hide="!vm.options.closed && vm.epic.get('is_closed')"
 )
     tg-svg.icon-drag(
         svg-icon="icon-drag"
@@ -9,13 +10,13 @@
     )
 
     .vote(
-        ng-if="vm.column.votes"
+        ng-if="vm.options.votes"
         ng-class="{'is-voter': vm.epic.get('is_voter')}"
     )
         tg-svg(svg-icon='icon-upvote')
         span {{::vm.epic.get('total_voters')}}
 
-    .name(ng-if="vm.column.name")
+    .name(ng-if="vm.options.name")
         - var hash = "#";
         a(
             tg-nav="project-epics-detail:project=vm.project.slug,ref=vm.epic.get('ref')"
@@ -31,12 +32,12 @@
             ng-if="vm.epic.getIn(['user_stories_counts', 'total'])"
         )
 
-    .project(ng-if="vm.column.project")
+    .project(ng-if="vm.options.project")
 
-    .sprint(ng-if="vm.column.sprint")
+    .sprint(ng-if="vm.options.sprint")
 
     .assigned.e2e-assigned-to(
-        ng-if="vm.column.assigned"
+        ng-if="vm.options.assigned"
         tg-loading="vm.assignLoader"
     )
         tg-assigned-to-component(
@@ -48,11 +49,11 @@
         )
 
     .status(
-        ng-if="vm.column.status && !vm.canEditEpics()"
+        ng-if="vm.options.status && !vm.canEditEpics()"
     )
         span {{vm.epic.getIn(['status_extra_info', 'name'])}}
     .status(
-        ng-if="vm.column.status && vm.canEditEpics()"
+        ng-if="vm.options.status && vm.canEditEpics()"
         ng-mouseleave="vm.displayStatusList = false"
         tg-isolate-click
     )
@@ -72,7 +73,7 @@
                 ng-click="vm.updateStatus(status.id)"
             ) {{status.name}}
 
-    .progress(ng-if="vm.column.progress")
+    .progress(ng-if="vm.options.progress")
         .progress-bar
         .progress-status(
             ng-if="::vm.percentage"
@@ -83,5 +84,5 @@
     .epic-story(tg-repeat="story in vm.epicStories track by story.get('id')")
         tg-story-row.e2e-story(
             story="story"
-            column="vm.column"
+            column="vm.options"
         )

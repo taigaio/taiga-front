@@ -407,6 +407,7 @@
             "ASSIGNED_TO": "Assigned",
             "STATUS": "Status",
             "PROGRESS": "Progress",
+            "CLOSED_US": "Closed user stories",
             "VIEW_OPTIONS": "View options"
         },
         "CREATE": {

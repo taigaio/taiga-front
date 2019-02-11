@@ -33,14 +33,15 @@ class EpicsTableController
         @.hash = generateHash([@projectService.project.get('id'), 'epics'])
         @.displayOptions = false
         @.displayVotes = true
-        @.column = @storage.get(@.hash, {
+        @.options = @storage.get(@.hash, {
             votes: true,
             name: true,
             project: true,
             sprint: true,
             assigned: true,
             status: true,
-            progress: true
+            progress: true,
+            closed: true,
         })
 
         taiga.defineImmutableProperty @, 'epics', () => return @epicsService.epics
@@ -69,6 +70,6 @@ class EpicsTableController
         return @.timer = @timeout (=> @.displayOptions = false), 400
 
     updateViewOptions: () ->
-        @storage.set(@.hash, @.column)
+        @storage.set(@.hash, @.options)
 
 angular.module("taigaEpics").controller("EpicsTableCtrl", EpicsTableController)

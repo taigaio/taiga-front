@@ -16,30 +16,30 @@ mixin epicSwitch(name, model)
     .epics-table-header.e2e-epics-table-header
         .vote(
             translate="EPICS.TABLE.VOTES"
-            ng-if="vm.column.votes"
+            ng-if="vm.options.votes"
         )
         .name(
             translate="EPICS.TABLE.NAME"
         )
         .project(
             translate="EPICS.TABLE.PROJECT"
-            ng-if="vm.column.project"
+            ng-if="vm.options.project"
         )
         .sprint(
             translate="EPICS.TABLE.SPRINT"
-            ng-if="vm.column.sprint"
+            ng-if="vm.options.sprint"
         )
         .assigned(
             translate="EPICS.TABLE.ASSIGNED_TO"
-            ng-if="vm.column.assigned"
+            ng-if="vm.options.assigned"
         )
         .status(
             translate="EPICS.TABLE.STATUS"
-            ng-if="vm.column.status"
+            ng-if="vm.options.status"
         )
         .progress(
             translate="EPICS.TABLE.PROGRESS"
-            ng-if="vm.column.progress"
+            ng-if="vm.options.progress"
         )
         .epics-table-options-wrapper(
             ng-mouseleave="vm.hideEpicTableOption()"
@@ -56,37 +56,43 @@ mixin epicSwitch(name, model)
                         translate="EPICS.TABLE.VOTES"
                         for="epicSwitch-votes"
                     )
-                    +epicSwitch('switch-votes', 'vm.column.votes')
+                    +epicSwitch('switch-votes', 'vm.options.votes')
                 .fieldset
                     label.epics-table-options-vote(
                         translate="EPICS.TABLE.PROJECT"
                         for="switch-project"
                     )
-                    +epicSwitch('switch-project', 'vm.column.project')
+                    +epicSwitch('switch-project', 'vm.options.project')
                 .fieldset
                     label.epics-table-options-vote(
                         translate="EPICS.TABLE.SPRINT"
                         for="switch-sprint"
                     )
-                    +epicSwitch('switch-sprint', 'vm.column.sprint')
+                    +epicSwitch('switch-sprint', 'vm.options.sprint')
                 .fieldset
                     label.epics-table-options-vote(
                         translate="EPICS.TABLE.ASSIGNED_TO"
                         for="switch-assigned"
                     )
-                    +epicSwitch('switch-assigned', 'vm.column.assigned')
+                    +epicSwitch('switch-assigned', 'vm.options.assigned')
                 .fieldset
                     label.epics-table-options-vote(
                         translate="EPICS.TABLE.STATUS"
                         for="switch-status"
                     )
-                    +epicSwitch('switch-status', 'vm.column.status')
+                    +epicSwitch('switch-status', 'vm.options.status')
                 .fieldset
                     label.epics-table-options-vote(
                         translate="EPICS.TABLE.PROGRESS"
                         for="switch-progress"
                     )
-                    +epicSwitch('switch-progress', 'vm.column.progress')
+                    +epicSwitch('switch-progress', 'vm.options.progress')
+                .fieldset
+                    label.epics-table-options-vote(
+                        translate="EPICS.TABLE.CLOSED_US"
+                        for="switch-closed"
+                    )
+                    +epicSwitch('switch-closed', 'vm.options.closed')
 
     .epics-table-body(
         tg-epics-sortable="vm.reorderEpic(epic, newIndex)"
@@ -100,7 +106,7 @@ mixin epicSwitch(name, model)
         )
             tg-epic-row.e2e-epic(
                 epic="epic"
-                column="vm.column"
+                options="vm.options"
             )
 
         div(tg-loading="vm.loadingEpics")
