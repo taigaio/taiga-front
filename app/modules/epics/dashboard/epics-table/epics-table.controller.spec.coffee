@@ -86,4 +86,4 @@ describe "EpicTable", ->
     it "storage view options", () ->
         epicTableCtrl = controller "EpicsTableCtrl"
 
-        expect(epicTableCtrl.column).to.be.eql({col1: true})
+        expect(epicTableCtrl.options).to.be.eql({col1: true})
