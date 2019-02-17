@@ -42,6 +42,7 @@ class EpicsTableController
             status: true,
             progress: true,
             closed: true,
+            closedus: true,
         })
 
         taiga.defineImmutableProperty @, 'epics', () => return @epicsService.epics
