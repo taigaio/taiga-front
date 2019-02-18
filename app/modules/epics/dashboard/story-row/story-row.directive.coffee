@@ -27,7 +27,7 @@ StoryRowDirective = () ->
         bindToController: true,
         scope: {
             story: '=',
-            column: '='
+            options: '='
         }
     }
 

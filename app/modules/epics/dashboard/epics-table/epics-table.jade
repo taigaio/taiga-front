@@ -89,10 +89,16 @@ mixin epicSwitch(name, model)
                     +epicSwitch('switch-progress', 'vm.options.progress')
                 .fieldset
                     label.epics-table-options-vote(
-                        translate="EPICS.TABLE.CLOSED_US"
+                        translate="EPICS.TABLE.CLOSED_EPICS"
                         for="switch-closed"
                     )
                     +epicSwitch('switch-closed', 'vm.options.closed')
+                .fieldset
+                    label.epics-table-options-vote(
+                        translate="EPICS.TABLE.CLOSED_US"
+                        for="switch-closed_us"
+                    )
+                    +epicSwitch('switch-closed_us', 'vm.options.closed_us')
 
     .epics-table-body(
         tg-epics-sortable="vm.reorderEpic(epic, newIndex)"

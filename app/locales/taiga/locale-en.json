@@ -408,6 +408,7 @@
             "STATUS": "Status",
             "PROGRESS": "Progress",
             "CLOSED_US": "Closed user stories",
+            "CLOSED_EPICS": "Closed epics",
             "VIEW_OPTIONS": "View options"
         },
         "CREATE": {
