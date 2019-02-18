@@ -96,9 +96,9 @@ mixin epicSwitch(name, model)
                 .fieldset
                     label.epics-table-options-vote(
                         translate="EPICS.TABLE.CLOSED_US"
-                        for="switch-closedus"
+                        for="switch-closed_us"
                     )
-                    +epicSwitch('switch-closedus', 'vm.options.closedus')
+                    +epicSwitch('switch-closed_us', 'vm.options.closed_us')
 
     .epics-table-body(
         tg-epics-sortable="vm.reorderEpic(epic, newIndex)"

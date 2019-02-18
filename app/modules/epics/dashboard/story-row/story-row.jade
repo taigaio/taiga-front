@@ -1,6 +1,6 @@
 .story-row(
     ng-class="{'is-blocked': vm.story.get('is_blocked'), 'is-closed': vm.story.get('is_closed')}"
-    ng-hide="!vm.options.closedus && vm.story.get('is_closed')"
+    ng-hide="!vm.options.closed_us && vm.story.get('is_closed')"
 )
     .vote(
         ng-if="vm.options.votes"
