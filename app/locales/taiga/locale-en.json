@@ -200,6 +200,19 @@
             "BUTTON_TITLE": "Upvote/Downvote this item",
             "COUNTER_TITLE": "{total, plural, one{one vote} other{# votes}}"
         },
+        "PROMOTE_TO_US": "Promote to User Story",
+        "PROMOTED_ISSUES": "This Issue has been promoted to US:",
+        "PROMOTED_TASKS": "This Task has been promoted to US:",
+        "CONFIRM_PROMOTE": {
+          "ISSUE": {
+            "TITLE": "Promote this Issue to a new user story",
+            "MESSAGE": "Are you sure you want to create a new US from this Issue?"
+          },
+          "TASK": {
+            "TITLE": "Promote this Task to a new user story",
+            "MESSAGE": "Are you sure you want to create a new US from this Task?"
+          }
+        },
         "CUSTOM_ATTRIBUTES": {
             "CUSTOM_FIELDS": "Custom Fields",
             "SAVE": "Save Custom Field",
@@ -1216,7 +1229,8 @@
         "TOTAL_POINTS": "total points",
         "ADD": "+ Add a new User Story",
         "ADD_BULK": "Add some new User Stories in bulk",
-        "PROMOTED": "This US has been promoted from Issue:",
+        "PROMOTED_FROM_ISSUE": "This US has been promoted from Issue:",
+        "PROMOTED_FROM_TASK": "This US has been promoted from Task:",
         "TITLE_LINK_GO_TO_ISSUE": "Go to issue",
         "TITLE_DELETE_ACTION": "Delete User Story",
         "LIGHTBOX_TITLE_BLOKING_US": "Blocking us",
@@ -1465,10 +1479,8 @@
         "PAGE_DESCRIPTION": "The issues list panel of the project {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Issue",
         "ACTION_NEW_ISSUE": "+ NEW ISSUE",
-        "ACTION_PROMOTE_TO_US": "Promote to User Story",
         "ACTION_ATTACH_SPRINT": "Attach issue to Sprint",
         "ACTION_DETACH_SPRINT": "Detach issue from Sprint",
-        "PROMOTED": "This issue has been promoted to US:",
         "EXTERNAL_REFERENCE": "This issue has been created from",
         "GO_TO_EXTERNAL_REFERENCE": "Go to origin",
         "ACTION_DELETE": "Delete issue",
@@ -1490,10 +1502,6 @@
         "CONFIRM_CHANGE_FROM_SPRINT": {
             "TITLE": "Attach issue to Sprint",
             "MESSAGE": "<strong>This issue is currently attached to sprint {{ oldSprintName }}</strong>. You are about to detach it from that sprint and attach it instead to sprint <strong>{{ newSprintName }}.</strong>"
-        },
-        "CONFIRM_PROMOTE": {
-            "TITLE": "Promote this issue to a new user story",
-            "MESSAGE": "Are you sure you want to create a new US from this Issue?"
         },
         "TABLE": {
             "COLUMNS": {

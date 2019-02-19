@@ -85,9 +85,9 @@
             format="pill"
         )
 
-//- User Stories generated from issue
+//- User Stories generated from issue/task
 .item-generated-us(ng-if="vm.item.generated_user_stories.length")
-    span(translate="ISSUES.PROMOTED")
+    span(ng-bind="'COMMON.PROMOTED_'+vm.item._name.toUpperCase() | translate")
     a(
         ng-repeat="userstory in vm.item.generated_user_stories track by userstory.id"
         tg-check-permission="view_us"
@@ -107,7 +107,7 @@
 
 //- User Story promoted from issue
 .item-origin-issue(ng-if="vm.item.origin_issue")
-    span(translate="US.PROMOTED")
+    span(translate="US.PROMOTED_FROM_ISSUE")
     a(
         href=""
         tg-check-permission="view_us"

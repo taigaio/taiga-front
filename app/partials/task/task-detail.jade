@@ -111,6 +111,10 @@ div.wrapper(
                 tg-check-permission="modify_task"
             )
             tg-task-is-iocaine-button(ng-model="task")
+            tg-promote-to-us-button(
+                tg-check-permission="add_us",
+                ng-model="task"
+            )
             tg-block-button(tg-check-permission="modify_task", ng-model="task")
             tg-delete-button(
                 tg-check-permission="delete_task"
