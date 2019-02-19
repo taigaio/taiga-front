@@ -161,6 +161,12 @@ $column-padding: .5rem 1rem;
                 fill: $white;
                 transition: color .3s linear;
             }
+            .status-value,
+            .status-value:hover {
+                background: $white;
+                line-height: 1.75em;
+                padding: 0 .7em;
+            }
             .taskboard-cards-box {
                 background: rgba($red, .1);
             }
@@ -170,6 +176,7 @@ $column-padding: .5rem 1rem;
             .us-title {
                 @include ellipsis(100%);
             }
+            .status-value,
             .points-value,
             .us-data,
             .icon-add,
@@ -230,15 +237,23 @@ $column-padding: .5rem 1rem;
         margin-bottom: 0;
         margin-right: 3rem;
     }
-    .points-value {
+    .status-value {
         @include font-size(small);
-        color: $gray-light;
+        display: block;
+        margin: .25em 0 0;
+        width: fit-content;
         span {
             margin-right: .1rem;
         }
     }
-    .us-data {
-        display: flex;
+    .points-value {
+        @include font-size(small);
+        color: $gray-light;
+        margin: .25em 0 0;
+        width: fit-content;
+        span {
+            margin-right: .1rem;
+        }
     }
     .due-date {
         tg-svg {

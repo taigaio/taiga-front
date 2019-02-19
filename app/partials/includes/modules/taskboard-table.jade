@@ -63,6 +63,10 @@ div.taskboard-table(
                                 epics="us.epics"
                             )
                     div.us-data
+                        p.status-value(ng-if="usStatusById[us.status]")
+                            span(
+                              ng-style="{'color': usStatusById[us.status]['color']}"
+                              ng-bind="usStatusById[us.status]['name']")
                         p.points-value
                             span(ng-bind="us.total_points")
                             span(ng-if="us.total_points"
