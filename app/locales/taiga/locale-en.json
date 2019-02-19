@@ -798,7 +798,7 @@
     "USER": {
         "PROFILE": {
             "PAGE_TITLE": "{{userFullName}} (@{{userUsername}})",
-            "EDIT": "Edit profile",
+            "USER_SETTINGS": "User Settings",
             "CLOSED_US": "Closed US",
             "PROJECTS": "Projects",
             "PROJECTS_EMPTY": "{{username}} doesn't' have projects yet",
@@ -881,8 +881,8 @@
             "NOTIFICATIONS": "Notifications",
             "VIEW_PROFILE_TITLE": "View Profile",
             "VIEW_PROFILE": "View Profile",
-            "EDIT_PROFILE_TITLE": "Edit your profile",
-            "EDIT_PROFILE": "Edit Profile",
+            "USER_SETTINGS_TITLE": "Edit your settings",
+            "USER_SETTINGS": "User Settings",
             "CHANGE_PASSWORD_TITLE": "Change password",
             "CHANGE_PASSWORD": "Change password",
             "DASHBOARD_TITLE": "Dashboard",
@@ -1572,7 +1572,6 @@
         "AVATAR_MAX_SIZE": "[Max. size: {{maxFileSize}}]",
         "MENU": {
             "SECTION_TITLE": "User Settings",
-            "USER_PROFILE": "User profile",
             "CHANGE_PASSWORD": "Change password",
             "EMAIL_NOTIFICATIONS": "Email notifications",
             "DESKTOP_NOTIFICATIONS": "Desktop notifications",

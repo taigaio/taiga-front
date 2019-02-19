@@ -4,7 +4,11 @@ section.profile-bar
             tg-avatar-big="vm.user"
             alt="{{::vm.user.get('full_name')}}"
         )
-        a.profile-edition(title="{{ 'USER.PROFILE.EDIT' | translate }}", tg-nav="user-settings-user-profile", translate="USER.PROFILE.EDIT")
+        a.profile-edition(
+          title="{{ 'USER.PROFILE.USER_SETTINGS' | translate }}",
+          tg-nav="user-settings-user-profile",
+          translate="USER.PROFILE.USER_SETTINGS"
+        )
     div.profile-data
         h1(ng-class="{'not-full-name': !vm.user.get('full_name')}") {{::vm.user.get("full_name_display")}}
         .username @{{::vm.user.get("username")}}
