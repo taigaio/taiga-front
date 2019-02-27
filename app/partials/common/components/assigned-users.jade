@@ -53,12 +53,15 @@
             )
 
 
-.tg-add-assigned(ng-if="isAssigned && isEditable")
+a.tg-add-assigned(
+    ng-if="isAssigned && isEditable",
+    href="",
+    ng-click="openAssignedUsers()"
+)
     tg-svg.add-assigned(
-                ng-if="isEditable",
-                data-assigned-user-id="{{assignedUser.id}}",
-                ng-click="openAssignedUsers()",
-                svg-icon="icon-add",
-                title="{{'COMMON.ASSIGNED_USERS.ADD_ASSIGNED' | translate}}"
-            )
+        ng-if="isEditable",
+        data-assigned-user-id="{{assignedUser.id}}",
+        svg-icon="icon-add",
+        title="{{'COMMON.ASSIGNED_USERS.ADD_ASSIGNED' | translate}}"
+    )
     span {{ "COMMON.ASSIGNED_USERS.ADD_ASSIGNED" | translate }}
