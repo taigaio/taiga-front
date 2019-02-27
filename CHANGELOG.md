@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+## 4.2.0 (2019-02-28)
+
+- Promote Tasks to US
+- Display US status on Taskboard
+- Add closed user stories filter in epics dashboard
+- Activate Hebrew and Basque languages
+- Minor fixes.
+
 ## 4.1.1 (2019-02-04)
 
 - Pin npm Flot dependence
