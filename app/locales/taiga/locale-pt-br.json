@@ -200,6 +200,19 @@
             "BUTTON_TITLE": "Aprovar/Reprovar este item",
             "COUNTER_TITLE": "{total, plural, one{um voto} other{# votos}}"
         },
+        "PROMOTE_TO_US": "Promover para História de Usuário",
+        "PROMOTED_ISSUES": "This Issue has been promoted to US:",
+        "PROMOTED_TASKS": "This Task has been promoted to US:",
+        "CONFIRM_PROMOTE": {
+            "ISSUE": {
+                "TITLE": "Promote this Issue to a new user story",
+                "MESSAGE": "Você tem certeza que deseja criar uma nova História de Usuário a partir desse problema?"
+            },
+            "TASK": {
+                "TITLE": "Promote this Task to a new user story",
+                "MESSAGE": "Are you sure you want to create a new US from this Task?"
+            }
+        },
         "CUSTOM_ATTRIBUTES": {
             "CUSTOM_FIELDS": "Campos Personalizados",
             "SAVE": "Salvar Campo Personalizado",
@@ -407,6 +420,8 @@
             "ASSIGNED_TO": "Atribuído",
             "STATUS": "Status",
             "PROGRESS": "Progresso",
+            "CLOSED_US": "Closed user stories",
+            "CLOSED_EPICS": "Closed epics",
             "VIEW_OPTIONS": "Ver opções"
         },
         "CREATE": {
@@ -796,7 +811,7 @@
     "USER": {
         "PROFILE": {
             "PAGE_TITLE": "{{userFullName}} (@{{userUsername}})",
-            "EDIT": "Editar Perfil",
+            "USER_SETTINGS": "Configurações de usuário",
             "CLOSED_US": "Histórias Fechadas",
             "PROJECTS": "Projetos",
             "PROJECTS_EMPTY": "{{username}} ainda não tem projetos",
@@ -879,8 +894,8 @@
             "NOTIFICATIONS": "Notificações",
             "VIEW_PROFILE_TITLE": "Ver perfil",
             "VIEW_PROFILE": "Ver perfil",
-            "EDIT_PROFILE_TITLE": "Edit seu perfil",
-            "EDIT_PROFILE": "Editar Perfil",
+            "USER_SETTINGS_TITLE": "Editar suas configurações",
+            "USER_SETTINGS": "Configurações de usuário",
             "CHANGE_PASSWORD_TITLE": "Alterar senha",
             "CHANGE_PASSWORD": "Alterar senha",
             "DASHBOARD_TITLE": "Painel",
@@ -1214,7 +1229,8 @@
         "TOTAL_POINTS": "total de pontos",
         "ADD": "+ Adicionar uma nova História de Usuário",
         "ADD_BULK": "Adicionar Histórias de Usuários em lote",
-        "PROMOTED": "Esta História de Usuário foi criada a partir do Problema:",
+        "PROMOTED_FROM_ISSUE": "Esta História de Usuário foi criada a partir do Problema:",
+        "PROMOTED_FROM_TASK": "This US has been promoted from Task:",
         "TITLE_LINK_GO_TO_ISSUE": "Adicionar comentários aos apontamentos",
         "TITLE_DELETE_ACTION": "Apagar história de usuário",
         "LIGHTBOX_TITLE_BLOKING_US": "História de usuário bloqueadora",
@@ -1463,10 +1479,8 @@
         "PAGE_DESCRIPTION": "O painel de problemas do projeto {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Problema",
         "ACTION_NEW_ISSUE": "+ NOVO PROBLEMA",
-        "ACTION_PROMOTE_TO_US": "Promover para História de Usuário",
         "ACTION_ATTACH_SPRINT": "Attach issue to Sprint",
         "ACTION_DETACH_SPRINT": "Detach issue from Sprint",
-        "PROMOTED": "Esse problema foi promovido para história de usuário",
         "EXTERNAL_REFERENCE": "Esse problema foi criado a partir de",
         "GO_TO_EXTERNAL_REFERENCE": "Ir para a origem",
         "ACTION_DELETE": "Problema excluído",
@@ -1488,10 +1502,6 @@
         "CONFIRM_CHANGE_FROM_SPRINT": {
             "TITLE": "Attach issue to Sprint",
             "MESSAGE": "<strong>This issue is currently attached to sprint {{ oldSprintName }}</strong>. You are about to detach it from that sprint and attach it instead to sprint <strong>{{ newSprintName }}.</strong>"
-        },
-        "CONFIRM_PROMOTE": {
-            "TITLE": "Promover esse problema para nova história de usuário",
-            "MESSAGE": "Você tem certeza que deseja criar uma nova História de Usuário a partir desse problema?"
         },
         "TABLE": {
             "COLUMNS": {
@@ -1570,7 +1580,6 @@
         "AVATAR_MAX_SIZE": "[Tamanho máximo: {{maxFileSize}}]",
         "MENU": {
             "SECTION_TITLE": "Configurações de usuário",
-            "USER_PROFILE": "Perfil do Usuário",
             "CHANGE_PASSWORD": "Alterar senha",
             "EMAIL_NOTIFICATIONS": "Notificações por email",
             "DESKTOP_NOTIFICATIONS": "Notificações da área de trabalho",

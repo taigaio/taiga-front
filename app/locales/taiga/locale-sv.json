@@ -200,6 +200,19 @@
             "BUTTON_TITLE": "Rösta för / Rösta emot den här posten",
             "COUNTER_TITLE": "{total, plural, one{one vote} other{# votes}}"
         },
+        "PROMOTE_TO_US": "Flytta till användarhistorie",
+        "PROMOTED_ISSUES": "This Issue has been promoted to US:",
+        "PROMOTED_TASKS": "This Task has been promoted to US:",
+        "CONFIRM_PROMOTE": {
+            "ISSUE": {
+                "TITLE": "Promote this Issue to a new user story",
+                "MESSAGE": "Är du säker på att du vill skapa en ny US från det här ärendet?"
+            },
+            "TASK": {
+                "TITLE": "Promote this Task to a new user story",
+                "MESSAGE": "Are you sure you want to create a new US from this Task?"
+            }
+        },
         "CUSTOM_ATTRIBUTES": {
             "CUSTOM_FIELDS": "Anpassade fält",
             "SAVE": "Spara anpassad fält",
@@ -407,6 +420,8 @@
             "ASSIGNED_TO": "Tilldelad",
             "STATUS": "Status",
             "PROGRESS": "Framsteg",
+            "CLOSED_US": "Closed user stories",
+            "CLOSED_EPICS": "Closed epics",
             "VIEW_OPTIONS": "Visningsalternativ"
         },
         "CREATE": {
@@ -796,7 +811,7 @@
     "USER": {
         "PROFILE": {
             "PAGE_TITLE": "{{userFullName}} (@{{userUsername}})",
-            "EDIT": "Ändra profil",
+            "USER_SETTINGS": "Inställningar för användare",
             "CLOSED_US": "Stängd US",
             "PROJECTS": "Projekt",
             "PROJECTS_EMPTY": "{{username}} har inga projekt än",
@@ -879,8 +894,8 @@
             "NOTIFICATIONS": "Notifieringar",
             "VIEW_PROFILE_TITLE": "Visa profil",
             "VIEW_PROFILE": "Visa profil",
-            "EDIT_PROFILE_TITLE": "Ändra din profil",
-            "EDIT_PROFILE": "Ändra profil",
+            "USER_SETTINGS_TITLE": "Ändra inställningarna",
+            "USER_SETTINGS": "Inställningar för användare",
             "CHANGE_PASSWORD_TITLE": "Byt lösenord",
             "CHANGE_PASSWORD": "Byt lösenord",
             "DASHBOARD_TITLE": "Instrumentpanel",
@@ -1214,7 +1229,8 @@
         "TOTAL_POINTS": "totalpoäng",
         "ADD": "+ Lägg till ny användarhistorie",
         "ADD_BULK": "Lägg till flera nya användarhistorier",
-        "PROMOTED": "Denna US har blivit flyttat från ärende: ",
+        "PROMOTED_FROM_ISSUE": "Denna US har blivit flyttat från ärende: ",
+        "PROMOTED_FROM_TASK": "This US has been promoted from Task:",
         "TITLE_LINK_GO_TO_ISSUE": "Gå till ärende",
         "TITLE_DELETE_ACTION": "Ta bort användarhistorien",
         "LIGHTBOX_TITLE_BLOKING_US": "Blockera oss",
@@ -1463,10 +1479,8 @@
         "PAGE_DESCRIPTION": "Ärenden som listas för projektet {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "ärende",
         "ACTION_NEW_ISSUE": "+ NYTT ÄRENDE",
-        "ACTION_PROMOTE_TO_US": "Flytta till användarhistorie",
         "ACTION_ATTACH_SPRINT": "Attach issue to Sprint",
         "ACTION_DETACH_SPRINT": "Detach issue from Sprint",
-        "PROMOTED": "Ärendet har flyttats till US:",
         "EXTERNAL_REFERENCE": "Den här uppgiften är skapat från",
         "GO_TO_EXTERNAL_REFERENCE": "Gå till början",
         "ACTION_DELETE": "Ta bort ärende",
@@ -1488,10 +1502,6 @@
         "CONFIRM_CHANGE_FROM_SPRINT": {
             "TITLE": "Attach issue to Sprint",
             "MESSAGE": "<strong>This issue is currently attached to sprint {{ oldSprintName }}</strong>. You are about to detach it from that sprint and attach it instead to sprint <strong>{{ newSprintName }}.</strong>"
-        },
-        "CONFIRM_PROMOTE": {
-            "TITLE": "Flytta det här ärendet till en ny användarhistorie",
-            "MESSAGE": "Är du säker på att du vill skapa en ny US från det här ärendet?"
         },
         "TABLE": {
             "COLUMNS": {
@@ -1570,7 +1580,6 @@
         "AVATAR_MAX_SIZE": "[Max. size: {{maxFileSize}}]",
         "MENU": {
             "SECTION_TITLE": "Inställningar för användare",
-            "USER_PROFILE": "Användarprofil",
             "CHANGE_PASSWORD": "Byt lösenord",
             "EMAIL_NOTIFICATIONS": "E-postnotifieringar",
             "DESKTOP_NOTIFICATIONS": "Desktop notifications",

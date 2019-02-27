@@ -200,6 +200,19 @@
             "BUTTON_TITLE": "Stem opp / Stem ned dette elementet",
             "COUNTER_TITLE": "{total, plural, one{en stemme} other{# stemmer}}"
         },
+        "PROMOTE_TO_US": "Oppgrader til Brukerhistorie",
+        "PROMOTED_ISSUES": "This Issue has been promoted to US:",
+        "PROMOTED_TASKS": "This Task has been promoted to US:",
+        "CONFIRM_PROMOTE": {
+            "ISSUE": {
+                "TITLE": "Promote this Issue to a new user story",
+                "MESSAGE": "Er du sikker på at du vil lage en ny BH fra denne hendelsen?"
+            },
+            "TASK": {
+                "TITLE": "Promote this Task to a new user story",
+                "MESSAGE": "Are you sure you want to create a new US from this Task?"
+            }
+        },
         "CUSTOM_ATTRIBUTES": {
             "CUSTOM_FIELDS": "Egendefinerte felter",
             "SAVE": "Lagre Egendefinert Felt",
@@ -407,6 +420,8 @@
             "ASSIGNED_TO": "Assigned",
             "STATUS": "Status",
             "PROGRESS": "Progress",
+            "CLOSED_US": "Closed user stories",
+            "CLOSED_EPICS": "Closed epics",
             "VIEW_OPTIONS": "View options"
         },
         "CREATE": {
@@ -796,7 +811,7 @@
     "USER": {
         "PROFILE": {
             "PAGE_TITLE": "{{userFullName}} (@{{userUsername}})",
-            "EDIT": "Endre profil",
+            "USER_SETTINGS": "Brukerinstillinger",
             "CLOSED_US": "Lukket historie",
             "PROJECTS": "Prosjekter",
             "PROJECTS_EMPTY": "{{username}} har ikke prosjekter enda",
@@ -879,8 +894,8 @@
             "NOTIFICATIONS": "Varsler",
             "VIEW_PROFILE_TITLE": "Vis Profil",
             "VIEW_PROFILE": "Vis Profil",
-            "EDIT_PROFILE_TITLE": "Rediger din profil",
-            "EDIT_PROFILE": "Rediger Profil",
+            "USER_SETTINGS_TITLE": "Endre dine instillinger",
+            "USER_SETTINGS": "Brukerinstillinger",
             "CHANGE_PASSWORD_TITLE": "Endre passord",
             "CHANGE_PASSWORD": "Endre passord",
             "DASHBOARD_TITLE": "Dashbord",
@@ -1214,7 +1229,8 @@
         "TOTAL_POINTS": "totale poeng",
         "ADD": "+ Legg til en ny brukerhistorie",
         "ADD_BULK": "Legg til mange nye Brukerhistorier",
-        "PROMOTED": "Denne Brukerhistorien har blitt oppgradert fra Hendelse:",
+        "PROMOTED_FROM_ISSUE": "Denne Brukerhistorien har blitt oppgradert fra Hendelse:",
+        "PROMOTED_FROM_TASK": "This US has been promoted from Task:",
         "TITLE_LINK_GO_TO_ISSUE": "Gå til hendelse",
         "TITLE_DELETE_ACTION": "Slett Brukerhistorie",
         "LIGHTBOX_TITLE_BLOKING_US": "Blokkerer oss",
@@ -1463,10 +1479,8 @@
         "PAGE_DESCRIPTION": "Hendelsespanelet for prosjekt {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Hendelse",
         "ACTION_NEW_ISSUE": "+ NY HENDELSE",
-        "ACTION_PROMOTE_TO_US": "Oppgrader til Brukerhistorie",
         "ACTION_ATTACH_SPRINT": "Attach issue to Sprint",
         "ACTION_DETACH_SPRINT": "Detach issue from Sprint",
-        "PROMOTED": "Denne hendelsen har blitt oppgradert til BH",
         "EXTERNAL_REFERENCE": "Denne hendelsen har blitt opprettet av",
         "GO_TO_EXTERNAL_REFERENCE": "Gå til opphav",
         "ACTION_DELETE": "Slett hendelse",
@@ -1488,10 +1502,6 @@
         "CONFIRM_CHANGE_FROM_SPRINT": {
             "TITLE": "Attach issue to Sprint",
             "MESSAGE": "<strong>This issue is currently attached to sprint {{ oldSprintName }}</strong>. You are about to detach it from that sprint and attach it instead to sprint <strong>{{ newSprintName }}.</strong>"
-        },
-        "CONFIRM_PROMOTE": {
-            "TITLE": "Oppgrader denne henelsen til en ny brukerhistorie",
-            "MESSAGE": "Er du sikker på at du vil lage en ny BH fra denne hendelsen?"
         },
         "TABLE": {
             "COLUMNS": {
@@ -1570,7 +1580,6 @@
         "AVATAR_MAX_SIZE": "[Max. størrelse: {{maxFileSize}}]",
         "MENU": {
             "SECTION_TITLE": "Brukerinstillinger",
-            "USER_PROFILE": "Brukerprofil",
             "CHANGE_PASSWORD": "Endre passord",
             "EMAIL_NOTIFICATIONS": "Epost-varsler",
             "DESKTOP_NOTIFICATIONS": "Desktop notifications",

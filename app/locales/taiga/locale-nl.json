@@ -51,8 +51,8 @@
             "ASSIGN_TO": "Assign To",
             "EDIT": "Edit card",
             "DELETE": "Delete card",
-            "DELETE_ISSUE": "Verwijder issue",
-            "DETACH_ISSUE_FROM_SPRINT": "Detach issue from sprint"
+            "DELETE_ISSUE": "Verwijder kwestie",
+            "DETACH_ISSUE_FROM_SPRINT": "Maak kwestie los van sprint"
         },
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Deze waarde lijkt ongeldig te zijn",
@@ -122,7 +122,7 @@
         "SEE_USER_PROFILE": "Bekijk het profiel van {{username}}",
         "USER_STORY": "User story",
         "TASK": "Taak",
-        "ISSUE": "Issue",
+        "ISSUE": "Kwestie",
         "EPIC": "Epic",
         "TAGS": {
             "PLACEHOLDER": "Enter tag",
@@ -199,6 +199,19 @@
         "VOTE_BUTTON": {
             "BUTTON_TITLE": "Upvote/Downvote this item",
             "COUNTER_TITLE": "{total, plural, one{one vote} other{# votes}}"
+        },
+        "PROMOTE_TO_US": "Promoveer tot User Story",
+        "PROMOTED_ISSUES": "This Issue has been promoted to US:",
+        "PROMOTED_TASKS": "This Task has been promoted to US:",
+        "CONFIRM_PROMOTE": {
+            "ISSUE": {
+                "TITLE": "Promote this Issue to a new user story",
+                "MESSAGE": "Weet je zeker dat je een nieuw US van deze kwestie wilt maken?"
+            },
+            "TASK": {
+                "TITLE": "Promote this Task to a new user story",
+                "MESSAGE": "Are you sure you want to create a new US from this Task?"
+            }
         },
         "CUSTOM_ATTRIBUTES": {
             "CUSTOM_FIELDS": "Eigen velden",
@@ -407,6 +420,8 @@
             "ASSIGNED_TO": "Toegewezen",
             "STATUS": "Status",
             "PROGRESS": "Vooruitgang",
+            "CLOSED_US": "Closed user stories",
+            "CLOSED_EPICS": "Closed epics",
             "VIEW_OPTIONS": "Toon opties"
         },
         "CREATE": {
@@ -595,7 +610,7 @@
         "PROJECT_VALUES_PRIORITIES": {
             "TITLE": "Prioriteit",
             "SUBTITLE": "Kies de prioriteit die je kwesties zullen hebben",
-            "ISSUE_TITLE": "Issue prioriteit",
+            "ISSUE_TITLE": "Kwestie prioriteit",
             "ACTION_ADD": "Nieuwe prioriteit toevoegen"
         },
         "PROJECT_VALUES_SEVERITIES": {
@@ -610,7 +625,7 @@
             "EPIC_TITLE": "Epic Statuses",
             "US_TITLE": "User Story Statuses",
             "TASK_TITLE": "Taak statussen",
-            "ISSUE_TITLE": "Issue statussen"
+            "ISSUE_TITLE": "Kwestie Statussen"
         },
         "PROJECT_VALUES_TYPES": {
             "TITLE": "Types",
@@ -735,8 +750,8 @@
             "LABEL_US_STATUS": "Default value for user story status selector",
             "LABEL_POINTS": "Standaard waarde voor punten selectie",
             "LABEL_TASK_STATUS": "Standaard waarde voor taak status selectie",
-            "LABEL_ISSUE_TYPE": "Standaard waarde voor issue type selectie",
-            "LABEL_ISSUE_STATUS": "Standaard waarde voor issue status selectie",
+            "LABEL_ISSUE_TYPE": "Standaard waarde voor kwestie type keuze",
+            "LABEL_ISSUE_STATUS": "Standaard waarde voor kwestie status keuze",
             "LABEL_PRIORITY": "Standaard waarde voor prioriteit selectie",
             "LABEL_SEVERITY": "Standaard waarde voor ernst selectie"
         },
@@ -796,7 +811,7 @@
     "USER": {
         "PROFILE": {
             "PAGE_TITLE": "{{userFullName}} (@{{userUsername}})",
-            "EDIT": "Profiel bewerken",
+            "USER_SETTINGS": "Gebruikersinstellingen",
             "CLOSED_US": "Gesloten US",
             "PROJECTS": "Projecten",
             "PROJECTS_EMPTY": "{{username}} heeft nog geen projecten",
@@ -879,8 +894,8 @@
             "NOTIFICATIONS": "Notificaties",
             "VIEW_PROFILE_TITLE": "Bekijk profiel",
             "VIEW_PROFILE": "Bekijk profiel",
-            "EDIT_PROFILE_TITLE": "Bewerk je profiel",
-            "EDIT_PROFILE": "Bewerk profiel",
+            "USER_SETTINGS_TITLE": "Instellingen aanpassen",
+            "USER_SETTINGS": "Gebruikersinstellingen",
             "CHANGE_PASSWORD_TITLE": "Wachtwoord wijzigen",
             "CHANGE_PASSWORD": "Wachtwoord wijzigen",
             "DASHBOARD_TITLE": "Dashboard",
@@ -1111,11 +1126,11 @@
             "EDIT_TASK": "Edit Task",
             "EDIT_ISSUE": "Edit Issue",
             "EDIT_US": "Edit User Story",
-            "ADD_EXISTING_ISSUE": "Add Issue to {{ targetName }}",
+            "ADD_EXISTING_ISSUE": "Voeg kwestie toe aan {{ targetName }}",
             "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?",
-            "EXISTING_ISSUE": "Existing Issue",
+            "EXISTING_ISSUE": "Bestaande Kwestie",
             "CHOOSE_EXISTING_ISSUE": "Which Issue?",
-            "ADD_ISSUE": "Voeg Issue toe",
+            "ADD_ISSUE": "Voeg Kwestie toe",
             "FILTER_ISSUES": "Filter kwesties"
         },
         "DELETE_DUE_DATE": {
@@ -1214,8 +1229,9 @@
         "TOTAL_POINTS": "totaal aantal punten",
         "ADD": "+ Nieuwe User Story toevoegen",
         "ADD_BULK": "Voeg enkele nieuwe User Stories in bulk toe",
-        "PROMOTED": "Deze US werd gepromoveerd van Issue:",
-        "TITLE_LINK_GO_TO_ISSUE": "Ga naar probleem",
+        "PROMOTED_FROM_ISSUE": "Deze US werd gepromoveerd van Issue:",
+        "PROMOTED_FROM_TASK": "This US has been promoted from Task:",
+        "TITLE_LINK_GO_TO_ISSUE": "Ga naar kwestie",
         "TITLE_DELETE_ACTION": "Verwijder user story",
         "LIGHTBOX_TITLE_BLOKING_US": "User story blokkeren",
         "NOT_ESTIMATED": "Niet ingeschat",
@@ -1380,7 +1396,7 @@
         "SECTION_NAME": "Taakbord",
         "TITLE_ACTION_ADD": "Voeg een nieuwe taak toe",
         "TITLE_ACTION_ADD_BULK": "Wat nieuwe taken in bulk toevoegen",
-        "TITLE_ACTION_ADD_ISSUE": "Add a new Issue",
+        "TITLE_ACTION_ADD_ISSUE": "Voeg een nieuwe kwestie toe",
         "TITLE_ACTION_ADD_ISSUE_BULK": "Voeg kwesties in bulk toe",
         "TITLE_ACTION_ASSIGN": "Toegewezen taak",
         "PLACEHOLDER_CARD_TITLE": "Dit zou een taak kunnen zijn",
@@ -1461,16 +1477,14 @@
     "ISSUES": {
         "PAGE_TITLE": "Kwesties - {{projectName}}",
         "PAGE_DESCRIPTION": "Het kwesties lijstje van het project {{projectName}}: {{projectDescription}}",
-        "SECTION_NAME": "Issue",
-        "ACTION_NEW_ISSUE": "+ nieuw probleem",
-        "ACTION_PROMOTE_TO_US": "Promoveer tot User Story",
-        "ACTION_ATTACH_SPRINT": "Attach issue to Sprint",
-        "ACTION_DETACH_SPRINT": "Detach issue from Sprint",
-        "PROMOTED": "Dit issue is gepromoveerd tot US:",
+        "SECTION_NAME": "Kwestie",
+        "ACTION_NEW_ISSUE": "+ nieuwe kwestie",
+        "ACTION_ATTACH_SPRINT": "Voeg kwestie toe aan Sprint",
+        "ACTION_DETACH_SPRINT": "Maak kwestie los van Sprint",
         "EXTERNAL_REFERENCE": "Dit issue is aangemaakt vanaf",
         "GO_TO_EXTERNAL_REFERENCE": "Ga naar bron",
-        "ACTION_DELETE": "Verwijderd issue",
-        "LIGHTBOX_TITLE_BLOKING_ISSUE": "Blokkerend issue",
+        "ACTION_DELETE": "Verwijderd kwestie",
+        "LIGHTBOX_TITLE_BLOKING_ISSUE": "Blokkerende kwestie",
         "LINK_TASKBOARD": "Taakbord",
         "TITLE_LINK_TASKBOARD": "Ga naar het taakbord",
         "FILTER_SPRINTS": "Filter Sprints",
@@ -1482,16 +1496,12 @@
         },
         "FILTER_ISSUES": "Filter kwesties",
         "CONFIRM_DETACH_FROM_SPRINT": {
-            "TITLE": "Detach issue from Sprint",
+            "TITLE": "Maak kwestie los van Sprint",
             "MESSAGE": "You are about to detach the issue from the sprint <strong>{{ sprintName }}<strong>"
         },
         "CONFIRM_CHANGE_FROM_SPRINT": {
-            "TITLE": "Attach issue to Sprint",
+            "TITLE": "Voeg kwestie toe aan Sprint",
             "MESSAGE": "<strong>This issue is currently attached to sprint {{ oldSprintName }}</strong>. You are about to detach it from that sprint and attach it instead to sprint <strong>{{ newSprintName }}.</strong>"
-        },
-        "CONFIRM_PROMOTE": {
-            "TITLE": "Bevorder dit issue tot een nieuwe user story",
-            "MESSAGE": "Weet je zeker dat je een nieuw US van dit issue wilt maken?"
         },
         "TABLE": {
             "COLUMNS": {
@@ -1570,7 +1580,6 @@
         "AVATAR_MAX_SIZE": "[Max. grootte: {{maxFileSize}}]",
         "MENU": {
             "SECTION_TITLE": "Gebruikersinstellingen",
-            "USER_PROFILE": "Gebruikersprofiel",
             "CHANGE_PASSWORD": "Wachtwoord wijzigen",
             "EMAIL_NOTIFICATIONS": "Email notificaties",
             "DESKTOP_NOTIFICATIONS": "Desktop notifications",
@@ -1665,7 +1674,7 @@
     "TIMELINE": {
         "UPLOAD_ATTACHMENT": "{{username}} heeft een nieuwe bijlage geüpload in {{obj_name}}",
         "US_CREATED": "{{username}} heeft een nieuwe US aangemaakt {{obj_name}} in {{project_name}}",
-        "ISSUE_CREATED": "{{username}} heeft een nieuw Issue aangemaakt {{obj_name}} in {{project_name}}",
+        "ISSUE_CREATED": "{{username}} heeft een nieuw kwestie aangemaakt {{obj_name}} in {{project_name}}",
         "TASK_CREATED": "{{username}} heeft een nieuwe taak aangemaakt {{obj_name}} in {{project_name}}",
         "TASK_CREATED_WITH_US": "{{username}} heeft de nieuwe taak {{obj_name}} aangemakt in {{project_name}} die hoort bij de US {{us_name}}",
         "WIKI_CREATED": "{{username}} heeft een nieuwe Wiki-pagina aangemaakt {{obj_name}} in {{project_name}}",

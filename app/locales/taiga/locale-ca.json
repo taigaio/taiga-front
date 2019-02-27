@@ -200,6 +200,19 @@
             "BUTTON_TITLE": "Upvote/Downvote this item",
             "COUNTER_TITLE": "{total, plural, one{one vote} other{# votes}}"
         },
+        "PROMOTE_TO_US": "Promocionar història d'usuari",
+        "PROMOTED_ISSUES": "This Issue has been promoted to US:",
+        "PROMOTED_TASKS": "This Task has been promoted to US:",
+        "CONFIRM_PROMOTE": {
+            "ISSUE": {
+                "TITLE": "Promote this Issue to a new user story",
+                "MESSAGE": "Segur que vols crear una nova US desde aquesta incidència"
+            },
+            "TASK": {
+                "TITLE": "Promote this Task to a new user story",
+                "MESSAGE": "Are you sure you want to create a new US from this Task?"
+            }
+        },
         "CUSTOM_ATTRIBUTES": {
             "CUSTOM_FIELDS": "Camps personalitzats",
             "SAVE": "Salva camp personalitzat",
@@ -407,6 +420,8 @@
             "ASSIGNED_TO": "Assigned",
             "STATUS": "Estats",
             "PROGRESS": "Progress",
+            "CLOSED_US": "Closed user stories",
+            "CLOSED_EPICS": "Closed epics",
             "VIEW_OPTIONS": "View options"
         },
         "CREATE": {
@@ -796,7 +811,7 @@
     "USER": {
         "PROFILE": {
             "PAGE_TITLE": "{{userFullName}} (@{{userUsername}})",
-            "EDIT": "Edita el perfil",
+            "USER_SETTINGS": "Configuració d'usuari",
             "CLOSED_US": "HU tancada",
             "PROJECTS": "Projectes",
             "PROJECTS_EMPTY": "{{username}} encara no te cap projecte",
@@ -879,8 +894,8 @@
             "NOTIFICATIONS": "Notificacions",
             "VIEW_PROFILE_TITLE": "Visualitza el perfil",
             "VIEW_PROFILE": "Visualitza el perfil",
-            "EDIT_PROFILE_TITLE": "Editeu el vostre perfil",
-            "EDIT_PROFILE": "Edita el perfil",
+            "USER_SETTINGS_TITLE": "Editeu les vostres preferències",
+            "USER_SETTINGS": "Configuració d'usuari",
             "CHANGE_PASSWORD_TITLE": "Canvi de contrasenya",
             "CHANGE_PASSWORD": "Canvi de contrasenya",
             "DASHBOARD_TITLE": "Tauler",
@@ -1214,7 +1229,8 @@
         "TOTAL_POINTS": "punts totals",
         "ADD": "+ Afegeix una nova història d'usuari",
         "ADD_BULK": "Afegeix noves històries d'usuari en grup",
-        "PROMOTED": "Aquesta US ha sigut promocionada desde:",
+        "PROMOTED_FROM_ISSUE": "Aquesta US ha sigut promocionada desde:",
+        "PROMOTED_FROM_TASK": "This US has been promoted from Task:",
         "TITLE_LINK_GO_TO_ISSUE": "Anar a la incidència",
         "TITLE_DELETE_ACTION": "Esborra història d'usuari",
         "LIGHTBOX_TITLE_BLOKING_US": "Bloquejant US",
@@ -1463,10 +1479,8 @@
         "PAGE_DESCRIPTION": "El panell d'incidències de {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "incidència",
         "ACTION_NEW_ISSUE": "+ NOVA INCIDÈNCIA",
-        "ACTION_PROMOTE_TO_US": "Promocionar història d'usuari",
         "ACTION_ATTACH_SPRINT": "Attach issue to Sprint",
         "ACTION_DETACH_SPRINT": "Detach issue from Sprint",
-        "PROMOTED": "Esta incidència ha sigut promcionada a US:",
         "EXTERNAL_REFERENCE": "Esta incidència ha sigut creada desde",
         "GO_TO_EXTERNAL_REFERENCE": "Anar a l'orige",
         "ACTION_DELETE": "Esborrar incidència",
@@ -1488,10 +1502,6 @@
         "CONFIRM_CHANGE_FROM_SPRINT": {
             "TITLE": "Attach issue to Sprint",
             "MESSAGE": "<strong>This issue is currently attached to sprint {{ oldSprintName }}</strong>. You are about to detach it from that sprint and attach it instead to sprint <strong>{{ newSprintName }}.</strong>"
-        },
-        "CONFIRM_PROMOTE": {
-            "TITLE": "Promociona aquesta incidència a història d'usuari",
-            "MESSAGE": "Segur que vols crear una nova US desde aquesta incidència"
         },
         "TABLE": {
             "COLUMNS": {
@@ -1570,7 +1580,6 @@
         "AVATAR_MAX_SIZE": "[Max. grandària:  {{maxFileSize}}]",
         "MENU": {
             "SECTION_TITLE": "Configuració d'usuari",
-            "USER_PROFILE": "Perfil d'usuari",
             "CHANGE_PASSWORD": "Canvi de contrasenya",
             "EMAIL_NOTIFICATIONS": "Notificacions de correu",
             "DESKTOP_NOTIFICATIONS": "Desktop notifications",

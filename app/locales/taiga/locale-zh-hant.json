@@ -200,6 +200,19 @@
             "BUTTON_TITLE": "Upvote/Downvote this item",
             "COUNTER_TITLE": "{total, plural, one{one vote} other{# votes}}"
         },
+        "PROMOTE_TO_US": "提昇到使用者故事",
+        "PROMOTED_ISSUES": "This Issue has been promoted to US:",
+        "PROMOTED_TASKS": "This Task has been promoted to US:",
+        "CONFIRM_PROMOTE": {
+            "ISSUE": {
+                "TITLE": "Promote this Issue to a new user story",
+                "MESSAGE": "你確定此問題要創建一個新的使用者故事?"
+            },
+            "TASK": {
+                "TITLE": "Promote this Task to a new user story",
+                "MESSAGE": "Are you sure you want to create a new US from this Task?"
+            }
+        },
         "CUSTOM_ATTRIBUTES": {
             "CUSTOM_FIELDS": "客製化欄位",
             "SAVE": "儲存客製化欄位",
@@ -407,6 +420,8 @@
             "ASSIGNED_TO": "Assigned",
             "STATUS": "狀態",
             "PROGRESS": "Progress",
+            "CLOSED_US": "Closed user stories",
+            "CLOSED_EPICS": "Closed epics",
             "VIEW_OPTIONS": "View options"
         },
         "CREATE": {
@@ -796,7 +811,7 @@
     "USER": {
         "PROFILE": {
             "PAGE_TITLE": "{{userFullName}} (@{{userUsername}})",
-            "EDIT": "編輯個人資料",
+            "USER_SETTINGS": "使用者設定",
             "CLOSED_US": "閞閉使用者故事",
             "PROJECTS": "專案",
             "PROJECTS_EMPTY": "{{username}} 尚無專案",
@@ -879,8 +894,8 @@
             "NOTIFICATIONS": "通知",
             "VIEW_PROFILE_TITLE": "檢視個人資料",
             "VIEW_PROFILE": "檢視個人資料",
-            "EDIT_PROFILE_TITLE": "編輯你的個人資料",
-            "EDIT_PROFILE": "編輯個人資料",
+            "USER_SETTINGS_TITLE": "編輯個人設定",
+            "USER_SETTINGS": "使用者設定",
             "CHANGE_PASSWORD_TITLE": "更換密碼 ",
             "CHANGE_PASSWORD": "更換密碼 ",
             "DASHBOARD_TITLE": "控制台",
@@ -1214,7 +1229,8 @@
         "TOTAL_POINTS": "所有點數",
         "ADD": "+新增使用者故事",
         "ADD_BULK": "批次加入新使用者故事",
-        "PROMOTED": "此使用者故事已提昇成問題:",
+        "PROMOTED_FROM_ISSUE": "此使用者故事已提昇成問題:",
+        "PROMOTED_FROM_TASK": "This US has been promoted from Task:",
         "TITLE_LINK_GO_TO_ISSUE": "到問題 ",
         "TITLE_DELETE_ACTION": "刪除使用者故事",
         "LIGHTBOX_TITLE_BLOKING_US": "封鎖中的使用者故事",
@@ -1463,10 +1479,8 @@
         "PAGE_DESCRIPTION": " {{projectName}}的問題清單看版: {{projectDescription}}",
         "SECTION_NAME": "問題",
         "ACTION_NEW_ISSUE": "+ 新問題　",
-        "ACTION_PROMOTE_TO_US": "提昇到使用者故事",
         "ACTION_ATTACH_SPRINT": "Attach issue to Sprint",
         "ACTION_DETACH_SPRINT": "Detach issue from Sprint",
-        "PROMOTED": "此問題已提昇成使用者故事 ",
         "EXTERNAL_REFERENCE": "此問題的提供者是",
         "GO_TO_EXTERNAL_REFERENCE": "回到一開始",
         "ACTION_DELETE": "删除議題 ",
@@ -1488,10 +1502,6 @@
         "CONFIRM_CHANGE_FROM_SPRINT": {
             "TITLE": "Attach issue to Sprint",
             "MESSAGE": "<strong>This issue is currently attached to sprint {{ oldSprintName }}</strong>. You are about to detach it from that sprint and attach it instead to sprint <strong>{{ newSprintName }}.</strong>"
-        },
-        "CONFIRM_PROMOTE": {
-            "TITLE": "將此問題提到使用者故事",
-            "MESSAGE": "你確定此問題要創建一個新的使用者故事?"
         },
         "TABLE": {
             "COLUMNS": {
@@ -1570,7 +1580,6 @@
         "AVATAR_MAX_SIZE": "[最大. 尺寸: {{maxFileSize}}] ",
         "MENU": {
             "SECTION_TITLE": "使用者設定",
-            "USER_PROFILE": "使用者設定檔案",
             "CHANGE_PASSWORD": "更換密碼 ",
             "EMAIL_NOTIFICATIONS": "電子郵件通知",
             "DESKTOP_NOTIFICATIONS": "Desktop notifications",

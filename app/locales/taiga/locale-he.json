@@ -194,11 +194,24 @@
             "UNWATCH": "הפסק לעקוב",
             "WATCHERS": "עוקבים",
             "BUTTON_TITLE": "עקוב/בטל מעקב אחר פריט זה",
-            "COUNTER_TITLE": "{סה\"כ, רבים, מעריץ אחדone{one עוקב} אחרים{# עוקבים}}\n"
+            "COUNTER_TITLE": "{total, plural, one{עוקב אחד} other{# עוקבים}}"
         },
         "VOTE_BUTTON": {
             "BUTTON_TITLE": "הצבע בעד/נגד פריט זה",
             "COUNTER_TITLE": "{total, plural, one{one vote} other{# votes}}"
+        },
+        "PROMOTE_TO_US": "קדם לסיפור משתמש",
+        "PROMOTED_ISSUES": "This Issue has been promoted to US:",
+        "PROMOTED_TASKS": "This Task has been promoted to US:",
+        "CONFIRM_PROMOTE": {
+            "ISSUE": {
+                "TITLE": "Promote this Issue to a new user story",
+                "MESSAGE": "אתה עשוי לחפוץ ליצור סיפור משתמש חדש מהתקלה הזו"
+            },
+            "TASK": {
+                "TITLE": "Promote this Task to a new user story",
+                "MESSAGE": "Are you sure you want to create a new US from this Task?"
+            }
         },
         "CUSTOM_ATTRIBUTES": {
             "CUSTOM_FIELDS": "שדות בהתאמה אישית",
@@ -407,6 +420,8 @@
             "ASSIGNED_TO": "משוייך",
             "STATUS": "סטטוססטטוס",
             "PROGRESS": "התקדמות",
+            "CLOSED_US": "Closed user stories",
+            "CLOSED_EPICS": "Closed epics",
             "VIEW_OPTIONS": "צפה באפשרויות"
         },
         "CREATE": {
@@ -796,7 +811,7 @@
     "USER": {
         "PROFILE": {
             "PAGE_TITLE": "{{userFullName}} (@{{userUsername}})",
-            "EDIT": "ערוך פרופיל",
+            "USER_SETTINGS": "הגדרות משתמש",
             "CLOSED_US": "סיפורי משתמש שנסגרו",
             "PROJECTS": "פרויקטים",
             "PROJECTS_EMPTY": "{{username}} עדיין נטול פרוייקטים\n",
@@ -879,8 +894,8 @@
             "NOTIFICATIONS": "התראות",
             "VIEW_PROFILE_TITLE": "הצג פרופיל",
             "VIEW_PROFILE": "הצג פרופיל",
-            "EDIT_PROFILE_TITLE": "ערוך את הפרופיל שלך",
-            "EDIT_PROFILE": "ערוך פרופיל",
+            "USER_SETTINGS_TITLE": "ערוך את ההגדרות שלך",
+            "USER_SETTINGS": "הגדרות משתמש",
             "CHANGE_PASSWORD_TITLE": "שנה סיסמא",
             "CHANGE_PASSWORD": "שנה סיסמא",
             "DASHBOARD_TITLE": "לוּחַ מַחווָנִים",
@@ -898,7 +913,7 @@
             "BUTTON_TITLE": "עקוב אחר פרוייקט זה וקבע מדיניות התראות",
             "WATCH": "עקוב",
             "WATCHING": "במעקב",
-            "COUNTER_TITLE": "{סה\"כ, רבים, מעריץ אחדone{one עוקב} אחרים{# עוקבים}}\n",
+            "COUNTER_TITLE": "{total, plural, one{עוקב אחד} other{# עוקבים}}",
             "OPTIONS": {
                 "NOTIFY_ALL": "קבל את כל ההתראות",
                 "NOTIFY_ALL_TITLE": "קבל את כל ההתראות עבור פרוייקט זה",
@@ -1214,7 +1229,8 @@
         "TOTAL_POINTS": "סך הנקודות",
         "ADD": "+ הוסף סיפור משתמש חדש",
         "ADD_BULK": "הוסף מספר סיפורי משתמש במכה",
-        "PROMOTED": "סיפור המשתמש הזה צף מתוך התקלה:",
+        "PROMOTED_FROM_ISSUE": "סיפור המשתמש הזה צף מתוך התקלה:",
+        "PROMOTED_FROM_TASK": "This US has been promoted from Task:",
         "TITLE_LINK_GO_TO_ISSUE": "עבור לתקלה",
         "TITLE_DELETE_ACTION": "מחק סיפור משתמש",
         "LIGHTBOX_TITLE_BLOKING_US": "סיפור משתמש חסום",
@@ -1463,10 +1479,8 @@
         "PAGE_DESCRIPTION": "לוח התקלות של הפרוייקט {{projectName}}: {{projectDescription}}\n",
         "SECTION_NAME": "תקלה",
         "ACTION_NEW_ISSUE": "+ תקלה חדשה",
-        "ACTION_PROMOTE_TO_US": "קדם לסיפור משתמש",
         "ACTION_ATTACH_SPRINT": "הצמד בעיה אל Sprint",
         "ACTION_DETACH_SPRINT": "נתק תקלה מהSprint",
-        "PROMOTED": "תקלה זו קודמה לסיפור משתמש:",
         "EXTERNAL_REFERENCE": "תקלה זו נוצרה מתוך",
         "GO_TO_EXTERNAL_REFERENCE": "חזור למקור",
         "ACTION_DELETE": "מחק תקלה",
@@ -1488,10 +1502,6 @@
         "CONFIRM_CHANGE_FROM_SPRINT": {
             "TITLE": "הצמד בעיה אל Sprint",
             "MESSAGE": "<strong>התקלה כרגע מקושרת ל sprint {{ oldSprintName }}</strong>.אתה עומד לנתקה מsprint  ולחברה במקום לsprint  <strong>{{ newSprintName }}.</strong>"
-        },
-        "CONFIRM_PROMOTE": {
-            "TITLE": "קדם תקלה זו לסיפור משתמש חדש",
-            "MESSAGE": "אתה עשוי לחפוץ ליצור סיפור משתמש חדש מהתקלה הזו"
         },
         "TABLE": {
             "COLUMNS": {
@@ -1570,7 +1580,6 @@
         "AVATAR_MAX_SIZE": "[גודל מקסימלי: {{maxFileSize}}]",
         "MENU": {
             "SECTION_TITLE": "הגדרות משתמש",
-            "USER_PROFILE": "פרופיל משתמש",
             "CHANGE_PASSWORD": "שנה סיסמא",
             "EMAIL_NOTIFICATIONS": "התראות בדוא\"ל",
             "DESKTOP_NOTIFICATIONS": "התראות שולחן עבודה",

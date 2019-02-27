@@ -200,6 +200,19 @@
             "BUTTON_TITLE": "Bozkatu gora/behera gai hau",
             "COUNTER_TITLE": "{total, plural, one{bozka bat} other{# bozka}}"
         },
+        "PROMOTE_TO_US": "Goratu eginkizun izatera",
+        "PROMOTED_ISSUES": "This Issue has been promoted to US:",
+        "PROMOTED_TASKS": "This Task has been promoted to US:",
+        "CONFIRM_PROMOTE": {
+            "ISSUE": {
+                "TITLE": "Promote this Issue to a new user story",
+                "MESSAGE": "Ziur zaude eginkizun berri bat sortu nahi duzula gertakari honetatik abiatuta?"
+            },
+            "TASK": {
+                "TITLE": "Promote this Task to a new user story",
+                "MESSAGE": "Are you sure you want to create a new US from this Task?"
+            }
+        },
         "CUSTOM_ATTRIBUTES": {
             "CUSTOM_FIELDS": "Eremu pertsonalizatuak",
             "SAVE": "Gorde eremu pertsonalizatua",
@@ -407,6 +420,8 @@
             "ASSIGNED_TO": "Esleituta",
             "STATUS": "Egoera",
             "PROGRESS": "Aurrerapena",
+            "CLOSED_US": "Closed user stories",
+            "CLOSED_EPICS": "Closed epics",
             "VIEW_OPTIONS": "Bistaratze aukerak"
         },
         "CREATE": {
@@ -796,7 +811,7 @@
     "USER": {
         "PROFILE": {
             "PAGE_TITLE": "{{userFullName}} (@{{userUsername}})",
-            "EDIT": "Editatu soslaia",
+            "USER_SETTINGS": "Erabiltzailearen ezarpenak",
             "CLOSED_US": "Eginkizun hau itxita dago",
             "PROJECTS": "Proiektuak",
             "PROJECTS_EMPTY": "{{username}} erabiltzaileak ez du proiekturik oraingoz",
@@ -879,8 +894,8 @@
             "NOTIFICATIONS": "Jakinarazpenak",
             "VIEW_PROFILE_TITLE": "Ikusi soslaia",
             "VIEW_PROFILE": "Ikusi soslaia",
-            "EDIT_PROFILE_TITLE": "Editatu soslaia",
-            "EDIT_PROFILE": "Editatu soslaia",
+            "USER_SETTINGS_TITLE": "Edit your settings",
+            "USER_SETTINGS": "Erabiltzailearen ezarpenak",
             "CHANGE_PASSWORD_TITLE": "Aldatu pasahitza",
             "CHANGE_PASSWORD": "Aldatu pasahitza",
             "DASHBOARD_TITLE": "Tresnen arbela",
@@ -1214,7 +1229,8 @@
         "TOTAL_POINTS": "puntuak guztira",
         "ADD": "+ Gehitu eginkizun berri bat",
         "ADD_BULK": "Gehitu eginkizun berrien sail bat",
-        "PROMOTED": "Eginkizun hau gertakari honetatik sortua da:",
+        "PROMOTED_FROM_ISSUE": "Eginkizun hau gertakari honetatik sortua da:",
+        "PROMOTED_FROM_TASK": "This US has been promoted from Task:",
         "TITLE_LINK_GO_TO_ISSUE": "Joan gertakarira",
         "TITLE_DELETE_ACTION": "Ezabatu eginkizuna",
         "LIGHTBOX_TITLE_BLOKING_US": "Blokeatzen eginkizuna",
@@ -1463,10 +1479,8 @@
         "PAGE_DESCRIPTION": "Gertakarien zerrenda {{projectName}} proiektuan:{{projectDescription}}",
         "SECTION_NAME": "Gertakaria",
         "ACTION_NEW_ISSUE": "+ GERTAKARI BERRIA",
-        "ACTION_PROMOTE_TO_US": "Goratu eginkizun izatera",
         "ACTION_ATTACH_SPRINT": "Erantsi gertakaria urrats batean",
         "ACTION_DETACH_SPRINT": "Desestekatu gertakaria urratsetik",
-        "PROMOTED": "Gertakari hau eginkizun honetatik sortua da:",
         "EXTERNAL_REFERENCE": "Gertakari hau hemendik sortua da:",
         "GO_TO_EXTERNAL_REFERENCE": "Joan jatorrira",
         "ACTION_DELETE": "Ezabatu gertakaria",
@@ -1488,10 +1502,6 @@
         "CONFIRM_CHANGE_FROM_SPRINT": {
             "TITLE": "Erantsi gertakaria urrats batean",
             "MESSAGE": "<strong>Gertakari hau loturik dago urrats honekin: {{ oldSprintName }}</strong>. Desestekatu egingo duzu urrats honetatik eta estekatu <strong>{{ new sprintName }}<strong> urratsera."
-        },
-        "CONFIRM_PROMOTE": {
-            "TITLE": "Sustatu gertakari hau eginkizun berri batera",
-            "MESSAGE": "Ziur zaude eginkizun berri bat sortu nahi duzula gertakari honetatik abiatuta?"
         },
         "TABLE": {
             "COLUMNS": {
@@ -1570,7 +1580,6 @@
         "AVATAR_MAX_SIZE": "[Max. size: {{maxFileSize}}]",
         "MENU": {
             "SECTION_TITLE": "Erabiltzailearen ezarpenak",
-            "USER_PROFILE": "Erabiltzaile soslaia",
             "CHANGE_PASSWORD": "Aldatu pasahitza",
             "EMAIL_NOTIFICATIONS": "E-posta jakinarazpenak",
             "DESKTOP_NOTIFICATIONS": "Mahaigaineko jakinarazpenak",

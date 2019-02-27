@@ -3,10 +3,10 @@
         "YES": "Oui",
         "NO": "Non",
         "OR": "ou",
-        "I_GET_IT": "OK, I get it",
+        "I_GET_IT": "D'accord, j'ai compris",
         "LOADING": "Veuillez patienter...",
         "DATE": "DD MMM YYYY",
-        "DATETIME": "JJ MMM AAAA HH:mm",
+        "DATETIME": "DD MMM YYYY HH:mm",
         "SAVE": "Enregistrer",
         "CANCEL": "Annuler",
         "ACCEPT": "Accepter",
@@ -61,7 +61,7 @@
             "TYPE_URLSTRICT": "Cette valeur doit être une url valide.",
             "TYPE_NUMBER": "Cette valeur doit être un nombre valide.",
             "TYPE_DIGITS": "Cette valeur doit être numérique.",
-            "TYPE_DATEISO": "Cette valeur n'est pas une date valide (AAAA-MM-JJ).",
+            "TYPE_DATEISO": "Cette valeur n'est pas une date valide (YYYY-MM-DD).",
             "TYPE_ALPHANUM": "Cette valeur devrait être alphanumérique.",
             "TYPE_PHONE": "Cette valeur devrait être un numéro de téléphone valide.",
             "NOTNULL": "Cette valeur ne devrait pas être nulle.",
@@ -79,7 +79,7 @@
             "RANGE_CHECK": "Vous devez sélectionner parmi les choix %s et %s.",
             "EQUAL_TO": "Cette valeur doit être identique.",
             "LINEWIDTH": "Une ou plusieurs lignes est peut-être trop long. Essayez de rester en dessous de %s caractères.",
-            "PIKADAY": "Format de date non valide, merci d'utiliser JJ MMM AAAA (comme 23 mar 1984)"
+            "PIKADAY": "Format de date non valide, merci d'utiliser DD MMM YYYY (comme 23 mar 1984)"
         },
         "PICKERDATE": {
             "FORMAT": "DD MMM YYYY",
@@ -200,6 +200,19 @@
             "BUTTON_TITLE": "Vote positif/négatif pour cet élément",
             "COUNTER_TITLE": "{total, plural, one{un vote} other{# votes}}"
         },
+        "PROMOTE_TO_US": "Promouvoir en récit utilisateur",
+        "PROMOTED_ISSUES": "This Issue has been promoted to US:",
+        "PROMOTED_TASKS": "This Task has been promoted to US:",
+        "CONFIRM_PROMOTE": {
+            "ISSUE": {
+                "TITLE": "Promote this Issue to a new user story",
+                "MESSAGE": "Êtes-vous sure de vouloir créer un nouveau récit utilisateur à partir de ce ticket ?"
+            },
+            "TASK": {
+                "TITLE": "Promote this Task to a new user story",
+                "MESSAGE": "Are you sure you want to create a new US from this Task?"
+            }
+        },
         "CUSTOM_ATTRIBUTES": {
             "CUSTOM_FIELDS": "Champs personnalisés",
             "SAVE": "Sauver le champ personnalisé",
@@ -215,10 +228,10 @@
             "ACTION_SAVE_CUSTOM_FILTER": "sauvegarder en tant que filtre personnalisé",
             "PLACEHOLDER_FILTER_NAME": "Écrivez le nom du filtre et appuyez sur \"Entrée\"",
             "APPLIED_FILTERS_NUM": "filtres appliqués",
-            "TITLE_ADVANCED_FILTER": "Advanced",
+            "TITLE_ADVANCED_FILTER": "Filtres avancés",
             "ADVANCED_FILTERS": {
-                "INCLUDE": "Include",
-                "EXCLUDE": "Exclude"
+                "INCLUDE": "Inclus",
+                "EXCLUDE": "Exclus"
             },
             "CATEGORIES": {
                 "TYPE": "Type",
@@ -407,6 +420,8 @@
             "ASSIGNED_TO": "Affecté",
             "STATUS": "Statut",
             "PROGRESS": "Avancement",
+            "CLOSED_US": "Closed user stories",
+            "CLOSED_EPICS": "Closed epics",
             "VIEW_OPTIONS": "Voir les options"
         },
         "CREATE": {
@@ -479,7 +494,7 @@
             "LOADING_MESSAGE": "Merci de ne pas fermer cette page.",
             "ASYNC_MESSAGE": "Nous vous enverrons un courriel lorsque ce sera prêt.",
             "SYNC_MESSAGE": "Si le téléchargement ne commence pas automatiquement, cliquez <a href='{{url}}' download title='Télécharger le fichier de vidage'>ici.",
-            "ERROR": "Nos Oompa Loompas ont des problèmes à générer le fichier de vidage. S'il vous plait, essayez de nouveau.",
+            "ERROR": "Nos Oompa Loompas ont des problèmes à générer le fichier d'export. Merci de réessayer.",
             "ERROR_BUSY": "Nous sommes désolés, nos Oompa Loompas sont très occupés en ce moment. Veuillez réessayer dans quelques minutes."
         },
         "MODULES": {
@@ -578,8 +593,8 @@
             "FIELD_TYPE_DATE": "Date",
             "FIELD_TYPE_URL": "Url",
             "FIELD_TYPE_DROPDOWN": "Liste déroulante",
-            "FIELD_TYPE_CHECKBOX": "Checkbox",
-            "FIELD_TYPE_NUMBER": "Number"
+            "FIELD_TYPE_CHECKBOX": "Case à cocher",
+            "FIELD_TYPE_NUMBER": "Nombre"
         },
         "PROJECT_VALUES": {
             "PAGE_TITLE": "{{sectionName}} - Valeurs du projet - {{projectName}}",
@@ -796,7 +811,7 @@
     "USER": {
         "PROFILE": {
             "PAGE_TITLE": "{{userFullName}} (@{{userUsername}})",
-            "EDIT": "Modifier le profil",
+            "USER_SETTINGS": "Paramètres de l'utilisateur",
             "CLOSED_US": "Récit utilisateur fermé",
             "PROJECTS": "Projets",
             "PROJECTS_EMPTY": "{{username}} n'a aucun projet pour l'instant",
@@ -879,8 +894,8 @@
             "NOTIFICATIONS": "Notifications",
             "VIEW_PROFILE_TITLE": "Afficher le profil",
             "VIEW_PROFILE": "Afficher le profil",
-            "EDIT_PROFILE_TITLE": "Modifier votre profil",
-            "EDIT_PROFILE": "Modifier le profil",
+            "USER_SETTINGS_TITLE": "Modifier vos réglages",
+            "USER_SETTINGS": "Paramètres de l'utilisateur",
             "CHANGE_PASSWORD_TITLE": "Modifier le mot de passe",
             "CHANGE_PASSWORD": "Modifier le mot de passe",
             "DASHBOARD_TITLE": "Tableau de bord",
@@ -916,11 +931,11 @@
             "TITLE": "Créer un projet",
             "CHOOSE_TEMPLATE": "Quel template correspond le mieux à votre projet ?",
             "TEMPLATE_SCRUM": "Scrum",
-            "TEMPLATE_SCRUM_DESC": "Prioriser et résoudre vos tâches sur de court cycles de temps",
+            "TEMPLATE_SCRUM_DESC": "Prioriser et résoudre vos tâches sur de court cycles de temps.",
             "TEMPLATE_SCRUM_LONGDESC": "Scrum est une méthodologie de développement de logiciels agile, incrémentale et itérative pour la gestion du développement de produits.\n\nLe backlog du produit est ce qui sera finalement livré, organisé dans l'ordre dans lequel il doit être livré. Les besoins sont divisés en fragments manageables et exécutables nommés sprints. Chaque fois que l'équipe initie un nouveau sprint; elle s'engage à livrer un certain nombre de récits utilisateurs du backlog, en fonction de leurs compétences, capacités et ressources. Le projet avance à mesure que le backlog se vide.",
             "TEMPLATE_KANBAN": "Kanban",
             "TEMPLATE_KANBAN_DESC": "Garder un flux de travail constant sur les tâches indépendantes",
-            "TEMPLATE_KANBAN_LONGDESC": "La méthodologie Kanban est utilisée pour répartir les éléments d'un projet entre différents états.\n\nUne carte Kamban est similaire à un mémo ou un post-it qui détaille chaque tâche (ou récit) qu'il faut effectuer dans le projet. Le tableau Kanban est utilisé pour déplacer chaque carte d'un état d'avancement à l'autre, d'état en état, facilitant de ce fait l'avancée des tâches.",
+            "TEMPLATE_KANBAN_LONGDESC": "La méthodologie Kanban est utilisée pour diviser un développement de projet (n'importe quelle sorte de projet) en différentes étapes.\n\nUne carte Kamban est similaire à un mémo ou un post-it qui détaille chaque tâche (ou récit utilisateur) qu'il faut effectuer dans un projet. Le tableau Kanban est utilisé pour déplacer chaque carte d'un état d'avancement à l'autre, d'état en état, facilitant de ce fait l'avancée des tâches.",
             "DUPLICATE": "Dupliquer le projet",
             "DUPLICATE_DESC": "Repartir de rien en conservant vos configurations",
             "IMPORT": "Importer un projet",
@@ -1214,7 +1229,8 @@
         "TOTAL_POINTS": "total des points",
         "ADD": "+ Créer un récit utilisateur",
         "ADD_BULK": "Ajouter de nouveaux récits utilisateur en lot",
-        "PROMOTED": "Ce récit utilisateur a été promue à partir d'un ticket :",
+        "PROMOTED_FROM_ISSUE": "Ce récit utilisateur a été promue à partir d'un ticket :",
+        "PROMOTED_FROM_TASK": "This US has been promoted from Task:",
         "TITLE_LINK_GO_TO_ISSUE": "Aller vers ce ticket",
         "TITLE_DELETE_ACTION": "Supprimer le récit utilisateur",
         "LIGHTBOX_TITLE_BLOKING_US": "Bloque le RU",
@@ -1239,7 +1255,7 @@
         "COMMENTS_COUNT": "{{comments}} commentaires",
         "OLDER_FIRST": "Plus ancien d'abord",
         "RECENT_FIRST": "Plus récent d'abord",
-        "COMMENT": "Commentaire",
+        "COMMENT": "Commenter",
         "EDITED_COMMENT": "Modifié :",
         "SHOW_HISTORY": "Voir l'historique",
         "TYPE_NEW_COMMENT": "Entrez un nouveau commentaire ici",
@@ -1403,18 +1419,18 @@
             "DATE": "DD MMMM YYYY"
         },
         "MOVE_TO_SPRINT": {
-            "TITLE_ACTION_MOVE_UNFINISHED": "Move unfinished items to another sprint",
-            "TITLE_MOVE_UNFINISHED": "Move unfinished items to another open sprint",
-            "MOVE_TO_OPEN_SPRINT": "Move to open sprint",
-            "NO_OPEN_SPRINTS": "There are no other open sprints. Please create one first.",
-            "SELECT_DESTINATION_PLACEHOLDER": "Select destination",
-            "UNFINISHED_USER_STORIES_COUNT": "{total, plural, one{<strong>#</strong> unfinished user story} other{<strong>#</strong> unfinished user stories}}",
+            "TITLE_ACTION_MOVE_UNFINISHED": "Déplacer les éléments non terminés dans un autre sprint",
+            "TITLE_MOVE_UNFINISHED": "Déplacer les éléments non terminés dans un autre sprint ouvert",
+            "MOVE_TO_OPEN_SPRINT": "Déplacer vers un sprint ouvert",
+            "NO_OPEN_SPRINTS": "Il n'y a aucun autre sprint ouvert. Veuillez en créer un d'abord.",
+            "SELECT_DESTINATION_PLACEHOLDER": "Sélectionner la destination",
+            "UNFINISHED_USER_STORIES_COUNT": "{total, plural, one{<strong>#</strong> récit utilisateur non terminé} other{<strong>#</strong> récits utilisateur non terminés}}",
             "UNFINISHED_STORYLESS_TASKS_COUNT": "{total, plural, one{<strong>#</strong> unfinished storyless task} other{<strong>#</strong> unfinished storyless tasks}}",
-            "UNFINISHED_ISSUES_COUNT": "{total, plural, one{<strong>#</strong> unfinished issue} other{<strong>#</strong> unfinished issue}}",
-            "WARNING_ISSUES_NOT_MOVED_TITLE": "You just moved all user stories and taks, and the sprint'll be closed",
-            "WARNING_ISSUES_NOT_MOVED": "The issues'll remain in the sprint and don't be removed",
-            "WARNING_SPRINT_STILL_OPEN_TITLE": "{total, plural, one{You just moved # item!} other{You just moved # items!}}",
-            "WARNING_SPRINT_STILL_OPEN": "Please note that the sprint {{sprintName}} <strong>will remain open</strong> as long as it contains unfinished items."
+            "UNFINISHED_ISSUES_COUNT": "{total, plural, one{<strong>#</strong> ticket non fermé} other{<strong>#</strong> tickets non fermés}}",
+            "WARNING_ISSUES_NOT_MOVED_TITLE": "Vous venez de déplacer tous les récits utilisateur et les tâches, et le sprint sera fermé",
+            "WARNING_ISSUES_NOT_MOVED": "Les tickets resteront dans le sprint et ne seront pas supprimés",
+            "WARNING_SPRINT_STILL_OPEN_TITLE": "{total, plural, one{Vous venez de déplacer # élément !} other{Vous venez de déplacer # éléments !}}",
+            "WARNING_SPRINT_STILL_OPEN": "Prenez note que le sprint {{sprintName}} <strong>restera ouvert</strong> aussi longtemps qu'il contiendra des éléments non terminés."
         }
     },
     "TASK": {
@@ -1463,10 +1479,8 @@
         "PAGE_DESCRIPTION": "Le panneau de la liste des tickets du projet {{projectName}} : {{projectDescription}}",
         "SECTION_NAME": "Ticket",
         "ACTION_NEW_ISSUE": "+ NOUVEAU TICKET",
-        "ACTION_PROMOTE_TO_US": "Promouvoir en récit utilisateur",
         "ACTION_ATTACH_SPRINT": "Attacher le ticket au sprint",
         "ACTION_DETACH_SPRINT": "Détacher le ticket du sprint",
-        "PROMOTED": "Le ticket a été promu en récit utilisateur",
         "EXTERNAL_REFERENCE": "Ce ticket a été créé à partir de",
         "GO_TO_EXTERNAL_REFERENCE": "Aller à l'origine",
         "ACTION_DELETE": "Supprimer le ticket",
@@ -1488,10 +1502,6 @@
         "CONFIRM_CHANGE_FROM_SPRINT": {
             "TITLE": "Attacher le ticket au sprint",
             "MESSAGE": "<strong>Ce ticket est actuellement attaché au sprint {{ oldSprintName }}</strong>. Vous êtes sur le point de le détacher de ce sprint afin de l’attacher au sprint <strong>{{ newSprintName }}</strong>."
-        },
-        "CONFIRM_PROMOTE": {
-            "TITLE": "Promouvoir ce ticket en nouveau récit utilisateur",
-            "MESSAGE": "Êtes-vous sure de vouloir créer un nouveau récit utilisateur à partir de ce ticket ?"
         },
         "TABLE": {
             "COLUMNS": {
@@ -1570,7 +1580,6 @@
         "AVATAR_MAX_SIZE": "[Taille max. : {{maxFileSize}}]",
         "MENU": {
             "SECTION_TITLE": "Paramètres de l'utilisateur",
-            "USER_PROFILE": "Profil utilisateur",
             "CHANGE_PASSWORD": "Modifier le mot de passe",
             "EMAIL_NOTIFICATIONS": "Notifications courriel",
             "DESKTOP_NOTIFICATIONS": "Notifications de bureau",
@@ -1588,17 +1597,17 @@
             "OPTION_NONE": "Aucune"
         },
         "PROJECT_SETTINGS": {
-            "SET_START_PAGES": "Set start pages",
-            "START_PAGES_PER_PROJECT": "Set start pages per project",
+            "SET_START_PAGES": "Pages de démarrage",
+            "START_PAGES_PER_PROJECT": "Définir les pages de démarrage par projet",
             "COLUMN_PROJECT": "Projet",
-            "COLUMN_STARTPAGE": "Start page",
+            "COLUMN_STARTPAGE": "Page de démarrage",
             "DEFAULT_VALUE": "Valeur par défaut"
         },
         "EVENTS": {
             "SECTION_NAME": "Événements",
-            "SECTION_DESCRIPTION": "Important events in Taiga header",
-            "SECTION_DESCRIPTION_EXPANDED": "(direct mentions, updates in items that you are watching...)",
-            "COLUMN_ENABLED": "Enabled",
+            "SECTION_DESCRIPTION": "Événements importants apparaissant dans le bandeau haut de Taiga",
+            "SECTION_DESCRIPTION_EXPANDED": "(mentions directes, mise à jour d'éléments que vous observez...)",
+            "COLUMN_ENABLED": "Activé",
             "COLUMN_PROJECT": "Projet"
         }
     },
@@ -1699,24 +1708,24 @@
         "UNBLOCKED": "{{username}} a débloqué {{obj_name}}",
         "NEW_USER": "{{username}} a rejoint Taiga",
         "ITEM_TYPES": {
-            "USERSTORY": "User Story",
+            "USERSTORY": "Récit utilisateur",
             "ISSUE": "Ticket",
             "TASK": "Tâche"
         }
     },
     "EVENTS": {
         "TITLE": "Événements",
-        "MY_EVENTS": "My events",
-        "DISMISS_ALL": "Dismiss all",
-        "VIEW_ALL": "View all",
-        "NO_NEW_EVENTS": "No new events",
-        "NO_EVENTS_YET": "There are no events yet",
-        "ASSIGNED_YOU": "{{username}} assigned you to {{obj_name}}",
-        "ADDED_YOU_AS_WATCHER": "{{username}} added you as watcher on {{obj_name}}",
-        "ADDED_YOU_AS_MEMBER": "{{username}} added you as member",
-        "MENTIONED_YOU": "{{username}} mentioned you on {{obj_name}}",
-        "MENTIONED_YOU_IN_COMMENT": "{{username}} mentioned you in a comment on {{obj_name}}",
-        "COMMENTED": "{{username}} has commented on {{obj_name}}"
+        "MY_EVENTS": "Mes événements",
+        "DISMISS_ALL": "Tout ignorer",
+        "VIEW_ALL": "Tout voir",
+        "NO_NEW_EVENTS": "Aucun nouvel événement",
+        "NO_EVENTS_YET": "Il n'y a pas encore d'événement",
+        "ASSIGNED_YOU": "{{username}} vous a assigné à {{obj_name}}",
+        "ADDED_YOU_AS_WATCHER": "{{username}} vous a ajouté en tant qu'observateur à {{obj_name}}",
+        "ADDED_YOU_AS_MEMBER": "{{username}} vous a ajouté en tant que membre",
+        "MENTIONED_YOU": "{{username}} vous a mentionné sur {{obj_name}}",
+        "MENTIONED_YOU_IN_COMMENT": "{{username}} vous a mentionné dans un commentaire sur {{obj_name}}",
+        "COMMENTED": "{{username}} a commenté {{obj_name}}"
     },
     "LEGAL": {
         "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>Lors de la création d'un compte, vous acceptez nos </span> <a href=\"{{ termsOfServiceUrl }}\" title=\"See terms of service\" target=\"_blank\">conditions d'utilisation</a> <span>et</span> <a href=\"{{ privacyPolicyUrl }}\" title=\"See privacy policy\" target=\"_blank\">politique de confidentialité</a>.",
@@ -1826,17 +1835,17 @@
         }
     },
     "TIPS": {
-        "TIPS_TITLE": "Tip",
-        "TIP_PROJECTS_ORDER": "You can sort projects on your project page by placing the ones most frequently accessed at the top.",
-        "TIP_VOTING": "Whether you ask your community or your other team members, upvoting items might serve as a way to detect explicit support for a particular task or issue.",
-        "TIP_ISSUES_TO_SPRINT": "You can attach issues to a particular sprint by clicking on the pin icon in the detail view.",
-        "TIP_DUE_DATE": "If you need to finish a task on a specific date, activate the DueDate from the detail view of the task.",
-        "TIP_IOCAIN": "You can signal to team members that a task is being particularly troublesome by clicking on the iocaine button. Doing so indicates that you welcome help, patience and understanding.",
-        "TIP_BLOCKED": "You can signal to other team members that something is preventing you from working on a particular task by marking it as \"blocked\"",
-        "TIP_PROMOTE": "Is your issue or task more complex than it first appeared? Go to the detail view and turn it into user story.",
-        "TIP_BULK": "If you want to add many tasks at once, choose bulk mode and write each task in a single line, one after the other.",
-        "TIP_ZOOM": "You can get a wider view of the kanban by reducing the information shown on the cards with the zoom control.",
-        "TIP_CUSTOM_FIELDS": "If you're an admin of the project, consider creating custom fields to expand the tasks' configuration.",
+        "TIPS_TITLE": "Astuce",
+        "TIP_PROJECTS_ORDER": "Vous pouvez trier les projets sur votre page projet en plaçant les plus accédés en haut.",
+        "TIP_VOTING": "Que vous demandiez à votre communauté ou au membres de votre équipe, les éléments votés peuvent servir de moyen de détection d'un soutien explicite pour une tâche particulière ou un ticket particulier.",
+        "TIP_ISSUES_TO_SPRINT": "Vous pouvez attacher des tickets à un sprint particulier en cliquant sur l'icône de l'épingle dans la vue détaillée.",
+        "TIP_DUE_DATE": "Si vous devez finir une tâche à une date spécifique, activez la date d'échéance dans le détail de la vue d'une tâche.",
+        "TIP_IOCAIN": "Vous pouvez signaler aux membres de l'équipe qu'une tâche pose particulièrement des problèmes en cliquant sur le bouton iocaïne. Ainsi, vous indiquez que vous apprécierez de l'aide, de la patience et de la compréhension.",
+        "TIP_BLOCKED": "Vous pouvez signaler aux autres membres de l'équipe que quelque chose vous empêche de travailler sur une tâche particulière en la marquant \"bloquée\".",
+        "TIP_PROMOTE": "Votre ticket ou votre tâche sont plus complexes qu'ils n'apparaissaient ? Allez sur la vue détaillée et transformez-les en récit utilisateur.",
+        "TIP_BULK": "Si vous souhaitez ajouter plusieurs tâches en une fois, choisissez le mode par lot et écrivez chaque tâche sur une seule ligne, l'une après l'autre",
+        "TIP_ZOOM": "Vous pouvez avoir une meilleure vue d'ensemble du kanban en réduisant l'information affichée sur les cartes grâce au contrôle de zoom.",
+        "TIP_CUSTOM_FIELDS": "Si vous êtes administrateur du projet, vous pouvez créer des champs personnalisés pour étendre la configuration des tâches.",
         "TIP_SLIDE_ARROWS": "You can cycle over the results of a list, search or filter by clicking on the navigational arrows on the detail view of any one item."
     }
 }

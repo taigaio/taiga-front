@@ -200,6 +200,19 @@
             "BUTTON_TITLE": "赞/踩该项",
             "COUNTER_TITLE": "{total, plural, one{一票} other{# 票}}"
         },
+        "PROMOTE_TO_US": "提升到用户故事",
+        "PROMOTED_ISSUES": "This Issue has been promoted to US:",
+        "PROMOTED_TASKS": "This Task has been promoted to US:",
+        "CONFIRM_PROMOTE": {
+            "ISSUE": {
+                "TITLE": "Promote this Issue to a new user story",
+                "MESSAGE": "你确定要用此问题创建一个新的用户故事？"
+            },
+            "TASK": {
+                "TITLE": "Promote this Task to a new user story",
+                "MESSAGE": "Are you sure you want to create a new US from this Task?"
+            }
+        },
         "CUSTOM_ATTRIBUTES": {
             "CUSTOM_FIELDS": "自定义字段",
             "SAVE": "保存自定义字段",
@@ -407,6 +420,8 @@
             "ASSIGNED_TO": "已指派",
             "STATUS": "状态",
             "PROGRESS": "进度",
+            "CLOSED_US": "Closed user stories",
+            "CLOSED_EPICS": "Closed epics",
             "VIEW_OPTIONS": "浏览选项"
         },
         "CREATE": {
@@ -796,7 +811,7 @@
     "USER": {
         "PROFILE": {
             "PAGE_TITLE": "{{userFullName}} (@{{userUsername}})",
-            "EDIT": "编辑个人资料",
+            "USER_SETTINGS": "用户设置",
             "CLOSED_US": "关闭用户故事",
             "PROJECTS": "项目",
             "PROJECTS_EMPTY": "{{username}} 尚无项目",
@@ -879,8 +894,8 @@
             "NOTIFICATIONS": "通知",
             "VIEW_PROFILE_TITLE": "查看个人资料",
             "VIEW_PROFILE": "查看个人资料",
-            "EDIT_PROFILE_TITLE": "编辑你的个人资料",
-            "EDIT_PROFILE": "编辑个人资料",
+            "USER_SETTINGS_TITLE": "编辑个人设定",
+            "USER_SETTINGS": "用户设置",
             "CHANGE_PASSWORD_TITLE": "更换密码",
             "CHANGE_PASSWORD": "更换密码",
             "DASHBOARD_TITLE": "控制台",
@@ -1214,7 +1229,8 @@
         "TOTAL_POINTS": "总点数",
         "ADD": "+新增用户故事",
         "ADD_BULK": "批次加入新用户故事",
-        "PROMOTED": "此用户故事已提升成问题:",
+        "PROMOTED_FROM_ISSUE": "此用户故事已提升成问题:",
+        "PROMOTED_FROM_TASK": "This US has been promoted from Task:",
         "TITLE_LINK_GO_TO_ISSUE": "到问题",
         "TITLE_DELETE_ACTION": "删除用户故事",
         "LIGHTBOX_TITLE_BLOKING_US": "封锁中的用户故事",
@@ -1463,10 +1479,8 @@
         "PAGE_DESCRIPTION": "{{projectName}}的问题清单看版：{{projectDescription}}",
         "SECTION_NAME": "问题",
         "ACTION_NEW_ISSUE": "+ 新问题",
-        "ACTION_PROMOTE_TO_US": "提升到用户故事",
         "ACTION_ATTACH_SPRINT": "Attach issue to Sprint",
         "ACTION_DETACH_SPRINT": "Detach issue from Sprint",
-        "PROMOTED": "此问题已提升为用户故事",
         "EXTERNAL_REFERENCE": "此问题的提出者是",
         "GO_TO_EXTERNAL_REFERENCE": "回到开头",
         "ACTION_DELETE": "删除议题",
@@ -1488,10 +1502,6 @@
         "CONFIRM_CHANGE_FROM_SPRINT": {
             "TITLE": "Attach issue to Sprint",
             "MESSAGE": "<strong>This issue is currently attached to sprint {{ oldSprintName }}</strong>. You are about to detach it from that sprint and attach it instead to sprint <strong>{{ newSprintName }}.</strong>"
-        },
-        "CONFIRM_PROMOTE": {
-            "TITLE": "将此问题提为用户故事",
-            "MESSAGE": "你确定要用此问题创建一个新的用户故事？"
         },
         "TABLE": {
             "COLUMNS": {
@@ -1570,7 +1580,6 @@
         "AVATAR_MAX_SIZE": "[最大尺寸：{{maxFileSize}}]",
         "MENU": {
             "SECTION_TITLE": "用户设置",
-            "USER_PROFILE": "用户设置",
             "CHANGE_PASSWORD": "更新密码",
             "EMAIL_NOTIFICATIONS": "电子邮件通知",
             "DESKTOP_NOTIFICATIONS": "桌面提醒",

@@ -200,6 +200,19 @@
             "BUTTON_TITLE": "Проголосувати/скасувати голосування за цей запис",
             "COUNTER_TITLE": "{total, plural, one{one vote} other{# votes}}"
         },
+        "PROMOTE_TO_US": "Підвищити до історії користувача",
+        "PROMOTED_ISSUES": "This Issue has been promoted to US:",
+        "PROMOTED_TASKS": "This Task has been promoted to US:",
+        "CONFIRM_PROMOTE": {
+            "ISSUE": {
+                "TITLE": "Promote this Issue to a new user story",
+                "MESSAGE": "Ви дійсно хочете створити нову ІК із цієї проблеми?"
+            },
+            "TASK": {
+                "TITLE": "Promote this Task to a new user story",
+                "MESSAGE": "Are you sure you want to create a new US from this Task?"
+            }
+        },
         "CUSTOM_ATTRIBUTES": {
             "CUSTOM_FIELDS": "Користувацькі поля",
             "SAVE": "Зберегти користувацьке поле",
@@ -407,6 +420,8 @@
             "ASSIGNED_TO": "Назначений",
             "STATUS": "Статус",
             "PROGRESS": "Прогрес",
+            "CLOSED_US": "Closed user stories",
+            "CLOSED_EPICS": "Closed epics",
             "VIEW_OPTIONS": "Варіанти перегляду"
         },
         "CREATE": {
@@ -796,7 +811,7 @@
     "USER": {
         "PROFILE": {
             "PAGE_TITLE": "{{userFullName}} (@{{userUsername}})",
-            "EDIT": "Редагувати профіль",
+            "USER_SETTINGS": "Налаштування користувача",
             "CLOSED_US": "Закриті ІК",
             "PROJECTS": "Проекти",
             "PROJECTS_EMPTY": "{{username}} ще не має проектів",
@@ -879,8 +894,8 @@
             "NOTIFICATIONS": "Повідомлення",
             "VIEW_PROFILE_TITLE": "Переглянути профіль",
             "VIEW_PROFILE": "Переглянути профіль",
-            "EDIT_PROFILE_TITLE": "Редагувати профіль",
-            "EDIT_PROFILE": "Редагувати профіль",
+            "USER_SETTINGS_TITLE": "Edit your settings",
+            "USER_SETTINGS": "Налаштування користувача",
             "CHANGE_PASSWORD_TITLE": "Змінити пароль",
             "CHANGE_PASSWORD": "Змінити пароль",
             "DASHBOARD_TITLE": "Інформаційна панель",
@@ -1214,7 +1229,8 @@
         "TOTAL_POINTS": "загальна кількість очок",
         "ADD": "+ Додати нову історію користувача",
         "ADD_BULK": "Додати нові користувацькі історії оптом",
-        "PROMOTED": "Ця ІК була підвищена з проблеми:",
+        "PROMOTED_FROM_ISSUE": "Ця ІК була підвищена з проблеми:",
+        "PROMOTED_FROM_TASK": "This US has been promoted from Task:",
         "TITLE_LINK_GO_TO_ISSUE": "Перейти до проблеми",
         "TITLE_DELETE_ACTION": "Видалити історію користувача",
         "LIGHTBOX_TITLE_BLOKING_US": "Блокує нас",
@@ -1463,10 +1479,8 @@
         "PAGE_DESCRIPTION": "The issues list panel of the project {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Проблема",
         "ACTION_NEW_ISSUE": "+ НОВА ПРОБЛЕМА",
-        "ACTION_PROMOTE_TO_US": "Підвищити до історії користувача",
         "ACTION_ATTACH_SPRINT": "Додати проблему до спринта",
         "ACTION_DETACH_SPRINT": "Вилучити проблему із спринта",
-        "PROMOTED": "Ця проблему підвищено до ІК:",
         "EXTERNAL_REFERENCE": "Ця проблема створена з",
         "GO_TO_EXTERNAL_REFERENCE": "Go to origin",
         "ACTION_DELETE": "Видалити проблему",
@@ -1488,10 +1502,6 @@
         "CONFIRM_CHANGE_FROM_SPRINT": {
             "TITLE": "Додати проблему до спринта",
             "MESSAGE": "<strong>This issue is currently attached to sprint {{ oldSprintName }}</strong>. You are about to detach it from that sprint and attach it instead to sprint <strong>{{ newSprintName }}.</strong>"
-        },
-        "CONFIRM_PROMOTE": {
-            "TITLE": "Підвищити цю проблему до нової історії користувача",
-            "MESSAGE": "Ви дійсно хочете створити нову ІК із цієї проблеми?"
         },
         "TABLE": {
             "COLUMNS": {
@@ -1570,7 +1580,6 @@
         "AVATAR_MAX_SIZE": "[Макс. розмір: {{maxFileSize}}]",
         "MENU": {
             "SECTION_TITLE": "Налаштування користувача",
-            "USER_PROFILE": "Профіль користувача",
             "CHANGE_PASSWORD": "Змінити пароль",
             "EMAIL_NOTIFICATIONS": "Повідомлення по електронній пошті",
             "DESKTOP_NOTIFICATIONS": "Desktop notifications",

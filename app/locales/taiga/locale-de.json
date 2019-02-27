@@ -200,6 +200,19 @@
             "BUTTON_TITLE": "Upvote/Downvote diesen Eintrag",
             "COUNTER_TITLE": "{total, plural, one{eine Stimme} other{# Stimmen}}"
         },
+        "PROMOTE_TO_US": "Zur User-Story aufwerten",
+        "PROMOTED_ISSUES": "This Issue has been promoted to US:",
+        "PROMOTED_TASKS": "This Task has been promoted to US:",
+        "CONFIRM_PROMOTE": {
+            "ISSUE": {
+                "TITLE": "Promote this Issue to a new user story",
+                "MESSAGE": "Sind Sie sicher, dass Sie aus diesem Ticket eine neue User-Story erstellen möchten?"
+            },
+            "TASK": {
+                "TITLE": "Promote this Task to a new user story",
+                "MESSAGE": "Are you sure you want to create a new US from this Task?"
+            }
+        },
         "CUSTOM_ATTRIBUTES": {
             "CUSTOM_FIELDS": "Benutzerdefinierte Felder",
             "SAVE": "Benutzerdefiniertes Feld speichern",
@@ -407,6 +420,8 @@
             "ASSIGNED_TO": "Zugewiesen",
             "STATUS": "Status",
             "PROGRESS": "Fortschritt",
+            "CLOSED_US": "Closed user stories",
+            "CLOSED_EPICS": "Closed epics",
             "VIEW_OPTIONS": "Zeige Optionen"
         },
         "CREATE": {
@@ -796,7 +811,7 @@
     "USER": {
         "PROFILE": {
             "PAGE_TITLE": "{{userFullName}} (@{{userUsername}})",
-            "EDIT": "Profil ändern",
+            "USER_SETTINGS": "Benutzereinstellungen",
             "CLOSED_US": "Geschlossene User-Story",
             "PROJECTS": "Projekte",
             "PROJECTS_EMPTY": "{{username}} besitzt noch keine Projekte",
@@ -879,8 +894,8 @@
             "NOTIFICATIONS": "Benachrichtigungen",
             "VIEW_PROFILE_TITLE": "Profil ansehen",
             "VIEW_PROFILE": "Profil ansehen",
-            "EDIT_PROFILE_TITLE": "Bearbeiten Sie Ihr Profil",
-            "EDIT_PROFILE": "Profil bearbeiten",
+            "USER_SETTINGS_TITLE": "Einstellungen bearbeiten",
+            "USER_SETTINGS": "Benutzereinstellungen",
             "CHANGE_PASSWORD_TITLE": "Passwort ändern",
             "CHANGE_PASSWORD": "Passwort ändern",
             "DASHBOARD_TITLE": "Dashboard",
@@ -1214,7 +1229,8 @@
         "TOTAL_POINTS": "Gesamtpunkte",
         "ADD": "+ Neue User-Story anlegen",
         "ADD_BULK": "Mehrere neue User-Stories hinzufügen",
-        "PROMOTED": "Diese User-Story entstand aus Ticket:",
+        "PROMOTED_FROM_ISSUE": "Diese User-Story entstand aus Ticket:",
+        "PROMOTED_FROM_TASK": "This US has been promoted from Task:",
         "TITLE_LINK_GO_TO_ISSUE": "Zum Ticket wechseln",
         "TITLE_DELETE_ACTION": "User-Story löschen",
         "LIGHTBOX_TITLE_BLOKING_US": "Blockiert uns",
@@ -1463,10 +1479,8 @@
         "PAGE_DESCRIPTION": "Das Ticket-Listen Panel des Projekts {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Ticket",
         "ACTION_NEW_ISSUE": "+ NEUES TICKET",
-        "ACTION_PROMOTE_TO_US": "Zur User-Story aufwerten",
         "ACTION_ATTACH_SPRINT": "Ticket an Sprint anhängen",
         "ACTION_DETACH_SPRINT": "Ticket vom Sprint lösen",
-        "PROMOTED": "Dieses Ticket wurde aufgewertet zu User-Story:",
         "EXTERNAL_REFERENCE": "Dieses Ticket wurde erstellt durch",
         "GO_TO_EXTERNAL_REFERENCE": "Zur Quelle wechseln",
         "ACTION_DELETE": "Ticket löschen",
@@ -1488,10 +1502,6 @@
         "CONFIRM_CHANGE_FROM_SPRINT": {
             "TITLE": "Ticket an Sprint anhängen",
             "MESSAGE": "<strong>This issue is currently attached to sprint {{ oldSprintName }}</strong>. You are about to detach it from that sprint and attach it instead to sprint <strong>{{ newSprintName }}.</strong>"
-        },
-        "CONFIRM_PROMOTE": {
-            "TITLE": "Dieses Problem zur User-Story aufwerten",
-            "MESSAGE": "Sind Sie sicher, dass Sie aus diesem Ticket eine neue User-Story erstellen möchten?"
         },
         "TABLE": {
             "COLUMNS": {
@@ -1570,7 +1580,6 @@
         "AVATAR_MAX_SIZE": "[Max. Größe: {{maxFileSize}}]",
         "MENU": {
             "SECTION_TITLE": "Benutzereinstellungen",
-            "USER_PROFILE": "Benutzerprofil",
             "CHANGE_PASSWORD": "Passwort ändern",
             "EMAIL_NOTIFICATIONS": "E-Mail Benachrichtigungen",
             "DESKTOP_NOTIFICATIONS": "Desktop Benachrichtigungen",

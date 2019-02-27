@@ -200,6 +200,19 @@
             "BUTTON_TITLE": "Повысить/понизить",
             "COUNTER_TITLE": "{total, plural, one{один голос} other{# голоса (-ов)}}"
         },
+        "PROMOTE_TO_US": "Повысить до пользовательской истории",
+        "PROMOTED_ISSUES": "This Issue has been promoted to US:",
+        "PROMOTED_TASKS": "This Task has been promoted to US:",
+        "CONFIRM_PROMOTE": {
+            "ISSUE": {
+                "TITLE": "Promote this Issue to a new user story",
+                "MESSAGE": "Вы уверены, что хотите создать новую ПИ из этого запроса?"
+            },
+            "TASK": {
+                "TITLE": "Promote this Task to a new user story",
+                "MESSAGE": "Are you sure you want to create a new US from this Task?"
+            }
+        },
         "CUSTOM_ATTRIBUTES": {
             "CUSTOM_FIELDS": "Пользовательские поля",
             "SAVE": "Сохранить поле",
@@ -407,6 +420,8 @@
             "ASSIGNED_TO": "Assigned",
             "STATUS": "Статус",
             "PROGRESS": "Progress",
+            "CLOSED_US": "Closed user stories",
+            "CLOSED_EPICS": "Closed epics",
             "VIEW_OPTIONS": "View options"
         },
         "CREATE": {
@@ -796,7 +811,7 @@
     "USER": {
         "PROFILE": {
             "PAGE_TITLE": "{{userFullName}} (@{{userUsername}})",
-            "EDIT": "Изменить профиль",
+            "USER_SETTINGS": "Настройки пользователя",
             "CLOSED_US": "Закрытые ПИ",
             "PROJECTS": "Проекты",
             "PROJECTS_EMPTY": "{{username}} пока не имеет проектов",
@@ -879,8 +894,8 @@
             "NOTIFICATIONS": "Уведомления",
             "VIEW_PROFILE_TITLE": "Посмотреть профиль",
             "VIEW_PROFILE": "Посмотреть профиль",
-            "EDIT_PROFILE_TITLE": "Править свой профиль",
-            "EDIT_PROFILE": "Править профиль",
+            "USER_SETTINGS_TITLE": "Редактировать настройки",
+            "USER_SETTINGS": "Настройки пользователя",
             "CHANGE_PASSWORD_TITLE": "Изменить пароль",
             "CHANGE_PASSWORD": "Изменить пароль",
             "DASHBOARD_TITLE": "Рабочий стол",
@@ -1214,7 +1229,8 @@
         "TOTAL_POINTS": "общее число очков",
         "ADD": "+ Добавить Пользовательскую Историю",
         "ADD_BULK": "Добавить Пользовательские Истории пакетно",
-        "PROMOTED": "Эта ПИ была сформирована из запроса:",
+        "PROMOTED_FROM_ISSUE": "Эта ПИ была сформирована из запроса:",
+        "PROMOTED_FROM_TASK": "This US has been promoted from Task:",
         "TITLE_LINK_GO_TO_ISSUE": "Перейти к запросу",
         "TITLE_DELETE_ACTION": "Удалить пользовательскую историю",
         "LIGHTBOX_TITLE_BLOKING_US": "Блокирующая ПИ",
@@ -1463,10 +1479,8 @@
         "PAGE_DESCRIPTION": "Панель запросов проекта {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Запрос",
         "ACTION_NEW_ISSUE": "+НОВЫЙ ЗАПРОС",
-        "ACTION_PROMOTE_TO_US": "Повысить до пользовательской истории",
         "ACTION_ATTACH_SPRINT": "Attach issue to Sprint",
         "ACTION_DETACH_SPRINT": "Detach issue from Sprint",
-        "PROMOTED": "Этот запрос был переделан в ПИ:",
         "EXTERNAL_REFERENCE": "Этот запрос был создан из",
         "GO_TO_EXTERNAL_REFERENCE": "Перейти в начало",
         "ACTION_DELETE": "Удалить запрос",
@@ -1488,10 +1502,6 @@
         "CONFIRM_CHANGE_FROM_SPRINT": {
             "TITLE": "Attach issue to Sprint",
             "MESSAGE": "<strong>This issue is currently attached to sprint {{ oldSprintName }}</strong>. You are about to detach it from that sprint and attach it instead to sprint <strong>{{ newSprintName }}.</strong>"
-        },
-        "CONFIRM_PROMOTE": {
-            "TITLE": "Превратить этот запрос в новую пользовательскую историю",
-            "MESSAGE": "Вы уверены, что хотите создать новую ПИ из этого запроса?"
         },
         "TABLE": {
             "COLUMNS": {
@@ -1570,7 +1580,6 @@
         "AVATAR_MAX_SIZE": "[макс. размер: {{maxFileSize}}]",
         "MENU": {
             "SECTION_TITLE": "Настройки пользователя",
-            "USER_PROFILE": "Профиль пользователя",
             "CHANGE_PASSWORD": "Изменить пароль",
             "EMAIL_NOTIFICATIONS": "Уведомления почтой",
             "DESKTOP_NOTIFICATIONS": "Desktop notifications",

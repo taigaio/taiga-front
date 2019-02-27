@@ -200,6 +200,19 @@
             "BUTTON_TITLE": "이 아이템 공감/비공감",
             "COUNTER_TITLE": "{total, plural, one{one vote} other{# 명의 찬성}}"
         },
+        "PROMOTE_TO_US": "유저 스토리에 등록하기",
+        "PROMOTED_ISSUES": "This Issue has been promoted to US:",
+        "PROMOTED_TASKS": "This Task has been promoted to US:",
+        "CONFIRM_PROMOTE": {
+            "ISSUE": {
+                "TITLE": "Promote this Issue to a new user story",
+                "MESSAGE": "이 이슈에서 새 유저 스토리를 생성하시겠어요?"
+            },
+            "TASK": {
+                "TITLE": "Promote this Task to a new user story",
+                "MESSAGE": "Are you sure you want to create a new US from this Task?"
+            }
+        },
         "CUSTOM_ATTRIBUTES": {
             "CUSTOM_FIELDS": "사용자 정의 필드",
             "SAVE": "사용자 정의 필드 저장하기",
@@ -407,6 +420,8 @@
             "ASSIGNED_TO": "할당됨",
             "STATUS": "상태",
             "PROGRESS": "진행",
+            "CLOSED_US": "Closed user stories",
+            "CLOSED_EPICS": "Closed epics",
             "VIEW_OPTIONS": "옵션 보기"
         },
         "CREATE": {
@@ -796,7 +811,7 @@
     "USER": {
         "PROFILE": {
             "PAGE_TITLE": "{{userFullName}} (@{{userUsername}})",
-            "EDIT": "프로필 수정하기",
+            "USER_SETTINGS": "사용자 설정",
             "CLOSED_US": "완료한 유저 스토리",
             "PROJECTS": "프로젝트",
             "PROJECTS_EMPTY": "{{username}} 님은 아직 프로젝트가 없습니다",
@@ -879,8 +894,8 @@
             "NOTIFICATIONS": "알림",
             "VIEW_PROFILE_TITLE": "프로필 보기",
             "VIEW_PROFILE": "프로필 보기",
-            "EDIT_PROFILE_TITLE": "프로필 수정하기",
-            "EDIT_PROFILE": "프로필 수정하기",
+            "USER_SETTINGS_TITLE": "설정 수정",
+            "USER_SETTINGS": "사용자 설정",
             "CHANGE_PASSWORD_TITLE": "비밀번호 변경하기",
             "CHANGE_PASSWORD": "비밀번호 변경하기",
             "DASHBOARD_TITLE": "대시보드",
@@ -1214,7 +1229,8 @@
         "TOTAL_POINTS": "전체 포인트",
         "ADD": "유저 스토리 추가하기",
         "ADD_BULK": "유저 스토리 여러개 생성하기",
-        "PROMOTED": "이 유저 스토리는 이슈에서 만들어졌음",
+        "PROMOTED_FROM_ISSUE": "이 유저 스토리는 이슈에서 만들어졌음",
+        "PROMOTED_FROM_TASK": "This US has been promoted from Task:",
         "TITLE_LINK_GO_TO_ISSUE": "이슈로 가기",
         "TITLE_DELETE_ACTION": "유저 스토리 삭제하기",
         "LIGHTBOX_TITLE_BLOKING_US": "블로킹 유저 스토리",
@@ -1463,10 +1479,8 @@
         "PAGE_DESCRIPTION": "프로젝트 {{projectName}}: {{projectDescription}}의 이슈 목록 패널",
         "SECTION_NAME": "이슈",
         "ACTION_NEW_ISSUE": "이슈 추가하기",
-        "ACTION_PROMOTE_TO_US": "유저 스토리에 등록하기",
         "ACTION_ATTACH_SPRINT": "Attach issue to Sprint",
         "ACTION_DETACH_SPRINT": "Detach issue from Sprint",
-        "PROMOTED": "이 이슈가 유저 스토리에 등록되었습니다.",
         "EXTERNAL_REFERENCE": "이 이슈가 만들어 진 곳은 ",
         "GO_TO_EXTERNAL_REFERENCE": "원본으로 가기",
         "ACTION_DELETE": "이슈 삭제하기",
@@ -1488,10 +1502,6 @@
         "CONFIRM_CHANGE_FROM_SPRINT": {
             "TITLE": "Attach issue to Sprint",
             "MESSAGE": "<strong>This issue is currently attached to sprint {{ oldSprintName }}</strong>. You are about to detach it from that sprint and attach it instead to sprint <strong>{{ newSprintName }}.</strong>"
-        },
-        "CONFIRM_PROMOTE": {
-            "TITLE": "이 이슈를 유저 스토리에 등록하기",
-            "MESSAGE": "이 이슈에서 새 유저 스토리를 생성하시겠어요?"
         },
         "TABLE": {
             "COLUMNS": {
@@ -1570,7 +1580,6 @@
         "AVATAR_MAX_SIZE": "[최대 크기: {{maxFileSize}}]",
         "MENU": {
             "SECTION_TITLE": "사용자 설정",
-            "USER_PROFILE": "사용자 프로필",
             "CHANGE_PASSWORD": "비밀번호 변경하기",
             "EMAIL_NOTIFICATIONS": "이메일 알림",
             "DESKTOP_NOTIFICATIONS": "Desktop notifications",

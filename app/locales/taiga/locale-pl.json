@@ -200,6 +200,19 @@
             "BUTTON_TITLE": "Ocen ten obiekt",
             "COUNTER_TITLE": "{total, plural, one{one vote} other{# votes}}"
         },
+        "PROMOTE_TO_US": "Awansuj na historyjkę użytkownika",
+        "PROMOTED_ISSUES": "This Issue has been promoted to US:",
+        "PROMOTED_TASKS": "This Task has been promoted to US:",
+        "CONFIRM_PROMOTE": {
+            "ISSUE": {
+                "TITLE": "Promote this Issue to a new user story",
+                "MESSAGE": "Jesteś pewny, że chcesz wypromować to zgłoszenie na historyjkę użytkownika?"
+            },
+            "TASK": {
+                "TITLE": "Promote this Task to a new user story",
+                "MESSAGE": "Are you sure you want to create a new US from this Task?"
+            }
+        },
         "CUSTOM_ATTRIBUTES": {
             "CUSTOM_FIELDS": "Własne Pola",
             "SAVE": "Zapisz pole niestandardowe",
@@ -407,6 +420,8 @@
             "ASSIGNED_TO": "Przydzielone",
             "STATUS": "Statusy",
             "PROGRESS": "Postęp",
+            "CLOSED_US": "Closed user stories",
+            "CLOSED_EPICS": "Closed epics",
             "VIEW_OPTIONS": "Zobacz opcje"
         },
         "CREATE": {
@@ -796,7 +811,7 @@
     "USER": {
         "PROFILE": {
             "PAGE_TITLE": "{{userFullName}} (@{{userUsername}})",
-            "EDIT": "Edycja profilu",
+            "USER_SETTINGS": "Ustawienia użytkownika",
             "CLOSED_US": "Zamknięte historyjki użytkownika",
             "PROJECTS": "Projekty",
             "PROJECTS_EMPTY": "{{username}} jeszcze nie uczestniczy w żadnym projekcie",
@@ -879,8 +894,8 @@
             "NOTIFICATIONS": "Powiadomienia",
             "VIEW_PROFILE_TITLE": "Zobacz profil",
             "VIEW_PROFILE": "Zobacz profil",
-            "EDIT_PROFILE_TITLE": "Edytuj profil",
-            "EDIT_PROFILE": "Edytuj profil",
+            "USER_SETTINGS_TITLE": "Edytuj ustawienia",
+            "USER_SETTINGS": "Ustawienia użytkownika",
             "CHANGE_PASSWORD_TITLE": "Zmień hasło",
             "CHANGE_PASSWORD": "Zmień hasło",
             "DASHBOARD_TITLE": "Dashboard",
@@ -1214,7 +1229,8 @@
         "TOTAL_POINTS": "total points",
         "ADD": "+ Dodaj nową historyjkę użytkownika",
         "ADD_BULK": "Masowo dodaj nowe historyjki użytkownika",
-        "PROMOTED": "Ta historyjka awansowała ze zgłoszenia:",
+        "PROMOTED_FROM_ISSUE": "Ta historyjka awansowała ze zgłoszenia:",
+        "PROMOTED_FROM_TASK": "This US has been promoted from Task:",
         "TITLE_LINK_GO_TO_ISSUE": "Idź do zgłoszenia",
         "TITLE_DELETE_ACTION": "Usuń historyjkę użytkownika",
         "LIGHTBOX_TITLE_BLOKING_US": "Blokuje nas",
@@ -1463,10 +1479,8 @@
         "PAGE_DESCRIPTION": "Lista zgłoszeń w projekcie {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Zgłoszenie",
         "ACTION_NEW_ISSUE": "+ NOWE ZGŁOSZENIE",
-        "ACTION_PROMOTE_TO_US": "Awansuj na historyjkę użytkownika",
         "ACTION_ATTACH_SPRINT": "Attach issue to Sprint",
         "ACTION_DETACH_SPRINT": "Detach issue from Sprint",
-        "PROMOTED": "To zgłoszenie zostało wypromowane na HU:",
         "EXTERNAL_REFERENCE": "Źródło zgłoszenia",
         "GO_TO_EXTERNAL_REFERENCE": "Idź do źródła",
         "ACTION_DELETE": "Usuń zgłoszenie",
@@ -1488,10 +1502,6 @@
         "CONFIRM_CHANGE_FROM_SPRINT": {
             "TITLE": "Attach issue to Sprint",
             "MESSAGE": "<strong>This issue is currently attached to sprint {{ oldSprintName }}</strong>. You are about to detach it from that sprint and attach it instead to sprint <strong>{{ newSprintName }}.</strong>"
-        },
-        "CONFIRM_PROMOTE": {
-            "TITLE": "Awansuj to zgłoszenie na historyjkę użytkownika",
-            "MESSAGE": "Jesteś pewny, że chcesz wypromować to zgłoszenie na historyjkę użytkownika?"
         },
         "TABLE": {
             "COLUMNS": {
@@ -1570,7 +1580,6 @@
         "AVATAR_MAX_SIZE": "[Maks. rozmiar: {{maxFileSize}}]",
         "MENU": {
             "SECTION_TITLE": "Ustawienia użytkownika",
-            "USER_PROFILE": "Profil użytkownika",
             "CHANGE_PASSWORD": "Zmień hasło",
             "EMAIL_NOTIFICATIONS": "Powiadomienia e-mail",
             "DESKTOP_NOTIFICATIONS": "Desktop notifications",

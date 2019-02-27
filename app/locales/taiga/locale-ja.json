@@ -200,6 +200,19 @@
             "BUTTON_TITLE": "賛成/反対の投票を行う",
             "COUNTER_TITLE": "{total, plural, one{one vote} other{# 人が賛成}}"
         },
+        "PROMOTE_TO_US": "ユーザーストーリーに変更する",
+        "PROMOTED_ISSUES": "This Issue has been promoted to US:",
+        "PROMOTED_TASKS": "This Task has been promoted to US:",
+        "CONFIRM_PROMOTE": {
+            "ISSUE": {
+                "TITLE": "Promote this Issue to a new user story",
+                "MESSAGE": "この課題から新しいユーザーストーリーを作成しますか？"
+            },
+            "TASK": {
+                "TITLE": "Promote this Task to a new user story",
+                "MESSAGE": "Are you sure you want to create a new US from this Task?"
+            }
+        },
         "CUSTOM_ATTRIBUTES": {
             "CUSTOM_FIELDS": "カスタムフィールド",
             "SAVE": "カスタムフィールドを保存",
@@ -407,6 +420,8 @@
             "ASSIGNED_TO": "割当済",
             "STATUS": "ステータス",
             "PROGRESS": "進捗",
+            "CLOSED_US": "Closed user stories",
+            "CLOSED_EPICS": "Closed epics",
             "VIEW_OPTIONS": "オプションの表示"
         },
         "CREATE": {
@@ -796,7 +811,7 @@
     "USER": {
         "PROFILE": {
             "PAGE_TITLE": "{{userFullName}} (@{{userUsername}})",
-            "EDIT": "プロフィールを編集",
+            "USER_SETTINGS": "ユーザー設定",
             "CLOSED_US": "完了したユーザーストーリー",
             "PROJECTS": "プロジェクト",
             "PROJECTS_EMPTY": "{{username}} はまだプロジェクトに参加していません",
@@ -879,8 +894,8 @@
             "NOTIFICATIONS": "通知",
             "VIEW_PROFILE_TITLE": "プロフィールを表示",
             "VIEW_PROFILE": "プロフィールを表示",
-            "EDIT_PROFILE_TITLE": "プロフィールを編集",
-            "EDIT_PROFILE": "プロフィールを編集",
+            "USER_SETTINGS_TITLE": "設定を編集",
+            "USER_SETTINGS": "ユーザー設定",
             "CHANGE_PASSWORD_TITLE": "パスワード変更",
             "CHANGE_PASSWORD": "パスワード変更",
             "DASHBOARD_TITLE": "ダッシュボード",
@@ -1214,7 +1229,8 @@
         "TOTAL_POINTS": "合計ポイント",
         "ADD": "+ 新規ユーザーストーリーを追加する",
         "ADD_BULK": "新規ユーザーストーリーを一括で追加する",
-        "PROMOTED": "このユーザーストーリーはこちらの課題から発展:",
+        "PROMOTED_FROM_ISSUE": "このユーザーストーリーはこちらの課題から発展:",
+        "PROMOTED_FROM_TASK": "This US has been promoted from Task:",
         "TITLE_LINK_GO_TO_ISSUE": "課題へ移動",
         "TITLE_DELETE_ACTION": "ユーザーストーリーを削除",
         "LIGHTBOX_TITLE_BLOKING_US": "Blocking us",
@@ -1463,10 +1479,8 @@
         "PAGE_DESCRIPTION": "課題一覧パネル {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "課題",
         "ACTION_NEW_ISSUE": "+ 新規課題",
-        "ACTION_PROMOTE_TO_US": "ユーザーストーリーに変更する",
         "ACTION_ATTACH_SPRINT": "Attach issue to Sprint",
         "ACTION_DETACH_SPRINT": "Detach issue from Sprint",
-        "PROMOTED": "この課題はこちらのユーザーストーリーへ発展:",
         "EXTERNAL_REFERENCE": "課題の作成元: ",
         "GO_TO_EXTERNAL_REFERENCE": "originへ移動",
         "ACTION_DELETE": "課題を削除",
@@ -1488,10 +1502,6 @@
         "CONFIRM_CHANGE_FROM_SPRINT": {
             "TITLE": "Attach issue to Sprint",
             "MESSAGE": "<strong>This issue is currently attached to sprint {{ oldSprintName }}</strong>. You are about to detach it from that sprint and attach it instead to sprint <strong>{{ newSprintName }}.</strong>"
-        },
-        "CONFIRM_PROMOTE": {
-            "TITLE": "この課題を新しいユーザーストーリーに変更",
-            "MESSAGE": "この課題から新しいユーザーストーリーを作成しますか？"
         },
         "TABLE": {
             "COLUMNS": {
@@ -1570,7 +1580,6 @@
         "AVATAR_MAX_SIZE": "[最大サイズ: {{maxFileSize}}]",
         "MENU": {
             "SECTION_TITLE": "ユーザー設定",
-            "USER_PROFILE": "ユーザープロフィール",
             "CHANGE_PASSWORD": "パスワード変更",
             "EMAIL_NOTIFICATIONS": "メール通知",
             "DESKTOP_NOTIFICATIONS": "デスクトップ通知",

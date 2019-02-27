@@ -200,6 +200,19 @@
             "BUTTON_TITLE": "Upvote/Downvote this item",
             "COUNTER_TITLE": "{total, plural, one{one vote} other{# votes}}"
         },
+        "PROMOTE_TO_US": "Liitä käyttäjätarinaan",
+        "PROMOTED_ISSUES": "This Issue has been promoted to US:",
+        "PROMOTED_TASKS": "This Task has been promoted to US:",
+        "CONFIRM_PROMOTE": {
+            "ISSUE": {
+                "TITLE": "Promote this Issue to a new user story",
+                "MESSAGE": "Haluatko varmasti lisätä uuden käyttäjätarinan tästä pyynnöstä?"
+            },
+            "TASK": {
+                "TITLE": "Promote this Task to a new user story",
+                "MESSAGE": "Are you sure you want to create a new US from this Task?"
+            }
+        },
         "CUSTOM_ATTRIBUTES": {
             "CUSTOM_FIELDS": "Omat kentät",
             "SAVE": "Tallenna oma kenttä",
@@ -407,6 +420,8 @@
             "ASSIGNED_TO": "Tekijä valittu",
             "STATUS": "Tila",
             "PROGRESS": "Edistyminen",
+            "CLOSED_US": "Closed user stories",
+            "CLOSED_EPICS": "Closed epics",
             "VIEW_OPTIONS": "Näytä asetukset"
         },
         "CREATE": {
@@ -796,7 +811,7 @@
     "USER": {
         "PROFILE": {
             "PAGE_TITLE": "{{userFullName}} (@{{userUsername}})",
-            "EDIT": "Muokkaa profiilia",
+            "USER_SETTINGS": "Käyttäjän asetukset",
             "CLOSED_US": "Suljettu US",
             "PROJECTS": "Projektit",
             "PROJECTS_EMPTY": "{{username}} ei vielä omia projekteja",
@@ -879,8 +894,8 @@
             "NOTIFICATIONS": "Ilmoitukset",
             "VIEW_PROFILE_TITLE": "Näytä profiili",
             "VIEW_PROFILE": "Näytä profiili",
-            "EDIT_PROFILE_TITLE": "Muokkaa profiiliasi",
-            "EDIT_PROFILE": "Muokkaa profiilia",
+            "USER_SETTINGS_TITLE": "Edit your settings",
+            "USER_SETTINGS": "Käyttäjän asetukset",
             "CHANGE_PASSWORD_TITLE": "Muuta salasanaa",
             "CHANGE_PASSWORD": "Muuta salasanaa",
             "DASHBOARD_TITLE": "Dashboard",
@@ -1214,7 +1229,8 @@
         "TOTAL_POINTS": "pisteet yhteensä",
         "ADD": "+ Lisää uusi käyttäjätarina",
         "ADD_BULK": "Lisää monta käyttäjätarinaa",
-        "PROMOTED": "Tämä Kt on liitetty pyyntöön:",
+        "PROMOTED_FROM_ISSUE": "Tämä Kt on liitetty pyyntöön:",
+        "PROMOTED_FROM_TASK": "This US has been promoted from Task:",
         "TITLE_LINK_GO_TO_ISSUE": "Siirry pyyntöön",
         "TITLE_DELETE_ACTION": "Poista käyttäjätarina",
         "LIGHTBOX_TITLE_BLOKING_US": "Meitä estää",
@@ -1463,10 +1479,8 @@
         "PAGE_DESCRIPTION": "The issues list panel of the project {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Issue",
         "ACTION_NEW_ISSUE": "+ UUSI PYYNTÖ",
-        "ACTION_PROMOTE_TO_US": "Liitä käyttäjätarinaan",
         "ACTION_ATTACH_SPRINT": "Attach issue to Sprint",
         "ACTION_DETACH_SPRINT": "Detach issue from Sprint",
-        "PROMOTED": "Tämä pyyntö on liitetty Kthen:",
         "EXTERNAL_REFERENCE": "Tämä pyyntö on luotu täältä:",
         "GO_TO_EXTERNAL_REFERENCE": "Palaa alkuun",
         "ACTION_DELETE": "Poista pyyntö",
@@ -1488,10 +1502,6 @@
         "CONFIRM_CHANGE_FROM_SPRINT": {
             "TITLE": "Attach issue to Sprint",
             "MESSAGE": "<strong>This issue is currently attached to sprint {{ oldSprintName }}</strong>. You are about to detach it from that sprint and attach it instead to sprint <strong>{{ newSprintName }}.</strong>"
-        },
-        "CONFIRM_PROMOTE": {
-            "TITLE": "Liitä tämä pyyntö uuteen käyttäjätarinaan",
-            "MESSAGE": "Haluatko varmasti lisätä uuden käyttäjätarinan tästä pyynnöstä?"
         },
         "TABLE": {
             "COLUMNS": {
@@ -1570,7 +1580,6 @@
         "AVATAR_MAX_SIZE": "Maksimi koko {{maxFileSize}}",
         "MENU": {
             "SECTION_TITLE": "Käyttäjän asetukset",
-            "USER_PROFILE": "Käyttäjän profiili",
             "CHANGE_PASSWORD": "Muuta salasanaa",
             "EMAIL_NOTIFICATIONS": "Sähköposti-ilmoitukset",
             "DESKTOP_NOTIFICATIONS": "Desktop notifications",

@@ -200,6 +200,19 @@
             "BUTTON_TITLE": "Bu konuya oy/karşı oy ver",
             "COUNTER_TITLE": "{total, plural, one{bir oy} other{# oy}}"
         },
+        "PROMOTE_TO_US": "Kullanıcı Hikayesine Terfi Ettir",
+        "PROMOTED_ISSUES": "This Issue has been promoted to US:",
+        "PROMOTED_TASKS": "This Task has been promoted to US:",
+        "CONFIRM_PROMOTE": {
+            "ISSUE": {
+                "TITLE": "Promote this Issue to a new user story",
+                "MESSAGE": "Bu sorundan yeni bir hikaye oluşturmak istediğinize emin misiniz?"
+            },
+            "TASK": {
+                "TITLE": "Promote this Task to a new user story",
+                "MESSAGE": "Are you sure you want to create a new US from this Task?"
+            }
+        },
         "CUSTOM_ATTRIBUTES": {
             "CUSTOM_FIELDS": "Özel Alanlar",
             "SAVE": "Özel Alan Kaydet",
@@ -407,6 +420,8 @@
             "ASSIGNED_TO": "Aranmış",
             "STATUS": "Durum ",
             "PROGRESS": "İlerleme",
+            "CLOSED_US": "Closed user stories",
+            "CLOSED_EPICS": "Closed epics",
             "VIEW_OPTIONS": "Seçenekleri gör"
         },
         "CREATE": {
@@ -796,7 +811,7 @@
     "USER": {
         "PROFILE": {
             "PAGE_TITLE": "{{userFullName}} (@{{userUsername}})",
-            "EDIT": "Profili Düzenle",
+            "USER_SETTINGS": "Kullanıcı Ayarları",
             "CLOSED_US": "Kapatılmış KH",
             "PROJECTS": "Projeler",
             "PROJECTS_EMPTY": "{{username}} kullanıcısının henüz bir projesi yok",
@@ -879,8 +894,8 @@
             "NOTIFICATIONS": "Bildirimler",
             "VIEW_PROFILE_TITLE": "Profili Görüntüle",
             "VIEW_PROFILE": "Profili Görüntüle",
-            "EDIT_PROFILE_TITLE": "Profilini düzenle",
-            "EDIT_PROFILE": "Profil Düzenle",
+            "USER_SETTINGS_TITLE": "Ayarlarınızı düzenleyin",
+            "USER_SETTINGS": "Kullanıcı Ayarları",
             "CHANGE_PASSWORD_TITLE": "Parolayı değiştir",
             "CHANGE_PASSWORD": "Parolayı değiştir",
             "DASHBOARD_TITLE": "Pano",
@@ -1214,7 +1229,8 @@
         "TOTAL_POINTS": "toplam puanlar",
         "ADD": "+ Yeni bir Kullanıcı Hikayesi ekle",
         "ADD_BULK": "Toplu halde yeni Kullanıcı Hikayeleri ekle",
-        "PROMOTED": "Bu hikayenin temelindeki sorun:",
+        "PROMOTED_FROM_ISSUE": "Bu hikayenin temelindeki sorun:",
+        "PROMOTED_FROM_TASK": "This US has been promoted from Task:",
         "TITLE_LINK_GO_TO_ISSUE": "Talebe git",
         "TITLE_DELETE_ACTION": "Kullanıcı Hikayesi Sil",
         "LIGHTBOX_TITLE_BLOKING_US": "Bizi engelleyen",
@@ -1463,10 +1479,8 @@
         "PAGE_DESCRIPTION": "{{projectName}} projesinin sorun listesi paneli: {{projectDescription}}",
         "SECTION_NAME": "Sorun",
         "ACTION_NEW_ISSUE": "+ YENİ SORUN",
-        "ACTION_PROMOTE_TO_US": "Kullanıcı Hikayesine Terfi Ettir",
         "ACTION_ATTACH_SPRINT": "Attach issue to Sprint",
         "ACTION_DETACH_SPRINT": "Detach issue from Sprint",
-        "PROMOTED": "Bu sorun, kullanıcı hikayesine yükseltildi:",
         "EXTERNAL_REFERENCE": "Bu talebin oluşturulduğu ",
         "GO_TO_EXTERNAL_REFERENCE": "Kökenine git",
         "ACTION_DELETE": "Sorun sil",
@@ -1488,10 +1502,6 @@
         "CONFIRM_CHANGE_FROM_SPRINT": {
             "TITLE": "Attach issue to Sprint",
             "MESSAGE": "<strong>This issue is currently attached to sprint {{ oldSprintName }}</strong>. You are about to detach it from that sprint and attach it instead to sprint <strong>{{ newSprintName }}.</strong>"
-        },
-        "CONFIRM_PROMOTE": {
-            "TITLE": "Bu talebi yeni bir kullanıcı hikayesi olacak şekilde terfi ettirin",
-            "MESSAGE": "Bu sorundan yeni bir hikaye oluşturmak istediğinize emin misiniz?"
         },
         "TABLE": {
             "COLUMNS": {
@@ -1570,7 +1580,6 @@
         "AVATAR_MAX_SIZE": "[Max. boyut: {{maxFileSize}}]",
         "MENU": {
             "SECTION_TITLE": "Kullanıcı Ayarları",
-            "USER_PROFILE": "Kullanıcı profili",
             "CHANGE_PASSWORD": "Parolayı değiştir",
             "EMAIL_NOTIFICATIONS": "E-posta bildirimleri",
             "DESKTOP_NOTIFICATIONS": "Desktop notifications",
