@@ -111,6 +111,7 @@ class HomeService extends taiga.Service
         params_uss = {
             is_closed: false
             assigned_users: userId
+            dashboard: true
         }
 
         params_tasks = {
@@ -143,6 +144,7 @@ class HomeService extends taiga.Service
         params_uss = {
             is_closed: false
             watchers: userId
+            dashboard: true
         }
 
         params_tasks = {
