@@ -42,6 +42,6 @@
         .statistic.card-comments(ng-if="vm.item.getIn(['model', 'total_comments']) || vm.visible('empty_extra_info')")
             tg-svg(svg-icon="icon-meetup")
             span {{vm.item.getIn(['model', 'total_comments'])}}
-        .statistic.card-attachments(ng-if="vm.item.getIn(['model', 'attachments']).size || vm.visible('empty_extra_info')")
+        .statistic.card-attachments(ng-if="vm.item.getIn(['model', 'total_attachments']) || vm.visible('empty_extra_info')")
            tg-svg(svg-icon="icon-attachment")
-           span {{vm.item.getIn(['model', 'attachments']).size}}
+           span {{vm.item.getIn(['model', 'total_attachments'])}}

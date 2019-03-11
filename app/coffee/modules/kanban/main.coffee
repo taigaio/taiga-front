@@ -115,7 +115,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                 @.isFirstLoad = false
                 @kanbanUserstoriesService.resetFolds()
 
-        else if @.zoomLevel > 1 && previousZoomLevel <= 1
+        else if @.zoomLevel > 2 && previousZoomLevel <= 2
             @.zoomLoading = true
 
             @.loadUserstories().then () =>
@@ -279,7 +279,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             status__is_archived: false
         }
 
-        if @.zoomLevel > 1
+        if @.zoomLevel > 2
             params.include_attachments = 1
             params.include_tasks = 1
 
