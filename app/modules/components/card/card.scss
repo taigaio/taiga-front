@@ -71,6 +71,11 @@
             }
         }
     }
+    &.zoom-2 {
+        .card-title {
+            padding: .5rem 1rem 0;
+        }
+    }
 }
 
 .card-tags {
