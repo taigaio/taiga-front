@@ -105,6 +105,18 @@
     )
         span {{ ::vm.item.external_reference[1] }}
 
+//- User Story promoted from task
+.item-origin-task(ng-if="vm.item.origin_task")
+    span(translate="US.PROMOTED_FROM_TASK")
+    a(
+        href=""
+        tg-check-permission="view_us"
+        tg-nav="project-tasks-detail:project=vm.project.slug,ref=vm.item.origin_task.ref"
+        title="{{'US.TITLE_LINK_GO_TO_TASK' | translate}}"
+    )
+        span.item-ref {{'#' + vm.item.origin_task.ref}}
+        span(ng-bind-html="vm.item.origin_task.subject | emojify")
+
 //- User Story promoted from issue
 .item-origin-issue(ng-if="vm.item.origin_issue")
     span(translate="US.PROMOTED_FROM_ISSUE")

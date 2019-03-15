@@ -1232,6 +1232,7 @@
         "PROMOTED_FROM_ISSUE": "This US has been promoted from Issue:",
         "PROMOTED_FROM_TASK": "This US has been promoted from Task:",
         "TITLE_LINK_GO_TO_ISSUE": "Go to issue",
+        "TITLE_LINK_GO_TO_TASK": "Go to task",
         "TITLE_DELETE_ACTION": "Delete User Story",
         "LIGHTBOX_TITLE_BLOKING_US": "Blocking us",
         "NOT_ESTIMATED": "Not estimated",
