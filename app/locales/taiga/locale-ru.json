@@ -652,7 +652,7 @@
             "TASK_TITLE": "Task Due Date status",
             "ISSUE_TITLE": "Issue Due Date status",
             "DAYS_TO_DUE_DATE": "Days to due date",
-            "BEFORE_AFTER": "Before/after",
+            "BEFORE_AFTER": "До/после",
             "BEFORE": "Before",
             "AFTER": "Past"
         },
@@ -1127,7 +1127,7 @@
             "EDIT_ISSUE": "Edit Issue",
             "EDIT_US": "Edit User Story",
             "ADD_EXISTING_ISSUE": "Add Issue to {{ targetName }}",
-            "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?",
+            "CONFIRM_CLOSE": "Вы не сохранили изменения.\nВы уверены, что хотите закрыть форму?",
             "EXISTING_ISSUE": "Existing Issue",
             "CHOOSE_EXISTING_ISSUE": "Which Issue?",
             "ADD_ISSUE": "Добавить запрос",
@@ -1178,9 +1178,9 @@
             "REASON_FOR_DUE_DATE": "Reason for the due date",
             "PLACEHOLDER_REASON_FOR_DUE_DATE": "Why does this US need a due date?",
             "SUGGESTIONS": {
-                "IN_ONE_WEEK": "In one week",
+                "IN_ONE_WEEK": "Через одну неделю",
                 "IN_TWO_WEEKS": "In two weeks",
-                "IN_ONE_MONTH": "In one month",
+                "IN_ONE_MONTH": "Через один месяц",
                 "IN_THREE_MONTHS": "In three months"
             },
             "TITLE_ACTION_DELETE_DUE_DATE": "Delete due date"
@@ -1583,7 +1583,7 @@
             "CHANGE_PASSWORD": "Изменить пароль",
             "EMAIL_NOTIFICATIONS": "Уведомления почтой",
             "DESKTOP_NOTIFICATIONS": "Desktop notifications",
-            "EVENTS": "Events"
+            "EVENTS": "События"
         },
         "NOTIFICATIONS": {
             "LIVE_SECTION_NAME": "Desktop Notifications",
@@ -1604,7 +1604,7 @@
             "DEFAULT_VALUE": "Default"
         },
         "EVENTS": {
-            "SECTION_NAME": "Events",
+            "SECTION_NAME": "События",
             "SECTION_DESCRIPTION": "Important events in Taiga header",
             "SECTION_DESCRIPTION_EXPANDED": "(direct mentions, updates in items that you are watching...)",
             "COLUMN_ENABLED": "Enabled",
@@ -1714,11 +1714,11 @@
         }
     },
     "EVENTS": {
-        "TITLE": "Events",
-        "MY_EVENTS": "My events",
+        "TITLE": "События",
+        "MY_EVENTS": "Мои события",
         "DISMISS_ALL": "Dismiss all",
         "VIEW_ALL": "View all",
-        "NO_NEW_EVENTS": "No new events",
+        "NO_NEW_EVENTS": "Нет новых событий",
         "NO_EVENTS_YET": "There are no events yet",
         "ASSIGNED_YOU": "{{username}} assigned you to {{obj_name}}",
         "ADDED_YOU_AS_WATCHER": "{{username}} added you as watcher on {{obj_name}}",
