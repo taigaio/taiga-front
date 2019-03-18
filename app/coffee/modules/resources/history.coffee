@@ -52,6 +52,12 @@ resourceProvider = ($repo, $http, $urls) ->
         return $http.post(url, null, params).then (data) =>
             return data.data
 
+    service.getHistory = (historyType, contentType, objectId) ->
+        url = $urls.resolve("history/#{contentType}", )
+        return $http.get("#{url}/#{objectId}", {type: historyType})
+            .then (result) ->
+                return result.data
+
     service.undeleteComment = (type, objectId, activityId) ->
         url = $urls.resolve("history/#{type}")
         url = "#{url}/#{objectId}/undelete_comment"

@@ -52,7 +52,7 @@ class HistorySectionController
             @.activities = response.toJS()
 
     _loadComments: () ->
-        @rs.history.get(@.name, @.id).then (comments) =>
+        @rs.history.getHistory('comment', @.name, @.id).then (comments) =>
             @.comments = _.filter(comments, (item) -> item.comment != "")
             if @.reverse
                 @.comments - _.reverse(@.comments)
