@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+## 4.2.1 (2019-03-20)
+
+- Add user stories dashboard filter
+- Change Kanban zoom level
+- Filter history by entry type
+- Minor fixes.
+
 ## 4.2.0 (2019-02-28)
 
 - Promote Tasks to US
