@@ -99,7 +99,7 @@ describe "HistorySection", ->
         historyCtrl.reverse = false
 
         comments = ['comment3', 'comment2', 'comment1']
-        mocks.tgResources.history.get.withArgs('foo', 3).promise().resolve(comments)
+        mocks.tgResources.history.get.withArgs('foo', 3, 'comment').promise().resolve(comments)
 
         historyCtrl._loadComments().then () ->
             expect(historyCtrl.comments).to.be.eql(['comment3', 'comment2', 'comment1'])
@@ -112,7 +112,7 @@ describe "HistorySection", ->
         historyCtrl.reverse = true
 
         comments = ['comment3', 'comment2', 'comment1']
-        mocks.tgResources.history.get.withArgs('foo', 3).promise().resolve(comments)
+        mocks.tgResources.history.get.withArgs('foo', 3, 'comment').promise().resolve(comments)
 
         historyCtrl._loadComments().then () ->
             expect(historyCtrl.comments).to.be.eql(['comment1', 'comment2', 'comment3'])

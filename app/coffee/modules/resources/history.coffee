@@ -23,8 +23,8 @@ taiga = @.taiga
 resourceProvider = ($repo, $http, $urls) ->
     service = {}
 
-    service.get = (type, objectId) ->
-        return $repo.queryOneRaw("history/#{type}", objectId)
+    service.get = (contentType, objectId, entryType) ->
+        return $repo.queryOneRaw("history/#{contentType}", objectId, {type: entryType})
 
     service.editComment = (type, objectId, activityId, comment) ->
         url = $urls.resolve("history/#{type}")
