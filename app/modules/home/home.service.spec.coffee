@@ -45,7 +45,7 @@ describe "tgHome", ->
 
     _mockProjectsService = () ->
         mocks.projectsService = {
-            getProjectsByUserId: sinon.stub().promise()
+            getListProjectsByUserId: sinon.stub().promise()
         }
 
         provide.value "tgProjectsService", mocks.projectsService
@@ -78,7 +78,7 @@ describe "tgHome", ->
         project1 = {id: 1, name: "fake1", slug: "project-1"}
         project2 = {id: 2, name: "fake2", slug: "project-2"}
 
-        mocks.projectsService.getProjectsByUserId
+        mocks.projectsService.getListProjectsByUserId
             .withArgs(userId)
             .resolve(Immutable.fromJS([
                 project1,

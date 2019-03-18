@@ -98,7 +98,7 @@ class HomeService extends taiga.Service
     getWorkInProgress: (userId) ->
         projectsById = Immutable.Map()
 
-        projectsPromise = @projectsService.getProjectsByUserId(userId).then (projects) ->
+        projectsPromise = @projectsService.getListProjectsByUserId(userId).then (projects) ->
             projectsById = Immutable.fromJS(groupBy(projects.toJS(), (p) -> p.id))
 
         assignedTo = Immutable.Map()

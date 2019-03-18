@@ -45,6 +45,11 @@ class ProjectsService extends taiga.Service
             .then (projects) =>
                 return projects.map @._decorate.bind(@)
 
+    getListProjectsByUserId: (userId, paginate) ->
+        return @rs.projects.getListProjectsByUserId(userId, paginate)
+            .then (projects) =>
+                return projects.map @._decorate.bind(@)
+
     _decorate: (project) ->
         url = @projectUrl.get(project.toJS())
 

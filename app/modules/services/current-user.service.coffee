@@ -60,7 +60,6 @@ class CurrentUserService
 
     setUser: (user) ->
         @._user = user
-
         return @._loadUserInfo()
 
     bulkUpdateProjectsOrder: (sortData) ->
@@ -69,6 +68,10 @@ class CurrentUserService
 
     loadProjects: () ->
         return @projectsService.getProjectsByUserId(@._user.get("id"))
+            .then (projects) => @.setProjects(projects)
+
+    loadProjectsList: () ->
+        return @projectsService.getListProjectsByUserId(@._user.get("id"), null,)
             .then (projects) => @.setProjects(projects)
 
     disableJoyRide: (section) ->
@@ -110,7 +113,7 @@ class CurrentUserService
 
     _loadUserInfo: () ->
         return Promise.all([
-            @.loadProjects()
+            @.loadProjectsList()
         ])
 
     setProjects: (projects) ->

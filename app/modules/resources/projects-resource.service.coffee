@@ -82,6 +82,21 @@ Resource = (urlsService, http, paginateResponseService) ->
             .then (result) ->
                 return Immutable.fromJS(result.data)
 
+    service.getListProjectsByUserId = (userId, paginate=false) ->
+        url = urlsService.resolve("projects")
+        httpOptions = {}
+
+        if !paginate
+            httpOptions.headers = {
+                "x-disable-pagination": "1"
+            }
+
+        params = {"member": userId, "order_by": "user_order", "slight": true}
+
+        return http.get(url, params, httpOptions)
+            .then (result) ->
+                return Immutable.fromJS(result.data)
+
     service.getProjectStats = (projectId) ->
         url = urlsService.resolve("projects")
         url = "#{url}/#{projectId}"
