@@ -8,6 +8,9 @@
         transition-delay: .2s;
         &:hover {
             background: rgba($primary-light, .1);
+            .button-hide {
+                opacity: 1;
+            }
         }
         &:last-child {
             border: 0;
@@ -26,5 +29,18 @@
     .see-more {
         display: block;
         margin: 2rem 30%;
+    }
+    .button-hide {
+        color: $gray;
+        opacity: 0;
+        padding: .5rem;
+        svg {
+            fill: $gray-lighter;
+            height: 24px;
+            width: 24px;
+        }
+        &:hover svg {
+            fill: $primary-light;
+        }
     }
 }

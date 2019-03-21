@@ -32,6 +32,12 @@
     .working-on-container {
         margin-right: 1rem;
     }
+    .toggle-hidden {
+        border-top: 1px solid $gray-lighter;
+        margin: 2rem 0;
+        padding-top: .5rem;
+        text-align: center;
+    }
     .project-list {
         flex-basis: 250px;
         flex-grow: 0;

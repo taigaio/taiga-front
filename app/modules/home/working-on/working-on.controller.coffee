@@ -24,7 +24,11 @@ class WorkingOnController
 
     constructor: (@homeService) ->
         @.assignedTo = Immutable.Map()
+        @.hiddenAssignedTo = []
+        @.showHiddenAssignedTo = false
+
         @.watching = Immutable.Map()
+        @.showHiddenWatching = false
 
     _setAssignedTo: (workInProgress) ->
         epics = workInProgress.get("assignedTo").get("epics")

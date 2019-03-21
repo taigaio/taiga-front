@@ -40,3 +40,8 @@ a.list-itemtype-ticket(
                     title="{{::vm.duty.get('blocked_note')}}"
                 ) {{ 'COMMON.BLOCKED' | translate }}
                 span(ng-bind-html="duty.get('subject') | emojify")
+    div(ng-switch="vm.isHidden")
+        span.button-hide(ng-switch-when="false", title="{{ 'HOME.SET_HIDDEN' | translate }}")
+            tg-svg(svg-icon="icon-unwatch")
+        span.button-hide(ng-switch-when="true", title="{{ 'HOME.SET_VISIBLE' | translate }}")
+            tg-svg(svg-icon="icon-watch")

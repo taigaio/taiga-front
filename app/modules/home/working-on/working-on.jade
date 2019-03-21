@@ -3,11 +3,39 @@ section.working-on-container
         h1.title-bar.working-on-title(translate="HOME.WORKING_ON_SECTION")
 
     .working-on(ng-if="vm.assignedTo.size")
-        .duty-single(
-            tg-duty="duty"
-            type="working-on"
-            tg-repeat="duty in vm.assignedTo"
+        .visible-duties
+            .duty-single(
+                ng-if="hiddenDuties['working-on'].indexOf(duty.get('id')) == -1"
+                is-hidden="false"
+                tg-duty="duty"
+                type="working-on"
+                tg-repeat="duty in vm.assignedTo"
+                ng-class="{'blocked': duty.is_blocked}"
+            )
+        .toggle-hidden(
+            ng-class="{ 'inactive': hiddenDuties['working-on'].length == -1 }",
+            ng-switch="hiddenDuties['working-on'].length > 0"
         )
+            span(ng-switch-when="false") {{ 'HOME.NO_HIDDEN_ITEMS' | translate }}
+            a(
+                href="",
+                ng-switch-when="true",
+                ng-switch="showHiddenDuties['working-on']",
+                ng-click="toggleShowHiddenDuties('working-on')"
+            )
+                span(ng-switch-when="false") {{ 'HOME.SHOW_HIDDEN' | translate }}
+                span(ng-switch-when="true") {{ 'HOME.HIDE_HIDDEN' | translate }}
+
+        .hidden-duties(ng-if="showHiddenDuties['working-on']")
+            .duty-single(
+                ng-if="hiddenDuties['working-on'].indexOf(duty.get('id')) > -1"
+                is-hidden="true"
+                tg-duty="duty"
+                type="working-on"
+                tg-repeat="duty in vm.assignedTo"
+                ng-class="{'blocked': duty.is_blocked}"
+            )
+
     .working-on-empty(ng-if="vm.assignedTo != undefined && vm.assignedTo.size === 0")
         p(translate="HOME.EMPTY_WORKING_ON")
         include empty.jade
@@ -17,12 +45,38 @@ section.watching-container
         h1.title-bar.watching-title(translate="HOME.WATCHING_SECTION")
 
     .watching(ng-if="vm.watching.size")
-        .duty-single(
-            tg-duty="duty"
-            type="watching"
-            tg-repeat="duty in vm.watching"
-            ng-class="{'blocked': duty.is_blocked}"
+        .visible-duties
+            .duty-single(
+                ng-if="hiddenDuties['watching'].indexOf(duty.get('id')) == -1"
+                is-hidden="false"
+                tg-duty="duty"
+                type="watching"
+                tg-repeat="duty in vm.watching"
+                ng-class="{'blocked': duty.is_blocked}"
+            )
+        .toggle-hidden(
+            ng-class="{ 'inactive': hiddenDuties['watching'].length == -1 }",
+            ng-switch="hiddenDuties['watching'].length > 0"
         )
+            span(ng-switch-when="false") {{ 'HOME.NO_HIDDEN_ITEMS' | translate }}
+            a(
+                href="",
+                ng-switch-when="true",
+                ng-switch="showHiddenDuties['watching']",
+                ng-click="toggleShowHiddenDuties('watching')"
+            )
+                span(ng-switch-when="false") {{ 'HOME.SHOW_HIDDEN' | translate }}
+                span(ng-switch-when="true") {{ 'HOME.HIDE_HIDDEN' | translate }}
+
+        .hidden-duties(ng-if="showHiddenDuties['watching']")
+            .duty-single(
+                ng-if="hiddenDuties['watching'].indexOf(duty.get('id')) > -1"
+                is-hidden="true"
+                tg-duty="duty"
+                type="watching"
+                tg-repeat="duty in vm.watching"
+                ng-class="{'blocked': duty.is_blocked}"
+            )
 
     .watching-empty(ng-if="vm.watching != undefined && vm.watching.size === 0")
         p(translate="HOME.EMPTY_WATCHING")
