@@ -244,7 +244,6 @@ class UsFiltersMixin
             loadFilters[key] = urlfilters[key]
             loadFilters[excludeKey] = urlfilters[excludeKey]
 
-        loadFilters.milestone = "null"
         if milestone
             loadFilters.milestone = milestone
 
