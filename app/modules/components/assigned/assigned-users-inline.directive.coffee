@@ -67,7 +67,11 @@ $translate, $compile, $currentUserService, avatarService, $userListService) ->
                 currentAssignedTo = null
             else if currentAssignedIds.indexOf(currentAssignedTo) == -1 || !currentAssignedTo
                 currentAssignedTo = currentAssignedIds[0]
-            $model.$modelValue.setAttr('assigned_users', currentAssignedIds)
+
+            if (!$model.$modelValue.assigned_users)
+                $model.$modelValue.assigned_users = currentAssignedIds
+            else
+                $model.$modelValue.setAttr('assigned_users', currentAssignedIds)
             $model.$modelValue.assigned_to = currentAssignedTo
 
         $el.on "click", ".users-dropdown", (event) ->
