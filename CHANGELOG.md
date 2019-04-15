@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+## 4.2.3 (2019-04-16)
+
+- Enable hiding list items on Dashboard
+- Minor fixes.
+
+## 4.2.3 (2019-03-21)
+
 ## 4.2.1 (2019-03-20)
 
 - Add user stories dashboard filter
