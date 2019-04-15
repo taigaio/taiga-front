@@ -201,16 +201,16 @@
             "COUNTER_TITLE": "{total, plural, one{bozka bat} other{# bozka}}"
         },
         "PROMOTE_TO_US": "Goratu eginkizun izatera",
-        "PROMOTED_ISSUES": "This Issue has been promoted to US:",
-        "PROMOTED_TASKS": "This Task has been promoted to US:",
+        "PROMOTED_ISSUES": "Gertakari hau eginkizun honetatik sortua da:",
+        "PROMOTED_TASKS": "Ataza hau eginkizun hau bilakatu da:",
         "CONFIRM_PROMOTE": {
             "ISSUE": {
-                "TITLE": "Promote this Issue to a new user story",
+                "TITLE": "Sustatu gertakari hau eginkizun berri batera",
                 "MESSAGE": "Ziur zaude eginkizun berri bat sortu nahi duzula gertakari honetatik abiatuta?"
             },
             "TASK": {
-                "TITLE": "Promote this Task to a new user story",
-                "MESSAGE": "Are you sure you want to create a new US from this Task?"
+                "TITLE": "Sustatu ataza hau eginkizun berri batera",
+                "MESSAGE": "Ziur zaude eginkizun berri bat sortu nahi duzula ataza honetatik abiatuta?"
             }
         },
         "CUSTOM_ATTRIBUTES": {
@@ -395,7 +395,12 @@
         "EMPTY_PROJECT_LIST": "Ez duzu proiekturik oraingoz",
         "WORKING_ON_SECTION": "Lantzen",
         "WATCHING_SECTION": "Behatzen",
-        "DASHBOARD": "Proiektuen idazmahaia"
+        "DASHBOARD": "Proiektuen idazmahaia",
+        "SET_HIDDEN": "Set as hidden",
+        "SET_VISIBLE": "Set as visible",
+        "NO_HIDDEN_ITEMS": "You have no hidden items",
+        "HIDE_HIDDEN": "Do not show hidden objects",
+        "SHOW_HIDDEN": "Show hidden objects"
     },
     "EPICS": {
         "TITLE": "MUGARRIAK",
@@ -420,8 +425,8 @@
             "ASSIGNED_TO": "Esleituta",
             "STATUS": "Egoera",
             "PROGRESS": "Aurrerapena",
-            "CLOSED_US": "Closed user stories",
-            "CLOSED_EPICS": "Closed epics",
+            "CLOSED_US": "Itxitako eginkizunak",
+            "CLOSED_EPICS": "Itxitako mugarriak",
             "VIEW_OPTIONS": "Bistaratze aukerak"
         },
         "CREATE": {
@@ -894,7 +899,7 @@
             "NOTIFICATIONS": "Jakinarazpenak",
             "VIEW_PROFILE_TITLE": "Ikusi soslaia",
             "VIEW_PROFILE": "Ikusi soslaia",
-            "USER_SETTINGS_TITLE": "Edit your settings",
+            "USER_SETTINGS_TITLE": "Editatu ezarpenak",
             "USER_SETTINGS": "Erabiltzailearen ezarpenak",
             "CHANGE_PASSWORD_TITLE": "Aldatu pasahitza",
             "CHANGE_PASSWORD": "Aldatu pasahitza",
@@ -1230,8 +1235,9 @@
         "ADD": "+ Gehitu eginkizun berri bat",
         "ADD_BULK": "Gehitu eginkizun berrien sail bat",
         "PROMOTED_FROM_ISSUE": "Eginkizun hau gertakari honetatik sortua da:",
-        "PROMOTED_FROM_TASK": "This US has been promoted from Task:",
+        "PROMOTED_FROM_TASK": "Eginkizun hau ataza nonetatik sortua da:",
         "TITLE_LINK_GO_TO_ISSUE": "Joan gertakarira",
+        "TITLE_LINK_GO_TO_TASK": "Go to task",
         "TITLE_DELETE_ACTION": "Ezabatu eginkizuna",
         "LIGHTBOX_TITLE_BLOKING_US": "Blokeatzen eginkizuna",
         "NOT_ESTIMATED": "Kalkulurik ez",

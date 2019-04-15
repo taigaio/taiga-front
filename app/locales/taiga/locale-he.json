@@ -395,7 +395,12 @@
         "EMPTY_PROJECT_LIST": "עדיין אין לך שום פרוייקטים",
         "WORKING_ON_SECTION": "בביצוע",
         "WATCHING_SECTION": "במעקב",
-        "DASHBOARD": "לוּחַ מַחווָנִים של הפרוייקטים"
+        "DASHBOARD": "לוּחַ מַחווָנִים של הפרוייקטים",
+        "SET_HIDDEN": "Set as hidden",
+        "SET_VISIBLE": "Set as visible",
+        "NO_HIDDEN_ITEMS": "You have no hidden items",
+        "HIDE_HIDDEN": "Do not show hidden objects",
+        "SHOW_HIDDEN": "Show hidden objects"
     },
     "EPICS": {
         "TITLE": "אפיונים",
@@ -1232,6 +1237,7 @@
         "PROMOTED_FROM_ISSUE": "סיפור המשתמש הזה צף מתוך התקלה:",
         "PROMOTED_FROM_TASK": "This US has been promoted from Task:",
         "TITLE_LINK_GO_TO_ISSUE": "עבור לתקלה",
+        "TITLE_LINK_GO_TO_TASK": "Go to task",
         "TITLE_DELETE_ACTION": "מחק סיפור משתמש",
         "LIGHTBOX_TITLE_BLOKING_US": "סיפור משתמש חסום",
         "NOT_ESTIMATED": "לא מתומחר",

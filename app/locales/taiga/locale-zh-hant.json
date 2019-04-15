@@ -395,7 +395,12 @@
         "EMPTY_PROJECT_LIST": "你尚無任何專案",
         "WORKING_ON_SECTION": "進行中",
         "WATCHING_SECTION": "觀看中",
-        "DASHBOARD": "專案控制台"
+        "DASHBOARD": "專案控制台",
+        "SET_HIDDEN": "Set as hidden",
+        "SET_VISIBLE": "Set as visible",
+        "NO_HIDDEN_ITEMS": "You have no hidden items",
+        "HIDE_HIDDEN": "Do not show hidden objects",
+        "SHOW_HIDDEN": "Show hidden objects"
     },
     "EPICS": {
         "TITLE": "EPICS",
@@ -1232,6 +1237,7 @@
         "PROMOTED_FROM_ISSUE": "此使用者故事已提昇成問題:",
         "PROMOTED_FROM_TASK": "This US has been promoted from Task:",
         "TITLE_LINK_GO_TO_ISSUE": "到問題 ",
+        "TITLE_LINK_GO_TO_TASK": "Go to task",
         "TITLE_DELETE_ACTION": "刪除使用者故事",
         "LIGHTBOX_TITLE_BLOKING_US": "封鎖中的使用者故事",
         "NOT_ESTIMATED": "無預估",

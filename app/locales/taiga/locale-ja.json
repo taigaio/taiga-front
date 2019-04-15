@@ -395,7 +395,12 @@
         "EMPTY_PROJECT_LIST": "参加中のプロジェクトがありません",
         "WORKING_ON_SECTION": "取り組んでいる作業",
         "WATCHING_SECTION": "フォロー中",
-        "DASHBOARD": "プロジェクトのダッシュボート"
+        "DASHBOARD": "プロジェクトのダッシュボート",
+        "SET_HIDDEN": "Set as hidden",
+        "SET_VISIBLE": "Set as visible",
+        "NO_HIDDEN_ITEMS": "You have no hidden items",
+        "HIDE_HIDDEN": "Do not show hidden objects",
+        "SHOW_HIDDEN": "Show hidden objects"
     },
     "EPICS": {
         "TITLE": "エピック",
@@ -1232,6 +1237,7 @@
         "PROMOTED_FROM_ISSUE": "このユーザーストーリーはこちらの課題から発展:",
         "PROMOTED_FROM_TASK": "This US has been promoted from Task:",
         "TITLE_LINK_GO_TO_ISSUE": "課題へ移動",
+        "TITLE_LINK_GO_TO_TASK": "Go to task",
         "TITLE_DELETE_ACTION": "ユーザーストーリーを削除",
         "LIGHTBOX_TITLE_BLOKING_US": "Blocking us",
         "NOT_ESTIMATED": "見積もりが行われていません",
