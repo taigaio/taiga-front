@@ -870,10 +870,6 @@ init = ($log, $rootscope, $auth, $events, $analytics, $translate, $location, $na
     $rootscope.$on '$locationChangeStart',  (event) ->
         errorHandlingService.init()
 
-        if projectService.project?.get('blocked_code')
-            projectService.setProject(null)
-            errorHandlingService.block()
-
         if lightboxService.getLightboxOpen().length
             event.preventDefault();
 
@@ -890,6 +886,9 @@ init = ($log, $rootscope, $auth, $events, $analytics, $translate, $location, $na
         un()
 
     $rootscope.$on '$routeChangeSuccess', (event, next) ->
+        if projectService.project?.get('blocked_code')
+            errorHandlingService.block()
+
         if next.loader
             loaderService.start(true)
 
