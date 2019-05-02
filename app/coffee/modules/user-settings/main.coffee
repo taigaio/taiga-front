@@ -54,9 +54,9 @@ class UserSettingsController extends mixOf(taiga.Controller, taiga.PageMixin)
 
         if !@scope.user
             @errorHandlingService.permissionDenied()
-
-        @scope.lang = @getLan()
-        @scope.theme = @getTheme()
+        else
+            @scope.lang = @getLan()
+            @scope.theme = @getTheme()
 
         maxFileSize = @config.get("maxUploadFileSize", null)
         if maxFileSize

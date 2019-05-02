@@ -39,6 +39,8 @@ class AttachmentsPreviewController
         attachment = @.attachments.find (attachment) =>
             @attachmentsPreviewService.fileId == attachment.getIn(['file', 'id'])
 
+        if !attachment
+            return null
         file = attachment.get('file')
 
         return file

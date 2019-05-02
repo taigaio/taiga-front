@@ -599,7 +599,7 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
         }
 
         promise = @repo.save(task, true, params, options, true).then (result) =>
-            if result[0].user_story
+            if result[0] and result[0].user_story
                 @.reloadUserStory(result[0].user_story)
 
             @scope.movingTask = false
