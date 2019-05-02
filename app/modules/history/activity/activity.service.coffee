@@ -43,6 +43,8 @@ class ActivityService
         @.loadingEntries = true
         @.disablePagination = true
 
+        return if !@._contentType || !@._objectId
+
         return @rs.history.getHistory('activity', @._contentType, @._objectId, @.page)
             .then (result) =>
                 if reset
