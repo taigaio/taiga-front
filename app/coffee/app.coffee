@@ -853,10 +853,6 @@ init = ($log, $rootscope, $auth, $events, $analytics, $translate, $location, $na
         rtlLanguages = $tgConfig.get("rtlLanguages", [])
         $rootscope.isRTL = rtlLanguages.indexOf(lang) > -1
 
-    # bluebird
-    Promise.setScheduler (cb) ->
-        $rootscope.$evalAsync(cb)
-
     $events.setupConnection()
 
     # Load user
@@ -869,10 +865,6 @@ init = ($log, $rootscope, $auth, $events, $analytics, $translate, $location, $na
     # Initialize error handling service when location change start
     $rootscope.$on '$locationChangeStart',  (event) ->
         errorHandlingService.init()
-
-        if projectService.project?.get('blocked_code')
-            projectService.setProject(null)
-            errorHandlingService.block()
 
         if lightboxService.getLightboxOpen().length
             event.preventDefault();
@@ -890,6 +882,9 @@ init = ($log, $rootscope, $auth, $events, $analytics, $translate, $location, $na
         un()
 
     $rootscope.$on '$routeChangeSuccess', (event, next) ->
+        if projectService.project?.get('blocked_code')
+            errorHandlingService.block()
+
         if next.loader
             loaderService.start(true)
 

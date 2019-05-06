@@ -61,6 +61,7 @@ class HttpService extends taiga.Service
 
         options.data = data if data
         options.params = params if params
+        options.responseType = 'text'
 
         return @.request(options)
 

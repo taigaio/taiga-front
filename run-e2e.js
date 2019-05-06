@@ -1,7 +1,6 @@
 var argv = require('minimist')(process.argv.slice(2));
 var child_process = require('child_process');
 var inquirer = require("inquirer");
-var Promise = require('bluebird');
 
 // npm run e2e -- --s userStories, auth
 
