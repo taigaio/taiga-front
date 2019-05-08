@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## 4.2.4 (2019-05-09)
+
+- Fix moment local for Chinese
+- Multiple minor fixes
+- Remove bluebird dependency
+
 ## 4.2.3 (2019-04-16)
 
 - Enable hiding list items on Dashboard
