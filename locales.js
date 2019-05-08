@@ -2,6 +2,7 @@ var glob = require('glob');
 var inquirer = require('inquirer');
 var fs = require('fs');
 var _ = require('lodash');
+var Promise = require("bluebird");
 var clc = require('cli-color');
 
 var app = 'app/';
