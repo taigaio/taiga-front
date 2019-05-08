@@ -912,7 +912,7 @@
             "LIKED": "T'agrada",
             "UNLIKE": "No t'agrada",
             "BUTTON_TITLE": "Favoriteja o desfavoriteja aquest projecte",
-            "COUNTER_TITLE": "{total, plural, un{un fan} altres{# fans}}"
+            "COUNTER_TITLE": "{total, plural, one{un fan} other{# fans}}"
         },
         "WATCH_BUTTON": {
             "BUTTON_TITLE": "Segueix este projecte i edita les notificacions",

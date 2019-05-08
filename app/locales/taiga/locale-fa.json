@@ -228,10 +228,10 @@
             "ACTION_SAVE_CUSTOM_FILTER": "ذخیره به عنوان فیلتر سفارشی",
             "PLACEHOLDER_FILTER_NAME": "نام فیلتر را وارد کرده و اینتر را فشار دهید",
             "APPLIED_FILTERS_NUM": "فیلترهای اعمال‌شده",
-            "TITLE_ADVANCED_FILTER": "Advanced",
+            "TITLE_ADVANCED_FILTER": "پیشرفته",
             "ADVANCED_FILTERS": {
-                "INCLUDE": "Include",
-                "EXCLUDE": "Exclude"
+                "INCLUDE": "شامل",
+                "EXCLUDE": "مستثنی کردن"
             },
             "CATEGORIES": {
                 "TYPE": "نوع",
@@ -396,11 +396,11 @@
         "WORKING_ON_SECTION": "در حال کار روی",
         "WATCHING_SECTION": "در حال بررسی",
         "DASHBOARD": "داشبورد پروژه‌ها",
-        "SET_HIDDEN": "Set as hidden",
-        "SET_VISIBLE": "Set as visible",
-        "NO_HIDDEN_ITEMS": "You have no hidden items",
-        "HIDE_HIDDEN": "Do not show hidden objects",
-        "SHOW_HIDDEN": "Show hidden objects"
+        "SET_HIDDEN": "تنظیم به عنوان مخفی",
+        "SET_VISIBLE": "تنظیم به عنوان آشکار",
+        "NO_HIDDEN_ITEMS": "شما هیچ آیتم مخفی ندارید",
+        "HIDE_HIDDEN": "موضوعات مخفی را نشان نده",
+        "SHOW_HIDDEN": "موضوعات مخفی را نشان بده"
     },
     "EPICS": {
         "TITLE": "EPICS",
@@ -565,7 +565,7 @@
             "HELP": "چگونه از این در شیت خود استفاده کنم؟",
             "REGENERATE_TITLE": "تغییر URL",
             "REGENERATE_SUBTITLE": "You are going to change the CSV data access url. The previous url will be disabled. Are you sure?",
-            "DELETE_TITLE": "Delete URL",
+            "DELETE_TITLE": "حذف لینک",
             "DELETE_SUBTITLE": "You are going to delete the current CSV data access url. Are you sure?"
         },
         "CSV": {
@@ -1126,7 +1126,7 @@
             "ISSUE_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this Issue",
             "US_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this User Story",
             "NEW_TASK": "New Task",
-            "NEW_ISSUE": "New Issue",
+            "NEW_ISSUE": "موضوع جدید",
             "NEW_US": "New User Story",
             "EDIT_TASK": "ویرایش وضیفه",
             "EDIT_ISSUE": "ویرایش موضوع",

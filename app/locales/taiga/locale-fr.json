@@ -201,16 +201,16 @@
             "COUNTER_TITLE": "{total, plural, one{un vote} other{# votes}}"
         },
         "PROMOTE_TO_US": "Promouvoir en récit utilisateur",
-        "PROMOTED_ISSUES": "This Issue has been promoted to US:",
-        "PROMOTED_TASKS": "This Task has been promoted to US:",
+        "PROMOTED_ISSUES": "Le ticket a été promu en récit utilisateur",
+        "PROMOTED_TASKS": "La tâche a été promue en récit utilisateur",
         "CONFIRM_PROMOTE": {
             "ISSUE": {
-                "TITLE": "Promote this Issue to a new user story",
+                "TITLE": "Promouvoir ce ticket en nouveau récit utilisateur",
                 "MESSAGE": "Êtes-vous sure de vouloir créer un nouveau récit utilisateur à partir de ce ticket ?"
             },
             "TASK": {
-                "TITLE": "Promote this Task to a new user story",
-                "MESSAGE": "Are you sure you want to create a new US from this Task?"
+                "TITLE": "Promouvoir cette tâche en nouveau récit utilisateur",
+                "MESSAGE": "Êtes-vous sure de vouloir créer un nouveau récit utilisateur à partir de cette tâche ?"
             }
         },
         "CUSTOM_ATTRIBUTES": {
@@ -396,11 +396,11 @@
         "WORKING_ON_SECTION": "Projets en cours",
         "WATCHING_SECTION": "Suivi",
         "DASHBOARD": "Tableau de bord des projets",
-        "SET_HIDDEN": "Set as hidden",
-        "SET_VISIBLE": "Set as visible",
-        "NO_HIDDEN_ITEMS": "You have no hidden items",
-        "HIDE_HIDDEN": "Do not show hidden objects",
-        "SHOW_HIDDEN": "Show hidden objects"
+        "SET_HIDDEN": "Définir comme caché",
+        "SET_VISIBLE": "Définir comme visible",
+        "NO_HIDDEN_ITEMS": "Vous n'avez aucun élément caché",
+        "HIDE_HIDDEN": "Ne pas voir les objets cachés",
+        "SHOW_HIDDEN": "Montrer les objets cachés"
     },
     "EPICS": {
         "TITLE": "ÉPOPÉES",
@@ -425,8 +425,8 @@
             "ASSIGNED_TO": "Affecté",
             "STATUS": "Statut",
             "PROGRESS": "Avancement",
-            "CLOSED_US": "Closed user stories",
-            "CLOSED_EPICS": "Closed epics",
+            "CLOSED_US": "Récits utilisateur fermés",
+            "CLOSED_EPICS": "Épopées fermées",
             "VIEW_OPTIONS": "Voir les options"
         },
         "CREATE": {
@@ -1235,9 +1235,9 @@
         "ADD": "+ Créer un récit utilisateur",
         "ADD_BULK": "Ajouter de nouveaux récits utilisateur en lot",
         "PROMOTED_FROM_ISSUE": "Ce récit utilisateur a été promue à partir d'un ticket :",
-        "PROMOTED_FROM_TASK": "This US has been promoted from Task:",
+        "PROMOTED_FROM_TASK": "Ce récit utilisateur a été promu à partir d'une tâche :",
         "TITLE_LINK_GO_TO_ISSUE": "Aller vers ce ticket",
-        "TITLE_LINK_GO_TO_TASK": "Go to task",
+        "TITLE_LINK_GO_TO_TASK": "Aller vers cette tâche",
         "TITLE_DELETE_ACTION": "Supprimer le récit utilisateur",
         "LIGHTBOX_TITLE_BLOKING_US": "Bloque le RU",
         "NOT_ESTIMATED": "Non estimé",

@@ -3,7 +3,7 @@
         "YES": "是",
         "NO": "否",
         "OR": "或",
-        "I_GET_IT": "OK, I get it",
+        "I_GET_IT": "好的，我明白了",
         "LOADING": "载入中...",
         "DATE": "YYYY MMM DD",
         "DATETIME": "YYYY MMM DD HH:mm",
@@ -14,8 +14,8 @@
         "UNLINK": "断开链接",
         "CREATE": "创建",
         "ADD": "新增",
-        "COPY_TO_CLIPBOARD": "Copy to clipboard",
-        "COPIED_TO_CLIPBOARD": "Text has been copied to clipboard",
+        "COPY_TO_CLIPBOARD": "复制到剪贴板",
+        "COPIED_TO_CLIPBOARD": "文本已复制到剪贴板",
         "EDIT": "编辑",
         "DRAG": "拖拽",
         "TAG_LINE": "你的敏捷、免费和开源的项目管理工具",
@@ -24,7 +24,7 @@
         "BLOCK_TITLE": "冻结：例如它有一个依赖不能满足，那么请冻结此项",
         "BLOCKED": "已冻结",
         "UNBLOCK": "解除冻结",
-        "UNBLOCK_TITLE": "关闭此项",
+        "UNBLOCK_TITLE": "解除锁定此项",
         "BLOCKED_NOTE": "为什么它被关闭了呢?",
         "BLOCKED_REASON": "请解释此原因",
         "CREATED_BY": "由 {{fullDisplayName}} 创建",
@@ -33,7 +33,7 @@
         "PLUGINS": "插件",
         "ONE_ITEM_LINE": "一行一项",
         "NEW_BULK": "批量插入",
-        "SUBTASKS": "Subtasks",
+        "SUBTASKS": "子任务",
         "PREVIOUS": "前一个",
         "NEXT": "下一个",
         "LOGOUT": "退出",
@@ -52,7 +52,7 @@
             "EDIT": "编辑卡片",
             "DELETE": "删除卡片",
             "DELETE_ISSUE": "删除问题",
-            "DETACH_ISSUE_FROM_SPRINT": "Detach issue from sprint"
+            "DETACH_ISSUE_FROM_SPRINT": "将问题从冲刺任务分离"
         },
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "该数值似乎为无效",
@@ -194,23 +194,23 @@
             "UNWATCH": "撤销关注",
             "WATCHERS": "关注者列表",
             "BUTTON_TITLE": "关注/撤销关注该项",
-            "COUNTER_TITLE": "{total, plural, one{一个关注者} other{# 个关注者}}"
+            "COUNTER_TITLE": "{total, plural, 1{一个关注者} other{# 个关注者}}"
         },
         "VOTE_BUTTON": {
             "BUTTON_TITLE": "赞/踩该项",
-            "COUNTER_TITLE": "{total, plural, one{一票} other{# 票}}"
+            "COUNTER_TITLE": "{total, plural, 1{1票} other{# 票}}"
         },
         "PROMOTE_TO_US": "提升到用户故事",
-        "PROMOTED_ISSUES": "This Issue has been promoted to US:",
-        "PROMOTED_TASKS": "This Task has been promoted to US:",
+        "PROMOTED_ISSUES": "此问题已提升为用户故事：",
+        "PROMOTED_TASKS": "此任务已提升为用户故事：",
         "CONFIRM_PROMOTE": {
             "ISSUE": {
-                "TITLE": "Promote this Issue to a new user story",
+                "TITLE": "将此问题提为一个新的用户故事",
                 "MESSAGE": "你确定要用此问题创建一个新的用户故事？"
             },
             "TASK": {
-                "TITLE": "Promote this Task to a new user story",
-                "MESSAGE": "Are you sure you want to create a new US from this Task?"
+                "TITLE": "将此任务提为一个新的用户故事",
+                "MESSAGE": "你确定要用此任务创建一个新的用户故事？"
             }
         },
         "CUSTOM_ATTRIBUTES": {
@@ -228,10 +228,10 @@
             "ACTION_SAVE_CUSTOM_FILTER": "储存为定制过滤器",
             "PLACEHOLDER_FILTER_NAME": "写入过滤器名称后按下enter",
             "APPLIED_FILTERS_NUM": "已用过滤器",
-            "TITLE_ADVANCED_FILTER": "Advanced",
+            "TITLE_ADVANCED_FILTER": "高级",
             "ADVANCED_FILTERS": {
-                "INCLUDE": "Include",
-                "EXCLUDE": "Exclude"
+                "INCLUDE": "包括",
+                "EXCLUDE": "排除"
             },
             "CATEGORIES": {
                 "TYPE": "类型",
@@ -396,11 +396,11 @@
         "WORKING_ON_SECTION": "进行中",
         "WATCHING_SECTION": "关注中",
         "DASHBOARD": "项目仪表盘",
-        "SET_HIDDEN": "Set as hidden",
-        "SET_VISIBLE": "Set as visible",
-        "NO_HIDDEN_ITEMS": "You have no hidden items",
-        "HIDE_HIDDEN": "Do not show hidden objects",
-        "SHOW_HIDDEN": "Show hidden objects"
+        "SET_HIDDEN": "设置隐藏",
+        "SET_VISIBLE": "设置可见",
+        "NO_HIDDEN_ITEMS": "你没有隐藏项目",
+        "HIDE_HIDDEN": "不显示隐藏的对象",
+        "SHOW_HIDDEN": "显示隐藏对象"
     },
     "EPICS": {
         "TITLE": "史诗",
@@ -425,8 +425,8 @@
             "ASSIGNED_TO": "已指派",
             "STATUS": "状态",
             "PROGRESS": "进度",
-            "CLOSED_US": "Closed user stories",
-            "CLOSED_EPICS": "Closed epics",
+            "CLOSED_US": "关闭用户故事",
+            "CLOSED_EPICS": "关闭史诗",
             "VIEW_OPTIONS": "浏览选项"
         },
         "CREATE": {
@@ -485,8 +485,8 @@
             "PAGE_TITLE": "成员资格 - {{projectName}}",
             "ADD_BUTTON": "+ 新成员",
             "ADD_BUTTON_TITLE": "增加新成员",
-            "UPGRADE_BUTTON": "Upgrade your plan",
-            "LIMIT_USERS_WARNING_MESSAGE_FOR_ADMIN": "If you would like to <strong>add more members</strong>, please contact the project owner <a href='mailto:{{ owner_email }}' title='{{ owner_email }}'>{{ owner_email }}</a>",
+            "UPGRADE_BUTTON": "提升你的计划",
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_ADMIN": "如果你想<strong>添加更多成员</strong>，请联系项目拥有者<a href='mailto:{{ owner_email }}' title='{{ owner_email }}'>{{ owner_email }}</a>",
             "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "这个项目已经达到它的允许最多成员上限 <strong>({{members}})</strong>。如果你希望增加这个上限，请联系管理员。"
         },
         "PROJECT_EXPORT": {
@@ -564,9 +564,9 @@
             "DESCRIPTION": "下载CSV档案格式是复制生成网址到常用的文字编辑软件/试算表，以保存你的项目资料报告。你可以轻易地视觉化和分析你的资料。",
             "HELP": "如何使用我的表格软件？",
             "REGENERATE_TITLE": "改变网址",
-            "REGENERATE_SUBTITLE": "You are going to change the CSV data access url. The previous url will be disabled. Are you sure?",
-            "DELETE_TITLE": "Delete URL",
-            "DELETE_SUBTITLE": "You are going to delete the current CSV data access url. Are you sure?"
+            "REGENERATE_SUBTITLE": "你将要改变CSV数据的访问url。之前的url将被禁用。你确定吗?",
+            "DELETE_TITLE": "删除URL",
+            "DELETE_SUBTITLE": "你将要删除CSV数据的访问url。你确定吗?"
         },
         "CSV": {
             "SECTION_TITLE_EPIC": "史诗报告",
@@ -578,12 +578,12 @@
             "TITLE_REGENERATE_URL": "再次产生CSV 网址",
             "ACTION_GENERATE_URL": "产生网址",
             "ACTION_REGENERATE": "再次产生",
-            "TITLE_DELETE_URL": "Delete CSV url",
+            "TITLE_DELETE_URL": "删除CSV网址",
             "ACTION_DELETE_URL": "删除"
         },
         "CUSTOM_FIELDS": {
             "TITLE": "自定义字段",
-            "SUBTITLE": "指定用户故事，任务与问题一些自定义字段",
+            "SUBTITLE": "为您的用户故事、任务和问题指定自定义字段",
             "EPIC_DESCRIPTION": "史诗自定义字段",
             "EPIC_ADD": "在史诗中加入自定义字段",
             "US_DESCRIPTION": "用户自定义字段",
@@ -597,9 +597,9 @@
             "FIELD_TYPE_MULTI": "多行文字",
             "FIELD_TYPE_DATE": "日期",
             "FIELD_TYPE_URL": "链接",
-            "FIELD_TYPE_DROPDOWN": "Dropdown",
-            "FIELD_TYPE_CHECKBOX": "Checkbox",
-            "FIELD_TYPE_NUMBER": "Number"
+            "FIELD_TYPE_DROPDOWN": "下拉",
+            "FIELD_TYPE_CHECKBOX": "检查框",
+            "FIELD_TYPE_NUMBER": "数字"
         },
         "PROJECT_VALUES": {
             "PAGE_TITLE": "{{sectionName}} - 项目数值 - {{projectName}}",
@@ -650,16 +650,16 @@
             "SELECTED": "已选择"
         },
         "PROJECT_DUE_DATE_STATUS": {
-            "TITLE": "Due Dates",
-            "SUBTITLE": "Specify the due dates your user stories, tasks and issues will go through if selected",
-            "US_TITLE": "User Story Due Date status",
+            "TITLE": "截止日期",
+            "SUBTITLE": "如果选择的话，请指定您的用户故事、任务和问题的截止日期",
+            "US_TITLE": "用户故事到期日状态",
             "ACTION_ADD_STATUS": "增加新状态",
-            "TASK_TITLE": "Task Due Date status",
-            "ISSUE_TITLE": "Issue Due Date status",
-            "DAYS_TO_DUE_DATE": "Days to due date",
-            "BEFORE_AFTER": "Before/after",
-            "BEFORE": "Before",
-            "AFTER": "Past"
+            "TASK_TITLE": "任务截止日状态",
+            "ISSUE_TITLE": "问题截止日状态",
+            "DAYS_TO_DUE_DATE": "距截止天数",
+            "BEFORE_AFTER": "之前/之后",
+            "BEFORE": "之前",
+            "AFTER": "晚于"
         },
         "ROLES": {
             "PAGE_TITLE": "角色- {{projectName}}",
@@ -762,7 +762,7 @@
         },
         "STATUS": {
             "PLACEHOLDER_WRITE_STATUS_NAME": "为此新状态命名",
-            "PLACEHOLDER_DAYS_TO_DUE_DATE": "Write a number of days to due date"
+            "PLACEHOLDER_DAYS_TO_DUE_DATE": "写下距截止日期的天数"
         },
         "TYPES": {
             "PLACEHOLDER_WRITE_NAME": "为此新元素命名"
@@ -789,7 +789,7 @@
             "TYPES": "类型",
             "CUSTOM_FIELDS": "自定义字段",
             "TAGS": "标签",
-            "DUE_DATES": "Due dates"
+            "DUE_DATES": "截止日期"
         },
         "SUBMENU_ROLES": {
             "TITLE": "角色",
@@ -866,9 +866,9 @@
         "HELP": "记录你的项目在上方常用栏位<br/> 前十个项目将会显示在上方导览处。",
         "PRIVATE": "私有项目",
         "LOOKING_FOR_PEOPLE": "这个项目在寻找队友",
-        "FANS_COUNTER_TITLE": "{total, plural, one{一个粉丝} other{# 个粉丝}}",
-        "WATCHERS_COUNTER_TITLE": "{total, plural, one{一个关注者} other{# 个关注者}}",
-        "MEMBERS_COUNTER_TITLE": "{total, plural, one{一个成员} other{# 个成员}}",
+        "FANS_COUNTER_TITLE": "{total, plural, 1{1 个粉丝} other{# 个粉丝}}",
+        "WATCHERS_COUNTER_TITLE": "{total, plural, 1{1 个关注者} other{# 个关注者}}",
+        "MEMBERS_COUNTER_TITLE": "{total, plural, 1{1 个成员} other{# 个成员}}",
         "BLOCKED_PROJECT": {
             "BLOCKED": "关闭项目",
             "THIS_PROJECT_IS_BLOCKED": "这个项目暂时被关闭了",
@@ -912,13 +912,13 @@
             "LIKED": "已点赞",
             "UNLIKE": "取消点赞",
             "BUTTON_TITLE": "对这个项目点赞或者取消点赞",
-            "COUNTER_TITLE": "{total, plural, one{一个粉丝} other{# 个粉丝}}"
+            "COUNTER_TITLE": "{total, plural, 1{1 个粉丝} other{# 个粉丝}}"
         },
         "WATCH_BUTTON": {
             "BUTTON_TITLE": "关注这个项目并设置通知规则",
             "WATCH": "Watch",
             "WATCHING": "关注中",
-            "COUNTER_TITLE": "{total, plural, one{一个关注者} other{# 个关注者}}",
+            "COUNTER_TITLE": "{total, plural, 1{一个关注者} other{# 个关注者}}",
             "OPTIONS": {
                 "NOTIFY_ALL": "接收所有通知",
                 "NOTIFY_ALL_TITLE": "接收这个项目的所有通知",
@@ -937,7 +937,7 @@
             "CHOOSE_TEMPLATE": "哪个模板更适合你的项目？",
             "TEMPLATE_SCRUM": "冲刺",
             "TEMPLATE_SCRUM_DESC": "优先考虑和解决的时间周期短的任务.",
-            "TEMPLATE_SCRUM_LONGDESC": "Scrum是一种管理产品开发的迭代和增量的敏捷软件开发方法论。\n产品挤压(backlog)是需要最终交付的，它们按序进入交付队列的。产品挤压(backlog)被分解为可控可执行的组块，称之为冲刺(sprints)。在每一个确定的时间段内，团队根据他们的技能，能力和资源，发起一个新的冲刺并从产品挤压中提交传递一定量的用户故事(US)。随着挤压的减少，项目向前推进。",
+            "TEMPLATE_SCRUM_LONGDESC": "Scrum是一种迭代的、增量式的敏捷软件开发方法，用于管理产品开发。\n产品积压(backlog)是最终要交付的东西，排序到应该交付的队列中。产品积压被分解成可管理的、可执行的块，称为冲刺(sprint)。每隔一段时间，团队就会启动一个新的冲刺，并根据他们的技能、能力和资源，从积压中交付一定数量的用户故事来提交。随着积压的减少，项目向前推进。",
             "TEMPLATE_KANBAN": "看板",
             "TEMPLATE_KANBAN_DESC": "在独立的任务上保持恒定的工作流",
             "TEMPLATE_KANBAN_LONGDESC": "看板方法用于将（任意类型的）项目开发分为各个阶段。\n看板卡片就像一个卡片或者邮箱索引--它表明了在项目中需要完成的每个人物的细节。看板用于将卡片从一种完成状态移动到下一个状态，这样可以跟踪项目进度。",
@@ -1122,21 +1122,21 @@
             "LAST_SPRINT_NAME": "最后冲刺任务 <strong> {{lastSprint}} ;-) </strong>"
         },
         "CREATE_EDIT": {
-            "TASK_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this Task",
-            "ISSUE_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this Issue",
-            "US_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this User Story",
-            "NEW_TASK": "New Task",
-            "NEW_ISSUE": "New Issue",
-            "NEW_US": "New User Story",
-            "EDIT_TASK": "Edit Task",
-            "EDIT_ISSUE": "Edit Issue",
-            "EDIT_US": "Edit User Story",
-            "ADD_EXISTING_ISSUE": "Add Issue to {{ targetName }}",
+            "TASK_PLACEHOLDER_DESCRIPTION": "请添加描述性文字帮助别人更好的理解这个任务",
+            "ISSUE_PLACEHOLDER_DESCRIPTION": "请添加描述性文字帮助别人更好的理解这个问题",
+            "US_PLACEHOLDER_DESCRIPTION": "请添加描述性文字帮助别人更好的理解这个用户故事",
+            "NEW_TASK": "新任务",
+            "NEW_ISSUE": "新问题",
+            "NEW_US": "新的用户故事",
+            "EDIT_TASK": "编辑任务",
+            "EDIT_ISSUE": "编辑问题",
+            "EDIT_US": "编辑用户故事",
+            "ADD_EXISTING_ISSUE": "添加问题至 {{ targetName }}",
             "CONFIRM_CLOSE": "你有更改没有保存。\n你确定要关闭该表单吗？",
-            "EXISTING_ISSUE": "Existing Issue",
-            "CHOOSE_EXISTING_ISSUE": "Which Issue?",
+            "EXISTING_ISSUE": "现存问题",
+            "CHOOSE_EXISTING_ISSUE": "哪一个问题？",
             "ADD_ISSUE": "新增问题",
-            "FILTER_ISSUES": "Filter Issues"
+            "FILTER_ISSUES": "过滤问题"
         },
         "DELETE_DUE_DATE": {
             "TITLE": "删除截止日期",
@@ -1146,8 +1146,8 @@
             "TITLE": "删除冲刺任务"
         },
         "REMOVE_RELATIONSHIP_WITH_EPIC": {
-            "TITLE": "Remove relationship with Epic",
-            "MESSAGE": "Are you sure you want to remove the relationship of this User Story with the Epic <strong>{{epicSubject}}</strong>?"
+            "TITLE": "删除与史诗的关系",
+            "MESSAGE": "你确定要删除这个用户故事和史诗<strong>{{epicSubject}}</strong>的关系吗"
         },
         "CREATE_MEMBER": {
             "PLACEHOLDER_INVITATION_TEXT": "(非必要) 加上一段私人文字在邀请信，告诉你的新成员一些好事  ;-)",
@@ -1192,17 +1192,17 @@
         },
         "ADMIN_DUE_DATES": {
             "TITLE_ACTION_DELETE_DUE_DATE": "删除截止日期",
-            "SUBTITLE_ACTION_DELETE_DUE_DATE": "Are you sure you want to delete the due date status {{due_date_status_name}}?"
+            "SUBTITLE_ACTION_DELETE_DUE_DATE": "您确定要删除到期日状态吗{{due_date_status_name}}？"
         },
         "RELATE_TO_EPIC": {
-            "TITLE": "Link to Epic",
-            "EXISTING_EPIC": "Existing epic",
-            "NEW_EPIC": "New epic",
+            "TITLE": "链接到史诗",
+            "EXISTING_EPIC": "现存史诗",
+            "NEW_EPIC": "新的史诗",
             "CHOOSE_PROJECT_FOR_CREATION": "项目是什么",
             "CHOOSE_PROJECT_FROM": "项目是什么",
             "SUBJECT": "主题",
-            "CHOOSE_EPIC": "What's the epic?",
-            "FILTER_EPICS": "Filter epics",
+            "CHOOSE_EPIC": "史诗是什么？",
+            "FILTER_EPICS": "过滤史诗",
             "NO_EPICS_FOUND": "看起来没有符合你的搜索条件的结果"
         }
     },
@@ -1214,11 +1214,11 @@
         "CREATE_RELATED_USERSTORIES": "创建关系",
         "NEW_USERSTORY": "新建用户故事",
         "EXISTING_USERSTORY": "已有用户故事",
-        "CHOOSE_PROJECT_FOR_CREATION": "Which project?",
+        "CHOOSE_PROJECT_FOR_CREATION": "哪一个项目？",
         "SUBJECT": "主题",
         "SUBJECT_BULK_MODE": "题目(批量插入)",
-        "CHOOSE_PROJECT_FROM": "Which project?",
-        "CHOOSE_USERSTORY": "Which user story?",
+        "CHOOSE_PROJECT_FROM": "哪一个项目？",
+        "CHOOSE_USERSTORY": "哪一个用户故事？",
         "NO_USERSTORIES": "该项目无用户故事。请选择其他项目。",
         "NO_USERSTORIES_FOUND": "看起来没有符合你的搜索条件的结果",
         "FILTER_USERSTORIES": "过滤用户故事",
@@ -1235,15 +1235,15 @@
         "ADD": "+新增用户故事",
         "ADD_BULK": "批次加入新用户故事",
         "PROMOTED_FROM_ISSUE": "此用户故事已提升成问题:",
-        "PROMOTED_FROM_TASK": "This US has been promoted from Task:",
+        "PROMOTED_FROM_TASK": "此用户故事已提升成任务：",
         "TITLE_LINK_GO_TO_ISSUE": "到问题",
-        "TITLE_LINK_GO_TO_TASK": "Go to task",
+        "TITLE_LINK_GO_TO_TASK": "转到任务",
         "TITLE_DELETE_ACTION": "删除用户故事",
         "LIGHTBOX_TITLE_BLOKING_US": "封锁中的用户故事",
         "NOT_ESTIMATED": "无预估",
         "OWNER_US": "此User Story属于",
-        "RELATE_TO_EPIC": "Link to Epic",
-        "REMOVE_RELATIONSHIP_WITH_EPIC": "Remove Epic relationship",
+        "RELATE_TO_EPIC": "链接到史诗",
+        "REMOVE_RELATIONSHIP_WITH_EPIC": "移除史诗关系",
         "TRIBE": {
             "PUBLISH": "以Gig的形式在Taiga Tribe中发布",
             "PUBLISH_INFO": "更多信息",
@@ -1259,8 +1259,8 @@
     "COMMENTS": {
         "DELETED_INFO": "评论被用户{{user}}删除",
         "COMMENTS_COUNT": "{{comments}}评论",
-        "OLDER_FIRST": "上次第一名",
-        "RECENT_FIRST": "最近第一名",
+        "OLDER_FIRST": "时间顺序",
+        "RECENT_FIRST": "时间倒序",
         "COMMENT": "评论",
         "EDITED_COMMENT": "已编辑",
         "SHOW_HISTORY": "查看历史",
@@ -1294,7 +1294,7 @@
             "UNASSIGNED": "未指派"
         },
         "FIELDS": {
-            "SUBJECT": "主旨",
+            "SUBJECT": "主题",
             "DESCRIPTION": "描述",
             "PRIORITY": "优先级",
             "SEVERITY": "严重程度",
@@ -1311,8 +1311,8 @@
         "PAGE_TITLE": "待办任务 - {{projectName}}",
         "PAGE_DESCRIPTION": "待办任务面板 {{projectName}}（项目的用户故事与冲刺任务）: {{projectDescription}}",
         "SECTION_NAME": "待办任务",
-        "CUSTOMIZE_GRAPH": "自定义你的代办任务图表",
-        "CUSTOMIZE_GRAPH_TEXT": "一个好的图表可以帮助你更好地跟随项目进展，这就要求你设置好点数和冲刺",
+        "CUSTOMIZE_GRAPH": "定制您的待办事项图表",
+        "CUSTOMIZE_GRAPH_TEXT": "要有一个好的图表帮助您更好地跟踪项目进展，您必须设置好点数和冲刺任务",
         "CUSTOMIZE_GRAPH_ADMIN": "管理者",
         "CUSTOMIZE_GRAPH_TITLE": "通过管理员来设置点数和冲刺",
         "MOVE_US_TO_CURRENT_SPRINT": "移到目前的冲刺",
@@ -1402,8 +1402,8 @@
         "SECTION_NAME": "任务板",
         "TITLE_ACTION_ADD": "增加新任务",
         "TITLE_ACTION_ADD_BULK": "批次加入新任务",
-        "TITLE_ACTION_ADD_ISSUE": "Add a new Issue",
-        "TITLE_ACTION_ADD_ISSUE_BULK": "Add some new Issues in bulk",
+        "TITLE_ACTION_ADD_ISSUE": "添加一个新问题",
+        "TITLE_ACTION_ADD_ISSUE_BULK": "批量添加新问题",
         "TITLE_ACTION_ASSIGN": "指派任务",
         "PLACEHOLDER_CARD_TITLE": "这可能是一个任务",
         "PLACEHOLDER_CARD_TEXT": "将用户故事拆分为多个任务以便单独跟踪",
@@ -1414,8 +1414,8 @@
             "TITLE_ACTION_FOLD_ROW": "隐藏列数",
             "TITLE_ACTION_UNFOLD_ROW": "未隐藏列数",
             "FIELD_POINTS": "点数",
-            "ROW_STORYLESS_TASKS_TITLE": "Storyless tasks",
-            "ROW_ISSUES_TITLE": "Sprint Issues"
+            "ROW_STORYLESS_TASKS_TITLE": "非用户故事任务",
+            "ROW_ISSUES_TITLE": "冲刺问题"
         },
         "CHARTS": {
             "XAXIS_LABEL": "天数",
@@ -1425,18 +1425,18 @@
             "DATE": "DD MMM YYYY"
         },
         "MOVE_TO_SPRINT": {
-            "TITLE_ACTION_MOVE_UNFINISHED": "Move unfinished items to another sprint",
-            "TITLE_MOVE_UNFINISHED": "Move unfinished items to another open sprint",
-            "MOVE_TO_OPEN_SPRINT": "Move to open sprint",
-            "NO_OPEN_SPRINTS": "There are no other open sprints. Please create one first.",
-            "SELECT_DESTINATION_PLACEHOLDER": "Select destination",
-            "UNFINISHED_USER_STORIES_COUNT": "{total, plural, one{<strong>#</strong> unfinished user story} other{<strong>#</strong> unfinished user stories}}",
-            "UNFINISHED_STORYLESS_TASKS_COUNT": "{total, plural, one{<strong>#</strong> unfinished storyless task} other{<strong>#</strong> unfinished storyless tasks}}",
-            "UNFINISHED_ISSUES_COUNT": "{total, plural, one{<strong>#</strong> unfinished issue} other{<strong>#</strong> unfinished issue}}",
-            "WARNING_ISSUES_NOT_MOVED_TITLE": "You just moved all user stories and taks, and the sprint'll be closed",
-            "WARNING_ISSUES_NOT_MOVED": "The issues'll remain in the sprint and don't be removed",
-            "WARNING_SPRINT_STILL_OPEN_TITLE": "{total, plural, one{You just moved # item!} other{You just moved # items!}}",
-            "WARNING_SPRINT_STILL_OPEN": "Please note that the sprint {{sprintName}} <strong>will remain open</strong> as long as it contains unfinished items."
+            "TITLE_ACTION_MOVE_UNFINISHED": "将未完成的项目转移到另一个冲刺任务",
+            "TITLE_MOVE_UNFINISHED": "将未完成的项目转移到另一个开放的冲刺任务",
+            "MOVE_TO_OPEN_SPRINT": "移到开放的冲刺任务 ",
+            "NO_OPEN_SPRINTS": "没有其他开放的冲刺任务。请先创建一个。",
+            "SELECT_DESTINATION_PLACEHOLDER": "选择目标",
+            "UNFINISHED_USER_STORIES_COUNT": "{total, plural, 1{<strong>#</strong> 个未完成的用户故事} other{<strong>#</strong> 个未完成的用户故事}}",
+            "UNFINISHED_STORYLESS_TASKS_COUNT": "{total, plural, 1{<strong>#</strong> 个未完成的非用户故事任务} other{<strong>#</strong> 个未完成的非用户故事任务}}",
+            "UNFINISHED_ISSUES_COUNT": "{total, plural, 1{<strong>#</strong> 个未完成的问题} other{<strong>#</strong> 个未完成的问题}}",
+            "WARNING_ISSUES_NOT_MOVED_TITLE": "你刚刚移动了所有的用户故事和任务，这个冲刺任务将会被关闭",
+            "WARNING_ISSUES_NOT_MOVED": "问题将继续在冲刺任务中，不会被移除",
+            "WARNING_SPRINT_STILL_OPEN_TITLE": "{total, plural, 1{你刚刚移除了 # 个项目！} other{你刚刚移除了 # 个项目！}}",
+            "WARNING_SPRINT_STILL_OPEN": "请注意冲刺任务 {{sprintName}} 将<strong>保持开放</strong> 只要它包含有未完成的项目。"
         }
     },
     "TASK": {
@@ -1445,7 +1445,7 @@
         "SECTION_NAME": "任务",
         "LINK_TASKBOARD": "任务板",
         "TITLE_LINK_TASKBOARD": "到任务板去",
-        "PLACEHOLDER_SUBJECT": "键入新任务主旨",
+        "PLACEHOLDER_SUBJECT": "键入新任务主题",
         "TITLE_SELECT_STATUS": "状态名称",
         "OWNER_US": "这任务属于",
         "TITLE_LINK_GO_OWNER": "到用户故事",
@@ -1485,39 +1485,39 @@
         "PAGE_DESCRIPTION": "{{projectName}}的问题清单看版：{{projectDescription}}",
         "SECTION_NAME": "问题",
         "ACTION_NEW_ISSUE": "+ 新问题",
-        "ACTION_ATTACH_SPRINT": "Attach issue to Sprint",
-        "ACTION_DETACH_SPRINT": "Detach issue from Sprint",
+        "ACTION_ATTACH_SPRINT": "将问题附加到冲刺任务",
+        "ACTION_DETACH_SPRINT": "将问题从冲刺任务分离",
         "EXTERNAL_REFERENCE": "此问题的提出者是",
         "GO_TO_EXTERNAL_REFERENCE": "回到开头",
         "ACTION_DELETE": "删除议题",
         "LIGHTBOX_TITLE_BLOKING_ISSUE": "冻结中的问题",
         "LINK_TASKBOARD": "任务板",
         "TITLE_LINK_TASKBOARD": "到任务板去",
-        "FILTER_SPRINTS": "Filter Sprints",
-        "CHOOSE_SPRINT": "Which Sprint?",
+        "FILTER_SPRINTS": "过滤冲刺任务",
+        "CHOOSE_SPRINT": "哪一个冲刺任务？",
         "FIELDS": {
             "PRIORITY": "优先级",
             "SEVERITY": "严重程度",
             "TYPE": "类型"
         },
-        "FILTER_ISSUES": "Filter Issues",
+        "FILTER_ISSUES": "过滤问题",
         "CONFIRM_DETACH_FROM_SPRINT": {
-            "TITLE": "Detach issue from Sprint",
-            "MESSAGE": "You are about to detach the issue from the sprint <strong>{{ sprintName }}<strong>"
+            "TITLE": "将问题从冲刺任务分离",
+            "MESSAGE": "你将要分离这个问题从冲刺 <strong>{{ sprintName }}<strong>"
         },
         "CONFIRM_CHANGE_FROM_SPRINT": {
-            "TITLE": "Attach issue to Sprint",
-            "MESSAGE": "<strong>This issue is currently attached to sprint {{ oldSprintName }}</strong>. You are about to detach it from that sprint and attach it instead to sprint <strong>{{ newSprintName }}.</strong>"
+            "TITLE": "将问题附加到冲刺任务",
+            "MESSAGE": "<strong>这个问题目前附加在冲刺任务{{ oldSprintName }}</strong>. 你将把它分离并附加至冲刺任务<strong>{{ newSprintName }}.</strong>"
         },
         "TABLE": {
             "COLUMNS": {
                 "TYPE": "类型",
                 "SEVERITY": "严重程度",
                 "PRIORITY": "优先级",
-                "SUBJECT": "主旨",
+                "SUBJECT": "主题",
                 "VOTES": "投票数",
                 "STATUS": "状态",
-                "MODIFIED": "已修改",
+                "MODIFIED": "修改日期",
                 "ASSIGNED_TO": "指派给"
             },
             "TITLE_ACTION_CHANGE_STATUS": "改变状态",
@@ -1589,7 +1589,7 @@
             "CHANGE_PASSWORD": "更新密码",
             "EMAIL_NOTIFICATIONS": "电子邮件通知",
             "DESKTOP_NOTIFICATIONS": "桌面提醒",
-            "EVENTS": "Events"
+            "EVENTS": "事件"
         },
         "NOTIFICATIONS": {
             "LIVE_SECTION_NAME": "桌面提醒",
@@ -1603,24 +1603,24 @@
             "OPTION_NONE": "无"
         },
         "PROJECT_SETTINGS": {
-            "SET_START_PAGES": "Set start pages",
-            "START_PAGES_PER_PROJECT": "Set start pages per project",
+            "SET_START_PAGES": "设置起始页面",
+            "START_PAGES_PER_PROJECT": "设置每个项目的起始页面",
             "COLUMN_PROJECT": "项目",
-            "COLUMN_STARTPAGE": "Start page",
-            "DEFAULT_VALUE": "Default"
+            "COLUMN_STARTPAGE": "起始页面",
+            "DEFAULT_VALUE": "默认"
         },
         "EVENTS": {
-            "SECTION_NAME": "Events",
-            "SECTION_DESCRIPTION": "Important events in Taiga header",
-            "SECTION_DESCRIPTION_EXPANDED": "(direct mentions, updates in items that you are watching...)",
-            "COLUMN_ENABLED": "Enabled",
+            "SECTION_NAME": "事件",
+            "SECTION_DESCRIPTION": "Taiga头部中的重要事件",
+            "SECTION_DESCRIPTION_EXPANDED": "（直接提醒你所关注的事项的更新...）",
+            "COLUMN_ENABLED": "已启用",
             "COLUMN_PROJECT": "项目"
         }
     },
     "USER_PROFILE": {
         "ACTION_USE_GRAVATAR": "使用默认图片",
         "ACTION_DELETE_ACCOUNT": "删除Taiga账户",
-        "ACTION_DOWNLOAD_PROFILE": "Download Taiga profile",
+        "ACTION_DOWNLOAD_PROFILE": "下载Taiga配置文件",
         "CHANGE_EMAIL_SUCCESS": "<strong>检查你的收信箱</strong><br />我们送出了一封信<br />里面有设定你新电子邮件的相关指示",
         "CHANGE_PHOTO": "变更照片",
         "FIELD": {
@@ -1714,30 +1714,30 @@
         "UNBLOCKED": "{{username}} 解除对 {{obj_name}} 的冻结",
         "NEW_USER": "{{username}} 已加入 Taiga",
         "ITEM_TYPES": {
-            "USERSTORY": "User Story",
+            "USERSTORY": "用户故事",
             "ISSUE": "问题",
             "TASK": "任务"
         }
     },
     "EVENTS": {
-        "TITLE": "Events",
-        "MY_EVENTS": "My events",
-        "DISMISS_ALL": "Dismiss all",
-        "VIEW_ALL": "View all",
-        "NO_NEW_EVENTS": "No new events",
-        "NO_EVENTS_YET": "There are no events yet",
-        "ASSIGNED_YOU": "{{username}} assigned you to {{obj_name}}",
-        "ADDED_YOU_AS_WATCHER": "{{username}} added you as watcher on {{obj_name}}",
-        "ADDED_YOU_AS_MEMBER": "{{username}} added you as member",
-        "MENTIONED_YOU": "{{username}} mentioned you on {{obj_name}}",
-        "MENTIONED_YOU_IN_COMMENT": "{{username}} mentioned you in a comment on {{obj_name}}",
-        "COMMENTED": "{{username}} has commented on {{obj_name}}"
+        "TITLE": "事件",
+        "MY_EVENTS": "我的事件",
+        "DISMISS_ALL": "全部取消",
+        "VIEW_ALL": "全部显示",
+        "NO_NEW_EVENTS": "没有新的事件",
+        "NO_EVENTS_YET": "还没有事件",
+        "ASSIGNED_YOU": "{{username}} 将你指派至 {{obj_name}}",
+        "ADDED_YOU_AS_WATCHER": "{{username}} 添加你关注了 {{obj_name}}",
+        "ADDED_YOU_AS_MEMBER": "{{username}} 将你添加为成员",
+        "MENTIONED_YOU": "{{username}} 在 {{obj_name}} 上提及到你",
+        "MENTIONED_YOU_IN_COMMENT": "{{username}} 在 {{obj_name}} 的评论中提及到你",
+        "COMMENTED": "{{username}} 在 {{obj_name}} 发表了评论"
     },
     "LEGAL": {
-        "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>When creating a new account, you agree to our </span><a href=\"{{ termsOfServiceUrl }}\" title=\"See terms of service\" target=\"_blank\">terms of service</a><span> and </span><a href=\"{{ privacyPolicyUrl }}\" title=\"See privacy policy\" target=\"_blank\">privacy policy</a>.",
-        "GDPR_ANNOUNCEMENT_TITLE": "General Data Protection Regulation (GDPR)",
-        "GDPR_ANNOUNCEMENT_DESCRIPTION": "You saw this comming, right? Updates to our Terms of Service",
-        "GDPR_ANNOUNCEMENT_INFOLINK": "Please read our announcement here"
+        "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>当创建一个新账户时，说明你已经同意我们的</span><a href=\"{{ termsOfServiceUrl }}\" title=\"See terms of service\" target=\"_blank\">服务条款</a><span>和</span><a href=\"{{ privacyPolicyUrl }}\" title=\"See privacy policy\" target=\"_blank\">隐私策略</a>。",
+        "GDPR_ANNOUNCEMENT_TITLE": "一般数据保护规定 (GDPR)",
+        "GDPR_ANNOUNCEMENT_DESCRIPTION": "如你所见，对吧？更新我们的服务条款",
+        "GDPR_ANNOUNCEMENT_INFOLINK": "请阅读我们的声明"
     },
     "EXTERNAL_APP": {
         "PAGE_TITLE": "一个外部应用需要验证",
@@ -1813,7 +1813,7 @@
         "PAGE_TITLE": "探索更多项目",
         "PAGE_DESCRIPTION": "Taiga中的公共项目的可搜索的目录。探索积压，时间线，问题，以及团队。检索出最喜欢的或者最活跃的项目。通过看板或者敏捷开发进行过滤。",
         "DISCOVER_TITLE": "探索项目",
-        "DISCOVER_SUBTITLE": "{projects, plural, one{一个要发现的公开项目} other{# 个要发现的公开项目}}",
+        "DISCOVER_SUBTITLE": "{projects, plural, 1{1 个可探索的公开项目} other{# 个可探索的公开项目}}",
         "MOST_ACTIVE": "最活跃的",
         "MOST_ACTIVE_EMPTY": "还没有活动的项目",
         "MOST_LIKED": "最受欢迎的",
@@ -1841,17 +1841,17 @@
         }
     },
     "TIPS": {
-        "TIPS_TITLE": "Tip",
-        "TIP_PROJECTS_ORDER": "You can sort projects on your project page by placing the ones most frequently accessed at the top.",
-        "TIP_VOTING": "Whether you ask your community or your other team members, upvoting items might serve as a way to detect explicit support for a particular task or issue.",
-        "TIP_ISSUES_TO_SPRINT": "You can attach issues to a particular sprint by clicking on the pin icon in the detail view.",
-        "TIP_DUE_DATE": "If you need to finish a task on a specific date, activate the DueDate from the detail view of the task.",
-        "TIP_IOCAIN": "You can signal to team members that a task is being particularly troublesome by clicking on the iocaine button. Doing so indicates that you welcome help, patience and understanding.",
-        "TIP_BLOCKED": "You can signal to other team members that something is preventing you from working on a particular task by marking it as \"blocked\"",
-        "TIP_PROMOTE": "Is your issue or task more complex than it first appeared? Go to the detail view and turn it into user story.",
-        "TIP_BULK": "If you want to add many tasks at once, choose bulk mode and write each task in a single line, one after the other.",
-        "TIP_ZOOM": "You can get a wider view of the kanban by reducing the information shown on the cards with the zoom control.",
-        "TIP_CUSTOM_FIELDS": "If you're an admin of the project, consider creating custom fields to expand the tasks' configuration.",
-        "TIP_SLIDE_ARROWS": "You can cycle over the results of a list, search or filter by clicking on the navigational arrows on the detail view of any one item."
+        "TIPS_TITLE": "小贴士",
+        "TIP_PROJECTS_ORDER": "通过将最常访问的项目放在顶部，您可以在项目页面上对项目进行排序。",
+        "TIP_VOTING": "无论您询问您的社区成员还是其他团队成员，点赞都可能是发现对特定任务或问题的明确支持的一种方法。",
+        "TIP_ISSUES_TO_SPRINT": "您可以通过单击细节视图中的大头针图标将问题附加到特定的冲刺任务上。",
+        "TIP_DUE_DATE": "如果需要在特定日期完成任务，请从任务的详细视图中激活指定日期。",
+        "TIP_IOCAIN": "您可以通过单击毒药按钮向团队成员发出一个任务特别麻烦的信号。这样做意味着你欢迎帮助、耐心和理解。",
+        "TIP_BLOCKED": "您可以通过将某项任务标记为“冻结”，向其他团队成员发出信号，表示某些事情正在阻止您处理某项特定任务。",
+        "TIP_PROMOTE": "你的问题或任务是否比第一次出现时更复杂？转到细节视图并将其转换为用户故事。",
+        "TIP_BULK": "如果要同时添加多个任务，请选择“批量”模式，然后将每个任务依次写入每一行。",
+        "TIP_ZOOM": "您可以通过缩放控件缩小卡片上显示的信息来更广泛地查阅看板。",
+        "TIP_CUSTOM_FIELDS": "如果您是项目的管理员，请考虑创建自定义字段来拓展任务的配置。",
+        "TIP_SLIDE_ARROWS": "您可以通过单击任何一项的详细视图上的导航箭头来循环显示列表、搜索或筛选的结果。"
     }
 }
