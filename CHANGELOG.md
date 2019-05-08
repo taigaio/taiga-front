@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+## 4.2.5 (2019-05-09)
+- Revet remove bluebird dependency
+
 ## 4.2.4 (2019-05-09)
 
 - Fix moment local for Chinese
