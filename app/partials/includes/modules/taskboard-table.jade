@@ -67,7 +67,7 @@ div.taskboard-table(
                             span(
                               ng-style="{'color': usStatusById[us.status]['color']}"
                               ng-bind="usStatusById[us.status]['name']")
-                        p.points-value
+                        p.points-value(data-id="{{us.id}}")
                             span(ng-bind="us.total_points")
                             span(ng-if="us.total_points"
                                  translate="TASKBOARD.TABLE.FIELD_POINTS"

@@ -14,6 +14,7 @@
                 translate="US.NOT_ESTIMATED"
             )
             span.card-estimation(
+                data-id="{{ vm.item.getIn(['model', 'id']) }}"
                 ng-if="vm.item.getIn(['model', 'total_points'])"
             ) {{"COMMON.FIELDS.POINTS" | translate}} {{vm.item.getIn(['model', 'total_points'])}}
 

@@ -163,6 +163,8 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
 
 
         return @rs.userstories.getByRef(@scope.projectId, @params.usref).then (us) =>
+            @rootscope.$broadcast("userstory:loaded", us)
+
             @scope.us = us
             @scope.usId = us.id
             @scope.commentModel = us

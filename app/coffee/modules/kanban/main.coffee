@@ -289,6 +289,8 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             @kanbanUserstoriesService.init(@scope.project, @scope.usersById)
             @kanbanUserstoriesService.set(userstories)
 
+            @rootscope.$broadcast("kanban:userstories:loaded", userstories)
+
             # The broadcast must be executed when the DOM has been fully reloaded.
             # We can't assure when this exactly happens so we need a defer
             scopeDefer @scope, =>
@@ -372,6 +374,8 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
         usList = _.map usList, (us) =>
             return @kanbanUserstoriesService.getUsModel(us.id)
+
+        @rootscope.$broadcast("kanban:userstories:loaded", usList, newStatusId, index)
 
         data = @kanbanUserstoriesService.move(usList, newStatusId, index)
 

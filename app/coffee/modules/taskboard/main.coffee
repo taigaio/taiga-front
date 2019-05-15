@@ -421,6 +421,7 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
 
             @taskboardTasksService.setUserstories(@scope.userstories)
 
+            @rootscope.$broadcast("taskboard:userstories:loaded", @scope.userstories)
             return sprint
 
     loadIssues: ->

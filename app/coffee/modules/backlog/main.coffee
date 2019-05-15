@@ -307,6 +307,8 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
                 @.disablePagination = false
                 @.page++
 
+            @rootscope.$broadcast("backlog:userstories:loaded")
+
             # The broadcast must be executed when the DOM has been fully reloaded.
             # We can't assure when this exactly happens so we need a defer
             scopeDefer @scope, =>
