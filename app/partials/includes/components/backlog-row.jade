@@ -3,6 +3,7 @@
     tg-bind-scope
     ng-class="{blocked: us.is_blocked}"
     tg-class-permission="{'readonly': '!modify_us'}"
+    data-id="{{ us.id }}"
 )
 
     .input(tg-check-permission="modify_us")
