@@ -50,7 +50,7 @@ div.taskboard-table(
                         ng-class='{hidden:!usFolded[us.id]}'
                     )
 
-                    h3.us-title
+                    h3.us-title(ng-class='{blocked: us.is_blocked, closed: us.is_closed}')
                         a(href="",
                           tg-nav="project-userstories-detail:project=project.slug,ref=us.ref",
                           tg-nav-get-params="{\"milestone\": {{us.milestone}}}",
