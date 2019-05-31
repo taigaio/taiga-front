@@ -44,6 +44,9 @@
                 color: $red;
             }
         }
+        .card-title a:hover {
+            color: $card-text-blocked;
+        }
         .card-owner-actions {
             background: rgba($red-light, .9);
 

@@ -236,6 +236,19 @@ $column-padding: .5rem 1rem;
         @include font-type(text);
         margin-bottom: 0;
         margin-right: 3rem;
+        &.blocked {
+            a:hover {
+                color: $card-text-blocked;
+            }
+        }
+        &.closed {
+            color: lighten($gray-light, 30%);
+            text-decoration: line-through;
+
+            a {
+                color: lighten($gray-light, 30%);
+            }
+        }
     }
     .status-value {
         @include font-size(small);
