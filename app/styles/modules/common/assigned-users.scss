@@ -121,7 +121,7 @@
         flex-shrink: 0;
         position: relative;
         img {
-            width: 100%;
+            @include avatar-img(3rem);
         }
         &.is-iocaine {
             img {

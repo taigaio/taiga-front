@@ -9,23 +9,24 @@
 @import '../dependencies/reset';
 @import '../dependencies/helpers';
 @import '../dependencies/responsive';
-@import '../dependencies/mixins/typography';
+@import '../dependencies/mixins/avatar';
 @import '../dependencies/mixins/background';
 @import '../dependencies/mixins/box-arrow';
 @import '../dependencies/mixins/box-shadow';
-@import '../dependencies/mixins/centered';
 @import '../dependencies/mixins/btn-group';
-@import '../dependencies/mixins/import';
+@import '../dependencies/mixins/centered';
 @import '../dependencies/mixins/create';
-@import '../dependencies/mixins/radio-group';
+@import '../dependencies/mixins/empty-color';
+@import '../dependencies/mixins/import';
 @import '../dependencies/mixins/lightbox';
 @import '../dependencies/mixins/loading-spinner';
 @import '../dependencies/mixins/popover';
 @import '../dependencies/mixins/progress';
+@import '../dependencies/mixins/radio-group';
 @import '../dependencies/mixins/slide';
 @import '../dependencies/mixins/svg';
 @import '../dependencies/mixins/track-buttons';
-@import '../dependencies/mixins/empty-color';
+@import '../dependencies/mixins/typography';
 
 //deprecated
 @mixin placeholder {

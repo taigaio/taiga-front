@@ -15,7 +15,7 @@
             order: 1;
         }
         img {
-            width: 100%;
+            @include avatar-img(2rem);
         }
     }
     .created-by {

@@ -38,7 +38,7 @@
         .user-avatar {
             flex-grow: 0;
             img {
-                height: 2rem;
+                @include avatar-img(2rem);
             }
         }
         .user-full-name {

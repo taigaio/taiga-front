@@ -78,7 +78,7 @@ $dropdown-width: 350px;
 
     }
     .user-avatar img {
-        height: 2.5rem;
+        @include avatar-img(2.5rem);
         margin-left: .5rem;
         vertical-align: middle;
     }
