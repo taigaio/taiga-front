@@ -21,11 +21,6 @@ div.wrapper(
 
         section.us-story-main-data
             header
-                tg-vote-button.upvote-btn(
-                    item="issue"
-                    on-upvote="ctrl.onUpvote"
-                    on-downvote="ctrl.onDownvote"
-                )
                 tg-detail-header.detail-header-container(
                     item="issue"
                     project="project"
@@ -120,6 +115,12 @@ div.wrapper(
                 ng-model="issue"
                 required-perm="modify_us"
             )
+
+        tg-vote-button.upvote-btn(
+            item="issue"
+            on-upvote="ctrl.onUpvote"
+            on-downvote="ctrl.onDownvote"
+        )
 
         section.ticket-detail-settings
             tg-due-date(
