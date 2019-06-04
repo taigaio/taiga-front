@@ -51,6 +51,11 @@ class WatchButtonController
 
         return perms[name]
 
+    getWatchersTotal: ->
+        return if !@.item
+        activeWatchers = _.filter(@.activeUsers, (x) => _.includes(@.item.watchers, x.id))
+        return activeWatchers.length
+
     toggleWatch: ->
         @.loading = true
 

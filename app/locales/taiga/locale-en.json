@@ -14,6 +14,7 @@
         "UNLINK": "Unlink",
         "CREATE": "Create",
         "ADD": "Add",
+        "BACK": "Back",
         "COPY_TO_CLIPBOARD": "Copy to clipboard",
         "COPIED_TO_CLIPBOARD": "Text has been copied to clipboard",
         "EDIT": "Edit",

@@ -24,7 +24,8 @@ WatchButtonDirective = ->
         bindToController: {
             item: "=",
             onWatch: "=",
-            onUnwatch: "="
+            onUnwatch: "=",
+            activeUsers: "="
         }
         controllerAs: "vm",
         templateUrl: (item, attributes) ->

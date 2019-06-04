@@ -1,0 +1,38 @@
+tg-lightbox-close
+
+div.form
+    h2.title(translate="COMMON.WATCHERS.ADD")
+    fieldset
+        input(type="text", data-maxlength="500", placeholder="{{'LIGHTBOX.ASSIGNED_TO.SEARCH' | translate}}", ng-model="usersSearch")
+    div.ticket-watchers.assigned-to-list
+        div(ng-repeat="user in users")
+            .user-list-multiple(
+                ng-class="{'is-active': selected.indexOf(user) > -1}"
+                ng-click="addUser(user)"
+            )
+                .user-list-avatar
+                    img(
+                        style="background: {{ user.avatar.bg }}"
+                        title="{{'COMMON.ASSIGNED_TO' | translate}}"
+                        src="{{ user.avatar.url }}"
+                    )
+                .user-list-name(
+                    title="{{ user.full_name_display }}"
+                )
+                    | {{ user.full_name_display }}
+                tg-svg.remove-assigned-to(
+                    svg-icon="icon-close",
+                    svg-title-translate="COMMON.ASSIGNED_TO.REMOVE_ASSIGNED",
+                    ng-if="selected.indexOf(user) > -1"
+                    ng-click="removeUser(user, $event)"
+                )
+    .lb-assigned-to-actions(ng-if="!usersSearch")
+        button.button-green.lb-assigned-to-confirm(
+            ng-click="confirmSelection()"
+        ) {{'COMMON.ADD' | translate}}
+
+    .lb-assigned-to-actions(ng-if="usersSearch")
+        a.lb-assigned-to-link-back(
+            href=""
+            ng-click="clearSearch()"
+        ) {{'COMMON.BACK' | translate}}

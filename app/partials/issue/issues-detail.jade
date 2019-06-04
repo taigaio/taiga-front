@@ -109,6 +109,7 @@ div.wrapper(
                 data-environment="ticket"
                 on-watch="ctrl.onWatch"
                 on-unwatch="ctrl.onUnwatch"
+                active-users="activeUsers"
             )
             div.ticket-watchers(
                 tg-watchers
@@ -153,4 +154,7 @@ div.wrapper(
 
     div.lightbox.lightbox-block(tg-lb-block, ng-model="issue", title="ISSUES.LIGHTBOX_TITLE_BLOKING_ISSUE")
     div.lightbox.lightbox-select-user(tg-lb-assignedto)
-    div.lightbox.lightbox-select-user(tg-lb-watchers)
+    tg-lb-watchers.lightbox.lightbox-select-user(
+        watchers="issue.watchers",
+        active-users="activeUsers"
+    )

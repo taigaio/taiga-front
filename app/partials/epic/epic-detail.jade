@@ -97,6 +97,7 @@ div.wrapper(
                 data-environment="ticket"
                 on-watch="ctrl.onWatch"
                 on-unwatch="ctrl.onUnwatch"
+                active-users="activeUsers"
             )
             div.ticket-watchers(
                 tg-watchers
@@ -126,4 +127,7 @@ div.wrapper(
 
     div.lightbox.lightbox-block(tg-lb-block, ng-model="epic", title="EPIC.LIGHTBOX_TITLE_BLOKING_EPIC")
     div.lightbox.lightbox-select-user(tg-lb-assignedto)
-    div.lightbox.lightbox-select-user(tg-lb-watchers)
+    tg-lb-watchers.lightbox.lightbox-select-user(
+        watchers="epic.watchers",
+        active-users="activeUsers"
+    )
