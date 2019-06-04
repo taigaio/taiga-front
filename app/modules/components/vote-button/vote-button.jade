@@ -1,22 +1,17 @@
+.votes-label {{ 'COMMON.FIELDS.VOTES'|translate }}
+
+.votes(
+    title="{{ 'COMMON.VOTE_BUTTON.COUNTER_TITLE'|translate:{total:vm.item.total_voters||0}:'messageformat' }}"
+    tg-loading="vm.loading"
+) {{ vm.item.total_voters }}
+
 //- Registered user button
-a.vote-inner(
+a.vote-button(
+    ng-if="::vm.user"
     href=""
     title="{{ 'COMMON.VOTE_BUTTON.BUTTON_TITLE' | translate }}"
-    ng-if="::vm.user"
     ng-click="vm.toggleVote()"
-    ng-class="{'active': vm.item.is_voter, 'is-hover': vm.item.is_voter && vm.isMouseOver, 'disable': !vm.user}"
-    ng-mouseover="vm.showTextWhenMouseIsOver()"
-    ng-mouseleave="vm.showTextWhenMouseIsLeave()"
+    ng-class="{'voted': vm.item.is_voter}"
 )
     tg-svg(svg-icon="icon-upvote")
-    span(
-        title="{{ 'COMMON.VOTE_BUTTON.COUNTER_TITLE'|translate:{total:vm.item.total_voters||0}:'messageformat' }}",
-        tg-loading="vm.loading"
-    ) {{ vm.item.total_voters }}
 
-//- Anonymous user button
-span.vote-inner(ng-if="::!vm.user")
-    tg-svg(svg-icon="icon-upvote")
-    span(
-        title="{{ 'COMMON.VOTE_BUTTON.COUNTER_TITLE'|translate:{total:vm.item.total_voters||0}:'messageformat' }}"
-    ) {{ ::vm.item.total_voters }}

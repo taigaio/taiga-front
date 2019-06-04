@@ -1,0 +1,52 @@
+.upvote-btn {
+    align-items: center;
+    border-bottom: 1px solid $gray;
+    border-top: 1px solid $gray;
+    display: flex;
+    padding: .8rem 0;
+    width: 100%;
+    .votes-label {
+        @include font-type(bold);
+        flex-grow: 1;
+    }
+    .votes {
+        font-size: 1rem;
+        margin-right: 1rem;
+    }
+    .vote-button {
+        display: block;
+        padding: .3rem .7rem;
+        svg {
+            height: 1.1rem;
+            transform: scaleX(.6);
+            width: 1.1rem;
+        }
+    }
+    a {
+        background: darken($mass-white, 8.2%);
+        &:hover {
+            background: darken($gray-lighter, .5%);
+            transition: background .3s;
+        }
+        &.voted {
+            background: $green-light;
+        }
+        &.voted:hover {
+            background: $red-light;
+            padding-bottom: .2rem;
+            padding-top: .4rem;
+            svg {
+                fill: $white;
+                transform: scaleX(.6) rotate(180deg);
+            }
+        }
+    }
+    svg {
+        fill: $gray-light;
+        height: 1rem;
+        width: 1rem;
+    }
+    span {
+        display: block;
+    }
+}

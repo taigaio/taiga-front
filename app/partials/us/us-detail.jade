@@ -21,11 +21,6 @@ div.wrapper(
 
         section.us-story-main-data
             header
-                tg-vote-button.upvote-btn(
-                    item="us"
-                    on-upvote="ctrl.onUpvote"
-                    on-downvote="ctrl.onDownvote"
-                )
                 tg-detail-header.detail-header-container(
                     item="us"
                     project="project"
@@ -115,6 +110,12 @@ div.wrapper(
                 item="us"
                 required-perm="modify_us"
             )
+
+        tg-vote-button.upvote-btn(
+            item="us"
+            on-upvote="ctrl.onUpvote"
+            on-downvote="ctrl.onDownvote"
+        )
 
         section.ticket-to-tribe(ng-if="tribeEnabled && !us.tribe_gig")
             tg-tribe-button(

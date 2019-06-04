@@ -12,11 +12,6 @@ div.wrapper(
 
         section.us-story-main-data
             header
-                tg-vote-button.upvote-btn(
-                    item="epic"
-                    on-upvote="ctrl.onUpvote"
-                    on-downvote="ctrl.onDownvote"
-                )
 
                 .detail-header-container.epic-header-container(ng-class="{blocked: epic.is_blocked}")
                     tg-color-selector.color-selector(
@@ -108,6 +103,12 @@ div.wrapper(
                 ng-model="epic"
                 required-perm="modify_epic"
             )
+
+        tg-vote-button.upvote-btn(
+            item="epic"
+            on-upvote="ctrl.onUpvote"
+            on-downvote="ctrl.onDownvote"
+        )
 
         section.ticket-detail-settings
             tg-us-team-requirement-button(ng-model="epic")
