@@ -17,42 +17,50 @@
 # File: components/lb-watchers/lb-watchers.directive.coffee
 ###
 
+truncate = taiga.truncate
+
 WatchersLightboxDirective = (
     $rootScope
     $repo
     lightboxService
     lightboxKeyboardNavigationService
     avatarService
+    projectService
 ) ->
     link = ($scope, $el, $attrs) ->
-        activeUsers = []
+        users = []
+        roles = []
+
         getFilteredUsers = (text="") ->
             selected = _.sortBy(
-                _.filter(activeUsers, (x) ->
+                _.filter(users, (x) ->
                     _.includes($scope.watchers, x.id)
                 ),
-                'full_name_display'
+                'name'
             )
 
-            _filterUsers = (text, user) ->
-                if _.find(selected, ['id', user.id])
+            _filterRows = (text, row) ->
+                if row.type == 'user' && _.find(selected, ['id', row.id])
                     return false
 
-                username = user.full_name_display.toUpperCase()
+                name = row.name.toUpperCase()
                 text = text.toUpperCase()
-                return _.includes(username, text)
+                return _.includes(name, text)
 
+            collection = users
+            if text
+                collection = _.union(users, roles)
             available = _.sortBy(
-                _.filter(activeUsers, _.partial(_filterUsers, text)),
-                'full_name_display'
+                _.filter(collection, _.partial(_filterRows, text)),
+                'name'
             )
 
             if !text
                 $scope.selected = selected
-                $scope.users = _.union(selected, available)
+                $scope.collection = _.union(selected, available)
             else
                 $scope.selected = []
-                $scope.users = available
+                $scope.collection = available
 
         closeLightbox = () ->
             lightboxKeyboardNavigationService.stop()
@@ -66,42 +74,61 @@ WatchersLightboxDirective = (
                 $el.find("input").focus()
                 lightboxKeyboardNavigationService.init($el)
 
-        $scope.$watch "activeUsers", (users) ->
-            if not users
+        $scope.$watch "activeUsers", (activeUsers) ->
+            if not activeUsers
                 return
 
-            activeUsers = _.map users, (user) ->
-                user.avatar = avatarService.getAvatar(user)
-                return user
+            users = _.map activeUsers, (user) ->
+                return {
+                    id: user.id,
+                    type: 'user',
+                    name: user.full_name_display,
+                    avatar: avatarService.getAvatar(user),
+                }
+
+            project = projectService.project.toJS()
+            roles = _.map project.roles, (role) ->
+                roleUsers = _.filter(activeUsers, {'role': role.id})
+                return {
+                    id: role.id,
+                    type: 'role',
+                    name: role.name,
+                    avatar: null,
+                    userIds: _.map(roleUsers, 'id')
+                    userNames: truncate('(' + _.join(_.map(roleUsers, 'full_name_display'), ', ') + ')', 110)
+                }
 
         $scope.$watch "watchers", (watchers) ->
             if not watchers
                 return
             getFilteredUsers()
 
-        $scope.$watch "usersSearch", (searchingText) ->
-            users = getFilteredUsers(searchingText)
+        $scope.$watch "searchText", (searchingText) ->
+            getFilteredUsers(searchingText)
             $el.find("input").focus()
 
-        $scope.removeUser = (user, $event) ->
+        $scope.removeItem = (user, $event) ->
             $event.preventDefault()
             $event.stopPropagation()
             $event.currentTarget.remove()
 
-            $scope.usersSearch = null
+            $scope.searchText = null
             _.pull($scope.watchers, user.id)
             getFilteredUsers()
 
-        $scope.addUser = (user) ->
-            if _.find($scope.selected, ['id', user.id])
-                return
+        $scope.addItem = (item) ->
+            if item.type == 'user'
+                return if _.find($scope.selected, ['id', item.id])
+                $scope.watchers.push(item.id)
 
-            $scope.usersSearch = null
-            $scope.watchers.push(user.id)
+            if item.type == 'role'
+                $scope.watchers = _.union($scope.watchers, item.userIds)
+
+            $scope.searchText = null
             getFilteredUsers()
 
         $scope.clearSearch = () ->
-            $scope.usersSearch = ''
+            $scope.searchText = ''
 
         $scope.confirmSelection = () ->
             closeLightbox()
@@ -113,7 +140,7 @@ WatchersLightboxDirective = (
             closeLightbox()
 
             $scope.$apply ->
-                $scope.usersSearch = null
+                $scope.searchText = null
 
         $scope.$on "$destroy", ->
             $el.off()
@@ -133,6 +160,7 @@ WatchersLightboxDirective.$inject = [
     "lightboxService"
     "lightboxKeyboardNavigationService"
     "tgAvatarService"
+    "tgProjectService"
 ]
 
 angular.module("taigaComponents").directive("tgLbWatchers", WatchersLightboxDirective)

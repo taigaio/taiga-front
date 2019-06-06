@@ -93,25 +93,6 @@
     }
 }
 
-.lb-assigned-to-actions {
-    margin: 2rem 0 0;
-    text-align: center;
-}
-
-.lb-assigned-to-confirm {
-    border-radius: 0;
-    margin: 0 auto;
-    min-width: 10rem;
-}
-
-.lb-assigned-to-link-back {
-    color: $primary;
-    text-transform: uppercase;
-    &:hover {
-        color: $primary-light;
-    }
-}
-
 .ticket-watchers {
     @include user-list;
     margin-top: 1rem;
