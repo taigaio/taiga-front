@@ -1,10 +1,10 @@
 tg-lightbox-close
 
 div.form.lb-select-user-form
-    h2.title(translate="COMMON.WATCHERS.ADD")
+    h2.title {{ lbTitle }}
     fieldset
-        input(type="text", data-maxlength="500", placeholder="{{'LIGHTBOX.ASSIGNED_TO.SEARCH' | translate}}", ng-model="searchText")
-    div.ticket-watchers.assigned-to-list
+        input(type="text", data-maxlength="500", placeholder="{{'LIGHTBOX.SELECT_USER.SEARCH' | translate}}", ng-model="searchText")
+    div.lb-select-user-list
         div(ng-repeat="item in collection")
             .user-list-item(
                 ng-class="{'is-active': selected.indexOf(item) > -1}"
@@ -27,16 +27,14 @@ div.form.lb-select-user-form
                 )
                     span.role {{ item.name }}
                     span.users {{ item.userNames }}
-                tg-svg.remove-assigned-to(
+                tg-svg.remove-selected(
                     svg-icon="icon-close",
-                    svg-title-translate="COMMON.ASSIGNED_TO.REMOVE_ASSIGNED",
                     ng-if="selected.indexOf(item) > -1"
+                    title="{{'LIGHTBOX.SELECT_USER.REMOVE' | translate}}"
                     ng-click="removeItem(item, $event)"
                 )
     .lb-select-user-actions(ng-if="!searchText")
-        button.button-green.lb-select-user-confirm(
-            ng-click="confirmSelection()"
-        ) {{'COMMON.ADD' | translate}}
+        button.button-green.lb-select-user-confirm {{'COMMON.ADD' | translate}}
 
     .lb-select-user-actions(ng-if="searchText")
         a.lb-select-user-link-back(

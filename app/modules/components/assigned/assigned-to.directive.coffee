@@ -18,9 +18,7 @@
 ###
 
 AssignedToDirective = ($rootscope, $confirm, $repo, $loading, $modelTransform, $template,
-$translate, $compile, $currentUserService, avatarService) ->
-    # You have to include a div with the tg-lb-assignedto directive in the page
-    # where use this directive
+$translate, $compile, $currentUserService, avatarService, $lightboxFactory) ->
     template = $template.get("common/components/assigned-to.html", true)
 
     link = ($scope, $el, $attrs, $model) ->
@@ -56,7 +54,24 @@ $translate, $compile, $currentUserService, avatarService) ->
             $el.html(compiledTemplate)
 
         $scope.assign = () ->
-            $rootscope.$broadcast("assigned-to:add", $model.$modelValue)
+            onClose = (assignedUsers) =>
+                userId = assignedUsers.pop() || null
+                save(userId || null)
+
+            item = _.clone($model.$modelValue, false)
+            $lightboxFactory.create(
+                'tg-lb-select-user',
+                {
+                    "class": "lightbox lightbox-select-user",
+                },
+                {
+                    "currentUsers": [item.assigned_to],
+                    "activeUsers": @.activeUsers,
+                    "onClose": onClose,
+                    "single": true,
+                    "lbTitle": $translate.instant("COMMON.ASSIGNED_USERS.ADD"),
+                }
+            )
 
         $scope.unassign = () ->
             title = $translate.instant("COMMON.ASSIGNED_TO.CONFIRM_UNASSIGNED")
@@ -102,4 +117,4 @@ $translate, $compile, $currentUserService, avatarService) ->
 
 angular.module('taigaComponents').directive("tgAssignedTo", ["$rootScope", "$tgConfirm", "$tgRepo",
 "$tgLoading", "$tgQueueModelTransformation", "$tgTemplate", "$translate", "$compile",
-"tgCurrentUserService", "tgAvatarService", AssignedToDirective])
+"tgCurrentUserService", "tgAvatarService", "tgLightboxFactory", AssignedToDirective])

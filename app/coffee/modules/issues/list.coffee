@@ -619,7 +619,7 @@ module.directive("tgIssueStatusInlineEdition", ["$tgRepo", "$tgTemplate", "$root
 ## Issue assigned to Directive
 #############################################################################
 
-IssueAssignedToInlineEditionDirective = ($repo, $rootscope, $translate, avatarService) ->
+IssueAssignedToInlineEditionDirective = ($repo, $rootscope, $translate, avatarService, $lightboxFactory) ->
     template = _.template("""
     <img style="background-color: <%- bg %>" src="<%- imgurl %>" alt="<%- name %>"/>
     <figcaption><%- name %></figcaption>
@@ -650,20 +650,31 @@ IssueAssignedToInlineEditionDirective = ($repo, $rootscope, $translate, avatarSe
         updateIssue(issue)
 
         $el.on "click", ".issue-assignedto", (event) ->
-            $rootscope.$broadcast("assigned-to:add", issue)
+            onClose = (assignedUsers) =>
+                issue.assigned_to = assignedUsers.pop() || null
+                $repo.save(issue).then ->
+                    updateIssue(issue)
+                    $rootscope.$broadcast("assigned-to:changed", issue)
+
+            $lightboxFactory.create(
+                'tg-lb-select-user',
+                {
+                    "class": "lightbox lightbox-select-user",
+                },
+                {
+                    "currentUsers": [issue.assigned_to],
+                    "activeUsers": $scope.activeUsers,
+                    "onClose": onClose,
+                    "single": true,
+                    "lbTitle": $translate.instant("COMMON.ASSIGNED_USERS.ADD"),
+                }
+            )
 
         taiga.bindOnce $scope, "project", (project) ->
             # If the user has not enough permissions the click events are unbinded
             if project.my_permissions.indexOf("modify_issue") == -1
                 $el.unbind("click")
                 $el.find("a").addClass("not-clickable")
-
-        $scope.$on "assigned-to:added", (ctx, userId, updatedIssue) ->
-            if updatedIssue.id == issue.id
-                updatedIssue.assigned_to = userId
-                $repo.save(issue).then ->
-                    updateIssue(updatedIssue)
-                    $rootscope.$broadcast("assigned-to:changed", updatedIssue)
 
         $scope.$watch $attrs.tgIssueAssignedToInlineEdition, (val) ->
             updateIssue(val)
@@ -674,4 +685,4 @@ IssueAssignedToInlineEditionDirective = ($repo, $rootscope, $translate, avatarSe
     return {link: link}
 
 module.directive("tgIssueAssignedToInlineEdition", ["$tgRepo", "$rootScope", "$translate", "tgAvatarService",
-                                                    IssueAssignedToInlineEditionDirective])
+                                                    "tgLightboxFactory", IssueAssignedToInlineEditionDirective])

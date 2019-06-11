@@ -14,12 +14,12 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: components/lb-watchers/lb-watchers.directive.coffee
+# File: components/lb-select-user/lb-select-user.directive.coffee
 ###
 
 truncate = taiga.truncate
 
-WatchersLightboxDirective = (
+SelectUserDirective = (
     $rootScope
     $repo
     lightboxService
@@ -30,11 +30,12 @@ WatchersLightboxDirective = (
     link = ($scope, $el, $attrs) ->
         users = []
         roles = []
+        lightboxService.open($el)
 
         getFilteredUsers = (text="") ->
             selected = _.sortBy(
                 _.filter(users, (x) ->
-                    _.includes($scope.watchers, x.id)
+                    _.includes($scope.currentUsers, x.id)
                 ),
                 'name'
             )
@@ -75,8 +76,7 @@ WatchersLightboxDirective = (
                 lightboxKeyboardNavigationService.init($el)
 
         $scope.$watch "activeUsers", (activeUsers) ->
-            if not activeUsers
-                return
+            return if not activeUsers
 
             users = _.map activeUsers, (user) ->
                 return {
@@ -85,6 +85,8 @@ WatchersLightboxDirective = (
                     name: user.full_name_display,
                     avatar: avatarService.getAvatar(user),
                 }
+
+            return if $scope.single
 
             project = projectService.project.toJS()
             roles = _.map project.roles, (role) ->
@@ -98,8 +100,8 @@ WatchersLightboxDirective = (
                     userNames: truncate('(' + _.join(_.map(roleUsers, 'full_name_display'), ', ') + ')', 110)
                 }
 
-        $scope.$watch "watchers", (watchers) ->
-            if not watchers
+        $scope.$watch "currentUsers", (currentUsers) ->
+            if not currentUsers
                 return
             getFilteredUsers()
 
@@ -113,16 +115,20 @@ WatchersLightboxDirective = (
             $event.currentTarget.remove()
 
             $scope.searchText = null
-            _.pull($scope.watchers, user.id)
+            _.pull($scope.currentUsers, user.id)
             getFilteredUsers()
 
         $scope.addItem = (item) ->
             if item.type == 'user'
-                return if _.find($scope.selected, ['id', item.id])
-                $scope.watchers.push(item.id)
+                return if _.find($scope.currentUsers, ['id', item.id])
+                if $scope.single
+                    $scope.currentUsers = [item.id]
+                    confirmSelection()
+                    return
+                $scope.currentUsers.push(item.id)
 
             if item.type == 'role'
-                $scope.watchers = _.union($scope.watchers, item.userIds)
+                $scope.currentUsers = _.union($scope.currentUsers, item.userIds)
 
             $scope.searchText = null
             getFilteredUsers()
@@ -130,15 +136,18 @@ WatchersLightboxDirective = (
         $scope.clearSearch = () ->
             $scope.searchText = ''
 
-        $scope.confirmSelection = () ->
+        confirmSelection = () ->
+            $scope.onClose($scope.currentUsers)
             closeLightbox()
-            $rootScope.$broadcast('watchers:changed', $scope.watchers)
+
+        $el.on "click", ".lb-select-user-confirm", (event) ->
+            event.preventDefault()
+            confirmSelection()
 
         $el.on "click", ".close", (event) ->
             event.preventDefault()
 
             closeLightbox()
-
             $scope.$apply ->
                 $scope.searchText = null
 
@@ -146,15 +155,12 @@ WatchersLightboxDirective = (
             $el.off()
 
     return {
-        templateUrl: "components/lb-watchers/lb-watchers.html"
+        templateUrl: "components/lb-select-user/lb-select-user.html"
         link: link
-        scope: {
-            activeUsers: "="
-            watchers: "="
-        }
+        scope: true
     }
 
-WatchersLightboxDirective.$inject = [
+SelectUserDirective.$inject = [
     "$rootScope"
     "$tgRepo"
     "lightboxService"
@@ -163,4 +169,4 @@ WatchersLightboxDirective.$inject = [
     "tgProjectService"
 ]
 
-angular.module("taigaComponents").directive("tgLbWatchers", WatchersLightboxDirective)
+angular.module("taigaComponents").directive("tgLbSelectUser", SelectUserDirective)

@@ -155,10 +155,4 @@ div.wrapper(
         title="{{ 'US.LIGHTBOX_TITLE_BLOKING_US' | translate }}"
         ng-model="us"
     )
-    div.lightbox.lightbox-select-user(tg-lb-assignedto)
-    div.lightbox.lightbox-select-user(tg-lb-assigned-users)
-    tg-lb-watchers.lightbox.lightbox-select-user(
-        watchers="us.watchers",
-        active-users="activeUsers"
-    )
     div.lightbox.lightbox-relate-to-epic(tg-lb-relatetoepic)

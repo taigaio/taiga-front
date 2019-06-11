@@ -20,10 +20,12 @@
 class WatchButtonController
     @.$inject = [
         "tgCurrentUserService",
-        "$rootScope"
+        "$rootScope",
+        "tgLightboxFactory",
+        "$translate"
     ]
 
-    constructor: (@currentUserService, @rootScope) ->
+    constructor: (@currentUserService, @rootScope, @lightboxFactory, @translate) ->
         @.user = @currentUserService.getUser()
         @.isMouseOver = false
         @.loading = false
@@ -35,7 +37,21 @@ class WatchButtonController
         @.isMouseOver = false
 
     openWatchers: ->
-        @rootScope.$broadcast("watcher:add", @.item)
+        onClose = (watchersIds) =>
+            @rootScope.$broadcast("watchers:changed", watchersIds)
+
+        @lightboxFactory.create(
+            'tg-lb-select-user',
+            {
+                "class": "lightbox lightbox-select-user",
+            },
+            {
+                "currentUsers": @.item.watchers,
+                "activeUsers": @.activeUsers,
+                "onClose": onClose,
+                "lbTitle": @translate.instant("COMMON.WATCHERS.ADD"),
+            }
+        )
 
     getPerms: ->
         return "" if !@.item

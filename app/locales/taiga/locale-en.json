@@ -1094,6 +1094,10 @@
             "SELECT": "Select assigned to",
             "SEARCH": "Search for users"
         },
+        "SELECT_USER": {
+            "SEARCH": "Search for users",
+            "REMOVE": "Remove user"
+        },
         "ADD_MEMBER": {
             "TITLE": "New Member",
             "PLACEHOLDER": "Filter users or write an email to invite",

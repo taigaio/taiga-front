@@ -39,7 +39,22 @@ describe "WatchButton", ->
         module ($provide) ->
             provide = $provide
             _mockCurrentUser()
+            _mockTgLightboxFactory()
+            _mockTranslate()
+
             return null
+
+    _mockTgLightboxFactory = () ->
+        mocks.tgLightboxFactory = {
+            create: sinon.stub()
+        }
+
+        provide.value "tgLightboxFactory", mocks.tgLightboxFactory
+
+    _mockTranslate = () ->
+        mocks.translate = sinon.stub()
+
+        provide.value "$translate", mocks.translate
 
     _inject = (callback) ->
         inject (_$controller_, _$rootScope_) ->

@@ -1,6 +1,11 @@
 .lb-select-user-form {
     margin: 0 .5rem;
 
+    .lb-select-user-list {
+        max-height: 28.5rem;
+        overflow-y: auto;
+    }
+
     .user-list-item {
         align-content: center;
         align-items: center;
@@ -38,12 +43,25 @@
     .user-list-name {
         @include font-type(normal);
         color: $grayer;
+        flex-grow: 1;
         margin-left: .5rem;
         .role {
             margin-right: .5rem;
         }
         .users {
             color: $gray-lighter;
+        }
+    }
+    .remove-selected {
+        cursor: pointer;
+        display: block;
+        fill: $grayer;
+        margin-right: 1.25rem;
+        margin-top: .25rem;
+        opacity: 1;
+        transition: all .2s ease-in;
+        &:hover {
+            fill: $red;
         }
     }
 }

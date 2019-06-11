@@ -12,6 +12,9 @@
             transition: opacity .3s linear;
         }
     }
+    > div {
+        width: 100%;
+    }
     .loading-spinner {
         @include loading-spinner;
         margin: 1rem auto;

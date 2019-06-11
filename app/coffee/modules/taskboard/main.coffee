@@ -54,7 +54,8 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
         "tgTaskboardTasks",
         "tgTaskboardIssues",
         "$tgStorage",
-        "tgFilterRemoteStorageService"
+        "tgFilterRemoteStorageService",
+        "tgLightboxFactory"
     ]
 
     excludePrefix: "exclude_"
@@ -68,7 +69,7 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @rs2, @params, @q, @appMetaService, @location, @navUrls,
                   @events, @analytics, @translate, @errorHandlingService, @taskboardTasksService,
-                  @taskboardIssuesService, @storage, @filterRemoteStorageService) ->
+                  @taskboardIssuesService, @storage, @filterRemoteStorageService, @lightboxFactory) ->
         bindMethods(@)
         @taskboardTasksService.reset()
         @scope.userstories = []
@@ -651,15 +652,49 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
         else if modelName == 'tasks'
             @taskboardTasksService.toggleFold(id)
 
+    openUsersSelection: (item) ->
+        onClose = (assignedUsers) =>
+            userId = assignedUsers.pop() || null
+
+            if item.getName() == 'tasks'
+                item.assigned_to = userId
+                @taskboardTasksService.replaceModel(item)
+
+                @repo.save(item).then =>
+                    @.generateFilters()
+                    if @.isFilterDataTypeSelected('assigned_to') || @.isFilterDataTypeSelected('role')
+                        @.loadTasks()
+
+            if item.getName() == 'issues'
+                item.assigned_to = userId
+                @taskboardIssuesService.replaceModel(item)
+
+                @repo.save(item).then =>
+                    @.generateFilters()
+                    if @.isFilterDataTypeSelected('assigned_to') || @.isFilterDataTypeSelected('role')
+                        @.loadIssues()
+
+        @lightboxFactory.create(
+            'tg-lb-select-user',
+            {
+                "class": "lightbox lightbox-select-user",
+            },
+            {
+                "currentUsers": [item.assigned_to],
+                "activeUsers": @scope.activeUsers,
+                "onClose": onClose,
+                "single": true,
+                "lbTitle": @translate.instant("COMMON.ASSIGNED_USERS.ADD"),
+            }
+        )
+
     changeTaskAssignedTo: (id) ->
         task = @taskboardTasksService.getTaskModel(id)
-
-        @rootscope.$broadcast("assigned-to:add", task)
+        @.openUsersSelection(task)
 
     changeIssueAssignedTo: (id) ->
         issue = @taskboardIssuesService.getIssueModel(id)
-
-        @rootscope.$broadcast("assigned-to:add", issue)
+        @.openUsersSelection(issue)
 
     setRolePoints: () ->
         computableRoles = _.filter(@scope.project.roles, "computable")

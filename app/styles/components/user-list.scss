@@ -96,10 +96,6 @@
 .ticket-watchers {
     @include user-list;
     margin-top: 1rem;
-    &.assigned-to-list {
-        max-height: 28.5rem;
-        overflow-y: auto;
-    }
     .user-list-single {
         &:hover {
             .delete-watcher {

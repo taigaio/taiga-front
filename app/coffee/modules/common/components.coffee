@@ -279,6 +279,7 @@ WatchersDirective = ($rootscope, $confirm, $repo, $modelTransform, $template, $c
 
         $scope.$watch $attrs.ngModel, (item) ->
             return if not item?
+            $scope.watchersIds = item.watchers
             watchers = _.map(item.watchers, (watcherId) -> $scope.usersById[watcherId])
             watchers = _.filter watchers, (it) -> return !!it
 

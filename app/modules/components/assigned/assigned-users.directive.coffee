@@ -18,7 +18,7 @@
 ###
 
 AssignedUsersDirective = ($rootscope, $confirm, $repo, $modelTransform, $template, $compile,
-$translate, $currentUserService) ->
+$translate, $currentUserService, $lightboxFactory) ->
     # You have to include a div with the tg-lb-assignedusers directive in the page
     # where use this directive
 
@@ -43,9 +43,23 @@ $translate, $currentUserService) ->
             transform.then null, ->
                 $confirm.notify("error")
 
-        openAssignedUsers = ->
+        $scope.openAssignedUsers = () ->
+            onClose = (assignedUsers) =>
+                save(assignedUsers)
+
             item = _.clone($model.$modelValue, false)
-            $rootscope.$broadcast("assigned-user:add", item)
+            $lightboxFactory.create(
+                'tg-lb-select-user',
+                {
+                    "class": "lightbox lightbox-select-user",
+                },
+                {
+                    "currentUsers": item.assigned_users,
+                    "activeUsers": @.activeUsers,
+                    "onClose": onClose,
+                    "lbTitle": $translate.instant("COMMON.ASSIGNED_USERS.ADD"),
+                }
+            )
 
         $scope.selfAssign = () ->
             return if not isEditable()
@@ -96,7 +110,6 @@ $translate, $currentUserService) ->
             $scope.assignedUsers = assignedUsers
             $scope.isEditable = isEditable()
             $scope.isAssigned = isAssigned()
-            $scope.openAssignedUsers = openAssignedUsers
 
         $scope.$on "assigned-user:deleted", (ctx, assignedUserId) ->
             assignedUsersIds = _.clone($model.$modelValue.assigned_users, false)
@@ -131,4 +144,4 @@ $translate, $currentUserService) ->
 
 angular.module('taigaComponents').directive("tgAssignedUsers", ["$rootScope", "$tgConfirm",
 "$tgRepo", "$tgQueueModelTransformation", "$tgTemplate", "$compile", "$translate",
-"tgCurrentUserService", AssignedUsersDirective])
+"tgCurrentUserService", "tgLightboxFactory", AssignedUsersDirective])
