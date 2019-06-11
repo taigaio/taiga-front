@@ -201,16 +201,16 @@
             "COUNTER_TITLE": "{total, plural, one{un voto} other{# votos}}"
         },
         "PROMOTE_TO_US": "Promover a Historia de Usuario",
-        "PROMOTED_ISSUES": "This Issue has been promoted to US:",
-        "PROMOTED_TASKS": "This Task has been promoted to US:",
+        "PROMOTED_ISSUES": "Esta petición ha sido promovida a la historia:",
+        "PROMOTED_TASKS": "Esta Tarea ha sido promovida a Historia de Usuario:",
         "CONFIRM_PROMOTE": {
             "ISSUE": {
-                "TITLE": "Promote this Issue to a new user story",
+                "TITLE": "Promover esta petición a una nueva historia de usuario",
                 "MESSAGE": "¿Está seguro de que desea crear una nueva Historia de Usuario a partir de esta Petición?"
             },
             "TASK": {
-                "TITLE": "Promote this Task to a new user story",
-                "MESSAGE": "Are you sure you want to create a new US from this Task?"
+                "TITLE": "Promover esta petición a una nueva historia de usuario",
+                "MESSAGE": "¿Está seguro de que desea crear una nueva Historia de Usuario a partir de esta Tarea?"
             }
         },
         "CUSTOM_ATTRIBUTES": {
@@ -396,11 +396,11 @@
         "WORKING_ON_SECTION": "Trabajando en",
         "WATCHING_SECTION": "Observando",
         "DASHBOARD": "Dashboard de proyecto",
-        "SET_HIDDEN": "Set as hidden",
-        "SET_VISIBLE": "Set as visible",
-        "NO_HIDDEN_ITEMS": "You have no hidden items",
-        "HIDE_HIDDEN": "Do not show hidden objects",
-        "SHOW_HIDDEN": "Show hidden objects"
+        "SET_HIDDEN": "Establecer como oculto",
+        "SET_VISIBLE": "Establecer como visible",
+        "NO_HIDDEN_ITEMS": "No tienes ítems ocultos",
+        "HIDE_HIDDEN": "No mostrar objetos ocultos",
+        "SHOW_HIDDEN": "Mostrar objetos ocultos"
     },
     "EPICS": {
         "TITLE": "ÉPICAS",
@@ -425,8 +425,8 @@
             "ASSIGNED_TO": "Asignado",
             "STATUS": "Estado",
             "PROGRESS": "En curso",
-            "CLOSED_US": "Closed user stories",
-            "CLOSED_EPICS": "Closed epics",
+            "CLOSED_US": "Historias de usuario cerradas",
+            "CLOSED_EPICS": "Épicas cerradas",
             "VIEW_OPTIONS": "Ver opciones"
         },
         "CREATE": {
@@ -564,7 +564,7 @@
             "DESCRIPTION": "Descarga el fichero CSV o copia la URL generada y abre tu editor de textos o hoja de cálculo favorito para realizar tus propios informes. Podrás visualizar y analizar todos los datos fácilmente.",
             "HELP": "¿Cómo puedo usar esto en mi hoja de cálculo?",
             "REGENERATE_TITLE": "Cambiar URL",
-            "REGENERATE_SUBTITLE": "You are going to change the CSV data access url. The previous url will be disabled. Are you sure?",
+            "REGENERATE_SUBTITLE": "Vas a cambiar la url de acceso a los datos CSV. La url anterior será desactivada. ¿Estás seguro?",
             "DELETE_TITLE": "Borrar URL",
             "DELETE_SUBTITLE": "Vas a borrar la url de acceso a los datos en formato CSV actuales. ¿Estás seguro?"
         },
@@ -1147,7 +1147,7 @@
         },
         "REMOVE_RELATIONSHIP_WITH_EPIC": {
             "TITLE": "Quitar relación con Épica",
-            "MESSAGE": "Are you sure you want to remove the relationship of this User Story with the Epic <strong>{{epicSubject}}</strong>?"
+            "MESSAGE": "¿Estás seguro de querer eliminar la relación entre esta historia de usuario y la Épica <strong>{{epicSubject}}</strong>?"
         },
         "CREATE_MEMBER": {
             "PLACEHOLDER_INVITATION_TEXT": "(Opcional) Añade un texto personalizado a la invitación. Dile algo encantador a tus nuevos miembros ;-)",
@@ -1235,9 +1235,9 @@
         "ADD": "+ Añadir una Historia de Usuario",
         "ADD_BULK": "Añadir nuevas Historias de Usuario en bloque",
         "PROMOTED_FROM_ISSUE": "Esta historia ha sido promovida desde la petición:",
-        "PROMOTED_FROM_TASK": "This US has been promoted from Task:",
+        "PROMOTED_FROM_TASK": "Esta historia ha sido promovida desde la Tarea:",
         "TITLE_LINK_GO_TO_ISSUE": "Ir a petición",
-        "TITLE_LINK_GO_TO_TASK": "Go to task",
+        "TITLE_LINK_GO_TO_TASK": "Ir a tarea",
         "TITLE_DELETE_ACTION": "Borrar Historia de Usuario",
         "LIGHTBOX_TITLE_BLOKING_US": "Historia bloqueada",
         "NOT_ESTIMATED": "No estimada",
@@ -1430,13 +1430,13 @@
             "MOVE_TO_OPEN_SPRINT": "Mover al Sprint en curso",
             "NO_OPEN_SPRINTS": "No hay más sprints abiertos. Por favor, crea uno primero.",
             "SELECT_DESTINATION_PLACEHOLDER": "Selecciona destino",
-            "UNFINISHED_USER_STORIES_COUNT": "{total, plural, one{<strong>#</strong> unfinished user story} other{<strong>#</strong> unfinished user stories}}",
-            "UNFINISHED_STORYLESS_TASKS_COUNT": "{total, plural, one{<strong>#</strong> unfinished storyless task} other{<strong>#</strong> unfinished storyless tasks}}",
-            "UNFINISHED_ISSUES_COUNT": "{total, plural, one{<strong>#</strong> unfinished issue} other{<strong>#</strong> unfinished issue}}",
+            "UNFINISHED_USER_STORIES_COUNT": "{total, plural, uno{<strong>#</strong> historia de usuario no terminada} otro{<strong>#</strong> historias de usuario no terminadas}}",
+            "UNFINISHED_STORYLESS_TASKS_COUNT": "{total, plural, uno{<strong>#</strong> tarea sin historia de usuario no terminada} otro{# tareas sin historia de usuario no terminadas}}",
+            "UNFINISHED_ISSUES_COUNT": "{total, plural, uno{<strong>#</strong> de petición no terminada} otro{<strong>#</strong> petición no terminada}}",
             "WARNING_ISSUES_NOT_MOVED_TITLE": "Acabas de mover todas las historias de usuario y tareas, y el sprint se cerrará",
             "WARNING_ISSUES_NOT_MOVED": "Las peticiones permanecerán en el sprint y no son eliminadas",
-            "WARNING_SPRINT_STILL_OPEN_TITLE": "{total, plural, one{You just moved # item!} other{You just moved # items!}}",
-            "WARNING_SPRINT_STILL_OPEN": "Please note that the sprint {{sprintName}} <strong>will remain open</strong> as long as it contains unfinished items."
+            "WARNING_SPRINT_STILL_OPEN_TITLE": "{total, plural, uno{Acabas de mover el ítem # !} otro{Acabas de mover los ítems #!}}",
+            "WARNING_SPRINT_STILL_OPEN": "El sprint {{sprintName}} <strong>permanecerá abierto</strong> mientras contenga ítems no terminados."
         }
     },
     "TASK": {
@@ -1503,7 +1503,7 @@
         "FILTER_ISSUES": "Filtrar peticiones",
         "CONFIRM_DETACH_FROM_SPRINT": {
             "TITLE": "Separar petición de Sprint",
-            "MESSAGE": "You are about to detach the issue from the sprint <strong>{{ sprintName }}<strong>"
+            "MESSAGE": "Estás a punto de separar la petición del sprint <strong>{{ sprintName }}<strong>"
         },
         "CONFIRM_CHANGE_FROM_SPRINT": {
             "TITLE": "Unir petición a Sprint",
@@ -1726,12 +1726,12 @@
         "VIEW_ALL": "Ver todas",
         "NO_NEW_EVENTS": "No hay eventos nuevos",
         "NO_EVENTS_YET": "Todavía no hay eventos",
-        "ASSIGNED_YOU": "{{username}} assigned you to {{obj_name}}",
-        "ADDED_YOU_AS_WATCHER": "{{username}} added you as watcher on {{obj_name}}",
+        "ASSIGNED_YOU": "{{username}} te asignó a {{obj_name}}",
+        "ADDED_YOU_AS_WATCHER": "{{username}} te ha añadido como observador en {{obj_name}}",
         "ADDED_YOU_AS_MEMBER": "{{username}} te ha añadido como miembro",
-        "MENTIONED_YOU": "{{username}} mentioned you on {{obj_name}}",
-        "MENTIONED_YOU_IN_COMMENT": "{{username}} mentioned you in a comment on {{obj_name}}",
-        "COMMENTED": "{{username}} has commented on {{obj_name}}"
+        "MENTIONED_YOU": "{{username}} te mencionó en {{obj_name}}",
+        "MENTIONED_YOU_IN_COMMENT": "{{username}} te mencionó en un comentario en {{obj_name}}",
+        "COMMENTED": "{{username}} ha comentado en {{obj_name}}"
     },
     "LEGAL": {
         "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>Al crear una nueva cuenta, acepta </span><a href=\"{{ termsOfServiceUrl }}\" title=\"See terms of service\" target=\"_blank\">nuestras condiciones de servicio</a><span> y </span><a href=\"{{ privacyPolicyUrl }}\" title=\"See privacy policy\" target=\"_blank\">nuestra política de privacidad</a>.",
@@ -1842,16 +1842,16 @@
     },
     "TIPS": {
         "TIPS_TITLE": "Sugerencia",
-        "TIP_PROJECTS_ORDER": "You can sort projects on your project page by placing the ones most frequently accessed at the top.",
-        "TIP_VOTING": "Whether you ask your community or your other team members, upvoting items might serve as a way to detect explicit support for a particular task or issue.",
-        "TIP_ISSUES_TO_SPRINT": "You can attach issues to a particular sprint by clicking on the pin icon in the detail view.",
-        "TIP_DUE_DATE": "If you need to finish a task on a specific date, activate the DueDate from the detail view of the task.",
-        "TIP_IOCAIN": "You can signal to team members that a task is being particularly troublesome by clicking on the iocaine button. Doing so indicates that you welcome help, patience and understanding.",
-        "TIP_BLOCKED": "You can signal to other team members that something is preventing you from working on a particular task by marking it as \"blocked\"",
-        "TIP_PROMOTE": "Is your issue or task more complex than it first appeared? Go to the detail view and turn it into user story.",
-        "TIP_BULK": "If you want to add many tasks at once, choose bulk mode and write each task in a single line, one after the other.",
-        "TIP_ZOOM": "You can get a wider view of the kanban by reducing the information shown on the cards with the zoom control.",
-        "TIP_CUSTOM_FIELDS": "If you're an admin of the project, consider creating custom fields to expand the tasks' configuration.",
-        "TIP_SLIDE_ARROWS": "You can cycle over the results of a list, search or filter by clicking on the navigational arrows on the detail view of any one item."
+        "TIP_PROJECTS_ORDER": "Puedes ordenar los proyectos en tu página de proyectos colocando los usados más frecuentemente en la cima.",
+        "TIP_VOTING": "Ya sea que le preguntes a tu comunidad o los otros miembros de tu equipo, votar por ítems puede funcionar como una forma de detectar apoyo explícito de una Tarea o Petición particulares.",
+        "TIP_ISSUES_TO_SPRINT": "Puedes adjuntar peticiones a un sprint particular haciendo clic en el icono de tachuela en la vista detallada.",
+        "TIP_DUE_DATE": "Si necesita terminar una tarea en una fecha específica, active la fecha de vencimiento desde la vista detallada de la tarea",
+        "TIP_IOCAIN": "Puedes señalar a miembros de equipo que una tarea está siendo particularmente problemática haciendo clic en el botón de iocaína. Al hacerlo indicas que agradecerías ayuda, paciencia y comprensión.",
+        "TIP_BLOCKED": "Puedes señalar a otros miembros de equipo que algo está previniendo que trabajes en una tarea particular marcándola como \"bloqueada\".",
+        "TIP_PROMOTE": "Son tu petición o tarea más complejos de lo que parecían en un principio? Ve a la vista detallada y conviértelos en una historia de usuario  ",
+        "TIP_BULK": "Si quieres añadir varias tareas de una vez, elige el modo de añadir en masa y escribe cada tarea en una nueva linea, una después de la otra.",
+        "TIP_ZOOM": "Puedes obtener una vista más amplia del tablero Kánban reduciendo la información mostrada en las tarjetas con el control de zoom.",
+        "TIP_CUSTOM_FIELDS": "Si eres un administrador del proyecto, considera crear campos personalizados para expandir la configuración de las tareas.",
+        "TIP_SLIDE_ARROWS": "Puedes rotar sobre los resultados de una lista, buscar o filtrar haciendo clic en las flechas navigacionales en la vista detallada de cualquier ítem."
     }
 }
