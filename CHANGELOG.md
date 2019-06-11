@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+## 4.2.6 (2019-06-12)
+
+- Vote button redesign
+- Minor bug fixes
+
 ## 4.2.5 (2019-05-09)
 - Revet remove bluebird dependency
 
