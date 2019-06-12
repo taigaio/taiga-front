@@ -228,7 +228,10 @@ WatchersDirective = ($rootscope, $confirm, $repo, $modelTransform, $template, $c
             transform.then null, ->
                 $confirm.notify("error")
 
-        deleteWatcher = (watcherIds) ->
+        deleteWatcher = (watcherId) ->
+            watcherIds = _.clone($model.$modelValue.watchers, false)
+            watcherIds = _.pull(watcherIds, watcherId)
+
             transform = $modelTransform.save (item) ->
                 item.watchers = watcherIds
 
@@ -245,7 +248,7 @@ WatchersDirective = ($rootscope, $confirm, $repo, $modelTransform, $template, $c
                 $confirm.notify("error")
 
         renderWatchers = (watchers) ->
-            $scope.watchers = watchers
+            $scope.watchers = _.compact(watchers)
             $scope.isEditable = isEditable()
 
         $el.on "click", ".js-delete-watcher", (event) ->
@@ -259,11 +262,10 @@ WatchersDirective = ($rootscope, $confirm, $repo, $modelTransform, $template, $c
 
             $confirm.askOnDelete(title, message).then (askResponse) =>
                 askResponse.finish()
+                deleteWatcher(watcherId)
 
-                watcherIds = _.clone($model.$modelValue.watchers, false)
-                watcherIds = _.pull(watcherIds, watcherId)
-
-                deleteWatcher(watcherIds)
+        $scope.$on "watcher:deleted", (ctx, watcherId) ->
+            deleteWatcher(watcherId)
 
         $scope.$on "watcher:added", (ctx, watcherId) ->
             watchers = _.clone($model.$modelValue.watchers, false)
@@ -272,8 +274,12 @@ WatchersDirective = ($rootscope, $confirm, $repo, $modelTransform, $template, $c
 
             save(watchers)
 
+        $scope.$on "watchers:changed", (ctx, watchers) ->
+            save(watchers)
+
         $scope.$watch $attrs.ngModel, (item) ->
             return if not item?
+            $scope.watchersIds = item.watchers
             watchers = _.map(item.watchers, (watcherId) -> $scope.usersById[watcherId])
             watchers = _.filter watchers, (it) -> return !!it
 

@@ -1,0 +1,43 @@
+tg-lightbox-close
+
+div.form.lb-select-user-form
+    h2.title {{ lbTitle }}
+    fieldset
+        input(type="text", data-maxlength="500", placeholder="{{'LIGHTBOX.SELECT_USER.SEARCH' | translate}}", ng-model="searchText")
+    div.lb-select-user-list
+        div(ng-repeat="item in collection")
+            .user-list-item(
+                ng-class="{'is-active': selected.indexOf(item) > -1}"
+                ng-click="addItem(item)"
+            )
+                .user-list-avatar
+                    img(
+                        style="background: {{ item.avatar.bg }}"
+                        src="{{ item.avatar.url }}"
+                        ng-if="item.type == 'user'"
+                    )
+                    img(
+                        src="/#{v}/images/avatar-role.png"
+                        ng-if="item.type == 'role'"
+                    )
+
+                .user-list-name(ng-if="item.type == 'user'") {{ item.name }}
+                .user-list-name(
+                    ng-if="item.type == 'role'"
+                )
+                    span.role {{ item.name }}
+                    span.users {{ item.userNames }}
+                tg-svg.remove-selected(
+                    svg-icon="icon-close",
+                    ng-if="selected.indexOf(item) > -1"
+                    title="{{'LIGHTBOX.SELECT_USER.REMOVE' | translate}}"
+                    ng-click="removeItem(item, $event)"
+                )
+    .lb-select-user-actions(ng-if="!searchText")
+        button.button-green.lb-select-user-confirm {{'COMMON.ADD' | translate}}
+
+    .lb-select-user-actions(ng-if="searchText")
+        a.lb-select-user-link-back(
+            href=""
+            ng-click="clearSearch()"
+        ) {{'COMMON.BACK' | translate}}

@@ -772,6 +772,9 @@
 
     .pop-users {
         @include popover($pop-width, 60px, 0, '', '', 16px, -7px, ($pop-width / 3));
+        &::after {
+            z-index: -1;
+        }
         &.multiple {
             top: 84px;
             &::after {

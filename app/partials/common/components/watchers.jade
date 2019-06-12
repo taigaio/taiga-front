@@ -1,4 +1,4 @@
-.user-list-single(ng-repeat="watcher in watchers")
+.user-list-single(ng-repeat="watcher in watchers track by watcher.id")
     .user-list-avatar
         img(
             tg-avatar="watcher"

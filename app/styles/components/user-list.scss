@@ -20,14 +20,11 @@
         display: flex;
         padding: .25rem 0;
         vertical-align: middle;
-
-        &:last-child {
-            border: 0;
-        }
     }
     .user-list-avatar {
         flex-basis: 3rem;
         margin-right: .25rem;
+        max-height: 3rem;
         max-width: 3rem;
         img {
             width: 100%;
@@ -61,20 +58,7 @@
             transition: background .3s linear;
             transition-delay: .1s;
         }
-        .remove-assigned-to {
-            display: block;
-            fill: $grayer;
-            opacity: 1;
-            position: absolute;
-            right: 1rem;
-            top: 1.5rem;
-            transition: all .2s ease-in;
-            &:hover {
-                fill: $red;
-            }
-        }
     }
-
     .user-list-multiple {
         &:hover,
         &.selected {
@@ -92,17 +76,19 @@
             transition: background .3s linear;
             transition-delay: .1s;
         }
-        .remove-assigned-to {
-            display: block;
-            fill: $grayer;
-            opacity: 1;
-            position: absolute;
-            right: 1rem;
-            top: 1.5rem;
-            transition: all .2s ease-in;
-            &:hover {
-                fill: $red;
-            }
+    }
+    .user-list-name {
+        flex-grow: 1;
+    }
+    .remove-assigned-to {
+        display: block;
+        fill: $grayer;
+        margin-right: 1.25rem;
+        margin-top: .25rem;
+        opacity: 1;
+        transition: all .2s ease-in;
+        &:hover {
+            fill: $red;
         }
     }
 }

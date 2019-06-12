@@ -103,11 +103,11 @@ div.wrapper(
                 data-environment="ticket"
                 on-watch="ctrl.onWatch"
                 on-unwatch="ctrl.onUnwatch"
+                active-users="activeUsers"
             )
             div.ticket-watchers(
                 tg-watchers
                 ng-model="us"
-                item="us"
                 required-perm="modify_us"
             )
 
@@ -155,7 +155,4 @@ div.wrapper(
         title="{{ 'US.LIGHTBOX_TITLE_BLOKING_US' | translate }}"
         ng-model="us"
     )
-    div.lightbox.lightbox-select-user(tg-lb-assignedto)
-    div.lightbox.lightbox-select-user(tg-lb-assigned-users)
-    div.lightbox.lightbox-select-user(tg-lb-watchers)
     div.lightbox.lightbox-relate-to-epic(tg-lb-relatetoepic)
