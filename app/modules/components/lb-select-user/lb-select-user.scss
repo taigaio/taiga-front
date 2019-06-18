@@ -56,9 +56,10 @@
         cursor: pointer;
         display: block;
         fill: $grayer;
-        margin-right: 1.25rem;
-        margin-top: .25rem;
+        margin-right: .5rem;
         opacity: 1;
+        outline: 0;
+        padding: .75rem;
         transition: all .2s ease-in;
         &:hover {
             fill: $red;
