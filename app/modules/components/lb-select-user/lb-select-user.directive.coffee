@@ -48,9 +48,13 @@ SelectUserDirective = (
                 text = text.toUpperCase()
                 return _.includes(name, text)
 
-            collection = users
-            if text
-                collection = _.union(users, roles)
+            collection = _.union(
+                users,
+                _.filter(roles, (role) =>
+                    difference = _.difference(role.userIds, _.map(selected, 'id'))
+                    return difference.length > 0
+                )
+            )
             available = _.sortBy(
                 _.filter(collection, _.partial(_filterRows, text)),
                 'name'

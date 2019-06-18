@@ -1096,7 +1096,8 @@
         },
         "SELECT_USER": {
             "SEARCH": "Search for users",
-            "REMOVE": "Remove user"
+            "REMOVE": "Remove user",
+            "ROLE": "Role"
         },
         "ADD_MEMBER": {
             "TITLE": "New Member",

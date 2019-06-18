@@ -8,6 +8,7 @@ div.form.lb-select-user-form
         div(ng-repeat="item in collection")
             .user-list-item(
                 ng-class="{'is-active': selected.indexOf(item) > -1}"
+                ng-if="item.type != 'role' || item.userIds.length"
                 ng-click="addItem(item)"
             )
                 .user-list-avatar
@@ -25,7 +26,9 @@ div.form.lb-select-user-form
                 .user-list-name(
                     ng-if="item.type == 'role'"
                 )
-                    span.role {{ item.name }}
+                    span.role
+                        span {{'LIGHTBOX.SELECT_USER.ROLE' | translate}}:
+                        span &nbsp;{{ item.name }}
                     span.users {{ item.userNames }}
                 tg-svg.remove-selected(
                     svg-icon="icon-close",
