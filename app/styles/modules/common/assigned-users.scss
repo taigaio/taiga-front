@@ -67,7 +67,9 @@
         }
     }
 
-    .user-assigned,
+    .user-assigned {
+        @include font-type(light);
+    }
     .self-assign {
         color: $primary;
         &.editable {
@@ -104,7 +106,7 @@
                 margin-right: .2rem;
             }
         }
-        .user-assigned,
+
         .self-assign {
             color: $primary;
             cursor: default;

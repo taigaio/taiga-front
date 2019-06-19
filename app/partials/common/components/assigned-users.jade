@@ -38,11 +38,9 @@
                 alt="{{assignedUser.full_name_display}}"
             )
         .user-list-name.assigned-users-options
-            a(
-                href=""
-                ng-click="assign()"
+            .user-assigned(
                 title="{{ 'COMMON.ASSIGNED_TO.TITLE_ACTION_EDIT_ASSIGNMENT'|translate }}"
-                class!="user-assigned <% if (isEditable) { %>editable<% }; %>"
+                class!="<% if (isEditable) { %>editable<% }; %>"
             )
                 span.assigned-name {{assignedUser.full_name_display}}
             tg-svg.remove-user(
