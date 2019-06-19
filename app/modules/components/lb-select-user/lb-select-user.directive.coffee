@@ -22,6 +22,7 @@ truncate = taiga.truncate
 SelectUserDirective = (
     $rootScope
     $repo
+    $translate
     lightboxService
     lightboxKeyboardNavigationService
     avatarService
@@ -95,10 +96,11 @@ SelectUserDirective = (
             project = projectService.project.toJS()
             roles = _.map project.roles, (role) ->
                 roleUsers = _.filter(activeUsers, {'role': role.id})
+                suffix = $translate.instant("LIGHTBOX.SELECT_USER.ROLE")
                 return {
                     id: role.id,
                     type: 'role',
-                    name: role.name,
+                    name: "#{suffix}: #{role.name}",
                     avatar: null,
                     userIds: _.map(roleUsers, 'id')
                     userNames: truncate('(' + _.join(_.map(roleUsers, 'full_name_display'), ', ') + ')', 110)
@@ -167,6 +169,7 @@ SelectUserDirective = (
 SelectUserDirective.$inject = [
     "$rootScope"
     "$tgRepo"
+    "$translate"
     "lightboxService"
     "lightboxKeyboardNavigationService"
     "tgAvatarService"

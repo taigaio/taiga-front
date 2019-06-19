@@ -26,9 +26,7 @@ div.form.lb-select-user-form
                 .user-list-name(
                     ng-if="item.type == 'role'"
                 )
-                    span.role
-                        span {{'LIGHTBOX.SELECT_USER.ROLE' | translate}}:
-                        span &nbsp;{{ item.name }}
+                    span.role {{ item.name }}
                     span.users {{ item.userNames }}
                 tg-svg.remove-selected(
                     svg-icon="icon-close",
