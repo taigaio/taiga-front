@@ -67,9 +67,11 @@
         }
     }
 
-    .user-assigned {
+    .user-assigned-readonly {
         @include font-type(light);
     }
+
+    .user-assigned,
     .self-assign {
         color: $primary;
         &.editable {
