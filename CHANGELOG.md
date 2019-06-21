@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+## 4.2.7 (2019-06-24)
+
+- Assign roles as watchers
+- Minor bug fixes
+
 ## 4.2.6 (2019-06-12)
 
 - Vote button redesign
