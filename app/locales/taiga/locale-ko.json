@@ -14,6 +14,7 @@
         "UNLINK": "연결끊기",
         "CREATE": "생성하기",
         "ADD": "추가하기",
+        "BACK": "이전",
         "COPY_TO_CLIPBOARD": "Copy to clipboard",
         "COPIED_TO_CLIPBOARD": "Text has been copied to clipboard",
         "EDIT": "수정하기",
@@ -1092,6 +1093,11 @@
         "ASSIGNED_TO": {
             "SELECT": "다음 사람에게 할당",
             "SEARCH": "사용자 검색"
+        },
+        "SELECT_USER": {
+            "SEARCH": "사용자 검색",
+            "REMOVE": "Remove user",
+            "ROLE": "역할"
         },
         "ADD_MEMBER": {
             "TITLE": "새 회원",

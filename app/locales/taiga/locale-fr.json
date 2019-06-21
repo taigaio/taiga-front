@@ -14,6 +14,7 @@
         "UNLINK": "Détacher",
         "CREATE": "Créer",
         "ADD": "Ajouter",
+        "BACK": "Back",
         "COPY_TO_CLIPBOARD": "Copier dans le presse-papier",
         "COPIED_TO_CLIPBOARD": "Le texte a été copié dans le presse-papier",
         "EDIT": "Éditer",
@@ -1092,6 +1093,11 @@
         "ASSIGNED_TO": {
             "SELECT": "Affecté à",
             "SEARCH": "Chercher des utilisateurs"
+        },
+        "SELECT_USER": {
+            "SEARCH": "Chercher des utilisateurs",
+            "REMOVE": "Remove user",
+            "ROLE": "Rôle"
         },
         "ADD_MEMBER": {
             "TITLE": "Nouveau membre",

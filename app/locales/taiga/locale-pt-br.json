@@ -14,6 +14,7 @@
         "UNLINK": "Separar",
         "CREATE": "Criar",
         "ADD": "Adicionar",
+        "BACK": "Back",
         "COPY_TO_CLIPBOARD": "Copiar para área de transferência",
         "COPIED_TO_CLIPBOARD": "O texto foi copiado para a área de transferência",
         "EDIT": "Editar",
@@ -1092,6 +1093,11 @@
         "ASSIGNED_TO": {
             "SELECT": "Selecionar assinalados para",
             "SEARCH": "Procurar por usuários"
+        },
+        "SELECT_USER": {
+            "SEARCH": "Procurar por usuários",
+            "REMOVE": "Remove user",
+            "ROLE": "Função"
         },
         "ADD_MEMBER": {
             "TITLE": "Novo Membro",

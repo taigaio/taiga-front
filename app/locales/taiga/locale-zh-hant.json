@@ -14,6 +14,7 @@
         "UNLINK": "Unlink",
         "CREATE": "創建",
         "ADD": "新增",
+        "BACK": "後台",
         "COPY_TO_CLIPBOARD": "Copy to clipboard",
         "COPIED_TO_CLIPBOARD": "Text has been copied to clipboard",
         "EDIT": "編輯",
@@ -1092,6 +1093,11 @@
         "ASSIGNED_TO": {
             "SELECT": "選擇要旨派給",
             "SEARCH": "搜尋使用者"
+        },
+        "SELECT_USER": {
+            "SEARCH": "搜尋使用者",
+            "REMOVE": "Remove user",
+            "ROLE": "角色"
         },
         "ADD_MEMBER": {
             "TITLE": "新成員",

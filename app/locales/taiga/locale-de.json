@@ -14,6 +14,7 @@
         "UNLINK": "Verknüpfung auflösen",
         "CREATE": "Erzeugen",
         "ADD": "Hinzufügen",
+        "BACK": "Zurück",
         "COPY_TO_CLIPBOARD": "In die Zwischenablage kopieren",
         "COPIED_TO_CLIPBOARD": "Der Text wurde in die Zwischenablage kopiert",
         "EDIT": "Bearbeiten",
@@ -1092,6 +1093,11 @@
         "ASSIGNED_TO": {
             "SELECT": "Zuweisung auswählen",
             "SEARCH": "Nach Benutzern suchen"
+        },
+        "SELECT_USER": {
+            "SEARCH": "Nach Benutzern suchen",
+            "REMOVE": "Remove user",
+            "ROLE": "Rolle"
         },
         "ADD_MEMBER": {
             "TITLE": "Neues Mitglied",

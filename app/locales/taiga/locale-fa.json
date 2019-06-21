@@ -14,6 +14,7 @@
         "UNLINK": "حذف پیوند",
         "CREATE": "ایجاد",
         "ADD": "اضافه کردن",
+        "BACK": "پشت",
         "COPY_TO_CLIPBOARD": "کپی کردن در کلیپ‌بورد",
         "COPIED_TO_CLIPBOARD": "متن در کلیپ‌بورد کپی شد",
         "EDIT": "ویرایش",
@@ -1092,6 +1093,11 @@
         "ASSIGNED_TO": {
             "SELECT": "انتخاب کردن موارد واگذار شده به",
             "SEARCH": "جست‌وجوی کاربران"
+        },
+        "SELECT_USER": {
+            "SEARCH": "جست‌وجوی کاربران",
+            "REMOVE": "Remove user",
+            "ROLE": "قش"
         },
         "ADD_MEMBER": {
             "TITLE": "عضو جدید",

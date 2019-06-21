@@ -14,6 +14,7 @@
         "UNLINK": "Koble fra",
         "CREATE": "Opprett",
         "ADD": "Legg til",
+        "BACK": "Back",
         "COPY_TO_CLIPBOARD": "Kopier til utklippstavle",
         "COPIED_TO_CLIPBOARD": "Tekst kopiert til utklippstavlen",
         "EDIT": "Endre",
@@ -1092,6 +1093,11 @@
         "ASSIGNED_TO": {
             "SELECT": "Velg ansvarlig",
             "SEARCH": "Søk etter brukere"
+        },
+        "SELECT_USER": {
+            "SEARCH": "Søk etter brukere",
+            "REMOVE": "Remove user",
+            "ROLE": "Rolle"
         },
         "ADD_MEMBER": {
             "TITLE": "Nytt medlem",

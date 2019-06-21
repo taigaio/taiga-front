@@ -14,6 +14,7 @@
         "UNLINK": "Kendu esteka",
         "CREATE": "Sortu",
         "ADD": "Gehitu",
+        "BACK": "Atzealdea",
         "COPY_TO_CLIPBOARD": "Kopiatu arbelera",
         "COPIED_TO_CLIPBOARD": "Testua arbelera kopiatuta",
         "EDIT": "Editatu",
@@ -1092,6 +1093,11 @@
         "ASSIGNED_TO": {
             "SELECT": "Hautatu nori esleituta",
             "SEARCH": "Bilatu erabiltzaileak"
+        },
+        "SELECT_USER": {
+            "SEARCH": "Bilatu erabiltzaileak",
+            "REMOVE": "Remove user",
+            "ROLE": "Rola"
         },
         "ADD_MEMBER": {
             "TITLE": "Lankide berria",

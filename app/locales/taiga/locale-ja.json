@@ -14,6 +14,7 @@
         "UNLINK": "リンク解除",
         "CREATE": "作成",
         "ADD": "追加",
+        "BACK": "バックエンド",
         "COPY_TO_CLIPBOARD": "Copy to clipboard",
         "COPIED_TO_CLIPBOARD": "Text has been copied to clipboard",
         "EDIT": "編集",
@@ -1092,6 +1093,11 @@
         "ASSIGNED_TO": {
             "SELECT": "割り当てる",
             "SEARCH": "ユーザーを検索"
+        },
+        "SELECT_USER": {
+            "SEARCH": "ユーザーを検索",
+            "REMOVE": "Remove user",
+            "ROLE": "役割"
         },
         "ADD_MEMBER": {
             "TITLE": "新しいメンバー",

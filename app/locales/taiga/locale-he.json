@@ -14,6 +14,7 @@
         "UNLINK": "ניתוק קישור",
         "CREATE": "צור",
         "ADD": "הוסף",
+        "BACK": "הקודם",
         "COPY_TO_CLIPBOARD": "העתק ללוח",
         "COPIED_TO_CLIPBOARD": "טקסט הועתק ללוח",
         "EDIT": "ערוך",
@@ -1092,6 +1093,11 @@
         "ASSIGNED_TO": {
             "SELECT": "בחר שיוך",
             "SEARCH": "חפש משתמשים"
+        },
+        "SELECT_USER": {
+            "SEARCH": "חפש משתמשים",
+            "REMOVE": "Remove user",
+            "ROLE": "תפקיד"
         },
         "ADD_MEMBER": {
             "TITLE": "משתתף חדש",

@@ -14,6 +14,7 @@
         "UNLINK": "Poista linkki",
         "CREATE": "Luo uusi",
         "ADD": "Lisää",
+        "BACK": "Palvelin",
         "COPY_TO_CLIPBOARD": "Copy to clipboard",
         "COPIED_TO_CLIPBOARD": "Text has been copied to clipboard",
         "EDIT": "Muokkaa",
@@ -1092,6 +1093,11 @@
         "ASSIGNED_TO": {
             "SELECT": "Valitse tekijä",
             "SEARCH": "Hae käyttäjiä"
+        },
+        "SELECT_USER": {
+            "SEARCH": "Hae käyttäjiä",
+            "REMOVE": "Remove user",
+            "ROLE": "Rooli"
         },
         "ADD_MEMBER": {
             "TITLE": "Uusi jäsen",

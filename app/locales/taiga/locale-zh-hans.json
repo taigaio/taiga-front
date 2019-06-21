@@ -14,6 +14,7 @@
         "UNLINK": "断开链接",
         "CREATE": "创建",
         "ADD": "新增",
+        "BACK": "后退",
         "COPY_TO_CLIPBOARD": "复制到剪贴板",
         "COPIED_TO_CLIPBOARD": "文本已复制到剪贴板",
         "EDIT": "编辑",
@@ -1092,6 +1093,11 @@
         "ASSIGNED_TO": {
             "SELECT": "选择要指派给",
             "SEARCH": "搜索用户"
+        },
+        "SELECT_USER": {
+            "SEARCH": "搜索用户",
+            "REMOVE": "Remove user",
+            "ROLE": "角色"
         },
         "ADD_MEMBER": {
             "TITLE": "新成员",

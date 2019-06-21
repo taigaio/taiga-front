@@ -14,6 +14,7 @@
         "UNLINK": "ontkoppel",
         "CREATE": "Aanmaken",
         "ADD": "Toevoegen",
+        "BACK": "Back",
         "COPY_TO_CLIPBOARD": "Copy to clipboard",
         "COPIED_TO_CLIPBOARD": "Text has been copied to clipboard",
         "EDIT": "Bewerk",
@@ -1092,6 +1093,11 @@
         "ASSIGNED_TO": {
             "SELECT": "Selecteer toegewezen aan",
             "SEARCH": "Zoek gebruikers"
+        },
+        "SELECT_USER": {
+            "SEARCH": "Zoek gebruikers",
+            "REMOVE": "Remove user",
+            "ROLE": "Rol"
         },
         "ADD_MEMBER": {
             "TITLE": "Nieuwe gebruiker",

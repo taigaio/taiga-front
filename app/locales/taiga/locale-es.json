@@ -14,6 +14,7 @@
         "UNLINK": "Desvincular",
         "CREATE": "Crear",
         "ADD": "Añadir",
+        "BACK": "Back",
         "COPY_TO_CLIPBOARD": "Copiar al portapapeles",
         "COPIED_TO_CLIPBOARD": "El texto se ha copiado al portapapeles",
         "EDIT": "Editar",
@@ -1092,6 +1093,11 @@
         "ASSIGNED_TO": {
             "SELECT": "Asignar a...",
             "SEARCH": "Buscar usuarios"
+        },
+        "SELECT_USER": {
+            "SEARCH": "Buscar usuarios",
+            "REMOVE": "Remove user",
+            "ROLE": "Rol"
         },
         "ADD_MEMBER": {
             "TITLE": "Nuevo miembro",

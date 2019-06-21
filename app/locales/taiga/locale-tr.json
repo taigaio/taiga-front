@@ -14,6 +14,7 @@
         "UNLINK": "Bağlantıyı Kopar",
         "CREATE": "Oluştur",
         "ADD": "Ekle",
+        "BACK": "Arka",
         "COPY_TO_CLIPBOARD": "Kopyala",
         "COPIED_TO_CLIPBOARD": "Yazı belleğe kopyalandı.",
         "EDIT": "Düzenle",
@@ -1092,6 +1093,11 @@
         "ASSIGNED_TO": {
             "SELECT": "Atananı seç",
             "SEARCH": "Kullanıcıları ara"
+        },
+        "SELECT_USER": {
+            "SEARCH": "Kullanıcıları ara",
+            "REMOVE": "Remove user",
+            "ROLE": "Rol"
         },
         "ADD_MEMBER": {
             "TITLE": "Yeni üye",
