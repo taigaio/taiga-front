@@ -31,8 +31,12 @@ $translate, $currentUserService, $lightboxFactory) ->
         save = (assignedUsers, assignedToUser) ->
             transform = $modelTransform.save (item) ->
                 item.assigned_users = assignedUsers
-                if not item.assigned_to
+                if assignedToUser
                     item.assigned_to = assignedToUser
+                else if not assignedUsers.length
+                    item.assigned_to = null
+                else if not _.includes(assignedUsers, item.assigned_to)
+                    item.assigned_to = assignedUsers[0]
                 return item
 
             transform.then ->
