@@ -1096,7 +1096,7 @@
         },
         "SELECT_USER": {
             "SEARCH": "搜索用户",
-            "REMOVE": "Remove user",
+            "REMOVE": "删除用户",
             "ROLE": "角色"
         },
         "ADD_MEMBER": {

@@ -3,7 +3,7 @@
         "YES": "Ja",
         "NO": "Nee",
         "OR": "of",
-        "I_GET_IT": "OK, I get it",
+        "I_GET_IT": "OK, ik begrijp het",
         "LOADING": "Aan het laden...",
         "DATE": "DD MMM YYYY",
         "DATETIME": "DD MMM YYYY HH:mm",
@@ -15,8 +15,8 @@
         "CREATE": "Aanmaken",
         "ADD": "Toevoegen",
         "BACK": "Back",
-        "COPY_TO_CLIPBOARD": "Copy to clipboard",
-        "COPIED_TO_CLIPBOARD": "Text has been copied to clipboard",
+        "COPY_TO_CLIPBOARD": "Kopieer naar klembord",
+        "COPIED_TO_CLIPBOARD": "Tekst werd gekopieerd naar het klembord",
         "EDIT": "Bewerk",
         "DRAG": "Sleep",
         "TAG_LINE": "Jouw agile, gratis en open source project management tool",
@@ -396,7 +396,7 @@
         "EMPTY_PROJECT_LIST": "Je hebt nog geen projecten",
         "WORKING_ON_SECTION": "Werkt aan",
         "WATCHING_SECTION": "Volgers",
-        "DASHBOARD": "Projects Dashboard",
+        "DASHBOARD": "Projecten dashboard",
         "SET_HIDDEN": "Set as hidden",
         "SET_VISIBLE": "Set as visible",
         "NO_HIDDEN_ITEMS": "You have no hidden items",
@@ -408,13 +408,13 @@
         "SECTION_NAME": "Epics",
         "EPIC": "EPIC",
         "PAGE_TITLE": "Epics - {{projectName}}",
-        "PAGE_DESCRIPTION": "The epics list of the project {{projectName}}: {{projectDescription}}",
+        "PAGE_DESCRIPTION": "De lijst van epics van het project {{projectName}}: {{projectDescription}}",
         "DASHBOARD": {
             "ADD": "+ NIEUWE EPIC",
             "UNASSIGNED": "Niet toegewezen"
         },
         "EMPTY": {
-            "TITLE": "It looks like there aren't any epics yet",
+            "TITLE": "Het lijkt erop dat er nog geen epics zijn",
             "EXPLANATION": "Epics are items at a higher level that encompass user stories.<br />Epics are at the top of the hierarchy and can be used to group user stories together.",
             "HELP": "Learn more about epics"
         },
@@ -842,7 +842,7 @@
         },
         "PROFILE_SIDEBAR": {
             "TITLE": "Jouw profiel",
-            "DESCRIPTION": "People can see everything you do and what you are working on. Add a nice bio to give an enhanced version of your information.",
+            "DESCRIPTION": "Mensen kunnen alles zien wat je doet en waar je aan werkt. Voeg een mooie biografie toe voor een meer uitgebreide versie van jouw informatie.",
             "ADD_INFO": "Bio aanpassen"
         },
         "PROFILE_FAVS": {
