@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## 4.2.8 (2019-07-03)
+
+- Fix multiple assign US button
+
 ## 4.2.7 (2019-06-24)
 
 - Assign roles as watchers
