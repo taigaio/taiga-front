@@ -88,36 +88,34 @@ div.wrapper(
                 gig-id="us.tribe_gig.id"
             )
 
-        tg-us-estimation.ticket-estimation(ng-model="us")
+        section.ticket-section.ticket-estimation(
+            tg-us-estimation
+            ng-model="us"
+        )
 
-        section.ticket-assigned-users(
+        section.ticket-section.ticket-assigned-users(
             tg-assigned-users
             ng-model="us"
             required-perm="modify_us"
         )
 
-        section.ticket-watch-buttons
-            div.ticket-watch(
-                tg-watch-button
-                item="us"
-                data-environment="ticket"
-                on-watch="ctrl.onWatch"
-                on-unwatch="ctrl.onUnwatch"
-                active-users="activeUsers"
-            )
-            div.ticket-watchers(
-                tg-watchers
-                ng-model="us"
-                required-perm="modify_us"
-            )
+        section.ticket-section.ticket-watchers(
+            tg-watchers
+            item="us"
+            active-users="activeUsers"
+            on-watch="ctrl.onWatch"
+            on-unwatch="ctrl.onUnwatch"
+            required-perm="modify_us"
+        )
 
-        tg-vote-button.upvote-btn(
+        section.ticket-section.upvote-btn(
+            tg-vote-button
             item="us"
             on-upvote="ctrl.onUpvote"
             on-downvote="ctrl.onDownvote"
         )
 
-        section.ticket-to-tribe(ng-if="tribeEnabled && !us.tribe_gig")
+        section.ticket-section.ticket-to-tribe(ng-if="tribeEnabled && !us.tribe_gig")
             tg-tribe-button(
                 us-id="us.id"
                 project-slug="project.slug"
@@ -128,7 +126,7 @@ div.wrapper(
                 ng-click="ctrl.onTribeInfo()"
             ) {{'US.TRIBE.PUBLISH_INFO' | translate}}
 
-        section.ticket-detail-settings
+        section.ticket-section.ticket-detail-settings
             tg-due-date(
                 due-date="us.due_date"
                 format="button"

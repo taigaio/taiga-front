@@ -242,7 +242,7 @@ $summary-background: $grayer;
         text-transform: uppercase;
     }
     a {
-        @include font-type(bold);
+        @include font-type(semibold);
         animation: blink 2s infinite;
     }
 }

@@ -79,7 +79,7 @@
             margin-bottom: 0;
         }
         a {
-            @include font-type(bold);
+            @include font-type(semibold);
             &.user-link,
             &.project-link {
                 color: $blackish;
@@ -108,7 +108,7 @@
             margin-right: .7rem;
         }
         .entry-project {
-            @include font-type(bold);
+            @include font-type(semibold);
             color: $gray-lighter;
             display: inline-block;
             font-size: .9rem;

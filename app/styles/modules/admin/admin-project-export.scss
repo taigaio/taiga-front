@@ -13,7 +13,7 @@
         }
     }
     h3 {
-        @include font-type(bold);
+        @include font-type(semibold);
         @include font-size(large);
         background: $mass-white;
         color: $gray;

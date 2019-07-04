@@ -55,7 +55,7 @@
     }
     .team-header {
         @include font-type(text);
-        @include font-type(bold);
+        @include font-type(semibold);
         border-bottom: 0;
     }
     .hero {
@@ -91,7 +91,7 @@
             width: 100%;
         }
         .name {
-            @include font-type(bold);
+            @include font-type(semibold);
         }
         .position {
             @include font-type(light);

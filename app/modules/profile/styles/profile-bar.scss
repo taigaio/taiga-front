@@ -64,7 +64,7 @@
         }
     }
     h1 {
-        @include font-type(bold);
+        @include font-type(semibold);
         @include font-size(xlarge);
         line-height: 1.2;
         margin-bottom: .25rem;
@@ -113,7 +113,7 @@
         }
         .stat-number {
             @include font-size(xlarge);
-            @include font-type(bold);
+            @include font-type(semibold);
             display: block;
             line-height: 1;
         }

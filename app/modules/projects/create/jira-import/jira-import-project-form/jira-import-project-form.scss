@@ -13,7 +13,7 @@
 
     &-title {
         @include font-size(small);
-        @include font-type(bold);
+        @include font-type(semibold);
     }
 
     &-radiogr {

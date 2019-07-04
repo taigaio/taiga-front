@@ -122,7 +122,7 @@ $translate, $compile, $currentUserService, avatarService, $userListService) ->
     return {
         scope: true,
         link:link,
-        templateUrl: "common/components/assigned-users-inline.html",
+        templateUrl: "components/assigned-inline/assigned-users-inline.html",
         require:"ngModel"
     }
 

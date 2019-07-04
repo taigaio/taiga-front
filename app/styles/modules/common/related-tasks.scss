@@ -12,7 +12,7 @@
     min-height: 36px;
     .related-tasks-title {
         @include font-size(medium);
-        @include font-type(bold);
+        @include font-type(semibold);
         margin-left: 1rem;
     }
     .add-button {
@@ -143,10 +143,10 @@
         color: $whitish;
         a,
         svg {
-            fill: $whitish;
+            fill: $gray-light;
         }
         .task-name a {
-            color: $whitish;
+            color: $gray-light;
             text-decoration: line-through;
 
         }

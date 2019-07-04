@@ -25,7 +25,7 @@
     justify-content: space-between;
     min-height: 36px;
     .attachments-title {
-        @include font-type(bold);
+        @include font-type(semibold);
         @include font-size(medium);
         color: $grayer;
         line-height: 36px;
@@ -82,7 +82,7 @@
 
 .attachments-empty {
     @include font-size(large);
-    @include font-type(bold);
+    @include font-type(semibold);
     border: 3px dashed $whitish;
     color: $gray-light;
     margin-top: .5rem;
@@ -94,7 +94,7 @@
     @include font-size(small);
     background: rgba($white, .9);
     .attachment-name {
-        @include font-type(bold);
+        @include font-type(semibold);
         padding-right: 1rem;
         svg {
             fill: $gray;
@@ -121,7 +121,7 @@
         margin-left: .5rem;
     }
     &:hover {
-        background: lighten($primary, 60%);
+        background: $primary-lighter;
         transition: background .2s ease-in;
     }
 }

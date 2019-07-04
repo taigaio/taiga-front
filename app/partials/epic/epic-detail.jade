@@ -74,7 +74,7 @@ div.wrapper(
 
     sidebar.menu-secondary.sidebar.ticket-data
 
-        .ticket-header
+        section.ticket-header
             span.ticket-title(
                 tg-epic-status-display
                 ng-model="epic"
@@ -84,34 +84,29 @@ div.wrapper(
                 ng-model="epic"
             )
 
-        section.ticket-assigned-to(
+        section.ticket-section.ticket-assigned-to(
             tg-assigned-to
             ng-model="epic"
             required-perm="modify_epic"
         )
 
-        section.ticket-watch-buttons
-            div.ticket-watch(
-                tg-watch-button
-                item="epic"
-                data-environment="ticket"
-                on-watch="ctrl.onWatch"
-                on-unwatch="ctrl.onUnwatch"
-                active-users="activeUsers"
-            )
-            div.ticket-watchers(
-                tg-watchers
-                ng-model="epic"
-                required-perm="modify_epic"
-            )
+        section.ticket-section.ticket-watchers(
+            tg-watchers
+            item="epic"
+            active-users="activeUsers"
+            on-watch="ctrl.onWatch"
+            on-unwatch="ctrl.onUnwatch"
+            required-perm="modify_epic"
+        )
 
-        tg-vote-button.upvote-btn(
+        section.ticket-section.upvote-btn(
+            tg-vote-button
             item="epic"
             on-upvote="ctrl.onUpvote"
             on-downvote="ctrl.onDownvote"
         )
 
-        section.ticket-detail-settings
+        section.ticket-section.ticket-detail-settings
             tg-us-team-requirement-button(ng-model="epic")
             tg-us-client-requirement-button(ng-model="epic")
             tg-block-button(

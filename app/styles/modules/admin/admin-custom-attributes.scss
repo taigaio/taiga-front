@@ -9,7 +9,7 @@
         border-bottom: 0;
     }
     .table-header {
-        @include font-type(bold);
+        @include font-type(semibold);
         border-bottom: 3px solid $whitish;
         .custom-name,
         .custom-description {

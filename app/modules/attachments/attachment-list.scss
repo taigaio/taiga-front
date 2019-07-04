@@ -13,6 +13,7 @@
         }
         &.deprecated {
             color: $gray-light;
+            span,
             .attachment-name a {
                 color: $gray-light;
             }
@@ -31,13 +32,16 @@
         flex-basis: 50%;
         margin-right: .5rem;
         span {
-            color: $gray;
+            color: $grayer;
         }
     }
     .attachment-size {
         flex-basis: 125px;
         flex-grow: 0;
         flex-shrink: 0;
+        span {
+            color: $grayer;
+        }
     }
     .attachment-settings {
         align-items: center;

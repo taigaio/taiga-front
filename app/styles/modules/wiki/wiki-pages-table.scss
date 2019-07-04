@@ -5,7 +5,7 @@
     }
     .title {
         @include font-size(medium);
-        @include font-type(bold);
+        @include font-type(semibold);
     }
     .table-main {
         @include font-size(small);

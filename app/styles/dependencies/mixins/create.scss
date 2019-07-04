@@ -20,7 +20,7 @@
     }
 
     &-check {
-        @include font-type(bold);
+        @include font-type(semibold);
         position: relative;
 
         span {
@@ -107,7 +107,7 @@
     }
 
     &-type {
-        @include font-type(bold);
+        @include font-type(semibold);
         align-items: center;
         display: flex;
         justify-content: center;
@@ -158,7 +158,7 @@
         }
 
         &-template {
-            @include font-type(bold);
+            @include font-type(semibold);
             text-transform: uppercase;
         }
 

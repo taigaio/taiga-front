@@ -1,6 +1,6 @@
 .admin-membership-table {
     .title {
-        @include font-type(bold);
+        @include font-type(semibold);
     }
     .avatar {
         align-items: center;

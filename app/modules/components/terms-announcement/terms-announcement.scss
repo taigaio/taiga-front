@@ -43,7 +43,7 @@
         width: 100%;
     }
     .title {
-        @include font-type(bold);
+        @include font-type(semibold);
         @include font-size(larger);
         color: $tribe-secondary;
         margin-bottom: .5rem;
@@ -51,7 +51,7 @@
     .warning {
         color: $tribe-secondary;
         a {
-            @include font-type(bold);
+            @include font-type(semibold);
             color: $tribe-secondary;
         }
     }

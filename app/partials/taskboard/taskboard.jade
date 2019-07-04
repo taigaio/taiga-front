@@ -23,8 +23,8 @@ div.wrapper(
         )
         .taskboard-header
             h1
-                span(tg-bo-bind="project.name", class="project-name-short")
                 span.green(tg-bo-bind="sprint.name")
+                span.project-name(tg-bo-bind="project.name", class="project-name-short")
                 span.date(tg-date-range="sprint.estimated_start,sprint.estimated_finish")
             .taskboard-actions
                 .zoom-loading(tg-loading="ctrl.zoomLoading")

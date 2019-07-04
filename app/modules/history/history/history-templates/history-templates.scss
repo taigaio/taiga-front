@@ -1,6 +1,6 @@
 .activity-diff {
     .key {
-        @include font-type(bold);
+        @include font-type(semibold);
         background: $whitish;
         margin-right: .5rem;
         padding: .25rem;

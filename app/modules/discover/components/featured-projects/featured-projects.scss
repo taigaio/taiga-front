@@ -3,7 +3,7 @@
 .featured-projects {
     @include centered;
     .title {
-        @include font-type(bold);
+        @include font-type(semibold);
         @include font-size(larger);
         color: $grayer;
         text-align: center;

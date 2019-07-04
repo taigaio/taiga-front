@@ -95,7 +95,7 @@ $translate, $compile, $currentUserService, avatarService, $userListService) ->
 
     return {
         link:link,
-        templateUrl: "common/components/assigned-to-inline.html"
+        templateUrl: "components/assigned-inline/assigned-to-inline.html"
         require:"ngModel"
     }
 

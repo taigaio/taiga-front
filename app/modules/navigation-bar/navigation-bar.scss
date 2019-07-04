@@ -49,7 +49,7 @@ $dropdown-width: 350px;
         }
         svg {
             @include svg-size(1.2rem);
-            fill: rgba($primary-dark, .8);
+            fill: rgba($white, .3);
             transition: all .2s linear;
         }
     }

@@ -17,7 +17,7 @@
 # File: components/watch-button/watch-button.controller.spec.coffee
 ###
 
-describe "WatchButton", ->
+describe "TicketWatchersController", ->
     provide = null
     $controller = null
     $rootScope = null
@@ -41,6 +41,7 @@ describe "WatchButton", ->
             _mockCurrentUser()
             _mockTgLightboxFactory()
             _mockTranslate()
+            _mockModelTransform()
 
             return null
 
@@ -55,6 +56,11 @@ describe "WatchButton", ->
         mocks.translate = sinon.stub()
 
         provide.value "$translate", mocks.translate
+
+    _mockModelTransform = () ->
+        mocks.modelTransform = sinon.stub()
+
+        provide.value "$tgQueueModelTransformation", mocks.modelTransform
 
     _inject = (callback) ->
         inject (_$controller_, _$rootScope_) ->
@@ -74,14 +80,14 @@ describe "WatchButton", ->
 
         mocks.onWatch = sinon.stub().promise()
 
-        ctrl = $controller("WatchButton", $scope, {
+        ctrl = $controller("TicketWatchersController", $scope, {
             item: {is_watcher: false}
             onWatch: mocks.onWatch
             onUnwatch: mocks.onUnwatch
         })
 
 
-        promise = ctrl.toggleWatch()
+        promise = ctrl.watch()
 
         expect(ctrl.loading).to.be.true
 
@@ -98,13 +104,13 @@ describe "WatchButton", ->
 
         mocks.onUnwatch = sinon.stub().promise()
 
-        ctrl = $controller("WatchButton", $scope, {
+        ctrl = $controller("TicketWatchersController", $scope, {
             item: {is_watcher: true}
             onWatch: mocks.onWatch
             onUnwatch: mocks.onUnwatch
         })
 
-        promise = ctrl.toggleWatch()
+        promise = ctrl.unwatch()
 
         expect(ctrl.loading).to.be.true
 
@@ -120,7 +126,7 @@ describe "WatchButton", ->
     it "get permissions", () ->
         $scope = $rootScope.$new()
 
-        ctrl = $controller("WatchButton", $scope, {
+        ctrl = $controller("TicketWatchersController", $scope, {
             item: {_name: 'tasks'}
         })
 

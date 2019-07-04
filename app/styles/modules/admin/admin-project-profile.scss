@@ -168,7 +168,7 @@ tg-admin-project-restrictions {
         color: $gray-light;
     }
     .owner-name {
-        @include font-type(bold);
+        @include font-type(semibold);
     }
     .owner-avatar {
         width: 2.5rem;

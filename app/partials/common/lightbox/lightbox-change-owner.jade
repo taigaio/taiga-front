@@ -11,8 +11,8 @@ tg-lightbox-close
             ng-change="vm.userSearch()"
         )
 
-    .assigned-to-list
-        .user-list-single.is-active(ng-if="vm.selected")
+    .lb-user-list
+        .user-list-item.is-active(ng-if="vm.selected")
             .user-list-avatar
                 a(
                     href="#"
@@ -24,7 +24,7 @@ tg-lightbox-close
                 title="{{vm.selected.full_name_display}}"
             ) {{vm.selected.full_name_display}}
 
-        .user-list-single.ng-animate-disabled(
+        .user-list-item.ng-animate-disabled(
             ng-repeat="user in vm.getUsers()",
             ng-click="vm.selectUser(user)"
         )

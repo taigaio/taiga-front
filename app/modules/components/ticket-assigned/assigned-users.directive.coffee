@@ -19,33 +19,35 @@
 
 AssignedUsersDirective = ($rootscope, $confirm, $repo, $modelTransform, $template, $compile,
 $translate, $currentUserService, $lightboxFactory) ->
-    # You have to include a div with the tg-lb-assignedusers directive in the page
-    # where use this directive
-
     link = ($scope, $el, $attrs, $model) ->
+        currentUserId = $currentUserService.getUser().get('id')
+        $scope.visibleAssignedUsersCount = 4
+        $scope.displayHidden = false
+
+        $scope.toggleFold = () ->
+            $scope.displayHidden = !$scope.displayHidden
+
         isEditable = ->
             return $scope.project?.my_permissions?.indexOf($attrs.requiredPerm) != -1
-        isAssigned = ->
-            return $scope.assignedUsers.length > 0
 
-        save = (assignedUsers, assignedToUser) ->
+        save = (assignedUsersIds, assignedToUser) ->
+            $scope.loading = true
             transform = $modelTransform.save (item) ->
-                item.assigned_users = assignedUsers
+                item.assigned_users = assignedUsersIds
                 if assignedToUser
                     item.assigned_to = assignedToUser
-                else if not assignedUsers.length
+                else if not assignedUsersIds.length
                     item.assigned_to = null
-                else if not _.includes(assignedUsers, item.assigned_to)
-                    item.assigned_to = assignedUsers[0]
+                else if not _.includes(assignedUsersIds, item.assigned_to)
+                    item.assigned_to = assignedUsersIds[0]
                 return item
 
             transform.then ->
-                assignedUsers = _.map(assignedUsers, (assignedUserId) -> $scope.usersById[assignedUserId])
-                renderAssignedUsers(assignedUsers)
                 result = $rootscope.$broadcast("object:updated")
-
             transform.then null, ->
                 $confirm.notify("error")
+            transform.finally ->
+                $scope.loading = false
 
         $scope.openAssignedUsers = () ->
             onClose = (assignedUsers) =>
@@ -59,23 +61,22 @@ $translate, $currentUserService, $lightboxFactory) ->
                 },
                 {
                     "currentUsers": item.assigned_users,
-                    "activeUsers": @.activeUsers,
+                    "activeUsers": $scope.activeUsers,
                     "onClose": onClose,
                     "lbTitle": $translate.instant("COMMON.ASSIGNED_USERS.ADD"),
                 }
             )
 
-        $scope.selfAssign = () ->
+        $el.on "click", ".user-list-single", (event) ->
             return if not isEditable()
-            currentUserId = $currentUserService.getUser().get('id')
-            assignedUsers = _.clone($model.$modelValue.assigned_users, false)
-            assignedUsers.push(currentUserId)
-            assignedUsers = _.uniq(assignedUsers)
-            save(assignedUsers, currentUserId)
+            event.stopPropagation()
+            $scope.openAssignedUsers()
 
-        $scope.unassign = (user) ->
+        $el.on "click", ".remove-user", (event) ->
             return if not isEditable()
-            assignedUserId = user.id
+            event.stopPropagation()
+            target = angular.element(event.currentTarget)
+            assignedUserId = target.data("user-id")
 
             title = $translate.instant("COMMON.ASSIGNED_USERS.TITLE_LIGHTBOX_DELETE_ASSIGNED")
             message = $scope.usersById[assignedUserId].full_name_display
@@ -88,7 +89,15 @@ $translate, $currentUserService, $lightboxFactory) ->
 
                 deleteAssignedUser(assignedUserIds)
 
+        $scope.selfAssign = () ->
+            return if not isEditable()
+            assignedUsers = _.clone($model.$modelValue.assigned_users, false)
+            assignedUsers.push(currentUserId)
+            assignedUsers = _.uniq(assignedUsers)
+            save(assignedUsers, currentUserId)
+
         deleteAssignedUser = (assignedUserIds) ->
+            $scope.loading = true
             transform = $modelTransform.save (item) ->
                 item.assigned_users = assignedUserIds
 
@@ -102,18 +111,19 @@ $translate, $currentUserService, $lightboxFactory) ->
 
             transform.then () ->
                 item = $modelTransform.getObj()
-                assignedUsers = _.map(item.assignedUsers, (assignedUserId) -> $scope.usersById[assignedUserId])
-                renderAssignedUsers(assignedUsers)
+                $attrs.ngModel = item
                 $rootscope.$broadcast("object:updated")
-
             transform.then null, ->
                 item.revert()
                 $confirm.notify("error")
+            transform.finally ->
+                $scope.loading = false
 
-        renderAssignedUsers = (assignedUsers) ->
-            $scope.assignedUsers = assignedUsers
+        render = (assignedUserIds) ->
+            assignedUsers = _.map(assignedUserIds, (assignedUserId) -> $scope.usersById[assignedUserId])
+            $scope.assignedUsers = _.compact(assignedUsers)
+            $scope.selfAssigned = _.includes(assignedUserIds, currentUserId)
             $scope.isEditable = isEditable()
-            $scope.isAssigned = isAssigned()
 
         $scope.$on "assigned-user:deleted", (ctx, assignedUserId) ->
             assignedUsersIds = _.clone($model.$modelValue.assigned_users, false)
@@ -129,19 +139,16 @@ $translate, $currentUserService, $lightboxFactory) ->
             # Save assigned_users and assignedUserId for assign_to legacy attribute
             save(assignedUsers, assignedUserId)
 
-        $scope.$watch $attrs.ngModel, (item) ->
+        $scope.$watch $attrs.ngModel, (item, currentItem) ->
             return if not item?
-            assignedUsers = _.map(item.assigned_users, (assignedUserId) -> $scope.usersById[assignedUserId])
-            assignedUsers = _.filter assignedUsers, (it) -> return !!it
-
-            renderAssignedUsers(assignedUsers)
+            render(item.assigned_users)
 
         $scope.$on "$destroy", ->
             $el.off()
 
     return {
         scope: true,
-        templateUrl: "common/components/assigned-users.html",
+        templateUrl: "components/ticket-assigned/assigned-users.html",
         link:link
         require:"ngModel"
     }

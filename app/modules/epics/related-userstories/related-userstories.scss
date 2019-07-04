@@ -12,7 +12,7 @@
     min-height: 36px;
     .related-userstories-title {
         @include font-size(medium);
-        @include font-type(bold);
+        @include font-type(semibold);
         margin-left: 1rem;
     }
     .add-button {

@@ -50,7 +50,7 @@
     }
     &-title {
         @include font-size(normal);
-        @include font-type(bold);
+        @include font-type(semibold);
         margin-bottom: 0;
     }
 

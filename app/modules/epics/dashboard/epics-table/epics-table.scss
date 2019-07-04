@@ -15,7 +15,7 @@
 
 .epics-table-header {
     @include epics-table;
-    @include font-type(bold);
+    @include font-type(semibold);
     border-bottom: 1px solid $gray-light;
     display: flex;
     padding: .5rem;

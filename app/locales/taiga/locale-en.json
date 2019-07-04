@@ -147,6 +147,7 @@
             "TYPE": "Type",
             "SEVERITY": "Severity",
             "PRIORITY": "Priority",
+            "ASSIGNED": "Assigned",
             "ASSIGNED_TO": "Assigned to",
             "ASSIGNED_USERS": "Assigned users",
             "POINTS": "Points",

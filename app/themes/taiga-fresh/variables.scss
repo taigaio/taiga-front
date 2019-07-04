@@ -1,0 +1,81 @@
+//************************
+//** COLORS
+//************************
+
+$primary: #25A28C;
+$primary-75: #5CBAA9;
+$primary-50: #92D1C5;
+$primary-25: #C9E8E2;
+$primary-10: #E9F6F3;
+
+$secondary: #A7CB23;
+$secondary-75: #BDD65A;
+$secondary-50: #D3E391;
+$secondary-25: #E9F1C8;
+
+$red:  #FF6363;
+$red-25: #FFE7E7;
+
+$grey-02: #F9F9FB;
+$grey-05: #F1F1F4;
+$grey-10: #E2E3E9;
+$grey-20: #C6C6D4;
+$grey-30: #A9AABC;
+$grey-40: #8D8EA5;
+$grey-50: #70728F;
+$grey-60: #5A5B72;
+$grey-70: #434456;
+$grey-80: #2D2D39;
+$grey-90: #16171D;
+
+
+// Colors
+$black: #000;
+$blackish: $grey-90;
+$gray-dark: $grey-80;
+$grayer: $grey-70;
+$gray: $grey-60;
+$gray-light: $grey-50;
+$gray-lighter: $grey-40;
+$gray-lighter: $grey-30;
+$white-darker: $grey-20;
+$white-dark: $grey-10;
+$whitish: $grey-05;
+$mass-white: $grey-02;
+$white: #fff;
+
+// Primary colors
+$primary-light: $primary-75;
+$primary-lighter: $primary-10;
+$primary: $primary;
+$primary-dark: $primary-50;
+$primary-background: $primary-25;
+
+// Secondary colors
+$secondary: $secondary;
+$secondary-light: $secondary-50;
+$secondary-dark: #91B011;
+
+//Status colors
+$green-light: #D1DFC5;
+$red-light: lighten($red, 12%);
+$my-sin: #fcaf3e;
+$yellow-green: #9dce0a;
+
+//Card color
+$card: #fff8e4;
+$card-hover: #f1e8cd;
+$card-dark: #cfc29b;
+
+$green-japanese-laurel: #237400;
+$green-olive: #618000;
+$red-amaranth: #e43050;
+$purple-eggplant: #810061;
+$yellow-pear: #bbe831;
+
+$tribe-primary: #107a8a;
+$tribe-secondary: darken($tribe-primary, 10%);
+
+$top-icon-color: #11241f;
+$dropdown-color: rgba(darken($grayer, 20%), 1);
+$code-bg: #272822;

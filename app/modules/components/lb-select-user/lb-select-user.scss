@@ -5,66 +5,6 @@
         max-height: 28.5rem;
         overflow-y: auto;
     }
-
-    .user-list-item {
-        align-content: center;
-        align-items: center;
-        background: transparent;
-        border-bottom: 1px solid $whitish;
-        display: flex;
-        padding: .25rem 0;
-        vertical-align: middle;
-        &:hover,
-        &.selected {
-            background: rgba(lighten($primary-light, 30%), .3);
-            cursor: pointer;
-        }
-        &:hover {
-            transition: background .3s linear;
-            transition-delay: .2s;
-        }
-        &.is-active {
-            background: rgba(lighten($primary-light, 30%), .3);
-            cursor: pointer;
-            position: relative;
-            transition: background .3s linear;
-            transition-delay: .1s;
-        }
-    }
-    .user-list-avatar {
-        flex-basis: 3rem;
-        margin-right: .25rem;
-        max-height: 3rem;
-        max-width: 3rem;
-        img {
-            width: 100%;
-        }
-    }
-    .user-list-name {
-        @include font-type(normal);
-        color: $grayer;
-        flex-grow: 1;
-        margin-left: .5rem;
-        .role {
-            margin-right: .5rem;
-        }
-        .users {
-            color: $gray-lighter;
-        }
-    }
-    .remove-selected {
-        cursor: pointer;
-        display: block;
-        fill: $grayer;
-        margin-right: .5rem;
-        opacity: 1;
-        outline: 0;
-        padding: .75rem;
-        transition: all .2s ease-in;
-        &:hover {
-            fill: $red;
-        }
-    }
 }
 
 .lb-select-user-actions {

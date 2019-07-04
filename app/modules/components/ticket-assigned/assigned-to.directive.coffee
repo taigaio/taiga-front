@@ -19,44 +19,53 @@
 
 AssignedToDirective = ($rootscope, $confirm, $repo, $loading, $modelTransform, $template,
 $translate, $compile, $currentUserService, avatarService, $lightboxFactory) ->
-    template = $template.get("common/components/assigned-to.html", true)
-
     link = ($scope, $el, $attrs, $model) ->
+        currentUserId = $currentUserService.getUser()?.get('id')
+
         isEditable = ->
             return $scope.project?.my_permissions?.indexOf($attrs.requiredPerm) != -1
 
+        isIocaine = (item) ->
+            return item?.is_iocaine
+
+        isSelfAssigned = ->
+            return $scope.assignedUser && $scope.assignedUser.id == currentUserId
+
         save = (userId) ->
-            item = $model.$modelValue.clone()
-            item.assigned_to = userId
-
-            currentLoading = $loading()
-                .target($el)
-                .start()
-
+            $scope.loading = true
             transform = $modelTransform.save (item) ->
                 item.assigned_to = userId
                 return item
 
             transform.then (item) ->
-                currentLoading.finish()
+                $attrs.ngModel = item
                 $rootscope.$broadcast("object:updated")
 
             transform.then null, ->
                 $confirm.notify("error")
-                currentLoading.finish()
+
+            transform.finally () ->
+                $scope.loading = false
 
             return transform
 
-        render = () ->
-            template = $template.get("common/components/assigned-to.html")
-            templateScope = $scope.$new()
-            compiledTemplate = $compile(template)(templateScope)
-            $el.html(compiledTemplate)
+        render = (item) ->
+            $scope.assignedUser = $scope.usersById[item?.assigned_to]
+            $scope.isEditable = isEditable()
+            $scope.isIocaine = isIocaine(item)
+            $scope.isSelfAssigned = isSelfAssigned()
 
-        $scope.assign = () ->
+        $el.on "click", ".remove-user", (event) ->
+            return if not isEditable()
+            event.stopPropagation()
+            title = $translate.instant("COMMON.ASSIGNED_TO.CONFIRM_UNASSIGNED")
+            $confirm.ask(title).then (response) ->
+                response.finish()
+                save(null)
+
+        $scope.openAssignedUsers = () ->
             onClose = (assignedUsers) =>
-                userId = assignedUsers.pop() || null
-                save(userId || null)
+                save(assignedUsers.pop() || null)
 
             item = _.clone($model.$modelValue, false)
             $lightboxFactory.create(
@@ -73,45 +82,19 @@ $translate, $compile, $currentUserService, avatarService, $lightboxFactory) ->
                 }
             )
 
-        $scope.unassign = () ->
-            title = $translate.instant("COMMON.ASSIGNED_TO.CONFIRM_UNASSIGNED")
-            $confirm.ask(title).then (response) ->
-                response.finish()
-                save(null)
-
         $scope.selfAssign = () ->
-            userId = $currentUserService.getUser().get('id')
-            save(userId)
+            save(currentUserId)
 
-        $scope.$on "assigned-to:added", (ctx, userId, item) ->
-            return if item.id != $model.$modelValue.id
-            save(userId)
-
-        $scope.$watch $attrs.ngModel, (instance) ->
-            if instance?.assigned_to
-                $scope.selected = instance.assigned_to
-                assigned_to_extra_info = $scope.usersById[$scope.selected]
-                $scope.fullName = assigned_to_extra_info?.full_name_display
-                $scope.isUnassigned = false
-                $scope.avatar = avatarService.getAvatar(assigned_to_extra_info)
-                $scope.bg = $scope.avatar.bg
-                $scope.isIocaine = instance?.is_iocaine
-            else
-                $scope.fullName = $translate.instant("COMMON.ASSIGNED_TO.ASSIGN")
-                $scope.isUnassigned = true
-                $scope.avatar = avatarService.getAvatar(null)
-                $scope.bg = null
-                $scope.isIocaine = false
-
-            $scope.fullNameVisible = !($scope.isUnassigned && !$currentUserService.isAuthenticated())
-            $scope.isEditable = isEditable()
-            render()
+        $scope.$watch $attrs.ngModel, (item, currentItem) ->
+            return if not item?
+            render(item)
 
         $scope.$on "$destroy", ->
             $el.off()
 
     return {
         link:link,
+        templateUrl: "components/ticket-assigned/assigned-to.html",
         require:"ngModel"
     }
 

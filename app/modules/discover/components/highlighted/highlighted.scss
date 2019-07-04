@@ -49,7 +49,7 @@
         }
     }
     .title {
-        @include font-type(bold);
+        @include font-type(semibold);
         @include font-size(larger);
         color: $grayer;
         display: inline-block;

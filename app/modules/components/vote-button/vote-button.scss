@@ -1,14 +1,7 @@
 .upvote-btn {
     align-items: center;
-    border-bottom: 1px solid $gray;
-    border-top: 1px solid $gray;
     display: flex;
-    padding: .8rem 0;
     width: 100%;
-    .votes-label {
-        @include font-type(bold);
-        flex-grow: 1;
-    }
     .votes {
         font-size: 1rem;
         margin-right: 1rem;
