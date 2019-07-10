@@ -102,7 +102,8 @@ Loader = ($rootscope) ->
             requestCount++
 
         logResponse: () ->
-            requestCount--
+            if requestCount > 0
+                requestCount--
             lastResponseDate = new Date().getTime()
     }
 

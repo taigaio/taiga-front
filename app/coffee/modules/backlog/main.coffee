@@ -55,7 +55,8 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         "tgErrorHandlingService",
         "$tgStorage",
         "tgFilterRemoteStorageService",
-        "tgProjectService"
+        "tgProjectService",
+        "tgLoader"
     ]
 
     storeCustomFiltersName: 'backlog-custom-filters'
@@ -65,7 +66,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @appMetaService, @navUrls,
                   @events, @analytics, @translate, @loading, @rs2, @modelTransform, @errorHandlingService,
-                  @storage, @filterRemoteStorageService, @projectService) ->
+                  @storage, @filterRemoteStorageService, @projectService, @tgLoader) ->
         bindMethods(@)
 
         @.backlogOrder = {}
@@ -313,6 +314,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             # We can't assure when this exactly happens so we need a defer
             scopeDefer @scope, =>
                 @scope.$broadcast("userstories:loaded")
+                @tgLoader.pageLoaded()
 
             return userstories
 
