@@ -56,7 +56,8 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         "$tgStorage",
         "tgFilterRemoteStorageService",
         "tgProjectService",
-        "tgLightboxFactory"
+        "tgLightboxFactory",
+        "tgLoader"
     ]
 
     storeCustomFiltersName: 'kanban-custom-filters'
@@ -65,7 +66,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @rs2, @params, @q, @location,
                   @appMetaService, @navUrls, @events, @analytics, @translate, @errorHandlingService,
                   @model, @kanbanUserstoriesService, @storage, @filterRemoteStorageService,
-                  @projectService, @lightboxFactory) ->
+                  @projectService, @lightboxFactory, @tgLoader) ->
         bindMethods(@)
         @kanbanUserstoriesService.reset()
         @.openFilter = false
@@ -271,6 +272,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             # We can't assure when this exactly happens so we need a defer
             scopeDefer @scope, =>
                 @scope.$broadcast("userstories:loaded", userstories)
+                @tgLoader.pageLoaded()
 
             return userstories
 
