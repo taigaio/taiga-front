@@ -20,9 +20,9 @@
 taiga = @.taiga
 
 class HttpService extends taiga.Service
-    @.$inject = ["$http", "$q", "$tgStorage", "$rootScope", "$cacheFactory", "$translate"]
+    @.$inject = ["$http", "$q", "tgLoader", "$tgStorage", "$rootScope", "$cacheFactory", "$translate"]
 
-    constructor: (@http, @q, @storage, @rootScope, @cacheFactory, @translate) ->
+    constructor: (@http, @q, @tgLoader, @storage, @rootScope, @cacheFactory, @translate) ->
         super()
 
         @.cache = @cacheFactory("httpget")
