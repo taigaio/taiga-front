@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+## 4.2.11 (2019-07-24)
+
+- Progressive Kanban render.
+- Minor fixes.
+
 ## 4.2.10 (2019-07-11)
 
 - Close loader before kanban/backlog filter request.
