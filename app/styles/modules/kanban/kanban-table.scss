@@ -68,7 +68,7 @@ $column-padding: .5rem 1rem;
     position: relative;
     .kanban-table-inner {
         display: flex;
-        overflow: hidden;
+        overflow: visible;
         position: absolute;
         width: 100%;
     }
