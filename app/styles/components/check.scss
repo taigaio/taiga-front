@@ -34,7 +34,7 @@
         }
         ~ .check-no {
             left: .5rem;
-            opacity: .6;
+            opacity: 1;
         }
     }
     input:checked {
@@ -44,7 +44,7 @@
             transition: all .2s linear;
         }
         ~ .check-yes {
-            opacity: .8;
+            opacity: 1;
             right: .25rem;
         }
         ~ .check-no {

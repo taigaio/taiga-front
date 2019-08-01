@@ -38,6 +38,7 @@
     }
     .active,
     .resend {
+        @include font-size(small);
         padding: .4rem .5rem;
     }
     .active {

@@ -36,13 +36,17 @@ h6 {
 }
 
 h1 {
-    @include font-size(xlarge);
-    @include font-type(light);
+    @include font-type(text);
+    @include font-size(larger);
     line-height: 1.5;
     margin-bottom: 1rem;
     text-transform: uppercase;
 
+    .title {
+        @include font-type(light);
+    }
     span {
+        @include font-type(text);
         @include font-size(larger);
         margin-right: .5rem;
         overflow: hidden;
@@ -57,11 +61,13 @@ h1 {
     }
 
     .project-name {
+        @include font-type(light);
         display: inline-block;
         margin-bottom: 0;
     }
 
     .project-name-short {
+        @include font-type(light);
         display: inline-block;
         max-width: 40%;
     }

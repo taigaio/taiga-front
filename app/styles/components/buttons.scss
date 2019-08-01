@@ -1,7 +1,6 @@
 .button,
 %button {
     @include font-type(light);
-    @include font-size(small);
     background: transparent;
     border: 0;
     border-radius: 3px;
@@ -122,6 +121,7 @@ a.button-gray {
 
 .button-bulk {
     @extend %button;
+    @include font-size(large);
     background: $primary;
     padding: .55rem .75rem;
     .icon {

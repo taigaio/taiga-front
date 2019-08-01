@@ -2,25 +2,22 @@
     .user-list-item {
         align-content: center;
         align-items: center;
-        background: transparent;
         border-bottom: 1px solid $whitish;
         display: flex;
         padding: .25rem 0;
         vertical-align: middle;
         &:hover,
         &.selected {
-            background: rgba(lighten($primary-light, 30%), .3);
+            background-color: $primary-10;
             cursor: pointer;
         }
         &:hover {
-            transition: background .3s linear;
             transition-delay: .2s;
         }
         &.is-active {
-            background: rgba(lighten($primary-light, 30%), .3);
+            background-color: $primary-10;
             cursor: pointer;
             position: relative;
-            transition: background .3s linear;
             transition-delay: .1s;
         }
     }

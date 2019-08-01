@@ -212,8 +212,9 @@
     }
     .icon {
         @include svg-size(.75rem);
-        fill: lighten($gray-light, 25%);
+        fill: $grey-30;
         margin-right: .2rem;
+        stroke: $grey-30;
     }
     .icon-iocaine {
         fill: $purple-eggplant;
@@ -277,7 +278,8 @@
     }
     svg {
         @include svg-size($width: 2rem, $height: .3rem);
-        fill: $whitish;
+        fill: $grey-20;
+        stroke: $grey-20;
     }
 }
 

@@ -10,7 +10,7 @@
     display: flex;
     transition: background .2s;
     &:hover {
-        background: rgba($primary-light, .05);
+        background-color: $primary-10;
         .icon-drag {
             opacity: 1;
         }

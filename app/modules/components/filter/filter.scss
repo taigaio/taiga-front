@@ -125,7 +125,7 @@ tg-filter {
         top: .7rem;
     }
     &.open {
-        box-shadow: 1px 1px 5px rgba($primary, .2);
+        box-shadow: 1px 1px 5px rgba($gray, .2);
         transform: translateX(0);
     }
 }

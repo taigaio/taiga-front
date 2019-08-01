@@ -37,6 +37,10 @@
     .icon-blocked-project {
         @include svg-size(.75rem);
     }
+    .icon {
+        fill: $grey-70;
+        stroke: $grey-70;
+    }
     .list-itemtype-project-data-wrapper {
         display: flex;
         .icon-private {

@@ -9,7 +9,6 @@
         padding: .9rem 1rem;
         h1 {
             @include font-size(larger);
-            @include font-type(light);
             margin: 0;
         }
     }

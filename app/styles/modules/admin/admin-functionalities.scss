@@ -23,7 +23,8 @@
         margin: 0 .5rem 0 0;
         .icon {
             @include svg-size(3rem);
-            fill: $gray-light;
+            fill: $grey-70;
+            stroke: $grey-70;
         }
     }
     .module-name {

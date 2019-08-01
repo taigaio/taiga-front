@@ -23,6 +23,10 @@
     h1 {
         align-items: baseline;
         display: inline-flex;
+        .date {
+            @include font-type(text);
+            @include font-size(small);
+        }
     }
 }
 

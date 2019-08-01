@@ -20,7 +20,6 @@
     }
 
     &-check {
-        @include font-type(semibold);
         position: relative;
 
         span {
@@ -49,7 +48,9 @@
         }
         .icon {
             @include svg-size(1.75rem);
+            fill: $primary;
             margin-right: .5rem;
+            stroke: $primary;
             vertical-align: middle;
         }
     }
@@ -92,7 +93,8 @@
 
         label {
             background: $mass-white;
-
+            min-height: 37px;
+            padding: 0 .75rem;
             .icon {
               margin-right: .5em;
             }

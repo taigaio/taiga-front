@@ -215,6 +215,7 @@ $dropdown-width: 350px;
         }
     }
     .counter {
+        @include font-type(bold);
         background: $primary;
         border-radius: 50%;
         color: $white;

@@ -22,6 +22,9 @@
     .intro-title {
         align-items: center;
         display: flex;
+        .project-name {
+            @include font-type(text);
+        }
         .icon-private {
             fill: $gray-light;
             height: 24px;
