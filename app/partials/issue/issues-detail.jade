@@ -70,7 +70,7 @@ div.wrapper(
 
     sidebar.menu-secondary.sidebar.ticket-data
 
-        .ticket-header
+        section.ticket-header
             span.ticket-title(
                 tg-issue-status-display
                 ng-model="issue"
@@ -80,9 +80,7 @@ div.wrapper(
                 ng-model="issue"
             )
 
-        //tg-created-by-display.ticket-created-by(ng-model="issue")
-
-        div.ticket-data-container
+        section.ticket-section.ticket-data-container
             div.ticket-status(
                 tg-issue-type-button
                 ng-model="issue"
@@ -96,34 +94,29 @@ div.wrapper(
                 ng-model="issue"
             )
 
-        section.ticket-assigned-to(
+        section.ticket-section(
             tg-assigned-to
             ng-model="issue"
             required-perm="modify_issue"
         )
 
-        section.ticket-watch-buttons
-            div.ticket-watch(
-                tg-watch-button
-                item="issue"
-                data-environment="ticket"
-                on-watch="ctrl.onWatch"
-                on-unwatch="ctrl.onUnwatch"
-                active-users="activeUsers"
-            )
-            div.ticket-watchers(
-                tg-watchers
-                ng-model="issue"
-                required-perm="modify_us"
-            )
+        section.ticket-section.ticket-watchers(
+            tg-watchers
+            item="issue"
+            active-users="activeUsers"
+            on-watch="ctrl.onWatch"
+            on-unwatch="ctrl.onUnwatch"
+            required-perm="modify_issue"
+        )
 
-        tg-vote-button.upvote-btn(
+        section.ticket-section.upvote-btn(
+            tg-vote-button
             item="issue"
             on-upvote="ctrl.onUpvote"
             on-downvote="ctrl.onDownvote"
         )
 
-        section.ticket-detail-settings
+        section.ticket-section.ticket-detail-settings
             tg-due-date(
                 due-date="issue.due_date"
                 format="button"

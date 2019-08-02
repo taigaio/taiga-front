@@ -20,6 +20,10 @@
     align-items: center;
     display: flex;
     justify-content: space-between;
+    h1 {
+        align-items: baseline;
+        display: inline-flex;
+    }
 }
 
 .taskboard-inner {

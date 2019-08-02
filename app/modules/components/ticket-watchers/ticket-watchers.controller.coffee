@@ -17,28 +17,21 @@
 # File: components/watch-button/watch-button.controller.coffee
 ###
 
-class WatchButtonController
+class TicketWatchersController
     @.$inject = [
-        "tgCurrentUserService",
-        "$rootScope",
-        "tgLightboxFactory",
-        "$translate"
+        "tgCurrentUserService"
+        "$rootScope"
+        "tgLightboxFactory"
+        "$translate",
+        "$tgQueueModelTransformation",
     ]
 
-    constructor: (@currentUserService, @rootScope, @lightboxFactory, @translate) ->
+    constructor: (@currentUserService, @rootScope, @lightboxFactory, @translate, @modelTransform) ->
         @.user = @currentUserService.getUser()
-        @.isMouseOver = false
         @.loading = false
 
-    showTextWhenMouseIsOver: ->
-        @.isMouseOver = true
-
-    showTextWhenMouseIsLeave: ->
-        @.isMouseOver = false
-
     openWatchers: ->
-        onClose = (watchersIds) =>
-            @rootScope.$broadcast("watchers:changed", watchersIds)
+        onClose = (watchersIds) => @.save(watchersIds)
 
         @lightboxFactory.create(
             'tg-lb-select-user',
@@ -67,28 +60,35 @@ class WatchButtonController
 
         return perms[name]
 
-    getWatchersTotal: ->
-        return if !@.item
-        activeWatchers = _.filter(@.activeUsers, (x) => _.includes(@.item.watchers, x.id))
-        return activeWatchers.length
-
-    toggleWatch: ->
+    watch: ->
         @.loading = true
-
-        if not @.item.is_watcher
-            promise = @._watch()
-        else
-            promise = @._unwatch()
-
+        promise = @._watch()
         promise.finally () => @.loading = false
-
         return promise
 
+    unwatch: ->
+        @.loading = true
+        promise = @._unwatch()
+        promise.finally () => @.loading = false
+        return promise
+
+    deleteWatcher: (watcherId) ->
+        watchersIds = _.filter(@.item.watchers, (x) => x != watcherId)
+        @.save(watchersIds)
+
+    save: (watchersIds) ->
+        @.loading = true
+        transform = @modelTransform.save (item) ->
+            item.watchers = watchersIds
+            return item
+        transform.then =>
+            @rootScope.$broadcast("object:updated")
+        transform.finally () => @.loading = false
+
     _watch: ->
-        @.onWatch().then =>
-            @.showTextWhenMouseIsLeave()
+        @.onWatch()
 
     _unwatch: ->
         @.onUnwatch()
 
-angular.module("taigaComponents").controller("WatchButton", WatchButtonController)
+angular.module("taigaComponents").controller("TicketWatchersController", TicketWatchersController)

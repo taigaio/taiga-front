@@ -1,0 +1,526 @@
+
+.navbar .nav-right a.active svg,
+.navbar .nav-right a svg{
+    fill: $primary-50;
+    stroke: $primary-50;
+}
+
+.navbar .nav-right a:hover svg {
+    fill: $primary-25;
+    stroke: $primary-25;
+}
+
+.navbar {
+    background-color: $primary;
+}
+.main-nav li .icon,
+.main-nav li:hover .icon {
+    fill: $white;
+    stroke: $white;
+}
+
+.auth {
+    background: $primary;
+}
+
+.main-nav .active svg {
+    fill: $grey-50;
+    stroke: $grey-50;
+}
+
+//***********************
+//** FONT-TYPE
+//***********************
+
+h1 .title,
+.taskboard-header .project-name-short,
+.project-name,
+.discover-header .title {
+    @include font-type(light);
+}
+
+h1,
+h1 span,
+.create-project-title-wrapper h1,
+.project-list-wrapper .project-list-title h1,
+.intro-title .project-name,
+.taskboard-header h1 .date,
+.project-privacy-settings .privacy-project label,
+.create-project-privacity input:checked + label {
+    @include font-type(text);
+}
+
+.topnav-dropdown-wrapper .counter.large {
+    @include font-type(bold);
+}
+
+
+//***********************
+//** FONT-SIZE
+//***********************
+
+h1,
+h1 span,
+.create-project-title-wrapper h1,
+.project-list-wrapper .project-list-title h1 {
+    @include font-size(larger)
+}
+.button-bulk,
+.button-green,
+a.button-green {
+    @include font-size(large)
+}
+.admin-membership-table .active,
+.admin-membership-table .resend,
+.action-buttons .button-green,
+.create-project-btn.button-green,
+.project-details-image .change-image,
+.taskboard-header h1 .date {
+    @include font-size(small)
+}
+
+
+
+//***********************
+//** FILL-STROKE
+//***********************
+
+.wiki-nav .add-button svg,
+.create-project-privacity .icon {
+    fill: $white;
+    stroke: $white;
+}
+.card-unfold svg {
+    fill: $grey-20;
+    stroke: $grey-20;
+}
+.card-statistics .icon,
+.taskboard-table-header .task-colum-name .icon {
+    fill: $grey-30;
+    stroke: $grey-30;
+}
+.summary .stats svg {
+    fill: $grey-40;
+    stroke: $grey-40;
+}
+.admin-functionalities .module.active .module-icon .icon,
+.list-itemtype-project .icon,
+.profile-content-tabs .tab.active .icon {
+    fill: $grey-70;
+    stroke: $grey-70;
+}
+
+.create-project-title-wrapper svg,
+.contact-team :hover svg,
+.track-button:hover .track-icon svg {
+    fill: $primary;
+    stroke: $primary;
+}
+.large-summary a:hover .icon {
+    fill: $primary-50;
+    stroke: $primary-50;
+}
+
+.track-button.is-hover .track-icon svg {
+    fill: $red;
+    stroke: $red;
+}
+
+
+
+
+//***********************
+//** COLOR
+//***********************
+
+
+.check input  + div,
+.check input:checked + div,
+.track-button.is-hover .track-button-counter,
+.track-button.is-hover .track-button-counter,
+.create-project-privacity input + label {
+    color: $white;
+}
+.card-statistics,
+.related-tasks-body .closed,
+.related-tasks-body .closed:hover,
+.related-tasks-body .closed .task-name a,
+.related-tasks-body .closed:hover .task-name a {
+    color: $grey-30;
+}
+.project-name {
+    color: $grey-40;
+}
+
+.entry .entry-date,
+.notifications-list .entry .entry-project {
+    color: $grey-50;
+}
+.card-task a,
+.admin-functionalities .module.active .module-name,
+.menu-secondary .admin-menu ul a span,
+.menu-tertiary .admin-submenu ul a span,
+.list-itemtype-project .list-itemtype-track,
+.taskboard-header h1 .date {
+    color: $grey-70;
+}
+a {
+    color: $grey-80;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.intro-title .project-name,
+.track-button .track-inner,
+.track-button .track-inner:hover,
+.track-button .track-button-counter,
+.home-project .project-card-name a,
+.featured-projects-inner .project-card-name a,
+.trans-button.create-project-action-cancel,
+.highlighted-project .project-title a {
+    color: $grey-90;
+}
+.notifications-page .title,
+.project-list-title h1,
+.create-project-title-wrapper h1,
+.home-project .project-card-name a:hover,
+.featured-projects-inner .project-card-name a:hover,
+.highlighted-project .project-title a:hover,
+a:hover {
+    color: $primary;
+}
+.summary .data .number {
+    color: $primary-50;
+}
+
+
+//***********************
+//** BACKGROUND-COLOR
+//***********************
+
+.menu-secondary .admin-menu ul a:hover,
+.single-project .involved-team .icon-badge {
+    background-color: $white;
+}
+.extrabar,
+.issues-options,
+.menu-secondary,
+.taskboard-table-header .task-colum-name,
+.taskboard-table-body .taskboard-cards-box,
+.category-config .category-items,
+.admin-common .total {
+    background-color: $grey-02;
+}
+.tag,
+.contact-team,
+.contact-team:hover,
+.epic-row .progress-bar,
+.menu-secondary.settings-nav,
+.track-button .track-inner,
+.track-button .track-inner:hover,
+.trans-button.create-project-action-cancel {
+    background-color: $grey-05;
+}
+.check input,
+.menu-tertiary .admin-submenu ul a.active,
+.menu-tertiary .admin-submenu ul a:hover,
+.sprints .sprint-progress-bar,
+.track-button .track-button-counter,
+.button-filter {
+    background-color: $grey-10;
+}
+.check input + label,
+.lightbox-create-related-user-stories .related-with-selector input + label,
+.menu-tertiary,
+.policy-table input + label,
+.project-privacy-settings .privacy-project + label,
+.create-project-privacity label {
+    background-color: $grey-20;
+}
+tg-project-menu {
+    background-color: $grey-30;
+}
+.check input  + div,
+.check input:checked + label,
+.lightbox-create-related-user-stories .related-with-selector input:checked + label,
+.policy-table input:checked + label ,
+.project-privacy-settings .privacy-project:checked + label,
+.project-privacy-settings .privacy-project:checked + label:hover,
+.create-project-privacity input:checked + label,
+.category-config .summary-role .role-summary-single.active {
+    background-color: $grey-70;
+}
+
+.wiki-nav .add-button svg,
+.check input:checked + div {
+    background-color: $primary;
+}
+
+.card-completion .card-completion-percentage,
+.epic-row .progress-status,
+.story-row .progress-status,
+.sprints .sprint-progress-bar .current-progress {
+    background-color: $secondary;
+}
+
+.check input + label:hover,
+.lightbox-create-related-user-stories .related-with-selector input + label:hover,
+.policy-table input + label:hover,
+.track-button.active .track-button-counter,
+.project-privacy-settings .privacy-project:not(:checked) + label.trans-button:hover,
+.create-project-privacity label:hover {
+    background-color: lighten($grey-20, 5%);
+}
+.epic-row:hover,
+.backlog-table-body .row:hover,
+.lb-select-user-form .user-list-item.is-active,
+.track-button.active .track-inner {
+    background-color: $primary-10;
+}
+
+.topnav-dropdown-wrapper .counter {
+    background: $secondary;
+}
+.track-button.is-hover .track-button-counter {
+    background-color: $red;
+}
+.track-button.is-hover .track-inner {
+    background-color: $red-25;
+}
+
+
+
+//************************
+//** BUTTONS
+//***********************
+
+@mixin btn() {
+    @include font-type(text);
+    @include font-size(small);
+    align-items: center;
+    color: $white;
+    display: inline-flex;
+    height: 37px;
+    justify-content: center;
+    max-height: 37px;
+    padding: 0 2rem;
+    &:hover,
+    &.active {
+        color: $white;
+    }
+    &[disabled],
+    &[disabled]:hover {
+        background-color: $grey-10;
+        color: $grey-30;
+    }
+}
+@mixin btn-secondary() {
+    @include btn();
+    background: $secondary;
+    &:hover,
+    &.active {
+        background: lighten($secondary, 5%);
+    }
+}
+@mixin btn-secondary-small() {
+    @include btn-secondary();
+    padding: 0 .75rem;
+}
+@mixin btn-secondary-large() {
+    @include btn-secondary();
+    @include font-size(large);
+    height: 50px;
+    max-height: 50px;
+    width: 100%;
+}
+@mixin btn-grey() {
+    @include btn();
+    background: $grey-50;
+    &:hover,
+    &.active {
+        background: lighten($grey-50, 5%);
+    }
+}
+@mixin btn-grey-block() {
+    @include btn-grey();
+    white-space: nowrap;
+    width: 100%;
+}
+@mixin btn-grey-light() {
+    @include btn();
+    background: $grey-20;
+    &:hover,
+    &.active {
+        background: lighten($grey-20, 5%);
+    }
+}
+@mixin btn-grey-light-block() {
+    @include btn-grey-light();
+    white-space: nowrap;
+    width: 100%;
+}
+@mixin btn-primary() {
+    @include btn();
+    background: $primary;
+    &:hover,
+    &.active {
+        background: lighten($primary, 5%);
+    }
+}
+@mixin btn-primary-small() {
+    @include btn-primary();
+    padding: 0 .5rem;
+}
+@mixin btn-red() {
+    @include btn();
+    background: $red;
+    &:hover,
+    &.active {
+        background: lighten($red, 5%);
+    }
+}
+@mixin btn-red-light() {
+    @include btn();
+    background: $red-light;
+    &:hover,
+    &.active {
+        background: $red;
+    }
+}
+
+.related-userstories-header .add-button,
+.attachments-header label.add-attachment-button,
+.related-tasks-header .add-button {
+    @include btn-primary-small();
+}
+.button-green,
+a.button-green,
+.lightbox-ask-choice .options a.button-green,
+.lightbox-generic-ask .options a.button-green,
+.action-buttons .button-green,
+.create-project-btn.button-green {
+    @include btn-secondary();
+}
+.lightbox .button-green,
+.submit-button,
+.ticket-detail-settings .lightbox-assign-sprint-to-issue button,
+.button-green.create-project-action-submit,
+.lightbox-move-to-sprint .move-to-sprint-container .move-to-sprint-controls .move-button,
+.user-change-password .button-green {
+    @include btn-secondary-large();
+}
+.button-bulk {
+    @include btn-secondary-small();
+}
+
+.show-add-new.button-gray,
+.lightbox .button-gray,
+.action-buttons .button-gray {
+    @include btn-grey();
+}
+.project-details label.trans-button {
+    @include btn-grey-light-block();
+}
+
+.ticket-detail-settings .item-block,
+.ticket-detail-settings .item-unblock,
+.ticket-detail-settings .button-delete {
+    &:hover {
+        background: lighten($red-light, 5%);
+    }
+}
+
+.ticket-detail-settings .button-gray,
+.lightbox .button-gray,
+.action-buttons .button-gray {
+    background: $grey-40;
+    &:hover {
+        background: lighten($grey-40, 5%);
+    }
+    &[disabled]{
+        background: $grey-20;
+    }
+    &.active{
+        background: $grey-70;
+    }
+}
+.ticket-detail-settings .assign-issue-button.button-set,
+.ticket-detail-settings .item-unblock,
+.ticket-detail-settings .button-set {
+    background: $grey-70;
+    &:hover {
+        background: lighten($grey-70, 10%);
+    }
+}
+.save-filters.button-gray,
+.see-more-projects-btn.button-gray,
+.sprints .button-gray,
+.project-details-image .change-image {
+    @include btn-grey-block();
+}
+.lightbox-ask-choice .options a.button-red,
+.lightbox-generic-ask .options a.button-red {
+    @include btn-red();
+}
+.button-red.delete-role {
+    @include btn-red-light();
+}
+
+//***********************
+//** FORMS
+//***********************
+
+input[type="text"],
+input[type="number"],
+input[type="password"],
+input[type="url"],
+input[type="email"],
+input[type="date"],
+input[type="password"],
+select,
+textarea {
+    background: $mass-white;
+    border-color: $gray-light;
+    color: $grayer;
+    @include placeholder {
+        color: lighten($gray-light,
+        10%);
+    }
+    &.checksley-error {
+        border: 1px solid $red;
+    }
+}
+
+
+
+//***********************
+//** OTHER
+//***********************
+
+.discover-header .title {
+    line-height: 3rem;
+}
+.create-project-privacity label {
+    padding: 0 .75rem;
+    min-height: 37px;
+}
+.check input ~ .check-no,
+.check input:checked ~ .check-yes {
+    opacity: 1;
+}
+
+.taskboard-table-header .task-colum-name {
+    border-top: 3px solid $gray-light;
+}
+
+.admin-common:not(.admin-roles) p.total {
+    background: none;
+    padding-left: 0;
+}
+
+tg-filter.open {
+    box-shadow: 1px 1px 5px rgba($gray, 0.2);
+}

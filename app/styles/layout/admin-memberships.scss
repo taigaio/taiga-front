@@ -12,7 +12,7 @@
 
             strong,
             a {
-                @include font-type(bold)
+                @include font-type(semibold)
             }
             p {
                 color: $grayer;

@@ -279,7 +279,7 @@
         }
     }
     .warning {
-        @include font-type(bold);
+        @include font-type(semibold);
     }
 }
 
@@ -394,7 +394,7 @@
         }
         .progress {
             @include font-type(text);
-            @include font-type(bold);
+            @include font-type(semibold);
             @include font-size(large);
             background: darken($whitish, 5%);
             bottom: 35px;
@@ -652,7 +652,7 @@
     .existing-item-wrapper {
         margin-bottom: $spacing * 2;
         select .strong {
-            @include font-type(bold);
+            @include font-type(semibold);
         }
     }
     .add-existing-button {
@@ -681,6 +681,14 @@
         }
     }
 
+    .assigned-inline {
+        position: relative;
+        .user-list-avatar img {
+            height: 3rem;
+            width: 3rem;
+        }
+    }
+
     .popover {
         a {
             color: $white;
@@ -696,14 +704,11 @@
 
     .ticket-assigned-to {
         border: 0;
+        margin: 0 0 1rem;
         padding: 0;
-        &.single-assign {
-            margin: 0;
-        }
         &.multiple-assign {
             align-items: start;
             flex-direction: column;
-            margin: 0;
         }
         .assigned-to-actions {
             display: block;
@@ -736,6 +741,10 @@
                 text-align: center;
             }
         }
+    }
+
+    .ticket-user-list .remove-user {
+        margin-right: 0;
     }
 
     .tg-add-assigned {
@@ -798,7 +807,7 @@
             flex-grow: 0;
             padding: .5rem 0;
             &.selected {
-                color: $primary;
+                color: $primary-light;
             }
         }
         .user-list-avatar {

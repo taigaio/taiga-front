@@ -128,7 +128,7 @@
 
 .block-desc-container {
     .block-description-title {
-        @include font-type(bold);
+        @include font-type(semibold);
         margin-right: .5rem;
 
     }

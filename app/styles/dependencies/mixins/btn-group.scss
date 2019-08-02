@@ -32,7 +32,7 @@
     input {
         &:checked+label {
             background: darken($mass-white, 10%);
-            @include font-type(bold);
+            @include font-type(semibold);
         }
         &:disabled+label {
             cursor: not-allowed;

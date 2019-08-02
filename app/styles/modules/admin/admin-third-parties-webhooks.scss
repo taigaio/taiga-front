@@ -14,7 +14,7 @@
     }
 
     .table-header {
-        @include font-type(bold);
+        @include font-type(semibold);
         border-bottom: 1px solid $gray-light;
     }
     .table-body {
@@ -143,7 +143,7 @@
         justify-content: space-between;
         padding: 1.5rem 0 .5rem;
         span:first-child {
-            @include font-type(bold);
+            @include font-type(semibold);
             color: $gray-light;
         }
         a {

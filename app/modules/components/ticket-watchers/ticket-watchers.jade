@@ -1,0 +1,63 @@
+.ticket-section-label
+    span {{ 'COMMON.WATCH_BUTTON.WATCHERS'|translate }}
+    span(ng-if="vm.watchers.length > visibleWatchersCount && !displayHidden") &nbsp;({{ vm.watchers.length }})
+
+
+.ticket-user-list-container
+    div.loading-container(ng-show="vm.loading")
+        img.loading-spinner(
+            src="/#{v}/svg/spinner-circle.svg",
+            alt="{{'COMMON.LOADING' | translate}}"
+        )
+    .ticket-user-list-content(ng-class="{ 'loading': vm.loading }")
+        .ticket-user-list
+            div(ng-repeat="watcher in vm.watchers track by watcher.id")
+                .user-list-single(
+                    ng-if="($index + 1 <= visibleWatchersCount) || displayHidden"
+                    ng-class="{ 'read-only': !isEditable }"
+                )
+                    .user-list-avatar
+                        img(
+                            tg-avatar="watcher"
+                            alt="{{watcher.full_name_display}}"
+                        )
+                    .user-list-name
+                        span {{watcher.full_name_display}}
+
+                    tg-svg.js-delete-watcher.remove-user(
+                        ng-if="isEditable"
+                        svg-icon="icon-close",
+                        svg-title-translate="COMMON.WATCHERS.DELETE",
+                        data-watcher-id="{{ watcher.id }}"
+                    )
+
+        a.ticket-section-unfold(
+            href=""
+            ng-if="vm.watchers.length > visibleWatchersCount"
+            ng-click="toggleFold()"
+            ng-class="{ active: displayHidden }"
+            role="button"
+        )
+            tg-svg(svg-icon="icon-view-more")
+
+        .ticket-users-actions
+            .ticket-users-action(
+                ng-if="isEditable",
+                ng-click="vm.openWatchers()"
+            )
+                tg-svg.users-action.icon(svg-icon="icon-add")
+                span {{ 'COMMON.WATCHERS.ADD' | translate }}
+
+            .ticket-users-action(
+                ng-if="!vm.item.is_watcher && isAuthenticated"
+                ng-click="vm.watch()"
+            )
+                tg-svg.users-action.icon(svg-icon="icon-watch")
+                span {{ 'COMMON.WATCH_BUTTON.WATCH' | translate }}
+
+            .ticket-users-action(
+                ng-if="vm.item.is_watcher && isAuthenticated"
+                ng-click="vm.unwatch()"
+            )
+                tg-svg.users-action.icon(svg-icon="icon-unwatch")
+                span {{ 'COMMON.WATCH_BUTTON.UNWATCH' | translate }}

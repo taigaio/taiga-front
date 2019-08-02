@@ -13,8 +13,8 @@ div.wrapper(
     section.main.wiki
         header
             h1
-                span(tg-bo-bind="project.name")
                 span.green(translate="PROJECT.SECTION.WIKI")
+                span.project-name(tg-bo-bind="project.name")
 
         tg-wiki-wysiwyg(model="wiki")
 

@@ -27,7 +27,7 @@
         }
     }
     .module-name {
-        @include font-type(bold);
+        @include font-type(semibold);
         @include font-size(large);
         color: $gray-light;
         flex-basis: 100px;

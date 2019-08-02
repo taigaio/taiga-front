@@ -142,7 +142,7 @@ $column-padding: .5rem 1rem;
             margin-right: 0;
         }
         .kanban-column-intro {
-            @include font-type(bold);
+            @include font-type(semibold);
             @include font-size(small);
             color: $gray-light;
             margin: 1rem 2rem;

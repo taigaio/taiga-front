@@ -11,7 +11,7 @@
         .username {
             color: $primary;
             &:first-child {
-                @include font-type(bold);
+                @include font-type(semibold);
                 color: $gray;
             }
         }
@@ -79,7 +79,7 @@
             flex: 1;
         }
         a {
-            @include font-type(bold);
+            @include font-type(semibold);
         }
         p {
             color: $gray-light;

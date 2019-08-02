@@ -1,7 +1,7 @@
 .ticket-header {
     align-items: center;
     display: flex;
-    margin: 1.5rem 0 2rem;
+    margin: .75rem 0;
     position: relative;
     .ticket-title {
         @include font-size(larger);
@@ -12,7 +12,7 @@
     .detail-status {
         @include font-size(small);
         display: flex;
-        margin-left: .25rem;
+        margin-left: .5rem;
         position: relative;
         .icon-arrow-down {
             @include svg-size(.75rem);
@@ -48,11 +48,18 @@
 .ticket-data-container {
     @include font-size(small);
     @include font-type(text);
-    margin-bottom: 1rem;
     .icon {
         @include svg-size(.7rem);
         color: currentColor;
         margin-left: .25rem;
+    }
+}
+
+.ticket-section {
+    padding: 1.2rem 0;
+    width: 100%;
+    &:not(:last-child) {
+        border-bottom: 1px solid $gray-lighter;
     }
 }
 
@@ -66,18 +73,18 @@
         vertical-align: top;
     }
     .level-name {
-        color: darken($whitish, 20%);
+        color: $gray-light;
         float: right;
         text-transform: lowercase;
     }
     .clickable {
         &:hover {
-            background: darken($whitish, 10%);
+            background: $gray-lighter;
             transition: background .2s ease-in;
         }
     }
     .type-data {
-        background: darken($whitish, 5%);
+        background: $whitish;
         margin-bottom: .5rem;
         padding: .5rem;
         padding-right: 1rem;
@@ -88,7 +95,7 @@
         }
     }
     .severity-data {
-        background: darken($whitish, 5%);
+        background: $whitish;
         margin-bottom: .5rem;
         padding: .5rem;
         padding-right: 1rem;
@@ -99,7 +106,7 @@
         }
     }
     .priority-data {
-        background: darken($whitish, 5%);
+        background: $whitish;
         margin-bottom: .5rem;
         padding: .5rem;
         padding-right: 1rem;
@@ -111,69 +118,175 @@
     }
 }
 
-.ticket-watch-buttons {
-    margin-bottom: 1rem;
+.ticket-section-label {
+    @include font-type(semibold);
+    color: lighten($grayer, 11%);
+    flex-grow: 1;
+    font-size: .875rem;
+    text-transform: uppercase;
 }
 
-.ticket-watch {
-    .ticket-watch-title {
-        @include font-type(bold);
-        margin-bottom: .5rem;
-    }
-    .ticket-watch-inner {
-        display: flex;
-    }
+.ticket-section-unfold {
+    display: block;
+    line-height: 1.25rem;
+    text-align: center;
     svg {
-        margin-right: .25rem;
-        position: relative;
-        top: 2px;
+        fill: $gray-light;
     }
-    .ticket-watch-button,
-    .add-watcher {
-        @include font-type(light);
-        @include font-size(small);
-        background: $gray-light;
-        color: $white;
-        flex: 1;
-        padding: .25rem;
-        text-align: center;
-        text-transform: uppercase;
-        transition: background .25s;
+    &:hover svg {
+        fill: lighten($gray-light, 15%);
+    }
+    &.active svg {
+        fill: $gray-lighter;
+    }
+    &.active:hover svg {
+        fill: darken($gray-lighter, 15%);
+    }
+}
+
+.loading-container {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    z-index: 99;
+    .loading-spinner {
+        max-height: 1.5rem;
+        max-width: 1.5rem;
+    }
+}
+
+.ticket-user-list-container {
+    position: relative;
+    .ticket-user-list-content.loading {
+        opacity: .5;
+        z-index: 98;
+    }
+}
+
+.ticket-user-list {
+    margin: .25rem 0 0;
+    .is-iocaine {
+        filter: hue-rotate(265deg) saturate(3);
+    }
+
+    .iocaine-symbol {
+        left: -.5rem;
+        position: absolute;
+        top: -.5rem;
+        z-index: 9;
         svg {
+            background: $grayer;
+            border-radius: .25rem;
             fill: $white;
+            min-height: 1.5rem;
+            min-width: 1.5rem;
+            padding: .25rem;
+        }
+    }
+    .user-list-single {
+        align-content: center;
+        align-items: center;
+        display: flex;
+        padding: .25rem 0;
+        width: 100%;
+        &:hover:not(.read-only) {
+            background: rgba($white, .4);
+            cursor: pointer;
+            .user-list-name {
+                color: $primary-light;
+            }
+            .remove-user {
+                opacity: 1;
+            }
+        }
+        &.read-only .user-list-name,
+        .read-only {
+            color: $gray;
+        }
+        &:not(.read-only) {
+            .user-list-name a {
+                color: $primary;
+            }
+            .user-list-name a:hover {
+                color: $primary-light;
+            }
+        }
+    }
+    .user-list-avatar {
+        flex-basis: 3rem;
+        margin-right: .25rem;
+        max-height: 3rem;
+        max-width: 3rem;
+        img {
+            width: 100%;
+        }
+    }
+    .user-list-name {
+        flex-grow: 1;
+        margin-left: .5rem;
+    }
+
+    .remove-user {
+        cursor: pointer;
+        fill: $gray;
+        margin-right: .75rem;
+        opacity: 0;
+        padding: .5rem;
+        transition: all .2s ease-in;
+        &:hover {
+            fill: $red;
+            transition: color .3s ease-in;
+        }
+        svg {
+            height: .9rem;
+            width: .9rem;
+        }
+    }
+}
+
+.ticket-users-actions {
+    display: flex;
+    margin: .5rem -.25rem 0;
+    .ticket-users-action {
+        background: $white;
+        color: $gray;
+        cursor: pointer;
+        display: flex;
+        flex-grow: 1;
+        font-size: .9rem;
+        justify-content: center;
+        line-height: 2rem;
+        margin: 0 .25rem;
+        text-align: center;
+        svg {
+            fill: $gray;
+            height: .75rem;
+            width: .75rem;
         }
         &:hover {
-            background: $primary-light;
-        }
-        &.is-hover {
-            background: $red;
-            color: $whitish;
-            transition: background .3s;
+            color: $primary-light;
             svg {
-                fill: $red-light;
+                fill: $primary-light;
             }
         }
-        &.active {
-            background: $primary-light;
-            &:hover {
-                background: $red-light;
-            }
-            svg {
-                fill: $white;
-            }
-        }
+    }
+    .users-action.icon {
+        margin-right: .5rem;
+    }
+}
 
-    }
-    .ticket-watch-button {
-        margin-right: .25rem;
-    }
+.ticket-estimation .points-per-role {
+    margin: .5rem 0 0;
 }
 
 .ticket-detail-settings {
     display: flex;
     justify-content: center;
     margin-right: -.5rem;
-    margin-top: 2rem;
+    margin-top: 1rem;
     label,
     .assign-issue-button,
     .item-block,
@@ -194,11 +307,6 @@
         }
         +input {
             display: none;
-        }
-        &.button-set,
-        &.text-button.button-set:hover {
-            background: $yellow-green;
-            border-color: $yellow-green;
         }
     }
 

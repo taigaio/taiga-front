@@ -1,5 +1,5 @@
 .history-tabs {
-    background: $whitish;
+    background: $mass-white;
     display: flex;
     flex-direction: row;
     a {
@@ -10,7 +10,7 @@
         }
     }
     .history-tab {
-        @include font-type(bold);
+        @include font-type(semibold);
         border-bottom: 3px solid transparent;
         color: $gray-light;
         transition: all .1s linear;

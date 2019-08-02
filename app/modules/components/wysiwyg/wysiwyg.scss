@@ -14,7 +14,7 @@
     }
     h2 {
         @include font-size(larger);
-        @include font-type(bold);
+        @include font-type(semibold);
         line-height: 1.225;
         margin-bottom: 1rem;
         margin-top: 1rem;
@@ -22,13 +22,13 @@
     }
     h3 {
         @include font-size(large);
-        @include font-type(bold);
+        @include font-type(semibold);
         margin-bottom: 1rem;
         margin-top: 1rem;
         padding-bottom: .5rem;
     }
     h4 {
-        @include font-type(bold);
+        @include font-type(semibold);
         margin-bottom: 1rem;
         margin-top: 1rem;
     }

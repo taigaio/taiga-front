@@ -63,8 +63,8 @@ tg-lightbox-close(on-close="vm.onClose()")
                 ng-model="vm.usersSearch"
             )
 
-        .assigned-to-list
-            .user-list-single(
+        .lb-user-list
+            .user-list-item(
                 ng-repeat="user in vm.selectableUsers | toMutable | filter: vm.usersSearch | orderBy:'full_name_display' | limitTo: 5 as filteredCollection",
                 ng-click="vm.selectUser(user)"
             )

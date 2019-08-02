@@ -1,0 +1,53 @@
+.ticket-section-label
+    span {{ 'COMMON.FIELDS.ASSIGNED'|translate }}
+    span(ng-if="assignedUsers.length > visibleAssignedUsersCount && !displayHidden") &nbsp;({{ assignedUsers.length }})
+
+.ticket-user-list-container
+    div.loading-container(ng-show="loading")
+        img.loading-spinner(
+            src="/#{v}/svg/spinner-circle.svg",
+            alt="{{'COMMON.LOADING' | translate}}"
+        )
+    .ticket-user-list-content(ng-class="{ 'loading': loading }")
+        .ticket-user-list
+            div(ng-repeat="assignedUser in assignedUsers track by assignedUser.id")
+                .user-list-single(
+                    ng-if="($index + 1 <= visibleAssignedUsersCount) || displayHidden"
+                    ng-class="{ 'read-only': !isEditable }"
+                )
+                    .user-list-avatar
+                        img(
+                            tg-avatar="assignedUser"
+                            alt="{{assignedUser.full_name_display}}"
+                        )
+                    .user-list-name
+                        span {{assignedUser.full_name_display}}
+
+                    tg-svg.remove-user(
+                        ng-if="isEditable",
+                        svg-icon="icon-close",
+                        title="{{'COMMON.ASSIGNED_TO.DELETE_ASSIGNMENT' | translate}}"
+                        data-user-id="{{ assignedUser.id }}"
+                    )
+
+        a.ticket-section-unfold(
+            href=""
+            ng-if="assignedUsers.length > visibleAssignedUsersCount"
+            ng-click="toggleFold()"
+            ng-class="{ active: displayHidden }"
+            role="button"
+        )
+            tg-svg(svg-icon="icon-view-more")
+
+        .ticket-users-actions(ng-if="isEditable")
+            .ticket-users-action(
+                ng-click="openAssignedUsers()"
+            )
+                tg-svg.users-action.icon(svg-icon="icon-add")
+                span {{ "COMMON.ASSIGNED_USERS.ADD_ASSIGNED" | translate }}
+
+            .ticket-users-action(
+                ng-if="!selfAssigned"
+                ng-click="selfAssign()"
+            )
+                span {{ 'COMMON.ASSIGNED_TO.SELF' | translate }}

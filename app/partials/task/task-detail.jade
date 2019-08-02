@@ -70,7 +70,7 @@ div.wrapper(
 
     sidebar.menu-secondary.sidebar.ticket-data
 
-        .ticket-header
+        section.ticket-header
             span.ticket-title(
                 tg-task-status-display
                 ng-model="task"
@@ -80,30 +80,29 @@ div.wrapper(
                 ng-model="task"
             )
 
-        section.ticket-assigned-to(tg-assigned-to, ng-model="task", required-perm="modify_task")
+        section.ticket-section(
+            tg-assigned-to
+            ng-model="task"
+            required-perm="modify_task"
+        )
 
-        section.ticket-watch-buttons
-            div.ticket-watch(
-                tg-watch-button
-                item="task"
-                data-environment="ticket"
-                on-watch="ctrl.onWatch"
-                on-unwatch="ctrl.onUnwatch"
-                active-users="activeUsers"
-            )
-            div.ticket-watchers(
-                tg-watchers
-                ng-model="task"
-                required-perm="modify_us"
-            )
+        section.ticket-section.ticket-watchers(
+            tg-watchers
+            item="task"
+            active-users="activeUsers"
+            on-watch="ctrl.onWatch"
+            on-unwatch="ctrl.onUnwatch"
+            required-perm="modify_task"
+        )
 
-        tg-vote-button.upvote-btn(
+        section.ticket-section.upvote-btn(
+            tg-vote-button
             item="task",
             on-upvote="ctrl.onUpvote",
             on-downvote="ctrl.onDownvote"
         )
 
-        section.ticket-detail-settings
+        section.ticket-section.ticket-detail-settings
             tg-due-date(
                 due-date="task.due_date"
                 format="button"

@@ -22,7 +22,7 @@
     }
     .warning {
         @include font-size(large);
-        @include font-type(bold);
+        @include font-type(semibold);
         color: $white;
         line-height: 1.2;
     }
@@ -78,7 +78,7 @@
     }
     .warning {
         @include font-size(xlarge);
-        @include font-type(bold);
+        @include font-type(semibold);
         color: $white;
         line-height: 2.4rem;
     }
