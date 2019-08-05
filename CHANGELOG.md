@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+## 4.2.12 (2019-08-06)
+
+- Add Taiga Fresh theme.
+- Minor fixes.
+
 ## 4.2.11 (2019-07-24)
 
 - Progressive Kanban render.
