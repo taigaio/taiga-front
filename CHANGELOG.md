@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## 4.2.13 (2019-08-06)
+
+- Minor fixes
+
 ## 4.2.12 (2019-08-06)
 
 - Add Taiga Fresh theme.
