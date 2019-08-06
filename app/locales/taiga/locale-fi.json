@@ -147,6 +147,7 @@
             "TYPE": "Tyyppi",
             "SEVERITY": "Vakavuus",
             "PRIORITY": "Tärkeys",
+            "ASSIGNED": "Tekijä valittu",
             "ASSIGNED_TO": "Tekijä",
             "ASSIGNED_USERS": "Assigned users",
             "POINTS": "Pisteet",

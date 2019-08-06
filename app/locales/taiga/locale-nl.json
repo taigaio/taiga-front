@@ -147,6 +147,7 @@
             "TYPE": "Type",
             "SEVERITY": "Ernst",
             "PRIORITY": "Prioriteit",
+            "ASSIGNED": "Toegewezen",
             "ASSIGNED_TO": "Toegewezen aan",
             "ASSIGNED_USERS": "Assigned users",
             "POINTS": "Punten",

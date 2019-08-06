@@ -147,6 +147,7 @@
             "TYPE": "타입",
             "SEVERITY": "심각도",
             "PRIORITY": "우선순위",
+            "ASSIGNED": "할당됨",
             "ASSIGNED_TO": "할당됨",
             "ASSIGNED_USERS": "Assigned users",
             "POINTS": "포인트",

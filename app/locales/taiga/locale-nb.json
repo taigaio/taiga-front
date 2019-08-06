@@ -147,6 +147,7 @@
             "TYPE": "Type",
             "SEVERITY": "Alvorlighetsgrad",
             "PRIORITY": "Prioritet",
+            "ASSIGNED": "Assigned",
             "ASSIGNED_TO": "Tildelt til",
             "ASSIGNED_USERS": "Assigned users",
             "POINTS": "Poeng",

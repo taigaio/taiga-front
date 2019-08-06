@@ -147,6 +147,7 @@
             "TYPE": "Typen",
             "SEVERITY": "Gewichtung",
             "PRIORITY": "Priorität",
+            "ASSIGNED": "Zugewiesen",
             "ASSIGNED_TO": "Zugewiesen an",
             "ASSIGNED_USERS": "Zugewiesene Benutzer",
             "POINTS": "Punkte",

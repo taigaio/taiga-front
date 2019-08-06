@@ -147,6 +147,7 @@
             "TYPE": "نوع",
             "SEVERITY": "اهمیت",
             "PRIORITY": "اولویت",
+            "ASSIGNED": "محول شده",
             "ASSIGNED_TO": "اختصاص یافته به",
             "ASSIGNED_USERS": "کاربران اختصاص یافته",
             "POINTS": "امتیاز",

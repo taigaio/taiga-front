@@ -147,6 +147,7 @@
             "TYPE": "Typ",
             "SEVERITY": "Allvarsgrad",
             "PRIORITY": "Prioritet",
+            "ASSIGNED": "Tilldelad",
             "ASSIGNED_TO": "Tilldelad till",
             "ASSIGNED_USERS": "Assigned users",
             "POINTS": "Poäng",

@@ -147,6 +147,7 @@
             "TYPE": "טיפוס",
             "SEVERITY": "חומרה",
             "PRIORITY": "עדיות",
+            "ASSIGNED": "משוייך",
             "ASSIGNED_TO": "משוייך ל",
             "ASSIGNED_USERS": "משתמשים משויכים",
             "POINTS": "נקודות",

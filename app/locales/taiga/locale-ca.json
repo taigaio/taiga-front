@@ -147,6 +147,7 @@
             "TYPE": "Tipus",
             "SEVERITY": "Severitat",
             "PRIORITY": "Prioritat",
+            "ASSIGNED": "Assigned",
             "ASSIGNED_TO": "Assignat a",
             "ASSIGNED_USERS": "Assigned users",
             "POINTS": "Punts",

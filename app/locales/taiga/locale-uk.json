@@ -147,6 +147,7 @@
             "TYPE": "Тип",
             "SEVERITY": "Важливість",
             "PRIORITY": "Пріоритет",
+            "ASSIGNED": "Назначений",
             "ASSIGNED_TO": "Призначений на",
             "ASSIGNED_USERS": "Assigned users",
             "POINTS": "Кількість очок",

@@ -147,6 +147,7 @@
             "TYPE": "類型",
             "SEVERITY": "急迫性",
             "PRIORITY": "優先性",
+            "ASSIGNED": "Assigned",
             "ASSIGNED_TO": "指派給 ",
             "ASSIGNED_USERS": "Assigned users",
             "POINTS": "點數",

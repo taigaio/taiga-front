@@ -147,6 +147,7 @@
             "TYPE": "类型",
             "SEVERITY": "严重程度",
             "PRIORITY": "优先级",
+            "ASSIGNED": "已指派",
             "ASSIGNED_TO": "指派给",
             "ASSIGNED_USERS": "被指派人列表",
             "POINTS": "点数",

@@ -147,6 +147,7 @@
             "TYPE": "タイプ",
             "SEVERITY": "深刻度",
             "PRIORITY": "優先度",
+            "ASSIGNED": "割当済",
             "ASSIGNED_TO": "割当",
             "ASSIGNED_USERS": "割当ユーザー",
             "POINTS": "ポイント",

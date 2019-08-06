@@ -147,6 +147,7 @@
             "TYPE": "Mota",
             "SEVERITY": "Larritasuna",
             "PRIORITY": "Lehentasuna",
+            "ASSIGNED": "Esleituta",
             "ASSIGNED_TO": "nori esleitua?",
             "ASSIGNED_USERS": "esleitutako erabiltzaile",
             "POINTS": "Puntuak",

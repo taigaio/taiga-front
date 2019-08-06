@@ -147,6 +147,7 @@
             "TYPE": "Tip ",
             "SEVERITY": "Önem Derecesi",
             "PRIORITY": "Öncelik",
+            "ASSIGNED": "Aranmış",
             "ASSIGNED_TO": "Atanmış",
             "ASSIGNED_USERS": "Assigned users",
             "POINTS": "Puanlar",
