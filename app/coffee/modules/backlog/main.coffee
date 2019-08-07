@@ -687,7 +687,8 @@ BacklogDirective = ($repo, $rootscope, $translate, $rs) ->
             moveUssToSprint(selectedUss, $scope.sprints[0])
 
         $scope.$on "sprintform:create:success:callback", (e, ussToMove) ->
-            _.partial(moveToCurrentSprint, ussToMove)()
+            if ussToMove
+                _.partial(moveToCurrentSprint, ussToMove)()
 
         shiftPressed = false
         lastChecked = null
