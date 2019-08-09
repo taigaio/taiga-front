@@ -16,7 +16,7 @@ section.notifications-list
             ng-attr-infinite-scroll-distance="vm.infiniteScrollDistance"
         )
             .entry(
-                tg-repeat="notification in vm.notificationsList"
+                tg-repeat="notification in vm.notificationsList track by $index"
                 ng-class="{'new': !notification.get('read')}"
             )
                 .entry-avatar

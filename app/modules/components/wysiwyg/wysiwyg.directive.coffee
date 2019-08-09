@@ -350,8 +350,8 @@ Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoad
         $scope.cancelWithConfirmation = () ->
             if $scope.content == $scope.markdown
                 $scope.cancel()
-
-                document.activeElement.blur()
+                if document.activeElement.blur
+                    document.activeElement.blur()
                 document.body.click()
 
                 return null
