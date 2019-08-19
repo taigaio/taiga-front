@@ -12,8 +12,8 @@
         &.active {
             .module-icon .icon,
             .module-name {
-                color: $primary;
-                fill: $primary;
+                fill: $grey-70;
+                stroke: $grey-70;
             }
         }
     }
@@ -23,8 +23,8 @@
         margin: 0 .5rem 0 0;
         .icon {
             @include svg-size(3rem);
-            fill: $grey-70;
-            stroke: $grey-70;
+            fill: $grey-50;
+            stroke: $grey-50;
         }
     }
     .module-name {

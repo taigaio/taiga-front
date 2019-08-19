@@ -9,9 +9,6 @@
         &.active {
             color: $gray;
             transition: color .2s linear;
-            .icon {
-                fill: $primary-light;
-            }
         }
         &.active {
             background: $white;
@@ -20,9 +17,6 @@
             position: relative;
             top: 1px;
             transition: color .2s linear;
-            .icon {
-                color: $primary;
-            }
         }
     }
     .icon {

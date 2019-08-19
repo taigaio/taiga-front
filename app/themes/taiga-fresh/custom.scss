@@ -28,53 +28,6 @@
     stroke: $grey-50;
 }
 
-//***********************
-//** FILL-STROKE
-//***********************
-
-.wiki-nav .add-button svg,
-.create-project-privacity .icon {
-    fill: $white;
-    stroke: $white;
-}
-.card-unfold svg {
-    fill: $grey-20;
-    stroke: $grey-20;
-}
-.card-statistics .icon,
-.taskboard-table-header .task-colum-name .icon {
-    fill: $grey-30;
-    stroke: $grey-30;
-}
-.summary .stats svg {
-    fill: $grey-40;
-    stroke: $grey-40;
-}
-.admin-functionalities .module.active .module-icon .icon,
-.list-itemtype-project .icon,
-.profile-content-tabs .tab.active .icon {
-    fill: $grey-70;
-    stroke: $grey-70;
-}
-
-.create-project-title-wrapper svg,
-.contact-team :hover svg,
-.track-button:hover .track-icon svg {
-    fill: $primary;
-    stroke: $primary;
-}
-.large-summary a:hover .icon {
-    fill: $primary-50;
-    stroke: $primary-50;
-}
-
-.track-button.is-hover .track-icon svg {
-    fill: $red;
-    stroke: $red;
-}
-
-
-
 
 //***********************
 //** COLOR

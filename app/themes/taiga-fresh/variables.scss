@@ -29,14 +29,15 @@ $grey-80: #2D2D39;
 $grey-90: #16171D;
 
 
-// Colors
+// Color aliases for retrocompatibility
 $black: #000;
-$blackish: #050505;
-$grayer: #444;
-$gray: #555;
-$gray-light: #767676;
-$gray-lighter: #B8B8B8;
-$whitish: #e4e3e3;
+$blackish: $grey-90;
+$grayer: $grey-70;
+$gray: $grey-60;
+$gray-light: $grey-50;
+$gray-lighter: $grey-30;
+$whitish: $grey-10;
+$mass-white: $grey-05;
 $white: #fff;
 
 // Primary colors
