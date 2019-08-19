@@ -1,5 +1,6 @@
 .button,
 %button {
+    @include font-size(large);
     @include font-type(light);
     background: transparent;
     border: 0;

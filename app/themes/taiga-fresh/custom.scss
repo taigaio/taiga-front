@@ -29,32 +29,6 @@
 }
 
 //***********************
-//** FONT-SIZE
-//***********************
-
-h1,
-h1 span,
-.create-project-title-wrapper h1,
-.project-list-wrapper .project-list-title h1 {
-    @include font-size(larger)
-}
-.button-bulk,
-.button-green,
-a.button-green {
-    @include font-size(large)
-}
-.admin-membership-table .active,
-.admin-membership-table .resend,
-.action-buttons .button-green,
-.create-project-btn.button-green,
-.project-details-image .change-image,
-.taskboard-header h1 .date {
-    @include font-size(small)
-}
-
-
-
-//***********************
 //** FILL-STROKE
 //***********************
 

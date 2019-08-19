@@ -90,6 +90,9 @@ body {
     }
     .action-buttons {
         flex-shrink: 0;
+        .button-green {
+            @include font-size(small)
+        }
     }
     .button {
         color: $white;

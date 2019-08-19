@@ -24,6 +24,7 @@
         stroke: $primary-light;
     }
     .create-project-btn {
+        @include font-size(small);
         margin-right: .25rem;
         padding: .6rem 2.5rem;
     }
