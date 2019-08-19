@@ -4,6 +4,9 @@
     .lb-select-user-list {
         max-height: 28.5rem;
         overflow-y: auto;
+        &.is-active {
+            background-color: $primary-10;
+        }
     }
 }
 

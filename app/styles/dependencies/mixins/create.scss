@@ -19,6 +19,7 @@
         }
     }
     input + label {
+        background-color: $grey-20;
         color: $white;
     }
     &-check {
@@ -93,8 +94,9 @@
             display: none;
         }
 
-
-
+        input:checked + label {
+            background: $grey-70;
+        }
 
         label {
             background: $mass-white;

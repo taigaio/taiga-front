@@ -10,8 +10,8 @@ a.add-button.e2e-add-userstory-button(
     .lightbox-create-related-user-stories-wrapper
         h2.title(translate="EPIC.CREATE_RELATED_USERSTORIES")
 
-        .related-with-selector
-            .related-with-selector-single
+        .button-group
+            .button-group-single
                 input(
                     type="radio"
                     name="related-with-selector"
@@ -23,7 +23,7 @@ a.add-button.e2e-add-userstory-button(
                 label.e2e-new-userstory-label(for="new-user-story")
                     span.name {{ 'EPIC.NEW_USERSTORY' | translate}}
 
-            .related-with-selector-single
+            .button-group-single
                 input(
                     type="radio"
                     name="related-with-selector"

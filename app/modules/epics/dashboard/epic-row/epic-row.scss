@@ -76,13 +76,13 @@
         top: .25rem;
     }
     .progress-bar {
-        background: $mass-white;
+        background-color: $grey-05;
         max-width: 40vw;
         padding-right: 1rem;
         width: 100%;
     }
     .progress-status {
-        background: $primary-light;
+        background-color: $secondary;
         width: 10vw;
     }
     .vote {

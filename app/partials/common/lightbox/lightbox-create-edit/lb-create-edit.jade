@@ -6,8 +6,8 @@ form(ng-if="lightboxOpen")
         span(ng-switch-when="edit") {{ 'LIGHTBOX.CREATE_EDIT.EDIT_' + translationID | translate }}
         span(ng-switch-when="add-existing") {{ 'LIGHTBOX.CREATE_EDIT.ADD_EXISTING_' + translationID | translate: { targetName: targetName } }}
 
-    .existing-or-new-selector(ng-show="getOrCreate == true")
-        .existing-or-new-selector-single(ng-click="setMode('add-existing')")
+    .button-group(ng-show="getOrCreate == true")
+        .button-group-single(ng-click="setMode('add-existing')")
             input(
                 type="radio"
                 name="related-with-selector"
@@ -18,7 +18,7 @@ form(ng-if="lightboxOpen")
             label.e2e-existing-item-label(for="add-existing")
                 span.name {{ 'LIGHTBOX.CREATE_EDIT.EXISTING_' + translationID | translate }}
 
-        .existing-or-new-selector-single(ng-click="setMode('new')")
+        .button-group-single(ng-click="setMode('new')")
             input(
                 type="radio"
                 name="related-with-selector"

@@ -37,96 +37,33 @@
     background-color: $white;
 }
 
+.menu-secondary.settings-nav {
+    background-color: $grey-05;
+}
+
 .menu-secondary {
     background-color: $grey-02;
+}
+
+.menu-tertiary .admin-submenu ul a.active,
+.menu-tertiary .admin-submenu ul a:hover {
+    background-color: $grey-10;
+}
+.menu-tertiary {
+    background-color: $grey-20;
 }
 
 .extrabar {
     background-color: $grey-02;
 }
 
-//***********************
-//** BACKGROUND-COLOR
-//***********************
-
-.tag,
-.contact-team,
-.contact-team:hover,
-.epic-row .progress-bar,
-.menu-secondary.settings-nav,
-.track-button .track-inner,
-.track-button .track-inner:hover,
-.trans-button.create-project-action-cancel {
-    background-color: $grey-05;
-}
-.check input,
-.menu-tertiary .admin-submenu ul a.active,
-.menu-tertiary .admin-submenu ul a:hover,
-.sprints .sprint-progress-bar,
-.track-button .track-button-counter,
-.button-filter {
-    background-color: $grey-10;
-}
-.check input + label,
-.lightbox-create-related-user-stories .related-with-selector input + label,
-.menu-tertiary,
-.policy-table input + label,
-.project-privacy-settings .privacy-project + label,
-.create-project-privacity label {
-    background-color: $grey-20;
-}
 tg-project-menu {
     background-color: $grey-30;
-}
-.check input  + div,
-.check input:checked + label,
-.lightbox-create-related-user-stories .related-with-selector input:checked + label,
-.policy-table input:checked + label ,
-.project-privacy-settings .privacy-project:checked + label,
-.project-privacy-settings .privacy-project:checked + label:hover,
-.create-project-privacity input:checked + label,
-.category-config .summary-role .role-summary-single.active {
-    background-color: $grey-70;
-}
-
-.wiki-nav .add-button svg,
-.check input:checked + div {
-    background-color: $primary;
-}
-
-.card-completion .card-completion-percentage,
-.epic-row .progress-status,
-.story-row .progress-status,
-.sprints .sprint-progress-bar .current-progress {
-    background-color: $secondary;
-}
-
-.check input + label:hover,
-.lightbox-create-related-user-stories .related-with-selector input + label:hover,
-.policy-table input + label:hover,
-.track-button.active .track-button-counter,
-.project-privacy-settings .privacy-project:not(:checked) + label.trans-button:hover,
-.create-project-privacity label:hover {
-    background-color: lighten($grey-20, 5%);
-}
-.epic-row:hover,
-.backlog-table-body .row:hover,
-.lb-select-user-form .user-list-item.is-active,
-.track-button.active .track-inner {
-    background-color: $primary-10;
 }
 
 .topnav-dropdown-wrapper .counter {
     background: $secondary;
 }
-.track-button.is-hover .track-button-counter {
-    background-color: $red;
-}
-.track-button.is-hover .track-inner {
-    background-color: $red-25;
-}
-
-
 
 //************************
 //** BUTTONS

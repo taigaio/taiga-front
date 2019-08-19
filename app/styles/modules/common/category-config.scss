@@ -31,13 +31,13 @@
         flex: 1;
         width: 280px;
         .role-summary-single {
-            background: $gray-light;
+            background-color: $grey-20;
             display: inline-block;
             height: 20px;
             margin-right: .1rem;
             width: 15px;
             &.active {
-                background: $primary;
+                background-color: $grey-70;
             }
             &.inactive {
                 background: $gray;

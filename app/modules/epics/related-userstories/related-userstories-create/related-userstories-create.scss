@@ -3,40 +3,6 @@
         max-width: 600px;
         width: 90%;
     }
-    .related-with-selector {
-        display: flex;
-        margin-bottom: 1rem;
-        input {
-            display: none;
-            &:checked+label {
-                background: $primary-light;
-                color: $white;
-                transition: background .2s ease-in;
-            }
-            &:checked+label:hover {
-                background: $primary-light;
-            }
-            +label {
-                background: rgba($whitish, .7);
-                cursor: pointer;
-                display: block;
-                padding: 2rem 1rem;
-                text-align: center;
-                text-transform: uppercase;
-                transition: background .2s ease-in;
-            }
-            +label:hover {
-                background: rgba($primary-light, .3);
-                transition: background .2s ease-in;
-            }
-        }
-        .related-with-selector-single {
-            flex: 1;
-            &:first-child {
-                margin-right: .5rem;
-            }
-        }
-    }
     fieldset {
         label {
             display: inline-block;

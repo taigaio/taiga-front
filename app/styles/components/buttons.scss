@@ -47,6 +47,7 @@
 
 .trans-button {
     @extend %button;
+    background-color: $grey-05;
     span,
     .icon {
         color: $blackish;
@@ -176,7 +177,7 @@ a.button-gray {
 
 .button-filter {
     @extend %button;
-    background: $whitish;
+    background-color: $grey-10;
     margin-left: 1rem;
     padding: .4rem .5rem;
     position: relative;
@@ -194,5 +195,65 @@ a.button-gray {
         position: absolute;
         top: -.5rem;
         width: 1rem;
+    }
+}
+
+.button-group {
+    display: flex;
+    margin-bottom: 1rem;
+    width: 100%;
+    input {
+        display: none;
+        &:checked+label {
+            background-color: $grey-70;
+            color: $white;
+        }
+        &:checked+label:hover {
+            background-color: $grey-70;
+        }
+        +label {
+            background-color: $grey-20;
+            cursor: pointer;
+            display: block;
+            padding: 2rem 1rem;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        +label:hover {
+            background: $grey-10;
+        }
+    }
+    .button-group-single {
+        flex: 1;
+        &:first-child {
+            margin-right: .5rem;
+        }
+    }
+}
+
+.button-check {
+    input {
+        display: none;
+        &:checked {
+            +label {
+                background: $primary;
+                transition: background .3s linear;
+            }
+        }
+    }
+    label {
+        background-color: $grey-20;
+        border-radius: 5px;
+        color: $white;
+        display: block;
+        padding: .5rem;
+        &:hover {
+            background: $primary-light;
+            cursor: pointer;
+            transition: background .3s linear;
+        }
+    }
+    input:checked + label {
+        background-color: $grey-70;
     }
 }
