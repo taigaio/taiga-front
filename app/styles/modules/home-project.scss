@@ -22,10 +22,6 @@
     .intro-title {
         align-items: center;
         display: flex;
-        .project-name {
-            @include font-type(text);
-            color: $grey-90;
-        }
         .icon-private {
             fill: $gray-light;
             height: 24px;

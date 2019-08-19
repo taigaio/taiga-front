@@ -295,7 +295,9 @@
     .button-delete {
         background: $gray-light;
         display: inline-block;
+        height: 55px;
         margin-right: .5rem;
+        min-height: 55px;
         padding: 1rem;
         transition: background .2s linear;
         transition-delay: .1s;

@@ -18,7 +18,7 @@
             fill: $primary;
         }
         .track-button-counter {
-            background-color: $grey-10;
+            background-color: $primary-50;
         }
     }
     &:hover .track-icon svg {
@@ -114,21 +114,23 @@
         }
     }
     a {
-        @include font-type(light);
         border-bottom: 1px solid rgba($gray-light, .3);
         color: $white;
         display: flex;
         justify-content: space-between;
         padding: .5rem 0;
         &.active {
-            color: $primary-light;
+            color: $primary-50;
+        }
+        &:hover {
+            color: $primary-50;
         }
     }
     .watch-check {
         height: 1.25rem;
         width: 1.25rem;
         svg {
-            fill: $primary-light;
+            fill: $primary-50;
         }
     }
 }

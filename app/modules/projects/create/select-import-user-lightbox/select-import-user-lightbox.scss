@@ -35,10 +35,6 @@ tg-select-import-user-lightbox {
             flex-grow: 2;
             margin-right: .5rem;
         }
-        .submit-button {
-            flex-grow: 0;
-            width: auto;
-        }
     }
     .search-user-mode {
         @include font-size(small);

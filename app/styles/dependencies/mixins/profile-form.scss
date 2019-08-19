@@ -19,10 +19,6 @@
             width: 100%;
         }
     }
-    .change-image {
-        @include font-size(small);
-        display: block;
-    }
     .image-container {
         position: relative;
         margin-bottom: .5rem;

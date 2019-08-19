@@ -1,6 +1,7 @@
 $label-arrow-wh: 12px;
 
 tg-project-menu {
+    background-color: $grey-30;
     background-position: 0 -300px;
     display: inline-block;
     min-height: calc(100vh - 40px);
@@ -34,8 +35,8 @@ tg-project-menu {
         background: rgba($black, .2);
         transition: color .3s linear;
         svg {
-            fill: $primary-light;
-            transition: fill .3s linear;
+            fill: $white;
+            stroke: $white;
         }
         .helper {
             @include font-size(small);
@@ -90,9 +91,8 @@ tg-project-menu {
         background: rgba($white, .95);
         color: $secondary-dark;
         svg {
-            fill: $secondary-dark;
-            opacity: 1;
-            stroke: $secondary-dark;
+            fill: $grey-40;
+            stroke: $grey-40;
         }
     }
 }

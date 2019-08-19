@@ -61,3 +61,10 @@
         }
     }
 }
+
+.check-toggle {
+    background-color: $grey-20;
+    &.active {
+        background-color: $grey-70;
+    }
+}

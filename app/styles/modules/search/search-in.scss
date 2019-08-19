@@ -1,11 +1,4 @@
 .search-in {
-    input {
-        background: $grayer;
-        color: $white;
-        @include placeholder {
-            color: $gray-light;
-        }
-    }
     .icon-search-wrapper {
         position: absolute;
         right: .7rem;

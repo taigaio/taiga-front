@@ -1,23 +1,28 @@
 .button,
 %button {
-    @include font-size(large);
-    @include font-type(light);
+    @include font-type(text);
+    @include font-size(small);
+    align-content: center;
+    align-items: center;
     background: transparent;
     border: 0;
     border-radius: 3px;
     color: $white;
     cursor: pointer;
-    display: inline-block;
-    padding: .6rem 2rem;
+    display: inline-flex;
+    height: 37px;
+    justify-content: center;
+    max-height: 37px;
+    padding: 0 2rem;
     text-align: center;
     text-transform: uppercase;
-    transition: all .2s linear;
     vertical-align: middle;
-    &:hover {
+    &:hover,
+    &.active {
         color: $white;
-        transition: all .2s linear;
     }
-    &:visited {
+    &:visited,
+    &:visited:hover {
         color: $white;
     }
     &.loading {
@@ -33,21 +38,84 @@
     }
     &.disabled,
     &[disabled] {
-        background: $mass-white;
+        background-color: $grey-10;
         box-shadow: none;
-        color: $gray-light;
+        color: $grey-30;
         cursor: not-allowed;
         opacity: .65;
         &:hover {
-            background: $mass-white;
-            color: $gray-light;
+            background-color: $grey-10;
+            color: $grey-30;
         }
+    }
+    &.button-small {
+        padding: 0 .5rem;
+        width: 38px;
+    }
+    &.button-large {
+        @include font-size(large);
+        height: 50px;
+        max-height: 50px;
+        width: 100%;
+    }
+    &.button-block {
+        width: 100%;
+    }
+    svg {
+        fill: $white;
+        stroke: $white;
+    }
+}
+
+.button-green {
+    @extend %button;
+    background: $secondary;
+    &:hover,
+    &.active,
+    &:visited:hover {
+        background: lighten($secondary, 5%);
+    }
+}
+
+.button-gray {
+    @extend %button;
+    background: $grey-50;
+    &:hover,
+    &.active,
+    &:visited:hover {
+        background: lighten($grey-50, 5%);
+    }
+}
+.button-gray-light {
+    @extend %button;
+    background: $grey-20;
+    &:hover,
+    &.active,
+    &:visited:hover {
+        background: lighten($grey-20, 5%);
+    }
+}
+.button-red {
+    @extend %button;
+    background: $red;
+}
+.button-red-light {
+    @extend %button;
+    background: $red-light;
+}
+
+.button-red,
+.button-red-red-light {
+    &:hover,
+    &.active,
+    &:visited:hover {
+        background: lighten($red, 5%);
     }
 }
 
 .trans-button {
     @extend %button;
-    background-color: $grey-05;
+    background-color: $grey-02;
     span,
     .icon {
         color: $blackish;
@@ -77,29 +145,6 @@
     }
 }
 
-.submit-button {
-    width: 100%;
-}
-.button-green,
-a.button-green {
-    @extend %button;
-    background: $primary;
-    &:hover,
-    &.active {
-        background: $primary-light;
-        color: $white;
-    }
-}
-.button-gray,
-a.button-gray {
-    @extend %button;
-    background: $gray;
-    &:hover,
-    &.active {
-        background: $primary-light;
-        color: $white;
-    }
-}
 .button-blackish {
     @extend %button;
     background: $blackish;
@@ -109,32 +154,9 @@ a.button-gray {
         color: $white;
     }
 }
-.button-red {
-    @extend %button;
-    background: $red-light;
-    &:hover {
-        background: $red;
-        color: $white;
-    }
-    .icon {
-        color: $white;
-    }
-}
-
 .button-bulk {
-    @extend %button;
     @include font-size(large);
-    background: $primary;
-    padding: .55rem .75rem;
-    .icon {
-        fill: currentColor;
-        margin-right: 0;
-        position: relative;
-        top: 1px;
-    }
-    &:hover {
-        background: $primary-light;
-    }
+    margin-left: .5rem;
 }
 .button-auth {
     @extend %button;
@@ -175,15 +197,27 @@ a.button-gray {
     margin-top: .5rem;
 }
 
+.submit-button {
+    width: 100%;
+}
+
 .button-filter {
     @extend %button;
     background-color: $grey-10;
     margin-left: 1rem;
-    padding: .4rem .5rem;
     position: relative;
     &:hover {
         background: $gray-light;
-        fill: $whitish;
+        svg {
+            fill: $whitish;
+            stroke: $whitish;
+        }
+    }
+    svg {
+        fill: $grey-90;
+        height: 1.1rem;
+        stroke: $grey-90;
+        width: 1.1rem;
     }
     .filter-num {
         @include font-size(small);

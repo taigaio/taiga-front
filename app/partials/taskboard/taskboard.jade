@@ -31,7 +31,7 @@ div.wrapper(
                 tg-taskboard-zoom(
                     on-zoom-change="ctrl.setZoom(zoomLevel, zoom)"
                 )
-                button.button-filter.e2e-open-filter(
+                button.button-filter.button-small.e2e-open-filter(
                     ng-click="ctrl.openFilter = !ctrl.openFilter"
                 )
                     span.filter-num(ng-if="ctrl.selectedFilters.length") {{ctrl.selectedFilters.length}}

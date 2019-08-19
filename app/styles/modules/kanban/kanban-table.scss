@@ -78,7 +78,7 @@ $column-padding: .5rem 1rem;
     .task-colum-name {
         @include font-size(medium);
         align-items: center;
-        background: $mass-white;
+        background-color: $grey-02;
         border-top: 3px solid $gray-light;
         color: $gray;
         display: flex;
@@ -160,7 +160,7 @@ $column-padding: .5rem 1rem;
         }
     }
     .kanban-uses-box {
-        background: $mass-white;
+        background-color: $grey-02;
     }
     .kanban-task-selected {
         &.card:not(.gu-transit-multi) {

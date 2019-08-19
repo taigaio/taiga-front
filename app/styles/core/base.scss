@@ -51,7 +51,18 @@ body {
     min-height: $main-height;
 }
 
+.menu-secondary,
+.menu-tertiary {
+    ul li a {
+        color: $grey-70;
+        &:hover {
+            background-color: $white;
+        }
+    }
+}
+
 .menu-secondary {
+    background-color: $grey-02;
     flex: 0 0 auto;
     min-height: $main-height;
     min-width: 0;
@@ -60,12 +71,34 @@ body {
     .search-in {
         margin-top: .5rem;
     }
+    .settings-nav {
+        background-color: $grey-05;
+    }
+    ul li a {
+        &:hover {
+            background-color: $white;
+            color: $grey-70;
+        }
+        &.active {
+            background-color: $white;
+        }
+    }
 }
 
 .menu-tertiary {
+    background-color: $tertiary;
     flex: 0 0 auto;
     min-height: $main-height;
     width: 250px;
+    ul li a {
+        &:hover {
+            background: lighten($tertiary, 3%);
+            color: $grey-70;
+        }
+        &.active {
+            background: lighten($tertiary, 10%);
+        }
+    }
 }
 
 .main {

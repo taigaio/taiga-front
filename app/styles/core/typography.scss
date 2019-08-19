@@ -38,6 +38,8 @@ h6 {
 h1 {
     @include font-type(text);
     @include font-size(larger);
+    align-items: baseline;
+    display: flex;
     line-height: 1.5;
     margin-bottom: 1rem;
     text-transform: uppercase;
@@ -73,14 +75,16 @@ h1 {
         max-width: 40%;
     }
 
+    .date {
+        @include ellipsis(500px);
+        @include font-type(text);
+        @include font-size(small);
+        color: $grey-70;
+    }
+
     .green {
         color: $primary;
         fill: $primary;
-    }
-
-    .date {
-        @include ellipsis(500px);
-        color: $gray-light;
     }
 }
 

@@ -20,18 +20,6 @@
     align-items: center;
     display: flex;
     justify-content: space-between;
-    h1 {
-        align-items: baseline;
-        display: inline-flex;
-        .date {
-            @include font-type(text);
-            @include font-size(small);
-            color: $grey-70;
-        }
-    }
-    .project-name-short {
-        @include font-type(light);
-    }
 }
 
 .taskboard-inner {

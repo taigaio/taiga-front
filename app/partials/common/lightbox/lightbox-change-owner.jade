@@ -62,7 +62,7 @@ tg-lightbox-close
             label(translate="LIGHTBOX.CHANGE_OWNER.ADD_COMMENT")
             textarea(ng-model="vm.comment")
 
-    button.button-green.submit-button(
+    button.button-green.button-large.button-block(
         tg-loading="vm.loading",
         ng-click="vm.submit()",
         ng-disabled="!vm.selected",

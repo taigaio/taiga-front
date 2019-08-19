@@ -31,7 +31,7 @@ div.wrapper(
                     on-zoom-change="ctrl.setZoom(zoomLevel, zoom)"
                 )
 
-                button.button-filter.e2e-open-filter(
+                button.button-filter.button-small.e2e-open-filter(
                     ng-click="ctrl.openFilter = !ctrl.openFilter"
                     title="{{ctrl.selectedFilters.length}} {{'COMMON.FILTERS.APPLIED_FILTERS_NUM' | translate}}"
                 )

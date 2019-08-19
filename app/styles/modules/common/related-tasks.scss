@@ -16,15 +16,6 @@
         margin-left: 1rem;
     }
     .add-button {
-        background: $grayer;
-        border: 0;
-        display: inline-block;
-        padding: .5rem;
-        transition: background .25s;
-        &:hover,
-        &.is-active {
-            background: $primary-light;
-        }
         svg {
             fill: $white;
             height: 1.25rem;
@@ -67,7 +58,7 @@
     }
     .single-related-task {
         &:hover {
-            background: rgba($primary-light, .05);
+            background: $primary-25;
             .icon-drag {
                 opacity: 1;
             }

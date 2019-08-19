@@ -3,7 +3,7 @@ div.new-us
                           ng-click="ctrl.addNewUs('standard')",
                           tg-check-permission="add_us")
         span.text {{'US.ADD' | translate}}
-    a.button-bulk(href="", title="{{'US.ADD_BULK' | translate}}",
+    a.button-bulk.button-green.button-small(href="", title="{{'US.ADD_BULK' | translate}}",
                          ng-click="ctrl.addNewUs('bulk')",
                          tg-check-permission="add_us")
         tg-svg(svg-icon="icon-bulk")

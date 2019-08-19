@@ -3,9 +3,6 @@
 .user-profile {
     @include profile-form;
     max-width: 780px;
-    .submit-button {
-        width: 100%;
-    }
 
     .actions {
         align-items: center;

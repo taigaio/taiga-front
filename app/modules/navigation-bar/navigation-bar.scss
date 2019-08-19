@@ -1,6 +1,7 @@
 $dropdown-width: 350px;
 
 .navbar {
+    background-color: $primary;
     display: flex;
     height: $navbar;
     justify-content: space-between;
@@ -46,14 +47,15 @@ $dropdown-width: 350px;
         .active {
             background: rgba($white, .95);
             color: $secondary-dark;
-
             svg {
-                fill: $secondary-dark;
+                fill: $primary-50;
+                stroke: $primary-50;
             }
         }
         svg {
             @include svg-size(1.2rem);
-            fill: rgba($white, .3);
+            fill: $primary-50;
+            stroke: $primary-50;
             transition: all .2s linear;
         }
     }
@@ -66,8 +68,8 @@ $dropdown-width: 350px;
             background: rgba($black, .2);
             color: $primary-light;
             svg {
-                fill: $primary-light;
-                transition: all .2s linear;
+                fill: $primary-25;
+                stroke: $primary-25;
             }
         }
         &.user-avatar {
@@ -93,11 +95,6 @@ $dropdown-width: 350px;
                 animation: dropdownFade .2s cubic-bezier(.09, 0, .99, .01) both;
                 display: block;
             }
-        }
-    }
-    .navbar-dropdown {
-        a {
-            padding: .8rem .5rem;
         }
     }
     %dropdown {
@@ -161,10 +158,14 @@ $dropdown-width: 350px;
             }
         }
         &.see-more-projects-btn {
+            display: flex;
             margin-bottom: .3rem;
+            padding: 0;
         }
         &.create-project-btn {
+            display: flex;
             flex: 1;
+            padding: 0;
         }
         &.blocked-project {
             color: $gray;
@@ -216,7 +217,7 @@ $dropdown-width: 350px;
     }
     .counter {
         @include font-type(bold);
-        background: $primary;
+        background: $secondary;
         border-radius: 50%;
         color: $white;
         font-size: .7rem;

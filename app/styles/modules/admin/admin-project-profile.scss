@@ -93,6 +93,8 @@
     }
     .privacy-project + label {
         @include font-type(text);
+        display: inline-flex;
+        width: 100%;
     }
     .privacy-project:checked {
         + label {

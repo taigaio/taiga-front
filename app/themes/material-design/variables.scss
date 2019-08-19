@@ -2,32 +2,54 @@
 //** COLORS
 //************************
 
-// Colors
-$black: #000;
-$blackish: #212121;
-$grayer: #424242;
-$gray: #757575;
-$gray-light: #BDBDBD;
-$gray-lighter: #B8B8B8;
-$whitish: #EEEEEE;
-$white: #fff;
-
-// Mass white
-$mass-white: #f5f5f5;
-
-// Primary colors
-$primary-light: #8c9eff;
-$primary-lighter: #ECEDFB;
 $primary: #3f51b5;
-$primary-dark: #1a237e;
-$primary-background: #929dd8;
+$primary-75: #8c9eff;
+$primary-50: #8c9eff;
+$primary-25: #929dd8;
+$primary-10: #ECEDFB;
 
+$secondary: #3f51b5;
+$secondary-50: #929dd8;
+
+$tertiary: #C6C6C6;
+
+$red:  #f00;
+$red-25: #ff5252;
+$red-10: #FFE6E6;
+
+$white: #fff;
+$grey-02: #F9F9F9;
+$grey-05: #F1F1F1;
+$grey-10: #E2E2E2;
+$grey-20: #C6C6C6;
+$grey-30: #B8B8B8;
+$grey-40: #8D8D8D;
+$grey-50: #767676;
+$grey-60: #555;
+$grey-70: #444;
+$grey-80: #2D2D2D;
+$grey-90: #020202;
+$black: #000;
+
+// Color aliases for retrocompatibility with external plugins
+$blackish: $grey-90;
+$grayer: $grey-70;
+$gray: $grey-60;
+$gray-light: $grey-50;
+$gray-lighter: $grey-30;
+$whitish: $grey-10;
+$mass-white: $grey-05;
+$primary-light: $primary-75;
+$primary-lighter: $primary-10;
+$primary: $primary;
+$primary-dark: #1a237e;
+$primary-background: $primary-25;
+$secondary-light: $secondary-50;
 $secondary-dark: #1a237e;
+$red-light: $red-25;
 
 // Status colors
 $green-light: #91DF85;
-$red-light: #ff5252;
-$red: #f44336;
 $my-sin: #fcaf3e;
 $yellow-green: #9dce0a;
 
