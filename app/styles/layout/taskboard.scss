@@ -28,6 +28,9 @@
             @include font-size(small);
         }
     }
+    .project-name-short {
+        @include font-type(light);
+    }
 }
 
 .taskboard-inner {

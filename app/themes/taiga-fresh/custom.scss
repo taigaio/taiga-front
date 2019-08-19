@@ -29,33 +29,6 @@
 }
 
 //***********************
-//** FONT-TYPE
-//***********************
-
-h1 .title,
-.taskboard-header .project-name-short,
-.project-name,
-.discover-header .title {
-    @include font-type(light);
-}
-
-h1,
-h1 span,
-.create-project-title-wrapper h1,
-.project-list-wrapper .project-list-title h1,
-.intro-title .project-name,
-.taskboard-header h1 .date,
-.project-privacy-settings .privacy-project label,
-.create-project-privacity input:checked + label {
-    @include font-type(text);
-}
-
-.topnav-dropdown-wrapper .counter.large {
-    @include font-type(bold);
-}
-
-
-//***********************
 //** FONT-SIZE
 //***********************
 

@@ -91,6 +91,9 @@
             vertical-align: middle;
         }
     }
+    .privacy-project + label {
+        @include font-type(text);
+    }
     .privacy-project:checked {
         + label {
             @include font-type(text);
