@@ -3,7 +3,7 @@
 @mixin list-itemtype-track {
     .list-itemtype-track {
         @include font-size(small);
-        color: $gray-light;
+        color: $grey-70;
         display: flex;
         flex-shrink: 0;
         justify-content: flex-end;

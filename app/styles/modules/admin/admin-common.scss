@@ -17,6 +17,7 @@
     .total {
         @include font-size(large);
         align-items: center;
+        background-color: $grey-02;
         color: $grayer;
         display: flex;
         padding: .3rem 0;

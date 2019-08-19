@@ -28,92 +28,27 @@
     stroke: $grey-50;
 }
 
-
-//***********************
-//** COLOR
-//***********************
-
-
-.check input  + div,
-.check input:checked + div,
-.track-button.is-hover .track-button-counter,
-.track-button.is-hover .track-button-counter,
-.create-project-privacity input + label {
-    color: $white;
-}
-.card-statistics,
-.related-tasks-body .closed,
-.related-tasks-body .closed:hover,
-.related-tasks-body .closed .task-name a,
-.related-tasks-body .closed:hover .task-name a {
-    color: $grey-30;
-}
-.project-name {
-    color: $grey-40;
-}
-
-.entry .entry-date,
-.notifications-list .entry .entry-project {
-    color: $grey-50;
-}
-.card-task a,
-.admin-functionalities .module.active .module-name,
 .menu-secondary .admin-menu ul a span,
-.menu-tertiary .admin-submenu ul a span,
-.list-itemtype-project .list-itemtype-track,
-.taskboard-header h1 .date {
+.menu-tertiary .admin-submenu ul a span {
     color: $grey-70;
 }
-a {
-    color: $grey-80;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-.intro-title .project-name,
-.track-button .track-inner,
-.track-button .track-inner:hover,
-.track-button .track-button-counter,
-.home-project .project-card-name a,
-.featured-projects-inner .project-card-name a,
-.trans-button.create-project-action-cancel,
-.highlighted-project .project-title a {
-    color: $grey-90;
-}
-.notifications-page .title,
-.project-list-title h1,
-.create-project-title-wrapper h1,
-.home-project .project-card-name a:hover,
-.featured-projects-inner .project-card-name a:hover,
-.highlighted-project .project-title a:hover,
-a:hover {
-    color: $primary;
-}
-.summary .data .number {
-    color: $primary-50;
+
+.menu-secondary .admin-menu ul a:hover {
+    background-color: $white;
 }
 
+.menu-secondary {
+    background-color: $grey-02;
+}
+
+.extrabar {
+    background-color: $grey-02;
+}
 
 //***********************
 //** BACKGROUND-COLOR
 //***********************
 
-.menu-secondary .admin-menu ul a:hover,
-.single-project .involved-team .icon-badge {
-    background-color: $white;
-}
-.extrabar,
-.issues-options,
-.menu-secondary,
-.taskboard-table-header .task-colum-name,
-.taskboard-table-body .taskboard-cards-box,
-.category-config .category-items,
-.admin-common .total {
-    background-color: $grey-02;
-}
 .tag,
 .contact-team,
 .contact-team:hover,

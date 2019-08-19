@@ -71,9 +71,9 @@
         a {
             @include font-size(large);
             @include font-size(large);
-            color: $primary;
+            color: $grey-90;
             &:hover {
-                color: $primary-light;
+                color: $primary;
             }
         }
     }

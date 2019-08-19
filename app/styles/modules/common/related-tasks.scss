@@ -140,13 +140,14 @@
     .closed,
     .closed:hover {
         border-left: 10px solid $whitish;
-        color: $whitish;
+        color: $grey-30;
         a,
         svg {
-            fill: $gray-light;
+            fill: $grey-30;
+            stroke: $grey-30;
         }
         .task-name a {
-            color: $gray-light;
+            color: $grey-30;
             text-decoration: line-through;
 
         }

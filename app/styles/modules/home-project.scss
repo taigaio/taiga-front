@@ -24,6 +24,7 @@
         display: flex;
         .project-name {
             @include font-type(text);
+            color: $grey-90;
         }
         .icon-private {
             fill: $gray-light;
@@ -126,7 +127,7 @@
         }
         .icon-badge {
             @include svg-size(1.2rem);
-            background: rgba($black, .5);
+            background-color: $white;
             bottom: 5%;
             fill: $primary-light;
             padding: .1rem;

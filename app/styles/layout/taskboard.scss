@@ -26,6 +26,7 @@
         .date {
             @include font-type(text);
             @include font-size(small);
+            color: $grey-70;
         }
     }
     .project-name-short {

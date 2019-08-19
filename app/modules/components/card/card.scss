@@ -187,7 +187,7 @@
 
 .card-statistics {
     @include font-size(small);
-    color: lighten($gray-light, 25%);
+    color: $grey-30;
     display: flex;
     margin-left: auto;
     .statistic {
@@ -295,7 +295,7 @@
     border-bottom: 1px solid $whitish;
     list-style: none;
     a {
-        color: $gray-light;
+        color: $grey-70;
         display: block;
         overflow: hidden;
         padding: .5rem .75rem;

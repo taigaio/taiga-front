@@ -17,6 +17,7 @@
         z-index: 999;
         + div {
             background-color: $gray;
+            color: $white;
             height: 25px;
             transition: all .2s linear;
             width: 50%;
@@ -40,6 +41,7 @@
     input:checked {
         + div {
             background-color: $primary-light;
+            color: $white;
             margin-left: 50%;
             transition: all .2s linear;
         }

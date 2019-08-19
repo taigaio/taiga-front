@@ -10,10 +10,12 @@
         display: flex;
         padding: 1rem 0;
         &.active {
-            .module-icon .icon,
-            .module-name {
+            .module-icon .icon {
                 fill: $grey-70;
                 stroke: $grey-70;
+            }
+            .module-name {
+                color: $grey-70;
             }
         }
     }
