@@ -1,15 +1,3 @@
-// Any styles in this stylesheet will override any previous defined style in Taiga.
-
-//    Max: Beat it or I'll call the Brute Squad!
-//    Fezzik: I'm on the Brute Squad.
-//    Max: [sees Fezzik's size] You are the Brute Squad!
-
-//*************************
-//** LAYOUT
-//*************************
-
-// Main
-
 .master,
 .menu-secondary,
 .menu-tertiary,
@@ -20,41 +8,82 @@ tg-filter {
     border-right: 1px solid $black;
 }
 
-//************************
-//** NAVIGATION
-//***********************
-
-// Top navigation bar
-.navbar {
-    background: $black;
-    &::after {
-        background: url('../images/menu-vert.png') repeat top left;
-    }
-    a {
-        :hover {
-            color: $white;
-        }
-        svg {
-            fill: $white;
-            stroke: $white;
-        }
-    }
-}
-
-//In project left navigation bar
 tg-project-menu {
     background-color: $black;
-    background-image: none;
 }
 
-.navbar .nav-right a:hover svg,
-.navbar .nav-right a svg {
-    fill: $white;
-    stroke: $white;
+.navbar {
+    .nav-right {
+        a:hover,
+        a.active {
+            background: white;
+            color: black;
+            svg{
+                fill: black;
+                stroke:black;
+            }
+        }
+        svg {
+            fill: white;
+            stroke: white;
+        }
+        .active svg {
+            fill: black;
+            stroke:black;
+        }
+    }
 }
 
-.navbar .nav-right a.active:hover svg,
-.navbar .nav-right a.active svg{
-    fill: $black;
-    stroke: $black;
+.button-gray {
+    background: black;
+}
+
+.ticket-detail-settings label,
+.ticket-detail-settings .assign-issue-button,
+.ticket-detail-settings .item-block,
+.ticket-detail-settings .item-unblock,
+.ticket-detail-settings .promote-button {
+    background: black;
+    color: white;
+    * {
+        color: white;
+    }
+}
+
+.related-userstories-header,
+.related-tasks-header,
+.custom-fields-header,
+.attachments-header {
+    border-bottom: 1px solid $black;
+    padding-bottom: .2rem;
+}
+
+a,
+.clickable {
+    text-decoration: underline;
+}
+
+.menu-secondary,
+.menu-tertiary {
+    ul li a.active,
+    ul li a:hover {
+        background: black;
+        color: white;
+    }
+}
+
+.lb-user-list .user-list-item.is-active {
+    background: grey;
+    color: white;
+    * {
+        color: white;
+    }
+}
+
+.taskboard-actions {
+    background: grey;
+}
+
+.card {
+    border: 1px solid black;
 }

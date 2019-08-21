@@ -113,7 +113,7 @@ form(name="vm.filtersForm")
                     ng-if="vm.isOpen(filter.dataType)",
                     tg-filter-slide-down
                 )
-                    .single-filter.ng-animate-disabled(
+                    a.single-filter.ng-animate-disabled(
                         ng-repeat="it in filter.content"
                         ng-if="!vm.isFilterSelected(filter, it) && !(it.count == 0 && filter.hideEmpty)"
                         ng-click="vm.selectFilter(filter, it)"
@@ -162,4 +162,4 @@ form(name="vm.filtersForm")
                             ng-click="vm.removeCustomFilter(it)"
                             href=""
                         )
-                            tg-svg(svg-icon="icon-trash")
+                            tg-svg(svg-icon="icon-close")

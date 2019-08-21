@@ -1,45 +1,39 @@
-// Any styles in this stylesheet will override any previous defined style in Taiga.
-
-//    Max: Beat it or I'll call the Brute Squad!
-//    Fezzik: I'm on the Brute Squad.
-//    Max: [sees Fezzik's size] You are the Brute Squad!
-
-//**************************
-//** TYPOGRAPHY
-//**************************
-
-@each $font-face in OpenSans-CondLight, OpenSans-Light, opensans-regular, opensans-semibold, taiga {
-    @font-face {
-        font-family: '#{$font-face}';
-        src: url('../fonts/#{$font-face}.eot?#iefix') format('embedded-opentype'),
-            url('../fonts/#{$font-face}.woff') format('woff'),
-            url('../fonts/#{$font-face}.ttf')  format('truetype'),
-            url('../fonts/#{$font-face}.svg#{$font-face}') format('svg');
-    }
-}
-
-//************************
-//** NAVIGATION
-//***********************
-
-// Top navigation bar
 .navbar {
     background: rgba($red-amaranth, .6);
     &::after {
         background: url('../images/menu-vert.png') repeat top left;
     }
+    .nav-right {
+        a:hover svg{
+            fill: rgba(255, 255, 255, .7);
+            stroke: rgba(255, 255, 255, .7);
+        }
+        svg {
+            fill: rgba(255, 255, 255, .5);
+            stroke: rgba(255, 255, 255, .5);
+        }
+        .active svg {
+            fill: #A83F60;
+            stroke:#A83F60;
+        }
+    }
 }
 
-
-
-//In project left navigation bar
 tg-project-menu {
-    background-color: rgba(darken($primary-dark, 15%), 1);
-    background-image: none;
+    background-color: $secondary;
 }
 
-.main-nav {
-    svg path {
-        fill: $white;
+.main-nav .active svg {
+    fill: $primary;
+    stroke: $primary;
+}
+
+
+.track-button.active {
+    .track-inner {
+        background: darken($primary-10, 15%);
+    }
+    .track-button-counter {
+        background: darken($primary-10, 30%);
     }
 }

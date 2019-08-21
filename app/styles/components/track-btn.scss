@@ -12,13 +12,13 @@
     padding: 0;
     &.active {
         .track-inner {
-            background-color: $primary-10;
+            background: darken($primary-10, 15%);
         }
         .icon {
             fill: $primary;
         }
         .track-button-counter {
-            background-color: $primary-50;
+            background: darken($primary-10, 25%);
         }
     }
     &:hover .track-icon svg {

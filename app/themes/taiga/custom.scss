@@ -69,12 +69,3 @@ tg-project-menu {
 .topnav-dropdown-wrapper .counter {
     background: $primary-light;
 }
-
-.track-button.active {
-    .track-inner {
-        background: darken($primary-10, 15%);
-    }
-    .track-button-counter {
-        background: darken($primary-10, 30%);
-    }
-}

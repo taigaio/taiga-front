@@ -6,22 +6,15 @@
 .related-tasks-header {
     align-content: center;
     align-items: center;
-    background: $mass-white;
+    background: $grey-02;
     display: flex;
     justify-content: space-between;
     min-height: 36px;
     .related-tasks-title {
         @include font-size(medium);
         @include font-type(semibold);
+        color: $grey-70;
         margin-left: 1rem;
-    }
-    .add-button {
-        svg {
-            fill: $white;
-            height: 1.25rem;
-            margin-bottom: -.2rem;
-            width: 1.25rem;
-        }
     }
 }
 

@@ -19,7 +19,12 @@
         cursor: pointer;
     }
     &.is-blocked {
-        background: rgba($red-light, .5);
+        background: $red-light;
+        a,
+        span,
+        div {
+            color: $white;
+        }
     }
     &.is-closed {
         .name a {

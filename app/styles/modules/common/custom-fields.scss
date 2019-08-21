@@ -4,7 +4,8 @@
         @include font-type(semibold);
         align-content: space-between;
         align-items: center;
-        background: $mass-white;
+        background: $grey-02;
+        color: $grey-70;
         display: flex;
         justify-content: space-between;
         padding: .5rem 1rem;

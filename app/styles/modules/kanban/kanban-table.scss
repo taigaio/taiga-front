@@ -127,6 +127,7 @@ $column-padding: .5rem 1rem;
     @include font-size(medium);
     display: flex;
     height: 100%;
+    margin-top: 1px;
     overflow: hidden;
     overflow-x: auto;
     width: 100%;

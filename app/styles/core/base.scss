@@ -51,18 +51,9 @@ body {
     min-height: $main-height;
 }
 
-.menu-secondary,
-.menu-tertiary {
-    ul li a {
-        color: $grey-70;
-        &:hover {
-            background-color: $white;
-        }
-    }
-}
-
 .menu-secondary {
     background-color: $grey-02;
+    border-right: 1px solid darken($grey-02, 3%);
     flex: 0 0 auto;
     min-height: $main-height;
     min-width: 0;
@@ -74,29 +65,40 @@ body {
     .settings-nav {
         background-color: $grey-05;
     }
-    ul li a {
-        &:hover {
-            background-color: $white;
-            color: $grey-70;
+    ul li {
+        a {
+            color: $grey-60;
         }
-        &.active {
-            background-color: $white;
+        &:hover,
+        &:hover a {
+            background: lighten($grey-02, 3%);
+            color: lighten($grey-60, 5%);
+        }
+        .active {
+            background: lighten($grey-02, 6%);
+            color: lighten($grey-60, 10%);
         }
     }
 }
 
 .menu-tertiary {
     background-color: $tertiary;
+    border-right: 1px solid darken($tertiary, 3%);
     flex: 0 0 auto;
     min-height: $main-height;
     width: 250px;
-    ul li a {
-        &:hover {
-            background: lighten($tertiary, 3%);
+    ul li {
+        a {
             color: $grey-70;
         }
-        &.active {
-            background: lighten($tertiary, 10%);
+        &:hover,
+        &:hover a {
+            background: lighten($tertiary, 3%);
+            color: lighten($grey-70, 5%);
+        }
+        .active {
+            background: lighten($tertiary, 6%);
+            color: lighten($grey-70, 10%);
         }
     }
 }

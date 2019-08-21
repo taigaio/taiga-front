@@ -60,6 +60,11 @@
     &.wysiwyg {
         overflow: visible;
     }
+
+    .read-mode .wysiwyg {
+        padding: 1rem;
+    }
+
     .no-description {
         color: $gray-light;
     }
