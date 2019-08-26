@@ -81,7 +81,7 @@ describe "ProjectMenu", ->
 
         it "videoconference url", () ->
             project = Immutable.fromJS({
-                "videoconferences": "appear-in",
+                "videoconferences": "whereby-com",
                 "videoconferences_extra_data": "123",
                 "slug": "project-slug"
             })
@@ -93,7 +93,7 @@ describe "ProjectMenu", ->
 
             ctrl.show()
 
-            url = "https://appear.in/project-slug-123"
+            url = "https://whereby.com/project-slug-123"
 
             expect(ctrl.project.get("videoconferenceUrl")).to.be.equal(url)
 
