@@ -100,8 +100,8 @@ class ProjectMenuController
 
     _videoConferenceUrl: () ->
         # Get base url
-        if @.project.get("videoconferences") == "appear-in"
-            baseUrl = "https://appear.in/"
+        if @.project.get("videoconferences") == "whereby-com"
+            baseUrl = "https://whereby.com/"
         else if @.project.get("videoconferences") == "talky"
             baseUrl = "https://talky.io/"
         else if @.project.get("videoconferences") == "jitsi"
