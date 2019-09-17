@@ -41,7 +41,7 @@ class ExternalAppController extends taiga.Controller
         @._application = null
         nextUrl = encodeURIComponent(@location.url())
         loginUrl = @navUrls.resolve("login")
-        @.loginWithAnotherUserUrl = "#{loginUrl}?next=#{nextUrl}"
+        @.loginWithAnotherUserUrl = "#{loginUrl}?next=#{nextUrl}&force_login=1"
 
         taiga.defineImmutableProperty @, "user", () => @._user
         taiga.defineImmutableProperty @, "application", () => @._application
