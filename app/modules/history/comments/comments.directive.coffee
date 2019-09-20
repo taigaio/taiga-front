@@ -38,7 +38,8 @@ CommentsDirective = () ->
             loading: "<",
             deleting: "<",
             editing: "<",
-            projectId: "="
+            projectId: "=",
+            reverse: "="
         },
         templateUrl:"history/comments/comments.html",
         bindToController: true,
