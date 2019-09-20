@@ -1,5 +1,5 @@
 .check {
-    background-color: darken($whitish, 10%);
+    background-color: $whitish;
     border-radius: 2px;
     cursor: pointer;
     height: 1.5rem;
@@ -38,6 +38,16 @@
             opacity: 1;
         }
     }
+    input:disabled,
+    input:checked:disabled {
+        cursor: auto;
+        + div {
+            background-color: $gray-lighter;
+        }
+        ~ .check-text {
+            color: $whitish;
+        }
+    }
     input:checked {
         + div {
             background-color: $primary;
@@ -52,12 +62,6 @@
         ~ .check-no {
             left: .25rem;
             opacity: 0;
-        }
-    }
-    input:disabled {
-        cursor: auto;
-        + div {
-            background-color: $gray-light;
         }
     }
 }
