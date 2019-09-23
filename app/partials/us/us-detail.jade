@@ -6,69 +6,69 @@ div.wrapper(
 )
     tg-project-menu
 
-    div.main.us-detail
-        div.us-detail-header.header-with-actions
-            include ../includes/components/mainTitle
-            .action-buttons
-                a.button-gray(
-                    href=""
-                    tg-check-permission="view_milestones"
-                    tg-nav="project-taskboard:project=project.slug,sprint=sprint.slug"
-                    ng-if="sprint && project.is_backlog_activated"
-                    title="{{'US.TITLE_LINK_TASKBOARD' | translate}}"
-                    translate="US.LINK_TASKBOARD"
-                )
-
-        section.us-story-main-data
-            header
-                tg-detail-header.detail-header-container(
+    div.main.detail
+        .detail-header-container
+            .detail-ref {{'#' + us.ref}}
+            .detail-header
+                tg-detail-header(
                     item="us"
+                    section-name="sectionName"
                     project="project"
                     required-perm="modify_us"
                     ng-class="{blocked: us.is_blocked}"
                     ng-if="project && us"
                     type="text"
                 )
-            .subheader
-                tg-tag-line.tags-block(
-                    ng-if="us && project"
-                    project="project"
-                    item="us"
-                    permissions="modify_us"
-                )
-                tg-created-by-display.ticket-created-by(ng-model="us")
+                .subheader
+                    tg-tag-line.tags-block(
+                        ng-if="us && project"
+                        project="project"
+                        item="us"
+                        permissions="modify_us"
+                    )
+                    tg-created-by-display.ticket-created-by(ng-model="us")
+                .action-buttons
+                    a.button-gray(
+                        href=""
+                        tg-check-permission="view_milestones"
+                        tg-nav="project-taskboard:project=project.slug,sprint=sprint.slug"
+                        ng-if="sprint && project.is_backlog_activated"
+                        title="{{'US.TITLE_LINK_TASKBOARD' | translate}}"
+                        translate="US.LINK_TASKBOARD"
+                    )
 
-        section.duty-content
-            tg-item-wysiwyg(
-                type="us",
-                model="us",
-                required-perm="modify_us"
+        .detail-content
+            section.duty-content
+                tg-item-wysiwyg(
+                    type="us",
+                    model="us",
+                    required-perm="modify_us"
+                )
+
+            // Custom Fields
+            tg-custom-attributes-values(
+                ng-model="us"
+                type="userstory"
+                project="project"
+                required-edition-perm="modify_us"
             )
 
-        // Custom Fields
-        tg-custom-attributes-values(
-            ng-model="us"
-            type="userstory"
-            project="project"
-            required-edition-perm="modify_us"
-        )
+            include ../includes/modules/related-tasks
 
-        include ../includes/modules/related-tasks
+            tg-attachments-full(
+                obj-id="us.id"
+                type="us",
+                project-id="projectId"
+                edit-permission = "modify_us"
+            )
 
-        tg-attachments-full(
-            obj-id="us.id"
-            type="us",
-            project-id="projectId"
-            edit-permission = "modify_us"
-        )
-
-        tg-history-section(
-            ng-if="us"
-            type="us"
-            name="us"
-            id="us.id"
-            project-id="projectId"
-        )
+            tg-history-section(
+                ng-if="us"
+                type="us"
+                name="us"
+                id="us.id"
+                project-id="projectId"
+            )
 
     sidebar.sidebar.ticket-data
 

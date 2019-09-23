@@ -37,6 +37,18 @@ tg-project-menu {
 .button-gray {
     background: black;
 }
+.more-attachments {
+    span {
+        color: $black;
+    }
+}
+
+.history-tabs {
+    a {
+        color: $black;
+    }
+}
+
 
 .ticket-detail-settings label,
 .ticket-detail-settings .assign-issue-button,

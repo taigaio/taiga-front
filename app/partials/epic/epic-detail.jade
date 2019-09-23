@@ -6,71 +6,69 @@ div.wrapper(
 )
     tg-project-menu
 
-    div.main.us-detail
-        div.us-detail-header.header-with-actions
-            include ../includes/components/mainTitle
-
-        section.us-story-main-data
-            header
-
-                .detail-header-container.epic-header-container(ng-class="{blocked: epic.is_blocked}")
-                    tg-color-selector.color-selector(
-                        is-color-required="true"
-                        init-color="epic.color"
-                        on-select-color="ctrl.onSelectColor(color)"
-                        required-perm="modify_epic"
-                    )
-                    tg-detail-header(
-                        item="epic"
-                        project="project"
-                        required-perm="modify_epic"
-                        ng-if="project && epic"
-                        format="text"
-                    )
-            .subheader
-                tg-tag-line.tags-block(
-                    ng-if="epic && project"
-                    project="project"
+    div.main.detail
+        .detail-header-container(ng-class="{blocked: epic.is_blocked}")
+            .detail-ref {{'#' + epic.ref}}
+            .detail-header
+                tg-detail-header(
                     item="epic"
-                    permissions="modify_epic"
+                    section-name="sectionName"
+                    project="project"
+                    required-perm="modify_epic"
+                    ng-if="project && epic"
+                    format="text"
                 )
-                tg-created-by-display.ticket-created-by(ng-model="epic")
+                .subheader
+                    tg-tag-line.tags-block(
+                        ng-if="epic && project"
+                        project="project"
+                        item="epic"
+                        permissions="modify_epic"
+                    )
+                    tg-created-by-display.ticket-created-by(ng-model="epic")
 
-        section.duty-content
-            tg-item-wysiwyg(
-                type="epic",
-                model="epic",
-                required-perm="modify_epic"
+                tg-color-selector.color-selector(
+                    is-color-required="true"
+                    init-color="epic.color"
+                    on-select-color="ctrl.onSelectColor(color)"
+                    required-perm="modify_epic"
+                )
+        .detail-content
+            section.duty-content
+                tg-item-wysiwyg(
+                    type="epic",
+                    model="epic",
+                    required-perm="modify_epic"
+                )
+
+            // Custom Fields
+            tg-custom-attributes-values(
+                ng-model="epic"
+                type="epic"
+                project="project"
+                required-edition-perm="modify_epic"
             )
 
-        // Custom Fields
-        tg-custom-attributes-values(
-            ng-model="epic"
-            type="epic"
-            project="project"
-            required-edition-perm="modify_epic"
-        )
+            tg-related-userstories(
+                project="immutableProject"
+                userstories="userstories"
+                epic="immutableEpic"
+            )
 
-        tg-related-userstories(
-            project="immutableProject"
-            userstories="userstories"
-            epic="immutableEpic"
-        )
+            tg-attachments-full(
+                obj-id="epic.id"
+                type="epic",
+                project-id="projectId"
+                edit-permission = "modify_epic"
+            )
 
-        tg-attachments-full(
-            obj-id="epic.id"
-            type="epic",
-            project-id="projectId"
-            edit-permission = "modify_epic"
-        )
-
-        tg-history-section(
-            ng-if="epic"
-            type="epic"
-            name="epic"
-            id="epic.id"
-            project-id="projectId"
-        )
+            tg-history-section(
+                ng-if="epic"
+                type="epic"
+                name="epic"
+                id="epic.id"
+                project-id="projectId"
+            )
 
     sidebar.sidebar.ticket-data
 

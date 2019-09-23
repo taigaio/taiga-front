@@ -1,5 +1,10 @@
-.detail-header-container {
-    background: $grey-02;
+
+.detail-ref {
+    color: $blackish;
+    margin-right: .5rem;
+}
+
+.detail-header {
     flex: 1;
     padding: 1rem;
     position: relative;
@@ -77,11 +82,6 @@
     .detail-title-text {
         line-height: normal;
         margin: 0;
-    }
-    .detail-number {
-        color: $gray-light;
-        flex-shrink: 0;
-        margin-right: .5rem;
     }
     .detail-subject {
         color: $gray;

@@ -113,31 +113,3 @@ body {
     // scss-lint:disable ImportantRule
     display: none !important;
 }
-
-.header-with-actions {
-    align-items: center;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-bottom: 1rem;
-    header {
-        flex: 1;
-    }
-    .action-buttons {
-        flex-shrink: 0;
-        .button-green {
-            @include font-size(small)
-        }
-    }
-    .button {
-        color: $white;
-        float: right;
-        margin-left: 10px;
-        &:hover {
-            color: $white;
-        }
-    }
-    h1 {
-        margin-bottom: 0;
-    }
-}

@@ -3,7 +3,6 @@
         ng-show="!vm.editMode"
         ng-hide="vm.editMode"
     )
-        span.detail-number {{'#' + vm.item.ref}}
         span.detail-subject.e2e-title-subject(
             ng-click="vm.editSubject(true)"
             ng-if="vm.permissions.canEdit"
@@ -46,6 +45,10 @@
         )
             tg-svg(svg-icon="icon-close")
 
+p
+    span.project-name(ng-if="vm.project.name ") {{ vm.project.name }}
+    span.green {{ vm.sectionName }}
+
 //- User Story belongs to epic
 .belong-to-epics-wrapper(ng-if="vm.item._name == 'userstories' && vm.project.is_epics_activated")
     .related-to-epics
@@ -66,7 +69,7 @@
             svg-title-translate="US.RELATE_TO_EPIC"
         )
         span.relate-to-epic-text(translate="US.RELATE_TO_EPIC")
- 
+
 //- Task belongs to US
 .task-belongs-to(
     ng-if="vm.item.user_story_extra_info"

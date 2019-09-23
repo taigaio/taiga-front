@@ -6,67 +6,67 @@ div.wrapper(
 )
     tg-project-menu
 
-    div.main.us-detail
-        div.us-detail-header.header-with-actions
-            include ../includes/components/mainTitle
-            .action-buttons
-                a.button-gray(
-                    href=""
-                    tg-check-permission="view_milestones"
-                    tg-nav="project-taskboard:project=project.slug,sprint=sprint.slug"
-                    ng-if="sprint && project.is_backlog_activated"
-                    title="{{'ISSUES.TITLE_LINK_TASKBOARD' | translate}}"
-                    translate="ISSUES.LINK_TASKBOARD"
-                )
-
-        section.us-story-main-data
-            header
-                tg-detail-header.detail-header-container(
+    div.main.detail
+        .detail-header-container
+            .detail-ref {{'#' + issue.ref}}
+            .detail-header
+                tg-detail-header(
                     item="issue"
+                    section-name="sectionName"
                     project="project"
                     required-perm="modify_issue"
                     ng-class="{blocked: issue.is_blocked}"
                     ng-if="project && issue"
                     format="text"
                 )
-            .subheader
-                tg-tag-line.tags-block(
-                    ng-if="issue && project"
-                    project="project"
-                    item="issue"
-                    permissions="modify_issue"
-                )
-                tg-created-by-display.ticket-created-by(ng-model="issue")
+                .subheader
+                    tg-tag-line.tags-block(
+                        ng-if="issue && project"
+                        project="project"
+                        item="issue"
+                        permissions="modify_issue"
+                    )
+                    tg-created-by-display.ticket-created-by(ng-model="issue")
+                .action-buttons
+                    a.button-gray(
+                        href=""
+                        tg-check-permission="view_milestones"
+                        tg-nav="project-taskboard:project=project.slug,sprint=sprint.slug"
+                        ng-if="sprint && project.is_backlog_activated"
+                        title="{{'ISSUES.TITLE_LINK_TASKBOARD' | translate}}"
+                        translate="ISSUES.LINK_TASKBOARD"
+                    )
 
-        section.duty-content
-            tg-item-wysiwyg(
-                type="issue",
-                model="issue",
-                required-perm="modify_issue"
+        .detail-content
+            section.duty-content
+                tg-item-wysiwyg(
+                    type="issue",
+                    model="issue",
+                    required-perm="modify_issue"
+                )
+
+            // Custom Fields
+            tg-custom-attributes-values(
+                ng-model="issue"
+                type="issue"
+                project="project"
+                required-edition-perm="modify_issue"
             )
 
-        // Custom Fields
-        tg-custom-attributes-values(
-            ng-model="issue"
-            type="issue"
-            project="project"
-            required-edition-perm="modify_issue"
-        )
+            tg-attachments-full(
+                obj-id="issue.id"
+                type="issue",
+                project-id="projectId"
+                edit-permission = "modify_issue"
+            )
 
-        tg-attachments-full(
-            obj-id="issue.id"
-            type="issue",
-            project-id="projectId"
-            edit-permission = "modify_issue"
-        )
-
-        tg-history-section(
-            ng-if="issue"
-            type="issue"
-            name="issue"
-            id="issue.id"
-            project-id="projectId"
-        )
+            tg-history-section(
+                ng-if="issue"
+                type="issue"
+                name="issue"
+                id="issue.id"
+                project-id="projectId"
+            )
 
     sidebar.sidebar.ticket-data
 

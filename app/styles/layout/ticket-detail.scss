@@ -1,11 +1,23 @@
-.us-story-main-data {
-    margin-bottom: 1rem;
-    header {
-        align-content: center;
-        align-items: stretch;
+.main.detail {
+    background: $mass-white;
+    padding: 0;
+    .detail-header-container,
+    .detail-content {
+        background: $white;
+        padding: 1rem 2rem;
+    }
+    .detail-header-container {
         display: flex;
-        justify-content: center;
-        margin-bottom: .5rem;
+        margin: 0 0 .5rem;
+    }
+    .detail-header-ref {
+        flex-shrink: 1;
+    }
+    .detail-header {
+        flex-grow: 1;
+    }
+    .action-buttons {
+        margin-top: 1rem;
     }
 }
 

@@ -33,6 +33,7 @@ DetailHeaderDirective = () ->
         scope: {
             item: "=",
             project: "=",
+            sectionName: "="
             requiredPerm: "@"
         },
         controllerAs: "vm",

@@ -6,67 +6,67 @@ div.wrapper(
 )
     tg-project-menu
 
-    div.main.us-detail
-        div.us-detail-header.header-with-actions
-            include ../includes/components/mainTitle
-            .action-buttons
-                a.button-gray(
-                    href=""
-                    title="{{'TASK.TITLE_LINK_TASKBOARD' | translate}}"
-                    tg-check-permission="view_milestones"
-                    tg-nav="project-taskboard:project=project.slug,sprint=sprint.slug"
-                    ng-if="sprint && project.is_backlog_activated"
-                    translate="TASK.LINK_TASKBOARD"
-                )
-
-        section.us-story-main-data
-            header
-                tg-detail-header.detail-header-container(
+    div.main.detail
+        .detail-header-container
+            .detail-ref {{'#' + task.ref}}
+            .detail-header
+                tg-detail-header(
                     item="task"
+                    section-name="sectionName"
                     project="project"
                     required-perm="modify_task"
                     ng-class="{blocked: task.is_blocked}"
                     ng-if="project && task"
                     type="text"
                 )
-            .subheader
-                tg-tag-line.tags-block(
-                    ng-if="task && project"
-                    project="project"
-                    item="task"
-                    permissions="modify_task"
-                )
-                tg-created-by-display.ticket-created-by(ng-model="task")
+                .subheader
+                    tg-tag-line.tags-block(
+                        ng-if="task && project"
+                        project="project"
+                        item="task"
+                        permissions="modify_task"
+                    )
+                    tg-created-by-display.ticket-created-by(ng-model="task")
+                .action-buttons
+                    a.button-gray(
+                        href=""
+                        title="{{'TASK.TITLE_LINK_TASKBOARD' | translate}}"
+                        tg-check-permission="view_milestones"
+                        tg-nav="project-taskboard:project=project.slug,sprint=sprint.slug"
+                        ng-if="sprint && project.is_backlog_activated"
+                        translate="TASK.LINK_TASKBOARD"
+                    )
 
-        section.duty-content
-            tg-item-wysiwyg(
-                type="task",
-                model="task",
-                required-perm="modify_task"
+        .detail-content
+            section.duty-content
+                tg-item-wysiwyg(
+                    type="task",
+                    model="task",
+                    required-perm="modify_task"
+                )
+
+            // Custom Fields
+            tg-custom-attributes-values(
+                ng-model="task"
+                type="task"
+                project="project"
+                required-edition-perm="modify_task"
             )
 
-        // Custom Fields
-        tg-custom-attributes-values(
-            ng-model="task"
-            type="task"
-            project="project"
-            required-edition-perm="modify_task"
-        )
+            tg-attachments-full(
+                obj-id="task.id"
+                type="task"
+                project-id="projectId"
+                edit-permission = "modify_task"
+            )
 
-        tg-attachments-full(
-            obj-id="task.id"
-            type="task"
-            project-id="projectId"
-            edit-permission = "modify_task"
-        )
-
-        tg-history-section(
-            ng-if="task"
-            type="task"
-            name="task"
-            id="task.id"
-            project-id="projectId"
-        )
+            tg-history-section(
+                ng-if="task"
+                type="task"
+                name="task"
+                id="task.id"
+                project-id="projectId"
+            )
 
     sidebar.sidebar.ticket-data
 
