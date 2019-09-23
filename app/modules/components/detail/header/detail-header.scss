@@ -1,12 +1,13 @@
 
 .detail-ref {
-    color: $blackish;
-    margin-right: .5rem;
+    @include font-type(bold);
+    color: $grayer;
+    font-size: 1.625em;
 }
 
 .detail-header {
     flex: 1;
-    padding: 1rem;
+    padding: 0 1rem;
     position: relative;
     &:hover {
         .detail-edit {
@@ -68,24 +69,28 @@
 }
 
 .detail-title-wrapper {
-    @include font-size(larger);
-    @include font-type(text);
-    align-content: center;
     display: flex;
-    max-width: 95%;
-    position: relative;
+    margin-bottom: .5rem;
+    padding-right: 2.5rem;
     transition: all .2s linear;
     &.blocked {
         background: $red;
         transition: all .2s linear;
     }
     .detail-title-text {
+        align-content: flex-start;
+        display: flex;
         line-height: normal;
         margin: 0;
     }
     .detail-subject {
         color: $gray;
         flex-grow: 1;
+        line-height: 2rem;
+    }
+    .detail-subject,
+    .edit-title-input {
+        font-size: 1.75rem;
     }
     .detail-edit {
         cursor: pointer;
