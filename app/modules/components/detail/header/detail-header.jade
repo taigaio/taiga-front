@@ -45,9 +45,9 @@
         )
             tg-svg(svg-icon="icon-close")
 
-p
-    span.project-name(ng-if="vm.project.name ") {{ vm.project.name }}
-    span.green {{ vm.sectionName }}
+.detail-project
+    .project-name(ng-if="vm.project.name ") {{ vm.project.name }}
+    .section-name {{ vm.sectionName }}
 
 //- User Story belongs to epic
 .belong-to-epics-wrapper(ng-if="vm.item._name == 'userstories' && vm.project.is_epics_activated")

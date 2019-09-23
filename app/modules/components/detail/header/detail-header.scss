@@ -70,7 +70,7 @@
 
 .detail-title-wrapper {
     display: flex;
-    margin-bottom: .5rem;
+    margin-bottom: .25rem;
     padding-right: 2.5rem;
     transition: all .2s linear;
     &.blocked {
@@ -79,6 +79,7 @@
     }
     .detail-title-text {
         align-content: flex-start;
+        color: $grayer;
         display: flex;
         line-height: normal;
         margin: 0;
@@ -128,6 +129,16 @@
     }
     .save-title-button {
         margin-left: 1rem;
+    }
+}
+
+.detail-project {
+    display: flex;
+    margin: .5rem 0;
+    text-transform: uppercase;
+    .section-name {
+        color: $primary-light;
+        margin-left: .5rem;
     }
 }
 
