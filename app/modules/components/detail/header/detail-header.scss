@@ -1,8 +1,21 @@
-
 .detail-ref {
     @include font-type(bold);
     color: $grayer;
     font-size: 1.625em;
+}
+
+.detail-nav {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    z-index: 9999;
+    a {
+        display: inline-block;
+    }
+    svg {
+        @include svg-size(1.2rem);
+        fill: currentColor;
+    }
 }
 
 .detail-header {
@@ -14,29 +27,19 @@
             opacity: 1;
         }
     }
-    &.blocked {
-        background: $red;
-        color: $white;
-        transition: all .2s linear;
-        a,
-        .detail-number,
-        .detail-subject {
-            color: $white;
-        }
-        svg {
-            fill: $white;
-        }
-    }
-    .item-generated-us,
-    .item-origin-issue,
-    .item-origin-task,
-    .task-belongs-to,
-    .belong-to-epics-wrapper,
-    .block-desc-container,
-    .issue-external-reference {
+
+    .detail-header-line {
         @include font-size(small);
-        margin-top: .5rem;
+        margin: .5rem 0;
+        a {
+            cursor: pointer;
+            padding: 0 .2rem;
+        }
+        .item-ref {
+            margin-right: .25rem;
+        }
     }
+
     .relate-to-epic-button {
         color: $gray-light;
         cursor: pointer;
@@ -53,30 +56,12 @@
             @include font-size(small);
         }
     }
-    .item-generated-us,
-    .task-belongs-to,
-    .item-origin-issue,
-    .item-origin-task,
-    .issue-external-reference {
-        a {
-            cursor: pointer;
-            padding: 0 .2rem;
-        }
-        .item-ref {
-            padding: 0 .2rem;
-        }
-    }
 }
 
 .detail-title-wrapper {
     display: flex;
-    margin-bottom: .25rem;
-    padding-right: 2.5rem;
+    margin-right: 2rem;
     transition: all .2s linear;
-    &.blocked {
-        background: $red;
-        transition: all .2s linear;
-    }
     .detail-title-text {
         align-content: flex-start;
         color: $grayer;
@@ -146,19 +131,5 @@
     .block-description-title {
         @include font-type(semibold);
         margin-right: .5rem;
-
-    }
-}
-
-.issue-nav {
-    position: absolute;
-    right: 1rem;
-    top: 1rem;
-    a {
-        display: inline-block;
-    }
-    svg {
-        @include svg-size(1.2rem);
-        fill: currentColor;
     }
 }

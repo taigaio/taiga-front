@@ -49,29 +49,8 @@
     .project-name(ng-if="vm.project.name ") {{ vm.project.name }}
     .section-name {{ vm.sectionName }}
 
-//- User Story belongs to epic
-.belong-to-epics-wrapper(ng-if="vm.item._name == 'userstories' && vm.project.is_epics_activated")
-    .related-to-epics
-        tg-belong-to-epics(
-            epics="::vm.item.epics"
-            item="::vm.item"
-            format="text"
-        )
-    //- User Story relate to Epic
-    a.relate-to-epic-button.ng-animate-disabled(
-        ng-if="vm.permissions.canEdit"
-        href=""
-        title="{{'US.RELATE_TO_EPIC' | translate}}"
-        ng-click="vm.relateToEpic(vm.item)"
-    )
-        tg-svg(
-            svg-icon="icon-epics"
-            svg-title-translate="US.RELATE_TO_EPIC"
-        )
-        span.relate-to-epic-text(translate="US.RELATE_TO_EPIC")
-
 //- Task belongs to US
-.task-belongs-to(
+.detail-header-line.task-belongs-to(
     ng-if="vm.item.user_story_extra_info"
     tg-check-permission="view_us"
 )
@@ -88,66 +67,7 @@
             format="pill"
         )
 
-//- User Stories generated from issue/task
-.item-generated-us(ng-if="vm.item.generated_user_stories.length")
-    span(ng-bind="'COMMON.PROMOTED_'+vm.item._name.toUpperCase() | translate")
-    a(
-        ng-repeat="userstory in vm.item.generated_user_stories track by userstory.id"
-        tg-check-permission="view_us"
-        tg-nav="project-userstories-detail:project=vm.project.slug,ref=userstory.ref"
-        ng-bind-html="'#'+userstory.ref+' '+userstory.subject | emojify"
-    )
-
-//- Issue origin from github
-.issue-external-reference(ng-if="vm.item.external_reference")
-    span(translate="ISSUES.EXTERNAL_REFERENCE")
-    a(
-        target="_blank"
-        ng-href="{{::vm.item.external_reference[1]}}"
-        ng-title="{{'ISSUES.GO_TO_EXTERNAL_REFERENCE' | translate}}"
-    )
-        span {{ ::vm.item.external_reference[1] }}
-
-//- User Story promoted from task
-.item-origin-task(ng-if="vm.item.origin_task")
-    span(translate="US.PROMOTED_FROM_TASK")
-    a(
-        href=""
-        tg-check-permission="view_us"
-        tg-nav="project-tasks-detail:project=vm.project.slug,ref=vm.item.origin_task.ref"
-        title="{{'US.TITLE_LINK_GO_TO_TASK' | translate}}"
-    )
-        span.item-ref {{'#' + vm.item.origin_task.ref}}
-        span(ng-bind-html="vm.item.origin_task.subject | emojify")
-
-//- User Story promoted from issue
-.item-origin-issue(ng-if="vm.item.origin_issue")
-    span(translate="US.PROMOTED_FROM_ISSUE")
-    a(
-        href=""
-        tg-check-permission="view_us"
-        tg-nav="project-issues-detail:project=vm.project.slug,ref=vm.item.origin_issue.ref"
-        title="{{'US.TITLE_LINK_GO_TO_ISSUE' | translate}}"
-    )
-        span.item-ref {{'#' + vm.item.origin_issue.ref}}
-        span(ng-bind-html="vm.item.origin_issue.subject | emojify")
-
 //- Blocked description
-.block-desc-container(ng-show="vm.item.is_blocked")
+.detail-header-line.block-desc-container(ng-show="vm.item.is_blocked")
     span.block-description-title(translate="COMMON.BLOCKED")
     span.block-description(ng-if="vm.item.blocked_note") {{vm.item.blocked_note}}
-
-//- Navigation
-.issue-nav
-    a(
-        ng-if="vm.previousUrl"
-        ng-href="{{vm.previousUrl}}"
-        title="{{'COMMON.PREVIOUS' | translate}}"
-    )
-        tg-svg(svg-icon="icon-arrow-left")
-    a(
-        ng-if="vm.nextUrl"
-        ng-href="{{vm.nextUrl}}"
-        title="{{'COMMON.NEXT' | translate}}"
-    )
-        tg-svg(svg-icon="icon-arrow-right")
