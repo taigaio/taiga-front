@@ -1,7 +1,7 @@
 .ticket-created-by {
     display: flex;
     justify-content: flex-end;
-    @include breakpoint(laptop) {
+    @include until($widescreen) {
         justify-content: flex-start;
         margin-bottom: .5rem;
     }
@@ -9,7 +9,7 @@
         flex-basis: 2rem;
         flex-grow: 0;
         margin-left: .5rem;
-        @include breakpoint(laptop) {
+        @include until($widescreen) {
             margin-left: 0;
             margin-right: .5rem;
             order: 1;
@@ -19,7 +19,7 @@
         }
     }
     .created-by {
-        @include breakpoint(laptop) {
+        @include until($widescreen) {
             order: 2;
         }
         .created-title,
@@ -29,7 +29,7 @@
             color: $gray;
             display: block;
             text-align: right;
-            @include breakpoint(laptop) {
+            @include until($widescreen) {
                 text-align: left;
             }
         }
@@ -38,7 +38,7 @@
         }
         .created-date {
             margin-left: .5rem;
-            @include breakpoint(laptop) {
+            @include until($widescreen) {
                 margin-left: 0;
             }
         }

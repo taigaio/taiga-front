@@ -89,7 +89,7 @@
             flex-basis: 150px;
             flex-grow: 6;
             padding: 0 10px;
-            @include breakpoint(desktop) {
+            @include until($desktop) {
                 display: block;
             }
             span {
@@ -115,7 +115,7 @@
             max-width: 100px;
             padding: 0 0 0 10px;
             text-align: center;
-            @include breakpoint(desktop) {
+            @include until($desktop) {
                 display: block;
             }
         }

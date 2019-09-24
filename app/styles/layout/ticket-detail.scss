@@ -1,20 +1,41 @@
-.main.detail {
+.detail {
     background: $mass-white;
     padding: 0;
     .detail-header-container,
     .detail-content {
         background: $white;
-        padding: 1rem 2rem;
+        padding: 1rem;
     }
     .detail-header-container {
         display: flex;
         margin: 0 0 .5rem;
+        position: relative;
+        @include until($tablet) {
+            display: block;
+        }
+        &.blocked {
+            background: $red-light;
+            color: $white;
+            .detail-ref,
+            .detail-subject,
+            .section-name,
+            .created-title,
+            .created-date {
+                color: $white;
+            }
+            svg {
+                fill: $white;
+            }
+        }
     }
-    .detail-header-ref {
+    .detail-ref {
         flex-shrink: 1;
     }
     .detail-header {
         flex-grow: 1;
+        @include until($tablet) {
+            padding: 0;
+        }
     }
     .action-buttons {
         margin-top: 1rem;
@@ -25,21 +46,21 @@
     align-items: flex-start;
     display: flex;
     justify-content: space-between;
-    @include breakpoint(laptop) {
+    @include until($widescreen) {
         flex-direction: column;
         justify-content: flex-start;
     }
     .ticket-created-by {
         flex-basis: 250px;
         flex-shrink: 0;
-        @include breakpoint(laptop) {
+        @include until($widescreen) {
             flex-basis: auto;
             order: 1;
         }
     }
     .tags-block {
         flex: 1;
-        @include breakpoint(laptop) {
+        @include until($widescreen) {
             order: 2;
         }
         .tag {

@@ -13,6 +13,7 @@ body {
     @include font-type(text);
     line-height: 1.3;
     min-height: 100%;
+    overflow-x: hidden;
     width: 100%;
     .master {
         &.ng-animate {
@@ -39,10 +40,7 @@ body {
 }
 
 .centered {
-    margin: 1rem auto;
-    max-width: 1200px;
-    min-width: 960px;
-    width: 90%;
+    @include centered;
 }
 
 .wrapper {
@@ -107,6 +105,19 @@ body {
     flex: 1;
     min-width: 0;
     padding: 1rem 2rem;
+    @include until($tablet) {
+        flex: initial;
+    }
+}
+
+.page-layout {
+    display: flex;
+    @include until($tablet) {
+        flex-wrap: wrap;
+        .menu-secondary {
+            width: 100%;
+        }
+    }
 }
 
 .hidden {

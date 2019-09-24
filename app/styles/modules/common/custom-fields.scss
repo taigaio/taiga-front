@@ -93,7 +93,7 @@
     &.collapse-fields {
         .custom-attribute {
             flex-basis: 50%;
-            @include breakpoint(laptop) {
+            @include until($widescreen) {
                 flex-basis: 100%;
                 &:nth-child(even) {
                     padding: 0;

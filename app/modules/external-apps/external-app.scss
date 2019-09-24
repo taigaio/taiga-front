@@ -77,7 +77,7 @@
     }
 }
 
-@include breakpoint(mobile) {
+@include until($tablet) {
     .external-app-wrapper {
         margin: 0;
         min-width: 100%;

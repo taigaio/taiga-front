@@ -8,6 +8,7 @@ div.wrapper(
 
     div.main.detail
         .detail-header-container(ng-class="{blocked: epic.is_blocked}")
+            tg-detail-nav(item="epic")
             .detail-ref {{'#' + epic.ref}}
             .detail-header
                 tg-detail-header(

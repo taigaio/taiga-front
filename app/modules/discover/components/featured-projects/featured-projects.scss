@@ -15,6 +15,7 @@
     flex-grow: 0;
     flex-wrap: wrap;
     justify-content: space-between;
+    margin: 0 -.5rem;
 }
 
 .featured-project {
@@ -22,11 +23,10 @@
     display: flex;
     flex-basis: 23%;
     flex-wrap: wrap;
-    max-width: 23%;
-    @include breakpoint(tablet) {
+    @include until($desktop) {
         flex-basis: 45%;
     }
-    @include breakpoint(mobile) {
+    @include until($tablet) {
         flex-basis: 100%;
     }
 }
