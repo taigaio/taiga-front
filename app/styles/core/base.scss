@@ -105,14 +105,14 @@ body {
     flex: 1;
     min-width: 0;
     padding: 1rem 2rem;
-    @include until($tablet) {
+    @include until($desktop) {
         flex: initial;
     }
 }
 
 .page-layout {
     display: flex;
-    @include until($tablet) {
+    @include until($desktop) {
         flex-wrap: wrap;
         .menu-secondary {
             width: 100%;

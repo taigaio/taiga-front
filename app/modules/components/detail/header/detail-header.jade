@@ -12,18 +12,18 @@
             ng-if="!vm.permissions.canEdit"
             ng-bind-html="vm.item.subject | emojify"
         )
-        a(
-            href=""
-            ng-if="vm.permissions.canEdit"
-            ng-click="vm.editSubject(true)"
-        )
-            tg-svg.detail-edit.e2e-detail-edit(svg-icon="icon-edit")
         tg-due-date(
             due-date="vm.item.due_date"
             is-closed="vm.item.is_closed"
             ng-if="vm.item.due_date"
             obj-type="{{ vm.objType }}"
         )
+        a.detail-edit(
+            href=""
+            ng-if="vm.permissions.canEdit"
+            ng-click="vm.editSubject(true)"
+        )
+            tg-svg.e2e-detail-edit(svg-icon="icon-edit")
     .edit-title-wrapper(ng-if="vm.editMode")
         input.edit-title-input.e2e-title-input(
             type="text"
@@ -48,24 +48,6 @@
 .detail-project
     .project-name(ng-if="vm.project.name ") {{ vm.project.name }}
     .section-name {{ vm.sectionName }}
-
-//- Task belongs to US
-.detail-header-line.task-belongs-to(
-    ng-if="vm.item.user_story_extra_info"
-    tg-check-permission="view_us"
-)
-    span(translate="TASK.OWNER_US")
-    a(
-        tg-nav="project-userstories-detail:project=vm.project.slug,ref=vm.item.user_story_extra_info.ref"
-        title="{{'TASK.TITLE_LINK_GO_OWNER' | translate}}"
-    )
-        span.item-ref {{'#' + vm.item.user_story_extra_info.ref}}
-        span(ng-bind-html="vm.item.user_story_extra_info.subject | emojify")
-        tg-belong-to-epics(
-            ng-if="::vm.item.user_story_extra_info.epics"
-            epics="::vm.item.user_story_extra_info.epics"
-            format="pill"
-        )
 
 //- Blocked description
 .detail-header-line.block-desc-container(ng-show="vm.item.is_blocked")

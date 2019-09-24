@@ -31,6 +31,28 @@ div.wrapper(
                         )
                             span {{ ::vm.item.external_reference[1] }}
 
+                    //- User Stories generated from issue
+                    .detail-header-line.item-generated-us(
+                        ng-if="issue.generated_user_stories.length"
+                        tg-check-permission="view_us"
+                    )
+                        span(ng-bind="'COMMON.PROMOTED_'+issue._name.toUpperCase() | translate")
+                        a.primary(
+                            ng-repeat="userstory in issue.generated_user_stories track by userstory.id"
+                            tg-nav="project-userstories-detail:project=project.slug,ref=userstory.ref"
+                            ng-bind-html="'#' + userstory.ref + ' '+ userstory.subject | emojify"
+                        )
+
+                    .action-buttons
+                        a.button.button-gray(
+                            href=""
+                            tg-check-permission="view_milestones"
+                            tg-nav="project-taskboard:project=project.slug,sprint=sprint.slug"
+                            ng-if="sprint && project.is_backlog_activated"
+                            title="{{'ISSUES.TITLE_LINK_TASKBOARD' | translate}}"
+                            translate="ISSUES.LINK_TASKBOARD"
+                        )
+
                     .subheader
                         tg-tag-line.tags-block(
                             ng-if="issue && project"
@@ -40,15 +62,6 @@ div.wrapper(
                         )
                         tg-created-by-display.ticket-created-by(ng-model="issue")
 
-                    .action-buttons
-                        a.button-gray(
-                            href=""
-                            tg-check-permission="view_milestones"
-                            tg-nav="project-taskboard:project=project.slug,sprint=sprint.slug"
-                            ng-if="sprint && project.is_backlog_activated"
-                            title="{{'ISSUES.TITLE_LINK_TASKBOARD' | translate}}"
-                            translate="ISSUES.LINK_TASKBOARD"
-                        )
 
             .detail-content
                 section.duty-content

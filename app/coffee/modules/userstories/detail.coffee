@@ -95,6 +95,9 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         @appMetaService.setAll(title, description)
 
     initializeEventHandlers: ->
+        @scope.relateToEpic = (us) =>
+            @scope.$broadcast("relate-to-epic:add", us)
+
         @scope.$on "related-tasks:update", =>
             @.loadTasks()
             @scope.tasks = _.clone(@scope.tasks, false)
@@ -283,6 +286,8 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
                 return if it.id == newTask.id then newTask else it
             )
             @rootscope.$broadcast("related-tasks:reordered")
+
+    
 
 module.controller("UserStoryDetailController", UserStoryDetailController)
 

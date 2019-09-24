@@ -7,7 +7,7 @@ div.wrapper(
     tg-project-menu
 
     div.main.detail
-        .detail-header-container
+        .detail-header-container(ng-class="{blocked: task.is_blocked}")
             tg-detail-nav(item="task")
             .detail-ref {{'#' + task.ref}}
             .detail-header
@@ -16,10 +16,47 @@ div.wrapper(
                     section-name="sectionName"
                     project="project"
                     required-perm="modify_task"
-                    ng-class="{blocked: task.is_blocked}"
                     ng-if="project && task"
                     type="text"
                 )
+
+                .detail-header-line.task-belongs-to(
+                    ng-if="task.user_story_extra_info"
+                    tg-check-permission="view_us"
+                )
+                    span(translate="TASK.OWNER_US")
+                    a(
+                        tg-nav="project-userstories-detail:project=project.slug,ref=task.user_story_extra_info.ref"
+                        title="{{'TASK.TITLE_LINK_GO_OWNER' | translate}}"
+                    )
+                        span(
+                            ng-bind-html="'#' + task.user_story_extra_info.ref + ' ' + task.user_story_extra_info.subject | emojify"
+                        )
+                        tg-belong-to-epics(
+                            ng-if="::task.user_story_extra_info.epics"
+                            epics="::task.user_story_extra_info.epics"
+                            format="pill"
+                        )
+
+                //- User Stories generated from task
+                .detail-header-line.item-generated-us(ng-if="task.generated_user_stories.length")
+                    span(ng-bind="'COMMON.PROMOTED_'+task._name.toUpperCase() | translate")
+                    a(
+                        ng-repeat="userstory in task.generated_user_stories track by userstory.id"
+                        tg-check-permission="view_us"
+                        tg-nav="project-userstories-detail:project=project.slug,ref=userstory.ref"
+                        ng-bind-html="'#' + userstory.ref + ' '+ userstory.subject | emojify"
+                    )
+
+                .action-buttons
+                    a.button.button-gray(
+                        href=""
+                        title="{{'TASK.TITLE_LINK_TASKBOARD' | translate}}"
+                        tg-check-permission="view_milestones"
+                        tg-nav="project-taskboard:project=project.slug,sprint=sprint.slug"
+                        ng-if="sprint && project.is_backlog_activated"
+                        translate="TASK.LINK_TASKBOARD"
+                    )
                 .subheader
                     tg-tag-line.tags-block(
                         ng-if="task && project"
@@ -28,15 +65,6 @@ div.wrapper(
                         permissions="modify_task"
                     )
                     tg-created-by-display.ticket-created-by(ng-model="task")
-                .action-buttons
-                    a.button-gray(
-                        href=""
-                        title="{{'TASK.TITLE_LINK_TASKBOARD' | translate}}"
-                        tg-check-permission="view_milestones"
-                        tg-nav="project-taskboard:project=project.slug,sprint=sprint.slug"
-                        ng-if="sprint && project.is_backlog_activated"
-                        translate="TASK.LINK_TASKBOARD"
-                    )
 
         .detail-content
             section.duty-content

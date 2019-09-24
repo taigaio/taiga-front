@@ -16,6 +16,8 @@
         &.blocked {
             background: $red-light;
             color: $white;
+            a,
+            a:hover,
             .detail-ref,
             .detail-subject,
             .section-name,
@@ -25,6 +27,9 @@
             }
             svg {
                 fill: $white;
+            }
+            a:not(.button):hover {
+                text-decoration: underline;
             }
         }
     }
@@ -37,8 +42,9 @@
             padding: 0;
         }
     }
+
     .action-buttons {
-        margin-top: 1rem;
+        margin-top: .5rem;
     }
 }
 
@@ -46,23 +52,21 @@
     align-items: flex-start;
     display: flex;
     justify-content: space-between;
-    @include until($widescreen) {
+    @include until($tablet) {
         flex-direction: column;
         justify-content: flex-start;
     }
     .ticket-created-by {
-        flex-basis: 250px;
-        flex-shrink: 0;
-        @include until($widescreen) {
+        flex-shrink: 1;
+        @include until($tablet) {
+            align-self: flex-end;
             flex-basis: auto;
-            order: 1;
         }
     }
     .tags-block {
         flex: 1;
-        @include until($widescreen) {
-            order: 2;
-        }
+        flex-grow: 1;
+        margin: .5rem 0 0;
         .tag {
             border-color: transparent;
             border-style: solid;
