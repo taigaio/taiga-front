@@ -1,0 +1,13 @@
+.detail-nav
+    a(
+        ng-if="vm.previousUrl"
+        ng-href="{{vm.previousUrl}}"
+        title="{{'COMMON.PREVIOUS' | translate}}"
+    )
+        tg-svg(svg-icon="icon-arrow-left")
+    a(
+        ng-if="vm.nextUrl"
+        ng-href="{{vm.nextUrl}}"
+        title="{{'COMMON.NEXT' | translate}}"
+    )
+        tg-svg(svg-icon="icon-arrow-right")
