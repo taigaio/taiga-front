@@ -117,8 +117,11 @@
             @include popover(200px, 'auto', 30px, 0, '');
         }
         li {
-            display: inline-block;
-            width: 23%;
+            float: left;
+            width: 25%;
+            &:nth-last-child(4n) {
+                clear: left;
+            }
         }
         a {
             display: block;
