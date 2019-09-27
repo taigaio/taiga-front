@@ -844,12 +844,12 @@
     }
 
     .ticket-detail-settings {
-        height: 52px;
         justify-content: left;
         margin: 1rem 0 0;
         label {
             border: 0;
-            padding: 12px 13px;
+            min-height: 45px;
+            padding: .85rem .65rem;
             width: auto;
         }
         .item-block,
