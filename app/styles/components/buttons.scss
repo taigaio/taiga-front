@@ -55,6 +55,8 @@
     }
     &.button-large {
         @include font-size(large);
+        display: flex;
+        flex-direction: column;
         height: 50px;
         max-height: 50px;
         width: 100%;
