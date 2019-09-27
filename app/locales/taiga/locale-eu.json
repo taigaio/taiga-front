@@ -525,7 +525,7 @@
             "SELECT_VIDEOCONFERENCE": "Aukeratu bideokonferentzia sistema",
             "SALT_CHAT_ROOM": "Gehitu aurrizki bat solas gelaren izenari",
             "JITSI_CHAT_ROOM": "Jitsi",
-            "APPEARIN_CHAT_ROOM": "AppearIn",
+            "WHEREBYCOM_CHAT_ROOM": "Whereby.com",
             "TALKY_CHAT_ROOM": "Talky",
             "CUSTOM_CHAT_ROOM": "Pertsonalizatu",
             "URL_CHAT_ROOM": "Zure solasgelaren URLa"
@@ -784,7 +784,7 @@
             "INTEGRATIONS": "Integrazioak"
         },
         "SUBMENU_PROJECT_VALUES": {
-            "STATUS": "Egoera",
+            "STATUS": "Egoerak",
             "POINTS": "Puntuak",
             "PRIORITIES": "Lehentasunak",
             "SEVERITIES": "Larritasunak",
@@ -1846,19 +1846,5 @@
             "ACTION_TITLE": "Bilatu",
             "RESULTS": "Bilatu emaitzetan"
         }
-    },
-    "TIPS": {
-        "TIPS_TITLE": "Aholkua",
-        "TIP_PROJECTS_ORDER": "Zure proiektuen hurrenkera antolatu dezakezu, gehien lantzen dituzunak gorago jarrita.",
-        "TIP_VOTING": "Zure inguruan galdetuta edo lankideei galdetuta, gehien bozkatzen diren osagaiek aztarna bat ematen dizute, ataza edo gertakari jakin batek izan behar duen lehentasunaz.",
-        "TIP_ISSUES_TO_SPRINT": "Urrats batean gertakariak erantsi ditzakezu xehetasun ikuspegian kateorratzaren ikonoan klik eginda.",
-        "TIP_DUE_DATE": "Ataza jakin bat data zehatz beterako amaitu behar baduzu, gaitu epemuga atazaren xehetasunetan.",
-        "TIP_IOCAIN": "Lankideei aditzera eman nahi badiezu atazaren bat bereziki korapilatsua dela, klik egin pozoiaren botoian. Hala eginda, besteren laguntza ez ezik, ulerberatasuna ere eskertzen dituzula ariko zara adierazten.",
-        "TIP_BLOCKED": "Beste lankideei aditzera eman nahi badiezu atazaren batean eragozpen larri bat duzula, markatu dezakezu «blokeatu» gisa.",
-        "TIP_PROMOTE": "Zure gertakari edo ataza hasieran uste baino korapilatsuagoa da? Zoaz xehetasunetara, eta bihurtu eginkizun.",
-        "TIP_BULK": "Ataza multzo bat sailean gehitu nahi baduzu, hautatu sailka gehitu, eta idatzi ataza bakoitza lerro batean, bata bestearen atzetik.",
-        "TIP_ZOOM": "Kanban arbelaren ikuspegi orokorrago bat izan dezakezu txartelen xehetasun gutxiago erakutsita, zoom kontrolaren bitartez.",
-        "TIP_CUSTOM_FIELDS": "Proiektuaren administratzailea bazara, eremu pertsonalizatuak sor ditzakezu, atazen konfigurazioa zabaltzeko.",
-        "TIP_SLIDE_ARROWS": "Bilatutako edo iragazitako zerrenda bate osagaietan barrena atzera eta aurrera ibili zaitezke gezien bitartez."
     }
 }

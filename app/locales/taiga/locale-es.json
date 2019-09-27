@@ -525,7 +525,7 @@
             "SELECT_VIDEOCONFERENCE": "Elige un sistema de videoconferencia",
             "SALT_CHAT_ROOM": "Agregar prefijo al nombre de la sala de chat",
             "JITSI_CHAT_ROOM": "Jitsi",
-            "APPEARIN_CHAT_ROOM": "AppearIn",
+            "WHEREBYCOM_CHAT_ROOM": "Whereby.com",
             "TALKY_CHAT_ROOM": "Talky",
             "CUSTOM_CHAT_ROOM": "Personalizado",
             "URL_CHAT_ROOM": "URL de tu chat room"
@@ -1846,19 +1846,5 @@
             "ACTION_TITLE": "Buscar",
             "RESULTS": "Resultados de búsqueda"
         }
-    },
-    "TIPS": {
-        "TIPS_TITLE": "Sugerencia",
-        "TIP_PROJECTS_ORDER": "Puedes ordenar los proyectos en tu página de proyectos colocando los usados más frecuentemente en la cima.",
-        "TIP_VOTING": "Ya sea que le preguntes a tu comunidad o los otros miembros de tu equipo, votar por ítems puede funcionar como una forma de detectar apoyo explícito de una Tarea o Petición particulares.",
-        "TIP_ISSUES_TO_SPRINT": "Puedes adjuntar peticiones a un sprint particular haciendo clic en el icono de tachuela en la vista detallada.",
-        "TIP_DUE_DATE": "Si necesita terminar una tarea en una fecha específica, active la fecha de vencimiento desde la vista detallada de la tarea",
-        "TIP_IOCAIN": "Puedes señalar a miembros de equipo que una tarea está siendo particularmente problemática haciendo clic en el botón de iocaína. Al hacerlo indicas que agradecerías ayuda, paciencia y comprensión.",
-        "TIP_BLOCKED": "Puedes señalar a otros miembros de equipo que algo está previniendo que trabajes en una tarea particular marcándola como \"bloqueada\".",
-        "TIP_PROMOTE": "Son tu petición o tarea más complejos de lo que parecían en un principio? Ve a la vista detallada y conviértelos en una historia de usuario  ",
-        "TIP_BULK": "Si quieres añadir varias tareas de una vez, elige el modo de añadir en masa y escribe cada tarea en una nueva linea, una después de la otra.",
-        "TIP_ZOOM": "Puedes obtener una vista más amplia del tablero Kánban reduciendo la información mostrada en las tarjetas con el control de zoom.",
-        "TIP_CUSTOM_FIELDS": "Si eres un administrador del proyecto, considera crear campos personalizados para expandir la configuración de las tareas.",
-        "TIP_SLIDE_ARROWS": "Puedes rotar sobre los resultados de una lista, buscar o filtrar haciendo clic en las flechas navigacionales en la vista detallada de cualquier ítem."
     }
 }

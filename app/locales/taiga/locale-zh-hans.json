@@ -525,7 +525,7 @@
             "SELECT_VIDEOCONFERENCE": "选择一个视频会议系统",
             "SALT_CHAT_ROOM": "为聊天室名称添加一个前缀",
             "JITSI_CHAT_ROOM": "Jitsi",
-            "APPEARIN_CHAT_ROOM": "AppearIn",
+            "WHEREBYCOM_CHAT_ROOM": "Whereby.com",
             "TALKY_CHAT_ROOM": "Talky",
             "CUSTOM_CHAT_ROOM": "自定",
             "URL_CHAT_ROOM": "聊天室之网址"
@@ -1846,19 +1846,5 @@
             "ACTION_TITLE": "搜索",
             "RESULTS": "搜索结果"
         }
-    },
-    "TIPS": {
-        "TIPS_TITLE": "小贴士",
-        "TIP_PROJECTS_ORDER": "通过将最常访问的项目放在顶部，您可以在项目页面上对项目进行排序。",
-        "TIP_VOTING": "无论您询问您的社区成员还是其他团队成员，点赞都可能是发现对特定任务或问题的明确支持的一种方法。",
-        "TIP_ISSUES_TO_SPRINT": "您可以通过单击细节视图中的大头针图标将问题附加到特定的冲刺任务上。",
-        "TIP_DUE_DATE": "如果需要在特定日期完成任务，请从任务的详细视图中激活指定日期。",
-        "TIP_IOCAIN": "您可以通过单击毒药按钮向团队成员发出一个任务特别麻烦的信号。这样做意味着你欢迎帮助、耐心和理解。",
-        "TIP_BLOCKED": "您可以通过将某项任务标记为“冻结”，向其他团队成员发出信号，表示某些事情正在阻止您处理某项特定任务。",
-        "TIP_PROMOTE": "你的问题或任务是否比第一次出现时更复杂？转到细节视图并将其转换为用户故事。",
-        "TIP_BULK": "如果要同时添加多个任务，请选择“批量”模式，然后将每个任务依次写入每一行。",
-        "TIP_ZOOM": "您可以通过缩放控件缩小卡片上显示的信息来更广泛地查阅看板。",
-        "TIP_CUSTOM_FIELDS": "如果您是项目的管理员，请考虑创建自定义字段来拓展任务的配置。",
-        "TIP_SLIDE_ARROWS": "您可以通过单击任何一项的详细视图上的导航箭头来循环显示列表、搜索或筛选的结果。"
     }
 }

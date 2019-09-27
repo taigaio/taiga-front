@@ -525,7 +525,7 @@
             "SELECT_VIDEOCONFERENCE": "Choisissez un système de vidéoconférence",
             "SALT_CHAT_ROOM": "Ajouter un préfixe au nom du salon de chat",
             "JITSI_CHAT_ROOM": "Jitsi",
-            "APPEARIN_CHAT_ROOM": "AppearIn",
+            "WHEREBYCOM_CHAT_ROOM": "Whereby.com",
             "TALKY_CHAT_ROOM": "Talky",
             "CUSTOM_CHAT_ROOM": "Personnalisé",
             "URL_CHAT_ROOM": "URL du salon de discussion"
@@ -784,7 +784,7 @@
             "INTEGRATIONS": "Intégrations"
         },
         "SUBMENU_PROJECT_VALUES": {
-            "STATUS": "Status",
+            "STATUS": "Statuts",
             "POINTS": "Points",
             "PRIORITIES": "Priorités",
             "SEVERITIES": "Gravité",
@@ -1846,19 +1846,5 @@
             "ACTION_TITLE": "Rechercher",
             "RESULTS": "Résultats de la recherche"
         }
-    },
-    "TIPS": {
-        "TIPS_TITLE": "Astuce",
-        "TIP_PROJECTS_ORDER": "Vous pouvez trier les projets sur votre page projet en plaçant les plus accédés en haut.",
-        "TIP_VOTING": "Que vous demandiez à votre communauté ou au membres de votre équipe, les éléments votés peuvent servir de moyen de détection d'un soutien explicite pour une tâche particulière ou un ticket particulier.",
-        "TIP_ISSUES_TO_SPRINT": "Vous pouvez attacher des tickets à un sprint particulier en cliquant sur l'icône de l'épingle dans la vue détaillée.",
-        "TIP_DUE_DATE": "Si vous devez finir une tâche à une date spécifique, activez la date d'échéance dans le détail de la vue d'une tâche.",
-        "TIP_IOCAIN": "Vous pouvez signaler aux membres de l'équipe qu'une tâche pose particulièrement des problèmes en cliquant sur le bouton iocaïne. Ainsi, vous indiquez que vous apprécierez de l'aide, de la patience et de la compréhension.",
-        "TIP_BLOCKED": "Vous pouvez signaler aux autres membres de l'équipe que quelque chose vous empêche de travailler sur une tâche particulière en la marquant \"bloquée\".",
-        "TIP_PROMOTE": "Votre ticket ou votre tâche sont plus complexes qu'ils n'apparaissaient ? Allez sur la vue détaillée et transformez-les en récit utilisateur.",
-        "TIP_BULK": "Si vous souhaitez ajouter plusieurs tâches en une fois, choisissez le mode par lot et écrivez chaque tâche sur une seule ligne, l'une après l'autre",
-        "TIP_ZOOM": "Vous pouvez avoir une meilleure vue d'ensemble du kanban en réduisant l'information affichée sur les cartes grâce au contrôle de zoom.",
-        "TIP_CUSTOM_FIELDS": "Si vous êtes administrateur du projet, vous pouvez créer des champs personnalisés pour étendre la configuration des tâches.",
-        "TIP_SLIDE_ARROWS": "You can cycle over the results of a list, search or filter by clicking on the navigational arrows on the detail view of any one item."
     }
 }

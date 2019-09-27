@@ -525,7 +525,7 @@
             "SELECT_VIDEOCONFERENCE": "Seleziona un sistema di videoconferenza",
             "SALT_CHAT_ROOM": "Aggiungi un prefisso al nome della chatroom",
             "JITSI_CHAT_ROOM": "Jitsi",
-            "APPEARIN_CHAT_ROOM": "AppearIn",
+            "WHEREBYCOM_CHAT_ROOM": "Whereby.com",
             "TALKY_CHAT_ROOM": "Talky",
             "CUSTOM_CHAT_ROOM": "Personalizzato",
             "URL_CHAT_ROOM": "URL della tua chat room"
@@ -784,7 +784,7 @@
             "INTEGRATIONS": "Integrazioni"
         },
         "SUBMENU_PROJECT_VALUES": {
-            "STATUS": "Stato",
+            "STATUS": "Stati",
             "POINTS": "Punti",
             "PRIORITIES": "priorità",
             "SEVERITIES": "Severitá",
@@ -1846,19 +1846,5 @@
             "ACTION_TITLE": "Cerca",
             "RESULTS": "Risultati della ricerca"
         }
-    },
-    "TIPS": {
-        "TIPS_TITLE": "Suggerimento",
-        "TIP_PROJECTS_ORDER": "È possibile ordinare i progetti nella pagina del progetto posizionando quelli più frequentemente accessibili in alto.",
-        "TIP_VOTING": "Indipendentemente dal fatto che tu lo chieda alla tua community o agli altri membri del tuo team, il voto agli articoli potrebbe servire da modo per rilevare il supporto esplicito per una determinata attività o problema.",
-        "TIP_ISSUES_TO_SPRINT": "Puoi allegare problemi a uno sprint in particolare facendo clic sull'icona a forma di spillo nella vista dettagliata.",
-        "TIP_DUE_DATE": "Se hai bisogno di completare un compito entro una certa data, attiva la Scadenza dalla vista dettaglio del compito.",
-        "TIP_IOCAIN": "Puoi segnalare ai membri del team che un'attività è particolarmente problematica facendo clic sul pulsante iocaina. Ciò indica che accetti favorevolmente aiuto, pazienza e comprensione.",
-        "TIP_BLOCKED": "Puoi segnalare ad altri membri del team che qualcosa ti impedisce di lavorare su un determinato compito contrassegnandolo come \"bloccato\"",
-        "TIP_PROMOTE": "Il tuo problema o compito è più complesso di quanto non sia apparso inizialmente? Vai alla vista di dettaglio e trasformala in storia utente.",
-        "TIP_BULK": "Se vuoi aggiungere più attività contemporaneamente, scegli la modalità bulk e scrivi ciascuna attività in una sola riga, una dopo l'altra.",
-        "TIP_ZOOM": "Puoi ottenere una visione più ampia del kanban riducendo le informazioni mostrate sulle carte con il controllo zoom.",
-        "TIP_CUSTOM_FIELDS": "Se sei un amministratore del progetto, considera la possibilità di creare campi personalizzati per espandere la configurazione dei compiti.",
-        "TIP_SLIDE_ARROWS": "È possibile scorrere i risultati di un elenco, cercare o filtrare facendo clic sulle frecce di navigazione nella vista dei dettagli di un singolo elemento."
     }
 }

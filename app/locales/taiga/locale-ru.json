@@ -525,7 +525,7 @@
             "SELECT_VIDEOCONFERENCE": "Выберите систему видеоконференций",
             "SALT_CHAT_ROOM": "Добавить префикс к имени чата",
             "JITSI_CHAT_ROOM": "Jitsi",
-            "APPEARIN_CHAT_ROOM": "AppearIn",
+            "WHEREBYCOM_CHAT_ROOM": "Whereby.com",
             "TALKY_CHAT_ROOM": "Talky",
             "CUSTOM_CHAT_ROOM": "Другое",
             "URL_CHAT_ROOM": "Ссылка на Ваш чат"
@@ -784,7 +784,7 @@
             "INTEGRATIONS": "Интеграции"
         },
         "SUBMENU_PROJECT_VALUES": {
-            "STATUS": "Статус",
+            "STATUS": "Статусы",
             "POINTS": "Очки",
             "PRIORITIES": "Приоритет",
             "SEVERITIES": "Степени важности",
@@ -1846,19 +1846,5 @@
             "ACTION_TITLE": "Поиск",
             "RESULTS": "Результаты поиска"
         }
-    },
-    "TIPS": {
-        "TIPS_TITLE": "Подсказка",
-        "TIP_PROJECTS_ORDER": "You can sort projects on your project page by placing the ones most frequently accessed at the top.",
-        "TIP_VOTING": "Whether you ask your community or your other team members, upvoting items might serve as a way to detect explicit support for a particular task or issue.",
-        "TIP_ISSUES_TO_SPRINT": "Вы можете прикрепить запросы к конкретному спринту, кликнув на соответствующую иконку в детальном отображении.",
-        "TIP_DUE_DATE": "Если Вам нужно завершить задачу до конкретной даты, активируйте Дедлайн в детальном отображении задачи.",
-        "TIP_IOCAIN": "You can signal to team members that a task is being particularly troublesome by clicking on the iocaine button. Doing so indicates that you welcome help, patience and understanding.",
-        "TIP_BLOCKED": "You can signal to other team members that something is preventing you from working on a particular task by marking it as \"blocked\"",
-        "TIP_PROMOTE": "Ваши запросы или задачи намного сложнее, чем казалось изначально? Перейдите в их детальное отображение и сконвертируйте их в пользовательскую историю.",
-        "TIP_BULK": "Если Вы хотите добавить много задач за один раз, выберите пакетное добавление и опишите каждую задачу на отдельной строке, одну за другой.",
-        "TIP_ZOOM": "You can get a wider view of the kanban by reducing the information shown on the cards with the zoom control.",
-        "TIP_CUSTOM_FIELDS": "Если Вы администратор проекта, подумайте о создании кастомных полей для расширения конфигурации задач.",
-        "TIP_SLIDE_ARROWS": "You can cycle over the results of a list, search or filter by clicking on the navigational arrows on the detail view of any one item."
     }
 }
