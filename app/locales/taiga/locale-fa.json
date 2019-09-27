@@ -34,7 +34,7 @@
         "PLUGINS": "پلاگین",
         "ONE_ITEM_LINE": "در هر خط یک آیتم ...",
         "NEW_BULK": "اضافه کردن گروهی جدید",
-        "SUBTASKS": "Subtasks",
+        "SUBTASKS": "زیروظایف",
         "PREVIOUS": "قبلی",
         "NEXT": "بعدی",
         "LOGOUT": "خروج",
@@ -427,8 +427,8 @@
             "ASSIGNED_TO": "محول شده",
             "STATUS": "عیت",
             "PROGRESS": "پیشرفت",
-            "CLOSED_US": "Closed user stories",
-            "CLOSED_EPICS": "Closed epics",
+            "CLOSED_US": "بستن استوری‌های کاربر",
+            "CLOSED_EPICS": "epicهای بسته شده",
             "VIEW_OPTIONS": "تنظیمات نمایش"
         },
         "CREATE": {
@@ -654,9 +654,9 @@
         "PROJECT_DUE_DATE_STATUS": {
             "TITLE": "موعدهای تحویل",
             "SUBTITLE": "Specify the due dates your user stories, tasks and issues will go through if selected",
-            "US_TITLE": "User Story Due Date status",
+            "US_TITLE": "وضعیت موعد سررسید استوری کاربر",
             "ACTION_ADD_STATUS": "اضافه کردن وضعیت جدید",
-            "TASK_TITLE": "Task Due Date status",
+            "TASK_TITLE": "وضعیت موعد سررسید وظیفه",
             "ISSUE_TITLE": "وضعیت موعد سر رسید گزارش",
             "DAYS_TO_DUE_DATE": "تعداد روز مانده تا موعد تحویل",
             "BEFORE_AFTER": "قبل/بعد",
@@ -901,7 +901,7 @@
             "NOTIFICATIONS": "نوتیفیکیشن‌ها",
             "VIEW_PROFILE_TITLE": "نمایش پروفایل",
             "VIEW_PROFILE": "نمایش پروفایل",
-            "USER_SETTINGS_TITLE": "Edit your settings",
+            "USER_SETTINGS_TITLE": "تنظیمات خود را ویرایش کنید",
             "USER_SETTINGS": "تنظیمات کاربر",
             "CHANGE_PASSWORD_TITLE": "تغییر رمز عبور",
             "CHANGE_PASSWORD": "تغییر رمز عبور",
@@ -1097,7 +1097,7 @@
         },
         "SELECT_USER": {
             "SEARCH": "جست‌وجوی کاربران",
-            "REMOVE": "Remove user",
+            "REMOVE": "حذف کاربر",
             "ROLE": "قش"
         },
         "ADD_MEMBER": {
@@ -1132,9 +1132,9 @@
             "TASK_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this Task",
             "ISSUE_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this Issue",
             "US_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this User Story",
-            "NEW_TASK": "New Task",
+            "NEW_TASK": "وظیفه‌ی جدید",
             "NEW_ISSUE": "موضوع جدید",
-            "NEW_US": "New User Story",
+            "NEW_US": "استوری جدید کاربر",
             "EDIT_TASK": "ویرایش وضیفه",
             "EDIT_ISSUE": "ویرایش موضوع",
             "EDIT_US": "ویرایش گزارش کاربر",
@@ -1244,7 +1244,7 @@
         "PROMOTED_FROM_ISSUE": "این استوری در ارتباط با موضوعی معروف شده:",
         "PROMOTED_FROM_TASK": "This US has been promoted from Task:",
         "TITLE_LINK_GO_TO_ISSUE": "رفتن به موضوع",
-        "TITLE_LINK_GO_TO_TASK": "Go to task",
+        "TITLE_LINK_GO_TO_TASK": "رفته به وظیفه",
         "TITLE_DELETE_ACTION": "حذف استوری کاربر",
         "LIGHTBOX_TITLE_BLOKING_US": "مسدود کردن استوری‌های کاربری",
         "NOT_ESTIMATED": "تخمین زده نشده",
@@ -1432,8 +1432,8 @@
             "DATE": "DD MMMM YYYY"
         },
         "MOVE_TO_SPRINT": {
-            "TITLE_ACTION_MOVE_UNFINISHED": "Move unfinished items to another sprint",
-            "TITLE_MOVE_UNFINISHED": "Move unfinished items to another open sprint",
+            "TITLE_ACTION_MOVE_UNFINISHED": "انتقال آیتم‌های تمام نشده به اسپرینت دیگر",
+            "TITLE_MOVE_UNFINISHED": "انتقال آیتم‌های تمام نشده به اسپرینت باز دیگر",
             "MOVE_TO_OPEN_SPRINT": "برای باز کردن سرعتی حرکت دهید",
             "NO_OPEN_SPRINTS": "There are no other open sprints. Please create one first.",
             "SELECT_DESTINATION_PLACEHOLDER": "هدف را انتخاب کنید",
@@ -1627,7 +1627,7 @@
     "USER_PROFILE": {
         "ACTION_USE_GRAVATAR": "استفاده از تصویر پیش‌فرض",
         "ACTION_DELETE_ACCOUNT": "حذف حساب کاربری تایگا",
-        "ACTION_DOWNLOAD_PROFILE": "Download Taiga profile",
+        "ACTION_DOWNLOAD_PROFILE": "دانلود پروفایل تایگا",
         "CHANGE_EMAIL_SUCCESS": "<strong>ایمیل خود را چک کنید!</strong><br /> ایمیلی به حساب کاربری شما ارسال کردیم <br /> که در آن دستورالعمل تنظیم آدرس جدید شما ذکر شده است",
         "CHANGE_PHOTO": "تغییر عکس",
         "FIELD": {
@@ -1744,7 +1744,7 @@
         "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>When creating a new account, you agree to our </span><a href=\"{{ termsOfServiceUrl }}\" title=\"See terms of service\" target=\"_blank\">terms of service</a><span> and </span><a href=\"{{ privacyPolicyUrl }}\" title=\"See privacy policy\" target=\"_blank\">privacy policy</a>.",
         "GDPR_ANNOUNCEMENT_TITLE": "General Data Protection Regulation (GDPR)",
         "GDPR_ANNOUNCEMENT_DESCRIPTION": "You saw this comming, right? Updates to our Terms of Service",
-        "GDPR_ANNOUNCEMENT_INFOLINK": "Please read our announcement here"
+        "GDPR_ANNOUNCEMENT_INFOLINK": "لطفا اطلاعیه‌های ما را اینجا مطالعه کنید"
     },
     "EXTERNAL_APP": {
         "PAGE_TITLE": "یک اپلیکیشن خارجی درخواست تأیید دسترسی دارد",

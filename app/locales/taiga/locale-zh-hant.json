@@ -196,7 +196,7 @@
             "UNWATCH": "不觀注",
             "WATCHERS": "觀注者",
             "BUTTON_TITLE": "Watch/Unwatch this item",
-            "COUNTER_TITLE": "{total, plural, one{一個觀注者} other{# 觀注者}}"
+            "COUNTER_TITLE": "{total, plural, 1{一個觀注者} other{# 觀注者}}"
         },
         "VOTE_BUTTON": {
             "BUTTON_TITLE": "Upvote/Downvote this item",
@@ -868,8 +868,8 @@
         "HELP": "記錄你的專案在上方常用欄位<br/> 前十個專案將會顯示在上方導覽處。",
         "PRIVATE": "不公開專案",
         "LOOKING_FOR_PEOPLE": "這個專案正在徵人",
-        "FANS_COUNTER_TITLE": "{total, plural, one{一個粉絲} other{# 粉絲}}",
-        "WATCHERS_COUNTER_TITLE": "{total, plural, one{一個觀注者} other{# 觀注者}}",
+        "FANS_COUNTER_TITLE": "{total, plural, 1{一個粉絲} other{# 粉絲}}",
+        "WATCHERS_COUNTER_TITLE": "{total, plural, 1{一個觀注者} other{# 觀注者}}",
         "MEMBERS_COUNTER_TITLE": "{total, plural, one{one member} other{# members}}",
         "BLOCKED_PROJECT": {
             "BLOCKED": "Blocked project",
@@ -914,13 +914,13 @@
             "LIKED": "喜歡",
             "UNLIKE": "不喜歡",
             "BUTTON_TITLE": "是否喜歡該專案",
-            "COUNTER_TITLE": "{total, plural, one{一個粉絲} other{# 粉絲}}"
+            "COUNTER_TITLE": "{total, plural, 1{一個粉絲} other{# 粉絲}}"
         },
         "WATCH_BUTTON": {
             "BUTTON_TITLE": "觀注本專案並設置通知選項",
             "WATCH": "觀注",
             "WATCHING": "觀看中",
-            "COUNTER_TITLE": "{total, plural, one{一個觀注者} other{# 觀注者}}",
+            "COUNTER_TITLE": "{total, plural, 1{一個觀注者} other{# 觀注者}}",
             "OPTIONS": {
                 "NOTIFY_ALL": "接收所有通知",
                 "NOTIFY_ALL_TITLE": "接到該專案的所有通知",

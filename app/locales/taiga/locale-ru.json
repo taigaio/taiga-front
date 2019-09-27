@@ -1097,7 +1097,7 @@
         },
         "SELECT_USER": {
             "SEARCH": "Найти пользователей",
-            "REMOVE": "Remove user",
+            "REMOVE": "Удалить пользователя",
             "ROLE": "Роль"
         },
         "ADD_MEMBER": {

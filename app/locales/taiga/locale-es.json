@@ -843,7 +843,7 @@
         },
         "PROFILE_SIDEBAR": {
             "TITLE": "Tu perfil",
-            "DESCRIPTION": "La gente puede ver aquello que haces y en qué estás trabajando. Añade una buena bio para que puedan ver la mejor versión de tu perfil.",
+            "DESCRIPTION": "La gente puede ver todo lo que haces y en qué estás trabajando. Añade una buena bio para que puedan ver la mejor versión de tu perfil.",
             "ADD_INFO": "Editar bio"
         },
         "PROFILE_FAVS": {
