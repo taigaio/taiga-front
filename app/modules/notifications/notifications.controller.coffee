@@ -69,7 +69,7 @@ class NotificationsController extends mixOf(taiga.Controller, taiga.PageMixin, t
             .then (response) =>
                 @.notificationsList = @.notificationsList.concat(response.get("items"))
 
-                if response.get("next")
+                if !@.infiniteScrollDisabled && response.get("next")
                     @.scrollDisabled = false
 
                 @.total = response.get("total")

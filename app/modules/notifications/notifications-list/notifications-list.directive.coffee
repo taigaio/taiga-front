@@ -26,6 +26,7 @@ NotificationsListDirective = ->
         scope: {
             infiniteScrollContainer: "@",
             infiniteScrollDistance: "=",
+            infiniteScrollDisabled: "=",
             onlyUnread: "=onlyUnread"
         }
     }
