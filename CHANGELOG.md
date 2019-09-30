@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## 4.2.14 (2019-10-01)
+
+- Disabled malfunctioning notification infinite scroll.
+- Updated translations. Big improvement in Italian coverage (grazie mille!).
+- Several minor fixes.
+
 ## 4.2.13 (2019-08-06)
 
 - Minor fixes
