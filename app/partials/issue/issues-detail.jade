@@ -6,168 +6,167 @@ div.wrapper(
 )
     tg-project-menu
 
-    .page-layout
-        div.main.detail
-            .detail-header-container(ng-class="{blocked: issue.is_blocked}")
-                tg-detail-nav(item="issue")
-                .detail-ref {{'#' + issue.ref}}
-                .detail-header
-                    tg-detail-header(
-                        item="issue"
-                        section-name="sectionName"
-                        project="project"
-                        required-perm="modify_issue"
-                        ng-if="project && issue"
-                        format="text"
-                    )
-
-                    //- Issue origin from github
-                    .detail-header-line.issue-external-reference(ng-if="vm.item.external_reference")
-                        span(translate="ISSUES.EXTERNAL_REFERENCE")
-                        a(
-                            target="_blank"
-                            ng-href="{{::vm.item.external_reference[1]}}"
-                            ng-title="{{'ISSUES.GO_TO_EXTERNAL_REFERENCE' | translate}}"
-                        )
-                            span {{ ::vm.item.external_reference[1] }}
-
-                    //- User Stories generated from issue
-                    .detail-header-line.item-generated-us(
-                        ng-if="issue.generated_user_stories.length"
-                        tg-check-permission="view_us"
-                    )
-                        span(ng-bind="'COMMON.PROMOTED_'+issue._name.toUpperCase() | translate")
-                        a.primary(
-                            ng-repeat="userstory in issue.generated_user_stories track by userstory.id"
-                            tg-nav="project-userstories-detail:project=project.slug,ref=userstory.ref"
-                            ng-bind-html="'#' + userstory.ref + ' '+ userstory.subject | emojify"
-                        )
-
-                    .action-buttons
-                        a.button.button-gray(
-                            href=""
-                            tg-check-permission="view_milestones"
-                            tg-nav="project-taskboard:project=project.slug,sprint=sprint.slug"
-                            ng-if="sprint && project.is_backlog_activated"
-                            title="{{'ISSUES.TITLE_LINK_TASKBOARD' | translate}}"
-                            translate="ISSUES.LINK_TASKBOARD"
-                        )
-
-                    .subheader
-                        tg-tag-line.tags-block(
-                            ng-if="issue && project"
-                            project="project"
-                            item="issue"
-                            permissions="modify_issue"
-                        )
-                        tg-created-by-display.ticket-created-by(ng-model="issue")
-
-
-            .detail-content
-                section.duty-content
-                    tg-item-wysiwyg(
-                        type="issue",
-                        model="issue",
-                        required-perm="modify_issue"
-                    )
-
-                // Custom Fields
-                tg-custom-attributes-values(
-                    ng-model="issue"
-                    type="issue"
-                    project="project"
-                    required-edition-perm="modify_issue"
-                )
-
-                tg-attachments-full(
-                    obj-id="issue.id"
-                    type="issue",
-                    project-id="projectId"
-                    edit-permission = "modify_issue"
-                )
-
-                tg-history-section(
-                    ng-if="issue"
-                    type="issue"
-                    name="issue"
-                    id="issue.id"
-                    project-id="projectId"
-                )
-
-        sidebar.menu-secondary.sidebar.ticket-data
-            section.ticket-header
-                span.ticket-title(
-                    tg-issue-status-display
-                    ng-model="issue"
-                )
-                span.detail-status(
-                    tg-issue-status-button
-                    ng-model="issue"
-                )
-
-            section.ticket-section.ticket-data-container
-                div.ticket-status(
-                    tg-issue-type-button
-                    ng-model="issue"
-                )
-                div.ticket-status(
-                    tg-issue-severity-button
-                    ng-model="issue"
-                )
-                div.ticket-status(
-                    tg-issue-priority-button
-                    ng-model="issue"
-                )
-
-            section.ticket-section(
-                tg-assigned-to
-                ng-model="issue"
-                required-perm="modify_issue"
-            )
-
-            section.ticket-section.ticket-watchers(
-                tg-watchers
-                item="issue"
-                active-users="activeUsers"
-                on-watch="ctrl.onWatch"
-                on-unwatch="ctrl.onUnwatch"
-                required-perm="modify_issue"
-            )
-
-            section.ticket-section.upvote-btn(
-                tg-vote-button
-                item="issue"
-                on-upvote="ctrl.onUpvote"
-                on-downvote="ctrl.onDownvote"
-            )
-
-            section.ticket-section.ticket-detail-settings
-                tg-due-date(
-                    due-date="issue.due_date"
-                    format="button"
-                    is-closed="issue.is_closed"
+    div.main.detail
+        .detail-header-container(ng-class="{blocked: issue.is_blocked}")
+            tg-detail-nav(item="issue")
+            .detail-ref {{'#' + issue.ref}}
+            .detail-header
+                tg-detail-header(
                     item="issue"
-                    obj-type="issue"
-                    tg-check-permission="modify_issue"
+                    section-name="sectionName"
+                    project="project"
+                    required-perm="modify_issue"
+                    ng-if="project && issue"
+                    format="text"
                 )
-                tg-promote-to-us-button(
-                    tg-check-permission="add_us",
-                    ng-model="issue"
+
+                //- Issue origin from github
+                .detail-header-line.issue-external-reference(ng-if="vm.item.external_reference")
+                    span(translate="ISSUES.EXTERNAL_REFERENCE")
+                    a(
+                        target="_blank"
+                        ng-href="{{::vm.item.external_reference[1]}}"
+                        ng-title="{{'ISSUES.GO_TO_EXTERNAL_REFERENCE' | translate}}"
+                    )
+                        span {{ ::vm.item.external_reference[1] }}
+
+                //- User Stories generated from issue
+                .detail-header-line.item-generated-us(
+                    ng-if="issue.generated_user_stories.length"
+                    tg-check-permission="view_us"
                 )
-                tg-assign-sprint-to-issue-button(
-                    tg-check-permission="modify_issue",
-                    ng-model="issue"
-                    ng-if="project.is_backlog_activated"
+                    span(ng-bind="'COMMON.PROMOTED_'+issue._name.toUpperCase() | translate")
+                    a.primary(
+                        ng-repeat="userstory in issue.generated_user_stories track by userstory.id"
+                        tg-nav="project-userstories-detail:project=project.slug,ref=userstory.ref"
+                        ng-bind-html="'#' + userstory.ref + ' '+ userstory.subject | emojify"
+                    )
+
+                .action-buttons
+                    a.button.button-gray(
+                        href=""
+                        tg-check-permission="view_milestones"
+                        tg-nav="project-taskboard:project=project.slug,sprint=sprint.slug"
+                        ng-if="sprint && project.is_backlog_activated"
+                        title="{{'ISSUES.TITLE_LINK_TASKBOARD' | translate}}"
+                        translate="ISSUES.LINK_TASKBOARD"
+                    )
+
+                .subheader
+                    tg-tag-line.tags-block(
+                        ng-if="issue && project"
+                        project="project"
+                        item="issue"
+                        permissions="modify_issue"
+                    )
+                    tg-created-by-display.ticket-created-by(ng-model="issue")
+
+
+        .detail-content
+            section.duty-content
+                tg-item-wysiwyg(
+                    type="issue",
+                    model="issue",
+                    required-perm="modify_issue"
                 )
-                tg-block-button(
-                    tg-check-permission="modify_issue",
-                    ng-model="issue"
-                )
-                tg-delete-button(
-                    tg-check-permission="delete_issue",
-                    on-delete-title="{{'ISSUES.ACTION_DELETE' | translate}}",
-                    on-delete-go-to-url="onDeleteGoToUrl",
-                    ng-model="issue"
-                )
+
+            // Custom Fields
+            tg-custom-attributes-values(
+                ng-model="issue"
+                type="issue"
+                project="project"
+                required-edition-perm="modify_issue"
+            )
+
+            tg-attachments-full(
+                obj-id="issue.id"
+                type="issue",
+                project-id="projectId"
+                edit-permission = "modify_issue"
+            )
+
+            tg-history-section(
+                ng-if="issue"
+                type="issue"
+                name="issue"
+                id="issue.id"
+                project-id="projectId"
+            )
+
+    sidebar.menu-secondary.sidebar.ticket-data
+        section.ticket-header
+            span.ticket-title(
+                tg-issue-status-display
+                ng-model="issue"
+            )
+            span.detail-status(
+                tg-issue-status-button
+                ng-model="issue"
+            )
+
+        section.ticket-section.ticket-data-container
+            div.ticket-status(
+                tg-issue-type-button
+                ng-model="issue"
+            )
+            div.ticket-status(
+                tg-issue-severity-button
+                ng-model="issue"
+            )
+            div.ticket-status(
+                tg-issue-priority-button
+                ng-model="issue"
+            )
+
+        section.ticket-section(
+            tg-assigned-to
+            ng-model="issue"
+            required-perm="modify_issue"
+        )
+
+        section.ticket-section.ticket-watchers(
+            tg-watchers
+            item="issue"
+            active-users="activeUsers"
+            on-watch="ctrl.onWatch"
+            on-unwatch="ctrl.onUnwatch"
+            required-perm="modify_issue"
+        )
+
+        section.ticket-section.upvote-btn(
+            tg-vote-button
+            item="issue"
+            on-upvote="ctrl.onUpvote"
+            on-downvote="ctrl.onDownvote"
+        )
+
+        section.ticket-section.ticket-detail-settings
+            tg-due-date(
+                due-date="issue.due_date"
+                format="button"
+                is-closed="issue.is_closed"
+                item="issue"
+                obj-type="issue"
+                tg-check-permission="modify_issue"
+            )
+            tg-promote-to-us-button(
+                tg-check-permission="add_us",
+                ng-model="issue"
+            )
+            tg-assign-sprint-to-issue-button(
+                tg-check-permission="modify_issue",
+                ng-model="issue"
+                ng-if="project.is_backlog_activated"
+            )
+            tg-block-button(
+                tg-check-permission="modify_issue",
+                ng-model="issue"
+            )
+            tg-delete-button(
+                tg-check-permission="delete_issue",
+                on-delete-title="{{'ISSUES.ACTION_DELETE' | translate}}",
+                on-delete-go-to-url="onDeleteGoToUrl",
+                ng-model="issue"
+            )
 
     div.lightbox.lightbox-block(tg-lb-block, ng-model="issue", title="ISSUES.LIGHTBOX_TITLE_BLOKING_ISSUE")

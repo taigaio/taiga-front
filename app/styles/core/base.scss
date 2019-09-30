@@ -110,16 +110,6 @@ body {
     }
 }
 
-.page-layout {
-    display: flex;
-    @include until($desktop) {
-        flex-wrap: wrap;
-        .menu-secondary {
-            width: 100%;
-        }
-    }
-}
-
 .hidden {
     // scss-lint:disable ImportantRule
     display: none !important;

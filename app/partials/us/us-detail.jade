@@ -5,191 +5,190 @@ div.wrapper(
     ng-init="section='backlog-kanban'"
 )
     tg-project-menu
-    .page-layout
-        .main.detail
-            .detail-header-container(ng-class="{blocked: us.is_blocked}")
-                tg-detail-nav(item="us")
-                .detail-ref {{'#' + us.ref}}
-                .detail-header
-                    tg-detail-header(
-                        item="us"
-                        section-name="sectionName"
-                        project="project"
-                        required-perm="modify_us"
-                        ng-if="project && us"
-                        type="text"
-                    )
-
-                    //- User Story belongs to epic
-                    .detail-header-line.belong-to-epics-wrapper(ng-if="project.is_epics_activated")
-                        .related-to-epics
-                            tg-belong-to-epics(
-                                epics="::us.epics"
-                                item="::us"
-                                format="text"
-                            )
-
-                    //- User Story relate to Epic
-                    .detail-header-line.relate-to-epic(tg-check-permission="modify_epic")
-                        a.relate-to-epic-button.ng-animate-disabled(
-                            href=""
-                            title="{{'US.RELATE_TO_EPIC' | translate}}"
-                            ng-click="relateToEpic(us)"
-                        )
-                            tg-svg(
-                                svg-icon="icon-epics"
-                                svg-title-translate="US.RELATE_TO_EPIC"
-                            )
-                            span.relate-to-epic-text(translate="US.RELATE_TO_EPIC")
-
-                    //- User Story promoted from task
-                    .detail-header-line.item-origin-task(
-                        ng-if="us.origin_task",
-                        tg-check-permission="view_tasks"
-                    )
-                        span(translate="US.PROMOTED_FROM_TASK")
-                        a(
-                            href=""
-                            tg-nav="project-tasks-detail:project=project.slug,ref=us.origin_task.ref"
-                            title="{{'US.TITLE_LINK_GO_TO_TASK' | translate}}"
-                            ng-bind-html="'#' + us.ref + ' ' + us.origin_task.subject | emojify"
-                        )
-
-                    //- User Story promoted from issue
-                    .detail-header-line.item-origin-issue(
-                        ng-if="us.origin_issue",
-                        tg-check-permission="view_issues"
-                    )
-                        span(translate="US.PROMOTED_FROM_ISSUE")
-                        a(
-                            href=""
-                            tg-nav="project-issues-detail:project=project.slug,ref=us.origin_issue.ref"
-                            title="{{'US.TITLE_LINK_GO_TO_ISSUE' | translate}}"
-                            ng-bind-html="'#' + us.origin_issue.ref + ' ' + us.origin_issue.subject | emojify"
-                        )
-
-                    .action-buttons
-                        a.button.button-gray(
-                            href=""
-                            tg-check-permission="view_milestones"
-                            tg-nav="project-taskboard:project=project.slug,sprint=sprint.slug"
-                            ng-if="sprint && project.is_backlog_activated"
-                            title="{{'US.TITLE_LINK_TASKBOARD' | translate}}"
-                            translate="US.LINK_TASKBOARD"
-                        )
-                    .subheader
-                        tg-tag-line.tags-block(
-                            ng-if="us && project"
-                            project="project"
-                            item="us"
-                            permissions="modify_us"
-                        )
-                        tg-created-by-display.ticket-created-by(ng-model="us")
-
-            .detail-content
-                section.duty-content
-                    tg-item-wysiwyg(
-                        type="us",
-                        model="us",
-                        required-perm="modify_us"
-                    )
-
-                // Custom Fields
-                tg-custom-attributes-values(
-                    ng-model="us"
-                    type="userstory"
-                    project="project"
-                    required-edition-perm="modify_us"
-                )
-
-                include ../includes/modules/related-tasks
-
-                tg-attachments-full(
-                    obj-id="us.id"
-                    type="us",
-                    project-id="projectId"
-                    edit-permission = "modify_us"
-                )
-
-                tg-history-section(
-                    ng-if="us"
-                    type="us"
-                    name="us"
-                    id="us.id"
-                    project-id="projectId"
-                )
-
-        sidebar.menu-secondary.sidebar.ticket-data
-
-            section.ticket-header
-                span.ticket-title(
-                    tg-us-status-display
-                    ng-model="us"
-                )
-                span.detail-status(
-                    tg-us-status-button
-                    ng-model="us"
-                )
-
-            section.ticket-section.ticket-estimation(
-                tg-us-estimation
-                ng-model="us"
-            )
-
-            section.ticket-section.ticket-assigned-users(
-                tg-assigned-users
-                ng-model="us"
-                required-perm="modify_us"
-            )
-
-            section.ticket-section.ticket-watchers(
-                tg-watchers
-                item="us"
-                active-users="activeUsers"
-                on-watch="ctrl.onWatch"
-                on-unwatch="ctrl.onUnwatch"
-                required-perm="modify_us"
-            )
-
-            section.ticket-section.upvote-btn(
-                tg-vote-button
-                item="us"
-                on-upvote="ctrl.onUpvote"
-                on-downvote="ctrl.onDownvote"
-            )
-
-            section.ticket-section.ticket-to-tribe(ng-if="tribeEnabled && !us.tribe_gig")
-                tg-tribe-button(
-                    us-id="us.id"
-                    project-slug="project.slug"
-                )
-                a.tribe-more-info(
-                    href=""
-                    title="{{'US.TRIBE.PUBLISH_TITLE' | translate}}"
-                    ng-click="ctrl.onTribeInfo()"
-                ) {{'US.TRIBE.PUBLISH_INFO' | translate}}
-
-            section.ticket-section.ticket-detail-settings
-                tg-due-date(
-                    due-date="us.due_date"
-                    format="button"
-                    is-closed="us.is_closed"
+    .main.detail
+        .detail-header-container(ng-class="{blocked: us.is_blocked}")
+            tg-detail-nav(item="us")
+            .detail-ref {{'#' + us.ref}}
+            .detail-header
+                tg-detail-header(
                     item="us"
-                    obj-type="us"
-                    tg-check-permission="modify_us"
+                    section-name="sectionName"
+                    project="project"
+                    required-perm="modify_us"
+                    ng-if="project && us"
+                    type="text"
                 )
-                tg-us-team-requirement-button(ng-model="us")
-                tg-us-client-requirement-button(ng-model="us")
-                tg-block-button(
-                    tg-check-permission="modify_us"
-                    ng-model="us"
+
+                //- User Story belongs to epic
+                .detail-header-line.belong-to-epics-wrapper(ng-if="project.is_epics_activated")
+                    .related-to-epics
+                        tg-belong-to-epics(
+                            epics="::us.epics"
+                            item="::us"
+                            format="text"
+                        )
+
+                //- User Story relate to Epic
+                .detail-header-line.relate-to-epic(tg-check-permission="modify_epic")
+                    a.relate-to-epic-button.ng-animate-disabled(
+                        href=""
+                        title="{{'US.RELATE_TO_EPIC' | translate}}"
+                        ng-click="relateToEpic(us)"
+                    )
+                        tg-svg(
+                            svg-icon="icon-epics"
+                            svg-title-translate="US.RELATE_TO_EPIC"
+                        )
+                        span.relate-to-epic-text(translate="US.RELATE_TO_EPIC")
+
+                //- User Story promoted from task
+                .detail-header-line.item-origin-task(
+                    ng-if="us.origin_task",
+                    tg-check-permission="view_tasks"
                 )
-                tg-delete-button(
-                    tg-check-permission="delete_us"
-                    on-delete-title="{{'Delete User Story' | translate}}"
-                    on-delete-go-to-url="onDeleteGoToUrl"
-                    ng-model="us"
+                    span(translate="US.PROMOTED_FROM_TASK")
+                    a(
+                        href=""
+                        tg-nav="project-tasks-detail:project=project.slug,ref=us.origin_task.ref"
+                        title="{{'US.TITLE_LINK_GO_TO_TASK' | translate}}"
+                        ng-bind-html="'#' + us.ref + ' ' + us.origin_task.subject | emojify"
+                    )
+
+                //- User Story promoted from issue
+                .detail-header-line.item-origin-issue(
+                    ng-if="us.origin_issue",
+                    tg-check-permission="view_issues"
                 )
+                    span(translate="US.PROMOTED_FROM_ISSUE")
+                    a(
+                        href=""
+                        tg-nav="project-issues-detail:project=project.slug,ref=us.origin_issue.ref"
+                        title="{{'US.TITLE_LINK_GO_TO_ISSUE' | translate}}"
+                        ng-bind-html="'#' + us.origin_issue.ref + ' ' + us.origin_issue.subject | emojify"
+                    )
+
+                .action-buttons
+                    a.button.button-gray(
+                        href=""
+                        tg-check-permission="view_milestones"
+                        tg-nav="project-taskboard:project=project.slug,sprint=sprint.slug"
+                        ng-if="sprint && project.is_backlog_activated"
+                        title="{{'US.TITLE_LINK_TASKBOARD' | translate}}"
+                        translate="US.LINK_TASKBOARD"
+                    )
+                .subheader
+                    tg-tag-line.tags-block(
+                        ng-if="us && project"
+                        project="project"
+                        item="us"
+                        permissions="modify_us"
+                    )
+                    tg-created-by-display.ticket-created-by(ng-model="us")
+
+        .detail-content
+            section.duty-content
+                tg-item-wysiwyg(
+                    type="us",
+                    model="us",
+                    required-perm="modify_us"
+                )
+
+            // Custom Fields
+            tg-custom-attributes-values(
+                ng-model="us"
+                type="userstory"
+                project="project"
+                required-edition-perm="modify_us"
+            )
+
+            include ../includes/modules/related-tasks
+
+            tg-attachments-full(
+                obj-id="us.id"
+                type="us",
+                project-id="projectId"
+                edit-permission = "modify_us"
+            )
+
+            tg-history-section(
+                ng-if="us"
+                type="us"
+                name="us"
+                id="us.id"
+                project-id="projectId"
+            )
+
+    sidebar.menu-secondary.sidebar.ticket-data
+
+        section.ticket-header
+            span.ticket-title(
+                tg-us-status-display
+                ng-model="us"
+            )
+            span.detail-status(
+                tg-us-status-button
+                ng-model="us"
+            )
+
+        section.ticket-section.ticket-estimation(
+            tg-us-estimation
+            ng-model="us"
+        )
+
+        section.ticket-section.ticket-assigned-users(
+            tg-assigned-users
+            ng-model="us"
+            required-perm="modify_us"
+        )
+
+        section.ticket-section.ticket-watchers(
+            tg-watchers
+            item="us"
+            active-users="activeUsers"
+            on-watch="ctrl.onWatch"
+            on-unwatch="ctrl.onUnwatch"
+            required-perm="modify_us"
+        )
+
+        section.ticket-section.upvote-btn(
+            tg-vote-button
+            item="us"
+            on-upvote="ctrl.onUpvote"
+            on-downvote="ctrl.onDownvote"
+        )
+
+        section.ticket-section.ticket-to-tribe(ng-if="tribeEnabled && !us.tribe_gig")
+            tg-tribe-button(
+                us-id="us.id"
+                project-slug="project.slug"
+            )
+            a.tribe-more-info(
+                href=""
+                title="{{'US.TRIBE.PUBLISH_TITLE' | translate}}"
+                ng-click="ctrl.onTribeInfo()"
+            ) {{'US.TRIBE.PUBLISH_INFO' | translate}}
+
+        section.ticket-section.ticket-detail-settings
+            tg-due-date(
+                due-date="us.due_date"
+                format="button"
+                is-closed="us.is_closed"
+                item="us"
+                obj-type="us"
+                tg-check-permission="modify_us"
+            )
+            tg-us-team-requirement-button(ng-model="us")
+            tg-us-client-requirement-button(ng-model="us")
+            tg-block-button(
+                tg-check-permission="modify_us"
+                ng-model="us"
+            )
+            tg-delete-button(
+                tg-check-permission="delete_us"
+                on-delete-title="{{'Delete User Story' | translate}}"
+                on-delete-go-to-url="onDeleteGoToUrl"
+                ng-model="us"
+            )
 
     div.lightbox.lightbox-block(
         tg-lb-block
