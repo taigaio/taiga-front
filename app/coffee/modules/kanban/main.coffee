@@ -257,6 +257,8 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         @.queue = _.drop(@.queue, @.batchSize)
         @kanbanUserstoriesService.set(@.rendered)
 
+        @scope.$broadcast("redraw:wip")
+
         if @.queue.length > 0
             @timeout(@.renderBatch)
         else
@@ -299,8 +301,6 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             @tgLoader.pageLoaded()
             @.renderUserStories(userstories)
             return userstories
-
-        promise.then( => @scope.$broadcast("redraw:wip"))
 
         return promise
 
