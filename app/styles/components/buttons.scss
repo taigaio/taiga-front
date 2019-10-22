@@ -180,6 +180,8 @@
 .button-auth {
     @extend %button;
     background: $grayer;
+    display: flex;
+    width: 100%;
     .icon,
     img {
         @include font-size(large);
