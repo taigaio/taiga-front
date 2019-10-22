@@ -367,6 +367,15 @@
     p {
         text-align: center;
     }
+    .message {
+        margin: 0 auto;
+        max-width: 300px;
+    }
+    .options {
+        display: flex;
+        justify-content: center;
+        margin-top: 2rem;
+    }
 }
 
 .lightbox-generic-loading {
