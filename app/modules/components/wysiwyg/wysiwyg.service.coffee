@@ -54,10 +54,10 @@ class WysiwygService
 
         return el.innerHTML
 
-    getAttachmentData: (el, tokens) ->
+    getAttachmentData: (el, tokens, attr) ->
         deferred = @q.defer()
         @attachmentsService.get(tokens[0], tokens[1]).then (response) =>
-            el.setAttribute('src', "#{response.data.url}#_taiga-refresh=#{tokens[0]}:#{tokens[1]}")
+            el.setAttribute(attr, "#{response.data.url}#_taiga-refresh=#{tokens[0]}:#{tokens[1]}")
             deferred.resolve(el)
 
         return deferred.promise
@@ -84,7 +84,7 @@ class WysiwygService
                     match = e.getAttribute(tag.attr).match(regex)
                     if match
                         tokens = match[1].split(":")
-                        promises.push(@.getAttachmentData(e, tokens))
+                        promises.push(@.getAttachmentData(e, tokens, tag.attr))
 
         @q.all(promises).then =>
             deferred.resolve(el.innerHTML)
