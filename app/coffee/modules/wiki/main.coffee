@@ -240,7 +240,7 @@ $qqueue, $repo, $analytics, activityService) ->
 
         uploadFile = (file, cb) ->
             return attachmentsFullService.addAttachment($scope.project.id, $scope.item.id, 'wiki_page', file).then (result) ->
-                cb(result.getIn(['file', 'name']), result.getIn(['file', 'url']), result.getIn(['file', 'id']))
+                cb(result.getIn(['file', 'name']), result.getIn(['file', 'url']), 'wiki_page', result.getIn(['file', 'id']))
 
         $scope.uploadFiles = (files, cb) ->
             for file in files
