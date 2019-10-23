@@ -58,6 +58,7 @@ class WysiwygService
         deferred = @q.defer()
         @attachmentsService.get(tokens[0], tokens[1]).then (response) =>
             url = response.data.url
+            url = "#{url}#_taiga-refresh=#{tokens[0]}:#{tokens[1]}"
             el.setAttribute('src', url)
             deferred.resolve(el)
 
