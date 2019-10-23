@@ -57,6 +57,9 @@ class AttachmentsService
         return @rs.attachments.list(type, objId, projectId).then (attachments) =>
             return attachments.sortBy (attachment) => attachment.get('order')
 
+    get: (type, id) ->
+        return @rs.attachments.get(type, id)
+
     delete: (type, id) ->
         return @rs.attachments.delete(type, id)
 

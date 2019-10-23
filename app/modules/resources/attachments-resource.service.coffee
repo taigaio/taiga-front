@@ -38,6 +38,13 @@ Resource = (urlsService, http, config, $rootScope, $q, storage) ->
         return http.get(url, params, httpOptions)
             .then (result) -> Immutable.fromJS(result.data)
 
+    service.get = (type, id) ->
+        urlname = "attachments/#{type}"
+
+        url = urlsService.resolve(urlname) + "/#{id}"
+
+        return http.get(url)
+
     service.delete = (type, id) ->
         urlname = "attachments/#{type}"
 
