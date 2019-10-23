@@ -57,36 +57,34 @@ class WysiwygService
     getAttachmentData: (el, tokens) ->
         deferred = @q.defer()
         @attachmentsService.get(tokens[0], tokens[1]).then (response) =>
-            url = response.data.url
-            url = "#{url}#_taiga-refresh=#{tokens[0]}:#{tokens[1]}"
-            el.setAttribute('src', url)
+            el.setAttribute('src', "#{response.data.url}#_taiga-refresh=#{tokens[0]}:#{tokens[1]}")
             deferred.resolve(el)
 
         return deferred.promise
 
     refreshAttachmentURL: (html) ->
-        deferred = @q.defer()
         el = document.createElement( 'html' )
         el.innerHTML = html
-
         regex = /#_taiga-refresh=([a-zA-Z]*\:\d+)/
-        links = el.querySelectorAll('a')
+
+        links = {
+            "elements": el.querySelectorAll('a'),
+            "attr": "href",
+        }
+        images = {
+            "elements": el.querySelectorAll('img'),
+            "attr": "src",
+        }
+
+        deferred = @q.defer()
         promises = []
-
-        for e in links
-            if e.getAttribute('href').indexOf('#_taiga-refresh=') != -1
-                match = e.getAttribute('href').match(regex)
-                if match
-                    tokens = match[1].split(":")
-                    promises.push(@.getAttachmentData(e, tokens))
-
-        links = el.querySelectorAll('img')
-        for e in links
-            if e.getAttribute('src').indexOf('#_taiga-refresh=') != -1
-                match = e.getAttribute('src').match(regex)
-                if match
-                    tokens = match[1].split(":")
-                    promises.push(@.getAttachmentData(e, tokens))
+        _.map [links, images], (tag) =>
+            _.map tag.elements, (e) =>
+                if e.getAttribute(tag.attr).indexOf('#_taiga-refresh=') != -1
+                    match = e.getAttribute(tag.attr).match(regex)
+                    if match
+                        tokens = match[1].split(":")
+                        promises.push(@.getAttachmentData(e, tokens))
 
         @q.all(promises).then =>
             deferred.resolve(el.innerHTML)
