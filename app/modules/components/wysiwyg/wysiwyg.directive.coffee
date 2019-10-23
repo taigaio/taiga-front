@@ -100,6 +100,11 @@ Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoad
 
                 pre.parentNode.insertBefore(p, pre.nextSibling)
 
+    refreshAttachments = (mediumInstance) ->
+        promise = wysiwygService.refreshAttachmentURL(mediumInstance.getContent())
+        promise.then (html) =>
+            mediumInstance.setContent(html)
+
     AlignRightButton = MediumEditor.extensions.button.extend({
         name: 'rtl',
         init: () ->
@@ -485,6 +490,8 @@ Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoad
                     })
                 }
             })
+
+            refreshAttachments(mediumInstance)
 
             $scope.changeMarkdown = throttleChange
 

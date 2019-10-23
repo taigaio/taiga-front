@@ -22,9 +22,11 @@ class WysiwygService
         "tgWysiwygCodeHightlighterService",
         "tgProjectService",
         "$tgNavUrls",
-        "$tgEmojis"
+        "$tgEmojis",
+        "tgAttachmentsService",
+        "$q",
     ]
-    constructor: (@wysiwygCodeHightlighterService, @projectService, @navurls, @emojis) ->
+    constructor: (@wysiwygCodeHightlighterService, @projectService, @navurls, @emojis, @attachmentsService, @q) ->
 
     searchEmojiByName: (name) ->
         return @emojis.searchByName(name)
@@ -51,6 +53,44 @@ class WysiwygService
                 link.parentNode.replaceChild(document.createTextNode(link.innerText), link)
 
         return el.innerHTML
+
+    getAttachmentData: (el, tokens) ->
+        deferred = @q.defer()
+        @attachmentsService.get(tokens[0], tokens[1]).then (response) =>
+            url = response.data.url
+            el.setAttribute('src', url)
+            deferred.resolve(el)
+
+        return deferred.promise
+
+    refreshAttachmentURL: (html) ->
+        deferred = @q.defer()
+        el = document.createElement( 'html' )
+        el.innerHTML = html
+
+        regex = /#_taiga-refresh=([a-zA-Z]*\:\d+)/
+        links = el.querySelectorAll('a')
+        promises = []
+
+        for e in links
+            if e.getAttribute('href').indexOf('#_taiga-refresh=') != -1
+                match = e.getAttribute('href').match(regex)
+                if match
+                    tokens = match[1].split(":")
+                    promises.push(@.getAttachmentData(e, tokens))
+
+        links = el.querySelectorAll('img')
+        for e in links
+            if e.getAttribute('src').indexOf('#_taiga-refresh=') != -1
+                match = e.getAttribute('src').match(regex)
+                if match
+                    tokens = match[1].split(":")
+                    promises.push(@.getAttachmentData(e, tokens))
+
+        @q.all(promises).then =>
+            deferred.resolve(el.innerHTML)
+
+        return deferred.promise
 
     searchWikiLinks: (html) ->
         el = document.createElement( 'html' )
@@ -180,7 +220,6 @@ class WysiwygService
         md.use(window.markdownitLazyHeaders)
         result = md.render(text)
         result = @.searchWikiLinks(result)
-
         result = @.autoLinkHTML(result)
 
         return result
