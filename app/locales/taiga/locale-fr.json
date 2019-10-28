@@ -359,7 +359,7 @@
         "LINK_CANCEL": "Nan, ramenez-moi en arrière. Je crois que je m'en souviens.",
         "SUCCESS_TITLE": "Consultez votre boîte aux lettres !",
         "SUCCESS_TEXT": "Nous vous avons envoyé un courriel avec les instructions pour définir un nouveau mot de passe",
-        "ERROR": "D'après nos Oompa Loompas, vous n'êtes pas encore enregistré."
+        "ERROR": "D'après nos Oompa Loompas, vous n'êtes pas encore inscrit."
     },
     "CHANGE_PASSWORD": {
         "PAGE_TITLE": "Modifier votre mot de passe - Taiga",
@@ -1097,7 +1097,7 @@
         },
         "SELECT_USER": {
             "SEARCH": "Chercher des utilisateurs",
-            "REMOVE": "Remove user",
+            "REMOVE": "Supprimer utilisateur",
             "ROLE": "Rôle"
         },
         "ADD_MEMBER": {
