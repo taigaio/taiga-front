@@ -410,129 +410,131 @@ Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoad
         throttleChange = _.throttle(change, 200)
 
         create = (text, editMode=false) ->
+            html = ""
             if text.length
                 html = wysiwygService.getHTML(text)
+
+            promise = wysiwygService.refreshAttachmentURL(html)
+            promise.then (html) =>
                 editorMedium.html(html)
 
-            mediumInstance = new MediumEditor(editorMedium[0], {
-                imageDragging: false,
-                placeholder: {
-                    text: $scope.placeholder
-                },
-                toolbar: {
-                    buttons: [
-                        {
-                            name: 'bold',
-                            contentDefault: getIcon('editor-bold')
-                        },
-                        {
-                            name: 'italic',
-                            contentDefault: getIcon('editor-italic')
-                        },
-                        {
-                            name: 'strikethrough',
-                            contentDefault: getIcon('editor-cross-out')
-                        },
-                        {
-                            name: 'anchor',
-                            contentDefault: getIcon('editor-link')
-                        },
-                        {
-                            name: 'image',
-                            contentDefault: getIcon('editor-image')
-                        },
-                        {
-                            name: 'orderedlist',
-                            contentDefault: getIcon('editor-list-n')
-                        },
-                        {
-                            name: 'unorderedlist',
-                            contentDefault: getIcon('editor-list-o')
-                        },
-                        {
-                            name: 'h1',
-                            contentDefault: getIcon('editor-h1')
-                        },
-                        {
-                            name: 'h2',
-                            contentDefault: getIcon('editor-h2')
-                        },
-                        {
-                            name: 'h3',
-                            contentDefault: getIcon('editor-h3')
-                        },
-                        {
-                            name: 'quote',
-                            contentDefault: getIcon('editor-quote')
-                        },
-                        {
-                            name: 'removeFormat',
-                            contentDefault: getIcon('editor-no-format')
-                        },
-                        {
-                            name: 'rtl',
-                            contentDefault: getIcon('editor-rtl')
-                        },
-                        {
-                            name: 'code',
-                            contentDefault: getIcon('editor-code')
-                        }
-                    ]
-                },
-                extensions: {
-                    paste: new CustomPasteHandler(),
-                    code: new CodeButton(),
-                    autolist: new AutoList(),
-                    alignright: new AlignRightButton(),
-                    mediumMention: new MentionExtension({
-                        getItems: (mention, mentionCb) ->
-                            wysiwygMentionService.search(mention).then(mentionCb)
-                    })
-                }
-            })
+                mediumInstance = new MediumEditor(editorMedium[0], {
+                    imageDragging: false,
+                    placeholder: {
+                        text: $scope.placeholder
+                    },
+                    toolbar: {
+                        buttons: [
+                            {
+                                name: 'bold',
+                                contentDefault: getIcon('editor-bold')
+                            },
+                            {
+                                name: 'italic',
+                                contentDefault: getIcon('editor-italic')
+                            },
+                            {
+                                name: 'strikethrough',
+                                contentDefault: getIcon('editor-cross-out')
+                            },
+                            {
+                                name: 'anchor',
+                                contentDefault: getIcon('editor-link')
+                            },
+                            {
+                                name: 'image',
+                                contentDefault: getIcon('editor-image')
+                            },
+                            {
+                                name: 'orderedlist',
+                                contentDefault: getIcon('editor-list-n')
+                            },
+                            {
+                                name: 'unorderedlist',
+                                contentDefault: getIcon('editor-list-o')
+                            },
+                            {
+                                name: 'h1',
+                                contentDefault: getIcon('editor-h1')
+                            },
+                            {
+                                name: 'h2',
+                                contentDefault: getIcon('editor-h2')
+                            },
+                            {
+                                name: 'h3',
+                                contentDefault: getIcon('editor-h3')
+                            },
+                            {
+                                name: 'quote',
+                                contentDefault: getIcon('editor-quote')
+                            },
+                            {
+                                name: 'removeFormat',
+                                contentDefault: getIcon('editor-no-format')
+                            },
+                            {
+                                name: 'rtl',
+                                contentDefault: getIcon('editor-rtl')
+                            },
+                            {
+                                name: 'code',
+                                contentDefault: getIcon('editor-code')
+                            }
+                        ]
+                    },
+                    extensions: {
+                        paste: new CustomPasteHandler(),
+                        code: new CodeButton(),
+                        autolist: new AutoList(),
+                        alignright: new AlignRightButton(),
+                        mediumMention: new MentionExtension({
+                            getItems: (mention, mentionCb) ->
+                                wysiwygMentionService.search(mention).then(mentionCb)
+                        })
+                    }
+                })
 
-            refreshAttachments(mediumInstance)
+                $scope.changeMarkdown = throttleChange
 
-            $scope.changeMarkdown = throttleChange
+                mediumInstance.subscribe 'editableInput', (e) ->
+                    $scope.$applyAsync(throttleChange)
 
-            mediumInstance.subscribe 'editableInput', (e) ->
-                $scope.$applyAsync(throttleChange)
+                mediumInstance.subscribe "editableClick", (e) ->
+                    r = new RegExp('^(?:[a-z]+:)?//', 'i')
 
-            mediumInstance.subscribe "editableClick", (e) ->
-                r = new RegExp('^(?:[a-z]+:)?//', 'i')
+                    if e.target.href
+                        if r.test(e.target.getAttribute('href')) || e.target.getAttribute('target') == '_blank'
+                            e.stopPropagation()
+                            window.open(e.target.href)
+                        else
+                            $location.url(e.target.href)
 
-                if e.target.href
-                    if r.test(e.target.getAttribute('href')) || e.target.getAttribute('target') == '_blank'
+                mediumInstance.subscribe 'editableDrop', (event) ->
+                    $scope.onUploadFile({files: event.dataTransfer.files, cb: uploadEnd})
+
+                mediumInstance.subscribe 'editableKeydown', (e) ->
+                    code = if e.keyCode then e.keyCode else e.which
+
+                    mention = $('.medium-mention')
+
+                    if (code == 40 || code == 38) && mention.length
                         e.stopPropagation()
-                        window.open(e.target.href)
-                    else
-                        $location.url(e.target.href)
+                        e.preventDefault()
 
-            mediumInstance.subscribe 'editableDrop', (event) ->
-                $scope.onUploadFile({files: event.dataTransfer.files, cb: uploadEnd})
+                        return
 
-            mediumInstance.subscribe 'editableKeydown', (e) ->
-                code = if e.keyCode then e.keyCode else e.which
+                    if $scope.editMode && code == 27
+                        e.stopPropagation()
+                        $scope.$applyAsync($scope.cancelWithConfirmation)
+                    else if code == 27
+                        editorMedium.blur()
 
-                mention = $('.medium-mention')
+                setEditMode(editMode)
 
-                if (code == 40 || code == 38) && mention.length
-                    e.stopPropagation()
-                    e.preventDefault()
-
-                    return
-
-                if $scope.editMode && code == 27
-                    e.stopPropagation()
-                    $scope.$applyAsync($scope.cancelWithConfirmation)
-                else if code == 27
-                    editorMedium.blur()
-
-            setEditMode(editMode)
-
-            $scope.$applyAsync () ->
-                wysiwygCodeHightlighterService.addHightlighter(mediumInstance.elements[0])
-                refreshCodeBlocks(mediumInstance)
+                $scope.$applyAsync () ->
+                    wysiwygCodeHightlighterService.addHightlighter(mediumInstance.elements[0])
+                    refreshCodeBlocks(mediumInstance)
 
         $(editorMedium[0]).on 'mousedown', (e) ->
             if e.target.href
