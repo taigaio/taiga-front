@@ -11,6 +11,7 @@
         @include svg-size(4rem);
     }
     h1 {
+        justify-content: center;
         margin-bottom: 0;
     }
     .app-card,

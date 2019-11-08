@@ -10,13 +10,14 @@
     color: $white;
     cursor: pointer;
     display: inline-flex;
-    height: 37px;
     justify-content: center;
-    max-height: 37px;
-    padding: 0 2rem;
+    line-height: 21px;
+    min-height: 37px;
+    padding: 9px 2rem;
     text-align: center;
     text-transform: uppercase;
     vertical-align: middle;
+    white-space: normal;
     &:hover,
     &.active {
         color: $white;
@@ -179,6 +180,7 @@
 }
 .button-auth {
     @extend %button;
+    @include font-type(light);
     background: $grayer;
     display: flex;
     width: 100%;
@@ -187,6 +189,7 @@
         @include font-size(large);
         color: $white;
         margin-right: .5rem;
+        vertical-align: middle;
     }
     &:hover {
         background: $black;
