@@ -22,9 +22,11 @@ class WysiwygService
         "tgWysiwygCodeHightlighterService",
         "tgProjectService",
         "$tgNavUrls",
-        "$tgEmojis"
+        "$tgEmojis",
+        "tgAttachmentsService",
+        "$q",
     ]
-    constructor: (@wysiwygCodeHightlighterService, @projectService, @navurls, @emojis) ->
+    constructor: (@wysiwygCodeHightlighterService, @projectService, @navurls, @emojis, @attachmentsService, @q) ->
 
     searchEmojiByName: (name) ->
         return @emojis.searchByName(name)
@@ -51,6 +53,43 @@ class WysiwygService
                 link.parentNode.replaceChild(document.createTextNode(link.innerText), link)
 
         return el.innerHTML
+
+    getAttachmentData: (el, tokens, attr) ->
+        deferred = @q.defer()
+        @attachmentsService.get(tokens[0], tokens[1]).then (response) =>
+            el.setAttribute(attr, "#{response.data.url}#_taiga-refresh=#{tokens[0]}:#{tokens[1]}")
+            deferred.resolve(el)
+
+        return deferred.promise
+
+    refreshAttachmentURL: (html) ->
+        el = document.createElement( 'html' )
+        el.innerHTML = html
+        regex = /#_taiga-refresh=([a-zA-Z]*\:\d+)/
+
+        links = {
+            "elements": el.querySelectorAll('a'),
+            "attr": "href",
+        }
+        images = {
+            "elements": el.querySelectorAll('img'),
+            "attr": "src",
+        }
+
+        deferred = @q.defer()
+        promises = []
+        _.map [links, images], (tag) =>
+            _.map tag.elements, (e) =>
+                if e.getAttribute(tag.attr).indexOf('#_taiga-refresh=') != -1
+                    match = e.getAttribute(tag.attr).match(regex)
+                    if match
+                        tokens = match[1].split(":")
+                        promises.push(@.getAttachmentData(e, tokens, tag.attr))
+
+        @q.all(promises).then =>
+            deferred.resolve(el.innerHTML)
+
+        return deferred.promise
 
     searchWikiLinks: (html) ->
         el = document.createElement( 'html' )
@@ -180,7 +219,6 @@ class WysiwygService
         md.use(window.markdownitLazyHeaders)
         result = md.render(text)
         result = @.searchWikiLinks(result)
-
         result = @.autoLinkHTML(result)
 
         return result

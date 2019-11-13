@@ -41,7 +41,7 @@ CommentWysiwyg = ($modelTransform, $rootscope, attachmentsFullService) ->
 
         uploadFile = (file, cb) ->
             return attachmentsFullService.addAttachment($scope.vm.projectId, $scope.vm.type.id, types[$scope.vm.type._name], file, true, true).then (result) ->
-                cb(result.getIn(['file', 'name']), result.getIn(['file', 'url']))
+                cb(result.getIn(['file', 'name']), result.getIn(['file', 'url']), types[$scope.vm.type._name], result.getIn(['file', 'id']))
 
         $scope.onChange = (markdown) ->
             $scope.vm.type.comment = markdown

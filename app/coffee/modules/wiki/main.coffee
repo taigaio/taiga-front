@@ -240,7 +240,7 @@ $qqueue, $repo, $analytics, activityService) ->
 
         uploadFile = (file, cb) ->
             return attachmentsFullService.addAttachment($scope.project.id, $scope.item.id, 'wiki_page', file).then (result) ->
-                cb(result.getIn(['file', 'name']), result.getIn(['file', 'url']))
+                cb(result.getIn(['file', 'name']), result.getIn(['file', 'url']), 'wiki_page', result.getIn(['file', 'id']))
 
         $scope.uploadFiles = (files, cb) ->
             for file in files
@@ -250,7 +250,7 @@ $qqueue, $repo, $analytics, activityService) ->
             return if not value
             $scope.item = value
             $scope.version = value.version
-            $scope.storageKey = $scope.project.id + "-" + value.id + "-wiki" 
+            $scope.storageKey = $scope.project.id + "-" + value.id + "-wiki"
 
         $scope.$watch 'project', (project) ->
             return if !project
