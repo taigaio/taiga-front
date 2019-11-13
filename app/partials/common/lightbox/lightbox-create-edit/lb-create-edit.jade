@@ -56,6 +56,7 @@ form(ng-if="lightboxOpen")
                         name="subject"
                         ng-model-options="{ debounce: 200 }"
                         ng-model="obj.subject"
+                        tg-auto-select
                         placeholder="{{ 'COMMON.FIELDS.SUBJECT' | translate }}"
                         data-required="true"
                         data-maxlength="500"
