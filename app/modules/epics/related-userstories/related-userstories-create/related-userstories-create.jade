@@ -1,4 +1,4 @@
-a.add-button.e2e-add-userstory-button(
+a.add-button.button-primary.button-small.e2e-add-userstory-button(
     href=""
     ng-click="showLightbox(selectedProject)"
 )
@@ -10,8 +10,8 @@ a.add-button.e2e-add-userstory-button(
     .lightbox-create-related-user-stories-wrapper
         h2.title(translate="EPIC.CREATE_RELATED_USERSTORIES")
 
-        .related-with-selector
-            .related-with-selector-single
+        .button-group
+            .button-group-single
                 input(
                     type="radio"
                     name="related-with-selector"
@@ -23,7 +23,7 @@ a.add-button.e2e-add-userstory-button(
                 label.e2e-new-userstory-label(for="new-user-story")
                     span.name {{ 'EPIC.NEW_USERSTORY' | translate}}
 
-            .related-with-selector-single
+            .button-group-single
                 input(
                     type="radio"
                     name="related-with-selector"
@@ -103,7 +103,7 @@ a.add-button.e2e-add-userstory-button(
                         data-required="true"
                     )
 
-            button.button-green.create-user-story.e2e-create-userstory-button.ng-animate-disabled(
+            button.button-green.button-large.create-user-story.e2e-create-userstory-button.ng-animate-disabled(
                 href=""
                 ng-click="vm.bulkCreateRelatedUserStories(selectedProject, relatedUserstoriesText, closeLightbox)"
                 tg-loading="vm.loading"

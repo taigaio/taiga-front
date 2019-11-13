@@ -28,7 +28,7 @@
     }
     .entry-date {
         @include font-size(small);
-        color: $gray-light;
+        color: $grey-50;
     }
     .display-full-entry {
         @include svg-size(1.25rem);

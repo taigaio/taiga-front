@@ -290,7 +290,7 @@ RolePermissionsDirective = ($rootscope, $repo, $confirm, $compile) ->
     <div class="summary-role">
         <div class="count"><%- category.activePermissions %>/<%- category.permissions.length %></div>
         <% _.each(category.permissions, function(permission) { %>
-            <div class="role-summary-single <% if(permission.active) { %>active<% } %>"
+            <div class="role-summary-single check-toggle <% if(permission.active) { %>active<% } %>"
                  title="{{ '<%- permission.name %>' | translate }}"></div>
         <% }) %>
     </div>

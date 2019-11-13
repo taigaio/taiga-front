@@ -10,7 +10,7 @@
         padding: .5em 1em;
     }
     .title {
-        color: $black;
+        color: $primary;
         flex-grow: 1;
         font-size: 1.8em;
         line-height: 1.8em;
@@ -47,6 +47,7 @@
             font-size: 1.05rem;
         }
         .entry-project {
+            color: $grey-50;
             max-width: initial;
             text-overflow: initial;
             white-space: initial;

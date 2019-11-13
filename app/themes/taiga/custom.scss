@@ -1,167 +1,72 @@
-//*************************
-//** LAYOUT
-//*************************
-
-// Default body color and background
-body {
-    background: $white; // fallback
-    color: $grayer;
+.auth {
+    background: url('../images/bg.png') no-repeat center center;
+    background-size: cover;
 }
 
-// Main
-.master {
-    background: $white;
-}
-
-// Secondary panel
-.menu-secondary {
-    background: $mass-white;
-}
-
-// Tertiary panel
-.menu-tertiary {
-    background-color: $primary-dark;
-}
-
-// Extra bar panel
-.extrabar {
-    background: $mass-white;
-}
-
-
-
-// Titles
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    color: $blackish;
-}
-
-a {
-    color: $grayer;
-    &:hover {
-        color: $primary;
-    }
-}
-
-//**************************
-//** SCAFFOLDING
-//**************************
-
-//Forms
-input[type="text"],
-input[type="number"],
-input[type="password"],
-input[type="url"],
-input[type="email"],
-input[type="date"],
-input[type="password"],
-select,
-textarea {
-    background: $mass-white;
-    border-color: $gray-light;
-    color: $grayer;
-    @include placeholder {
-        color: lighten($gray-light, 10%);
-    }
-    &.checksley-error {
-        border: 1px solid $red;
-    }
-}
-
-
-// Input errors
-.checksley-error-list {
-    @include font-type(light);
-    background: rgba($red, .7);
-    color: $white;
-}
-
-// Blockquote
-blockquote {
-    border-left: 5px solid $mass-white;
-}
-
-blockquote,
-blockquote p {
-    color: $gray;
-}
-
-cite {
-    color: $gray;
-}
-
-
-.summary {
-    background: $grayer;
-    color: $white;
-}
-
-
-//************************
-//** NAVIGATION
-//***********************
-
-// Top navigation bar
 .navbar {
     background: rgba($black, .5);
     &::after {
         background: url('../images/menu-vert.png') repeat top left;
     }
+    .nav-right {
+        svg {
+            fill: $secondary-dark;
+            stroke: $secondary-dark;
+        }
+        .active svg {
+            fill: $secondary-dark;
+            stroke: $secondary-dark;
+        }
+    }
 }
-
-//In project left navigation bar
 tg-project-menu {
     background-color: $primary-dark;
     background-image: url('../images/menu.png');
 }
+.menu-tertiary  ul li a,
+.menu-tertiary  ul li a:hover {
+    color: white;
+}
 
-.main-nav {
-    svg {
-        fill: $white;
+.button-green {
+    background: $primary;
+}
+.button-gray {
+    background: $grey-60;
+}
+.button-red {
+    background: $red-25;
+}
+.button-green,
+.button-gray,
+.button-red {
+    @include font-type(light);
+}
+.button-green, .button-gray {
+    &:hover,
+    &.active,
+    &:visited:hover {
+        background: $secondary;
     }
 }
 
-//*****************************
-//** TASKBOARD
-//******************************
-
-//Taskboard table
-.taskboard-table-header {
-    .task-colum-name {
-        background: $mass-white;
-        border-top: 3px solid $gray-light;
-        .icon {
-            fill: $gray-light;
-        }
-    }
-}
-.taskboard-table-body {
-    .taskboard-cards-box {
-        background: $mass-white;
-    }
+.button-check input + label {
+    background-color: $grey-40;
 }
 
-//*****************************
-//** KANBAN
-//******************************
-
-//Kanban table
-.kanban-table-header {
-    .task-colum-name {
-        background: $mass-white;
-        border-top: 3px solid $gray-light;
-        .icon {
-            color: $gray-light;
-        }
-    }
+.button-check input:checked + label {
+    background-color: $primary;
 }
 
-.kanban-table-body {
-    .kanban-uses-box {
-        background: $mass-white;
-    }
+.check input:checked + div {
+    background-color: $primary-50;
+}
+.check-toggle.active {
+    background-color: $primary;
+}
+
+//// OVERRIDE
+
+.topnav-dropdown-wrapper .counter {
+    background: $primary-light;
 }

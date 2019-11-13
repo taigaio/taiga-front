@@ -10,12 +10,8 @@
         margin: 0;
     }
     .add-sprint {
-        background: $primary;
-        padding: .25rem .25rem 0;
+        padding: 0;
         transition: background .2s;
-        &:hover {
-            background: $primary-light;
-        }
         svg {
             fill: $whitish;
             height: 1.4rem;
@@ -118,7 +114,7 @@
         }
     }
     .sprint-progress-bar {
-        background: $gray-light;
+        background-color: $grey-10;
         border-radius: 2px;
         height: 8px;
         margin-bottom: 1rem;
@@ -209,9 +205,7 @@
         }
     }
     .button-gray {
-        display: block;
         margin-top: 1rem;
-        text-align: center;
     }
     .us-item-row {
         .tags-block,

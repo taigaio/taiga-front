@@ -45,6 +45,11 @@
     }
 }
 
+.ticket-data {
+    background: $grey-02;
+    padding: 1rem;
+}
+
 .ticket-data-container {
     @include font-size(small);
     @include font-type(text);
@@ -293,9 +298,11 @@
     .item-unblock,
     .promote-button,
     .button-delete {
-        background: $gray-light;
+        background: $grey-40;
         display: inline-block;
+        height: 55px;
         margin-right: .5rem;
+        min-height: 55px;
         padding: 1rem;
         transition: background .2s linear;
         transition-delay: .1s;
@@ -308,6 +315,9 @@
         +input {
             display: none;
         }
+        &.active {
+            background: $grey-70;
+        }
     }
 
     .assign-issue-button {
@@ -317,6 +327,7 @@
             background: $yellow-green;
         }
         &.is-active {
+            background: $grey-70;
             display: inline-block;
         }
         &.button-set:hover {
@@ -332,7 +343,7 @@
         }
     }
     .item-unblock {
-        background: $red-light;
+        background: $grey-70;
         &:hover {
             background: $red;
         }

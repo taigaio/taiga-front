@@ -17,15 +17,19 @@
     .total {
         @include font-size(large);
         align-items: center;
-        background-color: $whitish;
+        background: none;
         color: $grayer;
         display: flex;
-        padding: .3rem 1rem;
+        padding: .3rem 0;
         &:hover {
             .icon-edit {
                 opacity: 1;
                 transition: opacity .3s linear;
             }
         }
+    }
+    &.admin-roles .total {
+        background-color: $grey-02;
+        padding: .3rem 1rem;
     }
 }

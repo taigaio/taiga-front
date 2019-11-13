@@ -12,28 +12,31 @@
     padding: 0;
     &.active {
         .track-inner {
-            background: rgba($primary-light, .4);
+            background: darken($primary-10, 15%);
         }
         .icon {
             fill: $primary;
         }
         .track-button-counter {
-            background: rgba($primary-light, .6);
+            background: darken($primary-10, 25%);
         }
+    }
+    &:hover .track-icon svg {
+        fill: $primary;
+        stroke: $primary;
     }
     &.is-hover {
         .track-inner {
-            background: lighten($red, 10%);
-            color: $whitish;
-            transition: background .2s;
+            background-color: $red-25;
+            color: $white;
         }
-        .icon {
-            fill: $red-light;
+        .track-icon svg {
+            fill: $red;
+            stroke: $red;
         }
         .track-button-counter {
-            background: $red;
-            color: $whitish;
-            transition: background .2s;
+            background-color: $red;
+            color: $white;
         }
     }
     .watch-options-arrow {
@@ -46,8 +49,9 @@
 
 .track-inner {
     align-items: center;
-    background: $whitish;
+    background-color: $grey-05;
     border-radius: 4px 0 0 4px;
+    color: $grey-90;
     display: flex;
     flex: 1;
     flex-basis: 140px;
@@ -55,8 +59,8 @@
     min-width: 140px;
     padding: .25rem 1rem;
     &:hover {
-        background: darken($whitish, 5%);
-        transition: background .3s;
+        background-color: $grey-05;
+        color: $grey-90;
     }
 }
 
@@ -71,16 +75,20 @@
     align-items: center;
     background: darken($whitish, 5%);
     border-radius: 0 4px 4px 0;
+    color: $grey-90;
     padding: .25rem .75rem;
 }
 
 .contact-team {
-    background: $whitish;
+    background-color: $grey-05;
     border-radius: 4px;
     padding: .25rem .75rem;
     &:hover {
         background: darken($whitish, 5%);
-        transition: background .3s;
+        svg {
+            fill: $primary;
+            stroke: $primary;
+        }
     }
 }
 
@@ -106,21 +114,23 @@
         }
     }
     a {
-        @include font-type(light);
         border-bottom: 1px solid rgba($gray-light, .3);
         color: $white;
         display: flex;
         justify-content: space-between;
         padding: .5rem 0;
         &.active {
-            color: $primary-light;
+            color: $primary-50;
+        }
+        &:hover {
+            color: $primary-50;
         }
     }
     .watch-check {
         height: 1.25rem;
         width: 1.25rem;
         svg {
-            fill: $primary-light;
+            fill: $primary-50;
         }
     }
 }

@@ -41,21 +41,21 @@
             tg-svg(svg-icon="icon-view-more")
 
         .ticket-users-actions
-            .ticket-users-action(
+            a.ticket-users-action(
                 ng-if="isEditable",
                 ng-click="vm.openWatchers()"
             )
                 tg-svg.users-action.icon(svg-icon="icon-add")
                 span {{ 'COMMON.WATCHERS.ADD' | translate }}
 
-            .ticket-users-action(
+            a.ticket-users-action(
                 ng-if="!vm.item.is_watcher && isAuthenticated"
                 ng-click="vm.watch()"
             )
                 tg-svg.users-action.icon(svg-icon="icon-watch")
                 span {{ 'COMMON.WATCH_BUTTON.WATCH' | translate }}
 
-            .ticket-users-action(
+            a.ticket-users-action(
                 ng-if="vm.item.is_watcher && isAuthenticated"
                 ng-click="vm.unwatch()"
             )

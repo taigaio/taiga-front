@@ -3,7 +3,7 @@ $exclude-background: #fcc;
 $radio-mark-background: #d6d5d5;
 
 tg-filter {
-    background-color: $mass-white;
+    background: $grey-02;
     display: block;
     left: 0;
     max-height: 100%;
@@ -125,7 +125,7 @@ tg-filter {
         top: .7rem;
     }
     &.open {
-        box-shadow: 1px 1px 5px rgba($primary, .2);
+        box-shadow: 1px 1px 5px rgba($gray, .2);
         transform: translateX(0);
     }
 }
@@ -168,7 +168,7 @@ tg-filter {
         transition: color .2s ease-in;
         &:hover,
         &.selected {
-            background-color: rgba(darken($whitish, 10%), 1);
+            background-color: $grey-10;
             color: $grayer;
             transition: background-color .2s ease-in;
             .icon {
@@ -191,7 +191,7 @@ tg-filter {
     @include font-type(text);
     @include clearfix;
     align-items: center;
-    background: darken($whitish, 5%);
+    background: $grey-10;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
@@ -221,7 +221,7 @@ tg-filter {
         }
     }
     .number {
-        background: darken($whitish, 20%); // Fallback
+        background: $grey-20;
         position: absolute;
         right: 0;
         top: 0;

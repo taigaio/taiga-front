@@ -3,8 +3,8 @@ tg-lightbox-close
 .lightbox-create-related-epic-wrapper
     h2.title(translate="LIGHTBOX.RELATE_TO_EPIC.TITLE")
 
-    .related-with-selector(tg-check-permission="add_epic")
-        .related-with-selector-single
+    .button-group(tg-check-permission="add_epic")
+        .button-group-single
             input(
                 type="radio"
                 name="related-with-selector"
@@ -16,7 +16,7 @@ tg-lightbox-close
             label.e2e-existing-epic-label(for="existing-epic")
                 span.name {{ 'LIGHTBOX.RELATE_TO_EPIC.EXISTING_EPIC' | translate}}
 
-        .related-with-selector-single
+        .button-group-single
             input(
                 type="radio"
                 name="related-with-selector"

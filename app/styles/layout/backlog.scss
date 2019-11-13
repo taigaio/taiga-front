@@ -29,6 +29,11 @@
         flex-direction: column;
     }
     .menu-button {
+        @include font-type(light);
+        &:hover,
+        &:visited:hover {
+            color: $grey-90;
+        }
         &.move-to-sprint {
             display: none;
         }

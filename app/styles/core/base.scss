@@ -52,6 +52,8 @@ body {
 }
 
 .menu-secondary {
+    background-color: $grey-02;
+    border-right: 1px solid darken($grey-02, 3%);
     flex: 0 0 auto;
     min-height: $main-height;
     min-width: 0;
@@ -60,12 +62,45 @@ body {
     .search-in {
         margin-top: .5rem;
     }
+    .settings-nav {
+        background-color: $grey-05;
+    }
+    ul li {
+        a {
+            color: $grey-60;
+        }
+        &:hover,
+        &:hover a {
+            background: lighten($grey-02, 3%);
+            color: lighten($grey-60, 5%);
+        }
+        .active {
+            background: lighten($grey-02, 6%);
+            color: lighten($grey-60, 10%);
+        }
+    }
 }
 
 .menu-tertiary {
+    background-color: $tertiary;
+    border-right: 1px solid darken($tertiary, 3%);
     flex: 0 0 auto;
     min-height: $main-height;
     width: 250px;
+    ul li {
+        a {
+            color: $grey-70;
+        }
+        &:hover,
+        &:hover a {
+            background: lighten($tertiary, 3%);
+            color: lighten($grey-70, 5%);
+        }
+        .active {
+            background: lighten($tertiary, 6%);
+            color: lighten($grey-70, 10%);
+        }
+    }
 }
 
 .main {
@@ -90,6 +125,9 @@ body {
     }
     .action-buttons {
         flex-shrink: 0;
+        .button-green {
+            @include font-size(small)
+        }
     }
     .button {
         color: $white;

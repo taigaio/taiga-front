@@ -20,7 +20,7 @@
 .attachments-header {
     align-content: center;
     align-items: center;
-    background: $mass-white;
+    background: $grey-05;
     display: flex;
     justify-content: space-between;
     min-height: 36px;
@@ -38,14 +38,9 @@
         cursor: pointer;
         margin-left: .25rem;
         &.add-attachment-button {
-            background: $gray;
             border: 0;
             display: inline-block;
             padding: .5rem;
-            transition: background .25s;
-            &:hover {
-                background: $primary-light;
-            }
         }
         svg {
             fill: $white;

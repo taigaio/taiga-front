@@ -10,10 +10,12 @@
         display: flex;
         padding: 1rem 0;
         &.active {
-            .module-icon .icon,
+            .module-icon .icon {
+                fill: $grey-70;
+                stroke: $grey-70;
+            }
             .module-name {
-                color: $primary;
-                fill: $primary;
+                color: $grey-70;
             }
         }
     }
@@ -23,7 +25,8 @@
         margin: 0 .5rem 0 0;
         .icon {
             @include svg-size(3rem);
-            fill: $gray-light;
+            fill: $grey-50;
+            stroke: $grey-50;
         }
     }
     .module-name {

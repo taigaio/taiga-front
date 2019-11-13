@@ -1,6 +1,7 @@
 .auth {
     @include triangled-bg;
     align-items: center;
+    background: $primary;
     bottom: 0;
     display: flex;
     flex-direction: row;
@@ -26,9 +27,9 @@
         @include font-size(xxlarge);
         @include font-type(light);
         color: $white;
+        display: block;
         margin-bottom: 1rem;
         text-align: center;
-
     }
     .tagline {
         @include font-size(xlarge);

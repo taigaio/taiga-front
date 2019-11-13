@@ -91,8 +91,14 @@
             vertical-align: middle;
         }
     }
+    .privacy-project + label {
+        @include font-type(text);
+        display: inline-flex;
+        width: 100%;
+    }
     .privacy-project:checked {
         + label {
+            @include font-type(text);
             background: $primary-light;
             color: $white;
             svg {
@@ -106,6 +112,7 @@
     }
     .privacy-project[disabled] {
         + label {
+            @include font-type(text);
             background: $mass-white;
             box-shadow: none;
             color: $gray-light;

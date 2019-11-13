@@ -13,8 +13,11 @@ $secondary-75: #BDD65A;
 $secondary-50: #D3E391;
 $secondary-25: #E9F1C8;
 
+$tertiary: #C6C6D4;
+
 $red:  #FF6363;
-$red-25: #FFE7E7;
+$red-25: #FFA5A5;
+$red-10: #FFE7E7;
 
 $grey-02: #F9F9FB;
 $grey-05: #F1F1F4;
@@ -29,30 +32,24 @@ $grey-80: #2D2D39;
 $grey-90: #16171D;
 
 
-// Colors
+// Color aliases for retrocompatibility
 $black: #000;
 $blackish: $grey-90;
-$gray-dark: $grey-80;
 $grayer: $grey-70;
 $gray: $grey-60;
 $gray-light: $grey-50;
-$gray-lighter: $grey-40;
 $gray-lighter: $grey-30;
-$white-darker: $grey-20;
-$white-dark: $grey-10;
-$whitish: $grey-05;
-$mass-white: $grey-02;
+$whitish: $grey-10;
+$mass-white: $grey-05;
 $white: #fff;
 
 // Primary colors
 $primary-light: $primary-75;
 $primary-lighter: $primary-10;
-$primary: $primary;
 $primary-dark: $primary-50;
 $primary-background: $primary-25;
 
 // Secondary colors
-$secondary: $secondary;
 $secondary-light: $secondary-50;
 $secondary-dark: #91B011;
 
@@ -78,4 +75,4 @@ $tribe-secondary: darken($tribe-primary, 10%);
 
 $top-icon-color: #11241f;
 $dropdown-color: rgba(darken($grayer, 20%), 1);
-$code-bg: #272822;
+$code-bg: #272822;  

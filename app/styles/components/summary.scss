@@ -19,7 +19,7 @@ $summary-background: $grayer;
     }
     .data {
         .number {
-            color: $primary-light;
+            color: $primary-50;
         }
     }
     .number {
@@ -61,10 +61,11 @@ $summary-background: $grayer;
             }
         }
         svg {
-            fill: $black;
+            fill: $grey-40;
             height: 100%;
             max-height: 2rem;
             max-width: 2rem;
+            stroke: $grey-40;
             transition: all .2s;
             width: 100%;
         }
@@ -99,7 +100,7 @@ $summary-background: $grayer;
     position: relative;
     width: 15%;
     .current-progress {
-        background: $primary-light;
+        background-color: $secondary;
         height: 24px;
     }
     .defined-points {
@@ -182,6 +183,10 @@ $summary-background: $grayer;
             }
         }
     }
+    a:hover .icon {
+        fill: $primary-50;
+        stroke: $primary-50;
+    }
     .points-per-role-stats-content {
         display: flex;
         padding-left: 1rem;
@@ -215,7 +220,7 @@ $summary-background: $grayer;
     @include font-type(light);
     align-content: center;
     align-items: center;
-    background: rgba($primary-dark, .15);
+    background: $grey-02;
     display: flex;
     flex-direction: row;
     justify-content: center;

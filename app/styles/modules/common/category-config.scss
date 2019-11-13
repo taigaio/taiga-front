@@ -31,22 +31,15 @@
         flex: 1;
         width: 280px;
         .role-summary-single {
-            background: $gray-light;
             display: inline-block;
             height: 20px;
             margin-right: .1rem;
             width: 15px;
-            &.active {
-                background: $primary;
-            }
-            &.inactive {
-                background: $gray;
-            }
         }
     }
     .category-items {
         @include slide(400px, hidden);
-        background-color: $whitish;
+        background-color: $grey-02;
         width: 100%;
         .items-container {
             padding: 1rem;

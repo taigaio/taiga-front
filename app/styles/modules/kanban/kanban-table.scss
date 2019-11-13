@@ -78,7 +78,7 @@ $column-padding: .5rem 1rem;
     .task-colum-name {
         @include font-size(medium);
         align-items: center;
-        background: $mass-white;
+        background-color: $grey-02;
         border-top: 3px solid $gray-light;
         color: $gray;
         display: flex;
@@ -111,8 +111,9 @@ $column-padding: .5rem 1rem;
             margin-right: .3rem;
         }
         .icon {
-            fill: $gray-light;
+            fill: $grey-30;
             height: 1rem;
+            stroke: $grey-30;
             transition: color .2s linear;
             width: 1rem;
             &:hover {
@@ -126,6 +127,7 @@ $column-padding: .5rem 1rem;
     @include font-size(medium);
     display: flex;
     height: 100%;
+    margin-top: 1px;
     overflow: hidden;
     overflow-x: auto;
     width: 100%;
@@ -159,7 +161,7 @@ $column-padding: .5rem 1rem;
         }
     }
     .kanban-uses-box {
-        background: $mass-white;
+        background-color: $grey-02;
     }
     .kanban-task-selected {
         &.card:not(.gu-transit-multi) {

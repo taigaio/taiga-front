@@ -702,11 +702,12 @@
         }
     }
 
-    .lightbox-create-related-user-stories {
-        .related-with-selector .related-with-selector-single:first-child {
-            margin-left: .5rem;
-            margin-right: 0;
-        }
+    .button-group .button-group-single:first-child {
+        margin-left: .5rem;
+        margin-right: 0;
+    }
+
+    .lightbox-create-related-user-stories .new-user-story-options {
         .new-user-story-options {
             margin-left: 0;
             margin-right: auto;

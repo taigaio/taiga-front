@@ -40,13 +40,13 @@
             tg-svg(svg-icon="icon-view-more")
 
         .ticket-users-actions(ng-if="isEditable")
-            .ticket-users-action(
+            a.ticket-users-action(
                 ng-click="openAssignedUsers()"
             )
                 tg-svg.users-action.icon(svg-icon="icon-add")
                 span {{ "COMMON.ASSIGNED_USERS.ADD_ASSIGNED" | translate }}
 
-            .ticket-users-action(
+            a.ticket-users-action(
                 ng-if="!selfAssigned"
                 ng-click="selfAssign()"
             )

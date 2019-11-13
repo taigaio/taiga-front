@@ -187,7 +187,7 @@
 
 .card-statistics {
     @include font-size(small);
-    color: lighten($gray-light, 25%);
+    color: $grey-30;
     display: flex;
     margin-left: auto;
     .statistic {
@@ -212,8 +212,9 @@
     }
     .icon {
         @include svg-size(.75rem);
-        fill: lighten($gray-light, 25%);
+        fill: $grey-30;
         margin-right: .2rem;
+        stroke: $grey-30;
     }
     .icon-iocaine {
         fill: $purple-eggplant;
@@ -232,7 +233,7 @@
         width: 100%;
     }
     .card-completion-percentage {
-        background: $primary-light;
+        background-color: $secondary;
         cursor: pointer;
         height: .4rem;
         left: 0;
@@ -277,7 +278,8 @@
     }
     svg {
         @include svg-size($width: 2rem, $height: .3rem);
-        fill: $whitish;
+        fill: $grey-20;
+        stroke: $grey-20;
     }
 }
 
@@ -293,7 +295,7 @@
     border-bottom: 1px solid $whitish;
     list-style: none;
     a {
-        color: $gray-light;
+        color: $grey-70;
         display: block;
         overflow: hidden;
         padding: .5rem .75rem;

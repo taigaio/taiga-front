@@ -10,7 +10,7 @@
     display: flex;
     transition: background .2s;
     &:hover {
-        background: rgba($primary-light, .05);
+        background-color: $primary-10;
         .icon-drag {
             opacity: 1;
         }
@@ -19,7 +19,12 @@
         cursor: pointer;
     }
     &.is-blocked {
-        background: rgba($red-light, .5);
+        background: $red-light;
+        a,
+        span,
+        div {
+            color: $white;
+        }
     }
     &.is-closed {
         .name a {
@@ -76,13 +81,13 @@
         top: .25rem;
     }
     .progress-bar {
-        background: $mass-white;
+        background-color: $grey-05;
         max-width: 40vw;
         padding-right: 1rem;
         width: 100%;
     }
     .progress-status {
-        background: $primary-light;
+        background-color: $secondary;
         width: 10vw;
     }
     .vote {

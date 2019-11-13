@@ -232,6 +232,9 @@ tg-wysiwyg {
     }
     .read-mode {
         cursor: pointer;
+        .wysiwyg {
+            padding: .5rem 0;
+        }
     }
     .medium {
         border: 1px solid transparent;

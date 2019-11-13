@@ -8,8 +8,9 @@
         margin: 2rem 0 1rem;
         padding: .9rem 1rem;
         h1 {
+            @include font-type(text);
             @include font-size(larger);
-            @include font-type(light);
+            color: $primary;
             margin: 0;
         }
     }
@@ -24,6 +25,7 @@
         stroke: $primary-light;
     }
     .create-project-btn {
+        @include font-size(small);
         margin-right: .25rem;
         padding: .6rem 2.5rem;
     }

@@ -14,11 +14,17 @@ input[type="date"],
 input[type="password"],
 select,
 textarea {
-    border: 1px solid;
+    background: $grey-02;
+    border: 1px solid $gray-light;
+    color: $grayer;
     margin: 0;
     padding: 8px;
     width: 100%;
+    @include placeholder {
+        color: $gray-lighter;
+    }
     &.checksley-error {
+        border: 1px solid $red;
         transition: border .3s linear;
     }
 }
