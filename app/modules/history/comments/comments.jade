@@ -1,4 +1,10 @@
 section.comments
+    tg-comment-wysiwyg(
+        tg-check-permission="{{::vm.canAddCommentPermission}}"
+        type="vm.type"
+        ng-if="!vm.reverse"
+    )
+
     .comments-wrapper
         tg-comment.comment(
             ng-repeat="comment in vm.comments track by comment.id"
@@ -19,4 +25,5 @@ section.comments
     tg-comment-wysiwyg(
         tg-check-permission="{{::vm.canAddCommentPermission}}"
         type="vm.type"
+        ng-if="vm.reverse"
     )
