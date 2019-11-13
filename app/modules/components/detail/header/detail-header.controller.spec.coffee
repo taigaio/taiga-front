@@ -17,8 +17,8 @@
 # File: components/detail/header/detail-header.controller.spec.coffee
 ###
 
-describe "StoryHeaderComponent", ->
-    headerDetailCtrl =  null
+describe "DetailHeaderComponent", ->
+    DetailHeaderCtrl =  null
     provide = null
     controller = null
     rootScope = null
@@ -45,13 +45,6 @@ describe "StoryHeaderComponent", ->
 
         provide.value "$tgQueueModelTransformation", mocks.tgQueueModelTransformation
 
-    _mockTgNav = () ->
-        mocks.navUrls = {
-            resolve: sinon.stub().returns('project-issues-detail')
-        }
-
-        provide.value "$tgNavUrls", mocks.navUrls
-
     _mockWindow = () ->
         mocks.window = {
             getSelection: sinon.stub()
@@ -65,80 +58,66 @@ describe "StoryHeaderComponent", ->
             _mockRootScope()
             _mockTgConfirm()
             _mockTgQueueModelTransformation()
-            _mockTgNav()
             _mockWindow()
 
             return null
 
     beforeEach ->
-        module "taigaUserStories"
+        module "taigaBase"
 
         _mocks()
 
         inject ($controller) ->
             controller = $controller
 
-            headerDetailCtrl = controller "StoryHeaderCtrl", {}, {
+            DetailHeaderCtrl = controller "DetailHeaderCtrl", {}, {
                 item: {
                     subject: 'Example subject'
                 }
             }
 
-        headerDetailCtrl.originalSubject = headerDetailCtrl.item.subject
-
-    it "previous item neighbor", () ->
-        headerDetailCtrl.project = {
-            slug: 'example_subject'
-        }
-        headerDetailCtrl.item.neighbors = {
-            previous: {
-                ref: 42
-            }
-        }
-        headerDetailCtrl._checkNav()
-        headerDetailCtrl.previousUrl = mocks.navUrls.resolve("project-issues-detail")
-        expect(headerDetailCtrl.previousUrl).to.be.equal("project-issues-detail")
+        DetailHeaderCtrl.originalSubject = DetailHeaderCtrl.item.subject
 
     it "check permissions", () ->
-        headerDetailCtrl.project = {
+        DetailHeaderCtrl.project = {
             my_permissions: ['view_us']
         }
-        headerDetailCtrl.requiredPerm = 'view_us'
-        headerDetailCtrl._checkPermissions()
-        expect(headerDetailCtrl.permissions).to.be.eql({canEdit: true})
+        DetailHeaderCtrl.requiredPerm = 'view_us'
+        DetailHeaderCtrl._checkPermissions()
+        expect(DetailHeaderCtrl.permissions).to.be.eql({canEdit: true})
 
     it "edit subject without selection", () ->
         mocks.window.getSelection.returns({
             type: 'Range'
         })
-        headerDetailCtrl.editSubject(true)
-        expect(headerDetailCtrl.editMode).to.be.false
+        DetailHeaderCtrl.editSubject(true)
+        expect(DetailHeaderCtrl.editMode).to.be.false
 
     it "edit subject on click", () ->
         mocks.window.getSelection.returns({
             type: 'potato'
         })
-        headerDetailCtrl.editSubject(true)
-        expect(headerDetailCtrl.editMode).to.be.true
+        DetailHeaderCtrl.editSubject(true)
+        expect(DetailHeaderCtrl.editMode).to.be.true
 
     it "do not edit subject", () ->
         mocks.window.getSelection.returns({
             type: 'Range'
         })
-        headerDetailCtrl.editSubject(false)
-        expect(headerDetailCtrl.editMode).to.be.false
+        DetailHeaderCtrl.editSubject(false)
+        expect(DetailHeaderCtrl.editMode).to.be.false
 
     it "save on keydown Enter", () ->
         event = {}
         event.which = 13
-        headerDetailCtrl.saveSubject = sinon.stub()
-        headerDetailCtrl.onKeyDown(event)
-        expect(headerDetailCtrl.saveSubject).have.been.called
+        DetailHeaderCtrl.saveSubject = sinon.stub()
+        DetailHeaderCtrl.onKeyDown(event)
+        expect(DetailHeaderCtrl.saveSubject).have.been.called
 
     it "don't save on keydown ESC", () ->
         event = {}
         event.which = 27
-        headerDetailCtrl.editSubject = sinon.stub()
-        headerDetailCtrl.onKeyDown(event)
-        expect(headerDetailCtrl.item.subject).to.be.equal(headerDetailCtrl.originalSubject)
-        expect(headerDetailCtrl.editSubject).have.been.calledWith(false)
+        DetailHeaderCtrl.editSubject = sinon.stub()
+        DetailHeaderCtrl.onKeyDown(event)
+        expect(DetailHeaderCtrl.item.subject).to.be.equal(DetailHeaderCtrl.originalSubject)
+        expect(DetailHeaderCtrl.editSubject).have.been.calledWith(false)

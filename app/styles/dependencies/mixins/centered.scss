@@ -2,8 +2,15 @@
     margin: 1rem auto;
     max-width: 1200px;
     min-width: 768px;
-    @include breakpoint(tablet) {
-        width: 90%;
+    width: 100%;
+    @include until($widescreen) {
+        padding: 0 1.25rem;
         min-width: 0;
+    }
+    @include until($desktop) {
+        padding: 0 1rem;
+    }
+    @include until($tablet) {
+        padding: 0 .75rem;
     }
 }

@@ -175,7 +175,7 @@
     }
     .level-field,
     .modified-field {
-        @include breakpoint(laptop) {
+        @include until($widescreen) {
             display: none;
         }
     }

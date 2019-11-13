@@ -11,7 +11,7 @@
         padding: .3rem 0;
         text-align: left;
         width: 100%;
-        @include breakpoint(tablet) {
+        @include until($desktop) {
             flex-direction: column;
         }
         @for $i from 1 through 8 {

@@ -1,11 +1,50 @@
-.us-story-main-data {
-    margin-bottom: 1rem;
-    header {
-        align-content: center;
-        align-items: stretch;
+.detail {
+    background: $mass-white;
+    padding: 0;
+    .detail-header-container,
+    .detail-content {
+        background: $white;
+        padding: 1rem;
+    }
+    .detail-header-container {
         display: flex;
-        justify-content: center;
-        margin-bottom: .5rem;
+        margin: 0 0 .5rem;
+        position: relative;
+        @include until($tablet) {
+            display: block;
+        }
+        &.blocked {
+            background: $red-light;
+            color: $white;
+            a,
+            a:hover,
+            .detail-ref,
+            .detail-subject,
+            .section-name,
+            .created-title,
+            .created-date {
+                color: $white;
+            }
+            svg {
+                fill: $white;
+            }
+            a:not(.button):hover {
+                text-decoration: underline;
+            }
+        }
+    }
+    .detail-ref {
+        flex-shrink: 1;
+    }
+    .detail-header {
+        flex-grow: 1;
+        @include until($tablet) {
+            padding: 0;
+        }
+    }
+
+    .action-buttons {
+        margin-top: .5rem;
     }
 }
 
@@ -13,23 +52,21 @@
     align-items: flex-start;
     display: flex;
     justify-content: space-between;
-    @include breakpoint(laptop) {
+    @include until($tablet) {
         flex-direction: column;
         justify-content: flex-start;
     }
     .ticket-created-by {
-        flex-basis: 250px;
-        flex-shrink: 0;
-        @include breakpoint(laptop) {
+        flex-shrink: 1;
+        @include until($tablet) {
+            align-self: flex-end;
             flex-basis: auto;
-            order: 1;
         }
     }
     .tags-block {
         flex: 1;
-        @include breakpoint(laptop) {
-            order: 2;
-        }
+        flex-grow: 1;
+        margin: .5rem 0 0;
         .tag {
             border-color: transparent;
             border-style: solid;

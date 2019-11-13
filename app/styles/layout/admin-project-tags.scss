@@ -120,7 +120,7 @@
         display: inline;
         padding-right: .5rem;
         text-align: center;
-        @include breakpoint(laptop) {
+        @include until($widescreen) {
             display: block;
             padding: .5rem;
         }

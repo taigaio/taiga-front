@@ -6,70 +6,94 @@ div.wrapper(
 )
     tg-project-menu
 
-    div.main.us-detail
-        div.us-detail-header.header-with-actions
-            include ../includes/components/mainTitle
-            .action-buttons
-                a.button-gray(
-                    href=""
-                    tg-check-permission="view_milestones"
-                    tg-nav="project-taskboard:project=project.slug,sprint=sprint.slug"
-                    ng-if="sprint && project.is_backlog_activated"
-                    title="{{'ISSUES.TITLE_LINK_TASKBOARD' | translate}}"
-                    translate="ISSUES.LINK_TASKBOARD"
-                )
-
-        section.us-story-main-data
-            header
-                tg-detail-header.detail-header-container(
+    div.main.detail
+        .detail-header-container(ng-class="{blocked: issue.is_blocked}")
+            tg-detail-nav(item="issue")
+            .detail-ref {{'#' + issue.ref}}
+            .detail-header
+                tg-detail-header(
                     item="issue"
+                    section-name="sectionName"
                     project="project"
                     required-perm="modify_issue"
-                    ng-class="{blocked: issue.is_blocked}"
                     ng-if="project && issue"
                     format="text"
                 )
-            .subheader
-                tg-tag-line.tags-block(
-                    ng-if="issue && project"
-                    project="project"
-                    item="issue"
-                    permissions="modify_issue"
-                )
-                tg-created-by-display.ticket-created-by(ng-model="issue")
 
-        section.duty-content
-            tg-item-wysiwyg(
-                type="issue",
-                model="issue",
-                required-perm="modify_issue"
+                //- Issue origin from github
+                .detail-header-line.issue-external-reference(ng-if="vm.item.external_reference")
+                    span(translate="ISSUES.EXTERNAL_REFERENCE")
+                    a(
+                        target="_blank"
+                        ng-href="{{::vm.item.external_reference[1]}}"
+                        ng-title="{{'ISSUES.GO_TO_EXTERNAL_REFERENCE' | translate}}"
+                    )
+                        span {{ ::vm.item.external_reference[1] }}
+
+                //- User Stories generated from issue
+                .detail-header-line.item-generated-us(
+                    ng-if="issue.generated_user_stories.length"
+                    tg-check-permission="view_us"
+                )
+                    span(ng-bind="'COMMON.PROMOTED_'+issue._name.toUpperCase() | translate")
+                    a.primary(
+                        ng-repeat="userstory in issue.generated_user_stories track by userstory.id"
+                        tg-nav="project-userstories-detail:project=project.slug,ref=userstory.ref"
+                        ng-bind-html="'#' + userstory.ref + ' '+ userstory.subject | emojify"
+                    )
+
+                .action-buttons
+                    a.button.button-gray(
+                        href=""
+                        tg-check-permission="view_milestones"
+                        tg-nav="project-taskboard:project=project.slug,sprint=sprint.slug"
+                        ng-if="sprint && project.is_backlog_activated"
+                        title="{{'ISSUES.TITLE_LINK_TASKBOARD' | translate}}"
+                        translate="ISSUES.LINK_TASKBOARD"
+                    )
+
+                .subheader
+                    tg-tag-line.tags-block(
+                        ng-if="issue && project"
+                        project="project"
+                        item="issue"
+                        permissions="modify_issue"
+                    )
+                    tg-created-by-display.ticket-created-by(ng-model="issue")
+
+
+        .detail-content
+            section.duty-content
+                tg-item-wysiwyg(
+                    type="issue",
+                    model="issue",
+                    required-perm="modify_issue"
+                )
+
+            // Custom Fields
+            tg-custom-attributes-values(
+                ng-model="issue"
+                type="issue"
+                project="project"
+                required-edition-perm="modify_issue"
             )
 
-        // Custom Fields
-        tg-custom-attributes-values(
-            ng-model="issue"
-            type="issue"
-            project="project"
-            required-edition-perm="modify_issue"
-        )
+            tg-attachments-full(
+                obj-id="issue.id"
+                type="issue",
+                project-id="projectId"
+                edit-permission = "modify_issue"
+            )
 
-        tg-attachments-full(
-            obj-id="issue.id"
-            type="issue",
-            project-id="projectId"
-            edit-permission = "modify_issue"
-        )
+            tg-history-section(
+                ng-if="issue"
+                type="issue"
+                name="issue"
+                id="issue.id"
+                project-id="projectId"
+            )
 
-        tg-history-section(
-            ng-if="issue"
-            type="issue"
-            name="issue"
-            id="issue.id"
-            project-id="projectId"
-        )
-
-    sidebar.sidebar.ticket-data
-
+    sidebar.menu-secondary.sidebar.ticket-data
         section.ticket-header
             span.ticket-title(
                 tg-issue-status-display

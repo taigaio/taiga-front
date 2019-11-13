@@ -17,9 +17,9 @@
 # File: components/detail/header/detail-header.controller.coffee
 ###
 
-module = angular.module("taigaUserStories")
+module = angular.module('taigaBase')
 
-class StoryHeaderController
+class DetailHeaderController
     @.$inject = [
         "$rootScope",
         "$tgConfirm",
@@ -37,21 +37,6 @@ class StoryHeaderController
             'issues': 'issue',
             'userstories': 'us',
         }[@.item._name]
-
-    _checkNav: () ->
-        if @.item.neighbors.previous?.ref?
-            ctx = {
-                project: @.project.slug
-                ref: @.item.neighbors.previous.ref
-            }
-            @.previousUrl = @navUrls.resolve("project-" + @.item._name + "-detail", ctx)
-
-        if @.item.neighbors.next?.ref?
-            ctx = {
-                project: @.project.slug
-                ref: @.item.neighbors.next.ref
-            }
-            @.nextUrl = @navUrls.resolve("project-" + @.item._name + "-detail", ctx)
 
     _checkPermissions: () ->
         @.permissions = {
@@ -96,7 +81,4 @@ class StoryHeaderController
             return item
         return transform.then(onEditSubjectSuccess, onEditSubjectError)
 
-    relateToEpic: (us) ->
-        @rootScope.$broadcast("relate-to-epic:add", us)
-
-module.controller("StoryHeaderCtrl", StoryHeaderController)
+module.controller("DetailHeaderCtrl", DetailHeaderController)

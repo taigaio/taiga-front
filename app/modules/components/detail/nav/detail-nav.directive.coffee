@@ -14,30 +14,26 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: components/detail/header/detail-header.directive.coffee
+# File: components/detail/nav/detail-nav.directive.coffee
 ###
 
 module = angular.module('taigaBase')
 
-DetailHeaderDirective = () ->
-    @.$inject = []
-
+DetailNavDirective = () ->
     link = (scope, el, attrs, ctrl) ->
-        ctrl._checkPermissions()
+        scope.$watch "vm.item", (value) ->
+            return if not value
+            ctrl._checkNav()
 
     return {
         link: link,
-        controller: "DetailHeaderCtrl",
+        controller: "DetailNavCtrl",
         bindToController: true,
         scope: {
-            item: "=",
-            project: "=",
-            sectionName: "="
-            requiredPerm: "@"
+            item: "="
         },
         controllerAs: "vm",
-        templateUrl:"components/detail/header/detail-header.html"
+        templateUrl:"components/detail/nav/detail-nav.html"
     }
 
-
-module.directive("tgDetailHeader", DetailHeaderDirective)
+module.directive("tgDetailNav", DetailNavDirective)

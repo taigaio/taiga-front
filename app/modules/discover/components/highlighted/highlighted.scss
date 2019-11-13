@@ -3,7 +3,7 @@
     display: flex;
     justify-content: space-around;
     margin-bottom: 4rem;
-    @include breakpoint(tablet) {
+    @include until($desktop) {
         flex-direction: column;
         tg-most-active {
             margin-top: 4rem;
@@ -17,7 +17,7 @@
     }
     tg-most-liked {
         margin-right: 8%;
-        @include breakpoint(tablet) {
+        @include until($desktop) {
             margin-right: 0;
         }
     }

@@ -203,8 +203,8 @@
             "COUNTER_TITLE": "{total, plural, one{one vote} other{# votes}}"
         },
         "PROMOTE_TO_US": "Promote to User Story",
-        "PROMOTED_ISSUES": "This Issue has been promoted to US:",
-        "PROMOTED_TASKS": "This Task has been promoted to US:",
+        "PROMOTED_ISSUES": "This issue has been promoted to",
+        "PROMOTED_TASKS": "This task has been promoted to",
         "CONFIRM_PROMOTE": {
           "ISSUE": {
             "TITLE": "Promote this Issue to a new user story",

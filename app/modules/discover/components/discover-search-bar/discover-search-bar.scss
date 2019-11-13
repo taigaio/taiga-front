@@ -21,7 +21,7 @@
     form {
         margin: 0 30%;
         position: relative;
-        @include breakpoint(tablet) {
+        @include until($tablet) {
             margin: 0 .5rem;
         }
     }

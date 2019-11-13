@@ -1,106 +1,102 @@
-.detail-header-container {
-    background: $grey-02;
+.detail-ref {
+    @include font-type(bold);
+    color: $grayer;
+    font-size: 1.625em;
+}
+
+.detail-nav {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    z-index: 9999;
+    a {
+        display: inline-block;
+    }
+    svg {
+        @include svg-size(1.2rem);
+        fill: currentColor;
+    }
+}
+
+.detail-header {
     flex: 1;
-    padding: 1rem;
+    padding: 0 0 0 1rem;
     position: relative;
     &:hover {
         .detail-edit {
             opacity: 1;
         }
     }
-    &.blocked {
-        background: $red;
-        color: $white;
-        transition: all .2s linear;
-        a,
-        .detail-number,
-        .detail-subject {
-            color: $white;
-        }
-        svg {
-            fill: $white;
-        }
-    }
-    .item-generated-us,
-    .item-origin-issue,
-    .item-origin-task,
-    .task-belongs-to,
-    .belong-to-epics-wrapper,
-    .block-desc-container,
-    .issue-external-reference {
+
+    .detail-header-line {
         @include font-size(small);
-        margin-top: .5rem;
+        margin: .5rem 0 0;
+        a {
+            color: $primary;
+            padding: 0 .2rem;
+            &:hover {
+                color: $primary-light;
+            }
+        }
+        .item-ref {
+            margin-right: .25rem;
+        }
     }
+
+    .relate-to-epic {
+        margin: .5rem 0 1rem;
+    }
+
     .relate-to-epic-button {
         color: $gray-light;
         cursor: pointer;
-        display: inline-block;
         &:hover {
             color: $primary-light;
         }
         .icon-epics {
             @include svg-size(.9rem);
             fill: currentColor;
-            margin: .5rem .25rem 0 0;
+            margin: 0 .25rem 0 0;
         }
         .relate-to-epic-text {
             @include font-size(small);
         }
     }
-    .item-generated-us,
-    .task-belongs-to,
-    .item-origin-issue,
-    .item-origin-task,
-    .issue-external-reference {
-        a {
-            cursor: pointer;
-            padding: 0 .2rem;
-        }
-        .item-ref {
-            padding: 0 .2rem;
-        }
-    }
 }
 
 .detail-title-wrapper {
-    @include font-size(larger);
-    @include font-type(text);
-    align-content: center;
     display: flex;
-    max-width: 95%;
-    position: relative;
+    margin: 0 2rem .5rem 0;
     transition: all .2s linear;
-    &.blocked {
-        background: $red;
-        transition: all .2s linear;
-    }
     .detail-title-text {
-        line-height: normal;
+        color: $grayer;
+        font-size: 1.75rem;
+        line-height: 2rem;
         margin: 0;
-    }
-    .detail-number {
-        color: $gray-light;
-        flex-shrink: 0;
-        margin-right: .5rem;
     }
     .detail-subject {
         color: $gray;
         flex-grow: 1;
     }
+    .edit-title-input {
+        font-size: 1.2rem;
+    }
     .detail-edit {
         cursor: pointer;
-        margin-left: .75rem;
+        margin-left: .5rem;
         opacity: 0;
         transition: opacity .2s;
-    }
-    .detail-edit,
-    .due-date-icon {
         svg {
             @include svg-size(1.3rem);
         }
     }
-    &.readonly .due-date-icon {
-        margin-left: 2.7rem;
+
+    .due-date-icon {
+        position: relative;
+        top: .1rem;
+        svg {
+            @include svg-size(1.2rem);
+        }
     }
 }
 
@@ -109,6 +105,7 @@
     @include font-type(text);
     display: flex;
     flex: 1;
+    margin-right: 1.5rem;
     .edit-title-input {
         background: $white;
         flex: 1;
@@ -122,27 +119,29 @@
         }
     }
     .save-title-button {
-        margin-left: 1rem;
+        margin-left: .5rem;
+    }
+}
+
+.detail-project {
+    @include font-type(text);
+    display: flex;
+    margin: 0 0 1rem;
+    text-transform: uppercase;
+    .section-name {
+        color: $gray-lighter;
+        margin-left: .5rem;
     }
 }
 
 .block-desc-container {
+    padding: .25rem 0;
     .block-description-title {
         @include font-type(semibold);
+        background: $white;
+        color: $red-light;
         margin-right: .5rem;
-
-    }
-}
-
-.issue-nav {
-    position: absolute;
-    right: 1rem;
-    top: 1rem;
-    a {
-        display: inline-block;
-    }
-    svg {
-        @include svg-size(1.2rem);
-        fill: currentColor;
+        padding: .1rem .25rem;
+        text-transform: uppercase;
     }
 }
