@@ -2,6 +2,18 @@
 
 ## Unreleased
 
+## 5.0.0 (2019-11-13)
+
+- BREAKING CHANGE Big refactor of base CSS for themes that can break custom themes.
+
+- Change comment box position based on comments order.
+
+- Refresh attachment URL on markdown fields to support protected backend.
+
+- Fixed drag&drop of attachments to text fields.
+
+- Redesign detail header.
+
 ## 4.2.14 (2019-10-01)
 
 - Disabled malfunctioning notification infinite scroll.
