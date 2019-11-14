@@ -648,6 +648,7 @@
             max-width: $width - $sidebar-width;
         }
         .sidebar {
+            background: none;
             border-left: 2px solid $whitish;
             margin-left: $spacing;
             padding-left: $spacing;

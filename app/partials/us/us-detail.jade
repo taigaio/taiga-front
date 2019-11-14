@@ -28,19 +28,6 @@ div.wrapper(
                             format="text"
                         )
 
-                //- User Story relate to Epic
-                .detail-header-line.relate-to-epic(tg-check-permission="modify_epic")
-                    a.relate-to-epic-button.ng-animate-disabled(
-                        href=""
-                        title="{{'US.RELATE_TO_EPIC' | translate}}"
-                        ng-click="relateToEpic(us)"
-                    )
-                        tg-svg(
-                            svg-icon="icon-epics"
-                            svg-title-translate="US.RELATE_TO_EPIC"
-                        )
-                        span.relate-to-epic-text(translate="US.RELATE_TO_EPIC")
-
                 //- User Story promoted from task
                 .detail-header-line.item-origin-task(
                     ng-if="us.origin_task",
@@ -76,7 +63,24 @@ div.wrapper(
                         title="{{'US.TITLE_LINK_TASKBOARD' | translate}}"
                         translate="US.LINK_TASKBOARD"
                     )
-                .subheader
+                .subheader(ng-class="{'has-tags': us.tags.length}")
+
+                    //- User Story relate to Epic
+                    .detail-header-line.relate-to-epic(
+                        ng-if="project.is_epics_activated",
+                        tg-check-permission="modify_epic"
+                    )
+                        a.relate-to-epic-button.ng-animate-disabled(
+                            href=""
+                            title="{{'US.RELATE_TO_EPIC' | translate}}"
+                            ng-click="relateToEpic(us)"
+                        )
+                            tg-svg(
+                                svg-icon="icon-epics"
+                                svg-title-translate="US.RELATE_TO_EPIC"
+                            )
+                            span.relate-to-epic-text(translate="US.RELATE_TO_EPIC")
+
                     tg-tag-line.tags-block(
                         ng-if="us && project"
                         project="project"

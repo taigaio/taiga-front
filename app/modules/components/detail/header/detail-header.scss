@@ -42,24 +42,24 @@
             margin-right: .25rem;
         }
     }
-
     .relate-to-epic {
-        margin: .5rem 0 1rem;
-    }
+        margin: .5rem 1rem 0 0;
 
-    .relate-to-epic-button {
-        color: $gray-light;
-        cursor: pointer;
-        &:hover {
-            color: $primary-light;
-        }
-        .icon-epics {
-            @include svg-size(.9rem);
-            fill: currentColor;
-            margin: 0 .25rem 0 0;
-        }
-        .relate-to-epic-text {
-            @include font-size(small);
+        .relate-to-epic-button {
+            align-content: flex-end;
+            color: $gray-light;
+            cursor: pointer;
+            display: flex;
+            &:hover {
+                color: $primary-light;
+            }
+            .icon-epics {
+                fill: currentColor;
+                margin-right: .25rem;
+            }
+            .relate-to-epic-text {
+                font-size: .9375rem;
+            }
         }
     }
 }

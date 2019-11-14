@@ -49,9 +49,11 @@
 }
 
 .subheader {
-    align-items: flex-start;
+    align-items: flex-end;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
+    margin-top: 1rem;
     @include until($tablet) {
         flex-direction: column;
         justify-content: flex-start;
@@ -63,14 +65,24 @@
             flex-basis: auto;
         }
     }
+    .tags-container {
+        align-items: flex-end;
+        display: flex;
+        flex-wrap: wrap;
+        margin-right: .25rem;
+    }
     .tags-block {
+        align-items: flex-end;
         flex: 1;
         flex-grow: 1;
-        margin: .5rem 0 0;
         .tag {
             border-color: transparent;
             border-style: solid;
+            margin: .25rem .25rem 0;
         }
+    }
+    &.has-tags .relate-to-epic {
+        flex-basis: 100%;
     }
 }
 
