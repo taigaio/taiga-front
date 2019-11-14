@@ -782,6 +782,10 @@
         position: relative;
     }
 
+    .self-assign {
+        display: block;
+    }
+
     .pop-status {
         @include popover($pop-width, $control-height - 2px);
     }
