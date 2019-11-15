@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## 5.0.1 (2019-11-15)
+
+- Fix CSS issue.
+
 ## 5.0.0 (2019-11-13)
 
 - BREAKING CHANGE Big refactor of base CSS for themes that can break custom themes.
