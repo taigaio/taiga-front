@@ -1,4 +1,6 @@
 .taskboard {
+    display: flex;
+    flex-direction: column;
     height: $main-height;
     overflow: hidden;
     position: relative;
