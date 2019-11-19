@@ -108,6 +108,12 @@ body {
     @include until($desktop) {
         flex: initial;
     }
+    .header-with-actions {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+    }
 }
 
 .hidden {
