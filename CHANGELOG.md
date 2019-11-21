@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## 5.0.2 (2019-11-21)
+
+- Update search counters on backlog when an US is moved.
+
+- Fix several minor CSS bugs.
+
 ## 5.0.1 (2019-11-15)
 
 - Fix CSS issue.
