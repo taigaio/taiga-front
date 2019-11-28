@@ -1,4 +1,5 @@
 .colors-table {
+    overflow-x: auto;
     .table-header {
         @include font-size(medium);
         @include font-type(semibold);
@@ -16,8 +17,8 @@
     .row {
         align-items: center;
         display: flex;
-        justify-content: center;
         padding: 1rem;
+        width: 100%;
         &:last-child {
             border: 0;
         }
@@ -50,10 +51,8 @@
             }
         }
         .color-column {
-            flex-basis: 60px;
-            flex-grow: 1;
-            max-width: 100px;
-            position: relative;
+            flex-basis: 80px;
+            min-width: 80px;
         }
         .is-archived-column,
         .is-closed-column,
@@ -69,7 +68,6 @@
             padding: 0 10px;
         }
 
-        .status-name,
         .color-name {
             flex-basis: 150px;
             flex-grow: 1;
@@ -81,23 +79,28 @@
                 display: block;
             }
         }
-        .color-name {
-            flex-basis: 100px;
-        }
+
+        .status-name,
         .status-slug {
-            display: none;
-            flex-basis: 150px;
-            flex-grow: 6;
+            flex-grow: 1;
+            min-width: 150px;
             padding: 0 10px;
-            @include until($desktop) {
-                display: block;
-            }
             span {
                 @include ellipsis(100%);
             }
         }
+        .status-name {
+            flex-basis: 40%;
+        }
+        .status-slug {
+            flex-basis: 30%;
+            @include until($desktop) {
+                display: none;
+            }
+        }
         .options-column {
-            max-width: 100px;
+            max-width: 60px;
+            min-width: 100px;
             opacity: 0;
             text-align: right;
         }
@@ -111,7 +114,6 @@
             text-align: center;
         }
         .status-wip-limit {
-            display: none;
             max-width: 100px;
             padding: 0 0 0 10px;
             text-align: center;

@@ -1,18 +1,17 @@
-section.colors-table.admin-status-table
+section.admin-status-table
     div.project-values-title
         h2 {{ sectionName | translate }}
         a.button.button-gray.show-add-new(href="", title="{{'ADMIN.US_STATUS.ACTION_ADD_STATUS' | translate}}")
             span(translate="ADMIN.US_STATUS.ACTION_ADD_STATUS")
 
-    div.table-header
-        div.row
-            div.color-column(translate="COMMON.FIELDS.COLOR")
-            div.status-name(translate="COMMON.FIELDS.NAME")
-            div.status-slug(translate="COMMON.FIELDS.SLUG")
-            div.is-closed-column(translate="COMMON.FIELDS.IS_CLOSED")
-            div.options-column
-
-    div.table-main
+    div.colors-table
+        div.table-header
+            div.row
+                div.color-column(translate="COMMON.FIELDS.COLOR")
+                div.status-name(translate="COMMON.FIELDS.NAME")
+                div.status-slug(translate="COMMON.FIELDS.SLUG")
+                div.is-closed-column(translate="COMMON.FIELDS.IS_CLOSED")
+                div.options-column
         div.sortable
             div(ng-repeat="value in values", tg-bind-scope)
                 form(tg-bind-scope)
