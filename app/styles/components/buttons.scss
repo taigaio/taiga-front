@@ -246,16 +246,16 @@
     .filter-num {
         @include font-size(small);
         @include font-type(medium);
+        align-items: center;
         background: $red;
         border-radius: 50%;
+        display: inline-flex;
         height: 1rem;
+        justify-content: center;
         left: -.5rem;
         position: absolute;
         top: -.5rem;
         width: 1rem;
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
     }
 }
 
