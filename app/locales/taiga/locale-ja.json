@@ -196,11 +196,11 @@
             "UNWATCH": "フォローをやめる",
             "WATCHERS": "ウォッチャー",
             "BUTTON_TITLE": "この項目のフォローを有効/無効にする",
-            "COUNTER_TITLE": "{total, plural, one{one watcher} other{# 人がフォロー中}}"
+            "COUNTER_TITLE": "{total, plural, 1{one watcher} other{# 人がフォロー中}}"
         },
         "VOTE_BUTTON": {
             "BUTTON_TITLE": "賛成/反対の投票を行う",
-            "COUNTER_TITLE": "{total, plural, one{one vote} other{# 人が賛成}}"
+            "COUNTER_TITLE": "{total, plural, 1{one vote} other{# 人が賛成}}"
         },
         "PROMOTE_TO_US": "ユーザーストーリーに変更する",
         "PROMOTED_ISSUES": "This Issue has been promoted to US:",
@@ -868,9 +868,9 @@
         "HELP": "最も良く使うプロジェクトがトップになるように順序を入れ替えてみましょう。<br/> トップ10のプロジェクトが上のナビゲーションバーのプロジェクトリストに現れます。",
         "PRIVATE": "プライベート プロジェクト",
         "LOOKING_FOR_PEOPLE": "プロジェクトはメンバーを探しています",
-        "FANS_COUNTER_TITLE": "{total, plural, one{one fan} other{# 人のファン}}",
-        "WATCHERS_COUNTER_TITLE": "{total, plural, one{one watcher} other{# 人がフォロー中}}",
-        "MEMBERS_COUNTER_TITLE": "{total, plural, one{one member} other{# 人のメンバー}}",
+        "FANS_COUNTER_TITLE": "{total, plural, 1{one fan} other{# 人のファン}}",
+        "WATCHERS_COUNTER_TITLE": "{total, plural, 1{one watcher} other{# 人がフォロー中}}",
+        "MEMBERS_COUNTER_TITLE": "{total, plural, 1{one member} other{# 人のメンバー}}",
         "BLOCKED_PROJECT": {
             "BLOCKED": "ブロックされたプロジェクト",
             "THIS_PROJECT_IS_BLOCKED": "このプロジェクトは一時的にブロックされています。",
@@ -914,13 +914,13 @@
             "LIKED": "いいね",
             "UNLIKE": "「いいね」を取り消す",
             "BUTTON_TITLE": "Like or unlike this project",
-            "COUNTER_TITLE": "{total, plural, one{one fan} other{# 人のファン}}"
+            "COUNTER_TITLE": "{total, plural, 1{one fan} other{# 人のファン}}"
         },
         "WATCH_BUTTON": {
             "BUTTON_TITLE": "このプロジェクトをフォローして通知ポリシーを設定してください",
             "WATCH": "フォロー",
             "WATCHING": "フォロー中",
-            "COUNTER_TITLE": "{total, plural, one{one watcher} other{# 人がフォロー中}}",
+            "COUNTER_TITLE": "{total, plural, 1{one watcher} other{# 人がフォロー中}}",
             "OPTIONS": {
                 "NOTIFY_ALL": "すべての通知を受信する",
                 "NOTIFY_ALL_TITLE": "このプロジェクトのすべての通知を受信する",
@@ -1437,9 +1437,9 @@
             "MOVE_TO_OPEN_SPRINT": "Move to open sprint",
             "NO_OPEN_SPRINTS": "There are no other open sprints. Please create one first.",
             "SELECT_DESTINATION_PLACEHOLDER": "Select destination",
-            "UNFINISHED_USER_STORIES_COUNT": "{total, plural, one{<strong>#</strong> unfinished user story} other{<strong>#</strong> unfinished user stories}}",
-            "UNFINISHED_STORYLESS_TASKS_COUNT": "{total, plural, one{<strong>#</strong> unfinished storyless task} other{<strong>#</strong> unfinished storyless tasks}}",
-            "UNFINISHED_ISSUES_COUNT": "{total, plural, one{<strong>#</strong> unfinished issue} other{<strong>#</strong> unfinished issue}}",
+            "UNFINISHED_USER_STORIES_COUNT": "{total, plural, 1{<strong>#</strong> unfinished user story} other{<strong>#</strong> unfinished user stories}}",
+            "UNFINISHED_STORYLESS_TASKS_COUNT": "{total, plural, 1{<strong>#</strong> unfinished storyless task} other{<strong>#</strong> unfinished storyless tasks}}",
+            "UNFINISHED_ISSUES_COUNT": "{total, plural, 1{<strong>#</strong> unfinished issue} other{<strong>#</strong> unfinished issue}}",
             "WARNING_ISSUES_NOT_MOVED_TITLE": "You just moved all user stories and taks, and the sprint'll be closed",
             "WARNING_ISSUES_NOT_MOVED": "The issues'll remain in the sprint and don't be removed",
             "WARNING_SPRINT_STILL_OPEN_TITLE": "{total, plural, one{You just moved # item!} other{You just moved # items!}}",
@@ -1820,7 +1820,7 @@
         "PAGE_TITLE": "プロジェクトを探す - Taiga",
         "PAGE_DESCRIPTION": "検索できるTaigaの公開プロジェクトディレクトリ。バックログ、タイムライン、課題、そしてチームを探してみてください。最も人気な、あるいは活気のあるプロジェクトも見つけられます。カンバンやスクラムでフィルターしてみるのも良いかもしれません。",
         "DISCOVER_TITLE": "プロジェクトを探す",
-        "DISCOVER_SUBTITLE": "{projects, plural, one{One public project to discover} other{# 件のプロジェクトが見つかりました}}",
+        "DISCOVER_SUBTITLE": "{projects, plural, 1{One public project to discover} other{# 件のプロジェクトが見つかりました}}",
         "MOST_ACTIVE": "最も活発なプロジェクト",
         "MOST_ACTIVE_EMPTY": "アクティブなプロジェクトはまだありません。",
         "MOST_LIKED": "最も好まれているプロジェクト",
