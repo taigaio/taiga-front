@@ -139,6 +139,11 @@ resourceProvider = ($repo, $http, $urls, $storage) ->
 
         return $storage.get(hash) or {}
 
+    service.promoteToUserStory = (taskId, projectId) ->
+        url = $urls.resolve("promote-task-to-us", taskId)
+        data = {project_id: projectId}
+        return $http.post(url, data)
+
     return (instance) ->
         instance.tasks = service
 

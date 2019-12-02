@@ -104,6 +104,11 @@ resourceProvider = ($repo, $http, $urls, $storage, $q) ->
         params = {project_id: projectId, milestone_id: milestoneId, bulk_issues: data}
         return $http.post(url, params)
 
+    service.promoteToUserStory = (issueId, projectId) ->
+        url = $urls.resolve("promote-issue-to-us", issueId)
+        data = {project_id: projectId}
+        return $http.post(url, data)
+
     return (instance) ->
         instance.issues = service
 

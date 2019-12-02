@@ -135,6 +135,7 @@ urls = {
     "task-watch": "/tasks/%s/watch"
     "task-unwatch": "/tasks/%s/unwatch"
     "task-filters": "/tasks/filters_data"
+    "promote-task-to-us": "/tasks/%s/promote_to_user_story"
 
     # Issues
     "issues": "/issues"
@@ -145,6 +146,7 @@ urls = {
     "issue-downvote": "/issues/%s/downvote"
     "issue-watch": "/issues/%s/watch"
     "issue-unwatch": "/issues/%s/unwatch"
+    "promote-issue-to-us": "/issues/%s/promote_to_user_story"
 
     # Wiki pages
     "wiki": "/wiki"
