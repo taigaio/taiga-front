@@ -160,7 +160,8 @@ ToggleExcludeClosedSprintsVisualization = ($rootscope, $loading, $translate) ->
             $el.off()
 
         $scope.$on "closed-sprints:reloaded", (ctx, sprints) ->
-            currentLoading.finish()
+            if currentLoading
+                currentLoading.finish()
 
             if sprints.length > 0
                 key = "BACKLOG.SPRINTS.ACTION_HIDE_CLOSED_SPRINTS"

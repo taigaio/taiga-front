@@ -66,8 +66,6 @@ BacklogSortableDirective = () ->
                 $(item).addClass('multiple-drag-mirror')
 
             drake.on 'dragend', (item) ->
-                parent = $(item).parent()
-
                 $('.doom-line').remove()
 
                 parent = $(item).parent()
@@ -77,7 +75,7 @@ BacklogSortableDirective = () ->
                 if initIsBacklog || isBacklog
                     sameContainer = (initIsBacklog == isBacklog)
                 else
-                    sameContainer = $(item).scope().sprint.id == parent.scope().sprint.id
+                    sameContainer = parent && $(item).scope().sprint.id == parent.scope().sprint.id
 
                 dragMultipleItems = window.dragMultiple.stop()
 
