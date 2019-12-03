@@ -44,6 +44,13 @@ describe "TransferProject", ->
 
         provide.value "tgProjectsService", mocks.projectsService
 
+    _mockProjectService = () ->
+        mocks.projectService = {
+            fetchProject: sinon.stub()
+        }
+
+        provide.value "tgProjectService", mocks.projectService
+
     _mockLocation = () ->
         mocks.location = {
             path: sinon.stub()
@@ -91,6 +98,7 @@ describe "TransferProject", ->
             provide = $provide
             _mockRouteParams()
             _mockProjectsService()
+            _mockProjectService()
             _mockLocation()
             _mockAuth()
             _mockCurrentUserService()
@@ -245,6 +253,7 @@ describe "TransferProject", ->
           mocks.currentUserService.getUser.returns(user)
           mocks.projectsService.transferValidateToken.withArgs(1, "TOKEN").promise().resolve()
           mocks.projectsService.transferAccept.withArgs(1, "TOKEN", "this is my reason").promise().resolve()
+          mocks.projectService.fetchProject.promise().resolve()
           mocks.tgNavUrls.resolve.withArgs("project-admin-project-profile-details", {project: "slug"}).returns("/project/slug/")
           mocks.translate.instant.withArgs("ADMIN.PROJECT_TRANSFER.ACCEPTED_PROJECT_OWNERNSHIP").returns("ACCEPTED_PROJECT_OWNERNSHIP")
 

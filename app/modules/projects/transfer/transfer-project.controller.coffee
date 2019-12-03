@@ -23,6 +23,7 @@ class TransferProject
     @.$inject = [
         "$routeParams",
         "tgProjectsService"
+        "tgProjectService"
         "$location",
         "$tgAuth",
         "tgCurrentUserService",
@@ -32,7 +33,7 @@ class TransferProject
         "tgErrorHandlingService"
     ]
 
-    constructor: (@routeParams, @projectService, @location, @authService, @currentUserService, @navUrls, @translate, @confirmService, @errorHandlingService) ->
+    constructor: (@routeParams, @projectsService, @projectService, @location, @authService, @currentUserService, @navUrls, @translate, @confirmService, @errorHandlingService) ->
 
     initialize: () ->
         @.projectId = @.project.get("id")
@@ -41,7 +42,7 @@ class TransferProject
         return @._refreshUserData()
 
     _validateToken: () ->
-        return @projectService.transferValidateToken(@.projectId, @.token).then null, (data, status) =>
+        return @projectsService.transferValidateToken(@.projectId, @.token).then null, (data, status) =>
             @errorHandlingService.notfound()
 
     _refreshUserData: () ->
@@ -75,19 +76,20 @@ class TransferProject
 
     transferAccept: (token, reason) ->
         @.loadingAccept = true
-        return @projectService.transferAccept(@.project.get("id"), token, reason).then () =>
-            newUrl = @navUrls.resolve("project-admin-project-profile-details", {
-                project: @.project.get("slug")
-            })
-            @.loadingAccept = false
-            @location.path(newUrl)
+        return @projectsService.transferAccept(@.project.get("id"), token, reason).then () =>
+            @projectService.fetchProject().then () =>
+                newUrl = @navUrls.resolve("project-admin-project-profile-details", {
+                    project: @.project.get("slug")
+                })
+                @.loadingAccept = false
+                @location.path(newUrl)
 
-            @confirmService.notify("success", @translate.instant("ADMIN.PROJECT_TRANSFER.ACCEPTED_PROJECT_OWNERNSHIP"), '', 5000)
-            return
+                @confirmService.notify("success", @translate.instant("ADMIN.PROJECT_TRANSFER.ACCEPTED_PROJECT_OWNERNSHIP"), '', 5000)
+                return
 
     transferReject: (token, reason) ->
         @.loadingReject = true
-        return @projectService.transferReject(@.project.get("id"), token, reason).then () =>
+        return @projectsService.transferReject(@.project.get("id"), token, reason).then () =>
             newUrl = @navUrls.resolve("home", {
                 project: @project.get("slug")
             })
