@@ -1437,12 +1437,12 @@
             "MOVE_TO_OPEN_SPRINT": "Mover al Sprint en curso",
             "NO_OPEN_SPRINTS": "No hay más sprints abiertos. Por favor, crea uno primero.",
             "SELECT_DESTINATION_PLACEHOLDER": "Selecciona destino",
-            "UNFINISHED_USER_STORIES_COUNT": "{total, plural, uno{<strong>#</strong> historia de usuario no terminada} otro{<strong>#</strong> historias de usuario no terminadas}}",
-            "UNFINISHED_STORYLESS_TASKS_COUNT": "{total, plural, uno{<strong>#</strong> tarea sin historia de usuario no terminada} otro{# tareas sin historia de usuario no terminadas}}",
-            "UNFINISHED_ISSUES_COUNT": "{total, plural, uno{<strong>#</strong> de petición no terminada} otro{<strong>#</strong> petición no terminada}}",
+            "UNFINISHED_USER_STORIES_COUNT": "{total, plural, one{<strong>#</strong> historia de usuario no terminada} other{<strong>#</strong> historias de usuario no terminadas}}",
+            "UNFINISHED_STORYLESS_TASKS_COUNT": "{total, plural, one{<strong>#</strong> tarea sin historia de usuario no terminada} other{# tareas sin historia de usuario no terminadas}}",
+            "UNFINISHED_ISSUES_COUNT": "{total, plural, one{<strong>#</strong> de petición no terminada} other{<strong>#</strong> petición no terminada}}",
             "WARNING_ISSUES_NOT_MOVED_TITLE": "Acabas de mover todas las historias de usuario y tareas, y el sprint se cerrará",
             "WARNING_ISSUES_NOT_MOVED": "Las peticiones permanecerán en el sprint y no son eliminadas",
-            "WARNING_SPRINT_STILL_OPEN_TITLE": "{total, plural, uno{Acabas de mover el ítem # !} otro{Acabas de mover los ítems #!}}",
+            "WARNING_SPRINT_STILL_OPEN_TITLE": "{total, plural, one{Acabas de mover el ítem # !} other{Acabas de mover los ítems #!}}",
             "WARNING_SPRINT_STILL_OPEN": "El sprint {{sprintName}} <strong>permanecerá abierto</strong> mientras contenga ítems no terminados."
         }
     },
