@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## 5.0.4 (2019-12-04)
+
+- Fix translation problem with pluralization.
+
 ## 5.0.3 (2019-12-02)
 
 - Fix several minor CSS bugs.
