@@ -39,7 +39,7 @@ class InviteMembersFormController
     _areRolesValidated: () ->
         Object.defineProperty @, 'areRolesValidated', {
             get: () =>
-                roleIds = _.filter Object.values(@.rolesValues), (it) -> return it
+                roleIds = _.filter _.values(@.rolesValues), (it) -> return it
                 return roleIds.length == @.contactsToInvite.size + @.emailsToInvite.size
         }
 
