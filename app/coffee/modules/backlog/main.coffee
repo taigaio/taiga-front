@@ -131,7 +131,6 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             @.loadProjectStats()
 
             @rootscope.$broadcast("filters:update")
-            @confirm.notify("success")
             @analytics.trackEvent("userstory", "create", "create userstory on backlog", 1)
 
         @scope.$on "sprintform:edit:success", =>

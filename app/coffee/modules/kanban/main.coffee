@@ -142,6 +142,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             @analytics.trackEvent("userstory", "create", "create userstory on kanban", 1)
 
         @scope.$on "usform:bulk:success", (event, uss) =>
+            @confirm.notify("success")
             @.refreshTagsColors().then () =>
                 @kanbanUserstoriesService.add(uss)
 

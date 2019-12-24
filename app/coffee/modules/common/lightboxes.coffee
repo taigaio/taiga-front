@@ -705,7 +705,7 @@ $confirm, $q, attachmentsService, $template, $compile) ->
             if not form.validate()
                 return
 
-            currentLoading = $loading().target($el.find(".submit-button")).start()
+            currentLoading = $loading().target($el.find("#submitButton")).start()
 
             if $scope.mode == 'new'
                 promise = $repo.create(schema.model, $scope.obj)
@@ -722,6 +722,7 @@ $confirm, $q, attachmentsService, $template, $compile) ->
                 deleteAttachments(data).then () ->
                     createAttachments(data).then () ->
                         currentLoading.finish()
+                        $confirm.notify("success")
                         close()
                         if data.ref
                             $rs[schema.model].getByRef(data.project, data.ref, schema.params).then (obj) ->
