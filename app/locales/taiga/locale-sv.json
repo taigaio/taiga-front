@@ -869,7 +869,7 @@
         "PRIVATE": "Privata projekt",
         "LOOKING_FOR_PEOPLE": "Detta projekt söker efter fler personer",
         "FANS_COUNTER_TITLE": "{total, plural, one{one fan} other{# fans}}",
-        "WATCHERS_COUNTER_TITLE": "{total, plural, en{one watcher} other{# watchers}}",
+        "WATCHERS_COUNTER_TITLE": "{total, plural, one{one watcher} other{# watchers}}",
         "MEMBERS_COUNTER_TITLE": "{total, plural, one{one member} other{# members}}",
         "BLOCKED_PROJECT": {
             "BLOCKED": "Blockerat projekt",
@@ -920,7 +920,7 @@
             "BUTTON_TITLE": "Visa projektet och lägg till egenskaper för avisering",
             "WATCH": "Visa",
             "WATCHING": "Bevakar",
-            "COUNTER_TITLE": "{total, plural, en{one watcher} other{# watchers}}",
+            "COUNTER_TITLE": "{total, plural, one{one watcher} other{# watchers}}",
             "OPTIONS": {
                 "NOTIFY_ALL": "Motta alla notifieringar",
                 "NOTIFY_ALL_TITLE": "Motta alla notifieringar för det här projektet",
