@@ -47,8 +47,10 @@
     }
     .login-text,
     .register-text {
-        margin-left: .5rem;
+        font-size: .875rem;
+        margin-top: 2rem;
         padding-bottom: 1rem;
+        text-align: center;
         a {
             text-decoration: underline;
             &:hover {

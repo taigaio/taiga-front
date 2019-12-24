@@ -1,5 +1,5 @@
 .login-form-container(tg-login)
-    form.login-form
+    form.login-form(ng-if="defaultLoginEnabled")
         fieldset
             input(
                 type="text"
@@ -38,12 +38,12 @@
                 translate="LOGIN_COMMON.ACTION_SIGN_IN"
             )
 
-        .contrib-plugins-wrapper(ng-if="contribPlugins.length")
-            label(translate="LOGIN_COMMON.ALT_LOGIN")
+    .contrib-plugins-wrapper(ng-if="contribPlugins.length")
+        label(translate="LOGIN_COMMON.ALT_LOGIN", ng-if="defaultLoginEnabled")
 
-            fieldset(
-                ng-repeat="plugin in contribPlugins|filter:{type: 'auth'}"
-                ng-include="plugin.template"
-            )
+        fieldset(
+            ng-repeat="plugin in contribPlugins|filter:{type: 'auth'}"
+            ng-include="plugin.template"
+        )
 
     tg-public-register-message

@@ -9,6 +9,7 @@
     "defaultLanguage": "en",
     "themes": ["taiga"],
     "defaultTheme": "taiga",
+    "defaultLoginEnabled": true,
     "publicRegisterEnabled": true,
     "feedbackEnabled": true,
     "supportUrl": "https://tree.taiga.io/support/",
