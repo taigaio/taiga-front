@@ -89,13 +89,13 @@ BacklogSortableDirective = () ->
                     index = $(firstElement).index(".backlog-table-body .row")
                 else
                     index = $(firstElement).index()
-                    sprint = parent.scope().sprint.id
+                    sprint = parent.scope()?.sprint.id
 
                 if !sameContainer
                     if dragMultipleItems.length
                         usList = _.map dragMultipleItems, (item) ->
                             return item = $(item).scope().us
-                    else
+                    else if $(item).scope()
                         usList = [$(item).scope().us]
 
                     if (dragMultipleItems.length)
@@ -107,7 +107,7 @@ BacklogSortableDirective = () ->
                     if dragMultipleItems.length
                         usList = _.map dragMultipleItems, (item) ->
                             return item = $(item).scope().us
-                    else
+                    else if $(item).scope()
                         usList = [$(item).scope().us]
 
                 $scope.$emit("sprint:us:move", usList, index, sprint)

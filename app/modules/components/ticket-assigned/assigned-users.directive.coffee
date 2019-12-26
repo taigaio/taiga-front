@@ -20,7 +20,7 @@
 AssignedUsersDirective = ($rootscope, $confirm, $repo, $modelTransform, $template, $compile,
 $translate, $currentUserService, $lightboxFactory) ->
     link = ($scope, $el, $attrs, $model) ->
-        currentUserId = $currentUserService.getUser().get('id')
+        currentUserId = $currentUserService.getUser()?.get('id')
         $scope.visibleAssignedUsersCount = 4
         $scope.displayHidden = false
 

@@ -5,7 +5,7 @@ div.form.lb-select-user-form
     fieldset
         input(type="text", data-maxlength="500", placeholder="{{'LIGHTBOX.SELECT_USER.SEARCH' | translate}}", ng-model="searchText")
     div.lb-user-list.lb-select-user-list
-        div(ng-repeat="item in collection")
+        div(ng-repeat="item in collection track by $index")
             .user-list-item(
                 ng-class="{'is-active': selected.indexOf(item) > -1}"
                 ng-if="item.type != 'role' || item.userIds.length"

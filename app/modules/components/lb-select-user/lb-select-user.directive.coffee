@@ -34,12 +34,12 @@ SelectUserDirective = (
         lightboxService.open($el)
 
         getFilteredUsers = (text="") ->
-            selected = _.sortBy(
+            selected = _.compact(_.sortBy(
                 _.filter(users, (x) ->
                     _.includes($scope.currentUsers, x.id)
                 ),
                 'name'
-            )
+            ))
 
             _filterRows = (text, row) ->
                 if row.type == 'user' && _.find(selected, ['id', row.id])

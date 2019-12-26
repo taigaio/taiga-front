@@ -98,7 +98,7 @@ class RepositoryService extends taiga.Service
     saveAttribute: (model, attribute, patch=true) ->
         defered = @q.defer()
 
-        if not model.isModified() and patch
+        if not model?.isModified() and patch
             defered.resolve(model)
             return defered.promise
 
