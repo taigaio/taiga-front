@@ -58,8 +58,8 @@
         @include font-size(large);
         display: flex;
         flex-direction: column;
-        height: 50px;
-        max-height: 50px;
+        min-height: 50px;
+        padding: 1rem 4rem;
         width: 100%;
     }
     &.button-block {

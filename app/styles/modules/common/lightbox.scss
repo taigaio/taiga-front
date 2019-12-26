@@ -461,6 +461,9 @@
         flex-grow: 0;
         width: 600px;
     }
+    .search {
+        margin-top: 2rem;
+    }
     .user-list-single {
         &:hover,
         &.selected {
@@ -479,6 +482,7 @@
         text-align: center;
     }
     .add-comment {
+        padding: 1rem 0;
         position: relative;
         text-align: center;
         .icon-close {
@@ -494,6 +498,9 @@
             svg {
                 @include svg-size(2rem);
             }
+        }
+        fieldset {
+            margin: 0;
         }
         textarea {
             margin-top: 1rem;

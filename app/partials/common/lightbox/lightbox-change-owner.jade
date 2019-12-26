@@ -2,7 +2,7 @@ tg-lightbox-close
 
 .form
     h2.title(translate="LIGHTBOX.CHANGE_OWNER.TITLE")
-    fieldset
+    fieldset.search
         input(
             type="text",
             data-maxlength="500",
@@ -40,7 +40,7 @@ tg-lightbox-close
                 title="{{user.full_name_display}}"
             ) {{user.full_name_display}}
 
-        .more-watchers(ng-if="!vm.q.length")
+        .more-watchers(ng-if="vm.totalUsers > vm.limit")
             span(translate="COMMON.ASSIGNED_TO.TOO_MANY")
 
     .add-comment
@@ -53,12 +53,12 @@ tg-lightbox-close
         )
 
         fieldset(ng-if="vm.commentOpen")
-            tg-svg(
-                svg-icon="icon-close",
-                ng-click="vm.commentOpen = false",
-                href="",
-                title="{{'COMMON.CLOSE' | translate}}"
-            )
+            a(href="", ng-click="vm.commentOpen = false")
+                tg-svg(
+                    svg-icon="icon-close",
+                    href="",
+                    title="{{'COMMON.CLOSE' | translate}}"
+                )
             label(translate="LIGHTBOX.CHANGE_OWNER.ADD_COMMENT")
             textarea(ng-model="vm.comment")
 
