@@ -2,6 +2,18 @@
 
 ## Unreleased
 
+## 5.0.5 (2020-01-08)
+
+### Features
+
+- Set login form visibility based on instance configuration.
+
+- Promote task and issues to user story with watchers, attachments and comments.
+
+### Misc
+
+- Several minor bugfixes.
+
 ## 5.0.4 (2019-12-04)
 
 - Fix translation problem with pluralization.
