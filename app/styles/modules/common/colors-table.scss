@@ -53,6 +53,7 @@
         .color-column {
             flex-basis: 80px;
             min-width: 80px;
+            position: relative;
         }
         .is-archived-column,
         .is-closed-column,
