@@ -240,7 +240,7 @@ $summary-background: $grayer;
         flex: 1;
     }
     .title {
-        @include font-type(light);
+        @include font-type(semibold);
         @include font-size(large);
         color: $primary-dark;
         margin: 0;
