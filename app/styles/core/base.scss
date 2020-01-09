@@ -103,6 +103,7 @@ body {
 
 .main {
     flex: 1;
+    min-width: 0;
     padding: 1rem 2rem;
     @include until($desktop) {
         flex: initial;
