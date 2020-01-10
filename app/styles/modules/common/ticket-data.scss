@@ -53,11 +53,6 @@
 .ticket-data-container {
     @include font-size(small);
     @include font-type(text);
-    .icon {
-        @include svg-size(.7rem);
-        color: currentColor;
-        margin-left: .25rem;
-    }
 }
 
 .ticket-section {
@@ -68,18 +63,51 @@
     }
 }
 
+
+@mixin category-choices() {
+    align-content: center;
+    background: $whitish;
+    display: flex;
+    margin-bottom: .5rem;
+    padding: .5rem;
+    position: relative;
+    width: 100%;
+    .label,
+    .level-name {
+        align-items: center;
+        display: inline-block;
+        font-size: .8rem;
+        margin-left: .5rem;
+        max-width: 65px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .icon {
+        height: .6rem;
+        margin: 0 0 .125rem .125rem;
+        width: .6rem;
+    }
+    .level-name {
+        margin-left: auto;
+        text-align: right;
+    }
+    .popover {
+        @include popover(150px, 30px, 30px, '', '', 0, '', '', '', 15px, 'left');
+    }
+}
+
+
 .ticket-status {
     &:last-child {
         margin: 0;
     }
     .level {
         display: inline-block;
-        margin-right: .5rem;
-        vertical-align: top;
+        margin: 0;
     }
     .level-name {
         color: $gray-light;
-        float: right;
         text-transform: lowercase;
     }
     .clickable {
@@ -89,37 +117,13 @@
         }
     }
     .type-data {
-        background: $whitish;
-        margin-bottom: .5rem;
-        padding: .5rem;
-        padding-right: 1rem;
-        position: relative;
-        transition: background .2s ease-in;
-        .pop-type {
-            @include popover(150px, 30px, 30px, '', '', 0, '', '', '', 15px, 'left');
-        }
+        @include category-choices;
     }
     .severity-data {
-        background: $whitish;
-        margin-bottom: .5rem;
-        padding: .5rem;
-        padding-right: 1rem;
-        position: relative;
-        transition: background .2s ease-in;
-        .pop-severity {
-            @include popover(150px, 30px, 30px, '', '', 0, '', '', '', 15px, 'left');
-        }
+        @include category-choices;
     }
     .priority-data {
-        background: $whitish;
-        margin-bottom: .5rem;
-        padding: .5rem;
-        padding-right: 1rem;
-        position: relative;
-        transition: background .2s ease-in;
-        .pop-priority {
-            @include popover(150px, 30px, 30px, '', '', 0, '', '', '', 15px, 'left');
-        }
+        @include category-choices;
     }
 }
 
