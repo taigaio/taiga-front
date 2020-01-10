@@ -31,11 +31,15 @@
         }
         ~ .check-yes {
             opacity: 0;
-            right: .5rem;
+            right: 0;
+            text-align: center;
+            width: 32px;
         }
         ~ .check-no {
-            left: .5rem;
+            left: 0;
             opacity: 1;
+            text-align: center;
+            width: 33px;
         }
     }
     input:disabled,
@@ -57,10 +61,8 @@
         }
         ~ .check-yes {
             opacity: 1;
-            right: .25rem;
         }
         ~ .check-no {
-            left: .25rem;
             opacity: 0;
         }
     }
