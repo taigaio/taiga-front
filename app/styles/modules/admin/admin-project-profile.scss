@@ -55,6 +55,9 @@
             vertical-align: middle;
         }
     }
+    .tags-container .tag {
+        display: inline-block;
+    }
 }
 .project-privacy-settings {
     display: flex;
