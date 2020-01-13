@@ -1,39 +1,37 @@
-//************************
+//*************************
 //** COLORS
 //************************
 
-$primary: #25A28C;
-$primary-75: #5CBAA9;
-$primary-50: #92D1C5;
-$primary-25: #C9E8E2;
-$primary-10: #E9F6F3;
+$primary: #5b8200;
+$primary-75: #9dce0a;
+$primary-50: #9dce0a;
+$primary-25: #F5FAE6;
+$primary-10: #F5FAE6;
 
-$secondary: #A7CB23;
-$secondary-75: #BDD65A;
+$secondary: #9dce0a;
 $secondary-50: #D3E391;
-$secondary-25: #E9F1C8;
 
-$tertiary: #C6C6D4;
+$tertiary: #879b89;
 
-$red:  #FF6363;
-$red-25: #FFA5A5;
-$red-10: #FFE7E7;
+$red:  #f00;
+$red-25: #FF8082;
+$red-10: #FFE6E6;
 
-$grey-02: #F9F9FB;
-$grey-05: #F1F1F4;
-$grey-10: #E2E3E9;
-$grey-20: #C6C6D4;
-$grey-30: #A9AABC;
-$grey-40: #8D8EA5;
-$grey-50: #70728F;
-$grey-60: #5A5B72;
-$grey-70: #434456;
-$grey-80: #2D2D39;
-$grey-90: #16171D;
-
-
-// Color aliases for retrocompatibility
+$white: #fff;
+$grey-02: #F9F9F9;
+$grey-05: #F1F1F1;
+$grey-10: #E2E2E2;
+$grey-20: #C6C6C6;
+$grey-30: #B8B8B8;
+$grey-40: #8D8D8D;
+$grey-50: #767676;
+$grey-60: #555;
+$grey-70: #444;
+$grey-80: #2D2D2D;
+$grey-90: #020202;
 $black: #000;
+
+// Color aliases for retrocompatibility with external plugins
 $blackish: $grey-90;
 $grayer: $grey-70;
 $gray: $grey-60;
@@ -41,21 +39,17 @@ $gray-light: $grey-50;
 $gray-lighter: $grey-30;
 $whitish: $grey-10;
 $mass-white: $grey-05;
-$white: #fff;
-
-// Primary colors
 $primary-light: $primary-75;
 $primary-lighter: $primary-10;
+$primary: $primary;
 $primary-dark: $primary-50;
 $primary-background: $primary-25;
-
-// Secondary colors
 $secondary-light: $secondary-50;
-$secondary-dark: #91B011;
+$secondary-dark: $tertiary;
+$red-light: $red-25;
 
 //Status colors
 $green-light: #D1DFC5;
-$red-light: lighten($red, 12%);
 $my-sin: #fcaf3e;
 $yellow-green: #9dce0a;
 
@@ -75,4 +69,4 @@ $tribe-secondary: darken($tribe-primary, 10%);
 
 $top-icon-color: #11241f;
 $dropdown-color: rgba(darken($grayer, 20%), 1);
-$code-bg: #272822;  
+$code-bg: #272822;

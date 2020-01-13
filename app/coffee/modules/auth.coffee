@@ -84,7 +84,12 @@ class AuthService extends taiga.Service
         @analytics.setUserId()
 
     _getUserTheme: ->
-        return @rootscope.user?.theme || @config.get("defaultTheme") || "taiga" # load on index.jade
+        defaultTheme = @config.get("defaultTheme") || "taiga"
+
+        if !_.includes(@config.get("themes"), @rootscope.user?.theme)
+            return defaultTheme
+
+        return @rootscope.user?.theme
 
     _setTheme: ->
         newTheme = @._getUserTheme()
