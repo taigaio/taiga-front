@@ -143,10 +143,13 @@ SelectUserDirective = (
             $scope.searchText = ''
 
         confirmSelection = () ->
+            $scope.loading = true
             $scope.onClose($scope.currentUsers)
             closeLightbox()
+            $scope.loading = false
 
         $el.on "click", ".lb-select-user-confirm", (event) ->
+            return if $scope.loading
             event.preventDefault()
             confirmSelection()
 
