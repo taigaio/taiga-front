@@ -2,6 +2,16 @@
 
 ## Unreleased
 
+## 5.0.6 (2020-01-15)
+
+### Features
+
+- Refresh default theme.
+
+### Misc
+
+- Several minor bugfixes.
+
 ## 5.0.5 (2020-01-08)
 
 ### Features
