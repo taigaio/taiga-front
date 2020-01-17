@@ -245,7 +245,11 @@ var MentionExtension = MediumEditor.Extension.extend({
             } else if (it.ref) {
                 li.innerText = '#' + it.ref + ' - ' + it.subject;
             } else {
-                li.innerText = '@' + it.username;
+                if (it.full_name) {
+                    li.innerText = '@' + it.full_name + ` (${it.username})`;
+                } else {
+                    li.innerText = '@' + it.username;
+                }
             }
 
             li.addEventListener('mousedown', this.selectMention.bind(this, it));
