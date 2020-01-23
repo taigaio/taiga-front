@@ -73,6 +73,8 @@ $dropdown-width: 350px;
             }
         }
         &.user-avatar {
+            line-height: 40px;
+            min-height: 40px;
             min-width: 200px;
             padding: 0;
             padding-left: 2rem;
