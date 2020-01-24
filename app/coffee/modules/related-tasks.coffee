@@ -29,8 +29,6 @@ RelatedTaskRowDirective = ($repo, $compile, $confirm, $rootscope, $loading, $tem
     templateEdit = $template.get("task/related-task-row-edit.html", true)
 
     link = ($scope, $el, $attrs, $model) ->
-        @childScope = $scope.$new()
-
         saveTask = debounce 2000, (task) ->
             task.subject = $el.find('input').val()
 
@@ -50,7 +48,8 @@ RelatedTaskRowDirective = ($repo, $compile, $confirm, $rootscope, $loading, $tem
             return promise
 
         renderEdit = (task) ->
-            @childScope.$destroy()
+            if (@childScope)
+                @childScope.$destroy()
             @childScope = $scope.$new()
             $el.off()
             $el.html($compile(templateEdit({task: task}))(childScope))
