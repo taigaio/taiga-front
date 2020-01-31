@@ -246,7 +246,7 @@ var MentionExtension = MediumEditor.Extension.extend({
                 li.innerText = '#' + it.ref + ' - ' + it.subject;
             } else {
                 if (it.full_name) {
-                    li.innerText = '@' + it.full_name + ` (${it.username})`;
+                    li.innerText = '@' + it.full_name + ' (' + it.username + ')';
                 } else {
                     li.innerText = '@' + it.username;
                 }
