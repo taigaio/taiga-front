@@ -407,11 +407,11 @@
     "EPICS": {
         "TITLE": "EPICS",
         "SECTION_NAME": "Epics",
-        "EPIC": "EPIC",
+        "EPIC": "Epic",
         "PAGE_TITLE": "Epics - {{projectName}}",
         "PAGE_DESCRIPTION": "لیست پروژه‌  {{projectName}}: {{projectDescription}}",
         "DASHBOARD": {
-            "ADD": "+  اضافه کردن EPIC",
+            "ADD": "اضافه کردن اپیک",
             "UNASSIGNED": "آزاد"
         },
         "EMPTY": {
@@ -425,7 +425,7 @@
             "PROJECT": "پروژه",
             "SPRINT": "اسپرینت",
             "ASSIGNED_TO": "محول شده",
-            "STATUS": "عیت",
+            "STATUS": "وضعیت",
             "PROGRESS": "پیشرفت",
             "CLOSED_US": "بستن استوری‌های کاربر",
             "CLOSED_EPICS": "epicهای بسته شده",
@@ -1098,7 +1098,7 @@
         "SELECT_USER": {
             "SEARCH": "جست‌وجوی کاربران",
             "REMOVE": "حذف کاربر",
-            "ROLE": "قش"
+            "ROLE": "نقش"
         },
         "ADD_MEMBER": {
             "TITLE": "عضو جدید",
