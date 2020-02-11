@@ -21,6 +21,6 @@
     "tagManager": { "accountId": null },
     "tribeHost": null,
     "importers": [],
-    "gravatar": true,
+    "gravatar": false,
     "rtlLanguages": ["fa"]
 }
