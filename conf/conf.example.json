@@ -18,6 +18,7 @@
     "GDPRUrl": null,
     "maxUploadFileSize": null,
     "contribPlugins": [],
+    "tagManager": { "accountId": null },
     "tribeHost": null,
     "importers": [],
     "gravatar": true,

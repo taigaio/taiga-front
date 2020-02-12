@@ -779,7 +779,7 @@ i18nInit = (lang, $translate) ->
     checksley.updateMessages('default', messages)
 
 
-init = ($log, $rootscope, $auth, $events, $analytics, $translate, $location, $navUrls, appMetaService,
+init = ($log, $rootscope, $auth, $events, $analytics, $tagManager, $translate, $location, $navUrls, appMetaService,
         loaderService, navigationBarService, errorHandlingService, lightboxService, $tgConfig,
         projectService) ->
     $log.debug("Initialize application")
@@ -863,8 +863,12 @@ init = ($log, $rootscope, $auth, $events, $analytics, $translate, $location, $na
     if $auth.isAuthenticated()
         user = $auth.getUser()
         $auth.showTerms()
+
     # Analytics
     $analytics.initialize()
+
+    # Tag Manager
+    $tagManager.initialize()
 
     # Initialize error handling service when location change start
     $rootscope.$on '$locationChangeStart',  (event) ->
@@ -996,6 +1000,7 @@ module.run([
     "$tgAuth",
     "$tgEvents",
     "$tgAnalytics",
+    "$tgTagManager",
     "$translate",
     "$tgLocation",
     "$tgNavUrls",
