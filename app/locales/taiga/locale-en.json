@@ -39,7 +39,7 @@
         "NEXT": "Next",
         "LOGOUT": "Logout",
         "EXTERNAL_USER": "an external user",
-        "GENERIC_ERROR": "One of our Oompa Loompas says {{error}}.",
+        "GENERIC_ERROR": "The Taiga says {{error}}.",
         "IOCAINE_TEXT": "This member is feeling a bit overwhelmed by this task. Will become immune to the iocaine poison over time with your help. For now, may need a hug.",
         "CLIENT_REQUIREMENT": "Client requirement is new requirement that was not previously expected and it is required to be part of the project",
         "TEAM_REQUIREMENT": "Team requirement is a requirement that must exist in the project but should have no cost for the client",
@@ -330,8 +330,8 @@
         "ALT_LOGIN": "Or login with"
     },
     "LOGIN_FORM": {
-        "ERROR_AUTH_INCORRECT": "According to our Oompa Loompas, your username/email or password are incorrect.",
-        "SUCCESS": "Our Oompa Loompas are happy, welcome to Taiga."
+        "ERROR_AUTH_INCORRECT": "According to the Taiga, your username/email or password are incorrect.",
+        "SUCCESS": "Welcome to Taiga."
     },
     "REGISTER": {
         "PAGE_TITLE": "Register - Taiga",
@@ -359,7 +359,7 @@
         "LINK_CANCEL": "Nah, take me back. I think I remember it.",
         "SUCCESS_TITLE": "Check your inbox!",
         "SUCCESS_TEXT": "We sent you an email with the instructions to set a new password",
-        "ERROR": "According to our Oompa Loompas, you are not registered yet."
+        "ERROR": "According to the Taiga, you are not registered yet."
     },
     "CHANGE_PASSWORD": {
         "PAGE_TITLE": "Change you password - Taiga",
@@ -378,15 +378,15 @@
         "PLACEHOLDER_NEW_PASSWORD": "New password",
         "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "Re-type new password",
         "ACTION_RESET_PASSWORD": "Reset Password",
-        "ERROR": "Our Oompa Loompas can't find your request to recover your password. Try to ask for it again.",
-        "SUCCESS": "Our Oompa Loompas saved your new password.<br /> Try to <strong>sign in</strong> with it."
+        "ERROR": "The Taiga can't find your request to recover your password. Try to ask for it again.",
+        "SUCCESS": "The Taiga saved your new password.<br /> Try to <strong>sign in</strong> with it."
     },
     "INVITATION": {
         "PAGE_TITLE": "Invitation acceptance - Taiga",
         "PAGE_DESCRIPTION": "Accept the invitation to join a project in Taiga, a project management platform for startups and agile developers & designers who want a simple, beautiful tool that makes work truly enjoyable."
     },
     "INVITATION_LOGIN_FORM": {
-        "NOT_FOUND": "Our Oompa Loompas can't find your invitation.",
+        "NOT_FOUND": "The Taiga can't find your invitation.",
         "SUCCESS": "You've successfully joined this project, Welcome to {{project_name}}"
     },
     "HOME": {
@@ -465,7 +465,7 @@
         "TITLE_LIGHTBOX_DELETE_ATTACHMENT": "Delete attachment...",
         "MSG_LIGHTBOX_DELETE_ATTACHMENT": "the attachment '{{fileName}}'",
         "ERROR_DELETE_ATTACHMENT": "We have not been able to delete: {{errorMessage}}",
-        "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) is too heavy for our Oompa Loompas, try it with a smaller than ({{maxFileSize}})"
+        "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) is too heavy for the Taiga, try it with a smaller than ({{maxFileSize}})"
     },
     "PAGINATION": {
         "PREVIOUS": "Prev",
@@ -501,8 +501,8 @@
             "LOADING_MESSAGE": "Please don't close this page.",
             "ASYNC_MESSAGE": "We will send you an email when ready.",
             "SYNC_MESSAGE": "If the download doesn't start automatically click <a href='{{url}}' download title='Download the dump file'>here</a>.",
-            "ERROR": "Our Oompa Loompas have some problems generating your dump. Please try it again.",
-            "ERROR_BUSY": "Sorry, our Oompa Loompas are very busy right now. Please try again in a few minutes."
+            "ERROR": "The Taiga has some problems generating your dump. Please try it again.",
+            "ERROR_BUSY": "Sorry, the Taiga is experiencing heavy load right now. Please try again in a few minutes."
         },
         "MODULES": {
             "TITLE": "Modules",
@@ -969,13 +969,13 @@
         "IMPORT": {
             "TITLE": "Import Project",
             "DESCRIPTION": "Import your project from multiple platforms into Taiga",
-            "ASYNC_IN_PROGRESS_TITLE": "Our Oompa Loompas are importing your project",
+            "ASYNC_IN_PROGRESS_TITLE": "The Taiga is importing your project",
             "ASYNC_IN_PROGRESS_MESSAGE": "This process could take a few minutes <br/> We will send you an email when ready",
             "UPLOAD_IN_PROGRESS_MESSAGE": "Uploaded {{uploadedSize}} of {{totalSize}}",
-            "ERROR": "Our Oompa Loompas have some problems importing your dump data. Please try again.",
-            "ERROR_TOO_MANY_REQUEST": "Sorry, our Oompa Loompas are very busy right now. Please try again in a few minutes.",
-            "ERROR_MESSAGE": "Our Oompa Loompas have some problems importing your dump data: {{error_message}}",
-            "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) is too heavy for our Oompa Loompas, try it with a smaller than ({{maxFileSize}})",
+            "ERROR": "The Taiga has some problems importing your dump data. Please try again.",
+            "ERROR_TOO_MANY_REQUEST": "Sorry, the Taiga is experiencing heavy load right now. Please try again in a few minutes.",
+            "ERROR_MESSAGE": "The Taiga has some problems importing your dump data: {{error_message}}",
+            "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) is too heavy for the Taiga, try it with a smaller than ({{maxFileSize}})",
             "SYNC_SUCCESS": "Your project has been imported successfuly",
             "IMPORT": "Import",
             "WHO_IS": "Their tasks will be assigned to ...",
@@ -1396,12 +1396,12 @@
         }
     },
     "ERROR": {
-        "TEXT1": "Something happened and our Oompa Loompas are working on it.",
+        "TEXT1": "Something happened and the Taiga has captured the error to be able to work on it.",
         "NOT_FOUND": "Not found",
         "NOT_FOUND_TEXT": "Error 404. The page you are looking for no longer exists. Perhaps you can return back to TAIGA homepage and see if you can find what you are looking for.",
         "PERMISSION_DENIED": "Permission denied",
         "PERMISSION_DENIED_TEXT": "You don't have permission to access this page.",
-        "VERSION_ERROR": "Someone inside Taiga has changed this before and our Oompa Loompas cannot apply your changes. Please reload and apply your changes again (they will be lost)."
+        "VERSION_ERROR": "Some other user inside Taiga has changed this before and your changes can't be applied. Save them elsewhere, reload the page and re-apply your changes again or they will be lost."
     },
     "TASKBOARD": {
         "PAGE_TITLE": "{{sprintName}} - Sprint taskboard - {{projectName}}",
@@ -1466,8 +1466,8 @@
     "NOTIFICATION": {
         "OK": "Everything is ok",
         "WARNING": "Oops, something happened...",
-        "WARNING_TEXT": "Our Oompa Loompas are sad, your changes were not saved!",
-        "SAVED": "Our Oompa Loompas saved all your changes!",
+        "WARNING_TEXT": "Your changes were not saved!",
+        "SAVED": "The Taiga saved all your changes!",
         "CLOSE": "Close notification",
         "MAIL": "Notifications By Mail",
         "DESKTOP": "Desktop notifications using browser alerts",
@@ -1475,17 +1475,17 @@
     },
     "CANCEL_ACCOUNT": {
         "TITLE": "Cancel your account",
-        "SUBTITLE": "We're sorry you are leaving the taiga, we hope you enjoyed your stay :)",
+        "SUBTITLE": "We're sorry you are leaving the Taiga, we hope you enjoyed your stay :)",
         "PLACEHOLDER_INPUT_TOKEN": "cancel account token",
         "ACTION_LEAVING": "Yes, I'm leaving!",
-        "SUCCESS": "Our Oompa Loompas removed your account"
+        "SUCCESS": "The Taiga removed your account"
     },
     "CHANGE_EMAIL_FORM": {
         "TITLE": "Change your email",
         "SUBTITLE": "One click more and your email will be updated!",
         "PLACEHOLDER_INPUT_TOKEN": "change email token",
         "ACTION_CHANGE_EMAIL": "Change email",
-        "SUCCESS": "Our Oompa Loompas updated your email"
+        "SUCCESS": "The Taiga updated your email"
     },
     "ISSUES": {
         "PAGE_TITLE": "Issues - {{projectName}}",
