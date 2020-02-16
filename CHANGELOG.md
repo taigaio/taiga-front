@@ -2,6 +2,16 @@
 
 ## Unreleased
 
+## 5.0.8 (2020-02-17)
+
+### i18n
+
+- Update Latvian translation.
+
+### Misc
+
+- Add Google tag manager integration.
+
 ## 5.0.7 (2020-02-06)
 
 ### i18n
