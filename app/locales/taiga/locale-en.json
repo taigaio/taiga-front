@@ -1311,7 +1311,8 @@
             "ASSIGNED_USERS": "assigned users",
             "DUE_DATE": "due date",
             "MILESTONE": "sprint",
-            "COLOR": "color"
+            "COLOR": "color",
+            "PROMOTED_TO": "promoted to"
         }
     },
     "BACKLOG": {

@@ -1,0 +1,8 @@
+.diff-status-wrapper
+    span.key(
+        translate="ACTIVITY.FIELDS.PROMOTED_TO"
+    )
+    span(
+        ng-repeat="userstory in vm.promotedTo"
+        ng-bind-html="'#' + userstory.ref + ' '+ userstory.subject | emojify"
+    )

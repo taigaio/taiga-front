@@ -87,3 +87,8 @@
     ng-if="vm.type == 'type'"
 )
     include history-templates/history-type
+
+.diff-wrapper(
+    ng-if="vm.type == 'promoted_to'"
+)
+    include history-templates/history-promoted

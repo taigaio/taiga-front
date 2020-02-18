@@ -13,6 +13,7 @@ section.activities
                 .activity-diff(
                     ng-repeat="(key, diff) in activity.values_diff"
                     tg-history-diff
+                    model="model"
                     type='key'
                     diff='diff'
                 )

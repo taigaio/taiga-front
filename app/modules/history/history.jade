@@ -36,4 +36,7 @@ section.history(
         infinite-scroll-disabled="vm.disabledActivityPagination"
         infinite-scroll-immediate-check="false"
     )
-        tg-history(activities="vm.activities")
+        tg-history(
+            model="vm.type"
+            activities="vm.activities"
+        )
