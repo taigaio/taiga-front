@@ -400,6 +400,16 @@ module.directive("tgRegister", ["$tgAuth", "$tgConfirm", "$tgLocation", "$tgNavU
 
 
 #############################################################################
+## Register Options Directive
+#############################################################################
+
+RegisterOptionsDirective = () ->
+    return { }
+
+module.directive("tgRegisterOptions", [RegisterOptionsDirective])
+
+
+#############################################################################
 ## Forgot Password Directive
 #############################################################################
 
