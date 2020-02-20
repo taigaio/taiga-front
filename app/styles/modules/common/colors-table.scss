@@ -1,5 +1,5 @@
 .colors-table {
-    overflow-x: auto;
+    overflow-x: inherit;
     .table-header {
         @include font-size(medium);
         @include font-type(semibold);
