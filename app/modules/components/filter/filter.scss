@@ -3,6 +3,7 @@ $exclude-background: #fcc;
 $radio-mark-background: #d6d5d5;
 
 tg-filter {
+    @include sidebar-medium-width();
     background: $grey-02;
     display: block;
     left: 0;
@@ -14,7 +15,6 @@ tg-filter {
     top: 0;
     transform: translateX(-260px);
     transition-duration: .5s;
-    width: 260px;
     z-index: 1;
     .filters-applied {
         padding: 0 1rem 1rem;

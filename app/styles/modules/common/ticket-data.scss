@@ -310,6 +310,21 @@
         padding: 1rem;
         transition: background .2s linear;
         transition-delay: .1s;
+        @include until($ultrawide) {
+            padding: 1rem .9rem;
+        }
+        @include until($fullhd) {
+            padding: 1rem .8rem;
+        }
+        @include until($widescreen) {
+            padding: 1rem .7rem;
+        }
+        @include until($desktop) {
+            padding: 1rem .6rem;
+        }
+        @include until($tablet) {
+            padding: 1rem .5rem;
+        }
         &:hover {
             background: $gray;
         }
