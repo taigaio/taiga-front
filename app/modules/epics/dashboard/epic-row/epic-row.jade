@@ -1,4 +1,3 @@
-
 .epic-row.e2e-epic-row(
     ng-class="{'is-blocked':  vm.epic.get('is_blocked'), 'is-closed': vm.epic.get('is_closed'), 'unfold': vm.displayUserStories, 'not-empty': vm.epic.getIn(['user_stories_counts', 'opened']) || vm.epic.getIn(['user_stories_counts', 'closed'])}"
     ng-click="vm.toggleUserStoryList()"
@@ -37,17 +36,18 @@
     .sprint(ng-if="vm.options.sprint")
 
     .assigned.e2e-assigned-to(
-        ng-if="vm.options.assigned"
-        tg-loading="vm.assignLoader"
+        ng-if="vm.options.assigned && vm.epic.get('assigned_to')"
     )
-        tg-assigned-to-component(
-            assigned-to="vm.epic.get('assigned_to_extra_info')"
-            project="vm.project"
-            on-remove-assigned="vm.updateAssignedTo()"
-            on-assign-to="vm.updateAssignedTo(member)"
-            tg-isolate-click
+        img(
+            tg-avatar="vm.epic.get('assigned_to_extra_info')"
         )
-
+    .assigned(
+        ng-if="vm.options.assigned && !vm.epic.get('assigned_to')"
+    )
+        img(
+            src="/#{v}/images/unnamed.png"
+            alt="{{EPICS.DASHBOARD.UNASSIGNED | translate}}"
+        )
     .status(
         ng-if="vm.options.status && !vm.canEditEpics()"
     )
