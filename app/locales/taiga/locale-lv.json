@@ -39,8 +39,8 @@
         "NEXT": "Nākamais",
         "LOGOUT": "Izrakstīties/iziet",
         "EXTERNAL_USER": "ārējais lietotājs",
-        "GENERIC_ERROR": "Sistēma ziņo par {{error}}.",
-        "IOCAINE_TEXT": "Šis dalībnieks/lietotājs netiek galā ar šo uzdevumu. Ar Jūsu palīdzību laika gaitā viņš iemācīsies tikt galā. Pagaidām viņam var būt nepieciešamas rūpes.",
+        "GENERIC_ERROR": "Taiga saka {{error}}.",
+        "IOCAINE_TEXT": "Biedrs pārslogots ar šo darāmo un jutīsies daudz labāk saņemot atbalstu.",
         "CLIENT_REQUIREMENT": "Šī klienta prasība ir jauna un neparedzēta, taču tai jākļūst par šī projekta neatņemamu sastāvdaļu",
         "TEAM_REQUIREMENT": "Komandas prasība ir projekta obligāta prasība, kura priekš klienta ir bezmaksas",
         "OWNER": "Projekta vadītājs",
@@ -131,18 +131,18 @@
             "ADD": "Pievienot birku"
         },
         "DESCRIPTION": {
-            "EMPTY": "Tukša vieta ir garlaicīga ... esiet aprakstošs ...",
+            "EMPTY": "Tukša vieta tik garlaicīga ... esiet radošošs ...",
             "NO_DESCRIPTION": "Vēl nav apraksta"
         },
         "FIELDS": {
             "SUBJECT": "Temats/virsraksts",
-            "NAME": "Vārds",
+            "NAME": "Nosaukums",
             "URL": "URL",
             "DESCRIPTION": "Apraksts",
             "VALUE": "Vērtība",
-            "SLUG": "???Plēksne/lode/gliemis/tīrradnis/malks",
+            "SLUG": "Iesauka",
             "COLOR": "Krāsa",
-            "IS_CLOSED": "Vai beigts/slēgts?",
+            "IS_CLOSED": "Ir darīts?",
             "STATUS": "Statuss",
             "TYPE": "Tips",
             "SEVERITY": "Nozīmīgums",
@@ -164,7 +164,7 @@
         "ASSIGNED_TO": {
             "NOT_ASSIGNED": "Nav piešķirts",
             "ASSIGN": "Piešķirt",
-            "DELETE_ASSIGNMENT": "Dzēst uzdevuma piešķīrumu",
+            "DELETE_ASSIGNMENT": "Dzēst piešķīrumu",
             "REMOVE_ASSIGNED": "Noņemt atbildīgo",
             "TOO_MANY": "... par daudz lietotāju, turpiniet atlasīšanu/filtrēšanu",
             "CONFIRM_UNASSIGNED": "Vai vēlaties atstāt to nepiešķirtu?",
@@ -188,39 +188,39 @@
             "ADD": "Pievienot vērotājus",
             "TITLE_ADD": "Pievienojiet projekta dalībnieku vērotāju sarakstam",
             "DELETE": "Dzēst vērotāju",
-            "TITLE_LIGHTBOX_DELETE_WARTCHER": "Dzēst vērotāju"
+            "TITLE_LIGHTBOX_DELETE_WARTCHER": "Dzēst vērotāju..."
         },
         "WATCH_BUTTON": {
             "WATCH": "Vērot (watch button)",
             "WATCHING": "Vēroju (watch button)",
             "UNWATCH": "Beigt vērot",
             "WATCHERS": "Vērotāji",
-            "BUTTON_TITLE": "Vērot / beigt/atcelt vērošanu šim objektam",
+            "BUTTON_TITLE": "Ne/vērot šo elementu",
             "COUNTER_TITLE": "{total, plural, one{1 vērotājs} other{# vērotāji}}"
         },
         "VOTE_BUTTON": {
-            "BUTTON_TITLE": "Balso (pozitīvi/negatīvi) par šo objektu",
+            "BUTTON_TITLE": "Balsot par elementu",
             "COUNTER_TITLE": "{total, plural, one{1 balss} other{# balsis}}"
         },
         "PROMOTE_TO_US": "Padarīt par Vajadzību",
-        "PROMOTED_ISSUES": "Šis izmaiņas pieprasījums tika transformēts par vajadzību:",
-        "PROMOTED_TASKS": "Šis uzdevums tika transformēts par vajadzību:",
+        "PROMOTED_ISSUES": "Šis izmaiņas pieprasījums tika pārveidots par vajadzību:",
+        "PROMOTED_TASKS": "Šis uzdevums tika pārveidots uz",
         "CONFIRM_PROMOTE": {
             "ISSUE": {
                 "TITLE": "Transformēt šo izmaiņas pieprasījumu par vajadzību",
-                "MESSAGE": "Vai tiešām vēlaties izveidot jaunu vajadzību no šī izmaiņu pieprasījuma?"
+                "MESSAGE": "Vēlaties šo uzdevumu pārveidot par vajadzību?"
             },
             "TASK": {
-                "TITLE": "Transformēt šo uzdevumu par vajadzību",
-                "MESSAGE": "Vai tiešām vēlaties izveidot jaunu Vajadzību no šī Uzdevuma?"
+                "TITLE": "Padarīt šo par Vajadzību",
+                "MESSAGE": "Vēlaties šo uzdevumu pārveidot par vajadzību?"
             }
         },
         "CUSTOM_ATTRIBUTES": {
             "CUSTOM_FIELDS": "Pielāgojamie lauki",
-            "SAVE": "Saglabāt pielāgoto lauku",
-            "EDIT": "Rediģēt pielāgoto lauku",
+            "SAVE": "Saglabāt pielāgotu lauku",
+            "EDIT": "Mainīt pielāgotu lauku",
             "DELETE": "Dzēst pielāgoto atribūtu",
-            "CONFIRM_DELETE": "Atcerieties, ka visas vērtības šajā pielāgotajā laukā tiks dzēstas. Tiešām vēlaties turpināt?"
+            "CONFIRM_DELETE": "Atcerieties, ka visas vērtības šajā pielāgotajā laukā tiks dzēstas. Patiesi vēlaties turpināt?"
         },
         "FILTERS": {
             "INPUT_PLACEHOLDER": "Temats/virsraksts vai atsauce",
@@ -240,7 +240,7 @@
                 "STATUS": "Statuss",
                 "SEVERITY": "Nozīmīgums",
                 "PRIORITIES": "Prioritātes",
-                "TAGS": "Birkas/marķieri",
+                "TAGS": "Iezīmes",
                 "ASSIGNED_TO": "Atbildīgais",
                 "ASSIGNED_USERS": "Atbildīgie lietotāji",
                 "ROLE": "Loma",
@@ -262,7 +262,7 @@
                 "NAME": "Eposi",
                 "VIEW_EPICS": "Skatīt eposus",
                 "ADD_EPICS": "Pievienot eposus",
-                "MODIFY_EPICS": "Modificēt eposus",
+                "MODIFY_EPICS": "Izmainīt eposus",
                 "COMMENT_EPICS": "Komentēt eposus",
                 "DELETE_EPICS": "Dzēst eposus"
             },
@@ -310,7 +310,7 @@
         }
     },
     "LOGIN": {
-        "PAGE_TITLE": "Ierakstīšanās/Ieeja - Taiga",
+        "PAGE_TITLE": "Ienākt - Taiga",
         "PAGE_DESCRIPTION": "Notiek ierakstīšanās projektu vadības platformā Taiga - vienkāršā un lieliskā rīkā patiesai darba baudīšanai!"
     },
     "AUTH": {
@@ -322,7 +322,7 @@
     "LOGIN_COMMON": {
         "HEADER": "Man jau ir Taigas lietotāja vārds",
         "PLACEHOLDER_AUTH_NAME": "lietotāja vārds vai e-pasts (reģistrjūtīgs)",
-        "LINK_FORGOT_PASSWORD": "Aizmirsāt to?",
+        "LINK_FORGOT_PASSWORD": "Piemirsāt?",
         "TITLE_LINK_FORGOT_PASSWORD": "Piemirsāt paroli?",
         "ACTION_ENTER": "Aiziet (ievade)",
         "ACTION_SIGN_IN": "Pieslēgties",
@@ -330,8 +330,8 @@
         "ALT_LOGIN": "vai ieiet ar"
     },
     "LOGIN_FORM": {
-        "ERROR_AUTH_INCORRECT": "Izskatās, ka Jūsu lietotāja vārds / e-pasts vai parole nav ievadīti pareizi.",
-        "SUCCESS": "Sveicināti Taigā!"
+        "ERROR_AUTH_INCORRECT": "Taigai izskatās, ka iesniegtais lietotājvārds vai parole nav derīgi.",
+        "SUCCESS": "Laipni lūdzam Taiga"
     },
     "REGISTER": {
         "PAGE_TITLE": "Reģistrēties - Taigā",
@@ -378,7 +378,7 @@
         "PLACEHOLDER_NEW_PASSWORD": "Jaunā parole",
         "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "Jaunā parole (vēlreiz)",
         "ACTION_RESET_PASSWORD": "Nomainīt paroli",
-        "ERROR": "Nevaram atrast Jūsu paroles aktualizēšanas pieprasījumu. Pamēģiniet pieprasīt vēlreiz.",
+        "ERROR": "Nevaram atrast Jūsu paroles atjaunošanas pieprasījumu. Pamēģiniet pieprasīt vēlreiz.",
         "SUCCESS": "Jaunā parole saglabāta .<br /> Mēģiniet ar to <strong>ierakstīties</strong>."
     },
     "INVITATION": {
@@ -386,7 +386,7 @@
         "PAGE_DESCRIPTION": "Apstiprināt uzaicinājumu pievienoties projektam Taigā."
     },
     "INVITATION_LOGIN_FORM": {
-        "NOT_FOUND": "Neatrodam Jums nosūtīto uzaicinājumu.",
+        "NOT_FOUND": "Taiga neatrod jūsu uzaicinājumu.",
         "SUCCESS": "Jūs esat veiksmīgi pievienojies projektam. Esiet sveicināts {{project_name}}"
     },
     "HOME": {
@@ -394,7 +394,7 @@
         "PAGE_DESCRIPTION": "Taigas sākumlapa ar Jūsu svarīgākajiem projektiem un visām vajadzībām, uzdevumiem un izmaiņu pieprasījumiem, kuri Jums piešķirti vai kurus vērojat.",
         "EMPTY_WORKING_ON": "<strong>Patukšs, vai ne?</strong> Sāciet darboties ar Taigu un šeit redzēsiet vajadzības, uzdevumus un izmaiņu pieprasījumus, pie kuriem Jūs strādājat.",
         "EMPTY_WATCHING": "<strong>Sekojiet</strong> vajadzībām, uzdevumiem un izmaiņu pieprasījumiem savos projektos un tieciet informēti par izmaiņām tajos.",
-        "EMPTY_PROJECT_LIST": "Jūs vēl neesat iesaistīts nevienā projektā",
+        "EMPTY_PROJECT_LIST": "Jums vēl nav projektu",
         "WORKING_ON_SECTION": "Strādājat pie",
         "WATCHING_SECTION": "Vērojat",
         "DASHBOARD": "Projektu panelis",
@@ -416,7 +416,7 @@
         },
         "EMPTY": {
             "TITLE": "Izskatās, ka pagaidām šeit nav neviena eposa.",
-            "EXPLANATION": "Eposi ir augstākā līmeņa vienības, kas ietver vajadzības. <br />Eposi ir hierarhijas augšdaļā, un var tik izmantoti, lai grupētu vajadzības.",
+            "EXPLANATION": "Eposi ir augstākā līmeņa vienības, kas ietver vajadzības. <br />Eposi ir hierarhijas pašā augšā, un var tik izmantoti, lai grupētu vajadzības.",
             "HELP": "Lasīt vairāk par 'eposiem'"
         },
         "TABLE": {
@@ -453,11 +453,11 @@
         "GALLERY_VIEW_MODE": "Galerijas skata režīms",
         "DESCRIPTION": "Ievadiet īsu aprakstu",
         "DEPRECATED": "(novecojis/norakstīts)",
-        "DEPRECATED_FILE": "Novecojis/norakstāms?",
+        "DEPRECATED_FILE": "Novecojis?",
         "ADD": "Pievienot jaunu pielikumu. {{maxFileSizeMsg}}",
         "DROP": "Pielikumus ievilkt šeit!",
-        "SHOW_DEPRECATED": "+ parādīt novecojušos/norakstītos pielikumus",
-        "HIDE_DEPRECATED": "- nerādīt novecojušus/norakstītus pielikumus",
+        "SHOW_DEPRECATED": "+ parādīt novecojušos pielikumus",
+        "HIDE_DEPRECATED": "- nerādīt novecojušus pielikumus",
         "COUNT_DEPRECATED": "({{ counter }} novecojis/norakstīts)",
         "MAX_UPLOAD_SIZE": "Maksimālais augšuplādējamā faila izmērs ir {{maxFileSize}}",
         "DATE": "YYYY MM DD [plkst.] HH:mm",
@@ -502,7 +502,7 @@
             "ASYNC_MESSAGE": "Jums tiks nosūtīts e-pasts, kad būs gatavs.",
             "SYNC_MESSAGE": "Lejuplādei automātiski nesākoties, līdzēs <a href='{{url}}' download title='Download the dump file'>šis</a>.",
             "ERROR": "Veidojot rezerves kopiju, gadījusies kļūme. Lūdzu, mēģiniet vēlreiz.",
-            "ERROR_BUSY": "Sistēma pašreiz ir stipri noslogota. Mēģiniet pēc dažām minūtēm. Paldies par sapratni!"
+            "ERROR_BUSY": "Sistēma pašreiz ir ļoti noslogota, mēģiniet vēlāk. Paldies par sapratni!"
         },
         "MODULES": {
             "TITLE": "Moduļi",
@@ -517,9 +517,9 @@
             "KANBAN": "Kanban",
             "KANBAN_DESCRIPTION": "Organizējiet savu darbu projektā efektīvi, ar šī paneļa palīdzību.",
             "ISSUES": "Izmaiņu pieprasījumi",
-            "ISSUES_DESCRIPTION": "Pārvaldiet/izsekojiet Jūsu projekta kļūdas, jautājumus un uzlabojumus, Neko nepalaidiet garām!",
+            "ISSUES_DESCRIPTION": "Atrast un sakārtot projekta kļūdas, jautājumus un uzlabojumus, Viss kā uz delnas!!",
             "WIKI": "Wiki",
-            "WIKI_DESCRIPTION": "Pievienot, dzēst vai rediģēt saturu sadarbībā ar citiem. Īstā vieta projekta dokumentācijai.",
+            "WIKI_DESCRIPTION": "Pievienot, mainīt vai dzēst saturu sadarbībā ar citiem. Īstā vieta projekta dokumentācijai.",
             "MEETUP": "Satikšanās (meet-up)",
             "MEETUP_DESCRIPTION": "Izvēlieties videokonferences sistēmu.",
             "SELECT_VIDEOCONFERENCE": "Izvēlieties videokonferenču sistēmu",
@@ -540,9 +540,9 @@
             "RECRUITING_MESSAGE": "Kas tiek meklēts?",
             "RECRUITING_PLACEHOLDER": "Precizējiet profilus, kurus meklējat",
             "FEEDBACK": "Vai vēlaties saņemt Taigas lietotāju atsauksmes?",
-            "PUBLIC_PROJECT": "Publisks (atklāts) projekts",
+            "PUBLIC_PROJECT": "Publisks projekts",
             "PRIVATE_PROJECT": "Privāts (neatklāts) projekts",
-            "PRIVATE_OR_PUBLIC": "Publisks vai privāts projekts? Atšķirības.",
+            "PRIVATE_OR_PUBLIC": "Atšķirības starp publisku (atklātu) un privātu (slēptu) projektu",
             "DELETE": "Dzēst šo projektu",
             "CHANGE_LOGO": "Mainīt logo",
             "ACTION_USE_DEFAULT_LOGO": "Izmantot noklusējuma attēlu",
@@ -552,12 +552,12 @@
             "MAX_PUBLIC_PROJECTS_MEMBERS": "Projekts pārsniedz Jums atļauto maksimālo publisku projektu dalībnieku skaitu",
             "PROJECT_OWNER": "Projekta vadītājs",
             "REQUEST_OWNERSHIP": "Pieprasīt vadību",
-            "REQUEST_OWNERSHIP_CONFIRMATION_TITLE": "Ir vēlme uzņemties projekta vadību?",
+            "REQUEST_OWNERSHIP_CONFIRMATION_TITLE": "Vēlme uzņemties projekta vadību?",
             "REQUEST_OWNERSHIP_DESC": "Pieprasīt pašreizējam projekta vadītājam {{name}} nodot šī projekta vadību man.",
             "REQUEST_OWNERSHIP_BUTTON": "Pieprasīt",
             "REQUEST_OWNERSHIP_SUCCESS": "Mēs paziņosim projekta vadītājam",
             "CHANGE_OWNER": "Nomainīt vadītāju",
-            "CHANGE_OWNER_SUCCESS_TITLE": "Kārtībā. Jūsu pieprasījums ir nosūtīts!",
+            "CHANGE_OWNER_SUCCESS_TITLE": "Pieprasījums nosūtīts!",
             "CHANGE_OWNER_SUCCESS_DESC": "Mēs paziņosim Jums e-pastā, vai projekta vadības pieprasījums ir pieņemts vai noraidīts"
         },
         "REPORTS": {
@@ -606,12 +606,12 @@
         "PROJECT_VALUES": {
             "PAGE_TITLE": "{{sectionName}} - Projekta atribūtu vērtības - {{projectName}}",
             "REPLACEMENT": "Visi objekti ar šo vērtību tiks aizstāti ar",
-            "ERROR_DELETE_ALL": "Nevar nodzēst visas vērtības ."
+            "ERROR_DELETE_ALL": "Nav iespējams nodzēst visas vērtības."
         },
         "PROJECT_VALUES_POINTS": {
             "TITLE": "Punkti",
             "SUBTITLE": "Norādiet punktus (aptuveno to skaitu), pēc kuriem var novērtēt vajadzības",
-            "US_TITLE": "Vajadzību punkti",
+            "US_TITLE": "Vajadzības punkti",
             "ACTION_ADD": "Pievienot jaunu punktu"
         },
         "PROJECT_VALUES_PRIORITIES": {
@@ -672,7 +672,7 @@
             "COUNT_MEMBERS": "{{ role.members_count }} dalībnieki ar šo lomu",
             "TITLE_DELETE_ROLE": "Dzēst lomu",
             "REPLACEMENT_ROLE": "Visi lietotāji ar šo lomu tiks pārvietoti uz",
-            "WARNING_DELETE_ROLE": "Uzmanību! Visas šīs lomas aplēses/aprēķini tiks zaudētas",
+            "WARNING_DELETE_ROLE": "Uzmanību! Zudīs visas šīs lomas aplēses",
             "ERROR_DELETE_ALL": "Visas vērtības nav dzēšamas",
             "EXTERNAL_USER": "Ārējais lietotājs",
             "NOTE_EXTERNAL_USERS": "<strong>NB:</strong> ar Ārējo lietotāju tiek saprasts ikviens pie Taigas platformas nepiederošs anonīms lietotājs, tostarp meklētāji. Lūdzu izmantojiet šo lomu piesardzīgi."
@@ -680,7 +680,7 @@
         "THIRD_PARTIES": {
             "SECRET_KEY": "Slepenā atslēga",
             "PAYLOAD_URL": "Saite URL uz derīgu noslodzi ",
-            "VALID_IPS": "Derīgas izcelsmes IP adreses (atdalītas ar komatu)"
+            "VALID_IPS": "Derīgās IP adreses (atdalītas ar ,)"
         },
         "BITBUCKET": {
             "SECTION_NAME": "Bitbucket",
@@ -728,9 +728,9 @@
         "CUSTOM_ATTRIBUTES": {
             "PAGE_TITLE": "{{sectionName}} - Pielāgojamie atribūti - {{projectName}}",
             "ADD": "Pievienot pielāgojamu laiku",
-            "EDIT": "Mainīt pielāgojamo lauku",
-            "DELETE": "Dzēst pielāgojamo lauku",
-            "SAVE_TITLE": "Saglabāt pielāgojamo lauku",
+            "EDIT": "Mainīt pielāgotu lauku",
+            "DELETE": "Dzēst pielāgotu lauku",
+            "SAVE_TITLE": "Saglabāt pielāgotu lauku",
             "CANCEL_TITLE": "Atcelt izveidi",
             "SET_FIELD_NAME": "Ierakstiet Jūsu pielāgojamā lauka nosaukumu",
             "SET_FIELD_DESCRIPTION": "Iestatiet pielāgojamā lauka aprakstu",
@@ -747,7 +747,7 @@
             "STATUS_PENDING": "Neapstiprināts/neizlemts",
             "DELETE_MEMBER": "Dzēst dalībnieku",
             "RESEND": "Sūtīt atkārtoti",
-            "SUCCESS_SEND_INVITATION": "Vēlreiz tika nosūtīts uzaicinājums uz “{{email}}”.",
+            "SUCCESS_SEND_INVITATION": "Atkārtoti nosūtīts uzaicinājums uz “{{email}}”.",
             "SUCCESS_DELETE": "Ir izdzēsts {{message}}.",
             "ERROR_DELETE": "Nevarēja izdzēst {{message}}.",
             "DEFAULT_DELETE_MESSAGE": "uzaicinājumu uz {{email}}"
@@ -819,12 +819,12 @@
         "PROFILE": {
             "PAGE_TITLE": "{{userFullName}} (@{{userUsername}})",
             "USER_SETTINGS": "Lietotāja iestatījumi",
-            "CLOSED_US": "Beigtās vajadzības",
-            "PROJECTS": "Projekti",
+            "CLOSED_US": "beigtās vajadzības",
+            "PROJECTS": "projekti",
             "PROJECTS_EMPTY": "{{username}} nav neviena projekta",
-            "CONTACTS": "Kontaktpersonas",
+            "CONTACTS": "kontaktpersonas",
             "CONTACTS_EMPTY": "{{username}} vēl nav kontaktpersonu",
-            "CURRENT_USER_CONTACTS_EMPTY": "Jums pagaidām nav kontaktu",
+            "CURRENT_USER_CONTACTS_EMPTY": "Jums pagaidām nav kontaktpersonu",
             "CURRENT_USER_CONTACTS_EMPTY_EXPLAIN": "Cilvēki, ar kuriem kopā Taigā strādājat, automātiski tiks iekļauti Jūsu kontaktu sarakstā",
             "TABS": {
                 "ACTIVITY_TAB": "Norise/grafiks",
@@ -844,7 +844,7 @@
         "PROFILE_SIDEBAR": {
             "TITLE": "Jūsu profils",
             "DESCRIPTION": "Cilvēki var redzēt visu ko Jūs darāt un pie kā Jūs strādājat. Pievienojiet īsu biogrāfiju, lai sniegtu pilnīgāku informāciju.",
-            "ADD_INFO": "Rediģēt biogrāfiju"
+            "ADD_INFO": "Rediģēt Jūsu aprakstu"
         },
         "PROFILE_FAVS": {
             "FILTER_INPUT_PLACEHOLDER": "Ierakstiet kaut ko...",
@@ -860,7 +860,7 @@
             "FILTER_TYPE_TASKS_TITLE": "Rādīt tikai uzdevumus",
             "FILTER_TYPE_ISSUES": "Izmaiņu pieprasījumi",
             "FILTER_TYPE_ISSUES_TITLE": "Rādīt tikai izmaiņu pieprasījumus",
-            "EMPTY_TITLE": "Šeit nav ko redzēt."
+            "EMPTY_TITLE": "Pagaidām tukšums"
         }
     },
     "PROJECT": {
@@ -906,8 +906,8 @@
             "CHANGE_PASSWORD_TITLE": "Paroles maiņa",
             "CHANGE_PASSWORD": "Paroles maiņa",
             "DASHBOARD_TITLE": "Vadības panelis",
-            "DISCOVER_TITLE": "Pārlūkojiet aktuālākos projektus",
-            "DISCOVER": "Atklājiet/pārlūkojiet/caurlūkojiet"
+            "DISCOVER_TITLE": "Pārlūkot aktuālākos projektus",
+            "DISCOVER": "Atklāt"
         },
         "LIKE_BUTTON": {
             "LIKE": "Ietīkot (ielaikot)",
@@ -931,7 +931,7 @@
             }
         },
         "CONTACT_BUTTON": {
-            "CONTACT_TITLE": "Sazināties ar projekta dalībniekiem/komandu",
+            "CONTACT_TITLE": "Sazināties ar projekta dalībniekiem",
             "CONTACT_BUTTON": "Sazināties ar projektu"
         },
         "CREATE": {
@@ -952,7 +952,7 @@
             "INVITE_LATER": "(Dalībniekus var pieaicināt arī vēlāk)",
             "BACK": "Atpakaļ",
             "MAX_PRIVATE_PROJECTS": "Diemžēl esat sasniedzis maksimālo privāto projektu skaitu\nJa vēlaties palielināt šo limitu, lūdzu sazinieties ar administratoru. ",
-            "MAX_PUBLIC_PROJECTS": "Diemžēl Jūs esat sasniedzis maksimālo publisko projektu skaitu.\nJa vēlaties palielināt pašreizējo limitu, lūdzu, sazinieties ar administratoru.",
+            "MAX_PUBLIC_PROJECTS": "Esat sasniedzis maksimālo publisko projektu skaitu.\nJa vēlaties palielināt pašreizējo limitu, lūdzu, sazinieties ar sistēmas administratoru.",
             "PUBLIC_PROJECT": "Publisks projekts",
             "PRIVATE_PROJECT": "Privāts projekts"
         },
@@ -969,26 +969,26 @@
         "IMPORT": {
             "TITLE": "Importēt projektu",
             "DESCRIPTION": "Importējiet Taigā savu projektu no citām platformām",
-            "ASYNC_IN_PROGRESS_TITLE": "Tiek importēts projekts",
+            "ASYNC_IN_PROGRESS_TITLE": "Taiga importē jūsu projektu",
             "ASYNC_IN_PROGRESS_MESSAGE": "Šis process aizņems pāris minūtes.<br/> Tam beidzoties saņemsiet e-pastu. ",
             "UPLOAD_IN_PROGRESS_MESSAGE": "Augšuplādēts {{uploadedSize}} ar izmēru {{totalSize}}",
             "ERROR": "Sistēmai neizdodas importēt datus. Lūdzu mēģiniet vēlreiz.",
             "ERROR_TOO_MANY_REQUEST": "Sistēma pašreiz ir ļoti noslogota, mēģiniet vēlāk. Paldies par sapratni!",
-            "ERROR_MESSAGE": "Sistēmai neizdodas importēt datus: {{error_message}}",
-            "ERROR_MAX_SIZE_EXCEEDED": "Fails '{{fileName}}' ar izmēru ({{fileSize}}) ir pārāk apjomīgs priekš Oompa Loompām. Lūdzu izmantojiet failu, kura izmērs nepārsniedz ({{maxFileSize}})",
+            "ERROR_MESSAGE": "Sistēmai neizdodas importēt datus. Kļūda:\n{{error_message}}",
+            "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) priekš sistēmas ir pārāk apjomīgs. Pamēģiniet vēlreiz ar failu, kura izmērs nepārsniedz ({{maxFileSize}})",
             "SYNC_SUCCESS": "Projekts importēts veiksmīgi",
             "IMPORT": "Importēt",
             "WHO_IS": "Viņu uzdevumi tiks piešķirti ...",
             "WRITE_EMAIL": "Vai arī, ja vēlaties, uzrakstiet uz e-pastu, kuru šis lietotājs izmanto Taigā",
             "SEARCH_CONTACT": "Vai arī, ja vēlaties, meklējiet savos kontaktos",
             "WRITE_EMAIL_LABEL": "Uzrakstiet ziņu uz e-pastu, kuru šis lietotājs izmanto Taigā",
-            "ACCEEDE": "Pievienoties",
+            "ACCEEDE": "Accede",
             "PROJECT_MEMBERS": "Projekta dalībnieki",
             "PROCESS_DESCRIPTION": "Informējiet, kuram no Taigas vēlaties piešķirt {{platform}} uzdevumus",
             "MATCH": "Vai <strong>{{user_external}}</strong> ir viena un tā pati persona kas <strong>{{user_internal}}</strong>?",
             "CHOOSE": "Atzīmēt lietotāju",
             "LINKS": "Saites ar {{platform}}",
-            "LINKS_DESCRIPTION": "Vai vēlaties saglabāt katra objekta/vienuma saiti ar oriģinālo {{platform}} karti?",
+            "LINKS_DESCRIPTION": "Vai vēlaties saglabāt katra elementa saikni ar oriģinālo {{platform}} karti?",
             "WARNING_MAIL_USER": "Ņemiet vērā: ja lietotājam nav Taigas konta, nav iespējams viņam piešķirt uzdevumus.",
             "ASSIGN": "Piešķirt",
             "PROJECT_SELECTOR": {
@@ -1080,7 +1080,7 @@
     },
     "LIGHTBOX": {
         "DELETE_ACCOUNT": {
-            "CONFIRM": "Vai tiešām vēlaties dzēst savu Taigas kontu?",
+            "CONFIRM": "Patiesi vēlaties dzēst savu Taigas kontu?",
             "CANCEL": "Atpakaļ uz iestatījumiem",
             "ACCEPT": "Dzēst kontu",
             "BLOCK_PROJECT": "Ņemiet vērā, ka pēc konta dzēšanas visi Jūsu projekti tiks <strong>bloķēti</strong>. Ja nevēlaties, lai projekts tiktu bloķēts, pirms konta dzēšanas nododiet katra projekta vadītāja tiesības citam dalībniekam."
@@ -1089,7 +1089,7 @@
             "TITLE": "Dzēst projektu",
             "QUESTION": "Tiešām vēlaties dzēst šo projektu?",
             "SUBTITLE": "Visi projekta dati (vajadzības, uzdevumi, izmaiņu pieprasījumi, sprinti un wiki lapas) tiks zaudēti! :-(",
-            "CONFIRM": "Jā, pilnībā"
+            "CONFIRM": "Jā, vēlos"
         },
         "ASSIGNED_TO": {
             "SELECT": "Atzīmēt atbildīgo",
@@ -1103,7 +1103,7 @@
         "ADD_MEMBER": {
             "TITLE": "Jauns dalībnieks",
             "PLACEHOLDER": "Atlasiet lietotājus vai uzrakstiet e-pastu, lai uzaicinātu",
-            "ADD_EMAIL": "Pievienot e-pasta adresi",
+            "ADD_EMAIL": "Ierakstīt uzaicināmā e-pasta adresi",
             "REMOVE": "Dzēst",
             "INVITE": "Uzaicināt",
             "CHOOSE_ROLE": "Izvēlieties lomu",
@@ -1124,25 +1124,25 @@
             "PLACEHOLDER_SPRINT_NAME": "sprinta nosaukums",
             "PLACEHOLDER_SPRINT_START": "Paredzamais sākums",
             "PLACEHOLDER_SPRINT_END": "Paredzamās beigas",
-            "ACTION_DELETE_SPRINT": "Tiešām vēlaties dzēst šo sprintu?",
+            "ACTION_DELETE_SPRINT": "Patiesi vēlaties dzēst šo sprintu?",
             "TITLE_ACTION_DELETE_SPRINT": "dzēst sprintu",
             "LAST_SPRINT_NAME": "pēdējais sprints ir <strong> {{lastSprint}} ;-) </strong>"
         },
         "CREATE_EDIT": {
-            "TASK_PLACEHOLDER_DESCRIPTION": "Lūdzu pievienojiet sīkāku aprakstu, lai palīdzētu citiem labāk izprast šo uzdevumu",
-            "ISSUE_PLACEHOLDER_DESCRIPTION": "Lūdzu pievienojiet sīkāku aprakstu, lai palīdzētu citiem labāk izprast šo vajadzību",
-            "US_PLACEHOLDER_DESCRIPTION": "Lūdzu, pievienojiet sīkāku aprakstu, lai palīdzētu citiem labāk izprast šo vajadzību",
+            "TASK_PLACEHOLDER_DESCRIPTION": "Lūgums aprakstīt būtību, lai citiem skaidrs, par ko runa",
+            "ISSUE_PLACEHOLDER_DESCRIPTION": "Lūgums aprakstīt būtību, lai citiem skaidrs, par ko runa",
+            "US_PLACEHOLDER_DESCRIPTION": "Lūgums aprakstīt būtību, lai citiem skaidrs, par ko runa",
             "NEW_TASK": "Jauns uzdevums",
             "NEW_ISSUE": "Jauns izmaiņu pieprasījums",
-            "NEW_US": "Jauna vajadzība",
-            "EDIT_TASK": "Rediģēt uzdevumu",
-            "EDIT_ISSUE": "Rediģēt izmaiņu pieprasījumu",
-            "EDIT_US": "Rediģēt vajadzību",
-            "ADD_EXISTING_ISSUE": "Pievienot izmaiņu pieprasījumu pie {{ targetName }}",
+            "NEW_US": "jaunu vajadzību",
+            "EDIT_TASK": "Mainīt uzdevumu",
+            "EDIT_ISSUE": "Mainīt izmaiņu pieprasījumu",
+            "EDIT_US": "Mainīt vajadzību",
+            "ADD_EXISTING_ISSUE": "Saistīt izmaiņu pieprasījumu ar {{ targetName }}",
             "CONFIRM_CLOSE": "Izmaiņas nav saglabātas.\nTiešām vēlaties aizvērt formu?",
             "EXISTING_ISSUE": "Esošs izmaiņu pieprasījums",
             "CHOOSE_EXISTING_ISSUE": "Kurš izmaiņas pieprasījums?",
-            "ADD_ISSUE": "Izveidot izmaiņas pieprasījumu",
+            "ADD_ISSUE": "Pievienot izmaiņu pieprasījumus",
             "FILTER_ISSUES": "Atsijāt izmaiņu pieprasījumus"
         },
         "DELETE_DUE_DATE": {
@@ -1153,8 +1153,8 @@
             "TITLE": "Dzēst sprintu"
         },
         "REMOVE_RELATIONSHIP_WITH_EPIC": {
-            "TITLE": "Dzēst saikni ar eposu",
-            "MESSAGE": "Vai tiešām vēlaties noņemt šīs vajadzības saikni ar eposu  <strong>{{epicSubject}}</strong>?"
+            "TITLE": "Pārtraukt saikni ar Eposu",
+            "MESSAGE": "Vēlaties dzēst saikni ar eposu  <strong>{{epicSubject}}</strong>?"
         },
         "CREATE_MEMBER": {
             "PLACEHOLDER_INVITATION_TEXT": "(Neobligāts) Ielūgumā ietveriet personalizētu tekstu. Pastāstiet kaut ko jauku projekta jaunajiem dalībniekiem ;-)",
@@ -1188,10 +1188,10 @@
             "TITLE": "Iestatīt termiņu",
             "PLACEHOLDER_DUE_DATE": "Izvēlēties datumu",
             "REASON_FOR_DUE_DATE": "Pamatojums termiņam",
-            "PLACEHOLDER_REASON_FOR_DUE_DATE": "Kādēļ šai vajadzībai vajadzīgs termiņš?",
+            "PLACEHOLDER_REASON_FOR_DUE_DATE": "Kādēļ šī vajadzība ierabežota laikā?",
             "SUGGESTIONS": {
                 "IN_ONE_WEEK": "Ik nedēļu (pēc nedēļas)",
-                "IN_TWO_WEEKS": "2 nedēļu laikā / pēc divām nedēļām",
+                "IN_TWO_WEEKS": "2 nedēļu laikā",
                 "IN_ONE_MONTH": "Mēneša laikā / Pēc mēneša",
                 "IN_THREE_MONTHS": "3 mēnešos / Pēc 3 mēnešiem"
             },
@@ -1202,7 +1202,7 @@
             "SUBTITLE_ACTION_DELETE_DUE_DATE": "Vai tiešām vēlaties izdzēst termiņa statusu {{due_date_status_name}}?"
         },
         "RELATE_TO_EPIC": {
-            "TITLE": "Piesaistīt eposam",
+            "TITLE": "Saikne ar Eposu",
             "EXISTING_EPIC": "esošam eposam",
             "NEW_EPIC": "jaunam eposam",
             "CHOOSE_PROJECT_FOR_CREATION": "Kuram projektam?",
@@ -1223,9 +1223,9 @@
         "EXISTING_USERSTORY": "esošu vajadzību",
         "CHOOSE_PROJECT_FOR_CREATION": "projektā",
         "SUBJECT": "ar nosaukumu",
-        "SUBJECT_BULK_MODE": "Temats (pievienot paketi/vairumā)",
+        "SUBJECT_BULK_MODE": "Temats (pievienot vairumā)",
         "CHOOSE_PROJECT_FROM": "Kurš projekts?",
-        "CHOOSE_USERSTORY": "Kura/kāda vajadzība?",
+        "CHOOSE_USERSTORY": "Kura no vajadzībām?",
         "NO_USERSTORIES": "Šim projektam vēl nav vajadzību. Lūdzu, izvēlieties citu projektu.",
         "NO_USERSTORIES_FOUND": "Nekas kritērijiem atbilstošs nav atrasts",
         "FILTER_USERSTORIES": "Atsijāt vajadzības",
@@ -1239,18 +1239,18 @@
         "LINK_TASKBOARD": "Uzdevumu panelis",
         "TITLE_LINK_TASKBOARD": "Doties uz uzdevumu paneli",
         "TOTAL_POINTS": "punkti kopā",
-        "ADD": "+ Pievienot jaunu vajadzību",
+        "ADD": "+ Pievienot vajadzību",
         "ADD_BULK": "Pievienot vajadzības vairumā (vajadzību paketi)",
         "PROMOTED_FROM_ISSUE": "Šī vajadzība ir izveidota no izmaiņu pieprasījuma:",
-        "PROMOTED_FROM_TASK": "Šī vajadzība ir izveidota no uzdevuma:",
+        "PROMOTED_FROM_TASK": "Šī vajadzība ir izveidota no izmaiņu pieprasījuma:",
         "TITLE_LINK_GO_TO_ISSUE": "Pāriet uz izmaiņu pieprasījumu",
         "TITLE_LINK_GO_TO_TASK": "Doties uz uzdevumu",
         "TITLE_DELETE_ACTION": "Dzēst vajadzību",
         "LIGHTBOX_TITLE_BLOKING_US": "Bloķē vajadzību",
         "NOT_ESTIMATED": "Nav novērtēts",
-        "OWNER_US": "Šī vajadzība piesaistīta",
-        "RELATE_TO_EPIC": "Piesaistīt eposam",
-        "REMOVE_RELATIONSHIP_WITH_EPIC": "Noņemt saikni ar eposu",
+        "OWNER_US": "Šī vajadzība pieder",
+        "RELATE_TO_EPIC": "Saikne ar Eposu",
+        "REMOVE_RELATIONSHIP_WITH_EPIC": "Dzēst saikni ar Eposu",
         "TRIBE": {
             "PUBLISH": "Publicēt kā koncertu/Gigu Taiga Tribe lapā",
             "PUBLISH_INFO": "Vairāk informācijas",
@@ -1311,7 +1311,8 @@
             "ASSIGNED_USERS": "Atbildīgie lietotāji",
             "DUE_DATE": "termiņš",
             "MILESTONE": "sprints",
-            "COLOR": "krāsa"
+            "COLOR": "krāsa",
+            "PROMOTED_TO": "promoted to"
         }
     },
     "BACKLOG": {
@@ -1319,13 +1320,13 @@
         "PAGE_DESCRIPTION": "Darbu klāsta panelis ar vajadzībām un projekta {{projectName}} sprintiem: {{projectDescription}}",
         "SECTION_NAME": "Darba klāsts",
         "CUSTOMIZE_GRAPH": "Pielāgojiet savu Darba klāsta grafiku",
-        "CUSTOMIZE_GRAPH_TEXT": "Lai būtu jauks grafiks, kas palīdz sekot projekta gaitai, Jums ir jāiestata punkti un sprints caur",
-        "CUSTOMIZE_GRAPH_ADMIN": "Administrators",
-        "CUSTOMIZE_GRAPH_TITLE": "Iestatiet punktus un sprintu caur Administratoru",
+        "CUSTOMIZE_GRAPH_TEXT": "Lai grafiks būtu  baudāms un palīdzētu efektīvi sekot projekta gaitai, Jums ir jāiestata punkti un sprints",
+        "CUSTOMIZE_GRAPH_ADMIN": "Administratora zonā",
+        "CUSTOMIZE_GRAPH_TITLE": "Iestatiet punktus un sprintu Administratora zonā",
         "MOVE_US_TO_CURRENT_SPRINT": "Pāriet uz tekošo Sprintu",
         "MOVE_US_TO_LATEST_SPRINT": "Doties uz pēdējo Sprintu",
         "EMPTY": "Darba klāsta saraksts tukšs!",
-        "CREATE_NEW_US": "Izveidot jaunu vajadzību",
+        "CREATE_NEW_US": "Veidot jaunu vajadzību",
         "CREATE_NEW_US_EMPTY_HELP": "Iespējams, vēlēsieties izveidot jaunu vajadzību",
         "EXCESS_OF_POINTS": "Punktu pārpalikums",
         "PENDING_POINTS": "Neapstiprinātie punkti",
@@ -1351,10 +1352,10 @@
             "HIDE": "Nerādīt birkas"
         },
         "FORECASTING": {
-            "TITLE": "Ātrdarbības prognozēšana",
+            "TITLE": "Veiktspējas prognozēšana",
             "BACKLOG": "Parādīt Darba klāstu",
             "NEW_SPRINT": "Kandidāt-vajadzības Jūsu nākamajam sprintam, balstoties uz jūsu līdzšinējo ātrumu. Noklikšķiniet, lai izveidotu jaunu sprintu.",
-            "CURRENT_SPRINT": "Kandidāt-vajadzības Jūsu sprintam, balstoties uz Jūsu līdzšinējo ātrumu. Noklikšķiniet, lai pievienotu pašreizējam sprintam."
+            "CURRENT_SPRINT": "Kandidāt-vajadzības Jūsu sprintam, balstoties uz Jūsu līdzšinējo veiktspēju. Noklikšķiniet, lai pievienotu pašreizējam sprintam."
         },
         "TABLE": {
             "COLUMN_US": "Vajadzības",
@@ -1367,7 +1368,7 @@
             "CLOSED_TASKS": "pabeigti/slēgti<br />uzdevumi",
             "IOCAINE_DOSES": "jokaiņa indes<br />dozas",
             "SHOW_STATISTICS_TITLE": "Rādīt statistiku",
-            "TOGGLE_BAKLOG_GRAPH": "Rādīt/paslēpt pārvērtušos/izdegšanas(burndown) diagrammu/grafiku",
+            "TOGGLE_BAKLOG_GRAPH": "Rādīt/slēpt pārdegšanas (burndown) diagrammu",
             "POINTS_PER_ROLE": "Punkti par lomu"
         },
         "SUMMARY": {
@@ -1386,17 +1387,17 @@
             "DATE": "GGGG MM DD",
             "LINK_TASKBOARD": "Sprinta uzdevumu panelis",
             "TITLE_LINK_TASKBOARD": "Dodties uz “{{name}}” uzdevumu paneli",
-            "EMPTY": "Pagaidām sprintu nav",
+            "EMPTY": "Sprintu pagaidām nav",
             "WARNING_EMPTY_SPRINT_ANONYMOUS": "Šim sprintam nav vajadzību",
             "WARNING_EMPTY_SPRINT": "Lai sāktu jaunu sprintu, ievelciet/nometiet šeit vajadzības no sava Darba klāsta",
             "TITLE_ACTION_NEW_SPRINT": "Pievienot jaunu sprintu",
-            "TEXT_ACTION_NEW_SPRINT": "Iespējams, vēlēsities savā projektā izveidot jaunu sprintu",
-            "ACTION_SHOW_CLOSED_SPRINTS": "Rādīt beigtos/slēgtos sprintus",
-            "ACTION_HIDE_CLOSED_SPRINTS": "Nerādīt beigtos sprintus"
+            "TEXT_ACTION_NEW_SPRINT": "Iespējams, vēlēsieties savā projektā izveidot jaunu sprintu",
+            "ACTION_SHOW_CLOSED_SPRINTS": "Rādīt paveiktos sprintus",
+            "ACTION_HIDE_CLOSED_SPRINTS": "Slēpt paveiktos sprintus"
         }
     },
     "ERROR": {
-        "TEXT1": "Atgadījusies ķibele un pie tās novēršanas tiek strādāts.",
+        "TEXT1": "Atgadījusies ķibele. Tiek risināts.",
         "NOT_FOUND": "Nav atrasts",
         "NOT_FOUND_TEXT": "Kļūda 404. Lapa, kuru meklējat, vairs nepastāv. Iesakām atgriezties TAIGAs mājaslapā un tur pacensties atrast meklēto.",
         "PERMISSION_DENIED": "Pieeja liegta",
@@ -1407,9 +1408,9 @@
         "PAGE_TITLE": "{{sprintName}} - Sprinta panelis - {{projectName}}",
         "PAGE_DESCRIPTION": "Sprints {{sprintName}} (no {{startDate}} līdz {{endDate}}) no {{projectName}}. Izpildīti {{completePercentage}}% ({{completePoints}} no {{totalPoints}} punktiem). {{openTasks}} atvērti uzdevumi no {{totalTasks}}.",
         "SECTION_NAME": "Uzdevumu panelis",
-        "TITLE_ACTION_ADD": "Pievienot jaunu uzdevumu",
-        "TITLE_ACTION_ADD_BULK": "Pievienot jaunus uzdevumus vairumā (kā paketi)",
-        "TITLE_ACTION_ADD_ISSUE": "Pievienot izmaiņu pieprasījumu",
+        "TITLE_ACTION_ADD": "Izveidot uzdevumu",
+        "TITLE_ACTION_ADD_BULK": "Pievienot izmaiņu pieprasījumus vairumā (paketi)",
+        "TITLE_ACTION_ADD_ISSUE": "Pievienot jaunu izmaiņu pieprasījumu",
         "TITLE_ACTION_ADD_ISSUE_BULK": "Pievienot izmaiņu pieprasījumus vairumā (paketi)",
         "TITLE_ACTION_ASSIGN": "Dot uzdevumu",
         "PLACEHOLDER_CARD_TITLE": "Šis var būt uzdevums",
@@ -1422,7 +1423,7 @@
             "TITLE_ACTION_UNFOLD_ROW": "Izvērst rindu",
             "FIELD_POINTS": "punkti",
             "ROW_STORYLESS_TASKS_TITLE": "Uzdevumi bez vajadzībām",
-            "ROW_ISSUES_TITLE": "Sprinta nepilnības / Izmaiņu pieprasījumi sprintā"
+            "ROW_ISSUES_TITLE": "Sprinta Izmaiņu pieprasījumi"
         },
         "CHARTS": {
             "XAXIS_LABEL": "Dienas",
@@ -1443,7 +1444,7 @@
             "WARNING_ISSUES_NOT_MOVED_TITLE": "Jūs tikko pārvietojāt visas vajadzības un uzdevumus, un sprints tiks slēgts",
             "WARNING_ISSUES_NOT_MOVED": "Izmaiņu pieprasījumi paliks Sprintā un netiks noņemti",
             "WARNING_SPRINT_STILL_OPEN_TITLE": "{total, plural, one{Jūs tikko pārvietojāt # objektu!} other{Jūs tikko pārvietojāt # objektus!}}",
-            "WARNING_SPRINT_STILL_OPEN": "Lūdzu, ņemiet vērā, ka sprints {{sprintName}} <strong>nevar tikt pabeigts/slēgts</strong> kamēr tajā būs nepabeigti objekti/elementi."
+            "WARNING_SPRINT_STILL_OPEN": "Lūdzu, ņemiet vērā, ka sprints {{sprintName}} <strong>nevar tikt paveikts</strong> kamēr tajā ir nepabeigti elementi."
         }
     },
     "TASK": {
@@ -1464,10 +1465,10 @@
         "TITLE_ACTION_IOCAINE": "Ir sajūta, ka uzdevums grūti padodas? Dariet to zināmu citiem, uzklikšķinot uz \"Jokaiņa\", kad rediģējat uzdevumu. Ir iespējams kļūt imūnam pret šo (izdomāti) nāvīgo indi to regulāri lietojot pa mazai devai, tāpat kā ir iespējams kļūt labākam tajā, ko Jūs darāt, laiku pa laikam pieņemot kādu izaicinājumu."
     },
     "NOTIFICATION": {
-        "OK": "Viss bumbās",
+        "OK": "Darīts.",
         "WARNING": "Kaut kas nogāja greizi...",
-        "WARNING_TEXT": "Jūsu izmaiņas netika saglabātas!",
-        "SAVED": "Jūsu veiktās izmaiņas saglabātas!",
+        "WARNING_TEXT": "Izmaiņas NEtika saglabātas!",
+        "SAVED": "Taiga saglabāja visas izmaiņas!",
         "CLOSE": "Aizvērt paziņojumu",
         "MAIL": "Paziņojumi ar e-pastu",
         "DESKTOP": "Darbvirsmas paziņojumi, izmantojot pārlūka brīdinājumus",
@@ -1478,14 +1479,14 @@
         "SUBTITLE": "Žēl, ka pametat Taigu. Ceram, ka Jūsu uzturēšanās šeit bija patīkama :)",
         "PLACEHOLDER_INPUT_TOKEN": "konta dzēšanas/anulēšanas tokens",
         "ACTION_LEAVING": "Jā, es pazūdu!",
-        "SUCCESS": "Jūsu konts dzēsts"
+        "SUCCESS": "Taiga dzēsusi jūsu kontu"
     },
     "CHANGE_EMAIL_FORM": {
         "TITLE": "Mainīt savu e-pasta adresi",
         "SUBTITLE": "Viens klikšķis un Jūsu e-pasta adrese būs nomainīta.",
         "PLACEHOLDER_INPUT_TOKEN": "nomainīt e-pasta tokenu",
         "ACTION_CHANGE_EMAIL": "Mainīt e-pastu",
-        "SUCCESS": "E-pasts mainīts"
+        "SUCCESS": "Taiga izmainījusi jūsu epasta adresi."
     },
     "ISSUES": {
         "PAGE_TITLE": "Izmaiņu pieprasījumi - {{projectName}}",
@@ -1500,7 +1501,7 @@
         "LIGHTBOX_TITLE_BLOKING_ISSUE": "Bloķē izmaiņas pieprasījumu",
         "LINK_TASKBOARD": "Uzdevumu panelis",
         "TITLE_LINK_TASKBOARD": "Doties uz uzdevumu paneli",
-        "FILTER_SPRINTS": "Atsijāt/atlasīt Sprintus",
+        "FILTER_SPRINTS": "Atlasīt Sprintus",
         "CHOOSE_SPRINT": "Kurš Sprints?",
         "FIELDS": {
             "PRIORITY": "Prioritāte",
@@ -1509,11 +1510,11 @@
         },
         "FILTER_ISSUES": "Atsijāt izmaiņu pieprasījumus",
         "CONFIRM_DETACH_FROM_SPRINT": {
-            "TITLE": "Atstiprināt Izmaiņu pieprasījumu no Sprinta",
-            "MESSAGE": "Jūs gatavojaties atvienot/atsaistīt/atkabināt šo Izmaiņas pieprasījumu no sprinta <strong>{{ sprintName }}<strong>"
+            "TITLE": "Atvienot/atsaistīt izmaiņas pieprasījumu no sprinta",
+            "MESSAGE": "Jūs gatavojaties izņemt šo Izmaiņu pieprasījumu no sprinta <strong>{{ sprintName }}<strong>"
         },
         "CONFIRM_CHANGE_FROM_SPRINT": {
-            "TITLE": "Piekabināt izmaiņu pieprasījumu sprintam",
+            "TITLE": "Pievienot Sprintam izmaiņu pieprasījumu",
             "MESSAGE": "<strong>Šis izmaiņas pieprasījums pašlaik ir pievienots/piesaistīts sprintam {{ oldSprintName }}</strong>. Jūs gatavojaties to atvienot/atsaistīt no šī sprinta un tā vietā pievienot/piesaistīt <strong>{{ newSprintName }}.</strong>"
         },
         "TABLE": {
@@ -1532,7 +1533,7 @@
             "BLOCKED": "Bloķēts",
             "EMPTY": {
                 "TITLE": "Nav izmaiņu pieprasījumu, par kuriem ziņot :-)",
-                "SUBTITLE": "Jums prātā jauns izmaiņu pieprasījums (vēlme salabot | uzlabot | ieviest)?"
+                "SUBTITLE": "Padomā kas pinveidojams?"
             }
         }
     },
@@ -1547,7 +1548,7 @@
         "TITLE_ACTION_FOLD": "Savērst kolonu/stabiņu",
         "TITLE_ACTION_UNFOLD": "Izvērst kolonnu/stabiņu",
         "TITLE_ACTION_ADD_US": "Pievienot vajadzību",
-        "TITLE_ACTION_ADD_BULK": "Pievienot jaunu vairumā",
+        "TITLE_ACTION_ADD_BULK": "Pievienot jaunu kopu",
         "ACTION_SHOW_ARCHIVED": "Rādīt arhivētos",
         "ACTION_HIDE_ARCHIVED": "Nerādīt arhivētos",
         "HIDDEN_USER_STORIES": "Vajadzības šajā statusā netiek atainotas pēc noklusējuma",
@@ -1574,7 +1575,7 @@
         "PLACEHOLDER_INPUT_SEARCH": "Meklēt pēc pilna vārda/nosaukuma...",
         "COLUMN_MR_WOLF": "Mr. Vilks",
         "EXPLANATION_COLUMN_MR_WOLF": "Beigtie izmaiņu pieprasījumi",
-        "COLUMN_IOCAINE": "Jokaiņa indes dzērājs / nopūlējies",
+        "COLUMN_IOCAINE": "Jokainais rebonis / nopūlējies",
         "EXPLANATION_COLUMN_IOCAINE": "Uzņemtās Jokaiņa indes devas",
         "COLUMN_CERVANTES": "Servantess",
         "EXPLANATION_COLUMN_CERVANTES": "Wiki lapas rediģētas",
@@ -1657,7 +1658,7 @@
             "ALL_PAGES": "Visas Wiki lapas"
         },
         "SUMMARY": {
-            "TIMES_EDITED": "mainīts<br />reizes",
+            "TIMES_EDITED": "<br />reizes rediģēts",
             "LAST_EDIT": "pēdējā <br />izmaiņa",
             "LAST_MODIFICATION": "pēdējais izmainījis"
         },
@@ -1685,7 +1686,7 @@
         "HINT4_TEXT": "Neuztraucieties, vadības panelī atradīsit savus atvērtos uzdevumus, izmaiņu pieprasījumus un vajadzības secībā, kādā strādājāt pie tiem."
     },
     "TIMELINE": {
-        "UPLOAD_ATTACHMENT": "{{username}} ir pievienojis/augšuplādējis jaunu pielikumu iekš {{obj_name}}",
+        "UPLOAD_ATTACHMENT": "{{username}} ir pievienojis jaunu pielikumu iekš {{obj_name}}",
         "US_CREATED": "{{username}} izveidoja VAJADZĪBU {{obj_name}} projektā {{project_name}}",
         "ISSUE_CREATED": "{{username}} izveidoja IZMAIŅU PIEPRASĪJUMU {{obj_name}} projektā {{project_name}}",
         "TASK_CREATED": "{{username}} izveidoja UZDEVUMU {{obj_name}} projektā {{project_name}}",
@@ -1696,9 +1697,9 @@
         "EPIC_RELATED_USERSTORY_CREATED": "{{username}} ir piesaistījis vajadzību {{related_us_name}} eposam {{epic_name}} projektā {{project_name}}",
         "NEW_PROJECT": "{{username}} izveidoja projektu {{project_name}}",
         "MILESTONE_UPDATED": "{{username}} atjaunināja sprintu {{obj_name}}",
-        "US_UPDATED": "{{username}} aktualizēja VAJADZĪBAS {{obj_name}} atribūtu \"{{field_name}}\" ",
-        "US_UPDATED_WITH_NEW_VALUE": "{{username}} aktualizēja VAJADZĪBAS {{obj_name}} atribūtu \"{{field_name}}\" uz {{new_value}}",
-        "US_UPDATED_POINTS": "{{{username}} aktualizēja '{{role_name}}' VAJADZĪBAS {{obj_name}} punktus uz {{new_value}}.",
+        "US_UPDATED": "{{username}} aktualizēja IZMAIŅAS PIEPRASĪJUMA {{obj_name}} atribūtu \"{{field_name}}\"",
+        "US_UPDATED_WITH_NEW_VALUE": "{{username}} aktualizēja IZMAIŅAS PIEPRASĪJUMA {{obj_name}} atribūtu \"{{field_name}}\" uz {{new_value}}",
+        "US_UPDATED_POINTS": "{{username}} aktualizēja '{{role_name}}' VAJADZĪBAS {{obj_name}} punktus uz {{new_value}}.",
         "ISSUE_UPDATED": "{{username}} aktualizēja IZMAIŅAS PIEPRASĪJUMA {{obj_name}} atribūtu \"{{field_name}}\"",
         "ISSUE_UPDATED_WITH_NEW_VALUE": "{{username}} aktualizēja IZMAIŅAS PIEPRASĪJUMA {{obj_name}} atribūtu \"{{field_name}}\" uz {{new_value}}",
         "TASK_UPDATED": "{{username}} aktualizēja UZDEVUMA {{obj_name}} atribūtu \"{{field_name}}\" uz {{new_value}}",
@@ -1709,14 +1710,14 @@
         "EPIC_UPDATED": "{{username}} aktualizēja EPOSA {{obj_name}} atribūtu \"{{field_name}}\" ",
         "EPIC_UPDATED_WITH_NEW_VALUE": "{{username}} aktualizēja EPOSA {{obj_name}} atribūtu \"{{field_name}}\" uz {{new_value}}",
         "EPIC_UPDATED_WITH_NEW_COLOR": "{{username}} aktualizēja EPOSA {{obj_name}} \"{{field_name}}\" uz <span class=\"new-color\" style=\"background: {{new_value}}\"></span>",
-        "NEW_COMMENT_US": "{{username}} komentēja vajadzību {{obj_name}}",
+        "NEW_COMMENT_US": "{{username}} komentēja izmaiņas pieprasījumu {{obj_name}}",
         "NEW_COMMENT_ISSUE": "{{username}} komentēja izmaiņas pieprasījumu {{obj_name}}",
-        "NEW_COMMENT_TASK": "{{lietotājvārds}} ir komentējis uzdevumu {{obj_name}}",
-        "NEW_COMMENT_EPIC": "{{lietotājvārds}} komentēja eposu {{obj_name}}",
+        "NEW_COMMENT_TASK": "{{lietotājvārds}} komentēja UZDEVUMU {{obj_name}}",
+        "NEW_COMMENT_EPIC": "{{lietotājvārds}} komentēja EPOSU {{obj_name}}",
         "NEW_MEMBER": "{{project_name}} ir jauns dalībnieks",
-        "US_ADDED_MILESTONE": "{{lietotājvārds}} ir pievienojis vajadzību {{obj_name}} sprintam {{sprint_name}}",
+        "US_ADDED_MILESTONE": "{{lietotājvārds}} pievienoja VAJADZĪBU {{obj_name}} sprintam {{sprint_name}}",
         "US_MOVED": "{{username}} ir pārvietojis vajadzību {{obj_name}}",
-        "US_REMOVED_FROM_MILESTONE": "{{lietotājvārds}} ir pievienojis vajadzību {{obj_name}} Darba klāstam",
+        "US_REMOVED_FROM_MILESTONE": "{{lietotājvārds}} darbu klāstam pievienoja VAJADZĪBU {{obj_name}}",
         "BLOCKED": "{{username}} ir bloķējis {{obj_name}}",
         "UNBLOCKED": "{{username}} ir atbloķējis {{obj_name}}",
         "NEW_USER": "{{username}} ir pievienojies Taigai",
@@ -1732,10 +1733,10 @@
         "DISMISS_ALL": "Noraidīt visus",
         "VIEW_ALL": "Skatīt visu",
         "NO_NEW_EVENTS": "Nav jaunu notikumu",
-        "NO_EVENTS_YET": "Pagaidām nav notikumu",
+        "NO_EVENTS_YET": "Notikumu pagaidām nav",
         "ASSIGNED_YOU": "{{username}} nozīmēja Jūs par {{obj_name}} atbildīgo",
         "ADDED_YOU_AS_WATCHER": "{{username}} pievienoja Jūs kā {{obj_name}} vērotāju",
-        "ADDED_YOU_AS_MEMBER": "{{username}} piesaistīja Jūs kā dalībnieku",
+        "ADDED_YOU_AS_MEMBER": "{{username}} padarīja Jūs par dalībnieku projektā",
         "MENTIONED_YOU": "{{username}} pieminēja jūs vietnē {{obj_name}}",
         "MENTIONED_YOU_IN_COMMENT": "{{username}} pieminēja Jūs komentārā iekš {{obj_name}}",
         "COMMENTED": "{{username}} komentēja {{obj_name}}"
@@ -1768,10 +1769,10 @@
             },
             "STEP2": {
                 "TITLE": "Strādājat pie",
-                "TEXT": "Šeit atradīsit vajadzības, uzdevumus un izmaiņu pieprasījumus, pie kuriem strādājat."
+                "TEXT": "Šeit vajadzības, uzdevumi un izmaiņu pieprasījumi, pie kuriem tiek strādāts."
             },
             "STEP3": {
-                "TITLE": "Vērojat(3)",
+                "TITLE": "Tiek vērots",
                 "TEXT1": "Un tieši šeit Jūs atradīsit tos, kuri ir Jūsu projektos, un par kuriem vēlaties uzzināt.",
                 "TEXT2": "Jūs jau strādājat ar Taigu ;)"
             },
@@ -1789,7 +1790,7 @@
             },
             "STEP2": {
                 "TITLE": "Produkta darba klāsts",
-                "TEXT": "Darba klāsts (backlog) - darba kopējais apjoms, kas jāpadara (projekta prasību/vajadzību saraksts) mērķa sasniegšanai/projekta realizācijai. Šeit tiek plānoti sprinti."
+                "TEXT": "Projekta norise - ieplānotā īstenošanai veicamo darbību (vajadzību) pārskats. Šeit plāno sprintus."
             },
             "STEP3": {
                 "TITLE": "Sprinti",
@@ -1811,20 +1812,20 @@
             },
             "STEP3": {
                 "TITLE": "Pievienot vajadzības",
-                "TEXT1": "Iespējams, vēlaties pievienot atsevišķu vajadzību (pievienot vajadzības ikonu) vai to grupu (lielapjoma/vairuma ikonu)",
+                "TEXT1": "vai vēlaties pievienot atsevišķu vajadzību (pievienot vajadzības ikonu) vai to grupu (ikonu čupu)",
                 "TEXT2": "Veiksmi!"
             }
         }
     },
     "DISCOVER": {
-        "PAGE_TITLE": "Pārlūkojiet citus Taigas projektus",
+        "PAGE_TITLE": "Pārlūkot citus Taigas projektus",
         "PAGE_DESCRIPTION": "Meklējams Taigas publisko projektu katalogs. Iepētiet darba klāstu, laika grafikus, izmaiņu pieprasījumus un komandas. Apskatiet visvairāk iepatikušos un aktīvākos projektus. Filtrējiet pēc Kanban vai Skram.",
-        "DISCOVER_TITLE": "Pārlūkojiet projektus",
-        "DISCOVER_SUBTITLE": "{projects, plural, one{1 publisks projekts, ar kuriem iepazīties} other{# publiski projekti, ar kuriem iepazīties}}",
+        "DISCOVER_TITLE": "Pārlūkot projektus",
+        "DISCOVER_SUBTITLE": "{projects, plural, one{1 publisks projekts, ar kuru iepazīties} other{# publiski projekti, ar kuriem iepazīties}}",
         "MOST_ACTIVE": "Visaktīvākie",
-        "MOST_ACTIVE_EMPTY": "Pagaidām aktīvu projektu nav",
+        "MOST_ACTIVE_EMPTY": "AKTĪVU projektu pagaidām nav",
         "MOST_LIKED": "Visvairāk tīkamie (liked)",
-        "MOST_LIKED_EMPTY": "Pagaidām tīkamu (laikotu) projektu nav",
+        "MOST_LIKED_EMPTY": "TĪKAMU (laikotu) projektu pagaidām nav",
         "VIEW_MORE": "Skatīt tālāk",
         "FEATURED": "Ieteiktie/izceltie projekti",
         "EMPTY": "Nav meklēšanas kritērijiem atbilstošu projektu.<br> Mēģiniet vēlreiz!",
@@ -1840,7 +1841,7 @@
             "CLEAR": "Noņemt filtrus"
         },
         "SEARCH": {
-            "PAGE_TITLE": "Meklējiet - Pārlūkojiet projektus - Taiga",
+            "PAGE_TITLE": "Meklēt - Pārlūkot projektus - Taiga",
             "PAGE_DESCRIPTION": "Meklējams Taigas publisko projektu katalogs. Iepētiet darba klāstu, laika grafikus, izmaiņu pieprasījumus un komandas. Apskatiet visvairāk iepatikušos un aktīvākos projektus. Atlasiet pēc Kanban vai Skram.",
             "INPUT_PLACEHOLDER": "Ierakstiet kaut ko...",
             "ACTION_TITLE": "Meklēt",

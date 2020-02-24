@@ -5,8 +5,8 @@
         "OR": "edo",
         "I_GET_IT": "Ongi, ulertu dut",
         "LOADING": "Kargatzen…",
-        "DATE": "EE HH UUUU",
-        "DATETIME": "EE HH UUUU OO:mm",
+        "DATE": "DD MMM YYYY",
+        "DATETIME": "DD MMM YYYY HH:mm",
         "SAVE": "Gorde",
         "CANCEL": "Utzi",
         "ACCEPT": "Onartu",
@@ -39,7 +39,7 @@
         "NEXT": "Hurrengoa",
         "LOGOUT": "Amaitu saioa",
         "EXTERNAL_USER": "kanpo erabiltzailea",
-        "GENERIC_ERROR": "Galtzagorri batek dio: {{error}}",
+        "GENERIC_ERROR": "Taigak dio: {{error}}",
         "IOCAINE_TEXT": "Lankide hau nahiko estutua dabil ataza honekin. Denborarekin eta zure laguntzarekin, agian pozoiaren aurkako immunitatea lortuko du. Oraingoz, nahikoa izango luke irribarretxo bat.",
         "CLIENT_REQUIREMENT": "Bezeroaren eskaera bat da aurreikusi gabeko eginkizun bat, baina proiektuan txertatu beharrekoa",
         "TEAM_REQUIREMENT": "Lantalde eskaera proiektuan egin behar da, baina ezin du izan kosturik bezeroarentzat",
@@ -62,7 +62,7 @@
             "TYPE_URLSTRICT": "Hemen baliozko URL bat idatzi behar da",
             "TYPE_NUMBER": "Hemen baliozko zenbaki bat idatzi behar da.",
             "TYPE_DIGITS": "Hemen zenbaki bat idatzi behar da.",
-            "TYPE_DATEISO": "Balioa izan behar da baliozko data bat (UUUU-HH-EE)",
+            "TYPE_DATEISO": "Balioa izan behar da baliozko data bat (YYYY-MM-DD)",
             "TYPE_ALPHANUM": "Balioa alfanumerikoa izan behar da",
             "TYPE_PHONE": "Hemen baliozko telefono zenbaki bat idatzi behar da.",
             "NOTNULL": "Balio honek ezin du hutsik egon.",
@@ -80,10 +80,10 @@
             "RANGE_CHECK": "Hautatu behar dituzu %s eta %s bitarteko aukerak.",
             "EQUAL_TO": "Balio hau berdina izan behar da.",
             "LINEWIDTH": "Lerro bat edo gehiago luzeegiak dira. Saiatu %s karakteretara mugatzen.",
-            "PIKADAY": "Formatua ez da zuzena, erabili EE HHH YYYY (adibidez, 23 mar 1984)"
+            "PIKADAY": "Formatua ez da zuzena, erabili DD MMM YYYY (adibidez, 23 mar 1984)"
         },
         "PICKERDATE": {
-            "FORMAT": "EE HH UUUU",
+            "FORMAT": "DD MMM YYYY",
             "FIRST_DAY_OF_WEEK": "1",
             "PREV_MONTH": "Aurreko hilabetea",
             "NEXT_MONTH": "Hurrengo hilabetea",
@@ -203,15 +203,15 @@
             "COUNTER_TITLE": "{total, plural, one{bozka bat} other{# bozka}}"
         },
         "PROMOTE_TO_US": "Goratu eginkizun izatera",
-        "PROMOTED_ISSUES": "Gertakari hau eginkizun honetatik sortua da:",
-        "PROMOTED_TASKS": "Ataza hau eginkizun hau bilakatu da:",
+        "PROMOTED_ISSUES": "Gertakari hau bilakatu da:",
+        "PROMOTED_TASKS": "Ataza hau bilakatu da:",
         "CONFIRM_PROMOTE": {
             "ISSUE": {
                 "TITLE": "Sustatu gertakari hau eginkizun berri batera",
                 "MESSAGE": "Ziur zaude eginkizun berri bat sortu nahi duzula gertakari honetatik abiatuta?"
             },
             "TASK": {
-                "TITLE": "Sustatu ataza hau eginkizun berri batera",
+                "TITLE": "Goratu ataza hau eginkizun berri batera",
                 "MESSAGE": "Ziur zaude eginkizun berri bat sortu nahi duzula ataza honetatik abiatuta?"
             }
         },
@@ -330,8 +330,8 @@
         "ALT_LOGIN": "Edo hasi saioa honekin:"
     },
     "LOGIN_FORM": {
-        "ERROR_AUTH_INCORRECT": "Gure Galtzagorrien arabera, zure erabiltzailea/e-posta edo pasahitza ez dira zuzenak.",
-        "SUCCESS": "Galtzagorriak pozik dira, ongi etorri Taigara."
+        "ERROR_AUTH_INCORRECT": "Taigaren arabera, zure erabiltzailea/e-posta edo pasahitza ez dira zuzenak.",
+        "SUCCESS": "Ongi etorri Taigara."
     },
     "REGISTER": {
         "PAGE_TITLE": "Eman izena - Taiga",
@@ -359,7 +359,7 @@
         "LINK_CANCEL": "Ez, eraman nazazu atzera Uste dut gogoratzen naizela.",
         "SUCCESS_TITLE": "Begiratu zure e-posta!",
         "SUCCESS_TEXT": "Posta mezu bat bidali dizugu, pasahitz berri bat ezartzeko jarraibideekin.",
-        "ERROR": "Gure Galtzagorrien arabera, ez duzu izenik eman."
+        "ERROR": "Taigaren arabera, ez duzu izenik eman."
     },
     "CHANGE_PASSWORD": {
         "PAGE_TITLE": "Aldatu pasahitza - Taiga",
@@ -378,15 +378,15 @@
         "PLACEHOLDER_NEW_PASSWORD": "Pasahitz berria",
         "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "Idatzi berriro pasahitz berria",
         "ACTION_RESET_PASSWORD": "Berrezarri pasahitza",
-        "ERROR": "Gure Galtzagorriek ezin dute aurkitu zure eskaera, pasahitza berreskuratzeko.  Saiatu berriro eskatzen.",
-        "SUCCESS": "Gure Galtzagorriek gorde dute zure pasahitz berria.<br /> Saiatu <strong>saioa hasten</strong> berarekin."
+        "ERROR": "Taigak ezin du aurkitu zure eskaera, pasahitza berreskuratzeko.  Saiatu berriro eskatzen.",
+        "SUCCESS": "Taigak gorde du zure pasahitz berria.<br /> Saiatu <strong>saioa hasten</strong> berarekin."
     },
     "INVITATION": {
         "PAGE_TITLE": "Gonbita onartu - Taiga",
         "PAGE_DESCRIPTION": "Onartu gonbidapena proiektu baterako Taigan… Proiektuak kudeatzeko plataforma arin bat, garatzaile eta diseinatzaileentzat, itxura soil bezain eder batez, lanari etekin handiagoa ateratzeko."
     },
     "INVITATION_LOGIN_FORM": {
-        "NOT_FOUND": "Gure Galtzagorriek ezin dut zure gonbidapena aurkitu.",
+        "NOT_FOUND": "Taigak ezin du zure gonbidapena aurkitu.",
         "SUCCESS": "Bat egin duzu, ongi etorri proiektu honetara: {{project_name}}"
     },
     "HOME": {
@@ -398,11 +398,11 @@
         "WORKING_ON_SECTION": "Lantzen",
         "WATCHING_SECTION": "Behatzen",
         "DASHBOARD": "Proiektuen idazmahaia",
-        "SET_HIDDEN": "Set as hidden",
-        "SET_VISIBLE": "Set as visible",
-        "NO_HIDDEN_ITEMS": "You have no hidden items",
-        "HIDE_HIDDEN": "Do not show hidden objects",
-        "SHOW_HIDDEN": "Show hidden objects"
+        "SET_HIDDEN": "Bihurtu ezkutuko",
+        "SET_VISIBLE": "Bihurtu ikusgarri",
+        "NO_HIDDEN_ITEMS": "Ez duzu ezkutuko osagairik",
+        "HIDE_HIDDEN": "Ez erakutsi ezkutuko osagaiak",
+        "SHOW_HIDDEN": "Erakutsi ezkutuko osagaiak"
     },
     "EPICS": {
         "TITLE": "MUGARRIAK",
@@ -460,12 +460,12 @@
         "HIDE_DEPRECATED": "- ezkutatu baztertutako eranskinak",
         "COUNT_DEPRECATED": "({{ counter }} baztertuta)",
         "MAX_UPLOAD_SIZE": "Kargatzeko gehieneko fitxategi tamaina da {{maxFileSize}}",
-        "DATE": "EE HH UUUU OO:mm",
+        "DATE": "DD MMM YYYY [at] hh:mm",
         "ERROR_UPLOAD_ATTACHMENT": "Ezin izan dugu kargatu '{{fileName}}'. {{errorMessage}}",
         "TITLE_LIGHTBOX_DELETE_ATTACHMENT": "Ezabatu eranskina…",
         "MSG_LIGHTBOX_DELETE_ATTACHMENT": "eranskin hau: '{{fileName}}'",
         "ERROR_DELETE_ATTACHMENT": "Ezin izan dugu ezabatu: {{errorMessage}}",
-        "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) handiegia da gure Galtzagorrientzat; saiatu ({{maxFileSize}}) baino txikiagoko fitxategi batekin"
+        "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) handiegia da Taigarentzat; saiatu ({{maxFileSize}}) baino txikiagoko fitxategi batekin"
     },
     "PAGINATION": {
         "PREVIOUS": "Aurrekoa",
@@ -501,8 +501,8 @@
             "LOADING_MESSAGE": "Mesedez ez itxi orri hau.",
             "ASYNC_MESSAGE": "E-posta mezu bat bidaliko dizugu prest dagoenean.",
             "SYNC_MESSAGE": "Karga ez bada berez hasten, klik egin <a href='{{url}}' download title='Deskargatu fitxategia'>hemen</a>.",
-            "ERROR": "Gure Galtzagorriek arazoren bat dute deskarga sortzeko. Saiatu berriro, mesedez. Saiatu berriro, mesedez.",
-            "ERROR_BUSY": "Barka, gure Galtzagorriak oso lanpetuta daude orain. Saiatu berriro hemendik pixka batera, mesedez."
+            "ERROR": "Taigak arazoren bat du deskarga sortzeko. Saiatu berriro, mesedez. ",
+            "ERROR_BUSY": "Barka, Taiga oso lanpetuta dago orain. Saiatu berriro hemendik pixka batera, mesedez."
         },
         "MODULES": {
             "TITLE": "Moduluak",
@@ -653,7 +653,7 @@
         },
         "PROJECT_DUE_DATE_STATUS": {
             "TITLE": "Epemugak",
-            "SUBTITLE": "Zehaztu zein epemugetan barrena joango diren, eginkizunak, atazak eta gertakariak, hautatuta badago",
+            "SUBTITLE": "Zehaztu zein epemugetan barrena joango diren eginkizunak, atazak eta gertakariak, hautatuta badaude",
             "US_TITLE": "Eginkizunaren epemugaren egoera",
             "ACTION_ADD_STATUS": "Gehitu egoera berri bat",
             "TASK_TITLE": "Atazaren epemugaren egoera",
@@ -718,7 +718,7 @@
             "HEADERS": "Goiburuak",
             "PAYLOAD": "Karga",
             "RESPONSE": "Erantzuna",
-            "DATE": "EE HHH UUUU [at] oo:mm:ss",
+            "DATE": "DD MMM YYYY [at] hh:mm:ss",
             "ACTION_HIDE_HISTORY": "(Ezkutatu historia)",
             "ACTION_HIDE_HISTORY_TITLE": "Ezkutatu historiaren xehetasunak",
             "ACTION_SHOW_HISTORY": "(Erakutsi historia)",
@@ -865,7 +865,7 @@
     },
     "PROJECT": {
         "PAGE_TITLE": "{{projectName}}",
-        "HELP": "Aldatu proiektuen hurrenkera, jarri lehenbizi gehien erabiltzen dituzunak. <br /> Lehen 10 proiektuak agertuko dira goiko nabigazio bara nagusiko proiektuen zerrendan",
+        "HELP": "Aldatu proiektuen hurrenkera, jarri lehenbizi gehien erabiltzen dituzunak. <br/> Lehen 10 proiektuak agertuko dira goiko nabigazio bara nagusiko proiektuen zerrendan",
         "PRIVATE": "Proiektu pribatua",
         "LOOKING_FOR_PEOPLE": "Proiektu honek lankideak behar ditu",
         "FANS_COUNTER_TITLE": "{total, plural, one{jarraitzaile bat} other{# jarraitzaile}}",
@@ -969,13 +969,13 @@
         "IMPORT": {
             "TITLE": "Inportatu proiektua",
             "DESCRIPTION": "Inportatu zure proiektua plataforma anitzetatik Taigara",
-            "ASYNC_IN_PROGRESS_TITLE": "Gure Galtzagorriak proiektua inportatzen ari dira",
+            "ASYNC_IN_PROGRESS_TITLE": "Taiga zure proiektua inportatzen ari da",
             "ASYNC_IN_PROGRESS_MESSAGE": "Prozesu honek minutu batzuk beharko ditu <br />Bidaliko dizugu e-posta mezu bat prest dagoenean",
             "UPLOAD_IN_PROGRESS_MESSAGE": "{{uploadedSize}} kargatuta, guztira {{totalSize}}",
-            "ERROR": "Gure Galtzagorriek arazoren bat dute zure deskarga datuak inportatzeko: {{error_message}} Saiatu berriro, mesedez.",
-            "ERROR_TOO_MANY_REQUEST": "Barka, gure Galtzagorriak oso lanpetuta daude orain. Saiatu berriro hemendik pixka batera, mesedez.",
-            "ERROR_MESSAGE": "Gure Galtzagorriek arazoren bat dute zure deskarga datuak inportatzeko: {{error_message}}",
-            "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) handiegia da gure Galtzagorrientzat; saiatu ({{maxFileSize}}) baino txikiagoko fitxategi batekin",
+            "ERROR": "Taigak arazoren bat du zure deskarga datuak inportatzeko. Saiatu berriro, mesedez.",
+            "ERROR_TOO_MANY_REQUEST": "Barka, Taiga oso lanpetuta dago orain. Saiatu berriro hemendik pixka batera, mesedez.",
+            "ERROR_MESSAGE": "Taigak arazoren bat du zure deskarga datuak inportatzeko: {{error_message}}",
+            "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) handiegia da Taigarentzat; saiatu ({{maxFileSize}}) baino txikiagoko fitxategi batekin",
             "SYNC_SUCCESS": "Zure proiektua ongi inportatu dugu",
             "IMPORT": "Inportatu",
             "WHO_IS": "Ataza horiek honi esleituko zaizkio…",
@@ -989,7 +989,7 @@
             "CHOOSE": "Hautatu erabiltzailea",
             "LINKS": "Estekak honekin: {{platform}}",
             "LINKS_DESCRIPTION": "Nahi dituzu gorde osagai bakoitzaren estekak jatorrizko {{platform}} txartelarekin?",
-            "WARNING_MAIL_USER": "Gogoan izan erabiltzaileak ez badu Taiga kontu bat ezin izango diozula atazarik eslei berari.",
+            "WARNING_MAIL_USER": "Gogoan izan erabiltzaileak ez badu Taiga kontu bat ezin izango diozula atazarik esleitu berari.",
             "ASSIGN": "Esleitu",
             "PROJECT_SELECTOR": {
                 "NO_RESULTS": "Ez dugu ezer aurkitu bilaketa irizpide horiekin",
@@ -1097,7 +1097,7 @@
         },
         "SELECT_USER": {
             "SEARCH": "Bilatu erabiltzaileak",
-            "REMOVE": "Remove user",
+            "REMOVE": "Ezabatu erabiltzailea",
             "ROLE": "Rola"
         },
         "ADD_MEMBER": {
@@ -1242,9 +1242,9 @@
         "ADD": "+ Gehitu eginkizun berri bat",
         "ADD_BULK": "Gehitu eginkizun berrien sail bat",
         "PROMOTED_FROM_ISSUE": "Eginkizun hau gertakari honetatik sortua da:",
-        "PROMOTED_FROM_TASK": "Eginkizun hau ataza nonetatik sortua da:",
+        "PROMOTED_FROM_TASK": "Eginkizun hau ataza honetatik sortua da:",
         "TITLE_LINK_GO_TO_ISSUE": "Joan gertakarira",
-        "TITLE_LINK_GO_TO_TASK": "Go to task",
+        "TITLE_LINK_GO_TO_TASK": "Joan atazara",
         "TITLE_DELETE_ACTION": "Ezabatu eginkizuna",
         "LIGHTBOX_TITLE_BLOKING_US": "Blokeatzen eginkizuna",
         "NOT_ESTIMATED": "Kalkulurik ez",
@@ -1311,7 +1311,8 @@
             "ASSIGNED_USERS": "esleitutako erabiltzaile",
             "DUE_DATE": "epemuga",
             "MILESTONE": "urratsa",
-            "COLOR": "kolorea"
+            "COLOR": "kolorea",
+            "PROMOTED_TO": "promoted to"
         }
     },
     "BACKLOG": {
@@ -1353,7 +1354,7 @@
         "FORECASTING": {
             "TITLE": "Lastertasun aurreikuspena",
             "BACKLOG": "Erakutsi atzeratutako lana",
-            "NEW_SPRINT": "Zure hurrengo urratserako, eginkizun hauek hautatu ditugu, zure lastertasunean oinarrituta. Klik egin urrats berria sortzeko. Klik egin urrats berri bat sortzeko.",
+            "NEW_SPRINT": "Zure hurrengo urratserako, eginkizun hauek hautatu ditugu, zure lastertasunean oinarrituta. Klik egin urrats berria sortzeko.",
             "CURRENT_SPRINT": "Eginkizun hautagaia, urratsetik sortua, zure lastertasunean oinarrituta. Klik egin urrats hau gehitzeko."
         },
         "TABLE": {
@@ -1383,7 +1384,7 @@
         },
         "SPRINTS": {
             "TITLE": "Urratsak",
-            "DATE": "EE HH UUUU",
+            "DATE": "DD MMM YYYY",
             "LINK_TASKBOARD": "Urratsen arbela",
             "TITLE_LINK_TASKBOARD": "Joan honen ataza arbelera: {{::name}}",
             "EMPTY": "Ez dago urratsik oraingoz",
@@ -1396,12 +1397,12 @@
         }
     },
     "ERROR": {
-        "TEXT1": "Arazoren bat gertatu da, gure Galtzagorriak konpontzeko lanean ari dira.",
+        "TEXT1": "Arazoren bat gertatu da, Taigak errorea atzitu du konpondu ahal izateko.",
         "NOT_FOUND": "Ezin da aurkitu",
         "NOT_FOUND_TEXT": "Error 404. Bilatzen ari zaren orria ez dago. Agian Taigaren hasiera orrira itzul zaitezke eta saiatu aurkitzen",
         "PERMISSION_DENIED": "Ez duzu baimenik",
         "PERMISSION_DENIED_TEXT": "Ez duzu baimenik orri honetan sartzeko.",
-        "VERSION_ERROR": "Beste norbaitek aldatu du hau Taigan; gure Galtzagorriek ezin dituzte zure aldaketak gorde. Kargatu orria eta idatzi zure aldaketak berriro (galdu egingo baitira)."
+        "VERSION_ERROR": "Beste norbaitek aldatu du hau Taigan zuk baino lehenago; beraz, zure aldaketak ezin dira gorde. Gorde aldaketak beste nonbait, kargatu orria eta idatzi zure aldaketak berriro, bestela galdu egingo baitira."
     },
     "TASKBOARD": {
         "PAGE_TITLE": "{{sprintName}} - urratsen ataza arbela - {{projectName}}",
@@ -1422,14 +1423,14 @@
             "TITLE_ACTION_UNFOLD_ROW": "Zabaldu lerroa",
             "FIELD_POINTS": "puntuak",
             "ROW_STORYLESS_TASKS_TITLE": "Eginkizunik gabeko atazak",
-            "ROW_ISSUES_TITLE": "Gertakarien egoerak"
+            "ROW_ISSUES_TITLE": "Urratsen gertakariak"
         },
         "CHARTS": {
             "XAXIS_LABEL": "Egunak",
             "YAXIS_LABEL": "Puntuak",
             "OPTIMAL": "{{formattedDate}} egunean eman beharreko puntu kopuru optimoa izango litzateke {{roundedValue}}",
             "REAL": "{{formattedDate}} egunean eman beharreko benetako puntu kopurua da {{roundedValue}}",
-            "DATE": "EE HHHH UUUU"
+            "DATE": "DD MMMM YYYY"
         },
         "MOVE_TO_SPRINT": {
             "TITLE_ACTION_MOVE_UNFINISHED": "Eraman bukatu gabeko osagaiak urrats berri batera",
@@ -1466,8 +1467,8 @@
     "NOTIFICATION": {
         "OK": "Dena ongi joan da",
         "WARNING": "Otx, arazoren bat dago…",
-        "WARNING_TEXT": "Gure Galtzagorriak atsekabeturik daude, aldaketak ez dira gorde!",
-        "SAVED": "Gure Galtzagorriek gorde dituzte aldaketa guztiak!",
+        "WARNING_TEXT": "Zure aldaketak ez dira gorde!",
+        "SAVED": "Taigak gorde ditu zure aldaketa guztiak!",
         "CLOSE": "Itxi jakinarazpena",
         "MAIL": "Jakinarazpenak e-postaz",
         "DESKTOP": "Mahaigaineko jakinarazpenak nabigatzailearen alertak erabilita",
@@ -1478,14 +1479,14 @@
         "SUBTITLE": "Ai ene, bazoaz Taigatik? Ongi ibili, hala ere :)",
         "PLACEHOLDER_INPUT_TOKEN": "utzi kontuaren identifikatzailea",
         "ACTION_LEAVING": "Bai, banoa!",
-        "SUCCESS": "Gure Galtzagorriek ezabatu dute zure kontua"
+        "SUCCESS": "Taigak ezabatu egin du zure kontua"
     },
     "CHANGE_EMAIL_FORM": {
         "TITLE": "Aldatu e-posta",
         "SUBTITLE": "Klik bat gehiago eginda, zure e-posta eguneratuta geldituko da!",
         "PLACEHOLDER_INPUT_TOKEN": "aldatu e-postaren identifikatzailea",
         "ACTION_CHANGE_EMAIL": "Aldatu e-posta",
-        "SUCCESS": "Gure Galtzagorriek eguneratu dute zure e-posta"
+        "SUCCESS": "Taigak eguneratu du zure e-posta"
     },
     "ISSUES": {
         "PAGE_TITLE": "Gertakariak - {{projectName}}",
@@ -1646,7 +1647,7 @@
     "WIKI": {
         "PAGE_TITLE": "{{wikiPageName}} - Wiki - {{projectName}}",
         "PAGE_DESCRIPTION": "Azken aldaketa {{lastModifiedDate}} ({{totalEditions}} eidizio guztira) Edukia: {{ wikiPageContent }}",
-        "DATETIME": "EE HH UUUU OO:mm",
+        "DATETIME": "DD MMM YYYY HH:mm",
         "REMOVE": "Ezabatu wiki orri hau",
         "DELETE_LIGHTBOX_TITLE": "Ezabatu wiki orria",
         "DELETE_LINK_TITLE": "Ezabatu wiki esteka",
@@ -1697,7 +1698,7 @@
         "NEW_PROJECT": "{{username}} erabiltzaileak proiektu hau sortu du: {{project_name}}",
         "MILESTONE_UPDATED": "{{username}} erabiltzaileak urrats hau eguneratu du: {{obj_name}}",
         "US_UPDATED": "{{username}} erabiltzaileak eguneratu du ezaugarri hau \"{{field_name}}\" eginkizun honetan: {{obj_name}}",
-        "US_UPDATED_WITH_NEW_VALUE": "{{username}} erabiltzaileak eguneratu du ezaugarri hau \"{{field_name}}\" eginkizun honetan: {{obj_name}}",
+        "US_UPDATED_WITH_NEW_VALUE": "{{username}} erabiltzaileak eguneratu du ezaugarri hau \"{{field_name}}\" eginkizun honetan: {{obj_name}}, balio honetara: {{new_value}}",
         "US_UPDATED_POINTS": "{{username}} erabiltzaileak eguneratu ditu '{{role_name}}' erabiltzailearen puntuak {{obj_name}} eginkizunean, {{new_value}} baliora",
         "ISSUE_UPDATED": "{{username}} erabiltzaileak eguneratu du ezaugarri hau \"{{field_name}}\" eginkizun honetan: {{obj_name}}",
         "ISSUE_UPDATED_WITH_NEW_VALUE": "{{username}} erabiltzaileak eguneratu du ezaugarri hau \"{{field_name}}\" eginkizun honetan: {{obj_name}}",

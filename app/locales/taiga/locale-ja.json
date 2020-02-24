@@ -22,7 +22,7 @@
         "TAG_LINE": "あなたのアジャイルでフリーでオープンソースなマネジメントツールです",
         "TAG_LINE_2": "LOVE YOUR PROJECT",
         "BLOCK": "ブロック",
-        "BLOCK_TITLE": "Block this item for example if it has a dependency that can not be satisfied",
+        "BLOCK_TITLE": "Block this item, for example if it has a dependency that can not be satisfied",
         "BLOCKED": "ブロック中",
         "UNBLOCK": "ブロック解除",
         "UNBLOCK_TITLE": "ブロックを解除する",
@@ -39,10 +39,10 @@
         "NEXT": "次へ",
         "LOGOUT": "ログアウト",
         "EXTERNAL_USER": "外部ユーザー",
-        "GENERIC_ERROR": "ウンパルンパのひとりが「{{error}}」と言っています。",
-        "IOCAINE_TEXT": "This member is feeling a bit overwhelmed by this task. Will become immune to the iocaine poison over time with your help. For now, may need a hug.",
-        "CLIENT_REQUIREMENT": "Client requirement is new requirement that was not previously expected and it is required to be part of the project",
-        "TEAM_REQUIREMENT": "Team requirement is a requirement that must exist in the project but should have no cost for the client",
+        "GENERIC_ERROR": "The Taiga says {{error}}.",
+        "IOCAINE_TEXT": "This member is feeling a bit overwhelmed by this task. They will become immune to the iocaine poison over time with your help. For now, they may need a hug.",
+        "CLIENT_REQUIREMENT": "A client requirement is a new requirement that was not previously expected and is required to be part of the project",
+        "TEAM_REQUIREMENT": "A team requirement is a requirement that must exist in the project but should have no cost for the client",
         "OWNER": "プロジェクトオーナー",
         "CAPSLOCK_WARNING": "Be careful! You are using capital letters in an input field that is case sensitive.",
         "CONFIRM_CLOSE_EDIT_MODE_TITLE": "本当にこの編集画面を閉じてもよろしいですか？",
@@ -74,7 +74,7 @@
             "RANGE": "この値は %s と %s の間でなければいけません",
             "MIN_LENGTH": "文字数が短すぎます。%s 文字以上にしてください。",
             "MAX_LENGTH": "入力した値が長すぎます。%s 文字以下にしてください。",
-            "RANGE_LENGTH": "文字数が無効です。%s から %s 文字の間でなければいけません ",
+            "RANGE_LENGTH": "This value's length is invalid. It should be between %s and %s characters long.",
             "MIN_CHECK": "%s 以上選択してください。",
             "MAX_CHECK": "選択できるのは %s までです",
             "RANGE_CHECK": "選択できるのは %s から %s までです",
@@ -131,7 +131,7 @@
             "ADD": "タグを追加"
         },
         "DESCRIPTION": {
-            "EMPTY": "空欄だと退屈です…。説明を追加してください。",
+            "EMPTY": "Empty space is so boring... go on, be descriptive...",
             "NO_DESCRIPTION": "説明はありません"
         },
         "FIELDS": {
@@ -202,25 +202,25 @@
             "BUTTON_TITLE": "賛成/反対の投票を行う",
             "COUNTER_TITLE": "{total, plural, 1{one vote} other{# 人が賛成}}"
         },
-        "PROMOTE_TO_US": "ユーザーストーリーに変更する",
-        "PROMOTED_ISSUES": "This Issue has been promoted to US:",
-        "PROMOTED_TASKS": "This Task has been promoted to US:",
+        "PROMOTE_TO_US": "Promote to user story",
+        "PROMOTED_ISSUES": "This issue has been promoted to",
+        "PROMOTED_TASKS": "This task has been promoted to",
         "CONFIRM_PROMOTE": {
             "ISSUE": {
-                "TITLE": "Promote this Issue to a new user story",
-                "MESSAGE": "この課題から新しいユーザーストーリーを作成しますか？"
+                "TITLE": "この課題を新しいユーザーストーリーに変更",
+                "MESSAGE": "Are you sure you want to create a new user story from this issue?"
             },
             "TASK": {
-                "TITLE": "Promote this Task to a new user story",
-                "MESSAGE": "Are you sure you want to create a new US from this Task?"
+                "TITLE": "Promote this task to a new user story",
+                "MESSAGE": "Are you sure you want to create a new user story from this task?"
             }
         },
         "CUSTOM_ATTRIBUTES": {
             "CUSTOM_FIELDS": "カスタムフィールド",
-            "SAVE": "カスタムフィールドを保存",
-            "EDIT": "カスタムフィールドを編集",
+            "SAVE": "Save custom field",
+            "EDIT": "Edit custom field",
             "DELETE": "カスタム属性を削除",
-            "CONFIRM_DELETE": "このカスタムフィールドのすべての値が削除されることになります。\n本当にこのまま続行してもよろしいですか？"
+            "CONFIRM_DELETE": "Remember that all values in this custom field will be deleted.\n Are you sure you want to continue?"
         },
         "FILTERS": {
             "INPUT_PLACEHOLDER": "Subject or reference",
@@ -330,8 +330,8 @@
         "ALT_LOGIN": "または次でログイン"
     },
     "LOGIN_FORM": {
-        "ERROR_AUTH_INCORRECT": "「あなたのユーザー名/メールアドレス または パスワードが間違っている」とウンパルンパたちが言っています。",
-        "SUCCESS": "ウンパルンパたちは嬉しいみたいですよ。Taigaへようこそ。"
+        "ERROR_AUTH_INCORRECT": "According to the Taiga, your username/email or password are incorrect.",
+        "SUCCESS": "Welcome to Taiga."
     },
     "REGISTER": {
         "PAGE_TITLE": "登録 - Taiga",
@@ -359,7 +359,7 @@
         "LINK_CANCEL": "いいえ、戻ります。私はそれを覚えていると思います。",
         "SUCCESS_TITLE": "メールボックスを確認してください",
         "SUCCESS_TEXT": "新しいパスワードを設定するための手順を記載したメールを送信しました",
-        "ERROR": "「あなたのアカウントはまだ登録されていない」とウンパルンパたちが言っています。"
+        "ERROR": "According to the Taiga, you are not registered yet."
     },
     "CHANGE_PASSWORD": {
         "PAGE_TITLE": "パスワードの変更 - Taiga",
@@ -370,7 +370,7 @@
         "PLACEHOLDER_NEW_PASSWORD": "新しいパスワードを入力",
         "FIELD_RETYPE_PASSWORD": "新しいパスワードを再入力",
         "PLACEHOLDER_RETYPE_PASSWORD": "新しいパスワードを再入力",
-        "ERROR_PASSWORD_MATCH": "パスワードが一致しません。"
+        "ERROR_PASSWORD_MATCH": "The passwords don't match"
     },
     "CHANGE_PASSWORD_RECOVERY_FORM": {
         "TITLE": "新しいTaigaのパスを作成",
@@ -378,23 +378,23 @@
         "PLACEHOLDER_NEW_PASSWORD": "新しいパスワード",
         "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "新しいパスワードを再入力",
         "ACTION_RESET_PASSWORD": "パスワードをリセット",
-        "ERROR": "ウンパルンパたちはあなたのパスワード復元依頼を見つけられないようです。もう一度お試しください。",
-        "SUCCESS": "ウンパルンパたちはあなたの新しいパスワードを保存しました。<br /> 新しいパスワードで<strong>サインイン</strong> してみてください。"
+        "ERROR": "The Taiga can't find your request to recover your password. Try to ask for it again.",
+        "SUCCESS": "The Taiga saved your new password.<br /> Try to <strong>sign in</strong> with it."
     },
     "INVITATION": {
         "PAGE_TITLE": "招待を受諾する - Taiga",
         "PAGE_DESCRIPTION": "スタートアップ、デベロッパー、デザイナーのための、仕事を真から楽しくするシンプルで美しいプロジェクトマネージメントツール、Taigaへの招待を受諾します。"
     },
     "INVITATION_LOGIN_FORM": {
-        "NOT_FOUND": "「あなたの招待を確認できなかった」とウンパルンパたちが言っています。",
+        "NOT_FOUND": "The Taiga can't find your invitation.",
         "SUCCESS": "プロジェクトへの参加に成功しました, {{project_name}}へようこそ"
     },
     "HOME": {
         "PAGE_TITLE": "ホーム - Taiga",
         "PAGE_DESCRIPTION": "あなたのメインプロジェクト、担当あるいはフォローしているユーザーストーリー、タスク、課題が表示されるTaigaのホームページです。",
         "EMPTY_WORKING_ON": "<strong>何も表示されていませんか？</strong> Taigaで作業を始めると、ここにあなたが取り組んでいるユーザーストーリー、タスク、課題が表示されます。",
-        "EMPTY_WATCHING": "ユーザーストーリー、タスク、課題を<strong>フォロー</strong>して変更が発生した際に通知を受け取りましょう。:)",
-        "EMPTY_PROJECT_LIST": "参加中のプロジェクトがありません",
+        "EMPTY_WATCHING": "<strong>Follow</strong> user stories, tasks, issues in your projects and be notified about their changes :)",
+        "EMPTY_PROJECT_LIST": "You don't have any project yet",
         "WORKING_ON_SECTION": "取り組んでいる作業",
         "WATCHING_SECTION": "フォロー中",
         "DASHBOARD": "プロジェクトのダッシュボート",
@@ -465,7 +465,7 @@
         "TITLE_LIGHTBOX_DELETE_ATTACHMENT": "添付ファイルの削除...",
         "MSG_LIGHTBOX_DELETE_ATTACHMENT": "添付ファイル '{{fileName}}'",
         "ERROR_DELETE_ATTACHMENT": " 削除に失敗: {{errorMessage}}",
-        "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) はウンパルンパたちには重すぎます。({{maxFileSize}})より少ないもので試してください。"
+        "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) is too heavy for the Taiga, try it with a file smaller than ({{maxFileSize}})"
     },
     "PAGINATION": {
         "PREVIOUS": "前へ",
@@ -501,8 +501,8 @@
             "LOADING_MESSAGE": "このページを閉じないでください。",
             "ASYNC_MESSAGE": "準備が出来たらメールで通知します。",
             "SYNC_MESSAGE": "ダウンロードが自動で開始されない場合は<a href='{{url}}' download title='Download the dump file'>こちらをクリック</a>してください。",
-            "ERROR": "ウンパルンパたちはダンプファイルの生成に手こずっているようです。もう一度お試しください。",
-            "ERROR_BUSY": "すみません、ウンパルンパたちはとても忙しいようです。しばらくしてからまたお試しください。"
+            "ERROR": "The Taiga has some problems generating your dump. Please try it again.",
+            "ERROR_BUSY": "Sorry, the Taiga is experiencing heavy load right now. Please try again in a few minutes."
         },
         "MODULES": {
             "TITLE": "モジュール",
@@ -519,7 +519,7 @@
             "ISSUES": "課題",
             "ISSUES_DESCRIPTION": "プロジェクトのバグ追跡、質問、機能改善に関する議論などが行えるようになります。",
             "WIKI": "Wiki",
-            "WIKI_DESCRIPTION": "他のメンバーと協力してコンテンツを編集することができます。<br>プロジェクトの情報を文書化するのにぴったりです。",
+            "WIKI_DESCRIPTION": "Add, modify, or delete content in collaboration with others. This is the right place for your project's documentation.",
             "MEETUP": "会議",
             "MEETUP_DESCRIPTION": "あなたが利用しているビデオ会議システムを選択してください。",
             "SELECT_VIDEOCONFERENCE": "ビデオ会議システムを選択",
@@ -599,8 +599,8 @@
             "FIELD_TYPE_MULTI": "マルチライン",
             "FIELD_TYPE_DATE": "日時",
             "FIELD_TYPE_URL": "Url",
-            "FIELD_TYPE_DROPDOWN": "Dropdown",
-            "FIELD_TYPE_CHECKBOX": "Checkbox",
+            "FIELD_TYPE_DROPDOWN": "ドロップダウン",
+            "FIELD_TYPE_CHECKBOX": "チェックボックス",
             "FIELD_TYPE_NUMBER": "Number"
         },
         "PROJECT_VALUES": {
@@ -611,7 +611,7 @@
         "PROJECT_VALUES_POINTS": {
             "TITLE": "ポイント",
             "SUBTITLE": "予測されるユーザーストーリーのポイントを定義することができます。",
-            "US_TITLE": "ユーザーストーリーのポイント",
+            "US_TITLE": "User story points",
             "ACTION_ADD": "新規ポイントを追加"
         },
         "PROJECT_VALUES_PRIORITIES": {
@@ -653,7 +653,7 @@
         },
         "PROJECT_DUE_DATE_STATUS": {
             "TITLE": "Due Dates",
-            "SUBTITLE": "Specify the due dates your user stories, tasks and issues will go through if selected",
+            "SUBTITLE": "Specify the due dates status your user stories, tasks and issues will go through if selected",
             "US_TITLE": "User Story Due Date status",
             "ACTION_ADD_STATUS": "ステータスを追加",
             "TASK_TITLE": "Task Due Date status",
@@ -680,7 +680,7 @@
         "THIRD_PARTIES": {
             "SECRET_KEY": "シークレットキー",
             "PAYLOAD_URL": "Payload URL",
-            "VALID_IPS": "Valid origin IPs (separated by ,)"
+            "VALID_IPS": "Valid source IPs (separated by ,)"
         },
         "BITBUCKET": {
             "SECTION_NAME": "Bitbucket",
@@ -728,14 +728,14 @@
         "CUSTOM_ATTRIBUTES": {
             "PAGE_TITLE": "{{sectionName}} - カスタム属性 - {{projectName}}",
             "ADD": "カスタムフィールドを追加",
-            "EDIT": "カスタムフィールドを編集",
-            "DELETE": "カスタムフィールドを削除",
-            "SAVE_TITLE": "カスタムフィールドを保存",
+            "EDIT": "Edit custom field",
+            "DELETE": "Delete custom field",
+            "SAVE_TITLE": "Save custom field",
             "CANCEL_TITLE": "作成するのをやめる",
             "SET_FIELD_NAME": "カスタムフィールド名を設定",
             "SET_FIELD_DESCRIPTION": "カスタムフィールドの説明を設定",
             "FIELD_TYPE_DEFAULT": "-- 1つ選択 --",
-            "ACTION_UPDATE": "カスタムフィールドを更新",
+            "ACTION_UPDATE": "Update custom field",
             "ACTION_CANCEL_EDITION": "編集をキャンセル"
         },
         "MEMBERSHIP": {
@@ -865,7 +865,7 @@
     },
     "PROJECT": {
         "PAGE_TITLE": "{{projectName}}",
-        "HELP": "最も良く使うプロジェクトがトップになるように順序を入れ替えてみましょう。<br/> トップ10のプロジェクトが上のナビゲーションバーのプロジェクトリストに現れます。",
+        "HELP": "Reorder your projects to set at the top the most used ones.<br/> The top 10 projects will appear in the top navigation bar project list",
         "PRIVATE": "プライベート プロジェクト",
         "LOOKING_FOR_PEOPLE": "プロジェクトはメンバーを探しています",
         "FANS_COUNTER_TITLE": "{total, plural, 1{one fan} other{# 人のファン}}",
@@ -969,27 +969,27 @@
         "IMPORT": {
             "TITLE": "プロジェクトをインポート",
             "DESCRIPTION": "複数プラットフォームからのプロジェクトをTaigaにインポート",
-            "ASYNC_IN_PROGRESS_TITLE": "ウンパルンパたちがあなたのプロジェクトをインポートしています。",
+            "ASYNC_IN_PROGRESS_TITLE": "The Taiga is importing your project",
             "ASYNC_IN_PROGRESS_MESSAGE": "この処理には時間がかかります。<br/>準備が出来たらメールで通知します。",
             "UPLOAD_IN_PROGRESS_MESSAGE": "{{totalSize}} 中 {{uploadedSize}} アップロード済み",
-            "ERROR": "ウンパルンパたちはダンプファイルのインポートに手こずっているようです。もう一度お試しください。",
-            "ERROR_TOO_MANY_REQUEST": "すみません、ウンパルンパたちはとても忙しいようです。しばらくしてからまたお試しください。",
-            "ERROR_MESSAGE": "ウンパルンパたちはダンプファイルのインポートに手こずっているようです。　　\n{{error_message}}",
-            "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) はウンパルンパたちには重すぎます。({{maxFileSize}})より少ないもので試してください。",
+            "ERROR": "The Taiga has some problems importing your dump data. Please try again.",
+            "ERROR_TOO_MANY_REQUEST": "Sorry, the Taiga is experiencing heavy load right now. Please try again in a few minutes.",
+            "ERROR_MESSAGE": "The Taiga has some problems importing your dump data: {{error_message}}",
+            "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) is too heavy for the Taiga, try it with a file smaller than ({{maxFileSize}})",
             "SYNC_SUCCESS": "プロジェクトのインポートに成功しました",
             "IMPORT": "インポート",
             "WHO_IS": "Their tasks will be assigned to ...",
             "WRITE_EMAIL": "あるいは必要であれば、このユーザーがTaigaで使用しているメールアドレスを記入",
             "SEARCH_CONTACT": "Or if you want, search in your contacts",
             "WRITE_EMAIL_LABEL": "Taigaでこのユーザーが使用しているメールアドレスを記入",
-            "ACCEEDE": "Acceede",
+            "ACCEEDE": "Accede",
             "PROJECT_MEMBERS": "プロジェクトメンバー",
-            "PROCESS_DESCRIPTION": "{{platform}}のタスクを割り当てたいTaigaユーザーを教えてください。",
+            "PROCESS_DESCRIPTION": "Tell us to whom from Taiga you want to assign the tasks of {{platform}}",
             "MATCH": "Is <strong>{{user_external}}</strong> the same person as <strong>{{user_internal}}</strong>?",
             "CHOOSE": "ユーザーを選択",
             "LINKS": "Links with {{platform}}",
             "LINKS_DESCRIPTION": "Do you want to keep the link of each item with the original {{platform}} card?",
-            "WARNING_MAIL_USER": "指定したユーザーがTaigaアカウントを持っていない場合、タスクを割り当てることはできません。",
+            "WARNING_MAIL_USER": "Note that if the user does not have a Taiga account we will not be able to assign the tasks to them.",
             "ASSIGN": "割当",
             "PROJECT_SELECTOR": {
                 "NO_RESULTS": "検索条件に当てはまるものはありませんでした。",
@@ -997,8 +997,8 @@
                 "ACTION_BACK": "バックエンド"
             },
             "PROJECT_RESTRICTIONS": {
-                "PROJECT_MEMBERS_DESC_PRIVATE": "インポートしようとしているプロジェクトのメンバー数はあなたを含めて{{members}}名ですが、あなたの現在のプランでは非公開プロジェクト1つにつき最大{{max_memberships}}名までしか許可されていません。 上限を増やしたい場合は管理者にお問い合わせください。",
-                "PROJECT_MEMBERS_DESC_PUBLIC": "インポートしようとしているプロジェクトのメンバー数はあなたを含めて{{members}}名ですが、あなたの現在のプランでは公開プロジェクト1つにつき最大{{max_memberships}}名までしか許可されていません。 上限を増やしたい場合は管理者にお問い合わせください。",
+                "PROJECT_MEMBERS_DESC_PRIVATE": "The project you are trying to import has {{members}} members including you. Unfortunately, your current plan allows for a maximum of {{max_memberships}} members per private project. If you would like to increase that limit please contact the administrator.",
+                "PROJECT_MEMBERS_DESC_PUBLIC": "The project you are trying to import has {{members}} members including you. Unfortunately, your current plan allows for a maximum of {{max_memberships}} members per public project. If you would like to increase that limit please contact the administrator.",
                 "ACCOUNT_ALLOW_MEMBERS": "Your account only allows {{members}} members",
                 "PRIVATE_PROJECTS_SPACE": {
                     "TITLE": "現在のプランではこれ以上の非公開プロジェクトは許可されていません。",
@@ -1129,21 +1129,21 @@
             "LAST_SPRINT_NAME": "最後のスプリントは<strong> {{lastSprint}}</strong>でした ;-) "
         },
         "CREATE_EDIT": {
-            "TASK_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this Task",
-            "ISSUE_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this Issue",
-            "US_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this User Story",
-            "NEW_TASK": "New Task",
-            "NEW_ISSUE": "New Issue",
-            "NEW_US": "New User Story",
-            "EDIT_TASK": "Edit Task",
-            "EDIT_ISSUE": "Edit Issue",
-            "EDIT_US": "Edit User Story",
-            "ADD_EXISTING_ISSUE": "Add Issue to {{ targetName }}",
+            "TASK_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this task",
+            "ISSUE_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this issue",
+            "US_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this user story",
+            "NEW_TASK": "新しいタスク",
+            "NEW_ISSUE": "New issue",
+            "NEW_US": "新しいユーザーストーリー",
+            "EDIT_TASK": "タスクを編集",
+            "EDIT_ISSUE": "Edit issue",
+            "EDIT_US": "ユーザーストーリーを編集",
+            "ADD_EXISTING_ISSUE": "Add issue to {{ targetName }}",
             "CONFIRM_CLOSE": "変更をまだ保存していません。\n本当にフォームを閉じてもよろしいですか？",
-            "EXISTING_ISSUE": "Existing Issue",
-            "CHOOSE_EXISTING_ISSUE": "Which Issue?",
-            "ADD_ISSUE": "課題を追加",
-            "FILTER_ISSUES": "Filter Issues"
+            "EXISTING_ISSUE": "Existing issue",
+            "CHOOSE_EXISTING_ISSUE": "Which issue?",
+            "ADD_ISSUE": "イッシューを追加する",
+            "FILTER_ISSUES": "Filter issues"
         },
         "DELETE_DUE_DATE": {
             "TITLE": "締切日を削除",
@@ -1153,8 +1153,8 @@
             "TITLE": "スプリントを削除"
         },
         "REMOVE_RELATIONSHIP_WITH_EPIC": {
-            "TITLE": "Remove relationship with Epic",
-            "MESSAGE": "Are you sure you want to remove the relationship of this User Story with the Epic <strong>{{epicSubject}}</strong>?"
+            "TITLE": "Remove relationship with epic",
+            "MESSAGE": "Are you sure you want to remove the relationship of this user story with its epic <strong>{{epicSubject}}</strong>?"
         },
         "CREATE_MEMBER": {
             "PLACEHOLDER_INVITATION_TEXT": "(任意) 招待する際のメッセージを追加できます。新メンバーに素敵な言葉を贈りましょう ;-)",
@@ -1188,7 +1188,7 @@
             "TITLE": "締切日を設定",
             "PLACEHOLDER_DUE_DATE": "日付を選択",
             "REASON_FOR_DUE_DATE": "締切日の設定理由",
-            "PLACEHOLDER_REASON_FOR_DUE_DATE": "なぜこのユーザーストーリーに締切日が必要なのでしょうか？",
+            "PLACEHOLDER_REASON_FOR_DUE_DATE": "Why does this user story need a due date?",
             "SUGGESTIONS": {
                 "IN_ONE_WEEK": "1週間以内",
                 "IN_TWO_WEEKS": "In two weeks",
@@ -1202,7 +1202,7 @@
             "SUBTITLE_ACTION_DELETE_DUE_DATE": "Are you sure you want to delete the due date status {{due_date_status_name}}?"
         },
         "RELATE_TO_EPIC": {
-            "TITLE": "Link to Epic",
+            "TITLE": "Link to epic",
             "EXISTING_EPIC": "Existing epic",
             "NEW_EPIC": "New epic",
             "CHOOSE_PROJECT_FOR_CREATION": "プロジェクトとは？",
@@ -1226,7 +1226,7 @@
         "SUBJECT_BULK_MODE": "題名 (一括登録)",
         "CHOOSE_PROJECT_FROM": "Which project?",
         "CHOOSE_USERSTORY": "Which user story?",
-        "NO_USERSTORIES": "このプロジェクトにはユーザーストーリーがまだありません。別のプロジェクトを選択してください。",
+        "NO_USERSTORIES": "This project has no user stories yet. Please select another project.",
         "NO_USERSTORIES_FOUND": "検索条件に当てはまるものはありませんでした。",
         "FILTER_USERSTORIES": "ユーザーストーリーをフィルター",
         "LIGHTBOX_TITLE_BLOKING_EPIC": "ブロックしているエピック",
@@ -1239,18 +1239,18 @@
         "LINK_TASKBOARD": "タスクボード",
         "TITLE_LINK_TASKBOARD": "タスクボードに移動",
         "TOTAL_POINTS": "合計ポイント",
-        "ADD": "+ 新規ユーザーストーリーを追加する",
-        "ADD_BULK": "新規ユーザーストーリーを一括で追加する",
-        "PROMOTED_FROM_ISSUE": "このユーザーストーリーはこちらの課題から発展:",
-        "PROMOTED_FROM_TASK": "This US has been promoted from Task:",
+        "ADD": "+ Add a new user story",
+        "ADD_BULK": "Add some new user stories in bulk",
+        "PROMOTED_FROM_ISSUE": "This user story has been promoted from issue:",
+        "PROMOTED_FROM_TASK": "This user story has been promoted from task:",
         "TITLE_LINK_GO_TO_ISSUE": "課題へ移動",
         "TITLE_LINK_GO_TO_TASK": "Go to task",
-        "TITLE_DELETE_ACTION": "ユーザーストーリーを削除",
-        "LIGHTBOX_TITLE_BLOKING_US": "Blocking us",
+        "TITLE_DELETE_ACTION": "ユーザストーリを削除する",
+        "LIGHTBOX_TITLE_BLOKING_US": "Blocking user story",
         "NOT_ESTIMATED": "見積もりが行われていません",
-        "OWNER_US": "This User Story belongs to",
-        "RELATE_TO_EPIC": "Link to Epic",
-        "REMOVE_RELATIONSHIP_WITH_EPIC": "Remove Epic relationship",
+        "OWNER_US": "This user story belongs to",
+        "RELATE_TO_EPIC": "Link to epic",
+        "REMOVE_RELATIONSHIP_WITH_EPIC": "Remove epic relationship",
         "TRIBE": {
             "PUBLISH": "Taiga Tribeでギグとして発行",
             "PUBLISH_INFO": "詳細表示",
@@ -1311,7 +1311,8 @@
             "ASSIGNED_USERS": "割当ユーザー",
             "DUE_DATE": "締切日",
             "MILESTONE": "スプリント",
-            "COLOR": "色"
+            "COLOR": "色",
+            "PROMOTED_TO": "promoted to"
         }
     },
     "BACKLOG": {
@@ -1325,7 +1326,7 @@
         "MOVE_US_TO_CURRENT_SPRINT": "現在のスプリントに移動",
         "MOVE_US_TO_LATEST_SPRINT": "最新のスプリントに移動",
         "EMPTY": "バックログが空です！",
-        "CREATE_NEW_US": "新規US作成",
+        "CREATE_NEW_US": "Create a new user story",
         "CREATE_NEW_US_EMPTY_HELP": "新しくユーザーストーリーを作成してください。",
         "EXCESS_OF_POINTS": "ポイント超過",
         "PENDING_POINTS": "保留ポイント",
@@ -1353,8 +1354,8 @@
         "FORECASTING": {
             "TITLE": "Velocity forecasting",
             "BACKLOG": "バックログを表示",
-            "NEW_SPRINT": "あなたの作業速度をもとにした次のスプリントのユーザーストーリー候補。新しくスプリントを作成するにはクリックしてください。",
-            "CURRENT_SPRINT": "あなたの作業速度をもとにしたスプリント向けのユーザーストーリー候補。現在のスプリントに追加するにはクリックしてください。"
+            "NEW_SPRINT": "Candidate user stories for your next sprint based on your velocity. Click to create a new sprint.",
+            "CURRENT_SPRINT": "Candidate user stories for your sprint based on your velocity. Click to add to current sprint."
         },
         "TABLE": {
             "COLUMN_US": "User Stories",
@@ -1387,7 +1388,7 @@
             "LINK_TASKBOARD": "スプリントタスクボード",
             "TITLE_LINK_TASKBOARD": "タスクボード{{name}}へ移動",
             "EMPTY": "まだスプリントはありません",
-            "WARNING_EMPTY_SPRINT_ANONYMOUS": "このスプリントにはユーザーストーリーがありません",
+            "WARNING_EMPTY_SPRINT_ANONYMOUS": "This sprint has no user stories",
             "WARNING_EMPTY_SPRINT": "新しいスプリントを始めるために、バックログからストーリーをここにドロップしてください。",
             "TITLE_ACTION_NEW_SPRINT": "新しいスプリントを追加",
             "TEXT_ACTION_NEW_SPRINT": "新しくスプリントをプロジェクトに作成してください。",
@@ -1396,21 +1397,21 @@
         }
     },
     "ERROR": {
-        "TEXT1": "何かよくないことが発生したようですがウンパルンパたちは問題なく作業しています。",
+        "TEXT1": "Something happened and the Taiga has captured the error to be able to work on it.",
         "NOT_FOUND": "見つかりません",
         "NOT_FOUND_TEXT": "Error 404. 参照しようとしているページはすでに存在しません。TAIGAホームページに戻って探してみてください。",
         "PERMISSION_DENIED": "権限がありません",
         "PERMISSION_DENIED_TEXT": "このページへのアクセスが許可されていません。",
-        "VERSION_ERROR": "以前、Taigaの中の誰かが変更をしたためウンパルンパたちはあなたの変更を適用できません。リロードをしてもう一度適用してみてください。(現在の変更は失われます)"
+        "VERSION_ERROR": "Some other user inside Taiga has changed this before and your changes can't be applied. Save them elsewhere, reload the page and re-apply your changes again or they will be lost."
     },
     "TASKBOARD": {
         "PAGE_TITLE": "{{sprintName}} - スプリントタスクボード - {{projectName}}",
         "PAGE_DESCRIPTION": "スプリント {{sprintName}} ({{startDate}}から{{endDate}}まで) / {{projectName}}。{{completedPercentage}}% ({{totalPoints}}中{{completedPoints}}ポイント) 完了。{{totalTasks}}タスク中{{openTasks}}タスクが未完了。",
         "SECTION_NAME": "タスクボード",
-        "TITLE_ACTION_ADD": "新規タスクを追加",
-        "TITLE_ACTION_ADD_BULK": "新規タスクを一括で追加する",
-        "TITLE_ACTION_ADD_ISSUE": "Add a new Issue",
-        "TITLE_ACTION_ADD_ISSUE_BULK": "Add some new Issues in bulk",
+        "TITLE_ACTION_ADD": "Add a new task",
+        "TITLE_ACTION_ADD_BULK": "Add some new tasks in bulk",
+        "TITLE_ACTION_ADD_ISSUE": "Add a new issue",
+        "TITLE_ACTION_ADD_ISSUE_BULK": "Add some new issues in bulk",
         "TITLE_ACTION_ASSIGN": "タスクの割当",
         "PLACEHOLDER_CARD_TITLE": "This could be a task",
         "PLACEHOLDER_CARD_TEXT": "ストーリーを分割しタスクとして別管理",
@@ -1422,7 +1423,7 @@
             "TITLE_ACTION_UNFOLD_ROW": "行をひろげる",
             "FIELD_POINTS": "ポイント",
             "ROW_STORYLESS_TASKS_TITLE": "Storyless tasks",
-            "ROW_ISSUES_TITLE": "Sprint Issues"
+            "ROW_ISSUES_TITLE": "Sprint issues"
         },
         "CHARTS": {
             "XAXIS_LABEL": "日",
@@ -1466,8 +1467,8 @@
     "NOTIFICATION": {
         "OK": "すべてOKです",
         "WARNING": "おっと、何か問題があったようです",
-        "WARNING_TEXT": "あなたの変更がセーブされなかったことにウンパルンパたちは悲しんでいます！",
-        "SAVED": "ウンパルンパたちがすべての変更を保存しました。",
+        "WARNING_TEXT": "Your changes were not saved!",
+        "SAVED": "The Taiga saved all your changes!",
         "CLOSE": "通知を閉じる",
         "MAIL": "メールでの通知",
         "DESKTOP": "ブラウザアラートを使ったデスクトップ通知",
@@ -1475,17 +1476,17 @@
     },
     "CANCEL_ACCOUNT": {
         "TITLE": "アカウントを解約する",
-        "SUBTITLE": "Taigaを脱会されてしまうのは残念です。楽しくご利用頂いていたことを祈ります。:)",
+        "SUBTITLE": "We're sorry you are leaving the Taiga, we hope you enjoyed your stay :)",
         "PLACEHOLDER_INPUT_TOKEN": "アカウントトークンをキャンセル",
         "ACTION_LEAVING": "はい、離脱します！",
-        "SUCCESS": "ウンパルンパたちがあなたのアカウントを削除しました。"
+        "SUCCESS": "The Taiga removed your account"
     },
     "CHANGE_EMAIL_FORM": {
         "TITLE": "メール変更",
         "SUBTITLE": "あとはクリックだけであなたのメールアドレスが更新されます！",
         "PLACEHOLDER_INPUT_TOKEN": "メールトークンを変更",
         "ACTION_CHANGE_EMAIL": "メール変更",
-        "SUCCESS": "ウンパルンパたちがあなたのメールアドレスを更新しました"
+        "SUCCESS": "The Taiga updated your email"
     },
     "ISSUES": {
         "PAGE_TITLE": "課題 - {{projectName}}",
@@ -1507,13 +1508,13 @@
             "SEVERITY": "深刻度",
             "TYPE": "タイプ"
         },
-        "FILTER_ISSUES": "Filter Issues",
+        "FILTER_ISSUES": "Filter issues",
         "CONFIRM_DETACH_FROM_SPRINT": {
-            "TITLE": "Detach issue from Sprint",
+            "TITLE": "Detach issue from sprint",
             "MESSAGE": "You are about to detach the issue from the sprint <strong>{{ sprintName }}<strong>"
         },
         "CONFIRM_CHANGE_FROM_SPRINT": {
-            "TITLE": "Attach issue to Sprint",
+            "TITLE": "Attach issue to sprint",
             "MESSAGE": "<strong>This issue is currently attached to sprint {{ oldSprintName }}</strong>. You are about to detach it from that sprint and attach it instead to sprint <strong>{{ newSprintName }}.</strong>"
         },
         "TABLE": {
@@ -1546,12 +1547,12 @@
         "SECTION_NAME": "かんばん",
         "TITLE_ACTION_FOLD": "列をたたむ",
         "TITLE_ACTION_UNFOLD": "列をひろげる",
-        "TITLE_ACTION_ADD_US": "新規ユーザーストーリーを追加",
-        "TITLE_ACTION_ADD_BULK": "新規ユーザーストーリーを一括追加",
+        "TITLE_ACTION_ADD_US": "Add new user story",
+        "TITLE_ACTION_ADD_BULK": "Add new bulk",
         "ACTION_SHOW_ARCHIVED": "アーカイブ済を表示",
         "ACTION_HIDE_ARCHIVED": "アーカイブ済を隠す",
         "HIDDEN_USER_STORIES": "このステータスのユーザーストーリーはデフォルトで非表示となります",
-        "PLACEHOLDER_CARD_TITLE": "あなたのユーザーストーリーです",
+        "PLACEHOLDER_CARD_TITLE": "These are your user stories",
         "PLACEHOLDER_CARD_TEXT": "Stories might also have subtasks to separate requirements"
     },
     "SEARCH": {
@@ -1686,37 +1687,37 @@
     },
     "TIMELINE": {
         "UPLOAD_ATTACHMENT": "{{username}} さんが新しい添付ファイル {{obj_name}} をアップロードしました",
-        "US_CREATED": "{{username}} さんが新しいユーザーストーリー {{obj_name}} を作成しました（ {{project_name}} ）",
+        "US_CREATED": "{{username}} has created a new user story {{obj_name}} in {{project_name}}",
         "ISSUE_CREATED": "{{username}} さんが新しい課題 {{obj_name}} を作成しました（ {{project_name}} ）",
         "TASK_CREATED": "{{username}} さんが新しいタスク {{obj_name}} を作成しました（ {{project_name}} ）",
-        "TASK_CREATED_WITH_US": "{{username}} さんが新しいタスク {{obj_name}} をユーザーストーリー {{us_name}} に作成しました（ {{project_name}} ）",
+        "TASK_CREATED_WITH_US": "{{username}} has created a new task {{obj_name}} in {{project_name}} which belongs to the user story {{us_name}}",
         "WIKI_CREATED": "{{username}} さんが新しいwikiページ {{obj_name}} を作成しました（ {{project_name}} ）",
         "MILESTONE_CREATED": "{{username}} さんがスプリント {{obj_name}} を作成しました（ {{project_name}} ）",
         "EPIC_CREATED": "{{username}} さんが {{project_name}} で新しいエピック {{obj_name}} を作成しました",
-        "EPIC_RELATED_USERSTORY_CREATED": "{{username}} さんが {{project_name}} でユーザーストーリー {{related_us_name}} をエピック {{epic_name}} に関連付けました",
+        "EPIC_RELATED_USERSTORY_CREATED": "{{username}} has related the user story {{related_us_name}} to the epic {{epic_name}} in {{project_name}}",
         "NEW_PROJECT": "{{username}} がプロジェクト {{project_name}} を作成しました",
         "MILESTONE_UPDATED": "{{username}} がスプリント {{obj_name}} を更新しました",
-        "US_UPDATED": "{{username}} さんがユーザーストーリー {{obj_name}} の属性 \"{{field_name}}\" を更新しました ",
-        "US_UPDATED_WITH_NEW_VALUE": "{{username}} さんがユーザーストーリー {{obj_name}} の属性 \"{{field_name}}\" を {{new_value}} に更新しました",
-        "US_UPDATED_POINTS": "{{username}} さんがユーザーストーリー {{obj_name}} における役割 '{{role_name}}' のポイントを {{new_value}} に更新しました",
+        "US_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the user story {{obj_name}}",
+        "US_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the user story {{obj_name}} to {{new_value}}",
+        "US_UPDATED_POINTS": "{{username}} has updated '{{role_name}}' points of the user story {{obj_name}} to {{new_value}}",
         "ISSUE_UPDATED": "{{username}} さんが課題 {{obj_name}} の属性 \"{{field_name}}\" を更新しました",
         "ISSUE_UPDATED_WITH_NEW_VALUE": "{{username}} さんが課題 {{obj_name}} の属性 \"{{field_name}}\"  を {{new_value}} に更新しました",
         "TASK_UPDATED": "{{username}} が {{obj_name}}  の {{field_name}} を {{new_value}} に更新しました",
         "TASK_UPDATED_WITH_NEW_VALUE": "{{username}} が {{obj_name}}  の {{field_name}} を {{new_value}} に更新しました",
-        "TASK_UPDATED_WITH_US": "{{username}} さんがユーザーストーリー {{us_name}} のタスク {{obj_name}} の属性 \"{{field_name}}\" を更新しました",
-        "TASK_UPDATED_WITH_US_NEW_VALUE": "{{username}} さんがユーザーストーリー {{us_name}} のタスク {{obj_name}} における属性 \"{{field_name}}\" を {{new_value}} に更新しました",
+        "TASK_UPDATED_WITH_US": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} which belongs to the user story {{us_name}}",
+        "TASK_UPDATED_WITH_US_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} which belongs to the user story {{us_name}} to {{new_value}}",
         "WIKI_UPDATED": "{{username}} さんがWikiページ {{obj_name}} を更新しました",
         "EPIC_UPDATED": "{{username}} さんがエピック {{obj_name}} の属性 \"{{field_name}}\" を更新しました",
         "EPIC_UPDATED_WITH_NEW_VALUE": "{{username}} さんがエピック {{obj_name}} の属性 \"{{field_name}}\" を {{new_value}} に更新しました",
         "EPIC_UPDATED_WITH_NEW_COLOR": "{{username}} さんが エピック {{obj_name}} の \"{{field_name}}\" を <span class=\"new-color\" style=\"background: {{new_value}}\"></span> に更新しました",
-        "NEW_COMMENT_US": "{{username}} さんがユーザーストーリー {{obj_name}} にコメントしました",
+        "NEW_COMMENT_US": "{{username}} has commented in the user story {{obj_name}}",
         "NEW_COMMENT_ISSUE": "{{username}} さんが課題 {{obj_name}} にコメントしました",
         "NEW_COMMENT_TASK": "{{username}} さんがタスク {{obj_name}} にコメントしました",
         "NEW_COMMENT_EPIC": "{{username}} さんがエピック {{obj_name}} にコメントしました",
         "NEW_MEMBER": "{{project_name}} に新規メンバーが追加されました",
-        "US_ADDED_MILESTONE": "{{username}} さんがユーザーストーリー {{obj_name}} に {{sprint_name}} を追加しました",
-        "US_MOVED": "{{username}} さんがユーザーストーリー {{obj_name}} を移動しました",
-        "US_REMOVED_FROM_MILESTONE": "{{username}} さんがユーザーストーリー {{obj_name}} をバックログに追加しました",
+        "US_ADDED_MILESTONE": "{{username}} has added the user story {{obj_name}} to {{sprint_name}}",
+        "US_MOVED": "{{username}} has moved the user story {{obj_name}}",
+        "US_REMOVED_FROM_MILESTONE": "{{username}} has added the user story {{obj_name}} to the backlog",
         "BLOCKED": "{{username}} さんが {{obj_name}} をブロックしました",
         "UNBLOCKED": "{{username}} さんが {{obj_name}} のブロックを解除しました",
         "NEW_USER": "{{username}} さんが Taiga に参加しました",
@@ -1768,7 +1769,7 @@
             },
             "STEP2": {
                 "TITLE": "取り組んでいる作業",
-                "TEXT": "あなたが取り組んでいるユーザーストーリー、タスク、課題です。"
+                "TEXT": "Here you will find the user stories, tasks and issues in which you are working on."
             },
             "STEP3": {
                 "TITLE": "フォロー中",
@@ -1807,11 +1808,11 @@
             },
             "STEP2": {
                 "TITLE": "ユーザーストーリー＆タスク",
-                "TEXT": "User Stories are the requirements at high level. You can drag them to different columns."
+                "TEXT": "User stories are the requirements at high level. You can drag them to different columns."
             },
             "STEP3": {
                 "TITLE": "ユーザーストーリーを追加中",
-                "TEXT1": "You may want to add a single User Story (add US icon) or a group of them (bulk icon)",
+                "TEXT1": "You may want to add a single user story (add user story icon) or a group of them (bulk icon)",
                 "TEXT2": "グッドラック！"
             }
         }

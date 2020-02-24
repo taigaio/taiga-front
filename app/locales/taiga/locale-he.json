@@ -22,7 +22,7 @@
         "TAG_LINE": "כלי ניהול הפרוייקטים האג'ילי, חינמי ופתוח שלך",
         "TAG_LINE_2": "אוהב את הפרוייקט",
         "BLOCK": "חסום",
-        "BLOCK_TITLE": "חסום את הפריט, לדוגמא, אם יש לו תלות שאינה יכולה להתממש",
+        "BLOCK_TITLE": "Block this item, for example if it has a dependency that can not be satisfied",
         "BLOCKED": "חסום",
         "UNBLOCK": "בטל חסימה",
         "UNBLOCK_TITLE": "בטל חסימה של פריט זה",
@@ -39,10 +39,10 @@
         "NEXT": "הבא",
         "LOGOUT": "התנתק",
         "EXTERNAL_USER": "משתמש חיצוני",
-        "GENERIC_ERROR": "אחד מאנשי האומפה-לומפה אומר {{error}}.",
-        "IOCAINE_TEXT": "המשתמש מרגיש כישלון טוטאלי מחוסר ההצלחה במשימה, הוא יהיה חזק ככל שהזמן יעבור , בחיית בנתיים תן לו חיבוק תומך.",
-        "CLIENT_REQUIREMENT": "דרישת לקוח היא דרישה חדשה שלא נצפתה קודם לכן ותצטרך להוות חלק מהפרוייקט.",
-        "TEAM_REQUIREMENT": "דרישת צוות היא דרישה אשר חייבת להופיע בפרוייקט אך לא דורשת תשלום נוסף מהלקוח",
+        "GENERIC_ERROR": "The Taiga says {{error}}.",
+        "IOCAINE_TEXT": "This member is feeling a bit overwhelmed by this task. They will become immune to the iocaine poison over time with your help. For now, they may need a hug.",
+        "CLIENT_REQUIREMENT": "A client requirement is a new requirement that was not previously expected and is required to be part of the project",
+        "TEAM_REQUIREMENT": "A team requirement is a requirement that must exist in the project but should have no cost for the client",
         "OWNER": "בעלי הפרוייקט",
         "CAPSLOCK_WARNING": "זהירות! אתה משתמש באותיות גדולות בשדה רגיש לכל התווים",
         "CONFIRM_CLOSE_EDIT_MODE_TITLE": "האם אתה בטוח שברצונך לסגורת את מצב העריכה?",
@@ -74,7 +74,7 @@
             "RANGE": "ערך זה צריך להיות בין %s ל%s.",
             "MIN_LENGTH": "ערך זה קצר מדי. הוא צריך להיות מורכב מ%s תווים או יותר.",
             "MAX_LENGTH": "ערך זה ארוך מדי. הוא צריך להיות מורכב מ%s תווים או פחות.",
-            "RANGE_LENGTH": "ערך זה באורך שגוי. הוא צריך להיות בין %s ל%s תווים.",
+            "RANGE_LENGTH": "This value's length is invalid. It should be between %s and %s characters long.",
             "MIN_CHECK": "עליך לבחור לפחות %s בחירות.",
             "MAX_CHECK": "עליך לבחור לכל היותר %s בחירות.",
             "RANGE_CHECK": "עליך לבחור בין %s ל%s בחירות.",
@@ -131,7 +131,7 @@
             "ADD": "הסף תגית"
         },
         "DESCRIPTION": {
-            "EMPTY": "שטח ריק זה כל כך משעמם. יאללה תהיה יצירתי...",
+            "EMPTY": "Empty space is so boring... go on, be descriptive...",
             "NO_DESCRIPTION": "אין עדיין תיאור"
         },
         "FIELDS": {
@@ -202,25 +202,25 @@
             "BUTTON_TITLE": "הצבע בעד/נגד פריט זה",
             "COUNTER_TITLE": "{total, plural, one{one vote} other{# votes}}"
         },
-        "PROMOTE_TO_US": "קדם לסיפור משתמש",
-        "PROMOTED_ISSUES": "This Issue has been promoted to US:",
-        "PROMOTED_TASKS": "This Task has been promoted to US:",
+        "PROMOTE_TO_US": "Promote to user story",
+        "PROMOTED_ISSUES": "This issue has been promoted to",
+        "PROMOTED_TASKS": "This task has been promoted to",
         "CONFIRM_PROMOTE": {
             "ISSUE": {
-                "TITLE": "Promote this Issue to a new user story",
-                "MESSAGE": "אתה עשוי לחפוץ ליצור סיפור משתמש חדש מהתקלה הזו"
+                "TITLE": "קדם תקלה זו לסיפור משתמש חדש",
+                "MESSAGE": "Are you sure you want to create a new user story from this issue?"
             },
             "TASK": {
-                "TITLE": "Promote this Task to a new user story",
-                "MESSAGE": "Are you sure you want to create a new US from this Task?"
+                "TITLE": "Promote this task to a new user story",
+                "MESSAGE": "Are you sure you want to create a new user story from this task?"
             }
         },
         "CUSTOM_ATTRIBUTES": {
             "CUSTOM_FIELDS": "שדות בהתאמה אישית",
-            "SAVE": "שמור שדה מותאם אישית",
-            "EDIT": "ערוך שדה בהתאמה אישית",
+            "SAVE": "Save custom field",
+            "EDIT": "Edit custom field",
             "DELETE": "מחק תכונה מותאמת אישית",
-            "CONFIRM_DELETE": "זכור שכל הערכים בשדה המותאם אישית ימחקו.\nהאם אתה בטוח שברצונך להמשיך?"
+            "CONFIRM_DELETE": "Remember that all values in this custom field will be deleted.\n Are you sure you want to continue?"
         },
         "FILTERS": {
             "INPUT_PLACEHOLDER": "נושא או הפניה",
@@ -330,8 +330,8 @@
         "ALT_LOGIN": "או התחבר עם"
     },
     "LOGIN_FORM": {
-        "ERROR_AUTH_INCORRECT": "לפי אנשי האומפה-לומפה שלנו, שם המשתמש/הדוא\"ל או הסיסמא אינם נכונים.",
-        "SUCCESS": "אנשי האומפה-לומפה שמחים, ברוכים הבאים לטאיגה."
+        "ERROR_AUTH_INCORRECT": "According to the Taiga, your username/email or password are incorrect.",
+        "SUCCESS": "Welcome to Taiga."
     },
     "REGISTER": {
         "PAGE_TITLE": "הרשמה - טאיגה",
@@ -359,7 +359,7 @@
         "LINK_CANCEL": "לע... תחזיר אותי. אני חושב שאני זוכר.",
         "SUCCESS_TITLE": "בדוק את תיבת הדואר הנכנס שלך!",
         "SUCCESS_TEXT": "שלחנו אליך מייל עם ההוראות ליצירת סיסמה חדשה",
-        "ERROR": "לפי אנשי האומפה-לומפה שלנו, אינך רשום עדיין."
+        "ERROR": "According to the Taiga, you are not registered yet."
     },
     "CHANGE_PASSWORD": {
         "PAGE_TITLE": "שנה את סיסמתך - טאיגה",
@@ -370,7 +370,7 @@
         "PLACEHOLDER_NEW_PASSWORD": "הזן סיסמא חדשה",
         "FIELD_RETYPE_PASSWORD": "הזן שנית את סיסמא חדשה",
         "PLACEHOLDER_RETYPE_PASSWORD": "הזן שנית את סיסמא חדשה",
-        "ERROR_PASSWORD_MATCH": "הסיסמאות אינן תואמות"
+        "ERROR_PASSWORD_MATCH": "The passwords don't match"
     },
     "CHANGE_PASSWORD_RECOVERY_FORM": {
         "TITLE": "צור סיסמת טאיגה חדשה",
@@ -378,23 +378,23 @@
         "PLACEHOLDER_NEW_PASSWORD": "סיסמא חדשה",
         "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "הקלד מחדש סיסמא חדשה",
         "ACTION_RESET_PASSWORD": "אפס סיסמא",
-        "ERROR": "אנשי האומפה-לומפה שלנו לא הצליחו למצוא את בקשתך לאחזור סיסמא. אנא נסה שנית להגיש בקשה.",
-        "SUCCESS": "אנשי האומפה-לומפה שלנו שמרו את הסיסמא החדשה שלך.<br /> נסה <strong>להתחבר</strong>איתה.\n"
+        "ERROR": "The Taiga can't find your request to recover your password. Try to ask for it again.",
+        "SUCCESS": "The Taiga saved your new password.<br /> Try to <strong>sign in</strong> with it."
     },
     "INVITATION": {
         "PAGE_TITLE": "אישור הזמנה - טאיגה",
         "PAGE_DESCRIPTION": "אשר את ההזמנה כדי להצטרף לפרוייקט בטאיגה, פלטפורמת ניהול פרוייקטים לסטארטאפים ומפתחים & מעצבים אג'ילים הרוצים כלי פשוט, יפהפה,  שהופך את העבודה לבאמת מהנה."
     },
     "INVITATION_LOGIN_FORM": {
-        "NOT_FOUND": "אנשי האומפה-לומפה שלנו לא מצליחים למצוא את ההזמנה שלך.",
+        "NOT_FOUND": "The Taiga can't find your invitation.",
         "SUCCESS": "הצטרפת בהצלחה לפרוייקט הזה, ברוך הבא ל{{project_name}}"
     },
     "HOME": {
         "PAGE_TITLE": "בית - טאיגה",
         "PAGE_DESCRIPTION": "דף הבית של טאיגה עם הפרוייקטים הראשיים שלך וכל סיפורי המשתמש, המשימות והתקלות שאתה רשום אליהם או עוקב אחריהם",
         "EMPTY_WORKING_ON": "<strong>מרגיש קצת ריק, לא?</strong> התחילו לעבוד עם Taiga ותראו כאן את הנושאים והמשימות עליהם אתם עובדים n.",
-        "EMPTY_WATCHING": "<strong>עקוב</strong> אחר סיפורי משתמש, משימות ותקלות בפרוייקטים שלך, וקבל עדכונים אודות השינויים.",
-        "EMPTY_PROJECT_LIST": "עדיין אין לך שום פרוייקטים",
+        "EMPTY_WATCHING": "<strong>Follow</strong> user stories, tasks, issues in your projects and be notified about their changes :)",
+        "EMPTY_PROJECT_LIST": "You don't have any project yet",
         "WORKING_ON_SECTION": "בביצוע",
         "WATCHING_SECTION": "במעקב",
         "DASHBOARD": "לוּחַ מַחווָנִים של הפרוייקטים",
@@ -465,7 +465,7 @@
         "TITLE_LIGHTBOX_DELETE_ATTACHMENT": "מחק קובץ מצורף",
         "MSG_LIGHTBOX_DELETE_ATTACHMENT": "הקובץ המצורף '{{fileName}}'",
         "ERROR_DELETE_ATTACHMENT": "לא עלה לאל ידינו למחוק: {{errorMessage}}",
-        "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) כבד מדי לאנשי האומפה-לומפה שלנו, נסה זאת בקטן יותר מ ({{maxFileSize}})"
+        "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) is too heavy for the Taiga, try it with a file smaller than ({{maxFileSize}})"
     },
     "PAGINATION": {
         "PREVIOUS": "הקודם",
@@ -501,8 +501,8 @@
             "LOADING_MESSAGE": "נא לא לצאת מהדף",
             "ASYNC_MESSAGE": "אנחנו נשלח אליך אימייל כשיהיה מוכן.",
             "SYNC_MESSAGE": "אם ההורדה עוד לא התחילה אוטומטית לחץ <a href='{{url}}' download title='הורד את קובץ השפך'>כאן</a>.",
-            "ERROR": "אנשי האומפה-לומפה שלנו חוו כמה בעיות במהלך יצירת השפך שלך. אנא נסה שנית מאוחר יותר.",
-            "ERROR_BUSY": "מצטערים, אנשי האומפה-לומפה שלנו מאוד עסוקים כרגע. נסה שנית בעוד מספר דקות."
+            "ERROR": "The Taiga has some problems generating your dump. Please try it again.",
+            "ERROR_BUSY": "Sorry, the Taiga is experiencing heavy load right now. Please try again in a few minutes."
         },
         "MODULES": {
             "TITLE": "מודולים",
@@ -519,7 +519,7 @@
             "ISSUES": "תקלות",
             "ISSUES_DESCRIPTION": "עקוב אחר הבאגים, השאלות והשיפורים הקשורים לפרוייקט שלך. אל תפספס דבר!",
             "WIKI": "ויקי",
-            "WIKI_DESCRIPTION": "הוסף, ערוך או מחק תוכן בשיתוף פעולה עם אחרים. זה המקום המתאים לתיעוד הפרוייקט שלך.",
+            "WIKI_DESCRIPTION": "Add, modify, or delete content in collaboration with others. This is the right place for your project's documentation.",
             "MEETUP": "מפגש",
             "MEETUP_DESCRIPTION": "בחר את מערכת שיחות הועידה(וידאו) שלך",
             "SELECT_VIDEOCONFERENCE": "בחר מערכת שיחות הועידה(וידאו)",
@@ -611,7 +611,7 @@
         "PROJECT_VALUES_POINTS": {
             "TITLE": "נקודות",
             "SUBTITLE": "ספק את הנקודות שסיפורי המשתמש שלך יכולים להיות מוערכים אליהם",
-            "US_TITLE": "נקודות מסיפורי משתמש",
+            "US_TITLE": "User story points",
             "ACTION_ADD": "הוסף נקודה חדשה"
         },
         "PROJECT_VALUES_PRIORITIES": {
@@ -653,7 +653,7 @@
         },
         "PROJECT_DUE_DATE_STATUS": {
             "TITLE": "תאריכי יעד",
-            "SUBTITLE": "בחר את תאריכי היעד אשר סיפורי המשתמש, המשימות ותקלות יעברו דרכם",
+            "SUBTITLE": "Specify the due dates status your user stories, tasks and issues will go through if selected",
             "US_TITLE": "תאריך יעד לסיפור המשתמש",
             "ACTION_ADD_STATUS": "הוסף סטטוס חדש",
             "TASK_TITLE": "סטאטוס תאריך יעד לטיפול בתקלה",
@@ -680,7 +680,7 @@
         "THIRD_PARTIES": {
             "SECRET_KEY": "מפתח סודי",
             "PAYLOAD_URL": "כתובת Payload",
-            "VALID_IPS": "IPי מקור תקינים (מופרדים באמצעות ,)"
+            "VALID_IPS": "Valid source IPs (separated by ,)"
         },
         "BITBUCKET": {
             "SECTION_NAME": "Bitbucket",
@@ -728,14 +728,14 @@
         "CUSTOM_ATTRIBUTES": {
             "PAGE_TITLE": "{{sectionName}} - תכונות מותאמות אישית - {{projectName}}",
             "ADD": "הוסף שדה מותאם אישית",
-            "EDIT": "ערוך שדה בהתאמה אישית",
-            "DELETE": "מחק שדה מותאם אישית",
-            "SAVE_TITLE": "שמור שדה מותאם אישית",
+            "EDIT": "Edit custom field",
+            "DELETE": "Delete custom field",
+            "SAVE_TITLE": "Save custom field",
             "CANCEL_TITLE": "בטל יצירה",
             "SET_FIELD_NAME": "הגדר את שם השדה מותאם אישית שלך",
             "SET_FIELD_DESCRIPTION": "הגדר את תיאור השדה מותאם אישית שלך",
             "FIELD_TYPE_DEFAULT": "-- בחר אחד --",
-            "ACTION_UPDATE": "עדכן שדה מותאם אישית",
+            "ACTION_UPDATE": "Update custom field",
             "ACTION_CANCEL_EDITION": "בטל עריכה"
         },
         "MEMBERSHIP": {
@@ -865,7 +865,7 @@
     },
     "PROJECT": {
         "PAGE_TITLE": "{{projectName}}",
-        "HELP": "ארגן את הפרוייקטים שלך כך שלמעלה יופיעו אותם שיותר בשימוש.<br/> פרוייקטים מהעשירון העליון יופיעו בתיבת רשימת הפרוייקטים העליונה",
+        "HELP": "Reorder your projects to set at the top the most used ones.<br/> The top 10 projects will appear in the top navigation bar project list",
         "PRIVATE": "פרוייקט פרטי",
         "LOOKING_FOR_PEOPLE": "לפרוייקט זה דרושים אנשים",
         "FANS_COUNTER_TITLE": "{total, plural, one{מעריץ אחד} other{# מעריצים}}",
@@ -969,27 +969,27 @@
         "IMPORT": {
             "TITLE": "ייבא פרוייקט",
             "DESCRIPTION": "יבא את הפרוייקטים שלך מפלטפורמות מרובות לTaiga",
-            "ASYNC_IN_PROGRESS_TITLE": "אנשי האומפה-לומפה מייבאים את הפרוייקט שלך",
+            "ASYNC_IN_PROGRESS_TITLE": "The Taiga is importing your project",
             "ASYNC_IN_PROGRESS_MESSAGE": "תהליך זה עשוי לקחת מספר דקות <br/> אנחנו נשלח אליך אימייל כשיהיה מוכן\n",
             "UPLOAD_IN_PROGRESS_MESSAGE": "הועלו {{uploadedSize}} מתוך {{totalSize}}",
-            "ERROR": "אנשי האומפה-לומפה שלנו חוו כמה בעיות במהלך ייבוא שפך הנתונים שלך. אנא נסה שנית מאוחר יותר.",
-            "ERROR_TOO_MANY_REQUEST": "מצטערים, אנשי האומפה-לומפה שלנו מאוד עסוקים כרגע. נסה שנית בעוד מספר דקות.",
-            "ERROR_MESSAGE": "אנשי האומפה-לומפה שלנו חוו כמה בעיות במהלך ייבוא שפך הנתונים שלך:  {{error_message}}",
-            "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) כבד מדי לאנשי האומפה-לומפה שלנו, נסה זאת בקטן יותר מ ({{maxFileSize}})",
+            "ERROR": "The Taiga has some problems importing your dump data. Please try again.",
+            "ERROR_TOO_MANY_REQUEST": "Sorry, the Taiga is experiencing heavy load right now. Please try again in a few minutes.",
+            "ERROR_MESSAGE": "The Taiga has some problems importing your dump data: {{error_message}}",
+            "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) is too heavy for the Taiga, try it with a file smaller than ({{maxFileSize}})",
             "SYNC_SUCCESS": "הפרוייקט שלך יובא בהצלחה",
             "IMPORT": "ייבא",
             "WHO_IS": "המשימות שלהם ישויכו אל",
             "WRITE_EMAIL": "או אם תרצה, כתוב את האימייל שמשתמש הזה משתמש ב-Taiga",
             "SEARCH_CONTACT": "או אם תרצה, חפש באנשי הקשר שלך",
             "WRITE_EMAIL_LABEL": "כתוב את האימייל שמשתמש זה משתמש ב-Taiga",
-            "ACCEEDE": "הסכמה",
+            "ACCEEDE": "Accede",
             "PROJECT_MEMBERS": "חברי פרויקט",
-            "PROCESS_DESCRIPTION": "ספר לנו מי מ-Taiga תרצה לשייך את המשימה של {{platform}}",
+            "PROCESS_DESCRIPTION": "Tell us to whom from Taiga you want to assign the tasks of {{platform}}",
             "MATCH": "האם<strong>{{user_external}}</strong> אותו משתמש כמו <strong>{{user_internal}}</strong>?",
             "CHOOSE": "בחר משתמש",
             "LINKS": "קשר עם {{platform}}",
             "LINKS_DESCRIPTION": "האם תרצה לשמור את הקישור של כל אחד מהפריטים באמצעות הכרטיס {{platform}} המקורי?",
-            "WARNING_MAIL_USER": "שים לב אם למשתמש אין חשבון ב-Taiga אז לא נוכל לשייך לו את המשימות",
+            "WARNING_MAIL_USER": "Note that if the user does not have a Taiga account we will not be able to assign the tasks to them.",
             "ASSIGN": "שייך",
             "PROJECT_SELECTOR": {
                 "NO_RESULTS": "נראה כאילו אין שום דבר העונה על קריטריון החיפוש שלך.",
@@ -997,8 +997,8 @@
                 "ACTION_BACK": "הקודם"
             },
             "PROJECT_RESTRICTIONS": {
-                "PROJECT_MEMBERS_DESC_PRIVATE": "הפרוייקט שאת מנסה לייבא יש {{members}} חברים כולל אותך, למרבה הצער, התוכנית הנוכחית שלך יכול לאפשר מקסימום של {{max_memberships}} חברים לכל פרוייקט פרטי. אם תרצה להגדיל את ההגבלה הזו נא צור קשר עם מנהל המערכת.",
-                "PROJECT_MEMBERS_DESC_PUBLIC": "הפרוייקט שאת מנסה לייבא יש {{members}} חברים כולל אותך, למרבה הצער, התוכנית הנוכחית שלך יכול לאפשר מקסימום של {{max_memberships}} חברים לכל פרוייקט ציבורי. אם תרצה להגדיל את ההגבלה הזו נא צור קשר עם מנהל המערכת.",
+                "PROJECT_MEMBERS_DESC_PRIVATE": "The project you are trying to import has {{members}} members including you. Unfortunately, your current plan allows for a maximum of {{max_memberships}} members per private project. If you would like to increase that limit please contact the administrator.",
+                "PROJECT_MEMBERS_DESC_PUBLIC": "The project you are trying to import has {{members}} members including you. Unfortunately, your current plan allows for a maximum of {{max_memberships}} members per public project. If you would like to increase that limit please contact the administrator.",
                 "ACCOUNT_ALLOW_MEMBERS": "המשתמש שלך יכול לאפשר {{members}} חברים",
                 "PRIVATE_PROJECTS_SPACE": {
                     "TITLE": "לצערנו, התכנית הנוכחית שלך לא מאפשרת פרוייקטים פרטיים נוספים",
@@ -1129,21 +1129,21 @@
             "LAST_SPRINT_NAME": "ספירנט האחרון הוא <strong> {{lastSprint}} ;-) </strong>"
         },
         "CREATE_EDIT": {
-            "TASK_PLACEHOLDER_DESCRIPTION": "אנא הוסף תיאור לעזור לאחרים להבין את המשימה",
-            "ISSUE_PLACEHOLDER_DESCRIPTION": "אנא ספק טקסט תיאורי כדי לעזור לאנשים נוספים להבין את הבעיה הזו",
-            "US_PLACEHOLDER_DESCRIPTION": "אנא ספק טקסט תיאורי כדי לעזור לאנשים נוספים להבין את סיפור המשתמש הזה",
+            "TASK_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this task",
+            "ISSUE_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this issue",
+            "US_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this user story",
             "NEW_TASK": "משימה חדשה",
-            "NEW_ISSUE": "תקלה חדשה",
+            "NEW_ISSUE": "New issue",
             "NEW_US": "סיפור משתמש חדש",
-            "EDIT_TASK": "ערוך משימה",
-            "EDIT_ISSUE": "ערוך תקלה",
+            "EDIT_TASK": "ערוך משימהערוך משימה",
+            "EDIT_ISSUE": "Edit issue",
             "EDIT_US": "ערוך סיפור משתמש",
-            "ADD_EXISTING_ISSUE": "הוסף תקלה ל {{ targetName }}",
+            "ADD_EXISTING_ISSUE": "Add issue to {{ targetName }}",
             "CONFIRM_CLOSE": "לא שמרת שינויים,\nבטוח שברצונך לסגור את הטופס?",
-            "EXISTING_ISSUE": "תקלה קיימת",
-            "CHOOSE_EXISTING_ISSUE": "איזו תקלה?",
-            "ADD_ISSUE": "הוסף תקלה",
-            "FILTER_ISSUES": "סנן תקלות"
+            "EXISTING_ISSUE": "Existing issue",
+            "CHOOSE_EXISTING_ISSUE": "Which issue?",
+            "ADD_ISSUE": "Add issue",
+            "FILTER_ISSUES": "Filter issues"
         },
         "DELETE_DUE_DATE": {
             "TITLE": "מחק תהליך",
@@ -1153,8 +1153,8 @@
             "TITLE": "מחק ספרינט"
         },
         "REMOVE_RELATIONSHIP_WITH_EPIC": {
-            "TITLE": "הסר קישור לאפיון",
-            "MESSAGE": "האם הינך בטוח שברצונך לנתק את הקשר את הקשר בין סיפור המשתמש הזה לאפיון? <strong>{{epicSubject}}</strong>?"
+            "TITLE": "Remove relationship with epic",
+            "MESSAGE": "Are you sure you want to remove the relationship of this user story with its epic <strong>{{epicSubject}}</strong>?"
         },
         "CREATE_MEMBER": {
             "PLACEHOLDER_INVITATION_TEXT": "(אופציונאלי) הוסף כיתוב מותאם אישית להזמנה. אמור משהו לבבי למשתמשים החדשים שלך  ;-)",
@@ -1188,7 +1188,7 @@
             "TITLE": "קבע תאריך יעד",
             "PLACEHOLDER_DUE_DATE": "בחר תאריך",
             "REASON_FOR_DUE_DATE": "סיבה לתאריך היעד",
-            "PLACEHOLDER_REASON_FOR_DUE_DATE": "מדוע US זה צריך תאריך יעד?",
+            "PLACEHOLDER_REASON_FOR_DUE_DATE": "Why does this user story need a due date?",
             "SUGGESTIONS": {
                 "IN_ONE_WEEK": "בעוד כשבוע",
                 "IN_TWO_WEEKS": "בעוד כשבועיים",
@@ -1202,7 +1202,7 @@
             "SUBTITLE_ACTION_DELETE_DUE_DATE": "האם אתה בטוח שברצונך למחוק את סטאטוס תאריך היעד statu{{due_date_status_name}}?"
         },
         "RELATE_TO_EPIC": {
-            "TITLE": "קישור לאפיון",
+            "TITLE": "Link to epic",
             "EXISTING_EPIC": "אפיון קיים",
             "NEW_EPIC": "אפיון חדש",
             "CHOOSE_PROJECT_FOR_CREATION": "מה הפרוייקט?",
@@ -1226,7 +1226,7 @@
         "SUBJECT_BULK_MODE": "נושא(bulk insert)",
         "CHOOSE_PROJECT_FROM": "איזה פרויקט?",
         "CHOOSE_USERSTORY": "איזה סיפור משתמש?",
-        "NO_USERSTORIES": "לפרוייקט הזה אין סיפורי משתמש, אנא בחר פרויקט אחר",
+        "NO_USERSTORIES": "This project has no user stories yet. Please select another project.",
         "NO_USERSTORIES_FOUND": "נראה כאילו אין שום דבר העונה על קריטריון החיפוש שלך.",
         "FILTER_USERSTORIES": "סנן סיפורי משתמש",
         "LIGHTBOX_TITLE_BLOKING_EPIC": "חוסם אפיון",
@@ -1239,18 +1239,18 @@
         "LINK_TASKBOARD": "לוח משימות",
         "TITLE_LINK_TASKBOARD": "עבור ללוח המשימות",
         "TOTAL_POINTS": "סך הנקודות",
-        "ADD": "+ הוסף סיפור משתמש חדש",
-        "ADD_BULK": "הוסף מספר סיפורי משתמש במכה",
-        "PROMOTED_FROM_ISSUE": "סיפור המשתמש הזה צף מתוך התקלה:",
-        "PROMOTED_FROM_TASK": "This US has been promoted from Task:",
+        "ADD": "+ Add a new user story",
+        "ADD_BULK": "Add some new user stories in bulk",
+        "PROMOTED_FROM_ISSUE": "This user story has been promoted from issue:",
+        "PROMOTED_FROM_TASK": "This user story has been promoted from task:",
         "TITLE_LINK_GO_TO_ISSUE": "עבור לתקלה",
         "TITLE_LINK_GO_TO_TASK": "Go to task",
-        "TITLE_DELETE_ACTION": "מחק סיפור משתמש",
-        "LIGHTBOX_TITLE_BLOKING_US": "סיפור משתמש חסום",
+        "TITLE_DELETE_ACTION": "Delete user story",
+        "LIGHTBOX_TITLE_BLOKING_US": "Blocking user story",
         "NOT_ESTIMATED": "לא מתומחר",
-        "OWNER_US": "סיפור משתמש זה שייך אל",
-        "RELATE_TO_EPIC": "קישור לאפיון",
-        "REMOVE_RELATIONSHIP_WITH_EPIC": "הסר קישורי אפיונים",
+        "OWNER_US": "This user story belongs to",
+        "RELATE_TO_EPIC": "Link to epic",
+        "REMOVE_RELATIONSHIP_WITH_EPIC": "Remove epic relationship",
         "TRIBE": {
             "PUBLISH": "פרסם כהופעה בשבט Taiga ",
             "PUBLISH_INFO": "עוד מידע",
@@ -1311,7 +1311,8 @@
             "ASSIGNED_USERS": "משתמשים משוייכים",
             "DUE_DATE": "תאריך יעד",
             "MILESTONE": "ספרינט",
-            "COLOR": "צבע"
+            "COLOR": "צבע",
+            "PROMOTED_TO": "promoted to"
         }
     },
     "BACKLOG": {
@@ -1325,7 +1326,7 @@
         "MOVE_US_TO_CURRENT_SPRINT": "עבור לספרינט הנוכחי",
         "MOVE_US_TO_LATEST_SPRINT": "עבור לספרינט האחרון",
         "EMPTY": "העתודה ריקה!",
-        "CREATE_NEW_US": "צור סיפור משתמש חדש",
+        "CREATE_NEW_US": "Create a new user story",
         "CREATE_NEW_US_EMPTY_HELP": "אתה עשוי לחפוץ ליצור סיפור משתמש חדש",
         "EXCESS_OF_POINTS": "עודף נקודות",
         "PENDING_POINTS": "נקודות ממתינות",
@@ -1353,8 +1354,8 @@
         "FORECASTING": {
             "TITLE": "מהירות חיזוי",
             "BACKLOG": "הצג עתודה",
-            "NEW_SPRINT": "סיפורי משתמש פוטנציאלים אל ה-Sprint הבא שלך בהתבססות על המהירות שלך. לחץ כדי להוסיף Sprint חדש.",
-            "CURRENT_SPRINT": "סיפורי משתמש פוטנציאלים אל ה-Sprint שלך מבוסס על המהירות שלך. לחץ כדי להוסיף את ה-Sprint הנוכחי."
+            "NEW_SPRINT": "Candidate user stories for your next sprint based on your velocity. Click to create a new sprint.",
+            "CURRENT_SPRINT": "Candidate user stories for your sprint based on your velocity. Click to add to current sprint."
         },
         "TABLE": {
             "COLUMN_US": "סיפורי משתמש",
@@ -1387,7 +1388,7 @@
             "LINK_TASKBOARD": "לוח ספרינטים",
             "TITLE_LINK_TASKBOARD": "עבור ללוח המשימות של \"{{name}}\"",
             "EMPTY": "אין עדין ספרינטים",
-            "WARNING_EMPTY_SPRINT_ANONYMOUS": "ספרינט זה נטול סיפורי משתמש",
+            "WARNING_EMPTY_SPRINT_ANONYMOUS": "This sprint has no user stories",
             "WARNING_EMPTY_SPRINT": "גרור הנה סיפורים מהעתודה כדי להתחיל ספרינט חדש",
             "TITLE_ACTION_NEW_SPRINT": "הוסף ספרינט חדש",
             "TEXT_ACTION_NEW_SPRINT": "אתה עשוי לחפוץ ליצור ספרינט משתמש חדש",
@@ -1396,21 +1397,21 @@
         }
     },
     "ERROR": {
-        "TEXT1": "משהו השתבש ואנשי האומפה-לומפה שלנו עומלים לפתור את זה.",
+        "TEXT1": "Something happened and the Taiga has captured the error to be able to work on it.",
         "NOT_FOUND": "לא נמצא",
         "NOT_FOUND_TEXT": "שגיאה 404. הדף שאתה מחפש לא קיים יותר. שקול לחזור לדף הבית של טאיגה ולראות אם מה שאתה מחפש נמצא שם.",
         "PERMISSION_DENIED": "הרשאה נדחיתה",
         "PERMISSION_DENIED_TEXT": "אין לך הרשאות לגשת לדף זה",
-        "VERSION_ERROR": "מישהו בתוך טאיגה כבר שינה זאת ואנשי האומפה-לומפה לא יכולים לשמור את השינויים שביצעת. אנא טען מחדש את הדף ובצ שוב את השינויים(קח בחשבון שהם יימחקו)."
+        "VERSION_ERROR": "Some other user inside Taiga has changed this before and your changes can't be applied. Save them elsewhere, reload the page and re-apply your changes again or they will be lost."
     },
     "TASKBOARD": {
         "PAGE_TITLE": "{{sprintName}} - לוח משימות של הספרינט - {{projectName}}\n",
         "PAGE_DESCRIPTION": "הספרינט {{sprintName}} (מ {{startDate}} עד {{endDate}}) של {{projectName}}. הושלם {{completedPercentage}}% ({{completedPoints}} מתוך {{totalPoints}} נקודות). {{openTasks}} משימות פתוחות מתוך {{totalTasks}}.",
         "SECTION_NAME": "לוח משימות",
-        "TITLE_ACTION_ADD": "הוסף משימה חדשה",
-        "TITLE_ACTION_ADD_BULK": "הוסף מספר משימות במכה",
-        "TITLE_ACTION_ADD_ISSUE": "הוסף תקלה חדשה",
-        "TITLE_ACTION_ADD_ISSUE_BULK": "הוסף מספר משימות במכה",
+        "TITLE_ACTION_ADD": "Add a new task",
+        "TITLE_ACTION_ADD_BULK": "Add some new tasks in bulk",
+        "TITLE_ACTION_ADD_ISSUE": "Add a new issue",
+        "TITLE_ACTION_ADD_ISSUE_BULK": "Add some new issues in bulk",
         "TITLE_ACTION_ASSIGN": "שייך משימה",
         "PLACEHOLDER_CARD_TITLE": "זאת יכולה להיות משימה",
         "PLACEHOLDER_CARD_TEXT": "פצל סיפורים לכמה משימות ועקוב אחריהם בנפרד",
@@ -1422,7 +1423,7 @@
             "TITLE_ACTION_UNFOLD_ROW": "פרוס שורה",
             "FIELD_POINTS": "נקודות",
             "ROW_STORYLESS_TASKS_TITLE": "משימות ללא סיפור",
-            "ROW_ISSUES_TITLE": "בעיות בSprint"
+            "ROW_ISSUES_TITLE": "Sprint issues"
         },
         "CHARTS": {
             "XAXIS_LABEL": "ימים",
@@ -1466,8 +1467,8 @@
     "NOTIFICATION": {
         "OK": "הכל טוב",
         "WARNING": "אופס, משהו השתבש...",
-        "WARNING_TEXT": "אנשי האומפה-לומפה מבואסים, השינויים לא נשמרו!",
-        "SAVED": "אנשי האומפה-לומפה שמרו את כל השינויים שלך!",
+        "WARNING_TEXT": "Your changes were not saved!",
+        "SAVED": "The Taiga saved all your changes!",
         "CLOSE": "סגור התראה",
         "MAIL": "התראות בדוא\"ל",
         "DESKTOP": "התראות שולחן עבודה בעזרת הדפדפן",
@@ -1475,17 +1476,17 @@
     },
     "CANCEL_ACCOUNT": {
         "TITLE": "בטל את חשבונך",
-        "SUBTITLE": "אנחנו מצטערים שאתה עוזב את טאיגה, מקווים שנהנית במהלך שהייתך :)",
+        "SUBTITLE": "We're sorry you are leaving the Taiga, we hope you enjoyed your stay :)",
         "PLACEHOLDER_INPUT_TOKEN": "בטל אסימון משתמש",
         "ACTION_LEAVING": "כן, אני עוזב!",
-        "SUCCESS": "אנשי האומפה-לומפה שלנו הסירו את חשבונך"
+        "SUCCESS": "The Taiga removed your account"
     },
     "CHANGE_EMAIL_FORM": {
         "TITLE": "שנה את הדוא\"ל שלך",
         "SUBTITLE": "עוד לחיצה אחת והדוא\"ל שלך יעודכן",
         "PLACEHOLDER_INPUT_TOKEN": "שנה אסימון דוא\"ל",
         "ACTION_CHANGE_EMAIL": "שנה דוא\"ל",
-        "SUCCESS": "אנשי האומפה-לומפה שלנו עדכנו את הדוא\"ל שלך"
+        "SUCCESS": "The Taiga updated your email"
     },
     "ISSUES": {
         "PAGE_TITLE": "תקלות - {{projectName}}",
@@ -1507,13 +1508,13 @@
             "SEVERITY": "חומרה",
             "TYPE": "טיפוס"
         },
-        "FILTER_ISSUES": "סנן תקלות",
+        "FILTER_ISSUES": "Filter issues",
         "CONFIRM_DETACH_FROM_SPRINT": {
-            "TITLE": "נתק תקלה מהSprint",
+            "TITLE": "בטל הצמדה של בעיה מה-Sprint",
             "MESSAGE": "אתה עומד לנתק את הבעיה מה-Sprint <strong>{{ sprintName }}<strong>"
         },
         "CONFIRM_CHANGE_FROM_SPRINT": {
-            "TITLE": "הצמד בעיה אל Sprint",
+            "TITLE": "Attach issue to sprint",
             "MESSAGE": "<strong>התקלה כרגע מקושרת ל sprint {{ oldSprintName }}</strong>.אתה עומד לנתקה מsprint  ולחברה במקום לsprint  <strong>{{ newSprintName }}.</strong>"
         },
         "TABLE": {
@@ -1546,12 +1547,12 @@
         "SECTION_NAME": "קאנבאן",
         "TITLE_ACTION_FOLD": "קפל עמודה",
         "TITLE_ACTION_UNFOLD": "פרוס עמודה",
-        "TITLE_ACTION_ADD_US": "הוסף סיפור משתמש חדש",
-        "TITLE_ACTION_ADD_BULK": "הוסף \"בוכטה\" חדשה",
+        "TITLE_ACTION_ADD_US": "Add new user story",
+        "TITLE_ACTION_ADD_BULK": "Add new bulk",
         "ACTION_SHOW_ARCHIVED": "הצג מאורכב",
         "ACTION_HIDE_ARCHIVED": "הסתר מאורכבים",
         "HIDDEN_USER_STORIES": "סיפורי המשתמש בתקלה הזו מוסתרים כברירת מחדל",
-        "PLACEHOLDER_CARD_TITLE": "אלו סיפורי משתמש",
+        "PLACEHOLDER_CARD_TITLE": "These are your user stories",
         "PLACEHOLDER_CARD_TEXT": "סיפורים עשויים להכיל גם תתי משימות לדרישות אחרות"
     },
     "SEARCH": {
@@ -1686,37 +1687,37 @@
     },
     "TIMELINE": {
         "UPLOAD_ATTACHMENT": "{{username}} העלה קובץ מצורף חדש תחת {{obj_name}}",
-        "US_CREATED": "{{username}} יצר סיפור משתמש חדש {{obj_name}} תחת {{project_name}}",
+        "US_CREATED": "{{username}} has created a new user story {{obj_name}} in {{project_name}}",
         "ISSUE_CREATED": "{{username}} יצר תקלה חדשה {{obj_name}} תחת {{project_name}}",
         "TASK_CREATED": "{{username}} יצר משימה חדשה {{obj_name}} תחת {{project_name}}",
-        "TASK_CREATED_WITH_US": "{{username}} יצר משימה חדשה {{obj_name}} תחת {{project_name}} אשר שייכת לסיפור המשתמש {{us_name}}",
+        "TASK_CREATED_WITH_US": "{{username}} has created a new task {{obj_name}} in {{project_name}} which belongs to the user story {{us_name}}",
         "WIKI_CREATED": "{{username}} יצר דף ויקי חדש {{obj_name}} תחת {{project_name}}",
         "MILESTONE_CREATED": "{{username}} יצר ספרינט חדש {{obj_name}} תחת {{project_name}}",
         "EPIC_CREATED": "{{username}} יצר איפיון חדש {{obj_name}} תחת {{project_name}}",
-        "EPIC_RELATED_USERSTORY_CREATED": "{{username}} קשר את סיפור המשתמש {{related_us_name}} לאיפיון {{epic_name}} ב- {{project_name}}",
+        "EPIC_RELATED_USERSTORY_CREATED": "{{username}} has related the user story {{related_us_name}} to the epic {{epic_name}} in {{project_name}}",
         "NEW_PROJECT": "{{username}} יצר את הפרוייקט {{project_name}}\n",
         "MILESTONE_UPDATED": "{{username}} עדכן את הספרינט {{obj_name}}",
-        "US_UPDATED": "{{username}} עדכן את התכונה {{field_name}} של סיפור המשתמש {{obj_name}}",
-        "US_UPDATED_WITH_NEW_VALUE": "{{username}} עדכן את התכונה {{field_name}} של סיפור המשתמש {{obj_name}} ל{{new_value}}",
-        "US_UPDATED_POINTS": "{{username}} עדכן את נקודות ה '{{role_name}}' של סיפור המשתמש {{obj_name}} ל {{new_value}}",
+        "US_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the user story {{obj_name}}",
+        "US_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the user story {{obj_name}} to {{new_value}}",
+        "US_UPDATED_POINTS": "{{username}} has updated '{{role_name}}' points of the user story {{obj_name}} to {{new_value}}",
         "ISSUE_UPDATED": "{{username}} עדכן את התכונה {{field_name}} של התקלה {{obj_name}}",
         "ISSUE_UPDATED_WITH_NEW_VALUE": "{{username}} עדכן את התכונה {{field_name}} של המשימה {{obj_name}} ל{{new_value}}",
         "TASK_UPDATED": "{{username}} עדכן את התכונה {{field_name}} של המשימה {{obj_name}} ל{{new_value}}",
         "TASK_UPDATED_WITH_NEW_VALUE": "{{username}} עדכן את התכונה {{field_name}} של המשימה {{obj_name}} ל{{new_value}}",
-        "TASK_UPDATED_WITH_US": "{{username}} עדכן את התכונה \"{{field_name}}\" של המשימה {{obj_name}} השייכת לסיפור המשתמש {{us_name}}",
-        "TASK_UPDATED_WITH_US_NEW_VALUE": "{{username}} עדכן את התכונה \"{{field_name}}\" של המשימה {{obj_name}} השייכת לסיפור המשתמש {{us_name}} ל{{new_value}}",
+        "TASK_UPDATED_WITH_US": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} which belongs to the user story {{us_name}}",
+        "TASK_UPDATED_WITH_US_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} which belongs to the user story {{us_name}} to {{new_value}}",
         "WIKI_UPDATED": "{{username}} עדכן את דף הויקי {{obj_name}}",
         "EPIC_UPDATED": "{{username}} עידכן את הערך \"{{field_name}}\" של איפיון {{obj_name}}",
         "EPIC_UPDATED_WITH_NEW_VALUE": "{{username}} עדכן את הערך \"{{field_name}}\" של האיפיון {{obj_name}} אל {{new_value}}",
         "EPIC_UPDATED_WITH_NEW_COLOR": "{{username}} עדכן את \"{{field_name}}\" באפיון {{obj_name}} אל<span class=\"new-color\" style=\"background: {{new_value}}\"></span>",
-        "NEW_COMMENT_US": "{{username}} הגיב בסיפור המשתמש {{obj_name}}",
+        "NEW_COMMENT_US": "{{username}} has commented in the user story {{obj_name}}",
         "NEW_COMMENT_ISSUE": "{{username}} הגיב על התקלה {{obj_name}}",
         "NEW_COMMENT_TASK": "{{username}} הגיב במשימה {{obj_name}}",
         "NEW_COMMENT_EPIC": "{{username}} הגיב באיפיון {{obj_name}}",
         "NEW_MEMBER": "יש ל{{project_name}} משתמש חדש",
-        "US_ADDED_MILESTONE": "{{username}} הוסיף את סיפור המשתמש  {{obj_name}} ל  {{obj_name}}",
-        "US_MOVED": "{{username}} העביר את סיפור המשתמש {{obj_name}}",
-        "US_REMOVED_FROM_MILESTONE": "{{username}} הוסיף את סיפור המשתמש  {{obj_name}} לעתודה",
+        "US_ADDED_MILESTONE": "{{username}} has added the user story {{obj_name}} to {{sprint_name}}",
+        "US_MOVED": "{{username}} has moved the user story {{obj_name}}",
+        "US_REMOVED_FROM_MILESTONE": "{{username}} has added the user story {{obj_name}} to the backlog",
         "BLOCKED": "{{username}} חסם את {{obj_name}}",
         "UNBLOCKED": "{{username}} ביטל את החסימה עבור {{obj_name}}",
         "NEW_USER": "{{username}} הצטרף לטאיגה",
@@ -1768,7 +1769,7 @@
             },
             "STEP2": {
                 "TITLE": "בביצוע",
-                "TEXT": "כאן תמצא סיפורי משתמש, משימות ותקלות עליהם אתה עובד"
+                "TEXT": "Here you will find the user stories, tasks and issues in which you are working on."
             },
             "STEP3": {
                 "TITLE": "במעקב",
@@ -1807,11 +1808,11 @@
             },
             "STEP2": {
                 "TITLE": "סיפורי משתמש ומשימות",
-                "TEXT": "סיפורי משתמש הן דרישות ברמה הגבוהה. ניתן לגרור אותן בין הטורים."
+                "TEXT": "User stories are the requirements at high level. You can drag them to different columns."
             },
             "STEP3": {
                 "TITLE": "הוספת סיפורי משתמש",
-                "TEXT1": "שקול להוסיף סיפור משתמש בודד (הסמל של הוספת סיפור משתמש) או קבוצה של כאלה (הסמל של 'בוכתה')",
+                "TEXT1": "You may want to add a single user story (add user story icon) or a group of them (bulk icon)",
                 "TEXT2": "בהצלחה!"
             }
         }
