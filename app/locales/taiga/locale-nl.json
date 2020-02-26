@@ -22,7 +22,7 @@
         "TAG_LINE": "Jouw agile, gratis en open source project management tool",
         "TAG_LINE_2": "HOU VAN JE PROJECT",
         "BLOCK": "Blokkeer",
-        "BLOCK_TITLE": "Block this item, for example if it has a dependency that can not be satisfied",
+        "BLOCK_TITLE": "Blokkeer dit item, bijvoorbeeld wanneer het een afhankelijkheid heeft waaraan niet voldaan kan worden",
         "BLOCKED": "Geblokkeerd",
         "UNBLOCK": "Deblokkeer",
         "UNBLOCK_TITLE": "Dit item deblokkeren",
@@ -196,7 +196,7 @@
             "UNWATCH": "Unwatch",
             "WATCHERS": "Volgers",
             "BUTTON_TITLE": "Watch/Unwatch this item",
-            "COUNTER_TITLE": "{total, plural, one{one watcher} other{# watchers}}"
+            "COUNTER_TITLE": "{total, plural, one{één volger} other{# volgers}}"
         },
         "VOTE_BUTTON": {
             "BUTTON_TITLE": "Upvote/Downvote this item",
@@ -330,8 +330,8 @@
         "ALT_LOGIN": "Of login met"
     },
     "LOGIN_FORM": {
-        "ERROR_AUTH_INCORRECT": "According to the Taiga, your username/email or password are incorrect.",
-        "SUCCESS": "Welcome to Taiga."
+        "ERROR_AUTH_INCORRECT": "Volgens de Taiga, zijn je gebruikersnaam/e-mail of wachtwoord verkeerd.",
+        "SUCCESS": "Welkom bij Taiga."
     },
     "REGISTER": {
         "PAGE_TITLE": "Registreer - Taiga",
@@ -359,7 +359,7 @@
         "LINK_CANCEL": "Nah, stuur me terug. I denk dat ik het zal onthouden.",
         "SUCCESS_TITLE": "Controleer je inbox!",
         "SUCCESS_TEXT": "We hebben je een e-mail gestuurd met de instructie om een nieuw wachtwoord aan te maken",
-        "ERROR": "According to the Taiga, you are not registered yet."
+        "ERROR": "Volgens de Taiga, ben je nog niet geregistreerd."
     },
     "CHANGE_PASSWORD": {
         "PAGE_TITLE": "Verander je wachtwoord - Taiga",
@@ -370,7 +370,7 @@
         "PLACEHOLDER_NEW_PASSWORD": "Type een wachtwoord",
         "FIELD_RETYPE_PASSWORD": "Herhaal nieuwe wachtwoord",
         "PLACEHOLDER_RETYPE_PASSWORD": "Herhaal nieuw wachtwoord",
-        "ERROR_PASSWORD_MATCH": "The passwords don't match"
+        "ERROR_PASSWORD_MATCH": "De wachtwoorden komen niet overeen"
     },
     "CHANGE_PASSWORD_RECOVERY_FORM": {
         "TITLE": "Maak een nieuwe Taiga pass aan",
@@ -378,31 +378,31 @@
         "PLACEHOLDER_NEW_PASSWORD": "Nieuw wachtwoord",
         "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "Herhaal wachtwoord",
         "ACTION_RESET_PASSWORD": "Wachtwoord resetten",
-        "ERROR": "The Taiga can't find your request to recover your password. Try to ask for it again.",
-        "SUCCESS": "The Taiga saved your new password.<br /> Try to <strong>sign in</strong> with it."
+        "ERROR": "De Taiga kunnen je verzoek om je wachtwoord te herstellen niet vinden. Probeer het nog een keer te vragen.",
+        "SUCCESS": "De Taiga hebben je nieuwe wachtwoord opgeslagen. <br /> Probeer om er mee <strong> in te loggen </strong>."
     },
     "INVITATION": {
         "PAGE_TITLE": "Uitnodiging accepteren - Taiga",
         "PAGE_DESCRIPTION": "Accepteer de uitnodiging voor een project in Taiga, een project management platform voor startups en agile ontwikkelaars & designers die een simpele, mooie tool willen om werken echt leuk te maken."
     },
     "INVITATION_LOGIN_FORM": {
-        "NOT_FOUND": "The Taiga can't find your invitation.",
+        "NOT_FOUND": "De Taiga kunnen je uitnodiging niet vinden.",
         "SUCCESS": "Je bent met succes toegetreden tot dit project, Welkom bij {{project_name}}"
     },
     "HOME": {
         "PAGE_TITLE": "Home -Taiga",
         "PAGE_DESCRIPTION": "De Taiga start pagina met jouw projecten en de aan jou toegewezen en gevolgde user stories, taken en kwesties",
         "EMPTY_WORKING_ON": "Voelt leeg, vind je niet? Begin met Taiga te werken en hier zullen de stories, taken en kwesties verschijnen waar jij aan werkt.",
-        "EMPTY_WATCHING": "<strong>Follow</strong> user stories, tasks, issues in your projects and be notified about their changes :)",
-        "EMPTY_PROJECT_LIST": "You don't have any project yet",
+        "EMPTY_WATCHING": "<strong>Volg </strong> User Stories, Taken, Kwesties binnen je projecten en ontvang een bericht bij veranderingen :)",
+        "EMPTY_PROJECT_LIST": "Je hebt nog geen enkel project",
         "WORKING_ON_SECTION": "Werkt aan",
         "WATCHING_SECTION": "Volgers",
         "DASHBOARD": "Projecten dashboard",
-        "SET_HIDDEN": "Set as hidden",
-        "SET_VISIBLE": "Set as visible",
-        "NO_HIDDEN_ITEMS": "You have no hidden items",
-        "HIDE_HIDDEN": "Do not show hidden objects",
-        "SHOW_HIDDEN": "Show hidden objects"
+        "SET_HIDDEN": "Maak onzichtbaar",
+        "SET_VISIBLE": "Maak zichtbaar",
+        "NO_HIDDEN_ITEMS": "Je hebt geen onzichtbare items",
+        "HIDE_HIDDEN": "Toon onzichtbare items niet",
+        "SHOW_HIDDEN": "Toon onzichtbare items"
     },
     "EPICS": {
         "TITLE": "EPICS",
@@ -416,8 +416,8 @@
         },
         "EMPTY": {
             "TITLE": "Het lijkt erop dat er nog geen epics zijn",
-            "EXPLANATION": "Epics are items at a higher level that encompass user stories.<br />Epics are at the top of the hierarchy and can be used to group user stories together.",
-            "HELP": "Learn more about epics"
+            "EXPLANATION": "Epics zijn items op een hoger niveau en bevatten User Stories.<br /> Epics staan bovenaan de hiërarchie een kunnen gebruikt worden om User Stories te groeperen.",
+            "HELP": "Leer meer over Epics"
         },
         "TABLE": {
             "VOTES": "Stemmen",
@@ -432,10 +432,10 @@
             "VIEW_OPTIONS": "Toon opties"
         },
         "CREATE": {
-            "TITLE": "New Epic",
-            "PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this epic",
-            "TEAM_REQUIREMENT": "Team requirement",
-            "CLIENT_REQUIREMENT": "Client requirement",
+            "TITLE": "Nieuwe Epic",
+            "PLACEHOLDER_DESCRIPTION": "Voeg alstublieft een omschrijvende tekst toe om anderen deze Epic beter te helpen begrijpen",
+            "TEAM_REQUIREMENT": "Eisen team",
+            "CLIENT_REQUIREMENT": "Eisen klant",
             "BLOCKED": "Geblokkeerd",
             "BLOCKED_NOTE_PLACEHOLDER": "Why is this epic blocked?",
             "CREATE_EPIC": "Create epic"
@@ -487,8 +487,8 @@
             "PAGE_TITLE": "Lidmaatschappen - {{projectName}}",
             "ADD_BUTTON": "+ Nieuwe gebruiker",
             "ADD_BUTTON_TITLE": "Nieuwe gebruiker toevoegen",
-            "UPGRADE_BUTTON": "Upgrade your plan",
-            "LIMIT_USERS_WARNING_MESSAGE_FOR_ADMIN": "If you would like to <strong>add more members</strong>, please contact the project owner <a href='mailto:{{ owner_email }}' title='{{ owner_email }}'>{{ owner_email }}</a>",
+            "UPGRADE_BUTTON": "Upgrade je plan",
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_ADMIN": "Als je nog <strong>meer leden wil toevoegen</strong>, gelieve contact op te nemen met de project eigenaar <a href='mailto:{{ owner_email }}' title='{{ owner_email }}'>{{ owner_email }}</a>",
             "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "This project has reached its limit of <strong>({{members}})</strong> allowed members. If you would like to increase that limit please contact the administrator."
         },
         "PROJECT_EXPORT": {
@@ -507,7 +507,7 @@
         "MODULES": {
             "TITLE": "Modules",
             "EPICS": "Epics",
-            "EPICS_DESCRIPTION": "Visualize and manage the most strategic part of your project",
+            "EPICS_DESCRIPTION": "Visualiseer en beheer het meest strategische stuk van je project",
             "BACKLOG": "Backlog",
             "BACKLOG_DESCRIPTION": "Organiseer je user stories om een duidelijk overzicht van aankomend en geprioritiseerd werk te behouden.",
             "NUMBER_SPRINTS": "Expected number of sprints",
@@ -571,7 +571,7 @@
             "DELETE_SUBTITLE": "You are going to delete the current CSV data access url. Are you sure?"
         },
         "CSV": {
-            "SECTION_TITLE_EPIC": "epics reports",
+            "SECTION_TITLE_EPIC": "epics rapporten",
             "SECTION_TITLE_US": "user stories rapporten",
             "SECTION_TITLE_TASK": "taak rapporten",
             "SECTION_TITLE_ISSUE": "Kwesties rapporten",
@@ -865,12 +865,12 @@
     },
     "PROJECT": {
         "PAGE_TITLE": "{{projectName}}",
-        "HELP": "Reorder your projects to set at the top the most used ones.<br/> The top 10 projects will appear in the top navigation bar project list",
+        "HELP": "Herorden je projecten om de vaakst gebruikte bovenaan te zetten. <br/> De top 10 projecten zullen in de bovenste navigatie balk verschijnen.",
         "PRIVATE": "Gesloten project",
-        "LOOKING_FOR_PEOPLE": "This project is looking for people",
-        "FANS_COUNTER_TITLE": "{total, plural, one{one fan} other{# fans}}",
-        "WATCHERS_COUNTER_TITLE": "{total, plural, one{one watcher} other{# watchers}}",
-        "MEMBERS_COUNTER_TITLE": "{total, plural, one{one member} other{# members}}",
+        "LOOKING_FOR_PEOPLE": "Dit project is op zoek naar mensen",
+        "FANS_COUNTER_TITLE": "{total, plural, one{één fan} other{# fans}}",
+        "WATCHERS_COUNTER_TITLE": "{total, plural, one{één volger} other{# volgers}}",
+        "MEMBERS_COUNTER_TITLE": "{total, plural, one{één lid} other{# leden}}",
         "BLOCKED_PROJECT": {
             "BLOCKED": "Geblokkeerd project",
             "THIS_PROJECT_IS_BLOCKED": "This project is temporarily blocked",
@@ -914,13 +914,13 @@
             "LIKED": "Leuk gevonden",
             "UNLIKE": "Vind ik niet meer leu",
             "BUTTON_TITLE": "Vind dit project leuk of niet",
-            "COUNTER_TITLE": "{total, plural, one{one fan} other{# fans}}"
+            "COUNTER_TITLE": "{total, plural, one{één fan} other{# fans}}"
         },
         "WATCH_BUTTON": {
             "BUTTON_TITLE": "Watch this project and set notification policy",
             "WATCH": "Bekijk",
             "WATCHING": "Volgers",
-            "COUNTER_TITLE": "{total, plural, one{one watcher} other{# watchers}}",
+            "COUNTER_TITLE": "{total, plural, one{één volger} other{# volgers}}",
             "OPTIONS": {
                 "NOTIFY_ALL": "Ontvang alle notificaties",
                 "NOTIFY_ALL_TITLE": "Ontvang alle notificaties voor dit project",
@@ -1083,7 +1083,7 @@
             "CONFIRM": "Weet je zeker dat je je Taiga account wilt verwijderen?",
             "CANCEL": "Terug naar instellingen",
             "ACCEPT": "Verwijder account",
-            "BLOCK_PROJECT": "Note that all the projects you own projects will be <strong>blocked</strong> after you delete your account. If you do not want a project blocked, transfer ownership to another member of each project prior to deleting your account."
+            "BLOCK_PROJECT": "Hou er rekening mee dat alle projecten waar jij eigenaar bent <strong>geblokkeerd</strong> worden als je je account verwijderd. Als je een project niet wil blokkeren, dien je een ander lid van elk project eigenaar te maken vooraleer je je account verwijderd."
         },
         "DELETE_PROJECT": {
             "TITLE": "Verwijder project",
@@ -1097,12 +1097,12 @@
         },
         "SELECT_USER": {
             "SEARCH": "Zoek gebruikers",
-            "REMOVE": "Remove user",
+            "REMOVE": "Verwijder gebruiker",
             "ROLE": "Rol"
         },
         "ADD_MEMBER": {
             "TITLE": "Nieuwe gebruiker",
-            "PLACEHOLDER": "Filter users or write an email to invite",
+            "PLACEHOLDER": "Filter gebruikers of maak een e-mail om uit te nodigen",
             "ADD_EMAIL": "Voeg e-mail toe",
             "REMOVE": "Verwijder",
             "INVITE": "Uitnodigen",
@@ -1215,10 +1215,10 @@
     },
     "EPIC": {
         "PAGE_TITLE": "{{epicSubject}} - Epic {{epicRef}} - {{projectName}}",
-        "PAGE_DESCRIPTION": "Status: {{epicStatus }}. Description: {{epicDescription}}",
+        "PAGE_DESCRIPTION": "Status: {{epicStatus }}. Omschrijving: {{epicDescription}}",
         "SECTION_NAME": "Epic",
-        "ERROR_UNLINK_RELATED_USERSTORY": "We have not been able to unlink: {{errorMessage}}",
-        "CREATE_RELATED_USERSTORIES": "Create a relationship with",
+        "ERROR_UNLINK_RELATED_USERSTORY": "We zijn er niet in geslaagd om de link te verwijderen: {{errorMessage}}",
+        "CREATE_RELATED_USERSTORIES": "Maak een relatie aan met ",
         "NEW_USERSTORY": "Nieuwe user story",
         "EXISTING_USERSTORY": "Bestaande user story",
         "CHOOSE_PROJECT_FOR_CREATION": "Which project?",
@@ -1265,7 +1265,7 @@
     },
     "COMMENTS": {
         "DELETED_INFO": "Opmerking verwijderd door {{user}}",
-        "COMMENTS_COUNT": "{{comments}} Comments",
+        "COMMENTS_COUNT": "{{comments}} Reacties",
         "OLDER_FIRST": "Oudste eerst",
         "RECENT_FIRST": "Nieuwste eerst",
         "COMMENT": "Reageer",
@@ -1397,7 +1397,7 @@
         }
     },
     "ERROR": {
-        "TEXT1": "Something happened and the Taiga has captured the error to be able to work on it.",
+        "TEXT1": "Er is iets gebeurd en de Taiga heeft de fout gevangengenomen om eraan te werken.",
         "NOT_FOUND": "Niet gevonden",
         "NOT_FOUND_TEXT": "Error 404. De pagina die je zoekt bestaat niet meer. Misschien kan je terugkeren naar de TAIGA startpagina en kijken of je kan vinden wat je zoekt.",
         "PERMISSION_DENIED": "Niet toegestaan",

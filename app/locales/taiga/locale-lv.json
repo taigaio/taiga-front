@@ -5,8 +5,8 @@
         "OR": "vai",
         "I_GET_IT": "OK, skaidrīte",
         "LOADING": "Notiek ielāde...",
-        "DATE": "GGGG MM DD",
-        "DATETIME": "GGGG MM DD  HH:mm",
+        "DATE": "DD MMM YYYY",
+        "DATETIME": "DD MMM YYYY HH:mm",
         "SAVE": "Saglabāt",
         "CANCEL": "Atcelt",
         "ACCEPT": "Apstiprināt",
@@ -20,7 +20,7 @@
         "EDIT": "Rediģēt",
         "DRAG": "Vilkt",
         "TAG_LINE": "Jūsu spējais, bezmaksas un atklātā koda projektu vadības rīks",
-        "TAG_LINE_2": "MĪLI SAVU PROJEKTU!",
+        "TAG_LINE_2": "IEMĪLI SAVU PROJEKTU",
         "BLOCK": "Bloķēt",
         "BLOCK_TITLE": "Bloķēt šo vienumu, piemēram, ja tam ir atkarība, kuru nevar apmierināt",
         "BLOCKED": "Bloķēts",
@@ -1312,7 +1312,7 @@
             "DUE_DATE": "termiņš",
             "MILESTONE": "sprints",
             "COLOR": "krāsa",
-            "PROMOTED_TO": "promoted to"
+            "PROMOTED_TO": "pārtapis par"
         }
     },
     "BACKLOG": {
