@@ -196,11 +196,11 @@
             "UNWATCH": "Ez begiratu",
             "WATCHERS": "Begiratzaileak",
             "BUTTON_TITLE": "Izan/ez izan begiratzaile gai honetan",
-            "COUNTER_TITLE": "{total, plural, =1{one watcher} other{# watchers}}"
+            "COUNTER_TITLE": "{total, plural, =1{behatzaile bat} other{# behatzaile}} "
         },
         "VOTE_BUTTON": {
             "BUTTON_TITLE": "Bozkatu gora/behera gai hau",
-            "COUNTER_TITLE": "{total, plural, =1{one vote} other{# votes}}"
+            "COUNTER_TITLE": "{total, plural, =1{bozka bat} other{# bozka}}"
         },
         "PROMOTE_TO_US": "Goratu eginkizun izatera",
         "PROMOTED_ISSUES": "Gertakari hau bilakatu da:",
@@ -868,9 +868,9 @@
         "HELP": "Aldatu proiektuen hurrenkera, jarri lehenbizi gehien erabiltzen dituzunak. <br/> Lehen 10 proiektuak agertuko dira goiko nabigazio bara nagusiko proiektuen zerrendan",
         "PRIVATE": "Proiektu pribatua",
         "LOOKING_FOR_PEOPLE": "Proiektu honek lankideak behar ditu",
-        "FANS_COUNTER_TITLE": "{total, plural, =1{one fan} other{# fans}}",
-        "WATCHERS_COUNTER_TITLE": "{total, plural, =1{one watcher} other{# watchers}}",
-        "MEMBERS_COUNTER_TITLE": "{total, plural, =1{one member} other{# members}}",
+        "FANS_COUNTER_TITLE": " {total, plural, =1{jarraitzaile bat} other{# jarraitzaile}} ",
+        "WATCHERS_COUNTER_TITLE": "{total, plural, =1{behatzaile bat} other{# behatzaile}} ",
+        "MEMBERS_COUNTER_TITLE": "{total, plural, =1{lankide bat} other{# lankide}} ",
         "BLOCKED_PROJECT": {
             "BLOCKED": "Proiektua blokeatuta",
             "THIS_PROJECT_IS_BLOCKED": "Proiektu hau blokeatuta aldi baterako",
@@ -914,13 +914,13 @@
             "LIKED": "Gogokoa",
             "UNLIKE": "Ez datsegit",
             "BUTTON_TITLE": "Proiektu hau datsegit edo ez datsegit",
-            "COUNTER_TITLE": "{total, plural, =1{one fan} other{# fans}}"
+            "COUNTER_TITLE": " {total, plural, =1{jarraitzaile bat} other{# jarraitzaile}}"
         },
         "WATCH_BUTTON": {
             "BUTTON_TITLE": "Begiratu proiektu hau eta ezarri jakinarazpenak",
             "WATCH": "Begiratu",
             "WATCHING": "Behatzen",
-            "COUNTER_TITLE": "{total, plural, =1{one watcher} other{# watchers}}",
+            "COUNTER_TITLE": "{total, plural, =1{behatzaile bat} other{# behatzaile}} ",
             "OPTIONS": {
                 "NOTIFY_ALL": "Jaso jakinarazpen guztiak",
                 "NOTIFY_ALL_TITLE": "Jaso jakinarazpen guztiak proiektu honetan",
@@ -1438,12 +1438,12 @@
             "MOVE_TO_OPEN_SPRINT": "Mugitu irekitako urratsera",
             "NO_OPEN_SPRINTS": "Ez dago beste urratsik irekita Mesedez, sortu bat lehenago.",
             "SELECT_DESTINATION_PLACEHOLDER": "Hautatu helmuga",
-            "UNFINISHED_USER_STORIES_COUNT": "{total, plural, =1{<strong>#</strong> unfinished user story} other{<strong>#</strong> unfinished user stories}}",
-            "UNFINISHED_STORYLESS_TASKS_COUNT": "{total, plural, =1{<strong>#</strong> unfinished storyless task} other{<strong>#</strong> unfinished storyless tasks}}",
-            "UNFINISHED_ISSUES_COUNT": "{total, plural, =1{<strong>#</strong> unfinished issue} other{<strong>#</strong> unfinished issue}}",
+            "UNFINISHED_USER_STORIES_COUNT": "{total, plural, =1{eginkizun <strong>#</strong> amaitu gabe} other{<strong>#</strong> eginkizun amaitu gabe}}",
+            "UNFINISHED_STORYLESS_TASKS_COUNT": "{total, plural, =1{eginkizunik gabeko ataza <strong>#</strong> amaitu gabe} other{eginkizunik gabeko <strong>#</strong> ataza amaitu gabe}}",
+            "UNFINISHED_ISSUES_COUNT": "{total, plural, =1{amaitu gabeko gertakari <strong>#</strong>} other{amaitu gabeko<strong>#</strong> gertakari}}",
             "WARNING_ISSUES_NOT_MOVED_TITLE": "Eginkizun eta ataza guztiak mugitu dituzu; urratsa itxi egingo da",
             "WARNING_ISSUES_NOT_MOVED": "Gertakariak urratsean geldituko dira, ezabatu gabe",
-            "WARNING_SPRINT_STILL_OPEN_TITLE": "{total, plural, =1{You just moved # item!} other{You just moved # items!}}",
+            "WARNING_SPRINT_STILL_OPEN_TITLE": "{total, plural, =1{Mugitu duzu osagai #!} other{Mugitu dituzu # osagai!}}",
             "WARNING_SPRINT_STILL_OPEN": "Gogoan izan {{sprintName}} urratsa <strong>zabalik geldituko dela</strong> amaitu gabeko osagairik duen bitartean."
         }
     },
@@ -1821,7 +1821,7 @@
         "PAGE_TITLE": "Aurkitu Taigako proiektuak",
         "PAGE_DESCRIPTION": "Taigako proiektu publikoen direktorioa Esploratu epeak, gertakariak eta lantaldeak Begiratu proiektu aktiboenak Iragazi Kanban edo Scrum-en arabera",
         "DISCOVER_TITLE": "Aurkitu proiektuak",
-        "DISCOVER_SUBTITLE": "{projects, plural, =1{One public project to discover} other{# public projects to discover}}",
+        "DISCOVER_SUBTITLE": "{projects, plural, =1{Proiektu publiko bat ikusgarri} other{# proiektu publiko ikusgarri}}",
         "MOST_ACTIVE": "Aktiboena",
         "MOST_ACTIVE_EMPTY": "Ez dago proiektu AKTIBORIK",
         "MOST_LIKED": "«Datsegit» gehien",

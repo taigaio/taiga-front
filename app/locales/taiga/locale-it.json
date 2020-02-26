@@ -22,7 +22,7 @@
         "TAG_LINE": "Il tuo agile, libero e opensource strumento di project management",
         "TAG_LINE_2": "ADORO IL VOSTRO PROGETTO",
         "BLOCK": "Blocca",
-        "BLOCK_TITLE": "Block this item, for example if it has a dependency that can not be satisfied",
+        "BLOCK_TITLE": "Blocca questo elemento se per esempio ha dipendenze che non possono essere soddisfatte",
         "BLOCKED": "Bloccato",
         "UNBLOCK": "Sblocca",
         "UNBLOCK_TITLE": "Sblocca questo elemento",
@@ -196,11 +196,11 @@
             "UNWATCH": "Non osservare",
             "WATCHERS": "Osservatori",
             "BUTTON_TITLE": "Osserva/Non osservare questo elemento",
-            "COUNTER_TITLE": "{total, plural, =1{one watcher} other{# watchers}}"
+            "COUNTER_TITLE": "{total, plural, =1{un osservatore} other{# osservatori}} "
         },
         "VOTE_BUTTON": {
             "BUTTON_TITLE": "vota positivamente o negativamente questo elemento",
-            "COUNTER_TITLE": "{total, plural, =1{one vote} other{# votes}}"
+            "COUNTER_TITLE": "{total, plural, =1{un voto} other{# voti}}"
         },
         "PROMOTE_TO_US": "Promote to user story",
         "PROMOTED_ISSUES": "This issue has been promoted to",
@@ -330,8 +330,8 @@
         "ALT_LOGIN": "Oppure accedi con"
     },
     "LOGIN_FORM": {
-        "ERROR_AUTH_INCORRECT": "According to the Taiga, your username/email or password are incorrect.",
-        "SUCCESS": "Welcome to Taiga."
+        "ERROR_AUTH_INCORRECT": "Secondo la Taiga, i tuoi nomi utente, email o password sono errati.",
+        "SUCCESS": "Benvenuto in Taiga!"
     },
     "REGISTER": {
         "PAGE_TITLE": "Registrazione - Taiga",
@@ -359,7 +359,7 @@
         "LINK_CANCEL": "Fa niente dai, riportami indietro. Penso di ricordarmela.",
         "SUCCESS_TITLE": "Controlla la tua inbox!",
         "SUCCESS_TEXT": "Ti abbiamo mandato una mail con le istruzioni per impostare una nuova password",
-        "ERROR": "According to the Taiga, you are not registered yet."
+        "ERROR": "Secondo la Taiga, non sei ancora registrato."
     },
     "CHANGE_PASSWORD": {
         "PAGE_TITLE": "Cambia la tua password - Taiga",
@@ -370,7 +370,7 @@
         "PLACEHOLDER_NEW_PASSWORD": "Digita una nuova password",
         "FIELD_RETYPE_PASSWORD": "Digita una nuova password",
         "PLACEHOLDER_RETYPE_PASSWORD": "Ri-digita una nuova password",
-        "ERROR_PASSWORD_MATCH": "The passwords don't match"
+        "ERROR_PASSWORD_MATCH": "Le password non corrispondono"
     },
     "CHANGE_PASSWORD_RECOVERY_FORM": {
         "TITLE": "Crea una nuova password su Taiga",
@@ -378,23 +378,23 @@
         "PLACEHOLDER_NEW_PASSWORD": "Nuova password",
         "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "Digita una nuova password",
         "ACTION_RESET_PASSWORD": "Reimposta la password",
-        "ERROR": "The Taiga can't find your request to recover your password. Try to ask for it again.",
-        "SUCCESS": "The Taiga saved your new password.<br /> Try to <strong>sign in</strong> with it."
+        "ERROR": "La Taiga non riesce a trovare la tua richiesta di recupero password. Prova a chiedergliela di nuovo.",
+        "SUCCESS": "La Taiga ha salvato la tua nuova password.<br /> Pova a fare <strong>login</strong> con questa."
     },
     "INVITATION": {
         "PAGE_TITLE": "Invito ad accedere - Taiga",
         "PAGE_DESCRIPTION": "Accetta l'invito a partecipare ad un progetto in Taiga, una piattaforma semplice di project management che rende il lavoro davvero piacevole a start-up e a chi sviluppa e progetta con il metodo \"agile\"."
     },
     "INVITATION_LOGIN_FORM": {
-        "NOT_FOUND": "The Taiga can't find your invitation.",
+        "NOT_FOUND": "La Taiga non ha trovato il tuo invito.",
         "SUCCESS": "Sei ora un membro di questo progetto. Benvenuto in {{project_name}}"
     },
     "HOME": {
         "PAGE_TITLE": "Home - Taiga",
         "PAGE_DESCRIPTION": "La home di Taiga con i tuoi principali progetti e tutte le storie utente, i compiti e problemi assegnati e osservati. ",
         "EMPTY_WORKING_ON": "<strong>Sembra vuoto, vero?</strong> Inizia a lavorare con Taiga e vedrai qui le storie, task e issue su cui stai lavorando",
-        "EMPTY_WATCHING": "<strong>Follow</strong> user stories, tasks, issues in your projects and be notified about their changes :)",
-        "EMPTY_PROJECT_LIST": "You don't have any project yet",
+        "EMPTY_WATCHING": "<strong>Osserva</strong> Storie Utente, Compiti, Criticità nel progetto e ti verranno notificate le sue modifiche :)",
+        "EMPTY_PROJECT_LIST": "Per ora non hai nessun progetto",
         "WORKING_ON_SECTION": "Sta lavorando su",
         "WATCHING_SECTION": "Osservando",
         "DASHBOARD": "Dashboard Progetti",
@@ -865,12 +865,12 @@
     },
     "PROJECT": {
         "PAGE_TITLE": "TEAM - {{projectName}}",
-        "HELP": "Reorder your projects to set at the top the most used ones.<br/> The top 10 projects will appear in the top navigation bar project list",
+        "HELP": "Riordina i tuoi progetti per avere in alto i più usati.<br/> I primi 10 progetti compariranno nella lista dei progetti della barra di navigazione, su in alto",
         "PRIVATE": "Progetto privato",
         "LOOKING_FOR_PEOPLE": "Il progetto cerca persone",
-        "FANS_COUNTER_TITLE": "{total, plural, =1{one fan} other{# fans}}",
-        "WATCHERS_COUNTER_TITLE": "{total, plural, =1{one watcher} other{# watchers}}",
-        "MEMBERS_COUNTER_TITLE": "{total, plural, =1{one member} other{# members}}",
+        "FANS_COUNTER_TITLE": "{total, plural, =1{un follower} other{# followers}}",
+        "WATCHERS_COUNTER_TITLE": "{total, plural, =1{un osservatore} other{# osservatori}} ",
+        "MEMBERS_COUNTER_TITLE": "{total, plural, =1{un membro} other{# membri}}",
         "BLOCKED_PROJECT": {
             "BLOCKED": "Porgetto bloccato",
             "THIS_PROJECT_IS_BLOCKED": "Questo progetto è temporaneamente bloccato",
@@ -914,13 +914,13 @@
             "LIKED": "Piaciuto",
             "UNLIKE": "Non mi piace",
             "BUTTON_TITLE": "Vota a favore o a sfavore di questo progetto",
-            "COUNTER_TITLE": "{total, plural, =1{one fan} other{# fans}}"
+            "COUNTER_TITLE": "{total, plural, =1{un follower} other{# followers}}"
         },
         "WATCH_BUTTON": {
             "BUTTON_TITLE": "Osserva questo progetto ed imposta la politica di notifica",
             "WATCH": "Osserva",
             "WATCHING": "In osservazione",
-            "COUNTER_TITLE": "{total, plural, =1{one watcher} other{# watchers}}",
+            "COUNTER_TITLE": "{total, plural, =1{un osservatore} other{# osservatori}} ",
             "OPTIONS": {
                 "NOTIFY_ALL": "Ricevi tutte le notifiche",
                 "NOTIFY_ALL_TITLE": "Ricevi tutte le notifiche per questo progetto",
@@ -1129,7 +1129,7 @@
             "LAST_SPRINT_NAME": "l'ultimo sprint è <strong> {{lastSprint}} ;-) </strong>"
         },
         "CREATE_EDIT": {
-            "TASK_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this task",
+            "TASK_PLACEHOLDER_DESCRIPTION": "Inserisci un testo descrittivo che aiuti gli altri nel comprendere questo Compito",
             "ISSUE_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this issue",
             "US_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this user story",
             "NEW_TASK": "Nuovo compito",
@@ -1239,7 +1239,7 @@
         "LINK_TASKBOARD": "Pannello dei compiti",
         "TITLE_LINK_TASKBOARD": "Vai al pannello dei compiti",
         "TOTAL_POINTS": "totale punti",
-        "ADD": "+ Add a new user story",
+        "ADD": "+ Aggiungi una nuova storia utente",
         "ADD_BULK": "Add some new user stories in bulk",
         "PROMOTED_FROM_ISSUE": "This user story has been promoted from issue:",
         "PROMOTED_FROM_TASK": "This user story has been promoted from task:",
@@ -1397,7 +1397,7 @@
         }
     },
     "ERROR": {
-        "TEXT1": "Something happened and the Taiga has captured the error to be able to work on it.",
+        "TEXT1": "E' successo qualcosa, ma la Taiga ci sta lavorando sodo!",
         "NOT_FOUND": "Non trovato",
         "NOT_FOUND_TEXT": "Errore 404. La pagina che stai cercando non esiste più. Forse puoi tornare alla home e vedere se è possibile trovare quello che stai cercando.",
         "PERMISSION_DENIED": "Permesso negato",
@@ -1438,12 +1438,12 @@
             "MOVE_TO_OPEN_SPRINT": "Vai allo sprint aperto",
             "NO_OPEN_SPRINTS": "Non ci sono altri sprint aperti. Per favore, creane uno prima.",
             "SELECT_DESTINATION_PLACEHOLDER": "Seleziona destinazione",
-            "UNFINISHED_USER_STORIES_COUNT": "{total, plural, =1{<strong>#</strong> unfinished user story} other{<strong>#</strong> unfinished user stories}}",
-            "UNFINISHED_STORYLESS_TASKS_COUNT": "{total, plural, =1{<strong>#</strong> unfinished storyless task} other{<strong>#</strong> unfinished storyless tasks}}",
-            "UNFINISHED_ISSUES_COUNT": "{total, plural, =1{<strong>#</strong> unfinished issue} other{<strong>#</strong> unfinished issue}}",
+            "UNFINISHED_USER_STORIES_COUNT": "{total, plural, =1{<strong>#</strong> storia utente incompleta} other{<strong>#</strong> storie utente incomplete}}",
+            "UNFINISHED_STORYLESS_TASKS_COUNT": "{total, plural, =1{<strong>#</strong> compito senza storia incompleto} other{<strong>#</strong> compiti senza storia incompleti}}",
+            "UNFINISHED_ISSUES_COUNT": "{total, plural, =1{<strong>#</strong> problema incompleto} other{<strong>#</strong> problema incompleti}}",
             "WARNING_ISSUES_NOT_MOVED_TITLE": "Hai appena spostato tutte le storie e i compiti degli utenti e lo sprint verrà chiuso",
             "WARNING_ISSUES_NOT_MOVED": "I problemi rimarranno nello sprint e non verranno rimossi",
-            "WARNING_SPRINT_STILL_OPEN_TITLE": "{total, plural, =1{You just moved # item!} other{You just moved # items!}}",
+            "WARNING_SPRINT_STILL_OPEN_TITLE": "{total, plural, =1{Hai spostato # elemento!} other{Hai spostato # elementi!}}",
             "WARNING_SPRINT_STILL_OPEN": "Lo sprint {{sprintName}} <strong>rimarrà aperto</strong> finchè contiene elementi non conclusi."
         }
     },
@@ -1821,7 +1821,7 @@
         "PAGE_TITLE": "Scopri i progetti - Taiga",
         "PAGE_DESCRIPTION": "Elenco ricercabile dei progetti pubblici in Taiga. Esplora i backlog, i problemi e i team. Scopri i progetti più apprezzati o più attivi. Filtra per Kanban o Scrum.",
         "DISCOVER_TITLE": "Scopri progetti",
-        "DISCOVER_SUBTITLE": "{projects, plural, =1{One public project to discover} other{# public projects to discover}}",
+        "DISCOVER_SUBTITLE": "{projects, plural, =1{Un progetto pubblico da scoprire} other{# progetti pubblici da scoprire}}",
         "MOST_ACTIVE": "Più attivi",
         "MOST_ACTIVE_EMPTY": "Non ci sono ancora progetti ATTIVI",
         "MOST_LIKED": "Preferiti",
