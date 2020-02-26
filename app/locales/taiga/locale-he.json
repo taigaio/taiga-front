@@ -196,11 +196,11 @@
             "UNWATCH": "הפסק לעקוב",
             "WATCHERS": "עוקבים",
             "BUTTON_TITLE": "עקוב/בטל מעקב אחר פריט זה",
-            "COUNTER_TITLE": "{total, plural, one{עוקב אחד} other{# עוקבים}}"
+            "COUNTER_TITLE": "{total, plural, =1{one watcher} other{# watchers}}"
         },
         "VOTE_BUTTON": {
             "BUTTON_TITLE": "הצבע בעד/נגד פריט זה",
-            "COUNTER_TITLE": "{total, plural, one{one vote} other{# votes}}"
+            "COUNTER_TITLE": "{total, plural, =1{one vote} other{# votes}}"
         },
         "PROMOTE_TO_US": "Promote to user story",
         "PROMOTED_ISSUES": "This issue has been promoted to",
@@ -868,9 +868,9 @@
         "HELP": "Reorder your projects to set at the top the most used ones.<br/> The top 10 projects will appear in the top navigation bar project list",
         "PRIVATE": "פרוייקט פרטי",
         "LOOKING_FOR_PEOPLE": "לפרוייקט זה דרושים אנשים",
-        "FANS_COUNTER_TITLE": "{total, plural, one{מעריץ אחד} other{# מעריצים}}",
-        "WATCHERS_COUNTER_TITLE": "{total, plural, one{עוקב אחד} other{# עוקבים}}",
-        "MEMBERS_COUNTER_TITLE": "{total, plural, one{חבר אחד} other{# חברים}}",
+        "FANS_COUNTER_TITLE": "{total, plural, =1{one fan} other{# fans}}",
+        "WATCHERS_COUNTER_TITLE": "{total, plural, =1{one watcher} other{# watchers}}",
+        "MEMBERS_COUNTER_TITLE": "{total, plural, =1{one member} other{# members}}",
         "BLOCKED_PROJECT": {
             "BLOCKED": "פרוייקט חסום",
             "THIS_PROJECT_IS_BLOCKED": "פרוייקט זה חסום באופן זמני",
@@ -914,13 +914,13 @@
             "LIKED": "אהבו",
             "UNLIKE": "לא 'אהבתי'",
             "BUTTON_TITLE": "'אהבתי' או אל ת'אהבתי' פרוייקט זה",
-            "COUNTER_TITLE": "{total, plural, one{מעריץ אחד} other{# מעריצים}}"
+            "COUNTER_TITLE": "{total, plural, =1{one fan} other{# fans}}"
         },
         "WATCH_BUTTON": {
             "BUTTON_TITLE": "עקוב אחר פרוייקט זה וקבע מדיניות התראות",
             "WATCH": "עקוב",
             "WATCHING": "במעקב",
-            "COUNTER_TITLE": "{total, plural, one{עוקב אחד} other{# עוקבים}}",
+            "COUNTER_TITLE": "{total, plural, =1{one watcher} other{# watchers}}",
             "OPTIONS": {
                 "NOTIFY_ALL": "קבל את כל ההתראות",
                 "NOTIFY_ALL_TITLE": "קבל את כל ההתראות עבור פרוייקט זה",
@@ -1438,12 +1438,12 @@
             "MOVE_TO_OPEN_SPRINT": "הזז לsprint פתוח",
             "NO_OPEN_SPRINTS": "אין sprint פתוח, אנא צור אחד",
             "SELECT_DESTINATION_PLACEHOLDER": "בחר יעד",
-            "UNFINISHED_USER_STORIES_COUNT": "{total, plural, one{<strong>#</strong> סיפור משתמש לא גמור} other{<strong>#</strong> סיפורי משתמש לא גמורים}}",
-            "UNFINISHED_STORYLESS_TASKS_COUNT": "{total, plural, one{<strong>#</strong> משימת חסרת סיפור משתמש לא גמורה} other{<strong>#</strong> משימות חסרות סיפור משתמש לא גמורות}}",
-            "UNFINISHED_ISSUES_COUNT": "{total, plural, one{<strong>#</strong> תקלה לא פתורה} other{<strong>#</strong> תקלות לא פתורות}}",
+            "UNFINISHED_USER_STORIES_COUNT": "{total, plural, =1{<strong>#</strong> unfinished user story} other{<strong>#</strong> unfinished user stories}}",
+            "UNFINISHED_STORYLESS_TASKS_COUNT": "{total, plural, =1{<strong>#</strong> unfinished storyless task} other{<strong>#</strong> unfinished storyless tasks}}",
+            "UNFINISHED_ISSUES_COUNT": "{total, plural, =1{<strong>#</strong> unfinished issue} other{<strong>#</strong> unfinished issue}}",
             "WARNING_ISSUES_NOT_MOVED_TITLE": "העברת את כל הסיפורים של המשתמש והמשימות, ה-Sprint שלך ייסגר",
             "WARNING_ISSUES_NOT_MOVED": "הבעיות יישארו ב-Sprint ולא יוסרו",
-            "WARNING_SPRINT_STILL_OPEN_TITLE": "{total, plural, one{הרגע הזזת # פריט!} other{הרגע הזזת # פריטים!}}",
+            "WARNING_SPRINT_STILL_OPEN_TITLE": "{total, plural, =1{You just moved # item!} other{You just moved # items!}}",
             "WARNING_SPRINT_STILL_OPEN": "אנא שים לב שה-Sprint {{sprintName}} <strong>יישאר פתוח</strong> כל עוד הוא מכיל פריטים לא גמורים"
         }
     },
@@ -1821,7 +1821,7 @@
         "PAGE_TITLE": "גלה פרוייקטים - טאיגה",
         "PAGE_DESCRIPTION": "תיקיה ברת חיפוש של פרוייקטים ציבוריים בטאיגה. נווט עתודות, צירי זמן, תקלות וצוותים. בדוק את הפרוייקטים הכי אהובים והכי פעילים. סנן לפי קאנבאן או סקראם.",
         "DISCOVER_TITLE": "גלה פרוייקטים",
-        "DISCOVER_SUBTITLE": "{projects, plural, one{One public project to discover} other{# public projects to discover}}",
+        "DISCOVER_SUBTITLE": "{projects, plural, =1{One public project to discover} other{# public projects to discover}}",
         "MOST_ACTIVE": "פעיל ביותר",
         "MOST_ACTIVE_EMPTY": "אין פרוייקטים פעילים עדיין",
         "MOST_LIKED": "הכי אהוב",

@@ -196,11 +196,11 @@
             "UNWATCH": "Beigt vērot",
             "WATCHERS": "Vērotāji",
             "BUTTON_TITLE": "Ne/vērot šo elementu",
-            "COUNTER_TITLE": "{total, plural, one{1 vērotājs} other{# vērotāji}}"
+            "COUNTER_TITLE": "{total, plural, =1{one watcher} other{# watchers}}"
         },
         "VOTE_BUTTON": {
             "BUTTON_TITLE": "Balsot par elementu",
-            "COUNTER_TITLE": "{total, plural, one{1 balss} other{# balsis}}"
+            "COUNTER_TITLE": "{total, plural, =1{one vote} other{# votes}}"
         },
         "PROMOTE_TO_US": "Padarīt par Vajadzību",
         "PROMOTED_ISSUES": "Šis izmaiņas pieprasījums tika pārveidots par vajadzību:",
@@ -868,9 +868,9 @@
         "HELP": "Pārkārtojiet savus projektus, lai augšgalā iestatītu visvairāk izmantotos.<br/> 10 iecienītākie projekti parādīsies navigācijas joslas projektu sarakstā",
         "PRIVATE": "Privāts projekts",
         "LOOKING_FOR_PEOPLE": "Šim projektam tiek meklēti cilvēki",
-        "FANS_COUNTER_TITLE": "{total, plural, one{1 fans} other{# fani}}",
-        "WATCHERS_COUNTER_TITLE": "{total, plural, one{1 vērotājs} other{# vērotāji}}",
-        "MEMBERS_COUNTER_TITLE": "{total, plural, one{1 dalībnieks} other{# dalībnieki}}",
+        "FANS_COUNTER_TITLE": "{total, plural, =1{one fan} other{# fans}}",
+        "WATCHERS_COUNTER_TITLE": "{total, plural, =1{one watcher} other{# watchers}}",
+        "MEMBERS_COUNTER_TITLE": "{total, plural, =1{one member} other{# members}}",
         "BLOCKED_PROJECT": {
             "BLOCKED": "Bloķēts projekts",
             "THIS_PROJECT_IS_BLOCKED": "Šis projekts uz laiku bloķēts",
@@ -914,13 +914,13 @@
             "LIKED": "Tīkams",
             "UNLIKE": "Attīkot (patika beigusies)",
             "BUTTON_TITLE": "Tīk vai netīk šis projekts (novērtēt to)",
-            "COUNTER_TITLE": "{total, plural, one{1 fans} other{# fani}}"
+            "COUNTER_TITLE": "{total, plural, =1{one fan} other{# fans}}"
         },
         "WATCH_BUTTON": {
             "BUTTON_TITLE": "Ievērtējiet šo projektu un iestatiet paziņojumu politiku",
             "WATCH": "Vērot",
             "WATCHING": "Vērojat(2)",
-            "COUNTER_TITLE": "{total, plural, one{1 vērotājs} other{# vērotāji}}",
+            "COUNTER_TITLE": "{total, plural, =1{one watcher} other{# watchers}}",
             "OPTIONS": {
                 "NOTIFY_ALL": "Saņemt visus paziņojumus",
                 "NOTIFY_ALL_TITLE": "Saņemt visus šī projekta paziņojumus",
@@ -1438,12 +1438,12 @@
             "MOVE_TO_OPEN_SPRINT": "Pārvietot uz atklātu sprintu",
             "NO_OPEN_SPRINTS": "Te nav citu atklātu sprintu. Lūdzu vispirms kādu izveidojiet.",
             "SELECT_DESTINATION_PLACEHOLDER": "Izvēlaties galamērķi",
-            "UNFINISHED_USER_STORIES_COUNT": "{total, plural, one{<strong>#</strong> nepabeigta/nenoslēgta vajadzība} citas{<strong>#</strong> nepabeigtas vajadzības}}",
-            "UNFINISHED_STORYLESS_TASKS_COUNT": "{total, plural, one{<strong>#</strong> nepabeigts uzdevums bez vajadzības} other{<strong>#</strong> nepabeigti uzdevumi bez vajadzībām}}",
-            "UNFINISHED_ISSUES_COUNT": "{total, plural, one{<strong>#</strong> nepabeigts izmaiņu pieprasījums} other{<strong>#</strong> nepabeigts izmaiņu pieprasījums}}",
+            "UNFINISHED_USER_STORIES_COUNT": "{total, plural, =1{<strong>#</strong> unfinished user story} other{<strong>#</strong> unfinished user stories}}",
+            "UNFINISHED_STORYLESS_TASKS_COUNT": "{total, plural, =1{<strong>#</strong> unfinished storyless task} other{<strong>#</strong> unfinished storyless tasks}}",
+            "UNFINISHED_ISSUES_COUNT": "{total, plural, =1{<strong>#</strong> unfinished issue} other{<strong>#</strong> unfinished issue}}",
             "WARNING_ISSUES_NOT_MOVED_TITLE": "Jūs tikko pārvietojāt visas vajadzības un uzdevumus, un sprints tiks slēgts",
             "WARNING_ISSUES_NOT_MOVED": "Izmaiņu pieprasījumi paliks Sprintā un netiks noņemti",
-            "WARNING_SPRINT_STILL_OPEN_TITLE": "{total, plural, one{Jūs tikko pārvietojāt # objektu!} other{Jūs tikko pārvietojāt # objektus!}}",
+            "WARNING_SPRINT_STILL_OPEN_TITLE": "{total, plural, =1{You just moved # item!} other{You just moved # items!}}",
             "WARNING_SPRINT_STILL_OPEN": "Lūdzu, ņemiet vērā, ka sprints {{sprintName}} <strong>nevar tikt paveikts</strong> kamēr tajā ir nepabeigti elementi."
         }
     },
@@ -1821,7 +1821,7 @@
         "PAGE_TITLE": "Pārlūkot citus Taigas projektus",
         "PAGE_DESCRIPTION": "Meklējams Taigas publisko projektu katalogs. Iepētiet darba klāstu, laika grafikus, izmaiņu pieprasījumus un komandas. Apskatiet visvairāk iepatikušos un aktīvākos projektus. Filtrējiet pēc Kanban vai Skram.",
         "DISCOVER_TITLE": "Pārlūkot projektus",
-        "DISCOVER_SUBTITLE": "{projects, plural, one{1 publisks projekts, ar kuru iepazīties} other{# publiski projekti, ar kuriem iepazīties}}",
+        "DISCOVER_SUBTITLE": "{projects, plural, =1{One public project to discover} other{# public projects to discover}}",
         "MOST_ACTIVE": "Visaktīvākie",
         "MOST_ACTIVE_EMPTY": "AKTĪVU projektu pagaidām nav",
         "MOST_LIKED": "Visvairāk tīkamie (liked)",

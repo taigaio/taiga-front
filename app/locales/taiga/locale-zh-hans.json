@@ -196,11 +196,11 @@
             "UNWATCH": "撤销关注",
             "WATCHERS": "关注者列表",
             "BUTTON_TITLE": "关注/撤销关注该项",
-            "COUNTER_TITLE": "{total, plural, 1{一个关注者} other{# 个关注者}}"
+            "COUNTER_TITLE": "{total, plural, =1{one watcher} other{# watchers}}"
         },
         "VOTE_BUTTON": {
             "BUTTON_TITLE": "赞/踩该项",
-            "COUNTER_TITLE": "{total, plural, 1{1票} other{# 票}}"
+            "COUNTER_TITLE": "{total, plural, =1{one vote} other{# votes}}"
         },
         "PROMOTE_TO_US": "Promote to user story",
         "PROMOTED_ISSUES": "This issue has been promoted to",
@@ -868,9 +868,9 @@
         "HELP": "Reorder your projects to set at the top the most used ones.<br/> The top 10 projects will appear in the top navigation bar project list",
         "PRIVATE": "私有项目",
         "LOOKING_FOR_PEOPLE": "这个项目在寻找队友",
-        "FANS_COUNTER_TITLE": "{total, plural, 1{1 个粉丝} other{# 个粉丝}}",
-        "WATCHERS_COUNTER_TITLE": "{total, plural, 1{1 个关注者} other{# 个关注者}}",
-        "MEMBERS_COUNTER_TITLE": "{total, plural, 1{1 个成员} other{# 个成员}}",
+        "FANS_COUNTER_TITLE": "{total, plural, =1{one fan} other{# fans}}",
+        "WATCHERS_COUNTER_TITLE": "{total, plural, =1{one watcher} other{# watchers}}",
+        "MEMBERS_COUNTER_TITLE": "{total, plural, =1{one member} other{# members}}",
         "BLOCKED_PROJECT": {
             "BLOCKED": "关闭项目",
             "THIS_PROJECT_IS_BLOCKED": "这个项目暂时被关闭了",
@@ -914,13 +914,13 @@
             "LIKED": "已点赞",
             "UNLIKE": "取消点赞",
             "BUTTON_TITLE": "对这个项目点赞或者取消点赞",
-            "COUNTER_TITLE": "{total, plural, 1{1 个粉丝} other{# 个粉丝}}"
+            "COUNTER_TITLE": "{total, plural, =1{one fan} other{# fans}}"
         },
         "WATCH_BUTTON": {
             "BUTTON_TITLE": "关注这个项目并设置通知规则",
             "WATCH": "Watch",
             "WATCHING": "关注中",
-            "COUNTER_TITLE": "{total, plural, 1{一个关注者} other{# 个关注者}}",
+            "COUNTER_TITLE": "{total, plural, =1{one watcher} other{# watchers}}",
             "OPTIONS": {
                 "NOTIFY_ALL": "接收所有通知",
                 "NOTIFY_ALL_TITLE": "接收这个项目的所有通知",
@@ -1438,12 +1438,12 @@
             "MOVE_TO_OPEN_SPRINT": "移到开放的冲刺任务 ",
             "NO_OPEN_SPRINTS": "没有其他开放的冲刺任务。请先创建一个。",
             "SELECT_DESTINATION_PLACEHOLDER": "选择目标",
-            "UNFINISHED_USER_STORIES_COUNT": "{total, plural, 1{<strong>#</strong> 个未完成的用户故事} other{<strong>#</strong> 个未完成的用户故事}}",
-            "UNFINISHED_STORYLESS_TASKS_COUNT": "{total, plural, 1{<strong>#</strong> 个未完成的非用户故事任务} other{<strong>#</strong> 个未完成的非用户故事任务}}",
-            "UNFINISHED_ISSUES_COUNT": "{total, plural, 1{<strong>#</strong> 个未完成的问题} other{<strong>#</strong> 个未完成的问题}}",
+            "UNFINISHED_USER_STORIES_COUNT": "{total, plural, =1{<strong>#</strong> unfinished user story} other{<strong>#</strong> unfinished user stories}}",
+            "UNFINISHED_STORYLESS_TASKS_COUNT": "{total, plural, =1{<strong>#</strong> unfinished storyless task} other{<strong>#</strong> unfinished storyless tasks}}",
+            "UNFINISHED_ISSUES_COUNT": "{total, plural, =1{<strong>#</strong> unfinished issue} other{<strong>#</strong> unfinished issue}}",
             "WARNING_ISSUES_NOT_MOVED_TITLE": "你刚刚移动了所有的用户故事和任务，这个冲刺任务将会被关闭",
             "WARNING_ISSUES_NOT_MOVED": "问题将继续在冲刺任务中，不会被移除",
-            "WARNING_SPRINT_STILL_OPEN_TITLE": "{total, plural, 1{你刚刚移除了 # 个项目！} other{你刚刚移除了 # 个项目！}}",
+            "WARNING_SPRINT_STILL_OPEN_TITLE": "{total, plural, =1{You just moved # item!} other{You just moved # items!}}",
             "WARNING_SPRINT_STILL_OPEN": "请注意冲刺任务 {{sprintName}} 将<strong>保持开放</strong> 只要它包含有未完成的项目。"
         }
     },
@@ -1821,7 +1821,7 @@
         "PAGE_TITLE": "探索更多项目",
         "PAGE_DESCRIPTION": "Taiga中的公共项目的可搜索的目录。探索积压，时间线，问题，以及团队。检索出最喜欢的或者最活跃的项目。通过看板或者敏捷开发进行过滤。",
         "DISCOVER_TITLE": "探索项目",
-        "DISCOVER_SUBTITLE": "{projects, plural, 1{1 个可探索的公开项目} other{# 个可探索的公开项目}}",
+        "DISCOVER_SUBTITLE": "{projects, plural, =1{One public project to discover} other{# public projects to discover}}",
         "MOST_ACTIVE": "最活跃的",
         "MOST_ACTIVE_EMPTY": "还没有活动的项目",
         "MOST_LIKED": "最受欢迎的",

@@ -196,11 +196,11 @@
             "UNWATCH": "Non osservare",
             "WATCHERS": "Osservatori",
             "BUTTON_TITLE": "Osserva/Non osservare questo elemento",
-            "COUNTER_TITLE": "{total, plural, one{un osservatore} other{# osservatori}}"
+            "COUNTER_TITLE": "{total, plural, =1{one watcher} other{# watchers}}"
         },
         "VOTE_BUTTON": {
             "BUTTON_TITLE": "vota positivamente o negativamente questo elemento",
-            "COUNTER_TITLE": "{total, plural, one{un voto} other{# voti}}"
+            "COUNTER_TITLE": "{total, plural, =1{one vote} other{# votes}}"
         },
         "PROMOTE_TO_US": "Promote to user story",
         "PROMOTED_ISSUES": "This issue has been promoted to",
@@ -868,9 +868,9 @@
         "HELP": "Reorder your projects to set at the top the most used ones.<br/> The top 10 projects will appear in the top navigation bar project list",
         "PRIVATE": "Progetto privato",
         "LOOKING_FOR_PEOPLE": "Il progetto cerca persone",
-        "FANS_COUNTER_TITLE": "{total, plural, one{un follower} other{# followers}}",
-        "WATCHERS_COUNTER_TITLE": "{total, plural, one{un osservatore} other{# osservatori}} ",
-        "MEMBERS_COUNTER_TITLE": "{total, plural, one{un membro} other{# membri}}",
+        "FANS_COUNTER_TITLE": "{total, plural, =1{one fan} other{# fans}}",
+        "WATCHERS_COUNTER_TITLE": "{total, plural, =1{one watcher} other{# watchers}}",
+        "MEMBERS_COUNTER_TITLE": "{total, plural, =1{one member} other{# members}}",
         "BLOCKED_PROJECT": {
             "BLOCKED": "Porgetto bloccato",
             "THIS_PROJECT_IS_BLOCKED": "Questo progetto è temporaneamente bloccato",
@@ -914,13 +914,13 @@
             "LIKED": "Piaciuto",
             "UNLIKE": "Non mi piace",
             "BUTTON_TITLE": "Vota a favore o a sfavore di questo progetto",
-            "COUNTER_TITLE": "{total, plural, one{un follower} other{# followers}}"
+            "COUNTER_TITLE": "{total, plural, =1{one fan} other{# fans}}"
         },
         "WATCH_BUTTON": {
             "BUTTON_TITLE": "Osserva questo progetto ed imposta la politica di notifica",
             "WATCH": "Osserva",
             "WATCHING": "In osservazione",
-            "COUNTER_TITLE": "{total, plural, one{un osservatore} other{# osservatori}} ",
+            "COUNTER_TITLE": "{total, plural, =1{one watcher} other{# watchers}}",
             "OPTIONS": {
                 "NOTIFY_ALL": "Ricevi tutte le notifiche",
                 "NOTIFY_ALL_TITLE": "Ricevi tutte le notifiche per questo progetto",
@@ -1438,12 +1438,12 @@
             "MOVE_TO_OPEN_SPRINT": "Vai allo sprint aperto",
             "NO_OPEN_SPRINTS": "Non ci sono altri sprint aperti. Per favore, creane uno prima.",
             "SELECT_DESTINATION_PLACEHOLDER": "Seleziona destinazione",
-            "UNFINISHED_USER_STORIES_COUNT": "{total, plural, one{<strong>#</strong> storia utente incompleta} other{<strong>#</strong> storie utente incomplete}}",
-            "UNFINISHED_STORYLESS_TASKS_COUNT": "{total, plural, one{<strong>#</strong> compito senza storia incompleto} other{<strong>#</strong> compiti senza storia incompleti}}",
-            "UNFINISHED_ISSUES_COUNT": "{total, plural, one{<strong>#</strong> problema incompleto} other{<strong>#</strong> problema incompleti}}",
+            "UNFINISHED_USER_STORIES_COUNT": "{total, plural, =1{<strong>#</strong> unfinished user story} other{<strong>#</strong> unfinished user stories}}",
+            "UNFINISHED_STORYLESS_TASKS_COUNT": "{total, plural, =1{<strong>#</strong> unfinished storyless task} other{<strong>#</strong> unfinished storyless tasks}}",
+            "UNFINISHED_ISSUES_COUNT": "{total, plural, =1{<strong>#</strong> unfinished issue} other{<strong>#</strong> unfinished issue}}",
             "WARNING_ISSUES_NOT_MOVED_TITLE": "Hai appena spostato tutte le storie e i compiti degli utenti e lo sprint verrà chiuso",
             "WARNING_ISSUES_NOT_MOVED": "I problemi rimarranno nello sprint e non verranno rimossi",
-            "WARNING_SPRINT_STILL_OPEN_TITLE": "{total, plural, one{Hai spostato # elemento!} other{Hai spostato # elementi!}}",
+            "WARNING_SPRINT_STILL_OPEN_TITLE": "{total, plural, =1{You just moved # item!} other{You just moved # items!}}",
             "WARNING_SPRINT_STILL_OPEN": "Lo sprint {{sprintName}} <strong>rimarrà aperto</strong> finchè contiene elementi non conclusi."
         }
     },
@@ -1821,7 +1821,7 @@
         "PAGE_TITLE": "Scopri i progetti - Taiga",
         "PAGE_DESCRIPTION": "Elenco ricercabile dei progetti pubblici in Taiga. Esplora i backlog, i problemi e i team. Scopri i progetti più apprezzati o più attivi. Filtra per Kanban o Scrum.",
         "DISCOVER_TITLE": "Scopri progetti",
-        "DISCOVER_SUBTITLE": "{projects, plural, one{Un progetto pubblico da scoprire} other{# progetti pubblici da scoprire}}",
+        "DISCOVER_SUBTITLE": "{projects, plural, =1{One public project to discover} other{# public projects to discover}}",
         "MOST_ACTIVE": "Più attivi",
         "MOST_ACTIVE_EMPTY": "Non ci sono ancora progetti ATTIVI",
         "MOST_LIKED": "Preferiti",

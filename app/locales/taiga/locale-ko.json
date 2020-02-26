@@ -196,11 +196,11 @@
             "UNWATCH": "구독 취소",
             "WATCHERS": "구독중인 사람들",
             "BUTTON_TITLE": "구독/구독 취소",
-            "COUNTER_TITLE": "{total, plural, one{one watcher} other{# 명이 구독중}}"
+            "COUNTER_TITLE": "{total, plural, =1{one watcher} other{# watchers}}"
         },
         "VOTE_BUTTON": {
             "BUTTON_TITLE": "이 아이템 공감/비공감",
-            "COUNTER_TITLE": "{total, plural, one{one vote} other{# 명의 찬성}}"
+            "COUNTER_TITLE": "{total, plural, =1{one vote} other{# votes}}"
         },
         "PROMOTE_TO_US": "Promote to user story",
         "PROMOTED_ISSUES": "This issue has been promoted to",
@@ -868,9 +868,9 @@
         "HELP": "Reorder your projects to set at the top the most used ones.<br/> The top 10 projects will appear in the top navigation bar project list",
         "PRIVATE": "비공개 프로젝트",
         "LOOKING_FOR_PEOPLE": "이 프로젝트는 사람을 찾고 있습니다.",
-        "FANS_COUNTER_TITLE": "{total, plural, one{one fan} other{# 명의 좋아요}}",
-        "WATCHERS_COUNTER_TITLE": "{total, plural, one{one watcher} other{# 명이 구독중}}",
-        "MEMBERS_COUNTER_TITLE": "{total, plural, one{one member} other{# 명의 회원}}",
+        "FANS_COUNTER_TITLE": "{total, plural, =1{one fan} other{# fans}}",
+        "WATCHERS_COUNTER_TITLE": "{total, plural, =1{one watcher} other{# watchers}}",
+        "MEMBERS_COUNTER_TITLE": "{total, plural, =1{one member} other{# members}}",
         "BLOCKED_PROJECT": {
             "BLOCKED": "차단된 프로젝트",
             "THIS_PROJECT_IS_BLOCKED": "이 프로젝트는 임시로 차단되었습니다.",
@@ -914,13 +914,13 @@
             "LIKED": "좋아함",
             "UNLIKE": "좋아요 취소",
             "BUTTON_TITLE": "이 프로젝트를 좋아요 또는 좋아요 취소",
-            "COUNTER_TITLE": "{total, plural, one{one fan} other{# 명의 좋아요}}"
+            "COUNTER_TITLE": "{total, plural, =1{one fan} other{# fans}}"
         },
         "WATCH_BUTTON": {
             "BUTTON_TITLE": "이 프로젝트를 구독하고 알림 정책 설정하기",
             "WATCH": "구독",
             "WATCHING": "구독중",
-            "COUNTER_TITLE": "{total, plural, one{one watcher} other{# 명이 구독중}}",
+            "COUNTER_TITLE": "{total, plural, =1{one watcher} other{# watchers}}",
             "OPTIONS": {
                 "NOTIFY_ALL": "모든 공지 받기",
                 "NOTIFY_ALL_TITLE": "이 프로젝트에 대한 모든 공지 받기",
@@ -1438,12 +1438,12 @@
             "MOVE_TO_OPEN_SPRINT": "Move to open sprint",
             "NO_OPEN_SPRINTS": "There are no other open sprints. Please create one first.",
             "SELECT_DESTINATION_PLACEHOLDER": "Select destination",
-            "UNFINISHED_USER_STORIES_COUNT": "{total, plural, one{<strong>#</strong> unfinished user story} other{<strong>#</strong> unfinished user stories}}",
-            "UNFINISHED_STORYLESS_TASKS_COUNT": "{total, plural, one{<strong>#</strong> unfinished storyless task} other{<strong>#</strong> unfinished storyless tasks}}",
-            "UNFINISHED_ISSUES_COUNT": "{total, plural, one{<strong>#</strong> unfinished issue} other{<strong>#</strong> unfinished issue}}",
+            "UNFINISHED_USER_STORIES_COUNT": "{total, plural, =1{<strong>#</strong> unfinished user story} other{<strong>#</strong> unfinished user stories}}",
+            "UNFINISHED_STORYLESS_TASKS_COUNT": "{total, plural, =1{<strong>#</strong> unfinished storyless task} other{<strong>#</strong> unfinished storyless tasks}}",
+            "UNFINISHED_ISSUES_COUNT": "{total, plural, =1{<strong>#</strong> unfinished issue} other{<strong>#</strong> unfinished issue}}",
             "WARNING_ISSUES_NOT_MOVED_TITLE": "You just moved all user stories and taks, and the sprint'll be closed",
             "WARNING_ISSUES_NOT_MOVED": "The issues'll remain in the sprint and don't be removed",
-            "WARNING_SPRINT_STILL_OPEN_TITLE": "{total, plural, one{You just moved # item!} other{You just moved # items!}}",
+            "WARNING_SPRINT_STILL_OPEN_TITLE": "{total, plural, =1{You just moved # item!} other{You just moved # items!}}",
             "WARNING_SPRINT_STILL_OPEN": "Please note that the sprint {{sprintName}} <strong>will remain open</strong> as long as it contains unfinished items."
         }
     },
@@ -1821,7 +1821,7 @@
         "PAGE_TITLE": "프로젝트 찾기 - 타이가",
         "PAGE_DESCRIPTION": "타이가 공공 프로젝트 디렉토리를 검색 할 수 있습니다. 백 로그, 타임 라인, 이슈 및 팀을 탐색하십시오. 가장 인기 있거나 가장 활동적인 프로젝트를 확인하십시오. 칸반 또는 스크럼으로 필터",
         "DISCOVER_TITLE": "프로젝트 찾기",
-        "DISCOVER_SUBTITLE": "{projects, plural, one{One public project to discover} other{# 개의 프로젝트를 발견}}",
+        "DISCOVER_SUBTITLE": "{projects, plural, =1{One public project to discover} other{# public projects to discover}}",
         "MOST_ACTIVE": "가장 활동적인",
         "MOST_ACTIVE_EMPTY": "아직 활성화된 프로젝트가 없습니다.",
         "MOST_LIKED": "가장 인기있는",
