@@ -22,7 +22,7 @@
         "TAG_LINE": "你的敏捷、免費、和開放原始碼的專案管理工具",
         "TAG_LINE_2": "愛你的專案",
         "BLOCK": "封鎖",
-        "BLOCK_TITLE": "Block this item for example if it has a dependency that can not be satisfied",
+        "BLOCK_TITLE": "Block this item, for example if it has a dependency that can not be satisfied",
         "BLOCKED": "已封鎖",
         "UNBLOCK": "解除封鎖",
         "UNBLOCK_TITLE": "解除項目封鎖",
@@ -39,10 +39,10 @@
         "NEXT": "下一個",
         "LOGOUT": "登出",
         "EXTERNAL_USER": "外部使用者",
-        "GENERIC_ERROR": "我們的系統指出{{error}}.",
-        "IOCAINE_TEXT": "This member is feeling a bit overwhelmed by this task. Will become immune to the iocaine poison over time with your help. For now, may need a hug.",
-        "CLIENT_REQUIREMENT": "Client requirement is new requirement that was not previously expected and it is required to be part of the project",
-        "TEAM_REQUIREMENT": "Team requirement is a requirement that must exist in the project but should have no cost for the client",
+        "GENERIC_ERROR": "The Taiga says {{error}}.",
+        "IOCAINE_TEXT": "This member is feeling a bit overwhelmed by this task. They will become immune to the iocaine poison over time with your help. For now, they may need a hug.",
+        "CLIENT_REQUIREMENT": "A client requirement is a new requirement that was not previously expected and is required to be part of the project",
+        "TEAM_REQUIREMENT": "A team requirement is a requirement that must exist in the project but should have no cost for the client",
         "OWNER": "專案主持人",
         "CAPSLOCK_WARNING": "請注意，此欄位大小寫有區別，目前輸入法切換至大寫模式",
         "CONFIRM_CLOSE_EDIT_MODE_TITLE": "Are you sure you want to close the edit mode?",
@@ -74,7 +74,7 @@
             "RANGE": "該數值應介於 %s 與 %s之間",
             "MIN_LENGTH": "該數值過簡短，它至少要有 %s個字元",
             "MAX_LENGTH": "該數值過長，它不可多於 %s個字元。",
-            "RANGE_LENGTH": "該數值長度為無效，它應介於 %s 與 %s 字元之間",
+            "RANGE_LENGTH": "This value's length is invalid. It should be between %s and %s characters long.",
             "MIN_CHECK": "你必須至少選擇 %s 選項",
             "MAX_CHECK": "你必須至多選出 %s選項",
             "RANGE_CHECK": "你必須在%s 與 %s 之間作出選擇",
@@ -131,7 +131,7 @@
             "ADD": "新增標籤"
         },
         "DESCRIPTION": {
-            "EMPTY": "留下空白顯得很無趣，寫下點描述吧",
+            "EMPTY": "Empty space is so boring... go on, be descriptive...",
             "NO_DESCRIPTION": "未有任何描述"
         },
         "FIELDS": {
@@ -196,31 +196,31 @@
             "UNWATCH": "不觀注",
             "WATCHERS": "觀注者",
             "BUTTON_TITLE": "Watch/Unwatch this item",
-            "COUNTER_TITLE": "{total, plural, 1{一個觀注者} other{# 觀注者}}"
+            "COUNTER_TITLE": "{total, plural, =1{one watcher} other{# watchers}}"
         },
         "VOTE_BUTTON": {
             "BUTTON_TITLE": "Upvote/Downvote this item",
-            "COUNTER_TITLE": "{total, plural, 1{one vote} other{# votes}}"
+            "COUNTER_TITLE": "{total, plural, =1{one vote} other{# votes}}"
         },
-        "PROMOTE_TO_US": "提昇到使用者故事",
-        "PROMOTED_ISSUES": "This Issue has been promoted to US:",
-        "PROMOTED_TASKS": "This Task has been promoted to US:",
+        "PROMOTE_TO_US": "Promote to user story",
+        "PROMOTED_ISSUES": "This issue has been promoted to",
+        "PROMOTED_TASKS": "This task has been promoted to",
         "CONFIRM_PROMOTE": {
             "ISSUE": {
-                "TITLE": "Promote this Issue to a new user story",
-                "MESSAGE": "你確定此問題要創建一個新的使用者故事?"
+                "TITLE": "將此問題提到使用者故事",
+                "MESSAGE": "Are you sure you want to create a new user story from this issue?"
             },
             "TASK": {
-                "TITLE": "Promote this Task to a new user story",
-                "MESSAGE": "Are you sure you want to create a new US from this Task?"
+                "TITLE": "Promote this task to a new user story",
+                "MESSAGE": "Are you sure you want to create a new user story from this task?"
             }
         },
         "CUSTOM_ATTRIBUTES": {
             "CUSTOM_FIELDS": "客製化欄位",
-            "SAVE": "儲存客製化欄位",
-            "EDIT": "編輯客製化欄位",
+            "SAVE": "Save custom field",
+            "EDIT": "Edit custom field",
             "DELETE": "刪除客製屬性",
-            "CONFIRM_DELETE": "記住在此客制欄位裏的數值資料都將遭刪除\n你確定要繼續嗎?"
+            "CONFIRM_DELETE": "Remember that all values in this custom field will be deleted.\n Are you sure you want to continue?"
         },
         "FILTERS": {
             "INPUT_PLACEHOLDER": "主旨或參考",
@@ -330,8 +330,8 @@
         "ALT_LOGIN": "Or login with"
     },
     "LOGIN_FORM": {
-        "ERROR_AUTH_INCORRECT": "按我們的箹統記錄，你的帳戶名稱/電子郵件或密碼並不正確　",
-        "SUCCESS": "我們系統歡迎你加入Taiga"
+        "ERROR_AUTH_INCORRECT": "According to the Taiga, your username/email or password are incorrect.",
+        "SUCCESS": "Welcome to Taiga."
     },
     "REGISTER": {
         "PAGE_TITLE": "註冊 - Taiga",
@@ -359,7 +359,7 @@
         "LINK_CANCEL": "不，請帶我回去，我記起來了",
         "SUCCESS_TITLE": "Check your inbox!",
         "SUCCESS_TEXT": "已將重設密碼的郵件寄送至您的電子信箱",
-        "ERROR": "按我們的記錄，你尚未註冊"
+        "ERROR": "According to the Taiga, you are not registered yet."
     },
     "CHANGE_PASSWORD": {
         "PAGE_TITLE": "變更密碼 - Taiga",
@@ -370,7 +370,7 @@
         "PLACEHOLDER_NEW_PASSWORD": "輸入新密碼",
         "FIELD_RETYPE_PASSWORD": "重新輸入新密碼",
         "PLACEHOLDER_RETYPE_PASSWORD": "重新輸入新密碼",
-        "ERROR_PASSWORD_MATCH": "密碼不符"
+        "ERROR_PASSWORD_MATCH": "The passwords don't match"
     },
     "CHANGE_PASSWORD_RECOVERY_FORM": {
         "TITLE": "創建新Taiga通過",
@@ -378,23 +378,23 @@
         "PLACEHOLDER_NEW_PASSWORD": "新密碼 ",
         "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "重新輸入新密碼",
         "ACTION_RESET_PASSWORD": "重設密碼 ",
-        "ERROR": "Our Oompa Loompas can't find your request to recover your password. Try to ask for it again.",
-        "SUCCESS": "系統已儲存你的新密碼<br />試試 <strong>用它登入</strong> "
+        "ERROR": "The Taiga can't find your request to recover your password. Try to ask for it again.",
+        "SUCCESS": "The Taiga saved your new password.<br /> Try to <strong>sign in</strong> with it."
     },
     "INVITATION": {
         "PAGE_TITLE": "接受邀請- Taiga",
         "PAGE_DESCRIPTION": "接受邀請加入Taiga上的專案，它是一個給新創團隊與敏捷開發者設計師使用的專案管理平台。Taiga是一個簡易輕鬆美觀的工具，讓工作變成樂趣。"
     },
     "INVITATION_LOGIN_FORM": {
-        "NOT_FOUND": "我們找不到你的邀請碼",
+        "NOT_FOUND": "The Taiga can't find your invitation.",
         "SUCCESS": "你成功地加入此專案，歡迎來到 {{project_name}}"
     },
     "HOME": {
         "PAGE_TITLE": "首頁 - Taiga",
         "PAGE_DESCRIPTION": "Taiga 首頁，你的主要專案以及任命，觀看使用者故事，任務與問題。",
         "EMPTY_WORKING_ON": "<strong>It feels empty, doesn't it?</strong> Start working with Taiga and you'll see here the stories, tasks and issues you are working on.",
-        "EMPTY_WATCHING": "<strong>Follow</strong> User Stories, Tasks, Issues in your projects and be notified about its changes :)",
-        "EMPTY_PROJECT_LIST": "你尚無任何專案",
+        "EMPTY_WATCHING": "<strong>Follow</strong> user stories, tasks, issues in your projects and be notified about their changes :)",
+        "EMPTY_PROJECT_LIST": "You don't have any project yet",
         "WORKING_ON_SECTION": "進行中",
         "WATCHING_SECTION": "觀看中",
         "DASHBOARD": "專案控制台",
@@ -465,7 +465,7 @@
         "TITLE_LIGHTBOX_DELETE_ATTACHMENT": "刪除附件....",
         "MSG_LIGHTBOX_DELETE_ATTACHMENT": "附件 '{{fileName}}'",
         "ERROR_DELETE_ATTACHMENT": "無法刪除: {{errorMessage}}",
-        "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) 超過系統容量上限, 請重傳小一點的檔案 ({{maxFileSize}})"
+        "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) is too heavy for the Taiga, try it with a file smaller than ({{maxFileSize}})"
     },
     "PAGINATION": {
         "PREVIOUS": "Prev",
@@ -501,8 +501,8 @@
             "LOADING_MESSAGE": "請勿關閉本頁",
             "ASYNC_MESSAGE": "準備好後，我們會送給 你一封電子郵件",
             "SYNC_MESSAGE": "如果未能自動下載，<a href='{{url}}' download title='Download the dump file'>請點選此處　</a>.　",
-            "ERROR": "我們的系統無法製作你的滙出資料，請再試一次　",
-            "ERROR_BUSY": "抱歉系統繁忙中，請稍後再試試　"
+            "ERROR": "The Taiga has some problems generating your dump. Please try it again.",
+            "ERROR_BUSY": "Sorry, the Taiga is experiencing heavy load right now. Please try again in a few minutes."
         },
         "MODULES": {
             "TITLE": "模組",
@@ -519,7 +519,7 @@
             "ISSUES": "問題 ",
             "ISSUES_DESCRIPTION": "追踪系統錯誤問題強化你的專案，不要錯過任何事　",
             "WIKI": "維基",
-            "WIKI_DESCRIPTION": "新增,修正或是刪除與他人合作的內容。這裏正是專案文件記錄區",
+            "WIKI_DESCRIPTION": "Add, modify, or delete content in collaboration with others. This is the right place for your project's documentation.",
             "MEETUP": "符合",
             "MEETUP_DESCRIPTION": "Choose your videoconference system.",
             "SELECT_VIDEOCONFERENCE": "選擇一個視訊會議系統　",
@@ -611,7 +611,7 @@
         "PROJECT_VALUES_POINTS": {
             "TITLE": "點數",
             "SUBTITLE": "指定你的使用者故事點數可能預估為",
-            "US_TITLE": "使用者故事點數",
+            "US_TITLE": "User story points",
             "ACTION_ADD": "增加點數"
         },
         "PROJECT_VALUES_PRIORITIES": {
@@ -653,7 +653,7 @@
         },
         "PROJECT_DUE_DATE_STATUS": {
             "TITLE": "Due Dates",
-            "SUBTITLE": "Specify the due dates your user stories, tasks and issues will go through if selected",
+            "SUBTITLE": "Specify the due dates status your user stories, tasks and issues will go through if selected",
             "US_TITLE": "User Story Due Date status",
             "ACTION_ADD_STATUS": "增加新狀態",
             "TASK_TITLE": "Task Due Date status",
@@ -680,7 +680,7 @@
         "THIRD_PARTIES": {
             "SECRET_KEY": "Secret key",
             "PAYLOAD_URL": "有效載荷網址",
-            "VALID_IPS": "有效來源IP(請用逗點分開)"
+            "VALID_IPS": "Valid source IPs (separated by ,)"
         },
         "BITBUCKET": {
             "SECTION_NAME": "Bitbucket",
@@ -728,14 +728,14 @@
         "CUSTOM_ATTRIBUTES": {
             "PAGE_TITLE": "{{sectionName}} - 個人化屬性 - {{projectName}}",
             "ADD": "加入客製化欄位",
-            "EDIT": "編輯客製化欄位",
-            "DELETE": "刪除客製欄位",
-            "SAVE_TITLE": "儲存客製化欄位",
+            "EDIT": "Edit custom field",
+            "DELETE": "Delete custom field",
+            "SAVE_TITLE": "Save custom field",
             "CANCEL_TITLE": "取消創建",
             "SET_FIELD_NAME": "設定你的客制欄位名稱　",
             "SET_FIELD_DESCRIPTION": "設定你客製化欄位的文字描述",
             "FIELD_TYPE_DEFAULT": "-- 選擇其一 --",
-            "ACTION_UPDATE": "更新客製化欄位",
+            "ACTION_UPDATE": "Update custom field",
             "ACTION_CANCEL_EDITION": "取消編輯　"
         },
         "MEMBERSHIP": {
@@ -784,7 +784,7 @@
             "INTEGRATIONS": "整合"
         },
         "SUBMENU_PROJECT_VALUES": {
-            "STATUS": "狀態",
+            "STATUS": "Statuses",
             "POINTS": "點數",
             "PRIORITIES": "優先性",
             "SEVERITIES": "急迫性",
@@ -865,12 +865,12 @@
     },
     "PROJECT": {
         "PAGE_TITLE": "{{projectName}}",
-        "HELP": "記錄你的專案在上方常用欄位<br/> 前十個專案將會顯示在上方導覽處。",
+        "HELP": "Reorder your projects to set at the top the most used ones.<br/> The top 10 projects will appear in the top navigation bar project list",
         "PRIVATE": "不公開專案",
         "LOOKING_FOR_PEOPLE": "這個專案正在徵人",
-        "FANS_COUNTER_TITLE": "{total, plural, 1{一個粉絲} other{# 粉絲}}",
-        "WATCHERS_COUNTER_TITLE": "{total, plural, 1{一個觀注者} other{# 觀注者}}",
-        "MEMBERS_COUNTER_TITLE": "{total, plural, 1{one member} other{# members}}",
+        "FANS_COUNTER_TITLE": "{total, plural, =1{one fan} other{# fans}}",
+        "WATCHERS_COUNTER_TITLE": "{total, plural, =1{one watcher} other{# watchers}}",
+        "MEMBERS_COUNTER_TITLE": "{total, plural, =1{one member} other{# members}}",
         "BLOCKED_PROJECT": {
             "BLOCKED": "Blocked project",
             "THIS_PROJECT_IS_BLOCKED": "This project is temporarily blocked",
@@ -914,13 +914,13 @@
             "LIKED": "喜歡",
             "UNLIKE": "不喜歡",
             "BUTTON_TITLE": "是否喜歡該專案",
-            "COUNTER_TITLE": "{total, plural, 1{一個粉絲} other{# 粉絲}}"
+            "COUNTER_TITLE": "{total, plural, =1{one fan} other{# fans}}"
         },
         "WATCH_BUTTON": {
             "BUTTON_TITLE": "觀注本專案並設置通知選項",
             "WATCH": "觀注",
             "WATCHING": "觀看中",
-            "COUNTER_TITLE": "{total, plural, 1{一個觀注者} other{# 觀注者}}",
+            "COUNTER_TITLE": "{total, plural, =1{one watcher} other{# watchers}}",
             "OPTIONS": {
                 "NOTIFY_ALL": "接收所有通知",
                 "NOTIFY_ALL_TITLE": "接到該專案的所有通知",
@@ -969,27 +969,27 @@
         "IMPORT": {
             "TITLE": "Import Project",
             "DESCRIPTION": "Import your project from multiple platforms into Taiga",
-            "ASYNC_IN_PROGRESS_TITLE": "我們的工程師對你的專案很重要哦",
+            "ASYNC_IN_PROGRESS_TITLE": "The Taiga is importing your project",
             "ASYNC_IN_PROGRESS_MESSAGE": "這個過程要花上一點時間<br/> 當弄好時我們會發給你一封郵件",
             "UPLOAD_IN_PROGRESS_MESSAGE": "已上傳 {{totalSize}}中的{{uploadedSize}} ",
-            "ERROR": "系統在滙進你倒入的資料時遇上一些問題，請再試一次",
-            "ERROR_TOO_MANY_REQUEST": "抱歉系統繁忙中，請稍後再試試　",
-            "ERROR_MESSAGE": "我們的系統無法滙入你的資料",
-            "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) 超過系統容量上限, 請重傳小一點的檔案 ({{maxFileSize}})",
+            "ERROR": "The Taiga has some problems importing your dump data. Please try again.",
+            "ERROR_TOO_MANY_REQUEST": "Sorry, the Taiga is experiencing heavy load right now. Please try again in a few minutes.",
+            "ERROR_MESSAGE": "The Taiga has some problems importing your dump data: {{error_message}}",
+            "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) is too heavy for the Taiga, try it with a file smaller than ({{maxFileSize}})",
             "SYNC_SUCCESS": "你的專案已成功滙入",
             "IMPORT": "Import",
             "WHO_IS": "Their tasks will be assigned to ...",
             "WRITE_EMAIL": "Or if you want, write the email that this user uses in Taiga",
             "SEARCH_CONTACT": "Or if you want, search in your contacts",
             "WRITE_EMAIL_LABEL": "Write the email that this user uses in Taiga",
-            "ACCEEDE": "Acceede",
+            "ACCEEDE": "Accede",
             "PROJECT_MEMBERS": "Project Members",
-            "PROCESS_DESCRIPTION": "Tell us who from Taiga you want to assign the tasks of {{platform}}",
+            "PROCESS_DESCRIPTION": "Tell us to whom from Taiga you want to assign the tasks of {{platform}}",
             "MATCH": "Is <strong>{{user_external}}</strong> the same person as <strong>{{user_internal}}</strong>?",
             "CHOOSE": "Select user",
             "LINKS": "Links with {{platform}}",
             "LINKS_DESCRIPTION": "Do you want to keep the link of each item with the original {{platform}} card?",
-            "WARNING_MAIL_USER": "Note that if the user does not have a Taiga account we will not be able to assign the tasks to him.",
+            "WARNING_MAIL_USER": "Note that if the user does not have a Taiga account we will not be able to assign the tasks to them.",
             "ASSIGN": "指派",
             "PROJECT_SELECTOR": {
                 "NO_RESULTS": "It looks like nothing was found with your search criteria",
@@ -997,8 +997,8 @@
                 "ACTION_BACK": "後台"
             },
             "PROJECT_RESTRICTIONS": {
-                "PROJECT_MEMBERS_DESC_PRIVATE": "The project you are trying to import has {{members}} members including you, unfortunately, your current plan allows for a maximum of {{max_memberships}} members per private project. If you would like to increase that limit please contact the administrator.",
-                "PROJECT_MEMBERS_DESC_PUBLIC": "The project you are trying to import has {{members}} members including you, unfortunately, your current plan allows for a maximum of {{max_memberships}} members per public project. If you would like to increase that limit please contact the administrator.",
+                "PROJECT_MEMBERS_DESC_PRIVATE": "The project you are trying to import has {{members}} members including you. Unfortunately, your current plan allows for a maximum of {{max_memberships}} members per private project. If you would like to increase that limit please contact the administrator.",
+                "PROJECT_MEMBERS_DESC_PUBLIC": "The project you are trying to import has {{members}} members including you. Unfortunately, your current plan allows for a maximum of {{max_memberships}} members per public project. If you would like to increase that limit please contact the administrator.",
                 "ACCOUNT_ALLOW_MEMBERS": "Your account only allows {{members}} members",
                 "PRIVATE_PROJECTS_SPACE": {
                     "TITLE": "Unfortunately, your current plan does not allow for additional private projects",
@@ -1129,21 +1129,21 @@
             "LAST_SPRINT_NAME": "最後衝刺任務 <strong> {{lastSprint}} ;-) </strong>"
         },
         "CREATE_EDIT": {
-            "TASK_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this Task",
-            "ISSUE_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this Issue",
-            "US_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this User Story",
-            "NEW_TASK": "New Task",
-            "NEW_ISSUE": "New Issue",
-            "NEW_US": "New User Story",
-            "EDIT_TASK": "Edit Task",
-            "EDIT_ISSUE": "Edit Issue",
-            "EDIT_US": "Edit User Story",
-            "ADD_EXISTING_ISSUE": "Add Issue to {{ targetName }}",
+            "TASK_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this task",
+            "ISSUE_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this issue",
+            "US_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this user story",
+            "NEW_TASK": "新任務 ",
+            "NEW_ISSUE": "New issue",
+            "NEW_US": "新使用者故事",
+            "EDIT_TASK": "結束任務 ",
+            "EDIT_ISSUE": "Edit issue",
+            "EDIT_US": "編輯使用者故事",
+            "ADD_EXISTING_ISSUE": "Add issue to {{ targetName }}",
             "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?",
-            "EXISTING_ISSUE": "Existing Issue",
-            "CHOOSE_EXISTING_ISSUE": "Which Issue?",
-            "ADD_ISSUE": "新增問題 ",
-            "FILTER_ISSUES": "Filter Issues"
+            "EXISTING_ISSUE": "Existing issue",
+            "CHOOSE_EXISTING_ISSUE": "Which issue?",
+            "ADD_ISSUE": "新增問題　",
+            "FILTER_ISSUES": "Filter issues"
         },
         "DELETE_DUE_DATE": {
             "TITLE": "Delete due date",
@@ -1153,8 +1153,8 @@
             "TITLE": "刪除衝刺任務"
         },
         "REMOVE_RELATIONSHIP_WITH_EPIC": {
-            "TITLE": "Remove relationship with Epic",
-            "MESSAGE": "Are you sure you want to remove the relationship of this User Story with the Epic <strong>{{epicSubject}}</strong>?"
+            "TITLE": "Remove relationship with epic",
+            "MESSAGE": "Are you sure you want to remove the relationship of this user story with its epic <strong>{{epicSubject}}</strong>?"
         },
         "CREATE_MEMBER": {
             "PLACEHOLDER_INVITATION_TEXT": "(非必要) 加上一段私人文字在邀請信，告訴你的新成員一些好事  ;-)",
@@ -1188,7 +1188,7 @@
             "TITLE": "Set due date",
             "PLACEHOLDER_DUE_DATE": "Select date",
             "REASON_FOR_DUE_DATE": "Reason for the due date",
-            "PLACEHOLDER_REASON_FOR_DUE_DATE": "Why does this US need a due date?",
+            "PLACEHOLDER_REASON_FOR_DUE_DATE": "Why does this user story need a due date?",
             "SUGGESTIONS": {
                 "IN_ONE_WEEK": "In one week",
                 "IN_TWO_WEEKS": "In two weeks",
@@ -1202,7 +1202,7 @@
             "SUBTITLE_ACTION_DELETE_DUE_DATE": "Are you sure you want to delete the due date status {{due_date_status_name}}?"
         },
         "RELATE_TO_EPIC": {
-            "TITLE": "Link to Epic",
+            "TITLE": "Link to epic",
             "EXISTING_EPIC": "Existing epic",
             "NEW_EPIC": "New epic",
             "CHOOSE_PROJECT_FOR_CREATION": "What's the project?",
@@ -1226,7 +1226,7 @@
         "SUBJECT_BULK_MODE": "Subject (bulk insert)",
         "CHOOSE_PROJECT_FROM": "Which project?",
         "CHOOSE_USERSTORY": "Which user story?",
-        "NO_USERSTORIES": "This project has no User Stories yet. Please select another project.",
+        "NO_USERSTORIES": "This project has no user stories yet. Please select another project.",
         "NO_USERSTORIES_FOUND": "It looks like nothing was found with your search criteria",
         "FILTER_USERSTORIES": "Filter user stories",
         "LIGHTBOX_TITLE_BLOKING_EPIC": "Blocking epic",
@@ -1239,18 +1239,18 @@
         "LINK_TASKBOARD": "任務板",
         "TITLE_LINK_TASKBOARD": "到任務板去",
         "TOTAL_POINTS": "所有點數",
-        "ADD": "+新增使用者故事",
-        "ADD_BULK": "批次加入新使用者故事",
-        "PROMOTED_FROM_ISSUE": "此使用者故事已提昇成問題:",
-        "PROMOTED_FROM_TASK": "This US has been promoted from Task:",
+        "ADD": "+ Add a new user story",
+        "ADD_BULK": "Add some new user stories in bulk",
+        "PROMOTED_FROM_ISSUE": "This user story has been promoted from issue:",
+        "PROMOTED_FROM_TASK": "This user story has been promoted from task:",
         "TITLE_LINK_GO_TO_ISSUE": "到問題 ",
         "TITLE_LINK_GO_TO_TASK": "Go to task",
         "TITLE_DELETE_ACTION": "刪除使用者故事",
-        "LIGHTBOX_TITLE_BLOKING_US": "封鎖中的使用者故事",
+        "LIGHTBOX_TITLE_BLOKING_US": "Blocking user story",
         "NOT_ESTIMATED": "無預估",
-        "OWNER_US": "This User Story belongs to",
-        "RELATE_TO_EPIC": "Link to Epic",
-        "REMOVE_RELATIONSHIP_WITH_EPIC": "Remove Epic relationship",
+        "OWNER_US": "This user story belongs to",
+        "RELATE_TO_EPIC": "Link to epic",
+        "REMOVE_RELATIONSHIP_WITH_EPIC": "Remove epic relationship",
         "TRIBE": {
             "PUBLISH": "Publish as Gig in Taiga Tribe",
             "PUBLISH_INFO": "More info",
@@ -1311,7 +1311,8 @@
             "ASSIGNED_USERS": "assigned users",
             "DUE_DATE": "due date",
             "MILESTONE": "衝刺任務",
-            "COLOR": "顏色"
+            "COLOR": "顏色",
+            "PROMOTED_TO": "promoted to"
         }
     },
     "BACKLOG": {
@@ -1325,7 +1326,7 @@
         "MOVE_US_TO_CURRENT_SPRINT": "移到目前的 Sprint",
         "MOVE_US_TO_LATEST_SPRINT": "移到最近的一個衝刺任務 ",
         "EMPTY": "The backlog is empty!",
-        "CREATE_NEW_US": "創建一個新的使用者故事",
+        "CREATE_NEW_US": "Create a new user story",
         "CREATE_NEW_US_EMPTY_HELP": "你可以創建一個新使用者故事",
         "EXCESS_OF_POINTS": "超過的點數",
         "PENDING_POINTS": "待核點數",
@@ -1353,8 +1354,8 @@
         "FORECASTING": {
             "TITLE": "Velocity forecasting",
             "BACKLOG": "Display backlog",
-            "NEW_SPRINT": "Candidate User Stories for your next sprint based on your velocity. Click to create a new sprint.",
-            "CURRENT_SPRINT": "Candidate User Stories for your sprint based on your velocity. Click to add to current sprint."
+            "NEW_SPRINT": "Candidate user stories for your next sprint based on your velocity. Click to create a new sprint.",
+            "CURRENT_SPRINT": "Candidate user stories for your sprint based on your velocity. Click to add to current sprint."
         },
         "TABLE": {
             "COLUMN_US": "使用者故事",
@@ -1387,7 +1388,7 @@
             "LINK_TASKBOARD": "衝刺任務板",
             "TITLE_LINK_TASKBOARD": "到任務板 {{spring.name}}",
             "EMPTY": "尚無衝刺任務",
-            "WARNING_EMPTY_SPRINT_ANONYMOUS": "此衝刺任務無使用者故事",
+            "WARNING_EMPTY_SPRINT_ANONYMOUS": "This sprint has no user stories",
             "WARNING_EMPTY_SPRINT": "Drop here Stories from your backlog to start a new sprint",
             "TITLE_ACTION_NEW_SPRINT": "增加衝刺任務",
             "TEXT_ACTION_NEW_SPRINT": "你可以在你的專案下創建一個新衝刺任務",
@@ -1396,21 +1397,21 @@
         }
     },
     "ERROR": {
-        "TEXT1": "系統出了一點問題，工程師正在搶修中",
+        "TEXT1": "Something happened and the Taiga has captured the error to be able to work on it.",
         "NOT_FOUND": "找不到",
         "NOT_FOUND_TEXT": "Error 404，你要找的網頁不存在，你可以稍後再回來TAIGA首頁，看看是否能再次找到要找的東西。",
         "PERMISSION_DENIED": "無此權限",
         "PERMISSION_DENIED_TEXT": "您無權限設進入此頁面",
-        "VERSION_ERROR": "Taiga某人之前更改了這個，而我們的工程師無法再做改變。請重新載入頁面來使用你的更新（之前設定將消失）"
+        "VERSION_ERROR": "Some other user inside Taiga has changed this before and your changes can't be applied. Save them elsewhere, reload the page and re-apply your changes again or they will be lost."
     },
     "TASKBOARD": {
         "PAGE_TITLE": "{{sprintName}} - 衝刺任務看板 - {{projectName}}",
         "PAGE_DESCRIPTION": "衝刺任務 {{sprintName}} (from {{startDate}} to {{endDate}}) of {{projectName}}. 完成{{completedPercentage}}% ({{completedPoints}} of {{totalPoints}} points). {{openTasks}} 開啟任務 {{totalTasks}}.",
         "SECTION_NAME": "任務板",
-        "TITLE_ACTION_ADD": "增加新任務 ",
-        "TITLE_ACTION_ADD_BULK": "批次加入新任務 ",
-        "TITLE_ACTION_ADD_ISSUE": "Add a new Issue",
-        "TITLE_ACTION_ADD_ISSUE_BULK": "Add some new Issues in bulk",
+        "TITLE_ACTION_ADD": "Add a new task",
+        "TITLE_ACTION_ADD_BULK": "Add some new tasks in bulk",
+        "TITLE_ACTION_ADD_ISSUE": "Add a new issue",
+        "TITLE_ACTION_ADD_ISSUE_BULK": "Add some new issues in bulk",
         "TITLE_ACTION_ASSIGN": "指派任務 ",
         "PLACEHOLDER_CARD_TITLE": "這可能是一項任務",
         "PLACEHOLDER_CARD_TEXT": "Split Stories into tasks to track them separately",
@@ -1422,7 +1423,7 @@
             "TITLE_ACTION_UNFOLD_ROW": "未隱藏列數",
             "FIELD_POINTS": "點數",
             "ROW_STORYLESS_TASKS_TITLE": "Storyless tasks",
-            "ROW_ISSUES_TITLE": "Sprint Issues"
+            "ROW_ISSUES_TITLE": "Sprint issues"
         },
         "CHARTS": {
             "XAXIS_LABEL": "天數",
@@ -1437,12 +1438,12 @@
             "MOVE_TO_OPEN_SPRINT": "Move to open sprint",
             "NO_OPEN_SPRINTS": "There are no other open sprints. Please create one first.",
             "SELECT_DESTINATION_PLACEHOLDER": "Select destination",
-            "UNFINISHED_USER_STORIES_COUNT": "{total, plural, 1{<strong>#</strong> unfinished user story} other{<strong>#</strong> unfinished user stories}}",
-            "UNFINISHED_STORYLESS_TASKS_COUNT": "{total, plural, 1{<strong>#</strong> unfinished storyless task} other{<strong>#</strong> unfinished storyless tasks}}",
-            "UNFINISHED_ISSUES_COUNT": "{total, plural, 1{<strong>#</strong> unfinished issue} other{<strong>#</strong> unfinished issue}}",
+            "UNFINISHED_USER_STORIES_COUNT": "{total, plural, =1{<strong>#</strong> unfinished user story} other{<strong>#</strong> unfinished user stories}}",
+            "UNFINISHED_STORYLESS_TASKS_COUNT": "{total, plural, =1{<strong>#</strong> unfinished storyless task} other{<strong>#</strong> unfinished storyless tasks}}",
+            "UNFINISHED_ISSUES_COUNT": "{total, plural, =1{<strong>#</strong> unfinished issue} other{<strong>#</strong> unfinished issue}}",
             "WARNING_ISSUES_NOT_MOVED_TITLE": "You just moved all user stories and taks, and the sprint'll be closed",
             "WARNING_ISSUES_NOT_MOVED": "The issues'll remain in the sprint and don't be removed",
-            "WARNING_SPRINT_STILL_OPEN_TITLE": "{total, plural, 1{You just moved # item!} other{You just moved # items!}}",
+            "WARNING_SPRINT_STILL_OPEN_TITLE": "{total, plural, =1{You just moved # item!} other{You just moved # items!}}",
             "WARNING_SPRINT_STILL_OPEN": "Please note that the sprint {{sprintName}} <strong>will remain open</strong> as long as it contains unfinished items."
         }
     },
@@ -1466,8 +1467,8 @@
     "NOTIFICATION": {
         "OK": "一切還好",
         "WARNING": "哇，有狀況發生",
-        "WARNING_TEXT": "很抱歉你的變動並未成功儲存",
-        "SAVED": "我們系統已儲存你所有變動",
+        "WARNING_TEXT": "Your changes were not saved!",
+        "SAVED": "The Taiga saved all your changes!",
         "CLOSE": "關閉通知",
         "MAIL": "透過郵件通知",
         "DESKTOP": "Desktop notifications using browser alerts",
@@ -1475,17 +1476,17 @@
     },
     "CANCEL_ACCOUNT": {
         "TITLE": "取消您的帳戶",
-        "SUBTITLE": "很遺憾你要離開Taiga，希望你喜歡這段時光:",
+        "SUBTITLE": "We're sorry you are leaving the Taiga, we hope you enjoyed your stay :)",
         "PLACEHOLDER_INPUT_TOKEN": "取消帳戶代碼　",
         "ACTION_LEAVING": "是的，我要走了",
-        "SUCCESS": "我們系統已移附你的帳戶"
+        "SUCCESS": "The Taiga removed your account"
     },
     "CHANGE_EMAIL_FORM": {
         "TITLE": "變更電子郵件",
         "SUBTITLE": "確認你的電子郵件要更新",
         "PLACEHOLDER_INPUT_TOKEN": "變更電郵代碼　",
         "ACTION_CHANGE_EMAIL": "變更電郵地址",
-        "SUCCESS": "我們系統已更新你的電子郵件"
+        "SUCCESS": "The Taiga updated your email"
     },
     "ISSUES": {
         "PAGE_TITLE": "問題 - {{projectName}}",
@@ -1507,13 +1508,13 @@
             "SEVERITY": "急迫性",
             "TYPE": "類型"
         },
-        "FILTER_ISSUES": "Filter Issues",
+        "FILTER_ISSUES": "Filter issues",
         "CONFIRM_DETACH_FROM_SPRINT": {
-            "TITLE": "Detach issue from Sprint",
+            "TITLE": "Detach issue from sprint",
             "MESSAGE": "You are about to detach the issue from the sprint <strong>{{ sprintName }}<strong>"
         },
         "CONFIRM_CHANGE_FROM_SPRINT": {
-            "TITLE": "Attach issue to Sprint",
+            "TITLE": "Attach issue to sprint",
             "MESSAGE": "<strong>This issue is currently attached to sprint {{ oldSprintName }}</strong>. You are about to detach it from that sprint and attach it instead to sprint <strong>{{ newSprintName }}.</strong>"
         },
         "TABLE": {
@@ -1546,12 +1547,12 @@
         "SECTION_NAME": "Kanban(看板)",
         "TITLE_ACTION_FOLD": "隱藏欄位",
         "TITLE_ACTION_UNFOLD": "未隱藏欄位",
-        "TITLE_ACTION_ADD_US": "新增使用者故事",
-        "TITLE_ACTION_ADD_BULK": "增加新批次",
+        "TITLE_ACTION_ADD_US": "Add new user story",
+        "TITLE_ACTION_ADD_BULK": "Add new bulk",
         "ACTION_SHOW_ARCHIVED": "顯示歸檔資料",
         "ACTION_HIDE_ARCHIVED": "隱藏歸檔",
         "HIDDEN_USER_STORIES": "此狀態下的使用者故事預設為隱藏",
-        "PLACEHOLDER_CARD_TITLE": "這裏是你的使用者故事",
+        "PLACEHOLDER_CARD_TITLE": "These are your user stories",
         "PLACEHOLDER_CARD_TEXT": "在此可以找到你想了解的專案"
     },
     "SEARCH": {
@@ -1686,37 +1687,37 @@
     },
     "TIMELINE": {
         "UPLOAD_ATTACHMENT": "{{username}} 上傳新附件檔案 {{obj_name}}",
-        "US_CREATED": "{{username}} 創建新的使用者故事 {{obj_name}} 於 {{project_name}}",
+        "US_CREATED": "{{username}} has created a new user story {{obj_name}} in {{project_name}}",
         "ISSUE_CREATED": "{{username}} 提出了新問題 {{obj_name}} in {{project_name}}",
         "TASK_CREATED": "{{username}} 創建新任務 {{obj_name}} 於 {{project_name}}",
-        "TASK_CREATED_WITH_US": "{{username}} 創建新任務 {{obj_name}} 於 {{project_name}} ，其為{{us_name}}之使用者故事",
+        "TASK_CREATED_WITH_US": "{{username}} has created a new task {{obj_name}} in {{project_name}} which belongs to the user story {{us_name}}",
         "WIKI_CREATED": "{{username}} 創建新維基頁 {{obj_name}} 於 {{project_name}}",
         "MILESTONE_CREATED": "{{username}} 創建新衝刺任務 {{obj_name}} 於 {{project_name}}",
         "EPIC_CREATED": "{{username}} has created a new epic {{obj_name}} in {{project_name}}",
-        "EPIC_RELATED_USERSTORY_CREATED": "{{username}} has related the userstory {{related_us_name}} to the epic {{epic_name}} in {{project_name}}",
+        "EPIC_RELATED_USERSTORY_CREATED": "{{username}} has related the user story {{related_us_name}} to the epic {{epic_name}} in {{project_name}}",
         "NEW_PROJECT": "{{username}} 創建專案 {{project_name}}",
         "MILESTONE_UPDATED": "{{username}}更新衝刺任務 {{obj_name}} ",
-        "US_UPDATED": "{{username}} 已更新 {{obj_name}}使用者故事之 \"{{field_name}}\"屬性。",
-        "US_UPDATED_WITH_NEW_VALUE": "{{username}} 已更新了 {{obj_name}} 使用者故事的\"{{field_name}}\"屬性到{{new_value}}",
-        "US_UPDATED_POINTS": "{{username}} 已更新了 {{obj_name}} 的使用者故事\"{{field_name}}\"點數為{{new_value}}",
+        "US_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the user story {{obj_name}}",
+        "US_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the user story {{obj_name}} to {{new_value}}",
+        "US_UPDATED_POINTS": "{{username}} has updated '{{role_name}}' points of the user story {{obj_name}} to {{new_value}}",
         "ISSUE_UPDATED": "{{username}} 更新了{{obj_name}}問題的 \"{{field_name}}\" 屬性",
         "ISSUE_UPDATED_WITH_NEW_VALUE": "{{username}} 已更新了 {{obj_name}} 問題的\"{{field_name}}\"屬性到{{new_value}}",
         "TASK_UPDATED": "{{username}} 已更新了 {{obj_name}} 使用者故事的\"{{field_name}}\"屬性到{{new_value}}",
         "TASK_UPDATED_WITH_NEW_VALUE": "{{username}} 已更新了 {{obj_name}} 任務\"{{field_name}}\"的屬性到{{new_value}}",
-        "TASK_UPDATED_WITH_US": "{{username}} 更新了 {{obj_name}} 任務之\"{{field_name}}\" 屬性，其為 {{us_name}} 之使用者故事",
-        "TASK_UPDATED_WITH_US_NEW_VALUE": "{{username}} 已更新了 {{obj_name}} 下的 {{us_name}} 使用者故事\"{{field_name}}\"屬性到{{new_value}}",
+        "TASK_UPDATED_WITH_US": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} which belongs to the user story {{us_name}}",
+        "TASK_UPDATED_WITH_US_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} which belongs to the user story {{us_name}} to {{new_value}}",
         "WIKI_UPDATED": "\n{{username}} 更新了維基頁{{obj_name}}",
         "EPIC_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the epic {{obj_name}}",
         "EPIC_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the epic {{obj_name}} to {{new_value}}",
         "EPIC_UPDATED_WITH_NEW_COLOR": "{{username}} has updated the \"{{field_name}}\" of the epic {{obj_name}} to <span class=\"new-color\" style=\"background: {{new_value}}\"></span>",
-        "NEW_COMMENT_US": "{{username}} 評論了 {{obj_name}}使用者故事",
+        "NEW_COMMENT_US": "{{username}} has commented in the user story {{obj_name}}",
         "NEW_COMMENT_ISSUE": "{{username}}評論了此問題 {{obj_name}}",
         "NEW_COMMENT_TASK": "{{username}} 評論了此任務{{obj_name}}",
         "NEW_COMMENT_EPIC": "{{username}} has commented in the epic {{obj_name}}",
         "NEW_MEMBER": "{{project_name}} 有新成員",
-        "US_ADDED_MILESTONE": "{{username}} 增加使用者故事 {{obj_name}} 給 {{sprint_name}}",
-        "US_MOVED": "{{username}} 搬移了使用者故事 {{obj_name}}",
-        "US_REMOVED_FROM_MILESTONE": "{{username}} 新增使用者故事 {{obj_name}} 到待辦工作優先列表",
+        "US_ADDED_MILESTONE": "{{username}} has added the user story {{obj_name}} to {{sprint_name}}",
+        "US_MOVED": "{{username}} has moved the user story {{obj_name}}",
+        "US_REMOVED_FROM_MILESTONE": "{{username}} has added the user story {{obj_name}} to the backlog",
         "BLOCKED": "{{username}} 封鎖了 {{obj_name}}",
         "UNBLOCKED": "{{username}} 解除了封鎖 {{obj_name}}",
         "NEW_USER": "{{username}} 已加入 Taiga",
@@ -1768,7 +1769,7 @@
             },
             "STEP2": {
                 "TITLE": "進行中",
-                "TEXT": "你可以在此找到你正在處理的使用者故事,任務,問題。 "
+                "TEXT": "Here you will find the user stories, tasks and issues in which you are working on."
             },
             "STEP3": {
                 "TITLE": "觀看中",
@@ -1807,11 +1808,11 @@
             },
             "STEP2": {
                 "TITLE": "使用者故事與任務",
-                "TEXT": "User Stories are the requirements at high level. You can drag them to different columns."
+                "TEXT": "User stories are the requirements at high level. You can drag them to different columns."
             },
             "STEP3": {
                 "TITLE": "新增使用者故事",
-                "TEXT1": "You may want to add a single User Story (add US icon) or a group of them (bulk icon)",
+                "TEXT1": "You may want to add a single user story (add user story icon) or a group of them (bulk icon)",
                 "TEXT2": "祝好運!"
             }
         }
@@ -1820,7 +1821,7 @@
         "PAGE_TITLE": "Discover projects - Taiga",
         "PAGE_DESCRIPTION": "Searchable directory of Public Projects in Taiga. Explore backlogs, timelines, issues, and teams. Check out the most liked or most active projects. Filter by Kanban or Scrum.",
         "DISCOVER_TITLE": "發現更多專案",
-        "DISCOVER_SUBTITLE": "{projects, plural, 1{One public project to discover} other{# public projects to discover}}",
+        "DISCOVER_SUBTITLE": "{projects, plural, =1{One public project to discover} other{# public projects to discover}}",
         "MOST_ACTIVE": "最活躍",
         "MOST_ACTIVE_EMPTY": "目前尚無活進行中的專案",
         "MOST_LIKED": "最受喜愛的",

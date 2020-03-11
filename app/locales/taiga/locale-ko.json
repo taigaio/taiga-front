@@ -22,7 +22,7 @@
         "TAG_LINE": "당신의 프로젝트 관리를 위한 민첩하고 무료인 오픈소스 도구",
         "TAG_LINE_2": "프로젝트에 사랑을 담아",
         "BLOCK": "차단",
-        "BLOCK_TITLE": "조건을 만족하지 않는 경우 이 아이템을 차단하세요.",
+        "BLOCK_TITLE": "Block this item, for example if it has a dependency that can not be satisfied",
         "BLOCKED": "차단됨",
         "UNBLOCK": "차단 해제",
         "UNBLOCK_TITLE": "차단 취소",
@@ -34,15 +34,15 @@
         "PLUGINS": "플러그인",
         "ONE_ITEM_LINE": "한 줄마다 하나씩...",
         "NEW_BULK": "여러개 생성하기",
-        "SUBTASKS": "Subtasks",
+        "SUBTASKS": "세부작업",
         "PREVIOUS": "이전",
         "NEXT": "다음",
         "LOGOUT": "로그아웃",
         "EXTERNAL_USER": "외부 사용자",
-        "GENERIC_ERROR": "움파룸파가 {{error}} 라고 합니다.",
-        "IOCAINE_TEXT": "이 회원은 이 일에 조금 압박감을 ​​느낍니다. 당신의 도움이 필요한 시간이 지나면 아이오케인 독에 면역될 것 입니다. 지금 당장 포옹이 필요할 수도 있어요.",
-        "CLIENT_REQUIREMENT": "고객 요구 사항은 이전에 예상하지 않았던 새로운 요구 사항이며 프로젝트의 일부가 되어야만 합니다.",
-        "TEAM_REQUIREMENT": "팀 요구 사항은 프로젝트에 반드시 있어야하지만 클라이언트에게는 비용이 없어야합니다.",
+        "GENERIC_ERROR": "The Taiga says {{error}}.",
+        "IOCAINE_TEXT": "This member is feeling a bit overwhelmed by this task. They will become immune to the iocaine poison over time with your help. For now, they may need a hug.",
+        "CLIENT_REQUIREMENT": "A client requirement is a new requirement that was not previously expected and is required to be part of the project",
+        "TEAM_REQUIREMENT": "A team requirement is a requirement that must exist in the project but should have no cost for the client",
         "OWNER": "프로젝트 소유자",
         "CAPSLOCK_WARNING": "조심하세요! 대/소문자를 구분하는 입력란에 대문자를 사용하고 있습니다.",
         "CONFIRM_CLOSE_EDIT_MODE_TITLE": "정말로 수정 모드를 닫겠습니까?",
@@ -74,7 +74,7 @@
             "RANGE": "이 값은 %와 %s 사이여야 합니다.",
             "MIN_LENGTH": "너무 짧습니다. %s 글자 이상 입력해주세요.",
             "MAX_LENGTH": "너무 깁니다. %s 글자 이하로 입력해주세요.",
-            "RANGE_LENGTH": "글자수가 잘못되었습니다. %s와 %s의 사이 글자수여야 합니다.",
+            "RANGE_LENGTH": "This value's length is invalid. It should be between %s and %s characters long.",
             "MIN_CHECK": "%s 개 이상 선택해주세요.",
             "MAX_CHECK": "%s 개 이하로 선택해주세요.",
             "RANGE_CHECK": "%s 값과 %s 값 중에 선택해주세요.",
@@ -131,7 +131,7 @@
             "ADD": "태그 추가하기"
         },
         "DESCRIPTION": {
-            "EMPTY": "공백으로 남기지 마세요. 재미없어요. 뭐라도 좀 적어보세요...",
+            "EMPTY": "Empty space is so boring... go on, be descriptive...",
             "NO_DESCRIPTION": "아직 설명이 없습니다"
         },
         "FIELDS": {
@@ -196,31 +196,31 @@
             "UNWATCH": "구독 취소",
             "WATCHERS": "구독중인 사람들",
             "BUTTON_TITLE": "구독/구독 취소",
-            "COUNTER_TITLE": "{total, plural, one{one watcher} other{# 명이 구독중}}"
+            "COUNTER_TITLE": "{total, plural, =1{one watcher} other{# watchers}}"
         },
         "VOTE_BUTTON": {
             "BUTTON_TITLE": "이 아이템 공감/비공감",
-            "COUNTER_TITLE": "{total, plural, one{one vote} other{# 명의 찬성}}"
+            "COUNTER_TITLE": "{total, plural, =1{one vote} other{# votes}}"
         },
-        "PROMOTE_TO_US": "유저 스토리에 등록하기",
-        "PROMOTED_ISSUES": "This Issue has been promoted to US:",
-        "PROMOTED_TASKS": "This Task has been promoted to US:",
+        "PROMOTE_TO_US": "Promote to user story",
+        "PROMOTED_ISSUES": "This issue has been promoted to",
+        "PROMOTED_TASKS": "This task has been promoted to",
         "CONFIRM_PROMOTE": {
             "ISSUE": {
-                "TITLE": "Promote this Issue to a new user story",
-                "MESSAGE": "이 이슈에서 새 유저 스토리를 생성하시겠어요?"
+                "TITLE": "이 이슈를 유저 스토리에 등록하기",
+                "MESSAGE": "Are you sure you want to create a new user story from this issue?"
             },
             "TASK": {
-                "TITLE": "Promote this Task to a new user story",
-                "MESSAGE": "Are you sure you want to create a new US from this Task?"
+                "TITLE": "Promote this task to a new user story",
+                "MESSAGE": "Are you sure you want to create a new user story from this task?"
             }
         },
         "CUSTOM_ATTRIBUTES": {
             "CUSTOM_FIELDS": "사용자 정의 필드",
-            "SAVE": "사용자 정의 필드 저장하기",
-            "EDIT": "사용자 정의 필드 수정하기",
+            "SAVE": "Save custom field",
+            "EDIT": "Edit custom field",
             "DELETE": "사용자 정의 속성 삭제하기",
-            "CONFIRM_DELETE": "이 사용자 정의 필드의 모든 값이 삭제된다는 점을 기억하십시오.\n계속 하시겠습니까?"
+            "CONFIRM_DELETE": "Remember that all values in this custom field will be deleted.\n Are you sure you want to continue?"
         },
         "FILTERS": {
             "INPUT_PLACEHOLDER": "제목 또는 참조",
@@ -330,8 +330,8 @@
         "ALT_LOGIN": "또는 다른 방법으로 로그인"
     },
     "LOGIN_FORM": {
-        "ERROR_AUTH_INCORRECT": "움파룸파가 말하길, 아이디나 이메일, 비밀번호 중 하나가 틀렸다고 하네요.",
-        "SUCCESS": "움파룸파가 즐거워 합니다. 타이가에 어서 오세요."
+        "ERROR_AUTH_INCORRECT": "According to the Taiga, your username/email or password are incorrect.",
+        "SUCCESS": "Welcome to Taiga."
     },
     "REGISTER": {
         "PAGE_TITLE": "등록 - 타이가",
@@ -359,7 +359,7 @@
         "LINK_CANCEL": "아니요 되돌아갈래요. 기억이 났어요.",
         "SUCCESS_TITLE": "메일함을 확인해보세요!",
         "SUCCESS_TEXT": "<strong>이메일 보관함을 확인하세요!</strong><br />새 비밀번호를 설정할 수 있는 방법을 이메일로 알려드렸습니다.",
-        "ERROR": "움파룸파가 말하길, 아직 등록되지 않은 사용자라고 하네요."
+        "ERROR": "According to the Taiga, you are not registered yet."
     },
     "CHANGE_PASSWORD": {
         "PAGE_TITLE": "비밀번호 변경하기 - 타이가",
@@ -370,7 +370,7 @@
         "PLACEHOLDER_NEW_PASSWORD": "새 비밀번호를 입력하세요",
         "FIELD_RETYPE_PASSWORD": "새 비밀번호를 한 번 더 입력하세요",
         "PLACEHOLDER_RETYPE_PASSWORD": "새 비밀번호를 한 번 더 입력하세요",
-        "ERROR_PASSWORD_MATCH": "비밀번호가 일치하지 않습니다"
+        "ERROR_PASSWORD_MATCH": "The passwords don't match"
     },
     "CHANGE_PASSWORD_RECOVERY_FORM": {
         "TITLE": "타이가 패쓰 생성하기",
@@ -378,29 +378,29 @@
         "PLACEHOLDER_NEW_PASSWORD": "새 비밀번호",
         "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "새 비밀번호를 한 번 더 입력하세요",
         "ACTION_RESET_PASSWORD": "비밀번호 재설정하기",
-        "ERROR": "움파룸파가 암호를 복구하지 못했습니다. 다시 한 번 시도해 주세요.",
-        "SUCCESS": "움파룸파가 새 비밀번호를 저장했습니다. <br /> <strong>로그인</strong>해보세요."
+        "ERROR": "The Taiga can't find your request to recover your password. Try to ask for it again.",
+        "SUCCESS": "The Taiga saved your new password.<br /> Try to <strong>sign in</strong> with it."
     },
     "INVITATION": {
         "PAGE_TITLE": "초대 수락 - 타이가",
         "PAGE_DESCRIPTION": "타이가에서 온 프로젝트 초대를 수락하세요. 타이가는 스타트업과 애자일 개발자/디자이너들을 위한 간명하고 아름다운 프로젝트 관리 플랫폼입니다. 정말 즐거울 거예요"
     },
     "INVITATION_LOGIN_FORM": {
-        "NOT_FOUND": "움파룸파가,  당신의 초대장을 못 찾았습니다.",
+        "NOT_FOUND": "The Taiga can't find your invitation.",
         "SUCCESS": "{{project_name}} 프로젝트에 오신 것을 환영합니다."
     },
     "HOME": {
         "PAGE_TITLE": "홈페이지 - 타이가",
         "PAGE_DESCRIPTION": "타이가 홈페이지에서는 여러분의 프로젝트 뿐만 아니라 여러분이 관련된 유저 스토리, 태스크, 이슈를 확인할 수 있습니다.",
         "EMPTY_WORKING_ON": "<srtong>비어있는 것 같아요. 아닌가요?</strong> 타이가로 일을 시작하고 당신이 일하게 될 스토리, 태스크, 이슈들을 확인해보세요.",
-        "EMPTY_WATCHING": "프로젝트의 유저 스토리, 태스크 그리고 이슈들을 <strong>팔로우</strong>하여 변경사항이 있을 때마다 알림을 받으세요 :)",
-        "EMPTY_PROJECT_LIST": "아직 프로젝트가 없습니다.",
+        "EMPTY_WATCHING": "<strong>Follow</strong> user stories, tasks, issues in your projects and be notified about their changes :)",
+        "EMPTY_PROJECT_LIST": "You don't have any project yet",
         "WORKING_ON_SECTION": "일 하는 중",
         "WATCHING_SECTION": "구독중",
         "DASHBOARD": "프로젝트 대시보드",
         "SET_HIDDEN": "가리기",
         "SET_VISIBLE": "보이기",
-        "NO_HIDDEN_ITEMS": "You have no hidden items",
+        "NO_HIDDEN_ITEMS": "숨겨진 항목이 있습니다",
         "HIDE_HIDDEN": "Do not show hidden objects",
         "SHOW_HIDDEN": "Show hidden objects"
     },
@@ -465,7 +465,7 @@
         "TITLE_LIGHTBOX_DELETE_ATTACHMENT": "첨부파일 삭제하기",
         "MSG_LIGHTBOX_DELETE_ATTACHMENT": "첨부 파일 '{{fileName}}'",
         "ERROR_DELETE_ATTACHMENT": "삭제할 수 없었습니다: {{errorMessage}}",
-        "ERROR_MAX_SIZE_EXCEEDED": "우리 움파룸파에게 '{{fileName}}' ({{fileSize}}) 는 너무 커요. ({{maxFileSize}}) 보다 작은 크기로 다시 시도해주세요."
+        "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) is too heavy for the Taiga, try it with a file smaller than ({{maxFileSize}})"
     },
     "PAGINATION": {
         "PREVIOUS": "이전",
@@ -487,7 +487,7 @@
             "PAGE_TITLE": "팀원 - {{projectName}}",
             "ADD_BUTTON": "회원 추가하기",
             "ADD_BUTTON_TITLE": "회원 추가하기",
-            "UPGRADE_BUTTON": "Upgrade your plan",
+            "UPGRADE_BUTTON": "플랜 업그레이드",
             "LIMIT_USERS_WARNING_MESSAGE_FOR_ADMIN": "If you would like to <strong>add more members</strong>, please contact the project owner <a href='mailto:{{ owner_email }}' title='{{ owner_email }}'>{{ owner_email }}</a>",
             "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "이 프로젝트는 허용된 최대 회원 수 <strong>({{members}})</strong> 명에 도달하였습니다. 더 많은 최대 회원 수를 할당받고 싶다면 관리자에게 문의하세요."
         },
@@ -501,8 +501,8 @@
             "LOADING_MESSAGE": "이 페이지를 닫지 마세요.",
             "ASYNC_MESSAGE": "작업이 끝나면 이메일로 알려드릴게요.",
             "SYNC_MESSAGE": "자동으로 다운로드가 시작되지 않는다면 <a href='{{url}}' download title='Download the dump file'>여기</a>를 클릭하세요.",
-            "ERROR": "움파룸파가 덤프 파일을 만들 수 없었습니다. 다시 한 번 시도해주세요.",
-            "ERROR_BUSY": "죄송해요. 움파룸파가 지금 좀 바쁘네요. 잠시 후에 다시 해주시겠어요?"
+            "ERROR": "The Taiga has some problems generating your dump. Please try it again.",
+            "ERROR_BUSY": "Sorry, the Taiga is experiencing heavy load right now. Please try again in a few minutes."
         },
         "MODULES": {
             "TITLE": "모듈",
@@ -519,7 +519,7 @@
             "ISSUES": "이슈",
             "ISSUES_DESCRIPTION": "프로젝트와 관련된 버그와 질문 및 개선 사항을 추적하십시오. 그 무엇도 놓치지 마세요!",
             "WIKI": "위키",
-            "WIKI_DESCRIPTION": "다른 사람들과 공동으로 콘텐츠를 추가, 수정 또는 삭제합니다. 프로젝트 문서화에 적합합니다.",
+            "WIKI_DESCRIPTION": "Add, modify, or delete content in collaboration with others. This is the right place for your project's documentation.",
             "MEETUP": "미팅",
             "MEETUP_DESCRIPTION": "당신의 화상회의 시스템을 선택하세요.",
             "SELECT_VIDEOCONFERENCE": "화상 회의 시스템 선택",
@@ -567,7 +567,7 @@
             "HELP": "이걸 스프레드 시트에서 사용하는 방법이 무엇인가요?",
             "REGENERATE_TITLE": "URL 변경하기",
             "REGENERATE_SUBTITLE": "CSV 데이터 접근 URL을 변경하려고 합니다. 이전 URL은 비활성화 될 것입니다. 변경하시겠습니까?",
-            "DELETE_TITLE": "Delete URL",
+            "DELETE_TITLE": "URL 삭제",
             "DELETE_SUBTITLE": "You are going to delete the current CSV data access url. Are you sure?"
         },
         "CSV": {
@@ -611,7 +611,7 @@
         "PROJECT_VALUES_POINTS": {
             "TITLE": "포인트",
             "SUBTITLE": "유저 스토리의 포인트를 추산하세요.",
-            "US_TITLE": "유저 스토리 포인트",
+            "US_TITLE": "User story points",
             "ACTION_ADD": "새 포인트 추가하기"
         },
         "PROJECT_VALUES_PRIORITIES": {
@@ -653,7 +653,7 @@
         },
         "PROJECT_DUE_DATE_STATUS": {
             "TITLE": "Due Dates",
-            "SUBTITLE": "Specify the due dates your user stories, tasks and issues will go through if selected",
+            "SUBTITLE": "Specify the due dates status your user stories, tasks and issues will go through if selected",
             "US_TITLE": "User Story Due Date status",
             "ACTION_ADD_STATUS": "상태 추가하기",
             "TASK_TITLE": "Task Due Date status",
@@ -680,7 +680,7 @@
         "THIRD_PARTIES": {
             "SECRET_KEY": "비밀 키",
             "PAYLOAD_URL": "Payload URL",
-            "VALID_IPS": "유효한 원본 IP (콤마','로 구분)"
+            "VALID_IPS": "Valid source IPs (separated by ,)"
         },
         "BITBUCKET": {
             "SECTION_NAME": "Bitbucket",
@@ -728,14 +728,14 @@
         "CUSTOM_ATTRIBUTES": {
             "PAGE_TITLE": "{{sectionName}} - 사용자 정의 속성 - {{projectName}}",
             "ADD": "사용자 정의 필드 추가하기",
-            "EDIT": "사용자 정의 필드 수정하기",
-            "DELETE": "사용자 정의 필드 삭제하기",
-            "SAVE_TITLE": "사용자 정의 필드 저장하기",
+            "EDIT": "Edit custom field",
+            "DELETE": "Delete custom field",
+            "SAVE_TITLE": "Save custom field",
             "CANCEL_TITLE": "만들기 취소 하기",
             "SET_FIELD_NAME": "사용자 정의 필드의 이름을 설정하세요",
             "SET_FIELD_DESCRIPTION": "사용자 정의 필드에 대한 설명을 넣으세요",
             "FIELD_TYPE_DEFAULT": "-- 하나를 고르세요 --",
-            "ACTION_UPDATE": "사용자 정의 필드 업데이트하기",
+            "ACTION_UPDATE": "Update custom field",
             "ACTION_CANCEL_EDITION": "수정 내역 취소하기"
         },
         "MEMBERSHIP": {
@@ -865,12 +865,12 @@
     },
     "PROJECT": {
         "PAGE_TITLE": "{{projectName}}",
-        "HELP": "자주 사용하는 프로젝트들을 상위로 올려보세요.<br/> 상위 10개 프로젝트는 내비게이션 바의 프로젝트 목록에 나타납니다.",
+        "HELP": "Reorder your projects to set at the top the most used ones.<br/> The top 10 projects will appear in the top navigation bar project list",
         "PRIVATE": "비공개 프로젝트",
         "LOOKING_FOR_PEOPLE": "이 프로젝트는 사람을 찾고 있습니다.",
-        "FANS_COUNTER_TITLE": "{total, plural, one{one fan} other{# 명의 좋아요}}",
-        "WATCHERS_COUNTER_TITLE": "{total, plural, one{one watcher} other{# 명이 구독중}}",
-        "MEMBERS_COUNTER_TITLE": "{total, plural, one{one member} other{# 명의 회원}}",
+        "FANS_COUNTER_TITLE": "{total, plural, =1{one fan} other{# fans}}",
+        "WATCHERS_COUNTER_TITLE": "{total, plural, =1{one watcher} other{# watchers}}",
+        "MEMBERS_COUNTER_TITLE": "{total, plural, =1{one member} other{# members}}",
         "BLOCKED_PROJECT": {
             "BLOCKED": "차단된 프로젝트",
             "THIS_PROJECT_IS_BLOCKED": "이 프로젝트는 임시로 차단되었습니다.",
@@ -914,13 +914,13 @@
             "LIKED": "좋아함",
             "UNLIKE": "좋아요 취소",
             "BUTTON_TITLE": "이 프로젝트를 좋아요 또는 좋아요 취소",
-            "COUNTER_TITLE": "{total, plural, one{one fan} other{# 명의 좋아요}}"
+            "COUNTER_TITLE": "{total, plural, =1{one fan} other{# fans}}"
         },
         "WATCH_BUTTON": {
             "BUTTON_TITLE": "이 프로젝트를 구독하고 알림 정책 설정하기",
             "WATCH": "구독",
             "WATCHING": "구독중",
-            "COUNTER_TITLE": "{total, plural, one{one watcher} other{# 명이 구독중}}",
+            "COUNTER_TITLE": "{total, plural, =1{one watcher} other{# watchers}}",
             "OPTIONS": {
                 "NOTIFY_ALL": "모든 공지 받기",
                 "NOTIFY_ALL_TITLE": "이 프로젝트에 대한 모든 공지 받기",
@@ -969,27 +969,27 @@
         "IMPORT": {
             "TITLE": "프로젝트 가져오기",
             "DESCRIPTION": "여러 플랫폼의 당신의 프로젝트를 타이가로 가져오십시오.",
-            "ASYNC_IN_PROGRESS_TITLE": "움파룸파가 프로젝트를 불러오고 있습니다.",
+            "ASYNC_IN_PROGRESS_TITLE": "The Taiga is importing your project",
             "ASYNC_IN_PROGRESS_MESSAGE": "이 작업은 몇 분 정도 걸립니다.<br/> 작업이 끝나면 이메일로 알려드릴게요.",
             "UPLOAD_IN_PROGRESS_MESSAGE": "{{totalSize}} 중 {{uploadedSize}} 만큼 업로드했습니다",
-            "ERROR": "움파룸파가 덤프 파일을 불러올 수 없습니다. 다시 한 번 시도해주세요.",
-            "ERROR_TOO_MANY_REQUEST": "죄송해요. 움파룸파가 지금 좀 바쁘네요. 잠시 후에 다시 해주시겠어요?",
-            "ERROR_MESSAGE": "움파룸파가 덤프 파일을 불러올 수 없습니다. 다시 한 번 시도해주세요. {{error_message}}",
-            "ERROR_MAX_SIZE_EXCEEDED": "우리 움파룸파에게 '{{fileName}}' ({{fileSize}}) 는 너무 커요. ({{maxFileSize}}) 보다 작은 크기로 다시 시도해주세요.",
+            "ERROR": "The Taiga has some problems importing your dump data. Please try again.",
+            "ERROR_TOO_MANY_REQUEST": "Sorry, the Taiga is experiencing heavy load right now. Please try again in a few minutes.",
+            "ERROR_MESSAGE": "The Taiga has some problems importing your dump data: {{error_message}}",
+            "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) is too heavy for the Taiga, try it with a file smaller than ({{maxFileSize}})",
             "SYNC_SUCCESS": "프로젝트를 불러오는 데 성공했습니다.",
             "IMPORT": "가져오기",
             "WHO_IS": "이 태스크들을 할당 ...",
             "WRITE_EMAIL": "원한다면, 사용자가 사용하는 이메일을 타이가에 작성하십시오.",
             "SEARCH_CONTACT": "또는 연락처에서 찾습니다.",
             "WRITE_EMAIL_LABEL": "Tagia에서 사용자가 사용할 이메일을 작성",
-            "ACCEEDE": "Acceede",
+            "ACCEEDE": "Accede",
             "PROJECT_MEMBERS": "프로젝트 회원",
-            "PROCESS_DESCRIPTION": "Tagia에서 {{platform}}의 태스크들을 누구에게 할당할 것인지 알려주세요.",
+            "PROCESS_DESCRIPTION": "Tell us to whom from Taiga you want to assign the tasks of {{platform}}",
             "MATCH": "외부의 <strong>{{user_external}}</strong> 사용자는 내부의 <strong>{{user_internal}}</strong> 사용자와 동일인입니까?",
             "CHOOSE": "사용자 선택",
             "LINKS": "{{platform}}과 연결",
             "LINKS_DESCRIPTION": "{{platform}} 카드와 모든 아이템들의 연결을 유지하시겠습니까?",
-            "WARNING_MAIL_USER": "Note that if the user does not have a Taiga account we will not be able to assign the tasks to him.",
+            "WARNING_MAIL_USER": "Note that if the user does not have a Taiga account we will not be able to assign the tasks to them.",
             "ASSIGN": "할당",
             "PROJECT_SELECTOR": {
                 "NO_RESULTS": "검색 기준에 아무 것도 발견되지 않았습니다.",
@@ -997,8 +997,8 @@
                 "ACTION_BACK": "이전"
             },
             "PROJECT_RESTRICTIONS": {
-                "PROJECT_MEMBERS_DESC_PRIVATE": "The project you are trying to import has {{members}} members including you, unfortunately, your current plan allows for a maximum of {{max_memberships}} members per private project. If you would like to increase that limit please contact the administrator.",
-                "PROJECT_MEMBERS_DESC_PUBLIC": "The project you are trying to import has {{members}} members including you, unfortunately, your current plan allows for a maximum of {{max_memberships}} members per public project. If you would like to increase that limit please contact the administrator.",
+                "PROJECT_MEMBERS_DESC_PRIVATE": "The project you are trying to import has {{members}} members including you. Unfortunately, your current plan allows for a maximum of {{max_memberships}} members per private project. If you would like to increase that limit please contact the administrator.",
+                "PROJECT_MEMBERS_DESC_PUBLIC": "The project you are trying to import has {{members}} members including you. Unfortunately, your current plan allows for a maximum of {{max_memberships}} members per public project. If you would like to increase that limit please contact the administrator.",
                 "ACCOUNT_ALLOW_MEMBERS": "당신의 계정은 오직 {{members}} 회원만 허가되어있습니다.",
                 "PRIVATE_PROJECTS_SPACE": {
                     "TITLE": "안타깝게도, 당신의 설정에는 추가 비공개 프로젝트가 허용되어있지 않습니다.",
@@ -1097,7 +1097,7 @@
         },
         "SELECT_USER": {
             "SEARCH": "사용자 검색",
-            "REMOVE": "Remove user",
+            "REMOVE": "사용자 삭제",
             "ROLE": "역할"
         },
         "ADD_MEMBER": {
@@ -1129,32 +1129,32 @@
             "LAST_SPRINT_NAME": "마지막 스프린트는 <strong> {{lastSprint}} </strong>입니다 ;-)"
         },
         "CREATE_EDIT": {
-            "TASK_PLACEHOLDER_DESCRIPTION": "다른 사용자들이 이 태스크에 대해 좀 더 쉽게 이해할 수 있도록 설명을 추가해주세요.",
-            "ISSUE_PLACEHOLDER_DESCRIPTION": "다른 사용자들이 이 이슈에 대해 좀 더 쉽게 이해할 수 있도록 설명을 추가해주세요.",
-            "US_PLACEHOLDER_DESCRIPTION": "다른 사용자들이 이 유저 스토리에 대해 이해할 수 있도록 설명을 입력해주세요.",
+            "TASK_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this task",
+            "ISSUE_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this issue",
+            "US_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this user story",
             "NEW_TASK": "태스크",
-            "NEW_ISSUE": "새 이슈",
-            "NEW_US": "New User Story",
+            "NEW_ISSUE": "New issue",
+            "NEW_US": "새 유저 스토리",
             "EDIT_TASK": "태스크 수정하기",
-            "EDIT_ISSUE": "Edit Issue",
-            "EDIT_US": "Edit User Story",
-            "ADD_EXISTING_ISSUE": "Add Issue to {{ targetName }}",
+            "EDIT_ISSUE": "Edit issue",
+            "EDIT_US": "유저 스토리 수정하기",
+            "ADD_EXISTING_ISSUE": "Add issue to {{ targetName }}",
             "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?",
-            "EXISTING_ISSUE": "Existing Issue",
-            "CHOOSE_EXISTING_ISSUE": "Which Issue?",
-            "ADD_ISSUE": "이슈 추가하기",
-            "FILTER_ISSUES": "Filter Issues"
+            "EXISTING_ISSUE": "Existing issue",
+            "CHOOSE_EXISTING_ISSUE": "Which issue?",
+            "ADD_ISSUE": "이슈 추가",
+            "FILTER_ISSUES": "Filter issues"
         },
         "DELETE_DUE_DATE": {
-            "TITLE": "Delete due date",
+            "TITLE": "만료 시간 삭제",
             "SUBTITLE": "Are you sure you want to delete this due date?"
         },
         "DELETE_SPRINT": {
             "TITLE": "스프린트 삭제하기"
         },
         "REMOVE_RELATIONSHIP_WITH_EPIC": {
-            "TITLE": "Remove relationship with Epic",
-            "MESSAGE": "Are you sure you want to remove the relationship of this User Story with the Epic <strong>{{epicSubject}}</strong>?"
+            "TITLE": "Remove relationship with epic",
+            "MESSAGE": "Are you sure you want to remove the relationship of this user story with its epic <strong>{{epicSubject}}</strong>?"
         },
         "CREATE_MEMBER": {
             "PLACEHOLDER_INVITATION_TEXT": "(선택사항) 초대장에 특별한 메시지를 적으세요. 새로운 회원에게 멋진 말을 전해주세요 ;-)",
@@ -1186,23 +1186,23 @@
         },
         "SET_DUE_DATE": {
             "TITLE": "Set due date",
-            "PLACEHOLDER_DUE_DATE": "Select date",
+            "PLACEHOLDER_DUE_DATE": "날짜 선택",
             "REASON_FOR_DUE_DATE": "Reason for the due date",
-            "PLACEHOLDER_REASON_FOR_DUE_DATE": "Why does this US need a due date?",
+            "PLACEHOLDER_REASON_FOR_DUE_DATE": "Why does this user story need a due date?",
             "SUGGESTIONS": {
-                "IN_ONE_WEEK": "In one week",
-                "IN_TWO_WEEKS": "In two weeks",
-                "IN_ONE_MONTH": "In one month",
+                "IN_ONE_WEEK": "일주일",
+                "IN_TWO_WEEKS": "이주일",
+                "IN_ONE_MONTH": "한달",
                 "IN_THREE_MONTHS": "In three months"
             },
-            "TITLE_ACTION_DELETE_DUE_DATE": "Delete due date"
+            "TITLE_ACTION_DELETE_DUE_DATE": "만료 시간 삭제"
         },
         "ADMIN_DUE_DATES": {
-            "TITLE_ACTION_DELETE_DUE_DATE": "Delete due date",
+            "TITLE_ACTION_DELETE_DUE_DATE": "만료 시간 삭제",
             "SUBTITLE_ACTION_DELETE_DUE_DATE": "Are you sure you want to delete the due date status {{due_date_status_name}}?"
         },
         "RELATE_TO_EPIC": {
-            "TITLE": "Link to Epic",
+            "TITLE": "Link to epic",
             "EXISTING_EPIC": "Existing epic",
             "NEW_EPIC": "New epic",
             "CHOOSE_PROJECT_FOR_CREATION": "프로젝트가 무엇인가요?",
@@ -1226,7 +1226,7 @@
         "SUBJECT_BULK_MODE": "제목 (여러개 생성하기)",
         "CHOOSE_PROJECT_FROM": "Which project?",
         "CHOOSE_USERSTORY": "Which user story?",
-        "NO_USERSTORIES": "이 프로젝트에는 아직 유저 스토리가 없습니다. 다른 프로젝트를 선택하십시오.",
+        "NO_USERSTORIES": "This project has no user stories yet. Please select another project.",
         "NO_USERSTORIES_FOUND": "검색 기준에 아무 것도 발견되지 않았습니다.",
         "FILTER_USERSTORIES": "유저 스토리 필터",
         "LIGHTBOX_TITLE_BLOKING_EPIC": "에픽 차단",
@@ -1239,18 +1239,18 @@
         "LINK_TASKBOARD": "태스크보드",
         "TITLE_LINK_TASKBOARD": "태스크보드로 가기",
         "TOTAL_POINTS": "전체 포인트",
-        "ADD": "유저 스토리 추가하기",
-        "ADD_BULK": "유저 스토리 여러개 생성하기",
-        "PROMOTED_FROM_ISSUE": "이 유저 스토리는 이슈에서 만들어졌음",
-        "PROMOTED_FROM_TASK": "This US has been promoted from Task:",
+        "ADD": "+ Add a new user story",
+        "ADD_BULK": "Add some new user stories in bulk",
+        "PROMOTED_FROM_ISSUE": "This user story has been promoted from issue:",
+        "PROMOTED_FROM_TASK": "This user story has been promoted from task:",
         "TITLE_LINK_GO_TO_ISSUE": "이슈로 가기",
         "TITLE_LINK_GO_TO_TASK": "Go to task",
-        "TITLE_DELETE_ACTION": "유저 스토리 삭제하기",
-        "LIGHTBOX_TITLE_BLOKING_US": "블로킹 유저 스토리",
+        "TITLE_DELETE_ACTION": "유저 스토리 삭제",
+        "LIGHTBOX_TITLE_BLOKING_US": "Blocking user story",
         "NOT_ESTIMATED": "추산되지 않음",
-        "OWNER_US": "이 유저 스토리를 포함한 에픽은",
-        "RELATE_TO_EPIC": "Link to Epic",
-        "REMOVE_RELATIONSHIP_WITH_EPIC": "Remove Epic relationship",
+        "OWNER_US": "This user story belongs to",
+        "RELATE_TO_EPIC": "Link to epic",
+        "REMOVE_RELATIONSHIP_WITH_EPIC": "Remove epic relationship",
         "TRIBE": {
             "PUBLISH": "Tiaga Tribe의 Gig으로 배포하기",
             "PUBLISH_INFO": "더 많은 정보",
@@ -1311,7 +1311,8 @@
             "ASSIGNED_USERS": "assigned users",
             "DUE_DATE": "due date",
             "MILESTONE": "스프린트",
-            "COLOR": "색"
+            "COLOR": "색",
+            "PROMOTED_TO": "promoted to"
         }
     },
     "BACKLOG": {
@@ -1325,7 +1326,7 @@
         "MOVE_US_TO_CURRENT_SPRINT": "현재 스프린트로 옮기기",
         "MOVE_US_TO_LATEST_SPRINT": "가장 최근 스프린트로 옮기기",
         "EMPTY": "백로그가 비었습니다!",
-        "CREATE_NEW_US": "유저 스토리 생성하기",
+        "CREATE_NEW_US": "Create a new user story",
         "CREATE_NEW_US_EMPTY_HELP": "새로운 유저 스토리를 만들어 보고 싶죠?",
         "EXCESS_OF_POINTS": "포인트 초과",
         "PENDING_POINTS": "보류 중인 포인트",
@@ -1353,8 +1354,8 @@
         "FORECASTING": {
             "TITLE": "속도 예측",
             "BACKLOG": "백로그 표시",
-            "NEW_SPRINT": "당신의 속도를 기반으로한 다음 스프린트의 후보 유저 스토리 입니다. 클릭하여 새로운 스프린트를 만드십시오.",
-            "CURRENT_SPRINT": "당신의 속도를 기반으로한 다음 스프린트의 후보 유저 스토리 입니다. 클릭하여 현재 스프린트에 추가하십시오."
+            "NEW_SPRINT": "Candidate user stories for your next sprint based on your velocity. Click to create a new sprint.",
+            "CURRENT_SPRINT": "Candidate user stories for your sprint based on your velocity. Click to add to current sprint."
         },
         "TABLE": {
             "COLUMN_US": "유저 스토리",
@@ -1387,7 +1388,7 @@
             "LINK_TASKBOARD": "스프린트 태스크보드",
             "TITLE_LINK_TASKBOARD": "\"{{name}}\" 태스크보드로 가기",
             "EMPTY": "스프린트가 아직 없습니다.",
-            "WARNING_EMPTY_SPRINT_ANONYMOUS": "이 스프린트는 유저 스토리가 없습니다.",
+            "WARNING_EMPTY_SPRINT_ANONYMOUS": "This sprint has no user stories",
             "WARNING_EMPTY_SPRINT": "새 스프린트를 추가하려면 백로그에서 스토리를 끌어 놓으세요",
             "TITLE_ACTION_NEW_SPRINT": "새로운 스프린트 추가",
             "TEXT_ACTION_NEW_SPRINT": "프로젝트에 새로운 스프린트를 만들어 보고 싶죠?",
@@ -1396,21 +1397,21 @@
         }
     },
     "ERROR": {
-        "TEXT1": "움파룸파가 무언가를 작업하고 있습니다.",
+        "TEXT1": "Something happened and the Taiga has captured the error to be able to work on it.",
         "NOT_FOUND": "찾지 못함",
         "NOT_FOUND_TEXT": "404 에러: 당신이 접속한 페이지는 더 이상 존재하지 않습니다. 타이가홈페이지로 돌아가서 당신이 찾고 있는 페이지를 찾아보세요.",
         "PERMISSION_DENIED": "권한이 없습니다",
         "PERMISSION_DENIED_TEXT": "이 페이지를 볼 수 있는 권한이 없습니다.",
-        "VERSION_ERROR": "타이가 내부의 누군가가 이전에 이를 변경했으며 우리 움파룸파는 변경 사항을 적용 할 수 없습니다. 다시 로드하고 변경 사항을 다시 적용하십시오. (지금의 변경사항들은 손실 될 것입니다)."
+        "VERSION_ERROR": "Some other user inside Taiga has changed this before and your changes can't be applied. Save them elsewhere, reload the page and re-apply your changes again or they will be lost."
     },
     "TASKBOARD": {
         "PAGE_TITLE": "{{sprintName}} - 스프린트 태스크보드 - {{projectName}}",
         "PAGE_DESCRIPTION": "{{projectName}}의 스프린트 {{sprintName}} ({{startDate}}에서 {{endDate}}까지).  {{completedPercentage}}% 완료됨 ({{completedPoints}} 중 {{totalPoints}}).  {{openTasks}}는 {{totalTasks}}의 작업을 열었습니다.",
         "SECTION_NAME": "태스크보드",
-        "TITLE_ACTION_ADD": "태스크 추가하기",
-        "TITLE_ACTION_ADD_BULK": "태스트 여러개 생성하기",
-        "TITLE_ACTION_ADD_ISSUE": "이슈 추가하기",
-        "TITLE_ACTION_ADD_ISSUE_BULK": "Add some new Issues in bulk",
+        "TITLE_ACTION_ADD": "Add a new task",
+        "TITLE_ACTION_ADD_BULK": "Add some new tasks in bulk",
+        "TITLE_ACTION_ADD_ISSUE": "Add a new issue",
+        "TITLE_ACTION_ADD_ISSUE_BULK": "Add some new issues in bulk",
         "TITLE_ACTION_ASSIGN": "태스크 할당하기",
         "PLACEHOLDER_CARD_TITLE": "이것은 태스크가 될 수 있습니다.",
         "PLACEHOLDER_CARD_TEXT": "스토리를 여러 태스크로 나누고 개별적으로 추적하세요.",
@@ -1422,7 +1423,7 @@
             "TITLE_ACTION_UNFOLD_ROW": "행 접기",
             "FIELD_POINTS": "포인트",
             "ROW_STORYLESS_TASKS_TITLE": "Storyless tasks",
-            "ROW_ISSUES_TITLE": "Sprint Issues"
+            "ROW_ISSUES_TITLE": "Sprint issues"
         },
         "CHARTS": {
             "XAXIS_LABEL": "일",
@@ -1437,12 +1438,12 @@
             "MOVE_TO_OPEN_SPRINT": "Move to open sprint",
             "NO_OPEN_SPRINTS": "There are no other open sprints. Please create one first.",
             "SELECT_DESTINATION_PLACEHOLDER": "Select destination",
-            "UNFINISHED_USER_STORIES_COUNT": "{total, plural, one{<strong>#</strong> unfinished user story} other{<strong>#</strong> unfinished user stories}}",
-            "UNFINISHED_STORYLESS_TASKS_COUNT": "{total, plural, one{<strong>#</strong> unfinished storyless task} other{<strong>#</strong> unfinished storyless tasks}}",
-            "UNFINISHED_ISSUES_COUNT": "{total, plural, one{<strong>#</strong> unfinished issue} other{<strong>#</strong> unfinished issue}}",
+            "UNFINISHED_USER_STORIES_COUNT": "{total, plural, =1{<strong>#</strong> unfinished user story} other{<strong>#</strong> unfinished user stories}}",
+            "UNFINISHED_STORYLESS_TASKS_COUNT": "{total, plural, =1{<strong>#</strong> unfinished storyless task} other{<strong>#</strong> unfinished storyless tasks}}",
+            "UNFINISHED_ISSUES_COUNT": "{total, plural, =1{<strong>#</strong> unfinished issue} other{<strong>#</strong> unfinished issue}}",
             "WARNING_ISSUES_NOT_MOVED_TITLE": "You just moved all user stories and taks, and the sprint'll be closed",
             "WARNING_ISSUES_NOT_MOVED": "The issues'll remain in the sprint and don't be removed",
-            "WARNING_SPRINT_STILL_OPEN_TITLE": "{total, plural, one{You just moved # item!} other{You just moved # items!}}",
+            "WARNING_SPRINT_STILL_OPEN_TITLE": "{total, plural, =1{You just moved # item!} other{You just moved # items!}}",
             "WARNING_SPRINT_STILL_OPEN": "Please note that the sprint {{sprintName}} <strong>will remain open</strong> as long as it contains unfinished items."
         }
     },
@@ -1466,8 +1467,8 @@
     "NOTIFICATION": {
         "OK": "모든게 좋네요",
         "WARNING": "음? 뭔가 문제가 있는데...",
-        "WARNING_TEXT": "변경사항이 저장되지 않아서 움파룸파는 슬퍼요.",
-        "SAVED": "움파룸파가 모든 사항을 저장했습니다.",
+        "WARNING_TEXT": "Your changes were not saved!",
+        "SAVED": "The Taiga saved all your changes!",
         "CLOSE": "알림 닫기",
         "MAIL": "메일로 알림",
         "DESKTOP": "Desktop notifications using browser alerts",
@@ -1475,17 +1476,17 @@
     },
     "CANCEL_ACCOUNT": {
         "TITLE": "계정 취소 하기",
-        "SUBTITLE": "당신이 타이가 떠난다니 아쉽네요. 부디 좋은 기억만 남기를 바랍니다 :)",
+        "SUBTITLE": "We're sorry you are leaving the Taiga, we hope you enjoyed your stay :)",
         "PLACEHOLDER_INPUT_TOKEN": "계정 토큰 삭제",
         "ACTION_LEAVING": "네, 나갈래요!",
-        "SUCCESS": "움파룸파가 당신 계정을 지웠습니다"
+        "SUCCESS": "The Taiga removed your account"
     },
     "CHANGE_EMAIL_FORM": {
         "TITLE": "이메일 변경하기",
         "SUBTITLE": "한번 더 클릭하시면 이메일 정보가 업데이트 됩니다.",
         "PLACEHOLDER_INPUT_TOKEN": "이메일 토큰 변경",
         "ACTION_CHANGE_EMAIL": "이메일 변경하기",
-        "SUCCESS": "움파룸파가 당신의 이메일을 업데이트 하였습니다."
+        "SUCCESS": "The Taiga updated your email"
     },
     "ISSUES": {
         "PAGE_TITLE": "이슈 - {{projectName}}",
@@ -1507,13 +1508,13 @@
             "SEVERITY": "심각도",
             "TYPE": "타입"
         },
-        "FILTER_ISSUES": "Filter Issues",
+        "FILTER_ISSUES": "Filter issues",
         "CONFIRM_DETACH_FROM_SPRINT": {
-            "TITLE": "Detach issue from Sprint",
+            "TITLE": "Detach issue from sprint",
             "MESSAGE": "You are about to detach the issue from the sprint <strong>{{ sprintName }}<strong>"
         },
         "CONFIRM_CHANGE_FROM_SPRINT": {
-            "TITLE": "Attach issue to Sprint",
+            "TITLE": "Attach issue to sprint",
             "MESSAGE": "<strong>This issue is currently attached to sprint {{ oldSprintName }}</strong>. You are about to detach it from that sprint and attach it instead to sprint <strong>{{ newSprintName }}.</strong>"
         },
         "TABLE": {
@@ -1546,12 +1547,12 @@
         "SECTION_NAME": "칸반",
         "TITLE_ACTION_FOLD": "컬럼 접기",
         "TITLE_ACTION_UNFOLD": "컬럼 접기",
-        "TITLE_ACTION_ADD_US": "새 유저 스토리 추가하기",
-        "TITLE_ACTION_ADD_BULK": "여러개 생성하기",
+        "TITLE_ACTION_ADD_US": "Add new user story",
+        "TITLE_ACTION_ADD_BULK": "Add new bulk",
         "ACTION_SHOW_ARCHIVED": "보관된 것 보기",
         "ACTION_HIDE_ARCHIVED": "보관된 것 숨기기",
         "HIDDEN_USER_STORIES": "이 상태에 있는 유저 스토리는 기본적으로 숨겨집니다.",
-        "PLACEHOLDER_CARD_TITLE": "당신의 유저 스토리들 입니다.",
+        "PLACEHOLDER_CARD_TITLE": "These are your user stories",
         "PLACEHOLDER_CARD_TEXT": "스토리에는 요구 사항을 구분하는 하위 태스크가 있을 수도 있습니다."
     },
     "SEARCH": {
@@ -1596,10 +1597,10 @@
             "CHANGE_PASSWORD": "비밀번호 변경하기",
             "EMAIL_NOTIFICATIONS": "이메일 알림",
             "DESKTOP_NOTIFICATIONS": "Desktop notifications",
-            "EVENTS": "Events"
+            "EVENTS": "이벤트"
         },
         "NOTIFICATIONS": {
-            "LIVE_SECTION_NAME": "Desktop Notifications",
+            "LIVE_SECTION_NAME": "데스크탑 알림",
             "SECTION_NAME": "이메일 알림",
             "COLUMN_PROJECT": "프로젝트",
             "COLUMN_RECEIVE_ALL": "모두 받기",
@@ -1617,7 +1618,7 @@
             "DEFAULT_VALUE": "Default"
         },
         "EVENTS": {
-            "SECTION_NAME": "Events",
+            "SECTION_NAME": "이벤트",
             "SECTION_DESCRIPTION": "Important events in Taiga header",
             "SECTION_DESCRIPTION_EXPANDED": "(direct mentions, updates in items that you are watching...)",
             "COLUMN_ENABLED": "Enabled",
@@ -1686,37 +1687,37 @@
     },
     "TIMELINE": {
         "UPLOAD_ATTACHMENT": "{{username}} 님이 {{obj_name}} 첨부파일을 업로드했습니다.",
-        "US_CREATED": "{{username}} 님이 {{project_name}}에 {{obj_name}} 유저 스토리를 생성하였습니다.",
+        "US_CREATED": "{{username}} has created a new user story {{obj_name}} in {{project_name}}",
         "ISSUE_CREATED": "{{username}} 님이 {{project_name}}에 {{obj_name}} 이슈를 생성하였습니다.",
         "TASK_CREATED": "{{username}} 님이 {{project_name}}에 {{obj_name}} 태스크를 추가하였습니다.",
-        "TASK_CREATED_WITH_US": "{{username}} 님이 {{project_name}} {{us_name}} 유저 스토리에 {{obj_name}}을 생성하였습니다.",
+        "TASK_CREATED_WITH_US": "{{username}} has created a new task {{obj_name}} in {{project_name}} which belongs to the user story {{us_name}}",
         "WIKI_CREATED": "{{username}} 님이 {{project_name}}에 {{obj_name}} 위키 페이지를 만들었습니다.",
         "MILESTONE_CREATED": "{{username}} 님이 {{project_name}}에 {{obj_name}} 스프린트를 만들었습니다.",
         "EPIC_CREATED": "{{username}} 님이 새로운 에픽을 {{project_name}} 프로젝트에 {{obj_name}} 명으로 생성하였습니다.",
-        "EPIC_RELATED_USERSTORY_CREATED": "{{username}} 님이 {{project_name}} 프로젝트에서 {{related_us_name}} 유저 스토리를 {{epic_name}} 에픽과의 연결에 사용하였습니다.",
+        "EPIC_RELATED_USERSTORY_CREATED": "{{username}} has related the user story {{related_us_name}} to the epic {{epic_name}} in {{project_name}}",
         "NEW_PROJECT": "{{username}} 님이 {{project_name}} 프로젝트를 만들었습니다.",
         "MILESTONE_UPDATED": "{{username}} 님이 {{obj_name}} 스프린트를 업데이트 했습니다.",
-        "US_UPDATED": "{{obj_name}} 유저 스토리에서 \"{{field_name}}\" 속성을 {{username}} 님이 업데이트 했습니다.",
-        "US_UPDATED_WITH_NEW_VALUE": "{{username}} 님이 {{obj_name}} 유저 스토리의 \"{{field_name}}\" 속성을 {{new_value}}로 변경하였습니다.",
-        "US_UPDATED_POINTS": "{{username}} 님이 {{obj_name}} 유저 스토리의 '{{role_name}}' 포인트를 {{new_value}}로 변경하였습니다.",
+        "US_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the user story {{obj_name}}",
+        "US_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the user story {{obj_name}} to {{new_value}}",
+        "US_UPDATED_POINTS": "{{username}} has updated '{{role_name}}' points of the user story {{obj_name}} to {{new_value}}",
         "ISSUE_UPDATED": "{{username}}님이 {{obj_name}} 이슈의 \"{{field_name}}\" 속성을 변경하였습니다.",
         "ISSUE_UPDATED_WITH_NEW_VALUE": "{{username}} 님이 {{obj_name}} 이슈의 \"{{field_name}}\" 속성을 {{new_value}}로 변경하였습니다.",
         "TASK_UPDATED": "{{username}} 님이 {{obj_name}} 태스크의 \"{{field_name}}\" 속성을 {{new_value}}로 변경하였습니다.",
         "TASK_UPDATED_WITH_NEW_VALUE": "{{username}} 님이 {{obj_name}} 태스크의 \"{{field_name}}\" 속성을 {{new_value}}로 변경하였습니다.",
-        "TASK_UPDATED_WITH_US": "{{username}} 님이 {{us_name}} 유저 스토리에 있는 {{obj_name}} 태스크의 \"{{field_name}}\" 속성을 수정하였습니다.",
-        "TASK_UPDATED_WITH_US_NEW_VALUE": "{{username}} 님이 {{us_name}} 유저스토리에 있는 {{obj_name}} 태스크의 \"{{field_name}}\" 속성을 {{new_value}}로 수정하였습니다.",
+        "TASK_UPDATED_WITH_US": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} which belongs to the user story {{us_name}}",
+        "TASK_UPDATED_WITH_US_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} which belongs to the user story {{us_name}} to {{new_value}}",
         "WIKI_UPDATED": "{{username}} 님이 {{obj_name}} 위키 페이지를 업데이트했습니다.",
         "EPIC_UPDATED": "{{username}}님이 에픽 {{obj_name}}의 속성 \"{{field_name}}\"을 변경하였습니다.",
         "EPIC_UPDATED_WITH_NEW_VALUE": "{{username}}님이 에픽 {{obj_name}}의 속성 \"{{field_name}}\"을 {{new_value}}로 변경하였습니다.",
         "EPIC_UPDATED_WITH_NEW_COLOR": "{{username}}님이 에픽 {{obj_name}}의 \"{{field_name}}\"을 <span class=\"new-color\" style=\"background: {{new_value}}\"></span>으로 변경하였습니다.",
-        "NEW_COMMENT_US": "{{username}} 님이 {{obj_name}} 유저 스토리에 댓글을 남겼습니다.",
+        "NEW_COMMENT_US": "{{username}} has commented in the user story {{obj_name}}",
         "NEW_COMMENT_ISSUE": "{{username}} 님이 {{obj_name}} 이슈에 댓글을 남겼습니다.",
         "NEW_COMMENT_TASK": "{{username}} 님이 {{obj_name}} 태스크에 댓글을 남겼습니다.",
         "NEW_COMMENT_EPIC": "{{username}} 님이 {{obj_name}} 에픽에 댓글을 남겼습니다.",
         "NEW_MEMBER": "{{project_name}}에 새 팀원이 들어왔습니다.",
-        "US_ADDED_MILESTONE": "{{username}} 님이 {{obj_name}} 유저 스토리를 {{sprint_name}}에 추가하였습니다.",
-        "US_MOVED": "{{username}} 님이 {{obj_name}} 유저 스토리를 이동했습니다.",
-        "US_REMOVED_FROM_MILESTONE": "{{username}} 님이 {{obj_name}} 유저 스토리를 백로그에 추가하였습니다.",
+        "US_ADDED_MILESTONE": "{{username}} has added the user story {{obj_name}} to {{sprint_name}}",
+        "US_MOVED": "{{username}} has moved the user story {{obj_name}}",
+        "US_REMOVED_FROM_MILESTONE": "{{username}} has added the user story {{obj_name}} to the backlog",
         "BLOCKED": "{{username}} 님이 {{obj_name}}를 차단하였습니다.",
         "UNBLOCKED": "{{username}} 님이 {{obj_name}}를 차단 해제하였습니다.",
         "NEW_USER": "{{username}} 님이 타이가에 등록하였습니다.",
@@ -1727,7 +1728,7 @@
         }
     },
     "EVENTS": {
-        "TITLE": "Events",
+        "TITLE": "이벤트",
         "MY_EVENTS": "My events",
         "DISMISS_ALL": "Dismiss all",
         "VIEW_ALL": "View all",
@@ -1768,7 +1769,7 @@
             },
             "STEP2": {
                 "TITLE": "일 하는 중",
-                "TEXT": "여기에는 당신이 작업하고 있는 유저 스토리, 태스크, 이슈들이 표시됩니다."
+                "TEXT": "Here you will find the user stories, tasks and issues in which you are working on."
             },
             "STEP3": {
                 "TITLE": "구독중",
@@ -1807,11 +1808,11 @@
             },
             "STEP2": {
                 "TITLE": "유저 스토리 & 태스크",
-                "TEXT": "유저 스토리에 더 높은 권한이 필요합니다. 다른 컬럼에 끌어 놓으세요."
+                "TEXT": "User stories are the requirements at high level. You can drag them to different columns."
             },
             "STEP3": {
                 "TITLE": "유저 스토리 추가하기",
-                "TEXT1": "단일 유저 스토리 (유저 스토리 아이콘 추가) 또는 그 그룹 (여러개의 아이콘)을 추가 할 수 있습니다.",
+                "TEXT1": "You may want to add a single user story (add user story icon) or a group of them (bulk icon)",
                 "TEXT2": "행운을 빌어요!"
             }
         }
@@ -1820,7 +1821,7 @@
         "PAGE_TITLE": "프로젝트 찾기 - 타이가",
         "PAGE_DESCRIPTION": "타이가 공공 프로젝트 디렉토리를 검색 할 수 있습니다. 백 로그, 타임 라인, 이슈 및 팀을 탐색하십시오. 가장 인기 있거나 가장 활동적인 프로젝트를 확인하십시오. 칸반 또는 스크럼으로 필터",
         "DISCOVER_TITLE": "프로젝트 찾기",
-        "DISCOVER_SUBTITLE": "{projects, plural, one{One public project to discover} other{# 개의 프로젝트를 발견}}",
+        "DISCOVER_SUBTITLE": "{projects, plural, =1{One public project to discover} other{# public projects to discover}}",
         "MOST_ACTIVE": "가장 활동적인",
         "MOST_ACTIVE_EMPTY": "아직 활성화된 프로젝트가 없습니다.",
         "MOST_LIKED": "가장 인기있는",

@@ -22,7 +22,7 @@
         "TAG_LINE": "Ketterä, ilmainne avoimen koodin projektinhallintaohjelmisto",
         "TAG_LINE_2": "Rakasta projektiasi",
         "BLOCK": "Estä",
-        "BLOCK_TITLE": "Block this item for example if it has a dependency that can not be satisfied",
+        "BLOCK_TITLE": "Block this item, for example if it has a dependency that can not be satisfied",
         "BLOCKED": "Suljettu",
         "UNBLOCK": "Salli",
         "UNBLOCK_TITLE": "Poista este",
@@ -39,10 +39,10 @@
         "NEXT": "Seuraava",
         "LOGOUT": "Kirjaudu ulos",
         "EXTERNAL_USER": "ulkoinen käyttäjä",
-        "GENERIC_ERROR": "Oompa Loompas havaitsivat virheen {{error}}.",
-        "IOCAINE_TEXT": "This member is feeling a bit overwhelmed by this task. Will become immune to the iocaine poison over time with your help. For now, may need a hug.",
-        "CLIENT_REQUIREMENT": "Client requirement is new requirement that was not previously expected and it is required to be part of the project",
-        "TEAM_REQUIREMENT": "Team requirement is a requirement that must exist in the project but should have no cost for the client",
+        "GENERIC_ERROR": "The Taiga says {{error}}.",
+        "IOCAINE_TEXT": "This member is feeling a bit overwhelmed by this task. They will become immune to the iocaine poison over time with your help. For now, they may need a hug.",
+        "CLIENT_REQUIREMENT": "A client requirement is a new requirement that was not previously expected and is required to be part of the project",
+        "TEAM_REQUIREMENT": "A team requirement is a requirement that must exist in the project but should have no cost for the client",
         "OWNER": "Projektin omistaja",
         "CAPSLOCK_WARNING": "Be careful! You are using capital letters in an input field that is case sensitive.",
         "CONFIRM_CLOSE_EDIT_MODE_TITLE": "Haluatko varmasti sulkea muokkaustilan?",
@@ -74,7 +74,7 @@
             "RANGE": "Arvon pitää olla välissä %s - %s.",
             "MIN_LENGTH": "Arvo on liian lyhyt. Tarvitaan vähintään %s merkkiä.",
             "MAX_LENGTH": "Arvo on liian pitkä. Pituus saa olla korkeintaan %s merkkiä.",
-            "RANGE_LENGTH": "Arvo on väärän mittainen. Sen pituus pitäisi olla väliltä %s - %s.",
+            "RANGE_LENGTH": "This value's length is invalid. It should be between %s and %s characters long.",
             "MIN_CHECK": "Sinun täytyy valita vähintään %s valintaa.",
             "MAX_CHECK": "Valitse korkeintaan %s vaihtoehtoa.",
             "RANGE_CHECK": "Valitse %s - %s vaihteohtoa.",
@@ -131,7 +131,7 @@
             "ADD": "Lisää avainsana"
         },
         "DESCRIPTION": {
-            "EMPTY": "Tyhjä tila on tylsää...kerro jotain...",
+            "EMPTY": "Empty space is so boring... go on, be descriptive...",
             "NO_DESCRIPTION": "Ei vielä kuvausta lisätty"
         },
         "FIELDS": {
@@ -196,31 +196,31 @@
             "UNWATCH": "Lopeta seuraaminen",
             "WATCHERS": "Seuraajat",
             "BUTTON_TITLE": "Seuraa/Lopeta seuraaminen",
-            "COUNTER_TITLE": "{total, plural, one{one watcher} other{# watchers}}"
+            "COUNTER_TITLE": "{total, plural, =1{one watcher} other{# watchers}}"
         },
         "VOTE_BUTTON": {
             "BUTTON_TITLE": "Upvote/Downvote this item",
-            "COUNTER_TITLE": "{total, plural, one{one vote} other{# votes}}"
+            "COUNTER_TITLE": "{total, plural, =1{one vote} other{# votes}}"
         },
-        "PROMOTE_TO_US": "Liitä käyttäjätarinaan",
-        "PROMOTED_ISSUES": "This Issue has been promoted to US:",
-        "PROMOTED_TASKS": "This Task has been promoted to US:",
+        "PROMOTE_TO_US": "Promote to user story",
+        "PROMOTED_ISSUES": "This issue has been promoted to",
+        "PROMOTED_TASKS": "This task has been promoted to",
         "CONFIRM_PROMOTE": {
             "ISSUE": {
-                "TITLE": "Promote this Issue to a new user story",
-                "MESSAGE": "Haluatko varmasti lisätä uuden käyttäjätarinan tästä pyynnöstä?"
+                "TITLE": "Liitä tämä pyyntö uuteen käyttäjätarinaan",
+                "MESSAGE": "Are you sure you want to create a new user story from this issue?"
             },
             "TASK": {
-                "TITLE": "Promote this Task to a new user story",
-                "MESSAGE": "Are you sure you want to create a new US from this Task?"
+                "TITLE": "Promote this task to a new user story",
+                "MESSAGE": "Are you sure you want to create a new user story from this task?"
             }
         },
         "CUSTOM_ATTRIBUTES": {
             "CUSTOM_FIELDS": "Omat kentät",
-            "SAVE": "Tallenna oma kenttä",
-            "EDIT": "Muokkaa omaa kenttää",
+            "SAVE": "Save custom field",
+            "EDIT": "Edit custom field",
             "DELETE": "Poista oma attribuutti",
-            "CONFIRM_DELETE": "Remeber that all values in this custom field will be deleted.\n Are you sure you want to continue?"
+            "CONFIRM_DELETE": "Remember that all values in this custom field will be deleted.\n Are you sure you want to continue?"
         },
         "FILTERS": {
             "INPUT_PLACEHOLDER": "Aihe tai viittaus",
@@ -330,8 +330,8 @@
         "ALT_LOGIN": "Tai kirjaudu käyttäen"
     },
     "LOGIN_FORM": {
-        "ERROR_AUTH_INCORRECT": "Käyttäjänimesi tai sähköpostisi tai salasanasi on väärä.",
-        "SUCCESS": "Oompa Loompat ovat onnellisia, tervetuloa Taigaan."
+        "ERROR_AUTH_INCORRECT": "According to the Taiga, your username/email or password are incorrect.",
+        "SUCCESS": "Welcome to Taiga."
     },
     "REGISTER": {
         "PAGE_TITLE": "Rekisteröidy - Taiga",
@@ -359,7 +359,7 @@
         "LINK_CANCEL": "Vie minut takaisin, muistan sen.",
         "SUCCESS_TITLE": "Tarkista inbox!",
         "SUCCESS_TEXT": "Lähetimme sinulle sähköpostin, jossa ohjeet uuden salasanan asettamiseksi.",
-        "ERROR": "Oompa Loompas sanovat että käyttäjänimesi tai sähköpostisi tai salasanasi on väärä."
+        "ERROR": "According to the Taiga, you are not registered yet."
     },
     "CHANGE_PASSWORD": {
         "PAGE_TITLE": "Vaihda salasanasi - Taiga",
@@ -370,7 +370,7 @@
         "PLACEHOLDER_NEW_PASSWORD": "Anna uusi salasana",
         "FIELD_RETYPE_PASSWORD": "Anna salasana uudelleen",
         "PLACEHOLDER_RETYPE_PASSWORD": "Anna salasana uudelleen",
-        "ERROR_PASSWORD_MATCH": "Salasanat eivät täsmää"
+        "ERROR_PASSWORD_MATCH": "The passwords don't match"
     },
     "CHANGE_PASSWORD_RECOVERY_FORM": {
         "TITLE": "Luo uusi pääsy Taigaan",
@@ -378,23 +378,23 @@
         "PLACEHOLDER_NEW_PASSWORD": "Uusi salasana",
         "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "Anna salasana uudelleen",
         "ACTION_RESET_PASSWORD": "Uusi salsanasi",
-        "ERROR": "Our Oompa Loompas can't find your request to recover your password. Try to ask for it again.",
-        "SUCCESS": "Oompa Loompas tallensi uuden salasanasi.<br /> Yritä <strong>kirjautua sisään</strong> sillä."
+        "ERROR": "The Taiga can't find your request to recover your password. Try to ask for it again.",
+        "SUCCESS": "The Taiga saved your new password.<br /> Try to <strong>sign in</strong> with it."
     },
     "INVITATION": {
         "PAGE_TITLE": "Kutsun hyväksyminen - Taiga",
         "PAGE_DESCRIPTION": "Accept the invitation to join a project in Taiga, a project management platform for startups and agile developers & designers who want a simple, beautiful tool that makes work truly enjoyable."
     },
     "INVITATION_LOGIN_FORM": {
-        "NOT_FOUND": "Kutsuasi ei löydy.",
+        "NOT_FOUND": "The Taiga can't find your invitation.",
         "SUCCESS": "Olet onnistuneesti liittynyt projektiin {{project_name}}. Tervetuloa!"
     },
     "HOME": {
         "PAGE_TITLE": "Etusivu - Taiga",
         "PAGE_DESCRIPTION": "The Taiga home page with your main projects and all your assigned and watched user stories, tasks and issues",
         "EMPTY_WORKING_ON": "<strong>Näyttää tyhjätlä, eikövain?</strong>  Aloita työskentely ja näet tässä sinua koskevat käyttäjätarinat, tehtävät ja tukipyynnöt.",
-        "EMPTY_WATCHING": "<strong>Follow</strong> User Stories, Tasks, Issues in your projects and be notified about its changes :)",
-        "EMPTY_PROJECT_LIST": "Sinulla ei ole vielä projekteja",
+        "EMPTY_WATCHING": "<strong>Follow</strong> user stories, tasks, issues in your projects and be notified about their changes :)",
+        "EMPTY_PROJECT_LIST": "You don't have any project yet",
         "WORKING_ON_SECTION": "Käynnissä olevat",
         "WATCHING_SECTION": "Seurqnnassa",
         "DASHBOARD": "Projektit Dashboard",
@@ -465,7 +465,7 @@
         "TITLE_LIGHTBOX_DELETE_ATTACHMENT": "Poista liite...",
         "MSG_LIGHTBOX_DELETE_ATTACHMENT": "liite '{{fileName}}'",
         "ERROR_DELETE_ATTACHMENT": "Emme pystyneet poistamaan: {{errorMessage}}",
-        "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) on liian iso Oompa Loompaseille, kokeile pienemmällä kuin ({{maxFileSize}})"
+        "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) is too heavy for the Taiga, try it with a file smaller than ({{maxFileSize}})"
     },
     "PAGINATION": {
         "PREVIOUS": "Edellinen",
@@ -501,8 +501,8 @@
             "LOADING_MESSAGE": "Älä sulje tätä sivua.",
             "ASYNC_MESSAGE": "Lähetämme sähköpostia, kun on valmista.",
             "SYNC_MESSAGE": "Jos lataus ei ala automaattisesti klikkaa <a href='{{url}}' download title='Lataa varmuuskopio'>tästä</a>.",
-            "ERROR": "Oompa Loompas eivät onnistuneet tekemään tiedostoasi. Yritä uudelleen.",
-            "ERROR_BUSY": "Valitettavasti Oompa Loompas ovat kiireisiä juuri. Yritä kohta uudestaan."
+            "ERROR": "The Taiga has some problems generating your dump. Please try it again.",
+            "ERROR_BUSY": "Sorry, the Taiga is experiencing heavy load right now. Please try again in a few minutes."
         },
         "MODULES": {
             "TITLE": "Modulit",
@@ -519,7 +519,7 @@
             "ISSUES": "Pyynnöt",
             "ISSUES_DESCRIPTION": "Seuraa projektisi virheitä, kysymyksiä ja parannusehdotuksia. Älä jätä mitään huomiotta!",
             "WIKI": "Wiki",
-            "WIKI_DESCRIPTION": "Lisää, muokkaa tai poista sisältöä yhteistyössä muiden kanssa. Tämä on oikea paikka projektin dokumentaatiolle.",
+            "WIKI_DESCRIPTION": "Add, modify, or delete content in collaboration with others. This is the right place for your project's documentation.",
             "MEETUP": "Tapaa",
             "MEETUP_DESCRIPTION": "Valitse videoneuvottelusovellus",
             "SELECT_VIDEOCONFERENCE": "Valitse videoconferenssi-järjestelmä",
@@ -611,7 +611,7 @@
         "PROJECT_VALUES_POINTS": {
             "TITLE": "Pisteet",
             "SUBTITLE": "Määrittele pisteet joihin käyttäjätarinat voidaan arvioida",
-            "US_TITLE": "Tarinapisteet",
+            "US_TITLE": "User story points",
             "ACTION_ADD": "Lisää uusi piste"
         },
         "PROJECT_VALUES_PRIORITIES": {
@@ -653,7 +653,7 @@
         },
         "PROJECT_DUE_DATE_STATUS": {
             "TITLE": "Due Dates",
-            "SUBTITLE": "Specify the due dates your user stories, tasks and issues will go through if selected",
+            "SUBTITLE": "Specify the due dates status your user stories, tasks and issues will go through if selected",
             "US_TITLE": "User Story Due Date status",
             "ACTION_ADD_STATUS": "Lisää uusi tila",
             "TASK_TITLE": "Task Due Date status",
@@ -680,7 +680,7 @@
         "THIRD_PARTIES": {
             "SECRET_KEY": "Salainen avain",
             "PAYLOAD_URL": "Yhteyden URL-osoite",
-            "VALID_IPS": "Vaadittavat lähdeIPt (pilkuilla eroteltuna)"
+            "VALID_IPS": "Valid source IPs (separated by ,)"
         },
         "BITBUCKET": {
             "SECTION_NAME": "Bitbucket",
@@ -728,14 +728,14 @@
         "CUSTOM_ATTRIBUTES": {
             "PAGE_TITLE": "{{sectionName}} - Custom Attributes - {{projectName}}",
             "ADD": "Anna oma kenttä",
-            "EDIT": "Muokkaa omaa kenttää",
-            "DELETE": "Poista oma kenttä",
-            "SAVE_TITLE": "Tallenna oma kenttä",
+            "EDIT": "Edit custom field",
+            "DELETE": "Delete custom field",
+            "SAVE_TITLE": "Save custom field",
             "CANCEL_TITLE": "Peru luonti",
             "SET_FIELD_NAME": "Anna oman kentän nimi",
             "SET_FIELD_DESCRIPTION": "Anna oman kenttäsi kuvaus",
             "FIELD_TYPE_DEFAULT": "-- valitse yksi --",
-            "ACTION_UPDATE": "Päivitä oma kenttä",
+            "ACTION_UPDATE": "Update custom field",
             "ACTION_CANCEL_EDITION": "Peru versio"
         },
         "MEMBERSHIP": {
@@ -865,12 +865,12 @@
     },
     "PROJECT": {
         "PAGE_TITLE": "{{projectName}}",
-        "HELP": "Reorder your projects to set in the top the most used ones.<br/> The top 10 projects will appear in the top navigation bar project list",
+        "HELP": "Reorder your projects to set at the top the most used ones.<br/> The top 10 projects will appear in the top navigation bar project list",
         "PRIVATE": "Yksityinen projekti",
         "LOOKING_FOR_PEOPLE": "Tähän projektiin etsitään tekijöitä",
-        "FANS_COUNTER_TITLE": "{total, plural, one{one fan} other{# fans}}",
-        "WATCHERS_COUNTER_TITLE": "{total, plural, one{one watcher} other{# watchers}}",
-        "MEMBERS_COUNTER_TITLE": "{total, plural, one{one member} other{# members}}",
+        "FANS_COUNTER_TITLE": "{total, plural, =1{one fan} other{# fans}}",
+        "WATCHERS_COUNTER_TITLE": "{total, plural, =1{one watcher} other{# watchers}}",
+        "MEMBERS_COUNTER_TITLE": "{total, plural, =1{one member} other{# members}}",
         "BLOCKED_PROJECT": {
             "BLOCKED": "Estetty projekti",
             "THIS_PROJECT_IS_BLOCKED": "Projekti estetty väliaikaisesti",
@@ -914,13 +914,13 @@
             "LIKED": "Tykätty",
             "UNLIKE": "Poista tykkäys",
             "BUTTON_TITLE": "Like or unlike this project",
-            "COUNTER_TITLE": "{total, plural, one{one fan} other{# fans}}"
+            "COUNTER_TITLE": "{total, plural, =1{one fan} other{# fans}}"
         },
         "WATCH_BUTTON": {
             "BUTTON_TITLE": "Seuraa tätä projektia ja aseta ilmoitukset",
             "WATCH": "Seuraa",
             "WATCHING": "Seuraa",
-            "COUNTER_TITLE": "{total, plural, one{one watcher} other{# watchers}}",
+            "COUNTER_TITLE": "{total, plural, =1{one watcher} other{# watchers}}",
             "OPTIONS": {
                 "NOTIFY_ALL": "Tilaa kaikki ilmoitukset",
                 "NOTIFY_ALL_TITLE": "Vastaanota kaikki tämän projektin ilmoitukset",
@@ -969,27 +969,27 @@
         "IMPORT": {
             "TITLE": "Tuo projekti",
             "DESCRIPTION": "Tuo projekti muista järjestelmistä Taigaan",
-            "ASYNC_IN_PROGRESS_TITLE": " Oompa Loompas tuovat projektia",
+            "ASYNC_IN_PROGRESS_TITLE": "The Taiga is importing your project",
             "ASYNC_IN_PROGRESS_MESSAGE": "Tämä voi kestää muutaman minuutin <br/>Lähetämme sähköpostin on valmista",
             "UPLOAD_IN_PROGRESS_MESSAGE": "LAdattu {{uploadedSize}} / {{totalSize}}",
-            "ERROR": "Oompa Loompas eivät onnistuneet tuomaan tiedostoasi. Yritä uudestaan.",
-            "ERROR_TOO_MANY_REQUEST": "Valitettavasti Oompa Loompas ovat kiireisiä juuri. Yritä kohta uudestaan.",
-            "ERROR_MESSAGE": "Oompa Loompas eivät pysty lukemaan tiedostoasi: {{error_message}}",
-            "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) on liian iso Oompa Loompaseille, kokeile pienemmällä kuin ({{maxFileSize}})",
+            "ERROR": "The Taiga has some problems importing your dump data. Please try again.",
+            "ERROR_TOO_MANY_REQUEST": "Sorry, the Taiga is experiencing heavy load right now. Please try again in a few minutes.",
+            "ERROR_MESSAGE": "The Taiga has some problems importing your dump data: {{error_message}}",
+            "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) is too heavy for the Taiga, try it with a file smaller than ({{maxFileSize}})",
             "SYNC_SUCCESS": "Projektisi on tuotu sisään onnistuneesti",
             "IMPORT": "Tuo",
             "WHO_IS": "Their tasks will be assigned to ...",
             "WRITE_EMAIL": "Or if you want, write the email that this user uses in Taiga",
             "SEARCH_CONTACT": "Or if you want, search in your contacts",
             "WRITE_EMAIL_LABEL": "Write the email that this user uses in Taiga",
-            "ACCEEDE": "Acceede",
+            "ACCEEDE": "Accede",
             "PROJECT_MEMBERS": "Projektin jäsenet",
-            "PROCESS_DESCRIPTION": "Tell us who from Taiga you want to assign the tasks of {{platform}}",
+            "PROCESS_DESCRIPTION": "Tell us to whom from Taiga you want to assign the tasks of {{platform}}",
             "MATCH": "Onko <strong>{{user_external}}</strong> sama henkilö kuin <strong>{{user_internal}}</strong>?",
             "CHOOSE": "Valitse käyttäjä",
             "LINKS": "Links with {{platform}}",
             "LINKS_DESCRIPTION": "Do you want to keep the link of each item with the original {{platform}} card?",
-            "WARNING_MAIL_USER": "Note that if the user does not have a Taiga account we will not be able to assign the tasks to him.",
+            "WARNING_MAIL_USER": "Note that if the user does not have a Taiga account we will not be able to assign the tasks to them.",
             "ASSIGN": "Valitse tekijä",
             "PROJECT_SELECTOR": {
                 "NO_RESULTS": "Ei hakutuloksia",
@@ -997,8 +997,8 @@
                 "ACTION_BACK": "Palvelin"
             },
             "PROJECT_RESTRICTIONS": {
-                "PROJECT_MEMBERS_DESC_PRIVATE": "The project you are trying to import has {{members}} members including you, unfortunately, your current plan allows for a maximum of {{max_memberships}} members per private project. If you would like to increase that limit please contact the administrator.",
-                "PROJECT_MEMBERS_DESC_PUBLIC": "The project you are trying to import has {{members}} members including you, unfortunately, your current plan allows for a maximum of {{max_memberships}} members per public project. If you would like to increase that limit please contact the administrator.",
+                "PROJECT_MEMBERS_DESC_PRIVATE": "The project you are trying to import has {{members}} members including you. Unfortunately, your current plan allows for a maximum of {{max_memberships}} members per private project. If you would like to increase that limit please contact the administrator.",
+                "PROJECT_MEMBERS_DESC_PUBLIC": "The project you are trying to import has {{members}} members including you. Unfortunately, your current plan allows for a maximum of {{max_memberships}} members per public project. If you would like to increase that limit please contact the administrator.",
                 "ACCOUNT_ALLOW_MEMBERS": "Tilisi sallii vain {{members}} jäsenet",
                 "PRIVATE_PROJECTS_SPACE": {
                     "TITLE": "Unfortunately, your current plan does not allow for additional private projects",
@@ -1129,21 +1129,21 @@
             "LAST_SPRINT_NAME": "viimeinen kierros on <strong> {{lastSprint}} ;-) </strong>"
         },
         "CREATE_EDIT": {
-            "TASK_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this Task",
-            "ISSUE_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this Issue",
-            "US_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this User Story",
-            "NEW_TASK": "New Task",
-            "NEW_ISSUE": "New Issue",
-            "NEW_US": "New User Story",
-            "EDIT_TASK": "Edit Task",
-            "EDIT_ISSUE": "Edit Issue",
-            "EDIT_US": "Edit User Story",
-            "ADD_EXISTING_ISSUE": "Add Issue to {{ targetName }}",
+            "TASK_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this task",
+            "ISSUE_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this issue",
+            "US_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this user story",
+            "NEW_TASK": "Uusi tehtävä",
+            "NEW_ISSUE": "New issue",
+            "NEW_US": "Uusi käyttäjätarina",
+            "EDIT_TASK": "Muokkaa tehtävää",
+            "EDIT_ISSUE": "Edit issue",
+            "EDIT_US": "Muokkaa käyttäjätarinaa",
+            "ADD_EXISTING_ISSUE": "Add issue to {{ targetName }}",
             "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?",
-            "EXISTING_ISSUE": "Existing Issue",
-            "CHOOSE_EXISTING_ISSUE": "Which Issue?",
+            "EXISTING_ISSUE": "Existing issue",
+            "CHOOSE_EXISTING_ISSUE": "Which issue?",
             "ADD_ISSUE": "Lisää pyyntö",
-            "FILTER_ISSUES": "Filter Issues"
+            "FILTER_ISSUES": "Filter issues"
         },
         "DELETE_DUE_DATE": {
             "TITLE": "Delete due date",
@@ -1153,8 +1153,8 @@
             "TITLE": "Poista kierros"
         },
         "REMOVE_RELATIONSHIP_WITH_EPIC": {
-            "TITLE": "Remove relationship with Epic",
-            "MESSAGE": "Are you sure you want to remove the relationship of this User Story with the Epic <strong>{{epicSubject}}</strong>?"
+            "TITLE": "Remove relationship with epic",
+            "MESSAGE": "Are you sure you want to remove the relationship of this user story with its epic <strong>{{epicSubject}}</strong>?"
         },
         "CREATE_MEMBER": {
             "PLACEHOLDER_INVITATION_TEXT": "(Vapaaehtoinen) Lisää oma kuvaus kutsuusi uusille jäsenille ;-)",
@@ -1188,7 +1188,7 @@
             "TITLE": "Set due date",
             "PLACEHOLDER_DUE_DATE": "Select date",
             "REASON_FOR_DUE_DATE": "Reason for the due date",
-            "PLACEHOLDER_REASON_FOR_DUE_DATE": "Why does this US need a due date?",
+            "PLACEHOLDER_REASON_FOR_DUE_DATE": "Why does this user story need a due date?",
             "SUGGESTIONS": {
                 "IN_ONE_WEEK": "In one week",
                 "IN_TWO_WEEKS": "In two weeks",
@@ -1202,7 +1202,7 @@
             "SUBTITLE_ACTION_DELETE_DUE_DATE": "Are you sure you want to delete the due date status {{due_date_status_name}}?"
         },
         "RELATE_TO_EPIC": {
-            "TITLE": "Link to Epic",
+            "TITLE": "Link to epic",
             "EXISTING_EPIC": "Existing epic",
             "NEW_EPIC": "New epic",
             "CHOOSE_PROJECT_FOR_CREATION": "Mikä on projekti?",
@@ -1226,7 +1226,7 @@
         "SUBJECT_BULK_MODE": "Subject (bulk insert)",
         "CHOOSE_PROJECT_FROM": "Which project?",
         "CHOOSE_USERSTORY": "Which user story?",
-        "NO_USERSTORIES": "This project has no User Stories yet. Please select another project.",
+        "NO_USERSTORIES": "This project has no user stories yet. Please select another project.",
         "NO_USERSTORIES_FOUND": "Ei hakutuloksia",
         "FILTER_USERSTORIES": "Suodata käyttäjätarinoita",
         "LIGHTBOX_TITLE_BLOKING_EPIC": "Blocking epic",
@@ -1239,18 +1239,18 @@
         "LINK_TASKBOARD": "Tehtävätaulu",
         "TITLE_LINK_TASKBOARD": "Siirry tehtävätauluun",
         "TOTAL_POINTS": "pisteet yhteensä",
-        "ADD": "+ Lisää uusi käyttäjätarina",
-        "ADD_BULK": "Lisää monta käyttäjätarinaa",
-        "PROMOTED_FROM_ISSUE": "Tämä Kt on liitetty pyyntöön:",
-        "PROMOTED_FROM_TASK": "This US has been promoted from Task:",
+        "ADD": "+ Add a new user story",
+        "ADD_BULK": "Add some new user stories in bulk",
+        "PROMOTED_FROM_ISSUE": "This user story has been promoted from issue:",
+        "PROMOTED_FROM_TASK": "This user story has been promoted from task:",
         "TITLE_LINK_GO_TO_ISSUE": "Siirry pyyntöön",
         "TITLE_LINK_GO_TO_TASK": "Go to task",
         "TITLE_DELETE_ACTION": "Poista käyttäjätarina",
-        "LIGHTBOX_TITLE_BLOKING_US": "Meitä estää",
+        "LIGHTBOX_TITLE_BLOKING_US": "Blocking user story",
         "NOT_ESTIMATED": "Ei arvioitu",
-        "OWNER_US": "This User Story belongs to",
-        "RELATE_TO_EPIC": "Link to Epic",
-        "REMOVE_RELATIONSHIP_WITH_EPIC": "Remove Epic relationship",
+        "OWNER_US": "This user story belongs to",
+        "RELATE_TO_EPIC": "Link to epic",
+        "REMOVE_RELATIONSHIP_WITH_EPIC": "Remove epic relationship",
         "TRIBE": {
             "PUBLISH": "Publish as Gig in Taiga Tribe",
             "PUBLISH_INFO": "Lisätietoa",
@@ -1311,7 +1311,8 @@
             "ASSIGNED_USERS": "assigned users",
             "DUE_DATE": "due date",
             "MILESTONE": "kierros",
-            "COLOR": "väri"
+            "COLOR": "väri",
+            "PROMOTED_TO": "promoted to"
         }
     },
     "BACKLOG": {
@@ -1325,7 +1326,7 @@
         "MOVE_US_TO_CURRENT_SPRINT": "Siirrä nykyiseen kierrokseen",
         "MOVE_US_TO_LATEST_SPRINT": "Move to latest Sprint",
         "EMPTY": "The backlog is empty!",
-        "CREATE_NEW_US": "Luo uusi Kt",
+        "CREATE_NEW_US": "Create a new user story",
         "CREATE_NEW_US_EMPTY_HELP": "Voit haluta lisätä uuden käyttäjätarinan",
         "EXCESS_OF_POINTS": "Pisteiden ylimäärä",
         "PENDING_POINTS": "Odottavat pisteet",
@@ -1353,8 +1354,8 @@
         "FORECASTING": {
             "TITLE": "Velocity forecasting",
             "BACKLOG": "Display backlog",
-            "NEW_SPRINT": "Candidate User Stories for your next sprint based on your velocity. Click to create a new sprint.",
-            "CURRENT_SPRINT": "Candidate User Stories for your sprint based on your velocity. Click to add to current sprint."
+            "NEW_SPRINT": "Candidate user stories for your next sprint based on your velocity. Click to create a new sprint.",
+            "CURRENT_SPRINT": "Candidate user stories for your sprint based on your velocity. Click to add to current sprint."
         },
         "TABLE": {
             "COLUMN_US": "Käyttäjätarinat",
@@ -1387,7 +1388,7 @@
             "LINK_TASKBOARD": "Kierroksien tehtävätaulu",
             "TITLE_LINK_TASKBOARD": "Siirry tehtävätauluun {{name}}",
             "EMPTY": "Ei vielä sprinttejä",
-            "WARNING_EMPTY_SPRINT_ANONYMOUS": "Tässä sprintissä ei ole käyttäjätarinoita",
+            "WARNING_EMPTY_SPRINT_ANONYMOUS": "This sprint has no user stories",
             "WARNING_EMPTY_SPRINT": "Raahaa tähän käyttäjätarinoita aloittaaksesi uuden sprintin",
             "TITLE_ACTION_NEW_SPRINT": "Lisää uusi sprintti",
             "TEXT_ACTION_NEW_SPRINT": "Saatat haluta luoda uuden sprintin projektiisi",
@@ -1396,21 +1397,21 @@
         }
     },
     "ERROR": {
-        "TEXT1": "Jotain tapahtui ja Oompa Loompas työskentelevät sen parissa.",
+        "TEXT1": "Something happened and the Taiga has captured the error to be able to work on it.",
         "NOT_FOUND": "Ei löytynyt",
         "NOT_FOUND_TEXT": "Virhe 404. Sivua ei löydy. Palaa takaisin TAIGA etusivulle ja katso löydätkö haluamasi sieltä.",
         "PERMISSION_DENIED": "Ei oikeutta",
         "PERMISSION_DENIED_TEXT": "Pääsy estetty.",
-        "VERSION_ERROR": "Joku Taigassa on päivittänyt tätä ennen sinua. Muutoksiasi ei voida tallentaa. Lataa sivu uudestaan ja korjaa tilanne."
+        "VERSION_ERROR": "Some other user inside Taiga has changed this before and your changes can't be applied. Save them elsewhere, reload the page and re-apply your changes again or they will be lost."
     },
     "TASKBOARD": {
         "PAGE_TITLE": "{{sprintName}} - Sprint tehtävätaulu - {{projectName}}",
         "PAGE_DESCRIPTION": "Sprint {{sprintName}} (from {{startDate}} to {{endDate}}) of {{projectName}}. Completed {{completedPercentage}}% ({{completedPoints}} of {{totalPoints}} points). {{openTasks}} opened tasks of {{totalTasks}}.",
         "SECTION_NAME": "Tehtävätaulu",
-        "TITLE_ACTION_ADD": "Lisää uusi tehtävä",
-        "TITLE_ACTION_ADD_BULK": "Lisää monta tehtävää",
-        "TITLE_ACTION_ADD_ISSUE": "Add a new Issue",
-        "TITLE_ACTION_ADD_ISSUE_BULK": "Add some new Issues in bulk",
+        "TITLE_ACTION_ADD": "Add a new task",
+        "TITLE_ACTION_ADD_BULK": "Add some new tasks in bulk",
+        "TITLE_ACTION_ADD_ISSUE": "Add a new issue",
+        "TITLE_ACTION_ADD_ISSUE_BULK": "Add some new issues in bulk",
         "TITLE_ACTION_ASSIGN": "Valitse tekijä",
         "PLACEHOLDER_CARD_TITLE": "This could be a task",
         "PLACEHOLDER_CARD_TEXT": "Jaa tarinat tehtäviksi, että voit seurata niitä erikseen",
@@ -1422,7 +1423,7 @@
             "TITLE_ACTION_UNFOLD_ROW": "Laajenna rivi",
             "FIELD_POINTS": "pisteet",
             "ROW_STORYLESS_TASKS_TITLE": "Storyless tasks",
-            "ROW_ISSUES_TITLE": "Sprint Issues"
+            "ROW_ISSUES_TITLE": "Sprint issues"
         },
         "CHARTS": {
             "XAXIS_LABEL": "Päivät",
@@ -1437,12 +1438,12 @@
             "MOVE_TO_OPEN_SPRINT": "Move to open sprint",
             "NO_OPEN_SPRINTS": "There are no other open sprints. Please create one first.",
             "SELECT_DESTINATION_PLACEHOLDER": "Select destination",
-            "UNFINISHED_USER_STORIES_COUNT": "{total, plural, one{<strong>#</strong> unfinished user story} other{<strong>#</strong> unfinished user stories}}",
-            "UNFINISHED_STORYLESS_TASKS_COUNT": "{total, plural, one{<strong>#</strong> unfinished storyless task} other{<strong>#</strong> unfinished storyless tasks}}",
-            "UNFINISHED_ISSUES_COUNT": "{total, plural, one{<strong>#</strong> unfinished issue} other{<strong>#</strong> unfinished issue}}",
+            "UNFINISHED_USER_STORIES_COUNT": "{total, plural, =1{<strong>#</strong> unfinished user story} other{<strong>#</strong> unfinished user stories}}",
+            "UNFINISHED_STORYLESS_TASKS_COUNT": "{total, plural, =1{<strong>#</strong> unfinished storyless task} other{<strong>#</strong> unfinished storyless tasks}}",
+            "UNFINISHED_ISSUES_COUNT": "{total, plural, =1{<strong>#</strong> unfinished issue} other{<strong>#</strong> unfinished issue}}",
             "WARNING_ISSUES_NOT_MOVED_TITLE": "You just moved all user stories and taks, and the sprint'll be closed",
             "WARNING_ISSUES_NOT_MOVED": "The issues'll remain in the sprint and don't be removed",
-            "WARNING_SPRINT_STILL_OPEN_TITLE": "{total, plural, one{You just moved # item!} other{You just moved # items!}}",
+            "WARNING_SPRINT_STILL_OPEN_TITLE": "{total, plural, =1{You just moved # item!} other{You just moved # items!}}",
             "WARNING_SPRINT_STILL_OPEN": "Please note that the sprint {{sprintName}} <strong>will remain open</strong> as long as it contains unfinished items."
         }
     },
@@ -1466,8 +1467,8 @@
     "NOTIFICATION": {
         "OK": "Kaikki on kunnossa",
         "WARNING": "Oops, jotain tapahtui...",
-        "WARNING_TEXT": "Oompa Loompas eivät pystyneet tallentamaan muutoksiasi!",
-        "SAVED": "Oompa Loompas tallensivat kaikki muutoksesi!",
+        "WARNING_TEXT": "Your changes were not saved!",
+        "SAVED": "The Taiga saved all your changes!",
         "CLOSE": "Sulje ilmoitus",
         "MAIL": "Ilmoitukset sähköpostilla",
         "DESKTOP": "Desktop notifications using browser alerts",
@@ -1475,17 +1476,17 @@
     },
     "CANCEL_ACCOUNT": {
         "TITLE": "Peru tunnuksesi",
-        "SUBTITLE": "Olemme pahoillamme että jätät Taigan. Toivottavasti nautit oleskelusta :)",
+        "SUBTITLE": "We're sorry you are leaving the Taiga, we hope you enjoyed your stay :)",
         "PLACEHOLDER_INPUT_TOKEN": "peru tunnus tokeni",
         "ACTION_LEAVING": "Kyllä, olen lähdössä!",
-        "SUCCESS": " Oompa Loompas poistivat tunnuksesi"
+        "SUCCESS": "The Taiga removed your account"
     },
     "CHANGE_EMAIL_FORM": {
         "TITLE": "Muuta sähköpostisi",
         "SUBTITLE": "Vielä yksi klikki ja sähköpostisi on päivitetty!",
         "PLACEHOLDER_INPUT_TOKEN": "muuta sähköposti-tokenia",
         "ACTION_CHANGE_EMAIL": "Muuta sähköpostisi",
-        "SUCCESS": "Oompa Loompas päivittivät sähköpostisi"
+        "SUCCESS": "The Taiga updated your email"
     },
     "ISSUES": {
         "PAGE_TITLE": "Issues - {{projectName}}",
@@ -1507,13 +1508,13 @@
             "SEVERITY": "Vakavuus",
             "TYPE": "Tyyppi"
         },
-        "FILTER_ISSUES": "Filter Issues",
+        "FILTER_ISSUES": "Filter issues",
         "CONFIRM_DETACH_FROM_SPRINT": {
-            "TITLE": "Detach issue from Sprint",
+            "TITLE": "Detach issue from sprint",
             "MESSAGE": "You are about to detach the issue from the sprint <strong>{{ sprintName }}<strong>"
         },
         "CONFIRM_CHANGE_FROM_SPRINT": {
-            "TITLE": "Attach issue to Sprint",
+            "TITLE": "Attach issue to sprint",
             "MESSAGE": "<strong>This issue is currently attached to sprint {{ oldSprintName }}</strong>. You are about to detach it from that sprint and attach it instead to sprint <strong>{{ newSprintName }}.</strong>"
         },
         "TABLE": {
@@ -1546,12 +1547,12 @@
         "SECTION_NAME": "Kanban",
         "TITLE_ACTION_FOLD": "Kavenna sarake",
         "TITLE_ACTION_UNFOLD": "Laajenna sarake",
-        "TITLE_ACTION_ADD_US": "Lisää uusi käyttäjätarina",
-        "TITLE_ACTION_ADD_BULK": "Lisää monta",
+        "TITLE_ACTION_ADD_US": "Add new user story",
+        "TITLE_ACTION_ADD_BULK": "Add new bulk",
         "ACTION_SHOW_ARCHIVED": "Näytä arkisto",
         "ACTION_HIDE_ARCHIVED": "Piilota arkisto",
         "HIDDEN_USER_STORIES": "Käyttäjätarinat tällä alueella ovat oletuksena piilotettuna",
-        "PLACEHOLDER_CARD_TITLE": "Nämä ovat käyttäjätarinasi",
+        "PLACEHOLDER_CARD_TITLE": "These are your user stories",
         "PLACEHOLDER_CARD_TEXT": "Stories might also have subtasks to separate requirements"
     },
     "SEARCH": {
@@ -1686,37 +1687,37 @@
     },
     "TIMELINE": {
         "UPLOAD_ATTACHMENT": "{{username}} lisäsi uuden liitetiedoston {{obj_name}}",
-        "US_CREATED": "{{username}} loi uuden käyttäjätarinan {{obj_name}}  {{project_name}}",
+        "US_CREATED": "{{username}} has created a new user story {{obj_name}} in {{project_name}}",
         "ISSUE_CREATED": "{{username}} has created a new issue {{obj_name}} in {{project_name}}",
         "TASK_CREATED": "{{username}} loi uuden tehtävän {{obj_name}} -\n {{project_name}}",
-        "TASK_CREATED_WITH_US": "{{username}} has created a new task {{obj_name}} in {{project_name}} which belongs to the US {{us_name}}",
+        "TASK_CREATED_WITH_US": "{{username}} has created a new task {{obj_name}} in {{project_name}} which belongs to the user story {{us_name}}",
         "WIKI_CREATED": "{{username}} has created a new wiki page {{obj_name}} in {{project_name}}",
         "MILESTONE_CREATED": "{{username}} loi uuden sprintin {{obj_name}} - {{project_name}}",
         "EPIC_CREATED": "{{username}} loi uuden eepoksen {{obj_name}} - {{project_name}}",
-        "EPIC_RELATED_USERSTORY_CREATED": "{{username}} has related the userstory {{related_us_name}} to the epic {{epic_name}} in {{project_name}}",
+        "EPIC_RELATED_USERSTORY_CREATED": "{{username}} has related the user story {{related_us_name}} to the epic {{epic_name}} in {{project_name}}",
         "NEW_PROJECT": "{{username}} loi projektin {{project_name}}",
         "MILESTONE_UPDATED": "{{username}} muokkasi sprinttiä {{obj_name}}",
-        "US_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the US {{obj_name}}",
-        "US_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the US {{obj_name}} to {{new_value}}",
-        "US_UPDATED_POINTS": "{{username}} has updated '{{role_name}}' points of the US {{obj_name}} to {{new_value}}",
+        "US_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the user story {{obj_name}}",
+        "US_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the user story {{obj_name}} to {{new_value}}",
+        "US_UPDATED_POINTS": "{{username}} has updated '{{role_name}}' points of the user story {{obj_name}} to {{new_value}}",
         "ISSUE_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the issue {{obj_name}}",
         "ISSUE_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the issue {{obj_name}} to {{new_value}}",
         "TASK_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} to {{new_value}}",
         "TASK_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} to {{new_value}}",
-        "TASK_UPDATED_WITH_US": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} which belongs to the US {{us_name}}",
-        "TASK_UPDATED_WITH_US_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} which belongs to the US {{us_name}} to {{new_value}}",
+        "TASK_UPDATED_WITH_US": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} which belongs to the user story {{us_name}}",
+        "TASK_UPDATED_WITH_US_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} which belongs to the user story {{us_name}} to {{new_value}}",
         "WIKI_UPDATED": "{{username}} päivitti wikiä {{obj_name}}",
         "EPIC_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the epic {{obj_name}}",
         "EPIC_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the epic {{obj_name}} to {{new_value}}",
         "EPIC_UPDATED_WITH_NEW_COLOR": "{{username}} has updated the \"{{field_name}}\" of the epic {{obj_name}} to <span class=\"new-color\" style=\"background: {{new_value}}\"></span>",
-        "NEW_COMMENT_US": "{{username}} kommentoi tarinaa {{obj_name}}",
+        "NEW_COMMENT_US": "{{username}} has commented in the user story {{obj_name}}",
         "NEW_COMMENT_ISSUE": "{{username}} has commented in the issue {{obj_name}}",
         "NEW_COMMENT_TASK": "{{username}} has commented in the task {{obj_name}}",
         "NEW_COMMENT_EPIC": "{{username}} has commented in the epic {{obj_name}}",
         "NEW_MEMBER": "{{project_name}} uusi jäsen lisätty",
-        "US_ADDED_MILESTONE": "{{username}} has added the US {{obj_name}} to {{sprint_name}}",
-        "US_MOVED": "{{username}} has moved the US {{obj_name}}",
-        "US_REMOVED_FROM_MILESTONE": "{{username}} has added the US {{obj_name}} to the backlog",
+        "US_ADDED_MILESTONE": "{{username}} has added the user story {{obj_name}} to {{sprint_name}}",
+        "US_MOVED": "{{username}} has moved the user story {{obj_name}}",
+        "US_REMOVED_FROM_MILESTONE": "{{username}} has added the user story {{obj_name}} to the backlog",
         "BLOCKED": "{{username}} has blocked {{obj_name}}",
         "UNBLOCKED": "{{username}} has unblocked {{obj_name}}",
         "NEW_USER": "{{username}} has joined Taiga",
@@ -1768,7 +1769,7 @@
             },
             "STEP2": {
                 "TITLE": "Käynnissä olevat",
-                "TEXT": "Here you will find the User Stories, Tasks and Issues in which you are working on."
+                "TEXT": "Here you will find the user stories, tasks and issues in which you are working on."
             },
             "STEP3": {
                 "TITLE": "Seuraa",
@@ -1807,11 +1808,11 @@
             },
             "STEP2": {
                 "TITLE": "Käyttäjätarinat & Tehtävät",
-                "TEXT": "User Stories are the requirements at high level. You can drag them to different columns."
+                "TEXT": "User stories are the requirements at high level. You can drag them to different columns."
             },
             "STEP3": {
                 "TITLE": "Adding User Stories",
-                "TEXT1": "You may want to add a single User Story (add US icon) or a group of them (bulk icon)",
+                "TEXT1": "You may want to add a single user story (add user story icon) or a group of them (bulk icon)",
                 "TEXT2": "Onnea matkaan!"
             }
         }
@@ -1820,7 +1821,7 @@
         "PAGE_TITLE": "Discover projects - Taiga",
         "PAGE_DESCRIPTION": "Searchable directory of Public Projects in Taiga. Explore backlogs, timelines, issues, and teams. Check out the most liked or most active projects. Filter by Kanban or Scrum.",
         "DISCOVER_TITLE": "Discover projects",
-        "DISCOVER_SUBTITLE": "{projects, plural, one{One public project to discover} other{# public projects to discover}}",
+        "DISCOVER_SUBTITLE": "{projects, plural, =1{One public project to discover} other{# public projects to discover}}",
         "MOST_ACTIVE": "Aktiivisin",
         "MOST_ACTIVE_EMPTY": "Ei vielä AKTIIVISIA projekteja",
         "MOST_LIKED": "Eniten tykätty",
