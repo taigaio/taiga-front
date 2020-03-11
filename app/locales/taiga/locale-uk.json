@@ -47,7 +47,7 @@
         "CAPSLOCK_WARNING": "Будьте обережні! Ви використовуєте великі літери у полі вводу, яке чутливе до регістру.",
         "CONFIRM_CLOSE_EDIT_MODE_TITLE": "Ви дійсно хочете закрити режим редагування?",
         "CONFIRM_CLOSE_EDIT_MODE_MESSAGE": "Пам'ятайте: якщо Ви закриєте режим редагування без збереження, всі зміни будуть втрачені",
-        "RELATED_USERSTORIES": "Пов'язані користувацькі історії",
+        "RELATED_USERSTORIES": "Пов'язані історії користувача",
         "CARD": {
             "ASSIGN_TO": "Назначити на",
             "EDIT": "Редагувати картку",
@@ -202,24 +202,24 @@
             "BUTTON_TITLE": "Проголосувати/скасувати голосування за цей запис",
             "COUNTER_TITLE": "{total, plural, =1{one vote} other{# votes}}"
         },
-        "PROMOTE_TO_US": "Promote to user story",
+        "PROMOTE_TO_US": "Перетворити в історію користувача",
         "PROMOTED_ISSUES": "This issue has been promoted to",
         "PROMOTED_TASKS": "This task has been promoted to",
         "CONFIRM_PROMOTE": {
             "ISSUE": {
                 "TITLE": "Підвищити цю проблему до нової історії користувача",
-                "MESSAGE": "Are you sure you want to create a new user story from this issue?"
+                "MESSAGE": "Ви дійсно хочете створити нову історію користувача із цієї проблеми?"
             },
             "TASK": {
-                "TITLE": "Promote this task to a new user story",
-                "MESSAGE": "Are you sure you want to create a new user story from this task?"
+                "TITLE": "Перетворити це завдання в історію користувача",
+                "MESSAGE": "Ви дійсно хочете створити нову історію користувача із цього завдання?"
             }
         },
         "CUSTOM_ATTRIBUTES": {
             "CUSTOM_FIELDS": "Користувацькі поля",
             "SAVE": "Save custom field",
             "EDIT": "Edit custom field",
-            "DELETE": "Видалити користувацький атрибут",
+            "DELETE": "Видалити нестандартний атрибут",
             "CONFIRM_DELETE": "Remember that all values in this custom field will be deleted.\n Are you sure you want to continue?"
         },
         "FILTERS": {
@@ -274,12 +274,12 @@
                 "DELETE_SPRINTS": "Видалити спринти"
             },
             "USER_STORIES": {
-                "NAME": "Користувацькі Історії",
-                "VIEW_USER_STORIES": "Переглянути користувацькі історії",
-                "ADD_USER_STORIES": "Додати користувацькі історії",
-                "MODIFY_USER_STORIES": "Редагувати користувацькі історії",
-                "COMMENT_USER_STORIES": "Коментувати користувацькі історії",
-                "DELETE_USER_STORIES": "Видалити користувацькі історії"
+                "NAME": "Історії користувача",
+                "VIEW_USER_STORIES": "Переглянути історії користувача",
+                "ADD_USER_STORIES": "Додати історії користувача",
+                "MODIFY_USER_STORIES": "Редагувати історії користувача",
+                "COMMENT_USER_STORIES": "Коментувати історії користувача",
+                "DELETE_USER_STORIES": "Видалити історії користувача"
             },
             "TASKS": {
                 "NAME": "Завдання",
@@ -331,7 +331,7 @@
     },
     "LOGIN_FORM": {
         "ERROR_AUTH_INCORRECT": "According to the Taiga, your username/email or password are incorrect.",
-        "SUCCESS": "Welcome to Taiga."
+        "SUCCESS": "Ласкаво просимо до Taiga."
     },
     "REGISTER": {
         "PAGE_TITLE": "Реєстрація - Taiga",
@@ -370,7 +370,7 @@
         "PLACEHOLDER_NEW_PASSWORD": "Введіть новий пароль",
         "FIELD_RETYPE_PASSWORD": "Введіть ще раз новий пароль",
         "PLACEHOLDER_RETYPE_PASSWORD": "Введіть ще раз новий пароль",
-        "ERROR_PASSWORD_MATCH": "The passwords don't match"
+        "ERROR_PASSWORD_MATCH": "Паролі не співпадають"
     },
     "CHANGE_PASSWORD_RECOVERY_FORM": {
         "TITLE": "Створити новий пароль Taiga",
@@ -394,7 +394,7 @@
         "PAGE_DESCRIPTION": "Домашня сторінка Taiga з Вашими основними проектами та усіма вами призначеними та відслідковуваними користувацькими історіями, завданнями та проблемами",
         "EMPTY_WORKING_ON": "<strong>Виглядає порожньо, чи не так?</strong> Почніть працювати з Taiga, і Ви побачите тут історії, завдання та проблеми, над якими Ви працюєте.",
         "EMPTY_WATCHING": "<strong>Follow</strong> user stories, tasks, issues in your projects and be notified about their changes :)",
-        "EMPTY_PROJECT_LIST": "You don't have any project yet",
+        "EMPTY_PROJECT_LIST": "У Вас ще немає проектів",
         "WORKING_ON_SECTION": "Працює над",
         "WATCHING_SECTION": "Відслідковування",
         "DASHBOARD": "Інформаційна панель проекту",
@@ -416,7 +416,7 @@
         },
         "EMPTY": {
             "TITLE": "Схоже, що тут ще немає епіків",
-            "EXPLANATION": "Епіки - елементи на більш високому рівні, що охоплюють користувацькі історії.<br />Епії знаходяться на вершині ієрархії і можуть бути використані для групування користувацьких історій.",
+            "EXPLANATION": "Епіки - елементи на більш високому рівні, що охоплюють історії користувача.<br />Епії знаходяться на вершині ієрархії і можуть бути використані для групування історій користувача.",
             "HELP": "Дізнатись більше про епіки"
         },
         "TABLE": {
@@ -427,7 +427,7 @@
             "ASSIGNED_TO": "Назначений",
             "STATUS": "Статус",
             "PROGRESS": "Прогрес",
-            "CLOSED_US": "Closed user stories",
+            "CLOSED_US": "Закриті історії користувача",
             "CLOSED_EPICS": "Closed epics",
             "VIEW_OPTIONS": "Варіанти перегляду"
         },
@@ -572,7 +572,7 @@
         },
         "CSV": {
             "SECTION_TITLE_EPIC": "звіти епіків",
-            "SECTION_TITLE_US": "звіти користувацьких історій",
+            "SECTION_TITLE_US": "звіти історій користувача",
             "SECTION_TITLE_TASK": "звіти завдань",
             "SECTION_TITLE_ISSUE": "звіт проблем",
             "DOWNLOAD": "Завантажити CSV",
@@ -585,11 +585,11 @@
         },
         "CUSTOM_FIELDS": {
             "TITLE": "Користувацькі поля",
-            "SUBTITLE": "Вкажіть власні поля для ваших користувацьких історій, завдань та проблем.",
+            "SUBTITLE": "Вкажіть нетипові поля для ваших історій користувача, завдань та проблем.",
             "EPIC_DESCRIPTION": "Власні поля епіків",
             "EPIC_ADD": "Додати власне поле в епік",
-            "US_DESCRIPTION": "Власні поля користувацьких історій",
-            "US_ADD": "Додати власне поле у користувацькі історії",
+            "US_DESCRIPTION": "Нетипові поля історій користувача",
+            "US_ADD": "Додати нетипове поле у історії користувача",
             "TASK_DESCRIPTION": "Власні поля завдань",
             "TASK_ADD": "Додати власне поле у завдання",
             "ISSUE_DESCRIPTION": "Власні поля проблем",
@@ -610,8 +610,8 @@
         },
         "PROJECT_VALUES_POINTS": {
             "TITLE": "Кількість очок",
-            "SUBTITLE": "Вкажіть кількість очок, у які можуть бути оцінені ваші користувацькі історії",
-            "US_TITLE": "User story points",
+            "SUBTITLE": "Вкажіть кількість очок, у які можуть бути оцінені ваші історії користувача",
+            "US_TITLE": "Очки історії користувача",
             "ACTION_ADD": "Add new point"
         },
         "PROJECT_VALUES_PRIORITIES": {
@@ -628,7 +628,7 @@
         },
         "PROJECT_VALUES_STATUS": {
             "TITLE": "Статуси",
-            "SUBTITLE": "Вкажіть статуси, які могтимуть мати ваші історії користувача, завдання та проблеми",
+            "SUBTITLE": "Вкажіть статуси, які будуть мати ваші історії користувача, завдання та проблеми",
             "EPIC_TITLE": "Статуси епіку",
             "US_TITLE": "Статуси історії користувача",
             "TASK_TITLE": "Статуси завдання",
@@ -654,7 +654,7 @@
         "PROJECT_DUE_DATE_STATUS": {
             "TITLE": "Кінцеві дати",
             "SUBTITLE": "Specify the due dates status your user stories, tasks and issues will go through if selected",
-            "US_TITLE": "Статус кінцевої дати для користувацької історії",
+            "US_TITLE": "Статус кінцевої дати для історії користувача",
             "ACTION_ADD_STATUS": "Додати новий статус",
             "TASK_TITLE": "Статус кінцевої дати для завдання",
             "ISSUE_TITLE": "Статус кінцевої дати для проблеми",
@@ -726,7 +726,7 @@
             "WEBHOOK_NAME": "Webhook '{{name}}'"
         },
         "CUSTOM_ATTRIBUTES": {
-            "PAGE_TITLE": "{{sectionName}} - Власні характерні ознаки - {{projectName}}",
+            "PAGE_TITLE": "{{sectionName}} - Нестандартні атрибути - {{projectName}}",
             "ADD": "Додати власне поле",
             "EDIT": "Edit custom field",
             "DELETE": "Delete custom field",
@@ -778,7 +778,7 @@
         },
         "MENU": {
             "PROJECT": "Проект",
-            "ATTRIBUTES": "Характерні ознаки",
+            "ATTRIBUTES": "Атрибути",
             "MEMBERS": "Учасники",
             "PERMISSIONS": "Дозволи",
             "INTEGRATIONS": "Інтеграція"
@@ -855,7 +855,7 @@
             "FILTER_TYPE_EPICS": "Епіки",
             "FILTER_TYPE_EPICS_TITLE": "Показати лише епіки",
             "FILTER_TYPE_USER_STORIES": "Історії",
-            "FILTER_TYPE_USER_STORIES_TITLE": "Показати лише користувацькі історії",
+            "FILTER_TYPE_USER_STORIES_TITLE": "Показати лише історії користувача",
             "FILTER_TYPE_TASKS": "Завдання",
             "FILTER_TYPE_TASKS_TITLE": "Показати лише завдання",
             "FILTER_TYPE_ISSUES": "Проблеми",
@@ -1045,9 +1045,9 @@
                 "CHOOSE_PROJECT": "Find the project you want to import",
                 "NO_PROJECTS": "Схоже, що Ви не маєте проектів у GitHub",
                 "HOW_DO_YOU_WANT_TO_IMPORT": "Як Ви хочете імпортувати проблеми у Taiga?",
-                "KANBAN_PROJECT": "Як користувацькі історії у канбан-проекті",
+                "KANBAN_PROJECT": "Як історії користувача у канбан-проекті",
                 "KANBAN_PROJECT_DESCRIPTION": "After that you can enable scrum with backlog.",
-                "SCRUM_PROJECT": "Як користувацькі історії у скрам-проекті",
+                "SCRUM_PROJECT": "Як історії користувача у скрам-проекті",
                 "SCRUM_PROJECT_DESCRIPTION": "Після цього Ви зможете ввімкнути режим канбан.",
                 "ISSUES_PROJECT": "Як проблеми",
                 "ISSUES_PROJECT_DESCRIPTION": "You will not be able to use your issues in kanban or scrum mode. You will be able to enable kanban or scrum for new user stories"
@@ -1088,7 +1088,7 @@
         "DELETE_PROJECT": {
             "TITLE": "Видалити проект",
             "QUESTION": "Ви дійсно хочете видалити цей проект?",
-            "SUBTITLE": "Усі дані проекту (користувацькі історії, завдання, проблеми, спринти та сторінки вікі) будуть втрачені! :-(",
+            "SUBTITLE": "Усі дані проекту (історії користувача, завдання, проблеми, спринти та сторінки вікі) будуть втрачені! :-(",
             "CONFIRM": "Так, я дійсно впевнений"
         },
         "ASSIGNED_TO": {
@@ -1131,7 +1131,7 @@
         "CREATE_EDIT": {
             "TASK_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this task",
             "ISSUE_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this issue",
-            "US_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this user story",
+            "US_PLACEHOLDER_DESCRIPTION": "Будь ласка, додайте опис, щоб допомогти іншим краще зрозуміти цю історію користувача",
             "NEW_TASK": "Нове завдання",
             "NEW_ISSUE": "New issue",
             "NEW_US": "Нова історія користувача",
@@ -1228,7 +1228,7 @@
         "CHOOSE_USERSTORY": "Яка історія користувача?",
         "NO_USERSTORIES": "This project has no user stories yet. Please select another project.",
         "NO_USERSTORIES_FOUND": "Нічого не вдалось знайти за Вашим критерієм пошуку",
-        "FILTER_USERSTORIES": "Фільтрувати користувацькі історії",
+        "FILTER_USERSTORIES": "Фільтрувати історії користувача",
         "LIGHTBOX_TITLE_BLOKING_EPIC": "Блокуючий епік",
         "ACTION_DELETE": "Видалити епік"
     },
@@ -1239,16 +1239,16 @@
         "LINK_TASKBOARD": "Дошка завдань",
         "TITLE_LINK_TASKBOARD": "Перейти до дошки завдань",
         "TOTAL_POINTS": "загальна кількість очок",
-        "ADD": "+ Add a new user story",
+        "ADD": "+ Додати нову історію користувача",
         "ADD_BULK": "Add some new user stories in bulk",
-        "PROMOTED_FROM_ISSUE": "This user story has been promoted from issue:",
-        "PROMOTED_FROM_TASK": "This user story has been promoted from task:",
+        "PROMOTED_FROM_ISSUE": "Ця історія користувача була створена з проблеми:",
+        "PROMOTED_FROM_TASK": "Ця історія користувача була створена з завдання:",
         "TITLE_LINK_GO_TO_ISSUE": "Перейти до проблеми",
         "TITLE_LINK_GO_TO_TASK": "Go to task",
         "TITLE_DELETE_ACTION": "Видалити історію користувача",
-        "LIGHTBOX_TITLE_BLOKING_US": "Blocking user story",
+        "LIGHTBOX_TITLE_BLOKING_US": "Блокуюча історія користувача",
         "NOT_ESTIMATED": "Не оцінено",
-        "OWNER_US": "This user story belongs to",
+        "OWNER_US": "Ця історія користувача належить до",
         "RELATE_TO_EPIC": "Link to epic",
         "REMOVE_RELATIONSHIP_WITH_EPIC": "Remove epic relationship",
         "TRIBE": {
@@ -1289,8 +1289,8 @@
         "NEW_ATTACHMENT": "нове вкладення:",
         "DELETED_ATTACHMENT": "видалене вкладення:",
         "UPDATED_ATTACHMENT": "оновлене вкладення ({{filename}}):",
-        "CREATED_CUSTOM_ATTRIBUTE": "створена власна характерна ознака",
-        "UPDATED_CUSTOM_ATTRIBUTE": "оновлена власна характерна ознака",
+        "CREATED_CUSTOM_ATTRIBUTE": "створений нестандартний атрибут",
+        "UPDATED_CUSTOM_ATTRIBUTE": "оновлений нестандартний атрибут",
         "BECAME_DEPRECATED": "стало застарілим",
         "BECAME_UNDEPRECATED": "became undeprecated",
         "TEAM_REQUIREMENT": "Вимога команди",
@@ -1317,7 +1317,7 @@
     },
     "BACKLOG": {
         "PAGE_TITLE": "Невиконана робота - {{projectName}}",
-        "PAGE_DESCRIPTION": "Панель невиконаної роботи з користувацькими історіями та спринтами проекту {{projectName}}: {{projectDescription}}",
+        "PAGE_DESCRIPTION": "Панель невиконаної роботи з історіями користувача та спринтами проекту {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Невиконана робота",
         "CUSTOMIZE_GRAPH": "Налаштувати графік Вашої невиконаної роботи",
         "CUSTOMIZE_GRAPH_TEXT": "To have a nice graph that helps you follow the evolution of the project you have to set up the points and sprints through the",
@@ -1326,7 +1326,7 @@
         "MOVE_US_TO_CURRENT_SPRINT": "Перемістити у поточний спринт",
         "MOVE_US_TO_LATEST_SPRINT": "Перемістити до останнього спринта",
         "EMPTY": "Список невиконаної роботи порожній!",
-        "CREATE_NEW_US": "Create a new user story",
+        "CREATE_NEW_US": "Створити нову історію користувача",
         "CREATE_NEW_US_EMPTY_HELP": "Ви можете створити нову історію користувача",
         "EXCESS_OF_POINTS": "Excess of points",
         "PENDING_POINTS": "Кількість очок в очікуванні",
@@ -1358,7 +1358,7 @@
             "CURRENT_SPRINT": "Candidate user stories for your sprint based on your velocity. Click to add to current sprint."
         },
         "TABLE": {
-            "COLUMN_US": "Користувацькі Історії",
+            "COLUMN_US": "Історії користувача",
             "TITLE_COLUMN_POINTS": "Вибрати перегляд за роллю"
         },
         "SPRINT_SUMMARY": {
@@ -1388,7 +1388,7 @@
             "LINK_TASKBOARD": "Дошка завдань спринта",
             "TITLE_LINK_TASKBOARD": "Перейти до дошки завдань \"{{name}}\"",
             "EMPTY": "Ще немає спринтів",
-            "WARNING_EMPTY_SPRINT_ANONYMOUS": "This sprint has no user stories",
+            "WARNING_EMPTY_SPRINT_ANONYMOUS": "У цьому спринті немає історій користувача",
             "WARNING_EMPTY_SPRINT": "Перетягніть сюди історії із вашої невиконаної роботи, щоб розпочати новий спринт",
             "TITLE_ACTION_NEW_SPRINT": "Додати новий спринт",
             "TEXT_ACTION_NEW_SPRINT": "Ви напевно хочете створити новий спринт у проекті",
@@ -1547,19 +1547,19 @@
         "SECTION_NAME": "Канбан",
         "TITLE_ACTION_FOLD": "Згорнути колонку",
         "TITLE_ACTION_UNFOLD": "Розгорнути колонку",
-        "TITLE_ACTION_ADD_US": "Add new user story",
+        "TITLE_ACTION_ADD_US": "Додати нову історію користувача",
         "TITLE_ACTION_ADD_BULK": "Add new bulk",
         "ACTION_SHOW_ARCHIVED": "Показати заархівовані",
         "ACTION_HIDE_ARCHIVED": "Приховати заархівовані",
         "HIDDEN_USER_STORIES": "The user stories in this status are hidden by default",
-        "PLACEHOLDER_CARD_TITLE": "These are your user stories",
+        "PLACEHOLDER_CARD_TITLE": "Це ваші історії користувача",
         "PLACEHOLDER_CARD_TEXT": "Історії також можуть мати підзадачі для розділення вимог"
     },
     "SEARCH": {
         "PAGE_TITLE": "Пошук - {{projectName}}",
         "PAGE_DESCRIPTION": "Search anything, user stories, issues, tasks or wiki pages, in the project {{projectName}}: {{projectDescription}}",
         "FILTER_EPICS": "Епіки",
-        "FILTER_USER_STORIES": "Користувацькі Історії",
+        "FILTER_USER_STORIES": "Історії користувача",
         "FILTER_ISSUES": "Проблеми",
         "FILTER_TASKS": "Завдання",
         "FILTER_WIKI": "Сторінки Вікі",
@@ -1683,41 +1683,41 @@
         "HINT3_TITLE": "Reorder your projects to feature those most relevant to you.",
         "HINT3_TEXT": "The 10 projects are listed in the direct access bar at the top.",
         "HINT4_TITLE": "Ви забули над чим працювали?",
-        "HINT4_TEXT": "Не хвилюйтеся, на інформаційній панелі Ви знайдете свої відкриті завдання, проблеми та користувацькі історії у тому порядку, як Ви працювали над ними."
+        "HINT4_TEXT": "Не хвилюйтеся, на інформаційній панелі Ви знайдете свої відкриті завдання, проблеми та історії користувача у тому порядку, як Ви працювали над ними."
     },
     "TIMELINE": {
         "UPLOAD_ATTACHMENT": "{{username}} вивантажив нове вкладення у {{obj_name}}",
-        "US_CREATED": "{{username}} has created a new user story {{obj_name}} in {{project_name}}",
+        "US_CREATED": "{{username}} створив історію користувача {{obj_name}} у {{project_name}}",
         "ISSUE_CREATED": "{{username}} створив нову проблему {{obj_name}} у {{project_name}}",
         "TASK_CREATED": "{{username}} створив нове завдання {{obj_name}} у {{project_name}}",
-        "TASK_CREATED_WITH_US": "{{username}} has created a new task {{obj_name}} in {{project_name}} which belongs to the user story {{us_name}}",
+        "TASK_CREATED_WITH_US": "{{username}} створив нове завдання {{obj_name}} у {{project_name}}, що належить до історії користувача {{us_name}}",
         "WIKI_CREATED": "{{username}} створив нову сторінку вікі {{obj_name}} у {{project_name}}",
         "MILESTONE_CREATED": "{{username}} створив новий спринт {{obj_name}} у {{project_name}}",
         "EPIC_CREATED": "{{username}} створив новий епік {{obj_name}} у {{project_name}}",
         "EPIC_RELATED_USERSTORY_CREATED": "{{username}} has related the user story {{related_us_name}} to the epic {{epic_name}} in {{project_name}}",
         "NEW_PROJECT": "{{username}} створив проект {{project_name}}",
         "MILESTONE_UPDATED": "{{username}} оновив спринт {{obj_name}}",
-        "US_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the user story {{obj_name}}",
-        "US_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the user story {{obj_name}} to {{new_value}}",
+        "US_UPDATED": "{{username}} оновив атрибут \"{{field_name}}\" історії користувача {{obj_name}}",
+        "US_UPDATED_WITH_NEW_VALUE": "{{username}} оновив атрибут \"{{field_name}}\" історії користувача {{obj_name}} на {{new_value}}",
         "US_UPDATED_POINTS": "{{username}} has updated '{{role_name}}' points of the user story {{obj_name}} to {{new_value}}",
-        "ISSUE_UPDATED": "{{username}} оновив характерну ознаку \"{{field_name}}\" проблеми {{obj_name}}",
-        "ISSUE_UPDATED_WITH_NEW_VALUE": "{{username}} оновив характерну ознаку \"{{field_name}}\" проблеми {{obj_name}} на {{new_value}}",
-        "TASK_UPDATED": "{{username}} оновив характерну ознаку \"{{field_name}}\" завдання {{obj_name}} на {{new_value}}",
-        "TASK_UPDATED_WITH_NEW_VALUE": "{{username}} оновив характерну ознаку \"{{field_name}}\" завдання {{obj_name}} на {{new_value}}",
-        "TASK_UPDATED_WITH_US": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} which belongs to the user story {{us_name}}",
-        "TASK_UPDATED_WITH_US_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} which belongs to the user story {{us_name}} to {{new_value}}",
+        "ISSUE_UPDATED": "{{username}} оновив атрибут \"{{field_name}}\" проблеми {{obj_name}}",
+        "ISSUE_UPDATED_WITH_NEW_VALUE": "{{username}} оновив атрибут \"{{field_name}}\" проблеми {{obj_name}} на {{new_value}}",
+        "TASK_UPDATED": "{{username}} оновив атрибут \"{{field_name}}\" завдання {{obj_name}} на {{new_value}}",
+        "TASK_UPDATED_WITH_NEW_VALUE": "{{username}} оновив атрибут \"{{field_name}}\" завдання {{obj_name}} на {{new_value}}",
+        "TASK_UPDATED_WITH_US": "{{username}} оновив атрибут \"{{field_name}}\" завдання {{obj_name}}, що належить до історії користувача {{us_name}}",
+        "TASK_UPDATED_WITH_US_NEW_VALUE": "{{username}} оновив атрибут \"{{field_name}}\" завдання {{obj_name}}, що належить до історії користувача {{us_name}} на {{new_value}}",
         "WIKI_UPDATED": "{{username}} оновив сторінку вікі {{obj_name}}",
-        "EPIC_UPDATED": "{{username}} оновив характерну ознаку \"{{field_name}}\" епіку {{obj_name}}",
-        "EPIC_UPDATED_WITH_NEW_VALUE": "{{username}} оновив характерну ознаку \"{{field_name}}\" епіку {{obj_name}} на {{new_value}}",
+        "EPIC_UPDATED": "{{username}} оновив атрибут \"{{field_name}}\" епіку {{obj_name}}",
+        "EPIC_UPDATED_WITH_NEW_VALUE": "{{username}} оновив атрибут \"{{field_name}}\" епіку {{obj_name}} на {{new_value}}",
         "EPIC_UPDATED_WITH_NEW_COLOR": "{{username}} оновив \"{{field_name}}\" епіку {{obj_name}} на <span class=\"new-color\" style=\"background: {{new_value}}\"></span>",
-        "NEW_COMMENT_US": "{{username}} has commented in the user story {{obj_name}}",
+        "NEW_COMMENT_US": "{{username}} залишив коментар в історії користувача {{obj_name}}",
         "NEW_COMMENT_ISSUE": "{{username}} залишив коментар до проблеми {{obj_name}}",
         "NEW_COMMENT_TASK": "{{username}} залишив коментар у завданні {{obj_name}}",
         "NEW_COMMENT_EPIC": "{{username}} залишив коментар в епіку {{obj_name}}",
         "NEW_MEMBER": "у {{project_name}} появився новий член",
-        "US_ADDED_MILESTONE": "{{username}} has added the user story {{obj_name}} to {{sprint_name}}",
-        "US_MOVED": "{{username}} has moved the user story {{obj_name}}",
-        "US_REMOVED_FROM_MILESTONE": "{{username}} has added the user story {{obj_name}} to the backlog",
+        "US_ADDED_MILESTONE": "{{username}} додав історію користувача {{obj_name}} до {{sprint_name}}",
+        "US_MOVED": "{{username}} перемістив історію користувача {{obj_name}}",
+        "US_REMOVED_FROM_MILESTONE": "{{username}} додав історію користувача {{obj_name}} до невиконаної роботи",
         "BLOCKED": "{{username}} заблокував {{obj_name}}",
         "UNBLOCKED": "{{username}} заблокував {{obj_name}}",
         "NEW_USER": "{{username}} приєднався до Taiga",
@@ -1790,14 +1790,14 @@
             },
             "STEP2": {
                 "TITLE": "Невиконана робота по продукту",
-                "TEXT": "Невиконана робота є список вимог (користувацьких історій) для проекту. Тут ви плануєте свої спринти."
+                "TEXT": "Невиконана робота є список вимог (історій користувача) для проекту. Тут ви плануєте свої спринти."
             },
             "STEP3": {
                 "TITLE": "Спринти",
                 "TEXT": "Sprints are short periods of time (usually 2 weeks) during which specific work has to be completed and delivered."
             },
             "STEP4": {
-                "TITLE": "Користувацькі Історії",
+                "TITLE": "Історії користувача",
                 "TEXT": "Це вимоги на високому рівні. Ви можете додати їх до невиконаної роботи та перетягнути їх у спринт, в якому їх потрібно виконати."
             }
         },
@@ -1807,11 +1807,11 @@
                 "TEXT": "Налаштуйте стовпці, які вам потрібно, щоб відобразити статуси робочого процесу через адміністратора."
             },
             "STEP2": {
-                "TITLE": "Користувацькі історії та завдання",
+                "TITLE": "Історії користувача та завдання",
                 "TEXT": "User stories are the requirements at high level. You can drag them to different columns."
             },
             "STEP3": {
-                "TITLE": "Додавання користувацьких історій",
+                "TITLE": "Додавання історій користувача",
                 "TEXT1": "You may want to add a single user story (add user story icon) or a group of them (bulk icon)",
                 "TEXT2": "Удачі!"
             }
