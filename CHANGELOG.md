@@ -2,6 +2,16 @@
 
 ## Unreleased
 
+## 5.0.9 (2020-03-11)
+
+### Misc
+
+- Fixed several minor bugs.
+
+### i18n
+
+- Updated lots of strings and updated their translations. Finally, oompa loompas have been substituted by the Taiga.
+
 ## 5.0.8 (2020-02-17)
 
 ### i18n
