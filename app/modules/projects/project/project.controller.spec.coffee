@@ -29,6 +29,20 @@ describe "ProjectController", ->
 
         provide.value "tgProjectService", mocks.projectService
 
+    _mockConfigService = () ->
+        mocks.configService = {
+            get: sinon.stub()
+        }
+
+        provide.value "$tgConfig", mocks.configService
+
+    _mockNavUrlsService = () ->
+        mocks.navUrlsService = {
+            resolve: sinon.stub()
+        }
+
+        provide.value "$tgNavUrls", mocks.navUrlsService
+
     _mockAppMetaService = () ->
         mocks.appMetaService = {
             setfn: sinon.stub()
@@ -58,6 +72,8 @@ describe "ProjectController", ->
         module ($provide) ->
             provide = $provide
             _mockProjectService()
+            _mockConfigService()
+            _mockNavUrlsService()
             _mockRouteParams()
             _mockAppMetaService()
             _mockAuth()
