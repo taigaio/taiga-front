@@ -39,11 +39,12 @@ h1 {
     @include font-type(text);
     @include font-size(larger);
     align-items: baseline;
-    display: flex;
     line-height: 1.5;
     margin-bottom: 1rem;
     text-transform: uppercase;
-
+    @include from($fullhd) {
+        display: flex;
+    }
     .title {
         @include font-type(light);
     }
@@ -67,6 +68,15 @@ h1 {
         color: $grey-40;
         display: inline-block;
         margin-bottom: 0;
+        @include from($widescreen) {
+            max-width: 580px;
+        }
+        @include desktop() {
+            max-width: 380px;
+        }
+        @include until($desktop) {
+            max-width: 250px;
+        }
     }
 
     .project-name-short {
