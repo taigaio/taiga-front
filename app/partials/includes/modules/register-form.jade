@@ -57,13 +57,14 @@ div.register-form-container(tg-register)
                 translate="REGISTER_FORM.ACTION_SIGN_UP"
             )
 
-        .contrib-plugins-wrapper(ng-if="contribPlugins.length")
-            label(translate="LOGIN_COMMON.ALT_LOGIN")
+        .contrib-plugins-wrapper
+            div(ng-if="contribPlugins.length")
+                label(translate="LOGIN_COMMON.ALT_LOGIN")
 
-            fieldset(
-                ng-repeat="plugin in contribPlugins|filter:{type: 'auth'}"
-                ng-include="plugin.template"
-            )
+                fieldset(
+                    ng-repeat="plugin in contribPlugins|filter:{type: 'auth'}"
+                    ng-include="plugin.template"
+                )
 
         a.register-text-top(
             href=""
