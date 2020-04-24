@@ -73,6 +73,8 @@ $dropdown-width: 350px;
             }
         }
         &.user-avatar {
+            display: flex;
+            justify-content: flex-end;
             line-height: 40px;
             min-height: 40px;
             min-width: 200px;
