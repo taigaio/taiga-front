@@ -13,21 +13,21 @@ div.taskboard-table(
                 class="squish-status-{{s.id}}"
                 tg-bo-title="s.name"
             )
-                span(tg-bo-bind="s.name")
-
                 tg-svg.hfold.fold-action(
-                    svg-icon="icon-fold-row",
+                    svg-icon="icon-fold-column",
                     ng-click='foldStatus(s)',
                     title="{{'TASKBOARD.TABLE.TITLE_ACTION_FOLD' | translate}}"
                     ng-class='{hidden:statusesFolded[s.id]}'
                 )
 
                 tg-svg.hunfold.fold-action(
-                    svg-icon="icon-unfold-row",
+                    svg-icon="icon-unfold-column",
                     ng-click='foldStatus(s)',
                     title="{{'TASKBOARD.TABLE.TITLE_ACTION_UNFOLD' | translate}}"
                     ng-class='{hidden:!statusesFolded[s.id]}'
                 )
+                span(tg-bo-bind="s.name")
+
 
     div.taskboard-table-body(tg-taskboard-table-height-fixer)
         div.taskboard-table-inner

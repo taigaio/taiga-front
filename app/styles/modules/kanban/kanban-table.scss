@@ -5,7 +5,7 @@ $column-folded-width: 30px;
 $column-flex: 0;
 $column-shrink: 0;
 $column-margin: 0 5px 0 0;
-$column-padding: .5rem .25rem;
+$column-padding: .5rem;
 
 .kanban-table {
     display: flex;
@@ -18,8 +18,8 @@ $column-padding: .5rem .25rem;
         .task-colum-name {
             max-width: $column-width / 2;
         }
-        .task-colum-name span {
-            padding-right: 1rem;
+        .title {
+            max-width: 60px;
         }
     }
     .vfold {
@@ -109,6 +109,10 @@ $column-padding: .5rem .25rem;
         }
         .option {
             margin: 0 .25rem;
+        }
+        tg-svg {
+            align-items: center;
+            display: flex;
         }
         .icon {
             fill: $grey-30;

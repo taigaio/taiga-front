@@ -4,12 +4,12 @@ $column-width: 300px;
 $column-flex: 1;
 $column-shrink: 0;
 $column-margin: 0 $margin 0 0;
-$column-padding: .5rem 1rem;
+$column-padding: .5rem;
 
 @mixin fold {
     .card {
         align-self: flex-start;
-        margin-top: .5rem;
+        margin: .5rem auto 0;
         tg-card-slideshow,
         .card-unfold,
         .card-tag,
@@ -65,12 +65,11 @@ $column-padding: .5rem 1rem;
         flex-basis: $column-width;
         flex-grow: $column-flex;
         flex-shrink: $column-shrink;
-        justify-content: space-between;
         margin: $column-margin;
         max-width: $column-width;
         padding: $column-padding;
-        position: relative;
         text-transform: uppercase;
+        transition: all .1s linear;
         width: $column-width;
         &:last-child {
             margin-right: 0;
@@ -94,9 +93,6 @@ $column-padding: .5rem 1rem;
 }
 
 .taskboard-table-header {
-    flex-basis: 2.4rem;
-    flex-grow: 0;
-    flex-shrink: 0;
     min-height: 2.4rem;
     position: relative;
     width: 100%;
@@ -106,15 +102,17 @@ $column-padding: .5rem 1rem;
         position: absolute;
     }
     tg-svg {
-        display: block;
-        margin-right: .3rem;
+        align-items: center;
+        display: inline-flex;
+        fill: $grey-30;
+        margin-right: .75rem;
+        stroke: $grey-30;
         &:hover {
             cursor: pointer;
         }
         &.hfold,
         &.hunfold {
             display: inline-block;
-            transform: rotate(90deg);
         }
     }
 }
@@ -130,6 +128,7 @@ $column-padding: .5rem 1rem;
         flex-shrink: $column-shrink;
         margin: $column-margin;
         max-width: $column-width;
+        transition: all .1s linear;
         width: $column-width;
         &:last-child {
             margin-right: 0;
