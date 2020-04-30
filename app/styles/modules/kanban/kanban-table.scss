@@ -5,7 +5,7 @@ $column-folded-width: 30px;
 $column-flex: 0;
 $column-shrink: 0;
 $column-margin: 0 5px 0 0;
-$column-padding: .5rem 1rem;
+$column-padding: .5rem .25rem;
 
 .kanban-table {
     display: flex;
@@ -32,7 +32,6 @@ $column-padding: .5rem 1rem;
             justify-content: center;
             opacity: .8;
             padding: .5rem 0;
-            transition: opacity .3s linear;
             .title {
                 display: none;
             }
@@ -48,9 +47,7 @@ $column-padding: .5rem 1rem;
         &.taskboard-column {
             flex-flow: 1;
             max-width: $column-folded-width;
-            min-height: 2.5rem;
             min-width: $column-folded-width;
-            width: $column-folded-width;
         }
         .kanban-column-intro {
             display: none;
@@ -91,24 +88,27 @@ $column-padding: .5rem 1rem;
         padding: $column-padding;
         position: relative;
         text-transform: uppercase;
+        transition: all .1s linear;
         &:last-child {
             margin-right: 0;
         }
         .title {
             align-items: flex-end;
             display: flex;
+            margin-left: .5rem;
             width: 100%;
             .counter {
                 @include font-size(xsmall);
-                line-height: 1.6;
+                line-height: .875rem;
                 margin: 0 .5rem;
             }
             .name {
                 @include ellipsis(65%);
+                line-height: 1em;
             }
         }
         .option {
-            margin-right: .3rem;
+            margin: 0 .25rem;
         }
         .icon {
             fill: $grey-30;
@@ -138,6 +138,7 @@ $column-padding: .5rem 1rem;
         margin: $column-margin;
         max-width: $column-width;
         overflow-y: auto;
+        transition: all .1s linear;
         widows: $column-width;
         width: $column-width;
         &:last-child {
