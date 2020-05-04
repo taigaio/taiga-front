@@ -15,8 +15,8 @@
         "CREATE": "Stwórz",
         "ADD": "Dodaj",
         "BACK": "Back",
-        "COPY_TO_CLIPBOARD": "Copy to clipboard",
-        "COPIED_TO_CLIPBOARD": "Text has been copied to clipboard",
+        "COPY_TO_CLIPBOARD": "Skopiuj do schowka",
+        "COPIED_TO_CLIPBOARD": "Tekst został skopiowany do schowka",
         "EDIT": "Edycja",
         "DRAG": "Przeciągnij",
         "TAG_LINE": "Twoje zwinne, wolne, otwartoźródłowe narzędzie do zarządzania projektem",
@@ -330,7 +330,7 @@
         "ALT_LOGIN": "Lub zaloguj z"
     },
     "LOGIN_FORM": {
-        "ERROR_AUTH_INCORRECT": "According to the Taiga, your username/email or password are incorrect.",
+        "ERROR_AUTH_INCORRECT": "System Taiga twierdzi, że Twój login/e-mail lub hasło nie są poprawne.",
         "SUCCESS": "Welcome to Taiga."
     },
     "REGISTER": {
@@ -370,7 +370,7 @@
         "PLACEHOLDER_NEW_PASSWORD": "Wpisz nowe hasło",
         "FIELD_RETYPE_PASSWORD": "Wpisz ponownie nowe hasło",
         "PLACEHOLDER_RETYPE_PASSWORD": "Wpisz ponownie nowe hasło",
-        "ERROR_PASSWORD_MATCH": "The passwords don't match"
+        "ERROR_PASSWORD_MATCH": "Hasła nie są zgodne"
     },
     "CHANGE_PASSWORD_RECOVERY_FORM": {
         "TITLE": "Ustaw nowe hasło do Taiga",
@@ -394,11 +394,11 @@
         "PAGE_DESCRIPTION": "Główna strona Taiga, z Twoimi głównymi projektami i wszystkimi przypisanymi Tobie i obserwowanymi historyjkami użytkownika, zadaniami i zgłoszeniami.",
         "EMPTY_WORKING_ON": "<strong>Trochę pusto, nieprawdaż?</strong> Zacznij pracować z Taiga a tutaj pojawią się historie, zadania i zgłoszenia nad którymi pracujesz.",
         "EMPTY_WATCHING": "<strong>Follow</strong> user stories, tasks, issues in your projects and be notified about their changes :)",
-        "EMPTY_PROJECT_LIST": "You don't have any project yet",
+        "EMPTY_PROJECT_LIST": "Jeszcze nie masz żadnego projektu",
         "WORKING_ON_SECTION": "Pracujesz nad",
         "WATCHING_SECTION": "Obserwujesz",
         "DASHBOARD": "Panel projektów",
-        "SET_HIDDEN": "Set as hidden",
+        "SET_HIDDEN": "Ustaw jako ukryte",
         "SET_VISIBLE": "Set as visible",
         "NO_HIDDEN_ITEMS": "You have no hidden items",
         "HIDE_HIDDEN": "Do not show hidden objects",
@@ -427,8 +427,8 @@
             "ASSIGNED_TO": "Przydzielone",
             "STATUS": "Statusy",
             "PROGRESS": "Postęp",
-            "CLOSED_US": "Closed user stories",
-            "CLOSED_EPICS": "Closed epics",
+            "CLOSED_US": "Zamknięte historyki użytkownika",
+            "CLOSED_EPICS": "Zamknięte epiki",
             "VIEW_OPTIONS": "Zobacz opcje"
         },
         "CREATE": {
@@ -438,7 +438,7 @@
             "CLIENT_REQUIREMENT": "Wymaganie klienta",
             "BLOCKED": "Zablokowane",
             "BLOCKED_NOTE_PLACEHOLDER": "Why is this epic blocked?",
-            "CREATE_EPIC": "Create epic"
+            "CREATE_EPIC": "Stwórz epik"
         }
     },
     "PROJECTS": {
@@ -510,7 +510,7 @@
             "EPICS_DESCRIPTION": "Visualize and manage the most strategic part of your project",
             "BACKLOG": "Dziennik",
             "BACKLOG_DESCRIPTION": "Zarządzaj swoimi historyjkami użytkownika aby utrzymać zorganizowany widok i priorytety zadań",
-            "NUMBER_SPRINTS": "Expected number of sprints",
+            "NUMBER_SPRINTS": "Przewidywana liczba sprintów",
             "NUMBER_SPRINTS_HELP": "0 dla nieokreślonej liczby",
             "NUMBER_US_POINTS": "Expected total of story points",
             "NUMBER_US_POINTS_HELP": "0 dla nieokreślonej liczby",
@@ -567,11 +567,11 @@
             "HELP": "Jak mogę tego użyć we własnym arkuszu kalkulacyjnym?",
             "REGENERATE_TITLE": "Zmień link",
             "REGENERATE_SUBTITLE": "You are going to change the CSV data access url. The previous url will be disabled. Are you sure?",
-            "DELETE_TITLE": "Delete URL",
+            "DELETE_TITLE": "Usuń URL",
             "DELETE_SUBTITLE": "You are going to delete the current CSV data access url. Are you sure?"
         },
         "CSV": {
-            "SECTION_TITLE_EPIC": "epics reports",
+            "SECTION_TITLE_EPIC": "raport epików",
             "SECTION_TITLE_US": "raporty historii użytkownika",
             "SECTION_TITLE_TASK": "Raporty zadań",
             "SECTION_TITLE_ISSUE": "raporty zgłoszeń",
@@ -586,7 +586,7 @@
         "CUSTOM_FIELDS": {
             "TITLE": "Własne Pola",
             "SUBTITLE": "Zdefiniuj własne dodatkowe pola dla historyjek użytkownika, zadań i zgłoszeń.",
-            "EPIC_DESCRIPTION": "Epics custom fields",
+            "EPIC_DESCRIPTION": "Własne pola dla epików",
             "EPIC_ADD": "Add a custom field in epics",
             "US_DESCRIPTION": "Własne pola dla historyjek użytkownika",
             "US_ADD": "Dodaj własne pole dla historyjek użytkownika",
@@ -853,7 +853,7 @@
             "FILTER_TYPE_PROJECTS": "Projekty",
             "FILTER_TYPE_PROJECTS_TITLE": "Show only projects",
             "FILTER_TYPE_EPICS": "Epiki",
-            "FILTER_TYPE_EPICS_TITLE": "Show only epics",
+            "FILTER_TYPE_EPICS_TITLE": "Pokaż tylko epiki",
             "FILTER_TYPE_USER_STORIES": "Stories",
             "FILTER_TYPE_USER_STORIES_TITLE": "Show only user stories",
             "FILTER_TYPE_TASKS": "Zadania",
@@ -1097,7 +1097,7 @@
         },
         "SELECT_USER": {
             "SEARCH": "Szukaj użytkowników",
-            "REMOVE": "Remove user",
+            "REMOVE": "Usuń użytkownika",
             "ROLE": "Rola"
         },
         "ADD_MEMBER": {
@@ -1133,7 +1133,7 @@
             "ISSUE_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this issue",
             "US_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this user story",
             "NEW_TASK": "Nowe zadanie",
-            "NEW_ISSUE": "New issue",
+            "NEW_ISSUE": "Nowe zgłoszenie",
             "NEW_US": "Nowa historyjka użytkownika",
             "EDIT_TASK": "Zmień zadanie",
             "EDIT_ISSUE": "Edit issue",
@@ -1221,10 +1221,10 @@
         "CREATE_RELATED_USERSTORIES": "Stwórz relację z",
         "NEW_USERSTORY": "Nowa historyjka użytkownika",
         "EXISTING_USERSTORY": "Istniejąca historia użytkownika",
-        "CHOOSE_PROJECT_FOR_CREATION": "Which project?",
+        "CHOOSE_PROJECT_FOR_CREATION": "Który projekt?",
         "SUBJECT": "Temat",
         "SUBJECT_BULK_MODE": "Subject (bulk insert)",
-        "CHOOSE_PROJECT_FROM": "Which project?",
+        "CHOOSE_PROJECT_FROM": "Który projekt?",
         "CHOOSE_USERSTORY": "Which user story?",
         "NO_USERSTORIES": "This project has no user stories yet. Please select another project.",
         "NO_USERSTORIES_FOUND": "Nie znaleziono niczego, co spełniałoby podane kryteria.",
@@ -1239,7 +1239,7 @@
         "LINK_TASKBOARD": "Tablica zadań",
         "TITLE_LINK_TASKBOARD": "Idź do listy zadań",
         "TOTAL_POINTS": "total points",
-        "ADD": "+ Add a new user story",
+        "ADD": "+ Dodaj nową historyjkę użytkownika",
         "ADD_BULK": "Add some new user stories in bulk",
         "PROMOTED_FROM_ISSUE": "This user story has been promoted from issue:",
         "PROMOTED_FROM_TASK": "This user story has been promoted from task:",
@@ -1410,7 +1410,7 @@
         "SECTION_NAME": "Tablica zadań",
         "TITLE_ACTION_ADD": "Add a new task",
         "TITLE_ACTION_ADD_BULK": "Add some new tasks in bulk",
-        "TITLE_ACTION_ADD_ISSUE": "Add a new issue",
+        "TITLE_ACTION_ADD_ISSUE": "Dodaj nowe zgłoszenie",
         "TITLE_ACTION_ADD_ISSUE_BULK": "Add some new issues in bulk",
         "TITLE_ACTION_ASSIGN": "Przydziel zadanie",
         "PLACEHOLDER_CARD_TITLE": "This could be a task",
@@ -1467,7 +1467,7 @@
     "NOTIFICATION": {
         "OK": "Wszystko ok",
         "WARNING": "Ups, coś się stało...",
-        "WARNING_TEXT": "Your changes were not saved!",
+        "WARNING_TEXT": "Twoje zmiany nie zostały zapisane!",
         "SAVED": "The Taiga saved all your changes!",
         "CLOSE": "Zamknij powiadomienie",
         "MAIL": "Powiadomienia na e-mail",
@@ -1544,7 +1544,7 @@
     "KANBAN": {
         "PAGE_TITLE": "Kanban - {{projectName}}",
         "PAGE_DESCRIPTION": "Panel kanban zawierający historyjki użytkownika wchodzące w skład projektu {{projectName}}: {{projectDescription}}",
-        "SECTION_NAME": "Kanaban",
+        "SECTION_NAME": "Kanban",
         "TITLE_ACTION_FOLD": "Zwiń kolumnę",
         "TITLE_ACTION_UNFOLD": "Rozwiń kolumnę",
         "TITLE_ACTION_ADD_US": "Add new user story",

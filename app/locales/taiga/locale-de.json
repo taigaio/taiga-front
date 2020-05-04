@@ -3,7 +3,7 @@
         "YES": "Ja",
         "NO": "Nein",
         "OR": "oder",
-        "I_GET_IT": "OK, I get it",
+        "I_GET_IT": "OK, verstanden",
         "LOADING": "Wird geladen...",
         "DATE": "DD. MMM YYYY",
         "DATETIME": "DD. MMM YYYY HH:mm",
@@ -230,10 +230,10 @@
             "ACTION_SAVE_CUSTOM_FILTER": "Als Benutzerfilter speichern",
             "PLACEHOLDER_FILTER_NAME": "Benennen Sie den Filter und drücken Sie die Eingabetaste",
             "APPLIED_FILTERS_NUM": "Filter wurden angewandt",
-            "TITLE_ADVANCED_FILTER": "Advanced",
+            "TITLE_ADVANCED_FILTER": "Erweitert",
             "ADVANCED_FILTERS": {
-                "INCLUDE": "Include",
-                "EXCLUDE": "Exclude"
+                "INCLUDE": "Einschließen",
+                "EXCLUDE": "Ausschließen"
             },
             "CATEGORIES": {
                 "TYPE": "Arten",
@@ -330,8 +330,8 @@
         "ALT_LOGIN": "Oder einloggen mit"
     },
     "LOGIN_FORM": {
-        "ERROR_AUTH_INCORRECT": "According to the Taiga, your username/email or password are incorrect.",
-        "SUCCESS": "Welcome to Taiga."
+        "ERROR_AUTH_INCORRECT": "Laut Taiga sind Benutzername/E-Mail oder Passwort nicht korrekt.",
+        "SUCCESS": "Willkommen bei Taiga."
     },
     "REGISTER": {
         "PAGE_TITLE": "Registrieren - Taiga",
@@ -359,7 +359,7 @@
         "LINK_CANCEL": "Nein, bring mich zurück. Ich denke, ich erinnere mich daran.",
         "SUCCESS_TITLE": "Prüfen Sie bitte Ihre Emails!",
         "SUCCESS_TEXT": "Wir haben Ihnen eine Email mit den Anweisungen zum ändern Ihres Passworts geschickt",
-        "ERROR": "According to the Taiga, you are not registered yet."
+        "ERROR": "Laut Taiga sind Sie noch nicht registriert."
     },
     "CHANGE_PASSWORD": {
         "PAGE_TITLE": "Änderen Sie Ihr Passwort - Taiga",
@@ -370,7 +370,7 @@
         "PLACEHOLDER_NEW_PASSWORD": "Geben Sie ein neues Passwort ein",
         "FIELD_RETYPE_PASSWORD": "Neues Passwort wiederholen",
         "PLACEHOLDER_RETYPE_PASSWORD": "Wiederholen Sie das neue Passwort",
-        "ERROR_PASSWORD_MATCH": "The passwords don't match"
+        "ERROR_PASSWORD_MATCH": "Die Passwörter stimmen nicht überein"
     },
     "CHANGE_PASSWORD_RECOVERY_FORM": {
         "TITLE": "Erstellen Sie einen neues Passwort",
@@ -378,15 +378,15 @@
         "PLACEHOLDER_NEW_PASSWORD": "Neues Passwort",
         "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "Wiederholen Sie die Eingabe des neuen Passworts",
         "ACTION_RESET_PASSWORD": "Passwort zurücksetzen",
-        "ERROR": "The Taiga can't find your request to recover your password. Try to ask for it again.",
-        "SUCCESS": "The Taiga saved your new password.<br /> Try to <strong>sign in</strong> with it."
+        "ERROR": "Taiga konnte Ihre Anfrage zum Zurücksetzen Ihres Passworts nicht finden. Bitte fordern Sie es erneut an.",
+        "SUCCESS": "Taiga hat Ihr neues Passwort gespeichert. Testen Sie Ihr Login."
     },
     "INVITATION": {
         "PAGE_TITLE": "Annahme der Einladung - Taiga",
         "PAGE_DESCRIPTION": "Nehmen Sie die Einladung an und treten Sie einem Projekt in Taiga bei, einer Projekt-Management Plattform für Neugründer und agile Entwickler und Designer, die ein unkompliziertes und ansprechendes Tool möchten, das die Arbeit wirklich angenehm macht."
     },
     "INVITATION_LOGIN_FORM": {
-        "NOT_FOUND": "The Taiga can't find your invitation.",
+        "NOT_FOUND": "Taiga kann Ihre Einladung nicht finden.",
         "SUCCESS": "Sie sind diesem Projekt erfolgreich beigetreten. Herzlich willkommen bei {{project_name}}"
     },
     "HOME": {
@@ -394,7 +394,7 @@
         "PAGE_DESCRIPTION": "Die Taiga Homepage mit Ihren wichtigsten Projekten und all Ihren zugeordneten und beobachteten User-Stories, Aufgaben und Tickets.",
         "EMPTY_WORKING_ON": "<strong>Es sieht hier noch leer aus!</strong> Beginnen Sie mit Taiga zu arbeiten und hier werden die User-Storys, Aufgaben und Tickets angezeigt, an denen Sie arbeiten.",
         "EMPTY_WATCHING": "<strong>Follow</strong> user stories, tasks, issues in your projects and be notified about their changes :)",
-        "EMPTY_PROJECT_LIST": "You don't have any project yet",
+        "EMPTY_PROJECT_LIST": "Sie haben noch kein Projekt",
         "WORKING_ON_SECTION": "In Arbeit",
         "WATCHING_SECTION": "Beobachtet",
         "DASHBOARD": "Projekt Dashboard",
@@ -865,7 +865,7 @@
     },
     "PROJECT": {
         "PAGE_TITLE": "{{projectName}}",
-        "HELP": "Reorder your projects to set at the top the most used ones.<br/> The top 10 projects will appear in the top navigation bar project list",
+        "HELP": "Sortieren Sie Ihre Projekte neu z.B. nach Häufigkeit. Ihre Top-10-Projekte finden Sie dann prominent in der Projektliste der Navigationsleiste.",
         "PRIVATE": "Privates Projekt",
         "LOOKING_FOR_PEOPLE": "Dieses Projekt sucht nach Mitarbeitern",
         "FANS_COUNTER_TITLE": "{total, plural, =1{one fan} other{# fans}}",
@@ -1097,7 +1097,7 @@
         },
         "SELECT_USER": {
             "SEARCH": "Nach Benutzern suchen",
-            "REMOVE": "Remove user",
+            "REMOVE": "Benutzer entfernen",
             "ROLE": "Rolle"
         },
         "ADD_MEMBER": {

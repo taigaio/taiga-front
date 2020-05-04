@@ -47,7 +47,7 @@
         "CAPSLOCK_WARNING": "Be careful! You are using capital letters in an input field that is case sensitive.",
         "CONFIRM_CLOSE_EDIT_MODE_TITLE": "Are you sure you want to close the edit mode?",
         "CONFIRM_CLOSE_EDIT_MODE_MESSAGE": "Remember that if you close the edit mode without saving all the changes will be lost",
-        "RELATED_USERSTORIES": "Related user stories",
+        "RELATED_USERSTORIES": "Alakalı Kullanıcı Hikayeleri",
         "CARD": {
             "ASSIGN_TO": "Atanmış",
             "EDIT": "Kartı düzenle",
@@ -147,16 +147,16 @@
             "TYPE": "Tip ",
             "SEVERITY": "Önem Derecesi",
             "PRIORITY": "Öncelik",
-            "ASSIGNED": "Aranmış",
+            "ASSIGNED": "Atanmış",
             "ASSIGNED_TO": "Atanmış",
-            "ASSIGNED_USERS": "Assigned users",
+            "ASSIGNED_USERS": "Atanmış kullanıcılar",
             "POINTS": "Puanlar",
             "IS_BLOCKED": "engellendi ",
             "REF": "Ref",
             "VOTES": "Oylar",
             "SPRINT": "Koşu",
-            "DUE_DATE": "Due date",
-            "DUE_DATE_REASON": "Due date reason"
+            "DUE_DATE": "Bitim tarihi",
+            "DUE_DATE_REASON": "Bitim tarihi nedeni"
         },
         "ROLES": {
             "ALL": "Hepsi"
@@ -172,10 +172,10 @@
             "SELF": "Bana ata"
         },
         "DUE_DATE": {
-            "TITLE_ACTION_SET_DUE_DATE": "Set due date"
+            "TITLE_ACTION_SET_DUE_DATE": "Bitim tarihi ayarla"
         },
         "ASSIGNED_USERS": {
-            "ADD": "Select assigned user",
+            "ADD": "Atanmış kullanıcı seçin",
             "ADD_ASSIGNED": "Add assigned",
             "TITLE_LIGHTBOX_DELETE_ASSIGNED": "Delete assigned..."
         },
@@ -202,7 +202,7 @@
             "BUTTON_TITLE": "Bu konuya oy/karşı oy ver",
             "COUNTER_TITLE": "{total, plural, =1{one vote} other{# votes}}"
         },
-        "PROMOTE_TO_US": "Promote to user story",
+        "PROMOTE_TO_US": "Kullanıcı Hikayesine Terfi Ettir",
         "PROMOTED_ISSUES": "This issue has been promoted to",
         "PROMOTED_TASKS": "This task has been promoted to",
         "CONFIRM_PROMOTE": {
@@ -217,8 +217,8 @@
         },
         "CUSTOM_ATTRIBUTES": {
             "CUSTOM_FIELDS": "Özel Alanlar",
-            "SAVE": "Save custom field",
-            "EDIT": "Edit custom field",
+            "SAVE": "Özel alanı kaydet",
+            "EDIT": "Özel alanı düzenle",
             "DELETE": "özel öznitelik sil",
             "CONFIRM_DELETE": "Remember that all values in this custom field will be deleted.\n Are you sure you want to continue?"
         },
@@ -242,7 +242,7 @@
                 "PRIORITIES": "Öncelikler",
                 "TAGS": "Etiketler ",
                 "ASSIGNED_TO": "Atanmış",
-                "ASSIGNED_USERS": "Assigned users",
+                "ASSIGNED_USERS": "Atanmış kullanıcılar",
                 "ROLE": "Rol",
                 "CREATED_BY": "Oluşturan",
                 "CUSTOM_FILTERS": "Özel filtreler",
@@ -260,7 +260,7 @@
         "PERMISIONS_CATEGORIES": {
             "EPICS": {
                 "NAME": "Destanlar",
-                "VIEW_EPICS": "Destanları gör",
+                "VIEW_EPICS": "Destanları görüntüle",
                 "ADD_EPICS": "Destan ekle",
                 "MODIFY_EPICS": "Destan düzenle",
                 "COMMENT_EPICS": "Destanlara yorum ekleme",
@@ -283,7 +283,7 @@
             },
             "TASKS": {
                 "NAME": "Görevler",
-                "VIEW_TASKS": "Görevler gör",
+                "VIEW_TASKS": "Görevleri görüntüle",
                 "ADD_TASKS": "Görevleri ekle",
                 "MODIFY_TASKS": "Görevleri değiştir",
                 "COMMENT_TASKS": "Görevlere yorum ekleyebilme",
@@ -330,8 +330,8 @@
         "ALT_LOGIN": "Ya da böyle girin"
     },
     "LOGIN_FORM": {
-        "ERROR_AUTH_INCORRECT": "According to the Taiga, your username/email or password are incorrect.",
-        "SUCCESS": "Welcome to Taiga."
+        "ERROR_AUTH_INCORRECT": "Taigaya göre\nkullanıcıadı/e-posta veya parolanız hatalı.",
+        "SUCCESS": "Taiga ya hoşgeldin."
     },
     "REGISTER": {
         "PAGE_TITLE": "Kayıt ol - Taiga",
@@ -359,7 +359,7 @@
         "LINK_CANCEL": "Boşver, geri gidelim. Sanırım hatırladım.",
         "SUCCESS_TITLE": "Gelen kutunuza bakınız!",
         "SUCCESS_TEXT": "Yeni parolanızı belirlemeniz için yönergeleri içeren e-posta hesabınıza gönderilmiştir",
-        "ERROR": "According to the Taiga, you are not registered yet."
+        "ERROR": "Taiga ya göre siz henüz\nkayıt olmamışsınız."
     },
     "CHANGE_PASSWORD": {
         "PAGE_TITLE": "Parolayı değiştirin - Taiga",
@@ -370,7 +370,7 @@
         "PLACEHOLDER_NEW_PASSWORD": "Yeni bir parola yaz",
         "FIELD_RETYPE_PASSWORD": "Yeni parolayı yeniden girin",
         "PLACEHOLDER_RETYPE_PASSWORD": "Yeni parolayı yeniden giriniz",
-        "ERROR_PASSWORD_MATCH": "The passwords don't match"
+        "ERROR_PASSWORD_MATCH": "Parolalar uyuşmuyor"
     },
     "CHANGE_PASSWORD_RECOVERY_FORM": {
         "TITLE": "Yeni bir Taiga parolası oluşturun",
@@ -386,23 +386,23 @@
         "PAGE_DESCRIPTION": "Yeni girişimciler, çevik geliştiriciler ve tasarımcılar için çalışmaları gerçekten eğlenceli hale getiren basit, güzel bir proje yönetim platformu Taiga dan yapılan daveti kabul edin."
     },
     "INVITATION_LOGIN_FORM": {
-        "NOT_FOUND": "The Taiga can't find your invitation.",
+        "NOT_FOUND": "Taiga sizin davetinizi bulamıyor.",
         "SUCCESS": "Projeye katılımınız başarıyla gerçekleşti.  {{project_name}} 'ye hoş geldiniz."
     },
     "HOME": {
         "PAGE_TITLE": "AnaSayfa - Taiga",
-        "PAGE_DESCRIPTION": "Atanmış ve izlenen kullanıcı hikayeleri, işler ve sorunların yanı sıra ana projeleriniz için Taiga ana sayfanız",
-        "EMPTY_WORKING_ON": "<strong>Burası bomboş, değil mi?</strong> Taiga ile çalışmaya başlayınca burada hikayeler, isler ve sorunları göreceksin.",
-        "EMPTY_WATCHING": "<strong>Follow</strong> user stories, tasks, issues in your projects and be notified about their changes :)",
-        "EMPTY_PROJECT_LIST": "You don't have any project yet",
+        "PAGE_DESCRIPTION": "Ana projelerinize atanmış ve izlediğiniz tüm kullanıcı hikayeleri, görevler ve sorunlar içeren Tayga ana sayfası",
+        "EMPTY_WORKING_ON": "<strong>Kendinizi boşlukta hissediyorsunuz, değil mi? </strong>Taiga ile çalışmaya başlayınca, burada üzerinde çalıştığınız hikayeleri, görevleri ve sorunları göreceksiniz.",
+        "EMPTY_WATCHING": "<strong>Projelerinizdeki</strong> kullanıcı hikayelerini, görevleri, sorunları takip edin ve değişiklikleri hakkında bilgilendirin :)",
+        "EMPTY_PROJECT_LIST": "Henüz bir projeniz yok",
         "WORKING_ON_SECTION": "Üzerinde çalışılıyor",
         "WATCHING_SECTION": "İzleniyor",
         "DASHBOARD": "Proje Panosu",
-        "SET_HIDDEN": "Set as hidden",
-        "SET_VISIBLE": "Set as visible",
+        "SET_HIDDEN": "Gizli olarak ayarla",
+        "SET_VISIBLE": "Görünür olarak ayarla",
         "NO_HIDDEN_ITEMS": "You have no hidden items",
-        "HIDE_HIDDEN": "Do not show hidden objects",
-        "SHOW_HIDDEN": "Show hidden objects"
+        "HIDE_HIDDEN": "Gizli nesneleri gösterme",
+        "SHOW_HIDDEN": "Gizli nesneleri göster"
     },
     "EPICS": {
         "TITLE": "DESTANLAR",
@@ -427,7 +427,7 @@
             "ASSIGNED_TO": "Aranmış",
             "STATUS": "Durum ",
             "PROGRESS": "İlerleme",
-            "CLOSED_US": "Closed user stories",
+            "CLOSED_US": "Kapalı kullanıcı hikayeleri",
             "CLOSED_EPICS": "Closed epics",
             "VIEW_OPTIONS": "Seçenekleri gör"
         },
@@ -551,7 +551,7 @@
             "MAX_PUBLIC_PROJECTS": "Unfortunately, you've reached the maximum number of public projects allowed by your current plan",
             "MAX_PUBLIC_PROJECTS_MEMBERS": "The project exceeds your maximum number of members for public projects",
             "PROJECT_OWNER": "Proje sahibi",
-            "REQUEST_OWNERSHIP": "Request ownership",
+            "REQUEST_OWNERSHIP": "Sahiplik talep et",
             "REQUEST_OWNERSHIP_CONFIRMATION_TITLE": "Do you want to become the new project owner?",
             "REQUEST_OWNERSHIP_DESC": "Request that current project owner {{name}} transfer ownership of this project to you.",
             "REQUEST_OWNERSHIP_BUTTON": "Talep",
@@ -601,7 +601,7 @@
             "FIELD_TYPE_URL": "Url",
             "FIELD_TYPE_DROPDOWN": "Dropdown",
             "FIELD_TYPE_CHECKBOX": "Checkbox",
-            "FIELD_TYPE_NUMBER": "Number"
+            "FIELD_TYPE_NUMBER": "Sayı"
         },
         "PROJECT_VALUES": {
             "PAGE_TITLE": "{{sectionName}} - Proje değerleri- {{projectName}}",
@@ -649,19 +649,19 @@
             "NEW_TAG": "Yeni etiket",
             "MIXING_HELP_TEXT": "Birleştirmek istediğiniz etiketleri seçiniz",
             "MIXING_MERGE": "Etiketleri Birleştir",
-            "SELECTED": "Selected"
+            "SELECTED": "Seçilmiş"
         },
         "PROJECT_DUE_DATE_STATUS": {
-            "TITLE": "Due Dates",
-            "SUBTITLE": "Specify the due dates status your user stories, tasks and issues will go through if selected",
-            "US_TITLE": "User Story Due Date status",
+            "TITLE": "Bitim Tarihleri",
+            "SUBTITLE": "Kullanıcı öyküleriniz, görevleriniz ve sorunlarınızı seçeceğiniz zaman bitim tarihi durumunu belirtin",
+            "US_TITLE": "Kullanıcı Hikayesi Son Tarih durumu",
             "ACTION_ADD_STATUS": "Yeni durum ekle",
-            "TASK_TITLE": "Task Due Date status",
-            "ISSUE_TITLE": "Issue Due Date status",
-            "DAYS_TO_DUE_DATE": "Days to due date",
+            "TASK_TITLE": "Görev Bitim Tarihi durumu",
+            "ISSUE_TITLE": "Sorun Bitim Tarihi durumu",
+            "DAYS_TO_DUE_DATE": "Bitim tarihi günleri",
             "BEFORE_AFTER": "Before/after",
             "BEFORE": "Before",
-            "AFTER": "Past"
+            "AFTER": "Geçmiş"
         },
         "ROLES": {
             "PAGE_TITLE": "Roller  - {{projectName}}",
@@ -728,14 +728,14 @@
         "CUSTOM_ATTRIBUTES": {
             "PAGE_TITLE": "{{sectionName}} - Özel Öznitelikler - {{projectName}}",
             "ADD": "Özel alan ekle",
-            "EDIT": "Edit custom field",
+            "EDIT": "Özel alanı düzenle",
             "DELETE": "Delete custom field",
-            "SAVE_TITLE": "Save custom field",
+            "SAVE_TITLE": "Özel alanı kaydet",
             "CANCEL_TITLE": "oluşturmayı iptal et",
             "SET_FIELD_NAME": "Özel alan adınızı belirtin",
             "SET_FIELD_DESCRIPTION": "Özel alanınıza ait tanım girin",
             "FIELD_TYPE_DEFAULT": "-- birini seçin --",
-            "ACTION_UPDATE": "Update custom field",
+            "ACTION_UPDATE": "Özel alanı güncelle",
             "ACTION_CANCEL_EDITION": "Baskıyı iptal et"
         },
         "MEMBERSHIP": {
@@ -764,7 +764,7 @@
         },
         "STATUS": {
             "PLACEHOLDER_WRITE_STATUS_NAME": "Yeni durum için bir isim yaz",
-            "PLACEHOLDER_DAYS_TO_DUE_DATE": "Write a number of days to due date"
+            "PLACEHOLDER_DAYS_TO_DUE_DATE": "Bitim tarihine birkaç gün yazın"
         },
         "TYPES": {
             "PLACEHOLDER_WRITE_NAME": "Yeni nesne için bir isim yazın"
@@ -791,7 +791,7 @@
             "TYPES": "Tipler",
             "CUSTOM_FIELDS": "Özel alanlar",
             "TAGS": "Etiketler ",
-            "DUE_DATES": "Due dates"
+            "DUE_DATES": "Bitim tarihleri"
         },
         "SUBMENU_ROLES": {
             "TITLE": "Roller",
@@ -948,7 +948,7 @@
             "IMPORT": "Projeyi İçe Aktar",
             "IMPORT_DESC": "Import your project from multiple platforms into Taiga",
             "INVITE": "Projeye davet et",
-            "SOLO_PROJECT": "You'll be alone in this project",
+            "SOLO_PROJECT": "Bu projede yalnız olacaksınız",
             "INVITE_LATER": "(You'll be able to invite more members later)",
             "BACK": "Arka",
             "MAX_PRIVATE_PROJECTS": "Unfortunately, You've reached the maximum number of private projects.\nIf you would like to increase the current limit please contact the administrator.",
@@ -1097,7 +1097,7 @@
         },
         "SELECT_USER": {
             "SEARCH": "Kullanıcıları ara",
-            "REMOVE": "Remove user",
+            "REMOVE": "Kullanıcı sil",
             "ROLE": "Rol"
         },
         "ADD_MEMBER": {
@@ -1146,14 +1146,14 @@
             "FILTER_ISSUES": "Filter issues"
         },
         "DELETE_DUE_DATE": {
-            "TITLE": "Delete due date",
-            "SUBTITLE": "Are you sure you want to delete this due date?"
+            "TITLE": "Bitim tarihi sil",
+            "SUBTITLE": "Bu bitim tarihini silmek istediğinizden emin misiniz?"
         },
         "DELETE_SPRINT": {
             "TITLE": "Koşuyu sil"
         },
         "REMOVE_RELATIONSHIP_WITH_EPIC": {
-            "TITLE": "Remove relationship with epic",
+            "TITLE": "Destan ile ilişkiyi kaldır",
             "MESSAGE": "Are you sure you want to remove the relationship of this user story with its epic <strong>{{epicSubject}}</strong>?"
         },
         "CREATE_MEMBER": {
@@ -1166,7 +1166,7 @@
             "TITLE": "Maalesef bu proje sahipsiz olarak terkedilemez",
             "CURRENT_USER_OWNER": {
                 "DESC": "You are the current owner of this project. Before leaving, please transfer ownership to someone else.",
-                "BUTTON": "Change the project owner"
+                "BUTTON": "Proje sahibini değiştir"
             },
             "OTHER_USER_OWNER": {
                 "DESC": "Unfortunately, you can't delete a member who is also the current project owner. First, please assign a new project owner.",
@@ -1185,21 +1185,21 @@
             "SEND": "Gönder"
         },
         "SET_DUE_DATE": {
-            "TITLE": "Set due date",
-            "PLACEHOLDER_DUE_DATE": "Select date",
-            "REASON_FOR_DUE_DATE": "Reason for the due date",
-            "PLACEHOLDER_REASON_FOR_DUE_DATE": "Why does this user story need a due date?",
+            "TITLE": "Bitim tarihi ayarla",
+            "PLACEHOLDER_DUE_DATE": "Tarih seç",
+            "REASON_FOR_DUE_DATE": "Bitim tarihi için neden",
+            "PLACEHOLDER_REASON_FOR_DUE_DATE": "Bu kullanıcı hikayesinin neden bir bitim tarihi olması gerekiyor?",
             "SUGGESTIONS": {
                 "IN_ONE_WEEK": "In one week",
-                "IN_TWO_WEEKS": "In two weeks",
+                "IN_TWO_WEEKS": "iki hafta içinde",
                 "IN_ONE_MONTH": "In one month",
-                "IN_THREE_MONTHS": "In three months"
+                "IN_THREE_MONTHS": "Üç ay içinde"
             },
-            "TITLE_ACTION_DELETE_DUE_DATE": "Delete due date"
+            "TITLE_ACTION_DELETE_DUE_DATE": "Bitim tarihi sil"
         },
         "ADMIN_DUE_DATES": {
-            "TITLE_ACTION_DELETE_DUE_DATE": "Delete due date",
-            "SUBTITLE_ACTION_DELETE_DUE_DATE": "Are you sure you want to delete the due date status {{due_date_status_name}}?"
+            "TITLE_ACTION_DELETE_DUE_DATE": "Son tarihi kaldır",
+            "SUBTITLE_ACTION_DELETE_DUE_DATE": "Bu bitim tarihi durumunu silmek istediğinizden emin misiniz {{due_date_status_name}}?"
         },
         "RELATE_TO_EPIC": {
             "TITLE": "Link to epic",
@@ -1225,7 +1225,7 @@
         "SUBJECT": "Konu",
         "SUBJECT_BULK_MODE": "Konu (toplu giriş)",
         "CHOOSE_PROJECT_FROM": "Hangi proje?",
-        "CHOOSE_USERSTORY": "Which user story?",
+        "CHOOSE_USERSTORY": "Hangi kullanıcı hikayesi?",
         "NO_USERSTORIES": "This project has no user stories yet. Please select another project.",
         "NO_USERSTORIES_FOUND": "Arama kriterlerinize uyan bir kayıt bulunamadı",
         "FILTER_USERSTORIES": "Filter user stories",
@@ -1308,8 +1308,8 @@
             "STATUS": "durum",
             "TYPE": "tip",
             "ASSIGNED_TO": "atanmış",
-            "ASSIGNED_USERS": "assigned users",
-            "DUE_DATE": "due date",
+            "ASSIGNED_USERS": "atanmış kullanıcılar",
+            "DUE_DATE": "bitim tarihi",
             "MILESTONE": "koşu",
             "COLOR": "renk",
             "PROMOTED_TO": "promoted to"
@@ -1408,7 +1408,7 @@
         "PAGE_TITLE": "{{sprintName}} - Koşu İş Panosu - {{projectName}}",
         "PAGE_DESCRIPTION": "{{projectName}} projesinin koşusu {{sprintName}} ( {{startDate}} - {{endDate}} tarihleri arası)  . %{{completedPercentage}} tamam. ({{totalPoints}} puandan {{completedPoints}} bitmiş). {{totalTasks}} işten {{openTasks}} tanesi açık.",
         "SECTION_NAME": "Görev Panosu",
-        "TITLE_ACTION_ADD": "Add a new task",
+        "TITLE_ACTION_ADD": "Yeni bir görev ekle",
         "TITLE_ACTION_ADD_BULK": "Add some new tasks in bulk",
         "TITLE_ACTION_ADD_ISSUE": "Add a new issue",
         "TITLE_ACTION_ADD_ISSUE_BULK": "Add some new issues in bulk",
@@ -1467,8 +1467,8 @@
     "NOTIFICATION": {
         "OK": "Herşey mükemmel",
         "WARNING": "Amanın, birşeyler oldu..",
-        "WARNING_TEXT": "Your changes were not saved!",
-        "SAVED": "The Taiga saved all your changes!",
+        "WARNING_TEXT": "Değişiklikleriniz kaydedilmedi!",
+        "SAVED": "Taiga tüm değişikliklerinizi kaydetti!",
         "CLOSE": "Bildirimleri kapat",
         "MAIL": "Posta ile Bildirim",
         "DESKTOP": "Desktop notifications using browser alerts",
@@ -1479,21 +1479,21 @@
         "SUBTITLE": "We're sorry you are leaving the Taiga, we hope you enjoyed your stay :)",
         "PLACEHOLDER_INPUT_TOKEN": "hesap kuponunu iptal et",
         "ACTION_LEAVING": "Evet, ayrılıyorum!",
-        "SUCCESS": "The Taiga removed your account"
+        "SUCCESS": "Taiga hesabınızı sildi"
     },
     "CHANGE_EMAIL_FORM": {
         "TITLE": "E-postanı değiştir",
         "SUBTITLE": "Bir tık daha ve e-postanız güncellenecek!",
         "PLACEHOLDER_INPUT_TOKEN": "e-posta kuponunu değiştir",
         "ACTION_CHANGE_EMAIL": "E-posta değiştir",
-        "SUCCESS": "The Taiga updated your email"
+        "SUCCESS": "Taiga e-postanızı güncelledi"
     },
     "ISSUES": {
         "PAGE_TITLE": "Sorunlar - {{projectName}}",
         "PAGE_DESCRIPTION": "{{projectName}} projesinin sorun listesi paneli: {{projectDescription}}",
         "SECTION_NAME": "Sorun",
         "ACTION_NEW_ISSUE": "+ YENİ SORUN",
-        "ACTION_ATTACH_SPRINT": "Attach issue to Sprint",
+        "ACTION_ATTACH_SPRINT": "Sprint 'e sorun iliştir",
         "ACTION_DETACH_SPRINT": "Detach issue from Sprint",
         "EXTERNAL_REFERENCE": "Bu talebin oluşturulduğu ",
         "GO_TO_EXTERNAL_REFERENCE": "Kökenine git",
@@ -1596,8 +1596,8 @@
             "SECTION_TITLE": "Kullanıcı Ayarları",
             "CHANGE_PASSWORD": "Parolayı değiştir",
             "EMAIL_NOTIFICATIONS": "E-posta bildirimleri",
-            "DESKTOP_NOTIFICATIONS": "Desktop notifications",
-            "EVENTS": "Events"
+            "DESKTOP_NOTIFICATIONS": "Masaüstü bildirimleri",
+            "EVENTS": "Etkinlikler"
         },
         "NOTIFICATIONS": {
             "LIVE_SECTION_NAME": "Desktop Notifications",
@@ -1615,10 +1615,10 @@
             "START_PAGES_PER_PROJECT": "Set start pages per project",
             "COLUMN_PROJECT": "Proje",
             "COLUMN_STARTPAGE": "Start page",
-            "DEFAULT_VALUE": "Default"
+            "DEFAULT_VALUE": "Varsayılan"
         },
         "EVENTS": {
-            "SECTION_NAME": "Events",
+            "SECTION_NAME": "Etkinlikler",
             "SECTION_DESCRIPTION": "Important events in Taiga header",
             "SECTION_DESCRIPTION_EXPANDED": "(direct mentions, updates in items that you are watching...)",
             "COLUMN_ENABLED": "Enabled",
@@ -1628,7 +1628,7 @@
     "USER_PROFILE": {
         "ACTION_USE_GRAVATAR": "Varsayılan resmi kullan",
         "ACTION_DELETE_ACCOUNT": "Taiga hesabını sil",
-        "ACTION_DOWNLOAD_PROFILE": "Download Taiga profile",
+        "ACTION_DOWNLOAD_PROFILE": "Taiga profilini indir",
         "CHANGE_EMAIL_SUCCESS": "<strong>Gelen kutunuzu kontrol edin!</strong><br />Yeni adresinizi belirlemek için gerekli<br />  yönergeleri içeren postayı gönderdik",
         "CHANGE_PHOTO": "Resim değiştir",
         "FIELD": {
@@ -1665,7 +1665,7 @@
         "SECTION_PAGES_LIST": "Tüm sayfalar",
         "PAGES_LIST_COLUMNS": {
             "TITLE": "Başlık",
-            "EDITIONS": "Editions",
+            "EDITIONS": "Sürümler",
             "CREATED": "Oluşturuldu",
             "MODIFIED": "Değiştirilmiş",
             "CREATOR": "Başlatan",
@@ -1722,17 +1722,17 @@
         "UNBLOCKED": "{{obj_name}} nin engeli {{username}} tarafından kaldırıldı ",
         "NEW_USER": "{{username}}  Taiga ya katıldı",
         "ITEM_TYPES": {
-            "USERSTORY": "User Story",
+            "USERSTORY": "Kullanıcı Hikayesi",
             "ISSUE": "Sorun",
             "TASK": "Görev"
         }
     },
     "EVENTS": {
-        "TITLE": "Events",
+        "TITLE": "Etkinlikler",
         "MY_EVENTS": "My events",
         "DISMISS_ALL": "Dismiss all",
-        "VIEW_ALL": "View all",
-        "NO_NEW_EVENTS": "No new events",
+        "VIEW_ALL": "Hepsini görüntüle",
+        "NO_NEW_EVENTS": "Yeni etkinlik yok",
         "NO_EVENTS_YET": "There are no events yet",
         "ASSIGNED_YOU": "{{username}} assigned you to {{obj_name}}",
         "ADDED_YOU_AS_WATCHER": "{{username}} added you as watcher on {{obj_name}}",

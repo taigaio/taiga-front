@@ -22,7 +22,7 @@
         "TAG_LINE": "Ваш свободный, agile инструмент управления проектами с открытым исходным кодом",
         "TAG_LINE_2": "Любите свой проект",
         "BLOCK": "Блокировать",
-        "BLOCK_TITLE": "Block this item, for example if it has a dependency that can not be satisfied",
+        "BLOCK_TITLE": "Отметить элемент как \"блокированный\", например, если он имеет зависимости, которые не могут быть разрешены в настоящее время",
         "BLOCKED": "Заблокирован",
         "UNBLOCK": "Разблокировать",
         "UNBLOCK_TITLE": "Разблокировать это",
@@ -39,10 +39,10 @@
         "NEXT": "Следующий",
         "LOGOUT": "Выйти",
         "EXTERNAL_USER": "внешний пользователь",
-        "GENERIC_ERROR": "The Taiga says {{error}}.",
-        "IOCAINE_TEXT": "This member is feeling a bit overwhelmed by this task. They will become immune to the iocaine poison over time with your help. For now, they may need a hug.",
-        "CLIENT_REQUIREMENT": "A client requirement is a new requirement that was not previously expected and is required to be part of the project",
-        "TEAM_REQUIREMENT": "A team requirement is a requirement that must exist in the project but should have no cost for the client",
+        "GENERIC_ERROR": "Taiga сообщает {{error}}.",
+        "IOCAINE_TEXT": "Исполнитель чувствует себя немного ошеломленным этой задачей. Со временем, с Вашей помощью, выработается иммунитет к иокаину, но сейчас ему нужна моральная поддержка.",
+        "CLIENT_REQUIREMENT": "Требования клиента - это новые требования, которые прежде не были выявлены, но должны стать частью проекта",
+        "TEAM_REQUIREMENT": "Требования команды - это требования, которые должны стать частью проекта и быть необременительными для клиента",
         "OWNER": "Владелец проекта",
         "CAPSLOCK_WARNING": "Осторожнее! Вы используете заглавные буквы в поле, которое чувствительно к регистру",
         "CONFIRM_CLOSE_EDIT_MODE_TITLE": "Вы уверены, что хотите закрыть режим редактирования?",
@@ -74,7 +74,7 @@
             "RANGE": "Это значение должно быть между %s и %s.",
             "MIN_LENGTH": "Это значение слишком короткое. Оно должно иметь %s символов или больше.",
             "MAX_LENGTH": "Это значение слишком длинное. Оно должно иметь %s символов или меньше.",
-            "RANGE_LENGTH": "This value's length is invalid. It should be between %s and %s characters long.",
+            "RANGE_LENGTH": "Длина этого значения некорректна. Она должна быть от %s до %s символов.",
             "MIN_CHECK": "Вы должны выбрать хотя бы %s вариантов.",
             "MAX_CHECK": "Вы должны выбрать %s вариантов или меньше.",
             "RANGE_CHECK": "Вы должны выбрать от %s до %s вариантов.",
@@ -131,7 +131,7 @@
             "ADD": "Добавить тэг"
         },
         "DESCRIPTION": {
-            "EMPTY": "Empty space is so boring... go on, be descriptive...",
+            "EMPTY": "Пустое место - это так удручающе скучно... Не стесняйтесь, укажите подробности...",
             "NO_DESCRIPTION": "Описания ещё нет"
         },
         "FIELDS": {
@@ -202,25 +202,25 @@
             "BUTTON_TITLE": "Повысить/понизить",
             "COUNTER_TITLE": "{total, plural, =1{one vote} other{# votes}}"
         },
-        "PROMOTE_TO_US": "Promote to user story",
-        "PROMOTED_ISSUES": "This issue has been promoted to",
-        "PROMOTED_TASKS": "This task has been promoted to",
+        "PROMOTE_TO_US": "Преобразовать в историю",
+        "PROMOTED_ISSUES": "Этот запрос был преобразован в",
+        "PROMOTED_TASKS": "Эта задача была преобразована в",
         "CONFIRM_PROMOTE": {
             "ISSUE": {
                 "TITLE": "Превратить этот запрос в новую пользовательскую историю",
-                "MESSAGE": "Are you sure you want to create a new user story from this issue?"
+                "MESSAGE": "Вы уверены, что хотите создать новую историю из этого запроса?"
             },
             "TASK": {
-                "TITLE": "Promote this task to a new user story",
-                "MESSAGE": "Are you sure you want to create a new user story from this task?"
+                "TITLE": "Преобразовать эту задачу в новую историю",
+                "MESSAGE": "Вы уверены, что хотите создать новую историю из этой задачи?"
             }
         },
         "CUSTOM_ATTRIBUTES": {
-            "CUSTOM_FIELDS": "Пользовательские поля",
-            "SAVE": "Save custom field",
-            "EDIT": "Edit custom field",
+            "CUSTOM_FIELDS": "Специальные Поля",
+            "SAVE": "Сохранить специальное поле",
+            "EDIT": "Редактировать специальное поле",
             "DELETE": "Удалить атрибут",
-            "CONFIRM_DELETE": "Remember that all values in this custom field will be deleted.\n Are you sure you want to continue?"
+            "CONFIRM_DELETE": "Обратите внимание - все значения этого специального поля будут удалены.\nВы уверены, что хотите продолжить?"
         },
         "FILTERS": {
             "INPUT_PLACEHOLDER": "Название ссылки",
@@ -278,7 +278,7 @@
                 "VIEW_USER_STORIES": "Просматривать пользовательские истории",
                 "ADD_USER_STORIES": "Добавлять пользовательские истории",
                 "MODIFY_USER_STORIES": "Изменять пользовательские истории",
-                "COMMENT_USER_STORIES": "Комментировать ПИ",
+                "COMMENT_USER_STORIES": "Комментировать пользовательские истории",
                 "DELETE_USER_STORIES": "Удалять пользовательские истории"
             },
             "TASKS": {
@@ -330,8 +330,8 @@
         "ALT_LOGIN": "Или войдите с помощью"
     },
     "LOGIN_FORM": {
-        "ERROR_AUTH_INCORRECT": "According to the Taiga, your username/email or password are incorrect.",
-        "SUCCESS": "Welcome to Taiga."
+        "ERROR_AUTH_INCORRECT": "Имя пользователя (адрес электронной почты) или пароль не обнаружены в базе данных Taiga.",
+        "SUCCESS": "Добро пожаловать на платформу управления проектами Taiga."
     },
     "REGISTER": {
         "PAGE_TITLE": "Зарегистрироваться",
@@ -359,7 +359,7 @@
         "LINK_CANCEL": "Не, давай назад, думаю я вспомню.",
         "SUCCESS_TITLE": "Проверьте Вашу почту!",
         "SUCCESS_TEXT": "Мы отправили вам письмо с инструкциями по восстановлению пароля",
-        "ERROR": "According to the Taiga, you are not registered yet."
+        "ERROR": "Вы пока не зарегистрированы на платформе управления проектами Taiga."
     },
     "CHANGE_PASSWORD": {
         "PAGE_TITLE": "Изменить пароль - Taiga",
@@ -370,7 +370,7 @@
         "PLACEHOLDER_NEW_PASSWORD": "Введите новый пароль",
         "FIELD_RETYPE_PASSWORD": "Введите повторно новый пароль",
         "PLACEHOLDER_RETYPE_PASSWORD": "Введите повторно новый пароль",
-        "ERROR_PASSWORD_MATCH": "The passwords don't match"
+        "ERROR_PASSWORD_MATCH": "Пароли не совпадают"
     },
     "CHANGE_PASSWORD_RECOVERY_FORM": {
         "TITLE": "Задать новый пароль",
@@ -378,23 +378,23 @@
         "PLACEHOLDER_NEW_PASSWORD": "Новый пароль",
         "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "Введите повторно новый пароль",
         "ACTION_RESET_PASSWORD": "Сбросить пароль",
-        "ERROR": "The Taiga can't find your request to recover your password. Try to ask for it again.",
-        "SUCCESS": "The Taiga saved your new password.<br /> Try to <strong>sign in</strong> with it."
+        "ERROR": "Taiga не может обнаружить Ваш запрос на восстановление пароля. Попробуйте сформировать запрос повторно.",
+        "SUCCESS": "Taiga сохранила Ваш новый пароль.<br /> Попробуйте <strong>войти</strong> с его помощью."
     },
     "INVITATION": {
         "PAGE_TITLE": "Приглашение принято - Taiga",
         "PAGE_DESCRIPTION": "Принять приглашение и присоединиться к Taiga — платформе для управления проектами стартапов, agile разработчиков и дизайнеров, которые хотят простой и красивый инструмент превращающий работу в удовольствие."
     },
     "INVITATION_LOGIN_FORM": {
-        "NOT_FOUND": "The Taiga can't find your invitation.",
+        "NOT_FOUND": "Приглашение не обнаружено в базе данных Taiga.",
         "SUCCESS": "Вы успешно добавлены к проекту. Добро пожаловать в {{project_name}}"
     },
     "HOME": {
         "PAGE_TITLE": "Домашняя страница - Taiga",
-        "PAGE_DESCRIPTION": "Главная страница Taiga с вашими основными проектами, назначенными и отслеживаемыми ПИ, задачами и запросами",
+        "PAGE_DESCRIPTION": "Главная страница Taiga с вашими основными проектами, назначенными и отслеживаемыми историями, задачами и запросами",
         "EMPTY_WORKING_ON": "<strong>Тут кажется пусто, не правда ли?</strong> Начинайте использовать Taiga и вы увидите здесь истории, задачи и запросы над которыми вы сейчас работаете.",
-        "EMPTY_WATCHING": "<strong>Follow</strong> user stories, tasks, issues in your projects and be notified about their changes :)",
-        "EMPTY_PROJECT_LIST": "You don't have any project yet",
+        "EMPTY_WATCHING": "<strong>Следите</strong> за историями, задачами и запросами Ваших проектов, получайте оперативные уведомления о произошедших изменениях :)",
+        "EMPTY_PROJECT_LIST": "У Вас пока нет проектов",
         "WORKING_ON_SECTION": "Работает над",
         "WATCHING_SECTION": "Отслеживаемые",
         "DASHBOARD": "Рабочий стол с проектами",
@@ -427,7 +427,7 @@
             "ASSIGNED_TO": "Назначен",
             "STATUS": "Статус",
             "PROGRESS": "Прогресс",
-            "CLOSED_US": "Закрытые ПИ",
+            "CLOSED_US": "Закрытые истории",
             "CLOSED_EPICS": "Закрытые эпики",
             "VIEW_OPTIONS": "Показать опции"
         },
@@ -465,7 +465,7 @@
         "TITLE_LIGHTBOX_DELETE_ATTACHMENT": "Удалить вложение...",
         "MSG_LIGHTBOX_DELETE_ATTACHMENT": "вложение '{{fileName}}'",
         "ERROR_DELETE_ATTACHMENT": "Мы не смогли провести удаление: {{errorMessage}}",
-        "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) is too heavy for the Taiga, try it with a file smaller than ({{maxFileSize}})"
+        "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) это слишком много для Taiga, попробуйте еще раз с размером меньше ({{maxFileSize}})"
     },
     "PAGINATION": {
         "PREVIOUS": "Пред.",
@@ -477,7 +477,7 @@
             "TITLE_ACTION_DELETE_VALUE": "Удалить значение",
             "TITLE_ACTION_DELETE_TAG": "Удалить тэг"
         },
-        "HELP": "Вам нужна помощь? Посетите нашу страницу техподдержки!",
+        "HELP": "Вам нужна помощь? Посетите нашу страницу поддержки!",
         "PROJECT_DEFAULT_VALUES": {
             "TITLE": "Значения по умолчанию",
             "SUBTITLE": "Задать начальные значения для всех полей"
@@ -496,13 +496,13 @@
             "SUBTITLE": "Экспортируйте ваш проект, чтобы сохранить резервную копию или создать новый, основываясь на текущем.",
             "EXPORT_BUTTON": "Экспорт",
             "EXPORT_BUTTON_TITLE": "Экспортировать проект",
-            "LOADING_TITLE": "Мы создали ваш файл резервной копии",
-            "DUMP_READY": "Файл резервной копии готов!",
+            "LOADING_TITLE": "Мы создаем резервную копию",
+            "DUMP_READY": "Резервная копия готова!",
             "LOADING_MESSAGE": "Пожалуйста, не закрывайте эту страницу",
             "ASYNC_MESSAGE": "Мы отправим вам письмо когда будет готово.",
             "SYNC_MESSAGE": "Если загрузка не начинается самостоятельно, нажмите <a href='{{url}}' download title='Скачать файл проекта'>здесь</a>.",
-            "ERROR": "The Taiga has some problems generating your dump. Please try it again.",
-            "ERROR_BUSY": "Sorry, the Taiga is experiencing heavy load right now. Please try again in a few minutes."
+            "ERROR": "Taiga столкнулась с проблемами при создании резервной копии. Пожалуйста, попробуйте повторить.",
+            "ERROR_BUSY": "Извините, Taiga сейчас очень перегружена. Пожалуйста, попробуйте повторить через несколько минут."
         },
         "MODULES": {
             "TITLE": "Модули",
@@ -512,14 +512,14 @@
             "BACKLOG_DESCRIPTION": "Управляйте пользовательскими историями, чтобы поддерживать организованное видение важных и приоритетных задач.",
             "NUMBER_SPRINTS": "Ожидаемое количество спринтов",
             "NUMBER_SPRINTS_HELP": "0 для неопределённого числа",
-            "NUMBER_US_POINTS": "Ожидаемое количество ПИ очков",
+            "NUMBER_US_POINTS": "Ожидаемое количество сторипоинтов",
             "NUMBER_US_POINTS_HELP": "0 для неопределённого числа",
             "KANBAN": "Канбан",
             "KANBAN_DESCRIPTION": "Организуйте эффективную работу с проектом с помощью этой панели",
             "ISSUES": "Запросы",
             "ISSUES_DESCRIPTION": "Следите за ошибками, вопросами и улучшениями вашего проекта. Ничего не пропустите!",
             "WIKI": "Wiki",
-            "WIKI_DESCRIPTION": "Add, modify, or delete content in collaboration with others. This is the right place for your project's documentation.",
+            "WIKI_DESCRIPTION": "Добавляйте, изменяйте или удаляйте контент совместно с остальными. Это самое правильное место для размещения документации Вашего проекта.",
             "MEETUP": "Созвониться",
             "MEETUP_DESCRIPTION": "Выберите Вашу систему видеоконференций",
             "SELECT_VIDEOCONFERENCE": "Выберите систему видеоконференций",
@@ -591,7 +591,7 @@
             "US_DESCRIPTION": "Специальные поля для пользовательских историй",
             "US_ADD": "Добавить специальное поле для пользовательских историй",
             "TASK_DESCRIPTION": "Специальные поля задач",
-            "TASK_ADD": "Добавить новые типы задач",
+            "TASK_ADD": "Добавить специальное поле для задач",
             "ISSUE_DESCRIPTION": "Специальные поля запросов",
             "ISSUE_ADD": "Добавить специальное поле для запросов",
             "FIELD_TYPE_TEXT": "Текст",
@@ -611,7 +611,7 @@
         "PROJECT_VALUES_POINTS": {
             "TITLE": "Очки",
             "SUBTITLE": "Введите приблизительное количество очков для пользовательских историй",
-            "US_TITLE": "User story points",
+            "US_TITLE": "Очки истории",
             "ACTION_ADD": "Добавить очки"
         },
         "PROJECT_VALUES_PRIORITIES": {
@@ -654,7 +654,7 @@
         "PROJECT_DUE_DATE_STATUS": {
             "TITLE": "Дедлайны",
             "SUBTITLE": "Specify the due dates status your user stories, tasks and issues will go through if selected",
-            "US_TITLE": "Статус Дедлайна в ПИ",
+            "US_TITLE": "Статус Дедлайна в истории",
             "ACTION_ADD_STATUS": "Добавить новый статус",
             "TASK_TITLE": "Статус Дедлайна Задачи",
             "ISSUE_TITLE": "Статус Дедлайна Запроса",
@@ -668,7 +668,7 @@
             "WARNING_NO_ROLE": "Осторожнее: ни с какими ролями на вашем проекте участники не смогут оценить очки для пользовательских историй.",
             "HELP_ROLE_ENABLED": "Когда включено, участники, назначенные на эту роль, смогут оценивать очки для пользовательских историй",
             "DISABLE_COMPUTABLE_ALERT_TITLE": "Вы уверены, что хотите отключить оценку очков для этой роли?",
-            "DISABLE_COMPUTABLE_ALERT_SUBTITLE": "If you disable estimation permissions for role {{roleName}} all previous estimations made by this role will be removed",
+            "DISABLE_COMPUTABLE_ALERT_SUBTITLE": "Если вы отключите разрешение оценки для роли {{roleName}}, все предыдущие оценки, сделанные этой ролью, будут удалены",
             "COUNT_MEMBERS": "{{ role.members_count }} участников с этой ролью",
             "TITLE_DELETE_ROLE": "Удалить Роль",
             "REPLACEMENT_ROLE": "Все пользователи этой роли будут перемещены в",
@@ -680,7 +680,7 @@
         "THIRD_PARTIES": {
             "SECRET_KEY": "Секретный ключ",
             "PAYLOAD_URL": "Ссылка на полезную нагрузку",
-            "VALID_IPS": "Valid source IPs (separated by ,)"
+            "VALID_IPS": "Допустимые IP-адреса источника (через запятую)"
         },
         "BITBUCKET": {
             "SECTION_NAME": "Bitbucket",
@@ -727,15 +727,15 @@
         },
         "CUSTOM_ATTRIBUTES": {
             "PAGE_TITLE": "{{sectionName}} - Специальные Атрибуты - {{projectName}}",
-            "ADD": "Добавить поле",
-            "EDIT": "Edit custom field",
-            "DELETE": "Delete custom field",
-            "SAVE_TITLE": "Save custom field",
+            "ADD": "Добавить специальное поле",
+            "EDIT": "Редактировать специальное поле",
+            "DELETE": "Удалить специальное поле",
+            "SAVE_TITLE": "Сохранить специальное поле",
             "CANCEL_TITLE": "Отменить создание",
-            "SET_FIELD_NAME": "Введите имя поля",
+            "SET_FIELD_NAME": "Введите имя специального поля",
             "SET_FIELD_DESCRIPTION": "Назначьте описание специальному полю",
             "FIELD_TYPE_DEFAULT": "-- выберите --",
-            "ACTION_UPDATE": "Update custom field",
+            "ACTION_UPDATE": "Обновить специальное поле",
             "ACTION_CANCEL_EDITION": "Отменить правку"
         },
         "MEMBERSHIP": {
@@ -789,7 +789,7 @@
             "PRIORITIES": "Приоритет",
             "SEVERITIES": "Степени важности",
             "TYPES": "Типы",
-            "CUSTOM_FIELDS": "Собственные поля",
+            "CUSTOM_FIELDS": "Специальные поля",
             "TAGS": "Тэги",
             "DUE_DATES": "Дедлайны"
         },
@@ -819,7 +819,7 @@
         "PROFILE": {
             "PAGE_TITLE": "{{userFullName}} (@{{userUsername}})",
             "USER_SETTINGS": "Настройки пользователя",
-            "CLOSED_US": "Закрытые ПИ",
+            "CLOSED_US": "Закрытые истории",
             "PROJECTS": "Проекты",
             "PROJECTS_EMPTY": "{{username}} пока не имеет проектов",
             "CONTACTS": "Контакты",
@@ -827,7 +827,7 @@
             "CURRENT_USER_CONTACTS_EMPTY": "У Вас пока нет контактов",
             "CURRENT_USER_CONTACTS_EMPTY_EXPLAIN": "Люди, с которыми вы работаете в Taiga, будут отмечены как ваши контакты автоматически",
             "TABS": {
-                "ACTIVITY_TAB": "График работ",
+                "ACTIVITY_TAB": "Журнал активности",
                 "ACTIVITY_TAB_TITLE": "Показать все действия пользователя",
                 "PROJECTS_TAB": "Проекты",
                 "PROJECTS_TAB_TITLE": "Список всех проектов, в которых участвует пользователь",
@@ -865,7 +865,7 @@
     },
     "PROJECT": {
         "PAGE_TITLE": "{{projectName}}",
-        "HELP": "Reorder your projects to set at the top the most used ones.<br/> The top 10 projects will appear in the top navigation bar project list",
+        "HELP": "Расположите свои проекты так, чтобы часто используемые были сверху.<br/> Первые 10 проектов будут расположены в меню быстрой навигации.",
         "PRIVATE": "Приватный проект",
         "LOOKING_FOR_PEOPLE": "Этот проект ищет людей",
         "FANS_COUNTER_TITLE": "{total, plural, =1{one fan} other{# fans}}",
@@ -878,7 +878,7 @@
         },
         "SECTION": {
             "SEARCH": "Поиск",
-            "TIMELINE": "График работ",
+            "TIMELINE": "Журнал активности",
             "EPICS": "Эпики",
             "BACKLOG": "Список задач",
             "KANBAN": "Канбан",
@@ -969,13 +969,13 @@
         "IMPORT": {
             "TITLE": "Импортировать проект",
             "DESCRIPTION": "Импортируйте Ваши проекты в Taiga из других систем ",
-            "ASYNC_IN_PROGRESS_TITLE": "The Taiga is importing your project",
+            "ASYNC_IN_PROGRESS_TITLE": "Taiga импортирует Ваш проект",
             "ASYNC_IN_PROGRESS_MESSAGE": "Этот процесс может занять несколько минут <br/> Мы отправим вам email, когда всё будет готово",
             "UPLOAD_IN_PROGRESS_MESSAGE": "Загружено {{uploadedSize}} размера {{totalSize}}",
-            "ERROR": "The Taiga has some problems importing your dump data. Please try again.",
-            "ERROR_TOO_MANY_REQUEST": "Sorry, the Taiga is experiencing heavy load right now. Please try again in a few minutes.",
-            "ERROR_MESSAGE": "The Taiga has some problems importing your dump data: {{error_message}}",
-            "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) is too heavy for the Taiga, try it with a file smaller than ({{maxFileSize}})",
+            "ERROR": "Taiga столкнулась с проблемами при восстановлении резервной копии. Пожалуйста, попробуйте повторить.",
+            "ERROR_TOO_MANY_REQUEST": "Извините, Taiga сейчас очень перегружена. Пожалуйста, попробуйте повторить через несколько минут.",
+            "ERROR_MESSAGE": "Taiga столкнулась с проблемами при восстановлении резервной копии: {{error_message}}",
+            "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) это слишком много для Taiga, попробуйте еще раз с размером меньшим, чем ({{maxFileSize}})",
             "SYNC_SUCCESS": "Импорт проекта выполнен успешно",
             "IMPORT": "Импортировать",
             "WHO_IS": "Их задачи будут переданы ...",
@@ -984,12 +984,12 @@
             "WRITE_EMAIL_LABEL": "Написать почтовое сообщение на адрес используемый этим пользователем Taiga",
             "ACCEEDE": "Accede",
             "PROJECT_MEMBERS": "Участники проекта",
-            "PROCESS_DESCRIPTION": "Tell us to whom from Taiga you want to assign the tasks of {{platform}}",
+            "PROCESS_DESCRIPTION": "Укажите, кому из Taiga Вы хотите назначить задачи {{platform}}",
             "MATCH": "<strong>{{user_external}}</strong> это <strong>{{user_internal}}</strong>?",
             "CHOOSE": "Выбрать пользователя",
             "LINKS": "Связь с {{platform}}",
             "LINKS_DESCRIPTION": "Do you want to keep the link of each item with the original {{platform}} card?",
-            "WARNING_MAIL_USER": "Note that if the user does not have a Taiga account we will not be able to assign the tasks to them.",
+            "WARNING_MAIL_USER": "Заметьте, если у пользователя нет аккаунта Taiga, мы не сможем назначать ему задачи.",
             "ASSIGN": "Назначить",
             "PROJECT_SELECTOR": {
                 "NO_RESULTS": "Кажется, по вашему запросу ничего не найдено.",
@@ -997,8 +997,8 @@
                 "ACTION_BACK": "Вернуться"
             },
             "PROJECT_RESTRICTIONS": {
-                "PROJECT_MEMBERS_DESC_PRIVATE": "The project you are trying to import has {{members}} members including you. Unfortunately, your current plan allows for a maximum of {{max_memberships}} members per private project. If you would like to increase that limit please contact the administrator.",
-                "PROJECT_MEMBERS_DESC_PUBLIC": "The project you are trying to import has {{members}} members including you. Unfortunately, your current plan allows for a maximum of {{max_memberships}} members per public project. If you would like to increase that limit please contact the administrator.",
+                "PROJECT_MEMBERS_DESC_PRIVATE": "Проект, который Вы пытаетесь импортировать, имеет {{members}} участников, включая Вас. К сожалению, Ваш текущий план позволяет иметь максимум {{max_memberships}} на приватный проект. Если Вы хотите увеличить данный лимит, пожалуйста, свяжитесь с администратором.",
+                "PROJECT_MEMBERS_DESC_PUBLIC": "Проект, который Вы пытаетесь импортировать, имеет {{members}} участников, включая Вас. К сожалению, Ваш текущий план позволяет иметь максимум {{max_memberships}} на публичный проект. Если Вы хотите увеличить данный лимит, пожалуйста, свяжитесь с администратором.",
                 "ACCOUNT_ALLOW_MEMBERS": "Ваш аккаунт позволяет использовать  {{members}}  пользователей.",
                 "PRIVATE_PROJECTS_SPACE": {
                     "TITLE": "К сожалению, Ваш текущий план не позволяет иметь дополнительные приватные проекты",
@@ -1129,21 +1129,21 @@
             "LAST_SPRINT_NAME": "последний спринт - <strong> {{lastSprint}} ;-) </strong>"
         },
         "CREATE_EDIT": {
-            "TASK_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this task",
-            "ISSUE_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this issue",
-            "US_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this user story",
+            "TASK_PLACEHOLDER_DESCRIPTION": "Пожалуйста, добавьте подробное описание, чтобы помочь остальным лучше понять эту задачу",
+            "ISSUE_PLACEHOLDER_DESCRIPTION": "Пожалуйста, добавьте подробное описание, чтобы помочь остальным лучше понять этот запрос",
+            "US_PLACEHOLDER_DESCRIPTION": "Пожалуйста, добавьте подробное описание, чтобы помочь остальным лучше понять эту историю",
             "NEW_TASK": "Новая задача",
-            "NEW_ISSUE": "New issue",
+            "NEW_ISSUE": "Новый запрос",
             "NEW_US": "Новая пользовательская история",
             "EDIT_TASK": "Редактировать задачу",
-            "EDIT_ISSUE": "Edit issue",
+            "EDIT_ISSUE": "Редактировать запрос",
             "EDIT_US": "Изменить пользовательскую историю",
-            "ADD_EXISTING_ISSUE": "Add issue to {{ targetName }}",
+            "ADD_EXISTING_ISSUE": "Добавить запрос к {{ targetName }}",
             "CONFIRM_CLOSE": "Вы не сохранили изменения.\nВы уверены, что хотите закрыть форму?",
-            "EXISTING_ISSUE": "Existing issue",
-            "CHOOSE_EXISTING_ISSUE": "Which issue?",
+            "EXISTING_ISSUE": "Существующий запрос",
+            "CHOOSE_EXISTING_ISSUE": "Какой запрос?",
             "ADD_ISSUE": "Добавить запрос",
-            "FILTER_ISSUES": "Filter issues"
+            "FILTER_ISSUES": "Фильтровать запросы"
         },
         "DELETE_DUE_DATE": {
             "TITLE": "Удалить дедлайн",
@@ -1153,8 +1153,8 @@
             "TITLE": "Удалить спринт"
         },
         "REMOVE_RELATIONSHIP_WITH_EPIC": {
-            "TITLE": "Remove relationship with epic",
-            "MESSAGE": "Are you sure you want to remove the relationship of this user story with its epic <strong>{{epicSubject}}</strong>?"
+            "TITLE": "Удалить связь с эпиком",
+            "MESSAGE": "Вы уверены, что хотите удалить связь этой истории с эпиком <strong>{{epicSubject}}</strong>?"
         },
         "CREATE_MEMBER": {
             "PLACEHOLDER_INVITATION_TEXT": "(Необязательно) Добавьте персональный текст в приглашение. Скажите что-нибудь приятное вашим новым участникам ;-)",
@@ -1188,7 +1188,7 @@
             "TITLE": "Установить дедлайн",
             "PLACEHOLDER_DUE_DATE": "Выбрать дату",
             "REASON_FOR_DUE_DATE": "Причина для дедлайна",
-            "PLACEHOLDER_REASON_FOR_DUE_DATE": "Why does this user story need a due date?",
+            "PLACEHOLDER_REASON_FOR_DUE_DATE": "Почему этой истории требуется дедлайн?",
             "SUGGESTIONS": {
                 "IN_ONE_WEEK": "Через одну неделю",
                 "IN_TWO_WEEKS": "В течение двух недель",
@@ -1202,7 +1202,7 @@
             "SUBTITLE_ACTION_DELETE_DUE_DATE": "Вы уверены, что хотите удалить статус дедлайна {{due_date_status_name}}?"
         },
         "RELATE_TO_EPIC": {
-            "TITLE": "Link to epic",
+            "TITLE": "Прикрепить к эпику",
             "EXISTING_EPIC": "Существующий эпик",
             "NEW_EPIC": "Новый эпик",
             "CHOOSE_PROJECT_FOR_CREATION": "Какой проект Вам нужен?",
@@ -1225,10 +1225,10 @@
         "SUBJECT": "Тема",
         "SUBJECT_BULK_MODE": "Тема (добавить пакетно)",
         "CHOOSE_PROJECT_FROM": "Какой проект?",
-        "CHOOSE_USERSTORY": "Какая ПИ?",
-        "NO_USERSTORIES": "This project has no user stories yet. Please select another project.",
+        "CHOOSE_USERSTORY": "Какая история?",
+        "NO_USERSTORIES": "В проекте нет ни одной истории. Пожалуйста, выберите другой проект.",
         "NO_USERSTORIES_FOUND": "Кажется, по вашему запросу ничего не найдено",
-        "FILTER_USERSTORIES": "Фильтровать ПИ",
+        "FILTER_USERSTORIES": "Фильтровать истории",
         "LIGHTBOX_TITLE_BLOKING_EPIC": "Блокирующий эпик",
         "ACTION_DELETE": "Удалить эпик"
     },
@@ -1239,18 +1239,18 @@
         "LINK_TASKBOARD": "Панель задач",
         "TITLE_LINK_TASKBOARD": "Перейти к панели задач",
         "TOTAL_POINTS": "общее число очков",
-        "ADD": "+ Add a new user story",
-        "ADD_BULK": "Add some new user stories in bulk",
-        "PROMOTED_FROM_ISSUE": "This user story has been promoted from issue:",
-        "PROMOTED_FROM_TASK": "This user story has been promoted from task:",
+        "ADD": "+ Добавить новую историю",
+        "ADD_BULK": "Добавить несколько историй \"пакетом\"",
+        "PROMOTED_FROM_ISSUE": "Эта история была сформирована из запроса:",
+        "PROMOTED_FROM_TASK": "Эта история была сформирована из задачи:",
         "TITLE_LINK_GO_TO_ISSUE": "Перейти к запросу",
         "TITLE_LINK_GO_TO_TASK": "Перейти к задаче",
         "TITLE_DELETE_ACTION": "Удалить пользовательскую историю",
-        "LIGHTBOX_TITLE_BLOKING_US": "Blocking user story",
+        "LIGHTBOX_TITLE_BLOKING_US": "Блокировка истории",
         "NOT_ESTIMATED": "Не оценено",
-        "OWNER_US": "This user story belongs to",
-        "RELATE_TO_EPIC": "Link to epic",
-        "REMOVE_RELATIONSHIP_WITH_EPIC": "Remove epic relationship",
+        "OWNER_US": "Эта история принадлежит",
+        "RELATE_TO_EPIC": "Прикрепить к эпику",
+        "REMOVE_RELATIONSHIP_WITH_EPIC": "Удалить связь с эпиком",
         "TRIBE": {
             "PUBLISH": "Опубликовать как Gig в Taiga Tribe",
             "PUBLISH_INFO": "Больше инфо",
@@ -1260,7 +1260,7 @@
             "CLOSE": "Закрыть",
             "SYNCHRONIZE_LINK": "синхронизировать с Taiga Tribe",
             "PUBLISH_MORE_INFO_TITLE": "Вам нужен кто-нибудь для этой задачи?",
-            "PUBLISH_MORE_INFO_TEXT": "<p>If you need help with a particular piece of work you can easily create gigs on<a href='http://taigatribe.com' title='Taiga Tribe'> Taiga Tribe </a> and receive help from all over the world. You will be able to control and manage the gig enjoying a great community eager to contribute.</p><p><a href='http://taigatribe.com' title='Taiga Tribe'> TaigaTribe </a>  was born as a Taiga sibling. Both platforms can live separately but we believe that there is much power in using them combined so we are making sure the integration works like a charm.</p>"
+            "PUBLISH_MORE_INFO_TEXT": "<p>Если вам нужна помощь с определенной частью работы, вы можете легко создавать гиги на<a href='taigatribe.com' title='Taiga Tribe'> Taiga Tribe </a> и получить помощь от всего сообщества. Вы сможете контролировать гиги и управлять ими, наслаждаясь огромным сообществом, готовым внести свой вклад.</p>Проект <p><a href='taigatribe.com' title='Taiga Tribe'> TaigaTribe </a> вылился из проекта Taiga. Обе платформы могут жить по отдельности, но мы считаем, что их объединение дает большие возможности, поэтому стараемся, чтобы их интеграция работала максимально комфортно.</p>"
         }
     },
     "COMMENTS": {
@@ -1289,8 +1289,8 @@
         "NEW_ATTACHMENT": "новое вложение:",
         "DELETED_ATTACHMENT": "удалённое вложение:",
         "UPDATED_ATTACHMENT": "обновил вложение ({{filename}}):",
-        "CREATED_CUSTOM_ATTRIBUTE": "создал кастомный атрибут",
-        "UPDATED_CUSTOM_ATTRIBUTE": "обновил кастомный атрибут",
+        "CREATED_CUSTOM_ATTRIBUTE": "создан специальный атрибут",
+        "UPDATED_CUSTOM_ATTRIBUTE": "обновлен кастомный атрибут",
         "BECAME_DEPRECATED": "стало устаревшим",
         "BECAME_UNDEPRECATED": "стало неустаревшим",
         "TEAM_REQUIREMENT": "Требование от Команды",
@@ -1312,7 +1312,7 @@
             "DUE_DATE": "дедлайн",
             "MILESTONE": "спринт",
             "COLOR": "цвет",
-            "PROMOTED_TO": "promoted to"
+            "PROMOTED_TO": "преобразован(а) в"
         }
     },
     "BACKLOG": {
@@ -1320,13 +1320,13 @@
         "PAGE_DESCRIPTION": "Список задач с пользовательскими историями и спринтами проекта {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Список задач",
         "CUSTOMIZE_GRAPH": "Настроить граф вашего списка задач",
-        "CUSTOMIZE_GRAPH_TEXT": "To have a nice graph that helps you follow the evolution of the project you have to set up the points and sprints through the",
+        "CUSTOMIZE_GRAPH_TEXT": "Чтобы получить красивый график, который поможет вам следить за развитием проекта, Вы должны настроить/распределить сторипоинты:",
         "CUSTOMIZE_GRAPH_ADMIN": "Админка",
         "CUSTOMIZE_GRAPH_TITLE": "Настройте очки и спринты в админке",
         "MOVE_US_TO_CURRENT_SPRINT": "Перейти к текущему спринту",
         "MOVE_US_TO_LATEST_SPRINT": "Перейти к последнему спринту",
         "EMPTY": "Список задач пуст!",
-        "CREATE_NEW_US": "Create a new user story",
+        "CREATE_NEW_US": "Создать новую историю",
         "CREATE_NEW_US_EMPTY_HELP": "Вы можете создать пользовательскую историю",
         "EXCESS_OF_POINTS": "Избыток очков",
         "PENDING_POINTS": "Текущие очки",
@@ -1354,8 +1354,8 @@
         "FORECASTING": {
             "TITLE": "Прогноз скорости выполнения",
             "BACKLOG": "Отобразить бэклог",
-            "NEW_SPRINT": "Candidate user stories for your next sprint based on your velocity. Click to create a new sprint.",
-            "CURRENT_SPRINT": "Candidate user stories for your sprint based on your velocity. Click to add to current sprint."
+            "NEW_SPRINT": "Истории, предлагаемые к выполнению в следующем спринте, на основании Вашей скорости выполнения. Нажмите для создания нового спринта.",
+            "CURRENT_SPRINT": "Истории, предлагаемые к выполнению в рамках текущего спринта, на основании Вашей скорости выполнения. Нажмите для добавления в текущий спринт."
         },
         "TABLE": {
             "COLUMN_US": "Пользовательские Истории",
@@ -1368,7 +1368,7 @@
             "CLOSED_TASKS": "завершённые <br /> задачи",
             "IOCAINE_DOSES": "дозы<br />иокаина",
             "SHOW_STATISTICS_TITLE": "Показать статистику",
-            "TOGGLE_BAKLOG_GRAPH": "Показать/Скрыть график решения задач",
+            "TOGGLE_BAKLOG_GRAPH": "Показать/Скрыть график сгорания задач",
             "POINTS_PER_ROLE": "Очков на роль"
         },
         "SUMMARY": {
@@ -1388,8 +1388,8 @@
             "LINK_TASKBOARD": "Панель задач Спринта",
             "TITLE_LINK_TASKBOARD": "Перейти к Панели Задач \"{{name}}\"",
             "EMPTY": "Спринтов пока что нет",
-            "WARNING_EMPTY_SPRINT_ANONYMOUS": "This sprint has no user stories",
-            "WARNING_EMPTY_SPRINT": "Накидайте сюда ПИ из списка задач чтобы начать новый спринт",
+            "WARNING_EMPTY_SPRINT_ANONYMOUS": "У этого спринта нет пользовательских историй",
+            "WARNING_EMPTY_SPRINT": "Накидайте сюда историй из списка задач чтобы начать новый спринт",
             "TITLE_ACTION_NEW_SPRINT": "Добавить новый спринт",
             "TEXT_ACTION_NEW_SPRINT": "Вы можете создать новый спринт в проекте",
             "ACTION_SHOW_CLOSED_SPRINTS": "Показать закрытые спринты",
@@ -1397,21 +1397,21 @@
         }
     },
     "ERROR": {
-        "TEXT1": "Something happened and the Taiga has captured the error to be able to work on it.",
+        "TEXT1": "Произошло непредвиденное, Taiga обнаружила неисправность, специалисты занимаются восстановлением.",
         "NOT_FOUND": "Не найдено",
         "NOT_FOUND_TEXT": "Ошибка 404. Страница, на которую Вы пытаетесь попасть, больше не существует. Возможно Вам нужно вернуться на главную страницу TAIGA и поискать там то, что Вы ищите.",
         "PERMISSION_DENIED": "Доступ закрыт",
         "PERMISSION_DENIED_TEXT": "У вас нет прав для доступа к этой странице.",
-        "VERSION_ERROR": "Some other user inside Taiga has changed this before and your changes can't be applied. Save them elsewhere, reload the page and re-apply your changes again or they will be lost."
+        "VERSION_ERROR": "Кто-то раньше Вас уже произвел изменения в Taiga, поэтому Ваши изменения не могут быть применены. Сохраните Ваши правки в другом месте (для избежания их утери), потом перезагрузите страницу и снова примените изменения."
     },
     "TASKBOARD": {
         "PAGE_TITLE": "{{sprintName}} - панель задач спринта - {{projectName}}",
         "PAGE_DESCRIPTION": "Спринт {{sprintName}} (с {{startDate}} по {{endDate}}) проекта {{projectName}}. Выполнено {{completedPercentage}}% ({{completedPoints}} из {{totalPoints}} очков). Открытые задачи: {{openTasks}} из {{totalTasks}}.",
         "SECTION_NAME": "Панель задач",
-        "TITLE_ACTION_ADD": "Add a new task",
-        "TITLE_ACTION_ADD_BULK": "Add some new tasks in bulk",
-        "TITLE_ACTION_ADD_ISSUE": "Add a new issue",
-        "TITLE_ACTION_ADD_ISSUE_BULK": "Add some new issues in bulk",
+        "TITLE_ACTION_ADD": "Добавить новую задачу",
+        "TITLE_ACTION_ADD_BULK": "Добавить несколько задач \"пакетом\"",
+        "TITLE_ACTION_ADD_ISSUE": "Добавить новый запрос",
+        "TITLE_ACTION_ADD_ISSUE_BULK": "Добавить несколько запросов \"пакетом\"",
         "TITLE_ACTION_ASSIGN": "Назначить задачу",
         "PLACEHOLDER_CARD_TITLE": "Это может быть задачей",
         "PLACEHOLDER_CARD_TEXT": "Разделяйте ПИ в задачи чтобы отслеживать их по отдельности",
@@ -1423,7 +1423,7 @@
             "TITLE_ACTION_UNFOLD_ROW": "Развернуть ряд",
             "FIELD_POINTS": "очков",
             "ROW_STORYLESS_TASKS_TITLE": "Задачи без историй",
-            "ROW_ISSUES_TITLE": "Sprint issues"
+            "ROW_ISSUES_TITLE": "Запросы спринтов"
         },
         "CHARTS": {
             "XAXIS_LABEL": "Дней",
@@ -1467,8 +1467,8 @@
     "NOTIFICATION": {
         "OK": "Всё хорошо",
         "WARNING": "Упс, что-то пошло не так...",
-        "WARNING_TEXT": "Your changes were not saved!",
-        "SAVED": "The Taiga saved all your changes!",
+        "WARNING_TEXT": "Ваши изменения не сохранены!",
+        "SAVED": "Taiga успешно сохранила изменения!",
         "CLOSE": "Закрыть уведомление",
         "MAIL": "Уведомления почтой",
         "DESKTOP": "Десктоп уведомления через сообщения браузера",
@@ -1476,17 +1476,17 @@
     },
     "CANCEL_ACCOUNT": {
         "TITLE": "Аннулировать ваш аккаунт",
-        "SUBTITLE": "We're sorry you are leaving the Taiga, we hope you enjoyed your stay :)",
+        "SUBTITLE": "Очень жаль, что вы покидаете Taiga, надеемся, что Вам здесь понравилось :)",
         "PLACEHOLDER_INPUT_TOKEN": "идентификатор аннулирования аккаунта",
         "ACTION_LEAVING": "Да, я ухожу!",
-        "SUCCESS": "The Taiga removed your account"
+        "SUCCESS": "Taiga удалила Ваш аккаунт"
     },
     "CHANGE_EMAIL_FORM": {
         "TITLE": "Сменить Вашу электронную почту",
         "SUBTITLE": "Ещё один клик и Ваш email будет обновлён!",
         "PLACEHOLDER_INPUT_TOKEN": "изменить идентификатор email",
         "ACTION_CHANGE_EMAIL": "Сменить электронную почту",
-        "SUCCESS": "The Taiga updated your email"
+        "SUCCESS": "Taiga обновила Ваш email"
     },
     "ISSUES": {
         "PAGE_TITLE": "Запросы - {{projectName}}",
@@ -1508,13 +1508,13 @@
             "SEVERITY": "Важность",
             "TYPE": "Тип"
         },
-        "FILTER_ISSUES": "Filter issues",
+        "FILTER_ISSUES": "Фильтровать запросы",
         "CONFIRM_DETACH_FROM_SPRINT": {
             "TITLE": "Открепить запрос от спринта",
             "MESSAGE": "Вы собираетесь открепить запрос от спринта <strong>{{ sprintName }}<strong>"
         },
         "CONFIRM_CHANGE_FROM_SPRINT": {
-            "TITLE": "Attach issue to sprint",
+            "TITLE": "Прикрепить запрос к спринту",
             "MESSAGE": "<strong>Этот запрос в данный момент прикреплён к спринту {{ oldSprintName }}</strong>. Вы собираетесь открепить его от этого спринта и прикрепить к другому спринту <strong>{{ newSprintName }}.</strong>"
         },
         "TABLE": {
@@ -1533,7 +1533,7 @@
             "BLOCKED": "Заблокирован",
             "EMPTY": {
                 "TITLE": "Нет присланных запросов :-)",
-                "SUBTITLE": "Вы нашли запрос?"
+                "SUBTITLE": "Создать запрос?"
             }
         }
     },
@@ -1547,13 +1547,13 @@
         "SECTION_NAME": "Канбан",
         "TITLE_ACTION_FOLD": "Свернуть колонку",
         "TITLE_ACTION_UNFOLD": "Развернуть колонку",
-        "TITLE_ACTION_ADD_US": "Add new user story",
-        "TITLE_ACTION_ADD_BULK": "Add new bulk",
+        "TITLE_ACTION_ADD_US": "Добавить новую историю",
+        "TITLE_ACTION_ADD_BULK": "Добавить новые \"пакетом\"",
         "ACTION_SHOW_ARCHIVED": "Показать архивные",
         "ACTION_HIDE_ARCHIVED": "Спрятать архив",
         "HIDDEN_USER_STORIES": "Пользовательские истории в этом статусе скрыты по умолчанию",
-        "PLACEHOLDER_CARD_TITLE": "These are your user stories",
-        "PLACEHOLDER_CARD_TEXT": "У ПИ также могут быть подзадачи чтобы можно было разделять требования"
+        "PLACEHOLDER_CARD_TITLE": "Это - ваши Пользовательские Истории.",
+        "PLACEHOLDER_CARD_TEXT": "У историй также могут быть подзадачи, чтобы можно было разделять требования"
     },
     "SEARCH": {
         "PAGE_TITLE": "Поиск - {{projectName}}",
@@ -1576,7 +1576,7 @@
         "COLUMN_MR_WOLF": "Мр. Вульф",
         "EXPLANATION_COLUMN_MR_WOLF": "Закрытые запросы",
         "COLUMN_IOCAINE": "Употребляющий иокаин",
-        "EXPLANATION_COLUMN_IOCAINE": "потреблено доз иокаина",
+        "EXPLANATION_COLUMN_IOCAINE": "Употреблено доз иокаина",
         "COLUMN_CERVANTES": "Сервантес",
         "EXPLANATION_COLUMN_CERVANTES": "Отредактировано wiki-страниц",
         "COLUMN_BUG_HUNTER": "Охотник за ошибками",
@@ -1674,50 +1674,50 @@
     },
     "HINTS": {
         "SECTION_NAME": "Подсказка",
-        "LINK": "Чтобы узать как пользовать этим — посетите нашу страницу поддержки.",
+        "LINK": "Если Вы хотите узнать как это использовать - посетите нашу страницу поддержки.",
         "LINK_TITLE": "Посетить нашу страницу поддержки",
         "HINT1_TITLE": "Вы знали что можно импортировать и экспортировать проекты?",
         "HINT1_TEXT": "Это позволяет вам собирать данные из одной Taiga и копировать в другую.",
         "HINT2_TITLE": "Вы знали что можно создавать собственные поля?",
         "HINT2_TEXT": "Теперь команды могут создавать специальные поля, чтобы гибко вводить данные, специфические для их рабочего процесса.",
         "HINT3_TITLE": "Перестройте список своих проектов так, чтобы выделить самые важные для себя.",
-        "HINT3_TEXT": "Первые 10 проектов доступны из панели прямого доступа сверху.",
+        "HINT3_TEXT": "Первые 10 проектов доступны из верхней панели быстрого доступа.",
         "HINT4_TITLE": "Забыли, над чем вы работали?",
         "HINT4_TEXT": "Не переживайте, на вашем рабочем столе вы найдёте ваши активные задачи, запросы и пользовательские истории в том порядке, в котором вы над ними работали."
     },
     "TIMELINE": {
         "UPLOAD_ATTACHMENT": "{{username}} приложил новый файл к {{obj_name}}",
-        "US_CREATED": "{{username}} has created a new user story {{obj_name}} in {{project_name}}",
-        "ISSUE_CREATED": "{{username}} создал новый запрос {{obj_name}} в {{project_name}}",
-        "TASK_CREATED": "{{username}} создал новую задачу {{obj_name}} в {{project_name}}",
-        "TASK_CREATED_WITH_US": "{{username}} has created a new task {{obj_name}} in {{project_name}} which belongs to the user story {{us_name}}",
-        "WIKI_CREATED": "{{username}} создал новую wiki-страницу {{obj_name}} в {{project_name}}",
-        "MILESTONE_CREATED": "{{username}} создал новый спринт {{obj_name}} в {{project_name}}",
+        "US_CREATED": "{{username}} создал новую историю {{obj_name}} в проекте {{project_name}}",
+        "ISSUE_CREATED": "{{username}} создал новый запрос {{obj_name}} в проекте {{project_name}}",
+        "TASK_CREATED": "{{username}} создал новую задачу {{obj_name}} в проекте {{project_name}}",
+        "TASK_CREATED_WITH_US": "{{username}} создал новую задачу {{obj_name}} в проекте {{project_name}}, которая принадлежит истории {{us_name}}",
+        "WIKI_CREATED": "{{username}} создал новую wiki-страницу {{obj_name}} в проекте {{project_name}}",
+        "MILESTONE_CREATED": "{{username}} создал новый спринт {{obj_name}} в проекте {{project_name}}",
         "EPIC_CREATED": "{{username}} создал новый эпик {{obj_name}} в проекте {{project_name}}",
-        "EPIC_RELATED_USERSTORY_CREATED": "{{username}} has related the user story {{related_us_name}} to the epic {{epic_name}} in {{project_name}}",
+        "EPIC_RELATED_USERSTORY_CREATED": "{{username}} прикрепил историю {{related_us_name}} к эпику {{epic_name}} в проекте {{project_name}}",
         "NEW_PROJECT": "{{username}} создал проект {{project_name}}",
         "MILESTONE_UPDATED": "{{username}} обновил спринт {{obj_name}}",
-        "US_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the user story {{obj_name}}",
-        "US_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the user story {{obj_name}} to {{new_value}}",
-        "US_UPDATED_POINTS": "{{username}} has updated '{{role_name}}' points of the user story {{obj_name}} to {{new_value}}",
-        "ISSUE_UPDATED": "{{username}} обновил атрибут \"{{field_name}}\" запроса {{obj_name}}",
-        "ISSUE_UPDATED_WITH_NEW_VALUE": "{{username}} установил атрибут \"{{field_name}}\" запроса {{obj_name}} на {{new_value}}",
-        "TASK_UPDATED": "{{username}} установил атрибут \"{{field_name}}\" задачи {{obj_name}} на {{new_value}}",
-        "TASK_UPDATED_WITH_NEW_VALUE": "{{username}} установил атрибут \"{{field_name}}\" задачи {{obj_name}} на {{new_value}}",
-        "TASK_UPDATED_WITH_US": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} which belongs to the user story {{us_name}}",
-        "TASK_UPDATED_WITH_US_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} which belongs to the user story {{us_name}} to {{new_value}}",
+        "US_UPDATED": "{{username}} изменил значение поля \"{{field_name}}\" истории {{obj_name}}",
+        "US_UPDATED_WITH_NEW_VALUE": "{{username}} изменил значение поля \"{{field_name}}\" истории {{obj_name}} на \"{{new_value}}\"",
+        "US_UPDATED_POINTS": "{{username}} обновил очки роли '{{role_name}}' истории {{obj_name}} на {{new_value}}",
+        "ISSUE_UPDATED": "{{username}} изменил значение поля \"{{field_name}}\" запроса {{obj_name}}",
+        "ISSUE_UPDATED_WITH_NEW_VALUE": "{{username}} изменил значение поля \"{{field_name}}\" запроса {{obj_name}} на \"{{new_value}}\"",
+        "TASK_UPDATED": "{{username}} изменил значение поля \"{{field_name}}\" задачи {{obj_name}} на \"{{new_value}}\"",
+        "TASK_UPDATED_WITH_NEW_VALUE": "{{username}} изменил значение поля \"{{field_name}}\" задачи {{obj_name}} на \"{{new_value}}\"",
+        "TASK_UPDATED_WITH_US": "{{username}} изменил значение поля \"{{field_name}}\" задачи {{obj_name}}, которая принадлежит истории {{us_name}}",
+        "TASK_UPDATED_WITH_US_NEW_VALUE": "{{username}} изменил значение поля \"{{field_name}}\" задачи {{obj_name}}, которая принадлежит истории {{us_name}} на \"{{new_value}}\"",
         "WIKI_UPDATED": "{{username}} обновил wiki-страницу {{obj_name}}",
-        "EPIC_UPDATED": "{{username}} обновил атрибут \"{{field_name}}\" ПИ {{obj_name}}",
-        "EPIC_UPDATED_WITH_NEW_VALUE": "{{username}} обновил атрибут поля \"{{field_name}}\" эпика {{obj_name}} на {{new_value}}",
+        "EPIC_UPDATED": "{{username}} изменил значение поля \"{{field_name}}\" истории {{obj_name}}",
+        "EPIC_UPDATED_WITH_NEW_VALUE": "{{username}} изменил значение поля \"{{field_name}}\" эпика {{obj_name}} на \"{{new_value}}\"",
         "EPIC_UPDATED_WITH_NEW_COLOR": "{{username}} обновил поле \"{{field_name}}\" эпика {{obj_name}} на <span class=\"new-color\" style=\"background: {{new_value}}\"></span>",
-        "NEW_COMMENT_US": "{{username}} has commented in the user story {{obj_name}}",
+        "NEW_COMMENT_US": "{{username}} прокомментировал историю {{obj_name}}",
         "NEW_COMMENT_ISSUE": "{{username}} прокомментировал запрос {{obj_name}}",
         "NEW_COMMENT_TASK": "{{username}} прокомментировал задачу {{obj_name}}",
         "NEW_COMMENT_EPIC": "{{username}} написал комментарий в эпике {{obj_name}}",
-        "NEW_MEMBER": "У {{project_name}} появился новый участник",
-        "US_ADDED_MILESTONE": "{{username}} has added the user story {{obj_name}} to {{sprint_name}}",
-        "US_MOVED": "{{username}} has moved the user story {{obj_name}}",
-        "US_REMOVED_FROM_MILESTONE": "{{username}} has added the user story {{obj_name}} to the backlog",
+        "NEW_MEMBER": "В проекте {{project_name}} появился новый участник",
+        "US_ADDED_MILESTONE": "{{username}} добавил историю {{obj_name}} к {{sprint_name}}",
+        "US_MOVED": "{{username}} переместил историю {{obj_name}}",
+        "US_REMOVED_FROM_MILESTONE": "{{username}} добавил историю {{obj_name}} к списку задач",
         "BLOCKED": "{{username}} заблокировал {{obj_name}}",
         "UNBLOCKED": "{{username}} разблокировал {{obj_name}}",
         "NEW_USER": "{{username}} присоединился к Taiga",
@@ -1742,9 +1742,9 @@
         "COMMENTED": "{{username}} прокомментировал {{obj_name}}"
     },
     "LEGAL": {
-        "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>When creating a new account, you agree to our </span><a href=\"{{ termsOfServiceUrl }}\" title=\"See terms of service\" target=\"_blank\">terms of service</a><span> and </span><a href=\"{{ privacyPolicyUrl }}\" title=\"See privacy policy\" target=\"_blank\">privacy policy</a>.",
+        "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>Создавая аккаунт, вы соглашаетесь с нашими<br /></span><a href=\"{{ termsOfServiceUrl }}\" title=\"Смотреть условия обслуживания\" target=\"_blank\">условиями обслуживания</a><span> и </span><a href=\"{{ privacyPolicyUrl }}\" title=\"Смотреть политику обработки персональных данных\" target=\"_blank\">политикой обработки персональных данных</a>.",
         "GDPR_ANNOUNCEMENT_TITLE": "General Data Protection Regulation (GDPR)",
-        "GDPR_ANNOUNCEMENT_DESCRIPTION": "You saw this comming, right? Updates to our Terms of Service",
+        "GDPR_ANNOUNCEMENT_DESCRIPTION": "Вы же знали, что это произойдет, верно? Обновление наших Условий Обслуживания.",
         "GDPR_ANNOUNCEMENT_INFOLINK": "Пожалуйста, прочитайте наше объявление"
     },
     "EXTERNAL_APP": {
@@ -1769,11 +1769,11 @@
             },
             "STEP2": {
                 "TITLE": "Работает над",
-                "TEXT": "Here you will find the user stories, tasks and issues in which you are working on."
+                "TEXT": "Здесь Вы найдете пользовательские истории, задачи и запросы, над которыми Вы работаете."
             },
             "STEP3": {
                 "TITLE": "Отслеживаемое",
-                "TEXT1": "And right here you will find the ones in your projects that you want to know about.",
+                "TEXT1": "Именно здесь вы найдете те элементы ваших проектов, о которые вы хотите знать.",
                 "TEXT2": "Вы уже работаете с Taiga ;)"
             },
             "STEP4": {
@@ -1804,22 +1804,22 @@
         "KANBAN": {
             "STEP1": {
                 "TITLE": "Настройте свой рабочий процесс",
-                "TEXT": "Set up the columns you need to map your workflow statuses through the admin."
+                "TEXT": "Настройте колонки, которые являются отображением статусов рабочего процесса."
             },
             "STEP2": {
                 "TITLE": "Пользовательские Истории и Задачи",
-                "TEXT": "User stories are the requirements at high level. You can drag them to different columns."
+                "TEXT": "Пользовательские истории - это высокоуровневые требования. Вы можете перетаскивать их между колонками."
             },
             "STEP3": {
                 "TITLE": "Добавление Пользовательских Историй",
-                "TEXT1": "You may want to add a single user story (add user story icon) or a group of them (bulk icon)",
+                "TEXT1": "Вы можете добавить одну пользовательскую историю (кнопка \"добавить историю\") или сразу несколько (кнопка \"пакетное добавление\")",
                 "TEXT2": "Удачи!"
             }
         }
     },
     "DISCOVER": {
         "PAGE_TITLE": "Найти проекты - Taiga",
-        "PAGE_DESCRIPTION": "Searchable directory of Public Projects in Taiga. Explore backlogs, timelines, issues, and teams. Check out the most liked or most active projects. Filter by Kanban or Scrum.",
+        "PAGE_DESCRIPTION": "Каталог с возможностью поиска публичных проектов в Taiga. Изучайте бэклоги, таймлайны, запросы и команды. Проверьте самые любимые или самые активные проекты. Применяйте фильтр по наличию Канбана или Скрама.",
         "DISCOVER_TITLE": "Найти проекты",
         "DISCOVER_SUBTITLE": "{projects, plural, =1{One public project to discover} other{# public projects to discover}}",
         "MOST_ACTIVE": "Наиболее активные",
@@ -1842,7 +1842,7 @@
         },
         "SEARCH": {
             "PAGE_TITLE": "Поиск - Найти проекты - Taiga",
-            "PAGE_DESCRIPTION": "Searchable directory of Public Projects in Taiga. Explore backlogs, timelines, issues, and teams. Check out the most liked or most active projects. Filter by Kanban or Scrum.",
+            "PAGE_DESCRIPTION": "Каталог с возможностью поиска публичных проектов в тайге. Изучайте бэклоги, таймлайны, запросы и команды. Проверьте самые любимые или самые активные проекты. Применяйте фильтр по наличию Канбана или Скрама.",
             "INPUT_PLACEHOLDER": "Введите что-нибудь...",
             "ACTION_TITLE": "Поиск",
             "RESULTS": "Результаты поиска"
