@@ -2,6 +2,16 @@
 
 ## Unreleased
 
+## 5.0.11 (2020-05-04)
+
+### Misc
+
+- Fixed several minor bugs.
+
+### i18n
+
+- Updated translations (de, pl, ru, tr, uk).
+
 ## 5.0.10 (2020-03-12)
 
 ### Misc
