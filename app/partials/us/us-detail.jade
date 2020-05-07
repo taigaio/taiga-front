@@ -105,14 +105,14 @@ div.wrapper(
                 required-edition-perm="modify_us"
             )
 
-            include ../includes/modules/related-tasks
-
             tg-attachments-full(
                 obj-id="us.id"
                 type="us",
                 project-id="projectId"
                 edit-permission = "modify_us"
             )
+
+            include ../includes/modules/related-tasks
 
             tg-history-section(
                 ng-if="us"
