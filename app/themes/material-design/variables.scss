@@ -71,6 +71,9 @@ $top-icon-color: $white;
 $dropdown-color: rgba(darken($primary-dark, 20%), 1);
 $code-bg: #272822;
 
+$highlight: rgba(255,255,255,.95);
+
+
 /* Overwrite mixins */
 
 @mixin triangled-bg {
