@@ -73,6 +73,8 @@ $dropdown-width: 350px;
             }
         }
         &.user-avatar {
+            display: flex;
+            justify-content: flex-end;
             line-height: 40px;
             min-height: 40px;
             min-width: 200px;
@@ -219,9 +221,9 @@ $dropdown-width: 350px;
     }
     .counter {
         @include font-type(bold);
-        background: $secondary;
+        background: $highlight;
         border-radius: 50%;
-        color: $white;
+        color: $primary;
         font-size: .7rem;
         height: 18px;
         left: 52px;

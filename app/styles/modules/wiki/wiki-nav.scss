@@ -1,14 +1,21 @@
 .wiki-nav {
+    @include sidebar-narrow-width;
     padding: 0;
-    width: 240px;
     .title {
         @include font-size(larger);
         padding: 2rem 1rem 0 1.5rem;
+        @include until($widescreen) {
+            font-size: 1.5rem;
+            padding: 2rem .75rem 0;
+        }
     }
     .add-button {
         align-items: center;
         display: inline-flex;
         margin: 1rem 1rem 1rem 1.75rem;
+        @include until($widescreen) {
+            margin: .5rem .75rem;
+        }
         .button-small {
             height: 28px;
             margin-right: .5rem;
@@ -33,6 +40,9 @@
         @include placeholder {
             color: $gray-light;
         }
+        @include until($widescreen) {
+            margin: .5rem .5rem .5rem 1rem;
+        }
     }
     .loading {
         padding: 1rem;
@@ -48,6 +58,9 @@
     padding-left: .75rem;
     padding-right: 1rem;
     position: relative;
+    @include until($widescreen) {
+        margin-left: 0;
+    }
     &:hover {
         .remove-wiki-page {
             cursor: pointer;

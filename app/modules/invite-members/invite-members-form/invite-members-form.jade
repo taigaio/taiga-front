@@ -26,7 +26,7 @@ form.invite-members-form(ng-submit="vm.sendInvites(vm.inviteContacts)")
                     translate="LIGHTBOX.ADD_MEMBER.CHOOSE_ROLE"
                 )
         li.invite-members-single.e2e-invite-members-single(
-            ng-repeat="userMail in vm.emailsToInvite | toMutable"
+            ng-repeat="userMail in vm.emailsToInvite | toMutable track by userMail.email"
         )
             .invite-members-single-data
                 span.invite-members-single-email {{userMail.email}}

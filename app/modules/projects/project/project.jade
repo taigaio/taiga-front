@@ -60,13 +60,28 @@ div.wrapper
                         src="/#{v}/images/looking-for-people.png"
                         title="{{'PROJECT.LOOKING_FOR_PEOPLE' | translate}}"
                     )
-                    h3(ng-class="{'is-empty': !vm.project.get('looking_for_people_note')}") {{'PROJECT.LOOKING_FOR_PEOPLE' | translate}}
-                    p(ng-if="vm.project.get('looking_for_people_note')") {{::vm.project.get('looking_for_people_note')}}
-                    tg-contact-project-button(
-                        ng-if="vm.project.get('is_contact_activated')"
-                        project="vm.project"
-                        layout="large"
-                    )
+                    .looking-for-people-content
+                        h3(ng-class="{'is-empty': !vm.project.get('looking_for_people_note')}") {{'PROJECT.LOOKING_FOR_PEOPLE' | translate}}
+                        p(ng-if="vm.project.get('looking_for_people_note')") {{::vm.project.get('looking_for_people_note')}}
+                        tg-contact-project-button(
+                            ng-if="vm.isAuthenticated && vm.project.get('is_contact_activated')"
+                            project="vm.project"
+                            layout="large"
+                        )
+                        div(ng-if="!vm.isAuthenticated")
+                            p
+                                a(
+                                    href="{{ vm.registerUrl }}"
+                                    ng-if="vm.publicRegisterEnabled"
+                                    title="{{ 'REGISTER_FORM.TITLE' | translate }}"
+                                    translate="REGISTER_FORM.TITLE"
+                                )
+                            p
+                                a(
+                                    href="{{ vm.loginUrl }}"
+                                    title="{{ 'REGISTER_FORM.LINK_LOGIN' | translate }}"
+                                    translate="REGISTER_FORM.LINK_LOGIN"
+                                )
 
                 h2.title {{"PROJECT.SECTION.TEAM" | translate}}
                 ul.involved-team

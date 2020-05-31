@@ -24,7 +24,8 @@ HistoryDirective = () ->
 
     return {
         scope: {
-            activities: "<"
+            activities: "<",
+            model: "<",
         },
         templateUrl:"history/history/history.html",
         link: link

@@ -37,3 +37,9 @@ tg-project-menu {
         background: darken($primary-10, 30%);
     }
 }
+
+//// OVERRIDE
+
+.topnav-dropdown-wrapper .counter {
+    color: #A83F60;
+}

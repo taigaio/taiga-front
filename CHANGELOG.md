@@ -2,6 +2,42 @@
 
 ## Unreleased
 
+## 5.0.12 (2020-05-12)
+
+### Misc
+
+- Fixed several minor bugs.
+
+### i18n
+
+- Updated translations (pl).
+
+## 5.0.11 (2020-05-04)
+
+### Misc
+
+- Fixed several minor bugs.
+
+### i18n
+
+- Updated translations (de, pl, ru, tr, uk).
+
+## 5.0.10 (2020-03-12)
+
+### Misc
+
+- Fixed CSS bug.
+
+## 5.0.9 (2020-03-11)
+
+### Misc
+
+- Fixed several minor bugs.
+
+### i18n
+
+- Updated lots of strings and updated their translations. Finally, oompa loompas have been substituted by the Taiga.
+
 ## 5.0.8 (2020-02-17)
 
 ### i18n

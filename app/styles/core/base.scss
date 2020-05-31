@@ -50,13 +50,13 @@ body {
 }
 
 .menu-secondary {
+    @include sidebar-wide-width();
     background-color: $grey-02;
     border-right: 1px solid darken($grey-02, 3%);
     flex: 0 0 auto;
     min-height: $main-height;
     min-width: 0;
     padding: 1rem;
-    width: 320px;
     .search-in {
         margin-top: .5rem;
     }
@@ -80,11 +80,11 @@ body {
 }
 
 .menu-tertiary {
+    @include sidebar-narrow-width;
     background-color: $tertiary;
     border-right: 1px solid darken($tertiary, 3%);
     flex: 0 0 auto;
     min-height: $main-height;
-    width: 250px;
     ul li {
         a {
             color: $grey-70;
@@ -105,9 +105,6 @@ body {
     flex: 1;
     min-width: 0;
     padding: 1rem 2rem;
-    @include until($desktop) {
-        flex: initial;
-    }
     .header-with-actions {
         align-items: center;
         display: flex;

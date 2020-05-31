@@ -10,6 +10,20 @@ div.kanban-table(
                                tg-bo-title="s.name",
                                ng-class='{vfold:folds[s.id]}',
                                tg-class-permission="{'readonly': '!modify_task'}")
+                a.option(
+                    href=""
+                    ng-click='foldStatus(s)'
+                    title="{{'KANBAN.TITLE_ACTION_FOLD' | translate}}"
+                    ng-class='{hidden:folds[s.id]}'
+                )
+                    tg-svg(svg-icon="icon-fold-column")
+                a.option.hunfold(
+                    href=""
+                    ng-click='foldStatus(s)'
+                    title="{{'KANBAN.TITLE_ACTION_UNFOLD' | translate}}"
+                    ng-class='{hidden:!folds[s.id]}'
+                )
+                    tg-svg(svg-icon="icon-unfold-column")
                 div.title
                     div.name(tg-bo-bind="s.name")
                     div.counter
@@ -20,20 +34,6 @@ div.kanban-table(
                         ) 0
                         span(tg-bo-bind="' / ' + s.wip_limit", ng-if="s.wip_limit")
                 div.options
-                    a.option(
-                        href=""
-                        ng-click='foldStatus(s)'
-                        title="{{'KANBAN.TITLE_ACTION_FOLD' | translate}}"
-                        ng-class='{hidden:folds[s.id]}'
-                    )
-                        tg-svg(svg-icon="icon-fold-column")
-                    a.option.hunfold(
-                        href=""
-                        ng-click='foldStatus(s)'
-                        title="{{'KANBAN.TITLE_ACTION_UNFOLD' | translate}}"
-                        ng-class='{hidden:!folds[s.id]}'
-                    )
-                        tg-svg(svg-icon="icon-unfold-column")
                     a.option(
                         href=""
                         title="{{'KANBAN.TITLE_ACTION_ADD_US' | translate}}"

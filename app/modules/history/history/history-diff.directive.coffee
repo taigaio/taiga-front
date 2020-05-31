@@ -22,9 +22,9 @@ module = angular.module('taigaHistory')
 HistoryDiffDirective = () ->
     link = (scope, el, attrs, ctrl) ->
         ctrl.diffTags()
-
     return {
         scope: {
+            model: "<",
             type: "<",
             diff: "<"
         },

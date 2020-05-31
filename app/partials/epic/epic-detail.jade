@@ -50,17 +50,17 @@ div.wrapper(
                 required-edition-perm="modify_epic"
             )
 
-            tg-related-userstories(
-                project="immutableProject"
-                userstories="userstories"
-                epic="immutableEpic"
-            )
-
             tg-attachments-full(
                 obj-id="epic.id"
                 type="epic",
                 project-id="projectId"
                 edit-permission = "modify_epic"
+            )
+
+            tg-related-userstories(
+                project="immutableProject"
+                userstories="userstories"
+                epic="immutableEpic"
             )
 
             tg-history-section(

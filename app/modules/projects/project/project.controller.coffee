@@ -23,14 +23,24 @@ class ProjectController
         "tgAppMetaService",
         "$tgAuth",
         "$translate",
-        "tgProjectService"
+        "tgProjectService",
+        "$tgConfig",
+        "$tgNavUrls",
+        "$location"
     ]
 
-    constructor: (@routeParams, @appMetaService, @auth, @translate, @projectService) ->
+    constructor: (@routeParams, @appMetaService, @auth, @translate, @projectService, @config, @navUrls, @location) ->
         @.user = @auth.userData
 
         taiga.defineImmutableProperty @, "project", () => return @projectService.project
         taiga.defineImmutableProperty @, "members", () => return @projectService.activeMembers
+        taiga.defineImmutableProperty @, "isAuthenticated", () => return !!@.user
+
+        nextUrl = @location.url()
+        @.registerUrl = "#{@navUrls.resolve("register")}?next=#{nextUrl}"
+        @.loginUrl = "#{@navUrls.resolve("login")}?next=#{nextUrl}"
+
+        @.publicRegisterEnabled = @config.get("publicRegisterEnabled")
 
         @appMetaService.setfn @._setMeta.bind(this)
 

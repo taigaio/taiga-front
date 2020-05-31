@@ -1,0 +1,112 @@
+@mixin sidebar-wide-width {
+    width: 360px;
+    @include until($ultrawide) {
+        width: 320px;
+    }
+    @include until($fullhd) {
+        width: 300px;
+    }
+    @include until($widescreen) {
+        width: 280px;
+    }
+    @include until($desktop) {
+        width: 260px;
+    }
+    @include until($tablet) {
+        width: 240px;
+    }
+}
+
+@mixin sidebar-medium-width {
+    width: 300px;
+    @include until($ultrawide) {
+        width: 260px;
+    }
+    @include until($fullhd) {
+        width: 240px;
+    }
+    @include until($widescreen) {
+        width: 220px;
+    }
+    @include until($desktop) {
+        width: 200px;
+    }
+    @include until($tablet) {
+        width: 180px;
+    }
+}
+
+@mixin sidebar-narrow-width {
+    width: 300px;
+    @include until($ultrawide) {
+        width: 250px;
+    }
+    @include until($fullhd) {
+        width: 230px;
+    }
+    @include until($widescreen) {
+        width: 210px;
+    }
+    @include until($desktop) {
+        width: 190px;
+    }
+    @include until($tablet) {
+        width: 170px;
+    }
+}
+
+@mixin sidebar-medium-width-hidden {
+    width: 0;
+    transition: all .2s linear;
+    > * {
+        transform: translateX(-300px);
+        @include until($ultrawide) {
+            transform: translateX(-260px);
+        }
+        @include until($fullhd) {
+            transform: translateX(-240px);
+        }
+        @include until($widescreen) {
+            transform: translateX(-220px);
+        }
+        @include until($desktop) {
+            transform: translateX(-200px);
+        }
+        @include until($tablet) {
+            transform: translateX(-180px);
+        }
+    }
+    &.active {
+        @include sidebar-medium-width();
+        > * {
+            transform: translateX(0);
+        }
+    }
+}
+
+@mixin sidebar-medium-width-hidden-absolute {
+    @include sidebar-medium-width();
+    left: 0;
+    position: absolute;
+    top: 0;
+    transition: all .2s linear;
+    transform: translateX(-300px);
+    @include until($ultrawide) {
+        transform: translateX(-260px);
+    }
+    @include until($fullhd) {
+        transform: translateX(-240px);
+    }
+    @include until($widescreen) {
+        transform: translateX(-220px);
+    }
+    @include until($desktop) {
+        transform: translateX(-200px);
+    }
+    @include until($tablet) {
+        transform: translateX(-180px);
+    }
+    &.open {
+        transform: translateX(0);
+    }
+}
