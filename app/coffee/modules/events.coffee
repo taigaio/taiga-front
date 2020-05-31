@@ -161,7 +161,7 @@ class EventsService
 
     processHeartBeatPongMessage: (data) ->
         @.missedHeartbeats = 0
-        @log.debug("HeartBeat recived PONG")
+        @log.debug("HeartBeat received PONG")
 
     ###########################################
     # Messages

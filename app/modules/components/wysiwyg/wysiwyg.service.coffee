@@ -178,6 +178,20 @@ class WysiwygService
 
         return matches
 
+    escapeEmojisInUrls: (text) ->
+        urls = taiga.getMatches(
+            text,
+            /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/g
+        )
+
+        for url in urls
+            emojiIds = taiga.getMatches(url, /:([\w +-]*):/g)
+            for emojiId in emojiIds
+                escapedUrl = url.replace(":#{emojiId}:", "\\:#{emojiId}\\:")
+                text = text.replace(url, escapedUrl)
+
+        return text
+
     autoLinkHTML: (html) ->
         # override Autolink parser
 
@@ -221,6 +235,7 @@ class WysiwygService
             breaks: true
         }
 
+        text = @.escapeEmojisInUrls(text)
         text = @emojis.replaceEmojiNameByImgs(text)
         text = @.pipeLinks(text)
 
