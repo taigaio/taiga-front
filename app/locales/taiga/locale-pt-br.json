@@ -22,7 +22,7 @@
         "TAG_LINE": "Sua ferramenta de código aberto, gratuita e ágil.",
         "TAG_LINE_2": "AME SEU PROJETO",
         "BLOCK": "Bloquear",
-        "BLOCK_TITLE": "Block this item, for example if it has a dependency that can not be satisfied",
+        "BLOCK_TITLE": "Bloqueia este item, por exemplo, se ele possui uma dependência não resolvida",
         "BLOCKED": "Bloqueado",
         "UNBLOCK": "Desbloquear",
         "UNBLOCK_TITLE": "Desbloquear este item",
@@ -330,8 +330,8 @@
         "ALT_LOGIN": "Ou entre com"
     },
     "LOGIN_FORM": {
-        "ERROR_AUTH_INCORRECT": "According to the Taiga, your username/email or password are incorrect.",
-        "SUCCESS": "Welcome to Taiga."
+        "ERROR_AUTH_INCORRECT": "De acordo com o Taiga, seu nome de usuário/email ou senha estão incorretos.",
+        "SUCCESS": "Bem vindo ao Taiga."
     },
     "REGISTER": {
         "PAGE_TITLE": "Cadastre-se - Taiga",
@@ -359,7 +359,7 @@
         "LINK_CANCEL": "Nããão, me leve de volta. Acho que me lembrei.",
         "SUCCESS_TITLE": "Verifique sua caixa de entrada!",
         "SUCCESS_TEXT": "Nós lhe enviamos um e-mail com instruções para definição de uma nova senha.",
-        "ERROR": "According to the Taiga, you are not registered yet."
+        "ERROR": "De acordo com o Taiga, você não está cadastrado."
     },
     "CHANGE_PASSWORD": {
         "PAGE_TITLE": "Alterar sua senha - Taiga",
@@ -370,7 +370,7 @@
         "PLACEHOLDER_NEW_PASSWORD": "Digite a nova senha",
         "FIELD_RETYPE_PASSWORD": "Redigite a nova senha",
         "PLACEHOLDER_RETYPE_PASSWORD": "Digite novamente a sua nova senha",
-        "ERROR_PASSWORD_MATCH": "The passwords don't match"
+        "ERROR_PASSWORD_MATCH": "As senhas não coincidem"
     },
     "CHANGE_PASSWORD_RECOVERY_FORM": {
         "TITLE": "Criar um novo passe Taiga",
@@ -378,31 +378,31 @@
         "PLACEHOLDER_NEW_PASSWORD": "Nova senha",
         "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "Redigite a nova senha",
         "ACTION_RESET_PASSWORD": "Resetar Senha",
-        "ERROR": "The Taiga can't find your request to recover your password. Try to ask for it again.",
-        "SUCCESS": "The Taiga saved your new password.<br /> Try to <strong>sign in</strong> with it."
+        "ERROR": "O Taiga não conseguiu encontrar sua solicitação para recuperar sua senha. Tente solicitar novamente.",
+        "SUCCESS": "O Taiga salvou sua nova senha. Tente realizar o login com ela."
     },
     "INVITATION": {
         "PAGE_TITLE": "Aceitando um convite - Taiga",
         "PAGE_DESCRIPTION": "Aceitar o convite para participar de um projeto no Taiga, uma plataforma de gerenciamento de projetos para startups e desenvolvedores ágeis & designers que desejam uma ferramenta bela e simples que torne o trabalho realmente agradável."
     },
     "INVITATION_LOGIN_FORM": {
-        "NOT_FOUND": "The Taiga can't find your invitation.",
+        "NOT_FOUND": "O Taiga não conseguiu encontrar seu convite.",
         "SUCCESS": "Você ingressou com sucesso nesse projeto, Seja bem vindo ao projeto {{project_name}}"
     },
     "HOME": {
         "PAGE_TITLE": "Início - Taiga",
         "PAGE_DESCRIPTION": "A página inicial do Taiga com seus principais projetos e todas as histórias de usuários atribuídas ou observadas por você, tarefas e problemas",
         "EMPTY_WORKING_ON": "<strong>Parece vazio, não acha?</strong> Comece a trabalhar com Taiga e você verá aqui as histórias, tarefas e problemas em que está trabalhando.",
-        "EMPTY_WATCHING": "<strong>Follow</strong> user stories, tasks, issues in your projects and be notified about their changes :)",
-        "EMPTY_PROJECT_LIST": "You don't have any project yet",
+        "EMPTY_WATCHING": "Siga histórias de usuários, tarefas e problemas nos seus projetos e seja notificado das mudanças :)",
+        "EMPTY_PROJECT_LIST": "Você ainda não tem projetos",
         "WORKING_ON_SECTION": "Trabalhando em",
         "WATCHING_SECTION": "Observando",
         "DASHBOARD": "Painel de Projetos",
-        "SET_HIDDEN": "Set as hidden",
-        "SET_VISIBLE": "Set as visible",
-        "NO_HIDDEN_ITEMS": "You have no hidden items",
-        "HIDE_HIDDEN": "Do not show hidden objects",
-        "SHOW_HIDDEN": "Show hidden objects"
+        "SET_HIDDEN": "Definir como invisível",
+        "SET_VISIBLE": "Definir como visível",
+        "NO_HIDDEN_ITEMS": "Você não possui nenhum item invisível",
+        "HIDE_HIDDEN": "Não exibir itens invisíveis",
+        "SHOW_HIDDEN": "Exibir itens invisíveis"
     },
     "EPICS": {
         "TITLE": "ÉPICOS",
@@ -865,7 +865,7 @@
     },
     "PROJECT": {
         "PAGE_TITLE": "{{projectName}}",
-        "HELP": "Reorder your projects to set at the top the most used ones.<br/> The top 10 projects will appear in the top navigation bar project list",
+        "HELP": "Reordene seus projetos para colocar no topo os mais usados.<br/> Os 10 primeiros projetos aparecerão na lista de projetos da barra de navegação superior.",
         "PRIVATE": "Projeto Privado",
         "LOOKING_FOR_PEOPLE": "Este projeto esta a procura de colaboradores",
         "FANS_COUNTER_TITLE": "{total, plural, =1{one fan} other{# fans}}",
@@ -1083,7 +1083,7 @@
             "CONFIRM": "Você tem certeza que quer excluir sua conta Taiga?",
             "CANCEL": "Voltar para configurações",
             "ACCEPT": "Excluir conta",
-            "BLOCK_PROJECT": "Note that all the projects you own projects will be <strong>blocked</strong> after you delete your account. If you do not want a project blocked, transfer ownership to another member of each project prior to deleting your account."
+            "BLOCK_PROJECT": "Todos os seus projetos ficarão bloqueados depois que sua conta for deletada. Se você não deseja que seus projetos sejam bloqueados, transfira-os para outro dono antes de deletar sua conta."
         },
         "DELETE_PROJECT": {
             "TITLE": "Excluir projeto",
@@ -1097,7 +1097,7 @@
         },
         "SELECT_USER": {
             "SEARCH": "Procurar por usuários",
-            "REMOVE": "Remove user",
+            "REMOVE": "Remover usuário",
             "ROLE": "Função"
         },
         "ADD_MEMBER": {
