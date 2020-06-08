@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## 5.0.13 (2020-06-08)
+
+### i18n
+
+- Updated translations (pt-br).
+
 ## 5.0.12 (2020-05-12)
 
 ### Misc
