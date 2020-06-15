@@ -34,12 +34,6 @@ div.wrapper(
                     tg-check-permission="view_tasks"
                 )
                     span(translate="US.PROMOTED_FROM_TASK")
-                    a(
-                        href=""
-                        tg-nav="project-tasks-detail:project=project.slug,ref=us.origin_task.ref"
-                        title="{{'US.TITLE_LINK_GO_TO_TASK' | translate}}"
-                        ng-bind-html="'#' + us.ref + ' ' + us.origin_task.subject | emojify"
-                    )
 
                 //- User Story promoted from issue
                 .detail-header-line.item-origin-issue(
