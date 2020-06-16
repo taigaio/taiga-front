@@ -79,10 +79,11 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         @appMetaService.setAll(title, description)
 
     initializeEventHandlers: ->
-        @scope.$on "promote-task-to-us:success", =>
+        @scope.$on "promote-task-to-us:success", (e, ref) =>
             @analytics.trackEvent("task", "promoteToUserstory", "promote task to userstory", 1)
-            @rootscope.$broadcast("object:updated")
-            @.loadTask()
+            ctx = {project: @scope.project.slug, ref: ref}
+            @location.path(@navUrls.resolve("project-userstories-detail", ctx))
+
         @scope.$on "attachment:create", =>
             @analytics.trackEvent("attachment", "create", "create attachment on task", 1)
         @scope.$on "custom-attributes-values:edit", =>
