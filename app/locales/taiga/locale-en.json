@@ -1243,7 +1243,7 @@
         "ADD_BULK": "Add some new user stories in bulk",
         "PROMOTED_FROM_ISSUE": "This user story has been promoted from issue:",
         "PROMOTED_FROM_TASK": "This user story has been promoted from task:",
-        "CONVERTED_FROM_TASk": "This user story was originally a subtask.",
+        "CONVERTED_FROM_TASK": "This user story was originally a subtask.",
         "TITLE_LINK_GO_TO_ISSUE": "Go to issue",
         "TITLE_LINK_GO_TO_TASK": "Go to task",
         "TITLE_DELETE_ACTION": "Delete user story",
