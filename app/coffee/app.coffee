@@ -469,6 +469,8 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
         {templateUrl: "user/web-notifications.html"})
     $routeProvider.when("/change-email/:email_token",
         {templateUrl: "user/change-email.html"})
+    $routeProvider.when("/verify-email/:email_token",
+        {templateUrl: "user/verify-email.html"})
     $routeProvider.when("/cancel-account/:cancel_token",
         {templateUrl: "user/cancel-account.html"})
 
