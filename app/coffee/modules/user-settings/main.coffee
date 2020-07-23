@@ -97,6 +97,17 @@ class UserSettingsController extends mixOf(taiga.Controller, taiga.PageMixin)
 
         @auth.exportProfile().then(onSuccess, onError)
 
+    verifyEmail: ->
+        onSuccess = (result) =>
+            text = @translate.instant("USER_PROFILE.VERIFY_EMAIL_SUCCESS")
+            @confirm.notify("success", text)
+
+        onError = (response) =>
+            if response.data?._error_message
+                @confirm.notify("error", response.data._error_message)
+
+        @auth.sendVerificationEmail().then(onSuccess, onError)
+
 
 module.controller("UserSettingsController", UserSettingsController)
 

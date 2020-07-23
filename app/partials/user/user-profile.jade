@@ -56,6 +56,13 @@ div.wrapper(
 
                 fieldset
                     label(for="email", translate="USER_PROFILE.FIELD.EMAIL")
+                    div(ng-if="!user.verified_email")
+                        a.verify-email(
+                            href=""
+                            title="{{'USER_PROFILE.ACTION_VERIFY_EMAIL' | translate}}"
+                            ng-click="ctrl.verifyEmail()"
+                            translate="USER_PROFILE.ACTION_VERIFY_EMAIL"
+                        )
                     input(
                         type="email"
                         name="email"

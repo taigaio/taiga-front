@@ -11,6 +11,7 @@
         margin-top: .5rem;
     }
 
+    .verify-email,
     .download-profile,
     .delete-account {
         @include font-size(small);
