@@ -779,7 +779,7 @@ i18nInit = (lang, $translate) ->
     checksley.updateMessages('default', messages)
 
 
-init = ($log, $rootscope, $auth, $events, $analytics, $tagManager, $translate, $location, $navUrls, appMetaService,
+init = ($log, $rootscope, $auth, $events, $analytics, $tagManager, $userPilot, $translate, $location, $navUrls, appMetaService,
         loaderService, navigationBarService, errorHandlingService, lightboxService, $tgConfig,
         projectService) ->
     $log.debug("Initialize application")
@@ -869,6 +869,10 @@ init = ($log, $rootscope, $auth, $events, $analytics, $tagManager, $translate, $
 
     # Tag Manager
     $tagManager.initialize()
+
+    # UserPilot
+    $userPilot.initialize()
+    $userPilot.identify()
 
     # Initialize error handling service when location change start
     $rootscope.$on '$locationChangeStart',  (event) ->
@@ -975,7 +979,7 @@ modules = [
     "ngAria",
     "pascalprecht.translate",
     "infinite-scroll",
-    "tgRepeat"
+    "tgRepeat",
 ].concat(pluginsModules)
 
 # Main module definition
@@ -1001,6 +1005,7 @@ module.run([
     "$tgEvents",
     "$tgAnalytics",
     "$tgTagManager",
+    "$tgUserPilot",
     "$translate",
     "$tgLocation",
     "$tgNavUrls",
