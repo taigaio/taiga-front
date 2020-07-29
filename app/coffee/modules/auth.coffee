@@ -609,7 +609,6 @@ ChangeEmailDirective = ($repo, $model, $auth, $confirm, $location, $params, $nav
         form = $el.find("form").checksley()
 
         onSuccessSubmit = (response) ->
-            console.log(response)
             if $auth.isAuthenticated()
                 $repo.queryOne("users", $auth.getUser().id).then (data) =>
                     $auth.setUser(data)
