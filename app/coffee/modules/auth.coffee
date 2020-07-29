@@ -609,14 +609,13 @@ ChangeEmailDirective = ($repo, $model, $auth, $confirm, $location, $params, $nav
         form = $el.find("form").checksley()
 
         onSuccessSubmit = (response) ->
+            console.log(response)
             if $auth.isAuthenticated()
                 $repo.queryOne("users", $auth.getUser().id).then (data) =>
                     $auth.setUser(data)
-                    $location.path($navUrls.resolve("home"))
-                    $location.replace()
+                $location.url($navUrls.resolve("home"))
             else
-                $location.path($navUrls.resolve("login"))
-                $location.replace()
+                $location.url($navUrls.resolve("login"))
 
             text = $translate.instant("CHANGE_EMAIL_FORM.SUCCESS")
             $confirm.success(text)
