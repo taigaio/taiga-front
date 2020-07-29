@@ -34,25 +34,22 @@ class UserPilotService extends taiga.Service
 
         @.initialize = true
 
-    identify: ->
+    identify: (force = false) ->
         userdata = @win.localStorage.getItem("userInfo")
-        if (userdata && not @.identified)
-            @.identified = true
+        if ((@win.userpilot and userdata and not @.identified) or force)
             data = JSON.parse(userdata)
-            timestamp = Date.now()
-            @win.userpilot.identify(
-                data["username"], # Used to identify users
-                {
-                    name: data["full_name_display"], # Full name
-                    email: data["email"], # Email address
-                    created_at: timestamp # Signup date as a Unix timestamp
-                    # Additional user properties
-                    # projectId: "1"
-                    # trialEnds: '2019-10-31T09:29:33.401Z'
-                }
-            )
-
-
-
+            if (data["id"])
+                @.identified = true
+                timestamp = Date.now()
+                @win.userpilot.identify(
+                    data["id"], # Used to identify users
+                    {
+                        name: data["full_name_display"], # Full name
+                        email: data["email"], # Email address
+                        created_at: timestamp, # Signup date as a Unix timestamp
+                        # Additional user properties
+                        username: data["username"]
+                    }
+                )
 
 module.service("$tgUserPilot", UserPilotService)
