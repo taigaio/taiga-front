@@ -48,6 +48,14 @@ if (argv.theme) {
 
 var version = "v-" + Date.now();
 
+// userpilot confifig
+var userpilot_token = process.env.USERPILOT || null;
+if (userpilot_token) {
+    var userpilot_url = "https://js.userpilot.io/"+ userpilot_token +"/latest.js";
+} else {
+    var userpilot_url = "";
+}
+
 var paths = {};
 paths.app = "app/";
 paths.dist = "dist/";
@@ -222,7 +230,7 @@ gulp.task("jade", function() {
     return gulp.src(paths.jade)
         .pipe(plumber())
         .pipe(cached("jade"))
-        .pipe(jade({pretty: true, locals:{v:version}}))
+        .pipe(jade({pretty: true, locals:{v:version, up_url: userpilot_url}}))
         .pipe(gulp.dest(paths.tmp));
 });
 
