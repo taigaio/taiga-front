@@ -49,7 +49,7 @@ if (argv.theme) {
 var version = "v-" + Date.now();
 
 // userpilot confifig
-var userpilot_token = process.env.USERPILOT || null;
+var userpilotToken = process.env.USERPILOT_TOKEN || null;
 
 var paths = {};
 paths.app = "app/";
@@ -225,7 +225,7 @@ gulp.task("jade", function() {
     return gulp.src(paths.jade)
         .pipe(plumber())
         .pipe(cached("jade"))
-        .pipe(jade({pretty: true, locals:{v:version, up_token: userpilot_token}}))
+        .pipe(jade({pretty: true, locals:{v:version, userpilotToken: userpilotToken}}))
         .pipe(gulp.dest(paths.tmp));
 });
 
@@ -234,7 +234,7 @@ gulp.task("jade-inheritance", function() {
         .pipe(plumber())
         .pipe(cached("jade"))
         .pipe(jadeInheritance({basedir: "./app/"}))
-        .pipe(jade({pretty: true, locals:{v: version, up_token: userpilot_token}}))
+        .pipe(jade({pretty: true, locals:{v: version, userpilotToken: userpilotToken}}))
         .pipe(gulp.dest(paths.tmp));
 });
 

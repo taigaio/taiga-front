@@ -52,8 +52,8 @@ html(lang="en", ng-attr-dir="{{ isRTL ? 'rtl' : 'ltr' }}")
         script(src="/#{v}/js/app-loader.js")
 
         // load userpilot library if required
-        if up_token
-            script(src="https://js.userpilot.io/#{up_token}/latest.js")
+        if userpilotToken
+            script(src="https://js.userpilot.io/#{userpilotToken}/latest.js")
 
         include svg/sprite.svg
         include svg/editor.svg
