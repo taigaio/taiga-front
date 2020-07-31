@@ -50,10 +50,6 @@ var version = "v-" + Date.now();
 
 // userpilot confifig
 var userpilot_token = process.env.USERPILOT || null;
-var userpilot_url = "";
-if (userpilot_token) {
-    var userpilot_url = "https://js.userpilot.io/"+ userpilot_token +"/latest.js";
-}
 
 var paths = {};
 paths.app = "app/";
@@ -229,7 +225,7 @@ gulp.task("jade", function() {
     return gulp.src(paths.jade)
         .pipe(plumber())
         .pipe(cached("jade"))
-        .pipe(jade({pretty: true, locals:{v:version, up_url: userpilot_url}}))
+        .pipe(jade({pretty: true, locals:{v:version, up_token: userpilot_token}}))
         .pipe(gulp.dest(paths.tmp));
 });
 
@@ -238,7 +234,7 @@ gulp.task("jade-inheritance", function() {
         .pipe(plumber())
         .pipe(cached("jade"))
         .pipe(jadeInheritance({basedir: "./app/"}))
-        .pipe(jade({pretty: true, locals:{v: version, up_url: userpilot_url}}))
+        .pipe(jade({pretty: true, locals:{v: version, up_token: userpilot_token}}))
         .pipe(gulp.dest(paths.tmp));
 });
 
