@@ -231,7 +231,11 @@ class UsFiltersMixin
         return false
 
     generateFilters: (milestone) ->
-        @.storeFilters(@params.pslug, @location.search(), @.storeFiltersName)
+        params = @location.search()
+        if params["milestone"]
+            delete params["milestone"]
+
+        @.storeFilters(@params.pslug, params, @.storeFiltersName)
 
         urlfilters = @location.search()
 
