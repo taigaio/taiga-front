@@ -48,7 +48,7 @@ if (argv.theme) {
 
 var version = "v-" + Date.now();
 
-// userpilot confifig
+// userpilot config
 var userpilotToken = process.env.USERPILOT_TOKEN || null;
 
 var paths = {};
