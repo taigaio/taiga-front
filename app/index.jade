@@ -50,7 +50,10 @@ html(lang="en", ng-attr-dir="{{ isRTL ? 'rtl' : 'ltr' }}")
         script(src="/#{v}/js/libs.js")
         script(src="/#{v}/js/templates.js")
         script(src="/#{v}/js/app-loader.js")
-        script(src="#{up_url}")
+
+        // load userpilot library if required
+        if up_url
+            script(src="#{up_url}")
 
         include svg/sprite.svg
         include svg/editor.svg
