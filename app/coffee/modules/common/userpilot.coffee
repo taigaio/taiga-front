@@ -39,10 +39,11 @@ class UserPilotService extends taiga.Service
         if ((@win.userpilot and userdata and not @.identified) or force)
             data = JSON.parse(userdata)
             if (data["id"])
+                id = parseInt(data["id"], 10)
                 @.identified = true
                 timestamp = Date.now()
                 @win.userpilot.identify(
-                    data["id"], # Used to identify users
+                    id, # Used to identify users
                     {
                         name: data["full_name_display"], # Full name
                         email: data["email"], # Email address
