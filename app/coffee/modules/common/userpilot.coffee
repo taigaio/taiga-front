@@ -36,7 +36,7 @@ class UserPilotService extends taiga.Service
 
     identify: (force = false) ->
         userdata = @win.localStorage.getItem("userInfo")
-        if ((@win.userpilot and userdata and not @.identified) or force)
+        if (@win.userpilot and ((userdata and not @.identified) or force))
             data = JSON.parse(userdata)
             if (data["id"])
                 id = parseInt(data["id"], 10)
