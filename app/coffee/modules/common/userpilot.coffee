@@ -49,7 +49,9 @@ class UserPilotService extends taiga.Service
                         email: data["email"], # Email address
                         created_at: timestamp, # Signup date as a Unix timestamp
                         # Additional user properties
-                        username: data["username"]
+                        taiga_id: id,
+                        taiga_username: data["username"],
+                        taiga_date_joined: data["date_joined"],
                     }
                 )
 
