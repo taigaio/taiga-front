@@ -60,13 +60,14 @@ class AuthService extends taiga.Service
                  "$tgHttp",
                  "$tgUrls",
                  "$tgConfig",
+                 "$tgUserPilot",
                  "$translate",
                  "tgCurrentUserService",
                  "tgThemeService",
                  "$tgAnalytics",
                  "tgTermsAnnouncementService"]
 
-    constructor: (@rootscope, @storage, @model, @rs, @http, @urls, @config, @translate, @currentUserService,
+    constructor: (@rootscope, @storage, @model, @rs, @http, @urls, @config, @userpilot, @translate, @currentUserService,
                   @themeService, @analytics, @termsAnnouncementService) ->
         super()
 
@@ -177,6 +178,7 @@ class AuthService extends taiga.Service
             user = @model.make_model("users", data.data)
             @.setToken(user.auth_token)
             @.setUser(user)
+            @userpilot.identify(true)
             @rootscope.$broadcast("auth:login", user)
             return user
 
