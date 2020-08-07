@@ -19,7 +19,7 @@
         "COPIED_TO_CLIPBOARD": "متن در کلیپ‌بورد کپی شد",
         "EDIT": "ویرایش",
         "DRAG": "درگ",
-        "TAG_LINE": "ابزار سریع، رایگان و متن‌باز مدیریت پروژه‌ی شما",
+        "TAG_LINE": "ابزار سریع، آزاد و متن‌باز مدیریت پروژه‌ی شما",
         "TAG_LINE_2": "علاقه‌مندی به پروژه‌ی شما",
         "BLOCK": "مسدود کردن",
         "BLOCK_TITLE": "Block this item, for example if it has a dependency that can not be satisfied",
@@ -259,7 +259,7 @@
         },
         "PERMISIONS_CATEGORIES": {
             "EPICS": {
-                "NAME": "Epics",
+                "NAME": "اپیک‌ها",
                 "VIEW_EPICS": "نمایش epicها",
                 "ADD_EPICS": "اضافه کردن epicها",
                 "MODIFY_EPICS": "تصحیح epicها",
@@ -405,9 +405,9 @@
         "SHOW_HIDDEN": "موضوعات مخفی را نشان بده"
     },
     "EPICS": {
-        "TITLE": "EPICS",
-        "SECTION_NAME": "Epics",
-        "EPIC": "Epic",
+        "TITLE": "اپیک‌ها",
+        "SECTION_NAME": "اپیک‌ها",
+        "EPIC": "اپیک",
         "PAGE_TITLE": "Epics - {{projectName}}",
         "PAGE_DESCRIPTION": "لیست پروژه‌  {{projectName}}: {{projectDescription}}",
         "DASHBOARD": {
@@ -415,9 +415,9 @@
             "UNASSIGNED": "آزاد"
         },
         "EMPTY": {
-            "TITLE": "به نظر می‌رسد که هنوز هیچ epicی وجود ندارد",
+            "TITLE": "به نظر می‌رسد که هنوز هیچ اپیکی وجود ندارد",
             "EXPLANATION": "Epicها آیتم‌های سطح بالایی هستند که شامل استوری‌های کاربر می‌شوند.<br />Epicها در صدر رده‌بندی هستند و به کمک آنها می‌توان استوری‌های کاربر را گروه‌بندی کرد.",
-            "HELP": "در مورد epicها بیشتر بدانید"
+            "HELP": "در مورد اپیک‌ها بیشتر بدانید"
         },
         "TABLE": {
             "VOTES": "رأی",
@@ -428,17 +428,17 @@
             "STATUS": "وضعیت",
             "PROGRESS": "پیشرفت",
             "CLOSED_US": "بستن استوری‌های کاربر",
-            "CLOSED_EPICS": "epicهای بسته شده",
+            "CLOSED_EPICS": "اپیک‌های بسته شده",
             "VIEW_OPTIONS": "تنظیمات نمایش"
         },
         "CREATE": {
-            "TITLE": "Epic جدید",
-            "PLACEHOLDER_DESCRIPTION": "متنی توضیحی برای درک بهتر این epic توسط دیگران اضافه کنید",
+            "TITLE": "اپیک جدید",
+            "PLACEHOLDER_DESCRIPTION": "متنی توضیحی برای درک بهتر این اپیک توسط دیگران اضافه کنید",
             "TEAM_REQUIREMENT": "الزامات تیم",
             "CLIENT_REQUIREMENT": "الزامات مشتری",
             "BLOCKED": "مسدودشده",
-            "BLOCKED_NOTE_PLACEHOLDER": "چرا این epic‌ مسدود شده؟",
-            "CREATE_EPIC": "ایجاد epic"
+            "BLOCKED_NOTE_PLACEHOLDER": "چرا این اپیک مسدود شده؟",
+            "CREATE_EPIC": "ایجاد اپیک"
         }
     },
     "PROJECTS": {
@@ -506,7 +506,7 @@
         },
         "MODULES": {
             "TITLE": "ماژول‌ها",
-            "EPICS": "Epics",
+            "EPICS": "اپیک‌ها",
             "EPICS_DESCRIPTION": "مدیریت کردن و ترسیم گرافیکی مهم‌ترین بخش‌های استراتژیکی پروژه",
             "BACKLOG": "گزارش امور ناتمام",
             "BACKLOG_DESCRIPTION": "مدیریت کردن استوری‌های کاربری برای حفظ نظم نمایش کارهای بعدی و در اولویت.",
@@ -587,7 +587,7 @@
             "TITLE": "ویژگی‌های سفارشی",
             "SUBTITLE": "ویژگی‌های سفارشی برای استوری‌های کاربر، وظایف و موضوعات مشخص کنید",
             "EPIC_DESCRIPTION": "ویژگی‌های سفارشی Epicها",
-            "EPIC_ADD": "اضافه کردن ویژگی سفارشی جدید در epicها",
+            "EPIC_ADD": "اضافه کردن ویژگی سفارشی جدید در اپیک‌ها",
             "US_DESCRIPTION": "ویژگی‌های سفارشی استوری‌های کاربر",
             "US_ADD": "اضافه کردن ویژگی سفارشی جدید در استوری‌های کاربر",
             "TASK_DESCRIPTION": "ویژگی‌های سفارشی وظایف",
@@ -852,8 +852,8 @@
             "FILTER_TYPE_ALL_TITLE": "نمایش همه",
             "FILTER_TYPE_PROJECTS": "پروژه‌ها",
             "FILTER_TYPE_PROJECTS_TITLE": "فقط پروژه‌ها را نمایش بده",
-            "FILTER_TYPE_EPICS": "Epics",
-            "FILTER_TYPE_EPICS_TITLE": "فقط epicها را نمایش بده",
+            "FILTER_TYPE_EPICS": "اپیک‌ها",
+            "FILTER_TYPE_EPICS_TITLE": "فقط اپیک‌ها را نمایش بده",
             "FILTER_TYPE_USER_STORIES": "استوری‌ها",
             "FILTER_TYPE_USER_STORIES_TITLE": "فقط استوری‌های کاربر را نمایش بده",
             "FILTER_TYPE_TASKS": "وظایف",
@@ -879,7 +879,7 @@
         "SECTION": {
             "SEARCH": "جست‌وجو",
             "TIMELINE": "تایم‌لاین",
-            "EPICS": "Epics",
+            "EPICS": "اپیک‌ها",
             "BACKLOG": "گزارش امور ناتمام",
             "KANBAN": "Kanban",
             "ISSUES": "موضوعات",
@@ -1216,7 +1216,7 @@
     "EPIC": {
         "PAGE_TITLE": "{{epicSubject}} - Epic {{epicRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "وضعیت: {{epicStatus }}. توضیحات: {{epicDescription}}",
-        "SECTION_NAME": "Epic",
+        "SECTION_NAME": "اپیک",
         "ERROR_UNLINK_RELATED_USERSTORY": "ما قادر به حذف پیوند نبوده‌ایم: {{errorMessage}}",
         "CREATE_RELATED_USERSTORIES": "ایجاد ارتباط با",
         "NEW_USERSTORY": "استوری کاربری جدید",
@@ -1558,7 +1558,7 @@
     "SEARCH": {
         "PAGE_TITLE": "جستجو - {{projectName}}",
         "PAGE_DESCRIPTION": "جستجو کردن در مورد همه‌چیز، استوری‌های کاربر، موضوعات، وظایف و صفحات ویکی در پروژه‌ی {{projectName}}: {{projectDescription}}",
-        "FILTER_EPICS": "Epics",
+        "FILTER_EPICS": "اپیک‌ها",
         "FILTER_USER_STORIES": "استوری‌های کاربر",
         "FILTER_ISSUES": "موضوعات",
         "FILTER_TASKS": "وظایف",
