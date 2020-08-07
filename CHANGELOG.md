@@ -2,6 +2,20 @@
 
 ## Unreleased
 
+## 5.0.15 (2020-08-07)
+
+### Features
+
+- Added integration with userpilot.
+
+### Misc
+
+- Fixed redirect after change email confirmation.
+
+### i18n
+
+- Updated translations (fa and fr).
+
 ## 5.0.13 (2020-06-08)
 
 ### i18n
