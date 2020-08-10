@@ -26,10 +26,10 @@ PromoteToUsButtonDirective = ($rootScope, $rs, $confirm, $translate) ->
                 project: item.project
             }
 
-            onSuccess = ->
+            onSuccess = (response) ->
                 askResponse.finish()
                 $confirm.notify("success")
-                $rootScope.$broadcast("promote-#{itemType}-to-us:success")
+                $rootScope.$broadcast("promote-#{itemType}-to-us:success", response.data[0])
 
             onError = ->
                 askResponse.finish()
@@ -46,7 +46,6 @@ PromoteToUsButtonDirective = ($rootScope, $rs, $confirm, $translate) ->
             title = $translate.instant("#{ctx}.TITLE")
             message = $translate.instant("#{ctx}.MESSAGE")
             subtitle = item.subject
-
             $confirm.ask(title, subtitle, message).then (response) ->
                 save(item, response)
 

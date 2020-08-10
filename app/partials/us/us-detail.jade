@@ -41,6 +41,13 @@ div.wrapper(
                         ng-bind-html="'#' + us.ref + ' ' + us.origin_task.subject | emojify"
                     )
 
+                //- User Story promoted from task
+                .detail-header-line.item-origin-task(
+                    ng-if="us.from_task_ref",
+                    tg-check-permission="view_tasks"
+                )
+                    span(translate="US.CONVERTED_FROM_TASK")
+
                 //- User Story promoted from issue
                 .detail-header-line.item-origin-issue(
                     ng-if="us.origin_issue",
