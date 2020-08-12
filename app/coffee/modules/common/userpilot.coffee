@@ -39,8 +39,8 @@ class UserPilotService extends taiga.Service
         if (@win.userpilot and ((userdata and not @.identified) or force))
             data = JSON.parse(userdata)
             if (data["id"])
-                id = parseInt(data["id"], 10)
                 @.identified = true
+                id = @.getUserPilotId(data)
                 timestamp = Date.now()
                 @win.userpilot.identify(
                     id, # Used to identify users
@@ -54,5 +54,14 @@ class UserPilotService extends taiga.Service
                         taiga_date_joined: data["date_joined"],
                     }
                 )
+
+    getUserPilotId: (data) ->
+        joined = new Date(data["date_joined"])
+        if joined > @.getJoinedLimit 42 then return parseInt(data["id"], 10) else 1
+
+    getJoinedLimit: (days) ->
+        limit = new Date
+        limit.setDate(limit.getDate() - days);
+        return limit
 
 module.service("$tgUserPilot", UserPilotService)
