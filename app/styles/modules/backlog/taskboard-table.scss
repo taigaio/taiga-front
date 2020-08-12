@@ -32,8 +32,8 @@ $column-padding: .5rem;
     .taskboard-column {
         align-content: flex-start;
         display: flex;
-        flex-direction: column;
         flex-flow: row wrap;
+        flex-direction: column;
     }
     .avatar-task-link {
         display: block;

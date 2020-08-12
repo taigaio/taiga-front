@@ -6,15 +6,12 @@ var gulp = require("gulp"),
     concat = require("gulp-concat"),
     uglify = require("gulp-uglify"),
     plumber = require("gulp-plumber"),
-    wrap = require("gulp-wrap"),
     rename = require("gulp-rename"),
-    flatten = require("gulp-flatten"),
     gulpif = require("gulp-if"),
     replace = require("gulp-replace"),
     sass = require("gulp-sass"),
-    csslint = require("gulp-csslint"),
     minifyCSS = require("gulp-minify-css"),
-    scsslint = require("gulp-scss-lint"),
+    stylelint = require('gulp-stylelint');
     cache = require("gulp-cache"),
     cached = require("gulp-cached"),
     jadeInheritance = require("gulp-jade-inheritance"),
@@ -22,10 +19,8 @@ var gulp = require("gulp"),
     insert = require("gulp-insert"),
     autoprefixer = require("gulp-autoprefixer"),
     templateCache = require("gulp-angular-templatecache"),
-    runSequence = require("run-sequence"),
     order = require("gulp-order"),
     os = require('os'),
-    print = require('gulp-print'),
     del = require("del"),
     livereload = require('gulp-livereload'),
     gulpFilter = require('gulp-filter'),
@@ -213,13 +208,21 @@ paths.libs.forEach(function(file) {
 
 var isDeploy = argv["_"].indexOf("deploy") !== -1;
 
+gulp.task("clear-sass-cache", function(done) {
+    delete cached.caches["sass"];
+    done();
+});
+
+gulp.task("clear", gulp.series("clear-sass-cache"), function(done) {
+    cache.clearAll();
+    done();
+});
+
 /*
 ############################################################################
 # Layout/CSS Related tasks
 ##############################################################################
 */
-
-var jadeIncludes = paths.app +'partials/includes/**/*';
 
 gulp.task("jade", function() {
     return gulp.src(paths.jade)
@@ -246,19 +249,24 @@ gulp.task("copy-index", function() {
 gulp.task("template-cache", function() {
     return gulp.src(paths.htmlPartials)
         .pipe(gulpif(isDeploy, replace(/e2e-([a-z\-]+)/g, '')))
-        .pipe(templateCache({standalone: true}))
+        .pipe(templateCache({
+            standalone: true,
+            transformUrl: function(url) {
+                if (url.startsWith('/')) {
+                    return url.slice(1);
+                }
+
+                return url;
+            }
+        }))
         .pipe(gulpif(isDeploy, uglify()))
         .pipe(gulp.dest(paths.distVersion + "js/"))
         .pipe(gulpif(!isDeploy, livereload()));
 });
 
-gulp.task("jade-deploy", function(cb) {
-    return runSequence("jade", "copy-index", "template-cache", cb);
-});
+gulp.task("jade-deploy", gulp.series("jade", "copy-index", "template-cache"));
 
-gulp.task("jade-watch", function(cb) {
-    return runSequence("jade-inheritance", "copy-index", "template-cache", cb);
-});
+gulp.task("jade-watch", gulp.series("jade-inheritance", "copy-index", "template-cache"));
 
 /*
 ##############################################################################
@@ -266,7 +274,7 @@ gulp.task("jade-watch", function(cb) {
 ##############################################################################
 */
 
-gulp.task("scss-lint", [], function() {
+gulp.task("scss-lint", function(done) {
     var ignore = [
         "!" + paths.app + "/styles/shame/**/*.scss",
     ];
@@ -275,31 +283,25 @@ gulp.task("scss-lint", [], function() {
 
     var sassFiles = paths.sass.concat(themes.current.customScss, ignore);
 
-    var tmpDir = 'gulp-cache-' + os.userInfo().username;
+    const task = gulp.src(sassFiles)
+        .pipe(
+            stylelint({
+                failAfterError: fail,
+                reporters: [
+                    {formatter: 'string', console: true}
+                ]
+            },
+            done,
+        ));
 
-    return gulp.src(sassFiles)
-        .pipe(gulpif(!isDeploy, cache(scsslint({endless: true, sync: true, config: ".scss-lint.yml"}), {
-          success: function(scsslintFile) {
-            return scsslintFile.scsslint.success;
-          },
-          value: function(scsslintFile) {
-            return {
-              scsslint: scsslintFile.scsslint
-            };
-          },
-          fileCache: new cache.Cache({
-            tmpdir: os.tmpdir(),
-            cacheDirName: tmpDir
-          })
-        })))
-        .pipe(gulpif(fail, scsslint.failReporter()));
+    if (fail) {
+        return task;
+    } else {
+        done();
+    }
 });
 
-gulp.task("clear-sass-cache", function() {
-    delete cached.caches["sass"];
-});
-
-gulp.task("sass-compile", [], function() {
+gulp.task("sass-compile", function() {
     return gulp.src(paths.sass)
         .pipe(addsrc.append(themes.current.customScss))
         .pipe(plumber())
@@ -312,27 +314,6 @@ gulp.task("sass-compile", [], function() {
             ]
         }))
         .pipe(gulp.dest(paths.tmp));
-});
-
-gulp.task("css-lint-app", function() {
-    var cssFiles = paths.css.concat(themes.current.customCss);
-
-    return gulp.src(cssFiles)
-        .pipe(gulpif(!isDeploy, cache(csslint("csslintrc.json"), {
-          success: function(csslintFile) {
-              if (csslintFile.csslint) {
-                  return csslintFile.csslint.success;
-              } else {
-                  return false;
-              }
-          },
-          value: function(csslintFile) {
-            return {
-              csslint: csslintFile.csslint
-            };
-          }
-        })))
-        .pipe(csslint.reporter());
 });
 
 gulp.task("app-css", function() {
@@ -369,52 +350,37 @@ gulp.task("main-css", function() {
         .pipe(livereload());
 });
 
-var compileThemes = function (cb) {
-    return runSequence("clear",
-                       "scss-lint",
-                       "sass-compile",
-                       "css-lint-app",
-                       ["app-css", "vendor-css"],
-                       "main-css",
-                       function() {
-                           themes.next();
+gulp.task("compile-theme", gulp.series(
+    "clear",
+    "scss-lint",
+    "sass-compile",
+    gulp.parallel("app-css", "vendor-css"),
+    "main-css",
+    function(done) {
+        themes.next();
+        done();
+    }));
 
-                           if (themes.current) {
-                               compileThemes(cb);
-                           } else {
-                               cb();
-                           }
-                       });
-};
+gulp.task("compile-themes", gulp.series(new Array(themes.size).fill('compile-theme')));
 
-gulp.task("compile-themes", function(cb) {
-    compileThemes(cb);
-});
+gulp.task("styles", gulp.series(
+    gulp.parallel("scss-lint", "sass-compile"),
+    gulp.parallel("app-css", "vendor-css"),
+    "main-css"
+));
 
-gulp.task("styles", function(cb) {
-    return runSequence("scss-lint",
-                       "sass-compile",
-                       ["app-css", "vendor-css"],
-                       "main-css",
-                       cb);
-});
+gulp.task("styles-lint", gulp.series(
+    gulp.parallel("scss-lint", "sass-compile"),
+    gulp.parallel("app-css", "vendor-css"),
+    "main-css"
+));
 
-gulp.task("styles-lint", function(cb) {
-    return runSequence("scss-lint",
-                       "sass-compile",
-                       "css-lint-app",
-                       ["app-css", "vendor-css"],
-                       "main-css",
-                       cb);
-});
-
-gulp.task("styles-dependencies", function(cb) {
-    return runSequence("clear-sass-cache",
-                       "sass-compile",
-                       ["app-css", "vendor-css"],
-                       "main-css",
-                       cb);
-});
+gulp.task("styles-dependencies", gulp.series(
+    "clear-sass-cache",
+    "sass-compile",
+    gulp.parallel("app-css", "vendor-css"),
+    "main-css")
+);
 
 /*
 ##############################################################################
@@ -595,9 +561,9 @@ gulp.task("jslibs-deploy", function() {
         .pipe(gulp.dest(paths.distVersion + "js/"));
 });
 
-gulp.task("app-watch", ["coffee", "conf", "locales", "moment-locales", "app-loader"]);
+gulp.task("app-watch", gulp.series("coffee", "conf", "locales", "moment-locales", "app-loader"));
 
-gulp.task("app-deploy", ["coffee", "conf", "locales", "moment-locales", "app-loader"], function() {
+gulp.task("app-deploy", gulp.series("coffee", "conf", "locales", "moment-locales", "app-loader"), function() {
     return gulp.src(paths.distVersion + "js/app.js")
         .pipe(sourcemaps.init())
             .pipe(uglify())
@@ -610,9 +576,6 @@ gulp.task("app-deploy", ["coffee", "conf", "locales", "moment-locales", "app-loa
 # Common tasks
 ##############################################################################
 */
-gulp.task("clear", ["clear-sass-cache"], function(done) {
-  return cache.clearAll(done);
-});
 
 //SVG
 gulp.task("copy-svg", function() {
@@ -646,7 +609,7 @@ gulp.task("copy-emojis", function() {
         .pipe(gulp.dest(paths.distVersion + "/emojis/"));
 });
 
-gulp.task("copy-prism", ["prism-languages"], function() {
+gulp.task("copy-prism", gulp.series("prism-languages"), function() {
     var prismLanguages = require(__dirname + '/prism-languages.json');
 
     prismLanguages = prismLanguages.map(function(it) {
@@ -668,7 +631,7 @@ gulp.task("copy-extras", function() {
         .pipe(gulp.dest(paths.dist + "/"));
 });
 
-gulp.task("link-images", ["copy-images"], function(cb) {
+gulp.task("link-images", gulp.series("copy-images"), function(cb) {
     try {
         fs.unlinkSync(paths.dist+"images");
     } catch (exception) {
@@ -677,7 +640,7 @@ gulp.task("link-images", ["copy-images"], function(cb) {
     cb();
 });
 
-gulp.task("copy", [
+gulp.task("copy", gulp.parallel([
     "copy-fonts",
     "copy-theme-fonts",
     "copy-images",
@@ -687,27 +650,17 @@ gulp.task("copy", [
     "copy-svg",
     "copy-theme-svg",
     "copy-extras"
-]);
+]));
 
 gulp.task("delete-old-version", function() {
-    del.sync(paths.dist + "v-*");
+    return del(paths.dist + "v-*");
 });
 
 gulp.task("delete-tmp", function() {
-    del.sync(paths.tmp);
+    return del(paths.tmp);
 });
 
-gulp.task("unused-css", ["default"], function() {
-    return gulp.src([
-        paths.distVersion + "js/app.js",
-        paths.tmp + "**/*.html"
-    ])
-        .pipe(utils.unusedCss({
-            css: paths.distVersion + "styles/theme-taiga.css"
-        }));
-});
-
-gulp.task("express", function() {
+gulp.task("express", function(cb) {
     var express = require("express");
     var compression = require('compression');
 
@@ -737,36 +690,43 @@ gulp.task("express", function() {
     });
 
     app.listen(9001);
+    cb();
 });
 
 //Rerun the task when a file changes
-gulp.task("watch", function() {
+gulp.task("watch", function(cb) {
     livereload.listen();
 
-    gulp.watch(paths.jade, ["jade-watch"]);
-    gulp.watch(paths.sass_watch, ["styles-lint"]);
-    gulp.watch(paths.styles_dependencies, ["styles-dependencies"]);
-    gulp.watch(paths.svg, ["copy-svg"]);
-    gulp.watch(paths.coffee, ["app-watch"]);
-    gulp.watch(paths.libs, ["jslibs-watch"]);
-    gulp.watch([paths.locales, paths.modulesLocales], ["locales"]);
-    gulp.watch(paths.images, ["copy-images"]);
-    gulp.watch(paths.fonts, ["copy-fonts"]);
+    gulp.watch(paths.jade, gulp.parallel(["jade-watch"]));
+    gulp.watch(paths.sass_watch, gulp.parallel(["styles-lint"]));
+    gulp.watch(paths.styles_dependencies, gulp.parallel(["styles-dependencies"]));    gulp.watch(paths.svg, gulp.parallel(["copy-svg"]));
+    gulp.watch(paths.coffee, gulp.parallel(["app-watch"]));
+    gulp.watch(paths.libs, gulp.parallel(["jslibs-watch"]));
+    gulp.watch([paths.locales, paths.modulesLocales], gulp.parallel(["locales"]));
+    gulp.watch(paths.images, gulp.parallel(["copy-images"]));
+
+    cb();
 });
 
-gulp.task("deploy", function(cb) {
-    runSequence("clear", "delete-old-version", "delete-tmp", [
+gulp.task("deploy", gulp.series(
+    "clear",
+    "delete-old-version",
+    "delete-tmp",
+    gulp.parallel(
         "copy",
         "jade-deploy",
         "app-deploy",
         "jslibs-deploy",
         "link-images",
         "compile-themes"
-    ], cb);
-});
+    )
+));
+
 //The default task (called when you run gulp from cli)
-gulp.task("default", function(cb) {
-    runSequence("delete-old-version", "delete-tmp", [
+gulp.task("default", gulp.series(
+    "delete-old-version",
+    "delete-tmp",
+    gulp.parallel(
         "copy",
         "styles",
         "app-watch",
@@ -774,5 +734,15 @@ gulp.task("default", function(cb) {
         "jade-deploy",
         "express",
         "watch"
-    ], cb);
+    ))
+);
+
+gulp.task("unused-css", gulp.series("default"), function() {
+    return gulp.src([
+        paths.distVersion + "js/app.js",
+        paths.tmp + "**/*.html"
+    ])
+    .pipe(utils.unusedCss({
+        css: paths.distVersion + "styles/theme-taiga.css"
+    }));
 });

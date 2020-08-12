@@ -111,26 +111,11 @@ All the information about the different installation methods (production, develo
 
 Install requirements:
 
-**Ruby / Sass**
-
-You can install Ruby through the apt package manager, rbenv, or rvm.
-Install Sass through your **Terminal or Command Prompt**.
-
-```
-gem install sass scss-lint
-export PATH="~/.gem/ruby/2.1.0/bin:$PATH"
-sass -v             # should return Sass 3.3.8 (Maptastic Maple)
-```
-
-Complete process for all OS at: http://sass-lang.com/install
-
 **Node + Gulp**
 
 We recommend using [nvm](https://github.com/creationix/nvm) to manage different node versions
 ```
-npm install -g gulp
-npm install
-gulp
+npm start
 ```
 
 And go in your browser to: http://localhost:9001/
@@ -156,7 +141,7 @@ To run a local Selenium Server, you will need to have the Java Development Kit (
 - To run **unit tests**
 
   ```
-  gulp
+  npx gulp
   ```
   ```
   npm test
@@ -167,7 +152,7 @@ To run a local Selenium Server, you will need to have the Java Development Kit (
 - To run **e2e tests** you need [taiga-back](https://github.com/taigaio/taiga-back) running and
 
   ```
-  gulp
+  npx gulp
   ```
   ```
   webdriver-manager start

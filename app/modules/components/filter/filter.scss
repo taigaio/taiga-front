@@ -1,6 +1,8 @@
 // custom colors
+/* stylelint-disable color-no-hex */
 $exclude-background: #fcc;
 $radio-mark-background: #d6d5d5;
+/* stylelint-enable color-no-hex */
 
 tg-filter {
     @include sidebar-medium-width-hidden-absolute();
@@ -50,7 +52,7 @@ tg-filter {
         .custom-radio {
             display: inline;
 
-            input[type=radio] {
+            input[type='radio'] {
                 display: none;
             }
         }

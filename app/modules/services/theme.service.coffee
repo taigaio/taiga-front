@@ -20,7 +20,7 @@
 taiga = @.taiga
 
 
-class ThemeService extends taiga.Service = ->
+class ThemeService extends taiga.Service
     use: (themeName) ->
         stylesheetEl = $("link[rel='stylesheet']:first")
 

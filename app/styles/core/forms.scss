@@ -5,13 +5,12 @@ fieldset {
     position: relative;
     width: 100%;
 }
-input[type="text"],
-input[type="number"],
-input[type="password"],
-input[type="url"],
-input[type="email"],
-input[type="date"],
-input[type="password"],
+input[type='text'],
+input[type='number'],
+input[type='password'],
+input[type='url'],
+input[type='email'],
+input[type='date'],
 select,
 textarea {
     background: $grey-02;

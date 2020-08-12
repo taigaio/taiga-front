@@ -114,6 +114,5 @@ body {
 }
 
 .hidden {
-    // scss-lint:disable ImportantRule
-    display: none !important;
+    display: none !important; /* stylelint-disable-line declaration-no-important */
 }

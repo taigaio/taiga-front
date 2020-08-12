@@ -2,10 +2,10 @@
 // Font face
 
 @each $font-face in
-OpenSans-CondLight,
-OpenSans-Light,
-OpenSans-Regular,
-OpenSans-Semibold {
+    OpenSans-CondLight,
+    OpenSans-Light,
+    OpenSans-Regular,
+    OpenSans-Semibold {
     @font-face {
         font-family: '#{$font-face}';
         src: url('../fonts/#{$font-face}.ttf') format('truetype');
@@ -13,11 +13,15 @@ OpenSans-Semibold {
 }
 
 @font-face {
-    font-family: taiga; font-style: normal; font-weight: normal;
+    font-family: 'taiga';
+    font-style: normal;
+    font-weight: normal;
     src: url('../fonts/taiga.eot');
+    /* stylelint-disable declaration-colon-newline-after */
     src: url('../fonts/taiga.eot?') format('eot'),
         url('../fonts/taiga.woff') format('woff'),
         url('../fonts/taiga.ttf')  format('truetype');
+    /* stylelint-enable declaration-colon-newline-after */
 }
 
 h1,

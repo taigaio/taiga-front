@@ -121,7 +121,7 @@ class NotificationsService extends taiga.Service
 
     _addNotificationAttributes: (notification) ->
         event_type = notification.get('event_type')
-        
+
         type =  @._getType(notification)
 
         title = @._getTitle(notification, event_type, type)

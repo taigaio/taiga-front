@@ -27,7 +27,7 @@
             @include empty-color(38);
         }
     }
-    input[type="text"] {
+    input[type='text'] {
         background: $white;
     }
     .icon {
@@ -40,7 +40,7 @@
 
 .tags-table {
     .table-tags-editor {
-        input[type="text"] {
+        input[type='text'] {
             background-color: transparent;
             border: 0;
             border-bottom: 1px solid transparent;

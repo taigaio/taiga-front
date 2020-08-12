@@ -69,10 +69,10 @@
             margin-right: .5rem;
         }
     }
-    input[type="radio"] {
+    input[type='radio'] {
         display: none;
     }
-    input[type="text"] {
+    input[type='text'] {
         display: none;
     }
     label {
@@ -109,7 +109,7 @@
                 fill: $white;
             }
         }
-        ~input[type="text"] {
+        ~input[type='text'] {
             display: block;
         }
     }

@@ -714,7 +714,7 @@ ProjectCustomAttributesDirective = ($log, $confirm, animationFrame, $translate) 
                 itemAttr = itemEl.scope().attr
                 itemIndex = itemEl.index()
                 $ctrl.moveCustomAttributes(itemAttr, itemIndex)
-                
+
             sortableChildren = $el.find(".js-child-sortable")
             for el in sortableChildren
                 drake[el] = dragula([el], {
@@ -936,7 +936,7 @@ ProjectCustomAttributesDirective = ($log, $confirm, animationFrame, $translate) 
 
         hideExtra = (index) ->
             $scope.isExtraVisible[index] = false
-    
+
         _manageExtraFormEvent = (event, callback) ->
             event.preventDefault()
             formEl = angular.element(event.currentTarget).closest("form")
@@ -969,7 +969,7 @@ ProjectCustomAttributesDirective = ($log, $confirm, animationFrame, $translate) 
                 _manageFormEvent(event, create)
             else if event.keyCode == 27 # Esc
                 cancelCreate()
-  
+
         $el.on "click", ".js-add-option-custom-field-extra-button", debounce 500, (event) ->
             _manageExtraFormEvent(event, addExtraOption)
 

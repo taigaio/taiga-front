@@ -65,6 +65,8 @@ var Theme = function() {
         }
     });
 
+    obj.size = themesSequence.length;
+
     return obj;
 };
 

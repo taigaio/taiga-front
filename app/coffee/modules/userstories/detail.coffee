@@ -287,7 +287,7 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
             )
             @rootscope.$broadcast("related-tasks:reordered")
 
-    
+
 
 module.controller("UserStoryDetailController", UserStoryDetailController)
 

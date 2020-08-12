@@ -297,7 +297,7 @@
         display: none;
         &:checked {
             +label {
-                background: $primary;
+                background-color: $grey-70;
                 transition: background .3s linear;
             }
         }
@@ -313,8 +313,5 @@
             cursor: pointer;
             transition: background .3s linear;
         }
-    }
-    input:checked + label {
-        background-color: $grey-70;
     }
 }

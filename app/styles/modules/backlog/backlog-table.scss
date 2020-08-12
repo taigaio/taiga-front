@@ -233,8 +233,7 @@
         border-bottom: 1px solid $white;
         color: $white;
         a {
-            // scss-lint:disable ImportantRule
-            color: $white !important;
+            color: $white !important; /* stylelint-disable-line declaration-no-important */
             &:hover {
                 color: $white;
             }
