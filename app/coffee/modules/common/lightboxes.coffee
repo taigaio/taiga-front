@@ -75,7 +75,7 @@ class LightboxService extends taiga.Service
         return defered.promise
 
     close: ($el) ->
-        return new Promise (resolve) =>
+        return @q (resolve) =>
             if _.isString($el)
                 $el = $($el)
             docEl = angular.element(document)

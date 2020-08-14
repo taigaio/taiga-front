@@ -19,6 +19,8 @@
 
 describe "tgGithubImportService", ->
     $provide = null
+    $rootScope = null
+    $q = null
     service = null
     mocks = {}
 
@@ -56,8 +58,10 @@ describe "tgGithubImportService", ->
             return null
 
     _inject = ->
-        inject (_tgGithubImportService_) ->
+        inject (_tgGithubImportService_, _$rootScope_, _$q_) ->
             service = _tgGithubImportService_
+            $rootScope = _$rootScope_
+            $q = _$q_
 
     _setup = ->
         _mocks()
@@ -105,11 +109,15 @@ describe "tgGithubImportService", ->
             }
         }
 
-        mocks.resources.githubImporter.getAuthUrl.promise().resolve(response)
+        getAuthUrlDeferred = $q.defer()
+        mocks.resources.githubImporter.getAuthUrl.returns(getAuthUrlDeferred.promise)
+        getAuthUrlDeferred.resolve(response)
 
         service.getAuthUrl().then (url) ->
             expect(url).to.be.equal("url123")
             done()
+
+        $rootScope.$apply()
 
     it "authorize", (done) ->
         service.setToken(123)
@@ -122,8 +130,12 @@ describe "tgGithubImportService", ->
             }
         }
 
-        mocks.resources.githubImporter.authorize.withArgs(verifyCode).promise().resolve(response)
+        githubImporterDeferred = $q.defer()
+        mocks.resources.githubImporter.authorize.withArgs(verifyCode).returns(githubImporterDeferred.promise)
+        githubImporterDeferred.resolve(response)
 
         service.authorize(verifyCode).then (token) ->
             expect(token).to.be.equal("token123")
             done()
+
+        $rootScope.$apply()

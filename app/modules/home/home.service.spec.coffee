@@ -18,7 +18,7 @@
 ###
 
 describe "tgHome", ->
-    homeService = provide = null
+    homeService = provide = $rootScope = $q = null
     mocks = {}
 
     _mockResources = () ->
@@ -45,14 +45,16 @@ describe "tgHome", ->
 
     _mockProjectsService = () ->
         mocks.projectsService = {
-            getListProjectsByUserId: sinon.stub().promise()
+            getListProjectsByUserId: sinon.stub()
         }
 
         provide.value "tgProjectsService", mocks.projectsService
 
     _inject = (callback) ->
-        inject (_tgHomeService_) ->
+        inject (_tgHomeService_, _$rootScope_, _$q_) ->
             homeService = _tgHomeService_
+            $rootScope = _$rootScope_
+            $q = _$q_
             callback() if callback
 
     _mocks = () ->
@@ -78,56 +80,74 @@ describe "tgHome", ->
         project1 = {id: 1, name: "fake1", slug: "project-1"}
         project2 = {id: 2, name: "fake2", slug: "project-2"}
 
+        getListProjectsByUserIdDeferred = $q.defer()
         mocks.projectsService.getListProjectsByUserId
             .withArgs(userId)
-            .resolve(Immutable.fromJS([
-                project1,
-                project2
-            ]))
+            .returns(getListProjectsByUserIdDeferred.promise)
 
+        getListProjectsByUserIdDeferred.resolve(Immutable.fromJS([
+            project1,
+            project2
+        ]))
+
+        listInAllProjects1Deferred = $q.defer()
         mocks.resources.epics.listInAllProjects
             .withArgs(sinon.match({
                 status__is_closed: false
                 assigned_to: userId
             }))
-            .promise()
-            .resolve(Immutable.fromJS([{id: 4, ref: 4, project: "1"}]))
+            .returns(listInAllProjects1Deferred.promise)
 
+        listInAllProjects1Deferred.resolve(Immutable.fromJS([{id: 4, ref: 4, project: "1"}]))
+
+        listInAllProjects2Deferred = $q.defer()
         mocks.resources.epics.listInAllProjects
             .withArgs(sinon.match({
                 status__is_closed: false
                 watchers: userId
             }))
-            .promise()
-            .resolve(Immutable.fromJS([
-                {id: 4, ref: 4, project: "1"},
-                {id: 5, ref: 5, project: "10"} # the user is not member of this project
-            ]))
+            .returns(listInAllProjects2Deferred.promise)
 
+
+        listInAllProjects2Deferred.resolve(Immutable.fromJS([
+            {id: 4, ref: 4, project: "1"},
+            {id: 5, ref: 5, project: "10"} # the user is not member of this project
+        ]))
+
+        listInAllProjects3Deferred = $q.defer()
         mocks.resources.userstories.listInAllProjects
             .withArgs(sinon.match({
                 is_closed: false
                 assigned_users: userId
             }))
-            .promise()
-            .resolve(Immutable.fromJS([{id: 1, ref: 1, project: "1"}]))
+            .returns(listInAllProjects3Deferred.promise)
 
+        listInAllProjects3Deferred.resolve(Immutable.fromJS([{id: 1, ref: 1, project: "1"}]))
+
+        listInAllProjects4Deferred = $q.defer()
         mocks.resources.userstories.listInAllProjects
             .withArgs(sinon.match({
                 is_closed: false
                 watchers: userId
             }))
-            .promise()
-            .resolve(Immutable.fromJS([
-                {id: 1, ref: 1, project: "1"},
-                {id: 2, ref: 2, project: "10"} # the user is not member of this project
-            ]))
+            .returns(listInAllProjects4Deferred.promise)
 
-        mocks.resources.tasks.listInAllProjects.promise()
-            .resolve(Immutable.fromJS([{id: 2, ref: 2, project: "1"}]))
+        listInAllProjects4Deferred.resolve(Immutable.fromJS([
+            {id: 1, ref: 1, project: "1"},
+            {id: 2, ref: 2, project: "10"} # the user is not member of this project
+        ]))
 
-        mocks.resources.issues.listInAllProjects.promise()
-            .resolve(Immutable.fromJS([{id: 3, ref: 3, project: "1"}]))
+        listInAllProjects5Deferred = $q.defer()
+        mocks.resources.tasks.listInAllProjects
+            .returns(listInAllProjects5Deferred.promise)
+
+        listInAllProjects5Deferred.resolve(Immutable.fromJS([{id: 2, ref: 2, project: "1"}]))
+
+        listInAllProjects6Deferred = $q.defer()
+        mocks.resources.issues.listInAllProjects
+            .returns(listInAllProjects6Deferred.promise)
+
+        listInAllProjects6Deferred.resolve(Immutable.fromJS([{id: 3, ref: 3, project: "1"}]))
 
         # mock urls
         mocks.tgNavUrls.resolve
@@ -212,3 +232,4 @@ describe "tgHome", ->
                 })
 
                 done()
+        $rootScope.$apply()

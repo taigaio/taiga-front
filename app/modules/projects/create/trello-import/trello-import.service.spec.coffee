@@ -19,6 +19,8 @@
 
 describe "tgTrelloImportService", ->
     $provide = null
+    $rootScope = null
+    $q = null
     service = null
     mocks = {}
 
@@ -44,8 +46,10 @@ describe "tgTrelloImportService", ->
             return null
 
     _inject = ->
-        inject (_tgTrelloImportService_) ->
+        inject (_tgTrelloImportService_, _$rootScope_, _$q_) ->
             service = _tgTrelloImportService_
+            $rootScope = _$rootScope_
+            $q = _$q_
 
     _setup = ->
         _mocks()
@@ -91,11 +95,15 @@ describe "tgTrelloImportService", ->
             }
         }
 
-        mocks.resources.trelloImporter.getAuthUrl.promise().resolve(response)
+        getAuthUrlDeferred = $q.defer()
+        mocks.resources.trelloImporter.getAuthUrl.returns(getAuthUrlDeferred.promise)
+        getAuthUrlDeferred.resolve(response)
 
         service.getAuthUrl().then (url) ->
             expect(url).to.be.equal("url123")
             done()
+
+        $rootScope.$apply()
 
     it "authorize", (done) ->
         service.setToken(123)
@@ -108,8 +116,12 @@ describe "tgTrelloImportService", ->
             }
         }
 
-        mocks.resources.trelloImporter.authorize.withArgs(verifyCode).promise().resolve(response)
+        authorizeDeferred = $q.defer()
+        mocks.resources.trelloImporter.authorize.withArgs(verifyCode).returns(authorizeDeferred.promise)
+        authorizeDeferred.resolve(response)
 
         service.authorize(verifyCode).then (token) ->
             expect(token).to.be.equal("token123")
             done()
+
+        $rootScope.$apply()

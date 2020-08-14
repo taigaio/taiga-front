@@ -20,10 +20,11 @@
 class JiraImportService extends taiga.Service
     @.$inject = [
         'tgResources',
-        '$location'
+        '$location',
+        '$q'
     ]
 
-    constructor: (@resources, @location) ->
+    constructor: (@resources, @location, @q) ->
         @.projects = Immutable.List()
         @.projectUsers = Immutable.List()
 
@@ -41,7 +42,7 @@ class JiraImportService extends taiga.Service
             @resources.jiraImporter.importProject(@.url, @.token, name, description, projectId, userBindings, keepExternalReference, isPrivate, projectType, importerType)
 
     getAuthUrl: (url) ->
-        return new Promise (resolve, reject) =>
+        return @q (resolve, reject) =>
             @resources.jiraImporter.getAuthUrl(url).then (response) =>
                 @.authUrl = response.data.url
                 resolve(@.authUrl)
@@ -49,7 +50,7 @@ class JiraImportService extends taiga.Service
                 reject(err.data._error_message)
 
     authorize: (oauth_verifier) ->
-        return new Promise (resolve, reject) =>
+        return @q (resolve, reject) =>
             @resources.jiraImporter.authorize(oauth_verifier).then ((response) =>
                 @.token = response.data.token
                 @.url = response.data.url

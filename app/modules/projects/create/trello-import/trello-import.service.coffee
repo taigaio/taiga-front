@@ -19,10 +19,11 @@
 
 class TrelloImportService extends taiga.Service
     @.$inject = [
-        'tgResources'
+        'tgResources',
+        '$q'
     ]
 
-    constructor: (@resources) ->
+    constructor: (@resources, @q) ->
         @.projects = Immutable.List()
         @.projectUsers = Immutable.List()
         @.token = null
@@ -40,13 +41,13 @@ class TrelloImportService extends taiga.Service
         return @resources.trelloImporter.importProject(@.token, name, description, projectId, userBindings, keepExternalReference, isPrivate)
 
     getAuthUrl: () ->
-        return new Promise (resolve) =>
+        return @q (resolve) =>
             @resources.trelloImporter.getAuthUrl().then (response) =>
                 @.authUrl = response.data.url
                 resolve(@.authUrl)
 
     authorize: (verifyCode) ->
-        return new Promise (resolve, reject) =>
+        return @q (resolve, reject) =>
             @resources.trelloImporter.authorize(verifyCode).then ((response) =>
                 @.token = response.data.token
                 resolve(@.token)

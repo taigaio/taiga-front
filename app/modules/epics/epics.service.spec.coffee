@@ -18,7 +18,7 @@
 ###
 
 describe "tgEpicsService", ->
-    epicsService = provide = null
+    epicsService = provide = $q = $rootScope = null
     mocks = {}
 
     _mockTgProjectService = () ->
@@ -61,8 +61,10 @@ describe "tgEpicsService", ->
         provide.value "tgXhrErrorService", mocks.tgXhrErrorService
 
     _inject = (callback) ->
-        inject (_tgEpicsService_) ->
+        inject (_tgEpicsService_, _$q_, _$rootScope_) ->
             epicsService = _tgEpicsService_
+            $q = _$q_
+            $rootScope = _$rootScope_
             callback() if callback
 
     _mocks = () ->
@@ -180,22 +182,28 @@ describe "tgEpicsService", ->
             {file: "f2"}
         ])
 
+        epicsPostDeferred = $q.defer()
         mocks.tgResources.epics
             .post
             .withArgs({project: 1})
-            .promise()
-            .resolve(epic)
+            .returns(epicsPostDeferred.promise)
 
+        epicsPostDeferred.resolve(epic)
+
+        attachmentsServiceDeferred = $q.defer()
         mocks.tgAttachmentsService
             .upload
-            .promise()
-            .resolve()
+            .returns(attachmentsServiceDeferred.promise)
+
+        attachmentsServiceDeferred.resolve()
 
         epicsService.fetchEpics = sinon.stub()
         epicsService.createEpic(epicData, attachments).then () ->
             expect(mocks.tgAttachmentsService.upload.withArgs("f1", 111, 1, "epic")).have.been.calledOnce
             expect(mocks.tgAttachmentsService.upload.withArgs("f2", 111, 1, "epic")).have.been.calledOnce
             expect(epicsService.fetchEpics).have.been.calledOnce
+
+        $rootScope.$apply()
 
     it "Update epic status", () ->
         epic = Immutable.fromJS({

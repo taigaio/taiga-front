@@ -23,10 +23,11 @@ class HomeService extends taiga.Service
     @.$inject = [
         "$tgNavUrls",
         "tgResources",
-        "tgProjectsService"
+        "tgProjectsService",
+        "$q"
     ]
 
-    constructor: (@navurls, @rs, @projectsService) ->
+    constructor: (@navurls, @rs, @projectsService, @q) ->
 
     _attachProjectInfoToWorkInProgress: (workInProgress, projectsById) ->
         _attachProjectInfoToDuty = (duty, objType) =>
@@ -173,7 +174,7 @@ class HomeService extends taiga.Service
 
         workInProgress = Immutable.Map()
 
-        Promise.all([
+        return @q.all([
             projectsPromise,
             assignedEpicsPromise,
             watchingEpicsPromise,

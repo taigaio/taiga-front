@@ -20,10 +20,11 @@
 class AttachmentsFullService extends taiga.Service
     @.$inject = [
         "tgAttachmentsService",
-        "$rootScope"
+        "$rootScope",
+        "$q"
     ]
 
-    constructor: (@attachmentsService, @rootScope) ->
+    constructor: (@attachmentsService, @rootScope, @q) ->
         @._attachments = Immutable.List()
         @._deprecatedsCount = 0
         @._attachmentsVisible = Immutable.List()
@@ -48,7 +49,7 @@ class AttachmentsFullService extends taiga.Service
             @._attachmentsVisible = @._attachments.filter (it) -> !it.getIn(['file', 'is_deprecated'])
 
     addAttachment: (projectId, objId, type, file, editable = true, comment = false) ->
-        return new Promise (resolve, reject) =>
+        return @q (resolve, reject) =>
             if @attachmentsService.validate(file)
                 @.uploadingAttachments.push(file)
 
@@ -111,7 +112,7 @@ class AttachmentsFullService extends taiga.Service
 
             promises.push @attachmentsService.patch(attachment.getIn(['file', 'id']), type, patch)
 
-        return Promise.all(promises).then () =>
+        return @q.all(promises).then () =>
             @._attachments = attachments
 
             @.regenerate()

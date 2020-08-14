@@ -27,7 +27,8 @@ class MoveToSprintLightboxController
         'tgProjectService'
         '$translate'
         'lightboxService'
-        '$tgConfirm'
+        '$tgConfirm',
+        '$q'
     ]
 
     constructor: (
@@ -38,6 +39,7 @@ class MoveToSprintLightboxController
         @translate
         @lightboxService
         @confirm
+        @q
     ) ->
         @.projectId = @projectService.project.get('id')
         @.loading = false
@@ -124,7 +126,7 @@ class MoveToSprintLightboxController
                     @.itemsToMove.issues
                 )
             )
-        return Promise.all(promises)
+        return @q.all(promises)
 
     displayWarning: (itemsNotMoved) ->
         action = @translate.instant('COMMON.I_GET_IT')

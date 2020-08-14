@@ -25,10 +25,11 @@ class CurrentUserService
     @.$inject = [
         "tgProjectsService",
         "$tgStorage",
-        "tgResources"
+        "tgResources",
+        "$q"
     ]
 
-    constructor: (@projectsService, @storageService, @rs) ->
+    constructor: (@projectsService, @storageService, @rs, @q) ->
         @._user = null
         @._projects = Immutable.Map()
         @._projectsById = Immutable.Map()
@@ -90,7 +91,7 @@ class CurrentUserService
         @rs.user.setUserStorage('joyride', @._joyride)
 
     loadJoyRideConfig: () ->
-        return new Promise (resolve) =>
+        return @q (resolve) =>
             if @._joyride != null
                 resolve(@._joyride)
                 return
@@ -112,7 +113,7 @@ class CurrentUserService
                     resolve(@._joyride)
 
     _loadUserInfo: () ->
-        return Promise.all([
+        return @q.all([
             @.loadProjectsList()
         ])
 

@@ -18,12 +18,15 @@
 ###
 
 class WysiwygCodeHightlighterService
-    constructor: () ->
+    @.$inject = [
+        '$q'
+    ]
+    constructor: (@q) ->
         Prism.plugins.customClass.prefix('prism-')
-        Prism.plugins.customClass.map({})        
-        
+        Prism.plugins.customClass.map({})
+
     getLanguages: () ->
-        return new Promise (resolve, reject) =>
+        return @q (resolve, reject) =>
             if @.languages
                 resolve(@.languages)
             else if @.loadPromise
@@ -46,7 +49,7 @@ class WysiwygCodeHightlighterService
         return if lan then lan.name else null
 
     loadLanguage: (lan) ->
-        return new Promise (resolve) ->
+        return @q (resolve) ->
             if !Prism.languages[lan]
                 ljs.load("/#{window._version}/prism/prism-#{lan}.min.js", resolve)
             else

@@ -19,10 +19,11 @@
 
 class GithubImportService extends taiga.Service
     @.$inject = [
-        'tgResources'
+        'tgResources',
+        '$q'
     ]
 
-    constructor: (@resources, @location) ->
+    constructor: (@resources, @q) ->
         @.projects = Immutable.List()
         @.projectUsers = Immutable.List()
 
@@ -39,13 +40,13 @@ class GithubImportService extends taiga.Service
         return @resources.githubImporter.importProject(@.token, name, description, projectId, userBindings, keepExternalReference, isPrivate, projectType)
 
     getAuthUrl: (callbackUri) ->
-        return new Promise (resolve) =>
+        return @q (resolve) =>
             @resources.githubImporter.getAuthUrl(callbackUri).then (response) =>
                 @.authUrl = response.data.url
                 resolve(@.authUrl)
 
     authorize: (code) ->
-        return new Promise (resolve, reject) =>
+        return @q (resolve, reject) =>
             @resources.githubImporter.authorize(code).then ((response) =>
                 @.token = response.data.token
                 resolve(@.token)

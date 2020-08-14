@@ -25,10 +25,11 @@ class ProjectService
         "tgProjectsService",
         "tgXhrErrorService",
         "tgUserActivityService",
-        "$interval"
+        "$interval",
+        "$q"
     ]
 
-    constructor: (@rootScope,  @projectsService, @xhrError, @userActivityService, @interval) ->
+    constructor: (@rootScope,  @projectsService, @xhrError, @userActivityService, @interval, @q) ->
         @._project = null
         @._section = null
         @._sectionsBreadcrumb = Immutable.List()
@@ -90,7 +91,7 @@ class ProjectService
         @._activeMembers = @._project.get('members').filter (member) -> member.get('is_active')
 
     setProjectBySlug: (pslug) ->
-        return new Promise (resolve, reject) =>
+        return @q (resolve, reject) =>
             if !@.project || @.project.get('slug') != pslug
                 @projectsService
                     .getProjectBySlug(pslug)

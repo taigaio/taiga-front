@@ -22,15 +22,16 @@ class WysiwygMentionService
         "tgProjectService",
         "tgWysiwygService",
         "$tgNavUrls",
-        "$tgResources"
+        "$tgResources",
+        "$q"
     ]
 
-    constructor: (@projectService, @wysiwygService, @navurls, @rs) ->
+    constructor: (@projectService, @wysiwygService, @navurls, @rs, @q) ->
         @.cancelablePromise = null
         @.projectSlug = @projectService.project.get('slug')
 
     search: (mention) ->
-        return new Promise (resolve) =>
+        return @q (resolve) =>
             if '#'.indexOf(mention[0]) != -1
                 @.searchItem(mention.replace('#', '')).then(resolve)
             else if '@'.indexOf(mention[0]) != -1
@@ -39,7 +40,7 @@ class WysiwygMentionService
                 @.searchEmoji(mention.replace(':', ''), resolve)
 
     searchItem: (term) ->
-        return new Promise (resolve, reject) =>
+        return @q (resolve, reject) =>
             term = taiga.slugify(term)
 
             filter = (item) ->
