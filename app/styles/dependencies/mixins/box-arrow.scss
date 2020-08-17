@@ -1,8 +1,8 @@
-@mixin arrow($arrow-direction, $border-color, $background-color, $border-width, $border-size) {
+@mixin arrow($arrow-direction, $border-color, $background-color, $border-width, $border-size, $left: 50%) {
     &:after,
     &:before {
         #{$arrow-direction}: 100%;
-        left: 50%;
+        left: $left;
         border: solid transparent;
         content: " ";
         height: 0;

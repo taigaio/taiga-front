@@ -1,3 +1,5 @@
+/* stylelint-disable color-named */
+
 .master,
 .menu-secondary,
 .menu-tertiary,
@@ -18,9 +20,9 @@ tg-project-menu {
         a.active {
             background: white;
             color: black;
-            svg{
+            svg {
                 fill: black;
-                stroke:black;
+                stroke: black;
             }
         }
         svg {
@@ -29,7 +31,7 @@ tg-project-menu {
         }
         .active svg {
             fill: black;
-            stroke:black;
+            stroke: black;
         }
     }
 }
@@ -105,3 +107,5 @@ a,
 .topnav-dropdown-wrapper .counter {
     color: black;
 }
+
+/* stylelint-enable color-named */

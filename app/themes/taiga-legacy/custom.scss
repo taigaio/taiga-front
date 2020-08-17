@@ -1,3 +1,4 @@
+/* stylelint-disable color-named, color-no-hex */
 .auth {
     background: url('../images/bg.png') no-repeat center center;
     background-size: cover;
@@ -23,8 +24,8 @@ tg-project-menu {
     background-color: $primary-dark;
     background-image: url('../images/menu.png');
 }
-.menu-tertiary  ul li a,
-.menu-tertiary  ul li a:hover {
+.menu-tertiary ul li a,
+.menu-tertiary ul li a:hover {
     color: white;
 }
 
@@ -42,7 +43,8 @@ tg-project-menu {
 .button-red {
     @include font-type(light);
 }
-.button-green, .button-gray {
+.button-green,
+.button-gray {
     &:hover,
     &.active,
     &:visited:hover {
@@ -70,3 +72,4 @@ tg-project-menu {
 .topnav-dropdown-wrapper .counter {
     color: $top-icon-color;
 }
+/* stylelint-enable color-named, color-no-hex */

@@ -83,11 +83,20 @@
 
 .button-primary {
     @extend %button;
-    background: $primary;
+    background: $color-solid-primary;
     &:hover,
     &.active,
     &:visited:hover {
-        background: lighten($primary, 5%);
+        background: lighten($color-link-primary, 5%);
+        color: $white;
+        span {
+            color: $white;
+        }
+    }
+    &:hover svg,
+    &.active svg,
+    &:visited:hover svg {
+        fill: $white;
     }
 }
 

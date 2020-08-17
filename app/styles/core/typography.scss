@@ -2,26 +2,13 @@
 // Font face
 
 @each $font-face in
-    OpenSans-CondLight,
-    OpenSans-Light,
-    OpenSans-Regular,
-    OpenSans-Semibold {
+    Ubuntu-Light,
+    Ubuntu-Regular,
+    Ubuntu-Medium {
     @font-face {
         font-family: '#{$font-face}';
         src: url('../fonts/#{$font-face}.ttf') format('truetype');
     }
-}
-
-@font-face {
-    font-family: 'taiga';
-    font-style: normal;
-    font-weight: normal;
-    src: url('../fonts/taiga.eot');
-    /* stylelint-disable declaration-colon-newline-after */
-    src: url('../fonts/taiga.eot?') format('eot'),
-        url('../fonts/taiga.woff') format('woff'),
-        url('../fonts/taiga.ttf')  format('truetype');
-    /* stylelint-enable declaration-colon-newline-after */
 }
 
 h1,
@@ -30,7 +17,7 @@ h3,
 h4,
 h5,
 h6 {
-    color: $grey-90;
+    color: $color-black900;
     font-weight: normal;
     line-height: 1.5;
 
@@ -141,11 +128,22 @@ hr {
 // __Links__
 a,
 a:visited {
-    color: $grey-80;
+    color: $color-link-primary;
     text-decoration: none;
 
     &:hover {
-        color: $primary;
+        color: $color-black600;
+        transition: color .3s linear;
+    }
+}
+
+a.secondary,
+a.secondary:visited {
+    color: $color-black600;
+    text-decoration: none;
+
+    &:hover {
+        color: $color-link-primary;
         transition: color .3s linear;
     }
 }

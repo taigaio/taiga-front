@@ -15,12 +15,9 @@ nav.navbar(ng-if="vm.isEnabledHeader")
         )
             include ../../svg/logo.svg
 
-        a(
-            ng-if="vm.customSupportUrl"
-            href="{{ vm.customSupportUrl }}",
-            target="_blank",
-            title="{{'PROJECT.NAVIGATION.HELP_TITLE' | translate}}",
-            translate="PROJECT.NAVIGATION.HELP"
+        div.topnav-dropdown-wrapper(
+            tg-dropdown-project-list
+            active="vm.active == 'projects'"
         )
 
     div.nav-right(ng-if="!vm.isAuthenticated")
@@ -40,28 +37,43 @@ nav.navbar(ng-if="vm.isEnabledHeader")
 
     div.nav-right(ng-if="vm.isAuthenticated")
         a(
-            tg-nav="home"
-            ng-class="{'active': vm.active == 'dashboard' }"
-            title="{{'PROJECT.NAVIGATION.DASHBOARD_TITLE' | translate}}"
-        )
-            tg-svg(svg-icon="icon-dashboard")
-        a(
-            href="#",
             tg-nav="discover",
             ng-class="{'active': vm.active == 'discover' }"
-            title="{{'PROJECT.NAVIGATION.DISCOVER_TITLE' | translate}}",
+            title="{{'PROJECT.NAVIGATION.DISCOVER_TITLE' | translate}}"
         )
-            tg-svg(svg-icon="icon-discover")
+            tg-svg(svg-icon="icon-compass")
 
-        div.topnav-dropdown-wrapper(
-            ng-show="vm.projects.size"
-            tg-dropdown-project-list
-            active="vm.active == 'projects'"
-        )
+        .topnav-dropdown-wrapper.nav-bar-support(ng-if="vm.customSupportUrl")
+            a(
+                ng-if="vm.customSupportUrl"
+                href="{{ vm.customSupportUrl }}",
+                target="_blank",
+                title="{{'PROJECT.NAVIGATION.HELP_TITLE' | translate}}",
+            )
+                tg-svg(svg-icon="icon-help-circle")
+
+            div.navbar-dropdown
+                ul
+                    li
+                        a.secondary(
+                            href="{{ vm.customSupportUrl }}",
+                            target="_blank",
+                        )
+                            tg-svg(svg-icon="icon-compass")
+                            span {{ 'PROJECT.NAVIGATION.HELP_TITLE' | translate }}
+                    li
+                        a.secondary(
+                            ng-show="vm.isFeedbackEnabled"
+                            href="#"
+                            ng-click="vm.sendFeedback()",
+                            title="{{ 'PROJECT.NAVIGATION.FEEDBACK_TITLE' | translate }}"
+                        )
+                            tg-svg(svg-icon="icon-message-square")
+                            span {{ 'PROJECT.NAVIGATION.FEEDBACK_TITLE' | translate }}
 
         div.topnav-dropdown-wrapper(
             tg-dropdown-notifications
             active="vm.active == 'notifications'"
         )
 
-        div.topnav-dropdown-wrapper(tg-dropdown-user)
+        div(tg-dropdown-user)

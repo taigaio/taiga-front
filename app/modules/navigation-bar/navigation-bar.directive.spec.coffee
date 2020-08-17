@@ -73,6 +73,12 @@ describe "navigationBarDirective", () ->
     _mockTgDropdownUserDirective = () ->
         provide.factory 'tgDropdownUserDirective', () -> {}
 
+    _mockTgFeedbackService = () ->
+        mocks.feedbackService = {
+            sendFeedback: sinon.stub()
+        }
+        provide.value "tgFeedbackService", mocks.feedbackService
+
     _mocks = () ->
         module ($provide) ->
             provide = $provide
@@ -84,6 +90,7 @@ describe "navigationBarDirective", () ->
             _mockTgDropdownProjectListDirective()
             _mockTgDropdownUserDirective()
             _mocksConfig()
+            _mockTgFeedbackService()
 
             return null
 
@@ -130,3 +137,11 @@ describe "navigationBarDirective", () ->
         expect(mocks.locationService.url.calledWith("/login")).to.be.true
         expect(mocks.locationService.search.calledWith({next: encodeURIComponent(nextUrl)})).to.be.true
         expect(vm.publicRegisterEnabled).to.be.true
+
+    it "dropdown help send feedback", () ->
+        elm = createDirective()
+        scope.$apply()
+        vm = elm.isolateScope().vm
+        expect(mocks.feedbackService.sendFeedback.callCount).to.be.equal(0)
+        vm.sendFeedback()
+        expect(mocks.feedbackService.sendFeedback.callCount).to.be.equal(1)
