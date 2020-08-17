@@ -1,63 +1,58 @@
-a.user-avatar(
-    tg-nav="profile"
-    title="{{ vm.user.get('full_name_display') }}"
-    ) {{ vm.user.get('full_name_display') }}
-    img(
-        tg-avatar="vm.user"
-        alt="{{ vm.user.get('full_name_display') }}"
-        height="40px"
-    )
-
-div.navbar-dropdown.dropdown-user
-    ul
-        li
-            a(
-                tg-nav="profile",
-                title="{{'PROJECT.NAVIGATION.VIEW_PROFILE_TITLE' | translate}}",
-                translate="PROJECT.NAVIGATION.VIEW_PROFILE")
-        li
-            a(
-                href="#",
-                tg-nav="user-settings-user-profile",
-                title="{{'PROJECT.NAVIGATION.USER_SETTINGS_TITLE' | translate}}",
-                translate="PROJECT.NAVIGATION.USER_SETTINGS")
-
-        li.plugin(ng-repeat="plugin in vm.userSettingsPlugins")
-            a(
-                href=""
-                tg-nav="user-settings-contrib:plugin=plugin.slug"
-                ng-class="{active: plugin.slug == currentPlugin.slug}"
+.dropdown-user-inner
+    .dropdown-user-navbar
+        a.user-avatar(
+            tg-nav="profile"
+            title="{{ vm.user.get('full_name_display') }}"
+        )
+            img(
+                tg-avatar="vm.user"
+                alt="{{ vm.user.get('full_name_display') }}"
             )
-                span.title {{ plugin.name }}
-        li
-            a(
-                href="#",
-                tg-nav="user-settings-user-change-password",
-                title="{{'PROJECT.NAVIGATION.CHANGE_PASSWORD_TITLE' | translate}}",
-                translate="PROJECT.NAVIGATION.CHANGE_PASSWORD")
 
-        li
-            a(
-                href="#",
-                tg-nav="user-settings-mail-notifications",
-                title="{{'PROJECT.NAVIGATION.NOTIFICATIONS_TITLE' | translate}}",
-                translate="PROJECT.NAVIGATION.NOTIFICATIONS")
+        button.chevron
+            tg-svg(svg-icon="icon-chevron-down")
 
-        li(ng-show="vm.isFeedbackEnabled")
-            a(
-                href="#",
-                ng-click="vm.sendFeedback()",
-                title="{{'PROJECT.NAVIGATION.FEEDBACK_TITLE' | translate}}",
-                translate="PROJECT.NAVIGATION.FEEDBACK")
-        li(ng-if="vm.customSupportUrl")
-            a(
-                href="{{ vm.customSupportUrl }}",
-                target="_blank",
-                title="{{'PROJECT.NAVIGATION.HELP_TITLE' | translate}}",
-                translate="PROJECT.NAVIGATION.HELP")
-        li
-            a(
-                href="#",
-                ng-click="vm.logout()",
-                title="{{'COMMON.LOGOUT' | translate}}",
-                translate="COMMON.LOGOUT")
+    div.navbar-dropdown.dropdown-user
+        .dropdown-user-profile
+            img(
+                tg-avatar="vm.user"
+                alt="{{ ::vm.user.get('full_name_display') }}"
+            )
+            .dropdown-user-data
+                p.full-name {{ ::vm.user.get('full_name_display') }}
+                p.email {{ ::vm.user.get('email') }}
+                p
+                    a(
+                        href="#",
+                        tg-nav="user-settings-user-profile",
+                        title="{{'PROJECT.NAVIGATION.EDIT_PROFILE' | translate}}",
+                        translate="PROJECT.NAVIGATION.EDIT_PROFILE")
+
+        ul
+            li.plugin(ng-repeat="plugin in vm.userSettingsPlugins")
+                a.secondary(
+                    href=""
+                    tg-nav="user-settings-contrib:plugin=plugin.slug"
+                    ng-class="{active: plugin.slug == currentPlugin.slug}"
+                )
+                    span.title {{ plugin.name }}
+            li.user-profile-option
+                a.secondary(
+                    href="#",
+                    tg-nav="user-settings-user-change-password",
+                    title="{{'PROJECT.NAVIGATION.ACCOUNT_SETTINGS' | translate}}",
+                    translate="PROJECT.NAVIGATION.ACCOUNT_SETTINGS")
+
+            li.user-profile-option
+                a.secondary(
+                    href="#",
+                    tg-nav="user-settings-mail-notifications",
+                    title="{{'PROJECT.NAVIGATION.NOTIFICATIONS_TITLE' | translate}}",
+                    translate="PROJECT.NAVIGATION.NOTIFICATIONS")
+
+            li.user-profile-option
+                a(
+                    href="#",
+                    ng-click="vm.logout()",
+                    title="{{'COMMON.LOGOUT' | translate}}",
+                    translate="COMMON.LOGOUT")

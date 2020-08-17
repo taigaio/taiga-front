@@ -1,10 +1,11 @@
+/* stylelint-disable color-named, color-no-hex */
 .navbar {
     background: rgba($red-amaranth, .6);
     &::after {
         background: url('../images/menu-vert.png') repeat top left;
     }
     .nav-right {
-        a:hover svg{
+        a:hover svg {
             fill: rgba(255, 255, 255, .7);
             stroke: rgba(255, 255, 255, .7);
         }
@@ -13,8 +14,8 @@
             stroke: rgba(255, 255, 255, .5);
         }
         .active svg {
-            fill: #A83F60;
-            stroke:#A83F60;
+            fill: #a83f60;
+            stroke: #a83f60;
         }
     }
 }
@@ -41,5 +42,6 @@ tg-project-menu {
 //// OVERRIDE
 
 .topnav-dropdown-wrapper .counter {
-    color: #A83F60;
+    color: #a83f60;
 }
+/* stylelint-enable color-named, color-no-hex */

@@ -24,23 +24,23 @@
 
 @mixin font-type($type) {
     @if $type == title {
-        font-family: 'OpenSans-CondLight', Arial, Helvetica, sans-serif;
+        font-family: 'Ubuntu-Regular', Arial, Helvetica, sans-serif;
     } @else if $type == light {
-        font-family: 'OpenSans-Light', Arial, Helvetica, sans-serif;
-        font-weight: 200;
+        font-family: 'Ubuntu-Light', Arial, Helvetica, sans-serif;
+        font-weight: 300;
     } @else if $type == text {
-        font-family: 'OpenSans-Regular', Arial, Helvetica, sans-serif;
+        font-family: 'Ubuntu-Regular', Arial, Helvetica, sans-serif;
         font-weight: 400;
     } @else if $type == semibold {
-        font-family: 'OpenSans-Semibold', Arial, Helvetica, sans-serif;
+        font-family: 'Ubuntu-Medium', Arial, Helvetica, sans-serif;
         font-weight: 500;
     } @else if $type == bold {
-        font-family: 'OpenSans-Bold', Arial, Helvetica, sans-serif;
+        font-family: 'Ubuntu-Medium', Arial, Helvetica, sans-serif;
         font-weight: 600;
     } @else if $type == mono {
         font-family: 'courier new', 'monospace';
     } @else {
-        font-family: 'OpenSans-Regular', Arial, Helvetica, sans-serif;
+        font-family: 'Ubuntu-Regular', Arial, Helvetica, sans-serif;
         font-weight: 400;
     }
 }

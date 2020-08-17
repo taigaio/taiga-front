@@ -3,7 +3,7 @@ a(
     title="{{ 'EVENTS.TITLE' | translate }}"
     tg-nav="notifications"
     ng-mouseover="visible=true"
-    ng-class="{'active': active}"
+    ng-class="{'active': active, 'pending-notifications': total}"
 )
     tg-svg(svg-icon="icon-bell")
     div.counter(ng-if="total", ng-class="{'counter-active': newEvent, 'large': total > 99, 'small': total < 10}") {{ total }}
@@ -12,9 +12,7 @@ div.navbar-dropdown-notifications(
     ng-mouseleave="visible=false"
 )
     .header
-        span.notifications-title {{ 'EVENTS.MY_EVENTS' | translate }}
         a.action(href="", ng-class="{'disabled': !total}", ng-click="!total||setAllAsRead()") {{ 'EVENTS.DISMISS_ALL' | translate }}
-        a.action(tg-nav="notifications") {{ 'EVENTS.VIEW_ALL' | translate }}
 
     .notifications-wrapper
         .empty(ng-if="!total && !loading")
@@ -25,3 +23,6 @@ div.navbar-dropdown-notifications(
             infinite-scroll-container="#my-notifications"
             infinite-scroll-disabled="true"
         )
+
+    .notifications-bottom
+        a.action(tg-nav="notifications") {{ 'EVENTS.VIEW_ALL' | translate }}

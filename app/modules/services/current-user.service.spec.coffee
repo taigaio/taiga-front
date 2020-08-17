@@ -95,8 +95,7 @@ describe "tgCurrentUserService", ->
             {id: 1, name: "fake1"},
             {id: 2, name: "fake2"},
             {id: 3, name: "fake3"},
-            {id: 4, name: "fake4"},
-            {id: 5, name: "fake5"}
+            {id: 4, name: "fake4"}
         ])
 
         mocks.projectsService.getListProjectsByUserId = sinon.stub()
@@ -108,9 +107,9 @@ describe "tgCurrentUserService", ->
 
         currentUserService.setUser(user).then () ->
             expect(currentUserService._user).to.be.equal(user)
-            expect(currentUserService.projects.get("all").size).to.be.equal(5)
-            expect(currentUserService.projects.get("recents").size).to.be.equal(5)
-            expect(currentUserService.projectsById.size).to.be.equal(5)
+            expect(currentUserService.projects.get("all").size).to.be.equal(4)
+            expect(currentUserService.projects.get("recents").size).to.be.equal(4)
+            expect(currentUserService.projectsById.size).to.be.equal(4)
             expect(currentUserService.projectsById.get("3").get("name")).to.be.equal("fake3")
 
             done()

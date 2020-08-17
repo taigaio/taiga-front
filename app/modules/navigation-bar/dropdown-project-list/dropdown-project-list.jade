@@ -1,35 +1,58 @@
-a(
-    href=""
-    title="Projects"
-    tg-nav="projects"
-    ng-class="{'active': active}"
-)
-    tg-svg(svg-icon="icon-project")
-
-div.navbar-dropdown.dropdown-project-list
-    ul
-      li(tg-repeat="project in vm.projects track by project.get('id')")
-        a(
-            href="#"
-            tg-nav="project:project=project.get('slug'),section=project.get('my_homepage')"
-            ng-class="{'blocked-project': project.get('blocked_code')}"
+.dropdown-project-list(ng-class="{'active': active}")
+    a(
+        href=""
+        title="{{'PROJECT.NAVIGATION.PROJECTS' | translate}}"
+        tg-nav="projects"
+        class="dropdown-project-list-projects"
+    )
+        tg-svg(
+            class="icon-folder"
+            svg-icon="icon-folder"
         )
-            span {{::project.get("name")}}
-            tg-svg(
-                svg-icon="icon-blocked-project"
-                ng-if="project.get('blocked_code')"
-                svg-title="PROJECT.BLOCKED_PROJECT.BLOCKED"
-            )
 
-    a.see-more-projects-btn.button-gray(
-        href="#",
-        tg-nav="projects",
-        title="{{'PROJECT.NAVIGATION.MANAGE_PROJECTS' | translate}}",
-        translate="PROJECT.NAVIGATION.MANAGE_PROJECTS")
+        span {{'PROJECT.NAVIGATION.PROJECTS' | translate}}
 
-    div.create-options
-        a.create-project-btn.button-green(
-            href="#",
-            tg-nav="create-project"
-            title="{{'PROJECT.NAVIGATION.ACTION_CREATE_PROJECT' | translate}}",
-            translate="PROJECT.NAVIGATION.ACTION_CREATE_PROJECT")
+    div.navbar-dropdown
+        div(ng-if="vm.projects.size")
+            ul.dropdown-project-list-ul
+                li(tg-repeat="project in vm.projects track by project.get('id')")
+                    a.dropdown-project-list-link.secondary(
+                        href="#"
+                        tg-nav="project:project=project.get('slug'),section=project.get('my_homepage')"
+                        ng-class="{'blocked-project': project.get('blocked_code')}"
+                    )
+                        img(
+                            tg-project-logo-small-src="::project"
+                            alt="{{::project.get('name')}}"
+                        )
+                        span {{::project.get("name")}}
+                        tg-svg(
+                            svg-icon="icon-slash"
+                            ng-if="project.get('blocked_code')"
+                            svg-title="PROJECT.BLOCKED_PROJECT.BLOCKED"
+                        )
+
+            a.see-more-projects-btn(
+                href="#",
+                tg-nav="projects",
+                title="{{'PROJECT.NAVIGATION.VIEW_ALL_PROJECTS' | translate}}",
+                translate="PROJECT.NAVIGATION.VIEW_ALL_PROJECTS")
+
+            div.create-options
+                a.create-project-btn.button-primary(
+                    href="#",
+                    tg-nav="create-project"
+                    title="{{'PROJECT.NAVIGATION.ACTION_CREATE_PROJECT' | translate}}",
+                )
+                    tg-svg(svg-icon="icon-plus-1")
+                    span {{'PROJECT.NAVIGATION.ACTION_CREATE_PROJECT' | translate}}
+        div(ng-if="!vm.projects.size")
+            h2 {{'PROJECT.NAVIGATION.ACTION_CREATE_PROJECT_FIRST' | translate}}
+            p.dropdown-project-list-desc {{'PROJECT.NAVIGATION.ACTION_CREATE_PROJECT_FIRST_TEXT' | translate}}
+            div.create-options
+                a.create-project-btn.button-primary(
+                    href="#",
+                    tg-nav="create-project"
+                    title="{{'PROJECT.NAVIGATION.ACTION_CREATE_PROJECT' | translate}}",
+                )
+                    span {{'PROJECT.NAVIGATION.ACTION_CREATE_PROJECT' | translate}}

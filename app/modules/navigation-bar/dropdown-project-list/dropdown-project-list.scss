@@ -1,0 +1,125 @@
+.dropdown-project-list {
+    align-items: center;
+    display: flex;
+    height: 100%;
+
+    .icon-slash {
+        fill: transparent;
+        stroke: $color-solid-red;
+    }
+
+    .dropdown-project-list-ul {
+        border-bottom: 1px solid $color-solid-primary;
+        margin-bottom: 0;
+        padding-bottom: .8rem;
+    }
+
+    .dropdown-project-list-link {
+        @include font-type(semibold);
+
+        align-items: center;
+        display: flex;
+
+        img {
+            margin-right: .5rem;
+            width: 24px;
+        }
+
+        &:hover {
+            background: $color-gray400;
+            color: $color-link-primary;
+        }
+    }
+
+    .navbar-dropdown {
+        @include arrow('bottom', $color-gray100, $color-gray100, 1, 8, 1.5rem);
+        width: 275px;
+    }
+
+    .see-more-projects-btn {
+        @include font-type(semibold);
+
+        color: $color-link-primary;
+    }
+
+    .create-project-btn {
+        @include font-size(small);
+
+        padding: 0;
+
+        span {
+            @include font-type(bold);
+
+            color: $color-black600;
+        }
+        svg {
+            @include svg-size(1.5rem);
+
+            fill: $color-black900;
+            margin: .25rem .25rem 0 0;
+            stroke: $color-black900;
+        }
+
+        &:hover {
+            span {
+                color: $white;
+            }
+
+            svg {
+                fill: $white;
+                stroke: $white;
+            }
+        }
+    }
+
+    .dropdown-project-list-desc {
+        @include font-size(xsmall);
+
+        color: $color-black600;
+    }
+
+    h2 {
+        @include font-size(medium);
+        @include font-type(semibold);
+
+        margin-bottom: .5rem;
+    }
+
+    &:hover,
+    &.active {
+        .dropdown-project-list-projects {
+            background-color: $color-gray200;
+            border-radius: 3px;
+            span {
+                color: $color-link-tertiary;
+            }
+
+            .icon-folder {
+                fill: $color-link-tertiary;
+            }
+        }
+    }
+}
+
+.dropdown-project-list-projects {
+    @include font-type(semibold);
+
+    align-items: center;
+    display: flex;
+    padding: .25rem .5rem;
+
+    span {
+        color: $color-link-primary;
+        font-size: .9rem;
+    }
+
+    .icon-folder {
+        margin: .1rem .25rem 0 0;
+
+        svg {
+            fill: $color-link-primary;
+            @include svg-size(.9rem);
+        }
+    }
+}
+

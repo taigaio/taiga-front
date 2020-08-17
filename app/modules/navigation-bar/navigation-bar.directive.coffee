@@ -17,7 +17,7 @@
 # File: navigation-bar/navigation-bar.directive.coffee
 ###
 
-NavigationBarDirective = (currentUserService, navigationBarService, locationService, navUrlsService, config) ->
+NavigationBarDirective = (currentUserService, navigationBarService, locationService, navUrlsService, config, feedbackService) ->
     link = (scope, el, attrs, ctrl) ->
         scope.vm = {}
 
@@ -27,11 +27,15 @@ NavigationBarDirective = (currentUserService, navigationBarService, locationServ
 
         scope.vm.publicRegisterEnabled = config.get("publicRegisterEnabled")
         scope.vm.customSupportUrl = config.get("supportUrl")
+        scope.vm.isFeedbackEnabled = config.get("feedbackEnabled")
 
         scope.vm.login = ->
             nextUrl = encodeURIComponent(locationService.url())
             locationService.url(navUrlsService.resolve("login"))
             locationService.search({next: nextUrl})
+
+        scope.vm.sendFeedback = () ->
+            feedbackService.sendFeedback()
 
         scope.$on "$routeChangeSuccess", () ->
             scope.vm.active = null
@@ -58,7 +62,8 @@ NavigationBarDirective.$inject = [
     "tgNavigationBarService",
     "$tgLocation",
     "$tgNavUrls",
-    "$tgConfig"
+    "$tgConfig",
+    "tgFeedbackService"
 ]
 
 angular.module("taigaNavigationBar").directive("tgNavigationBar", NavigationBarDirective)
