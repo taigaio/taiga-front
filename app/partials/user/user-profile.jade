@@ -56,7 +56,7 @@ div.wrapper(
 
                 fieldset
                     label(for="email", translate="USER_PROFILE.FIELD.EMAIL")
-                    div(ng-if="!user.verified_email")
+                    div(ng-if="user.verified_email === false")
                         a.verify-email(
                             href=""
                             title="{{'USER_PROFILE.ACTION_VERIFY_EMAIL' | translate}}"
