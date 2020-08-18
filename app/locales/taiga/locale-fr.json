@@ -203,6 +203,7 @@
             "COUNTER_TITLE": "{total, plural, =1{un vote} other{# votes}}"
         },
         "PROMOTE_TO_US": "Promote to user story",
+        "PROMOTE_TASK_TO_US": "Promote task to user story",
         "PROMOTED_ISSUES": "This issue has been promoted to",
         "PROMOTED_TASKS": "This task has been promoted to",
         "CONFIRM_PROMOTE": {
@@ -1243,6 +1244,7 @@
         "ADD_BULK": "Ajouter de nouveaux récits utilisateur en lot",
         "PROMOTED_FROM_ISSUE": "Ce récit utilisateur a été promue à partir d'un ticket :",
         "PROMOTED_FROM_TASK": "Ce récit utilisateur a été promue à partir d'un ticket :",
+        "CONVERTED_FROM_TASK": "This user story was originally a task.",
         "TITLE_LINK_GO_TO_ISSUE": "Aller vers ce ticket",
         "TITLE_LINK_GO_TO_TASK": "Aller vers cette tâche",
         "TITLE_DELETE_ACTION": "Supprimer le récit utilisateur",
@@ -1488,6 +1490,13 @@
         "ACTION_CHANGE_EMAIL": "Modifier le courriel",
         "SUCCESS": "Taiga a modifié votre courriel"
     },
+    "VERIFY_EMAIL_FORM": {
+        "TITLE": "Verify your email",
+        "SUBTITLE": "One click more and your email will be verified!",
+        "PLACEHOLDER_INPUT_TOKEN": "modifier le jeton courriel",
+        "ACTION_VERIFY_EMAIL": "Verify email",
+        "SUCCESS": "The Taiga verified your email"
+    },
     "ISSUES": {
         "PAGE_TITLE": "Tickets - {{projectName}}",
         "PAGE_DESCRIPTION": "Le panneau de la liste des tickets du projet {{projectName}} : {{projectDescription}}",
@@ -1629,7 +1638,9 @@
         "ACTION_USE_GRAVATAR": "Utiliser l'image par défaut",
         "ACTION_DELETE_ACCOUNT": "Supprime le compte Taiga",
         "ACTION_DOWNLOAD_PROFILE": "Télécharger le profil Taïga",
+        "ACTION_VERIFY_EMAIL": "Verify your email",
         "CHANGE_EMAIL_SUCCESS": "<strong>Consultez votre messagerie !</strong><br />Nous vous avons envoyé un courriel<br />avec les instructions à suivre pour saisir votre nouvelle adresse",
+        "VERIFY_EMAIL_SUCCESS": "<strong>Check your inbox!</strong><br />We have sent you an email<br />with instructions on how to verify your address",
         "CHANGE_PHOTO": "Changer la photo",
         "FIELD": {
             "USERNAME": "Identifiant",

@@ -203,6 +203,7 @@
             "COUNTER_TITLE": "{total, plural, =1{one vote} other{# votes}}"
         },
         "PROMOTE_TO_US": "Перетворити в історію користувача",
+        "PROMOTE_TASK_TO_US": "Promote task to user story",
         "PROMOTED_ISSUES": "Ця проблема перетворена на",
         "PROMOTED_TASKS": "Це завдання перетворене на",
         "CONFIRM_PROMOTE": {
@@ -1243,6 +1244,7 @@
         "ADD_BULK": "Додати декілька нових історій користувача",
         "PROMOTED_FROM_ISSUE": "Ця історія користувача була створена з проблеми:",
         "PROMOTED_FROM_TASK": "Ця історія користувача була створена з завдання:",
+        "CONVERTED_FROM_TASK": "This user story was originally a task.",
         "TITLE_LINK_GO_TO_ISSUE": "Перейти до проблеми",
         "TITLE_LINK_GO_TO_TASK": "Перейти до завдання",
         "TITLE_DELETE_ACTION": "Видалити історію користувача",
@@ -1488,6 +1490,13 @@
         "ACTION_CHANGE_EMAIL": "Змінити електронну пошту",
         "SUCCESS": "Taiga оновив вашу електронну пошту"
     },
+    "VERIFY_EMAIL_FORM": {
+        "TITLE": "Verify your email",
+        "SUBTITLE": "One click more and your email will be verified!",
+        "PLACEHOLDER_INPUT_TOKEN": "змінити токен електронної пошти",
+        "ACTION_VERIFY_EMAIL": "Verify email",
+        "SUCCESS": "The Taiga verified your email"
+    },
     "ISSUES": {
         "PAGE_TITLE": "Проблеми - {{projectName}}",
         "PAGE_DESCRIPTION": "Панель проблем проєкту {{projectName}}: {{projectDescription}}",
@@ -1629,7 +1638,9 @@
         "ACTION_USE_GRAVATAR": "Використовувати типове зображення",
         "ACTION_DELETE_ACCOUNT": "Видалити обліковий запис Taiga",
         "ACTION_DOWNLOAD_PROFILE": "Завантажити профіль Taiga",
+        "ACTION_VERIFY_EMAIL": "Verify your email",
         "CHANGE_EMAIL_SUCCESS": "<strong>Перевірте свою скриньку!</strong><br />Ми надіслали лист на ваш профіль<br />з інструкціями для налаштування нової адреси ",
+        "VERIFY_EMAIL_SUCCESS": "<strong>Check your inbox!</strong><br />We have sent you an email<br />with instructions on how to verify your address",
         "CHANGE_PHOTO": "Змінити фото",
         "FIELD": {
             "USERNAME": "Ім'я користувача",

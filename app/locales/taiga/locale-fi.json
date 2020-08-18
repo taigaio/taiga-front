@@ -203,6 +203,7 @@
             "COUNTER_TITLE": "{total, plural, =1{one vote} other{# votes}}"
         },
         "PROMOTE_TO_US": "Promote to user story",
+        "PROMOTE_TASK_TO_US": "Promote task to user story",
         "PROMOTED_ISSUES": "This issue has been promoted to",
         "PROMOTED_TASKS": "This task has been promoted to",
         "CONFIRM_PROMOTE": {
@@ -1243,6 +1244,7 @@
         "ADD_BULK": "Add some new user stories in bulk",
         "PROMOTED_FROM_ISSUE": "This user story has been promoted from issue:",
         "PROMOTED_FROM_TASK": "This user story has been promoted from task:",
+        "CONVERTED_FROM_TASK": "This user story was originally a task.",
         "TITLE_LINK_GO_TO_ISSUE": "Siirry pyyntöön",
         "TITLE_LINK_GO_TO_TASK": "Go to task",
         "TITLE_DELETE_ACTION": "Poista käyttäjätarina",
@@ -1488,6 +1490,13 @@
         "ACTION_CHANGE_EMAIL": "Muuta sähköpostisi",
         "SUCCESS": "The Taiga updated your email"
     },
+    "VERIFY_EMAIL_FORM": {
+        "TITLE": "Verify your email",
+        "SUBTITLE": "One click more and your email will be verified!",
+        "PLACEHOLDER_INPUT_TOKEN": "muuta sähköposti-tokenia",
+        "ACTION_VERIFY_EMAIL": "Verify email",
+        "SUCCESS": "The Taiga verified your email"
+    },
     "ISSUES": {
         "PAGE_TITLE": "Issues - {{projectName}}",
         "PAGE_DESCRIPTION": "The issues list panel of the project {{projectName}}: {{projectDescription}}",
@@ -1629,7 +1638,9 @@
         "ACTION_USE_GRAVATAR": "Käytä oletuskuvaa",
         "ACTION_DELETE_ACCOUNT": "Poista Taiga-tunnus",
         "ACTION_DOWNLOAD_PROFILE": "Download Taiga profile",
+        "ACTION_VERIFY_EMAIL": "Verify your email",
         "CHANGE_EMAIL_SUCCESS": "<strong>Tarkista sähköpostisi!</strong><br />Lähetimme ohjeet<br /><strong>{{email}}</strong><br />uuden osoitteen asettamiseen",
+        "VERIFY_EMAIL_SUCCESS": "<strong>Check your inbox!</strong><br />We have sent you an email<br />with instructions on how to verify your address",
         "CHANGE_PHOTO": "Muuta kuva",
         "FIELD": {
             "USERNAME": "Käyttäjänimi",

@@ -203,6 +203,7 @@
             "COUNTER_TITLE": "{total, plural, =1{one vote} other{# votes}}"
         },
         "PROMOTE_TO_US": "Promote to user story",
+        "PROMOTE_TASK_TO_US": "Promote task to user story",
         "PROMOTED_ISSUES": "This issue has been promoted to",
         "PROMOTED_TASKS": "This task has been promoted to",
         "CONFIRM_PROMOTE": {
@@ -1243,6 +1244,7 @@
         "ADD_BULK": "Add some new user stories in bulk",
         "PROMOTED_FROM_ISSUE": "This user story has been promoted from issue:",
         "PROMOTED_FROM_TASK": "This user story has been promoted from task:",
+        "CONVERTED_FROM_TASK": "This user story was originally a task.",
         "TITLE_LINK_GO_TO_ISSUE": "이슈로 가기",
         "TITLE_LINK_GO_TO_TASK": "Go to task",
         "TITLE_DELETE_ACTION": "유저 스토리 삭제",
@@ -1488,6 +1490,13 @@
         "ACTION_CHANGE_EMAIL": "이메일 변경하기",
         "SUCCESS": "The Taiga updated your email"
     },
+    "VERIFY_EMAIL_FORM": {
+        "TITLE": "Verify your email",
+        "SUBTITLE": "One click more and your email will be verified!",
+        "PLACEHOLDER_INPUT_TOKEN": "이메일 토큰 변경",
+        "ACTION_VERIFY_EMAIL": "Verify email",
+        "SUCCESS": "The Taiga verified your email"
+    },
     "ISSUES": {
         "PAGE_TITLE": "이슈 - {{projectName}}",
         "PAGE_DESCRIPTION": "프로젝트 {{projectName}}: {{projectDescription}}의 이슈 목록 패널",
@@ -1629,7 +1638,9 @@
         "ACTION_USE_GRAVATAR": "기본 이미지 사용",
         "ACTION_DELETE_ACCOUNT": "타이가 계정 삭제하기",
         "ACTION_DOWNLOAD_PROFILE": "Download Taiga profile",
+        "ACTION_VERIFY_EMAIL": "Verify your email",
         "CHANGE_EMAIL_SUCCESS": "<strong>이메일 보관함을 확인하세요!</strong><br />새 주소를 설정할 수 있는 방법을<br />이메일로 알려드렸습니다.",
+        "VERIFY_EMAIL_SUCCESS": "<strong>Check your inbox!</strong><br />We have sent you an email<br />with instructions on how to verify your address",
         "CHANGE_PHOTO": "사진 변경하기",
         "FIELD": {
             "USERNAME": "아이디",
