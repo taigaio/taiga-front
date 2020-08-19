@@ -2,6 +2,20 @@
 
 ## Unreleased
 
+## 5.5.0 (2020-08-19)
+
+### Features
+
+- Verify user email.
+
+- Task promotion creates user story and deletes original task.
+
+### Misc
+
+- Upgraded node, gulp and other development dependencies.
+
+- Several minor bugfixes.
+
 ## 5.0.15 (2020-08-07)
 
 ### Features
