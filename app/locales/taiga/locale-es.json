@@ -203,7 +203,7 @@
             "COUNTER_TITLE": "{total, plural, =1{un voto} other{# votos}}"
         },
         "PROMOTE_TO_US": "Promover a historia de usuario",
-        "PROMOTE_TASK_TO_US": "Promote task to user story",
+        "PROMOTE_TASK_TO_US": "Convertir tarea en historia de usuario",
         "PROMOTED_ISSUES": "Esta petición ha sido promovida a la historia de usuario:",
         "PROMOTED_TASKS": "Esta tarea ha sido promovida a historia de usuario:",
         "CONFIRM_PROMOTE": {
@@ -1244,7 +1244,7 @@
         "ADD_BULK": "Añadir nuevas historias de usuario en bloque",
         "PROMOTED_FROM_ISSUE": "Esta historia de usuario ha sido promovida desde la petición:",
         "PROMOTED_FROM_TASK": "Esta historia de usuario ha sido promovida desde la tarea:",
-        "CONVERTED_FROM_TASK": "This user story was originally a task.",
+        "CONVERTED_FROM_TASK": "Esta historia de usuario proviene de una tarea.",
         "TITLE_LINK_GO_TO_ISSUE": "Ir a petición",
         "TITLE_LINK_GO_TO_TASK": "Ir a tarea",
         "TITLE_DELETE_ACTION": "Borrar historia de usuario",
@@ -1491,11 +1491,11 @@
         "SUCCESS": "La Taiga ha actualizado tu correo"
     },
     "VERIFY_EMAIL_FORM": {
-        "TITLE": "Verify your email",
-        "SUBTITLE": "One click more and your email will be verified!",
+        "TITLE": "Verifica tu correo electrónico",
+        "SUBTITLE": "¡Un clic más y habrás verificado tu correo electrónico!",
         "PLACEHOLDER_INPUT_TOKEN": "token de cambio de email",
-        "ACTION_VERIFY_EMAIL": "Verify email",
-        "SUCCESS": "The Taiga verified your email"
+        "ACTION_VERIFY_EMAIL": "Verificar correo electrónico",
+        "SUCCESS": "La Taiga ha verificado tu correo electrónico"
     },
     "ISSUES": {
         "PAGE_TITLE": "Peticiones - {{projectName}}",
@@ -1638,9 +1638,9 @@
         "ACTION_USE_GRAVATAR": "Usar imagen por defecto",
         "ACTION_DELETE_ACCOUNT": "Elimina cuenta de Taiga",
         "ACTION_DOWNLOAD_PROFILE": "Descarga el perfil de Taiga",
-        "ACTION_VERIFY_EMAIL": "Verify your email",
+        "ACTION_VERIFY_EMAIL": "Verifica tu correo",
         "CHANGE_EMAIL_SUCCESS": "<strong>¡Revisa tu bandeja de entrada!</strong><br />Hemos enviado un mail a tu cuenta<br />con instrucciones para establecer tu nueva dirección",
-        "VERIFY_EMAIL_SUCCESS": "<strong>Check your inbox!</strong><br />We have sent you an email<br />with instructions on how to verify your address",
+        "VERIFY_EMAIL_SUCCESS": "<strong>¡Comprueba tu bandeja de entrada!</strong><br />Te hemos enviado un correo electrónico<br />con instrucciones para verificar tu dirección",
         "CHANGE_PHOTO": "Cambiar foto",
         "FIELD": {
             "USERNAME": "Nombre de usuario",
