@@ -67,4 +67,5 @@ form.invite-members-form(ng-submit="vm.sendInvites(vm.inviteContacts)")
         ng-disabled="!vm.areRolesValidated"
         tg-loading="vm.loading"
     )
+    p.error {{ vm.sendError }}
     p.invite-members-single-help(translate="LIGHTBOX.ADD_MEMBER.HELP_TEXT")

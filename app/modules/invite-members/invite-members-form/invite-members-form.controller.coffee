@@ -35,6 +35,7 @@ class InviteMembersFormController
         @.rolesValues = {}
         @.loading = false
         @.defaultMaxInvites = 4
+        @.sendError = ""
 
     _areRolesValidated: () ->
         Object.defineProperty @, 'areRolesValidated', {
@@ -53,6 +54,7 @@ class InviteMembersFormController
         @.showWarningMessage = @.membersLimit < @.defaultMaxInvites
 
     sendInvites: () ->
+        @.sendError = ""
         @.setInvitedContacts = []
         _.forEach(@.rolesValues, (key, value) =>
             @.setInvitedContacts.push({
@@ -74,6 +76,7 @@ class InviteMembersFormController
                     @confirm.notify('success')
             .catch (response) => # On error
                 @.loading = false
+                @.sendError = response.data if typeof response.data is 'string'
                 if response.data._error_message
                     @confirm.notify("error", response.data._error_message)
 

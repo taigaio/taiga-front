@@ -64,4 +64,8 @@
         @include font-size(small);
         @include font-type(light);
     }
+
+    .error {
+        color: $red-light;
+    }
 }
