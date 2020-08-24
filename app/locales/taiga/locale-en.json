@@ -886,8 +886,10 @@
             "ISSUES": "Issues",
             "WIKI": "Wiki",
             "TEAM": "Team",
-            "MEETUP": "Meet Up",
-            "ADMIN": "Admin"
+            "MEETUP": "Meetup",
+            "SETTINGS": "Settings",
+            "SCRUM": "Scrum",
+            "COLLAPSE_MENU": "collapse menu"
         },
         "NAVIGATION": {
             "PROJECTS": "Projects",
