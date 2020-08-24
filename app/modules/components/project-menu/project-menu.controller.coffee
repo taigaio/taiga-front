@@ -32,6 +32,13 @@ class ProjectMenuController
         @.sprints = @.project.get('milestones')?.toJS()
         @.active = @._getActiveSection()
 
+        @.projectMenu = {
+            component: 'tg-project-navigation',
+            params: {
+                project: @projectService.project.toJS()
+            }
+        }
+
         @._setVideoConference()
         @._setMenuPermissions()
 
