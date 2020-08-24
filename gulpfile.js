@@ -162,6 +162,7 @@ paths.libs = [
     paths.modules + "angular-animate/angular-animate.js",
     paths.modules + "angular-aria/angular-aria.js",
     paths.modules + "angular-translate/dist/angular-translate.js",
+    paths.modules + "angular-translate-handler-log/angular-translate-handler-log.js",
     paths.modules + "angular-translate-loader-partial/angular-translate-loader-partial.js",
     paths.modules + "angular-translate-loader-static-files/angular-translate-loader-static-files.js",
     paths.modules + "angular-translate-interpolation-messageformat/angular-translate-interpolation-messageformat.js",

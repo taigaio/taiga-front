@@ -51,7 +51,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
             languageLoad: ["$q", "$translate", ($q, $translate) ->
                 deferred = $q.defer()
 
-                $translate().then () -> deferred.resolve()
+                $translate("COMMON.YES").then () -> deferred.resolve()
 
                 return deferred.promise
             ],
@@ -731,6 +731,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
         .useSanitizeValueStrategy('escapeParameters')
         .addInterpolation('$translateMessageFormatInterpolation')
         .preferredLanguage(preferedLangCode)
+        .useMissingTranslationHandlerLog()
 
     $translateProvider.fallbackLanguage(preferedLangCode)
 
