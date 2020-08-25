@@ -849,12 +849,21 @@ init = ($log, $rootscope, $auth, $events, $analytics, $tagManager, $userPilot, $
     $rootscope.adminPlugins = _.filter(@.taigaContribPlugins, {"type": "admin"})
     $rootscope.userSettingsPlugins = _.filter(@.taigaContribPlugins, {"type": "userSettings"})
 
+    lang = null
+
     $rootscope.$on "$translateChangeEnd", (e, ctx) ->
-        lang = ctx.language
-        i18nInit(lang, $translate)
-        # RTL
-        rtlLanguages = $tgConfig.get("rtlLanguages", [])
-        $rootscope.isRTL = rtlLanguages.indexOf(lang) > -1
+        if lang != ctx.language
+            lang = ctx.language
+            i18nInit(lang, $translate)
+            # RTL
+            rtlLanguages = $tgConfig.get("rtlLanguages", [])
+            $rootscope.isRTL = rtlLanguages.indexOf(lang) > -1
+
+            legacy = document.querySelector('tg-legacy');
+            legacy.translations = {
+                translationTable: $translate.getTranslationTable(lang),
+                lan: lang
+            }
 
     $events.setupConnection()
 

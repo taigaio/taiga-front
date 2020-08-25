@@ -19,6 +19,8 @@ html(lang="en", ng-attr-dir="{{ isRTL ? 'rtl' : 'ltr' }}")
             window.prerenderReady = false;
 
     body(tg-main, ng-class="{'rtl': isRTL}")
+        tg-legacy
+
         div(tg-navigation-bar, ng-if="!errorHandling.showingError")
         div(ng-if="!errorHandling.showingError")
             div.master(ng-view)
