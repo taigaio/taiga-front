@@ -12,6 +12,8 @@
 
         span {{'PROJECT.NAVIGATION.PROJECTS' | translate}}
 
+        div.empty-projects(ng-if="vm.projects.size === 0")
+
     div.navbar-dropdown
         div(ng-if="vm.projects.size")
             ul.dropdown-project-list-ul

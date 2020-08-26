@@ -113,6 +113,14 @@
         font-size: .9rem;
     }
 
+    .empty-projects {
+        background: $color-solid-red;
+        border-radius: 50%;
+        height: 6px;
+        margin-left: .5rem;
+        width: 6px;
+    }
+
     .icon-folder {
         margin: .1rem .25rem 0 0;
 
