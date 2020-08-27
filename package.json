@@ -108,7 +108,6 @@
     "angular-route": "1.5.10",
     "angular-sanitize": "1.5.10",
     "angular-translate": "2.18.3",
-    "angular-translate-handler-log": "^2.18.3",
     "angular-translate-interpolation-messageformat": "2.18.1",
     "angular-translate-loader-partial": "2.18.1",
     "angular-translate-loader-static-files": "2.18.1",
