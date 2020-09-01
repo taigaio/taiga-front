@@ -10,7 +10,7 @@ var gulp = require("gulp"),
     gulpif = require("gulp-if"),
     replace = require("gulp-replace"),
     sass = require("gulp-sass"),
-    minifyCSS = require("gulp-minify-css"),
+    minifyCSS = require("gulp-clean-css"),
     stylelint = require('gulp-stylelint');
     cache = require("gulp-cache"),
     cached = require("gulp-cached"),
@@ -345,7 +345,7 @@ gulp.task("main-css", function() {
 
     return gulp.src(_paths)
         .pipe(concat("theme-" + themes.current.name + ".css"))
-        .pipe(gulpif(isDeploy, minifyCSS({noAdvanced: true})))
+        .pipe(gulpif(isDeploy, minifyCSS({})))
         .pipe(gulp.dest(paths.distVersion + "styles/"))
         .pipe(livereload());
 });
