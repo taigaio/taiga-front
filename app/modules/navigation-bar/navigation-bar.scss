@@ -1,6 +1,7 @@
 $dropdown-width: 260px;
 
 .navbar {
+    align-items: center;
     background-color: $color-gray400;
     display: flex;
     height: $navbar;
@@ -36,6 +37,9 @@ $dropdown-width: 260px;
     }
     .nav-right {
         margin-left: auto;
+        > a {
+            @include font-size(small);
+        }
         > a,
         .topnav-dropdown-wrapper > a {
             height: 100%;

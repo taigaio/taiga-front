@@ -1,5 +1,5 @@
 nav.navbar(ng-if="vm.isEnabledHeader")
-    div.nav-left
+    .nav-left
         a.logo(
             ng-if="!vm.isAuthenticated"
             href="https://taiga.io/",
@@ -15,12 +15,13 @@ nav.navbar(ng-if="vm.isEnabledHeader")
         )
             include ../../svg/logo.svg
 
-        div.topnav-dropdown-wrapper(
+        .topnav-dropdown-wrapper(
+            ng-if="vm.isAuthenticated"
             tg-dropdown-project-list
             active="vm.active == 'projects'"
         )
 
-    div.nav-right(ng-if="!vm.isAuthenticated")
+    .nav-right(ng-if="!vm.isAuthenticated")
         a.login(
             ng-click="vm.login()"
             href="#",
@@ -35,7 +36,7 @@ nav.navbar(ng-if="vm.isEnabledHeader")
             translate="REGISTER_FORM.ACTION_SIGN_UP"
         )
 
-    div.nav-right(ng-if="vm.isAuthenticated")
+    .nav-right(ng-if="vm.isAuthenticated")
         a(
             tg-nav="discover",
             ng-class="{'active': vm.active == 'discover' }"
@@ -52,7 +53,7 @@ nav.navbar(ng-if="vm.isEnabledHeader")
             )
                 tg-svg(svg-icon="icon-help-circle")
 
-            div.navbar-dropdown
+            .navbar-dropdown
                 ul
                     li
                         a.secondary(
@@ -71,7 +72,7 @@ nav.navbar(ng-if="vm.isEnabledHeader")
                             tg-svg(svg-icon="icon-message-square")
                             span {{ 'PROJECT.NAVIGATION.FEEDBACK_TITLE' | translate }}
 
-        div.topnav-dropdown-wrapper(
+        .topnav-dropdown-wrapper(
             tg-dropdown-notifications
             active="vm.active == 'notifications'"
         )
