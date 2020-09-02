@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## 5.5.3 (2020-09-02)
+
+### Misc
+
+- Fix CSS bug with WYSIWYG toolbar.
+
 ## 5.5.0 (2020-08-19)
 
 ### Features
