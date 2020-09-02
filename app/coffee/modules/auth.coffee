@@ -206,6 +206,7 @@ class AuthService extends taiga.Service
             user = @model.make_model("users", response.data)
             @.setToken(user.auth_token)
             @.setUser(user)
+            @userpilot.identify(true)
             @rootscope.$broadcast("auth:register", user)
             return user
 
