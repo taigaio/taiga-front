@@ -864,7 +864,6 @@ init = ($log, $rootscope, $auth, $events, $analytics, $tagManager, $userPilot, $
     # Load user
     if $auth.isAuthenticated()
         user = $auth.getUser()
-        $auth.showTerms()
 
     # Analytics
     $analytics.initialize()

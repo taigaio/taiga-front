@@ -64,11 +64,10 @@ class AuthService extends taiga.Service
                  "$translate",
                  "tgCurrentUserService",
                  "tgThemeService",
-                 "$tgAnalytics",
-                 "tgTermsAnnouncementService"]
+                 "$tgAnalytics"]
 
     constructor: (@rootscope, @storage, @model, @rs, @http, @urls, @config, @userpilot, @translate, @currentUserService,
-                  @themeService, @analytics, @termsAnnouncementService) ->
+                  @themeService, @analytics) ->
         super()
 
         userModel = @.getUser()
@@ -240,12 +239,6 @@ class AuthService extends taiga.Service
         url = @urls.resolve("users-export")
         return @http.post(url)
 
-    showTerms: (data) ->
-        user = @.getUser()
-        if not user or user.read_new_terms
-            return
-        @termsAnnouncementService.show()
-
     sendVerificationEmail: () ->
         url = @urls.resolve("user-send-verification-email")
         return @http.post(url)
@@ -302,8 +295,6 @@ LoginDirective = ($auth, $confirm, $location, $config, $routeParams, $navUrls, $
         onSuccess = (response) ->
             $events.setupConnection()
             $analytics.trackEvent("auth", "login", "user login", 1)
-
-            $auth.showTerms()
 
             if $scope.nextUrl.indexOf('http') == 0
                 $window.location.href = $scope.nextUrl
