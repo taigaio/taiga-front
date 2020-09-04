@@ -6,5 +6,9 @@ tg-project-menu {
         position: sticky;
         top: 0;
         z-index: 99;
+
+        &.unblock {
+            height: 100vh;
+        }
     }
 }

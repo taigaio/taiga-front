@@ -4,7 +4,8 @@
 @each $font-face in
     Ubuntu-Light,
     Ubuntu-Regular,
-    Ubuntu-Medium {
+    Ubuntu-Medium,
+    Ubuntu-Bold {
     @font-face {
         font-family: '#{$font-face}';
         src: url('../fonts/#{$font-face}.ttf') format('truetype');

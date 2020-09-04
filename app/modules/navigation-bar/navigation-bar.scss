@@ -1,7 +1,6 @@
 $dropdown-width: 260px;
 
 .navbar {
-    align-items: center;
     background-color: $color-gray400;
     display: flex;
     height: $navbar;
@@ -26,10 +25,10 @@ $dropdown-width: 260px;
     }
     .nav-left {
         .logo {
-            padding: .3rem .75rem;
+            padding: .3rem .4rem;
 
             svg {
-                @include svg-size(2.5rem);
+                @include svg-size(2.2rem);
 
                 fill: $color-black600;
             }

@@ -18,7 +18,7 @@ nav.navbar(ng-if="vm.isEnabledHeader")
         .topnav-dropdown-wrapper(
             ng-if="vm.isAuthenticated"
             tg-dropdown-project-list
-            active="vm.active == 'projects'"
+            active="vm.active == 'projects' || vm.active == 'project'"
         )
 
     .nav-right(ng-if="!vm.isAuthenticated")

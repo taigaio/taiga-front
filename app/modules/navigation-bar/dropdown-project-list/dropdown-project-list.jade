@@ -21,7 +21,7 @@
                     a.dropdown-project-list-link.secondary(
                         href="#"
                         tg-nav="project:project=project.get('slug'),section=project.get('my_homepage')"
-                        ng-class="{'blocked-project': project.get('blocked_code')}"
+                        ng-class="{'blocked-project': project.get('blocked_code'), 'active': vm.currentProject == project.get('id')}"
                     )
                         img(
                             tg-project-logo-small-src="::project"
