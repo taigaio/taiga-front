@@ -25,7 +25,8 @@
             width: 24px;
         }
 
-        &:hover {
+        &:hover,
+        &.active {
             background: $color-gray400;
             color: $color-link-primary;
         }
@@ -87,15 +88,31 @@
 
     &:hover,
     &.active {
+        border-radius: 3px;
+    }
+
+    &:hover {
         .dropdown-project-list-projects {
             background-color: $color-gray200;
-            border-radius: 3px;
             span {
                 color: $color-link-tertiary;
             }
 
             .icon-folder {
                 fill: $color-link-tertiary;
+            }
+        }
+    }
+
+    &.active {
+        .dropdown-project-list-projects {
+            background-color: $color-gray200;
+            span {
+                color: $color-link-primary;
+            }
+
+            .icon-folder {
+                fill: $color-link-primary;
             }
         }
     }

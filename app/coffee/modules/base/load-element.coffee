@@ -30,11 +30,15 @@ LoadElementDirective = ($parse) ->
         $scope.$watch $parse($attrs.tgLoadElement), (val) ->
             if val
                 legacyObj =  $parse($attrs.tgLoadElement)($scope)
+                el = $el[0]
 
-                $el[0].component = legacyObj.component
+                el.component = legacyObj.component
 
                 if legacyObj.params
-                    $el[0].params = legacyObj.params
+                    el.params = legacyObj.params
+
+                if legacyObj.events
+                    el.events = legacyObj.events
 
     return {
         link: link

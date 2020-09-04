@@ -35,7 +35,7 @@
         font-family: 'Ubuntu-Medium', Arial, Helvetica, sans-serif;
         font-weight: 500;
     } @else if $type == bold {
-        font-family: 'Ubuntu-Medium', Arial, Helvetica, sans-serif;
+        font-family: 'Ubuntu-Bold', Arial, Helvetica, sans-serif;
         font-weight: 600;
     } @else if $type == mono {
         font-family: 'courier new', 'monospace';

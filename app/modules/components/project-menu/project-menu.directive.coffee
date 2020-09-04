@@ -31,6 +31,19 @@ ProjectMenuDirective = (projectService, lightboxFactory) ->
             return projectService.project
         ), projectChange
 
+        fixed = false
+        topBarHeight = 48
+
+        window.addEventListener "scroll", () ->
+            position = $(window).scrollTop()
+
+            if position > topBarHeight && fixed == false
+                el.find('.sticky-project-menu').addClass('unblock')
+                fixed = true
+            else if position == 0 && fixed == true
+                el.find('.sticky-project-menu').removeClass('unblock')
+                fixed = false
+
     return {
         scope: {},
         controller: "ProjectMenu",

@@ -35,7 +35,11 @@ class ProjectMenuController
         @.projectMenu = {
             component: 'tg-project-navigation',
             params: {
-                project: @projectService.project.toJS()
+                project: @projectService.project.toJS(),
+            },
+            events: {
+                search: () =>
+                    @.search()
             }
         }
 

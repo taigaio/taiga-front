@@ -40,6 +40,12 @@ describe "dropdownProjectListDirective", () ->
         elm = compile(template)(scope)
         return elm
 
+    _mockTgProjectService = () ->
+        mocks.projectService = {
+            project: Immutable.fromJS({id: 2})
+        }
+        provide.value "tgProjectService", mocks.projectService
+
     _mockTgProjectsService = () ->
         mocks.projectsService = {
             newProject: sinon.stub()
@@ -58,6 +64,7 @@ describe "dropdownProjectListDirective", () ->
             _mockTgProjectsService()
             _mockTgCurrentUserService()
             _mockTranslateFilter()
+            _mockTgProjectService()
 
             return null
 
