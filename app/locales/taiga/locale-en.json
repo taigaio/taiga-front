@@ -1246,7 +1246,7 @@
         "LINK_TASKBOARD": "Taskboard",
         "TITLE_LINK_TASKBOARD": "Go to the taskboard",
         "TOTAL_POINTS": "total points",
-        "ADD": "+ Add a new user story",
+        "ADD": "user story",
         "ADD_BULK": "Add some new user stories in bulk",
         "PROMOTED_FROM_ISSUE": "This user story has been promoted from issue:",
         "PROMOTED_FROM_TASK": "This user story has been promoted from task:",

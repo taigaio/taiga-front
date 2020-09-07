@@ -9,12 +9,26 @@
         opacity: 1;
     }
 }
-.backlog-menu {
-    background: $mass-white;
-    color: $blackish;
+
+.backlog-header {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 1rem;
+
+    &-title {
+        align-items: baseline;
+        display: flex;
+    }
+}
+
+.backlog-stories-number {
+    @include font-size(small);
+    color: $color-link-tertiary;
+    margin-left: .5rem;
+}
+
+.backlog-menu {
+    color: $blackish;
+    margin: 1rem 0;
     @include until($widescreen) {
         flex-direction: column;
     }

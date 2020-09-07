@@ -1,9 +1,16 @@
 div.new-us
-    a.button-green(href="", title="{{'US.ADD' | translate}}",
-                          ng-click="ctrl.addNewUs('standard')",
-                          tg-check-permission="add_us")
+    a.button-primary.button-new-us-single(
+        href="",
+        title="{{'US.ADD' | translate}}",
+        ng-click="ctrl.addNewUs('standard')",
+        tg-check-permission="add_us"
+    )
+        tg-svg(svg-icon="icon-add")
         span.text {{'US.ADD' | translate}}
-    a.button-bulk.button-green.button-small(href="", title="{{'US.ADD_BULK' | translate}}",
-                         ng-click="ctrl.addNewUs('bulk')",
-                         tg-check-permission="add_us")
-        tg-svg(svg-icon="icon-bulk")
+    a.button-bulk.button-gray.button-small(
+        href="",
+        title="{{'US.ADD_BULK' | translate}}",
+        ng-click="ctrl.addNewUs('bulk')",
+        tg-check-permission="add_us"
+    )
+        tg-svg(svg-icon="icon-add")

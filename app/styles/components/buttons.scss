@@ -1,12 +1,12 @@
 .button,
 %button {
     @include font-type(text);
-    @include font-size(small);
+    @include font-size(semibold);
     align-content: center;
     align-items: center;
     background: transparent;
     border: 0;
-    border-radius: 3px;
+    border-radius: 4px;
     color: $white;
     cursor: pointer;
     display: inline-flex;
@@ -36,6 +36,9 @@
     }
     .icon {
         color: $white;
+        height: .75rem;
+        margin-right: .5rem;
+        width: .75rem;
     }
     &.disabled,
     &[disabled] {
@@ -67,7 +70,7 @@
     }
     svg {
         fill: $white;
-        stroke: $white;
+        stroke: none;
     }
 }
 
@@ -78,25 +81,6 @@
     &.active,
     &:visited:hover {
         background: lighten($secondary, 5%);
-    }
-}
-
-.button-primary {
-    @extend %button;
-    background: $color-solid-primary;
-    &:hover,
-    &.active,
-    &:visited:hover {
-        background: lighten($color-link-primary, 5%);
-        color: $white;
-        span {
-            color: $white;
-        }
-    }
-    &:hover svg,
-    &.active svg,
-    &:visited:hover svg {
-        fill: $white;
     }
 }
 
@@ -186,6 +170,12 @@
 .button-bulk {
     @include font-size(large);
     margin-left: .5rem;
+
+    .icon {
+        height: 1rem;
+        margin: 0;
+        width: 1rem;
+    }
 }
 .button-auth {
     @extend %button;
@@ -323,4 +313,50 @@
             transition: background .3s linear;
         }
     }
+}
+
+// TAIGA 6
+
+.button-primary {
+    @extend %button;
+    background: $color-solid-primary;
+    color: $color-black900;
+
+    &:hover,
+    &.active,
+    &:visited:hover {
+        color: $white;
+        span {
+            color: currentColor;
+        }
+    }
+
+    &:hover svg,
+    &.active svg,
+    &:visited:hover svg {
+        fill: $white;
+    }
+}
+
+.button-secondary {
+    @extend %button;
+    background: $color-link-primary;
+    color: $color-white;
+}
+
+.icon-button {
+    @extend %button;
+    background: $color-solid-primary;
+    color: $color-black900;
+
+    &:hover,
+    &.active {
+        color: $white;
+    }
+
+    &:hover svg,
+    &.active svg {
+        color: $white;
+    }
+
 }
