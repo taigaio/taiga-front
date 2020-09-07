@@ -213,10 +213,10 @@ gulp.task("clear-sass-cache", function(done) {
     done();
 });
 
-gulp.task("clear", gulp.series("clear-sass-cache"), function(done) {
+gulp.task("clear", gulp.series("clear-sass-cache", function(done) {
     cache.clearAll();
     done();
-});
+}));
 
 /*
 ############################################################################
@@ -563,13 +563,13 @@ gulp.task("jslibs-deploy", function() {
 
 gulp.task("app-watch", gulp.series("coffee", "conf", "locales", "moment-locales", "app-loader"));
 
-gulp.task("app-deploy", gulp.series("coffee", "conf", "locales", "moment-locales", "app-loader"), function() {
+gulp.task("app-deploy", gulp.series("coffee", "conf", "locales", "moment-locales", "app-loader", function() {
     return gulp.src(paths.distVersion + "js/app.js")
         .pipe(sourcemaps.init())
             .pipe(uglify())
         .pipe(sourcemaps.write("./maps"))
         .pipe(gulp.dest(paths.distVersion + "js/"));
-});
+}));
 
 /*
 ##############################################################################
@@ -609,7 +609,7 @@ gulp.task("copy-emojis", function() {
         .pipe(gulp.dest(paths.distVersion + "/emojis/"));
 });
 
-gulp.task("copy-prism", gulp.series("prism-languages"), function() {
+gulp.task("copy-prism", gulp.series("prism-languages", function() {
     var prismLanguages = require(__dirname + '/prism-languages.json');
 
     prismLanguages = prismLanguages.map(function(it) {
@@ -618,7 +618,7 @@ gulp.task("copy-prism", gulp.series("prism-languages"), function() {
 
     return gulp.src(prismLanguages.concat(__dirname + '/prism-languages.json'))
         .pipe(gulp.dest(paths.distVersion + "/prism/"));
-});
+}));
 
 gulp.task("copy-theme-images", function() {
     return gulp.src(themes.current.path + "/images/**/*")
@@ -631,14 +631,14 @@ gulp.task("copy-extras", function() {
         .pipe(gulp.dest(paths.dist + "/"));
 });
 
-gulp.task("link-images", gulp.series("copy-images"), function(cb) {
+gulp.task("link-images", gulp.series("copy-images", function(cb) {
     try {
         fs.unlinkSync(paths.dist+"images");
     } catch (exception) {
     }
     fs.symlinkSync("./"+version+"/images", paths.dist+"images");
     cb();
-});
+}));
 
 gulp.task("copy", gulp.parallel([
     "copy-fonts",
@@ -737,7 +737,7 @@ gulp.task("default", gulp.series(
     ))
 );
 
-gulp.task("unused-css", gulp.series("default"), function() {
+gulp.task("unused-css", gulp.series("default", function() {
     return gulp.src([
         paths.distVersion + "js/app.js",
         paths.tmp + "**/*.html"
@@ -745,4 +745,4 @@ gulp.task("unused-css", gulp.series("default"), function() {
     .pipe(utils.unusedCss({
         css: paths.distVersion + "styles/theme-taiga.css"
     }));
-});
+}));
