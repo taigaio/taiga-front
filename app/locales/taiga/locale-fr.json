@@ -42,7 +42,7 @@
         "GENERIC_ERROR": "Taiga a retourné le message {{error}}.",
         "IOCAINE_TEXT": "Ce membre se sent un peu dépassé par cette tâche. Avec votre aide, ils seront immunisés contre le poison de l'iocaïne au fil du temps. Pour l'instant, ils peuvent avoir besoin d'un câlin.",
         "CLIENT_REQUIREMENT": "Une exigence client est une nouvelle exigence exprimée par le client, qui n'était pas prévue dans le projet initial, et qu'il est nécessaire d'intégrer",
-        "TEAM_REQUIREMENT": "A team requirement is a requirement that must exist in the project but should have no cost for the client",
+        "TEAM_REQUIREMENT": "Une exigence équipe est une exigence qui doit exister dans le projet mais qui n'a pas de coût pour le client",
         "OWNER": "Propriétaire du Projet",
         "CAPSLOCK_WARNING": "Attention ! Vous utilisez des majuscules dans un champ qui est sensible à la casse.",
         "CONFIRM_CLOSE_EDIT_MODE_TITLE": "Êtes-vous sûr de vouloir fermer le mode Édition ?",
@@ -219,7 +219,7 @@
         "CUSTOM_ATTRIBUTES": {
             "CUSTOM_FIELDS": "Champs personnalisés",
             "SAVE": "Save custom field",
-            "EDIT": "Edit custom field",
+            "EDIT": "Modifier un champ personnalisé",
             "DELETE": "Supprimer un attribut personnalisé",
             "CONFIRM_DELETE": "Remember that all values in this custom field will be deleted.\n Are you sure you want to continue?"
         },
@@ -729,7 +729,7 @@
         "CUSTOM_ATTRIBUTES": {
             "PAGE_TITLE": "{{sectionName}} - Attributs Personnalisés - {{projectName}}",
             "ADD": "Ajouter un champ personnalisé",
-            "EDIT": "Edit custom field",
+            "EDIT": "Modifier un champ personnalisé",
             "DELETE": "Delete custom field",
             "SAVE_TITLE": "Save custom field",
             "CANCEL_TITLE": "Annuler la création",
@@ -973,9 +973,9 @@
             "ASYNC_IN_PROGRESS_TITLE": "Taiga est en train d'importer votre projet",
             "ASYNC_IN_PROGRESS_MESSAGE": "Ce processus pourrait durer plusieurs minutes <br/> Nous vous enverrons un courriel quand ce sera prêt",
             "UPLOAD_IN_PROGRESS_MESSAGE": "{{uploadedSize}} de {{totalSize}} déposés",
-            "ERROR": "The Taiga has some problems importing your dump data. Please try again.",
+            "ERROR": "Taiga rencontre des difficultés pour importer votre fichier d'import. Merci de réessayer.",
             "ERROR_TOO_MANY_REQUEST": "Désolé, Taiga subit actuellement une charge importante. Veuillez réessayer dans quelques minutes.",
-            "ERROR_MESSAGE": "The Taiga has some problems importing your dump data: {{error_message}}",
+            "ERROR_MESSAGE": "Taiga rencontre des difficultés pour importer vos données: {{error_message}}",
             "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) est trop lourd pour Taiga, réessayez avec un fichier d'une taille inférieure à ({{maxFileSize}})",
             "SYNC_SUCCESS": "Votre projet a été importé avec succès",
             "IMPORT": "Importer",
@@ -1142,9 +1142,9 @@
             "ADD_EXISTING_ISSUE": "Ajouter un ticket à {{ targetName }}",
             "CONFIRM_CLOSE": "Vous n’avez pas sauvegardé les modifications.\nÊtes-vous sûr de vouloir fermer le formulaire ?",
             "EXISTING_ISSUE": "Ticket existant",
-            "CHOOSE_EXISTING_ISSUE": "Which issue?",
+            "CHOOSE_EXISTING_ISSUE": "Quel ticket ?",
             "ADD_ISSUE": "Ajouter un problème",
-            "FILTER_ISSUES": "Filter issues"
+            "FILTER_ISSUES": "Filtrer les tickets"
         },
         "DELETE_DUE_DATE": {
             "TITLE": "Supprimer l’échéance",
@@ -1203,7 +1203,7 @@
             "SUBTITLE_ACTION_DELETE_DUE_DATE": "Êtes-vous sûr de vouloir supprimer le statut de date d’échéance {{due_date_status_name}} ?"
         },
         "RELATE_TO_EPIC": {
-            "TITLE": "Link to epic",
+            "TITLE": "Lien vers l'épopée",
             "EXISTING_EPIC": "Épopée existante",
             "NEW_EPIC": "Nouvelle épopée",
             "CHOOSE_PROJECT_FOR_CREATION": "Quel est le projet ?",
@@ -1244,14 +1244,14 @@
         "ADD_BULK": "Ajouter de nouveaux récits utilisateur en lot",
         "PROMOTED_FROM_ISSUE": "Ce récit utilisateur a été promue à partir d'un ticket :",
         "PROMOTED_FROM_TASK": "Ce récit utilisateur a été promue à partir d'un ticket :",
-        "CONVERTED_FROM_TASK": "This user story was originally a task.",
+        "CONVERTED_FROM_TASK": "Ce récit utilisateur était une tache.",
         "TITLE_LINK_GO_TO_ISSUE": "Aller vers ce ticket",
         "TITLE_LINK_GO_TO_TASK": "Aller vers cette tâche",
         "TITLE_DELETE_ACTION": "Supprimer le récit utilisateur",
         "LIGHTBOX_TITLE_BLOKING_US": "Bloquer un récit utilisateur",
         "NOT_ESTIMATED": "Non estimé",
         "OWNER_US": "Ce récit utilisateur fait partie de ",
-        "RELATE_TO_EPIC": "Link to epic",
+        "RELATE_TO_EPIC": "Lien vers l'épopée",
         "REMOVE_RELATIONSHIP_WITH_EPIC": "Retirer le lien avec l’épopée",
         "TRIBE": {
             "PUBLISH": "Publier en tant que Gig sur Taiga Tribe ",
@@ -1424,8 +1424,8 @@
             "TITLE_ACTION_FOLD_ROW": "Replier la ligne",
             "TITLE_ACTION_UNFOLD_ROW": "Déplier la ligne",
             "FIELD_POINTS": "points",
-            "ROW_STORYLESS_TASKS_TITLE": "Storyless tasks",
-            "ROW_ISSUES_TITLE": "Sprint issues"
+            "ROW_STORYLESS_TASKS_TITLE": "Taches sans récit",
+            "ROW_ISSUES_TITLE": "Tickets du sprint"
         },
         "CHARTS": {
             "XAXIS_LABEL": "Jours",
@@ -1491,11 +1491,11 @@
         "SUCCESS": "Taiga a modifié votre courriel"
     },
     "VERIFY_EMAIL_FORM": {
-        "TITLE": "Verify your email",
-        "SUBTITLE": "One click more and your email will be verified!",
+        "TITLE": "Vérifiez votre adresse courriel",
+        "SUBTITLE": "Plus qu'un clique et votre adresse courriel sera vérifiée !",
         "PLACEHOLDER_INPUT_TOKEN": "modifier le jeton courriel",
-        "ACTION_VERIFY_EMAIL": "Verify email",
-        "SUCCESS": "The Taiga verified your email"
+        "ACTION_VERIFY_EMAIL": "Vérifier l'adresse de courriel",
+        "SUCCESS": "Taiga a vérifié votre adresse de courriel"
     },
     "ISSUES": {
         "PAGE_TITLE": "Tickets - {{projectName}}",
@@ -1517,7 +1517,7 @@
             "SEVERITY": "Gravité",
             "TYPE": "Type"
         },
-        "FILTER_ISSUES": "Filter issues",
+        "FILTER_ISSUES": "Filtrer les tickets",
         "CONFIRM_DETACH_FROM_SPRINT": {
             "TITLE": "Détacher le ticket du sprint",
             "MESSAGE": "Vous êtes sur le point de détacher le ticket du sprint <strong>{{ sprintName }}<strong>"
@@ -1638,7 +1638,7 @@
         "ACTION_USE_GRAVATAR": "Utiliser l'image par défaut",
         "ACTION_DELETE_ACCOUNT": "Supprime le compte Taiga",
         "ACTION_DOWNLOAD_PROFILE": "Télécharger le profil Taïga",
-        "ACTION_VERIFY_EMAIL": "Verify your email",
+        "ACTION_VERIFY_EMAIL": "Vérifiez votre adresse courriel",
         "CHANGE_EMAIL_SUCCESS": "<strong>Consultez votre messagerie !</strong><br />Nous vous avons envoyé un courriel<br />avec les instructions à suivre pour saisir votre nouvelle adresse",
         "VERIFY_EMAIL_SUCCESS": "<strong>Check your inbox!</strong><br />We have sent you an email<br />with instructions on how to verify your address",
         "CHANGE_PHOTO": "Changer la photo",
