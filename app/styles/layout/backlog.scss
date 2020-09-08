@@ -1,34 +1,27 @@
-.backlog-filter {
-    @include sidebar-medium-width-hidden();
-    align-items: stretch;
+.backlog-manager {
     display: flex;
-    opacity: 0;
-    overflow: hidden;
-    position: relative;
-    &.active {
+}
+
+.backlog-table {
+    flex: 1;
+}
+
+.backlog-filter {
+    tg-filter {
+        background: none;
+        border: 1px solid $color-gray200;
+        margin-right: 1.5rem;
         opacity: 1;
+        padding: .5rem;
+        position: relative;
+        transform: translate(0);
+        width: auto;
     }
 }
 
 .backlog-menu {
     color: $color-black900;
     margin: 1rem 0;
-    // .menu-button {
-    //     @include font-type(light);
-    //     &:hover,
-    //     &:visited:hover {
-    //         color: $grey-90;
-    //     }
-    //     &.move-to-sprint {
-    //         display: none;
-    //     }
-    //     .icon-move {
-    //         margin-right: .25rem;
-    //     }
-    // }
-    // .button-bulk {
-    //     margin-left: .2rem;
-    // }
 }
 
 .backlog-header {
