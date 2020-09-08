@@ -78,22 +78,8 @@ form(name="vm.filtersForm", style="display: none;")
         //-     )
 
     .filters-advanced
-        a(
-            ng-click="vm.toggleAdvancedFilter()"
-            href=""
-            ng-class="{'collapsed': !vm.showAdvancedFilter, 'exclude': vm.filterMode == 'exclude'}"
-        )
-            span {{'COMMON.FILTERS.TITLE_ADVANCED_FILTER' | translate}}
-            tg-svg.ng-animate-disabled(
-                ng-if="!vm.showAdvancedFilter"
-                svg-icon="icon-arrow-right"
-            )
-            tg-svg.ng-animate-disabled(
-                ng-if="vm.showAdvancedFilter"
-                svg-icon="icon-arrow-down"
-            )
 
-        .filters-advanced-form(ng-show="vm.showAdvancedFilter")
+        .filters-advanced-form
             .custom-radio(ng-repeat="option in vm.filterModeOptions")
                 input(
                     type="radio"
@@ -102,9 +88,13 @@ form(name="vm.filtersForm", style="display: none;")
                     value="{{option}}"
                     ng-model="vm.filterMode"
                 )
-                label.filter-mode(for="filter-mode-{{option}}", class="{{option}}", ng-class="{active: vm.filterMode == option}")
-                    span.radio-mark
-                        span.radio-mark-inner(class="{{option}}")
+                label.filter-mode(
+                    for="filter-mode-{{option}}",
+                    class="{{option}}",
+                    ng-class="{active: vm.filterMode == option}"
+                )
+                    .radio-mark
+                        .radio-mark-inner(class="{{option}}")
                     span {{vm.filterModeLabels[option]}}
 
     .filters-cats

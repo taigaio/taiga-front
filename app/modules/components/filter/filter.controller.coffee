@@ -28,12 +28,8 @@ class FilterController
             "exclude": @translate.instant("COMMON.FILTERS.ADVANCED_FILTERS.EXCLUDE"),
         }
         @.filterMode = 'include'
-        @.showAdvancedFilter = false
         @.customFilterForm = false
         @.customFilterName = ''
-
-    toggleAdvancedFilter: () ->
-        @.showAdvancedFilter = !@.showAdvancedFilter
 
     toggleFilterCategory: (filterName) ->
         if @.opened == filterName
