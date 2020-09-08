@@ -1,7 +1,7 @@
-h1
-    span.title(translate="COMMON.FILTERS.TITLE")
+//- h1
+//-     span.title(translate="COMMON.FILTERS.TITLE")
 
-form(name="vm.filtersForm")
+form(name="vm.filtersForm", style="display: none;")
     fieldset
         input.e2e-filter-q(
             type="text",
@@ -16,44 +16,66 @@ form(name="vm.filtersForm")
         )
 
 .filters-step-cat
-    .filters-applied
-        .single-filter.ng-animate-disabled(
-            ng-repeat="it in vm.selectedFilters | orderBy:'-mode' track by it.key"
-            class="{{it.mode}}"
-            )
-            span.name(
-                ng-attr-style="{{it.color ? 'border-color: ' + it.color: ''}}"
-                ng-if="it.dataType === 'tags'"
-                ng-bind-html="it.name | emojify"
-            )
-            span.name(
-                ng-if="it.dataType !== 'tags'"
-                ng-attr-style="{{it.color ? 'border-color: ' + it.color: ''}}"
-            ) {{it.name}}
-            a.remove-filter.e2e-remove-filter(
-               ng-click="vm.unselectFilter(it)"
-               href=""
-           )
-                tg-svg(svg-icon="icon-close")
+    .filters-applied(ng-if="vm.selectedFilters.length")
+        .filters-included
+            .filters-title Filtered by:
+            .filters-wrapper
+                .single-applied-filter.ng-animate-disabled(
+                    ng-repeat="it in vm.selectedFilters | orderBy:'-mode' track by it.key"
+                    class="{{it.mode}}"
+                )
+                    span.name(
+                        ng-if="it.dataType === 'tags'"
+                        ng-bind-html="it.name | emojify"
+                    )
+                    span.name(
+                        ng-if="it.dataType !== 'tags'"
+                    ) {{it.name}}
 
-        a.button.button-gray.button-block.save-filters.ng-animate-disabled.e2e-open-custom-filter-form(
-            ng-click="vm.customFilterForm = true"
-            ng-if="vm.selectedFilters.length && !vm.customFilterForm"
-            href="",
-            title="{{'COMMON.SAVE' | translate}}",
-            translate="COMMON.FILTERS.ACTION_SAVE_CUSTOM_FILTER"
-        )
+                    button.remove-filter.e2e-remove-filter(
+                    ng-click="vm.unselectFilter(it)"
+                    )
+                        tg-svg(svg-icon="icon-close")
 
-        form(
-            ng-if="vm.customFilterForm"
-            ng-submit="vm.saveCustomFilter()"
-        )
-            input.my-filter-name.e2e-filter-name-input(
-                tg-autofocus
-                ng-model="vm.customFilterName"
-                type="text"
-                placeholder="{{'COMMON.FILTERS.PLACEHOLDER_FILTER_NAME' | translate}}"
-            )
+        .filters-excluded
+            .filters-wrapper
+                .single-applied-filter.ng-animate-disabled(
+                    ng-repeat="it in vm.selectedFilters | orderBy:'-mode' track by it.key"
+                    class="{{it.mode}}"
+                )
+                    span.name(
+                        ng-if="it.dataType === 'tags'"
+                        ng-bind-html="it.name | emojify"
+                    )
+                    span.name(
+                        ng-if="it.dataType !== 'tags'"
+                    ) {{it.name}}
+
+                    button.remove-filter.e2e-remove-filter(
+                    ng-click="vm.unselectFilter(it)"
+                    )
+                        tg-svg(svg-icon="icon-close")
+
+
+    //- Save filters form
+        //- a.button.button-gray.button-block.save-filters.ng-animate-disabled.e2e-open-custom-filter-form(
+        //-     ng-click="vm.customFilterForm = true"
+        //-     ng-if="vm.selectedFilters.length && !vm.customFilterForm"
+        //-     href="",
+        //-     title="{{'COMMON.SAVE' | translate}}",
+        //-     translate="COMMON.FILTERS.ACTION_SAVE_CUSTOM_FILTER"
+        //- )
+
+        //- form(
+        //-     ng-if="vm.customFilterForm"
+        //-     ng-submit="vm.saveCustomFilter()"
+        //- )
+        //-     input.my-filter-name.e2e-filter-name-input(
+        //-         tg-autofocus
+        //-         ng-model="vm.customFilterName"
+        //-         type="text"
+        //-         placeholder="{{'COMMON.FILTERS.PLACEHOLDER_FILTER_NAME' | translate}}"
+        //-     )
 
     .filters-advanced
         a(

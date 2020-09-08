@@ -13,20 +13,6 @@ tg-filter {
     overflow-y: auto;
     padding: 1rem 0;
     z-index: 1;
-    .filters-applied {
-        padding: 0 1rem 1rem;
-        .single-filter {
-            &.exclude {
-                background: $exclude-background;
-                text-decoration: line-through;
-            }
-            &:hover {
-                color: currentColor;
-                cursor: default;
-                transition: none;
-            }
-        }
-    }
     .filters-advanced {
         @include font-type(light);
         @include font-size(xsmall);
@@ -131,10 +117,6 @@ tg-filter {
     padding: 1rem;
 }
 
-.filters-step-cat {
-    margin-top: 2rem;
-}
-
 .filters-cats {
     ul {
         border-top: 1px solid $gray-light;
@@ -232,6 +214,57 @@ tg-filter {
         &:hover {
             svg {
                 fill: $red;
+            }
+        }
+    }
+}
+
+.filters-included,
+.filters-excluded {
+    margin-bottom: .5rem;
+    padding: .5rem;
+}
+
+.filters-included {
+    background: rgba(147, 196, 93, .1);
+
+    .filters-title {
+        @include font-size(small);
+        color: $color-solid-green;
+        margin-bottom: .5rem;
+    }
+}
+
+.filters-excluded {
+    background: rgba(228, 64, 87, .06);
+}
+
+.filters-applied {
+    .single-applied-filter {
+        @include font-size(small);
+        align-items: center;
+        background: $color-white;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, .25);
+        cursor: pointer;
+        display: inline-flex;
+        margin: 0 .5rem .5rem 0;
+        padding: .5rem;
+
+        .name {
+            @include ellipsis(100%);
+            margin-right: .5rem;
+        }
+
+        .remove-filter {
+            background: none;
+            cursor: pointer;
+            display: block;
+            padding: 0;
+
+            svg {
+                fill: $color-link-tertiary;
+                height: 12px;
+                width: 7px;
             }
         }
     }

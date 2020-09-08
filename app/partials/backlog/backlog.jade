@@ -23,7 +23,7 @@ div.wrapper(tg-backlog, ng-controller="BacklogController as ctrl",
 
         .backlog-manager
 
-            sidebar.backlog-filter(ng-if="ctrl.activeFilters")
+            .backlog-filter(ng-if="ctrl.activeFilters")
                 tg-filter(
                     q="ctrl.filterQ"
                     filters="ctrl.filters"
