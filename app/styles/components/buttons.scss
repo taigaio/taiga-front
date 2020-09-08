@@ -323,17 +323,12 @@
     color: $color-black900;
 
     &:hover,
-    &.active,
-    &:visited:hover {
+    &.active {
         color: $white;
-        span {
-            color: currentColor;
-        }
     }
 
     &:hover svg,
-    &.active svg,
-    &:visited:hover svg {
+    &.active svg {
         fill: $white;
     }
 }
@@ -358,5 +353,26 @@
     &.active svg {
         color: $white;
     }
+}
 
+.filter-button {
+    @extend %button;
+    background: $color-gray100;
+    color: $color-link-primary;
+    padding: 9px 1rem;
+    text-transform: none;
+
+    span {
+        color: currentColor;
+    }
+
+    svg {
+        fill: $color-link-primary;
+    }
+
+    &:hover,
+    &.active {
+        background: $color-gray400;
+        color: $color-link-primary;
+    }
 }

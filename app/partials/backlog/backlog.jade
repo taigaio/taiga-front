@@ -43,62 +43,56 @@ div.wrapper(tg-backlog, ng-controller="BacklogController as ctrl",
                     include ../includes/components/addnewus
 
             .backlog-table-options
-                //- left
-                a.menu-button.e2e-open-filter.ng-animate-disabled(
-                    ng-if="!ctrl.activeFilters"
-                    href=""
-                    title="{{'BACKLOG.FILTERS.TOGGLE' | translate}}"
-                    id="show-filters-button"
-                    translate="BACKLOG.FILTERS.SHOW"
-                )
-                a.menu-button.active.e2e-open-filter.ng-animate-disabled(
-                    ng-if="ctrl.activeFilters"
-                    href=""
-                    title="{{'BACKLOG.FILTERS.HIDE' | translate}}"
-                    id="show-filters-button"
-                    translate="BACKLOG.FILTERS.HIDE"
-                )
-                a.menu-button(
-                    ng-if="userstories.length"
-                    href=""
-                    title="{{'BACKLOG.TAGS.TOGGLE' | translate}}"
-                    id="show-tags"
-                    translate="BACKLOG.TAGS.SHOW"
-                )
+                .backlog-table-options-start
+                    button.filter-button.e2e-open-filter.ng-animate-disabled(
+                        ng-if="!ctrl.activeFilters"
+                        id="show-filters-button"
+                    )
+                        tg-svg(svg-icon="icon-filters")
+                        span(translate="BACKLOG.FILTERS.SHOW")
 
-                //- right
-                a.menu-button.velocity-forecasting-btn.ng-animate-disabled.e2e-velocity-forecasting(
-                    ng-if="userstories.length && ctrl.displayVelocity "
-                    href=""
-                    title="{{'BACKLOG.FORECASTING.TITLE' | translate}}"
-                    translate="BACKLOG.FORECASTING.BACKLOG"
-                    ng-click="ctrl.toggleVelocityForecasting()"
-                    tg-check-permission="add_milestone"
-                )
-                a.menu-button.velocity-forecasting-btn.ng-animate-disabled.e2e-velocity-forecasting(
-                    ng-if="userstories.length && !ctrl.displayVelocity && stats.speed > 0"
-                    href=""
-                    title="{{'BACKLOG.FORECASTING.BACKLOG' | translate}}"
-                    translate="BACKLOG.FORECASTING.TITLE"
-                    ng-click="ctrl.toggleVelocityForecasting()"
-                    tg-check-permission="add_milestone"
-                )
-                a.menu-button.move-to-current-sprint.move-to-sprint.e2e-move-to-sprint(
-                    ng-if="currentSprint"
-                    href=""
-                    title="{{'BACKLOG.MOVE_US_TO_CURRENT_SPRINT' | translate}}"
-                    id="move-to-current-sprint"
-                )
-                    tg-svg(svg-icon="icon-move")
-                    span.text(translate="BACKLOG.MOVE_US_TO_CURRENT_SPRINT")
-                a.menu-button.move-to-latest-sprint.move-to-sprint.e2e-move-to-sprint(
-                    ng-if="!currentSprint"
-                    href=""
-                    title="{{'BACKLOG.MOVE_US_TO_LATEST_SPRINT' | translate}}"
-                    id="move-to-latest-sprint"
-                )
-                    tg-svg(svg-icon="icon-move")
-                    span.text(translate="BACKLOG.MOVE_US_TO_LATEST_SPRINT")
+                    button.filter-button.active.e2e-open-filter.ng-animate-disabled(
+                        ng-if="ctrl.activeFilters"
+                        id="show-filters-button"
+                    )
+                        tg-svg(svg-icon="icon-filters")
+                        span(translate="BACKLOG.FILTERS.HIDE")
+                    button.filter-button(
+                        ng-if="userstories.length"
+                        title="{{'BACKLOG.TAGS.TOGGLE' | translate}}"
+                        id="show-tags"
+                        translate="BACKLOG.TAGS.SHOW"
+                    )
+
+                .backlog-table-options-end
+                    button.filter-button.velocity-forecasting-btn.ng-animate-disabled.e2e-velocity-forecasting(
+                        ng-if="userstories.length && ctrl.displayVelocity "
+                        title="{{'BACKLOG.FORECASTING.TITLE' | translate}}"
+                        translate="BACKLOG.FORECASTING.BACKLOG"
+                        ng-click="ctrl.toggleVelocityForecasting()"
+                        tg-check-permission="add_milestone"
+                    )
+                    button.filter-button.velocity-forecasting-btn.ng-animate-disabled.e2e-velocity-forecasting(
+                        ng-if="userstories.length && !ctrl.displayVelocity && stats.speed > 0"
+                        title="{{'BACKLOG.FORECASTING.BACKLOG' | translate}}"
+                        translate="BACKLOG.FORECASTING.TITLE"
+                        ng-click="ctrl.toggleVelocityForecasting()"
+                        tg-check-permission="add_milestone"
+                    )
+                    button.filter-button.move-to-current-sprint.move-to-sprint.e2e-move-to-sprint(
+                        ng-if="currentSprint"
+                        title="{{'BACKLOG.MOVE_US_TO_CURRENT_SPRINT' | translate}}"
+                        id="move-to-current-sprint"
+                    )
+                        tg-svg(svg-icon="icon-move")
+                        span.text(translate="BACKLOG.MOVE_US_TO_CURRENT_SPRINT")
+                    button.filter-button.move-to-latest-sprint.move-to-sprint.e2e-move-to-sprint(
+                        ng-if="!currentSprint"
+                        title="{{'BACKLOG.MOVE_US_TO_LATEST_SPRINT' | translate}}"
+                        id="move-to-latest-sprint"
+                    )
+                        tg-svg(svg-icon="icon-move")
+                        span.text(translate="BACKLOG.MOVE_US_TO_LATEST_SPRINT")
 
 
 

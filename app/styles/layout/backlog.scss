@@ -10,13 +10,39 @@
     }
 }
 
+.backlog-menu {
+    color: $color-black900;
+    margin: 1rem 0;
+    // .menu-button {
+    //     @include font-type(light);
+    //     &:hover,
+    //     &:visited:hover {
+    //         color: $grey-90;
+    //     }
+    //     &.move-to-sprint {
+    //         display: none;
+    //     }
+    //     .icon-move {
+    //         margin-right: .25rem;
+    //     }
+    // }
+    // .button-bulk {
+    //     margin-left: .2rem;
+    // }
+}
+
 .backlog-header {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 1rem;
 
     &-title {
         align-items: baseline;
         display: flex;
+    }
+
+    h2 {
+        margin: 0;
     }
 }
 
@@ -26,29 +52,11 @@
     margin-left: .5rem;
 }
 
-.backlog-menu {
-    color: $blackish;
-    margin: 1rem 0;
-    @include until($widescreen) {
-        flex-direction: column;
-    }
-    .menu-button {
-        @include font-type(light);
-        &:hover,
-        &:visited:hover {
-            color: $grey-90;
-        }
-        &.move-to-sprint {
-            display: none;
-        }
-        .icon-move {
-            margin-right: .25rem;
-        }
-    }
-    .button-bulk {
-        margin-left: .2rem;
-    }
+.backlog-table-options {
+    display: flex;
+    justify-content: space-between;
 }
+
 
 .multiple-drag-mirror.us-item-row {
     background: $white;
@@ -72,22 +80,22 @@
     }
 }
 
-.forecasting-add-sprint {
-    @include font-size(small);
-    background: $mass-white;
-    cursor: pointer;
-    padding: .5rem 0;
-    text-align: center;
-    &:hover {
-        background: darken($mass-white, 3%);
-        transition: background .2s;
-    }
-    .icon-add {
-        @include svg-size(1.75rem);
-        background: $primary-light;
-        fill: $white;
-        margin-right: 1rem;
-        padding: .25rem;
-        vertical-align: middle;
-    }
-}
+// .forecasting-add-sprint {
+//     @include font-size(small);
+//     background: $mass-white;
+//     cursor: pointer;
+//     padding: .5rem 0;
+//     text-align: center;
+//     &:hover {
+//         background: darken($mass-white, 3%);
+//         transition: background .2s;
+//     }
+//     .icon-add {
+//         @include svg-size(1.75rem);
+//         background: $primary-light;
+//         fill: $white;
+//         margin-right: 1rem;
+//         padding: .25rem;
+//         vertical-align: middle;
+//     }
+// }
