@@ -74,6 +74,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         @.page = 1
         @.disablePagination = false
         @.firstLoadComplete = false
+        @.translationData = {q: @.filterQ}
         @scope.userstories = []
 
         return if @.applyStoredFilters(@params.pslug, "backlog-filters")
@@ -278,6 +279,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         @.loadingUserstories = true
         @.disablePagination = true
         params = _.clone(@location.search())
+        @.translationData.q = params.q
         @rs.userstories.storeQueryParams(@scope.projectId, params)
 
         if resetPagination
