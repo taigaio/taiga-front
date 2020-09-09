@@ -18,7 +18,9 @@
 ###
 
 class FilterController
-    @.$inject = ['$translate']
+    @.$inject = [
+        '$translate',
+    ]
 
     constructor: (@translate) ->
         @.opened = null
@@ -30,6 +32,8 @@ class FilterController
         @.filterMode = 'include'
         @.customFilterForm = false
         @.customFilterName = ''
+        @.includedFilters = @.getIncludedFilters()
+        @.excludedFilters = @.getExcludedFilters()
 
     toggleFilterCategory: (filterName) ->
         if @.opened == filterName
@@ -69,6 +73,14 @@ class FilterController
 
     selectCustomFilter: (filter) ->
         @.onSelectCustomFilter({filter: filter})
+
+    getIncludedFilters: () ->
+        return _.filter @.selectedFilters, (it) ->
+            return it.mode == 'include'
+
+    getExcludedFilters: () ->
+        return _.filter @.selectedFilters, (it) ->
+            return it.mode == 'exclude'
 
     isFilterSelected: (filterCategory, filter) ->
         return !!_.find @.selectedFilters, (it) ->

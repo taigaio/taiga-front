@@ -38,113 +38,61 @@ tg-filter {
 
 .filter-list {
     overflow-y: auto;
-    padding: 1rem;
+    padding: .5rem 0;
 }
 
-.filters-cats {
-    ul {
-        border-top: 1px solid $gray-light;
-        margin-bottom: 0;
-    }
-    li {
-        border-bottom: 1px solid $gray-light;
-        text-transform: uppercase;
-        &.selected {
-            border-bottom: 0;
-        }
-        .filter-list {
-            min-height: 60px;
-        }
-    }
-    .custom-filters {
-        .title {
-            color: $primary;
-        }
-    }
-    .filters-cat-single {
-        align-items: center;
-        color: $grayer;
-        display: flex;
-        justify-content: space-between;
-        padding: .5rem .5rem .5rem 1.5rem;
-        transition: color .2s ease-in;
-        &:hover,
-        &.selected {
-            background-color: $grey-10;
-            color: $grayer;
-            transition: background-color .2s ease-in;
-            .icon {
-                opacity: 1;
-                transition: opacity .2s ease-in;
-            }
-        }
-    }
-    .icon-arrow-down {
-        fill: currentColor;
-        float: right;
-        height: .9rem;
-        opacity: 0;
-        transition: opacity .2s ease-in;
-        width: .9rem;
-    }
-}
+
 
 .single-filter {
-    @include font-type(text);
-    @include clearfix;
+    @include font-size(small);
     align-items: center;
-    background: $grey-10;
+    background: $color-gray100;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 0 0 0 5px;
+    color: $color-black900;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
     margin-bottom: .5rem;
-    opacity: .5;
-    padding-right: .5rem;
     position: relative;
-    &.selected,
-    &.active {
-        color: $grayer;
-        opacity: 1;
-        transition: opacity .2s linear;
-    }
-    .name,
-    .number {
-        padding: 8px 10px;
-    }
+    width: 100%;
+    // &.selected,
+    // &.active {
+    //     color: $grayer;
+    //     opacity: 1;
+    //     transition: opacity .2s linear;
+    // }
     .name {
         @include ellipsis(100%);
-        border-color: transparent;
-        border-style: solid;
-        border-width: 0 0 0 3px;
-        display: block;
-        width: 100%;
-        img {
-            vertical-align: middle;
-        }
+        flex: 1;
+        padding: .5rem;
+        text-align: left;
+        // img {
+        //     vertical-align: middle;
+        // }
     }
     .number {
-        background: $grey-20;
-        position: absolute;
-        right: 0;
-        top: 0;
+        background: $color-gray200;
+        padding: .2px 4px;
     }
-    .remove-filter {
-        cursor: pointer;
-        display: block;
-        svg {
-            fill: $gray;
-            transition: fill .2s linear;
-        }
-        &:hover {
-            svg {
-                fill: $red;
-            }
-        }
-    }
+    // .remove-filter {
+    //     cursor: pointer;
+    //     display: block;
+    //     svg {
+    //         fill: $gray;
+    //         transition: fill .2s linear;
+    //     }
+    //     &:hover {
+    //         svg {
+    //             fill: $red;
+    //         }
+    //     }
+    // }
 }
 
-.filters-included,
-.filters-excluded {
+.filters-included:not(:empty),
+.filters-excluded:not(:empty) {
     padding: .5rem;
 }
 
@@ -201,16 +149,6 @@ tg-filter {
     @include font-size(small);
     padding: 1rem .5rem;
 
-    // .collapsed.exclude {
-    //     color: $red-light;
-    // }
-
-    // a .icon {
-    //     margin-left: 5px;
-    //     vertical-align: bottom;
-    //     width: .5rem;
-    // }
-
     .filters-advanced-form {
         align-items: center;
         display: flex;
@@ -226,21 +164,16 @@ tg-filter {
     }
 
     .filter-mode {
+        align-items: center;
+        color: $color-black900;
         cursor: pointer;
         display: flex;
-        justify-content: center;
 
         &.include {
             margin-right: .75rem;
         }
         &.active .radio-mark-inner {
             opacity: 1;
-        }
-        &.active.include {
-            color: $primary;
-        }
-        &.active.exclude {
-            color: $red-light;
         }
     }
 
@@ -261,16 +194,50 @@ tg-filter {
     }
 
     .radio-mark-inner {
+        background: $color-link-primary;
         height: 8px;
         opacity: 0;
         width: 8px;
+    }
+}
 
-        &.include {
-            background: $primary;
+.filters-cats {
+    ul {
+        margin-bottom: 0;
+    }
+    li {
+        .filter-list {
+            min-height: 60px;
         }
+        &:not(.active):last-child {
+            border-bottom: 1px solid $color-gray300;
+        }
+    }
+    .custom-filters {
+        .title {
+            color: $primary;
+        }
+    }
+}
 
-        &.exclude {
-            background: $red-light;
-        }
+.filters-cat-single {
+    @include font-size(small);
+    align-items: center;
+    border: 1px solid $color-gray300;
+    border-bottom: none;
+    color: $color-link-tertiary;
+    display: flex;
+    justify-content: space-between;
+    padding: .5rem 1rem;
+    width: 100%;
+    &.selected {
+        @include font-type(bold);
+        background-color: $color-gray200;
+    }
+    .icon {
+        fill: $color-link-primary;
+        float: right;
+        height: 8px;
+        width: 8px;
     }
 }

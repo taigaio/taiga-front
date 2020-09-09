@@ -17,11 +17,11 @@ form(name="vm.filtersForm", style="display: none;")
 
 .filters-step-cat
     .filters-applied(ng-if="vm.selectedFilters.length")
-        .filters-included
+        .filters-included(ng-if="vm.includedFilters")
             .filters-title Filtered by:
             .filters-wrapper
                 .single-applied-filter.ng-animate-disabled(
-                    ng-repeat="it in vm.selectedFilters | orderBy:'-mode' track by it.key"
+                    ng-repeat="it in vm.includedFilters | orderBy:'-mode' track by it.key"
                     class="{{it.mode}}"
                 )
                     span.name(
@@ -37,10 +37,10 @@ form(name="vm.filtersForm", style="display: none;")
                     )
                         tg-svg(svg-icon="icon-close")
 
-        .filters-excluded
+        .filters-excluded(ng-if="vm.excludedFilters")
             .filters-wrapper
                 .single-applied-filter.ng-animate-disabled(
-                    ng-repeat="it in vm.selectedFilters | orderBy:'-mode' track by it.key"
+                    ng-repeat="it in vm.excludedFilters | orderBy:'-mode' track by it.key"
                     class="{{it.mode}}"
                 )
                     span.name(
@@ -105,11 +105,9 @@ form(name="vm.filtersForm", style="display: none;")
                 ng-if="!(filter.hideEmpty && filter.totalTaggedElements === 0)"
             )
 
-                a.filters-cat-single.e2e-category(
+                button.filters-cat-single.e2e-category(
                     ng-class="{selected: vm.isOpen(filter.dataType)}"
                     ng-click="vm.toggleFilterCategory(filter.dataType)"
-                    href=""
-                    title="{{::filter.title}}"
                 )
                     span.title {{::filter.title}}
                     tg-svg.ng-animate-disabled(
@@ -125,14 +123,14 @@ form(name="vm.filtersForm", style="display: none;")
                     ng-if="vm.isOpen(filter.dataType)",
                     tg-filter-slide-down
                 )
-                    a.single-filter.ng-animate-disabled(
+                    button.single-filter(
                         ng-repeat="it in filter.content"
                         ng-if="!vm.isFilterSelected(filter, it) && !(it.count == 0 && filter.hideEmpty)"
                         ng-click="vm.selectFilter(filter, it)"
+                        ng-attr-style="{{it.color ? 'border-color: ' + it.color: ''}}"
                     )
                         span.name(
                             ng-if="filter.dataType === 'tags'",
-                            ng-attr-style="{{it.color ? 'border-color: ' + it.color: ''}}"
                             ng-bind-html="it.name | emojify"
                         )
                         span.name(
@@ -146,7 +144,7 @@ form(name="vm.filtersForm", style="display: none;")
                 ng-if="vm.customFilters.length > 0"
             )
 
-                a.filters-cat-single(
+                button.filters-cat-single(
                     ng-class="{selected: vm.isOpen('custom-filter')}"
                     ng-click="vm.toggleFilterCategory('custom-filter')"
                     href=""
