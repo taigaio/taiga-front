@@ -54,6 +54,13 @@
     justify-content: space-between;
 }
 
+.backlog-table-options-start {
+    display: flex;
+
+    > * {
+        margin-right: 0.5rem;
+    }
+}
 
 .multiple-drag-mirror.us-item-row {
     background: $white;
@@ -74,5 +81,22 @@
     &.is-checked,
     &:hover {
         background: $white;
+    }
+}
+
+.empty-backlog {
+    padding: 1rem 2rem;
+
+    .no-match {
+        @include font-size(large);
+
+        color: $color-black900;
+        margin-bottom: 15px;
+    }
+
+    .no-match-help {
+        @include font-size(small);
+
+        color: $color-link-tertiary;
     }
 }
