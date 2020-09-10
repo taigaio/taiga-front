@@ -32,7 +32,35 @@ tg-filter {
 
 .custom-filters {
     border-bottom: 1px solid $color-gray400;
-    padding-bottom: .5rem;
+    margin-bottom: .5rem;
+    padding-bottom: .75rem;
+}
+
+.single-filter-type-custom {
+    @include font-size(small);
+    background: $color-gray200;
+    margin-top: .25rem;
+
+    .name {
+        color: $color-link-primary;
+    }
+
+    .remove-filter {
+        background: none;
+        cursor: pointer;
+        opacity: 0;
+        svg {
+            fill: $color-link-primary;
+            height: 14px;
+            width: 14px;
+        }
+    }
+    &:hover {
+        .remove-filter {
+            opacity: 1;
+            transition: opacity .1s linear;
+        }
+    }
 }
 
 .custom-filters-header {
@@ -88,9 +116,8 @@ tg-filter {
     @include font-size(small);
     align-items: center;
     background: $color-gray100;
-    border-color: transparent;
-    border-style: solid;
-    border-width: 0 0 0 5px;
+    border: 0;
+    border-left: 5px solid transparent;
     color: $color-black900;
     cursor: pointer;
     display: flex;
@@ -98,6 +125,11 @@ tg-filter {
     margin-bottom: .5rem;
     position: relative;
     width: 100%;
+    &:active,
+    &:focus {
+        border: 0;
+        border-left: 5px solid transparent;
+    }
     &.single-filter-type-tag {
         background: $color-link-tertiary;
         border-radius: 4px;
@@ -115,19 +147,7 @@ tg-filter {
         color: $color-black900;
         padding: .2px 4px;
     }
-    // .remove-filter {
-    //     cursor: pointer;
-    //     display: block;
-    //     svg {
-    //         fill: $gray;
-    //         transition: fill .2s linear;
-    //     }
-    //     &:hover {
-    //         svg {
-    //             fill: $red;
-    //         }
-    //     }
-    // }
+
 }
 
 .filters-included:not(:empty),

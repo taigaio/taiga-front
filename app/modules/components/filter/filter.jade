@@ -7,7 +7,7 @@
     .custom-filters-header
         .custom-filters-title
             span.name(translate="COMMON.FILTERS.TITLE")
-            span.number (0)
+            span.number ({{vm.customFilters.length}})
         button.add-custom-filter(
             ng-click="vm.customFilterForm = true"
             ng-if="vm.selectedFilters.length"
@@ -30,6 +30,21 @@
             translate="COMMON.FILTERS.ACTION_SAVE_CUSTOM_FILTER"
         )
 
+    .custom-filter-list(ng-if="vm.customFilters.length")
+        //- .single-filter.ng-animate-disabled.e2e-custom-filter(
+        //-     ng-repeat="it in vm.customFilters"
+        //-     ng-click="vm.selectCustomFilter(it)"
+        //- )
+        //-     span.name {{it.name}}
+
+        .single-filter.single-filter-type-custom(
+            ng-repeat="it in vm.customFilters"
+            ng-click="vm.selectCustomFilter(it)"
+        )
+            span.name {{it.name}}
+            button.remove-filter.e2e-remove-custom-filter(ng-click="vm.removeCustomFilter(it)")
+                tg-svg(svg-icon="icon-trash")
+
 //- form(name="vm.filtersForm")
 //-     fieldset
 //-         input.e2e-filter-q(
@@ -45,8 +60,8 @@
 //-         )
 
 .filters-step-cat
-    .filters-applied
-        .filters-included(ng-if="vm.includedFilters.length")
+    .filters-applied(ng-if="vm.includedFilters.length")
+        .filters-included
             .filters-title Filtered by:
             .filters-wrapper
                 .single-applied-filter.ng-animate-disabled(
@@ -152,37 +167,4 @@
                         )
                         span.number.e2e-filter-count(ng-if="it.count > 0") {{it.count}}
 
-            li.custom-filters.e2e-custom-filters(
-                ng-class="{selected: vm.isOpen('custom-filter')}"
-                ng-if="vm.customFilters.length > 0"
-            )
 
-                button.filters-cat-single(
-                    ng-class="{selected: vm.isOpen('custom-filter')}"
-                    ng-click="vm.toggleFilterCategory('custom-filter')"
-                    href=""
-                    title="{{'COMMON.FILTERS.CATEGORIES.CUSTOM_FILTERS' | translate}}"
-                )
-                    span.title(translate="COMMON.FILTERS.CATEGORIES.CUSTOM_FILTERS")
-                    tg-svg.ng-animate-disabled(
-                        ng-if="!vm.isOpen('custom-filter')"
-                        svg-icon="icon-arrow-right"
-                    )
-                    tg-svg.ng-animate-disabled(
-                        ng-if="vm.isOpen('custom-filter')"
-                        svg-icon="icon-arrow-down"
-                    )
-                .filter-list(
-                    ng-if="vm.isOpen('custom-filter')",
-                    tg-filter-slide-down
-                )
-                    .single-filter.ng-animate-disabled.e2e-custom-filter(
-                        ng-repeat="it in vm.customFilters"
-                        ng-click="vm.selectCustomFilter(it)"
-                    )
-                        span.name {{it.name}}
-                        a.remove-filter.e2e-remove-custom-filter(
-                            ng-click="vm.removeCustomFilter(it)"
-                            href=""
-                        )
-                            tg-svg(svg-icon="icon-close")

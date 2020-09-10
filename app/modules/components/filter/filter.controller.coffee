@@ -34,7 +34,6 @@ class FilterController
         @.customFilterName = ''
 
         @.$onChanges = (changes) ->
-            console.log(changes)
             if changes.selectedFilters
                 @.getIncludedFilters()
                 @.getExcludedFilters()
