@@ -42,28 +42,30 @@ class UserPilotService extends taiga.Service
                 @.identified = true
                 id = @.getUserPilotId(data)
                 timestamp = Date.now()
+                userpilot_data = {
+                    name: data["full_name_display"], # Full name
+                    email: data["email"], # Email address
+                    created_at: timestamp, # Signup date as a Unix timestamp
+                    # Additional user properties
+                    taiga_id: parseInt(data["id"], 10),
+                    taiga_username: data["username"],
+                    taiga_date_joined: data["date_joined"],
+                    taiga_lang: data["lang"],
+                    taiga_max_private_projects: parseInt(data["max_private_projects"], 10),
+                    taiga_max_memberships_private_projects: parseInt(data["max_memberships_private_projects"], 10),
+                    taiga_verified_email: data["verified_email"],
+                    taiga_total_private_projects: parseInt(data["total_private_projects"], 10),
+                    taiga_total_public_projects: parseInt(data["total_public_projects"], 10),
+                    taiga_roles: data["roles"].toString()
+                }
+
                 @win.userpilot.identify(
                     id, # Used to identify users
-                    {
-                        name: data["full_name_display"], # Full name
-                        email: data["email"], # Email address
-                        created_at: timestamp, # Signup date as a Unix timestamp
-                        # Additional user properties
-                        taiga_id: id,
-                        taiga_username: data["username"],
-                        taiga_date_joined: data["date_joined"],
-                        taiga_lang: data["lang"],
-                        taiga_max_private_projects: parseInt(data["max_private_projects"], 10),
-                        taiga_max_memberships_private_projects: parseInt(data["max_memberships_private_projects"], 10),
-                        taiga_verified_email: data["verified_email"],
-                        taiga_total_private_projects: parseInt(data["total_private_projects"], 10),
-                        taiga_total_public_projects: parseInt(data["total_public_projects"], 10),
-                        taiga_roles: data["roles"].toString()
-                    }
+                    userpilot_data
                 )
 
     getUserPilotId: (data) ->
         maxPrivateProjects = parseInt(data["max_private_projects"], 10)
-        if (maxPrivateProjects && maxPrivateProjects > 1) then return parseInt(data["id"], 10) else 1
+        if (maxPrivateProjects == 1) then return 1 else parseInt(data["id"], 10)
 
 module.service("$tgUserPilot", UserPilotService)
