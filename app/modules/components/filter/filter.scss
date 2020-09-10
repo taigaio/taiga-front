@@ -46,25 +46,17 @@ tg-filter {
 .single-filter {
     @include font-size(small);
     align-items: center;
-    background: $color-gray100;
-    border-color: transparent;
-    border-style: solid;
-    border-width: 0 0 0 5px;
-    color: $color-black900;
+    background: $color-link-tertiary;
+    border-radius: 4px;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
     margin-bottom: .5rem;
     position: relative;
     width: 100%;
-    // &.selected,
-    // &.active {
-    //     color: $grayer;
-    //     opacity: 1;
-    //     transition: opacity .2s linear;
-    // }
     .name {
         @include ellipsis(100%);
+        color: $color-white;
         flex: 1;
         padding: .5rem;
         text-align: left;
@@ -74,6 +66,8 @@ tg-filter {
     }
     .number {
         background: $color-gray200;
+        border-radius: 2px;
+        color: $color-black900;
         padding: .2px 4px;
     }
     // .remove-filter {
@@ -223,6 +217,7 @@ tg-filter {
 .filters-cat-single {
     @include font-size(small);
     align-items: center;
+    background: none;
     border: 1px solid $color-gray300;
     border-bottom: none;
     color: $color-link-tertiary;
@@ -230,6 +225,10 @@ tg-filter {
     justify-content: space-between;
     padding: .5rem 1rem;
     width: 100%;
+    &:focus {
+        border: 1px solid $color-gray300;
+        border-bottom: none;
+    }
     &.selected {
         @include font-type(bold);
         background-color: $color-gray200;

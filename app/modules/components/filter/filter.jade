@@ -127,7 +127,7 @@ form(name="vm.filtersForm", style="display: none;")
                         ng-repeat="it in filter.content"
                         ng-if="!vm.isFilterSelected(filter, it) && !(it.count == 0 && filter.hideEmpty)"
                         ng-click="vm.selectFilter(filter, it)"
-                        ng-attr-style="{{it.color ? 'border-color: ' + it.color: ''}}"
+                        ng-attr-style="{{it.color ? 'background: ' + it.color: ''}}"
                     )
                         span.name(
                             ng-if="filter.dataType === 'tags'",
@@ -135,7 +135,7 @@ form(name="vm.filtersForm", style="display: none;")
                         )
                         span.name(
                             ng-if="filter.dataType !== 'tags'",
-                            ng-attr-style="{{it.color ? 'border-color: ' + it.color: ''}}"
+                            ng-attr-style="{{it.color ? 'background: ' + it.color: ''}}"
                         ) {{it.name}}
                         span.number.e2e-filter-count(ng-if="it.count > 0") {{it.count}}
 
