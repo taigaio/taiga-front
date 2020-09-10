@@ -226,9 +226,10 @@
         "FILTERS": {
             "INPUT_PLACEHOLDER": "Subject or reference",
             "TITLE_ACTION_FILTER_BUTTON": "search",
-            "TITLE": "Filters",
+            "TITLE": "custom filters",
             "TITLE_ACTION_SEARCH": "Search",
-            "ACTION_SAVE_CUSTOM_FILTER": "save as custom filter",
+            "ACTION_ADD": "Add",
+            "ACTION_SAVE_CUSTOM_FILTER": "save filter",
             "PLACEHOLDER_FILTER_NAME": "Write the filter name and press enter",
             "APPLIED_FILTERS_NUM": "filters applied",
             "TITLE_ADVANCED_FILTER": "Advanced",

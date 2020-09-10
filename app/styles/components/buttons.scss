@@ -319,8 +319,17 @@
 
 .button-primary {
     @extend %button;
+    @include font-type(bold);
     background: $color-solid-primary;
     color: $color-black900;
+
+    span {
+        color: $color-black900;
+    }
+
+    .icon {
+        fill: currentColor;
+    }
 
     &:hover,
     &.active {
