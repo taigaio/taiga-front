@@ -32,8 +32,16 @@ class FilterController
         @.filterMode = 'include'
         @.customFilterForm = false
         @.customFilterName = ''
+
+        @.$onChanges = (changes) ->
+            console.log(changes)
+            if changes.selectedFilters
+                @.getIncludedFilters()
+                @.getExcludedFilters()
+
         @.includedFilters = @.getIncludedFilters()
         @.excludedFilters = @.getExcludedFilters()
+
 
     toggleFilterCategory: (filterName) ->
         if @.opened == filterName
@@ -75,11 +83,11 @@ class FilterController
         @.onSelectCustomFilter({filter: filter})
 
     getIncludedFilters: () ->
-        return _.filter @.selectedFilters, (it) ->
+        @.includedFilters = _.filter @.selectedFilters, (it) ->
             return it.mode == 'include'
 
     getExcludedFilters: () ->
-        return _.filter @.selectedFilters, (it) ->
+        @.excludedFilters = _.filter @.selectedFilters, (it) ->
             return it.mode == 'exclude'
 
     isFilterSelected: (filterCategory, filter) ->

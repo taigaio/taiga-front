@@ -16,8 +16,8 @@ form(name="vm.filtersForm", style="display: none;")
         )
 
 .filters-step-cat
-    .filters-applied(ng-if="vm.selectedFilters.length")
-        .filters-included(ng-if="vm.includedFilters")
+    .filters-applied
+        .filters-included(ng-if="vm.includedFilters.length")
             .filters-title Filtered by:
             .filters-wrapper
                 .single-applied-filter.ng-animate-disabled(
@@ -37,7 +37,7 @@ form(name="vm.filtersForm", style="display: none;")
                     )
                         tg-svg(svg-icon="icon-close")
 
-        .filters-excluded(ng-if="vm.excludedFilters")
+        .filters-excluded(ng-if="vm.excludedFilters.length")
             .filters-wrapper
                 .single-applied-filter.ng-animate-disabled(
                     ng-repeat="it in vm.excludedFilters | orderBy:'-mode' track by it.key"
