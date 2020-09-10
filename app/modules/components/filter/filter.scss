@@ -87,23 +87,27 @@ tg-filter {
 .single-filter {
     @include font-size(small);
     align-items: center;
-    background: $color-link-tertiary;
-    border-radius: 4px;
+    background: $color-gray100;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 0 0 0 5px;
+    color: $color-black900;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
     margin-bottom: .5rem;
     position: relative;
     width: 100%;
+    &.single-filter-type-tag {
+        background: $color-link-tertiary;
+        border-radius: 4px;
+        color: $color-white;
+    }
     .name {
         @include ellipsis(100%);
-        color: $color-white;
         flex: 1;
         padding: .5rem;
         text-align: left;
-        // img {
-        //     vertical-align: middle;
-        // }
     }
     .number {
         background: $color-gray200;

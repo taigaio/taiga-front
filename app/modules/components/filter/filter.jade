@@ -131,9 +131,18 @@
                     ng-if="vm.isOpen(filter.dataType)",
                     tg-filter-slide-down
                 )
-                    button.single-filter(
+                    button.single-filter.single-filter-type-general(
                         ng-repeat="it in filter.content"
-                        ng-if="!vm.isFilterSelected(filter, it) && !(it.count == 0 && filter.hideEmpty)"
+                        ng-if="filter.dataType !== 'tags' && !vm.isFilterSelected(filter, it) && !(it.count == 0 && filter.hideEmpty)"
+                        ng-click="vm.selectFilter(filter, it)"
+                        ng-attr-style="{{it.color ? 'border-color: ' + it.color: ''}}"
+                    )
+                        span.name {{it.name}}
+                        span.number.e2e-filter-count(ng-if="it.count > 0") {{it.count}}
+
+                    button.single-filter.single-filter-type-tag(
+                        ng-repeat="it in filter.content"
+                        ng-if="filter.dataType === 'tags' && !vm.isFilterSelected(filter, it) && !(it.count == 0 && filter.hideEmpty)"
                         ng-click="vm.selectFilter(filter, it)"
                         ng-attr-style="{{it.color ? 'background: ' + it.color: ''}}"
                     )
@@ -141,10 +150,6 @@
                             ng-if="filter.dataType === 'tags'",
                             ng-bind-html="it.name | emojify"
                         )
-                        span.name(
-                            ng-if="filter.dataType !== 'tags'",
-                            ng-attr-style="{{it.color ? 'background: ' + it.color: ''}}"
-                        ) {{it.name}}
                         span.number.e2e-filter-count(ng-if="it.count > 0") {{it.count}}
 
             li.custom-filters.e2e-custom-filters(
