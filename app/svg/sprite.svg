@@ -255,10 +255,6 @@
             <title>filters-empty</title>
             <path class="path1" d="M0 75.131l416 457.6v236.938l192 179.2v-416.138l416-457.6h-1024zM138.921 136.571h746.179l-338.54 372.398v298.47l-66.186-61.788 0.41-235.331-341.86-373.75z"></path>
         </symbol>
-        <!-- <symbol id="icon-filters" viewBox="0 0 1024 1024">
-            <title>filters</title>
-            <path class="path1" d="M0 75.131l416 457.6v236.938l192 179.2v-416.138l416-457.6h-1024z"></path>
-        </symbol> -->
         <symbol id="icon-github" viewBox="0 0 1024 1024">
             <title>github</title>
             <path
