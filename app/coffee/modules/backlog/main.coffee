@@ -790,19 +790,11 @@ BacklogDirective = ($repo, $rootscope, $translate, $rs) ->
         $ctrl.activeFilters = true
 
     showHideFilter = ($scope, $el, $ctrl) ->
-        sidebar = $el.find("sidebar.backlog-filter")
-        sidebar.one "transitionend", () ->
-            timeout 150, ->
-                $rootscope.$broadcast("resize")
-                $('.burndown').css("visibility", "visible")
+        backlogFilter = $el.find(".backlog-filter")
 
         target = angular.element("#show-filters-button")
-        $('.burndown').css("visibility", "hidden")
-        sidebar.toggleClass("active")
+        backlogFilter.toggleClass("active")
         target.toggleClass("active")
-
-        hideText = $translate.instant("BACKLOG.FILTERS.HIDE")
-        showText = $translate.instant("BACKLOG.FILTERS.SHOW")
 
         toggleText(target, [hideText, showText])
 

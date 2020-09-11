@@ -19,11 +19,13 @@ div.wrapper(tg-backlog, ng-controller="BacklogController as ctrl",
 
             div.graphics-container.js-burndown-graph
                 div.burndown(tg-burndown-backlog-graph)
-                    include ../includes/modules/burndown
 
         .backlog-manager
 
-            .backlog-filter(ng-if="ctrl.activeFilters")
+            .backlog-filter(
+                id="backlog-filter"
+                ng-if="ctrl.activeFilters"
+            )
                 tg-filter(
                     q="ctrl.filterQ"
                     filters="ctrl.filters"
