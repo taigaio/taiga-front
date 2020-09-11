@@ -6,27 +6,6 @@ tg-filter {
     min-height: 100%;
     overflow-y: auto;
     padding: 1rem 0;
-
-    // h1,
-    // form {
-    //     padding: 0 1rem;
-    // }
-    // input {
-    //     background: $grayer;
-    //     color: $white;
-    //     padding-right: 2rem;
-    //     @include placeholder {
-    //         color: $gray-light;
-    //     }
-    // }
-    // .search-action {
-    //     position: absolute;
-    //     right: .7rem;
-    //     top: .7rem;
-    // }
-    // &.open {
-    //     box-shadow: 1px 1px 5px rgba($gray, .2);
-    // }
 }
 
 
@@ -36,32 +15,7 @@ tg-filter {
     padding-bottom: .75rem;
 }
 
-.single-filter-type-custom {
-    @include font-size(small);
-    background: $color-gray200;
-    margin-top: .25rem;
 
-    .name {
-        color: $color-link-primary;
-    }
-
-    .remove-filter {
-        background: none;
-        cursor: pointer;
-        opacity: 0;
-        svg {
-            fill: $color-link-primary;
-            height: 14px;
-            width: 14px;
-        }
-    }
-    &:hover {
-        .remove-filter {
-            opacity: 1;
-            transition: opacity .1s linear;
-        }
-    }
-}
 
 .custom-filters-header {
     align-items: center;
@@ -147,7 +101,34 @@ tg-filter {
         color: $color-black900;
         padding: .2px 4px;
     }
+    &.single-filter-type-custom {
+        @include font-size(small);
+        background: none;
+        margin-top: .5rem;
 
+        .name {
+            color: $color-link-primary;
+            padding: .25rem;
+        }
+
+        .remove-filter {
+            background: none;
+            cursor: pointer;
+            opacity: 0;
+            svg {
+                fill: $color-link-primary;
+                height: 14px;
+                width: 14px;
+            }
+        }
+        &:hover {
+            background: $color-gray200;
+            .remove-filter {
+                opacity: 1;
+                transition: opacity .1s linear;
+            }
+        }
+    }
 }
 
 .filters-included:not(:empty),
@@ -158,22 +139,26 @@ tg-filter {
 .filters-included {
     background: rgba(147, 196, 93, .1);
     margin-bottom: .5rem;
-
     .filters-title {
-        @include font-size(small);
         color: $color-solid-green;
-        margin-bottom: .5rem;
     }
 }
 
 .filters-excluded {
     background: rgba(228, 64, 87, .06);
+    .filters-title {
+        color: $color-link-red;
+    }
 }
 
 .filters-applied {
     border-bottom: 1px solid $color-gray400;
     padding-bottom: .5rem;
 
+    .filters-title {
+        @include font-size(small);
+        margin-bottom: .5rem;
+    }
     .single-applied-filter {
         @include font-size(small);
         align-items: center;
@@ -182,7 +167,7 @@ tg-filter {
         cursor: pointer;
         display: inline-flex;
         margin: 0 .5rem .5rem 0;
-        padding: .5rem;
+        padding: .25rem;
 
         .name {
             @include ellipsis(100%);

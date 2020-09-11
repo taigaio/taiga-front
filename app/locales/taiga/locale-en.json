@@ -226,7 +226,7 @@
         "FILTERS": {
             "INPUT_PLACEHOLDER": "Subject or reference",
             "TITLE_ACTION_FILTER_BUTTON": "search",
-            "TITLE": "custom filters",
+            "TITLE": "Custom filters",
             "TITLE_ACTION_SEARCH": "Search",
             "ACTION_ADD": "Add",
             "ACTION_SAVE_CUSTOM_FILTER": "save filter",
@@ -235,7 +235,9 @@
             "TITLE_ADVANCED_FILTER": "Advanced",
             "ADVANCED_FILTERS": {
                 "INCLUDE": "Include",
-                "EXCLUDE": "Exclude"
+                "EXCLUDE": "Exclude",
+                "INCLUDED": "Filtered by:",
+                "EXCLUDED": "Excluded:"
             },
             "CATEGORIES": {
                 "TYPE": "Type",
