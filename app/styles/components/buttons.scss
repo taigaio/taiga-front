@@ -371,7 +371,7 @@
     padding: 9px 1rem;
     text-transform: none;
 
-    span {
+    .text {
         color: currentColor;
     }
 
@@ -383,5 +383,18 @@
     &.active {
         background: $color-gray400;
         color: $color-link-primary;
+    }
+
+    .selected-filters {
+        @include font-size(xsmall);
+        align-items: center;
+        background-color: $color-solid-red;
+        border-radius: 50%;
+        color: $color-white;
+        display: flex;
+        height: 1rem;
+        justify-content: center;
+        margin-inline-start: .25rem;
+        width: 1rem;
     }
 }

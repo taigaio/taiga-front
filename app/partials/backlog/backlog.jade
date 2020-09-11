@@ -55,17 +55,19 @@ div.wrapper(tg-backlog, ng-controller="BacklogController as ctrl",
                                 id="show-filters-button"
                             )
                                 tg-svg(svg-icon="icon-filters")
-                                span(translate="BACKLOG.FILTERS.SHOW")
+                                span.text(translate="BACKLOG.FILTERS.SHOW")
+                                span.selected-filters(ng-if="ctrl.selectedFilters.length") {{ctrl.selectedFilters.length}}
 
                             button.filter-button.active.e2e-open-filter.ng-animate-disabled(
                                 ng-if="ctrl.activeFilters"
                                 id="show-filters-button"
                             )
                                 tg-svg(svg-icon="icon-filters")
-                                span(translate="BACKLOG.FILTERS.HIDE")
+                                span.text(translate="BACKLOG.FILTERS.HIDE")
+                                span.selected-filters(ng-if="ctrl.selectedFilters.length") {{ctrl.selectedFilters.length}}
+
                             button.filter-button(
                                 ng-if="userstories.length"
-                                title="{{'BACKLOG.TAGS.TOGGLE' | translate}}"
                                 id="show-tags"
                                 translate="BACKLOG.TAGS.SHOW"
                             )
