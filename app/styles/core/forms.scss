@@ -13,14 +13,15 @@ input[type='email'],
 input[type='date'],
 select,
 textarea {
-    background: $grey-02;
-    border: 1px solid $gray-light;
-    color: $grayer;
+    background: $color-white;
+    border: 2px solid $color-gray400;
+    border-radius: 3px;
+    color: $color-black600;
     margin: 0;
-    padding: 8px;
+    padding: .5rem 1rem;
     width: 100%;
     @include placeholder {
-        color: $gray-lighter;
+        color: rgba($color-black600, .5);
     }
     &.checksley-error {
         border: 1px solid $red;
@@ -31,9 +32,6 @@ button,
 button:active,
 button:focus {
     border: 0;
-    outline: 0;
-    outline-style: none;
-    outline-width: 0;
 }
 textarea {
     min-height: 10rem;

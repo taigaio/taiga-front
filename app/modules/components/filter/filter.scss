@@ -1,9 +1,3 @@
-// custom colors
-/* stylelint-disable color-no-hex */
-$exclude-background: #fcc;
-$radio-mark-background: #d6d5d5;
-/* stylelint-enable color-no-hex */
-
 tg-filter {
     @include sidebar-medium-width-hidden-absolute();
     background: $grey-02;
@@ -12,227 +6,282 @@ tg-filter {
     min-height: 100%;
     overflow-y: auto;
     padding: 1rem 0;
-    z-index: 1;
-    .filters-applied {
-        padding: 0 1rem 1rem;
-        .single-filter {
-            &.exclude {
-                background: $exclude-background;
-                text-decoration: line-through;
-            }
-            &:hover {
-                color: currentColor;
-                cursor: default;
-                transition: none;
-            }
-        }
+}
+
+
+.custom-filters {
+    border-bottom: 1px solid $color-gray400;
+    margin-bottom: .5rem;
+    padding-bottom: .75rem;
+}
+
+
+
+.custom-filters-header {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+
+    .custom-filters-title {
+        @include font-size(small);
     }
-    .filters-advanced {
-        @include font-type(light);
-        @include font-size(xsmall);
-        font-size: 10pt;
-        font-weight: 600;
-        padding: 0 1rem 1rem;
 
-        .collapsed.exclude {
-            color: $red-light;
-        }
+    .name {
+        padding-right: .25rem;
 
-        a .icon {
-            margin-left: 5px;
-            vertical-align: bottom;
-            width: .5rem;
-        }
-
-        .filters-advanced-form {
-            padding: .75rem 0;
-            text-align: center;
-        }
-
-        .custom-radio {
-            display: inline;
-
-            input[type='radio'] {
-                display: none;
-            }
-        }
-
-        .filter-mode {
-            cursor: pointer;
-
-            &.include {
-                margin-right: .75rem;
-            }
-            &.active .radio-mark-inner {
-                opacity: 1;
-            }
-            &.active.include {
-                color: $primary;
-            }
-            &.active.exclude {
-                color: $red-light;
-            }
-        }
-
-        .radio-mark,
-        .radio-mark-inner {
-            border-radius: 50%;
-            display: inline-block;
-        }
-
-        .radio-mark {
-            background: $radio-mark-background;
-            height: 22px;
-            margin-right: 3px;
-            text-align: center;
-            width: 22px;
-        }
-
-        .radio-mark-inner {
-            height: 14px;
-            margin-top: 4px;
-            opacity: 0;
-            width: 14px;
-
-            &.include {
-                background: $primary;
-            }
-
-            &.exclude {
-                background: $red-light;
-            }
+        &::first-letter {
+            text-transform: uppercase;
         }
     }
 
-    h1,
-    form {
-        padding: 0 1rem;
+    .number {
+        color: $color-gray400;
     }
-    input {
-        background: $grayer;
-        color: $white;
-        padding-right: 2rem;
-        @include placeholder {
-            color: $gray-light;
-        }
-    }
-    .search-action {
-        position: absolute;
-        right: .7rem;
-        top: .7rem;
-    }
-    &.open {
-        box-shadow: 1px 1px 5px rgba($gray, .2);
+
+    .add-custom-filter {
+        @include font-size(small);
+        background: none;
+        color: $color-link-primary;
+        text-transform: lowercase;
     }
 }
+
+.custom-filters-add-form {
+    display: flex;
+    flex-direction: column;
+    padding-top: .25rem;
+
+    .add-filter-input {
+        margin-bottom: .25rem;
+    }
+
+    .button-custom-filters {
+        align-self: flex-end;
+    }
+}
+
 
 .filter-list {
     overflow-y: auto;
-    padding: 1rem;
-}
-
-.filters-step-cat {
-    margin-top: 2rem;
-}
-
-.filters-cats {
-    ul {
-        border-top: 1px solid $gray-light;
-        margin-bottom: 0;
-    }
-    li {
-        border-bottom: 1px solid $gray-light;
-        text-transform: uppercase;
-        &.selected {
-            border-bottom: 0;
-        }
-        .filter-list {
-            min-height: 60px;
-        }
-    }
-    .custom-filters {
-        .title {
-            color: $primary;
-        }
-    }
-    .filters-cat-single {
-        align-items: center;
-        color: $grayer;
-        display: flex;
-        justify-content: space-between;
-        padding: .5rem .5rem .5rem 1.5rem;
-        transition: color .2s ease-in;
-        &:hover,
-        &.selected {
-            background-color: $grey-10;
-            color: $grayer;
-            transition: background-color .2s ease-in;
-            .icon {
-                opacity: 1;
-                transition: opacity .2s ease-in;
-            }
-        }
-    }
-    .icon-arrow-down {
-        fill: currentColor;
-        float: right;
-        height: .9rem;
-        opacity: 0;
-        transition: opacity .2s ease-in;
-        width: .9rem;
-    }
+    padding: .5rem 0;
 }
 
 .single-filter {
-    @include font-type(text);
-    @include clearfix;
+    @include font-size(small);
     align-items: center;
-    background: $grey-10;
+    background: $color-gray100;
+    border: 0;
+    border-left: 5px solid transparent;
+    color: $color-black900;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
     margin-bottom: .5rem;
-    opacity: .5;
-    padding-right: .5rem;
     position: relative;
-    &.selected,
-    &.active {
-        color: $grayer;
-        opacity: 1;
-        transition: opacity .2s linear;
+    width: 100%;
+    &:active,
+    &:focus {
+        border: 0;
+        border-left: 5px solid transparent;
     }
-    .name,
-    .number {
-        padding: 8px 10px;
+    &.single-filter-type-tag {
+        background: $color-link-tertiary;
+        border-radius: 4px;
+        color: $color-white;
     }
     .name {
         @include ellipsis(100%);
-        border-color: transparent;
-        border-style: solid;
-        border-width: 0 0 0 3px;
-        display: block;
-        width: 100%;
-        img {
-            vertical-align: middle;
-        }
+        flex: 1;
+        padding: .5rem;
+        text-align: left;
     }
     .number {
-        background: $grey-20;
-        position: absolute;
-        right: 0;
-        top: 0;
+        background: $color-gray200;
+        border-radius: 2px;
+        color: $color-black900;
+        padding: .2px 4px;
     }
-    .remove-filter {
-        cursor: pointer;
-        display: block;
-        svg {
-            fill: $gray;
-            transition: fill .2s linear;
+    &.single-filter-type-custom {
+        @include font-size(small);
+        background: none;
+        margin-top: .5rem;
+
+        .name {
+            color: $color-link-primary;
+            padding: .25rem;
         }
-        &:hover {
+
+        .remove-filter {
+            background: none;
+            cursor: pointer;
+            opacity: 0;
             svg {
-                fill: $red;
+                fill: $color-link-primary;
+                height: 14px;
+                width: 14px;
             }
         }
+        &:hover {
+            background: $color-gray200;
+            .remove-filter {
+                opacity: 1;
+                transition: opacity .1s linear;
+            }
+        }
+    }
+}
+
+.filters-included:not(:empty),
+.filters-excluded:not(:empty) {
+    padding: .5rem;
+}
+
+.filters-included {
+    background: rgba(147, 196, 93, .1);
+    margin-bottom: .5rem;
+    .filters-title {
+        color: $color-solid-green;
+    }
+}
+
+.filters-excluded {
+    background: rgba(228, 64, 87, .06);
+    .filters-title {
+        color: $color-solid-red;
+    }
+}
+
+.filters-applied {
+    border-bottom: 1px solid $color-gray400;
+    padding-bottom: .5rem;
+
+    .filters-title {
+        @include font-size(small);
+        margin-bottom: .5rem;
+    }
+    .single-applied-filter {
+        @include font-size(small);
+        align-items: center;
+        background: $color-white;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, .25);
+        cursor: pointer;
+        display: inline-flex;
+        margin: 0 .5rem .5rem 0;
+        padding: .25rem;
+
+        .name {
+            @include ellipsis(100%);
+            margin-right: .5rem;
+        }
+
+        .remove-filter {
+            background: none;
+            cursor: pointer;
+            display: block;
+            padding: 0;
+
+            svg {
+                fill: $color-link-tertiary;
+                height: 12px;
+                width: 7px;
+            }
+        }
+    }
+}
+
+.filters-advanced {
+    @include font-size(small);
+    padding: 1rem .5rem;
+
+    .filters-advanced-form {
+        align-items: center;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .custom-radio {
+        display: inline;
+
+        input[type='radio'] {
+            display: none;
+        }
+    }
+
+    .filter-mode {
+        align-items: center;
+        color: $color-black900;
+        cursor: pointer;
+        display: flex;
+
+        &.include {
+            margin-right: .75rem;
+        }
+        &.active .radio-mark-inner {
+            opacity: 1;
+        }
+    }
+
+    .radio-mark,
+    .radio-mark-inner {
+        border-radius: 50%;
+        display: inline-block;
+    }
+
+    .radio-mark {
+        align-items: center;
+        border: 2px solid $color-gray400;
+        display: flex;
+        height: 16px;
+        justify-content: center;
+        margin-right: .5rem;
+        width: 16px;
+    }
+
+    .radio-mark-inner {
+        background: $color-link-primary;
+        height: 8px;
+        opacity: 0;
+        width: 8px;
+    }
+}
+
+.filters-cats {
+    ul {
+        margin-bottom: 0;
+    }
+    li {
+        .filter-list {
+            min-height: 60px;
+        }
+        &:not(.active):last-child {
+            border-bottom: 1px solid $color-gray300;
+        }
+    }
+}
+
+.filters-cat-single {
+    @include font-size(small);
+    align-items: center;
+    background: none;
+    border: 1px solid $color-gray300;
+    border-bottom: none;
+    color: $color-link-tertiary;
+    display: flex;
+    justify-content: space-between;
+    padding: .5rem 1rem;
+    width: 100%;
+    &:focus {
+        border: 1px solid $color-gray300;
+        border-bottom: none;
+    }
+    &.selected {
+        @include font-type(bold);
+        background-color: $color-gray200;
+    }
+    .icon {
+        fill: $color-link-primary;
+        float: right;
+        height: 8px;
+        width: 8px;
     }
 }

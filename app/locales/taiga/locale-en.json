@@ -225,15 +225,18 @@
         "FILTERS": {
             "INPUT_PLACEHOLDER": "Subject or reference",
             "TITLE_ACTION_FILTER_BUTTON": "search",
-            "TITLE": "Filters",
+            "TITLE": "Custom filters",
             "TITLE_ACTION_SEARCH": "Search",
-            "ACTION_SAVE_CUSTOM_FILTER": "save as custom filter",
+            "ACTION_ADD": "Add",
+            "ACTION_SAVE_CUSTOM_FILTER": "save filter",
             "PLACEHOLDER_FILTER_NAME": "Write the filter name and press enter",
             "APPLIED_FILTERS_NUM": "filters applied",
             "TITLE_ADVANCED_FILTER": "Advanced",
             "ADVANCED_FILTERS": {
                 "INCLUDE": "Include",
-                "EXCLUDE": "Exclude"
+                "EXCLUDE": "Exclude",
+                "INCLUDED": "Filtered by:",
+                "EXCLUDED": "Excluded:"
             },
             "CATEGORIES": {
                 "TYPE": "Type",
@@ -1245,7 +1248,7 @@
         "LINK_TASKBOARD": "Taskboard",
         "TITLE_LINK_TASKBOARD": "Go to the taskboard",
         "TOTAL_POINTS": "total points",
-        "ADD": "+ Add a new user story",
+        "ADD": "user story",
         "ADD_BULK": "Add some new user stories in bulk",
         "PROMOTED_FROM_ISSUE": "This user story has been promoted from issue:",
         "PROMOTED_FROM_TASK": "This user story has been promoted from task:",
@@ -1355,7 +1358,7 @@
         },
         "TAGS": {
             "TOGGLE": "Toggle tags visibility",
-            "SHOW": "Show tags",
+            "SHOW": "tags",
             "HIDE": "Hide tags"
         },
         "FORECASTING": {
