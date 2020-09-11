@@ -122,6 +122,11 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
             @scope.taskId = task.id
             @scope.commentModel = task
 
+            window.legacyChannel.next({
+                type: 'SET_DETAIL_OBJ',
+                value: task._attrs
+            })
+
             @modelTransform.setObject(@scope, 'task')
 
             if @scope.task.neighbors.previous?.ref?

@@ -172,6 +172,11 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
             @scope.usId = us.id
             @scope.commentModel = us
 
+            window.legacyChannel.next({
+                type: 'SET_DETAIL_OBJ',
+                value: us._attrs
+            })
+
             @modelTransform.setObject(@scope, 'us')
 
             return us
