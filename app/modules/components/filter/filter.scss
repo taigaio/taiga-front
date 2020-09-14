@@ -168,6 +168,7 @@ tg-filter {
         cursor: pointer;
         display: inline-flex;
         margin: 0 .5rem .5rem 0;
+        max-width: 100%;
         padding: .25rem;
 
         .name {
@@ -185,6 +186,12 @@ tg-filter {
                 fill: $color-link-tertiary;
                 height: 12px;
                 width: 7px;
+            }
+
+            &:hover {
+                svg {
+                    fill: $color-solid-red;
+                }
             }
         }
     }
@@ -282,7 +289,7 @@ tg-filter {
     .icon {
         fill: $color-link-primary;
         float: right;
-        height: 8px;
-        width: 8px;
+        height: 1rem;
+        width: 1rem;
     }
 }

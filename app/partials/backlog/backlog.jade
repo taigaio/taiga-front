@@ -41,21 +41,6 @@ div.wrapper(tg-backlog, ng-controller="BacklogController as ctrl",
                             tg-svg(svg-icon="icon-filters")
                             span.text(translate="BACKLOG.FILTERS.TITLE")
                             span.selected-filters(ng-if="ctrl.selectedFilters.length") {{ctrl.selectedFilters.length}}
-                        //- button.filter-button.e2e-open-filter.ng-animate-disabled(
-                        //-     ng-if="!ctrl.activeFilters"
-                        //-     id="show-filters-button"
-                        //- )
-                        //-     tg-svg(svg-icon="icon-filters")
-                        //-     span.text(translate="BACKLOG.FILTERS.SHOW")
-                        //-     span.selected-filters(ng-if="ctrl.selectedFilters.length") {{ctrl.selectedFilters.length}}
-
-                        //- button.filter-button.active.e2e-open-filter.ng-animate-disabled(
-                        //-     ng-if="ctrl.activeFilters"
-                        //-     id="show-filters-button"
-                        //- )
-                        //-     tg-svg(svg-icon="icon-filters")
-                        //-     span.text(translate="BACKLOG.FILTERS.HIDE")
-                        //-     span.selected-filters(ng-if="ctrl.selectedFilters.length") {{ctrl.selectedFilters.length}}
 
                         button.filter-button(
                             ng-if="userstories.length"

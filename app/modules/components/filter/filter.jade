@@ -42,11 +42,11 @@
                     ng-repeat="it in vm.includedFilters | orderBy:'-mode' track by it.key"
                     class="{{it.mode}}"
                 )
-                    span.name(
+                    .name(
                         ng-if="it.dataType === 'tags'"
                         ng-bind-html="it.name | emojify"
                     )
-                    span.name(
+                    .name(
                         ng-if="it.dataType !== 'tags'"
                     ) {{it.name}}
 
@@ -62,11 +62,11 @@
                     ng-repeat="it in vm.excludedFilters | orderBy:'-mode' track by it.key"
                     class="{{it.mode}}"
                 )
-                    span.name(
+                    .name(
                         ng-if="it.dataType === 'tags'"
                         ng-bind-html="it.name | emojify"
                     )
-                    span.name(
+                    .name(
                         ng-if="it.dataType !== 'tags'"
                     ) {{it.name}}
 
