@@ -20,10 +20,10 @@
 FilterDirective = () ->
     link = (scope, el, attrs, ctrl) ->
         unwatch = scope.$watch "vm.defaultQ", (q) ->
-            if q && !scope.vm.filtersForm.$dirty
+            if q && scope.vm.filtersForm && !scope.vm.filtersForm.$dirty
                 scope.vm.q = q
                 unwatch()
-            else if scope.vm.filtersForm.$dirty
+            else if scope.vm.filtersForm && scope.vm.filtersForm.$dirty
                 unwatch()
 
         attrs.$observe "open", (open) ->
