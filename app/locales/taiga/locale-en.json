@@ -1390,8 +1390,7 @@
         },
         "FILTERS": {
             "TOGGLE": "Toggle filters visibility",
-            "HIDE": "Hide Filters",
-            "SHOW": "Show Filters"
+            "TITLE": "Filters"
         },
         "SPRINTS": {
             "TITLE": "SPRINTS",

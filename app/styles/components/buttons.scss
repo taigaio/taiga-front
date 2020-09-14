@@ -319,7 +319,7 @@
 
 .button-primary {
     @extend %button;
-    @include font-type(bold);
+    @include font-type(semibold);
     background: $color-solid-primary;
     color: $color-black900;
 
