@@ -334,7 +334,7 @@ class UsFiltersMixin
                     totalTaggedElements: tagsWithAtLeastOneElement.length
                 },
                 {
-                    title: @translate.instant("COMMON.FILTERS.CATEGORIES.ASSIGNED_USERS"),
+                    title: @translate.instant("COMMON.FILTERS.CATEGORIES.ASSIGNED_TO"),
                     dataType: "assigned_users",
                     content: dataCollection.assigned_users
                 },
