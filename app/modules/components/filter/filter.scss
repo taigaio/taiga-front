@@ -102,7 +102,7 @@ tg-filter {
     .name {
         @include ellipsis(100%);
         flex: 1;
-        padding: .35rem;
+        padding: .4rem;
         text-align: left;
     }
     .number {
