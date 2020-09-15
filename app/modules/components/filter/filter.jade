@@ -126,25 +126,12 @@
                     ng-if="vm.isOpen(filter.dataType)",
                     tg-filter-slide-down
                 )
-                    button.single-filter.single-filter-type-general(
+                    button.single-filter(
                         ng-repeat="it in filter.content"
-                        ng-if="filter.dataType !== 'tags' && !vm.isFilterSelected(filter, it) && !(it.count == 0 && filter.hideEmpty)"
+                        ng-class="{'single-filter-type-general': filter.dataType !== 'tags', 'single-filter-type-tag': filter.dataType === 'tags'}"
+                        ng-if="!vm.isFilterSelected(filter, it) && !(it.count == 0 && filter.hideEmpty)"
                         ng-click="vm.selectFilter(filter, it)"
-                        ng-attr-style="{{it.color ? 'border-color: ' + it.color: ''}}"
+                        ng-style="{'border-color': (it.color && filter.dataType !== 'tags') ? it.color : 'transparent','background':  (it.color && filter.dataType === 'tags') ? it.color: null}"
                     )
                         span.name {{it.name}}
                         span.number.e2e-filter-count(ng-if="it.count > 0") {{it.count}}
-
-                    button.single-filter.single-filter-type-tag(
-                        ng-repeat="it in filter.content"
-                        ng-if="filter.dataType === 'tags' && !vm.isFilterSelected(filter, it) && !(it.count == 0 && filter.hideEmpty)"
-                        ng-click="vm.selectFilter(filter, it)"
-                        ng-attr-style="{{it.color ? 'background: ' + it.color: ''}}"
-                    )
-                        span.name(
-                            ng-if="filter.dataType === 'tags'",
-                            ng-bind-html="it.name | emojify"
-                        )
-                        span.number.e2e-filter-count(ng-if="it.count > 0") {{it.count}}
-
-
