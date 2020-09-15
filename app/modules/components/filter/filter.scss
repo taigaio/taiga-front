@@ -11,6 +11,7 @@ tg-filter {
 
 .custom-filters {
     border-bottom: 1px solid $color-gray400;
+    color: $color-black900;
     margin-bottom: .5rem;
     padding-bottom: .75rem;
 }
@@ -24,6 +25,7 @@ tg-filter {
 
     .custom-filters-title {
         @include font-size(small);
+        @include font-type(semibold);
     }
 
     .name {
@@ -35,24 +37,30 @@ tg-filter {
     }
 
     .number {
-        color: $color-gray400;
+        color: $color-link-tertiary;
     }
 
     .add-custom-filter {
         @include font-size(small);
+        @include font-type(semibold);
         background: none;
         color: $color-link-primary;
+        padding: 0;
         text-transform: lowercase;
+
+        &[disabled] {
+            color: rgba($color-link-primary, .5);
+        }
     }
 }
 
 .custom-filters-add-form {
     display: flex;
     flex-direction: column;
-    padding-top: .25rem;
+    padding-top: 1rem;
 
     .add-filter-input {
-        margin-bottom: .25rem;
+        margin-bottom: .5rem;
     }
 
     .button-custom-filters {
@@ -77,6 +85,8 @@ tg-filter {
     display: flex;
     justify-content: space-between;
     margin-bottom: .5rem;
+    padding: 0;
+    padding-right: .25rem;
     position: relative;
     width: 100%;
     &:active,
@@ -92,7 +102,7 @@ tg-filter {
     .name {
         @include ellipsis(100%);
         flex: 1;
-        padding: .5rem;
+        padding: .4rem;
         text-align: left;
     }
     .number {
@@ -117,8 +127,8 @@ tg-filter {
             opacity: 0;
             svg {
                 fill: $color-link-primary;
-                height: 14px;
-                width: 14px;
+                height: 1rem;
+                width: 1rem;
             }
         }
         &:hover {
@@ -134,6 +144,10 @@ tg-filter {
 .filters-included:not(:empty),
 .filters-excluded:not(:empty) {
     padding: .5rem;
+}
+
+.filters-title {
+    @include font-type(semibold);
 }
 
 .filters-included {
@@ -153,6 +167,7 @@ tg-filter {
 
 .filters-applied {
     border-bottom: 1px solid $color-gray400;
+    margin-bottom: .5rem;
     padding-bottom: .5rem;
 
     .filters-title {
@@ -167,6 +182,7 @@ tg-filter {
         cursor: pointer;
         display: inline-flex;
         margin: 0 .5rem .5rem 0;
+        max-width: 100%;
         padding: .25rem;
 
         .name {
@@ -185,13 +201,20 @@ tg-filter {
                 height: 12px;
                 width: 7px;
             }
+
+            &:hover {
+                svg {
+                    fill: $color-solid-red;
+                }
+            }
         }
     }
 }
 
 .filters-advanced {
     @include font-size(small);
-    padding: 1rem .5rem;
+    padding: .5rem;
+    padding-bottom: 1rem;
 
     .filters-advanced-form {
         align-items: center;
@@ -260,7 +283,7 @@ tg-filter {
 }
 
 .filters-cat-single {
-    @include font-size(small);
+    @include font-size(xsmall);
     align-items: center;
     background: none;
     border: 1px solid $color-gray300;
@@ -281,7 +304,7 @@ tg-filter {
     .icon {
         fill: $color-link-primary;
         float: right;
-        height: 8px;
-        width: 8px;
+        height: 1rem;
+        width: 1rem;
     }
 }

@@ -1,4 +1,5 @@
 .backlog-manager {
+    align-items: flex-start;
     display: flex;
 }
 
@@ -16,6 +17,9 @@
         position: relative;
         transform: translate(0);
         width: 210px;
+        @include ultrawide {
+            width: 285px;
+        }
     }
 }
 

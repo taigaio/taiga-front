@@ -1,75 +1,52 @@
 .button,
 %button {
-    @include font-type(text);
-    @include font-size(semibold);
-    align-content: center;
+    @include font-type(semibold);
+    @include font-size(small);
     align-items: center;
     background: transparent;
     border: 0;
     border-radius: 4px;
-    color: $white;
+    color: $color-black600;
     cursor: pointer;
     display: inline-flex;
     justify-content: center;
-    line-height: 21px;
-    min-height: 37px;
-    padding: 9px 2rem;
-    text-align: center;
+    padding: .5rem 1.5rem;
     text-transform: uppercase;
     vertical-align: middle;
     white-space: normal;
-    &:hover,
-    &.active {
-        color: $white;
-    }
-    &:visited,
-    &:visited:hover {
-        color: $white;
-    }
     &.loading {
         span {
             animation: loading .5s linear;
         }
     }
-    span {
-        color: $white;
-    }
     .icon {
-        color: $white;
-        height: .75rem;
-        margin-right: .5rem;
-        width: .75rem;
+        fill: currentColor;
+        height: 1rem;
+        margin-right: .25rem;
+        width: 1rem;
     }
     &.disabled,
     &[disabled] {
-        background-color: $grey-10;
+        background-color: $color-gray400;
         box-shadow: none;
-        color: $grey-30;
+        color: rgba($color-black900, .5);
         cursor: not-allowed;
-        opacity: .65;
         &:hover {
-            background-color: $grey-10;
-            color: $grey-30;
+            background-color: $color-gray400;
+            color: currentColor;
         }
     }
-    &.button-small {
-        border-radius: 0;
-        padding: 0 .5rem;
-        width: 38px;
-    }
     &.button-large {
-        @include font-size(large);
-        display: flex;
-        flex-direction: column;
-        min-height: 50px;
-        padding: 1rem 4rem;
-        width: 100%;
+        padding: .75rem 4rem;
     }
     &.button-block {
-        width: 100%;
+        display: flex;
+    }
+    span {
+        color: currentColor;
     }
     svg {
-        fill: $white;
+        fill: currentColor;
         stroke: none;
     }
 }
@@ -319,48 +296,26 @@
 
 .button-primary {
     @extend %button;
-    @include font-type(bold);
     background: $color-solid-primary;
-    color: $color-black900;
 
-    span {
-        color: $color-black900;
-    }
-
-    .icon {
-        fill: currentColor;
-    }
-
-    &:hover,
-    &.active {
-        color: $white;
-    }
-
-    &:hover svg,
-    &.active svg {
-        fill: $white;
+    &:hover {
+        background: $color-link-primary;
+        color: $color-white;
     }
 }
 
 .button-secondary {
     @extend %button;
-    background: $color-link-primary;
-    color: $color-white;
+    background: $color-gray400;
+    color: $color-black600;
 }
 
-.icon-button {
+.icon-button-primary {
     @extend %button;
     background: $color-solid-primary;
-    color: $color-black900;
 
-    &:hover,
-    &.active {
-        color: $white;
-    }
-
-    &:hover svg,
-    &.active svg {
-        color: $white;
+    span {
+        color: $color-black900;
     }
 }
 

@@ -46,3 +46,9 @@ $ultrawide: 1960px;
         @content;
     }
 }
+
+@mixin ultrawide {
+    @media screen and (min-width: $ultrawide) {
+        @content;
+    }
+}

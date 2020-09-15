@@ -20,7 +20,6 @@
 taiga = @.taiga
 
 mixOf = @.taiga.mixOf
-toggleText = @.taiga.toggleText
 scopeDefer = @.taiga.scopeDefer
 bindOnce = @.taiga.bindOnce
 groupBy = @.taiga.groupBy
@@ -783,28 +782,19 @@ BacklogDirective = ($repo, $rootscope, $translate, $rs) ->
             elm.text(text)
 
     openFilterInit = ($scope, $el, $ctrl) ->
-        sidebar = $el.find("sidebar.backlog-filter")
+        sidebar = $el.find(".backlog-filter")
 
         sidebar.addClass("active")
 
         $ctrl.activeFilters = true
 
     showHideFilter = ($scope, $el, $ctrl) ->
-        sidebar = $el.find("sidebar.backlog-filter")
-        sidebar.one "transitionend", () ->
-            timeout 150, ->
-                $rootscope.$broadcast("resize")
-                $('.burndown').css("visibility", "visible")
+        filter = $el.find(".backlog-filter")
 
         target = angular.element("#show-filters-button")
-        $('.burndown').css("visibility", "hidden")
-        sidebar.toggleClass("active")
+
+        filter.toggleClass("active")
         target.toggleClass("active")
-
-        hideText = $translate.instant("BACKLOG.FILTERS.HIDE")
-        showText = $translate.instant("BACKLOG.FILTERS.SHOW")
-
-        toggleText(target, [hideText, showText])
 
         $ctrl.toggleActiveFilters()
 
