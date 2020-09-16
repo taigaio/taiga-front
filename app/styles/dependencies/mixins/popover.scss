@@ -13,9 +13,12 @@
 ) {
     @include font-type(light);
     @include font-size(small);
-    background: $blackish;
+    background: $white;
+    border: 1px solid $color-gray400;
+    border-radius: 4px;
     bottom: #{$bottom};
-    color: $white;
+    box-shadow: 4px 4px 8px rgba(46, 52, 64, .1);
+    color: $color-link-primary;
     display: none;
     left: #{$left};
     list-style-type: none;
@@ -30,18 +33,22 @@
     a {
         @include font-size(small);
         border-bottom: 1px solid $grayer;
-        color: $white;
+        color: $color-link-primary;
         display: block;
-        padding: 10px 2px;
+        padding: .3rem 0 .3rem .2rem;
         &:last-child {
             border: 0;
         }
         &:hover {
-            color: $primary-light;
+            color: $color-link-tertiary;
+            background-color: $color-gray200;
             transition: color .3s linear;
             &.point {
                 color: $white;
             }
+        }
+        &.active-popover {
+            color: $color-link-tertiary;
         }
     }
     &:after {
