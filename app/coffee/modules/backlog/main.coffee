@@ -845,6 +845,9 @@ UsRolePointsSelectorDirective = ($rootscope, $template, $compile, $translate) ->
     selectionTemplate = $template.get("backlog/us-role-points-popover.html", true)
 
     link = ($scope, $el, $attrs) ->
+        removePopupOpenState = () ->
+            $el.removeClass('popover-open')
+
         # Watchers
         bindOnce $scope, "project", (project) ->
             roles = _.filter(project.roles, "computable")
@@ -858,7 +861,7 @@ UsRolePointsSelectorDirective = ($rootscope, $template, $compile, $translate) ->
 
         $scope.$on "uspoints:select", (ctx, roleId, roleName) ->
             $el.find(".popover").popover().close()
-            $el.find(".header-points").html("#{roleName}/<span>Total</span>")
+            $el.find(".header-points").html("#{roleName}")
 
         $scope.$on "uspoints:clear-selection", (ctx, roleId) ->
             $el.find(".popover").popover().close()
@@ -873,17 +876,22 @@ UsRolePointsSelectorDirective = ($rootscope, $template, $compile, $translate) ->
             if target.is("span") or target.is("div")
                 event.stopPropagation()
 
-            $el.find(".popover").popover().open()
+            $el.addClass('popover-open')
+            $el.find(".popover").popover().open(() -> removePopupOpenState())
 
         $el.on "click", ".clear-selection", (event) ->
             event.preventDefault()
             event.stopPropagation()
             $rootscope.$broadcast("uspoints:clear-selection")
+            $el.find('.active-popover').removeClass('active-popover')
+            target.addClass('active-popover')
 
         $el.on "click", ".role", (event) ->
             event.preventDefault()
             event.stopPropagation()
             target = angular.element(event.currentTarget)
+            $el.find('.active-popover').removeClass('active-popover')
+            target.addClass('active-popover')
             rolScope = target.scope()
             $rootscope.$broadcast("uspoints:select", target.data("role-id"), target.text())
 

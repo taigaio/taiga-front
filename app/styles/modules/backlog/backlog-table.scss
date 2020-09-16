@@ -31,17 +31,34 @@
             flex-basis: 150px;
             flex-grow: 0;
             flex-shrink: 0;
+            text-align: right;
             white-space: nowrap;
         }
         .points {
-            flex-basis: 125px;
+            align-items: center;
+            display: flex;
             flex-grow: 0;
+            justify-content: flex-end;
             margin-left: 20px;
-            white-space: nowrap;
+            width: 125px;
+
+            tg-svg {
+                margin-left: .2rem;
+                width: 12px;
+            }
         }
     }
     .backlog-table-title .points {
         margin-right: -4px;
+
+        tg-svg {
+            width: 17px;
+        }
+
+        .icon {
+            @include svg-size(1.5rem);
+            margin-top: -1px;
+        }
     }
     .votes {
         flex-basis: 65px;
@@ -69,7 +86,6 @@
     .status,
     .points {
         position: relative;
-        text-align: right;
         .popover {
             a {
                 text-align: left;
@@ -80,9 +96,9 @@
             }
         }
         .icon {
-            @include svg-size(.75rem);
-            fill: currentColor;
-            margin-left: .2rem;
+            @include svg-size(1rem);
+            fill: $color-link-primary;
+            margin-top: .1rem;
         }
     }
     .pop-status {
@@ -94,7 +110,7 @@
         }
     }
     .pop-role {
-        @include popover(200px, 0, 65%, '', '');
+        @include popover(170px, 20px, '', '', -10px);
         a {
             &.active {
                 background: $primary-light;
@@ -132,19 +148,37 @@
 
 .backlog-table-header {
     .backlog-table-title {
-        @include font-type(text);
-        @include font-size(medium);
-        border-bottom: 2px solid $gray-light;
-        flex-wrap: nowrap;
         padding-right: 1rem;
+
+        span {
+            @include font-type(text);
+            @include font-size(xsmall);
+            @include font-type(semibold);
+            flex-wrap: nowrap;
+            text-transform: uppercase;
+        }
     }
     .points {
         cursor: pointer;
+
+        &.popover-open {
+            .header-points {
+                color: $color-black900;
+            }
+
+            .icon {
+                fill: $color-black900;
+            }
+        }
     }
     .header-points {
-        span {
-            color: $gray-light;
-        }
+        /* stylelint-disable property-no-vendor-prefix, value-no-vendor-prefix */
+        -webkit-box-orient: vertical;
+        color: $color-link-primary;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+        /* stylelint-enable property-no-vendor-prefix, value-no-vendor-prefix */
     }
 }
 
