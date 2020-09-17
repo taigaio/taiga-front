@@ -99,6 +99,20 @@ tg-filter {
         border-radius: 4px;
         color: $color-white;
     }
+    &.single-filter-type-user {
+        border-left: none;
+
+        .name {
+            padding-left: 0;
+        }
+    }
+    .user-pic {
+        border: 2px solid $color-white;
+        border-radius: 50%;
+        height: 30px; /* default */
+        margin-right: .5rem;
+        width: 30px;
+    }
     .name {
         @include ellipsis(100%);
         flex: 1;

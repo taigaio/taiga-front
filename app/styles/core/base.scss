@@ -7,6 +7,7 @@
 
 html {
     min-height: 100%;
+    outline: 1px dotted $color-link-primary;
     width: 100%;
 }
 body {
@@ -41,6 +42,12 @@ body {
 
 .centered {
     @include centered;
+}
+
+tg-svg {
+    align-items: center;
+    display: flex;
+    justify-content: center;
 }
 
 .wrapper {

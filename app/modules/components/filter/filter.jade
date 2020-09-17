@@ -39,8 +39,8 @@
                 tg-svg(svg-icon="icon-trash")
 
 .filters-step-cat
-    .filters-applied(ng-if="vm.includedFilters.length")
-        .filters-included
+    .filters-applied(ng-if="vm.includedFilters.length || vm.excludedFilters.length")
+        .filters-included(ng-if="vm.includedFilters.length")
             .filters-title(translate="COMMON.FILTERS.ADVANCED_FILTERS.INCLUDED")
             .filters-wrapper
                 .single-applied-filter.ng-animate-disabled(
@@ -128,10 +128,15 @@
                 )
                     button.single-filter(
                         ng-repeat="it in filter.content"
-                        ng-class="{'single-filter-type-general': filter.dataType !== 'tags', 'single-filter-type-tag': filter.dataType === 'tags'}"
+                        ng-class="{'single-filter-type-general': filter.dataType !== 'tags', 'single-filter-type-tag': filter.dataType === 'tags', 'single-filter-type-user': filter.dataType === 'assigned_users' || filter.dataType === 'owner'}"
                         ng-if="!vm.isFilterSelected(filter, it) && !(it.count == 0 && filter.hideEmpty)"
                         ng-click="vm.selectFilter(filter, it)"
                         ng-style="{'border-color': (it.color && filter.dataType !== 'tags') ? it.color : 'transparent','background':  (it.color && filter.dataType === 'tags') ? it.color: null}"
                     )
+                        img.user-pic(
+                            ng-if="filter.dataType === 'assigned_users' || filter.dataType === 'owner'"
+                            tg-avatar="it"
+                            alt=""
+                        )
                         span.name {{it.name}}
                         span.number.e2e-filter-count(ng-if="it.count > 0") {{it.count}}
