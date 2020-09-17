@@ -111,7 +111,7 @@ tg-filter {
         border-radius: 50%;
         height: 30px; /* default */
         margin-right: .5rem;
-        width: auto;
+        width: 30px;
     }
     .name {
         @include ellipsis(100%);
