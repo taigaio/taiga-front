@@ -25,8 +25,7 @@
             flex-shrink: 0;
         }
         .user-stories {
-            // overflow: hidden;
-            width: 100%;
+            flex: 1;
         }
         .status {
             flex-basis: 150px;
@@ -206,26 +205,25 @@
             transition: color .2s ease-in;
         }
     }
-    .user-story-name {
+    .user-story-main-data {
+        @include font-type(light);
         align-items: center;
         display: flex;
-        flex-wrap: nowrap;
-        a {
-            @include font-type(light);
-            display: inline-block;
-            flex: 1;
-        }
-        span {
-            line-height: 1.5;
-        }
+        flex-wrap: wrap;
+    }
+    .user-story-number {
+        color: $color-link-primary;
+        margin-right: .5rem;
+    }
+    .user-story-name {
+        color: $color-black600;
+        margin-right: 1rem;
     }
     .tags-block {
         display: none;
-        margin-bottom: .3rem;
+
         .tag {
-            @include font-size(small);
-            margin-right: .5rem;
-            padding: .2rem .5rem;
+            margin-bottom: 0;
         }
     }
     .blocked {
@@ -253,7 +251,7 @@
     }
     .us-settings {
         flex-shrink: 0;
-        margin-left: 2rem;
+        margin-left: auto;
         opacity: 0;
         svg {
             fill: $gray-light;

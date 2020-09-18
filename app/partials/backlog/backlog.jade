@@ -45,11 +45,23 @@ div.wrapper(tg-backlog, ng-controller="BacklogController as ctrl",
                             change="ctrl.changeQ(q)"
                         )
 
-                        button.filter-button(
-                            ng-if="userstories.length"
-                            id="show-tags"
-                            translate="BACKLOG.TAGS.SHOW"
-                        )
+                        .display-tags-button#show-tags
+
+                            .check.js-check(
+                                ng-if="userstories.length"
+                                ng-class="{'active': ctrl.showTags}"
+                            )
+                                input(
+                                    type="checkbox"
+                                    id="show-tags-input"
+                                    ng-checked="ctrl.showTags"
+                                    ng-model="ctrl.showTags"
+                                )
+                                div
+                            label(
+                                for="show-tags-input"
+                                translate="BACKLOG.TAGS.SHOW"
+                            )
 
                     .backlog-table-options-end
                         button.filter-button.velocity-forecasting-btn.ng-animate-disabled.e2e-velocity-forecasting(

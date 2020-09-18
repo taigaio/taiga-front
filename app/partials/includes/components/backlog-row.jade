@@ -11,34 +11,37 @@
           type="checkbox"
           name=""
         )
-    .votes(
-        ng-class="{'inactive': !us.total_voters, 'is-voted': us.is_voter}"
-        title="{{ 'COMMON.VOTE_BUTTON.COUNTER_TITLE'|translate:{total:us.total_voters||0}:'messageformat' }}"
-    )
+    //- .votes(
+    //-     ng-class="{'inactive': !us.total_voters, 'is-voted': us.is_voter}"
+    //-     title="{{ 'COMMON.VOTE_BUTTON.COUNTER_TITLE'|translate:{total:us.total_voters||0}:'messageformat' }}"
+    //- )
         tg-svg(svg-icon="icon-upvote")
         span {{ ::us.total_voters }}
     .user-stories
-        .tags-block(tg-colorize-backlog-tags="us.tags")
-        .user-story-name
-            a.clickable(
+        .user-story-main-data
+            .user-story-number(tg-bo-ref="us.ref")
+            a.user-story-name.clickable(
                 href=""
                 tg-nav="project-userstories-detail:project=project.slug,ref=us.ref"
                 tg-nav-get-params="{\"no-milestone\": 1}"
-                title="#{{ us.ref }} {{ us.subject }}"
             )
-                span(tg-bo-ref="us.ref")
                 span(ng-bind-html="us.subject | emojify")
-                tg-due-date(
-                    due-date="us.due_date"
-                    is-closed="us.is_closed"
-                    ng-if="us.due_date"
-                    obj-type="us"
-                )
-                tg-belong-to-epics(
-                    format="pill"
-                    ng-if="us.epics"
-                    epics="us.epics"
-                )
+            tg-due-date(
+                due-date="us.due_date"
+                is-closed="us.is_closed"
+                ng-if="us.due_date"
+                obj-type="us"
+            )
+            ng-container(ng-if="ctrl.showTags")
+                span.tag(
+                    ng-repeat="tag in us.tags"
+                    ng-style="{background: tag[1]}"
+                ) {{tag[0]}}
+            tg-belong-to-epics(
+                format="pill"
+                ng-if="us.epics"
+                epics="us.epics"
+            )
             .us-settings
                 a.e2e-edit.edit-story(
                     href=""

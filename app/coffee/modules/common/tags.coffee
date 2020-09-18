@@ -57,19 +57,16 @@ ColorizeTagsBacklogDirective = ($emojis) ->
     template = _.template("""
         <% _.each(tags, function(tag) { %>
             <% if (tag[1] !== null) { %>
-            <span class="tag"
-                  style="border-left: 5px solid <%- tag[1] %>"
-                  title="<%- tag[0] %>">
-                  <%= emojify(tag[0]) %>
-            </span>
+            <div class="tag" style="background: <%- tag[1] %>">
+                <%= emojify(tag[0]) %>
+            </div>
             <% } %>
         <% }) %>
         <% _.each(tags, function(tag) { %>
             <% if (tag[1] === null) { %>
-            <span class="tag"
-                  title="<%- tag[0] %>">
-                  <%= emojify(tag[0]) %>
-            </span>
+            <div class="tag">
+                <%= emojify(tag[0]) %>
+            </div>
             <% } %>
         <% }) %>
     """)

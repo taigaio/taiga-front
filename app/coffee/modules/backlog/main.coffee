@@ -80,7 +80,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         return if @.applyStoredFilters(@params.pslug, "backlog-filters")
 
         @scope.sectionName = @translate.instant("BACKLOG.SECTION_NAME")
-        @showTags = false
+        @showTags = true
         @activeFilters = false
         @scope.showGraphPlaceholder = null
         @displayVelocity = false
@@ -746,7 +746,7 @@ BacklogDirective = ($repo, $rootscope, $translate, $rs) ->
 
             $scope.$apply(_.partial(moveToCurrentSprint, ussToMove))
 
-        $el.on "click", "#show-tags", (event) ->
+        $el.on "change", "#show-tags > input", (event) ->
             event.preventDefault()
 
             $ctrl.toggleShowTags()
@@ -775,13 +775,13 @@ BacklogDirective = ($repo, $rootscope, $translate, $rs) ->
         if $ctrl.showTags
             elm.addClass("active")
 
-            text = $translate.instant("BACKLOG.TAGS.HIDE")
-            elm.text(text)
+            # text = $translate.instant("BACKLOG.TAGS.HIDE")
+            # elm.text(text)
         else
             elm.removeClass("active")
 
-            text = $translate.instant("BACKLOG.TAGS.SHOW")
-            elm.text(text)
+            # text = $translate.instant("BACKLOG.TAGS.SHOW")
+            # elm.text(text)
 
     openFilterInit = ($scope, $el, $ctrl) ->
         sidebar = $el.find(".backlog-filter")
