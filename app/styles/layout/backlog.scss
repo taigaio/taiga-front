@@ -57,6 +57,10 @@
 .backlog-table-options-start {
     display: flex;
 
+    tg-input-search {
+        width: 185px;
+    }
+
     > * {
         margin-right: .5rem;
     }

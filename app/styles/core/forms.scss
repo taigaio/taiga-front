@@ -19,10 +19,11 @@ textarea {
     border-radius: 3px;
     color: $color-black600;
     margin: 0;
-    padding: .5rem 1rem;
+    padding: .3rem 1rem .3rem .5rem;
     width: 100%;
 
     @include placeholder {
+        @include font-size(small);
         color: rgba($color-black600, .5);
     }
 
@@ -39,7 +40,7 @@ textarea {
 }
 input[type='search'] {
     box-sizing: border-box;
-    padding-right: 30px;
+    padding-right: 25px;
 }
 button,
 button:active,

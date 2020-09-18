@@ -223,7 +223,7 @@
             "CONFIRM_DELETE": "Remember that all values in this custom field will be deleted.\n Are you sure you want to continue?"
         },
         "FILTERS": {
-            "INPUT_PLACEHOLDER": "Subject or reference",
+            "INPUT_PLACEHOLDER": "subject or reference",
             "TITLE_ACTION_FILTER_BUTTON": "search",
             "TITLE": "Custom filters",
             "TITLE_ACTION_SEARCH": "Search",
