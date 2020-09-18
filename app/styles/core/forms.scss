@@ -74,3 +74,31 @@ textarea {
         width: .9rem;
     }
 }
+
+.custom-checkbox {
+    background-color: $white;
+    border: 2px solid $color-gray400;
+    border-radius: 3px;
+
+    input {
+        display: none;
+        &:not(:checked) + label::after {
+            opacity: 0;
+        }
+    }
+
+    label {
+        align-items: center;
+        display: flex;
+        height: 14px;
+        justify-content: center;
+        width: 14px;
+
+        &::after {
+            background-color: $color-link-primary;
+            content: '';
+            height: 10px;
+            width: 10px;
+        }
+    }
+}

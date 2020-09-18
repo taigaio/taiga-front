@@ -11,15 +11,30 @@
     .row {
         @include font-size(small);
         align-items: center;
-        border-bottom: 1px solid $gray-light;
         display: flex;
+        margin-bottom: .5rem;
         padding: .5rem 0 .5rem .5rem;
         text-align: left;
         width: 100%;
     }
     .backlog-table-title,
     .row {
+        .draggable-us-row {
+            flex-basis: 25px;
+            flex-grow: 0;
+            flex-shrink: 0;
+            height: 22px;
+
+            tg-svg {
+                justify-content: flex-start;
+                svg {
+                    @include svg-size(1.4rem);
+                }
+            }
+        }
         .input {
+            align-items: center;
+            display: flex;
             flex-basis: 25px;
             flex-grow: 0;
             flex-shrink: 0;
@@ -48,40 +63,29 @@
             }
         }
     }
-    .backlog-table-title .points {
-        margin-right: -4px;
+    .backlog-table-title {
+        .points {
+            margin-right: -4px;
 
-        tg-svg {
-            width: 17px;
-        }
+            tg-svg {
+                width: 17px;
+            }
 
-        .icon {
-            @include svg-size(1.5rem);
-            margin-top: -1px;
-        }
-    }
-    .votes {
-        flex-basis: 65px;
-        flex-grow: 0;
-        flex-shrink: 0;
-        text-align: center;
-        &.inactive {
-            color: $gray-light;
-            svg {
-                fill: $gray-light;
+            .icon {
+                @include svg-size(1.5rem);
+                margin-top: -1px;
             }
         }
-        &.is-voted {
-            color: $primary-light;
-            fill: $primary-light;
+        .us-header-options {
+            flex-basis: 50px;
+            flex-grow: 0;
+            flex-shrink: 0;
         }
-        svg {
-            fill: $gray;
-            height: .75rem;
-            margin-right: .25rem;
-            vertical-align: middle;
-            width: .75rem;
-        }
+    }
+    .draggable-us-column {
+        flex-basis: 25px;
+        flex-grow: 0;
+        flex-shrink: 0;
     }
     .status,
     .points {
@@ -148,8 +152,6 @@
 
 .backlog-table-header {
     .backlog-table-title {
-        padding-right: 1rem;
-
         span {
             @include font-type(text);
             @include font-size(xsmall);
@@ -182,20 +184,64 @@
     }
 }
 
+.backlog-table-body,
+.gu-mirror {
+    .tags-block {
+        margin-bottom: .3rem;
+        .tag {
+            @include font-size(small);
+            margin-right: .5rem;
+            padding: .2rem .5rem;
+        }
+    }
+}
+
+@keyframes new-us-blink {
+    0% {
+        background-color: $color-gray200;
+        border: 1px solid $color-solid-primary;
+    }
+    100% {
+        background-color: $color-gray100;
+        border: 1px solid $color-solid-primary;
+    }
+}
+
 .backlog-table-body {
+    .gu-transit.ui-multisortable-multiple {
+        background-color: $white;
+        border: 0;
+        border-top: 2px dashed $color-solid-primary;
+        height: 0;
+        opacity: 1;
+        padding: 0;
+
+        > * {
+            display: none;
+        }
+    }
+    .new {
+        animation: new-us-blink .5s linear 2;
+
+    }
+}
+
+.backlog-table-body,
+.multiple-drag-mirror {
     &.forecasted-stories {
         border: .5rem solid $mass-white;
         border-bottom: 0;
     }
     .row {
-        border-bottom: 1px solid darken($whitish, 4%);
+        background-color: $color-gray100;
+        border: 1px solid transparent;
+        border-radius: 3px;
         cursor: move;
         flex-wrap: nowrap;
         position: relative;
         &:hover:not(.blocked) {
             background-color: $primary-10;
-            .us-settings,
-            .icon-drag {
+            .us-settings {
                 opacity: 1;
             }
         }
@@ -220,7 +266,8 @@
         }
     }
     .gu-transit {
-        background: $whitish;
+        background: $color-gray100;
+        border: 1px solid $color-solid-primary;
     }
     .sortable-placeholder {
         background: $mass-white;
@@ -270,9 +317,6 @@
                 color: $white;
             }
         }
-        .votes {
-            color: $white;
-        }
         .icon,
         .icon:hover,
         .due-date-icon {
@@ -296,12 +340,6 @@
             }
         }
     }
-    .icon-drag {
-        cursor: move;
-        fill: $gray-light;
-        opacity: 0;
-        padding: .1rem;
-    }
     .readonly {
         cursor: auto;
         padding-right: 45px;
@@ -318,6 +356,19 @@
             @include loading-spinner;
             max-height: 3rem;
             max-width: 3rem;
+        }
+    }
+}
+
+.us-item-row {
+    .us-option {
+        flex-basis: 50px;
+        flex-grow: 0;
+        flex-shrink: 0;
+        text-align: center;
+
+        svg {
+            fill: $color-link-primary;
         }
     }
 }

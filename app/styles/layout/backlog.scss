@@ -91,24 +91,26 @@
 
 
 .multiple-drag-mirror.us-item-row {
-    background: $white;
+    align-items: center;
+    background: $color-gray200;
+    border: 1px solid $color-solid-primary;
     border-radius: 4px;
-    box-shadow: 2px 2px 5px $gray;
+    cursor: grabbing;
+    display: flex;
     min-height: calc(40px + 1rem);
     opacity: .9;
-    padding: 1rem;
-    .tags-block,
+    padding: .5rem 0 .5rem .5rem;
+    .tag {
+        margin: 0 .5rem 0 0;
+    }
+    .us-option,
     .votes,
     .us-settings,
     .status,
     .points,
-    .icon-drag,
-    input {
+    .drag-us,
+    .input {
         display: none;
-    }
-    &.is-checked,
-    &:hover {
-        background: $white;
     }
 }
 
