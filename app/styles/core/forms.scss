@@ -33,7 +33,7 @@ textarea {
 
     &:focus {
         border: 2px solid $color-link-primary;
-        outline-color: $color-link-primary;
+        outline: none;
         transition: border .2s linear;
     }
 }

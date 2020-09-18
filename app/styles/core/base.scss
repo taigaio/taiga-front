@@ -3,17 +3,21 @@
 
 * {
     box-sizing: border-box;
+
+    &:focus {
+        outline: 1px dotted $color-link-primary;
+    }
 }
 
 html {
     min-height: 100%;
-    outline: 1px dotted $color-link-primary;
     width: 100%;
 }
 body {
     @include font-type(text);
     line-height: 1.3;
     min-height: 100%;
+    outline: 1px dotted $color-link-primary;
     overflow-x: hidden;
     width: 100%;
     .master {
