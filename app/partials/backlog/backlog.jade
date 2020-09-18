@@ -113,9 +113,23 @@ div.wrapper(tg-backlog, ng-controller="BacklogController as ctrl",
                 section.backlog-table(ng-class="{'hidden': !userstories.length}")
                     include ../includes/modules/backlog-table
 
-                .empty-backlog.js-empty-backlog(ng-class="{'hidden': userstories === undefined || userstories.length}")
+                .empty-backlog.js-empty-backlog(ng-class="{'hidden': userstories === undefined || !!userstories.length || !ctrl.filterQ.length}")
                     p.no-match {{ 'BACKLOG.NO_MATCH' | translate:ctrl.translationData }}
                     p.no-match-help {{ 'BACKLOG.NO_MATCH_HELP' | translate }}
+
+                .empty-large.js-empty-backlog(ng-class="{'hidden': userstories === undefined || !!userstories.length || ctrl.filterQ.length}")
+                    img(
+                        src="/#{v}/images/empty/empty_mex.png"
+                        alt="{{'BACKLOG.EMPTY' | translate}}"
+                    )
+                    p.title(translate="BACKLOG.EMPTY")
+                    a(
+                        href=""
+                        title="{{'BACKLOG.CREATE_NEW_US' | translate}}"
+                        ng-click="ctrl.addNewUs('standard')"
+                        tg-check-permission="add_us"
+                        translate="BACKLOG.CREATE_NEW_US_EMPTY_HELP"
+                )
 
             .forecasting-add-sprint.e2e-velocity-forecasting-add(ng-if="ctrl.displayVelocity")
                 tg-svg(svg-icon="icon-add")

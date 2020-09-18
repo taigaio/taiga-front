@@ -1,6 +1,10 @@
 .backlog-manager {
     align-items: flex-start;
     display: flex;
+
+    .empty-large {
+        margin: 40px auto;
+    }
 }
 
 .backlog-table {
