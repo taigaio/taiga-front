@@ -100,8 +100,6 @@ tg-filter {
         color: $color-white;
     }
     &.single-filter-type-user {
-        border-left: none;
-
         .name {
             padding-left: 0;
         }
@@ -109,9 +107,9 @@ tg-filter {
     .user-pic {
         border: 2px solid $color-white;
         border-radius: 50%;
-        height: 30px; /* default */
+        height: 28px; /* default */
         margin-right: .5rem;
-        width: 30px;
+        width: 28px;
     }
     .name {
         @include ellipsis(100%);
@@ -305,15 +303,17 @@ tg-filter {
     color: $color-link-tertiary;
     display: flex;
     justify-content: space-between;
-    padding: .5rem 1rem;
+    padding: .5rem;
+    padding-left: 1rem;
     width: 100%;
     &:focus {
         border: 1px solid $color-gray300;
         border-bottom: none;
     }
     &.selected {
-        @include font-type(bold);
+        @include font-type(semibold);
         background-color: $color-gray200;
+        color: $color-black900;
     }
     .icon {
         fill: $color-link-primary;
