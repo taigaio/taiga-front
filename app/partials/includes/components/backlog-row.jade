@@ -1,22 +1,26 @@
 .row.us-item-row(
     ng-repeat="us in userstories | inArray:visibleUserStories:'ref'"
     tg-bind-scope
-    ng-class="{blocked: us.is_blocked}"
+    ng-class="{blocked: us.is_blocked, new: us.new}"
     tg-class-permission="{'readonly': '!modify_us'}"
     data-id="{{ us.id }}"
 )
+    .draggable-us-row(tg-check-permission="modify_us")
+        tg-svg(svg-icon="icon-draggable")
 
     .input(tg-check-permission="modify_us")
-        input(
-          type="checkbox"
-          name=""
-        )
-    //- .votes(
-    //-     ng-class="{'inactive': !us.total_voters, 'is-voted': us.is_voter}"
-    //-     title="{{ 'COMMON.VOTE_BUTTON.COUNTER_TITLE'|translate:{total:us.total_voters||0}:'messageformat' }}"
-    //- )
-        tg-svg(svg-icon="icon-upvote")
-        span {{ ::us.total_voters }}
+        .custom-checkbox
+            input(
+                type="checkbox"
+                name="filter-mode"
+                id="us-check-{{us.ref}}"
+                value="{{option}}"
+                ng-model="vm.filterMode"
+            )
+            label(
+                for="us-check-{{us.ref}}",
+                tabindex="0"
+            )
     .user-stories
         .user-story-main-data
             .user-story-number(tg-bo-ref="us.ref")
@@ -70,5 +74,5 @@
     div.points(tg-backlog-us-points="us")
         a.us-points(href="", title="{{'COMMON.FIELDS.POINTS' | translate}}")
 
-    a.e2e-drag(tg-check-permission="modify_us", href="", title="{{'COMMON.DRAG' | translate}}")
-        tg-svg(svg-icon="icon-drag")
+    a.us-option(tg-check-permission="modify_us", href="", title="{{'COMMON.EDIT' | translate}}")
+        tg-svg(svg-icon="icon-more-vertical")

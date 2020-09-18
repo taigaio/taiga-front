@@ -62,6 +62,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
     storeFiltersName: 'backlog-filters'
     backlogOrder: {}
     milestonesOrder: {}
+    newUs: []
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @appMetaService, @navUrls,
                   @events, @analytics, @translate, @loading, @rs2, @modelTransform, @errorHandlingService,
@@ -112,7 +113,10 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         @.loadUserstories(true)
 
     initializeEventHandlers: ->
-        @scope.$on "usform:bulk:success", =>
+        @scope.$on "usform:bulk:success", (event, els) =>
+            @.newUs = _.map els, (it) ->
+                return it.id
+
             @.loadUserstories(true)
             @.loadProjectStats()
             @confirm.notify("success")
@@ -126,7 +130,8 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             @confirm.notify("success")
             @analytics.trackEvent("sprint", "create", "create sprint on backlog", 1)
 
-        @scope.$on "usform:new:success", =>
+        @scope.$on "usform:new:success", (event, el) =>
+            @.newUs = [el.id]
             @.loadUserstories(true)
             @.loadProjectStats()
 
@@ -305,6 +310,9 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
                 return it.ref
 
             for it in @scope.userstories
+                if @.newUs.includes(it.id)
+                    it.new = true
+
                 @.backlogOrder[it.id] = it.backlog_order
 
             @.loadingUserstories = false
@@ -488,6 +496,14 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         # refresh order
         @scope.userstories = _.sortBy @scope.userstories, (it) => @.backlogOrder[it.id]
         @scope.visibleUserStories = _.map @scope.userstories, (it) -> return it.ref
+
+        usListIds = _.map(usList.map (it) => it.id)
+
+        for userstory in @scope.userstories
+            if usListIds.includes(userstory.id)
+                userstory.new = true
+            else
+                userstory.new = false
 
         for sprint in @scope.sprints
             sprint.user_stories = _.sortBy sprint.user_stories, (it) => @.milestonesOrder[sprint.id][it.id]
