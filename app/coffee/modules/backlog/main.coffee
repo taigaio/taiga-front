@@ -279,13 +279,15 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         @.loadingUserstories = true
         @.disablePagination = true
         params = _.clone(@location.search())
-        @.translationData.q = params.q
         @rs.userstories.storeQueryParams(@scope.projectId, params)
 
         if resetPagination
             @.page = 1
 
         params.page = @.page
+        params.q = @.filterQ
+
+        @.translationData.q = params.q
 
         promise = @rs.userstories.listUnassigned(@scope.projectId, params, pageSize)
 
@@ -819,7 +821,6 @@ BacklogDirective = ($repo, $rootscope, $translate, $rs) ->
         filters = $ctrl.location.search()
         if filters.status ||
            filters.tags ||
-           filters.q ||
            filters.assigned_to ||
            filters.owner
             openFilterInit($scope, $el, $ctrl)

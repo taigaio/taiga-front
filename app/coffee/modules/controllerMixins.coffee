@@ -134,7 +134,11 @@ class FiltersMixin
         ns = "#{projectSlug}:#{filtersHashSuffix}"
         hash = taiga.generateHash([projectSlug, ns])
 
-        return @storage.get(hash) or {}
+        data = @storage.get(hash) or {}
+
+        delete data.q
+
+        return data
 
     formatSelectedFilters: (type, list, urlIds, mode="include") ->
         selectedIds = urlIds.split(',')
@@ -184,9 +188,8 @@ class UsFiltersMixin
     ]
 
     changeQ: (q) ->
-        @.replaceFilter("q", q)
+        @.filterQ = q
         @.filtersReloadContent()
-        @.generateFilters()
 
     removeFilter: (filter) ->
         @.unselectFilter(filter.dataType, filter.id, false, filter.mode)
@@ -237,7 +240,6 @@ class UsFiltersMixin
 
         loadFilters = {}
         loadFilters.project = @scope.projectId
-        loadFilters.q = urlfilters.q
 
         for key in @.filterCategories
             excludeKey = @.excludePrefix.concat(key)
@@ -317,8 +319,6 @@ class UsFiltersMixin
                 if loadFilters[excludeKey]
                     selected = @.formatSelectedFilters(key, dataCollection[key], loadFilters[excludeKey], "exclude")
                     @.selectedFilters = @.selectedFilters.concat(selected)
-
-            @.filterQ = loadFilters.q
 
             @.filters = [
                 {
