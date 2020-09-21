@@ -15,7 +15,7 @@ html {
 }
 body {
     @include font-type(text);
-    line-height: 1.3;
+    line-height: 1.25;
     min-height: 100%;
     outline: 1px dotted $color-link-primary;
     overflow-x: hidden;
@@ -114,14 +114,14 @@ tg-svg {
 
 .main {
     flex: 1;
-    min-width: 0;
-    padding: 1rem 2rem;
-    .header-with-actions {
-        align-items: center;
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 1rem;
-    }
+    padding: 1rem;
+}
+
+.header-with-actions {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
 }
 
 .hidden {
