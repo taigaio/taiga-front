@@ -16,8 +16,6 @@ tg-filter {
     padding-bottom: .75rem;
 }
 
-
-
 .custom-filters-header {
     align-items: center;
     display: flex;
@@ -94,10 +92,19 @@ tg-filter {
         border: 0;
         border-left: 5px solid transparent;
     }
+    &.single-filter-type-general {
+        &:hover {
+            background: $color-white;
+        }
+    }
     &.single-filter-type-tag {
         background: $color-link-tertiary;
         border-radius: 4px;
         color: $color-white;
+        opacity: 1;
+        &:hover {
+            opacity: .7;
+        }
     }
     &.single-filter-type-user {
         .name {
