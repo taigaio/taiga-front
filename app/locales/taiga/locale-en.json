@@ -1334,6 +1334,7 @@
         "CUSTOMIZE_GRAPH_TEXT": "To have a nice graph that helps you follow the evolution of the project you have to set up the points and sprints through the",
         "CUSTOMIZE_GRAPH_ADMIN": "Admin",
         "CUSTOMIZE_GRAPH_TITLE": "Set up the points and sprints through the Admin",
+        "TOTAL_STORIES": "of {{ totalUserStories }} user stories",
         "MOVE_US_TO_CURRENT_SPRINT": "Move to Current Sprint",
         "MOVE_US_TO_LATEST_SPRINT": "Move to latest Sprint",
         "EMPTY": "The backlog is empty!",

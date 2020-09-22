@@ -27,7 +27,8 @@ div.wrapper(tg-backlog, ng-controller="BacklogController as ctrl",
                     .backlog-header
                         .backlog-header-title
                             h2 Backlog
-                            span.backlog-stories-number {{userstories.length}} user stories
+                            span.backlog-stories-number.squared {{userstories.length}}
+                            span.backlog-stories-number(translate="BACKLOG.TOTAL_STORIES", translate-values="{totalUserStories: ctrl.totalUserStories}")
                         .backlog-header-options
                             include ../includes/components/addnewus
 
