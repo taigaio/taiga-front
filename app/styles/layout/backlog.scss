@@ -1,29 +1,30 @@
+.scrum {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 9fr minmax(250px, 3fr);
+}
+
 .backlog-manager {
     align-items: flex-start;
-    display: flex;
-
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: minmax(180px, 2fr) 7fr;
+    &.expanded {
+        grid-template-columns: 9fr;
+    }
     .empty-large {
         margin: 40px auto;
     }
-}
-
-.backlog-table {
-    flex: 1;
 }
 
 .backlog-filter {
     tg-filter {
         background: none;
         border: 1px solid $color-gray200;
-        margin-right: 1.5rem;
         opacity: 1;
         padding: .5rem;
         position: relative;
         transform: translate(0);
-        width: 210px;
-        @include ultrawide {
-            width: 285px;
-        }
     }
 }
 
