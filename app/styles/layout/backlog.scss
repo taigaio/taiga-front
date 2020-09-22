@@ -1,6 +1,7 @@
 .scrum {
     display: grid;
     gap: 1rem;
+    grid-template-columns: 9fr minmax(250px, 3fr);
 }
 
 .backlog-manager {
