@@ -27,8 +27,17 @@ div.wrapper(tg-backlog, ng-controller="BacklogController as ctrl",
                     .backlog-header
                         .backlog-header-title
                             h2 Backlog
-                            span.backlog-stories-number.squared {{userstories.length}}
-                            span.backlog-stories-number(translate="BACKLOG.TOTAL_STORIES", translate-values="{totalUserStories: ctrl.totalUserStories}")
+                            ng-container(ng-if="ctrl.selectedFilters.length")
+                                span.backlog-stories-number.squared {{userstories.length}}
+                                span.backlog-stories-number(
+                                    translate="BACKLOG.TOTAL_STORIES_FILTERED",
+                                    translate-values="{totalUserStories: ctrl.totalUserStories}"
+                                )
+                            span.backlog-stories-number(
+                                ng-if="!ctrl.selectedFilters.length"
+                                translate="BACKLOG.TOTAL_STORIES",
+                                translate-values="{totalUserStories: ctrl.totalUserStories}"
+                            )
                         .backlog-header-options
                             include ../includes/components/addnewus
 

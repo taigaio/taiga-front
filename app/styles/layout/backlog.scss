@@ -51,13 +51,15 @@
 .backlog-stories-number {
     @include font-size(xsmall);
     color: $color-link-tertiary;
+    margin-left: .5rem;
     &.squared {
         background: $color-gray200;
         border-radius: 2px;
         color: $color-black900;
-        margin-left: .5rem;
-        margin-right: .25rem;
         padding: .1rem .25rem;
+        & + .backlog-stories-number {
+            margin-left: .25rem;
+        }
     }
 }
 
