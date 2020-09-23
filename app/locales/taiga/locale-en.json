@@ -159,7 +159,7 @@
             "DUE_DATE_REASON": "Due date reason"
         },
         "ROLES": {
-            "ALL": "All"
+            "ALL": "All points"
         },
         "ASSIGNED_TO": {
             "NOT_ASSIGNED": "Not assigned",

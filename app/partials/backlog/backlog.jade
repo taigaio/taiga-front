@@ -107,9 +107,10 @@ div.wrapper(tg-backlog, ng-controller="BacklogController as ctrl",
                             div.input(tg-check-permission="modify_us")
                             div.user-stories(translate="BACKLOG.TABLE.COLUMN_US")
                             div.status(translate="COMMON.FIELDS.STATUS")
-                            div.points(tg-us-role-points-selector, title="{{'BACKLOG.TABLE.TITLE_COLUMN_POINTS' | translate}}")
-                                span.header-points(translate="COMMON.FIELDS.POINTS")
-                                tg-svg(svg-icon="icon-filter")
+                            div.points(title="{{'BACKLOG.TABLE.TITLE_COLUMN_POINTS' | translate}}")
+                                div.inner(tg-us-role-points-selector)
+                                    span.header-points(translate="COMMON.FIELDS.POINTS")
+                                    tg-svg(svg-icon="icon-filter")
                             div.us-header-options
 
                 .backlog-manager(ng-class="{'expanded': !ctrl.activeFilters}")
