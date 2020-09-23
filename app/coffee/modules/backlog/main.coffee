@@ -77,6 +77,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         @.firstLoadComplete = false
         @.translationData = {q: @.filterQ}
         @scope.userstories = []
+        @.totalUserStories = 0
 
         return if @.applyStoredFilters(@params.pslug, "backlog-filters")
 
@@ -320,6 +321,9 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             if header('x-pagination-next')
                 @.disablePagination = false
                 @.page++
+
+            if header('Taiga-Info-Backlog-Total-Userstories')
+                @.totalUserStories = header('Taiga-Info-Backlog-Total-Userstories')
 
             @rootscope.$broadcast("backlog:userstories:loaded")
 
