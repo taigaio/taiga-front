@@ -151,6 +151,11 @@
 }
 
 .backlog-table-header {
+    background-color: $white;
+    position: sticky;
+    top: 0;
+    z-index: 99;
+
     .backlog-table-title {
         span {
             @include font-type(text);
