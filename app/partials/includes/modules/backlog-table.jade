@@ -1,14 +1,3 @@
-div.backlog-table-header
-    div.row.backlog-table-title
-        div.draggable-us-column(tg-check-permission="modify_us")
-        div.input(tg-check-permission="modify_us")
-        div.user-stories(translate="BACKLOG.TABLE.COLUMN_US")
-        div.status(translate="COMMON.FIELDS.STATUS")
-        div.points(tg-us-role-points-selector, title="{{'BACKLOG.TABLE.TITLE_COLUMN_POINTS' | translate}}")
-            span.header-points(translate="COMMON.FIELDS.POINTS")
-            tg-svg(svg-icon="icon-filter")
-        div.us-header-options
-
 div.backlog-table-body(
     tg-backlog-sortable,
     ng-class="{'show-tags': ctrl.showTags, 'active-filters': ctrl.activeFilters, 'forecasted-stories': ctrl.displayVelocity}"

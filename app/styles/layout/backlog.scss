@@ -28,9 +28,16 @@
     }
 }
 
+.backlog-top {
+    background-color: $white;
+    position: sticky;
+    top: 0;
+    z-index: 99;
+}
+
 .backlog-menu {
     color: $color-black900;
-    margin: 1rem 0;
+    padding: 1rem 0;
 }
 
 .backlog-header {
