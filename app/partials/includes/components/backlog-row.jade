@@ -37,10 +37,12 @@
         )
         .tag(
             ng-if="ctrl.showTags"
+            ng-attr-title="{{tag[0]}}"
             ng-repeat="tag in us.tags"
             ng-style="{background: tag[1]}"
         ) {{tag[0]}}
         tg-belong-to-epics(
+            class="epics"
             format="pill"
             ng-if="us.epics"
             epics="us.epics"
