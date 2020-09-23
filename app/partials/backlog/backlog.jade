@@ -101,7 +101,7 @@ div.wrapper(tg-backlog, ng-controller="BacklogController as ctrl",
                                 )
                                     tg-svg(svg-icon="icon-move")
                                     span.text(translate="BACKLOG.MOVE_US_TO_LATEST_SPRINT")
-                    .backlog-table-header
+                    .backlog-table-header(ng-if="userstories.length")
                         div.row.backlog-table-title
                             div.draggable-us-column(tg-check-permission="modify_us")
                             div.input(tg-check-permission="modify_us")
@@ -135,7 +135,7 @@ div.wrapper(tg-backlog, ng-controller="BacklogController as ctrl",
                     section.backlog-table(ng-class="{'hidden': !userstories.length}")
                         include ../includes/modules/backlog-table
 
-                    .empty-backlog.js-empty-backlog(ng-class="{'hidden': userstories === undefined || userstories.length}")
+                    .empty-backlog.js-empty-backlog(ng-class="{'hidden': userstories === undefined || userstories.length || !ctrl.filterQ.length }")
                         p.no-match {{ 'BACKLOG.NO_MATCH' | translate:ctrl.translationData }}
                         p.no-match-help {{ 'BACKLOG.NO_MATCH_HELP' | translate }}
 
