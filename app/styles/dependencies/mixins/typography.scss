@@ -2,23 +2,23 @@
 
 @mixin font-size($size) {
     @if $size == xsmall {
-        font-size: .75rem;
+        font-size: .7rem;
     } @else if $size == small {
         font-size: .875rem;
     } @else if $size == medium {
         font-size: 1rem;
     } @else if $size == large {
-        font-size: 1.125rem;
+        font-size: 1.1rem;
     } @else if $size == larger {
-        font-size: 1.75rem;
+        font-size: 1.4rem;
     } @else if $size == xlarge {
-        font-size: 2rem;
+        font-size: 1.7rem;
     } @else if $size == xxlarge {
-        font-size: 3rem;
+        font-size: 2.1rem;
     } @else if $size == gigantic {
         font-size: 4rem;
     } @else {
-        font-size: 1rem;
+        font-size: .875rem;
     }
 }
 
