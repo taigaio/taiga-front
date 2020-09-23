@@ -208,7 +208,7 @@
 }
 
 .backlog-table-body {
-    .gu-transit.ui-multisortable-multiple {
+    .us-item-row.gu-transit {
         background-color: $white;
         border: 0;
         border-top: 2px dashed $color-solid-primary;
@@ -221,7 +221,7 @@
         }
     }
     .new {
-        animation: new-us-blink .5s linear 2;
+        animation: new-us-blink .5s ease-in 2;
 
     }
 }
@@ -267,7 +267,6 @@
     }
     .gu-transit {
         background: $color-gray100;
-        border: 1px solid $color-solid-primary;
     }
     .sortable-placeholder {
         background: $mass-white;
@@ -276,9 +275,6 @@
         * {
             display: none;
         }
-    }
-    .is-checked {
-        background: lighten($primary, 60%);
     }
     input {
         &:checked {
