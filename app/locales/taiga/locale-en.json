@@ -1373,7 +1373,7 @@
             "CURRENT_SPRINT": "Candidate user stories for your sprint based on your velocity. Click to add to current sprint."
         },
         "TABLE": {
-            "COLUMN_US": "User Stories",
+            "COLUMN_US": "User Story",
             "TITLE_COLUMN_POINTS": "Select view per Role"
         },
         "SPRINT_SUMMARY": {
