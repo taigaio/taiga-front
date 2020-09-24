@@ -42,7 +42,6 @@
         }
         .user-stories {
             flex: 1;
-            margin-block-start: -.5rem;
         }
         .status {
             flex-basis: 150px;
@@ -165,10 +164,15 @@
     z-index: 99;
 
     .backlog-table-title {
-        span {
+        align-items: center;
+        margin-bottom: 0;
+
+        > div {
             @include font-type(text);
             @include font-size(xsmall);
             @include font-type(semibold);
+
+            color: $color-link-tertiary;
             flex-wrap: nowrap;
             text-transform: uppercase;
         }
@@ -277,6 +281,9 @@
             background: lighten($primary, 60%);
             box-shadow: 1px 1px 10px rgba($black, .1);
             opacity: .9;
+        }
+        .user-stories {
+            margin-block-start: -.5rem;
         }
         .points {
             .not-clickable:hover {
