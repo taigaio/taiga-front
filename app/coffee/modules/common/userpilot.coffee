@@ -22,6 +22,7 @@ module = angular.module("taigaCommon")
 
 class UserPilotService extends taiga.Service
     @.$inject = ["$rootScope", "$window"]
+    JOINED_LIMIT_DAYS = 42
 
     constructor: (@rootScope, @win) ->
         @.initialized = false
@@ -39,33 +40,48 @@ class UserPilotService extends taiga.Service
         if (@win.userpilot and ((userdata and not @.identified) or force))
             data = JSON.parse(userdata)
             if (data["id"])
-                @.identified = true
-                id = @.getUserPilotId(data)
-                timestamp = Date.now()
-                userpilot_data = {
-                    name: data["full_name_display"], # Full name
-                    email: data["email"], # Email address
-                    created_at: timestamp, # Signup date as a Unix timestamp
-                    # Additional user properties
-                    taiga_id: parseInt(data["id"], 10),
-                    taiga_username: data["username"],
-                    taiga_date_joined: data["date_joined"],
-                    taiga_lang: data["lang"],
-                    taiga_max_private_projects: parseInt(data["max_private_projects"], 10),
-                    taiga_max_memberships_private_projects: parseInt(data["max_memberships_private_projects"], 10),
-                    taiga_verified_email: data["verified_email"],
-                    taiga_total_private_projects: parseInt(data["total_private_projects"], 10),
-                    taiga_total_public_projects: parseInt(data["total_public_projects"], 10),
-                    taiga_roles: data["roles"].toString()
-                }
-
+                userPilotData = @.prepareData(data)
                 @win.userpilot.identify(
-                    id, # Used to identify users
-                    userpilot_data
+                    userPilotData["id"],
+                    userpilotData["extraData"]
                 )
 
-    getUserPilotId: (data) ->
+
+    prepareData: (data) ->
+        @.identified = true
+        id = @.setUserPilotID(data)
+        timestamp = Date.now()
+        userpilotData = {
+            name: data["full_name_display"],
+            email: data["email"],
+            created_at: timestamp,
+            taiga_id: parseInt(data["id"], 10),
+            taiga_username: data["username"],
+            taiga_date_joined: data["date_joined"],
+            taiga_lang: data["lang"],
+            taiga_max_private_projects: parseInt(data["max_private_projects"], 10),
+            taiga_max_memberships_private_projects: parseInt(data["max_memberships_private_projects"], 10),
+            taiga_verified_email: data["verified_email"],
+            taiga_total_private_projects: parseInt(data["total_private_projects"], 10),
+            taiga_total_public_projects: parseInt(data["total_public_projects"], 10),
+            taiga_roles: data["roles"] && data["roles"].toString()
+        }
+
+        return {"id": id, "extraData": userpilotData}
+
+    setUserPilotID: (data) ->
+        joined = new Date(data["date_joined"])
         maxPrivateProjects = parseInt(data["max_private_projects"], 10)
-        if (maxPrivateProjects == 1) then return 1 else parseInt(data["id"], 10)
+
+        if (joined > @.getJoinedLimit())
+            return parseInt(data["id"], 10)
+        else
+            if (maxPrivateProjects == 1) then return 1 else parseInt(data["id"], 10)
+
+    getJoinedLimit: ->
+        limit = new Date
+        limit.setDate(limit.getDate() - JOINED_LIMIT_DAYS);
+        return limit
+
 
 module.service("$tgUserPilot", UserPilotService)
