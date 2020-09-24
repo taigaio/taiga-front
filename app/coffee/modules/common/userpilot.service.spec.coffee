@@ -39,7 +39,8 @@ describe "tgUserPilotService", ->
         data = {
             "id": 9879,
             "date_joined": dateJoined.toISOString(),
-            "max_private_projects": maxPrivateProjects
+            "max_private_projects": maxPrivateProjects,
+            "roles": ["admin", "usx"]
         }
 
         return data
@@ -56,13 +57,14 @@ describe "tgUserPilotService", ->
         preparedData = userPilotService.prepareData(data)
         expect(preparedData["id"]).to.be.eql(1)
         expect(preparedData["extraData"]["taiga_id"]).to.be.eql(data["id"])
+        expect(preparedData["extraData"]["taiga_roles"]).to.be.eql("admin,usx")
 
     it "check paid user userpilot data", () ->
         data = _setUserData(new Date, null)
         preparedData = userPilotService.prepareData(data)
         expect(preparedData["id"]).to.be.eql(data["id"])
         expect(preparedData["extraData"]["taiga_id"]).to.be.eql(data["id"])
-
+        expect(preparedData["extraData"]["taiga_roles"]).to.be.eql("admin,usx")
 
     it "check new free user userpilot ID agroupation", () ->
         data = _setUserData(new Date, 1)
