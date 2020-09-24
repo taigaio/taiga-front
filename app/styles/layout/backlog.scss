@@ -18,6 +18,12 @@
 }
 
 .backlog-filter {
+    background-color: $white;
+    position: sticky;
+    // backlog-top.height
+    top: 115px;
+    z-index: 99;
+
     tg-filter {
         background: none;
         border: 1px solid $color-gray200;
@@ -30,6 +36,7 @@
 
 .backlog-top {
     background-color: $white;
+    height: 115px;
     position: sticky;
     top: 0;
     z-index: 99;
