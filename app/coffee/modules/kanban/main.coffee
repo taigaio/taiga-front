@@ -35,6 +35,10 @@ module = angular.module("taigaKanban")
 #############################################################################
 
 class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.FiltersMixin, taiga.UsFiltersMixin)
+    excludeFilters: [
+        "status"
+    ]
+
     @.$inject = [
         "$scope",
         "$rootScope",
@@ -296,8 +300,14 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             params.include_tasks = 1
 
         params = _.merge params, @location.search()
+        params.q = @.filterQ
 
         promise = @rs.userstories.listAll(@scope.projectId, params).then (userstories) =>
+            @.notFoundUserstories = false
+
+            if !userstories.length && ((@.filterQ && @.filterQ.length) || Object.keys(@location.search()).length)
+                @.notFoundUserstories = true
+
             @kanbanUserstoriesService.init(@scope.project, @scope.usersById)
             @tgLoader.pageLoaded()
             @.renderUserStories(userstories)
@@ -546,7 +556,7 @@ KanbanSquishColumnDirective = (rs, projectService) ->
             totalWidth = _.reduce columnWidths, (total, width) ->
                 return total + width
 
-            $el.find('.kanban-table-inner').css("width", totalWidth)
+            # $el.find('.kanban-table-inner').css("width", totalWidth)
 
         unwatch = $scope.$watch 'usByStatus', (usByStatus) ->
             if usByStatus?.size

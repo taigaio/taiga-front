@@ -1,7 +1,13 @@
-.placeholder-avatar
-    .image
-    .text
-        .line
-        .line
-p.title {{'KANBAN.PLACEHOLDER_CARD_TITLE' | translate}}
-p {{'KANBAN.PLACEHOLDER_CARD_TEXT' | translate}}
+ng-container(ng-if="!ctrl.notFoundUserstories")
+    .placeholder-avatar
+        .image
+        .text
+            .line
+            .line
+    p.title {{'KANBAN.PLACEHOLDER_CARD_TITLE' | translate}}
+    p {{'KANBAN.PLACEHOLDER_CARD_TEXT' | translate}}
+
+ng-container(ng-if="ctrl.notFoundUserstories")
+    p.title(translate="KANBAN.US_NOT_FOUND_TITLE")
+    p(translate="KANBAN.US_NOT_FOUND_TEXT_P1")
+    p(translate="KANBAN.US_NOT_FOUND_TEXT_P2")

@@ -70,6 +70,7 @@ div.kanban-table(
             )
                 .card-placeholder(
                     ng-if="ctrl.showPlaceHolder(s.id)"
+                    ng-class='{"not-found": ctrl.notFoundUserstories}'
                     ng-include="'common/components/kanban-placeholder.html'"
                 )
 

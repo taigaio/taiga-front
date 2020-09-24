@@ -201,40 +201,6 @@
     width: 100%;
 }
 
-.button-filter {
-    @extend %button;
-    background-color: $grey-10;
-    margin-left: 1rem;
-    position: relative;
-    &:hover {
-        background: $gray-light;
-        svg {
-            fill: $whitish;
-            stroke: $whitish;
-        }
-    }
-    svg {
-        fill: $grey-90;
-        height: 1.1rem;
-        stroke: $grey-90;
-        width: 1.1rem;
-    }
-    .filter-num {
-        @include font-size(small);
-        @include font-type(medium);
-        align-items: center;
-        background: $red;
-        border-radius: 50%;
-        display: inline-flex;
-        height: 1rem;
-        justify-content: center;
-        left: -.5rem;
-        position: absolute;
-        top: -.5rem;
-        width: 1rem;
-    }
-}
-
 .button-group {
     display: flex;
     margin-bottom: 1rem;

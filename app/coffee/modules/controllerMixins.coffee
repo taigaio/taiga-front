@@ -186,6 +186,7 @@ class UsFiltersMixin
         "epic",
         "role",
     ]
+    excludeFilters: []
 
     changeQ: (q) ->
         @.filterQ = q
@@ -320,40 +321,51 @@ class UsFiltersMixin
                     selected = @.formatSelectedFilters(key, dataCollection[key], loadFilters[excludeKey], "exclude")
                     @.selectedFilters = @.selectedFilters.concat(selected)
 
-            @.filters = [
-                {
+            @.filters = []
+
+            if !@.excludeFilters.includes('status')
+                @.filters.push({
                     title: @translate.instant("COMMON.FILTERS.CATEGORIES.STATUS"),
                     dataType: "status",
                     content: dataCollection.status
-                },
-                {
+                })
+
+            if !@.excludeFilters.includes('tags')
+                @.filters.push({
                     title: @translate.instant("COMMON.FILTERS.CATEGORIES.TAGS"),
                     dataType: "tags",
                     content: dataCollection.tags,
                     hideEmpty: true,
                     totalTaggedElements: tagsWithAtLeastOneElement.length
-                },
-                {
+                })
+
+            if !@.excludeFilters.includes('assigned_to')
+                @.filters.push({
                     title: @translate.instant("COMMON.FILTERS.CATEGORIES.ASSIGNED_TO"),
                     dataType: "assigned_users",
                     content: dataCollection.assigned_users
-                },
-                {
+                })
+
+            if !@.excludeFilters.includes('role')
+                @.filters.push({
                     title: @translate.instant("COMMON.FILTERS.CATEGORIES.ROLE"),
                     dataType: "role",
                     content: dataCollection.role
-                },
-                {
+                })
+
+            if !@.excludeFilters.includes('created_by')
+                @.filters.push({
                     title: @translate.instant("COMMON.FILTERS.CATEGORIES.CREATED_BY"),
                     dataType: "owner",
                     content: dataCollection.owner
-                },
-                {
+                })
+
+            if !@.excludeFilters.includes('epic')
+                @.filters.push({
                     title: @translate.instant("COMMON.FILTERS.CATEGORIES.EPIC"),
                     dataType: "epic",
                     content: dataCollection.epic
-                }
-            ]
+                })
 
             @.customFilters = []
             _.forOwn customFiltersRaw, (value, key) =>

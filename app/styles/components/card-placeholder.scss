@@ -1,4 +1,4 @@
-.card-placeholder {
+.card-placeholder:not(.not-found) {
     background: darken($whitish, 2%);
     border: 1px dashed darken($whitish, 8%);
     cursor: default;
@@ -32,5 +32,20 @@
         @include font-type(light);
         color: $gray;
         margin: 0;
+    }
+}
+
+.card-placeholder.not-found {
+    color: $color-link-tertiary;
+    padding: 2rem;
+
+    .title {
+        @include font-size(large);
+        @include font-type(semibold);
+    }
+    p {
+        @include font-type(light);
+        color: $gray;
+        margin-bottom: 1.5rem;
     }
 }

@@ -5,9 +5,7 @@
     max-height: $main-height;
     max-width: calc(100vw - 50px);
     position: relative;
-    header {
-        min-height: 70px;
-    }
+
     .kanban-settings {
         float: right;
     }
@@ -20,16 +18,54 @@
     }
 }
 
-.kanban-header {
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
-    .options {
-        display: flex;
+.kanban-manager {
+    align-items: flex-start;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: minmax(180px, 2fr) 10fr;
+    height: 100%;
+    margin-top: 1px;
+    overflow: hidden;
+    &.expanded {
+        grid-template-columns: 10fr;
     }
+}
+
+.kanban-filter tg-filter {
+    background: none;
+    border: 1px solid $color-gray200;
+    opacity: 1;
+    padding: .5rem;
+    position: relative;
+    transform: translate(0);
 }
 
 .taskboard-actions {
     align-items: center;
     display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.kanban-header {
+    margin-bottom: 1.5rem;
+
+    .button-filter {
+        color: $color-link-primary;
+        margin-left: 0;
+
+        svg {
+            fill: $color-link-primary;
+        }
+    }
+}
+
+.kanban-table-options-start {
+    align-items: center;
+    display: flex;
+
+    tg-input-search {
+        margin-left: .5rem;
+        width: 185px;
+    }
 }
