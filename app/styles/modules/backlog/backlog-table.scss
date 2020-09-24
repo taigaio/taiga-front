@@ -170,7 +170,7 @@
     .points {
         cursor: pointer;
 
-        &.popover-open {
+        .popover-open {
             .header-points {
                 color: $color-black900;
             }
