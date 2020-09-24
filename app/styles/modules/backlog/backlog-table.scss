@@ -10,10 +10,11 @@
     }
     .row {
         @include font-size(small);
-        align-items: center;
+        align-items: flex-start;
         display: flex;
         margin-bottom: .5rem;
-        padding: .5rem 0 .5rem .5rem;
+        padding: 1rem;
+        padding-block-end: .75rem;
         text-align: left;
         width: 100%;
     }
@@ -41,6 +42,7 @@
         }
         .user-stories {
             flex: 1;
+            margin-block-start: -.5rem;
         }
         .status {
             flex-basis: 150px;
@@ -300,24 +302,32 @@
     }
     .user-story-main-data {
         @include font-type(light);
-        align-items: center;
+        align-items: flex-start;
         display: flex;
         flex-wrap: wrap;
     }
+    .user-story-number,
+    .user-story-name {
+        @include font-size(small);
+        @include font-type(text);
+    }
     .user-story-number {
         color: $color-link-primary;
-        margin-right: .5rem;
+        margin-block-start: .5rem;
+        margin-inline-end: .5rem;
     }
     .user-story-name {
         color: $color-black600;
-        margin-right: 1rem;
+        margin-block-start: .5rem;
+        margin-inline-end: 1rem;
     }
-    .tags-block {
-        display: none;
-
-        .tag {
-            margin-bottom: 0;
+    .tag {
+        &:last-of-type {
+            margin-inline-end: .75rem;
         }
+    }
+    .epics {
+        margin-top: .5rem;
     }
     .blocked {
         background: $red-light;
