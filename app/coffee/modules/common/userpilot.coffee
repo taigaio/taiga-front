@@ -40,9 +40,9 @@ class UserPilotService extends taiga.Service
         if (@win.userpilot and ((userdata and not @.identified) or force))
             data = JSON.parse(userdata)
             if (data["id"])
-                userPilotData = @.prepareData(data)
+                userpilotData = @.prepareData(data)
                 @win.userpilot.identify(
-                    userPilotData["id"],
+                    userpilotData["id"],
                     userpilotData["extraData"]
                 )
 
