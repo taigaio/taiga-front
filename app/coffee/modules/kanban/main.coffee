@@ -543,25 +543,11 @@ KanbanSquishColumnDirective = (rs, projectService) ->
         $scope.foldStatus = (status) ->
             $scope.folds[status.id] = !!!$scope.folds[status.id]
             rs.kanban.storeStatusColumnModes($scope.projectId, $scope.folds)
-            updateTableWidth()
             return
-
-        updateTableWidth = ->
-            columnWidths = _.map $scope.usStatusList, (status) ->
-                if $scope.folds[status.id]
-                    return 40
-                else
-                    return 310
-
-            totalWidth = _.reduce columnWidths, (total, width) ->
-                return total + width
-
-            # $el.find('.kanban-table-inner').css("width", totalWidth)
 
         unwatch = $scope.$watch 'usByStatus', (usByStatus) ->
             if usByStatus?.size
                 $scope.folds = rs.kanban.getStatusColumnModes(projectService.project.get('id'))
-                updateTableWidth()
 
                 unwatch()
 
