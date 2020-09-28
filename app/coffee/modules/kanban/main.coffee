@@ -371,10 +371,13 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
     loadInitialData: ->
         project = @.loadProject()
+        @.initialLoad = false
 
         @.fillUsersAndRoles(project.members, project.roles)
         @.initializeSubscription()
-        @.loadKanban()
+        @.loadKanban().then () =>
+            @.initialLoad = true
+
         @.generateFilters()
 
     # Utils methods

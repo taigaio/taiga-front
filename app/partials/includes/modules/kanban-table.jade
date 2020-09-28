@@ -3,7 +3,7 @@ div.kanban-table(
     tg-kanban-squish-column,
     ng-class="{'zoom-0': ctrl.zoomLevel == 0}"
 )
-    div.kanban-table-header
+    div.kanban-table-header(ng-if="ctrl.initialLoad")
         div.kanban-table-inner
             h2.task-colum-name(ng-repeat="s in usStatusList track by s.id",
                                ng-style="{'border-top-color':s.color}",
@@ -60,7 +60,7 @@ div.kanban-table(
                         tg-kanban-archived-status-header="s")
                         tg-svg.bulk-action(svg-icon="{{class}}")
 
-    div.kanban-table-body
+    div.kanban-table-body(ng-if="ctrl.initialLoad")
         div.kanban-table-inner
             div.kanban-uses-box.taskboard-column(
                 ng-class='{vfold:folds[s.id], vunfold: unfold == s.id}',
