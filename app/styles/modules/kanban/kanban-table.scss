@@ -6,6 +6,18 @@ $column-flex: 0;
 $column-shrink: 0;
 $column-margin: 0 5px 0 0;
 $column-padding: .5rem;
+$fold-animation-duration: .1s;
+
+@keyframes card-unfold {
+    from {
+        opacity: 0;
+        position: absolute; //  prevent column momentary scroll
+    }
+    to {
+        opacity: 1;
+        position: static;
+    }
+}
 
 .kanban-table {
     display: flex;
@@ -20,6 +32,14 @@ $column-padding: .5rem;
         }
         .title {
             max-width: 60px;
+        }
+    }
+    .vunfold {
+        tg-card {
+            // wait until unfold is completed to start the animation
+            animation: card-unfold 0s forwards $fold-animation-duration;
+            opacity: 0;
+            position: absolute;
         }
     }
     .vfold {
@@ -88,7 +108,7 @@ $column-padding: .5rem;
         padding: $column-padding;
         position: relative;
         text-transform: uppercase;
-        transition: all .1s linear;
+        transition: all $fold-animation-duration linear;
         &:last-child {
             margin-right: 0;
         }

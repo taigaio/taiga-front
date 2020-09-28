@@ -541,7 +541,12 @@ module.directive("tgKanbanArchivedStatusIntro", ["$translate", "tgKanbanUserstor
 KanbanSquishColumnDirective = (rs, projectService) ->
     link = ($scope, $el, $attrs) ->
         $scope.foldStatus = (status) ->
+            $scope.unfold = null
             $scope.folds[status.id] = !!!$scope.folds[status.id]
+
+            if !$scope.folds[status.id]
+                $scope.unfold = status.id
+
             rs.kanban.storeStatusColumnModes($scope.projectId, $scope.folds)
             return
 
