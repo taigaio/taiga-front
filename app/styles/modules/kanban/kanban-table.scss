@@ -11,7 +11,7 @@ $fold-animation-duration: .1s;
 @keyframes card-unfold {
     from {
         opacity: 0;
-        position: absolute; //  prevent column momentary scroll
+        position: absolute; //  prevent column show scroll while unfolding
     }
     to {
         opacity: 1;
