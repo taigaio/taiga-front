@@ -48,33 +48,6 @@
             ng-style="{'background': epic.color}"
             ng-attr-title="#{hash}{{epic.ref}} {{epic.subject}}"
         )
-        //- .user-story-number(tg-bo-ref="us.ref")
-        //- a.user-story-name.clickable(
-        //-     href=""
-        //-     tg-nav="project-userstories-detail:project=project.slug,ref=us.ref"
-        //-     tg-nav-get-params="{\"no-milestone\": 1}"
-        //- )
-        //-     span(ng-bind-html="us.subject | emojify")
-        //- tg-due-date(
-        //-     due-date="us.due_date"
-        //-     is-closed="us.is_closed"
-        //-     ng-if="us.due_date"
-        //-     obj-type="us"
-        //- )
-        //- .tag(
-        //-     ng-if="ctrl.showTags"
-        //-     ng-attr-title="{{tag[0]}}"
-        //-     ng-repeat="tag in us.tags"
-        //-     ng-style="{background: tag[1]}"
-        //- ) {{tag[0]}}
-        //- tg-belong-to-epics(
-        //-     class="epics"
-        //-     format="pill"
-        //-     ng-if="us.epics"
-        //-     epics="us.epics"
-        //- )
-        //- .us-settings
-
 
     div.status(tg-us-status="us" on-update="ctrl.updateUserStoryStatus()")
         a.us-status(href="", title="{{'BACKLOG.STATUS_NAME' | translate}}")
