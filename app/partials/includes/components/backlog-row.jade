@@ -74,21 +74,7 @@
         //-     epics="us.epics"
         //- )
         //- .us-settings
-        //-     a.e2e-edit.edit-story(
-        //-         href=""
-        //-         tg-check-permission="modify_us"
-        //-         ng-click="ctrl.editUserStory(us.project, us.ref, $event)"
-        //-         title="{{'COMMON.EDIT' | translate}}"
-        //-     )
-        //-         tg-svg(svg-icon="icon-edit")
 
-        //-     a.e2e-delete(
-        //-         href=""
-        //-         tg-check-permission="delete_us"
-        //-         ng-click="ctrl.deleteUserStory(us)"
-        //-         title="{{'COMMON.DELETE' | translate}}"
-        //-     )
-        //-         tg-svg(svg-icon="icon-trash")
 
     div.status(tg-us-status="us" on-update="ctrl.updateUserStoryStatus()")
         a.us-status(href="", title="{{'BACKLOG.STATUS_NAME' | translate}}")
@@ -101,5 +87,7 @@
     div.points(tg-backlog-us-points="us")
         a.us-points(href="", title="{{'COMMON.FIELDS.POINTS' | translate}}")
 
-    a.us-option(tg-check-permission="modify_us", href="", title="{{'COMMON.EDIT' | translate}}")
-        tg-svg(svg-icon="icon-more-vertical")
+    .us-option(tg-us-edit-selector, tg-check-permission="modify_us")
+        button.us-option-popup-button
+            tg-svg(svg-icon="icon-more-vertical")
+

@@ -78,6 +78,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         @.translationData = {q: @.filterQ}
         @scope.userstories = []
         @.totalUserStories = 0
+        # @.displayUsEditOptions = false
 
         return if @.applyStoredFilters(@params.pslug, "backlog-filters")
 
@@ -856,6 +857,36 @@ BacklogDirective = ($repo, $rootscope, $translate, $rs) ->
 
 
 module.directive("tgBacklog", ["$tgRepo", "$rootScope", "$translate", "$tgResources", BacklogDirective])
+
+#############################################################################
+## User story edit directive
+#############################################################################
+
+UsEditSelector = ($rootscope, $tgTemplate, $compile, $translate) ->
+    mainTemplate = $tgTemplate.get("backlog/us-edit-popover.html", true)
+
+    link = ($scope, $el, $attrs) ->
+        $ctrl = $el.controller()
+
+        $el.on "click", (event) ->
+            html = $compile(mainTemplate())($scope)
+            $el.append(html)
+            $el.find(".us-option-popup").popover().open(() -> $(this).remove())
+
+         $el.on "click", "edit-story", (event) ->
+            $ctrl.editUserStory()
+        #     event.preventDefault()
+        #     event.stopPropagation()
+        #     $rootscope.$broadcast("uspoints:clear-selection")
+        #     $el.find('.active-popover').removeClass('active-popover')
+        #     target.addClass('active-popover')
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {link: link}
+
+module.directive("tgUsEditSelector", ["$rootScope", "$tgTemplate", "$compile", "$translate", UsEditSelector])
 
 #############################################################################
 ## User story points directive
