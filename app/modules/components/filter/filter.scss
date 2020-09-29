@@ -135,6 +135,7 @@ tg-filter {
         margin-top: .5rem;
 
         .name {
+            background: none;
             color: $color-link-primary;
             padding: .25rem;
         }
@@ -143,6 +144,7 @@ tg-filter {
             background: none;
             cursor: pointer;
             opacity: 0;
+            padding: .25rem;
             svg {
                 fill: $color-link-primary;
                 height: 1rem;

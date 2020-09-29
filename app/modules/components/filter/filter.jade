@@ -35,7 +35,9 @@
             ng-click="vm.selectCustomFilter(it)"
             ng-class="{active: it.id == vm.activeCustomFilter}"
         )
-            span.name {{it.name}}
+            button.name(
+                ng-click="vm.selectCustomFilter(it)"
+            ) {{it.name}}
             button.remove-filter.e2e-remove-custom-filter(ng-click="vm.removeCustomFilter(it)")
                 tg-svg(svg-icon="icon-trash")
 
