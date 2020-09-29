@@ -8,7 +8,7 @@
         margin: 2rem 0 1rem;
         padding: .9rem 1rem;
         h1 {
-            @include font-type(text);
+            @include font-type(regular);
             @include font-size(larger);
             color: $primary;
             margin: 0;

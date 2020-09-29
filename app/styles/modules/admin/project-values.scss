@@ -20,7 +20,7 @@
 }
 
 .project-values-header {
-    @include font-type(semibold);
+    @include font-type(medium);
     border-bottom: 3px solid $whitish;
 }
 .project-values-body {

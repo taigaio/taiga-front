@@ -43,7 +43,7 @@
     .sprint-name {
         a {
             @include font-size(normal);
-            @include font-type(text);
+            @include font-type(regular);
             display: inline-block;
             margin-right: .5rem;
         }
@@ -90,7 +90,7 @@
         }
         .sprint-date {
             @include font-size(small);
-            @include font-type(text);
+            @include font-type(regular);
             color: $gray-light;
             flex: 1;
         }
@@ -134,7 +134,7 @@
     .sprint-table {
         min-height: 2rem; // drag & drop
         .sprint-empty {
-            @include font-type(light);
+            @include font-type(regular);
             background: darken($whitish, 5%);
             border: 2px dashed lighten($gray-light, 10%);
             color: $gray;
@@ -243,7 +243,7 @@
 }
 
 .sprints-empty {
-    @include font-type(light);
+    @include font-type(regular);
     text-align: center;
     img {
         margin: 1rem 0;

@@ -5,7 +5,7 @@
         width: 100%;
     }
     h2 {
-        @include font-type(text);
+        @include font-type(regular);
         @include font-size(large);
         margin-bottom: 0;
     }
@@ -17,7 +17,7 @@
         margin-bottom: 1rem;
     }
     label {
-        @include font-type(text);
+        @include font-type(regular);
         display: block;
         margin-bottom: .25rem;
     }

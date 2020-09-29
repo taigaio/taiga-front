@@ -15,7 +15,7 @@
 
 .epics-table-header {
     @include epics-table;
-    @include font-type(semibold);
+    @include font-type(medium);
     border-bottom: 1px solid $gray-light;
     display: flex;
     padding: .5rem;
@@ -33,7 +33,7 @@
 }
 
 .epics-table-option-button {
-    @include font-type(light);
+    @include font-type(regular);
     @include font-size(small);
     background: none;
     .icon {

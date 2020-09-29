@@ -7,7 +7,7 @@
     }
 
     .project-settings-table-header {
-        @include font-type(semibold);
+        @include font-type(medium);
         border-bottom: 2px solid $gray-light;
     }
 

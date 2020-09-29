@@ -5,7 +5,7 @@
     position: relative;
     .ticket-title {
         @include font-size(larger);
-        @include font-type(light);
+        @include font-type(regular);
         text-transform: uppercase;
         vertical-align: sub;
     }
@@ -35,7 +35,7 @@
         padding: 0;
         text-transform: none;
         a {
-            @include font-type(text);
+            @include font-type(regular);
             padding: .5rem 1rem;
             text-align: left;
         }
@@ -52,7 +52,7 @@
 
 .ticket-data-container {
     @include font-size(small);
-    @include font-type(text);
+    @include font-type(regular);
 }
 
 .ticket-section {
@@ -128,7 +128,7 @@
 }
 
 .ticket-section-label {
-    @include font-type(semibold);
+    @include font-type(medium);
     color: lighten($grayer, 11%);
     flex-grow: 1;
     font-size: .875rem;

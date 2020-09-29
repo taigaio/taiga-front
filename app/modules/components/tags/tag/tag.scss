@@ -1,7 +1,7 @@
 // this :not(code) prevent to override prismjs (wysiwyg) styles
 .tag {
     @include font-size(xsmall);
-    @include font-type(semibold);
+    @include font-type(medium);
     @include ellipsis(20ch);
     background: $color-link-tertiary;
     border-radius: 2px;

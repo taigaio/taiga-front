@@ -43,7 +43,7 @@
 }
 
 .belong-to-epic-label {
-    @include font-type(light);
+    @include font-type(regular);
     @include font-size(xsmall);
     background: $grayer;
     border-radius: .25rem;

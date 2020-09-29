@@ -11,7 +11,7 @@
         }
     }
     .history-tab {
-        @include font-type(semibold);
+        @include font-type(medium);
         border-bottom: 3px solid transparent;
         color: $gray-light;
         transition: all .1s linear;
@@ -21,7 +21,7 @@
         }
     }
     .order-comments {
-        @include font-type(light);
+        @include font-type(regular);
         color: $grayer;
         margin-left: auto;
         transition: none;

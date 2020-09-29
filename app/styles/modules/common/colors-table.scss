@@ -2,7 +2,7 @@
     overflow-x: inherit;
     .table-header {
         @include font-size(medium);
-        @include font-type(semibold);
+        @include font-type(medium);
         border-bottom: 3px solid $whitish;
         &:hover {
             background: transparent;

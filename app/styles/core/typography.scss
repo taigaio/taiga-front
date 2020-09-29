@@ -2,10 +2,8 @@
 // Font face
 
 @each $font-face in
-    Ubuntu-Light,
     Ubuntu-Regular,
-    Ubuntu-Medium,
-    Ubuntu-Bold {
+    Ubuntu-Medium {
     @font-face {
         font-family: '#{$font-face}';
         src: url('../fonts/#{$font-face}.ttf') format('truetype');
@@ -28,7 +26,7 @@ h6 {
 }
 
 h1 {
-    @include font-type(text);
+    @include font-type(regular);
     @include font-size(larger);
     align-items: baseline;
     line-height: 1.5;
@@ -38,10 +36,10 @@ h1 {
         display: flex;
     }
     .title {
-        @include font-type(light);
+        @include font-type(regular);
     }
     span {
-        @include font-type(text);
+        @include font-type(regular);
         @include font-size(larger);
         margin-right: .5rem;
         overflow: hidden;
@@ -56,7 +54,7 @@ h1 {
     }
 
     .project-name {
-        @include font-type(light);
+        @include font-type(regular);
         color: $grey-40;
         display: inline-block;
         margin-bottom: 0;
@@ -72,14 +70,14 @@ h1 {
     }
 
     .project-name-short {
-        @include font-type(light);
+        @include font-type(regular);
         display: inline-block;
         max-width: 40%;
     }
 
     .date {
         @include ellipsis(500px);
-        @include font-type(text);
+        @include font-type(regular);
         @include font-size(small);
         color: $grey-70;
     }
@@ -92,7 +90,7 @@ h1 {
 
 h2 {
     @include font-size(larger);
-    @include font-type(text);
+    @include font-type(regular);
     line-height: 1.2;
     margin-bottom: 1rem;
 }

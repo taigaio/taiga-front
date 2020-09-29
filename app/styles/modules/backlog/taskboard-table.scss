@@ -236,7 +236,7 @@ $column-padding: .5rem;
     position: relative;
     .us-title {
         @include font-size(normal);
-        @include font-type(text);
+        @include font-type(regular);
         margin-bottom: 0;
         margin-right: 3rem;
     }

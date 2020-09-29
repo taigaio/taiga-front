@@ -11,7 +11,7 @@
         .username {
             color: $primary;
             &:first-child {
-                @include font-type(semibold);
+                @include font-type(medium);
                 color: $gray;
             }
         }
@@ -79,7 +79,7 @@
             flex: 1;
         }
         a {
-            @include font-type(semibold);
+            @include font-type(medium);
         }
         p {
             color: $gray-light;
@@ -89,7 +89,7 @@
         border: 0;
         padding: 0;
         span {
-            @include font-type(text);
+            @include font-type(regular);
             @include font-size(medium);
             display: inline-block;
             max-width: 95%;

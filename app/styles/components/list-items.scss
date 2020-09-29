@@ -8,13 +8,13 @@
     padding: .5rem;
     padding-right: 0;
     h2 {
-        @include font-type(text);
+        @include font-type(regular);
         line-height: 1.4;
         margin-bottom: 0;
         text-transform: none;
     }
     p {
-        @include font-type(light);
+        @include font-type(regular);
         margin-bottom: 0;
     }
     .list-itemtype-avatar {
@@ -117,7 +117,7 @@
     }
     .extra-info {
         @include font-size(small);
-        @include font-type(light);
+        @include font-type(regular);
         margin-top: .25rem;
     }
 }

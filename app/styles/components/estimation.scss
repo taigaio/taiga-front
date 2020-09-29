@@ -32,7 +32,7 @@
             .points,
             .role,
             .icon-arrow-bottom {
-                @include font-type(text);
+                @include font-type(regular);
                 color: currentColor;
                 fill: currentColor;
             }
@@ -44,11 +44,11 @@
             width: .6rem;
         }
         .points {
-            @include font-type(light);
+            @include font-type(regular);
             color: $gray;
         }
         .role {
-            @include font-type(light);
+            @include font-type(regular);
         }
     }
     .popover {

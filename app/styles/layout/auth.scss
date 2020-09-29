@@ -25,7 +25,7 @@
     }
     .logo {
         @include font-size(xxlarge);
-        @include font-type(light);
+        @include font-type(regular);
         color: $white;
         display: block;
         margin-bottom: 1rem;

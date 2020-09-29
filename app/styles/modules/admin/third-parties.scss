@@ -6,13 +6,13 @@
     }
     input,
     textarea {
-        @include font-type(text);
+        @include font-type(regular);
     }
     fieldset {
         margin-bottom: 1rem;
     }
     label {
-        @include font-type(text);
+        @include font-type(regular);
         display: block;
         margin-bottom: .2rem;
     }

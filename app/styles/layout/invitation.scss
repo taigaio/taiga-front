@@ -21,7 +21,7 @@
         flex-direction: column;
         .person-name {
             @include font-size(large);
-            @include font-type(light);
+            @include font-type(regular);
             color: $white;
         }
         img {
@@ -31,7 +31,7 @@
     }
     .invitation-text {
         @include font-size(large);
-        @include font-type(light);
+        @include font-type(regular);
         color: $white;
         text-align: center;
         .project-name {
@@ -74,7 +74,7 @@
         text-align: center;
         .form-header {
             @include font-size(large);
-            @include font-type(light);
+            @include font-type(regular);
             color: $white;
         }
     }

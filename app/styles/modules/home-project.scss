@@ -50,7 +50,7 @@
         @include list-itemtype-track;
     }
     .description {
-        @include font-type(light);
+        @include font-type(regular);
         @include font-size(medium);
         margin: 0;
     }
@@ -59,8 +59,8 @@
     }
     .title {
         @include font-size(medium);
-        @include font-type(text);
-        @include font-type(semibold);
+        @include font-type(regular);
+        @include font-type(medium);
         align-content: center;
         background: $mass-white;
         display: flex;
@@ -94,7 +94,7 @@
         }
         p {
             @include font-size(small);
-            @include font-type(light);
+            @include font-type(regular);
             margin-bottom: .5rem;
         }
         a {

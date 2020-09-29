@@ -10,11 +10,11 @@
         text-transform: uppercase;
     }
     p {
-        @include font-type(light);
+        @include font-type(regular);
         margin: 0;
     }
     a {
-        @include font-type(light);
+        @include font-type(regular);
         color: $primary;
     }
 }

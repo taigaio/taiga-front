@@ -23,16 +23,13 @@
 }
 
 @mixin font-type($type) {
-    @if $type == title {
+    @if $type == regular {
         font-family: 'Ubuntu-Regular', Arial, Helvetica, sans-serif;
-    } @else if $type == light {
-        font-family: 'Ubuntu-Light', Arial, Helvetica, sans-serif;
-    } @else if $type == text {
-        font-family: 'Ubuntu-Regular', Arial, Helvetica, sans-serif;
-    } @else if $type == semibold {
+    } @else if $type == medium {
         font-family: 'Ubuntu-Medium', Arial, Helvetica, sans-serif;
     } @else if $type == bold {
-        font-family: 'Ubuntu-Bold', Arial, Helvetica, sans-serif;
+        font-family: 'Ubuntu-Medium', Arial, Helvetica, sans-serif;
+        font-weight: bold;
     } @else if $type == mono {
         font-family: 'courier new', 'monospace';
     } @else {

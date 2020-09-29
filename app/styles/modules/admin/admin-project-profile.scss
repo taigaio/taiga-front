@@ -3,7 +3,7 @@
     @include profile-form;
     .looking-for-people,
     .get-feedback {
-        @include font-type(light);
+        @include font-type(regular);
         border-bottom: 1px solid $whitish;
         padding: 1rem 0;
     }
@@ -95,13 +95,13 @@
         }
     }
     .privacy-project + label {
-        @include font-type(text);
+        @include font-type(regular);
         display: inline-flex;
         width: 100%;
     }
     .privacy-project:checked {
         + label {
-            @include font-type(text);
+            @include font-type(regular);
             background: $primary-light;
             color: $white;
             svg {
@@ -115,7 +115,7 @@
     }
     .privacy-project[disabled] {
         + label {
-            @include font-type(text);
+            @include font-type(regular);
             background: $mass-white;
             box-shadow: none;
             color: $gray-light;
@@ -178,7 +178,7 @@ tg-admin-project-restrictions {
         color: $gray-light;
     }
     .owner-name {
-        @include font-type(semibold);
+        @include font-type(medium);
     }
     .owner-avatar {
         width: 2.5rem;

@@ -10,7 +10,7 @@
         margin-right: .25rem;
     }
     .title {
-        @include font-type(semibold);
+        @include font-type(medium);
         @include font-size(larger);
         text-transform: uppercase;
     }

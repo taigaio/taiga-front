@@ -112,7 +112,7 @@ $dropdown-width: 260px;
             padding-left: 1rem;
 
             a {
-                @include font-type(semibold);
+                @include font-type(medium);
                 padding: 0;
             }
             p {
@@ -121,7 +121,7 @@ $dropdown-width: 260px;
         }
 
         .full-name {
-            @include font-type(semibold);
+            @include font-type(medium);
             color: $color-black900;
         }
 
@@ -139,7 +139,7 @@ $dropdown-width: 260px;
         }
 
         .user-profile-option {
-            @include font-type(semibold);
+            @include font-type(medium);
 
             &:last-child {
                 border-top: 1px solid $color-solid-primary;
@@ -222,7 +222,7 @@ $dropdown-width: 260px;
         }
     }
     a {
-        @include font-type(semibold);
+        @include font-type(medium);
 
         display: block;
         padding: .8rem .5rem;
@@ -360,7 +360,7 @@ $dropdown-width: 260px;
             overflow-y: auto;
         }
         .notifications-bottom {
-            @include font-type(semibold);
+            @include font-type(medium);
             @include font-size(small);
 
             border-top: 1px solid $color-solid-primary;

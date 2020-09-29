@@ -28,7 +28,7 @@
     }
     input {
         @include font-size(medium);
-        @include font-type(text);
+        @include font-type(regular);
         background-color: $whitish;
         width: 243px;
         @include placeholder {

@@ -53,7 +53,7 @@
         transition: opacity .1s;
     }
     .epic-pill {
-        @include font-type(light);
+        @include font-type(regular);
         @include font-size(xsmall);
         background: $grayer;
         border-radius: .25rem;
@@ -112,7 +112,7 @@
         color: $gray-light;
     }
     .epic-statuses {
-        @include font-type(light);
+        @include font-type(regular);
         @include font-size(small);
         background: rgba($blackish, .9);
         border-bottom: 1px solid $grayer;

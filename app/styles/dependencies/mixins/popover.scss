@@ -11,7 +11,7 @@
     $arrow-height: 15px,
     $align: 'center'
 ) {
-    @include font-type(light);
+    @include font-type(regular);
     @include font-size(small);
     background: $white;
     border: 1px solid $color-gray400;

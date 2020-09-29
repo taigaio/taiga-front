@@ -37,7 +37,7 @@
 .button-green,
 .button-gray,
 .button-red {
-    @include font-type(light);
+    @include font-type(regular);
 }
 .button-green,
 .button-gray {

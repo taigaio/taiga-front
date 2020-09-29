@@ -24,14 +24,14 @@ $summary-background: $grayer;
     }
     .number {
         @include font-size(xlarge);
-        @include font-type(light);
+        @include font-type(regular);
         line-height: .9;
         margin-right: .3rem;
     }
 
     .description {
         @include font-size(small);
-        @include font-type(light);
+        @include font-type(regular);
         line-height: 1;
     }
     .stats {
@@ -211,13 +211,13 @@ $summary-background: $grayer;
         }
         .role {
             @include font-size(xsmall);
-            @include font-type(light);
+            @include font-type(regular);
         }
     }
 }
 
 .empty-burndown {
-    @include font-type(light);
+    @include font-type(regular);
     align-content: center;
     align-items: center;
     background: $grey-02;
@@ -240,14 +240,14 @@ $summary-background: $grayer;
         flex: 1;
     }
     .title {
-        @include font-type(semibold);
+        @include font-type(medium);
         @include font-size(large);
         color: $primary-dark;
         margin: 0;
         text-transform: uppercase;
     }
     a {
-        @include font-type(semibold);
+        @include font-type(medium);
         animation: blink 2s infinite;
     }
 }

@@ -38,7 +38,7 @@
         justify-content: center;
     }
     &-description {
-        @include font-type(light);
+        @include font-type(regular);
         margin-bottom: 0;
         a {
             color: $primary;

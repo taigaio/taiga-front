@@ -13,7 +13,7 @@
     justify-content: center;
     min-height: calc(100vh - 40px);
     .transfer-title {
-        @include font-type(light);
+        @include font-type(regular);
     }
     &-detail {
         align-items: center;
@@ -30,7 +30,7 @@
         width: 4rem;
     }
     &-title {
-        @include font-type(light);
+        @include font-type(regular);
         @include font-size(larger);
         margin-bottom: .25rem;
     }

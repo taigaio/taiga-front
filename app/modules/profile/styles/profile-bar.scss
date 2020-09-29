@@ -23,7 +23,7 @@
     }
     .profile-edition {
         @include font-size(large);
-        @include font-type(light);
+        @include font-type(regular);
         background: rgba($black, .4);
         bottom: 0;
         color: $white;
@@ -64,7 +64,7 @@
         }
     }
     h1 {
-        @include font-type(semibold);
+        @include font-type(medium);
         @include font-size(xlarge);
         line-height: 1.2;
         margin-bottom: .25rem;
@@ -75,14 +75,14 @@
         word-wrap: break-word;
     }
     h2 {
-        @include font-type(light);
+        @include font-type(regular);
         @include font-size(larger);
         color: $gray;
         line-height: 1.2;
         margin-bottom: 1rem;
     }
     .username {
-        @include font-type(light);
+        @include font-type(regular);
         @include font-size(large);
         color: $gray-light;
         margin-bottom: 1rem;
@@ -113,18 +113,18 @@
         }
         .stat-number {
             @include font-size(xlarge);
-            @include font-type(semibold);
+            @include font-type(medium);
             display: block;
             line-height: 1;
         }
         .stat-name {
-            @include font-type(text);
+            @include font-type(regular);
             @include font-size(small);
             display: block;
         }
     }
     .profile-quote {
-        @include font-type(light);
+        @include font-type(regular);
         @include font-size(large);
         background: url('../images/quote.png') no-repeat top left;
         line-height: 1.4;

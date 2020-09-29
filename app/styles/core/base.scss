@@ -14,7 +14,7 @@ html {
     width: 100%;
 }
 body {
-    @include font-type(text);
+    @include font-type(regular);
     line-height: 1.25;
     min-height: 100%;
     outline: 1px dotted $color-link-primary;

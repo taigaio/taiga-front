@@ -1,6 +1,6 @@
 .profile-sidebar {
     h4 {
-        @include font-type(semibold);
+        @include font-type(medium);
         background: $mass-white;
         color: $gray;
         margin-bottom: .5rem;

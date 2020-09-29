@@ -167,9 +167,9 @@
         margin-bottom: 0;
 
         > div {
-            @include font-type(text);
+            @include font-type(regular);
             @include font-size(xsmall);
-            @include font-type(semibold);
+            @include font-type(medium);
 
             color: $color-link-tertiary;
             flex-wrap: nowrap;
@@ -311,7 +311,7 @@
     }
     .user-story-link {
         @include font-size(small);
-        @include font-type(text);
+        @include font-type(regular);
         &:hover {
             .user-story-name {
                 color: $color-link-primary;

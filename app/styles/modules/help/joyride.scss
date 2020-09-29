@@ -19,7 +19,7 @@
         margin-bottom: .5rem;
     }
     p {
-        @include font-type(light);
+        @include font-type(regular);
         line-height: 1.4;
         margin-bottom: 0;
     }

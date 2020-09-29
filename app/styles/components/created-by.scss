@@ -16,7 +16,7 @@
     .created-by {
         .created-title,
         .created-date {
-            @include font-type(light);
+            @include font-type(regular);
             @include font-size(small);
             color: $gray;
             display: block;

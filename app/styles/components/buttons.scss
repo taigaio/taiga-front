@@ -1,6 +1,6 @@
 .button,
 %button {
-    @include font-type(semibold);
+    @include font-type(medium);
     @include font-size(small);
     align-items: center;
     background: transparent;
@@ -156,7 +156,7 @@
 }
 .button-auth {
     @extend %button;
-    @include font-type(light);
+    @include font-type(regular);
     background: $grayer;
     display: flex;
     width: 100%;

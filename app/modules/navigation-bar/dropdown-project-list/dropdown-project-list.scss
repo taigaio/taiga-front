@@ -15,7 +15,7 @@
     }
 
     .dropdown-project-list-link {
-        @include font-type(semibold);
+        @include font-type(medium);
 
         align-items: center;
         display: flex;
@@ -38,26 +38,23 @@
     }
 
     .see-more-projects-btn {
-        @include font-type(semibold);
+        @include font-type(medium);
 
         color: $color-link-primary;
     }
 
     .create-project-btn {
         @include font-size(small);
-
-        padding: 0;
+        padding: .3rem 0;
 
         span {
-            @include font-type(bold);
-
             color: $color-black600;
         }
         svg {
             @include svg-size(1.5rem);
 
             fill: $color-black900;
-            margin: .25rem .25rem 0 0;
+            margin: 0 .25rem 0 0;
             stroke: $color-black900;
         }
 
@@ -81,7 +78,7 @@
 
     h2 {
         @include font-size(medium);
-        @include font-type(semibold);
+        @include font-type(medium);
 
         margin-bottom: .5rem;
     }
@@ -119,7 +116,7 @@
 }
 
 .dropdown-project-list-projects {
-    @include font-type(semibold);
+    @include font-type(medium);
 
     align-items: center;
     display: flex;

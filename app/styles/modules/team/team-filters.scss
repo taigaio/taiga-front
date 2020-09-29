@@ -5,7 +5,7 @@
     }
     li {
         @include font-size(large);
-        @include font-type(text);
+        @include font-type(regular);
         border-bottom: 1px solid $gray-light;
         text-transform: uppercase;
         &:last-child {

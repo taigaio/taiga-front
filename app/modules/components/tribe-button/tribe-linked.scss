@@ -66,12 +66,12 @@
             margin-bottom: 0;
         }
         .gig-title {
-            @include font-type(light);
+            @include font-type(regular);
             color: $tribe-primary;
             margin-bottom: .5rem;
         }
         .delete-link {
-            @include font-type(light);
+            @include font-type(regular);
             @include font-size(small);
             color: $primary;
             display: block;

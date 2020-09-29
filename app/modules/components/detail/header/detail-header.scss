@@ -102,7 +102,7 @@
 
 .edit-title-wrapper {
     @include font-size(larger);
-    @include font-type(text);
+    @include font-type(regular);
     display: flex;
     flex: 1;
     margin-right: 1.5rem;
@@ -124,7 +124,7 @@
 }
 
 .detail-project {
-    @include font-type(text);
+    @include font-type(regular);
     display: flex;
     margin: 0 0 1rem;
     text-transform: uppercase;
@@ -137,7 +137,7 @@
 .block-desc-container {
     padding: .25rem 0;
     .block-description-title {
-        @include font-type(semibold);
+        @include font-type(medium);
         background: $white;
         color: $red-light;
         margin-right: .5rem;

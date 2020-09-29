@@ -62,6 +62,6 @@
     }
     .invite-members-single-help {
         @include font-size(small);
-        @include font-type(light);
+        @include font-type(regular);
     }
 }

@@ -45,7 +45,7 @@
         display: block;
     }
     .title-bar {
-        @include font-type(light);
+        @include font-type(regular);
         @include font-size(large);
         align-content: center;
         background: $mass-white;

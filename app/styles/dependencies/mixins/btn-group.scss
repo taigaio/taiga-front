@@ -13,7 +13,7 @@
         }
     }
     label {
-        @include font-type(semibold);
+        @include font-type(medium);
         align-items: center;
         background: $mass-white;
         cursor: pointer;

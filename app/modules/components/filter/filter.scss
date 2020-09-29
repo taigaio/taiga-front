@@ -22,7 +22,7 @@ tg-filter {
 
     .custom-filters-title {
         @include font-size(small);
-        @include font-type(semibold);
+        @include font-type(medium);
     }
 
     .name {
@@ -39,7 +39,7 @@ tg-filter {
 
     .add-custom-filter {
         @include font-size(small);
-        @include font-type(semibold);
+        @include font-type(medium);
         background: none;
         color: $color-link-primary;
         padding: 0;
@@ -165,7 +165,7 @@ tg-filter {
 }
 
 .filters-title {
-    @include font-type(semibold);
+    @include font-type(medium);
 }
 
 .filters-included {
@@ -317,7 +317,7 @@ tg-filter {
         border-bottom: none;
     }
     &.selected {
-        @include font-type(semibold);
+        @include font-type(medium);
         background-color: $color-gray200;
         color: $color-black900;
     }

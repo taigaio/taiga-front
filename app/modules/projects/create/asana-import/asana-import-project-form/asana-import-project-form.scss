@@ -51,7 +51,7 @@
     }
 
     &-description {
-        @include font-type(light);
+        @include font-type(regular);
         @include font-size(small);
     }
 }

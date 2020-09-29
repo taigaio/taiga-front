@@ -22,7 +22,7 @@
     }
     .warning {
         @include font-size(large);
-        @include font-type(semibold);
+        @include font-type(medium);
         color: $white;
         line-height: 1.2;
     }
@@ -84,7 +84,7 @@
     }
     .warning {
         @include font-size(xlarge);
-        @include font-type(semibold);
+        @include font-type(medium);
         color: $white;
         line-height: 2.4rem;
     }
@@ -141,7 +141,7 @@
         transition: all .6s;
     }
     p {
-        @include font-type(light);
+        @include font-type(regular);
         @include font-size(small);
         margin: 0;
     }

@@ -14,7 +14,7 @@
         justify-content: flex-end;
     }
     .attribute {
-        @include font-type(light);
+        @include font-type(regular);
         flex: 1;
         position: relative;
         text-align: center;
@@ -24,7 +24,7 @@
         }
         .points {
             @include font-size(larger);
-            @include font-type(light);
+            @include font-type(regular);
             color: $grayer;
         }
         .top {
@@ -54,8 +54,8 @@
         }
     }
     .team-header {
-        @include font-type(text);
-        @include font-type(semibold);
+        @include font-type(regular);
+        @include font-type(medium);
         border-bottom: 0;
     }
     .hero {
@@ -91,10 +91,10 @@
             width: 100%;
         }
         .name {
-            @include font-type(semibold);
+            @include font-type(medium);
         }
         .position {
-            @include font-type(light);
+            @include font-type(regular);
             color: $gray-light;
         }
     }

@@ -77,7 +77,7 @@
             margin-bottom: 0;
         }
         a {
-            @include font-type(semibold);
+            @include font-type(medium);
             &.user-link,
             &.project-link {
                 color: $color-black600;
@@ -95,7 +95,7 @@
             }
         }
         .entry-project {
-            @include font-type(semibold);
+            @include font-type(medium);
             display: inline-block;
             font-size: .9rem;
             max-width: 200px;

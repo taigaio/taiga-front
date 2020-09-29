@@ -49,7 +49,7 @@
         }
     }
     .title {
-        @include font-type(semibold);
+        @include font-type(medium);
         @include font-size(larger);
         color: $grayer;
         display: inline-block;
@@ -86,7 +86,7 @@
             margin: 1rem auto;
         }
         span {
-            @include font-type(light);
+            @include font-type(regular);
             color: $gray;
             display: block;
         }
@@ -163,7 +163,7 @@
     }
     .project-title {
         @include font-size(large);
-        @include font-type(text);
+        @include font-type(regular);
         display: inline-block;
         margin-bottom: .5rem;
         a {

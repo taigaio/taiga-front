@@ -29,7 +29,7 @@
         text-transform: uppercase;
     }
     p {
-        @include font-type(light);
+        @include font-type(regular);
         color: $gray;
         margin: 0;
     }
@@ -41,10 +41,10 @@
 
     .title {
         @include font-size(large);
-        @include font-type(semibold);
+        @include font-type(medium);
     }
     p {
-        @include font-type(light);
+        @include font-type(regular);
         color: $gray;
         margin-bottom: 1.5rem;
     }

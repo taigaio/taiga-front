@@ -4,7 +4,7 @@
     padding: 1rem;
     h1 {
         @include font-size(xlarge);
-        @include font-type(text);
+        @include font-type(regular);
         font-size: 2.25em;
         line-height: 1.2;
         margin-bottom: 1rem;
@@ -14,7 +14,7 @@
     }
     h2 {
         @include font-size(larger);
-        @include font-type(semibold);
+        @include font-type(medium);
         line-height: 1.225;
         margin-bottom: 1rem;
         margin-top: 1rem;
@@ -22,13 +22,13 @@
     }
     h3 {
         @include font-size(large);
-        @include font-type(semibold);
+        @include font-type(medium);
         margin-bottom: 1rem;
         margin-top: 1rem;
         padding-bottom: .5rem;
     }
     h4 {
-        @include font-type(semibold);
+        @include font-type(medium);
         margin-bottom: 1rem;
         margin-top: 1rem;
     }

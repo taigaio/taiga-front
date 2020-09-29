@@ -14,7 +14,7 @@
           @include font-size(small);
         }
         .mumble {
-            @include font-type(light);
+            @include font-type(regular);
             margin-left: .25rem;
         }
     }
@@ -70,7 +70,7 @@
     }
 
     &-limit {
-        @include font-type(light);
+        @include font-type(regular);
         @include font-size(small);
         color: $gray;
     }
@@ -120,7 +120,7 @@
     }
 
     &-type {
-        @include font-type(semibold);
+        @include font-type(medium);
         align-items: center;
         display: flex;
         justify-content: center;
@@ -171,12 +171,12 @@
         }
 
         &-template {
-            @include font-type(semibold);
+            @include font-type(medium);
             text-transform: uppercase;
         }
 
         &-description {
-            @include font-type(light);
+            @include font-type(regular);
         }
 
         &-long-description {

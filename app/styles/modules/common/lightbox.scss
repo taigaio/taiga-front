@@ -2,7 +2,7 @@
     @include lightbox;
     h2 {
         @include font-size(xlarge);
-        @include font-type(light);
+        @include font-type(regular);
     }
 }
 
@@ -226,7 +226,7 @@
     }
     .subtitle {
         @include font-size(large);
-        @include font-type(text);
+        @include font-type(regular);
         white-space: pre-line;
     }
     .options {
@@ -256,7 +256,7 @@
     }
     .subtitle {
         @include font-size(large);
-        @include font-type(text);
+        @include font-type(regular);
     }
     .replacement {
         display: block;
@@ -279,7 +279,7 @@
         }
     }
     .warning {
-        @include font-type(semibold);
+        @include font-type(medium);
     }
 }
 
@@ -305,7 +305,7 @@
             margin-right: .5rem;
             +label {
                 @include font-size(small);
-                @include font-type(text);
+                @include font-type(regular);
             }
         }
     }
@@ -336,7 +336,7 @@
     }
     .subtitle {
         @include font-size(large);
-        @include font-type(text);
+        @include font-type(regular);
     }
     .options {
         display: flex;
@@ -402,8 +402,8 @@
             transition: width .1s linear;
         }
         .progress {
-            @include font-type(text);
-            @include font-type(semibold);
+            @include font-type(regular);
+            @include font-type(medium);
             @include font-size(large);
             background: darken($whitish, 5%);
             bottom: 35px;
@@ -476,7 +476,7 @@
         }
     }
     .more-watchers {
-        @include font-type(text);
+        @include font-type(regular);
         @include font-size(medium);
         padding: .5rem;
         text-align: center;
@@ -666,7 +666,7 @@
     .existing-item-wrapper {
         margin-bottom: $spacing * 2;
         select .strong {
-            @include font-type(semibold);
+            @include font-type(medium);
         }
     }
     .add-existing-button {
@@ -779,7 +779,7 @@
 
         span {
             @include font-size(small);
-            @include font-type(light);
+            @include font-type(regular);
             color: $gray;
             margin: .2rem .5rem;
         }
@@ -834,7 +834,7 @@
             width: 32px;
         }
         .user-list-name {
-            @include font-type(text);
+            @include font-type(regular);
             flex-grow: 1;
             position: relative;
         }
