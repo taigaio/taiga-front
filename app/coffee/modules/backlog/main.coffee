@@ -867,10 +867,15 @@ UsEditSelector = ($rootscope, $tgTemplate, $compile, $translate) ->
     link = ($scope, $el, $attrs) ->
         $ctrl = $el.controller()
 
+        removePopupOpenState = () ->
+            $el.removeClass('popover-open')
+            $(this).remove()
+
         $el.on "click", (event) ->
             html = $compile(mainTemplate())($scope)
+            $el.addClass('popover-open')
             $el.append(html)
-            $el.find(".us-option-popup").popover().open(() -> $(this).remove())
+            $el.find(".us-option-popup").popover().open(() -> removePopupOpenState())
 
         $scope.$on "$destroy", ->
             $el.off()

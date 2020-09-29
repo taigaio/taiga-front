@@ -23,7 +23,7 @@
         .draggable-us-row {
             flex-grow: 0;
             flex-shrink: 0;
-            margin-inline-end: .25rem;
+            margin-inline-end: .5rem;
             tg-svg {
                 svg {
                     @include svg-size(1rem);
@@ -341,6 +341,7 @@
     }
     .blocked {
         background: $color-solid-red;
+        .user-story-name,
         a {
             color: $color-black900 !important; /* stylelint-disable-line declaration-no-important */
             &:hover {
@@ -375,18 +376,15 @@
         color: $color-black900;
         padding: .25rem;
     }
-    // .points-value {
-
-    //     span {
-    //         color: $color-link-tertiary;
-    //     }
-    // }
     .us-option {
         display: flex;
         flex-basis: auto;
         flex-grow: 0;
         flex-shrink: 0;
         justify-content: center;
+        &.popover-open {
+            background: $color-gray400;
+        }
     }
     .us-option-popup {
         @include popover(145px, 40px, '', '', 1rem);
@@ -411,6 +409,7 @@
     .us-option-popup-button {
         appearance: none;
         background: transparent;
+        border-radius: 2px;
         cursor: pointer;
         padding: .25rem 0;
         &:hover {
