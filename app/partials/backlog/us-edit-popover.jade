@@ -1,0 +1,15 @@
+ul.popover.us-option-popup
+    li
+        button.e2e-edit.edit-story(
+            ng-click="ctrl.editUserStory(us.project, us.ref, $event)"
+            tg-check-permission="modify_us"
+        )
+            tg-svg(svg-icon="icon-edit")
+            span {{'COMMON.EDIT' | translate}}
+    li
+        button.e2e-delete(
+            ng-click="ctrl.deleteUserStory(us)"
+            tg-check-permission="delete_us"
+        )
+            tg-svg(svg-icon="icon-trash")
+            span {{'COMMON.DELETE' | translate}}

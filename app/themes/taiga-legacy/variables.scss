@@ -92,11 +92,18 @@ $color-black800: #3B4252;
 $color-black900: #2E3440;
 
 // State colors
-$color-solid-red: #E44057;
-$color-solid-orange: #EA7B4B;
-$color-solid-yellow: #F6C95C;
-$color-solid-green: #93C45D;
-$color-solid-purple: #CA81BE;
+$color-link-red: #E44057;
+$color-link-orange: #EA7B4B;
+$color-link-yellow: #F6C95C;
+$color-link-green: #93C45D;
+$color-link-purple: #CA81BE;
+
+// State colors
+$color-solid-red: rgba($color-link-red, .25);
+$color-solid-orange: rgba($color-link-orange, .25);
+$color-solid-yellow: rgba($color-link-yellow, .25);
+$color-solid-green: rgba($color-link-green, .25);
+$color-solid-purple: rgba($color-link-purple, .25);
 
 $color-white: #FFFFFF;
 $color-black: #000000;

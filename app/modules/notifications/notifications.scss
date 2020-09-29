@@ -120,7 +120,7 @@
                 position: relative;
                 &::after {
                     @include font-type(bold);
-                    background: $color-solid-red;
+                    background: $color-link-red;
                     border-radius: 50%;
                     content: '';
                     height: 6px;

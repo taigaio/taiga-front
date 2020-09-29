@@ -309,7 +309,7 @@
     .selected-filters {
         @include font-size(xsmall);
         align-items: center;
-        background-color: $color-solid-red;
+        background-color: $color-link-red;
         border-radius: 50%;
         color: $color-white;
         display: flex;

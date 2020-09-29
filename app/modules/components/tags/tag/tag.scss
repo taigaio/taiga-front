@@ -6,14 +6,13 @@
     background: $color-link-tertiary;
     border-radius: 2px;
     color: $color-white;
-    margin-block-start: .5rem;
     margin-inline-end: .25rem;
     padding: .1rem .25rem;
     text-align: center;
     .icon-close {
         @include svg-size(.7rem);
         cursor: pointer;
-        fill: $color-solid-red;
+        fill: $color-link-red;
         margin-inline-start: .25rem;
     }
     .loading-spinner {

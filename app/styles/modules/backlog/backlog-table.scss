@@ -21,24 +21,22 @@
     .backlog-table-title,
     .row {
         .draggable-us-row {
-            flex-basis: 25px;
             flex-grow: 0;
             flex-shrink: 0;
-            height: 22px;
-
+            margin-inline-end: .25rem;
             tg-svg {
-                justify-content: flex-start;
                 svg {
-                    @include svg-size(1.4rem);
+                    @include svg-size(1rem);
+                    fill: $color-link-primary;
                 }
             }
         }
         .input {
             align-items: center;
             display: flex;
-            flex-basis: 25px;
             flex-grow: 0;
             flex-shrink: 0;
+            margin-inline-end: .75rem;
         }
         .user-stories {
             flex: 1;
@@ -128,6 +126,7 @@
             }
         }
     }
+
     .pop-points {
         @include popover(150px, '', 30px, 10px, '');
         padding-right: 3rem;
@@ -269,10 +268,7 @@
         flex-wrap: nowrap;
         position: relative;
         &:hover:not(.blocked) {
-            background-color: $primary-10;
-            .us-settings {
-                opacity: 1;
-            }
+            background-color: $color-gray200;
         }
         &:last-child {
             border-bottom: 0;
@@ -292,13 +288,15 @@
             }
         }
         .icon-arrow-down {
+            @include svg-size(1rem);
             fill: $gray-light;
-            height: .7rem;
-            width: .7rem;
         }
     }
     .gu-transit {
         background: $color-gray100;
+    }
+    .user-story-main-data {
+        margin-top: -.1rem;
     }
     .sortable-placeholder {
         background: $mass-white;
@@ -314,52 +312,46 @@
             transition: color .2s ease-in;
         }
     }
-    .user-story-main-data {
-        @include font-type(light);
-        align-items: flex-start;
-        display: flex;
-        flex-wrap: wrap;
-    }
-    .user-story-number,
-    .user-story-name {
+    .user-story-link {
         @include font-size(small);
         @include font-type(text);
+        &:hover {
+            .user-story-name {
+                color: $color-link-primary;
+            }
+        }
     }
     .user-story-number {
         color: $color-link-primary;
-        margin-block-start: .5rem;
-        margin-inline-end: .5rem;
+        margin-inline-end: .25rem;
     }
     .user-story-name {
         color: $color-black600;
-        margin-block-start: .5rem;
-        margin-inline-end: 1rem;
+        margin-inline-end: .5rem;
+    }
+    .due-date-icon {
+        margin-block-start: -.25rem;
+        margin-inline-end: .5rem;
+        position: relative;
+        top: .25rem;
     }
     .tag {
-        &:last-of-type {
+        position: relative;
+        top: .25rem;
+        &.last {
             margin-inline-end: .75rem;
         }
     }
-    .epics {
-        margin-top: .5rem;
+    .belong-to-epic-pill {
+        position: relative;
+        top: .1rem;
     }
     .blocked {
-        background: $red-light;
-        border-bottom: 1px solid $white;
-        color: $white;
+        background: $color-solid-red;
         a {
-            color: $white !important; /* stylelint-disable-line declaration-no-important */
+            color: $color-black900 !important; /* stylelint-disable-line declaration-no-important */
             &:hover {
-                color: $white;
-            }
-        }
-        .icon,
-        .icon:hover,
-        .due-date-icon {
-            fill: $white;
-            stroke: $white;
-            &:hover {
-                color: $white;
+                color: $color-black900;
             }
         }
     }
@@ -381,8 +373,11 @@
         padding-right: 45px;
     }
     .us-status {
+        @include font-size(small);
+        align-items: center;
+        display: inline-flex;
         tg-svg {
-            display: inline-block;
+            margin-inline-start: .25rem;
         }
     }
     .loading {
@@ -394,18 +389,45 @@
             max-width: 3rem;
         }
     }
-}
-
-.us-item-row {
     .us-option {
-        flex-basis: 50px;
+        display: flex;
+        flex-basis: auto;
         flex-grow: 0;
         flex-shrink: 0;
-        text-align: center;
-
+        justify-content: center;
+    }
+    .us-option-popup {
+        @include popover(145px, 40px, '', '', 1rem);
+        button {
+            appearance: none;
+            background: none;
+            color: $color-link-primary;
+            display: flex;
+            padding: .25rem;
+            width: 100%;
+            &:hover {
+                background: $color-gray200;
+                color: $color-link-tertiary;
+            }
+            svg {
+                @include svg-size(1rem);
+                fill: $color-link-primary;
+                margin-inline-end: .5rem;
+            }
+        }
+    }
+    .us-option-popup-button {
+        appearance: none;
+        background: transparent;
+        cursor: pointer;
+        padding: .25rem 0;
+        &:hover {
+            background: $color-gray400;
+        }
         svg {
             fill: $color-link-primary;
         }
+
     }
 }
 

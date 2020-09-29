@@ -179,7 +179,7 @@ tg-filter {
 .filters-excluded {
     background: rgba(228, 64, 87, .06);
     .filters-title {
-        color: $color-solid-red;
+        color: $color-link-red;
     }
 }
 
@@ -222,7 +222,7 @@ tg-filter {
 
             &:hover {
                 svg {
-                    fill: $color-solid-red;
+                    fill: $color-link-red;
                 }
             }
         }

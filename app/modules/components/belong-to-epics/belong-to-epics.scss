@@ -53,11 +53,11 @@
 }
 
 .belong-to-epic-pill {
-    background-color: $mass-white;
+    background-color: $color-white;
     border-radius: 50%;
     display: inline-block;
-    height: .7rem;
-    margin: 0 .1rem;
+    height: .75rem;
+    margin-inline-end: .5rem;
     position: relative;
-    width: .7rem;
+    width: .75rem;
 }

@@ -5,7 +5,7 @@
 
     .icon-slash {
         fill: transparent;
-        stroke: $color-solid-red;
+        stroke: $color-link-red;
     }
 
     .dropdown-project-list-ul {
@@ -131,7 +131,7 @@
     }
 
     .empty-projects {
-        background: $color-solid-red;
+        background: $color-link-red;
         border-radius: 50%;
         height: 6px;
         margin-left: .5rem;

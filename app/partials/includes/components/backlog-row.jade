@@ -22,47 +22,32 @@
                 tabindex="0"
             )
     .user-stories.user-story-main-data
-        .user-story-number(tg-bo-ref="us.ref")
-        a.user-story-name.clickable(
+        a.user-story-link(
             href=""
             tg-nav="project-userstories-detail:project=project.slug,ref=us.ref"
             tg-nav-get-params="{\"no-milestone\": 1}"
         )
-            span(ng-bind-html="us.subject | emojify")
+            span.user-story-number(tg-bo-ref="us.ref")
+            span.user-story-name(ng-bind-html="us.subject | emojify")
         tg-due-date(
             due-date="us.due_date"
             is-closed="us.is_closed"
             ng-if="us.due_date"
             obj-type="us"
         )
-        .tag(
+        span.tag(
             ng-if="ctrl.showTags"
             ng-attr-title="{{tag[0]}}"
             ng-repeat="tag in us.tags"
             ng-style="{background: tag[1]}"
+            ng-class="{'last':$last}"
         ) {{tag[0]}}
-        tg-belong-to-epics(
-            class="epics"
-            format="pill"
-            ng-if="us.epics"
-            epics="us.epics"
+        - var hash = "#";
+        span.belong-to-epic-pill(
+            ng-repeat="epic in us.epics"
+            ng-style="{'background': epic.color}"
+            ng-attr-title="#{hash}{{epic.ref}} {{epic.subject}}"
         )
-        //- .us-settings
-        //-     a.e2e-edit.edit-story(
-        //-         href=""
-        //-         tg-check-permission="modify_us"
-        //-         ng-click="ctrl.editUserStory(us.project, us.ref, $event)"
-        //-         title="{{'COMMON.EDIT' | translate}}"
-        //-     )
-        //-         tg-svg(svg-icon="icon-edit")
-
-        //-     a.e2e-delete(
-        //-         href=""
-        //-         tg-check-permission="delete_us"
-        //-         ng-click="ctrl.deleteUserStory(us)"
-        //-         title="{{'COMMON.DELETE' | translate}}"
-        //-     )
-        //-         tg-svg(svg-icon="icon-trash")
 
     div.status(tg-us-status="us" on-update="ctrl.updateUserStoryStatus()")
         a.us-status(href="", title="{{'BACKLOG.STATUS_NAME' | translate}}")
@@ -75,5 +60,7 @@
     div.points(tg-backlog-us-points="us")
         a.us-points(href="", title="{{'COMMON.FIELDS.POINTS' | translate}}")
 
-    a.us-option(tg-check-permission="modify_us", href="", title="{{'COMMON.EDIT' | translate}}")
-        tg-svg(svg-icon="icon-more-vertical")
+    .us-option(tg-us-edit-selector, tg-check-permission="modify_us")
+        button.us-option-popup-button
+            tg-svg(svg-icon="icon-more-vertical")
+

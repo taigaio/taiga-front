@@ -858,6 +858,28 @@ BacklogDirective = ($repo, $rootscope, $translate, $rs) ->
 module.directive("tgBacklog", ["$tgRepo", "$rootScope", "$translate", "$tgResources", BacklogDirective])
 
 #############################################################################
+## User story edit directive
+#############################################################################
+
+UsEditSelector = ($rootscope, $tgTemplate, $compile, $translate) ->
+    mainTemplate = $tgTemplate.get("backlog/us-edit-popover.html", true)
+
+    link = ($scope, $el, $attrs) ->
+        $ctrl = $el.controller()
+
+        $el.on "click", (event) ->
+            html = $compile(mainTemplate())($scope)
+            $el.append(html)
+            $el.find(".us-option-popup").popover().open(() -> $(this).remove())
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {link: link}
+
+module.directive("tgUsEditSelector", ["$rootScope", "$tgTemplate", "$compile", "$translate", UsEditSelector])
+
+#############################################################################
 ## User story points directive
 #############################################################################
 

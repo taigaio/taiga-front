@@ -45,9 +45,7 @@
 }
 
 .due-date-icon {
-    display: inline-block;
-    margin: 0 .25rem;
-    position: relative;
+    display: inline;
     svg {
         fill: $gray-light;
         transition: fill .2s ease-in;
@@ -66,7 +64,6 @@
     }
 }
 
-.backlog-table-body .user-story-name,
 .related-tasks .task-name {
     .due-date-icon {
         top: .1rem;
