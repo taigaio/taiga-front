@@ -44,8 +44,12 @@
         @include font-type(medium);
     }
     p {
+        @include font-size(small);
         @include font-type(regular);
-        color: $gray;
         margin-bottom: 1.5rem;
+    }
+    strong {
+        @include font-type(medium);
+        font-weight: normal;
     }
 }

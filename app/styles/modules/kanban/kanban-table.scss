@@ -35,7 +35,8 @@ $fold-animation-duration: .1s;
         }
     }
     .vunfold {
-        tg-card {
+        tg-card,
+        .card-placeholder {
             // wait until unfold is completed to start the animation
             animation: card-unfold 0s forwards $fold-animation-duration;
             opacity: 0;
@@ -44,6 +45,9 @@ $fold-animation-duration: .1s;
     }
     .vfold {
         tg-card {
+            display: none;
+        }
+        .card-placeholder {
             display: none;
         }
         &.task-colum-name {
