@@ -1,18 +1,19 @@
 .card-inner(
+    ng-attr-title="{{ vm.zoomLevel == 0 ? (vm.item.getIn(['model', 'subject']) | emojify) : vm.item.getIn(['model', 'blocked_note']) }}"
     class="{{'zoom-' + vm.zoomLevel}}"
-    ng-class="{'card-blocked': vm.item.getIn(['model', 'is_blocked']), 'archived': vm.archived}"
+    ng-class="{'card-blocked': vm.item.getIn(['model', 'is_blocked']), 'archived': vm.archived, 'with-assigned-user': vm.item.get('assigned_users').size}"
 )
     include card-templates/card-tags
-    include card-templates/card-owner
-    div(ng-if="vm.visible('owner')")
-        include card-templates/card-title
+    include card-templates/card-epics
+    include card-templates/card-title
+    include card-templates/card-assigned-to
     include card-templates/card-data
-    include card-templates/card-completion
-    include card-templates/card-tasks
     tg-card-slideshow(
         ng-if="vm.isSlideshowVisible()"
+        tg-check-permission="view_tasks"
         images="vm.item.get('images')"
     )
+    include card-templates/card-tasks
     include card-templates/card-unfold
 
 .card-transit-multi

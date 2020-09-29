@@ -1,6 +1,6 @@
 //Table basic shared vars
 $title-height: 36px;
-$column-width: 296px;
+$column-width: 275px;
 $column-folded-width: 36px;
 $column-flex: 0;
 $column-shrink: 0;
@@ -27,10 +27,7 @@ $fold-animation-duration: .1s;
     &.zoom-0 {
         .taskboard-column,
         .task-colum-name {
-            max-width: $column-width / 2;
-        }
-        .title {
-            max-width: 60px;
+            max-width: 215px;
         }
     }
     .vfold-remove-active,
@@ -190,7 +187,6 @@ $fold-animation-duration: .1s;
         max-width: $column-width;
         overflow-y: auto;
         transition: all .1s linear;
-        widows: $column-width;
         width: $column-width;
         &:last-child {
             margin-right: 0;

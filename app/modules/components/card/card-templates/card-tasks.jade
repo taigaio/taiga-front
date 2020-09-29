@@ -1,8 +1,14 @@
-ul.card-tasks(ng-if="vm.isRelatedTasksVisible()")
-    li.card-task(tg-repeat="task in vm.item.getIn(['model', 'tasks'])")
-        a(
-            href="#"
-            tg-nav="project-tasks-detail:project=vm.project.slug,ref=task.get('ref')",
-            ng-class="{'closed-task': task.get('is_closed'), 'blocked-task': task.get('is_blocked')}"
-            ng-bind-html="'#'+task.get('ref')+' '+task.get('subject') | emojify"
-        )
+.card-tasks(
+    tg-check-permission="view_tasks"
+    ng-if="vm.isRelatedTasksVisible()"
+)
+    ul
+        li.card-task(tg-repeat="task in vm.item.getIn(['model', 'tasks'])")
+            a(
+                href="#"
+                tg-nav="project-tasks-detail:project=vm.project.slug,ref=task.get('ref')",
+                ng-class="{'closed-task': task.get('is_closed'), 'blocked-task': task.get('is_blocked')}"
+            )
+                span.card-task-ref {{::"#" + task.get('ref')}}
+                span.card-task-subject(ng-bind-html="task.get('subject') | emojify")
+

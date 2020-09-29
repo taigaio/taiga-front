@@ -1,5 +1,10 @@
+$wrap-padding: 0 .5rem;
+$card-section-margin-bottom: .5rem;
+
 .card {
-    box-shadow: 2px 2px 4px darken($whitish, 10%);
+    background-color: $color-white;
+    border-radius: 4px;
+    box-shadow: 4px 4px 8px rgba($color-gray400, .5);
     cursor: move;
     display: block;
     margin: 1rem;
@@ -16,50 +21,55 @@
 }
 
 .card-inner {
-    background: $white;
+    background: $color-white;
     border-radius: .25rem;
+    padding-top: .75rem;
 
     .belong-to-epic-pill-wrapper {
         padding: 0;
     }
     &.zoom-0 {
+        display: flex;
+        padding: .5rem;
+
         .card-title {
-            flex: 1;
-            font-size: .9rem;
-            margin: 0;
+            margin: 0 .5rem 0 0;
+            order: -1;
             padding: 0;
+            white-space: nowrap;
         }
-        span {
-            padding: 0;
-        }
-        .belong-to-epic-pill {
-            height: .5rem;
-            padding: 0;
-            width: .5rem;
-        }
-    }
-    &.zoom-1 {
-        .card-title {
-            flex: 1;
-            font-size: .95rem;
-            margin: 0;
-            padding: .25rem .75rem .5rem;
-        }
-        .belong-to-epic-pill {
-            height: .5rem;
-            width: .5rem;
-        }
-        .card-owner-info {
+        .card-epics {
             align-items: flex-start;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            margin: 0 .5rem 0 0;
+            padding: .1rem 0 0 0;
+            row-gap: .25rem;
+        }
+        .card-epic {
+            margin: 0 .25rem 0 0;
+        }
+        .card-assigned-to {
+            justify-content: flex-end;
+            margin: 0 0 0 auto;
+            padding: 0;
+        }
+        &.with-assigned-user {
+            .card-title {
+                padding: .5rem 0 0 0;
+            }
+            .card-epics {
+                padding: .65rem 0 0 0;
+            }
         }
     }
     &.card-blocked {
-        background: $red-light;
-        .statistic,
+        background: $color-solid-red;
+        border: 1px solid $color-link-red;
         .card-title a,
         .card-owner-name,
         .card-estimation {
-            color: $white;
+            color: $color-black900;
         }
         .card-task a {
             &.blocked-task {
@@ -73,122 +83,197 @@
                 color: $white;
             }
         }
-        svg {
-            fill: $white;
-        }
-        .statistic {
-            &.active {
-                color: $white;
+        .card-actions {
+            /* stylelint-disable max-line-length */
+            background: linear-gradient(0deg, rgba($color-solid-red, .25), rgba($color-solid-red, .25)), rgba($color-white, .95);
+
+            a:hover,
+            button:hover {
+                background: linear-gradient(0deg, rgba($color-solid-red, .15), rgba($color-solid-red, .15)), $color-white;
             }
+            /* stylelint-enable max-line-length */
         }
-        .card-unfold {
-            &:hover {
-                background: rgba($red-light, .9);
-            }
+        .card-tasks ul {
+            /* stylelint-disable color-no-hex */
+            background: #ffdada;
+            border-color: #ffdada;
+            /* stylelint-enable color-no-hex */
         }
-        &.zoom-0,
-        &.zoom-1 {
-            .card-title {
-                color: $white;
-            }
-        }
-    }
-    &.zoom-2 {
-        .belong-to-epic-pill {
-            height: .6rem;
-            width: .6rem;
-        }
-        .card-title {
-            padding: .75rem .75rem .5rem;
+        .card-unfold svg {
+            fill: $color-link-primary;
         }
     }
 }
 
 .card-tags {
     display: flex;
+    flex-wrap: wrap;
+    margin-bottom: $card-section-margin-bottom;
+    padding: $wrap-padding;
+
     .card-tag {
+        @include font-size(xsmall);
+
+        border-radius: 2px;
+        color: $color-white;
         display: block;
-        flex: 1;
-        height: .5rem;
+        margin-block-end: .5rem;
+        margin-inline-end: .5rem;
+        min-height: 8px;
+        min-width: 40px;
+        overflow: hidden;
+        padding: 0 .25rem;
+        text-overflow: ellipsis;
 
+        &:last-child {
+            margin-inline-end: 0;
+        }
     }
 }
 
-.card-owner {
-    position: relative;
-    .card-owner-info {
-        align-items: center;
-        display: flex;
-        &.multiple .card-owner-avatar img {
-            margin-right: .45rem;
-        }
-    }
-    .card-owner-avatar {
-        line-height: 0;
-        position: relative;
-    }
-    .is-iocaine {
-        filter: hue-rotate(265deg) saturate(3);
-    }
-    &:hover {
-        .card-owner-actions {
-            opacity: 1;
-        }
-    }
-    img {
-        flex-shrink: 0;
-        height: 2.5rem;
-        margin-right: .5rem;
-        width: 2.5rem;
-    }
-    .card-owner-name {
-        color: $gray-light;
-    }
-}
-
-.card-owner-actions {
-    background: rgba($white, .9);
+.card-epics {
     display: flex;
+    flex-wrap: wrap;
+    padding: $wrap-padding;
+}
+
+.card-epic {
+    align-items: center;
+    display: flex;
+    margin: 0 .25rem .5rem 0;
+
+    .epic-color {
+        border-radius: 6px;
+        display: block;
+        height: 12px;
+        width: 12px;
+    }
+    .epic-name {
+        @include font-size(xsmall);
+
+        color: $color-black600;
+        display: block;
+        margin-left: .25rem;
+        max-width: 190px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    &:hover .epic-name {
+        color: $color-link-primary;
+    }
+}
+
+.card-assigned-to {
+    display: flex;
+    margin-bottom: $card-section-margin-bottom;
+    padding: $wrap-padding;
+    position: relative;
+
+    .card-user-avatar {
+        margin-right: -.25rem;
+    }
+
+    .extra-assigned {
+        @include font-size(small);
+        align-items: center;
+        background-color: $color-gray100;
+        color: $color-gray400;
+        display: flex;
+        justify-content: center;
+    }
+
+    img,
+    .extra-assigned {
+        border: 2px solid $color-white;
+        border-radius: 15px;
+        display: flex;
+        height: 30px;
+        width: 30px;
+    }
+
+    svg {
+        fill: $color-link-primary;
+    }
+
+    &:hover {
+        .card-actions {
+            display: flex;
+        }
+    }
+}
+
+.card-actions {
+    align-items: center;
+    background: rgba($color-white, .95);
+    display: none;
     justify-content: space-between;
     left: 0;
-    opacity: 0;
+    padding: $wrap-padding;
     position: absolute;
-    top: 0;
-    transition: all .2s;
     width: 100%;
-    &:hover {
-        color: $primary-light;
+
+    .card-edit {
+        margin-right: .5rem;
+    }
+
+    a:hover,
+    button:hover {
+        background-color: $color-gray100;
+        span {
+            color: $color-black900;
+        }
         svg {
-            fill: currentColor;
+            fill: $color-black900;
         }
     }
-    .card-actions {
-        display: flex;
-        justify-content: space-between;
-        padding: 0 0 0 .5rem;
-    }
-    .card-delete:hover {
-        color: $red-light;
-    }
-    .icon {
-        @include svg-size(1.2rem);
-        display: inline-block;
-        margin-right: .25rem;
-        padding: 0;
-    }
+}
+
+.card-detail-actions {
+    display: flex;
+
     a {
-        align-items: center;
-        cursor: pointer;
-        display: flex;
-        padding: .6rem .5rem;
+        padding: .25rem;
+    }
+}
+
+.card-assigned-to-action {
+    align-items: center;
+    background-color: transparent;
+    display: flex;
+    height: 30px;
+
+    span {
+        @include font-size(small);
+        color: $color-link-primary;
+        margin-left: .5rem;
     }
 }
 
 .card-title {
-    @include font-size(normal);
-    line-height: 1.25;
-    margin-bottom: 0;
-    padding: 1rem .75rem;
+    margin-bottom: $card-section-margin-bottom;
+    padding: 0 .75rem;
+    .card-ref {
+        @include font-type(medium);
+        color: $color-link-primary;
+    }
+    .card-subject {
+        color: $color-black900;
+    }
+    a {
+        @include font-size(small);
+        display: block;
+
+        &:hover {
+            .card-ref {
+                color: $color-black900;
+            }
+            .card-subject {
+                color: $color-link-primary;
+            }
+        }
+    }
     span {
         padding-right: .25rem;
     }
@@ -199,94 +284,66 @@
     display: flex;
     font-size: 14px;
     justify-content: space-between;
-    padding: .5rem .75rem;
+    margin-bottom: $card-section-margin-bottom;
+    padding: $wrap-padding;
     .card-status-tag {
         font-size: .75rem;
         height: .1rem;
         line-height: .1rem;
         padding: 0 .5em 0 0;
     }
-    .card-estimation.not-estimated {
-        font-size: .8125rem;
+    .card-estimation {
+        @include font-size(xsmall);
+        background: $color-gray200;
+        border-radius: 2px;
+        padding: .25rem;
+
+        &.not-estimated {
+            font-size: .8125rem;
+        }
+    }
+    .card-lock {
+        margin-left: .5rem;
+
+        svg {
+            fill: $color-link-red;
+        }
+    }
+}
+
+.card-statistics-init {
+    align-items: center;
+    display: flex;
+
+    .card-due-date {
+        margin-left: .5rem;
     }
 }
 
 .card-statistics {
     @include font-size(small);
+    align-items: center;
     color: $grey-30;
     display: flex;
     margin-left: auto;
     .statistic {
         align-content: center;
+        color: $color-link-tertiary;
         display: flex;
         margin-left: .5rem;
-        &.active {
-            color: $primary-light;
-            svg {
-                fill: currentColor;
-            }
-        }
-        &.card-iocaine {
-            cursor: help;
-        }
-        &.card-votes {
-            margin-left: .2rem;
-        }
-        &.card-due-date {
-            margin-left: .1rem;
-        }
     }
     .icon {
         @include svg-size(.75rem);
-        fill: $grey-30;
+        fill: $color-link-tertiary;
         margin-right: .2rem;
-        stroke: $grey-30;
     }
-    .icon-iocaine {
-        fill: $purple-eggplant;
-    }
-}
-
-.card-completion {
-    margin: .25rem .75rem .75rem;
-    position: relative;
-    &:hover .card-tooltip {
-        display: block;
-    }
-    .card-completion-bar {
-        background: $whitish;
-        height: .4rem;
-        width: 100%;
-    }
-    .card-completion-percentage {
-        background-color: $secondary;
-        cursor: pointer;
-        height: .4rem;
-        left: 0;
-        position: absolute;
-        top: 0;
-    }
-    .card-tooltip {
-        background: $blackish;
-        border-radius: 5px;
-        color: $white;
-        display: none;
-        font-size: 14px;
-        left: calc(25% - 50px);
-        padding: .25rem 1rem;
-        position: absolute;
-        text-align: center;
-        top: -2.25rem;
-        width: 100px;
-        &::after {
-            background: $black;
-            content: '';
-            height: 10px;
-            left: 50%;
-            position: absolute;
-            top: 70%;
-            transform: rotate(45deg);
-            width: 10px;
+    .card-completed-tasks {
+        @include font-size(xsmall);
+        background-color: $color-gray100;
+        color: $color-black900;
+        padding: .2rem;
+        &.completed {
+            color: $color-link-green;
         }
     }
 }
@@ -298,30 +355,37 @@
     justify-content: center;
     margin: 0;
     outline: none;
-    padding: 0 0 .25rem;
     &:hover {
-        background: linear-gradient(to bottom, $white, darken($white, 1%));
+        svg {
+            fill: $color-link-primary;
+        }
     }
     svg {
         align-items: center;
         display: flex;
-        fill: $grey-20;
+        fill: $color-gray400;
         height: 1.1rem;
-        stroke: $grey-20;
         width: 1.1rem;
     }
 }
 
 .card-tasks {
-    border-top: 1px solid $whitish;
-    margin: .5rem 0;
-    padding: 0;
+    padding: $wrap-padding;
+
+    ul {
+        background-color: $color-gray100;
+        border-bottom: 1px solid $color-gray300;
+        list-style: none;
+        margin-bottom: 0;
+    }
 }
 
 .card-task {
     @include font-size(xsmall);
-    border-bottom: 1px solid $whitish;
-    list-style: none;
+    .card-task-ref {
+        color: $color-link-primary;
+        margin-right: .25rem;
+    }
     a {
         color: $grey-70;
         display: block;
@@ -335,41 +399,39 @@
         }
         &.closed-task {
             color: $gray-light;
+            opacity: .5;
             text-decoration: line-through;
         }
         &:hover {
-            color: $primary;
+            color: $color-link-primary;
         }
     }
 }
 
 .card-slideshow {
+    margin-bottom: $card-section-margin-bottom;
     position: relative;
-    &:hover {
-        .slideshow-left,
-        .slideshow-right {
-            background: rgba($white, .2);
-            padding: .25rem;
-            transition: background .2s;
-        }
-    }
     .slideshow-icon {
         cursor: pointer;
+        display: none;
         position: absolute;
         top: 35%;
-        &:hover {
-            background: rgba($primary-light, .5);
-            transition: background .2s;
-        }
     }
     svg {
         @include svg-size(1.2rem);
-        transition: fill .2s;
+        fill: $color-solid-primary;
     }
     .slideshow-left,
     .slideshow-right {
-        background: transparent;
-        padding: .25rem;
+        align-items: center;
+        background: rgba($color-white, .3);
+        height: 24px;
+        justify-content: center;
+        transition: background .2s;
+        width: 24px;
+        &:hover {
+            background: $color-black900;
+        }
     }
     .slideshow-left {
         left: 0;
@@ -380,12 +442,15 @@
     img {
         width: 100%;
     }
+    &:hover .slideshow-icon {
+        display: flex;
+    }
 }
 
 .card-slideshow-wrapper {
     align-items: center;
     display: flex;
-    height: 120px;
+    height: 90px;
     justify-content: center;
     overflow: hidden;
     .loading-spinner {

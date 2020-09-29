@@ -25,6 +25,7 @@ BelongToEpicsDirective = ($translate, $confirm, $rs, $rs2, lightboxService) ->
         scope.$watch 'epics', (epics) ->
             updateEpics(epics)
 
+        # TODO update epics
         scope.$on "related-epics:changed", (ctx, userStory)->
             $rs.userstories.getByRef(userStory.project, userStory.ref, {}).then (us) ->
                 scope.item.epics = us.epics

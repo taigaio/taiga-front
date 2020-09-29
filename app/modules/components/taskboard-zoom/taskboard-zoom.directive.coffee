@@ -32,7 +32,9 @@ TaskboardZoomDirective = (storage) ->
         ]
 
         getZoomView = (zoomIndex = 0) ->
-            if storage.get("taskboard_zoom") != zoomIndex
+            zoomIndex = Number(zoomIndex)
+
+            if Number(storage.get("taskboard_zoom")) != zoomIndex
                 storage.set("taskboard_zoom", zoomIndex)
 
             return _.reduce zooms, (result, value, key) ->

@@ -1,44 +1,35 @@
-.card-owner
-    .card-owner-info(ng-if="vm.item.get('assigned_to') && (!vm.hasMultipleAssignedUsers() || !vm.visible('owner'))")
-        .card-owner-avatar
-            img(
-                ng-class="{'is-iocaine': vm.item.getIn(['model', 'is_iocaine'])}"
-                tg-avatar="vm.item.get('assigned_to')"
-            )
-        span.card-owner-name(ng-if="vm.visible('owner') && !vm.hasMultipleAssignedUsers()") {{vm.item.getIn(['assigned_to', 'full_name'])}}
-        div(ng-if="!vm.visible('owner')")
-            include card-title
-
-    .card-owner-info.multiple(ng-if="vm.item.get('assigned_to') && vm.hasMultipleAssignedUsers() && vm.visible('owner')")
-        .card-owner-avatar(tg-repeat="assignedUser in vm.item.get('assigned_users')")
-            img(
-                ng-class="{'is-iocaine': vm.item.getIn(['model', 'is_iocaine'])}"
-                tg-avatar="assignedUser"
-            )
-        div(ng-if="!vm.visible('owner')")
-            include card-title
-
-    .card-owner-info(ng-if="!vm.item.get('assigned_to')")
-        img(ng-src="/#{v}/images/unnamed.png")
-        span.card-owner-name(
-            ng-if="vm.visible('owner')",
-            translate="COMMON.ASSIGNED_TO.NOT_ASSIGNED"
-        )
-        div(ng-if="!vm.visible('owner')")
-            include card-title
-
-    .card-owner-actions(
-        ng-if="vm.visible('owner')"
-        tg-check-permission="{{vm.getModifyPermisionKey()}}"
+.card-assigned-to(ng-if="vm.item.get('assigned_to') && vm.visible('assigned_to')")
+    .card-user-avatar(
+        ng-if="vm.zoomLevel > 0"
+        tg-repeat="assignedUser in ::vm.item.get('assigned_users')"
     )
-        a.e2e-assign.card-owner-assign(
-            ng-click="!$event.ctrlKey && !$event.metaKey && vm.onClickAssignedTo({id: vm.item.get('id')})"
-            href=""
-          )
-            tg-svg(svg-icon="icon-add-user")
-            span(translate="COMMON.CARD.ASSIGN_TO")
+        img(tg-avatar="assignedUser")
 
-        div.card-actions
+    .card-user-avatar(
+        ng-if="vm.zoomLevel == 0"
+        tg-repeat="assignedUser in ::vm.item.get('assigned_users_preview')"
+    )
+        img(
+            ng-if="$index < 2 || vm.item.get('assigned_users').size == 3"
+            tg-avatar="assignedUser"
+        )
+        //- show, 4+ (4 more assigned users)
+        //- is the third avatar ($index == 2)
+        //- only appears where there is more than 3 avatars (('assigned_users').size > 3)
+        span.extra-assigned(
+            ng-attr-title="{{ 'COMMON.CARD.EXTRA_ASSIGNED_USERS' | translate: { total: (vm.item.get('assigned_users').size - 2) } }}"
+            ng-if="$index == 2 && vm.item.get('assigned_users').size > 3"
+        ) {{ vm.item.get('assigned_users').size - 2 }}+
+
+    .card-actions(ng-if="vm.zoomLevel > 0")
+        button.card-assigned-to-action(
+            ng-click="!$event.ctrlKey && !$event.metaKey && vm.onClickAssignedTo({id: vm.item.get('id')})"
+            tg-check-permission="{{vm.getModifyPermisionKey()}}"
+        )
+            tg-svg(svg-icon="icon-assign-to")
+            span {{ "COMMON.CARD.ASSIGN_TO" | translate }}
+
+        div.card-detail-actions
             a.e2e-edit.card-edit(
                 href=""
                 ng-click="!$event.ctrlKey && !$event.metaKey && vm.onClickEdit({id: vm.item.get('id')})"
@@ -62,3 +53,4 @@
                 tg-check-permission="{{vm.getDeletePermisionKey()}}"
             )
                 tg-svg(svg-icon="icon-trash", svg-title="{{ vm.item.get('modelName') == 'issues' ? 'COMMON.CARD.DELETE_ISSUE' : 'COMMON.CARD.DELETE' | translate }}")
+

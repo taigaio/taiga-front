@@ -2,47 +2,55 @@
     ng-if="vm.visible('extra_info')"
     ng-class="{'empty-tasks': !vm.item.getIn(['model', 'tasks']).size}"
 )
-    span(ng-switch="vm.item.get('modelName') == 'issues'")
+    .card-statistics-init(ng-switch="vm.item.get('modelName') == 'issues'")
         span(ng-switch-when="true")
             span.card-status-tag(
                 ng-if="vm.item.get('status')"
                 ng-style="{color: vm.item.getIn(['status', 'color'])}"
             ) {{ vm.item.getIn(['status', 'name']) }}
         span(ng-switch-when="false")
-            span.card-estimation.not-estimated(
-                ng-if="vm.item.getIn(['model', 'total_points']) === null && vm.visible('empty_extra_info')",
-                translate="US.NOT_ESTIMATED"
-            )
             span.card-estimation(
+                ng-attr-title="{{'COMMON.CARD.ESTIMATION' | translate}}"
                 data-id="{{ vm.item.getIn(['model', 'id']) }}"
                 ng-if="vm.item.getIn(['model', 'total_points'])"
-            ) {{"COMMON.FIELDS.POINTS" | translate}} {{vm.item.getIn(['model', 'total_points'])}}
+                translate="COMMON.CARD.PTS",
+                translate-values="{pts: '{{ vm.item.getIn(['model', 'total_points']) }}'}"
+            )
+            span.card-estimation(
+                ng-if="!vm.item.getIn(['model', 'total_points'])"
+                translate="COMMON.CARD.NO_PTS"
+            )
 
-    .card-statistics
         tg-due-date.statistic.card-due-date(
             due-date="vm.item.getIn(['model', 'due_date'])"
             is-closed="vm.item.getIn(['model', 'is_closed'])"
             obj-type="{{ vm.type }}"
         )
-        .statistic.card-iocaine(
-            ng-if="vm.item.getIn(['model', 'is_iocaine'])"
-            title="{{'COMMON.IOCAINE_TEXT' | translate}}"
+
+        span.card-lock(ng-if="vm.item.getIn(['model', 'is_blocked'])")
+            tg-svg(svg-icon="icon-lock")
+
+    .card-statistics
+        .statistic.card-attachments(
+            ng-if="vm.item.getIn(['model', 'total_attachments'])"
+            ng-attr-title="{{'ATTACHMENT.SECTION_NAME' | translate}}"
         )
-            tg-svg(
-                svg-icon="icon-iocaine"
-            )
-        .statistic.card-votes(
-            ng-class="{'active': vm.item.getIn(['model', 'is_voter'])}"
-            ng-if="vm.item.getIn(['model', 'total_voters']) || vm.visible('empty_extra_info')"
+            tg-svg(svg-icon="icon-paperclip")
+            span {{vm.item.getIn(['model', 'total_attachments'])}}
+        .statistic.card-watchers(
+            ng-if="vm.item.getIn(['model', 'watchers']).size"
+            ng-attr-title="{{'COMMON.WATCHERS.WATCHERS' | translate}}"
         )
-            tg-svg(svg-icon="icon-upvote")
-            span {{vm.item.getIn(['model', 'total_voters'])}}
-        .statistic.card-watchers(ng-if="vm.item.getIn(['model', 'watchers']).size || vm.visible('empty_extra_info')")
-            tg-svg(svg-icon="icon-watch")
+            tg-svg(svg-icon="icon-eye")
             span {{vm.item.getIn(['model', 'watchers']).size}}
-        .statistic.card-comments(ng-if="vm.item.getIn(['model', 'total_comments']) || vm.visible('empty_extra_info')")
-            tg-svg(svg-icon="icon-meetup")
+        .statistic.card-comments(
+            ng-if="vm.item.getIn(['model', 'total_comments'])"
+            ng-attr-title="{{'COMMENTS.TITLE' | translate}}"
+        )
+            tg-svg(svg-icon="icon-message-square")
             span {{vm.item.getIn(['model', 'total_comments'])}}
-        .statistic.card-attachments(ng-if="vm.item.getIn(['model', 'total_attachments']) || vm.visible('empty_extra_info')")
-           tg-svg(svg-icon="icon-attachment")
-           span {{vm.item.getIn(['model', 'total_attachments'])}}
+        .statistic.card-completed-tasks(
+            ng-attr-title="{{'COMMON.CARD.TASKS' | translate: {completed: vm.getClosedTasks().size, total: vm.item.getIn(['model', 'tasks']).size } }}"
+            ng-if="vm.item.getIn(['model', 'tasks']).size"
+            ng-class="{ 'completed' : vm.getClosedTasks().size == vm.item.getIn(['model', 'tasks']).size }"
+        ) {{vm.getClosedTasks().size}}/{{vm.item.getIn(['model', 'tasks']).size}}

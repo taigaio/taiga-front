@@ -45,22 +45,9 @@
 }
 
 .due-date-icon {
-    display: inline;
-    svg {
-        fill: $gray-light;
-        transition: fill .2s ease-in;
-    }
-    &.closed svg {
-        fill: $gray-lighter;
-    }
-    &.due-set svg {
-        fill: $primary;
-    }
-    &.due-soon svg {
-        fill: $my-sin;
-    }
-    &.past-due svg {
-        fill: $red-light;
+    .icon-clock {
+        @include svg-size(.9rem);
+        float: right;
     }
 }
 
