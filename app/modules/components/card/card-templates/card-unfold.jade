@@ -3,9 +3,16 @@
     ng-if="vm.visible('unfold') && (vm.hasTasks() || vm.hasVisibleAttachments())"
     role="button"
 )
-    tg-svg(svg-icon="icon-view-more")
+    //- by default attachments & task are folded in level 2, see also card.controller, _setVisibility
+    tg-svg(
+        ng-if="vm.zoomLevel == 2"
+        svg-icon="{{ !vm.item.get('foldStatusChanged') ? 'icon-arrow-down' : 'icon-arrow-up' }}"
+    )
+    tg-svg(
+        ng-if="vm.zoomLevel != 2"
+        svg-icon="{{ vm.item.get('foldStatusChanged') ? 'icon-arrow-down' : 'icon-arrow-up' }}"
+    )
 
 .loading-extra(
     tg-loading="vm.item.get('loading-extra')"
-
  )

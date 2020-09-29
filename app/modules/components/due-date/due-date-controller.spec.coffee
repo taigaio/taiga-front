@@ -101,9 +101,9 @@ describe "DueDate", ->
             expect(ctrl.color()).to.be.eql(null)
 
     describe "when is set", ->
-        normalDue = ['normal due', '#9dce0a']
-        dueSoon = ['due soon', '#ff9900']
-        pastDue = ['past due', '#ff8a84']
+        normalDue = ['normal due', '#93C45D']
+        dueSoon = ['due soon', '#EA7B4B']
+        pastDue = ['past due', '#E44057']
 
         runs = [
             { objType: 'us', days: -1, expect: pastDue },

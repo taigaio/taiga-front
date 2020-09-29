@@ -295,7 +295,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             status__is_archived: false
         }
 
-        if @.zoomLevel > 2
+        if @.zoomLevel >= 2
             params.include_attachments = 1
             params.include_tasks = 1
 

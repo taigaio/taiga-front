@@ -27,9 +27,9 @@ class DueDateController
 
     constructor: (@translate, @tgLightboxFactory, @projectService,  @rootscope) ->
         @.defaultConfig = [
-            {"color": "#9dce0a", "name": "normal due", "days_to_due": null, "by_default": true},
-            {"color": "#ff9900", "name": "due soon", "days_to_due": 14, "by_default": false},
-            {"color": "#ff8a84", "name": "past due", "days_to_due": 0, "by_default": false}
+            {"color": "#93C45D", "name": "normal due", "days_to_due": null, "by_default": true},
+            {"color": "#EA7B4B", "name": "due soon", "days_to_due": 14, "by_default": false},
+            {"color": "#E44057", "name": "past due", "days_to_due": 0, "by_default": false}
         ]
 
     visible: () ->

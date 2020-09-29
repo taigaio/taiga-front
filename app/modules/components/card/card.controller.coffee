@@ -56,15 +56,13 @@ class CardController
         }
 
         if!_.isUndefined(@.item.get('foldStatusChanged'))
-            if @.visible('related_tasks') && @.visible('attachments')
+            # by default attachments & task are folded in level 2, see also card-unfold.jadee
+            if @.zoomLevel == 2
+                visibility.related = @.item.get('foldStatusChanged')
+                visibility.slides = @.item.get('foldStatusChanged')
+            else
                 visibility.related = !@.item.get('foldStatusChanged')
                 visibility.slides = !@.item.get('foldStatusChanged')
-            else if @.visible('attachments')
-                visibility.related = @.item.get('foldStatusChanged')
-                visibility.slides = @.item.get('foldStatusChanged')
-            else if !@.visible('related_tasks') && !@.visible('attachments')
-                visibility.related = @.item.get('foldStatusChanged')
-                visibility.slides = @.item.get('foldStatusChanged')
 
         if !@.item.getIn(['model', 'tasks']) || !@.item.getIn(['model', 'tasks']).size
             visibility.related = false
