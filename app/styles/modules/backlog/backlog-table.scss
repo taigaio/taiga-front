@@ -240,18 +240,14 @@
             display: none;
         }
     }
+    .us-item-row-left {
+        align-items: center;
+        display: flex;
+    }
     .new {
         animation: new-us-blink .5s ease-in 2;
     }
-    .points-value {
-        background-color: $color-gray200;
-        color: $color-black900;
-        padding: .25rem;
 
-        span {
-            color: $color-link-tertiary;
-        }
-    }
 }
 
 .backlog-table-body,
@@ -352,19 +348,6 @@
             }
         }
     }
-    .us-settings {
-        flex-shrink: 0;
-        margin-left: auto;
-        opacity: 0;
-        svg {
-            fill: $gray-light;
-            margin-right: .5rem;
-            transition: fill .2s ease-in;
-            &:hover {
-                fill: $primary-light;
-            }
-        }
-    }
     .readonly {
         cursor: auto;
         padding-right: 45px;
@@ -373,6 +356,7 @@
         @include font-size(small);
         align-items: center;
         display: inline-flex;
+        padding-block-start: .25rem;
         tg-svg {
             margin-inline-start: .25rem;
         }
@@ -386,6 +370,17 @@
             max-width: 3rem;
         }
     }
+    .us-points {
+        background-color: $color-gray200;
+        color: $color-black900;
+        padding: .25rem;
+    }
+    // .points-value {
+
+    //     span {
+    //         color: $color-link-tertiary;
+    //     }
+    // }
     .us-option {
         display: flex;
         flex-basis: auto;
