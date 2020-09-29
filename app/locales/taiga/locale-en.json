@@ -1044,7 +1044,7 @@
             "GITHUB": {
                 "SELECTOR": "Import your GitHub project issues",
                 "CHOOSE_PROJECT": "Find the project you want to import",
-                "NO_PROJECTS": "It seems you have no porjects in GitHub",
+                "NO_PROJECTS": "It seems you have no projects in GitHub",
                 "HOW_DO_YOU_WANT_TO_IMPORT": "How do you want to import your issues into Taiga?",
                 "KANBAN_PROJECT": "As user stories in a kanban project",
                 "KANBAN_PROJECT_DESCRIPTION": "After that you can enable scrum with backlog.",
@@ -1056,7 +1056,7 @@
             "ASANA": {
                 "SELECTOR": "Import your Asana project and choose how to manage it",
                 "CHOOSE_PROJECT": "Choose project that you want to import",
-                "NO_PROJECTS": "It seems you have no porjects in Asana",
+                "NO_PROJECTS": "It seems you have no projects in Asana",
                 "KANBAN_PROJECT": "Kanban",
                 "SCRUM_PROJECT": "Scrum",
                 "CREATE_AS_SCRUM_DESCRIPTION": "The tasks and sub-tasks of your project will be created as Taiga user stories and tasks.",
@@ -1066,7 +1066,7 @@
                 "SELECTOR": "Import your Jira project and choose how to manage it",
                 "HOW_TO_CONFIGURE": "(configuration help)",
                 "CHOOSE_PROJECT": "Choose project or board that you want to import",
-                "NO_PROJECTS": "It seems you have no porjects or boards in Jira",
+                "NO_PROJECTS": "It seems you have no projects or boards in Jira",
                 "URL": "Your Jira URL",
                 "KANBAN_PROJECT": "Kanban",
                 "SCRUM_PROJECT": "Scrum",
