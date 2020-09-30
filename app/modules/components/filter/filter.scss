@@ -172,7 +172,7 @@ tg-filter {
     background: rgba(147, 196, 93, .1);
     margin-bottom: .5rem;
     .filters-title {
-        color: $color-solid-green;
+        color: $color-link-green;
     }
 }
 
@@ -292,6 +292,7 @@ tg-filter {
     }
     li {
         .filter-list {
+            max-height: 380px;
             min-height: 60px;
         }
         &:not(.active):last-child {
