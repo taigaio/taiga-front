@@ -23,7 +23,7 @@
         .draggable-us-row {
             flex-grow: 0;
             flex-shrink: 0;
-            margin-inline-end: .25rem;
+            margin-inline-end: .5rem;
             tg-svg {
                 svg {
                     @include svg-size(1rem);
@@ -240,18 +240,14 @@
             display: none;
         }
     }
+    .us-item-row-left {
+        align-items: center;
+        display: flex;
+    }
     .new {
         animation: new-us-blink .5s ease-in 2;
     }
-    .points-value {
-        background-color: $color-gray200;
-        color: $color-black900;
-        padding: .25rem;
 
-        span {
-            color: $color-link-tertiary;
-        }
-    }
 }
 
 .backlog-table-body,
@@ -345,23 +341,11 @@
     }
     .blocked {
         background: $color-solid-red;
+        .user-story-name,
         a {
             color: $color-black900 !important; /* stylelint-disable-line declaration-no-important */
             &:hover {
                 color: $color-black900;
-            }
-        }
-    }
-    .us-settings {
-        flex-shrink: 0;
-        margin-left: auto;
-        opacity: 0;
-        svg {
-            fill: $gray-light;
-            margin-right: .5rem;
-            transition: fill .2s ease-in;
-            &:hover {
-                fill: $primary-light;
             }
         }
     }
@@ -373,6 +357,7 @@
         @include font-size(small);
         align-items: center;
         display: inline-flex;
+        padding-block-start: .25rem;
         tg-svg {
             margin-inline-start: .25rem;
         }
@@ -386,12 +371,20 @@
             max-width: 3rem;
         }
     }
+    .us-points {
+        background-color: $color-gray200;
+        color: $color-black900;
+        padding: .25rem;
+    }
     .us-option {
         display: flex;
         flex-basis: auto;
         flex-grow: 0;
         flex-shrink: 0;
         justify-content: center;
+        &.popover-open {
+            background: $color-gray400;
+        }
     }
     .us-option-popup {
         @include popover(145px, 40px, '', '', 1rem);
@@ -416,6 +409,7 @@
     .us-option-popup-button {
         appearance: none;
         background: transparent;
+        border-radius: 2px;
         cursor: pointer;
         padding: .25rem 0;
         &:hover {

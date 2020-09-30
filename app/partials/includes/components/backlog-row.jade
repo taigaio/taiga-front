@@ -5,22 +5,23 @@
     tg-class-permission="{'readonly': '!modify_us'}"
     data-id="{{ us.id }}"
 )
-    .draggable-us-row(tg-check-permission="modify_us")
-        tg-svg(svg-icon="icon-draggable")
+    .us-item-row-left
+        .draggable-us-row(tg-check-permission="modify_us")
+            tg-svg(svg-icon="icon-draggable")
 
-    .input(tg-check-permission="modify_us")
-        .custom-checkbox
-            input(
-                type="checkbox"
-                name="filter-mode"
-                id="us-check-{{us.ref}}"
-                value="{{option}}"
-                ng-model="vm.filterMode"
-            )
-            label(
-                for="us-check-{{us.ref}}",
-                tabindex="0"
-            )
+        .input(tg-check-permission="modify_us")
+            .custom-checkbox
+                input(
+                    type="checkbox"
+                    name="filter-mode"
+                    id="us-check-{{us.ref}}"
+                    value="{{option}}"
+                    ng-model="vm.filterMode"
+                )
+                label(
+                    for="us-check-{{us.ref}}",
+                    tabindex="0"
+                )
     .user-stories.user-story-main-data
         a.user-story-link(
             href=""
@@ -49,7 +50,7 @@
             ng-attr-title="#{hash}{{epic.ref}} {{epic.subject}}"
         )
 
-    div.status(tg-us-status="us" on-update="ctrl.updateUserStoryStatus()")
+    .status(tg-us-status="us" on-update="ctrl.updateUserStoryStatus()")
         a.us-status(href="", title="{{'BACKLOG.STATUS_NAME' | translate}}")
             span.us-status-bind
             tg-svg(
@@ -58,7 +59,6 @@
             )
 
     div.points(tg-backlog-us-points="us")
-        a.us-points(href="", title="{{'COMMON.FIELDS.POINTS' | translate}}")
 
     .us-option(tg-us-edit-selector, tg-check-permission="modify_us")
         button.us-option-popup-button

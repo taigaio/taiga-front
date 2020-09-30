@@ -867,10 +867,15 @@ UsEditSelector = ($rootscope, $tgTemplate, $compile, $translate) ->
     link = ($scope, $el, $attrs) ->
         $ctrl = $el.controller()
 
+        removePopupOpenState = () ->
+            $el.removeClass('popover-open')
+            $(this).remove()
+
         $el.on "click", (event) ->
             html = $compile(mainTemplate())($scope)
+            $el.addClass('popover-open')
             $el.append(html)
-            $el.find(".us-option-popup").popover().open(() -> $(this).remove())
+            $el.find(".us-option-popup").popover().open(() -> removePopupOpenState())
 
         $scope.$on "$destroy", ->
             $el.off()
@@ -1022,7 +1027,7 @@ UsPointsDirective = ($tgEstimationsService, $repo, $tgTemplate) ->
             $el.find(".pop-role").popover().open(() -> $(this).remove())
 
         bindClickElements = () ->
-            $el.on "click", "a.us-points", (event) ->
+            $el.on "click", ".us-points", (event) ->
                 event.preventDefault()
                 event.stopPropagation()
                 us = $scope.$eval($attrs.tgBacklogUsPoints)
