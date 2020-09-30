@@ -308,6 +308,7 @@
     .user-story-link {
         @include font-size(small);
         @include font-type(regular);
+        line-height: 1.75;
         &:hover {
             .user-story-name {
                 color: $color-link-primary;
