@@ -149,8 +149,12 @@ tg-filter {
                 width: 1rem;
             }
         }
+        &.active,
         &:hover {
             background: $color-gray200;
+            border-radius: 2px;
+        }
+        &:hover {
             .remove-filter {
                 opacity: 1;
                 transition: opacity .1s linear;
