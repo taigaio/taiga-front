@@ -555,14 +555,6 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
                 @.filtersReloadContent()
 
     editUserStory: (projectId, ref, $event) ->
-        target = $($event.target)
-
-        currentLoading = @loading()
-            .target(target)
-            .removeClasses("edit-story")
-            .timeout(200)
-            .start()
-
         return @rs.userstories.getByRef(projectId, ref).then (us) =>
             @rs2.attachments.list("us", us.id, projectId).then (attachments) =>
                 @rootscope.$broadcast("genericform:edit", {
@@ -570,7 +562,6 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
                     'obj': us,
                     'attachments': attachments.toJS()
                 })
-                currentLoading.finish()
 
     deleteUserStory: (us) ->
         title = @translate.instant("US.TITLE_DELETE_ACTION")
