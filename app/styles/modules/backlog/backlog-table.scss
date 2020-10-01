@@ -80,17 +80,9 @@
                 margin-top: -1px;
             }
         }
-        .us-header-options {
-            flex-basis: 50px;
-            flex-grow: 0;
-            flex-shrink: 0;
-        }
+
     }
-    .draggable-us-column {
-        flex-basis: 25px;
-        flex-grow: 0;
-        flex-shrink: 0;
-    }
+
     .status,
     .points {
         position: relative;
@@ -175,6 +167,21 @@
             flex-wrap: nowrap;
             text-transform: uppercase;
         }
+    }
+    .draggable-us-column {
+        flex-basis: 1.5rem;
+        flex-grow: 0;
+        flex-shrink: 0;
+    }
+    .input {
+        flex-basis: 1.5rem;
+        flex-grow: 0;
+        flex-shrink: 0;
+    }
+    .us-header-options {
+        flex-basis: 1.5rem;
+        flex-grow: 0;
+        flex-shrink: 0;
     }
     .points {
         cursor: pointer;
