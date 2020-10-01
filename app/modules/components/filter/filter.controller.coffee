@@ -22,6 +22,8 @@ class FilterController
         '$translate',
     ]
 
+    @.activeCustomFilter = null
+
     constructor: (@translate) ->
         @.opened = null
         @.filterModeOptions = ["include", "exclude"]
@@ -57,13 +59,8 @@ class FilterController
         @.opened = 'custom-filter'
         @.customFilterName = ''
 
-    changeQ: () ->
-        @.onChangeQ({q: @.q})
-
     unselectFilter: (filter) ->
-        @.onRemoveFilter({filter: filter})
-
-    unselectFilter: (filter) ->
+        @.activeCustomFilter = null
         @.onRemoveFilter({filter: filter})
 
     selectFilter: (filterCategory, filter) ->
@@ -72,13 +69,15 @@ class FilterController
             filter: filter
             mode: @.filterMode
         }
-
+        @.activeCustomFilter = null
         @.onAddFilter({filter: filter})
 
     removeCustomFilter: (filter) ->
+        @.activeCustomFilter = null
         @.onRemoveCustomFilter({filter: filter})
 
     selectCustomFilter: (filter) ->
+        @.activeCustomFilter = filter.id
         @.onSelectCustomFilter({filter: filter})
 
     getIncludedFilters: () ->

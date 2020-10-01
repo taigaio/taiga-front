@@ -33,6 +33,7 @@
         .single-filter.single-filter-type-custom(
             ng-repeat="it in vm.customFilters"
             ng-click="vm.selectCustomFilter(it)"
+            ng-class="{active: it.id == vm.activeCustomFilter}"
         )
             span.name {{it.name}}
             button.remove-filter.e2e-remove-custom-filter(ng-click="vm.removeCustomFilter(it)")
