@@ -32,7 +32,6 @@
     .custom-filter-list(ng-if="vm.customFilters.length")
         .single-filter.single-filter-type-custom(
             ng-repeat="it in vm.customFilters"
-            ng-click="vm.selectCustomFilter(it)"
             ng-class="{active: it.id == vm.activeCustomFilter}"
         )
             button.name(
