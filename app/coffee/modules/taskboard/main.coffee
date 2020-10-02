@@ -781,6 +781,10 @@ TaskboardSquishColumnDirective = (rs) ->
 
             recalculateTaskboardWidth()
 
+        $foldStatusArchived = (status) ->
+            $scope.foldStatus(status)
+
+
         $scope.foldUs = (rowId) ->
             $scope.usFolded[rowId] = !!!$scope.usFolded[rowId]
             rs.tasks.storeUsRowModes($scope.projectId, $scope.sprintId, $scope.usFolded)

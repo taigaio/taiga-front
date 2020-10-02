@@ -255,26 +255,6 @@ describe('kanban', function() {
 
             expect(originUsCount).to.be.equal(initOriginUsCount - 1);
         });
-
-        it('show archive', async function() {
-            $('.e2e-archived').click();
-
-            await kanbanHelper.scrollRight();
-
-            utils.common.takeScreenshot('kanban', 'archive-open');
-
-            let usCount = await kanbanHelper.getBoxUss(5).count();
-
-            expect(usCount).to.be.above(0);
-        });
-
-        it('close archive', async function() {
-            $('.e2e-archived').click();
-
-            let usCount = await kanbanHelper.getBoxUss(5).count();
-
-            expect(usCount).to.be.equal(0);
-        });
     });
 
     it('edit assigned to', async function() {

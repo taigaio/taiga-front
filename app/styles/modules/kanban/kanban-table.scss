@@ -1,11 +1,11 @@
 //Table basic shared vars
-
+$title-height: 36px;
 $column-width: 296px;
-$column-folded-width: 30px;
+$column-folded-width: 36px;
 $column-flex: 0;
 $column-shrink: 0;
 $column-margin: 0 5px 0 0;
-$column-padding: .5rem;
+$column-padding: 0 .75rem;
 $fold-animation-duration: .1s;
 
 @keyframes card-unfold {
@@ -60,7 +60,7 @@ $fold-animation-duration: .1s;
             display: flex;
             justify-content: center;
             opacity: .8;
-            padding: .5rem 0;
+            padding: .625rem 0;
             .title {
                 display: none;
             }
@@ -89,8 +89,8 @@ $fold-animation-duration: .1s;
 }
 
 .kanban-table-header {
-    flex-basis: 2.4rem;
-    min-height: 2.4rem;
+    flex-basis: 2.75rem;
+    min-height: 2.75rem;
     position: relative;
     .kanban-table-inner {
         display: flex;
@@ -104,15 +104,17 @@ $fold-animation-duration: .1s;
     .task-colum-name {
         @include font-size(medium);
         align-items: center;
-        background-color: $grey-02;
-        border-top: 3px solid $gray-light;
+        background-color: $color-gray400;
+        border-radius: 4px 4px 0 0;
         color: $gray;
         display: flex;
         flex-basis: $column-width;
         flex-grow: $column-flex;
         flex-shrink: $column-shrink;
+        height: $title-height;
         justify-content: space-between;
         margin: $column-margin;
+        max-height: $title-height;
         max-width: $column-width;
         padding: $column-padding;
         position: relative;
@@ -121,6 +123,15 @@ $fold-animation-duration: .1s;
         &:last-child {
             margin-right: 0;
         }
+
+        .deco-square {
+            flex-grow: 1;
+            flex-shrink: 0;
+            height: 1rem;
+            max-width: .625rem;
+            width: .625rem;
+        }
+
         .title {
             align-items: flex-end;
             display: flex;
@@ -133,20 +144,27 @@ $fold-animation-duration: .1s;
             }
             .name {
                 @include ellipsis(65%);
+                @include font-size(small);
+                @include font-type(medium);
+                color: $color-black900;
                 line-height: 1em;
             }
         }
         .option {
-            margin: 0 .25rem;
+            margin-right: .125rem;
+            padding: .125rem;
+
+            &:last-child {
+                margin-right: 0;
+            }
         }
         tg-svg {
             align-items: center;
             display: flex;
         }
         .icon {
-            fill: $grey-30;
+            fill: $color-link-tertiary;
             height: 1rem;
-            stroke: $grey-30;
             transition: color .2s linear;
             width: 1rem;
             &:hover {
@@ -164,6 +182,7 @@ $fold-animation-duration: .1s;
     overflow-x: auto;
     width: 100%;
     .taskboard-column {
+        border-radius: 4px;
         flex-basis: $column-width;
         flex-grow: $column-flex;
         flex-shrink: $column-shrink;
@@ -194,7 +213,7 @@ $fold-animation-duration: .1s;
         }
     }
     .kanban-uses-box {
-        background-color: $grey-02;
+        background-color: $color-gray200;
     }
     .kanban-task-selected {
         &.card:not(.gu-transit-multi) {
@@ -254,5 +273,61 @@ $fold-animation-duration: .1s;
     }
     .card-inner {
         display: none;
+    }
+}
+
+.placeholder-collapsed {
+    align-items: center;
+    display: none;
+    position: relative;
+
+    .placeholder-collapsed-wrapper {
+        align-items: center;
+        display: flex;
+        flex-direction: row-reverse;
+        left: 0;
+        min-height: 300px;
+        padding: 1rem 0;
+        position: absolute;
+        text-transform: uppercase;
+        top: 0;
+        transform: rotate(-180deg);
+        width: 100%;
+        writing-mode: tb-rl;
+    }
+
+    .name {
+        @include font-type(medium);
+    }
+
+    .text-holder {
+        @include font-size(small);
+        color: $color-black900;
+        display: flex;
+        flex-direction: row-reverse;
+        padding-top: .5rem;
+    }
+
+    .ammount {
+        @include font-size(xsmall);
+        color: $color-link-tertiary;
+        padding-top: .5rem;
+    }
+
+    .archived {
+        @include font-type(medium);
+        color: $color-link-tertiary;
+        padding-top: .25rem;
+    }
+
+    .square-color {
+        height: 1rem;
+        width: 10px;
+    }
+}
+
+.vfold {
+    .placeholder-collapsed {
+        display: flex;
     }
 }

@@ -6,24 +6,14 @@ div.kanban-table(
     div.kanban-table-header(ng-if="ctrl.initialLoad")
         div.kanban-table-inner
             h2.task-colum-name(ng-repeat="s in usStatusList track by s.id",
-                               ng-style="{'border-top-color':s.color}",
                                tg-bo-title="s.name",
                                ng-class='{vfold:folds[s.id]}',
                                tg-class-permission="{'readonly': '!modify_task'}")
-                a.option(
-                    href=""
-                    ng-click='foldStatus(s)'
-                    title="{{'KANBAN.TITLE_ACTION_FOLD' | translate}}"
+                div.deco-square(
+                    ng-style="{'background-color':s.color}",
                     ng-class='{hidden:folds[s.id]}'
+
                 )
-                    tg-svg(svg-icon="icon-fold-column")
-                a.option.hunfold(
-                    href=""
-                    ng-click='foldStatus(s)'
-                    title="{{'KANBAN.TITLE_ACTION_UNFOLD' | translate}}"
-                    ng-class='{hidden:!folds[s.id]}'
-                )
-                    tg-svg(svg-icon="icon-unfold-column")
                 div.title
                     div.name(tg-bo-bind="s.name")
                     div.counter
@@ -33,9 +23,9 @@ div.kanban-table(
                     a.option(
                         href=""
                         title="{{'KANBAN.TITLE_ACTION_ADD_US' | translate}}"
-                         ng-click="ctrl.addNewUs('standard', s.id)"
-                         tg-check-permission="add_us"
-                         ng-hide="s.is_archived"
+                        ng-click="ctrl.addNewUs('standard', s.id)"
+                        tg-check-permission="add_us"
+                        ng-hide="s.is_archived"
                     )
                         tg-svg.add-action(svg-icon="icon-add")
 
@@ -47,14 +37,32 @@ div.kanban-table(
                         ng-hide="s.is_archived"
                     )
                         tg-svg.bulk-action(svg-icon="icon-bulk")
-
-                    a.option.e2e-archived(
+                    a.option(
                         href=""
-                        ng-attr-title="{{title}}"
-                        ng-class="class"
+                        ng-click='foldStatus(s)'
+                        title="{{'KANBAN.TITLE_ACTION_FOLD' | translate}}"
+                        ng-class='{hidden:folds[s.id]}'
+                    )
+                        tg-svg(svg-icon="icon-fold-column")
+
+                    a.option.hunfold(
+                        href=""
+                        ng-click='foldStatus(s)'
+                        title="{{'KANBAN.TITLE_ACTION_UNFOLD' | translate}}"
+                        ng-class='{hidden:!folds[s.id]}'
                         ng-if="s.is_archived"
-                        tg-kanban-archived-status-header="s")
-                        tg-svg.bulk-action(svg-icon="{{class}}")
+                        tg-kanban-archived-show-status-header="s"
+                    )
+                        tg-svg(svg-icon="icon-unfold-column")
+
+                    a.option.hunfold(
+                        href=""
+                        ng-click='foldStatus(s)'
+                        title="{{'KANBAN.TITLE_ACTION_UNFOLD' | translate}}"
+                        ng-hide="s.is_archived"
+                        ng-class='{hidden:!folds[s.id]}'
+                    )
+                        tg-svg(svg-icon="icon-unfold-column")
 
     div.kanban-table-body(ng-if="ctrl.initialLoad")
         div.kanban-table-inner
@@ -66,6 +74,16 @@ div.kanban-table(
                 tg-kanban-column-height-fixer,
                 tg-bind-scope
             )
+                .placeholder-collapsed
+                    .placeholder-collapsed-wrapper
+                        div.ammount(ng-if="!s.is_archived")  {{ usByStatus.get(s.id.toString()).size || 0 }}
+                        div.text-holder
+                            div.archived(ng-if="s.is_archived") (Archived)
+                            div.name(tg-bo-bind="s.name")
+                        .square-color(
+                            ng-style="{'background-color':s.color}",
+                        )
+
                 .card-placeholder(
                     ng-if="ctrl.showPlaceHolder(s.id)"
                     ng-class='{"not-found": ctrl.notFoundUserstories}'

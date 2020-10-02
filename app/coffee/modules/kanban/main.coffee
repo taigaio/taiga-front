@@ -454,47 +454,32 @@ KanbanDirective = ($repo, $rootscope) ->
 module.directive("tgKanban", ["$tgRepo", "$rootScope", KanbanDirective])
 
 #############################################################################
-## Kanban Archived Status Column Header Control
+## Kanban Archived Show Status
 #############################################################################
 
-KanbanArchivedStatusHeaderDirective = ($rootscope, $translate, kanbanUserstoriesService) ->
+KanbanArchivedShowStatusHeaderDirective = ($rootscope, $translate, kanbanUserstoriesService) ->
     showArchivedText = $translate.instant("KANBAN.ACTION_SHOW_ARCHIVED")
-    hideArchivedText = $translate.instant("KANBAN.ACTION_HIDE_ARCHIVED")
 
     link = ($scope, $el, $attrs) ->
-        status = $scope.$eval($attrs.tgKanbanArchivedStatusHeader)
-        hidden = true
+        status = $scope.$eval($attrs.tgKanbanArchivedShowStatusHeader)
+        show = false
 
         kanbanUserstoriesService.addArchivedStatus(status.id)
         kanbanUserstoriesService.hideStatus(status.id)
 
-        $scope.class = "icon-watch"
-        $scope.title = showArchivedText
-
         $el.on "click", (event) ->
-            hidden = not hidden
-
             $scope.$apply ->
-                if hidden
-                    $scope.class = "icon-watch"
-                    $scope.title = showArchivedText
-                    $rootscope.$broadcast("kanban:hide-userstories-for-status", status.id)
-
-                    kanbanUserstoriesService.hideStatus(status.id)
-                else
-                    $scope.class = "icon-unwatch"
-                    $scope.title = hideArchivedText
+                if !show
                     $rootscope.$broadcast("kanban:show-userstories-for-status", status.id)
-
                     kanbanUserstoriesService.showStatus(status.id)
+                    show = true
 
         $scope.$on "$destroy", ->
             $el.off()
 
     return {link:link}
 
-module.directive("tgKanbanArchivedStatusHeader", [ "$rootScope", "$translate", "tgKanbanUserstories", KanbanArchivedStatusHeaderDirective])
-
+module.directive("tgKanbanArchivedShowStatusHeader", [ "$rootScope", "$translate", "tgKanbanUserstories", KanbanArchivedShowStatusHeaderDirective])
 
 #############################################################################
 ## Kanban Archived Status Column Intro Directive
@@ -559,6 +544,12 @@ KanbanSquishColumnDirective = (rs, projectService) ->
         unwatch = $scope.$watch 'usByStatus', (usByStatus) ->
             if usByStatus?.size
                 $scope.folds = rs.kanban.getStatusColumnModes(projectService.project.get('id'))
+
+                archivedFolds = $scope.usStatusList.filter (status) ->
+                    return status.is_archived
+
+                for status in archivedFolds
+                    $scope.folds[status.id] = true
 
                 unwatch()
 
