@@ -18,8 +18,10 @@
     "GDPRUrl": null,
     "maxUploadFileSize": null,
     "contribPlugins": [
-      "/plugins/slack/slack.json"
+      "/plugins/slack/slack.json",
+      "/plugins/github-auth/github-auth.json"
     ],
+    "gitHubClientId": "${GITHUB_CLIENT_ID}",
     "tagManager": { "accountId": null },
     "tribeHost": null,
     "importers": [],
