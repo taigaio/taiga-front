@@ -18,6 +18,7 @@ RUN apk update \
     && cd taiga-front-dist-master/dist/plugins \
     && svn export "https://github.com/taigaio/taiga-contrib-slack/tags/5.5.1/front/dist" "slack" \
     && svn export "https://github.com/taigaio/taiga-contrib-github-auth/tags/3.1/front/dist" "github-auth" \
+    &&   svn export "https://github.com/taigaio/taiga-contrib-gitlab-auth/tags/3.1.1/front/dist"  "gitlab-auth" \
     && cd / \
     # Remove unused dependencies
     && apk del --no-cache .build-deps \
