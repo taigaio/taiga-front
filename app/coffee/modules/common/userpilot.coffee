@@ -33,6 +33,15 @@ class UserPilotService extends taiga.Service
             if (@win.userpilot)
                 @win.userpilot.reload()
 
+        @rootScope.$on "auth:refresh", (ctx, user) =>
+            @.identify(true)
+
+        @rootScope.$on "auth:register", (ctx, user) =>
+            @.identify(true)
+
+        @rootScope.$on "auth:login", (ctx, user) =>
+            @.identify(true)
+
         @.initialize = true
 
     identify: (force = false) ->
