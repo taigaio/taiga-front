@@ -84,7 +84,10 @@ UsStatusDirective = ($repo, $template) ->
         render(us)
 
         bindOnce $scope, "project", (project) ->
-            html = template({"statuses": project.us_statuses})
+            html = template({
+                "statuses": project.us_statuses,
+                "currentStatus": us.status
+            })
             $el.append(html)
 
             # If the user has not enough permissions the click events are unbinded
