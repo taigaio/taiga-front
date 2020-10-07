@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+## 5.5.6 (2020-10-07)
+
+### Misc
+
+- Improve userpilot integration.
+
+- Fix typo.
+
 ## 5.5.5 (2020-09-16)
 
 ### Misc
