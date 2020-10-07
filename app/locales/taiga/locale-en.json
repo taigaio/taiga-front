@@ -673,6 +673,18 @@
             "BEFORE": "Before",
             "AFTER": "Past"
         },
+        "PROJECT_KANBAN_POWER_UPS": {
+            "TITLE": "Kanban Power Ups",
+            "SUBTITLE": "Where is kanban? Who is kanban? Why is kanban?",
+            "US_TITLE": "User Story Due Date status",
+            "ACTION_ADD_STATUS": "Add new status",
+            "TASK_TITLE": "Task Due Date status",
+            "ISSUE_TITLE": "Issue Due Date status",
+            "DAYS_TO_DUE_DATE": "Days to due date",
+            "BEFORE_AFTER": "Before/after",
+            "BEFORE": "Before",
+            "AFTER": "Past"
+        },
         "ROLES": {
             "PAGE_TITLE": "Roles - {{projectName}}",
             "WARNING_NO_ROLE": "Be careful, no role in your project will be able to estimate the point value for user stories",

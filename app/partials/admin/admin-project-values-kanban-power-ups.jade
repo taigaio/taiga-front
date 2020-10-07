@@ -2,7 +2,7 @@ doctype html
 
 div.wrapper(
     ng-controller="ProjectValuesSectionController",
-    ng-init="sectionName='ADMIN.PROJECT_DUE_DATE_STATUS.TITLE'"
+    ng-init="sectionName='ADMIN.PROJECT_KANBAN_POWER_UPS.TITLE'"
 )
 
     tg-project-menu
@@ -10,13 +10,12 @@ div.wrapper(
     sidebar.menu-secondary.sidebar.settings-nav(tg-admin-navigation="project-values")
         include ../includes/modules/admin-menu
 
-    sidebar.menu-tertiary.sidebar(tg-admin-navigation="values-due-dates")
+    sidebar.menu-tertiary.sidebar(tg-admin-navigation="values-kanban-power-ups")
         include ../includes/modules/admin-submenu-project-values
 
     section.main.admin-common.admin-attributes
         include ../includes/components/mainTitle
-        p.admin-subtitle KANBAN POWER UPS
-        p.admin-subtitle(translate="ADMIN.PROJECT_DUE_DATE_STATUS.SUBTITLE")
+        p.admin-subtitle(translate="ADMIN.PROJECT_KANBAN_POWER_UPS.SUBTITLE")
 
         //- div.admin-attributes-section(tg-project-due-dates-values, type="userstory-due-dates",
         //-     ng-controller="ProjectDueDatesValuesController as ctrl",
