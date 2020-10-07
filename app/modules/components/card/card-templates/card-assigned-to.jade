@@ -1,13 +1,13 @@
 .card-assigned-to(ng-if="vm.item.get('assigned_to') && vm.visible('assigned_to')")
     .card-user-avatar(
         ng-if="vm.zoomLevel > 0"
-        tg-repeat="assignedUser in ::vm.item.get('assigned_users')"
+        tg-repeat="assignedUser in vm.item.get('assigned_users')"
     )
         img(tg-avatar="assignedUser")
 
     .card-user-avatar(
         ng-if="vm.zoomLevel == 0"
-        tg-repeat="assignedUser in ::vm.item.get('assigned_users_preview')"
+        tg-repeat="assignedUser in vm.item.get('assigned_users_preview')"
     )
         img(
             ng-if="$index < 2 || vm.item.get('assigned_users').size == 3"

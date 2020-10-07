@@ -2,7 +2,7 @@
     align-items: center;
     display: flex;
 
-    legend {
+    .board-zoom-title {
         @include font-type(bold);
         @include font-size(xsmall);
 
