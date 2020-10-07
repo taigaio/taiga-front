@@ -1,18 +1,7 @@
 .admin-common {
-    header {
-        h1 {
-            margin-bottom: 0;
-        }
-    }
     .admin-subtitle {
-        color: $gray-light;
-        margin-bottom: 2rem;
-        a {
-            color: $primary;
-            &:hover {
-                color: $primary-light;
-            }
-        }
+        color: $color-black600;
+        margin-block-end: 1rem;
     }
     .total {
         @include font-size(large);

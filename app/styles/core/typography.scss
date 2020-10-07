@@ -26,65 +26,15 @@ h6 {
 }
 
 h1 {
-    @include font-type(regular);
+    @include font-type(bold);
     @include font-size(larger);
-    align-items: baseline;
-    line-height: 1.5;
-    margin-bottom: 1rem;
-    text-transform: uppercase;
-    @include from($fullhd) {
-        display: flex;
-    }
-    .title {
-        @include font-type(regular);
-    }
-    span {
-        @include font-type(regular);
-        @include font-size(larger);
-        margin-right: .5rem;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        vertical-align: bottom;
-        white-space: nowrap;
-
-        &.green,
-        &:last-child {
-            flex-shrink: 0;
-        }
-    }
-
-    .project-name {
-        @include font-type(regular);
-        color: $grey-40;
-        display: inline-block;
-        margin-bottom: 0;
-        @include from($widescreen) {
-            max-width: 580px;
-        }
-        @include desktop() {
-            max-width: 380px;
-        }
-        @include until($desktop) {
-            max-width: 250px;
-        }
-    }
-
-    .project-name-short {
-        @include font-type(regular);
-        display: inline-block;
-        max-width: 40%;
-    }
-
+    color: $color-link-primary;
+    margin-block-end: 1rem;
     .date {
         @include ellipsis(500px);
         @include font-type(regular);
         @include font-size(small);
         color: $grey-70;
-    }
-
-    .green {
-        color: $primary;
-        fill: $primary;
     }
 }
 

@@ -675,7 +675,7 @@
         },
         "PROJECT_KANBAN_POWER_UPS": {
             "TITLE": "Kanban Power Ups",
-            "SUBTITLE": "Where is kanban? Who is kanban? Why is kanban?",
+            "SUBTITLE": "Enable swimlanes to use in your workflow and set WIP limits to restrict the maximun number of user stories on each status.",
             "US_TITLE": "User Story Due Date status",
             "ACTION_ADD_STATUS": "Add new status",
             "TASK_TITLE": "Task Due Date status",
