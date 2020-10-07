@@ -801,7 +801,8 @@
             "TYPES": "Types",
             "CUSTOM_FIELDS": "Custom fields",
             "TAGS": "Tags",
-            "DUE_DATES": "Due dates"
+            "DUE_DATES": "Due dates",
+            "KANBAN_POWER_UPS": "Kanban Power Ups"
         },
         "SUBMENU_ROLES": {
             "TITLE": "Roles",

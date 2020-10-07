@@ -1,0 +1,37 @@
+doctype html
+
+div.wrapper(
+    ng-controller="ProjectValuesSectionController",
+    ng-init="sectionName='ADMIN.PROJECT_DUE_DATE_STATUS.TITLE'"
+)
+
+    tg-project-menu
+
+    sidebar.menu-secondary.sidebar.settings-nav(tg-admin-navigation="project-values")
+        include ../includes/modules/admin-menu
+
+    sidebar.menu-tertiary.sidebar(tg-admin-navigation="values-due-dates")
+        include ../includes/modules/admin-submenu-project-values
+
+    section.main.admin-common.admin-attributes
+        include ../includes/components/mainTitle
+        p.admin-subtitle KANBAN POWER UPS
+        p.admin-subtitle(translate="ADMIN.PROJECT_DUE_DATE_STATUS.SUBTITLE")
+
+        //- div.admin-attributes-section(tg-project-due-dates-values, type="userstory-due-dates",
+        //-     ng-controller="ProjectDueDatesValuesController as ctrl",
+        //-     ng-init="section='admin'; resource='userstories'; type='userstory-due-dates'; sectionName='ADMIN.PROJECT_DUE_DATE_STATUS.US_TITLE'",
+        //-     objName="status")
+        //-     include ../includes/modules/admin/project-due-date-status
+
+        //- div.admin-attributes-section(tg-project-due-dates-values, type="task-due-dates",
+        //-     ng-controller="ProjectDueDatesValuesController as ctrl",
+        //-     ng-init="section='admin'; resource='tasks'; type='task-due-dates'; sectionName='ADMIN.PROJECT_DUE_DATE_STATUS.TASK_TITLE'"
+        //-     objName="status")
+        //-     include ../includes/modules/admin/project-due-date-status
+
+        //- div.admin-attributes-section(tg-project-due-dates-values, type="issue-due-dates",
+        //-     ng-controller="ProjectDueDatesValuesController as ctrl",
+        //-     ng-init="section='admin'; resource='issues'; type='issue-due-dates'; sectionName='ADMIN.PROJECT_DUE_DATE_STATUS.ISSUE_TITLE'",
+        //-     objName="status")
+        //-     include ../includes/modules/admin/project-due-date-status
