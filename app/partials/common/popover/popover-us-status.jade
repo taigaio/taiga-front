@@ -1,6 +1,11 @@
 ul.popover.pop-status
     <% _.each(statuses, function(status) { %>
     li
-        a(href="", class="status", title!="<%- status.name %>", data-status-id!="<%- status.id %>")
+        a(
+            href=""
+            class!="status <% if(currentStatus == status.id) { %> active-popover <% } %>"
+            title!="<%- status.name %>"
+            data-status-id!="<%- status.id %>"
+        )
             | <%- status.name %>
     <% }); %>
