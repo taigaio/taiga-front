@@ -58,7 +58,8 @@
             "DUE_DATE": "Due date: {{date}}",
             "NO_PTS": "N/E",
             "ESTIMATION": "Estimation",
-            "TASKS": "{{completed}} tasks of {{total}} completed"
+            "TASKS": "{{completed}} tasks of {{total}} completed",
+            "EXTRA_ASSIGNED_USERS": "{{total}} more assigned users"
         },
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "This value seems to be invalid.",
@@ -1880,5 +1881,12 @@
             "ACTION_TITLE": "Search",
             "RESULTS": "Search results"
         }
+    },
+    "ZOOM": {
+        "TITLE": "Zoom:",
+        "ZOOM-1": "Compact",
+        "ZOOM-2": "Default",
+        "ZOOM-3": "Detailed",
+        "ZOOM-4": "Expanded"
     }
 }
