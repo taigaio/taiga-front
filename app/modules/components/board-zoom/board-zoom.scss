@@ -1,111 +1,51 @@
-$track-color: $whitish;
-$thumb-color: $grayer;
-$thumb-shadow: rgba($thumb-color, .3);
+.board-zoom {
+    align-items: center;
+    display: flex;
 
-$thumb-radius: 50%;
-$thumb-height: 14px;
-$thumb-width: 14px;
-$thumb-border-width: 0;
-$thumb-border-color: transparent;
+    legend {
+        @include font-type(bold);
+        @include font-size(xsmall);
 
-$track-width: 200px;
-$track-height: 3px;
-$track-border-width: 0;
-$track-border-color: transparent;
-
-$track-radius: 1px;
-$contrast: 2;
-
-@mixin track() {
-    cursor: pointer;
-    height: $track-height;
-    transition: all .2s ease;
-    width: $track-width;
+        color: $color-link-primary;
+        margin-right: .5rem;
+        text-transform: uppercase;
+    }
 }
 
-@mixin thumb() {
-    background: $thumb-color;
-    border: $thumb-border-width solid $thumb-border-color;
-    border-radius: $thumb-radius;
-    box-shadow: 0 0 0 2px $thumb-shadow;
-    cursor: pointer;
-    height: $thumb-height;
-    transition: box-shadow .2s;
-    width: $thumb-width;
-}
+.zoom-radio {
+    .checkmark {
+        align-items: center;
+        background-color: $color-gray400;
+        border-radius: 16px;
+        cursor: pointer;
+        display: flex;
+        height: 16px;
+        width: 16px;
+    }
+    input:checked ~ .checkmark {
+        background-color: $color-link-primary;
+        width: auto;
 
-.range-slider {
-    /* stylelint-disable property-no-vendor-prefix */
-    -webkit-appearance: none;
-    display: block;
-    margin: $thumb-height / 2 0;
-    width: $track-width;
-    &:focus {
-        outline: 0;
-
-        &::-webkit-slider-runnable-track {
-            background: lighten($primary-dark, $contrast);
-        }
-        &::-webkit-slider-thumb {
-            box-shadow: 0 0 0 4px $thumb-shadow;
-        }
-        &::-moz-range-thumb {
-            box-shadow: 0 0 0 4px $thumb-shadow;
-        }
-        &::-ms-fill-lower {
-            background: $track-color;
-        }
-        &::-ms-fill-upper {
-            background: lighten($track-color, $contrast);
+        span {
+            display: block;
         }
     }
-
-    &::-webkit-slider-runnable-track {
-        @include track();
-        background: $track-color;
-        border: $track-border-width solid $track-border-color;
-        border-radius: $track-radius;
+    &:hover {
+        .checkmark {
+            background-color: $color-solid-primary;
+        }
     }
-
-    &::-webkit-slider-thumb {
-        @include thumb();
-        -webkit-appearance: none;
-        margin-top: ((-$track-border-width * 2 + $track-height) / 2) - ($thumb-height / 2);
+    &:not(:last-child) {
+        margin-right: .5rem;
     }
-
-    &::-moz-range-track {
-        @include track();
-        background: $track-color;
-        border: $track-border-width solid $track-border-color;
-        border-radius: $track-radius;
+    span {
+        @include font-type(medium);
+        @include font-size(xsmall);
+        color: $color-white;
+        display: none;
+        padding: 0 1.25rem;
     }
-
-    &::-moz-range-thumb {
-        @include thumb();
+    input {
+        display: none;
     }
-
-    &::-ms-track {
-        @include track();
-        background: transparent;
-        border-color: transparent;
-        border-width: $thumb-width 0;
-        color: transparent;
-    }
-
-    &::-ms-fill-lower {
-        background: darken($track-color, $contrast);
-        border: $track-border-width solid $track-border-color;
-        border-radius: $track-radius * 2;
-    }
-
-    &::-ms-fill-upper {
-        background: $track-color;
-        border: $track-border-width solid $track-border-color;
-        border-radius: $track-radius * 2;
-    }
-
-    &::-ms-thumb {
-        @include thumb();
-    }
-    /* stylelint-enable property-no-vendor-prefix */
 }
