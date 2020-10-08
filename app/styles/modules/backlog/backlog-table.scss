@@ -53,7 +53,7 @@
             display: flex;
             flex-grow: 0;
             justify-content: flex-end;
-            margin-left: 20px;
+            margin-left: 1rem;
             width: 75px;
 
             .inner {
@@ -69,7 +69,6 @@
     }
     .backlog-table-title {
         .points {
-            margin-right: -4px;
 
             tg-svg {
                 width: 17px;
@@ -182,6 +181,7 @@
         flex-basis: 1.5rem;
         flex-grow: 0;
         flex-shrink: 0;
+        margin-left: 1rem;
     }
     .points {
         cursor: pointer;
@@ -382,14 +382,16 @@
     .us-points {
         background-color: $color-gray200;
         color: $color-black900;
+        margin-right: .5rem;
         padding: .25rem;
     }
     .us-option {
         display: flex;
-        flex-basis: auto;
+        flex-basis: 1.5rem;
         flex-grow: 0;
         flex-shrink: 0;
         justify-content: center;
+        margin-left: 1rem;
         &.popover-open {
             background: $color-gray400;
         }
