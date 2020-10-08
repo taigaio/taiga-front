@@ -33,6 +33,6 @@ section.admin-submenu
                 a(href="", tg-nav="project-admin-project-values-due-dates:project=project.slug")
                     span.title(translate="ADMIN.SUBMENU_PROJECT_VALUES.DUE_DATES")
 
-            li#adminmenu-values-kanban-power-ups
+            li#adminmenu-values-kanban-power-ups(ng-if="project.is_kanban_activated")
                 a(href="", tg-nav="project-admin-project-values-kanban-power-ups:project=project.slug")
                     span.title(translate="ADMIN.SUBMENU_PROJECT_VALUES.KANBAN_POWER_UPS")

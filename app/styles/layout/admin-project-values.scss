@@ -40,7 +40,7 @@
 .project-values-title {
     align-content: center;
     align-items: center;
-    background: $mass-white;
+    background: $color-gray400;
     display: flex;
     justify-content: space-between;
     padding: .8em 1rem;
@@ -53,5 +53,18 @@
             margin-left: .5rem;
             text-transform: none;
         }
+    }
+}
+
+.admin-swimlanes-manager {
+
+    .empty {
+        @include font-type(regular);
+        @include font-size(small);
+        align-items: center;
+        color: $color-black600;
+        display: flex;
+        justify-content: center;
+        min-height: 80px;
     }
 }

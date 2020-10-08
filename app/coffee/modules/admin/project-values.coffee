@@ -125,6 +125,53 @@ class ProjectValuesController extends taiga.Controller
 
 module.controller("ProjectValuesController", ProjectValuesController)
 
+#############################################################################
+## Project swimlanes Controller
+#############################################################################
+
+class ProjectSwimlanesValuesController extends ProjectValuesController
+    @.$inject = [
+        "$scope",
+        "$rootScope",
+        "$tgRepo",
+        "$tgConfirm",
+        "$tgResources",
+    ]
+
+    addSwimlane: =>
+        console.log({
+            scope: @scope,
+            swimlaneName: @scope.swimlane.name
+        })
+
+    loadSwimlanes: =>
+        return @rs[@scope.resource].listValues(@scope.projectId, @scope.type).then (values) =>
+            if values.length
+                @scope.maxValueOrder = _.maxBy(values, "order").order
+                @displayValues(values)
+            else
+                @createDefaultValues()
+            return values
+
+    # createDefaultValues: =>
+    #     if !@rs[@scope.resource].createDefaultValues?
+    #         return
+    #     return @rs[@scope.resource].createDefaultValues(@scope.projectId, @scope.type).then (response) =>
+    #         @rootscope.$broadcast("admin:project-values:updated")
+    #         values = response.data
+    #         if values.length
+    #             @scope.maxValueOrder = _.maxBy(values, "order").order
+    #             @displayValues(values)
+    #         return values
+
+    displayValues: (values) =>
+        _.each values, (value, index) ->
+            console.log(value)
+        #     value.days_to_due_abs = if value.days_to_due != null then Math.abs(value.days_to_due) else null
+        #     value.sign =  if value.days_to_due >= 0 then 1 else -1
+        @scope.values = values
+
+module.controller("ProjectSwimlanesValuesController", ProjectSwimlanesValuesController)
 
 #############################################################################
 ## Project due dates values Controller
@@ -472,6 +519,32 @@ ProjectDueDatesValues = ($log, $repo, $confirm, $location, animationFrame, $tran
 
 module.directive("tgProjectDueDatesValues", ["$log", "$tgRepo", "$tgConfirm", "$tgLocation", "animationFrame",
                                              "$translate", "$rootScope", "tgProjectService", ProjectDueDatesValues])
+
+#############################################################################
+## Swimlanes directive
+#############################################################################
+
+ProjectSwimlanesValue = ($log, $repo, $confirm, $location, animationFrame, $translate, $rootscope, projectService) ->
+
+    link = ($scope, $el, $attrs, $ctrl) ->
+        $ctrl = $el.controller()
+
+        $scope.isFormVisible = false
+        $scope.swimlane = {
+            name: ''
+        }
+
+        $scope.displaySwimlaneForm = () ->
+            console.log('show Swimlane form')
+            $scope.isFormVisible = true
+
+        $scope.hideSwimlaneForm = () ->
+            $scope.isFormVisible = false
+
+    return {link:link}
+
+module.directive("tgProjectSwimlanesValues", ["$log", "$tgRepo", "$tgConfirm", "$tgLocation", "animationFrame",
+                                             "$translate", "$rootScope", "tgProjectService", ProjectSwimlanesValue])
 
 #############################################################################
 ## Color selection directive
