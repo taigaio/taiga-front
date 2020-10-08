@@ -23,6 +23,7 @@ $fold-animation-duration: .1s;
     flex-direction: column;
     height: 100%;
     overflow: hidden;
+    overflow-x: auto;
     width: 100%;
     &.zoom-0 {
         .taskboard-column,
@@ -175,8 +176,6 @@ $fold-animation-duration: .1s;
     @include font-size(medium);
     display: flex;
     height: 100%;
-    overflow: hidden;
-    overflow-x: auto;
     width: 100%;
     .taskboard-column {
         border-radius: 4px;
