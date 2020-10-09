@@ -23,7 +23,6 @@ $fold-animation-duration: .1s;
     flex-direction: column;
     height: 100%;
     overflow: hidden;
-    overflow-x: auto;
     width: 100%;
     &.zoom-0 {
         .taskboard-column,
@@ -34,6 +33,16 @@ $fold-animation-duration: .1s;
             .title .name {
                 max-width: 95px;
             }
+        }
+        .card {
+            min-height: 45px;
+        }
+    }
+    &.zoom-1,
+    &.zoom-2,
+    &.zoom-3 {
+        .card {
+            min-height: 120px;
         }
     }
     .vfold-remove-active,
@@ -92,9 +101,11 @@ $fold-animation-duration: .1s;
 }
 
 .kanban-table-header {
+    background: $color-white;
     flex-basis: 2.75rem;
     min-height: 2.75rem;
     position: relative;
+    z-index: 100;
     .kanban-table-inner {
         display: flex;
         overflow: visible;
@@ -189,9 +200,13 @@ $fold-animation-duration: .1s;
     @include font-size(medium);
     display: flex;
     height: 100%;
+    margin-top: 1px;
+    overflow: hidden;
+    overflow-x: auto;
     width: 100%;
     .taskboard-column {
         border-radius: 4px;
+        contain: content;
         flex-basis: $column-width;
         flex-grow: $column-flex;
         flex-shrink: $column-shrink;
@@ -203,6 +218,7 @@ $fold-animation-duration: .1s;
         &:last-child {
             margin-right: 0;
         }
+
         .kanban-column-intro {
             @include font-type(medium);
             @include font-size(small);
@@ -294,7 +310,7 @@ $fold-animation-duration: .1s;
         display: flex;
         flex-direction: row-reverse;
         left: 0;
-        min-height: 300px;
+        min-height: 217px;
         padding: 1rem 0;
         position: absolute;
         text-transform: uppercase;
@@ -338,4 +354,146 @@ $fold-animation-duration: .1s;
     .placeholder-collapsed {
         display: flex;
     }
+
+    .kanban-task-counter {
+        display: none;
+    }
 }
+
+.kanban-swimlane-title {
+    align-items: center;
+    background: $color-white;
+    border-bottom: solid 1px $color-white;
+    display: flex;
+    padding: .625rem 1rem;
+    position: sticky;
+    top: 36px;
+    transition: all .6 ease;
+    width: 100%;
+    z-index: 90;
+
+    &.folded {
+        border-bottom: solid 1px $color-gray200;
+
+        tg-svg {
+            fill: $color-link-tertiary;
+        }
+
+        .title-name {
+            color: $color-link-tertiary;
+        }
+    }
+
+    &:hover {
+        tg-svg {
+            fill: $color-black600;
+        }
+
+        .title-name {
+            color: $color-black600;
+        }
+    }
+
+    tg-svg {
+        fill: $color-link-primary;
+        height: 16px;
+        margin-right: .75rem;
+        transition: all .6 ease;
+        width: 16px;
+    }
+
+    .title-name {
+        @include font-size(small);
+        @include font-type(medium);
+        color: $color-link-primary;
+        margin-bottom: 0;
+        margin-right: .75rem;
+        transition: all .6 ease;
+    }
+}
+
+.kanban-table-swimlane {
+    overflow: auto;
+
+    .kanban-table {
+        overflow-x: auto;
+    }
+
+    .kanban-table-header {
+        min-height: 2.25rem;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+
+    .kanban-table-body {
+        max-height: 56vh;
+        min-height: 180px;
+        overflow: visible;
+    }
+}
+
+.kanban-task-counter {
+    align-items: center;
+    background: $color-gray200;
+    box-shadow: -4px 2px 5px -2px rgba(46, 52, 64, .15);
+    color: $color-link-tertiary;
+    display: inline-flex;
+    font-size: .68rem;
+    justify-content: center;
+    line-height: .8rem;
+    min-width: 32px;
+    padding: 4px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1;
+}
+
+.kanban-swimlane {
+    display: flex;
+    flex-direction: column;
+
+    .card:first-child {
+        margin-top: 0;
+    }
+}
+
+.kanban-swimlane-add {
+    align-items: center;
+    background: $color-gray100;
+    border: 1px dashed $color-solid-primary;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    min-height: 5rem;
+    width: calc(100% - 1rem);
+
+    span {
+        @include font-size(small);
+
+        color: $color-link-tertiary;
+        line-height: 24px;
+    }
+
+    .add-action {
+        fill: $color-link-tertiary;
+        margin-right: 1rem;
+    }
+
+    &:hover {
+        background: $color-gray400;
+
+        span {
+            color: $color-link-primary;
+        }
+
+        .add-action {
+            border-color: $color-link-primary;
+            fill: $color-link-primary;
+        }
+    }
+}
+

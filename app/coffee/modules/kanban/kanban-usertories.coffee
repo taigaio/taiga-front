@@ -31,6 +31,8 @@ class KanbanUserstoriesService extends taiga.Service
         @.statusHide = []
         @.foldStatusChanged = {}
         @.usByStatus = Immutable.Map()
+        @.usMap = Immutable.Map()
+        @.usByStatusSwimlanes = Immutable.Map()
 
     init: (project, usersById) ->
         @.project = project
@@ -48,10 +50,32 @@ class KanbanUserstoriesService extends taiga.Service
         @.refreshRawOrder()
         @.refresh()
 
-    add: (us) ->
-        @.userstoriesRaw = @.userstoriesRaw.concat(us)
+    # don't call refresh to prevent unnecessary mutations in every single us
+    add: (usList) ->
+        if !Array.isArray(usList)
+            usList = [usList]
+
+        @.userstoriesRaw = @.userstoriesRaw.concat(usList)
         @.refreshRawOrder()
-        @.refresh()
+
+        @.userstoriesRaw = _.sortBy @.userstoriesRaw, (it) => @.order[it.id]
+
+        for key, usModel of usList
+            us = @.retrieveUserStoryData(usModel)
+            status = String(usModel.status)
+
+            if (!@.usByStatus.has(status))
+                @.usByStatus = @.usByStatus.set(status, Immutable.List())
+
+            if !@.usMap.get(usModel.id)
+                @.usMap = @.usMap.set(usModel.id, Immutable.fromJS(us))
+
+                @.usByStatus = @.usByStatus.set(
+                    status,
+                    @.usByStatus.get(status).push(usModel.id)
+                )
+
+        @.refreshSwimlanes()
 
     addArchivedStatus: (statusId) ->
         @.archivedStatus.push(statusId)
@@ -190,46 +214,28 @@ class KanbanUserstoriesService extends taiga.Service
         return {"us_id": us.id, "order": -1}
 
     replace: (us) ->
-        @.usByStatus = @.usByStatus.map (status) ->
-            findedIndex = status.findIndex (usItem) ->
-                return usItem.get('id') == us.get('id')
+        @.usMap = @.usMap.set(us.get('id'), us)
 
-            if findedIndex != -1
-                status = status.set(findedIndex, us)
-
-            return status
-
-    replaceModel: (us) ->
+    replaceModel: (usModel) ->
         @.userstoriesRaw = _.map @.userstoriesRaw, (usItem) ->
-            if us.id == usItem.id
-                return us
+            if usModel.id == usItem.id
+                return usModel
             else
                 return usItem
 
-        @.refresh()
+        us = @.retrieveUserStoryData(usModel)
+        @.usMap = @.usMap.set(usModel.id, Immutable.fromJS(us))
 
     getUs: (id) ->
-        findedUs = null
-
-        @.usByStatus.forEach (status) ->
-            findedUs = status.find (us) -> return us.get('id') == id
-
-            return false if findedUs
-
-        return findedUs
+        return @.usMap.get(id)
 
     getUsModel: (id) ->
         return _.find @.userstoriesRaw, (us) -> return us.id == id
 
     refreshUserStory: (usId) ->
         usModel = @.getUsModel(usId)
-        collection =  @.usByStatus.toJS()
-
-        index = _.findIndex(collection[usModel.status], (x) => x.id == usId)
         us = @.retrieveUserStoryData(usModel)
-        collection[usModel.status][index] = us
-
-        @.usByStatus = Immutable.fromJS(collection)
+        @.usMap = @.usMap.set(usId, Immutable.fromJS(us))
 
     retrieveUserStoryData: (usModel) ->
         us = {}
@@ -262,11 +268,31 @@ class KanbanUserstoriesService extends taiga.Service
 
         for key, usModel of @.userstoriesRaw
             us = @.retrieveUserStoryData(usModel)
-            if (!collection[us.model.status])
-                collection[us.model.status] = []
+            if (!collection[usModel.status])
+                collection[usModel.status] = []
 
-            collection[us.model.status].push(us)
+            collection[usModel.status].push(usModel.id)
+            @.usMap = @.usMap.set(usModel.id, Immutable.fromJS(us))
 
         @.usByStatus = Immutable.fromJS(collection)
+
+        @.refreshSwimlanes()
+
+    refreshSwimlanes: () ->
+        if !@.project.swimlanes
+            return
+
+        @.usByStatusSwimlanes = Immutable.Map()
+
+        @.project.swimlanes.forEach (swimlane) =>
+            swimlaneUsByStatus = Immutable.Map()
+
+            @.usByStatus.forEach (usList, statusId) =>
+                usListSwimlanes = usList.filter (usId) =>
+                    us = @.usMap.get(usId)
+                    return us.getIn(['model', 'swimlane']) == swimlane.id
+                swimlaneUsByStatus = swimlaneUsByStatus.set(Number(statusId), usListSwimlanes)
+
+            @.usByStatusSwimlanes = @.usByStatusSwimlanes.set(swimlane.id, swimlaneUsByStatus)
 
 angular.module("taigaKanban").service("tgKanbanUserstories", KanbanUserstoriesService)

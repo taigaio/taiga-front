@@ -2,9 +2,24 @@
     display: flex;
     flex-direction: column;
     height: $main-height;
-    max-height: $main-height;
-    max-width: calc(100vw - 50px);
+    max-height: 100%;
+    max-width: 100%;
     position: relative;
+
+    &.swimlane {
+        .kanban-manager {
+            height: 100%;
+            width: 100%;
+        }
+
+        .kanban-header {
+            background: $color-white;
+            padding-top: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+    }
 
     .kanban-settings {
         float: right;
@@ -48,7 +63,8 @@
 }
 
 .kanban-header {
-    margin-bottom: 1.5rem;
+    background: $color-white;
+    padding-bottom: 1.5rem;
 
     .button-filter {
         color: $color-link-primary;

@@ -76,6 +76,8 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         @kanbanUserstoriesService.reset()
         @.openFilter = false
         @.selectedUss = {}
+        @.foldedSwimlane = {}
+        @.isFirstLoad = true
 
         return if @.applyStoredFilters(@params.pslug, "kanban-filters")
 
@@ -84,6 +86,12 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
         taiga.defineImmutableProperty @.scope, "usByStatus", () =>
             return @kanbanUserstoriesService.usByStatus
+
+        taiga.defineImmutableProperty @.scope, "usMap", () =>
+            return @kanbanUserstoriesService.usMap
+
+        taiga.defineImmutableProperty @.scope, "usByStatusSwimlanes", () =>
+            return @kanbanUserstoriesService.usByStatusSwimlanes
 
     cleanSelectedUss: () ->
         for key of @.selectedUss
@@ -111,8 +119,6 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         zoomLevel = Number(zoomLevel)
         if @.zoomLevel == zoomLevel
             return null
-
-        @.isFirstLoad = !@.zoomLevel
 
         previousZoomLevel = @.zoomLevel
 
@@ -165,15 +171,23 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         @scope.$on("kanban:hide-userstories-for-status", @.hideUserStoriesForStatus)
 
     addNewUs: (type, statusId) ->
+        # TODO: this is adding us's to the first swimlane
+        swimlane = null
+
+        if @scope.project.swimlanes
+            swimlane = @scope.project.swimlanes[0].id
+
         switch type
             when "standard" then  @rootscope.$broadcast("genericform:new",
                 {
                     'objType': 'us',
                     'project': @scope.project,
-                    'statusId': statusId
+                    'statusId': statusId,
+                    'swimlane': swimlane
                 })
             when "bulk" then @rootscope.$broadcast("usform:bulk",
-                                                   @scope.projectId, statusId)
+                                                   @scope.projectId, statusId,
+                                                   swimlane)
 
     editUs: (id) ->
         us = @kanbanUserstoriesService.getUs(id)
@@ -222,6 +236,9 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
     toggleFold: (id) ->
         @kanbanUserstoriesService.toggleFold(id)
 
+    toggleSwimlane: (id) ->
+        @.foldedSwimlane[id] = !@.foldedSwimlane[id]
+
     isUsInArchivedHiddenStatus: (usId) ->
         return @kanbanUserstoriesService.isUsInArchivedHiddenStatus(usId)
 
@@ -259,9 +276,10 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             @scope.project.tags_colors = tags_colors._attrs
 
     renderBatch: () ->
-        @.rendered = _.concat(@.rendered, _.take(@.queue, @.batchSize))
+        newUs = _.take(@.queue, @.batchSize)
+        @.rendered = _.concat(@.rendered, newUs)
         @.queue = _.drop(@.queue, @.batchSize)
-        @kanbanUserstoriesService.set(@.rendered)
+        @kanbanUserstoriesService.add(newUs)
 
         @scope.$broadcast("redraw:wip")
 
@@ -284,12 +302,11 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         while (@.queue.length < userstories.length)
             _.each @scope.project.us_statuses, (x) =>
                 if (userstoriesMap[x.id]?.length > 0)
-                    @.queue = _.concat(@.queue, _.take(userstoriesMap[x.id], 3))
-                    userstoriesMap[x.id] = _.drop(userstoriesMap[x.id], 3)
+                    @.queue = _.concat(@.queue, _.take(userstoriesMap[x.id], 10))
+                    userstoriesMap[x.id] = _.drop(userstoriesMap[x.id], 10)
             if !@.batchSize
                 @.batchSize = @.queue.length
 
-        @.renderBatch()
         @timeout(@.renderBatch)
 
     loadUserstories: () ->
@@ -313,6 +330,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             @kanbanUserstoriesService.init(@scope.project, @scope.usersById)
             @tgLoader.pageLoaded()
             @.renderUserStories(userstories)
+
             return userstories
 
         return promise
@@ -371,6 +389,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         @scope.pointsById = groupBy(project.points, (x) -> x.id)
         @scope.usStatusById = groupBy(project.us_statuses, (x) -> x.id)
         @scope.usStatusList = _.sortBy(project.us_statuses, "order")
+        @scope.usCardVisibility = {}
 
         @scope.$emit("project:loaded", project)
         return project
@@ -448,18 +467,41 @@ module.controller("KanbanController", KanbanController)
 #############################################################################
 ## Kanban Directive
 #############################################################################
-
 KanbanDirective = ($repo, $rootscope) ->
     link = ($scope, $el, $attrs) ->
-        tableBodyDom = $el.find(".kanban-table-body")
+        board = initBoard()
+        board.events (event, data) =>
+            # the card is visible in the scroll viewport
+            if event == 'SHOW_CARD'
+                if !$scope.usCardVisibility[data.id] && data.visible
+                    $scope.$evalAsync () =>
+                        $scope.usCardVisibility[data.id] = data.visible
 
-        tableBodyDom.on "scroll", (event) ->
-            target = angular.element(event.currentTarget)
+            return
+
+        cardLazyRenderInit = false
+
+        $scope.cardLoaded = (card) ->
+            if !cardLazyRenderInit
+                board.start()
+                cardLazyRenderInit = true
+
+            board.addCard(card[0])
+
+        _tableBody = null
+
+        $scope.kanbanTableLoaded = (tableBody) ->
+            _tableBody = tableBody
             tableHeaderDom = $el.find(".kanban-table-header .kanban-table-inner")
-            tableHeaderDom.css("left", -1 * target.scrollLeft())
+
+            tableBody.on "scroll", (event) ->
+                scroll = -1 * event.currentTarget.scrollLeft
+                tableHeaderDom.css("transform", "translateX(#{scroll}px)")
 
         $scope.$on "$destroy", ->
             $el.off()
+            if _tableBody
+                _tableBody.off()
 
     return {link: link}
 
@@ -577,3 +619,209 @@ KanbanWipLimitDirective = ($timeout) ->
     return {link: link}
 
 module.directive("tgKanbanWipLimit", ["$timeout", KanbanWipLimitDirective])
+
+CardSvgTemplate = """
+    <tg-svg>
+        <svg class="icon <%- svgIcon %>" style="fill: <%- svgFill %>">
+            <use xlink:href="#<%- svgIcon %>" attr-href="#<%- svgIcon %>">
+                <% if(svgTitle) { %>
+                <title><%- svgTitle %></title>
+                <% } %>
+            </use>
+        </svg>
+    </tg-svg>
+    """
+
+CardAssignedToDirective = ($template, $translate, avatarService, projectService) ->
+    template = $template.get("components/card/card-templates/card-assigned-to.html", true)
+    svgTemplate  = _.template(CardSvgTemplate)
+
+    render = (vm) =>
+        avatars = {}
+        vm.item.get('assigned_users').forEach (user) =>
+            avatars[user.get('id')] = avatarService.getAvatar(user, 'avatar')
+
+        return template({
+            vm: vm,
+            avatars: avatars,
+            translate: (key, params) =>
+                return $translate.instant(key, params)
+            checkPermission: (permission) =>
+                return projectService.project.get('my_permissions').indexOf(permission) > -1
+            svg: (svgData) =>
+                return svgTemplate(Object.assign({
+                    svgTitle: '',
+                    svgFill: ''
+                }, svgData))
+            loading: """
+                <img
+                    class='loading-spinner'
+                    src='/#{window._version}/svg/spinner-circle.svg'
+                    alt='loading...'
+                />
+            """
+        })
+
+    return {
+        scope: {
+            zoomLevel: '<',
+            item: '<',
+            vm: '<'
+        },
+        link: ($scope, $el) ->
+            initializeZoom = false
+
+            onChange = () =>
+                html = render($scope.vm)
+                $el.off()
+
+                $el.html(html)
+
+                $el.find('.card-assigned-to-action').on 'click', (event) =>
+                    if !event.ctrlKey && !event.metaKey
+                        $scope.vm.onClickAssignedTo({id: $scope.vm.item.get('id')})
+
+                $el.find('.card-edit-content').on 'click', (event) =>
+                    event.preventDefault()
+                    if !event.ctrlKey && !event.metaKey
+                        $scope.vm.onClickEdit({id: $scope.vm.item.get('id')})
+
+                $el.find('.card-remove').on 'click', (event) =>
+                    event.preventDefault()
+                    if !event.ctrlKey && !event.metaKey
+                        $scope.vm.onClickRemove({id: $scope.vm.item.get('id')})
+
+                $el.find('.card-delete').on 'click', (event) =>
+                    event.preventDefault()
+                    if !event.ctrlKey && !event.metaKey
+                        $scope.vm.onClickDelete({id: $scope.vm.item.get('id')})
+
+            $scope.$watch 'item', onChange
+            # ignore the first watch because is the same as item
+            $scope.$watch 'zoomLevel', () =>
+                if !initializeZoom
+                    initializeZoom = true
+                    onChange()
+
+            $scope.$on "$destroy", ->
+                $el.off()
+    }
+
+
+module.directive("tgCardAssignedTo", [
+    "$tgTemplate",
+    "$translate",
+    "tgAvatarService",
+    "tgProjectService",
+    CardAssignedToDirective])
+
+CardDataDirective = ($template, $translate, avatarService, projectService, dueDateService) ->
+    template = $template.get("components/card/card-templates/card-data.html", true)
+    svgTemplate  = _.template(CardSvgTemplate)
+
+    render = (vm) =>
+        avatars = {}
+        vm.item.get('assigned_users').forEach (user) =>
+            avatars[user.get('id')] = avatarService.getAvatar(user, 'avatar')
+
+        return template({
+            vm: vm,
+            avatars: avatars,
+            dueDateColor: () =>
+                dueDateService.color({
+                    dueDate: vm.item.getIn(['model', 'due_date']),
+                    isClosed: vm.item.getIn(['model', 'is_closed']),
+                    objType: vm.type
+                })
+            dueDateTitle: () =>
+                dueDateService.title({
+                    dueDate: vm.item.getIn(['model', 'due_date']),
+                    isClosed: vm.item.getIn(['model', 'is_closed']),
+                    objType: vm.type
+                })
+            translate: (key, params) =>
+                return $translate.instant(key, params)
+            svg: (svgData) =>
+                return svgTemplate(Object.assign({
+                    svgTitle: '',
+                    svgFill: ''
+                }, svgData))
+        })
+
+    return {
+        scope: {
+            zoomLevel: '<',
+            item: '<',
+            vm: '<'
+        },
+        link: ($scope, $el) ->
+            initializeZoom = false
+
+            onChange = () =>
+                html = render($scope.vm)
+                $el.off()
+
+                $el.html(html)
+
+            $scope.$watch 'item', onChange
+            # ignore the first watch because is the same as item
+            $scope.$watch 'zoomLevel', () =>
+                if !initializeZoom
+                    initializeZoom = true
+                    onChange()
+
+            $scope.$on "$destroy", ->
+                $el.off()
+    }
+
+module.directive("tgCardData", [
+    "$tgTemplate",
+    "$translate",
+    "tgAvatarService",
+    "tgProjectService",
+    "tgDueDateService",
+    CardDataDirective])
+
+#############################################################################
+## Kanban Swimlane Directive
+#############################################################################
+KanbanSwimlaneDirective = () ->
+    link = ($scope, $el, $attrs) ->
+        tableHeaderDom = []
+        addSwimlane = null
+
+        # sticky swimlane title
+        $el.on "scroll", (event) ->
+            if !tableHeaderDom.length
+                tableHeaderDom = $el.find(".kanban-swimlane-title")
+            if !addSwimlane
+                addSwimlane = $el.find(".kanban-swimlane-add")
+
+            scroll = event.currentTarget.scrollLeft
+            tableHeaderDom.css("transform", "translateX(#{scroll}px)")
+            addSwimlane.css("transform", "translateX(#{scroll}px)")
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {link: link}
+
+module.directive("tgKanbanSwimlane", [KanbanSwimlaneDirective])
+
+#############################################################################
+## Kanban Swimlane Taskboard Column Directive
+#############################################################################
+KanbanSwimlaneTaskboardColumnDirective = () ->
+    link = ($scope, $el, $attrs) ->
+        # sticky num us counter
+        $el.on "scroll", (event) ->
+            scroll = event.currentTarget.scrollTop
+            taskCounterDom = $el.find(".kanban-task-counter")
+            taskCounterDom.css("transform", "translateY(#{scroll}px)")
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {link: link}
+
+module.directive("tgKanbanSwimlaneTaskboardColumn", [KanbanSwimlaneTaskboardColumnDirective])
