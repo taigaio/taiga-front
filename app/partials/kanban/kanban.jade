@@ -1,13 +1,12 @@
 doctype html
 
 div.wrapper(
-    tg-kanban,
     ng-controller="KanbanController as ctrl"
     ng-init="section='kanban'"
 )
     tg-project-menu
 
-    section.main.kanban
+    section.main.kanban(ng-class="{ 'swimlane': project.swimlanes }")
         .kanban-header
             include ../includes/components/mainTitle
             .taskboard-actions

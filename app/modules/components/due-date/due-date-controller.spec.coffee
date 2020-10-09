@@ -80,10 +80,11 @@ describe "DueDate", ->
             return null
 
     _inject = ->
-        inject ($controller) ->
+        inject ($controller, _tgDueDateService_) ->
             controller = $controller
 
     beforeEach ->
+        module "taigaCommon"
         module "taigaComponents"
         _mocks()
         _inject()

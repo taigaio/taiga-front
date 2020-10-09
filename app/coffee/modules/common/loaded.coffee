@@ -14,30 +14,25 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: components/card/card.directive.coffee
+# File: modules/common/loaded.coffee
 ###
 
-module = angular.module("taigaComponents")
+# This directive call a function when the html element has loaded
 
-cardDirective = () ->
-    return {
-        controller: "Card",
-        controllerAs: "vm",
-        templateUrl: "components/card/card.html",
-        bindToController: {
-            onToggleFold: "&",
-            onClickAssignedTo: "&",
-            onClickEdit: "&",
-            onClickRemove: "&",
-            onClickDelete: "&",
-            project: "<",
-            item: "<",
-            zoom: "<",
-            zoomLevel: "<",
-            archived: "<",
-            inViewPort: "<",
-            type: "@"
-        }
-    }
+# ```jade
+#     div(
+#         tg-loaded="callbackFn"
+#     )
+# ```
+module = angular.module("taigaCommon")
 
-module.directive('tgCard', cardDirective)
+Loaded = (config) ->
+    link = ($scope, $el, $attrs) ->
+        unwatch = $scope.$watch $attrs.tgLoaded, (newValue, oldValue) ->
+            if newValue
+                newValue($el)
+                unwatch()
+
+    return {link: link}
+
+module.directive("tgLoaded", [Loaded])

@@ -96,7 +96,7 @@ NavigationUrlsDirective = ($navurls, $auth, $q, $location, lightboxService, tgSe
         values = _.map params, (param) -> _.values(param)[0]
         promises = _.map(values, (x) -> bindOnceP($scope, x))
 
-        return $q.all(promises).then ->
+        return Promise.all(promises).then ->
             options = {}
             for param in params
                 key = Object.keys(param)[0]

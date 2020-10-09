@@ -299,13 +299,14 @@ CreateBulkUserstoriesDirective = ($repo, $rs, $rootscope, lightboxService, $load
     link = ($scope, $el, attrs) ->
         form = null
 
-        $scope.$on "usform:bulk", (ctx, projectId, status) ->
+        $scope.$on "usform:bulk", (ctx, projectId, status, swimlaneId) ->
             form.reset() if form
 
             $scope.new = {
                 projectId: projectId
                 statusId: status
                 bulk: ""
+                swimlaneId: swimlaneId
             }
             lightboxService.open($el)
 
@@ -320,7 +321,7 @@ CreateBulkUserstoriesDirective = ($repo, $rs, $rootscope, lightboxService, $load
                 .target(submitButton)
                 .start()
 
-            promise = $rs.userstories.bulkCreate($scope.new.projectId, $scope.new.statusId, $scope.new.bulk)
+            promise = $rs.userstories.bulkCreate($scope.new.projectId, $scope.new.statusId, $scope.new.bulk, $scope.new.swimlaneId)
             promise.then (result) ->
                 result =  _.map(result.data, (x) => $model.make_model('userstories', x))
                 currentLoading.finish()
@@ -488,6 +489,7 @@ $confirm, $q, attachmentsService, $template, $compile) ->
                         description: ""
                         tags: []
                         points : {}
+                        swimlane: if data.swimlane then data.swimlane else null
                         status: if data.statusId then data.statusId else data.project.default_us_status
                         is_archived: false
                     }

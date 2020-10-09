@@ -1,4 +1,4 @@
-.card-epics(ng-if="vm.item.getIn(['model', 'epics']).size")
+.card-epics(ng-if="::vm.item.getIn(['model', 'epics']).size")
     a.card-epic(
         tg-repeat="epic in ::vm.item.getIn(['model', 'epics']) track by epic.get('id')"
         tg-nav="project-epics-detail:project=vm.item.getIn(['model', 'project_extra_info', 'slug']),ref=epic.get('ref')"
@@ -10,5 +10,5 @@
         span.epic-name(
             ng-attr-title="{{ ::epic.get('subject') }}"
             ng-if="$index == 0 && vm.zoomLevel != 0"
-            ng-bind-html="epic.get('subject') | emojify"
+            ng-bind-html="::epic.get('subject') | emojify"
         )

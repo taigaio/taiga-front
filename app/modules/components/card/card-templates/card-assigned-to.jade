@@ -1,57 +1,78 @@
-.card-assigned-to(ng-if="vm.visible('assigned_to')")
-    .card-user-avatar.card-not-assigned(ng-if="!vm.item.get('assigned_to')")
+<% if (vm.visible('assigned_to')) { %>
+.card-assigned-to
+    <% if (!vm.item.get('assigned_to')) { %>
+    .card-user-avatar.card-not-assigned
         img(
-            ng-attr-title="{{ 'COMMON.ASSIGNED_TO.NOT_ASSIGNED' | translate }}"
-            ng-src="/#{v}/images/unnamed.png"
+            title!="<%= translate('COMMON.ASSIGNED_TO.NOT_ASSIGNED') %>"
+            src="/#{v}/images/unnamed.png"
         )
-        span.card-not-assigned-title(ng-if="vm.zoomLevel > 0") {{ 'COMMON.ASSIGNED_TO.NOT_ASSIGNED' | translate }}
+        <% if(vm.zoomLevel > 0) { %>
+        span.card-not-assigned-title <%= translate('COMMON.ASSIGNED_TO.NOT_ASSIGNED') %>
+        <% } %>
+    <% } %>
 
-    .card-user-avatar(
-        ng-if="vm.item.get('assigned_to')"
-        tg-repeat="assignedUser in vm.item.get('assigned_users_preview')"
-    )
+    <% if (vm.item.get('assigned_to')) { %>
+    <% _.forEach(vm.item.get('assigned_users_preview').toJS(), function(assignedUser, index) { %>
+    .card-user-avatar
+        <% if (index < 2 || vm.item.get('assigned_users').size == 3) { %>
         img(
-            ng-if="$index < 2 || vm.item.get('assigned_users').size == 3"
-            tg-avatar="assignedUser"
+            src!="<%- avatars[assignedUser.id].url %>"
+            title!="<%- avatars[assignedUser.id].username %>"
+            alt!="<%- avatars[assignedUser.id].username %>"
+            style!="background-color: <%- avatars[assignedUser.id].bg || '' %>"
         )
+        <% } %>
         //- show, 4+ (4 more assigned users)
         //- is the third avatar ($index == 2)
         //- only appears where there is more than 3 avatars (('assigned_users').size > 3)
+        <% if (index == 2 && vm.item.get('assigned_users').size > 3) { %>
         span.extra-assigned(
-            ng-attr-title="{{ 'COMMON.CARD.EXTRA_ASSIGNED_USERS' | translate: { total: (vm.item.get('assigned_users').size - 2) } }}"
-            ng-if="$index == 2 && vm.item.get('assigned_users').size > 3"
-        ) {{ vm.item.get('assigned_users').size - 2 }}+
+            title!="<%= translate('COMMON.CARD.EXTRA_ASSIGNED_USERS', { total: (vm.item.get('assigned_users').size - 2) }) %>"
+        ) <%= vm.item.get('assigned_users').size - 2 %>+
+        <% } %>
+    <% }); %>
+    <% } %>
 
-    .card-actions(ng-if="vm.zoomLevel > 0")
-        button.card-assigned-to-action(
-            ng-click="!$event.ctrlKey && !$event.metaKey && vm.onClickAssignedTo({id: vm.item.get('id')})"
-            tg-check-permission="{{vm.getModifyPermisionKey()}}"
-        )
-            tg-svg(svg-icon="icon-assign-to")
-            span {{ "COMMON.CARD.ASSIGN_TO" | translate }}
+    <% if(vm.zoomLevel > 0) { %>
+    .card-actions
+        <% if(checkPermission(vm.getModifyPermisionKey())) { %>
+        button.card-assigned-to-action
+            <%= svg({svgIcon: "icon-assign-to"}) %>
+            span <%= translate('COMMON.CARD.ASSIGN_TO') %>
+        <% } %>
 
-        div.card-detail-actions
-            a.e2e-edit.card-edit(
+        .card-detail-actions
+            a.e2e-edit.card-edit.card-edit-content(
                 href=""
-                ng-click="!$event.ctrlKey && !$event.metaKey && vm.onClickEdit({id: vm.item.get('id')})"
-                tg-loading="vm.item.get('loading-edit')"
-                title="{{ 'COMMON.CARD.EDIT' | translate }}"
+                title!="<%= translate('COMMON.CARD.EDIT') %>"
             )
-                tg-svg(svg-icon="icon-edit", svg-title="{{ 'COMMON.CARD.EDIT' | translate }}")
-            a.e2e-edit.card-edit(
+                <% if(vm.item.get('loading-edit')) { %>
+                <%= loading %>
+                <% } else { %>
+                <%= svg({svgIcon: "icon-edit", svgTitle: translate('COMMON.CARD.EDIT') }) %>
+                <% } %>
+            <% if(vm.item.get('modelName') == 'issues') { %>
+            a.e2e-edit.card-edit.card-remove(
                 href=""
-                ng-if="vm.item.get('modelName') == 'issues'"
-                ng-click="!$event.ctrlKey && !$event.metaKey && vm.onClickRemove({id: vm.item.get('id')})"
-                tg-loading="vm.item.get('loading-remove-from-sprint')"
-                title="{{ 'COMMON.CARD.DETACH_ISSUE_FROM_SPRINT' | translate }}"
+                title!="<%= translate('COMMON.CARD.DETACH_ISSUE_FROM_SPRINT') %>"
             )
-                tg-svg(svg-icon="icon-close", svg-title="{{ 'COMMON.CARD.DETACH_ISSUE_FROM_SPRINT' | translate }}")
+                <% if(vm.item.get('loading-remove-from-sprint')) { %>
+                <%= loading %>
+                <% } else { %>
+                <%= svg({svgIcon: "icon-close", svgTitle: translate('COMMON.CARD.DETACH_ISSUE_FROM_SPRINT') }) %>
+                <% } %>
+            <% } %>
+
+            <% if(checkPermission(vm.getDeletePermisionKey())) { %>
             a.e2e-edit.card-delete(
                 href=""
-                ng-click="!$event.ctrlKey && !$event.metaKey && vm.onClickDelete({id: vm.item.get('id')})"
-                tg-loading="vm.item.get('loading-delete')"
-                ng-attr-title="{{ vm.item.get('modelName') == 'issues' ? 'COMMON.CARD.DELETE_ISSUE' : 'COMMON.CARD.DELETE' | translate }}"
-                tg-check-permission="{{vm.getDeletePermisionKey()}}"
+                title!="<% vm.item.get('modelName') == 'issues' ? translate('COMMON.CARD.DELETE_ISSUE') : translate('COMMON.CARD.DELETE') %>"
             )
-                tg-svg(svg-icon="icon-trash", svg-title="{{ vm.item.get('modelName') == 'issues' ? 'COMMON.CARD.DELETE_ISSUE' : 'COMMON.CARD.DELETE' | translate }}")
-
+                <% if(vm.item.get('loading-delete')) { %>
+                <%= loading %>
+                <% } else { %>
+                <%= svg({svgIcon: "icon-trash", svgTitle: vm.item.get('modelName') == 'issues' ? tranlate('COMMON.CARD.DELETE_ISSUE') : translate('COMMON.CARD.DELETE') }) %>
+                <% } %>
+            <% } %>
+    <% } %>
+<% } %>

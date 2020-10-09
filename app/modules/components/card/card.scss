@@ -5,12 +5,16 @@ $card-section-margin-bottom: .5rem;
     background-color: $color-white;
     border-radius: 4px;
     box-shadow: 4px 4px 8px rgba($color-gray400, .5);
+    contain: content;
     cursor: move;
     display: block;
     margin: 1rem;
     outline: none;
     overflow: hidden;
     transition: box-shadow .2s ease-in;
+    a {
+        contain: content;
+    }
     .loading-extra.loading {
         padding: .2rem;
         text-align: center;

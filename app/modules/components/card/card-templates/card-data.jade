@@ -1,57 +1,67 @@
+<% if (vm.visible('extra_info')) { %>
 .card-data(
-    ng-if="vm.visible('extra_info')"
-    ng-class="{'empty-tasks': !vm.item.getIn(['model', 'tasks']).size}"
+    class!="<%= !vm.item.getIn(['model', 'tasks']).size ? 'empty-tasks': '' %>"
 )
-    .card-statistics-init(ng-switch="vm.item.get('modelName') == 'issues'")
-        span(ng-switch-when="true")
+    .card-statistics-init
+        <% if (vm.item.get('modelName') == 'issues' ) { %>
+        span
+            <% if (vm.item.get('status')) { %>
             span.card-status-tag(
-                ng-if="vm.item.get('status')"
-                ng-style="{color: vm.item.getIn(['status', 'color'])}"
-            ) {{ vm.item.getIn(['status', 'name']) }}
-        span(ng-switch-when="false")
+                style!="color: <%- vm.item.getIn(['status', 'color']) %>"
+            )  <%- vm.item.getIn(['status', 'name']) %>
+            <% } %>
+        <% } else { %>
+        span
+            <% if (vm.item.getIn(['model', 'total_points'])) { %>
             span.card-estimation(
-                ng-attr-title="{{'COMMON.CARD.ESTIMATION' | translate}}"
-                data-id="{{ vm.item.getIn(['model', 'id']) }}"
-                ng-if="vm.item.getIn(['model', 'total_points'])"
+                title!="<%= translate('COMMON.CARD.ESTIMATION') %>"
+                data-id!="<%= vm.item.getIn(['model', 'id']) %>"
                 translate="COMMON.CARD.PTS",
-                translate-values="{pts: '{{ vm.item.getIn(['model', 'total_points']) }}'}"
-            )
-            span.card-estimation(
-                ng-if="!vm.item.getIn(['model', 'total_points'])"
-                translate="COMMON.CARD.NO_PTS"
-            )
+            ) <%= translate('COMMON.CARD.PTS', {pts: vm.item.getIn(['model', 'total_points']) }) %>
+            <% } %>
 
-        tg-due-date.statistic.card-due-date(
-            ng-if="vm.item.getIn(['model', 'due_date'])"
-            due-date="vm.item.getIn(['model', 'due_date'])"
-            is-closed="vm.item.getIn(['model', 'is_closed'])"
-            obj-type="{{ vm.type }}"
-        )
+            <% if (!vm.item.getIn(['model', 'total_points'])) { %>
+            span.card-estimation
+                <%= translate('COMMON.CARD.NO_PTS') %>
+            <% } %>
+        <% } %>
 
+        <% if (vm.item.getIn(['model', 'due_date'])) { %>
+        .card-due-date
+            <%= svg({svgIcon: "icon-clock", svgTitle: translate('COMMON.CARD.DUE_DATE', { date: dueDateTitle() }), svgFill: dueDateColor() }) %>
+        <% } %>
+
+        <% if (vm.item.getIn(['model', 'is_blocked'])) { %>
         span.card-lock(ng-if="vm.item.getIn(['model', 'is_blocked'])")
-            tg-svg(svg-icon="icon-lock")
+            <%= svg({svgIcon: "icon-lock" }) %>
+        <% } %>
 
     .card-statistics
+        <% if (vm.item.getIn(['model', 'total_attachments'])) { %>
         .statistic.card-attachments(
-            ng-if="vm.item.getIn(['model', 'total_attachments'])"
-            ng-attr-title="{{'ATTACHMENT.SECTION_NAME' | translate}}"
+            title!="<%= translate('ATTACHMENT.SECTION_NAME') %>"
         )
-            tg-svg(svg-icon="icon-paperclip")
-            span {{vm.item.getIn(['model', 'total_attachments'])}}
+            <%= svg({svgIcon: "icon-paperclip" }) %>
+            span <%= vm.item.getIn(['model', 'total_attachments']) %>
+        <% } %>
+        <% if (vm.item.getIn(['model', 'watchers']).size) { %>
         .statistic.card-watchers(
-            ng-if="vm.item.getIn(['model', 'watchers']).size"
-            ng-attr-title="{{'COMMON.WATCHERS.WATCHERS' | translate}}"
+            title!="<%= translate('COMMON.WATCHERS.WATCHERS') %>"
         )
-            tg-svg(svg-icon="icon-eye")
-            span {{vm.item.getIn(['model', 'watchers']).size}}
+            <%= svg({svgIcon: "icon-eye" }) %>
+            span <%= vm.item.getIn(['model', 'watchers']).size %>
+        <% } %>
+        <% if (vm.item.getIn(['model', 'total_comments'])) { %>
         .statistic.card-comments(
-            ng-if="vm.item.getIn(['model', 'total_comments'])"
-            ng-attr-title="{{'COMMENTS.TITLE' | translate}}"
+            title!="<%= translate('COMMENTS.TITLE') %>"
         )
-            tg-svg(svg-icon="icon-message-square")
-            span {{vm.item.getIn(['model', 'total_comments'])}}
+            <%= svg({svgIcon: "icon-message-square" }) %>
+            span <%= vm.item.getIn(['model', 'total_comments']) %>
+        <% } %>
+        <% if (vm.item.getIn(['model', 'tasks']).size) { %>
         .statistic.card-completed-tasks(
-            ng-attr-title="{{'COMMON.CARD.TASKS' | translate: {completed: vm.getClosedTasks().size, total: vm.item.getIn(['model', 'tasks']).size } }}"
-            ng-if="vm.item.getIn(['model', 'tasks']).size"
-            ng-class="{ 'completed' : vm.getClosedTasks().size == vm.item.getIn(['model', 'tasks']).size }"
-        ) {{vm.getClosedTasks().size}}/{{vm.item.getIn(['model', 'tasks']).size}}
+            title!="<%= translate('COMMON.CARD.TASKS', {completed: vm.getClosedTasks().size, total: vm.item.getIn(['model', 'tasks']).size }) %>"
+            class!="<%= vm.getClosedTasks().size == vm.item.getIn(['model', 'tasks']).size ? 'completed' : '' %>"
+        ) <%= vm.getClosedTasks().size %> / <%= vm.item.getIn(['model', 'tasks']).size %>
+        <% } %>
+<% } %>
