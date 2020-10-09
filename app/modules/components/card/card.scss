@@ -35,7 +35,7 @@ $card-section-margin-bottom: .5rem;
         .card-title {
             margin: 0 .5rem 0 0;
             order: -1;
-            padding: 0;
+            padding: .5rem 0 0 0;
             white-space: nowrap;
         }
         .card-epics {
@@ -43,7 +43,7 @@ $card-section-margin-bottom: .5rem;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             margin: 0 .5rem 0 0;
-            padding: .1rem 0 0 0;
+            padding: .65rem 0 0 0;
             row-gap: .25rem;
         }
         .card-epic {
@@ -53,14 +53,6 @@ $card-section-margin-bottom: .5rem;
             justify-content: flex-end;
             margin: 0 0 0 auto;
             padding: 0;
-        }
-        &.with-assigned-user {
-            .card-title {
-                padding: .5rem 0 0 0;
-            }
-            .card-epics {
-                padding: .65rem 0 0 0;
-            }
         }
     }
     &.card-blocked {

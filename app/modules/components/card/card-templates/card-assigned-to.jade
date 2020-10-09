@@ -1,9 +1,15 @@
-.card-assigned-to(ng-if="vm.item.get('assigned_to') && vm.visible('assigned_to')")
+.card-assigned-to(ng-if="vm.visible('assigned_to')")
     .card-user-avatar(
-        ng-if="vm.zoomLevel > 0"
+        ng-if="vm.zoomLevel > 0 && vm.item.get('assigned_to')"
         tg-repeat="assignedUser in vm.item.get('assigned_users')"
     )
         img(tg-avatar="assignedUser")
+
+    .card-user-avatar(ng-if="!vm.item.get('assigned_to')")
+        img(
+            ng-attr-title="{{ 'COMMON.ASSIGNED_TO.NOT_ASSIGNED' | translate }}"
+            ng-src="/#{v}/images/unnamed.png"
+        )
 
     .card-user-avatar(
         ng-if="vm.zoomLevel == 0"
