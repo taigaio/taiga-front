@@ -263,6 +263,7 @@
 .button-primary {
     @extend %button;
     background: $color-solid-primary;
+    padding: .25rem;
 
     &:hover {
         background: $color-link-primary;
@@ -282,6 +283,23 @@
 
     span {
         color: $color-black900;
+    }
+}
+
+.form-button {
+    @extend %button;
+    background: none;
+    border-radius: 0;
+    padding: .25rem;
+
+    .icon {
+        @include svg-size(1rem);
+        fill: $color-link-primary;
+        margin: 0;
+    }
+
+    &:hover {
+        background: $color-gray400;
     }
 }
 

@@ -535,11 +535,14 @@ ProjectSwimlanesValue = ($log, $repo, $confirm, $location, animationFrame, $tran
         }
 
         $scope.displaySwimlaneForm = () ->
-            console.log('show Swimlane form')
             $scope.isFormVisible = true
 
         $scope.hideSwimlaneForm = () ->
             $scope.isFormVisible = false
+            $scope.swimlane = {
+                name: ''
+            }
+
 
     return {link:link}
 

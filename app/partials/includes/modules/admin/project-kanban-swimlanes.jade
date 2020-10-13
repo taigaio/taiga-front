@@ -1,4 +1,4 @@
-section.colors-table.admin-status-table
+section.admin-kanban-powerups
     div.project-values-title
         h2 {{ sectionName | translate }}
         button.button.button-gray(
@@ -7,7 +7,7 @@ section.colors-table.admin-status-table
         )
 
     .admin-swimlanes-manager
-        form.admin-swimlanes-add(
+        form.admin-swimlanes-form(
             ng-if="isFormVisible"
             tg-bind-scope
         )
@@ -26,7 +26,7 @@ section.colors-table.admin-status-table
                 arial-label="{{'COMMON.CANCEL' | translate }}"
                 ng-click="hideSwimlaneForm()"
             )
-                tg-svg(svg-icon="icon-error")
+                tg-svg(svg-icon="icon-close")
 
         .empty(
             ng-if="!values"
@@ -36,7 +36,23 @@ section.colors-table.admin-status-table
             ng-if="values"
             ng-repeat="value in values"
         )
-            span {{value.name}}
+            .admin-swimlane-item
+                .admin-swimlane-item-start
+                    .admin-swimlane-item-drag
+                        tg-svg(svg-icon="icon-draggable")
+                    .admin-swimlane-item-name {{value.name}}
+                .admin-swimlane-item-end
+                    button.form-button.add-swimlane(
+                        arial-label="{{'COMMON.EDIT' | translate }}"
+                        ng-click="editSwimlane(value)"
+                    )
+                        tg-svg(svg-icon="icon-edit")
+
+                    button.form-button.cancel-swimlane(
+                        arial-label="{{'COMMON.DELETE' | translate }}"
+                        ng-click="ctrl.removeSwimlane(value)"
+                    )
+                        tg-svg(svg-icon="icon-trash")
 
 
     //- div.table-main

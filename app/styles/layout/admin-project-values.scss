@@ -58,6 +58,8 @@
 
 .admin-swimlanes-manager {
 
+    $swimlanes-width: 500px;
+
     .empty {
         @include font-type(regular);
         @include font-size(small);
@@ -66,5 +68,41 @@
         display: flex;
         justify-content: center;
         min-height: 80px;
+    }
+
+    .admin-swimlanes-form {
+        align-items: center;
+        display: flex;
+        margin-block-start: 1.5rem;
+        width: $swimlanes-width;
+    }
+
+    .add-swimlane {
+        margin-inline-end: .25rem;
+        margin-inline-start: .5rem;
+    }
+
+    .admin-swimlanes-list {
+        width: $swimlanes-width;
+    }
+
+    .admin-swimlane-item {
+        align-items: center;
+        background: $color-gray100;
+        border-radius: 3px;
+        display: flex;
+        justify-content: space-between;
+        margin-block-start: 1rem;
+        padding: .75rem 1rem;
+
+        .admin-swimlane-item-start {
+            display: flex;
+            justify-content: center;
+        }
+
+        .admin-swimlane-item-drag {
+            fill: $color-link-primary;
+            margin-inline-end: 1rem;
+        }
     }
 }
