@@ -11,8 +11,7 @@ div.kanban-table(
                                tg-class-permission="{'readonly': '!modify_task'}")
                 div.deco-square(
                     ng-style="{'background-color':s.color}",
-                    ng-class='{hidden:folds[s.id]}'
-
+                    ng-class='{ hidden:folds[s.id] }'
                 )
                 div.title
                     div.name(tg-bo-bind="s.name")

@@ -1,6 +1,6 @@
 //Table basic shared vars
 $title-height: 36px;
-$column-width: 275px;
+$column-width: 292px;
 $column-folded-width: 36px;
 $column-flex: 0;
 $column-shrink: 0;
@@ -10,12 +10,12 @@ $fold-animation-duration: .1s;
 
 @keyframes card-unfold {
     from {
-        opacity: 0;
         position: absolute; //  prevent column show scroll while unfolding
+        visibility: hidden;
     }
     to {
-        opacity: 1;
         position: static;
+        visibility: visible;
     }
 }
 .kanban-table {
@@ -28,7 +28,7 @@ $fold-animation-duration: .1s;
     &.zoom-0 {
         .taskboard-column,
         .task-colum-name {
-            max-width: 215px;
+            max-width: 232px;
         }
     }
     .vfold-remove-active,
@@ -39,8 +39,8 @@ $fold-animation-duration: .1s;
         .card-placeholder {
             // wait until unfold is completed to start the animation
             animation: card-unfold 0s forwards $fold-animation-duration;
-            opacity: 0;
             position: absolute;
+            visibility: hidden;
         }
     }
     .vfold {

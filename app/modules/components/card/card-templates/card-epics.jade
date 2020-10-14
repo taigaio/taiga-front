@@ -8,6 +8,7 @@
             ng-attr-title="{{ ::epic.get('subject') }}"
         )
         span.epic-name(
+            ng-attr-title="{{ ::epic.get('subject') }}"
             ng-if="$index == 0 && vm.zoomLevel != 0"
             ng-bind-html="epic.get('subject') | emojify"
         )

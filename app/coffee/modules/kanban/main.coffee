@@ -288,6 +288,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             if !@.batchSize
                 @.batchSize = @.queue.length
 
+        @.renderBatch()
         @timeout(@.renderBatch)
 
     loadUserstories: () ->

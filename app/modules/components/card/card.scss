@@ -23,28 +23,36 @@ $card-section-margin-bottom: .5rem;
 .card-inner {
     background: $color-white;
     border-radius: .25rem;
-    padding-top: .75rem;
+    padding: 1rem 0 .25rem 0;
 
     .belong-to-epic-pill-wrapper {
         padding: 0;
     }
+    &.with-fold-action {
+        padding: 1rem 0 0 0;
+    }
+    &.zoom-3 {
+        .card-tag {
+            min-width: auto;
+        }
+    }
     &.zoom-0 {
         display: flex;
-        padding: .5rem;
+        padding: .5rem .75rem;
 
         .card-title {
-            margin: 0 .5rem 0 0;
+            margin: 0 .25rem 0 0;
             order: -1;
-            padding: .5rem 0 0 0;
+            padding: .25rem 0 0 0;
             white-space: nowrap;
-        }
-        .card-epics {
-            align-items: flex-start;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            margin: 0 .5rem 0 0;
-            padding: .65rem 0 0 0;
-            row-gap: .25rem;
+
+            a {
+                align-items: center;
+                display: flex;
+                float: left;
+                height: 20px;
+                padding: .2rem 0 0 .2rem;
+            }
         }
         .card-epic {
             margin: 0 .25rem 0 0;
@@ -81,7 +89,7 @@ $card-section-margin-bottom: .5rem;
 
             a:hover,
             button:hover {
-                background: linear-gradient(0deg, rgba($color-solid-red, .15), rgba($color-solid-red, .15)), $color-white;
+                background: linear-gradient(0deg, rgba(228, 64, 87, .25), rgba(228, 64, 87, .25)), $color-gray400;
             }
             /* stylelint-enable max-line-length */
         }
@@ -91,9 +99,24 @@ $card-section-margin-bottom: .5rem;
             border-color: #ffdada;
             /* stylelint-enable color-no-hex */
         }
-        .card-unfold svg {
-            fill: $color-link-primary;
+        .card-unfold {
+            svg {
+                fill: $color-link-tertiary;
+            }
+            &:hover {
+                svg {
+                    fill: $color-link-primary;
+                }
+            }
         }
+    }
+}
+
+.card-compact-epics {
+    display: contents;
+
+    .card-epics {
+        display: contents;
     }
 }
 
@@ -146,14 +169,19 @@ $card-section-margin-bottom: .5rem;
         color: $color-black600;
         display: block;
         margin-left: .25rem;
-        max-width: 190px;
+        max-width: 175px;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
     }
 
-    &:hover .epic-name {
-        color: $color-link-primary;
+    &:hover {
+        .epic-color {
+            opacity: .5;
+        }
+        .epic-name {
+            color: $color-link-primary;
+        }
     }
 }
 
@@ -167,11 +195,22 @@ $card-section-margin-bottom: .5rem;
         margin-right: -.25rem;
     }
 
+    .card-not-assigned {
+        align-items: center;
+        display: flex;
+    }
+
+    .card-not-assigned-title {
+        @include font-size(small);
+        color: $color-link-tertiary;
+        margin-left: .5rem;
+    }
+
     .extra-assigned {
         @include font-size(small);
         align-items: center;
         background-color: $color-gray100;
-        color: $color-gray400;
+        color: $color-link-tertiary;
         display: flex;
         justify-content: center;
     }
@@ -288,6 +327,7 @@ $card-section-margin-bottom: .5rem;
         @include font-size(xsmall);
         background: $color-gray200;
         border-radius: 2px;
+        margin: 0;
         padding: .25rem;
 
         &.not-estimated {
@@ -405,7 +445,7 @@ $card-section-margin-bottom: .5rem;
     position: relative;
     .slideshow-icon {
         cursor: pointer;
-        display: none;
+        display: flex;
         position: absolute;
         top: 35%;
     }
@@ -433,9 +473,6 @@ $card-section-margin-bottom: .5rem;
     }
     img {
         width: 100%;
-    }
-    &:hover .slideshow-icon {
-        display: flex;
     }
 }
 
