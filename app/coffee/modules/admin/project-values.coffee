@@ -129,14 +129,21 @@ module.controller("ProjectValuesController", ProjectValuesController)
 ## Project swimlanes Controller
 #############################################################################
 
-class ProjectSwimlanesValuesController extends ProjectValuesController
+class ProjectSwimlanesValuesController extends taiga.Controller
     @.$inject = [
         "$scope",
         "$rootScope",
         "$tgRepo",
+        "$translate"
         "$tgConfirm",
         "$tgResources",
     ]
+
+    constructor: (@scope, @rootscope, @repo, @translate, @confirm, @rs) ->
+        unwatch = @scope.$watch "resource", (resource) =>
+            if resource
+                @.loadSwimlanes()
+                unwatch()
 
     addSwimlane: =>
         console.log({
@@ -144,34 +151,103 @@ class ProjectSwimlanesValuesController extends ProjectValuesController
             swimlaneName: @scope.swimlane.name
         })
 
+    updateSwimlane: (swimlane, name) =>
+        console.log({
+            scope: @scope,
+            swimlane,
+            name
+        })
+
     loadSwimlanes: =>
         return @rs[@scope.resource].listValues(@scope.projectId, @scope.type).then (values) =>
             if values.length
-                @scope.maxValueOrder = _.maxBy(values, "order").order
-                @displayValues(values)
-            else
-                @createDefaultValues()
+                @scope.values = values
             return values
 
-    # createDefaultValues: =>
-    #     if !@rs[@scope.resource].createDefaultValues?
-    #         return
-    #     return @rs[@scope.resource].createDefaultValues(@scope.projectId, @scope.type).then (response) =>
-    #         @rootscope.$broadcast("admin:project-values:updated")
-    #         values = response.data
-    #         if values.length
-    #             @scope.maxValueOrder = _.maxBy(values, "order").order
-    #             @displayValues(values)
-    #         return values
+    removeSwimlane: (swimlane) =>
+        console.log(swimlane)
+        title = @translate.instant("LIGHTBOX.ADMIN_KANBAN_POWERUPS.TITLE_ACTION_DELETE_SWIMLANE")
 
-    displayValues: (values) =>
-        _.each values, (value, index) ->
-            console.log(value)
-        #     value.days_to_due_abs = if value.days_to_due != null then Math.abs(value.days_to_due) else null
-        #     value.sign =  if value.days_to_due >= 0 then 1 else -1
-        @scope.values = values
+        if @scope.values.length > 1
+            subtitle = @translate.instant("LIGHTBOX.ADMIN_KANBAN_POWERUPS.SUBTITLE_ACTION_DELETE_SWIMLANE_OPTIONS")
+
+            choices = {}
+            _.each @scope.values, (option) ->
+                if swimlane.id != option.id
+                    choices[option.id] = option.name
+
+            @confirm.askChoice(title, subtitle, choices).then (response) ->
+                onSucces = ->
+                    console.log(response)
+                onError = ->
+                    $confirm.notify("error")
+        else
+            subtitle = @translate.instant("LIGHTBOX.ADMIN_KANBAN_POWERUPS.SUBTITLE_ACTION_DELETE_SWIMLANE_LAST")
+            @confirm.ask(title, subtitle).then (response) ->
+                onSucces = ->
+                    console.log(response)
+                onError = ->
+                    $confirm.notify("error")
+
 
 module.controller("ProjectSwimlanesValuesController", ProjectSwimlanesValuesController)
+
+#############################################################################
+## Swimlanes directive
+#############################################################################
+
+ProjectSwimlanesValue = ($log, $repo, $confirm, $location, animationFrame, $translate, $rootscope, projectService) ->
+
+    link = ($scope, $el, $attrs, $ctrl) ->
+        $ctrl = $el.controller()
+
+        $scope.isFormVisible = false
+        $scope.swimlane = {
+            name: ''
+        }
+
+        $scope.displaySwimlaneForm = () ->
+            $scope.isFormVisible = true
+
+        $scope.hideSwimlaneForm = () ->
+            $scope.isFormVisible = false
+            $scope.swimlane = {
+                name: ''
+            }
+
+
+    return {link:link}
+
+module.directive("tgProjectSwimlanesValues", ["$log", "$tgRepo", "$tgConfirm", "$tgLocation", "animationFrame",
+                                             "$translate", "$rootScope", "tgProjectService", ProjectSwimlanesValue])
+
+#############################################################################
+## Swimlanes single directive
+#############################################################################
+
+ProjectSwimlanesSingle = ($log, $repo, $confirm, $location, animationFrame, $translate, $rootscope, projectService) ->
+
+    link = ($scope, $el, $attrs, $ctrl) ->
+        $ctrl = $el.controller()
+
+        $scope.displaySwimlaneSingleForm = false
+        $scope.swimlaneSingleForm = {
+            name: ''
+        }
+
+        $scope.updateSwimlane = (swimlane) ->
+            $ctrl.updateSwimlane(swimlane, $scope.swimlaneSingleForm.name)
+
+        $scope.editSwimlaneSingleForm = () ->
+            $scope.displaySwimlaneSingleForm = true
+
+        $scope.cancelEditSwimlaneSingleForm = () ->
+            $scope.displaySwimlaneSingleForm = false
+
+    return {link:link}
+
+module.directive("tgProjectSwimlanesSingle", ["$log", "$tgRepo", "$tgConfirm", "$tgLocation", "animationFrame",
+                                             "$translate", "$rootScope", "tgProjectService", ProjectSwimlanesSingle])
 
 #############################################################################
 ## Project due dates values Controller
@@ -187,6 +263,7 @@ class ProjectDueDatesValuesController extends ProjectValuesController
     ]
 
     loadValues: =>
+        console.log(@rs[@scope.resource], @scope)
         return @rs[@scope.resource].listValues(@scope.projectId, @scope.type).then (values) =>
             if values.length
                 @scope.maxValueOrder = _.maxBy(values, "order").order
@@ -519,35 +596,6 @@ ProjectDueDatesValues = ($log, $repo, $confirm, $location, animationFrame, $tran
 
 module.directive("tgProjectDueDatesValues", ["$log", "$tgRepo", "$tgConfirm", "$tgLocation", "animationFrame",
                                              "$translate", "$rootScope", "tgProjectService", ProjectDueDatesValues])
-
-#############################################################################
-## Swimlanes directive
-#############################################################################
-
-ProjectSwimlanesValue = ($log, $repo, $confirm, $location, animationFrame, $translate, $rootscope, projectService) ->
-
-    link = ($scope, $el, $attrs, $ctrl) ->
-        $ctrl = $el.controller()
-
-        $scope.isFormVisible = false
-        $scope.swimlane = {
-            name: ''
-        }
-
-        $scope.displaySwimlaneForm = () ->
-            $scope.isFormVisible = true
-
-        $scope.hideSwimlaneForm = () ->
-            $scope.isFormVisible = false
-            $scope.swimlane = {
-                name: ''
-            }
-
-
-    return {link:link}
-
-module.directive("tgProjectSwimlanesValues", ["$log", "$tgRepo", "$tgConfirm", "$tgLocation", "animationFrame",
-                                             "$translate", "$rootScope", "tgProjectService", ProjectSwimlanesValue])
 
 #############################################################################
 ## Color selection directive

@@ -1226,6 +1226,11 @@
             "TITLE_ACTION_DELETE_DUE_DATE": "Delete due date",
             "SUBTITLE_ACTION_DELETE_DUE_DATE": "Are you sure you want to delete the due date status {{due_date_status_name}}?"
         },
+        "ADMIN_KANBAN_POWERUPS": {
+            "TITLE_ACTION_DELETE_SWIMLANE": "Delete swimlane",
+            "SUBTITLE_ACTION_DELETE_SWIMLANE_OPTIONS": "All the user stories on this swimlane will be moved to:",
+            "SUBTITLE_ACTION_DELETE_SWIMLANE_LAST": "Your user stories will not be deleted. They will remain in the kanban."
+        },
         "RELATE_TO_EPIC": {
             "TITLE": "Link to epic",
             "EXISTING_EPIC": "Existing epic",

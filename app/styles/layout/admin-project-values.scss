@@ -70,11 +70,15 @@
         min-height: 80px;
     }
 
-    .admin-swimlanes-form {
+    .admin-swimlanes-form,
+    .admin-swimlane-form {
         align-items: center;
         display: flex;
-        margin-block-start: 1.5rem;
         width: $swimlanes-width;
+    }
+
+    .admin-swimlanes-form {
+        margin-block-start: 1.5rem;
     }
 
     .add-swimlane {
@@ -83,6 +87,7 @@
     }
 
     .admin-swimlanes-list {
+        margin-block-start: 1rem;
         width: $swimlanes-width;
     }
 
@@ -92,7 +97,6 @@
         border-radius: 3px;
         display: flex;
         justify-content: space-between;
-        margin-block-start: 1rem;
         padding: .75rem 1rem;
 
         .admin-swimlane-item-start {
@@ -103,6 +107,14 @@
         .admin-swimlane-item-drag {
             fill: $color-link-primary;
             margin-inline-end: 1rem;
+        }
+
+        .delete-swimlane {
+            &:hover {
+                .icon {
+                    fill: $color-link-red;
+                }
+            }
         }
     }
 }

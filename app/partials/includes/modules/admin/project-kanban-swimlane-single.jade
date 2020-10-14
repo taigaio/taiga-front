@@ -1,0 +1,39 @@
+.admin-swimlane-item(ng-if="!displaySwimlaneSingleForm")
+    .admin-swimlane-item-start
+        .admin-swimlane-item-drag
+            tg-svg(svg-icon="icon-draggable")
+        .admin-swimlane-item-name {{value.name}}
+    .admin-swimlane-item-end
+        button.form-button.edit-swimlane-single(
+            type="button"
+            ng-click="editSwimlaneSingleForm($event)"
+            arial-label="{{'COMMON.EDIT' | translate }}"
+        )
+            tg-svg(svg-icon="icon-edit")
+
+        button.form-button.delete-swimlane(
+            type="button"
+            arial-label="{{'COMMON.DELETE' | translate }}"
+            ng-click="ctrl.removeSwimlane(value)"
+        )
+            tg-svg(svg-icon="icon-trash")
+form.admin-swimlane-form(ng-if="displaySwimlaneSingleForm")
+    input(
+        type="text"
+        ng-model="swimlaneSingleForm.name"
+        ng-value="value.name"
+        placeholder="{{'ADMIN.PROJECT_KANBAN_POWER_UPS.SWIMLANE_NAME' | translate }}"
+    )
+    button.form-button.add-swimlane-single(
+        type="button"
+        arial-label="{{'COMMON.SAVE' | translate }}"
+        ng-click="updateSwimlane(value)"
+    )
+        tg-svg(svg-icon="icon-check-empty")
+
+    button.form-button.cancel-swimlane-single(
+        type="button"
+        arial-label="{{'COMMON.CANCEL' | translate }}"
+        ng-click="cancelEditSwimlaneSingleForm($event)"
+    )
+        tg-svg(svg-icon="icon-close")
