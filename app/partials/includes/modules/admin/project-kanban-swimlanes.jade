@@ -32,10 +32,14 @@ section.admin-kanban-powerups
             ng-if="!values"
             translate="ADMIN.PROJECT_KANBAN_POWER_UPS.NO_SWIMLANES")
 
-        .admin-swimlanes-list(ng-if="values")
-            .admin-swimlane-single(
-                tg-project-swimlanes-single
-                ng-repeat="value in values"
-            )
-                include ../admin/project-kanban-swimlane-single
+        .admin-swimlanes-list(
+            ng-if="values"
+            tg-bind-scope
+        )
+            .sortable
+                .admin-swimlane-single(
+                    tg-project-swimlanes-single
+                    ng-repeat="value in values"
+                )
+                    include ../admin/project-kanban-swimlane-single
 

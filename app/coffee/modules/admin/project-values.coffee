@@ -158,6 +158,9 @@ class ProjectSwimlanesValuesController extends taiga.Controller
             name
         })
 
+    updatedSwimlanePosition: (position) =>
+        console.log(position)
+
     loadSwimlanes: =>
         return @rs[@scope.resource].listValues(@scope.projectId, @scope.type).then (values) =>
             if values.length
@@ -215,8 +218,28 @@ ProjectSwimlanesValue = ($log, $repo, $confirm, $location, animationFrame, $tran
                 name: ''
             }
 
+        drag = $el.find(".sortable")
+        console.log(drag)
 
-    return {link:link}
+        drake = dragula([drag], {
+            mirrorContainer: drag
+        })
+
+        drake.on 'dragend', (item) ->
+            console.log(item)
+            itemEl = $(item)
+            newIndex = itemEl.index()
+
+            $scope.$apply () ->
+                $ctrl.updatedSwimlanePosition(newIndex)
+
+        $scope.$on "$destroy", ->
+            $el.off()
+            drake.destroy()
+
+    return {
+        link:link
+    }
 
 module.directive("tgProjectSwimlanesValues", ["$log", "$tgRepo", "$tgConfirm", "$tgLocation", "animationFrame",
                                              "$translate", "$rootScope", "tgProjectService", ProjectSwimlanesValue])
@@ -309,7 +332,6 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame, $tra
             copySortSource: false,
             copy: false,
             mirrorContainer: tdom[0],
-            moves: (item) -> return $(item).is('div[tg-bind-scope]')
         })
 
         drake.on 'dragend', (item) ->
