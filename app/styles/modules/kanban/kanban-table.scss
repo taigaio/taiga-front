@@ -141,7 +141,7 @@ $fold-animation-duration: .1s;
                 margin: 0 .5rem;
             }
             .name {
-                @include ellipsis(65%);
+                @include ellipsis(160px);
                 @include font-size(small);
                 @include font-type(medium);
                 color: $color-black900;
@@ -149,8 +149,16 @@ $fold-animation-duration: .1s;
             }
         }
         .option {
+            border-radius: 2px;
             margin-right: .125rem;
             padding: .125rem;
+
+            &:hover {
+                background-color: $color-gray300;
+                svg {
+                    fill: $primary;
+                }
+            }
 
             &:last-child {
                 margin-right: 0;

@@ -1579,7 +1579,6 @@
         "TITLE_ACTION_ADD_BULK": "Add new bulk",
         "ACTION_SHOW_ARCHIVED": "Show archived",
         "ACTION_HIDE_ARCHIVED": "Hide archived",
-        "HIDDEN_USER_STORIES": "The user stories in this status are hidden by default",
         "US_NOT_FOUND_TITLE": "No matching results found" ,
         "US_NOT_FOUND_TEXT_P1": "Try again using more general search terms or disabled some filters." ,
         "US_NOT_FOUND_TEXT_P2": "<strong>Archived stories</strong> are not loaded by default." ,

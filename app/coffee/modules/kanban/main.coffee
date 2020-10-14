@@ -490,31 +490,12 @@ KanbanArchivedStatusIntroDirective = ($translate, kanbanUserstoriesService) ->
     userStories = []
 
     link = ($scope, $el, $attrs) ->
-        hiddenUserStoriexText = $translate.instant("KANBAN.HIDDEN_USER_STORIES")
         status = $scope.$eval($attrs.tgKanbanArchivedStatusIntro)
-        $el.text(hiddenUserStoriexText)
-
-        updateIntroText = (hasArchived) ->
-            if hasArchived
-                $el.text("")
-            else
-                $el.text(hiddenUserStoriexText)
-
-        $scope.$on "kanban:us:move", (ctx, itemUs, oldStatusId, newStatusId, itemIndex) ->
-            hasArchived = !!kanbanUserstoriesService.getStatus(newStatusId).length
-            updateIntroText(hasArchived)
 
         $scope.$on "kanban:shown-userstories-for-status", (ctx, statusId, userStoriesLoaded) ->
             if statusId == status.id
                 kanbanUserstoriesService.deleteStatus(statusId)
                 kanbanUserstoriesService.add(userStoriesLoaded)
-
-                hasArchived = !!kanbanUserstoriesService.getStatus(statusId).length
-                updateIntroText(hasArchived)
-
-        $scope.$on "kanban:hidden-userstories-for-status", (ctx, statusId) ->
-            if statusId == status.id
-                updateIntroText(false)
 
         $scope.$on "$destroy", ->
             $el.off()
