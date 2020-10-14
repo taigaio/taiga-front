@@ -331,12 +331,22 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             include_tasks: true
         }
 
+        if @.filterQ
+            params.q = @.filterQ
+
         params = _.merge params, @location.search()
 
         return @rs.userstories.listAll(@scope.projectId, params).then (userstories) =>
-            @scope.$broadcast("kanban:shown-userstories-for-status", statusId, userstories)
+            @.waitEmptyQuote () =>
+                @scope.$broadcast("kanban:shown-userstories-for-status", statusId, userstories)
 
             return userstories
+
+    waitEmptyQuote: (cb) ->
+        if @.queue.length > 0
+            requestAnimationFrame () => @.waitEmptyQuote(cb);
+        else
+            scopeDefer @scope, => cb()
 
     hideUserStoriesForStatus: (ctx, statusId) ->
         @scope.$broadcast("kanban:hidden-userstories-for-status", statusId)
