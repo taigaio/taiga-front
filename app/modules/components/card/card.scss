@@ -1,4 +1,4 @@
-$wrap-padding: 0 .5rem;
+$wrap-padding: 0 .75rem;
 $card-section-margin-bottom: .5rem;
 
 .card {
@@ -23,7 +23,7 @@ $card-section-margin-bottom: .5rem;
 .card-inner {
     background: $color-white;
     border-radius: .25rem;
-    padding: 1rem 0 .25rem 0;
+    padding: 1rem 0 .75rem 0;
 
     .belong-to-epic-pill-wrapper {
         padding: 0;
@@ -123,7 +123,6 @@ $card-section-margin-bottom: .5rem;
 .card-tags {
     display: flex;
     flex-wrap: wrap;
-    margin-bottom: $card-section-margin-bottom;
     padding: $wrap-padding;
 
     .card-tag {
@@ -132,8 +131,9 @@ $card-section-margin-bottom: .5rem;
         border-radius: 2px;
         color: $color-white;
         display: block;
-        margin-block-end: .5rem;
+        margin-block-end: $card-section-margin-bottom;
         margin-inline-end: .5rem;
+        max-width: 125px;
         min-height: 8px;
         min-width: 40px;
         overflow: hidden;
@@ -155,7 +155,7 @@ $card-section-margin-bottom: .5rem;
 .card-epic {
     align-items: center;
     display: flex;
-    margin: 0 .25rem .5rem 0;
+    margin: 0 .5rem .5rem 0;
 
     .epic-color {
         border-radius: 6px;
@@ -169,7 +169,7 @@ $card-section-margin-bottom: .5rem;
         color: $color-black600;
         display: block;
         margin-left: .25rem;
-        max-width: 175px;
+        max-width: 155px;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -284,7 +284,7 @@ $card-section-margin-bottom: .5rem;
 
 .card-title {
     margin-bottom: $card-section-margin-bottom;
-    padding: 0 .75rem;
+    padding: $wrap-padding;
     .card-ref {
         @include font-type(medium);
         color: $color-link-primary;
@@ -311,6 +311,7 @@ $card-section-margin-bottom: .5rem;
 }
 
 .card-data {
+    align-items: center;
     color: $gray-light;
     display: flex;
     font-size: 14px;
@@ -353,11 +354,12 @@ $card-section-margin-bottom: .5rem;
 }
 
 .card-statistics {
-    @include font-size(small);
+    @include font-size(xsmall);
     align-items: center;
     color: $grey-30;
     display: flex;
     margin-left: auto;
+    margin-top: 0; /* override taiga-seed css */
     .statistic {
         align-content: center;
         color: $color-link-tertiary;

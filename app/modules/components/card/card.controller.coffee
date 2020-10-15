@@ -55,7 +55,7 @@ class CardController
             slides: @.visible('attachments')
         }
 
-        if!_.isUndefined(@.item.get('foldStatusChanged'))
+        if !_.isUndefined(@.item.get('foldStatusChanged')) && @.visible('unfold')
             # by default attachments & task are folded in level 2, see also card-unfold.jadee
             if @.zoomLevel == 2
                 visibility.related = @.item.get('foldStatusChanged')
