@@ -146,10 +146,11 @@ class ProjectSwimlanesValuesController extends taiga.Controller
                 unwatch()
 
     addSwimlane: =>
-        console.log({
-            scope: @scope,
-            swimlaneName: @scope.swimlane.name
-        })
+        return @rs[@scope.resource].create(@scope.projectId, @scope.swimlane.name).then (values) =>
+            if values.length
+                @scope.values = values
+            return values
+
 
     updateSwimlane: (swimlane, name) =>
         console.log({
@@ -162,7 +163,7 @@ class ProjectSwimlanesValuesController extends taiga.Controller
         console.log(position)
 
     loadSwimlanes: =>
-        return @rs[@scope.resource].listValues(@scope.projectId, @scope.type).then (values) =>
+        return @rs[@scope.resource].list(@scope.projectId).then (values) =>
             if values.length
                 @scope.values = values
             return values
