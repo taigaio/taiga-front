@@ -218,24 +218,8 @@ ProjectSwimlanesValue = ($log, $repo, $confirm, $location, animationFrame, $tran
                 name: ''
             }
 
-        drag = $el.find(".sortable")
-        console.log(drag)
-
-        drake = dragula([drag], {
-            mirrorContainer: drag
-        })
-
-        drake.on 'dragend', (item) ->
-            console.log(item)
-            itemEl = $(item)
-            newIndex = itemEl.index()
-
-            $scope.$apply () ->
-                $ctrl.updatedSwimlanePosition(newIndex)
-
         $scope.$on "$destroy", ->
             $el.off()
-            drake.destroy()
 
     return {
         link:link
@@ -271,6 +255,40 @@ ProjectSwimlanesSingle = ($log, $repo, $confirm, $location, animationFrame, $tra
 
 module.directive("tgProjectSwimlanesSingle", ["$log", "$tgRepo", "$tgConfirm", "$tgLocation", "animationFrame",
                                              "$translate", "$rootScope", "tgProjectService", ProjectSwimlanesSingle])
+
+
+#############################################################################
+## Swimlanes sortable directive
+#############################################################################
+
+SortableSwimlanes = () ->
+
+    link = ($scope, $el, $attrs, $ctrl) ->
+        $ctrl = $el.controller()
+
+        tdom = $el.find(".sortable")
+
+        drake = dragula([tdom[0]], {
+            direction: 'vertical',
+            copySortSource: false,
+            copy: false,
+            mirrorContainer: tdom[0],
+        })
+
+        drake.on 'dragend', (item) ->
+            itemEl = $(item)
+            newIndex = itemEl.index()
+
+            $scope.$apply () ->
+                $ctrl.updatedSwimlanePosition(newIndex)
+
+        $scope.$on "$destroy", ->
+            $el.off()
+            drake.destroy()
+
+    return {link:link}
+
+module.directive("tgSortableSwimlanes", [SortableSwimlanes])
 
 #############################################################################
 ## Project due dates values Controller
