@@ -108,6 +108,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         promise.then null, @.onInitialDataError.bind(@)
 
     setZoom: (zoomLevel, zoom) ->
+        zoomLevel = Number(zoomLevel)
         if @.zoomLevel == zoomLevel
             return null
 

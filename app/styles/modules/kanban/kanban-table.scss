@@ -30,6 +30,11 @@ $fold-animation-duration: .1s;
         .task-colum-name {
             max-width: 232px;
         }
+        .task-colum-name {
+            .title .name {
+                max-width: 95px;
+            }
+        }
     }
     .vfold-remove-active,
     .vunfold {
