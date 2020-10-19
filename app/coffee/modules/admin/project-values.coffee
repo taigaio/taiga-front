@@ -147,9 +147,8 @@ class ProjectSwimlanesValuesController extends taiga.Controller
 
     addSwimlane: =>
         return @rs[@scope.resource].create(@scope.projectId, @scope.swimlane.name).then (values) =>
-            if values.length
-                @scope.values = values
-            return values
+            @scope.isFormVisible = false
+            @.loadSwimlanes()
 
 
     updateSwimlane: (swimlane, name) =>
@@ -158,6 +157,8 @@ class ProjectSwimlanesValuesController extends taiga.Controller
             swimlane,
             name
         })
+        return @rs[@scope.resource].edit(@scope.projectId, swimlane.id, name).then (values) =>
+            @.loadSwimlanes()
 
     updatedSwimlanePosition: (position) =>
         console.log(position)

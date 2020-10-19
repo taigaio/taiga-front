@@ -55,6 +55,15 @@ resourceProvider = ($repo, $http, $urls, $storage, $q) ->
 
         return $http.post(url, params)
 
+    service.edit = (project, swimlaneId, name) ->
+        url = $urls.resolve("swimlanes")
+        url = "#{url}/#{swimlaneId}"
+        params = {
+            project,
+            name
+        }
+        return $http.patch(url, params)
+
     # service.bulkCreate = (projectId, milestoneId, data) ->
     #     url = $urls.resolve("bulk-create-issues")
     #     params = {project_id: projectId,  milestone_id: milestoneId, bulk_issues: data}
