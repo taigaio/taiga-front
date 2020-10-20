@@ -76,7 +76,7 @@ class ConfirmService extends taiga.Service
 
         el.on "click.confirm-dialog", ".button-red", (event) =>
             event.preventDefault()
-            defered.reject()
+            defered.resolve(false)
             @.hide(el)
 
         onEsc = () =>

@@ -262,10 +262,29 @@ ProjectModulesDirective = ($rootScope, $repo, $confirm, $loading) ->
         $el.on "change", ".module-activation.module-direct-active input", (event) ->
             event.preventDefault()
 
-            $scope.$applyAsync(submit)
+            if (event.currentTarget.id = 'functionality-kanban')
+                checked = event.currentTarget.checked
+                if (!checked)
+                    title = 'Disable kanban'
+                    message = 'This project has swimlanes. They will be gone but your user stories will not be deleted.'
+                    $confirm.askOnDelete(title, '', message).then (response) ->
+                        if (!response)
+                            $scope.project.is_kanban_activated = true
+                            $scope.$applyAsync(submit)
+                        else
+                            $scope.project.is_kanban_activated = false
+                            $scope.$applyAsync(submit)
+                            response.finish()
+                else if (checked)
+                    $scope.project.is_kanban_activated = true
+                    $scope.$applyAsync(submit)
+            else
+                $scope.$applyAsync(submit)
+
 
         $el.on "submit", "form", (event) ->
             event.preventDefault()
+            console.log({event})
 
             submit()
 
