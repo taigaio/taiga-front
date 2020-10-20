@@ -156,26 +156,27 @@ class ProjectSwimlanesValuesController extends taiga.Controller
             @.loadSwimlanes()
 
     updatedSwimlanePosition: (swimlane, position) =>
-        prevPosition = @scope.values.find((value) ->
+        prevSwimlane = @scope.values.find((value) ->
             return value.id == swimlane.id
         )
-        if (prevPosition.order == position)
-            return
-        swimlanesOrder = @scope.values.map((value, index) =>
-            swimlanePosition = index
-            if (value.id == swimlane.id)
-                swimlanePosition = position
-            else if (index >= position && value.id != swimlane.id && index <= prevPosition.order)
-                swimlanePosition = index + 1
-            else if (index <= position && value.id != swimlane.id && index >= prevPosition.order)
-                swimlanePosition = index - 1
 
+        if (prevSwimlane.order == position)
+            return
+
+        swimlanesOrderArrayFiltered = @scope.values.filter((value, index) =>
+            return value.id != swimlane.id
+        )
+
+        swimlanesOrderArrayFiltered.splice(position, 0, swimlane)
+
+        newSwimlanesOrder = swimlanesOrderArrayFiltered.map((swimlane, index) =>
             return [
-                value.id,
-                swimlanePosition
+                swimlane.id,
+                index
             ]
         )
-        return @rs[@scope.resource].bulkUpdateOrder(@scope.projectId, swimlanesOrder).then (values) =>
+
+        return @rs[@scope.resource].bulkUpdateOrder(@scope.projectId, newSwimlanesOrder).then (values) =>
             @.loadSwimlanes()
 
     loadSwimlanes: =>
