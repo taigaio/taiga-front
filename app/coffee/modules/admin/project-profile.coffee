@@ -240,7 +240,7 @@ module.directive("tgProjectDefaultValues", ["$rootScope", "$tgRepo", "$tgConfirm
 ## Project Modules Directive
 #############################################################################
 
-ProjectModulesDirective = ($rootScope, $repo, $confirm, $loading) ->
+ProjectModulesDirective = ($rootScope, $repo, $confirm, $loading, $translate) ->
     link = ($scope, $el, $attrs) ->
         submit = =>
             form = $el.find("form").checksley()
@@ -265,8 +265,8 @@ ProjectModulesDirective = ($rootScope, $repo, $confirm, $loading) ->
             if (event.currentTarget.id = 'functionality-kanban')
                 checked = event.currentTarget.checked
                 if (!checked)
-                    title = 'Disable kanban'
-                    message = 'This project has swimlanes. They will be gone but your user stories will not be deleted.'
+                    title = $translate.instant("LIGHTBOX.DISABLE_KANBAN.TITLE")
+                    message = $translate.instant("LIGHTBOX.DISABLE_KANBAN.MESSAGE")
                     $confirm.askOnDelete(title, '', message).then (response) ->
                         if (!response)
                             $scope.project.is_kanban_activated = true
@@ -317,7 +317,7 @@ ProjectModulesDirective = ($rootScope, $repo, $confirm, $loading) ->
 
     return {link:link}
 
-module.directive("tgProjectModules", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading",
+module.directive("tgProjectModules", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", "$translate",
                                       ProjectModulesDirective])
 
 

@@ -1170,6 +1170,10 @@
             "ADD_ISSUE": "Add issue",
             "FILTER_ISSUES": "Filter issues"
         },
+        "DISABLE_KANBAN": {
+            "TITLE": "Disable kanban",
+            "MESSAGE": "This project has swimlanes. They will be gone but your user stories will not be deleted"
+        },
         "DELETE_DUE_DATE": {
             "TITLE": "Delete due date",
             "SUBTITLE": "Are you sure you want to delete this due date?"
