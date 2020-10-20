@@ -186,7 +186,6 @@ class ProjectSwimlanesValuesController extends taiga.Controller
             return values
 
     removeSwimlane: (swimlane) =>
-        console.log(swimlane)
         title = @translate.instant("LIGHTBOX.ADMIN_KANBAN_POWERUPS.TITLE_ACTION_DELETE_SWIMLANE")
 
         if @scope.values.length > 1
@@ -321,7 +320,6 @@ class ProjectDueDatesValuesController extends ProjectValuesController
     ]
 
     loadValues: =>
-        console.log(@rs[@scope.resource], @scope)
         return @rs[@scope.resource].listValues(@scope.projectId, @scope.type).then (values) =>
             if values.length
                 @scope.maxValueOrder = _.maxBy(values, "order").order

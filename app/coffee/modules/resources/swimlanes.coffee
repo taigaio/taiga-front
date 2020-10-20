@@ -22,23 +22,8 @@ taiga = @.taiga
 
 generateHash = taiga.generateHash
 
-resourceProvider = ($repo, $http, $urls, $storage, $q) ->
+resourceProvider = ($repo, $http, $urls) ->
     service = {}
-    # hashSuffix = "issues-queryparams"
-
-    # service.get = (projectId, swimlane) ->
-    #     params = service.getQueryParams(projectId)
-    #     params.project = projectId
-    #     return $repo.queryOne("issues", issueId, params)
-
-    # service.getByRef = (projectId, ref) ->
-    #     params = service.getQueryParams(projectId)
-    #     params.project = projectId
-    #     params.ref = ref
-    #     return $repo.queryOne("issues", "by_ref", params)
-
-    # service.listInAllProjects = (filters) ->
-    #     return $repo.queryMany("issues", filters)
 
     service.list = (projectId) ->
         params = {project: projectId}
@@ -72,65 +57,8 @@ resourceProvider = ($repo, $http, $urls, $storage, $q) ->
         }
         return $http.post(url, params)
 
-    # service.bulkCreate = (projectId, milestoneId, data) ->
-    #     url = $urls.resolve("bulk-create-issues")
-    #     params = {project_id: projectId,  milestone_id: milestoneId, bulk_issues: data}
-    #     return $http.post(url, params)
-
-    # service.upvote = (issueId) ->
-    #     url = $urls.resolve("issue-upvote", issueId)
-    #     return $http.post(url)
-
-    # service.downvote = (issueId) ->
-    #     url = $urls.resolve("issue-downvote", issueId)
-    #     return $http.post(url)
-
-    # service.watch = (issueId) ->
-    #     url = $urls.resolve("issue-watch", issueId)
-    #     return $http.post(url)
-
-    # service.unwatch = (issueId) ->
-    #     url = $urls.resolve("issue-unwatch", issueId)
-    #     return $http.post(url)
-
-    # service.stats = (projectId) ->
-    #     return $repo.queryOneRaw("projects", "#{projectId}/issues_stats")
-
-    # service.filtersData = (params) ->
-    #     return $repo.queryOneRaw("issues-filters", null, params)
-
-    # service.listValues = (projectId, type) ->
-    #     params = {"project": projectId}
-    #     service.storeQueryParams(projectId, params)
-    #     return $repo.queryMany(type, params)
-
-    # service.createDefaultValues = (projectId, type) ->
-    #     data = {"project_id": projectId}
-    #     url = $urls.resolve("#{type}-create-default")
-    #     return $http.post(url, data)
-
-    # service.storeQueryParams = (projectId, params) ->
-    #     ns = "#{projectId}:#{hashSuffix}"
-    #     hash = generateHash([projectId, ns])
-    #     $storage.set(hash, params)
-
-    # service.getQueryParams = (projectId) ->
-    #     ns = "#{projectId}:#{hashSuffix}"
-    #     hash = generateHash([projectId, ns])
-    #     return $storage.get(hash) or {}
-
-    # service.bulkUpdateMilestone = (projectId, milestoneId, data) ->
-    #     url = $urls.resolve("bulk-update-issue-milestone")
-    #     params = {project_id: projectId, milestone_id: milestoneId, bulk_issues: data}
-    #     return $http.post(url, params)
-
-    # service.promoteToUserStory = (issueId, projectId) ->
-    #     url = $urls.resolve("promote-issue-to-us", issueId)
-    #     data = {project_id: projectId}
-    #     return $http.post(url, data)
-
     return (instance) ->
         instance.swimlanes = service
 
 module = angular.module("taigaResources")
-module.factory("$tgSwimlanesResourcesProvider", ["$tgRepo", "$tgHttp", "$tgUrls", "$tgStorage", "$q", resourceProvider])
+module.factory("$tgSwimlanesResourcesProvider", ["$tgRepo", "$tgHttp", "$tgUrls", resourceProvider])
