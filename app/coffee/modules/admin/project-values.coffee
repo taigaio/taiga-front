@@ -152,16 +152,31 @@ class ProjectSwimlanesValuesController extends taiga.Controller
 
 
     updateSwimlane: (swimlane, name) =>
-        console.log({
-            scope: @scope,
-            swimlane,
-            name
-        })
-        return @rs[@scope.resource].edit(@scope.projectId, swimlane.id, name).then (values) =>
+        return @rs[@scope.resource].edit(swimlane.id, name).then (values) =>
             @.loadSwimlanes()
 
-    updatedSwimlanePosition: (position) =>
-        console.log(position)
+    updatedSwimlanePosition: (swimlane, position) =>
+        prevPosition = @scope.values.find((value) ->
+            return value.id == swimlane.id
+        )
+        if (prevPosition.order == position)
+            return
+        swimlanesOrder = @scope.values.map((value, index) =>
+            swimlanePosition = index
+            if (value.id == swimlane.id)
+                swimlanePosition = position
+            else if (index >= position && value.id != swimlane.id && index <= prevPosition.order)
+                swimlanePosition = index + 1
+            else if (index <= position && value.id != swimlane.id && index >= prevPosition.order)
+                swimlanePosition = index - 1
+
+            return [
+                value.id,
+                swimlanePosition
+            ]
+        )
+        return @rs[@scope.resource].bulkUpdateOrder(@scope.projectId, swimlanesOrder).then (values) =>
+            @.loadSwimlanes()
 
     loadSwimlanes: =>
         return @rs[@scope.resource].list(@scope.projectId).then (values) =>
@@ -201,7 +216,7 @@ module.controller("ProjectSwimlanesValuesController", ProjectSwimlanesValuesCont
 ## Swimlanes directive
 #############################################################################
 
-ProjectSwimlanesValue = ($log, $repo, $confirm, $location, animationFrame, $translate, $rootscope, projectService) ->
+ProjectSwimlanesValue = () ->
 
     link = ($scope, $el, $attrs, $ctrl) ->
         $ctrl = $el.controller()
@@ -227,14 +242,13 @@ ProjectSwimlanesValue = ($log, $repo, $confirm, $location, animationFrame, $tran
         link:link
     }
 
-module.directive("tgProjectSwimlanesValues", ["$log", "$tgRepo", "$tgConfirm", "$tgLocation", "animationFrame",
-                                             "$translate", "$rootScope", "tgProjectService", ProjectSwimlanesValue])
+module.directive("tgProjectSwimlanesValues", [ProjectSwimlanesValue])
 
 #############################################################################
 ## Swimlanes single directive
 #############################################################################
 
-ProjectSwimlanesSingle = ($log, $repo, $confirm, $location, animationFrame, $translate, $rootscope, projectService) ->
+ProjectSwimlanesSingle = () ->
 
     link = ($scope, $el, $attrs, $ctrl) ->
         $ctrl = $el.controller()
@@ -255,8 +269,7 @@ ProjectSwimlanesSingle = ($log, $repo, $confirm, $location, animationFrame, $tra
 
     return {link:link}
 
-module.directive("tgProjectSwimlanesSingle", ["$log", "$tgRepo", "$tgConfirm", "$tgLocation", "animationFrame",
-                                             "$translate", "$rootScope", "tgProjectService", ProjectSwimlanesSingle])
+module.directive("tgProjectSwimlanesSingle", [ProjectSwimlanesSingle])
 
 
 #############################################################################
@@ -267,7 +280,7 @@ SortableSwimlanes = () ->
 
     link = ($scope, $el, $attrs, $ctrl) ->
         $ctrl = $el.controller()
-
+        itemEl = null
         tdom = $el.find(".sortable")
 
         drake = dragula([tdom[0]], {
@@ -279,10 +292,11 @@ SortableSwimlanes = () ->
 
         drake.on 'dragend', (item) ->
             itemEl = $(item)
+            itemValue = itemEl.scope().value
             newIndex = itemEl.index()
 
             $scope.$apply () ->
-                $ctrl.updatedSwimlanePosition(newIndex)
+                $ctrl.updatedSwimlanePosition(itemValue, newIndex)
 
         $scope.$on "$destroy", ->
             $el.off()

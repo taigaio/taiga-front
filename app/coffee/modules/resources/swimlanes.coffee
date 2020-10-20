@@ -55,14 +55,22 @@ resourceProvider = ($repo, $http, $urls, $storage, $q) ->
 
         return $http.post(url, params)
 
-    service.edit = (project, swimlaneId, name) ->
+    service.edit = (swimlaneId, name) ->
         url = $urls.resolve("swimlanes")
         url = "#{url}/#{swimlaneId}"
         params = {
-            project,
             name
         }
         return $http.patch(url, params)
+
+    service.bulkUpdateOrder = (project, swimlanesOrder) ->
+        url = $urls.resolve("swimlanes")
+        url = "#{url}/bulk_update_order"
+        params = {
+            project,
+            bulk_swimlanes: swimlanesOrder
+        }
+        return $http.post(url, params)
 
     # service.bulkCreate = (projectId, milestoneId, data) ->
     #     url = $urls.resolve("bulk-create-issues")
