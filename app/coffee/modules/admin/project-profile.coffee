@@ -284,8 +284,6 @@ ProjectModulesDirective = ($rootScope, $repo, $confirm, $loading, $translate) ->
 
         $el.on "submit", "form", (event) ->
             event.preventDefault()
-            console.log({event})
-
             submit()
 
         $el.on "click", ".save", (event) ->

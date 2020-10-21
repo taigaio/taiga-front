@@ -57,8 +57,17 @@ resourceProvider = ($repo, $http, $urls) ->
         }
         return $http.post(url, params)
 
+    service.delete = (swimlaneId, moveTo) ->
+        url = $urls.resolve("swimlanes")
+        url = "#{url}/#{swimlaneId}"
+        params = {}
+        if (moveTo)
+            params.moveTo = moveTo
+        return $http.delete(url, params)
+
     return (instance) ->
         instance.swimlanes = service
+
 
 module = angular.module("taigaResources")
 module.factory("$tgSwimlanesResourcesProvider", ["$tgRepo", "$tgHttp", "$tgUrls", resourceProvider])

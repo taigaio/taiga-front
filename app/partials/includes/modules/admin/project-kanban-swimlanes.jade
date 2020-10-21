@@ -29,7 +29,7 @@ section.admin-kanban-powerups
                 tg-svg(svg-icon="icon-close")
 
         .empty(
-            ng-if="!values"
+            ng-if="!values.length"
             translate="ADMIN.PROJECT_KANBAN_POWER_UPS.NO_SWIMLANES")
 
         .admin-swimlanes-list(
