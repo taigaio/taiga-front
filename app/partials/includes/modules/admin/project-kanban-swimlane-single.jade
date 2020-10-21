@@ -20,12 +20,14 @@
 form.admin-swimlane-form(ng-if="displaySwimlaneSingleForm")
     input(
         type="text"
+        maxlength="48"
         ng-model="swimlaneSingleForm.name"
         ng-value="value.name"
         placeholder="{{'ADMIN.PROJECT_KANBAN_POWER_UPS.SWIMLANE_NAME' | translate }}"
     )
     button.form-button.add-swimlane-single(
         type="button"
+        max
         arial-label="{{'COMMON.SAVE' | translate }}"
         ng-click="updateSwimlane(value)"
     )
