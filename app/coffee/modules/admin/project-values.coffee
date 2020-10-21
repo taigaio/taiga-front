@@ -249,6 +249,7 @@ ProjectSwimlanesSingle = ($translate, $confirm) ->
         }
 
         $scope.updateSwimlane = (swimlane) ->
+            $scope.displaySwimlaneSingleForm = false
             $ctrl.updateSwimlane(swimlane, $scope.swimlaneSingleForm.name)
 
         $scope.editSwimlaneSingleForm = () ->
