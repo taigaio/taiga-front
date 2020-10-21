@@ -193,7 +193,7 @@ module.controller("ProjectSwimlanesValuesController", ProjectSwimlanesValuesCont
 ## Swimlanes directive
 #############################################################################
 
-ProjectSwimlanesValue = () ->
+ProjectSwimlanesValue = ($timeout) ->
 
     link = ($scope, $el, $attrs, $ctrl) ->
         $ctrl = $el.controller()
@@ -217,6 +217,7 @@ ProjectSwimlanesValue = () ->
 
         $scope.displaySwimlaneForm = () ->
             $scope.isFormVisible = true
+            $timeout () -> $el.find("#admin-swimlanes-form-input").focus()
 
         $scope.hideSwimlaneForm = () ->
             $scope.isFormVisible = false
@@ -231,7 +232,7 @@ ProjectSwimlanesValue = () ->
         link:link
     }
 
-module.directive("tgProjectSwimlanesValues", [ProjectSwimlanesValue])
+module.directive("tgProjectSwimlanesValues", ["$timeout", ProjectSwimlanesValue])
 
 #############################################################################
 ## Swimlanes single directive

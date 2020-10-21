@@ -57,9 +57,9 @@
 }
 
 .admin-swimlanes-manager {
-
     $swimlanes-width: 500px;
-
+    margin-block-start: 1.5rem;
+    padding-inline-start: 1rem;
 
     .empty {
         @include font-type(regular);
@@ -93,7 +93,6 @@
     }
 
     .admin-swimlanes-list {
-        margin-block-start: 1rem;
         position: relative;
         width: $swimlanes-width;
     }
@@ -107,10 +106,17 @@
         box-shadow: 3px 4px 14px 0 rgba($color-link-primary, .15);
         color: $color-gray400;
         left: calc(50% - 190/2 * 1px);
+        opacity: 1;
         padding: 1rem;
         position: absolute;
+        transition: all .1s;
         width: 190px;
         z-index: 2;
+        &.ng-enter,
+        &.ng-leave {
+            opacity: 0;
+            transition: all .1s;
+        }
         &::after {
             border-color: $color-black900 transparent transparent transparent;
             border-style: solid;

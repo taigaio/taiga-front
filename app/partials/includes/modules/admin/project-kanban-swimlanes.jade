@@ -22,10 +22,10 @@ section.admin-kanban-powerups
                     include ../admin/project-kanban-swimlane-single
 
         form.admin-swimlanes-form(
-            ng-if="isFormVisible"
+            ng-show="isFormVisible"
             tg-bind-scope
         )
-            input(
+            input#admin-swimlanes-form-input(
                 type="text"
                 placeholder="{{'ADMIN.PROJECT_KANBAN_POWER_UPS.SWIMLANE_NAME' | translate }}"
                 ng-model="swimlane.name"
@@ -41,8 +41,7 @@ section.admin-kanban-powerups
                 ng-click="hideSwimlaneForm()"
             )
                 tg-svg(svg-icon="icon-close")
-
         .empty(
-            ng-if="!values.length"
+            ng-if="!values.length && !isFormVisible"
             translate="ADMIN.PROJECT_KANBAN_POWER_UPS.NO_SWIMLANES")
 
