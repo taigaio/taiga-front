@@ -60,6 +60,7 @@
 
     $swimlanes-width: 500px;
 
+
     .empty {
         @include font-type(regular);
         @include font-size(small);
@@ -82,7 +83,7 @@
     }
 
     .admin-swimlanes-form {
-        margin-block-start: 1.5rem;
+        margin-block-start: .5rem;
     }
 
     .add-swimlane,
@@ -93,7 +94,33 @@
 
     .admin-swimlanes-list {
         margin-block-start: 1rem;
+        position: relative;
         width: $swimlanes-width;
+    }
+
+    .tooltip {
+        @include font-type(regular);
+        @include font-size(xsmall);
+        background: $color-black900;
+        border-radius: 4px;
+        bottom: 2rem;
+        box-shadow: 3px 4px 14px 0 rgba($color-link-primary, .15);
+        color: $color-gray400;
+        left: calc(50% - 190/2 * 1px);
+        padding: 1rem;
+        position: absolute;
+        width: 190px;
+        z-index: 2;
+        &::after {
+            border-color: $color-black900 transparent transparent transparent;
+            border-style: solid;
+            border-width: 8px 8px 0 8px;
+            bottom: -8px;
+            box-shadow: 3px 4px 14px 0 rgba($color-link-primary, .15);
+            content: '';
+            left: calc(50% - 4px);
+            position: absolute;
+        }
     }
 
     .admin-swimlane-item {

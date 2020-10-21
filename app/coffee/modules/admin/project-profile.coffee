@@ -240,7 +240,7 @@ module.directive("tgProjectDefaultValues", ["$rootScope", "$tgRepo", "$tgConfirm
 ## Project Modules Directive
 #############################################################################
 
-ProjectModulesDirective = ($rootScope, $repo, $confirm, $loading, $translate) ->
+ProjectModulesDirective = ($rootScope, $repo, $confirm, $loading) ->
     link = ($scope, $el, $attrs) ->
         submit = =>
             form = $el.find("form").checksley()
@@ -262,24 +262,7 @@ ProjectModulesDirective = ($rootScope, $repo, $confirm, $loading, $translate) ->
         $el.on "change", ".module-activation.module-direct-active input", (event) ->
             event.preventDefault()
 
-            if (event.currentTarget.id = 'functionality-kanban')
-                checked = event.currentTarget.checked
-                if (!checked)
-                    title = $translate.instant("LIGHTBOX.DISABLE_KANBAN.TITLE")
-                    message = $translate.instant("LIGHTBOX.DISABLE_KANBAN.MESSAGE")
-                    $confirm.askOnDelete(title, '', message).then (response) ->
-                        if (!response)
-                            $scope.project.is_kanban_activated = true
-                            $scope.$applyAsync(submit)
-                        else
-                            $scope.project.is_kanban_activated = false
-                            $scope.$applyAsync(submit)
-                            response.finish()
-                else if (checked)
-                    $scope.project.is_kanban_activated = true
-                    $scope.$applyAsync(submit)
-            else
-                $scope.$applyAsync(submit)
+            $scope.$applyAsync(submit)
 
 
         $el.on "submit", "form", (event) ->
@@ -315,7 +298,7 @@ ProjectModulesDirective = ($rootScope, $repo, $confirm, $loading, $translate) ->
 
     return {link:link}
 
-module.directive("tgProjectModules", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", "$translate",
+module.directive("tgProjectModules", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading",
                                       ProjectModulesDirective])
 
 

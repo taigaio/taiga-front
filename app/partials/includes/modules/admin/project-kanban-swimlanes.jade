@@ -7,6 +7,20 @@ section.admin-kanban-powerups
         )
 
     .admin-swimlanes-manager
+
+        .admin-swimlanes-list(
+            ng-if="values"
+            tg-sortable-swimlanes
+        )
+            .tooltip(ng-if="values.length == 1 && isNewSwimlane") If you had some user stories created, you will find them on this swimlane.
+            .sortable
+                .admin-swimlane-single(
+                    tg-bind-scope
+                    tg-project-swimlanes-single
+                    ng-repeat="value in values"
+                )
+                    include ../admin/project-kanban-swimlane-single
+
         form.admin-swimlanes-form(
             ng-if="isFormVisible"
             tg-bind-scope
@@ -31,16 +45,4 @@ section.admin-kanban-powerups
         .empty(
             ng-if="!values.length"
             translate="ADMIN.PROJECT_KANBAN_POWER_UPS.NO_SWIMLANES")
-
-        .admin-swimlanes-list(
-            ng-if="values"
-            tg-sortable-swimlanes
-        )
-            .sortable
-                .admin-swimlane-single(
-                    tg-bind-scope
-                    tg-project-swimlanes-single
-                    ng-repeat="value in values"
-                )
-                    include ../admin/project-kanban-swimlane-single
 
