@@ -149,6 +149,9 @@ urls = {
     "issue-unwatch": "/issues/%s/unwatch"
     "promote-issue-to-us": "/issues/%s/promote_to_user_story"
 
+    # Swimlanes
+    "swimlanes": "/swimlanes"
+
     # Wiki pages
     "wiki": "/wiki"
     "wiki-restore": "/wiki/%s/restore"
@@ -280,6 +283,7 @@ module.run([
     "$tgUserstoriesResourcesProvider",
     "$tgTasksResourcesProvider",
     "$tgIssuesResourcesProvider",
+    "$tgSwimlanesResourcesProvider",
     "$tgWikiResourcesProvider",
     "$tgSearchResourcesProvider",
     "$tgMdRenderResourcesProvider",

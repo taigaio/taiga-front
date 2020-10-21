@@ -40,7 +40,7 @@
 .project-values-title {
     align-content: center;
     align-items: center;
-    background: $mass-white;
+    background: $color-gray400;
     display: flex;
     justify-content: space-between;
     padding: .8em 1rem;
@@ -52,6 +52,114 @@
         span {
             margin-left: .5rem;
             text-transform: none;
+        }
+    }
+}
+
+.admin-swimlanes-manager {
+    $swimlanes-width: 500px;
+    margin-block-start: 1.5rem;
+    padding-inline-start: 1rem;
+
+    .empty {
+        @include font-type(regular);
+        @include font-size(small);
+        align-items: center;
+        color: $color-black600;
+        display: flex;
+        justify-content: center;
+        min-height: 80px;
+    }
+
+    .admin-swimlanes-form,
+    .admin-swimlane-form {
+        align-items: center;
+        display: flex;
+        width: $swimlanes-width;
+    }
+
+    .admin-swimlane-form {
+        padding-block: .5rem;
+    }
+
+    .admin-swimlanes-form {
+        margin-block-start: .5rem;
+    }
+
+    .add-swimlane,
+    .add-swimlane-single {
+        margin-inline-end: .25rem;
+        margin-inline-start: .5rem;
+    }
+
+    .admin-swimlanes-list {
+        position: relative;
+        width: $swimlanes-width;
+    }
+
+    .tooltip {
+        @include font-type(regular);
+        @include font-size(xsmall);
+        background: $color-black900;
+        border-radius: 4px;
+        bottom: 2rem;
+        box-shadow: 3px 4px 14px 0 rgba($color-link-primary, .15);
+        color: $color-gray400;
+        left: calc(50% - 190/2 * 1px);
+        opacity: 1;
+        padding: 1rem;
+        position: absolute;
+        transition: all .1s;
+        width: 190px;
+        z-index: 2;
+        &.ng-enter,
+        &.ng-leave {
+            opacity: 0;
+            transition: all .1s;
+        }
+        &::after {
+            border-color: $color-black900 transparent transparent transparent;
+            border-style: solid;
+            border-width: 8px 8px 0 8px;
+            bottom: -8px;
+            box-shadow: 3px 4px 14px 0 rgba($color-link-primary, .15);
+            content: '';
+            left: calc(50% - 4px);
+            position: absolute;
+        }
+    }
+
+    .admin-swimlane-item {
+        @include font-type(regular);
+        @include font-size(small);
+        align-items: center;
+        background: $color-gray100;
+        border-radius: 3px;
+        color: $color-black600;
+        display: flex;
+        justify-content: space-between;
+        padding: .75rem 1rem;
+
+        .admin-swimlane-item-start {
+            display: flex;
+            justify-content: center;
+        }
+
+        .admin-swimlane-item-drag {
+            fill: $color-link-primary;
+            margin-inline-end: 1rem;
+        }
+
+        .delete-swimlane {
+            &:hover {
+                .icon {
+                    fill: $color-link-red;
+                }
+            }
+        }
+
+        &:hover {
+            cursor: grab;
         }
     }
 }

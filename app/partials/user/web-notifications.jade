@@ -12,9 +12,8 @@ div.wrapper(
     section.main.admin-common
         header
             h1
-                span.green
-                    | {{sectionName | translate}}
-                    tg-svg.green(svg-icon="icon-bell")
+                span {{sectionName | translate}}
+                tg-svg(svg-icon="icon-bell")
 
         p.total
             span(translate="USER_SETTINGS.EVENTS.SECTION_DESCRIPTION")

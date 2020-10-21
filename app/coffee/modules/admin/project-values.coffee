@@ -125,6 +125,197 @@ class ProjectValuesController extends taiga.Controller
 
 module.controller("ProjectValuesController", ProjectValuesController)
 
+#############################################################################
+## Project swimlanes Controller
+#############################################################################
+
+class ProjectSwimlanesValuesController extends taiga.Controller
+    @.$inject = [
+        "$scope",
+        "$rootScope",
+        "$tgRepo",
+        "$translate"
+        "$tgConfirm",
+        "$tgResources",
+    ]
+
+    constructor: (@scope, @rootscope, @repo, @translate, @confirm, @rs) ->
+        unwatch = @scope.$watch "resource", (resource) =>
+            if resource
+                @.loadSwimlanes()
+                unwatch()
+
+    addSwimlane: =>
+        return @rs[@scope.resource].create(@scope.projectId, @scope.swimlane.name).then (values) =>
+            @scope.swimlaneAdded()
+            @.loadSwimlanes()
+
+    updateSwimlane: (swimlane, name) =>
+        return @rs[@scope.resource].edit(swimlane.id, name).then (values) =>
+            @.loadSwimlanes()
+
+    updatedSwimlanePosition: (swimlane, position) =>
+        prevSwimlane = @scope.values.find((value) ->
+            return value.id == swimlane.id
+        )
+
+        if (prevSwimlane.order == position)
+            return
+
+        swimlanesOrderArrayFiltered = @scope.values.filter((value, index) =>
+            return value.id != swimlane.id
+        )
+
+        swimlanesOrderArrayFiltered.splice(position, 0, swimlane)
+
+        newSwimlanesOrder = swimlanesOrderArrayFiltered.map((swimlane, index) =>
+            return [
+                swimlane.id,
+                index
+            ]
+        )
+
+        return @rs[@scope.resource].bulkUpdateOrder(@scope.projectId, newSwimlanesOrder).then (values) =>
+            @.loadSwimlanes()
+
+    loadSwimlanes: =>
+        return @rs[@scope.resource].list(@scope.projectId).then (values) =>
+            @scope.values = values
+            return values
+
+    removeSwimlane: (swimlaneId, moveTo) =>
+        return @rs[@scope.resource].delete(swimlaneId, moveTo).then () =>
+            @.loadSwimlanes()
+
+module.controller("ProjectSwimlanesValuesController", ProjectSwimlanesValuesController)
+
+#############################################################################
+## Swimlanes directive
+#############################################################################
+
+ProjectSwimlanesValue = ($timeout) ->
+
+    link = ($scope, $el, $attrs, $ctrl) ->
+        $ctrl = $el.controller()
+
+        $scope.isFormVisible = false
+        $scope.isNewSwimlane = false
+        $scope.swimlane = {
+            name: ''
+        }
+
+        $scope.swimlaneAdded = () ->
+            $scope.swimlane = {
+                name: ''
+            }
+            $scope.isNewSwimlane = true
+            $scope.isFormVisible = false
+            setTimeout () ->
+                $scope.isNewSwimlane = false
+                $scope.$apply()
+            , 5000
+
+        $scope.displaySwimlaneForm = () ->
+            $scope.isFormVisible = true
+            $timeout () -> $el.find("#admin-swimlanes-form-input").focus()
+
+        $scope.hideSwimlaneForm = () ->
+            $scope.isFormVisible = false
+            $scope.swimlane = {
+                name: ''
+            }
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {
+        link:link
+    }
+
+module.directive("tgProjectSwimlanesValues", ["$timeout", ProjectSwimlanesValue])
+
+#############################################################################
+## Swimlanes single directive
+#############################################################################
+
+ProjectSwimlanesSingle = ($translate, $confirm) ->
+
+    link = ($scope, $el, $attrs, $ctrl) ->
+        $ctrl = $el.controller()
+
+        $scope.displaySwimlaneSingleForm = false
+        $scope.swimlaneSingleForm = {
+            name: ''
+        }
+
+        $scope.updateSwimlane = (swimlane) ->
+            $scope.displaySwimlaneSingleForm = false
+            $ctrl.updateSwimlane(swimlane, $scope.swimlaneSingleForm.name)
+
+        $scope.editSwimlaneSingleForm = () ->
+            $scope.displaySwimlaneSingleForm = true
+
+        $scope.cancelEditSwimlaneSingleForm = () ->
+            $scope.displaySwimlaneSingleForm = false
+
+        $scope.removeSwimlaneDialog = (swimlane) =>
+            title = $translate.instant("LIGHTBOX.ADMIN_KANBAN_POWERUPS.TITLE_ACTION_DELETE_SWIMLANE")
+
+            if $scope.values.length > 1
+                subtitle = $translate.instant("LIGHTBOX.ADMIN_KANBAN_POWERUPS.SUBTITLE_ACTION_DELETE_SWIMLANE_OPTIONS")
+
+                choices = {}
+                _.each $scope.values, (option) ->
+                    if swimlane.id != option.id
+                        choices[option.id] = option.name
+
+                $confirm.askChoice(title, subtitle, choices).then (response) ->
+                    $ctrl.removeSwimlane(swimlane.id, response.selected)
+                    response.finish();
+            else
+                subtitle = $translate.instant("LIGHTBOX.ADMIN_KANBAN_POWERUPS.SUBTITLE_ACTION_DELETE_SWIMLANE_LAST")
+                $confirm.ask(title, subtitle).then (response) ->
+                    $ctrl.removeSwimlane(swimlane.id)
+                    response.finish();
+
+    return {link:link}
+
+module.directive("tgProjectSwimlanesSingle", ["$translate", "$tgConfirm", ProjectSwimlanesSingle])
+
+
+#############################################################################
+## Swimlanes sortable directive
+#############################################################################
+
+SortableSwimlanes = () ->
+
+    link = ($scope, $el, $attrs, $ctrl) ->
+        $ctrl = $el.controller()
+        itemEl = null
+        tdom = $el.find(".sortable")
+
+        drake = dragula([tdom[0]], {
+            direction: 'vertical',
+            copySortSource: false,
+            copy: false,
+            mirrorContainer: tdom[0],
+        })
+
+        drake.on 'dragend', (item) ->
+            itemEl = $(item)
+            itemValue = itemEl.scope().value
+            newIndex = itemEl.index()
+
+            $scope.$apply () ->
+                $ctrl.updatedSwimlanePosition(itemValue, newIndex)
+
+        $scope.$on "$destroy", ->
+            $el.off()
+            drake.destroy()
+
+    return {link:link}
+
+module.directive("tgSortableSwimlanes", [SortableSwimlanes])
 
 #############################################################################
 ## Project due dates values Controller
@@ -185,7 +376,6 @@ ProjectValuesDirective = ($log, $repo, $confirm, $location, animationFrame, $tra
             copySortSource: false,
             copy: false,
             mirrorContainer: tdom[0],
-            moves: (item) -> return $(item).is('div[tg-bind-scope]')
         })
 
         drake.on 'dragend', (item) ->

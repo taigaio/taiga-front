@@ -264,9 +264,9 @@ ProjectModulesDirective = ($rootScope, $repo, $confirm, $loading) ->
 
             $scope.$applyAsync(submit)
 
+
         $el.on "submit", "form", (event) ->
             event.preventDefault()
-
             submit()
 
         $el.on "click", ".save", (event) ->

@@ -22,9 +22,7 @@ div.wrapper(
           on-change-q="ctrl.changeQ(q)"
         )
         .taskboard-header
-            h1
-                span.green(tg-bo-bind="sprint.name")
-                span.project-name(tg-bo-bind="project.name", class="project-name-short")
+            h1(tg-bo-bind="sprint.name")
                 span.date(tg-date-range="sprint.estimated_start,sprint.estimated_finish")
             .taskboard-actions
                 .zoom-loading(tg-loading="ctrl.zoomLoading")

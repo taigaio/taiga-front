@@ -1,0 +1,47 @@
+section.admin-kanban-powerups
+    div.project-values-title
+        h2 {{ sectionName | translate }}
+        button.button.button-primary(
+            translate="ADMIN.PROJECT_KANBAN_POWER_UPS.ACTION_ADD_SWIMLANE"
+            ng-click="displaySwimlaneForm()"
+        )
+
+    .admin-swimlanes-manager
+
+        .admin-swimlanes-list(
+            ng-if="values"
+            tg-sortable-swimlanes
+        )
+            .tooltip(ng-if="values.length == 1 && isNewSwimlane") If you had some user stories created, you will find them on this swimlane.
+            .sortable
+                .admin-swimlane-single(
+                    tg-bind-scope
+                    tg-project-swimlanes-single
+                    ng-repeat="value in values"
+                )
+                    include ../admin/project-kanban-swimlane-single
+
+        form.admin-swimlanes-form(
+            ng-show="isFormVisible"
+            tg-bind-scope
+        )
+            input#admin-swimlanes-form-input(
+                type="text"
+                placeholder="{{'ADMIN.PROJECT_KANBAN_POWER_UPS.SWIMLANE_NAME' | translate }}"
+                ng-model="swimlane.name"
+            )
+            button.form-button.add-swimlane(
+                arial-label="{{'COMMON.SAVE' | translate }}"
+                ng-click="ctrl.addSwimlane()"
+            )
+                tg-svg(svg-icon="icon-check-empty")
+
+            button.form-button.cancel-swimlane(
+                arial-label="{{'COMMON.CANCEL' | translate }}"
+                ng-click="hideSwimlaneForm()"
+            )
+                tg-svg(svg-icon="icon-close")
+        .empty(
+            ng-if="!values.length && !isFormVisible"
+            translate="ADMIN.PROJECT_KANBAN_POWER_UPS.NO_SWIMLANES")
+

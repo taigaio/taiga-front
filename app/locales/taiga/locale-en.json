@@ -672,6 +672,14 @@
             "BEFORE": "Before",
             "AFTER": "Past"
         },
+        "PROJECT_KANBAN_POWER_UPS": {
+            "TITLE": "Kanban Power Ups",
+            "SUBTITLE": "Enable swimlanes to use in your workflow and set WIP limits to restrict the maximun number of user stories on each status.",
+            "SWIMLANES": "Swimlanes",
+            "ACTION_ADD_SWIMLANE": "New swimlane",
+            "NO_SWIMLANES": "There are no swimlanes yet",
+            "SWIMLANE_NAME": "Swimlane name"
+        },
         "ROLES": {
             "PAGE_TITLE": "Roles - {{projectName}}",
             "WARNING_NO_ROLE": "Be careful, no role in your project will be able to estimate the point value for user stories",
@@ -800,7 +808,8 @@
             "TYPES": "Types",
             "CUSTOM_FIELDS": "Custom fields",
             "TAGS": "Tags",
-            "DUE_DATES": "Due dates"
+            "DUE_DATES": "Due dates",
+            "KANBAN_POWER_UPS": "Kanban Power Ups"
         },
         "SUBMENU_ROLES": {
             "TITLE": "Roles",
@@ -1160,6 +1169,10 @@
             "ADD_ISSUE": "Add issue",
             "FILTER_ISSUES": "Filter issues"
         },
+        "DISABLE_KANBAN": {
+            "TITLE": "Disable kanban",
+            "MESSAGE": "This project has swimlanes. They will be gone but your user stories will not be deleted"
+        },
         "DELETE_DUE_DATE": {
             "TITLE": "Delete due date",
             "SUBTITLE": "Are you sure you want to delete this due date?"
@@ -1215,6 +1228,11 @@
         "ADMIN_DUE_DATES": {
             "TITLE_ACTION_DELETE_DUE_DATE": "Delete due date",
             "SUBTITLE_ACTION_DELETE_DUE_DATE": "Are you sure you want to delete the due date status {{due_date_status_name}}?"
+        },
+        "ADMIN_KANBAN_POWERUPS": {
+            "TITLE_ACTION_DELETE_SWIMLANE": "Delete swimlane",
+            "SUBTITLE_ACTION_DELETE_SWIMLANE_OPTIONS": "All the user stories on this swimlane will be moved to:",
+            "SUBTITLE_ACTION_DELETE_SWIMLANE_LAST": "Your user stories will not be deleted. They will remain in the kanban."
         },
         "RELATE_TO_EPIC": {
             "TITLE": "Link to epic",

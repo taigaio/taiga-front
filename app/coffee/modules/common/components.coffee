@@ -481,9 +481,6 @@ TgMainTitleDirective = ($translate) ->
     return {
         link: link
         templateUrl: "common/components/main-title.html"
-        scope: {
-            projectName : "=projectName"
-        }
     }
 
 module.directive("tgMainTitle", ["$translate",  TgMainTitleDirective])
