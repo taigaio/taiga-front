@@ -262,14 +262,15 @@ ProjectSwimlanesSingle = ($translate, $confirm) ->
             title = $translate.instant("LIGHTBOX.ADMIN_KANBAN_POWERUPS.TITLE_ACTION_DELETE_SWIMLANE")
 
             if $scope.values.length > 1
-                subtitle = $translate.instant("LIGHTBOX.ADMIN_KANBAN_POWERUPS.SUBTITLE_ACTION_DELETE_SWIMLANE_OPTIONS")
+                subtitle = $translate.instant("LIGHTBOX.ADMIN_KANBAN_POWERUPS.SUBTITLE_ACTION_DELETE_SWIMLANE_OPTIONS", {swimlane:  swimlane.name})
+                replacement = $translate.instant("LIGHTBOX.ADMIN_KANBAN_POWERUPS.SUBTITLE_ACTION_DELETE_SWIMLANE_REPLACEMENT")
 
                 choices = {}
                 _.each $scope.values, (option) ->
                     if swimlane.id != option.id
                         choices[option.id] = option.name
 
-                $confirm.askChoice(title, subtitle, choices).then (response) ->
+                $confirm.askChoice(title, subtitle, choices, replacement).then (response) ->
                     $ctrl.removeSwimlane(swimlane.id, response.selected)
                     response.finish();
             else
