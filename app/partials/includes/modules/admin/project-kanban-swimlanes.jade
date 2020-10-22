@@ -17,7 +17,7 @@ section.admin-kanban-powerups
                 .admin-swimlane-single(
                     tg-bind-scope
                     tg-project-swimlanes-single
-                    ng-repeat="value in values"
+                    ng-repeat="value in values track by value.id"
                 )
                     include ../admin/project-kanban-swimlane-single
 
