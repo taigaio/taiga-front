@@ -92,6 +92,17 @@
         margin-inline-start: .5rem;
     }
 
+    .admin-swimlane-single {
+        opacity: 1;
+        &.ng-leave {
+            transition: all linear .3s;
+            transition-delay: .2s;
+            &.ng-leave-active {
+                opacity: 0;
+            }
+        }
+    }
+
     .admin-swimlanes-list {
         position: relative;
         width: $swimlanes-width;
@@ -106,16 +117,23 @@
         box-shadow: 3px 4px 14px 0 rgba($color-link-primary, .15);
         color: $color-gray400;
         left: calc(50% - 190/2 * 1px);
-        opacity: 1;
         padding: 1rem;
         position: absolute;
-        transition: all .1s;
         width: 190px;
         z-index: 2;
-        &.ng-enter,
-        &.ng-leave {
+        &.ng-enter {
             opacity: 0;
-            transition: all .1s;
+            transition: all cubic-bezier(.25, .46, .45, .94) .4s;
+            transition-delay: .2s;
+            &.ng-enter-active {
+                opacity: 1;
+            }
+        }
+        &.ng-leave {
+            transition: all cubic-bezier(.25, .46, .45, .94) .3s;
+            &.ng-leave-active {
+                opacity: 0;
+            }
         }
         &::after {
             border-color: $color-black900 transparent transparent transparent;
