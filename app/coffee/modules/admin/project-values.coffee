@@ -213,7 +213,7 @@ ProjectSwimlanesValue = ($timeout) ->
             setTimeout () ->
                 $scope.isNewSwimlane = false
                 $scope.$apply()
-            , 5000
+            , 10000
 
         $scope.displaySwimlaneForm = () ->
             $scope.isFormVisible = true
