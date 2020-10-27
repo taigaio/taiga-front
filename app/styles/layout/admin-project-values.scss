@@ -79,7 +79,8 @@
     }
 
     .admin-swimlane-form {
-        padding-block: .5rem;
+        padding-block-end: .5rem;
+        padding-block-start: .5rem;
     }
 
     .admin-swimlanes-form {
@@ -110,7 +111,7 @@
 
     .tooltip {
         @include font-type(regular);
-        @include font-size(xsmall);
+        @include font-size(small);
         background: $color-black900;
         border-radius: 4px;
         bottom: 2rem;
@@ -119,12 +120,12 @@
         left: calc(50% - 190/2 * 1px);
         padding: 1rem;
         position: absolute;
-        width: 190px;
+        width: 220px;
         z-index: 2;
         &.ng-enter {
             opacity: 0;
             transition: all cubic-bezier(.25, .46, .45, .94) .4s;
-            transition-delay: .2s;
+            transition-delay: .5s;
             &.ng-enter-active {
                 opacity: 1;
             }
@@ -149,7 +150,6 @@
 
     .admin-swimlane-item {
         @include font-type(regular);
-        @include font-size(small);
         align-items: center;
         background: $color-gray100;
         border-radius: 3px;
@@ -159,6 +159,7 @@
         padding: .75rem 1rem;
 
         .admin-swimlane-item-start {
+            align-items: center;
             display: flex;
             justify-content: center;
         }

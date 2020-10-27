@@ -14,7 +14,7 @@
         button.form-button.delete-swimlane(
             type="button"
             arial-label="{{'COMMON.DELETE' | translate }}"
-            ng-click="removeSwimlaneDialog(value)"
+            ng-click="removeSwimlaneDialog($event, value)"
         )
             tg-svg(svg-icon="icon-trash")
 form.admin-swimlane-form(ng-if="displaySwimlaneSingleForm")
