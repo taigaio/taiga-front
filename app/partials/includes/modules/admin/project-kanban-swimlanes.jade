@@ -12,7 +12,10 @@ section.admin-kanban-powerups
             ng-if="values"
             tg-sortable-swimlanes
         )
-            .tooltip(ng-if="values.length == 1 && isNewSwimlane") If you had some user stories created, you will find them on this swimlane.
+            .tooltip(
+                ng-if="values.length == 1 && isNewSwimlane"
+                translate="ADMIN.PROJECT_KANBAN_POWER_UPS.POPUP_NEW_SWIMLANE"
+            )
             .sortable
                 .admin-swimlane-single(
                     tg-bind-scope
