@@ -105,7 +105,7 @@ $fold-animation-duration: .1s;
     flex-basis: 2.75rem;
     min-height: 2.75rem;
     position: relative;
-    z-index: 100;
+    z-index: 90;
     .kanban-table-inner {
         display: flex;
         overflow: visible;
@@ -204,6 +204,7 @@ $fold-animation-duration: .1s;
     overflow: hidden;
     overflow-x: auto;
     width: 100%;
+
     .taskboard-column {
         border-radius: 4px;
         contain: content;
@@ -309,12 +310,8 @@ $fold-animation-duration: .1s;
         align-items: center;
         display: flex;
         flex-direction: row-reverse;
-        left: 0;
-        min-height: 217px;
         padding: 1rem 0;
-        position: absolute;
         text-transform: uppercase;
-        top: 0;
         transform: rotate(-180deg);
         width: 100%;
         writing-mode: tb-rl;
@@ -370,7 +367,7 @@ $fold-animation-duration: .1s;
     top: 36px;
     transition: all .6 ease;
     width: 100%;
-    z-index: 90;
+    z-index: 80;
 
     &.folded {
         border-bottom: solid 1px $color-gray200;
@@ -423,13 +420,36 @@ $fold-animation-duration: .1s;
         min-height: 2.25rem;
         position: sticky;
         top: 0;
-        z-index: 100;
+        z-index: 90;
     }
 
     .kanban-table-body {
         max-height: 56vh;
         min-height: 180px;
         overflow: visible;
+
+        &.ng-move,
+        &.ng-enter,
+        &.ng-leave {
+            transition: all linear .5s;
+        }
+
+        &.ng-leave.ng-leave-active,
+        &.ng-move,
+        &.ng-enter {
+            max-height: 0;
+            min-height: 0;
+            opacity: 0;
+        }
+
+        &.ng-leave,
+        &.ng-move.ng-move-active,
+        &.ng-enter.ng-enter-active {
+            max-height: 524px;
+            min-height: 0;
+            opacity: 1;
+        }
+
     }
 }
 

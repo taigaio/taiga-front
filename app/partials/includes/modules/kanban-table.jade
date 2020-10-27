@@ -96,7 +96,9 @@ div.kanban-table(
                     tg-kanban-wip-limit="s",
                     tg-bind-scope
                 )
-                    .kanban-task-counter(ng-attr-title="{{'KANBAN.NUMBER_US' | translate}}") {{ usByStatusSwimlanes.getIn([swimlane.id, s.id]).size }}
+                    .kanban-task-counter(
+                        ng-if="usByStatusSwimlanes.getIn([swimlane.id, s.id]).size >= 0"
+                        ) {{ usByStatusSwimlanes.getIn([swimlane.id, s.id]).size }}
                     .placeholder-collapsed
                         .placeholder-collapsed-wrapper
                             div.ammount(ng-if="!s.is_archived")  {{ usByStatusSwimlanes.getIn([swimlane.id, s.id]).size || 0 }}
@@ -139,7 +141,7 @@ div.kanban-table(
                         tg-kanban-archived-status-intro="s"
                     )
     a(
-        ng-if="project.swimlanes"
+        ng-if="project.swimlanes && project.i_am_admin"
         class="kanban-swimlane-add"
         tg-nav="project-admin-project-values-kanban-power-ups:project=project.slug"
     )
