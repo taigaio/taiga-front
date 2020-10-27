@@ -20,7 +20,6 @@
 AdminNavigationDirective = ->
     link = ($scope, $el, $attrs) ->
         section = $attrs.tgAdminNavigation
-        console.log("#adminmenu-#{section} a")
         $el.find(".active").removeClass("active")
         $el.find("#adminmenu-#{section} a").addClass("active")
 

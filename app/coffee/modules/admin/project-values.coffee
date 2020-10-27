@@ -136,7 +136,7 @@ class ProjectSwimlanesValuesController extends taiga.Controller
         "$tgRepo",
         "$translate"
         "$tgConfirm",
-        "$tgResources",
+        "$tgResources"
     ]
 
     constructor: (@scope, @rootscope, @repo, @translate, @confirm, @rs) ->
@@ -181,11 +181,10 @@ class ProjectSwimlanesValuesController extends taiga.Controller
     loadSwimlanes: =>
         return @rs[@scope.resource].list(@scope.projectId).then (values) =>
             @scope.values = values
-            return values
 
     removeSwimlane: (swimlaneId, moveTo) =>
-        return @rs[@scope.resource].delete(swimlaneId, moveTo).then () =>
-            @.loadSwimlanes()
+        return @rs[@scope.resource].delete(swimlaneId, moveTo)
+
 
 module.controller("ProjectSwimlanesValuesController", ProjectSwimlanesValuesController)
 
@@ -193,7 +192,7 @@ module.controller("ProjectSwimlanesValuesController", ProjectSwimlanesValuesCont
 ## Swimlanes directive
 #############################################################################
 
-ProjectSwimlanesValue = ($timeout) ->
+ProjectSwimlanesValue = ($timeout, $animate) ->
 
     link = ($scope, $el, $attrs, $ctrl) ->
         $ctrl = $el.controller()
@@ -232,13 +231,13 @@ ProjectSwimlanesValue = ($timeout) ->
         link:link
     }
 
-module.directive("tgProjectSwimlanesValues", ["$timeout", ProjectSwimlanesValue])
+module.directive("tgProjectSwimlanesValues", ["$timeout", "$animate", ProjectSwimlanesValue])
 
 #############################################################################
 ## Swimlanes single directive
 #############################################################################
 
-ProjectSwimlanesSingle = ($translate, $confirm) ->
+ProjectSwimlanesSingle = ($translate, $confirm, $animate, $rootScope) ->
 
     link = ($scope, $el, $attrs, $ctrl) ->
         $ctrl = $el.controller()
@@ -258,8 +257,20 @@ ProjectSwimlanesSingle = ($translate, $confirm) ->
         $scope.cancelEditSwimlaneSingleForm = () ->
             $scope.displaySwimlaneSingleForm = false
 
-        $scope.removeSwimlaneDialog = (swimlane) =>
+        $scope.removeSwimlaneDialog = (event, swimlane) =>
             title = $translate.instant("LIGHTBOX.ADMIN_KANBAN_POWERUPS.TITLE_ACTION_DELETE_SWIMLANE")
+
+            # console.log($el)
+
+            # $el[0].addEventListener("transitionend", (event) ->
+            #     console.log({event})
+            # )
+            $animate.on("leave", $el[0], (element, phase) ->
+                console.log({element, phase})
+                if(phase == "close")
+                    $ctrl.loadSwimlanes()
+                    $scope.$apply()
+            );
 
             if $scope.values.length > 1
                 subtitle = $translate.instant("LIGHTBOX.ADMIN_KANBAN_POWERUPS.SUBTITLE_ACTION_DELETE_SWIMLANE_OPTIONS", {swimlane:  swimlane.name})
@@ -281,7 +292,7 @@ ProjectSwimlanesSingle = ($translate, $confirm) ->
 
     return {link:link}
 
-module.directive("tgProjectSwimlanesSingle", ["$translate", "$tgConfirm", ProjectSwimlanesSingle])
+module.directive("tgProjectSwimlanesSingle", ["$translate", "$tgConfirm", "$animate", "$rootScope", ProjectSwimlanesSingle])
 
 
 #############################################################################
