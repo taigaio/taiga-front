@@ -186,14 +186,13 @@ class ProjectSwimlanesValuesController extends taiga.Controller
         return @rs[@scope.resource].delete(swimlaneId, moveTo).then () =>
             @.loadSwimlanes()
 
-
 module.controller("ProjectSwimlanesValuesController", ProjectSwimlanesValuesController)
 
 #############################################################################
 ## Swimlanes directive
 #############################################################################
 
-ProjectSwimlanesValue = ($timeout, $animate) ->
+ProjectSwimlanesValue = ($timeout) ->
 
     link = ($scope, $el, $attrs, $ctrl) ->
         $ctrl = $el.controller()
@@ -232,13 +231,13 @@ ProjectSwimlanesValue = ($timeout, $animate) ->
         link:link
     }
 
-module.directive("tgProjectSwimlanesValues", ["$timeout", "$animate", ProjectSwimlanesValue])
+module.directive("tgProjectSwimlanesValues", ["$timeout", ProjectSwimlanesValue])
 
 #############################################################################
 ## Swimlanes single directive
 #############################################################################
 
-ProjectSwimlanesSingle = ($translate, $confirm, $animate, $rootScope) ->
+ProjectSwimlanesSingle = ($translate, $confirm, $animate) ->
 
     link = ($scope, $el, $attrs, $ctrl) ->
         $ctrl = $el.controller()
@@ -293,7 +292,7 @@ ProjectSwimlanesSingle = ($translate, $confirm, $animate, $rootScope) ->
 
     return {link:link}
 
-module.directive("tgProjectSwimlanesSingle", ["$translate", "$tgConfirm", "$animate", "$rootScope", ProjectSwimlanesSingle])
+module.directive("tgProjectSwimlanesSingle", ["$translate", "$tgConfirm", "$animate", ProjectSwimlanesSingle])
 
 
 #############################################################################
