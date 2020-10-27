@@ -94,21 +94,24 @@ div.kanban-table(
                     data-status-id="{{s.id}}"
                     data-swimlane="{{swimlane.id}}"
                     tg-kanban-taskboard-column
-                    tg-kanban-wip-limit="s"
-                    tg-bind-scope
+                    tg-kanban-wip-limit="s",
                 )
-                    .kanban-task-counter
-                        span.wip-amount(
-                            ng-class='{ limitOver: usByStatusSwimlanes.getIn([swimlane.id, s.id]).size > s.wip_limit,                                limitReached: usByStatusSwimlanes.getIn([swimlane.id, s.id]).size == s.wip_limit && usByStatusSwimlanes.getIn([swimlane.id, s.id]).size > 0}'
-                        ) {{ usByStatusSwimlanes.getIn([swimlane.id, s.id]).size || 0 }}
-                        span(tg-bo-bind="' / ' + s.wip_limit", ng-if="s.wip_limit")
-                    .placeholder-collapsed
+                    .kanban-task-counter(
+                        ng-if='!folds[s.id]'
+                        ng-attr-title="{{'KANBAN.NUMBER_US' | translate}}"
+                    )
+                        tg-animated-counter(
+                            data="{count: usByStatusSwimlanes.getIn([swimlane.id, s.id]).size, wip: s.wip_limit}"
+                            initial-load="!ctrl.queue.length"
+                        )
+                    .placeholder-collapsed(ng-if='folds[s.id]')
                         .placeholder-collapsed-wrapper
                             div.ammount(ng-if="!s.is_archived")
-                                span.wip-amount(
-                                    ng-class='{ limitOver: usByStatusSwimlanes.getIn([swimlane.id, s.id]).size > s.wip_limit,                                limitReached: usByStatusSwimlanes.getIn([swimlane.id, s.id]).size == s.wip_limit && usByStatusSwimlanes.getIn([swimlane.id, s.id]).size > 0}'
-                                ) {{ usByStatusSwimlanes.getIn([swimlane.id, s.id]).size }}
-                                span(tg-bo-bind="' / ' + s.wip_limit", ng-if="s.wip_limit")
+                                tg-animated-counter(
+                                    class="vertical"
+                                    data="{count: usByStatusSwimlanes.getIn([swimlane.id, s.id]).size, wip: s.wip_limit}"
+                                    initial-load="!ctrl.queue.length"
+                                )
                             div.text-holder
                                 div.archived(ng-if="s.is_archived") {{'KANBAN.ARCHIVED' | translate}}
                                 div.name(tg-bo-bind="s.name")
@@ -128,7 +131,6 @@ div.kanban-table(
                         tg-repeat="usId in usByStatusSwimlanes.getIn([swimlane.id, s.id])",
                         ng-class="{'kanban-task-maximized': ctrl.isMaximized(s.id), 'kanban-task-minimized': ctrl.isMinimized(s.id), 'kanban-task-selected': ctrl.selectedUss[usId], 'ui-multisortable-multiple': ctrl.selectedUss[usId]}"
                         tg-class-permission="{'readonly': '!modify_task'}"
-                        tg-bind-scope,
                         on-toggle-fold="ctrl.toggleFold(id)"
                         on-click-edit="ctrl.editUs(id)"
                         on-click-delete="ctrl.deleteUs(id)"
@@ -168,22 +170,25 @@ div.kanban-table(
                 data-status-id="{{s.id}}"
                 tg-kanban-wip-limit="s"
                 tg-kanban-taskboard-column
-                tg-bind-scope
             )
-                .kanban-task-counter
-                    span.wip-amount(
-                        ng-class='{limitOver: usByStatus.get(s.id.toString()).size > s.wip_limit}'
-                    ) {{ usByStatus.get(s.id.toString()).size || 0}}&nbsp;
-                    span(tg-bo-bind="' / ' + s.wip_limit", ng-if="s.wip_limit")
-                .placeholder-collapsed
+                .kanban-task-counter(
+                    ng-if='!folds[s.id]'
+                    ng-attr-title="{{'KANBAN.NUMBER_US' | translate}}"
+                )
+                    tg-animated-counter(
+                        data="{count: usByStatus.get(s.id.toString()).size, wip: s.wip_limit}"
+                        initial-load="!ctrl.queue.length"
+                    )
+                .placeholder-collapsed(ng-if='folds[s.id]')
                     .placeholder-collapsed-wrapper
                         div.ammount(ng-if="!s.is_archived")
-                            span.wip-amount(
-                                ng-class='{limitOver: usByStatus.get(s.id.toString()).size > s.wip_limit}'
-                            ) {{ usByStatus.get(s.id.toString()).size || 0}}
-                            span(tg-bo-bind="' / ' + s.wip_limit", ng-if="s.wip_limit")
+                            tg-animated-counter(
+                                class="vertical"
+                                data="{count: usByStatus.get(s.id.toString()).size, wip: s.wip_limit}"
+                                initial-load="!ctrl.queue.length"
+                            )
                         div.text-holder
-                            div.archived(ng-if="s.is_archived") (Archived)
+                            div.archived(ng-if="s.is_archived") {{'KANBAN.ARCHIVED' | translate}}
                             div.name(tg-bo-bind="s.name")
                         .square-color(
                             ng-style="{'background-color':s.color}",
@@ -201,7 +206,6 @@ div.kanban-table(
                     tg-repeat="usId in usByStatus.get(s.id.toString())",
                     ng-class="{'kanban-task-maximized': ctrl.isMaximized(s.id), 'kanban-task-minimized': ctrl.isMinimized(s.id), 'kanban-task-selected': ctrl.selectedUss[usId], 'ui-multisortable-multiple': ctrl.selectedUss[usId]}"
                     tg-class-permission="{'readonly': '!modify_task'}"
-                    tg-bind-scope,
                     on-toggle-fold="ctrl.toggleFold(id)"
                     on-click-edit="ctrl.editUs(id)"
                     on-click-delete="ctrl.deleteUs(id)"

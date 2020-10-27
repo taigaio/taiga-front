@@ -1,0 +1,55 @@
+tg-animated-counter {
+    display: block;
+    $counter-height: 14px;
+
+    &.vertical {
+        .animated-counter-inner {
+            height: 100%;
+            width: $counter-height;
+        }
+        .counter-translator {
+            transform: translateX($counter-height);
+
+            &.inc {
+                transform: translateX(0);
+                transition: transform .5s;
+            }
+            &.dec {
+                transform: translateX(-($counter-height * 2));
+                transition: transform .5s;
+            }
+        }
+        span {
+            height: 100%;
+            width: $counter-height;
+        }
+    }
+
+    .animated-counter-inner {
+        height: $counter-height;
+        overflow: hidden;
+        position: relative;
+        text-align: center;
+        width: 100%;
+    }
+
+    .counter-translator {
+        transform: translateY(-$counter-height);
+
+        &.inc {
+            transform: translateY(0);
+            transition: transform .5s;
+        }
+        &.dec {
+            transform: translateY(-($counter-height * 2));
+            transition: transform .5s;
+        }
+    }
+
+    span {
+        display: block;
+        height: $counter-height;
+        overflow: hidden;
+        width: 100%;
+    }
+}
