@@ -19,6 +19,12 @@ $card-section-margin-bottom: .5rem;
         padding: .2rem;
         text-align: center;
     }
+    &.gu-mirror {
+        border: 1px solid $color-solid-primary;
+    }
+    &.tg-multiple-drag-mirror {
+        margin: 0;
+    }
     &:hover {
         box-shadow: 3px 3px 6px darken($whitish, 10%);
     }

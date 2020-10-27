@@ -187,7 +187,7 @@ paths.libs = [
     paths.modules + "prismjs/plugins/custom-class/prism-custom-class.js",
     paths.modules + "medium-editor-autolist/dist/autolist.js",
     paths.modules + "autolinker/dist/Autolinker.js",
-    paths.app + "js/dom-autoscroller.js",
+    paths.modules + "dom-autoscroller/dist/dom-autoscroller.js",
     paths.app + "js/dragula-drag-multiple.js",
     paths.app + "js/boards.js",
     paths.app + "js/tg-repeat.js",

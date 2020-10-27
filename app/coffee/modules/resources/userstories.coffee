@@ -103,9 +103,14 @@ resourceProvider = ($repo, $http, $urls, $storage, $q) ->
         params = {project_id: projectId, milestone_id: milestoneId, bulk_stories: data}
         return $http.post(url, params)
 
-    service.bulkUpdateKanbanOrder = (projectId, statusId, data) ->
+    service.bulkUpdateKanbanOrder = (projectId, statusId, swimlaneId, data) ->
         url = $urls.resolve("bulk-update-us-kanban-order")
-        params = {project_id: projectId, status_id: statusId, bulk_stories: data}
+        params = {
+            project_id: projectId,
+            status_id: statusId,
+            swimlane_id: swimlaneId,
+            bulk_stories: data,
+        }
         return $http.post(url, params)
 
     service.listValues = (projectId, type) ->

@@ -190,7 +190,7 @@
                     opacity: '0.8',
                     position: 'fixed',
                     width: dragMultiple.items.elm.outerWidth(),
-                    height: dragMultiple.items.elm.outerHeight()
+                    height: $(item).outerHeight()
                 });
 
             $(item)

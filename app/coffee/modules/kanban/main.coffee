@@ -431,17 +431,22 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
     prepareBulkUpdateData: (uses, field="kanban_order") ->
         return _.map(uses, (x) -> {"us_id": x.id, "order": x[field]})
 
-    moveUs: (ctx, usList, newStatusId, index) ->
+    moveUs: (ctx, usList, newStatusId, newSwimlaneId, index) ->
         @.cleanSelectedUss()
 
         usList = _.map usList, (us) =>
             return @kanbanUserstoriesService.getUsModel(us.id)
 
-        @rootscope.$broadcast("kanban:userstories:loaded", usList, newStatusId, index)
+        @rootscope.$broadcast("kanban:userstories:loaded", usList, newStatusId, newSwimlaneId, index)
 
-        data = @kanbanUserstoriesService.move(usList, newStatusId, index)
+        data = @kanbanUserstoriesService.move(usList, newStatusId, newSwimlaneId, index)
 
-        promise = @rs.userstories.bulkUpdateKanbanOrder(@scope.projectId, newStatusId, data.bulkOrders)
+        promise = @rs.userstories.bulkUpdateKanbanOrder(
+            @scope.projectId,
+            newStatusId,
+            newSwimlaneId,
+            data.bulkOrders
+        )
 
         promise.then () =>
             # saving
@@ -525,7 +530,10 @@ KanbanDirective = ($repo, $rootscope) ->
 
         _tableBody = null
 
+        $scope.isTableLoaded = false
+
         $scope.kanbanTableLoaded = (tableBody) ->
+            $scope.isTableLoaded = true
             _tableBody = tableBody
             tableHeaderDom = $el.find(".kanban-table-header .kanban-table-inner")
 
@@ -552,18 +560,23 @@ KanbanArchivedShowStatusHeaderDirective = ($rootscope, $translate, kanbanUsersto
     showArchivedText = $translate.instant("KANBAN.ACTION_SHOW_ARCHIVED")
 
     link = ($scope, $el, $attrs) ->
-        status = $scope.$eval($attrs.tgKanbanArchivedShowStatusHeader)
-        show = false
+        unwatch = $scope.$watch 'ctrl.initialLoad', (initialLoad) =>
+            return if !initialLoad
 
-        kanbanUserstoriesService.addArchivedStatus(status.id)
-        kanbanUserstoriesService.hideStatus(status.id)
+            unwatch()
 
-        $el.on "click", (event) ->
-            $scope.$apply ->
-                if !show
-                    $rootscope.$broadcast("kanban:show-userstories-for-status", status.id)
-                    kanbanUserstoriesService.showStatus(status.id)
-                    show = true
+            status = $scope.$eval($attrs.tgKanbanArchivedShowStatusHeader)
+            show = false
+
+            kanbanUserstoriesService.addArchivedStatus(status.id)
+            kanbanUserstoriesService.hideStatus(status.id)
+
+            $el.on "click", (event) ->
+                $scope.$apply ->
+                    if !show
+                        $rootscope.$broadcast("kanban:show-userstories-for-status", status.id)
+                        kanbanUserstoriesService.showStatus(status.id)
+                        show = true
 
         $scope.$on "$destroy", ->
             $el.off()
@@ -638,11 +651,14 @@ KanbanWipLimitDirective = ($timeout) ->
         status = $scope.$eval($attrs.tgKanbanWipLimit)
 
         redrawWipLimit = =>
-            $el.find(".kanban-wip-limit").remove()
             $timeout =>
                 element = $el.find("tg-card")[status.wip_limit]
-                if element
-                    angular.element(element).before("<div class='kanban-wip-limit'><span>WIP Limit</span></div>")
+
+                if !element || (element.previousElementSibling && element.previousElementSibling.classList.contains('kanban-wip-limit'))
+                    return
+                $el.find(".kanban-wip-limit").remove()
+
+                angular.element(element).before("<div class='kanban-wip-limit'><span>WIP Limit</span></div>")
 
         if status and not status.is_archived
             $scope.$on "redraw:wip", redrawWipLimit
