@@ -183,7 +183,8 @@ class ProjectSwimlanesValuesController extends taiga.Controller
             @scope.values = values
 
     removeSwimlane: (swimlaneId, moveTo) =>
-        return @rs[@scope.resource].delete(swimlaneId, moveTo)
+        return @rs[@scope.resource].delete(swimlaneId, moveTo).then () =>
+            @.loadSwimlanes()
 
 
 module.controller("ProjectSwimlanesValuesController", ProjectSwimlanesValuesController)
@@ -260,13 +261,7 @@ ProjectSwimlanesSingle = ($translate, $confirm, $animate, $rootScope) ->
         $scope.removeSwimlaneDialog = (event, swimlane) =>
             title = $translate.instant("LIGHTBOX.ADMIN_KANBAN_POWERUPS.TITLE_ACTION_DELETE_SWIMLANE")
 
-            # console.log($el)
-
-            # $el[0].addEventListener("transitionend", (event) ->
-            #     console.log({event})
-            # )
             $animate.on("leave", $el[0], (element, phase) ->
-                console.log({element, phase})
                 if(phase == "close")
                     $animate.off("leave", $el[0])
 
@@ -286,22 +281,15 @@ ProjectSwimlanesSingle = ($translate, $confirm, $animate, $rootScope) ->
                 $confirm.askChoice(title, subtitle, choices, replacement).then (response) ->
                     $ctrl.scope.deletingSwimlane = true
 
-                    $ctrl
-                        .removeSwimlane(swimlane.id, response.selected)
-                        .then () =>
-
-                            $ctrl.loadSwimlanes()
-                    response.finish();
+                    $ctrl.removeSwimlane(swimlane.id, response.selected)
+                    response.finish()
             else
                 subtitle = $translate.instant("LIGHTBOX.ADMIN_KANBAN_POWERUPS.SUBTITLE_ACTION_DELETE_SWIMLANE_LAST")
                 $confirm.ask(title, subtitle).then (response) ->
                     $ctrl.scope.deletingSwimlane = true
 
-                    $ctrl
-                        .removeSwimlane(swimlane.id)
-                        .then () =>
-                            $ctrl.loadSwimlanes()
-                    response.finish();
+                    $ctrl.removeSwimlane(swimlane.id)
+                    response.finish()
 
     return {link:link}
 
