@@ -268,8 +268,10 @@ ProjectSwimlanesSingle = ($translate, $confirm, $animate, $rootScope) ->
             $animate.on("leave", $el[0], (element, phase) ->
                 console.log({element, phase})
                 if(phase == "close")
-                    $ctrl.loadSwimlanes()
-                    $scope.$apply()
+                    $animate.off("leave", $el[0])
+
+                    $ctrl.scope.$evalAsync () =>
+                        $ctrl.scope.deletingSwimlane = false
             );
 
             if $scope.values.length > 1
@@ -282,12 +284,23 @@ ProjectSwimlanesSingle = ($translate, $confirm, $animate, $rootScope) ->
                         choices[option.id] = option.name
 
                 $confirm.askChoice(title, subtitle, choices, replacement).then (response) ->
-                    $ctrl.removeSwimlane(swimlane.id, response.selected)
+                    $ctrl.scope.deletingSwimlane = true
+
+                    $ctrl
+                        .removeSwimlane(swimlane.id, response.selected)
+                        .then () =>
+
+                            $ctrl.loadSwimlanes()
                     response.finish();
             else
                 subtitle = $translate.instant("LIGHTBOX.ADMIN_KANBAN_POWERUPS.SUBTITLE_ACTION_DELETE_SWIMLANE_LAST")
                 $confirm.ask(title, subtitle).then (response) ->
-                    $ctrl.removeSwimlane(swimlane.id)
+                    $ctrl.scope.deletingSwimlane = true
+
+                    $ctrl
+                        .removeSwimlane(swimlane.id)
+                        .then () =>
+                            $ctrl.loadSwimlanes()
                     response.finish();
 
     return {link:link}
