@@ -1,14 +1,16 @@
 div.new-us
-    button.btn-primary(
+    button.btn-small(
+        variant="primary"
         ng-click="ctrl.addNewUs('standard')",
         tg-check-permission="add_us"
     )
         tg-svg(svg-icon="icon-add")
         span.text {{'US.ADD' | translate}}
-    a.button-bulk.button-gray.button-small(
-        href="",
-        title="{{'US.ADD_BULK' | translate}}",
+
+    button.btn-icon(
+        variant="secondary"
         ng-click="ctrl.addNewUs('bulk')",
         tg-check-permission="add_us"
+        aria-label="{{'US.ADD_BULK' | translate}}"
     )
         tg-svg(svg-icon="icon-add")

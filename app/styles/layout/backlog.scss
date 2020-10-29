@@ -62,6 +62,14 @@
     }
 }
 
+.new-us {
+    align-items: center;
+    display: flex;
+    & > [class^='btn-']:not(:last-child) {
+        margin-right: 1rem;
+    }
+}
+
 .backlog-stories-number {
     @include font-size(xsmall);
     color: $color-link-tertiary;

@@ -43,7 +43,7 @@ div.wrapper(tg-backlog, ng-controller="BacklogController as ctrl",
 
                         .backlog-table-options
                             .backlog-table-options-start
-                                button.filter-button.e2e-open-filter.ng-animate-disabled(
+                                button.btn-filter.e2e-open-filter.ng-animate-disabled(
                                     id="show-filters-button"
                                     ng-class="{'active': ctrl.activeFilters}"
                                 )
@@ -73,28 +73,28 @@ div.wrapper(tg-backlog, ng-controller="BacklogController as ctrl",
                                     )
 
                             .backlog-table-options-end
-                                button.filter-button.velocity-forecasting-btn.ng-animate-disabled.e2e-velocity-forecasting(
+                                button.btn-filter.velocity-forecasting-btn.ng-animate-disabled.e2e-velocity-forecasting(
                                     ng-if="userstories.length && ctrl.displayVelocity "
                                     title="{{'BACKLOG.FORECASTING.TITLE' | translate}}"
                                     translate="BACKLOG.FORECASTING.BACKLOG"
                                     ng-click="ctrl.toggleVelocityForecasting()"
                                     tg-check-permission="add_milestone"
                                 )
-                                button.filter-button.velocity-forecasting-btn.ng-animate-disabled.e2e-velocity-forecasting(
+                                button.btn-filter.velocity-forecasting-btn.ng-animate-disabled.e2e-velocity-forecasting(
                                     ng-if="userstories.length && !ctrl.displayVelocity && stats.speed > 0"
                                     title="{{'BACKLOG.FORECASTING.BACKLOG' | translate}}"
                                     translate="BACKLOG.FORECASTING.TITLE"
                                     ng-click="ctrl.toggleVelocityForecasting()"
                                     tg-check-permission="add_milestone"
                                 )
-                                button.filter-button.move-to-current-sprint.move-to-sprint.e2e-move-to-sprint(
+                                button.btn-filter.move-to-current-sprint.move-to-sprint.e2e-move-to-sprint(
                                     ng-if="currentSprint"
                                     title="{{'BACKLOG.MOVE_US_TO_CURRENT_SPRINT' | translate}}"
                                     id="move-to-current-sprint"
                                 )
                                     tg-svg(svg-icon="icon-move")
                                     span.text(translate="BACKLOG.MOVE_US_TO_CURRENT_SPRINT")
-                                button.filter-button.move-to-latest-sprint.move-to-sprint.e2e-move-to-sprint(
+                                button.btn-filter.move-to-latest-sprint.move-to-sprint.e2e-move-to-sprint(
                                     ng-if="!currentSprint"
                                     title="{{'BACKLOG.MOVE_US_TO_LATEST_SPRINT' | translate}}"
                                     id="move-to-latest-sprint"
