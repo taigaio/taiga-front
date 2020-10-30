@@ -139,7 +139,10 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                 @kanbanUserstoriesService.resetFolds()
 
     filtersReloadContent: () ->
-        @.loadUserstories().then () =>
+        @.loadUserstories().then (result) =>
+            if @scope.project.swimlanes && !result.length
+                @.foldedSwimlane[@scope.project.swimlanes[0].id] = false
+
             openArchived = _.difference(@kanbanUserstoriesService.archivedStatus,
                                         @kanbanUserstoriesService.statusHide)
             if openArchived.length
@@ -227,12 +230,15 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                     askResponse.finish(false)
                     @confirm.notify("error")
 
-    showPlaceHolder: (statusId) ->
-        if @scope.usStatusList[0].id == statusId &&
+    showPlaceHolder: (statusId, swimlaneId) ->
+        firstStatus = @scope.usStatusList[0].id == statusId &&
           !@kanbanUserstoriesService.userstoriesRaw.length
-            return true
 
-        return false
+        if swimlaneId
+            firstSwimlane = @scope.project.swimlanes[0].id == swimlaneId
+            return firstStatus && firstSwimlane
+
+        return firstStatus
 
     toggleFold: (id) ->
         @kanbanUserstoriesService.toggleFold(id)
