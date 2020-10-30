@@ -615,7 +615,7 @@ KanbanWipLimitDirective = ($timeout) ->
             $timeout =>
                 element = $el.find("tg-card")[status.wip_limit]
                 if element
-                    angular.element(element).before("<div class='kanban-wip-limit'></div>")
+                    angular.element(element).before("<div class='kanban-wip-limit'><span>WIP Limit</span></div>")
 
         if status and not status.is_archived
             $scope.$on "redraw:wip", redrawWipLimit

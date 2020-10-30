@@ -230,11 +230,25 @@ $fold-animation-duration: .1s;
             }
         }
         .kanban-wip-limit {
-            background: $red;
+            border-bottom: solid 2px $color-link-red;
             border-radius: 2px;
-            height: 4px;
-            margin: .5rem 0;
-            padding: 0;
+            border-top: solid 2px $color-link-red;
+            height: 8px;
+            margin: .5rem 1rem;
+            position: relative;
+
+            span {
+                @include font-type(medium);
+                @include font-size(small);
+
+                background: $color-gray200;
+                color: $color-link-red;
+                left: 50%;
+                padding: 0 .25rem;
+                position: absolute;
+                top: -7px;
+                transform: translateX(-50%);
+            }
         }
     }
     .kanban-uses-box {
@@ -468,6 +482,14 @@ $fold-animation-duration: .1s;
     right: 0;
     top: 0;
     z-index: 1;
+}
+
+.wip-amount {
+    color: $color-link-green;
+
+    &.limitOver {
+        color: $color-link-red;
+    }
 }
 
 .kanban-swimlane {
