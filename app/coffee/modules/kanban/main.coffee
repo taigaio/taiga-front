@@ -709,9 +709,10 @@ CardAssignedToDirective = ($template, $translate, avatarService, projectService)
             $scope.$watch 'item', onChange
             # ignore the first watch because is the same as item
             $scope.$watch 'zoomLevel', () =>
-                if !initializeZoom
-                    initializeZoom = true
+                if initializeZoom
                     onChange()
+                else
+                    initializeZoom = true
 
             $scope.$on "$destroy", ->
                 $el.off()
@@ -776,9 +777,10 @@ CardDataDirective = ($template, $translate, avatarService, projectService, dueDa
             $scope.$watch 'item', onChange
             # ignore the first watch because is the same as item
             $scope.$watch 'zoomLevel', () =>
-                if !initializeZoom
-                    initializeZoom = true
+                if initializeZoom
                     onChange()
+                else
+                    initializeZoom = true
 
             $scope.$on "$destroy", ->
                 $el.off()
