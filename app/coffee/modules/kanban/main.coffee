@@ -78,6 +78,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         @.selectedUss = {}
         @.foldedSwimlane = {}
         @.isFirstLoad = true
+        @.renderBatching = true
 
         return if @.applyStoredFilters(@params.pslug, "kanban-filters")
 
@@ -275,11 +276,15 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         return @rs.projects.tagsColors(@scope.projectId).then (tags_colors) =>
             @scope.project.tags_colors = tags_colors._attrs
 
-    renderBatch: () ->
+    renderBatch: (clean = false) ->
         newUs = _.take(@.queue, @.batchSize)
         @.rendered = _.concat(@.rendered, newUs)
         @.queue = _.drop(@.queue, @.batchSize)
-        @kanbanUserstoriesService.add(newUs)
+
+        if clean
+            @kanbanUserstoriesService.set(newUs)
+        else
+            @kanbanUserstoriesService.add(newUs)
 
         @scope.$broadcast("redraw:wip")
 
@@ -294,20 +299,25 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
     renderUserStories: (userstories) =>
         userstories = _.sortBy(userstories, 'kanban_order')
-        userstoriesMap = _.groupBy(userstories, 'status')
-        @.rendered = []
-        @.queue = []
-        @.batchSize = 0
 
-        while (@.queue.length < userstories.length)
-            _.each @scope.project.us_statuses, (x) =>
-                if (userstoriesMap[x.id]?.length > 0)
-                    @.queue = _.concat(@.queue, _.take(userstoriesMap[x.id], 10))
-                    userstoriesMap[x.id] = _.drop(userstoriesMap[x.id], 10)
-            if !@.batchSize
-                @.batchSize = @.queue.length
+        if @.renderBatching
+            userstoriesMap = _.groupBy(userstories, 'status')
+            @.rendered = []
+            @.queue = []
+            @.batchSize = 0
 
-        @timeout(@.renderBatch)
+            while (@.queue.length < userstories.length)
+                _.each @scope.project.us_statuses, (x) =>
+                    if (userstoriesMap[x.id]?.length > 0)
+                        @.queue = _.concat(@.queue, _.take(userstoriesMap[x.id], 10))
+                        userstoriesMap[x.id] = _.drop(userstoriesMap[x.id], 10)
+                if !@.batchSize
+                    @.batchSize = @.queue.length
+
+            @timeout () =>
+                @.renderBatch(true)
+        else
+            @kanbanUserstoriesService.set(userstories)
 
     loadUserstories: () ->
         params = {
