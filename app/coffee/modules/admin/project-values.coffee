@@ -136,10 +136,11 @@ class ProjectSwimlanesValuesController extends taiga.Controller
         "$tgRepo",
         "$translate"
         "$tgConfirm",
-        "$tgResources"
+        "$tgResources",
+        "tgProjectService"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @translate, @confirm, @rs) ->
+    constructor: (@scope, @rootscope, @repo, @translate, @confirm, @rs, @projectService) ->
         unwatch = @scope.$watch "resource", (resource) =>
             if resource
                 @.loadSwimlanes()
@@ -179,6 +180,8 @@ class ProjectSwimlanesValuesController extends taiga.Controller
             @.loadSwimlanes()
 
     loadSwimlanes: =>
+        @projectService.fetchProject()
+
         return @rs[@scope.resource].list(@scope.projectId).then (values) =>
             @scope.values = values
 
