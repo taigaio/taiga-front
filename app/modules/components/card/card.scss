@@ -61,9 +61,11 @@ $card-section-margin-bottom: .5rem;
         .card-epic {
             margin: 0 .25rem 0 0;
         }
-        .card-assigned-to {
-            justify-content: flex-end;
+        tg-card-assigned-to {
             margin: 0 0 0 auto;
+        }
+        .card-assigned-to {
+            margin: 0;
             padding: 0;
         }
     }

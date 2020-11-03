@@ -34,14 +34,21 @@ $fold-animation-duration: .1s;
                 max-width: 95px;
             }
         }
-        .card {
+        .card,
+        .card-inner.card-blocked {
             min-height: 45px;
         }
     }
-    &.zoom-1,
+    &.zoom-1 {
+        .card,
+        .card-inner.card-blocked {
+            min-height: 90px;
+        }
+    }
     &.zoom-2,
     &.zoom-3 {
-        .card {
+        .card,
+        .card-inner.card-blocked {
             min-height: 120px;
         }
     }
