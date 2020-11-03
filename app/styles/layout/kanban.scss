@@ -4,6 +4,7 @@
     height: $main-height;
     max-height: 100%;
     max-width: 100%;
+    padding: 1rem 0 0 1rem;
     position: relative;
 
     &.swimlane {
@@ -14,7 +15,7 @@
 
         .kanban-header {
             background: $color-white;
-            padding-top: 1rem;
+            padding-right: 1rem;
             position: sticky;
             top: 0;
             z-index: 90;
@@ -64,7 +65,7 @@
 
 .kanban-header {
     background: $color-white;
-    padding-bottom: 1.5rem;
+    padding: 0 0 1rem 0;
 
     .button-filter {
         color: $color-link-primary;
