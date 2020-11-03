@@ -54,7 +54,7 @@ class UserPilotService extends taiga.Service
                     userpilotData["id"],
                     userpilotData["extraData"]
                 )
-                if userpilotData["id"] > 1
+                if userpilotData["id"] > 1 and userpilotData.hasPaidPlan
                     @.setZendekState()
 
 
@@ -63,6 +63,7 @@ class UserPilotService extends taiga.Service
         @.identified = true
         id = @.getUserPilotId(data)
         timestamp = Date.now()
+        hasPaidPlan = @.hasPaidPlan(data)
         userpilotData = {
             name: data["full_name_display"],
             email: data["email"],
@@ -81,14 +82,17 @@ class UserPilotService extends taiga.Service
 
         return {"id": id, "extraData": userpilotData}
 
+    hasPaidPlan: (data) ->
+        maxPrivateProjects = parseInt(data["max_private_projects"], 10)
+        return maxPrivateProjects != 1
+
     getUserPilotId: (data) ->
         joined = new Date(data["date_joined"])
-        maxPrivateProjects = parseInt(data["max_private_projects"], 10)
 
-        if (joined > @.getJoinedLimit())
+        if (joined > @.getJoinedLimit()) or @.hasPaidPlan(data)
             return parseInt(data["id"], 10)
-        else
-            if (maxPrivateProjects == 1) then return 1 else parseInt(data["id"], 10)
+
+        return 1
 
     getJoinedLimit: ->
         limit = new Date
