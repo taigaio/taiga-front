@@ -469,6 +469,12 @@ $fold-animation-duration: .1s;
             max-height: 524px;
             min-height: 0;
             opacity: 1;
+            .text-holder {
+                white-space: nowrap;
+            }
+            .taskboard-column {
+                overflow: hidden;
+            }
         }
 
     }
