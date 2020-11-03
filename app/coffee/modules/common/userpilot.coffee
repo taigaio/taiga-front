@@ -54,7 +54,7 @@ class UserPilotService extends taiga.Service
                     userpilotData["id"],
                     userpilotData["extraData"]
                 )
-                if userpilotData["id"] > 1 and userpilotData.hasPaidPlan
+                if userpilotData["id"] > 1 and userpilotData["hasPaidPlan"]
                     @.setZendekState()
 
 
@@ -80,7 +80,7 @@ class UserPilotService extends taiga.Service
             taiga_roles: data["roles"] && data["roles"].toString()
         }
 
-        return {"id": id, "extraData": userpilotData}
+        return {"id": id, "hasPaidPlan": hasPaidPlan, "extraData": userpilotData}
 
     hasPaidPlan: (data) ->
         maxPrivateProjects = parseInt(data["max_private_projects"], 10)
