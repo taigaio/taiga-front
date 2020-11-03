@@ -61,7 +61,7 @@ class UserPilotService extends taiga.Service
 
     prepareData: (data) ->
         @.identified = true
-        id = @.setUserPilotID(data)
+        id = @.getUserPilotId(data)
         timestamp = Date.now()
         userpilotData = {
             name: data["full_name_display"],
@@ -81,7 +81,7 @@ class UserPilotService extends taiga.Service
 
         return {"id": id, "extraData": userpilotData}
 
-    setUserPilotID: (data) ->
+    getUserPilotId: (data) ->
         joined = new Date(data["date_joined"])
         maxPrivateProjects = parseInt(data["max_private_projects"], 10)
 

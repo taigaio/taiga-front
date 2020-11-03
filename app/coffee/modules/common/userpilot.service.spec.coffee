@@ -68,25 +68,25 @@ describe "tgUserPilotService", ->
 
     it "check new free user userpilot ID agroupation", () ->
         data = _setUserData(new Date, 1)
-        ID = userPilotService.setUserPilotID(data)
+        ID = userPilotService.getUserPilotId(data)
         expect(ID).to.be.eql(data["id"])
 
     it "check new paid user userpilot ID agroupation", () ->
         data = _setUserData(new Date, null)
-        ID = userPilotService.setUserPilotID(data)
+        ID = userPilotService.getUserPilotId(data)
         expect(ID).to.be.eql(data["id"])
 
     it "check old free user userpilot ID agroupation", () ->
         joined = new Date
         joined.setDate(joined.getDate() - (JOINED_LIMIT_DAYS + 1))
         data = _setUserData(joined, 1)
-        ID = userPilotService.setUserPilotID(data)
+        ID = userPilotService.getUserPilotId(data)
         expect(ID).to.be.eql(1)
 
     it "check old paid user userpilot ID agroupation", () ->
         joined = new Date
         joined.setDate(joined.getDate() - (JOINED_LIMIT_DAYS + 1))
         data = _setUserData(joined, null)
-        ID = userPilotService.setUserPilotID(data)
+        ID = userPilotService.getUserPilotId(data)
         expect(ID).to.be.eql(data["id"])
 
