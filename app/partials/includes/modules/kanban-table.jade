@@ -19,9 +19,6 @@ div.kanban-table(
                 )
                 div.title
                     div.name(tg-bo-bind="s.name")
-                    div.counter(ng-if="!project.swimlanes")
-                        span {{ usByStatus.get(s.id.toString()).size || 0 }}
-                        span(tg-bo-bind="' / ' + s.wip_limit", ng-if="s.wip_limit")
                 div.options
                     button.btn-board.option(
                         href=""
@@ -85,7 +82,10 @@ div.kanban-table(
                 svg-icon="icon-folded-swimlane"
             )
             h2.title-name  {{ swimlane.name }}
-        div.kanban-table-body(ng-if="!ctrl.foldedSwimlane[swimlane.id]")
+        div.kanban-table-body(
+            ng-if="!ctrl.foldedSwimlane[swimlane.id]"
+            tg-loaded="kanbanTableLoaded"
+        )
             div.kanban-table-inner
                 div.kanban-uses-box.taskboard-column(
                     ng-class='{vfold:folds[s.id], vunfold: unfold == s.id}',
@@ -93,14 +93,14 @@ div.kanban-table(
                     id="column-{{s.id}}"
                     data-status-id="{{s.id}}"
                     data-swimlane="{{swimlane.id}}"
-                    tg-kanban-swimlane-taskboard-column
-                    tg-kanban-wip-limit="s",
+                    tg-kanban-taskboard-column
+                    tg-kanban-wip-limit="s"
                     tg-bind-scope
                 )
                     .kanban-task-counter
                         span.wip-amount(
                             ng-class='{ limitOver: usByStatusSwimlanes.getIn([swimlane.id, s.id]).size > s.wip_limit,                                limitReached: usByStatusSwimlanes.getIn([swimlane.id, s.id]).size == s.wip_limit && usByStatusSwimlanes.getIn([swimlane.id, s.id]).size > 0}'
-                        ) {{ usByStatusSwimlanes.getIn([swimlane.id, s.id]).size }}
+                        ) {{ usByStatusSwimlanes.getIn([swimlane.id, s.id]).size || 0 }}
                         span(tg-bo-bind="' / ' + s.wip_limit", ng-if="s.wip_limit")
                     .placeholder-collapsed
                         .placeholder-collapsed-wrapper
@@ -148,8 +148,9 @@ div.kanban-table(
                         tg-kanban-archived-status-intro="s"
                     )
     a(
-        ng-if="project.swimlanes && project.i_am_admin"
+        ng-if="project.swimlanes && project.i_am_admin && project.swimlanes.length <= 1"
         class="kanban-swimlane-add"
+        tg-loaded="addSwimlaneLoaded"
         tg-nav="project-admin-project-values-kanban-power-ups:project=project.slug"
     )
         tg-svg.add-action(svg-icon="icon-add")
@@ -165,7 +166,8 @@ div.kanban-table(
                 ng-repeat="s in ::usStatusList track by s.id",
                 id="column-{{s.id}}"
                 data-status-id="{{s.id}}"
-                tg-kanban-wip-limit="s",
+                tg-kanban-wip-limit="s"
+                tg-kanban-taskboard-column
                 tg-bind-scope
             )
                 .kanban-task-counter

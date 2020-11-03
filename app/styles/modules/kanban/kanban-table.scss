@@ -8,6 +8,10 @@ $column-margin: 0 5px 0 0;
 $column-padding: 0 .75rem;
 $fold-animation-duration: .1s;
 
+body {
+    --kanban-width: '100%';
+}
+
 @keyframes card-unfold {
     from {
         position: absolute; //  prevent column show scroll while unfolding
@@ -18,7 +22,11 @@ $fold-animation-duration: .1s;
         visibility: visible;
     }
 }
+
 .kanban-table {
+    // used in /kanban/main.coffee KanbanDirective
+    --kanban-column-margin: #{$column-margin};
+
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -78,7 +86,6 @@ $fold-animation-duration: .1s;
             align-items: center;
             display: flex;
             justify-content: center;
-            opacity: .8;
             padding: .625rem 0;
             .title {
                 display: none;
@@ -158,11 +165,6 @@ $fold-animation-duration: .1s;
             display: flex;
             margin-left: .5rem;
             width: 100%;
-            .counter {
-                @include font-size(xsmall);
-                line-height: .875rem;
-                margin: 0 .5rem;
-            }
             .name {
                 @include ellipsis(160px);
                 @include font-size(small);
@@ -361,6 +363,7 @@ $fold-animation-duration: .1s;
     background: $color-white;
     border-bottom: solid 1px $color-white;
     display: flex;
+    max-width: var(--kanban-width);
     padding: .625rem 1rem;
     position: sticky;
     top: 36px;
@@ -487,8 +490,29 @@ $fold-animation-duration: .1s;
     display: flex;
     flex-direction: column;
 
+    .kanban-table-inner {
+        position: relative;
+
+        &::before {
+            box-shadow: inset 0 4px 8px rgba($color-gray400, .5);
+            content: '';
+            height: 100%;
+            left: 0;
+            pointer-events: none;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            z-index: 10;
+        }
+    }
+
+
     .card:first-child {
         margin-top: 0;
+    }
+
+    &:last-child {
+        padding-bottom: 1rem;
     }
 }
 
@@ -501,6 +525,7 @@ $fold-animation-duration: .1s;
     justify-content: center;
     margin-bottom: 2rem;
     margin-top: 2rem;
+    max-width: var(--kanban-width);
     min-height: 5rem;
     width: calc(100% - 1rem);
 

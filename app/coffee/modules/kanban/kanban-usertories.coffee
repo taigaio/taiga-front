@@ -50,6 +50,13 @@ class KanbanUserstoriesService extends taiga.Service
         @.refreshRawOrder()
         @.refresh()
 
+    initUsByStatusList: (userstories) ->
+        for key, usModel of userstories
+            status = String(usModel.status)
+
+            if (!@.usByStatus.has(status))
+                @.usByStatus = @.usByStatus.set(status, Immutable.List())
+
     # don't call refresh to prevent unnecessary mutations in every single us
     add: (usList) ->
         if !Array.isArray(usList)
