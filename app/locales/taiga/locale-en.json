@@ -1283,6 +1283,7 @@
         "TITLE_LINK_GO_TO_ISSUE": "Go to issue",
         "TITLE_LINK_GO_TO_TASK": "Go to task",
         "TITLE_DELETE_ACTION": "Delete user story",
+        "TITLE_DELETE_MESSAGE": "Are you sure you want to delete <strong>“{{subject}}“</strong>?",
         "LIGHTBOX_TITLE_BLOKING_US": "Blocking user story",
         "NOT_ESTIMATED": "Not estimated",
         "OWNER_US": "This user story belongs to",

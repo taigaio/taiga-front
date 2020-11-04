@@ -564,13 +564,11 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
                 })
 
     deleteUserStory: (us) ->
-        title = @translate.instant("US.TITLE_DELETE_ACTION")
+        title = @translate.instant("US.TITLE_DELETE_ACTION",  {projectName: @scope.project.name})
 
-        console.log(us.subject)
+        message = @translate.instant("US.TITLE_DELETE_MESSAGE",  {subject: us.subject})
 
-        message = us.subject
-
-        @confirm.askOnDelete(title, message).then (askResponse) =>
+        @confirm.askOnDelete(title, message, '').then (askResponse) =>
             # We modify the userstories in scope so the user doesn't see the removed US for a while
             @scope.userstories = _.without(@scope.userstories, us)
             promise = @.repo.remove(us)
