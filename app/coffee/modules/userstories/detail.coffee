@@ -118,14 +118,18 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
     initializeOnDeleteGoToUrl: ->
         ctx = {project: @scope.project.slug}
         @scope.onDeleteGoToUrl = @navUrls.resolve("project", ctx)
-        if @scope.project.is_backlog_activated
-            if @scope.us.milestone
-                ctx.sprint = @scope.sprint.slug
-                @scope.onDeleteGoToUrl = @navUrls.resolve("project-taskboard", ctx)
-            else
-                @scope.onDeleteGoToUrl = @navUrls.resolve("project-backlog", ctx)
-        else if @scope.project.is_kanban_activated
+
+        if @params["kanban-status"] && @scope.project.is_kanban_activated
             @scope.onDeleteGoToUrl = @navUrls.resolve("project-kanban", ctx)
+
+        else
+            if @scope.project.is_backlog_activated
+                if @scope.us.milestone
+                    ctx.sprint = @scope.sprint.slug
+                    @scope.onDeleteGoToUrl = @navUrls.resolve("project-taskboard", ctx)
+                else
+                    @scope.onDeleteGoToUrl = @navUrls.resolve("project-backlog", ctx)
+
 
     loadProject: ->
         project = @projectService.project.toJS()

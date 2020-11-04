@@ -117,7 +117,7 @@ class ConfirmService extends taiga.Service
             choicesField.append(angular.element("<option value='#{key}'>#{value}</option>"))
 
         # Assign event handlers
-        el.on "click.confirm-dialog", "a.button-green", debounce 2000, (event) =>
+        el.on "click.confirm-dialog", ".button-green", debounce 2000, (event) =>
             event.preventDefault()
             target = angular.element(event.currentTarget)
             currentLoading = @loading()
