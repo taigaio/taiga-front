@@ -566,6 +566,8 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
     deleteUserStory: (us) ->
         title = @translate.instant("US.TITLE_DELETE_ACTION")
 
+        console.log(us.subject)
+
         message = us.subject
 
         @confirm.askOnDelete(title, message).then (askResponse) =>
