@@ -58,6 +58,7 @@
 
 .admin-swimlanes-manager {
     $swimlanes-width: 500px;
+    margin-block-end: 1.5rem;
     margin-block-start: 1.5rem;
     padding-inline-start: 1rem;
 
@@ -179,6 +180,170 @@
 
         &:hover {
             cursor: grab;
+        }
+    }
+}
+
+.admin-wip-manager {
+    $swimlanes-width: 500px;
+    margin-block-start: 1.5rem;
+    padding-inline-start: 1rem;
+
+    .form-button {
+        &:hover {
+            background: none;
+
+            .icon {
+                fill: $color-link-primary;
+                opacity: 1;
+            }
+        }
+
+        .icon {
+            fill: $color-link-tertiary;
+            opacity: .5;
+            transition: all .25s ease;
+        }
+    }
+
+
+    .admin-swimlane-title {
+        align-items: center;
+        background: $color-white;
+        border-bottom: solid 1px $color-white;
+        box-shadow: 4px 4px 4px rgba(216, 222, 233, .5);
+        display: flex;
+        margin-bottom: 1px;
+        padding: .625rem 1rem;
+        transition: all .6 ease;
+        width: 100%;
+        z-index: 80;
+
+        &.folded {
+            border-bottom: solid 1px $color-gray200;
+
+            tg-svg {
+                fill: $color-link-tertiary;
+            }
+
+            .title-name {
+                color: $color-link-tertiary;
+            }
+        }
+
+        &:hover {
+            tg-svg {
+                fill: $color-black600;
+            }
+
+            .title-name {
+                color: $color-black600;
+            }
+        }
+
+        tg-svg {
+            fill: $color-link-primary;
+            height: 16px;
+            transition: all .6 ease;
+            width: 16px;
+        }
+
+        .title-name {
+            @include font-size(small);
+            @include font-type(medium);
+            color: $color-link-primary;
+            flex: 1 1 auto;
+            margin-bottom: 0;
+            margin-right: .75rem;
+            text-align: initial;
+            transition: all .6 ease;
+        }
+    }
+
+    .admin-swimlane-wip-single {
+        overflow: hidden;
+    }
+
+    .admin-wip-container {
+        overflow-x: hidden;
+
+        &.ng-move,
+        &.ng-enter,
+        &.ng-leave {
+            transition: all linear .25s;
+        }
+
+        &.ng-leave.ng-leave-active,
+        &.ng-move,
+        &.ng-enter {
+            opacity: 0;
+        }
+
+        &.ng-leave,
+        &.ng-move.ng-move-active,
+        &.ng-enter.ng-enter-active {
+            opacity: 1;
+        }
+    }
+
+    .admin-wip-list {
+        position: relative;
+        width: 500px;
+    }
+
+    .wip-number {
+        color: $color-link-tertiary;
+        line-height: 24px;
+    }
+
+    .wip-placeholder-text {
+        opacity: .5;
+    }
+
+    .admin-wip-input {
+        @include font-type(regular);
+        align-items: center;
+        background: $color-gray100;
+        border-radius: 3px;
+        color: $color-black600;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1px;
+        min-height: 2.5rem;
+        padding: 0 1rem;
+
+        .admin-swimlane-wip-form {
+            display: flex;
+            flex: 1 1 auto;
+            justify-content: flex-end;
+
+            span {
+                @include font-size(small);
+
+                flex: 1 1 auto;
+                margin-right: .5rem;
+                text-align: end;
+                width: 100%;
+            }
+        }
+
+        .wip-name {
+            @include font-size(small);
+
+            flex-grow: 1;
+            flex-shrink: 1;
+        }
+
+        input {
+            @include font-size(small);
+
+            background: $color-white;
+            border: 2px solid $color-link-primary;
+            border-radius: 3px;
+            box-sizing: border-box;
+            margin-right: .5rem;
+            padding: .3rem .5rem .3rem .75rem;
+            width: 8rem;
         }
     }
 }

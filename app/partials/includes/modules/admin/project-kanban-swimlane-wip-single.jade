@@ -1,0 +1,61 @@
+button.admin-swimlane-title(
+    ng-class="{folded: ctrl.wipClosed}"
+    ng-click="ctrl.toggleWipVisibility()"
+)
+    h2.title-name  {{ value.name }}
+    tg-svg.unfold-action(
+        ng-if="!ctrl.wipClosed"
+        svg-icon="icon-unfolded-swimlane"
+    )
+    tg-svg.fold-action(
+        ng-if="ctrl.wipClosed"
+        svg-icon="icon-folded-swimlane"
+    )
+
+.admin-wip-container(
+    ng-if="!ctrl.wipClosed"
+)
+    .admin-wip-input(
+        ng-repeat="status in us_statuses"
+        ng-controller="ProjectSwimlanesWipStatusController as ctrl",
+    )
+        span.wip-name {{ status.name }}
+        .admin-swimlane-wip-form(ng-if="!ctrl.wipEdit")
+            span.wip-number.wip-placeholder-text(
+                ng-if="!status.wip_limit"
+            ) {{'ADMIN.PROJECT_KANBAN_POWER_UPS.WIP_LIMIT_PLACEHOLDER' | translate }}
+            span.wip-number(
+                ng-if="!!status.wip_limit"
+            ) {{ status.wip_limit }}
+            button.form-button(
+                type="button"
+                max
+                arial-label="{{'COMMON.SAVE' | translate }}"
+                ng-click="!ctrl.toggleWipEdit()"
+            )
+                tg-svg(svg-icon="icon-edit")
+
+        form.admin-swimlane-wip-form(ng-if="ctrl.wipEdit")
+            input(
+                type="number"
+                maxlength="48"
+                ng-model="new_wip_limit"
+                ng-value="status.wip_limit"
+                placeholder="{{'ADMIN.PROJECT_KANBAN_POWER_UPS.WIP_LIMIT_INPUT' | translate }}"
+            )
+            button.form-button.add-swimlane-single(
+                type="button"
+                max
+                arial-label="{{'COMMON.SAVE' | translate }}"
+                ng-click="ctrl.updateSwimlaneStatusWip(status.id, new_wip_limit)"
+            )
+                tg-svg(svg-icon="icon-check-empty")
+
+            button.form-button.cancel-swimlane-single(
+                type="button"
+                arial-label="{{'COMMON.CANCEL' | translate }}"
+                ng-click="!ctrl.toggleWipEdit()"
+            )
+                tg-svg(svg-icon="icon-close")
+
+

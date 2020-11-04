@@ -48,3 +48,21 @@ section.admin-kanban-powerups
             ng-if="!values.length && !isFormVisible && !deletingSwimlane"
             translate="ADMIN.PROJECT_KANBAN_POWER_UPS.NO_SWIMLANES")
 
+    div.project-values-title
+            h2(
+                translate="ADMIN.PROJECT_KANBAN_POWER_UPS.WIP_LIMITS"
+            )
+
+    .admin-wip-manager
+        .admin-wip-list(
+            ng-if="values"
+            tg-sortable-swimlanes
+        )
+            .admin-swimlane-wip-single(
+                tg-bind-scope
+                ng-controller="ProjectSwimlanesWipController as ctrl",
+                ng-repeat="value in values track by value.id"
+            )
+                include ../admin/project-kanban-swimlane-wip-single
+
+

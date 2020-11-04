@@ -679,7 +679,10 @@
             "ACTION_ADD_SWIMLANE": "New swimlane",
             "NO_SWIMLANES": "There are no swimlanes yet",
             "SWIMLANE_NAME": "Swimlane name",
-            "POPUP_NEW_SWIMLANE": "If you had some user stories created, you will find them on this swimlane."
+            "POPUP_NEW_SWIMLANE": "If you had some user stories created, you will find them on this swimlane.",
+            "WIP_LIMITS": "WIP LIMITS",
+            "WIP_LIMIT_PLACEHOLDER": "WIP Limit not set",
+            "WIP_LIMIT_INPUT": "Set WIP limit"
         },
         "ROLES": {
             "PAGE_TITLE": "Roles - {{projectName}}",
