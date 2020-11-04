@@ -859,12 +859,12 @@ UsEditSelector = ($rootscope, $tgTemplate, $compile, $translate) ->
         $ctrl = $el.controller()
 
         removePopupOpenState = () ->
-            $el.removeClass('popover-open')
+            $el.find(".js-popup-button").removeClass('popover-open')
             $(this).remove()
 
         $el.on "click", (event) ->
             html = $compile(mainTemplate())($scope)
-            $el.addClass('popover-open')
+            $el.find(".js-popup-button").addClass('popover-open')
             $el.append(html)
             $el.find(".us-option-popup").popover().open(() -> removePopupOpenState())
 
