@@ -357,6 +357,7 @@
             }
         }
         .us-option-popup-button {
+            &.popover-open,
             &:hover {
                 background:
                     linear-gradient(rgba($color-link-red, .25), rgba($color-link-red, .25)),
@@ -399,9 +400,7 @@
         flex-shrink: 0;
         justify-content: center;
         margin-left: 1rem;
-        &.popover-open {
-            background: $color-gray400;
-        }
+
     }
     .us-option-popup {
         @include popover(145px, 40px, '', '', 1rem);
@@ -429,6 +428,7 @@
         border-radius: 2px;
         cursor: pointer;
         padding: .25rem 0;
+        &.popover-open,
         &:hover {
             background: $color-gray400;
         }

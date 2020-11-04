@@ -5,11 +5,11 @@ form
     p
         span.subtitle
         span.message
+
     div.options
-        a.button-green(
-            href=""
-            title="{{'COMMON.ACCEPT' | translate}}"
-        )
-            span(translate="COMMON.ACCEPT")
-        a.button-red(href="", title="{{'COMMON.CANCEL' | translate}}")
+        button.btn-link
             span(translate="COMMON.CANCEL")
+
+        button.btn-small(variant="primary")
+            span(translate="COMMON.ACCEPT")
+

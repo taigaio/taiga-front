@@ -564,11 +564,11 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
                 })
 
     deleteUserStory: (us) ->
-        title = @translate.instant("US.TITLE_DELETE_ACTION")
+        title = @translate.instant("US.TITLE_DELETE_ACTION",  {projectName: @scope.project.name})
 
-        message = us.subject
+        message = @translate.instant("US.TITLE_DELETE_MESSAGE",  {subject: us.subject})
 
-        @confirm.askOnDelete(title, message).then (askResponse) =>
+        @confirm.askOnDelete(title, message, '').then (askResponse) =>
             # We modify the userstories in scope so the user doesn't see the removed US for a while
             @scope.userstories = _.without(@scope.userstories, us)
             promise = @.repo.remove(us)
@@ -859,12 +859,12 @@ UsEditSelector = ($rootscope, $tgTemplate, $compile, $translate) ->
         $ctrl = $el.controller()
 
         removePopupOpenState = () ->
-            $el.removeClass('popover-open')
+            $el.find(".js-popup-button").removeClass('popover-open')
             $(this).remove()
 
         $el.on "click", (event) ->
             html = $compile(mainTemplate())($scope)
-            $el.addClass('popover-open')
+            $el.find(".js-popup-button").addClass('popover-open')
             $el.append(html)
             $el.find(".us-option-popup").popover().open(() -> removePopupOpenState())
 

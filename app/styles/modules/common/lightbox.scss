@@ -230,15 +230,9 @@
         white-space: pre-line;
     }
     .options {
+        align-items: center;
         display: flex;
-        a {
-            padding: 8px 0;
-            text-align: center;
-            width: 100%;
-            &:first-child {
-                margin-right: .5rem;
-            }
-        }
+        justify-content: space-around;
     }
 }
 
