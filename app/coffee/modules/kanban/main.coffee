@@ -239,6 +239,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
     toggleSwimlane: (id) ->
         @.foldedSwimlane[id] = !@.foldedSwimlane[id]
+        @rs.kanban.storeSwimlanesModes(@scope.projectId, @.foldedSwimlane)
 
     isUsInArchivedHiddenStatus: (usId) ->
         return @kanbanUserstoriesService.isUsInArchivedHiddenStatus(usId)
@@ -415,6 +416,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
     loadInitialData: ->
         project = @.loadProject()
+        @.foldedSwimlane = @rs.kanban.getSwimlanesModes(project.id)
         @.initialLoad = false
 
         @.fillUsersAndRoles(project.members, project.roles)
