@@ -172,32 +172,10 @@ $fold-animation-duration: .1s;
             }
         }
         .option {
-            border-radius: 2px;
             margin-right: .125rem;
-            padding: .125rem;
-
-            &:hover {
-                background-color: $color-gray300;
-                svg {
-                    fill: $primary;
-                }
-            }
 
             &:last-child {
                 margin-right: 0;
-            }
-        }
-        tg-svg {
-            align-items: center;
-            display: flex;
-        }
-        .icon {
-            fill: $color-link-tertiary;
-            height: 1rem;
-            transition: color .2s linear;
-            width: 1rem;
-            &:hover {
-                fill: $primary;
             }
         }
     }

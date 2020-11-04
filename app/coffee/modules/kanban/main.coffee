@@ -697,17 +697,17 @@ CardAssignedToDirective = ($template, $translate, avatarService, projectService)
                     if !event.ctrlKey && !event.metaKey
                         $scope.vm.onClickAssignedTo({id: $scope.vm.item.get('id')})
 
-                $el.find('.card-edit-content').on 'click', (event) =>
+                $el.find('.js-card-edit-content').on 'click', (event) =>
                     event.preventDefault()
                     if !event.ctrlKey && !event.metaKey
                         $scope.vm.onClickEdit({id: $scope.vm.item.get('id')})
 
-                $el.find('.card-remove').on 'click', (event) =>
+                $el.find('.js-card-remove').on 'click', (event) =>
                     event.preventDefault()
                     if !event.ctrlKey && !event.metaKey
                         $scope.vm.onClickRemove({id: $scope.vm.item.get('id')})
 
-                $el.find('.card-delete').on 'click', (event) =>
+                $el.find('.js-card-delete').on 'click', (event) =>
                     event.preventDefault()
                     if !event.ctrlKey && !event.metaKey
                         $scope.vm.onClickDelete({id: $scope.vm.item.get('id')})

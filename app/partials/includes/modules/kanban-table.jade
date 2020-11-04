@@ -23,7 +23,7 @@ div.kanban-table(
                         span {{ usByStatus.get(s.id.toString()).size || 0 }}
                         span(tg-bo-bind="' / ' + s.wip_limit", ng-if="s.wip_limit")
                 div.options
-                    a.option(
+                    button.btn-board.option(
                         href=""
                         title="{{'KANBAN.TITLE_ACTION_ADD_US' | translate}}"
                         ng-click="ctrl.addNewUs('standard', s.id)"
@@ -32,7 +32,7 @@ div.kanban-table(
                     )
                         tg-svg.add-action(svg-icon="icon-add")
 
-                    a.option(
+                    button.btn-board.option(
                         href=""
                         title="{{'KANBAN.TITLE_ACTION_ADD_BULK' | translate}}"
                         ng-click="ctrl.addNewUs('bulk', s.id)"
@@ -40,7 +40,7 @@ div.kanban-table(
                         ng-hide="s.is_archived"
                     )
                         tg-svg.bulk-action(svg-icon="icon-bulk")
-                    a.option(
+                    button.btn-board.option(
                         href=""
                         ng-click='foldStatus(s)'
                         title="{{'KANBAN.TITLE_ACTION_FOLD' | translate}}"
@@ -48,7 +48,7 @@ div.kanban-table(
                     )
                         tg-svg(svg-icon="icon-fold-column")
 
-                    a.option.hunfold(
+                    button.btn-board.option.hunfold(
                         href=""
                         ng-click='foldStatus(s)'
                         title="{{'KANBAN.TITLE_ACTION_UNFOLD' | translate}}"
@@ -58,7 +58,7 @@ div.kanban-table(
                     )
                         tg-svg(svg-icon="icon-unfold-column")
 
-                    a.option.hunfold(
+                    button.btn-board.option.hunfold(
                         href=""
                         ng-click='foldStatus(s)'
                         title="{{'KANBAN.TITLE_ACTION_UNFOLD' | translate}}"

@@ -36,26 +36,21 @@
     <% if(vm.zoomLevel > 0) { %>
     .card-actions
         <% if(checkPermission(vm.getModifyPermisionKey())) { %>
-        button.card-assigned-to-action
+        button.btn-link.card-assigned-to-action(variant="icon")
             <%= svg({svgIcon: "icon-assign-to"}) %>
             span <%= translate('COMMON.CARD.ASSIGN_TO') %>
         <% } %>
 
         .card-detail-actions
-            a.e2e-edit.card-edit.card-edit-content(
-                href=""
-                title!="<%= translate('COMMON.CARD.EDIT') %>"
-            )
+            button.btn-form.e2e-edit.js-card-edit-content
                 <% if(vm.item.get('loading-edit')) { %>
                 <%= loading %>
                 <% } else { %>
                 <%= svg({svgIcon: "icon-edit", svgTitle: translate('COMMON.CARD.EDIT') }) %>
                 <% } %>
             <% if(vm.item.get('modelName') == 'issues') { %>
-            a.e2e-edit.card-edit.card-remove(
-                href=""
-                title!="<%= translate('COMMON.CARD.DETACH_ISSUE_FROM_SPRINT') %>"
-            )
+
+            button.btn-form.e2e-edit.js-card-remove
                 <% if(vm.item.get('loading-remove-from-sprint')) { %>
                 <%= loading %>
                 <% } else { %>
@@ -64,10 +59,7 @@
             <% } %>
 
             <% if(checkPermission(vm.getDeletePermisionKey())) { %>
-            a.e2e-edit.card-delete(
-                href=""
-                title!="<% vm.item.get('modelName') == 'issues' ? translate('COMMON.CARD.DELETE_ISSUE') : translate('COMMON.CARD.DELETE') %>"
-            )
+            button.btn-form.card-delete.e2e-edit.js-card-delete
                 <% if(vm.item.get('loading-delete')) { %>
                 <%= loading %>
                 <% } else { %>

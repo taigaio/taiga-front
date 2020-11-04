@@ -11,7 +11,7 @@ div.wrapper(
             include ../includes/components/mainTitle
             .taskboard-actions
                 .kanban-table-options-start
-                    button.filter-button.button-small.e2e-open-filter(
+                    button.btn-filter.e2e-open-filter(
                         ng-click="ctrl.openFilter = !ctrl.openFilter"
                         title="{{ctrl.selectedFilters.length}} {{'COMMON.FILTERS.APPLIED_FILTERS_NUM' | translate}}"
                     )

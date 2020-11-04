@@ -25,7 +25,7 @@
         background-color: $color-gray400;
         color: rgba($color-black900, .5);
     }
-    & [svg-icon] {
+    & tg-svg {
         fill: currentColor;
     }
 }
@@ -36,7 +36,7 @@
 .btn-big {
     @extend %button;
     padding: .75rem 1.5rem;
-    & [svg-icon] {
+    & tg-svg {
         margin-right: .4rem;
     }
 }
@@ -87,27 +87,26 @@
     color: $color-link-tertiary;
     display: flex;
     justify-content: center;
-    padding: 0;
+    padding: .25rem;
     text-align: center;
-    & [svg-icon] {
-        color: currentColor;
+    & tg-svg {
+        fill: currentColor;
     }
     &[variant='icon'] {
         color: $color-link-primary;
         &:hover {
+            background: none;
             color: $color-link-tertiary;
-            & [svg-icon] {
-                color: $color-link-primary;
+            & > tg-svg {
+                fill: $color-link-primary;
             }
         }
-        & > [svg-icon] {
-            fill: currentColor;
-            margin-inline-start: .5rem;
+        & > tg-svg {
             & + * {
                 margin-inline-start: .5rem;
             }
         }
-        & * + [svg-icon] {
+        & * + tg-svg {
             margin-inline-start: .5rem;
         }
     }
@@ -123,7 +122,7 @@
     &:hover {
         background: $color-gray400;
     }
-    & [svg-icon] {
+    & tg-svg {
         fill: currentColor;
     }
 }
@@ -141,7 +140,31 @@
         background-color: $color-gray400;
         color: $color-link-primary;
     }
-    & [svg-icon] {
+    & tg-svg {
         margin-right: .25rem;
+    }
+}
+
+// Button Board
+// Used in kanban and taksboard headers
+// button.btn-board
+
+.btn-board {
+    @extend %button;
+    background-color: transparent;
+    color: $color-link-tertiary;
+    padding: .25rem;
+    & tg-svg {
+        fill: currentColor;
+    }
+    &:hover {
+        background-color: $color-gray300;
+        color: $color-link-primary;
+    }
+    &[variant='blocked'] {
+        &:hover {
+            background-color: rgba($color-link-red, .25);
+            color: $color-black900;
+        }
     }
 }

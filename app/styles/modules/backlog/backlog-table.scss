@@ -356,6 +356,13 @@
                 color: $color-black900;
             }
         }
+        .us-option-popup-button {
+            &:hover {
+                background:
+                    linear-gradient(rgba($color-link-red, .25), rgba($color-link-red, .25)),
+                    linear-gradient($color-gray400, $color-gray400);
+            }
+        }
     }
     .readonly {
         cursor: auto;

@@ -115,6 +115,16 @@ $card-section-margin-bottom: .5rem;
                 }
             }
         }
+        .btn-form:not(.card-delete),
+        .btn-link[variant='icon'] {
+            &:hover {
+                color: $color-black900;
+                & > tg-svg {
+                    fill: currentColor;
+                }
+            }
+        }
+
     }
 }
 
@@ -230,10 +240,6 @@ $card-section-margin-bottom: .5rem;
         width: 30px;
     }
 
-    svg {
-        fill: $color-link-primary;
-    }
-
     &:hover {
         .card-actions {
             display: flex;
@@ -245,46 +251,29 @@ $card-section-margin-bottom: .5rem;
     align-items: center;
     background: rgba($color-white, .95);
     display: none;
+    height: 30px;
     justify-content: space-between;
     left: 0;
     padding: $wrap-padding;
     position: absolute;
     width: 100%;
 
-    .card-edit {
-        margin-right: .5rem;
-    }
-
-    a:hover,
-    button:hover {
-        background-color: $color-gray100;
-        span {
-            color: $color-black900;
-        }
-        svg {
-            fill: $color-black900;
-        }
-    }
 }
+
 
 .card-detail-actions {
     display: flex;
+}
 
-    a {
-        padding: .25rem;
+.btn-link[variant='icon'].card-assigned-to-action {
+    &:hover {
+        background: $color-gray300;
     }
 }
 
-.card-assigned-to-action {
-    align-items: center;
-    background-color: transparent;
-    display: flex;
-    height: 30px;
-
-    span {
-        @include font-size(small);
-        color: $color-link-primary;
-        margin-left: .5rem;
+.btn-form.card-delete {
+    &:hover {
+        color: $color-link-red;
     }
 }
 
