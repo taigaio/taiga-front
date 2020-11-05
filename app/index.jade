@@ -55,27 +55,28 @@ html(lang="en", ng-attr-dir="{{ isRTL ? 'rtl' : 'ltr' }}")
             script(src="https://js.userpilot.io/#{userpilotToken}/latest.js")
 
         // zendesk
-        script(id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=2b3df2b6-9c08-435d-bc7d-8e017c7d5ca3")
-        script(type='text/javascript').
-            window.zESettings = {
-                webWidget: {
-                    chat: {
-                        suppress: true
-                    },
-                    contactForm: {
-                        suppress: true
-                    },
-                    helpCenter: {
-                        suppress: true
-                    },
-                    talk: {
-                        suppress: true
-                    },
-                    answerBot: {
-                        suppress: true
+        if zendeskToken
+            script(id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=#{zendeskToken}")
+            script(type='text/javascript').
+                window.zESettings = {
+                    webWidget: {
+                        chat: {
+                            suppress: true
+                        },
+                        contactForm: {
+                            suppress: true
+                        },
+                        helpCenter: {
+                            suppress: true
+                        },
+                        talk: {
+                            suppress: true
+                        },
+                        answerBot: {
+                            suppress: true
+                        }
                     }
                 }
-            }
 
         include svg/sprite.svg
         include svg/editor.svg
