@@ -44,6 +44,9 @@ class UserPilotService extends taiga.Service
         @rootScope.$on "auth:login", (ctx, user) =>
             @.identify()
 
+        @rootScope.$on "auth:logout", (ctx, user) =>
+            @.identify()
+
         @.initialized = true
 
     checkZendeskConditions: (userData) ->
