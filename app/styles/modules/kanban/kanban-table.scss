@@ -183,7 +183,7 @@ body {
     }
 }
 
-@keyframes new-us-status-blink {
+@keyframes new-us-status-blink-folded-column {
     0% {
         background-color: $color-gray400;
     }
@@ -191,6 +191,16 @@ body {
         background-color: $color-gray100;
     }
 }
+
+@keyframes new-us-status-blink {
+    0% {
+        background-color: $color-gray400;
+    }
+    100% {
+        background-color: $color-gray200;
+    }
+}
+
 
 .kanban-table-body {
     @include font-size(medium);
@@ -217,7 +227,10 @@ body {
             margin-right: 0;
         }
         &.new {
-            animation: new-us-status-blink .5s ease-in 2;
+            animation: new-us-status-blink .5s ease-in;
+        }
+        &.vfold.new {
+            animation: new-us-status-blink-folded-column .5s ease-in 2;
         }
         &.target-drop {
             background-color: $color-gray400;
