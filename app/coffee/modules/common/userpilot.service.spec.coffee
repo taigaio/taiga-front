@@ -54,39 +54,37 @@ describe "tgUserPilotService", ->
         joined = new Date
         joined.setDate(joined.getDate() - (JOINED_LIMIT_DAYS + 1))
         data = _setUserData(joined, 1)
-        preparedData = userPilotService.prepareData(data)
-        expect(preparedData["id"]).to.be.eql(1)
-        expect(preparedData["extraData"]["taiga_id"]).to.be.eql(data["id"])
-        expect(preparedData["extraData"]["taiga_roles"]).to.be.eql("admin,usx")
+        preparedData = userPilotService.prepareUserPilotCustomer(data)
+        expect(preparedData["taiga_id"]).to.be.eql(data["id"])
+        expect(preparedData["taiga_roles"]).to.be.eql("admin,usx")
 
     it "check paid user userpilot data", () ->
         data = _setUserData(new Date, null)
-        preparedData = userPilotService.prepareData(data)
-        expect(preparedData["id"]).to.be.eql(data["id"])
-        expect(preparedData["extraData"]["taiga_id"]).to.be.eql(data["id"])
-        expect(preparedData["extraData"]["taiga_roles"]).to.be.eql("admin,usx")
+        preparedData = userPilotService.prepareUserPilotCustomer(data)
+        expect(preparedData["taiga_id"]).to.be.eql(data["id"])
+        expect(preparedData["taiga_roles"]).to.be.eql("admin,usx")
 
     it "check new free user userpilot ID agroupation", () ->
         data = _setUserData(new Date, 1)
-        ID = userPilotService.getUserPilotId(data)
-        expect(ID).to.be.eql(data["id"])
+        ID = userPilotService.calculateUserPilotId(data)
+        expect(ID).to.be.eql(ID)
 
     it "check new paid user userpilot ID agroupation", () ->
         data = _setUserData(new Date, null)
-        ID = userPilotService.getUserPilotId(data)
-        expect(ID).to.be.eql(data["id"])
+        ID = userPilotService.calculateUserPilotId(data)
+        expect(ID).to.be.eql(ID)
 
     it "check old free user userpilot ID agroupation", () ->
         joined = new Date
         joined.setDate(joined.getDate() - (JOINED_LIMIT_DAYS + 1))
         data = _setUserData(joined, 1)
-        ID = userPilotService.getUserPilotId(data)
+        ID = userPilotService.calculateUserPilotId(data)
         expect(ID).to.be.eql(1)
 
     it "check old paid user userpilot ID agroupation", () ->
         joined = new Date
         joined.setDate(joined.getDate() - (JOINED_LIMIT_DAYS + 1))
         data = _setUserData(joined, null)
-        ID = userPilotService.getUserPilotId(data)
+        ID = userPilotService.calculateUserPilotId(data)
         expect(ID).to.be.eql(data["id"])
 
