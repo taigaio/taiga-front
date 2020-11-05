@@ -81,6 +81,7 @@ KanbanSortableDirective = ($repo, $rs, $rootscope, kanbanUserstoriesService) ->
                 $(item).addClass('multiple-drag-mirror')
 
             drake.on 'dragend', (item) ->
+
                 parentEl = item.parentNode
                 dragMultipleItems = window.dragMultiple.stop()
 
@@ -93,10 +94,11 @@ KanbanSortableDirective = ($repo, $rs, $rootscope, kanbanUserstoriesService) ->
                 newStatus = Number(parentEl.dataset.statusId)
                 newSwimlane = Number(parentEl.dataset.swimlane)
 
-                $(parentEl).addClass('new')
+                if initialContainer != parentEl
+                    $(parentEl).addClass('new')
 
-                $(parentEl).one 'animationend', ()  ->
-                    $(parentEl).removeClass('new')
+                    $(parentEl).one 'animationend', ()  ->
+                        $(parentEl).removeClass('new')
 
                 usList = _.map dragMultipleItems, (item) ->
                     return kanbanUserstoriesService.usMap.get(Number(item.dataset.id))
