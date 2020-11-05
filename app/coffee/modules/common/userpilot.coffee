@@ -56,7 +56,7 @@ class UserPilotService extends taiga.Service
         userInfo = @win.localStorage.getItem("userInfo") or "{}"
         userData = JSON.parse(userInfo)
 
-        if @win.userpilot and userData["id"]
+        if @win.userpilot
             userPilotId = @.calculateUserPilotId(userData)
             userPilotCustomer = @.prepareUserPilotCustomer(userData)
             @win.userpilot.identify(
@@ -68,6 +68,11 @@ class UserPilotService extends taiga.Service
             @.updateZendeskState()
 
     prepareUserPilotCustomer: (data) ->
+        if not data["id"]
+            return {
+                created_at: Date.now(),
+            }
+
         return {
             name: data["full_name_display"],
             email: data["email"],
@@ -89,6 +94,9 @@ class UserPilotService extends taiga.Service
         return maxPrivateProjects != 1
 
     calculateUserPilotId: (data) ->
+        if not data["id"]
+            return 2
+
         joined = new Date(data["date_joined"])
 
         if (joined > @.getJoinedLimit()) or @.hasPaidPlan(data)
