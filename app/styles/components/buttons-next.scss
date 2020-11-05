@@ -143,6 +143,18 @@
     & tg-svg {
         margin-right: .25rem;
     }
+    .selected-filters {
+        @include font-size(xsmall);
+        align-items: center;
+        background-color: $color-link-red;
+        border-radius: 50%;
+        color: $color-white;
+        display: flex;
+        height: 1rem;
+        justify-content: center;
+        margin-inline-start: .25rem;
+        width: 1rem;
+    }
 }
 
 // Button Board
