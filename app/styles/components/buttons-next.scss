@@ -136,6 +136,7 @@
     color: $color-link-primary;
     padding: .5rem .5rem;
     text-transform: none;
+    &.active,
     &:hover {
         background-color: $color-gray400;
         color: $color-link-primary;
