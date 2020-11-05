@@ -26,71 +26,73 @@ class UserPilotService extends taiga.Service
 
     constructor: (@rootScope, @win) ->
         @.initialized = false
-        @.identified = false
 
     initialize: ->
+        if @.initialized
+            return
+
         @rootScope.$on '$locationChangeSuccess', =>
             if (@win.userpilot)
                 @win.userpilot.reload()
 
         @rootScope.$on "auth:refresh", (ctx, user) =>
-            @.identify(true)
+            @.identify()
 
         @rootScope.$on "auth:register", (ctx, user) =>
-            @.identify(true)
+            @.identify()
 
         @rootScope.$on "auth:login", (ctx, user) =>
-            @.identify(true)
+            @.identify()
 
-        @.initialize = true
+        @.initialized = true
 
-    identify: (force = false) ->
-        userdata = @win.localStorage.getItem("userInfo")
-        if (@win.userpilot and ((userdata and not @.identified) or force))
-            data = JSON.parse(userdata)
-            if (data["id"])
-                userpilotData = @.prepareData(data)
-                @win.userpilot.identify(
-                    userpilotData["id"],
-                    userpilotData["extraData"]
-                )
-                if userpilotData["id"] > 1 and userpilotData["hasPaidPlan"]
-                    @.setZendekState()
+    checkZendeskConditions: (userData) ->
+        hasPaidPlan = @.hasPaidPlan(userData)
+        joined = new Date(userData["date_joined"])
+        is_new_user = joined > @.getJoinedLimit()
+        return hasPaidPlan and is_new_user
 
+    identify: () ->
+        userInfo = @win.localStorage.getItem("userInfo") or "{}"
+        userData = JSON.parse(userInfo)
 
+        if @win.userpilot and userData["id"]
+            userPilotId = @.calculateUserPilotId(userData)
+            userPilotCustomer = @.prepareUserPilotCustomer(userData)
+            @win.userpilot.identify(
+                userPilotId,
+                userPilotCustomer
+            )
 
-    prepareData: (data) ->
-        @.identified = true
-        id = @.getUserPilotId(data)
-        timestamp = Date.now()
-        hasPaidPlan = @.hasPaidPlan(data)
-        userpilotData = {
+        if @win.zESettings and @.checkZendeskConditions(userData)
+            @.updateZendeskState()
+
+    prepareUserPilotCustomer: (data) ->
+        return {
             name: data["full_name_display"],
             email: data["email"],
-            created_at: timestamp,
-            taiga_id: parseInt(data["id"], 10),
+            created_at: Date.now(),
+            taiga_id: data["id"],
             taiga_username: data["username"],
             taiga_date_joined: data["date_joined"],
             taiga_lang: data["lang"],
-            taiga_max_private_projects: parseInt(data["max_private_projects"], 10),
-            taiga_max_memberships_private_projects: parseInt(data["max_memberships_private_projects"], 10),
+            taiga_max_private_projects: data["max_private_projects"],
+            taiga_max_memberships_private_projects: data["max_memberships_private_projects"],
             taiga_verified_email: data["verified_email"],
-            taiga_total_private_projects: parseInt(data["total_private_projects"], 10),
-            taiga_total_public_projects: parseInt(data["total_public_projects"], 10),
+            taiga_total_private_projects: data["total_private_projects"],
+            taiga_total_public_projects: data["total_public_projects"],
             taiga_roles: data["roles"] && data["roles"].toString()
         }
 
-        return {"id": id, "hasPaidPlan": hasPaidPlan, "extraData": userpilotData}
-
     hasPaidPlan: (data) ->
-        maxPrivateProjects = parseInt(data["max_private_projects"], 10)
+        maxPrivateProjects = data["max_private_projects"]
         return maxPrivateProjects != 1
 
-    getUserPilotId: (data) ->
+    calculateUserPilotId: (data) ->
         joined = new Date(data["date_joined"])
 
         if (joined > @.getJoinedLimit()) or @.hasPaidPlan(data)
-            return parseInt(data["id"], 10)
+            return data["id"]
 
         return 1
 
@@ -99,7 +101,7 @@ class UserPilotService extends taiga.Service
         limit.setDate(limit.getDate() - JOINED_LIMIT_DAYS);
         return limit
 
-    setZendekState: ->
+    updateZendeskState: ->
         @win.zESettings.webWidget.chat.suppress = false
         @win.zESettings.webWidget.contactForm.suppress = false
         @win.zESettings.webWidget.helpCenter.suppress = false
