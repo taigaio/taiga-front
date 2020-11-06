@@ -126,7 +126,7 @@ SelectUserDirective = (
 
         $scope.addItem = (item) ->
             if item.type == 'user'
-                return if _.find($scope.currentUsers, ['id', item.id])
+                return if $scope.currentUsers.includes(item.id)
                 if $scope.single
                     $scope.currentUsers = [item.id]
                     confirmSelection()
