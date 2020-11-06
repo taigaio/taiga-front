@@ -36,7 +36,7 @@ module = angular.module("taigaKanban")
 KanbanSortableDirective = ($repo, $rs, $rootscope, kanbanUserstoriesService) ->
     link = ($scope, $el, $attrs) ->
         unwatch = $scope.$watch "isTableLoaded", (tableLoaded) ->
-            return if !tableLoaded || ! kanbanUserstoriesService.usByStatus?.size
+            return if !tableLoaded || !kanbanUserstoriesService.usByStatus?.size
 
             unwatch()
 
@@ -90,8 +90,13 @@ KanbanSortableDirective = ($repo, $rs, $rootscope, kanbanUserstoriesService) ->
                     dragMultipleItems = [item]
 
                 firstElement = dragMultipleItems[0]
+
+                previousCard = null
+                if firstElement.previousElementSibling && firstElement.previousElementSibling.dataset.id
+                    previousCard = Number(firstElement.previousElementSibling.dataset.id)
+
                 index = $(parentEl).find('tg-card').index(firstElement)
-                newStatus = Number(parentEl.dataset.statusId)
+                newStatus = Number(parentEl.dataset.status)
                 newSwimlane = Number(parentEl.dataset.swimlane)
 
                 if initialContainer != parentEl
@@ -120,7 +125,7 @@ KanbanSortableDirective = ($repo, $rs, $rootscope, kanbanUserstoriesService) ->
                             itemEl = $(dragMultipleItems[key])
                             deleteElement(itemEl)
 
-                    $rootscope.$broadcast("kanban:us:move", finalUsList, newStatus, newSwimlane, index)
+                    $rootscope.$broadcast("kanban:us:move", finalUsList, newStatus, newSwimlane, index, previousCard)
 
             scroll = autoScroll(containers, {
                 margin: 100,

@@ -99,8 +99,9 @@ class KanbanUserstoriesService extends taiga.Service
     showStatus: (statusId) ->
         _.remove @.statusHide, (it) -> return it == statusId
 
-    getStatus: (statusId) ->
-        return _.filter @.userstoriesRaw, (us) -> return us.status == statusId
+    getStatus: (statusId, swimlaneId) ->
+        return _.filter @.userstoriesRaw, (it) =>
+            return it.status == statusId && (!swimlaneId || it.swimlane == swimlaneId)
 
     deleteStatus: (statusId) ->
         toDelete = _.filter @.userstoriesRaw, (us) -> return us.status == statusId
@@ -118,90 +119,46 @@ class KanbanUserstoriesService extends taiga.Service
 
         @.refresh(false)
 
-    move: (usList, statusId, swimlaneId, index) ->
-
-        initialLength = usList.length
-
-        usByStatus = _.filter @.userstoriesRaw, (it) =>
-            return it.status == statusId
-
+    move: (usList, statusId, swimlaneId, index, previousCard) ->
+        usByStatus = @.getStatus(statusId, swimlaneId)
         usByStatus = _.sortBy usByStatus, (it) => @.order[it.id]
 
+        if previousCard
+            previousUsOrder = @.order[previousCard] + 1
+            previousUsIndex = (usByStatus.findIndex (it) => it.id == previousCard) + 1
+        else
+            previousUsOrder = 0
+            previousUsIndex = 0
+
         usByStatusWithoutMoved = _.filter usByStatus, (listIt) ->
-            return !_.find usList, (moveIt) -> return listIt.id == moveIt.id
+            return !_.find usList, (moveIt) -> return listIt.id == moveIt
 
-        beforeDestination = _.slice(usByStatusWithoutMoved, 0, index)
-        afterDestination = _.slice(usByStatusWithoutMoved, index)
+        afterDestination = _.slice(usByStatusWithoutMoved, previousUsIndex)
 
-        setOrders = {}
+        initialLength = usList.length + 1
 
-        previous = beforeDestination[beforeDestination.length - 1]
+        for usModel, key in afterDestination # increase position of the us after the dragged us's
+            @.order[usModel.id] = previousUsOrder + initialLength + key
 
-        previousWithTheSameOrder = _.filter beforeDestination, (it) =>
-            @.order[it.id] == @.order[previous.id]
+        for usId, key in usList
+            usModel = @.getUsModel(usId)
+            usModel.status = statusId
 
+            if swimlaneId
+                usModel.swimlane = swimlaneId
 
-        if previousWithTheSameOrder.length > 1
-            for it in previousWithTheSameOrder
-                setOrders[it.id] = @.order[it.id]
+            @.order[usModel.id] = previousUsOrder + key
 
-        modifiedUs = []
-        setPreviousOrders = []
-        setNextOrders = []
-
-        isArchivedHiddenStatus = @.archivedStatus.indexOf(statusId) != -1 &&
-            @.statusHide.indexOf(statusId) != -1
-
-        if isArchivedHiddenStatus
-            startIndex = new Date().getTime()
-
-        else if !previous
-            startIndex = 0
-
-            for it, key in afterDestination # increase position of the us after the dragged us's
-                @.order[it.id] = key + initialLength + 1
-                it.kanban_order = @.order[it.id]
-
-            setNextOrders = _.map(afterDestination, (it) =>
-                {us_id: it.id, order: @.order[it.id]}
-            )
-
-        else if previous
-            startIndex = @.order[previous.id] + 1
-
-            previousWithTheSameOrder = _.filter(beforeDestination, (it) =>
-                it.kanban_order == @.order[previous.id]
-            )
-            for it, key in afterDestination # increase position of the us after the dragged us's
-                @.order[it.id] = @.order[previous.id] + key + initialLength + 1
-                it.kanban_order = @.order[it.id]
-
-            setNextOrders = _.map(afterDestination, (it) =>
-                {us_id: it.id, order: @.order[it.id]}
-            )
-
-            # we must send the USs previous to the dropped USs to tell the backend
-            # which USs are before the dropped USs, if they have the same value to
-            # order, the backend doens't know after which one do you want to drop
-            # the USs
-            if previousWithTheSameOrder.length > 1
-                setPreviousOrders = _.map(previousWithTheSameOrder, (it) =>
-                    {us_id: it.id, order: @.order[it.id]}
-                )
-
-        for us, key in usList
-            us.status = statusId
-            us.kanban_order = startIndex + key
-            @.order[us.id] = us.kanban_order
-
-            modifiedUs.push({us_id: us.id, order: us.kanban_order})
+            us = @.retrieveUserStoryData(usModel)
+            @.usMap = @.usMap.set(us.id, Immutable.fromJS(us))
 
         @.refresh(false)
 
         return {
-            bulkOrders: modifiedUs.concat(setPreviousOrders, setNextOrders),
-            usList: modifiedUs,
-            set_orders: setOrders
+            statusId: statusId,
+            swimlaneId: swimlaneId,
+            afterUserstoryId: previousCard,
+            bulkUserstories: usList,
         }
 
     moveToEnd: (id, statusId) ->

@@ -93,7 +93,9 @@ div.kanban-table(
                     id="column-{{s.id}}"
                     tg-loaded="taskColumnLoaded($event, s.id, swimlane.id)"
                     tg-kanban-taskboard-column
-                    tg-kanban-wip-limit="s",
+                    tg-kanban-wip-limit="s"
+                    data-status="{{s.id}}"
+                    data-swimlane="{{swimlane.id}}"
                 )
                     .kanban-task-counter(
                         ng-if='!folds[s.id]'
@@ -166,6 +168,7 @@ div.kanban-table(
                 tg-loaded="taskColumnLoaded($event, s.id)"
                 tg-kanban-wip-limit="s"
                 tg-kanban-taskboard-column
+                data-status="{{s.id}}"
             )
                 .kanban-task-counter(
                     ng-if='!folds[s.id]'

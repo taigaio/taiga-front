@@ -436,7 +436,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
     prepareBulkUpdateData: (uses, field="kanban_order") ->
         return _.map(uses, (x) -> {"us_id": x.id, "order": x[field]})
 
-    moveUs: (ctx, usList, newStatusId, newSwimlaneId, index) ->
+    moveUs: (ctx, usList, newStatusId, newSwimlaneId, index, previousCard) ->
         @.cleanSelectedUss()
 
         usList = _.map usList, (us) =>
@@ -444,48 +444,28 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
         @rootscope.$broadcast("kanban:userstories:loaded", usList, newStatusId, newSwimlaneId, index)
 
-        data = @kanbanUserstoriesService.move(usList, newStatusId, newSwimlaneId, index)
+        data = @kanbanUserstoriesService.move(
+            usList.map((it) => it.id),
+            newStatusId,
+            newSwimlaneId,
+            index,
+            previousCard
+        )
 
         promise = @rs.userstories.bulkUpdateKanbanOrder(
             @scope.projectId,
             newStatusId,
             newSwimlaneId,
-            data.bulkOrders
+            data.afterUserstoryId,
+            data.bulkUserstories
         )
 
         promise.then () =>
-            # saving
-            # drag single or different status
-            options = {
-                headers: {
-                    "set-orders": JSON.stringify(data.setOrders)
-                }
-            }
+            @scope.$broadcast("redraw:wip")
 
-            params = {
-                include_attachments: true,
-                include_tasks: true
-            }
-
-            promises = _.map usList, (us) =>
-                @repo.save(us, true, params, options, true)
-
-            promise = @q.all(promises)
-
-            promise.then (result) =>
-                headers = result[1]
-
-                if headers && headers['taiga-info-order-updated']
-                    order = JSON.parse(headers['taiga-info-order-updated'])
-                    @kanbanUserstoriesService.assignOrders(order)
-                @scope.$broadcast("redraw:wip")
-
-                @.generateFilters()
-                if @.isFilterDataTypeSelected('status')
-                    @.filtersReloadContent()
-
-                return promise
-
+            @.generateFilters()
+            if @.isFilterDataTypeSelected('status')
+                @.filtersReloadContent()
 
 module.controller("KanbanController", KanbanController)
 
@@ -536,7 +516,9 @@ KanbanDirective = ($repo, $rootscope) ->
         $scope.isTableLoaded = false
 
         $scope.kanbanTableLoaded = (event) ->
-            $scope.isTableLoaded = true
+            $scope.$evalAsync () =>
+                $scope.isTableLoaded = true
+
             tableBody = event.target
             _tableBody = tableBody
             tableHeaderDom = $el.find(".kanban-table-header .kanban-table-inner")
