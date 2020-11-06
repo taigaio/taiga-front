@@ -101,7 +101,6 @@ div.kanban-table(
                     )
                         tg-animated-counter(
                             data="{count: usByStatusSwimlanes.getIn([swimlane.id, s.id]).size, wip: s.wip_limit}"
-                            initial-load="!ctrl.queue.length"
                         )
                     .placeholder-collapsed(ng-if='folds[s.id]')
                         .placeholder-collapsed-wrapper
@@ -109,7 +108,6 @@ div.kanban-table(
                                 tg-animated-counter(
                                     class="vertical"
                                     data="{count: usByStatusSwimlanes.getIn([swimlane.id, s.id]).size, wip: s.wip_limit}"
-                                    initial-load="!ctrl.queue.length"
                                 )
                             div.text-holder
                                 div.archived(ng-if="s.is_archived") {{'KANBAN.ARCHIVED' | translate}}
@@ -175,7 +173,6 @@ div.kanban-table(
                 )
                     tg-animated-counter(
                         data="{count: usByStatus.get(s.id.toString()).size, wip: s.wip_limit}"
-                        initial-load="!ctrl.queue.length"
                     )
                 .placeholder-collapsed(ng-if='folds[s.id]')
                     .placeholder-collapsed-wrapper
@@ -183,7 +180,6 @@ div.kanban-table(
                             tg-animated-counter(
                                 class="vertical"
                                 data="{count: usByStatus.get(s.id.toString()).size, wip: s.wip_limit}"
-                                initial-load="!ctrl.queue.length"
                             )
                         div.text-holder
                             div.archived(ng-if="s.is_archived") {{'KANBAN.ARCHIVED' | translate}}

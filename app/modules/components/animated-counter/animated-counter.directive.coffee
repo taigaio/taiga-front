@@ -26,8 +26,12 @@ AnimatedCounter = () ->
 
         counter = $el.find('.counter-translator')
         counter.on('transitionend', transitionEnd)
-
+        initialLoad = false
         lastCount = undefined
+
+        unwatch = $scope.$on 'kanban:userstories:loaded', () ->
+            initialLoad = true
+            unwatch()
 
         $scope.$watch 'data', (data) ->
             getCounter = (num) =>
@@ -44,8 +48,8 @@ AnimatedCounter = () ->
                 return
             else if lastCount == $scope.data.count
                 return
-            # $scope.initialLoad, wait empty @.queue to animate preventing the animation on load
-            else if !$scope.initialLoad || lastCount == undefined
+            # initialLoad, wait empty @.queue to animate preventing the animation on load
+            else if !initialLoad || lastCount == undefined
                 lastCount = $scope.data.count
                 $scope.renderCount = getCounter(lastCount)
                 return
@@ -74,8 +78,7 @@ AnimatedCounter = () ->
         link: link,
         template: template,
         scope: {
-            data: '<',
-            initialLoad: '<'
+            data: '<'
         },
     }
 
