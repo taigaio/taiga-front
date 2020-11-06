@@ -63,17 +63,20 @@ class AvatarService
             gravatar = user.get('gravatar_id')
             photo = user.get(avatarParamName)
             username = "@#{user.get('username')}"
+            fullName = user.get('full_name_display')
         else
             gravatar = user.gravatar_id
             photo = user[avatarParamName]
             username = "@#{user.username}"
+            fullName = user.full_name_display
 
         return @.getUnnamed() if !gravatar
 
         if photo
             return {
                 url: photo,
-                username: username
+                username: username,
+                fullName: fullName
             }
         else if location.host.indexOf('localhost') != -1 || !@config.get("gravatar", true)
             root = location.protocol + '//' + location.host
@@ -82,7 +85,8 @@ class AvatarService
             return {
                 url: root + logo.src,
                 bg: logo.color,
-                username: username
+                username: username,
+                fullName: fullName
             }
         else
             root = location.protocol + '//' + location.host
@@ -93,7 +97,8 @@ class AvatarService
             return {
                 url: 'https://www.gravatar.com/avatar/' + gravatar + "?s=200&d=" + logoUrl,
                 bg: logo.color,
-                username: username
+                username: username,
+                fullName: fullName
             }
 
 angular.module("taigaCommon").service("tgAvatarService", ["$tgConfig", AvatarService])

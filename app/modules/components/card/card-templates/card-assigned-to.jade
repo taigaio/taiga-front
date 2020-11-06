@@ -17,8 +17,8 @@
         <% if (index < 2 || vm.item.get('assigned_users').size == 3) { %>
         img(
             src!="<%- avatars[assignedUser.id].url %>"
-            title!="<%- avatars[assignedUser.id].username %>"
-            alt!="<%- avatars[assignedUser.id].username %>"
+            title!="<%- avatars[assignedUser.id].fullName %>"
+            alt!="<%- avatars[assignedUser.id].fullName %>"
             style!="background-color: <%- avatars[assignedUser.id].bg || '' %>"
         )
         <% } %>
