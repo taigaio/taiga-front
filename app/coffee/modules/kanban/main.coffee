@@ -76,7 +76,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         @kanbanUserstoriesService.reset()
         @.openFilter = false
         @.selectedUss = {}
-        @.foldedSwimlane = {}
+        @.foldedSwimlane = Immutable.Map()
         @.isFirstLoad = true
         @.renderBatching = true
 
@@ -141,7 +141,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
     filtersReloadContent: () ->
         @.loadUserstories().then (result) =>
             if @scope.project.swimlanes && !result.length
-                @.foldedSwimlane[@scope.project.swimlanes[0].id] = false
+                @.foldedSwimlane = @.foldedSwimlane.set(@scope.project.swimlanes[0].id.toString(), false)
 
             openArchived = _.difference(@kanbanUserstoriesService.archivedStatus,
                                         @kanbanUserstoriesService.statusHide)
@@ -243,8 +243,8 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         @kanbanUserstoriesService.toggleFold(id)
 
     toggleSwimlane: (id) ->
-        @.foldedSwimlane[id] = !@.foldedSwimlane[id]
-        @rs.kanban.storeSwimlanesModes(@scope.projectId, @.foldedSwimlane)
+        @.foldedSwimlane = @.foldedSwimlane.set(id.toString(), !@.foldedSwimlane.get(id.toString()))
+        @rs.kanban.storeSwimlanesModes(@scope.projectId, @.foldedSwimlane.toJS())
 
     isUsInArchivedHiddenStatus: (usId) ->
         return @kanbanUserstoriesService.isUsInArchivedHiddenStatus(usId)
@@ -421,7 +421,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
     loadInitialData: ->
         project = @.loadProject()
-        @.foldedSwimlane = @rs.kanban.getSwimlanesModes(project.id)
+        @.foldedSwimlane = Immutable.fromJS(@rs.kanban.getSwimlanesModes(project.id))
         @.initialLoad = false
 
         @.fillUsersAndRoles(project.members, project.roles)
@@ -524,21 +524,20 @@ KanbanDirective = ($repo, $rootscope) ->
 
             return
 
-        cardLazyRenderInit = false
+        $scope.taskColumnLoaded = (event, status, swimlane) ->
+            column = event.target[0]
+            board.addSwimlane(column, status, swimlane)
 
-        $scope.cardLoaded = (card) ->
-            if !cardLazyRenderInit
-                board.start()
-                cardLazyRenderInit = true
-
-            board.addCard(card[0])
+        $scope.cardLoaded = (event, status, swimlane) ->
+            board.addCard(event.target[0], status, swimlane)
 
         _tableBody = null
 
         $scope.isTableLoaded = false
 
-        $scope.kanbanTableLoaded = (tableBody) ->
+        $scope.kanbanTableLoaded = (event) ->
             $scope.isTableLoaded = true
+            tableBody = event.target
             _tableBody = tableBody
             tableHeaderDom = $el.find(".kanban-table-header .kanban-table-inner")
 
@@ -547,6 +546,8 @@ KanbanDirective = ($repo, $rootscope) ->
                 tableHeaderDom.css("transform", "translateX(#{scroll}px)")
 
             watchKanbanSize()
+
+            return
 
         $scope.$on "$destroy", ->
             $el.off()

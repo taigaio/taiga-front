@@ -26,13 +26,31 @@
 # ```
 module = angular.module("taigaCommon")
 
-Loaded = (config) ->
-    link = ($scope, $el, $attrs) ->
-        unwatch = $scope.$watch $attrs.tgLoaded, (newValue, oldValue) ->
-            if newValue
-                newValue($el)
-                unwatch()
+Loaded = ($parse) ->
+    compile: ($element, $attrs) ->
+        fn = $parse($attrs['tgLoaded'])
 
-    return {link: link}
+        return {
+            post: ($scope, $element) ->
+                fn(
+                    $scope,
+                    {
+                        $event: {
+                            target: $element
+                        }
+                    }
+                )
+        }
 
-module.directive("tgLoaded", [Loaded])
+    # link = ($scope, $el, $attrs) ->
+    #     fn = $parse($attrs['tgLoaded'])
+    #     console.log 'fn', fn
+
+    #     unwatch = $scope.$watch $attrs.tgLoaded, (newValue, oldValue) ->
+    #         if newValue
+    #             newValue($el)
+    #             unwatch()
+
+    # return {link: link}
+
+module.directive("tgLoaded", ['$parse', Loaded])

@@ -70,29 +70,28 @@ div.kanban-table(
         class="kanban-swimlane"
     )
         button.kanban-swimlane-title(
-                ng-class="{folded: ctrl.foldedSwimlane[swimlane.id]}"
+                ng-class="{folded: ctrl.foldedSwimlane.get(swimlane.id.toString())}"
                 ng-click="ctrl.toggleSwimlane(swimlane.id)"
             )
             tg-svg.unfold-action(
-                ng-if="!ctrl.foldedSwimlane[swimlane.id]"
+                ng-if="!ctrl.foldedSwimlane.get(swimlane.id.toString())"
                 svg-icon="icon-unfolded-swimlane"
             )
             tg-svg.fold-action(
-                ng-if="ctrl.foldedSwimlane[swimlane.id]"
+                ng-if="ctrl.foldedSwimlane.get(swimlane.id.toString())"
                 svg-icon="icon-folded-swimlane"
             )
             h2.title-name  {{ swimlane.name }}
         div.kanban-table-body(
-            ng-if="!ctrl.foldedSwimlane[swimlane.id]"
-            tg-loaded="kanbanTableLoaded"
+            ng-if="!ctrl.foldedSwimlane.get(swimlane.id.toString())"
+            tg-loaded="kanbanTableLoaded($event)"
         )
             div.kanban-table-inner
                 div.kanban-uses-box.taskboard-column(
                     ng-class='{vfold:folds[s.id], vunfold: unfold == s.id}',
                     ng-repeat="s in ::usStatusList track by s.id",
                     id="column-{{s.id}}"
-                    data-status-id="{{s.id}}"
-                    data-swimlane="{{swimlane.id}}"
+                    tg-loaded="taskColumnLoaded($event, s.id, swimlane.id)"
                     tg-kanban-taskboard-column
                     tg-kanban-wip-limit="s",
                 )
@@ -127,7 +126,7 @@ div.kanban-table(
 
                     tg-card.card.ng-animate-disabled(
                         data-id="{{ usId }}"
-                        tg-loaded="cardLoaded"
+                        tg-loaded="cardLoaded($event, s.id, swimlane.id)"
                         tg-repeat="usId in usByStatusSwimlanes.getIn([swimlane.id, s.id])",
                         ng-class="{'kanban-task-maximized': ctrl.isMaximized(s.id), 'kanban-task-minimized': ctrl.isMinimized(s.id), 'kanban-task-selected': ctrl.selectedUss[usId], 'ui-multisortable-multiple': ctrl.selectedUss[usId]}"
                         tg-class-permission="{'readonly': '!modify_task'}"
@@ -152,7 +151,6 @@ div.kanban-table(
     a(
         ng-if="project.swimlanes && project.i_am_admin && project.swimlanes.length <= 1"
         class="kanban-swimlane-add"
-        tg-loaded="addSwimlaneLoaded"
         tg-nav="project-admin-project-values-kanban-power-ups:project=project.slug"
     )
         tg-svg.add-action(svg-icon="icon-add")
@@ -160,14 +158,14 @@ div.kanban-table(
 
     div.kanban-table-body(
         ng-if="!project.swimlanes.length"
-        tg-loaded="kanbanTableLoaded"
+        tg-loaded="kanbanTableLoaded($event)"
     )
         div.kanban-table-inner
             div.kanban-uses-box.taskboard-column(
                 ng-class='{vfold:folds[s.id], vunfold: unfold == s.id}',
                 ng-repeat="s in ::usStatusList track by s.id",
                 id="column-{{s.id}}"
-                data-status-id="{{s.id}}"
+                tg-loaded="taskColumnLoaded($event, s.id)"
                 tg-kanban-wip-limit="s"
                 tg-kanban-taskboard-column
             )
@@ -202,7 +200,7 @@ div.kanban-table(
 
                 tg-card.card.ng-animate-disabled(
                     data-id="{{ usId }}"
-                    tg-loaded="cardLoaded"
+                    tg-loaded="cardLoaded($event, s.id)"
                     tg-repeat="usId in usByStatus.get(s.id.toString())",
                     ng-class="{'kanban-task-maximized': ctrl.isMaximized(s.id), 'kanban-task-minimized': ctrl.isMinimized(s.id), 'kanban-task-selected': ctrl.selectedUss[usId], 'ui-multisortable-multiple': ctrl.selectedUss[usId]}"
                     tg-class-permission="{'readonly': '!modify_task'}"

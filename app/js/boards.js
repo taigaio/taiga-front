@@ -1,13 +1,21 @@
 function initBoard() {
-    function kanbanColumnObserver() {
-        var kanbanColumns = document.querySelectorAll('.taskboard-column');
-        var observers = {};
+    var eventsCallback = function() {};
+    var kanbanStatusObservers = {};
 
-        kanbanColumns.forEach(function(kanbanColumn) {
-            var statusId = Number(kanbanColumn.dataset.statusId);
-            var swimlaneId = Number(kanbanColumn.dataset.swimlane);
+    return {
+        events: function(cb) {
+            eventsCallback = cb;
+        },
+        addCard: function(card, statusId, swimlaneId) {
+            if (swimlaneId) {
+                kanbanStatusObservers[swimlaneId][statusId].observe(card);
+            } else {
+                kanbanStatusObservers[statusId].observe(card);
+            }
+        },
+        addSwimlane: function(column, statusId, swimlaneId) {
             var options = {
-                root: kanbanColumn,
+                root: column,
                 rootMargin: '0px',
                 threshold: 0
             }
@@ -22,39 +30,18 @@ function initBoard() {
             };
 
             if (swimlaneId) {
-                if (!observers[swimlaneId]) {
-                    observers[swimlaneId] = {};
+                if (!kanbanStatusObservers[swimlaneId]) {
+                    kanbanStatusObservers[swimlaneId] = {};
                 }
 
-                observers[swimlaneId][statusId] = new IntersectionObserver(callback, options);
+                if (!kanbanStatusObservers[swimlaneId][statusId]) {
+                    kanbanStatusObservers[swimlaneId][statusId] = new IntersectionObserver(callback, options);
+                }
             } else {
-                observers[statusId] = new IntersectionObserver(callback, options);
-            }
-        })
-
-        return observers;
-    }
-
-    var eventsCallback = function() {};
-    var kanbanStatusObservers = {};
-
-    return {
-        events: function(cb) {
-            eventsCallback = cb;
-        },
-        addCard: function(card) {
-            var column = card.closest('.taskboard-column');
-            var statusId = Number(column.dataset.statusId);
-            var swimlaneId = Number(column.dataset.swimlane);
-
-            if (swimlaneId) {
-                kanbanStatusObservers[swimlaneId][statusId].observe(card);
-            } else {
-                kanbanStatusObservers[statusId].observe(card);
+                if (!kanbanStatusObservers[statusId]) {
+                    kanbanStatusObservers[statusId] = new IntersectionObserver(callback, options);
+                }
             }
         },
-        start: function() {
-            kanbanStatusObservers = kanbanColumnObserver();
-        }
     }
 }
