@@ -63,7 +63,9 @@ UsStatusDirective = ($repo, $template) ->
             event.preventDefault()
             event.stopPropagation()
 
-            target = angular.element(event.currentTarget)
+            statusElement = $(event.currentTarget).find('#js-status-btn')
+
+            target = angular.element(statusElement)
 
             us = $scope.$eval($attrs.tgUsStatus)
             us.status = target.data("status-id")

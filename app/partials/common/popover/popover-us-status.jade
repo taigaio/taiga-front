@@ -1,7 +1,7 @@
 ul.popover.pop-status
     <% _.each(statuses, function(status) { %>
     li.status
-        a(
+        a#js-status-btn(
             href=""
             class!="<% if(currentStatus == status.id) { %> active-popover <% } %>"
             title!="<%- status.name %>"
