@@ -67,8 +67,10 @@ class UserPilotService extends taiga.Service
                 userPilotCustomer
             )
 
-        if @win.zESettings and @.checkZendeskConditions(userData)
-            @.updateZendeskState()
+        if @win.zE and @.checkZendeskConditions(userData)
+            @.setZendeskWidgetStatus({enabled: true})
+        else
+            @.setZendeskWidgetStatus({enabled: false})
 
     prepareUserPilotCustomer: (data) ->
         if not data["id"]
@@ -94,7 +96,7 @@ class UserPilotService extends taiga.Service
 
     hasPaidPlan: (data) ->
         maxPrivateProjects = data["max_private_projects"]
-        return maxPrivateProjects != 1
+        return maxPrivateProjects != undefined and maxPrivateProjects != 1
 
     calculateUserPilotId: (data) ->
         if not data["id"]
@@ -112,12 +114,28 @@ class UserPilotService extends taiga.Service
         limit.setDate(limit.getDate() - JOINED_LIMIT_DAYS);
         return limit
 
-    updateZendeskState: ->
-        @win.zESettings.webWidget.chat.suppress = false
-        @win.zESettings.webWidget.contactForm.suppress = false
-        @win.zESettings.webWidget.helpCenter.suppress = false
-        @win.zESettings.webWidget.talk.suppress = false
-        @win.zESettings.webWidget.answerBot.suppress = false
+    setZendeskWidgetStatus: (config={enabled: false}) ->
+        supress = !config.enabled
+
+        @win.zE('webWidget', 'updateSettings', {
+            webWidget: {
+                chat: {
+                    suppress: supress
+                },
+                contactForm: {
+                    suppress: supress
+                },
+                helpCenter: {
+                    suppress: supress
+                },
+                talk: {
+                    suppress: supress
+                },
+                answerBot: {
+                    suppress: supress
+                }
+            }
+        });
 
 
 module.service("$tgUserPilot", UserPilotService)
