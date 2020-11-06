@@ -1,9 +1,9 @@
 ul.popover.pop-status
     <% _.each(statuses, function(status) { %>
-    li
+    li.status
         a(
             href=""
-            class!="status <% if(currentStatus == status.id) { %> active-popover <% } %>"
+            class!="<% if(currentStatus == status.id) { %> active-popover <% } %>"
             title!="<%- status.name %>"
             data-status-id!="<%- status.id %>"
         )

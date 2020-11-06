@@ -41,12 +41,12 @@
         .user-stories {
             flex: 1;
         }
-        .status {
+        & > .status {
             flex-basis: 150px;
             flex-grow: 0;
             flex-shrink: 0;
+            max-width: 150px;
             text-align: right;
-            white-space: nowrap;
         }
         .points {
             align-items: center;
@@ -82,7 +82,7 @@
 
     }
 
-    .status,
+    & > .status,
     .points {
         position: relative;
         .popover {
@@ -106,6 +106,9 @@
         &.fix {
             bottom: 0;
             top: auto;
+        }
+        .status {
+            text-align: left;
         }
     }
     .pop-role {
@@ -372,11 +375,18 @@
     .us-status {
         @include font-size(small);
         align-items: center;
-        display: inline-flex;
+        display: flex;
+        justify-content: flex-end;
         padding-block-start: .25rem;
         tg-svg {
             margin-inline-start: .25rem;
         }
+    }
+    .us-status-bind {
+        display: inline-block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
     .loading {
         margin: 2% auto;
