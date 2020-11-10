@@ -385,6 +385,7 @@ body {
 .kanban-swimlane-title {
     align-items: center;
     background: $color-white;
+    border: 1px solid transparent;
     border-bottom: solid 1px $color-white;
     display: flex;
     max-width: var(--kanban-width);
@@ -404,6 +405,11 @@ body {
 
         .title-name {
             color: $color-link-tertiary;
+        }
+
+        &.pending-to-open {
+            background-color: $color-gray200;
+            border: 1px solid $color-solid-primary;
         }
     }
 

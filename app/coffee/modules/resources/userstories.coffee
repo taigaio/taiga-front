@@ -108,10 +108,13 @@ resourceProvider = ($repo, $http, $urls, $storage, $q) ->
         params = {
             project_id: projectId,
             status_id: statusId,
-            swimlane_id: swimlaneId,
             after_userstory_id: afterUserstoryId,
             bulk_userstories: bulkUserstories
         }
+
+        if swimlaneId
+            params.swimlane_id = swimlaneId
+
         return $http.post(url, params)
 
     service.listValues = (projectId, type) ->

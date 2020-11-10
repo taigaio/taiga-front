@@ -70,6 +70,8 @@ div.kanban-table(
         class="kanban-swimlane"
     )
         button.kanban-swimlane-title(
+                ng-mouseover="mouseoverSwimlane($event, swimlane.id)"
+                ng-mouseleave="mouseleaveSwimlane($event)"
                 ng-class="{folded: ctrl.foldedSwimlane.get(swimlane.id.toString())}"
                 ng-click="ctrl.toggleSwimlane(swimlane.id)"
             )
@@ -84,7 +86,7 @@ div.kanban-table(
             h2.title-name  {{ swimlane.name }}
         div.kanban-table-body(
             ng-if="!ctrl.foldedSwimlane.get(swimlane.id.toString())"
-            tg-loaded="kanbanTableLoaded($event)"
+            tg-loaded="kanbanTableLoaded($event, swimlane.id)"
         )
             div.kanban-table-inner
                 div.kanban-uses-box.taskboard-column(

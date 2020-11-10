@@ -35,12 +35,22 @@ module = angular.module("taigaKanban")
 
 KanbanSortableDirective = ($repo, $rs, $rootscope, kanbanUserstoriesService) ->
     link = ($scope, $el, $attrs) ->
-        unwatch = $scope.$watch "isTableLoaded", (tableLoaded) ->
-            return if !tableLoaded || !kanbanUserstoriesService.usByStatus?.size
+        drake = null
 
-            unwatch()
+        $scope.openSwimlane = (id) =>
+            containers = _.map $('.kanban-swimlane[data-swimlane="' + id + '"] .taskboard-column'), (item) ->
+                return item
 
+            init(containers)
+
+        init = (containers) =>
             if not ($scope.project.my_permissions.indexOf("modify_us") > -1)
+                return
+
+            if drake
+                containers.forEach (container) =>
+                    drake.containers.push(container)
+
                 return
 
             newParentScope = null
@@ -50,9 +60,6 @@ KanbanSortableDirective = ($repo, $rs, $rootscope, kanbanUserstoriesService) ->
             deleteElement = (itemEl) ->
                 itemEl.off()
                 itemEl.remove()
-
-            containers = _.map $el.find('.taskboard-column'), (item) ->
-                return item
 
             drake = dragula(containers, {
                 copySortSource: false,
@@ -81,7 +88,6 @@ KanbanSortableDirective = ($repo, $rs, $rootscope, kanbanUserstoriesService) ->
                 $(item).addClass('multiple-drag-mirror')
 
             drake.on 'dragend', (item) ->
-
                 parentEl = item.parentNode
                 dragMultipleItems = window.dragMultiple.stop()
 
@@ -134,9 +140,25 @@ KanbanSortableDirective = ($repo, $rs, $rootscope, kanbanUserstoriesService) ->
                     return this.down && drake.dragging
             })
 
-            $scope.$on "$destroy", ->
-                $el.off()
-                drake.destroy()
+        unwatch = $scope.$watch "isTableLoaded", (tableLoaded) ->
+            return if !tableLoaded || !kanbanUserstoriesService.usByStatus?.size
+
+            isSwimlane = $('.swimlane').length
+
+            # in swimlanes we load every swimlane with kanbanTableLoaded
+            return if isSwimlane
+
+            unwatch()
+
+            containers = _.map $el.find('.taskboard-column'), (item) ->
+                return item
+
+            init(containers)
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+            drake.destroy()
 
     return {link: link}
 

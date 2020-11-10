@@ -515,8 +515,12 @@ KanbanDirective = ($repo, $rootscope) ->
 
         $scope.isTableLoaded = false
 
-        $scope.kanbanTableLoaded = (event) ->
+        $scope.kanbanTableLoaded = (event, swimlaneId) ->
             $scope.$evalAsync () =>
+                # we only want to track when the user open a new swimlane for d&d
+                if swimlaneId
+                    $scope.openSwimlane(swimlaneId)
+
                 $scope.isTableLoaded = true
 
             tableBody = event.target
@@ -828,10 +832,14 @@ module.directive("tgCardData", [
 #############################################################################
 ## Kanban Swimlane Directive
 #############################################################################
-KanbanSwimlaneDirective = () ->
+KanbanSwimlaneDirective = ($timeout) ->
     link = ($scope, $el, $attrs) ->
         tableHeaderDom = []
         addSwimlane = null
+        ctrl = $scope.$parent.ctrl
+
+        if !ctrl
+            throw new Error('KanbanSwimlaneDirective ctrl not found')
 
         # sticky swimlane title
         $el.on "scroll", (event) ->
@@ -844,12 +852,48 @@ KanbanSwimlaneDirective = () ->
             tableHeaderDom.css("transform", "translateX(#{scroll}px)")
             addSwimlane.css("transform", "translateX(#{scroll}px)")
 
+        currentSwimlane = null
+        className = 'pending-to-open'
+
+        $scope.mouseleaveSwimlane = (event) =>
+            if currentSwimlane
+                $timeout.cancel(currentSwimlane.timeoutId)
+                currentSwimlane.el.classList.remove(className)
+                currentSwimlane = null
+
+        $scope.mouseoverSwimlane = (event, swimlaneId) =>
+            return if currentSwimlane && currentSwimlane.id == swimlaneId
+
+            if currentSwimlane
+                $timeout.cancel(currentSwimlane.timeoutId)
+                currentSwimlane.el.classList.remove(className)
+
+            swimlane = event.currentTarget
+
+            if swimlane.classList.contains('folded')
+                isDragging = !!document.querySelectorAll('tg-card.gu-mirror').length
+
+                return if !isDragging
+
+                swimlane.classList.add(className)
+
+                timeoutId = $timeout () ->
+                    swimlane.classList.remove(className)
+                    ctrl.toggleSwimlane(swimlaneId)
+                , 1000
+
+                currentSwimlane = {
+                    id: swimlaneId,
+                    timeoutId: timeoutId,
+                    el: swimlane
+                }
+
         $scope.$on "$destroy", ->
             $el.off()
 
     return {link: link}
 
-module.directive("tgKanbanSwimlane", [KanbanSwimlaneDirective])
+module.directive("tgKanbanSwimlane", ['$timeout', KanbanSwimlaneDirective])
 
 #############################################################################
 ## Kanban Swimlane Taskboard Column Directive

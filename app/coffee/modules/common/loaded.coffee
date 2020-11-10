@@ -42,15 +42,4 @@ Loaded = ($parse) ->
                 )
         }
 
-    # link = ($scope, $el, $attrs) ->
-    #     fn = $parse($attrs['tgLoaded'])
-    #     console.log 'fn', fn
-
-    #     unwatch = $scope.$watch $attrs.tgLoaded, (newValue, oldValue) ->
-    #         if newValue
-    #             newValue($el)
-    #             unwatch()
-
-    # return {link: link}
-
 module.directive("tgLoaded", ['$parse', Loaded])

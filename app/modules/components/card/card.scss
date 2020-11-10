@@ -21,6 +21,7 @@ $card-section-margin-bottom: .5rem;
     }
     &.gu-mirror {
         border: 1px solid $color-solid-primary;
+        pointer-events: none;
     }
     &.tg-multiple-drag-mirror {
         margin: 0;
