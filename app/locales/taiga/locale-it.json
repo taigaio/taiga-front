@@ -1410,7 +1410,7 @@
         "PAGE_TITLE": "{{sprintName}} - Pannello dei compiti dello Sprint - {{projectName}}",
         "PAGE_DESCRIPTION": "Sprint {{sprintName}} (da {{startDate}} a {{endDate}}) di {{projectName}}. Completato {{completedPercentage}}% ({{completedPoints}} di {{totalPoints}} points). {{openTasks}} compiti aperti di {{totalTasks}}",
         "SECTION_NAME": "Pannello dei compiti",
-        "TITLE_ACTION_ADD": "Add a new task",
+        "TITLE_ACTION_ADD": "Aggiungi un nuovo compito",
         "TITLE_ACTION_ADD_BULK": "Add some new tasks in bulk",
         "TITLE_ACTION_ADD_ISSUE": "Add a new issue",
         "TITLE_ACTION_ADD_ISSUE_BULK": "Add some new issues in bulk",
