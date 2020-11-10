@@ -26,71 +26,116 @@ class UserPilotService extends taiga.Service
 
     constructor: (@rootScope, @win) ->
         @.initialized = false
-        @.identified = false
 
     initialize: ->
+        if @.initialized
+            return
+
         @rootScope.$on '$locationChangeSuccess', =>
             if (@win.userpilot)
                 @win.userpilot.reload()
 
         @rootScope.$on "auth:refresh", (ctx, user) =>
-            @.identify(true)
+            @.identify()
 
         @rootScope.$on "auth:register", (ctx, user) =>
-            @.identify(true)
+            @.identify()
 
         @rootScope.$on "auth:login", (ctx, user) =>
-            @.identify(true)
+            @.identify()
 
-        @.initialize = true
+        @rootScope.$on "auth:logout", (ctx, user) =>
+            @.identify()
 
-    identify: (force = false) ->
-        userdata = @win.localStorage.getItem("userInfo")
-        if (@win.userpilot and ((userdata and not @.identified) or force))
-            data = JSON.parse(userdata)
-            if (data["id"])
-                userpilotData = @.prepareData(data)
-                @win.userpilot.identify(
-                    userpilotData["id"],
-                    userpilotData["extraData"]
-                )
+        @.initialized = true
 
+    checkZendeskConditions: (userData) ->
+        hasPaidPlan = @.hasPaidPlan(userData)
+        joined = new Date(userData["date_joined"])
+        is_new_user = joined > @.getJoinedLimit()
+        return hasPaidPlan and is_new_user
 
-    prepareData: (data) ->
-        @.identified = true
-        id = @.setUserPilotID(data)
-        timestamp = Date.now()
-        userpilotData = {
+    identify: () ->
+        userInfo = @win.localStorage.getItem("userInfo") or "{}"
+        userData = JSON.parse(userInfo)
+
+        if @win.userpilot
+            userPilotId = @.calculateUserPilotId(userData)
+            userPilotCustomer = @.prepareUserPilotCustomer(userData)
+            @win.userpilot.identify(
+                userPilotId,
+                userPilotCustomer
+            )
+
+        if @win.zE and @.checkZendeskConditions(userData)
+            @.setZendeskWidgetStatus({enabled: true})
+        else
+            @.setZendeskWidgetStatus({enabled: false})
+
+    prepareUserPilotCustomer: (data) ->
+        if not data["id"]
+            return {
+                created_at: Date.now(),
+            }
+
+        return {
             name: data["full_name_display"],
             email: data["email"],
-            created_at: timestamp,
-            taiga_id: parseInt(data["id"], 10),
+            created_at: Date.now(),
+            taiga_id: data["id"],
             taiga_username: data["username"],
             taiga_date_joined: data["date_joined"],
             taiga_lang: data["lang"],
-            taiga_max_private_projects: parseInt(data["max_private_projects"], 10),
-            taiga_max_memberships_private_projects: parseInt(data["max_memberships_private_projects"], 10),
+            taiga_max_private_projects: data["max_private_projects"],
+            taiga_max_memberships_private_projects: data["max_memberships_private_projects"],
             taiga_verified_email: data["verified_email"],
-            taiga_total_private_projects: parseInt(data["total_private_projects"], 10),
-            taiga_total_public_projects: parseInt(data["total_public_projects"], 10),
+            taiga_total_private_projects: data["total_private_projects"],
+            taiga_total_public_projects: data["total_public_projects"],
             taiga_roles: data["roles"] && data["roles"].toString()
         }
 
-        return {"id": id, "extraData": userpilotData}
+    hasPaidPlan: (data) ->
+        maxPrivateProjects = data["max_private_projects"]
+        return maxPrivateProjects != undefined and maxPrivateProjects != 1
 
-    setUserPilotID: (data) ->
+    calculateUserPilotId: (data) ->
+        if not data["id"]
+            return 2
+
         joined = new Date(data["date_joined"])
-        maxPrivateProjects = parseInt(data["max_private_projects"], 10)
 
-        if (joined > @.getJoinedLimit())
-            return parseInt(data["id"], 10)
-        else
-            if (maxPrivateProjects == 1) then return 1 else parseInt(data["id"], 10)
+        if (joined > @.getJoinedLimit()) or @.hasPaidPlan(data)
+            return data["id"]
+
+        return 1
 
     getJoinedLimit: ->
         limit = new Date
         limit.setDate(limit.getDate() - JOINED_LIMIT_DAYS);
         return limit
+
+    setZendeskWidgetStatus: (config={enabled: false}) ->
+        supress = !config.enabled
+
+        @win.zE('webWidget', 'updateSettings', {
+            webWidget: {
+                chat: {
+                    suppress: supress
+                },
+                contactForm: {
+                    suppress: supress
+                },
+                helpCenter: {
+                    suppress: supress
+                },
+                talk: {
+                    suppress: supress
+                },
+                answerBot: {
+                    suppress: supress
+                }
+            }
+        });
 
 
 module.service("$tgUserPilot", UserPilotService)
