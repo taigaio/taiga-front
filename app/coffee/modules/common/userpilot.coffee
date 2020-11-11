@@ -67,10 +67,11 @@ class UserPilotService extends taiga.Service
                 userPilotCustomer
             )
 
-        if @win.zE and @.checkZendeskConditions(userData)
-            @.setZendeskWidgetStatus({enabled: true})
-        else
-            @.setZendeskWidgetStatus({enabled: false})
+        if @win.zE
+            if @.checkZendeskConditions(userData)
+                @.setZendeskWidgetStatus({enabled: true})
+            else
+                @.setZendeskWidgetStatus({enabled: false})
 
     prepareUserPilotCustomer: (data) ->
         if not data["id"]
