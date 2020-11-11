@@ -2,6 +2,16 @@
 
 ## Unreleased
 
+## 5.5.7 (2020-11-11)
+
+### i18n
+
+- Update Japanese and Italian translations.
+
+### Misc
+
+- Add Zendesk for integrated support.
+
 ## 5.5.6 (2020-10-07)
 
 ### Misc
