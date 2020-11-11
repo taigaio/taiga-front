@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## 5.5.8 (2020-11-11)
+
+### Misc
+
+- Fix error when zendesk is not loaded.
+
 ## 5.5.7 (2020-11-11)
 
 ### i18n
