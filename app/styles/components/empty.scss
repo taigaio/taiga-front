@@ -6,8 +6,9 @@
         width: 100%;
     }
     .title {
-        @include font-size(large);
-        text-transform: uppercase;
+        @include font-size(small);
+        @include font-type(bold);
+        color: $color-link-tertiary;
     }
     p {
         @include font-type(regular);
@@ -16,6 +17,9 @@
     a {
         @include font-type(regular);
         color: $primary;
+    }
+    .btn-small {
+        margin: 1rem auto 2rem;
     }
 }
 

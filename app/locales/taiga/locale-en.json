@@ -1370,7 +1370,7 @@
         "MOVE_US_TO_LATEST_SPRINT": "Move to latest Sprint",
         "EMPTY": "The backlog is empty!",
         "CREATE_NEW_US": "Create a new user story",
-        "CREATE_NEW_US_EMPTY_HELP": "You may want to create a new user story",
+        "CREATE_NEW_US_EMPTY_HELP": "Add a user story",
         "NO_MATCH": "No matching search result found with “{{ q }}”",
         "NO_MATCH_HELP": "Try again using more general search terms",
         "EXCESS_OF_POINTS": "Excess of points",
