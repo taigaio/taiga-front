@@ -181,7 +181,6 @@ class ProjectSwimlanesValuesController extends taiga.Controller
 
     loadSwimlanes: =>
         @projectService.fetchProject()
-        @scope.us_statuses = @scope.project.us_statuses
 
         return @rs[@scope.resource].list(@scope.projectId).then (values) =>
             @scope.values = values

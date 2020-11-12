@@ -16,7 +16,7 @@ button.admin-swimlane-title(
     ng-if="!ctrl.wipClosed"
 )
     .admin-wip-input(
-        ng-repeat="status in us_statuses"
+        ng-repeat="status in project.us_statuses"
         ng-controller="ProjectSwimlanesWipStatusController as ctrl",
     )
         span.wip-name {{ status.name }}
@@ -29,7 +29,6 @@ button.admin-swimlane-title(
             ) {{ status.wip_limit }}
             button.form-button(
                 type="button"
-                max
                 arial-label="{{'COMMON.SAVE' | translate }}"
                 ng-click="!ctrl.toggleWipEdit()"
             )
@@ -45,7 +44,6 @@ button.admin-swimlane-title(
             )
             button.form-button.add-swimlane-single(
                 type="button"
-                max
                 arial-label="{{'COMMON.SAVE' | translate }}"
                 ng-click="ctrl.updateSwimlaneStatusWip(status.id, new_wip_limit)"
             )

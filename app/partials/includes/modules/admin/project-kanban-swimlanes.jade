@@ -56,10 +56,8 @@ section.admin-kanban-powerups
     .admin-wip-manager
         .admin-wip-list(
             ng-if="values"
-            tg-sortable-swimlanes
         )
             .admin-swimlane-wip-single(
-                tg-bind-scope
                 ng-controller="ProjectSwimlanesWipController as ctrl",
                 ng-repeat="value in values track by value.id"
             )

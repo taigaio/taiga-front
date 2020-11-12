@@ -210,14 +210,14 @@
     .admin-swimlane-title {
         align-items: center;
         background: $color-white;
-        border-bottom: solid 1px $color-white;
-        box-shadow: 4px 4px 4px rgba(216, 222, 233, .5);
+        border-bottom: 1px solid $color-white;
+        box-shadow: 4px 4px 4px rgba($color-gray400, .5);
         display: flex;
         margin-bottom: 1px;
         padding: .625rem 1rem;
         transition: all .6 ease;
         width: 100%;
-        z-index: 80;
+        z-index: $first-layer;
 
         &.folded {
             border-bottom: solid 1px $color-gray200;
@@ -243,9 +243,9 @@
 
         tg-svg {
             fill: $color-link-primary;
-            height: 16px;
+            height: 1rem;
             transition: all .6 ease;
-            width: 16px;
+            width: 1rem;
         }
 
         .title-name {
@@ -340,7 +340,6 @@
             background: $color-white;
             border: 2px solid $color-link-primary;
             border-radius: 3px;
-            box-sizing: border-box;
             margin-right: .5rem;
             padding: .3rem .5rem .3rem .75rem;
             width: 8rem;
