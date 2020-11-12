@@ -94,6 +94,9 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         taiga.defineImmutableProperty @.scope, "usByStatusSwimlanes", () =>
             return @kanbanUserstoriesService.usByStatusSwimlanes
 
+        taiga.defineImmutableProperty @.scope, "swimlanesList", () =>
+            return @kanbanUserstoriesService.swimlanesList
+
     cleanSelectedUss: () ->
         for key of @.selectedUss
             @.selectedUss[key] = false

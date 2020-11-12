@@ -33,12 +33,11 @@ class KanbanUserstoriesService extends taiga.Service
         @.usByStatus = Immutable.Map()
         @.usMap = Immutable.Map()
         @.usByStatusSwimlanes = Immutable.Map()
+        @.swimlanesList = Immutable.Map()
 
     init: (project, usersById) ->
         @.project = project
         @.usersById = usersById
-        # console.log({userstories: @.userstoriesRaw.filter((us) => !us.swimlane)})
-        console.log({userstories: @.userstoriesRaw})
 
     resetFolds: () ->
         @.foldStatusChanged = {}
@@ -61,11 +60,14 @@ class KanbanUserstoriesService extends taiga.Service
 
     # don't call refresh to prevent unnecessary mutations in every single us
     add: (usList) ->
-        console.log(usList);
         if !Array.isArray(usList)
             usList = [usList]
 
         @.userstoriesRaw = @.userstoriesRaw.concat(usList)
+        # @.userstoriesRaw = @.userstoriesRaw.forEach (us) =>
+        #     console.log(us)
+        #     if (!us.swimlane)
+        #         us.swimlane = -1
         @.refreshRawOrder()
 
         @.userstoriesRaw = _.sortBy @.userstoriesRaw, (it) => @.order[it.id]
@@ -249,16 +251,31 @@ class KanbanUserstoriesService extends taiga.Service
 
         @.usByStatusSwimlanes = Immutable.Map()
 
-        @.project.swimlanes.forEach (swimlane) =>
+        userstoriesNoSwimlane = @.userstoriesRaw.filter (us) =>
+            return !us.swimlane
+
+        emptySwimlaneExists = @.project.swimlanes.filter (swimlane) =>
+            return swimlane.id == -1
+
+        if userstoriesNoSwimlane.length && !emptySwimlaneExists.length
+            emptySwimlane = {
+                id: -1
+            }
+            swimlanesList = [emptySwimlane].concat(@.project.swimlanes)
+            swimlanesList.forEach (swimlane, index) =>
+                @.swimlanesList = @.swimlanesList.set(index, swimlane)
+        else
+            @.project.swimlanes.forEach (swimlane, index) =>
+                @.swimlanesList = @.swimlanesList.set(index, swimlane)
+
+        @.swimlanesList.forEach (swimlane) =>
             swimlaneUsByStatus = Immutable.Map()
-
-            console.log({swimlanes: @.project.swimlanes});
-            console.log({userstoriesRaw: @.userstoriesRaw});
-
             @.usByStatus.forEach (usList, statusId) =>
                 usListSwimlanes = usList.filter (usId) =>
                     us = @.usMap.get(usId)
                     return us.getIn(['model', 'swimlane']) == swimlane.id
+
+                # console.log({usListNoSwimlanes})
                 swimlaneUsByStatus = swimlaneUsByStatus.set(Number(statusId), usListSwimlanes)
 
             @.usByStatusSwimlanes = @.usByStatusSwimlanes.set(swimlane.id, swimlaneUsByStatus)

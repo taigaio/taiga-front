@@ -64,11 +64,12 @@ div.kanban-table(
                     )
                         tg-svg(svg-icon="icon-unfold-column")
     div(
-        ng-if="project.swimlanes.length"
-        ng-repeat="swimlane in project.swimlanes"
+        ng-if="swimlanesList.size"
+        ng-repeat="swimlane in swimlanesList"
         data-swimlane="{{swimlane.id}}"
         class="kanban-swimlane"
     )
+        {{swimlane}}
         button.kanban-swimlane-title(
                 ng-mouseover="mouseoverSwimlane($event, swimlane.id)"
                 ng-mouseleave="mouseleaveSwimlane($event)"
