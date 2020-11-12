@@ -34,7 +34,7 @@
     position: absolute;
     top: 2.25rem;
     width: 332px;
-    z-index: 99;
+    z-index: $first-layer;
 }
 
 .color-selector-dropdown-list {

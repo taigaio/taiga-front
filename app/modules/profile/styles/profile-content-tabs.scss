@@ -1,6 +1,6 @@
 .profile-content-tabs {
     border-top: 1px solid $whitish;
-    z-index: 9;
+    z-index: $first-layer;
     .tab {
         color: $gray-light;
         display: inline-block;

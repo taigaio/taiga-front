@@ -119,7 +119,7 @@ body {
     flex-basis: 2.75rem;
     min-height: 2.75rem;
     position: relative;
-    z-index: 90;
+    z-index: $first-layer;
     .kanban-table-inner {
         display: flex;
         overflow: visible;
@@ -393,7 +393,7 @@ body {
     top: 36px;
     transition: all .6 ease;
     width: 100%;
-    z-index: 80;
+    z-index: $first-layer;
 
     &.folded {
         border-bottom: solid 1px $color-gray200;
@@ -447,7 +447,7 @@ body {
         min-height: 2.25rem;
         position: sticky;
         top: 0;
-        z-index: 90;
+        z-index: $first-layer;
     }
 
     .kanban-table-body {
@@ -499,7 +499,7 @@ body {
     position: absolute;
     right: 0;
     top: 0;
-    z-index: 1;
+    z-index: $first-layer;
 }
 
 .wip-amount {
@@ -526,7 +526,7 @@ body {
             position: absolute;
             top: 0;
             width: 100%;
-            z-index: 10;
+            z-index: $first-layer;
         }
     }
 

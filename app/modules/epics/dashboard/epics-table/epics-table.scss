@@ -52,7 +52,7 @@
     right: 0;
     top: 1.3rem;
     width: 250px;
-    z-index: 99;
+    z-index: $first-layer;
     &.ng-hide-remove {
         animation: dropdownFade .2s;
     }

@@ -8,7 +8,7 @@
     position: absolute;
     right: 1rem;
     top: 1rem;
-    z-index: 99;
+    z-index: $first-layer;
     a {
         display: inline-block;
     }

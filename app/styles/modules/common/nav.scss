@@ -1,11 +1,11 @@
 tg-project-menu {
     background-color: $color-black800;
+    z-index: $layout-layer;
 
     .sticky-project-menu {
         height: calc(100vh - 48px);
         position: sticky;
         top: 0;
-        z-index: 99;
 
         &.unblock {
             height: 100vh;

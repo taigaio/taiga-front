@@ -2,7 +2,7 @@
     border-top: 1px solid $whitish;
     display: flex;
     margin-bottom: 0;
-    z-index: 9;
+    z-index: $first-layer;
     a {
         background: $white;
         color: $gray-light;

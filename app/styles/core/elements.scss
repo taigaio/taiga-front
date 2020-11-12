@@ -53,7 +53,7 @@ svg {
     // scss-lint:disable ImportantRule
     min-width: 240px;
     width: auto;
-    z-index: 999999;
+    z-index: $third-layer;
     .pika-title {
         color: $grayer;
     }

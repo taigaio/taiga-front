@@ -121,7 +121,7 @@
         padding: 1rem;
         position: absolute;
         width: 220px;
-        z-index: 2;
+        z-index: $first-layer;
         &.ng-enter {
             opacity: 0;
             transition: all cubic-bezier(.25, .46, .45, .94) .4s;

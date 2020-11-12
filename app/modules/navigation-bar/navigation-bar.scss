@@ -15,7 +15,7 @@ $dropdown-width: 260px;
         position: absolute;
         right: 0;
         top: 0;
-        z-index: -1;
+        z-index: $negative-layer;
     }
     .nav-left,
     .nav-right {
@@ -184,7 +184,7 @@ $dropdown-width: 260px;
         min-width: $dropdown-width;
         position: absolute;
         top: 3rem;
-        z-index: 999;
+        z-index: $layout-layer;
     }
 }
 
@@ -323,7 +323,7 @@ $dropdown-width: 260px;
         position: absolute;
         top: 3rem;
         width: 400px;
-        z-index: 999;
+        z-index: $layout-layer;
 
         .empty {
             @include font-size(small);

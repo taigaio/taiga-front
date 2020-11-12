@@ -155,7 +155,7 @@
     position: sticky;
     // backlog-top.height
     top: 115px;
-    z-index: 99;
+    z-index: $first-layer;
 
     .backlog-table-title {
         align-items: center;

@@ -160,7 +160,7 @@
     justify-content: center;
     position: absolute;
     width: 100%;
-    z-index: 99;
+    z-index: $first-layer;
     .loading-spinner {
         max-height: 1.5rem;
         max-width: 1.5rem;
@@ -171,7 +171,7 @@
     position: relative;
     .ticket-user-list-content.loading {
         opacity: .5;
-        z-index: 98;
+        z-index: $first-layer;
     }
 }
 
@@ -185,7 +185,7 @@
         left: -.5rem;
         position: absolute;
         top: -.5rem;
-        z-index: 9;
+        z-index: $first-layer;
         svg {
             background: $grayer;
             border-radius: .25rem;

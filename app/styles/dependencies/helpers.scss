@@ -1,2 +1,13 @@
 $navbar: 48px;
 $main-height: calc(100vh - #{$navbar});
+
+/**********************
+**** VERTICAL HEIGHT
+***********************/
+
+$negative-layer: -1;
+$first-layer: 2;
+$second-layer: 3;
+$third-layer: 4;
+$layout-layer: 9; /* Do not use this except for the main layout */
+$overall-layer: 99;

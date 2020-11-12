@@ -125,7 +125,7 @@
         text-align: left;
         top: 2.5rem;
         width: 200px;
-        z-index: 99;
+        z-index: $first-layer;
         &:last-child {
             border: 0;
         }

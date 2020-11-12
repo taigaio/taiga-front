@@ -12,7 +12,7 @@
     transition: width $animation-steps-duration, height $animation-steps-duration;
     transition-delay: $animation-steps-duration;
     width: 0;
-    z-index: 99;
+    z-index: $overall-layer;
     .live-announcement-inner {
         opacity: 0;
         transition: opacity $animation-steps-duration;

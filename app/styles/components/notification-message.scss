@@ -113,7 +113,7 @@
     opacity: 0;
     padding: 1rem;
     position: fixed;
-    z-index: 99920;
+    z-index: $overall-layer;
 }
 
 .notification-light {
@@ -129,7 +129,7 @@
     transform: translateY(-100%);
     transition: all .6s;
     width: 100%;
-    z-index: 99999;
+    z-index: $overall-layer;
     &.inactive {
         opacity: 0;
         transform: translateY(-100%);

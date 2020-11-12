@@ -28,7 +28,7 @@
     right: #{$right};
     top: #{$top};
     width: $width;
-    z-index: 99;
+    z-index: $first-layer;
     text-align: $align;
     a {
         @include font-size(small);

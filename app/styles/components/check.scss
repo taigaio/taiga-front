@@ -20,7 +20,7 @@
         position: absolute;
         top: 0;
         width: 32px;
-        z-index: 999;
+        z-index: $first-layer;
     }
     div {
         background-color: $color-white;

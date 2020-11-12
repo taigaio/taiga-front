@@ -567,7 +567,7 @@
 }
 
 .lightbox-set-due-date {
-    z-index: 9999;
+    z-index: $overall-layer;
     form {
         flex-basis: 600px;
         flex-flow: 0;
@@ -627,7 +627,7 @@
 }
 
 .lightbox-create-edit {
-    z-index: 9998;
+    z-index: $overall-layer;
     $control-height: 30px;
     $spacing: 15px;
     $width: 700px;
@@ -794,7 +794,7 @@
     .pop-users {
         @include popover($pop-width, 60px, 0, '', '', 16px, -7px, ($pop-width / 3));
         &::after {
-            z-index: -1;
+            z-index: $negative-layer;
         }
         &.multiple {
             top: 84px;

@@ -9,7 +9,7 @@
     right: 0;
     top: 0;
     width: 100%;
-    z-index: -100;
+    z-index: $negative-layer;
     .container {
         align-items: center;
         display: flex;
@@ -26,6 +26,6 @@
         background-color: rgba($white, .95);
         display: block;
         opacity: 1;
-        z-index: 99900;
+        z-index: $first-layer;
     }
 }

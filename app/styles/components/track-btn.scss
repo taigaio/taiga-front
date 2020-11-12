@@ -103,7 +103,7 @@
     position: absolute;
     right: 0;
     top: 0;
-    z-index: 99;
+    z-index: $first-layer;
     &.hidden {
         animation: dropdownFade .2s cubic-bezier(.09, 0, .99, .01) reverse;
     }
