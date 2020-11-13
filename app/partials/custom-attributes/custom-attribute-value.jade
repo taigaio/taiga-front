@@ -25,7 +25,7 @@
     <% } else { %>
     .custom-field-value.js-value-view-mode
         span
-            <%- value %>
+            div(ng-bind-html="attributeHtml")
     <% } %>
 
     <% if (isEditable) { %>
