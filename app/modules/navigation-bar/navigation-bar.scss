@@ -184,7 +184,7 @@ $dropdown-width: 260px;
         min-width: $dropdown-width;
         position: absolute;
         top: 3rem;
-        z-index: $layout-layer;
+        z-index: $layout-floating-layer;
     }
 }
 

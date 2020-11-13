@@ -1,37 +1,72 @@
 .card-placeholder:not(.not-found) {
-    background: darken($whitish, 2%);
-    border: 1px dashed darken($whitish, 8%);
     cursor: default;
-    padding: 1rem;
-    .placeholder-avatar {
-        display: flex;
-    }
-    .image {
-        background: darken($whitish, 8%);
-        flex-basis: 48px;
-        height: 48px;
-        margin-right: .5rem;
-        width: 48px;
-    }
-    .text {
-        flex: 1;
-    }
-    .line {
-        background: darken($whitish, 8%);
-        height: 1rem;
-        margin-bottom: 1rem;
-        width: 80%;
-        &:last-child {
-            width: 40%;
-        }
-    }
+    padding: 1.625rem 1rem;
+
     .title {
-        text-transform: uppercase;
+        @include font-type(bold);
+        color: $color-black900;
     }
     p {
         @include font-type(regular);
+        @include font-size(small);
+
         color: $gray;
         margin: 0;
+    }
+
+    .placeholder-kanban-card {
+        background: $color-white;
+        border-radius: 4px;
+        box-shadow: 4px 4px 8px rgba($color-gray400, .5);
+        margin-bottom: 1rem;
+        margin-top: .5rem;
+        padding: 1rem;
+    }
+
+    .placeholder-kanban-row {
+        border-radius: 4px;
+        display: flex;
+        margin-bottom: .5rem;
+
+        &.avatar {
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0;
+        }
+    }
+
+    .placeholder-kanban-text {
+        background: $color-gray300;
+        border-radius: 4px;
+        flex-basis: 60%;
+        height: 16px;
+
+        &.small {
+            background: $color-gray400;
+            flex-basis: 24px;
+            margin-right: 1rem;
+        }
+
+        &.big {
+            background: $color-gray400;
+            flex: 1 1 auto;
+        }
+    }
+
+    .placeholder-kanban-avatar {
+        background: $color-gray200;
+        border-radius: 28px;
+        height: 28px;
+        margin-top: .5rem;
+        width: 28px;
+    }
+
+    .placeholder-kanban-user {
+        background: $color-gray100;
+        border-radius: 4px;
+        flex-basis: 115px;
+        height: 16px;
     }
 }
 

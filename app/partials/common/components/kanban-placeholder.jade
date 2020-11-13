@@ -1,9 +1,20 @@
 ng-container(ng-if="!ctrl.notFoundUserstories")
+    .placeholder-kanban-card
+        .placeholder-kanban-row
+            .placeholder-kanban-text.small
+            .placeholder-kanban-text.big
+        .placeholder-kanban-row
+            .placeholder-kanban-text
+        .placeholder-kanban-row.avatar
+            .placeholder-kanban-avatar
+            .placeholder-kanban-user
+    .placeholder-titles
+        .text-small
+        .text-large
     .placeholder-avatar
         .image
         .text
-            .line
-            .line
+
     p.title {{'KANBAN.PLACEHOLDER_CARD_TITLE' | translate}}
     p {{'KANBAN.PLACEHOLDER_CARD_TEXT' | translate}}
 
