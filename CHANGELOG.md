@@ -8,7 +8,7 @@
 
 - Fix error when zendesk is not loaded.
 
-## 5.5.7 (2020-11-11)
+## 5.5.7 (2020-11-11) [YANKED]
 
 ### i18n
 
