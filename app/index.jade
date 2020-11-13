@@ -17,6 +17,7 @@ html(lang="en", ng-attr-dir="{{ isRTL ? 'rtl' : 'ltr' }}")
         //- PRERENDER SERVICE: This is to know when the page is completely loaded.
         script(type='text/javascript').
             window.prerenderReady = false;
+            window.TAIGA_VERSION = '#{v}';
 
     body(tg-main, ng-class="{'rtl': isRTL}")
         tg-legacy

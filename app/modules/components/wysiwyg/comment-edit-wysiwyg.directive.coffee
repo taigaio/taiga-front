@@ -22,17 +22,20 @@ CommentEditWysiwyg = (attachmentsFullService) ->
         types = {
             epics: "epic",
             userstories: "us",
+            userstory: "us",
             issues: "issue",
-            tasks: "task"
-        }
+            tasks: "task",
+            epic: "epic",
+            us: "us"
+            issue: "issue",
+            task: "task",
+        }   
 
-        uploadFile = (file, cb) ->
-            return attachmentsFullService.addAttachment($scope.vm.projectId, $scope.vm.comment.comment.id, types[$scope.vm.comment.comment._name], file, true, true).then (result) ->
-                cb(result.getIn(['file', 'name']), result.getIn(['file', 'url']), types[$scope.vm.comment.comment._name], result.getIn(['file', 'id']))
-
-        $scope.uploadFiles = (files, cb) ->
-            for file in files
-                uploadFile(file, cb)
+        $scope.uploadFiles = (file, cb) ->
+            return attachmentsFullService.addAttachment($scope.vm.project.id, $scope.vm.object.toString(), types[$scope.vm.name], file, true, true).then (result) ->
+                cb({
+                    default: result.getIn(['file', 'url'])
+                })
 
     return {
         scope: true,
@@ -42,10 +45,11 @@ CommentEditWysiwyg = (attachmentsFullService) ->
                 <tg-wysiwyg
                     editonly
                     required
+                    project="vm.project"
                     content='vm.comment.comment'
                     on-save="vm.saveComment(text, cb)"
                     on-cancel="vm.onEditMode({commentId: vm.comment.id})"
-                    on-upload-file='uploadFiles(files, cb)'>
+                    on-upload-file='uploadFiles'>
                 </tg-wysiwyg>
             </div>
         """

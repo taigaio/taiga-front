@@ -35,20 +35,23 @@ CommentWysiwyg = ($modelTransform, $rootscope, attachmentsFullService) ->
         types = {
             epics: "epic",
             userstories: "us",
+            userstory: "us",
             issues: "issue",
-            tasks: "task"
-        }
-
-        uploadFile = (file, cb) ->
-            return attachmentsFullService.addAttachment($scope.vm.projectId, $scope.vm.type.id, types[$scope.vm.type._name], file, true, true).then (result) ->
-                cb(result.getIn(['file', 'name']), result.getIn(['file', 'url']), types[$scope.vm.type._name], result.getIn(['file', 'id']))
+            tasks: "task",
+            epic: "epic",
+            us: "us"
+            issue: "issue",
+            task: "task",
+        }  
 
         $scope.onChange = (markdown) ->
             $scope.vm.type.comment = markdown
 
-        $scope.uploadFiles = (files, cb) ->
-            for file in files
-                uploadFile(file, cb)
+        $scope.uploadFiles = (file, cb) ->
+            return attachmentsFullService.addAttachment($scope.vm.project.id, $scope.vm.type.id, types[$scope.vm.type._name], file, true, true).then (result) ->
+                cb({
+                    default: result.getIn(['file', 'url'])
+                })
 
         $scope.content = ''
 
@@ -65,11 +68,12 @@ CommentWysiwyg = ($modelTransform, $rootscope, attachmentsFullService) ->
                 <tg-wysiwyg
                     required
                     not-persist
+                    project="vm.project"
                     placeholder='{{"COMMENTS.TYPE_NEW_COMMENT" | translate}}'
                     storage-key='storageKey'
                     content='content'
                     on-save='saveComment(text, cb)'
-                    on-upload-file='uploadFiles(files, cb)'>
+                    on-upload-file='uploadFiles'>
                 </tg-wysiwyg>
             </div>
         """

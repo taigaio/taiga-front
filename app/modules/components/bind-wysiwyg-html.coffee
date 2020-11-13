@@ -17,33 +17,29 @@
 # File: components/bind-code.directive.coffee
 ###
 
-BindCode = ($sce, $parse, $compile, wysiwygService, wysiwygCodeHightlighterService) ->
+BindCode = ($sce, $parse, $compile, wysiwygService) ->
   return {
     restrict: 'A',
     compile:  (tElement, tAttrs) ->
-        tgBindCodeGetter = $parse(tAttrs.tgBindCode)
-        tgBindCodeWatch = $parse tAttrs.tgBindCode, (value) ->
+        tgBindWysiwygHtmlGetter = $parse(tAttrs.tgBindWysiwygHtml)
+        tgBindWysiwygHtmlWatch = $parse tAttrs.tgBindWysiwygHtml, (value) ->
             return (value || '').toString()
 
         $compile.$$addBindingClass(tElement)
 
         return (scope, element, attr) ->
-            $compile.$$addBindingInfo(element, attr.tgBindCode);
+            $compile.$$addBindingInfo(element, attr.tgBindWysiwygHtml);
 
-            scope.$watch tgBindCodeWatch, () ->
-                html = wysiwygService.getHTML(tgBindCodeGetter(scope))
+            scope.$watch tgBindWysiwygHtmlWatch, () ->
+                html = wysiwygService.getHTML(tgBindWysiwygHtmlGetter(scope))
 
                 element.html($sce.getTrustedHtml(html) || '')
-
-                wysiwygCodeHightlighterService.addHightlighter(element)
-
   }
 
 angular.module("taigaComponents")
-    .directive("tgBindCode", [
+    .directive("tgBindWysiwygHtml", [
         "$sce",
         "$parse",
         "$compile",
         "tgWysiwygService",
-        "tgWysiwygCodeHightlighterService",
         BindCode])

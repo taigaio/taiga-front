@@ -38,7 +38,7 @@ HistorySectionDirective = () ->
             type: "=",
             name: "@",
             id: "=",
-            projectId: "="
+            project: "="
         }
     }
 

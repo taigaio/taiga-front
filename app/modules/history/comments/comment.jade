@@ -21,7 +21,7 @@
         .comment-container
             .comment-text.wysiwyg(
                 ng-if="!vm.editMode"
-                tg-bind-code="vm.comment.comment"
+                tg-bind-wysiwyg-html="vm.comment.comment"
             )
             .comment-editor(
                 ng-if="vm.editMode"
@@ -88,5 +88,5 @@
             span(translate="COMMENTS.RESTORE")
     p.deleted-comment-comment(
         ng-if="!vm.hiddenDeletedComment"
-        tg-bind-code="vm.comment.comment"
+        tg-bind-wysiwyg-html="vm.comment.comment"
     )

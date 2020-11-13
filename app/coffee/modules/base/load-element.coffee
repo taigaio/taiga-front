@@ -27,7 +27,7 @@ module = angular.module("taigaBase")
 
 LoadElementDirective = ($parse) ->
     link = ($scope, $el, $attrs) ->
-        $scope.$watch $parse($attrs.tgLoadElement), (val) ->
+        unwatch = $scope.$watch $parse($attrs.tgLoadElement), (val) ->
             if val
                 legacyObj =  $parse($attrs.tgLoadElement)($scope)
                 el = $el[0]
@@ -39,6 +39,9 @@ LoadElementDirective = ($parse) ->
 
                 if legacyObj.events
                     el.events = legacyObj.events
+
+        $scope.$on "$destroy", ->
+            unwatch()
 
     return {
         link: link
