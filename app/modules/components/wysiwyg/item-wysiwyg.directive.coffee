@@ -36,13 +36,23 @@ ItemWysiwyg = ($modelTransform, $rootscope, $confirm, attachmentsFullService, $t
 
             transform.finally(cb)
 
-        uploadFile = (file, cb) ->
-            return attachmentsFullService.addAttachment($scope.project.id, $scope.item.id, $attrs.type, file).then (result) ->
-                cb(result.getIn(['file', 'name']), result.getIn(['file', 'url']), $attrs.type, result.getIn(['file', 'id']))
+        types = {
+            epics: "epic",
+            userstories: "us",
+            userstory: "us",
+            issues: "issue",
+            tasks: "task",
+            epic: "epic",
+            us: "us"
+            issue: "issue",
+            task: "task",
+        }              
 
-        $scope.uploadFiles = (files, cb) ->
-            for file in files
-                uploadFile(file, cb)
+        $scope.uploadFiles = (file, cb) ->
+            return attachmentsFullService.addAttachment($scope.project.id, $scope.item.id, types[$attrs.type], file).then (result) ->
+                cb({
+                    default: result.getIn(['file', 'url'])
+                })
 
         $scope.$watch $attrs.model, (value) ->
             return if not value
@@ -61,15 +71,15 @@ ItemWysiwyg = ($modelTransform, $rootscope, $confirm, attachmentsFullService, $t
         template: """
             <div>
                 <tg-wysiwyg
-                    ng-if="editableDescription"
+                    ng-if="editableDescription && project"
+                    project="project"
                     placeholder='{{"COMMON.DESCRIPTION.EMPTY" | translate}}'
                     version='version'
                     storage-key='storageKey'
                     content='item.description'
                     on-save='saveDescription(text, cb)'
-                    on-upload-file='uploadFiles(files, cb)'>
+                    on-upload-file='uploadFiles'>
                 </tg-wysiwyg>
-
                 <div
                     class="wysiwyg"
                     ng-if="!editableDescription && item.description.length"

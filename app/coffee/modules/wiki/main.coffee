@@ -242,9 +242,13 @@ $qqueue, $repo, $analytics, activityService) ->
             return attachmentsFullService.addAttachment($scope.project.id, $scope.item.id, 'wiki_page', file).then (result) ->
                 cb(result.getIn(['file', 'name']), result.getIn(['file', 'url']), 'wiki_page', result.getIn(['file', 'id']))
 
-        $scope.uploadFiles = (files, cb) ->
-            for file in files
-                uploadFile(file, cb)
+        $scope.uploadFiles = (file, cb) ->
+            attachmentsFullService.addAttachment($scope.project.id, $scope.item.id, 'wiki_page', file).then (result) ->
+                cb({
+                    default: result.getIn(['file', 'url'])
+                })
+
+            return
 
         $scope.$watch $attrs.model, (value) ->
             return if not value
@@ -265,17 +269,17 @@ $qqueue, $repo, $analytics, activityService) ->
                 <tg-wysiwyg
                     ng-if="editableDescription"
                     version='version'
+                    project="project"
                     storage-key='storageKey'
                     content='item.content'
                     on-save='saveDescription(text, cb)'
-                    on-upload-file='uploadFiles(files, cb)'>
+                    on-upload-file='uploadFiles'>
                 </tg-wysiwyg>
 
                 <div
                     class="wysiwyg"
                     ng-if="!editableDescription && item.content.length"
                     ng-bind-html="item.content | markdownToHTML"></div>
-
                 <div
                     class="wysiwyg"
                     ng-if="!editableDescription && !item.content.length">

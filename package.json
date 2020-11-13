@@ -125,18 +125,12 @@
     "jquery.flot.tooltip": "git+https://git@github.com/krzysu/flot.tooltip.git",
     "l.js": "git+https://git@github.com/juanfran/l.js.git",
     "lodash": "^4.16.4",
-    "markdown-it": "^8.0.1",
-    "markdown-it-task-lists": "^1.4.1",
-    "medium-editor": "^5.22.2",
-    "medium-editor-autolist": "git+https://github.com/gruberro/medium-editor-autolist.git#add-package-json",
-    "medium-editor-tc-mention": "^2.2.4",
     "messageformat": "^1.0.2",
     "moment": "^2.15.1",
     "ng-infinite-scroll": "^1.3.0",
     "pikaday": "^1.4.0",
-    "prismjs": "^1.6.0",
     "raven-js": "^3.7.0",
     "showdown": "^1.4.3",
-    "to-markdown": "^3.0.1"
+    "taiga-html-editor": "https://github.com/taigaio/taiga-html-editor#stable"
   }
 }

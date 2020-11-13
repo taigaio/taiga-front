@@ -38,7 +38,7 @@ CommentsDirective = () ->
             loading: "<",
             deleting: "<",
             editing: "<",
-            projectId: "=",
+            project: "=",
             reverse: "="
         },
         templateUrl:"history/comments/comments.html",
