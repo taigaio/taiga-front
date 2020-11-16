@@ -48,7 +48,14 @@ div.wrapper(tg-backlog, ng-controller="BacklogController as ctrl",
                                     ng-class="{'active': ctrl.activeFilters}"
                                 )
                                     tg-svg(svg-icon="icon-filters")
-                                    span.text(translate="BACKLOG.FILTERS.TITLE")
+                                    span.text(
+                                        ng-if="!ctrl.activeFilters"
+                                        translate="BACKLOG.FILTERS.TITLE"
+                                    )
+                                    span.text(
+                                        ng-if="ctrl.activeFilters"
+                                        translate="BACKLOG.FILTERS.HIDE_TITLE"
+                                    )
                                     span.selected-filters(ng-if="ctrl.selectedFilters.length") {{ctrl.selectedFilters.length}}
 
                                 tg-input-search(
