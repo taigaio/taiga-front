@@ -76,6 +76,13 @@
                 white-space: normal;
             }
         }
+        a {
+            color: $primary;
+
+            &:hover {
+                color: $primary-75;
+            }
+        }
     }
     form {
         label {
