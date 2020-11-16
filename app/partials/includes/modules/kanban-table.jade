@@ -63,11 +63,10 @@ div.kanban-table(
                         ng-class='{hidden:!folds[s.id]}'
                     )
                         tg-svg(svg-icon="icon-unfold-column")
-    div {{swimlanesList}}
     div(
         ng-if="swimlanesList.size"
-        tg-repeat="swimlane in swimlanesList track by swimlane.get(id)"
-        data-swimlane="{{swimlane.get(id)}}"
+        tg-repeat="swimlane in swimlanesList track by $index"
+        data-swimlane="{{swimlane.id}}"
         class="kanban-swimlane"
     )
         button.kanban-swimlane-title(

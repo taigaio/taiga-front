@@ -47,10 +47,10 @@ class KanbanUserstoriesService extends taiga.Service
         @.refreshUserStory(usId)
 
     set: (userstories) ->
-        @.userstoriesRaw = @.userstoriesRaw.forEach (us) =>
+        userstories.forEach (us) =>
             if (!us.swimlane)
                 us.swimlane = -1
-            return us
+        @.userstoriesRaw = userstories
         @.refreshRawOrder()
         @.refresh()
 
@@ -66,9 +66,10 @@ class KanbanUserstoriesService extends taiga.Service
         if !Array.isArray(usList)
             usList = [usList]
         @.userstoriesRaw = @.userstoriesRaw.concat(usList)
-        @.userstoriesRaw = @.userstoriesRaw.forEach (us) =>
+        @.userstoriesRaw = @.userstoriesRaw.map (us) =>
             if (!us.swimlane)
                 us.swimlane = -1
+            return us
 
         @.refreshRawOrder()
 
@@ -262,16 +263,21 @@ class KanbanUserstoriesService extends taiga.Service
         if userstoriesNoSwimlane.length && !emptySwimlaneExists.length
             emptySwimlane = {
                 id: -1,
-                kanban_order: -1
+                kanban_order: 1,
+                name: 'Ghost array'
             }
             swimlanesListArray = [emptySwimlane].concat(@.project.swimlanes)
+            console.log({swimlanesListArray})
             swimlanesListArray.forEach (swimlane, index) =>
-                @.swimlanesList = @.swimlanesList.push(swimlane)
+                if (!@.swimlanesList.contains(swimlane))
+                    @.swimlanesList = @.swimlanesList.push(swimlane)
         else
+            console.log(2, @.project.swimlanes)
             @.project.swimlanes.forEach (swimlane, index) =>
-                @.swimlanesList = @.swimlanesList.push(swimlane)
+                if (!@.swimlanesList.contains(swimlane))
+                    @.swimlanesList = @.swimlanesList.push(swimlane)
 
-        console.log({swimlanesList: @.swimlanesList})
+        # console.log({swimlanesList: @.swimlanesList.toJS()})
 
         @.swimlanesList.forEach (swimlane) =>
             swimlaneUsByStatus = Immutable.Map()
