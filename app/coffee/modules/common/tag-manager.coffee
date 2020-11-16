@@ -34,7 +34,7 @@ class TagManagerService extends taiga.Service
 
     initialize: ->
         if not @.accountId
-            @log.debug "Tag Manager: no acount id provided. Disabling."
+            @log.debug "Tag Manager: no account id provided. Disabling."
             return
 
         @.injectTagManager()
