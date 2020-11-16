@@ -33,7 +33,7 @@ class KanbanUserstoriesService extends taiga.Service
         @.usByStatus = Immutable.Map()
         @.usMap = Immutable.Map()
         @.usByStatusSwimlanes = Immutable.Map()
-        @.swimlanesList = Immutable.Map()
+        @.swimlanesList = Immutable.List()
 
     init: (project, usersById) ->
         @.project = project
@@ -47,7 +47,10 @@ class KanbanUserstoriesService extends taiga.Service
         @.refreshUserStory(usId)
 
     set: (userstories) ->
-        @.userstoriesRaw = userstories
+        @.userstoriesRaw = @.userstoriesRaw.forEach (us) =>
+            if (!us.swimlane)
+                us.swimlane = -1
+            return us
         @.refreshRawOrder()
         @.refresh()
 
@@ -62,12 +65,11 @@ class KanbanUserstoriesService extends taiga.Service
     add: (usList) ->
         if !Array.isArray(usList)
             usList = [usList]
-
         @.userstoriesRaw = @.userstoriesRaw.concat(usList)
-        # @.userstoriesRaw = @.userstoriesRaw.forEach (us) =>
-        #     console.log(us)
-        #     if (!us.swimlane)
-        #         us.swimlane = -1
+        @.userstoriesRaw = @.userstoriesRaw.forEach (us) =>
+            if (!us.swimlane)
+                us.swimlane = -1
+
         @.refreshRawOrder()
 
         @.userstoriesRaw = _.sortBy @.userstoriesRaw, (it) => @.order[it.id]
@@ -116,8 +118,8 @@ class KanbanUserstoriesService extends taiga.Service
 
     refreshRawOrder: () ->
         @.order = {}
-
-        @.order[it.id] = it.kanban_order for it in @.userstoriesRaw
+        if (@.userstoriesRaw)
+            @.order[it.id] = it.kanban_order for it in @.userstoriesRaw
 
     assignOrders: (order) ->
         @.order = _.assign(@.order, order)
@@ -252,21 +254,24 @@ class KanbanUserstoriesService extends taiga.Service
         @.usByStatusSwimlanes = Immutable.Map()
 
         userstoriesNoSwimlane = @.userstoriesRaw.filter (us) =>
-            return !us.swimlane
+            return us.swimlane == -1
 
         emptySwimlaneExists = @.project.swimlanes.filter (swimlane) =>
             return swimlane.id == -1
 
         if userstoriesNoSwimlane.length && !emptySwimlaneExists.length
             emptySwimlane = {
-                id: -1
+                id: -1,
+                kanban_order: -1
             }
-            swimlanesList = [emptySwimlane].concat(@.project.swimlanes)
-            swimlanesList.forEach (swimlane, index) =>
-                @.swimlanesList = @.swimlanesList.set(index, swimlane)
+            swimlanesListArray = [emptySwimlane].concat(@.project.swimlanes)
+            swimlanesListArray.forEach (swimlane, index) =>
+                @.swimlanesList = @.swimlanesList.push(swimlane)
         else
             @.project.swimlanes.forEach (swimlane, index) =>
-                @.swimlanesList = @.swimlanesList.set(index, swimlane)
+                @.swimlanesList = @.swimlanesList.push(swimlane)
+
+        console.log({swimlanesList: @.swimlanesList})
 
         @.swimlanesList.forEach (swimlane) =>
             swimlaneUsByStatus = Immutable.Map()
@@ -275,7 +280,6 @@ class KanbanUserstoriesService extends taiga.Service
                     us = @.usMap.get(usId)
                     return us.getIn(['model', 'swimlane']) == swimlane.id
 
-                # console.log({usListNoSwimlanes})
                 swimlaneUsByStatus = swimlaneUsByStatus.set(Number(statusId), usListSwimlanes)
 
             @.usByStatusSwimlanes = @.usByStatusSwimlanes.set(swimlane.id, swimlaneUsByStatus)
