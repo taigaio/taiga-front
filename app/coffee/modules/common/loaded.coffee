@@ -26,7 +26,7 @@
 # ```
 module = angular.module("taigaCommon")
 
-Loaded = ($parse) ->
+Loaded = ($parse, $timeout) ->
     return {
         restrict: 'A',
         compile: ($element, $attrs) ->
@@ -43,10 +43,9 @@ Loaded = ($parse) ->
                         }
                     )
 
-                requestAnimationFrame () ->
-                    callback()
+                $timeout () -> callback()
 
                 return null
     }
 
-module.directive("tgLoaded", ['$parse', Loaded])
+module.directive("tgLoaded", ['$parse', '$timeout', Loaded])
