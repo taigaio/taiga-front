@@ -1607,8 +1607,8 @@
         "US_NOT_FOUND_TITLE": "No matching results found" ,
         "US_NOT_FOUND_TEXT_P1": "Try again using more general search terms or disabled some filters." ,
         "US_NOT_FOUND_TEXT_P2": "<strong>Archived stories</strong> are not loaded by default. Unfold the archived statuses to expand your search." ,
-        "PLACEHOLDER_CARD_TITLE": "These are your user stories",
-        "PLACEHOLDER_CARD_TEXT": "Stories might also have subtasks to separate requirements",
+        "PLACEHOLDER_CARD_TITLE": "This could be a user story",
+        "PLACEHOLDER_CARD_TEXT": "Create user stories here and change their status to track their progress.",
         "NUMBER_US": "Number of US",
         "ARCHIVED": "(Archived)",
         "CREATE_SWIMLANE": "Create more swimlanes"
