@@ -1611,7 +1611,8 @@
         "PLACEHOLDER_CARD_TEXT": "Create user stories here and change their status to track their progress.",
         "NUMBER_US": "Number of US",
         "ARCHIVED": "(Archived)",
-        "CREATE_SWIMLANE": "Create more swimlanes"
+        "CREATE_SWIMLANE": "Create more swimlanes",
+        "UNCLASSIFIED_USER_STORIES": "Unclassified user stories"
     },
     "SEARCH": {
         "PAGE_TITLE": "Search - {{projectName}}",

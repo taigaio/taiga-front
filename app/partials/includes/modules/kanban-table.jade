@@ -64,8 +64,8 @@ div.kanban-table(
                     )
                         tg-svg(svg-icon="icon-unfold-column")
     div(
-        ng-if="project.swimlanes.length"
-        ng-repeat="swimlane in project.swimlanes"
+        ng-if="swimlanesList.size"
+        tg-repeat="swimlane in swimlanesList track by $index"
         data-swimlane="{{swimlane.id}}"
         class="kanban-swimlane"
     )
@@ -84,6 +84,11 @@ div.kanban-table(
                 svg-icon="icon-folded-swimlane"
             )
             h2.title-name  {{ swimlane.name }}
+            div.unclassified-us(ng-if="swimlane.id == -1")
+                tg-svg(
+                    svg-icon="icon-help-circle"
+                )
+                .popover.pop-help The user stories that are not part of any swimlane are here.
         div.kanban-table-body(
             ng-if="!ctrl.foldedSwimlane.get(swimlane.id.toString())"
             tg-loaded="kanbanTableLoaded($event, swimlane.id)"

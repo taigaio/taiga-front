@@ -13,46 +13,36 @@
 ) {
     @include font-type(regular);
     @include font-size(small);
-    background: $white;
+    background: $color-black900;
     border: 1px solid $color-gray400;
     border-radius: 4px;
     bottom: #{$bottom};
     box-shadow: 4px 4px 8px rgba(46, 52, 64, .1);
-    color: $color-link-primary;
+    color: $color-gray100;
     display: none;
     left: #{$left};
     list-style-type: none;
     margin: 0;
-    padding: 10px;
+    padding: 1rem;
     position: absolute;
     right: #{$right};
+    text-align: $align;
     top: #{$top};
     width: $width;
     z-index: $first-layer;
-    text-align: $align;
-    a {
-        @include font-size(small);
-        border-bottom: 1px solid $grayer;
-        color: $color-link-primary;
-        display: block;
-        padding: .3rem 0 .3rem .2rem;
-        &:last-child {
-            border: 0;
-        }
-        &:hover {
-            color: $color-link-tertiary;
-            background-color: $color-gray200;
-            transition: color .3s linear;
-            &.point {
-                color: $white;
-            }
-        }
-        &.active-popover {
-            color: $color-link-tertiary;
-        }
+    &:before {
+        background: $color-black900;
+        bottom: #{$arrow-bottom};
+        content: '';
+        height: #{$arrow-height};
+        left: #{$arrow-left};
+        position: absolute;
+        top: #{$arrow-top};
+        transform: rotate(45deg);
+        width: #{$arrow-width};
     }
     &:after {
-        background: $blackish;
+        background: $color-black900;
         bottom: #{$arrow-bottom};
         content: '';
         height: #{$arrow-height};

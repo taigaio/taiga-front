@@ -20,9 +20,11 @@
 groupBy = @.taiga.groupBy
 
 class KanbanUserstoriesService extends taiga.Service
-    @.$inject = []
+    @.$inject = [
+        "$translate"
+    ]
 
-    constructor: () ->
+    constructor: (@translate) ->
         @.reset()
 
     reset: () ->
@@ -33,6 +35,7 @@ class KanbanUserstoriesService extends taiga.Service
         @.usByStatus = Immutable.Map()
         @.usMap = Immutable.Map()
         @.usByStatusSwimlanes = Immutable.Map()
+        @.swimlanesList = Immutable.List()
 
     init: (project, usersById) ->
         @.project = project
@@ -46,6 +49,9 @@ class KanbanUserstoriesService extends taiga.Service
         @.refreshUserStory(usId)
 
     set: (userstories) ->
+        userstories.forEach (us) =>
+            if (!us.swimlane)
+                us.swimlane = -1
         @.userstoriesRaw = userstories
         @.refreshRawOrder()
         @.refresh()
@@ -61,8 +67,12 @@ class KanbanUserstoriesService extends taiga.Service
     add: (usList) ->
         if !Array.isArray(usList)
             usList = [usList]
-
         @.userstoriesRaw = @.userstoriesRaw.concat(usList)
+        @.userstoriesRaw = @.userstoriesRaw.map (us) =>
+            if (!us.swimlane)
+                us.swimlane = -1
+            return us
+
         @.refreshRawOrder()
 
         @.userstoriesRaw = _.sortBy @.userstoriesRaw, (it) => @.order[it.id]
@@ -111,8 +121,8 @@ class KanbanUserstoriesService extends taiga.Service
 
     refreshRawOrder: () ->
         @.order = {}
-
-        @.order[it.id] = it.kanban_order for it in @.userstoriesRaw
+        if (@.userstoriesRaw)
+            @.order[it.id] = it.kanban_order for it in @.userstoriesRaw
 
     assignOrders: (order) ->
         @.order = _.assign(@.order, order)
@@ -246,13 +256,36 @@ class KanbanUserstoriesService extends taiga.Service
 
         @.usByStatusSwimlanes = Immutable.Map()
 
-        @.project.swimlanes.forEach (swimlane) =>
-            swimlaneUsByStatus = Immutable.Map()
+        userstoriesNoSwimlane = @.userstoriesRaw.filter (us) =>
+            return us.swimlane == -1
 
+        emptySwimlaneExists = @.swimlanesList.filter (swimlane) =>
+            return swimlane.id == -1
+
+        if userstoriesNoSwimlane.length && !emptySwimlaneExists.size
+            @.project.swimlanes.forEach (swimlane) =>
+                if (!@.swimlanesList.includes(swimlane))
+                    @.swimlanesList = @.swimlanesList.push(swimlane)
+
+            emptySwimlane = {
+                id: -1,
+                kanban_order: 1,
+                name: @translate.instant("KANBAN.UNCLASSIFIED_USER_STORIES")
+            }
+            @.swimlanesList = @.swimlanesList.insert(0, emptySwimlane)
+
+        else
+            @.project.swimlanes.forEach (swimlane) =>
+                if (!@.swimlanesList.includes(swimlane))
+                    @.swimlanesList = @.swimlanesList.push(swimlane)
+
+        @.swimlanesList.forEach (swimlane) =>
+            swimlaneUsByStatus = Immutable.Map()
             @.usByStatus.forEach (usList, statusId) =>
                 usListSwimlanes = usList.filter (usId) =>
                     us = @.usMap.get(usId)
                     return us.getIn(['model', 'swimlane']) == swimlane.id
+
                 swimlaneUsByStatus = swimlaneUsByStatus.set(Number(statusId), usListSwimlanes)
 
             @.usByStatusSwimlanes = @.usByStatusSwimlanes.set(swimlane.id, swimlaneUsByStatus)

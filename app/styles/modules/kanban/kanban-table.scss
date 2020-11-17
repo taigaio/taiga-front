@@ -394,7 +394,7 @@ body {
     top: 36px;
     transition: all .6 ease;
     width: 100%;
-    z-index: $first-layer;
+    z-index: $second-layer;
 
     &.folded {
         border-bottom: solid 1px $color-gray200;
@@ -414,7 +414,8 @@ body {
     }
 
     &:hover {
-        tg-svg {
+        .unfold-action,
+        .fold-action {
             fill: $color-black600;
         }
 
@@ -423,7 +424,8 @@ body {
         }
     }
 
-    tg-svg {
+    .unfold-action,
+    .fold-action {
         fill: $color-link-primary;
         height: 16px;
         margin-right: .75rem;
@@ -438,6 +440,32 @@ body {
         margin-bottom: 0;
         margin-right: .75rem;
         transition: all .6 ease;
+    }
+
+    .unclassified-us {
+        position: relative;
+        tg-svg {
+            fill: $color-gray400;
+        }
+        &:hover {
+            tg-svg {
+                fill: $color-black900;
+            }
+            .popover {
+                display: block;
+            }
+        }
+        .popover {
+            @include popover(
+                250px,
+                $top: 150%,
+                $left: -8px,
+                $arrow-width: 10px,
+                $arrow-top: -5px,
+                $arrow-left: 10px,
+                $arrow-height: 10px
+            );
+        }
     }
 }
 
