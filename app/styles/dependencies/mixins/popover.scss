@@ -32,7 +32,6 @@
     z-index: $first-layer;
     &:before {
         background: $color-black900;
-        border: 1px solid $color-gray400;
         bottom: #{$arrow-bottom};
         content: '';
         height: #{$arrow-height};
