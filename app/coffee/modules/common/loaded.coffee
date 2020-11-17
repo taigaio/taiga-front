@@ -27,19 +27,26 @@
 module = angular.module("taigaCommon")
 
 Loaded = ($parse) ->
-    compile: ($element, $attrs) ->
-        fn = $parse($attrs['tgLoaded'])
+    return {
+        restrict: 'A',
+        compile: ($element, $attrs) ->
+            fn = $parse($attrs['tgLoaded'])
 
-        return {
-            post: ($scope, $element) ->
-                fn(
-                    $scope,
-                    {
-                        $event: {
-                            target: $element
+            return ($scope, $element) ->
+                callback = () ->
+                    fn(
+                        $scope,
+                        {
+                            $event: {
+                                target: $element
+                            }
                         }
-                    }
-                )
-        }
+                    )
+
+                requestAnimationFrame () ->
+                    callback()
+
+                return null
+    }
 
 module.directive("tgLoaded", ['$parse', Loaded])

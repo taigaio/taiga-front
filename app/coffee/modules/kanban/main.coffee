@@ -455,10 +455,15 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             previousCard
         )
 
+        apiNewSwimlaneId = newSwimlaneId
+
+        if newSwimlaneId == -1
+            apiNewSwimlaneId = null
+
         promise = @rs.userstories.bulkUpdateKanbanOrder(
             @scope.projectId,
             newStatusId,
-            newSwimlaneId,
+            apiNewSwimlaneId,
             data.afterUserstoryId,
             data.bulkUserstories
         )
