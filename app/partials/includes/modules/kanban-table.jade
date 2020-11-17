@@ -84,6 +84,11 @@ div.kanban-table(
                 svg-icon="icon-folded-swimlane"
             )
             h2.title-name  {{ swimlane.name }}
+            div.unclassified-us(ng-if="swimlane.id == -1")
+                tg-svg(
+                    svg-icon="icon-help-circle"
+                )
+                .popover.pop-help The user stories that are not part of any swimlane are here.
         div.kanban-table-body(
             ng-if="!ctrl.foldedSwimlane.get(swimlane.id.toString())"
             tg-loaded="kanbanTableLoaded($event, swimlane.id)"

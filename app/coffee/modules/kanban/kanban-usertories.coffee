@@ -20,9 +20,11 @@
 groupBy = @.taiga.groupBy
 
 class KanbanUserstoriesService extends taiga.Service
-    @.$inject = []
+    @.$inject = [
+        "$translate"
+    ]
 
-    constructor: () ->
+    constructor: (@translate) ->
         @.reset()
 
     reset: () ->
@@ -269,7 +271,7 @@ class KanbanUserstoriesService extends taiga.Service
             emptySwimlane = {
                 id: -1,
                 kanban_order: 1,
-                name: 'Ghost array'
+                name: @translate.instant("KANBAN.UNCLASSIFIED_USER_STORIES")
             }
             @.swimlanesList = @.swimlanesList.push(emptySwimlane)
 
