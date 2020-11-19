@@ -326,8 +326,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                 if !@.batchSize
                     @.batchSize = @.queue.length
 
-            @timeout () =>
-                @.renderBatch(true)
+            @.renderBatch(true)
         else
             @kanbanUserstoriesService.set(userstories)
 
@@ -344,6 +343,8 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         params.q = @.filterQ
 
         promise = @rs.userstories.listAll(@scope.projectId, params).then (userstories) =>
+            @kanbanUserstoriesService.reset(false)
+
             @.notFoundUserstories = false
 
             if !userstories.length && ((@.filterQ && @.filterQ.length) || Object.keys(@location.search()).length)

@@ -8,7 +8,7 @@ AnimatedCounter = () ->
             class="animated-counter-inner">
             <div class="counter-translator">
                 <span>{{ nextUp }}</span>
-                <span>{{ renderCount }}</span>
+                <span>{{ renderCount || 0 }}</span>
                 <span>{{ nextDown }}</span>
             </div>
         </div>
