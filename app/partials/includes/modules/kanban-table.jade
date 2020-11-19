@@ -83,8 +83,10 @@ div.kanban-table(
                 ng-if="ctrl.foldedSwimlane.get(swimlane.id.toString())"
                 svg-icon="icon-folded-swimlane"
             )
-            h2.title-name  {{ swimlane.name }}
-            div.unclassified-us(ng-if="swimlane.id == -1")
+            h2.title-name(
+                ng-class="{'unclassified-us-title': swimlane.id == -1}"
+            )  {{ swimlane.name }}
+            div.unclassified-us-info(ng-if="swimlane.id == -1")
                 tg-svg(
                     svg-icon="icon-help-circle"
                 )

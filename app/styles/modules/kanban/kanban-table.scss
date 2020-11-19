@@ -442,7 +442,11 @@ body {
         transition: all .6 ease;
     }
 
-    .unclassified-us {
+    .unclassified-us-title {
+        font-style: italic;
+    }
+
+    .unclassified-us-info {
         position: relative;
         tg-svg {
             fill: $color-gray400;
