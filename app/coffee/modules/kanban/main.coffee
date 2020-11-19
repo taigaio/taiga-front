@@ -144,7 +144,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
     filtersReloadContent: () ->
         @.loadUserstories().then (result) =>
             if @scope.project.swimlanes && !result.length
-                @.foldedSwimlane = @.foldedSwimlane.set(@scope.project.swimlanes[0].id.toString(), false)
+                @.foldedSwimlane = @.foldedSwimlane.set(@scope.swimlanesList.first().id.toString(), false)
 
             openArchived = _.difference(@kanbanUserstoriesService.archivedStatus,
                                         @kanbanUserstoriesService.statusHide)
@@ -237,7 +237,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         firstStatus = @scope.usStatusList[0].id == statusId && !@kanbanUserstoriesService.userstoriesRaw.length
 
         if swimlaneId
-            firstSwimlane = @scope.project.swimlanes[0].id == swimlaneId
+            firstSwimlane =  @scope.swimlanesList.first().id == swimlaneId
             return firstStatus && firstSwimlane
 
         return firstStatus
