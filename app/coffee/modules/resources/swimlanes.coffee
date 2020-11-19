@@ -57,6 +57,13 @@ resourceProvider = ($repo, $http, $urls) ->
         }
         return $http.post(url, params)
 
+    service.wipLimitUpdate = (swimlaneId, wip_limit) ->
+        url = $urls.resolve("swimlane-userstory-statuses")
+        url = "#{url}/#{swimlaneId}"
+        params = {
+            wip_limit
+        }
+        return $http.patch(url, params)
 
     service.delete = (swimlaneId, moveTo) ->
         url = $urls.resolve("swimlanes")

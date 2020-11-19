@@ -82,7 +82,6 @@ class ProjectValuesSectionController extends mixOf(taiga.Controller, taiga.PageM
         promise = @.loadProject()
         return promise
 
-
 module.controller("ProjectValuesSectionController", ProjectValuesSectionController)
 
 #############################################################################
@@ -141,6 +140,8 @@ class ProjectSwimlanesValuesController extends taiga.Controller
     ]
 
     constructor: (@scope, @rootscope, @repo, @translate, @confirm, @rs, @projectService) ->
+        @scope.$on "swimlane:load", => @.loadSwimlanes()
+
         unwatch = @scope.$watch "resource", (resource) =>
             if resource
                 @.loadSwimlanes()
@@ -1495,14 +1496,22 @@ module.controller("ProjectSwimlanesWipController", ProjectSwimlanesWipController
 #############################################################################
 
 class ProjectSwimlanesWipStatusController extends taiga.Controller
-    @.wipEdit = false;
+    @.$inject = [
+        "$scope",
+        "$rootScope",
+        "$tgResources",
+    ]
+
+    constructor: (@scope, @rootscope, @rs) ->
+        @.wipEdit = false;
+
 
     toggleWipEdit: () ->
         @.wipEdit = !@.wipEdit
 
-    updateSwimlaneStatusWip: (id, wip_limit) ->
-        # This is what we send to back in the future
-        console.log(id: id, wip_limit: wip_limit)
+    submitSwimlaneNewStatus: (id, wip_limit) ->
         @.wipEdit = false;
+        return @rs.swimlanes.wipLimitUpdate(id, wip_limit).then (values) =>
+            @rootscope.$broadcast("swimlane:load")
 
 module.controller("ProjectSwimlanesWipStatusController", ProjectSwimlanesWipStatusController)

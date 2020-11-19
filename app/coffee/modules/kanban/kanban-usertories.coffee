@@ -31,6 +31,7 @@ class KanbanUserstoriesService extends taiga.Service
         @.userstoriesRaw = []
         @.archivedStatus = []
         @.statusHide = []
+        @.swimlanes = []
         @.foldStatusChanged = {}
         @.usByStatus = Immutable.Map()
         @.usMap = Immutable.Map()
@@ -39,8 +40,9 @@ class KanbanUserstoriesService extends taiga.Service
         if resetSwimlanesList
             @.swimlanesList = Immutable.List()
 
-    init: (project, usersById) ->
+    init: (project, swimlanes, usersById) ->
         @.project = project
+        @.swimlanes = swimlanes
         @.usersById = usersById
 
     resetFolds: () ->
@@ -253,7 +255,7 @@ class KanbanUserstoriesService extends taiga.Service
         @.refreshSwimlanes()
 
     refreshSwimlanes: () ->
-        if !@.project.swimlanes
+        if !@.swimlanes
             return
 
         @.usByStatusSwimlanes = Immutable.Map()
@@ -265,7 +267,7 @@ class KanbanUserstoriesService extends taiga.Service
             return swimlane.id == -1
 
         if userstoriesNoSwimlane.length && !emptySwimlaneExists.size
-            @.project.swimlanes.forEach (swimlane) =>
+            @.swimlanes.forEach (swimlane) =>
                 if (!@.swimlanesList.includes(swimlane))
                     @.swimlanesList = @.swimlanesList.push(swimlane)
 
@@ -277,7 +279,7 @@ class KanbanUserstoriesService extends taiga.Service
             @.swimlanesList = @.swimlanesList.insert(0, emptySwimlane)
 
         else
-            @.project.swimlanes.forEach (swimlane) =>
+            @.swimlanes.forEach (swimlane) =>
                 if (!@.swimlanesList.includes(swimlane))
                     @.swimlanesList = @.swimlanesList.push(swimlane)
 
