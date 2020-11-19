@@ -342,15 +342,19 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         params = _.merge params, @location.search()
         params.q = @.filterQ
 
-        promise = @rs.userstories.listAll(@scope.projectId, params).then (userstories) =>
+        promise = @q.all([
+            @rs.userstories.listAll(@scope.projectId, params),
+            @.loadSwimlanes()
+        ]).then (result) =>
             @kanbanUserstoriesService.reset(false)
-
+            userstories = result[0]
+            swimlanes = result[1] 
             @.notFoundUserstories = false
 
             if !userstories.length && ((@.filterQ && @.filterQ.length) || Object.keys(@location.search()).length)
                 @.notFoundUserstories = true
 
-            @kanbanUserstoriesService.init(@scope.project, @scope.usersById)
+            @kanbanUserstoriesService.init(@scope.project, swimlanes, @scope.usersById)
             @tgLoader.pageLoaded()
             @.renderUserStories(userstories)
 
@@ -398,6 +402,18 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             @.refreshTagsColors(),
             @.loadUserstories()
         ])
+
+    loadSwimlanes: ->
+        return @rs.swimlanes.list(@scope.projectId).then (swimlanes) =>
+            @scope.swimlanes = swimlanes
+            @scope.swimlanesStatueses = {}
+
+            @scope.swimlanes.forEach (swimlane) =>
+                @scope.swimlanesStatueses[swimlane.id] = swimlane.statuses
+
+            @scope.swimlanesStatueses[-1] = @scope.project.us_statuses
+
+            return @scope.swimlanes
 
     loadProject: ->
         project = @projectService.project.toJS()

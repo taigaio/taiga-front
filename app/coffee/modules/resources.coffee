@@ -151,6 +151,7 @@ urls = {
 
     # Swimlanes
     "swimlanes": "/swimlanes"
+    "swimlane-userstory-statuses": "/swimlane-userstory-statuses"
 
     # Wiki pages
     "wiki": "/wiki"
