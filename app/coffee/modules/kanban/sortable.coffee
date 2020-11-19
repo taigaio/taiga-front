@@ -87,7 +87,24 @@ KanbanSortableDirective = ($repo, $rs, $rootscope, kanbanUserstoriesService) ->
             drake.on 'cloned', (item, dropTarget) ->
                 $(item).addClass('multiple-drag-mirror')
 
-            drake.on 'dragend', (item) ->
+            previousCard = null
+            nextCard = null       
+
+            drake.on 'drop', (item, target, source, sibling) ->
+                previousCard = null
+                nextCard = null
+                prev = $(item).prevAll('tg-card:not(.gu-transit)')
+                next = $(item).nextAll('tg-card:not(.gu-transit)')
+
+                previousCard = null
+                if prev.length && prev[0].dataset.id
+                    previousCard = Number(prev[0].dataset.id)
+
+                nextCard = null                
+                if !previousCard && next.length && next[0].dataset.id
+                    nextCard = Number(next[0].dataset.id)
+
+            drake.on 'dragend', (item, target, source, sibling) ->
                 parentEl = item.parentNode
                 dragMultipleItems = window.dragMultiple.stop()
 
@@ -95,11 +112,8 @@ KanbanSortableDirective = ($repo, $rs, $rootscope, kanbanUserstoriesService) ->
                 if !dragMultipleItems.length
                     dragMultipleItems = [item]
 
+                firstElementId = dragMultipleItems[0].dataset.id
                 firstElement = dragMultipleItems[0]
-
-                previousCard = null
-                if firstElement.previousElementSibling && firstElement.previousElementSibling.dataset.id
-                    previousCard = Number(firstElement.previousElementSibling.dataset.id)
 
                 index = $(parentEl).find('tg-card').index(firstElement)
                 newStatus = Number(parentEl.dataset.status)
@@ -131,7 +145,7 @@ KanbanSortableDirective = ($repo, $rs, $rootscope, kanbanUserstoriesService) ->
                             itemEl = $(dragMultipleItems[key])
                             deleteElement(itemEl)
 
-                    $rootscope.$broadcast("kanban:us:move", finalUsList, newStatus, newSwimlane, index, previousCard)
+                    $rootscope.$broadcast("kanban:us:move", finalUsList, newStatus, newSwimlane, index, previousCard, nextCard)
 
             scroll = autoScroll(containers, {
                 margin: 100,

@@ -459,7 +459,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
     prepareBulkUpdateData: (uses, field="kanban_order") ->
         return _.map(uses, (x) -> {"us_id": x.id, "order": x[field]})
 
-    moveUs: (ctx, usList, newStatusId, newSwimlaneId, index, previousCard) ->
+    moveUs: (ctx, usList, newStatusId, newSwimlaneId, index, previousCard, nextCard) ->
         @.cleanSelectedUss()
 
         usList = _.map usList, (us) =>
@@ -472,7 +472,8 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             newStatusId,
             newSwimlaneId,
             index,
-            previousCard
+            previousCard,
+            nextCard
         )
 
         apiNewSwimlaneId = newSwimlaneId
@@ -485,6 +486,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             newStatusId,
             apiNewSwimlaneId,
             data.afterUserstoryId,
+            data.beforeUserstoryId,
             data.bulkUserstories
         )
 
