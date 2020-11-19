@@ -430,7 +430,9 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         @.fillUsersAndRoles(project.members, project.roles)
         @.initializeSubscription()
         @.loadKanban().then () =>
-            @.initialLoad = true
+            @timeout () =>
+                @.initialLoad = true
+            , 0, false
 
         @.generateFilters()
 
