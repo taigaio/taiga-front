@@ -55,7 +55,8 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
         "tgTaskboardIssues",
         "$tgStorage",
         "tgFilterRemoteStorageService",
-        "tgLightboxFactory"
+        "tgLightboxFactory",
+        "$timeout"
     ]
 
     excludePrefix: "exclude_"
@@ -69,11 +70,12 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @rs2, @params, @q, @appMetaService, @location, @navUrls,
                   @events, @analytics, @translate, @errorHandlingService, @taskboardTasksService,
-                  @taskboardIssuesService, @storage, @filterRemoteStorageService, @lightboxFactory) ->
+                  @taskboardIssuesService, @storage, @filterRemoteStorageService, @lightboxFactory, @timeout) ->
         bindMethods(@)
         @taskboardTasksService.reset()
         @scope.userstories = []
         @.openFilter = false
+        @.filterQ = ''
 
         return if @.applyStoredFilters(@params.pslug, "tasks-filters")
 
@@ -83,6 +85,9 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
         taiga.defineImmutableProperty @.scope, "usTasks", () =>
             return @taskboardTasksService.usTasks
 
+        taiga.defineImmutableProperty @.scope, "taskMap", () =>
+            return @taskboardTasksService.taskMap
+            
         taiga.defineImmutableProperty @.scope, "milestoneIssues", () =>
             return @taskboardIssuesService.milestoneIssues
 
@@ -120,7 +125,7 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
             @rootscope.$broadcast("sprint:zoom0")
 
     changeQ: (q) ->
-        @.replaceFilter("q", q)
+        @.filterQ = q
         @.loadTasks()
         @.generateFilters()
 
@@ -172,7 +177,6 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
         loadFilters = {}
         loadFilters.project = @scope.projectId
         loadFilters.milestone = @scope.sprintId
-        loadFilters.q = urlfilters.q
 
         for key in @.filterCategories
             excludeKey = @.excludePrefix.concat(key)
@@ -233,8 +237,6 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
                 if loadFilters[excludeKey]
                     selected = @.formatSelectedFilters(key, dataCollection[key], loadFilters[excludeKey], "exclude")
                     @.selectedFilters = @.selectedFilters.concat(selected)
-
-            @.filterQ = loadFilters.q
 
             @.filters = [
                 {
@@ -445,7 +447,14 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
             params.include_attachments = 1
 
         params = _.merge params, @location.search()
+        params.q = @.filterQ
+
         return @rs.tasks.list(@scope.projectId, @scope.sprintId, null, params).then (tasks) =>
+            @.notFoundTasks = false
+
+            if !tasks.length && ((@.filterQ && @.filterQ.length) || Object.keys(@location.search()).length)
+                @.notFoundTasks = true
+
             @taskboardTasksService.init(@scope.project, @scope.usersById)
             @taskboardTasksService.set(tasks)
 
@@ -460,6 +469,7 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
         ])
 
     loadInitialData: ->
+        @.initialLoad = false
         params = {
             pslug: @params.pslug
             sslug: @params.sslug
@@ -475,7 +485,12 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
                       .then =>
                           @.generateFilters()
 
-                          return @.loadTaskboard().then(=> @.setRolePoints())
+                          return @.loadTaskboard()
+                            .then () =>
+                                @timeout () =>
+                                    @.initialLoad = true
+                                , 0, false
+                                @.setRolePoints()
 
     showPlaceHolder: (statusId, usId) ->
         if !@taskboardTasksService.tasksRaw.length

@@ -713,7 +713,7 @@ CardAssignedToDirective = ($template, $translate, avatarService, projectService)
 
     render = (vm) =>
         avatars = {}
-        vm.item.get('assigned_users').forEach (user) =>
+        (vm.item.get('assigned_users') || []).forEach (user) =>
             avatars[user.get('id')] = avatarService.getAvatar(user, 'avatar')
 
         return template({
@@ -797,12 +797,15 @@ CardDataDirective = ($template, $translate, avatarService, projectService, dueDa
 
     render = (vm) =>
         avatars = {}
-        vm.item.get('assigned_users').forEach (user) =>
+        (vm.item.get('assigned_users') || []).forEach (user) =>
             avatars[user.get('id')] = avatarService.getAvatar(user, 'avatar')
 
         return template({
             vm: vm,
             avatars: avatars,
+            emptyTask: () => 
+                tasks = vm.item.getIn(['model', 'tasks'])
+                return !tasks || !tasks.size 
             dueDateColor: () =>
                 dueDateService.color({
                     dueDate: vm.item.getIn(['model', 'due_date']),

@@ -5,6 +5,19 @@ $column-flex: 1;
 $column-shrink: 0;
 $column-margin: 0 $margin 0 0;
 $column-padding: .5rem;
+$fold-animation-duration: .1s;
+
+@keyframes card-unfold {
+    from {
+        position: absolute; //  prevent column show scroll while unfolding
+        visibility: hidden;
+    }
+    to {
+        position: static;
+        visibility: visible;
+    }
+}
+
 
 @mixin fold {
     .card {
@@ -69,7 +82,7 @@ $column-padding: .5rem;
         max-width: $column-width;
         padding: $column-padding;
         text-transform: uppercase;
-        transition: all .1s linear;
+        transition: all $fold-animation-duration linear;
         width: $column-width;
         &:last-child {
             margin-right: 0;
@@ -141,6 +154,17 @@ $column-padding: .5rem;
     }
     .column-fold {
         @include fold;
+        .card-placeholder {
+            display: none;
+        }
+    }
+    :not(.column-fold) {
+        .card-placeholder {
+            // wait until unfold is completed to start the animation
+            animation: card-unfold 0s forwards $fold-animation-duration;
+            position: absolute;
+            visibility: hidden;
+        }
     }
     .taskboard-row {
         display: flex;

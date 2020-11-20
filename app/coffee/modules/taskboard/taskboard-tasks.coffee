@@ -28,6 +28,7 @@ class TaskboardTasksService extends taiga.Service
         @.tasksRaw = []
         @.foldStatusChanged = {}
         @.usTasks = Immutable.Map()
+        @.taskMap = Immutable.Map()
 
     init: (project, usersById) ->
         @.project = project
@@ -171,7 +172,8 @@ class TaskboardTasksService extends taiga.Service
                 task.colorized_tags = _.map task.model.tags, (tag) =>
                     return {name: tag[0], color: tag[1]}
 
-                usTasks[taskModel.user_story][taskModel.status].push(task)
+                @.taskMap = @.taskMap.set(task.id, Immutable.fromJS(task))
+                usTasks[taskModel.user_story][taskModel.status].push(task.id)
 
         @.usTasks = Immutable.fromJS(usTasks)
 

@@ -1461,6 +1461,8 @@
         "TITLE_ACTION_ASSIGN": "Assign task",
         "PLACEHOLDER_CARD_TITLE": "This could be a user story",
         "PLACEHOLDER_CARD_TEXT": "Create user stories here and change their status to track their progress.",
+        "TASK_NOT_FOUND_TITLE": "No matching results found" ,
+        "TASK_NOT_FOUND_TEXT": "Try again using more general search terms or disabled some filters." ,
         "TABLE": {
             "COLUMN": "User story",
             "TITLE_ACTION_FOLD": "Fold column",

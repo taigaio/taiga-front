@@ -19,9 +19,17 @@
 }
 
 .taskboard-header {
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
+    background: $color-white;
+    padding: 0 1rem 1rem 0;
+
+    .button-filter {
+        color: $color-link-primary;
+        margin-left: 0;
+
+        svg {
+            fill: $color-link-primary;
+        }
+    }
 }
 
 .taskboard-inner {
@@ -29,4 +37,36 @@
     flex-direction: column;
     height: 100%;
     overflow: hidden;
+}
+
+.taskboard-manager {
+    align-items: flex-start;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: minmax(180px, 2fr) 10fr;
+    height: 100%;
+    margin-top: 1px;
+    overflow: hidden;
+    &.expanded {
+        grid-template-columns: 10fr;
+    }
+}
+
+.taskboard-filter tg-filter {
+    background: none;
+    border: 1px solid $color-gray200;
+    opacity: 1;
+    padding: .5rem;
+    position: relative;
+    transform: translate(0);
+}
+
+.taskboard-table-options-start {
+    align-items: center;
+    display: flex;
+
+    tg-input-search {
+        margin-left: .5rem;
+        width: 185px;
+    }
 }

@@ -7,43 +7,60 @@ div.wrapper(
 )
     tg-project-menu
     section.main.taskboard
-        tg-filter(
-          open="{{ctrl.openFilter}}"
-          q="ctrl.filterQ"
-          filters="ctrl.filters"
-          custom-filters="ctrl.customFilters"
-          selected-filters="ctrl.selectedFilters"
-          customFilters="ctl.customFilters"
-          on-save-custom-filter="ctrl.saveCustomFilter(name)"
-          on-add-filter="ctrl.addFilter(filter)"
-          on-select-custom-filter="ctrl.selectCustomFilter(filter)"
-          on-remove-custom-filter="ctrl.removeCustomFilter(filter)"
-          on-remove-filter="ctrl.removeFilter(filter)"
-          on-change-q="ctrl.changeQ(q)"
-        )
         .taskboard-header
             h1(tg-bo-bind="sprint.name")
                 span.date(tg-date-range="sprint.estimated_start,sprint.estimated_finish")
             .taskboard-actions
-                .zoom-loading(tg-loading="ctrl.zoomLoading")
-                tg-taskboard-zoom(
-                    on-zoom-change="ctrl.setZoom(zoomLevel, zoom)"
-                )
-                button.button-small.e2e-open-filter(
-                    ng-click="ctrl.openFilter = !ctrl.openFilter"
-                )
-                    span.filter-num(ng-if="ctrl.selectedFilters.length") {{ctrl.selectedFilters.length}}
-                    tg-svg(svg-icon="icon-filters")
+                .taskboard-table-options-start
+                    button.btn-filter.e2e-open-filter(
+                        ng-click="ctrl.openFilter = !ctrl.openFilter"
+                        title="{{ctrl.selectedFilters.length}} {{'COMMON.FILTERS.APPLIED_FILTERS_NUM' | translate}}"
+                    )
+                        tg-svg(svg-icon="icon-filters")
+                        span.text(
+                            ng-if="!ctrl.openFilter"
+                            translate="BACKLOG.FILTERS.TITLE"
+                        )
+                        span.text(
+                            ng-if="ctrl.openFilter"
+                            translate="BACKLOG.FILTERS.HIDE_TITLE"
+                        )
+                        span.selected-filters(ng-if="ctrl.selectedFilters.length") {{ctrl.selectedFilters.length}}
+
+                    tg-input-search(
+                        q="ctrl.filterQ"
+                        change="ctrl.changeQ(q)"
+                    )
+
+                .taskboard-table-options-end
+                    tg-taskboard-zoom(
+                        on-zoom-change="ctrl.setZoom(zoomLevel, zoom)"
+                    )                    
 
         .taskboard-inner
-
             include ../includes/components/sprint-summary
 
             div.graphics-container
                 div.burndown(tg-sprint-graph)
                     include ../includes/modules/burndown
 
-            include ../includes/modules/taskboard-table
+            .taskboard-manager(ng-class="{'expanded': !ctrl.openFilter}")
+                .taskboard-filter(
+                    ng-if="ctrl.openFilter"
+                )
+                    tg-filter(
+                        filters="ctrl.filters"
+                        custom-filters="ctrl.customFilters"
+                        selected-filters="ctrl.selectedFilters"
+                        customFilters="ctl.customFilters"
+                        on-save-custom-filter="ctrl.saveCustomFilter(name)"
+                        on-add-filter="ctrl.addFilter(filter)"
+                        on-select-custom-filter="ctrl.selectCustomFilter(filter)"
+                        on-remove-custom-filter="ctrl.removeCustomFilter(filter)"
+                        on-remove-filter="ctrl.removeFilter(filter)"
+                        on-change-q="ctrl.changeQ(q)"
+                    )
+                include ../includes/modules/taskboard-table
 
     div.lightbox.lightbox-generic-form.lightbox-create-edit(tg-lb-create-edit)
 

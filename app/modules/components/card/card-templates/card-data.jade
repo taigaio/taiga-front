@@ -1,6 +1,6 @@
 <% if (vm.visible('extra_info')) { %>
 .card-data(
-    class!="<%= !vm.item.getIn(['model', 'tasks']).size ? 'empty-tasks': '' %>"
+    class!="<%= emptyTask() ? 'empty-tasks': '' %>"
 )
     .card-statistics-init
         <% if (vm.item.get('modelName') == 'issues' ) { %>
@@ -58,7 +58,7 @@
             <%= svg({svgIcon: "icon-message-square" }) %>
             span <%= vm.item.getIn(['model', 'total_comments']) %>
         <% } %>
-        <% if (vm.item.getIn(['model', 'tasks']).size) { %>
+        <% if (vm.item.getIn(['model', 'tasks']) && vm.item.getIn(['model', 'tasks']).size) { %>
         .statistic.card-completed-tasks(
             title!="<%= translate('COMMON.CARD.TASKS', {completed: vm.getClosedTasks().size, total: vm.item.getIn(['model', 'tasks']).size }) %>"
             class!="<%= vm.getClosedTasks().size == vm.item.getIn(['model', 'tasks']).size ? 'completed' : '' %>"

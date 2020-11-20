@@ -93,21 +93,23 @@ div.taskboard-table(
                 )
                     .card-placeholder(
                          ng-if="ctrl.showPlaceHolder(st.id, us.id)"
+                         ng-class='{"not-found": ctrl.notFoundTasks}'
                          ng-include="'common/components/taskboard-placeholder.html'"
                     )
                     tg-card.card.ng-animate-disabled(
-                        tg-repeat="task in usTasks.getIn([us.id.toString(), st.id.toString()]) track by task.get('id')"
+                        data-id="{{ taskId }}"
+                        tg-repeat="taskId in usTasks.getIn([us.id.toString(), st.id.toString()])"
                         ng-class="{'kanban-task-maximized': ctrl.isMaximized(s.id), 'kanban-task-minimized': ctrl.isMinimized(s.id)}"
                         tg-class-permission="{'readonly': '!modify_task'}"
-                        tg-bind-scope,
                         on-toggle-fold="ctrl.toggleFold(id, 'tasks')"
                         on-click-edit="ctrl.editTask(id)"
                         on-click-delete="ctrl.deleteTask(id)"
                         on-click-assigned-to="ctrl.changeTaskAssignedTo(id)"
                         project="project"
-                        item="task"
+                        item="taskMap.get(taskId)"
                         zoom="ctrl.zoom"
                         zoom-level="ctrl.zoomLevel"
+                        in-view-port="true"
                         type="task"
                     )
             div.taskboard-row(ng-init="us = null", ng-class="{'row-fold':usFolded[null]}")
@@ -138,12 +140,13 @@ div.taskboard-table(
                 )
                     .card-placeholder(
                          ng-if="ctrl.showPlaceHolder(st.id, us.id)"
+                         ng-class='{"not-found": ctrl.notFoundTasks}'
                          ng-include="'common/components/taskboard-placeholder.html'"
                     )
 
                     tg-card.card.ng-animate-disabled(
-                        tg-bind-scope,
-                        tg-repeat="task in usTasks.getIn(['null', st.id.toString()]) track by task.get('id')"
+                        data-id="{{ taskId }}"
+                        tg-repeat="taskId in usTasks.getIn(['null', st.id.toString()])"
                         ng-class="{'kanban-task-maximized': ctrl.isMaximized(s.id), 'kanban-task-minimized': ctrl.isMinimized(s.id)}"
                         tg-class-permission="{'readonly': '!modify_task'}"
                         on-toggle-fold="ctrl.toggleFold(id, 'tasks')"
@@ -151,9 +154,10 @@ div.taskboard-table(
                         on-click-delete="ctrl.deleteTask(id)"
                         on-click-assigned-to="ctrl.changeTaskAssignedTo(id)"
                         project="project"
-                        item="task"
+                        item="taskMap.get(taskId)"
                         zoom="ctrl.zoom"
                         zoom-level="ctrl.zoomLevel"
+                        in-view-port="true"
                         type="task"
                     )
         div.taskboard-row.issues-row(ng-class="{'row-fold':usFolded[0]}")

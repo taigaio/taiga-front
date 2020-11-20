@@ -1,7 +1,12 @@
-.placeholder-avatar
-    .image
-    .text
-        .line
-        .line
-p.title {{'TASKBOARD.PLACEHOLDER_CARD_TITLE' | translate}}
-p {{'TASKBOARD.PLACEHOLDER_CARD_TEXT' | translate}}
+ng-container(ng-if="!ctrl.notFoundTasks")
+    .placeholder-avatar
+        .image
+        .text
+            .line
+            .line
+    p.title {{'TASKBOARD.PLACEHOLDER_CARD_TITLE' | translate}}
+    p {{'TASKBOARD.PLACEHOLDER_CARD_TEXT' | translate}}
+
+ng-container(ng-if="ctrl.notFoundTasks")
+    p.title(translate="TASKBOARD.TASK_NOT_FOUND_TITLE")
+    p(translate="TASKBOARD.TASK_NOT_FOUND_TEXT")
