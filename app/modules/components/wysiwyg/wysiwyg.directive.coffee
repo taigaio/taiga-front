@@ -33,7 +33,6 @@ Wysiwyg = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoa
         $scope.html = ''
         textEditor = null
 
-
         unwatchContent = $scope.$watch 'content', (content) ->
             if !_.isUndefined(content)
                 $scope.outdated = isOutdated()
@@ -64,7 +63,7 @@ Wysiwyg = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoa
             textEditor.projectSlug = $scope.project.slug
             textEditor.placeholder = $scope.placeholder
             textEditor.markdown = text
-            textEditor.mode = 'html'
+            textEditor.mode = $scope.mode
             textEditor.lan = $translate.preferredLanguage()
             textEditor.uploadFunction = $scope.onUploadFile
             textEditor.members = $scope.project.members.map (member) =>
@@ -110,9 +109,6 @@ Wysiwyg = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoa
         $scope.save = (e) ->
             e.preventDefault() if e
 
-            if $scope.mode == 'html'
-                updateMarkdownWithCurrentHtml()
-
             setHtmlEditor($scope.markdown)
 
             return if $scope.required && !$scope.markdown.length
@@ -133,8 +129,7 @@ Wysiwyg = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoa
             if notPersist
                 clean()
             else if $scope.mode == 'html'
-                setHtmlEditor($scope.content || null)
-
+                setHtmlEditor($scope.content || '')
             $scope.markdown = $scope.content
             textEditor.markdown = $scope.content
 
