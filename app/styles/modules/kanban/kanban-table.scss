@@ -119,7 +119,7 @@ body {
     flex-basis: 2.75rem;
     min-height: 2.75rem;
     position: relative;
-    z-index: $first-layer;
+    z-index: $second-layer;
     .kanban-table-inner {
         display: flex;
         overflow: visible;
@@ -394,7 +394,7 @@ body {
     top: 36px;
     transition: all .6 ease;
     width: 100%;
-    z-index: $second-layer;
+    z-index: $first-layer;
 
     &.folded {
         border-bottom: solid 1px $color-gray200;
@@ -485,7 +485,6 @@ body {
         min-height: 2.25rem;
         position: sticky;
         top: 0;
-        z-index: $first-layer;
     }
 
     .kanban-table-body {

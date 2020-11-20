@@ -158,7 +158,8 @@ KanbanSortableDirective = ($repo, $rs, $rootscope, kanbanUserstoriesService) ->
         $scope.$on "$destroy", ->
             $el.off()
 
-            drake.destroy()
+            if drake
+                drake.destroy()
 
     return {link: link}
 
