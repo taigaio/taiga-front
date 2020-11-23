@@ -221,6 +221,7 @@ class KanbanUserstoriesService extends taiga.Service
         us.images = _.filter model.attachments, (it) -> return !!it.thumbnail_card_url
 
         us.id = usModel.id
+        us.swimlane = usModel.swimlane
         us.assigned_to = @.usersById[usModel.assigned_to]
         us.assigned_users = []
 
