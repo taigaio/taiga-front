@@ -115,6 +115,10 @@ form(ng-if="lightboxOpen")
                     ng-model="obj.blocked_note"
                 )
 
-        button#submitButton.button-green.button-large.button-block(type="submit", tg-loading="vm.loading", ng-switch="mode")
+        button#submitButton.button-green.button-large.button-block(
+            type="submit",
+            tg-loading="vm.loading",
+            ng-switch="mode"
+        )
             span(ng-switch-when="new") {{ 'COMMON.CREATE' | translate }}
             span(ng-switch-when="edit") {{ 'COMMON.SAVE' | translate }}

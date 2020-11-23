@@ -1,0 +1,63 @@
+tg-swimlane-selector {
+    display: block;
+    position: relative;
+
+    .select {
+        @include font-size(small);
+        background: $color-gray100;
+        border: 2px solid $color-gray400;
+        border-radius: 3px;
+        color: $color-black900;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        padding-block-end: .25rem;
+        padding-block-start: .25rem;
+        padding-inline-end: 1rem;
+        padding-inline-start: 1rem;
+        width: 100%;
+        & tg-svg {
+            fill: $color-link-primary;
+        }
+        & .swimlane-select-text {
+            overflow: hidden;
+            text-align: left;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            width: 100%;
+        }
+        &.active {
+            border-color: $color-link-primary;
+        }
+    }
+
+    .options {
+        background-color: $color-white;
+        border: 1px solid $color-gray400;
+        border-radius: 4px;
+        box-shadow: 4px 4px 8px rgba($color-gray400, .5);
+        padding: .5rem;
+        position: absolute;
+        // Calc font + padding + borders
+        top: calc(1.5rem + 4px);
+        width: 100%;
+        z-index: $first-layer;
+    }
+
+    .option {
+        background: transparent;
+        color: $color-link-primary;
+        cursor: pointer;
+        display: block;
+        padding: .25rem;
+        text-align: left;
+        width: 100%;
+
+        &.selected,
+        &:hover {
+            background: $color-gray200;
+        }
+    }
+}
+
+

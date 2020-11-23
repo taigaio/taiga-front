@@ -1,0 +1,17 @@
+button.select(
+    type="button"
+    ng-click="displayOptions()"
+)
+    span.swimlane-select-text {{currentSwimlane.name}}
+    tg-svg(svg-icon="icon-arrow-down")
+.options(
+    ng-show="displaySelector"
+    ng-mouseleave="hideOptions()"
+    ng-mouseenter="displayOptions()"
+)
+    button.option(
+        type="button"
+        ng-repeat="swimlane in swimlanes"
+        ng-class="{'selected': swimlane.id == obj.id}"
+        ng-click="selectSwimlane(swimlane)"
+    )   {{swimlane.name}}

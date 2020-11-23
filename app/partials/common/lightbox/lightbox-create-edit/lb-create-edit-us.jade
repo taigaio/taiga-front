@@ -1,3 +1,12 @@
+.swimlane-select
+    .label {{ 'LIGHTBOX.CREATE_EDIT.SWIMLANE' | translate }}
+    tg-swimlane-selector(
+        ng-model="obj.swimlane"
+        swimlanes="project.swimlanes"
+        current-swimlane-id="obj.swimlane"
+        on-select-swimlane="ctrl.updateSwimlane(swimlane)"
+    )
+
 section.ticket-assigned-to.multiple-assign(
     tg-assigned-users-inline
     ng-model="obj"
