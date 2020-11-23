@@ -1,5 +1,5 @@
-.swimlane-select(ng-if="project.swimlanes.length")
-    .label SWIMLANE
+.swimlane-select(ng-if="project.swimlanes.length > 1")
+    .label {{ 'LIGHTBOX.CREATE_EDIT.SWIMLANE' | translate }}
     tg-swimlane-selector(
         ng-model="obj.swimlane"
         swimlanes="project.swimlanes"
