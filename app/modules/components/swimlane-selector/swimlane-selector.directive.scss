@@ -25,6 +25,9 @@ tg-swimlane-selector {
             text-overflow: ellipsis;
             white-space: nowrap;
             width: 100%;
+            &.unclassified {
+                font-style: italic;
+            }
         }
         &.active {
             border-color: $color-link-primary;
@@ -45,6 +48,7 @@ tg-swimlane-selector {
     }
 
     .option {
+        @include font-size(small);
         background: transparent;
         color: $color-link-primary;
         cursor: pointer;
@@ -53,9 +57,16 @@ tg-swimlane-selector {
         text-align: left;
         width: 100%;
 
-        &.selected,
+        &.no-swimlane {
+            font-style: italic;
+        }
+
         &:hover {
             background: $color-gray200;
+        }
+
+        &.selected {
+            color: $color-link-tertiary;
         }
     }
 }
