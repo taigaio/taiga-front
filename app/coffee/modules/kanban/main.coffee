@@ -169,6 +169,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         @scope.$on "usform:edit:success", (event, us) =>
             @.refreshTagsColors().then () =>
                 @kanbanUserstoriesService.replaceModel(us)
+                @kanbanUserstoriesService.refresh(false)
 
         @scope.$on "kanban:us:deleted", (event, us) =>
             @.filtersReloadContent()
@@ -348,7 +349,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         ]).then (result) =>
             @kanbanUserstoriesService.reset(false)
             userstories = result[0]
-            swimlanes = result[1] 
+            swimlanes = result[1]
             @.notFoundUserstories = false
 
             if !userstories.length && ((@.filterQ && @.filterQ.length) || Object.keys(@location.search()).length)
