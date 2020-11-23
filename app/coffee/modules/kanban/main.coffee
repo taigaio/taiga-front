@@ -173,6 +173,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
         @scope.$on "kanban:us:deleted", (event, us) =>
             @.filtersReloadContent()
+            @kanbanUserstoriesService.refreshSwimlanes()
 
         @scope.$on("kanban:us:move", @.moveUs)
         @scope.$on("kanban:show-userstories-for-status", @.loadUserStoriesForStatus)
@@ -407,12 +408,12 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
     loadSwimlanes: ->
         return @rs.swimlanes.list(@scope.projectId).then (swimlanes) =>
             @scope.swimlanes = swimlanes
-            @scope.swimlanesStatueses = {}
+            @scope.swimlanesStatuses = {}
 
             @scope.swimlanes.forEach (swimlane) =>
-                @scope.swimlanesStatueses[swimlane.id] = swimlane.statuses
+                @scope.swimlanesStatuses[swimlane.id] = swimlane.statuses
 
-            @scope.swimlanesStatueses[-1] = @scope.project.us_statuses
+            @scope.swimlanesStatuses[-1] = @scope.project.us_statuses
 
             return @scope.swimlanes
 

@@ -259,6 +259,7 @@ class KanbanUserstoriesService extends taiga.Service
         if !@.swimlanes || !@.project.swimlanes
             return
 
+
         @.usByStatusSwimlanes = Immutable.Map()
 
         userstoriesNoSwimlane = @.userstoriesRaw.filter (us) =>
@@ -268,6 +269,11 @@ class KanbanUserstoriesService extends taiga.Service
             return swimlane.id == -1
 
         if userstoriesNoSwimlane.length && !emptySwimlaneExists.size
+            console.log('empty', @.swimlanes)
+
+            if @.swimlanesList.size
+                @.swimlanesList = @.swimlanesList.clear()
+
             @.swimlanes.forEach (swimlane) =>
                 if (!@.swimlanesList.includes(swimlane))
                     @.swimlanesList = @.swimlanesList.push(swimlane)
@@ -280,9 +286,19 @@ class KanbanUserstoriesService extends taiga.Service
             @.swimlanesList = @.swimlanesList.insert(0, emptySwimlane)
 
         else
+            console.log(1, @.swimlanesList.toJS())
+
+            if @.swimlanesList.size
+                console.log('clear')
+                @.swimlanesList = @.swimlanesList.clear()
+
+            console.log(2, @.swimlanesList.toJS())
+
             @.swimlanes.forEach (swimlane) =>
                 if (!@.swimlanesList.includes(swimlane))
                     @.swimlanesList = @.swimlanesList.push(swimlane)
+
+            console.log(3, @.swimlanesList.toJS())
 
         @.swimlanesList.forEach (swimlane) =>
             swimlaneUsByStatus = Immutable.Map()
