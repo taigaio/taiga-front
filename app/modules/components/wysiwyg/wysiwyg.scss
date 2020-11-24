@@ -81,10 +81,16 @@ tg-html-editor,
     h5,
     h6 {
         font-size: revert;
+        margin-bottom: var(--ck-spacing-large);
     }
     ul,
     ol {
         list-style: revert;
         padding: revert;
+    }
+    .ck-content .mention {
+        background: none;
+        color: $color-link-primary;
+        cursor: pointer;
     }
 }
