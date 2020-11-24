@@ -14,6 +14,7 @@ div.wrapper(
                     button.btn-filter.e2e-open-filter(
                         ng-click="ctrl.openFilter = !ctrl.openFilter"
                         title="{{ctrl.selectedFilters.length}} {{'COMMON.FILTERS.APPLIED_FILTERS_NUM' | translate}}"
+                        ng-class="{active: ctrl.openFilter}"
                     )
                         tg-svg(svg-icon="icon-filters")
                         span.text(

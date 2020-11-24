@@ -78,7 +78,7 @@
         @include font-size(large);
         @include font-type(medium);
 
-        color: $color-black;
+        color: $color-black900;
     }
     p {
         @include font-size(small);
