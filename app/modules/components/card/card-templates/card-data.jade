@@ -3,14 +3,7 @@
     class!="<%= emptyTask() ? 'empty-tasks': '' %>"
 )
     .card-statistics-init
-        <% if (vm.item.get('modelName') == 'issues' ) { %>
-        span
-            <% if (vm.item.get('status')) { %>
-            span.card-status-tag(
-                style!="color: <%- vm.item.getIn(['status', 'color']) %>"
-            )  <%- vm.item.getIn(['status', 'name']) %>
-            <% } %>
-        <% } else { %>
+        <% if (vm.type == 'us') { %>
         span
             <% if (vm.item.getIn(['model', 'total_points'])) { %>
             span.card-estimation(
@@ -27,8 +20,15 @@
         <% } %>
 
         <% if (vm.item.getIn(['model', 'due_date'])) { %>
-        .card-due-date
+        .card-due-date(title!="<%- dueDateTitle() %>")
             <%= svg({svgIcon: "icon-clock", svgTitle: translate('COMMON.CARD.DUE_DATE', { date: dueDateTitle() }), svgFill: dueDateColor() }) %>
+        <% } %>
+
+        <% if (vm.item.getIn(['model', 'is_iocaine'])) { %>
+        .card-iocaine(
+            title!="<%= translate('TASK.FIELDS.IS_IOCAINE') %>"
+        )
+            <%= svg({svgIcon: "icon-iocaine", svgTitle: translate('TASK.FIELDS.IS_IOCAINE')}) %>
         <% } %>
 
         <% if (vm.item.getIn(['model', 'is_blocked'])) { %>
@@ -37,12 +37,12 @@
         <% } %>
 
     .card-statistics
-        <% if (vm.item.getIn(['model', 'total_attachments'])) { %>
+        <% if (totalAttachments()) { %>
         .statistic.card-attachments(
             title!="<%= translate('ATTACHMENT.SECTION_NAME') %>"
         )
             <%= svg({svgIcon: "icon-paperclip" }) %>
-            span <%= vm.item.getIn(['model', 'total_attachments']) %>
+            span <%= totalAttachments() %>
         <% } %>
         <% if (vm.item.getIn(['model', 'watchers']).size) { %>
         .statistic.card-watchers(

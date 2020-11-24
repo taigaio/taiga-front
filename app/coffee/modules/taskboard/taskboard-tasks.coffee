@@ -66,28 +66,10 @@ class TaskboardTasksService extends taiga.Service
         @.refresh()
 
     getTask: (id) ->
-        findedTask = null
-
-        @.usTasks.forEach (us) ->
-            us.forEach (status) ->
-                findedTask = status.find (task) -> return task.get('id') == id
-
-                return false if findedTask
-
-            return false if findedTask
-
-        return findedTask
+        return @.taskMap.get(id)
 
     replace: (task) ->
-        @.usTasks = @.usTasks.map (us) ->
-            return us.map (status) ->
-                findedIndex = status.findIndex (usItem) ->
-                    return usItem.get('id') == us.get('id')
-
-                if findedIndex != -1
-                    status = status.set(findedIndex, task)
-
-                return status
+        @.taskMap = @.taskMap.set(task.get('id'), task)
 
     getTaskModel: (id) ->
         return _.find @.tasksRaw, (task) -> return task.id == id

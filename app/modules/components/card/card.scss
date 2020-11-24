@@ -36,8 +36,86 @@ $card-section-margin-bottom: .5rem;
     border-radius: .25rem;
     padding: 1rem 0 .75rem 0;
 
+    .wrapper-assigned-to-data {
+        display: contents;
+    }
     .belong-to-epic-pill-wrapper {
         padding: 0;
+    }
+    &.type-task.zoom-2,
+    &.type-task.zoom-3 {
+        .card-assigned-to {
+            position: static;
+            .card-actions {
+                left: 1px;
+                width: calc(100% - 2px);
+            }
+        }
+        .wrapper-assigned-to-data {
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+            margin-top: .5rem;
+            position: relative;
+        }
+    }
+    &.type-task {
+        &.zoom-0 {
+            .card,
+            .card-inner.card-blocked {
+                min-height: 45px;
+            }
+        }
+        &.zoom-1 {
+            display: flex;
+            tg-card-assigned-to {
+                margin-left: auto;
+            }
+            .card-title {
+                a {
+                    display: flex;
+                }
+            }
+            .card-actions {
+                flex-direction: row-reverse;
+                height: 100%;
+                justify-content: flex-start;
+                top: 0;
+            }
+            .card-assigned-to-action {
+                span {
+                    display: none;
+                }
+            }
+            .card-assigned-to,
+            .card-title {
+                margin-bottom: 0;
+                position: static;
+            }
+        }
+        .icon {
+            @include svg-size(.95rem);
+        }
+        .card-iocaine {
+            margin-left: .5rem;
+            svg {
+                /* stylelint-disable color-no-hex */
+                fill: #b400d1;
+                /* stylelint-enable color-no-hex */
+            }
+        }
+    }
+    &.type-us {
+        .card-data {
+            justify-content: space-between;
+            margin-bottom: $card-section-margin-bottom;
+        }
+        .card-assigned-to {
+            margin-bottom: $card-section-margin-bottom;
+        }
+        .card-statistics {
+            margin-left: auto;
+        }
     }
     &.with-fold-action {
         padding: 1rem 0 0 0;
@@ -210,12 +288,12 @@ $card-section-margin-bottom: .5rem;
 
 .card-assigned-to {
     display: flex;
-    margin-bottom: $card-section-margin-bottom;
     padding: $wrap-padding;
     position: relative;
 
     .card-user-avatar {
         margin-right: -.25rem;
+        position: relative;
     }
 
     .card-not-assigned {
@@ -227,6 +305,17 @@ $card-section-margin-bottom: .5rem;
         @include font-size(small);
         color: $color-link-tertiary;
         margin-left: .5rem;
+    }
+
+    .card-iocaine-user-bg {
+        bottom: 0;
+        pointer-events: none;
+        position: absolute;
+        svg {
+            display: block;
+            height: 18px;
+            width: 30px;
+        }
     }
 
     .extra-assigned {
@@ -265,8 +354,10 @@ $card-section-margin-bottom: .5rem;
     position: absolute;
     width: 100%;
 
+    button {
+        align-items: center;
+    }
 }
-
 
 .card-detail-actions {
     display: flex;
@@ -317,8 +408,6 @@ $card-section-margin-bottom: .5rem;
     color: $gray-light;
     display: flex;
     font-size: 14px;
-    justify-content: space-between;
-    margin-bottom: $card-section-margin-bottom;
     padding: $wrap-padding;
     .card-status-tag {
         font-size: .75rem;
@@ -360,7 +449,6 @@ $card-section-margin-bottom: .5rem;
     align-items: center;
     color: $grey-30;
     display: flex;
-    margin-left: auto;
     margin-top: 0; /* override taiga-seed css */
     .statistic {
         align-content: center;
@@ -486,8 +574,4 @@ $card-section-margin-bottom: .5rem;
     height: 90px;
     justify-content: center;
     overflow: hidden;
-    .loading-spinner {
-        min-height: 3rem;
-        min-width: 3rem;
-    }
 }

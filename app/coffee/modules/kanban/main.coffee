@@ -745,8 +745,9 @@ CardAssignedToDirective = ($template, $translate, avatarService, projectService)
 
     render = (vm) =>
         avatars = {}
-        (vm.item.get('assigned_users') || []).forEach (user) =>
-            avatars[user.get('id')] = avatarService.getAvatar(user, 'avatar')
+        (vm.item.get('assigned_users') || [vm.item.get('assigned_to')]).forEach (user) =>
+            if user
+                avatars[user.get('id')] = avatarService.getAvatar(user, 'avatar')
 
         return template({
             vm: vm,
@@ -850,6 +851,12 @@ CardDataDirective = ($template, $translate, avatarService, projectService, dueDa
                     isClosed: vm.item.getIn(['model', 'is_closed']),
                     objType: vm.type
                 })
+            totalAttachments: () =>
+                if vm.type == 'task'
+                    return vm.item.getIn(['model', 'attachments']).size
+                else
+                    return vm.item.getIn(['model', 'total_attachments'])
+
             translate: (key, params) =>
                 return $translate.instant(key, params)
             svg: (svgData) =>

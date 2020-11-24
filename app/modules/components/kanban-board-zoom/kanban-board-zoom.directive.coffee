@@ -25,7 +25,7 @@ KanbanBoardZoomDirective = (storage, projectService) ->
 
         zooms = [
             ["assigned_to", "ref"],
-            ["subject"],
+            ["subject", "card-data", "assigned_to_extended"],
             ["tags", "extra_info", "unfold"],
             ["related_tasks", "attachments"]
         ]

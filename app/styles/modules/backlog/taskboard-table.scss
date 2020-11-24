@@ -1,6 +1,6 @@
 //Table basic shared vars
 $margin: 5px;
-$column-width: 300px;
+$column-width: 292px;
 $column-flex: 1;
 $column-shrink: 0;
 $column-margin: 0 $margin 0 0;
@@ -63,11 +63,16 @@ $fold-animation-duration: .1s;
     overflow: hidden;
     width: 100%;
     &.zoom-0 {
-        .task-colum-name span {
-            padding-right: 1rem;
+        .taskboard-column,
+        .task-colum-name {
+            max-width: 162px;
+        }
+        .task-colum-name {
+            .title .name {
+                max-width: 95px;
+            }
         }
     }
-
     .task-colum-name {
         @include font-size(medium);
         align-items: center;
@@ -83,7 +88,6 @@ $fold-animation-duration: .1s;
         padding: $column-padding;
         text-transform: uppercase;
         transition: all $fold-animation-duration linear;
-        width: $column-width;
         &:last-child {
             margin-right: 0;
         }
@@ -101,6 +105,7 @@ $fold-animation-duration: .1s;
         }
         span {
             @include ellipsis(65%);
+            padding-right: 1rem;
         }
     }
 }
