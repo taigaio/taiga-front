@@ -15,8 +15,9 @@ button.select(
         ng-if="!currentSwimlaneId"
     ) {{ "KANBAN.UNCLASSIFIED_USER_STORIES" | translate }}
     button.option(
+        ng-if="swimlane.id != -1"
         type="button"
-        ng-repeat="swimlane in swimlanes"
+        tg-repeat="swimlane in swimlanes"
         ng-class="{'selected': swimlane.id == currentSwimlaneId}"
         ng-click="selectSwimlane(swimlane)"
-    )   {{swimlane.name}}
+    ) {{ swimlane.name }}
