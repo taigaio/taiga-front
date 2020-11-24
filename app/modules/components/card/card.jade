@@ -1,24 +1,25 @@
 .card-inner(
     ng-if="vm.inViewPort"
     ng-attr-title="{{ vm.zoomLevel == 0 ? (vm.item.getIn(['model', 'subject']) | emojify) : vm.item.getIn(['model', 'blocked_note']) }}"
-    class="{{'zoom-' + vm.zoomLevel}}"
+    class="{{'zoom-' + vm.zoomLevel}} type-{{::vm.type}}"
     ng-class="{'card-blocked': vm.item.getIn(['model', 'is_blocked']), 'archived': vm.archived, 'with-assigned-user': vm.item.get('assigned_users').size, 'with-fold-action': vm.visible('unfold') && (vm.hasTasks() || vm.hasVisibleAttachments())}"
 )
     include card-templates/card-tags
     div(ng-if="vm.zoomLevel > 0")
         include card-templates/card-epics
     include card-templates/card-title
-    tg-card-assigned-to(
-        item="vm.item"
-        zoom-level="vm.zoomLevel"
-        vm="vm"
-    )
-    tg-card-data(
-        ng-if="vm.zoomLevel > 0"
-        item="vm.item"
-        zoom-level="vm.zoomLevel"
-        vm="vm"
-    )
+    .wrapper-assigned-to-data
+        tg-card-assigned-to(
+            item="vm.item"
+            zoom-level="vm.zoomLevel"
+            vm="vm"
+        )
+        tg-card-data(
+            ng-if="vm.visible('card-data')"
+            item="vm.item"
+            zoom-level="vm.zoomLevel"
+            vm="vm"
+        )
     tg-card-slideshow(
         ng-if="vm.isSlideshowVisible()"
         tg-check-permission="view_tasks"

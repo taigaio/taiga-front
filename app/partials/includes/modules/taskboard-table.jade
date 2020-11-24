@@ -1,7 +1,7 @@
 div.taskboard-table(
     tg-taskboard-squish-column,
     tg-taskboard-sortable,
-    ng-class="{'zoom-0': ctrl.zoomLevel == 0}"
+    ng-class="{'zoom-0': ctrl.zoomLevel == 0, 'zoom-1': ctrl.zoomLevel == 1, 'zoom-2': ctrl.zoomLevel == 2, 'zoom-3': ctrl.zoomLevel == 3}"
 )
     div.taskboard-table-header
         div.taskboard-table-inner
