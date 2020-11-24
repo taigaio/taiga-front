@@ -52,7 +52,7 @@ SwimlaneSelector = ($timeout) ->
         scope.hideOptions = () ->
             timeout = $timeout (() ->
                 scope.displaySelector = false
-            ), 1000
+            ), 100
 
         scope.selectSwimlane = (swimlane) ->
             scope.ngModel = swimlane.id
