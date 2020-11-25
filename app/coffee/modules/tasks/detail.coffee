@@ -47,11 +47,12 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$translate",
         "$tgQueueModelTransformation",
         "tgErrorHandlingService",
-        "tgProjectService"
+        "tgProjectService",
+        "tgWysiwygService"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location,
-                  @log, @appMetaService, @navUrls, @analytics, @translate, @modelTransform, @errorHandlingService, @projectService) ->
+                  @log, @appMetaService, @navUrls, @analytics, @translate, @modelTransform, @errorHandlingService, @projectService, @wysiwygService) ->
         bindMethods(@)
 
         @scope.taskRef = @params.taskref
@@ -137,6 +138,7 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
                     ref: @scope.task.neighbors.next.ref
                 }
                 @scope.nextUrl = @navUrls.resolve("project-tasks-detail", ctx)
+            @scope.task.blocked_html_note = @wysiwygService.getHTML(@scope.task.blocked_note)
             return task
 
     loadSprint: ->
