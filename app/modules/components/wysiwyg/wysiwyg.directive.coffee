@@ -128,10 +128,9 @@ Wysiwyg = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoa
 
             if notPersist
                 clean()
-            else if $scope.mode == 'html'
+            else 
+                $scope.markdown = $scope.content
                 setHtmlEditor($scope.content || '')
-            $scope.markdown = $scope.content
-            textEditor.markdown = $scope.content
 
             discardLocalStorage()
             $scope.outdated = false
