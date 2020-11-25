@@ -19,7 +19,7 @@ tg-animated-counter {
                 transition: transform .5s;
             }
         }
-        span {
+        .result {
             height: 100%;
             width: $counter-height;
         }
@@ -46,10 +46,20 @@ tg-animated-counter {
         }
     }
 
-    span {
+    .result {
         display: block;
         height: $counter-height;
         overflow: hidden;
         width: 100%;
+    }
+    .wip-amount {
+        .current {
+            color: $color-link-green;
+        }
+        &.limit-over {
+            .current {
+                color: $color-link-red;
+            }
+        }
     }
 }

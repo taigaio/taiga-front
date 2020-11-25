@@ -7,9 +7,15 @@ AnimatedCounter = () ->
             ng-class="{'wip-amount': data.wip, 'limit-over': data.count > data.wip}"
             class="animated-counter-inner">
             <div class="counter-translator">
-                <span>{{ nextUp }}</span>
-                <span>{{ renderCount || 0 }}</span>
-                <span>{{ nextDown }}</span>
+                <div class="result">
+                    <span class="current">{{ nextUp.current || 0 }}</span><span ng-if="nextUp.wip"> / {{ nextUp.wip }}</span>
+                </div>
+                <div class="result">
+                    <span class="current">{{ renderCount.current || 0 }}</span><span ng-if="renderCount.wip"> / {{ renderCount.wip }}</span>
+                </div>
+                <div class="result">
+                    <span class="current">{{ nextDown.current || 0 }}</span><span ng-if="nextDown.wip"> / {{ nextDown.wip }}</span>
+                </div>                
             </div>
         </div>
     """
@@ -35,9 +41,10 @@ AnimatedCounter = () ->
 
         $scope.$watch 'data', (data) ->
             getCounter = (num) =>
-                if data.wip
-                    return num + '/' + data.wip
-                return num
+                return {
+                    current: num,
+                    wip: data.wip,
+                }
 
             $scope.nextUp = undefined
             $scope.nextDown = undefined

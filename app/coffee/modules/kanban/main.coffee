@@ -154,12 +154,14 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
     initializeEventHandlers: ->
         @scope.$on "usform:new:success", (event, us) =>
+            @scope.$broadcast("redraw:wip")
             @.refreshTagsColors().then () =>
                 @kanbanUserstoriesService.add(us)
 
             @analytics.trackEvent("userstory", "create", "create userstory on kanban", 1)
 
         @scope.$on "usform:bulk:success", (event, uss) =>
+            @scope.$broadcast("redraw:wip")
             @confirm.notify("success")
             @.refreshTagsColors().then () =>
                 @kanbanUserstoriesService.add(uss)
@@ -250,6 +252,10 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         @.foldedSwimlane = @.foldedSwimlane.set(id.toString(), !@.foldedSwimlane.get(id.toString()))
         @rs.kanban.storeSwimlanesModes(@scope.projectId, @.foldedSwimlane.toJS())
 
+        @timeout () => 
+            @scope.$broadcast("redraw:wip")
+        , 100, false
+
     isUsInArchivedHiddenStatus: (usId) ->
         return @kanbanUserstoriesService.isUsInArchivedHiddenStatus(usId)
 
@@ -296,8 +302,6 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         else
             @kanbanUserstoriesService.add(newUs)
 
-        @scope.$broadcast("redraw:wip")
-
         if @.queue.length > 0
             @timeout(@.renderBatch)
         else
@@ -306,6 +310,10 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                 # We can't assure when this exactly happens so we need a defer
                 @rootscope.$broadcast("kanban:userstories:loaded", @.rendered)
                 @scope.$broadcast("userstories:loaded", @.rendered)
+
+                @timeout () => 
+                    @scope.$broadcast("redraw:wip")
+                , 100, false
 
     renderUserStories: (userstories) =>
         userstories = _.sortBy(userstories, 'kanban_order')
@@ -674,13 +682,26 @@ KanbanWipLimitDirective = ($timeout) ->
 
         redrawWipLimit = =>
             $timeout =>
-                element = $el.find("tg-card")[status.wip_limit]
+                cards = $el.find("tg-card")
 
-                if !element || (element.previousElementSibling && element.previousElementSibling.classList.contains('kanban-wip-limit'))
-                    return
+                wipLimitClass = ''
+                element = null
+
+                if cards.length + 1 == status.wip_limit
+                    wipLimitClass = 'one-left'
+                    element = cards[cards.length - 1]
+                else if cards.length == status.wip_limit
+                    wipLimitClass = 'reached'
+                    element = cards[cards.length - 1]
+                else if cards.length > status.wip_limit
+                    wipLimitClass = 'exceeded'
+                    element = cards[status.wip_limit - 1]
+
                 $el.find(".kanban-wip-limit").remove()
 
-                angular.element(element).before("<div class='kanban-wip-limit'><span>WIP Limit</span></div>")
+                if element
+                    angular.element(element).after("<div class='kanban-wip-limit #{wipLimitClass}'><span>WIP Limit</span></div>")
+            , 0, false
 
         if status and not status.is_archived
             $scope.$on "redraw:wip", redrawWipLimit
