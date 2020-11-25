@@ -9,7 +9,15 @@ div.wrapper(
     section.main.taskboard
         .taskboard-header
             h1(tg-bo-bind="sprint.name")
-                span.date(tg-date-range="sprint.estimated_start,sprint.estimated_finish")
+                span.date(tg-date-range="sprint.estimated_start,sprint.estimated_finish")             
+
+        .taskboard-inner
+            include ../includes/components/sprint-summary
+
+            div.graphics-container
+                div.burndown(tg-sprint-graph)
+                    include ../includes/modules/burndown
+
             .taskboard-actions
                 .taskboard-table-options-start
                     button.btn-filter.e2e-open-filter(
@@ -36,14 +44,7 @@ div.wrapper(
                 .taskboard-table-options-end
                     tg-taskboard-zoom(
                         on-zoom-change="ctrl.setZoom(zoomLevel, zoom)"
-                    )                    
-
-        .taskboard-inner
-            include ../includes/components/sprint-summary
-
-            div.graphics-container
-                div.burndown(tg-sprint-graph)
-                    include ../includes/modules/burndown
+                    )                           
 
             .taskboard-manager(ng-class="{'expanded': !ctrl.openFilter}")
                 .taskboard-filter(

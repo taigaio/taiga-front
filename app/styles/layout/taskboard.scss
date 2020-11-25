@@ -8,6 +8,7 @@
     .graphics-container,
     .summary {
         flex-shrink: 0;
+        margin-bottom: 0;
     }
     .graphics-container {
         @include slide(300px, hidden);
@@ -15,6 +16,15 @@
     .zoom-loading img {
         display: block;
         margin-right: 1rem;
+    }
+    .summary {
+        margin-bottom: 0;
+    }
+    .taskboard-actions {
+        margin: 1rem 0;
+    }
+    .burndown {
+        margin: 1rem 0 0 0;
     }
 }
 
