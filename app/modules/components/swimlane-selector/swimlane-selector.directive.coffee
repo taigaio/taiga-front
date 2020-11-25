@@ -55,9 +55,10 @@ SwimlaneSelector = ($timeout) ->
             ), 1000
 
         scope.selectSwimlane = (swimlane) ->
-            scope.ngModel = swimlane.id
-            scope.currentSwimlane = swimlane
-            scope.hideOptions()
+            if (swimlane)
+                scope.ngModel = swimlane.id
+                scope.currentSwimlane = swimlane
+                scope.hideOptions()
 
         scope.$watch 'currentSwimlaneId', (swimlaneId) ->
             newSwimlane = scope.swimlanes.find (swimlane)  => swimlane.id == swimlaneId
