@@ -185,27 +185,9 @@
 }
 
 .admin-wip-manager {
-    $swimlanes-width: 500px;
     margin-block-start: 1.5rem;
     padding-inline-start: 1rem;
-
-    .form-button {
-        &:hover {
-            background: none;
-
-            .icon {
-                fill: $color-link-primary;
-                opacity: 1;
-            }
-        }
-
-        .icon {
-            fill: $color-link-tertiary;
-            opacity: .5;
-            transition: all .25s ease;
-        }
-    }
-
+    width: 500px;
 
     .admin-swimlane-title {
         align-items: center;
@@ -289,60 +271,5 @@
     .admin-wip-list {
         position: relative;
         width: 500px;
-    }
-
-    .wip-number {
-        color: $color-link-tertiary;
-        line-height: 24px;
-    }
-
-    .wip-placeholder-text {
-        opacity: .5;
-    }
-
-    .admin-wip-input {
-        @include font-type(regular);
-        align-items: center;
-        background: $color-gray100;
-        border-radius: 3px;
-        color: $color-black600;
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 1px;
-        min-height: 2.5rem;
-        padding: 0 1rem;
-
-        .admin-swimlane-wip-form {
-            display: flex;
-            flex: 1 1 auto;
-            justify-content: flex-end;
-
-            span {
-                @include font-size(small);
-
-                flex: 1 1 auto;
-                margin-right: .5rem;
-                text-align: end;
-                width: 100%;
-            }
-        }
-
-        .wip-name {
-            @include font-size(small);
-
-            flex-grow: 1;
-            flex-shrink: 1;
-        }
-
-        input {
-            @include font-size(small);
-
-            background: $color-white;
-            border: 2px solid $color-link-primary;
-            border-radius: 3px;
-            margin-right: .5rem;
-            padding: .3rem .5rem .3rem .75rem;
-            width: 8rem;
-        }
     }
 }

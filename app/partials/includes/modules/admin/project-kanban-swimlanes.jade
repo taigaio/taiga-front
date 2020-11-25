@@ -48,19 +48,39 @@ section.admin-kanban-powerups
             ng-if="!values.length && !isFormVisible && !deletingSwimlane"
             translate="ADMIN.PROJECT_KANBAN_POWER_UPS.NO_SWIMLANES")
 
-    div.project-values-title
-            h2(
-                translate="ADMIN.PROJECT_KANBAN_POWER_UPS.WIP_LIMITS"
-            )
+    .project-values-title
+        h2(translate="ADMIN.PROJECT_KANBAN_POWER_UPS.WIP_LIMITS")
 
-    .admin-wip-manager
-        .admin-wip-list(
-            ng-if="values"
+    .admin-wip-manager(ng-if="!values.length")
+        tg-wip-limit-selector(
+            ng-repeat="status in project.us_statuses track by status.id"
+            status="status"
         )
-            .admin-swimlane-wip-single(
-                ng-controller="ProjectSwimlanesWipController as ctrl",
-                ng-repeat="value in values track by value.id"
+
+    .admin-wip-manager(
+        ng-if="values.length"
+    )
+        .admin-swimlane-wip-single(
+            tg-project-swimlanes-wip
+            ng-repeat="value in values track by value.id"
+        )
+            button.admin-swimlane-title(
+                ng-class="{folded: wipClosed}"
+                ng-click="toggleWipVisibility()"
             )
-                include ../admin/project-kanban-swimlane-wip-single
-
-
+                h2.title-name  {{ value.name }}
+                tg-svg.unfold-action(
+                    ng-if="!wipClosed"
+                    svg-icon="icon-unfolded-swimlane"
+                )
+                tg-svg.fold-action(
+                    ng-if="wipClosed"
+                    svg-icon="icon-folded-swimlane"
+                )
+            .admin-wip-container(
+                ng-if="!wipClosed"
+            )
+                tg-wip-limit-selector(
+                    ng-repeat="status in value.statuses"
+                    status="status"
+                )

@@ -132,6 +132,14 @@ resourceProvider = ($repo, $http, $urls, $storage, $q) ->
         url = $urls.resolve("#{type}-create-default")
         return $http.post(url, data)
 
+    service.editStatus = (statusId, wip_limit) ->
+        url = $urls.resolve("userstory-statuses")
+        url = "#{url}/#{statusId}"
+        params = {
+            wip_limit
+        }
+        return $http.patch(url, params)
+
     service.storeQueryParams = (projectId, params) ->
         ns = "#{projectId}:#{hashSuffix}"
         hash = generateHash([projectId, ns])

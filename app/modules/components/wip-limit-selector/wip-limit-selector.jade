@@ -1,0 +1,35 @@
+.wip-limit-status
+    .wip-limit-status-name {{::vm.status.name}}
+    .wip-limit-status-data(ng-if="!displayWipLimitSelector")
+        span.wip-number.wip-placeholder-text(ng-if="!vm.status.wip_limit") {{'ADMIN.PROJECT_KANBAN_POWER_UPS.WIP_LIMIT_PLACEHOLDER' | translate }}
+        span.wip-number(ng-if="!!vm.status.wip_limit") {{vm.status.wip_limit}}
+        button.form-button(
+            type="button"
+            arial-label="{{'COMMON.SAVE' | translate }}"
+            ng-click="toggleWipSelectorVisibility()"
+        )
+            tg-svg(svg-icon="icon-edit")
+
+    form.wip-limit-status-form(ng-if="displayWipLimitSelector")
+        input.wip-limit-status-form-input(
+            tg-autofocus
+            type="number"
+            maxlength="48"
+            ng-model="vm.new_wip_limit"
+            ng-value="statusWipLimit"
+            placeholder="{{'ADMIN.PROJECT_KANBAN_POWER_UPS.WIP_LIMIT_INPUT' | translate }}"
+        )
+        button.form-button.add-swimlane-single(
+            type="button"
+            arial-label="{{'COMMON.SAVE' | translate }}"
+            ng-click="vm.submitSwimlaneNewStatus()"
+        )
+            tg-svg(svg-icon="icon-check-empty")
+
+        button.form-button.cancel-swimlane-single(
+            type="button"
+            arial-label="{{'COMMON.CANCEL' | translate }}"
+            ng-click="toggleWipSelectorVisibility()"
+        )
+            tg-svg(svg-icon="icon-close")
+

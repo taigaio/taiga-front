@@ -13,7 +13,6 @@ section.project-us-status
                 div.status-slug(translate="COMMON.FIELDS.SLUG")
                 div.is-closed-column(translate="ADMIN.US_STATUS.IS_CLOSED_COLUMN")
                 div.is-archived-column(translate="ADMIN.US_STATUS.IS_ARCHIVED_COLUMN")
-                div.status-wip-limit(translate="ADMIN.US_STATUS.WIP_LIMIT_COLUMN")
                 div.options-column
 
         div.table-main
@@ -43,9 +42,6 @@ section.project-us-status
                                     ng-show="value.is_archived",
                                     svg-icon="icon-check"
                                 )
-
-                            div.status-wip-limit
-                                span(ng-hide="value.is_archived") {{ value.wip_limit }}
 
                             div.options-column
                                 a.edit-value(href="")
@@ -91,16 +87,6 @@ section.project-us-status
                                     ng-options="e.id as e.name | translate for e in [{'id':true, 'name':'COMMON.YES'},{'id':false, 'name': 'COMMON.NO'}]"
                                 )
 
-                            .status-wip-limit
-                                input(
-                                    name="wip_limit"
-                                    type="number"
-                                    ng-hide="value.is_archived"
-                                    ng-model="value.wip_limit"
-                                    data-type="digits"
-                                    placeholder="{{'ADMIN.US_STATUS.WIP_LIMIT_COLUMN' | translate}}"
-                                )
-
                             .options-column
                                 a.save.e2e-save(href="", title="{{'COMMON.SAVE' | translate}}")
                                     tg-svg(svg-icon="icon-save")
@@ -137,16 +123,6 @@ section.project-us-status
                             ng-model="newValue.is_archived"
                             data-required="true"
                             ng-options="e.id as e.name | translate for e in [{'id':true, 'name':'COMMON.YES'},{'id':false, 'name': 'COMMON.NO'}]"
-                        )
-
-                    div.status-wip-limit
-                        input(
-                            name="wip_limit"
-                            type="number"
-                            ng-hide="newValue.is_archived"
-                            ng-model="newValue.wip_limit"
-                            data-type="digits"
-                            placeholder="{{'ADMIN.US_STATUS.WIP_LIMIT_COLUMN' | translate}}"
                         )
 
                     div.options-column

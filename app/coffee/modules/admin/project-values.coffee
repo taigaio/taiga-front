@@ -55,6 +55,10 @@ class ProjectValuesSectionController extends mixOf(taiga.Controller, taiga.PageM
                   @appMetaService, @translate, @errorHandlingService, @projectService) ->
         @scope.project = {}
 
+        @scope.$on "project:load", () =>
+            @projectService.fetchProject().then () =>
+                @.loadProject()
+
         @.loadInitialData()
 
         sectionName = @translate.instant(@scope.sectionName)
@@ -181,8 +185,6 @@ class ProjectSwimlanesValuesController extends taiga.Controller
             @.loadSwimlanes()
 
     loadSwimlanes: =>
-        @projectService.fetchProject()
-
         return @rs[@scope.resource].list(@scope.projectId).then (values) =>
             @scope.values = values
 
@@ -1479,39 +1481,20 @@ ProjectTagsDirective = ($log, $repo, $confirm, $location, animationFrame, $trans
 
 module.directive("tgProjectTags", ["$log", "$tgRepo", "$tgConfirm", "$tgLocation", "animationFrame","$translate", "$rootScope", ProjectTagsDirective])
 
-#############################################################################
-## Swimlanes wip controller
-#############################################################################
+# #############################################################################
+# ## Swimlanes wip directive
+# #############################################################################
 
-class ProjectSwimlanesWipController extends taiga.Controller
-    @.wipClosed = false;
+ProjectSwimlanesWipDirective = () ->
 
-    toggleWipVisibility: () ->
-        @.wipClosed = !@.wipClosed
+    link = ($scope, $el, $attrs, $model) ->
+        $scope.wipClosed = false
 
-module.controller("ProjectSwimlanesWipController", ProjectSwimlanesWipController)
+        $scope.toggleWipVisibility = () ->
+            $scope.wipClosed = !$scope.wipClosed
 
-#############################################################################
-## Swimlanes wip status controller
-#############################################################################
+    return {
+        link: link
+    }
 
-class ProjectSwimlanesWipStatusController extends taiga.Controller
-    @.$inject = [
-        "$scope",
-        "$rootScope",
-        "$tgResources",
-    ]
-
-    constructor: (@scope, @rootscope, @rs) ->
-        @.wipEdit = false;
-
-
-    toggleWipEdit: () ->
-        @.wipEdit = !@.wipEdit
-
-    submitSwimlaneNewStatus: (id, wip_limit) ->
-        @.wipEdit = false;
-        return @rs.swimlanes.wipLimitUpdate(id, wip_limit).then (values) =>
-            @rootscope.$broadcast("swimlane:load")
-
-module.controller("ProjectSwimlanesWipStatusController", ProjectSwimlanesWipStatusController)
+module.directive("tgProjectSwimlanesWip", ProjectSwimlanesWipDirective)
