@@ -192,6 +192,9 @@ class KanbanUserstoriesService extends taiga.Service
         @.usMap = @.usMap.set(us.get('id'), us)
 
     replaceModel: (usModel) ->
+        if (!usModel.swimlane)
+            usModel.swimlane = -1
+
         @.userstoriesRaw = _.map @.userstoriesRaw, (usItem) ->
             if usModel.id == usItem.id
                 return usModel
