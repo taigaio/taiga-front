@@ -170,7 +170,17 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
         @scope.$on "usform:edit:success", (event, us) =>
             @.refreshTagsColors().then () =>
+                oldStatus = @kanbanUserstoriesService.getUsModel(us.id).status
+                if oldStatus != us.status
+                    # the us has to move at the end of the status
+                    status = @scope.usByStatus.get(us.status.toString())
+                    if status
+                        lastUsId = status.last()
+                        newOrder = @scope.usMap.get(lastUsId).getIn(['model', 'kanban_order']) + 1
+                        us.kanban_order = newOrder
+
                 @kanbanUserstoriesService.replaceModel(us)
+                @kanbanUserstoriesService.refreshRawOrder()
                 @kanbanUserstoriesService.refresh(false)
 
         @scope.$on "kanban:us:deleted", (event, us) =>
