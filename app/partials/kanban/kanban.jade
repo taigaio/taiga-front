@@ -6,7 +6,7 @@ div.wrapper(
 )
     tg-project-menu
 
-    section.main.kanban(ng-class="{ 'swimlane': project.swimlanes }")
+    section.main.kanban(ng-class="{ 'swimlane': swimlanesList.size }")
         .kanban-header
             include ../includes/components/mainTitle
             .taskboard-actions

@@ -4,7 +4,7 @@ div.kanban-table(
     tg-kanban-sortable,
     tg-kanban-squish-column,
     tg-kanban,
-    ng-class="{'zoom-0': ctrl.zoomLevel == 0, 'zoom-1': ctrl.zoomLevel == 1, 'zoom-2': ctrl.zoomLevel == 2, 'zoom-3': ctrl.zoomLevel == 3, 'kanban-table-swimlane': project.swimlanes}"
+    ng-class="{'zoom-0': ctrl.zoomLevel == 0, 'zoom-1': ctrl.zoomLevel == 1, 'zoom-2': ctrl.zoomLevel == 2, 'zoom-3': ctrl.zoomLevel == 3, 'kanban-table-swimlane': swimlanesList.size}"
 )
     div.kanban-table-header
         div.kanban-table-inner
@@ -158,7 +158,7 @@ div.kanban-table(
                         tg-kanban-archived-status-intro="s"
                     )
     a(
-        ng-if="project.swimlanes && project.i_am_admin && project.swimlanes.length <= 1"
+        ng-if="swimlanesList.size && project.i_am_admin && swimlanesList.size <= 1"
         class="kanban-swimlane-add"
         tg-nav="project-admin-project-values-kanban-power-ups:project=project.slug"
     )
@@ -166,7 +166,7 @@ div.kanban-table(
         span {{'KANBAN.CREATE_SWIMLANE' | translate}}
 
     div.kanban-table-body(
-        ng-if="!project.swimlanes.length"
+        ng-if="!swimlanesList.size"
         tg-loaded="kanbanTableLoaded($event)"
     )
         div.kanban-table-inner

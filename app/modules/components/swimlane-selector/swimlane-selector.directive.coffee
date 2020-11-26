@@ -39,7 +39,8 @@ SwimlaneSelector = ($timeout) ->
             if (scope.currentSwimlaneId)
                 filteredSwimlanes = scope.swimlanes.filter (swimlane) ->
                     return swimlane.id == scope.currentSwimlaneId
-                scope.currentSwimlane = filteredSwimlanes[0];
+
+                scope.currentSwimlane = filteredSwimlanes.get(0);
             else
                 scope.currentSwimlane = scope.swimlanes.shift()
 
@@ -61,8 +62,7 @@ SwimlaneSelector = ($timeout) ->
                 scope.hideOptions()
 
         scope.$watch 'currentSwimlaneId', (swimlaneId) ->
-            newSwimlane = scope.swimlanes.find (swimlane)  => swimlane.id == swimlaneId
-            scope.selectSwimlane(newSwimlane)
+            getCurrentSwimlane()
 
         mount()
 

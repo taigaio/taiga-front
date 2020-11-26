@@ -143,7 +143,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
     filtersReloadContent: () ->
         @.loadUserstories().then (result) =>
-            if @scope.project.swimlanes && !result.length
+            if @scope.swimlanesList.size && !result.length
                 @.foldedSwimlane = @.foldedSwimlane.set(@scope.swimlanesList.first().id.toString(), false)
 
             openArchived = _.difference(@kanbanUserstoriesService.archivedStatus,
@@ -185,8 +185,8 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         # TODO: this is adding us's to the first swimlane
         swimlane = null
 
-        if @scope.project.swimlanes
-            swimlane = @scope.project.swimlanes[0].id
+        if @scope.swimlanesList.size
+            swimlane = @scope.swimlanesList.get(0).id
 
         switch type
             when "standard" then  @rootscope.$broadcast("genericform:new",
@@ -253,7 +253,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         @.foldedSwimlane = @.foldedSwimlane.set(id.toString(), !@.foldedSwimlane.get(id.toString()))
         @rs.kanban.storeSwimlanesModes(@scope.projectId, @.foldedSwimlane.toJS())
 
-        @timeout () => 
+        @timeout () =>
             @scope.$broadcast("redraw:wip")
         , 100, false
 
@@ -312,7 +312,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                 @rootscope.$broadcast("kanban:userstories:loaded", @.rendered)
                 @scope.$broadcast("userstories:loaded", @.rendered)
 
-                @timeout () => 
+                @timeout () =>
                     @scope.$broadcast("redraw:wip")
                 , 100, false
 
@@ -825,9 +825,9 @@ CardDataDirective = ($template, $translate, avatarService, projectService, dueDa
         return template({
             vm: vm,
             avatars: avatars,
-            emptyTask: () => 
+            emptyTask: () =>
                 tasks = vm.item.getIn(['model', 'tasks'])
-                return !tasks || !tasks.size 
+                return !tasks || !tasks.size
             dueDateColor: () =>
                 dueDateService.color({
                     dueDate: vm.item.getIn(['model', 'due_date']),
