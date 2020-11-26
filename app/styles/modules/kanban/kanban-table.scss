@@ -271,6 +271,9 @@ body {
             &.reached,
             &.one-left {
                 border-top: solid 2px $color-link-red;
+                span {
+                    top: -10px;
+                }
             }
 
             &.one-left {
