@@ -263,6 +263,7 @@ class KanbanUserstoriesService extends taiga.Service
         if !@.swimlanes || !@.project.swimlanes
             return
 
+        @.swimlanesList = Immutable.List()
         @.usByStatusSwimlanes = Immutable.Map()
 
         userstoriesNoSwimlane = @.userstoriesRaw.filter (us) =>

@@ -98,14 +98,14 @@ div.kanban-table(
             div.kanban-table-inner
                 div.kanban-uses-box.taskboard-column(
                     ng-class='{vfold:folds[s.id], vunfold: unfold == s.id}',
-                    ng-repeat="s in ::swimlanesStatueses[swimlane.id] track by s.id",
+                    ng-repeat="s in ::swimlanesStatuses[swimlane.id] track by s.id",
                     id="column-{{s.id}}"
                     tg-loaded="taskColumnLoaded($event, s.id, swimlane.id)"
                     tg-kanban-taskboard-column
                     tg-kanban-wip-limit="s"
                     data-status="{{s.id}}"
                     data-swimlane="{{swimlane.id}}"
-                )   
+                )
                     .kanban-task-counter(
                         ng-if='!folds[s.id]'
                         ng-attr-title="{{'KANBAN.NUMBER_US' | translate}}"

@@ -1,8 +1,8 @@
-.swimlane-select(ng-if="project.swimlanes")
+.swimlane-select(ng-if="swimlanesList.size")
     .label {{ 'LIGHTBOX.CREATE_EDIT.SWIMLANE' | translate }}
     tg-swimlane-selector(
         ng-model="obj.swimlane"
-        swimlanes="project.swimlanes"
+        swimlanes="swimlanesList"
         current-swimlane-id="obj.swimlane"
         on-select-swimlane="ctrl.updateSwimlane(swimlane)"
     )
