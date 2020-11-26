@@ -184,6 +184,16 @@ class ProjectSwimlanesValuesController extends taiga.Controller
         return @rs[@scope.resource].bulkUpdateOrder(@scope.projectId, newSwimlanesOrder).then (values) =>
             @.loadSwimlanes()
 
+    filterArchivedProjectStatuses: () =>
+        return @.scope.project.us_statuses.filter((status) =>
+            return status.is_archived != true
+        )
+
+    filterArchivedSwimlaneStatus: (swimlane) =>
+        return swimlane.statuses.filter((status) =>
+            return status.is_archived != true
+        )
+
     loadSwimlanes: =>
         return @rs[@scope.resource].list(@scope.projectId).then (values) =>
             @scope.values = values
