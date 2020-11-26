@@ -707,6 +707,9 @@ $confirm, $q, attachmentsService, $template, $compile) ->
             if not form.validate()
                 return
 
+            if ($scope.obj.swimlane == -1)
+                $scope.obj.swimlane = null
+
             currentLoading = $loading().target($el.find("#submitButton")).start()
 
             if $scope.mode == 'new'
