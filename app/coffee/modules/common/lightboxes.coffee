@@ -299,8 +299,6 @@ CreateBulkUserstoriesDirective = ($repo, $rs, $rootscope, lightboxService, $load
     link = ($scope, $el, attrs) ->
         form = null
 
-        $scope.swimlaneList = Immutable.List()
-
         $scope.$on "usform:bulk", (ctx, projectId, status, swimlaneId) ->
             form.reset() if form
 

@@ -1,8 +1,7 @@
 tg-lightbox-close
 form
     h2.title(translate="COMMON.NEW_BULK")
-    span {{project}}
-    fieldset.swimlane-select(ng-if="swimlanesList.size")
+    fieldset.swimlane-select(ng-if="project.is_kanban_activated && swimlanesList.size")
         .label {{ 'LIGHTBOX.CREATE_EDIT.SELECT_SWIMLANE' | translate }}
         tg-swimlane-selector(
             ng-model="new.swimlaneId"
