@@ -1,5 +1,7 @@
 <% if (vm.visible('assigned_to')) { %>
-.card-assigned-to
+.card-assigned-to(
+    class!="<%= vm.item.getIn(['model', 'is_iocaine']) ? 'is_iocaine': '' %>"
+)
     <% if (!vm.item.get('assigned_to')) { %>
     .card-user-avatar.card-not-assigned
         img(
