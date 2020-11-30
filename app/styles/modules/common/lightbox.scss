@@ -148,6 +148,17 @@
         max-height: 12rem;
         min-height: 15rem;
     }
+    .swimlane-select {
+        margin-block-end: 1rem;
+        .label {
+            @include font-size(xsmall);
+            @include font-type(medium);
+            color: $color-black900;
+            display: block;
+            margin-block-end: .25rem;
+            text-transform: uppercase;
+        }
+    }
 }
 
 .lightbox-search {

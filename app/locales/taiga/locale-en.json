@@ -1173,7 +1173,8 @@
             "CHOOSE_EXISTING_ISSUE": "Which issue?",
             "ADD_ISSUE": "Add issue",
             "FILTER_ISSUES": "Filter issues",
-            "SWIMLANE": "Swimlane"
+            "SWIMLANE": "Swimlane",
+            "SELECT_SWIMLANE": "Select swimlane"
         },
         "DISABLE_KANBAN": {
             "TITLE": "Disable kanban",

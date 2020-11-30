@@ -299,6 +299,8 @@ CreateBulkUserstoriesDirective = ($repo, $rs, $rootscope, lightboxService, $load
     link = ($scope, $el, attrs) ->
         form = null
 
+        $scope.swimlaneList = Immutable.List()
+
         $scope.$on "usform:bulk", (ctx, projectId, status, swimlaneId) ->
             form.reset() if form
 
@@ -317,11 +319,15 @@ CreateBulkUserstoriesDirective = ($repo, $rs, $rootscope, lightboxService, $load
             if not form.validate()
                 return
 
+            swimlaneId = $scope.new.swimlaneId
+            if ($scope.new.swimlaneId == -1)
+                swimlaneId = null
+
             currentLoading = $loading()
                 .target(submitButton)
                 .start()
 
-            promise = $rs.userstories.bulkCreate($scope.new.projectId, $scope.new.statusId, $scope.new.bulk, $scope.new.swimlaneId)
+            promise = $rs.userstories.bulkCreate($scope.new.projectId, $scope.new.statusId, $scope.new.bulk, swimlaneId)
             promise.then (result) ->
                 result =  _.map(result.data, (x) => $model.make_model('userstories', x))
                 currentLoading.finish()
