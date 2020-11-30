@@ -36,6 +36,7 @@ cardDirective = () ->
             zoomLevel: "<",
             archived: "<",
             inViewPort: "<",
+            folded: "<"
             type: "@"
         }
     }

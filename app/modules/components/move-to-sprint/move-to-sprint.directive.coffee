@@ -31,6 +31,7 @@ moveToSprintDirective = (taskboardTasksService) ->
             unnasignedTasks: '='
             issues: '='
             disabled: '='
+            taskMap: '='
         }
     }
 

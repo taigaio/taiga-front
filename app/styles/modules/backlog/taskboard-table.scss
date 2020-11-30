@@ -1,11 +1,30 @@
 //Table basic shared vars
 $margin: 5px;
+$zoom0-column-width: 182px;
 $column-width: 292px;
 $column-flex: 1;
 $column-shrink: 0;
 $column-margin: 0 $margin 0 0;
 $column-padding: .5rem;
 $fold-animation-duration: .1s;
+
+@keyframes new-task-status-blink-folded-column {
+    0% {
+        background-color: $color-gray400;
+    }
+    100% {
+        background-color: $color-gray100;
+    }
+}
+
+@keyframes new-task-status-blink {
+    0% {
+        background-color: $color-gray400;
+    }
+    100% {
+        background-color: $color-gray200;
+    }
+}
 
 @keyframes card-unfold {
     from {
@@ -18,11 +37,16 @@ $fold-animation-duration: .1s;
     }
 }
 
-
 @mixin fold {
+    &.taskboard-row {
+        min-height: 50px;
+    }
+
     .card {
         align-self: flex-start;
-        margin: .5rem auto 0;
+        background-color: transparent;
+        box-shadow: none;
+        margin: 0;
         tg-card-slideshow,
         .card-unfold,
         .card-tag,
@@ -30,29 +54,57 @@ $fold-animation-duration: .1s;
         .card-owner-actions,
         .card-data,
         .card-statistics,
-        .card-owner-name {
+        .card-owner-name,
+        .card-not-assigned-title,
+        .card-placeholder {
             display: none;
         }
-        .card-owner {
-            img {
-                height: 1.3rem;
-                margin-right: 0;
-                width: 1.3rem;
+        .card-inner {
+            display: contents;
+            .wrapper-assigned-to-data {
+                display: contents;
             }
         }
-    }
-    &.taskboard-column,
-    .taskboard-column {
-        align-content: flex-start;
-        display: flex;
-        flex-flow: row wrap;
-        flex-direction: column;
+        .card-user-avatar {
+            margin: 0;
+        }
+        .card-blocked {
+            border-color: transparent;
+        }
+        tg-card-assigned-to,
+        .card-assigned-to {
+            padding: 0;
+            pointer-events: none;
+        }
     }
     .avatar-task-link {
         display: block;
     }
     .avatar-assigned-to {
         display: none;
+    }
+    .taskboard-row-title-box {
+        background-color: $color-gray100;
+
+        a {
+            @include font-type('regular');
+        }
+        .us-data,
+        tg-belong-to-epics {
+            display: none;
+        }
+        .us-subject {
+            color: $color-black600;
+        }
+    }
+    .us-subject {
+        /* stylelint-disable property-no-vendor-prefix, value-no-vendor-prefix */
+        -webkit-box-orient: vertical;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        overflow: hidden;
+        overflow-wrap: break-word;
+        /* stylelint-enable property-no-vendor-prefix, value-no-vendor-prefix */
     }
 }
 
@@ -62,10 +114,17 @@ $fold-animation-duration: .1s;
     height: 100%;
     overflow: hidden;
     width: 100%;
+    .card {
+        margin: 0 0 1rem 0;
+        max-width: $column-width;
+    }
     &.zoom-0 {
-        .taskboard-column,
-        .task-colum-name {
-            max-width: 162px;
+        .card {
+            max-width: $zoom0-column-width;
+        }
+        .taskboard-column:not(:first-child),
+        .task-colum-name:not(:first-child) {
+            max-width: $zoom0-column-width;
         }
         .task-colum-name {
             .title .name {
@@ -73,28 +132,36 @@ $fold-animation-duration: .1s;
             }
         }
     }
+    &.animations {
+        .task-colum-name {
+            transition: all $fold-animation-duration linear;
+        }
+        .taskboard-table-body .taskboard-column {
+            transition: all $fold-animation-duration linear;
+        }
+    }
     .task-colum-name {
-        @include font-size(medium);
+        @include font-size(small);
         align-items: center;
-        background-color: $grey-02;
-        border-top: 3px solid $gray-light;
-        color: $gray;
+        background-color: $color-gray100;
+        border-bottom: 3px solid $color-gray200;
+        border-radius: 4px 4px 0 0;
+        color: $color-black900;
         display: flex;
-        flex-basis: $column-width;
         flex-grow: $column-flex;
         flex-shrink: $column-shrink;
         margin: $column-margin;
         max-width: $column-width;
         padding: $column-padding;
         text-transform: uppercase;
-        transition: all $fold-animation-duration linear;
+        width: 100%;
+        &:first-child {
+            background-color: $white;
+        }
         &:last-child {
             margin-right: 0;
         }
         &.column-fold {
-            align-items: center;
-            justify-content: center;
-            padding: .3rem 0;
             span {
                 display: none;
             }
@@ -103,9 +170,11 @@ $fold-animation-duration: .1s;
                 margin: 0;
             }
         }
+        .fold-action {
+            margin: 0 0 0 auto;
+        }
         span {
             @include ellipsis(65%);
-            padding-right: 1rem;
         }
     }
 }
@@ -120,17 +189,14 @@ $fold-animation-duration: .1s;
         position: absolute;
     }
     tg-svg {
+        @include svg-size(.75rem);
         align-items: center;
         display: inline-flex;
-        fill: $grey-30;
+        fill: $color-link-tertiary;
         margin-right: .75rem;
-        stroke: $grey-30;
+        stroke: $color-link-tertiary;
         &:hover {
             cursor: pointer;
-        }
-        &.hfold,
-        &.hunfold {
-            display: inline-block;
         }
     }
 }
@@ -141,120 +207,55 @@ $fold-animation-duration: .1s;
     overflow: auto;
     width: 100%;
     .taskboard-column {
-        flex-basis: $column-width;
         flex-grow: $column-flex;
         flex-shrink: $column-shrink;
         margin: $column-margin;
         max-width: $column-width;
-        transition: all .1s linear;
-        width: $column-width;
+        padding: 1rem;
+        width: 100%;
         &:last-child {
             margin-right: 0;
         }
-
+        &.new {
+            animation: new-task-status-blink .5s ease-in;
+        }
+        &.target-drop {
+            background-color: $color-gray200;
+        }
     }
-
-    .row-fold {
+    .row-fold,
+    .column-fold {
         @include fold;
     }
     .column-fold {
-        @include fold;
-        .card-placeholder {
-            display: none;
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+    }
+    .row-fold {
+        .taskboard-cards-box {
+            display: grid;
+            grid-auto-flow: column;
+            grid-gap: .25rem;
+            grid-template-columns: repeat(auto-fill, 30px);
+            grid-template-rows: repeat(3, auto);
         }
     }
-    :not(.column-fold) {
-        .card-placeholder {
-            // wait until unfold is completed to start the animation
-            animation: card-unfold 0s forwards $fold-animation-duration;
-            position: absolute;
-            visibility: hidden;
-        }
+    .ng-animate {
+        // wait until unfold is completed to start the animation
+        animation: card-unfold 0s forwards $fold-animation-duration;
+        position: absolute;
+        visibility: hidden;
     }
     .taskboard-row {
         display: flex;
         margin-bottom: .25rem;
         min-height: 10rem;
         width: 100%;
-        &.blocked {
-            .taskboard-row-title-box {
-                background: rgba($red, .6);
-
-            }
-            .taskboard-row-title-box svg,
-            .taskboard-row-title-box svg:hover,
-            .points-value,
-            .points-value:hover {
-                color: $white;
-                fill: $white;
-                transition: color .3s linear;
-            }
-            .status-value,
-            .status-value:hover {
-                background: $white;
-                line-height: 1.75em;
-                padding: 0 .7em;
-            }
-            .taskboard-cards-box {
-                background: rgba($red, .1);
-            }
-        }
-        &.row-fold {
-            min-height: 0;
-            .us-title {
-                @include ellipsis(100%);
-            }
-            .status-value,
-            .points-value,
-            .us-data,
-            .icon-add,
-            .icon-bulk {
-                display: none;
-            }
-        }
-        &.issues-row {
-            margin-top: 1em;
-            .taskboard-cards-box {
-                align-content: flex-start;
-                align-items: flex-start;
-                border-top: 3px solid $gray-light;
-                display: flex;
-                flex-direction: row;
-                flex-wrap: wrap;
-                width: 100%;
-            }
-            .taskboard-row-title-box {
-                padding: 0;
-            }
-            .task-colum-name {
-                justify-content: flex-start;
-                padding: .5rem .5rem .5rem 2em;
-            }
-            .row-title {
-                flex-grow: 1;
-            }
-            .toggle-fold {
-                display: block;
-                left: .5rem;
-                position: absolute;
-                top: -.4rem;
-            }
-            .card {
-                cursor: default;
-                height: auto;
-                margin: .3rem .1rem .3rem .5rem;
-            }
-        }
-        &.issues-row:not(.row-fold) {
-            .card {
-                width: 280px;
-            }
-        }
     }
     .taskboard-row-title-box {
-        padding: .5rem .5rem .5rem 1.5rem;
+        padding: .5rem 0;
     }
-
 }
 
 .taskboard-cards-box {
@@ -262,12 +263,73 @@ $fold-animation-duration: .1s;
 }
 
 .taskboard-row-title-box {
-    position: relative;
+    display: flex;
+    padding: 0;
+
+    a {
+        @include font-type('bold');
+
+        &:hover {
+            .us-ref {
+                color: $color-black900;
+            }
+            .us-subject {
+                color: $color-link-primary;
+            }
+        }
+    }
+    span {
+        display: block;
+    }
+    .taskboard-column {
+        align-content: flex-start;
+        display: flex;
+        flex-flow: row wrap;
+        flex-direction: column;
+    }
+    .us-ref {
+        color: $color-link-primary;
+        float: left;
+        padding-right: .25rem;
+    }
+    .us-subject {
+        color: $color-black900;
+    }
     .us-title {
         @include font-size(normal);
         @include font-type(regular);
-        margin-bottom: 0;
+        margin-bottom: .5rem;
         margin-right: 3rem;
+    }
+    .us-data {
+        align-items: center;
+        display: flex;
+
+        svg {
+            display: block;
+        }
+
+        p {
+            margin: 0;
+
+            &:not(:last-child) {
+                margin-right: .5rem;
+            }
+        }
+
+        .status-value {
+            margin-left: auto;
+        }
+
+        tg-due-date {
+            margin-right: .5rem;
+        }
+
+        .card-lock {
+            svg {
+                fill: $color-link-red;
+            }
+        }
     }
     .status-value {
         @include font-size(small);
@@ -278,13 +340,15 @@ $fold-animation-duration: .1s;
             margin-right: .1rem;
         }
     }
-    .points-value {
-        @include font-size(small);
-        color: $gray-light;
-        margin: .25em 0 0;
-        width: fit-content;
-        span {
-            margin-right: .1rem;
+    .card-estimation {
+        @include font-size(xsmall);
+        background: $color-gray200;
+        border-radius: 2px;
+        margin: 0;
+        padding: .25rem;
+
+        &.not-estimated {
+            font-size: .8125rem;
         }
     }
     .due-date {
@@ -292,24 +356,50 @@ $fold-animation-duration: .1s;
             position: inherit;
         }
     }
+    tg-belong-to-epics {
+        display: flex;
+        margin-bottom: .5rem;
+
+        .belong-to-epic-pill {
+            display: block;
+        }
+    }
     tg-svg {
         cursor: pointer;
         display: block;
-        position: absolute;
-        right: .5rem;
-        top: .7rem;
+        svg {
+            fill: $color-link-tertiary;
+        }
         &:hover {
             svg {
                 fill: $primary;
             }
         }
-        &.add-action {
-            right: 2rem;
-        }
         &.fold-action {
             left: 0;
             right: inherit;
             top: 1rem;
+        }
+    }
+    .folding-actions {
+        background-color: $color-gray100;
+        padding: .5rem;
+    }
+    .taskboard-us {
+        padding: .5rem;
+        position: relative;
+        width: 100%;
+
+        .add-new-task {
+            tg-svg {
+                position: absolute;
+                right: .5rem;
+                top: .7rem;
+
+                &.add-action {
+                    right: 2rem;
+                }
+            }
         }
     }
 }

@@ -1,5 +1,8 @@
 $wrap-padding: 0 .75rem;
 $card-section-margin-bottom: .5rem;
+/* stylelint-disable color-no-hex */
+$iocaine: #b400d1;
+/* stylelint-enable color-no-hex */
 
 .card {
     background-color: $color-white;
@@ -99,9 +102,7 @@ $card-section-margin-bottom: .5rem;
         .card-iocaine {
             margin-left: .5rem;
             svg {
-                /* stylelint-disable color-no-hex */
-                fill: #b400d1;
-                /* stylelint-enable color-no-hex */
+                fill: $iocaine;
             }
         }
     }
@@ -334,6 +335,12 @@ $card-section-margin-bottom: .5rem;
         display: flex;
         height: 30px;
         width: 30px;
+    }
+
+    &.is_iocaine {
+        .card-user-avatar img {
+            border-color: $iocaine;
+        }
     }
 
     &:hover {

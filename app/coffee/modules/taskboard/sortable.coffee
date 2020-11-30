@@ -68,6 +68,18 @@ TaskboardSortableDirective = ($repo, $rs, $rootscope, $translate) ->
                     return $(item).is('tg-card')
             })
 
+            initialContainer = null
+
+            drake.on 'over', (item, container) ->
+                if !initialContainer
+                    initialContainer = container
+                else if container != initialContainer
+                    $(container).addClass('target-drop')
+
+            drake.on 'out', (item, container) ->
+                if container != initialContainer
+                    $(container).removeClass('target-drop')
+
             drake.on 'drag', (item) ->
                 oldParentScope = $(item).parent().scope()
 
@@ -83,7 +95,7 @@ TaskboardSortableDirective = ($repo, $rs, $rootscope, $translate) ->
             drake.on 'dragend', (item) ->
                 parentEl = $(item).parent()
                 itemEl = $(item)
-                itemTask = itemEl.scope().task
+                itemTask = $scope.taskMap.get(Number(item.dataset.id))
                 itemIndex = itemEl.index()
                 newParentScope = parentEl.scope()
 
@@ -91,6 +103,12 @@ TaskboardSortableDirective = ($repo, $rs, $rootscope, $translate) ->
                 oldStatusId = oldParentScope.st.id
                 newUsId = if newParentScope.us then newParentScope.us.id else null
                 newStatusId = newParentScope.st.id
+
+                if initialContainer != parentEl
+                    $(parentEl).addClass('new')
+
+                    $(parentEl).one 'animationend', ()  ->
+                        $(parentEl).removeClass('new')
 
                 if newStatusId != oldStatusId or newUsId != oldUsId
                     deleteElement(itemEl)

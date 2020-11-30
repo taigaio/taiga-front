@@ -87,9 +87,12 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
 
         taiga.defineImmutableProperty @.scope, "taskMap", () =>
             return @taskboardTasksService.taskMap
-            
+
         taiga.defineImmutableProperty @.scope, "milestoneIssues", () =>
             return @taskboardIssuesService.milestoneIssues
+
+        taiga.defineImmutableProperty @.scope, "tasksByUs", () =>
+            return @taskboardTasksService.tasksByUs
 
     firstLoad: () ->
         promise = @.loadInitialData()
@@ -120,9 +123,6 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
             @q.all([@.loadTasks(), @.loadIssues()]).then () =>
                 @.zoomLoading = false
                 @taskboardTasksService.resetFolds()
-
-        if @.zoomLevel == '0'
-            @rootscope.$broadcast("sprint:zoom0")
 
     changeQ: (q) ->
         @.filterQ = q
@@ -773,12 +773,17 @@ module.directive("tgTaskboard", ["$rootScope", TaskboardDirective])
 #############################################################################
 
 TaskboardSquishColumnDirective = (rs) ->
-    avatarWidth = 40
+    avatarWidth = 30
     maxColumnWidth = 292
+    zoom0ColumnWidth = 182
+    minWidth = 62 # avatarWidth + padding
+    maxRows = 3
+    firstLoad = false
 
     link = ($scope, $el, $attrs) ->
-        $scope.$on "sprint:zoom0", () =>
-            recalculateTaskboardWidth()
+        $scope.$watch "ctrl.zoom", () =>
+            if firstLoad
+                recalculateTaskboardWidth()
 
         $scope.$on "sprint:task:moved", () =>
             recalculateTaskboardWidth()
@@ -799,7 +804,6 @@ TaskboardSquishColumnDirective = (rs) ->
         $foldStatusArchived = (status) ->
             $scope.foldStatus(status)
 
-
         $scope.foldUs = (rowId) ->
             $scope.usFolded[rowId] = !!!$scope.usFolded[rowId]
             rs.tasks.storeUsRowModes($scope.projectId, $scope.sprintId, $scope.usFolded)
@@ -807,68 +811,72 @@ TaskboardSquishColumnDirective = (rs) ->
             recalculateTaskboardWidth()
 
         getCeilWidth = (usId, statusId) =>
+            isStatusFolded = !!$scope.statusesFolded[statusId]
+            isUSFolded = !!$scope.usFolded[usId]
+
             if usId
                 tasks = $scope.usTasks.getIn([usId.toString(), statusId.toString()]).size
             else
                 tasks = $scope.usTasks.getIn(['null', statusId.toString()]).size
 
-            if $scope.statusesFolded[statusId]
-                if tasks and $scope.usFolded[usId]
-                    tasksMatrixSize = Math.round(Math.sqrt(tasks))
-                    width = avatarWidth * tasksMatrixSize
-                else
+            if tasks && (isUSFolded || isStatusFolded)
+                if isUSFolded
+                    columns = Math.ceil(tasks / maxRows)
+                    width = avatarWidth * columns
+                else if isStatusFolded
                     width = avatarWidth
+            else
+                width = 0
 
-                return width
-
-            return 0
+            return width
 
         setStatusColumnWidth = (statusId, width) =>
             column = $el.find(".squish-status-#{statusId}")
 
-            # TODO in #701
-            # if width
-            #     column.css('max-width', width)
-            # else
-            #     if $scope.ctrl.zoomLevel == '0'
-            #         column.css("max-width", 148)
-            #     else
-            #         column.css("max-width", maxColumnWidth)
+            if width < minWidth
+                width = minWidth
 
-        refreshTaskboardTableWidth = () =>
-            columnWidths = []
-
-            columns = $el.find(".task-colum-name")
-
-            columnWidths = _.map columns, (column) ->
-                return $(column).outerWidth(true)
-
-            totalWidth = _.reduce columnWidths, (total, width) ->
-                return total + width
-
-            $el.find('.taskboard-table-inner').css("width", totalWidth)
-
-            issuesBoxWidth = $el.find('.issues-row .taskboard-row-title-box').outerWidth(true)
-            $el.find('.issues-row').css("width", totalWidth - columnWidths.pop())
-
-            issueCardMaxWidth = if $scope.ctrl.zoomLevel == '0' then 128 else 280
-            $el.find('.issues-row .taskboard-cards-box .card').css("max-width", issueCardMaxWidth)
+            column.css('max-width', width)
+            return width
 
         recalculateStatusColumnWidth = (statusId) =>
+            isStatusFolded = !!$scope.statusesFolded[statusId]
+            initialWidth = 0
+
+            if isStatusFolded
+                initialWidth = avatarWidth
+            else
+                initialWidth = maxColumnWidth
+
+                if Number($scope.ctrl.zoomLevel) == 0
+                    initialWidth = zoom0ColumnWidth
+
             #unassigned ceil
+            folded = !!$scope.statusesFolded[statusId]
             statusFoldedWidth = getCeilWidth(null, statusId)
 
+            if statusFoldedWidth < initialWidth
+                statusFoldedWidth = initialWidth
+
             _.forEach $scope.userstories, (us) ->
+                isUSFolded = !!$scope.usFolded[us.id]
                 width = getCeilWidth(us.id, statusId)
+
                 statusFoldedWidth = width if width > statusFoldedWidth
 
-            setStatusColumnWidth(statusId, statusFoldedWidth)
+            return setStatusColumnWidth(statusId, statusFoldedWidth)
 
         recalculateTaskboardWidth = () =>
-            _.forEach $scope.taskStatusList, (status) ->
-                recalculateStatusColumnWidth(status.id)
+            total = _.reduce $scope.taskStatusList, (acc, status) ->
+                return acc + recalculateStatusColumnWidth(status.id) + 5
+            , 0
 
-            refreshTaskboardTableWidth()
+            $el.find('.taskboard-table-inner').css("width", maxColumnWidth + total)
+            if !firstLoad
+                requestAnimationFrame () ->
+                    $el.addClass('animations')
+
+            firstLoad = true
 
             return
 

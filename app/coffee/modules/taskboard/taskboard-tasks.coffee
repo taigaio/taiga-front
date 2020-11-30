@@ -28,6 +28,7 @@ class TaskboardTasksService extends taiga.Service
         @.tasksRaw = []
         @.foldStatusChanged = {}
         @.usTasks = Immutable.Map()
+        @.tasksByUs = Immutable.Map()
         @.taskMap = Immutable.Map()
 
     init: (project, usersById) ->
@@ -143,6 +144,11 @@ class TaskboardTasksService extends taiga.Service
         for taskModel in tasks
             if usTasks[taskModel.user_story]? and usTasks[taskModel.user_story][taskModel.status]?
                 task = {}
+
+                if !@.tasksByUs.get(taskModel.user_story)
+                    @.tasksByUs = @.tasksByUs.set(taskModel.user_story, Immutable.fromJS([taskModel.id]))
+                else
+                    @.tasksByUs = @.tasksByUs.set(taskModel.user_story, @.tasksByUs.get(taskModel.user_story).push(taskModel.id))
 
                 model = taskModel.getAttrs()
 

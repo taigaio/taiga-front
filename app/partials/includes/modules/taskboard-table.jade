@@ -8,11 +8,13 @@ div.taskboard-table(
             h2.task-colum-name(translate="TASKBOARD.TABLE.COLUMN")
             h2.task-colum-name(
                 ng-repeat="s in ::taskStatusList track by s.id"
-                ng-style="{'border-top-color':s.color}"
+                ng-style="{'border-bottom-color':s.color}"
                 ng-class="{'column-fold':statusesFolded[s.id]}"
                 class="squish-status-{{s.id}}"
                 tg-bo-title="s.name"
             )
+                span(tg-bo-bind="s.name")
+
                 tg-svg.hfold.fold-action(
                     svg-icon="icon-fold-column",
                     ng-click='foldStatus(s)',
@@ -26,63 +28,74 @@ div.taskboard-table(
                     title="{{'TASKBOARD.TABLE.TITLE_ACTION_UNFOLD' | translate}}"
                     ng-class='{hidden:!statusesFolded[s.id]}'
                 )
-                span(tg-bo-bind="s.name")
 
 
     div.taskboard-table-body(tg-taskboard-table-height-fixer)
         div.taskboard-table-inner
             div.taskboard-row(
                 ng-repeat="us in userstories track by us.id",
-                ng-class="{blocked: us.is_blocked, 'row-fold':usFolded[us.id]}"
+                ng-class="{blocked: us.is_blocked, 'row-fold':usFolded[us.id], empty: !tasksByUs.get(us.id).size}"
             )
                 div.taskboard-row-title-box.taskboard-column(tg-bo-title="us.blocked_note")
-                    tg-svg.vfold.fold-action(
-                        svg-icon="icon-fold-row",
-                        ng-click='foldUs(us.id)'
-                        title="{{'TASKBOARD.TABLE.TITLE_ACTION_FOLD_ROW' | translate}}"
-                        ng-class='{hidden:usFolded[us.id]}'
-                    )
-
-                    tg-svg.vunfold.fold-action(
-                        svg-icon="icon-unfold-row",
-                        ng-click='foldUs(us.id)'
-                        title="{{'TASKBOARD.TABLE.TITLE_ACTION_UNFOLD_ROW' | translate}}"
-                        ng-class='{hidden:!usFolded[us.id]}'
-                    )
-
-                    h3.us-title
-                        a(href="",
-                          tg-nav="project-userstories-detail:project=project.slug,ref=us.ref",
-                          tg-nav-get-params="{\"milestone\": {{us.milestone}}}",
-                          tg-bo-title="'#' + us.ref + ' ' + us.subject")
-                            span.us-ref(tg-bo-ref="us.ref")
-                            span(ng-bind-html="us.subject | emojify")
-                            tg-belong-to-epics(
-                                format="pill"
-                                ng-if="us.epics"
-                                epics="us.epics"
-                            )
-                    div.us-data
-                        p.status-value(ng-if="usStatusById[us.status]")
-                            span(
-                              ng-style="{'color': usStatusById[us.status]['color']}"
-                              ng-bind="usStatusById[us.status]['name']")
-                        p.points-value(data-id="{{us.id}}")
-                            span(ng-bind="us.total_points")
-                            span(ng-if="us.total_points"
-                                 translate="TASKBOARD.TABLE.FIELD_POINTS"
-                            )
-                            span.card-estimation.not-estimated(
-                                ng-if="!us.total_points",
-                                translate="US.NOT_ESTIMATED"
-                            )
-                        tg-due-date.due-date(
-                            due-date="us.due_date"
-                            is-closed="us.is_closed"
-                            ng-if="us.due_date"
-                            obj-type="us"
+                    .folding-actions
+                        tg-svg.vfold.fold-action(
+                            svg-icon="icon-arrow-up",
+                            ng-click='foldUs(us.id)'
+                            title="{{'TASKBOARD.TABLE.TITLE_ACTION_FOLD_ROW' | translate}}"
+                            ng-class='{hidden:usFolded[us.id]}'
                         )
-                    include ../components/addnewtask
+
+                        tg-svg.vunfold.fold-action(
+                            svg-icon="icon-arrow-down",
+                            ng-click='foldUs(us.id)'
+                            title="{{'TASKBOARD.TABLE.TITLE_ACTION_UNFOLD_ROW' | translate}}"
+                            ng-class='{hidden:!usFolded[us.id]}'
+                        )
+
+                    .taskboard-us
+                        h3.us-title
+                            a(href="",
+                            tg-nav="project-userstories-detail:project=project.slug,ref=us.ref",
+                            tg-nav-get-params="{\"milestone\": {{us.milestone}}}",
+                            tg-bo-title="'#' + us.ref + ' ' + us.subject")
+                                span.us-ref(tg-bo-ref="us.ref")
+                                span.us-subject(ng-bind-html="us.subject | emojify")
+                        tg-belong-to-epics(
+                            format="pill"
+                            ng-if="us.epics"
+                            epics="us.epics"
+                        )
+                        div.us-data
+                            p.points-value(data-id="{{us.id}}")
+                                span.card-estimation(
+                                    ng-if="us.total_points"
+                                    title="{{ 'COMMON.CARD.ESTIMATION' | translate }}"
+                                    translate="COMMON.CARD.PTS"
+                                    translate-values="{ 'pts': us.total_points}"
+                                )
+
+                                span.card-estimation.not-estimated(
+                                    ng-if="!us.total_points",
+                                    translate="US.NOT_ESTIMATED"
+                                )
+
+                            tg-due-date.due-date(
+                                due-date="us.due_date"
+                                is-closed="us.is_closed"
+                                ng-if="us.due_date"
+                                obj-type="us"
+                            )
+
+                            span.card-lock(ng-if="us.is_blocked")
+                                tg-svg(svg-icon="icon-lock")
+
+                            p.status-value(ng-if="usStatusById[us.status]")
+                                span(
+                                ng-style="{'color': usStatusById[us.status]['color']}"
+                                ng-bind="usStatusById[us.status]['name']")
+
+                        .add-new-task
+                            include ../components/addnewtask
 
 
                 div.taskboard-cards-box.taskboard-column(
@@ -111,26 +124,35 @@ div.taskboard-table(
                         zoom-level="ctrl.zoomLevel"
                         in-view-port="true"
                         type="task"
+                        folded="statusesFolded[st.id] || usFolded[us.id]"
                     )
-            div.taskboard-row(ng-init="us = null", ng-class="{'row-fold':usFolded[null]}")
+            div.taskboard-row(
+                ng-init="us = null",
+                ng-class="{'row-fold':usFolded[null], empty: !tasksByUs.get(null).size}"
+            )
                 div.taskboard-row-title-box.taskboard-column
-                    a.vfold(
-                        href=""
-                        title="{{'TASKBOARD.TABLE.TITLE_ACTION_FOLD_ROW' | translate}}"
-                        ng-click='foldUs(null)'
-                        ng-class="{hidden:usFolded[null]}"
-                    )
-                        tg-svg.fold-action(svg-icon="icon-fold-row")
-                    a.vunfold(
-                        href=""
-                        title="{{'TASKBOARD.TABLE.TITLE_ACTION_UNFOLD_ROW' | translate}}"
-                        ng-click='foldUs(null)'
-                        ng-class="{hidden:!usFolded[null]}"
-                    )
-                        tg-svg.fold-action(svg-icon="icon-unfold-row")
-                    h3.us-title
-                        span(translate="TASKBOARD.TABLE.ROW_STORYLESS_TASKS_TITLE")
-                    include ../components/addnewtask.jade
+                    .folding-actions
+                        a.vfold(
+                            href=""
+                            title="{{'TASKBOARD.TABLE.TITLE_ACTION_FOLD_ROW' | translate}}"
+                            ng-click='foldUs(null)'
+                            ng-class="{hidden:usFolded[null]}"
+                        )
+                            tg-svg.fold-action(svg-icon="icon-arrow-up")
+                        a.vunfold(
+                            href=""
+                            title="{{'TASKBOARD.TABLE.TITLE_ACTION_UNFOLD_ROW' | translate}}"
+                            ng-click='foldUs(null)'
+                            ng-class="{hidden:!usFolded[null]}"
+                        )
+                            tg-svg.fold-action(svg-icon="icon-arrow-down")
+
+                    .taskboard-us
+                        h3.us-title
+                            span(translate="TASKBOARD.TABLE.ROW_STORYLESS_TASKS_TITLE")
+
+                        .add-new-task
+                            include ../components/addnewtask.jade
 
                 div.taskboard-cards-box.taskboard-column(
                     ng-repeat="st in ::taskStatusList track by st.id",
@@ -159,41 +181,5 @@ div.taskboard-table(
                         zoom-level="ctrl.zoomLevel"
                         in-view-port="true"
                         type="task"
+                        folded="statusesFolded[st.id] || usFolded[null]"
                     )
-        div.taskboard-row.issues-row(ng-class="{'row-fold':usFolded[0]}")
-            div.taskboard-row-title-box.taskboard-column
-                div.task-colum-name
-                    a.toggle-fold.vfold(
-                        href=""
-                        title="{{'TASKBOARD.TABLE.TITLE_ACTION_FOLD_ROW' | translate}}"
-                        ng-click='foldUs(0)'
-                        ng-class="{hidden:usFolded[0]}"
-                    )
-                        tg-svg.fold-action(svg-icon="icon-fold-row")
-                    a.toggle-fold.vunfold(
-                        href=""
-                        title="{{'TASKBOARD.TABLE.TITLE_ACTION_UNFOLD_ROW' | translate}}"
-                        ng-click='foldUs(0)'
-                        ng-class="{hidden:!usFolded[0]}"
-                    )
-                        tg-svg.fold-action(svg-icon="icon-unfold-row")
-                    span.row-title(translate="TASKBOARD.TABLE.ROW_ISSUES_TITLE")
-                    include ../components/addnewissue.jade
-
-            div.taskboard-cards-box
-                tg-card.card.ng-animate-disabled(
-                    tg-repeat="issue in milestoneIssues"
-                    class="kanban-task-minimized"
-                    tg-class-permission="{'readonly': '!modify_issue'}"
-                    tg-bind-scope,
-                    on-toggle-fold="ctrl.toggleFold(id, 'issues')"
-                    on-click-edit="ctrl.editIssue(id)"
-                    on-click-remove="ctrl.removeIssueFromSprint(id)"
-                    on-click-delete="ctrl.deleteIssue(id)"
-                    on-click-assigned-to="ctrl.changeIssueAssignedTo(id)"
-                    project="project"
-                    item="issue"
-                    zoom="ctrl.zoom"
-                    zoom-level="ctrl.zoomLevel"
-                    type="issue"
-                )
