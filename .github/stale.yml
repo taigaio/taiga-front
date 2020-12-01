@@ -1,0 +1,19 @@
+# 9 months of inactivity before an issue becomes stale
+daysUntilStale: 270
+# Number of days of inactivity before a stale issue is closed
+daysUntilClose: 1
+# Issues with these labels will never be considered stale
+# exemptLabels:
+#   - pinned
+#   - security
+# Label to use when marking an issue as stale
+staleLabel: taiga-6-clean-up
+# Comment to post when marking an issue as stale. Set to `false` to disable
+markComment: >
+  We have been doing some housecleaning work prior to Taiga6 upcoming release and we are
+  rejecting old issues that we didn't correctly attend back then. Since Taiga6 brings a
+  significant UX/UI rework, we encourage you to wait and see if Taiga6 satisfies this need
+  and open a new issue if that's not the case. This time we will make sure to review it
+  when it comes through. Thank you very much on behalf of the Taiga Team!
+# Comment to post when closing a stale issue. Set to `false` to disable
+closeComment: Closed
