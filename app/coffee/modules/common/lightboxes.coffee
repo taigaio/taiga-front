@@ -295,9 +295,31 @@ module.directive("tgBlockingMessageInput", ["$log", "$tgTemplate", "$compile", B
 ## Creare Bulk Userstories Lightbox Directive
 #############################################################################
 
-CreateBulkUserstoriesDirective = ($repo, $rs, $rootscope, lightboxService, $loading, $model) ->
+CreateBulkUserstoriesDirective = ($repo, $rs, $rootscope, lightboxService, $loading, $model, $timeout) ->
     link = ($scope, $el, attrs) ->
         form = null
+        $scope.displayStatusSelector = false
+
+        getCurrentStatus = () =>
+            $scope.currentStatus = $scope.project.us_statuses.filter((status) ->
+                status.id == $scope.new.statusId
+            ).pop()
+
+        $scope.displayStatus = () ->
+            if (timeout)
+                $timeout.cancel(timeout)
+                timeout = null
+            $scope.displayStatusSelector = true
+
+        $scope.hideStatus = () ->
+            timeout = $timeout (() ->
+                $scope.displayStatusSelector = false
+            ), 1000
+
+        $scope.setStatus = (status) =>
+            $scope.new.statusId = status.id
+            getCurrentStatus()
+            $scope.displayStatusSelector = false
 
         $scope.$on "usform:bulk", (ctx, projectId, status, swimlaneId) ->
             form.reset() if form
@@ -308,6 +330,7 @@ CreateBulkUserstoriesDirective = ($repo, $rs, $rootscope, lightboxService, $load
                 bulk: ""
                 swimlaneId: swimlaneId
             }
+            getCurrentStatus()
             lightboxService.open($el)
 
         submit = debounce 2000, (event) =>
@@ -354,6 +377,7 @@ module.directive("tgLbCreateBulkUserstories", [
     "lightboxService",
     "$tgLoading",
     "$tgModel",
+    "$timeout",
     CreateBulkUserstoriesDirective
 ])
 

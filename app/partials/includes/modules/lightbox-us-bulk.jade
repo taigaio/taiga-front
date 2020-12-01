@@ -1,6 +1,27 @@
 tg-lightbox-close
 form
     h2.title(translate="COMMON.NEW_BULK")
+
+    fieldset(ng-if="project.us_statuses")
+        .label {{ 'COMMON.FIELDS.STATUS' | translate }}
+        .bulk-status-selector-wrapper
+            button.bulk-status-selector(
+                ng-click="displayStatus()"
+                ng-style="{'background-color': currentStatus.color}"
+            )
+                span {{ currentStatus.name }}
+                tg-svg(svg-icon="icon-arrow-down")
+            .bulk-status-option-wrapper(
+                ng-show="displayStatusSelector"
+                ng-mouseleave="hideStatus()"
+                ng-mouseenter="displayStatus()"
+            )
+                .bulk-status-option(
+                    ng-repeat="status in project.us_statuses"
+                    ng-click="setStatus(status)"
+                     ng-class="{'selected': status.id == currentStatus.id}"
+                ) {{status.name}}
+
     fieldset.swimlane-select(ng-if="project.is_kanban_activated && swimlanesList.size")
         .label {{ 'LIGHTBOX.CREATE_EDIT.SELECT_SWIMLANE' | translate }}
         tg-swimlane-selector(
@@ -17,10 +38,10 @@ form
             data-linewidth="200"
             ng-attr-placeholder="{{'COMMON.ONE_ITEM_LINE' | translate}}"
         )
-
-    button.btn-small(
-        variant="primary"
-        type="submit",
-        title="{{'COMMON.SAVE' | translate}}",
-        translate="COMMON.SAVE"
-    )
+    .lb-action-wrapper
+        button.btn-small(
+            variant="primary"
+            type="submit",
+            title="{{'COMMON.SAVE' | translate}}",
+            translate="COMMON.SAVE"
+        )
