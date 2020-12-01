@@ -280,6 +280,7 @@
 
     .text {
         @include font-type(bold);
+        background: none;
         margin-left: .25rem;
         padding-left: 0;
 
