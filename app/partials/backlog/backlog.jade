@@ -85,15 +85,16 @@ div.wrapper(tg-backlog, ng-controller="BacklogController as ctrl",
                                     title="{{'BACKLOG.MOVE_US_TO_CURRENT_SPRINT' | translate}}"
                                     id="move-to-current-sprint"
                                 )
-                                    tg-svg(svg-icon="icon-move")
                                     span.text(translate="BACKLOG.MOVE_US_TO_CURRENT_SPRINT")
+                                    tg-svg(svg-icon="icon-add-to-sprint")
                                 button.btn-filter.move-to-latest-sprint.move-to-sprint.e2e-move-to-sprint(
                                     ng-if="!currentSprint"
                                     title="{{'BACKLOG.MOVE_US_TO_LATEST_SPRINT' | translate}}"
                                     id="move-to-latest-sprint"
                                 )
-                                    tg-svg(svg-icon="icon-move")
                                     span.text(translate="BACKLOG.MOVE_US_TO_LATEST_SPRINT")
+                                    tg-svg(svg-icon="icon-add-to-sprint")
+
                                 button.btn-filter.velocity-forecasting-btn.ng-animate-disabled.e2e-velocity-forecasting(
                                     ng-if="userstories.length && ctrl.displayVelocity "
                                     title="{{'BACKLOG.FORECASTING.TITLE' | translate}}"

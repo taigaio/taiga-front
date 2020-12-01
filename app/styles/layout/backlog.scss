@@ -97,6 +97,17 @@
     }
 }
 
+.btn-filter.move-to-sprint {
+    @include font-type(bold);
+
+    display: none;
+
+    tg-svg {
+        margin-left: .25rem;
+        margin-right: 0;
+    }
+}
+
 .velocity-forecasting-btn {
     @include font-type(bold);
 }

@@ -744,7 +744,7 @@ BacklogDirective = ($repo, $rootscope, $translate, $rs) ->
             selectedUsDom = $el.find(".backlog-table-body input:checkbox:checked")
 
             if selectedUsDom.length > 0 and $scope.sprints.length > 0
-                moveToSprintDom.show()
+                moveToSprintDom.css('display', 'flex')
             else
                 moveToSprintDom.hide()
 
