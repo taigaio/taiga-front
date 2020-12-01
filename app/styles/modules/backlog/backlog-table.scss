@@ -267,7 +267,7 @@
     background: $color-gray400;
     display: flex;
     justify-content: space-between;
-    padding: .4rem 1.5rem;
+    padding: .4rem 0 .4rem 1.5rem;
 
     .forecasting-text {
         @include font-size(small);
