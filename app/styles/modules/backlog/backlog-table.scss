@@ -12,7 +12,8 @@
         @include font-size(small);
         align-items: flex-start;
         display: flex;
-        margin-bottom: .5rem;
+        margin-bottom: .25rem;
+        margin-top: .25rem;
         padding: 1rem;
         padding-block-end: .75rem;
         text-align: left;
@@ -266,9 +267,10 @@
     background: $color-gray400;
     display: flex;
     justify-content: space-between;
-    padding: 1.5rem;
+    padding: .4rem 1.5rem;
 
     .forecasting-text {
+        @include font-size(small);
         color: $color-black600;
     }
 
@@ -278,6 +280,8 @@
 
     .text {
         @include font-type(bold);
+        margin-left: .25rem;
+        padding-left: 0;
 
         @include until($widescreen) {
             display: none;
@@ -296,8 +300,9 @@
 .backlog-table-body,
 .multiple-drag-mirror {
     &.forecasted-stories {
-        border: .5rem solid $color-gray400;
+        border: .25rem solid $color-gray400;
         border-bottom: 0;
+        padding: 0 .25rem;
     }
     .row {
         background-color: $color-gray100;
