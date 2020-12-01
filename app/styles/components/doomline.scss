@@ -1,13 +1,14 @@
 .doom-line {
     align-items: center;
-    background: $red-light;
+    background: $color-link-purple;
+    border-radius: 2px;
     display: flex;
     justify-content: center;
     margin: .25rem 0;
     padding: .25rem 0;
     span {
         @include font-size(small);
-        @include font-type(regular);
+        @include font-type(bold);
         color: $white;
     }
 }
