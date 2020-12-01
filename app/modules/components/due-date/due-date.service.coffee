@@ -33,7 +33,7 @@ class DueDateService
         ]
 
     visible: (options) ->
-        return options.format == 'button' or variables.dueDate?
+        return options.format == 'button' or options.dueDate?
 
     disabled: (options) ->
         return options.isClosed
