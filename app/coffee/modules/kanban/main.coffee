@@ -192,12 +192,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         @scope.$on("kanban:hide-userstories-for-status", @.hideUserStoriesForStatus)
 
     addNewUs: (type, statusId) ->
-        # TODO: this is adding us's to the first swimlane
         swimlane = null
-
-        if @scope.swimlanesList.size
-            swimlane = @scope.swimlanesList.get(0).id
-
         switch type
             when "standard" then  @rootscope.$broadcast("genericform:new",
                 {
@@ -206,9 +201,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                     'statusId': statusId,
                     'swimlane': swimlane
                 })
-            when "bulk" then @rootscope.$broadcast("usform:bulk",
-                                                   @scope.projectId, statusId,
-                                                   swimlane)
+            when "bulk" then @rootscope.$broadcast("usform:bulk", @scope.projectId, statusId, swimlane)
 
     editUs: (id) ->
         us = @kanbanUserstoriesService.getUs(id)

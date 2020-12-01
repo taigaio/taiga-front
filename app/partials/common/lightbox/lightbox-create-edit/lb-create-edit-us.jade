@@ -1,10 +1,9 @@
-.swimlane-select(ng-if="swimlanesList.size")
+.swimlane-select(ng-if="project.is_kanban_activated && swimlanesList.size")
     .label {{ 'LIGHTBOX.CREATE_EDIT.SWIMLANE' | translate }}
     tg-swimlane-selector(
         ng-model="obj.swimlane"
         swimlanes="swimlanesList"
         current-swimlane-id="obj.swimlane"
-        on-select-swimlane="ctrl.updateSwimlane(swimlane)"
     )
 
 section.ticket-assigned-to.multiple-assign(

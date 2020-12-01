@@ -70,7 +70,7 @@ resourceProvider = ($repo, $http, $urls, $storage, $q) ->
             project_id: projectId
             status_id: status
             bulk_stories: bulk
-            swimlane: swimlane
+            swimlane_id: swimlane
         }
 
         url = $urls.resolve("bulk-create-us")
@@ -113,7 +113,7 @@ resourceProvider = ($repo, $http, $urls, $storage, $q) ->
 
         if afterUserstoryId
             params.after_userstory_id = afterUserstoryId
-            
+
         else if  beforeUserstoryId
             params.before_userstory_id = beforeUserstoryId
 
