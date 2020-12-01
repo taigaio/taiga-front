@@ -78,6 +78,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         @.translationData = {q: @.filterQ}
         @scope.userstories = []
         @.totalUserStories = 0
+        @scope.swimlanesList = Immutable.List()
 
         return if @.applyStoredFilters(@params.pslug, "backlog-filters")
 
@@ -93,6 +94,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
         # On Success
         promise.then =>
+            @.loadSwimlanes()
             @.firstLoadComplete = true
 
             title = @translate.instant("BACKLOG.PAGE_TITLE", {projectName: @scope.project.name})
@@ -241,6 +243,32 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             @scope.closedSprintsById = groupBy(sprints, (x) -> x.id)
             @rootscope.$broadcast("closed-sprints:reloaded", sprints)
             return sprints
+
+    loadSwimlanes: ->
+
+
+        userstoriesNoSwimlane = @scope.userstories.filter (us) =>
+            return us.swimlane == null
+
+        emptySwimlaneExists = @scope.swimlanesList.filter (swimlane) =>
+            return swimlane.id == -1
+
+         if userstoriesNoSwimlane.length && !emptySwimlaneExists.size
+            @scope.project.swimlanes.forEach (swimlane) =>
+                if (!@scope.swimlanesList.includes(swimlane))
+                    @scope.swimlanesList = @scope.swimlanesList.push(swimlane)
+
+            emptySwimlane = {
+                id: -1,
+                kanban_order: 1,
+                name: @translate.instant("KANBAN.UNCLASSIFIED_USER_STORIES")
+            }
+            @scope.swimlanesList = @scope.swimlanesList.insert(0, emptySwimlane)
+
+        else
+            @scope.project.swimlanes.forEach (swimlane) =>
+                if (!@scope.swimlanesList.includes(swimlane))
+                    @scope.swimlanesList = @scope.swimlanesList.push(swimlane)
 
     loadSprints: ->
         params = {closed: false}
