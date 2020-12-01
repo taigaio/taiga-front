@@ -19,10 +19,14 @@
 
 module = angular.module('taigaBase')
 
-DetailHeaderDirective = () ->
+DetailHeaderDirective = ($tgWysiwygService) ->
     @.$inject = []
 
     link = (scope, el, attrs, ctrl) ->
+        if scope.vm.item.blocked_note
+            html_note = $tgWysiwygService.getHTML(scope.vm.item.blocked_note)
+            scope.vm.item.blocked_html_note = html_note
+
         ctrl._checkPermissions()
 
     return {
@@ -40,4 +44,4 @@ DetailHeaderDirective = () ->
     }
 
 
-module.directive("tgDetailHeader", DetailHeaderDirective)
+module.directive("tgDetailHeader", ["tgWysiwygService", DetailHeaderDirective])
