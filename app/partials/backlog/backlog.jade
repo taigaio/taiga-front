@@ -95,7 +95,7 @@ div.wrapper(tg-backlog, ng-controller="BacklogController as ctrl",
                                     span.text(translate="BACKLOG.MOVE_US_TO_LATEST_SPRINT")
                                     tg-svg(svg-icon="icon-add-to-sprint")
 
-                                button.btn-filter.velocity-forecasting-btn.ng-animate-disabled.e2e-velocity-forecasting(
+                                button.btn-filter.active.velocity-forecasting-btn.ng-animate-disabled.e2e-velocity-forecasting(
                                     ng-if="userstories.length && ctrl.displayVelocity "
                                     title="{{'BACKLOG.FORECASTING.TITLE' | translate}}"
                                     ng-click="ctrl.toggleVelocityForecasting()"
