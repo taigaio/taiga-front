@@ -88,6 +88,21 @@
 .backlog-table-options {
     display: flex;
     justify-content: space-between;
+
+    .btn-filter {
+        margin-right: 1rem;
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}
+
+.velocity-forecasting-btn {
+    @include font-type(bold);
+}
+
+.backlog-table-options-end {
+    display: flex;
 }
 
 .backlog-table-options-start {

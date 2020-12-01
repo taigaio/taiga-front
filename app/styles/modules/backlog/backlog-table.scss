@@ -261,10 +261,42 @@
 
 }
 
+.forecasting-add-sprint {
+    align-items: center;
+    background: $color-gray400;
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5rem;
+
+    .forecasting-text {
+        color: $color-black600;
+    }
+
+    .button {
+        min-width: 9rem;
+    }
+
+    .text {
+        @include font-type(bold);
+
+        @include until($widescreen) {
+            display: none;
+        }
+
+        &.short {
+            display: none;
+
+            @include until($widescreen) {
+                display: block;
+            }
+        }
+    }
+}
+
 .backlog-table-body,
 .multiple-drag-mirror {
     &.forecasted-stories {
-        border: .5rem solid $mass-white;
+        border: .5rem solid $color-gray400;
         border-bottom: 0;
     }
     .row {
