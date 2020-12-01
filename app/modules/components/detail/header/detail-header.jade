@@ -52,4 +52,4 @@
 //- Blocked description
 .detail-header-line.block-desc-container(ng-show="vm.item.is_blocked")
     span.block-description-title(translate="COMMON.BLOCKED")
-    span.block-description(ng-if="vm.item.blocked_html_note", ng-bind-html="vm.item.blocked_html_note")
+    span.block-description(ng-if="blocked_html_note", ng-bind-html="blocked_html_note")

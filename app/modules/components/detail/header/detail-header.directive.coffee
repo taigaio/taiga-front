@@ -23,9 +23,11 @@ DetailHeaderDirective = ($tgWysiwygService) ->
     @.$inject = []
 
     link = (scope, el, attrs, ctrl) ->
-        if scope.vm.item.blocked_note
-            html_note = $tgWysiwygService.getHTML(scope.vm.item.blocked_note)
-            scope.vm.item.blocked_html_note = html_note
+        scope.blocked_html_note = ''
+
+        scope.$watch "vm.item.blocked_note" , (blocked_note) ->
+            html_note = $tgWysiwygService.getHTML(blocked_note)
+            scope.blocked_html_note = html_note
 
         ctrl._checkPermissions()
 
