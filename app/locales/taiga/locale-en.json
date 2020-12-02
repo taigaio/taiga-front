@@ -683,7 +683,8 @@
             "POPUP_NEW_SWIMLANE": "If you had some user stories created, you will find them on this swimlane.",
             "WIP_LIMITS": "WIP LIMITS",
             "WIP_LIMIT_PLACEHOLDER": "WIP Limit not set",
-            "WIP_LIMIT_INPUT": "Set WIP limit"
+            "WIP_LIMIT_INPUT": "Set WIP limit",
+            "DEFAULT": "Default"
         },
         "ROLES": {
             "PAGE_TITLE": "Roles - {{projectName}}",

@@ -159,7 +159,8 @@
         justify-content: space-between;
         padding: .75rem 1rem;
 
-        .admin-swimlane-item-start {
+        .admin-swimlane-item-start,
+        .admin-swimlane-item-end {
             align-items: center;
             display: flex;
             justify-content: center;
@@ -180,6 +181,34 @@
 
         &:hover {
             cursor: grab;
+        }
+    }
+
+    .btn-default-swimlane {
+        align-items: center;
+        background: none;
+        display: flex;
+        .btn-default-swimlane-icon {
+            .icon {
+                fill: none;
+                height: 13px;
+                margin-inline-end: .25rem;
+                stroke: $color-gray400;
+                width: 13px;
+            }
+            &.default {
+                .icon {
+                    fill: $color-solid-yellow;
+                    stroke: $color-solid-yellow;
+                }
+            }
+        }
+        .default-text {
+            @include font-size(xsmall);
+            font-style: italic;
+            &.visibility-hidden {
+                visibility: hidden;
+            }
         }
     }
 }

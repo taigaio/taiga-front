@@ -4,6 +4,15 @@
             tg-svg(svg-icon="icon-draggable")
         .admin-swimlane-item-name {{value.name}}
     .admin-swimlane-item-end
+        button.btn-default-swimlane(
+            type="button"
+            ng-click="setDefaultSwimlane(value)"
+        )
+            tg-svg.btn-default-swimlane-icon(
+                ng-class="{'default': value.id == project.default_swimlane}"
+                svg-icon="icon-star"
+            )
+            span.default-text(ng-class="{'visibility-hidden': value.id != project.default_swimlane}") {{'ADMIN.PROJECT_KANBAN_POWER_UPS.DEFAULT' | translate }}
         button.form-button.edit-swimlane-single(
             type="button"
             ng-click="editSwimlaneSingleForm($event)"
