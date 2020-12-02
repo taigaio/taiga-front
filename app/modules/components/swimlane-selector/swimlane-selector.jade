@@ -2,8 +2,10 @@ button.select(
     type="button"
     ng-click="displayOptions()"
 )
-    span.swimlane-select-text(ng-if="currentSwimlaneId") {{currentSwimlane.name}}
-    span.swimlane-select-text.unclassified(ng-if="!currentSwimlaneId") {{ "KANBAN.UNCLASSIFIED_USER_STORIES" | translate }}
+    span.swimlane-select-text(ng-if="currentSwimlane")
+        span {{currentSwimlane.name}}
+        span.swimlane-default(ng-if="currentSwimlane.id == defaultSwimlaneId") (default)
+    span.swimlane-select-text.unclassified(ng-if="!currentSwimlane") {{ "KANBAN.UNCLASSIFIEDUSER_STORIES" | translate }}
     tg-svg(svg-icon="icon-arrow-down")
 .options(
     ng-show="displaySelector"
@@ -15,4 +17,6 @@ button.select(
         tg-repeat="swimlane in swimlanes"
         ng-class="{'selected': swimlane.id == currentSwimlaneId, 'unclassified': swimlane.id == -1}"
         ng-click="selectSwimlane(swimlane)"
-    ) {{ swimlane.name }}
+    )
+        span {{ swimlane.name }}
+        span.swimlane-default(ng-if="defaultSwimlaneId == swimlane.id") (default)

@@ -47,6 +47,11 @@ tg-swimlane-selector {
         z-index: $first-layer;
     }
 
+    .swimlane-default {
+        font-style: italic;
+        padding-inline-start: 1ch;
+    }
+
     .option {
         @include font-size(small);
         background: transparent;

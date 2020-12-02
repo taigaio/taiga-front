@@ -42,7 +42,12 @@ SwimlaneSelector = ($timeout) ->
 
                 scope.currentSwimlane = filteredSwimlanes.get(0);
             else
-                scope.currentSwimlane = scope.swimlanes.shift()
+                filteredSwimlanes = scope.swimlanes.filter (swimlane) ->
+                    return swimlane.id == scope.defaultSwimlaneId
+
+
+                scope.currentSwimlane = filteredSwimlanes.get(0);
+                console.log(scope.currentSwimlane)
 
         scope.displayOptions = () ->
             if (timeout)
@@ -72,6 +77,7 @@ SwimlaneSelector = ($timeout) ->
         scope: {
             swimlanes: '<',
             currentSwimlaneId: '<',
+            defaultSwimlaneId: '<'
             ngModel : '=',
         },
         require: "ngModel"
