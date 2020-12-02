@@ -3,7 +3,7 @@ form
     h2.title(translate="COMMON.NEW_BULK")
 
     fieldset(ng-if="project.us_statuses")
-        .label {{ 'COMMON.FIELDS.STATUS' | translate }}
+        .label {{ 'LIGHTBOX.CREATE_EDIT.SELECT_STATUS' | translate }}
         .bulk-status-selector-wrapper
             button.bulk-status-selector(
                 ng-click="displayStatus()"
