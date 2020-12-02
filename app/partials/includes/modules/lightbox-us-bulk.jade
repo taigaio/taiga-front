@@ -26,6 +26,7 @@ form
         .label {{ 'LIGHTBOX.CREATE_EDIT.SELECT_SWIMLANE' | translate }}
         tg-swimlane-selector(
             ng-model="new.swimlaneId"
+            default-swimlane-id="project.default_swimlane"
             swimlanes="swimlanesList"
             current-swimlane-id="new.swimlaneId"
         )
