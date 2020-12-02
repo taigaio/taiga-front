@@ -150,13 +150,66 @@
     }
     .swimlane-select {
         margin-block-end: 1rem;
-        .label {
-            @include font-size(xsmall);
-            @include font-type(medium);
-            color: $color-black900;
-            display: block;
-            margin-block-end: .25rem;
-            text-transform: uppercase;
+    }
+    .label {
+        @include font-size(xsmall);
+        @include font-type(medium);
+        color: $color-black900;
+        display: block;
+        margin-block-end: .25rem;
+        text-transform: uppercase;
+    }
+    .lb-action-wrapper {
+        display: flex;
+        justify-content: flex-end;
+    }
+    .bulk-status-selector-wrapper {
+        position: relative;
+    }
+    .bulk-status-selector {
+        @include font-size(small);
+        border: 2px solid transparent;
+        border-radius: 3px;
+        color: $color-white;
+        display: flex;
+        justify-content: space-between;
+        padding: .25rem 1rem;
+        width: 100%;
+        &.active {
+            border: 2px solid $color-link-tertiary;
+        }
+        .icon {
+            fill: currentColor;
+        }
+    }
+    .bulk-status-option-wrapper {
+        background-color: $color-white;
+        border: 1px solid $color-gray400;
+        border-radius: 4px;
+        box-shadow: 4px 4px 8px rgba($color-gray400, .5);
+        padding: .5rem;
+        position: absolute;
+        // Calc font + padding + borders
+        top: calc(1.5rem + 4px);
+        width: 100%;
+        z-index: $first-layer;
+    }
+    .bulk-status-option {
+        @include font-size(small);
+        background: transparent;
+        color: $color-link-primary;
+        cursor: pointer;
+        display: block;
+        padding: .25rem;
+        text-align: left;
+        width: 100%;
+
+        &:hover {
+            background: $color-gray200;
+        }
+
+        &.selected {
+            color: $color-link-tertiary;
         }
     }
 }
