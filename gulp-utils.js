@@ -65,6 +65,12 @@ var Theme = function() {
         }
     });
 
+    Object.defineProperty(obj, "availableThemes", {
+        get: function() {
+            return themesSequence;
+        }
+    });
+
     obj.size = themesSequence.length;
 
     return obj;

@@ -41,6 +41,10 @@ if (argv.theme) {
     themes.set(argv.theme);
 }
 
+const availableThemes = JSON.stringify(themes.availableThemes.map((theme) => {
+    return theme.name;
+}));
+
 var version = "v-" + Date.now();
 
 // userpilot config
@@ -222,7 +226,7 @@ gulp.task("jade", function() {
     return gulp.src(paths.jade)
         .pipe(plumber())
         .pipe(cached("jade"))
-        .pipe(jade({pretty: true, locals:{v:version, userpilotToken: userpilotToken, zendeskToken: zendeskToken}}))
+        .pipe(jade({pretty: true, locals:{v:version, userpilotToken: userpilotToken, zendeskToken: zendeskToken, availableThemes: availableThemes}}))
         .pipe(gulp.dest(paths.tmp));
 });
 
@@ -231,7 +235,7 @@ gulp.task("jade-inheritance", function() {
         .pipe(plumber())
         .pipe(cached("jade"))
         .pipe(jadeInheritance({basedir: "./app/"}))
-        .pipe(jade({pretty: true, locals:{v: version, userpilotToken: userpilotToken, zendeskToken: zendeskToken}}))
+        .pipe(jade({pretty: true, locals:{v: version, userpilotToken: userpilotToken, zendeskToken: zendeskToken, availableThemes: availableThemes}}))
         .pipe(gulp.dest(paths.tmp));
 });
 
