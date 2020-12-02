@@ -86,6 +86,13 @@ resourceProvider = ($config, $repo, $http, $urls, $auth, $q, $translate) ->
         url = "#{$urls.resolve("projects")}/#{projectId}/delete_tasks_csv_uuid"
         return $http.post(url)
 
+    service.patch_default_swimlane = (projectId, swimlaneId) ->
+        url = "#{$urls.resolve("projects")}/#{projectId}"
+        data = {
+            default_swimlane: swimlaneId
+        }
+        return $http.patch(url, data)
+
     service.delete_issues_csv_uuid = (projectId) ->
         url = "#{$urls.resolve("projects")}/#{projectId}/delete_issues_csv_uuid"
         return $http.post(url)

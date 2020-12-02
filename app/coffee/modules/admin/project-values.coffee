@@ -160,6 +160,10 @@ class ProjectSwimlanesValuesController extends taiga.Controller
         return @rs[@scope.resource].edit(swimlane.id, name).then (values) =>
             @.loadSwimlanes()
 
+    setDefaultSwimlane: (swimlane) =>
+        return @rs.projects.patch_default_swimlane(@scope.projectId, swimlane.id).then () =>
+            @rootscope.$broadcast("project:load")
+
     updatedSwimlanePosition: (swimlane, position) =>
         prevSwimlane = @scope.values.find((value) ->
             return value.id == swimlane.id
@@ -266,6 +270,9 @@ ProjectSwimlanesSingle = ($translate, $confirm, $animate) ->
         $scope.updateSwimlane = (swimlane) ->
             $scope.displaySwimlaneSingleForm = false
             $ctrl.updateSwimlane(swimlane, $scope.swimlaneSingleForm.name)
+
+        $scope.setDefaultSwimlane = (swimlane) ->
+            $ctrl.setDefaultSwimlane(swimlane)
 
         $scope.editSwimlaneSingleForm = () ->
             $scope.displaySwimlaneSingleForm = true
