@@ -68,7 +68,9 @@ class UserSettingsController extends mixOf(taiga.Controller, taiga.PageMixin)
         promise.then null, @.onInitialDataError.bind(@)
 
     loadInitialData: ->
-        @scope.availableThemes = @config.get("themes", [])
+        compiledThemes = window._taigaAvailableThemes
+        @scope.availableThemes = @config.get("themes", []).filter (theme) =>
+            return compiledThemes.includes(theme)
 
         return @rs.locales.list().then (locales) =>
             @scope.locales = locales
@@ -82,9 +84,16 @@ class UserSettingsController extends mixOf(taiga.Controller, taiga.PageMixin)
                @translate.preferredLanguage()
 
     getTheme: ->
-        return @scope.user.theme ||
+        compiledThemes = window._taigaAvailableThemes
+
+        theme = @scope.user.theme ||
                @config.get("defaultTheme") ||
                "taiga"
+
+        if !compiledThemes.includes(theme)
+            theme = "taiga"
+
+        return theme
 
     exportProfile: ->
         onSuccess = (result) ->

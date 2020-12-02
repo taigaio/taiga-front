@@ -18,6 +18,7 @@ html(lang="en", ng-attr-dir="{{ isRTL ? 'rtl' : 'ltr' }}")
         script(type='text/javascript').
             window.prerenderReady = false;
             window.TAIGA_VERSION = '#{v}';
+            window._taigaAvailableThemes = !{availableThemes};
 
     body(tg-main, ng-class="{'rtl': isRTL}")
         tg-legacy
