@@ -350,25 +350,6 @@ Capslock = () ->
 
 module.directive("tgCapslock", [Capslock])
 
-LightboxClose = () ->
-    template = """
-        <a class="close" ng-click="onClose()" href="" title="{{'COMMON.CLOSE' | translate}}">
-            <tg-svg svg-icon="icon-close"></tg-svg>
-        </a>
-    """
-
-    link = (scope, elm, attrs) ->
-
-    return {
-        scope: {
-            onClose: '&'
-        },
-        link: link,
-        template: template
-    }
-
-module.directive("tgLightboxClose", [LightboxClose])
-
 Svg = () ->
     template = """
     <svg class="{{ 'icon ' + svgIcon }}" style="fill: {{ svgFill }}">

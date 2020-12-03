@@ -72,6 +72,7 @@ class LightboxService extends taiga.Service
                         @.close($el)
 
 
+        @rootScope.$broadcast("lightbox:opened")
         return defered.promise
 
     close: ($el) ->
@@ -103,6 +104,8 @@ class LightboxService extends taiga.Service
                 scope = $el.data("scope")
                 scope.$destroy() if scope
                 $el.remove()
+
+            @rootScope.$broadcast("lightbox:closed")
 
 
     getLightboxOpen: ->
@@ -182,6 +185,31 @@ LightboxDirective = (lightboxService) ->
     return {restrict: "C", link: link}
 
 module.directive("lightbox", ["lightboxService", LightboxDirective])
+
+
+#############################################################################
+## Lightbox Close Directive
+#############################################################################
+
+LightboxClose = () ->
+    template = """
+        <a class="close" ng-click="onClose()" href="" title="{{'COMMON.CLOSE' | translate}}">
+            <tg-svg svg-icon="icon-close"></tg-svg>
+        </a>
+    """
+
+    link = (scope, elm, attrs) ->
+
+    return {
+        scope: {
+            onClose: '&'
+        },
+        link: link,
+        template: template
+    }
+
+module.directive("tgLightboxClose", [LightboxClose])
+
 
 #############################################################################
 ## Block Lightbox Directive
@@ -984,3 +1012,5 @@ tgResources, $tgResources, $epicsService, tgAnalytics) ->
 module.directive("tgLbRelatetoepic", [
     "$rootScope", "$tgConfirm", "lightboxService", "tgCurrentUserService", "tgResources",
     "$tgResources", "tgEpicsService", "$tgAnalytics", RelateToEpicLightboxDirective])
+
+
