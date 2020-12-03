@@ -5,8 +5,12 @@
         display: flex;
         justify-content: space-between;
         margin-bottom: 1.7rem;
+        .number {
+            margin-right: 1ch;
+        }
     }
     h1 {
+        color: $color-black900;
         margin: 0;
     }
     .add-sprint {
@@ -28,6 +32,17 @@
         .icon-archive {
             margin-right: .3rem;
         }
+
+        &:hover {
+            tg-svg {
+                fill: $color-black600;
+            }
+        }
+
+        tg-svg {
+            fill: $color-link-primary;
+            transition: all .2s ease;
+        }
     }
     .loading {
         text-align: center;
@@ -41,9 +56,12 @@
         transform-origin: center center;
     }
     .sprint-name {
+        align-items: center;
+        display: flex;
+        margin-bottom: .25rem;
         a {
-            @include font-size(normal);
-            @include font-type(regular);
+            @include font-size(large);
+            @include font-type(bold);
             display: inline-block;
             margin-right: .5rem;
         }
@@ -52,27 +70,6 @@
         margin-bottom: 2rem;
         header {
             position: relative;
-        }
-        &:hover {
-            .edit-sprint {
-                opacity: 1;
-                transition: opacity .2s ease-in;
-            }
-        }
-        .edit-sprint {
-            opacity: 0;
-            position: absolute;
-            right: 0;
-            top: 0;
-            transition: opacity .2s ease-in;
-            vertical-align: baseline;
-        }
-        svg {
-            fill: $gray-light;
-            &:hover {
-                fill: $primary;
-                transition: fill .2s ease-in;
-            }
         }
         .number {
             @include font-size(xsmall);
@@ -87,12 +84,45 @@
             align-items: flex-end;
             display: flex;
             justify-content: space-between;
+            &:hover {
+                .edit-sprint {
+                    background: rgba($color-white, .8);
+                    opacity: 1;
+                    transition: all .2s ease-in;
+                }
+            }
+            .edit-sprint {
+                align-items: center;
+                display: flex;
+                height: 100%;
+                justify-content: flex-end;
+                opacity: 0;
+                position: absolute;
+                right: 0;
+                top: 0;
+                transition: all .2s ease-in;
+                vertical-align: baseline;
+                width: 100%;
+            }
+
+            svg {
+                fill: $color-link-primary;
+                &:hover {
+                    transition: fill .2s ease-in;
+                }
+            }
         }
+
+        .sprint-points {
+            position: relative;
+        }
+
         .sprint-date {
             @include font-size(small);
             @include font-type(regular);
             color: $gray-light;
             flex: 1;
+            margin-inline-start: 1.5rem;
         }
         ul {
             margin: 0;
@@ -100,31 +130,48 @@
         }
     }
     .compact-sprint {
-        transform: rotate(0);
+        align-items: center;
+        background: none;
+        display: flex;
+        justify-content: center;
+        padding: .25rem;
+        transform: rotate(90deg);
         transition: all .2s;
+
+        svg.icon {
+            fill: $color-link-tertiary;
+        }
+
         &.active {
-            transform: rotate(90deg);
+            transform: rotate(0);
             transition: all .2s;
         }
         &:hover {
+            cursor: pointer;
             .icon {
                 fill: $primary-light;
                 transition: color .2s;
             }
         }
     }
+    .summary-progress-wrapper {
+        padding: 0 .5rem;
+    }
     .sprint-progress-bar {
-        background-color: $grey-10;
+        background-color: $color-white;
         border-radius: 2px;
-        height: 8px;
+        box-shadow: inset -2px 1px 3px rgba(46, 52, 64, .2);
+        height: 11px;
         margin-bottom: 1rem;
         margin-top: .5rem;
+        padding: 0 1rem;
         position: relative;
         width: 100%;
         .current-progress {
-            background: $primary;
+            background: $color-link-primary;
             border-radius: 2px;
-            height: 8px;
+            box-shadow: 0 2px 5px rgba(46, 52, 64, .45);
+            height: 11px;
             left: 0;
             position: absolute;
             top: 0;
@@ -132,17 +179,20 @@
         }
     }
     .sprint-table {
+        margin-bottom: 1rem;
         min-height: 2rem; // drag & drop
         .sprint-empty {
             @include font-type(regular);
             background: darken($whitish, 5%);
             border: 2px dashed lighten($gray-light, 10%);
             color: $gray;
+            margin-bottom: 1rem;
             padding: 1rem;
             text-align: center;
         }
         .row {
-            border-bottom: 1px solid $gray-light;
+            background: $color-gray100;
+            border-bottom: 1px solid $color-gray400;
             display: flex;
             padding: .5em 0;
             text-align: left;
@@ -151,6 +201,15 @@
                 background: rgba($gray-light, .2);
                 cursor: move;
                 transition: background .2s ease-in;
+
+                .us-name-text {
+                    color: $color-link-primary;
+                }
+
+                .us-ref-text {
+                    color: $color-black600;
+                }
+
             }
             &:last-child {
                 border-bottom: 0;
@@ -164,7 +223,64 @@
                 opacity: .9;
                 transition: background .2s ease-in;
             }
+            .us-name-text {
+                color: $color-black600;
+                transition: all .2s ease-in;
+            }
+            .us-ref-text {
+                transition: all .2s ease-in;
+            }
+            .points-container {
+                @include font-size(small);
 
+                align-items: center;
+                background: $color-gray200;
+                color: $color-black600;
+                display: flex;
+                justify-content: center;
+                min-height: 1.5rem;
+                padding: 0 .3rem;
+            }
+        }
+
+        .row.blockedRow {
+            &:hover {
+                background: $color-gray100;
+            }
+
+            .us-ref-text {
+                color: $color-link-red;
+            }
+
+            .us-name-text {
+                color: $color-link-red;
+            }
+        }
+
+        .row.closedRow {
+            &:hover {
+                background: $color-white;
+
+                .column-us,
+                .column-points {
+                    opacity: 1;
+                }
+            }
+            .column-us {
+                opacity: .5;
+            }
+            .column-points {
+                opacity: .5;
+            }
+
+            .us-ref-text {
+                color: $color-link-primary;
+                text-decoration: line-through;
+            }
+
+            .us-name-text {
+                text-decoration: line-through;
+            }
         }
         .gu-transit {
             background: lighten($gray-light, 12%);
@@ -173,22 +289,31 @@
                 display: none;
             }
         }
+        .us-epic-container {
+            margin-inline-start: 1ch;
+        }
+
         .column-us {
             @include font-size(small);
+
+            align-items: center;
+            display: flex;
             flex-flow: 3;
-            padding: 0 4px;
+            flex-grow: 1;
+            flex-shrink: 1;
+            width: 100%;
         }
+
         .us-name {
             display: block;
-            &.closed {
-                color: lighten($gray-light, 5%);
-            }
-            &.blocked {
-                color: $red;
-            }
+            margin-left: .5rem;
         }
         .column-points {
+            align-items: center;
+            display: flex;
             flex-grow: 1;
+            justify-content: center;
+            margin-right: .5rem;
             padding: 0 4px;
             text-align: right;
             &.closed {

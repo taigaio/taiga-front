@@ -1,25 +1,30 @@
-.sprint-name
-    a.compact-sprint(href="", title="{{'BACKLOG.COMPACT_SPRINT' | translate}}")
-        tg-svg(svg-icon="icon-arrow-right")
-    a(
-        ng-if="::isVisible"
-        href="{{::taskboardUrl}}"
-        title="{{'BACKLOG.GO_TO_TASKBOARD' | translate}}"
-    )
-        span {{::name}}
-    a.edit-sprint(
-        ng-if="::isEditable"
-        href=""
-        title="{{'BACKLOG.EDIT_SPRINT' | translate}}"
-    )
-        tg-svg(svg-icon="icon-edit")
+
 
 .sprint-summary
-    .sprint-date {{::estimatedDateRange}}
-    ul
-        li
-            span.number {{::closedPoints | number}}
-            span.description(translate="BACKLOG.CLOSED_POINTS")
-        li
-            span.number {{::totalPoints | number}}
-            span.description(translate="BACKLOG.TOTAL_POINTS")
+    .sprint-name-container
+        .sprint-name
+            button.compact-sprint(title="{{'BACKLOG.COMPACT_SPRINT' | translate}}")
+                tg-svg(svg-icon="icon-arrow-right")
+            a(
+                ng-if="::isVisible"
+                href="{{::taskboardUrl}}"
+                title="{{'BACKLOG.GO_TO_TASKBOARD' | translate}}"
+            )
+                span {{::name}}
+
+        .sprint-date {{::estimatedDateRange}}
+    .sprint-points
+        a.edit-sprint(
+            ng-if="::isEditable"
+            href=""
+            title="{{'BACKLOG.EDIT_SPRINT' | translate}}"
+        )
+            tg-svg(svg-icon="icon-edit")
+        .sprint-info
+            ul
+                li
+                    span.number {{::closedPoints | number}}
+                    span.description(translate="BACKLOG.CLOSED_POINTS")
+                li
+                    span.number {{::totalPoints | number}}
+                    span.description(translate="BACKLOG.TOTAL_POINTS")

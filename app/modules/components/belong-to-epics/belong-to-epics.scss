@@ -1,5 +1,8 @@
 .belong-to-epic-pill-wrapper {
-    display: inline-block;
+    align-items: center;
+    display: inline-flex;
+    height: 1rem;
+    justify-content: center;
     position: relative;
     &:hover .belong-to-epic-pill-data {
         display: block;

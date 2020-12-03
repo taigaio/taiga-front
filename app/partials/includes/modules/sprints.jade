@@ -5,14 +5,15 @@ section.sprints
                 ng-bind="totalMilestones"
                 ng-if="totalMilestones"
             )
-            span(translate="BACKLOG.SPRINTS.TITLE")
-        a.add-button.button-primary.button-small(
+            span.title(translate="BACKLOG.SPRINTS.TITLE")
+        a.btn-link(
             href=""
             title="{{ 'BACKLOG.SPRINTS.TITLE_ACTION_NEW_SPRINT' | translate}}"
             ng-click="ctrl.addNewSprint()"
             ng-if="totalMilestones"
             tg-check-permission="add_milestone"
         )
+            span Add
             tg-svg(svg-icon="icon-add")
 
     div.empty-small(ng-if="totalMilestones === 0")
@@ -21,13 +22,15 @@ section.sprints
             alt="{{'BACKLOG.SPRINTS.EMPTY' | translate}}"
         )
         p.title(translate="BACKLOG.SPRINTS.EMPTY")
-        a(
+        a.btn-link(
             href=""
             ng-click="ctrl.addNewSprint()"
-            title="{{'BACKLOG.SPRINTS.TITLE_ACTION_NEW_SPRINT' | translate}}"
-            translate="BACKLOG.SPRINTS.TEXT_ACTION_NEW_SPRINT"
+            title=""
             tg-check-permission="add_milestone"
         )
+            span  {{'BACKLOG.SPRINTS.TITLE_ACTION_NEW_SPRINT' | translate}}
+            tg-svg(svg-icon="icon-add")
+
 
     div.sprint.sprint-open(ng-repeat="sprint in ctrl.openSprints() track by sprint.id",
                            tg-backlog-sprint="sprint",

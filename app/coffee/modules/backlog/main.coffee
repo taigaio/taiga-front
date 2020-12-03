@@ -299,7 +299,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             return sprints
 
     openSprints: ->
-        return _.filter(@scope.sprints, (sprint) => not sprint.closed).reverse()
+        return _.filter(@scope.sprints, (sprint) => not sprint.closed)
 
     loadAllPaginatedUserstories: () ->
         page = @.page

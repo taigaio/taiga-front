@@ -51,10 +51,12 @@
     &[variant='primary'] {
         background-color: $color-solid-primary;
         color: $color-black900;
+        transition: all .3s linear;
     }
     &[variant='secondary'] {
         background-color: $color-gray400;
         color: $color-black600;
+        transition: all .3s linear;
     }
 }
 
