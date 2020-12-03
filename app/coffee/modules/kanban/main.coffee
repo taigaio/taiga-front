@@ -34,6 +34,12 @@ module = angular.module("taigaKanban")
 ## Kanban Controller
 #############################################################################
 
+KANBAN_EVENT_REFRESHES = {
+    USERSTORIES: 1,
+    SWIMLANES: 2,
+    PROJECT: 3,
+}
+
 class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.FiltersMixin, taiga.UsFiltersMixin)
     excludeFilters: [
         "status"
@@ -79,6 +85,9 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         @.foldedSwimlane = Immutable.Map()
         @.isFirstLoad = true
         @.renderBatching = true
+
+        @.isLightboxOpened = false # True when a lighbox is open
+        @.isRefreshNeeded = false  # True if a lighbox is open and some event arrivend
 
         return if @.applyStoredFilters(@params.pslug, "kanban-filters")
 
@@ -190,6 +199,42 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         @scope.$on("kanban:us:move", @.moveUs)
         @scope.$on("kanban:show-userstories-for-status", @.loadUserStoriesForStatus)
         @scope.$on("kanban:hide-userstories-for-status", @.hideUserStoriesForStatus)
+
+        @scope.$on "lightbox:opened", () =>
+            @.isLightboxOpened = true
+
+        @scope.$on "lightbox:closed", () =>
+            @.isLightboxOpened = false
+            if @.isRefreshNeeded
+                @.refreshAfterSwimlanesOrUserstoryStatusesHaveChanged()
+                @.isRefreshNeeded = false
+
+    refreshAfterSwimlanesOrUserstoryStatusesHaveChanged: ->
+        # User story statuses has changed
+        @tgLoader.start()
+        @projectService.fetchProject().then () =>
+            @.loadInitialData()
+
+    initializeSubscription: ->
+        randomTimeout = taiga.randomInt(700, 1000)
+
+        # For user stories events
+        routingKeyUserstories = "changes.project.#{@scope.projectId}.userstories"
+        @events.subscribe @scope, routingKeyUserstories, debounceLeading randomTimeout, (message) =>
+            @.loadUserstories()
+
+        # For project attributes (swimlanes, statuses,...) events
+        routingKeyProject = "changes.project.#{@scope.projectId}.projects"
+        @events.subscribe @scope, routingKeyProject, debounceLeading randomTimeout, (message) =>
+            if message.matches in [
+                "projects.swimlane"
+                "projects.swimlaneuserstorystatus"
+                "projects.userstorystatus"
+            ]
+                if @.isLightboxOpened
+                    @.isRefreshNeeded = true
+                else
+                    @.refreshAfterSwimlanesOrUserstoryStatusesHaveChanged()
 
     addNewUs: (type, statusId) ->
         swimlane = null
@@ -403,7 +448,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
     waitEmptyQuote: (cb) ->
         if @.queue.length > 0
-            requestAnimationFrame () => @.waitEmptyQuote(cb);
+            requestAnimationFrame () => @.waitEmptyQuote(cb)
         else
             scopeDefer @scope, => cb()
 
@@ -446,12 +491,6 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         @scope.$emit("project:loaded", project)
         return project
 
-    initializeSubscription: ->
-        routingKey1 = "changes.project.#{@scope.projectId}.userstories"
-        randomTimeout = taiga.randomInt(700, 1000)
-        @events.subscribe @scope, routingKey1, debounceLeading(randomTimeout, (message) =>
-            @.loadUserstories())
-
     loadInitialData: ->
         project = @.loadProject()
         @.foldedSwimlane = Immutable.fromJS(@rs.kanban.getSwimlanesModes(project.id))
@@ -465,11 +504,6 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             , 0, false
 
         @.generateFilters()
-
-    # Utils methods
-
-    prepareBulkUpdateData: (uses, field="kanban_order") ->
-        return _.map(uses, (x) -> {"us_id": x.id, "order": x[field]})
 
     moveUs: (ctx, usList, newStatusId, newSwimlaneId, index, previousCard, nextCard) ->
         @.cleanSelectedUss()

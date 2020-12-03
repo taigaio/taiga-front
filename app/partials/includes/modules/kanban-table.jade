@@ -9,7 +9,7 @@ div.kanban-table(
     div.kanban-table-header
         div.kanban-table-inner
             h2.task-colum-name(ng-repeat="s in usStatusList track by s.id",
-                    tg-bo-title="s.name",
+                    tg-bind-title="s.name",
                     ng-class='{vfold:folds[s.id]}',
                     tg-class-permission="{'readonly': '!modify_task'}"
                 )
@@ -18,7 +18,7 @@ div.kanban-table(
                     ng-class='{ hidden:folds[s.id] }'
                 )
                 div.title
-                    div.name(tg-bo-bind="s.name")
+                    div.name {{ s.name }}
                 div.options
                     button.btn-board.option(
                         href=""

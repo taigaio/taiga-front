@@ -747,6 +747,40 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
     _.each decorators, (decorator) ->
         $provide.decorator decorator.provider, decorator.decorator
 
+    ## debug-events
+    ##
+    ## NOTE: This code is useful to debug Angular events, overwrite $rootScope methos
+    ##       $broadcast and $emit to log info in the browser console. Uncomment this for
+    ##       debug purpose.
+    ##
+    # $provide.decorator '$rootScope', ($delegate) ->
+    #     ignore_events = [
+    #         "$routeChangeStart",
+    #         "$routeChangeSuccess",
+    #         "$locationChangeStart",
+    #         "$locationChangeSuccess",
+    #         "$translateChangeStart",
+    #         "$translateChangeEnd",
+    #         "$translateChangeSuccess",
+    #         "$translateLoadingStart",
+    #         "$translateLoadingEnd",
+    #         "$translateLoadingSuccess",
+    #         "$viewContentLoaded",
+    #         "$destroy",
+    #     ]
+    #     Scope = $delegate.constructor
+    #     origBroadcast = Scope.prototype.$broadcast
+    #     origEmit = Scope.prototype.$emit
+    #     Scope.prototype.$broadcast = ($scope) ->
+    #         if arguments[0] not in ignore_events
+    #             console.log(">> $BROADCAST:", arguments[0], arguments)
+    #         return origBroadcast.apply(this, arguments)
+    #     Scope.prototype.$emit = ($scope) ->
+    #         if arguments[0] not in ignore_events
+    #             console.log(">> $EMIT:", arguments[0], arguments)
+    #         return origEmit.apply(this, arguments)
+    #     return $delegate
+    ## end debug-events
 
 i18nInit = (lang, $translate) ->
     # i18n - moment.js
