@@ -11,9 +11,9 @@ tg-swimlane-selector {
         cursor: pointer;
         display: flex;
         justify-content: space-between;
-        padding-block-end: .25rem;
-        padding-block-start: .25rem;
-        padding-inline-end: 1rem;
+        padding-block-end: .3rem;
+        padding-block-start: .3rem;
+        padding-inline-end: .5rem;
         padding-inline-start: 1rem;
         width: 100%;
         & tg-svg {
@@ -49,7 +49,7 @@ tg-swimlane-selector {
 
     .swimlane-default {
         font-style: italic;
-        padding-inline-start: 1ch;
+        padding-inline-start: .5ch;
     }
 
     .option {
