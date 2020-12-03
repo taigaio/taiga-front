@@ -1593,6 +1593,7 @@
                 "SUBJECT": "Subject",
                 "VOTES": "Votes",
                 "STATUS": "Status",
+                "ATTACHMENTS": "Attachments",
                 "MODIFIED": "Modified",
                 "ASSIGNED_TO": "Assigned to"
             },

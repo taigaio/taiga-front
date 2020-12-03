@@ -27,7 +27,7 @@
         &:hover {
             background: transparent;
         }
-        div {
+        div:not(.skip-order) {
             cursor: pointer;
         }
         .votes {

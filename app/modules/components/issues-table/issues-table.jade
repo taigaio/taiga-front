@@ -1,32 +1,41 @@
-section.issues-table.basic-table(ng-class="{empty: !issues.length}")
+section.issues-options(tg-check-permission="add_issue")
+    div.new-issue
+        a.button-green(href="", ng-click="ctrl.onAddNewIssue()")
+            span.text(translate="ISSUES.ACTION_NEW_ISSUE")
+        a.button-bulk.button-green.button-small(href="", ng-click="ctrl.onAddIssuesInBulk()")
+            tg-svg(svg-icon="icon-bulk")
+
+section.issues-table.basic-table(ng-class="{empty: !ctrl.issues.length}")
     div.row.title
-        div.level-field(data-fieldname="type")
+        div.level-field(data-fieldname="type" ng-if="!ctrl.sprintIssues")
              | {{"ISSUES.TABLE.COLUMNS.TYPE" | translate}}
-        div.level-field(data-fieldname="severity")
+        div.level-field(data-fieldname="severity" ng-if="!ctrl.sprintIssues")
              | {{"ISSUES.TABLE.COLUMNS.SEVERITY" | translate}}
-        div.level-field(data-fieldname="priority")
+        div.level-field(data-fieldname="priority" ng-if="!ctrl.sprintIssues")
              | {{"ISSUES.TABLE.COLUMNS.PRIORITY" | translate}}
-        div.votes(data-fieldname="total_voters")
+        div.votes(data-fieldname="total_voters" ng-if="!ctrl.sprintIssues")
              | {{"ISSUES.TABLE.COLUMNS.VOTES" | translate}}
         div.subject(data-fieldname="subject")
              | {{"ISSUES.TABLE.COLUMNS.SUBJECT" | translate}}
         div.issue-field(data-fieldname="status")
              | {{"ISSUES.TABLE.COLUMNS.STATUS" | translate}}
+        div.issue-field.skip-order(ng-if="ctrl.sprintIssues")
+             | {{"ISSUES.TABLE.COLUMNS.ATTACHMENTS" | translate}}
         div.modified-field(data-fieldname="modified_date")
              | {{"ISSUES.TABLE.COLUMNS.MODIFIED" | translate}}
         div.assigned-field(data-fieldname="assigned_to")
              | {{"ISSUES.TABLE.COLUMNS.ASSIGNED_TO" | translate}}
 
     div.row.table-main(
-        ng-repeat="issue in issues track by issue.id"
+        ng-repeat="issue in ctrl.issues track by issue.id"
         ng-class="{'is-blocked': issue.is_blocked}"
     )
-        div.level-field(tg-listitem-type="issue")
-        div.level-field(tg-listitem-severity="issue")
-        div.level-field(tg-listitem-priority="issue")
+        div.level-field(tg-listitem-type="issue" ng-if="!ctrl.sprintIssues")
+        div.level-field(tg-listitem-severity="issue" ng-if="!ctrl.sprintIssues")
+        div.level-field(tg-listitem-priority="issue" ng-if="!ctrl.sprintIssues")
         div.votes.ng-animate-disabled(
             ng-class="{'inactive': !issue.total_voters}"
-            ng-if="!issue.is_voter"
+            ng-if="!issue.is_voter && !ctrl.sprintIssues"
             title="{{ 'COMMON.VOTE_BUTTON.COUNTER_TITLE'|translate:{total:issue.total_voters||0}:'messageformat' }}"
             ng-click="ctrl.upVoteIssue(issue.id)"
             tg-loading="ctrl.voting == issue.id"
@@ -35,7 +44,7 @@ section.issues-table.basic-table(ng-class="{empty: !issues.length}")
             span {{ issue.total_voters }}
         div.votes.ng-animate-disabled(
             ng-class="{'is-voted': issue.is_voter}"
-            ng-if="issue.is_voter"
+            ng-if="issue.is_voter && !ctrl.sprintIssues"
             title="{{ 'COMMON.VOTE_BUTTON.COUNTER_TITLE'|translate:{total:issue.total_voters||0}:'messageformat' }}"
             ng-click="ctrl.downVoteIssue(issue.id)"
             tg-loading="ctrl.voting == issue.id"
@@ -73,6 +82,9 @@ section.issues-table.basic-table(ng-class="{empty: !issues.length}")
                     svg-icon="icon-arrow-down"
                 )
 
+        div.issue-field(ng-if="ctrl.sprintIssues")
+            {{ issue.attachments.length }}
+
         div.modified-field(
             title="{{ issue.modified_date|momentFormat:'DD MMM YYYY HH:mm' }}"
         ) {{ issue.modified_date|momentFormat:'DD MMM YYYY'}}
@@ -85,7 +97,7 @@ section.issues-table.basic-table(ng-class="{empty: !issues.length}")
                     svg-icon="icon-arrow-down"
                 )
 
-section.empty-large(ng-if="issues != undefined && issues.length == 0")
+section.empty-large(ng-if="ctrl.issues != undefined && ctrl.issues.length == 0")
     img(
         src="/#{v}/images/empty/empty_moon.png",
         alt="{{ISSUES.TABLE.EMPTY.TITLE | translate }}"
@@ -93,7 +105,7 @@ section.empty-large(ng-if="issues != undefined && issues.length == 0")
     p.title(translate="ISSUES.TABLE.EMPTY.TITLE")
     a(
         href=""
-        ng-click="ctrl.addNewIssue()"
+        ng-click="ctrl.onAddNewIssue()"
         tg-check-permission="add_issue"
         title="{{ ISSUES.ACTION_NEW_ISSUE | translate }}"
         translate="ISSUES.TABLE.EMPTY.SUBTITLE"

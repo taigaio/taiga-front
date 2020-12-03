@@ -94,6 +94,15 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
         taiga.defineImmutableProperty @.scope, "tasksByUs", () =>
             return @taskboardTasksService.tasksByUs
 
+        @scope.issues = []
+
+        @scope.$watch 'milestoneIssues', () =>
+            if @scope.milestoneIssues
+                @scope.issues = @scope.milestoneIssues.toJS().map (milestoneIssue) =>
+                    return @taskboardIssuesService.issuesRaw.find (rawIssue) => milestoneIssue.model.id == rawIssue.id
+            else
+                @scope.issues = []
+
     firstLoad: () ->
         promise = @.loadInitialData()
 
@@ -438,7 +447,7 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
         return @rs.issues.listInProject(@scope.projectId, @scope.sprintId, params).then (issues) =>
             @taskboardIssuesService.init(@scope.project, @scope.usersById, @scope.issueStatusById)
             @taskboardIssuesService.set(issues)
-            @scope.taskBoardLoading = false
+            @.initIssues = true
 
     loadTasks: ->
         params = {}
@@ -470,6 +479,7 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
 
     loadInitialData: ->
         @.initialLoad = false
+        @.initIssues = false
         params = {
             pslug: @params.pslug
             sslug: @params.sslug
@@ -737,6 +747,12 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
         , {}
 
         @scope.pointsByRole = Object.keys(pointsByRole).map (key) -> return pointsByRole[key]
+
+    getIssuesOrderBy: ->
+        if _.isString(@location.search().order_by)
+            return @location.search().order_by
+        else
+            return "created_date"
 
 module.controller("TaskboardController", TaskboardController)
 
