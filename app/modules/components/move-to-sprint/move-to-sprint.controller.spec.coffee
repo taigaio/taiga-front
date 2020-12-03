@@ -87,13 +87,14 @@ describe "MoveToSprint", ->
             ])
 
         it "is enabled when there are unfinished storyless tasks", () ->
-            ctrl.unnasignedTasks = Immutable.fromJS([
-              [
-                { model: { id: 1, is_closed: true, taskboard_order: 5 } }
-                { model: { id: 2, is_closed: false, taskboard_order: 6 } }
-              ],
-              [{ model: { id: 3, is_closed: false, taskboard_order: 7 } }]
-            ])
+            ctrl.unnasignedTasks = [['1', '2'],  ['3']]
+
+            ctrl.taskMap = Immutable.fromJS({
+                1: Immutable.fromJS({ model: { id: 1, is_closed: true, taskboard_order: 5 } }),
+                2: Immutable.fromJS({ model: { id: 2, is_closed: false, taskboard_order: 6 } }),
+                3: Immutable.fromJS({ model: { id: 3, is_closed: false, taskboard_order: 7 } })
+            })
+
             ctrl.getOpenStorylessTasks()
             expect(ctrl.hasOpenItems).to.be.true
             expect(ctrl.openItems.tasks).to.be.eql([

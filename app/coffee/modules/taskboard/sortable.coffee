@@ -52,8 +52,6 @@ TaskboardSortableDirective = ($repo, $rs, $rootscope, $translate) ->
                 $tgConfirm.notify("error", text)
 
             deleteElement = (itemEl) ->
-                # Completelly remove item and its scope from dom
-                itemEl.scope().$destroy()
                 itemEl.off()
                 itemEl.remove()
 
