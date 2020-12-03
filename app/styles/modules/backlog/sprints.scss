@@ -183,8 +183,8 @@
         min-height: 2rem; // drag & drop
         .sprint-empty {
             @include font-type(regular);
-            background: darken($whitish, 5%);
-            border: 2px dashed lighten($gray-light, 10%);
+            background: $color-gray100;
+            border: 2px dashed $color-solid-primary;
             color: $gray;
             margin-bottom: 1rem;
             padding: 1rem;
@@ -225,10 +225,23 @@
             }
             .us-name-text {
                 color: $color-black600;
+                margin-inline-end: 1ch;
                 transition: all .2s ease-in;
             }
             .us-ref-text {
                 transition: all .2s ease-in;
+            }
+            .due-date {
+                align-items: center;
+                display: inline-block;
+                height: 1.125rem;
+                vertical-align: middle;
+            }
+            .due-date-icon {
+                align-items: center;
+                display: inline-flex;
+                height: 1rem;
+                width: 1rem;
             }
             .points-container {
                 @include font-size(small);
@@ -290,7 +303,8 @@
             }
         }
         .us-epic-container {
-            margin-inline-start: 1ch;
+            display: inline-block;
+            vertical-align: middle;
         }
 
         .column-us {
@@ -304,10 +318,14 @@
             width: 100%;
         }
 
+        .us-ref-text {
+            margin-inline-end: 1ch;
+        }
+
         .us-name {
-            display: block;
             margin-left: .5rem;
         }
+
         .column-points {
             align-items: center;
             display: flex;
