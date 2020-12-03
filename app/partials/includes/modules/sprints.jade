@@ -39,7 +39,7 @@ section.sprints
 
     a.filter-closed-sprints(href="", tg-backlog-toggle-closed-sprints-visualization,
                             ng-if="totalClosedMilestones")
-        tg-svg(svg-icon="icon-archive")
+        tg-svg(svg-icon="icon-folder")
         span.text(translate="BACKLOG.SPRINTS.ACTION_SHOW_CLOSED_SPRINTS")
 
     div.sprint.sprint-closed(ng-repeat="sprint in closedSprints track by sprint.id",
