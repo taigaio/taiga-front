@@ -725,7 +725,7 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
         pointsByRole = _.reduce @scope.userstories, (result, us, key) =>
             _.forOwn us.points, (pointId, roleId) ->
                 role = getRole(roleId)
-                point = getPoint(pointId)
+                point = getPoint(pointId) || { value: 0 }
 
                 if !result[role.id]
                     result[role.id] = role
