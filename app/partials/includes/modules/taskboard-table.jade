@@ -35,7 +35,26 @@ div.taskboard-table(
 
 
     div.taskboard-table-body(tg-taskboard-table-height-fixer)
+
         div.taskboard-table-inner
+            div.taskboard-row(
+                ng-if="userstories.length === 0"
+                ng-init="us = null",
+                ng-class="{'row-fold':usFolded[null], empty: !tasksByUs.get(null).size}"
+            )
+                div.taskboard-row-title-box.taskboard-column
+                    .card-placeholder(
+                         ng-class='{"not-found": ctrl.notFoundTasks}'
+                         ng-include="'common/components/taskboard-placeholder.html'"
+                    )
+
+                div.taskboard-cards-box.taskboard-column(
+                    ng-repeat="st in ::taskStatusList track by st.id",
+                    class="squish-status-{{st.id}}",
+                    ng-class="{'column-fold':statusesFolded[st.id]}",
+                    tg-bind-scope
+                )
+
             div.taskboard-row(
                 ng-repeat="us in userstories track by us.id",
                 ng-class="{blocked: us.is_blocked, 'row-fold':usFolded[us.id], empty: !tasksByUs.get(us.id).size}"
@@ -106,11 +125,6 @@ div.taskboard-table(
                     ng-class="{'column-fold':statusesFolded[st.id]}",
                     tg-bind-scope
                 )
-                    .card-placeholder(
-                         ng-if="ctrl.showPlaceHolder(st.id, us.id)"
-                         ng-class='{"not-found": ctrl.notFoundTasks}'
-                         ng-include="'common/components/taskboard-placeholder.html'"
-                    )
                     tg-card.card.ng-animate-disabled(
                         data-id="{{ taskId }}"
                         tg-repeat="taskId in usTasks.getIn([us.id.toString(), st.id.toString()])"
@@ -162,12 +176,6 @@ div.taskboard-table(
                     ng-class="{'column-fold':statusesFolded[st.id]}",
                     tg-bind-scope
                 )
-                    .card-placeholder(
-                         ng-if="ctrl.showPlaceHolder(st.id, us.id)"
-                         ng-class='{"not-found": ctrl.notFoundTasks}'
-                         ng-include="'common/components/taskboard-placeholder.html'"
-                    )
-
                     tg-card.card.ng-animate-disabled(
                         data-id="{{ taskId }}"
                         tg-repeat="taskId in usTasks.getIn(['null', st.id.toString()])"

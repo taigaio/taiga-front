@@ -4,26 +4,33 @@
 
     .title {
         @include font-type(bold);
-        color: $color-black900;
+        color: $color-link-tertiary;
     }
     p {
         @include font-type(regular);
         @include font-size(small);
 
-        color: $gray;
+        color: $color-link-tertiary;
         margin: 0;
     }
 
-    .placeholder-kanban-card {
+    .placeholder-board-card {
         background: $color-white;
         border-radius: 4px;
         box-shadow: 4px 4px 8px rgba($color-gray400, .5);
         margin-bottom: 1rem;
         margin-top: .5rem;
         padding: 1rem;
+
+        &.clean {
+            border-radius: 0;
+            box-shadow: none;
+            margin-top: 0;
+            padding: 0;
+        }
     }
 
-    .placeholder-kanban-row {
+    .placeholder-board-row {
         border-radius: 4px;
         display: flex;
         margin-bottom: .5rem;
@@ -36,7 +43,7 @@
         }
     }
 
-    .placeholder-kanban-text {
+    .placeholder-board-text {
         background: $color-gray300;
         border-radius: 4px;
         flex-basis: 60%;
@@ -54,7 +61,7 @@
         }
     }
 
-    .placeholder-kanban-avatar {
+    .placeholder-board-avatar {
         background: $color-gray200;
         border-radius: 28px;
         height: 28px;
@@ -62,11 +69,19 @@
         width: 28px;
     }
 
-    .placeholder-kanban-user {
+    .placeholder-board-user {
         background: $color-gray100;
         border-radius: 4px;
         flex-basis: 115px;
         height: 16px;
+    }
+
+    .placeholder-board-last-text {
+        background: $color-gray200;
+        border-radius: 4px;
+        flex-basis: 65px;
+        height: 16px;
+        margin-top: .5rem;
     }
 }
 

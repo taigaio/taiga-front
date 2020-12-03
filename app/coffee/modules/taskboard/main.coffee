@@ -56,7 +56,8 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
         "$tgStorage",
         "tgFilterRemoteStorageService",
         "tgLightboxFactory",
-        "$timeout"
+        "$timeout",
+        "tgProjectService"
     ]
 
     excludePrefix: "exclude_"
@@ -70,12 +71,16 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @rs2, @params, @q, @appMetaService, @location, @navUrls,
                   @events, @analytics, @translate, @errorHandlingService, @taskboardTasksService,
-                  @taskboardIssuesService, @storage, @filterRemoteStorageService, @lightboxFactory, @timeout) ->
+                  @taskboardIssuesService, @storage, @filterRemoteStorageService, @lightboxFactory, @timeout, @projectService) ->
         bindMethods(@)
         @taskboardTasksService.reset()
         @scope.userstories = []
         @.openFilter = false
         @.filterQ = ''
+        @.backToBacklogUrl = @navUrls.resolve('project-backlog', {
+            project: @projectService.project.get('slug'),
+            ref: @params.ref
+        })
 
         return if @.applyStoredFilters(@params.pslug, "tasks-filters")
 

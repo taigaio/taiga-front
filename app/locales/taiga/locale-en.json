@@ -1470,7 +1470,7 @@
         "TITLE_ACTION_ADD_ISSUE_BULK": "Add some new issues in bulk",
         "TITLE_ACTION_ASSIGN": "Assign task",
         "PLACEHOLDER_CARD_TITLE": "This could be a user story",
-        "PLACEHOLDER_CARD_TEXT": "Create user stories here and change their status to track their progress.",
+        "PLACEHOLDER_CARD_TEXT": "Go to the <a href=\"{{ backlogUrl }}\" title=\"Go to backlog\">backlog</a> and drag user stories to this sprint; split the stories into tasks to track them separately.",
         "TASK_NOT_FOUND_TITLE": "No matching results found" ,
         "TASK_NOT_FOUND_TEXT": "Try again using more general search terms or disabling some filters." ,
         "TITLE_DATE_RANGE": "{{startDate}} <span>to</span> {{endDate}}",

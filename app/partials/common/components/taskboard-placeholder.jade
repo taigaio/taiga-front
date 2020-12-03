@@ -1,11 +1,17 @@
 ng-container(ng-if="!ctrl.notFoundTasks")
-    .placeholder-avatar
-        .image
-        .text
-            .line
-            .line
+    .placeholder-board-card.clean
+        .placeholder-board-row
+            .placeholder-board-text.small
+            .placeholder-board-text.big
+        .placeholder-board-row
+            .placeholder-board-text
+        .placeholder-board-row
+            .placeholder-board-last-text
     p.title {{'TASKBOARD.PLACEHOLDER_CARD_TITLE' | translate}}
-    p {{'TASKBOARD.PLACEHOLDER_CARD_TEXT' | translate}}
+    p.text(
+        translate="TASKBOARD.PLACEHOLDER_CARD_TEXT"
+        translate-values="{backlogUrl: ctrl.backToBacklogUrl}"
+    )
 
 ng-container(ng-if="ctrl.notFoundTasks")
     p.title(translate="TASKBOARD.TASK_NOT_FOUND_TITLE")
