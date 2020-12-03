@@ -1,11 +1,11 @@
-tg-svg.add-action(
+tg-svg.add-action.btn-board(
     tg-check-permission="add_task",
     title="{{'TASKBOARD.TITLE_ACTION_ADD' | translate}}",
     ng-click="ctrl.addNewTask('standard', us)",
     svg-icon="icon-add"
 )
 
-tg-svg.bulk-action(
+tg-svg.bulk-action.btn-board(
     title="{{'TASKBOARD.TITLE_ACTION_ADD_BULK' | translate}}",
     ng-click="ctrl.addNewTask('bulk', us)",
     tg-check-permission="add_task",

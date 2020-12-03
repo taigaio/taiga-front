@@ -30,9 +30,11 @@ module = angular.module("taigaCommon")
 DateRangeDirective = ($translate) ->
     renderRange = ($el, first, second) ->
         prettyDate = $translate.instant("BACKLOG.SPRINTS.DATE")
-        initDate = moment(first).format(prettyDate)
+        startDate = moment(first).format(prettyDate)
         endDate = moment(second).format(prettyDate)
-        $el.html("#{initDate}-#{endDate}")
+        $el.html(
+            $translate.instant("TASKBOARD.TITLE_DATE_RANGE", { startDate: startDate, endDate: endDate})
+        )
 
     link = ($scope, $el, $attrs) ->
         [first, second] = $attrs.tgDateRange.split(",")

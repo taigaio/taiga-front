@@ -26,6 +26,17 @@
     .burndown {
         margin: 1rem 0 0 0;
     }
+    h1 {
+        .date {
+            color: $color-black900;
+            display: inline;
+            margin-left: .5rem;
+
+            span {
+                color: $color-black600;
+            }
+        }
+    }
 }
 
 .taskboard-header {

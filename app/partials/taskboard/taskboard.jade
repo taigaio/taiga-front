@@ -8,8 +8,9 @@ div.wrapper(
     tg-project-menu
     section.main.taskboard
         .taskboard-header
-            h1(tg-bo-bind="sprint.name")
-                span.date(tg-date-range="sprint.estimated_start,sprint.estimated_finish")             
+            h1
+                span.green(tg-bo-bind="sprint.name")
+                .date(tg-date-range="sprint.estimated_start,sprint.estimated_finish")
 
         .taskboard-inner
             include ../includes/components/sprint-summary
@@ -44,7 +45,7 @@ div.wrapper(
                 .taskboard-table-options-end
                     tg-taskboard-zoom(
                         on-zoom-change="ctrl.setZoom(zoomLevel, zoom)"
-                    )                           
+                    )
 
             .taskboard-manager(ng-class="{'expanded': !ctrl.openFilter}")
                 .taskboard-filter(

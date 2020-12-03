@@ -15,19 +15,23 @@ div.taskboard-table(
             )
                 span(tg-bo-bind="s.name")
 
-                tg-svg.hfold.fold-action(
-                    svg-icon="icon-fold-column",
-                    ng-click='foldStatus(s)',
-                    title="{{'TASKBOARD.TABLE.TITLE_ACTION_FOLD' | translate}}"
+                button.btn-board(
+                    ng-click='foldStatus(s)'
                     ng-class='{hidden:statusesFolded[s.id]}'
                 )
+                    tg-svg.hfold.fold-action(
+                        svg-icon="icon-fold-column",
+                        title="{{'TASKBOARD.TABLE.TITLE_ACTION_FOLD' | translate}}"
+                    )
 
-                tg-svg.hunfold.fold-action(
-                    svg-icon="icon-unfold-column",
-                    ng-click='foldStatus(s)',
-                    title="{{'TASKBOARD.TABLE.TITLE_ACTION_UNFOLD' | translate}}"
+                button.btn-board(
+                    ng-click='foldStatus(s)'
                     ng-class='{hidden:!statusesFolded[s.id]}'
                 )
+                    tg-svg.hunfold.fold-action(
+                        svg-icon="icon-unfold-column",
+                        title="{{'TASKBOARD.TABLE.TITLE_ACTION_UNFOLD' | translate}}"
+                    )
 
 
     div.taskboard-table-body(tg-taskboard-table-height-fixer)
@@ -37,17 +41,15 @@ div.taskboard-table(
                 ng-class="{blocked: us.is_blocked, 'row-fold':usFolded[us.id], empty: !tasksByUs.get(us.id).size}"
             )
                 div.taskboard-row-title-box.taskboard-column(tg-bo-title="us.blocked_note")
-                    .folding-actions
+                    .folding-actions(ng-click='foldUs(us.id)')
                         tg-svg.vfold.fold-action(
                             svg-icon="icon-arrow-up",
-                            ng-click='foldUs(us.id)'
                             title="{{'TASKBOARD.TABLE.TITLE_ACTION_FOLD_ROW' | translate}}"
                             ng-class='{hidden:usFolded[us.id]}'
                         )
 
                         tg-svg.vunfold.fold-action(
                             svg-icon="icon-arrow-down",
-                            ng-click='foldUs(us.id)'
                             title="{{'TASKBOARD.TABLE.TITLE_ACTION_UNFOLD_ROW' | translate}}"
                             ng-class='{hidden:!usFolded[us.id]}'
                         )

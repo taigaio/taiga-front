@@ -1473,6 +1473,7 @@
         "PLACEHOLDER_CARD_TEXT": "Create user stories here and change their status to track their progress.",
         "TASK_NOT_FOUND_TITLE": "No matching results found" ,
         "TASK_NOT_FOUND_TEXT": "Try again using more general search terms or disabling some filters." ,
+        "TITLE_DATE_RANGE": "{{startDate}} <span>to</span> {{endDate}}",
         "TABLE": {
             "COLUMN": "User story",
             "TITLE_ACTION_FOLD": "Fold column",

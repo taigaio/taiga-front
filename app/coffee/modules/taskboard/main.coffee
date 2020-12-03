@@ -773,10 +773,12 @@ module.directive("tgTaskboard", ["$rootScope", TaskboardDirective])
 #############################################################################
 
 TaskboardSquishColumnDirective = (rs) ->
+    gridGap = 5
+    horizontalPadding = 32
     avatarWidth = 30
     maxColumnWidth = 292
     zoom0ColumnWidth = 182
-    minWidth = 62 # avatarWidth + padding
+    minWidth = avatarWidth + horizontalPadding
     maxRows = 3
     firstLoad = false
 
@@ -822,7 +824,7 @@ TaskboardSquishColumnDirective = (rs) ->
             if tasks && (isUSFolded || isStatusFolded)
                 if isUSFolded
                     columns = Math.ceil(tasks / maxRows)
-                    width = avatarWidth * columns
+                    width = avatarWidth * columns + ((columns - 1) * gridGap) + horizontalPadding
                 else if isStatusFolded
                     width = avatarWidth
             else

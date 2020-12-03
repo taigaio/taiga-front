@@ -37,45 +37,48 @@ $fold-animation-duration: .1s;
     }
 }
 
+@mixin card-fold {
+    align-self: flex-start;
+    background-color: transparent;
+    box-shadow: none;
+    margin: 0;
+    tg-card-slideshow,
+    .card-unfold,
+    .card-tag,
+    .card-title,
+    .card-owner-actions,
+    .card-data,
+    .card-statistics,
+    .card-owner-name,
+    .card-not-assigned-title,
+    .card-placeholder {
+        display: none;
+    }
+    .card-inner {
+        display: contents;
+        .wrapper-assigned-to-data {
+            display: contents;
+        }
+    }
+    .card-user-avatar {
+        margin: 0;
+    }
+    .card-blocked {
+        border-color: transparent;
+    }
+    tg-card-assigned-to,
+    .card-assigned-to {
+        padding: 0;
+        pointer-events: none;
+    }
+}
+
 @mixin fold {
     &.taskboard-row {
         min-height: 50px;
     }
-
     .card {
-        align-self: flex-start;
-        background-color: transparent;
-        box-shadow: none;
-        margin: 0;
-        tg-card-slideshow,
-        .card-unfold,
-        .card-tag,
-        .card-title,
-        .card-owner-actions,
-        .card-data,
-        .card-statistics,
-        .card-owner-name,
-        .card-not-assigned-title,
-        .card-placeholder {
-            display: none;
-        }
-        .card-inner {
-            display: contents;
-            .wrapper-assigned-to-data {
-                display: contents;
-            }
-        }
-        .card-user-avatar {
-            margin: 0;
-        }
-        .card-blocked {
-            border-color: transparent;
-        }
-        tg-card-assigned-to,
-        .card-assigned-to {
-            padding: 0;
-            pointer-events: none;
-        }
+        @include card-fold;
     }
     .avatar-task-link {
         display: block;
@@ -108,6 +111,10 @@ $fold-animation-duration: .1s;
     }
 }
 
+tg-card[type='task'].gu-mirror {
+    @include card-fold;
+}
+
 .taskboard-table {
     display: flex;
     flex-direction: column;
@@ -117,6 +124,10 @@ $fold-animation-duration: .1s;
     .card {
         margin: 0 0 1rem 0;
         max-width: $column-width;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
     }
     &.zoom-0 {
         .card {
@@ -141,6 +152,7 @@ $fold-animation-duration: .1s;
         }
     }
     .task-colum-name {
+        @include font-type(medium);
         @include font-size(small);
         align-items: center;
         background-color: $color-gray100;
@@ -165,12 +177,11 @@ $fold-animation-duration: .1s;
             span {
                 display: none;
             }
-            .hfold,
-            .hunfold {
+            .btn-board {
                 margin: 0;
             }
         }
-        .fold-action {
+        .btn-board {
             margin: 0 0 0 auto;
         }
         span {
@@ -193,17 +204,23 @@ $fold-animation-duration: .1s;
         align-items: center;
         display: inline-flex;
         fill: $color-link-tertiary;
-        margin-right: .75rem;
         stroke: $color-link-tertiary;
         &:hover {
             cursor: pointer;
+        }
+    }
+    .btn-board {
+        margin-right: .75rem;
+
+        &:hover svg {
+            fill: $color-link-primary;
         }
     }
 }
 
 .taskboard-table-body {
     flex: 1;
-    margin-top: 1px;
+    margin-top: .25rem;
     overflow: auto;
     width: 100%;
     .taskboard-column {
@@ -211,7 +228,7 @@ $fold-animation-duration: .1s;
         flex-shrink: $column-shrink;
         margin: $column-margin;
         max-width: $column-width;
-        padding: 1rem;
+        padding: 16px;
         width: 100%;
         &:last-child {
             margin-right: 0;
@@ -226,6 +243,10 @@ $fold-animation-duration: .1s;
     .row-fold,
     .column-fold {
         @include fold;
+
+        .gu-transit {
+            opacity: 1;
+        }
     }
     .column-fold {
         display: flex;
@@ -233,10 +254,23 @@ $fold-animation-duration: .1s;
         padding: 1rem;
     }
     .row-fold {
+        .taskboard-row-title-box {
+            a {
+                .us-ref {
+                    @include font-type('bold');
+                }
+                &:hover.us-ref {
+                    color: $color-black600;
+                }
+                &:hover.us-subject {
+                    color: $color-link-primary;
+                }
+            }
+        }
         .taskboard-cards-box {
             display: grid;
             grid-auto-flow: column;
-            grid-gap: .25rem;
+            grid-gap: 5px;
             grid-template-columns: repeat(auto-fill, 30px);
             grid-template-rows: repeat(3, auto);
         }
@@ -247,16 +281,54 @@ $fold-animation-duration: .1s;
         position: absolute;
         visibility: hidden;
     }
-    .taskboard-row {
-        display: flex;
-        margin-bottom: .25rem;
-        min-height: 10rem;
-        width: 100%;
-    }
     .taskboard-row-title-box {
         padding: 0;
     }
 }
+
+.taskboard-table-body .taskboard-row {
+    display: flex;
+    margin-bottom: .25rem;
+    min-height: 10rem;
+    width: 100%;
+}
+
+.taskboard-table-body .taskboard-row.blocked {
+    .taskboard-row-title-box {
+        background: $color-solid-red;
+        a {
+            .us-ref,
+            .us-subject {
+                color: $color-black600;
+            }
+            &:hover {
+                .us-ref,
+                .us-subject {
+                    color: $color-link-primary;
+                }
+            }
+        }
+        /* stylelint-disable max-line-length */
+        .folding-actions {
+            background-color: transparent;
+            &:hover {
+                background: linear-gradient(0deg, rgba(228, 64, 87, .25), rgba(228, 64, 87, .25)), $color-gray400;
+            }
+        }
+
+        .btn-board {
+            &:hover {
+                background: linear-gradient(0deg, rgba(228, 64, 87, .25), rgba(228, 64, 87, .25)), $color-gray400;
+
+                svg {
+                    fill: $color-black900;
+                }
+            }
+        }
+        /* stylelint-enable max-line-length */
+    }
+}
+
 
 .taskboard-cards-box {
     background-color: $grey-02;
@@ -298,7 +370,7 @@ $fold-animation-duration: .1s;
         @include font-size(normal);
         @include font-type(regular);
         margin-bottom: .5rem;
-        margin-right: 3rem;
+        margin-right: 3.5rem;
     }
     .us-data {
         align-items: center;
@@ -315,11 +387,16 @@ $fold-animation-duration: .1s;
                 margin-right: .5rem;
             }
         }
-
         .status-value {
-            margin-left: auto;
+            @include font-size(xsmall);
+            display: block;
+            margin: .25em 0 0 auto;
+            text-transform: uppercase;
+            width: fit-content;
+            span {
+                margin-right: .1rem;
+            }
         }
-
         tg-due-date {
             margin-right: .5rem;
         }
@@ -330,24 +407,20 @@ $fold-animation-duration: .1s;
             }
         }
     }
-    .status-value {
-        @include font-size(small);
-        display: block;
-        margin: .25em 0 0;
-        width: fit-content;
-        span {
-            margin-right: .1rem;
-        }
-    }
-    .card-estimation {
+    .points-value {
         @include font-size(xsmall);
+        align-items: center;
         background: $color-gray200;
         border-radius: 2px;
+        display: flex;
         margin: 0;
         padding: .25rem;
 
         &.not-estimated {
             font-size: .8125rem;
+        }
+        .seedtime-inline {
+            display: inline-flex;
         }
     }
     .due-date {
@@ -361,6 +434,10 @@ $fold-animation-duration: .1s;
 
         .belong-to-epic-pill {
             display: block;
+
+            &:hover {
+                opacity: .5;
+            }
         }
     }
     tg-svg {
@@ -368,11 +445,6 @@ $fold-animation-duration: .1s;
         display: block;
         svg {
             fill: $color-link-tertiary;
-        }
-        &:hover {
-            svg {
-                fill: $primary;
-            }
         }
         &.fold-action {
             left: 0;
@@ -382,21 +454,38 @@ $fold-animation-duration: .1s;
     }
     .folding-actions {
         background-color: $color-gray100;
+        cursor: pointer;
         padding: .5rem;
+
+        &:hover {
+            background-color: $color-gray200;
+
+            svg {
+                fill: $color-link-primary;
+            }
+        }
     }
     .taskboard-us {
         padding: .5rem;
         position: relative;
         width: 100%;
+    }
+    .add-new-task {
+        svg {
+            display: block;
+        }
+        tg-svg {
+            color: $color-link-primary;
+            position: absolute;
+            right: .5rem;
+            top: .6rem;
 
-        .add-new-task {
-            tg-svg {
-                position: absolute;
-                right: .5rem;
-                top: .7rem;
-
-                &.add-action {
-                    right: 2rem;
+            &.add-action {
+                right: 2rem;
+            }
+            &:hover {
+                svg {
+                    fill: $color-link-primary;
                 }
             }
         }
