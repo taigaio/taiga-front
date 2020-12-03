@@ -254,7 +254,7 @@ $fold-animation-duration: .1s;
         width: 100%;
     }
     .taskboard-row-title-box {
-        padding: .5rem 0;
+        padding: 0;
     }
 }
 
@@ -264,7 +264,6 @@ $fold-animation-duration: .1s;
 
 .taskboard-row-title-box {
     display: flex;
-    padding: 0;
 
     a {
         @include font-type('bold');
