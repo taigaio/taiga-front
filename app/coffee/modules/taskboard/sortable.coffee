@@ -68,6 +68,9 @@ TaskboardSortableDirective = ($repo, $rs, $rootscope, $translate) ->
 
             initialContainer = null
 
+            drake.on 'shadow', (item) ->
+                $(item).removeClass('folded-dragging')
+
             drake.on 'over', (item, container) ->
                 if !initialContainer
                     initialContainer = container
@@ -80,6 +83,9 @@ TaskboardSortableDirective = ($repo, $rs, $rootscope, $translate) ->
 
             drake.on 'drag', (item) ->
                 oldParentScope = $(item).parent().scope()
+
+                if $(item).width() == 30
+                    $(item).addClass('folded-dragging')
 
                 if $el.hasClass("active-filters")
                     filterError()

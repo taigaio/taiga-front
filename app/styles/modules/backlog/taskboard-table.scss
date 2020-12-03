@@ -111,7 +111,7 @@ $fold-animation-duration: .1s;
     }
 }
 
-tg-card[type='task'].gu-mirror {
+tg-card[type='task'].folded-dragging {
     @include card-fold;
 }
 
