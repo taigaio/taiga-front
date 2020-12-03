@@ -486,6 +486,27 @@ body {
             );
         }
     }
+
+    .default-swimlane {
+        align-items: center;
+        background: none;
+        display: flex;
+        margin-left: auto;
+        .default-swimlane-icon {
+            .icon {
+                fill: $color-solid-yellow;
+                height: 13px;
+                margin-inline-end: .25rem;
+                stroke: $color-solid-yellow;
+                width: 13px;
+            }
+        }
+        .default-text {
+            @include font-size(xsmall);
+            color: $color-link-tertiary;
+            font-style: italic;
+        }
+    }
 }
 
 .kanban-table-swimlane {

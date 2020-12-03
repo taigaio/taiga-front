@@ -86,11 +86,17 @@ div.kanban-table(
             h2.title-name(
                 ng-class="{'unclassified-us-title': swimlane.id == -1}"
             )  {{ swimlane.name }}
-            div.unclassified-us-info(ng-if="swimlane.id == -1")
+            .unclassified-us-info(ng-if="swimlane.id == -1")
                 tg-svg(
                     svg-icon="icon-help-circle"
                 )
                 .popover.pop-help The user stories that are not part of any swimlane are here.
+
+            .default-swimlane(ng-if="swimlane.id == project.default_swimlane")
+                tg-svg.default-swimlane-icon(
+                    svg-icon="icon-star"
+                )
+                span.default-text {{'ADMIN.PROJECT_KANBAN_POWER_UPS.DEFAULT' | translate }}
         div.kanban-table-body(
             ng-if="!ctrl.foldedSwimlane.get(swimlane.id.toString())"
             tg-loaded="kanbanTableLoaded($event, swimlane.id)"
