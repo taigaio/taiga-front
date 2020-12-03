@@ -92,7 +92,7 @@ div.kanban-table(
                 )
                 .popover.pop-help The user stories that are not part of any swimlane are here.
 
-            .default-swimlane(ng-if="swimlane.id == project.default_swimlane")
+            .default-swimlane(ng-if="swimlane.id == project.default_swimlane && project.swimlanes.length > 1")
                 tg-svg.default-swimlane-icon(
                     svg-icon="icon-star"
                 )

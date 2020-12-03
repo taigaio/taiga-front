@@ -155,10 +155,12 @@ class ProjectSwimlanesValuesController extends taiga.Controller
         return @rs[@scope.resource].create(@scope.projectId, @scope.swimlane.name).then (values) =>
             @scope.swimlaneAdded()
             @.loadSwimlanes()
+            @rootscope.$broadcast("project:load")
 
     updateSwimlane: (swimlane, name) =>
         return @rs[@scope.resource].edit(swimlane.id, name).then (values) =>
             @.loadSwimlanes()
+            @rootscope.$broadcast("project:load")
 
     setDefaultSwimlane: (swimlane) =>
         return @rs.projects.patch_default_swimlane(@scope.projectId, swimlane.id).then () =>
@@ -205,6 +207,7 @@ class ProjectSwimlanesValuesController extends taiga.Controller
     removeSwimlane: (swimlaneId, moveTo) =>
         return @rs[@scope.resource].delete(swimlaneId, moveTo).then () =>
             @.loadSwimlanes()
+            @rootscope.$broadcast("project:load")
 
 module.controller("ProjectSwimlanesValuesController", ProjectSwimlanesValuesController)
 

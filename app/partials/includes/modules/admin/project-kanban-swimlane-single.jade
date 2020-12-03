@@ -23,7 +23,7 @@
             tg-svg(svg-icon="icon-edit")
 
         button.form-button.delete-swimlane(
-            ng-disabled="value.id == project.default_swimlane"
+            ng-disabled="value.id == project.default_swimlane && project.swimlanes.length > 1"
             type="button"
             arial-label="{{'COMMON.DELETE' | translate }}"
             ng-click="removeSwimlaneDialog($event, value)"
