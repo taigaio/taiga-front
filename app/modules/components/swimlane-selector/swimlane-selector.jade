@@ -4,7 +4,7 @@ button.select(
 )
     span.swimlane-select-text(ng-if="currentSwimlane")
         span {{currentSwimlane.name}}
-        span.swimlane-default(ng-if="currentSwimlane.id == defaultSwimlaneId") (default)
+        span.swimlane-default(ng-if="currentSwimlane.id == defaultSwimlaneId") ({{"LIGHTBOX.CREATE_EDIT.DEFAULT" | translate}})
     span.swimlane-select-text.unclassified(ng-if="!currentSwimlane") {{ "KANBAN.UNCLASSIFIEDUSER_STORIES" | translate }}
     tg-svg(svg-icon="icon-arrow-down")
 .options(
@@ -15,8 +15,8 @@ button.select(
     button.option(
         type="button"
         tg-repeat="swimlane in swimlanes"
-        ng-class="{'selected': swimlane.id == currentSwimlaneId, 'unclassified': swimlane.id == -1}"
+        ng-class="{'selected': swimlane.id == currentSwimlaneId || swimlane.id == -1 && !currentSwimlaneId, 'unclassified': swimlane.id == -1}"
         ng-click="selectSwimlane(swimlane)"
     )
         span {{ swimlane.name }}
-        span.swimlane-default(ng-if="defaultSwimlaneId == swimlane.id") (default)
+        span.swimlane-default(ng-if="defaultSwimlaneId == swimlane.id") ({{"LIGHTBOX.CREATE_EDIT.DEFAULT" | translate}})
