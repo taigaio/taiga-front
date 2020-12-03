@@ -369,31 +369,10 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         })
 
     addIssuesInBulk: ->
-        @rootscope.$broadcast("issueform:bulk", @scope.projectId)
+        project = @projectService.project.toJS()
+        @rootscope.$broadcast("issueform:bulk", project.id)
 
-    upVoteIssue: (issueId) ->
-        @.voting = issueId
-        onSuccess = =>
-            @.loadIssues()
-            @.voting = null
-        onError = =>
-            @confirm.notify("error")
-            @.voting = null
-
-        return @rs.issues.upvote(issueId).then(onSuccess, onError)
-
-    downVoteIssue: (issueId) ->
-        @.voting = issueId
-        onSuccess = =>
-            @.loadIssues()
-            @.voting = null
-        onError = =>
-            @confirm.notify("error")
-            @.voting = null
-
-        return @rs.issues.downvote(issueId).then(onSuccess, onError)
-
-    getOrderBy: ->
+    getIssuesOrderBy: ->
         if _.isString(@location.search().order_by)
             return @location.search().order_by
         else
@@ -402,10 +381,10 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 module.controller("IssuesController", IssuesController)
 
 #############################################################################
-## Issues Directive
+## Issues Pagination Directive
 #############################################################################
 
-IssuesDirective = ($log, $location, $template, $compile) ->
+IssuesPaginationDirective = ($log, $location, $template, $compile) ->
     ## Issues Pagination
     template = $template.get("issue/issue-paginator.html", true)
 
@@ -489,11 +468,28 @@ IssuesDirective = ($log, $location, $template, $compile) ->
                 $ctrl.selectFilter("page", pagenum)
                 $ctrl.loadIssues()
 
+    ## Issues Link
+    link = ($scope, $el, $attrs) ->
+        $ctrl = $el.controller()
+        linkPagination($scope, $el, $attrs, $ctrl)
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {link:link}
+
+module.directive("tgIssuesPagination", ["$log", "$tgLocation", "$tgTemplate", "$compile", IssuesPaginationDirective])
+
+#############################################################################
+## Issues Ordering Directive
+#############################################################################
+
+IssuesOrderingDirective = ($log, $location, $template, $compile) ->
     ## Issues Filters
     linkOrdering = ($scope, $el, $attrs, $ctrl) ->
         # Draw the arrow the first time
 
-        currentOrder = $ctrl.getOrderBy()
+        currentOrder = $ctrl.getIssuesOrderBy()
 
         if currentOrder
             icon = if startswith(currentOrder, "-") then "icon-arrow-up" else "icon-arrow-down"
@@ -504,10 +500,10 @@ IssuesDirective = ($log, $location, $template, $compile) ->
             colHeadElement.append(svg)
             $compile(colHeadElement.contents())($scope)
 
-        $el.on "click", ".row.title > div", (event) ->
+        $el.on "click", ".row.title > div:not(.skip-order)", (event) ->
             target = angular.element(event.currentTarget)
 
-            currentOrder = $ctrl.getOrderBy()
+            currentOrder = $ctrl.getIssuesOrderBy()
             newOrder = target.data("fieldname")
 
             if newOrder == 'total_voters' and currentOrder != "-total_voters"
@@ -517,7 +513,9 @@ IssuesDirective = ($log, $location, $template, $compile) ->
             $scope.$apply ->
                 $ctrl.replaceFilter("order_by", finalOrder)
 
-                $ctrl.storeFilters($ctrl.params.pslug, $location.search(), $ctrl.filtersHashSuffix)
+                if $ctrl.filtersHashSuffix
+                    $ctrl.storeFilters($ctrl.params.pslug, $location.search(), $ctrl.filtersHashSuffix)
+
                 $ctrl.loadIssues().then ->
                     # Update the arrow
                     $el.find(".row.title > div > tg-svg").remove()
@@ -533,15 +531,13 @@ IssuesDirective = ($log, $location, $template, $compile) ->
     link = ($scope, $el, $attrs) ->
         $ctrl = $el.controller()
         linkOrdering($scope, $el, $attrs, $ctrl)
-        linkPagination($scope, $el, $attrs, $ctrl)
 
         $scope.$on "$destroy", ->
             $el.off()
 
     return {link:link}
 
-module.directive("tgIssues", ["$log", "$tgLocation", "$tgTemplate", "$compile", IssuesDirective])
-
+module.directive("tgIssuesOrdering", ["$log", "$tgLocation", "$tgTemplate", "$compile", IssuesOrderingDirective])
 
 #############################################################################
 ## Issue status Directive (popover for change status)

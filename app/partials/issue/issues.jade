@@ -1,7 +1,8 @@
 doctype html
 
 div.wrapper.issues.lightbox-generic-form(
-    tg-issues
+    tg-issues-ordering
+    tg-issues-pagination
     ng-controller="IssuesController as ctrl"
     ng-init="section='issues'"
 )
@@ -25,8 +26,12 @@ div.wrapper.issues.lightbox-generic-form(
         header
             include ../includes/components/mainTitle
 
-        include ../includes/modules/issues-options
-        include ../includes/modules/issues-table
+        tg-issues-table(
+            issues="issues"
+            on-load-issues="ctrl.loadIssues()"
+            on-add-new-issue="ctrl.addNewIssue()"
+            on-add-issues-in-bulk="ctrl.addIssuesInBulk()"
+        )
 
         // Paginator is rendered using js.
         div.paginator.issues-paginator
