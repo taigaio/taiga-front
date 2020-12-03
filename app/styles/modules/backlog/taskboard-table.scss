@@ -125,7 +125,7 @@ tg-card[type='task'].folded-dragging {
         margin: 0 0 1rem 0;
         max-width: $column-width;
 
-        tg-card-slideshow {
+        .card-slideshow {
             margin-top: .5rem;
         }
 
