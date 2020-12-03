@@ -7,6 +7,8 @@
         button.btn-default-swimlane(
             type="button"
             ng-click="setDefaultSwimlane(value)"
+            ng-if="values.length > 1"
+            ng-attr-title="{{getDefaultTitle(value)}}"
         )
             tg-svg.btn-default-swimlane-icon(
                 ng-class="{'default': value.id == project.default_swimlane}"
@@ -21,9 +23,11 @@
             tg-svg(svg-icon="icon-edit")
 
         button.form-button.delete-swimlane(
+            ng-disabled="value.id == project.default_swimlane"
             type="button"
             arial-label="{{'COMMON.DELETE' | translate }}"
             ng-click="removeSwimlaneDialog($event, value)"
+            ng-attr-title="{{ removeSwimlaneTitle(value) }}"
         )
             tg-svg(svg-icon="icon-trash")
 form.admin-swimlane-form(ng-if="displaySwimlaneSingleForm")

@@ -274,6 +274,16 @@ ProjectSwimlanesSingle = ($translate, $confirm, $animate) ->
         $scope.setDefaultSwimlane = (swimlane) ->
             $ctrl.setDefaultSwimlane(swimlane)
 
+        $scope.getDefaultTitle = (swimlane) ->
+            if (swimlane.id == $scope.project.default_swimlane)
+                return $translate.instant("LIGHTBOX.ADMIN_KANBAN_POWERUPS.DEFAULT_SWIMLANE")
+            else
+                return $translate.instant("LIGHTBOX.ADMIN_KANBAN_POWERUPS.SET_DEFAULT_SWIMLANE")
+
+        $scope.removeSwimlaneTitle = (swimlane) ->
+            if (swimlane.id == $scope.project.default_swimlane)
+                return $translate.instant("LIGHTBOX.ADMIN_KANBAN_POWERUPS.DISABLE_DELETE_SWIMLANE")
+
         $scope.editSwimlaneSingleForm = () ->
             $scope.displaySwimlaneSingleForm = true
 

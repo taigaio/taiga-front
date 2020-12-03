@@ -172,6 +172,18 @@
         }
 
         .delete-swimlane {
+            &[disabled] {
+                background: none;
+                .icon {
+                    fill: $color-gray400;
+                }
+            }
+            &[disabled]:hover {
+                background: none;
+                .icon {
+                    fill: $color-gray400;
+                }
+            }
             &:hover {
                 .icon {
                     fill: $color-link-red;
@@ -188,6 +200,14 @@
         align-items: center;
         background: none;
         display: flex;
+        &:hover {
+            .btn-default-swimlane-icon {
+                .icon {
+                    fill: $color-solid-yellow;
+                    stroke: $color-link-yellow;
+                }
+            }
+        }
         .btn-default-swimlane-icon {
             .icon {
                 fill: none;

@@ -1241,7 +1241,11 @@
             "TITLE_ACTION_DELETE_SWIMLANE": "Delete swimlane",
             "SUBTITLE_ACTION_DELETE_SWIMLANE_OPTIONS": "Are you sure you want to delete {{swimlane}}?",
             "SUBTITLE_ACTION_DELETE_SWIMLANE_REPLACEMENT": "All the user stories on this swimlane will be moved to:",
-            "SUBTITLE_ACTION_DELETE_SWIMLANE_LAST": "Your user stories will not be deleted. They will remain in the kanban."
+            "SUBTITLE_ACTION_DELETE_SWIMLANE_LAST": "Your user stories will not be deleted. They will remain in the kanban.",
+            "DEFAULT_SWIMLANE": "New user stories will be in this swimlane by default",
+            "SET_DEFAULT_SWIMLANE": "Set this swimlane as default",
+            "DISABLE_DELETE_SWIMLANE": "The default swimlane cannot be deleted"
+
         },
         "RELATE_TO_EPIC": {
             "TITLE": "Link to epic",
