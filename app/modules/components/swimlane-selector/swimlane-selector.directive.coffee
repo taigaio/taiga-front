@@ -42,11 +42,11 @@ SwimlaneSelector = ($timeout) ->
 
                 scope.currentSwimlane = filteredSwimlanes.get(0);
             else
-                filteredSwimlanes = scope.swimlanes.filter (swimlane) ->
-                    return swimlane.id == scope.defaultSwimlaneId
+                # filteredSwimlanes = scope.swimlanes.filter (swimlane) ->
+                #     return swimlane.id == scope.defaultSwimlaneId
 
 
-                scope.currentSwimlane = filteredSwimlanes.get(0);
+                scope.currentSwimlane = null;
 
         scope.displayOptions = () ->
             if (timeout)
