@@ -33,12 +33,12 @@ SwimlaneSelector = ($timeout) ->
         timeout = null
 
         mount = () ->
-            if (scope.userStory)
-                getCurrentSwimlane()
+            getCurrentSwimlane()
 
         getCurrentSwimlane = () ->
-            if (scope.userStory.id)
-                console.log(scope.userStory.id)
+            console.log(scope.userStory)
+            if (scope.userStory?.id)
+                console.log(1)
                 if (scope.currentSwimlaneId)
                     filteredSwimlanes = scope.swimlanes.filter (swimlane) ->
                         return swimlane.id == scope.currentSwimlaneId
@@ -47,10 +47,12 @@ SwimlaneSelector = ($timeout) ->
                 else
                     scope.currentSwimlane = null;
             else
+                console.log(2)
                 filteredSwimlanes = scope.swimlanes.filter (swimlane) ->
-                    return swimlane.id == scope.userStory.default_swimlane
+                    return swimlane.id == scope.defaultSwimlaneId
 
                 scope.currentSwimlane = filteredSwimlanes.get(0);
+                console.log(scope.currentSwimlane)
 
 
         scope.displayOptions = () ->
@@ -80,7 +82,7 @@ SwimlaneSelector = ($timeout) ->
         templateUrl: "components/swimlane-selector/swimlane-selector.html",
         scope: {
             swimlanes: '<',
-            currentSwimlaneId: '<',
+            defaultSwimlaneId: '<',
             userStory: '<'
             ngModel : '=',
         },

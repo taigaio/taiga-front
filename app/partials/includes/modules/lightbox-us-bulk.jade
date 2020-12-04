@@ -19,16 +19,17 @@ form
                 .bulk-status-option(
                     ng-repeat="status in project.us_statuses"
                     ng-click="setStatus(status)"
-                     ng-class="{'selected': status.id == currentStatus.id}"
+                    ng-class="{'selected': status.id == currentStatus.id}"
                 ) {{status.name}}
 
     fieldset.swimlane-select(ng-if="project.is_kanban_activated && swimlanesList.size")
         .label {{ 'LIGHTBOX.CREATE_EDIT.SELECT_SWIMLANE' | translate }}
         tg-swimlane-selector(
-            ng-model="new.swimlaneId"
-            default-swimlane-id="project.default_swimlane"
+            ng-model="new.swimlane"
             swimlanes="swimlanesList"
-            current-swimlane-id="new.swimlaneId"
+            default-swimlane-id="project.default_swimlane"
+            user-story="new"
+            ng-if="new"
         )
     fieldset
         textarea(
