@@ -334,7 +334,6 @@ CreateBulkUserstoriesDirective = ($repo, $rs, $rootscope, lightboxService, $load
             lightboxService.open($el)
 
         submit = debounce 2000, (event) =>
-            console.log(event)
             event.preventDefault()
 
             form = $el.find("form").checksley({onlyOneErrorElement: true})
