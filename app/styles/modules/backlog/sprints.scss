@@ -6,7 +6,7 @@
         justify-content: space-between;
         margin-bottom: 1.7rem;
         .number {
-            margin-right: 1ch;
+            margin-right: .5ch;
         }
     }
     h1 {
@@ -178,6 +178,10 @@
             position: absolute;
             top: 0;
             width: calc(30% - 4px);
+
+            &.full {
+                background: $color-black600;
+            }
         }
     }
     .sprint-table {
@@ -379,7 +383,7 @@
     }
     .sprint-progress-bar {
         .current-progress {
-            background: darken($gray-light, 10%);
+            background: $color-link-primary;
         }
     }
     .button-gray {
