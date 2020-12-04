@@ -37,8 +37,16 @@ tg-wysiwyg {
         .wysiwyg {
             padding: .5rem 0;
         }
-        .ck-editor__top {
+        // toolbar
+        // image mouseover toolbox
+        .ck-editor__top,
+        .ck-widget__type-around {
             display: none;
+
+        }
+        // image mouseover toolbox
+        .image.ck-widget {
+            outline-color: transparent;
         }
         .ck.ck-editor__main > .ck-editor__editable {
             border-color: transparent;
