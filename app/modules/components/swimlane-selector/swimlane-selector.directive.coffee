@@ -36,10 +36,10 @@ SwimlaneSelector = ($timeout) ->
             getCurrentSwimlane()
 
         getCurrentSwimlane = () ->
-            if (scope.userStory?.id)
-                if (scope.currentSwimlaneId)
+            if (scope.userStory.id)
+                if (scope.userStory.swimlane)
                     filteredSwimlanes = scope.swimlanes.filter (swimlane) ->
-                        return swimlane.id == scope.currentSwimlaneId
+                        return swimlane.id == scope.userStory.swimlane
 
                     scope.currentSwimlane = filteredSwimlanes.get(0);
                 else
@@ -67,7 +67,7 @@ SwimlaneSelector = ($timeout) ->
                 scope.currentSwimlane = swimlane
                 scope.hideOptions()
 
-        scope.$watch 'currentSwimlaneId', (swimlaneId) ->
+        scope.$watch 'userStory', (userStory) ->
             getCurrentSwimlane()
 
         mount()

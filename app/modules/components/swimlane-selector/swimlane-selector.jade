@@ -2,10 +2,10 @@ button.select(
     type="button"
     ng-click="displayOptions()"
 )
-    span.swimlane-select-text(ng-if="currentSwimlane")
+    span.swimlane-select-text(ng-if="currentSwimlane.id")
         span {{currentSwimlane.name}}
         span.swimlane-default(ng-if="currentSwimlane.id == defaultSwimlaneId && swimlanes.size > 1") ({{"LIGHTBOX.CREATE_EDIT.DEFAULT" | translate}})
-    span.swimlane-select-text.unclassified(ng-if="!currentSwimlane") {{ "KANBAN.UNCLASSIFIED_USER_STORIES" | translate }}
+    span.swimlane-select-text.unclassified(ng-if="!currentSwimlane.id") {{ "KANBAN.UNCLASSIFIED_USER_STORIES" | translate }}
     tg-svg(svg-icon="icon-arrow-down")
 .options(
     ng-show="displaySelector"
