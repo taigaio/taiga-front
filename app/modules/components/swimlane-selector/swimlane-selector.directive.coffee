@@ -36,9 +36,7 @@ SwimlaneSelector = ($timeout) ->
             getCurrentSwimlane()
 
         getCurrentSwimlane = () ->
-            console.log(scope.userStory)
             if (scope.userStory?.id)
-                console.log(1)
                 if (scope.currentSwimlaneId)
                     filteredSwimlanes = scope.swimlanes.filter (swimlane) ->
                         return swimlane.id == scope.currentSwimlaneId
@@ -47,13 +45,10 @@ SwimlaneSelector = ($timeout) ->
                 else
                     scope.currentSwimlane = null;
             else
-                console.log(2)
                 filteredSwimlanes = scope.swimlanes.filter (swimlane) ->
                     return swimlane.id == scope.defaultSwimlaneId
 
                 scope.currentSwimlane = filteredSwimlanes.get(0);
-                console.log(scope.currentSwimlane)
-
 
         scope.displayOptions = () ->
             if (timeout)
