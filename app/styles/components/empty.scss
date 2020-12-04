@@ -16,7 +16,7 @@
     }
     a {
         @include font-type(regular);
-        color: $primary;
+        color: $color-link-primary;
     }
     .btn-small {
         margin: 1rem auto 2rem;
