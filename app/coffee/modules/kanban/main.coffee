@@ -462,7 +462,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         @.loadKanban().then () =>
             @timeout () =>
                 @.initialLoad = true
-            , 0, false
+            , 0, true
 
         @.generateFilters()
 
