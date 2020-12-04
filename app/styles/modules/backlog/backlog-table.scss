@@ -373,11 +373,14 @@
         color: $color-black600;
         margin-inline-end: .5rem;
     }
+
+    .due-date {
+        display: inline-block;
+    }
     .due-date-icon {
-        margin-block-start: -.25rem;
         margin-inline-end: .5rem;
         position: relative;
-        top: .25rem;
+        top: .12rem;
     }
     .tag {
         position: relative;

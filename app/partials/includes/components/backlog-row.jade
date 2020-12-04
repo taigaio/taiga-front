@@ -30,7 +30,7 @@
         )
             span.user-story-number(tg-bo-ref="us.ref")
             span.user-story-name(ng-bind-html="us.subject | emojify")
-        tg-due-date(
+        tg-due-date.due-date(
             due-date="us.due_date"
             is-closed="us.is_closed"
             ng-if="us.due_date"
