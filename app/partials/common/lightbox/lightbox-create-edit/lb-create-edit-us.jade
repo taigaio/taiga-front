@@ -4,7 +4,8 @@
         ng-model="obj.swimlane"
         swimlanes="swimlanesList"
         default-swimlane-id="project.default_swimlane"
-        current-swimlane-id="obj.swimlane"
+        user-story="obj"
+        ng-if="obj"
     )
 
 section.ticket-assigned-to.multiple-assign(
