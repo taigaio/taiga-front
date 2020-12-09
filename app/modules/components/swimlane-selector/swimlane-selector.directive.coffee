@@ -34,6 +34,8 @@ SwimlaneSelector = ($timeout, $translate) ->
 
         mount = () ->
             getCurrentSwimlane()
+            console.log({swimlane: scope.swimlanes.toJS()})
+            console.log({userStory: scope.userStory})
 
         getCurrentSwimlane = () ->
             if (scope.userStory.id)
