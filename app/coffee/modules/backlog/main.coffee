@@ -78,6 +78,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         @.translationData = {q: @.filterQ}
         @scope.userstories = []
         @.totalUserStories = 0
+        @scope.noSwimlaneUserStories = false
         @scope.swimlanesList = Immutable.List()
 
         return if @.applyStoredFilters(@params.pslug, "backlog-filters")
@@ -245,30 +246,9 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             return sprints
 
     loadSwimlanes: ->
-
-
-        userstoriesNoSwimlane = @scope.userstories.filter (us) =>
-            return us.swimlane == null
-
-        emptySwimlaneExists = @scope.swimlanesList.filter (swimlane) =>
-            return swimlane.id == -1
-
-         if userstoriesNoSwimlane.length && !emptySwimlaneExists.size
-            @scope.project.swimlanes.forEach (swimlane) =>
-                if (!@scope.swimlanesList.includes(swimlane))
-                    @scope.swimlanesList = @scope.swimlanesList.push(swimlane)
-
-            emptySwimlane = {
-                id: -1,
-                kanban_order: 1,
-                name: @translate.instant("KANBAN.UNCLASSIFIED_USER_STORIES")
-            }
-            @scope.swimlanesList = @scope.swimlanesList.insert(0, emptySwimlane)
-
-        else
-            @scope.project.swimlanes.forEach (swimlane) =>
-                if (!@scope.swimlanesList.includes(swimlane))
-                    @scope.swimlanesList = @scope.swimlanesList.push(swimlane)
+        @scope.project.swimlanes.forEach (swimlane) =>
+            if (!@scope.swimlanesList.includes(swimlane))
+                @scope.swimlanesList = @scope.swimlanesList.push(swimlane)
 
     loadSprints: ->
         params = {closed: false}
@@ -352,6 +332,9 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
             if header('Taiga-Info-Backlog-Total-Userstories')
                 @.totalUserStories = header('Taiga-Info-Backlog-Total-Userstories')
+
+            if header('Taiga-Info-Userstories-Without-Swimlane')
+                @scope.noSwimlaneUserStories = header('Taiga-Info-Userstories-Without-Swimlane')
 
             @rootscope.$broadcast("backlog:userstories:loaded")
 

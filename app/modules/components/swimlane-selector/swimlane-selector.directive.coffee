@@ -25,7 +25,7 @@ cancelTimeout = @.taiga.cancelTimeout
 ## Swimlane Selector
 #############################################################################
 
-SwimlaneSelector = ($timeout) ->
+SwimlaneSelector = ($timeout, $translate) ->
 
     link = (scope, el, attrs) ->
 
@@ -62,7 +62,16 @@ SwimlaneSelector = ($timeout) ->
             ), 100
 
         scope.selectSwimlane = (swimlane) ->
-            if (swimlane)
+            if (swimlane == 'noSwimlane')
+                swimlane = {
+                    id: -1,
+                    kanban_order: 1,
+                    name: $translate.instant("KANBAN.UNCLASSIFIED_USER_STORIES")
+                }
+                scope.ngModel = swimlane.id
+                scope.currentSwimlane = swimlane
+                scope.hideOptions()
+            else
                 scope.ngModel = swimlane.id
                 scope.currentSwimlane = swimlane
                 scope.hideOptions()
@@ -79,9 +88,10 @@ SwimlaneSelector = ($timeout) ->
             swimlanes: '<',
             defaultSwimlaneId: '<',
             userStory: '<'
+            hasUnclassifiedStories: '<'
             ngModel : '=',
         },
         require: "ngModel"
     }
 
-angular.module('taigaComponents').directive("tgSwimlaneSelector", ['$timeout', SwimlaneSelector])
+angular.module('taigaComponents').directive("tgSwimlaneSelector", ['$timeout', "$translate", SwimlaneSelector])

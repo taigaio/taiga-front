@@ -1,3 +1,4 @@
+
 button.select(
     type="button"
     ng-click="displayOptions()"
@@ -13,9 +14,17 @@ button.select(
     ng-mouseenter="displayOptions()"
 )
     button.option(
+        class="unclassified"
+        type="button"
+        ng-if="hasUnclassifiedStories == 'true'"
+        ng-class="{'selected': swimlane.id == -1 && !currentSwimlaneId}"
+        ng-click="selectSwimlane('noSwimlane')"
+    ) {{ "KANBAN.UNCLASSIFIED_USER_STORIES" | translate }}
+
+    button.option(
         type="button"
         tg-repeat="swimlane in swimlanes"
-        ng-class="{'selected': swimlane.id == currentSwimlaneId || swimlane.id == -1 && !currentSwimlaneId, 'unclassified': swimlane.id == -1}"
+        ng-class="{'selected': swimlane.id == currentSwimlaneId}"
         ng-click="selectSwimlane(swimlane)"
     )
         span {{ swimlane.name }}
