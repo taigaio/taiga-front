@@ -314,9 +314,6 @@ Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoad
             analytics.trackEvent('develop', 'save wysiwyg', $scope.mode, 1)
 
         uploadEnd = (name, url, type, id=null) ->
-            if id
-                url = "#{url}#_taiga-refresh=#{type}:#{id}"
-
             if taiga.isImage(name)
                 mediumInstance.pasteHTML("<img alt='" + name + "' src='" + url + "' title='" + name + "' /><br/>")
             else
@@ -324,10 +321,6 @@ Medium = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoad
                 mediumInstance.pasteHTML("<a target='_blank' href='" + url + "'>" + name + "</a><br/>")
 
         uploadEndMarkdown = (name, url, type, id=null) ->
-            if id
-                url = "#{url}#_taiga-refresh=#{type}:#{id}"
-
-
             if taiga.isImage(name)
                 $scope.markdown += "\n![#{name}](#{url} \"#{name}\")\n"
             else
