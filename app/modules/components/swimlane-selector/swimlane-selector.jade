@@ -17,7 +17,7 @@ button.select(
         class="unclassified"
         type="button"
         ng-if="hasUnclassifiedStories == 'true'"
-        ng-class="{'selected': !userStory.swimlane}"
+        ng-class="{'selected': !userStory.swimlane && userStory.id}"
         ng-click="selectSwimlane('noSwimlane')"
     ) {{ "KANBAN.UNCLASSIFIED_USER_STORIES" | translate }}
 
