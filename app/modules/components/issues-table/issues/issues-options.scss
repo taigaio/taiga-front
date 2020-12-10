@@ -1,10 +1,10 @@
 .issues-options {
     align-items: center;
-    background-color: $grey-02;
     display: flex;
     justify-content: flex-end;
     margin-bottom: 2rem;
-    .button-bulk {
-        margin-left: .2rem;
+    .new-issue {
+        display: flex;
+        gap: .5rem;
     }
 }

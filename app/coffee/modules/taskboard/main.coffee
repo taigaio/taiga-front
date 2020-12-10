@@ -776,10 +776,11 @@ TaskboardDirective = ($rootscope) ->
             target.toggleClass('active')
             $rootscope.$broadcast("taskboard:graph:toggle-visibility")
 
-        tableBodyDom = $el.find(".taskboard-table-body")
+        tableBodyDom = $el.find('[data-js="taskboard-table-hscroll"]')
         tableBodyDom.on "scroll", (event) ->
+            console.log(event)
             target = angular.element(event.currentTarget)
-            tableHeaderDom = $el.find(".taskboard-table-header .taskboard-table-inner")
+            tableHeaderDom = $el.find(".taskboard-table-inner")
             tableHeaderDom.css("left", -1 * target.scrollLeft())
 
         $scope.$on "$destroy", ->

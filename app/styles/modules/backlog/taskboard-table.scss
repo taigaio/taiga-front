@@ -118,6 +118,8 @@ tg-card[type='task'].folded-dragging {
 .taskboard-table {
     display: flex;
     flex-direction: column;
+    height: 100%;
+    overflow: hidden;
     width: 100%;
     .card {
         margin: 0 0 1rem 0;
@@ -220,8 +222,12 @@ tg-card[type='task'].folded-dragging {
     }
 }
 
-.taskboard-table-body {
+.taskbord-utility-wrapper {
     flex: 1;
+    overflow: auto;
+}
+
+.taskboard-table-body {
     margin-top: .25rem;
     width: 100%;
     .taskboard-column {

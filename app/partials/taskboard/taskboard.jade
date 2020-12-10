@@ -65,16 +65,6 @@ div.wrapper(
                     )
                 include ../includes/modules/taskboard-table
 
-        tg-issues-table(
-            tg-issues-ordering
-            ng-if="ctrl.initIssues"
-            sprint-issues="true"
-            issues="issues"
-            on-load-issues="ctrl.loadIssues()"
-            on-add-new-issue="ctrl.addNewIssue('standard', null)"
-            on-add-issues-in-bulk="ctrl.addNewIssue('bulk', null)"
-        )
-
     div.lightbox.lightbox-generic-form.lightbox-create-edit(tg-lb-create-edit)
 
     div.lightbox.lightbox-generic-bulk.lightbox-task-bulk(tg-lb-create-bulk-tasks)
