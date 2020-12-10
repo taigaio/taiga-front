@@ -1,21 +1,18 @@
 section.issues-options(
     tg-check-permission="add_issue"
-    ng-if="ctrl.variant == 'taskboard'"
 )
-    div.new-issue
-        a.button-green(href="", ng-click="ctrl.onAddNewIssue()")
-            span.text(translate="ISSUES.ACTION_NEW_ISSUE")
-        a.button-bulk.button-green.button-small(href="", ng-click="ctrl.onAddIssuesInBulk()")
-            tg-svg(svg-icon="icon-bulk")
+    .new-issue
+        button.btn-small(
+            type="button"
+            variant="primary"
+            ng-click="ctrl.onAddNewIssue()"
+        ) {{"ISSUES.ACTION_NEW_ISSUE" | translate}}
 
-section.issues-options(
-    tg-check-permission="add_issue"
-    ng-if="ctrl.variant == 'issues'"
-)
-    div.new-issue
-        a.button-green(href="", ng-click="ctrl.onAddNewIssue()")
-            span.text(translate="ISSUES.ACTION_NEW_ISSUE")
-        a.button-bulk.button-green.button-small(href="", ng-click="ctrl.onAddIssuesInBulk()")
+        button.btn-icon(
+            type="button"
+            variant="secondary"
+            ng-click="ctrl.onAddIssuesInBulk()"
+        )
             tg-svg(svg-icon="icon-bulk")
 
 section.issues-table.basic-table(ng-class="{empty: !ctrl.issues.length}")
