@@ -1,7 +1,10 @@
 .taskboard {
     display: flex;
     flex-direction: column;
+    height: $main-height;
+    overflow: hidden;
     position: relative;
+
     h1,
     .graphics-container,
     .summary {
@@ -58,6 +61,8 @@
 .taskboard-inner {
     display: flex;
     flex-direction: column;
+    height: 100%;
+    overflow: hidden;
 }
 
 .taskboard-manager {
@@ -65,7 +70,9 @@
     display: grid;
     gap: 1rem;
     grid-template-columns: minmax(180px, 2fr) 10fr;
+    height: 100%;
     margin-top: 1px;
+    overflow: hidden;
     &.expanded {
         grid-template-columns: 10fr;
     }
