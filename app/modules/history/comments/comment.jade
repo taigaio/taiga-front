@@ -19,10 +19,9 @@
                     span(translate="COMMENTS.SHOW_HISTORY")
                     tg-svg(svg-icon="icon-bulk")
         .comment-container
-            .comment-text.wysiwyg(
-                ng-if="!vm.editMode"
-                tg-bind-code="vm.comment.comment"
-            )
+            .comment-text(ng-if="!vm.editMode")
+                 tg-comment-viewer(content="vm.comment.comment_html")
+
             .comment-editor(
                 ng-if="vm.editMode"
                 ng-keyup="vm.checkCancelComment($event)"
