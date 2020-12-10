@@ -20,11 +20,14 @@
 CommentViewerDirective = ($wysiwygService) ->
     link = ($scope, $el, $attrs) ->
         $scope.flag = false
+        $scope.$watch "content", (content) =>
+            $scope.flag = false
+            $scope.patched_content = ""
+            promise = $wysiwygService.refreshAttachmentURL($scope.content)
+            promise.then (html) =>
+                $scope.patched_content = html
+                $scope.flag = true
 
-        promise = $wysiwygService.refreshAttachmentURL($scope.content)
-        promise.then (html) =>
-            $scope.content = html
-            $scope.flag = true
 
     return {
         templateUrl: "components/comment-viewer/comment-viewer.html"
