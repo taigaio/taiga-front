@@ -29,7 +29,8 @@ issuesTableDirective = () ->
             onLoadIssues: '&',
             onAddIssuesInBulk: '&',
             onAddNewIssue: '&',
-            sprintIssues: '<'
+            sprintIssues: '<',
+            variant: '<',
         },
         scope: true,
     }
