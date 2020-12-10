@@ -7,7 +7,7 @@
     position: fixed;
     right: 0;
     top: 0;
-    z-index: $first-layer;
+    z-index: $overall-layer;
     .close {
         @include svg-size(2rem);
         cursor: pointer;
@@ -39,9 +39,9 @@
         transition: opacity .3s ease;
     }
     .lb-icon {
-        margin: 1rem auto;
         display: flex;
         justify-content: center;
+        margin: 1rem auto;
         svg {
             @include svg-size(6rem);
             display: block;
