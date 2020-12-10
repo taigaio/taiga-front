@@ -30,12 +30,11 @@ SwimlaneSelector = ($timeout, $translate) ->
     link = (scope, el, attrs) ->
 
         scope.displaySelector = false
+        scope.selectedSwimlane = null
         timeout = null
 
         mount = () ->
             getCurrentSwimlane()
-            console.log({swimlane: scope.swimlanes.toJS()})
-            console.log({userStory: scope.userStory})
 
         getCurrentSwimlane = () ->
             if (scope.userStory.id)
@@ -51,6 +50,16 @@ SwimlaneSelector = ($timeout, $translate) ->
                     return swimlane.id == scope.defaultSwimlaneId
 
                 scope.currentSwimlane = filteredSwimlanes.get(0);
+            getSelectedSwimlane()
+
+        getSelectedSwimlane = () ->
+            if (scope.userStory.id)
+                if (scope.currentSwimlane)
+                    scope.selectedSwimlane = scope.currentSwimlane.id
+                else
+                    scope.selectedSwimlane = -1
+            else
+                scope.selectedSwimlane = scope.currentSwimlane.id
 
         scope.displayOptions = () ->
             if (timeout)
@@ -77,6 +86,8 @@ SwimlaneSelector = ($timeout, $translate) ->
                 scope.ngModel = swimlane.id
                 scope.currentSwimlane = swimlane
                 scope.hideOptions()
+
+            getSelectedSwimlane()
 
         scope.$watch 'userStory', (userStory) ->
             getCurrentSwimlane()

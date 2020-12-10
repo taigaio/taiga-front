@@ -17,15 +17,16 @@ button.select(
         class="unclassified"
         type="button"
         ng-if="hasUnclassifiedStories == 'true'"
-        ng-class="{'selected': !userStory.swimlane && userStory.id}"
+        ng-class="{'selected': selectedSwimlane == -1}"
         ng-click="selectSwimlane('noSwimlane')"
     ) {{ "KANBAN.UNCLASSIFIED_USER_STORIES" | translate }}
 
     button.option(
         type="button"
         tg-repeat="swimlane in swimlanes"
-        ng-class="{'selected': defaultSwimlaneId == swimlane.id && !userStory.id || swimlane.id == userStory.swimlane || swimlane.id == -1 && !userStory.swimlane, 'unclassified': swimlane.id == -1}"
+        ng-class="{'selected': swimlane.id == selectedSwimlane, 'unclassified': swimlane.id == -1}"
         ng-click="selectSwimlane(swimlane)"
     )
+        //- ng-class="{'selected': defaultSwimlaneId == swimlane.id && !userStory.id || swimlane.id == userStory.swimlane || swimlane.id == -1 && !userStory.swimlane, 'unclassified': swimlane.id == -1}"
         span {{ swimlane.name }}
         span.swimlane-default(ng-if="defaultSwimlaneId == swimlane.id && swimlanes.size > 1") ({{"LIGHTBOX.CREATE_EDIT.DEFAULT" | translate}})
