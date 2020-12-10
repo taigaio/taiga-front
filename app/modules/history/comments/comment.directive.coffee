@@ -24,6 +24,7 @@ CommentDirective = () ->
     return {
         scope: {
             name: "@",
+            projectId: "@",
             object: "@",
             comment: "<",
             type: "<",
