@@ -14,34 +14,27 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
-# File: history/comments/comment.directive.coffee
+# File: components/comment-viewer/comment-viewer.directive.coffee
 ###
 
-module = angular.module('taigaHistory')
+CommentViewerDirective = ($wysiwygService) ->
+    link = ($scope, $el, $attrs) ->
+        $scope.flag = false
+        $scope.$watch "content", (content) =>
+            $scope.flag = false
+            $scope.patched_content = ""
+            promise = $wysiwygService.refreshAttachmentURL($scope.content)
+            promise.then (html) =>
+                $scope.patched_content = html
+                $scope.flag = true
 
-CommentDirective = () ->
 
     return {
+        templateUrl: "components/comment-viewer/comment-viewer.html"
+        link: link,
         scope: {
-            name: "@",
-            projectId: "@",
-            object: "@",
-            comment: "<",
-            type: "<",
-            loading: "<",
-            editing: "<",
-            deleting: "<",
-            objectId: "<",
-            editMode: "<",
-            onEditMode: "&",
-            onDeleteComment: "&",
-            onRestoreDeletedComment: "&",
-            onEditComment: "&"
-        },
-        templateUrl:"history/comments/comment.html",
-        bindToController: true,
-        controller: 'CommentCtrl',
-        controllerAs: "vm",
+            content: "="
+        }
     }
 
-module.directive("tgComment", CommentDirective)
+angular.module("taigaComponents").directive("tgCommentViewer", ["tgWysiwygService", CommentViewerDirective])
