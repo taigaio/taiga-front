@@ -196,14 +196,14 @@
             "UNWATCH": "Прекратить отслеживание",
             "WATCHERS": "Наблюдатели",
             "BUTTON_TITLE": "Начать/прекратить отслеживание",
-            "COUNTER_TITLE": "{total, plural, =1{one watcher} other{# watchers}}"
+            "COUNTER_TITLE": "{total, plural, =1{наблюдатель} other{# наблюдатели}}"
         },
         "VOTE_BUTTON": {
             "BUTTON_TITLE": "Повысить/понизить",
-            "COUNTER_TITLE": "{total, plural, =1{one vote} other{# votes}}"
+            "COUNTER_TITLE": "{total, plural, =1{голос} other{# голоса}}"
         },
         "PROMOTE_TO_US": "Преобразовать в историю",
-        "PROMOTE_TASK_TO_US": "Promote task to user story",
+        "PROMOTE_TASK_TO_US": "Преобразовать задачу  в пользовательскую историю",
         "PROMOTED_ISSUES": "Этот запрос был преобразован в",
         "PROMOTED_TASKS": "Эта задача была преобразована в",
         "CONFIRM_PROMOTE": {
@@ -654,7 +654,7 @@
         },
         "PROJECT_DUE_DATE_STATUS": {
             "TITLE": "Дедлайны",
-            "SUBTITLE": "Specify the due dates status your user stories, tasks and issues will go through if selected",
+            "SUBTITLE": "Укажите, какие статусы будут принимать ваши пользовательские истории, задачи и запросы если они будут выбраны",
             "US_TITLE": "Статус Дедлайна в истории",
             "ACTION_ADD_STATUS": "Добавить новый статус",
             "TASK_TITLE": "Статус Дедлайна Задачи",
@@ -869,9 +869,9 @@
         "HELP": "Расположите свои проекты так, чтобы часто используемые были сверху.<br/> Первые 10 проектов будут расположены в меню быстрой навигации.",
         "PRIVATE": "Приватный проект",
         "LOOKING_FOR_PEOPLE": "Этот проект ищет людей",
-        "FANS_COUNTER_TITLE": "{total, plural, =1{one fan} other{# fans}}",
-        "WATCHERS_COUNTER_TITLE": "{total, plural, =1{one watcher} other{# watchers}}",
-        "MEMBERS_COUNTER_TITLE": "{total, plural, =1{one member} other{# members}}",
+        "FANS_COUNTER_TITLE": "{total, plural, =1{очко} other{# очки}}",
+        "WATCHERS_COUNTER_TITLE": "{total, plural, =1{наблюдатель} other{# наблюдатели}}",
+        "MEMBERS_COUNTER_TITLE": "{total, plural, =1{участник} other{# участники}}",
         "BLOCKED_PROJECT": {
             "BLOCKED": "Заблокированный проект",
             "THIS_PROJECT_IS_BLOCKED": "Этот проект временно заблокирован",
@@ -915,13 +915,13 @@
             "LIKED": "Понравилось",
             "UNLIKE": "Не нравится",
             "BUTTON_TITLE": "Оценить проект",
-            "COUNTER_TITLE": "{total, plural, =1{one fan} other{# fans}}"
+            "COUNTER_TITLE": "{total, plural, =1{очко} other{# очки}}"
         },
         "WATCH_BUTTON": {
             "BUTTON_TITLE": "Отслеживать этот проект и настроить уведомления",
             "WATCH": "Отслеживать",
             "WATCHING": "Отслеживаемое",
-            "COUNTER_TITLE": "{total, plural, =1{one watcher} other{# watchers}}",
+            "COUNTER_TITLE": "{total, plural, =1{наблюдатель} other{# наблюдатели}}",
             "OPTIONS": {
                 "NOTIFY_ALL": "Получать все уведомления",
                 "NOTIFY_ALL_TITLE": "Получать все уведомления для этого проекта",
@@ -983,13 +983,13 @@
             "WRITE_EMAIL": "Или, если Вы хотите, напишите почтовое сообщение этому пользователю Taiga",
             "SEARCH_CONTACT": "Или, если Вы хотите, поищите в Ваших контактах",
             "WRITE_EMAIL_LABEL": "Написать почтовое сообщение на адрес используемый этим пользователем Taiga",
-            "ACCEEDE": "Accede",
+            "ACCEEDE": "Вступить",
             "PROJECT_MEMBERS": "Участники проекта",
             "PROCESS_DESCRIPTION": "Укажите, кому из Taiga Вы хотите назначить задачи {{platform}}",
             "MATCH": "<strong>{{user_external}}</strong> это <strong>{{user_internal}}</strong>?",
             "CHOOSE": "Выбрать пользователя",
             "LINKS": "Связь с {{platform}}",
-            "LINKS_DESCRIPTION": "Do you want to keep the link of each item with the original {{platform}} card?",
+            "LINKS_DESCRIPTION": "Вы хотите сохранить связь каждого элемента с оригинальной {{platform}} картой?",
             "WARNING_MAIL_USER": "Заметьте, если у пользователя нет аккаунта Taiga, мы не сможем назначать ему задачи.",
             "ASSIGN": "Назначить",
             "PROJECT_SELECTOR": {
@@ -1244,7 +1244,7 @@
         "ADD_BULK": "Добавить несколько историй \"пакетом\"",
         "PROMOTED_FROM_ISSUE": "Эта история была сформирована из запроса:",
         "PROMOTED_FROM_TASK": "Эта история была сформирована из задачи:",
-        "CONVERTED_FROM_TASK": "This user story was originally a task.",
+        "CONVERTED_FROM_TASK": "Эта история была сформирована из задачи:",
         "TITLE_LINK_GO_TO_ISSUE": "Перейти к запросу",
         "TITLE_LINK_GO_TO_TASK": "Перейти к задаче",
         "TITLE_DELETE_ACTION": "Удалить пользовательскую историю",
@@ -1440,12 +1440,12 @@
             "MOVE_TO_OPEN_SPRINT": "Переместить в открытый спринт",
             "NO_OPEN_SPRINTS": "Нет других открытых спринтов. Пожалуйста, сначала создайте открытый спринт.",
             "SELECT_DESTINATION_PLACEHOLDER": "Выбрать цель",
-            "UNFINISHED_USER_STORIES_COUNT": "{total, plural, =1{<strong>#</strong> unfinished user story} other{<strong>#</strong> unfinished user stories}}",
-            "UNFINISHED_STORYLESS_TASKS_COUNT": "{total, plural, =1{<strong>#</strong> unfinished storyless task} other{<strong>#</strong> unfinished storyless tasks}}",
-            "UNFINISHED_ISSUES_COUNT": "{total, plural, =1{<strong>#</strong> unfinished issue} other{<strong>#</strong> unfinished issue}}",
+            "UNFINISHED_USER_STORIES_COUNT": "{total, plural, =1{<strong>#</strong> незавершённая пользовательская история} other{<strong>#</strong>№незавершённых пользовательских историй}}",
+            "UNFINISHED_STORYLESS_TASKS_COUNT": "{total, plural, =1{<strong>#</strong> незавершённая задача без истории} other{<strong>#</strong>незавершённых задач без истории }}",
+            "UNFINISHED_ISSUES_COUNT": "{total, plural, =1{<strong>#</strong> незаконченный запрос} other{<strong>#</strong>незаконченных запросов: }}",
             "WARNING_ISSUES_NOT_MOVED_TITLE": "Вы только что переместили все пользовательские истории и задачи, спринт будет закрыт",
             "WARNING_ISSUES_NOT_MOVED": "Запросы останутся в спринте и не будут удалены",
-            "WARNING_SPRINT_STILL_OPEN_TITLE": "{total, plural, =1{You just moved # item!} other{You just moved # items!}}",
+            "WARNING_SPRINT_STILL_OPEN_TITLE": "{total, plural, =1{наблюдатель} other{# наблюдателей}}",
             "WARNING_SPRINT_STILL_OPEN": "Имейте в виду, что спринт {{sprintName}} <strong>будет оставаться открытым</strong>, до тех пор, пока он содержит незавершённые элементы."
         }
     },
@@ -1491,11 +1491,11 @@
         "SUCCESS": "Taiga обновила Ваш email"
     },
     "VERIFY_EMAIL_FORM": {
-        "TITLE": "Verify your email",
-        "SUBTITLE": "One click more and your email will be verified!",
+        "TITLE": "Проверьте ваш email",
+        "SUBTITLE": "Еще один клик и ваш email будет проверен!",
         "PLACEHOLDER_INPUT_TOKEN": "изменить идентификатор email",
-        "ACTION_VERIFY_EMAIL": "Verify email",
-        "SUCCESS": "The Taiga verified your email"
+        "ACTION_VERIFY_EMAIL": "Проверьте email",
+        "SUCCESS": "Taiga проверяет ваш email"
     },
     "ISSUES": {
         "PAGE_TITLE": "Запросы - {{projectName}}",
@@ -1638,9 +1638,9 @@
         "ACTION_USE_GRAVATAR": "Использовать картинку по умолчанию",
         "ACTION_DELETE_ACCOUNT": "Удалить аккаунт",
         "ACTION_DOWNLOAD_PROFILE": "Скачать профиль Тайги",
-        "ACTION_VERIFY_EMAIL": "Verify your email",
+        "ACTION_VERIFY_EMAIL": "Проверьте ваш email",
         "CHANGE_EMAIL_SUCCESS": "<strong>Проверьте входящие письма!</strong><br />Мы послали письмо на ваш аккаунт<br />с инструкциями по установке вашего нового адреса.",
-        "VERIFY_EMAIL_SUCCESS": "<strong>Check your inbox!</strong><br />We have sent you an email<br />with instructions on how to verify your address",
+        "VERIFY_EMAIL_SUCCESS": "<strong>Проверьте входящие письма!</strong><br />Мы послали письмо на email<br />с инструкциями по подтверждению вашего адреса.",
         "CHANGE_PHOTO": "Изменить фото",
         "FIELD": {
             "USERNAME": "Имя пользователя",
@@ -1832,7 +1832,7 @@
         "PAGE_TITLE": "Найти проекты - Taiga",
         "PAGE_DESCRIPTION": "Каталог с возможностью поиска публичных проектов в Taiga. Изучайте бэклоги, таймлайны, запросы и команды. Проверьте самые любимые или самые активные проекты. Применяйте фильтр по наличию Канбана или Скрама.",
         "DISCOVER_TITLE": "Найти проекты",
-        "DISCOVER_SUBTITLE": "{projects, plural, =1{One public project to discover} other{# public projects to discover}}",
+        "DISCOVER_SUBTITLE": "{projects, plural, 1{Всего один публичный проект} other{# Всего публичных проектов }}",
         "MOST_ACTIVE": "Наиболее активные",
         "MOST_ACTIVE_EMPTY": "Отсутствуют АКТИВНЫЕ проекты",
         "MOST_LIKED": "Больше всего лайков",
