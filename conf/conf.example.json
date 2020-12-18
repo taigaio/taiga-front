@@ -22,5 +22,5 @@
     "tribeHost": null,
     "importers": [],
     "gravatar": false,
-    "rtlLanguages": ["fa"]
+    "rtlLanguages": ["ar", "fa", "he"]
 }
