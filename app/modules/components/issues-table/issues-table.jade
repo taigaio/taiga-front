@@ -49,7 +49,7 @@ section.issues-table.basic-table(ng-class="{empty: !ctrl.issues.length}")
                     d="M11.6232 9.42892C12.5713 9.42892 12.9872 10.6252 12.2435 11.2133L8.62027 14.0784C8.25672 14.3659 7.74328 14.3659 7.37973 14.0784L3.75652 11.2133C3.01283 10.6252 3.42868 9.42892 4.37679 9.42892H11.6232Z")
 
         div.subject(data-fieldname="subject")
-            span {{"ISSUES.TABLE.COLUMNS.SUBJECT" | translate}}
+            span {{"ISSUES.TABLE.COLUMNS.ISSUE" | translate}}
             svg(viewBox="0 0 16 16")
                 path(
                     class="arrow-up"
@@ -108,12 +108,13 @@ section.issues-table.basic-table(ng-class="{empty: !ctrl.issues.length}")
                 tg-nav="project-issues-detail:project=project.slug,ref=issue.ref"
                 title="#{{ ::issue.ref }} {{ ::issue.subject }}"
             )
-                span(tg-bo-ref="issue.ref")
-                span.blocked-text(
+                span.issue-ref(tg-bo-ref="::issue.ref")
+                span.issue-subject(ng-bind-html="issue.subject | emojify")
+                span.blocked(
                     ng-if="issue.is_blocked"
-                    title="{{issue.blocked_note}}"
-                ) {{'ISSUES.TABLE.BLOCKED' | translate}}
-                span(ng-bind-html="issue.subject | emojify")
+                    ng-attr-title="{{::issue.blocked_note}}"
+                )
+                    tg-svg(svg-icon="icon-lock")
                 tg-due-date(
                     due-date="issue.due_date"
                     is-closed="us.is_closed"
@@ -139,7 +140,7 @@ section.issues-table.basic-table(ng-class="{empty: !ctrl.issues.length}")
         ) {{ issue.modified_date|momentFormat:'DD MMM YYYY'}}
 
         div.assigned-field(tg-issue-assigned-to-inline-edition="issue")
-            div.issue-assignedto(title="{{'ISSUES.TABLE.TITLE_ACTION_ASSIGNED_TO' | translate}}")
+            .issue-assignedto(title="{{'ISSUES.TABLE.TITLE_ACTION_ASSIGNED_TO' | translate}}")
                 figure.avatar
                 tg-svg(
                     tg-check-permission="modify_issue"

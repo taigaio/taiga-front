@@ -1589,12 +1589,12 @@
                 "TYPE": "Type",
                 "SEVERITY": "Severity",
                 "PRIORITY": "Priority",
-                "SUBJECT": "Subject",
+                "ISSUE": "Issue",
                 "VOTES": "Votes",
                 "STATUS": "Status",
                 "ATTACHMENTS": "Attachments",
                 "MODIFIED": "Modified",
-                "ASSIGNED_TO": "Assigned to"
+                "ASSIGNED_TO": "Assign to"
             },
             "TITLE_ACTION_CHANGE_STATUS": "Change status",
             "TITLE_ACTION_ASSIGNED_TO": "Assigned to",
