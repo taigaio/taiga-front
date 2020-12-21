@@ -2,6 +2,28 @@
 
 ## Unreleased
 
+## 5.5.9 (2020-12-21)
+
+### Features
+
+- Render custom fields and block reason as Markdown.
+
+### Fix
+
+- Fix attachment refresh feature.
+
+- Fix welcome email template layout.
+
+### Misc
+
+- Several minor changes.
+
+### i18n
+
+- Add Arabic.
+
+- Update Russian.
+
 ## 5.5.8 (2020-11-11)
 
 ### Misc
