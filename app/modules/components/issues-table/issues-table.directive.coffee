@@ -21,7 +21,7 @@ module = angular.module("taigaComponents")
 
 issuesTableDirective = () ->
     return {
-        controller: "IssuesTrable",
+        controller: "IssuesTable",
         controllerAs: "ctrl",
         templateUrl: "components/issues-table/issues-table.html",
         bindToController: {

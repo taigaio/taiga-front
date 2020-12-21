@@ -18,36 +18,5 @@
 ###
 
 class IssuesTableController
-    @.$inject = [
-        "$rootScope",
-        "$tgConfirm",
-        "$tgResources",
-        "tgProjectService",
-    ]
 
-    constructor: (@rootscope, @confirm, @rs, @projectService) ->
-        @.voting = false
-
-    upVoteIssue: (issueId) ->
-        @.voting = issueId
-        onSuccess = =>
-            @.onLoadIssues()
-            @.voting = null
-        onError = =>
-            @confirm.notify("error")
-            @.voting = null
-
-        return @rs.issues.upvote(issueId).then(onSuccess, onError)
-
-    downVoteIssue: (issueId) ->
-        @.voting = issueId
-        onSuccess = =>
-            @.onLoadIssues()
-            @.voting = null
-        onError = =>
-            @confirm.notify("error")
-            @.voting = null
-
-        return @rs.issues.downvote(issueId).then(onSuccess, onError)
-
-angular.module('taigaComponents').controller('IssuesTrable', IssuesTableController)
+angular.module('taigaComponents').controller('IssuesTable', IssuesTableController)

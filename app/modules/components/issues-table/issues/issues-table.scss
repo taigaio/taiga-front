@@ -83,12 +83,22 @@
         margin-right: .25rem;
         vertical-align: middle;
     }
-    .icon-arrow-up,
-    .icon-arrow-down {
-        @include svg-size(.7rem);
-        fill: $gray-light;
+    svg {
         margin-left: .25rem;
-        vertical-align: middle;
+    }
+    .icon-arrow-up {
+        .arrow-up {
+            fill: $color-link-primary;
+        }
+    }
+    .icon-arrow-down {
+        .arrow-down {
+            fill: $color-link-primary;
+        }
+    }
+    .arrow-up,
+    .arrow-down {
+        fill: $color-gray400;
     }
     .is-voted {
         color: $primary-light;
