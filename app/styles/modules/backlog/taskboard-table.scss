@@ -229,7 +229,11 @@ tg-card[type='task'].folded-dragging {
 
 .taskboard-table-body {
     margin-top: .25rem;
-    width: 100%;
+    .taskboard-table-inner {
+        border-bottom: 4px solid $color-solid-primary;
+        margin-bottom: 1rem;
+        padding-bottom: 1rem;
+    }
     .taskboard-column {
         flex-grow: $column-flex;
         flex-shrink: $column-shrink;

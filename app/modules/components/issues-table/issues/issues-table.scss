@@ -87,10 +87,11 @@
         flex-basis: 70px;
         flex-grow: 0;
         flex-shrink: 0;
+        margin: 0 .5rem;
     }
     .subject {
         flex: 1;
-        padding-right: 1rem;
+        margin: 0 .5rem;
         a {
             all: unset;
             cursor: pointer;
@@ -132,7 +133,7 @@
     .issue-field {
         flex-grow: 0;
         flex-shrink: 0;
-        padding: 0 .5rem;
+        margin: 0 .5rem;
         position: relative;
     }
     .issue-field {

@@ -1,14 +1,22 @@
 section.issues-options(
     tg-check-permission="add_issue"
+    ng-class="{'in-taskboard': ctrl.sprintIssues}"
 )
+    .sprint-issues-title(ng-if="ctrl.sprintIssues")
+        tg-svg(svg-icon="icon-issues")
+        span.sprint-issues-title-txt Sprint Issues
     .new-issue
-        button.btn-small(
+        button(
+            ng-class="{'btn-small': !ctrl.sprintIssues, 'btn-board': ctrl.sprintIssues}"
             type="button"
             variant="primary"
             ng-click="ctrl.onAddNewIssue()"
-        ) {{"ISSUES.ACTION_NEW_ISSUE" | translate}}
+        )
+            tg-svg(ng-if="ctrl.sprintIssues", svg-icon="icon-add")
+            span(ng-if="!ctrl.sprintIssues") {{"ISSUES.ACTION_NEW_ISSUE" | translate}}
 
-        button.btn-icon(
+        button(
+            ng-class="{'btn-icon': !ctrl.sprintIssues, 'btn-board': ctrl.sprintIssues}"
             type="button"
             variant="secondary"
             ng-click="ctrl.onAddIssuesInBulk()"
