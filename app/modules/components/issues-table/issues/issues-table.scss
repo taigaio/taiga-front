@@ -71,6 +71,7 @@
         }
         .issue-assignedto {
             &:hover {
+                cursor: pointer;
                 .avatar img {
                     border: 2px solid $color-solid-primary;
                 }
@@ -108,6 +109,7 @@
         .issue-subject {
             color: $color-black900;
         }
+        .due-date,
         .blocked {
             align-items: center;
             display: inline-flex;
@@ -120,6 +122,9 @@
             tg-svg {
                 display: inline;
             }
+        }
+        .tg-due-date {
+            display: inline-block;
         }
     }
     .modified-field,

@@ -519,8 +519,8 @@ IssuesOrderingDirective = ($log, $location, $template, $compile) ->
 
                 $ctrl.loadIssues().then ->
                     # Update the arrow
+                    $el.find('.row.title svg').removeClass()
                     colHeadElement = $el.find(".row.title > div[data-fieldname='#{trim(finalOrder, "-")}']")
-                    colHeadElement.find('svg').removeClass()
                     icon = if startswith(finalOrder, "-") then "icon-arrow-up" else "icon-arrow-down"
 
                     colHeadElement.find('svg').addClass(icon)

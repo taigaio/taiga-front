@@ -115,12 +115,15 @@ section.issues-table.basic-table(ng-class="{empty: !ctrl.issues.length}")
                     ng-attr-title="{{::issue.blocked_note}}"
                 )
                     tg-svg(svg-icon="icon-lock")
-                tg-due-date(
-                    due-date="issue.due_date"
-                    is-closed="us.is_closed"
+                span.due-date(
                     ng-if="issue.due_date"
-                    obj-type="issue"
+                    ng-attr-title="{{::issue.due_date_reason}}"
                 )
+                    tg-due-date(
+                        due-date="::issue.due_date"
+                        is-closed="::issue.is_closed"
+                        obj-type="issue"
+                    )
 
         div.issue-field(tg-issue-status-inline-edition="issue")
             a.issue-status(
