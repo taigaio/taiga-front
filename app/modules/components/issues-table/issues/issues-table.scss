@@ -122,6 +122,7 @@
         }
         .issue-subject {
             color: $color-black900;
+            margin-inline-end: .75rem;
         }
         .due-date,
         .blocked {
@@ -139,6 +140,13 @@
         }
         .tg-due-date {
             display: inline-block;
+        }
+        .tag {
+            position: relative;
+            top: .25rem;
+            &.last {
+                margin-inline-end: .75rem;
+            }
         }
     }
     .modified-field,

@@ -133,6 +133,12 @@ section.issues-table.basic-table(ng-class="{empty: !ctrl.issues.length}")
                         is-closed="::issue.is_closed"
                         obj-type="issue"
                     )
+                span.tag(
+                    ng-attr-title="{{tag[0]}}"
+                    ng-repeat="tag in issue.tags"
+                    ng-style="{background: tag[1]}"
+                    ng-class="{'last':$last}"
+                ) {{tag[0]}}
 
         div.issue-field(tg-issue-status-inline-edition="issue")
             a.issue-status(
