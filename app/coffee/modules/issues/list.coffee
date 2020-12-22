@@ -525,7 +525,6 @@ IssuesOrderingDirective = ($log, $location, $template, $compile) ->
 
                     colHeadElement.find('svg').addClass(icon)
 
-                    # target.append(svg)
                     $compile(target.contents())($scope)
 
     ## Issues Link
