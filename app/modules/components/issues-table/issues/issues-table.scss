@@ -184,9 +184,22 @@
         }
     }
     .options-field {
-        flex-basis: 30px;
+        flex-basis: 16px;
         .icon {
             fill: $color-link-primary;
+        }
+        .options-button {
+            background: none;
+            height: 24px;
+            margin: 0;
+            padding: 0;
+            width: 16px;
+            &.active {
+                background: $color-gray200;
+                .icon {
+                    fill: $color-black600;
+                }
+            }
         }
     }
     .pop-status {

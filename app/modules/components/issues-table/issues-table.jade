@@ -160,10 +160,13 @@ section.issues-table.basic-table(ng-class="{empty: !ctrl.issues.length}")
                     tg-check-permission="modify_issue"
                     svg-icon="icon-arrow-down"
                 )
-        div.options-field(ng-if="ctrl.sprintIssues")
-            button(
+        div.options-field(
+            ng-if="ctrl.sprintIssues"
+        )
+            button.options-button(
                 type="button"
                 ng-click="displayOptions(issue.id)"
+                ng-class="{'active': issueOptions == issue.id}"
             )
                 tg-svg(svg-icon="icon-more-vertical")
             .options(
