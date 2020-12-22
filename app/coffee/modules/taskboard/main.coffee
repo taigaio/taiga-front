@@ -572,6 +572,7 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
                     @confirm.notify("error")
 
     deleteIssue: (id) ->
+        console.log(id)
         issue = @.taskboardIssuesService.getIssue(id)
         issue = issue.set('loading-delete', true)
 

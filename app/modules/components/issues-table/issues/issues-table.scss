@@ -1,5 +1,6 @@
 .issues-table {
     margin-bottom: 2rem;
+    padding: 0 1rem;
 
     &.empty {
         display: none;
@@ -20,6 +21,9 @@
             color: $color-link-tertiary;
             display: flex;
             justify-content: center;
+            &:hover {
+                color: $color-link-primary;
+            }
         }
         .issue-field {
             justify-content: flex-end;
@@ -62,11 +66,20 @@
                 color: $color-black900;
             }
         }
+        .attachments-field {
+            display: flex;
+            justify-content: center;
+            .icon {
+                @include svg-size(.75rem);
+                fill: currentColor;
+                margin-left: .25rem;
+            }
+        }
         .issue-status {
             align-items: center;
             display: flex;
             .icon {
-                margin-left: .25rem;
+                margin-left: .4rem;
             }
         }
         .issue-assignedto {
@@ -130,6 +143,8 @@
     }
     .modified-field,
     .assigned-field,
+    .attachments-field,
+    .options-field,
     .issue-field {
         flex-grow: 0;
         flex-shrink: 0;
@@ -144,10 +159,11 @@
     .modified-field {
         flex-basis: 100px;
     }
+    .attachments-field {
+        flex-basis: 100px;
+    }
     .assigned-field {
         flex-basis: 100px;
-        flex-grow: 0;
-        flex-shrink: 0;
         .issue-assignedto {
             align-items: center;
             display: flex;
@@ -167,6 +183,12 @@
             margin-left: .25rem;
         }
     }
+    .options-field {
+        flex-basis: 30px;
+        .icon {
+            fill: $color-link-primary;
+        }
+    }
     .pop-status {
         @include popover(200px, 20px, 0, '', '');
         &.fix {
@@ -178,6 +200,38 @@
     .modified-field {
         @include until($widescreen) {
             display: none;
+        }
+    }
+
+    .options {
+        background-color: $color-white;
+        border: 1px solid $color-gray400;
+        border-radius: 4px;
+        box-shadow: 4px 4px 8px rgba($color-gray400, .5);
+        padding: .5rem;
+        position: absolute;
+        right: 0;
+        top: calc(1rem + 4px);
+        width: 175px;
+        z-index: $first-layer;
+    }
+
+    .option {
+        @include font-size(small);
+        background: transparent;
+        color: $color-link-primary;
+        cursor: pointer;
+        display: flex;
+        padding: .25rem;
+        text-align: left;
+        width: 100%;
+
+        .icon {
+            margin-right: .25rem;
+        }
+
+        &:hover {
+            background: $color-gray200;
         }
     }
 }

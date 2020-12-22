@@ -194,13 +194,18 @@ div.taskboard-table(
                             type="task"
                             folded="statusesFolded[st.id] || usFolded[null]"
                         )
-
-        tg-issues-table(
-            tg-issues-ordering
-            ng-if="ctrl.initIssues"
-            sprint-issues="true"
-            issues="issues"
-            on-load-issues="ctrl.loadIssues()"
-            on-add-new-issue="ctrl.addNewIssue('standard', null)"
-            on-add-issues-in-bulk="ctrl.addNewIssue('bulk', null)"
+        .issues-wrapper(
+            ng-class="{'zoom-0': ctrl.zoomLevel == 0, 'zoom-1': ctrl.zoomLevel == 1, 'zoom-2': ctrl.zoomLevel == 2, 'zoom-3': ctrl.zoomLevel == 3}"
         )
+            tg-issues-table(
+                tg-issues-ordering
+                ng-if="ctrl.initIssues"
+                sprint-issues="true"
+                issues="issues"
+                on-load-issues="ctrl.loadIssues()"
+                on-add-new-issue="ctrl.addNewIssue('standard', null)"
+                on-add-issues-in-bulk="ctrl.addNewIssue('bulk', null)"
+                on-delete-issue="ctrl.deleteIssue(id)"
+                on-detach-issue="ctrl.removeIssueFromSprint(id)"
+                on-edit-issue="ctrl.editIssue(id)"
+            )

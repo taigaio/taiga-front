@@ -1,6 +1,6 @@
 section.issues-options(
     tg-check-permission="add_issue"
-    ng-class="{'in-taskboard': ctrl.sprintIssues}"
+    ng-class="{'in-taskboard': ctrl.sprintIssues, 'empty': !ctrl.issues.length}"
 )
     .sprint-issues-title(ng-if="ctrl.sprintIssues")
         tg-svg(svg-icon="icon-issues")
@@ -75,7 +75,7 @@ section.issues-table.basic-table(ng-class="{empty: !ctrl.issues.length}")
                 path(
                     class="arrow-down"
                     d="M11.6232 9.42892C12.5713 9.42892 12.9872 10.6252 12.2435 11.2133L8.62027 14.0784C8.25672 14.3659 7.74328 14.3659 7.37973 14.0784L3.75652 11.2133C3.01283 10.6252 3.42868 9.42892 4.37679 9.42892H11.6232Z")
-        div.issue-field.skip-issuesOrder(ng-if="ctrl.sprintIssues")
+        div.attachments-field.skip-issuesOrder(ng-if="ctrl.sprintIssues", data-fieldname="attachments")
             span {{"ISSUES.TABLE.COLUMNS.ATTACHMENTS" | translate}}
             svg(viewBox="0 0 16 16")
                 path(
@@ -102,6 +102,7 @@ section.issues-table.basic-table(ng-class="{empty: !ctrl.issues.length}")
                 path(
                     class="arrow-down"
                     d="M11.6232 9.42892C12.5713 9.42892 12.9872 10.6252 12.2435 11.2133L8.62027 14.0784C8.25672 14.3659 7.74328 14.3659 7.37973 14.0784L3.75652 11.2133C3.01283 10.6252 3.42868 9.42892 4.37679 9.42892H11.6232Z")
+        div.options-field.skip-issuesOrder(ng-if="ctrl.sprintIssues")
 
     div.row.table-main(
         ng-repeat="issue in ctrl.issues track by issue.id"
@@ -144,7 +145,9 @@ section.issues-table.basic-table(ng-class="{empty: !ctrl.issues.length}")
                     svg-icon="icon-arrow-down"
                 )
 
-        div.issue-field(ng-if="ctrl.sprintIssues") {{ issue.attachments.length }}
+        div.attachments-field(ng-if="ctrl.sprintIssues")
+            span {{ issue.attachments.length }}
+            tg-svg(svg-icon="icon-paperclip")
 
         div.modified-field(
             title="{{ issue.modified_date|momentFormat:'DD MMM YYYY HH:mm' }}"
@@ -157,8 +160,37 @@ section.issues-table.basic-table(ng-class="{empty: !ctrl.issues.length}")
                     tg-check-permission="modify_issue"
                     svg-icon="icon-arrow-down"
                 )
+        div.options-field(ng-if="ctrl.sprintIssues")
+            button(
+                type="button"
+                ng-click="displayOptions(issue.id)"
+            )
+                tg-svg(svg-icon="icon-more-vertical")
+            .options(
+                ng-show="issueOptions == issue.id"
+                ng-mouseleave="hideOptions()"
+                ng-mouseenter="displayOptions(issue.id)"
+            )
+                button.option(
+                    ng-click="ctrl.edit(issue)"
+                    type="button"
+                )
+                    tg-svg(svg-icon="icon-edit")
+                    span {{'COMMON.EDIT' | translate}}
+                button.option(
+                    ng-click="ctrl.delete(issue)"
+                    type="button"
+                )
+                    tg-svg(svg-icon="icon-trash")
+                    span {{'COMMON.DELETE' | translate}}
+                button.option(
+                    ng-click="ctrl.detach(issue)"
+                    type="button"
+                )
+                    tg-svg(svg-icon="icon-detach")
+                    span {{'COMMON.CARD.DETACH_ISSUE_FROM_SPRINT' | translate}}
 
-section.empty-large(ng-if="ctrl.issues != undefined && ctrl.issues.length == 0")
+section.empty-large(ng-if="ctrl.issues != undefined && ctrl.issues.length == 0 && !ctrl.sprintIssues")
     img(
         src="/#{v}/images/empty/empty_moon.png",
         alt="{{ISSUES.TABLE.EMPTY.TITLE | translate }}"

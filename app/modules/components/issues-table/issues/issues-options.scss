@@ -2,7 +2,7 @@
     align-items: center;
     display: flex;
     justify-content: flex-end;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 .new-issue {
@@ -15,6 +15,9 @@
     display: flex;
     justify-content: space-between;
     padding: .75rem;
+    &.empty {
+        background: $color-gray100;
+    }
     .sprint-issues-title {
         align-items: center;
         display: flex;

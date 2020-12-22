@@ -53,7 +53,7 @@
             "EDIT": "Edit card",
             "DELETE": "Delete card",
             "DELETE_ISSUE": "Delete issue",
-            "DETACH_ISSUE_FROM_SPRINT": "Detach issue from sprint",
+            "DETACH_ISSUE_FROM_SPRINT": "Detach from sprint",
             "PTS": "{{pts}} pts",
             "DUE_DATE": "Due date: {{date}}",
             "NO_PTS": "N/E",
