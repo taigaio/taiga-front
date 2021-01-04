@@ -25,14 +25,12 @@ issuesTableDirective = ($timeout) ->
         scope.issueOptions = null
 
         scope.displayOptions = (id) ->
-            console.log('displayOptions')
             if (timeout)
                 $timeout.cancel(timeout)
                 timeout = null
             scope.issueOptions = id
 
         scope.hideOptions = () ->
-            console.log('hideOptions')
             timeout = $timeout (() ->
                 scope.issueOptions = null
             ), 200
