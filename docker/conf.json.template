@@ -10,7 +10,7 @@
     "themes": ["taiga"],
     "defaultTheme": "taiga",
     "defaultLoginEnabled": true,
-    "publicRegisterEnabled": true,
+    "publicRegisterEnabled": ${PUBLIC_REGISTER_ENABLED},
     "feedbackEnabled": true,
     "supportUrl": "https://tree.taiga.io/support/",
     "privacyPolicyUrl": null,
