@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## 5.5.10 (2021-01-04)
+
+### Fix
+
+- Fix comments style.
+
 ## 5.5.9 (2020-12-21)
 
 ### Features
