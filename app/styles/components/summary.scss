@@ -19,7 +19,7 @@ $summary-background: $grayer;
     }
     .data {
         .number {
-            color: $primary-50;
+            color: $color-solid-primary;
         }
     }
     .number {
@@ -100,7 +100,7 @@ $summary-background: $grayer;
     position: relative;
     width: 15%;
     .current-progress {
-        background-color: $secondary;
+        background-color: $color-link-primary;
         height: 24px;
     }
     .defined-points {
@@ -115,7 +115,7 @@ $summary-background: $grayer;
         position: absolute;
     }
     .closed-points-progress {
-        background: $primary-light;
+        background: $color-link-primary;
         height: 24px;
         position: absolute;
     }
@@ -135,8 +135,9 @@ $summary-background: $grayer;
         flex-wrap: wrap;
     }
     .summary-progress-wrapper {
-        align-items: flex-start;
+        align-items: center;
         display: flex;
+        height: calc(65px - 1.5rem);
     }
     .summary-progress-bar {
         flex-basis: 200px;
@@ -207,10 +208,19 @@ $summary-background: $grayer;
         .number {
             @include font-size(large);
             @include font-type(normal);
+            line-height: 1rem;
         }
         .role {
             @include font-size(xsmall);
             @include font-type(regular);
+        }
+    }
+    .points-per-role-stats-title {
+        display: flex;
+        margin-bottom: .25rem;
+
+        tg-svg {
+            transform: translateY(12px);
         }
     }
 }
@@ -227,7 +237,7 @@ $summary-background: $grayer;
     padding: 2rem 6rem;
     svg {
         @include svg-size(4rem);
-        fill: $primary-dark;
+        fill: $color-link-primary;
         flex-basis: 4rem;
         flex-shrink: 0;
         margin-right: 2rem;
@@ -241,7 +251,7 @@ $summary-background: $grayer;
     .title {
         @include font-type(medium);
         @include font-size(large);
-        color: $primary-dark;
+        color: $color-link-primary;
         margin: 0;
         text-transform: uppercase;
     }

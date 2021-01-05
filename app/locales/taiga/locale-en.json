@@ -1368,7 +1368,7 @@
     "BACKLOG": {
         "PAGE_TITLE": "Backlog - {{projectName}}",
         "PAGE_DESCRIPTION": "The backlog panel, with user stories and sprints of the project {{projectName}}: {{projectDescription}}",
-        "SECTION_NAME": "Backlog",
+        "SECTION_NAME": "Scrum",
         "CUSTOMIZE_GRAPH": "Customize your backlog graph",
         "CUSTOMIZE_GRAPH_TEXT": "To have a nice graph that helps you follow the evolution of the project you have to set up the points and sprints through the",
         "CUSTOMIZE_GRAPH_ADMIN": "Admin",

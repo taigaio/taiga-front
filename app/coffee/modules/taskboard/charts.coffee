@@ -43,12 +43,12 @@ SprintGraphDirective = ($translate)->
         data.unshift({
             data: _.zip(days, _.map(dataToDraw, (d) -> d.optimal_points))
             lines:
-                fillColor : "rgba(120,120,120,0.2)"
+                fillColor : "rgba(194,194,194,0.2)"
         })
         data.unshift({
             data: _.zip(days, _.map(dataToDraw, (d) -> d.open_points))
             lines:
-                fillColor : "rgba(102,153,51,0.3)"
+                fillColor : "rgba(147,169,93,0.15)"
         })
 
         options =
@@ -84,7 +84,7 @@ SprintGraphDirective = ($translate)->
                     fill: true
                     radius: 4
                     lineWidth: 2
-            colors: ["rgba(102,153,51,1)", "rgba(120,120,120,0.2)"]
+            colors: ["rgba(147,169,93,1)", "rgba(120,120,120,0.2)"]
             tooltip: true
             tooltipOpts:
                 content: (label, xval, yval, flotItem) ->
