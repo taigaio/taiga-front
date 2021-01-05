@@ -1130,20 +1130,20 @@ BurndownBacklogGraphDirective = ($translate) ->
         data.push({
             data: _.zip(milestonesRange, optimal_line)
             lines:
-                fillColor : "rgba(120,120,120,0.2)"
+                fillColor : "rgba(194,194,194,0.2)"
         })
         evolution_line = _.filter(_.map(dataToDraw.milestones, (ml) -> ml.evolution), (evolution) -> evolution?)
         data.push({
             data: _.zip(milestonesRange, evolution_line)
             lines:
-                fillColor : "rgba(102,153,51,0.3)"
+                fillColor : "rgba(147,169,93,0.15)"
         })
         client_increment_line = _.map dataToDraw.milestones, (ml) ->
             -ml["team-increment"] - ml["client-increment"]
         data.push({
             data: _.zip(milestonesRange, client_increment_line)
             lines:
-                fillColor : "rgba(255,51,51,0.3)"
+                fillColor : "rgba(147,169,93,0.15)"
         })
         team_increment_line = _.map(dataToDraw.milestones, (ml) -> -ml["team-increment"])
         data.push({
@@ -1154,7 +1154,7 @@ BurndownBacklogGraphDirective = ($translate) ->
         colors = [
             "rgba(0,0,0,1)"
             "rgba(120,120,120,0.2)"
-            "rgba(102,153,51,1)"
+            "rgba(147,169,93,1)"
             "rgba(153,51,51,1)"
             "rgba(255,51,51,1)"
         ]
