@@ -81,6 +81,10 @@
             .icon {
                 margin-left: .4rem;
             }
+
+            tg-svg {
+                fill: $color-black900;
+            }
         }
         .issue-assignedto {
             &:hover {
@@ -129,7 +133,7 @@
             align-items: center;
             display: inline-flex;
             justify-content: center;
-            margin-left: .5rem;
+            margin-inline-end: .75rem;
             vertical-align: middle;
             .icon {
                 fill: $color-link-red;

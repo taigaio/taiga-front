@@ -151,7 +151,7 @@ section.issues-table.basic-table(ng-class="{empty: !ctrl.issues.length}")
                     svg-icon="icon-arrow-down"
                 )
 
-        div.attachments-field(ng-if="ctrl.sprintIssues")
+        div.attachments-field(ng-if="ctrl.sprintIssues" title="{{ 'ISSUES.TABLE.COLUMNS.ATTACHMENTS' | translate }}")
             span {{ issue.attachments.length }}
             tg-svg(svg-icon="icon-paperclip")
 
