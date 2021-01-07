@@ -16,7 +16,10 @@ window.taigaConfig = {
     "privacyPolicyUrl": null,
     "termsOfServiceUrl": null,
     "maxUploadFileSize": null,
-    "importers": [],
+    "enableAsanaImporter": false,
+    "enableGithubImporter": false,
+    "enableJiraImporter": false,
+    "enableTrelloImporter": false,
     "contribPlugins": []
 }
 
@@ -82,3 +85,4 @@ promise.always ->
         ljs.load "/#{window._version}/js/app.js", ->
             emojisPromise.then ->
                 angular.bootstrap(document, ['taiga'])
+
