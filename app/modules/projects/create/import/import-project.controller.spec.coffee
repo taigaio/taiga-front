@@ -24,7 +24,10 @@ describe "ImportProjectCtrl", ->
 
     _mockConfig = ->
         mocks.config = Immutable.fromJS({
-            importers: ['trello', 'github', 'jira', 'asana']
+            enableAsanaImporter: true,
+            enableGithubImporter: true,
+            enableJiraImporter: true,
+            enableTrelloImporter: true,
         })
 
         $provide.value("$tgConfig", mocks.config)

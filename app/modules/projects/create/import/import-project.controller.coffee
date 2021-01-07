@@ -113,9 +113,12 @@ class ImportProjectController
         @.unfoldedOptions = options
 
     isActiveImporter: (importer) ->
-        if @config.get('importers').indexOf(importer) == -1
-            return false
-        return true
+        switch(importer)
+            when "asana" then @config.get('enableAsanaImporter')
+            when "github" then @config.get('enableGithubImporter')
+            when "jira" then @config.get('enableJiraImporter')
+            when "trello" then @config.get('enableTrelloImporter')
+            else return false
 
     cancelCurrentImport: () ->
         @location.url(@tgNavUrls.resolve('create-project-import'))
