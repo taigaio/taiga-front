@@ -539,13 +539,14 @@ $confirm, $q, attachmentsService, $template, $compile) ->
                         statusList: _.sortBy(project.us_statuses, "order")
                     }
                 initialData: (data) ->
+                    console.log({data});
                     return {
                         project: data.project.id
                         subject: ""
                         description: ""
                         tags: []
                         points : {}
-                        swimlane: if data.swimlane then data.swimlane else null
+                        swimlane: if data.swimlane then data.swimlane else data.project.default_swimlane
                         status: if data.statusId then data.statusId else data.project.default_us_status
                         is_archived: false
                     }
