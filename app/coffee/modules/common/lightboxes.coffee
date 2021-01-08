@@ -539,7 +539,6 @@ $confirm, $q, attachmentsService, $template, $compile) ->
                         statusList: _.sortBy(project.us_statuses, "order")
                     }
                 initialData: (data) ->
-                    console.log({data});
                     return {
                         project: data.project.id
                         subject: ""
