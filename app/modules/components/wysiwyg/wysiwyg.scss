@@ -63,8 +63,11 @@ tg-wysiwyg {
     }
     .edit-mode {
         .markdown,
-        .ck.ck-editor__editable:not(.ck-editor__nested-editable).ck-focused {
-            border: 1px solid $color-black600;
+        .ck.ck-editor__editable:not(.ck-editor__nested-editable) {
+            min-height: 8rem;
+            &.ck-focused {
+                border: 1px solid $color-black600;
+            }
         }
         tg-text-editor {
             button {
