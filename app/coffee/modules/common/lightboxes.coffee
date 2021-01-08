@@ -368,8 +368,8 @@ CreateBulkUserstoriesDirective = ($repo, $rs, $rootscope, lightboxService, $load
             if not form.validate()
                 return
 
-            swimlaneId = $scope.new.swimlaneId
-            if ($scope.new.swimlaneId == -1)
+            swimlaneId = $scope.new.swimlane || $scope.project.default_swimlane
+            if $scope.new.swimlane == -1
                 swimlaneId = null
 
             currentLoading = $loading()
