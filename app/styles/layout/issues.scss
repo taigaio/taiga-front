@@ -7,3 +7,67 @@
         transform: translateX(0);
     }
 }
+
+.issue-main {
+    padding-left: 2rem;
+}
+
+.issue-container {
+    display: flex;
+
+    .filters-bar {
+        background-color: $color-white;
+        position: sticky;
+        top: 115px;
+        z-index: $first-layer;
+
+        tg-filter {
+            background: none;
+            border: 1px solid $color-gray200;
+            opacity: 1;
+            padding: 1rem;
+            position: relative;
+            transform: translate(0);
+        }
+    }
+}
+
+.issues-page {
+    &.filter {
+        padding-left: 0;
+        .issues-table {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+    .issues-options {
+        display: none;
+    }
+}
+
+.issue-header {
+    background: $color-white;
+    padding: 0 1rem 1rem 0;
+    .button-filter {
+        color: $color-link-primary;
+        margin-left: 0;
+
+        svg {
+            fill: $color-link-primary;
+        }
+    }
+
+    .btn-small {
+        margin-right: 1rem;
+    }
+}
+
+.issue-table-options-start {
+    align-items: center;
+    display: flex;
+
+    tg-input-search {
+        margin-left: .5rem;
+        width: 185px;
+    }
+}

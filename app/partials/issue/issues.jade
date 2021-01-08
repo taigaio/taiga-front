@@ -7,34 +7,82 @@ div.wrapper.issues.lightbox-generic-form(
     ng-init="section='issues'"
 )
     tg-project-menu
-    sidebar.filters-bar
-        tg-filter(
-          q="ctrl.filterQ"
-          filters="ctrl.filters"
-          custom-filters="ctrl.customFilters"
-          selected-filters="ctrl.selectedFilters"
-          customFilters="ctl.customFilters"
-          on-save-custom-filter="ctrl.saveCustomFilter(name)"
-          on-add-filter="ctrl.addFilter(filter)"
-          on-select-custom-filter="ctrl.selectCustomFilter(filter)"
-          on-remove-custom-filter="ctrl.removeCustomFilter(filter)"
-          on-remove-filter="ctrl.removeFilter(filter)"
-          on-change-q="ctrl.changeQ(q)"
-        )
 
-    section.main.issues-page
-        header
-            include ../includes/components/mainTitle
+    section.main.issue-main
+        .issue-top
+            header.issue-header
+                include ../includes/components/mainTitle
+                .taskboard-actions
+                    .issue-table-options-start
+                        button.btn-filter.e2e-open-filter(
+                            ng-click="ctrl.openFilter = !ctrl.openFilter"
+                            title="{{ctrl.selectedFilters.length}} {{'COMMON.FILTERS.APPLIED_FILTERS_NUM' | translate}}"
+                            ng-class="{active: ctrl.openFilter}"
+                        )
+                            tg-svg(svg-icon="icon-filters")
+                            span.text(
+                                ng-if="!ctrl.openFilter"
+                                translate="BACKLOG.FILTERS.TITLE"
+                            )
+                            span.text(
+                                ng-if="ctrl.openFilter"
+                                translate="BACKLOG.FILTERS.HIDE_TITLE"
+                            )
+                            span.selected-filters(ng-if="ctrl.selectedFilters.length") {{ctrl.selectedFilters.length}}
 
-        tg-issues-table(
-            issues="issues"
-            on-load-issues="ctrl.loadIssues()"
-            on-add-new-issue="ctrl.addNewIssue()"
-            on-add-issues-in-bulk="ctrl.addIssuesInBulk()"
-        )
+                        tg-input-search(
+                            q="ctrl.filterQ"
+                            change="ctrl.changeQ(q)"
+                        )
 
-        // Paginator is rendered using js.
-        div.paginator.issues-paginator
+                    .new-issue
+                        button(
+                            ng-class="{'btn-small': !ctrl.sprintIssues, 'btn-board': ctrl.sprintIssues}"
+                            type="button"
+                            variant="primary"
+                            ng-click="ctrl.addNewIssue('standard', null)"
+                        )
+                            tg-svg(ng-if="ctrl.sprintIssues", svg-icon="icon-add")
+                            span(ng-if="!ctrl.sprintIssues") {{"ISSUES.ACTION_NEW_ISSUE" | translate}}
+
+                        button(
+                            ng-class="{'btn-icon': !ctrl.sprintIssues, 'btn-board': ctrl.sprintIssues}"
+                            type="button"
+                            variant="secondary"
+                            ng-click="ctrl.addNewIssue('bulk', null)"
+                        )
+                            tg-svg(svg-icon="icon-bulk")
+        .issue-container
+            sidebar.filters-bar(
+                ng-if="!ctrl.openFilter"
+            )
+                tg-filter(
+                    q="ctrl.filterQ"
+                    filters="ctrl.filters"
+                    custom-filters="ctrl.customFilters"
+                    selected-filters="ctrl.selectedFilters"
+                    customFilters="ctl.customFilters"
+                    on-save-custom-filter="ctrl.saveCustomFilter(name)"
+                    on-add-filter="ctrl.addFilter(filter)"
+                    on-select-custom-filter="ctrl.selectCustomFilter(filter)"
+                    on-remove-custom-filter="ctrl.removeCustomFilter(filter)"
+                    on-remove-filter="ctrl.removeFilter(filter)"
+                    on-change-q="ctrl.changeQ(q)"
+                )
+
+            section.main.issues-page(
+                ng-class="{filter: ctrl.openFilter}"
+            )
+
+                tg-issues-table(
+                    issues="issues"
+                    on-load-issues="ctrl.loadIssues()"
+                    on-add-new-issue="ctrl.addNewIssue()"
+                    on-add-issues-in-bulk="ctrl.addIssuesInBulk()"
+                )
+
+                // Paginator is rendered using js.
+                div.paginator.issues-paginator
 
     div.lightbox.lightbox-generic-form.lightbox-create-edit(tg-lb-create-edit)
 
