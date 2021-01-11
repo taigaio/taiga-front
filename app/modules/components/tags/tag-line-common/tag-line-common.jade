@@ -1,8 +1,7 @@
 .tags-container
-    .tag(
+    .tag-wrapper(
         ng-if="tag[1] && !vm.disableColorSelection"
         ng-repeat="tag in vm.tags"
-        ng-style="{'border-color': tag[1]}"
     )
         tg-tag(
             tag="tag"
@@ -11,7 +10,7 @@
             on-delete-tag="vm.onDeleteTag({tag: tag})"
             has-permissions="{{vm.checkPermissions()}}"
         )
-    .tag(
+    .tag-wrapper(
         ng-if="!tag[1] || vm.disableColorSelection"
         ng-repeat="tag in vm.tags"
     )

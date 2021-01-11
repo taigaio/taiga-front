@@ -1,14 +1,14 @@
 .detail-ref {
     @include font-type(bold);
-    color: $grayer;
-    font-size: 1.625em;
+    @include font-size(xlarge);
+    color: $color-link-primary;
 }
 
 .detail-nav {
     position: absolute;
     right: 1rem;
     top: 1rem;
-    z-index: $first-layer;
+    z-index: $third-layer;
     a {
         display: inline-block;
     }
@@ -20,23 +20,15 @@
 
 .detail-header {
     flex: 1;
-    padding: 0 0 0 1rem;
+    padding-inline-start: .5rem;
     position: relative;
-    &:hover {
-        .detail-edit {
-            opacity: 1;
-        }
-    }
 
     .detail-header-line {
         @include font-size(small);
         margin: .5rem 0 0;
         a {
-            color: $primary;
+            color: $color-link-primary;
             padding: 0 .2rem;
-            &:hover {
-                color: $primary-light;
-            }
         }
         .item-ref {
             margin-right: .25rem;
@@ -47,12 +39,9 @@
 
         .relate-to-epic-button {
             align-content: flex-end;
-            color: $gray-light;
+            color: $color-link-primary;
             cursor: pointer;
             display: flex;
-            &:hover {
-                color: $primary-light;
-            }
             .icon-epics {
                 fill: currentColor;
                 margin-right: .25rem;
@@ -62,17 +51,44 @@
             }
         }
     }
+    & > .color-selector {
+        position: relative;
+        top: -1.75rem;
+    }
+
+    [item='epic'] {
+        .detail-project {
+            padding: .5rem 3rem 0 3rem;
+        }
+    }
+
+    .detail-project {
+        .section-name {
+            color: $color-black600;
+            text-transform: uppercase;
+        }
+    }
 }
 
 .detail-title-wrapper {
     display: flex;
     margin: 0 2rem .5rem 0;
     transition: all .2s linear;
+
+
     .detail-title-text {
-        color: $grayer;
-        font-size: 1.75rem;
-        line-height: 2rem;
+        @include font-size(xlarge);
+        align-items: baseline;
+        color: $color-black900;
+        display: flex;
         margin: 0;
+
+        &:hover {
+            .detail-edit {
+                opacity: 1;
+            }
+        }
+
     }
     .detail-subject {
         color: $gray;
@@ -83,17 +99,16 @@
     }
     .detail-edit {
         cursor: pointer;
-        margin-left: .5rem;
+        margin-inline-start: .5rem;
         opacity: 0;
         transition: opacity .2s;
         svg {
-            @include svg-size(1.3rem);
+            @include svg-size(1.2rem);
         }
     }
 
     .due-date-icon {
-        position: relative;
-        top: .1rem;
+        margin-inline-start: .5rem;
         svg {
             @include svg-size(1.2rem);
         }
@@ -123,16 +138,7 @@
     }
 }
 
-.detail-project {
-    @include font-type(regular);
-    display: flex;
-    margin: 0 0 1rem;
-    text-transform: uppercase;
-    .section-name {
-        color: $secondary;
-        margin-left: .5rem;
-    }
-}
+
 
 .block-desc-container {
     padding: .25rem 0;

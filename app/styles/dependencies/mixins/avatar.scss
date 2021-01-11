@@ -1,4 +1,5 @@
 @mixin avatar-img($size: 1rem) {
+    border-radius: 50%;
     font-size: .6em;
     max-height: $size;
     max-width: $size;

@@ -14,8 +14,7 @@
     position: relative;
     .tag-color {
         @include color-selector-option;
-        border: 1px solid $gray-light;
-        border-radius: 0;
+        border-radius: 3px;
         margin: 0;
         transition: background .3s ease-out;
         &.disabled {

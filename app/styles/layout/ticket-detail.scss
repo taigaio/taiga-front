@@ -53,7 +53,6 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin-top: 1rem;
     @include until($tablet) {
         flex-direction: column;
         justify-content: flex-start;
@@ -76,9 +75,12 @@
         flex: 1;
         flex-grow: 1;
         .tag {
-            border-color: transparent;
-            border-style: solid;
+            @include font-size(small);
             margin: .25rem .25rem 0;
+            padding: 9px;
+            &:first-child {
+                margin-inline-start: 0;
+            }
         }
     }
     &.has-tags .relate-to-epic {
