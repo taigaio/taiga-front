@@ -70,6 +70,9 @@
         align-items: flex-start;
         flex: 1;
         padding: 0 1rem 0 2rem;
+        &.rich-text {
+            padding-right: 0;
+        }
         &.js-value-view-mode {
             white-space: pre-line;
             &.wysiwyg {

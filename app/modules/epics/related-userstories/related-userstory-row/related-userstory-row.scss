@@ -52,10 +52,6 @@ tg-related-userstory-row {
         a {
             cursor: pointer;
         }
-        span {
-            display: inline-block;
-            margin-left: .25rem;
-        }
     }
     .closed {
         border-left: 10px solid $whitish;
@@ -115,4 +111,30 @@ tg-related-userstory-row {
             margin-left: .5rem;
         }
     }
+    .related-text {
+        display: inline-flex;
+        flex: 1;
+        margin: 0 .5rem 0 0;
+        .related-ref {
+            align-items: center;
+            color: $color-link-primary;
+            display: flex;
+            margin-inline-end: 1ch;
+        }
+        .related-subject {
+            align-items: center;
+            color: $color-black900;
+            display: flex;
+            margin-inline-end: .75rem;
+        }
+        &:hover {
+            .related-ref {
+                color: $color-black900;
+            }
+            .related-subject {
+                color: $color-link-primary;
+            }
+        }
+    }
+
 }

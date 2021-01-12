@@ -9,7 +9,6 @@ div.wrapper(
     div.main.detail
         .detail-header-container(ng-class="{blocked: epic.is_blocked}")
             tg-detail-nav(item="epic")
-            .detail-ref {{'#' + epic.ref}}
             .detail-header
                 tg-detail-header(
                     item="epic"
@@ -19,12 +18,14 @@ div.wrapper(
                     ng-if="project && epic"
                     format="text"
                 )
-                tg-color-selector.color-selector(
-                    is-color-required="true"
-                    init-color="epic.color"
-                    on-select-color="ctrl.onSelectColor(color)"
-                    required-perm="modify_epic"
-                )
+                .epic-selector
+                    span.epic-selector-text {{'EPIC.EPIC_COLOR' | translate}}
+                    tg-color-selector.color-selector(
+                        is-color-required="true"
+                        init-color="epic.color"
+                        on-select-color="ctrl.onSelectColor(color)"
+                        required-perm="modify_epic"
+                    )
                 .subheader
                     tg-tag-line.tags-block(
                         ng-if="epic && project"
@@ -33,6 +34,7 @@ div.wrapper(
                         permissions="modify_epic"
                     )
                     tg-created-by-display.ticket-created-by(ng-model="epic")
+
 
         .detail-content
             section.duty-content
@@ -96,13 +98,6 @@ div.wrapper(
             on-watch="ctrl.onWatch"
             on-unwatch="ctrl.onUnwatch"
             required-perm="modify_epic"
-        )
-
-        section.ticket-section.upvote-btn(
-            tg-vote-button
-            item="epic"
-            on-upvote="ctrl.onUpvote"
-            on-downvote="ctrl.onDownvote"
         )
 
         section.ticket-section.ticket-detail-settings

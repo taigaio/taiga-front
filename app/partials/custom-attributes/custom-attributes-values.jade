@@ -10,7 +10,6 @@ section.duty-custom-fields(ng-show="ctrl.customAttributes.length")
 
     .custom-fields-body(
         ng-show="!collapsed"
-        ng-class="{'collapse-fields': ctrl.customAttributes.length > 6}"
     )
         .custom-attribute(
             ng-repeat="attr in ctrl.customAttributes"

@@ -21,15 +21,6 @@
 .related-userstories-body {
     width: 100%;
     .row.blocked {
-        background: $red-light;
-        a,
-        span,
-        div {
-            color: $white;
-        }
-        svg {
-            fill: $white;
-            stroke: $white;
-        }
+        background: $color-solid-red;
     }
 }

@@ -1263,6 +1263,7 @@
     "EPIC": {
         "PAGE_TITLE": "{{epicSubject}} - Epic {{epicRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Status: {{epicStatus }}. Description: {{epicDescription}}",
+        "EPIC_COLOR": "Epic color:",
         "SECTION_NAME": "Epic",
         "ERROR_UNLINK_RELATED_USERSTORY": "We have not been able to unlink: {{errorMessage}}",
         "CREATE_RELATED_USERSTORIES": "Create a relationship with",

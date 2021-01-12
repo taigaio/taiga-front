@@ -26,6 +26,7 @@
         justify-content: flex-start;
         > span {
             color: $white;
+            display: flex;
             padding: .15rem .25rem;
             text-transform: uppercase;
         }
@@ -295,38 +296,34 @@
     display: flex;
     justify-content: center;
     margin-right: -.5rem;
-    margin-top: 1rem;
-    label,
-    .assign-issue-button,
-    .item-block,
-    .item-unblock,
-    .promote-button,
-    .button-delete {
-        background: $grey-40;
-        display: inline-block;
-        height: 55px;
-        margin-right: .5rem;
-        min-height: 55px;
-        padding: 1rem;
-        transition: background .2s linear;
-        transition-delay: .1s;
-        @include until($ultrawide) {
-            padding: 1rem .9rem;
-        }
-        @include until($fullhd) {
-            padding: 1rem .8rem;
-        }
-        @include until($widescreen) {
-            padding: 1rem .7rem;
-        }
-        @include until($desktop) {
-            padding: 1rem .6rem;
-        }
-        @include until($tablet) {
-            padding: 1rem .5rem;
-        }
+    .btn-icon {
+        align-items: center;
+        background: $color-gray200;
+        color: $color-link-primary;
+        cursor: pointer;
+        display: flex;
+        height: 2.5rem;
+        justify-content: center;
+        margin-right: .25rem;
+        padding: 0;
+        transition: all .1s ease-in;
+        width: 2.5rem;
         &:hover {
-            background: $gray;
+            background: $color-gray400;
+            color: $color-link-tertiary;
+            transition: fill .1s ease-in;
+        }
+        &:active {
+            background: $color-link-tertiary;
+            color: $color-white;
+            tg-svg {
+                fill: $color-white;
+            }
+        }
+        tg-svg {
+            fill: $color-link-primary;
+            height: 1rem;
+            width: 1rem;
         }
         &.editable {
             cursor: pointer;
@@ -335,10 +332,10 @@
             display: none;
         }
         &.active {
-            background: $grey-70;
+            background: $color-link-tertiary;
+            color: $color-white;
         }
     }
-
     .assign-issue-button {
         display: none;
 
@@ -347,7 +344,6 @@
         }
         &.is-active {
             background: $grey-70;
-            display: inline-block;
         }
         &.button-set:hover {
             background: $red-light;
@@ -358,19 +354,28 @@
     .item-unblock {
         display: none;
         &.is-active {
-            display: inline-block;
+            display: flex;
         }
     }
     .item-unblock {
-        background: $grey-70;
+        background: $color-link-red;
+        tg-svg {
+            fill: $color-white;
+        }
         &:hover {
             background: $red;
         }
     }
     .button-delete {
-        background: $red-light;
-        &:hover {
-            background: $red;
+        &:hover tg-svg {
+            fill: $color-link-red;
+        }
+        &:active {
+            background: $color-link-tertiary;
+            color: $color-white;
+            tg-svg {
+                fill: $color-white;
+            }
         }
     }
     img {
@@ -378,18 +383,15 @@
         max-width: 1.25rem;
         width: 100%;
     }
-    svg {
-        fill: $white;
-        height: 100%;
-        max-height: 1.25rem;
-        max-width: 1.25rem;
-        stroke: $white;
-        width: 100%;
-    }
     .icon-private {
         margin: 0;
     }
     a {
         display: block;
+    }
+    .due-date-button {
+        &.active tg-svg {
+            fill: $color-white;
+        }
     }
 }

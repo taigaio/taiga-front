@@ -9,8 +9,14 @@
     transition: all .2s linear;
     width: 32px;
     &.active {
-        background-color: $color-link-primary;
-        transition: all .2s linear;
+        div {
+            background-color: $color-link-primary;
+            transition: all .2s linear;
+            &::before {
+                background-color: $color-white;
+                left: calc(90% - 10px);
+            }
+        }
     }
     input {
         cursor: pointer;
@@ -23,31 +29,44 @@
         z-index: $first-layer;
     }
     div {
-        background-color: $color-white;
-        border-radius: 50%;
-        height: 10px;
-        left: 10%;
+        height: 100%;
         position: relative;
-        top: calc(50% - 5px);
-        transition: all .2s linear;
-        width: 10px;
+        width: 100%;
+        &::before {
+            background-color: $color-white;
+            border-radius: 50%;
+            content: '';
+            height: 10px;
+            left: 10%;
+            position: absolute;
+            top: calc(50% - 5px);
+            transition: all .2s linear;
+            width: 10px;
+        }
     }
     input:disabled,
     input:checked:disabled {
         cursor: auto;
         + div {
-            background-color: $gray-lighter;
+            background-color: $color-link-primary;
+            &::before {
+                background-color: $color-black600;
+            }
         }
         ~ .check-text {
-            color: $whitish;
+            color: $color-gray200;
         }
     }
     input:checked {
         + div {
-            background-color: $color-white;
-            margin-left: 50%;
+            background-color: $color-link-primary;
             transition: all .2s linear;
+            &::before {
+                background-color: $color-white;
+                left: calc(90% - 10px);
+            }
         }
+
     }
 }
 

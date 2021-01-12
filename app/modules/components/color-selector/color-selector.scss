@@ -1,10 +1,10 @@
 @mixin color-selector-option {
     border-radius: 2px;
     cursor: pointer;
-    height: 2.25rem;
+    height: 2rem;
     margin: 0 .5rem .5rem 0;
-    min-width: 2.25rem;
-    width: 2.25rem;
+    min-width: 2rem;
+    width: 2rem;
     &:nth-child(7n) {
         margin-right: 0;
     }
@@ -14,6 +14,7 @@
     position: relative;
     .tag-color {
         @include color-selector-option;
+        border: 2px solid $color-black600;
         border-radius: 3px;
         margin: 0;
         transition: background .3s ease-out;
@@ -21,7 +22,7 @@
             cursor: auto;
         }
         &.empty-color {
-            @include empty-color(34);
+            @include empty-color(30);
         }
     }
 }
@@ -31,7 +32,7 @@
     left: 0;
     padding: 1rem;
     position: absolute;
-    top: 2.25rem;
+    top: 2rem;
     width: 332px;
     z-index: $first-layer;
 }

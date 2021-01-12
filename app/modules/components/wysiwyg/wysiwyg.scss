@@ -1,13 +1,13 @@
 
 tg-wysiwyg {
     display: flex;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     .editor {
         width: 100%;
     }
     .tools {
         display: none;
-        padding-left: .75rem;
+        padding-left: 1rem;
 
         &.visible {
             display: block;

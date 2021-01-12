@@ -117,8 +117,9 @@ section.issues-table.basic-table(ng-class="{empty: !ctrl.issues.length}")
                 tg-nav="project-issues-detail:project=project.slug,ref=issue.ref"
                 title="#{{ ::issue.ref }} {{ ::issue.subject }}"
             )
-                span.issue-ref(tg-bo-ref="::issue.ref")
-                span.issue-subject(ng-bind-html="issue.subject | emojify")
+                span.issue-text
+                    span.issue-ref(tg-bo-ref="::issue.ref")
+                    span.issue-subject(ng-bind-html="issue.subject | emojify")
                 span.blocked(
                     ng-if="issue.is_blocked"
                     ng-attr-title="{{::issue.blocked_note}}"

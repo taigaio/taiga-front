@@ -1,3 +1,7 @@
+.belong-to-epic-title {
+    color: $color-black600;
+}
+
 .belong-to-epic-pill-wrapper {
     align-items: center;
     display: inline-flex;
@@ -31,7 +35,7 @@
     flex-basis: 25%;
     flex-wrap: wrap;
     justify-content: flex-start;
-    padding-top: .25rem;
+    padding-top: .5rem;
     .remove-epic-relationship {
         display: inline-block;
         line-height: .5rem;

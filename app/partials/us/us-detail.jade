@@ -8,7 +8,6 @@ div.wrapper(
     .main.detail
         .detail-header-container(ng-class="{blocked: us.is_blocked}")
             tg-detail-nav(item="us")
-            .detail-ref {{'#' + us.ref}}
             .detail-header
                 tg-detail-header(
                     item="us"
@@ -61,13 +60,14 @@ div.wrapper(
                         ng-bind-html="'#' + us.origin_issue.ref + ' ' + us.origin_issue.subject | emojify"
                     )
 
-                .action-buttons
+                .action-buttons(
+                    ng-if="sprint && project.is_backlog_activated"
+                )
                     a.btn-small(
                         variant="primary"
                         href=""
                         tg-check-permission="view_milestones"
                         tg-nav="project-taskboard:project=project.slug,sprint=sprint.slug"
-                        ng-if="sprint && project.is_backlog_activated"
                         title="{{'US.TITLE_LINK_TASKBOARD' | translate}}"
                         translate="US.LINK_TASKBOARD"
                     )
@@ -160,13 +160,6 @@ div.wrapper(
             on-watch="ctrl.onWatch"
             on-unwatch="ctrl.onUnwatch"
             required-perm="modify_us"
-        )
-
-        section.ticket-section.upvote-btn(
-            tg-vote-button
-            item="us"
-            on-upvote="ctrl.onUpvote"
-            on-downvote="ctrl.onDownvote"
         )
 
         section.ticket-section.ticket-to-tribe(ng-if="tribeEnabled && !us.tribe_gig")

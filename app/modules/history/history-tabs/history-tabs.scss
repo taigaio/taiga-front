@@ -1,6 +1,7 @@
 .history-tabs {
     .order-comments {
         @include font-type(regular);
+        display: flex;
         margin-left: auto;
         transition: none;
     }

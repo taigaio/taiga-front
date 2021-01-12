@@ -13,25 +13,6 @@
         @include until($tablet) {
             display: block;
         }
-        &.blocked {
-            background: $red-light;
-            color: $white;
-            a,
-            a:hover,
-            .detail-ref,
-            .detail-subject,
-            .section-name,
-            .created-title,
-            .created-date {
-                color: $white;
-            }
-            svg {
-                fill: $white;
-            }
-            a:not(.button):hover {
-                text-decoration: underline;
-            }
-        }
     }
     .detail-ref {
         flex-shrink: 1;
@@ -76,8 +57,11 @@
         flex-grow: 1;
         .tag {
             @include font-size(small);
-            margin: .25rem .25rem 0;
-            padding: 9px;
+
+            align-items: center;
+            display: flex;
+            margin: .5rem .5rem 0;
+            min-height: 2rem;
             &:first-child {
                 margin-inline-start: 0;
             }
@@ -85,6 +69,7 @@
     }
     &.has-tags .relate-to-epic {
         flex-basis: 100%;
+        margin-top: 0;
     }
 }
 

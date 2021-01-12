@@ -1,7 +1,6 @@
 .ticket-created-by {
     display: flex;
     justify-content: flex-end;
-    // margin: 1rem 0 0 2rem;
     @include until($tablet) {
         margin: 1rem 0 .5rem;
     }

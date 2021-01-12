@@ -9,7 +9,6 @@ div.wrapper(
     div.main.detail
         .detail-header-container(ng-class="{blocked: issue.is_blocked}")
             tg-detail-nav(item="issue")
-            .detail-ref {{'#' + issue.ref}}
             .detail-header
                 tg-detail-header(
                     item="issue"
@@ -43,8 +42,9 @@ div.wrapper(
                     )
 
                 .action-buttons
-                    a.button.button-gray(
-                        href=""
+                    a.btn-small(
+                        type="button"
+                        variant="secondary"
                         tg-check-permission="view_milestones"
                         tg-nav="project-taskboard:project=project.slug,sprint=sprint.slug"
                         ng-if="sprint && project.is_backlog_activated"
@@ -131,13 +131,6 @@ div.wrapper(
             on-watch="ctrl.onWatch"
             on-unwatch="ctrl.onUnwatch"
             required-perm="modify_issue"
-        )
-
-        section.ticket-section.upvote-btn(
-            tg-vote-button
-            item="issue"
-            on-upvote="ctrl.onUpvote"
-            on-downvote="ctrl.onDownvote"
         )
 
         section.ticket-section.ticket-detail-settings

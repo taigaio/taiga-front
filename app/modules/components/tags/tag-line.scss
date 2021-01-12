@@ -5,19 +5,26 @@
 }
 
 .add-tag-button {
+    @include font-type(bold);
     align-content: flex-end;
-    color: $gray-light;
+    color: $color-link-primary;
     cursor: pointer;
     display: flex;
     margin: .5rem 0 0 .25rem;
+    transition: all .1s ease;
     &:hover {
-        color: $primary-light;
+        background: $color-gray400;
     }
     .icon-add {
         fill: currentColor;
-        margin-right: .25rem;
     }
     .add-tag-text {
-        font-size: .9375rem;
+        @include font-size(small);
+        line-height: 1rem;
+    }
+    tg-svg {
+        fill: $color-link-primary;
+        margin-left: .25rem;
+        margin-right: 0;
     }
 }

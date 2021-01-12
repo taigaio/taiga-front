@@ -6,13 +6,15 @@
     color: $color-white;
     display: inline-flex;
     margin-inline-end: .25rem;
-    padding: .1rem .25rem;
+    padding: .1rem .5rem;
     text-align: center;
+    span {
+        margin-right: .25rem;
+    }
     .icon-close {
-        @include svg-size(1rem);
+        @include svg-size(1.25rem);
         cursor: pointer;
         fill: $color-white;
-        margin-inline-start: .25rem;
     }
     .loading-spinner {
         height: 1rem;

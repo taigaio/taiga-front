@@ -3,6 +3,7 @@
         ng-show="!vm.editMode"
         ng-hide="vm.editMode"
     )
+        .detail-ref {{'#' + vm.item.ref}}
         span.detail-subject.e2e-title-subject(
             ng-click="vm.editSubject(true)"
             ng-if="vm.permissions.canEdit"
@@ -46,10 +47,13 @@
             tg-svg(svg-icon="icon-close")
 
 .detail-project
-    //- .project-name(ng-if="vm.project.name ") {{ vm.project.name }}
     .section-name {{ vm.sectionName }}
 
 //- Blocked description
 .detail-header-line.block-desc-container(ng-show="vm.item.is_blocked")
-    span.block-description-title(translate="COMMON.BLOCKED")
+    span.blocked-sign
+        tg-svg(
+            svg-icon="icon-lock"
+        )
+        span.block-description-title(translate="COMMON.BLOCKED")
     span.block-description(ng-if="blocked_html_note", ng-bind-html="blocked_html_note")

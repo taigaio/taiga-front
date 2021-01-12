@@ -8,3 +8,13 @@
         width: 100%;
     }
 }
+
+.epic-selector {
+    align-items: center;
+    display: flex;
+    margin: .25rem 0;
+
+    .epic-selector-text {
+        margin-right: .5rem;
+    }
+}

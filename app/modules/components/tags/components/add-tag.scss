@@ -9,6 +9,8 @@ $tag-input-width: 250px;
     width: $tag-input-width;
     input {
         border-color: $gray-light;
+        margin-right: .25rem;
+        max-height: 2rem;
         padding: 6px;
         width: 14rem;
     }

@@ -9,7 +9,6 @@ div.wrapper(
     div.main.detail
         .detail-header-container(ng-class="{blocked: task.is_blocked}")
             tg-detail-nav(item="task")
-            .detail-ref {{'#' + task.ref}}
             .detail-header
                 tg-detail-header(
                     item="task"
@@ -49,13 +48,14 @@ div.wrapper(
                     )
 
                 .action-buttons
-                    a.button.button-gray(
+                   a.btn-small(
                         href=""
                         title="{{'TASK.TITLE_LINK_TASKBOARD' | translate}}"
                         tg-check-permission="view_milestones"
                         tg-nav="project-taskboard:project=project.slug,sprint=sprint.slug"
                         ng-if="sprint && project.is_backlog_activated"
                         translate="TASK.LINK_TASKBOARD"
+                        variant="secondary"
                     )
                 .subheader
                     tg-tag-line.tags-block(
@@ -122,13 +122,6 @@ div.wrapper(
             on-watch="ctrl.onWatch"
             on-unwatch="ctrl.onUnwatch"
             required-perm="modify_task"
-        )
-
-        section.ticket-section.upvote-btn(
-            tg-vote-button
-            item="task",
-            on-upvote="ctrl.onUpvote",
-            on-downvote="ctrl.onDownvote"
         )
 
         section.ticket-section.ticket-detail-settings

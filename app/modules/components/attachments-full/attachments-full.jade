@@ -24,8 +24,13 @@ section.attachments(
                 title!="{{'ATTACHMENT.ADD' | translate}}"
             )
 
-                label.add-attachment-button.button-primary.button-small(for="add-attach")
+                label.add-attachment-button.btn-icon(
+                    for="add-attach"
+                    type="button"
+                    variant="primary"
+                )
                     tg-svg(svg-icon="icon-add")
+
 
                 input(
                     id="add-attach",

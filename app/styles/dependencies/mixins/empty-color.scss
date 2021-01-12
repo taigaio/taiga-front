@@ -11,29 +11,6 @@
 }
 
 @mixin empty-color($width) {
-    background: $mass-white;
-    border: 1px solid $whitish;
+    background: $default-tags;
     position: relative;
-    &:after {
-        content: "";
-        width: 2px;
-        height: #{sqrt(2*$width*$width)}px;
-        background: #ff8282;
-        transform: rotate(-45deg);
-        position: absolute;
-        top: 0;
-        left: 0;
-        transform-origin: top;
-    }
-    &:before {
-        content: "";
-        width: 2px;
-        height: #{sqrt(2*$width*$width)}px;
-        background: #ff8282;
-        transform: rotate(45deg);
-        position: absolute;
-        top: 0;
-        right: 0;
-        transform-origin: top;
-    }
 }

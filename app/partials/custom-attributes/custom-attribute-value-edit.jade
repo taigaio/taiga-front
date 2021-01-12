@@ -7,14 +7,17 @@ form.custom-field-single.editable
             <%- description %>
         <% } %>
 
+    <% if (type=="richtext") { %>
+    div.custom-field-value.rich-text
+        //- See TYPE_CHOICES in app/coffee/modules/common/custom-field-values.coffee
+        tg-custom-field-edit-wysiwyg()
+    <% } else { %>
     div.custom-field-value
         //- See TYPE_CHOICES in app/coffee/modules/common/custom-field-values.coffee
         <% if (type=="text") { %>
         input#custom-field-value(name="value", type="text", value!="<%- value %>")
         <% } else if (type=="multiline") { %>
         textarea#custom-field-value(name="value") <%- value %>
-        <% } else if (type=="richtext") { %>
-        tg-custom-field-edit-wysiwyg()
         <% } else if (type=="date") { %>
         input#custom-field-value(name="value", type="text", data-pikaday, value!="<%- value %>")
         <% } else if (type=="url") { %>
@@ -41,6 +44,7 @@ form.custom-field-single.editable
         <% } else { %>
         input#custom-field-value(name="value", type="text", value!="<%- value %>")
         <% } %>
+    <% } %>
 
     <% if (type != "richtext") { %>
     div.custom-field-options

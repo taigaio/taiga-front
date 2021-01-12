@@ -2,6 +2,7 @@
     @include font-type(bold);
     @include font-size(xlarge);
     color: $color-link-primary;
+    margin-right: .5rem;
 }
 
 .detail-nav {
@@ -25,6 +26,7 @@
 
     .detail-header-line {
         @include font-size(small);
+        display: flex;
         margin: .5rem 0 0;
         a {
             color: $color-link-primary;
@@ -33,9 +35,13 @@
         .item-ref {
             margin-right: .25rem;
         }
+        p {
+            margin-bottom: 0;
+        }
     }
     .relate-to-epic {
-        margin: .5rem 1rem 0 0;
+        flex-basis: 100%;
+        margin: 5rem 1rem .5rem 0;
 
         .relate-to-epic-button {
             align-content: flex-end;
@@ -52,13 +58,15 @@
         }
     }
     & > .color-selector {
+        display: block;
+        margin-bottom: -2rem;
         position: relative;
-        top: -1.75rem;
+        top: -2.6rem;
     }
 
     [item='epic'] {
         .detail-project {
-            padding: .5rem 3rem 0 3rem;
+            padding: .5rem 3rem 0 0;
         }
     }
 
@@ -81,6 +89,7 @@
         align-items: baseline;
         color: $color-black900;
         display: flex;
+        line-height: 2rem;
         margin: 0;
 
         &:hover {
@@ -91,14 +100,17 @@
 
     }
     .detail-subject {
-        color: $gray;
+        color: $color-black900;
         flex-grow: 1;
     }
     .edit-title-input {
         font-size: 1.2rem;
     }
     .detail-edit {
+        align-items: center;
         cursor: pointer;
+        display: flex;
+        justify-content: center;
         margin-inline-start: .5rem;
         opacity: 0;
         transition: opacity .2s;
@@ -138,16 +150,39 @@
     }
 }
 
-
+.detail-project {
+    @include font-type(regular);
+    color: $color-black900;
+    display: flex;
+    margin: 0 0 1rem;
+    text-transform: uppercase;
+    .section-name {
+        color: $color-link-tertiary;
+    }
+}
 
 .block-desc-container {
     padding: .25rem 0;
+    .blocked-sign {
+        align-items: center;
+        display: flex;
+        tg-svg {
+            fill: $color-link-red;
+        }
+    }
+    .block-description {
+        color: $color-link-tertiary;
+        p {
+            line-height: 1rem;
+        }
+    }
     .block-description-title {
-        @include font-type(medium);
-        background: $white;
-        color: $red-light;
-        margin-right: .5rem;
-        padding: .1rem .25rem;
-        text-transform: uppercase;
+        @include font-type(bold);
+        @include font-size(small);
+
+        color: $color-link-red;
+        height: 1rem;
+        line-height: 1rem;
+        padding: 0 .5rem;
     }
 }

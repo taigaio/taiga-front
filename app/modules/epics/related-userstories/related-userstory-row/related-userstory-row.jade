@@ -7,15 +7,17 @@ tg-svg.icon-drag(
     - var hash = "#";
     a(
         tg-nav="project-userstories-detail:project=vm.userstory.getIn(['project_extra_info', 'slug']),ref=vm.userstory.get('ref')"
-        ng-attr-title="{{vm.userstory.get('subject')}}"
-        ng-bind-html="'#'+vm.userstory.get('ref')+' '+vm.userstory.get('subject') | emojify"
     )
-
-    tg-belong-to-epics(
-        format="pill"
-        ng-if="vm.userstory.get('epics')"
-        epics="vm.userstory.get('epics')"
-    )
+        span.related-text(
+            ng-attr-title="{{vm.userstory.get('subject')}}"
+        )
+            span.related-ref {{ '#'+vm.userstory.get('ref') }}
+            span.related-subject {{ vm.userstory.get('subject') | emojify}}
+        tg-belong-to-epics(
+            format="pill"
+            ng-if="vm.userstory.get('epics')"
+            epics="vm.userstory.get('epics')"
+        )
 
 .userstory-settings
     a.delete-userstory.e2e-delete-userstory(

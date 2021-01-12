@@ -43,6 +43,9 @@
             flex-shrink: 0;
             width: 125px;
         }
+        .task-status {
+            display: flex;
+        }
         .assigned-to {
             cursor: pointer;
             flex-shrink: 0;
