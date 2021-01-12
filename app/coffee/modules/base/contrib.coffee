@@ -40,6 +40,9 @@ class ContribController extends taiga.Controller
     loadProject: ->
         project = @projectService.project.toJS()
 
+        if not project.i_am_admin
+            @errorHandlingService.permissionDenied()
+
         @scope.projectId = project.id
         @scope.project = project
         @scope.$emit('project:loaded', project)
