@@ -28,10 +28,11 @@ class ContribController extends taiga.Controller
         "$tgRepo",
         "$tgResources",
         "$tgConfirm",
-        "tgProjectService"
+        "tgProjectService",
+        "tgErrorHandlingService"
     ]
 
-    constructor: (@rootScope, @scope, @params, @repo, @rs, @confirm, @projectService) ->
+    constructor: (@rootScope, @scope, @params, @repo, @rs, @confirm, @projectService, @errorHandlingService) ->
         @scope.currentPlugin = _.head(_.filter(@rootScope.adminPlugins, {"slug": @params.plugin}))
         @scope.projectSlug = @params.pslug
 
@@ -39,6 +40,8 @@ class ContribController extends taiga.Controller
 
     loadProject: ->
         project = @projectService.project.toJS()
+
+        console.log(1)
 
         if not project.i_am_admin
             @errorHandlingService.permissionDenied()
@@ -64,5 +67,8 @@ class ContribUserSettingsController extends taiga.Controller
 
     constructor: (@rootScope, @scope, @params) ->
         @scope.currentPlugin = _.head(_.filter(@rootScope.userSettingsPlugins, {"slug": @params.plugin}))
+        @.loadInitialData()
 
+    loadInitialData: ->
+        return @.loadProject()
 module.controller("ContribUserSettingsController", ContribUserSettingsController)
