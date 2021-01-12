@@ -14,8 +14,6 @@
 
 - Improved performance in Kanban
 
-## Unreleased
-
 ## 5.5.10 (2021-01-04)
 
 ### Fix
