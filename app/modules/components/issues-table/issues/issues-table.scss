@@ -125,11 +125,15 @@
             }
         }
         .issue-ref {
+            align-items: center;
             color: $color-link-primary;
+            display: flex;
             margin-inline-end: 1ch;
         }
         .issue-subject {
+            align-items: center;
             color: $color-black900;
+            display: flex;
             margin-inline-end: .75rem;
         }
         .due-date,
