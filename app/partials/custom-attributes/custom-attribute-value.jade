@@ -13,8 +13,8 @@
             a(href!="<%- value %>")
                 <%- value %>
     <% } else if (type=="richtext") { %>
-    .custom-field-value.js-value-view-mode.wysiwyg
-        div(ng-bind-html="attributeHtml")
+    .custom-field-value
+        tg-custom-field-edit-wysiwyg()
     <% } else if (type=="checkbox") { %>
     .custom-field-value.js-value-view-mode
         <% if (value) { %>
@@ -27,7 +27,7 @@
         span(ng-bind-html="attributeHtml")
     <% } %>
 
-    <% if (isEditable) { %>
+    <% if (isEditable && type!="richtext") { %>
     .custom-field-options
         a.js-edit-description(href="", title="{{'COMMON.CUSTOM_ATTRIBUTES.EDIT' | translate}}")
             tg-svg(svg-icon="icon-edit")
