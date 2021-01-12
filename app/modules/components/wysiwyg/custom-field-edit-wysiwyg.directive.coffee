@@ -42,9 +42,13 @@ CustomFieldEditWysiwyg = (attachmentsFullService) ->
         link: link,
         template: """
             <div>
+                <div
+                    class="wysiwyg"
+                    ng-if="!customAttributeValue.value">
+                </div>
                 <tg-wysiwyg
-                    editonly
                     project="project"
+                    placeholder="{{'COMMON.DESCRIPTION.NO_DESCRIPTION' | translate}}"
                     content='customAttributeValue.value'
                     on-save="saveCustomRichText(text, cb)"
                     on-cancel="cancelCustomRichText()"

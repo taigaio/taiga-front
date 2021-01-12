@@ -92,6 +92,39 @@
             width: 100%;
         }
     }
+
+    .tools {
+        visibility: hidden;
+    }
+    // .editor {
+    //     &.edit-mode {
+    //         .ck-editor__top {
+    //             display: none;
+    //         }
+    //         tg-text-editor {
+    //             button {
+    //                 display: none;
+    //             }
+    //         }
+    //     }
+    // }
+    // tg-wysiwyg:focus-within {
+    //     .tools {
+    //         visibility: visible;
+    //     }
+    //     .editor {
+    //         &.edit-mode {
+    //             .ck-editor__top {
+    //                 display: unset;
+    //             }
+    //             tg-text-editor {
+    //                 button {
+    //                     display: unset;
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
 }
 
 .custom-fields-body {
