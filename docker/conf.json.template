@@ -15,7 +15,6 @@
     "supportUrl": "https://tree.taiga.io/support/",
     "privacyPolicyUrl": null,
     "termsOfServiceUrl": null,
-    "GDPRUrl": null,
     "maxUploadFileSize": null,
     "contribPlugins": [
       "/plugins/slack/slack.json",
