@@ -41,8 +41,6 @@ class ContribController extends taiga.Controller
     loadProject: ->
         project = @projectService.project.toJS()
 
-        console.log(1)
-
         if not project.i_am_admin
             @errorHandlingService.permissionDenied()
 
