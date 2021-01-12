@@ -1,5 +1,19 @@
 # Changelog
 
+## 6.0.0
+
+### Features
+
+- Swimlanes
+
+- Generate docker image
+
+- Major UI changes
+
+### Misc
+
+- Improved performance in Kanban
+
 ## Unreleased
 
 ## 5.5.10 (2021-01-04)
