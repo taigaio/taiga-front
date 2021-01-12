@@ -65,8 +65,5 @@ class ContribUserSettingsController extends taiga.Controller
 
     constructor: (@rootScope, @scope, @params) ->
         @scope.currentPlugin = _.head(_.filter(@rootScope.userSettingsPlugins, {"slug": @params.plugin}))
-        @.loadInitialData()
 
-    loadInitialData: ->
-        return @.loadProject()
 module.controller("ContribUserSettingsController", ContribUserSettingsController)
