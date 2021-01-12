@@ -93,38 +93,14 @@
         }
     }
 
-    .tools {
-        visibility: hidden;
+    .read-mode .ck.ck-editor__main > .ck-editor__editable {
+        background: $color-white;
+        border: 2px solid $color-gray400;
+        border-radius: 3px;
+        margin: 0;
+        padding: .3rem 1rem .3rem .95rem;
+        width: 100%;
     }
-    // .editor {
-    //     &.edit-mode {
-    //         .ck-editor__top {
-    //             display: none;
-    //         }
-    //         tg-text-editor {
-    //             button {
-    //                 display: none;
-    //             }
-    //         }
-    //     }
-    // }
-    // tg-wysiwyg:focus-within {
-    //     .tools {
-    //         visibility: visible;
-    //     }
-    //     .editor {
-    //         &.edit-mode {
-    //             .ck-editor__top {
-    //                 display: unset;
-    //             }
-    //             tg-text-editor {
-    //                 button {
-    //                     display: unset;
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
 }
 
 .custom-fields-body {
