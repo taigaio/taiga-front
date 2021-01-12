@@ -8,22 +8,46 @@
         margin-right: .4rem;
     }
     a,
-    .active span {
-        background: $gray-light;
-        color: $white;
-        padding: .5rem 1rem;
+    .active span,
+    .dots span {
+        @include font-size(small);
+        @include font-type(bold);
+
+        align-items: center;
+        background: $color-gray300;
+        border-radius: 3px;
+        color: $color-link-primary;
+        display: flex;
+        justify-content: center;
+        min-height: 2rem;
+        min-width: 2rem;
+        padding: 0 .5rem;
         transition: all .3s linear;
+
+
+    }
+    tg-svg {
+        fill: $color-link-primary;
     }
     a {
         &:hover {
-            background: $blackish;
-            color: $white;
+            background: $color-link-primary;
+            color: $color-white;
             transition: all .3s linear;
+            tg-svg {
+                fill: $color-white;
+            }
         }
     }
     .active {
         span {
-            background: $primary-light;
+            background: $color-gray100;
+            color: $color-link-tertiary;
         }
+    }
+
+    .dots span {
+        background: $color-white;
+        color: $color-link-tertiary;
     }
 }

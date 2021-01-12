@@ -78,6 +78,7 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                   @navUrls, @events, @analytics, @translate, @errorHandlingService, @storage, @filterRemoteStorageService, @projectService) ->
         bindMethods(@)
 
+        @showTags = true
         @scope.sectionName = @translate.instant("PROJECT.SECTION.ISSUES")
         @.voting = false
 
@@ -113,6 +114,9 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             if @.isFilterDataTypeSelected('status') ||\
                 @.isOrderedBy('status') || @.isOrderedBy('modified')
                     @.loadIssues()
+
+    toggleShowTags: ->
+        @showTags = !@showTags
 
     isOrderedBy: (fieldName) ->
         pattern = new RegExp("-*"+fieldName)

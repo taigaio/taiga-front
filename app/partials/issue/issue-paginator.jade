@@ -2,6 +2,7 @@ ul(class="paginator")
     <% if (showPrevious) { %>
     li(class="previous")
         a(href="", class="previous next_prev_button", class="disabled")
+            tg-svg(svg-icon="icon-arrow-left")
             span(translate="PAGINATION.PREVIOUS")
     <% } %>
     <% _.each(pages, function(item) { %>
@@ -19,4 +20,5 @@ ul(class="paginator")
     li(class="next")
         a(href="", class="next next_prev_button", class="disabled")
             span(translate="PAGINATION.NEXT")
+            tg-svg(svg-icon="icon-arrow-right")
     <% } %>

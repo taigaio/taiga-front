@@ -41,6 +41,7 @@ issuesTableDirective = ($timeout) ->
         templateUrl: "components/issues-table/issues-table.html",
         bindToController: {
             issues: "<",
+            showTags: "=",
             onLoadIssues: '&',
             onAddIssuesInBulk: '&',
             onAddNewIssue: '&',

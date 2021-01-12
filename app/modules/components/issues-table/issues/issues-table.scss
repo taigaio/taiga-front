@@ -110,8 +110,11 @@
         flex: 1;
         margin: 0 .5rem;
         a {
+            align-items: center;
             all: unset;
             cursor: pointer;
+            display: flex;
+            flex-wrap: wrap;
         }
         &:hover {
             .issue-ref {
@@ -123,6 +126,7 @@
         }
         .issue-ref {
             color: $color-link-primary;
+            margin-inline-end: 1ch;
         }
         .issue-subject {
             color: $color-black900;
@@ -146,8 +150,10 @@
             display: inline-block;
         }
         .tag {
-            position: relative;
-            top: .25rem;
+            align-items: center;
+            display: inline-flex;
+            justify-content: center;
+            max-height: 20px;
             &.last {
                 margin-inline-end: .75rem;
             }

@@ -67,7 +67,8 @@
     display: flex;
 
     tg-input-search {
-        margin-left: .5rem;
+        margin-inline-end: .5rem;
+        margin-inline-start: .5rem;
         width: 185px;
     }
 }

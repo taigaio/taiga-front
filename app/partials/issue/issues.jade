@@ -35,6 +35,22 @@ div.wrapper.issues.lightbox-generic-form(
                             change="ctrl.changeQ(q)"
                         )
 
+                        .display-tags-button#show-tags
+                            .check.js-check(
+                                ng-class="{'active': ctrl.showTags}"
+                            )
+                                input(
+                                    type="checkbox"
+                                    id="show-tags-input"
+                                    ng-checked="ctrl.showTags"
+                                    ng-model="ctrl.showTags"
+                                )
+                                div
+                            label(
+                                for="show-tags-input"
+                                translate="BACKLOG.TAGS.SHOW"
+                            )
+
                     .new-issue
                         button(
                             ng-class="{'btn-small': !ctrl.sprintIssues, 'btn-board': ctrl.sprintIssues}"
@@ -49,7 +65,7 @@ div.wrapper.issues.lightbox-generic-form(
                             ng-class="{'btn-icon': !ctrl.sprintIssues, 'btn-board': ctrl.sprintIssues}"
                             type="button"
                             variant="secondary"
-                            ng-click="ctrl.addNewIssue('bulk', null)"
+                            ng-click="ctrl.addIssuesInBulk()"
                         )
                             tg-svg(svg-icon="icon-bulk")
         .issue-container
@@ -73,9 +89,9 @@ div.wrapper.issues.lightbox-generic-form(
             section.main.issues-page(
                 ng-class="{filter: ctrl.openFilter}"
             )
-
                 tg-issues-table(
                     issues="issues"
+                    show-tags="ctrl.showTags"
                     on-load-issues="ctrl.loadIssues()"
                     on-add-new-issue="ctrl.addNewIssue()"
                     on-add-issues-in-bulk="ctrl.addIssuesInBulk()"
