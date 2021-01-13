@@ -53,7 +53,13 @@
             "EDIT": "Editar tarjeta",
             "DELETE": "Elimina tarjeta",
             "DELETE_ISSUE": "Borrar petición",
-            "DETACH_ISSUE_FROM_SPRINT": "Quitar petición de sprint"
+            "DETACH_ISSUE_FROM_SPRINT": "Desvincular del sprint",
+            "PTS": "{{pts}} pts",
+            "DUE_DATE": "Fecha de vencimiento: {{date}}",
+            "NO_PTS": "N/E",
+            "ESTIMATION": "Estimación",
+            "TASKS": "{{completed}} tareas de {{total}} completadas",
+            "EXTRA_ASSIGNED_USERS": "{{total}} usuarios asignados más"
         },
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Este valor parece inválido.",
@@ -159,7 +165,7 @@
             "DUE_DATE_REASON": "Motivo  fecha de vencimiento"
         },
         "ROLES": {
-            "ALL": "Todos"
+            "ALL": "Todos los puntos"
         },
         "ASSIGNED_TO": {
             "NOT_ASSIGNED": "Sin asignar",
@@ -175,7 +181,7 @@
             "TITLE_ACTION_SET_DUE_DATE": "Fijar fecha de vencimiento"
         },
         "ASSIGNED_USERS": {
-            "ADD": "Selecciona usuario asignado",
+            "ADD": "Selecciona un usuario asignado",
             "ADD_ASSIGNED": "Añadir asignación",
             "TITLE_LIGHTBOX_DELETE_ASSIGNED": "Borra asignación..."
         },
@@ -203,7 +209,6 @@
             "COUNTER_TITLE": "{total, plural, =1{un voto} other{# votos}}"
         },
         "PROMOTE_TO_US": "Promover a historia de usuario",
-        "PROMOTE_TASK_TO_US": "Convertir tarea en historia de usuario",
         "PROMOTED_ISSUES": "Esta petición ha sido promovida a la historia de usuario:",
         "PROMOTED_TASKS": "Esta tarea ha sido promovida a historia de usuario:",
         "CONFIRM_PROMOTE": {
@@ -224,17 +229,20 @@
             "CONFIRM_DELETE": "Se borrarán todos los valores de este atributo personalizado. \n¿Estás seguro de que quieres continuar?"
         },
         "FILTERS": {
-            "INPUT_PLACEHOLDER": "Asunto o referencia",
+            "INPUT_PLACEHOLDER": "asunto o referencia",
             "TITLE_ACTION_FILTER_BUTTON": "busqueda",
-            "TITLE": "Filtros",
+            "TITLE": "Filtros personalizados",
             "TITLE_ACTION_SEARCH": "Buscar",
-            "ACTION_SAVE_CUSTOM_FILTER": "guardar como filtro personalizado",
+            "ACTION_ADD": "Añadir",
+            "ACTION_SAVE_CUSTOM_FILTER": "guardar filtro",
             "PLACEHOLDER_FILTER_NAME": "Escribe un nombre para el filtro y pulsa enter",
             "APPLIED_FILTERS_NUM": "filtros usados",
             "TITLE_ADVANCED_FILTER": "Avanzado",
             "ADVANCED_FILTERS": {
                 "INCLUDE": "Incluir",
-                "EXCLUDE": "Excluir"
+                "EXCLUDE": "Excluir",
+                "INCLUDED": "Filtradas por:",
+                "EXCLUDED": "Excluidas:"
             },
             "CATEGORIES": {
                 "TYPE": "Tipo",
@@ -448,7 +456,7 @@
         "MY_PROJECTS": "Mis proyectos"
     },
     "ATTACHMENT": {
-        "SECTION_NAME": "adjuntos",
+        "SECTION_NAME": "Adjuntos",
         "TITLE": "{{ fileName }} subido el {{ date }}",
         "LIST_VIEW_MODE": "Vista en modo Lista",
         "GALLERY_VIEW_MODE": "Vista en modo Galería",
@@ -664,6 +672,19 @@
             "BEFORE": "Antes",
             "AFTER": "Pasado"
         },
+        "PROJECT_KANBAN_OPTIONS": {
+            "TITLE": "Opciones de Kanban",
+            "SUBTITLE": "Crea swimlanes para usarlos en su flujo de trabajo y establece WIP limits para restringir el número máximo de historias en cada estado.",
+            "SWIMLANES": "Swimlanes",
+            "ACTION_ADD_SWIMLANE": "Nuevo swimlane",
+            "NO_SWIMLANES": "No hay swimlanes todavía",
+            "SWIMLANE_NAME": "Nombre del swimlane",
+            "POPUP_NEW_SWIMLANE": "Si tenías algunas historias de usuario creadas, las encontrarás en este swimlane.",
+            "WIP_LIMITS": "WIP LIMITS",
+            "WIP_LIMIT_PLACEHOLDER": "sin WIP limit",
+            "WIP_LIMIT_INPUT": "Establecer WIP limit",
+            "DEFAULT": "Predeterminado"
+        },
         "ROLES": {
             "PAGE_TITLE": "Roles - {{projectName}}",
             "WARNING_NO_ROLE": "Ojo, ningún rol en tu proyecto podrá estimar historias de usuario",
@@ -774,7 +795,7 @@
             "ACTION_ADD_STATUS": "Añadir nuevo estado",
             "IS_ARCHIVED_COLUMN": "Archivada",
             "IS_CLOSED_COLUMN": "Cerrada",
-            "WIP_LIMIT_COLUMN": "Límite WIP",
+            "WIP_LIMIT_COLUMN": "WIP limit",
             "PLACEHOLDER_WRITE_NAME": "Escribe un nombre para el nuevo estado"
         },
         "MENU": {
@@ -792,7 +813,8 @@
             "TYPES": "Tipos",
             "CUSTOM_FIELDS": "Atributos personalizados",
             "TAGS": "Etiquetas",
-            "DUE_DATES": "Vencimiento"
+            "DUE_DATES": "Vencimiento",
+            "KANBAN_OPTIONS": "Opciones de Kanban"
         },
         "SUBMENU_ROLES": {
             "TITLE": "Roles",
@@ -886,23 +908,31 @@
             "ISSUES": "Peticiones",
             "WIKI": "Wiki",
             "TEAM": "Equipo",
-            "MEETUP": "Meet Up",
-            "ADMIN": "Admin"
+            "MEETUP": "Meetup",
+            "SETTINGS": "Configuraciones",
+            "SCRUM": "Scrum",
+            "COLLAPSE_MENU": "colapsar menú"
         },
         "NAVIGATION": {
-            "ACTION_CREATE_PROJECT": "Crear proyecto",
+            "PROJECTS": "Proyectos",
+            "ACCOUNT_SETTINGS": "Configuraciones de la cuenta",
+            "ACTION_CREATE_PROJECT": "Nuevo proyecto",
+            "ACTION_CREATE_PROJECT_FIRST": "Crea tu primer proyecto",
+            "ACTION_CREATE_PROJECT_FIRST_TEXT": "Aún no tienes ningún proyecto. Crea uno ahora, invita a tu equipo y empieza a disfrutar de Taiga al máximo.",
+            "VIEW_ALL_PROJECTS": "Ver todos los proyectos",
             "MANAGE_PROJECTS": "Administrar proyectos",
             "TITLE_CREATE_PROJECT": "Crear proyecto",
-            "HELP_TITLE": "Página de Soporte de Taiga",
-            "HELP": "Ayuda",
+            "HELP_TITLE": "Recursos",
             "HOMEPAGE": "Página de inicio",
-            "FEEDBACK_TITLE": "Envíanos tu feedback",
-            "FEEDBACK": "Feedback",
+            "TAIGA_RESOURCES_TITLE": "Visita Taiga resources",
+            "TAIGA_RESOURCES": "Taiga resources",
+            "FEEDBACK_TITLE": "Envíanos tus comentarios",
+            "FEEDBACK": "Contacta",
             "NOTIFICATIONS_TITLE": "Edita la configuración de tus notificaciones",
             "NOTIFICATIONS": "Notificaciones",
             "VIEW_PROFILE_TITLE": "Ver perfil",
             "VIEW_PROFILE": "Ver perfil",
-            "USER_SETTINGS_TITLE": "Editar tus configuraciones",
+            "EDIT_PROFILE": "Editar perfil",
             "USER_SETTINGS": "Configuración de Usuario",
             "CHANGE_PASSWORD_TITLE": "Cambiar contraseña",
             "CHANGE_PASSWORD": "Cambiar contraseña",
@@ -1084,7 +1114,7 @@
             "CONFIRM": "¿Está seguro que deseas eliminar tu cuenta de Taiga?",
             "CANCEL": "Volver a los ajustes",
             "ACCEPT": "Eliminar cuenta",
-            "BLOCK_PROJECT": "Recuerde que todos los proyectos de los cuales usted es dueño serán <strong>bloqueados</strong> después de eliminar su cuenta. Si no desea que un proyecto sea bloqueado, transfiera la propiedad de cada proyecto a otro usuario antes de eliminar la cuenta."
+            "BLOCK_PROJECT": "Recuerde que todos los proyectos sobre los que posees la propiedad serán <strong>bloqueados</strong> después de eliminar tu cuenta. Si no desea que un proyecto quede bloqueado, transfiere la propiedad de cada uno a otro usuario de Taiga antes de eliminar tu cuenta."
         },
         "DELETE_PROJECT": {
             "TITLE": "Borrar proyecto",
@@ -1144,7 +1174,15 @@
             "EXISTING_ISSUE": "Petición existente",
             "CHOOSE_EXISTING_ISSUE": "¿Qué petición?",
             "ADD_ISSUE": "Añadir petición",
-            "FILTER_ISSUES": "Filtrar peticiones"
+            "FILTER_ISSUES": "Filtrar peticiones",
+            "SWIMLANE": "Swimlane",
+            "SELECT_SWIMLANE": "Selecciona un swimlane",
+            "SELECT_STATUS": "Selecciona estado",
+            "DEFAULT": "Predeterminado"
+        },
+        "DISABLE_KANBAN": {
+            "TITLE": "Desactivar kanban",
+            "MESSAGE": "Este proyecto posee swimlanes. Aunque ya no aparezcan, tus historias de usuario no se borrarán"
         },
         "DELETE_DUE_DATE": {
             "TITLE": "Borrar fecha de vencimiento",
@@ -1202,6 +1240,15 @@
             "TITLE_ACTION_DELETE_DUE_DATE": "Borrar fecha de vencimiento",
             "SUBTITLE_ACTION_DELETE_DUE_DATE": "¿Estás seguro que quieres eliminar fecha de vencimiento de estado {{due_date_status_name}}?"
         },
+        "ADMIN_KANBAN_POWERUPS": {
+            "TITLE_ACTION_DELETE_SWIMLANE": "Borrar swimlane",
+            "SUBTITLE_ACTION_DELETE_SWIMLANE_OPTIONS": "¿Seguro que quieres eliminar {{swimlane}}?",
+            "SUBTITLE_ACTION_DELETE_SWIMLANE_REPLACEMENT": "Todas las historias de usuarios de este swimlane se moverán a:",
+            "SUBTITLE_ACTION_DELETE_SWIMLANE_LAST": "Tus historias de usuario no se eliminarán. Permanecerán en el kanban.",
+            "DEFAULT_SWIMLANE": "Las nuevas historias de usuario estarán en este swimlane de forma predeterminada",
+            "SET_DEFAULT_SWIMLANE": "Establecer este swimlane como predeterminado",
+            "DISABLE_DELETE_SWIMLANE": "El swimlane predeterminado no se puede eliminar"
+        },
         "RELATE_TO_EPIC": {
             "TITLE": "Enlace a épica",
             "EXISTING_EPIC": "Épica existente",
@@ -1217,6 +1264,7 @@
     "EPIC": {
         "PAGE_TITLE": "{{epicSubject}} - Épica {{epicRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Estado: {{taskStatus}}. Descripción: {{taskDescription}}",
+        "EPIC_COLOR": "Color de la épica",
         "SECTION_NAME": "Épica",
         "ERROR_UNLINK_RELATED_USERSTORY": "No se ha podido desvincular:  {{errorMessage}}",
         "CREATE_RELATED_USERSTORIES": "Crear relación con",
@@ -1240,7 +1288,7 @@
         "LINK_TASKBOARD": "Panel de tareas",
         "TITLE_LINK_TASKBOARD": "Ir al panel de tareas",
         "TOTAL_POINTS": "puntos totales",
-        "ADD": "+ Añadir una historia de usuario",
+        "ADD": "historia de usuario",
         "ADD_BULK": "Añadir nuevas historias de usuario en bloque",
         "PROMOTED_FROM_ISSUE": "Esta historia de usuario ha sido promovida desde la petición:",
         "PROMOTED_FROM_TASK": "Esta historia de usuario ha sido promovida desde la tarea:",
@@ -1248,6 +1296,7 @@
         "TITLE_LINK_GO_TO_ISSUE": "Ir a petición",
         "TITLE_LINK_GO_TO_TASK": "Ir a tarea",
         "TITLE_DELETE_ACTION": "Borrar historia de usuario",
+        "TITLE_DELETE_MESSAGE": "¿Seguro que quieres borrar <strong>“{{subject}}“</strong>?",
         "LIGHTBOX_TITLE_BLOKING_US": "Historia de usuario bloqueada",
         "NOT_ESTIMATED": "No estimada",
         "OWNER_US": "Esta historia de usuario pertenece a",
@@ -1266,6 +1315,7 @@
         }
     },
     "COMMENTS": {
+        "TITLE": "Comentarios",
         "DELETED_INFO": "Comentario borrado por {{user}}",
         "COMMENTS_COUNT": "{{comments}} Comentarios",
         "OLDER_FIRST": "Mas antiguo primero",
@@ -1320,16 +1370,20 @@
     "BACKLOG": {
         "PAGE_TITLE": "Backlog - {{projectName}}",
         "PAGE_DESCRIPTION": "El panel del backlog, con las historias de usuario y sprints del proyecto {{projectName}}: {{projectDescription}}",
-        "SECTION_NAME": "Backlog",
+        "SECTION_NAME": "Scrum",
         "CUSTOMIZE_GRAPH": "Customiza la gráfica de tu backlog",
         "CUSTOMIZE_GRAPH_TEXT": "Para tener una gráfica bonita que te ayude a seguir la evolución del proyecto tienes que fijar los puntos y sprints en la",
         "CUSTOMIZE_GRAPH_ADMIN": "Admin",
         "CUSTOMIZE_GRAPH_TITLE": "Modifica los puntos y sprints a través de la zona de Administración",
+        "TOTAL_STORIES_FILTERED": "de {{ totalUserStories }} historias de usuario",
+        "TOTAL_STORIES": "{{ totalUserStories }} historias de usuario",
         "MOVE_US_TO_CURRENT_SPRINT": "Mover al Sprint en curso",
         "MOVE_US_TO_LATEST_SPRINT": "Mover al Sprint más reciente",
         "EMPTY": "¡El backlog está vacío!",
         "CREATE_NEW_US": "Crear una nueva historia de usuario",
-        "CREATE_NEW_US_EMPTY_HELP": "Es posible que desees crear una nueva historia de usuario",
+        "CREATE_NEW_US_EMPTY_HELP": "Añade una historia de usuario",
+        "NO_MATCH": "No se han encontrado resultados para “{{ q }}”",
+        "NO_MATCH_HELP": "Inténtalo con términos de búsqueda más generales",
         "EXCESS_OF_POINTS": "Exceso de puntos",
         "PENDING_POINTS": "Puntos pendientes",
         "CLOSED_POINTS": "cerrada",
@@ -1350,17 +1404,19 @@
         },
         "TAGS": {
             "TOGGLE": "Cambia la visibilidad de los tags",
-            "SHOW": "Mostrar etiquetas",
+            "SHOW": "tags",
             "HIDE": "Ocultar etiquetas"
         },
         "FORECASTING": {
             "TITLE": "Previsión de velocidad",
-            "BACKLOG": "Mostrar el backlog",
-            "NEW_SPRINT": "Historias de usuario candidatas para el próximo sprint, basado en tu velocidad. Haz clic para crear un nuevo sprint.",
-            "CURRENT_SPRINT": "Historias de usuario candidatas para el sprint, basado en tu velocidad. Haz clic para añadirlas al sprint en curso."
+            "BACKLOG": "volver al backlog",
+            "NEW_SPRINT": "Historias de usuario candidatas para el próximo sprint, basado en tu velocidad.",
+            "CURRENT_SPRINT": "Historias de usuario candidatas para el sprint, basado en tu velocidad. Haz clic para añadirlas al sprint en curso.",
+            "ADD_NEW_SPRINT": "crea un sprint y añade historias",
+            "ADD_NEW_SPRINT_SHORT": "crear sprint"
         },
         "TABLE": {
-            "COLUMN_US": "Historias de Usuario",
+            "COLUMN_US": "Historia de usuario",
             "TITLE_COLUMN_POINTS": "Seleccionar vista por Rol"
         },
         "SPRINT_SUMMARY": {
@@ -1381,8 +1437,8 @@
         },
         "FILTERS": {
             "TOGGLE": "Cambia la visibilidad de los filtros",
-            "HIDE": "Ocultar filtros",
-            "SHOW": "Ver Filtros"
+            "TITLE": "Filtros",
+            "HIDE_TITLE": "Ocultar filtros"
         },
         "SPRINTS": {
             "TITLE": "SPRINTS",
@@ -1392,7 +1448,7 @@
             "EMPTY": "Todavía no hay Sprints",
             "WARNING_EMPTY_SPRINT_ANONYMOUS": "Este sprint no tiene historias de usuario",
             "WARNING_EMPTY_SPRINT": "Arrastra aquí las historias desde tu backlog para comenzar un nuevo sprint",
-            "TITLE_ACTION_NEW_SPRINT": "+ Nuevo sprint",
+            "TITLE_ACTION_NEW_SPRINT": "Añade un sprint",
             "TEXT_ACTION_NEW_SPRINT": "Es posible que desees crear un nuevo sprint para tu proyecto",
             "ACTION_SHOW_CLOSED_SPRINTS": "Mostrar sprints cerrados",
             "ACTION_HIDE_CLOSED_SPRINTS": "Ocultar sprints cerrados"
@@ -1415,8 +1471,11 @@
         "TITLE_ACTION_ADD_ISSUE": "Agregar nueva petición",
         "TITLE_ACTION_ADD_ISSUE_BULK": "Agrega peticiones en bloque",
         "TITLE_ACTION_ASSIGN": "Asignar tarea",
-        "PLACEHOLDER_CARD_TITLE": "Esto podría ser una tarea",
-        "PLACEHOLDER_CARD_TEXT": "Divide las historias en tareas para controlarlas de manera separada",
+        "PLACEHOLDER_CARD_TITLE": "Esta podría ser una historia de usuario",
+        "PLACEHOLDER_CARD_TEXT": "Ve al <a href=\"{{ backlogUrl }}\" title=\"Go to backlog\">backlog</a> y arrastre las historias de usuario a este sprint; dividelas en tareas para gestionarlas de manera separada.",
+        "TASK_NOT_FOUND_TITLE": "No se han encontrado resultados",
+        "TASK_NOT_FOUND_TEXT": "Inténtalo con términos de búsqueda más generales o deshabilita algunos filtros. ",
+        "TITLE_DATE_RANGE": "{{startDate}} <span>a</span> {{endDate}}",
         "TABLE": {
             "COLUMN": "Historia de usuario",
             "TITLE_ACTION_FOLD": "Plegar columna",
@@ -1502,8 +1561,8 @@
         "PAGE_DESCRIPTION": "El panel de peticiones del proyecto {{projectName}}: {{projectDescription}}\n",
         "SECTION_NAME": "Petición",
         "ACTION_NEW_ISSUE": "+ NUEVA PETICIÓN",
-        "ACTION_ATTACH_SPRINT": "Unir petición a Sprint",
-        "ACTION_DETACH_SPRINT": "Separar petición de Sprint",
+        "ACTION_ATTACH_SPRINT": "Vincular petición a un Sprint",
+        "ACTION_DETACH_SPRINT": "Desvincular petición de Sprint",
         "EXTERNAL_REFERENCE": "Esta petición ha sido creada a partir de ",
         "GO_TO_EXTERNAL_REFERENCE": "Ir al origen",
         "ACTION_DELETE": "Borrar petición",
@@ -1519,23 +1578,24 @@
         },
         "FILTER_ISSUES": "Filtrar peticiones",
         "CONFIRM_DETACH_FROM_SPRINT": {
-            "TITLE": "Quitar petición de sprint",
-            "MESSAGE": "Estás a punto de separar la petición del sprint <strong>{{ sprintName }}<strong>"
+            "TITLE": "Desvincular petición de sprint",
+            "MESSAGE": "Estás a punto de desvincular la petición del sprint <strong>{{ sprintName }}<strong>"
         },
         "CONFIRM_CHANGE_FROM_SPRINT": {
-            "TITLE": "Unir petición a sprint",
-            "MESSAGE": "<strong>Esta petición actualmente está unida al sprint {{ oldSprintName }}</strong>. Estás a punto de quitarla del sprint y unirla al sprint <strong>{{ newSprintName }}.</strong>"
+            "TITLE": "Vincular petición a un sprint",
+            "MESSAGE": "<strong>Esta petición actualmente está vinculada al sprint {{ oldSprintName }}</strong>. Estás a punto de desvincularla del sprint y unirla al sprint <strong>{{ newSprintName }}.</strong>"
         },
         "TABLE": {
             "COLUMNS": {
                 "TYPE": "Tipo",
                 "SEVERITY": "Gravedad",
                 "PRIORITY": "Prioridad",
-                "SUBJECT": "Asunto",
+                "ISSUE": "Petición",
                 "VOTES": "Votos",
                 "STATUS": "Estado",
+                "ATTACHMENTS": "Adjuntos",
                 "MODIFIED": "Modificado",
-                "ASSIGNED_TO": "Asignado a"
+                "ASSIGNED_TO": "Asignada a"
             },
             "TITLE_ACTION_CHANGE_STATUS": "Cambio de estado",
             "TITLE_ACTION_ASSIGNED_TO": "Asignado a",
@@ -1560,9 +1620,15 @@
         "TITLE_ACTION_ADD_BULK": "Añadir nuevas en bloque",
         "ACTION_SHOW_ARCHIVED": "Ver archivados",
         "ACTION_HIDE_ARCHIVED": "Ocultar archivados",
-        "HIDDEN_USER_STORIES": "Las historias de usuario en este estado están ocultas por defecto",
-        "PLACEHOLDER_CARD_TITLE": "Estas son tus historias de usuario",
-        "PLACEHOLDER_CARD_TEXT": "Las historias pueden tener tareas para separar los requerimientos"
+        "US_NOT_FOUND_TITLE": "No se han encontrado resultados",
+        "US_NOT_FOUND_TEXT_P1": "Inténtalo con términos de búsqueda más generales o deshabilita algunos filtros. ",
+        "US_NOT_FOUND_TEXT_P2": "Las <strong>historias archivadas</strong> no se cargan de forma predeterminada. Despliegua los estados archivados para ampliar su búsqueda.",
+        "PLACEHOLDER_CARD_TITLE": "Esta podría ser una historia de usuario",
+        "PLACEHOLDER_CARD_TEXT": "Cree historias de usuario aquí y cambie su estado para seguir su progreso.",
+        "NUMBER_US": "Número de historias",
+        "ARCHIVED": "(Archivadas)",
+        "CREATE_SWIMLANE": "Crea más swimlanes",
+        "UNCLASSIFIED_USER_STORIES": "Historias de usuario sin clasificar"
     },
     "SEARCH": {
         "PAGE_TITLE": "Buscar - {{projectName}}",
@@ -1742,7 +1808,7 @@
         "TITLE": "Eventos",
         "MY_EVENTS": "Mis eventos",
         "DISMISS_ALL": "Descartar todo",
-        "VIEW_ALL": "Ver todas",
+        "VIEW_ALL": "Ver todas las notificaciones",
         "NO_NEW_EVENTS": "No hay eventos nuevos",
         "NO_EVENTS_YET": "Todavía no hay eventos",
         "ASSIGNED_YOU": "{{username}} te asignó a {{obj_name}}",
@@ -1753,10 +1819,7 @@
         "COMMENTED": "{{username}} ha comentado en {{obj_name}}"
     },
     "LEGAL": {
-        "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>Al crear una nueva cuenta, acepta </span><a href=\"{{ termsOfServiceUrl }}\" title=\"See terms of service\" target=\"_blank\">nuestras condiciones de servicio</a><span> y </span><a href=\"{{ privacyPolicyUrl }}\" title=\"See privacy policy\" target=\"_blank\">nuestra política de privacidad</a>.",
-        "GDPR_ANNOUNCEMENT_TITLE": "Reglamento General de Protección de Datos (RGPD)",
-        "GDPR_ANNOUNCEMENT_DESCRIPTION": "Lo viste venir, cierto? Actualiza a nuestros Términos de Servicio",
-        "GDPR_ANNOUNCEMENT_INFOLINK": "Por favor lee nuestro anuncio aquí"
+        "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>Al crear una nueva cuenta, acepta </span><a href=\"{{ termsOfServiceUrl }}\" title=\"See terms of service\" target=\"_blank\">nuestras condiciones de servicio</a><span> y </span><a href=\"{{ privacyPolicyUrl }}\" title=\"See privacy policy\" target=\"_blank\">nuestra política de privacidad</a>."
     },
     "EXTERNAL_APP": {
         "PAGE_TITLE": "Una aplicación externa requiere autenticación",
@@ -1858,5 +1921,12 @@
             "ACTION_TITLE": "Buscar",
             "RESULTS": "Resultados de búsqueda"
         }
+    },
+    "ZOOM": {
+        "TITLE": "Zoom",
+        "ZOOM-1": "Compacto",
+        "ZOOM-2": "Predeterminado",
+        "ZOOM-3": "Detallado",
+        "ZOOM-4": "Expandido"
     }
 }

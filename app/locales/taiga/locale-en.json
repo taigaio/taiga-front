@@ -181,7 +181,7 @@
             "TITLE_ACTION_SET_DUE_DATE": "Set due date"
         },
         "ASSIGNED_USERS": {
-            "ADD": "Select assigned user",
+            "ADD": "Select an assigned user",
             "ADD_ASSIGNED": "Add assigned",
             "TITLE_LIGHTBOX_DELETE_ASSIGNED": "Delete assigned..."
         },
@@ -672,8 +672,8 @@
             "BEFORE": "Before",
             "AFTER": "Past"
         },
-        "PROJECT_KANBAN_POWER_UPS": {
-            "TITLE": "Kanban Power Ups",
+        "PROJECT_KANBAN_OPTIONS": {
+            "TITLE": "Kanban options",
             "SUBTITLE": "Enable swimlanes to use in your workflow and set WIP limits to restrict the maximun number of user stories on each status.",
             "SWIMLANES": "Swimlanes",
             "ACTION_ADD_SWIMLANE": "New swimlane",
@@ -681,7 +681,7 @@
             "SWIMLANE_NAME": "Swimlane name",
             "POPUP_NEW_SWIMLANE": "If you had some user stories created, you will find them on this swimlane.",
             "WIP_LIMITS": "WIP LIMITS",
-            "WIP_LIMIT_PLACEHOLDER": "WIP Limit not set",
+            "WIP_LIMIT_PLACEHOLDER": "WIP limit not set",
             "WIP_LIMIT_INPUT": "Set WIP limit",
             "DEFAULT": "Default"
         },
@@ -795,7 +795,7 @@
             "ACTION_ADD_STATUS": "Add new status",
             "IS_ARCHIVED_COLUMN": "Archived",
             "IS_CLOSED_COLUMN": "Closed",
-            "WIP_LIMIT_COLUMN": "WIP Limit",
+            "WIP_LIMIT_COLUMN": "WIP limit",
             "PLACEHOLDER_WRITE_NAME": "Write a name for the new status"
         },
         "MENU": {
@@ -814,7 +814,7 @@
             "CUSTOM_FIELDS": "Custom fields",
             "TAGS": "Tags",
             "DUE_DATES": "Due dates",
-            "KANBAN_POWER_UPS": "Kanban Power Ups"
+            "KANBAN_OPTIONS": "Kanban options"
         },
         "SUBMENU_ROLES": {
             "TITLE": "Roles",
@@ -922,10 +922,12 @@
             "VIEW_ALL_PROJECTS": "View all projects",
             "MANAGE_PROJECTS": "Manage projects",
             "TITLE_CREATE_PROJECT": "Create project",
-            "HELP_TITLE": "Taiga Support",
+            "HELP_TITLE": "Resources",
             "HOMEPAGE": "Homepage",
-            "FEEDBACK_TITLE": "Send feedback",
-            "FEEDBACK": "Feedback",
+            "TAIGA_RESOURCES_TITLE": "Go to Taiga resources",
+            "TAIGA_RESOURCES": "Taiga resources",
+            "FEEDBACK_TITLE": "Write to us with your feedback",
+            "FEEDBACK": "Write to us",
             "NOTIFICATIONS_TITLE": "Edit your notification settings",
             "NOTIFICATIONS": "Notifications",
             "VIEW_PROFILE_TITLE": "View Profile",

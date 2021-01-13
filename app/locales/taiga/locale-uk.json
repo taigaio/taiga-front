@@ -53,7 +53,13 @@
             "EDIT": "Редагувати картку",
             "DELETE": "Видалити карточку",
             "DELETE_ISSUE": "Видалити проблему",
-            "DETACH_ISSUE_FROM_SPRINT": "Від'єднати проблему від спринта"
+            "DETACH_ISSUE_FROM_SPRINT": "Detach from sprint",
+            "PTS": "{{pts}} pts",
+            "DUE_DATE": "Due date: {{date}}",
+            "NO_PTS": "N/E",
+            "ESTIMATION": "Estimation",
+            "TASKS": "{{completed}} tasks of {{total}} completed",
+            "EXTRA_ASSIGNED_USERS": "{{total}} more assigned users"
         },
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Здається, це значення не вірне.",
@@ -159,7 +165,7 @@
             "DUE_DATE_REASON": "Причина кінцевої дати"
         },
         "ROLES": {
-            "ALL": "Всі"
+            "ALL": "All points"
         },
         "ASSIGNED_TO": {
             "NOT_ASSIGNED": "Не назначено",
@@ -175,7 +181,7 @@
             "TITLE_ACTION_SET_DUE_DATE": "Вказати кінцеву дату"
         },
         "ASSIGNED_USERS": {
-            "ADD": "Вибрати користувача для назначення",
+            "ADD": "Select an assigned user",
             "ADD_ASSIGNED": "Назначити на...",
             "TITLE_LIGHTBOX_DELETE_ASSIGNED": "Видалити назначення..."
         },
@@ -203,7 +209,6 @@
             "COUNTER_TITLE": "{total, plural, =1{one vote} other{# votes}}"
         },
         "PROMOTE_TO_US": "Перетворити в історію користувача",
-        "PROMOTE_TASK_TO_US": "Promote task to user story",
         "PROMOTED_ISSUES": "Ця проблема перетворена на",
         "PROMOTED_TASKS": "Це завдання перетворене на",
         "CONFIRM_PROMOTE": {
@@ -224,17 +229,20 @@
             "CONFIRM_DELETE": "Пам'ятайте: усі значення цього нетипового поля будуть видалені.\nВи дійсно хочете продовжити?"
         },
         "FILTERS": {
-            "INPUT_PLACEHOLDER": "Тема або посилання",
+            "INPUT_PLACEHOLDER": "subject or reference",
             "TITLE_ACTION_FILTER_BUTTON": "пошук",
-            "TITLE": "Фільтри",
+            "TITLE": "Користувацькі фільтри",
             "TITLE_ACTION_SEARCH": "Пошук",
-            "ACTION_SAVE_CUSTOM_FILTER": "зберегти як користувацький фільтр",
+            "ACTION_ADD": "Додати",
+            "ACTION_SAVE_CUSTOM_FILTER": "save filter",
             "PLACEHOLDER_FILTER_NAME": "Напишіть ім'я фільтра та натисніть Enter",
             "APPLIED_FILTERS_NUM": "застосовані фільтри",
             "TITLE_ADVANCED_FILTER": "Розширений",
             "ADVANCED_FILTERS": {
                 "INCLUDE": "Включити",
-                "EXCLUDE": "Вилучити"
+                "EXCLUDE": "Вилучити",
+                "INCLUDED": "Filtered by:",
+                "EXCLUDED": "Excluded:"
             },
             "CATEGORIES": {
                 "TYPE": "Тип",
@@ -448,7 +456,7 @@
         "MY_PROJECTS": "Мої проєкти"
     },
     "ATTACHMENT": {
-        "SECTION_NAME": "вкладення",
+        "SECTION_NAME": "Attachments",
         "TITLE": "{{ fileName }} завантажений {{ date }}",
         "LIST_VIEW_MODE": "Режим перегляду у вигляді списку",
         "GALLERY_VIEW_MODE": "Режим перегляду у вигляді галереї",
@@ -664,6 +672,19 @@
             "BEFORE": "До",
             "AFTER": "Після"
         },
+        "PROJECT_KANBAN_OPTIONS": {
+            "TITLE": "Kanban options",
+            "SUBTITLE": "Enable swimlanes to use in your workflow and set WIP limits to restrict the maximun number of user stories on each status.",
+            "SWIMLANES": "Swimlanes",
+            "ACTION_ADD_SWIMLANE": "New swimlane",
+            "NO_SWIMLANES": "There are no swimlanes yet",
+            "SWIMLANE_NAME": "Swimlane name",
+            "POPUP_NEW_SWIMLANE": "If you had some user stories created, you will find them on this swimlane.",
+            "WIP_LIMITS": "WIP LIMITS",
+            "WIP_LIMIT_PLACEHOLDER": "WIP limit not set",
+            "WIP_LIMIT_INPUT": "Set WIP limit",
+            "DEFAULT": "Типове"
+        },
         "ROLES": {
             "PAGE_TITLE": "Ролі - {{projectName}}",
             "WARNING_NO_ROLE": "Будьте обережні: жодна роль у вашому проєкті не зможе оцінювати значення кількості очок для історій користувача",
@@ -774,7 +795,7 @@
             "ACTION_ADD_STATUS": "Додати новий статус",
             "IS_ARCHIVED_COLUMN": "Заархівований",
             "IS_CLOSED_COLUMN": "Закритий",
-            "WIP_LIMIT_COLUMN": "WIP Limit",
+            "WIP_LIMIT_COLUMN": "WIP limit",
             "PLACEHOLDER_WRITE_NAME": "Напишіть ім'я для нового статусу"
         },
         "MENU": {
@@ -792,7 +813,8 @@
             "TYPES": "Типи",
             "CUSTOM_FIELDS": "Нетипові поля",
             "TAGS": "Мітки",
-            "DUE_DATES": "Кінцеві дати"
+            "DUE_DATES": "Кінцеві дати",
+            "KANBAN_OPTIONS": "Kanban options"
         },
         "SUBMENU_ROLES": {
             "TITLE": "Ролі",
@@ -886,23 +908,31 @@
             "ISSUES": "Проблеми",
             "WIKI": "Вікі",
             "TEAM": "Команда",
-            "MEETUP": "Зустріч",
-            "ADMIN": "Керманич"
+            "MEETUP": "Meetup",
+            "SETTINGS": "Settings",
+            "SCRUM": "Скрам",
+            "COLLAPSE_MENU": "collapse menu"
         },
         "NAVIGATION": {
-            "ACTION_CREATE_PROJECT": "Створити проєкт",
+            "PROJECTS": "Проєкти",
+            "ACCOUNT_SETTINGS": "Account settings",
+            "ACTION_CREATE_PROJECT": "New project",
+            "ACTION_CREATE_PROJECT_FIRST": "Create your first project",
+            "ACTION_CREATE_PROJECT_FIRST_TEXT": "You don’t have any projects yet. Create one now, invite your team and start using Taiga to the fullest.",
+            "VIEW_ALL_PROJECTS": "View all projects",
             "MANAGE_PROJECTS": "Керувати проєктами",
             "TITLE_CREATE_PROJECT": "Створити проєкт",
-            "HELP_TITLE": "Сторінка підтримки Taiga",
-            "HELP": "Допомога",
+            "HELP_TITLE": "Resources",
             "HOMEPAGE": "Домашня сторінка",
-            "FEEDBACK_TITLE": "Надіслати відгук",
-            "FEEDBACK": "Відгук",
+            "TAIGA_RESOURCES_TITLE": "Go to Taiga resources",
+            "TAIGA_RESOURCES": "Taiga resources",
+            "FEEDBACK_TITLE": "Write to us with your feedback",
+            "FEEDBACK": "Write to us",
             "NOTIFICATIONS_TITLE": "Відредагуйте Ваші налаштування повідомлень",
             "NOTIFICATIONS": "Повідомлення",
             "VIEW_PROFILE_TITLE": "Переглянути профіль",
             "VIEW_PROFILE": "Переглянути профіль",
-            "USER_SETTINGS_TITLE": "Редагувати налаштування",
+            "EDIT_PROFILE": "Редагувати профіль",
             "USER_SETTINGS": "Налаштування користувача",
             "CHANGE_PASSWORD_TITLE": "Змінити пароль",
             "CHANGE_PASSWORD": "Змінити пароль",
@@ -983,7 +1013,7 @@
             "WRITE_EMAIL": "Або якщо ви хочете, вкажіть електронну пошту, яку цей користувач використовує у Taiga",
             "SEARCH_CONTACT": "Або, якщо хочете, знайдіть у своїх контактах",
             "WRITE_EMAIL_LABEL": "Вкажіть електронну пошту, яку цей користувач використовує у Taiga",
-            "ACCEEDE": "Приєднатися",
+            "ACCEEDE": "Access",
             "PROJECT_MEMBERS": "Учасники проєкту",
             "PROCESS_DESCRIPTION": "Розкажіть нам, на кого із Taiga ви хотіли б назначити завдання з {{platform}}",
             "MATCH": "Чи є <strong>{{user_external}}</strong> тією самою особою, що і <strong>{{user_internal}}</strong>?",
@@ -1044,7 +1074,7 @@
             "GITHUB": {
                 "SELECTOR": "Імпортуйте проблеми із свого проєкту GitHub",
                 "CHOOSE_PROJECT": "Знайдіть проєкт для імпорту",
-                "NO_PROJECTS": "Схоже, що Ви не маєте проектів у GitHub",
+                "NO_PROJECTS": "It seems you have no projects in GitHub",
                 "HOW_DO_YOU_WANT_TO_IMPORT": "Як Ви хочете імпортувати проблеми у Taiga?",
                 "KANBAN_PROJECT": "Як історії користувача у канбан-проєкті",
                 "KANBAN_PROJECT_DESCRIPTION": "Після цього ви можете активувати скрам із списком невиконаної роботи.",
@@ -1056,7 +1086,7 @@
             "ASANA": {
                 "SELECTOR": "Імпортуйте свій проєкт Asana та виберіть як керувати ним",
                 "CHOOSE_PROJECT": "Виберіть проєкт, який Ви хочете імпортувати",
-                "NO_PROJECTS": "Схоже, що Ви не маєте проектів у Asana",
+                "NO_PROJECTS": "It seems you have no projects in Asana",
                 "KANBAN_PROJECT": "Канбан",
                 "SCRUM_PROJECT": "Скрам",
                 "CREATE_AS_SCRUM_DESCRIPTION": "Завдання та під-завдання вашого проєкту будуть створені як історії користувача та завдання у Taiga",
@@ -1066,7 +1096,7 @@
                 "SELECTOR": "Імпортуйте свій проєкт Jira та виберіть як керувати ним",
                 "HOW_TO_CONFIGURE": "(configuration help)",
                 "CHOOSE_PROJECT": "Виберіть проєкт чи дошку, яку Ви хочете імпортувати",
-                "NO_PROJECTS": "Схоже, що у Вас немає проектів чи дошок у Jira",
+                "NO_PROJECTS": "It seems you have no projects or boards in Jira",
                 "URL": "Ваша URL-адреса Jira",
                 "KANBAN_PROJECT": "Канбан",
                 "SCRUM_PROJECT": "Скрам",
@@ -1084,7 +1114,7 @@
             "CONFIRM": "Ви дійсно хочете видалити обліковий запис Taiga?",
             "CANCEL": "Назад до налаштувань",
             "ACCEPT": "Видалити обліковий запис",
-            "BLOCK_PROJECT": "Візьміть до уваги, що усі ваші власні проєкти будуть <strong>заблоковані</strong> якщо ви видалите свій профіль. Якщо ви хочете, щоб проєкт не був заблокований, передайте право власності іншому учаснику для кожного проєкту перед ти, як видалити свій профіль."
+            "BLOCK_PROJECT": "Note that all projects you own will be <strong>blocked</strong> after you delete your account. If you do not want a particular project to be blocked, make sure you transfer ownership to another existing Taiga member before deleting your account."
         },
         "DELETE_PROJECT": {
             "TITLE": "Видалити проєкт",
@@ -1144,7 +1174,15 @@
             "EXISTING_ISSUE": "Існуюча проблема",
             "CHOOSE_EXISTING_ISSUE": "Яка проблема?",
             "ADD_ISSUE": "Додати проблему",
-            "FILTER_ISSUES": "Фільтрувати проблеми"
+            "FILTER_ISSUES": "Фільтрувати проблеми",
+            "SWIMLANE": "Swimlane",
+            "SELECT_SWIMLANE": "Select swimlane",
+            "SELECT_STATUS": "Select status",
+            "DEFAULT": "Типове"
+        },
+        "DISABLE_KANBAN": {
+            "TITLE": "Disable kanban",
+            "MESSAGE": "This project has swimlanes. They will be gone but your user stories will not be deleted"
         },
         "DELETE_DUE_DATE": {
             "TITLE": "Видалити кінцеву дату",
@@ -1202,6 +1240,15 @@
             "TITLE_ACTION_DELETE_DUE_DATE": "Видалити кінцеву дату",
             "SUBTITLE_ACTION_DELETE_DUE_DATE": "Ви дійсно хочете видалити статус кінцевої дати {{due_date_status_name}}?"
         },
+        "ADMIN_KANBAN_POWERUPS": {
+            "TITLE_ACTION_DELETE_SWIMLANE": "Delete swimlane",
+            "SUBTITLE_ACTION_DELETE_SWIMLANE_OPTIONS": "Are you sure you want to delete {{swimlane}}?",
+            "SUBTITLE_ACTION_DELETE_SWIMLANE_REPLACEMENT": "All the user stories on this swimlane will be moved to:",
+            "SUBTITLE_ACTION_DELETE_SWIMLANE_LAST": "Your user stories will not be deleted. They will remain in the kanban.",
+            "DEFAULT_SWIMLANE": "New user stories will be in this swimlane by default",
+            "SET_DEFAULT_SWIMLANE": "Set this swimlane as default",
+            "DISABLE_DELETE_SWIMLANE": "The default swimlane cannot be deleted"
+        },
         "RELATE_TO_EPIC": {
             "TITLE": "Прив'язати до епіка",
             "EXISTING_EPIC": "Існуючий епік",
@@ -1217,6 +1264,7 @@
     "EPIC": {
         "PAGE_TITLE": "{{epicSubject}} - Епік {{epicRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Статус: {{epicStatus }}. Опис: {{epicDescription}}",
+        "EPIC_COLOR": "Epic color:",
         "SECTION_NAME": "Епік",
         "ERROR_UNLINK_RELATED_USERSTORY": "Не можливо відв'язати: {{errorMessage}}",
         "CREATE_RELATED_USERSTORIES": "Створити зв'язки з",
@@ -1240,7 +1288,7 @@
         "LINK_TASKBOARD": "Дошка завдань",
         "TITLE_LINK_TASKBOARD": "Перейти до дошки завдань",
         "TOTAL_POINTS": "загальна кількість очок",
-        "ADD": "+ Додати нову історію користувача",
+        "ADD": "user story",
         "ADD_BULK": "Додати декілька нових історій користувача",
         "PROMOTED_FROM_ISSUE": "Ця історія користувача була створена з проблеми:",
         "PROMOTED_FROM_TASK": "Ця історія користувача була створена з завдання:",
@@ -1248,6 +1296,7 @@
         "TITLE_LINK_GO_TO_ISSUE": "Перейти до проблеми",
         "TITLE_LINK_GO_TO_TASK": "Перейти до завдання",
         "TITLE_DELETE_ACTION": "Видалити історію користувача",
+        "TITLE_DELETE_MESSAGE": "Are you sure you want to delete <strong>“{{subject}}“</strong>?",
         "LIGHTBOX_TITLE_BLOKING_US": "Блокуюча історія користувача",
         "NOT_ESTIMATED": "Не оцінено",
         "OWNER_US": "Ця історія користувача належить до",
@@ -1266,6 +1315,7 @@
         }
     },
     "COMMENTS": {
+        "TITLE": "Comments",
         "DELETED_INFO": "Коментар видалений {{user}}",
         "COMMENTS_COUNT": "{{comments}} коментарів",
         "OLDER_FIRST": "Спочатку старіші",
@@ -1320,16 +1370,20 @@
     "BACKLOG": {
         "PAGE_TITLE": "Список невиконаної роботи - {{projectName}}",
         "PAGE_DESCRIPTION": "Панель невиконаної роботи з історіями користувача та спринтами проєкту {{projectName}}: {{projectDescription}}",
-        "SECTION_NAME": "Невиконана робота",
+        "SECTION_NAME": "Скрам",
         "CUSTOMIZE_GRAPH": "Налаштувати графік вашої невиконаної роботи",
         "CUSTOMIZE_GRAPH_TEXT": "Щоб мати гарний графік, який допоможе слідкувати за розвитком проєкту, вам необхідно налаштувати очки та спринти у",
         "CUSTOMIZE_GRAPH_ADMIN": "Керманич",
         "CUSTOMIZE_GRAPH_TITLE": "Налаштувати точки та спринти через керманича",
+        "TOTAL_STORIES_FILTERED": "of {{ totalUserStories }} user stories",
+        "TOTAL_STORIES": "{{ totalUserStories }} user stories",
         "MOVE_US_TO_CURRENT_SPRINT": "Перемістити у поточний спринт",
         "MOVE_US_TO_LATEST_SPRINT": "Перемістити до останнього спринта",
         "EMPTY": "Список невиконаної роботи порожній!",
         "CREATE_NEW_US": "Створити нову історію користувача",
-        "CREATE_NEW_US_EMPTY_HELP": "Ви можете створити нову історію користувача",
+        "CREATE_NEW_US_EMPTY_HELP": "Add a user story",
+        "NO_MATCH": "No matching search result found with “{{ q }}”",
+        "NO_MATCH_HELP": "Try again using more general search terms",
         "EXCESS_OF_POINTS": "Перевищення кількості очок",
         "PENDING_POINTS": "Кількість очок в очікуванні",
         "CLOSED_POINTS": "закрито",
@@ -1350,17 +1404,19 @@
         },
         "TAGS": {
             "TOGGLE": "Переключити видимість міток",
-            "SHOW": "Показати мітки",
+            "SHOW": "tags",
             "HIDE": "Сховати мітки"
         },
         "FORECASTING": {
             "TITLE": "Прогнозування швидкості",
-            "BACKLOG": "Показати невиконану роботу",
-            "NEW_SPRINT": "Кандидати історій користувача для вашого наступного спринта. Натисніть, щоб створити новий спринт.",
-            "CURRENT_SPRINT": "Кандидати історій користувача для вашого наступного спринта. Натисніть, щоб додати до поточного спринта."
+            "BACKLOG": "return to backlog",
+            "NEW_SPRINT": "Candidate user stories for your next sprint based on your velocity.",
+            "CURRENT_SPRINT": "Кандидати історій користувача для вашого наступного спринта. Натисніть, щоб додати до поточного спринта.",
+            "ADD_NEW_SPRINT": "create sprint and add US",
+            "ADD_NEW_SPRINT_SHORT": "create sprint"
         },
         "TABLE": {
-            "COLUMN_US": "Історії користувача",
+            "COLUMN_US": "Історія користувача",
             "TITLE_COLUMN_POINTS": "Вибрати перегляд за роллю"
         },
         "SPRINT_SUMMARY": {
@@ -1381,8 +1437,8 @@
         },
         "FILTERS": {
             "TOGGLE": "Переключити видимість фільтрів",
-            "HIDE": "Сховати фільтри",
-            "SHOW": "Показати фільтри"
+            "TITLE": "Фільтри",
+            "HIDE_TITLE": "Hide filters"
         },
         "SPRINTS": {
             "TITLE": "СПРИНТИ",
@@ -1392,7 +1448,7 @@
             "EMPTY": "Ще немає спринтів",
             "WARNING_EMPTY_SPRINT_ANONYMOUS": "У цьому спринті немає історій користувача",
             "WARNING_EMPTY_SPRINT": "Перетягніть сюди історії із вашої невиконаної роботи, щоб розпочати новий спринт",
-            "TITLE_ACTION_NEW_SPRINT": "Додати новий спринт",
+            "TITLE_ACTION_NEW_SPRINT": "Add a sprint",
             "TEXT_ACTION_NEW_SPRINT": "Ви можете створити новий спринт у своєму проєкті",
             "ACTION_SHOW_CLOSED_SPRINTS": "Показати закриті спринти",
             "ACTION_HIDE_CLOSED_SPRINTS": "Сховати закриті спринти"
@@ -1415,8 +1471,11 @@
         "TITLE_ACTION_ADD_ISSUE": "Додати нову проблему",
         "TITLE_ACTION_ADD_ISSUE_BULK": "Додати декілька нових проблем",
         "TITLE_ACTION_ASSIGN": "Назначити завдання",
-        "PLACEHOLDER_CARD_TITLE": "Це не може бути завданням",
-        "PLACEHOLDER_CARD_TEXT": "Розділити історії на завдання, щоб відслідковувати їх окремо",
+        "PLACEHOLDER_CARD_TITLE": "This could be a user story",
+        "PLACEHOLDER_CARD_TEXT": "Go to the <a href=\"{{ backlogUrl }}\" title=\"Go to backlog\">backlog</a> and drag user stories to this sprint; split the stories into tasks to track them separately.",
+        "TASK_NOT_FOUND_TITLE": "No matching results found",
+        "TASK_NOT_FOUND_TEXT": "Try again using more general search terms or disabling some filters.",
+        "TITLE_DATE_RANGE": "{{startDate}} <span>to</span> {{endDate}}",
         "TABLE": {
             "COLUMN": "Історія користувача",
             "TITLE_ACTION_FOLD": "Згорнути колонку",
@@ -1531,11 +1590,12 @@
                 "TYPE": "Тип",
                 "SEVERITY": "Важливість",
                 "PRIORITY": "Пріоритет",
-                "SUBJECT": "Тема",
+                "ISSUE": "Проблема",
                 "VOTES": "Голоси",
                 "STATUS": "Статус",
+                "ATTACHMENTS": "Attachments",
                 "MODIFIED": "Змінений",
-                "ASSIGNED_TO": "Назначено на"
+                "ASSIGNED_TO": "Assign to"
             },
             "TITLE_ACTION_CHANGE_STATUS": "Змінити статус",
             "TITLE_ACTION_ASSIGNED_TO": "Назначено на",
@@ -1560,9 +1620,15 @@
         "TITLE_ACTION_ADD_BULK": "Додати декілька нових",
         "ACTION_SHOW_ARCHIVED": "Показати заархівовані",
         "ACTION_HIDE_ARCHIVED": "Приховати заархівовані",
-        "HIDDEN_USER_STORIES": "Історії користувача у цьому статусі за замовчуванням приховані",
-        "PLACEHOLDER_CARD_TITLE": "Це ваші історії користувача",
-        "PLACEHOLDER_CARD_TEXT": "Історії також можуть мати підзадачі для розділення вимог"
+        "US_NOT_FOUND_TITLE": "No matching results found",
+        "US_NOT_FOUND_TEXT_P1": "Try again using more general search terms or disabled some filters.",
+        "US_NOT_FOUND_TEXT_P2": "<strong>Archived stories</strong> are not loaded by default. Unfold the archived statuses to expand your search.",
+        "PLACEHOLDER_CARD_TITLE": "This could be a user story",
+        "PLACEHOLDER_CARD_TEXT": "Create user stories here and change their status to track their progress.",
+        "NUMBER_US": "Number of US",
+        "ARCHIVED": "(Archived)",
+        "CREATE_SWIMLANE": "Create more swimlanes",
+        "UNCLASSIFIED_USER_STORIES": "Unclassified user stories"
     },
     "SEARCH": {
         "PAGE_TITLE": "Пошук - {{projectName}}",
@@ -1742,7 +1808,7 @@
         "TITLE": "Події",
         "MY_EVENTS": "Мої події",
         "DISMISS_ALL": "Скасувати усе",
-        "VIEW_ALL": "Переглянути все",
+        "VIEW_ALL": "View all notifications",
         "NO_NEW_EVENTS": "Немає нових подій",
         "NO_EVENTS_YET": "Ще немає подій",
         "ASSIGNED_YOU": "{{username}} назначив {{obj_name}} на вас",
@@ -1753,10 +1819,7 @@
         "COMMENTED": "{{username}} залишив коментар до {{obj_name}}"
     },
     "LEGAL": {
-        "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>Створюючи новий профіль, Ви погоджуєтесь із нашими </span><a href=\"{{ termsOfServiceUrl }}\" title=\"See terms of service\" target=\"_blank\">умовами надання сервісу</a><span> та </span><a href=\"{{ privacyPolicyUrl }}\" title=\"See privacy policy\" target=\"_blank\">політикою конфіденційності</a>.",
-        "GDPR_ANNOUNCEMENT_TITLE": "Загальне положення про захист даних (GDPR)",
-        "GDPR_ANNOUNCEMENT_DESCRIPTION": "Ви бачите це, так? Оновлено наші Умови надання сервісу",
-        "GDPR_ANNOUNCEMENT_INFOLINK": "Будь ласка, читайте наші оголошення тут"
+        "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>Створюючи новий профіль, Ви погоджуєтесь із нашими </span><a href=\"{{ termsOfServiceUrl }}\" title=\"See terms of service\" target=\"_blank\">умовами надання сервісу</a><span> та </span><a href=\"{{ privacyPolicyUrl }}\" title=\"See privacy policy\" target=\"_blank\">політикою конфіденційності</a>."
     },
     "EXTERNAL_APP": {
         "PAGE_TITLE": "Зовнішній додаток вимагає аутентифікації",
@@ -1858,5 +1921,12 @@
             "ACTION_TITLE": "Пошук",
             "RESULTS": "Результати пошуку"
         }
+    },
+    "ZOOM": {
+        "TITLE": "Zoom:",
+        "ZOOM-1": "Compact",
+        "ZOOM-2": "Типове",
+        "ZOOM-3": "Detailed",
+        "ZOOM-4": "Expanded"
     }
 }

@@ -2,7 +2,7 @@ doctype html
 
 div.wrapper(
     ng-controller="ProjectValuesSectionController",
-    ng-init="sectionName='ADMIN.PROJECT_KANBAN_POWER_UPS.TITLE'"
+    ng-init="sectionName='ADMIN.PROJECT_KANBAN_OPTIONS.TITLE'"
 )
 
     tg-project-menu
@@ -15,12 +15,12 @@ div.wrapper(
 
     section.main.admin-common.admin-attributes
         include ../includes/components/mainTitle
-        p.admin-subtitle(translate="ADMIN.PROJECT_KANBAN_POWER_UPS.SUBTITLE")
+        p.admin-subtitle(translate="ADMIN.PROJECT_KANBAN_OPTIONS.SUBTITLE")
 
         div.admin-attributes-section.admin-swimlanes(
             tg-project-swimlanes-values
             ng-controller="ProjectSwimlanesValuesController as ctrl",
-            ng-init="section='admin'; resource='swimlanes'; sectionName='ADMIN.PROJECT_KANBAN_POWER_UPS.SWIMLANES'",
+            ng-init="section='admin'; resource='swimlanes'; sectionName='ADMIN.PROJECT_KANBAN_OPTIONS.SWIMLANES'",
             objName="status"
         )
             include ../includes/modules/admin/project-kanban-swimlanes

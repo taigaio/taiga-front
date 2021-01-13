@@ -2,7 +2,7 @@ section.admin-kanban-powerups
     div.project-values-title
         h2 {{ sectionName | translate }}
         button.button.button-primary(
-            translate="ADMIN.PROJECT_KANBAN_POWER_UPS.ACTION_ADD_SWIMLANE"
+            translate="ADMIN.PROJECT_KANBAN_OPTIONS.ACTION_ADD_SWIMLANE"
             ng-click="displaySwimlaneForm()"
         )
 
@@ -14,7 +14,7 @@ section.admin-kanban-powerups
         )
             .tooltip(
                 ng-if="values.length == 1 && isNewSwimlane"
-                translate="ADMIN.PROJECT_KANBAN_POWER_UPS.POPUP_NEW_SWIMLANE"
+                translate="ADMIN.PROJECT_KANBAN_OPTIONS.POPUP_NEW_SWIMLANE"
             )
             .sortable
                 .admin-swimlane-single(
@@ -30,7 +30,7 @@ section.admin-kanban-powerups
         )
             input#admin-swimlanes-form-input(
                 type="text"
-                placeholder="{{'ADMIN.PROJECT_KANBAN_POWER_UPS.SWIMLANE_NAME' | translate }}"
+                placeholder="{{'ADMIN.PROJECT_KANBAN_OPTIONS.SWIMLANE_NAME' | translate }}"
                 ng-model="swimlane.name"
             )
             button.form-button.add-swimlane(
@@ -46,10 +46,10 @@ section.admin-kanban-powerups
                 tg-svg(svg-icon="icon-close")
         .empty(
             ng-if="!values.length && !isFormVisible && !deletingSwimlane"
-            translate="ADMIN.PROJECT_KANBAN_POWER_UPS.NO_SWIMLANES")
+            translate="ADMIN.PROJECT_KANBAN_OPTIONS.NO_SWIMLANES")
 
     .project-values-title
-        h2(translate="ADMIN.PROJECT_KANBAN_POWER_UPS.WIP_LIMITS")
+        h2(translate="ADMIN.PROJECT_KANBAN_OPTIONS.WIP_LIMITS")
 
     .admin-wip-manager(ng-if="!values.length")
         tg-wip-limit-selector(

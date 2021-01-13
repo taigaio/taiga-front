@@ -53,7 +53,13 @@
             "EDIT": "編集",
             "DELETE": "カードを削除",
             "DELETE_ISSUE": "課題を削除",
-            "DETACH_ISSUE_FROM_SPRINT": "課題をスプリントから切り離す"
+            "DETACH_ISSUE_FROM_SPRINT": "Detach from sprint",
+            "PTS": "{{pts}} pts",
+            "DUE_DATE": "Due date: {{date}}",
+            "NO_PTS": "N/E",
+            "ESTIMATION": "Estimation",
+            "TASKS": "{{completed}} tasks of {{total}} completed",
+            "EXTRA_ASSIGNED_USERS": "{{total}} more assigned users"
         },
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "無効な値です",
@@ -159,7 +165,7 @@
             "DUE_DATE_REASON": "締切日理由"
         },
         "ROLES": {
-            "ALL": "すべて"
+            "ALL": "All points"
         },
         "ASSIGNED_TO": {
             "NOT_ASSIGNED": "未割当",
@@ -175,7 +181,7 @@
             "TITLE_ACTION_SET_DUE_DATE": "締切日を設定"
         },
         "ASSIGNED_USERS": {
-            "ADD": "割当ユーザーを選択",
+            "ADD": "Select an assigned user",
             "ADD_ASSIGNED": "割当を追加",
             "TITLE_LIGHTBOX_DELETE_ASSIGNED": "Delete assigned..."
         },
@@ -203,7 +209,6 @@
             "COUNTER_TITLE": "{total, plural, =1{# 票} other{# 票}}"
         },
         "PROMOTE_TO_US": "Promote to user story",
-        "PROMOTE_TASK_TO_US": "ユーザーストーリーに変更",
         "PROMOTED_ISSUES": "この課題はこちらへ発展:",
         "PROMOTED_TASKS": "This task has been promoted to",
         "CONFIRM_PROMOTE": {
@@ -224,17 +229,20 @@
             "CONFIRM_DELETE": "このカスタムフィールドのすべての値が削除されることになります。\n本当にこのまま続行してもよろしいですか？"
         },
         "FILTERS": {
-            "INPUT_PLACEHOLDER": "Subject or reference",
+            "INPUT_PLACEHOLDER": "subject or reference",
             "TITLE_ACTION_FILTER_BUTTON": "検索",
-            "TITLE": "フィルター",
+            "TITLE": "カスタムフィルター",
             "TITLE_ACTION_SEARCH": "検索",
-            "ACTION_SAVE_CUSTOM_FILTER": "カスタムフィルターとして保存する",
+            "ACTION_ADD": "追加",
+            "ACTION_SAVE_CUSTOM_FILTER": "save filter",
             "PLACEHOLDER_FILTER_NAME": "フィルター名を入力しエンターキーを押してください。",
             "APPLIED_FILTERS_NUM": "フィルター適用中",
             "TITLE_ADVANCED_FILTER": "Advanced",
             "ADVANCED_FILTERS": {
                 "INCLUDE": "Include",
-                "EXCLUDE": "Exclude"
+                "EXCLUDE": "Exclude",
+                "INCLUDED": "Filtered by:",
+                "EXCLUDED": "Excluded:"
             },
             "CATEGORIES": {
                 "TYPE": "タイプ",
@@ -448,7 +456,7 @@
         "MY_PROJECTS": "マイ プロジェクト"
     },
     "ATTACHMENT": {
-        "SECTION_NAME": "添付ファイル",
+        "SECTION_NAME": "Attachments",
         "TITLE": "{{ fileName }} が {{ date }} にアップロードされました",
         "LIST_VIEW_MODE": "ライブビューモード",
         "GALLERY_VIEW_MODE": "ギャラリービューモード",
@@ -664,6 +672,19 @@
             "BEFORE": "Before",
             "AFTER": "Past"
         },
+        "PROJECT_KANBAN_OPTIONS": {
+            "TITLE": "Kanban options",
+            "SUBTITLE": "Enable swimlanes to use in your workflow and set WIP limits to restrict the maximun number of user stories on each status.",
+            "SWIMLANES": "Swimlanes",
+            "ACTION_ADD_SWIMLANE": "New swimlane",
+            "NO_SWIMLANES": "There are no swimlanes yet",
+            "SWIMLANE_NAME": "Swimlane name",
+            "POPUP_NEW_SWIMLANE": "If you had some user stories created, you will find them on this swimlane.",
+            "WIP_LIMITS": "WIP LIMITS",
+            "WIP_LIMIT_PLACEHOLDER": "WIP limit not set",
+            "WIP_LIMIT_INPUT": "Set WIP limit",
+            "DEFAULT": "Default"
+        },
         "ROLES": {
             "PAGE_TITLE": "役割 - {{projectName}}",
             "WARNING_NO_ROLE": "ユーザーストーリーのポイントを見積もれる役割がプロジェクトに存在しません。",
@@ -774,7 +795,7 @@
             "ACTION_ADD_STATUS": "ステータスを追加",
             "IS_ARCHIVED_COLUMN": "アーカイブ",
             "IS_CLOSED_COLUMN": "終了",
-            "WIP_LIMIT_COLUMN": "WIP制限",
+            "WIP_LIMIT_COLUMN": "WIP limit",
             "PLACEHOLDER_WRITE_NAME": "新しいステータス名を記入"
         },
         "MENU": {
@@ -792,7 +813,8 @@
             "TYPES": "タイプ",
             "CUSTOM_FIELDS": "カスタムフィールド",
             "TAGS": "タグ",
-            "DUE_DATES": "締切日"
+            "DUE_DATES": "締切日",
+            "KANBAN_OPTIONS": "Kanban options"
         },
         "SUBMENU_ROLES": {
             "TITLE": "役割",
@@ -886,23 +908,31 @@
             "ISSUES": "課題",
             "WIKI": "Wiki",
             "TEAM": "チーム",
-            "MEETUP": "会議",
-            "ADMIN": "管理"
+            "MEETUP": "Meetup",
+            "SETTINGS": "設定",
+            "SCRUM": "スクラム",
+            "COLLAPSE_MENU": "collapse menu"
         },
         "NAVIGATION": {
-            "ACTION_CREATE_PROJECT": "プロジェクトを作成",
+            "PROJECTS": "プロジェクト",
+            "ACCOUNT_SETTINGS": "Account settings",
+            "ACTION_CREATE_PROJECT": "New project",
+            "ACTION_CREATE_PROJECT_FIRST": "Create your first project",
+            "ACTION_CREATE_PROJECT_FIRST_TEXT": "You don’t have any projects yet. Create one now, invite your team and start using Taiga to the fullest.",
+            "VIEW_ALL_PROJECTS": "View all projects",
             "MANAGE_PROJECTS": "プロジェクト管理",
             "TITLE_CREATE_PROJECT": "プロジェクトを作成",
-            "HELP_TITLE": "Taiga サポートページ",
-            "HELP": "ヘルプ",
+            "HELP_TITLE": "Resources",
             "HOMEPAGE": "ホームページ",
-            "FEEDBACK_TITLE": "フィードバックを送る",
-            "FEEDBACK": "フィードバック",
+            "TAIGA_RESOURCES_TITLE": "Go to Taiga resources",
+            "TAIGA_RESOURCES": "Taiga resources",
+            "FEEDBACK_TITLE": "Write to us with your feedback",
+            "FEEDBACK": "Write to us",
             "NOTIFICATIONS_TITLE": "通知設定を編集",
             "NOTIFICATIONS": "通知",
             "VIEW_PROFILE_TITLE": "プロフィールを表示",
             "VIEW_PROFILE": "プロフィールを表示",
-            "USER_SETTINGS_TITLE": "設定を編集",
+            "EDIT_PROFILE": "プロフィールを編集",
             "USER_SETTINGS": "ユーザー設定",
             "CHANGE_PASSWORD_TITLE": "パスワード変更",
             "CHANGE_PASSWORD": "パスワード変更",
@@ -983,7 +1013,7 @@
             "WRITE_EMAIL": "あるいは必要であれば、このユーザーがTaigaで使用しているメールアドレスを記入",
             "SEARCH_CONTACT": "Or if you want, search in your contacts",
             "WRITE_EMAIL_LABEL": "Taigaでこのユーザーが使用しているメールアドレスを記入",
-            "ACCEEDE": "Accede",
+            "ACCEEDE": "Access",
             "PROJECT_MEMBERS": "プロジェクトメンバー",
             "PROCESS_DESCRIPTION": "Tell us to whom from Taiga you want to assign the tasks of {{platform}}",
             "MATCH": "Is <strong>{{user_external}}</strong> the same person as <strong>{{user_internal}}</strong>?",
@@ -1044,7 +1074,7 @@
             "GITHUB": {
                 "SELECTOR": "GitHubプロジェクト課題をインポート",
                 "CHOOSE_PROJECT": "インポートしたいプロジェクトを検索",
-                "NO_PROJECTS": "GitHubプロジェクトがないようです",
+                "NO_PROJECTS": "It seems you have no projects in GitHub",
                 "HOW_DO_YOU_WANT_TO_IMPORT": "課題をどのようにTaigaにインポートしたいですか？",
                 "KANBAN_PROJECT": "As user stories in a kanban project",
                 "KANBAN_PROJECT_DESCRIPTION": "After that you can enable scrum with backlog.",
@@ -1056,7 +1086,7 @@
             "ASANA": {
                 "SELECTOR": "Asanaプロジェクトをインポートし管理方法を選択",
                 "CHOOSE_PROJECT": "インポートしたいプロジェクトを選択",
-                "NO_PROJECTS": "Asanaにプロジェクトがないようです",
+                "NO_PROJECTS": "It seems you have no projects in Asana",
                 "KANBAN_PROJECT": "かんばん",
                 "SCRUM_PROJECT": "スクラム",
                 "CREATE_AS_SCRUM_DESCRIPTION": "あなたのプロジェクトのタスクとサブタスクはTaigaユーザーストーリーとタスクとして作成されます。",
@@ -1066,7 +1096,7 @@
                 "SELECTOR": "Jiraプロジェクトをインポートし管理方法を選択",
                 "HOW_TO_CONFIGURE": "(設定ヘルプ)",
                 "CHOOSE_PROJECT": "インポートしたいプロジェクトまたはボードを選択",
-                "NO_PROJECTS": "Jiraにプロジェクトやボードがないようです",
+                "NO_PROJECTS": "It seems you have no projects or boards in Jira",
                 "URL": "Jira URL",
                 "KANBAN_PROJECT": "かんばん",
                 "SCRUM_PROJECT": "スクラム",
@@ -1084,7 +1114,7 @@
             "CONFIRM": "本当にあなたのTaigaアカウントを削除してもよろしいですか？",
             "CANCEL": "設定に戻る",
             "ACCEPT": "アカウントを削除する",
-            "BLOCK_PROJECT": "あなたが所有しているプロジェクトは、あなたのアカウント削除後に<strong>ブロック</strong>されることを覚えておいてください。あなたのアカウントが削除されてプロジェクトがブロックされる前にプロジェクトのオーナー権限を他のメンバーに譲渡してください。"
+            "BLOCK_PROJECT": "Note that all projects you own will be <strong>blocked</strong> after you delete your account. If you do not want a particular project to be blocked, make sure you transfer ownership to another existing Taiga member before deleting your account."
         },
         "DELETE_PROJECT": {
             "TITLE": "プロジェクトを削除",
@@ -1144,7 +1174,15 @@
             "EXISTING_ISSUE": "既存の課題",
             "CHOOSE_EXISTING_ISSUE": "どの課題？",
             "ADD_ISSUE": "イッシューを追加する",
-            "FILTER_ISSUES": "課題をフィルター"
+            "FILTER_ISSUES": "課題をフィルター",
+            "SWIMLANE": "Swimlane",
+            "SELECT_SWIMLANE": "Select swimlane",
+            "SELECT_STATUS": "Select status",
+            "DEFAULT": "Default"
+        },
+        "DISABLE_KANBAN": {
+            "TITLE": "Disable kanban",
+            "MESSAGE": "This project has swimlanes. They will be gone but your user stories will not be deleted"
         },
         "DELETE_DUE_DATE": {
             "TITLE": "締切日を削除",
@@ -1202,6 +1240,15 @@
             "TITLE_ACTION_DELETE_DUE_DATE": "締切日を削除",
             "SUBTITLE_ACTION_DELETE_DUE_DATE": "本当に締切日ステータス {{due_date_status_name}} を削除してもよろしいですか？"
         },
+        "ADMIN_KANBAN_POWERUPS": {
+            "TITLE_ACTION_DELETE_SWIMLANE": "Delete swimlane",
+            "SUBTITLE_ACTION_DELETE_SWIMLANE_OPTIONS": "Are you sure you want to delete {{swimlane}}?",
+            "SUBTITLE_ACTION_DELETE_SWIMLANE_REPLACEMENT": "All the user stories on this swimlane will be moved to:",
+            "SUBTITLE_ACTION_DELETE_SWIMLANE_LAST": "Your user stories will not be deleted. They will remain in the kanban.",
+            "DEFAULT_SWIMLANE": "New user stories will be in this swimlane by default",
+            "SET_DEFAULT_SWIMLANE": "Set this swimlane as default",
+            "DISABLE_DELETE_SWIMLANE": "The default swimlane cannot be deleted"
+        },
         "RELATE_TO_EPIC": {
             "TITLE": "epicに関連付ける",
             "EXISTING_EPIC": "既存のエピック",
@@ -1217,6 +1264,7 @@
     "EPIC": {
         "PAGE_TITLE": "{{epicSubject}} - エピック {{epicRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "ステータス: {{epicStatus }}. 説明: {{epicDescription}}",
+        "EPIC_COLOR": "Epic color:",
         "SECTION_NAME": "エピック",
         "ERROR_UNLINK_RELATED_USERSTORY": "リンクの削除に失敗: {{errorMessage}}",
         "CREATE_RELATED_USERSTORIES": "関連付ける",
@@ -1240,7 +1288,7 @@
         "LINK_TASKBOARD": "タスクボード",
         "TITLE_LINK_TASKBOARD": "タスクボードに移動",
         "TOTAL_POINTS": "合計ポイント",
-        "ADD": "+ 新規ユーザーストーリーを追加する",
+        "ADD": "ユーザストーリ",
         "ADD_BULK": "新規ユーザーストーリーを一括で追加する",
         "PROMOTED_FROM_ISSUE": "このユーザーストーリーはこちらの課題から発展:",
         "PROMOTED_FROM_TASK": "このユーザーストーリーはこちらのタスクから発展:",
@@ -1248,6 +1296,7 @@
         "TITLE_LINK_GO_TO_ISSUE": "課題へ移動",
         "TITLE_LINK_GO_TO_TASK": "Go to task",
         "TITLE_DELETE_ACTION": "ユーザストーリを削除する",
+        "TITLE_DELETE_MESSAGE": "Are you sure you want to delete <strong>“{{subject}}“</strong>?",
         "LIGHTBOX_TITLE_BLOKING_US": "Blocking user story",
         "NOT_ESTIMATED": "見積もりが行われていません",
         "OWNER_US": "このユーザーストーリーはこちらに属しています。",
@@ -1266,6 +1315,7 @@
         }
     },
     "COMMENTS": {
+        "TITLE": "コメント",
         "DELETED_INFO": "{{user}}によってコメントは削除されました。",
         "COMMENTS_COUNT": "{{comments}}コメント",
         "OLDER_FIRST": "古い順",
@@ -1320,16 +1370,20 @@
     "BACKLOG": {
         "PAGE_TITLE": "バックログ - {{projectName}}",
         "PAGE_DESCRIPTION": "バックログパネルです。次のプロジェクトのユーザーストーリーとスプリントが記録されています：{{projectName}}: {{projectDescription}}",
-        "SECTION_NAME": "バックログ",
+        "SECTION_NAME": "スクラム",
         "CUSTOMIZE_GRAPH": "バックロググラフのカスタマイズ",
         "CUSTOMIZE_GRAPH_TEXT": "プロジェクトの進化に役立つ素敵なグラフを表示するには、ポイントとスプリントを設定する必要があります。",
         "CUSTOMIZE_GRAPH_ADMIN": "管理",
         "CUSTOMIZE_GRAPH_TITLE": "管理ユーザーでポイントとスプリントを設定してください。",
+        "TOTAL_STORIES_FILTERED": "of {{ totalUserStories }} user stories",
+        "TOTAL_STORIES": "{{ totalUserStories }} user stories",
         "MOVE_US_TO_CURRENT_SPRINT": "現在のスプリントに移動",
         "MOVE_US_TO_LATEST_SPRINT": "最新のスプリントに移動",
         "EMPTY": "バックログが空です！",
         "CREATE_NEW_US": "Create a new user story",
-        "CREATE_NEW_US_EMPTY_HELP": "新しくユーザーストーリーを作成してください。",
+        "CREATE_NEW_US_EMPTY_HELP": "Add a user story",
+        "NO_MATCH": "No matching search result found with “{{ q }}”",
+        "NO_MATCH_HELP": "Try again using more general search terms",
         "EXCESS_OF_POINTS": "ポイント超過",
         "PENDING_POINTS": "保留ポイント",
         "CLOSED_POINTS": "完了",
@@ -1350,17 +1404,19 @@
         },
         "TAGS": {
             "TOGGLE": "タグ表示を固定",
-            "SHOW": "タグを表示",
+            "SHOW": "タグ",
             "HIDE": "タグを非表示"
         },
         "FORECASTING": {
             "TITLE": "ベロシティ予測",
-            "BACKLOG": "バックログを表示",
-            "NEW_SPRINT": "あなたの作業速度をもとにした次のスプリントのユーザーストーリー候補。新しくスプリントを作成するにはクリックしてください。",
-            "CURRENT_SPRINT": "Candidate user stories for your sprint based on your velocity. Click to add to current sprint."
+            "BACKLOG": "return to backlog",
+            "NEW_SPRINT": "Candidate user stories for your next sprint based on your velocity.",
+            "CURRENT_SPRINT": "Candidate user stories for your sprint based on your velocity. Click to add to current sprint.",
+            "ADD_NEW_SPRINT": "create sprint and add US",
+            "ADD_NEW_SPRINT_SHORT": "create sprint"
         },
         "TABLE": {
-            "COLUMN_US": "User Stories",
+            "COLUMN_US": "User Story",
             "TITLE_COLUMN_POINTS": "役割ごとにビューを選択"
         },
         "SPRINT_SUMMARY": {
@@ -1381,8 +1437,8 @@
         },
         "FILTERS": {
             "TOGGLE": "フィルター表示を固定",
-            "HIDE": "フィルターを非表示",
-            "SHOW": "フィルターを表示"
+            "TITLE": "フィルター",
+            "HIDE_TITLE": "Hide filters"
         },
         "SPRINTS": {
             "TITLE": "スプリント",
@@ -1392,7 +1448,7 @@
             "EMPTY": "まだスプリントはありません",
             "WARNING_EMPTY_SPRINT_ANONYMOUS": "This sprint has no user stories",
             "WARNING_EMPTY_SPRINT": "新しいスプリントを始めるために、バックログからストーリーをここにドロップしてください。",
-            "TITLE_ACTION_NEW_SPRINT": "新しいスプリントを追加",
+            "TITLE_ACTION_NEW_SPRINT": "Add a sprint",
             "TEXT_ACTION_NEW_SPRINT": "新しくスプリントをプロジェクトに作成してください。",
             "ACTION_SHOW_CLOSED_SPRINTS": "終了したスプリントを表示",
             "ACTION_HIDE_CLOSED_SPRINTS": "終了したスプリントを非表示"
@@ -1415,8 +1471,11 @@
         "TITLE_ACTION_ADD_ISSUE": "新規課題を追加",
         "TITLE_ACTION_ADD_ISSUE_BULK": "新規課題を一括で追加する",
         "TITLE_ACTION_ASSIGN": "タスクの割当",
-        "PLACEHOLDER_CARD_TITLE": "This could be a task",
-        "PLACEHOLDER_CARD_TEXT": "ストーリーを分割しタスクとして別管理",
+        "PLACEHOLDER_CARD_TITLE": "This could be a user story",
+        "PLACEHOLDER_CARD_TEXT": "Go to the <a href=\"{{ backlogUrl }}\" title=\"Go to backlog\">backlog</a> and drag user stories to this sprint; split the stories into tasks to track them separately.",
+        "TASK_NOT_FOUND_TITLE": "No matching results found",
+        "TASK_NOT_FOUND_TEXT": "Try again using more general search terms or disabling some filters.",
+        "TITLE_DATE_RANGE": "{{startDate}} <span>to</span> {{endDate}}",
         "TABLE": {
             "COLUMN": "ユーザーストーリー",
             "TITLE_ACTION_FOLD": "列をたたむ",
@@ -1531,11 +1590,12 @@
                 "TYPE": "タイプ",
                 "SEVERITY": "深刻度",
                 "PRIORITY": "優先度",
-                "SUBJECT": "題名",
+                "ISSUE": "課題",
                 "VOTES": "投票",
                 "STATUS": "ステータス",
+                "ATTACHMENTS": "Attachments",
                 "MODIFIED": "変更済み",
-                "ASSIGNED_TO": "割当"
+                "ASSIGNED_TO": "Assign to"
             },
             "TITLE_ACTION_CHANGE_STATUS": "ステータスを変更",
             "TITLE_ACTION_ASSIGNED_TO": "割当",
@@ -1560,9 +1620,15 @@
         "TITLE_ACTION_ADD_BULK": "新規一括追加",
         "ACTION_SHOW_ARCHIVED": "アーカイブ済を表示",
         "ACTION_HIDE_ARCHIVED": "アーカイブ済を隠す",
-        "HIDDEN_USER_STORIES": "このステータスのユーザーストーリーはデフォルトで非表示となります",
-        "PLACEHOLDER_CARD_TITLE": "These are your user stories",
-        "PLACEHOLDER_CARD_TEXT": "ユーザーストーリーは要件を細分化したサブタスクを含んでいることもあります。"
+        "US_NOT_FOUND_TITLE": "No matching results found",
+        "US_NOT_FOUND_TEXT_P1": "Try again using more general search terms or disabled some filters.",
+        "US_NOT_FOUND_TEXT_P2": "<strong>Archived stories</strong> are not loaded by default. Unfold the archived statuses to expand your search.",
+        "PLACEHOLDER_CARD_TITLE": "This could be a user story",
+        "PLACEHOLDER_CARD_TEXT": "Create user stories here and change their status to track their progress.",
+        "NUMBER_US": "Number of US",
+        "ARCHIVED": "(Archived)",
+        "CREATE_SWIMLANE": "Create more swimlanes",
+        "UNCLASSIFIED_USER_STORIES": "Unclassified user stories"
     },
     "SEARCH": {
         "PAGE_TITLE": "検索 - {{projectName}}",
@@ -1742,7 +1808,7 @@
         "TITLE": "イベント",
         "MY_EVENTS": "イベント",
         "DISMISS_ALL": "すべて消す",
-        "VIEW_ALL": "すべて見る",
+        "VIEW_ALL": "View all notifications",
         "NO_NEW_EVENTS": "新しいイベントはありません",
         "NO_EVENTS_YET": "まだイベントはありません",
         "ASSIGNED_YOU": "{{username}} さんがあなたを {{obj_name}} に割当てました",
@@ -1753,10 +1819,7 @@
         "COMMENTED": "{{username}} さんが {{obj_name}} にコメントしました"
     },
     "LEGAL": {
-        "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>When creating a new account, you agree to our </span><a href=\"{{ termsOfServiceUrl }}\" title=\"See terms of service\" target=\"_blank\">terms of service</a><span> and </span><a href=\"{{ privacyPolicyUrl }}\" title=\"See privacy policy\" target=\"_blank\">privacy policy</a>.",
-        "GDPR_ANNOUNCEMENT_TITLE": "General Data Protection Regulation (GDPR)",
-        "GDPR_ANNOUNCEMENT_DESCRIPTION": "You saw this comming, right? Updates to our Terms of Service",
-        "GDPR_ANNOUNCEMENT_INFOLINK": "Please read our announcement here"
+        "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>When creating a new account, you agree to our </span><a href=\"{{ termsOfServiceUrl }}\" title=\"See terms of service\" target=\"_blank\">terms of service</a><span> and </span><a href=\"{{ privacyPolicyUrl }}\" title=\"See privacy policy\" target=\"_blank\">privacy policy</a>."
     },
     "EXTERNAL_APP": {
         "PAGE_TITLE": "外部アプリでは認証が必要です",
@@ -1858,5 +1921,12 @@
             "ACTION_TITLE": "検索",
             "RESULTS": "検索結果"
         }
+    },
+    "ZOOM": {
+        "TITLE": "Zoom:",
+        "ZOOM-1": "Compact",
+        "ZOOM-2": "Default",
+        "ZOOM-3": "Detailed",
+        "ZOOM-4": "Expanded"
     }
 }
