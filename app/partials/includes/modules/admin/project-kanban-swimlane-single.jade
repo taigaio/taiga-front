@@ -14,7 +14,7 @@
                 ng-class="{'default': value.id == project.default_swimlane}"
                 svg-icon="icon-star"
             )
-            span.default-text(ng-class="{'visibility-hidden': value.id != project.default_swimlane}") {{'ADMIN.PROJECT_KANBAN_POWER_UPS.DEFAULT' | translate }}
+            span.default-text(ng-class="{'visibility-hidden': value.id != project.default_swimlane}") {{'ADMIN.PROJECT_KANBAN_OPTIONS.DEFAULT' | translate }}
         button.form-button.edit-swimlane-single(
             type="button"
             ng-click="editSwimlaneSingleForm($event)"
@@ -36,7 +36,7 @@ form.admin-swimlane-form(ng-if="displaySwimlaneSingleForm")
         maxlength="48"
         ng-model="swimlaneSingleForm.name"
         ng-value="value.name"
-        placeholder="{{'ADMIN.PROJECT_KANBAN_POWER_UPS.SWIMLANE_NAME' | translate }}"
+        placeholder="{{'ADMIN.PROJECT_KANBAN_OPTIONS.SWIMLANE_NAME' | translate }}"
     )
     button.form-button.add-swimlane-single(
         type="button"
