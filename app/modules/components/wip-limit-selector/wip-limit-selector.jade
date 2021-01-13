@@ -1,7 +1,7 @@
 .wip-limit-status
     .wip-limit-status-name {{::vm.status.name}}
     .wip-limit-status-data(ng-if="!displayWipLimitSelector")
-        span.wip-number.wip-placeholder-text(ng-if="!vm.status.wip_limit") {{'ADMIN.PROJECT_KANBAN_POWER_UPS.WIP_LIMIT_PLACEHOLDER' | translate }}
+        span.wip-number.wip-placeholder-text(ng-if="!vm.status.wip_limit") {{'ADMIN.PROJECT_KANBAN_OPTIONS.WIP_LIMIT_PLACEHOLDER' | translate }}
         span.wip-number(ng-if="!!vm.status.wip_limit") {{vm.status.wip_limit}}
         button.form-button(
             type="button"
@@ -17,7 +17,7 @@
             maxlength="48"
             ng-model="vm.new_wip_limit"
             ng-value="statusWipLimit"
-            placeholder="{{'ADMIN.PROJECT_KANBAN_POWER_UPS.WIP_LIMIT_INPUT' | translate }}"
+            placeholder="{{'ADMIN.PROJECT_KANBAN_OPTIONS.WIP_LIMIT_INPUT' | translate }}"
         )
         button.form-button.add-swimlane-single(
             type="button"

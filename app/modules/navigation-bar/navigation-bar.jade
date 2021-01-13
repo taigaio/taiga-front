@@ -59,9 +59,10 @@ nav.navbar(ng-if="vm.isEnabledHeader")
                         a.secondary(
                             href="{{ vm.customSupportUrl }}",
                             target="_blank",
+                            title="{{ 'PROJECT.NAVIGATION.TAIGA_RESOURCES_TITLE' | translate }}"
                         )
                             tg-svg(svg-icon="icon-compass")
-                            span {{ 'PROJECT.NAVIGATION.HELP_TITLE' | translate }}
+                            span {{ 'PROJECT.NAVIGATION.TAIGA_RESOURCES' | translate }}
                     li
                         a.secondary(
                             ng-show="vm.isFeedbackEnabled"
@@ -70,7 +71,7 @@ nav.navbar(ng-if="vm.isEnabledHeader")
                             title="{{ 'PROJECT.NAVIGATION.FEEDBACK_TITLE' | translate }}"
                         )
                             tg-svg(svg-icon="icon-message-square")
-                            span {{ 'PROJECT.NAVIGATION.FEEDBACK_TITLE' | translate }}
+                            span {{ 'PROJECT.NAVIGATION.FEEDBACK' | translate }}
 
         .topnav-dropdown-wrapper(
             tg-dropdown-notifications

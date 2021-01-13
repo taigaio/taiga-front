@@ -53,7 +53,13 @@
             "EDIT": "Rediģēt karti",
             "DELETE": "Dzēst karti",
             "DELETE_ISSUE": "Dzēst izmaiņas pieprasījumu",
-            "DETACH_ISSUE_FROM_SPRINT": "Atvienot/atsaistīt izmaiņas pieprasījumu no sprinta"
+            "DETACH_ISSUE_FROM_SPRINT": "Detach from sprint",
+            "PTS": "{{pts}} pts",
+            "DUE_DATE": "Due date: {{date}}",
+            "NO_PTS": "N/E",
+            "ESTIMATION": "Estimation",
+            "TASKS": "{{completed}} tasks of {{total}} completed",
+            "EXTRA_ASSIGNED_USERS": "{{total}} more assigned users"
         },
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Šī vērtība, šķiet, ir nederīga",
@@ -159,7 +165,7 @@
             "DUE_DATE_REASON": "Šī termiņa iemesls"
         },
         "ROLES": {
-            "ALL": "Visi"
+            "ALL": "All points"
         },
         "ASSIGNED_TO": {
             "NOT_ASSIGNED": "Nav piešķirts",
@@ -175,7 +181,7 @@
             "TITLE_ACTION_SET_DUE_DATE": "Iestatīt termiņu"
         },
         "ASSIGNED_USERS": {
-            "ADD": "Izvēlieties atbildīgo",
+            "ADD": "Select an assigned user",
             "ADD_ASSIGNED": "Noteikt atbildīgo",
             "TITLE_LIGHTBOX_DELETE_ASSIGNED": "Dzēst atbildīgo..."
         },
@@ -203,7 +209,6 @@
             "COUNTER_TITLE": "{total, plural, =1{1 balss} other{# balsis}}"
         },
         "PROMOTE_TO_US": "Padarīt par Vajadzību",
-        "PROMOTE_TASK_TO_US": "Promote task to user story",
         "PROMOTED_ISSUES": "Šis izmaiņas pieprasījums tika pārveidots par vajadzību:",
         "PROMOTED_TASKS": "Šis uzdevums tika pārveidots uz",
         "CONFIRM_PROMOTE": {
@@ -224,17 +229,20 @@
             "CONFIRM_DELETE": "Atcerieties, ka visas vērtības šajā pielāgotajā laukā tiks dzēstas. Patiesi vēlaties turpināt?"
         },
         "FILTERS": {
-            "INPUT_PLACEHOLDER": "Temats/virsraksts vai atsauce",
+            "INPUT_PLACEHOLDER": "subject or reference",
             "TITLE_ACTION_FILTER_BUTTON": "meklēt",
-            "TITLE": "Filtri",
+            "TITLE": "Pielāgojamie filtri",
             "TITLE_ACTION_SEARCH": "Meklēt",
-            "ACTION_SAVE_CUSTOM_FILTER": "saglabāt kā pielāgotu filtru",
+            "ACTION_ADD": "Pievienot",
+            "ACTION_SAVE_CUSTOM_FILTER": "save filter",
             "PLACEHOLDER_FILTER_NAME": "Uzrakstiet filtra nosaukumu un nospiediet taustiņu 'Enter'",
             "APPLIED_FILTERS_NUM": "pielietotie filtri",
             "TITLE_ADVANCED_FILTER": "Pilnais režīms",
             "ADVANCED_FILTERS": {
                 "INCLUDE": "Ieslēgts",
-                "EXCLUDE": "Izslēgts"
+                "EXCLUDE": "Izslēgts",
+                "INCLUDED": "Filtered by:",
+                "EXCLUDED": "Excluded:"
             },
             "CATEGORIES": {
                 "TYPE": "Tips",
@@ -448,7 +456,7 @@
         "MY_PROJECTS": "Mani projekti"
     },
     "ATTACHMENT": {
-        "SECTION_NAME": "pielikumi",
+        "SECTION_NAME": "Attachments",
         "TITLE": "{{ fileName }} augšupielādēts {{ date }}",
         "LIST_VIEW_MODE": "Saraksta skata režīms",
         "GALLERY_VIEW_MODE": "Galerijas skata režīms",
@@ -664,6 +672,19 @@
             "BEFORE": "Pirms",
             "AFTER": "Iepriekšējais"
         },
+        "PROJECT_KANBAN_OPTIONS": {
+            "TITLE": "Kanban options",
+            "SUBTITLE": "Enable swimlanes to use in your workflow and set WIP limits to restrict the maximun number of user stories on each status.",
+            "SWIMLANES": "Swimlanes",
+            "ACTION_ADD_SWIMLANE": "New swimlane",
+            "NO_SWIMLANES": "There are no swimlanes yet",
+            "SWIMLANE_NAME": "Swimlane name",
+            "POPUP_NEW_SWIMLANE": "If you had some user stories created, you will find them on this swimlane.",
+            "WIP_LIMITS": "WIP LIMITS",
+            "WIP_LIMIT_PLACEHOLDER": "WIP limit not set",
+            "WIP_LIMIT_INPUT": "Set WIP limit",
+            "DEFAULT": "Noklusējuma"
+        },
         "ROLES": {
             "PAGE_TITLE": "Lomas - {{projectName}}",
             "WARNING_NO_ROLE": "Esiet piesardzīgs, neviena no piešķirtajām lomām Jūsu projektā nevarēs novērtēt vajadzību punktu vērtību",
@@ -774,7 +795,7 @@
             "ACTION_ADD_STATUS": "Pievienot jaunu statusu",
             "IS_ARCHIVED_COLUMN": "Arhivēts",
             "IS_CLOSED_COLUMN": "Slēgts",
-            "WIP_LIMIT_COLUMN": "WIP limits",
+            "WIP_LIMIT_COLUMN": "WIP limit",
             "PLACEHOLDER_WRITE_NAME": "Ierakstiet jaunā statusa nosaukumu"
         },
         "MENU": {
@@ -792,7 +813,8 @@
             "TYPES": "Tipi/Veidi",
             "CUSTOM_FIELDS": "Pielāgojamie lauki",
             "TAGS": "Birkas/marķieri",
-            "DUE_DATES": "Termiņi"
+            "DUE_DATES": "Termiņi",
+            "KANBAN_OPTIONS": "Kanban options"
         },
         "SUBMENU_ROLES": {
             "TITLE": "Lomas",
@@ -886,23 +908,31 @@
             "ISSUES": "Izmaiņu pieprasījumi",
             "WIKI": "Wiki",
             "TEAM": "Komanda",
-            "MEETUP": "Tikties",
-            "ADMIN": "Administratora zona"
+            "MEETUP": "Meetup",
+            "SETTINGS": "Settings",
+            "SCRUM": "Skram",
+            "COLLAPSE_MENU": "collapse menu"
         },
         "NAVIGATION": {
-            "ACTION_CREATE_PROJECT": "Izveidot projektu",
+            "PROJECTS": "projekti",
+            "ACCOUNT_SETTINGS": "Account settings",
+            "ACTION_CREATE_PROJECT": "New project",
+            "ACTION_CREATE_PROJECT_FIRST": "Create your first project",
+            "ACTION_CREATE_PROJECT_FIRST_TEXT": "You don’t have any projects yet. Create one now, invite your team and start using Taiga to the fullest.",
+            "VIEW_ALL_PROJECTS": "View all projects",
             "MANAGE_PROJECTS": "Pārvaldīt projektus",
             "TITLE_CREATE_PROJECT": "Izveidot projektu",
-            "HELP_TITLE": "Taigas atbalsta lapa",
-            "HELP": "Palīdzība",
+            "HELP_TITLE": "Resources",
             "HOMEPAGE": "Tīmekļvietne",
-            "FEEDBACK_TITLE": "Nosūtīt atsauksmi",
-            "FEEDBACK": "Atsauksmes",
+            "TAIGA_RESOURCES_TITLE": "Go to Taiga resources",
+            "TAIGA_RESOURCES": "Taiga resources",
+            "FEEDBACK_TITLE": "Write to us with your feedback",
+            "FEEDBACK": "Write to us",
             "NOTIFICATIONS_TITLE": "Rediģēt paziņojumu iestatījumus",
             "NOTIFICATIONS": "Paziņojumi",
             "VIEW_PROFILE_TITLE": "Skatīt profilu",
             "VIEW_PROFILE": "Skatīt profilu",
-            "USER_SETTINGS_TITLE": "Rediģēt iestatījumus",
+            "EDIT_PROFILE": "Labot profilu",
             "USER_SETTINGS": "Lietotāja iestatījumi",
             "CHANGE_PASSWORD_TITLE": "Paroles maiņa",
             "CHANGE_PASSWORD": "Paroles maiņa",
@@ -983,7 +1013,7 @@
             "WRITE_EMAIL": "Vai arī, ja vēlaties, uzrakstiet uz e-pastu, kuru šis lietotājs izmanto Taigā",
             "SEARCH_CONTACT": "Vai arī, ja vēlaties, meklējiet savos kontaktos",
             "WRITE_EMAIL_LABEL": "Uzrakstiet ziņu uz e-pastu, kuru šis lietotājs izmanto Taigā",
-            "ACCEEDE": "Pievienoties",
+            "ACCEEDE": "Access",
             "PROJECT_MEMBERS": "Projekta dalībnieki",
             "PROCESS_DESCRIPTION": "Informējiet, kuram no Taigas vēlaties piešķirt {{platform}} uzdevumus",
             "MATCH": "Vai <strong>{{user_external}}</strong> ir viena un tā pati persona kas <strong>{{user_internal}}</strong>?",
@@ -1044,7 +1074,7 @@
             "GITHUB": {
                 "SELECTOR": "Importējiet savus GitHub projekta izmaiņu pieprasījumus",
                 "CHOOSE_PROJECT": "Atrodiet importējamo projektu",
-                "NO_PROJECTS": "Izskatās, ka Jums nav GitHub projektu",
+                "NO_PROJECTS": "It seems you have no projects in GitHub",
                 "HOW_DO_YOU_WANT_TO_IMPORT": "Kā Jūs vēlaties importēt savus izmaiņu pieprasījumus Taigā?",
                 "KANBAN_PROJECT": "Kā lietotāju stāsti kanban projektā",
                 "KANBAN_PROJECT_DESCRIPTION": "Pēc tam Jūs varat iespējot Skrama darba klāstu.",
@@ -1056,7 +1086,7 @@
             "ASANA": {
                 "SELECTOR": "Importējiet savu Asana projektu un izvēlieties, kā to pārvaldīt",
                 "CHOOSE_PROJECT": "Izvēlieties importējamo projektu",
-                "NO_PROJECTS": "Izskatās, ka Jums Asanā nav neviena projekta",
+                "NO_PROJECTS": "It seems you have no projects in Asana",
                 "KANBAN_PROJECT": "Kanban",
                 "SCRUM_PROJECT": "Skram (Scrum)",
                 "CREATE_AS_SCRUM_DESCRIPTION": "Jūsu projekta uzdevumi un apakšuzdevumi Taigā tiks izveidoti kā vajadzības un uzdevumi.",
@@ -1066,7 +1096,7 @@
                 "SELECTOR": "Importējiet savu Jira projektu un izvēlieties, kā to pārvaldīt",
                 "HOW_TO_CONFIGURE": "(konfigurācijas palīdzība)",
                 "CHOOSE_PROJECT": "Izvēlieties importējamo projektu vai paneli/dēli",
-                "NO_PROJECTS": "Izskatās, ka Jums Jirā nav projektu vai paneļu",
+                "NO_PROJECTS": "It seems you have no projects or boards in Jira",
                 "URL": "Jūsu Jira URL",
                 "KANBAN_PROJECT": "Kanban",
                 "SCRUM_PROJECT": "Skram (Scrum)",
@@ -1084,7 +1114,7 @@
             "CONFIRM": "Patiesi vēlaties dzēst savu Taigas kontu?",
             "CANCEL": "Atpakaļ uz iestatījumiem",
             "ACCEPT": "Dzēst kontu",
-            "BLOCK_PROJECT": "Ņemiet vērā, ka pēc konta dzēšanas visi Jūsu projekti tiks <strong>bloķēti</strong>. Ja nevēlaties, lai projekts tiktu bloķēts, pirms konta dzēšanas nododiet katra projekta vadītāja tiesības citam dalībniekam."
+            "BLOCK_PROJECT": "Note that all projects you own will be <strong>blocked</strong> after you delete your account. If you do not want a particular project to be blocked, make sure you transfer ownership to another existing Taiga member before deleting your account."
         },
         "DELETE_PROJECT": {
             "TITLE": "Dzēst projektu",
@@ -1144,7 +1174,15 @@
             "EXISTING_ISSUE": "Esošs izmaiņu pieprasījums",
             "CHOOSE_EXISTING_ISSUE": "Kurš izmaiņas pieprasījums?",
             "ADD_ISSUE": "Pievienot izmaiņu pieprasījumus",
-            "FILTER_ISSUES": "Atsijāt izmaiņu pieprasījumus"
+            "FILTER_ISSUES": "Atsijāt izmaiņu pieprasījumus",
+            "SWIMLANE": "Swimlane",
+            "SELECT_SWIMLANE": "Select swimlane",
+            "SELECT_STATUS": "Select status",
+            "DEFAULT": "Noklusējuma"
+        },
+        "DISABLE_KANBAN": {
+            "TITLE": "Disable kanban",
+            "MESSAGE": "This project has swimlanes. They will be gone but your user stories will not be deleted"
         },
         "DELETE_DUE_DATE": {
             "TITLE": "Dzēst termiņu",
@@ -1202,6 +1240,15 @@
             "TITLE_ACTION_DELETE_DUE_DATE": "Dzēst termiņu",
             "SUBTITLE_ACTION_DELETE_DUE_DATE": "Vai tiešām vēlaties izdzēst termiņa statusu {{due_date_status_name}}?"
         },
+        "ADMIN_KANBAN_POWERUPS": {
+            "TITLE_ACTION_DELETE_SWIMLANE": "Delete swimlane",
+            "SUBTITLE_ACTION_DELETE_SWIMLANE_OPTIONS": "Are you sure you want to delete {{swimlane}}?",
+            "SUBTITLE_ACTION_DELETE_SWIMLANE_REPLACEMENT": "All the user stories on this swimlane will be moved to:",
+            "SUBTITLE_ACTION_DELETE_SWIMLANE_LAST": "Your user stories will not be deleted. They will remain in the kanban.",
+            "DEFAULT_SWIMLANE": "New user stories will be in this swimlane by default",
+            "SET_DEFAULT_SWIMLANE": "Set this swimlane as default",
+            "DISABLE_DELETE_SWIMLANE": "The default swimlane cannot be deleted"
+        },
         "RELATE_TO_EPIC": {
             "TITLE": "Saikne ar Eposu",
             "EXISTING_EPIC": "esošam eposam",
@@ -1217,6 +1264,7 @@
     "EPIC": {
         "PAGE_TITLE": "{{epicSubject}} - Eposs {{epicRef}} - {{projectName}} ",
         "PAGE_DESCRIPTION": "Statuss: {{epicStatus }}. Apraksts: {{epicDescription}} ",
+        "EPIC_COLOR": "Epic color:",
         "SECTION_NAME": "Eposs",
         "ERROR_UNLINK_RELATED_USERSTORY": "Nebija iespējams atsaistīt: {{errorMessage}}",
         "CREATE_RELATED_USERSTORIES": "Izveidot",
@@ -1240,7 +1288,7 @@
         "LINK_TASKBOARD": "Uzdevumu panelis",
         "TITLE_LINK_TASKBOARD": "Doties uz uzdevumu paneli",
         "TOTAL_POINTS": "punkti kopā",
-        "ADD": "+ Pievienot vajadzību",
+        "ADD": "vajadzība",
         "ADD_BULK": "Pievienot vajadzības vairumā (vajadzību paketi)",
         "PROMOTED_FROM_ISSUE": "Šī vajadzība ir izveidota no izmaiņu pieprasījuma:",
         "PROMOTED_FROM_TASK": "Šī vajadzība ir izveidota no izmaiņu pieprasījuma:",
@@ -1248,6 +1296,7 @@
         "TITLE_LINK_GO_TO_ISSUE": "Pāriet uz izmaiņu pieprasījumu",
         "TITLE_LINK_GO_TO_TASK": "Doties uz uzdevumu",
         "TITLE_DELETE_ACTION": "Dzēst vajadzību",
+        "TITLE_DELETE_MESSAGE": "Are you sure you want to delete <strong>“{{subject}}“</strong>?",
         "LIGHTBOX_TITLE_BLOKING_US": "Bloķē vajadzību",
         "NOT_ESTIMATED": "Nav novērtēts",
         "OWNER_US": "Šī vajadzība pieder",
@@ -1266,6 +1315,7 @@
         }
     },
     "COMMENTS": {
+        "TITLE": "Komentāri",
         "DELETED_INFO": "Komentāru dzēsis {{user}}",
         "COMMENTS_COUNT": "{{comments}} komentāri",
         "OLDER_FIRST": "Vecākie papriekšu",
@@ -1320,16 +1370,20 @@
     "BACKLOG": {
         "PAGE_TITLE": "Darba klāsts - {{projectName}}",
         "PAGE_DESCRIPTION": "Darbu klāsta panelis ar vajadzībām un projekta {{projectName}} sprintiem: {{projectDescription}}",
-        "SECTION_NAME": "Darba klāsts",
+        "SECTION_NAME": "Skram",
         "CUSTOMIZE_GRAPH": "Pielāgojiet savu Darba klāsta grafiku",
         "CUSTOMIZE_GRAPH_TEXT": "Lai grafiks būtu  baudāms un palīdzētu efektīvi sekot projekta gaitai, Jums ir jāiestata punkti un sprints",
         "CUSTOMIZE_GRAPH_ADMIN": "Administratora zonā",
         "CUSTOMIZE_GRAPH_TITLE": "Iestatiet punktus un sprintu Administratora zonā",
+        "TOTAL_STORIES_FILTERED": "of {{ totalUserStories }} user stories",
+        "TOTAL_STORIES": "{{ totalUserStories }} user stories",
         "MOVE_US_TO_CURRENT_SPRINT": "Pāriet uz tekošo Sprintu",
         "MOVE_US_TO_LATEST_SPRINT": "Doties uz pēdējo Sprintu",
         "EMPTY": "Darba klāsta saraksts tukšs!",
         "CREATE_NEW_US": "Veidot jaunu vajadzību",
-        "CREATE_NEW_US_EMPTY_HELP": "Iespējams, vēlēsieties izveidot jaunu vajadzību",
+        "CREATE_NEW_US_EMPTY_HELP": "Add a user story",
+        "NO_MATCH": "No matching search result found with “{{ q }}”",
+        "NO_MATCH_HELP": "Try again using more general search terms",
         "EXCESS_OF_POINTS": "Punktu pārpalikums",
         "PENDING_POINTS": "Neapstiprinātie punkti",
         "CLOSED_POINTS": "beigs/slēgts",
@@ -1350,17 +1404,19 @@
         },
         "TAGS": {
             "TOGGLE": "Pārslēgt birku redzamību",
-            "SHOW": "Rādīt birkas",
+            "SHOW": "birkas",
             "HIDE": "Nerādīt birkas"
         },
         "FORECASTING": {
             "TITLE": "Veiktspējas prognozēšana",
-            "BACKLOG": "Parādīt Darba klāstu",
-            "NEW_SPRINT": "Kandidāt-vajadzības Jūsu nākamajam sprintam, balstoties uz jūsu līdzšinējo ātrumu. Noklikšķiniet, lai izveidotu jaunu sprintu.",
-            "CURRENT_SPRINT": "Kandidāt-vajadzības Jūsu sprintam, balstoties uz Jūsu līdzšinējo veiktspēju. Noklikšķiniet, lai pievienotu pašreizējam sprintam."
+            "BACKLOG": "return to backlog",
+            "NEW_SPRINT": "Candidate user stories for your next sprint based on your velocity.",
+            "CURRENT_SPRINT": "Kandidāt-vajadzības Jūsu sprintam, balstoties uz Jūsu līdzšinējo veiktspēju. Noklikšķiniet, lai pievienotu pašreizējam sprintam.",
+            "ADD_NEW_SPRINT": "create sprint and add US",
+            "ADD_NEW_SPRINT_SHORT": "create sprint"
         },
         "TABLE": {
-            "COLUMN_US": "Vajadzības",
+            "COLUMN_US": "Vajadzība",
             "TITLE_COLUMN_POINTS": "Izvēlieties skatu katrai lomai"
         },
         "SPRINT_SUMMARY": {
@@ -1381,8 +1437,8 @@
         },
         "FILTERS": {
             "TOGGLE": "Pārslēgt filtru redzamību",
-            "HIDE": "Nerādīt filtrus",
-            "SHOW": "Rādīt filtrus"
+            "TITLE": "Filtri",
+            "HIDE_TITLE": "Hide filters"
         },
         "SPRINTS": {
             "TITLE": "SPRINTI",
@@ -1392,7 +1448,7 @@
             "EMPTY": "Sprintu pagaidām nav",
             "WARNING_EMPTY_SPRINT_ANONYMOUS": "Šim sprintam nav vajadzību",
             "WARNING_EMPTY_SPRINT": "Lai sāktu jaunu sprintu, ievelciet/nometiet šeit vajadzības no sava Darba klāsta",
-            "TITLE_ACTION_NEW_SPRINT": "Pievienot jaunu sprintu",
+            "TITLE_ACTION_NEW_SPRINT": "Add a sprint",
             "TEXT_ACTION_NEW_SPRINT": "Iespējams, vēlēsieties savā projektā izveidot jaunu sprintu",
             "ACTION_SHOW_CLOSED_SPRINTS": "Rādīt paveiktos sprintus",
             "ACTION_HIDE_CLOSED_SPRINTS": "Slēpt paveiktos sprintus"
@@ -1415,8 +1471,11 @@
         "TITLE_ACTION_ADD_ISSUE": "Pievienot jaunu izmaiņu pieprasījumu",
         "TITLE_ACTION_ADD_ISSUE_BULK": "Pievienot izmaiņu pieprasījumus vairumā (paketi)",
         "TITLE_ACTION_ASSIGN": "Dot uzdevumu",
-        "PLACEHOLDER_CARD_TITLE": "Šis var būt uzdevums",
-        "PLACEHOLDER_CARD_TEXT": "Sadaliet vajadzības uzdevumos, lai tos izsekotu atsevišķi",
+        "PLACEHOLDER_CARD_TITLE": "This could be a user story",
+        "PLACEHOLDER_CARD_TEXT": "Go to the <a href=\"{{ backlogUrl }}\" title=\"Go to backlog\">backlog</a> and drag user stories to this sprint; split the stories into tasks to track them separately.",
+        "TASK_NOT_FOUND_TITLE": "No matching results found",
+        "TASK_NOT_FOUND_TEXT": "Try again using more general search terms or disabling some filters.",
+        "TITLE_DATE_RANGE": "{{startDate}} <span>to</span> {{endDate}}",
         "TABLE": {
             "COLUMN": "Vajadzība",
             "TITLE_ACTION_FOLD": "Savērst kolonu/stabiņu",
@@ -1531,11 +1590,12 @@
                 "TYPE": "Tips",
                 "SEVERITY": "Nozīmīgums",
                 "PRIORITY": "Prioritāte",
-                "SUBJECT": "Temats",
+                "ISSUE": "Izmaiņu pieprasījums",
                 "VOTES": "Balsis",
                 "STATUS": "Statuss",
+                "ATTACHMENTS": "Attachments",
                 "MODIFIED": "Mainīts",
-                "ASSIGNED_TO": "Atbildīgais"
+                "ASSIGNED_TO": "Assign to"
             },
             "TITLE_ACTION_CHANGE_STATUS": "Mainīt statusu",
             "TITLE_ACTION_ASSIGNED_TO": "Atbildīgais",
@@ -1560,9 +1620,15 @@
         "TITLE_ACTION_ADD_BULK": "Pievienot jaunu kopu",
         "ACTION_SHOW_ARCHIVED": "Rādīt arhivētos",
         "ACTION_HIDE_ARCHIVED": "Nerādīt arhivētos",
-        "HIDDEN_USER_STORIES": "Vajadzības šajā statusā netiek atainotas pēc noklusējuma",
-        "PLACEHOLDER_CARD_TITLE": "Šīs ir Jūsu vajadzības",
-        "PLACEHOLDER_CARD_TEXT": "Vajadzībām var būt arī apakšuzdevumi, lai nošķirtu prasības"
+        "US_NOT_FOUND_TITLE": "No matching results found",
+        "US_NOT_FOUND_TEXT_P1": "Try again using more general search terms or disabled some filters.",
+        "US_NOT_FOUND_TEXT_P2": "<strong>Archived stories</strong> are not loaded by default. Unfold the archived statuses to expand your search.",
+        "PLACEHOLDER_CARD_TITLE": "This could be a user story",
+        "PLACEHOLDER_CARD_TEXT": "Create user stories here and change their status to track their progress.",
+        "NUMBER_US": "Number of US",
+        "ARCHIVED": "(Archived)",
+        "CREATE_SWIMLANE": "Create more swimlanes",
+        "UNCLASSIFIED_USER_STORIES": "Unclassified user stories"
     },
     "SEARCH": {
         "PAGE_TITLE": "Meklēšana - {{projectName}}",
@@ -1742,7 +1808,7 @@
         "TITLE": "Notikumi",
         "MY_EVENTS": "Mani notikumi",
         "DISMISS_ALL": "Noraidīt visus",
-        "VIEW_ALL": "Skatīt visu",
+        "VIEW_ALL": "View all notifications",
         "NO_NEW_EVENTS": "Nav jaunu notikumu",
         "NO_EVENTS_YET": "Notikumu pagaidām nav",
         "ASSIGNED_YOU": "{{username}} nozīmēja Jūs par {{obj_name}} atbildīgo",
@@ -1753,10 +1819,7 @@
         "COMMENTED": "{{username}} komentēja {{obj_name}}"
     },
     "LEGAL": {
-        "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>Veidojot jaunu kontu Jūs piekrītat mūsu </span><a href=\"{{ termsOfServiceUrl }}\" title=\"See terms of service\" target=\"_blank\">sadarbības noteikumiem</a> <span>un</span><a href=\"{{ privacyPolicyUrl }}\" title=\"See privacy policy\" target=\"_blank\">privātuma politikai</a>.",
-        "GDPR_ANNOUNCEMENT_TITLE": "ES Vispārējā datu aizsardzības regula (VDAR/GDPR)",
-        "GDPR_ANNOUNCEMENT_DESCRIPTION": "Jūs manījāt tās nākam - izmaiņas Pakalpojuma sniegšanas noteikumos",
-        "GDPR_ANNOUNCEMENT_INFOLINK": "Lūdzu, izlasiet mūsu paziņojumu šeit"
+        "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>Veidojot jaunu kontu Jūs piekrītat mūsu </span><a href=\"{{ termsOfServiceUrl }}\" title=\"See terms of service\" target=\"_blank\">sadarbības noteikumiem</a> <span>un</span><a href=\"{{ privacyPolicyUrl }}\" title=\"See privacy policy\" target=\"_blank\">privātuma politikai</a>."
     },
     "EXTERNAL_APP": {
         "PAGE_TITLE": "Ārējā aplikācija pieprasa autentifikāciju",
@@ -1858,5 +1921,12 @@
             "ACTION_TITLE": "Meklēt",
             "RESULTS": "Meklēšanas rezultāti"
         }
+    },
+    "ZOOM": {
+        "TITLE": "Zoom:",
+        "ZOOM-1": "Compact",
+        "ZOOM-2": "Noklusējuma",
+        "ZOOM-3": "Detailed",
+        "ZOOM-4": "Expanded"
     }
 }

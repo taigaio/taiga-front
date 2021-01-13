@@ -53,7 +53,13 @@
             "EDIT": "ערוך כרטיס",
             "DELETE": "מחק כרטיס",
             "DELETE_ISSUE": "מחק תקלה",
-            "DETACH_ISSUE_FROM_SPRINT": "בטל הצמדה של בעיה מה-Sprint"
+            "DETACH_ISSUE_FROM_SPRINT": "Detach from sprint",
+            "PTS": "{{pts}} pts",
+            "DUE_DATE": "Due date: {{date}}",
+            "NO_PTS": "N/E",
+            "ESTIMATION": "Estimation",
+            "TASKS": "{{completed}} tasks of {{total}} completed",
+            "EXTRA_ASSIGNED_USERS": "{{total}} more assigned users"
         },
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "ערך זה נראה לא תקין.",
@@ -159,7 +165,7 @@
             "DUE_DATE_REASON": "סיבת תאריך היעד"
         },
         "ROLES": {
-            "ALL": "הכל"
+            "ALL": "All points"
         },
         "ASSIGNED_TO": {
             "NOT_ASSIGNED": "לא משוייך",
@@ -175,7 +181,7 @@
             "TITLE_ACTION_SET_DUE_DATE": "קבע תאריך יעד"
         },
         "ASSIGNED_USERS": {
-            "ADD": "בחר משתמש משוייך",
+            "ADD": "Select an assigned user",
             "ADD_ASSIGNED": "הוסף שיוך",
             "TITLE_LIGHTBOX_DELETE_ASSIGNED": "מחק שיוך..."
         },
@@ -203,7 +209,6 @@
             "COUNTER_TITLE": "{total, plural, =1{one vote} other{# votes}}"
         },
         "PROMOTE_TO_US": "Promote to user story",
-        "PROMOTE_TASK_TO_US": "Promote task to user story",
         "PROMOTED_ISSUES": "This issue has been promoted to",
         "PROMOTED_TASKS": "This task has been promoted to",
         "CONFIRM_PROMOTE": {
@@ -224,17 +229,20 @@
             "CONFIRM_DELETE": "Remember that all values in this custom field will be deleted.\n Are you sure you want to continue?"
         },
         "FILTERS": {
-            "INPUT_PLACEHOLDER": "נושא או הפניה",
+            "INPUT_PLACEHOLDER": "subject or reference",
             "TITLE_ACTION_FILTER_BUTTON": "חפש",
-            "TITLE": "מסננים",
+            "TITLE": "מסננים מותאמים אישית",
             "TITLE_ACTION_SEARCH": "חיפוש",
-            "ACTION_SAVE_CUSTOM_FILTER": "שמור כמסנן מותאם אישית",
+            "ACTION_ADD": "הוסף",
+            "ACTION_SAVE_CUSTOM_FILTER": "save filter",
             "PLACEHOLDER_FILTER_NAME": "כתוב את שם המסנן ולחץ אנטר",
             "APPLIED_FILTERS_NUM": "מסננים מוחלים",
             "TITLE_ADVANCED_FILTER": "מתקדם",
             "ADVANCED_FILTERS": {
                 "INCLUDE": "תכלול",
-                "EXCLUDE": "אל תכלול"
+                "EXCLUDE": "אל תכלול",
+                "INCLUDED": "Filtered by:",
+                "EXCLUDED": "Excluded:"
             },
             "CATEGORIES": {
                 "TYPE": "טיפוס",
@@ -448,7 +456,7 @@
         "MY_PROJECTS": "הפרוייקטים שלי"
     },
     "ATTACHMENT": {
-        "SECTION_NAME": "קבצים מצורפים",
+        "SECTION_NAME": "Attachments",
         "TITLE": "{{ fileName }} הועלה ב {{ date }}\n",
         "LIST_VIEW_MODE": "מצב תצוגת רשימה",
         "GALLERY_VIEW_MODE": "מצב תצוגת גלריה",
@@ -664,6 +672,19 @@
             "BEFORE": "לפני",
             "AFTER": "עבר"
         },
+        "PROJECT_KANBAN_OPTIONS": {
+            "TITLE": "Kanban options",
+            "SUBTITLE": "Enable swimlanes to use in your workflow and set WIP limits to restrict the maximun number of user stories on each status.",
+            "SWIMLANES": "Swimlanes",
+            "ACTION_ADD_SWIMLANE": "New swimlane",
+            "NO_SWIMLANES": "There are no swimlanes yet",
+            "SWIMLANE_NAME": "Swimlane name",
+            "POPUP_NEW_SWIMLANE": "If you had some user stories created, you will find them on this swimlane.",
+            "WIP_LIMITS": "WIP LIMITS",
+            "WIP_LIMIT_PLACEHOLDER": "WIP limit not set",
+            "WIP_LIMIT_INPUT": "Set WIP limit",
+            "DEFAULT": "ברירת מחדל"
+        },
         "ROLES": {
             "PAGE_TITLE": "תפקידים - {{projectName}}",
             "WARNING_NO_ROLE": "היה זהיר, שום תפקיד בפרוייקט זה לא יוכל להעריך את הנקודות של סיפורי המשתמש",
@@ -774,7 +795,7 @@
             "ACTION_ADD_STATUS": "הוסף סטטוס חדש",
             "IS_ARCHIVED_COLUMN": "בארכיון",
             "IS_CLOSED_COLUMN": "סגור",
-            "WIP_LIMIT_COLUMN": "מגבלת WIP",
+            "WIP_LIMIT_COLUMN": "WIP limit",
             "PLACEHOLDER_WRITE_NAME": "כתוב שם לסטטוס החדש"
         },
         "MENU": {
@@ -792,7 +813,8 @@
             "TYPES": "סוגים",
             "CUSTOM_FIELDS": "שדות בהתאמה אישית",
             "TAGS": "תגיות",
-            "DUE_DATES": "תאריכי יעד"
+            "DUE_DATES": "תאריכי יעד",
+            "KANBAN_OPTIONS": "Kanban options"
         },
         "SUBMENU_ROLES": {
             "TITLE": "תפקידים",
@@ -886,23 +908,31 @@
             "ISSUES": "תקלות",
             "WIKI": "ויקי",
             "TEAM": "צוות",
-            "MEETUP": "מפגש",
-            "ADMIN": "מנהל"
+            "MEETUP": "Meetup",
+            "SETTINGS": "הגדרות",
+            "SCRUM": "Scrum",
+            "COLLAPSE_MENU": "collapse menu"
         },
         "NAVIGATION": {
-            "ACTION_CREATE_PROJECT": "צור פרוייקט",
+            "PROJECTS": "פרויקטים",
+            "ACCOUNT_SETTINGS": "Account settings",
+            "ACTION_CREATE_PROJECT": "New project",
+            "ACTION_CREATE_PROJECT_FIRST": "Create your first project",
+            "ACTION_CREATE_PROJECT_FIRST_TEXT": "You don’t have any projects yet. Create one now, invite your team and start using Taiga to the fullest.",
+            "VIEW_ALL_PROJECTS": "View all projects",
             "MANAGE_PROJECTS": "נהל פרוייקטים",
             "TITLE_CREATE_PROJECT": "צור פרוייקט",
-            "HELP_TITLE": "דף תמיכה של טאיגה",
-            "HELP": "עזרה",
+            "HELP_TITLE": "Resources",
             "HOMEPAGE": "דף הבית",
-            "FEEDBACK_TITLE": "שלח פידבק",
-            "FEEDBACK": "פידבק",
+            "TAIGA_RESOURCES_TITLE": "Go to Taiga resources",
+            "TAIGA_RESOURCES": "Taiga resources",
+            "FEEDBACK_TITLE": "Write to us with your feedback",
+            "FEEDBACK": "Write to us",
             "NOTIFICATIONS_TITLE": "ערוך את הגדרות ההתראות שלך",
             "NOTIFICATIONS": "התראות",
             "VIEW_PROFILE_TITLE": "הצג פרופיל",
             "VIEW_PROFILE": "הצג פרופיל",
-            "USER_SETTINGS_TITLE": "ערוך את ההגדרות שלך",
+            "EDIT_PROFILE": "ערוך פרופיל",
             "USER_SETTINGS": "הגדרות משתמש",
             "CHANGE_PASSWORD_TITLE": "שנה סיסמא",
             "CHANGE_PASSWORD": "שנה סיסמא",
@@ -983,7 +1013,7 @@
             "WRITE_EMAIL": "או אם תרצה, כתוב את האימייל שמשתמש הזה משתמש ב-Taiga",
             "SEARCH_CONTACT": "או אם תרצה, חפש באנשי הקשר שלך",
             "WRITE_EMAIL_LABEL": "כתוב את האימייל שמשתמש זה משתמש ב-Taiga",
-            "ACCEEDE": "Accede",
+            "ACCEEDE": "Access",
             "PROJECT_MEMBERS": "חברי פרויקט",
             "PROCESS_DESCRIPTION": "Tell us to whom from Taiga you want to assign the tasks of {{platform}}",
             "MATCH": "האם<strong>{{user_external}}</strong> אותו משתמש כמו <strong>{{user_internal}}</strong>?",
@@ -1044,7 +1074,7 @@
             "GITHUB": {
                 "SELECTOR": "ייבא את בעיות פרוייקט GitHub",
                 "CHOOSE_PROJECT": "מצא את הפרוייקט שתרצה לייבא",
-                "NO_PROJECTS": "זה נראה שאין לך פרוייקטים ב-GitHub",
+                "NO_PROJECTS": "It seems you have no projects in GitHub",
                 "HOW_DO_YOU_WANT_TO_IMPORT": "איך תרצה לייצא את הבעיות שלך אל Taiga?",
                 "KANBAN_PROJECT": "כסיפורי משתמש בפרוייקט Kanban",
                 "KANBAN_PROJECT_DESCRIPTION": "אחר כן תוכל לאפשר את Scrum עם העתודה",
@@ -1056,7 +1086,7 @@
             "ASANA": {
                 "SELECTOR": "ייבא את הפרוייקט Asana שלך ובחר איך לנהל אותו",
                 "CHOOSE_PROJECT": "בחר פרוייקט שתרצה לייבא",
-                "NO_PROJECTS": "זה נראה שאין לך פרוייקטים ב-Asana",
+                "NO_PROJECTS": "It seems you have no projects in Asana",
                 "KANBAN_PROJECT": "קאנבאן",
                 "SCRUM_PROJECT": "Scrum",
                 "CREATE_AS_SCRUM_DESCRIPTION": "המשימה ותת-משימה של הפרויקט שלך ייווצרו כסיפורים ומשימות של משתמשי טאיגה",
@@ -1066,7 +1096,7 @@
                 "SELECTOR": "ייבא את הפרויקט שלך ב-Jira",
                 "HOW_TO_CONFIGURE": "(עזרה בתצורה)",
                 "CHOOSE_PROJECT": "בחר פרוייקט או לוח שאתה רוצה לייבא",
-                "NO_PROJECTS": "זה נראה שאין לך פרוייקטים או לוחות ב-Jira",
+                "NO_PROJECTS": "It seems you have no projects or boards in Jira",
                 "URL": "קישור שלך ל-Jira",
                 "KANBAN_PROJECT": "קאנבאן",
                 "SCRUM_PROJECT": "Scrum",
@@ -1084,7 +1114,7 @@
             "CONFIRM": "האם אתה בטוח שברצונך למחוק את פרוייקט הטאיגה שלך?",
             "CANCEL": "חזור להגדרות",
             "ACCEPT": "מחק חשבון",
-            "BLOCK_PROJECT": "שים לב שכל הפרויקטים הפרוייקטים בבעלותך <strong>יחסמו</strong> לאחר שהחשבון ימחק. אם לא תרצה שהפרוייקט ייחסם, העבר הבעלות על כל אחד מהפרויקטים למשתמשים אחר בטרם תמחוק חשבונך"
+            "BLOCK_PROJECT": "Note that all projects you own will be <strong>blocked</strong> after you delete your account. If you do not want a particular project to be blocked, make sure you transfer ownership to another existing Taiga member before deleting your account."
         },
         "DELETE_PROJECT": {
             "TITLE": "מחק פרויקט",
@@ -1144,7 +1174,15 @@
             "EXISTING_ISSUE": "Existing issue",
             "CHOOSE_EXISTING_ISSUE": "Which issue?",
             "ADD_ISSUE": "Add issue",
-            "FILTER_ISSUES": "Filter issues"
+            "FILTER_ISSUES": "Filter issues",
+            "SWIMLANE": "Swimlane",
+            "SELECT_SWIMLANE": "Select swimlane",
+            "SELECT_STATUS": "Select status",
+            "DEFAULT": "ברירת מחדל"
+        },
+        "DISABLE_KANBAN": {
+            "TITLE": "Disable kanban",
+            "MESSAGE": "This project has swimlanes. They will be gone but your user stories will not be deleted"
         },
         "DELETE_DUE_DATE": {
             "TITLE": "מחק תהליך",
@@ -1202,6 +1240,15 @@
             "TITLE_ACTION_DELETE_DUE_DATE": "מחק תהליך",
             "SUBTITLE_ACTION_DELETE_DUE_DATE": "האם אתה בטוח שברצונך למחוק את סטאטוס תאריך היעד statu{{due_date_status_name}}?"
         },
+        "ADMIN_KANBAN_POWERUPS": {
+            "TITLE_ACTION_DELETE_SWIMLANE": "Delete swimlane",
+            "SUBTITLE_ACTION_DELETE_SWIMLANE_OPTIONS": "Are you sure you want to delete {{swimlane}}?",
+            "SUBTITLE_ACTION_DELETE_SWIMLANE_REPLACEMENT": "All the user stories on this swimlane will be moved to:",
+            "SUBTITLE_ACTION_DELETE_SWIMLANE_LAST": "Your user stories will not be deleted. They will remain in the kanban.",
+            "DEFAULT_SWIMLANE": "New user stories will be in this swimlane by default",
+            "SET_DEFAULT_SWIMLANE": "Set this swimlane as default",
+            "DISABLE_DELETE_SWIMLANE": "The default swimlane cannot be deleted"
+        },
         "RELATE_TO_EPIC": {
             "TITLE": "Link to epic",
             "EXISTING_EPIC": "אפיון קיים",
@@ -1217,6 +1264,7 @@
     "EPIC": {
         "PAGE_TITLE": "{{epicSubject}} - אפיון {{epicRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "סטאטוס: {{epicStatus }}. תיאור: {{epicDescription}}",
+        "EPIC_COLOR": "Epic color:",
         "SECTION_NAME": "אפיון",
         "ERROR_UNLINK_RELATED_USERSTORY": "אין לנו אפשרות לנתק את הקישור : {{errorMessage}}",
         "CREATE_RELATED_USERSTORIES": "צור קישור עם",
@@ -1240,7 +1288,7 @@
         "LINK_TASKBOARD": "לוח משימות",
         "TITLE_LINK_TASKBOARD": "עבור ללוח המשימות",
         "TOTAL_POINTS": "סך הנקודות",
-        "ADD": "+ Add a new user story",
+        "ADD": "סיפור משתמש",
         "ADD_BULK": "Add some new user stories in bulk",
         "PROMOTED_FROM_ISSUE": "This user story has been promoted from issue:",
         "PROMOTED_FROM_TASK": "This user story has been promoted from task:",
@@ -1248,6 +1296,7 @@
         "TITLE_LINK_GO_TO_ISSUE": "עבור לתקלה",
         "TITLE_LINK_GO_TO_TASK": "Go to task",
         "TITLE_DELETE_ACTION": "Delete user story",
+        "TITLE_DELETE_MESSAGE": "Are you sure you want to delete <strong>“{{subject}}“</strong>?",
         "LIGHTBOX_TITLE_BLOKING_US": "Blocking user story",
         "NOT_ESTIMATED": "לא מתומחר",
         "OWNER_US": "This user story belongs to",
@@ -1266,6 +1315,7 @@
         }
     },
     "COMMENTS": {
+        "TITLE": "תגובות",
         "DELETED_INFO": "תגובה נמחקה על ידי {{user}}",
         "COMMENTS_COUNT": "הערות {{comments}} ",
         "OLDER_FIRST": "ישן קודם",
@@ -1320,16 +1370,20 @@
     "BACKLOG": {
         "PAGE_TITLE": "עתודה - {{projectName}}\n",
         "PAGE_DESCRIPTION": "לוח העתודה, עם סיפורי משתמש וספרינטים של הפרוייקט {{projectName}}: {{projectDescription}}\n",
-        "SECTION_NAME": "עתודה",
+        "SECTION_NAME": "Scrum",
         "CUSTOMIZE_GRAPH": "התאם אישית את גרף העתודה שלך",
         "CUSTOMIZE_GRAPH_TEXT": "כדי לקבל תרשים יפה אשר יסייע בידך, עקוב אחרי ההתפתחות של הפרוייקט כדי להגדיר את הנקודות והספרינטים במהלך ה",
         "CUSTOMIZE_GRAPH_ADMIN": "מנהל",
         "CUSTOMIZE_GRAPH_TITLE": "קבע את הנקודות והספרינטים באמצעות המנהל",
+        "TOTAL_STORIES_FILTERED": "of {{ totalUserStories }} user stories",
+        "TOTAL_STORIES": "{{ totalUserStories }} user stories",
         "MOVE_US_TO_CURRENT_SPRINT": "עבור לספרינט הנוכחי",
         "MOVE_US_TO_LATEST_SPRINT": "עבור לספרינט האחרון",
         "EMPTY": "העתודה ריקה!",
         "CREATE_NEW_US": "Create a new user story",
-        "CREATE_NEW_US_EMPTY_HELP": "אתה עשוי לחפוץ ליצור סיפור משתמש חדש",
+        "CREATE_NEW_US_EMPTY_HELP": "Add a user story",
+        "NO_MATCH": "No matching search result found with “{{ q }}”",
+        "NO_MATCH_HELP": "Try again using more general search terms",
         "EXCESS_OF_POINTS": "עודף נקודות",
         "PENDING_POINTS": "נקודות ממתינות",
         "CLOSED_POINTS": "סגורות",
@@ -1350,17 +1404,19 @@
         },
         "TAGS": {
             "TOGGLE": "הצג/הסתר תגיות",
-            "SHOW": "הצג תגיות",
+            "SHOW": "תגיות",
             "HIDE": "הסתר תגיות"
         },
         "FORECASTING": {
             "TITLE": "מהירות חיזוי",
-            "BACKLOG": "הצג עתודה",
-            "NEW_SPRINT": "Candidate user stories for your next sprint based on your velocity. Click to create a new sprint.",
-            "CURRENT_SPRINT": "Candidate user stories for your sprint based on your velocity. Click to add to current sprint."
+            "BACKLOG": "return to backlog",
+            "NEW_SPRINT": "Candidate user stories for your next sprint based on your velocity.",
+            "CURRENT_SPRINT": "Candidate user stories for your sprint based on your velocity. Click to add to current sprint.",
+            "ADD_NEW_SPRINT": "create sprint and add US",
+            "ADD_NEW_SPRINT_SHORT": "create sprint"
         },
         "TABLE": {
-            "COLUMN_US": "סיפורי משתמש",
+            "COLUMN_US": "סיפור משתמש",
             "TITLE_COLUMN_POINTS": "בחר תצוגה לפי תפקיד"
         },
         "SPRINT_SUMMARY": {
@@ -1381,8 +1437,8 @@
         },
         "FILTERS": {
             "TOGGLE": "הצג/הסתר מסננים",
-            "HIDE": "מחק מסננים",
-            "SHOW": "הצג מסננים"
+            "TITLE": "מסננים",
+            "HIDE_TITLE": "Hide filters"
         },
         "SPRINTS": {
             "TITLE": "ספרינטים",
@@ -1392,7 +1448,7 @@
             "EMPTY": "אין עדין ספרינטים",
             "WARNING_EMPTY_SPRINT_ANONYMOUS": "This sprint has no user stories",
             "WARNING_EMPTY_SPRINT": "גרור הנה סיפורים מהעתודה כדי להתחיל ספרינט חדש",
-            "TITLE_ACTION_NEW_SPRINT": "הוסף ספרינט חדש",
+            "TITLE_ACTION_NEW_SPRINT": "Add a sprint",
             "TEXT_ACTION_NEW_SPRINT": "אתה עשוי לחפוץ ליצור ספרינט משתמש חדש",
             "ACTION_SHOW_CLOSED_SPRINTS": "הצג ספרינטים סגורים",
             "ACTION_HIDE_CLOSED_SPRINTS": "הסתר ספרינטים סגורים"
@@ -1415,8 +1471,11 @@
         "TITLE_ACTION_ADD_ISSUE": "Add a new issue",
         "TITLE_ACTION_ADD_ISSUE_BULK": "Add some new issues in bulk",
         "TITLE_ACTION_ASSIGN": "שייך משימה",
-        "PLACEHOLDER_CARD_TITLE": "זאת יכולה להיות משימה",
-        "PLACEHOLDER_CARD_TEXT": "פצל סיפורים לכמה משימות ועקוב אחריהם בנפרד",
+        "PLACEHOLDER_CARD_TITLE": "This could be a user story",
+        "PLACEHOLDER_CARD_TEXT": "Go to the <a href=\"{{ backlogUrl }}\" title=\"Go to backlog\">backlog</a> and drag user stories to this sprint; split the stories into tasks to track them separately.",
+        "TASK_NOT_FOUND_TITLE": "No matching results found",
+        "TASK_NOT_FOUND_TEXT": "Try again using more general search terms or disabling some filters.",
+        "TITLE_DATE_RANGE": "{{startDate}} <span>to</span> {{endDate}}",
         "TABLE": {
             "COLUMN": "סיפור משתמש",
             "TITLE_ACTION_FOLD": "קפל עמודה",
@@ -1531,11 +1590,12 @@
                 "TYPE": "טיפוס",
                 "SEVERITY": "חומרה",
                 "PRIORITY": "עדיות",
-                "SUBJECT": "נושא",
+                "ISSUE": "תקלה",
                 "VOTES": "הצבעות",
                 "STATUS": "סטטוס",
+                "ATTACHMENTS": "Attachments",
                 "MODIFIED": "שונה",
-                "ASSIGNED_TO": "משוייך ל"
+                "ASSIGNED_TO": "Assign to"
             },
             "TITLE_ACTION_CHANGE_STATUS": "שנה סטטוס",
             "TITLE_ACTION_ASSIGNED_TO": "משוייך ל",
@@ -1560,9 +1620,15 @@
         "TITLE_ACTION_ADD_BULK": "Add new bulk",
         "ACTION_SHOW_ARCHIVED": "הצג מאורכב",
         "ACTION_HIDE_ARCHIVED": "הסתר מאורכבים",
-        "HIDDEN_USER_STORIES": "סיפורי המשתמש בתקלה הזו מוסתרים כברירת מחדל",
-        "PLACEHOLDER_CARD_TITLE": "These are your user stories",
-        "PLACEHOLDER_CARD_TEXT": "סיפורים עשויים להכיל גם תתי משימות לדרישות אחרות"
+        "US_NOT_FOUND_TITLE": "No matching results found",
+        "US_NOT_FOUND_TEXT_P1": "Try again using more general search terms or disabled some filters.",
+        "US_NOT_FOUND_TEXT_P2": "<strong>Archived stories</strong> are not loaded by default. Unfold the archived statuses to expand your search.",
+        "PLACEHOLDER_CARD_TITLE": "This could be a user story",
+        "PLACEHOLDER_CARD_TEXT": "Create user stories here and change their status to track their progress.",
+        "NUMBER_US": "Number of US",
+        "ARCHIVED": "(Archived)",
+        "CREATE_SWIMLANE": "Create more swimlanes",
+        "UNCLASSIFIED_USER_STORIES": "Unclassified user stories"
     },
     "SEARCH": {
         "PAGE_TITLE": "חיפוש - {{projectName}}",
@@ -1742,7 +1808,7 @@
         "TITLE": "ארועים",
         "MY_EVENTS": "הארועים שלי",
         "DISMISS_ALL": "הסר הכל",
-        "VIEW_ALL": "צפה בכול",
+        "VIEW_ALL": "View all notifications",
         "NO_NEW_EVENTS": "אין אירועים חדשים",
         "NO_EVENTS_YET": "כעת אין אירועים",
         "ASSIGNED_YOU": "{{username}} שייך אותך אל {{obj_name}}",
@@ -1753,10 +1819,7 @@
         "COMMENTED": "{{username}} הגיב על {{obj_name}}"
     },
     "LEGAL": {
-        "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>ביצירת משתמש חדש הינך מסכים ל</span><a href=\"{{ termsOfServiceUrl }}\" title=\"See terms of service\" target=\"_blank\">תנאי שימוש</a><span> ו</span><a href=\"{{ privacyPolicyUrl }}\" title=\"See privacy policy\" target=\"_blank\">הגנת פרטיות</a>.",
-        "GDPR_ANNOUNCEMENT_TITLE": "General Data Protection Regulation (GDPR)",
-        "GDPR_ANNOUNCEMENT_DESCRIPTION": "ראית את זה בא, נכון? עדכונים לתנאים ולהגבלות שלנו",
-        "GDPR_ANNOUNCEMENT_INFOLINK": "אנא קרא את ההודעה שלנו כאן"
+        "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>ביצירת משתמש חדש הינך מסכים ל</span><a href=\"{{ termsOfServiceUrl }}\" title=\"See terms of service\" target=\"_blank\">תנאי שימוש</a><span> ו</span><a href=\"{{ privacyPolicyUrl }}\" title=\"See privacy policy\" target=\"_blank\">הגנת פרטיות</a>."
     },
     "EXTERNAL_APP": {
         "PAGE_TITLE": "אפליקציה חיצונית דורשת אימות",
@@ -1858,5 +1921,12 @@
             "ACTION_TITLE": "חיפוש",
             "RESULTS": "תוצאות חיפוש"
         }
+    },
+    "ZOOM": {
+        "TITLE": "Zoom:",
+        "ZOOM-1": "Compact",
+        "ZOOM-2": "ברירת מחדל",
+        "ZOOM-3": "Detailed",
+        "ZOOM-4": "Expanded"
     }
 }
