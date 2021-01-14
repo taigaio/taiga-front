@@ -724,15 +724,13 @@
         display: flex;
         margin-bottom: $spacing * 2;
         width: $width;
-        main {
-            flex-grow: 1;
-            max-width: $width - $sidebar-width;
-        }
         .sidebar {
             background: none;
+            flex-basis: $sidebar-width;
+            flex-shrink: 0;
             margin-left: $spacing;
+            min-width: $sidebar-width;
             padding-left: $spacing;
-            $min-width: $sidebar-width;
             width: $sidebar-width;
         }
     }
