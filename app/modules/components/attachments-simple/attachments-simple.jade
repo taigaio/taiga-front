@@ -3,10 +3,14 @@
 section.attachments(tg-attachments-drop="vm.addAttachments(files)")
     .attachments-header 
         h3.attachments-title #[span.attachments-num {{vm.attachments.size}}] #[span.attachments-text(translate="ATTACHMENT.SECTION_NAME")]
-        .add-attach(title!="{{'ATTACHMENT.ADD' | translate}}")
-            label.add-attachment-button.button-primary.button-small(for="add-attach")
+        .add-attach#a11y-add-attach(title!="{{'ATTACHMENT.ADD' | translate}}")
+            button.btn-icon.add-attachment-button(
+                for="add-attach"
+                variant='primary'
+            )
                 tg-svg(svg-icon="icon-add")
             input(
+                aria-label="{{'ATTACHMENT.ADD' | translate}}"
                 id="add-attach"
                 type="file"
                 multiple="multiple"

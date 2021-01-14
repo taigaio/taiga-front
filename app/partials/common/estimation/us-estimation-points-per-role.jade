@@ -8,11 +8,9 @@ ul.points-per-role
         data-role-id!="<%- role.id %>"
         title!="<%- role.name %>"
     )
-        span.points
-            <%- role.points %>
-            tg-svg(svg-icon="icon-arrow-down")
         span.role(tg-loading!="<%- loading == role.id %>") <%- role.name %>
+        span.points <%- role.points %>
     <% }); %>
     li.ticket-role-points.total
-        span.points <%- totalPoints %>
         span.role(translate="US.TOTAL_POINTS")
+        span.points <%- totalPoints %>

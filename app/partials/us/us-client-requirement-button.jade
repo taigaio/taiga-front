@@ -1,11 +1,6 @@
-label.btn-icon.client-requirement(
-    for="client-requirement"
+button.btn-icon.client-requirement(
+    type="button"
     class!="<% if(canEdit){ %>is-editable<% }; %> <% if(isRequired){ %>active<% }; %>"
     title="{{ 'COMMON.CLIENT_REQUIREMENT' | translate }}"
 )
     tg-svg(svg-icon="icon-client-requirement")
-input(
-    type="checkbox"
-    id="client-requirement"
-    name="client-requirement"
-)

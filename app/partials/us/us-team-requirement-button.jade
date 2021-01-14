@@ -1,11 +1,6 @@
-label.btn-icon.team-requirement(
-    for="team-requirement"
+button.btn-icon.team-requirement(
+    type="button"
     class!=" <% if(canEdit){ %>is-editable<% }; %> <% if(isRequired){ %>active<% }; %>"
     title="{{ 'COMMON.TEAM_REQUIREMENT' | translate }}"
 )
     tg-svg(svg-icon="icon-team-requirement")
-input(
-    type="checkbox"
-    id="team-requirement"
-    name="team-requirement"
-)

@@ -37,7 +37,7 @@ PromoteToUsButtonDirective = ($rootScope, $rs, $confirm, $translate) ->
 
             $rs[item._name].promoteToUserStory(item.id, item.project).then(onSuccess, onError)
 
-        $el.on "click", "a", (event) ->
+        $el.on "click", ".promote-button", (event) ->
             event.preventDefault()
             item = $model.$modelValue
             itemType = _.get({ tasks: 'task', issues: 'issue' }, item._name)

@@ -11,23 +11,14 @@ div.ticket-detail-settings
         obj-type="task"
         not-auto-save="true"
     )
-    div
-        fieldset.iocaine-flag(title="{{ 'TASK.TITLE_ACTION_IOCAINE' | translate }}")
-            label.button-gray.iocaine(
-                for="is-iocaine"
-                ng-class="{'active': obj.is_iocaine}"
-            )
-                tg-svg(svg-icon="icon-iocaine")
-            input(
-                type="checkbox"
-                id="is-iocaine"
-                name="is-iocaine"
-                ng-model="obj.is_iocaine"
-                ng-value="true"
-            )
-    div
-        label.button-gray.is-blocked(
-            title="{{ 'COMMON.BLOCK_TITLE' | translate }}"
-            ng-class="{ 'button-red item-unblock': obj.is_blocked, 'item-block': !obj.is_blocked }"
-        )
-            tg-svg(svg-icon="icon-lock")
+    button.btn-icon.iocaine(
+        type="button"
+        ng-class="{'active': obj.is_iocaine}"
+    )
+        tg-svg(svg-icon="icon-iocaine")
+    button.btn-icon.is-blocked(
+        type="button"
+        title="{{ 'COMMON.BLOCK_TITLE' | translate }}"
+        ng-class="{ 'item-unblock': obj.is_blocked, 'item-block': !obj.is_blocked }"
+    )
+        tg-svg(svg-icon="icon-lock")

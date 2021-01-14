@@ -861,6 +861,7 @@ $confirm, $q, attachmentsService, $template, $compile) ->
 
         $el.on "click", ".iocaine", (event) ->
             $scope.obj.is_iocaine = not $scope.obj.is_iocaine
+            $scope.$apply()
             $scope.$broadcast("isiocaine:changed", $scope.obj)
 
         $scope.isTeamRequirement = () ->

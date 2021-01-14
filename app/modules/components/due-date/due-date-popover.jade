@@ -1,5 +1,6 @@
 .due-date-button-wrapper
-    label.due-date-button.button-gray.is-editable.date-picker-popover-trigger(
+    button.btn-icon.due-date-button.is-editable.date-picker-popover-trigger(
+        ng-class="{'date-set':  vm.color()}"
         ng-disabled="vm.disabled()"
         ng-style="{background: vm.color()}"
         ng-attr-title="{{ vm.title() }}"

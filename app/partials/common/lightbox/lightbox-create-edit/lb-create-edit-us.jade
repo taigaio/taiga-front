@@ -14,10 +14,10 @@ section.ticket-assigned-to.multiple-assign(
     ng-model="obj"
     required-perm="modify_{{ objType }}"
 )
-div.ticket-estimation
+.ticket-estimation
     tg-lb-us-estimation(ng-model="obj")
 
-div.ticket-detail-settings
+.ticket-detail-settings
     tg-due-date-popover(
         due-date="obj.due_date"
         is-closed="obj.is_closed"
@@ -26,24 +26,25 @@ div.ticket-detail-settings
         format="button"
         not-auto-save="true"
     )
-    div
-        label.button-gray.team-requirement(
-            for="team-requirement"
-            title="{{ 'COMMON.TEAM_REQUIREMENT' | translate }}"
-            ng-class="{ 'active': isTeamRequirement() }"
-        )
-            tg-svg(svg-icon="icon-team-requirement")
-    div
-        label.button-gray.client-requirement(
-            for="client-requirement"
-            title="{{ 'COMMON.CLIENT_REQUIREMENT' | translate }}"
-            ng-class="{ 'active': isClientRequirement() }"
-        )
-            tg-svg(svg-icon="icon-client-requirement")
+    button.btn-icon.team-requirement(
+        type="button"
+        aria-label="{{ 'COMMON.TEAM_REQUIREMENT' | translate }}"
+        title="{{ 'COMMON.TEAM_REQUIREMENT' | translate }}"
+        ng-class="{ 'active': isTeamRequirement() }"
+    )
+        tg-svg(svg-icon="icon-team-requirement")
+    button.btn-icon.client-requirement(
+        type="button"
+        aria-label="{{ 'COMMON.CLIENT_REQUIREMENT' | translate }}"
+        title="{{ 'COMMON.CLIENT_REQUIREMENT' | translate }}"
+        ng-class="{ 'active': isClientRequirement() }"
+    )
+        tg-svg(svg-icon="icon-client-requirement")
 
-    div
-        label.button-gray.is-blocked(
-            title="{{ 'COMMON.BLOCK_TITLE' | translate }}"
-            ng-class="{ 'button-red item-unblock': obj.is_blocked, 'item-block': !obj.is_blocked }"
-        )
-            tg-svg(svg-icon="icon-lock")
+    button.btn-icon.is-blocked(
+        type="button"
+        aria-label="{{ 'COMMON.BLOCK_TITLE' | translate }}"
+        title="{{ 'COMMON.BLOCK_TITLE' | translate }}"
+        ng-class="{ 'item-unblock': obj.is_blocked, 'item-block': !obj.is_blocked }"
+    )
+        tg-svg(svg-icon="icon-lock")

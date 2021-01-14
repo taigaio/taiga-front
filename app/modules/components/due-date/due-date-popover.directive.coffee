@@ -38,6 +38,8 @@ dueDatePopoverDirective = ($translate, datePickerConfigService) ->
             el.picker = new Pikaday(datePickerConfig)
 
             el.on "click", ".due-date-button", (event) ->
+                event.preventDefault()
+                event.stopPropagation()
                 if scope.open
                     el.picker.hide()
                     return

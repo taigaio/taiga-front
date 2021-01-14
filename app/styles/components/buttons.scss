@@ -113,12 +113,6 @@
     }
 }
 
-.add-button svg {
-    height: 1.25rem;
-    margin-bottom: -.2rem;
-    width: 1.25rem;
-}
-
 .menu-button {
     @extend %button;
     border-radius: 0;

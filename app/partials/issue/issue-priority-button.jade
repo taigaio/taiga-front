@@ -1,11 +1,8 @@
 div(class!="priority-data <% if(editable){ %>clickable<% }%>")
-    span(class="level", style!="background-color:<%- priority.color %>")
-    span
-        span.label(class="priority-priority") <%- priority.name %>
-        <% if(editable){ %>
-        tg-svg(svg-icon="icon-arrow-down")
-        <% }%>
-    span(class="level-name", translate="COMMON.FIELDS.PRIORITY")
+    .label.level-name(translate="COMMON.FIELDS.PRIORITY")
+    .level-data
+        span.label(class="priority-priority") <%- priority.name %>    
+        span.level-color(style!="background-color:<%- type.color %>")
 
     ul(class="popover pop-priority")
         <% _.each(priorityes, function(pr) { %>
