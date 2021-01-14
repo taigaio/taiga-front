@@ -117,8 +117,8 @@ form(ng-if="lightboxOpen")
         .btn-container
             button#submitButton.btn-big(
                 variant="primary"
-                type="submit",
-                tg-loading="vm.loading",
+                type="submit"
+                tg-loading="vm.loading"
                 ng-switch="mode"
             )
                 span(ng-switch-when="new") {{ 'COMMON.CREATE' | translate }}

@@ -2,7 +2,7 @@ div(class!="priority-data <% if(editable){ %>clickable<% }%>")
     .label.level-name(translate="COMMON.FIELDS.PRIORITY")
     .level-data
         span.label(class="priority-priority") <%- priority.name %>    
-        span.level-color(style!="background-color:<%- type.color %>")
+        span.level-color(style!="background-color:<%- priority.color %>")
 
     ul(class="popover pop-priority")
         <% _.each(priorityes, function(pr) { %>
