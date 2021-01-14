@@ -126,13 +126,12 @@
     .attachment-delete {
         right: .5rem;
         svg {
-            fill: $gray-light;
-            height: 1.25rem;
-            width: 1.25rem;
+            fill: $color-link-tertiary;
         }
         &:hover {
+            cursor: pointer;
             svg {
-                fill: $red;
+                fill: $color-link-red;
             }
         }
     }

@@ -19,6 +19,9 @@
 
 AttachmentsSimpleDirective = () ->
     link = (scope, el, attrs, ctrl) ->
+        scope.displayAttachmentInput = (event) ->
+            angular.element('#add-attach').click();
+            return false;
 
     return {
         scope: {},

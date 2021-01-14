@@ -81,22 +81,20 @@
 
 .single-attachment {
     @include font-size(small);
-    background: rgba($white, .9);
+    background: rgba($color-white, .9);
     .attachment-name {
-        @include font-type(medium);
+        display: flex;
         padding-right: 1rem;
         svg {
-            fill: $gray;
-            height: .9rem;
+            fill: $color-black600;
             margin-right: .25rem;
-            width: .9rem;
         }
         a {
             display: flex;
         }
     }
     .attachment-size {
-        color: $gray-light;
+        color: $color-black600;
     }
 }
 
