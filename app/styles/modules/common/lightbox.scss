@@ -58,6 +58,25 @@
         }
     }
 
+    .tags-block {
+        width: 100%;
+        .tags-container {
+            align-items: center;
+            display: flex;
+            flex-wrap: wrap;
+            gap: .5rem;
+        }
+        .tag {
+            align-items: center;
+            display: flex;
+            font-size: .875rem;
+            min-height: 2rem;
+            &:first-child {
+                margin-inline-start: 0;
+            }
+        }
+    }
+
     .settings {
         display: flex;
         justify-content: center;
@@ -126,13 +145,12 @@
     .attachment-delete {
         right: .5rem;
         svg {
-            fill: $gray-light;
-            height: 1.25rem;
-            width: 1.25rem;
+            fill: $color-link-tertiary;
         }
         &:hover {
+            cursor: pointer;
             svg {
-                fill: $red;
+                fill: $color-link-red;
             }
         }
     }
@@ -706,15 +724,13 @@
         display: flex;
         margin-bottom: $spacing * 2;
         width: $width;
-        main {
-            flex-grow: 1;
-            max-width: $width - $sidebar-width;
-        }
         .sidebar {
             background: none;
+            flex-basis: $sidebar-width;
+            flex-shrink: 0;
             margin-left: $spacing;
+            min-width: $sidebar-width;
             padding-left: $spacing;
-            $min-width: $sidebar-width;
             width: $sidebar-width;
         }
     }

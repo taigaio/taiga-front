@@ -1,7 +1,7 @@
 .attachment-list {
     .single-attachment {
         align-items: center;
-        border-bottom: 1px solid $whitish;
+        border-bottom: 1px solid $color-gray100;
         display: flex;
         padding: .5rem 0 .5rem .5rem;
         position: relative;
@@ -12,19 +12,24 @@
             }
         }
         &.deprecated {
-            color: $gray-light;
+            color: $color-gray300;
             span,
             .attachment-name a {
-                color: $gray-light;
+                color: $color-gray300;
             }
         }
     }
     .attachment-name {
-        @include ellipsis(90%);
-        flex-basis: 25%;
-        flex-grow: 1;
+        flex-basis: 70%;
+        flex-grow: 0;
         flex-shrink: 0;
         padding-right: 1rem;
+        width: 70%;
+        span {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
     }
     .attachment-comments,
     .editable-attachment-comment {
@@ -36,21 +41,18 @@
         }
     }
     .attachment-size {
-        flex-basis: 125px;
+        flex-basis: 20%;
         flex-grow: 0;
         flex-shrink: 0;
+        text-align: center;
         span {
-            color: $grayer;
+            color: $color-gray300;
         }
     }
     .attachment-settings {
-        align-items: center;
-        display: flex;
         flex-basis: 10%;
         flex-grow: 0;
         flex-shrink: 0;
-        justify-content: space-around;
-        margin-left: auto;
         .settings {
             opacity: 0;
         }
@@ -59,19 +61,19 @@
             opacity: 1;
         }
         svg {
-            fill: $gray-light;
+            fill: $color-link-tertiary;
             pointer-events: none;
         }
         .icon-edit,
         .icon-save {
             &:hover {
-                fill: $primary;
+                fill: $color-link-primary;
             }
         }
         .icon-trash,
         .icon-close {
             &:hover {
-                fill: $red;
+                fill: $color-link-red;
             }
         }
         .icon-drag {
