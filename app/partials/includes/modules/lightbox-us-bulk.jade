@@ -6,6 +6,7 @@ form
         .label {{ 'LIGHTBOX.CREATE_EDIT.SELECT_STATUS' | translate }}
         .bulk-status-selector-wrapper
             button.bulk-status-selector(
+                type="button"
                 ng-click="displayStatus()"
                 ng-style="{'background-color': currentStatus.color}"
             )
@@ -16,7 +17,8 @@ form
                 ng-mouseleave="hideStatus()"
                 ng-mouseenter="displayStatus()"
             )
-                .bulk-status-option(
+                button.bulk-status-option(
+                    type="button"
                     ng-repeat="status in project.us_statuses"
                     ng-click="setStatus(status)"
                     ng-class="{'selected': status.id == currentStatus.id}"
