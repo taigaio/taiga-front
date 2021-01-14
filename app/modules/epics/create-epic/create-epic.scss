@@ -24,7 +24,7 @@
         fieldset {
             margin-right: .5rem;
             &:hover {
-                color: $white;
+                color: $color-white;
                 transition: all .2s ease-in;
                 transition-delay: .2s;
             }
@@ -35,36 +35,38 @@
         input {
             display: none;
             &:checked+label {
-                background: $primary;
-                border: 1px solid $primary;
+                background: $color-link-primary;
+                border: 1px solid $color-link-primary;
                 color: $white;
             }
             &:checked+.blocked {
-                background: $red;
-                border: 1px solid $red;
-                color: $white;
+                background: $color-link-red;
+                border: 1px solid $color-link-red;
+                color: $color-white;
             }
         }
     }
     label {
         @include font-size(small);
-        background: $mass-white;
-        border: 1px solid $gray-light;
-        color: $gray-light;
+        background: $color-gray100;
+        border: 1px solid $color-gray200;
+        color: $color-black600;
         cursor: pointer;
         display: block;
-        padding: .5rem 3rem;
+        padding-block-end: .5rem;
+        padding-block-start: .5rem;
+        text-align: center;
         text-transform: none;
         transition: all .2s ease-in;
         &:hover {
-            background: $primary-light;
-            border: 1px solid $primary;
-            color: $white;
+            background: $color-link-primary;
+            border: 1px solid $color-link-primary;
+            color: $color-white;
         }
         &.blocked {
             &:hover {
-                background: $red-light;
-                border: 1px solid $red;
+                background: $color-link-red;
+                border: 1px solid $color-link-red;
             }
         }
     }

@@ -4,51 +4,24 @@
         flex-direction: column;
     }
     .ticket-role-points {
-        background: $grey-05;
-        color: $gray;
+        @include font-size(small);
+        background: $color-gray100;
+        color: $color-link-tertiary;
         display: flex;
-        flex: 1;
         justify-content: space-between;
         margin-bottom: .1rem;
         min-height: 2rem;
-        padding: .5rem 1rem;
+        padding: .5rem;
         position: relative;
-        &.clickable {
-            &:hover,
-            &.active {
-                background: rgba($gray-lighter, .1);
-                .points,
-                .role,
-                .icon-arrow-bottom {
-                    color: currentColor;
-                    fill: currentColor;
-                }
-            }
-        }
         &:last-child {
-            background: rgba($gray-lighter, .4);
+            background: $color-gray300;
             border-bottom: 0;
-            color: $gray;
-            .points,
-            .role,
-            .icon-arrow-bottom {
-                @include font-type(regular);
-                color: currentColor;
-                fill: currentColor;
+            &::first-letter {
+                text-transform: uppercase;
             }
-        }
-        .icon-arrow-down {
-            fill: currentColor;
-            height: .6rem;
-            margin-left: .25rem;
-            width: .6rem;
         }
         .points {
-            @include font-type(regular);
-            color: $gray;
-        }
-        .role {
-            @include font-type(regular);
+            color: $color-black600;
         }
     }
     .popover {

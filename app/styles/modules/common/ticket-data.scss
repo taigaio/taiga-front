@@ -67,31 +67,28 @@
 
 @mixin category-choices() {
     align-content: center;
-    background: $whitish;
+    background: $color-gray100;
     display: flex;
+    justify-content: space-between;
     margin-bottom: .5rem;
     padding: .5rem;
     position: relative;
     width: 100%;
-    .label,
-    .level-name {
+    .level-data {
+        @include font-size(small);
         align-items: center;
-        display: inline-block;
-        font-size: .8rem;
-        margin-left: .5rem;
-        max-width: 65px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
+        color: $color-black600;
+        display: flex;
     }
-    .icon {
-        height: .6rem;
-        margin: 0 0 .125rem .125rem;
-        width: .6rem;
+    .level-color {
+        border-radius: 50%;
+        height: 1rem;
+        margin-inline-start: .75rem;
+        width: 1rem;
     }
     .level-name {
-        margin-left: auto;
-        text-align: right;
+        @include font-size(xsmall);
+        color: $color-link-tertiary;
     }
     .popover {
         @include popover(150px, 30px, 30px, '', '', 0, '', '', '', 15px, 'left');
@@ -100,9 +97,6 @@
 
 
 .ticket-status {
-    &:last-child {
-        margin: 0;
-    }
     .level {
         display: inline-block;
         margin: 0;
@@ -110,12 +104,6 @@
     .level-name {
         color: $gray-light;
         text-transform: lowercase;
-    }
-    .clickable {
-        &:hover {
-            background: $gray-lighter;
-            transition: background .2s ease-in;
-        }
     }
     .type-data {
         @include category-choices;
@@ -129,10 +117,11 @@
 }
 
 .ticket-section-label {
+    @include font-size(xsmall);
     @include font-type(medium);
-    color: lighten($grayer, 11%);
-    flex-grow: 1;
-    font-size: .875rem;
+    color: $color-black900;
+    display: block;
+    margin-block-end: .25rem;
     text-transform: uppercase;
 }
 
@@ -293,37 +282,17 @@
 }
 
 .ticket-detail-settings {
+    align-items: center;
     display: flex;
     justify-content: center;
-    margin-right: -.5rem;
-    .btn-icon {
-        align-items: center;
+    [class^='btn-'] {
         background: $color-gray200;
         color: $color-link-primary;
-        cursor: pointer;
-        display: flex;
-        height: 2.5rem;
-        justify-content: center;
-        margin-right: .25rem;
-        padding: 0;
-        transition: all .1s ease-in;
-        width: 2.5rem;
+        margin-inline-end: .5rem;
+        padding: .75rem;
         &:hover {
-            background: $color-gray400;
-            color: $color-link-tertiary;
-            transition: fill .1s ease-in;
-        }
-        &:active {
-            background: $color-link-tertiary;
-            color: $color-white;
-            tg-svg {
-                fill: $color-white;
-            }
-        }
-        tg-svg {
-            fill: $color-link-primary;
-            height: 1rem;
-            width: 1rem;
+            background: $color-gray200;
+            color: $color-link-primary;
         }
         &.editable {
             cursor: pointer;
@@ -336,61 +305,25 @@
             color: $color-white;
         }
     }
-    .assign-issue-button {
-        display: none;
-
-        &:hover {
-            background: $yellow-green;
-        }
-        &.is-active {
-            background: $grey-70;
-        }
-        &.button-set:hover {
-            background: $red-light;
-        }
-    }
 
     .item-block,
     .item-unblock {
         display: none;
         &.is-active {
-            display: flex;
+            display: unset;
         }
     }
+
     .item-unblock {
         background: $color-link-red;
-        tg-svg {
-            fill: $color-white;
-        }
         &:hover {
-            background: $red;
+            background: $color-link-red;
         }
-    }
-    .button-delete {
-        &:hover tg-svg {
-            fill: $color-link-red;
+        .loading-spinner {
+            height: 1rem;
+            width: 1rem;
         }
-        &:active {
-            background: $color-link-tertiary;
-            color: $color-white;
-            tg-svg {
-                fill: $color-white;
-            }
-        }
-    }
-    img {
-        max-height: 1.25rem;
-        max-width: 1.25rem;
-        width: 100%;
-    }
-    .icon-private {
-        margin: 0;
-    }
-    a {
-        display: block;
-    }
-    .due-date-button {
-        &.active tg-svg {
+        svg {
             fill: $color-white;
         }
     }

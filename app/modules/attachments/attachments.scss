@@ -43,19 +43,19 @@
             padding: .5rem;
         }
     }
-    button {
+    .view-gallery,
+    .view-list {
         background: none;
         margin-right: .2rem;
         &:hover,
         &.is-active {
             svg {
-                fill: $primary-light;
+                fill: $color-link-primary;
             }
         }
         svg {
-            fill: $gray-light;
-            height: 1.6rem;
-            width: 1.6rem;
+            @include svg-size(1.2rem);
+            fill: $color-black600;
         }
     }
     .size-info {
