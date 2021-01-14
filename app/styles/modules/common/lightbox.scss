@@ -58,6 +58,25 @@
         }
     }
 
+    .tags-block {
+        width: 100%;
+        .tags-container {
+            align-items: center;
+            display: flex;
+            flex-wrap: wrap;
+            gap: .5rem;
+        }
+        .tag {
+            align-items: center;
+            display: flex;
+            font-size: .875rem;
+            min-height: 2rem;
+            &:first-child {
+                margin-inline-start: 0;
+            }
+        }
+    }
+
     .settings {
         display: flex;
         justify-content: center;
