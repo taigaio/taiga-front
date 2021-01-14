@@ -181,7 +181,7 @@
             "TITLE_ACTION_SET_DUE_DATE": "Set due date"
         },
         "ASSIGNED_USERS": {
-            "ADD": "Select an assigned user",
+            "ADD": "Select assigned user",
             "ADD_ASSIGNED": "Add assigned",
             "TITLE_LIGHTBOX_DELETE_ASSIGNED": "Delete assigned..."
         },

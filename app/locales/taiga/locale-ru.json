@@ -181,7 +181,7 @@
             "TITLE_ACTION_SET_DUE_DATE": "Установить дедлайн"
         },
         "ASSIGNED_USERS": {
-            "ADD": "Select an assigned user",
+            "ADD": "Выбрать пользователей для назначения",
             "ADD_ASSIGNED": "Добавить ответственного",
             "TITLE_LIGHTBOX_DELETE_ASSIGNED": "Удалить ответственного..."
         },

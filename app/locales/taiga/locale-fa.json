@@ -181,7 +181,7 @@
             "TITLE_ACTION_SET_DUE_DATE": "تنظیم موعد تحویل"
         },
         "ASSIGNED_USERS": {
-            "ADD": "Select an assigned user",
+            "ADD": "انتخاب کاربر اختصاص یافته",
             "ADD_ASSIGNED": "اضافه کردن اختصاص یافته",
             "TITLE_LIGHTBOX_DELETE_ASSIGNED": "حذف اختصاص یافته..."
         },

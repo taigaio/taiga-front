@@ -181,7 +181,7 @@
             "TITLE_ACTION_SET_DUE_DATE": "Fijar fecha de vencimiento"
         },
         "ASSIGNED_USERS": {
-            "ADD": "Selecciona un usuario asignado",
+            "ADD": "Selecciona usuario asignado",
             "ADD_ASSIGNED": "Añadir asignación",
             "TITLE_LIGHTBOX_DELETE_ASSIGNED": "Borra asignación..."
         },
