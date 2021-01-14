@@ -19,18 +19,17 @@ section.attachments(
                 title="{{ 'ATTACHMENT.LIST_VIEW_MODE' | translate }}"
             )
                 tg-svg(svg-icon="icon-list")
+
             .add-attach(
                 tg-check-permission="modify_{{vm.type}}"
                 title!="{{'ATTACHMENT.ADD' | translate}}"
             )
-
                 button.btn-icon.add-attachment-button(
-                    for="add-attach"
                     type="button"
                     variant="primary"
+                    ng-click="displayAttachmentInput()"
                 )
                     tg-svg(svg-icon="icon-add")
-
 
                 input(
                     id="add-attach",

@@ -24,6 +24,10 @@ AttachmentsFullDirective = () ->
         bindOnce scope, 'vm.objId', (value) ->
             ctrl.loadAttachments()
 
+        scope.displayAttachmentInput = () ->
+            angular.element('#add-attach').click();
+            return false;
+
     return {
         scope: {},
         bindToController: {
