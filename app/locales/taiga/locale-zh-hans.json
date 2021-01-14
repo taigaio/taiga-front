@@ -181,7 +181,7 @@
             "TITLE_ACTION_SET_DUE_DATE": "设置截止日期"
         },
         "ASSIGNED_USERS": {
-            "ADD": "Select an assigned user",
+            "ADD": "选择指派人",
             "ADD_ASSIGNED": "添加指派人",
             "TITLE_LIGHTBOX_DELETE_ASSIGNED": "删除指派..."
         },

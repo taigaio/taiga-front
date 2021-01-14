@@ -181,7 +181,7 @@
             "TITLE_ACTION_SET_DUE_DATE": "Вказати кінцеву дату"
         },
         "ASSIGNED_USERS": {
-            "ADD": "Select an assigned user",
+            "ADD": "Вибрати користувача для назначення",
             "ADD_ASSIGNED": "Назначити на...",
             "TITLE_LIGHTBOX_DELETE_ASSIGNED": "Видалити назначення..."
         },

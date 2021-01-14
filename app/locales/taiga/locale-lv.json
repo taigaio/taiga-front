@@ -181,7 +181,7 @@
             "TITLE_ACTION_SET_DUE_DATE": "Iestatīt termiņu"
         },
         "ASSIGNED_USERS": {
-            "ADD": "Select an assigned user",
+            "ADD": "Izvēlieties atbildīgo",
             "ADD_ASSIGNED": "Noteikt atbildīgo",
             "TITLE_LIGHTBOX_DELETE_ASSIGNED": "Dzēst atbildīgo..."
         },

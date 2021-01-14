@@ -181,7 +181,7 @@
             "TITLE_ACTION_SET_DUE_DATE": "Fälligkeitsdatum setzen"
         },
         "ASSIGNED_USERS": {
-            "ADD": "Select an assigned user",
+            "ADD": "Zugewiesenen Benutzer wählen",
             "ADD_ASSIGNED": "Zugewiesenen hinzufügen",
             "TITLE_LIGHTBOX_DELETE_ASSIGNED": "Zugewiesenen löschen..."
         },

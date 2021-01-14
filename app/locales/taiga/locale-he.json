@@ -181,7 +181,7 @@
             "TITLE_ACTION_SET_DUE_DATE": "קבע תאריך יעד"
         },
         "ASSIGNED_USERS": {
-            "ADD": "Select an assigned user",
+            "ADD": "בחר משתמש משוייך",
             "ADD_ASSIGNED": "הוסף שיוך",
             "TITLE_LIGHTBOX_DELETE_ASSIGNED": "מחק שיוך..."
         },

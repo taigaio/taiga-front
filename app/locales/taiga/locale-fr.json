@@ -181,7 +181,7 @@
             "TITLE_ACTION_SET_DUE_DATE": "Définir l’échéance"
         },
         "ASSIGNED_USERS": {
-            "ADD": "Select an assigned user",
+            "ADD": "Sélectionner un utilisateur affecté",
             "ADD_ASSIGNED": "Ajouter un utilisateur affecté",
             "TITLE_LIGHTBOX_DELETE_ASSIGNED": "Supprimer l'affectation"
         },
