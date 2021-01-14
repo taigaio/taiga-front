@@ -181,7 +181,7 @@
             "TITLE_ACTION_SET_DUE_DATE": "Ezarri epemuga"
         },
         "ASSIGNED_USERS": {
-            "ADD": "Select an assigned user",
+            "ADD": "Hautatu nori esleituta",
             "ADD_ASSIGNED": "Gehitu esleitutako bat",
             "TITLE_LIGHTBOX_DELETE_ASSIGNED": "Ezabatu esleitutakoa…"
         },

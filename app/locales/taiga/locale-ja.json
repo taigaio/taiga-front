@@ -181,7 +181,7 @@
             "TITLE_ACTION_SET_DUE_DATE": "締切日を設定"
         },
         "ASSIGNED_USERS": {
-            "ADD": "Select an assigned user",
+            "ADD": "割当ユーザーを選択",
             "ADD_ASSIGNED": "割当を追加",
             "TITLE_LIGHTBOX_DELETE_ASSIGNED": "Delete assigned..."
         },

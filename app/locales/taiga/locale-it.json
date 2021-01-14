@@ -181,7 +181,7 @@
             "TITLE_ACTION_SET_DUE_DATE": "Setta scadenza"
         },
         "ASSIGNED_USERS": {
-            "ADD": "Select an assigned user",
+            "ADD": "Seleziona utente assegnato",
             "ADD_ASSIGNED": "Aggiungi assegnato",
             "TITLE_LIGHTBOX_DELETE_ASSIGNED": "Elimina assegnato..."
         },
