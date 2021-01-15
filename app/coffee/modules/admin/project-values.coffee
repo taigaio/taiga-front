@@ -152,10 +152,16 @@ class ProjectSwimlanesValuesController extends taiga.Controller
                 unwatch()
 
     addSwimlane: =>
-        return @rs[@scope.resource].create(@scope.projectId, @scope.swimlane.name).then (values) =>
+        promise = @rs[@scope.resource].create(@scope.projectId, @scope.swimlane.name)
+
+        promise.success (values) =>
             @scope.swimlaneAdded()
             @.loadSwimlanes()
             @rootscope.$broadcast("project:load")
+
+        promise.error =>
+            @confirm.notify('light-error', @translate.instant("ADMIN.PROJECT_KANBAN_OPTIONS.ACTION_ADD_SWIMLANE"))
+            @scope.hideSwimlaneForm()
 
     updateSwimlane: (swimlane, name) =>
         return @rs[@scope.resource].edit(swimlane.id, name).then (values) =>
