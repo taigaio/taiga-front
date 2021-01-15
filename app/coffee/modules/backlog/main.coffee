@@ -246,9 +246,10 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             return sprints
 
     loadSwimlanes: ->
-        @scope.project.swimlanes.forEach (swimlane) =>
-            if (!@scope.swimlanesList.includes(swimlane))
-                @scope.swimlanesList = @scope.swimlanesList.push(swimlane)
+        if (@scope.project.swimlanes)
+            @scope.project.swimlanes.forEach (swimlane) =>
+                if (!@scope.swimlanesList.includes(swimlane))
+                    @scope.swimlanesList = @scope.swimlanesList.push(swimlane)
 
     loadSprints: ->
         params = {closed: false}
