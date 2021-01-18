@@ -66,7 +66,7 @@ div.wrapper(
                     )
                     tg-created-by-display.ticket-created-by(ng-model="task")
 
-        .detail-content
+        .detail-content(ng-if="attachmentsReady")
             section.duty-content
                 tg-item-wysiwyg(
                     type="task",

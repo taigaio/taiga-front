@@ -46,7 +46,7 @@ ItemWysiwyg = ($modelTransform, $rootscope, $confirm, attachmentsFullService, $t
             us: "us"
             issue: "issue",
             task: "task",
-        }              
+        }
 
         $scope.uploadFiles = (file, cb) ->
             return attachmentsFullService.addAttachment($scope.project.id, $scope.item.id, types[$attrs.type], file).then (result) ->

@@ -36,7 +36,7 @@ div.wrapper(
                     tg-created-by-display.ticket-created-by(ng-model="epic")
 
 
-        .detail-content
+        .detail-content(ng-if="attachmentsReady")
             section.duty-content
                 tg-item-wysiwyg(
                     type="epic",

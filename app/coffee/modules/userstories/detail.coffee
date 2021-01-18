@@ -49,17 +49,22 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         "tgErrorHandlingService",
         "$tgConfig",
         "tgProjectService",
-        "tgWysiwygService"
+        "tgWysiwygService",
+        "tgAttachmentsFullService",
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location,
                   @log, @appMetaService, @navUrls, @analytics, @translate, @modelTransform,
-                  @errorHandlingService, @configService, @projectService, @wysiwigService) ->
+                  @errorHandlingService, @configService, @projectService, @wysiwigService,
+                  @attachmentsFullService) ->
         bindMethods(@)
 
         @scope.usRef = @params.usref
         @scope.sectionName = @translate.instant("US.SECTION_NAME")
         @scope.tribeEnabled = @configService.config.tribeHost
+        @scope.attachmentsReady = false
+        @scope.$on "attachments:loaded", () =>
+            @scope.attachmentsReady = true
 
         @.initializeEventHandlers()
 
@@ -93,6 +98,9 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         })
 
         @appMetaService.setAll(title, description)
+
+    loadAttachments: ->
+        @attachmentsFullService.loadAttachments('us', @scope.usId, @scope.projectId)
 
     initializeEventHandlers: ->
         @scope.relateToEpic = (us) =>
@@ -175,6 +183,8 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
             @scope.us = us
             @scope.usId = us.id
             @scope.commentModel = us
+
+            @.loadAttachments()
 
             window.legacyChannel.next({
                 type: 'SET_DETAIL_OBJ',

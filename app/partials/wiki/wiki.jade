@@ -10,7 +10,7 @@ div.wrapper(
         tg-wiki-nav
         ng-model="wikiLinks"
     )
-    section.main.wiki
+    section.main.wiki(ng-if="attachmentsReady")
         header
             h1(translate="PROJECT.SECTION.WIKI")
 
