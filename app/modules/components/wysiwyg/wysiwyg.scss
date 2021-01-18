@@ -62,6 +62,11 @@ tg-wysiwyg {
             display: none;
         }
     }
+    .no-description {
+        color: $default-tags;
+        padding: 1rem;
+        padding-inline-start: 2rem;
+    }
     .edit-mode {
         .markdown,
         .ck.ck-editor__editable:not(.ck-editor__nested-editable) {
