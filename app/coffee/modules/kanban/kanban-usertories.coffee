@@ -56,6 +56,9 @@ class KanbanUserstoriesService extends taiga.Service
         userstories.forEach (us) =>
             if (!us.swimlane)
                 us.swimlane = -1
+                # To prevent wrong updates in any (put/patch/post) api call
+                delete us._modifiedAttrs.swimlane
+
         @.userstoriesRaw = userstories
         @.refreshRawOrder()
         @.refresh()
@@ -75,6 +78,8 @@ class KanbanUserstoriesService extends taiga.Service
         @.userstoriesRaw = @.userstoriesRaw.map (us) =>
             if (!us.swimlane)
                 us.swimlane = -1
+                # To prevent wrong updates in any (put/patch/post) api call
+                delete us._modifiedAttrs.swimlane
             return us
 
         @.refreshRawOrder()
@@ -194,6 +199,8 @@ class KanbanUserstoriesService extends taiga.Service
     replaceModel: (usModel) ->
         if (!usModel.swimlane)
             usModel.swimlane = -1
+            # To prevent wrong updates in any (put/patch/post) api call
+            delete usModel._modifiedAttrs.swimlane
 
         @.userstoriesRaw = _.map @.userstoriesRaw, (usItem) ->
             if usModel.id == usItem.id
