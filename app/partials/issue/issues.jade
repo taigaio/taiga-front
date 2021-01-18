@@ -51,7 +51,7 @@ div.wrapper.issues.lightbox-generic-form(
                                 translate="BACKLOG.TAGS.SHOW"
                             )
 
-                    .new-issue
+                    .new-issue(tg-check-permission="add_issue")
                         button(
                             ng-class="{'btn-small': !ctrl.sprintIssues, 'btn-board': ctrl.sprintIssues}"
                             type="button"
