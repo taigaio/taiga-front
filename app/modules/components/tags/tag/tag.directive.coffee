@@ -26,8 +26,8 @@ TagDirective = () ->
             tag: "<",
             loadingRemoveTag: "<",
             onDeleteTag: "&",
-            hasPermissions: "@"
-        }
+            hasPermissions: "<"
+        },
     }
 
 module.directive("tgTag", TagDirective)

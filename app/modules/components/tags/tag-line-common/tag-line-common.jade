@@ -8,7 +8,7 @@
             loading-remove-tag="vm.loadingRemoveTag"
             project="vm.project"
             on-delete-tag="vm.onDeleteTag({tag: tag})"
-            has-permissions="{{vm.checkPermissions()}}"
+            has-permissions="vm.checkPermissions()"
         )
     .tag-wrapper(
         ng-if="!tag[1] || vm.disableColorSelection"
@@ -18,7 +18,7 @@
             tag="tag"
             loading-remove-tag="vm.loadingRemoveTag"
             on-delete-tag="vm.onDeleteTag({tag: tag})"
-            has-permissions="{{vm.checkPermissions()}}"
+            has-permissions="vm.checkPermissions()"
         )
 
     include ../components/add-tag-button

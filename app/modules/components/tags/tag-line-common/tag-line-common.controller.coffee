@@ -34,7 +34,8 @@ class TagLineCommonController
         @.addTag = false
 
     checkPermissions: () ->
-        return @tagLineService.checkPermissions(@.project.my_permissions, @.permissions)
+        hasPermissions = @tagLineService.checkPermissions(@.project.my_permissions, @.permissions)
+        return hasPermissions
 
     _createColorsArray: (projectTagColors) ->
         @.colorArray =  @tagLineService.createColorsArray(projectTagColors)
