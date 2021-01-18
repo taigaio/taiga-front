@@ -778,7 +778,6 @@ TaskboardDirective = ($rootscope) ->
 
         tableBodyDom = $el.find('[data-js="taskboard-table-hscroll"]')
         tableBodyDom.on "scroll", (event) ->
-            console.log(event)
             target = angular.element(event.currentTarget)
             tableHeaderDom = $el.find(".taskboard-table-inner")
             tableHeaderDom.css("left", -1 * target.scrollLeft())
