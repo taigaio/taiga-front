@@ -30,6 +30,7 @@ class AttachmentsFullService extends taiga.Service
         @._attachmentsVisible = Immutable.List()
         @._deprecatedsVisible = false
         @.uploadingAttachments = []
+        @.types = @attachmentsService.types
 
         taiga.defineImmutableProperty @, 'attachments', () => return @._attachments
         taiga.defineImmutableProperty @, 'deprecatedsCount', () => return @._deprecatedsCount
@@ -87,6 +88,8 @@ class AttachmentsFullService extends taiga.Service
                     editable: false,
                     file: file
                 })
+
+            @rootScope.$broadcast("attachments:loaded", @._attachments)
 
             @.regenerate()
 

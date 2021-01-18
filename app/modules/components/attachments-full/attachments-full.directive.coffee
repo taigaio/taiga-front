@@ -21,9 +21,6 @@ bindOnce = @.taiga.bindOnce
 
 AttachmentsFullDirective = () ->
     link = (scope, el, attrs, ctrl) ->
-        bindOnce scope, 'vm.objId', (value) ->
-            ctrl.loadAttachments()
-
         scope.displayAttachmentInput = (event) ->
             angular.element('#add-attach').click();
             return false;

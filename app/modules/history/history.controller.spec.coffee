@@ -62,6 +62,12 @@ describe "HistorySection", ->
         }
         provide.value "tgActivityService", mocks.tgActivityService
 
+    _mockTgWysiwygService = () ->
+        mocks.tgWysiwygService = {
+            refreshAttachmentURL: sinon.stub()
+        }
+        provide.value "tgWysiwygService", mocks.tgWysiwygService
+
     _mocks = () ->
         module ($provide) ->
             provide = $provide
@@ -70,6 +76,7 @@ describe "HistorySection", ->
             _mocktgStorage()
             _mockTgProjectService()
             _mockTgActivityService()
+            _mockTgWysiwygService()
             return null
 
     beforeEach ->

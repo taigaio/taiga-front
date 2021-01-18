@@ -21,7 +21,7 @@
 
 taiga = @.taiga
 
-Wysiwyg = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoader, analytics, $location) ->
+Wysiwyg = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoader, analytics, $location, $attachmentsFullService) ->
     link = ($scope, $el, $attrs) ->
         isEditOnly = !!$attrs.$attr.editonly
         notPersist = !!$attrs.$attr.notPersist
@@ -32,6 +32,7 @@ Wysiwyg = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoa
         $scope.markdown = ''
         $scope.html = ''
         textEditor = null
+        pageAttachments = $attachmentsFullService.attachments.toJS()
 
         unwatchContent = $scope.$watch 'content', (content) ->
             if !_.isUndefined(content)
@@ -62,7 +63,7 @@ Wysiwyg = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoa
             textEditor.projectId = $scope.project.id
             textEditor.projectSlug = $scope.project.slug
             textEditor.placeholder = $scope.placeholder
-            textEditor.markdown = text
+            setHtmlEditor(text)
             textEditor.mode = $scope.mode
             textEditor.lan = $translate.preferredLanguage()
             textEditor.uploadFunction = $scope.onUploadFile
@@ -96,6 +97,9 @@ Wysiwyg = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoa
             $el.find('.editor-wrapper')[0].appendChild(textEditor)
 
         setHtmlEditor = (markdown) ->
+            if pageAttachments.length
+                markdown = wysiwygService.refreshAttachmentURLFromMarkdown(markdown)
+
             textEditor.markdown = markdown
 
         setEditMode = (editMode) ->
@@ -105,6 +109,11 @@ Wysiwyg = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoa
                 textEditor.mode = $scope.mode
             else
                 textEditor.mode = 'html'
+
+        $scope.$on "attachments:loaded", (event, attachments) =>
+            if attachments && textEditor
+                pageAttachments = attachments.toJS()
+                setHtmlEditor($scope.markdown)
 
         $scope.save = (e) ->
             e.preventDefault() if e
@@ -141,7 +150,7 @@ Wysiwyg = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoa
 
         clean = () ->
             $scope.markdown = ''
-            textEditor.markdown = ''
+            setHtmlEditor('')
 
         saveEnd = () ->
             $scope.saving  = false
@@ -210,6 +219,9 @@ Wysiwyg = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoa
                 $storage.set($scope.storageKey, store)
 
         change = () ->
+            if !$scope.editMode
+                return
+
             if $scope.mode == 'html'
                 updateMarkdownWithCurrentHtml()
 
@@ -244,5 +256,6 @@ angular.module("taigaComponents").directive("tgWysiwyg", [
     "tgLoader",
     "$tgAnalytics",
     "$location",
+    "tgAttachmentsFullService",
     Wysiwyg
 ])
