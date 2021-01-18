@@ -14,7 +14,13 @@
                 <%- value %>
     <% } else if (type=="richtext") { %>
     .custom-field-value
-        tg-custom-field-edit-wysiwyg()
+        tg-custom-field-edit-wysiwyg(
+            ng-if="isEditable"
+        )
+        span(
+            ng-if="!isEditable"
+            ng-bind-html="attributeHtml"
+        )
     <% } else if (type=="checkbox") { %>
     .custom-field-value.js-value-view-mode
         <% if (value) { %>

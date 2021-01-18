@@ -86,7 +86,7 @@ ItemWysiwyg = ($modelTransform, $rootscope, $confirm, attachmentsFullService, $t
                     ng-bind-html="item.description | markdownToHTML"></div>
 
                 <div
-                    class="wysiwyg"
+                    class="wysiwyg no-description"
                     ng-if="!editableDescription && !item.description.length">
                     {{'COMMON.DESCRIPTION.NO_DESCRIPTION' | translate}}
                 </div>
