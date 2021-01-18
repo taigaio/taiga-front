@@ -20,9 +20,10 @@
 class WysiwygService
     @.$inject = [
         "tgProjectService",
+        "tgAttachmentsFullService",
     ]
 
-    constructor: (@projectService) ->
+    constructor: (@projectService, @attachmentsFullService) ->
         @.projectDataConversion = {}
 
     getMarkdown: (html) ->
@@ -46,6 +47,45 @@ class WysiwygService
             @.projectDataConversion[projectId] = @.dataConversion
 
         return @.projectDataConversion[projectId].toHtml(text)
+
+    refreshAttachmentURLFromMarkdown: (markdown) ->
+        html = @.getHTML(markdown)
+        html = @.refreshAttachmentURL(html)
+
+        return @.getMarkdown(html)
+
+    refreshAttachmentURL: (html) ->
+        el = document.createElement('html')
+        el.innerHTML = html
+        regex = /#_taiga-refresh=([a-zA-Z]*\:\d+)/
+
+        links = {
+            "elements": el.querySelectorAll('a'),
+            "attr": "href",
+        }
+        images = {
+            "elements": el.querySelectorAll('img'),
+            "attr": "src",
+        }
+
+        attachments = @attachmentsFullService.attachments.toJS()
+
+        if !attachments.length
+            return html
+
+        _.map [links, images], (tag) =>
+            _.map tag.elements, (e) =>
+                if e.getAttribute(tag.attr).indexOf('#_taiga-refresh=') != -1
+                    match = e.getAttribute(tag.attr).match(regex)
+                    if match && match.length == 2
+                        tokens = match[1].split(":")
+                        attachmentId = parseInt(tokens[1], 10)
+                        attachment = attachments.find (attachment) => attachment.file.id == attachmentId
+
+                        if attachment
+                            e.setAttribute(tag.attr, attachment.file.url)
+
+        return el.innerHTML
 
 angular.module("taigaComponents")
     .service("tgWysiwygService", WysiwygService)

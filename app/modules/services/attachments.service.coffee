@@ -28,6 +28,19 @@ class AttachmentsService
     ]
 
     constructor: (@confirm, @config, @translate, @rs) ->
+        @.types = {
+            epics: "epic",
+            userstories: "us",
+            userstory: "us",
+            issues: "issue",
+            tasks: "task",
+            epic: "epic",
+            us: "us"
+            issue: "issue",
+            task: "task",
+            wiki: "wiki",
+            wikipage: "wiki"
+        }
         @.maxFileSize = @.getMaxFileSize()
 
         if @.maxFileSize

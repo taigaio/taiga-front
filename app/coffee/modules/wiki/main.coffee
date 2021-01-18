@@ -48,17 +48,21 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         "$tgAnalytics",
         "$translate",
         "tgErrorHandlingService",
-        "tgProjectService"
+        "tgProjectService",
+        "tgAttachmentsFullService",
     ]
 
     constructor: (@scope, @rootscope, @repo, @model, @confirm, @rs, @params, @q, @location,
-                  @filter, @log, @appMetaService, @navUrls, @analytics, @translate, @errorHandlingService, @projectService) ->
+                  @filter, @log, @appMetaService, @navUrls, @analytics, @translate, @errorHandlingService, @projectService, @attachmentsFullService) ->
         @scope.$on("wiki:links:move", @.moveLink)
         @scope.$on("wikipage:add", @.loadWiki)
         @scope.projectSlug = @params.pslug
         @scope.wikiSlug = @params.slug
         @scope.sectionName = "Wiki"
         @scope.linksVisible = false
+        @scope.attachmentsReady = false
+        @scope.$on "attachments:loaded", () =>
+            @scope.attachmentsReady = true
 
         promise = @.loadInitialData()
 
@@ -81,6 +85,9 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
 
         @appMetaService.setAll(title, description)
 
+    loadAttachments: ->
+        @attachmentsFullService.loadAttachments('wikipage', @scope.wikiId, @scope.projectId)
+
     loadProject: ->
         project = @projectService.project.toJS()
 
@@ -97,6 +104,9 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         promise.then (wiki) =>
             @scope.wiki = wiki
             @scope.wikiId = wiki.id
+
+            @.loadAttachments()
+
             return @scope.wiki
 
         promise.then null, (xhr) =>
