@@ -1,11 +1,7 @@
-button.btn-icon.item-block(
-    href=""
+button.btn-icon.button-lock(
+    ng-class="{'item-unblock': item.is_blocked,'item-block': !item.is_blocked}"
     title="{{ 'COMMON.BLOCK_TITLE' | translate }}"
 )
-    tg-svg(svg-icon="icon-lock")
-
-button.btn-icon.item-unblock(
-    href=""
-    title="{{ 'COMMON.UNBLOCK_TITLE' | translate }}"
-)
-    tg-svg(svg-icon="icon-unlock")
+    tg-svg(
+        svg-icon="icon-lock"
+    )
