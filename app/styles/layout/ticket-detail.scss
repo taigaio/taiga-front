@@ -102,7 +102,9 @@
     }
 
     .no-description {
-        color: $gray-light;
+        color: $default-tags;
+        padding: 1rem;
+        padding-inline-start: 2rem;
     }
     .save-container {
         position: absolute;

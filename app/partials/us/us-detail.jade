@@ -182,8 +182,14 @@ div.wrapper(
                 obj-type="us"
                 tg-check-permission="modify_us"
             )
-            tg-us-team-requirement-button(ng-model="us")
-            tg-us-client-requirement-button(ng-model="us")
+            tg-us-team-requirement-button(
+                ng-model="us"
+                tg-check-permission="modify_us"
+            )
+            tg-us-client-requirement-button(
+                ng-model="us"
+                tg-check-permission="modify_us"
+            )
             tg-block-button(
                 tg-check-permission="modify_us"
                 ng-model="us"
