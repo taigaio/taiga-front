@@ -29,13 +29,13 @@ CustomFieldEditWysiwyg = (attachmentsFullService) ->
             us: "us"
             issue: "issue",
             task: "task",
-        }   
+        }
 
         $scope.uploadFiles = (file, cb) ->
             return attachmentsFullService.addAttachment($scope.project.id, $scope.ctrl.objectId.toString(), types[$scope.ctrl.type], file).then (result) ->
                 cb({
                     default: result.getIn(['file', 'url'])
-                })                
+                })
 
     return {
         scope: true,
@@ -43,6 +43,7 @@ CustomFieldEditWysiwyg = (attachmentsFullService) ->
         template: """
             <div>
                 <tg-wysiwyg
+                    editonly
                     project="project"
                     content='customAttributeValue.value'
                     on-save="saveCustomRichText(text, cb)"
