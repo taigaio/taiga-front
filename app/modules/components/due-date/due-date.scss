@@ -1,5 +1,6 @@
 .due-date-button {
     background: $color-gray200;
+    cursor: pointer;
     &.date-set {
         color: $color-white;
     }

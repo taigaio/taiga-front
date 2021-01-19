@@ -773,9 +773,11 @@
 
     .popover {
         a {
+            align-items: center;
             color: $white;
-            display: block;
-            padding: .5rem 1rem;
+            display: flex;
+            justify-content: center;
+            padding: .5rem 0;
             text-align: left;
             &:hover,
             &.active {

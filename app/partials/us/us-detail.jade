@@ -19,13 +19,29 @@ div.wrapper(
                 )
 
                 //- User Story belongs to epic
-                .detail-header-line.belong-to-epics-wrapper(ng-if="project.is_epics_activated")
+                .detail-header-line.belong-to-epics-wrapper(ng-if="!!project.is_epics_activated")
                     .related-to-epics
                         tg-belong-to-epics(
                             epics="::us.epics"
                             item="::us"
                             format="text"
                         )
+
+                //- User Story relate to Epic
+                .relate-to-epic(
+                    ng-if="project.is_epics_activated",
+                    tg-check-permission="modify_epic"
+                )
+                    a.relate-to-epic-button.ng-animate-disabled(
+                        href=""
+                        title="{{'US.RELATE_TO_EPIC' | translate}}"
+                        ng-click="relateToEpic(us)"
+                    )
+                        tg-svg(
+                            svg-icon="icon-epics"
+                            svg-title-translate="US.RELATE_TO_EPIC"
+                        )
+                        span.relate-to-epic-text(translate="US.RELATE_TO_EPIC")
 
                 //- User Story promoted from task
                 .detail-header-line.item-origin-task(
@@ -64,7 +80,7 @@ div.wrapper(
                     ng-if="sprint && project.is_backlog_activated"
                 )
                     a.btn-small(
-                        variant="primary"
+                        variant="secondary"
                         href=""
                         tg-check-permission="view_milestones"
                         tg-nav="project-taskboard:project=project.slug,sprint=sprint.slug"
@@ -72,22 +88,6 @@ div.wrapper(
                         translate="US.LINK_TASKBOARD"
                     )
                 .subheader(ng-class="{'has-tags': us.tags.length}")
-
-                    //- User Story relate to Epic
-                    .detail-header-line.relate-to-epic(
-                        ng-if="project.is_epics_activated",
-                        tg-check-permission="modify_epic"
-                    )
-                        a.relate-to-epic-button.ng-animate-disabled(
-                            href=""
-                            title="{{'US.RELATE_TO_EPIC' | translate}}"
-                            ng-click="relateToEpic(us)"
-                        )
-                            tg-svg(
-                                svg-icon="icon-epics"
-                                svg-title-translate="US.RELATE_TO_EPIC"
-                            )
-                            span.relate-to-epic-text(translate="US.RELATE_TO_EPIC")
 
                     tg-tag-line.tags-block(
                         ng-if="us && project"
