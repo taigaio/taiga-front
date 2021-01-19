@@ -507,19 +507,19 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
         @rootscope.$broadcast("kanban:userstories:loaded", usList, newStatusId, newSwimlaneId, index)
 
-        data = @kanbanUserstoriesService.move(
-            usList.map((it) => it.id),
-            newStatusId,
-            newSwimlaneId,
-            index,
-            previousCard,
-            nextCard
-        )
-
         apiNewSwimlaneId = newSwimlaneId
 
         if newSwimlaneId == -1
             apiNewSwimlaneId = null
+
+        data = @kanbanUserstoriesService.move(
+            usList.map((it) => it.id),
+            newStatusId,
+            apiNewSwimlaneId,
+            index,
+            previousCard,
+            nextCard
+        )
 
         promise = @rs.userstories.bulkUpdateKanbanOrder(
             @scope.projectId,
