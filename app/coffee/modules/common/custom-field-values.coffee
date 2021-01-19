@@ -187,7 +187,7 @@ CustomAttributeValueDirective = ($template, $selectedText, $compile, $translate,
             }
 
             scope = $scope.$new()
-            scope.attributeHtml = wysiwygService.getHTML(value)
+            scope.attributeHtml = wysiwygService.getHTML("#{value}")  # value could be a number
             scope.extra = attributeValue.extra
             scope.model = value
             scope.project = $scope.project
