@@ -1,4 +1,7 @@
 .activity-diff {
+    tg-svg {
+        display: inline-block;
+    }
     .key {
         @include font-type(medium);
         background: $whitish;
