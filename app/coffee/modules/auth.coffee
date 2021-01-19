@@ -84,9 +84,10 @@ class AuthService extends taiga.Service
         @analytics.setUserId()
 
     _getUserTheme: ->
+        compiledThemes = window._taigaAvailableThemes
         defaultTheme = @config.get("defaultTheme") || "taiga"
 
-        if !_.includes(@config.get("themes"), @rootscope.user?.theme)
+        if !_.includes(@config.get("themes"), @rootscope.user?.theme) || !compiledThemes.includes(@rootscope.user?.theme)
             return defaultTheme
 
         return @rootscope.user?.theme
