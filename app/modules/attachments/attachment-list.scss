@@ -1,9 +1,30 @@
+.attachment-simple {
+    .attachment-name {
+        flex-basis: 70%;
+        flex-grow: 0;
+        width: 70%;
+    }
+    .single-attachment {
+        padding: .5rem 0 .5rem .5rem;
+    }
+    .settings {
+        justify-content: flex-end;
+    }
+}
+
+.attachment-full {
+    .attachment-settings {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
 .attachment-list {
     .single-attachment {
         align-items: center;
         border-bottom: 1px solid $color-gray100;
         display: flex;
-        padding: .5rem 0 .5rem .5rem;
+        padding: .5rem;
         position: relative;
         &:hover {
             .settings {
@@ -12,19 +33,17 @@
             }
         }
         &.deprecated {
-            color: $color-gray300;
+            color: $color-link-tertiary;
             span,
             .attachment-name a {
-                color: $color-gray300;
+                color: $color-link-tertiary;
             }
         }
     }
     .attachment-name {
-        flex-basis: 70%;
-        flex-grow: 0;
+        flex-grow: 1;
         flex-shrink: 0;
         padding-right: 1rem;
-        width: 70%;
         span {
             overflow: hidden;
             text-overflow: ellipsis;
@@ -46,19 +65,19 @@
         flex-shrink: 0;
         text-align: center;
         span {
-            color: $color-gray300;
+            color: $color-black600;
         }
     }
     .attachment-settings {
         flex-basis: 10%;
         flex-grow: 0;
         flex-shrink: 0;
-        .settings {
-            opacity: 0;
-        }
         .editable-settings {
             display: block;
             opacity: 1;
+        }
+        .settings {
+            opacity: 0;
         }
         svg {
             fill: $color-link-tertiary;
@@ -84,13 +103,13 @@
         display: flex;
         padding-left: 1rem;
         span {
-            color: $gray-light;
+            color: $color-link-tertiary;
         }
         input {
             margin-right: .2rem;
             vertical-align: middle;
             &:checked+span {
-                color: $grayer;
+                color: $color-link-tertiary;
             }
         }
     }

@@ -11,13 +11,12 @@
                 span(translate="COMMENTS.EDITED_COMMENT")
                 span {{vm.comment.edit_comment_date | momentFormat:'DD MMM YYYY HH:mm'}}
                 span.separator -
-                a(
+                a.comment-history(
                     href=""
                     title="{{'COMMENTS.SHOW_HISTORY' | translate}}"
                     ng-click="vm.displayCommentHistory()"
                 )
                     span(translate="COMMENTS.SHOW_HISTORY")
-                    tg-svg(svg-icon="icon-bulk")
         .comment-container
             .comment-text.wysiwyg(
                 ng-if="!vm.editMode"

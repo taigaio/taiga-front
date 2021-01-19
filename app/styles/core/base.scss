@@ -73,18 +73,32 @@ tg-svg {
     .settings-nav {
         background-color: $grey-05;
     }
-    ul li {
-        a {
-            color: $grey-60;
+    .popover {
+        &.pop-status,
+        &.pop-priority,
+        &.pop-severity,
+        &.pop-type {
+            padding: 1rem;
+            a {
+                align-items: center;
+                color: $color-white;
+                display: flex;
+                justify-content: center;
+                padding: .5rem 0;
+                text-align: left;
+            }
         }
-        &:hover,
-        &:hover a {
-            background: lighten($grey-02, 3%);
-            color: lighten($grey-60, 5%);
-        }
-        .active {
-            background: lighten($grey-02, 6%);
-            color: lighten($grey-60, 10%);
+        &.pop-points-open a {
+            align-items: center;
+            color: $color-white;
+            display: flex;
+            justify-content: center;
+            padding: .5rem 0;
+            text-align: left;
+            &:hover,
+            &.active {
+                color: $color-white;
+            }
         }
     }
 }
