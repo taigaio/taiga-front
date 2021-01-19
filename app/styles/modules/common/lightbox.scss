@@ -318,6 +318,31 @@
     }
 }
 
+.lightbox-generic-delete {
+    form {
+        flex-basis: 420px;
+        flex-flow: 0;
+        max-width: 420px;
+    }
+    .subtitle,
+    .message {
+        display: block;
+        line-height: 1.5rem;
+        margin: 1rem 0;
+        text-align: center;
+    }
+    .subtitle {
+        @include font-size(large);
+        @include font-type(regular);
+        white-space: pre-line;
+    }
+    .options {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
 .lightbox-ask-choice {
     text-align: center;
     form {
