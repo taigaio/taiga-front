@@ -14,11 +14,7 @@
                 <%- value %>
     <% } else if (type=="richtext") { %>
     .custom-field-value
-        tg-custom-field-edit-wysiwyg(
-            ng-if="isEditable"
-        )
         span(
-            ng-if="!isEditable"
             ng-bind-html="attributeHtml"
         )
     <% } else if (type=="checkbox") { %>
@@ -33,7 +29,7 @@
         span(ng-bind-html="attributeHtml")
     <% } %>
 
-    <% if (isEditable && type!="richtext") { %>
+    <% if (isEditable) { %>
     .custom-field-options
         a.js-edit-description(href="", title="{{'COMMON.CUSTOM_ATTRIBUTES.EDIT' | translate}}")
             tg-svg(svg-icon="icon-edit")

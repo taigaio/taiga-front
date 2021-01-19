@@ -191,7 +191,7 @@ CustomAttributeValueDirective = ($template, $selectedText, $compile, $translate,
             scope.extra = attributeValue.extra
             scope.model = value
             scope.project = $scope.project
-            
+
             if editable and (edit or not value)
                 html = templateEdit(ctx)
 
