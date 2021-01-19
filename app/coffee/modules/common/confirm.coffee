@@ -64,11 +64,14 @@ class ConfirmService extends taiga.Service
         el.on "click.confirm-dialog", ".button-green", debounce 2000, (event) =>
             event.preventDefault()
             target = angular.element(event.currentTarget)
+            currentWidth = target.width()
+            target.width(currentWidth)
             currentLoading = @loading()
                 .target(target)
                 .start()
             defered.resolve {
                 finish: (ok=true) =>
+                    target.css("width", "");
                     currentLoading.finish()
                     if ok
                         @.hide(el)
@@ -86,10 +89,51 @@ class ConfirmService extends taiga.Service
 
         return defered.promise
 
+    askDelete: (title, subtitle, message, lightboxSelector=".lightbox-generic-delete") ->
+        defered = @q.defer()
+
+        lightbox = angular.element(lightboxSelector)
+
+        # Render content
+        lightbox.find(".title").text(title || '')
+        lightbox.find(".subtitle").text(subtitle || '')
+        if message
+            message = @filter('textToHTML')(message)
+        lightbox.find(".message").html(message || '')
+
+        # Assign event handlers
+        lightbox.on "click.confirm-dialog", ".btn-confirm", debounce 2000, (event) =>
+            event.preventDefault()
+            target = angular.element(event.currentTarget)
+            currentWidth = target.width()
+            target.width(currentWidth)
+            currentLoading = @loading()
+                .target(target)
+                .start()
+            defered.resolve {
+                finish: (ok=true) =>
+                    target.css("width", "");
+                    currentLoading.finish()
+                    if ok
+                        @.hide(lightbox)
+            }
+
+        lightbox.on "click.confirm-dialog", ".btn-cancel", (event) =>
+            event.preventDefault()
+            defered.reject()
+            @.hide(lightbox)
+
+        onEsc = () =>
+            @.hide(lightbox)
+
+        @lightboxService.open(lightbox, null, onEsc)
+
+        return defered.promise
+
     askOnDelete: (title, message, subtitle) ->
         if not subtitle?
             subtitle = @translate.instant("NOTIFICATION.ASK_DELETE")
-        return @.ask(title, subtitle, message)
+        return @.askDelete(title, subtitle, message)
 
     askChoice: (title, subtitle, choices, replacement, warning, lightboxSelector=".lightbox-ask-choice") ->
         defered = @q.defer()
