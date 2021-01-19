@@ -19,6 +19,7 @@
     .diff-status-wrapper {
         p {
             display: inline-block;
+            vertical-align: top;
         }
         ins {
             background: lighten(rgba($primary-light, .3), 20%);
