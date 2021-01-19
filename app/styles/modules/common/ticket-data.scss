@@ -301,13 +301,16 @@
         +input {
             display: none;
         }
+        &:disabled,
+        &.disabled {
+            background-color: $color-gray400;
+            color: rgba($color-black900, .5);
+            cursor: not-allowed;
+            pointer-events: none;
+        }
         &.active {
             background: $color-link-tertiary;
             color: $color-white;
-        }
-        &:disabled {
-            background-color: $color-gray400;
-            color: rgba($color-black900, .5);
         }
     }
 
