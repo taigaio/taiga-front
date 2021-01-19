@@ -53,12 +53,6 @@ class KanbanUserstoriesService extends taiga.Service
         @.refreshUserStory(usId)
 
     set: (userstories) ->
-        userstories.forEach (us) =>
-            if (!us.swimlane)
-                us.swimlane = -1
-                # To prevent wrong updates in any (put/patch/post) api call
-                delete us._modifiedAttrs.swimlane
-
         @.userstoriesRaw = userstories
         @.refreshRawOrder()
         @.refresh()
@@ -76,10 +70,6 @@ class KanbanUserstoriesService extends taiga.Service
             usList = [usList]
         @.userstoriesRaw = @.userstoriesRaw.concat(usList)
         @.userstoriesRaw = @.userstoriesRaw.map (us) =>
-            if (!us.swimlane)
-                us.swimlane = -1
-                # To prevent wrong updates in any (put/patch/post) api call
-                delete us._modifiedAttrs.swimlane
             return us
 
         @.refreshRawOrder()
@@ -163,8 +153,7 @@ class KanbanUserstoriesService extends taiga.Service
             usModel = @.getUsModel(usId)
             usModel.status = statusId
 
-            if swimlaneId
-                usModel.swimlane = swimlaneId
+            usModel.swimlane = swimlaneId
 
             @.order[usModel.id] = previousUsOrder + key
 
@@ -197,11 +186,6 @@ class KanbanUserstoriesService extends taiga.Service
         @.usMap = @.usMap.set(us.get('id'), us)
 
     replaceModel: (usModel) ->
-        if (!usModel.swimlane)
-            usModel.swimlane = -1
-            # To prevent wrong updates in any (put/patch/post) api call
-            delete usModel._modifiedAttrs.swimlane
-
         @.userstoriesRaw = _.map @.userstoriesRaw, (usItem) ->
             if usModel.id == usItem.id
                 return usModel
@@ -274,10 +258,10 @@ class KanbanUserstoriesService extends taiga.Service
         @.usByStatusSwimlanes = Immutable.Map()
 
         userstoriesNoSwimlane = @.userstoriesRaw.filter (us) =>
-            return us.swimlane == -1
+            return us.swimlane == null
 
         emptySwimlaneExists = @.swimlanesList.filter (swimlane) =>
-            return swimlane.id == -1
+            return swimlane.id == null
 
         if userstoriesNoSwimlane.length && !emptySwimlaneExists.size
             @.swimlanes.forEach (swimlane) =>
@@ -301,7 +285,8 @@ class KanbanUserstoriesService extends taiga.Service
             @.usByStatus.forEach (usList, statusId) =>
                 usListSwimlanes = usList.filter (usId) =>
                     us = @.usMap.get(usId)
-                    return us.getIn(['model', 'swimlane']) == swimlane.id
+                    swimlaneId = if swimlane.id == -1 then null else swimlane.id
+                    return us.getIn(['model', 'swimlane']) == swimlaneId
 
                 swimlaneUsByStatus = swimlaneUsByStatus.set(Number(statusId), usListSwimlanes)
 
