@@ -35,7 +35,11 @@ div.form.lb-select-user-form
                     ng-click="removeItem(item, $event)"
                 )
     .lb-select-user-actions(ng-if="!searchText")
-        button.button-green.button-large.lb-select-user-confirm(tg-loading="loading") {{'COMMON.ADD' | translate}}
+        button.btn-small(
+            type="button"
+            variant="primary"
+            tg-loading="loading"
+        ) {{'COMMON.ADD' | translate}}
 
     .lb-select-user-actions(ng-if="searchText")
         a.lb-select-user-link-back(
