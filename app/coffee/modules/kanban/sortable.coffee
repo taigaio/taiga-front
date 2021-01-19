@@ -88,7 +88,7 @@ KanbanSortableDirective = ($repo, $rs, $rootscope, kanbanUserstoriesService) ->
                 $(item).addClass('multiple-drag-mirror')
 
             previousCard = null
-            nextCard = null       
+            nextCard = null
 
             drake.on 'drop', (item, target, source, sibling) ->
                 previousCard = null
@@ -100,7 +100,7 @@ KanbanSortableDirective = ($repo, $rs, $rootscope, kanbanUserstoriesService) ->
                 if prev.length && prev[0].dataset.id
                     previousCard = Number(prev[0].dataset.id)
 
-                nextCard = null                
+                nextCard = null
                 if !previousCard && next.length && next[0].dataset.id
                     nextCard = Number(next[0].dataset.id)
 
@@ -138,7 +138,7 @@ KanbanSortableDirective = ($repo, $rs, $rootscope, kanbanUserstoriesService) ->
                 $scope.$apply ->
                     _.each usList, (item, key) =>
                         oldStatus = item.getIn(['model', 'status'])
-                        oldSwimlaneId = item.getIn(['model', 'swimlane'])
+                        oldSwimlaneId = item.getIn(['model', 'swimlane']) || -1
                         sameContainer = newStatus == oldStatus && newSwimlane == oldSwimlaneId
 
                         if !sameContainer
