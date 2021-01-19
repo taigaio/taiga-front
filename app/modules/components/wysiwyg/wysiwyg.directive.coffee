@@ -33,6 +33,24 @@ Wysiwyg = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoa
         $scope.html = ''
         textEditor = null
         pageAttachments = $attachmentsFullService.attachments.toJS()
+        editorLinks = []
+
+        linksEvents = () ->
+            editorLinks = textEditor.querySelectorAll('a[target="_blank"]:not(.link-event)')
+
+            if editorLinks.length
+                editorLinks.forEach (link) =>
+                    link.classList.add('link-event')
+
+                    # prevent ckeditor change to edit mode
+                    link.addEventListener 'mousedown', (e) =>
+                        if !$scope.editMode
+                            e.preventDefault()
+                            e.stopPropagation()
+
+                    link.addEventListener 'click', (e) =>
+                        if !$scope.editMode
+                            window.open(e.currentTarget.getAttribute('href'),'_blank');
 
         unwatchContent = $scope.$watch 'content', (content) ->
             if !_.isUndefined(content)
@@ -71,6 +89,8 @@ Wysiwyg = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoa
                 return Object.assign(member, {
                     fullNameDisplay: member.full_name_display
                 })
+
+            $scope.$applyAsync () => linksEvents()
 
             if isDraft()
                 setEditMode(true)
@@ -127,6 +147,8 @@ Wysiwyg = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoa
 
             $scope.onSave({text: $scope.markdown, cb: saveEnd})
 
+            linksEvents()
+
             return
 
         $scope.cancel = (e) ->
@@ -145,6 +167,8 @@ Wysiwyg = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoa
             $scope.outdated = false
 
             $scope.onCancel()
+
+            linksEvents()
 
             return
 
