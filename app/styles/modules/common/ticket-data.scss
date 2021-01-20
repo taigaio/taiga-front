@@ -314,14 +314,6 @@
         }
     }
 
-    .item-block,
-    .item-unblock {
-        display: none;
-        &.is-active {
-            display: unset;
-        }
-    }
-
     .item-unblock {
         background: $color-link-red;
         &:hover {
