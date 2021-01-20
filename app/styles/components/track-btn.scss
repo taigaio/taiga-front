@@ -94,8 +94,10 @@
 
 .watch-options {
     animation: dropdownFade .2s cubic-bezier(.09, 0, .99, .01) alternate;
-    background: rgba($black, .9);
+    background: $color-white;
+    border: 1px solid $color-gray400;
     border-radius: 4px;
+    box-shadow: 4px 4px 8px rgba(46, 52, 64, .1);
     margin: 0;
     margin-top: 2.5rem;
     min-width: 300px;
@@ -104,7 +106,7 @@
     right: 0;
     top: 0;
     z-index: $first-layer;
-    &.hidden {
+    &.hidde {
         animation: dropdownFade .2s cubic-bezier(.09, 0, .99, .01) reverse;
     }
     li {
@@ -114,23 +116,24 @@
         }
     }
     a {
+        align-items: center;
         border-bottom: 1px solid rgba($gray-light, .3);
-        color: $white;
+        color: $color-link-tertiary;
         display: flex;
+        height: 2rem;
         justify-content: space-between;
-        padding: .5rem 0;
         &.active {
-            color: $primary-50;
+            color: $color-link-primary;
         }
         &:hover {
-            color: $primary-50;
+            color: $color-link-primary;
         }
     }
     .watch-check {
         height: 1.25rem;
         width: 1.25rem;
         svg {
-            fill: $primary-50;
+            fill: $color-link-primary;
         }
     }
 }
