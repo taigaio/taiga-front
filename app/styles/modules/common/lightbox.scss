@@ -747,9 +747,14 @@
         max-width: $width;
         width: $width;
     }
+    label {
+        @include font-size(small);
+        color: $color-link-primary;
+        padding-left: .25rem;
+    }
     .form-wrapper {
         display: flex;
-        margin-bottom: $spacing * 2;
+        margin-bottom: $spacing;
         width: $width;
         .sidebar {
             background: none;
@@ -767,7 +772,8 @@
             @include font-type(medium);
         }
     }
-    .add-existing-button {
+    .add-existing-button,
+    .add-item {
         width: 100%;
     }
     .status-button {
