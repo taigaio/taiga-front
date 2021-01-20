@@ -1,7 +1,18 @@
 .select-color {
-    @include popover(323px, 0, 50px, '', '', 15px, 13px, -7px);
+    @include popover(
+        $width: 323px,
+        $top: 0,
+        $left: 50px,
+        $bottom: '',
+        $right: '',
+        $arrow-width: 15px,
+        $arrow-top: 12px,
+        $arrow-left: -7px,
+    );
     border-radius: 0 10px 10px 0;
     padding: 15px;
+
+
     li {
         float: left;
         margin: 0 .5rem .5rem 0;

@@ -111,18 +111,19 @@
     }
 
     .tooltip {
+        @include popover(
+            $bottom: 2rem,
+            $background-color: $color-black900,
+            $hover-background: $color-black900,
+            $text-color: $color-gray400,
+            $hover-text-color: $color-gray400,
+            $left: calc(50% - 190/2 * 1px),
+            $padding: 1rem,
+            $width: 220px
+        );
         @include font-type(regular);
         @include font-size(small);
-        background: $color-black900;
-        border-radius: 4px;
-        bottom: 2rem;
-        box-shadow: 3px 4px 14px 0 rgba($color-link-primary, .15);
-        color: $color-gray400;
-        left: calc(50% - 190/2 * 1px);
-        padding: 1rem;
-        position: absolute;
-        width: 220px;
-        z-index: $first-layer;
+        display: block;
         &.ng-enter {
             opacity: 0;
             transition: all cubic-bezier(.25, .46, .45, .94) .4s;

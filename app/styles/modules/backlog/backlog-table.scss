@@ -103,50 +103,44 @@
         }
     }
     .pop-status {
-        @include popover(200px, 20px, '', '', -10px);
-        padding-right: 1rem;
+        @include popover(
+            $width: 200px,
+            $top: 20px,
+            $right: 0,
+        );
         &.fix {
             bottom: 0;
             top: auto;
         }
-        .status {
-            text-align: left;
-        }
     }
     .pop-role {
-        @include popover(170px, 20px, '', '', -10px);
-        a {
-            &.active {
-                background: $primary-light;
-                color: $white;
-            }
-        }
+        @include popover(
+            $width: 200px,
+            $top: 20px,
+            $right: 0
+        );
+        text-transform: none;
     }
-
     .pop-points {
-        @include popover(150px, '', 30px, 10px, '');
-        padding-right: 3rem;
+        @include popover(
+            $width: 150px,
+            $left: 30px,
+            $bottom: 10px,
+        );
     }
     .pop-points-open {
-        @include popover(200px, 0, 30px, '', '');
+        @include popover(
+            $width: 200px,
+            $top: 0,
+            $left: 30px,
+        );
         &.pop-bottom {
-            @include popover(200px, 'auto', 30px, 0, '');
-        }
-        li {
-            float: left;
-            width: 25%;
-            &:nth-last-child(4n) {
-                clear: left;
-            }
-        }
-        a {
-            display: block;
-            text-align: center;
-            &:hover,
-            &.active {
-                background: $primary-light;
-                color: $white;
-            }
+            @include popover(
+                $width: 200px,
+                $top: auto,
+                $left: 30px,
+                $bottom: 0
+            );
         }
     }
 }
@@ -394,7 +388,7 @@
     .blocked {
         background: $color-solid-red;
         .user-story-name,
-        a {
+        .user-story-link {
             color: $color-black900 !important; /* stylelint-disable-line declaration-no-important */
             &:hover {
                 color: $color-black900;
@@ -454,7 +448,13 @@
 
     }
     .us-option-popup {
-        @include popover(145px, 40px, '', '', 1rem);
+        @include popover(
+            $width: 145px,
+            $top: 40px,
+            $left: '',
+            $bottom: '',
+            $right: 1rem,
+        );
         button {
             appearance: none;
             background: none;

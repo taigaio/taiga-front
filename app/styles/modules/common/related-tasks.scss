@@ -114,9 +114,6 @@
         .popover {
             left: 0;
             top: 1rem;
-            a {
-                display: block;
-            }
         }
         .icon {
             @include svg-size(.8rem);
@@ -143,8 +140,11 @@
         display: none;
     }
     .pop-status {
-        @include popover(200px, 0, 40%);
-        padding-right: 1rem;
+        @include popover(
+            $width: 200px,
+            $top: 0,
+            $left: 40%
+        );
         &.fix {
             bottom: 0;
             top: auto;

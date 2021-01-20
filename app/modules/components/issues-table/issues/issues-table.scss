@@ -231,7 +231,12 @@
         }
     }
     .pop-status {
-        @include popover(200px, 20px, 0, '', '');
+        @include popover(
+            $width: 200px,
+            $top: 20px,
+            $left: auto,
+            $arrow-width: 0
+        );
         &.fix {
             bottom: 0;
             top: auto;
