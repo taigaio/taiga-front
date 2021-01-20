@@ -92,7 +92,18 @@
     .mix-tags {
         position: relative;
         .popover {
-            @include popover(120px, '', '', 2rem, -85%, 1rem, '', 50%, -5px);
+            @include popover(
+                $width: 120px,
+                $bottom: 2rem,
+                $right: -110%,
+                $arrow-width: 15px,
+                $arrow-top: calc(100% - 7px),
+                $arrow-left: calc(50% - 7px),
+                $arrow-height: 15px,
+                $align: center,
+                $background-color: $color-black600,
+                $text-color: $color-white
+            );
         }
         &:hover {
             .popover {
