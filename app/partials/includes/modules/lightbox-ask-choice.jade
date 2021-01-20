@@ -8,8 +8,15 @@ form
     select.choices
     p.warning
 
-    .options
-        a.button-green(href="", title="{{'COMMON.ACCEPT' | translate}}")
-            span(translate="COMMON.ACCEPT")
-        a.button-red(href="", title="{{'COMMON.CANCEL' | translate}}")
+    div.options
+        button.btn-link.btn-cancel(
+            variant="icon"
+        )
             span(translate="COMMON.CANCEL")
+
+        button.btn-small.btn-confirm(
+            variant="destructive"
+        )
+            tg-svg(svg-icon="icon-trash")
+            span(translate="COMMON.DELETE")
+
