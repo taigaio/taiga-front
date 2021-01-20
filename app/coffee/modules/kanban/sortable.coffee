@@ -44,6 +44,7 @@ KanbanSortableDirective = ($repo, $rs, $rootscope, kanbanUserstoriesService) ->
             init(containers)
 
         init = (containers) =>
+            console.log "init"
             if not ($scope.project.my_permissions.indexOf("modify_us") > -1)
                 return
 
@@ -52,7 +53,7 @@ KanbanSortableDirective = ($repo, $rs, $rootscope, kanbanUserstoriesService) ->
                     drake.containers.push(container)
 
                 return
-
+            console.log "biien"
             newParentScope = null
             itemEl = null
             tdom = $el
@@ -155,7 +156,7 @@ KanbanSortableDirective = ($repo, $rs, $rootscope, kanbanUserstoriesService) ->
             })
 
         unwatch = $scope.$watch "isTableLoaded", (tableLoaded) ->
-            return if !tableLoaded || !kanbanUserstoriesService.usByStatus?.size
+            return if !tableLoaded
 
             isSwimlane = $('.swimlane').length
 
