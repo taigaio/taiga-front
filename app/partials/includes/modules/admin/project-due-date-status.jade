@@ -1,165 +1,170 @@
 section.admin-status-table
-    div.project-values-title
-        h2 {{ sectionName | translate }}
-        a.button.button-gray.show-add-new(href="", title="{{'ADMIN.PROJECT_DUE_DATE_STATUS.ACTION_ADD_STATUS' | translate}}")
-            span(translate="ADMIN.PROJECT_DUE_DATE_STATUS.ACTION_ADD_STATUS")
+    .colors-table
+        div.project-values-title
+            h2 {{ sectionName | translate }}
+            a.btn-small.show-add-new(
+                variant="primary"
+                href="",
+                title="{{'ADMIN.PROJECT_DUE_DATE_STATUS.ACTION_ADD_STATUS' | translate}}"
+            )
+                span(translate="ADMIN.PROJECT_DUE_DATE_STATUS.ACTION_ADD_STATUS")
 
-    div.table-header
-        div.row
-            div.color-column(translate="COMMON.FIELDS.COLOR")
-            div.status-name(translate="COMMON.FIELDS.NAME")
-            div.thresold-column(translate="ADMIN.PROJECT_DUE_DATE_STATUS.DAYS_TO_DUE_DATE")
-            div.before-after-column(translate="ADMIN.PROJECT_DUE_DATE_STATUS.BEFORE_AFTER")
-            div.options-column
-
-    div.table-main
-        div.sortable
-            div(ng-repeat="value in values", tg-bind-scope)
-                form(tg-bind-scope)
-                    div.row.table-main.visualization
-                        tg-svg(svg-icon="icon-drag")
-                        div.color-column
-                            div.current-color(ng-style="{background: value.color}")
-
-                        div.status-name
-                            span {{ value.name }}
-
-                        div.thresold-column
-                            span(ng-if="value.days_to_due != null") {{ value.days_to_due_abs }}
-
-                        div.before-after-column
-                            span(ng-if="value.days_to_due", ng-switch="value.days_to_due >= 0")
-                                span(ng-switch-when="true") {{ 'ADMIN.PROJECT_DUE_DATE_STATUS.BEFORE' | translate }}
-                                span(ng-switch-when="false") {{ 'ADMIN.PROJECT_DUE_DATE_STATUS.AFTER' | translate }}
-
-                        div.options-column
-                            a.edit-value(href="")
-                                tg-svg(
-                                    title="{{'ADMIN.COMMON.TITLE_ACTION_EDIT_VALUE' | translate}}",
-                                    svg-icon="icon-edit"
-                                )
-                            a.delete-due-date(href="", ng-if="!value.by_default")
-                                tg-svg(
-                                    title="{{'ADMIN.COMMON.TITLE_ACTION_DELETE_VALUE' | translate}}"
-                                    svg-icon="icon-trash"
-                                )
-
-                    div.row.table-main.edition.hidden
-                        div.color-column(
-                            tg-color-selection
-                            ng-model="value"
-                        )
-                            div.current-color(ng-style="{background: value.color}")
-                            include ../../components/select-color
-
-                        div.status-name
-                            input(
-                                name="name"
-                                type="text"
-                                placeholder="{{'ADMIN.STATUS.PLACEHOLDER_WRITE_STATUS_NAME' | translate}}"
-                                ng-model="value.name"
-                                data-required="true"
-                                data-maxlength="255"
-                            )
-
-                        div.thresold-column(ng-if="!value.by_default")
-                            input.days-to-due-abs(
-                                type="number"
-                                data-type="digits"
-                                min="0"
-                                name="days_to_due"
-                                ng-model="value.days_to_due_abs")
-
-                        div.before-after-column
-                            div.before-after-selector(ng-if="!value.by_default && value.days_to_due_abs != 0")
-                                .before-after-selector-single(ng-class="{'checked': value.sign > 0 }")
-                                    input(
-                                        type='radio'
-                                        id="due-date-status-before"
-                                        name="due-date-status-after"
-                                        ng-model="value.sign"
-                                        value="1"
-                                    )
-                                    label.days-to-due-sign(
-                                        for="due-date-status-before",
-                                    ) {{ 'ADMIN.PROJECT_DUE_DATE_STATUS.BEFORE' | translate }}
-                                .before-after-selector-single(ng-class="{'checked': value.sign < 0 }")
-                                    input(
-                                        type='radio'
-                                        id="due-date-status-after"
-                                        name="due-date-status-after"
-                                        ng-model="value.sign"
-                                        value="-1"
-                                    )
-                                    label.days-to-due-sign(
-                                        for="due-date-status-after",
-                                    ) {{ 'ADMIN.PROJECT_DUE_DATE_STATUS.AFTER' | translate }}
-
-                        div.options-column
-                            a.save.e2e-save(href="", title="{{'COMMON.SAVE' | translate}}")
-                                tg-svg(svg-icon="icon-save")
-
-                            a.cancel(href="", title="{{'COMMON.CANCEL' | translate}}")
-                                tg-svg.cancel(svg-icon="icon-close")
-
-        form(tg-bind-scope)
-            div.row.table-main.new-value.hidden
-                div.color-column(
-                    tg-color-selection
-                    ng-model="newValue"
-                )
-                    div.current-color(ng-style="{background: newValue.color}")
-                    include ../../components/select-color
-
-                div.status-name
-                    input(
-                        name="name"
-                        type="text"
-                        placeholder="{{'ADMIN.STATUS.PLACEHOLDER_WRITE_STATUS_NAME' | translate}}"
-                        ng-model="newValue.name"
-                        data-required="true"
-                        data-maxlength="255"
-                    )
-
-                div.thresold-column
-                    input.days-to-due-abs(
-                        type="number"
-                        data-type="digits"
-                        min="0"
-                        name="days_to_due_abs"
-                        placeholder="{{'ADMIN.STATUS.PLACEHOLDER_DAYS_TO_DUE_DATE' | translate}}"
-                        ng-model="newValue.days_to_due_abs"
-                        data-required="true"
-                    )
-
-                div.before-after-column
-                    div.before-after-selector(ng-if="newValue.days_to_due_abs && newValue.days_to_due_abs != 0")
-                        .before-after-selector-single(ng-class="{'checked': newValue.sign > 0 }")
-                            input(
-                                type='radio'
-                                id="due-date-status-before"
-                                name="due-date-status-after"
-                                ng-model="newValue.sign"
-                                value="1"
-                            )
-                            label.days-to-due-sign(
-                                for="due-date-status-before",
-                            ) {{ 'ADMIN.PROJECT_DUE_DATE_STATUS.BEFORE' | translate }}
-                        .before-after-selector-single(ng-class="{'checked': newValue.sign < 0}")
-                            input(
-                                type='radio'
-                                id="due-date-status-after"
-                                name="due-date-status-after"
-                                ng-model="newValue.sign"
-                                value="-1"
-                            )
-                            label.days-to-due-sign(
-                                for="due-date-status-after",
-                            ) {{ 'ADMIN.PROJECT_DUE_DATE_STATUS.AFTER' | translate }}
-
+        div.table-header
+            div.row
+                div.color-column(translate="COMMON.FIELDS.COLOR")
+                div.status-name(translate="COMMON.FIELDS.NAME")
+                div.thresold-column(translate="ADMIN.PROJECT_DUE_DATE_STATUS.DAYS_TO_DUE_DATE")
+                div.before-after-column(translate="ADMIN.PROJECT_DUE_DATE_STATUS.BEFORE_AFTER")
                 div.options-column
-                    a.add-new-due-date.e2e-save(href="", title="{{'COMMON.ADD' | translate}}")
-                        tg-svg(svg-icon="icon-save")
 
-                    a.delete-new(href="", title="{{'COMMON.CANCEL' | translate}}")
-                        tg-svg(svg-icon="icon-close")
+        div.table-main
+            div.sortable
+                div(ng-repeat="value in values", tg-bind-scope)
+                    form(tg-bind-scope)
+                        div.row.table-main.visualization
+                            tg-svg(svg-icon="icon-drag")
+                            div.color-column
+                                div.current-color(ng-style="{background: value.color}")
+
+                            div.status-name
+                                span {{ value.name }}
+
+                            div.thresold-column
+                                span(ng-if="value.days_to_due != null") {{ value.days_to_due_abs }}
+
+                            div.before-after-column
+                                span(ng-if="value.days_to_due", ng-switch="value.days_to_due >= 0")
+                                    span(ng-switch-when="true") {{ 'ADMIN.PROJECT_DUE_DATE_STATUS.BEFORE' | translate }}
+                                    span(ng-switch-when="false") {{ 'ADMIN.PROJECT_DUE_DATE_STATUS.AFTER' | translate }}
+
+                            div.options-column
+                                a.edit-value(href="")
+                                    tg-svg(
+                                        title="{{'ADMIN.COMMON.TITLE_ACTION_EDIT_VALUE' | translate}}",
+                                        svg-icon="icon-edit"
+                                    )
+                                a.delete-due-date(href="", ng-if="!value.by_default")
+                                    tg-svg(
+                                        title="{{'ADMIN.COMMON.TITLE_ACTION_DELETE_VALUE' | translate}}"
+                                        svg-icon="icon-trash"
+                                    )
+
+                        div.row.table-main.edition.hidden
+                            div.color-column(
+                                tg-color-selection
+                                ng-model="value"
+                            )
+                                div.current-color(ng-style="{background: value.color}")
+                                include ../../components/select-color
+
+                            div.status-name
+                                input(
+                                    name="name"
+                                    type="text"
+                                    placeholder="{{'ADMIN.STATUS.PLACEHOLDER_WRITE_STATUS_NAME' | translate}}"
+                                    ng-model="value.name"
+                                    data-required="true"
+                                    data-maxlength="255"
+                                )
+
+                            div.thresold-column(ng-if="!value.by_default")
+                                input.days-to-due-abs(
+                                    type="number"
+                                    data-type="digits"
+                                    min="0"
+                                    name="days_to_due"
+                                    ng-model="value.days_to_due_abs")
+
+                            div.before-after-column
+                                div.before-after-selector(ng-if="!value.by_default && value.days_to_due_abs != 0")
+                                    .before-after-selector-single(ng-class="{'checked': value.sign > 0 }")
+                                        input(
+                                            type='radio'
+                                            id="due-date-status-before"
+                                            name="due-date-status-after"
+                                            ng-model="value.sign"
+                                            value="1"
+                                        )
+                                        label.days-to-due-sign(
+                                            for="due-date-status-before",
+                                        ) {{ 'ADMIN.PROJECT_DUE_DATE_STATUS.BEFORE' | translate }}
+                                    .before-after-selector-single(ng-class="{'checked': value.sign < 0 }")
+                                        input(
+                                            type='radio'
+                                            id="due-date-status-after"
+                                            name="due-date-status-after"
+                                            ng-model="value.sign"
+                                            value="-1"
+                                        )
+                                        label.days-to-due-sign(
+                                            for="due-date-status-after",
+                                        ) {{ 'ADMIN.PROJECT_DUE_DATE_STATUS.AFTER' | translate }}
+
+                            div.options-column
+                                a.save.e2e-save(href="", title="{{'COMMON.SAVE' | translate}}")
+                                    tg-svg(svg-icon="icon-save")
+
+                                a.cancel(href="", title="{{'COMMON.CANCEL' | translate}}")
+                                    tg-svg.cancel(svg-icon="icon-close")
+
+            form(tg-bind-scope)
+                div.row.table-main.new-value.hidden
+                    div.color-column(
+                        tg-color-selection
+                        ng-model="newValue"
+                    )
+                        div.current-color(ng-style="{background: newValue.color}")
+                        include ../../components/select-color
+
+                    div.status-name
+                        input(
+                            name="name"
+                            type="text"
+                            placeholder="{{'ADMIN.STATUS.PLACEHOLDER_WRITE_STATUS_NAME' | translate}}"
+                            ng-model="newValue.name"
+                            data-required="true"
+                            data-maxlength="255"
+                        )
+
+                    div.thresold-column
+                        input.days-to-due-abs(
+                            type="number"
+                            data-type="digits"
+                            min="0"
+                            name="days_to_due_abs"
+                            placeholder="{{'ADMIN.STATUS.PLACEHOLDER_DAYS_TO_DUE_DATE' | translate}}"
+                            ng-model="newValue.days_to_due_abs"
+                            data-required="true"
+                        )
+
+                    div.before-after-column
+                        div.before-after-selector(ng-if="newValue.days_to_due_abs && newValue.days_to_due_abs != 0")
+                            .before-after-selector-single(ng-class="{'checked': newValue.sign > 0 }")
+                                input(
+                                    type='radio'
+                                    id="due-date-status-before"
+                                    name="due-date-status-after"
+                                    ng-model="newValue.sign"
+                                    value="1"
+                                )
+                                label.days-to-due-sign(
+                                    for="due-date-status-before",
+                                ) {{ 'ADMIN.PROJECT_DUE_DATE_STATUS.BEFORE' | translate }}
+                            .before-after-selector-single(ng-class="{'checked': newValue.sign < 0}")
+                                input(
+                                    type='radio'
+                                    id="due-date-status-after"
+                                    name="due-date-status-after"
+                                    ng-model="newValue.sign"
+                                    value="-1"
+                                )
+                                label.days-to-due-sign(
+                                    for="due-date-status-after",
+                                ) {{ 'ADMIN.PROJECT_DUE_DATE_STATUS.AFTER' | translate }}
+
+                    div.options-column
+                        a.add-new-due-date.e2e-save(href="", title="{{'COMMON.ADD' | translate}}")
+                            tg-svg(svg-icon="icon-save")
+
+                        a.delete-new(href="", title="{{'COMMON.CANCEL' | translate}}")
+                            tg-svg(svg-icon="icon-close")
