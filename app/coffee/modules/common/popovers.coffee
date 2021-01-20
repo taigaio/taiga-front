@@ -59,7 +59,7 @@ UsStatusDirective = ($repo, $template) ->
             event.stopPropagation()
             $el.find(".pop-status").popover().open()
 
-        $el.on "click", ".status", debounce 2000, (event) ->
+        $el.on "click", ".popover-status", debounce 2000, (event) ->
             event.preventDefault()
             event.stopPropagation()
 

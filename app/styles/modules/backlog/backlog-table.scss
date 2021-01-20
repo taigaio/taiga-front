@@ -87,15 +87,6 @@
     & > .status,
     .points {
         position: relative;
-        .popover {
-            a {
-                text-align: left;
-                width: 100%;
-            }
-            .point {
-                text-align: center;
-            }
-        }
         .icon {
             @include svg-size(1rem);
             fill: $color-link-primary;
@@ -130,17 +121,15 @@
     }
     .pop-points-open {
         @include popover(
-            $width: 200px,
-            $top: 0,
-            $left: 30px,
+            $width: 188px,
+            $top: 20px,
+            $left: auto,
+            $right: 0
         );
-        &.pop-bottom {
-            @include popover(
-                $width: 200px,
-                $top: auto,
-                $left: 30px,
-                $bottom: 0
-            );
+        li {
+            display: inline-flex;
+            margin: 0;
+            padding: 0;
         }
     }
 }
