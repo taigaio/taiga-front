@@ -20,15 +20,15 @@
         text-align: center;
         .icon {
             @include svg-size(1.75rem);
-            fill: $gray;
+            fill: $color-black600;
         }
         .points {
             @include font-size(larger);
             @include font-type(regular);
-            color: $grayer;
+            color: $color-black700;
         }
         .top {
-            fill: $primary-light;
+            fill: $color-link-primary;
             opacity: 1;
         }
         &:hover {
@@ -39,7 +39,7 @@
     }
     .leave-project {
         @include font-size(small);
-        color: $red-light;
+        color: $color-link-red;
         .icon {
             @include svg-size(.8rem);
             fill: currentColor;
@@ -61,8 +61,8 @@
     .hero {
         width: 100%;
         .row {
-            border-bottom: 1px solid $whitish;
-            border-top: 1px solid $whitish;
+            border-bottom: 1px solid $color-gray100;
+            border-top: 1px solid $color-gray100;
             margin: 1rem 0;
             padding: 1.5rem 1rem;
         }
@@ -99,12 +99,22 @@
         }
     }
     .popover {
-        @include popover(100%, '', 0, 30px, '', 15px, '', 50%, -5px);
+        @include popover(
+            $width: 100%,
+            $left: 0,
+            $bottom: 2rem,
+            $arrow-width: 15px,
+            $arrow-left: calc( 50% - 7px),
+            $arrow-top: calc( 100% - 7px),
+            $align: center,
+            $background-color: $color-black600,
+            $text-color: $color-white
+        );
     }
     .icon-badge {
-        fill: $primary-light;
+        fill: $color-link-primary;
         position: relative;
-        stroke: $primary-light;
+        stroke: $color-link-primary;
         top: .15rem;
     }
 }

@@ -73,34 +73,6 @@ tg-svg {
     .settings-nav {
         background-color: $grey-05;
     }
-    .popover {
-        &.pop-status,
-        &.pop-priority,
-        &.pop-severity,
-        &.pop-type {
-            padding: 1rem;
-            a {
-                align-items: center;
-                color: $color-white;
-                display: flex;
-                justify-content: center;
-                padding: .5rem 0;
-                text-align: left;
-            }
-        }
-        &.pop-points-open a {
-            align-items: center;
-            color: $color-white;
-            display: flex;
-            justify-content: center;
-            padding: .5rem 0;
-            text-align: left;
-            &:hover,
-            &.active {
-                color: $color-white;
-            }
-        }
-    }
 }
 
 .menu-tertiary {

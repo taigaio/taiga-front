@@ -35,16 +35,19 @@
             $arrow-height: 10px
         );
         li {
-            display: inline-block;
-            width: 23%;
+            align-items: center;
+            display: inline-flex;
+            height: 2.5rem;
+            justify-content: center;
+            padding: 0;
+            width: 2.5rem;
         }
         a {
-            display: block;
-            text-align: center;
-            &:hover,
+            height: 100%;
+            width: 100%;
             &.active {
-                background: $primary-light;
-                color: $white;
+                background: $color-link-primary;
+                color: $color-white;
             }
         }
         &.fix {
