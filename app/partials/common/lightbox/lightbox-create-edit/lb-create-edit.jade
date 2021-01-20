@@ -42,7 +42,7 @@ form(ng-if="lightboxOpen")
                 item-disabled="isDisabledExisting"
             )
 
-        button.button-green.add-existing-button(
+        button.btn-big.add-existing-button(
             ng-click="addExistingToSprint(selectedItem)"
             ng-disabled="!selectedItem || isDisabledExisting(selectedItem)"
         ) {{ 'LIGHTBOX.CREATE_EDIT.ADD_' + translationID | translate }}
@@ -115,7 +115,7 @@ form(ng-if="lightboxOpen")
                     ng-model="obj.blocked_note"
                 )
         .btn-container
-            button#submitButton.btn-big(
+            button#submitButton.btn-big.add-item(
                 variant="primary"
                 type="submit"
                 tg-loading="vm.loading"
