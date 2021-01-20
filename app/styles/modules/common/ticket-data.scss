@@ -32,17 +32,11 @@
         }
     }
     .pop-status {
-        @include popover(150px, 1.25rem, 0, '', '');
-        padding: 0;
-        text-transform: none;
-        a {
-            @include font-type(regular);
-            padding: .5rem 1rem;
-            text-align: left;
-        }
-        a:hover {
-            background: rgba($primary-light, .2);
-        }
+        @include popover(
+            $width: 150px,
+            $top: 1.25rem,
+            $left: 0,
+        );
     }
 }
 
@@ -92,7 +86,12 @@
         color: $color-link-tertiary;
     }
     .popover {
-        @include popover(150px, 30px, 30px, '', '', 0, '', '', '', 15px, 'left');
+        @include popover(
+            $width: 150px,
+            $top: 30px,
+            $right: .5rem,
+            $align: 'left'
+        );
     }
 }
 

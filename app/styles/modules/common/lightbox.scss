@@ -735,7 +735,7 @@
 
 .lightbox-create-edit {
     z-index: $overall-layer;
-    $control-height: 30px;
+    $control-height: 2rem;
     $spacing: 1rem;
     $width: 700px;
     $pop-width: 203px;
@@ -775,14 +775,14 @@
     .status-dropdown {
         align-content: center;
         border-radius: 3px;
-        color: $white;
+        color: $color-white;
         cursor: pointer;
         display: flex;
         justify-content: space-between;
         padding: .5rem .75rem;
         width: 100%;
         svg {
-            fill: $white;
+            fill: $color-white;
             height: .9rem;
             width: .9rem;
         }
@@ -793,21 +793,6 @@
         .user-list-avatar img {
             height: 3rem;
             width: 3rem;
-        }
-    }
-
-    .popover {
-        a {
-            align-items: center;
-            color: $white;
-            display: flex;
-            justify-content: center;
-            padding: .5rem 0;
-            text-align: left;
-            &:hover,
-            &.active {
-                color: $color-link-primary;
-            }
         }
     }
 
@@ -901,11 +886,21 @@
     }
 
     .pop-status {
-        @include popover($pop-width, $control-height - 2px);
+        @include popover(
+            $width: $pop-width,
+            $top: calc($control-height - 2px)
+        );
     }
 
     .pop-users {
-        @include popover($pop-width, 60px, 0, '', '', 16px, -7px, ($pop-width / 3));
+        @include popover(
+            $width: $pop-width,
+            $top: 60px,
+            $left: 0,
+            $arrow-width: 16px,
+            $arrow-top: -10px,
+            $arrow-left: calc($pop-width / 3)
+        );
         &::after {
             z-index: $negative-layer;
         }
@@ -924,30 +919,63 @@
                 border: 0;
             }
         }
+        .users-search {
+            margin-bottom: .5rem;
+        }
         .user-list-single {
             align-items: center;
             display: flex;
-            padding: .5rem 0;
-            &.selected {
-                color: $primary-light;
+            height: auto;
+            margin-bottom: .25rem;
+            min-height: 2rem;
+            padding: .25rem;
+            tg-svg {
+                display: none;
+                flex: 0 0 auto;
             }
-        }
-        .user-list-avatar {
-            border-radius: 50%;
-            height: 32px;
-            margin-right: .5rem;
-            width: 32px;
-        }
-        .user-list-name {
-            @include font-type(regular);
-            flex-grow: 1;
-            position: relative;
-        }
 
-        .remove svg {
-            fill: $whitish;
-            height: .8rem;
-            width: .8rem;
+            &.selected {
+                background: $color-gray200;
+                .user-list-name {
+                    color: $color-link-tertiary;
+                }
+
+                tg-svg {
+                    display: flex;
+                    fill: $color-link-tertiary;
+                    margin-right: .5rem;
+                }
+            }
+
+            &:hover {
+                background: $color-gray200;
+                .user-list-name {
+                    color: $color-link-primary;
+                }
+                tg-svg {
+                    fill: $color-link-primary;
+                }
+            }
+
+            .user-list-avatar {
+                border-radius: 50%;
+                flex: 0 0 auto;
+                height: 1.75rem;
+                margin-right: .5rem;
+                width: 1.75rem;
+            }
+            .user-list-name {
+                @include font-type(regular);
+                color: $color-black600;
+                flex: 0 1 auto;
+                flex-grow: 1;
+                min-width: 0;
+                overflow: hidden;
+                position: relative;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+
+            }
         }
 
         .show-more {
