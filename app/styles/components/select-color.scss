@@ -1,6 +1,6 @@
 .select-color {
     @include popover(
-        $width: 323px,
+        $width: 304px,
         $top: 0,
         $left: 50px,
         $bottom: '',
@@ -24,34 +24,35 @@
         }
     }
     .color {
-        background-color: $gray-light;
+        background-color: $color-link-tertiary;
         border-radius: 2px;
         cursor: pointer;
-        height: 35px;
-        width: 35px;
+        height: 2rem;
+        width: 2rem;
     }
     .empty-color {
         @include empty-color(33);
     }
     ul {
         float: left;
-        margin-bottom: 1rem;
+        margin-bottom: .5rem;
     }
     input {
         @include font-size(medium);
         @include font-type(regular);
-        background-color: $whitish;
-        width: 243px;
+        background-color: $color-white;
+        height: 2rem;
+        width: 232px;
         @include placeholder {
-            color: $gray;
+            color: $color-link-tertiary;
         }
     }
     .selected-color {
-        background: $gray-light;
+        background: $color-link-tertiary;
         border-radius: 2px;
         cursor: pointer;
         float: right;
-        height: 40px;
-        width: 40px;
+        height: 2rem;
+        width: 2rem;
     }
 }

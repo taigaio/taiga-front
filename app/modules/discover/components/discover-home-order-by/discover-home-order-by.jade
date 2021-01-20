@@ -6,7 +6,11 @@
         tg-svg(svg-icon="icon-arrow-down")
 
     ul.filter-list(ng-if="vm.is_open")
-        li(ng-click="vm.orderBy('week')") {{ 'DISCOVER.FILTERS.WEEK' | translate }}
-        li(ng-click="vm.orderBy('month')") {{ 'DISCOVER.FILTERS.MONTH' | translate }}
-        li(ng-click="vm.orderBy('year')") {{ 'DISCOVER.FILTERS.YEAR' | translate }}
-        li(ng-click="vm.orderBy('all')") {{ 'DISCOVER.FILTERS.ALL_TIME' | translate }}
+        li(ng-click="vm.orderBy('week')")
+            a.status {{ 'DISCOVER.FILTERS.WEEK' | translate }}
+        li(ng-click="vm.orderBy('month')")
+            a.status {{ 'DISCOVER.FILTERS.MONTH' | translate }}
+        li(ng-click="vm.orderBy('year')")
+            a.status {{ 'DISCOVER.FILTERS.YEAR' | translate }}
+        li(ng-click="vm.orderBy('all')")
+            a.status {{ 'DISCOVER.FILTERS.ALL_TIME' | translate }}
