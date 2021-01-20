@@ -27,6 +27,11 @@ class CardController
         tasks = @.item.getIn(['model', 'tasks'])
         return tasks and tasks.size > 0
 
+    getTagColor: (color) ->
+        if color
+            return color
+        return "#A9AABC"
+
     hasMultipleAssignedUsers: () ->
         assignedUsers = @.item.getIn(['model', 'assigned_users'])
         return assignedUsers and assignedUsers.size > 1
