@@ -196,34 +196,32 @@
 }
 
 .button-group {
+    background-color: $color-gray100;
+    border-bottom: 1px solid $color-link-primary;
     display: flex;
     margin-bottom: 1rem;
     width: 100%;
     input {
         display: none;
         &:checked+label {
-            background-color: $grey-70;
-            color: $white;
-        }
-        &:checked+label:hover {
-            background-color: $grey-70;
+            background-color: $color-white;
+            border: 1px solid $color-link-primary;
+            border-bottom: 1px solid $color-white;
+            border-radius: 4px 4px 0 0;
+            color: $color-link-primary;
         }
         +label {
-            background-color: $grey-20;
+            @include font-type(bold);
+            @include font-size(small);
+            color: $color-link-tertiary;
             cursor: pointer;
             display: block;
-            padding: 2rem 1rem;
-            text-align: center;
-            text-transform: uppercase;
+            padding: .5rem 1.5rem;
+            position: relative;
+            top: 1px;
         }
         +label:hover {
-            background: $grey-10;
-        }
-    }
-    .button-group-single {
-        flex: 1;
-        &:first-child {
-            margin-right: .5rem;
+            color: $color-link-primary;
         }
     }
 }
