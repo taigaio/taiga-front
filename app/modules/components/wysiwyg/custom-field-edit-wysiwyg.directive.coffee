@@ -43,7 +43,7 @@ CustomFieldEditWysiwyg = (attachmentsFullService) ->
         template: """
             <div>
                 <tg-wysiwyg
-                    editonly
+                    editonly="!!customAttributeValue.value.length"
                     project="project"
                     content='customAttributeValue.value'
                     on-save="saveCustomRichText(text, cb)"

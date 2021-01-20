@@ -26,6 +26,9 @@ Wysiwyg = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoa
         isEditOnly = !!$attrs.$attr.editonly
         notPersist = !!$attrs.$attr.notPersist
 
+        if $scope.editonly != undefined
+            isEditOnly = $scope.editonly
+
         $scope.required = !!$attrs.$attr.required
         $scope.editMode = isEditOnly || false
         $scope.mode = localStorage.getItem('editor-mode') || 'html'
@@ -258,6 +261,7 @@ Wysiwyg = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoa
     return {
         templateUrl: "common/components/wysiwyg-toolbar.html",
         scope: {
+            editonly: '<',
             project: '<',
             placeholder: '@',
             version: '<',
