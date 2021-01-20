@@ -220,15 +220,10 @@ BlockButtonDirective = ($rootscope, $loading, $template) ->
         $scope.$watch $attrs.ngModel, (item) ->
             return if not item
 
-            if isEditable()
-                $el.find('.item-block').addClass('editable')
+            $scope.item = item
 
-            if item.is_blocked
-                $el.find('.item-block').removeClass('is-active')
-                $el.find('.item-unblock').addClass('is-active')
-            else
-                $el.find('.item-block').addClass('is-active')
-                $el.find('.item-unblock').removeClass('is-active')
+            if isEditable()
+                $el.find('.button-lock').addClass('editable')
 
         $el.on "click", ".item-block", (event) ->
             event.preventDefault()
