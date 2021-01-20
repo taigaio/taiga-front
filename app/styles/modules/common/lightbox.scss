@@ -888,7 +888,7 @@
     .pop-status {
         @include popover(
             $width: $pop-width,
-            $top: calc($control-height - 2px)
+            $top: 2rem
         );
     }
 
