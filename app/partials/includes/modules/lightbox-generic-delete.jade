@@ -6,11 +6,15 @@ form
         span.subtitle
         span.message
 
-    div.options
-        button.btn-small.btn-form.btn-cancel
+    .options
+        button.btn-link.btn-cancel(
+            variant="icon"
+        )
             span(translate="COMMON.CANCEL")
 
-        button.btn-small.btn-delete.btn-confirm
+        button.btn-small.btn-confirm(
+            variant="destructive"
+        )
             tg-svg(svg-icon="icon-trash")
             span(translate="COMMON.DELETE")
 

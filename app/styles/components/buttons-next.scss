@@ -16,12 +16,14 @@
     white-space: nowrap;
     &[variant='primary']:hover,
     &[variant='secondary']:hover,
+    &[variant='destructive']:disabled,
     &:hover {
         background-color: $color-link-primary;
         color: $color-white;
     }
     &[variant='primary']:disabled,
     &[variant='secondary']:disabled,
+    &[variant='destructive']:disabled,
     &:disabled {
         background-color: $color-gray400;
         color: rgba($color-black900, .5);
@@ -62,6 +64,14 @@
         color: $color-black600;
         transition: all .3s linear;
     }
+    &[variant='destructive'] {
+        background-color: $color-link-red;
+        color: $color-white;
+        transition: all .3s linear;
+    }
+    tg-svg {
+        margin-right: .5rem;
+    }
 }
 
 // Button ICON //
@@ -78,6 +88,10 @@
     &[variant='secondary'] {
         background-color: $color-gray400;
         color: $color-black600;
+    }
+    &[variant='destructive'] {
+        background-color: $color-link-red;
+        color: $color-white;
     }
 }
 
@@ -184,33 +198,6 @@
         &:hover {
             background-color: rgba($color-link-red, .25);
             color: $color-black900;
-        }
-    }
-}
-
-// Button delete
-// Used in delete lightboxs
-// button.btn-delete
-
-.btn-delete {
-    @extend %button;
-    background-color: $color-link-red;
-    color: $color-white;
-    & span {
-        height: 1rem;
-    }
-    & tg-svg {
-        fill: currentColor;
-        margin-right: .5rem;
-    }
-    &:hover {
-        background-color: $color-link-red;
-        color: $color-white;
-    }
-    &[variant='blocked'] {
-        &:hover {
-            background-color: $color-gray400;
-            color: $color-black600;
         }
     }
 }
