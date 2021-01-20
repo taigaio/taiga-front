@@ -476,13 +476,17 @@ body {
         }
         .popover {
             @include popover(
-                250px,
+                $width: 250px,
                 $top: 150%,
                 $left: -8px,
                 $arrow-width: 10px,
                 $arrow-top: -5px,
                 $arrow-left: 10px,
-                $arrow-height: 10px
+                $arrow-height: 10px,
+                $background-color: $color-black900,
+                $hover-background: $color-black900,
+                $text-color: $color-gray400,
+                $hover-text-color: $color-gray400
             );
         }
     }
