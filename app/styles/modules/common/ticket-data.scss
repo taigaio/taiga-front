@@ -313,6 +313,13 @@
         }
     }
 
+    .assign-issue-button {
+        &.button-set {
+            background: $color-link-tertiary;
+            color: $color-white;
+        }
+    }
+
     .item-unblock {
         background: $color-link-red;
         &:hover {
