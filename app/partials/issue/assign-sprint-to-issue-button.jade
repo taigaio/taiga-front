@@ -1,5 +1,4 @@
 button.btn-icon.assign-issue-button.is-editable.button-unset(
-    href=""
     ng-show="!issue.milestone"
     tg-check-permission="modify_issue"
     title="{{ 'ISSUES.ACTION_ATTACH_SPRINT' | translate }}"
@@ -7,17 +6,20 @@ button.btn-icon.assign-issue-button.is-editable.button-unset(
     tg-svg(svg-icon="icon-attach")
 
 button.btn-icon.assign-issue-button.is-editable.button-set(
-    href=""
     ng-show="issue.milestone"
     tg-check-permission="modify_issue"
     title="{{ 'ISSUES.ACTION_DETACH_SPRINT' | translate }}"
     ng-mouseenter="detach=true"
     ng-mouseleave="detach=false"
 )
-    tg-svg(ng-show="detach"
-           svg-icon="icon-detach")
-    tg-svg(ng-show="!detach"
-           svg-icon="icon-attach")
+    tg-svg(
+        ng-show="detach"
+        svg-icon="icon-detach"
+    )
+    tg-svg(
+        ng-show="!detach"
+        svg-icon="icon-attach"
+    )
 
 .lightbox.lightbox-assign-sprint-to-issue
     tg-lightbox-close
