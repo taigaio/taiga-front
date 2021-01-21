@@ -676,7 +676,7 @@
 }
 
 .lightbox-set-due-date {
-    z-index: $overall-layer;
+    z-index: $loading-layer;
     form {
         flex-basis: 600px;
         flex-flow: 0;
