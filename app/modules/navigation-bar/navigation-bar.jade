@@ -53,16 +53,8 @@ nav.navbar(ng-if="vm.isEnabledHeader")
             )
                 tg-svg(svg-icon="icon-help-circle")
 
-            .navbar-dropdown
+            .navbar-dropdown.navigation-help
                 ul
-                    li
-                        a.secondary(
-                            href="{{ vm.customSupportUrl }}",
-                            target="_blank",
-                            title="{{ 'PROJECT.NAVIGATION.TAIGA_RESOURCES_TITLE' | translate }}"
-                        )
-                            tg-svg(svg-icon="icon-compass")
-                            span {{ 'PROJECT.NAVIGATION.TAIGA_RESOURCES' | translate }}
                     li
                         a.secondary(
                             ng-show="vm.isFeedbackEnabled"
@@ -72,6 +64,14 @@ nav.navbar(ng-if="vm.isEnabledHeader")
                         )
                             tg-svg(svg-icon="icon-message-square")
                             span {{ 'PROJECT.NAVIGATION.FEEDBACK' | translate }}
+                    li
+                        a.secondary(
+                            href="{{ vm.customSupportUrl }}",
+                            target="_blank",
+                            title="{{ 'PROJECT.NAVIGATION.TAIGA_RESOURCES_TITLE' | translate }}"
+                        )
+                            tg-svg(svg-icon="icon-resources")
+                            span {{ 'PROJECT.NAVIGATION.TAIGA_RESOURCES' | translate }}
 
         .topnav-dropdown-wrapper(
             tg-dropdown-notifications
