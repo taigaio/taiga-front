@@ -254,7 +254,7 @@
         opacity: 1;
         position: absolute;
         right: 1rem;
-        top: .7rem;
+        top: .5rem;
         transition: opacity .3s linear;
         &.disappear {
             opacity: 0;
@@ -276,10 +276,12 @@
     }
     .delete-sprint {
         @include font-size(small);
-        color: $gray;
-        float: right;
-        margin: 1rem .25rem 0 0;
+        color: $color-link-primary;
+        display: flex;
         transition: color .3s linear;
+        .delete-sprint-text {
+            margin: .1rem 0 0 .25rem;
+        }
         .icon {
             fill: currentColor;
         }
@@ -290,6 +292,11 @@
                 fill: currentColor;
             }
         }
+    }
+    .sprint-add-edit-actions {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
     }
 }
 
