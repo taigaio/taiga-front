@@ -38,7 +38,7 @@
                 translate="LOGIN_COMMON.ACTION_SIGN_IN"
             )
 
-    .contrib-plugins-wrapper(ng-if="contribPlugins.length")
+    .contrib-plugins-wrapper(ng-if="contribPlugins.filter((p) => { p.type == 'auth' }).length")
         label(translate="LOGIN_COMMON.ALT_LOGIN", ng-if="defaultLoginEnabled")
 
         fieldset(

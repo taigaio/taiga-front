@@ -4,7 +4,7 @@ form.login-form
     fieldset
         input(
             type="text"
-            autocorrect="off" 
+            autocorrect="off"
             autocapitalize="none"
             name="username"
             ng-model="dataLogin.username"
@@ -34,8 +34,8 @@ form.login-form
             type="submit"
             translate="LOGIN_COMMON.ACTION_ENTER"
         )
-        
-    .contrib-plugins-wrapper(ng-if="contribPlugins.length")
+
+    .contrib-plugins-wrapper(ng-if="contribPlugins.filter((p) => { p.type == 'auth' }).length")
         label(translate="LOGIN_COMMON.ALT_LOGIN")
 
         fieldset(
