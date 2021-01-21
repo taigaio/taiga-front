@@ -285,7 +285,7 @@
     align-items: center;
     display: flex;
     justify-content: center;
-    [class^='btn-'] {
+    [class^='btn-']:not(.select-option) {
         background: $color-gray200;
         color: $color-link-primary;
         margin-inline-end: .5rem;
