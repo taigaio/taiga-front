@@ -21,7 +21,7 @@ nav.navbar(ng-if="vm.isEnabledHeader")
             active="vm.active == 'projects' || vm.active == 'project'"
         )
 
-    .nav-right(ng-if="!vm.isAuthenticated")
+    .nav-right.center(ng-if="!vm.isAuthenticated")
         a.login(
             ng-click="vm.login()"
             href="#",

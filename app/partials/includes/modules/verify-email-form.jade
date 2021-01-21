@@ -14,9 +14,13 @@ div.verify-email-form(tg-change-email)
                 placeholder="{{'VERIFY_EMAIL_FORM.PLACEHOLDER_INPUT_TOKEN' | translate}}"
             )
 
-            a.button-change-email.button-gray(
+            a.btn-big(
                 href=""
                 title="{{'VERIFY_EMAIL_FORM.ACTION_VERIFY_EMAIL' | translate}}"
                 translate="VERIFY_EMAIL_FORM.ACTION_VERIFY_EMAIL"
             )
-            button(type="submit", class="hidden")
+        fieldset.end
+            button.btn-big(
+                type="submit",
+                class="hidden"
+            )

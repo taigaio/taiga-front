@@ -238,11 +238,11 @@ class ConfirmService extends taiga.Service
         el.find(".title").html(title) if title
         el.find(".message").html(message) if message
         if action
-            el.find(".button-green").html(action)
-            el.find(".button-green").attr('title', action)
+            el.find(".js-confirm").html(action)
+            el.find(".js-confirm").attr('title', action)
 
         # Assign event handlers
-        el.on "click.confirm-dialog", ".button-green", (event) =>
+        el.on "click.confirm-dialog", ".js-confirm", (event) =>
             event.preventDefault()
             defered.resolve()
             @.hide(el)
