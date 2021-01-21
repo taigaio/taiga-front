@@ -5,11 +5,12 @@
     border-radius: 2px;
     color: $color-white;
     display: inline-flex;
-    margin-inline-end: .25rem;
     padding: .1rem .5rem;
     text-align: center;
     span {
-        margin-right: .25rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
     .icon-close {
         @include svg-size(1.25rem);

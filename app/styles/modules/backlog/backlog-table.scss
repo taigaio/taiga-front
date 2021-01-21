@@ -40,7 +40,11 @@
             margin-inline-end: .75rem;
         }
         .user-stories {
+            align-items: center;
+            display: flex;
             flex: 1;
+            flex-wrap: wrap;
+            gap: .25rem;
         }
         & > .status {
             flex-basis: 150px;
@@ -366,6 +370,11 @@
         top: .12rem;
     }
     .tag {
+        display: block;
+        max-width: 17ch;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
         &.last {
             margin-inline-end: .75rem;
         }

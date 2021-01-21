@@ -235,12 +235,13 @@ $iocaine: #b400d1;
         display: block;
         margin-block-end: $card-section-margin-bottom;
         margin-inline-end: .5rem;
-        max-width: 125px;
+        max-width: 17ch;
         min-height: 8px;
         min-width: 40px;
         overflow: hidden;
         padding: 0 .25rem;
         text-overflow: ellipsis;
+        white-space: nowrap;
 
         &:last-child {
             margin-inline-end: 0;
