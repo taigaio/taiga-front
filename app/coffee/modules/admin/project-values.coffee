@@ -326,7 +326,7 @@ ProjectSwimlanesSingle = ($translate, $confirm, $animate) ->
                     response.finish()
             else
                 subtitle = $translate.instant("LIGHTBOX.ADMIN_KANBAN_POWERUPS.SUBTITLE_ACTION_DELETE_SWIMLANE_LAST")
-                $confirm.ask(title, subtitle).then (response) ->
+                $confirm.askDelete(title, subtitle).then (response) ->
                     $ctrl.scope.deletingSwimlane = true
 
                     $ctrl.removeSwimlane(swimlane.id)
@@ -698,7 +698,7 @@ ProjectDueDatesValues = ($log, $repo, $confirm, $location, animationFrame, $tran
             subtitle = $translate.instant("LIGHTBOX.ADMIN_DUE_DATES.SUBTITLE_ACTION_DELETE_DUE_DATE",
                                           {due_date_status_name:  value.name})
 
-            $confirm.ask(title, subtitle).then (response) ->
+            $confirm.askDelete(title, subtitle).then (response) ->
                 onSucces = ->
                     $ctrl.loadValues().finally ->
                         $rootscope.$broadcast("admin:project-values:updated")
@@ -1153,7 +1153,7 @@ ProjectCustomAttributesDirective = ($log, $confirm, animationFrame, $translate) 
             title = $translate.instant("COMMON.CUSTOM_ATTRIBUTES.DELETE")
             text = $translate.instant("COMMON.CUSTOM_ATTRIBUTES.CONFIRM_DELETE")
 
-            $confirm.ask(title, text, message).then (response) ->
+            $confirm.askDelete(title, text, message).then (response) ->
                 onSucces = ->
                     $ctrl.loadCustomAttributes().finally -> response.finish()
 

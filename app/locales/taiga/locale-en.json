@@ -225,8 +225,8 @@
             "CUSTOM_FIELDS": "Custom Fields",
             "SAVE": "Save custom field",
             "EDIT": "Edit custom field",
-            "DELETE": "Delete custom attribute",
-            "CONFIRM_DELETE": "Remember that all values in this custom field will be deleted.\n Are you sure you want to continue?"
+            "DELETE": "Delete custom fields",
+            "CONFIRM_DELETE": "Remember that all values in this custom field will be deleted."
         },
         "FILTERS": {
             "INPUT_PLACEHOLDER": "subject or reference",
