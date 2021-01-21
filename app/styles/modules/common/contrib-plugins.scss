@@ -2,6 +2,7 @@
     margin: 1rem 0;
     label {
         @include font-size(small);
+        color: $solid-white;
         display: block;
         margin-bottom: .5rem;
     }

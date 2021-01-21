@@ -85,6 +85,9 @@
     }
     .btn-big {
         margin: 0 0 0 auto;
+        &.full {
+            width: 100%;
+        }
     }
 }
 
