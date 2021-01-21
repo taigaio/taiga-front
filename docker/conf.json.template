@@ -12,7 +12,7 @@
     "defaultLoginEnabled": true,
     "publicRegisterEnabled": ${PUBLIC_REGISTER_ENABLED},
     "feedbackEnabled": true,
-    "supportUrl": "https://tree.taiga.io/support/",
+    "supportUrl": "https://resources.taiga.io",
     "privacyPolicyUrl": null,
     "termsOfServiceUrl": null,
     "maxUploadFileSize": null,

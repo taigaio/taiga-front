@@ -193,6 +193,11 @@ $dropdown-width: 260px;
     background: $color-gray100;
     box-shadow: 4px 4px 8px rgba(46, 52, 64, .1);
     padding: 1rem;
+    &.navigation-help {
+        tg-svg {
+            margin-top: 0;
+        }
+    }
     &.dropdown-user {
         left: -200px;
         top: 2.5rem;
