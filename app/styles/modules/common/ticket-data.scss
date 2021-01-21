@@ -320,7 +320,7 @@
         }
     }
 
-    .item-unblock {
+    [class^='btn-'].item-unblock {
         background: $color-link-red;
         &:hover {
             background: $color-link-red;
