@@ -225,8 +225,8 @@
             "CUSTOM_FIELDS": "Нетипові поля",
             "SAVE": "Зберегти нетипове поле",
             "EDIT": "Редагувати нетипове поле",
-            "DELETE": "Видалити нетиповий атрибут",
-            "CONFIRM_DELETE": "Пам'ятайте: усі значення цього нетипового поля будуть видалені.\nВи дійсно хочете продовжити?"
+            "DELETE": "Delete custom fields",
+            "CONFIRM_DELETE": "Remember that all values in this custom field will be deleted."
         },
         "FILTERS": {
             "INPUT_PLACEHOLDER": "subject or reference",
@@ -677,6 +677,7 @@
             "SUBTITLE": "Enable swimlanes to use in your workflow and set WIP limits to restrict the maximun number of user stories on each status.",
             "SWIMLANES": "Swimlanes",
             "ACTION_ADD_SWIMLANE": "New swimlane",
+            "SWIMLANE_NAME_EXISTS": "This swimlane name already exists",
             "NO_SWIMLANES": "There are no swimlanes yet",
             "SWIMLANE_NAME": "Swimlane name",
             "POPUP_NEW_SWIMLANE": "If you had some user stories created, you will find them on this swimlane.",
@@ -922,12 +923,12 @@
             "VIEW_ALL_PROJECTS": "View all projects",
             "MANAGE_PROJECTS": "Керувати проєктами",
             "TITLE_CREATE_PROJECT": "Створити проєкт",
-            "HELP_TITLE": "Resources",
+            "HELP_TITLE": "Help",
             "HOMEPAGE": "Домашня сторінка",
             "TAIGA_RESOURCES_TITLE": "Go to Taiga resources",
-            "TAIGA_RESOURCES": "Taiga resources",
+            "TAIGA_RESOURCES": "Taiga Resources",
             "FEEDBACK_TITLE": "Write to us with your feedback",
-            "FEEDBACK": "Write to us",
+            "FEEDBACK": "Ask a question",
             "NOTIFICATIONS_TITLE": "Відредагуйте Ваші налаштування повідомлень",
             "NOTIFICATIONS": "Повідомлення",
             "VIEW_PROFILE_TITLE": "Переглянути профіль",
@@ -1142,9 +1143,14 @@
             "HELP_TEXT": "Якщо користувачі зареєстровані у Taiga, вони автоматично додадуться. Інакше вони отримають запрошення."
         },
         "FEEDBACK": {
-            "TITLE": "Розкажіть нам щось...",
-            "COMMENT": "... дефект, якісь пропозиції, щось прикольне... чи навіть найстрашніші нічні жахи із Taiga",
-            "ACTION_SEND": "Надіслати відгук"
+            "TITLE": "Ask a question",
+            "COMMENT": "Leave us a message",
+            "ACTION_SEND": "Send Message",
+            "YOU_CAN_ALSO": "You can also:",
+            "CREATE": "Create an issue on this",
+            "PUBLIC": "public Taiga project",
+            "EMAIL": "Send us a e-mail directly to",
+            "SUPPORT": "support@taiga.io"
         },
         "SEARCH": {
             "TITLE": "Пошук",

@@ -225,8 +225,8 @@
             "CUSTOM_FIELDS": "Eremu pertsonalizatuak",
             "SAVE": "Gorde eremu pertsonalizatua",
             "EDIT": "Editatu eremu pertsonalizatua",
-            "DELETE": "Ezabatu ezaugarri pertsonalizatua",
-            "CONFIRM_DELETE": "Gogoratu eremu pertsonalizatu honen balio guztiak ezabatu egingo direla.\n Ziur zaude jarraitu nahi duzula?"
+            "DELETE": "Delete custom fields",
+            "CONFIRM_DELETE": "Remember that all values in this custom field will be deleted."
         },
         "FILTERS": {
             "INPUT_PLACEHOLDER": "subject or reference",
@@ -677,6 +677,7 @@
             "SUBTITLE": "Enable swimlanes to use in your workflow and set WIP limits to restrict the maximun number of user stories on each status.",
             "SWIMLANES": "Swimlanes",
             "ACTION_ADD_SWIMLANE": "New swimlane",
+            "SWIMLANE_NAME_EXISTS": "This swimlane name already exists",
             "NO_SWIMLANES": "There are no swimlanes yet",
             "SWIMLANE_NAME": "Swimlane name",
             "POPUP_NEW_SWIMLANE": "If you had some user stories created, you will find them on this swimlane.",
@@ -922,12 +923,12 @@
             "VIEW_ALL_PROJECTS": "View all projects",
             "MANAGE_PROJECTS": "Kudeatu proiektuak",
             "TITLE_CREATE_PROJECT": "Sortu proiektu bat",
-            "HELP_TITLE": "Resources",
+            "HELP_TITLE": "Help",
             "HOMEPAGE": "Hasiera",
             "TAIGA_RESOURCES_TITLE": "Go to Taiga resources",
-            "TAIGA_RESOURCES": "Taiga resources",
+            "TAIGA_RESOURCES": "Taiga Resources",
             "FEEDBACK_TITLE": "Write to us with your feedback",
-            "FEEDBACK": "Write to us",
+            "FEEDBACK": "Ask a question",
             "NOTIFICATIONS_TITLE": "Editatu jakinarazpen ezarpenak",
             "NOTIFICATIONS": "Jakinarazpenak",
             "VIEW_PROFILE_TITLE": "Ikusi soslaia",
@@ -1142,9 +1143,14 @@
             "HELP_TEXT": "Erabiltzailea dagoenekoz Taigan izena emana badago, automatikoki gehituko da. Bestela, gonbidapena jasoko du."
         },
         "FEEDBACK": {
-            "TITLE": "Esaiguzu zerbait…",
-            "COMMENT": "…akatsen bat, iradokizunen bat, alderdi politen bat… edo amesgaizto bat Taiga erabiltzerakoan.",
-            "ACTION_SEND": "Bidali iruzkinak"
+            "TITLE": "Ask a question",
+            "COMMENT": "Leave us a message",
+            "ACTION_SEND": "Send Message",
+            "YOU_CAN_ALSO": "You can also:",
+            "CREATE": "Create an issue on this",
+            "PUBLIC": "public Taiga project",
+            "EMAIL": "Send us a e-mail directly to",
+            "SUPPORT": "support@taiga.io"
         },
         "SEARCH": {
             "TITLE": "Bilatu",

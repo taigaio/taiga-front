@@ -225,8 +225,8 @@
             "CUSTOM_FIELDS": "Champs personnalisés",
             "SAVE": "Save custom field",
             "EDIT": "Modifier un champ personnalisé",
-            "DELETE": "Supprimer un attribut personnalisé",
-            "CONFIRM_DELETE": "Remember that all values in this custom field will be deleted.\n Are you sure you want to continue?"
+            "DELETE": "Delete custom fields",
+            "CONFIRM_DELETE": "Remember that all values in this custom field will be deleted."
         },
         "FILTERS": {
             "INPUT_PLACEHOLDER": "subject or reference",
@@ -677,6 +677,7 @@
             "SUBTITLE": "Enable swimlanes to use in your workflow and set WIP limits to restrict the maximun number of user stories on each status.",
             "SWIMLANES": "Swimlanes",
             "ACTION_ADD_SWIMLANE": "New swimlane",
+            "SWIMLANE_NAME_EXISTS": "This swimlane name already exists",
             "NO_SWIMLANES": "There are no swimlanes yet",
             "SWIMLANE_NAME": "Swimlane name",
             "POPUP_NEW_SWIMLANE": "If you had some user stories created, you will find them on this swimlane.",
@@ -922,12 +923,12 @@
             "VIEW_ALL_PROJECTS": "View all projects",
             "MANAGE_PROJECTS": "Gérer les projets",
             "TITLE_CREATE_PROJECT": "Créer un projet",
-            "HELP_TITLE": "Resources",
+            "HELP_TITLE": "Help",
             "HOMEPAGE": "Page d'accueil",
             "TAIGA_RESOURCES_TITLE": "Go to Taiga resources",
-            "TAIGA_RESOURCES": "Taiga resources",
+            "TAIGA_RESOURCES": "Taiga Resources",
             "FEEDBACK_TITLE": "Write to us with your feedback",
-            "FEEDBACK": "Write to us",
+            "FEEDBACK": "Ask a question",
             "NOTIFICATIONS_TITLE": "Modifier vos réglages de notification",
             "NOTIFICATIONS": "Notifications",
             "VIEW_PROFILE_TITLE": "Afficher le profil",
@@ -1142,9 +1143,14 @@
             "HELP_TEXT": "Si vos utilisateurs sont déjà inscrits sur Taiga, ils seront automatiquement ajoutés. Sinon, ils recevront une invitation."
         },
         "FEEDBACK": {
-            "TITLE": "Dites-nous quelque chose...",
-            "COMMENT": "...un bug, des suggestions, quelque chose de cool... ou même votre pire cauchemar avec Taiga",
-            "ACTION_SEND": "Envoyez vos commentaires"
+            "TITLE": "Ask a question",
+            "COMMENT": "Leave us a message",
+            "ACTION_SEND": "Send Message",
+            "YOU_CAN_ALSO": "You can also:",
+            "CREATE": "Create an issue on this",
+            "PUBLIC": "public Taiga project",
+            "EMAIL": "Send us a e-mail directly to",
+            "SUPPORT": "support@taiga.io"
         },
         "SEARCH": {
             "TITLE": "Rechercher",

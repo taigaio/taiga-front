@@ -225,8 +225,8 @@
             "CUSTOM_FIELDS": "사용자 정의 필드",
             "SAVE": "Save custom field",
             "EDIT": "Edit custom field",
-            "DELETE": "사용자 정의 속성 삭제하기",
-            "CONFIRM_DELETE": "Remember that all values in this custom field will be deleted.\n Are you sure you want to continue?"
+            "DELETE": "Delete custom fields",
+            "CONFIRM_DELETE": "Remember that all values in this custom field will be deleted."
         },
         "FILTERS": {
             "INPUT_PLACEHOLDER": "subject or reference",
@@ -677,6 +677,7 @@
             "SUBTITLE": "Enable swimlanes to use in your workflow and set WIP limits to restrict the maximun number of user stories on each status.",
             "SWIMLANES": "Swimlanes",
             "ACTION_ADD_SWIMLANE": "New swimlane",
+            "SWIMLANE_NAME_EXISTS": "This swimlane name already exists",
             "NO_SWIMLANES": "There are no swimlanes yet",
             "SWIMLANE_NAME": "Swimlane name",
             "POPUP_NEW_SWIMLANE": "If you had some user stories created, you will find them on this swimlane.",
@@ -922,12 +923,12 @@
             "VIEW_ALL_PROJECTS": "View all projects",
             "MANAGE_PROJECTS": "프로젝트 관리하기",
             "TITLE_CREATE_PROJECT": "프로젝트 생성하기",
-            "HELP_TITLE": "Resources",
+            "HELP_TITLE": "도움말",
             "HOMEPAGE": "홈페이지",
             "TAIGA_RESOURCES_TITLE": "Go to Taiga resources",
-            "TAIGA_RESOURCES": "Taiga resources",
+            "TAIGA_RESOURCES": "Taiga Resources",
             "FEEDBACK_TITLE": "Write to us with your feedback",
-            "FEEDBACK": "Write to us",
+            "FEEDBACK": "Ask a question",
             "NOTIFICATIONS_TITLE": "알림 설정 수정",
             "NOTIFICATIONS": "알림",
             "VIEW_PROFILE_TITLE": "프로필 보기",
@@ -1142,9 +1143,14 @@
             "HELP_TEXT": "타이가에 이미 등록한 사용자라면 자동으로 프로젝트에 추가될 겁니다. 등록하지 않은 사용자라면 초대장이 발송됩니다."
         },
         "FEEDBACK": {
-            "TITLE": "말해주세요...",
-            "COMMENT": "... 버그, 몇 가지 제안, 멋진 것 ... 아니면 타이가와의 최악의 악몽",
-            "ACTION_SEND": "피드백 보내기"
+            "TITLE": "Ask a question",
+            "COMMENT": "Leave us a message",
+            "ACTION_SEND": "Send Message",
+            "YOU_CAN_ALSO": "You can also:",
+            "CREATE": "Create an issue on this",
+            "PUBLIC": "public Taiga project",
+            "EMAIL": "Send us a e-mail directly to",
+            "SUPPORT": "support@taiga.io"
         },
         "SEARCH": {
             "TITLE": "검색",

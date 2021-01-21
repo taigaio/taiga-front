@@ -225,8 +225,8 @@
             "CUSTOM_FIELDS": "Специальные Поля",
             "SAVE": "Сохранить специальное поле",
             "EDIT": "Редактировать специальное поле",
-            "DELETE": "Удалить атрибут",
-            "CONFIRM_DELETE": "Обратите внимание - все значения этого специального поля будут удалены.\nВы уверены, что хотите продолжить?"
+            "DELETE": "Delete custom fields",
+            "CONFIRM_DELETE": "Remember that all values in this custom field will be deleted."
         },
         "FILTERS": {
             "INPUT_PLACEHOLDER": "subject or reference",
@@ -677,6 +677,7 @@
             "SUBTITLE": "Enable swimlanes to use in your workflow and set WIP limits to restrict the maximun number of user stories on each status.",
             "SWIMLANES": "Swimlanes",
             "ACTION_ADD_SWIMLANE": "New swimlane",
+            "SWIMLANE_NAME_EXISTS": "This swimlane name already exists",
             "NO_SWIMLANES": "There are no swimlanes yet",
             "SWIMLANE_NAME": "Swimlane name",
             "POPUP_NEW_SWIMLANE": "If you had some user stories created, you will find them on this swimlane.",
@@ -922,12 +923,12 @@
             "VIEW_ALL_PROJECTS": "View all projects",
             "MANAGE_PROJECTS": "Управлять проектами",
             "TITLE_CREATE_PROJECT": "Создать проект",
-            "HELP_TITLE": "Resources",
+            "HELP_TITLE": "Помощь",
             "HOMEPAGE": "Домашняя страница",
             "TAIGA_RESOURCES_TITLE": "Go to Taiga resources",
-            "TAIGA_RESOURCES": "Taiga resources",
+            "TAIGA_RESOURCES": "Taiga Resources",
             "FEEDBACK_TITLE": "Write to us with your feedback",
-            "FEEDBACK": "Write to us",
+            "FEEDBACK": "Ask a question",
             "NOTIFICATIONS_TITLE": "Настроить уведомления",
             "NOTIFICATIONS": "Уведомления",
             "VIEW_PROFILE_TITLE": "Посмотреть профиль",
@@ -1142,9 +1143,14 @@
             "HELP_TEXT": "Если пользователи уже зарегистрированы в Тайге они добавятся автоматически. В противном случае им будет отправлено приглашение."
         },
         "FEEDBACK": {
-            "TITLE": "Расскажите что-нибудь...",
-            "COMMENT": "... ошибки, предложения, что-нибудь клёвое... или даже Ваш самый страшный кошмар с Taiga",
-            "ACTION_SEND": "Оставить отзыв"
+            "TITLE": "Ask a question",
+            "COMMENT": "Leave us a message",
+            "ACTION_SEND": "Send Message",
+            "YOU_CAN_ALSO": "You can also:",
+            "CREATE": "Create an issue on this",
+            "PUBLIC": "public Taiga project",
+            "EMAIL": "Send us a e-mail directly to",
+            "SUPPORT": "support@taiga.io"
         },
         "SEARCH": {
             "TITLE": "Поиск",

@@ -46,7 +46,7 @@
         "OWNER": "Dueño del proyecto",
         "CAPSLOCK_WARNING": "¡Cuidado!. Esta usando mayusculas en un campo sensible a mayusculas",
         "CONFIRM_CLOSE_EDIT_MODE_TITLE": "¿Seguro que desea cerrar el modo de edición?",
-        "CONFIRM_CLOSE_EDIT_MODE_MESSAGE": "Recuerde que si cierra el modo de edicion sin guardar todos los cambios se perderán",
+        "CONFIRM_CLOSE_EDIT_MODE_MESSAGE": "Recuerde que si cierra el modo de edición sin guardar todos los cambios se perderán",
         "RELATED_USERSTORIES": "Historias de usuario relacionadas",
         "CARD": {
             "ASSIGN_TO": "Asignado a",
@@ -225,8 +225,8 @@
             "CUSTOM_FIELDS": "Atributo Personalizados",
             "SAVE": "Guardar atributo personalizado",
             "EDIT": "Editar atributo personalizado",
-            "DELETE": "Borrar atributos personalizados",
-            "CONFIRM_DELETE": "Se borrarán todos los valores de este atributo personalizado. \n¿Estás seguro de que quieres continuar?"
+            "DELETE": "Delete custom fields",
+            "CONFIRM_DELETE": "Remember that all values in this custom field will be deleted."
         },
         "FILTERS": {
             "INPUT_PLACEHOLDER": "asunto o referencia",
@@ -677,6 +677,7 @@
             "SUBTITLE": "Crea swimlanes para usarlos en su flujo de trabajo y establece WIP limits para restringir el número máximo de historias en cada estado.",
             "SWIMLANES": "Swimlanes",
             "ACTION_ADD_SWIMLANE": "Nuevo swimlane",
+            "SWIMLANE_NAME_EXISTS": "This swimlane name already exists",
             "NO_SWIMLANES": "No hay swimlanes todavía",
             "SWIMLANE_NAME": "Nombre del swimlane",
             "POPUP_NEW_SWIMLANE": "Si tenías algunas historias de usuario creadas, las encontrarás en este swimlane.",
@@ -922,12 +923,12 @@
             "VIEW_ALL_PROJECTS": "Ver todos los proyectos",
             "MANAGE_PROJECTS": "Administrar proyectos",
             "TITLE_CREATE_PROJECT": "Crear proyecto",
-            "HELP_TITLE": "Recursos",
+            "HELP_TITLE": "Ayuda",
             "HOMEPAGE": "Página de inicio",
             "TAIGA_RESOURCES_TITLE": "Visita Taiga resources",
-            "TAIGA_RESOURCES": "Taiga resources",
+            "TAIGA_RESOURCES": "Taiga Resources",
             "FEEDBACK_TITLE": "Envíanos tus comentarios",
-            "FEEDBACK": "Contacta",
+            "FEEDBACK": "Ask a question",
             "NOTIFICATIONS_TITLE": "Edita la configuración de tus notificaciones",
             "NOTIFICATIONS": "Notificaciones",
             "VIEW_PROFILE_TITLE": "Ver perfil",
@@ -1142,9 +1143,14 @@
             "HELP_TEXT": "Si los usuarios ya están registrado en Taiga, se añadirán automáticamente. De lo contrario recibirán una invitación."
         },
         "FEEDBACK": {
-            "TITLE": "Dinos algo...",
-            "COMMENT": "...un error, algunas sugerencias, algo cool... o incluso tus peores pesadillas con Taiga",
-            "ACTION_SEND": "Envíanos tu feedback"
+            "TITLE": "Ask a question",
+            "COMMENT": "Leave us a message",
+            "ACTION_SEND": "Send Message",
+            "YOU_CAN_ALSO": "You can also:",
+            "CREATE": "Create an issue on this",
+            "PUBLIC": "public Taiga project",
+            "EMAIL": "Send us a e-mail directly to",
+            "SUPPORT": "support@taiga.io"
         },
         "SEARCH": {
             "TITLE": "Busqueda",
