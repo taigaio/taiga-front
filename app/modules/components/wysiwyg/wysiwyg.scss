@@ -81,7 +81,7 @@ tg-wysiwyg {
     }
 }
 
-tg-html-editor,
+tg-html-editor .ck-content,
 .wysiwyg {
     i {
         font-style: revert;
@@ -140,49 +140,63 @@ tg-html-editor,
         color: $color-link-primary;
         font-weight: 600;
     }
-    .ck-content {
-        blockquote {
-            border-left: 5px solid $color-solid-primary;
+    blockquote {
+        border-left: 5px solid $color-solid-primary;
+        color: $color-link-tertiary;
+        margin: 40px 0;
+        padding: 0 1.25rem;
+        p:last-child {
+            margin-bottom: 0;
+        }
+    }
+    .mention {
+        background: none;
+        color: $color-link-primary;
+        cursor: pointer;
+    }
+    .ck-horizontal-line hr,
+    hr {
+        background-color: $color-solid-primary;
+        border: 0;
+        height: 2px;
+        margin: 40px 0;
+    }
+    .table table,
+    table {
+        border: 1px solid $color-gray400;
+        td {
+            @include font-size(small);
             color: $color-link-tertiary;
-            margin: 40px 0;
-            padding: 0 1.25rem;
-            p:last-child {
-                margin-bottom: 0;
-            }
         }
-        .mention {
-            background: none;
-            color: $color-link-primary;
-            cursor: pointer;
+        th {
+            background-color: $color-gray300;
+            color: $color-black900;
+            font-weight: normal;
+            text-align: left;
         }
-        .ck-horizontal-line hr {
-            background-color: $color-solid-primary;
-            height: 2px;
-            margin: 40px 0;
-        }
-        .table,
-        .image {
-            margin: 20px 0;
-        }
-        .table {
-            table {
-                border: 1px solid $color-gray400;
-                td {
-                    @include font-size(small);
-                    color: $color-link-tertiary;
-                }
-                th {
-                    background-color: $color-gray300;
-                    color: $color-black900;
-                }
-                td,
-                th {
-                    border: 1px solid $color-gray400;
-                }
-            }
+        td,
+        th {
+            border: 1px solid $color-gray400;
+            min-width: 2em;
+            padding: .4em;
         }
     }
 }
+
+tg-html-editor .ck-content {
+    .table,
+    .image {
+        margin: 20px 0;
+    }
+}
+
+.wysiwyg {
+    table {
+        margin: 20px 0;
+    }
+}
+
+
 .ck-body-wrapper {
     .ck.ck-link-actions .ck-button.ck-link-actions__preview .ck-button__label {
         color: $color-link-primary;
