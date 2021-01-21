@@ -21,7 +21,7 @@ form
                 name="estimated_start"
                 picker-value="{{newSprint.estimated_start}}"
                 data-required="true"
-                tg-date-selector                
+                tg-date-selector
                 placeholder="{{'LIGHTBOX.ADD_EDIT_SPRINT.PLACEHOLDER_SPRINT_START' | translate}}"
             )
         div
@@ -34,16 +34,16 @@ form
                 placeholder="{{'LIGHTBOX.ADD_EDIT_SPRINT.PLACEHOLDER_SPRINT_END' | translate}}"
             )
 
-    button.button-green.button-large.button-large.button-block(
-        type="submit"
-        title="{{'COMMON.CREATE' | translate}}"
-        translate="COMMON.CREATE"
-    )
+    .sprint-add-edit-actions
+        button.btn-big.button-large.button-block(
+            type="submit"
+            title="{{'COMMON.SAVE' | translate}}"
+            translate="COMMON.SAVE"
+        )
 
-    a.delete-sprint(
-        tg-check-permission="delete_milestone"
-        href=""
-        title="{{'LIGHTBOX.ADD_EDIT_SPRINT.TITLE_ACTION_DELETE_SPRINT' | translate}}"
-    )
-        span {{'LIGHTBOX.ADD_EDIT_SPRINT.ACTION_DELETE_SPRINT' | translate }}
-        tg-svg(svg-icon="icon-trash")
+        button.btn-link.delete-sprint(
+            tg-check-permission="delete_milestone"
+            title="{{'LIGHTBOX.ADD_EDIT_SPRINT.TITLE_ACTION_DELETE_SPRINT' | translate}}"
+        )
+            tg-svg(svg-icon="icon-trash")
+            span.delete-sprint-text {{'LIGHTBOX.ADD_EDIT_SPRINT.ACTION_DELETE_SPRINT' | translate }}
