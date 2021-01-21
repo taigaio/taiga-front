@@ -1,14 +1,19 @@
 .search-list {
     .show-closed {
-        align-content: center;
-        align-items: center;
-        display: flex;
+        color: $color-link-primary;
         float: right;
-        font-size: .9em;
+        span {
+            font-size: .9em;
+            margin: .1rem 0 0 .2rem;
+        }
         svg {
-            height: 1em;
-            margin-right: .25em;
-            width: 1em;
+            fill: currentColor;
+        }
+        :hover {
+            color: $color-link-tertiary;
+            svg {
+                fill: currentColor;
+            }
         }
     }
     ul {

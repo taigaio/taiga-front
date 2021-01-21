@@ -3,17 +3,15 @@ fieldset.search-list
         for="items-filter"
     ) {{ label }}
 
-    a.show-closed(
+    a.btn-link.show-closed(
         href=""
         ng-if="filterClosed"
         ng-click="toggleShowClosed()"
     )
-        span(ng-if="!showClosed")
-            tg-svg(svg-icon="icon-archive")
-            span {{ textShowClosed }} 
-        span(ng-if="showClosed")
-            tg-svg(svg-icon="icon-archive")
-            span {{ textHideClosed }}
+        tg-svg(svg-icon="icon-folder")
+        span(ng-if="!showClosed") {{ textShowClosed }}
+        span(ng-if="showClosed") {{ textHideClosed }}
+
     input.items-filter(
         id="items-filter"
         type="text"

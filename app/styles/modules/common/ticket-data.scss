@@ -285,7 +285,7 @@
     align-items: center;
     display: flex;
     justify-content: center;
-    [class^='btn-']:not(.select-option) {
+    [class^='btn-']:not(.select-option):not(.show-closed) {
         background: $color-gray200;
         color: $color-link-primary;
         margin-inline-end: .5rem;
