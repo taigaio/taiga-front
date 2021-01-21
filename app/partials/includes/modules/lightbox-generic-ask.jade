@@ -7,9 +7,11 @@ form
         span.message
 
     div.options
-        button.btn-link.button-red.btn-cancel
+        button.btn-link.btn-cancel.js-cancel(
+            variant="icon"
+        )
             span(translate="COMMON.CANCEL")
 
-        button.btn-small.button-green(variant="primary")
+        button.btn-small.js-confirm(variant="primary")
             span(translate="COMMON.ACCEPT")
 

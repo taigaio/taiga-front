@@ -61,7 +61,7 @@ class ConfirmService extends taiga.Service
         el.find(".message").html(message || '')
 
         # Assign event handlers
-        el.on "click.confirm-dialog", ".button-green", debounce 2000, (event) =>
+        el.on "click.confirm-dialog", ".js-confirm", debounce 2000, (event) =>
             event.preventDefault()
             target = angular.element(event.currentTarget)
             currentWidth = target.width()
@@ -77,7 +77,7 @@ class ConfirmService extends taiga.Service
                         @.hide(el)
             }
 
-        el.on "click.confirm-dialog", ".button-red", (event) =>
+        el.on "click.confirm-dialog", ".js-cancel", (event) =>
             event.preventDefault()
             defered.reject()
             @.hide(el)
@@ -102,7 +102,7 @@ class ConfirmService extends taiga.Service
         lightbox.find(".message").html(message || '')
 
         # Assign event handlers
-        lightbox.on "click.confirm-dialog", ".btn-confirm", debounce 2000, (event) =>
+        lightbox.on "click.confirm-dialog", ".js-confirm", debounce 2000, (event) =>
             event.preventDefault()
             target = angular.element(event.currentTarget)
             currentWidth = target.width()
@@ -118,7 +118,7 @@ class ConfirmService extends taiga.Service
                         @.hide(lightbox)
             }
 
-        lightbox.on "click.confirm-dialog", ".btn-cancel", (event) =>
+        lightbox.on "click.confirm-dialog", ".js-cancel", (event) =>
             event.preventDefault()
             defered.reject()
             @.hide(lightbox)
