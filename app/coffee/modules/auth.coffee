@@ -596,6 +596,56 @@ module.directive("tgInvitation", ["$tgAuth", "$tgConfirm", "$tgLocation", "$tgCo
 
 
 #############################################################################
+## Verify Email
+#############################################################################
+
+VerifyEmailDirective = ($repo, $model, $auth, $confirm, $location, $params, $navUrls, $translate) ->
+    link = ($scope, $el, $attrs) ->
+        $scope.data = {}
+        $scope.data.email_token = $params.email_token
+        form = $el.find("form").checksley()
+
+        onSuccessSubmit = (response) ->
+            if $auth.isAuthenticated()
+                $repo.queryOne("users", $auth.getUser().id).then (data) =>
+                    $auth.setUser(data)
+                $location.url($navUrls.resolve("home"))
+            else
+                $location.url($navUrls.resolve("login"))
+
+            text = $translate.instant("VERIFY_EMAIL_FORM.SUCCESS")
+            $confirm.success(text)
+
+        onErrorSubmit = (response) ->
+            text = $translate.instant("COMMON.GENERIC_ERROR", {error: response.data._error_message})
+
+            $confirm.notify("light-error", text)
+
+        submit = ->
+            if not form.validate()
+                return
+
+            promise = $auth.changeEmail($scope.data)
+            promise.then(onSuccessSubmit, onErrorSubmit)
+
+        $el.on "submit", (event) ->
+            event.preventDefault()
+            submit()
+
+        $el.on "click", "a.ng-submit-form", (event) ->
+            event.preventDefault()
+            submit()
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {link:link}
+
+module.directive("tgVerifyEmail", ["$tgRepo", "$tgModel", "$tgAuth", "$tgConfirm", "$tgLocation",
+                                   "$routeParams", "$tgNavUrls", "$translate", VerifyEmailDirective])
+
+
+#############################################################################
 ## Change Email
 #############################################################################
 
@@ -632,7 +682,7 @@ ChangeEmailDirective = ($repo, $model, $auth, $confirm, $location, $params, $nav
             event.preventDefault()
             submit()
 
-        $el.on "click", "a.button-change-email", (event) ->
+        $el.on "click", "a.ng-submit-form", (event) ->
             event.preventDefault()
             submit()
 
