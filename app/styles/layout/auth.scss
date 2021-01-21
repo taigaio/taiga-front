@@ -1,7 +1,7 @@
 .auth {
     @include triangled-bg;
     align-items: center;
-    background: $primary;
+    background: $color-link-primary;
     bottom: 0;
     display: flex;
     flex-direction: row;
@@ -12,6 +12,12 @@
     right: 0;
     top: 0;
     z-index: $first-layer;
+    .checksley-error-list {
+        color: $color-white;
+        li {
+            margin: .5rem 0;
+        }
+    }
     .auth-container {
         flex-basis: 400px;
     }
@@ -26,14 +32,14 @@
     .logo {
         @include font-size(xxlarge);
         @include font-type(regular);
-        color: $white;
+        color: $color-white;
         display: block;
         margin-bottom: 1rem;
         text-align: center;
     }
     .tagline {
         @include font-size(xlarge);
-        color: $white;
+        color: $color-white;
         line-height: 2rem;
         margin-bottom: 1rem;
         text-align: center;
@@ -44,17 +50,23 @@
     }
     fieldset {
         margin-bottom: .5rem;
+        &.end {
+            display: flex;
+            justify-content: flex-end;
+        }
     }
     .login-text,
     .register-text {
+        color: $color-white;
         font-size: .875rem;
         margin-top: 2rem;
         padding-bottom: 1rem;
         text-align: center;
         a {
+            color: $color-white;
             text-decoration: underline;
             &:hover {
-                color: $primary-light;
+                color: $color-gray400;
             }
         }
     }
@@ -62,14 +74,17 @@
         margin: .5rem 0 .75rem;
     }
     .button {
-        color: $white;
+        color: $color-white;
         display: block;
         text-align: center;
     }
     a {
         &:hover {
-            color: $white;
+            color: $color-white;
         }
+    }
+    .btn-big {
+        margin: 0 0 0 auto;
     }
 }
 

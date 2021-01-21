@@ -22,6 +22,14 @@ $dropdown-width: 260px;
         align-content: center;
         align-items: center;
         display: flex;
+        &.center {
+            justify-content: center;
+            & a {
+                align-items: center;
+                display: flex;
+                justify-content: center;
+            }
+        }
     }
     .nav-left {
         .logo {
