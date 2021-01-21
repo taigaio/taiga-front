@@ -36,7 +36,7 @@
             ng-if="us.due_date"
             obj-type="us"
         )
-        span.tag(
+        .tag(
             ng-if="ctrl.showTags"
             ng-attr-title="{{tag[0]}}"
             ng-repeat="tag in us.tags"
@@ -44,7 +44,7 @@
             ng-class="{'last':$last}"
         ) {{tag[0]}}
         - var hash = "#";
-        span.belong-to-epic-pill(
+        .belong-to-epic-pill(
             ng-repeat="epic in us.epics"
             ng-style="{'background': epic.color}"
             ng-attr-title="#{hash}{{epic.ref}} {{epic.subject}}"
