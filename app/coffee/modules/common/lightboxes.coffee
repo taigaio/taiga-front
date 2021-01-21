@@ -548,7 +548,7 @@ $confirm, $q, attachmentsService, $template, $compile) ->
                         description: ""
                         tags: []
                         points : {}
-                        swimlane: if data.swimlane then data.swimlane else data.project.default_swimlane
+                        swimlane: if data.project.is_kanban_activated then data.project.default_swimlane else null
                         status: if data.statusId then data.statusId else data.project.default_us_status
                         is_archived: false
                     }
@@ -751,7 +751,6 @@ $confirm, $q, attachmentsService, $template, $compile) ->
             item.setAttr($scope.relatedField, $scope.relatedObjectId)
             $repo.save(item, true).then(onSuccess, onError)
 
-
         isDisabledExisting = (item) ->
             return item && item[$scope.relatedField] == $scope.relatedObjectId
 
@@ -765,15 +764,6 @@ $confirm, $q, attachmentsService, $template, $compile) ->
             form = $el.find("form").checksley()
             if not form.validate()
                 return
-
-            if $scope.project.is_kanban_activated
-                swimlaneId = $scope.obj.swimlane || $scope.project.default_swimlane
-                if $scope.obj.swimlane == -1
-                    swimlaneId = null
-            else
-                swimlaneId = null
-
-            $scope.obj.swimlane = swimlaneId
 
             currentLoading = $loading().target($el.find("#submitButton")).start()
 

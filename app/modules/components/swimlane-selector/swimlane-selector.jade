@@ -24,7 +24,7 @@ button.select(
     button.option(
         type="button"
         tg-repeat="swimlane in swimlanes"
-        ng-class="{'selected': swimlane.id == selectedSwimlane, 'unclassified': swimlane.id == -1}"
+        ng-class="{'selected': swimlane.id == selectedSwimlane, 'unclassified': swimlane.id == -1 || swimlane.id == null}"
         ng-click="selectSwimlane(swimlane)"
     )
         span {{ swimlane.name }}
