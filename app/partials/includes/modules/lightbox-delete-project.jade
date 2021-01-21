@@ -5,7 +5,13 @@ form
         span.question(translate="LIGHTBOX.DELETE_PROJECT.QUESTION")
         span.subtitle(translate="LIGHTBOX.DELETE_PROJECT.SUBTITLE")
     .options
-        a.button-green(href="", title="{{'LIGHTBOX.DELETE_PROJECT.CONFIRM' | translate}}")
-            span(translate="LIGHTBOX.DELETE_PROJECT.CONFIRM")
-        a.button-red(href="", title="{{'COMMON.CANCEL' | translate}}")
+        button.btn-link.btn-cancel.js-cancel(
+            variant="icon"
+        )
             span(translate="COMMON.CANCEL")
+
+        button.btn-small.btn-confirm.js-confirm(
+            variant="destructive"
+        )
+            tg-svg(svg-icon="icon-trash")
+            span(translate="LIGHTBOX.DELETE_PROJECT.CONFIRM")
