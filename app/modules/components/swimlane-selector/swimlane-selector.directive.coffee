@@ -42,14 +42,14 @@ SwimlaneSelector = ($timeout, $translate) ->
                     filteredSwimlanes = scope.swimlanes.filter (swimlane) ->
                         return swimlane.id == scope.userStory.swimlane
 
-                    scope.currentSwimlane = filteredSwimlanes.get(0);
+                    scope.currentSwimlane = filteredSwimlanes.get(0)
                 else
-                    scope.currentSwimlane = null;
+                    scope.currentSwimlane = null
             else
                 filteredSwimlanes = scope.swimlanes.filter (swimlane) ->
                     return swimlane.id == scope.defaultSwimlaneId
 
-                scope.currentSwimlane = filteredSwimlanes.get(0);
+                scope.currentSwimlane = filteredSwimlanes.get(0)
             getSelectedSwimlane()
 
         getSelectedSwimlane = () ->
@@ -57,7 +57,7 @@ SwimlaneSelector = ($timeout, $translate) ->
                 if (scope.currentSwimlane)
                     scope.selectedSwimlane = scope.currentSwimlane.id
                 else
-                    scope.selectedSwimlane = -1
+                    scope.selectedSwimlane = null
             else
                 scope.selectedSwimlane = scope.currentSwimlane.id
 
@@ -75,7 +75,7 @@ SwimlaneSelector = ($timeout, $translate) ->
         scope.selectSwimlane = (swimlane) ->
             if (swimlane == 'noSwimlane')
                 swimlane = {
-                    id: -1,
+                    id: null,
                     kanban_order: 1,
                     name: $translate.instant("KANBAN.UNCLASSIFIED_USER_STORIES")
                 }
@@ -83,7 +83,7 @@ SwimlaneSelector = ($timeout, $translate) ->
                 scope.currentSwimlane = swimlane
                 scope.hideOptions()
             else
-                scope.ngModel = swimlane.id
+                scope.ngModel = if swimlane.id != -1 then swimlane.id else null
                 scope.currentSwimlane = swimlane
                 scope.hideOptions()
 
