@@ -245,7 +245,7 @@ BlockLightboxDirective = ($rootscope, $tgrepo, $confirm, lightboxService, $loadi
 
         block = () ->
             currentLoading = $loading()
-                .target($el.find(".button-green"))
+                .target($el.find(".js-block-item"))
                 .start()
 
             transform = $modelTransform.save (item) ->
@@ -275,7 +275,7 @@ BlockLightboxDirective = ($rootscope, $tgrepo, $confirm, lightboxService, $loadi
         $scope.$on "$destroy", ->
             $el.off()
 
-        $el.on "click", ".button-green", (event) ->
+        $el.on "click", ".js-block-item", (event) ->
             event.preventDefault()
 
             block()
