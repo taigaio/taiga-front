@@ -86,23 +86,106 @@ tg-html-editor,
     i {
         font-style: revert;
     }
+    h1 {
+        @include font-size(xxlarge);
+    }
+    h2 {
+        @include font-size(xlarge);
+    }
+    h3 {
+        @include font-size(larger);
+    }
+    h4 {
+        @include font-size(large);
+    }
     h1,
     h2,
     h3,
     h4,
     h5,
     h6 {
-        font-size: revert;
+        color: $color-black900;
+        font-weight: 600;
         margin-bottom: var(--ck-spacing-large);
+    }
+    li {
+        color: $color-black900;
+        margin-bottom: .5rem;
+        @include font-size(small);
+
+        ul,
+        ol {
+            padding-top: .5rem;
+        }
+    }
+    ul {
+        list-style-type: disc;
+        ul {
+            list-style-type: circle;
+        }
     }
     ul,
     ol {
-        list-style: revert;
-        padding: revert;
+        margin-bottom: 1rem;
+        padding: 0 0 0 1rem;
     }
-    .ck-content .mention {
-        background: none;
+    p {
+        @include font-size(small);
+        color: $color-black600;
+    }
+    strong {
+        color: $color-black900;
+    }
+    a {
         color: $color-link-primary;
-        cursor: pointer;
+        font-weight: 600;
+    }
+    .ck-content {
+        blockquote {
+            border-left: 5px solid $color-solid-primary;
+            color: $color-link-tertiary;
+            margin: 40px 0;
+            padding: 0 1.25rem;
+            p:last-child {
+                margin-bottom: 0;
+            }
+        }
+        .mention {
+            background: none;
+            color: $color-link-primary;
+            cursor: pointer;
+        }
+        .ck-horizontal-line hr {
+            background-color: $color-solid-primary;
+            height: 2px;
+            margin: 40px 0;
+        }
+        .table,
+        .image {
+            margin: 20px 0;
+        }
+        .table {
+            table {
+                border: 1px solid $color-gray400;
+                td {
+                    @include font-size(small);
+                    color: $color-link-tertiary;
+                }
+                th {
+                    background-color: $color-gray300;
+                    color: $color-black900;
+                }
+                td,
+                th {
+                    border: 1px solid $color-gray400;
+                }
+            }
+        }
+    }
+}
+.ck-body-wrapper {
+    .ck.ck-link-actions .ck-button.ck-link-actions__preview .ck-button__label {
+        color: $color-link-primary;
+        font-weight: 600;
     }
 }
