@@ -30,14 +30,10 @@
         margin: 2rem 30%;
     }
     .button-hide {
-        background: none;
-        color: $color-black600;
         opacity: 0;
-        padding: .5rem;
         svg {
+            @include svg-size(1.4rem);
             fill: $color-black600;
-            height: 24px;
-            width: 24px;
         }
     }
 }

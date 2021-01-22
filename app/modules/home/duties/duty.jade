@@ -41,12 +41,14 @@ a.list-itemtype-ticket(
                 ) {{ 'COMMON.BLOCKED' | translate }}
                 span(ng-bind-html="duty.get('subject') | emojify")
     div(ng-switch="vm.isHidden")
-        button.button-hide(
+        button.btn-link.button-hide(
+            variant='icon'
             ng-switch-when="false"
             title="{{ 'HOME.SET_HIDDEN' | translate }}"
         )
             tg-svg(svg-icon="icon-unwatch")
-        button.button-hide(
+        button.btn-link.button-hide(
+            variant='icon'
             ng-switch-when="true"
             title="{{ 'HOME.SET_VISIBLE' | translate }}"
         )
