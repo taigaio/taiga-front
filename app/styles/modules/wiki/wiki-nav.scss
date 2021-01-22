@@ -1,5 +1,6 @@
 .wiki-nav {
     @include sidebar-narrow-width;
+    background-color: $color-gray100;
     padding: 0;
     .title {
         @include font-size(larger);
@@ -22,6 +23,7 @@
             width: 28px;
             svg {
                 height: 1rem;
+                margin: 0;
                 width: 1rem;
             }
         }

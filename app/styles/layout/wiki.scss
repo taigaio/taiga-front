@@ -4,3 +4,18 @@
         margin-bottom: 0;
     }
 }
+
+.wiki-list-header {
+    h1 {
+        align-items: center;
+        display: flex;
+
+        span:last-child {
+            margin-left: .5rem;
+        }
+    }
+}
+
+.wiki-main {
+    padding-top: 2rem;
+}
