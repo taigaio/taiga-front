@@ -73,7 +73,7 @@ ItemWysiwyg = ($modelTransform, $rootscope, $confirm, attachmentsFullService, $t
                 <tg-wysiwyg
                     ng-if="editableDescription && project"
                     project="project"
-                    placeholder='{{"COMMON.DESCRIPTION.EMPTY" | translate}}'
+                    placeholder="'COMMON.DESCRIPTION.EMPTY '| translate"
                     version='version'
                     storage-key='storageKey'
                     content='item.description'

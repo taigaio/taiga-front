@@ -42,7 +42,7 @@ CommentWysiwyg = ($modelTransform, $rootscope, attachmentsFullService) ->
             us: "us"
             issue: "issue",
             task: "task",
-        }  
+        }
 
         $scope.onChange = (markdown) ->
             $scope.vm.type.comment = markdown
@@ -69,7 +69,7 @@ CommentWysiwyg = ($modelTransform, $rootscope, attachmentsFullService) ->
                     required
                     not-persist
                     project="vm.project"
-                    placeholder='{{"COMMENTS.TYPE_NEW_COMMENT" | translate}}'
+                    placeholder="'COMMENTS.TYPE_NEW_COMMENT '| translate"
                     storage-key='storageKey'
                     content='content'
                     on-save='saveComment(text, cb)'

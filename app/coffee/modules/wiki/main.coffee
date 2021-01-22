@@ -111,6 +111,7 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
 
         promise.then null, (xhr) =>
             @scope.wikiId = null
+            @scope.attachmentsReady = true
 
             if @scope.project.my_permissions.indexOf("add_wiki_page") == -1
                 return null
@@ -278,6 +279,7 @@ $qqueue, $repo, $analytics, activityService) ->
             <div>
                 <tg-wysiwyg
                     ng-if="editableDescription"
+                    placeholder="'COMMON.DESCRIPTION.EMPTY '| translate"
                     version='version'
                     project="project"
                     storage-key='storageKey'

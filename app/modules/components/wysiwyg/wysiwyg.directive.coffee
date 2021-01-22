@@ -162,7 +162,7 @@ Wysiwyg = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoa
 
             if notPersist
                 clean()
-            else 
+            else
                 $scope.markdown = $scope.content
                 setHtmlEditor($scope.content || '')
 
@@ -263,7 +263,7 @@ Wysiwyg = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoa
         scope: {
             editonly: '<',
             project: '<',
-            placeholder: '@',
+            placeholder: '<',
             version: '<',
             storageKey: '<',
             content: '<',
