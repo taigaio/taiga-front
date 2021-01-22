@@ -2,7 +2,8 @@
     .project-list-title
         h1(translate="PROJECTS.MY_PROJECTS")
         .create-options
-            a.create-project-btn.button-green(
+            a.create-project-btn.btn-small(
+                variant="primary"
                 href="#"
                 tg-nav="create-project"
                 title="{{'PROJECT.NAVIGATION.ACTION_CREATE_PROJECT' | translate}}"
@@ -55,7 +56,7 @@
                                 p.project-description {{ ::project.get('description') | limitTo:300 }}
                                     span(ng-if="::project.get('description').length > 300") ...
 
-                    tg-svg.drag(svg-icon="icon-drag")
+                    tg-svg.drag(svg-icon="icon-draggable")
 
         aside.help-area
             p(translate="PROJECT.HELP")
