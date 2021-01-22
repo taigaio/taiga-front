@@ -102,6 +102,7 @@
         }
     }
     .button-auth {
+        color: $color-white;
         display: block;
     }
     .button-blackish {
@@ -121,7 +122,7 @@
 
     .contrib-plugins-wrapper {
         label {
-            color: $whitish;
+            color: $color-white;
         }
     }
 }
