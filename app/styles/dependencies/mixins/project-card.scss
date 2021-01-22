@@ -1,6 +1,6 @@
 @mixin project-card {
-    background: $white;
-    border: 1px solid $whitish;
+    background: $color-white;
+    border: 1px solid $color-gray100;
     margin: .5rem;
     .tags-container {
         display: flex;
@@ -11,18 +11,15 @@
     }
     .project-card-inner {
         padding: 1rem;
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        width: 100%;
     }
     .project-card-description {
         @include font-size(small);
         @include font-type(regular);
-        color: $gray;
+        color: $color-black600;
     }
     .project-card-statistics {
         display: flex;
+        gap: .5rem;
         margin-top: auto;
         svg {
             &:not(.icon-private) {
@@ -30,7 +27,6 @@
             }
             &.icon-private {
               @include svg-size(1.2rem);
-              margin-left: 1em;
             }
             fill: currentColor;
         }
@@ -38,15 +34,11 @@
     .statistic {
         @include font-size(small);
         align-items: center;
-        color: $gray-light;
+        color: $color-black600;
         display: flex;
-        margin-right: .5rem;
-        text-align: center;
-        span {
-            margin-left: .2rem;
-        }
+        gap: .25rem;
         &.active {
-            color: $primary;
+            color: $color-link-tertiary;
             svg {
                 fill: currentColor;
             }
@@ -56,7 +48,7 @@
         display: flex;
         flex-grow: 0;
         .icon-badge {
-          fill: $primary-light;
+          fill: $color-link-primary;
         }
     }
     .project-card-logo {
@@ -71,14 +63,13 @@
         }
     }
     .project-card-name {
-        line-height: 1.25;
+        @include font-size(large);
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: .25rem;
         a {
-            @include font-size(large);
-            @include font-size(large);
-            color: $grey-90;
-            &:hover {
-                color: $primary;
-            }
+            color: $color-black600;
         }
     }
 }

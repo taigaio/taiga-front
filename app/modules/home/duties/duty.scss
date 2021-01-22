@@ -2,12 +2,11 @@
 .watching {
     margin-bottom: 2rem;
     .duty-single {
-        border-bottom: 1px solid $whitish;
+        border-bottom: 1px solid $color-gray100;
         cursor: pointer;
         transition: background .2s;
-        transition-delay: .2s;
         &:hover {
-            background: $primary-10;
+            background: $color-gray100;
             .button-hide {
                 opacity: 1;
             }
@@ -21,8 +20,8 @@
             display: flex;
             flex-direction: row;
             &.blocked {
-                background: $red-10;
-                color: $red;
+                background: $color-solid-red;
+                color: $color-link-red;
             }
         }
     }
@@ -31,16 +30,10 @@
         margin: 2rem 30%;
     }
     .button-hide {
-        color: $gray;
         opacity: 0;
-        padding: .5rem;
         svg {
-            fill: $gray-lighter;
-            height: 24px;
-            width: 24px;
-        }
-        &:hover svg {
-            fill: $primary-light;
+            @include svg-size(1.4rem);
+            fill: $color-black600;
         }
     }
 }

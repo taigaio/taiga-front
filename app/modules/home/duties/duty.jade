@@ -3,12 +3,12 @@ a.list-itemtype-ticket(
     title="{{ ::duty.get('subject') }}"
     ng-class="{'blocked': vm.duty.get('is_blocked'), 'blocked-project': vm.duty.getIn(['project', 'blocked_code'])}"
 )
-    div.list-itemtype-avatar(ng-if="vm.type == 'working-on'")
+    .list-itemtype-avatar(ng-if="vm.type == 'working-on'")
         img(
             tg-project-logo-small-src="::vm.duty.get('project')"
             title="{{ ::vm.duty.getIn(['project', 'name']) }}"
         )
-    div.list-itemtype-avatar(ng-if="vm.type == 'watching'")
+    .list-itemtype-avatar(ng-if="vm.type == 'watching'")
         img(
             ng-if="vm.duty.get('assigned_to_extra_info')"
             title="{{ ::vm.duty.get('assigned_to_extra_info').get('full_name_display') }}"
@@ -19,20 +19,20 @@ a.list-itemtype-ticket(
             src="/#{v}/images/unnamed.png"
             title="{{'ACTIVITY.VALUES.UNASSIGNED' | translate}}"
         )
-    div.list-itemtype-ticket-data
-        p
+    .list-itemtype-ticket-data
+        .list-itemtype-ticket-data-meta
             span.ticket-project {{ ::vm.duty.getIn(['project', 'name']) }}
 
             span.ticket-type {{ ::vm.getDutyType() }}
             span.ticket-status(ng-style="{'color': vm.duty.get('status_extra_info').get('color')}") {{ ::vm.duty.get('status_extra_info').get('name') }}
+            span.ticket-blocked
+                tg-svg(
+                    ng-if="vm.duty.getIn(['project', 'blocked_code'])"
+                    svg-icon="icon-blocked-project",
+                    svg-title-translate="PROJECT.BLOCKED_PROJECT.BLOCKED"
+                )
 
-            tg-svg(
-                ng-if="vm.duty.getIn(['project', 'blocked_code'])"
-                svg-icon="icon-blocked-project",
-                svg-title-translate="PROJECT.BLOCKED_PROJECT.BLOCKED"
-            )
-
-        h2
+        .list-itemtype-ticket-data-title
             span.ticket-id(tg-bo-ref="duty.get('ref')")
             span.ticket-title
                 span.ticket-blocked(
@@ -41,7 +41,15 @@ a.list-itemtype-ticket(
                 ) {{ 'COMMON.BLOCKED' | translate }}
                 span(ng-bind-html="duty.get('subject') | emojify")
     div(ng-switch="vm.isHidden")
-        span.button-hide(ng-switch-when="false", title="{{ 'HOME.SET_HIDDEN' | translate }}")
+        button.btn-link.button-hide(
+            variant='icon'
+            ng-switch-when="false"
+            title="{{ 'HOME.SET_HIDDEN' | translate }}"
+        )
             tg-svg(svg-icon="icon-unwatch")
-        span.button-hide(ng-switch-when="true", title="{{ 'HOME.SET_VISIBLE' | translate }}")
+        button.btn-link.button-hide(
+            variant='icon'
+            ng-switch-when="true"
+            title="{{ 'HOME.SET_VISIBLE' | translate }}"
+        )
             tg-svg(svg-icon="icon-watch")

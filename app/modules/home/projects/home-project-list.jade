@@ -70,7 +70,8 @@ section.home-project-list(ng-if="vm.projects.size")
                     title="{{ 'PROJECT.PRIVATE' | translate }}"
                 )
                     tg-svg(svg-icon="icon-private")
-    a.see-more-projects-btn.button-gray(
+    a.btn-small.see-more-projects-btn(
+        variant="primary"
         href="#",
         ng-show="vm.projects.size",
         tg-nav="projects",
@@ -81,8 +82,9 @@ section.home-project-list(ng-if="vm.projects.size")
 section.projects-empty(ng-if="vm.projects != undefined && vm.projects.size === 0")
     tg-svg(svg-icon="icon-project")
     p(translate="HOME.EMPTY_PROJECT_LIST")
-    a.create-project-button.button-green(
-        href="#"
+    a.btn-small.create-project-button(
+        variant="primary"
+        href="#",
         tg-nav="create-project"
         title="{{'PROJECT.NAVIGATION.TITLE_CREATE_PROJECT' | translate}}"
         translate="PROJECT.NAVIGATION.ACTION_CREATE_PROJECT"

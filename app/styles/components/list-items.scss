@@ -3,20 +3,19 @@
 // Common styles for all list items
 @mixin list-itemtype-common {
     @include list-itemtype-track;
-    border-bottom: 1px solid $whitish;
+    border-bottom: 1px solid $color-gray100;
     display: flex;
     padding: .5rem;
-    padding-right: 0;
-    h2 {
-        @include font-type(regular);
-        line-height: 1.4;
-        margin-bottom: 0;
+    .list-itemtype-ticket-data-title {
+        color: $color-black600;
+        margin-block-start: .25rem;
         text-transform: none;
     }
-    p {
-        @include font-type(regular);
+    .list-itemtype-ticket-data-meta {
+        align-items: center;
         display: flex;
-        margin-bottom: 0;
+        flex-wrap: wrap;
+        gap: .25rem;
     }
     .list-itemtype-avatar {
         flex-basis: 3rem;
@@ -24,6 +23,7 @@
         margin-right: .75rem;
         min-width: 3rem;
         img {
+            border-radius: 50%;
             width: 100%;
         }
     }
@@ -35,11 +35,6 @@
 .list-itemtype-project {
     @include list-itemtype-common;
     justify-content: space-between;
-    h2 {
-        @include font-size(large);
-        align-items: center;
-        display: flex;
-    }
     .icon-blocked-project {
         @include svg-size(.75rem);
     }
@@ -87,29 +82,22 @@
 .list-itemtype-ticket {
     @include list-itemtype-common;
     position: relative;
-    h2 {
-        @include font-size(medium);
-    }
-    .ticket-type,
-    .ticket-project {
-        margin-right: .3rem;
-    }
     .ticket-type {
-        margin-left: .3rem;
+        color: $color-link-tertiary;
         text-transform: uppercase;
     }
     .ticket-project {
-        color: $gray-light;
+        color: $default-tags;
     }
     .list-itemtype-ticket-data {
         flex: 1;
         margin-right: 1rem;
     }
     .ticket-id {
-        color: $gray-light;
+        color: $color-link-primary;
     }
     .ticket-blocked {
-        color: $red;
+        color: $color-link-red;
         margin-right: .25rem;
     }
 }
@@ -117,12 +105,8 @@
 
 .list-itemtype-user {
     @include list-itemtype-common;
-    h2 {
-        @include font-size(large);
-    }
     .extra-info {
         @include font-size(small);
-        @include font-type(regular);
         margin-top: .25rem;
     }
 }
