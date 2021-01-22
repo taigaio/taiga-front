@@ -7,7 +7,7 @@ form
         .bulk-status-selector-wrapper
             button.bulk-status-selector(
                 type="button"
-                ng-click="displayStatus()"
+                ng-click="toggleStatus()"
                 ng-style="{'background-color': currentStatus.color}"
             )
                 span {{ currentStatus.name }}

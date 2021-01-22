@@ -333,6 +333,9 @@ CreateBulkUserstoriesDirective = ($repo, $rs, $rootscope, lightboxService, $load
                 status.id == $scope.new.statusId
             ).pop()
 
+        $scope.toggleStatus = () ->
+            $scope.displayStatusSelector = !$scope.displayStatusSelector
+
         $scope.displayStatus = () ->
             $scope.displayStatusSelector = true
 
