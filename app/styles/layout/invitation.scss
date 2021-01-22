@@ -1,13 +1,18 @@
 .invitation-main {
-    @include background-taiga;
     align-content: center;
     align-items: center;
+    background-color: $color-link-primary;
     background-size: cover;
     display: flex;
     flex: 1;
     height: 100vh;
     justify-content: center;
     z-index: $first-layer;
+    .btn-small {
+        &.full {
+            width: 100%;
+        }
+    }
     .invitation-container {
         align-items: center;
         display: flex;
@@ -92,7 +97,8 @@
         padding-bottom: 1rem;
         text-align: left;
         a {
-            color: $primary;
+            color: $color-white;
+            text-decoration: underline;
         }
     }
     .button-auth {

@@ -47,7 +47,8 @@ form.register-form
     tg-terms-of-service-and-privacy-policy-notice(target="dataRegister.accepted_terms")
 
     fieldset
-        button.button-register.button-green.button-large.button-block(
+        button.btn-small.full(
+            variant="primary"
             type="submit"
             ng-disabled="dataRegister.accepted_terms == false"
             title="{{'REGISTER_FORM.ACTION_SIGN_UP' | translate}}"
