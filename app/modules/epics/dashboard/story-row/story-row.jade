@@ -2,20 +2,14 @@
     ng-class="{'is-blocked': vm.story.get('is_blocked'), 'is-closed': vm.story.get('is_closed')}"
     ng-hide="!vm.options.closed_us && vm.story.get('is_closed')"
 )
-    .vote(
-        ng-if="vm.options.votes"
-        ng-class="{'is-voter': vm.story.get('is_voter')}"
-    )
-        tg-svg(svg-icon='icon-upvote')
-        span {{::vm.story.get('total_voters')}}
-
     .name(ng-if="vm.options.name")
         - var hash = "#";
         a(
             tg-nav="project-userstories-detail:project=vm.story.getIn(['project_extra_info', 'slug']),ref=vm.story.get('ref')"
             ng-attr-title="{{::vm.story.get('subject')}}"
-            ng-bind-html="'#'+vm.story.get('ref')+' '+vm.story.get('subject') | emojify"
         )
+            span.ref(ng-bind-html="'#'+vm.story.get('ref')")
+            span.subject(ng-bind-html="vm.story.get('subject') | emojify")
         tg-belong-to-epics(
             ng-if="vm.story.get('epics')"
             format="pill"
@@ -28,6 +22,7 @@
         img(
             tg-project-logo-small-src="::vm.story.get('project_extra_info')"
             alt="{{::vm.story.getIn(['project_extra_info', 'name'])}}"
+            title="{{::vm.story.getIn(['project_extra_info', 'name'])}}"
         )
     .sprint(ng-if="vm.options.sprint") {{::vm.story.get('milestone_name')}}
     .assigned(ng-if="vm.options.assigned && vm.story.get('assigned_to')")

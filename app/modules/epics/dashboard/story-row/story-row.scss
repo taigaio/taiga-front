@@ -5,15 +5,15 @@
     @include epics-table;
     align-items: center;
     background: $white;
-    border-bottom: 1px solid $whitish;
+    border-radius: 3px;
     display: flex;
-    margin-left: 4rem;
+    margin-left: 5rem;
     transition: background .2s;
     &:hover {
-        background-color: $primary-10;
+        background-color: $color-gray100;
     }
     &.is-blocked {
-        background: $red-light;
+        background: $color-solid-red;
         a,
         span,
         div {
@@ -34,6 +34,20 @@
         flex-basis: 17.5vw;
         a {
             cursor: pointer;
+
+            &:hover {
+                .ref,
+                .subject {
+                    color: $color-link-primary;
+                }
+            }
+        }
+        .subject {
+            color: $color-black600;
+            margin-left: .25rem;
+        }
+        tg-belong-to-epics {
+            margin-left: .5rem;
         }
     }
     .progress-bar,
@@ -49,29 +63,30 @@
         width: 100%;
     }
     .progress-status {
-        background-color: $secondary;
+        background-color: $color-link-primary;
         width: 10vw;
     }
-    .vote {
-        color: $gray;
-        &.is-voter {
-            color: $primary-light;
-            fill: $primary-light;
-        }
-    }
     .project {
+        align-items: center;
         cursor: pointer;
+        display: flex;
+        justify-content: center;
     }
     .project,
     .assigned {
         img {
-            width: 40px;
+            width: 30px;
         }
     }
-    .icon-upvote {
-        @include svg-size(.75rem);
-        fill: $gray;
-        margin-right: .25rem;
-        vertical-align: middle;
+    .assigned {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        img {
+            border-radius: 50%;
+            height: 2rem;
+            overflow: hidden;
+            width: 2rem;
+        }
     }
 }

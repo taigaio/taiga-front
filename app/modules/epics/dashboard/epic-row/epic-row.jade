@@ -4,32 +4,26 @@
     ng-hide="!vm.options.closed && vm.epic.get('is_closed')"
 )
     tg-svg.icon-drag(
-        svg-icon="icon-drag"
+        svg-icon="icon-draggable"
         ng-if="vm.canEditEpics()"
     )
 
-    .vote(
-        ng-if="vm.options.votes"
-        ng-class="{'is-voter': vm.epic.get('is_voter')}"
-    )
-        tg-svg(svg-icon='icon-upvote')
-        span {{::vm.epic.get('total_voters')}}
-
     .name(ng-if="vm.options.name")
+        .fold-us
+            tg-svg(
+                svg-icon="icon-chevron-down"
+                ng-if="vm.epic.getIn(['user_stories_counts', 'total'])"
+            )
+        span.epic-pill(
+            ng-style="::{'background-color': vm.epic.get('color')}"
+        )
         - var hash = "#";
         a(
             tg-nav="project-epics-detail:project=vm.project.slug,ref=vm.epic.get('ref')"
             ng-attr-title="{{::vm.epic.get('subject')}}"
-            ng-bind-html="'#'+vm.epic.get('ref')+' '+vm.epic.get('subject') | emojify"
         )
-        span.epic-pill(
-            ng-style="::{'background-color': vm.epic.get('color')}"
-            translate="EPICS.EPIC"
-        )
-        tg-svg(
-            svg-icon="icon-arrow-down"
-            ng-if="vm.epic.getIn(['user_stories_counts', 'total'])"
-        )
+            span.ref(ng-bind-html="'#'+vm.epic.get('ref')")
+            span.subject(ng-bind-html="vm.epic.get('subject') | emojify")
 
     .project(ng-if="vm.options.project")
 

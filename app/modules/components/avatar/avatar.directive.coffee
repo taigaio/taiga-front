@@ -28,8 +28,8 @@ AvatarDirective = (avatarService) ->
             avatar = avatarService.getAvatar(user, attributeName)
 
             el.attr('src', avatar.url)
-            el.attr('title', "#{avatar.username}")
-            el.attr('alt', "#{avatar.username}")
+            el.attr('title', "#{avatar.fullName}")
+            el.attr('alt', "#{avatar.fullName}")
             el.css('background', avatar.bg or "")
 
     return {

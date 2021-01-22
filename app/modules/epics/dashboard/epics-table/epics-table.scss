@@ -16,10 +16,12 @@
 .epics-table-header {
     @include epics-table;
     @include font-type(medium);
-    border-bottom: 1px solid $gray-light;
     display: flex;
-    padding: .5rem;
+    padding-left: 1rem;
     position: relative;
+    > div {
+        color: $color-link-tertiary;
+    }
     .project,
     .assigned {
         padding: 1rem .5rem;
@@ -35,7 +37,9 @@
 .epics-table-option-button {
     @include font-type(regular);
     @include font-size(small);
+    align-items: center;
     background: none;
+    display: flex;
     .icon {
         @include svg-size(.7rem);
     }
@@ -50,7 +54,7 @@
     padding: .5rem;
     position: absolute;
     right: 0;
-    top: 1.3rem;
+    top: 1rem;
     width: 250px;
     z-index: $first-layer;
     &.ng-hide-remove {
