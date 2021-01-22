@@ -15,7 +15,16 @@
 .attachment-full {
     .attachment-settings {
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-end;
+
+        > div,
+        .settings {
+            margin-right: .75rem;
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
     }
 }
 
