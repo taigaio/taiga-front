@@ -26,7 +26,7 @@
     "gitLabUrl": "${GITLAB_URL}",
     "tagManager": { "accountId": null },
     "tribeHost": null,
-    "enableAsanaImporter": False,
+    "enableAsanaImporter": false,
     "enableGithubImporter": ${ENABLE_GITHUB_IMPORTER},
     "enableJiraImporter": ${ENABLE_JIRA_IMPORTER},
     "enableTrelloImporter": ${ENABLE_TRELLO_IMPORTER},

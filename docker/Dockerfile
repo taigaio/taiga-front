@@ -10,9 +10,9 @@ RUN set -eux; \
     apk add --no-cache --virtual .build-deps \
        subversion; \
     # Install taiga-front core
-    wget https://github.com/taigaio/taiga-front-dist/archive/taiga-6.zip; \
-    unzip taiga-6.zip; \
-    mv /taiga-front-dist-taiga-6 /taiga-6; \
+    wget https://github.com/taigaio/taiga-front-dist/archive/master.zip; \
+    unzip master.zip; \
+    mv /taiga-front-dist-master /taiga-6; \
     mv /conf.json.template taiga-6/dist/; \
     chmod +x /docker-entrypoint.d/30_config_env_subst.sh; \
     # Install taiga-front contribs
@@ -24,7 +24,7 @@ RUN set -eux; \
     cd /; \
     # Remove unused dependencies
     apk del --no-cache .build-deps; \
-    rm taiga-6.zip; \
+    rm master.zip; \
     # Ready for nginx
     mv /taiga-6/dist/* /usr/share/nginx/html; \
     rm -rf /taiga-6
