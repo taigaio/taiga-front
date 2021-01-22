@@ -83,11 +83,11 @@
     @include list-itemtype-common;
     position: relative;
     .ticket-type {
-        color: $color-black600;
+        color: $color-link-tertiary;
         text-transform: uppercase;
     }
     .ticket-project {
-        color: $color-black900;
+        color: $default-tags;
     }
     .list-itemtype-ticket-data {
         flex: 1;
@@ -97,7 +97,7 @@
         color: $color-link-primary;
     }
     .ticket-blocked {
-        color: $red;
+        color: $color-link-red;
         margin-right: .25rem;
     }
 }

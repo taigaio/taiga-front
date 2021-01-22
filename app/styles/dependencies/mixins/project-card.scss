@@ -33,9 +33,10 @@
     }
     .statistic {
         @include font-size(small);
+        align-items: center;
         color: $color-black600;
         display: flex;
-        align-items: center;
+        gap: .25rem;
         &.active {
             color: $color-link-tertiary;
             svg {
@@ -47,7 +48,7 @@
         display: flex;
         flex-grow: 0;
         .icon-badge {
-          fill: $color-link-tertiary;
+          fill: $color-link-primary;
         }
     }
     .project-card-logo {
