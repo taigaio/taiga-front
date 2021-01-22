@@ -107,12 +107,8 @@
         color: $gray-light;
     }
     .more-attachments-num {
-        color: $primary;
+        color: $color-link-primary;
         margin-left: .5rem;
-    }
-    &:hover {
-        background: $primary-lighter;
-        transition: background .2s ease-in;
     }
 }
 
