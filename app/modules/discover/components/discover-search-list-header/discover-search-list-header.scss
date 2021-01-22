@@ -12,15 +12,20 @@
     .title {
         @include font-type(medium);
         @include font-size(larger);
+        align-self: center;
+        display: flex;
         text-transform: uppercase;
     }
     h2 {
         display: inline-block;
+        margin-bottom: 0;
     }
 }
 
 .filter-discover-search {
+    display: flex;
     .discover-search-filter {
+        display: flex;
         margin-right: 1rem;
         &.active {
             color: $primary;
@@ -75,11 +80,11 @@
             padding: .5rem 1rem;
             transition: all .2s;
             &:hover {
-                background: $gray-light;
-                color: currentColor;
+                background: $grey-10;
+                color: $gray;
             }
             &.active {
-                background: $primary-light;
+                background: $color-link-primary;
                 color: $white;
             }
         }

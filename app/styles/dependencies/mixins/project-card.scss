@@ -33,7 +33,6 @@
               margin-left: 1em;
             }
             fill: currentColor;
-            margin-right: .25rem;
         }
     }
     .statistic {
@@ -41,6 +40,7 @@
         color: $gray-light;
         display: inline-block;
         margin-right: .5rem;
+        text-align: center;
         &.active {
             color: $primary;
             svg {

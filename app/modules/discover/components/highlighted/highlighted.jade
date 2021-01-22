@@ -51,7 +51,8 @@
             p.project-description {{ ::project.get('description') | limitTo:150 }}{{ ::project.get('description').length < 150 ? '' : '...'}}
 
     div(ng-if="!loading")
-        a.view-more-projects.button-green(
+        a.view-more-projects.btn-small(
+            variant="secondary"
             ng-if="highlighted"
             tg-nav="discover-search"
             tg-nav-get-params="{\"order_by\": \"{{orderBy}}\"}"
