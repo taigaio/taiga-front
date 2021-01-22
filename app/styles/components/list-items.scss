@@ -15,6 +15,7 @@
     }
     p {
         @include font-type(regular);
+        display: flex;
         margin-bottom: 0;
     }
     .list-itemtype-avatar {
@@ -26,6 +27,9 @@
             width: 100%;
         }
     }
+    .ticket-status {
+        margin-right: .25rem;
+    }
 }
 
 .list-itemtype-project {
@@ -33,6 +37,8 @@
     justify-content: space-between;
     h2 {
         @include font-size(large);
+        align-items: center;
+        display: flex;
     }
     .icon-blocked-project {
         @include svg-size(.75rem);
@@ -47,7 +53,6 @@
             fill: $gray-light;
             height: 22px;
             margin-left: .5rem;
-            padding-top: .5rem;
             width: 22px;
         }
     }

@@ -29,13 +29,6 @@ div.profile.centered(ng-if="vm.user")
                 div(tg-profile-liked, user="vm.user")
 
             div(
-                tg-profile-tab="{{'USER.PROFILE.TABS.VOTES_TAB' | translate}}"
-                tab-title="{{'USER.PROFILE.TABS.VOTES_TAB_TITLE' | translate}}"
-                tab-icon="icon-upvote"
-            )
-                div(tg-profile-voted, user="vm.user")
-
-            div(
                 tg-profile-tab="{{'USER.PROFILE.TABS.WATCHED_TAB' | translate}}"
                 tab-title="{{'USER.PROFILE.TABS.WATCHED_TAB_TITLE' | translate}}"
                 tab-icon="icon-watch"

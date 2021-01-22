@@ -1,9 +1,10 @@
 .profile-content-tabs {
     border-top: 1px solid $whitish;
+    display: flex;
     z-index: $first-layer;
     .tab {
         color: $gray-light;
-        display: inline-block;
+        display: flex;
         padding: 1rem;
         &:hover,
         &.active {
