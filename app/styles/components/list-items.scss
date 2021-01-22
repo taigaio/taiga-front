@@ -8,6 +8,7 @@
     padding: .5rem;
     .list-itemtype-ticket-data-title {
         color: $color-black600;
+        margin-block-start: .25rem;
         text-transform: none;
     }
     .list-itemtype-ticket-data-meta {
@@ -82,17 +83,18 @@
     @include list-itemtype-common;
     position: relative;
     .ticket-type {
+        color: $color-black600;
         text-transform: uppercase;
     }
     .ticket-project {
-        color: $color-black600;
+        color: $color-black900;
     }
     .list-itemtype-ticket-data {
         flex: 1;
         margin-right: 1rem;
     }
     .ticket-id {
-        color: $color-black600;
+        color: $color-link-primary;
     }
     .ticket-blocked {
         color: $red;
