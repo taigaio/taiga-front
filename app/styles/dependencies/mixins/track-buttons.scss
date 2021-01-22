@@ -3,7 +3,7 @@
 @mixin list-itemtype-track {
     .list-itemtype-track {
         @include font-size(small);
-        color: $grey-70;
+        color: $color-link-primary;
         display: flex;
         flex-shrink: 0;
         justify-content: flex-end;
@@ -13,19 +13,20 @@
     }
     .list-itemtype-track-likers,
     .list-itemtype-track-watchers {
+        align-items: center;
         display: flex;
         .icon {
             display: block;
             margin-right: .25rem;
         }
         &.active {
-            color: $primary;
+            color: $color-link-primary;
             .icon {
                 fill: currentcolor;
             }
         }
     }
     .icon {
-        fill: $gray-light;
+        fill: $color-link-primary;
     }
 }

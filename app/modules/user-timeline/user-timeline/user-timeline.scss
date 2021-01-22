@@ -9,14 +9,10 @@
         }
         a,
         .username {
-            color: $primary;
             &:first-child {
                 @include font-type(medium);
                 color: $gray;
             }
-        }
-        a:hover {
-            color: $primary-light;
         }
         blockquote {
             line-height: 1.4rem;
@@ -26,6 +22,10 @@
             overflow-x: auto;
             overflow-y: hidden;
             white-space: pre-line;
+
+            a {
+                display: flex;
+            }
         }
         img {
             max-height: 640px;
