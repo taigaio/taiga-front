@@ -83,9 +83,13 @@
     }
     .statistic {
         @include font-size(small);
+        align-self: start;
         color: $gray-light;
-        display: inline-block;
+        display: flex;
         margin-right: .5rem;
+        span {
+            margin-left: .2rem;
+        }
         svg {
             fill: $gray-light;
             stroke: $gray-light;

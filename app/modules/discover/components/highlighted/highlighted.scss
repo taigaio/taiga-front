@@ -183,6 +183,7 @@
         margin-bottom: 0;
     }
     .project-statistics {
+        align-items: flex-start;
         display: flex;
         flex-basis: 140px;
         justify-content: flex-end;
@@ -194,9 +195,13 @@
     }
     .statistic {
         @include font-size(small);
+        align-items: center;
         color: $gray-light;
-        display: inline-block;
+        display: flex;
         margin-right: .5rem;
+        span {
+            margin-left: .2rem;
+        }
         &.active {
             color: $primary;
             svg {
