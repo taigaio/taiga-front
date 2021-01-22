@@ -32,11 +32,11 @@
             transition: all .2s;
             transition-delay: .2s;
             &.active {
-                background: $primary-light;
+                background: $color-link-primary;
                 color: $white;
             }
             &:hover {
-                background: $whitish;
+                background: $grey-10;
                 color: $gray;
             }
         }

@@ -186,10 +186,10 @@
         display: flex;
         flex-basis: 140px;
         justify-content: flex-end;
+        text-align: center;
         svg {
             @include svg-size(.75rem);
             fill: $gray-light;
-            margin-right: .25rem;
         }
     }
     .statistic {

@@ -16,7 +16,7 @@
     .project-number {
         @include font-type(regular);
         @include font-size(large);
-        color: $primary;
+        color: $color-black600;
     }
     form {
         margin: 0 30%;

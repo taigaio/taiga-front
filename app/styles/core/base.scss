@@ -17,7 +17,6 @@ body {
     @include font-type(regular);
     line-height: 1.25;
     min-height: 100%;
-    outline: 1px dotted $color-link-primary;
     overflow-x: hidden;
     width: 100%;
     .master {
