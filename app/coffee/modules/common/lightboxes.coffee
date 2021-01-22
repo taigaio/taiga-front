@@ -334,15 +334,11 @@ CreateBulkUserstoriesDirective = ($repo, $rs, $rootscope, lightboxService, $load
             ).pop()
 
         $scope.displayStatus = () ->
-            if (timeout)
-                $timeout.cancel(timeout)
-                timeout = null
             $scope.displayStatusSelector = true
 
         $scope.hideStatus = () ->
-            timeout = $timeout (() ->
-                $scope.displayStatusSelector = false
-            ), 1000
+            $scope.displayStatusSelector = false
+            $scope.$apply()
 
         $scope.setStatus = (status) =>
             $scope.new.statusId = status.id
@@ -395,6 +391,16 @@ CreateBulkUserstoriesDirective = ($repo, $rs, $rootscope, lightboxService, $load
         submitButton = $el.find(".submit-button")
 
         $el.on "submit", "form", submit
+
+        $el.on "click", (event) =>
+            target = angular.element(event.target)
+
+            parentNodes = _.filter(target.parents(), (parent) ->
+                return parent.className == "bulk-status-selector-wrapper"
+            )
+
+            if (!parentNodes.length)
+                $scope.hideStatus()
 
         $scope.$on "$destroy", ->
             $el.off()
