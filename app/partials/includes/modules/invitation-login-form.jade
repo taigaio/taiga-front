@@ -36,10 +36,10 @@ form.login-form
             translate="LOGIN_COMMON.ACTION_ENTER"
         )
 
-    .contrib-plugins-wrapper(ng-if="contribPlugins.filter((p) => { p.type == 'auth' }).length")
+    .contrib-plugins-wrapper(ng-if="authPlugins.length")
         label(translate="LOGIN_COMMON.ALT_LOGIN")
 
         fieldset(
-            ng-repeat="plugin in contribPlugins|filter:{type: 'auth'}"
+            ng-repeat="plugin in authPlugins"
             ng-include="plugin.template"
         )
