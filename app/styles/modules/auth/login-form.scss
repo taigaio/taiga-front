@@ -12,16 +12,20 @@
         }
     }
 
+    a {
+        color: $color-black600;
+    }
+
     .forgot-pass {
         @include font-size(small);
-        color: $gray;
+        color: $color-black600;
         opacity: 1;
         position: absolute;
         right: 1rem;
         top: .6rem;
         transition: all .3s linear;
         &:hover {
-            color: $grayer;
+            color: $color-black800;
             transition: color .3s linear;
         }
     }

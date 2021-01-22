@@ -15,10 +15,12 @@ div.forgot-form-container(tg-forgot-password)
                 data-required="true"
                 placeholder="{{'FORGOT_PASSWORD_FORM.PLACEHOLDER_FIELD' | translate}}"
             )
-        fieldset.end
-            button.btn-big(
+        fieldset
+            button.btn-small.full(
+                variant="primary"
                 title="{{'FORGOT_PASSWORD_FORM.ACTION_RESET_PASSWORD' | translate}}"
                 translate="FORGOT_PASSWORD_FORM.ACTION_RESET_PASSWORD"
             )
 
-        a(href="", tg-nav="login", translate="FORGOT_PASSWORD_FORM.LINK_CANCEL")
+        .register-text
+            a(href="", tg-nav="login", translate="FORGOT_PASSWORD_FORM.LINK_CANCEL")
