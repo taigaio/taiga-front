@@ -14,10 +14,6 @@ mixin epicSwitch(name, model)
 
 .epics-table.e2e-epic-table
     .epics-table-header.e2e-epics-table-header
-        .vote(
-            translate="EPICS.TABLE.VOTES"
-            ng-if="vm.options.votes"
-        )
         .name(
             translate="EPICS.TABLE.NAME"
         )
@@ -51,12 +47,6 @@ mixin epicSwitch(name, model)
                 ng-show="vm.displayOptions"
                 ng-mouseenter="vm.keepEpicTableOption()"
             )
-                .fieldset
-                    label.epics-table-options-vote(
-                        translate="EPICS.TABLE.VOTES"
-                        for="epicSwitch-votes"
-                    )
-                    +epicSwitch('switch-votes', 'vm.options.votes')
                 .fieldset
                     label.epics-table-options-vote(
                         translate="EPICS.TABLE.PROJECT"

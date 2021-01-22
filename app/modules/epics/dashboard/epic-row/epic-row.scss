@@ -4,13 +4,17 @@
     @include epics-table;
     @include font-size(small);
     align-items: center;
-    background: $white;
-    border-bottom: 1px solid $whitish;
+    background: $color-gray100;
+    border-radius: 3px;
     cursor: move;
     display: flex;
+    margin-bottom: .5rem;
+    padding-left: 1rem;
+    position: relative;
     transition: background .2s;
+    &.unfold,
     &:hover {
-        background-color: $primary-10;
+        background-color: $color-gray200;
         .icon-drag {
             opacity: 1;
         }
@@ -19,7 +23,7 @@
         cursor: pointer;
     }
     &.is-blocked {
-        background: $red-light;
+        background: $color-solid-red;
         a,
         span,
         div {
@@ -39,33 +43,59 @@
             }
         }
     }
+    .fold-us {
+        margin-left: .75rem;
+        width: 25px;
+    }
     .name {
+        align-items: center;
+        display: flex;
+        padding-left: 0;
+        a {
+            &:hover {
+                .ref,
+                .subject {
+                    color: $color-link-primary;
+                }
+            }
+        }
+        .subject {
+            color: $color-black600;
+            margin-left: .25rem;
+        }
         .icon {
             transform: rotate(180deg);
             transition: all .2s;
         }
     }
     .icon-drag {
-        @include svg-size(.75rem);
+        @include svg-size(1rem);
         cursor: move;
-        fill: $whitish;
+        fill: $color-link-primary;
+        left: .5rem;
         opacity: 0;
+        position: absolute;
         transition: opacity .1s;
     }
     .epic-pill {
         @include font-type(regular);
         @include font-size(xsmall);
         background: $grayer;
-        border-radius: .25rem;
+        border-radius: 6px;
         color: $white;
+        height: 12px;
         margin: 0 .5rem;
         padding: .1rem .25rem;
+        width: 12px;
     }
     .status {
         cursor: pointer;
         position: relative;
         button {
+            align-items: center;
             background: none;
+            display: flex;
+            margin: 0 auto;
         }
     }
     .icon-arrow-down {
@@ -87,26 +117,19 @@
         width: 100%;
     }
     .progress-status {
-        background-color: $secondary;
+        background-color: $color-link-primary;
         width: 10vw;
     }
-    .vote {
-        color: $gray;
-        &.is-voter {
-            color: $primary-light;
-            fill: $primary-light;
-        }
-    }
     .assigned {
+        align-items: center;
+        display: flex;
+        justify-content: center;
         img {
-            width: 40px;
+            border-radius: 50%;
+            height: 2rem;
+            overflow: hidden;
+            width: 2rem;
         }
-    }
-    .icon-upvote {
-        @include svg-size(.75rem);
-        fill: $gray;
-        margin-right: .25rem;
-        vertical-align: middle;
     }
     .is-unassigned {
         color: $gray-light;
@@ -137,4 +160,12 @@
             }
         }
     }
+    .loading-spinner {
+        height: 10px;
+        width: 10px;
+    }
+}
+
+.epic-stories-wrapper {
+    margin-bottom: .5rem;
 }

@@ -8,7 +8,7 @@
                 i18n-section-name="{{vm.sectionName}}"
             )
             .action-buttons(ng-if="vm.epics.size && vm.canCreateEpics()")
-                button.button-green.e2e-create-epic(
+                button.btn-big.e2e-create-epic(
                     translate="EPICS.DASHBOARD.ADD"
                     title="{{ EPICS.DASHBOARD.ADD_TITLE | translate }}",
                     ng-click="vm.onCreateEpic()"
@@ -31,7 +31,7 @@
                 target="_blank"
                 ng-title="EPICS.EMPTY.HELP | translate"
             )
-            button.create-epic.button-green(
+            button.create-epic.btn-big(
                 ng-if="vm.canCreateEpics()"
                 translate="EPICS.DASHBOARD.ADD"
                 title="{{ EPICS.DASHBOARD.ADD_TITLE | translate }}"
