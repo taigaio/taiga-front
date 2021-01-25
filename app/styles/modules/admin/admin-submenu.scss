@@ -12,6 +12,7 @@
             display: flex;
             justify-content: space-between;
             padding: 1rem 0 1rem 1rem;
+            transition: none;
             span {
                 display: block;
                 max-width: 85%;
@@ -34,5 +35,10 @@
         &:hover {
             background-color: $blackish;
         }
+    }
+
+    .btn-small {
+        display: flex;
+        margin: 0 1rem;
     }
 }

@@ -15,7 +15,8 @@ div.wrapper.roles(
         header.header-with-actions
             include ../includes/components/mainTitle
             .action-buttons
-                a.button-green.hidden.add-webhook(
+                a.btn-small.hidden.add-webhook(
+                    variant="primary"
                     href=""
                     title="{{'ADMIN.WEBHOOKS.ADD_NEW' | translate}}"
                     translate="ADMIN.WEBHOOKS.ADD_NEW"
@@ -41,7 +42,7 @@ div.wrapper.roles(
                                     data-required="true"
                                     ng-model="webhook.name"
                                     placeholder="{{'ADMIN.WEBHOOKS.TYPE_NAME' | translate}}"
-                                )    
+                                )
                             .webhook-url
                                 .webhook-url-inputs
                                     fieldset
@@ -131,7 +132,7 @@ div.wrapper.roles(
                                             textarea(
                                                 name="headers"
                                                 ng-bind="log.prettySentHeaders"
-                                            )   
+                                            )
 
                                         .response-container
                                             span.response-title(translate="ADMIN.WEBHOOKS.PAYLOAD")

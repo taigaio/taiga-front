@@ -21,7 +21,7 @@ UserSettingsNavigationDirective = ->
     link = ($scope, $el, $attrs) ->
         section = $attrs.tgUserSettingsNavigation
         $el.find(".active").removeClass("active")
-        $el.find("#usersettingsmenu-#{section} a").addClass("active")
+        $el.find("#usersettingsmenu-#{section}").addClass("active")
 
         $scope.$on "$destroy", ->
             $el.off()

@@ -2,7 +2,11 @@ section.project-values-table
 
     div.project-values-title
         h2 {{sectionName | translate}}
-        a.button.button-gray.show-add-new(href="", title="{{'ADMIN.PROJECT_VALUES_POINTS.ACTION_ADD' | translate}}")
+        a.btn-small.show-add-new(
+            variant="primary"
+            href="",
+            title="{{'ADMIN.PROJECT_VALUES_POINTS.ACTION_ADD' | translate}}"
+        )
             span(translate="ADMIN.PROJECT_VALUES_POINTS.ACTION_ADD")
 
     div.project-values-header

@@ -6,5 +6,10 @@ section.admin-submenu.admin-submenu-roles(ng-if="roles")
                   span.single-role {{ item.name }}
 
         div(tg-new-role)
-            a.button-gray.add-button(href="", title="{{'ADMIN.SUBMENU_ROLES.TITLE_ACTION_NEW_ROLE' | translate}}", translate="ADMIN.SUBMENU_ROLES.ACTION_NEW_ROLE")
+            a.btn-small.add-button(
+                variant="primary"
+                href="",
+                title="{{'ADMIN.SUBMENU_ROLES.TITLE_ACTION_NEW_ROLE' | translate}}",
+                translate="ADMIN.SUBMENU_ROLES.ACTION_NEW_ROLE"
+            )
             input(type="text", class="hidden new")

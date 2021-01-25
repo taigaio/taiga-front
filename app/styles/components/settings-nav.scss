@@ -1,7 +1,20 @@
 .settings-nav {
     @include sidebar-narrow-width;
+
+    background: $color-gray100;
     padding: 0;
     .active {
-        background: $white;
+        @include font-type(medium);
+        background: $color-white;
+        a {
+            color: $color-link-primary;
+        }
+        &:hover {
+            background: $color-white;
+            a {
+                @include font-type(medium);
+                color: $color-link-tertiary;
+            }
+        }
     }
 }

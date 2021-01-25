@@ -2,7 +2,11 @@ section.colors-table
 
     div.project-values-title
         h2 {{ sectionName | translate }}
-        a.button.button-gray.show-add-new(href="", title="{{ addNewElementText }}")
+        a.btn-small.show-add-new(
+            variant="primary"
+            href="",
+            title="{{ addNewElementText }}"
+        )
             span(ng-bind="addNewElementText")
 
     div.table-header

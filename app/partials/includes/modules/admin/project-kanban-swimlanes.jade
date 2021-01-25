@@ -1,7 +1,8 @@
 section.admin-kanban-powerups
     div.project-values-title
         h2 {{ sectionName | translate }}
-        button.button.button-primary(
+        button.btn-small(
+            variant="primary"
             translate="ADMIN.PROJECT_KANBAN_OPTIONS.ACTION_ADD_SWIMLANE"
             ng-click="displaySwimlaneForm()"
         )
