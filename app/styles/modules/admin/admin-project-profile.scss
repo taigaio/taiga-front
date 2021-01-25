@@ -47,7 +47,7 @@
     .private-or-public {
         @include font-size(x-small);
         color: $gray-light;
-        margin-bottom: 2rem;
+        display: flex;
         svg {
             @include svg-size(1.1rem);
             fill: $gray-light;
@@ -55,8 +55,19 @@
             vertical-align: middle;
         }
     }
-    .tags-container .tag {
-        display: inline-block;
+    .tags-container {
+        align-items: flex-end;
+        display: flex;
+        flex-wrap: wrap;
+        gap: .5rem;
+        margin-right: .25rem;
+        width: 100%;
+        .tag {
+            @include font-size(small);
+            align-items: center;
+            display: inline-flex;
+            min-height: 2rem;
+        }
     }
     .button-full {
         width: 100%;
@@ -84,7 +95,7 @@
         text-align: center;
         transition: all .2s linear;
         &:hover {
-            background: rgba($primary-light, .4);
+            background: rgba($color-link-primary, .4);
             color: $grayer;
             svg {
                 fill: $grayer;
@@ -105,11 +116,11 @@
     .privacy-project:checked {
         + label {
             @include font-type(regular);
-            background: $primary-light;
-            color: $white;
+            background: $color-link-primary;
+            color: $color-white;
             svg {
                 @include svg-size(1.1rem);
-                fill: $white;
+                fill: $color-white;
             }
         }
         ~input[type='text'] {
@@ -137,7 +148,7 @@ tg-admin-project-restrictions {
         text-align: center;
     }
     a {
-        color: $primary;
+        color: $color-link-primary;
     }
     span {
         display: block;
@@ -164,9 +175,9 @@ tg-admin-project-restrictions {
     justify-content: space-between;
     padding-top: 1rem;
     a {
-        color: $primary;
+        color: $color-link-primary;
         &:hover {
-            color: $primary-light;
+            color: $color-link-primary;
             transition: color .2s;
         }
     }

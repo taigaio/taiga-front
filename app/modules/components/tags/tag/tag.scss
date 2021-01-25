@@ -1,5 +1,5 @@
 .tag {
-    @include font-size(xsmall);
+    @include font-size(small);
     @include ellipsis(20ch);
     background: $default-tags;
     border-radius: 2px;

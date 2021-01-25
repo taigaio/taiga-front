@@ -17,6 +17,8 @@
 .help-markdown,
 .help-button {
     @include font-size(xsmall);
+
+    display: flex;
     &:hover {
         span {
             transition: color .2s linear;
