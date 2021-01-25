@@ -70,7 +70,8 @@ div(tg-discover-search)
                             tg-svg(svg-icon="icon-team")
                             span.statistics-num {{ ::project.get('members').size }}
 
-            a.button-green.more-results(
+            a.btn-small.more-results(
+                variant="secondary"
                 tg-loading="vm.loadingPagination"
                 href="#"
                 ng-click="vm.showMore()"

@@ -203,9 +203,9 @@
             margin-left: .2rem;
         }
         &.active {
-            color: $primary;
+            color: $color-link-primary;
             svg {
-                fill: $primary;
+                fill: $color-link-primary;
             }
         }
     }
