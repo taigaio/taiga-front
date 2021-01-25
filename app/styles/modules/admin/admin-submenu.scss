@@ -37,8 +37,9 @@
         }
     }
 
-    .btn-small {
+    .btn-menu-full {
         display: flex;
         margin: 0 1rem;
+        width: calc(100% - 2rem);
     }
 }

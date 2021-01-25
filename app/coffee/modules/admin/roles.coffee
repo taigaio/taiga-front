@@ -239,7 +239,7 @@ NewRoleDirective = ($tgrepo, $confirm) ->
         $scope.$on "$destroy", ->
             $el.off()
 
-        $el.on "click", "a.add-button", (event) ->
+        $el.on "click", "button.add-button", (event) ->
             event.preventDefault()
             $el.find(".new").removeClass("hidden")
             $el.find(".new").focus()
