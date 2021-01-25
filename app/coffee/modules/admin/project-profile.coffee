@@ -361,7 +361,7 @@ ProjectExportDirective = ($window, $rs, $confirm, $translate, $analytics) ->
             hideResult()
             showButtons()
 
-        $el.on "click", "a.button-export", debounce 2000, (event) =>
+        $el.on "click", ".button-export", debounce 2000, (event) =>
             event.preventDefault()
 
             onSuccess = (result) =>

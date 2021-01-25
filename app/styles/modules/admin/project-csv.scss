@@ -11,6 +11,7 @@
         margin-bottom: 1rem;
         a {
             @include font-size(small);
+            display: flex;
             margin-left: 1em;
             white-space: nowrap;
         }

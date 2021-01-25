@@ -19,7 +19,7 @@ div.wrapper(
         form.module-container
             .module.module-epics(ng-class="{true:'active', false:''}[project.is_epics_activated]")
                 .module-icon
-                    tg-svg(svg-icon="icon-epics")
+                    tg-svg(svg-icon="icon-module-epic")
                 .module-name(translate="ADMIN.MODULES.EPICS")
                 .module-desc
                     p(translate="ADMIN.MODULES.EPICS_DESCRIPTION")
@@ -37,7 +37,7 @@ div.wrapper(
                         span.check-text.check-no(translate="COMMON.NO")
             .module.module-scrum(ng-class="{true:'active', false:''}[project.is_backlog_activated]")
                 .module-icon
-                    tg-svg(svg-icon="icon-scrum")
+                    tg-svg(svg-icon="icon-module-scrum")
                 .module-name(translate="ADMIN.MODULES.BACKLOG")
                 .module-desc
                     p(translate="ADMIN.MODULES.BACKLOG_DESCRIPTION")
@@ -83,7 +83,7 @@ div.wrapper(
 
             .module.module-kanban(ng-class="{true:'active', false:''}[project.is_kanban_activated]")
                 .module-icon
-                    tg-svg(svg-icon="icon-kanban")
+                    tg-svg(svg-icon="icon-module-kanban")
                 .module-name(translate="ADMIN.MODULES.KANBAN")
                 .module-desc(translate="ADMIN.MODULES.KANBAN_DESCRIPTION")
                 .module-activation.module-direct-active
@@ -101,7 +101,7 @@ div.wrapper(
 
             .module.module-issues(ng-class="{true:'active', false:''}[project.is_issues_activated]")
                 .module-icon
-                    tg-svg(svg-icon="icon-issues")
+                    tg-svg(svg-icon="icon-module-issues")
                 .module-name(translate="ADMIN.MODULES.ISSUES")
                 .module-desc(translate="ADMIN.MODULES.ISSUES_DESCRIPTION")
                 .module-activation.module-direct-active
@@ -119,7 +119,7 @@ div.wrapper(
 
             .module.module-wiki(ng-class="{true:'active', false:''}[project.is_wiki_activated]")
                 .module-icon
-                    tg-svg(svg-icon="icon-wiki")
+                    tg-svg(svg-icon="icon-module-wiki")
                 .module-name(translate="ADMIN.MODULES.WIKI")
                 .module-desc(translate="ADMIN.MODULES.WIKI_DESCRIPTION")
                 .module-activation.module-direct-active
@@ -137,7 +137,7 @@ div.wrapper(
 
             .module.module-videoconference(ng-class="{true:'active', false:''}[isVideoconferenceActivated]")
                 .module-icon
-                    tg-svg(svg-icon="icon-meetup")
+                    tg-svg(svg-icon="icon-module-meet")
                 .module-name(translate="ADMIN.MODULES.MEETUP")
                 .module-desc
                     p(translate="ADMIN.MODULES.MEETUP_DESCRIPTION")
