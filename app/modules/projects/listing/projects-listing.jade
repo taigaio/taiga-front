@@ -31,7 +31,7 @@
                                     alt="{{::project.get('name')}}"
                                 )
                             .list-itemtype-project-data
-                                h2
+                                .list-itemtype-data-title
                                     a.project-title(
                                         href="#"
                                         tg-nav="project:project=project.get('slug'),section=project.get('my_homepage')"
@@ -53,7 +53,7 @@
                                         svg-title-translate="PROJECT.BLOCKED_PROJECT.BLOCKED"
                                     )
 
-                                p.project-description {{ ::project.get('description') | limitTo:300 }}
+                                .list-itemtype-data-meta.project-description {{ ::project.get('description') | limitTo:300 }}
                                     span(ng-if="::project.get('description').length > 300") ...
 
                     tg-svg.drag(svg-icon="icon-draggable")

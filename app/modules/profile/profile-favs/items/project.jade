@@ -12,7 +12,7 @@
                 )
 
             .list-itemtype-project-data
-                h2
+                .list-itemtype-data-title
                     a.list-itemtype-project-name(
                         href="#"
                         tg-nav="project:project=vm.item.get('slug'),section=vm.item.get('my_homepage')"
@@ -30,7 +30,7 @@
                         svg-icon="icon-blocked-project"
                         svg-title-translate="PROJECT.BLOCKED_PROJECT.BLOCKED"
                     )
-                p.list-itemtype-project-description {{ ::vm.item.get('description') }}
+                .list-itemtype-data-meta.list-itemtype-project-description {{ ::vm.item.get('description') }}
 
     .list-itemtype-track
         span.list-itemtype-track-likers(
