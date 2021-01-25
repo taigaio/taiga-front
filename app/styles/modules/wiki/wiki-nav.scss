@@ -14,7 +14,7 @@
     .add-button {
         align-items: center;
         display: inline-flex;
-        margin: 1rem 1rem 1rem 1.75rem;
+        margin: 1rem 1rem 1rem .75rem;
         @include until($widescreen) {
             margin: .5rem .75rem;
         }
@@ -52,19 +52,31 @@
         text-align: center;
     }
 }
-.wiki-link {
+
+.menu-secondary .wiki-link {
+    @include font-type(regular);
+
     align-items: center;
-    border-bottom: 1px solid $whitish;
+    border-bottom: 1px solid $color-gray200;
     display: flex;
     justify-content: space-between;
-    margin-left: 1rem;
+    margin-left: 0;
     padding-left: .75rem;
     padding-right: 1rem;
     position: relative;
+    text-transform: uppercase;
     @include until($widescreen) {
-        margin-left: 0;
+        padding-left: .75rem;
+    }
+    &:last-child {
+        border-bottom: 0;
     }
     &:hover {
+        background: $color-white;
+        a {
+            @include font-type(regular);
+            color: $color-link-tertiary;
+        }
         .remove-wiki-page {
             cursor: pointer;
             opacity: 1;
@@ -77,6 +89,11 @@
             transition: opacity .2s linear;
             transition-delay: .1s;
         }
+    }
+    a {
+        color: $color-link-tertiary;
+        display: block;
+        padding: 1rem 0 1rem 1rem;
     }
     &.gu-mirror {
         border-bottom: 0;
@@ -112,4 +129,5 @@
             }
         }
     }
+
 }

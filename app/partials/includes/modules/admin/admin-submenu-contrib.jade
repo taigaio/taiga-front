@@ -1,10 +1,12 @@
 section.admin-submenu
     nav
         ul
-            li#adminmenu-contrib(ng-repeat="plugin in adminPlugins")
+            li#adminmenu-contrib(
+                ng-repeat="plugin in adminPlugins",
+                ng-class="{active: plugin.slug == currentPlugin.slug}"
+            )
                 a(
                     href=""
                     tg-nav="project-admin-contrib:project=projectSlug,plugin=plugin.slug"
-                    ng-class="{active: plugin.slug == currentPlugin.slug}"
                 )
                     span.title {{ plugin.name }}

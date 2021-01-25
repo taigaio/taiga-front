@@ -1,16 +1,19 @@
 ul
-    li
+    li(
+        ng-class="{active: !filtersRole.id}"
+    )
         a(
-            ng-class="{active: !filtersRole.id}"
             ng-click="ctrl.setRole()"
             href=""
         )
           span.title(translate="TEAM.SECTION_FILTER_ALL")
           tg-svg(svg-icon="icon-arrow-right")
 
-    li(ng-repeat="role in roles")
+    li(
+        ng-repeat="role in roles"
+        ng-class="{active: role.id == filtersRole.id}"
+    )
         a(
-            ng-class="{active: role.id == filtersRole.id}"
             ng-click="ctrl.setRole(role)"
             href=""
         )

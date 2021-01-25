@@ -1,28 +1,57 @@
-.team-filters {
+.menu-secondary .team-filters {
     .search-in {
         margin-bottom: 1rem;
         position: relative;
     }
     li {
         @include font-size(large);
-        @include font-type(regular);
-        border-bottom: 1px solid $gray-light;
+        border-bottom: 1px solid $color-gray200;
         text-transform: uppercase;
         &:last-child {
             border-bottom: 0;
         }
         .icon {
-            fill: $blackish;
+            fill: $color-black900;
             opacity: 0;
             transition: opacity .3s linear;
+        }
+        &:hover {
+            background: $color-white;
+            a {
+                @include font-type(regular);
+                color: $color-link-tertiary;
+            }
+        }
+        &.active {
+            @include font-type(medium);
+            background: $color-white;
+            a {
+                color: $color-link-primary;
+            }
+            .icon {
+                fill: $color-link-primary;
+                opacity: 1;
+            }
+            &:hover {
+                background: $color-white;
+                a {
+                    @include font-type(medium);
+                    color: $color-link-tertiary;
+                }
+                .icon {
+                    fill: $color-link-tertiary;
+                    opacity: 1;
+                }
+            }
         }
     }
     a {
         align-content: center;
         align-items: center;
+        color: $color-link-tertiary;
         display: flex;
         justify-content: space-between;
-        padding: 1rem .5rem 1rem 1rem;
+        padding: 1rem;
         &:hover,
         &.active {
             transition: color .3s linear;
@@ -32,8 +61,5 @@
             }
         }
     }
-    .active {
-        opacity: 1;
-        transition: opacity .3s linear;
-    }
+
 }
