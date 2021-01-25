@@ -45,8 +45,7 @@ If you **need help to setup Taiga**, want to **talk about some cool enhancement*
 
 If you **find a bug** in Taiga you can always report it:
 
-- in our [mailing list](http://groups.google.com/d/forum/taigaio).
-- in [github issues](https://github.com/taigaio/taiga-front/issues).
+- in [Taiga issues](https://tree.taiga.io/project/taiga/issues)
 - send us a mail to support@taiga.io if is a bug related to [tree.taiga.io](https://tree.taiga.io).
 - send a mail to security@taiga.io if is a **security bug**.
 
@@ -61,10 +60,9 @@ We are gathering lots of information from our users to build and enhance our doc
 
 Currently, we have authored three main documentation hubs:
 
-- **[API Docs](https://github.com/taigaio/taiga-doc)**: Our API documentation and reference for developing from Taiga API.
-- **[Installation Guide](https://github.com/taigaio/taiga-doc)**: If you need to install Taiga on your own server, this is the place to find some guides.
-- **[Taiga Support](https://github.com/taigaio/taiga-doc)**: This page is intended to be the support reference page for the users. If you find any mistake, please report it.
-
+- **[API](https://taigaio.github.io/taiga-doc/dist/api.html)**: Our API documentation and reference for developing from Taiga API.
+- **[Documentation](https://taigaio.github.io/taiga-doc/dist/)**: If you need to install Taiga on your own server, this is the place to find some guides.
+- **[Taiga Resources](https://resources.taiga.io)**: This page is intended to be the support reference page for the users. If you find any mistake, please report it.
 
 #### Translation ####
 
@@ -98,7 +96,7 @@ To subscribe for announcements of releases, important changes and so on, please 
 
 ## Setup ##
 
-All the information about the different installation methods (production, development, vagrant, docker...) can be found here http://taigaio.github.io/taiga-doc/dist/#_installation_guide.
+All the information about the different installation methods can be found here https://taigaio.github.io/taiga-doc/dist/#installation-guide.
 
 #### Initial dev env ####
 
