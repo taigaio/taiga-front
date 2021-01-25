@@ -1,6 +1,6 @@
-ul.tags-dropdown
+ul.tags-dropdown(ng-if="(colorArray | filter:tag.name:strict).length > 0")
     li(
-        ng-repeat="tag in colorArray | filter: tag.name",
+        ng-repeat="tag in colorArray | filter:tag.name:strict",
         ng-click="onSelectTag({name: tag[0], color: tag[1]})"
     )
         .tags-dropdown-option
