@@ -11,17 +11,17 @@
         margin-bottom: .2rem;
     }
     .project-details-image {
-        flex-shrink: 0;
         flex-grow: 0;
-        width: 180px;
+        flex-shrink: 0;
         margin-right: 2rem;
+        width: 180px;
         .image {
             width: 100%;
         }
     }
     .image-container {
-        position: relative;
         margin-bottom: .5rem;
+        position: relative;
     }
     .loading-overlay {
         display: none;

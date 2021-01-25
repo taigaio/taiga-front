@@ -60,23 +60,42 @@ tg-svg {
 }
 
 .menu-secondary {
-    background-color: $color-white;
+    background: $color-gray100;
     border-right: 1px solid darken($grey-02, 3%);
     flex: 0 0 auto;
     min-height: $main-height;
     min-width: 0;
-    padding: 1rem;
+    padding: 0;
     .search-in {
         margin-top: .5rem;
     }
     .settings-nav {
         background-color: $grey-05;
     }
+
+    li {
+        background: $color-gray100;
+        padding: 0;
+        .active {
+            @include font-type(medium);
+            background: $color-white;
+            a {
+                color: $color-link-primary;
+            }
+            &:hover {
+                background: $color-white;
+                a {
+                    @include font-type(medium);
+                    color: $color-link-tertiary;
+                }
+            }
+        }
+    }
 }
 
 .menu-tertiary {
     @include sidebar-narrow-width;
-    background-color: $tertiary;
+    background-color: $color-gray400;
     border-right: 1px solid darken($tertiary, 3%);
     flex: 0 0 auto;
     min-height: $main-height;
@@ -86,12 +105,21 @@ tg-svg {
         }
         &:hover,
         &:hover a {
-            background: lighten($tertiary, 3%);
-            color: lighten($grey-70, 5%);
+            background: $color-gray300;
+            color: $color-link-tertiary;
         }
-        .active {
-            background: lighten($tertiary, 6%);
-            color: lighten($grey-70, 10%);
+        &.active {
+            background: $color-link-primary;
+            a {
+                @include font-type(medium);
+                background: $color-gray300;
+                color: $color-link-primary;
+                &:hover,
+                &:hover a {
+                    background: $color-gray300;
+                    color: $color-link-tertiary;
+                }
+            }
         }
     }
 }

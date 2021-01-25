@@ -6,8 +6,16 @@
         &:last-child {
             border-bottom: 0;
         }
+        &:hover {
+            background: $color-white;
+            a {
+                @include font-type(regular);
+                color: $color-link-tertiary;
+            }
+        }
     }
     a {
+        color: $color-link-tertiary;
         display: block;
         padding: 1rem 0 1rem 1rem;
     }

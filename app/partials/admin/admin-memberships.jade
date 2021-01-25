@@ -20,7 +20,8 @@ div.wrapper.memberships(
             .action-buttons(
                     ng-if="canAddUsers == true"
                 )
-                button.button-green(
+                button.btn-small(
+                    variant="primary"
                     translate="ADMIN.MEMBERSHIPS.ADD_BUTTON"
                     title="{{ ADMIN.MEMBERSHIPS.ADD_BUTTON_TITLE | translate }}",
                     ng-click="ctrl.addNewMembers()"

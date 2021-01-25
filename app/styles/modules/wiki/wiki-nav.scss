@@ -3,8 +3,9 @@
     background-color: $color-gray100;
     padding: 0;
     .title {
-        @include font-size(larger);
-        padding: 2rem 1rem 0 1.5rem;
+        @include font-size(medium);
+        color: $color-black900;
+        padding: 2rem 1rem 0 1rem;
         @include until($widescreen) {
             font-size: 1.5rem;
             padding: 2rem .75rem 0;

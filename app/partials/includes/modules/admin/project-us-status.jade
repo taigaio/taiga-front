@@ -2,7 +2,10 @@ section.project-us-status
 
     div.project-values-title
         h2 {{ sectionName | translate }}
-        a.button.button-gray.show-add-new(href="", title="{{'ADMIN.US_STATUS.ACTION_ADD_STATUS' | translate}}")
+        button.btn-small.show-add-new(
+            variant="primary"
+            title="{{'ADMIN.US_STATUS.ACTION_ADD_STATUS' | translate}}"
+        )
             span(translate="ADMIN.US_STATUS.ACTION_ADD_STATUS")
 
     div.colors-table

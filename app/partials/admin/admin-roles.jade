@@ -14,7 +14,10 @@ div.wrapper.roles(ng-controller="RolesController as ctrl",
         header.header-with-actions
             include ../includes/components/mainTitle
             .action-buttons(ng-if="!role.external_user")
-                a.button-red.delete-role(href="", title="{{'COMMON.DELETE' | translate}}", ng-click="ctrl.delete()")
+                button.btn-small(
+                    variant="destructive"
+                    title="{{'COMMON.DELETE' | translate}}",
+                    ng-click="ctrl.delete()")
                     span(translate="COMMON.DELETE")
 
 
