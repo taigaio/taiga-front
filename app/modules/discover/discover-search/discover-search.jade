@@ -37,7 +37,7 @@ div(tg-discover-search)
                                 alt="{{::project.get('name')}}"
                             )
                         .list-itemtype-project-data
-                            h2
+                            .list-itemtype-data-title
                                 a(
                                     href="#"
                                     tg-nav="project:project=project.get('slug'),section=project.get('my_homepage')"
@@ -48,7 +48,7 @@ div(tg-discover-search)
                                     svg-icon="icon-recruit"
                                     svg-title="{{ ::project.get('looking_for_people_note') }}"
                                 )
-                            p {{ ::project.get('description') | limitTo:300 }}
+                            .list-itemtype-data-meta {{ ::project.get('description') | limitTo:300 }}
                                 span(ng-if="::project.get('description').length > 300") ...
                     .list-itemtype-project-right.project-statistics
                         span.statistic(
