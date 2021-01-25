@@ -20,7 +20,7 @@ a.list-itemtype-ticket(
             title="{{'ACTIVITY.VALUES.UNASSIGNED' | translate}}"
         )
     .list-itemtype-ticket-data
-        .list-itemtype-ticket-data-meta
+        .list-itemtype-data-meta
             span.ticket-project {{ ::vm.duty.getIn(['project', 'name']) }}
 
             span.ticket-type {{ ::vm.getDutyType() }}
@@ -32,7 +32,7 @@ a.list-itemtype-ticket(
                     svg-title-translate="PROJECT.BLOCKED_PROJECT.BLOCKED"
                 )
 
-        .list-itemtype-ticket-data-title
+        .list-itemtype-data-title
             span.ticket-id(tg-bo-ref="duty.get('ref')")
             span.ticket-title
                 span.ticket-blocked(

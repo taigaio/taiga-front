@@ -6,12 +6,12 @@
     border-bottom: 1px solid $color-gray100;
     display: flex;
     padding: .5rem;
-    .list-itemtype-ticket-data-title {
+    .list-itemtype-data-title {
         color: $color-black600;
         margin-block-start: .25rem;
         text-transform: none;
     }
-    .list-itemtype-ticket-data-meta {
+    .list-itemtype-data-meta {
         align-items: center;
         display: flex;
         flex-wrap: wrap;
@@ -35,6 +35,12 @@
 .list-itemtype-project {
     @include list-itemtype-common;
     justify-content: space-between;
+    .list-itemtype-data-title {
+        @include font-size(large);
+        align-items: center;
+        display: flex;
+        gap: .25rem;
+    }
     .icon-blocked-project {
         @include svg-size(.75rem);
     }

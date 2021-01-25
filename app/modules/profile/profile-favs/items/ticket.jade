@@ -21,7 +21,7 @@
         )
 
     .list-itemtype-ticket-data
-        p
+        .list-itemtype-data-meta
             span.ticket-project
                 | {{:: vm.item.get('project_name') }}
             span.ticket-type(
@@ -46,7 +46,7 @@
                 svg-icon="icon-blocked-project"
                 svgTitleTranslate: "PROJECT.BLOCKED_PROJECT.BLOCKED"
             )
-        h2
+        .list-itemtype-data-title
             span.ticket-id(tg-bo-ref="vm.item.get('ref')")
             a.ticket-title(
                 href="#"
