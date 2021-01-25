@@ -14,8 +14,7 @@ div.wrapper
             .single-project-title-wrapper
                 .intro-options
                     .intro-title
-                        h1
-                            span.project-name {{::vm.project.get("name")}}
+                        h1.project-name  {{::vm.project.get("name")}}
                         tg-svg(
                             ng-if="::vm.project.get('is_private')"
                             svg-icon="icon-private"
