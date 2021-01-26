@@ -40,6 +40,7 @@
     .leave-project {
         @include font-size(small);
         color: $color-link-red;
+        display: flex;
         .icon {
             @include svg-size(.8rem);
             fill: currentColor;
@@ -92,6 +93,13 @@
         }
         .name {
             @include font-type(medium);
+            align-items: center;
+            display: flex;
+
+            tg-svg {
+                display: block;
+                margin-left: .5rem;
+            }
         }
         .position {
             @include font-type(regular);
