@@ -22,29 +22,24 @@
     .intro-title {
         align-items: center;
         display: flex;
+        gap: .25rem;
         .icon-private {
-            fill: $gray-light;
+            fill: $color-gray400;
             height: 24px;
-            margin-left: .25rem;
-            margin-top: 1rem;
             width: 24px;
         }
     }
-    h1 {
-        color: $primary;
-        display: inline-block;
-        line-height: 1.2;
+    .project-name {
+        color: $color-link-primary;
         margin-bottom: 0;
-        vertical-align: middle;
     }
     .private {
         @include svg-size(1.1rem);
     }
     .track-buttons-container {
+        align-items: center;
         display: flex;
-    }
-    .like-button {
-        margin-right: .75rem;
+        gap: .75rem;
     }
     .track-container {
         @include list-itemtype-track;
@@ -69,8 +64,17 @@
         padding: .5rem 1rem;
     }
     .single-project-tags {
+        align-items: center;
+        display: flex;
+        gap: .5rem;
         margin-bottom: 1rem;
         margin-top: 1rem;
+        .tag {
+            @include font-size(small);
+            align-items: center;
+            display: flex;
+            min-height: 2rem;
+        }
     }
     .timeline {
         flex: 1;
@@ -126,18 +130,17 @@
             display: block;
         }
         img {
-            border-radius: .2rem;
+            border-radius: 50%;
             width: 100%;
         }
         .icon-badge {
             @include svg-size(1.2rem);
             background-color: $white;
             bottom: 5%;
-            fill: $primary-light;
+            fill: $color-link-primary;
             padding: .1rem;
             position: absolute;
             right: 5%;
-            stroke: $primary-light;
         }
     }
 }
