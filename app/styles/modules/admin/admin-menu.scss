@@ -1,17 +1,17 @@
 .admin-menu {
     li {
         @include font-type(regular);
-        border-bottom: 1px solid $color-gray200;
+        border-bottom: 1px solid $default-tags;
         text-transform: uppercase;
-        &:last-child {
-            border-bottom: 0;
-        }
         &:hover {
             background: $color-white;
             a {
                 @include font-type(regular);
                 color: $color-link-tertiary;
             }
+        }
+        &:last-child {
+            border-bottom: 0;
         }
     }
     a {

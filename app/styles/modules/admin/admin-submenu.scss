@@ -1,7 +1,7 @@
 .admin-submenu {
     li {
         @include font-type(regular);
-        border-bottom: 1px solid $gray-light;
+        border-bottom: 1px solid $default-tags;
         text-transform: uppercase;
         &:last-child {
             border-bottom: 0;
