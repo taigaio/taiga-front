@@ -20,7 +20,7 @@
         .comment-container
             .comment-text.wysiwyg(
                 ng-if="!vm.editMode"
-                ng-bind-html="vm.comment.comment_html"
+                tg-bind-wysiwyg-html="vm.comment.comment"
             )
             .comment-editor(
                 ng-if="vm.editMode"

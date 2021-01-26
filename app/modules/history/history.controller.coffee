@@ -56,9 +56,6 @@ class HistorySectionController
         @rs.history.get(@.name, @.id, 'comment').then (comments) =>
             @.comments = _.filter(comments, (item) -> item.comment != "")
 
-            @.comments.forEach (item) =>
-                item.comment_html = @wysiwygService.refreshAttachmentURL(item.comment_html)
-
             if @.reverse
                 @.comments - _.reverse(@.comments)
             @.commentsNum = @.comments.length

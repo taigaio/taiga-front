@@ -38,6 +38,10 @@ Wysiwyg = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoa
         pageAttachments = $attachmentsFullService.attachments.toJS()
         editorLinks = []
 
+        $el.find('.js-wysiwyg-html').on 'click', (e) =>
+            if e.target.tagName != 'A'
+                $scope.$applyAsync () => setEditMode(true)
+
         linksEvents = () ->
             editorLinks = textEditor.querySelectorAll('a[target="_blank"]:not(.link-event)')
 
@@ -53,7 +57,7 @@ Wysiwyg = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoa
 
                     link.addEventListener 'click', (e) =>
                         if !$scope.editMode
-                            window.open(e.currentTarget.getAttribute('href'),'_blank');
+                            window.open(e.currentTarget.getAttribute('href'), '_blank');
 
         unwatchContent = $scope.$watch 'content', (content) ->
             if !_.isUndefined(content)
@@ -121,9 +125,10 @@ Wysiwyg = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoa
 
         setHtmlEditor = (markdown) ->
             if pageAttachments.length
-                markdown = wysiwygService.refreshAttachmentURLFromMarkdown(markdown)
-
-            textEditor.markdown = markdown
+                wysiwygService.refreshAttachmentURLFromMarkdown(markdown).then (markdown) =>
+                    textEditor.markdown = markdown
+            else
+                textEditor.markdown = markdown
 
         setEditMode = (editMode) ->
             $scope.editMode = editMode
@@ -132,11 +137,6 @@ Wysiwyg = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoa
                 textEditor.mode = $scope.mode
             else
                 textEditor.mode = 'html'
-
-        $scope.$on "attachments:loaded", (event, attachments) =>
-            if attachments && textEditor
-                pageAttachments = attachments.toJS()
-                setHtmlEditor($scope.markdown)
 
         $scope.save = (e) ->
             e.preventDefault() if e
@@ -261,6 +261,7 @@ Wysiwyg = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoa
     return {
         templateUrl: "common/components/wysiwyg-toolbar.html",
         scope: {
+            htmlReadMode: '<'
             editonly: '<',
             project: '<',
             placeholder: '<',

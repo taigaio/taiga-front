@@ -72,6 +72,7 @@ ItemWysiwyg = ($modelTransform, $rootscope, $confirm, attachmentsFullService, $t
             <div>
                 <tg-wysiwyg
                     ng-if="editableDescription && project"
+                    html-read-mode="true"
                     project="project"
                     placeholder="'COMMON.DESCRIPTION.EMPTY '| translate"
                     version='version'
