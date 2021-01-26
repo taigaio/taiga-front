@@ -3,7 +3,7 @@
 // Common styles for all list items
 @mixin list-itemtype-common {
     @include list-itemtype-track;
-    border-bottom: 1px solid $color-gray100;
+    border-bottom: 1px solid $color-gray400;
     display: flex;
     padding: .5rem;
     .list-itemtype-data-title {
