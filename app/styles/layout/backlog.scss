@@ -13,6 +13,8 @@
         grid-template-columns: 9fr;
     }
     .empty-large {
+        display: flex;
+        flex-direction: column;
         margin: 4rem auto;
     }
 }
