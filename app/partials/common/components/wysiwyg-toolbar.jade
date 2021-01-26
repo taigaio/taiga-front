@@ -1,8 +1,13 @@
-.editor(ng-class="{'edit-mode': editMode, 'read-mode': !editMode}")
+.editor(ng-class="{'edit-mode': editMode, 'read-mode': !editMode, 'html-read-mode': htmlReadMode}")
     div(ng-if="outdated")
         p.outdated {{'COMMON.WYSIWYG.OUTDATED' | translate}}
 
+    .wysiwyg.js-wysiwyg-html(
+        tg-bind-wysiwyg-html="markdown"
+    )
+
     .editor-wrapper
+
     .mode-editor(ng-if="editMode")
         a.help-markdown(
             ng-if="mode=='markdown'"

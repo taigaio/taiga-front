@@ -79,6 +79,25 @@ tg-wysiwyg {
             margin: 1rem 0;
         }
     }
+    .wysiwyg {
+        display: none;
+    }
+    .html-read-mode.edit-mode {
+        .editor-wrapper {
+            display: block;
+        }
+        .wysiwyg {
+            display: none;
+        }
+    }
+    .html-read-mode.read-mode {
+        .editor-wrapper {
+            display: none;
+        }
+        .wysiwyg {
+            display: block;
+        }
+    }
 }
 
 tg-html-editor .ck-content,

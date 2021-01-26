@@ -20,9 +20,15 @@
 CommentEditWysiwyg = (attachmentsFullService) ->
     link = ($scope, $el, $attrs) ->
         $scope.uploadFiles = (file, cb) ->
+            projectId = parseInt($scope.vm.projectId, 10)
+            object = parseInt($scope.vm.object, 10)
+
+            if !projectId
+                projectId = parseInt($scope.vm.project.id, 10)
+
             return attachmentsFullService.addAttachment(
-                parseInt($scope.vm.projectId, 10),
-                parseInt($scope.vm.object, 10),
+                projectId,
+                object,
                 attachmentsFullService.types[$scope.vm.name],
                 file,
                 true,

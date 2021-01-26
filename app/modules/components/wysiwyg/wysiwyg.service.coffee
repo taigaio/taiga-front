@@ -21,10 +21,13 @@ class WysiwygService
     @.$inject = [
         "tgProjectService",
         "tgAttachmentsFullService",
+        "tgAttachmentsService"
     ]
 
-    constructor: (@projectService, @attachmentsFullService) ->
+    constructor: (@projectService, @attachmentsFullService, @attachmentsService) ->
         @.projectDataConversion = {}
+        # prevent duplicate calls to the same attachment
+        @.cache = {}
 
     getMarkdown: (html) ->
         projectId = @projectService.project.get('id')
@@ -48,11 +51,33 @@ class WysiwygService
 
         return @.projectDataConversion[projectId].toHtml(text)
 
+    getAttachmentData: (tokens) ->
+        return @attachmentsService.get(tokens[0], tokens[1]).then (response) => response.data.url
+
+    getCachedAttachment: (tokens) ->
+        attachmentId = parseInt(tokens[1], 10)
+
+        attachments = @attachmentsFullService.attachments.toJS()
+        attachment = attachments.find (attachment) => attachment.file.id == attachmentId
+
+        if attachment
+            return Promise.resolve(attachment.file.url)
+        else
+            cache_key = tokens[0] + tokens[1]
+            cached_result = @.cache[cache_key]
+
+            if cached_result
+                return Promise.resolve(cached_result)
+            else
+                return @.getAttachmentData(tokens).then (url) =>
+                    @.cache[cache_key] = url
+                    return url
+
     refreshAttachmentURLFromMarkdown: (markdown) ->
         html = @.getHTML(markdown)
-        html = @.refreshAttachmentURL(html)
 
-        return @.getMarkdown(html)
+        return @.refreshAttachmentURL(html).then (html) =>
+            return @.getMarkdown(html)
 
     refreshAttachmentURL: (html) ->
         el = document.createElement('html')
@@ -68,24 +93,21 @@ class WysiwygService
             "attr": "src",
         }
 
-        attachments = @attachmentsFullService.attachments.toJS()
-
-        if !attachments.length
-            return html
-
+        promises = []
         _.map [links, images], (tag) =>
             _.map tag.elements, (e) =>
                 if e.getAttribute(tag.attr).indexOf('#_taiga-refresh=') != -1
                     match = e.getAttribute(tag.attr).match(regex)
                     if match && match.length == 2
                         tokens = match[1].split(":")
-                        attachmentId = parseInt(tokens[1], 10)
-                        attachment = attachments.find (attachment) => attachment.file.id == attachmentId
 
-                        if attachment
-                            e.setAttribute(tag.attr, attachment.file.url)
+                        promise = @.getCachedAttachment(tokens).then (url) =>
+                            e.setAttribute(tag.attr, url)
 
-        return el.innerHTML
+                        promises.push(promise)
+
+        Promise.all(promises).then ->
+            return el.innerHTML
 
 angular.module("taigaComponents")
     .service("tgWysiwygService", WysiwygService)
