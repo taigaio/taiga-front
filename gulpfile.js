@@ -517,7 +517,7 @@ gulp.task("moment-locales", function() {
 });
 
 gulp.task("jslibs-watch", function() {
-    return gulp.src([paths.libs, paths.modules + "@highlightjs/cdn-assets/highlight.js"])
+    return gulp.src([...paths.libs, paths.modules + "@highlightjs/cdn-assets/highlight.js"])
         .pipe(plumber())
         .pipe(concat("libs.js"))
         .pipe(gulp.dest(paths.distVersion + "js/"));
