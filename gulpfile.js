@@ -185,7 +185,7 @@ paths.libs = [
     paths.modules + "awesomplete/awesomplete.js",
     paths.modules + "autolinker/dist/Autolinker.js",
     paths.modules + "dom-autoscroller/dist/dom-autoscroller.js",
-    paths.modules + "@highlightjs/cdn-assets/highlight.min.js",
+    // paths.modules + "@highlightjs/cdn-assets/highlight.min.js",
     paths.app + "js/dragula-drag-multiple.js",
     paths.app + "js/boards.js",
     paths.app + "js/tg-repeat.js",
