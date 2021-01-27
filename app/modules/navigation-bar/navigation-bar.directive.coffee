@@ -37,6 +37,8 @@ NavigationBarDirective = (currentUserService, navigationBarService, locationServ
         scope.vm.sendFeedback = () ->
             feedbackService.sendFeedback()
 
+        window._taigaSendFeedback = scope.vm.sendFeedback
+
         scope.$on "$routeChangeSuccess", () ->
             scope.vm.active = null
             path = locationService.path()
