@@ -39,6 +39,9 @@
             margin-bottom: 0;
         }
     }
+    .block-desc-container {
+        margin-bottom: .5rem;
+    }
     .relate-to-epic {
         flex-basis: 100%;
         margin: 0 1rem .5rem 0;
@@ -162,27 +165,31 @@
 }
 
 .block-desc-container {
-    padding: .25rem 0;
+    background: $color-link-red;
+    padding: .5rem .75rem;
     .blocked-sign {
-        align-items: center;
+        align-items: flex-start;
         display: flex;
         tg-svg {
-            fill: $color-link-red;
+            fill: $color-white;
         }
     }
     .block-description {
-        color: $color-link-tertiary;
         p {
+            color: $color-white;
             line-height: 1rem;
+            opacity: .8;
         }
     }
     .block-description-title {
         @include font-type(bold);
         @include font-size(small);
 
-        color: $color-link-red;
+        color: $color-white;
         height: 1rem;
         line-height: 1rem;
+        margin-top: .05rem;
         padding: 0 .5rem;
     }
 }
+
