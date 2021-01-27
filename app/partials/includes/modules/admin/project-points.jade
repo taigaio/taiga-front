@@ -21,7 +21,7 @@ section.project-values-table
             div(ng-repeat="value in values track by value.id", tg-bind-scope)
                 form(tg-bind-scope)
                     div.project-values-row.row.table-main.visualization
-                        tg-svg(svg-icon="icon-drag")
+                        tg-svg(svg-icon="icon-draggable")
 
                         div.project-values-name
                             span {{ value.name }}
@@ -50,7 +50,7 @@ section.project-values-table
 
                         div.project-values-settings
                             a.save.e2e-save(href="", title="{{'COMMON.SAVE' | translate}}")
-                                tg-svg(svg-icon="icon-save")
+                                tg-svg(svg-icon="icon-check-empty")
 
                             a.cancel(href="", title="{{'COMMON.CANCEL' | translate}}")
                                 tg-svg.cancel(svg-icon="icon-close")
@@ -77,7 +77,7 @@ section.project-values-table
 
                 div.project-values-settings
                     a.add-new.e2e-save(href="", title="{{'COMMON.ADD' | translate}}")
-                        tg-svg(svg-icon="icon-save")
+                        tg-svg(svg-icon="icon-check-empty")
 
                     a.delete-new(href="", title="{{'COMMON.CANCEL' | translate}}")
                         tg-svg(svg-icon="icon-close")

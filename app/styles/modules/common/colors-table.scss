@@ -50,6 +50,13 @@
                 cursor: auto;
             }
         }
+        &.new-value {
+            padding-left: 3rem;
+            .icon-check-empty,
+            .icon-close {
+                fill: $color-link-primary;
+            }
+        }
         .color-column {
             flex-basis: 80px;
             min-width: 80px;
@@ -192,7 +199,7 @@
         }
         &.icon-check {
             cursor: default;
-            fill: $primary;
+            fill: $color-link-primary;
             opacity: 1;
         }
         &.icon-merge {
@@ -201,14 +208,14 @@
         }
         &.icon-search {
             cursor: none;
-            fill: $primary;
+            fill: $color-link-primary;
             opacity: 1;
         }
         &.icon-drag {
             cursor: move;
         }
         &.icon-trash {
-            fill: $red-light;
+            fill: $color-link-red;
         }
     }
     .gu-mirror {
