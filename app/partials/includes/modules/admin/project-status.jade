@@ -19,7 +19,7 @@ section.admin-status-table
             div(ng-repeat="value in values", tg-bind-scope)
                 form(tg-bind-scope)
                     div.row.table-main.visualization
-                        tg-svg(svg-icon="icon-drag")
+                        tg-svg(svg-icon="icon-draggable")
                         div.color-column
                             div.current-color(ng-style="{background: value.color}")
 
@@ -74,7 +74,7 @@ section.admin-status-table
 
                         div.options-column
                             a.save.e2e-save(href="", title="{{'COMMON.SAVE' | translate}}")
-                                tg-svg(svg-icon="icon-save")
+                                tg-svg(svg-icon="icon-check-empty")
 
                             a.cancel(href="", title="{{'COMMON.CANCEL' | translate}}")
                                 tg-svg.cancel(svg-icon="icon-close")
@@ -108,7 +108,7 @@ section.admin-status-table
 
                 div.options-column
                     a.add-new.e2e-save(href="", title="{{'COMMON.ADD' | translate}}")
-                        tg-svg(svg-icon="icon-save")
+                        tg-svg(svg-icon="icon-check-empty")
 
                     a.delete-new(href="", title="{{'COMMON.CANCEL' | translate}}")
                         tg-svg(svg-icon="icon-close")

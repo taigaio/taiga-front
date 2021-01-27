@@ -21,7 +21,7 @@
             background: rgba($primary-light, .05);
             cursor: move;
             transition: background .2s linear;
-            .icon-drag,
+            .icon-draggable,
             .custom-options {
                 opacity: 1;
                 transition: opacity .2s linear;
@@ -44,7 +44,7 @@
             margin-left: 1em;
         }
     }
-    .icon-drag {
+    .icon-draggable {
         fill: $gray-light;
         opacity: 0;
         padding: 0 .25rem 0 .1rem;
@@ -55,14 +55,16 @@
         margin-right: .5rem;
     }
     .custom-name {
+        align-items: center;
+        display: flex;
         flex-basis: 25%;
         flex-shrink: 0;
         a {
-            padding: .5em;
+            padding: 0 .5em;
         }
         svg {
-            height: 12px;
-            width: 12px;
+            height: 1rem;
+            width: 1rem;
         }
     }
     .custom-description {
@@ -91,14 +93,21 @@
                 fill: $primary;
                 transition: color .2s linear;
             }
-            &.icon-trash,
-            &.icon-close {
-                fill: $red-light;
+            &.icon-trash {
+                fill: $color-link-red;
+            }
+            &.icon-close,
+            &.icon-check-empty {
+                fill: $color-link-primary;
             }
         }
     }
     .custom-options-wrapper {
+        align-items: center;
+        display: flex;
+        justify-content: flex-end;
         opacity: 0;
+        padding-right: 1rem;
         transition: opacity .3s linear;
         &:hover {
             opacity: 1;
@@ -112,7 +121,6 @@
         border-bottom: 1px solid $whitish;
         color: $gray-light;
         font-size: .95em;
-        padding: .25em 1.5em;
     }
     .js-view-custom-field-extra {
         padding: .5em;
@@ -124,14 +132,15 @@
         flex-grow: 1;
     }
     .custom-extra-actions {
-        padding: .5em;
+        padding: .5em 0;
         a {
-            color: $primary;
+            color: $color-link-primary;
+            display: flex;
         }
         svg {
-            height: 10px;
+            height: 1rem;
             margin-right: .25em;
-            width: 10px;
+            width: 1rem;
         }
     }
     .js-form,
