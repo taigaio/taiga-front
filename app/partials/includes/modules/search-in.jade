@@ -1,10 +1,8 @@
 section.search-in
-    header
-        fieldset
-            input(
-                type="text"
-                placeholder="{{'SEARCH.PLACEHOLDER_SEARCH' | translate}}"
-                ng-model="searchTerm"
-            )
-            .icon-search-wrapper(tg-loading="loading")
-                tg-svg(svg-icon="icon-search", title="{{'SEARCH.TITLE_ACTION_SEARCH' | translate}}")
+    input.search-input(
+        type="text"
+        placeholder="{{'SEARCH.PLACEHOLDER_SEARCH' | translate}}"
+        ng-model="searchTerm"
+    )
+    .icon-search-wrapper(tg-loading="loading")
+        tg-svg(svg-icon="icon-search", title="{{'SEARCH.TITLE_ACTION_SEARCH' | translate}}")

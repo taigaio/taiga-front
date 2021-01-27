@@ -1,8 +1,16 @@
 .search-in {
+    border-inline-end: 1px solid $color-gray400;
+    height: 100%;
+    padding: 1rem;
+    position: relative;
+    width: 300px;
+    .search-input {
+        padding-inline-end: 2rem;
+    }
     .icon-search-wrapper {
         position: absolute;
-        right: .7rem;
-        top: calc(50% - .5rem);
+        right: 1.5rem;
+        top: 1.5rem;
     }
     .icon-search {
         fill: $gray-light;
