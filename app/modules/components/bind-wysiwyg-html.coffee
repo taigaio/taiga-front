@@ -30,8 +30,8 @@ BindCode = ($sce, $parse, $compile, wysiwygService) ->
         render = (element, html) =>
             element.html($sce.getTrustedHtml(html) || '')
 
-            # element[0].querySelectorAll('pre code').forEach (block) =>
-            #     hljs.highlightBlock(block)
+            element[0].querySelectorAll('pre code').forEach (block) =>
+                hljs.highlightBlock(block)
 
         return (scope, element, attr) ->
             $compile.$$addBindingInfo(element, attr.tgBindWysiwygHtml);

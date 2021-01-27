@@ -185,7 +185,6 @@ paths.libs = [
     paths.modules + "awesomplete/awesomplete.js",
     paths.modules + "autolinker/dist/Autolinker.js",
     paths.modules + "dom-autoscroller/dist/dom-autoscroller.js",
-    // paths.modules + "@highlightjs/cdn-assets/highlight.min.js",
     paths.app + "js/dragula-drag-multiple.js",
     paths.app + "js/boards.js",
     paths.app + "js/tg-repeat.js",
@@ -518,7 +517,7 @@ gulp.task("moment-locales", function() {
 });
 
 gulp.task("jslibs-watch", function() {
-    return gulp.src(paths.libs)
+    return gulp.src([paths.libs, paths.modules + "@highlightjs/cdn-assets/highlight.js"])
         .pipe(plumber())
         .pipe(concat("libs.js"))
         .pipe(gulp.dest(paths.distVersion + "js/"));
@@ -530,6 +529,9 @@ gulp.task("jslibs-deploy", function() {
         .pipe(sourcemaps.init())
         .pipe(concat("libs.js"))
         .pipe(uglify())
+        //  we can't uglify highlightjs
+        .pipe(gulp.src([paths.modules + "@highlightjs/cdn-assets/highlight.js"]))
+        .pipe(concat("libs.js"))
         .pipe(sourcemaps.write("./maps"))
         .pipe(gulp.dest(paths.distVersion + "js/"));
 });
