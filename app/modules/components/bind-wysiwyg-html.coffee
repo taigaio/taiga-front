@@ -27,15 +27,21 @@ BindCode = ($sce, $parse, $compile, wysiwygService) ->
 
         $compile.$$addBindingClass(tElement)
 
+        render = (element, html) =>
+            element.html($sce.getTrustedHtml(html) || '')
+
+            element[0].querySelectorAll('pre code').forEach (block) =>
+                hljs.highlightBlock(block)
+
         return (scope, element, attr) ->
             $compile.$$addBindingInfo(element, attr.tgBindWysiwygHtml);
 
             scope.$watch tgBindWysiwygHtmlWatch, () ->
                 html = wysiwygService.getHTML(tgBindWysiwygHtmlGetter(scope))
                 wysiwygService.refreshAttachmentURL(html).then (html) =>
-                    element.html($sce.getTrustedHtml(html) || '')
+                    render(element, html)
 
-                element.html($sce.getTrustedHtml(html) || '')
+                render(element, html)
   }
 
 angular.module("taigaComponents")

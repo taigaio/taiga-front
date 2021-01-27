@@ -275,6 +275,7 @@ $qqueue, $repo, $analytics, activityService) ->
             <div>
                 <tg-wysiwyg
                     ng-if="editableDescription"
+                    html-read-mode="true"
                     placeholder="'COMMON.DESCRIPTION.EMPTY '| translate"
                     version='version'
                     project="project"

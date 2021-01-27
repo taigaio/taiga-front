@@ -3,8 +3,14 @@
         p.outdated {{'COMMON.WYSIWYG.OUTDATED' | translate}}
 
     .wysiwyg.js-wysiwyg-html(
+        ng-if="markdown.length"
         tg-bind-wysiwyg-html="markdown"
     )
+
+    .wysiwyg.js-wysiwyg-html(
+        ng-if="!markdown.length"
+    )
+        p {{ placeholder }}
 
     .editor-wrapper
 
