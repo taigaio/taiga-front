@@ -168,6 +168,12 @@ tg-html-editor .ck-content,
             margin-bottom: 0;
         }
     }
+    pre {
+        margin: 0 0 20px;
+    }
+    img {
+        max-width: 100%;
+    }
     .mention {
         background: none;
         color: $color-link-primary;

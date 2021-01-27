@@ -38,11 +38,12 @@ Wysiwyg = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoa
         pageAttachments = $attachmentsFullService.attachments.toJS()
         editorLinks = []
 
-        $el.find('.js-wysiwyg-html').on 'click', (e) =>
-            if e.target.tagName != 'A'
-                $scope.$applyAsync () => setEditMode(true)
 
         linksEvents = () ->
+            $el.find('.js-wysiwyg-html').on 'mousedown', (e) =>
+                if e.target.tagName != 'A'
+                    $scope.$applyAsync () => $scope.setEditMode(true)
+
             editorLinks = textEditor.querySelectorAll('a[target="_blank"]:not(.link-event)')
 
             if editorLinks.length
@@ -100,17 +101,17 @@ Wysiwyg = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoa
             $scope.$applyAsync () => linksEvents()
 
             if isDraft()
-                setEditMode(true)
+                $scope.setEditMode(true)
 
             textEditor.addEventListener 'modeChanged', (event) =>
                 $scope.$evalAsync () =>
                     $scope.mode = event.detail
-                    setEditMode(true)
+                    $scope.setEditMode(true)
                     localStorage.setItem('editor-mode', $scope.mode)
 
             textEditor.addEventListener 'focusChanged', (event) =>
                 if event.detail
-                    $scope.$evalAsync () => setEditMode(true)
+                    $scope.$evalAsync () => $scope.setEditMode(true)
 
             textEditor.addEventListener 'changed', (event) =>
                 if $scope.mode == 'html'
@@ -124,13 +125,10 @@ Wysiwyg = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoa
             $el.find('.editor-wrapper')[0].appendChild(textEditor)
 
         setHtmlEditor = (markdown) ->
-            if pageAttachments.length
-                wysiwygService.refreshAttachmentURLFromMarkdown(markdown).then (markdown) =>
-                    textEditor.markdown = markdown
-            else
+            wysiwygService.refreshAttachmentURLFromMarkdown(markdown).then (markdown) =>
                 textEditor.markdown = markdown
 
-        setEditMode = (editMode) ->
+        $scope.setEditMode = (editMode) ->
             $scope.editMode = editMode
 
             if editMode
@@ -158,7 +156,7 @@ Wysiwyg = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoa
             e.preventDefault() if e
 
             if !isEditOnly
-                setEditMode(false)
+                $scope.setEditMode(false)
 
             if notPersist
                 clean()
@@ -183,7 +181,7 @@ Wysiwyg = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoa
             $scope.saving  = false
 
             if !isEditOnly
-                setEditMode(false)
+                $scope.setEditMode(false)
 
             if notPersist
                 clean()

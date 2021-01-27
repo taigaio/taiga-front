@@ -101,6 +101,7 @@
     "scss-lint"
   ],
   "dependencies": {
+    "@highlightjs/cdn-assets": "^10.5.0",
     "Flot": "git+https://github.com/flot/flot.git#v0.8.3",
     "angular": "1.5.10",
     "angular-animate": "1.5.10",
