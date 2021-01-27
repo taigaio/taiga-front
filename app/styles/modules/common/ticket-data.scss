@@ -317,6 +317,9 @@
                 color: $color-white;
             }
         }
+        &.item-unblock {
+            background: $color-link-red;
+        }
     }
 
 
