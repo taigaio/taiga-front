@@ -517,7 +517,7 @@ gulp.task("moment-locales", function() {
 });
 
 gulp.task("jslibs-watch", function() {
-    return gulp.src([...paths.libs, paths.modules + "@highlightjs/cdn-assets/highlight.js"])
+    return gulp.src([...paths.libs, paths.modules + "@highlightjs/cdn-assets/highlight.min.js"])
         .pipe(plumber())
         .pipe(concat("libs.js"))
         .pipe(gulp.dest(paths.distVersion + "js/"));
@@ -530,7 +530,7 @@ gulp.task("jslibs-deploy", function() {
         .pipe(concat("libs.js"))
         .pipe(uglify())
         //  we can't uglify highlightjs
-        .pipe(gulp.src([paths.modules + "@highlightjs/cdn-assets/highlight.js"]))
+        .pipe(gulp.src([paths.modules + "@highlightjs/cdn-assets/highlight.min.js"]))
         .pipe(concat("libs.js"))
         .pipe(sourcemaps.write("./maps"))
         .pipe(gulp.dest(paths.distVersion + "js/"));
