@@ -285,7 +285,8 @@ LoginDirective = ($auth, $confirm, $location, $config, $routeParams, $navUrls, $
         form = new checksley.Form($el.find("form.login-form"))
         $scope.defaultLoginEnabled = $config.get("defaultLoginEnabled", true)
 
-        if $routeParams['next'] and $routeParams['next'] != $navUrls.resolve("login")
+        # ignore next param if is the login or discover page
+        if $routeParams['next'] and $routeParams['next']  != $navUrls.resolve("login") and !$routeParams['next'].startsWith("%2Fdiscover")
             $scope.nextUrl = decodeURIComponent($routeParams['next'])
         else
             $scope.nextUrl = $navUrls.resolve("home")
