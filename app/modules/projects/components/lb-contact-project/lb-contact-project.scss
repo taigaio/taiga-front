@@ -15,7 +15,7 @@
     }
     &-name {
         @include font-size(larger);
-        color: $primary;
+        color: $color-link-primary;
         margin-bottom: 1rem;
     }
     &-message {
