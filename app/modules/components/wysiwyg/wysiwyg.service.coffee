@@ -101,8 +101,11 @@ class WysiwygService
                     if match && match.length == 2
                         tokens = match[1].split(":")
 
-                        promise = @.getCachedAttachment(tokens).then (url) =>
+                        promise = @.getCachedAttachment(tokens)
+                        .then (url) =>
                             e.setAttribute(tag.attr, url)
+                        .catch () =>
+                            console.warn('attachment ref not found', e.getAttribute(tag.attr))
 
                         promises.push(promise)
 
