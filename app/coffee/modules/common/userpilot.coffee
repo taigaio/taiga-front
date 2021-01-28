@@ -112,7 +112,7 @@ class UserPilotService extends taiga.Service
 
     getJoinedLimit: ->
         limit = new Date
-        limit.setDate(limit.getDate() - JOINED_LIMIT_DAYS);
+        limit.setDate(limit.getDate() - JOINED_LIMIT_DAYS)
         return limit
 
     setZendeskWidgetStatus: (config={enabled: false}) ->
@@ -136,7 +136,7 @@ class UserPilotService extends taiga.Service
                     suppress: supress
                 }
             }
-        });
+        })
 
 
 module.service("$tgUserPilot", UserPilotService)
