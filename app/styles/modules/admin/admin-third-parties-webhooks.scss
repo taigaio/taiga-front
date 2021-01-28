@@ -45,13 +45,9 @@
             vertical-align: middle;
         }
         a {
-            color: $primary;
-            cursor: pointer;
+            color: $color-link-primary;
             margin-left: .5rem;
             white-space: nowrap;
-            &:hover {
-                color: $primary-light;
-            }
         }
     }
     .webhook-options {
