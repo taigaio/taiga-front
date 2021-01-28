@@ -1,5 +1,5 @@
 .search-result-table {
-    border-top: 1px solid $whitish;
+    border-top: 1px solid $color-gray400;
     .row {
         align-items: center;
         display: flex;
@@ -30,10 +30,6 @@
             padding: 0 1rem;
         }
     }
-    .row-selected {
-        background: lighten($primary, 60%);
-        transition: background .2s ease-in;
-    }
 
     // TODO: refactor xaviju
     .user-story-name {
@@ -50,18 +46,10 @@
             text-overflow: ellipsis;
             white-space: nowrap;
         }
-        .icon {
-            @include font-size(medium);
-            color: $gray-light;
-            &:hover {
-                color: $grayer;
-                transition: color .3s linear;
-            }
-        }
     }
     .table-main {
         @include font-size(small);
-        border-bottom: 1px solid $whitish;
+        border-bottom: 1px solid $color-gray400;
     }
     .status,
     .points,
