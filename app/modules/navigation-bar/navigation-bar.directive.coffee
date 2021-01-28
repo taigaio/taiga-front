@@ -29,6 +29,32 @@ NavigationBarDirective = (currentUserService, navigationBarService, locationServ
         scope.vm.customSupportUrl = config.get("supportUrl")
         scope.vm.isFeedbackEnabled = config.get("feedbackEnabled")
 
+        loadUserPilot = () =>
+            userPilotIframe = document.querySelector('#userpilot-resource-centre-frame')
+
+            if userPilotIframe
+                clearInterval(userPilotInterval)
+
+                scope.$applyAsync () =>
+                    scope.vm.userpilotEnabled = true
+                    userPilotIframeDocument = userPilotIframe.contentWindow.document.body
+
+                    scope.vm.userPilotTitle = userPilotIframeDocument.querySelector('#widget-title').innerText
+
+                    scope.vm.helpCenter = () ->
+                        userPilotIframeDocument.querySelector('#userpilot-resource-centre-beacon').click()
+
+        attempts = 10
+
+        if window.TAIGA_USER_PILOT_TOKEN
+            userPilotInterval = setInterval () =>
+                loadUserPilot()
+                attempts--
+
+                if !attempts
+                    clearInterval(userPilotInterval)
+            , 1000
+
         scope.vm.login = ->
             nextUrl = encodeURIComponent(locationService.url())
             locationService.url(navUrlsService.resolve("login"))

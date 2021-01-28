@@ -55,6 +55,15 @@ nav.navbar(ng-if="vm.isEnabledHeader")
 
             .navbar-dropdown.navigation-help
                 ul
+                    li(ng-if="vm.userpilotEnabled")
+                        a.secondary(
+                            href="#"
+                            ng-click="vm.helpCenter()",
+                            title="{{ vm.userPilotTitle }}"
+                        )
+                            tg-svg(svg-icon="icon-lifeguard")
+                            span {{ vm.userPilotTitle }}
+
                     li
                         a.secondary(
                             ng-show="vm.isFeedbackEnabled"
