@@ -3,6 +3,16 @@ tg-lightbox-close
 form
     h2.title(translate="LIGHTBOX.SEARCH.TITLE")
     fieldset
-        input(type="text", name="text", id="search-text", placeholder="{{'LIGHTBOX.SEARCH.PLACEHOLDER_SEARCH' | translate}}", data-required="true")
+        input(
+            type="text"
+            name="text"
+            id="search-text"
+            placeholder="{{'LIGHTBOX.SEARCH.PLACEHOLDER_SEARCH' | translate}}"
+            data-required="true"
+        )
     fieldset
-        button.button-green.button-large.button-block(type="submit", title="{{' LIGHTBOX.SEARCH.TITLE' | translate}}", translate="LIGHTBOX.SEARCH.TITLE")
+        button.btn-big(
+            type="submit"
+            title="{{' LIGHTBOX.SEARCH.TITLE' | translate}}"
+            translate="LIGHTBOX.SEARCH.TITLE"
+        )

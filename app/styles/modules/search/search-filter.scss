@@ -1,31 +1,21 @@
 .search-filter {
-    border-top: 1px solid $whitish;
+    border-top: 1px solid $color-gray400;
     display: flex;
     margin-bottom: 0;
     z-index: $first-layer;
     a {
-        background: $white;
-        color: $gray-light;
-        display: inline-block;
-        margin-right: 1rem;
+        background: $color-white;
+        color: $color-gray400;
+        display: flex;
         padding: 1rem 1.25rem;
-        &:hover {
-            transition: color .3s linear;
-            .name {
-                padding-left: 5px;
-            }
-            .icon {
-                fill: currentColor;
-            }
-        }
         &.active {
-            border-left: 1px solid $whitish;
-            border-right: 1px solid $whitish;
-            color: $grayer;
+            border-left: 1px solid $color-gray400;
+            border-right: 1px solid $color-gray400;
+            color: $color-black600;
             position: relative;
             top: 1px;
             .icon {
-                fill: $primary-light;
+                fill: $color-link-primary;
             }
         }
     }
