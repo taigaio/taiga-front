@@ -1,7 +1,9 @@
 .add-member-suggest {
     .add-member-suggest-list {
-        display: flex;
+        display: grid;
         flex-wrap: wrap;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: repeat(1fr);
         margin: 2rem 0 0;
     }
 

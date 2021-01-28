@@ -24,6 +24,14 @@
             padding-left: .3rem;
         }
     }
+    .user-data {
+        .name {
+            display: flex;
+        }
+        .icon-badge {
+            margin-left: .25rem;
+        }
+    }
     .header-role,
     .header-status {
         padding-left: .5rem;
@@ -39,19 +47,18 @@
     .active,
     .resend {
         @include font-size(small);
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        min-width: 4rem;
         padding: .4rem .5rem;
     }
     .active {
         background-color: $whitish;
     }
     .resend {
-        background-color: $primary;
+        background-color: $color-link-primary;
         color: $white;
-        &:hover {
-            background-color: $primary-light;
-            color: $white;
-            transition: background-color .3s linear;
-        }
     }
     .delete {
         fill: $gray-light;

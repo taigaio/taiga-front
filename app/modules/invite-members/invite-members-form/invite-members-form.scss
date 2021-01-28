@@ -23,12 +23,9 @@
         width: 4rem;
     }
     .invite-members-single-remove {
-        color: $red-light;
+        color: $color-link-red;
         margin-left: 1rem;
         transition: color .2s;
-        &:hover {
-            color: $red;
-        }
     }
     .invite-members-single-role {
         flex-basis: 40%;
