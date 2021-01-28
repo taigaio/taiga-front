@@ -1,4 +1,11 @@
 .admin-common {
+    header h1 {
+        display: flex;
+
+        .icon-bell {
+            margin-left: .25rem;
+        }
+    }
     .admin-subtitle {
         color: $color-black600;
         margin-block-end: 1rem;
