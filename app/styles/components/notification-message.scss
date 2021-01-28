@@ -110,6 +110,7 @@
 
 .notification-message {
     color: $white;
+    display: flex;
     opacity: 0;
     padding: 1rem;
     position: fixed;
