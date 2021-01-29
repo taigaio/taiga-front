@@ -1,33 +1,28 @@
 .notifications-page {
-    margin-top: 1.5em;
+    margin-top: 1.5rem;
     min-width: initial;
-    padding-bottom: 5em;
+    padding-bottom: 5rem;
     .header {
         align-items: center;
-        background: $mass-white;
+        background: $color-gray100;
         display: flex;
+        justify-content: space-between;
         margin: 0;
-        padding: .5em 1em;
+        padding: 1rem;
     }
     .title {
-        color: $primary;
-        flex-grow: 1;
-        font-size: 1.8em;
-        line-height: 1.8em;
+        color: $color-link-primary;
+        font-size: 1.4rem;
+        line-height: 1.4rem;
         margin: 0;
         text-transform: uppercase;
     }
 
     .action {
-        color: $primary;
-        font-size: 1em;
+        color: $color-link-primary;
         line-height: .75em;
-        margin-right: 1em;
         &.disabled {
-            color: $gray-lighter;
-        }
-        &:not(.disabled):hover {
-            color: $primary-light;
+            color: $color-black600;
         }
     }
     .empty {
@@ -44,6 +39,7 @@
             background-color: $primary-lighter;
         }
         .entry-content {
+            flex: 1;
             font-size: 1.05rem;
         }
         .entry-project {
@@ -91,8 +87,12 @@
             vertical-align: center;
             width: 2.5rem;
             img {
+                border-radius: 50%;
                 width: 100%;
             }
+        }
+        .entry-content {
+            flex: 1;
         }
         .entry-project {
             @include font-type(medium);
@@ -105,12 +105,13 @@
         }
         .entry-date {
             font-size: .7rem;
-            margin-right: 2rem;
+            margin-right: 1rem;
             white-space: nowrap;
         }
         .entry-extra-data {
             align-items: center;
             display: flex;
+            justify-content: space-between;
             margin-top: .5rem;
         }
         &.new {
@@ -125,7 +126,7 @@
                     content: '';
                     height: 6px;
                     position: absolute;
-                    right: -6px;
+                    right: -1ch;
                     width: 6px;
                 }
             }
