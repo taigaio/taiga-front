@@ -161,7 +161,7 @@ paths.libs = [
     paths.modules + "messageformat/messageformat.js",
     paths.modules + "angular/angular.js",
     paths.modules + "angular-route/angular-route.js",
-    paths.modules + "angular-sanitize/angular-sanitize.js",
+    paths.modules + "textangular/dist/textAngular-sanitize.js",
     paths.modules + "angular-animate/angular-animate.js",
     paths.modules + "angular-aria/angular-aria.js",
     paths.modules + "angular-translate/dist/angular-translate.js",
