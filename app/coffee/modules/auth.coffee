@@ -465,8 +465,11 @@ ChangePasswordFromRecoveryDirective = ($auth, $confirm, $location, $params, $nav
         else
             $location.path($navUrls.resolve("login"))
 
-            text = $translate.instant("CHANGE_PASSWORD_RECOVERY_FORM.ERROR")
-            $confirm.notify("light-error",text)
+            text = ''
+            text = response.data.token.map((message) ->
+                return "#{text} #{message}"
+            )
+            $confirm.notify("light-error", text)
 
         form = $el.find("form").checksley()
 
@@ -477,7 +480,10 @@ ChangePasswordFromRecoveryDirective = ($auth, $confirm, $location, $params, $nav
             $confirm.success(text)
 
         onErrorSubmit = (response) ->
-            text = $translate.instant("CHANGE_PASSWORD_RECOVERY_FORM.ERROR")
+            text = ''
+            text = response.data.password.map((message) ->
+                return "#{text} #{message}"
+            )
             $confirm.notify("light-error", text)
 
         submit = debounce 2000, (event) =>
