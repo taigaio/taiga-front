@@ -33,6 +33,15 @@ BindCode = ($sce, $parse, $compile, wysiwygService) ->
             element[0].querySelectorAll('pre code').forEach (block) =>
                 hljs.highlightBlock(block)
 
+            anchor = element[0].querySelectorAll('a[href^="#"]')
+            anchor.forEach (link) =>
+                link.addEventListener 'click', (e) =>
+                    e.preventDefault()
+                    node = document.querySelector(link.getAttribute('href'))
+
+                    if node
+                        node.scrollIntoView()
+
         return (scope, element, attr) ->
             $compile.$$addBindingInfo(element, attr.tgBindWysiwygHtml);
 
