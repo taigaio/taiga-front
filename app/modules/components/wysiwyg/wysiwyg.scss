@@ -206,6 +206,10 @@ tg-html-editor .ck-content,
             padding: .4em;
         }
     }
+    .placeholder {
+        color: $default-tags;
+        font-style: italic;
+    }
 }
 
 tg-html-editor .ck-content {
