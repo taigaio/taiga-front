@@ -1131,40 +1131,42 @@ BurndownBacklogGraphDirective = ($translate) ->
         data.push({
             data: _.zip(milestonesRange, optimal_line)
             lines:
-                fillColor : "rgba(194,194,194,0.2)"
+                fillColor : "rgba(200,201,196,0.2)"
         })
         evolution_line = _.filter(_.map(dataToDraw.milestones, (ml) -> ml.evolution), (evolution) -> evolution?)
         data.push({
             data: _.zip(milestonesRange, evolution_line)
             lines:
-                fillColor : "rgba(147,169,93,0.15)"
+                fillColor : "rgba(147,196,0,0.2)"
         })
         client_increment_line = _.map dataToDraw.milestones, (ml) ->
             -ml["team-increment"] - ml["client-increment"]
         data.push({
             data: _.zip(milestonesRange, client_increment_line)
             lines:
-                fillColor : "rgba(147,169,93,0.15)"
+                fillColor : "rgba(200,201,196,0.2)"
         })
         team_increment_line = _.map(dataToDraw.milestones, (ml) -> -ml["team-increment"])
         data.push({
             data: _.zip(milestonesRange, team_increment_line)
             lines:
-                fillColor : "rgba(153,51,51,0.3)"
+                fillColor : "rgba(255,160,160,0.2)"
         })
         colors = [
-            "rgba(0,0,0,1)"
-            "rgba(120,120,120,0.2)"
-            "rgba(147,169,93,1)"
-            "rgba(153,51,51,1)"
-            "rgba(255,51,51,1)"
+            "rgba(200,201,196,0.2)"
+            "rgba(216,222,233,1)"
+            "rgba(168,228,64,1)"
+            "rgba(216,222,233,1)"
+            "rgba(255,160,160,1)"
         ]
 
         options = {
             grid: {
                 borderWidth: { top: 0, right: 1, left:0, bottom: 0 }
-                borderColor: "#ccc"
+                borderColor: "#D8DEE9"
+                color: "#D8DEE9"
                 hoverable: true
+                margin: { top: 0, right: 20, left: 5, bottom: 0 }
             }
             xaxis: {
                 ticks: dataToDraw.milestones.length

@@ -29,10 +29,10 @@ timeout = @.taiga.timeout
 module = angular.module("taigaTaskboard")
 
 #############################################################################
-## Sprint burndown graph directive
+## Sprint burndown chart directive
 #############################################################################
 
-SprintGraphDirective = ($translate)->
+SprintChartDirective = ($translate)->
     redrawChart = (element, dataToDraw) ->
         width = element.width()
         element.height(240)
@@ -41,21 +41,23 @@ SprintGraphDirective = ($translate)->
 
         data = []
         data.unshift({
-            data: _.zip(days, _.map(dataToDraw, (d) -> d.optimal_points))
-            lines:
-                fillColor : "rgba(194,194,194,0.2)"
-        })
-        data.unshift({
             data: _.zip(days, _.map(dataToDraw, (d) -> d.open_points))
             lines:
-                fillColor : "rgba(147,169,93,0.15)"
+                fillColor : "rgba(147,196,0,0.2)"
+        })
+        data.unshift({
+            data: _.zip(days, _.map(dataToDraw, (d) -> d.optimal_points))
+            lines:
+                fillColor : "rgba(200,201,196,0.2)"
         })
 
         options =
             grid:
                 borderWidth: { top: 0, right: 1, left:0, bottom: 0 }
-                borderColor: '#ccc'
+                borderColor: "#D8DEE9"
+                color: "#D8DEE9"
                 hoverable: true
+                margin: { top: 0, right: 30, left: 5, bottom: 5 }
             xaxis:
                 tickSize: [1, "day"]
                 min: days[0]
@@ -84,7 +86,10 @@ SprintGraphDirective = ($translate)->
                     fill: true
                     radius: 4
                     lineWidth: 2
-            colors: ["rgba(147,169,93,1)", "rgba(120,120,120,0.2)"]
+            colors: [
+                "rgba(216,222,233,1)"
+                "rgba(168,228,64,1)"
+            ]
             tooltip: true
             tooltipOpts:
                 content: (label, xval, yval, flotItem) ->
@@ -92,13 +97,13 @@ SprintGraphDirective = ($translate)->
                     roundedValue = Math.round(yval)
 
                     if flotItem.seriesIndex == 1
-                        return $translate.instant("TASKBOARD.CHARTS.OPTIMAL", {
+                        return $translate.instant("TASKBOARD.CHARTS.REAL", {
                             formattedDate: formattedDate,
                             roundedValue: roundedValue
                         })
 
                     else
-                        return $translate.instant("TASKBOARD.CHARTS.REAL", {
+                        return $translate.instant("TASKBOARD.CHARTS.OPTIMAL", {
                             formattedDate: formattedDate,
                             roundedValue: roundedValue
                         })
@@ -130,4 +135,4 @@ SprintGraphDirective = ($translate)->
 
     return {link: link}
 
-module.directive("tgSprintGraph", ["$translate", SprintGraphDirective])
+module.directive("tgSprintChart", ["$translate", SprintChartDirective])
