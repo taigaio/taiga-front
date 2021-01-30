@@ -1494,10 +1494,12 @@
         },
         "CHARTS": {
             "XAXIS_LABEL": "Days",
-            "YAXIS_LABEL": "Points",
-            "OPTIMAL": "Optimal pending points for day {{formattedDate}} should be {{roundedValue}}",
+            "YAXIS_LABEL": "Projected points progress",
+            "OPTIMAL": "Pending points for day {{formattedDate}} should be {{roundedValue}}",
             "REAL": "Real pending points for day {{formattedDate}} is {{roundedValue}}",
-            "DATE": "DD MMMM YYYY"
+            "DATE": "DD MMMM YYYY",
+            "HELP_LINK": "How this chart works",
+            "HELP_TOOLTIP": "This burndown chart shows the sprint's approximate or projected progress based on estimated user story closed tasks. Actual finished estimated user stories are tracked above."
         },
         "MOVE_TO_SPRINT": {
           "TITLE_ACTION_MOVE_UNFINISHED": "Move unfinished items to another sprint",

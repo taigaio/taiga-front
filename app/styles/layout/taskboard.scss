@@ -13,6 +13,52 @@
     }
     .graphics-container {
         @include slide(300px, hidden);
+        margin-top: 1rem;
+        padding: 0 .5rem;
+        .burndown-help-info {
+            position: relative;
+
+            .title {
+                color: $color-link-tertiary;
+                cursor: pointer;
+                display: flex;
+            }
+
+            tg-svg {
+                cursor: pointer;
+                fill: $color-gray400;
+                margin-right: .45rem;
+            }
+            .popover {
+                @include popover(
+                    $width: 250px,
+                    $top: 130%,
+                    $left: -8px,
+                    $arrow-width: 10px,
+                    $arrow-top: -5px,
+                    $arrow-left: 10px,
+                    $arrow-height: 10px,
+                    $background-color: $color-black900,
+                    $hover-background: $color-black900,
+                    $text-color: $color-gray400,
+                    $hover-text-color: $color-gray400
+                );
+            }
+            &:hover {
+                .title {
+                    color: $color-black600;
+                }
+                tg-svg {
+                    fill: $color-black600;
+                }
+                .popover {
+                    display: block;
+                }
+            }
+        }
+        .burndown-chart {
+            margin: 1rem 1rem 0 1rem;
+        }
     }
     .zoom-loading img {
         display: block;
@@ -24,7 +70,7 @@
     .taskboard-actions {
         margin: 1rem 0;
     }
-    .burndown {
+    .burndown-chart {
         margin: 1rem 0 0 0;
     }
     h1 {
