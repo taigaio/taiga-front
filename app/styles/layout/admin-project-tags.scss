@@ -31,6 +31,7 @@
         background: $white;
     }
     .icon {
+        &.icon-check-empty,
         &.icon-close,
         &.icon-save {
             opacity: 1;
