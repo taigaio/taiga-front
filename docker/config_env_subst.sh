@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 # Copyright (C) 2014-present Taiga Agile LLC
 #
