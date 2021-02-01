@@ -41,9 +41,6 @@ NavigationBarDirective = (currentUserService, navigationBarService, locationServ
 
                     scope.vm.userPilotTitle = userPilotIframeDocument.querySelector('#widget-title').innerText
 
-                    scope.vm.helpCenter = () ->
-                        userPilotIframeDocument.querySelector('#userpilot-resource-centre-beacon').click()
-
         attempts = 10
 
         if window.TAIGA_USER_PILOT_TOKEN
