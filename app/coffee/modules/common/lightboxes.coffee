@@ -323,7 +323,7 @@ module.directive("tgBlockingMessageInput", ["$log", "$tgTemplate", "$compile", B
 ## Creare Bulk Userstories Lightbox Directive
 #############################################################################
 
-CreateBulkUserstoriesDirective = ($repo, $rs, $rootscope, lightboxService, $loading, $model, $timeout) ->
+CreateBulkUserstoriesDirective = ($repo, $rs, $rootscope, lightboxService, $loading, $model, $timeout, $confirm) ->
     link = ($scope, $el, attrs) ->
         form = null
         $scope.displayStatusSelector = false
@@ -385,11 +385,17 @@ CreateBulkUserstoriesDirective = ($repo, $rs, $rootscope, lightboxService, $load
                 $rootscope.$broadcast("usform:bulk:success", result)
                 lightboxService.close($el)
 
-            promise.then null, (data) ->
+            promise.then null, (response) ->
                 currentLoading.finish()
-                form.setErrors(data)
-                if data._error_message
-                    $confirm.notify("error", data._error_message)
+                form.setErrors(response)
+                if response.data.status
+                    text = $translate.instant("LIGHTBOX.CREATE_EDIT.ERROR_STATUS")
+                    $confirm.notify("error", text)
+                if response.data.swimlane_id
+                    text = $translate.instant("LIGHTBOX.CREATE_EDIT.ERROR_SWIMLANE")
+                    $confirm.notify("error", text)
+                if response._error_message
+                    $confirm.notify("error", response._error_message)
 
         submitButton = $el.find(".submit-button")
 
@@ -418,6 +424,7 @@ module.directive("tgLbCreateBulkUserstories", [
     "$tgLoading",
     "$tgModel",
     "$timeout",
+    "$tgConfirm",
     CreateBulkUserstoriesDirective
 ])
 
@@ -796,11 +803,18 @@ $confirm, $q, attachmentsService, $template, $compile) ->
                         if data.ref
                             $rs[schema.model].getByRef(data.project, data.ref, schema.params).then (obj) ->
                                 $rootScope.$broadcast(broadcastEvent, obj)
-            promise.then null, (data) ->
+            promise.then null, (response) ->
                 currentLoading.finish()
-                form.setErrors(data)
-                if data._error_message
-                    $confirm.notify("error", data._error_message)
+                form.setErrors(response)
+                console.log({response})
+                if response.status
+                    text = $translate.instant("LIGHTBOX.CREATE_EDIT.ERROR_STATUS")
+                    $confirm.notify("error", text)
+                if response.swimlane
+                    text = $translate.instant("LIGHTBOX.CREATE_EDIT.ERROR_SWIMLANE")
+                    $confirm.notify("error", text)
+                if response._error_message
+                    $confirm.notify("error", response._error_message)
 
         checkClose = () ->
             if !$scope.obj.isModified()
