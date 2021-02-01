@@ -20,10 +20,10 @@
 class ProfileHints
     HINTS: [
         { #hint1
-            url: "https://tree.taiga.io/support/admin/import-export-projects/"
+            url: "https://resources.taiga.io/extend/import-export-projects/"
         },
         { #hint2
-            url: "https://tree.taiga.io/support/admin/custom-fields/"
+            url: "https://resources.taiga.io/features/customisation/#tier-4-custom-fields-and-due-dates"
         },
         { #hint3
         },
