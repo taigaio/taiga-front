@@ -34,7 +34,7 @@
         "PLUGINS": "Модулі",
         "ONE_ITEM_LINE": "Один запис на рядок...",
         "NEW_BULK": "Нова масова вставка",
-        "SUBTASKS": "Підзавдання",
+        "RELATED_TASKS": "Завдання",
         "PREVIOUS": "Попередній",
         "NEXT": "Наступний",
         "LOGOUT": "Вийти",
@@ -387,7 +387,6 @@
         "PLACEHOLDER_NEW_PASSWORD": "Новий пароль",
         "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "Підтвердіть новий пароль",
         "ACTION_RESET_PASSWORD": "Скинути пароль",
-        "ERROR": "Taiga не може знайти ваш запит на відновлення паролю. Спробуйте створити запит ще раз.",
         "SUCCESS": "Taiga зберіг ваш новий пароль.<br /> Спробуйте <strong>увійти</strong> із ним."
     },
     "INVITATION": {
@@ -517,7 +516,7 @@
             "TITLE": "Модулі",
             "EPICS": "Епіки",
             "EPICS_DESCRIPTION": "Візуалізуйте та керуйте найбільш стратегічними частинами Вашого проєкту",
-            "BACKLOG": "Невиконана робота",
+            "BACKLOG": "Скрам",
             "BACKLOG_DESCRIPTION": "Керуйте історіями користувача, щоб підтримувати організованим вигляд майбутньої та пріоритетної роботи.",
             "NUMBER_SPRINTS": "Очікувана кількість спринтів",
             "NUMBER_SPRINTS_HELP": "0 для невизначеного числа",
@@ -923,7 +922,7 @@
             "VIEW_ALL_PROJECTS": "View all projects",
             "MANAGE_PROJECTS": "Керувати проєктами",
             "TITLE_CREATE_PROJECT": "Створити проєкт",
-            "HELP_TITLE": "Help",
+            "HELP_TITLE": "Допомога",
             "HOMEPAGE": "Домашня сторінка",
             "TAIGA_RESOURCES_TITLE": "Go to Taiga resources",
             "TAIGA_RESOURCES": "Taiga Resources",
@@ -1184,7 +1183,9 @@
             "SWIMLANE": "Swimlane",
             "SELECT_SWIMLANE": "Select swimlane",
             "SELECT_STATUS": "Select status",
-            "DEFAULT": "Типове"
+            "DEFAULT": "Типове",
+            "ERROR_STATUS": "Changes cannot be saved because there is a problem with the selected status.",
+            "ERROR_SWIMLANE": "Changes cannot be saved because there is a problem with the selected swimlane."
         },
         "DISABLE_KANBAN": {
             "TITLE": "Disable kanban",
@@ -1494,10 +1495,12 @@
         },
         "CHARTS": {
             "XAXIS_LABEL": "Дні",
-            "YAXIS_LABEL": "Кількість очок",
-            "OPTIMAL": "Оптимальна очікувана кількість очок для дня {{formattedDate}} повинна бути {{roundedValue}}",
+            "YAXIS_LABEL": "Projected points progress",
+            "OPTIMAL": "Pending points for day {{formattedDate}} should be {{roundedValue}}",
             "REAL": "Реальна очікувана кількість очок для дня {{formattedDate}}: {{roundedValue}}",
-            "DATE": "DD MMMM YYYY"
+            "DATE": "DD MMMM YYYY",
+            "HELP_LINK": "How this chart works",
+            "HELP_TOOLTIP": "This burndown chart shows the sprint's approximate or projected progress based on estimated user story closed tasks. Actual finished estimated user stories are tracked above."
         },
         "MOVE_TO_SPRINT": {
             "TITLE_ACTION_MOVE_UNFINISHED": "Перемістити незакінчені елементи до іншого спринта",
@@ -1533,7 +1536,7 @@
     },
     "NOTIFICATION": {
         "OK": "Все гаразд",
-        "WARNING": "Ой, щось трапилось...",
+        "WARNING": "Oops, something went wrong...",
         "WARNING_TEXT": "Ваші зміни не збережені!",
         "SAVED": "Taiga зберіг усі ваші зміни!",
         "CLOSE": "Закрити повідомлення",
@@ -1553,14 +1556,14 @@
         "SUBTITLE": "Ще один клік - і Вашу електронну пошту буде оновлено!",
         "PLACEHOLDER_INPUT_TOKEN": "змінити токен електронної пошти",
         "ACTION_CHANGE_EMAIL": "Змінити електронну пошту",
-        "SUCCESS": "Taiga оновив вашу електронну пошту"
+        "SUCCESS": "Your email address has been successfully changed"
     },
     "VERIFY_EMAIL_FORM": {
         "TITLE": "Verify your email",
         "SUBTITLE": "One click more and your email will be verified!",
         "PLACEHOLDER_INPUT_TOKEN": "змінити токен електронної пошти",
         "ACTION_VERIFY_EMAIL": "Verify email",
-        "SUCCESS": "The Taiga verified your email"
+        "SUCCESS": "Congratulations!!, your email address has been verified"
     },
     "ISSUES": {
         "PAGE_TITLE": "Проблеми - {{projectName}}",
@@ -1634,7 +1637,8 @@
         "NUMBER_US": "Number of US",
         "ARCHIVED": "(Archived)",
         "CREATE_SWIMLANE": "Create more swimlanes",
-        "UNCLASSIFIED_USER_STORIES": "Unclassified user stories"
+        "UNCLASSIFIED_USER_STORIES": "Unclassified user stories",
+        "UNCLASSIFIED_USER_STORIES_TOOLTIP": "The user stories that are not part of any swimlane are here."
     },
     "SEARCH": {
         "PAGE_TITLE": "Пошук - {{projectName}}",

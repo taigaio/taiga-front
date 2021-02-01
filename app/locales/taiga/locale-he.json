@@ -34,7 +34,7 @@
         "PLUGINS": "תוספים",
         "ONE_ITEM_LINE": "פריט אחד לשורה...",
         "NEW_BULK": "הוספה \"במכה\" חדשה",
-        "SUBTASKS": "תתי משימות",
+        "RELATED_TASKS": "משימות",
         "PREVIOUS": "קודם",
         "NEXT": "הבא",
         "LOGOUT": "התנתק",
@@ -387,7 +387,6 @@
         "PLACEHOLDER_NEW_PASSWORD": "סיסמא חדשה",
         "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "הקלד מחדש סיסמא חדשה",
         "ACTION_RESET_PASSWORD": "אפס סיסמא",
-        "ERROR": "The Taiga can't find your request to recover your password. Try to ask for it again.",
         "SUCCESS": "The Taiga saved your new password.<br /> Try to <strong>sign in</strong> with it."
     },
     "INVITATION": {
@@ -517,7 +516,7 @@
             "TITLE": "מודולים",
             "EPICS": "אפיונים",
             "EPICS_DESCRIPTION": "הצג ונהל את החלק האסטרטגי של הפרוייקט",
-            "BACKLOG": "עתודה",
+            "BACKLOG": "Scrum",
             "BACKLOG_DESCRIPTION": "נהל את סיפורי המשתמש שלך כדי לתחזק תצוגה מסודרת של עבודות קרבות ומתועדפות.",
             "NUMBER_SPRINTS": "מספר מצופה של ספרינטים",
             "NUMBER_SPRINTS_HELP": "0 עבור מספר לא מוגדר",
@@ -923,7 +922,7 @@
             "VIEW_ALL_PROJECTS": "View all projects",
             "MANAGE_PROJECTS": "נהל פרוייקטים",
             "TITLE_CREATE_PROJECT": "צור פרוייקט",
-            "HELP_TITLE": "Help",
+            "HELP_TITLE": "עזרה",
             "HOMEPAGE": "דף הבית",
             "TAIGA_RESOURCES_TITLE": "Go to Taiga resources",
             "TAIGA_RESOURCES": "Taiga Resources",
@@ -1184,7 +1183,9 @@
             "SWIMLANE": "Swimlane",
             "SELECT_SWIMLANE": "Select swimlane",
             "SELECT_STATUS": "Select status",
-            "DEFAULT": "ברירת מחדל"
+            "DEFAULT": "ברירת מחדל",
+            "ERROR_STATUS": "Changes cannot be saved because there is a problem with the selected status.",
+            "ERROR_SWIMLANE": "Changes cannot be saved because there is a problem with the selected swimlane."
         },
         "DISABLE_KANBAN": {
             "TITLE": "Disable kanban",
@@ -1494,10 +1495,12 @@
         },
         "CHARTS": {
             "XAXIS_LABEL": "ימים",
-            "YAXIS_LABEL": "נקודות",
-            "OPTIMAL": "מספר הנקודות הממתינות המיטבי ליום {{formattedDate}} צריך להיות {{roundedValue}}",
+            "YAXIS_LABEL": "Projected points progress",
+            "OPTIMAL": "Pending points for day {{formattedDate}} should be {{roundedValue}}",
             "REAL": "מספר הנקודות הממתינות ליום {{formattedDate}} הוא {{roundedValue}}",
-            "DATE": "שששש חחח יי"
+            "DATE": "שששש חחח יי",
+            "HELP_LINK": "How this chart works",
+            "HELP_TOOLTIP": "This burndown chart shows the sprint's approximate or projected progress based on estimated user story closed tasks. Actual finished estimated user stories are tracked above."
         },
         "MOVE_TO_SPRINT": {
             "TITLE_ACTION_MOVE_UNFINISHED": "הזז פריטים לא גמורים לsprint חדש",
@@ -1533,7 +1536,7 @@
     },
     "NOTIFICATION": {
         "OK": "הכל טוב",
-        "WARNING": "אופס, משהו השתבש...",
+        "WARNING": "Oops, something went wrong...",
         "WARNING_TEXT": "Your changes were not saved!",
         "SAVED": "The Taiga saved all your changes!",
         "CLOSE": "סגור התראה",
@@ -1553,14 +1556,14 @@
         "SUBTITLE": "עוד לחיצה אחת והדוא\"ל שלך יעודכן",
         "PLACEHOLDER_INPUT_TOKEN": "שנה אסימון דוא\"ל",
         "ACTION_CHANGE_EMAIL": "שנה דוא\"ל",
-        "SUCCESS": "The Taiga updated your email"
+        "SUCCESS": "Your email address has been successfully changed"
     },
     "VERIFY_EMAIL_FORM": {
         "TITLE": "Verify your email",
         "SUBTITLE": "One click more and your email will be verified!",
         "PLACEHOLDER_INPUT_TOKEN": "שנה אסימון דוא\"ל",
         "ACTION_VERIFY_EMAIL": "Verify email",
-        "SUCCESS": "The Taiga verified your email"
+        "SUCCESS": "Congratulations!!, your email address has been verified"
     },
     "ISSUES": {
         "PAGE_TITLE": "תקלות - {{projectName}}",
@@ -1634,7 +1637,8 @@
         "NUMBER_US": "Number of US",
         "ARCHIVED": "(Archived)",
         "CREATE_SWIMLANE": "Create more swimlanes",
-        "UNCLASSIFIED_USER_STORIES": "Unclassified user stories"
+        "UNCLASSIFIED_USER_STORIES": "Unclassified user stories",
+        "UNCLASSIFIED_USER_STORIES_TOOLTIP": "The user stories that are not part of any swimlane are here."
     },
     "SEARCH": {
         "PAGE_TITLE": "חיפוש - {{projectName}}",

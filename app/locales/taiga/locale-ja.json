@@ -34,7 +34,7 @@
         "PLUGINS": "プラグイン",
         "ONE_ITEM_LINE": "１行に１アイテム",
         "NEW_BULK": "一括登録",
-        "SUBTASKS": "サブタスク",
+        "RELATED_TASKS": "タスク",
         "PREVIOUS": "前",
         "NEXT": "次へ",
         "LOGOUT": "ログアウト",
@@ -387,7 +387,6 @@
         "PLACEHOLDER_NEW_PASSWORD": "新しいパスワード",
         "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "新しいパスワードを再入力",
         "ACTION_RESET_PASSWORD": "パスワードをリセット",
-        "ERROR": "The Taiga can't find your request to recover your password. Try to ask for it again.",
         "SUCCESS": "The Taiga saved your new password.<br /> Try to <strong>sign in</strong> with it."
     },
     "INVITATION": {
@@ -517,7 +516,7 @@
             "TITLE": "モジュール",
             "EPICS": "エピック",
             "EPICS_DESCRIPTION": "あなたのプロジェクトの最も戦略的な部分を視覚化し、管理する",
-            "BACKLOG": "バックログ",
+            "BACKLOG": "スクラム",
             "BACKLOG_DESCRIPTION": "ユーザーストーリーが適切にメンテナンスされるよう管理し、優先順位に基づく作業を行うためのビュー",
             "NUMBER_SPRINTS": "予測されるスプリント数",
             "NUMBER_SPRINTS_HELP": "0に設定した場合、無制限となります",
@@ -1184,7 +1183,9 @@
             "SWIMLANE": "Swimlane",
             "SELECT_SWIMLANE": "Select swimlane",
             "SELECT_STATUS": "Select status",
-            "DEFAULT": "Default"
+            "DEFAULT": "Default",
+            "ERROR_STATUS": "Changes cannot be saved because there is a problem with the selected status.",
+            "ERROR_SWIMLANE": "Changes cannot be saved because there is a problem with the selected swimlane."
         },
         "DISABLE_KANBAN": {
             "TITLE": "Disable kanban",
@@ -1494,10 +1495,12 @@
         },
         "CHARTS": {
             "XAXIS_LABEL": "日",
-            "YAXIS_LABEL": "ポイント",
-            "OPTIMAL": "{{formattedDate}} での最善の未解決ポイントは {{roundedValue}} です",
+            "YAXIS_LABEL": "Projected points progress",
+            "OPTIMAL": "Pending points for day {{formattedDate}} should be {{roundedValue}}",
             "REAL": "{{formattedDate}} での実際の未解決ポイントは {{roundedValue}} です",
-            "DATE": "YYYY年MM月DD日"
+            "DATE": "YYYY年MM月DD日",
+            "HELP_LINK": "How this chart works",
+            "HELP_TOOLTIP": "This burndown chart shows the sprint's approximate or projected progress based on estimated user story closed tasks. Actual finished estimated user stories are tracked above."
         },
         "MOVE_TO_SPRINT": {
             "TITLE_ACTION_MOVE_UNFINISHED": "未完了のアイテムを別のスプリントへ移す",
@@ -1533,7 +1536,7 @@
     },
     "NOTIFICATION": {
         "OK": "すべてOKです",
-        "WARNING": "おっと、何か問題があったようです",
+        "WARNING": "Oops, something went wrong...",
         "WARNING_TEXT": "あなたが変更した内容は保存されませんでした！",
         "SAVED": "Taigaは変更内容を保存しました！",
         "CLOSE": "通知を閉じる",
@@ -1553,14 +1556,14 @@
         "SUBTITLE": "あとはクリックだけであなたのメールアドレスが更新されます！",
         "PLACEHOLDER_INPUT_TOKEN": "メールトークンを変更",
         "ACTION_CHANGE_EMAIL": "メール変更",
-        "SUCCESS": "The Taiga updated your email"
+        "SUCCESS": "Your email address has been successfully changed"
     },
     "VERIFY_EMAIL_FORM": {
         "TITLE": "メールアドレスを検証",
         "SUBTITLE": "One click more and your email will be verified!",
         "PLACEHOLDER_INPUT_TOKEN": "メールトークンを変更",
         "ACTION_VERIFY_EMAIL": "Verify email",
-        "SUCCESS": "The Taiga verified your email"
+        "SUCCESS": "Congratulations!!, your email address has been verified"
     },
     "ISSUES": {
         "PAGE_TITLE": "課題 - {{projectName}}",
@@ -1634,7 +1637,8 @@
         "NUMBER_US": "Number of US",
         "ARCHIVED": "(Archived)",
         "CREATE_SWIMLANE": "Create more swimlanes",
-        "UNCLASSIFIED_USER_STORIES": "Unclassified user stories"
+        "UNCLASSIFIED_USER_STORIES": "Unclassified user stories",
+        "UNCLASSIFIED_USER_STORIES_TOOLTIP": "The user stories that are not part of any swimlane are here."
     },
     "SEARCH": {
         "PAGE_TITLE": "検索 - {{projectName}}",

@@ -34,7 +34,7 @@
         "PLUGINS": "Плагины",
         "ONE_ITEM_LINE": "Один объект на строку...",
         "NEW_BULK": "Добавить пакетно",
-        "SUBTASKS": "Подзадачи",
+        "RELATED_TASKS": "Задачи",
         "PREVIOUS": "Предыдущий",
         "NEXT": "Следующий",
         "LOGOUT": "Выйти",
@@ -387,7 +387,6 @@
         "PLACEHOLDER_NEW_PASSWORD": "Новый пароль",
         "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "Введите повторно новый пароль",
         "ACTION_RESET_PASSWORD": "Сбросить пароль",
-        "ERROR": "Taiga не может обнаружить Ваш запрос на восстановление пароля. Попробуйте сформировать запрос повторно.",
         "SUCCESS": "Taiga сохранила Ваш новый пароль.<br /> Попробуйте <strong>войти</strong> с его помощью."
     },
     "INVITATION": {
@@ -517,7 +516,7 @@
             "TITLE": "Модули",
             "EPICS": "Эпики",
             "EPICS_DESCRIPTION": "Визуализируйте и управляйте наиболее стратегической частью Вашего проекта",
-            "BACKLOG": "Список задач",
+            "BACKLOG": "Скрам",
             "BACKLOG_DESCRIPTION": "Управляйте пользовательскими историями, чтобы поддерживать организованное видение важных и приоритетных задач.",
             "NUMBER_SPRINTS": "Ожидаемое количество спринтов",
             "NUMBER_SPRINTS_HELP": "0 для неопределённого числа",
@@ -1184,7 +1183,9 @@
             "SWIMLANE": "Swimlane",
             "SELECT_SWIMLANE": "Select swimlane",
             "SELECT_STATUS": "Select status",
-            "DEFAULT": "По умолчанию"
+            "DEFAULT": "По умолчанию",
+            "ERROR_STATUS": "Changes cannot be saved because there is a problem with the selected status.",
+            "ERROR_SWIMLANE": "Changes cannot be saved because there is a problem with the selected swimlane."
         },
         "DISABLE_KANBAN": {
             "TITLE": "Disable kanban",
@@ -1494,10 +1495,12 @@
         },
         "CHARTS": {
             "XAXIS_LABEL": "Дней",
-            "YAXIS_LABEL": "Очки",
-            "OPTIMAL": "Оптимальное количество очков для работы на день {{formattedDate}}:  {{roundedValue}}",
+            "YAXIS_LABEL": "Projected points progress",
+            "OPTIMAL": "Pending points for day {{formattedDate}} should be {{roundedValue}}",
             "REAL": "Реальные очки для работы на день: {{formattedDate}} - {{roundedValue}}",
-            "DATE": "DD MMMM YYYY"
+            "DATE": "DD MMMM YYYY",
+            "HELP_LINK": "How this chart works",
+            "HELP_TOOLTIP": "This burndown chart shows the sprint's approximate or projected progress based on estimated user story closed tasks. Actual finished estimated user stories are tracked above."
         },
         "MOVE_TO_SPRINT": {
             "TITLE_ACTION_MOVE_UNFINISHED": "Переместить незавершённые элементы в другой спринт",
@@ -1533,7 +1536,7 @@
     },
     "NOTIFICATION": {
         "OK": "Всё хорошо",
-        "WARNING": "Упс, что-то пошло не так...",
+        "WARNING": "Oops, something went wrong...",
         "WARNING_TEXT": "Ваши изменения не сохранены!",
         "SAVED": "Taiga успешно сохранила изменения!",
         "CLOSE": "Закрыть уведомление",
@@ -1553,14 +1556,14 @@
         "SUBTITLE": "Ещё один клик и Ваш email будет обновлён!",
         "PLACEHOLDER_INPUT_TOKEN": "изменить идентификатор email",
         "ACTION_CHANGE_EMAIL": "Сменить электронную почту",
-        "SUCCESS": "Taiga обновила Ваш email"
+        "SUCCESS": "Your email address has been successfully changed"
     },
     "VERIFY_EMAIL_FORM": {
         "TITLE": "Проверьте ваш email",
         "SUBTITLE": "Еще один клик и ваш email будет проверен!",
         "PLACEHOLDER_INPUT_TOKEN": "изменить идентификатор email",
         "ACTION_VERIFY_EMAIL": "Проверьте email",
-        "SUCCESS": "Taiga проверяет ваш email"
+        "SUCCESS": "Congratulations!!, your email address has been verified"
     },
     "ISSUES": {
         "PAGE_TITLE": "Запросы - {{projectName}}",
@@ -1634,7 +1637,8 @@
         "NUMBER_US": "Number of US",
         "ARCHIVED": "(Archived)",
         "CREATE_SWIMLANE": "Create more swimlanes",
-        "UNCLASSIFIED_USER_STORIES": "Unclassified user stories"
+        "UNCLASSIFIED_USER_STORIES": "Unclassified user stories",
+        "UNCLASSIFIED_USER_STORIES_TOOLTIP": "The user stories that are not part of any swimlane are here."
     },
     "SEARCH": {
         "PAGE_TITLE": "Поиск - {{projectName}}",

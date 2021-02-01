@@ -34,7 +34,7 @@
         "PLUGINS": "Plugins",
         "ONE_ITEM_LINE": "Un elemento por línea...",
         "NEW_BULK": "Nueva inserción en bloque",
-        "SUBTASKS": "Subtareas",
+        "RELATED_TASKS": "Tareas",
         "PREVIOUS": "Anterior",
         "NEXT": "Siguiente",
         "LOGOUT": "Cerrar sesión",
@@ -44,7 +44,7 @@
         "CLIENT_REQUIREMENT": "Un requerimiento de cliente es un nuevo requisito que no se esperaba y es necesario que forme parte del proyecto",
         "TEAM_REQUIREMENT": "Requerimiento del equipo es un nuevo requisito que debe existir en el proyecto pero que no conllevará ningún coste para el cliente.",
         "OWNER": "Dueño del proyecto",
-        "CAPSLOCK_WARNING": "¡Cuidado!. Esta usando mayusculas en un campo sensible a mayusculas",
+        "CAPSLOCK_WARNING": "¡Cuidado! Estás usando mayúsculas en un campo sensible a mayúsculas",
         "CONFIRM_CLOSE_EDIT_MODE_TITLE": "¿Seguro que desea cerrar el modo de edición?",
         "CONFIRM_CLOSE_EDIT_MODE_MESSAGE": "Recuerde que si cierra el modo de edición sin guardar todos los cambios se perderán",
         "RELATED_USERSTORIES": "Historias de usuario relacionadas",
@@ -225,8 +225,8 @@
             "CUSTOM_FIELDS": "Atributo Personalizados",
             "SAVE": "Guardar atributo personalizado",
             "EDIT": "Editar atributo personalizado",
-            "DELETE": "Delete custom fields",
-            "CONFIRM_DELETE": "Remember that all values in this custom field will be deleted."
+            "DELETE": "Eliminar campos personalizados",
+            "CONFIRM_DELETE": "Recuerda que todos los valores en este campo personalizado se borrarán"
         },
         "FILTERS": {
             "INPUT_PLACEHOLDER": "asunto o referencia",
@@ -387,7 +387,6 @@
         "PLACEHOLDER_NEW_PASSWORD": "Nueva contraseña",
         "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "Reescriba la nueva contraseña",
         "ACTION_RESET_PASSWORD": "Restablecer contraseña",
-        "ERROR": "La Taiga no encuentra tu petición de recuperación de contraseña. Prueba a pedirla de nuevo.",
         "SUCCESS": "La Taiga guardó tu nueva contraseña.<br /> Prueba a<strong>iniciar sesión</strong> con ella."
     },
     "INVITATION": {
@@ -517,7 +516,7 @@
             "TITLE": "Módulos",
             "EPICS": "Épicas",
             "EPICS_DESCRIPTION": "Visualizar y administrar la parte mas estrategica del proyecto.",
-            "BACKLOG": "Backlog",
+            "BACKLOG": "Scrum",
             "BACKLOG_DESCRIPTION": "Gestiona tus historias de usuario para mantener una vista organizada y priorizada de los próximos trabajos que deberás afrontar. ",
             "NUMBER_SPRINTS": "Numero esperado de sprints",
             "NUMBER_SPRINTS_HELP": "0 para un numero indeterminado",
@@ -677,7 +676,7 @@
             "SUBTITLE": "Crea swimlanes para usarlos en su flujo de trabajo y establece WIP limits para restringir el número máximo de historias en cada estado.",
             "SWIMLANES": "Swimlanes",
             "ACTION_ADD_SWIMLANE": "Nuevo swimlane",
-            "SWIMLANE_NAME_EXISTS": "This swimlane name already exists",
+            "SWIMLANE_NAME_EXISTS": "Ya existe un swimlane con este nombre",
             "NO_SWIMLANES": "No hay swimlanes todavía",
             "SWIMLANE_NAME": "Nombre del swimlane",
             "POPUP_NEW_SWIMLANE": "Si tenías algunas historias de usuario creadas, las encontrarás en este swimlane.",
@@ -928,7 +927,7 @@
             "TAIGA_RESOURCES_TITLE": "Visita Taiga resources",
             "TAIGA_RESOURCES": "Taiga Resources",
             "FEEDBACK_TITLE": "Envíanos tus comentarios",
-            "FEEDBACK": "Ask a question",
+            "FEEDBACK": "Escribe tu pregunta",
             "NOTIFICATIONS_TITLE": "Edita la configuración de tus notificaciones",
             "NOTIFICATIONS": "Notificaciones",
             "VIEW_PROFILE_TITLE": "Ver perfil",
@@ -1143,13 +1142,13 @@
             "HELP_TEXT": "Si los usuarios ya están registrado en Taiga, se añadirán automáticamente. De lo contrario recibirán una invitación."
         },
         "FEEDBACK": {
-            "TITLE": "Ask a question",
-            "COMMENT": "Leave us a message",
-            "ACTION_SEND": "Send Message",
-            "YOU_CAN_ALSO": "You can also:",
-            "CREATE": "Create an issue on this",
-            "PUBLIC": "public Taiga project",
-            "EMAIL": "Send us a e-mail directly to",
+            "TITLE": "Escribe tu pregunta",
+            "COMMENT": "Déjanos un mensaje",
+            "ACTION_SEND": "Enviar el mensaje",
+            "YOU_CAN_ALSO": "Puedes también:",
+            "CREATE": "Crear una petición en este",
+            "PUBLIC": "proyecto público de Taiga",
+            "EMAIL": "Enviarnos un e-mail a",
             "SUPPORT": "support@taiga.io"
         },
         "SEARCH": {
@@ -1184,7 +1183,9 @@
             "SWIMLANE": "Swimlane",
             "SELECT_SWIMLANE": "Selecciona un swimlane",
             "SELECT_STATUS": "Selecciona estado",
-            "DEFAULT": "Predeterminado"
+            "DEFAULT": "Predeterminado",
+            "ERROR_STATUS": "Changes cannot be saved because there is a problem with the selected status.",
+            "ERROR_SWIMLANE": "Changes cannot be saved because there is a problem with the selected swimlane."
         },
         "DISABLE_KANBAN": {
             "TITLE": "Desactivar kanban",
@@ -1494,10 +1495,12 @@
         },
         "CHARTS": {
             "XAXIS_LABEL": "Días",
-            "YAXIS_LABEL": "Puntos",
-            "OPTIMAL": "El número de puntos óptimos pendientes para el día {{formattedDate}} debería ser de {{roundedValue}}",
+            "YAXIS_LABEL": "Projected points progress",
+            "OPTIMAL": "Pending points for day {{formattedDate}} should be {{roundedValue}}",
             "REAL": "El número de puntos pendientes para el día {{formattedDate}} es de {{roundedValue}}",
-            "DATE": "DD MMMM YYYY"
+            "DATE": "DD MMMM YYYY",
+            "HELP_LINK": "How this chart works",
+            "HELP_TOOLTIP": "This burndown chart shows the sprint's approximate or projected progress based on estimated user story closed tasks. Actual finished estimated user stories are tracked above."
         },
         "MOVE_TO_SPRINT": {
             "TITLE_ACTION_MOVE_UNFINISHED": "Mover los items no completados a otro sprint",
@@ -1533,7 +1536,7 @@
     },
     "NOTIFICATION": {
         "OK": "¡Todo Ok!",
-        "WARNING": "¡Cáspitas!, algo no ha ido bien...",
+        "WARNING": "Oops, something went wrong...",
         "WARNING_TEXT": "¡Tus cambios no han sido guardados!",
         "SAVED": "¡La Taiga ha guardado todos tus cambios!",
         "CLOSE": "Cerrar notificación",
@@ -1553,14 +1556,14 @@
         "SUBTITLE": "̀¡Un click más y tu email se actualizará!",
         "PLACEHOLDER_INPUT_TOKEN": "token de cambio de email",
         "ACTION_CHANGE_EMAIL": "Cambiar email",
-        "SUCCESS": "La Taiga ha actualizado tu correo"
+        "SUCCESS": "Your email address has been successfully changed"
     },
     "VERIFY_EMAIL_FORM": {
         "TITLE": "Verifica tu correo electrónico",
         "SUBTITLE": "¡Un clic más y habrás verificado tu correo electrónico!",
         "PLACEHOLDER_INPUT_TOKEN": "token de cambio de email",
         "ACTION_VERIFY_EMAIL": "Verificar correo electrónico",
-        "SUCCESS": "La Taiga ha verificado tu correo electrónico"
+        "SUCCESS": "Congratulations!!, your email address has been verified"
     },
     "ISSUES": {
         "PAGE_TITLE": "Peticiones - {{projectName}}",
@@ -1634,7 +1637,8 @@
         "NUMBER_US": "Número de historias",
         "ARCHIVED": "(Archivadas)",
         "CREATE_SWIMLANE": "Crea más swimlanes",
-        "UNCLASSIFIED_USER_STORIES": "Historias de usuario sin clasificar"
+        "UNCLASSIFIED_USER_STORIES": "Historias de usuario sin clasificar",
+        "UNCLASSIFIED_USER_STORIES_TOOLTIP": "The user stories that are not part of any swimlane are here."
     },
     "SEARCH": {
         "PAGE_TITLE": "Buscar - {{projectName}}",

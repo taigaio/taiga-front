@@ -34,7 +34,7 @@
         "PLUGINS": "Plugins",
         "ONE_ITEM_LINE": "Ein Eintrag pro Zeile...",
         "NEW_BULK": "Neue Massenerstellung",
-        "SUBTASKS": "Subtasks",
+        "RELATED_TASKS": "Aufgaben",
         "PREVIOUS": "Zurück",
         "NEXT": "Weiter",
         "LOGOUT": "Ausloggen",
@@ -387,7 +387,6 @@
         "PLACEHOLDER_NEW_PASSWORD": "Neues Passwort",
         "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "Wiederholen Sie die Eingabe des neuen Passworts",
         "ACTION_RESET_PASSWORD": "Passwort zurücksetzen",
-        "ERROR": "Taiga konnte Ihre Anfrage zum Zurücksetzen Ihres Passworts nicht finden. Bitte fordern Sie es erneut an.",
         "SUCCESS": "Taiga hat Ihr neues Passwort gespeichert. Testen Sie Ihr Login."
     },
     "INVITATION": {
@@ -517,7 +516,7 @@
             "TITLE": "Module",
             "EPICS": "Epics",
             "EPICS_DESCRIPTION": "Visualisieren und verwalten Sie den strategischsten Teil Ihres Projektes",
-            "BACKLOG": "Backlog",
+            "BACKLOG": "Scrum",
             "BACKLOG_DESCRIPTION": "Verwalten Sie Ihre User-Stories, um einen organisierten Überblick der anstehenden und priorisierten Aufgaben zu erhalten.",
             "NUMBER_SPRINTS": "Erwartete Anzahl an Sprints",
             "NUMBER_SPRINTS_HELP": "0 für eine unbestimmte Anzahl",
@@ -923,7 +922,7 @@
             "VIEW_ALL_PROJECTS": "View all projects",
             "MANAGE_PROJECTS": "Projekte verwalten",
             "TITLE_CREATE_PROJECT": "Projekt anlegen",
-            "HELP_TITLE": "Help",
+            "HELP_TITLE": "Hilfe",
             "HOMEPAGE": "Homepage",
             "TAIGA_RESOURCES_TITLE": "Go to Taiga resources",
             "TAIGA_RESOURCES": "Taiga Resources",
@@ -1184,7 +1183,9 @@
             "SWIMLANE": "Swimlane",
             "SELECT_SWIMLANE": "Select swimlane",
             "SELECT_STATUS": "Select status",
-            "DEFAULT": "Default"
+            "DEFAULT": "Default",
+            "ERROR_STATUS": "Changes cannot be saved because there is a problem with the selected status.",
+            "ERROR_SWIMLANE": "Changes cannot be saved because there is a problem with the selected swimlane."
         },
         "DISABLE_KANBAN": {
             "TITLE": "Disable kanban",
@@ -1494,10 +1495,12 @@
         },
         "CHARTS": {
             "XAXIS_LABEL": "Tage",
-            "YAXIS_LABEL": "Punkte",
-            "OPTIMAL": "Optimale unerledigte Punkte für Tag {{formattedDate}} sollten sein {{roundedValue}}",
+            "YAXIS_LABEL": "Projected points progress",
+            "OPTIMAL": "Pending points for day {{formattedDate}} should be {{roundedValue}}",
             "REAL": "Tatsächliche Anzahl unerledigter Punkte für Tag {{formattedDate}} ist {{roundedValue}}",
-            "DATE": "DD. MMMM YYYY"
+            "DATE": "DD. MMMM YYYY",
+            "HELP_LINK": "How this chart works",
+            "HELP_TOOLTIP": "This burndown chart shows the sprint's approximate or projected progress based on estimated user story closed tasks. Actual finished estimated user stories are tracked above."
         },
         "MOVE_TO_SPRINT": {
             "TITLE_ACTION_MOVE_UNFINISHED": "Move unfinished items to another sprint",
@@ -1533,7 +1536,7 @@
     },
     "NOTIFICATION": {
         "OK": "Alles in Ordnung",
-        "WARNING": "Huch, es gibt ein Problem...",
+        "WARNING": "Oops, something went wrong...",
         "WARNING_TEXT": "Your changes were not saved!",
         "SAVED": "The Taiga saved all your changes!",
         "CLOSE": "Benachrichtigung schließen",
@@ -1553,14 +1556,14 @@
         "SUBTITLE": "Noch ein Klick und Ihre E-Mail wird aktualisiert!",
         "PLACEHOLDER_INPUT_TOKEN": "E-Mail-Token ändern",
         "ACTION_CHANGE_EMAIL": "E-Mail ändern",
-        "SUCCESS": "The Taiga updated your email"
+        "SUCCESS": "Your email address has been successfully changed"
     },
     "VERIFY_EMAIL_FORM": {
         "TITLE": "Verify your email",
         "SUBTITLE": "One click more and your email will be verified!",
         "PLACEHOLDER_INPUT_TOKEN": "E-Mail-Token ändern",
         "ACTION_VERIFY_EMAIL": "Verify email",
-        "SUCCESS": "The Taiga verified your email"
+        "SUCCESS": "Congratulations!!, your email address has been verified"
     },
     "ISSUES": {
         "PAGE_TITLE": "Tickets - {{projectName}}",
@@ -1634,7 +1637,8 @@
         "NUMBER_US": "Number of US",
         "ARCHIVED": "(Archived)",
         "CREATE_SWIMLANE": "Create more swimlanes",
-        "UNCLASSIFIED_USER_STORIES": "Unclassified user stories"
+        "UNCLASSIFIED_USER_STORIES": "Unclassified user stories",
+        "UNCLASSIFIED_USER_STORIES_TOOLTIP": "The user stories that are not part of any swimlane are here."
     },
     "SEARCH": {
         "PAGE_TITLE": "Suche - {{projectName}}",

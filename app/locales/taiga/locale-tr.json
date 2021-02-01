@@ -34,7 +34,7 @@
         "PLUGINS": "Eklentiler",
         "ONE_ITEM_LINE": "Her satıra bir kalem...",
         "NEW_BULK": "Yeni toplu ekleme",
-        "SUBTASKS": "Alt Görev",
+        "RELATED_TASKS": "Görevler",
         "PREVIOUS": "Önceki",
         "NEXT": "İleri",
         "LOGOUT": "Çıkış",
@@ -387,7 +387,6 @@
         "PLACEHOLDER_NEW_PASSWORD": "Yeni parola",
         "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "Yeni parolayı yeniden girin",
         "ACTION_RESET_PASSWORD": "Parolayı Sıfırla",
-        "ERROR": "The Taiga can't find your request to recover your password. Try to ask for it again.",
         "SUCCESS": "The Taiga saved your new password.<br /> Try to <strong>sign in</strong> with it."
     },
     "INVITATION": {
@@ -517,7 +516,7 @@
             "TITLE": "Modüller",
             "EPICS": "Destanlar",
             "EPICS_DESCRIPTION": "Projenizin en stratejik parçasını görüntüleyin ve yönetin",
-            "BACKLOG": "Havuz",
+            "BACKLOG": "Scrum",
             "BACKLOG_DESCRIPTION": "Yeni gelen ve önceliklendirilmiş işler için düzenli bir görünüm elde etmek için kullanıcı hikayelerinizi yönetin.",
             "NUMBER_SPRINTS": "Beklenen koşu sayısı",
             "NUMBER_SPRINTS_HELP": "Belirsizse 0 giriniz",
@@ -1184,7 +1183,9 @@
             "SWIMLANE": "Swimlane",
             "SELECT_SWIMLANE": "Select swimlane",
             "SELECT_STATUS": "Select status",
-            "DEFAULT": "Varsayılan"
+            "DEFAULT": "Varsayılan",
+            "ERROR_STATUS": "Changes cannot be saved because there is a problem with the selected status.",
+            "ERROR_SWIMLANE": "Changes cannot be saved because there is a problem with the selected swimlane."
         },
         "DISABLE_KANBAN": {
             "TITLE": "Disable kanban",
@@ -1494,10 +1495,12 @@
         },
         "CHARTS": {
             "XAXIS_LABEL": "Günler",
-            "YAXIS_LABEL": "Puanlar",
-            "OPTIMAL": "{{formattedDate}} günü için ideal kalan puan {{roundedValue}} olmalı",
+            "YAXIS_LABEL": "Projected points progress",
+            "OPTIMAL": "Pending points for day {{formattedDate}} should be {{roundedValue}}",
             "REAL": "{{formattedDate}} günü gerçekten kalan puan {{roundedValue}}",
-            "DATE": "DD MMMM YYYY"
+            "DATE": "DD MMMM YYYY",
+            "HELP_LINK": "How this chart works",
+            "HELP_TOOLTIP": "This burndown chart shows the sprint's approximate or projected progress based on estimated user story closed tasks. Actual finished estimated user stories are tracked above."
         },
         "MOVE_TO_SPRINT": {
             "TITLE_ACTION_MOVE_UNFINISHED": "Move unfinished items to another sprint",
@@ -1533,7 +1536,7 @@
     },
     "NOTIFICATION": {
         "OK": "Herşey mükemmel",
-        "WARNING": "Amanın, birşeyler oldu..",
+        "WARNING": "Oops, something went wrong...",
         "WARNING_TEXT": "Değişiklikleriniz kaydedilmedi!",
         "SAVED": "Taiga tüm değişikliklerinizi kaydetti!",
         "CLOSE": "Bildirimleri kapat",
@@ -1553,14 +1556,14 @@
         "SUBTITLE": "Bir tık daha ve e-postanız güncellenecek!",
         "PLACEHOLDER_INPUT_TOKEN": "e-posta kuponunu değiştir",
         "ACTION_CHANGE_EMAIL": "E-posta değiştir",
-        "SUCCESS": "Taiga e-postanızı güncelledi"
+        "SUCCESS": "Your email address has been successfully changed"
     },
     "VERIFY_EMAIL_FORM": {
         "TITLE": "Verify your email",
         "SUBTITLE": "One click more and your email will be verified!",
         "PLACEHOLDER_INPUT_TOKEN": "e-posta kuponunu değiştir",
         "ACTION_VERIFY_EMAIL": "Verify email",
-        "SUCCESS": "The Taiga verified your email"
+        "SUCCESS": "Congratulations!!, your email address has been verified"
     },
     "ISSUES": {
         "PAGE_TITLE": "Sorunlar - {{projectName}}",
@@ -1634,7 +1637,8 @@
         "NUMBER_US": "Number of US",
         "ARCHIVED": "(Archived)",
         "CREATE_SWIMLANE": "Create more swimlanes",
-        "UNCLASSIFIED_USER_STORIES": "Unclassified user stories"
+        "UNCLASSIFIED_USER_STORIES": "Unclassified user stories",
+        "UNCLASSIFIED_USER_STORIES_TOOLTIP": "The user stories that are not part of any swimlane are here."
     },
     "SEARCH": {
         "PAGE_TITLE": "Ara - {{projectName}}",

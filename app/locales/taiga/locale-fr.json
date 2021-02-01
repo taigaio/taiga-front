@@ -34,7 +34,7 @@
         "PLUGINS": "Plugins",
         "ONE_ITEM_LINE": "Un élément par ligne...",
         "NEW_BULK": "Nouvel ajout en bloc",
-        "SUBTASKS": "Sous-tâches",
+        "RELATED_TASKS": "Tâches",
         "PREVIOUS": "Précédent",
         "NEXT": "Suivant",
         "LOGOUT": "Déconnexion",
@@ -387,7 +387,6 @@
         "PLACEHOLDER_NEW_PASSWORD": "Nouveau mot de passe",
         "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "Confirmez votre nouveau mot de passe",
         "ACTION_RESET_PASSWORD": "Réinitialiser le mot de passe",
-        "ERROR": "Taiga n'a pas trouvé votre requête de récupération de mot de passe. Essayez de faire une nouvelle demande.",
         "SUCCESS": "Taiga a enregistré votre nouveau mot de passe. <br />Essayez de vous <strong>connecter</strong>avec."
     },
     "INVITATION": {
@@ -517,7 +516,7 @@
             "TITLE": "Modules",
             "EPICS": "Épopées",
             "EPICS_DESCRIPTION": "Visualiser et gérer les aspects les plus stratégiques de votre projet",
-            "BACKLOG": "Backlog",
+            "BACKLOG": "Scrum",
             "BACKLOG_DESCRIPTION": "Gérez votre récits utilisateur pour garder une vue organisée des travaux à venir et priorisés.",
             "NUMBER_SPRINTS": "Nombre prévu de sprints",
             "NUMBER_SPRINTS_HELP": "0 pour un nombre indéterminé",
@@ -923,7 +922,7 @@
             "VIEW_ALL_PROJECTS": "View all projects",
             "MANAGE_PROJECTS": "Gérer les projets",
             "TITLE_CREATE_PROJECT": "Créer un projet",
-            "HELP_TITLE": "Help",
+            "HELP_TITLE": "Aide",
             "HOMEPAGE": "Page d'accueil",
             "TAIGA_RESOURCES_TITLE": "Go to Taiga resources",
             "TAIGA_RESOURCES": "Taiga Resources",
@@ -1184,7 +1183,9 @@
             "SWIMLANE": "Swimlane",
             "SELECT_SWIMLANE": "Select swimlane",
             "SELECT_STATUS": "Select status",
-            "DEFAULT": "Valeur par défaut"
+            "DEFAULT": "Valeur par défaut",
+            "ERROR_STATUS": "Changes cannot be saved because there is a problem with the selected status.",
+            "ERROR_SWIMLANE": "Changes cannot be saved because there is a problem with the selected swimlane."
         },
         "DISABLE_KANBAN": {
             "TITLE": "Disable kanban",
@@ -1494,10 +1495,12 @@
         },
         "CHARTS": {
             "XAXIS_LABEL": "Jours",
-            "YAXIS_LABEL": "Points",
-            "OPTIMAL": "Le nombre optimal de points pour le jour {{formattedDate}} devrait être {{roundedValue}}",
+            "YAXIS_LABEL": "Projected points progress",
+            "OPTIMAL": "Pending points for day {{formattedDate}} should be {{roundedValue}}",
             "REAL": "Le nombre réel de points pour le jour {{formattedDate}} est {{roundedValue}}",
-            "DATE": "DD MMMM YYYY"
+            "DATE": "DD MMMM YYYY",
+            "HELP_LINK": "How this chart works",
+            "HELP_TOOLTIP": "This burndown chart shows the sprint's approximate or projected progress based on estimated user story closed tasks. Actual finished estimated user stories are tracked above."
         },
         "MOVE_TO_SPRINT": {
             "TITLE_ACTION_MOVE_UNFINISHED": "Déplacer les éléments non terminés dans un autre sprint",
@@ -1533,7 +1536,7 @@
     },
     "NOTIFICATION": {
         "OK": "Tout est ok",
-        "WARNING": "Oups, quelque chose s'est produit...",
+        "WARNING": "Oops, something went wrong...",
         "WARNING_TEXT": "Vos modifications n'ont pas été enregistrées !",
         "SAVED": "Taiga a sauvegardé toutes vos modifications !",
         "CLOSE": "Fermer la notification",
@@ -1553,14 +1556,14 @@
         "SUBTITLE": "Plus qu'un click et votre adresse courriel sera mise à jour !",
         "PLACEHOLDER_INPUT_TOKEN": "modifier le jeton courriel",
         "ACTION_CHANGE_EMAIL": "Modifier le courriel",
-        "SUCCESS": "Taiga a modifié votre courriel"
+        "SUCCESS": "Your email address has been successfully changed"
     },
     "VERIFY_EMAIL_FORM": {
         "TITLE": "Vérifiez votre adresse courriel",
         "SUBTITLE": "Plus qu'un clique et votre adresse courriel sera vérifiée !",
         "PLACEHOLDER_INPUT_TOKEN": "modifier le jeton courriel",
         "ACTION_VERIFY_EMAIL": "Vérifier l'adresse de courriel",
-        "SUCCESS": "Taiga a vérifié votre adresse de courriel"
+        "SUCCESS": "Congratulations!!, your email address has been verified"
     },
     "ISSUES": {
         "PAGE_TITLE": "Tickets - {{projectName}}",
@@ -1634,7 +1637,8 @@
         "NUMBER_US": "Number of US",
         "ARCHIVED": "(Archived)",
         "CREATE_SWIMLANE": "Create more swimlanes",
-        "UNCLASSIFIED_USER_STORIES": "Unclassified user stories"
+        "UNCLASSIFIED_USER_STORIES": "Unclassified user stories",
+        "UNCLASSIFIED_USER_STORIES_TOOLTIP": "The user stories that are not part of any swimlane are here."
     },
     "SEARCH": {
         "PAGE_TITLE": "Chercher - {{projectName}}",

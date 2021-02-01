@@ -34,7 +34,7 @@
         "PLUGINS": "Pluginak",
         "ONE_ITEM_LINE": "Bat lerro bakoitzean…",
         "NEW_BULK": "Txertatu sailka berriro",
-        "SUBTASKS": "Azpiatazak",
+        "RELATED_TASKS": "Atazak",
         "PREVIOUS": "Aurrekoa",
         "NEXT": "Hurrengoa",
         "LOGOUT": "Amaitu saioa",
@@ -387,7 +387,6 @@
         "PLACEHOLDER_NEW_PASSWORD": "Pasahitz berria",
         "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "Idatzi berriro pasahitz berria",
         "ACTION_RESET_PASSWORD": "Berrezarri pasahitza",
-        "ERROR": "Taigak ezin du aurkitu zure eskaera, pasahitza berreskuratzeko.  Saiatu berriro eskatzen.",
         "SUCCESS": "Taigak gorde du zure pasahitz berria.<br /> Saiatu <strong>saioa hasten</strong> berarekin."
     },
     "INVITATION": {
@@ -517,7 +516,7 @@
             "TITLE": "Moduluak",
             "EPICS": "Mugarriak",
             "EPICS_DESCRIPTION": "Bistaratu eta kudeatu zure proiektuaren alde estrategikoa",
-            "BACKLOG": "Atzeratutako lana",
+            "BACKLOG": "Scrum",
             "BACKLOG_DESCRIPTION": "Kudeatu eginkizunak laster eta lehentasunez egin beharreko lana antolatuta ikusteko.",
             "NUMBER_SPRINTS": "Zenbat urrats aurreikusten dira?",
             "NUMBER_SPRINTS_HELP": "0 zehaztu gabeko kopurua nahi bada",
@@ -923,7 +922,7 @@
             "VIEW_ALL_PROJECTS": "View all projects",
             "MANAGE_PROJECTS": "Kudeatu proiektuak",
             "TITLE_CREATE_PROJECT": "Sortu proiektu bat",
-            "HELP_TITLE": "Help",
+            "HELP_TITLE": "Laguntza",
             "HOMEPAGE": "Hasiera",
             "TAIGA_RESOURCES_TITLE": "Go to Taiga resources",
             "TAIGA_RESOURCES": "Taiga Resources",
@@ -1184,7 +1183,9 @@
             "SWIMLANE": "Swimlane",
             "SELECT_SWIMLANE": "Select swimlane",
             "SELECT_STATUS": "Select status",
-            "DEFAULT": "Lehenetsia"
+            "DEFAULT": "Lehenetsia",
+            "ERROR_STATUS": "Changes cannot be saved because there is a problem with the selected status.",
+            "ERROR_SWIMLANE": "Changes cannot be saved because there is a problem with the selected swimlane."
         },
         "DISABLE_KANBAN": {
             "TITLE": "Disable kanban",
@@ -1494,10 +1495,12 @@
         },
         "CHARTS": {
             "XAXIS_LABEL": "Egunak",
-            "YAXIS_LABEL": "Puntuak",
-            "OPTIMAL": "{{formattedDate}} egunean eman beharreko puntu kopuru optimoa izango litzateke {{roundedValue}}",
+            "YAXIS_LABEL": "Projected points progress",
+            "OPTIMAL": "Pending points for day {{formattedDate}} should be {{roundedValue}}",
             "REAL": "{{formattedDate}} egunean eman beharreko benetako puntu kopurua da {{roundedValue}}",
-            "DATE": "DD MMMM YYYY"
+            "DATE": "DD MMMM YYYY",
+            "HELP_LINK": "How this chart works",
+            "HELP_TOOLTIP": "This burndown chart shows the sprint's approximate or projected progress based on estimated user story closed tasks. Actual finished estimated user stories are tracked above."
         },
         "MOVE_TO_SPRINT": {
             "TITLE_ACTION_MOVE_UNFINISHED": "Eraman bukatu gabeko osagaiak urrats berri batera",
@@ -1533,7 +1536,7 @@
     },
     "NOTIFICATION": {
         "OK": "Dena ongi joan da",
-        "WARNING": "Otx, arazoren bat dago…",
+        "WARNING": "Oops, something went wrong...",
         "WARNING_TEXT": "Zure aldaketak ez dira gorde!",
         "SAVED": "Taigak gorde ditu zure aldaketa guztiak!",
         "CLOSE": "Itxi jakinarazpena",
@@ -1553,14 +1556,14 @@
         "SUBTITLE": "Klik bat gehiago eginda, zure e-posta eguneratuta geldituko da!",
         "PLACEHOLDER_INPUT_TOKEN": "aldatu e-postaren identifikatzailea",
         "ACTION_CHANGE_EMAIL": "Aldatu e-posta",
-        "SUCCESS": "Taigak eguneratu du zure e-posta"
+        "SUCCESS": "Your email address has been successfully changed"
     },
     "VERIFY_EMAIL_FORM": {
         "TITLE": "Verify your email",
         "SUBTITLE": "One click more and your email will be verified!",
         "PLACEHOLDER_INPUT_TOKEN": "aldatu e-postaren identifikatzailea",
         "ACTION_VERIFY_EMAIL": "Verify email",
-        "SUCCESS": "The Taiga verified your email"
+        "SUCCESS": "Congratulations!!, your email address has been verified"
     },
     "ISSUES": {
         "PAGE_TITLE": "Gertakariak - {{projectName}}",
@@ -1634,7 +1637,8 @@
         "NUMBER_US": "Number of US",
         "ARCHIVED": "(Archived)",
         "CREATE_SWIMLANE": "Create more swimlanes",
-        "UNCLASSIFIED_USER_STORIES": "Unclassified user stories"
+        "UNCLASSIFIED_USER_STORIES": "Unclassified user stories",
+        "UNCLASSIFIED_USER_STORIES_TOOLTIP": "The user stories that are not part of any swimlane are here."
     },
     "SEARCH": {
         "PAGE_TITLE": "Bilatu - {{projectName}}",

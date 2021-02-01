@@ -34,7 +34,7 @@
         "PLUGINS": "Plugin",
         "ONE_ITEM_LINE": "Un elemento per riga...",
         "NEW_BULK": "Nuovo inserimento nel carico",
-        "SUBTASKS": "Sottocompiti",
+        "RELATED_TASKS": "Compiti",
         "PREVIOUS": "Precedente",
         "NEXT": "Successivo",
         "LOGOUT": "Esci",
@@ -54,7 +54,7 @@
             "DELETE": "Elimina card",
             "DELETE_ISSUE": "Elimina il problema",
             "DETACH_ISSUE_FROM_SPRINT": "Detach from sprint",
-            "PTS": "{{pts}} pts",
+            "PTS": "{{pts}} punti",
             "DUE_DATE": "Due date: {{date}}",
             "NO_PTS": "N/E",
             "ESTIMATION": "Estimation",
@@ -387,7 +387,6 @@
         "PLACEHOLDER_NEW_PASSWORD": "Nuova password",
         "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "Digita una nuova password",
         "ACTION_RESET_PASSWORD": "Reimposta la password",
-        "ERROR": "La Taiga non riesce a trovare la tua richiesta di recupero password. Prova a chiedergliela di nuovo.",
         "SUCCESS": "La Taiga ha salvato la tua nuova password.<br /> Pova a fare <strong>login</strong> con questa."
     },
     "INVITATION": {
@@ -456,7 +455,7 @@
         "MY_PROJECTS": "I miei progetti"
     },
     "ATTACHMENT": {
-        "SECTION_NAME": "Attachments",
+        "SECTION_NAME": "Allegati",
         "TITLE": "{{ fileName }} caricato il {{ date }}",
         "LIST_VIEW_MODE": "Modalità lista",
         "GALLERY_VIEW_MODE": "Modalità galleria",
@@ -517,7 +516,7 @@
             "TITLE": "Moduli",
             "EPICS": "Epici",
             "EPICS_DESCRIPTION": "Visulaizza e controlla la parte più strategica del tuo progetto",
-            "BACKLOG": "Backlog",
+            "BACKLOG": "Scrum",
             "BACKLOG_DESCRIPTION": "Amministra le storie degli utenti per mantenere una visione organizzata dei lavori in arrivo e di quelli ad alta priorità ",
             "NUMBER_SPRINTS": "Numero di Sprint previsto",
             "NUMBER_SPRINTS_HELP": "0 per indeterminato",
@@ -673,7 +672,7 @@
             "AFTER": "Passato"
         },
         "PROJECT_KANBAN_OPTIONS": {
-            "TITLE": "Kanban options",
+            "TITLE": "Opzioni kanban",
             "SUBTITLE": "Enable swimlanes to use in your workflow and set WIP limits to restrict the maximun number of user stories on each status.",
             "SWIMLANES": "Swimlanes",
             "ACTION_ADD_SWIMLANE": "New swimlane",
@@ -815,7 +814,7 @@
             "CUSTOM_FIELDS": "Campi personalizzati",
             "TAGS": "Tag",
             "DUE_DATES": "Scadenze",
-            "KANBAN_OPTIONS": "Kanban options"
+            "KANBAN_OPTIONS": "Opzioni kanban"
         },
         "SUBMENU_ROLES": {
             "TITLE": "Ruoli",
@@ -917,10 +916,10 @@
         "NAVIGATION": {
             "PROJECTS": "Progetti",
             "ACCOUNT_SETTINGS": "Account settings",
-            "ACTION_CREATE_PROJECT": "New project",
-            "ACTION_CREATE_PROJECT_FIRST": "Create your first project",
+            "ACTION_CREATE_PROJECT": "Nuovo progetto",
+            "ACTION_CREATE_PROJECT_FIRST": "Crea il tuo primo progetto",
             "ACTION_CREATE_PROJECT_FIRST_TEXT": "You don’t have any projects yet. Create one now, invite your team and start using Taiga to the fullest.",
-            "VIEW_ALL_PROJECTS": "View all projects",
+            "VIEW_ALL_PROJECTS": "Vedi tutti i progetti",
             "MANAGE_PROJECTS": "Gestisci Progetti",
             "TITLE_CREATE_PROJECT": "Crea progetto",
             "HELP_TITLE": "Aiuto",
@@ -1184,7 +1183,9 @@
             "SWIMLANE": "Swimlane",
             "SELECT_SWIMLANE": "Select swimlane",
             "SELECT_STATUS": "Select status",
-            "DEFAULT": "Predefinito"
+            "DEFAULT": "Predefinito",
+            "ERROR_STATUS": "Changes cannot be saved because there is a problem with the selected status.",
+            "ERROR_SWIMLANE": "Changes cannot be saved because there is a problem with the selected swimlane."
         },
         "DISABLE_KANBAN": {
             "TITLE": "Disable kanban",
@@ -1444,7 +1445,7 @@
         "FILTERS": {
             "TOGGLE": "Premi i filtri visibilità",
             "TITLE": "Filtri",
-            "HIDE_TITLE": "Hide filters"
+            "HIDE_TITLE": "Nascondi i filtri"
         },
         "SPRINTS": {
             "TITLE": "SPRINTS",
@@ -1494,10 +1495,12 @@
         },
         "CHARTS": {
             "XAXIS_LABEL": "Giorni",
-            "YAXIS_LABEL": "Punti",
-            "OPTIMAL": "Il livello ottimale di punti sospesi per la giornata {{formattedDate}} dovrebbe essere {{roundedValue}}",
+            "YAXIS_LABEL": "Projected points progress",
+            "OPTIMAL": "Pending points for day {{formattedDate}} should be {{roundedValue}}",
             "REAL": "I punti in sospeso definitivi per la giornata {{formattedDate}} sono {{roundedValue}}",
-            "DATE": "DD MMMM YYYY"
+            "DATE": "DD MMMM YYYY",
+            "HELP_LINK": "How this chart works",
+            "HELP_TOOLTIP": "This burndown chart shows the sprint's approximate or projected progress based on estimated user story closed tasks. Actual finished estimated user stories are tracked above."
         },
         "MOVE_TO_SPRINT": {
             "TITLE_ACTION_MOVE_UNFINISHED": "Sposta gli oggetti non completati su un altro sprint",
@@ -1533,7 +1536,7 @@
     },
     "NOTIFICATION": {
         "OK": "E' tutto ok!",
-        "WARNING": "Oops, é successo qualcosa...",
+        "WARNING": "Oops, something went wrong...",
         "WARNING_TEXT": "Your changes were not saved!",
         "SAVED": "The Taiga saved all your changes!",
         "CLOSE": "Chiudi notifica",
@@ -1553,14 +1556,14 @@
         "SUBTITLE": "Un'altro click e la tua mail verrá aggiornata!",
         "PLACEHOLDER_INPUT_TOKEN": "Modifica il token della mail",
         "ACTION_CHANGE_EMAIL": "Cambia email",
-        "SUCCESS": "The Taiga updated your email"
+        "SUCCESS": "Your email address has been successfully changed"
     },
     "VERIFY_EMAIL_FORM": {
         "TITLE": "Verify your email",
         "SUBTITLE": "One click more and your email will be verified!",
         "PLACEHOLDER_INPUT_TOKEN": "Modifica il token della mail",
         "ACTION_VERIFY_EMAIL": "Verify email",
-        "SUCCESS": "The Taiga verified your email"
+        "SUCCESS": "Congratulations!!, your email address has been verified"
     },
     "ISSUES": {
         "PAGE_TITLE": "Problemi - {{projectName}}",
@@ -1599,9 +1602,9 @@
                 "ISSUE": "Problema",
                 "VOTES": "Voti",
                 "STATUS": "Stato",
-                "ATTACHMENTS": "Attachments",
+                "ATTACHMENTS": "Allegati",
                 "MODIFIED": "Modificato",
-                "ASSIGNED_TO": "Assign to"
+                "ASSIGNED_TO": "Assegna a"
             },
             "TITLE_ACTION_CHANGE_STATUS": "Cambia stato",
             "TITLE_ACTION_ASSIGNED_TO": "Assegna a",
@@ -1634,7 +1637,8 @@
         "NUMBER_US": "Number of US",
         "ARCHIVED": "(Archived)",
         "CREATE_SWIMLANE": "Create more swimlanes",
-        "UNCLASSIFIED_USER_STORIES": "Unclassified user stories"
+        "UNCLASSIFIED_USER_STORIES": "Unclassified user stories",
+        "UNCLASSIFIED_USER_STORIES_TOOLTIP": "The user stories that are not part of any swimlane are here."
     },
     "SEARCH": {
         "PAGE_TITLE": "Cerca - {{projectName}}",
@@ -1814,7 +1818,7 @@
         "TITLE": "Eventi",
         "MY_EVENTS": "I miei eventi",
         "DISMISS_ALL": "Ignora tutti",
-        "VIEW_ALL": "View all notifications",
+        "VIEW_ALL": "Vedi tutte le notifiche",
         "NO_NEW_EVENTS": "Nessun nuovo evento",
         "NO_EVENTS_YET": "Non ci sono ancora eventi",
         "ASSIGNED_YOU": "{{username}} ti ha assegnato {{obj_name}}",

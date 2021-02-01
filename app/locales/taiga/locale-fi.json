@@ -34,7 +34,7 @@
         "PLUGINS": "Pluginit",
         "ONE_ITEM_LINE": "Yksi riviä kohti...",
         "NEW_BULK": "Lisää monta",
-        "SUBTASKS": "Subtasks",
+        "RELATED_TASKS": "Tehtävät",
         "PREVIOUS": "Edellinen",
         "NEXT": "Seuraava",
         "LOGOUT": "Kirjaudu ulos",
@@ -387,7 +387,6 @@
         "PLACEHOLDER_NEW_PASSWORD": "Uusi salasana",
         "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "Anna salasana uudelleen",
         "ACTION_RESET_PASSWORD": "Uusi salsanasi",
-        "ERROR": "The Taiga can't find your request to recover your password. Try to ask for it again.",
         "SUCCESS": "The Taiga saved your new password.<br /> Try to <strong>sign in</strong> with it."
     },
     "INVITATION": {
@@ -517,7 +516,7 @@
             "TITLE": "Modulit",
             "EPICS": "Eepokset",
             "EPICS_DESCRIPTION": "Visualize and manage the most strategic part of your project",
-            "BACKLOG": "Odottavat",
+            "BACKLOG": "Scrum",
             "BACKLOG_DESCRIPTION": "Hallinnoi käyttäjätarinoita: järjestele ja priorisoi työtä.",
             "NUMBER_SPRINTS": "Arvio sprinttien lukumäärästä",
             "NUMBER_SPRINTS_HELP": "0 for an undetermined number",
@@ -1184,7 +1183,9 @@
             "SWIMLANE": "Swimlane",
             "SELECT_SWIMLANE": "Select swimlane",
             "SELECT_STATUS": "Select status",
-            "DEFAULT": "Default"
+            "DEFAULT": "Default",
+            "ERROR_STATUS": "Changes cannot be saved because there is a problem with the selected status.",
+            "ERROR_SWIMLANE": "Changes cannot be saved because there is a problem with the selected swimlane."
         },
         "DISABLE_KANBAN": {
             "TITLE": "Disable kanban",
@@ -1494,10 +1495,12 @@
         },
         "CHARTS": {
             "XAXIS_LABEL": "Päivät",
-            "YAXIS_LABEL": "Pisteet",
-            "OPTIMAL": "Optimaaliset odottavat pisteet {{formattedDate}} ovat {{roundedValue}}",
+            "YAXIS_LABEL": "Projected points progress",
+            "OPTIMAL": "Pending points for day {{formattedDate}} should be {{roundedValue}}",
             "REAL": "Todelliset odottavat pisteet {{formattedDate}} ovat {{roundedValue}}",
-            "DATE": "DD.MM.YY"
+            "DATE": "DD.MM.YY",
+            "HELP_LINK": "How this chart works",
+            "HELP_TOOLTIP": "This burndown chart shows the sprint's approximate or projected progress based on estimated user story closed tasks. Actual finished estimated user stories are tracked above."
         },
         "MOVE_TO_SPRINT": {
             "TITLE_ACTION_MOVE_UNFINISHED": "Move unfinished items to another sprint",
@@ -1533,7 +1536,7 @@
     },
     "NOTIFICATION": {
         "OK": "Kaikki on kunnossa",
-        "WARNING": "Oops, jotain tapahtui...",
+        "WARNING": "Oops, something went wrong...",
         "WARNING_TEXT": "Your changes were not saved!",
         "SAVED": "The Taiga saved all your changes!",
         "CLOSE": "Sulje ilmoitus",
@@ -1553,14 +1556,14 @@
         "SUBTITLE": "Vielä yksi klikki ja sähköpostisi on päivitetty!",
         "PLACEHOLDER_INPUT_TOKEN": "muuta sähköposti-tokenia",
         "ACTION_CHANGE_EMAIL": "Muuta sähköpostisi",
-        "SUCCESS": "The Taiga updated your email"
+        "SUCCESS": "Your email address has been successfully changed"
     },
     "VERIFY_EMAIL_FORM": {
         "TITLE": "Verify your email",
         "SUBTITLE": "One click more and your email will be verified!",
         "PLACEHOLDER_INPUT_TOKEN": "muuta sähköposti-tokenia",
         "ACTION_VERIFY_EMAIL": "Verify email",
-        "SUCCESS": "The Taiga verified your email"
+        "SUCCESS": "Congratulations!!, your email address has been verified"
     },
     "ISSUES": {
         "PAGE_TITLE": "Issues - {{projectName}}",
@@ -1634,7 +1637,8 @@
         "NUMBER_US": "Number of US",
         "ARCHIVED": "(Archived)",
         "CREATE_SWIMLANE": "Create more swimlanes",
-        "UNCLASSIFIED_USER_STORIES": "Unclassified user stories"
+        "UNCLASSIFIED_USER_STORIES": "Unclassified user stories",
+        "UNCLASSIFIED_USER_STORIES_TOOLTIP": "The user stories that are not part of any swimlane are here."
     },
     "SEARCH": {
         "PAGE_TITLE": "Etsi - {{projectName}}",

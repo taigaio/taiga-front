@@ -34,7 +34,7 @@
         "PLUGINS": "外掛",
         "ONE_ITEM_LINE": "一行一物 ",
         "NEW_BULK": "新批次插入",
-        "SUBTASKS": "Subtasks",
+        "RELATED_TASKS": "任務 ",
         "PREVIOUS": "Previous",
         "NEXT": "下一個",
         "LOGOUT": "登出",
@@ -387,7 +387,6 @@
         "PLACEHOLDER_NEW_PASSWORD": "新密碼 ",
         "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "重新輸入新密碼",
         "ACTION_RESET_PASSWORD": "重設密碼 ",
-        "ERROR": "The Taiga can't find your request to recover your password. Try to ask for it again.",
         "SUCCESS": "The Taiga saved your new password.<br /> Try to <strong>sign in</strong> with it."
     },
     "INVITATION": {
@@ -517,7 +516,7 @@
             "TITLE": "模組",
             "EPICS": "Epics",
             "EPICS_DESCRIPTION": "Visualize and manage the most strategic part of your project",
-            "BACKLOG": "待辦任務優先表",
+            "BACKLOG": "Scrum",
             "BACKLOG_DESCRIPTION": "管理你的 User Story 讓接下來的及優先的工作能被有條理地檢視 ",
             "NUMBER_SPRINTS": "Expected number of sprints",
             "NUMBER_SPRINTS_HELP": "0 for an undetermined number",
@@ -1184,7 +1183,9 @@
             "SWIMLANE": "Swimlane",
             "SELECT_SWIMLANE": "Select swimlane",
             "SELECT_STATUS": "Select status",
-            "DEFAULT": "Default"
+            "DEFAULT": "Default",
+            "ERROR_STATUS": "Changes cannot be saved because there is a problem with the selected status.",
+            "ERROR_SWIMLANE": "Changes cannot be saved because there is a problem with the selected swimlane."
         },
         "DISABLE_KANBAN": {
             "TITLE": "Disable kanban",
@@ -1494,10 +1495,12 @@
         },
         "CHARTS": {
             "XAXIS_LABEL": "天數",
-            "YAXIS_LABEL": "點數",
-            "OPTIMAL": "一天最適待辦點數{formattedDate}應為{{roundedValue}}",
+            "YAXIS_LABEL": "Projected points progress",
+            "OPTIMAL": "Pending points for day {{formattedDate}} should be {{roundedValue}}",
             "REAL": "一天真實的待辦點數 {{formattedDate}} is {{roundedValue}}",
-            "DATE": "DD MMM YYYY"
+            "DATE": "DD MMM YYYY",
+            "HELP_LINK": "How this chart works",
+            "HELP_TOOLTIP": "This burndown chart shows the sprint's approximate or projected progress based on estimated user story closed tasks. Actual finished estimated user stories are tracked above."
         },
         "MOVE_TO_SPRINT": {
             "TITLE_ACTION_MOVE_UNFINISHED": "Move unfinished items to another sprint",
@@ -1533,7 +1536,7 @@
     },
     "NOTIFICATION": {
         "OK": "一切還好",
-        "WARNING": "哇，有狀況發生",
+        "WARNING": "Oops, something went wrong...",
         "WARNING_TEXT": "Your changes were not saved!",
         "SAVED": "The Taiga saved all your changes!",
         "CLOSE": "關閉通知",
@@ -1553,14 +1556,14 @@
         "SUBTITLE": "確認你的電子郵件要更新",
         "PLACEHOLDER_INPUT_TOKEN": "變更電郵代碼　",
         "ACTION_CHANGE_EMAIL": "變更電郵地址",
-        "SUCCESS": "The Taiga updated your email"
+        "SUCCESS": "Your email address has been successfully changed"
     },
     "VERIFY_EMAIL_FORM": {
         "TITLE": "Verify your email",
         "SUBTITLE": "One click more and your email will be verified!",
         "PLACEHOLDER_INPUT_TOKEN": "變更電郵代碼　",
         "ACTION_VERIFY_EMAIL": "Verify email",
-        "SUCCESS": "The Taiga verified your email"
+        "SUCCESS": "Congratulations!!, your email address has been verified"
     },
     "ISSUES": {
         "PAGE_TITLE": "問題 - {{projectName}}",
@@ -1634,7 +1637,8 @@
         "NUMBER_US": "Number of US",
         "ARCHIVED": "(Archived)",
         "CREATE_SWIMLANE": "Create more swimlanes",
-        "UNCLASSIFIED_USER_STORIES": "Unclassified user stories"
+        "UNCLASSIFIED_USER_STORIES": "Unclassified user stories",
+        "UNCLASSIFIED_USER_STORIES_TOOLTIP": "The user stories that are not part of any swimlane are here."
     },
     "SEARCH": {
         "PAGE_TITLE": "搜尋 - {{projectName}}",
