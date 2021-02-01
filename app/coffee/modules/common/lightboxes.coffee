@@ -323,7 +323,7 @@ module.directive("tgBlockingMessageInput", ["$log", "$tgTemplate", "$compile", B
 ## Creare Bulk Userstories Lightbox Directive
 #############################################################################
 
-CreateBulkUserstoriesDirective = ($repo, $rs, $rootscope, lightboxService, $loading, $model, $timeout, $confirm) ->
+CreateBulkUserstoriesDirective = ($repo, $rs, $rootscope, lightboxService, $loading, $model, $timeout, $confirm, $translate) ->
     link = ($scope, $el, attrs) ->
         form = null
         $scope.displayStatusSelector = false
@@ -425,6 +425,7 @@ module.directive("tgLbCreateBulkUserstories", [
     "$tgModel",
     "$timeout",
     "$tgConfirm",
+    "$translate",
     CreateBulkUserstoriesDirective
 ])
 
