@@ -388,9 +388,8 @@ CreateBulkUserstoriesDirective = ($repo, $rs, $rootscope, lightboxService, $load
             promise.then null, (response) ->
                 currentLoading.finish()
                 form.setErrors(response)
-                console.log({response})
-                console.log(response.status)
-                console.log(response.data.swimlane_id)
+                if response.status == 400 and response.data.status
+                    $confirm.notify("error", response.data.status.shift())
                 if response.status == 400 and response.data.swimlane_id
                     $confirm.notify("error", response.data.swimlane_id.shift())
                 if response._error_message
@@ -802,9 +801,15 @@ $confirm, $q, attachmentsService, $template, $compile) ->
                         if data.ref
                             $rs[schema.model].getByRef(data.project, data.ref, schema.params).then (obj) ->
                                 $rootScope.$broadcast(broadcastEvent, obj)
-            promise.then null, (data) ->
+            promise.then null, (response) ->
                 currentLoading.finish()
-                form.setErrors(data)
+                form.setErrors(response)
+                if response.status == 400 and response.data.status
+                    $confirm.notify("error", response.data.status.shift())
+                if response.status == 400 and response.data.swimlane_id
+                    $confirm.notify("error", response.data.swimlane_id.shift())
+                if response._error_message
+                    $confirm.notify("error", response._error_message)
                 if data._error_message
                     $confirm.notify("error", data._error_message)
 
