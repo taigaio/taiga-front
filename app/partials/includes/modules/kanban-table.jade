@@ -72,7 +72,7 @@ div.kanban-table(
         button.kanban-swimlane-title(
                 ng-mouseover="mouseoverSwimlane($event, swimlane.id)"
                 ng-mouseleave="mouseleaveSwimlane($event)"
-                ng-class="{folded: ctrl.foldedSwimlane.get(swimlane.id.toString())}"
+                ng-class="{'unclassified-swimlane': swimlane.id == -1, folded: ctrl.foldedSwimlane.get(swimlane.id.toString())}"
                 ng-click="ctrl.toggleSwimlane(swimlane.id)"
             )
             tg-svg.unfold-action(
