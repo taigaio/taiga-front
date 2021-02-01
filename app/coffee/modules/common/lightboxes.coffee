@@ -323,7 +323,7 @@ module.directive("tgBlockingMessageInput", ["$log", "$tgTemplate", "$compile", B
 ## Creare Bulk Userstories Lightbox Directive
 #############################################################################
 
-CreateBulkUserstoriesDirective = ($repo, $rs, $rootscope, lightboxService, $loading, $model, $timeout) ->
+CreateBulkUserstoriesDirective = ($repo, $rs, $rootscope, lightboxService, $loading, $model, $timeout, $confirm) ->
     link = ($scope, $el, attrs) ->
         form = null
         $scope.displayStatusSelector = false
@@ -385,11 +385,16 @@ CreateBulkUserstoriesDirective = ($repo, $rs, $rootscope, lightboxService, $load
                 $rootscope.$broadcast("usform:bulk:success", result)
                 lightboxService.close($el)
 
-            promise.then null, (data) ->
+            promise.then null, (response) ->
                 currentLoading.finish()
-                form.setErrors(data)
-                if data._error_message
-                    $confirm.notify("error", data._error_message)
+                form.setErrors(response)
+                console.log({response})
+                console.log(response.status)
+                console.log(response.data.swimlane_id)
+                if response.status == 400 and response.data.swimlane_id
+                    $confirm.notify("error", response.data.swimlane_id.shift())
+                if response._error_message
+                    $confirm.notify("error", response._error_message)
 
         submitButton = $el.find(".submit-button")
 
@@ -418,6 +423,7 @@ module.directive("tgLbCreateBulkUserstories", [
     "$tgLoading",
     "$tgModel",
     "$timeout",
+    "$tgConfirm",
     CreateBulkUserstoriesDirective
 ])
 
