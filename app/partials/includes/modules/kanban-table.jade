@@ -65,7 +65,7 @@ div.kanban-table(
                         tg-svg(svg-icon="icon-unfold-column")
     div(
         ng-if="swimlanesList.size"
-        tg-repeat="swimlane in swimlanesList track by $index"
+        tg-repeat="swimlane in swimlanesList track by swimlane.id"
         data-swimlane="{{swimlane.id}}"
         class="kanban-swimlane"
     )
