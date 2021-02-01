@@ -117,8 +117,7 @@
             $bottom: 2rem,
             $arrow-width: 15px,
             $arrow-left: calc( 50% - 7px),
-            $arrow-top: calc( 100% - 7px),
-            $align: center
+            $arrow-top: calc( 100% - 7px)
         );
         display: block;
         &.ng-enter {

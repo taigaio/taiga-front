@@ -90,7 +90,7 @@ div.kanban-table(
                 tg-svg(
                     svg-icon="icon-help-circle"
                 )
-                .tooltip.pop-help The user stories that are not part of any swimlane are here.
+                .tooltip.pop-help {{'KANBAN.UNCLASSIFIED_USER_STORIES_TOOLTIP' | translate}}
 
             .default-swimlane(ng-if="swimlane.id == project.default_swimlane && project.swimlanes.length > 1")
                 tg-svg.default-swimlane-icon(

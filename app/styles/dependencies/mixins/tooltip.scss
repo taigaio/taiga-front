@@ -9,7 +9,7 @@
     $arrow-left: '',
     $arrow-bottom: '',
     $arrow-height: 15px,
-    $align: '',
+    $align: left,
     $background-color: $color-black900,
     $text-color: $color-gray100,
     $padding: 1rem 1rem 1.5rem 1rem,
@@ -53,4 +53,37 @@
         transform: rotate(45deg);
         width: #{$arrow-width};
     }
+}
+@mixin tooltip-small(
+    $width,
+    $top: '',
+    $left: '',
+    $bottom: '',
+    $right: '',
+    $arrow-width: 0,
+    $arrow-top: '',
+    $arrow-left: '',
+    $arrow-bottom: '',
+    $arrow-height: 15px,
+    $align: center,
+    $background-color: $color-black900,
+    $text-color: $color-gray100,
+    $padding: .3rem .6rem .4rem .6rem
+) {
+    @include tooltip(
+        $width: $width,
+        $top: $top,
+        $left: $left,
+        $bottom: $bottom,
+        $right: $right,
+        $arrow-width: $arrow-width,
+        $arrow-top: $arrow-top,
+        $arrow-left: $arrow-left,
+        $arrow-bottom: $arrow-bottom,
+        $arrow-height: $arrow-height,
+        $align: $align,
+        $background-color: $background-color,
+        $text-color: $text-color,
+        $padding: $padding
+    );
 }

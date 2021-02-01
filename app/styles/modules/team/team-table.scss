@@ -107,8 +107,8 @@
         }
     }
     .tooltip {
-        @include tooltip(
-            $width: 100%,
+        @include tooltip-small(
+            $width: inherit,
             $left: 0,
             $bottom: 2rem,
             $arrow-width: 15px,
