@@ -195,7 +195,7 @@
             background: rgba($white, .4);
             cursor: pointer;
             .user-list-name {
-                color: $primary-light;
+                color: $color-link-primary;
             }
             .remove-user {
                 opacity: 1;
@@ -207,10 +207,7 @@
         }
         &:not(.read-only) {
             .user-list-name a {
-                color: $primary;
-            }
-            .user-list-name a:hover {
-                color: $primary-light;
+                color: $color-link-primary;
             }
         }
     }
