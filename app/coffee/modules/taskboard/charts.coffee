@@ -94,7 +94,7 @@ SprintChartDirective = ($translate)->
             tooltipOpts:
                 content: (label, xval, yval, flotItem) ->
                     formattedDate = moment(xval).format($translate.instant("TASKBOARD.CHARTS.DATE"))
-                    roundedValue = Math.round(yval)
+                    roundedValue = Math.round(yval * 10) / 10
 
                     if flotItem.seriesIndex == 1
                         return $translate.instant("TASKBOARD.CHARTS.REAL", {
