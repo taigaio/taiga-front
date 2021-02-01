@@ -29,8 +29,8 @@
                 fill: $color-gray400;
                 margin-right: .45rem;
             }
-            .popover {
-                @include popover(
+            .tooltip {
+                @include tooltip(
                     $width: 250px,
                     $top: 130%,
                     $left: -8px,
@@ -38,10 +38,6 @@
                     $arrow-top: -5px,
                     $arrow-left: 10px,
                     $arrow-height: 10px,
-                    $background-color: $color-black900,
-                    $hover-background: $color-black900,
-                    $text-color: $color-gray400,
-                    $hover-text-color: $color-gray400
                 );
             }
             &:hover {
@@ -51,7 +47,7 @@
                 tg-svg {
                     fill: $color-black600;
                 }
-                .popover {
+                .tooltip {
                     display: block;
                 }
             }

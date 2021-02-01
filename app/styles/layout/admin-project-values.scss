@@ -111,18 +111,15 @@
     }
 
     .tooltip {
-        @include popover(
-            $bottom: 2rem,
-            $background-color: $color-black900,
-            $hover-background: $color-black900,
-            $text-color: $color-gray400,
-            $hover-text-color: $color-gray400,
+        @include tooltip(
+            $width: 220px,
             $left: calc(50% - 190/2 * 1px),
-            $padding: 1rem,
-            $width: 220px
+            $bottom: 2rem,
+            $arrow-width: 15px,
+            $arrow-left: calc( 50% - 7px),
+            $arrow-top: calc( 100% - 7px),
+            $align: center
         );
-        @include font-type(regular);
-        @include font-size(small);
         display: block;
         &.ng-enter {
             opacity: 0;
@@ -137,16 +134,6 @@
             &.ng-leave-active {
                 opacity: 0;
             }
-        }
-        &::after {
-            border-color: $color-black900 transparent transparent transparent;
-            border-style: solid;
-            border-width: 8px 8px 0 8px;
-            bottom: -8px;
-            box-shadow: 3px 4px 14px 0 rgba($color-link-primary, .15);
-            content: '';
-            left: calc(50% - 4px);
-            position: absolute;
         }
     }
 

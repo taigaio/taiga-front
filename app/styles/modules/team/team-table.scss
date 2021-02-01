@@ -32,7 +32,7 @@
             opacity: 1;
         }
         &:hover {
-            .popover {
+            .tooltip {
                 display: block;
             }
         }
@@ -106,17 +106,15 @@
             color: $gray-light;
         }
     }
-    .popover {
-        @include popover(
+    .tooltip {
+        @include tooltip(
             $width: 100%,
             $left: 0,
             $bottom: 2rem,
             $arrow-width: 15px,
             $arrow-left: calc( 50% - 7px),
             $arrow-top: calc( 100% - 7px),
-            $align: center,
-            $background-color: $color-black600,
-            $text-color: $color-white
+            $align: center
         );
     }
     .icon-badge {

@@ -1,0 +1,56 @@
+@mixin tooltip(
+    $width,
+    $top: '',
+    $left: '',
+    $bottom: '',
+    $right: '',
+    $arrow-width: 0,
+    $arrow-top: '',
+    $arrow-left: '',
+    $arrow-bottom: '',
+    $arrow-height: 15px,
+    $align: '',
+    $background-color: $color-black900,
+    $text-color: $color-gray100,
+    $padding: 1rem 1rem 1.5rem 1rem,
+) {
+    @include font-type(regular);
+    @include font-size(small);
+    background: $background-color;
+    border: 1px solid $color-gray400;
+    border-radius: 4px;
+    bottom: #{$bottom};
+    box-shadow: 4px 4px 8px rgba(46, 52, 64, .1);
+    color: $text-color;
+    display: none;
+    left: #{$left};
+    list-style-type: none;
+    margin: 0;
+    padding: $padding;
+    position: absolute;
+    right: #{$right};
+    text-align: $align;
+    top: #{$top};
+    width: $width;
+    z-index: $first-layer;
+    li {
+        margin-bottom: .25rem;
+        padding: 0 .25rem;
+
+        &:last-child {
+            margin-bottom: 0;
+
+        }
+    }
+    &::before {
+        background: $background-color;
+        bottom: #{$arrow-bottom};
+        content: '';
+        height: #{$arrow-height};
+        left: #{$arrow-left};
+        position: absolute;
+        top: #{$arrow-top};
+        transform: rotate(45deg);
+        width: #{$arrow-width};
+    }
+}
