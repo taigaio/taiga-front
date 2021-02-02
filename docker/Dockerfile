@@ -25,9 +25,9 @@ RUN set -eux; \
     apk add --no-cache --virtual .build-deps \
        subversion; \
     # Install taiga-front core
-    wget https://github.com/taigaio/taiga-front-dist/archive/6.0.1.zip -O source.zip; \
+    wget https://github.com/taigaio/taiga-front-dist/archive/6.0.2.zip -O source.zip; \
     unzip source.zip; \
-    mv /taiga-front-dist-6.0.1 /taiga; \
+    mv /taiga-front-dist-6.0.2 /taiga; \
     mv /conf.json.template taiga/dist/; \
     chmod +x /docker-entrypoint.d/30_config_env_subst.sh; \
     # Install taiga-front contribs
