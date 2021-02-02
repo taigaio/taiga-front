@@ -32,6 +32,10 @@ Wysiwyg = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoa
         $scope.required = !!$attrs.$attr.required
         $scope.editMode = isEditOnly || false
         $scope.mode = localStorage.getItem('editor-mode') || 'html'
+
+        if $scope.mode != 'html' && $scope.mode != 'markdown'
+            $scope.mode = 'html'
+
         $scope.markdown = ''
         $scope.html = ''
         textEditor = null
