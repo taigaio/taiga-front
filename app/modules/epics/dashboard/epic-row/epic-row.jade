@@ -62,7 +62,7 @@
             )
 
         ul.epic-statuses(ng-if="vm.displayStatusList")
-            li.e2e-edit-epic-status(
+            li.status.e2e-edit-epic-status(
                 ng-repeat="status in vm.project.epic_statuses | orderBy:'order'"
                 ng-click="vm.updateStatus(status.id)"
             ) {{status.name}}
