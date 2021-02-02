@@ -36,14 +36,15 @@ NavigationBarDirective = (currentUserService, navigationBarService, locationServ
                 clearInterval(userPilotInterval)
 
                 scope.$applyAsync () =>
-                    scope.vm.userpilotEnabled = true
                     userPilotIframeDocument = userPilotIframe.contentWindow.document.body
-
                     scope.vm.userPilotTitle = userPilotIframeDocument.querySelector('#widget-title').innerText
 
         attempts = 10
 
         if window.TAIGA_USER_PILOT_TOKEN
+            scope.vm.userPilotTitle = 'Help center'
+            scope.vm.userpilotEnabled = true
+
             userPilotInterval = setInterval () =>
                 loadUserPilot()
                 attempts--
