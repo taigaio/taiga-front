@@ -308,7 +308,7 @@ tg-filter {
 }
 
 .filters-cat-single {
-    @include font-size(xsmall);
+    @include font-size(small);
     align-items: center;
     background: none;
     border: 1px solid $color-gray300;
