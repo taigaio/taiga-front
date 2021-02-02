@@ -105,6 +105,20 @@
     &.is-sortable {
         cursor: move;
     }
+    &.active {
+        @include font-type(medium);
+        background: $color-white;
+        a {
+            color: $color-link-primary;
+        }
+        &:hover {
+            background: $color-white;
+            a {
+                @include font-type(medium);
+                color: $color-link-tertiary;
+            }
+        }
+    }
     .link-title {
         cursor: pointer;
         display: block;
