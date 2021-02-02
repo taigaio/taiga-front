@@ -168,6 +168,9 @@ tg-html-editor .ck-content,
             margin-bottom: 0;
         }
     }
+    code {
+        white-space: pre-wrap;
+    }
     pre {
         margin: 0 0 20px;
     }
