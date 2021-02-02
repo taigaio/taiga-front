@@ -24,11 +24,6 @@
     }
     &.is-blocked {
         background: $color-solid-red;
-        a,
-        span,
-        div {
-            color: $white;
-        }
     }
     &.is-closed {
         .name a {
@@ -44,8 +39,9 @@
         }
     }
     .fold-us {
+        flex-shrink: 0;
         margin-left: .75rem;
-        width: 25px;
+        width: 1rem;
     }
     .name {
         align-items: center;
@@ -135,30 +131,14 @@
         color: $gray-light;
     }
     .epic-statuses {
-        @include font-type(regular);
-        @include font-size(small);
-        background: rgba($blackish, .9);
-        border-bottom: 1px solid $grayer;
-        box-shadow: 3px 3px 2px rgba($black, .1);
-        color: $white;
-        left: 0;
-        list-style-type: none;
-        margin: 0;
-        position: absolute;
+        @include popover(
+            $width: 150px,
+            $top: 40px,
+            $right: 50px,
+            $arrow-width: 0
+        );
+        display: block;
         text-align: left;
-        top: 2.5rem;
-        width: 200px;
-        z-index: $first-layer;
-        &:last-child {
-            border: 0;
-        }
-        li {
-            padding: .5rem;
-            &:hover {
-                color: $primary-light;
-                transition: color .3s linear;
-            }
-        }
     }
     .loading-spinner {
         height: 10px;
