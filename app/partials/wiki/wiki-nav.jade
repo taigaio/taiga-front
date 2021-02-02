@@ -15,6 +15,7 @@ ul.sortable.wiki-link-container
         data-id!="{{ $index }}"
         tg-bind-scope
         tg-class-permission="{'is-sortable': 'add_wiki_link'}"
+        ng-class="{'active': wiki.slug == link.href}"
     )
         <% if (addWikiLinkPermission) { %>
         tg-svg.dragger(svg-icon="icon-drag")
