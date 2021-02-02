@@ -3,6 +3,7 @@ tg-wysiwyg {
     display: flex;
     margin-bottom: 1rem;
     .editor {
+        max-width: calc(100% - 2rem);
         width: 100%;
     }
     .tools {
@@ -169,6 +170,7 @@ tg-html-editor .ck-content,
         }
     }
     code {
+        overflow-wrap: break-word;
         white-space: pre-wrap;
     }
     pre {
