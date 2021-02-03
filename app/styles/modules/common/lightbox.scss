@@ -677,6 +677,12 @@
     .content {
         width: 500px;
     }
+    .btn-big {
+        color: $color-black900;
+        &:hover {
+            color: $color-white;
+        }
+    }
 }
 
 .lightbox-request-ownership {

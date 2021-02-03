@@ -8,8 +8,10 @@ div.content
     div(ng-if="isCurrentUser")
         p {{'LIGHTBOX.LEAVE_PROJECT_WARNING.CURRENT_USER_OWNER.DESC' | translate}}
 
-        a.btn-big(tg-nav="project-admin-home:project=project.slug", href="")
-            span(translate="LIGHTBOX.LEAVE_PROJECT_WARNING.CURRENT_USER_OWNER.BUTTON")
+        a.btn-big(
+            tg-nav="project-admin-home:project=project.slug"
+            translate="LIGHTBOX.LEAVE_PROJECT_WARNING.CURRENT_USER_OWNER.BUTTON"
+        )
 
     div(ng-if="!isCurrentUser")
         p {{'LIGHTBOX.LEAVE_PROJECT_WARNING.OTHER_USER_OWNER.DESC' | translate}}
