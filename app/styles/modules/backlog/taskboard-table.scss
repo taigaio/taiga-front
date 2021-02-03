@@ -263,6 +263,12 @@ tg-card[type='task'].folded-dragging {
         display: flex;
         flex-direction: column;
         padding: 1rem;
+
+        &:not(.row-fold) {
+            .card {
+                margin-bottom: 5px;
+            }
+        }
     }
     .row-fold {
         .taskboard-row-title-box {
