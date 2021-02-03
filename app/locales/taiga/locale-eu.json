@@ -888,7 +888,7 @@
     },
     "PROJECT": {
         "PAGE_TITLE": "{{projectName}}",
-        "HELP": "Aldatu proiektuen hurrenkera, jarri lehenbizi gehien erabiltzen dituzunak. <br/> Lehen 10 proiektuak agertuko dira goiko nabigazio bara nagusiko proiektuen zerrendan",
+        "HELP": "Reorder your projects to set at the top the most used ones.<br/> The top 4 projects will appear in the top navigation bar project list",
         "PRIVATE": "Proiektu pribatua",
         "LOOKING_FOR_PEOPLE": "Proiektu honek lankideak behar ditu",
         "FANS_COUNTER_TITLE": " {total, plural, =1{jarraitzaile bat} other{# jarraitzaile}} ",
@@ -1768,7 +1768,7 @@
         "HINT2_TITLE": "Badakizu eremu pertsonalizatuak sortu ditzakezula?",
         "HINT2_TEXT": "Lantaldeak eremu pertsonalizatuak sor ditzake, bakoitzaren lan kateari ongi egokitutako datuak jaso ahal izateko.",
         "HINT3_TITLE": "Jarri proiektuak zure hurrenkeraren arabera.",
-        "HINT3_TEXT": "10 proiektuak zerrendatuta daude goragoko sarbide barran",
+        "HINT3_TEXT": "The 4 projects are listed in the direct access bar at the top.",
         "HINT4_TITLE": "Ahaztu zaizu zertan ari zinen lanean?",
         "HINT4_TEXT": "Ez kezkatu, tresnen arbelean aurkituko dituzu zabalik, zuk landutako ataza, gertakari eta eginkizunak."
     },

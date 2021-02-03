@@ -888,7 +888,7 @@
     },
     "PROJECT": {
         "PAGE_TITLE": "{{projectName}}",
-        "HELP": "Reorder your projects to set at the top the most used ones.<br/> The top 10 projects will appear in the top navigation bar project list",
+        "HELP": "Reorder your projects to set at the top the most used ones.<br/> The top 4 projects will appear in the top navigation bar project list",
         "PRIVATE": "پروژه‌ی خصوصی",
         "LOOKING_FOR_PEOPLE": "این پروژه در انتظار عضو است",
         "FANS_COUNTER_TITLE": "{total, plural, =1{one fan} other{# fans}}",
@@ -1768,7 +1768,7 @@
         "HINT2_TITLE": "آیا می‌دانستید که می‌توانید ویژگی سفارشی تعریف کنید؟",
         "HINT2_TEXT": "اکنون تیم‌ها می‌توانند ویژگی‌های سفارشی برای وارد کردن داده‌های خاصی که برای جریان کارشان مفید است، ایجاد کنند.",
         "HINT3_TITLE": "مرتب کردن پروژه‌ها برای نمایش پروژه‌های مهم‌تر برای شما.",
-        "HINT3_TEXT": "۱۰ پروژه‌ای که در ردیف دسترسی مستقیم در بالای صفحه لیست می‌شوند",
+        "HINT3_TEXT": "The 4 projects are listed in the direct access bar at the top.",
         "HINT4_TITLE": "آیا فراموش کرده‌اید که روی چه چیز کار می‌کردید؟",
         "HINT4_TEXT": "نگران نباشید، در داشبورد خود تمام وظایف باز، موضوعات و استوری‌های کاربری را به ترتیبی که رویشان کار کرده‌اید، مشاهده می‌کنید."
     },

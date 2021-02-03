@@ -888,7 +888,7 @@
     },
     "PROJECT": {
         "PAGE_TITLE": "{{projectName}}",
-        "HELP": "Sortieren Sie Ihre Projekte neu z.B. nach Häufigkeit. Ihre Top-10-Projekte finden Sie dann prominent in der Projektliste der Navigationsleiste.",
+        "HELP": "Reorder your projects to set at the top the most used ones.<br/> The top 4 projects will appear in the top navigation bar project list",
         "PRIVATE": "Privates Projekt",
         "LOOKING_FOR_PEOPLE": "Dieses Projekt sucht nach Mitarbeitern",
         "FANS_COUNTER_TITLE": "{total, plural, =1{one fan} other{# fans}}",
@@ -1768,7 +1768,7 @@
         "HINT2_TITLE": "Wussten Sie, dass Sie benutzerdefinierte Felder erstellen können?",
         "HINT2_TEXT": "Teams können nun benutzerdefinierte Felder anlegen, um Werte einzugeben, die für Ihren Workflow wichtig sind.",
         "HINT3_TITLE": "Sortiere Sie Ihre Projekte, um relevante zuerst anzuzeigen.",
-        "HINT3_TEXT": "Die 10 Projekt sind in der Zugriffsleiste am oberen Bildschirmrand aufgelistet.",
+        "HINT3_TEXT": "The 4 projects are listed in the direct access bar at the top.",
         "HINT4_TITLE": "Did you forget what were you working on?",
         "HINT4_TEXT": "Machen Sie sich keine Sorgen, im Dashboard finden Sie Aufgaben, Tickets und User-Stories in der Reihenfolge in der Sie diese bearbeitet haben."
     },

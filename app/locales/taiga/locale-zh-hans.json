@@ -888,7 +888,7 @@
     },
     "PROJECT": {
         "PAGE_TITLE": "{{projectName}}",
-        "HELP": "Reorder your projects to set at the top the most used ones.<br/> The top 10 projects will appear in the top navigation bar project list",
+        "HELP": "Reorder your projects to set at the top the most used ones.<br/> The top 4 projects will appear in the top navigation bar project list",
         "PRIVATE": "私有项目",
         "LOOKING_FOR_PEOPLE": "这个项目在寻找队友",
         "FANS_COUNTER_TITLE": "{total, plural, =1{one fan} other{# fans}}",
@@ -1768,7 +1768,7 @@
         "HINT2_TITLE": "你知道可以创建个人化栏位吗",
         "HINT2_TEXT": "作为一个灵活手段，团队现在可以创建自定义字段，这意味着需要为特殊的工作流指定有用的数据。",
         "HINT3_TITLE": "根据特性来重新排序与你最为相关的项目。",
-        "HINT3_TEXT": "在顶端的直接访问条中，列出了十个项目。",
+        "HINT3_TEXT": "The 4 projects are listed in the direct access bar at the top.",
         "HINT4_TITLE": "你忘记了你正在做什么了吗？",
         "HINT4_TEXT": "别担心，在控制台可以找到你的公开任务、问题以及用户故事的工作次序。"
     },

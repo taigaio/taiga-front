@@ -888,7 +888,7 @@
     },
     "PROJECT": {
         "PAGE_TITLE": "{{projectName}}",
-        "HELP": "Reorder your projects to set at the top the most used ones.<br/> The top 10 projects will appear in the top navigation bar project list",
+        "HELP": "Reorder your projects to set at the top the most used ones.<br/> The top 4 projects will appear in the top navigation bar project list",
         "PRIVATE": "Private project",
         "LOOKING_FOR_PEOPLE": "This project is looking for people",
         "FANS_COUNTER_TITLE": "{total, plural, =1{one fan} other{# fans}}",
@@ -1769,7 +1769,7 @@
         "HINT2_TITLE": "Did you know you can create custom fields?",
         "HINT2_TEXT": "Teams can now create custom fields as a flexible means to enter specific data useful for their particular workflow.",
         "HINT3_TITLE": "Reorder your projects to feature those most relevant to you.",
-        "HINT3_TEXT": "The 10 projects are listed in the direct access bar at the top.",
+        "HINT3_TEXT": "The 4 projects are listed in the direct access bar at the top.",
         "HINT4_TITLE": "Did you forget what were you working on?",
         "HINT4_TEXT": "Don't worry, on your dashboard you'll find your open tasks, issues, and user stories in the order you worked on them."
     },

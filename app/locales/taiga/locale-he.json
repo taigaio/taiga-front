@@ -888,7 +888,7 @@
     },
     "PROJECT": {
         "PAGE_TITLE": "{{projectName}}",
-        "HELP": "Reorder your projects to set at the top the most used ones.<br/> The top 10 projects will appear in the top navigation bar project list",
+        "HELP": "Reorder your projects to set at the top the most used ones.<br/> The top 4 projects will appear in the top navigation bar project list",
         "PRIVATE": "פרוייקט פרטי",
         "LOOKING_FOR_PEOPLE": "לפרוייקט זה דרושים אנשים",
         "FANS_COUNTER_TITLE": "{total, plural, =1{one fan} other{# fans}}",
@@ -1768,7 +1768,7 @@
         "HINT2_TITLE": "האם ידעת שביכולתך ליצור שדות מותאמים אישית?",
         "HINT2_TEXT": "צוותים כעת יכולים ליצור שדות מותאמים אישית כאמצעי גמיש להזנת מידע ספציפי המתאים לזרימת העבודה שלהם.",
         "HINT3_TITLE": "ארגן את הפרוייקטים שלך כדי לקדם את אלו שהכי רלוונטים אליך.",
-        "HINT3_TEXT": "העשירון העליון של הפרוייקטים מוצגים בתיבת הגישה הישירה למעלה.",
+        "HINT3_TEXT": "The 4 projects are listed in the direct access bar at the top.",
         "HINT4_TITLE": "האם שכחת על מה אתה עובד?",
         "HINT4_TEXT": "הסר דאגה, על לוח המחוונים שלך יוצגו משימות, תקלות וסיפורים משתמש פתוחים לפי הסדר שבו עבדת עליהם."
     },

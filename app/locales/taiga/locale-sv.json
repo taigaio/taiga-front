@@ -888,7 +888,7 @@
     },
     "PROJECT": {
         "PAGE_TITLE": "{{projectName}}",
-        "HELP": "Reorder your projects to set at the top the most used ones.<br/> The top 10 projects will appear in the top navigation bar project list",
+        "HELP": "Reorder your projects to set at the top the most used ones.<br/> The top 4 projects will appear in the top navigation bar project list",
         "PRIVATE": "Privata projekt",
         "LOOKING_FOR_PEOPLE": "Detta projekt söker efter fler personer",
         "FANS_COUNTER_TITLE": "{total, plural, =1{one fan} other{# fans}}",
@@ -1768,7 +1768,7 @@
         "HINT2_TITLE": "Visste du att du kan skapa anpassade fält?",
         "HINT2_TEXT": "Arbetsgrupper kan skapa anpassade flexibla fält för att använda specifika data som passar arbetsflödet. ",
         "HINT3_TITLE": "Omorganizera dina projekt så de blir mera relevanta för dig",
-        "HINT3_TEXT": "De 10 projekten är listad och du har åtkomst till dem på verktyglinjen på toppen av sidan. ",
+        "HINT3_TEXT": "The 4 projects are listed in the direct access bar at the top.",
         "HINT4_TITLE": "Har du glömt vad du jobbade på?",
         "HINT4_TEXT": "Du behöver inte bekymra dig. På vårt instrumentpanel vill du hitta öppna uppgifter, ärenden och användarhistorier sorterad efter hur du arbetar med dem. "
     },

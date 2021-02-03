@@ -888,7 +888,7 @@
     },
     "PROJECT": {
         "PAGE_TITLE": "{{projectName}}",
-        "HELP": "Reorder your projects to set at the top the most used ones.<br/> The top 10 projects will appear in the top navigation bar project list",
+        "HELP": "Reorder your projects to set at the top the most used ones.<br/> The top 4 projects will appear in the top navigation bar project list",
         "PRIVATE": "Gizli proje",
         "LOOKING_FOR_PEOPLE": "Bu proje ahalisini arıyor",
         "FANS_COUNTER_TITLE": "{total, plural, =1{one fan} other{# fans}}",
@@ -1768,7 +1768,7 @@
         "HINT2_TITLE": "Özel alanlar oluşturabileceğinizi biliyor muydunuz?",
         "HINT2_TEXT": "Takımlar artık kendi iş akışlarına özgü bilgileri girebilecekleri özel alanlar oluşturabilirler",
         "HINT3_TITLE": "Projelerinizi, sizi en çok ilgilendirenleri öne çıkartacak şekilde sıralayın.",
-        "HINT3_TEXT": "10 proje üstteki doğrudan erişim bölümünde gözükür",
+        "HINT3_TEXT": "The 4 projects are listed in the direct access bar at the top.",
         "HINT4_TITLE": "Nerede kaldığınızı unuttunuz mu?",
         "HINT4_TEXT": "Kaygılanmayın, çalışma sıranıza göre ayarlanan açık işlerinize, sorunlarınıza ve kullanıcı hikayelerinize panonuzdan erişebilirsiniz."
     },

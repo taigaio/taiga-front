@@ -888,7 +888,7 @@
     },
     "PROJECT": {
         "PAGE_TITLE": "{{projectName}}",
-        "HELP": "Reorder your projects to set at the top the most used ones.<br/> The top 10 projects will appear in the top navigation bar project list",
+        "HELP": "Reorder your projects to set at the top the most used ones.<br/> The top 4 projects will appear in the top navigation bar project list",
         "PRIVATE": "비공개 프로젝트",
         "LOOKING_FOR_PEOPLE": "이 프로젝트는 사람을 찾고 있습니다.",
         "FANS_COUNTER_TITLE": "{total, plural, =1{one fan} other{# fans}}",
@@ -1768,7 +1768,7 @@
         "HINT2_TITLE": "사용자 정의 필드를 만들 수 있다는건 아세요?",
         "HINT2_TEXT": "이제 팀은 특정 워크 플로우에 유용한 특정 데이터를 입력하는 유연한 방법으로 사용자 정의 필드를 만들 수 있습니다.",
         "HINT3_TITLE": "당신과 가장 관련성이 높은 순서대로 프로젝트를 정렬하세요.",
-        "HINT3_TEXT": "상단의 빠른 접근 항목에서 10개의 목록이 보여 집니다.",
+        "HINT3_TEXT": "The 4 projects are listed in the direct access bar at the top.",
         "HINT4_TITLE": "뭘 하고 있었는지 잊었습니까?",
         "HINT4_TEXT": "걱정마세요, 대시보드에서 당신이 연 태스크, 이슈, 유저 스토리를 작업한 순서데로 찾아볼 수 있습니다."
     },

@@ -888,7 +888,7 @@
     },
     "PROJECT": {
         "PAGE_TITLE": "{{projectName}}",
-        "HELP": "Reorder your projects to set at the top the most used ones.<br/> The top 10 projects will appear in the top navigation bar project list",
+        "HELP": "Reorder your projects to set at the top the most used ones.<br/> The top 4 projects will appear in the top navigation bar project list",
         "PRIVATE": "不公開專案",
         "LOOKING_FOR_PEOPLE": "這個專案正在徵人",
         "FANS_COUNTER_TITLE": "{total, plural, =1{one fan} other{# fans}}",
@@ -1768,7 +1768,7 @@
         "HINT2_TITLE": "你知道可以創建個人化欄位嗎",
         "HINT2_TEXT": "團隊可以使用客制化欄位來彈性地輸入特殊資料以應付其特定的工作流程 ",
         "HINT3_TITLE": "重新整理與你相關的專案特徵",
-        "HINT3_TEXT": "本頁上方直接列出前10個專案選單",
+        "HINT3_TEXT": "The 4 projects are listed in the direct access bar at the top.",
         "HINT4_TITLE": "你是否忘了你在做什麼?",
         "HINT4_TEXT": "別憺心，在控制台可以找到你的公開任務、問題以及使用者故事的工作次序。"
     },

@@ -888,7 +888,7 @@
     },
     "PROJECT": {
         "PAGE_TITLE": "{{projectName}}",
-        "HELP": "Pārkārtojiet savus projektus, lai augšgalā iestatītu visvairāk izmantotos.<br/> 10 iecienītākie projekti parādīsies navigācijas joslas projektu sarakstā",
+        "HELP": "Reorder your projects to set at the top the most used ones.<br/> The top 4 projects will appear in the top navigation bar project list",
         "PRIVATE": "Privāts projekts",
         "LOOKING_FOR_PEOPLE": "Šim projektam tiek meklēti cilvēki",
         "FANS_COUNTER_TITLE": "{total, plural, =1{1 fans} other{# fani}}",
@@ -1768,7 +1768,7 @@
         "HINT2_TITLE": "Vai Jums ir zināms par pielāgojamiem laukiem?",
         "HINT2_TEXT": "Tagad komandas var izveidot pielāgotus laukus kā elastīgu līdzekli, lai ievadītu specifiskus datus, kuri noderīgi viņu darbplūsmai.",
         "HINT3_TITLE": "Pārkārtojiet savus projektus, lai izceltu tos, kuri Jums ir aktuālākie.",
-        "HINT3_TEXT": "10 projekti ir redzami tiešās piekļuves joslā augšpusē.",
+        "HINT3_TEXT": "The 4 projects are listed in the direct access bar at the top.",
         "HINT4_TITLE": "Vai aizmirsāt, pie kā strādājāt?",
         "HINT4_TEXT": "Neuztraucieties, vadības panelī atradīsit savus atvērtos uzdevumus, izmaiņu pieprasījumus un vajadzības secībā, kādā strādājāt pie tiem."
     },

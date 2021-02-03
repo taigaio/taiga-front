@@ -888,7 +888,7 @@
     },
     "PROJECT": {
         "PAGE_TITLE": "{{projectName}}",
-        "HELP": "Reordena tus proyectos para colocar encima los que más utilizas.<br/> Los 10 primeros aparecerán en la lista de proyectos de la barra superior de navegación.",
+        "HELP": "Reorder your projects to set at the top the most used ones.<br/> The top 4 projects will appear in the top navigation bar project list",
         "PRIVATE": "Proyecto privado",
         "LOOKING_FOR_PEOPLE": "Este proyecto está buscando a gente",
         "FANS_COUNTER_TITLE": "{total, plural, =1{un fan} other{# fans}}",
@@ -1768,7 +1768,7 @@
         "HINT2_TITLE": "¿Sabías que puedes crear atributos personalizados?",
         "HINT2_TEXT": "Los equipos ahora pueden crear atributos personalizados como un medio flexible para introducir datos específicos útiles para su flujo de trabajo particular",
         "HINT3_TITLE": "Reordenar tus proyectos para facilitar el acceso a los más relevantes para ti",
-        "HINT3_TEXT": "Los 10 primeros proyectos aparecerán en el listado del acceso directo de la barra superior.",
+        "HINT3_TEXT": "The 4 projects are listed in the direct access bar at the top.",
         "HINT4_TITLE": "¿Olvidaste lo que estabas trabajando?",
         "HINT4_TEXT": "No te preocupes, en el dashboard encontrarás las tareas, peticiones e historias de usuario abiertas en el orden en el que trabajste en ellas."
     },

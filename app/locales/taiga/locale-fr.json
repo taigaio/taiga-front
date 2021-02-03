@@ -888,7 +888,7 @@
     },
     "PROJECT": {
         "PAGE_TITLE": "{{projectName}}",
-        "HELP": "Réorganisez vos projets pour placer les plus utilisés en premier.<br/> Les 10 premiers projets apparaitront dans la liste des projets de la barre de navigation supérieure",
+        "HELP": "Reorder your projects to set at the top the most used ones.<br/> The top 4 projects will appear in the top navigation bar project list",
         "PRIVATE": "Projet privé",
         "LOOKING_FOR_PEOPLE": "Est-ce que ce projet recherche des membres ?",
         "FANS_COUNTER_TITLE": "{total, plural, =1{un fan} other{# fans}}",
@@ -1768,7 +1768,7 @@
         "HINT2_TITLE": "Savez-vous que vous pouvez créer des champs personnalisés ?",
         "HINT2_TEXT": "Les équipes peuvent désormais créer des champs personnalisés comme un moyen flexible d'entrer des données spécifiques utiles pour leur flux de travail particulier.",
         "HINT3_TITLE": "Triez vos projets pour mettre en valeur vos projets les plus pertinents.",
-        "HINT3_TEXT": "Les 10 projets sont listés dans la barre d'accès direct en haut de la page.",
+        "HINT3_TEXT": "The 4 projects are listed in the direct access bar at the top.",
         "HINT4_TITLE": "Vous avez oublié ce sur quoi vous travaillez ?",
         "HINT4_TEXT": "Pas d'inquiétude, vous trouverez dans votre tableau de bord vos tâches, tickets et récits utilisateurs dans l'ordre dans lequel vous avez travaillé dessus."
     },

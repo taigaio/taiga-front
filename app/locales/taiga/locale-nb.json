@@ -888,7 +888,7 @@
     },
     "PROJECT": {
         "PAGE_TITLE": "{{projectName}}",
-        "HELP": "Reorder your projects to set at the top the most used ones.<br/> The top 10 projects will appear in the top navigation bar project list",
+        "HELP": "Reorder your projects to set at the top the most used ones.<br/> The top 4 projects will appear in the top navigation bar project list",
         "PRIVATE": "Privat prosjekt",
         "LOOKING_FOR_PEOPLE": "Dette prosjekter søker etter mennesker",
         "FANS_COUNTER_TITLE": "{total, plural, =1{one fan} other{# fans}}",
@@ -1768,7 +1768,7 @@
         "HINT2_TITLE": "Viste du at du kan opprette egendefinerte felter?",
         "HINT2_TEXT": "Team kan nå lage egendefinerte felter som en fleksibel måte å legge til spesifik data nyttig for deres egne arbeidsflyt.",
         "HINT3_TITLE": "Endre rekkefølge på dine prosjekter for å fremvise de som er mest relevante for deg.",
-        "HINT3_TEXT": "De 10 prosjektene er listet opp i navigasjonslinjen på toppen.",
+        "HINT3_TEXT": "The 4 projects are listed in the direct access bar at the top.",
         "HINT4_TITLE": "Glemte du det du arbeidet med?",
         "HINT4_TEXT": "Ikke fortvil, på ditt dashboard finner du åpne oppgaver, hendelser og brukerhistorier i den rekkefølgen du jobbet med de."
     },

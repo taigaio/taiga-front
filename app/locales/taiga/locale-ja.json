@@ -888,7 +888,7 @@
     },
     "PROJECT": {
         "PAGE_TITLE": "{{projectName}}",
-        "HELP": "最もよく使用するプロジェクトが一番上になるように並び替えてみましょう。\n上位10件がナビゲーションバーのプロジェクトリストに表示されます。",
+        "HELP": "Reorder your projects to set at the top the most used ones.<br/> The top 4 projects will appear in the top navigation bar project list",
         "PRIVATE": "プライベート プロジェクト",
         "LOOKING_FOR_PEOPLE": "プロジェクトはメンバーを探しています",
         "FANS_COUNTER_TITLE": "{total, plural, =1{one fan} other{# 人のファン}}",
@@ -1768,7 +1768,7 @@
         "HINT2_TITLE": "カスタムフィールドが作れるのはご存知ですか？",
         "HINT2_TEXT": "チームは特定のワークフローで役立つデータを入力するための柔軟な手段として、カスタムフィールドを作成できるようになりました。",
         "HINT3_TITLE": "あなたに最も関連性のあるプロジェクトを見つけやすくするために順序を入れ替えてみましょう。",
-        "HINT3_TEXT": "最上部にあるダイレクトアクセスバーに10プロジェクトまで表示されます。",
+        "HINT3_TEXT": "The 4 projects are listed in the direct access bar at the top.",
         "HINT4_TITLE": "何をしているのか忘れましたか？",
         "HINT4_TEXT": "ご心配なさらないでください。ダッシュボードではあなたが取り組んだ順番にオープンなタスク、課題、ユーザーストーリーが表示されます。"
     },
