@@ -4,7 +4,7 @@
         padding: .5rem;
     }
     .vote,
-    .status,
+    .status-holder,
     .sprint,
     .name,
     .progress {
@@ -25,7 +25,7 @@
         flex-wrap: wrap;
         text-align: center;
     }
-    .status,
+    .status-holder,
     .sprint {
         flex-basis: 150px;
         flex-grow: 0;

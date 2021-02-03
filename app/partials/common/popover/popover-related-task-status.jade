@@ -2,5 +2,5 @@ ul.popover.pop-status
     <% _.forEach(statuses, function(status) { %>
     li
         a(href="", class="status", title!="<%- status.name %>", data-status-id!="<%- status.id %>")
-            | <%- status.name %>
+            span.item-text <%- status.name %>
     <% }); %>

@@ -38,9 +38,11 @@
     &:hover {
         color: $hover-text-color;
     }
+    a {
+        padding: .25rem;
+    }
     li {
         margin-bottom: .25rem;
-        padding: 0 .25rem;
 
         &:last-child {
             margin-bottom: 0;
@@ -53,6 +55,45 @@
                 color: $hover-text-color;
             }
         }
+    }
+    &.horizontal {
+        li {
+            margin-bottom: .25rem;
+            white-space: nowrap;
+            width: 100%;
+        }
+        a {
+            width: 100%;
+            &.active {
+                color: $color-white;
+            }
+        }
+        .point {
+            align-items: center;
+            color: $text-color;
+            display: flex;
+            height: auto;
+            justify-content: flex-start;
+            min-height: 1.5rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            transition: all .25s ease;
+            white-space: nowrap;
+            &:hover {
+                transition: all .25s ease;
+            }
+        }
+    }
+    &.pop-points-open {
+        li {
+            display: inline-flex;
+            margin: 0;
+            padding: 0;
+        }
+    }
+    a.active {
+        background: $color-link-primary;
+        color: $color-white;
     }
     .point {
         align-items: center;
@@ -74,8 +115,11 @@
         align-items: center;
         color: $text-color;
         display: flex;
-        height: 1.5rem;
+        min-height: 1.5rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
         transition: all .25s ease;
+        white-space: nowrap;
         &:hover {
             transition: all .25s ease;
         }
@@ -90,5 +134,16 @@
         top: #{$arrow-top};
         transform: rotate(45deg);
         width: #{$arrow-width};
+    }
+    .item-text {
+        /* stylelint-disable property-no-vendor-prefix, value-no-vendor-prefix */
+        -webkit-box-orient: vertical;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+        overflow-wrap: break-word;
+        text-align: left;
+        white-space: initial;
+        /* stylelint-enable property-no-vendor-prefix, value-no-vendor-prefix */
     }
 }

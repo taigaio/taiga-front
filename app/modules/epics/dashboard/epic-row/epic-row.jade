@@ -42,11 +42,11 @@
             src="/#{v}/images/unnamed.png"
             alt="{{EPICS.DASHBOARD.UNASSIGNED | translate}}"
         )
-    .status(
+    .status-holder(
         ng-if="vm.options.status && !vm.canEditEpics()"
     )
         span {{vm.epic.getIn(['status_extra_info', 'name'])}}
-    .status(
+    .status-holder(
         ng-if="vm.options.status && vm.canEditEpics()"
         ng-mouseleave="vm.displayStatusList = false"
         tg-isolate-click

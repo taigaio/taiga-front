@@ -4,10 +4,10 @@ ul.popover.pop-points-open(class!="<% if (horizontal) { %>horizontal<% }; %>")
         <% if (point.selected) { %>
         a(href="", class="point", title!="<%- point.name %>",
            data-point-id!="<%- point.id %>", data-role-id!="<%- roleId %>")
-            | <%- point.name %>
+            span.item-text <%- point.name %>
         <% } else { %>
         a(href="", class="point active", title!="<%- point.name %>",
            data-point-id!="<%- point.id %>", data-role-id!="<%- roleId %>")
-            | <%- point.name %>
+            span.item-text <%- point.name %>
         <% } %>
     <% }); %>

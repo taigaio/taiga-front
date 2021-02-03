@@ -100,7 +100,8 @@ form(ng-if="lightboxOpen")
                                 href=""
                                 title="{{ s.name }}"
                                 data-status-id="{{ s.id }}"
-                            ) {{ s.name }}
+                            )
+                                span.item-text {{ s.name }}
 
                 div(ng-switch="objType")
                     div(ng-switch-when="issue")

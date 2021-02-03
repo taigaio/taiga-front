@@ -2,5 +2,5 @@ ul.popover.pop-role
     <% _.each(roles, function(role) { %>
     li
         a.role(href="", title!="<%- role.name %>", data-role-id!="<%- role.id %>")
-            |<%- role.name %> (<%- role.points %>)
+            span.item-text <%- role.name %> (<%- role.points %>)
     <% }); %>

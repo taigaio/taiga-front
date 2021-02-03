@@ -22,11 +22,15 @@
         }
         .points {
             color: $color-black600;
+            overflow: hidden;
+            padding-left: 1rem;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
     }
     .popover {
         @include popover(
-            200px,
+            $width: 188px,
             $top: 100%,
             $left: .5rem,
             $arrow-width: 10px,
@@ -34,22 +38,7 @@
             $arrow-left: 10px,
             $arrow-height: 10px
         );
-        li {
-            align-items: center;
-            display: inline-flex;
-            height: 2.5rem;
-            justify-content: center;
-            padding: 0;
-            width: 2.5rem;
-        }
-        a {
-            height: 100%;
-            width: 100%;
-            &.active {
-                background: $color-link-primary;
-                color: $color-white;
-            }
-        }
+
         &.fix {
             @include popover(
                 200px,
