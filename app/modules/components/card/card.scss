@@ -514,18 +514,24 @@ $iocaine: #b400d1;
 
 .card-task {
     @include font-size(xsmall);
+    padding: .5rem .75rem;
+
     .card-task-ref {
         color: $color-link-primary;
         margin-right: .25rem;
     }
     a {
-        color: $grey-70;
-        display: block;
-        overflow: hidden;
-        padding: .5rem .75rem;
-        text-overflow: ellipsis;
+        display: flex;
         transition: color .2s;
-        white-space: nowrap;
+        .card-task-subject {
+            /* stylelint-disable property-no-vendor-prefix, value-no-vendor-prefix */
+            -webkit-box-orient: vertical;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            overflow: hidden;
+            overflow-wrap: break-word;
+            /* stylelint-enable property-no-vendor-prefix, value-no-vendor-prefix */
+        }
         &.blocked-task {
             color: $red-light;
         }
