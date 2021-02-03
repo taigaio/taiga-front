@@ -553,11 +553,16 @@ KanbanDirective = ($repo, $rootscope) ->
                 .split(' ')[1])
 
             resizeCb = (entries) =>
-                width = columns.toArray().reduce (acc, column) =>
-                    return acc + column.offsetWidth + columnMargin
-                , 0
+                    width = columns.toArray().reduce (acc, column) =>
+                        if document.body.contains(column)
+                            return acc + column.offsetWidth + columnMargin
 
-                document.body.style.setProperty('--kanban-width', (width - columnMargin) + 'px')
+                        resizeObserver.unobserve(column)
+                        return acc
+                    , 0
+
+                    if width > 0
+                        document.body.style.setProperty('--kanban-width', (width - columnMargin) + 'px')
 
             resizeObserver = new ResizeObserver(resizeCb)
 
