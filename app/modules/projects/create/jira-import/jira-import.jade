@@ -2,6 +2,7 @@
         p autorization...
 
 tg-import-project-selector(
+    class="import-project-selector"
     logo="/#{v}/images/import-logos/jira.png"
     search="{{ 'PROJECT.IMPORT.JIRA.CHOOSE_PROJECT' | translate }}"
     no-projects-msg="{{ 'PROJECT.IMPORT.JIRA.NO_PROJECTS' | translate }}"
@@ -12,6 +13,7 @@ tg-import-project-selector(
 )
 
 tg-jira-import-project-form(
+    class="import-project-form"
     ng-if="vm.step == 'project-form-jira'"
     project="vm.project"
     members="vm.members"
@@ -21,6 +23,7 @@ tg-jira-import-project-form(
 )
 
 tg-import-project-members(
+    class="import-project-members"
     ng-if="vm.step == 'project-members-jira'"
     platform="Jira"
     logo="/#{v}/images/import-logos/jira.png"

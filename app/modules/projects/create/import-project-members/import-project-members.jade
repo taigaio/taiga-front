@@ -26,7 +26,7 @@
         li.import-project-members-row(tg-repeat="member in vm.members track by member.get('id')")
             .import-project-members-single
                 .avatar.empty(ng-if="!member.get('avatar')") {{member.get('full_name')[0].toUpperCase()}}
-                .avatar(ng-if="member.get('avatar')") 
+                .avatar(ng-if="member.get('avatar')")
                     img(ng-src="{{member.get('avatar')}}")
                 span.import-project-members-username {{member.get('full_name') || member.get('username') }}
 
@@ -55,13 +55,15 @@
                 )
 
     .create-project-action
-        button.trans-button.create-project-action-cancel(
+        button.btn-small.create-project-action-cancel(
+            variant="secondary"
             type="button"
             ng-click="vm.onCancel()"
             title="{{'PROJECT.CREATE.BACK' | translate}}"
             translate="PROJECT.CREATE.BACK"
         )
-        button.button.button-green.create-project-action-submit(
+        button.btn-small.create-project-action-submit(
+            variant="primary"
             ng-if="vm.members.size > 0"
             ng-click="vm.beforeSubmitUsers()"
             translate="PROJECT.IMPORT.IMPORT"

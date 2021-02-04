@@ -2,16 +2,56 @@
     @include centered;
     max-width: 800px;
 
+    h1 {
+        @include font-size(xlarge);
+        margin-bottom: 1rem;
+    }
+
+    .create-project-check {
+        display: flex;
+        flex-direction: column;
+
+        label {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .title {
+            @include font-type(bold);
+            @include font-size(medium);
+            color: $color-black900;
+            margin-bottom: .5rem;
+        }
+    }
+
+    .create-project-github-import-type-question {
+        label {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 0;
+            max-height: none;
+            padding-left: 2rem;
+            position: relative;
+            text-align: left;
+        }
+    }
+
+    .create-project-github-import-type-name {
+        @include font-type(bold);
+        @include font-size(medium);
+    }
+
     fieldset {
         margin-bottom: 1rem;
     }
 
     label {
-        display: block;
+        color: $gray-light;
+        display: flex;
         margin-bottom: .25rem;
         max-height: 44px;
         span {
-          @include font-size(small);
+            @include font-size(small);
         }
         .mumble {
             @include font-type(regular);
@@ -19,8 +59,8 @@
         }
     }
     input + label {
-        background-color: $color-gray200;
         color: $color-black600;
+        display: flex;
 
         .icon {
             fill: $color-black600;
@@ -38,9 +78,9 @@
         }
 
         .check {
+            bottom: .25rem;
             position: absolute;
             right: 0;
-            top: 0;
         }
     }
 
@@ -55,7 +95,7 @@
         .icon {
             @include svg-size(1.75rem);
             fill: $color-link-primary;
-            margin-right: .5rem;
+            margin-right: 1rem;
             stroke: $primary;
             vertical-align: middle;
         }
@@ -98,7 +138,7 @@
         }
 
         input:checked + label {
-            background: $grey-70;
+            background: $color-link-primary;
             color: $color-white;
 
             .icon {
@@ -107,11 +147,10 @@
         }
 
         label {
-            padding: 0 .75rem;
             min-height: 37px;
             padding: 0 .75rem;
             .icon {
-              margin-right: .5em;
+                margin-right: 1rem;
             }
         }
 
@@ -155,7 +194,7 @@
         }
         li {
             &:hover {
-                background: rgba($primary, .1);
+                background: rgba($color-link-primary, .1);
                 transition: background .3s ease-in;
             }
 
@@ -256,8 +295,8 @@
         @include font-size(small);
         border: 1px solid $red-light;
         display: flex;
-        padding: 1rem;
         margin-bottom: 1rem;
+        padding: 1rem;
         .icon-exclamation {
             fill: $red-light;
             margin-right: .5rem;
