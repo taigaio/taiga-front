@@ -134,7 +134,7 @@
         @include popover(
             $width: 150px,
             $top: 40px,
-            $right: 50px,
+            $right: 0,
             $arrow-width: 0
         );
         display: block;

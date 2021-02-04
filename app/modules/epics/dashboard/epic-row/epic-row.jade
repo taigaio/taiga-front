@@ -65,7 +65,8 @@
             li.status.e2e-edit-epic-status(
                 ng-repeat="status in vm.project.epic_statuses | orderBy:'order'"
                 ng-click="vm.updateStatus(status.id)"
-            ) {{status.name}}
+            )
+                span.item-text {{status.name}}
 
     .progress(ng-if="vm.options.progress")
         .progress-bar
