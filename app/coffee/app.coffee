@@ -37,8 +37,8 @@ taiga.generateUniqueSessionIdentifier = ->
 taiga.sessionId = taiga.generateUniqueSessionIdentifier()
 
 
-configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEventsProvider,
-             $compileProvider, $translateProvider, $translatePartialLoaderProvider, $animateProvider) ->
+configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEventsProvider, $compileProvider,
+             $translateProvider, $translatePartialLoaderProvider, $animateProvider, $logProvider) ->
 
     $animateProvider.classNameFilter(/^(?:(?!ng-animate-disabled).)*$/)
 
@@ -210,7 +210,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
 
     # Epics
     $routeProvider.when("/project/:pslug/epics",
-    {
+        {
             section: "epics",
             templateUrl: "epics/dashboard/epics-dashboard.html",
             loader: true,
@@ -747,6 +747,11 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
     _.each decorators, (decorator) ->
         $provide.decorator decorator.provider, decorator.decorator
 
+    # Enable or disable debug log messages
+    $logProvider.debugEnabled(window.taigaConfig.debug)
+    if window.taigaConfig.debug
+        console.info("Debug mode is enable")
+
     ## debug-events
     ##
     ## NOTE: This code is useful to debug Angular events, overwrite $rootScope methos
@@ -927,7 +932,7 @@ init = ($log, $rootscope, $auth, $events, $analytics, $tagManager, $userPilot, $
         errorHandlingService.init()
 
         if lightboxService.getLightboxOpen().length
-            event.preventDefault();
+            event.preventDefault()
 
             lightboxService.closeAll()
 
@@ -1043,6 +1048,7 @@ module.config([
     "$translateProvider",
     "$translatePartialLoaderProvider",
     "$animateProvider",
+    "$logProvider"
     configure
 ])
 

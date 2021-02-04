@@ -6,7 +6,7 @@ window.taigaConfig = {
     "tribeHost": null,
     "eventsMaxMissedHeartbeats": 5,
     "eventsHeartbeatIntervalTime": 60000,
-    "debug": true,
+    "debug": false,
     "defaultLanguage": "en",
     "themes": ["taiga", "taiga-legacy", "material-design", "high-contrast"],
     "defaultTheme": "taiga",
