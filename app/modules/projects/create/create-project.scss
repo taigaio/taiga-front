@@ -1,3 +1,44 @@
 .create-project {
     @include create-project;
 }
+
+.import-project-members {
+    .import-project-members-match {
+        align-items: center;
+        display: flex;
+    }
+    .import-project-members-match button {
+        border: 0;
+        height: 1rem;
+        padding: 0;
+        width: 1rem;
+        .icon {
+            height: 1rem;
+            width: 1rem;
+        }
+    }
+    .import-project-members-choose {
+        color: $color-link-primary;
+    }
+    .import-project-members-match-true svg {
+        fill: $color-link-primary;
+    }
+    .import-project-members-match-false svg {
+        fill: $color-link-red;
+    }
+    .avatar {
+        height: 3rem;
+        width: 3rem;
+        img {
+            border: 0;
+            height: 3rem;
+            width: 3rem;
+        }
+    }
+
+    .import-project-members-delete svg {
+        fill: $color-link-red;
+        height: 1rem;
+        width: 1rem;
+    }
+}

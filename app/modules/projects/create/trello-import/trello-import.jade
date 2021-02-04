@@ -1,4 +1,5 @@
 tg-import-project-selector(
+    class="import-project-selector"
     logo="/#{v}/images/import-logos/trello.png"
     search="{{ 'PROJECT.IMPORT.TRELLO.CHOOSE_PROJECT' | translate }}"
     no-projects-msg="{{ 'PROJECT.IMPORT.TRELLO.NO_PROJECTS' | translate }}"
@@ -9,6 +10,7 @@ tg-import-project-selector(
 )
 
 tg-trello-import-project-form(
+    class="import-project-form"
     ng-if="vm.step == 'project-form-trello'"
     project="vm.project"
     members="vm.members"
@@ -18,6 +20,7 @@ tg-trello-import-project-form(
 )
 
 tg-import-project-members(
+    class="import-project-members"
     ng-if="vm.step == 'project-members-trello'"
     platform="Trello"
     logo="/#{v}/images/import-logos/trello.png"

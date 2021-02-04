@@ -4,6 +4,7 @@
 
 .create-project-github-import-type {
     margin-bottom: 1rem;
+    position: relative;
     text-align: center;
 
     p {
@@ -18,7 +19,6 @@
 
     fieldset {
         background: $white;
-        border-right: 1px solid $whitish;
         transition: background .2s linear;
 
         &:last-child {
@@ -27,11 +27,18 @@
     }
 
     input {
-        display: none;
+        height: 1rem;
+        left: .5rem;
+        position: absolute;
+        top: 1.2rem;
+        width: 1rem;
+        z-index: 1;
 
         &:checked {
             +label {
-                background: rgba($primary, .1);
+                .create-project-github-import-type-name {
+                    color: $color-link-primary;
+                }
             }
         }
     }

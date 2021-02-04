@@ -4,5 +4,14 @@ tg-lightbox-close(on-close="onClose()")
     h1.warning-users-import-title(translate="PROJECT.IMPORT.WARNING.TITLE")
     p(translate="PROJECT.IMPORT.WARNING.DESCRIPTION")
     .actions
-        button.button.button-trans(translate="PROJECT.IMPORT.WARNING.CHECK", ng-click="onClose()")
-        button.button.button-green(type="submit", translate="PROJECT.IMPORT.IMPORT", ng-click="onConfirm()")
+        button.btn-small(
+            variant="secondary",
+            translate="PROJECT.IMPORT.WARNING.CHECK",
+            ng-click="onClose()"
+        )
+        button.btn-small(
+            variant="primary",
+            type="submit",
+            translate="PROJECT.IMPORT.IMPORT",
+            ng-click="onConfirm()"
+        )

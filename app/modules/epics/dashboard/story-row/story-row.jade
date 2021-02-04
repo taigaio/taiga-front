@@ -35,7 +35,7 @@
             src="/#{v}/images/unnamed.png"
             alt="{{EPICS.DASHBOARD.UNASSIGNED | translate}}"
         )
-    .status(ng-if="vm.options.status") {{vm.story.getIn(['status_extra_info', 'name'])}}
+    .status-holder(ng-if="vm.options.status") {{vm.story.getIn(['status_extra_info', 'name'])}}
     .progress(ng-if="vm.options.progress")
         .progress-bar
         .progress-status(
