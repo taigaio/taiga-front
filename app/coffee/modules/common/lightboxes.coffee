@@ -367,12 +367,12 @@ CreateBulkUserstoriesDirective = ($repo, $rs, $rootscope, lightboxService, $load
             if not form.validate()
                 return
 
+            swimlaneId = null
             if $scope.project.is_kanban_activated
-                swimlaneId = $scope.new.swimlane || $scope.project.default_swimlane
-                if $scope.new.swimlane == -1
-                    swimlaneId = null
-            else
-                swimlaneId = null
+                swimlaneId = $scope.new.swimlane
+
+                if swimlaneId == undefined
+                    swimlaneId = $scope.project.default_swimlane
 
             currentLoading = $loading()
                 .target(submitButton)
