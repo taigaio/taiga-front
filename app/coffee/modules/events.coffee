@@ -105,7 +105,7 @@ class EventsService
                     notification.onclick = () =>
                         window.open data.url
         if !('Notification' in window)
-            console.log("This browser does not support desktop notification")
+            @log.info("This browser does not support desktop notification")
         else if Notification.permission == "granted"
             subscribe()
         else if Notification.permission != 'denied'
@@ -256,7 +256,7 @@ class EventsService
         @.webNotifications()
 
     onMessage: (event) ->
-        @.log.debug "WebSocket message received: #{event.data}"
+        @log.debug "WebSocket message received: #{event.data}"
 
         data = JSON.parse(event.data)
 
