@@ -96,7 +96,7 @@ class WysiwygService
         promises = []
         _.map [links, images], (tag) =>
             _.map tag.elements, (e) =>
-                if e.getAttribute(tag.attr).indexOf('#_taiga-refresh=') != -1
+                if e.getAttribute(tag.attr) && e.getAttribute(tag.attr).indexOf('#_taiga-refresh=') != -1
                     match = e.getAttribute(tag.attr).match(regex)
                     if match && match.length == 2
                         tokens = match[1].split(":")
