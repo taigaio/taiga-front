@@ -33,7 +33,7 @@ RUN set -eux; \
     # Install taiga-front contribs
     mkdir /taiga/dist/plugins; \
     cd /taiga/dist/plugins; \
-    svn export "https://github.com/taigaio/taiga-contrib-slack/tags/6.0.0/front/dist" "slack"; \
+    svn export "https://github.com/taigaio/taiga-contrib-slack/tags/6.0.1/front/dist" "slack"; \
     svn export "https://github.com/taigaio/taiga-contrib-github-auth/tags/6.0.0/front/dist" "github-auth"; \
     svn export "https://github.com/taigaio/taiga-contrib-gitlab-auth/tags/6.0.0/front/dist" "gitlab-auth"; \
     cd /; \
