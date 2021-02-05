@@ -33,11 +33,13 @@ NavigationBarDirective = (currentUserService, navigationBarService, locationServ
             userPilotIframe = document.querySelector('#userpilot-resource-centre-frame')
 
             if userPilotIframe
-                clearInterval(userPilotInterval)
-
                 scope.$applyAsync () =>
                     userPilotIframeDocument = userPilotIframe.contentWindow.document.body
-                    scope.vm.userPilotTitle = userPilotIframeDocument.querySelector('#widget-title').innerText
+                    widget = userPilotIframeDocument.querySelector('#widget-title')
+
+                    if widget
+                        scope.vm.userPilotTitle = widget.innerText
+                        clearInterval(userPilotInterval)
 
         attempts = 10
 
