@@ -1,6 +1,13 @@
 # Changelog
 
-## 6.0.0
+## 6.0.3 (2021-02-07)
+
+### Misc
+
+- Debug mode now is disabled by default
+- Minor bug fix.
+
+## 6.0.0 (2021-02-02)
 
 ### Features
 
