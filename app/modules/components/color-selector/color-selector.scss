@@ -2,12 +2,7 @@
     border-radius: 2px;
     cursor: pointer;
     height: 2rem;
-    margin: 0 .5rem .5rem 0;
-    min-width: 2rem;
     width: 2rem;
-    &:nth-child(7n) {
-        margin-right: 0;
-    }
 }
 
 .color-selector {
@@ -40,8 +35,10 @@
 }
 
 .color-selector-dropdown-list {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-column-gap: .5rem;
+    grid-row-gap: .5rem;
+    grid-template-columns: repeat(7, 1fr);
     list-style-type: none;
     margin-bottom: 0;
     .color-selector-option {
@@ -54,11 +51,10 @@
 }
 
 .custom-color-selector {
-    align-items: center;
     display: flex;
+    margin-top: .5rem;
     .custom-color-input {
-        margin: 0;
-        width: 86%;
+        flex: 1;
     }
     .display-custom-color-wrapper {
         background: $mass-white;
@@ -66,8 +62,6 @@
     }
     .display-custom-color {
         @include color-selector-option;
-        flex-shrink: 0;
-        margin: 0;
         &.empty-color {
             @include empty-color(34);
             cursor: default;
