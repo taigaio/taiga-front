@@ -857,7 +857,10 @@ CardDataDirective = ($template, $translate, avatarService, projectService, dueDa
     render = (vm) =>
         avatars = {}
         (vm.item.get('assigned_users') || []).forEach (user) =>
-            avatars[user.get('id')] = avatarService.getAvatar(user, 'avatar')
+            if user
+                avatars[user.get('id')] = avatarService.getAvatar(user, 'avatar')
+            else
+                console.error 'invalid assigned_users', vm.item.get('assigned_users').toJS()
 
         return template({
             vm: vm,
