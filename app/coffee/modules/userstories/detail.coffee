@@ -51,12 +51,13 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         "tgProjectService",
         "tgWysiwygService",
         "tgAttachmentsFullService",
+        "$tgModel"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location,
                   @log, @appMetaService, @navUrls, @analytics, @translate, @modelTransform,
                   @errorHandlingService, @configService, @projectService, @wysiwigService,
-                  @attachmentsFullService) ->
+                  @attachmentsFullService, @tgmodel) ->
         bindMethods(@)
 
         @scope.usRef = @params.usref
@@ -301,6 +302,8 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         }
 
         return @rs.tasks.reorder(task.id, data, setOrders).then (newTask) =>
+            newTask = @tgmodel.make_model("tasks", newTask)
+
             @scope.tasks =  _.map(@scope.tasks, (it) ->
                 return if it.id == newTask.id then newTask else it
             )

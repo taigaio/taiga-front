@@ -7,7 +7,7 @@ section.related-tasks(
         div(tg-related-task-create-button)
     .related-tasks-body(tg-tasks-sortable="reorderTask(task, newIndex)")
         .row.single-related-task.js-related-task(
-            ng-repeat="task in tasks"
+            ng-repeat="task in tasks track by task.id"
             ng-class="{closed: task.is_closed, blocked: task.is_blocked, iocaine: task.is_iocaine}"
             tg-related-task-row
             tg-bind-scope
