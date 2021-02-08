@@ -98,6 +98,9 @@ module.filter("byRef", ["filterFilter", byRefFilter])
 
 darkerFilter = ->
     return (color, luminosity) ->
+        if !color
+            return 'transparent'
+
         # validate hex string
         color = new String(color).replace(/[^0-9a-f]/gi, '')
         if color.length < 6
