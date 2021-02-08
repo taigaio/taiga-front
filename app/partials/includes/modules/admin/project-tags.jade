@@ -7,7 +7,6 @@ section
     .admin-tags-section-wrapper
         form.add-tag-container.new-value.hidden
             tg-color-selector.color-column(
-                is-color-required="false"
                 init-color="newValue.color"
                 on-select-color="newValue.color = color"
             )
@@ -112,7 +111,6 @@ section
 
                         .row.tag-row.table-main.edition.hidden
                             tg-color-selector.color-column(
-                                is-color-required="false"
                                 ng-model="tag"
                                 init-color="tag.color"
                                 on-select-color="tag.color = color"

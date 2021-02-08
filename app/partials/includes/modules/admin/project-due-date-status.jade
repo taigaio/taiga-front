@@ -49,12 +49,11 @@ section.admin-status-table
                                     )
 
                         div.row.table-main.edition.hidden
-                            div.color-column(
-                                tg-color-selection
-                                ng-model="value"
-                            )
-                                div.current-color(ng-style="{background: value.color}")
-                                include ../../components/select-color
+                            div.color-column
+                                tg-color-selector(
+                                    init-color="value.color"
+                                    on-select-color="value.color = color"
+                                )
 
                             div.status-name
                                 input(
@@ -108,12 +107,11 @@ section.admin-status-table
 
             form(tg-bind-scope)
                 div.row.table-main.new-value.hidden
-                    div.color-column(
-                        tg-color-selection
-                        ng-model="newValue"
-                    )
-                        div.current-color(ng-style="{background: newValue.color}")
-                        include ../../components/select-color
+                    div.color-column
+                        tg-color-selector(
+                            init-color="newValue.color"
+                            on-select-color="newValue.color = color"
+                        )
 
                     div.status-name
                         input(

@@ -11,6 +11,11 @@
                 width: 100%;
             }
         }
+        .admin-tags-section-wrapper {
+            .row.tag-row.table-main.edition {
+                padding-left: 1rem;
+            }
+        }
         .admin-tags-section-wrapper-empty {
             color: $gray-light;
             padding: 10vh 0 0;

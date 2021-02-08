@@ -58,7 +58,9 @@
             }
         }
         .color-column {
+            display: flex;
             flex-basis: 80px;
+            justify-content: center;
             min-width: 80px;
             position: relative;
         }
@@ -183,9 +185,9 @@
 
     .current-color {
         background-color: $whitish;
-        border-radius: 2px;
-        height: 40px;
-        width: 40px;
+        border-radius: 3px;
+        height: 2rem;
+        width: 2rem;
     }
 
     .icon {
@@ -227,5 +229,4 @@
             visibility: hidden;
         }
     }
-
 }

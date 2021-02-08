@@ -1,8 +1,0 @@
-div.popover.select-color
-    ul
-        li.color(ng-repeat="c in colorList" ng-style="::{background: c}", data-color="{{::c }}")
-        li.color.empty-color(ng-if="allowEmpty", data-color="")
-
-    input(type="text", placeholder="personalized colors", ng-model="color")
-    div.selected-color(ng-style="{'background-color': color}", ng-if="color !== null")
-    div.selected-color(ng-style="{'background-color': none}", ng-if="color === null")

@@ -59,9 +59,11 @@ section.project-us-status
                                     )
 
                         div.row.table-main.edition.hidden
-                            .color-column(tg-color-selection, ng-model="value")
-                                .current-color(ng-style="{background: value.color}")
-                                include ../../components/select-color
+                            .color-column
+                                tg-color-selector(
+                                    init-color="value.color"
+                                    on-select-color="value.color = color"
+                                )
 
 
                             .status-name
@@ -98,9 +100,11 @@ section.project-us-status
 
             form
                 div.row.table-main.new-value.hidden
-                    div.color-column(tg-color-selection, ng-model="newValue")
-                        div.current-color(ng-style="{background: newValue.color}")
-                        include ../../components/select-color
+                    div.color-column
+                        tg-color-selector(
+                            init-color="newValue.color"
+                            on-select-color="newValue.color = color"
+                        )
 
                     div.status-name
                         input(
