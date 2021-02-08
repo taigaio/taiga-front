@@ -742,11 +742,12 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
                 role = getRole(roleId)
                 point = getPoint(pointId) || { value: 0 }
 
-                if !result[role.id]
-                    result[role.id] = role
-                    result[role.id].points = 0
+                if role
+                    if !result[role.id]
+                        result[role.id] = role
+                        result[role.id].points = 0
 
-                result[role.id].points += point.value
+                    result[role.id].points += point.value
 
             return result
         , {}
