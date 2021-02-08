@@ -222,7 +222,8 @@ class KanbanUserstoriesService extends taiga.Service
 
         usModel.assigned_users.forEach (assignedUserId) =>
             assignedUserData = @.usersById[assignedUserId]
-            us.assigned_users.push(assignedUserData)
+            if assignedUserData
+                us.assigned_users.push(assignedUserData)
 
         us.assigned_users_preview = us.assigned_users.slice(0, 3)
 
