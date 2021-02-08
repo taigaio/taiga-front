@@ -39,7 +39,7 @@ UserTimelinePaginationSequence = () ->
                 if config.filter
                     data = config.filter(data)
 
-                if config.map
+                if config.map && data
                     data = data.map(config.map)
 
                 items = items.concat(data)

@@ -27,7 +27,7 @@ module = angular.module("taigaBacklog")
 ## Creare/Edit Sprint Lightbox Directive
 #############################################################################
 
-CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading, $translate) ->
+CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading, $translate, projectService) ->
     link = ($scope, $el, attrs) ->
         hasErrors = false
         createSprint = true
@@ -196,7 +196,8 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading,
                 $scope.newSprint.estimated_start = moment($scope.newSprint.estimated_start).format(prettyDate)
                 $scope.newSprint.estimated_finish = moment($scope.newSprint.estimated_finish).format(prettyDate)
 
-            $el.find(".delete-sprint").removeClass("hidden")
+            if projectService.project.get('my_permissions').indexOf('delete_milestone') > -1
+                $el.find(".delete-sprint").removeClass("hidden")
 
             editSprint = $translate.instant("BACKLOG.EDIT_SPRINT")
             $el.find(".title").text(editSprint)
@@ -236,5 +237,6 @@ module.directive("tgLbCreateEditSprint", [
     "lightboxService"
     "$tgLoading",
     "$translate",
+    "tgProjectService"
     CreateEditSprint
 ])
