@@ -22,11 +22,6 @@
             width: 1.2rem;
         }
     }
-    .current-color {
-        &.empty-color {
-            @include empty-color(38);
-        }
-    }
     input[type='text'] {
         background: $white;
     }
@@ -80,7 +75,7 @@
     .row {
         &.tag-row {
             margin: .3rem 0;
-            padding: .7rem;
+            padding: .7rem 1rem;
             &:hover {
                 cursor: default;
             }
@@ -135,11 +130,6 @@
         @include until($widescreen) {
             display: block;
             padding: .5rem;
-        }
-    }
-    .current-color {
-        &.empty-color {
-            @include empty-color(38);
         }
     }
 }
