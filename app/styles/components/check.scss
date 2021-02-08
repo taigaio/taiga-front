@@ -48,13 +48,7 @@
     input:checked:disabled {
         cursor: auto;
         + div {
-            background-color: $color-link-primary;
-            &::before {
-                background-color: $color-black600;
-            }
-        }
-        ~ .check-text {
-            color: $color-gray200;
+            opacity: .3;
         }
     }
     input:checked {
