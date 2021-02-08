@@ -144,7 +144,7 @@ class CurrentUserService
     canCreatePublicProjects: () ->
         user = @.getUser()
 
-        if user.get('max_public_projects') != null &&
+        if user && user.get('max_public_projects') != null &&
             user.get('total_public_projects') >= user.get('max_public_projects')
                 return {
                     valid: false,

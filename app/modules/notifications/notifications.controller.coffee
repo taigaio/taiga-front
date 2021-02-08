@@ -53,7 +53,9 @@ class NotificationsController extends mixOf(taiga.Controller, taiga.PageMixin, t
 
     initList: ()->
         @.notificationsList = Immutable.List()
-        @.list = @notificationsService.getNotificationsList(@.user.get("id"), @.onlyUnread?)
+        if @.user
+            @.list = @notificationsService.getNotificationsList(@.user.get("id"), @.onlyUnread?)
+
         @.loading = !@.list?
 
     reloadList: ()->
