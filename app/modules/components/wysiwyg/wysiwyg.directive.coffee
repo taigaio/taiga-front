@@ -44,7 +44,7 @@ Wysiwyg = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoa
 
 
         linksEvents = () ->
-            $el.find('.js-wysiwyg-html').on 'mousedown', (e) =>
+            $el.on 'mousedown', '.js-wysiwyg-html', (e) =>
                 if e.target.tagName != 'A'
                     $scope.$applyAsync () => $scope.setEditMode(true)
 
