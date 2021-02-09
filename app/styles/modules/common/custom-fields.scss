@@ -89,7 +89,8 @@
         }
     }
 
-    .read-mode .ck.ck-editor__main > .ck-editor__editable {
+    .read-mode .ck.ck-editor__main > .ck-editor__editable,
+    .read-mode .markdown {
         background: $color-white;
         border: 2px solid $color-gray400;
         border-radius: 3px;
