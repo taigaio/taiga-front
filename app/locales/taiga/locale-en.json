@@ -1306,7 +1306,7 @@
         "TITLE_DELETE_ACTION": "Delete user story",
         "TITLE_DELETE_MESSAGE": "Are you sure you want to delete <strong>“{{subject}}“</strong>?",
         "LIGHTBOX_TITLE_BLOKING_US": "Blocking user story",
-        "NOT_ESTIMATED": "Not estimated",
+        "NOT_ESTIMATED": "N/E",
         "OWNER_US": "This user story belongs to",
         "RELATE_TO_EPIC": "Link to epic",
         "REMOVE_RELATIONSHIP_WITH_EPIC": "Remove epic relationship",

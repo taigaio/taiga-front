@@ -436,6 +436,9 @@ tg-card[type='task'].folded-dragging {
         &.not-estimated {
             font-size: .8125rem;
         }
+        .not-estimated {
+            color: $color-black600;
+        }
         .seedtime-inline {
             display: inline-flex;
         }
