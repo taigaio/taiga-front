@@ -17,6 +17,7 @@
 
     .filters-bar {
         background-color: $color-white;
+        padding-inline-end: 1rem;
         position: sticky;
         top: 115px;
         z-index: $first-layer;
@@ -47,7 +48,7 @@
 
 .issue-header {
     background: $color-white;
-    padding: 0 1rem 1rem 0;
+    padding-block-end: 1rem;
     .button-filter {
         color: $color-link-primary;
         margin-left: 0;

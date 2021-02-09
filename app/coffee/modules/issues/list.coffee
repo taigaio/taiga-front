@@ -81,6 +81,7 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         @showTags = true
         @scope.sectionName = @translate.instant("PROJECT.SECTION.ISSUES")
         @.voting = false
+        @.openFilter = false
 
         return if @.applyStoredFilters(@params.pslug, @.filtersHashSuffix)
 
