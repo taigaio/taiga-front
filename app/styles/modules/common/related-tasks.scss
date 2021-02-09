@@ -24,6 +24,7 @@
         @include font-size(small);
         align-items: center;
         border-bottom: 1px solid $whitish;
+        border-left: 10px solid transparent;
         display: flex;
         padding: .5rem 0 .5rem .5rem;
         &:hover {
@@ -41,7 +42,13 @@
         }
         .status {
             flex-shrink: 0;
-            width: 125px;
+            margin-right: 1rem;
+            width: 8rem;
+        }
+        .task-status-bind {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
         .task-status {
             display: flex;
@@ -58,18 +65,24 @@
             .icon-drag {
                 opacity: 1;
             }
+            &.blocked {
+                .icon-drag {
+                    fill: $color-solid-red;
+                    opacity: 1;
+                }
+            }
         }
         .task-reorder {
             display: flex;
             margin-right: 1rem;
         }
         .icon-drag {
-            @include svg-size(.75rem);
+            @include svg-size(1rem);
             cursor: move;
-            fill: $whitish;
-            opacity: 0;
+            fill: $color-link-primary;
             transition: opacity .1s;
         }
+
     }
     .related-task-create-form {
         padding: 0;
@@ -85,6 +98,9 @@
     .task-name {
         display: flex;
         margin-right: 1rem;
+        .task-name-subject {
+            color: $color-black900;
+        }
         span {
             margin-right: .25rem;
         }
@@ -124,16 +140,21 @@
     .closed,
     .closed:hover {
         border-left: 10px solid $whitish;
-        color: $grey-30;
-        a,
+        color: $color-black600;
         svg {
-            fill: $grey-30;
-            stroke: $grey-30;
+            fill: $color-black600;
+            stroke: 0;
+        }
+        .icon-draggable {
+            fill: $color-link-tertiary;
         }
         .task-name a {
-            color: $grey-30;
+            color: $color-black600;
+            opacity: .5;
             text-decoration: line-through;
-
+        }
+        .task-reorder {
+            margin-right: .5rem;
         }
     }
     .icon-iocaine {
@@ -153,16 +174,24 @@
     .blocked,
     .blocked:hover {
         background: rgba($red-light, .2);
-        border-left: 10px solid $red-light;
+        border-left: 10px solid $color-solid-red;
+        .task-name-ref,
+        .task-name-subject {
+            color: $color-link-red;
+        }
+        .icon-draggable {
+            fill: $color-link-tertiary;
+        }
     }
     .task-settings {
         align-items: center;
         display: flex;
         opacity: 0;
         svg {
-            @include svg-size(1.1rem);
+            @include svg-size(1rem);
             fill: $gray-light;
             margin-right: .5rem;
+            stroke: none;
             transition: fill .2s ease-in;
             &:hover {
                 fill: $gray;
@@ -179,10 +208,10 @@
     .delete-task {
         &:hover {
             .icon-edit {
-                fill: $grayer;
+                fill: $color-link-primary;
             }
             .icon-save {
-                fill: $primary;
+                fill: $color-link-primary;
             }
             .icon-trash {
                 fill: $color-link-red;
