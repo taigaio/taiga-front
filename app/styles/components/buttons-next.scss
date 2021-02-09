@@ -10,7 +10,7 @@
     color: $color-black900;
     display: inline-flex;
     justify-content: center;
-    min-height: 2rem;
+    line-height: initial;
     text-align: center;
     text-transform: uppercase;
     white-space: nowrap;
@@ -51,9 +51,6 @@
 .btn-small {
     @extend %button;
     padding: .45rem 1rem;
-    span {
-        height: 1rem;
-    }
     &[variant='primary'] {
         background-color: $color-solid-primary;
         color: $color-black900;
