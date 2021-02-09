@@ -21,10 +21,11 @@ class WysiwygService
     @.$inject = [
         "tgProjectService",
         "tgAttachmentsFullService",
-        "tgAttachmentsService"
+        "tgAttachmentsService",
+        "$sce"
     ]
 
-    constructor: (@projectService, @attachmentsFullService, @attachmentsService) ->
+    constructor: (@projectService, @attachmentsFullService, @attachmentsService, @sce) ->
         @.projectDataConversion = {}
         # prevent duplicate calls to the same attachment
         @.cache = {}
@@ -81,7 +82,7 @@ class WysiwygService
 
     refreshAttachmentURL: (html) ->
         el = document.createElement('html')
-        el.innerHTML = html
+        el.innerHTML = @sce.getTrustedHtml(html) || ''
         regex = /#_taiga-refresh=([a-zA-Z]*\:\d+)/
 
         links = {

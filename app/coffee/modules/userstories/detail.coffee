@@ -51,13 +51,14 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         "tgProjectService",
         "tgWysiwygService",
         "tgAttachmentsFullService",
-        "$tgModel"
+        "$tgModel",
+        "$sce"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location,
                   @log, @appMetaService, @navUrls, @analytics, @translate, @modelTransform,
                   @errorHandlingService, @configService, @projectService, @wysiwigService,
-                  @attachmentsFullService, @tgmodel) ->
+                  @attachmentsFullService, @tgmodel, @sce) ->
         bindMethods(@)
 
         @scope.usRef = @params.usref
@@ -89,10 +90,13 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
             userStorySubject: @scope.us.subject
             projectName: @scope.project.name
         })
+
+        descriptionHtml = @sce.getTrustedHtml(@wysiwigService.getHTML(@scope.us.description) or "")
+
         description = @translate.instant("US.PAGE_DESCRIPTION", {
             userStoryStatus: @scope.statusById[@scope.us.status]?.name or "--"
             userStoryPoints: @scope.us.total_points
-            userStoryDescription: angular.element(@wysiwigService.getHTML(@scope.us.description) or "").text()
+            userStoryDescription: angular.element(descriptionHtml).text()
             userStoryClosedTasks: closedTasks
             userStoryTotalTasks: totalTasks
             userStoryProgressPercentage: progressPercentage
