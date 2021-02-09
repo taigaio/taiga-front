@@ -421,6 +421,7 @@
     }
     .options {
         display: flex;
+        justify-content: space-between;
         a {
             flex-grow: 1;
             padding: 8px 0;
