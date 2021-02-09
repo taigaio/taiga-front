@@ -591,8 +591,15 @@ IssueStatusInlineEditionDirective = ($repo, $template, $rootscope) ->
             $el.find(".pop-status").popover().close()
             updateIssueStatus($el, issue, $scope.issueStatusById)
 
+            attachments = issue.attachments
+
             $scope.$apply () ->
                 $repo.save(issue).then (response) ->
+                    issue.attachments = attachments
+                    issue._isModified = false
+                    issue._attrs = _.extend(issue.getAttrs(), issue)
+                    issue._modifiedAttrs = {}
+
                     $rootscope.$broadcast("status:changed", response)
 
         taiga.bindOnce $scope, "project", (project) ->
@@ -652,7 +659,13 @@ IssueAssignedToInlineEditionDirective = ($repo, $rootscope, $translate, avatarSe
         $el.on "click", ".issue-assignedto", (event) ->
             onClose = (assignedUsers) =>
                 issue.assigned_to = assignedUsers.pop() || null
+                attachments = issue.attachments
                 $repo.save(issue).then ->
+                    issue.attachments = attachments
+                    issue._isModified = false
+                    issue._attrs = _.extend(issue.getAttrs(), issue)
+                    issue._modifiedAttrs = {}
+
                     updateIssue(issue)
                     $rootscope.$broadcast("assigned-to:changed", issue)
 
