@@ -1569,7 +1569,7 @@
         "PAGE_TITLE": "課題 - {{projectName}}",
         "PAGE_DESCRIPTION": "課題一覧パネル {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "課題",
-        "ACTION_NEW_ISSUE": "+ 新規課題",
+        "ACTION_NEW_ISSUE": "新規課題",
         "ACTION_ATTACH_SPRINT": "課題をスプリントに加える",
         "ACTION_DETACH_SPRINT": "課題をスプリントから切り離す",
         "EXTERNAL_REFERENCE": "課題の作成元: ",

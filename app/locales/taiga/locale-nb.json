@@ -1569,7 +1569,7 @@
         "PAGE_TITLE": "Hendelser - {{projectName}}",
         "PAGE_DESCRIPTION": "Hendelsespanelet for prosjekt {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Hendelse",
-        "ACTION_NEW_ISSUE": "+ NY HENDELSE",
+        "ACTION_NEW_ISSUE": "NY HENDELSE",
         "ACTION_ATTACH_SPRINT": "Attach issue to Sprint",
         "ACTION_DETACH_SPRINT": "Detach issue from Sprint",
         "EXTERNAL_REFERENCE": "Denne hendelsen har blitt opprettet av",

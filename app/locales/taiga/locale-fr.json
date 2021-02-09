@@ -1569,7 +1569,7 @@
         "PAGE_TITLE": "Tickets - {{projectName}}",
         "PAGE_DESCRIPTION": "Le panneau de la liste des tickets du projet {{projectName}} : {{projectDescription}}",
         "SECTION_NAME": "Ticket",
-        "ACTION_NEW_ISSUE": "+ NOUVEAU TICKET",
+        "ACTION_NEW_ISSUE": "NOUVEAU TICKET",
         "ACTION_ATTACH_SPRINT": "Attacher le ticket au sprint",
         "ACTION_DETACH_SPRINT": "Détacher le ticket du sprint",
         "EXTERNAL_REFERENCE": "Ce ticket a été créé à partir de",

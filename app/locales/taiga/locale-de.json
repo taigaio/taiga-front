@@ -1569,7 +1569,7 @@
         "PAGE_TITLE": "Tickets - {{projectName}}",
         "PAGE_DESCRIPTION": "Das Ticket-Listen Panel des Projekts {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Ticket",
-        "ACTION_NEW_ISSUE": "+ NEUES TICKET",
+        "ACTION_NEW_ISSUE": "NEUES TICKET",
         "ACTION_ATTACH_SPRINT": "Ticket an Sprint anhängen",
         "ACTION_DETACH_SPRINT": "Ticket vom Sprint lösen",
         "EXTERNAL_REFERENCE": "Dieses Ticket wurde erstellt durch",

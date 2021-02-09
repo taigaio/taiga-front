@@ -1569,7 +1569,7 @@
         "PAGE_TITLE": "Incidències - {{projectName}}",
         "PAGE_DESCRIPTION": "El panell d'incidències de {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "incidència",
-        "ACTION_NEW_ISSUE": "+ NOVA INCIDÈNCIA",
+        "ACTION_NEW_ISSUE": "NOVA INCIDÈNCIA",
         "ACTION_ATTACH_SPRINT": "Attach issue to Sprint",
         "ACTION_DETACH_SPRINT": "Detach issue from Sprint",
         "EXTERNAL_REFERENCE": "Esta incidència ha sigut creada desde",

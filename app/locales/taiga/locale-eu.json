@@ -1569,7 +1569,7 @@
         "PAGE_TITLE": "Gertakariak - {{projectName}}",
         "PAGE_DESCRIPTION": "Gertakarien zerrenda {{projectName}} proiektuan:{{projectDescription}}",
         "SECTION_NAME": "Gertakaria",
-        "ACTION_NEW_ISSUE": "+ GERTAKARI BERRIA",
+        "ACTION_NEW_ISSUE": "GERTAKARI BERRIA",
         "ACTION_ATTACH_SPRINT": "Erantsi gertakaria urrats batean",
         "ACTION_DETACH_SPRINT": "Desestekatu gertakaria urratsetik",
         "EXTERNAL_REFERENCE": "Gertakari hau hemendik sortua da:",

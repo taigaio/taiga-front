@@ -1569,7 +1569,7 @@
         "PAGE_TITLE": "Sorunlar - {{projectName}}",
         "PAGE_DESCRIPTION": "{{projectName}} projesinin sorun listesi paneli: {{projectDescription}}",
         "SECTION_NAME": "Sorun",
-        "ACTION_NEW_ISSUE": "+ YENİ SORUN",
+        "ACTION_NEW_ISSUE": "YENİ SORUN",
         "ACTION_ATTACH_SPRINT": "Sprint 'e sorun iliştir",
         "ACTION_DETACH_SPRINT": "Detach issue from Sprint",
         "EXTERNAL_REFERENCE": "Bu talebin oluşturulduğu ",

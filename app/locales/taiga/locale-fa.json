@@ -1569,7 +1569,7 @@
         "PAGE_TITLE": "موضوعات - {{projectName}}",
         "PAGE_DESCRIPTION": "پنل لیست موضوعات پروژه‌ی {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "موضوع",
-        "ACTION_NEW_ISSUE": "+ موضوع جدید",
+        "ACTION_NEW_ISSUE": "موضوع جدید",
         "ACTION_ATTACH_SPRINT": "Attach issue to Sprint",
         "ACTION_DETACH_SPRINT": "Detach issue from Sprint",
         "EXTERNAL_REFERENCE": "این موضوع ایجاد شده از",

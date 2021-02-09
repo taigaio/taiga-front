@@ -1569,7 +1569,7 @@
         "PAGE_TITLE": "Проблеми - {{projectName}}",
         "PAGE_DESCRIPTION": "Панель проблем проєкту {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Проблема",
-        "ACTION_NEW_ISSUE": "+ НОВА ПРОБЛЕМА",
+        "ACTION_NEW_ISSUE": "НОВА ПРОБЛЕМА",
         "ACTION_ATTACH_SPRINT": "Додати проблему до спринта",
         "ACTION_DETACH_SPRINT": "Вилучити проблему із спринта",
         "EXTERNAL_REFERENCE": "Ця проблема створена з",

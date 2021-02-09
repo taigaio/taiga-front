@@ -1569,7 +1569,7 @@
         "PAGE_TITLE": "問題 - {{projectName}}",
         "PAGE_DESCRIPTION": " {{projectName}}的問題清單看版: {{projectDescription}}",
         "SECTION_NAME": "問題",
-        "ACTION_NEW_ISSUE": "+ 新問題　",
+        "ACTION_NEW_ISSUE": "新問題　",
         "ACTION_ATTACH_SPRINT": "Attach issue to Sprint",
         "ACTION_DETACH_SPRINT": "Detach issue from Sprint",
         "EXTERNAL_REFERENCE": "此問題的提供者是",

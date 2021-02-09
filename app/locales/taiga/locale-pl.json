@@ -1569,7 +1569,7 @@
         "PAGE_TITLE": "Zgłoszenia - {{projectName}}",
         "PAGE_DESCRIPTION": "Lista zgłoszeń w projekcie {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Zgłoszenie",
-        "ACTION_NEW_ISSUE": "+ NOWE ZGŁOSZENIE",
+        "ACTION_NEW_ISSUE": "NOWE ZGŁOSZENIE",
         "ACTION_ATTACH_SPRINT": "Attach issue to Sprint",
         "ACTION_DETACH_SPRINT": "Detach issue from Sprint",
         "EXTERNAL_REFERENCE": "Źródło zgłoszenia",
