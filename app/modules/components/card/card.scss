@@ -526,6 +526,7 @@ $iocaine: #b400d1;
         .card-task-subject {
             /* stylelint-disable property-no-vendor-prefix, value-no-vendor-prefix */
             -webkit-box-orient: vertical;
+            color: $color-black600;
             display: -webkit-box;
             -webkit-line-clamp: 2;
             overflow: hidden;

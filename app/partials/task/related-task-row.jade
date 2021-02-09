@@ -1,15 +1,15 @@
 .task-reorder
     <% if(perms.modify_task) { %>
     tg-svg.icon-drag(
-        svg-icon="icon-drag"
+        svg-icon="icon-draggable"
     )
     <% } %>
 
 .task-name
     a.clickable(
         tg-nav="project-tasks-detail:project=project.slug,ref=task.ref")
-        span #<%- task.ref %>
-        span(ng-non-bindable) <%= emojify(task.subject) %>
+        span.task-name-ref #<%- task.ref %>
+        span.task-name-subject(ng-non-bindable) <%= emojify(task.subject) %>
     tg-due-date(
         due-date="task.due_date"
         obj-type="task"
