@@ -70,7 +70,7 @@ div.wrapper.issues.lightbox-generic-form(
                             tg-svg(svg-icon="icon-bulk")
         .issue-container
             sidebar.filters-bar(
-                ng-if="!ctrl.openFilter"
+                ng-if="ctrl.openFilter"
             )
                 tg-filter(
                     q="ctrl.filterQ"
@@ -86,7 +86,7 @@ div.wrapper.issues.lightbox-generic-form(
                     on-change-q="ctrl.changeQ(q)"
                 )
 
-            section.main.issues-page(
+            section.issues-page(
                 ng-class="{filter: ctrl.openFilter}"
             )
                 tg-issues-table(
