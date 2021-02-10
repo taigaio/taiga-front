@@ -1569,7 +1569,7 @@
         "PAGE_TITLE": "Kwesties - {{projectName}}",
         "PAGE_DESCRIPTION": "Het kwesties lijstje van het project {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Kwestie",
-        "ACTION_NEW_ISSUE": "+ nieuwe kwestie",
+        "ACTION_NEW_ISSUE": "nieuwe kwestie",
         "ACTION_ATTACH_SPRINT": "Voeg kwestie toe aan Sprint",
         "ACTION_DETACH_SPRINT": "Maak kwestie los van Sprint",
         "EXTERNAL_REFERENCE": "Dit issue is aangemaakt vanaf",

@@ -1569,7 +1569,7 @@
         "PAGE_TITLE": "Запросы - {{projectName}}",
         "PAGE_DESCRIPTION": "Панель запросов проекта {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Запрос",
-        "ACTION_NEW_ISSUE": "+ НОВЫЙ ЗАПРОС",
+        "ACTION_NEW_ISSUE": "НОВЫЙ ЗАПРОС",
         "ACTION_ATTACH_SPRINT": "Прикрепить запрос к Спринту",
         "ACTION_DETACH_SPRINT": "Открепить запрос от Спринта",
         "EXTERNAL_REFERENCE": "Этот запрос был создан из",

@@ -1569,7 +1569,7 @@
         "PAGE_TITLE": "Problemi - {{projectName}}",
         "PAGE_DESCRIPTION": "Il pannello con la lista dei problemi del progetto {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Problema",
-        "ACTION_NEW_ISSUE": "+ NUOVO PROBLEMA",
+        "ACTION_NEW_ISSUE": "NUOVO PROBLEMA",
         "ACTION_ATTACH_SPRINT": "Aggiungi problema allo Sprint",
         "ACTION_DETACH_SPRINT": "Togli problema dallo Sprint",
         "EXTERNAL_REFERENCE": "Questo problema è stato creato da ",

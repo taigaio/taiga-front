@@ -1569,7 +1569,7 @@
         "PAGE_TITLE": "Peticiones - {{projectName}}",
         "PAGE_DESCRIPTION": "El panel de peticiones del proyecto {{projectName}}: {{projectDescription}}\n",
         "SECTION_NAME": "Petición",
-        "ACTION_NEW_ISSUE": "+ NUEVA PETICIÓN",
+        "ACTION_NEW_ISSUE": "NUEVA PETICIÓN",
         "ACTION_ATTACH_SPRINT": "Vincular petición a un Sprint",
         "ACTION_DETACH_SPRINT": "Desvincular petición de Sprint",
         "EXTERNAL_REFERENCE": "Esta petición ha sido creada a partir de ",

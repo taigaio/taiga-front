@@ -1569,7 +1569,7 @@
         "PAGE_TITLE": "Izmaiņu pieprasījumi - {{projectName}}",
         "PAGE_DESCRIPTION": "Projekta {{projectName}} izmaiņu pieprasījumu saraksta panelis: {{projectDescription}}",
         "SECTION_NAME": "Izmaiņu pieprasījums",
-        "ACTION_NEW_ISSUE": "+ JAUNS IZMAIŅU PIEPRASĪJUMS",
+        "ACTION_NEW_ISSUE": "JAUNS IZMAIŅU PIEPRASĪJUMS",
         "ACTION_ATTACH_SPRINT": "Piekabināt izmaiņu pieprasījumu sprintam",
         "ACTION_DETACH_SPRINT": "Atstiprināt izmaiņu pieprasījumu no sprinta",
         "EXTERNAL_REFERENCE": "Šis izmaiņu pieprasījums tika izveidots no",

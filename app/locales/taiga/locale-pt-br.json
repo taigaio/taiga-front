@@ -1569,7 +1569,7 @@
         "PAGE_TITLE": "Apontamentos - {{projectName}}",
         "PAGE_DESCRIPTION": "O painel de problemas do projeto {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Problema",
-        "ACTION_NEW_ISSUE": "+ NOVO PROBLEMA",
+        "ACTION_NEW_ISSUE": "NOVO PROBLEMA",
         "ACTION_ATTACH_SPRINT": "Attach issue to Sprint",
         "ACTION_DETACH_SPRINT": "Detach issue from Sprint",
         "EXTERNAL_REFERENCE": "Esse problema foi criado a partir de",

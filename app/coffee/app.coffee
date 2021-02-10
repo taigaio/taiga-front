@@ -529,14 +529,15 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
             controller: "LoginPage",
         }
     )
-    $routeProvider.when("/register",
-        {
-            templateUrl: "auth/register.html",
-            title: "REGISTER.PAGE_TITLE",
-            description: "REGISTER.PAGE_DESCRIPTION",
-            disableHeader: true
-        }
-    )
+    if window.taigaConfig.publicRegisterEnabled
+        $routeProvider.when("/register",
+            {
+                templateUrl: "auth/register.html",
+                title: "REGISTER.PAGE_TITLE",
+                description: "REGISTER.PAGE_DESCRIPTION",
+                disableHeader: true
+            }
+        )
     $routeProvider.when("/forgot-password",
         {
             templateUrl: "auth/forgot-password.html",

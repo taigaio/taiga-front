@@ -1569,7 +1569,7 @@
         "PAGE_TITLE": "תקלות - {{projectName}}",
         "PAGE_DESCRIPTION": "לוח התקלות של הפרוייקט {{projectName}}: {{projectDescription}}\n",
         "SECTION_NAME": "תקלה",
-        "ACTION_NEW_ISSUE": "+ תקלה חדשה",
+        "ACTION_NEW_ISSUE": "תקלה חדשה",
         "ACTION_ATTACH_SPRINT": "הצמד בעיה אל Sprint",
         "ACTION_DETACH_SPRINT": "נתק תקלה מהSprint",
         "EXTERNAL_REFERENCE": "תקלה זו נוצרה מתוך",

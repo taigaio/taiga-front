@@ -1569,7 +1569,7 @@
         "PAGE_TITLE": "问题 - {{projectName}}",
         "PAGE_DESCRIPTION": "{{projectName}}的问题清单看版：{{projectDescription}}",
         "SECTION_NAME": "问题",
-        "ACTION_NEW_ISSUE": "+ 新问题",
+        "ACTION_NEW_ISSUE": "新问题",
         "ACTION_ATTACH_SPRINT": "将问题附加到冲刺任务",
         "ACTION_DETACH_SPRINT": "将问题从冲刺任务分离",
         "EXTERNAL_REFERENCE": "此问题的提出者是",

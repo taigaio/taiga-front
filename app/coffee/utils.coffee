@@ -215,7 +215,7 @@ _.mixin
 
 
 isImage = (name) ->
-    return name.match(/\.(jpe?g|png|gif|gifv|webm|svg|psd)/i) != null
+    return name.match(/\.(jpe?g|png|gif|gifv|svg|psd|webp)/i) != null
 
 isEmail = (name) ->
     return name? and name.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/) != null

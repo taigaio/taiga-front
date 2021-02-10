@@ -1569,7 +1569,7 @@
         "PAGE_TITLE": "Issues - {{projectName}}",
         "PAGE_DESCRIPTION": "The issues list panel of the project {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Issue",
-        "ACTION_NEW_ISSUE": "+ NEW ISSUE",
+        "ACTION_NEW_ISSUE": "NEW ISSUE",
         "ACTION_ATTACH_SPRINT": "Attach issue to Sprint",
         "ACTION_DETACH_SPRINT": "Detach issue from Sprint",
         "EXTERNAL_REFERENCE": "This issue has been created from",

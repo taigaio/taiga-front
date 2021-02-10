@@ -1569,7 +1569,7 @@
         "PAGE_TITLE": "Ärenden - {{projectName}}",
         "PAGE_DESCRIPTION": "Ärenden som listas för projektet {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "ärende",
-        "ACTION_NEW_ISSUE": "+ NYTT ÄRENDE",
+        "ACTION_NEW_ISSUE": "NYTT ÄRENDE",
         "ACTION_ATTACH_SPRINT": "Attach issue to Sprint",
         "ACTION_DETACH_SPRINT": "Detach issue from Sprint",
         "EXTERNAL_REFERENCE": "Den här uppgiften är skapat från",

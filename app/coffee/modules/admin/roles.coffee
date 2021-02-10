@@ -454,9 +454,10 @@ RolePermissionsDirective = ($rootscope, $repo, $confirm, $compile) ->
             $el.off()
             html = baseTemplate()
             _.each generateCategoriesFromRole($scope.role), (category, index) ->
-                category.permissions.forEach (permission) =>
-                    if publicPermissions.includes(permission.key)
-                        permission.editable = false
+                if !$scope.project.is_private
+                    category.permissions.forEach (permission) =>
+                        if publicPermissions.includes(permission.key)
+                            permission.editable = false
 
                 html = angular.element(html).append(renderCategory(category, index))
 

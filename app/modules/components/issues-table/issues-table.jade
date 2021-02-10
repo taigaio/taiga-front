@@ -12,7 +12,7 @@ section.issues-options(
             variant="primary"
             ng-click="ctrl.onAddNewIssue()"
         )
-            tg-svg(ng-if="ctrl.sprintIssues", svg-icon="icon-add")
+            tg-svg(svg-icon="icon-add")
             span(ng-if="!ctrl.sprintIssues") {{"ISSUES.ACTION_NEW_ISSUE" | translate}}
 
         button(
