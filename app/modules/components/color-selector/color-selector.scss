@@ -55,6 +55,8 @@
     margin-top: .5rem;
     .custom-color-input {
         flex: 1;
+        margin: 0;
+        width: 0;
     }
     .display-custom-color-wrapper {
         background: $mass-white;
