@@ -247,8 +247,13 @@ RelatedTasksDirective = ($repo, $rs, $rootscope) ->
         $scope.reorderTask = (task, newIndex) ->
             $rootscope.$broadcast('task:reorder', task, newIndex)
 
+        $scope.showAddTaks = ->
+            if $scope.project
+                return $scope.project.my_permissions.indexOf("add_task") != -1
+            return false
+
         $scope.showRelatedTasks = ->
-            return _isVisible() && ( _isEditable() ||  $scope.tasks?.length )
+            return _isVisible()
 
         $scope.$on "related-tasks:add", ->
             loadTasks().then ->
