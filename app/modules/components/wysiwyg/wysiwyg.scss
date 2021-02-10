@@ -173,6 +173,11 @@ tg-html-editor .ck-content,
         overflow-wrap: break-word;
         white-space: pre-wrap;
     }
+    p > code {
+        background-color: $color-gray400;
+        border-radius: 6px;
+        padding: .2rem .4rem;
+    }
     pre {
         margin: 0 0 20px;
     }
