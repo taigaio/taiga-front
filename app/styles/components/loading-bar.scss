@@ -13,9 +13,9 @@
         height: 5px;
     }
 
-    $colors-list: $yellow-pear $green-japanese-laurel $red-amaranth $purple-eggplant $green-olive;
+    $colors-list: $loading-color-1 $loading-color-2 $loading-color-3 $loading-color-4 $loading-color-5;
     @each $current-color in $colors-list {
-        $i: index($colors-list, $current-color) - 1;
+        $i: index($colors-list, $current-color);
         .item-#{$i} {
             animation-delay: #{$i}s;
             background: $current-color;
