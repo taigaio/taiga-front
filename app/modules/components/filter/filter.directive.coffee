@@ -19,6 +19,27 @@
 
 FilterDirective = () ->
     link = (scope, el, attrs, ctrl) ->
+        watchTaskboardHeight = (taskboard) =>
+            resizeObserver = new ResizeObserver () =>
+                maxSize = null
+                currentMax = Number(el[0].style.getPropertyValue('--filter-list-max-height').replace('px', ''))
+
+                if scope.vm.opened
+                    maxSize = taskboard.offsetHeight - el[0].offsetHeight + currentMax
+                else
+                    maxSize = taskboard.offsetHeight - el[0].offsetHeight
+
+                if maxSize < 100
+                    maxSize = 100
+                else if maxSize > 380
+                    maxSize = 380
+
+                el[0].style.setProperty('--filter-list-max-height', maxSize + "px")
+
+                resizeObserver.unobserve(el[0]);
+
+            resizeObserver.observe(taskboard);
+
         attrs.$observe "open", (open) ->
             open = scope.$eval(open)
 
@@ -26,6 +47,10 @@ FilterDirective = () ->
                 el.addClass('open')
             else
                 el.removeClass('open')
+
+        taskboard = $('.js-taskboard-manager')
+        if taskboard.length
+            watchTaskboardHeight(taskboard[0])
 
     return {
         scope: {

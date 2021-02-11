@@ -53,7 +53,7 @@ div.wrapper(
                         on-zoom-change="ctrl.setZoom(zoomLevel, zoom)"
                     )
 
-            .taskboard-manager(ng-class="{'expanded': !ctrl.openFilter}")
+            .taskboard-manager.js-taskboard-manager(ng-class="{'expanded': !ctrl.openFilter}")
                 .taskboard-filter(
                     ng-if="ctrl.openFilter"
                 )

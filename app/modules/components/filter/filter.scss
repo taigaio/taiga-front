@@ -1,4 +1,6 @@
 tg-filter {
+    --filter-list-max-height: 380px;
+
     background: $grey-02;
     display: block;
     max-height: 100%;
@@ -292,13 +294,15 @@ tg-filter {
     }
 }
 
+
+
 .filters-cats {
     ul {
         margin-bottom: 0;
     }
     li {
         .filter-list {
-            max-height: 380px;
+            max-height: var(--filter-list-max-height);
             min-height: 60px;
         }
         &:not(.active):last-child {
