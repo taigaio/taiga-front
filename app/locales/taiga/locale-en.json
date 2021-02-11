@@ -636,7 +636,7 @@
         },
         "PROJECT_VALUES_STATUS": {
             "TITLE": "Statuses",
-            "SUBTITLE": "Specify the statuses your user stories, tasks and issues will go through",
+            "SUBTITLE": "Add, remove or edit the color and name of the statuses your epics, user stories, task and issues will go through.",
             "EPIC_TITLE": "Epic Statuses",
             "US_TITLE": "User Story Statuses",
             "TASK_TITLE": "Task Statuses",
