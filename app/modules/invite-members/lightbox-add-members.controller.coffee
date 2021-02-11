@@ -29,6 +29,7 @@ class AddMembersController
     constructor: (@userService, @currentUserService, @projectService) ->
         @.contactsToInvite = Immutable.List()
         @.emailsToInvite = Immutable.List()
+        @.contacts = Immutable.List()
         @.displayContactList = false
 
     _getContacts: () ->

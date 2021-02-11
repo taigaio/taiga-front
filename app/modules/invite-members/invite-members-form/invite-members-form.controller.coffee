@@ -76,6 +76,8 @@ class InviteMembersFormController
                 @.loading = false
                 if response.data._error_message
                     @confirm.notify("error", response.data._error_message)
+                else if response.data.__all__
+                    @confirm.notify("error", response.data.__all__[0])
 
 
 angular.module("taigaAdmin").controller("InviteMembersFormCtrl", InviteMembersFormController)
