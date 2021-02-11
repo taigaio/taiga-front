@@ -24,6 +24,8 @@ RUN set -eux; \
     apk update; \
     apk add --no-cache --virtual .build-deps \
        subversion; \
+    apk add \
+       bash; \
     # Install taiga-front core
     wget https://github.com/taigaio/taiga-front-dist/archive/6.0.3.zip -O source.zip; \
     unzip source.zip; \
