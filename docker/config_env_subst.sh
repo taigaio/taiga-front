@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Copyright (C) 2014-present Taiga Agile LLC
 #
@@ -15,8 +15,25 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-FILE=/usr/share/nginx/html/conf.json
-if [ ! -f "$FILE" ]; then
-    envsubst < /usr/share/nginx/html/conf.json.template \
-             > /usr/share/nginx/html/conf.json
+
+contribs=()
+
+if [ ${ENABLE_SLACK} == "true" ]; then
+    contribs+=('"/plugins/slack/slack.json"')
 fi
+
+if [ ${PUBLIC_REGISTER_ENABLED} == "true" ]; then
+    if [ ${ENABLE_GITHUB_AUTH} == "true" ]; then
+        contribs+=('"/plugins/github-auth/github-auth.json"')
+    fi
+    if [ ${ENABLE_GITLAB_AUTH} == "true" ]; then
+        contribs+=('"/plugins/gitlab-auth/gitlab-auth.json"')
+    fi
+fi
+
+contribs=$( IFS=,; echo "[${contribs[*]}]" )
+
+export CONTRIB_PLUGINS=$contribs
+
+envsubst < /usr/share/nginx/html/conf.json.template \
+         > /usr/share/nginx/html/conf.json

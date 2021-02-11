@@ -16,11 +16,7 @@
     "privacyPolicyUrl": null,
     "termsOfServiceUrl": null,
     "maxUploadFileSize": null,
-    "contribPlugins": [
-      "/plugins/slack/slack.json",
-      "/plugins/github-auth/github-auth.json",
-      "/plugins/gitlab-auth/gitlab-auth.json"
-    ],
+    "contribPlugins": ${CONTRIB_PLUGINS},
     "gitHubClientId": "${GITHUB_CLIENT_ID}",
     "gitLabClientId": "${GITLAB_CLIENT_ID}",
     "gitLabUrl": "${GITLAB_URL}",
