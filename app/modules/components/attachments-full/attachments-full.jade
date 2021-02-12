@@ -62,7 +62,6 @@ section.attachments.attachment-full(
                   span {{file.size | sizeFormat}}
               .attachment-comments
                   span {{file.progressMessage}}
-                    //-   .percentage(ng-style="{'width': file.progressPercent}")
                   progress.percentage(value="{{file.progressPercent}}" max="100")
 
         a.more-attachments(
