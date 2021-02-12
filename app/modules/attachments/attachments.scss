@@ -20,14 +20,14 @@
 .attachments-header {
     align-content: center;
     align-items: center;
-    background: $grey-05;
+    background: $color-gray200;
     display: flex;
     justify-content: space-between;
     min-height: 36px;
     .attachments-title {
         @include font-type(medium);
         @include font-size(medium);
-        color: $grayer;
+        color: $color-black600;
         line-height: 36px;
         padding: 0 1rem;
     }
@@ -70,18 +70,26 @@
 }
 
 .attachments-empty {
-    @include font-size(large);
-    @include font-type(medium);
-    border: 3px dashed $whitish;
-    color: $gray-light;
+    border: 3px dashed $color-gray200;
+    color: $color-link-tertiary;
     margin-top: .5rem;
     padding: 1rem;
     text-align: center;
+    transition: all .2s linear;
+    &.ng-leave {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    &.ng-leave-active {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
 }
+
 
 .single-attachment {
     @include font-size(small);
-    background: rgba($color-white, .9);
+    background: $color-white;
     .attachment-name {
         display: flex;
         padding-right: 1rem;
@@ -95,6 +103,16 @@
     }
     .attachment-size {
         color: $color-black600;
+    }
+    &.ng-enter {
+        opacity: 0;
+        transform: translateY(5px);
+        transition: all .2s linear;
+        transition-delay: .2s;
+    }
+    &.ng-enter-active {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 

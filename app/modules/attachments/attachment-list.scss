@@ -1,4 +1,11 @@
 .attachment-simple {
+    &.attachment-dragover {
+        .attachments-empty {
+            background-color: $color-gray200;
+            border-color: $color-link-primary;
+            font-style: italic;
+        }
+    }
     .attachment-name {
         flex-basis: 70%;
         flex-grow: 0;
@@ -13,6 +20,13 @@
 }
 
 .attachment-full {
+    &.attachment-dragover {
+        .attachments-empty {
+            background-color: $color-gray200;
+            border-color: $color-link-primary;
+            font-style: italic;
+        }
+    }
     .attachment-settings {
         display: flex;
         justify-content: flex-end;
@@ -122,13 +136,17 @@
             }
         }
     }
-    .percentage {
-        background: rgba($primary, .1);
+    progress {
+        background: $color-gray400;
+        border: none;
         bottom: 0;
-        height: 40px;
+        height: 2px;
         left: 0;
         position: absolute;
-        top: 0;
-        width: 45%;
+        width: 100%;
+        &::-webkit-progress-bar,
+        &::-moz-progress-bar {
+            background: $color-link-primary;
+        }
     }
 }

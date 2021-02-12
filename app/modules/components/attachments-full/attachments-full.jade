@@ -54,7 +54,7 @@ section.attachments.attachment-full(
                 type="vm.type"
             )
 
-          .single-attachment(ng-repeat="file in vm.uploadingAttachments()")
+          .single-attachment.uploading-attachment(ng-repeat="file in vm.uploadingAttachments()")
               .attachment-name
                   tg-svg(svg-icon="icon-attachment")
                   span {{file.name}}
@@ -62,7 +62,7 @@ section.attachments.attachment-full(
                   span {{file.size | sizeFormat}}
               .attachment-comments
                   span {{file.progressMessage}}
-                  .percentage(ng-style="{'width': file.progressPercent}")
+                  progress.percentage(value="{{file.progressPercent}}" max="100")
 
         a.more-attachments(
           href="",

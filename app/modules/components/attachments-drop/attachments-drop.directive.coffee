@@ -23,11 +23,19 @@ AttachmentsDropDirective = ($parse) ->
 
         el.on 'dragover', (e) ->
             e.preventDefault()
+            e.currentTarget.classList.add('attachment-dragover')
+            return false
+
+        el.on 'dragleave', (e) ->
+            e.preventDefault()
+            e.currentTarget.classList.remove('attachment-dragover')
             return false
 
         el.on 'drop', (e) ->
             e.stopPropagation()
             e.preventDefault()
+
+            e.currentTarget.classList.remove('attachment-dragover')
 
             dataTransfer = e.dataTransfer || (e.originalEvent && e.originalEvent.dataTransfer)
 

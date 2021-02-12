@@ -86,7 +86,7 @@ Resource = (urlsService, http, config, $rootScope, $q, storage) ->
                 file.status = "in-progress"
                 file.size = sizeFormat(evt.total)
                 file.progressMessage = "upload #{sizeFormat(evt.loaded)} of #{sizeFormat(evt.total)}"
-                file.progressPercent = "#{Math.round((evt.loaded / evt.total) * 100)}%"
+                file.progressPercent = "#{Math.round((evt.loaded / evt.total) * 100)}"
 
         uploadComplete = (evt) =>
             $rootScope.$apply ->
