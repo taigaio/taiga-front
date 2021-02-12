@@ -53,13 +53,13 @@
             "EDIT": "Редактировать карточку",
             "DELETE": "Удалить карточку",
             "DELETE_ISSUE": "Удалить запрос",
-            "DETACH_ISSUE_FROM_SPRINT": "Detach from sprint",
-            "PTS": "{{pts}} pts",
-            "DUE_DATE": "Due date: {{date}}",
-            "NO_PTS": "N/E",
-            "ESTIMATION": "Estimation",
-            "TASKS": "{{completed}} tasks of {{total}} completed",
-            "EXTRA_ASSIGNED_USERS": "{{total}} more assigned users"
+            "DETACH_ISSUE_FROM_SPRINT": "Открепить  от спринта",
+            "PTS": "{{pts}} очков",
+            "DUE_DATE": "Дедлайн: {{date}}",
+            "NO_PTS": "Н/Д",
+            "ESTIMATION": "Оценка примерно",
+            "TASKS": "{{completed}} задач из  {{total}} завершено",
+            "EXTRA_ASSIGNED_USERS": "{{total}} больше пользователей для назначения"
         },
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Кажется, это значение некорректно.",
@@ -165,7 +165,7 @@
             "DUE_DATE_REASON": "Причина Дедлайна"
         },
         "ROLES": {
-            "ALL": "All points"
+            "ALL": "Всего очков"
         },
         "ASSIGNED_TO": {
             "NOT_ASSIGNED": "Не назначен",
@@ -225,24 +225,24 @@
             "CUSTOM_FIELDS": "Специальные Поля",
             "SAVE": "Сохранить специальное поле",
             "EDIT": "Редактировать специальное поле",
-            "DELETE": "Delete custom fields",
-            "CONFIRM_DELETE": "Remember that all values in this custom field will be deleted."
+            "DELETE": "Удалить пользовательские поля",
+            "CONFIRM_DELETE": "Помните, что все значения в этом настраиваемом поле будут удалены."
         },
         "FILTERS": {
-            "INPUT_PLACEHOLDER": "subject or reference",
+            "INPUT_PLACEHOLDER": "тема или ссылка",
             "TITLE_ACTION_FILTER_BUTTON": "поиск",
             "TITLE": "Собственные фильтры",
             "TITLE_ACTION_SEARCH": "Поиск",
             "ACTION_ADD": "Добавить",
-            "ACTION_SAVE_CUSTOM_FILTER": "save filter",
+            "ACTION_SAVE_CUSTOM_FILTER": "сохранить фильтр",
             "PLACEHOLDER_FILTER_NAME": "Введите название фильтра и нажмите \"ввод\"",
             "APPLIED_FILTERS_NUM": "фильтры применены",
             "TITLE_ADVANCED_FILTER": "Дополнительно",
             "ADVANCED_FILTERS": {
                 "INCLUDE": "Включить",
                 "EXCLUDE": "Исключить",
-                "INCLUDED": "Filtered by:",
-                "EXCLUDED": "Excluded:"
+                "INCLUDED": "Фильтровать по:",
+                "EXCLUDED": "Исключены:"
             },
             "CATEGORIES": {
                 "TYPE": "Тип",
@@ -455,7 +455,7 @@
         "MY_PROJECTS": "Мои проекты"
     },
     "ATTACHMENT": {
-        "SECTION_NAME": "Attachments",
+        "SECTION_NAME": "Вложения",
         "TITLE": "{{ fileName }} загружен {{ date }}",
         "LIST_VIEW_MODE": "Режим \"список\"",
         "GALLERY_VIEW_MODE": "Режим \"галерея\"",
@@ -636,7 +636,7 @@
         },
         "PROJECT_VALUES_STATUS": {
             "TITLE": "Статусы",
-            "SUBTITLE": "Укажите, какие статусы будут принимать ваши пользовательские истории, задачи и запросы",
+            "SUBTITLE": "Add, remove or edit the color and name of the statuses your epics, user stories, task and issues will go through.",
             "EPIC_TITLE": "Статусы Эпика",
             "US_TITLE": "Статусы пользовательских историй",
             "TASK_TITLE": "Статус задач",
@@ -672,23 +672,23 @@
             "AFTER": "После"
         },
         "PROJECT_KANBAN_OPTIONS": {
-            "TITLE": "Kanban options",
-            "SUBTITLE": "Enable swimlanes to use in your workflow and set WIP limits to restrict the maximun number of user stories on each status.",
-            "SWIMLANES": "Swimlanes",
-            "ACTION_ADD_SWIMLANE": "New swimlane",
-            "SWIMLANE_NAME_EXISTS": "This swimlane name already exists",
-            "NO_SWIMLANES": "There are no swimlanes yet",
-            "SWIMLANE_NAME": "Swimlane name",
-            "POPUP_NEW_SWIMLANE": "If you had some user stories created, you will find them on this swimlane.",
-            "WIP_LIMITS": "WIP LIMITS",
-            "WIP_LIMIT_PLACEHOLDER": "WIP limit not set",
-            "WIP_LIMIT_INPUT": "Set WIP limit",
+            "TITLE": "Параметры Kanban",
+            "SUBTITLE": "Включите дорожки для использования в вашем рабочем процессе и установите ограничения WIP, чтобы ограничить максимальное количество пользовательских историй для каждого статуса.",
+            "SWIMLANES": "Дорожки",
+            "ACTION_ADD_SWIMLANE": "Новая дорожка",
+            "SWIMLANE_NAME_EXISTS": "Такое имя дорожки уже используется",
+            "NO_SWIMLANES": "Дорожек пока что нет ",
+            "SWIMLANE_NAME": "Имя дорожки",
+            "POPUP_NEW_SWIMLANE": "Если у вас есть созданные пользовательские истории, вы найдете их на этой дорожке.",
+            "WIP_LIMITS": "WIP ограничения",
+            "WIP_LIMIT_PLACEHOLDER": "WIP ограничение не установлено",
+            "WIP_LIMIT_INPUT": "Установить WIP лимит",
             "DEFAULT": "По умолчанию"
         },
         "ROLES": {
             "PAGE_TITLE": "Роли - {{projectName}}",
             "WARNING_NO_ROLE": "Осторожнее: ни с какими ролями на вашем проекте участники не смогут оценить очки для пользовательских историй.",
-            "HELP_ROLE_ENABLED": "Когда включено, участники, назначенные на эту роль, смогут оценивать очки для пользовательских историй",
+            "HELP_ROLE_ENABLED": "This role is part of the roles involved in estimating user story points.",
             "DISABLE_COMPUTABLE_ALERT_TITLE": "Вы уверены, что хотите отключить оценку очков для этой роли?",
             "DISABLE_COMPUTABLE_ALERT_SUBTITLE": "Если вы отключите разрешение оценки для роли {{roleName}}, все предыдущие оценки, сделанные этой ролью, будут удалены",
             "COUNT_MEMBERS": "{{ role.members_count }} участников с этой ролью",
@@ -795,7 +795,7 @@
             "ACTION_ADD_STATUS": "Добавить новый статус",
             "IS_ARCHIVED_COLUMN": "В архиве",
             "IS_CLOSED_COLUMN": "Закрыта",
-            "WIP_LIMIT_COLUMN": "WIP limit",
+            "WIP_LIMIT_COLUMN": "WIP лимит",
             "PLACEHOLDER_WRITE_NAME": "Укажите название для нового статуса"
         },
         "MENU": {
@@ -814,7 +814,7 @@
             "CUSTOM_FIELDS": "Специальные поля",
             "TAGS": "Тэги",
             "DUE_DATES": "Дедлайны",
-            "KANBAN_OPTIONS": "Kanban options"
+            "KANBAN_OPTIONS": "Параметры Kanban"
         },
         "SUBMENU_ROLES": {
             "TITLE": "Роли",
@@ -888,7 +888,7 @@
     },
     "PROJECT": {
         "PAGE_TITLE": "{{projectName}}",
-        "HELP": "Reorder your projects to set at the top the most used ones.<br/> The top 4 projects will appear in the top navigation bar project list",
+        "HELP": "Расположите свои проекты так, чтобы часто используемые были наверху.<br/> Первые 4 проекта будут расположены в меню быстрой навигации",
         "PRIVATE": "Приватный проект",
         "LOOKING_FOR_PEOPLE": "Этот проект ищет людей",
         "FANS_COUNTER_TITLE": "{total, plural, =1{очко} other{# очки}}",
@@ -908,26 +908,26 @@
             "ISSUES": "Запросы",
             "WIKI": "Wiki",
             "TEAM": "Команда",
-            "MEETUP": "Meetup",
+            "MEETUP": "Митинг",
             "SETTINGS": "Настройки",
             "SCRUM": "Скрам",
-            "COLLAPSE_MENU": "collapse menu"
+            "COLLAPSE_MENU": "свернуть меню"
         },
         "NAVIGATION": {
             "PROJECTS": "Проекты",
-            "ACCOUNT_SETTINGS": "Account settings",
-            "ACTION_CREATE_PROJECT": "New project",
-            "ACTION_CREATE_PROJECT_FIRST": "Create your first project",
-            "ACTION_CREATE_PROJECT_FIRST_TEXT": "You don’t have any projects yet. Create one now, invite your team and start using Taiga to the fullest.",
-            "VIEW_ALL_PROJECTS": "View all projects",
+            "ACCOUNT_SETTINGS": "Настройки Учетной записи",
+            "ACTION_CREATE_PROJECT": "Новый проект",
+            "ACTION_CREATE_PROJECT_FIRST": "Создайте свой первый проект",
+            "ACTION_CREATE_PROJECT_FIRST_TEXT": "У вас пока нет проектов. Создайте его сейчас, пригласите свою команду и начните использовать Тайгу в полном объеме.",
+            "VIEW_ALL_PROJECTS": "Посмотреть все проекты",
             "MANAGE_PROJECTS": "Управлять проектами",
             "TITLE_CREATE_PROJECT": "Создать проект",
             "HELP_TITLE": "Помощь",
             "HOMEPAGE": "Домашняя страница",
-            "TAIGA_RESOURCES_TITLE": "Go to Taiga resources",
-            "TAIGA_RESOURCES": "Taiga Resources",
-            "FEEDBACK_TITLE": "Write to us with your feedback",
-            "FEEDBACK": "Ask a question",
+            "TAIGA_RESOURCES_TITLE": "Перейти к ресурсам Тайги",
+            "TAIGA_RESOURCES": "Ресурсы Тайги",
+            "FEEDBACK_TITLE": "Напишите нам свой отзыв",
+            "FEEDBACK": "Задайте вопрос",
             "NOTIFICATIONS_TITLE": "Настроить уведомления",
             "NOTIFICATIONS": "Уведомления",
             "VIEW_PROFILE_TITLE": "Посмотреть профиль",
@@ -1013,7 +1013,7 @@
             "WRITE_EMAIL": "Или, если Вы хотите, напишите почтовое сообщение этому пользователю Taiga",
             "SEARCH_CONTACT": "Или, если Вы хотите, поищите в Ваших контактах",
             "WRITE_EMAIL_LABEL": "Написать почтовое сообщение на адрес используемый этим пользователем Taiga",
-            "ACCEEDE": "Access",
+            "ACCEEDE": "Доступ",
             "PROJECT_MEMBERS": "Участники проекта",
             "PROCESS_DESCRIPTION": "Укажите, кому из Taiga Вы хотите назначить задачи {{platform}}",
             "MATCH": "<strong>{{user_external}}</strong> это <strong>{{user_internal}}</strong>?",
@@ -1074,7 +1074,7 @@
             "GITHUB": {
                 "SELECTOR": "Импортируйте задачи из Вашего проекта на Github",
                 "CHOOSE_PROJECT": "Выберите проект который Вы хотите импортировать",
-                "NO_PROJECTS": "It seems you have no projects in GitHub",
+                "NO_PROJECTS": "Похоже у вас нет никаких проектов в GitHub",
                 "HOW_DO_YOU_WANT_TO_IMPORT": "Как Вы хотите импортировать Ваши задачи в Taiga?",
                 "KANBAN_PROJECT": "Как пользовательские истории  в Канбан проекте",
                 "KANBAN_PROJECT_DESCRIPTION": "Далее Вы сможете включить Скрам с бэклогом.",
@@ -1086,7 +1086,7 @@
             "ASANA": {
                 "SELECTOR": "Импортируйте Ваш проект из Asana и выберите как управлять им",
                 "CHOOSE_PROJECT": "Выберите проект который Вы хотите импортировать",
-                "NO_PROJECTS": "It seems you have no projects in Asana",
+                "NO_PROJECTS": "Похоже у вас нет никаких проектов в Asana",
                 "KANBAN_PROJECT": "Канбан",
                 "SCRUM_PROJECT": "Скрам",
                 "CREATE_AS_SCRUM_DESCRIPTION": "Задачи и подзадачи Вашего проекта будут созданы как пользовательские истории и задачи Taiga соответственно.",
@@ -1096,7 +1096,7 @@
                 "SELECTOR": "Импортируйте Ваш проект из Jira и выберите как управлять им",
                 "HOW_TO_CONFIGURE": "(помощь в конфигурации)",
                 "CHOOSE_PROJECT": "Выберите проект или доску которую Вы хотите импортировать",
-                "NO_PROJECTS": "It seems you have no projects or boards in Jira",
+                "NO_PROJECTS": "Похоже у вас нет никаких проектов в Jira",
                 "URL": "URL Вашей Jira",
                 "KANBAN_PROJECT": "Канбан",
                 "SCRUM_PROJECT": "Скрам",
@@ -1114,7 +1114,7 @@
             "CONFIRM": "Вы уверены, что хотите удалить ваш аккаунт?",
             "CANCEL": "Вернуться к настройкам",
             "ACCEPT": "Удалить аккаунт",
-            "BLOCK_PROJECT": "Note that all projects you own will be <strong>blocked</strong> after you delete your account. If you do not want a particular project to be blocked, make sure you transfer ownership to another existing Taiga member before deleting your account."
+            "BLOCK_PROJECT": "Обратите внимание, что все проекты, которыми вы владеете, будут <strong>заблокированы</strong> после удаления вашего аккаунта. Если вы хотите оставить отдельные проекты  незаблокированными, передайте владение ими  другим участникам системы Taiga, прежде чем удалять свой аккаунт."
         },
         "DELETE_PROJECT": {
             "TITLE": "Удалить проект",
@@ -1142,13 +1142,13 @@
             "HELP_TEXT": "Если пользователи уже зарегистрированы в Тайге они добавятся автоматически. В противном случае им будет отправлено приглашение."
         },
         "FEEDBACK": {
-            "TITLE": "Ask a question",
-            "COMMENT": "Leave us a message",
-            "ACTION_SEND": "Send Message",
-            "YOU_CAN_ALSO": "You can also:",
-            "CREATE": "Create an issue on this",
-            "PUBLIC": "public Taiga project",
-            "EMAIL": "Send us a e-mail directly to",
+            "TITLE": "Задайте вопрос",
+            "COMMENT": "Оставьте нам сообщение",
+            "ACTION_SEND": "Отправить сообщение",
+            "YOU_CAN_ALSO": "Вы так же можете:",
+            "CREATE": "Создайте запрос на это",
+            "PUBLIC": "Публичный проект Тайги",
+            "EMAIL": "Отправьте нам электронное письмо на",
             "SUPPORT": "support@taiga.io"
         },
         "SEARCH": {
@@ -1180,16 +1180,16 @@
             "CHOOSE_EXISTING_ISSUE": "Какой запрос?",
             "ADD_ISSUE": "Добавить запрос",
             "FILTER_ISSUES": "Фильтровать запросы",
-            "SWIMLANE": "Swimlane",
-            "SELECT_SWIMLANE": "Select swimlane",
-            "SELECT_STATUS": "Select status",
+            "SWIMLANE": "Дорожка",
+            "SELECT_SWIMLANE": "Выберите дорожку",
+            "SELECT_STATUS": "Выберите статус",
             "DEFAULT": "По умолчанию",
-            "ERROR_STATUS": "Changes cannot be saved because there is a problem with the selected status.",
-            "ERROR_SWIMLANE": "Changes cannot be saved because there is a problem with the selected swimlane."
+            "ERROR_STATUS": "Изменения не могут быть сохранены из-за проблемы с выбранным статусом.",
+            "ERROR_SWIMLANE": "Изменения не могут быть сохранены из-за проблемы с выбранной дорожкой."
         },
         "DISABLE_KANBAN": {
-            "TITLE": "Disable kanban",
-            "MESSAGE": "This project has swimlanes. They will be gone but your user stories will not be deleted"
+            "TITLE": "Отключить Канбан",
+            "MESSAGE": "В этом проекте есть дорожки. Они исчезнут, но ваши пользовательские истории не будут удалены"
         },
         "DELETE_DUE_DATE": {
             "TITLE": "Удалить дедлайн",
@@ -1248,13 +1248,13 @@
             "SUBTITLE_ACTION_DELETE_DUE_DATE": "Вы уверены, что хотите удалить статус дедлайна {{due_date_status_name}}?"
         },
         "ADMIN_KANBAN_POWERUPS": {
-            "TITLE_ACTION_DELETE_SWIMLANE": "Delete swimlane",
-            "SUBTITLE_ACTION_DELETE_SWIMLANE_OPTIONS": "Are you sure you want to delete {{swimlane}}?",
-            "SUBTITLE_ACTION_DELETE_SWIMLANE_REPLACEMENT": "All the user stories on this swimlane will be moved to:",
-            "SUBTITLE_ACTION_DELETE_SWIMLANE_LAST": "Your user stories will not be deleted. They will remain in the kanban.",
-            "DEFAULT_SWIMLANE": "New user stories will be in this swimlane by default",
-            "SET_DEFAULT_SWIMLANE": "Set this swimlane as default",
-            "DISABLE_DELETE_SWIMLANE": "The default swimlane cannot be deleted"
+            "TITLE_ACTION_DELETE_SWIMLANE": "Удалить дорожку",
+            "SUBTITLE_ACTION_DELETE_SWIMLANE_OPTIONS": "Вы уверены, что хотите удалить {{swimlane}}?",
+            "SUBTITLE_ACTION_DELETE_SWIMLANE_REPLACEMENT": "Все пользовательские истории из дорожки были перенесены в:",
+            "SUBTITLE_ACTION_DELETE_SWIMLANE_LAST": "Ваши пользовательские истории не будут удалены. Они останутся в Канбане.",
+            "DEFAULT_SWIMLANE": "Новые пользовательские истории будут находиться на этой дорожке по умолчанию",
+            "SET_DEFAULT_SWIMLANE": "Установить дорожку по умолчанию",
+            "DISABLE_DELETE_SWIMLANE": "Дорожка по умолчанию не может быть удалена"
         },
         "RELATE_TO_EPIC": {
             "TITLE": "Прикрепить к эпику",
@@ -1271,7 +1271,7 @@
     "EPIC": {
         "PAGE_TITLE": "{{epicSubject}} - Эпик {{epicRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Статус: {{epicStatus }}. Описание: {{epicDescription}}",
-        "EPIC_COLOR": "Epic color:",
+        "EPIC_COLOR": "Цвет эпика:",
         "SECTION_NAME": "Эпик",
         "ERROR_UNLINK_RELATED_USERSTORY": "Мы не смогли открепить ссылку: {{errorMessage}}",
         "CREATE_RELATED_USERSTORIES": "Создать связь с",
@@ -1303,9 +1303,9 @@
         "TITLE_LINK_GO_TO_ISSUE": "Перейти к запросу",
         "TITLE_LINK_GO_TO_TASK": "Перейти к задаче",
         "TITLE_DELETE_ACTION": "Удалить пользовательскую историю",
-        "TITLE_DELETE_MESSAGE": "Are you sure you want to delete <strong>“{{subject}}“</strong>?",
+        "TITLE_DELETE_MESSAGE": "Вы уверены что хотите удалить <strong>“{{subject}}“</strong>?",
         "LIGHTBOX_TITLE_BLOKING_US": "Блокировка истории",
-        "NOT_ESTIMATED": "Не оценено",
+        "NOT_ESTIMATED": "Н/Д",
         "OWNER_US": "Эта история принадлежит",
         "RELATE_TO_EPIC": "Прикрепить к эпику",
         "REMOVE_RELATIONSHIP_WITH_EPIC": "Удалить связь с эпиком",
@@ -1382,15 +1382,15 @@
         "CUSTOMIZE_GRAPH_TEXT": "Чтобы получить красивый график, который поможет вам следить за развитием проекта, Вы должны настроить/распределить сторипоинты:",
         "CUSTOMIZE_GRAPH_ADMIN": "Админка",
         "CUSTOMIZE_GRAPH_TITLE": "Настройте очки и спринты в админке",
-        "TOTAL_STORIES_FILTERED": "of {{ totalUserStories }} user stories",
-        "TOTAL_STORIES": "{{ totalUserStories }} user stories",
+        "TOTAL_STORIES_FILTERED": "{{ totalUserStories }} пользовательских историй",
+        "TOTAL_STORIES": "{{ totalUserStories }} пользовательские истории",
         "MOVE_US_TO_CURRENT_SPRINT": "Перейти к текущему спринту",
         "MOVE_US_TO_LATEST_SPRINT": "Перейти к последнему спринту",
         "EMPTY": "Список задач пуст!",
         "CREATE_NEW_US": "Создать новую историю",
-        "CREATE_NEW_US_EMPTY_HELP": "Add a user story",
-        "NO_MATCH": "No matching search result found with “{{ q }}”",
-        "NO_MATCH_HELP": "Try again using more general search terms",
+        "CREATE_NEW_US_EMPTY_HELP": "Добавить пользовательскую историю",
+        "NO_MATCH": "Не найдено совпадений с “{{ q }}”",
+        "NO_MATCH_HELP": "Попробуйте еще раз, используя более общие поисковые запросы",
         "EXCESS_OF_POINTS": "Избыток очков",
         "PENDING_POINTS": "Текущие очки",
         "CLOSED_POINTS": "закрыта",
@@ -1416,11 +1416,11 @@
         },
         "FORECASTING": {
             "TITLE": "Прогноз скорости выполнения",
-            "BACKLOG": "return to backlog",
-            "NEW_SPRINT": "Candidate user stories for your next sprint based on your velocity.",
+            "BACKLOG": "вернуть в бэклог",
+            "NEW_SPRINT": "Пользовательские истории, предлагаемые к выполнению в следующем спринте, определяются на основании вашей скорости выполнения. ",
             "CURRENT_SPRINT": "Истории, предлагаемые к выполнению в рамках текущего спринта, на основании Вашей скорости выполнения. Нажмите для добавления в текущий спринт.",
-            "ADD_NEW_SPRINT": "create sprint and add US",
-            "ADD_NEW_SPRINT_SHORT": "create sprint"
+            "ADD_NEW_SPRINT": "создать спринт и добавить пользовательские истории",
+            "ADD_NEW_SPRINT_SHORT": "создать спринт"
         },
         "TABLE": {
             "COLUMN_US": "Пользовательская История",
@@ -1445,7 +1445,7 @@
         "FILTERS": {
             "TOGGLE": "Переключить видимость фильтров",
             "TITLE": "Фильтры",
-            "HIDE_TITLE": "Hide filters"
+            "HIDE_TITLE": "Скрыть фильтры"
         },
         "SPRINTS": {
             "TITLE": "СПРИНТЫ",
@@ -1455,7 +1455,7 @@
             "EMPTY": "Спринтов пока что нет",
             "WARNING_EMPTY_SPRINT_ANONYMOUS": "У этого спринта нет пользовательских историй",
             "WARNING_EMPTY_SPRINT": "Накидайте сюда историй из списка задач чтобы начать новый спринт",
-            "TITLE_ACTION_NEW_SPRINT": "Add a sprint",
+            "TITLE_ACTION_NEW_SPRINT": "Добавить спринт",
             "TEXT_ACTION_NEW_SPRINT": "Вы можете создать новый спринт в проекте",
             "ACTION_SHOW_CLOSED_SPRINTS": "Показать закрытые спринты",
             "ACTION_HIDE_CLOSED_SPRINTS": "Спрятать закрытые спринты"
@@ -1478,11 +1478,11 @@
         "TITLE_ACTION_ADD_ISSUE": "Добавить новый запрос",
         "TITLE_ACTION_ADD_ISSUE_BULK": "Добавить несколько запросов \"пакетом\"",
         "TITLE_ACTION_ASSIGN": "Назначить задачу",
-        "PLACEHOLDER_CARD_TITLE": "This could be a user story",
-        "PLACEHOLDER_CARD_TEXT": "Go to the <a href=\"{{ backlogUrl }}\" title=\"Go to backlog\">backlog</a> and drag user stories to this sprint; split the stories into tasks to track them separately.",
-        "TASK_NOT_FOUND_TITLE": "No matching results found",
-        "TASK_NOT_FOUND_TEXT": "Try again using more general search terms or disabling some filters.",
-        "TITLE_DATE_RANGE": "{{startDate}} <span>to</span> {{endDate}}",
+        "PLACEHOLDER_CARD_TITLE": "Это может быть пользовательской историей",
+        "PLACEHOLDER_CARD_TEXT": "Перейдите к <a href=\"{{ backlogUrl }}\" title=\"Go to backlog\">бэклогу</a> и перенесите пользовательские истории в спринт; разделяйте истории на задачи, чтобы отслеживать их отдельно. ",
+        "TASK_NOT_FOUND_TITLE": "Совпадений не найдено",
+        "TASK_NOT_FOUND_TEXT": "Попробуйте еще раз, используя более общие поисковые запросы или удалив какие-либо фильтры.",
+        "TITLE_DATE_RANGE": "{{startDate}} <span>-</span> {{endDate}}",
         "TABLE": {
             "COLUMN": "Пользовательская история",
             "TITLE_ACTION_FOLD": "Свернуть колонку",
@@ -1495,12 +1495,12 @@
         },
         "CHARTS": {
             "XAXIS_LABEL": "Дней",
-            "YAXIS_LABEL": "Projected points progress",
-            "OPTIMAL": "Pending points for day {{formattedDate}} should be {{roundedValue}}",
+            "YAXIS_LABEL": "Прогресс очков проекта",
+            "OPTIMAL": "Ожидаемое число очков для работы на день {{formattedDate}} должно быть {{roundedValue}}",
             "REAL": "Реальные очки для работы на день: {{formattedDate}} - {{roundedValue}}",
             "DATE": "DD MMMM YYYY",
-            "HELP_LINK": "How this chart works",
-            "HELP_TOOLTIP": "This burndown chart shows the sprint's approximate or projected progress based on estimated user story closed tasks. Actual finished estimated user stories are tracked above."
+            "HELP_LINK": "Как работает эта диаграмма",
+            "HELP_TOOLTIP": "Эта диаграмма сгорания показывает приблизительный или прогнозируемый прогресс спринта на основе  закрытых задач оцененной пользовательской истории. Фактические законченные оцененные пользовательские истории отслеживаются выше."
         },
         "MOVE_TO_SPRINT": {
             "TITLE_ACTION_MOVE_UNFINISHED": "Переместить незавершённые элементы в другой спринт",
@@ -1536,7 +1536,7 @@
     },
     "NOTIFICATION": {
         "OK": "Всё хорошо",
-        "WARNING": "Oops, something went wrong...",
+        "WARNING": "Опсс, что то пошло не так... ",
         "WARNING_TEXT": "Ваши изменения не сохранены!",
         "SAVED": "Taiga успешно сохранила изменения!",
         "CLOSE": "Закрыть уведомление",
@@ -1556,20 +1556,20 @@
         "SUBTITLE": "Ещё один клик и Ваш email будет обновлён!",
         "PLACEHOLDER_INPUT_TOKEN": "изменить идентификатор email",
         "ACTION_CHANGE_EMAIL": "Сменить электронную почту",
-        "SUCCESS": "Your email address has been successfully changed"
+        "SUCCESS": "Ваш почтовый адрес успешно изменен"
     },
     "VERIFY_EMAIL_FORM": {
         "TITLE": "Проверьте ваш email",
         "SUBTITLE": "Еще один клик и ваш email будет проверен!",
         "PLACEHOLDER_INPUT_TOKEN": "изменить идентификатор email",
         "ACTION_VERIFY_EMAIL": "Проверьте email",
-        "SUCCESS": "Congratulations!!, your email address has been verified"
+        "SUCCESS": "Поздравляем!!, ваш email проверен"
     },
     "ISSUES": {
         "PAGE_TITLE": "Запросы - {{projectName}}",
         "PAGE_DESCRIPTION": "Панель запросов проекта {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Запрос",
-        "ACTION_NEW_ISSUE": "НОВЫЙ ЗАПРОС",
+        "ACTION_NEW_ISSUE": "NEW ISSUE",
         "ACTION_ATTACH_SPRINT": "Прикрепить запрос к Спринту",
         "ACTION_DETACH_SPRINT": "Открепить запрос от Спринта",
         "EXTERNAL_REFERENCE": "Этот запрос был создан из",
@@ -1602,9 +1602,9 @@
                 "ISSUE": "Запрос",
                 "VOTES": "Голоса",
                 "STATUS": "Статус",
-                "ATTACHMENTS": "Attachments",
+                "ATTACHMENTS": "Вложения",
                 "MODIFIED": "Изменён",
-                "ASSIGNED_TO": "Assign to"
+                "ASSIGNED_TO": "Назначить на"
             },
             "TITLE_ACTION_CHANGE_STATUS": "Изменить статус",
             "TITLE_ACTION_ASSIGNED_TO": "Назначено",
@@ -1629,16 +1629,16 @@
         "TITLE_ACTION_ADD_BULK": "Добавить новые \"пакетом\"",
         "ACTION_SHOW_ARCHIVED": "Показать архивные",
         "ACTION_HIDE_ARCHIVED": "Спрятать архив",
-        "US_NOT_FOUND_TITLE": "No matching results found",
-        "US_NOT_FOUND_TEXT_P1": "Try again using more general search terms or disabled some filters.",
-        "US_NOT_FOUND_TEXT_P2": "<strong>Archived stories</strong> are not loaded by default. Unfold the archived statuses to expand your search.",
-        "PLACEHOLDER_CARD_TITLE": "This could be a user story",
-        "PLACEHOLDER_CARD_TEXT": "Create user stories here and change their status to track their progress.",
-        "NUMBER_US": "Number of US",
-        "ARCHIVED": "(Archived)",
-        "CREATE_SWIMLANE": "Create more swimlanes",
-        "UNCLASSIFIED_USER_STORIES": "Unclassified user stories",
-        "UNCLASSIFIED_USER_STORIES_TOOLTIP": "The user stories that are not part of any swimlane are here."
+        "US_NOT_FOUND_TITLE": "Совпадений не найдено",
+        "US_NOT_FOUND_TEXT_P1": "Попробуйте еще раз, используя более общие поисковые запросы или удалив какие-либо фильтры.",
+        "US_NOT_FOUND_TEXT_P2": "<strong>Архивные истории</strong> не загружаются по умолчанию. Раскройте архивные статусы, чтобы расширить свой поиск.",
+        "PLACEHOLDER_CARD_TITLE": "Это может быть пользовательской историей",
+        "PLACEHOLDER_CARD_TEXT": "Создайте пользовательские истории и измените их статусы для отслеживания прогресса по ним.  ",
+        "NUMBER_US": "Количество пользовательских историй",
+        "ARCHIVED": "(Заархивировано)",
+        "CREATE_SWIMLANE": "Создать еще дорожки",
+        "UNCLASSIFIED_USER_STORIES": "Не классифицированные пользовательские истории",
+        "UNCLASSIFIED_USER_STORIES_TOOLTIP": "Пользовательские истории, не являющиеся частью какой-либо дорожки, находятся здесь."
     },
     "SEARCH": {
         "PAGE_TITLE": "Поиск - {{projectName}}",
@@ -1768,7 +1768,7 @@
         "HINT2_TITLE": "Вы знали что можно создавать собственные поля?",
         "HINT2_TEXT": "Теперь команды могут создавать специальные поля, чтобы гибко вводить данные, специфические для их рабочего процесса.",
         "HINT3_TITLE": "Перестройте список своих проектов так, чтобы выделить самые важные для себя.",
-        "HINT3_TEXT": "The 4 projects are listed in the direct access bar at the top.",
+        "HINT3_TEXT": "4 проекта перечислены на панели прямого доступа вверху.",
         "HINT4_TITLE": "Забыли, над чем вы работали?",
         "HINT4_TEXT": "Не переживайте, на вашем рабочем столе вы найдёте ваши активные задачи, запросы и пользовательские истории в том порядке, в котором вы над ними работали."
     },
@@ -1818,7 +1818,7 @@
         "TITLE": "События",
         "MY_EVENTS": "Мои события",
         "DISMISS_ALL": "Отклонить все",
-        "VIEW_ALL": "View all notifications",
+        "VIEW_ALL": "Посмотреть все уведомления",
         "NO_NEW_EVENTS": "Нет новых событий",
         "NO_EVENTS_YET": "Здесь пока что нет событий",
         "ASSIGNED_YOU": "{{username}} назначил Вас на {{obj_name}}",
@@ -1933,10 +1933,10 @@
         }
     },
     "ZOOM": {
-        "TITLE": "Zoom:",
-        "ZOOM-1": "Compact",
+        "TITLE": "Увеличить:",
+        "ZOOM-1": "Свернуть",
         "ZOOM-2": "По умолчанию",
-        "ZOOM-3": "Detailed",
-        "ZOOM-4": "Expanded"
+        "ZOOM-3": "Подробно",
+        "ZOOM-4": "Расширенный"
     }
 }

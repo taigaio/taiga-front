@@ -1,8 +1,17 @@
 # Changelog
 
-## 6.0.4 (unreleased)
+## 6.0.5 (unreleased)
 
+- ...
+
+
+## 6.0.4 (2021-02-15)
+
+### Misc
+
+- Minor bug fix.
 - Improve configuration for docker
+
 
 ## 6.0.3 (2021-02-07)
 

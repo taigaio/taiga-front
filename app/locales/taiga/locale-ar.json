@@ -636,7 +636,7 @@
         },
         "PROJECT_VALUES_STATUS": {
             "TITLE": "Statuses",
-            "SUBTITLE": "Specify the statuses your user stories, tasks and issues will go through",
+            "SUBTITLE": "Add, remove or edit the color and name of the statuses your epics, user stories, task and issues will go through.",
             "EPIC_TITLE": "Epic Statuses",
             "US_TITLE": "User Story Statuses",
             "TASK_TITLE": "Task Statuses",
@@ -688,7 +688,7 @@
         "ROLES": {
             "PAGE_TITLE": "Roles - {{projectName}}",
             "WARNING_NO_ROLE": "Be careful, no role in your project will be able to estimate the point value for user stories",
-            "HELP_ROLE_ENABLED": "When enabled, members assigned to this role will be able to estimate the point value for user stories",
+            "HELP_ROLE_ENABLED": "This role is part of the roles involved in estimating user story points.",
             "DISABLE_COMPUTABLE_ALERT_TITLE": "Are you sure you want to disable this role estimations?",
             "DISABLE_COMPUTABLE_ALERT_SUBTITLE": "If you disable estimation permissions for role {{roleName}} all previous estimations made by this role will be removed",
             "COUNT_MEMBERS": "{{ role.members_count }} members with this role",
@@ -1305,7 +1305,7 @@
         "TITLE_DELETE_ACTION": "Delete user story",
         "TITLE_DELETE_MESSAGE": "Are you sure you want to delete <strong>“{{subject}}“</strong>?",
         "LIGHTBOX_TITLE_BLOKING_US": "Blocking user story",
-        "NOT_ESTIMATED": "Not estimated",
+        "NOT_ESTIMATED": "N/E",
         "OWNER_US": "This user story belongs to",
         "RELATE_TO_EPIC": "Link to epic",
         "REMOVE_RELATIONSHIP_WITH_EPIC": "Remove epic relationship",

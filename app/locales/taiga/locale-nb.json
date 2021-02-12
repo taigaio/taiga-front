@@ -22,7 +22,7 @@
         "TAG_LINE": "Ditt smidige, gratis og åpen kildekode prosjektstyringsverktøy",
         "TAG_LINE_2": "ELSK DITT PROSJEKT",
         "BLOCK": "Blokker",
-        "BLOCK_TITLE": "Block this item, for example if it has a dependency that can not be satisfied",
+        "BLOCK_TITLE": "Blokker dette elementet, for eksempel hvis det har en avhengighet som ikke kan oppfylles",
         "BLOCKED": "Blokkert",
         "UNBLOCK": "Opphev blokkeringen",
         "UNBLOCK_TITLE": "Avblokker dette elementet",
@@ -35,29 +35,29 @@
         "ONE_ITEM_LINE": "En enhet per linje...",
         "NEW_BULK": "Ny sett (mange)",
         "RELATED_TASKS": "Oppgaver",
-        "PREVIOUS": "Previous",
+        "PREVIOUS": "Forrige",
         "NEXT": "Neste",
         "LOGOUT": "Logg ut",
         "EXTERNAL_USER": "en ekstern bruker",
-        "GENERIC_ERROR": "The Taiga says {{error}}.",
+        "GENERIC_ERROR": "Våre Ompa Lompaer roper {{error}}.",
         "IOCAINE_TEXT": "This member is feeling a bit overwhelmed by this task. They will become immune to the iocaine poison over time with your help. For now, they may need a hug.",
-        "CLIENT_REQUIREMENT": "A client requirement is a new requirement that was not previously expected and is required to be part of the project",
-        "TEAM_REQUIREMENT": "A team requirement is a requirement that must exist in the project but should have no cost for the client",
+        "CLIENT_REQUIREMENT": "Kundekravet er et nytt krav som tidligere ikke var forventet, og er nødt til å være en del av prosjektet",
+        "TEAM_REQUIREMENT": "Teamkrav er behov som eksisterer i prosjektet, men som ikke har noen kostnad for kunden",
         "OWNER": "Prosjekteier",
         "CAPSLOCK_WARNING": "Vær forsiktig! Du bruker blokkbokstaver i et felt som er  for store og små bokstaver.",
         "CONFIRM_CLOSE_EDIT_MODE_TITLE": "Are you sure you want to close the edit mode?",
         "CONFIRM_CLOSE_EDIT_MODE_MESSAGE": "Remember that if you close the edit mode without saving all the changes will be lost",
-        "RELATED_USERSTORIES": "Related user stories",
+        "RELATED_USERSTORIES": "Relaterte brukerhistorier",
         "CARD": {
-            "ASSIGN_TO": "Assign To",
-            "EDIT": "Edit card",
-            "DELETE": "Delete card",
+            "ASSIGN_TO": "Tildel til",
+            "EDIT": "Rediger kort",
+            "DELETE": "Slett kort",
             "DELETE_ISSUE": "Slett hendelse",
-            "DETACH_ISSUE_FROM_SPRINT": "Detach from sprint",
-            "PTS": "{{pts}} pts",
-            "DUE_DATE": "Due date: {{date}}",
+            "DETACH_ISSUE_FROM_SPRINT": "Løsne fra sprint",
+            "PTS": "{{pts}} pkt",
+            "DUE_DATE": "Forfallsdato: {{date}}",
             "NO_PTS": "N/E",
-            "ESTIMATION": "Estimation",
+            "ESTIMATION": "Estimering",
             "TASKS": "{{completed}} tasks of {{total}} completed",
             "EXTRA_ASSIGNED_USERS": "{{total}} more assigned users"
         },
@@ -130,14 +130,14 @@
         "USER_STORY": "Brukerhistorie",
         "TASK": "Oppgave",
         "ISSUE": "Hendelse",
-        "EPIC": "Epic",
+        "EPIC": "Epos",
         "TAGS": {
-            "PLACEHOLDER": "Enter tag",
+            "PLACEHOLDER": "Skriv inn etikett",
             "DELETE": "Slett etikett",
             "ADD": "Legg til etikett"
         },
         "DESCRIPTION": {
-            "EMPTY": "Empty space is so boring... go on, be descriptive...",
+            "EMPTY": "Tomme tønner er så kjedelige, kom igjen, vær beskrivende",
             "NO_DESCRIPTION": "Ingen beskrivelse enda"
         },
         "FIELDS": {
@@ -153,19 +153,19 @@
             "TYPE": "Type",
             "SEVERITY": "Alvorlighetsgrad",
             "PRIORITY": "Prioritet",
-            "ASSIGNED": "Assigned",
+            "ASSIGNED": "Tildelt",
             "ASSIGNED_TO": "Tildelt til",
-            "ASSIGNED_USERS": "Assigned users",
+            "ASSIGNED_USERS": "Tildelte brukere",
             "POINTS": "Poeng",
             "IS_BLOCKED": "er blokkert",
             "REF": "Ref",
             "VOTES": "Stemmer",
             "SPRINT": "Sprint",
             "DUE_DATE": "Due date",
-            "DUE_DATE_REASON": "Due date reason"
+            "DUE_DATE_REASON": "Årsak forfall"
         },
         "ROLES": {
-            "ALL": "All points"
+            "ALL": "Alle poeng"
         },
         "ASSIGNED_TO": {
             "NOT_ASSIGNED": "Ikke tildelt",
@@ -178,12 +178,12 @@
             "SELF": "Tildel til meg"
         },
         "DUE_DATE": {
-            "TITLE_ACTION_SET_DUE_DATE": "Set due date"
+            "TITLE_ACTION_SET_DUE_DATE": "Sett forfallsdato"
         },
         "ASSIGNED_USERS": {
-            "ADD": "Select assigned user",
-            "ADD_ASSIGNED": "Add assigned",
-            "TITLE_LIGHTBOX_DELETE_ASSIGNED": "Delete assigned..."
+            "ADD": "Velg tildelt bruker",
+            "ADD_ASSIGNED": "Legg til tildelte",
+            "TITLE_LIGHTBOX_DELETE_ASSIGNED": "Slett tildelte..."
         },
         "STATUS": {
             "CLOSED": "Lukket",
@@ -202,13 +202,13 @@
             "UNWATCH": "Ikke overvåk",
             "WATCHERS": "Følgere",
             "BUTTON_TITLE": "Følg/Ikke følg denne enheten",
-            "COUNTER_TITLE": "{total, plural, =1{one watcher} other{# watchers}}"
+            "COUNTER_TITLE": "{total, plural, =1{en følger} other{# følgere}}"
         },
         "VOTE_BUTTON": {
             "BUTTON_TITLE": "Stem opp / Stem ned dette elementet",
             "COUNTER_TITLE": "{total, plural, =1{one vote} other{# votes}}"
         },
-        "PROMOTE_TO_US": "Promote to user story",
+        "PROMOTE_TO_US": "Foreslå til brukerhistorie",
         "PROMOTED_ISSUES": "This issue has been promoted to",
         "PROMOTED_TASKS": "This task has been promoted to",
         "CONFIRM_PROMOTE": {
@@ -224,7 +224,7 @@
         "CUSTOM_ATTRIBUTES": {
             "CUSTOM_FIELDS": "Egendefinerte felter",
             "SAVE": "Save custom field",
-            "EDIT": "Edit custom field",
+            "EDIT": "Rediger egendefinert felt",
             "DELETE": "Delete custom fields",
             "CONFIRM_DELETE": "Remember that all values in this custom field will be deleted."
         },
@@ -237,12 +237,12 @@
             "ACTION_SAVE_CUSTOM_FILTER": "save filter",
             "PLACEHOLDER_FILTER_NAME": "Skriv filternavnet og trykk enter",
             "APPLIED_FILTERS_NUM": "filters applied",
-            "TITLE_ADVANCED_FILTER": "Advanced",
+            "TITLE_ADVANCED_FILTER": "Avansert",
             "ADVANCED_FILTERS": {
-                "INCLUDE": "Include",
-                "EXCLUDE": "Exclude",
-                "INCLUDED": "Filtered by:",
-                "EXCLUDED": "Excluded:"
+                "INCLUDE": "Inkluder",
+                "EXCLUDE": "Ekskludere",
+                "INCLUDED": "Filtrer på:",
+                "EXCLUDED": "Ekskludert:"
             },
             "CATEGORIES": {
                 "TYPE": "Type",
@@ -251,11 +251,11 @@
                 "PRIORITIES": "Prioriteter",
                 "TAGS": "Etiketter",
                 "ASSIGNED_TO": "Tildelt til",
-                "ASSIGNED_USERS": "Assigned users",
+                "ASSIGNED_USERS": "Tildelte brukere",
                 "ROLE": "Rolle",
                 "CREATED_BY": "Laget av",
                 "CUSTOM_FILTERS": "Egendefinert filtre",
-                "EPIC": "Epic"
+                "EPIC": "Epos"
             }
         },
         "WYSIWYG": {
@@ -269,11 +269,11 @@
         "PERMISIONS_CATEGORIES": {
             "EPICS": {
                 "NAME": "Episk",
-                "VIEW_EPICS": "View epics",
-                "ADD_EPICS": "Add epics",
-                "MODIFY_EPICS": "Modify epics",
-                "COMMENT_EPICS": "Comment epics",
-                "DELETE_EPICS": "Delete epics"
+                "VIEW_EPICS": "Se epos",
+                "ADD_EPICS": "Legg til epos",
+                "MODIFY_EPICS": "Rediger epos",
+                "COMMENT_EPICS": "Kommentér epos",
+                "DELETE_EPICS": "Slett epos"
             },
             "SPRINTS": {
                 "NAME": "Sprinter",
@@ -287,7 +287,7 @@
                 "VIEW_USER_STORIES": "Se på brukerhistorier",
                 "ADD_USER_STORIES": "Legg til brukerhistorier",
                 "MODIFY_USER_STORIES": "Rediger brukerhistorier",
-                "COMMENT_USER_STORIES": "Comment user stories",
+                "COMMENT_USER_STORIES": "Kommenter på brukerhistorier",
                 "DELETE_USER_STORIES": "Slett brukerhistorier"
             },
             "TASKS": {
@@ -295,7 +295,7 @@
                 "VIEW_TASKS": "Se på oppgaver",
                 "ADD_TASKS": "Legg til oppgave",
                 "MODIFY_TASKS": "Rediger oppgaver",
-                "COMMENT_TASKS": "Comment tasks",
+                "COMMENT_TASKS": "Kommenter oppgaver",
                 "DELETE_TASKS": "Slett oppgaver"
             },
             "ISSUES": {
@@ -303,7 +303,7 @@
                 "VIEW_ISSUES": "Vis hendelser",
                 "ADD_ISSUES": "Legg til hendelser",
                 "MODIFY_ISSUES": "Endre hendelser",
-                "COMMENT_ISSUES": "Comment issues",
+                "COMMENT_ISSUES": "Kommenter hendelser",
                 "DELETE_ISSUES": "Slett hendelser"
             },
             "WIKI": {
@@ -339,8 +339,8 @@
         "ALT_LOGIN": "Eller logg inn med"
     },
     "LOGIN_FORM": {
-        "ERROR_AUTH_INCORRECT": "According to the Taiga, your username/email or password are incorrect.",
-        "SUCCESS": "Welcome to Taiga."
+        "ERROR_AUTH_INCORRECT": "Ifølge våre Ompa Lompaer er ditt brukernavn, e-post eller passord feil.",
+        "SUCCESS": "Velkommen til Taiga."
     },
     "REGISTER": {
         "PAGE_TITLE": "Registrer - Taiga",
@@ -368,7 +368,7 @@
         "LINK_CANCEL": "Eh, ta meg tilbake. Jeg tror jeg husker det.",
         "SUCCESS_TITLE": "Sjekk innboksen din!",
         "SUCCESS_TEXT": "\nVi har sendte deg en e-post med instruksjoner for å sette et nytt passord",
-        "ERROR": "According to the Taiga, you are not registered yet."
+        "ERROR": "Ifølge våre Ompa Lompaer er du ikke registrert enda."
     },
     "CHANGE_PASSWORD": {
         "PAGE_TITLE": "Endre ditt passord - Taiga",
@@ -379,7 +379,7 @@
         "PLACEHOLDER_NEW_PASSWORD": "Skriv inn nytt passord",
         "FIELD_RETYPE_PASSWORD": "Gjenta nytt passord",
         "PLACEHOLDER_RETYPE_PASSWORD": "Skriv inn passordet på nytt",
-        "ERROR_PASSWORD_MATCH": "The passwords don't match"
+        "ERROR_PASSWORD_MATCH": "Passordene er ikke like"
     },
     "CHANGE_PASSWORD_RECOVERY_FORM": {
         "TITLE": "Opprett ett nytt Taiga pass",
@@ -387,30 +387,30 @@
         "PLACEHOLDER_NEW_PASSWORD": "Nytt passord",
         "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "Skriv inn passord på nytt",
         "ACTION_RESET_PASSWORD": "Nullstill passord",
-        "SUCCESS": "The Taiga saved your new password.<br /> Try to <strong>sign in</strong> with it."
+        "SUCCESS": "Ompa Lompaene våre lagret ditt nye passord.<br /> Prøv å <strong>logge inn</strong> med det."
     },
     "INVITATION": {
         "PAGE_TITLE": "Invitasjonsbekreftelse - Taiga",
         "PAGE_DESCRIPTION": "Godta invitasjonen til å delta i et prosjekt i Taiga, prosjektledelsesplattformen for startups, smidige utviklere og designere som ønsker et enkelt og  pent verktøy som gjør arbeidet fornøyelig."
     },
     "INVITATION_LOGIN_FORM": {
-        "NOT_FOUND": "The Taiga can't find your invitation.",
+        "NOT_FOUND": "Våre Ompa Lompaer kan ikke finne invitasjonen din.",
         "SUCCESS": "Du er nå sluttet til prosjektet {{project_name}}, velkommen!"
     },
     "HOME": {
         "PAGE_TITLE": "Hjem - Taiga",
         "PAGE_DESCRIPTION": "Taiga hjemmeside med dine viktigste prosjekter og alle dine tildelte og overvåkede brukerhistorier, oppgaver og hendelser",
         "EMPTY_WORKING_ON": "<strong>Det føles tom, gjør det ikke?</strong> Start å jobbe med Taiga og du vil se her brukerhistorier, opggaver og hendelser du jobber med.",
-        "EMPTY_WATCHING": "<strong>Follow</strong> user stories, tasks, issues in your projects and be notified about their changes :)",
-        "EMPTY_PROJECT_LIST": "You don't have any project yet",
+        "EMPTY_WATCHING": "<strong>Følg</strong> Brukerhistorier, Oppgaver, Hendelser i dine prosjekter og bli varslet når noe blir endret :)",
+        "EMPTY_PROJECT_LIST": "Du har ikke noen prosjekter enda",
         "WORKING_ON_SECTION": "Arbeider med",
         "WATCHING_SECTION": "Følger med på",
         "DASHBOARD": "Prosjektoversikt",
-        "SET_HIDDEN": "Set as hidden",
-        "SET_VISIBLE": "Set as visible",
-        "NO_HIDDEN_ITEMS": "You have no hidden items",
-        "HIDE_HIDDEN": "Do not show hidden objects",
-        "SHOW_HIDDEN": "Show hidden objects"
+        "SET_HIDDEN": "Sett som skjult",
+        "SET_VISIBLE": "Sett som synlig",
+        "NO_HIDDEN_ITEMS": "Du har ingen skjulte elementer",
+        "HIDE_HIDDEN": "Ikke vis skjulte objekter",
+        "SHOW_HIDDEN": "Vis skjult objekter"
     },
     "EPICS": {
         "TITLE": "EPISK",
@@ -424,29 +424,29 @@
         },
         "EMPTY": {
             "TITLE": "Det ser ut som det ikke finnes noen episke hendelser enda",
-            "EXPLANATION": "Epics are items at a higher level that encompass user stories.<br />Epics are at the top of the hierarchy and can be used to group user stories together.",
-            "HELP": "Learn more about epics"
+            "EXPLANATION": "Epos er elementer på et høynivå som omfatter brukerhistorier. <br />Epos er øverst i hierarkiet og benyttes til å gruppere brukerhistorier sammen.",
+            "HELP": "Lær mer om epos"
         },
         "TABLE": {
             "VOTES": "Stemmer",
             "NAME": "Navn",
             "PROJECT": "Prosjekt",
             "SPRINT": "Sprint",
-            "ASSIGNED_TO": "Assigned",
+            "ASSIGNED_TO": "Tildelt",
             "STATUS": "Status",
-            "PROGRESS": "Progress",
-            "CLOSED_US": "Closed user stories",
-            "CLOSED_EPICS": "Closed epics",
-            "VIEW_OPTIONS": "View options"
+            "PROGRESS": "Progresjon",
+            "CLOSED_US": "Lukk brukerhistorier",
+            "CLOSED_EPICS": "Lukkede epos",
+            "VIEW_OPTIONS": "Se alternativer"
         },
         "CREATE": {
-            "TITLE": "New Epic",
-            "PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this epic",
-            "TEAM_REQUIREMENT": "Team requirement",
-            "CLIENT_REQUIREMENT": "Client requirement",
+            "TITLE": "Nytt Epos",
+            "PLACEHOLDER_DESCRIPTION": "Vennligst legg til en beskrivende tekst som hjelper andre til å forstå dette eposet",
+            "TEAM_REQUIREMENT": "Team behov",
+            "CLIENT_REQUIREMENT": "Kundekrav",
             "BLOCKED": "Blokkert",
-            "BLOCKED_NOTE_PLACEHOLDER": "Why is this epic blocked?",
-            "CREATE_EPIC": "Create epic"
+            "BLOCKED_NOTE_PLACEHOLDER": "Hvorfor er dette eposet blokkert?",
+            "CREATE_EPIC": "Opprett epos"
         }
     },
     "PROJECTS": {
@@ -455,7 +455,7 @@
         "MY_PROJECTS": "Mine prosjekter"
     },
     "ATTACHMENT": {
-        "SECTION_NAME": "Attachments",
+        "SECTION_NAME": "Vedlegg",
         "TITLE": "{{ fileName }} lastet opp {{ date }}",
         "LIST_VIEW_MODE": "Listevisnings-modus",
         "GALLERY_VIEW_MODE": "Gallerivisningsmodus",
@@ -473,7 +473,7 @@
         "TITLE_LIGHTBOX_DELETE_ATTACHMENT": "Slett vedlegg...",
         "MSG_LIGHTBOX_DELETE_ATTACHMENT": "vedlegget '{{fileName}}'",
         "ERROR_DELETE_ATTACHMENT": "Vi hadde ikke mulighet til å slette: {{errorMessage}}",
-        "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) is too heavy for the Taiga, try it with a file smaller than ({{maxFileSize}})"
+        "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) er for stor for Taiga, prøv med en fil som er moindre enn ({{maxFileSize}})"
     },
     "PAGINATION": {
         "PREVIOUS": "Forrige",
@@ -495,7 +495,7 @@
             "PAGE_TITLE": "Medlemskap - {{projectName}}",
             "ADD_BUTTON": "+ Nytt medlem",
             "ADD_BUTTON_TITLE": "Legg til nytt medlem",
-            "UPGRADE_BUTTON": "Upgrade your plan",
+            "UPGRADE_BUTTON": "Oppgrader planen din",
             "LIMIT_USERS_WARNING_MESSAGE_FOR_ADMIN": "Dersom du ønsker å <strong>legge til flere medlemmer</strong>, kontakt prosjekteier <a href='mailto:{{ owner_email }}' title='{{ owner_email }}'>{{ owner_email }}</a>",
             "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "Dette prosjektet har nådd sin grense for <strong>({{members}})</strong> tillatte medlemmer. Dersom du ønsker å øke den grensen, venligst kontakt en administrator."
         },
@@ -509,13 +509,13 @@
             "LOADING_MESSAGE": "Vennligst ikke lukk denne siden.",
             "ASYNC_MESSAGE": "Vi sender deg en epost når det er klart.",
             "SYNC_MESSAGE": "Hvis nedlastningen ikke starter automatisk, klikk <a href='{{url}}' download title='Download the dump file'>her</a>.",
-            "ERROR": "The Taiga has some problems generating your dump. Please try it again.",
-            "ERROR_BUSY": "Sorry, the Taiga is experiencing heavy load right now. Please try again in a few minutes."
+            "ERROR": "Våre Ompa Lompaer har problemer med å generere en data dump. Vennligst prøv på nytt.",
+            "ERROR_BUSY": "Beklager, våre Ompa Lompaer opplever tung arbeidsbelastning akkurat nå. Vennligst prøv igjen om noen få minutter."
         },
         "MODULES": {
             "TITLE": "Moduler",
             "EPICS": "Episk",
-            "EPICS_DESCRIPTION": "Visualize and manage the most strategic part of your project",
+            "EPICS_DESCRIPTION": "Visualiser og administrer den mest strategiske delen av prosjektet ditt",
             "BACKLOG": "Scrum",
             "BACKLOG_DESCRIPTION": "Hold styr på dine brukerhistorier for å vedlikeholde en organisert visning over kommende og prioritert arbeid.",
             "NUMBER_SPRINTS": "Antatt antall sprinter",
@@ -547,7 +547,7 @@
             "RECRUITING": "Leter dette prosjektet etter folk?",
             "RECRUITING_MESSAGE": "Hva leter du etter?",
             "RECRUITING_PLACEHOLDER": "Definer profilene du leter etter",
-            "FEEDBACK": "Receive feedback from Taiga users?",
+            "FEEDBACK": "Motta tilbakemelding fra Taiga-brukere?",
             "PUBLIC_PROJECT": "Offentlig prosjekt",
             "PRIVATE_PROJECT": "Privat prosjekt",
             "PRIVATE_OR_PUBLIC": "Hva er forskjellen mellom offentlige og private prosjekt?",
@@ -574,12 +574,12 @@
             "DESCRIPTION": "Last ned en CSV fil eller kopier den genererte URL'en og åpne den i din favoritt tekstbehandler for å lage dine egne prosjektdatarapporter. Du vil kunne visualisere og analysere alle dine data enkelt.",
             "HELP": "Hvordan bruke dette i mitt eget regneark?",
             "REGENERATE_TITLE": "Endre URL",
-            "REGENERATE_SUBTITLE": "You are going to change the CSV data access url. The previous url will be disabled. Are you sure?",
-            "DELETE_TITLE": "Delete URL",
-            "DELETE_SUBTITLE": "You are going to delete the current CSV data access url. Are you sure?"
+            "REGENERATE_SUBTITLE": "Du er i ferd med å endre URL for tilgang til CSV-data. Tidligere URL vil bli deaktivert. Er du sikker?",
+            "DELETE_TITLE": "Slett URL",
+            "DELETE_SUBTITLE": "Du er i ferd med å slette nåværende URL for tilgang til CSV-data. Er du sikker?"
         },
         "CSV": {
-            "SECTION_TITLE_EPIC": "epics reports",
+            "SECTION_TITLE_EPIC": "epos rapporter",
             "SECTION_TITLE_US": "brukerhistorie-rapporter",
             "SECTION_TITLE_TASK": "oppgaverapport",
             "SECTION_TITLE_ISSUE": "Hendelsesrapport",
@@ -588,14 +588,14 @@
             "TITLE_REGENERATE_URL": "Regenerer CSV url",
             "ACTION_GENERATE_URL": "Generer URL",
             "ACTION_REGENERATE": "Generer på nytt",
-            "TITLE_DELETE_URL": "Delete CSV url",
+            "TITLE_DELETE_URL": "Slett CSV-url",
             "ACTION_DELETE_URL": "Slett"
         },
         "CUSTOM_FIELDS": {
             "TITLE": "Egendefinerte felter",
             "SUBTITLE": "Spesifiser egendefinerte felter for dine brukerhistorier, oppgaver og hendelser",
-            "EPIC_DESCRIPTION": "Epics custom fields",
-            "EPIC_ADD": "Add a custom field in epics",
+            "EPIC_DESCRIPTION": "Epos egendefinerte felt",
+            "EPIC_ADD": "Legg til et egendefinert felt i epos",
             "US_DESCRIPTION": "Brukerhistorier tilpassede felter",
             "US_ADD": "Legg til et egendefinert felt i Brukerhistorier",
             "TASK_DESCRIPTION": "Oppgaver egendefinerte felter",
@@ -603,13 +603,13 @@
             "ISSUE_DESCRIPTION": "Hendelser egendefinerte felter",
             "ISSUE_ADD": "Legg til et egendefinert felt i Hendelser",
             "FIELD_TYPE_TEXT": "Tekst",
-            "FIELD_TYPE_RICHTEXT": "Rich text",
+            "FIELD_TYPE_RICHTEXT": "Rik tekst",
             "FIELD_TYPE_MULTI": "Flere linjer",
             "FIELD_TYPE_DATE": "Dato",
             "FIELD_TYPE_URL": "Url",
-            "FIELD_TYPE_DROPDOWN": "Dropdown",
-            "FIELD_TYPE_CHECKBOX": "Checkbox",
-            "FIELD_TYPE_NUMBER": "Number"
+            "FIELD_TYPE_DROPDOWN": "Slipp ned",
+            "FIELD_TYPE_CHECKBOX": "Sjekkboks",
+            "FIELD_TYPE_NUMBER": "Nummer"
         },
         "PROJECT_VALUES": {
             "PAGE_TITLE": "{{sectionName}} - Prosjekt verdier - {{projectName}}",
@@ -619,7 +619,7 @@
         "PROJECT_VALUES_POINTS": {
             "TITLE": "Poeng",
             "SUBTITLE": "Spesifiser poengene dine brukerhistorier kan estimeres som",
-            "US_TITLE": "User story points",
+            "US_TITLE": "Brukerhistorie-poeng",
             "ACTION_ADD": "Legg til nytt poeng"
         },
         "PROJECT_VALUES_PRIORITIES": {
@@ -635,10 +635,10 @@
             "ACTION_ADD": "Legg til ny alvorlighetsgrad"
         },
         "PROJECT_VALUES_STATUS": {
-            "TITLE": "Statuses",
-            "SUBTITLE": "Angi statusene som dine brukerhistorier, oppgaver og hendelser vil følge",
-            "EPIC_TITLE": "Epic Statuses",
-            "US_TITLE": "User Story Statuses",
+            "TITLE": "Statuser",
+            "SUBTITLE": "Add, remove or edit the color and name of the statuses your epics, user stories, task and issues will go through.",
+            "EPIC_TITLE": "Epos Statuser",
+            "US_TITLE": "Status Brukerhistorier",
             "TASK_TITLE": "Oppgave Statuser",
             "ISSUE_TITLE": "Hendelsesstatuser"
         },
@@ -650,45 +650,45 @@
         },
         "PROJECT_VALUES_TAGS": {
             "TITLE": "Etiketter",
-            "SUBTITLE": "View and edit the color of your tags",
-            "EMPTY": "Currently there are no tags",
-            "EMPTY_SEARCH": "It looks like nothing was found with your search criteria",
+            "SUBTITLE": "Se og rediger fargene på etikettene dine",
+            "EMPTY": "Det er for øyeblikket ingen etiketter",
+            "EMPTY_SEARCH": "Det ser ut som ingenting ble funnet med søkekriteriene dine",
             "ACTION_ADD": "Legg til etikett",
-            "NEW_TAG": "New tag",
+            "NEW_TAG": "Ny etikett",
             "MIXING_HELP_TEXT": "Select the tags that you want to merge",
-            "MIXING_MERGE": "Merge Tags",
-            "SELECTED": "Selected"
+            "MIXING_MERGE": "Slå sammen etiketter",
+            "SELECTED": "Valgte"
         },
         "PROJECT_DUE_DATE_STATUS": {
-            "TITLE": "Due Dates",
+            "TITLE": "Forfallsdatoer",
             "SUBTITLE": "Specify the due dates status your user stories, tasks and issues will go through if selected",
-            "US_TITLE": "User Story Due Date status",
+            "US_TITLE": "Status forfall brukerhistorier",
             "ACTION_ADD_STATUS": "Legg til ny status",
-            "TASK_TITLE": "Task Due Date status",
-            "ISSUE_TITLE": "Issue Due Date status",
-            "DAYS_TO_DUE_DATE": "Days to due date",
-            "BEFORE_AFTER": "Before/after",
-            "BEFORE": "Before",
-            "AFTER": "Past"
+            "TASK_TITLE": "Status forfall oppgave",
+            "ISSUE_TITLE": "Status forfall hendelse",
+            "DAYS_TO_DUE_DATE": "Dager til forfall",
+            "BEFORE_AFTER": "Før / etter",
+            "BEFORE": "Før",
+            "AFTER": "Fortid"
         },
         "PROJECT_KANBAN_OPTIONS": {
-            "TITLE": "Kanban options",
+            "TITLE": "KanBan opsjoner",
             "SUBTITLE": "Enable swimlanes to use in your workflow and set WIP limits to restrict the maximun number of user stories on each status.",
-            "SWIMLANES": "Swimlanes",
-            "ACTION_ADD_SWIMLANE": "New swimlane",
-            "SWIMLANE_NAME_EXISTS": "This swimlane name already exists",
-            "NO_SWIMLANES": "There are no swimlanes yet",
-            "SWIMLANE_NAME": "Swimlane name",
+            "SWIMLANES": "Svømmebaner",
+            "ACTION_ADD_SWIMLANE": "Ny svømmebane",
+            "SWIMLANE_NAME_EXISTS": "Navn på svømmebane eksisterer allerede",
+            "NO_SWIMLANES": "Det er ingen svømmebaner enda",
+            "SWIMLANE_NAME": "Navn svømmebane",
             "POPUP_NEW_SWIMLANE": "If you had some user stories created, you will find them on this swimlane.",
-            "WIP_LIMITS": "WIP LIMITS",
-            "WIP_LIMIT_PLACEHOLDER": "WIP limit not set",
-            "WIP_LIMIT_INPUT": "Set WIP limit",
-            "DEFAULT": "Default"
+            "WIP_LIMITS": "VIP begrensninger",
+            "WIP_LIMIT_PLACEHOLDER": "VIP-begrensning ikke satt",
+            "WIP_LIMIT_INPUT": "Sett VIP-begrensning",
+            "DEFAULT": "Standard"
         },
         "ROLES": {
             "PAGE_TITLE": "Roller - {{projectName}}",
             "WARNING_NO_ROLE": "Vær forsiktig, ingen roller i ditt prosjekt vil kunne estimere poengverdier for brukerhistorier",
-            "HELP_ROLE_ENABLED": "Når aktivert; medlemmer tildelt denne rollen vil kunne estimere poengverdier for brukerhistorier",
+            "HELP_ROLE_ENABLED": "This role is part of the roles involved in estimating user story points.",
             "DISABLE_COMPUTABLE_ALERT_TITLE": "Er du sikker på at du vil deaktivere denne rollens beregninger?",
             "DISABLE_COMPUTABLE_ALERT_SUBTITLE": "Hvis du deaktiverer estimeringstillatelser for rollen {{roleName}} vil alle tidligere anslag gjort av denne rollen bli fjernet",
             "COUNT_MEMBERS": "{{ role.members_count }} medlemmer med denne rollen",
@@ -702,7 +702,7 @@
         "THIRD_PARTIES": {
             "SECRET_KEY": "Hemmelig nøkkel",
             "PAYLOAD_URL": "Nyttelast URL",
-            "VALID_IPS": "Valid source IPs (separated by ,)"
+            "VALID_IPS": "Gyldige kilde-IP-adresser (separert med komma)"
         },
         "BITBUCKET": {
             "SECTION_NAME": "Bitbucket",
@@ -750,14 +750,14 @@
         "CUSTOM_ATTRIBUTES": {
             "PAGE_TITLE": "{{Seksjon navn}} - Egendefinerte felter - {{prosjekt Name}}",
             "ADD": "Legg til et egendefinert felt",
-            "EDIT": "Edit custom field",
-            "DELETE": "Delete custom field",
+            "EDIT": "Rediger egendefinert felt",
+            "DELETE": "Slett egendefinert felt",
             "SAVE_TITLE": "Save custom field",
             "CANCEL_TITLE": "Avbryt opprettelsen",
             "SET_FIELD_NAME": "Sett navnet til ditt egendefinerte felt",
             "SET_FIELD_DESCRIPTION": "Gi en beskrivelse til ditt egendefinerte felt",
             "FIELD_TYPE_DEFAULT": "-- velg en --",
-            "ACTION_UPDATE": "Update custom field",
+            "ACTION_UPDATE": "Oppdater egendefinert felt",
             "ACTION_CANCEL_EDITION": "Avbryt redigering"
         },
         "MEMBERSHIP": {
@@ -775,7 +775,7 @@
             "DEFAULT_DELETE_MESSAGE": "invitasjonen til {{epost}}"
         },
         "DEFAULT_VALUES": {
-            "LABEL_EPIC_STATUS": "Default value for epic status selector",
+            "LABEL_EPIC_STATUS": "Standardverdi for epos statusvelger",
             "LABEL_US_STATUS": "Default value for user story status selector",
             "LABEL_POINTS": "Standardverdi for poengvelger",
             "LABEL_TASK_STATUS": "Standardverdi for oppgave statusvelger",
@@ -786,7 +786,7 @@
         },
         "STATUS": {
             "PLACEHOLDER_WRITE_STATUS_NAME": "Skriv et navn til den nye statusen",
-            "PLACEHOLDER_DAYS_TO_DUE_DATE": "Write a number of days to due date"
+            "PLACEHOLDER_DAYS_TO_DUE_DATE": "Skriv inn antall dager til forfall"
         },
         "TYPES": {
             "PLACEHOLDER_WRITE_NAME": "Skriv et navn til det nye elementet"
@@ -795,7 +795,7 @@
             "ACTION_ADD_STATUS": "Legg til ny status",
             "IS_ARCHIVED_COLUMN": "Arkivert",
             "IS_CLOSED_COLUMN": "Lukket",
-            "WIP_LIMIT_COLUMN": "WIP limit",
+            "WIP_LIMIT_COLUMN": "VIP-begrensning",
             "PLACEHOLDER_WRITE_NAME": "Skriv et navn til den nye statusen"
         },
         "MENU": {
@@ -806,15 +806,15 @@
             "INTEGRATIONS": "Integrasjoner"
         },
         "SUBMENU_PROJECT_VALUES": {
-            "STATUS": "Statuses",
+            "STATUS": "Statuser",
             "POINTS": "Poeng",
             "PRIORITIES": "Prioriteter",
             "SEVERITIES": "Alvorlighetsgrad",
             "TYPES": "Typer",
             "CUSTOM_FIELDS": "Egendefinerte felter",
             "TAGS": "Etiketter",
-            "DUE_DATES": "Due dates",
-            "KANBAN_OPTIONS": "Kanban options"
+            "DUE_DATES": "Forfallsdatoer",
+            "KANBAN_OPTIONS": "KanBan opsjoner"
         },
         "SUBMENU_ROLES": {
             "TITLE": "Roller",
@@ -876,7 +876,7 @@
             "FILTER_TYPE_PROJECTS": "Prosjekter",
             "FILTER_TYPE_PROJECTS_TITLE": "Vis kun prosjekter",
             "FILTER_TYPE_EPICS": "Episk",
-            "FILTER_TYPE_EPICS_TITLE": "Show only epics",
+            "FILTER_TYPE_EPICS_TITLE": "Vis kun epos",
             "FILTER_TYPE_USER_STORIES": "Historier",
             "FILTER_TYPE_USER_STORIES_TITLE": "Vis kun brukerhistorier",
             "FILTER_TYPE_TASKS": "Oppgaver",
@@ -888,12 +888,12 @@
     },
     "PROJECT": {
         "PAGE_TITLE": "{{projectName}}",
-        "HELP": "Reorder your projects to set at the top the most used ones.<br/> The top 4 projects will appear in the top navigation bar project list",
+        "HELP": "Reorganiser prosjektene dine etter de mest brukte. <br/> De topp 4 mest brukte prosjektene vil vises i navigasjonslenken på toppen.",
         "PRIVATE": "Privat prosjekt",
         "LOOKING_FOR_PEOPLE": "Dette prosjekter søker etter mennesker",
-        "FANS_COUNTER_TITLE": "{total, plural, =1{one fan} other{# fans}}",
-        "WATCHERS_COUNTER_TITLE": "{total, plural, =1{one watcher} other{# watchers}}",
-        "MEMBERS_COUNTER_TITLE": "{total, plural, =1{one member} other{# members}}",
+        "FANS_COUNTER_TITLE": "{total, plural, =1{en fan} other{# fans}}",
+        "WATCHERS_COUNTER_TITLE": "{total, plural, =1{en følger} other{# følgere}}",
+        "MEMBERS_COUNTER_TITLE": "{total, plural, =1{et medlem} other{# medlemmer}}",
         "BLOCKED_PROJECT": {
             "BLOCKED": "Blokkert prosjekt",
             "THIS_PROJECT_IS_BLOCKED": "Dette prosjektet er midlertidig blokkert",
@@ -908,26 +908,26 @@
             "ISSUES": "Hendelser",
             "WIKI": "Wiki",
             "TEAM": "Team",
-            "MEETUP": "Meetup",
+            "MEETUP": "Møte",
             "SETTINGS": "Instillinger",
             "SCRUM": "Scrum",
-            "COLLAPSE_MENU": "collapse menu"
+            "COLLAPSE_MENU": "minimer meny"
         },
         "NAVIGATION": {
             "PROJECTS": "Prosjekter",
-            "ACCOUNT_SETTINGS": "Account settings",
-            "ACTION_CREATE_PROJECT": "New project",
-            "ACTION_CREATE_PROJECT_FIRST": "Create your first project",
-            "ACTION_CREATE_PROJECT_FIRST_TEXT": "You don’t have any projects yet. Create one now, invite your team and start using Taiga to the fullest.",
-            "VIEW_ALL_PROJECTS": "View all projects",
+            "ACCOUNT_SETTINGS": "Kontoinnstillinger",
+            "ACTION_CREATE_PROJECT": "Nytt prosjekt",
+            "ACTION_CREATE_PROJECT_FIRST": "Opprett ditt første prosjekt",
+            "ACTION_CREATE_PROJECT_FIRST_TEXT": "Du har ikke et prosjekt enda. Opprett et nå, inviter teamet ditt og start med å bruke Taiga til det fulle.",
+            "VIEW_ALL_PROJECTS": "Se alle prosjekter",
             "MANAGE_PROJECTS": "Håndter prosjekter",
             "TITLE_CREATE_PROJECT": "Opprett prosjekt",
             "HELP_TITLE": "Hjelp",
             "HOMEPAGE": "Hjemmeside",
-            "TAIGA_RESOURCES_TITLE": "Go to Taiga resources",
-            "TAIGA_RESOURCES": "Taiga Resources",
-            "FEEDBACK_TITLE": "Write to us with your feedback",
-            "FEEDBACK": "Ask a question",
+            "TAIGA_RESOURCES_TITLE": "Gå til Ompa Lompa ressurser",
+            "TAIGA_RESOURCES": "Ompa Lompa ressurser",
+            "FEEDBACK_TITLE": "Send tilbakemelding til oss",
+            "FEEDBACK": "Spør et spørsmål",
             "NOTIFICATIONS_TITLE": "Endre dine varslingsinstillinger",
             "NOTIFICATIONS": "Varsler",
             "VIEW_PROFILE_TITLE": "Vis Profil",
@@ -945,13 +945,13 @@
             "LIKED": "Likt",
             "UNLIKE": "Ikke lik",
             "BUTTON_TITLE": "Like eller ikke like dette prosjektet",
-            "COUNTER_TITLE": "{total, plural, =1{one fan} other{# fans}}"
+            "COUNTER_TITLE": "{total, plural, =1{en følger} other{# følgere}}"
         },
         "WATCH_BUTTON": {
             "BUTTON_TITLE": "Overvåk dette prosjektet og sett varslingsstrategi",
             "WATCH": "Følg",
             "WATCHING": "Følger med på",
-            "COUNTER_TITLE": "{total, plural, =1{one watcher} other{# watchers}}",
+            "COUNTER_TITLE": "{total, plural, =1{en følger} other{# følgere}}",
             "OPTIONS": {
                 "NOTIFY_ALL": "Motta alle varsler",
                 "NOTIFY_ALL_TITLE": "Motta alle varsler for dette prosjektet",
@@ -962,24 +962,24 @@
             }
         },
         "CONTACT_BUTTON": {
-            "CONTACT_TITLE": "Contact the project team",
-            "CONTACT_BUTTON": "Contact the project"
+            "CONTACT_TITLE": "Kontakt prosjekt-teamet",
+            "CONTACT_BUTTON": "Kontakt prosjektet"
         },
         "CREATE": {
             "TITLE": "Opprett prosjekt",
-            "CHOOSE_TEMPLATE": "Which template fits your project better?",
+            "CHOOSE_TEMPLATE": "Hvilken mal passer ditt prosjekt best?",
             "TEMPLATE_SCRUM": "Scrum",
-            "TEMPLATE_SCRUM_DESC": "Prioritize and solve your tasks in short time cycles.",
+            "TEMPLATE_SCRUM_DESC": "Prioriter og løs oppgavene dine i korte tidssykluser",
             "TEMPLATE_SCRUM_LONGDESC": "Scrum is an iterative and incremental agile software development methodology for managing product development.\nThe product backlog is what will ultimately be delivered, ordered into the sequence in which it should be delivered. Product Backlogs are broken into manageable, executable chunks named sprints. Every certain amount of time the team initiates a new sprint and commits to deliver a certain number of user stories from the backlog, in accordance with their skills, abilities and resources. The project advances as the backlog becomes depleted.",
             "TEMPLATE_KANBAN": "Kanban",
-            "TEMPLATE_KANBAN_DESC": "Keep a constant workflow on independent tasks",
+            "TEMPLATE_KANBAN_DESC": "Behold en konstant arbeidsflyt for uavhengige oppgaver",
             "TEMPLATE_KANBAN_LONGDESC": "The Kanban methodology is used to divide project development (any sort of project) into stages.\nA kanban card is like an index card or post-it note that details every task (or user story) in a project that needs to be completed. The Kanban board is used to move each card from one state of completion to the next and in so doing, helps track progress.",
-            "DUPLICATE": "Duplicate project",
-            "DUPLICATE_DESC": "Start clean and keep your configuration",
+            "DUPLICATE": "Kopiert prosjekt",
+            "DUPLICATE_DESC": "Begynn rent og behold konfigurasjonene",
             "IMPORT": "Importer prosjekt",
             "IMPORT_DESC": "Import your project from multiple platforms into Taiga",
-            "INVITE": "Invite to the project",
-            "SOLO_PROJECT": "You'll be alone in this project",
+            "INVITE": "Inviter til prosjektet",
+            "SOLO_PROJECT": "Du vil bli alene i dette prosjektet",
             "INVITE_LATER": "(You'll be able to invite more members later)",
             "BACK": "Back",
             "MAX_PRIVATE_PROJECTS": "Unfortunately, You've reached the maximum number of private projects.\nIf you would like to increase the current limit please contact the administrator.",
@@ -988,42 +988,42 @@
             "PRIVATE_PROJECT": "Privat Prosjekt"
         },
         "COMMON": {
-            "DETAILS": "New project details",
-            "PROJECT_TITLE": "Project Name",
-            "PROJECT_DESCRIPTION": "Project Description"
+            "DETAILS": "Nye prosjektdetaljer",
+            "PROJECT_TITLE": "Prosjektnavn",
+            "PROJECT_DESCRIPTION": "Prosjektbeskrivelse"
         },
         "DUPLICATE": {
-            "TITLE": "Duplicate Project",
-            "DESCRIPTION": "Start clean and keep your configuration",
+            "TITLE": "Kopiér prosjekt",
+            "DESCRIPTION": "Begynn rent og behold konfigurasjonene",
             "SELECT_PLACEHOLDER": "Choose an existing project to duplicate"
         },
         "IMPORT": {
-            "TITLE": "Import Project",
+            "TITLE": "Importer Prosjekt",
             "DESCRIPTION": "Import your project from multiple platforms into Taiga",
-            "ASYNC_IN_PROGRESS_TITLE": "The Taiga is importing your project",
+            "ASYNC_IN_PROGRESS_TITLE": "Våre Ompa Lompaer importerer ditt prosjekt",
             "ASYNC_IN_PROGRESS_MESSAGE": "Denne prosessen kan ta noen minutter <br/> Vi vil sende deg en e-post når den er klar",
             "UPLOAD_IN_PROGRESS_MESSAGE": "Opplastet {{uploadedSize}} av {{totalSize}}",
-            "ERROR": "The Taiga has some problems importing your dump data. Please try again.",
-            "ERROR_TOO_MANY_REQUEST": "Sorry, the Taiga is experiencing heavy load right now. Please try again in a few minutes.",
+            "ERROR": "Våre Ompa Lompaer har problemer med å importere din data-dump. Vennligst prøv på nytt.",
+            "ERROR_TOO_MANY_REQUEST": "Beklager, våre Ompa Lompaer opplever tung arbeidsbelastning akkurat nå. Vennligst prøv igjen om noen få minutter.",
             "ERROR_MESSAGE": "The Taiga has some problems importing your dump data: {{error_message}}",
-            "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) is too heavy for the Taiga, try it with a file smaller than ({{maxFileSize}})",
+            "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) er for stor for Taiga, prøv med en fil som er moindre enn ({{maxFileSize}})",
             "SYNC_SUCCESS": "Importen av ditt prosjekt var vellykket",
             "IMPORT": "Import",
             "WHO_IS": "Their tasks will be assigned to ...",
             "WRITE_EMAIL": "Or if you want, write the email that this user uses in Taiga",
-            "SEARCH_CONTACT": "Or if you want, search in your contacts",
+            "SEARCH_CONTACT": "Eller dersom du ønsker, søk i kontaktene dine",
             "WRITE_EMAIL_LABEL": "Write the email that this user uses in Taiga",
-            "ACCEEDE": "Access",
+            "ACCEEDE": "Tilgang",
             "PROJECT_MEMBERS": "Prosjektmedlemmer",
             "PROCESS_DESCRIPTION": "Tell us to whom from Taiga you want to assign the tasks of {{platform}}",
             "MATCH": "Is <strong>{{user_external}}</strong> the same person as <strong>{{user_internal}}</strong>?",
-            "CHOOSE": "Select user",
+            "CHOOSE": "velg bruker",
             "LINKS": "Links with {{platform}}",
             "LINKS_DESCRIPTION": "Do you want to keep the link of each item with the original {{platform}} card?",
             "WARNING_MAIL_USER": "Note that if the user does not have a Taiga account we will not be able to assign the tasks to them.",
             "ASSIGN": "Tildel",
             "PROJECT_SELECTOR": {
-                "NO_RESULTS": "It looks like nothing was found with your search criteria",
+                "NO_RESULTS": "Det ser ut som ingenting ble funnet med søkekriteriene dine",
                 "ACTION_SEARCH": "søk",
                 "ACTION_BACK": "Back"
             },
@@ -1059,22 +1059,22 @@
                 "DESCRIPTION": "Denne prosessen kan ta en stund, vennligst hold vinduet åpent."
             },
             "WARNING": {
-                "TITLE": "Some taks will be unassigned",
+                "TITLE": "Noen oppgaver vil ikke bli tildelt",
                 "DESCRIPTION": "There are still unidentified people. The cards assigned to these people will remain unassigned. Check all the contacts to not lose that information.",
-                "CHECK": "Check contacts"
+                "CHECK": "Sjekk kontakter"
             },
             "TAIGA": {
-                "SELECTOR": "Import your Taiga project"
+                "SELECTOR": "Importer ditt Taiga prosjekt"
             },
             "TRELLO": {
-                "SELECTOR": "Import your Trello boards into Taiga",
-                "CHOOSE_PROJECT": "Choose board that you want to import",
-                "NO_PROJECTS": "It seems you have no boards in Trello"
+                "SELECTOR": "Importer Trello-tavler inn i Taiga",
+                "CHOOSE_PROJECT": "Velg tavle som ønskes importert",
+                "NO_PROJECTS": "Det ser ut til at du ikke har tavler i Trello"
             },
             "GITHUB": {
-                "SELECTOR": "Import your GitHub project issues",
-                "CHOOSE_PROJECT": "Find the project you want to import",
-                "NO_PROJECTS": "It seems you have no projects in GitHub",
+                "SELECTOR": "Importer dine GitHub prosjekt-hendelser ",
+                "CHOOSE_PROJECT": "Finn prosjekt som ønskes importert",
+                "NO_PROJECTS": "Det ser ut til at du ikke har noen prosjekt i GitHub",
                 "HOW_DO_YOU_WANT_TO_IMPORT": "How do you want to import your issues into Taiga?",
                 "KANBAN_PROJECT": "As user stories in a kanban project",
                 "KANBAN_PROJECT_DESCRIPTION": "After that you can enable scrum with backlog.",
@@ -1093,7 +1093,7 @@
                 "CREATE_AS_KANBAN_DESCRIPTION": "The tasks and sub-tasks of your project will be created as Taiga user stories and tasks."
             },
             "JIRA": {
-                "SELECTOR": "Import your Jira project and choose how to manage it",
+                "SELECTOR": "Importer dett Jira-prosjekt og velg hvordan administrere dette",
                 "HOW_TO_CONFIGURE": "(configuration help)",
                 "CHOOSE_PROJECT": "Choose project or board that you want to import",
                 "NO_PROJECTS": "It seems you have no projects or boards in Jira",
@@ -1105,7 +1105,7 @@
                 "CREATE_AS_KANBAN_DESCRIPTION": "The issues and sub-issues of your project will be created as Taiga user stories and tasks.",
                 "CREATE_AS_ISSUES_DESCRIPTION": "What do you want to do with sub-issues from the Jira project? (Taiga doesn't allow sub-issues)",
                 "CREATE_NEW_ISSUES": "Convert sub-issues to new Taiga issues",
-                "NOT_CREATE_NEW_ISSUES": "Do not import sub-issues"
+                "NOT_CREATE_NEW_ISSUES": "Ikke importer underhendelser"
             }
         }
     },
@@ -1114,7 +1114,7 @@
             "CONFIRM": "Er du sikker på at du vil slette din Taiga konto?",
             "CANCEL": "Tilbake til instillinger",
             "ACCEPT": "Slett konto",
-            "BLOCK_PROJECT": "Note that all projects you own will be <strong>blocked</strong> after you delete your account. If you do not want a particular project to be blocked, make sure you transfer ownership to another existing Taiga member before deleting your account."
+            "BLOCK_PROJECT": "Merk at alle prosjekter du eier vil bli <strong>Blokkert</strong> etter sletting av din konto. Dersom du ikke ønsker å blokkere et bestemt prosjekt, sørg for å overføre eierskapet til et annet medlem før du sletter kontoen."
         },
         "DELETE_PROJECT": {
             "TITLE": "Slett prosjekt",
@@ -1128,27 +1128,27 @@
         },
         "SELECT_USER": {
             "SEARCH": "Søk etter brukere",
-            "REMOVE": "Remove user",
+            "REMOVE": "Fjern bruker",
             "ROLE": "Rolle"
         },
         "ADD_MEMBER": {
             "TITLE": "Nytt medlem",
-            "PLACEHOLDER": "Filter users or write an email to invite",
-            "ADD_EMAIL": "Add email",
-            "REMOVE": "Remove",
-            "INVITE": "Invite",
-            "CHOOSE_ROLE": "Choose a role",
+            "PLACEHOLDER": "Filtrer på brukere eller skriv inn en epost for å invitere",
+            "ADD_EMAIL": "Legg til epost",
+            "REMOVE": "Fjern",
+            "INVITE": "Invitere",
+            "CHOOSE_ROLE": "Velg en rolle",
             "PLACEHOLDER_INVITATION_TEXT": "(Valgfritt) Legg til en egen tekst til invitasjonen. Fortell dine nye medlemmer noe fantastisk ;-)",
             "HELP_TEXT": "Hvis brukere allerede er registrerte på Taiga, vil de bli lagt til automatisk. Ellers vil de motta en invitasjon."
         },
         "FEEDBACK": {
-            "TITLE": "Ask a question",
-            "COMMENT": "Leave us a message",
-            "ACTION_SEND": "Send Message",
-            "YOU_CAN_ALSO": "You can also:",
-            "CREATE": "Create an issue on this",
-            "PUBLIC": "public Taiga project",
-            "EMAIL": "Send us a e-mail directly to",
+            "TITLE": "Spør et spørsmål",
+            "COMMENT": "Legg igjen en beskjed",
+            "ACTION_SEND": "Send melding",
+            "YOU_CAN_ALSO": "Du kan også:",
+            "CREATE": "Opprett en sak på dette",
+            "PUBLIC": "offentlig Taiga-prosjekt",
+            "EMAIL": "Send oss en epost direkte til",
             "SUPPORT": "support@taiga.io"
         },
         "SEARCH": {
@@ -1165,47 +1165,47 @@
             "LAST_SPRINT_NAME": "siste sprinten er <strong> {{lastSprint}} ;-) </strong>"
         },
         "CREATE_EDIT": {
-            "TASK_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this task",
-            "ISSUE_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this issue",
-            "US_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this user story",
+            "TASK_PLACEHOLDER_DESCRIPTION": "Vennligst legg til en beskrivende tekst for å hjelpe andre til å forstå denne oppgaven bedre",
+            "ISSUE_PLACEHOLDER_DESCRIPTION": "Vennligst legg til en beskrivende tekst for å hjelpe andre til å forstå denne saken bedre",
+            "US_PLACEHOLDER_DESCRIPTION": "Vennligst legg til en beskrivende tekst for å hjelpe andre til å forstå denne brukerhistorien bedre",
             "NEW_TASK": "Ny oppgave",
-            "NEW_ISSUE": "New issue",
+            "NEW_ISSUE": "Ny hendelse",
             "NEW_US": "Ny brukerhistorie",
             "EDIT_TASK": "Rediger oppgave",
-            "EDIT_ISSUE": "Edit issue",
+            "EDIT_ISSUE": "Rediger hendelse",
             "EDIT_US": "Rediger brukerhistorie",
-            "ADD_EXISTING_ISSUE": "Add issue to {{ targetName }}",
-            "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?",
-            "EXISTING_ISSUE": "Existing issue",
-            "CHOOSE_EXISTING_ISSUE": "Which issue?",
+            "ADD_EXISTING_ISSUE": "Legg hendelsen til {{ targetName }}",
+            "CONFIRM_CLOSE": "Du har ikke lagret endringene.\nEr du sikker på at du vil lukke skjemaet?",
+            "EXISTING_ISSUE": "Eksisterende hendelse",
+            "CHOOSE_EXISTING_ISSUE": "Hvilken hendelse?",
             "ADD_ISSUE": "Legg til hendelse",
-            "FILTER_ISSUES": "Filter issues",
-            "SWIMLANE": "Swimlane",
-            "SELECT_SWIMLANE": "Select swimlane",
-            "SELECT_STATUS": "Select status",
-            "DEFAULT": "Default",
+            "FILTER_ISSUES": "Filtrer hendelser",
+            "SWIMLANE": "Svømmebane",
+            "SELECT_SWIMLANE": "Velg svømmebane",
+            "SELECT_STATUS": "Velg status",
+            "DEFAULT": "Standard",
             "ERROR_STATUS": "Changes cannot be saved because there is a problem with the selected status.",
             "ERROR_SWIMLANE": "Changes cannot be saved because there is a problem with the selected swimlane."
         },
         "DISABLE_KANBAN": {
-            "TITLE": "Disable kanban",
-            "MESSAGE": "This project has swimlanes. They will be gone but your user stories will not be deleted"
+            "TITLE": "Deaktiver KanBan",
+            "MESSAGE": "Dette prosjektet har svømmebaner. De vil slettes, mens brukerhistoriene dine beholdes"
         },
         "DELETE_DUE_DATE": {
-            "TITLE": "Delete due date",
-            "SUBTITLE": "Are you sure you want to delete this due date?"
+            "TITLE": "Slett tidsfrist",
+            "SUBTITLE": "Er du sikker på at du vil slette denne tidsfristen?"
         },
         "DELETE_SPRINT": {
             "TITLE": "Slett sprint"
         },
         "REMOVE_RELATIONSHIP_WITH_EPIC": {
-            "TITLE": "Remove relationship with epic",
-            "MESSAGE": "Are you sure you want to remove the relationship of this user story with its epic <strong>{{epicSubject}}</strong>?"
+            "TITLE": "Fjern relasjon til epos",
+            "MESSAGE": "Er du sikker på at du vil fjerne relasjoner mellom denne brukerhistorien og eposet <strong>{{epicSubject}}</strong>?"
         },
         "CREATE_MEMBER": {
             "PLACEHOLDER_INVITATION_TEXT": "(Valgfritt) Legg til en egen tekst til invitasjonen. Fortell dine nye medlemmer noe fantastisk ;-)",
             "PLACEHOLDER_TYPE_EMAIL": "Skriv en epost",
-            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "You are about to reach the maximum number of members allowed for this project, <strong>{{maxMembers}}</strong> members. If you would like to increase the current limit, please contact the administrator.",
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "Du er i ferd med å nå grensen for tillatte medlemmer i dette prosjektet, <strong>{{maxMembers}}</strong> medlemmer. Dersom du ønsker å øke den nåværende grensen, vennligst kontakt administratoren.",
             "LIMIT_USERS_WARNING_MESSAGE": "You are about to reach the maximum number of members allowed for this project, <strong>{{maxMembers}}</strong> members."
         },
         "LEAVE_PROJECT_WARNING": {
@@ -1225,68 +1225,68 @@
             "BUTTON": "Spør dette prosjektetmedlemet om å bli den nye prosjekteieren"
         },
         "CONTACT_PROJECT": {
-            "TITLE": "Send an email to",
-            "WARNING": "The email will be received by the project admins",
-            "PLACEHOLDER": "Write your message",
+            "TITLE": "Send en epost til",
+            "WARNING": "Denne eposten vil bli mottatt av prosjektadministratorene",
+            "PLACEHOLDER": "Skriv din melding",
             "SEND": "Send"
         },
         "SET_DUE_DATE": {
-            "TITLE": "Set due date",
-            "PLACEHOLDER_DUE_DATE": "Select date",
-            "REASON_FOR_DUE_DATE": "Reason for the due date",
-            "PLACEHOLDER_REASON_FOR_DUE_DATE": "Why does this user story need a due date?",
+            "TITLE": "Sett forfallsdato",
+            "PLACEHOLDER_DUE_DATE": "Velg dato",
+            "REASON_FOR_DUE_DATE": "Begrunnelse for tidsfrist",
+            "PLACEHOLDER_REASON_FOR_DUE_DATE": "Hvorfor trenger denne brukerhistorien en forfallsdato?",
             "SUGGESTIONS": {
-                "IN_ONE_WEEK": "In one week",
-                "IN_TWO_WEEKS": "In two weeks",
-                "IN_ONE_MONTH": "In one month",
-                "IN_THREE_MONTHS": "In three months"
+                "IN_ONE_WEEK": "I løpet av en uke",
+                "IN_TWO_WEEKS": "I løpet av to uker",
+                "IN_ONE_MONTH": "I løpet av en måned",
+                "IN_THREE_MONTHS": "I løpet av tre måneder"
             },
-            "TITLE_ACTION_DELETE_DUE_DATE": "Delete due date"
+            "TITLE_ACTION_DELETE_DUE_DATE": "Slett tidsfrist"
         },
         "ADMIN_DUE_DATES": {
-            "TITLE_ACTION_DELETE_DUE_DATE": "Delete due date",
+            "TITLE_ACTION_DELETE_DUE_DATE": "Slett tidsfrist",
             "SUBTITLE_ACTION_DELETE_DUE_DATE": "Are you sure you want to delete the due date status {{due_date_status_name}}?"
         },
         "ADMIN_KANBAN_POWERUPS": {
-            "TITLE_ACTION_DELETE_SWIMLANE": "Delete swimlane",
-            "SUBTITLE_ACTION_DELETE_SWIMLANE_OPTIONS": "Are you sure you want to delete {{swimlane}}?",
+            "TITLE_ACTION_DELETE_SWIMLANE": "Slett svømmebane",
+            "SUBTITLE_ACTION_DELETE_SWIMLANE_OPTIONS": "Er du sikker på at du vil slette {{swimlane}}?",
             "SUBTITLE_ACTION_DELETE_SWIMLANE_REPLACEMENT": "All the user stories on this swimlane will be moved to:",
-            "SUBTITLE_ACTION_DELETE_SWIMLANE_LAST": "Your user stories will not be deleted. They will remain in the kanban.",
+            "SUBTITLE_ACTION_DELETE_SWIMLANE_LAST": "Dine brukerhistorier vil ikke bli slettet. De vil forbli i KanBan-tavlen.",
             "DEFAULT_SWIMLANE": "New user stories will be in this swimlane by default",
-            "SET_DEFAULT_SWIMLANE": "Set this swimlane as default",
+            "SET_DEFAULT_SWIMLANE": "Sett denne svømmebanen til standard",
             "DISABLE_DELETE_SWIMLANE": "The default swimlane cannot be deleted"
         },
         "RELATE_TO_EPIC": {
-            "TITLE": "Link to epic",
-            "EXISTING_EPIC": "Existing epic",
-            "NEW_EPIC": "New epic",
-            "CHOOSE_PROJECT_FOR_CREATION": "What's the project?",
-            "CHOOSE_PROJECT_FROM": "What's the project?",
+            "TITLE": "Link til epos",
+            "EXISTING_EPIC": "Eksisterende epos",
+            "NEW_EPIC": "Nytt epos",
+            "CHOOSE_PROJECT_FOR_CREATION": "Hva er prosjektet?",
+            "CHOOSE_PROJECT_FROM": "Hva er prosjektet?",
             "SUBJECT": "Subjekt",
-            "CHOOSE_EPIC": "What's the epic?",
-            "FILTER_EPICS": "Filter epics",
-            "NO_EPICS_FOUND": "It looks like nothing was found with your search criteria"
+            "CHOOSE_EPIC": "Hva er et epos?",
+            "FILTER_EPICS": "Filtrer epos",
+            "NO_EPICS_FOUND": "Det ser ut som ingenting ble funnet med søkekriteriene dine"
         }
     },
     "EPIC": {
-        "PAGE_TITLE": "{{epicSubject}} - Epic {{epicRef}} - {{projectName}}",
-        "PAGE_DESCRIPTION": "Status: {{epicStatus }}. Description: {{epicDescription}}",
-        "EPIC_COLOR": "Epic color:",
-        "SECTION_NAME": "Epic",
-        "ERROR_UNLINK_RELATED_USERSTORY": "We have not been able to unlink: {{errorMessage}}",
-        "CREATE_RELATED_USERSTORIES": "Create a relationship with",
+        "PAGE_TITLE": "{{epicSubject}} - Epos {{epicRef}} - {{projectName}}",
+        "PAGE_DESCRIPTION": "Status: {{epicStatus }}. Beskrivelse: {{epicDescription}}",
+        "EPIC_COLOR": "Eposfarge:",
+        "SECTION_NAME": "Epos",
+        "ERROR_UNLINK_RELATED_USERSTORY": "Vi hadde ikke mulighet til å slette linken: {{errorMessage}}",
+        "CREATE_RELATED_USERSTORIES": "Etabler relasjon til",
         "NEW_USERSTORY": "Ny brukerhistorie",
-        "EXISTING_USERSTORY": "Existing user story",
-        "CHOOSE_PROJECT_FOR_CREATION": "Which project?",
+        "EXISTING_USERSTORY": "Eksisterende brukerhistorie",
+        "CHOOSE_PROJECT_FOR_CREATION": "Hvilket prosjekt?",
         "SUBJECT": "Subjekt",
-        "SUBJECT_BULK_MODE": "Subject (bulk insert)",
-        "CHOOSE_PROJECT_FROM": "Which project?",
-        "CHOOSE_USERSTORY": "Which user story?",
-        "NO_USERSTORIES": "This project has no user stories yet. Please select another project.",
-        "NO_USERSTORIES_FOUND": "It looks like nothing was found with your search criteria",
-        "FILTER_USERSTORIES": "Filter user stories",
-        "LIGHTBOX_TITLE_BLOKING_EPIC": "Blocking epic",
-        "ACTION_DELETE": "Delete epic"
+        "SUBJECT_BULK_MODE": "Emne (bulk-import)",
+        "CHOOSE_PROJECT_FROM": "Hvilket prosjekt?",
+        "CHOOSE_USERSTORY": "Hvilken brukerhistorie?",
+        "NO_USERSTORIES": "Dette prosjektet har ingen brukerhistorier enda. Vennligst velg et annet prosjekt.",
+        "NO_USERSTORIES_FOUND": "Det ser ut som ingenting ble funnet med søkekriteriene dine",
+        "FILTER_USERSTORIES": "Filtrer brukerhistorier",
+        "LIGHTBOX_TITLE_BLOKING_EPIC": "Blokkering epos",
+        "ACTION_DELETE": "Slett epos"
     },
     "US": {
         "PAGE_TITLE": "{{userStorySubject}} - Brukerhistorie {{userStoryRef}} - {{projectName}}",
@@ -1296,40 +1296,40 @@
         "TITLE_LINK_TASKBOARD": "Gå til oppgavetavlen",
         "TOTAL_POINTS": "totale poeng",
         "ADD": "brukerhistorie",
-        "ADD_BULK": "Add some new user stories in bulk",
-        "PROMOTED_FROM_ISSUE": "This user story has been promoted from issue:",
-        "PROMOTED_FROM_TASK": "This user story has been promoted from task:",
-        "CONVERTED_FROM_TASK": "This user story was originally a task.",
+        "ADD_BULK": "legg til flere nye brukerhistorier samlet",
+        "PROMOTED_FROM_ISSUE": "Denne brukerhistorien har blitt foreslått fra saken:",
+        "PROMOTED_FROM_TASK": "Denne brukerhistorien har blitt foreslått fra oppgaven:",
+        "CONVERTED_FROM_TASK": "Denne brukerhistorien var opprinnelig en oppgave",
         "TITLE_LINK_GO_TO_ISSUE": "Gå til hendelse",
-        "TITLE_LINK_GO_TO_TASK": "Go to task",
+        "TITLE_LINK_GO_TO_TASK": "Gå til oppgaver",
         "TITLE_DELETE_ACTION": "Slett brukerhistorie",
-        "TITLE_DELETE_MESSAGE": "Are you sure you want to delete <strong>“{{subject}}“</strong>?",
-        "LIGHTBOX_TITLE_BLOKING_US": "Blocking user story",
-        "NOT_ESTIMATED": "Ikke estimert",
-        "OWNER_US": "This user story belongs to",
-        "RELATE_TO_EPIC": "Link to epic",
-        "REMOVE_RELATIONSHIP_WITH_EPIC": "Remove epic relationship",
+        "TITLE_DELETE_MESSAGE": "Er du sikker på at du vil slette <strong>“{{subject}}“</strong>?",
+        "LIGHTBOX_TITLE_BLOKING_US": "Blokker brukerhistorie",
+        "NOT_ESTIMATED": "N/E",
+        "OWNER_US": "Denne brukerhistorien tilhører",
+        "RELATE_TO_EPIC": "Link til epos",
+        "REMOVE_RELATIONSHIP_WITH_EPIC": "Fjern relasjon til epos",
         "TRIBE": {
             "PUBLISH": "Publish as Gig in Taiga Tribe",
             "PUBLISH_INFO": "Mer info",
             "PUBLISH_TITLE": "More info on publishing in Taiga Tribe",
-            "PUBLISHED_AS_GIG": "Story published as Gig in Taiga Tribe",
-            "EDIT_LINK": "Edit link",
-            "CLOSE": "Close",
-            "SYNCHRONIZE_LINK": "synchronize with Taiga Tribe",
-            "PUBLISH_MORE_INFO_TITLE": "Do you need somebody for this task?",
+            "PUBLISHED_AS_GIG": "Historie publisert som Gig i Taiga Tribe",
+            "EDIT_LINK": "Rediger link",
+            "CLOSE": "Lukk",
+            "SYNCHRONIZE_LINK": "synkroniser med Taiga Tribe",
+            "PUBLISH_MORE_INFO_TITLE": "Trenger du noen til denne oppgaven?",
             "PUBLISH_MORE_INFO_TEXT": "<p>If you need help with a particular piece of work you can easily create gigs on<a href='http://taigatribe.com' title='Taiga Tribe'> Taiga Tribe </a> and receive help from all over the world. You will be able to control and manage the gig enjoying a great community eager to contribute.</p><p><a href='http://taigatribe.com' title='Taiga Tribe'> TaigaTribe </a>  was born as a Taiga sibling. Both platforms can live separately but we believe that there is much power in using them combined so we are making sure the integration works like a charm.</p>"
         }
     },
     "COMMENTS": {
         "TITLE": "Kommentarer",
-        "DELETED_INFO": "Comment deleted by {{user}}",
-        "COMMENTS_COUNT": "{{comments}} Comments",
-        "OLDER_FIRST": "Older first",
-        "RECENT_FIRST": "Recent first",
+        "DELETED_INFO": "Kommentar slettet av {{user}}",
+        "COMMENTS_COUNT": "{{comments}} Kommentarer",
+        "OLDER_FIRST": "Eldste først",
+        "RECENT_FIRST": "Nyeste først",
         "COMMENT": "Kommentar",
-        "EDITED_COMMENT": "Edited:",
-        "SHOW_HISTORY": "View historic",
+        "EDITED_COMMENT": "Redigert:",
+        "SHOW_HISTORY": "Se historikk",
         "TYPE_NEW_COMMENT": "Skriv en ny kommentar her",
         "SHOW_DELETED": "Vis slettede kommentarer",
         "HIDE_DELETED": "Skjul slettede kommentarer",
@@ -1341,22 +1341,22 @@
     },
     "ACTIVITY": {
         "TITLE": "Aktivitet",
-        "ACTIVITIES_COUNT": "{{activities}} Activities",
-        "TAGS_ADDED": "tags added:",
-        "TAGS_REMOVED": "tags removed:",
-        "US_POINTS": "{{role}} points",
-        "NEW_ATTACHMENT": "new attachment:",
-        "DELETED_ATTACHMENT": "deleted attachment:",
-        "UPDATED_ATTACHMENT": "updated attachment ({{filename}}):",
-        "CREATED_CUSTOM_ATTRIBUTE": "created custom attribute",
-        "UPDATED_CUSTOM_ATTRIBUTE": "updated custom attribute",
-        "BECAME_DEPRECATED": "became deprecated",
-        "BECAME_UNDEPRECATED": "became undeprecated",
+        "ACTIVITIES_COUNT": "{{activities}} Aktiviteter",
+        "TAGS_ADDED": "etikett lagt til",
+        "TAGS_REMOVED": "etikett fjernet",
+        "US_POINTS": "{{role}} poeng",
+        "NEW_ATTACHMENT": "nytt vedlegg",
+        "DELETED_ATTACHMENT": "Slettet vedlegg:",
+        "UPDATED_ATTACHMENT": "oppdatert vedlegg ({{filename}}):",
+        "CREATED_CUSTOM_ATTRIBUTE": "opprettet egendefinerte attributter",
+        "UPDATED_CUSTOM_ATTRIBUTE": "oppdatert egendefinert attributt",
+        "BECAME_DEPRECATED": "ble foreldet",
+        "BECAME_UNDEPRECATED": "ble utdatert",
         "TEAM_REQUIREMENT": "Team behov",
-        "CLIENT_REQUIREMENT": "Klientkrav",
+        "CLIENT_REQUIREMENT": "Kundekrav",
         "BLOCKED": "Blokkert",
         "VALUES": {
-            "NOT_SET": "not set",
+            "NOT_SET": "ikke satt",
             "UNASSIGNED": "ikke tildelt"
         },
         "FIELDS": {
@@ -1367,11 +1367,11 @@
             "STATUS": "status",
             "TYPE": "type",
             "ASSIGNED_TO": "tildelt til",
-            "ASSIGNED_USERS": "assigned users",
-            "DUE_DATE": "due date",
+            "ASSIGNED_USERS": "tildelt brukere",
+            "DUE_DATE": "forfallsdato",
             "MILESTONE": "sprint",
             "COLOR": "farge",
-            "PROMOTED_TO": "promoted to"
+            "PROMOTED_TO": "foreslått til"
         }
     },
     "BACKLOG": {
@@ -1382,15 +1382,15 @@
         "CUSTOMIZE_GRAPH_TEXT": "For å ha en flott graf som hjelper deg å følge utviklingen av prosjektet må du sette opp poeng og sprinter gjennom",
         "CUSTOMIZE_GRAPH_ADMIN": "Admin",
         "CUSTOMIZE_GRAPH_TITLE": "Sett opp poengene og sprintene gjennom Admin-panelet",
-        "TOTAL_STORIES_FILTERED": "of {{ totalUserStories }} user stories",
-        "TOTAL_STORIES": "{{ totalUserStories }} user stories",
+        "TOTAL_STORIES_FILTERED": "av {{ totalUserStories }} brukerhistorier",
+        "TOTAL_STORIES": "{{ totalUserStories }} brukerhistorier",
         "MOVE_US_TO_CURRENT_SPRINT": "Gå til nåværende sprint",
         "MOVE_US_TO_LATEST_SPRINT": "Flytt til siste Sprint",
         "EMPTY": "Backlogen er tom!",
-        "CREATE_NEW_US": "Create a new user story",
-        "CREATE_NEW_US_EMPTY_HELP": "Add a user story",
+        "CREATE_NEW_US": "Opprett en ny brukerhistorie",
+        "CREATE_NEW_US_EMPTY_HELP": "Legg til en brukerhistorie",
         "NO_MATCH": "No matching search result found with “{{ q }}”",
-        "NO_MATCH_HELP": "Try again using more general search terms",
+        "NO_MATCH_HELP": "Prøv med mer generelle søketermer",
         "EXCESS_OF_POINTS": "Overskudd av poeng",
         "PENDING_POINTS": "Ventende poeng",
         "CLOSED_POINTS": "lukket",
@@ -1407,7 +1407,7 @@
             "OPTIMAL": "Optimal mengde avventede poeng for sprint \"{{sprintName}}\" skal være {{value}}",
             "REAL": "Ekte avventende poeng for sprint \"{{sprintName}}\" er {{value}}",
             "INCREMENT_TEAM": "Inkrementelle poeng ved gruppekrav for sprint \"{{sprintName}}\" er {{value}}",
-            "INCREMENT_CLIENT": "Inkrementelle poeng med klientkrav for sprint \"{{sprintNam}}\" er {{verdi}}"
+            "INCREMENT_CLIENT": "Inkrementelle poeng med kundekrav for sprint \"{{sprintNam}}\" er {{verdi}}"
         },
         "TAGS": {
             "TOGGLE": "Endre synligheten til etiketter",
@@ -1415,15 +1415,15 @@
             "HIDE": "Skjul etiketter"
         },
         "FORECASTING": {
-            "TITLE": "Velocity forecasting",
-            "BACKLOG": "return to backlog",
+            "TITLE": "Hastighetsvarsling",
+            "BACKLOG": "returner til backlog",
             "NEW_SPRINT": "Candidate user stories for your next sprint based on your velocity.",
             "CURRENT_SPRINT": "Candidate user stories for your sprint based on your velocity. Click to add to current sprint.",
-            "ADD_NEW_SPRINT": "create sprint and add US",
-            "ADD_NEW_SPRINT_SHORT": "create sprint"
+            "ADD_NEW_SPRINT": "opprett sprint og legg til US",
+            "ADD_NEW_SPRINT_SHORT": "opprett sprint"
         },
         "TABLE": {
-            "COLUMN_US": "User Story",
+            "COLUMN_US": "Brukerhistorie",
             "TITLE_COLUMN_POINTS": "Velg visning per Rolle"
         },
         "SPRINT_SUMMARY": {
@@ -1434,7 +1434,7 @@
             "IOCAINE_DOSES": "iocaine<br />doser",
             "SHOW_STATISTICS_TITLE": "Vis statistikker",
             "TOGGLE_BAKLOG_GRAPH": "Vis/Skjul Burndown Graf",
-            "POINTS_PER_ROLE": "Points per role"
+            "POINTS_PER_ROLE": "poeng pr. rolle"
         },
         "SUMMARY": {
             "PROJECT_POINTS": "prosjekt<br />poeng",
@@ -1445,7 +1445,7 @@
         "FILTERS": {
             "TOGGLE": "Veksle filteres synlighet",
             "TITLE": "Filtre",
-            "HIDE_TITLE": "Hide filters"
+            "HIDE_TITLE": "Skjul filter"
         },
         "SPRINTS": {
             "TITLE": "SPRINTER",
@@ -1453,35 +1453,35 @@
             "LINK_TASKBOARD": "Sprint Oppgavepanel",
             "TITLE_LINK_TASKBOARD": "Gå til Oppgavepanel for \"{{name}}\"",
             "EMPTY": "Det er ingen sprinter enda",
-            "WARNING_EMPTY_SPRINT_ANONYMOUS": "This sprint has no user stories",
+            "WARNING_EMPTY_SPRINT_ANONYMOUS": "Sprinten har ingen brukerhistorier",
             "WARNING_EMPTY_SPRINT": "Slipp Brukerhistorier her fra din backlog for å starte en ny sprint",
-            "TITLE_ACTION_NEW_SPRINT": "Add a sprint",
+            "TITLE_ACTION_NEW_SPRINT": "Legg til en sprint",
             "TEXT_ACTION_NEW_SPRINT": "Det kan være lurt å lage en ny sprint i prosjektet ditt",
             "ACTION_SHOW_CLOSED_SPRINTS": "Vis lukkede sprinter",
             "ACTION_HIDE_CLOSED_SPRINTS": "Skjul lukkede sprinter"
         }
     },
     "ERROR": {
-        "TEXT1": "Something happened and the Taiga has captured the error to be able to work on it.",
+        "TEXT1": "Noe skjedde og våre Ompa Lompaer har registrert feilen for å jobbe med den.",
         "NOT_FOUND": "Ikke funnet",
         "NOT_FOUND_TEXT": "Error 404. Siden du ser etter eksisterer ikke lenger. Kanskje du kan returnere til TAIGA-hjemmesiden og se om du kan finne det du leter etter.",
         "PERMISSION_DENIED": "Tilgang nektet",
         "PERMISSION_DENIED_TEXT": "Du har ikke tilgang til å aksessere denne siden",
-        "VERSION_ERROR": "Some other user inside Taiga has changed this before and your changes can't be applied. Save them elsewhere, reload the page and re-apply your changes again or they will be lost."
+        "VERSION_ERROR": "Noen andre som bruker Taiga har endret dette før, og våre Ompa Lompaer kan ikke lagre dine endringer. Vennligst last inn på nytt og utfør dine endringer igjen slik at de ikke går tapt."
     },
     "TASKBOARD": {
         "PAGE_TITLE": "{{sprintName}} - Sprint oppgavepanel - {{projectName}}",
         "PAGE_DESCRIPTION": "Sprint {{sprintName}} (from {{startDate}} til {{endDate}}) med {{projectName}}. Fullført {{completedPercentage}}% ({{completedPoints}} av {{totalPoints}} poeng). {{openTasks}} åpne oppgaver av {{totalTasks}}.",
         "SECTION_NAME": "Oppgavetavle",
-        "TITLE_ACTION_ADD": "Add a new task",
-        "TITLE_ACTION_ADD_BULK": "Add some new tasks in bulk",
-        "TITLE_ACTION_ADD_ISSUE": "Add a new issue",
-        "TITLE_ACTION_ADD_ISSUE_BULK": "Add some new issues in bulk",
+        "TITLE_ACTION_ADD": "Legg til ny oppgave",
+        "TITLE_ACTION_ADD_BULK": "Legg til noen nye oppgaver samlet",
+        "TITLE_ACTION_ADD_ISSUE": "Legg til en ny hendelse",
+        "TITLE_ACTION_ADD_ISSUE_BULK": "Legg til nye hendelser i mengder",
         "TITLE_ACTION_ASSIGN": "Tildel oppgave",
-        "PLACEHOLDER_CARD_TITLE": "This could be a user story",
+        "PLACEHOLDER_CARD_TITLE": "Dette kan være en brukerhistorie",
         "PLACEHOLDER_CARD_TEXT": "Go to the <a href=\"{{ backlogUrl }}\" title=\"Go to backlog\">backlog</a> and drag user stories to this sprint; split the stories into tasks to track them separately.",
-        "TASK_NOT_FOUND_TITLE": "No matching results found",
-        "TASK_NOT_FOUND_TEXT": "Try again using more general search terms or disabling some filters.",
+        "TASK_NOT_FOUND_TITLE": "Ingen matchende resultat funnet",
+        "TASK_NOT_FOUND_TEXT": "Forsøk igjen med mer generelle søketermer eller slå av enkelte filtre.",
         "TITLE_DATE_RANGE": "{{startDate}} <span>to</span> {{endDate}}",
         "TABLE": {
             "COLUMN": "Brukerhistorie",
@@ -1490,8 +1490,8 @@
             "TITLE_ACTION_FOLD_ROW": "Brett Rad",
             "TITLE_ACTION_UNFOLD_ROW": "Brett ut Rad",
             "FIELD_POINTS": "poeng",
-            "ROW_STORYLESS_TASKS_TITLE": "Storyless tasks",
-            "ROW_ISSUES_TITLE": "Sprint issues"
+            "ROW_STORYLESS_TASKS_TITLE": "Oppgave uten historie",
+            "ROW_ISSUES_TITLE": "Sprinthendelser"
         },
         "CHARTS": {
             "XAXIS_LABEL": "Dager",
@@ -1505,9 +1505,9 @@
         "MOVE_TO_SPRINT": {
             "TITLE_ACTION_MOVE_UNFINISHED": "Move unfinished items to another sprint",
             "TITLE_MOVE_UNFINISHED": "Move unfinished items to another open sprint",
-            "MOVE_TO_OPEN_SPRINT": "Move to open sprint",
+            "MOVE_TO_OPEN_SPRINT": "Flytt til åpen sprint",
             "NO_OPEN_SPRINTS": "There are no other open sprints. Please create one first.",
-            "SELECT_DESTINATION_PLACEHOLDER": "Select destination",
+            "SELECT_DESTINATION_PLACEHOLDER": "Velg mål",
             "UNFINISHED_USER_STORIES_COUNT": "{total, plural, =1{<strong>#</strong> unfinished user story} other{<strong>#</strong> unfinished user stories}}",
             "UNFINISHED_STORYLESS_TASKS_COUNT": "{total, plural, =1{<strong>#</strong> unfinished storyless task} other{<strong>#</strong> unfinished storyless tasks}}",
             "UNFINISHED_ISSUES_COUNT": "{total, plural, =1{<strong>#</strong> unfinished issue} other{<strong>#</strong> unfinished issue}}",
@@ -1536,62 +1536,62 @@
     },
     "NOTIFICATION": {
         "OK": "Alt er ok",
-        "WARNING": "Oops, something went wrong...",
-        "WARNING_TEXT": "Your changes were not saved!",
-        "SAVED": "The Taiga saved all your changes!",
+        "WARNING": "Oops, noe gikk galt...",
+        "WARNING_TEXT": "Våre Ompa Lompaer er lei seg, dine endringer ble ikke lagret!",
+        "SAVED": "Våre Ompa Lompaer har lagret alle dine endringer!",
         "CLOSE": "Lukk melding",
         "MAIL": "Varsler per Epost",
-        "DESKTOP": "Desktop notifications using browser alerts",
+        "DESKTOP": "Skrivebordsvarsel ved bruk av varsler i nettleser",
         "ASK_DELETE": "Er du sikker på at du vil slette?"
     },
     "CANCEL_ACCOUNT": {
         "TITLE": "Kanseler din konto",
-        "SUBTITLE": "We're sorry you are leaving the Taiga, we hope you enjoyed your stay :)",
+        "SUBTITLE": "Ompa Lompaene våre er lei seg for at du forlater Taiga, de håper at du likte oppholdet :)",
         "PLACEHOLDER_INPUT_TOKEN": "kanseler konto token",
         "ACTION_LEAVING": "Ja, jeg går!",
-        "SUCCESS": "The Taiga removed your account"
+        "SUCCESS": "Våre Ompa Lompaer har fjernet din konto"
     },
     "CHANGE_EMAIL_FORM": {
         "TITLE": "Bytt din epost",
         "SUBTITLE": "Ett klikk til og din epost vil være oppdatert!",
         "PLACEHOLDER_INPUT_TOKEN": "skift epost token",
         "ACTION_CHANGE_EMAIL": "Endre epost",
-        "SUCCESS": "Your email address has been successfully changed"
+        "SUCCESS": "Endring av din epost var vellykket"
     },
     "VERIFY_EMAIL_FORM": {
-        "TITLE": "Verify your email",
-        "SUBTITLE": "One click more and your email will be verified!",
+        "TITLE": "Verifiser din epost",
+        "SUBTITLE": "Ett klikk til og eposten din versifiseres!",
         "PLACEHOLDER_INPUT_TOKEN": "skift epost token",
-        "ACTION_VERIFY_EMAIL": "Verify email",
-        "SUCCESS": "Congratulations!!, your email address has been verified"
+        "ACTION_VERIFY_EMAIL": "Verifiser epost",
+        "SUCCESS": "Gratulerer, din epost-adresse har blitt verifisert"
     },
     "ISSUES": {
         "PAGE_TITLE": "Hendelser - {{projectName}}",
         "PAGE_DESCRIPTION": "Hendelsespanelet for prosjekt {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Hendelse",
-        "ACTION_NEW_ISSUE": "NY HENDELSE",
-        "ACTION_ATTACH_SPRINT": "Attach issue to Sprint",
-        "ACTION_DETACH_SPRINT": "Detach issue from Sprint",
+        "ACTION_NEW_ISSUE": "NEW ISSUE",
+        "ACTION_ATTACH_SPRINT": "Legg hendelsen til Sprint",
+        "ACTION_DETACH_SPRINT": "Løsne hendelse fra Sprint",
         "EXTERNAL_REFERENCE": "Denne hendelsen har blitt opprettet av",
         "GO_TO_EXTERNAL_REFERENCE": "Gå til opphav",
         "ACTION_DELETE": "Slett hendelse",
         "LIGHTBOX_TITLE_BLOKING_ISSUE": "Blokker hendelse",
         "LINK_TASKBOARD": "Oppgavetavle",
         "TITLE_LINK_TASKBOARD": "Gå til oppgavetavlen",
-        "FILTER_SPRINTS": "Filter Sprints",
-        "CHOOSE_SPRINT": "Which Sprint?",
+        "FILTER_SPRINTS": "Filtrer Sprinter",
+        "CHOOSE_SPRINT": "Hvilken Sprint?",
         "FIELDS": {
             "PRIORITY": "Prioritet",
             "SEVERITY": "Alvorlighetsgrad",
             "TYPE": "Type"
         },
-        "FILTER_ISSUES": "Filter issues",
+        "FILTER_ISSUES": "Filtrer hendelser",
         "CONFIRM_DETACH_FROM_SPRINT": {
-            "TITLE": "Detach issue from sprint",
+            "TITLE": "Løsne hendelse fra sprint",
             "MESSAGE": "You are about to detach the issue from the sprint <strong>{{ sprintName }}<strong>"
         },
         "CONFIRM_CHANGE_FROM_SPRINT": {
-            "TITLE": "Attach issue to sprint",
+            "TITLE": "Fest hendelse til sprint",
             "MESSAGE": "<strong>This issue is currently attached to sprint {{ oldSprintName }}</strong>. You are about to detach it from that sprint and attach it instead to sprint <strong>{{ newSprintName }}.</strong>"
         },
         "TABLE": {
@@ -1602,9 +1602,9 @@
                 "ISSUE": "Hendelse",
                 "VOTES": "Stemmer",
                 "STATUS": "Status",
-                "ATTACHMENTS": "Attachments",
-                "MODIFIED": "Modified",
-                "ASSIGNED_TO": "Assign to"
+                "ATTACHMENTS": "Vedlegg",
+                "MODIFIED": "Redigert",
+                "ASSIGNED_TO": "Tildel til"
             },
             "TITLE_ACTION_CHANGE_STATUS": "Endre status",
             "TITLE_ACTION_ASSIGNED_TO": "Tildelt til",
@@ -1625,19 +1625,19 @@
         "SECTION_NAME": "Kanban",
         "TITLE_ACTION_FOLD": "Slå sammen kolonne",
         "TITLE_ACTION_UNFOLD": "Brett ut kolonne",
-        "TITLE_ACTION_ADD_US": "Add new user story",
-        "TITLE_ACTION_ADD_BULK": "Add new bulk",
+        "TITLE_ACTION_ADD_US": "Legg til ny brukerhistorie",
+        "TITLE_ACTION_ADD_BULK": "Legg til ny bulk",
         "ACTION_SHOW_ARCHIVED": "Vis arkiverte",
         "ACTION_HIDE_ARCHIVED": "Skjul arkivert",
-        "US_NOT_FOUND_TITLE": "No matching results found",
+        "US_NOT_FOUND_TITLE": "Ingen matchende resultat funnet",
         "US_NOT_FOUND_TEXT_P1": "Try again using more general search terms or disabled some filters.",
         "US_NOT_FOUND_TEXT_P2": "<strong>Archived stories</strong> are not loaded by default. Unfold the archived statuses to expand your search.",
-        "PLACEHOLDER_CARD_TITLE": "This could be a user story",
+        "PLACEHOLDER_CARD_TITLE": "Dette kan være en brukerhistorie",
         "PLACEHOLDER_CARD_TEXT": "Create user stories here and change their status to track their progress.",
-        "NUMBER_US": "Number of US",
-        "ARCHIVED": "(Archived)",
-        "CREATE_SWIMLANE": "Create more swimlanes",
-        "UNCLASSIFIED_USER_STORIES": "Unclassified user stories",
+        "NUMBER_US": "Antall av US",
+        "ARCHIVED": "(Arkivert)",
+        "CREATE_SWIMLANE": "Opprett flere svømmebaner",
+        "UNCLASSIFIED_USER_STORIES": "Uklassifisert brukerhistorie",
         "UNCLASSIFIED_USER_STORIES_TOOLTIP": "The user stories that are not part of any swimlane are here."
     },
     "SEARCH": {
@@ -1682,10 +1682,10 @@
             "CHANGE_PASSWORD": "Endre passord",
             "EMAIL_NOTIFICATIONS": "Epost-varsler",
             "DESKTOP_NOTIFICATIONS": "Desktop notifications",
-            "EVENTS": "Events"
+            "EVENTS": "Arrangementer"
         },
         "NOTIFICATIONS": {
-            "LIVE_SECTION_NAME": "Desktop Notifications",
+            "LIVE_SECTION_NAME": "Skrivebordsvarsel",
             "SECTION_NAME": "E-postvarsler",
             "COLUMN_PROJECT": "Prosjekt",
             "COLUMN_RECEIVE_ALL": "Motta alle",
@@ -1696,25 +1696,25 @@
             "OPTION_NONE": "Ingen"
         },
         "PROJECT_SETTINGS": {
-            "SET_START_PAGES": "Set start pages",
-            "START_PAGES_PER_PROJECT": "Set start pages per project",
+            "SET_START_PAGES": "Sett startside",
+            "START_PAGES_PER_PROJECT": "Sett startside pr. prosjekt",
             "COLUMN_PROJECT": "Prosjekt",
-            "COLUMN_STARTPAGE": "Start page",
-            "DEFAULT_VALUE": "Default"
+            "COLUMN_STARTPAGE": "Startside",
+            "DEFAULT_VALUE": "Standard"
         },
         "EVENTS": {
-            "SECTION_NAME": "Events",
+            "SECTION_NAME": "Arrangementer",
             "SECTION_DESCRIPTION": "Important events in Taiga header",
             "SECTION_DESCRIPTION_EXPANDED": "(direct mentions, updates in items that you are watching...)",
-            "COLUMN_ENABLED": "Enabled",
+            "COLUMN_ENABLED": "Aktivert",
             "COLUMN_PROJECT": "Prosjekt"
         }
     },
     "USER_PROFILE": {
         "ACTION_USE_GRAVATAR": "Bruk standardbilde",
         "ACTION_DELETE_ACCOUNT": "Slett Taiga-konto",
-        "ACTION_DOWNLOAD_PROFILE": "Download Taiga profile",
-        "ACTION_VERIFY_EMAIL": "Verify your email",
+        "ACTION_DOWNLOAD_PROFILE": "Last ned Taiga-profil",
+        "ACTION_VERIFY_EMAIL": "Verifiser din epost",
         "CHANGE_EMAIL_SUCCESS": "<strong>Sjekk din innboks!</strong><br />Vi har sent en epost til din konto <br />med instruksjonene for å velge ny epostadresse.",
         "VERIFY_EMAIL_SUCCESS": "<strong>Check your inbox!</strong><br />We have sent you an email<br />with instructions on how to verify your address",
         "CHANGE_PHOTO": "Endre bilde",
@@ -1739,24 +1739,24 @@
         "DELETE_LIGHTBOX_TITLE": "Slett wiki-siden",
         "DELETE_LINK_TITLE": "Slett wiki-lenke",
         "NAVIGATION": {
-            "HOME": "Main Page",
-            "SECTION_NAME": "BOOKMARKS",
-            "ACTION_ADD_LINK": "Add bookmark",
-            "ALL_PAGES": "All wiki pages"
+            "HOME": "Hovedside",
+            "SECTION_NAME": "BOKMERKER",
+            "ACTION_ADD_LINK": "Legg til bokmerke",
+            "ALL_PAGES": "Alle Wiki-sidene"
         },
         "SUMMARY": {
             "TIMES_EDITED": "ganger <br />redigert",
             "LAST_EDIT": "siste <br />endring",
             "LAST_MODIFICATION": "siste endring"
         },
-        "SECTION_PAGES_LIST": "All pages",
+        "SECTION_PAGES_LIST": "Alle sider",
         "PAGES_LIST_COLUMNS": {
-            "TITLE": "Title",
-            "EDITIONS": "Editions",
+            "TITLE": "Tittel",
+            "EDITIONS": "Utgivelser",
             "CREATED": "Opprettet",
-            "MODIFIED": "Modified",
-            "CREATOR": "Creator",
-            "LAST_MODIFIER": "Last modifier"
+            "MODIFIED": "Redigert",
+            "CREATOR": "Oppretter",
+            "LAST_MODIFIER": "Sist endret"
         }
     },
     "HINTS": {
@@ -1780,8 +1780,8 @@
         "TASK_CREATED_WITH_US": "{{username}} has created a new task {{obj_name}} in {{project_name}} which belongs to the user story {{us_name}}",
         "WIKI_CREATED": "{{username}} har opprettet en ny wiki-side {{obj_name}} i {{project_name}}",
         "MILESTONE_CREATED": "{{username}} har opprettet en ny sprint {{obj_name}} i {{project_name}}",
-        "EPIC_CREATED": "{{username}} has created a new epic {{obj_name}} in {{project_name}}",
-        "EPIC_RELATED_USERSTORY_CREATED": "{{username}} has related the user story {{related_us_name}} to the epic {{epic_name}} in {{project_name}}",
+        "EPIC_CREATED": "{{username}} har opprettet et nytt epos {{obj_name}} i {{project_name}}",
+        "EPIC_RELATED_USERSTORY_CREATED": "{{username}} har relatert brukerhistorien {{related_us_name}} til eposet {{epic_name}} i {{project_name}}",
         "NEW_PROJECT": "{{username}} opprettet prosjektet {{project_name}}",
         "MILESTONE_UPDATED": "{{username}} har oppdatert sprint {{obj_name}}",
         "US_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the user story {{obj_name}}",
@@ -1794,13 +1794,13 @@
         "TASK_UPDATED_WITH_US": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} which belongs to the user story {{us_name}}",
         "TASK_UPDATED_WITH_US_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} which belongs to the user story {{us_name}} to {{new_value}}",
         "WIKI_UPDATED": "{{username}} har oppdatert wiki-siden {{obj_name}}",
-        "EPIC_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the epic {{obj_name}}",
-        "EPIC_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the epic {{obj_name}} to {{new_value}}",
-        "EPIC_UPDATED_WITH_NEW_COLOR": "{{username}} has updated the \"{{field_name}}\" of the epic {{obj_name}} to <span class=\"new-color\" style=\"background: {{new_value}}\"></span>",
+        "EPIC_UPDATED": "{{username}} har oppdatert attributtet \"{{field_name}}\" på eposet {{obj_name}}",
+        "EPIC_UPDATED_WITH_NEW_VALUE": "{{username}} har oppdatert attributtet \"{{field_name}}\" på eposet {{obj_name}} til {{new_value}}",
+        "EPIC_UPDATED_WITH_NEW_COLOR": "{{username}} har oppdatert \"{{field_name}}\" på eposet {{obj_name}} til <span class=\"new-color\" style=\"background: {{new_value}}\"></span>",
         "NEW_COMMENT_US": "{{username}} has commented in the user story {{obj_name}}",
         "NEW_COMMENT_ISSUE": "{{username}} har kommentert på hendelsen {{obj_name}}",
         "NEW_COMMENT_TASK": "{{username}} har kommentert på oppgave {{obj_name}}",
-        "NEW_COMMENT_EPIC": "{{username}} has commented in the epic {{obj_name}}",
+        "NEW_COMMENT_EPIC": "{{username}} har kommentert på eposet {{obj_name}}",
         "NEW_MEMBER": "{{project_name}} har et nytt medlem",
         "US_ADDED_MILESTONE": "{{username}} has added the user story {{obj_name}} to {{sprint_name}}",
         "US_MOVED": "{{username}} has moved the user story {{obj_name}}",
@@ -1809,21 +1809,21 @@
         "UNBLOCKED": "{{username}} har avblokkert {{obj_name}}",
         "NEW_USER": "{{username}} har sluttet seg til Taiga",
         "ITEM_TYPES": {
-            "USERSTORY": "User Story",
+            "USERSTORY": "Brukerhistorie",
             "ISSUE": "Hendelse",
             "TASK": "Oppgave"
         }
     },
     "EVENTS": {
-        "TITLE": "Events",
-        "MY_EVENTS": "My events",
-        "DISMISS_ALL": "Dismiss all",
-        "VIEW_ALL": "View all notifications",
-        "NO_NEW_EVENTS": "No new events",
-        "NO_EVENTS_YET": "There are no events yet",
-        "ASSIGNED_YOU": "{{username}} assigned you to {{obj_name}}",
+        "TITLE": "Arrangementer",
+        "MY_EVENTS": "Mine arrangementer",
+        "DISMISS_ALL": "Avvis alle",
+        "VIEW_ALL": "Se alle varsler",
+        "NO_NEW_EVENTS": "Ingen nye arrangementer",
+        "NO_EVENTS_YET": "Det finnes ingen arrangementer enda",
+        "ASSIGNED_YOU": "{{username}} tildelte til deg {{obj_name}}",
         "ADDED_YOU_AS_WATCHER": "{{username}} added you as watcher on {{obj_name}}",
-        "ADDED_YOU_AS_MEMBER": "{{username}} added you as member",
+        "ADDED_YOU_AS_MEMBER": "{{username}} la deg til som medlem",
         "MENTIONED_YOU": "{{username}} mentioned you on {{obj_name}}",
         "MENTIONED_YOU_IN_COMMENT": "{{username}} mentioned you in a comment on {{obj_name}}",
         "COMMENTED": "{{username}} has commented on {{obj_name}}"
@@ -1933,10 +1933,10 @@
         }
     },
     "ZOOM": {
-        "TITLE": "Zoom:",
-        "ZOOM-1": "Compact",
-        "ZOOM-2": "Default",
-        "ZOOM-3": "Detailed",
-        "ZOOM-4": "Expanded"
+        "TITLE": "Forstørr:",
+        "ZOOM-1": "Kompakt",
+        "ZOOM-2": "Standard",
+        "ZOOM-3": "Detaljert",
+        "ZOOM-4": "Ekspandert"
     }
 }
