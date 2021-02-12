@@ -89,7 +89,7 @@
 
 .single-attachment {
     @include font-size(small);
-    background: rgba($color-white, .9);
+    background: $color-white;
     position: relative;
     .attachment-name {
         display: flex;

@@ -54,7 +54,7 @@ section.attachments.attachment-full(
                 type="vm.type"
             )
 
-          .single-attachment(ng-repeat="file in vm.uploadingAttachments()")
+          .single-attachment.uploading-attachment(ng-repeat="file in vm.uploadingAttachments()")
               .attachment-name
                   tg-svg(svg-icon="icon-attachment")
                   span {{file.name}}
