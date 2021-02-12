@@ -1,4 +1,11 @@
 .attachment-simple {
+    &.attachment-dragover {
+        .attachments-empty {
+            background-color: $color-gray200;
+            border-color: $color-link-primary;
+            font-style: italic;
+        }
+    }
     .attachment-name {
         flex-basis: 70%;
         flex-grow: 0;

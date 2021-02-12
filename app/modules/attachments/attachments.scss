@@ -90,7 +90,6 @@
 .single-attachment {
     @include font-size(small);
     background: $color-white;
-    position: relative;
     .attachment-name {
         display: flex;
         padding-right: 1rem;
@@ -114,33 +113,6 @@
     &.ng-enter-active {
         opacity: 1;
         transform: translateY(0);
-    }
-}
-
-
-@keyframes fadeAnimation {
-    from {
-        opacity: 1;
-        position: relative;
-        top: 0;
-    }
-    to {
-        opacity: 0;
-        position: relative;
-        top: -2rem;
-    }
-}
-
-@keyframes fadeAnimationReversed {
-    from {
-        opacity: 0;
-        position: relative;
-        top: 2rem;
-    }
-    to {
-        opacity: 1;
-        position: relative;
-        top: 0;
     }
 }
 
