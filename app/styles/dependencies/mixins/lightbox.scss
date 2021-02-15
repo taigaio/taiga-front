@@ -44,7 +44,7 @@
         svg {
             @include svg-size(6rem);
             display: block;
-            fill: $whitish;
+            fill: $color-gray200;
         }
     }
     .title {

@@ -28,12 +28,12 @@
         input {
             display: none;
             &:checked+label {
-                background: $primary-light;
-                color: $white;
+                background: $color-link-primary;
+                color: $color-white;
                 transition: background .2s ease-in;
             }
             &:checked+label:hover {
-                background: $primary-light;
+                background: $color-link-primary;
             }
             +label {
                 background: rgba($whitish, .7);
@@ -46,7 +46,7 @@
                 transition: background .2s ease-in;
             }
             +label:hover {
-                background: rgba($primary-light, .3);
+                background: rgba($color-link-primary, .3);
                 transition: background .2s ease-in;
             }
         }
@@ -83,7 +83,7 @@
         fieldset {
             margin-right: .5rem;
             &:hover {
-                color: $white;
+                color: $color-white;
                 transition: all .2s ease-in;
                 transition-delay: .2s;
             }
@@ -95,8 +95,8 @@
         .iocaine {
             vertical-align: middle;
             &:hover {
-                background: $primary-light;
-                border: 1px solid $primary;
+                background: $color-link-primary;
+                border: 1px solid $color-link-primary;
             }
             svg {
                 @include svg-size(.75rem);
@@ -105,17 +105,17 @@
 
         .blocked {
             &:hover {
-                background: $red-light;
-                border: 1px solid $red;
+                background: $color-link-red;
+                border: 1px solid $color-link-red;
             }
         }
         .client-requirement,
         .team-requirement,
         .iocaine-flag {
             input:checked+label {
-                background: $primary;
-                border: 1px solid $primary;
-                color: $white;
+                background: $color-link-primary;
+                border: 1px solid $color-link-primary;
+                color: $color-white;
 
             }
         }
@@ -126,8 +126,8 @@
                 display: block;
             }
             input:checked+label {
-                background: $red;
-                border: 1px solid $red;
+                background: $color-link-red;
+                border: 1px solid $color-link-red;
                 color: $white;
             }
         }
@@ -507,13 +507,13 @@
         }
     }
     .progress-bar-wrapper {
-        background: darken($whitish, 5%);
+        background: $color-gray200;
         height: 30px;
         margin-bottom: 1rem;
         padding: 3px;
         position: relative;
         .bar {
-            background: $primary-light;
+            background: $color-link-primary;
             height: 24px;
             position: absolute;
             transition: width .1s linear;
@@ -522,9 +522,9 @@
             @include font-type(regular);
             @include font-type(medium);
             @include font-size(large);
-            background: darken($whitish, 5%);
+            background: $color-gray200;
             bottom: 35px;
-            color: $gray;
+            color: $color-black600;
             padding: .3rem;
             position: absolute;
             transition: left .1s linear;
@@ -587,7 +587,7 @@
     .user-list-single {
         &:hover,
         &.selected {
-            background: rgba(lighten($primary-light, 30%), .3);
+            background: rgba(lighten($color-link-primary, 30%), .3);
             cursor: pointer;
         }
         &:hover {
@@ -607,13 +607,13 @@
         text-align: center;
         .icon-close {
             cursor: pointer;
-            fill: $gray;
+            fill: $color-black600;
             position: absolute;
             right: 0;
             top: 0;
             transition: fill .2s;
             &:hover {
-                fill: $red-light;
+                fill: $color-link-red;
             }
             svg {
                 @include svg-size(2rem);
@@ -626,8 +626,12 @@
             margin-top: 1rem;
         }
         a {
-            color: $primary;
+            color: $color-link-primary;
         }
+    }
+    .form-action {
+        display: flex;
+        justify-content: center;
     }
 }
 
@@ -664,7 +668,7 @@
     }
     .description {
         a {
-            color: $primary;
+            color: $color-link-primary;
         }
     }
     img {
@@ -675,7 +679,7 @@
 .lightbox-leave-project-warning {
     text-align: center;
     .icon {
-        fill: $gray-light;
+        fill: $color-gray400;
         height: 3rem;
         margin-bottom: 1rem;
         width: 3rem;
@@ -718,8 +722,8 @@
         margin: 1rem 0 .5rem;
     }
     .suggestion {
-        background: rgba($gray-lighter, .2);
-        color: $gray-lighter;
+        background: rgba($color-gray200, .2);
+        color: $color-gray400;
         justify-content: flex-start;
         margin: 0 .5rem .5rem;
         min-height: 2rem;
@@ -734,14 +738,14 @@
         &.clickable {
             &:hover,
             &.active {
-                background: rgba($primary-light, .9);
-                color: $white;
+                background: rgba($color-link-primary, .9);
+                color: $color-white;
             }
         }
     }
     .delete-due-date {
         @include font-size(small);
-        color: $gray;
+        color: $color-black600;
         float: right;
         margin: 1rem .25rem 0 0;
         transition: color .3s linear;
@@ -749,7 +753,7 @@
             fill: currentColor;
         }
         &:hover {
-            color: $red;
+            color: $cplor-link-red;
             transition: color .3s linear;
             .icon {
                 fill: currentColor;
@@ -870,8 +874,8 @@
                 margin-right: 0;
             }
             &.counter {
-                background: $gray-lighter;
-                color: $gray-light;
+                background: $color-gray200;
+                color: $color-black600;
                 font-weight: 400;
                 height: $item-size;
                 line-height: $item-size;
@@ -895,7 +899,7 @@
             top: 2rem;
             &:hover {
                 cursor: pointer;
-                fill: $red;
+                fill: $color-link-red;
                 transition: fill .2s;
             }
         }
@@ -945,7 +949,7 @@
             margin-bottom: .5rem;
         }
         li {
-            border-bottom: 1px solid $gray-light;
+            border-bottom: 1px solid $color-gray400;
             &:last-child {
                 border: 0;
             }
@@ -1010,7 +1014,7 @@
         }
 
         .show-more {
-            border-top: 1px solid $gray-light;
+            border-top: 1px solid $color-gray200;
             padding-top: .5rem;
             text-align: center;
         }
@@ -1089,15 +1093,12 @@
         input {
             display: none;
             &:checked+label {
-                background: $primary-light;
+                background: $color-link-primary;
                 color: $white;
                 transition: background .2s ease-in;
             }
-            &:checked+label:hover {
-                background: $primary-light;
-            }
             +label {
-                background: rgba($whitish, .7);
+                background: $color-gray200;
                 cursor: pointer;
                 display: block;
                 padding: 2rem 1rem;
@@ -1106,7 +1107,7 @@
                 transition: background .2s ease-in;
             }
             +label:hover {
-                background: rgba($primary-light, .3);
+                background: $color-link-primary;
                 transition: background .2s ease-in;
             }
         }
@@ -1140,23 +1141,23 @@
         input {
             display: none;
             &:checked+label {
-                background: $primary-light;
+                background: $color-link-primary;
                 color: $white;
                 fill: $white;
                 transition: background .2s ease-in;
             }
             +label {
-                background: $mass-white;
-                color: $grayer;
+                background: $color-white;
+                color: $color-black600;
                 cursor: pointer;
                 display: block;
                 padding: .5rem;
                 transition: background .2s ease-in;
             }
             +label:hover {
-                background: $primary-light;
-                color: $white;
-                fill: $white;
+                background: $color-link-primary;
+                color: $color-white;
+                fill: $color-white;
             }
         }
     }
