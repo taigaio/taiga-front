@@ -45,7 +45,7 @@ Wysiwyg = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoa
 
         linksEvents = () ->
             $el.on 'mousedown', '.js-wysiwyg-html', (e) =>
-                if e.target.tagName != 'A'
+                if e.target.tagName != 'A' && e.target.parentElement.tagName != 'A'
                     $scope.$applyAsync () => $scope.setEditMode(true)
 
             editorLinks = textEditor.querySelectorAll('a[target="_blank"]:not(.link-event)')
