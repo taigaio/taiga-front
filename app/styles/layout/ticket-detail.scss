@@ -97,6 +97,10 @@
         overflow: visible;
     }
 
+    tg-wysiwyg {
+        max-width: calc(100% - 2rem);
+    }
+
     .read-mode .wysiwyg {
         padding: 1rem;
     }
