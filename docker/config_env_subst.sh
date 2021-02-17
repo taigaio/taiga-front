@@ -58,5 +58,8 @@ contribs=$( IFS=,; echo "[${contribs[*]}]" )
 
 export CONTRIB_PLUGINS=$contribs
 
-envsubst < /usr/share/nginx/html/conf.json.template \
-         > /usr/share/nginx/html/conf.json
+FILE=/usr/share/nginx/html/conf.json
+if [ ! -f "$FILE" ]; then
+    envsubst < /usr/share/nginx/html/conf.json.template \
+             > /usr/share/nginx/html/conf.json
+fi
