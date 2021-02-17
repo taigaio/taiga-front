@@ -246,6 +246,11 @@ $dropdown-width: 260px;
         &.create-project-btn {
             display: flex;
             flex: 1;
+            padding: .35rem 0;
+
+            svg {
+                @include svg-size(1.3rem);
+            }
         }
         &.blocked-project {
             svg {
