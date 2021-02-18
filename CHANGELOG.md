@@ -6,6 +6,9 @@
 - Added translation to Serbian
 - Added translation to Vietnamese
 - Fix: Add new buttons and style to transfer owner, imports warnings lightbox and warnings on new projects
+- Fix: User mention with underscore
+- Fix: Drag and drop on empty backlog
+- Feat: Editor, image with links
 
 ## 6.0.4 (2021-02-15)
 
