@@ -24,7 +24,9 @@
             placeholder="{{'COMMON.FILTERS.PLACEHOLDER_FILTER_NAME' | translate}}"
         )
 
-        button.button-custom-filters.button-primary.e2e-open-custom-filter-form(
+        button.btn-small.e2e-open-custom-filter-form(
+            variant="primary"
+            ng-disabled="vm.customFilterName.length === 0"
             type="submit"
             translate="COMMON.FILTERS.ACTION_SAVE_CUSTOM_FILTER"
         )

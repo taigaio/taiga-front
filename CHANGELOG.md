@@ -2,7 +2,7 @@
 
 ## 6.0.6 (unreleased)
 
-- ...
+- Fix: Can't create empty custom filters anymore
 
 
 ## 6.0.5 (2021-02-22)

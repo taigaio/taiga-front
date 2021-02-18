@@ -54,7 +54,8 @@ class FilterController
         return @.opened == filterName
 
     saveCustomFilter: () ->
-        @.onSaveCustomFilter({name: @.customFilterName})
+        if @.customFilterName.length > 0
+            @.onSaveCustomFilter({name: @.customFilterName})
         @.customFilterForm = false
         @.opened = 'custom-filter'
         @.customFilterName = ''
