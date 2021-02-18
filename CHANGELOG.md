@@ -5,7 +5,7 @@
 - Added translation to Dansk
 - Added translation to Serbian
 - Added translation to Vietnamese
-
+- Fix: Add new buttons and style to transfer owner, imports warnings lightbox and warnings on new projects
 
 ## 6.0.4 (2021-02-15)
 

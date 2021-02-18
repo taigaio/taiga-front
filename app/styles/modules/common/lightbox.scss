@@ -96,7 +96,7 @@
             vertical-align: middle;
             &:hover {
                 background: $primary-light;
-                border: 1px solid $primary;
+                border: 1px solid $color-link-primary;
             }
             svg {
                 @include svg-size(.75rem);
@@ -113,8 +113,8 @@
         .team-requirement,
         .iocaine-flag {
             input:checked+label {
-                background: $primary;
-                border: 1px solid $primary;
+                background: $color-link-primary;
+                border: 1px solid $color-link-primary;
                 color: $white;
 
             }
@@ -601,6 +601,9 @@
         padding: .5rem;
         text-align: center;
     }
+    .btn-big.btn-big-full {
+        width: 100%;
+    }
     .add-comment {
         padding: 1rem 0;
         position: relative;
@@ -626,7 +629,7 @@
             margin-top: 1rem;
         }
         a {
-            color: $primary;
+            color: $color-link-primary;
         }
     }
 }
@@ -664,7 +667,7 @@
     }
     .description {
         a {
-            color: $primary;
+            color: $color-link-primary;
         }
     }
     img {
