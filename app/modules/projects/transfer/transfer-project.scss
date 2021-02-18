@@ -17,8 +17,8 @@
     }
     &-detail {
         align-items: center;
-        border-bottom: 1px solid $whitish;
-        border-top: 1px solid $whitish;
+        border-bottom: 1px solid $color-gray400;
+        border-top: 1px solid $color-gray400;
         display: flex;
         flex-direction: row;
         justify-content: center;
@@ -35,35 +35,32 @@
         margin-bottom: .25rem;
     }
     &-statistics {
-        span {
-            color: $gray-light;
+        display: flex;
+        .transfer-project-private,
+        .transfer-project-members {
+            color: $color-black600;
+            display: flex;
             margin-right: .5rem;
         }
         svg {
-            fill: $gray-light;
+            fill: $color-black600;
             margin-right: .25rem;
         }
     }
-    &-private {
-        text-transform: uppercase;
-    }
     &-comment-link {
-        color: $primary;
+        color: $color-link-primary;
         cursor: pointer;
         display: block;
         margin-bottom: 1rem;
-        &:hover {
-            color: $primary-light;
-        }
     }
     &-comment-header {
         display: flex;
         justify-content: space-between;
         .icon-close {
             cursor: pointer;
-            fill: $gray-light;
+            fill: $color-black600;
             &:hover {
-                fill: $red-light;
+                fill: $color-link-red;
                 transition: fill .2s;
             }
         }
@@ -83,14 +80,8 @@
     }
     &-options {
         display: flex;
-        a {
-            @include font-size(large);
-            display: block;
-            flex: 1;
-            padding: .75rem;
-            &:first-child {
-                margin-right: .5rem;
-            }
-        }
+        gap: 1rem;
+        justify-content: space-around;
+        margin-bottom: 1rem;
     }
 }

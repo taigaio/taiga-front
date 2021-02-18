@@ -8,10 +8,10 @@
         .transfer-project-data
             h3.transfer-project-title {{::vm.project.get("name")}}
             .transfer-project-statistics
-                span.transfer-project-private(ng-if="vm.project.get('is_private')")
+                .transfer-project-private(ng-if="vm.project.get('is_private')")
                     tg-svg(svg-icon="icon-private")
                     span(translate="ADMIN.PROJECT_TRANSFER.PRIVATE")
-                span.transfer-project-members
+                .transfer-project-members
                     tg-svg(svg-icon="icon-team")
                     span {{::vm.project.get("total_memberships")}}
 
@@ -27,7 +27,7 @@
             translate-values="{maxProjects: vm.maxProjects, currentProjects: vm.currentProjects}"
         )
 
-        a.transfer-project-comment-link.ng-animate-disabled(
+        button.btn-link.transfer-project-comment-link.ng-animate-disabled(
             href=""
             ng-click="vm.addComment()"
             ng-if="!vm.showAddComment"
@@ -52,7 +52,8 @@
             )
 
         .transfer-project-options
-            a.button.button-gray.e2e-transfer-reject(
+            button.btn-small.e2e-transfer-reject(
+                variant="secondary"
                 ng-click="vm.transferReject(vm.token, vm.reason, $event)"
                 href="#"
                 title="{{'ADMIN.PROJECT_TRANSFER.REJECT' | translate}}"
@@ -60,7 +61,8 @@
                 tg-loading="vm.loadingReject"
             )
 
-            a.button.button-green.e2e-transfer-accept(
+            button.btn-small.e2e-transfer-accept(
+                variant="primary"
                 ng-click="vm.transferAccept(vm.token, vm.reason, $event)"
                 href="#"
                 title="{{'ADMIN.PROJECT_TRANSFER.ACCEPT' | translate}}"
