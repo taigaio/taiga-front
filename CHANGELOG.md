@@ -1,6 +1,11 @@
 # Changelog
 
-## 6.0.5 (unreleased)
+## 6.0.6 (unreleased)
+
+- ...
+
+
+## 6.0.5 (2021-02-22)
 
 - Added translation to Dansk
 - Added translation to Serbian
@@ -10,6 +15,7 @@
 - Fix: User mention with underscore
 - Fix: Drag and drop on empty backlog
 - Feat: Editor, image with links
+
 
 ## 6.0.4 (2021-02-15)
 

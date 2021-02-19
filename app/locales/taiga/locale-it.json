@@ -130,7 +130,7 @@
         "USER_STORY": "Storia utente",
         "TASK": "Compito",
         "ISSUE": "Problema",
-        "EPIC": "Epic",
+        "EPIC": "Epico",
         "TAGS": {
             "PLACEHOLDER": "Inserisci tag",
             "DELETE": "Elimina tag",
@@ -255,7 +255,7 @@
                 "ROLE": "Ruolo",
                 "CREATED_BY": "Creato da",
                 "CUSTOM_FILTERS": "Filtri personalizzati",
-                "EPIC": "Epic"
+                "EPIC": "Epico"
             }
         },
         "WYSIWYG": {
@@ -269,11 +269,11 @@
         "PERMISIONS_CATEGORIES": {
             "EPICS": {
                 "NAME": "Epici",
-                "VIEW_EPICS": "Vedi epic",
-                "ADD_EPICS": "Aggiungi epic",
+                "VIEW_EPICS": "Vedi epici",
+                "ADD_EPICS": "Aggiungi epici",
                 "MODIFY_EPICS": "Modifica epici",
-                "COMMENT_EPICS": "Commenta epic",
-                "DELETE_EPICS": "Cancella epici"
+                "COMMENT_EPICS": "Commenta epici",
+                "DELETE_EPICS": "Elimina epici"
             },
             "SPRINTS": {
                 "NAME": "Sprints",
@@ -419,13 +419,13 @@
         "PAGE_TITLE": "Epici - {{projectName}}",
         "PAGE_DESCRIPTION": "La lista di epici del progetto {{projectName}}: {{projectDescription}}",
         "DASHBOARD": {
-            "ADD": "+ AGGIUNGI EPIC",
+            "ADD": "+ AGGIUNGI EPICO",
             "UNASSIGNED": "Non assegnato"
         },
         "EMPTY": {
-            "TITLE": "Sembra che nn ci sia ancora nessun epic",
+            "TITLE": "Sembra che nn ci sia ancora nessun epico",
             "EXPLANATION": "Gli epici sono oggetti ad un livello superiore che uniscono storie utente.<br />Gli epici sono in cima alla gerarchia e possono essere usati per raggruppare insieme storie utente",
-            "HELP": "Impara di più sugli epici"
+            "HELP": "Maggiori informazioni sugli epici"
         },
         "TABLE": {
             "VOTES": "Voti",
@@ -445,7 +445,7 @@
             "TEAM_REQUIREMENT": "Requisito del team",
             "CLIENT_REQUIREMENT": "Requisito del cliente",
             "BLOCKED": "Bloccato",
-            "BLOCKED_NOTE_PLACEHOLDER": "Perchè questa epic è bloccata?",
+            "BLOCKED_NOTE_PLACEHOLDER": "Perchè questo epico è bloccato?",
             "CREATE_EPIC": "Crea epico"
         }
     },
@@ -509,8 +509,8 @@
             "LOADING_MESSAGE": "Non chiudere questa pagina.",
             "ASYNC_MESSAGE": "Ti invieremo una mail quando sarà pronto",
             "SYNC_MESSAGE": "Se il download non parte automaticamente clicca <a href='{{url}}' titolo del download='Download the dump file'>here</a>.",
-            "ERROR": "The Taiga has some problems generating your dump. Please try it again.",
-            "ERROR_BUSY": "Sorry, the Taiga is experiencing heavy load right now. Please try again in a few minutes."
+            "ERROR": "Taiga sta avendo dei problemi nella generazione del dump. Riprova.",
+            "ERROR_BUSY": "Spiacenti, Taiga è sovraccarico al momento. Riprova fra qualche minuto."
         },
         "MODULES": {
             "TITLE": "Moduli",
@@ -579,7 +579,7 @@
             "DELETE_SUBTITLE": "Stai per eliminare l'URL di accesso ai dati CSV corrente. Sei sicuro?"
         },
         "CSV": {
-            "SECTION_TITLE_EPIC": "Report epici",
+            "SECTION_TITLE_EPIC": "report epici",
             "SECTION_TITLE_US": "Report delle storie utente",
             "SECTION_TITLE_TASK": "Analisi dei compiti",
             "SECTION_TITLE_ISSUE": "Segnala problemi",
@@ -595,7 +595,7 @@
             "TITLE": "Campi Personalizzati",
             "SUBTITLE": "Specifica i campi personalizzati per le tue Storie Utente, compiti e problemi",
             "EPIC_DESCRIPTION": "Campi personalizzati degli epici",
-            "EPIC_ADD": "Aggiungi un campo personalizzato nell'epic",
+            "EPIC_ADD": "Aggiungi un campo personalizzato nell'epico",
             "US_DESCRIPTION": "Campi personalizzati delle storie utente",
             "US_ADD": "Aggiungi un campo personalizzato nelle storie utente",
             "TASK_DESCRIPTION": "Campi personalizzati dei Compiti",
@@ -619,7 +619,7 @@
         "PROJECT_VALUES_POINTS": {
             "TITLE": "Punti",
             "SUBTITLE": "Specifica i punti vostre storie utente potrebbero essere stimati a",
-            "US_TITLE": "User story points",
+            "US_TITLE": "Punti della storia utente",
             "ACTION_ADD": "Aggiungi un nuovo punto"
         },
         "PROJECT_VALUES_PRIORITIES": {
@@ -636,8 +636,8 @@
         },
         "PROJECT_VALUES_STATUS": {
             "TITLE": "Stati",
-            "SUBTITLE": "Add, remove or edit the color and name of the statuses your epics, user stories, task and issues will go through.",
-            "EPIC_TITLE": "Stati dell'epic",
+            "SUBTITLE": "Aggiungi, rimuovi o modifica il colore e il nome degli stati dei tuoi epici, delle storie utente, dei compiti e dei problemi.",
+            "EPIC_TITLE": "Stati dell'epico",
             "US_TITLE": "Stati della storia utente",
             "TASK_TITLE": "Stato dei compiti",
             "ISSUE_TITLE": "Stato dei problemi"
@@ -775,7 +775,7 @@
             "DEFAULT_DELETE_MESSAGE": "L'invito a {{email}}"
         },
         "DEFAULT_VALUES": {
-            "LABEL_EPIC_STATUS": "Valore predefinito per la selezione di stati degli epic",
+            "LABEL_EPIC_STATUS": "Valore predefinito per la selezione di stati degli epici",
             "LABEL_US_STATUS": "Valore predefinito per la selezione di stato della storia utente",
             "LABEL_POINTS": "Valore standard per punti di selezione",
             "LABEL_TASK_STATUS": "Valore predefinito per la selezione degli stati del compito",
@@ -888,7 +888,7 @@
     },
     "PROJECT": {
         "PAGE_TITLE": "TEAM - {{projectName}}",
-        "HELP": "Reorder your projects to set at the top the most used ones.<br/> The top 4 projects will appear in the top navigation bar project list",
+        "HELP": "Riordina i tuoi progetti per avere in alto i più usati.<br/> I primi 4 progetti compariranno nella lista dei progetti della barra di navigazione in cima",
         "PRIVATE": "Progetto privato",
         "LOOKING_FOR_PEOPLE": "Il progetto cerca persone",
         "FANS_COUNTER_TITLE": "{total, plural, =1{un follower} other{# followers}}",
@@ -915,7 +915,7 @@
         },
         "NAVIGATION": {
             "PROJECTS": "Progetti",
-            "ACCOUNT_SETTINGS": "Account settings",
+            "ACCOUNT_SETTINGS": "Impostazioni account",
             "ACTION_CREATE_PROJECT": "Nuovo progetto",
             "ACTION_CREATE_PROJECT_FIRST": "Crea il tuo primo progetto",
             "ACTION_CREATE_PROJECT_FIRST_TEXT": "You don’t have any projects yet. Create one now, invite your team and start using Taiga to the fullest.",
@@ -927,7 +927,7 @@
             "TAIGA_RESOURCES_TITLE": "Go to Taiga resources",
             "TAIGA_RESOURCES": "Taiga Resources",
             "FEEDBACK_TITLE": "Write to us with your feedback",
-            "FEEDBACK": "Ask a question",
+            "FEEDBACK": "Fai una domanda",
             "NOTIFICATIONS_TITLE": "Modifica le impostazioni delle notifiche",
             "NOTIFICATIONS": "Notifiche",
             "VIEW_PROFILE_TITLE": "Mostra profilo",
@@ -1004,7 +1004,7 @@
             "ASYNC_IN_PROGRESS_MESSAGE": "Questo processo puó durare minuti. <br/> Verrá inviata una mail al suo completamento",
             "UPLOAD_IN_PROGRESS_MESSAGE": "Caricati {{uploadedSize}} di {{totalSize}}",
             "ERROR": "The Taiga has some problems importing your dump data. Please try again.",
-            "ERROR_TOO_MANY_REQUEST": "Sorry, the Taiga is experiencing heavy load right now. Please try again in a few minutes.",
+            "ERROR_TOO_MANY_REQUEST": "Spiacenti, Taiga è sovraccarico al momento. Riprova fra qualche minuto.",
             "ERROR_MESSAGE": "The Taiga has some problems importing your dump data: {{error_message}}",
             "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) is too heavy for the Taiga, try it with a file smaller than ({{maxFileSize}})",
             "SYNC_SUCCESS": "Il tuo progetto è stato importato con successo",
@@ -1114,7 +1114,7 @@
             "CONFIRM": "Sei sicuro di voler eliminare il tuo account Taiga?",
             "CANCEL": "Torna alle impostazioni",
             "ACCEPT": "Cancella account",
-            "BLOCK_PROJECT": "Note that all projects you own will be <strong>blocked</strong> after you delete your account. If you do not want a particular project to be blocked, make sure you transfer ownership to another existing Taiga member before deleting your account."
+            "BLOCK_PROJECT": "Ricorda che tutti i progetti che possiedi saranno <strong>bloccati</strong> quando cancellerai il tuo account. Se non vuoi che venga bloccato un particolare progetto, trasferiscine la proprietà ad un altro membro di Taiga prima di cancellare il tuo account."
         },
         "DELETE_PROJECT": {
             "TITLE": "Elimina progetto",
@@ -1142,12 +1142,12 @@
             "HELP_TEXT": "Se gli utenti sono già registrati su Taiga, verranno aggiunti automaticamente. In caso contrario, riceveranno un invito."
         },
         "FEEDBACK": {
-            "TITLE": "Ask a question",
-            "COMMENT": "Leave us a message",
-            "ACTION_SEND": "Send Message",
-            "YOU_CAN_ALSO": "You can also:",
-            "CREATE": "Create an issue on this",
-            "PUBLIC": "public Taiga project",
+            "TITLE": "Fai una domanda",
+            "COMMENT": "Lasciaci un messaggio",
+            "ACTION_SEND": "Invia messaggio",
+            "YOU_CAN_ALSO": "Puoi anche:",
+            "CREATE": "Crea un problema su questo",
+            "PUBLIC": "progetto Taiga pubblico",
             "EMAIL": "Send us a e-mail directly to",
             "SUPPORT": "support@taiga.io"
         },
@@ -1166,8 +1166,8 @@
         },
         "CREATE_EDIT": {
             "TASK_PLACEHOLDER_DESCRIPTION": "Inserisci un testo descrittivo che aiuti gli altri nel comprendere questo Compito",
-            "ISSUE_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this issue",
-            "US_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this user story",
+            "ISSUE_PLACEHOLDER_DESCRIPTION": "Inserisci un testo descrittivo che aiuti gli altri a comprendere meglio questo problema",
+            "US_PLACEHOLDER_DESCRIPTION": "Aggiungi un testo descrittivo che aiuti gli altri a comprendere meglio questa storia utente",
             "NEW_TASK": "Nuovo compito",
             "NEW_ISSUE": "New issue",
             "NEW_US": "Nuova storia utente",
@@ -1188,7 +1188,7 @@
             "ERROR_SWIMLANE": "Changes cannot be saved because there is a problem with the selected swimlane."
         },
         "DISABLE_KANBAN": {
-            "TITLE": "Disable kanban",
+            "TITLE": "Disattiva kanban",
             "MESSAGE": "This project has swimlanes. They will be gone but your user stories will not be deleted"
         },
         "DELETE_DUE_DATE": {
@@ -1199,8 +1199,8 @@
             "TITLE": "Cancella sprint"
         },
         "REMOVE_RELATIONSHIP_WITH_EPIC": {
-            "TITLE": "Remove relationship with epic",
-            "MESSAGE": "Are you sure you want to remove the relationship of this user story with its epic <strong>{{epicSubject}}</strong>?"
+            "TITLE": "Togli relazione con epico",
+            "MESSAGE": "Vuoi veramente rimuovere la relazione di questa Storia Utente con il suo Epico <strong>{{epicSubject}}</strong>?"
         },
         "CREATE_MEMBER": {
             "PLACEHOLDER_INVITATION_TEXT": "(facoltativo) aggiungi un testo personalizzato all'invito. Di qualcosa di simpatico ai tuoi nuovi membri ;-)",
@@ -1257,7 +1257,7 @@
             "DISABLE_DELETE_SWIMLANE": "The default swimlane cannot be deleted"
         },
         "RELATE_TO_EPIC": {
-            "TITLE": "Link to epic",
+            "TITLE": "Collega a epico",
             "EXISTING_EPIC": "Epico esistente",
             "NEW_EPIC": "Nuovo epico",
             "CHOOSE_PROJECT_FOR_CREATION": "Qual'è il progetto?",
@@ -1271,7 +1271,7 @@
     "EPIC": {
         "PAGE_TITLE": "{{epicSubject}} - Epico {{epicRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Stato: {{taskStatus }}. Descrizione: {{taskDescription}}",
-        "EPIC_COLOR": "Epic color:",
+        "EPIC_COLOR": "Colore Epico:",
         "SECTION_NAME": "Epico",
         "ERROR_UNLINK_RELATED_USERSTORY": "Non siamo riusciti a scollegare: {{erroreMessage}}",
         "CREATE_RELATED_USERSTORIES": "Crea una relazione con",
@@ -1285,8 +1285,8 @@
         "NO_USERSTORIES": "This project has no user stories yet. Please select another project.",
         "NO_USERSTORIES_FOUND": "Sembra che non ci sia nulla che corrisponda ai criteri ricerca",
         "FILTER_USERSTORIES": "Filtra le storie utente",
-        "LIGHTBOX_TITLE_BLOKING_EPIC": "Epic bloccante",
-        "ACTION_DELETE": "Cancella epic"
+        "LIGHTBOX_TITLE_BLOKING_EPIC": "Epico bloccante",
+        "ACTION_DELETE": "Elimina epico"
     },
     "US": {
         "PAGE_TITLE": "{{userStorySubject}} - Storia Utente {{userStoryRef}} - {{projectName}}",
@@ -1296,8 +1296,8 @@
         "TITLE_LINK_TASKBOARD": "Vai al pannello dei compiti",
         "TOTAL_POINTS": "totale punti",
         "ADD": "storia utente",
-        "ADD_BULK": "Add some new user stories in bulk",
-        "PROMOTED_FROM_ISSUE": "This user story has been promoted from issue:",
+        "ADD_BULK": "Aggiungi nuove storie utente in massa",
+        "PROMOTED_FROM_ISSUE": "Questa storia utente è stata promossa da problema:",
         "PROMOTED_FROM_TASK": "This user story has been promoted from task:",
         "CONVERTED_FROM_TASK": "This user story was originally a task.",
         "TITLE_LINK_GO_TO_ISSUE": "Vai al problema",
@@ -1307,8 +1307,8 @@
         "LIGHTBOX_TITLE_BLOKING_US": "Blocking user story",
         "NOT_ESTIMATED": "N/E",
         "OWNER_US": "This user story belongs to",
-        "RELATE_TO_EPIC": "Link to epic",
-        "REMOVE_RELATIONSHIP_WITH_EPIC": "Remove epic relationship",
+        "RELATE_TO_EPIC": "Collega a epico",
+        "REMOVE_RELATIONSHIP_WITH_EPIC": "Togli relazione a epico",
         "TRIBE": {
             "PUBLISH": "Pubblica come Gig in Taiga Tribe",
             "PUBLISH_INFO": "Più info",
@@ -1467,14 +1467,14 @@
         "NOT_FOUND_TEXT": "Errore 404. La pagina che stai cercando non esiste più. Forse puoi tornare alla home e vedere se è possibile trovare quello che stai cercando.",
         "PERMISSION_DENIED": "Permesso negato",
         "PERMISSION_DENIED_TEXT": "Non si hanno i permessi necessari per accedere a questa pagina.",
-        "VERSION_ERROR": "Some other user inside Taiga has changed this before and your changes can't be applied. Save them elsewhere, reload the page and re-apply your changes again or they will be lost."
+        "VERSION_ERROR": "Qualche altro utente di Taiga lo ha modificato prima e le tue modifiche non possono essere applicate. Salvale altrove, ricarica la pagina e riapplica le tue modifiche o andranno perse."
     },
     "TASKBOARD": {
         "PAGE_TITLE": "{{sprintName}} - Pannello dei compiti dello Sprint - {{projectName}}",
         "PAGE_DESCRIPTION": "Sprint {{sprintName}} (da {{startDate}} a {{endDate}}) di {{projectName}}. Completato {{completedPercentage}}% ({{completedPoints}} di {{totalPoints}} points). {{openTasks}} compiti aperti di {{totalTasks}}",
         "SECTION_NAME": "Pannello dei compiti",
         "TITLE_ACTION_ADD": "Aggiungi un nuovo compito",
-        "TITLE_ACTION_ADD_BULK": "Add some new tasks in bulk",
+        "TITLE_ACTION_ADD_BULK": "Aggiungi nuovi compiti in massa",
         "TITLE_ACTION_ADD_ISSUE": "Add a new issue",
         "TITLE_ACTION_ADD_ISSUE_BULK": "Add some new issues in bulk",
         "TITLE_ACTION_ASSIGN": "Compito assegnato",
@@ -1536,8 +1536,8 @@
     },
     "NOTIFICATION": {
         "OK": "E' tutto ok!",
-        "WARNING": "Oops, something went wrong...",
-        "WARNING_TEXT": "Your changes were not saved!",
+        "WARNING": "Ops, qualcosa è andato storto...",
+        "WARNING_TEXT": "Le tue modifiche non sono state salvate!",
         "SAVED": "The Taiga saved all your changes!",
         "CLOSE": "Chiudi notifica",
         "MAIL": "Notifica tramite mail",
@@ -1546,7 +1546,7 @@
     },
     "CANCEL_ACCOUNT": {
         "TITLE": "Elimina il tuo account",
-        "SUBTITLE": "We're sorry you are leaving the Taiga, we hope you enjoyed your stay :)",
+        "SUBTITLE": "Ci spiace se stai lasciando Taiga, speriamo che il tuo soggiorno sia stato piacevole :)",
         "PLACEHOLDER_INPUT_TOKEN": "cancella il token dell'account",
         "ACTION_LEAVING": "Si, sto abbandonando!",
         "SUCCESS": "The Taiga removed your account"
@@ -1780,8 +1780,8 @@
         "TASK_CREATED_WITH_US": "{{username}} has created a new task {{obj_name}} in {{project_name}} which belongs to the user story {{us_name}}",
         "WIKI_CREATED": "{{username}} ha creato una nuova pagina wiki {{obj_name}} in {{project_name}}",
         "MILESTONE_CREATED": "{{username}} ha creato un nuovo sprint {{obj_name}} in {{project_name}}",
-        "EPIC_CREATED": "{{username}} ha creato un nuovo epic {{obj_name}} in {{project_name}}",
-        "EPIC_RELATED_USERSTORY_CREATED": "{{username}} has related the user story {{related_us_name}} to the epic {{epic_name}} in {{project_name}}",
+        "EPIC_CREATED": "{{username}} ha creato un nuovo epico {{obj_name}} in {{project_name}}",
+        "EPIC_RELATED_USERSTORY_CREATED": "{{username}} ha collegato la storia utente {{related_us_name}} all'epico {{epic_name}} in {{project_name}}",
         "NEW_PROJECT": "{{username}} ha creato il progetto {{project_name}}",
         "MILESTONE_UPDATED": "{{username}} ha aggiornato lo sprint {{obj_name}}",
         "US_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the user story {{obj_name}}",
@@ -1794,13 +1794,13 @@
         "TASK_UPDATED_WITH_US": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} which belongs to the user story {{us_name}}",
         "TASK_UPDATED_WITH_US_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} which belongs to the user story {{us_name}} to {{new_value}}",
         "WIKI_UPDATED": "{{username}} ha aggiornato la pagina wiki {{obj_name}}",
-        "EPIC_UPDATED": "{{username}} ha modificato l'attributo \"{{field_name}}\" dell'epic {{obj_name}}",
-        "EPIC_UPDATED_WITH_NEW_VALUE": "{{username}} ha modificato l'attributo \"{{field_name}}\" dell'epic {{obj_name}} in {{new_value}}",
-        "EPIC_UPDATED_WITH_NEW_COLOR": "{{username}} ha modificato l'attributo \"{{field_name}}\" dell'epic {{obj_name}} in <span class=\"new-color\" style=\"background: {{new_value}}\"></span>",
+        "EPIC_UPDATED": "{{username}} ha modificato l'attributo \"{{field_name}}\" dell'epico {{obj_name}}",
+        "EPIC_UPDATED_WITH_NEW_VALUE": "{{username}} ha modificato l'attributo \"{{field_name}}\" dell'epico {{obj_name}} in {{new_value}}",
+        "EPIC_UPDATED_WITH_NEW_COLOR": "{{username}} ha modificato l'attributo \"{{field_name}}\" dell'epico {{obj_name}} in <span class=\"new-color\" style=\"background: {{new_value}}\"></span>",
         "NEW_COMMENT_US": "{{username}} has commented in the user story {{obj_name}}",
         "NEW_COMMENT_ISSUE": "{{username}} ha commentato nel problema {{obj_name}}",
         "NEW_COMMENT_TASK": "{{username}} ha commentato nel compito {{obj_name}}",
-        "NEW_COMMENT_EPIC": "{{username}} ha commentato nell'epic {{obj_name}}",
+        "NEW_COMMENT_EPIC": "{{username}} ha commentato nell'epico {{obj_name}}",
         "NEW_MEMBER": "{{project_name}} ha un nuovo membro",
         "US_ADDED_MILESTONE": "{{username}} has added the user story {{obj_name}} to {{sprint_name}}",
         "US_MOVED": "{{username}} has moved the user story {{obj_name}}",

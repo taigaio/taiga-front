@@ -165,7 +165,7 @@
             "DUE_DATE_REASON": "締切日理由"
         },
         "ROLES": {
-            "ALL": "All points"
+            "ALL": "すべて"
         },
         "ASSIGNED_TO": {
             "NOT_ASSIGNED": "未割当",
@@ -229,19 +229,19 @@
             "CONFIRM_DELETE": "このカスタムフィールドのすべての値が削除されることになります。"
         },
         "FILTERS": {
-            "INPUT_PLACEHOLDER": "subject or reference",
+            "INPUT_PLACEHOLDER": "件名または参照番号",
             "TITLE_ACTION_FILTER_BUTTON": "検索",
             "TITLE": "カスタムフィルター",
             "TITLE_ACTION_SEARCH": "検索",
             "ACTION_ADD": "追加",
-            "ACTION_SAVE_CUSTOM_FILTER": "save filter",
+            "ACTION_SAVE_CUSTOM_FILTER": "フィルターを保存",
             "PLACEHOLDER_FILTER_NAME": "フィルター名を入力しエンターキーを押してください。",
             "APPLIED_FILTERS_NUM": "フィルター適用中",
             "TITLE_ADVANCED_FILTER": "Advanced",
             "ADVANCED_FILTERS": {
                 "INCLUDE": "Include",
                 "EXCLUDE": "Exclude",
-                "INCLUDED": "Filtered by:",
+                "INCLUDED": "フィルター適用中:",
                 "EXCLUDED": "Excluded:"
             },
             "CATEGORIES": {
@@ -915,7 +915,7 @@
         },
         "NAVIGATION": {
             "PROJECTS": "プロジェクト",
-            "ACCOUNT_SETTINGS": "Account settings",
+            "ACCOUNT_SETTINGS": "アカウント設定",
             "ACTION_CREATE_PROJECT": "New project",
             "ACTION_CREATE_PROJECT_FIRST": "Create your first project",
             "ACTION_CREATE_PROJECT_FIRST_TEXT": "You don’t have any projects yet. Create one now, invite your team and start using Taiga to the fullest.",
@@ -1303,7 +1303,7 @@
         "TITLE_LINK_GO_TO_ISSUE": "課題へ移動",
         "TITLE_LINK_GO_TO_TASK": "Go to task",
         "TITLE_DELETE_ACTION": "ユーザストーリを削除する",
-        "TITLE_DELETE_MESSAGE": "Are you sure you want to delete <strong>“{{subject}}“</strong>?",
+        "TITLE_DELETE_MESSAGE": "本当に <strong>“{{subject}}“</strong> を削除してもよろしいですか？",
         "LIGHTBOX_TITLE_BLOKING_US": "Blocking user story",
         "NOT_ESTIMATED": "N/E",
         "OWNER_US": "このユーザーストーリーはこちらに属しています:",
@@ -1445,7 +1445,7 @@
         "FILTERS": {
             "TOGGLE": "フィルター表示を固定",
             "TITLE": "フィルター",
-            "HIDE_TITLE": "Hide filters"
+            "HIDE_TITLE": "フィルターを非表示"
         },
         "SPRINTS": {
             "TITLE": "スプリント",
@@ -1455,7 +1455,7 @@
             "EMPTY": "まだスプリントはありません",
             "WARNING_EMPTY_SPRINT_ANONYMOUS": "This sprint has no user stories",
             "WARNING_EMPTY_SPRINT": "新しいスプリントを始めるために、バックログからストーリーをここにドロップしてください。",
-            "TITLE_ACTION_NEW_SPRINT": "Add a sprint",
+            "TITLE_ACTION_NEW_SPRINT": "スプリントを追加",
             "TEXT_ACTION_NEW_SPRINT": "新しくスプリントをプロジェクトに作成してください。",
             "ACTION_SHOW_CLOSED_SPRINTS": "終了したスプリントを表示",
             "ACTION_HIDE_CLOSED_SPRINTS": "終了したスプリントを非表示"
