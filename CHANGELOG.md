@@ -5,6 +5,7 @@
 - Added translation to Dansk
 - Added translation to Serbian
 - Added translation to Vietnamese
+- General improvments to interaface.
 - Fix: Add new buttons and style to transfer owner, imports warnings lightbox and warnings on new projects
 - Fix: User mention with underscore
 - Fix: Drag and drop on empty backlog
