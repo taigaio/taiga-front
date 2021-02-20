@@ -527,7 +527,7 @@
             "ISSUES": "Tickets",
             "ISSUES_DESCRIPTION": "Verfolgen Sie Fehler, Fragen und Verbesserungen, die mit Ihrem Projekt verbunden sind. Verpassen Sie nichts!",
             "WIKI": "Wiki",
-            "WIKI_DESCRIPTION": "Add, modify, or delete content in collaboration with others. This is the right place for your project's documentation.",
+            "WIKI_DESCRIPTION": "Bearbeiten Sie Inhalte gemeinschaftlich mit Anderen. Dies ist der richtige Ort für die Dokumentation Ihres Projekts.",
             "MEETUP": "Zusammentreffen",
             "MEETUP_DESCRIPTION": "Wähle Sie Ihr Videokonferenzsystem.",
             "SELECT_VIDEOCONFERENCE": "Wählen Sie ein Videokonferenzsystem",
@@ -636,9 +636,9 @@
         },
         "PROJECT_VALUES_STATUS": {
             "TITLE": "Status",
-            "SUBTITLE": "Add, remove or edit the color and name of the statuses your epics, user stories, task and issues will go through.",
-            "EPIC_TITLE": "Epic Status",
-            "US_TITLE": "User-Story Status",
+            "SUBTITLE": "Bearbeiten Sie die Zustände, die Ihre Epics, User-Stories, Aufgaben und Tickets durchlaufen sollen.",
+            "EPIC_TITLE": "Epic-Status",
+            "US_TITLE": "User-Story-Status",
             "TASK_TITLE": "Aufgaben-Status",
             "ISSUE_TITLE": "Ticket-Status"
         },
@@ -660,37 +660,37 @@
             "SELECTED": "Ausgewählt"
         },
         "PROJECT_DUE_DATE_STATUS": {
-            "TITLE": "Fällikeitstermine",
-            "SUBTITLE": "Specify the due dates status your user stories, tasks and issues will go through if selected",
-            "US_TITLE": "Status der User Story Fälligkeit",
+            "TITLE": "Fälligkeiten",
+            "SUBTITLE": "Legen Sie die Fälligkeiten fest, die Ihre User-Stories, Aufgaben, und Tickets durchlaufen sollen, wenn ein Fälligkeitstermin festgelegt ist.",
+            "US_TITLE": "Status der User-Story-Fälligkeit",
             "ACTION_ADD_STATUS": "Neuen Status hinzufügen",
             "TASK_TITLE": "Status der Aufgabenfälligkeit",
-            "ISSUE_TITLE": "Status der Ticket Fälligkeit",
-            "DAYS_TO_DUE_DATE": "Tage bis zur Fällikeit",
+            "ISSUE_TITLE": "Status der Ticket-Fälligkeit",
+            "DAYS_TO_DUE_DATE": "Tage bis zur Fälligkeit",
             "BEFORE_AFTER": "Früher/später",
             "BEFORE": "Früher",
             "AFTER": "Nach"
         },
         "PROJECT_KANBAN_OPTIONS": {
-            "TITLE": "Kanban options",
-            "SUBTITLE": "Enable swimlanes to use in your workflow and set WIP limits to restrict the maximun number of user stories on each status.",
+            "TITLE": "Kanban-Optionen",
+            "SUBTITLE": "Fügen Sie Swimlanes zu ihrem Projekt hinzu und setzen Sie WIP-Limits, um die maximale Anzahl der User Stories pro Status zu begrenzen.",
             "SWIMLANES": "Swimlanes",
-            "ACTION_ADD_SWIMLANE": "New swimlane",
-            "SWIMLANE_NAME_EXISTS": "This swimlane name already exists",
-            "NO_SWIMLANES": "There are no swimlanes yet",
-            "SWIMLANE_NAME": "Swimlane name",
-            "POPUP_NEW_SWIMLANE": "If you had some user stories created, you will find them on this swimlane.",
-            "WIP_LIMITS": "WIP LIMITS",
-            "WIP_LIMIT_PLACEHOLDER": "WIP limit not set",
-            "WIP_LIMIT_INPUT": "Set WIP limit",
-            "DEFAULT": "Default"
+            "ACTION_ADD_SWIMLANE": "Neue Swimlane",
+            "SWIMLANE_NAME_EXISTS": "Diese Swimlane-Bezeichnung existiert bereits",
+            "NO_SWIMLANES": "Noch keine Swimlanes vorhanden",
+            "SWIMLANE_NAME": "Swimlane-Bezeichnung",
+            "POPUP_NEW_SWIMLANE": "Falls Sie bereits User Stories erstellt haben, wurden diese in dieser Swimlane abgelegt.",
+            "WIP_LIMITS": "WIP-Limits",
+            "WIP_LIMIT_PLACEHOLDER": "Kein WIP-Limit",
+            "WIP_LIMIT_INPUT": "WIP-Limit",
+            "DEFAULT": "Standard"
         },
         "ROLES": {
             "PAGE_TITLE": "Rollen - {{projectName}}",
             "WARNING_NO_ROLE": "Beachten Sie, keine Rolle in Ihrem Projekt wird in der Lage sein, die Punktevergabe für User-Stories einzuschätzen.",
-            "HELP_ROLE_ENABLED": "This role is part of the roles involved in estimating user story points.",
-            "DISABLE_COMPUTABLE_ALERT_TITLE": "Sind Sie sicher, dass in dieser Rolle Estimatepoints deaktivieren möchtest?",
-            "DISABLE_COMPUTABLE_ALERT_SUBTITLE": "Wenn Sie die Estimatepoints für die Rolle {{roleName}} deaktivieren, werden alle bisherigen gelöscht",
+            "HELP_ROLE_ENABLED": "Diese Rolle soll am Schätzen der User-Story-Points teilnehmen.",
+            "DISABLE_COMPUTABLE_ALERT_TITLE": "Sind Sie sicher, dass in dieser Rolle die Teilnahme an Schätzungen deaktivieren möchtest?",
+            "DISABLE_COMPUTABLE_ALERT_SUBTITLE": "Wenn Sie die Teilnahme an Schätzungen für die Rolle {{roleName}} deaktivieren, werden alle bisherigen Schätzungen gelöscht.",
             "COUNT_MEMBERS": "{{ role.members_count }} Mitglieder mit dieser Rolle",
             "TITLE_DELETE_ROLE": "Rolle löschen",
             "REPLACEMENT_ROLE": "Alle Benutzer mit dieser Rolle werden verschoben nach",
@@ -702,9 +702,9 @@
         "THIRD_PARTIES": {
             "SECRET_KEY": "Geheimschlüssel",
             "PAYLOAD_URL": "Payload URL",
-            "VALID_IPS": "Valid source IPs (separated by ,)"
+            "VALID_IPS": "Erlaubte IP-Adressen (mit Komma getrennt)"
         },
-        "BITBUCKET": {
+        "": {
             "SECTION_NAME": "Bitbucket",
             "PAGE_TITLE": "Bitbucket - {{projectName}}",
             "INFO_VERIFYING_IP": "Bitbucket Anfragen sind nicht signiert, daher ist der beste Weg die Quelle anhand der IP zu prüfen. Wenn das Feld leer bleibt, wird keine Prüfung der IP vorgenommen."
@@ -911,7 +911,7 @@
             "MEETUP": "Meetup",
             "SETTINGS": "Einstellungen",
             "SCRUM": "Scrum",
-            "COLLAPSE_MENU": "collapse menu"
+            "COLLAPSE_MENU": "Menü einklappen"
         },
         "NAVIGATION": {
             "PROJECTS": "Projekte",
@@ -1934,9 +1934,9 @@
     },
     "ZOOM": {
         "TITLE": "Zoom:",
-        "ZOOM-1": "Compact",
-        "ZOOM-2": "Default",
-        "ZOOM-3": "Detailed",
-        "ZOOM-4": "Expanded"
+        "ZOOM-1": "Kompakt",
+        "ZOOM-2": "Standard",
+        "ZOOM-3": "Detailiert",
+        "ZOOM-4": "Vollständig"
     }
 }
