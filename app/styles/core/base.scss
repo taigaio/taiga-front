@@ -134,6 +134,9 @@ tg-svg {
     display: flex;
     justify-content: space-between;
     margin-bottom: 1rem;
+    header {
+        width: 100%;
+    }
 }
 
 .hidden {

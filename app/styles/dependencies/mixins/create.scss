@@ -293,19 +293,24 @@
     }
     &-warning {
         @include font-size(small);
-        border: 1px solid $red-light;
+        background: $color-gray200;
+        border: 2px solid $color-link-red;
         display: flex;
         margin-bottom: 1rem;
         padding: 1rem;
-        .icon-exclamation {
-            fill: $red-light;
+        .icon-alert {
+            fill: $color-link-red;
             margin-right: .5rem;
+            margin-top: .15rem;
             vertical-align: middle;
         }
-        a {
-            color: $primary;
-            display: inline-block;
-            margin-left: .25rem;
+        p {
+            margin-bottom: 0;
+            a {
+                color: $color-link-primary;
+                display: inline-block;
+                margin-left: .25rem;
+            }
         }
     }
     .spin {

@@ -143,28 +143,29 @@
     }
 }
 tg-admin-project-restrictions {
+    .setting-project-warning {
+        @include font-size(small);
+        background: $color-gray200;
+        border: 2px solid $color-link-red;
+        display: flex;
+        margin-bottom: 1rem;
+        padding: 1rem;
+    }
+    .icon-alert {
+        fill: $color-link-red;
+        flex-grow: 1;
+        flex-shrink: 0;
+        height: 1rem;
+        margin-right: .5rem;
+        margin-top: .15rem;
+        vertical-align: middle;
+        width: 1rem;
+    }
     p {
-        @include font-size(x-small);
-        text-align: center;
-    }
-    a {
-        color: $color-link-primary;
-    }
-    span {
-        display: block;
-    }
-    span:first-child {
-        &::before {
-            border: 1px solid $red-light;
-            border-radius: 6px;
-            color: $red-light;
-            content: '!';
+        margin-bottom: 0;
+        a {
+            color: $color-link-primary;
             display: inline-block;
-            height: 12px;
-            line-height: 12px;
-            margin-right: .5rem;
-            text-align: center;
-            width: 12px;
         }
     }
 }
