@@ -1,7 +1,3 @@
-# IMPORTANT NOTICE ABOUT UPCOMING TAIGA 6 RELEASE
-
-Taiga6 is just around the corner. Please read [our pre-announcement](https://blog.taiga.io/taiga6-pre-announcement.html) so you know what's most important about our best release ever.
-
 ## Taiga Front
 
 [![Kaleidos Project](http://kaleidos.net/static/img/badge.png)](https://github.com/kaleidos "Kaleidos Project")
