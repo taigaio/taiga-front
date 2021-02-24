@@ -1,5 +1,5 @@
 .row.us-item-row(
-    ng-repeat="us in userstories | inArray:visibleUserStories:'ref'"
+    ng-repeat="us in userstories | inArray:visibleUserStories:'ref' track by us.ref"
     tg-bind-scope
     ng-class="{blocked: us.is_blocked, new: us.new}"
     tg-class-permission="{'readonly': '!modify_us'}"
