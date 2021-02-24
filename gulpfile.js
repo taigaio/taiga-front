@@ -77,7 +77,6 @@ paths.css_vendor = [
     paths.modules + "dragula/dist/dragula.css",
     paths.modules + "awesomplete/awesomplete.css",
     paths.app + "styles/vendor/*.css",
-    paths.modules + "@highlightjs/cdn-assets/styles/default.min.css",
     paths.modules + "@highlightjs/cdn-assets/styles/dracula.min.css"
 ];
 paths.locales = paths.app + "locales/**/*.json";
