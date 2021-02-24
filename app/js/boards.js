@@ -30,7 +30,9 @@ function initBoard() {
                     return entry.visible
                 });
 
-                eventsCallback('SHOW_CARD', entries);
+                if (entries.length) {
+                    eventsCallback('SHOW_CARD', entries);
+                }
             };
 
             if (swimlaneId) {

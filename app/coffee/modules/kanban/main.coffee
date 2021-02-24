@@ -342,11 +342,13 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
         if clean
             @kanbanUserstoriesService.set(newUs)
+            @.batchTimings = [200, 100, 50]
         else
             @kanbanUserstoriesService.add(newUs)
 
         if @.queue.length > 0
-            @timeout(@.renderBatch)
+            timeout = @.batchTimings.shift() || 0
+            @timeout(@.renderBatch, timeout)
         else
             scopeDefer @scope, =>
                 # The broadcast must be executed when the DOM has been fully reloaded.
