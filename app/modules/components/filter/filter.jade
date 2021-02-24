@@ -4,7 +4,8 @@
             span.name(translate="COMMON.FILTERS.TITLE")
             span.number ({{vm.customFilters.length}})
         button.add-custom-filter(
-            ng-click="vm.customFilterForm = true"
+            ng-if="!vm.customFilterForm"
+            ng-click="vm.openCustomFilter()"
             translate="COMMON.FILTERS.ACTION_ADD"
             ng-disabled="!vm.selectedFilters.length"
         )
@@ -20,13 +21,20 @@
         input.add-filter-input.e2e-filter-name-input(
             aria-label="{{'COMMON.FILTERS.PLACEHOLDER_FILTER_NAME' | translate}}"
             ng-model="vm.customFilterName"
+            ng-class="{'checksley-error': vm.lengthZeroError || vm.repeatedFilterError}"
             type="text"
             placeholder="{{'COMMON.FILTERS.PLACEHOLDER_FILTER_NAME' | translate}}"
         )
 
+        span.error-text(
+            ng-if="vm.lengthZeroError"
+        ) {{'COMMON.FILTERS.LENGTH_ZERO_ERROR' | translate}}
+        span.error-text(
+            ng-if="vm.repeatedFilterError && !vm.lengthZeroError"
+        ) {{'COMMON.FILTERS.REPEATED_FILTER_ERROR' | translate}}
+
         button.btn-small.e2e-open-custom-filter-form(
             variant="primary"
-            ng-disabled="vm.customFilterName.length === 0"
             type="submit"
             translate="COMMON.FILTERS.ACTION_SAVE_CUSTOM_FILTER"
         )
