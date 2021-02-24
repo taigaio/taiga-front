@@ -617,6 +617,16 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
             return currentDate >= start && currentDate <= end
 
+    addFilterBacklog: (newFilter) ->
+        @.selectFilter(newFilter.category.dataType, newFilter.filter.id, false, newFilter.mode)
+        @.filtersReloadContent()
+        @.generateFilters('null')
+
+    removeFilterBacklog: (filter) ->
+        @.unselectFilter(filter.dataType, filter.id, false, filter.mode)
+        @.filtersReloadContent()
+        @.generateFilters('null')
+
 module.controller("BacklogController", BacklogController)
 
 #############################################################################
