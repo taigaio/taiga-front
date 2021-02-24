@@ -570,12 +570,15 @@ KanbanDirective = ($repo, $rootscope) ->
                 resizeObserver.observe(column)
 
         board = initBoard()
-        board.events (event, data) =>
+        board.events (event, entries) =>
             # the card is visible in the scroll viewport
             if event == 'SHOW_CARD'
-                if !$scope.usCardVisibility[data.id] && data.visible
+                visibleEntries = entries.filter (entry) => entry.visible && !$scope.usCardVisibility[entry.id]
+
+                if visibleEntries.length
                     $scope.$evalAsync () =>
-                        $scope.usCardVisibility[data.id] = data.visible
+                        visibleEntries.forEach (entry) =>
+                            $scope.usCardVisibility[entry.id] = true
 
             return
 

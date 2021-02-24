@@ -21,12 +21,16 @@ function initBoard() {
             }
 
             var callback = function(entries) {
-                entries.forEach(function(entry) {
-                        eventsCallback('SHOW_CARD', {
-                            id: Number(entry.target.dataset.id),
-                            visible: entry.isIntersecting
-                        });
-                    });
+                entries = entries.map((entry) => {
+                    return {
+                        id: Number(entry.target.dataset.id),
+                        visible: entry.isIntersecting
+                    };
+                }).filter((entry) => {
+                    return entry.visible
+                });
+
+                eventsCallback('SHOW_CARD', entries);
             };
 
             if (swimlaneId) {
