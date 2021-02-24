@@ -102,3 +102,10 @@ textarea {
         }
     }
 }
+
+.error-text {
+    @include font-size(xsmall);
+    @include font-type(regular);
+    color: $color-link-red;
+    margin-bottom: .5rem;
+}

@@ -54,16 +54,26 @@ tg-filter {
 }
 
 .custom-filters-add-form {
-    display: flex;
-    flex-direction: column;
+    display: block;
     padding-top: 1rem;
 
     .add-filter-input {
         margin-bottom: .5rem;
     }
 
+    .error-text {
+        display: block;
+        margin-left: .5rem;
+    }
+
     .button-custom-filters {
         align-self: flex-end;
+    }
+
+    .btn-small {
+        display: block;
+        margin: 0 0 0 auto;
+        text-align: right;
     }
 }
 

@@ -71,6 +71,7 @@ describe "Filter", ->
 
     it "save custom filter", () ->
         ctrl = $controller("Filter")
+        ctrl.customFilters = []
         ctrl.customFilterName = "custom-name"
         ctrl.customFilterForm = true
         ctrl.onSaveCustomFilter = sinon.spy()
@@ -84,6 +85,7 @@ describe "Filter", ->
 
     it "is filter selected", () ->
         ctrl = $controller("Filter")
+        ctrl.customFilters = []
         ctrl.selectedFilters = [
             {id: 1, dataType: "1"},
             {id: 2, dataType: "2"},
