@@ -292,7 +292,7 @@ $qqueue, $repo, $analytics, activityService) ->
                 <div
                     class="wysiwyg"
                     ng-if="!editableDescription && item.content.length"
-                    ng-bind-html="item.content | markdownToHTML"></div>
+                    tg-bind-wysiwyg-html="item.content"></div>
                 <div
                     class="wysiwyg"
                     ng-if="!editableDescription && !item.content.length">

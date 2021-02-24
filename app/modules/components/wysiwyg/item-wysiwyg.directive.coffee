@@ -84,7 +84,7 @@ ItemWysiwyg = ($modelTransform, $rootscope, $confirm, attachmentsFullService, $t
                 <div
                     class="wysiwyg"
                     ng-if="!editableDescription && item.description.length"
-                    ng-bind-html="item.description | markdownToHTML"></div>
+                    tg-bind-wysiwyg-html="item.description"></div>
 
                 <div
                     class="wysiwyg no-description"
