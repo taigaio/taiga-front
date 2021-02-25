@@ -22,6 +22,9 @@ class IssuesTableController
     edit: (issue) ->
         @.onEditIssue({id: issue.id})
 
+    toggleTags: () ->
+        @.showTags = !@.showTags
+
     detach: (issue) ->
         @.onDetachIssue({id: issue.id})
 
