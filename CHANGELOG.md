@@ -3,7 +3,10 @@
 ## 6.0.6 (unreleased)
 
 - Fix: Can't create empty custom filters anymore
-
+- Fix: Remove highlightjs default theme
+- Fix: Wrong filter us count in empty backlog
+- Fix: Highlight code when the user doesn't have edit permissions
+- Improve kanban render performance
 
 ## 6.0.5 (2021-02-22)
 
