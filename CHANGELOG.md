@@ -2,18 +2,16 @@
 
 ## 6.0.6 (unreleased)
 
-- General improvements to interface
-- Fix: Can't create empty custom filters anymore
-<<<<<<< HEAD
+- General improvements to interface.
+- Fix: Can't create empty custom filters anymore.
+- Fix: Can't save filters with the same name as an existing filter.
 - Fix: Remove highlightjs default theme
 - Fix: Wrong filter us count in empty backlog
 - Fix: Highlight code when the user doesn't have edit permissions
 - Improve kanban render performance
 - Fix: Display warning in admin if reached max memberships in a project
 - Display issues tags in sprint taskboard
-=======
 - Fix: Fix incorrect count on filter
->>>>>>> front(changelog): Add some changelog info
 
 ## 6.0.5 (2021-02-22)
 
