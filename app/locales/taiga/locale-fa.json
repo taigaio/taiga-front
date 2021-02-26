@@ -238,6 +238,8 @@
             "PLACEHOLDER_FILTER_NAME": "نام فیلتر را وارد کرده و اینتر را فشار دهید",
             "APPLIED_FILTERS_NUM": "فیلترهای اعمال‌شده",
             "TITLE_ADVANCED_FILTER": "پیشرفته",
+            "LENGTH_ZERO_ERROR": "Please add a filter name",
+            "REPEATED_FILTER_ERROR": "This filter name is already in use",
             "ADVANCED_FILTERS": {
                 "INCLUDE": "شامل",
                 "EXCLUDE": "مستثنی کردن",

@@ -238,6 +238,8 @@
             "PLACEHOLDER_FILTER_NAME": "Введите название фильтра и нажмите \"ввод\"",
             "APPLIED_FILTERS_NUM": "фильтры применены",
             "TITLE_ADVANCED_FILTER": "Дополнительно",
+            "LENGTH_ZERO_ERROR": "Please add a filter name",
+            "REPEATED_FILTER_ERROR": "This filter name is already in use",
             "ADVANCED_FILTERS": {
                 "INCLUDE": "Включить",
                 "EXCLUDE": "Исключить",
@@ -636,7 +638,7 @@
         },
         "PROJECT_VALUES_STATUS": {
             "TITLE": "Статусы",
-            "SUBTITLE": "Add, remove or edit the color and name of the statuses your epics, user stories, task and issues will go through.",
+            "SUBTITLE": "Добавляйте, удаляйте или редактируйте цвета и названия статусов, которые будут назначаться вашим эпикам, пользовательским историям, задачам и запросам.",
             "EPIC_TITLE": "Статусы Эпика",
             "US_TITLE": "Статусы пользовательских историй",
             "TASK_TITLE": "Статус задач",
@@ -688,7 +690,7 @@
         "ROLES": {
             "PAGE_TITLE": "Роли - {{projectName}}",
             "WARNING_NO_ROLE": "Осторожнее: ни с какими ролями на вашем проекте участники не смогут оценить очки для пользовательских историй.",
-            "HELP_ROLE_ENABLED": "This role is part of the roles involved in estimating user story points.",
+            "HELP_ROLE_ENABLED": "Эта роль является частью ролей, участвующих в оценке очков пользовательских историй.",
             "DISABLE_COMPUTABLE_ALERT_TITLE": "Вы уверены, что хотите отключить оценку очков для этой роли?",
             "DISABLE_COMPUTABLE_ALERT_SUBTITLE": "Если вы отключите разрешение оценки для роли {{roleName}}, все предыдущие оценки, сделанные этой ролью, будут удалены",
             "COUNT_MEMBERS": "{{ role.members_count }} участников с этой ролью",
@@ -1569,7 +1571,7 @@
         "PAGE_TITLE": "Запросы - {{projectName}}",
         "PAGE_DESCRIPTION": "Панель запросов проекта {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Запрос",
-        "ACTION_NEW_ISSUE": "NEW ISSUE",
+        "ACTION_NEW_ISSUE": "НОВЫЙ ЗАПРОС",
         "ACTION_ATTACH_SPRINT": "Прикрепить запрос к Спринту",
         "ACTION_DETACH_SPRINT": "Открепить запрос от Спринта",
         "EXTERNAL_REFERENCE": "Этот запрос был создан из",

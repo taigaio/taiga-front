@@ -238,6 +238,8 @@
             "PLACEHOLDER_FILTER_NAME": "Uzrakstiet filtra nosaukumu un nospiediet taustiņu 'Enter'",
             "APPLIED_FILTERS_NUM": "pielietotie filtri",
             "TITLE_ADVANCED_FILTER": "Pilnais režīms",
+            "LENGTH_ZERO_ERROR": "Please add a filter name",
+            "REPEATED_FILTER_ERROR": "This filter name is already in use",
             "ADVANCED_FILTERS": {
                 "INCLUDE": "Ieslēgts",
                 "EXCLUDE": "Izslēgts",

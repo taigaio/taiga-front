@@ -238,6 +238,8 @@
             "PLACEHOLDER_FILTER_NAME": "כתוב את שם המסנן ולחץ אנטר",
             "APPLIED_FILTERS_NUM": "מסננים מוחלים",
             "TITLE_ADVANCED_FILTER": "מתקדם",
+            "LENGTH_ZERO_ERROR": "Please add a filter name",
+            "REPEATED_FILTER_ERROR": "This filter name is already in use",
             "ADVANCED_FILTERS": {
                 "INCLUDE": "תכלול",
                 "EXCLUDE": "אל תכלול",

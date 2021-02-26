@@ -238,6 +238,8 @@
             "PLACEHOLDER_FILTER_NAME": "写入过滤器名称后按下enter",
             "APPLIED_FILTERS_NUM": "已用过滤器",
             "TITLE_ADVANCED_FILTER": "高级",
+            "LENGTH_ZERO_ERROR": "Please add a filter name",
+            "REPEATED_FILTER_ERROR": "This filter name is already in use",
             "ADVANCED_FILTERS": {
                 "INCLUDE": "包括",
                 "EXCLUDE": "排除",

@@ -238,6 +238,8 @@
             "PLACEHOLDER_FILTER_NAME": "Wpisz nazwę filtru i kliknij enter",
             "APPLIED_FILTERS_NUM": "filters applied",
             "TITLE_ADVANCED_FILTER": "Advanced",
+            "LENGTH_ZERO_ERROR": "Please add a filter name",
+            "REPEATED_FILTER_ERROR": "This filter name is already in use",
             "ADVANCED_FILTERS": {
                 "INCLUDE": "Include",
                 "EXCLUDE": "Exclude",

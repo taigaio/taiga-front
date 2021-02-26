@@ -238,6 +238,8 @@
             "PLACEHOLDER_FILTER_NAME": "Напишіть ім'я фільтра та натисніть Enter",
             "APPLIED_FILTERS_NUM": "застосовані фільтри",
             "TITLE_ADVANCED_FILTER": "Розширений",
+            "LENGTH_ZERO_ERROR": "Please add a filter name",
+            "REPEATED_FILTER_ERROR": "This filter name is already in use",
             "ADVANCED_FILTERS": {
                 "INCLUDE": "Включити",
                 "EXCLUDE": "Вилучити",

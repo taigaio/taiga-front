@@ -238,6 +238,8 @@
             "PLACEHOLDER_FILTER_NAME": "Đặt tên bộ lọc và nhấn enter",
             "APPLIED_FILTERS_NUM": "Bộ lọc được áp dụng",
             "TITLE_ADVANCED_FILTER": "Advanced",
+            "LENGTH_ZERO_ERROR": "Please add a filter name",
+            "REPEATED_FILTER_ERROR": "This filter name is already in use",
             "ADVANCED_FILTERS": {
                 "INCLUDE": "Include",
                 "EXCLUDE": "Exclude",

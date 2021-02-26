@@ -238,11 +238,13 @@
             "PLACEHOLDER_FILTER_NAME": "フィルター名を入力しエンターキーを押してください。",
             "APPLIED_FILTERS_NUM": "フィルター適用中",
             "TITLE_ADVANCED_FILTER": "Advanced",
+            "LENGTH_ZERO_ERROR": "Please add a filter name",
+            "REPEATED_FILTER_ERROR": "This filter name is already in use",
             "ADVANCED_FILTERS": {
                 "INCLUDE": "Include",
                 "EXCLUDE": "Exclude",
-                "INCLUDED": "フィルター適用中:",
-                "EXCLUDED": "Excluded:"
+                "INCLUDED": "含む:",
+                "EXCLUDED": "除く:"
             },
             "CATEGORIES": {
                 "TYPE": "タイプ",
@@ -888,7 +890,7 @@
     },
     "PROJECT": {
         "PAGE_TITLE": "{{projectName}}",
-        "HELP": "Reorder your projects to set at the top the most used ones.<br/> The top 4 projects will appear in the top navigation bar project list",
+        "HELP": "最もよく使うプロジェクトが一番上になるように並び替えてみましょう。<br/> 上位4件はナビゲーションバーのプロジェクトリストに表示されます。",
         "PRIVATE": "プライベート プロジェクト",
         "LOOKING_FOR_PEOPLE": "プロジェクトはメンバーを探しています",
         "FANS_COUNTER_TITLE": "{total, plural, =1{one fan} other{# 人のファン}}",
@@ -917,8 +919,8 @@
             "PROJECTS": "プロジェクト",
             "ACCOUNT_SETTINGS": "アカウント設定",
             "ACTION_CREATE_PROJECT": "New project",
-            "ACTION_CREATE_PROJECT_FIRST": "Create your first project",
-            "ACTION_CREATE_PROJECT_FIRST_TEXT": "You don’t have any projects yet. Create one now, invite your team and start using Taiga to the fullest.",
+            "ACTION_CREATE_PROJECT_FIRST": "最初のプロジェクトを作成する",
+            "ACTION_CREATE_PROJECT_FIRST_TEXT": "まだプロジェクトがありません。今すぐ作成してチームを招待し、Taigaを最大限に活用しましょう。",
             "VIEW_ALL_PROJECTS": "すべてのプロジェクトを見る",
             "MANAGE_PROJECTS": "プロジェクト管理",
             "TITLE_CREATE_PROJECT": "プロジェクトを作成",
