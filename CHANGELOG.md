@@ -7,6 +7,8 @@
 - Fix: Wrong filter us count in empty backlog
 - Fix: Highlight code when the user doesn't have edit permissions
 - Improve kanban render performance
+- Fix: Display warning in admin if reached max memberships in a project
+- Display issues tags in sprint taskboard
 
 ## 6.0.5 (2021-02-22)
 
@@ -18,7 +20,6 @@
 - Fix: User mention with underscore
 - Fix: Drag and drop on empty backlog
 - Feat: Editor, image with links
-
 
 ## 6.0.4 (2021-02-15)
 
