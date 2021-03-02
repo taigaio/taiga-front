@@ -202,11 +202,12 @@ div.taskboard-table(
                 ng-if="ctrl.initIssues"
                 sprint-issues="true"
                 issues="issues"
-                show-tags="true"
+                show-tags="showTags"
                 on-load-issues="ctrl.loadIssues()"
                 on-add-new-issue="ctrl.addNewIssue('standard', null)"
                 on-add-issues-in-bulk="ctrl.addNewIssue('bulk', null)"
                 on-delete-issue="ctrl.deleteIssue(id)"
                 on-detach-issue="ctrl.removeIssueFromSprint(id)"
                 on-edit-issue="ctrl.editIssue(id)"
+                on-toggle-tags="ctrl.toggleTags(tags)"
             )

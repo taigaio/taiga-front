@@ -6,6 +6,7 @@ section.issues-options(
         .sprint-issues-title
             tg-svg(svg-icon="icon-issues")
             span.sprint-issues-title-txt Sprint Issues
+
         .display-tags-button#show-tags
             .check.js-check(
                 ng-class="{'active': ctrl.showTags}"
@@ -15,6 +16,7 @@ section.issues-options(
                     id="show-tags-input"
                     ng-checked="ctrl.showTags"
                     ng-model="ctrl.showTags"
+                    ng-change="ctrl.toggleTags()"
                 )
                 div
             label(

@@ -21,6 +21,8 @@ taiga = @.taiga
 
 generateHash = taiga.generateHash
 
+hashShowTags = 'backlog-tags'
+
 resourceProvider = ($repo, $http, $urls, $storage, $q) ->
     service = {}
     hashSuffix = "userstories-queryparams"
@@ -150,13 +152,15 @@ resourceProvider = ($repo, $http, $urls, $storage, $q) ->
         hash = generateHash([projectId, ns])
         return $storage.get(hash) or {}
 
-    service.storeShowTags = (projectId, showTags) ->
-        hash = generateHash([projectId, 'showTags'])
-        $storage.set(hash, showTags)
+    service.storeShowTags = (projectId, params) ->
+        ns = "#{projectId}:#{hashShowTags}"
+        hash = generateHash([projectId, ns])
+        $storage.set(hash, params)
 
     service.getShowTags = (projectId) ->
-        hash = generateHash([projectId, 'showTags'])
-        return $storage.get(hash) or null
+        ns = "#{projectId}:#{hashShowTags}"
+        hash = generateHash([projectId, ns])
+        return $storage.get(hash)
 
     return (instance) ->
         instance.userstories = service

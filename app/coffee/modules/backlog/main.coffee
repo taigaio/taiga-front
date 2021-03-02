@@ -392,9 +392,15 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         @.fillUsersAndRoles(project.members, project.roles)
         @.initializeSubscription()
 
+        if @rs.userstories.getShowTags(@scope.projectId) == false 
+            @showTags = false
+
         return @.loadBacklog()
             .then(=> @.generateFilters(milestone = "null"))
             .then(=> @scope.$emit("backlog:loaded"))
+
+    toggleTags: () ->
+        @rs.userstories.storeShowTags(@scope.projectId, @showTags)
 
     prepareBulkUpdateData: (uses, field="backlog_order") ->
          return _.map(uses, (x) -> {"us_id": x.id, "order": x[field]})

@@ -25,6 +25,8 @@ generateHash = taiga.generateHash
 resourceProvider = ($repo, $http, $urls, $storage, $q) ->
     service = {}
     hashSuffix = "issues-queryparams"
+    hashSprintShowTags = "taskboard-issues"
+    hashIssuesShowTags = "issues-list"
 
     service.get = (projectId, issueId) ->
         params = service.getQueryParams(projectId)
@@ -108,6 +110,30 @@ resourceProvider = ($repo, $http, $urls, $storage, $q) ->
         url = $urls.resolve("promote-issue-to-us", issueId)
         data = {project_id: projectId}
         return $http.post(url, data)
+
+    # Persist display Tags on issues section
+
+    service.storeIssuesShowTags = (projectId, params) ->
+        ns = "#{projectId}:#{hashIssuesShowTags}"
+        hash = generateHash([projectId, ns])
+        $storage.set(hash, params)
+
+    service.getIssuesShowTags = (projectId) ->
+        ns = "#{projectId}:#{hashIssuesShowTags}"
+        hash = generateHash([projectId, ns])
+        return $storage.get(hash)
+
+    # Persist display Tags on taskboard issues list
+
+    service.storeSprintShowTags = (projectId, params) ->
+        ns = "#{projectId}:#{hashSprintShowTags}"
+        hash = generateHash([projectId, ns])
+        $storage.set(hash, params)
+
+    service.getSprintShowTags = (projectId) ->
+        ns = "#{projectId}:#{hashSprintShowTags}"
+        hash = generateHash([projectId, ns])
+        return $storage.get(hash)
 
     return (instance) ->
         instance.issues = service
