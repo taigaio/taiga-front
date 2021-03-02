@@ -3,7 +3,7 @@
 
 ## 6.0.7 (unreleased)
 
-- ...
+- General improvements to interface.
 
 ## 6.0.6 (2021-03-01)
 

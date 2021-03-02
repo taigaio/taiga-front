@@ -34,7 +34,8 @@
                         id="jira-host"
                         ng-model="vm.jiraUrl"
                     )
-                    button.button-green.import-project-button(
+                    button.btn-small.import-project-button(
+                        variant="primary"
                         ng-click="vm.select('jira')"
                         title="{{'PROJECT.IMPORT.ACCEEDE' | translate}}"
                         translate="PROJECT.IMPORT.ACCEEDE"
