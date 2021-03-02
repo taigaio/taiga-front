@@ -49,6 +49,7 @@ issuesTableDirective = ($timeout) ->
             onDeleteIssue: '&',
             onEditIssue: '&',
             onDetachIssue: '&',
+            onToggleTags: '&'
         },
         scope: true,
         link: link

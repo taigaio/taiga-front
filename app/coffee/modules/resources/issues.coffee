@@ -109,6 +109,14 @@ resourceProvider = ($repo, $http, $urls, $storage, $q) ->
         data = {project_id: projectId}
         return $http.post(url, data)
 
+    service.storeSprintShowTags = (projectId, sprintShowTags) ->
+        hash = generateHash([projectId, 'sprintShowTags'])
+        $storage.set(hash, showTags)
+
+    service.getSprintShowTags = (projectId) ->
+        hash = generateHash([projectId, 'sprintShowTags'])
+        return $storage.get(hash) or null
+
     return (instance) ->
         instance.issues = service
 
