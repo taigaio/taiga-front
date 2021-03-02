@@ -393,7 +393,6 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         @.initializeSubscription()
 
         if @rs.userstories.getShowTags(@scope.projectId) == false 
-            console.log(21)
             @showTags = false
 
         return @.loadBacklog()
