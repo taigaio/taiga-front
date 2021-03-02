@@ -9,7 +9,7 @@
         position: relative;
 
         &:hover {
-            background: rgba($primary, .1);
+            background: rgba($color-link-primary, .1);
             transition: background .3s ease-in;
         }
         &:first-child {
@@ -41,7 +41,7 @@
         @include font-type(regular);
         margin-bottom: 0;
         a {
-            color: $primary;
+            color: $color-link-primary;
             margin-left: .3rem;
         }
     }
@@ -49,10 +49,11 @@
         margin-top: .5rem;
     }
     &-input {
+        height: 1.75rem;
         vertical-align: middle;
     }
     &-button {
-        background: $primary;
+        background: $color-link-primary;
         color: $white;
         padding: .4rem 1rem;
     }
