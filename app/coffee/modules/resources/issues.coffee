@@ -25,6 +25,7 @@ generateHash = taiga.generateHash
 resourceProvider = ($repo, $http, $urls, $storage, $q) ->
     service = {}
     hashSuffix = "issues-queryparams"
+    hashSprintShowTags = "taskboard-issues"
 
     service.get = (projectId, issueId) ->
         params = service.getQueryParams(projectId)
@@ -109,13 +110,15 @@ resourceProvider = ($repo, $http, $urls, $storage, $q) ->
         data = {project_id: projectId}
         return $http.post(url, data)
 
-    service.storeSprintShowTags = (projectId, sprintShowTags) ->
-        hash = generateHash([projectId, 'sprintShowTags'])
-        $storage.set(hash, showTags)
+    service.storeSprintShowTags = (projectId, params) ->
+        ns = "#{projectId}:#{hashSprintShowTags}"
+        hash = generateHash([projectId, ns])
+        $storage.set(hash, params)
 
     service.getSprintShowTags = (projectId) ->
-        hash = generateHash([projectId, 'sprintShowTags'])
-        return $storage.get(hash) or null
+        ns = "#{projectId}:#{hashSprintShowTags}"
+        hash = generateHash([projectId, ns])
+        return $storage.get(hash)
 
     return (instance) ->
         instance.issues = service

@@ -18,7 +18,6 @@
 ###
 
 class IssuesTableController
-
     edit: (issue) ->
         @.onEditIssue({id: issue.id})
 

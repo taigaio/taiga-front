@@ -100,7 +100,7 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
             return @taskboardTasksService.tasksByUs
 
         @scope.issues = []
-        @.showTags = true
+        @scope.showTags = true
 
         @scope.$watch 'milestoneIssues', () =>
             if @scope.milestoneIssues
@@ -498,24 +498,20 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
             @.initializeSubscription()
             return data
 
-        return promise.then(=> @.loadProject())
-                      .then =>
-                          @.generateFilters()
-                          console.log(@rs.issues.getSprintShowTags(@.projectId))
+        return promise.then(=> @.loadProject()).then =>
+            @.generateFilters()
 
-                          # if !@rs.issues.getSprintShowTags(@.projectId)
-                          #     @.showTags = false
+            if @rs.issues.getSprintShowTags(@scope.projectId) == false 
+                @scope.showTags = false
 
-                          return @.loadTaskboard()
-                            .then () =>
-                                @timeout () =>
-                                    @.initialLoad = true
-                                , 0, false
-                                @.setRolePoints()
+            return @.loadTaskboard().then () =>
+                @timeout () =>
+                    @.initialLoad = true
+                , 0, false
+                @.setRolePoints()
 
     toggleTags: (tags) ->
-        console.log(tags)
-        @rs.issues.storeSprintShowTags(@.projectId, tags)
+        @rs.issues.storeSprintShowTags(@scope.projectId, tags)
 
     showPlaceHolder: (statusId, usId) ->
         if !@taskboardTasksService.tasksRaw.length
