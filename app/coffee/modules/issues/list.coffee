@@ -117,7 +117,7 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                     @.loadIssues()
 
     toggleShowTags: ->
-        @showTags = !@showTags
+        @rs.issues.storeIssuesShowTags(@scope.projectId, @showTags)
 
     isOrderedBy: (fieldName) ->
         pattern = new RegExp("-*"+fieldName)
@@ -362,6 +362,9 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         @.fillUsersAndRoles(project.members, project.roles)
         @.initializeSubscription()
         @.generateFilters()
+
+        if @rs.issues.getIssuesShowTags(@scope.projectId) == false 
+            @showTags = false
 
         return @.loadIssues()
 

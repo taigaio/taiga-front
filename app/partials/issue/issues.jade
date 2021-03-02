@@ -44,6 +44,7 @@ div.wrapper.issues.lightbox-generic-form(
                                     id="show-tags-input"
                                     ng-checked="ctrl.showTags"
                                     ng-model="ctrl.showTags"
+                                    ng-change="ctrl.toggleShowTags()"
                                 )
                                 div
                             label(

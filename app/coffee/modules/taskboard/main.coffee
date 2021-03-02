@@ -510,8 +510,8 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
                 , 0, false
                 @.setRolePoints()
 
-    toggleTags: (tags) ->
-        @rs.issues.storeSprintShowTags(@scope.projectId, tags)
+    toggleTags: () ->
+        @rs.issues.storeSprintShowTags(@scope.projectId, {tags: @showTags})
 
     showPlaceHolder: (statusId, usId) ->
         if !@taskboardTasksService.tasksRaw.length
