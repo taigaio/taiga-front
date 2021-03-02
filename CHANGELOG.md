@@ -4,6 +4,7 @@
 ## 6.0.7 (unreleased)
 
 - General improvements to interface.
+- Persist show/hide tags preferences on local storage
 
 ## 6.0.6 (2021-03-01)
 
