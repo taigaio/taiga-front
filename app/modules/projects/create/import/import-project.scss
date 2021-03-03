@@ -49,6 +49,9 @@
         margin-top: .5rem;
     }
     &-input {
+        border: 1px solid $color-gray400;
+        border-radius: 2px;
+        box-sizing: border-box;
         height: 1.75rem;
         vertical-align: middle;
     }
