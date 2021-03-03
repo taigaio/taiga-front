@@ -95,9 +95,12 @@ describe "CreateProjectFormCtrl", ->
     it "submit project form", () ->
         ctrl = $controller("CreateProjectFormCtrl")
 
-        ctrl.projectForm = 'form'
+        ctrl.projectForm = {
+            name: 'name',
+            description: 'description'
+        }
 
-        mocks.projectsService.create.withArgs('form').promise().resolve(Immutable.fromJS({slug: 'project1', id: 1}))
+        mocks.projectsService.create.withArgs(ctrl.projectForm).promise().resolve(Immutable.fromJS({slug: 'project1', id: 1, name: 'name', description: 'description'}))
         mocks.projectUrl.get.returns('project-url')
 
         ctrl.submit().then () ->

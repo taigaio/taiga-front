@@ -18,6 +18,7 @@
     form(
         name="projectForm",
         ng-submit="vm.submit()"
+        novalidate
     )
         div(ng-include="'projects/create/import-project-form-common/name.html'")
         div(ng-include="'projects/create/import-project-form-common/description.html'")

@@ -108,4 +108,15 @@ textarea {
     @include font-type(regular);
     color: $color-link-red;
     margin-bottom: .5rem;
+    transition: opacity 300ms linear;
+
+    &.ng-enter.ng-enter-active {
+        opacity: 1;
+    }
+
+    &.ng-enter,
+    &.ng-leave.ng-leave-active {
+        opacity: 0;
+        transition: opacity 100ms linear;
+    }
 }

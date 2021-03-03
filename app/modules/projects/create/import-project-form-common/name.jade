@@ -4,6 +4,7 @@ fieldset
         for="project-name"
     )
     input.e2e-create-project-title(
+        ng-class="{'checksley-error': !!vm.errorList.includes('name') }"
         type="text"
         ng-model="vm.projectForm.name"
         placeholder="{{'PROJECT.COMMON.PROJECT_TITLE' | translate}}"
@@ -11,3 +12,4 @@ fieldset
         data-required="true"
         required
     )
+    .error-text(ng-if="!!vm.errorList.includes('name')") {{ 'COMMON.FORM_ERRORS.REQUIRED'|translate }}
