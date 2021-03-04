@@ -48,12 +48,13 @@
     &-url {
         margin-top: .5rem;
     }
-    &-input {
-        border: 1px solid $color-gray400;
-        border-radius: 2px;
-        box-sizing: border-box;
-        height: 1.75rem;
-        vertical-align: middle;
+    &-input-holder {
+        display: flex;
+        max-width: 20rem;
+
+        .import-project-input {
+            margin-right: .5rem;
+        }
     }
     &-button {
         background: $color-link-primary;

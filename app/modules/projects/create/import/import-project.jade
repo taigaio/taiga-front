@@ -29,17 +29,19 @@
                         for="jira-host"
                         translate="PROJECT.IMPORT.JIRA.URL"
                     )
-                    input.import-project-input(
-                        ng-keyup="$event.keyCode == 13 && vm.select('jira')"
-                        id="jira-host"
-                        ng-model="vm.jiraUrl"
-                    )
-                    button.btn-small.import-project-button(
-                        variant="primary"
-                        ng-click="vm.select('jira')"
-                        title="{{'PROJECT.IMPORT.ACCEEDE' | translate}}"
-                        translate="PROJECT.IMPORT.ACCEEDE"
-                    )
+                    .import-project-input-holder
+                        input.import-project-input(
+                            ng-keyup="$event.keyCode == 13 && vm.select('jira')"
+                            type="text"
+                            id="jira-host"
+                            ng-model="vm.jiraUrl"
+                        )
+                        button.btn-small.import-project-button(
+                            variant="primary"
+                            ng-click="vm.select('jira')"
+                            title="{{'PROJECT.IMPORT.ACCEEDE' | translate}}"
+                            translate="PROJECT.IMPORT.ACCEEDE"
+                        )
         li.import-project-from-site(
             ng-click="vm.select('github')"
             ng-if="vm.isActiveImporter('github')"
