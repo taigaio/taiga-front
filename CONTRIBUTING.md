@@ -8,4 +8,4 @@ All Contributions are subject to the following DCO + License terms.
 
 [DCO + License](https://github.com/taigaio/taiga-front/blob/master/DCOLICENSE)
 
-There are many different ways to contribute to Taiga's platform, from patches, to documentation and UI enhancements, just find the one that best fits with your skills. Check out our detailed [contribution guide](https://resources.taiga.io/how-can-i-contribute)
+There are many different ways to contribute to Taiga's platform, from patches, to documentation and UI enhancements, just find the one that best fits with your skills. Check out our detailed [contribution guide](https://resources.taiga.io/extend/how-can-i-contribute/)
