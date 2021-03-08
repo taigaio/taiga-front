@@ -991,8 +991,8 @@
         },
         "COMMON": {
             "DETAILS": "Thông tin mới về dự án",
-            "PROJECT_TITLE": "Tên dự án",
-            "PROJECT_DESCRIPTION": "Mô tả dự án"
+            "PROJECT_TITLE": "Project Name (Required)",
+            "PROJECT_DESCRIPTION": "Project Description (Required)"
         },
         "DUPLICATE": {
             "TITLE": "Sao chép dự án",

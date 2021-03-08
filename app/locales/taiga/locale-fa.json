@@ -991,8 +991,8 @@
         },
         "COMMON": {
             "DETAILS": "جزئیات پروژه‌ی جدید",
-            "PROJECT_TITLE": "نام پروژه",
-            "PROJECT_DESCRIPTION": "توضیح پروژه"
+            "PROJECT_TITLE": "Project Name (Required)",
+            "PROJECT_DESCRIPTION": "Project Description (Required)"
         },
         "DUPLICATE": {
             "TITLE": "ایجاد کپی پروژه",

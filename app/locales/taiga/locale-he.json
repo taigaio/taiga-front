@@ -991,8 +991,8 @@
         },
         "COMMON": {
             "DETAILS": "פרטי פרוייקט חדש",
-            "PROJECT_TITLE": "שם פרוייקט",
-            "PROJECT_DESCRIPTION": "תיאור פרוייקט"
+            "PROJECT_TITLE": "Project Name (Required)",
+            "PROJECT_DESCRIPTION": "Project Description (Required)"
         },
         "DUPLICATE": {
             "TITLE": "שכפל פרוייקט",

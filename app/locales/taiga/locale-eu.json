@@ -991,8 +991,8 @@
         },
         "COMMON": {
             "DETAILS": "Proiektu berriaren xehetasunak",
-            "PROJECT_TITLE": "Proiektuaren izena",
-            "PROJECT_DESCRIPTION": "Proiektuaren azalpena"
+            "PROJECT_TITLE": "Project Name (Required)",
+            "PROJECT_DESCRIPTION": "Project Description (Required)"
         },
         "DUPLICATE": {
             "TITLE": "Bikoiztu proiektua",

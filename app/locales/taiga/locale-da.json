@@ -991,8 +991,8 @@
         },
         "COMMON": {
             "DETAILS": "Nye projekt detaljer",
-            "PROJECT_TITLE": "Projekt Navn",
-            "PROJECT_DESCRIPTION": "Projekt Beskrivelse"
+            "PROJECT_TITLE": "Project Name (Required)",
+            "PROJECT_DESCRIPTION": "Project Description (Required)"
         },
         "DUPLICATE": {
             "TITLE": "Dupliker Projekt",

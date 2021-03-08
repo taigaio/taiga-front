@@ -991,8 +991,8 @@
         },
         "COMMON": {
             "DETAILS": "Proje detayları",
-            "PROJECT_TITLE": "Proje Adı",
-            "PROJECT_DESCRIPTION": "Proje Tanımı"
+            "PROJECT_TITLE": "Project Name (Required)",
+            "PROJECT_DESCRIPTION": "Project Description (Required)"
         },
         "DUPLICATE": {
             "TITLE": "Projeyi Kopyala",

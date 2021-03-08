@@ -238,8 +238,8 @@
             "PLACEHOLDER_FILTER_NAME": "Введите название фильтра и нажмите \"ввод\"",
             "APPLIED_FILTERS_NUM": "фильтры применены",
             "TITLE_ADVANCED_FILTER": "Дополнительно",
-            "LENGTH_ZERO_ERROR": "Please add a filter name",
-            "REPEATED_FILTER_ERROR": "This filter name is already in use",
+            "LENGTH_ZERO_ERROR": "Пожалуйста, введите название фильтра",
+            "REPEATED_FILTER_ERROR": "Такое название фильтра уже используется ",
             "ADVANCED_FILTERS": {
                 "INCLUDE": "Включить",
                 "EXCLUDE": "Исключить",
@@ -991,8 +991,8 @@
         },
         "COMMON": {
             "DETAILS": "Новые свойства проекта",
-            "PROJECT_TITLE": "Название проекта",
-            "PROJECT_DESCRIPTION": "Описание проекта"
+            "PROJECT_TITLE": "Project Name (Required)",
+            "PROJECT_DESCRIPTION": "Project Description (Required)"
         },
         "DUPLICATE": {
             "TITLE": "Клонировать проект",

@@ -991,8 +991,8 @@
         },
         "COMMON": {
             "DETAILS": "Nuevos detalles del proyecto",
-            "PROJECT_TITLE": "Nombre del proyecto",
-            "PROJECT_DESCRIPTION": "Descripción del proyecto"
+            "PROJECT_TITLE": "Project Name (Required)",
+            "PROJECT_DESCRIPTION": "Project Description (Required)"
         },
         "DUPLICATE": {
             "TITLE": "Duplicar Proyecto",

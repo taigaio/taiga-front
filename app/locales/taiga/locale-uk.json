@@ -991,8 +991,8 @@
         },
         "COMMON": {
             "DETAILS": "Деталі нового проєкту",
-            "PROJECT_TITLE": "Ім'я проєкту",
-            "PROJECT_DESCRIPTION": "Опис проєкту"
+            "PROJECT_TITLE": "Project Name (Required)",
+            "PROJECT_DESCRIPTION": "Project Description (Required)"
         },
         "DUPLICATE": {
             "TITLE": "Дублювати проєкт",

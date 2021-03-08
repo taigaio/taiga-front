@@ -991,8 +991,8 @@
         },
         "COMMON": {
             "DETAILS": "新的项目详情",
-            "PROJECT_TITLE": "项目名称",
-            "PROJECT_DESCRIPTION": "项目描述"
+            "PROJECT_TITLE": "Project Name (Required)",
+            "PROJECT_DESCRIPTION": "Project Description (Required)"
         },
         "DUPLICATE": {
             "TITLE": "复制项目",

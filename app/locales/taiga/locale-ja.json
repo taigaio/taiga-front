@@ -991,8 +991,8 @@
         },
         "COMMON": {
             "DETAILS": "新規プロジェクト詳細",
-            "PROJECT_TITLE": "プロジェクト名",
-            "PROJECT_DESCRIPTION": "プロジェクト概要"
+            "PROJECT_TITLE": "Project Name (Required)",
+            "PROJECT_DESCRIPTION": "Project Description (Required)"
         },
         "DUPLICATE": {
             "TITLE": "プロジェクトを複製",
