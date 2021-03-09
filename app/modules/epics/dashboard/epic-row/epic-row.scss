@@ -34,7 +34,7 @@
     &.unfold {
         .name {
             .icon {
-                transform: rotate(0deg);
+                transform: rotate(180deg);
             }
         }
     }
@@ -60,7 +60,7 @@
             margin-left: .25rem;
         }
         .icon {
-            transform: rotate(180deg);
+            transform: rotate(0);
             transition: all .2s;
         }
     }
@@ -107,7 +107,7 @@
         top: .25rem;
     }
     .progress-bar {
-        background-color: $grey-05;
+        background-color: $color-white;
         max-width: 40vw;
         padding-right: 1rem;
         width: 100%;

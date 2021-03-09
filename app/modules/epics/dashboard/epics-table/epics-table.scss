@@ -26,10 +26,13 @@
     .assigned {
         padding: 1rem .5rem;
     }
+    .progress {
+        margin-right: 0;
+    }
 }
 
 .epics-table-options-wrapper {
-    bottom: 1rem;
+    bottom: 3rem;
     position: absolute;
     right: .5rem;
 }

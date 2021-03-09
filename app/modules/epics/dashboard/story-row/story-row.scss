@@ -7,7 +7,7 @@
     background: $white;
     border-radius: 3px;
     display: flex;
-    margin-left: 5rem;
+    padding-left: 1rem;
     transition: background .2s;
     &:hover {
         background-color: $color-gray100;
@@ -24,6 +24,11 @@
             stroke: $white;
         }
     }
+    .deco-space {
+        display: inline-block;
+        margin-left: .75rem;
+        width: 1rem;
+    }
     &.is-closed {
         .name {
             color: $gray-light;
@@ -31,7 +36,8 @@
         }
     }
     .name {
-        flex-basis: 16vw;
+        flex-basis: 20vw;
+        padding-left: 0;
         a {
             cursor: pointer;
 
@@ -46,9 +52,6 @@
             color: $color-black600;
             margin-left: .25rem;
         }
-        tg-belong-to-epics {
-            margin-left: .5rem;
-        }
     }
     .progress-bar,
     .progress-status {
@@ -58,7 +61,7 @@
         top: .25rem;
     }
     .progress-bar {
-        background: $mass-white;
+        background: $color-gray100;
         max-width: 40vw;
         width: 100%;
     }
