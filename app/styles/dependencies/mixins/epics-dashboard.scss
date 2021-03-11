@@ -1,8 +1,4 @@
 @mixin epics-table {
-    .project,
-    .assigned {
-        padding: .5rem;
-    }
     .vote,
     .status-holder,
     .sprint,
@@ -19,20 +15,32 @@
     }
     .assigned,
     .project {
-        flex-basis: 100px;
+        flex-basis: 75px;
         flex-grow: 0;
         flex-shrink: 0;
         flex-wrap: wrap;
+        padding: .5rem;
         text-align: center;
     }
-    .status-holder,
+    .status-holder {
+        flex-basis: 110px;
+        flex-grow: 0;
+        flex-shrink: 0;
+        flex-wrap: wrap;
+        max-width: 150px;
+        text-align: center;
+    }
     .sprint {
         flex-basis: 150px;
         flex-grow: 0;
         flex-shrink: 0;
         flex-wrap: wrap;
         max-width: 150px;
+        overflow: hidden;
         text-align: center;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 90%;
     }
     .name,
     .progress {
@@ -40,16 +48,14 @@
         flex-grow: 1;
         flex-shrink: 1;
         max-width: 40vw;
+
     }
     .progress {
         flex-shrink: 3;
         margin-right: 1rem;
         position: relative;
-    }
-    .sprint {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        width: 90%;
+        @media (max-width: 1110px) {
+            max-width: 234px;
+        }
     }
 }

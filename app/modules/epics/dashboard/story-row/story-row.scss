@@ -4,9 +4,10 @@
     @include font-size(small);
     @include epics-table;
     align-items: center;
-    background: $white;
+    background: $color-white;
     border-radius: 3px;
     display: flex;
+    margin-left: 1.5rem;
     padding-left: 1rem;
     transition: background .2s;
     &:hover {
@@ -17,11 +18,11 @@
         a,
         span,
         div {
-            color: $white;
+            color: $color-white;
         }
         svg {
-            fill: $white;
-            stroke: $white;
+            fill: $color-white;
+            stroke: $color-white;
         }
     }
     .deco-space {
@@ -36,8 +37,15 @@
         }
     }
     .name {
-        flex-basis: 20vw;
+        flex-basis: calc(20vw - 1.5rem);
+        flex-shrink: 1;
         padding-left: 0;
+
+        .name-container {
+            @media (max-width: 1110px) {
+                word-break: break-word;
+            }
+        }
         a {
             cursor: pointer;
 
@@ -78,7 +86,7 @@
     .project,
     .assigned {
         img {
-            width: 30px;
+            width: 25px;
         }
     }
     .assigned {

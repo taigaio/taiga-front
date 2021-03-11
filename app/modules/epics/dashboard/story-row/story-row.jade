@@ -3,18 +3,19 @@
     ng-hide="!vm.options.closed_us && vm.story.get('is_closed')"
 )
     .name(ng-if="vm.options.name")
-        tg-belong-to-epics(
-            ng-if="vm.story.get('epics')"
-            format="pill"
-            epics="vm.story.get('epics')"
-        )
-        - var hash = "#";
-        a(
-            tg-nav="project-userstories-detail:project=vm.story.getIn(['project_extra_info', 'slug']),ref=vm.story.get('ref')"
-            ng-attr-title="{{::vm.story.get('subject')}}"
-        )
-            span.ref(ng-bind-html="'#'+vm.story.get('ref')")
-            span.subject(ng-bind-html="vm.story.get('subject') | emojify")
+        .name-container
+            - var hash = "#";
+            a(
+                tg-nav="project-userstories-detail:project=vm.story.getIn(['project_extra_info', 'slug']),ref=vm.story.get('ref')"
+                ng-attr-title="{{::vm.story.get('subject')}}"
+            )
+                span.ref(ng-bind-html="'#'+vm.story.get('ref')")
+                span.subject(ng-bind-html="vm.story.get('subject') | emojify")
+            tg-belong-to-epics(
+                ng-if="vm.story.get('epics')"
+                format="pill"
+                epics="vm.story.get('epics')"
+            )
     .project(
         ng-if="vm.options.project"
         tg-nav="project:project=vm.story.getIn(['project_extra_info', 'slug'])"

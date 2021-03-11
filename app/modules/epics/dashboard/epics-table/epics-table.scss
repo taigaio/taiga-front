@@ -20,14 +20,20 @@
     padding-left: 1rem;
     position: relative;
     > div {
+        @include font-type(regular);
+        @include font-size(xsmall);
+        @include font-type(medium);
+
         color: $color-link-tertiary;
+        flex-wrap: nowrap;
+        text-transform: uppercase;
     }
     .project,
     .assigned {
         padding: 1rem .5rem;
     }
-    .progress {
-        margin-right: 0;
+    .status-holder {
+        padding-right: 1.5rem;
     }
 }
 
