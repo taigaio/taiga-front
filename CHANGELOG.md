@@ -3,7 +3,7 @@
 
 ## 6.0.8 (unreleased)
 
-- ...
+- Fix: Change html lang attribute when the lenguage is not en
 
 ## 6.0.7 (2021-03-09)
 
