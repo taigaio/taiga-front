@@ -991,8 +991,8 @@
         },
         "COMMON": {
             "DETAILS": "Новые свойства проекта",
-            "PROJECT_TITLE": "Project Name (Required)",
-            "PROJECT_DESCRIPTION": "Project Description (Required)"
+            "PROJECT_TITLE": "Название проекта (Необходимо)",
+            "PROJECT_DESCRIPTION": "Описание проекта (Необходимо)"
         },
         "DUPLICATE": {
             "TITLE": "Клонировать проект",

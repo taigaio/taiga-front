@@ -214,7 +214,7 @@
         "CONFIRM_PROMOTE": {
             "ISSUE": {
                 "TITLE": "이 이슈를 유저 스토리에 등록하기",
-                "MESSAGE": "Are you sure you want to create a new user story from this issue?"
+                "MESSAGE": "이 이슈에서 새 유저 스토리를 생성하시겠어요?"
             },
             "TASK": {
                 "TITLE": "Promote this task to a new user story",
@@ -917,11 +917,11 @@
         },
         "NAVIGATION": {
             "PROJECTS": "프로젝트",
-            "ACCOUNT_SETTINGS": "Account settings",
-            "ACTION_CREATE_PROJECT": "New project",
+            "ACCOUNT_SETTINGS": "계정 설정",
+            "ACTION_CREATE_PROJECT": "프로젝트 만들기",
             "ACTION_CREATE_PROJECT_FIRST": "Create your first project",
             "ACTION_CREATE_PROJECT_FIRST_TEXT": "You don’t have any projects yet. Create one now, invite your team and start using Taiga to the fullest.",
-            "VIEW_ALL_PROJECTS": "View all projects",
+            "VIEW_ALL_PROJECTS": "모든 프로젝트 보기",
             "MANAGE_PROJECTS": "프로젝트 관리하기",
             "TITLE_CREATE_PROJECT": "프로젝트 생성하기",
             "HELP_TITLE": "도움말",
@@ -990,7 +990,7 @@
             "PRIVATE_PROJECT": "비공개 프로젝트"
         },
         "COMMON": {
-            "DETAILS": "새로운 프로젝트 세부사항",
+            "DETAILS": "새 프로젝트 상세",
             "PROJECT_TITLE": "Project Name (Required)",
             "PROJECT_DESCRIPTION": "Project Description (Required)"
         },
@@ -1171,7 +1171,7 @@
             "ISSUE_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this issue",
             "US_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this user story",
             "NEW_TASK": "태스크",
-            "NEW_ISSUE": "New issue",
+            "NEW_ISSUE": "이슈 만들기",
             "NEW_US": "새 유저 스토리",
             "EDIT_TASK": "태스크 수정하기",
             "EDIT_ISSUE": "Edit issue",
@@ -1222,7 +1222,7 @@
             }
         },
         "CHANGE_OWNER": {
-            "TITLE": "누구를 새로운 프로젝트 소유자로 삼고 싶습니까?",
+            "TITLE": "누가 새 프로젝트의 소유자가 되기를 원하나요?",
             "ADD_COMMENT": "댓글 추가",
             "BUTTON": "이 프로젝트 회원에게 새 프로젝트 소유자가 되도록 문의하십시오."
         },
@@ -1477,8 +1477,8 @@
         "SECTION_NAME": "태스크보드",
         "TITLE_ACTION_ADD": "Add a new task",
         "TITLE_ACTION_ADD_BULK": "Add some new tasks in bulk",
-        "TITLE_ACTION_ADD_ISSUE": "Add a new issue",
-        "TITLE_ACTION_ADD_ISSUE_BULK": "Add some new issues in bulk",
+        "TITLE_ACTION_ADD_ISSUE": "이슈 추가",
+        "TITLE_ACTION_ADD_ISSUE_BULK": "이슈 여러 개 한꺼번에 추가",
         "TITLE_ACTION_ASSIGN": "태스크 할당하기",
         "PLACEHOLDER_CARD_TITLE": "This could be a user story",
         "PLACEHOLDER_CARD_TEXT": "Go to the <a href=\"{{ backlogUrl }}\" title=\"Go to backlog\">backlog</a> and drag user stories to this sprint; split the stories into tasks to track them separately.",
@@ -1543,7 +1543,7 @@
         "SAVED": "The Taiga saved all your changes!",
         "CLOSE": "알림 닫기",
         "MAIL": "메일로 알림",
-        "DESKTOP": "Desktop notifications using browser alerts",
+        "DESKTOP": "브라우저 경고를 통한 데스크탑 알림",
         "ASK_DELETE": "정말 삭제하실 건가요?"
     },
     "CANCEL_ACCOUNT": {
@@ -1571,7 +1571,7 @@
         "PAGE_TITLE": "이슈 - {{projectName}}",
         "PAGE_DESCRIPTION": "프로젝트 {{projectName}}: {{projectDescription}}의 이슈 목록 패널",
         "SECTION_NAME": "이슈",
-        "ACTION_NEW_ISSUE": "NEW ISSUE",
+        "ACTION_NEW_ISSUE": "이슈 만들기",
         "ACTION_ATTACH_SPRINT": "Attach issue to Sprint",
         "ACTION_DETACH_SPRINT": "Detach issue from Sprint",
         "EXTERNAL_REFERENCE": "이 이슈가 만들어 진 곳은 ",
@@ -1683,7 +1683,7 @@
             "SECTION_TITLE": "사용자 설정",
             "CHANGE_PASSWORD": "비밀번호 변경하기",
             "EMAIL_NOTIFICATIONS": "이메일 알림",
-            "DESKTOP_NOTIFICATIONS": "Desktop notifications",
+            "DESKTOP_NOTIFICATIONS": "데스크탑 알림",
             "EVENTS": "이벤트"
         },
         "NOTIFICATIONS": {
@@ -1698,10 +1698,10 @@
             "OPTION_NONE": "없음"
         },
         "PROJECT_SETTINGS": {
-            "SET_START_PAGES": "Set start pages",
-            "START_PAGES_PER_PROJECT": "Set start pages per project",
+            "SET_START_PAGES": "시작 페이지 설정",
+            "START_PAGES_PER_PROJECT": "프로젝트별 시작 페이지 설정",
             "COLUMN_PROJECT": "프로젝트",
-            "COLUMN_STARTPAGE": "Start page",
+            "COLUMN_STARTPAGE": "시작 페이지",
             "DEFAULT_VALUE": "Default"
         },
         "EVENTS": {
