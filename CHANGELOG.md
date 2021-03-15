@@ -1,9 +1,13 @@
 # Changelog
 
+## 6.0.9 (unreleased)
 
-## 6.0.8 (unreleased)
+- ...
+
+## 6.0.8 (2021-03-16)
 
 - Fix: Change html lang attribute when the lenguage is not en
+- Fix: epic screen on screen inferior to 1200px
 
 ## 6.0.7 (2021-03-09)
 

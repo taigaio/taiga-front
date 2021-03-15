@@ -1,6 +1,6 @@
 {
   "name": "TaigaIO",
-  "version": "6.0.7",
+  "version": "6.0.8",
   "description": "Taiga project management system (frontend)",
   "main": "index.js",
   "keywords": [
