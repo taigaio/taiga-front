@@ -3,6 +3,7 @@
 ## 6.0.9 (unreleased)
 
 - Fix: prevent invalid query params on filters
+- Fix: support more languages in the html editor
 
 ## 6.0.8 (2021-03-16)
 
