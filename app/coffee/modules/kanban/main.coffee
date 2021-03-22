@@ -156,8 +156,11 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                 @.zoomLoading = false
                 @kanbanUserstoriesService.resetFolds()
 
-    filtersReloadContent: () ->
+    filtersReloadContent: debounceLeading 100, () ->
         @.loadUserstories().then (result) =>
+            if !result
+                return
+
             if @scope.swimlanesList.size && !result.length
                 @.foldedSwimlane = @.foldedSwimlane.set(@scope.swimlanesList.first().id.toString(), false)
 
@@ -408,11 +411,16 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         locationParams = _.pick(_.clone(@location.search()), @.validQueryParams)
         params = _.merge params, locationParams
         params.q = @.filterQ
+        @.lastSearch = @.filterQ
+        lastSearch = @.filterQ
 
         promise = @q.all([
             @rs.userstories.listAll(@scope.projectId, params),
             @.loadSwimlanes()
         ]).then (result) =>
+            if lastSearch != @.lastSearch
+                return
+
             @kanbanUserstoriesService.reset(false)
             userstories = result[0]
             swimlanes = result[1]

@@ -4,6 +4,7 @@
 
 - Fix: prevent invalid query params on filters
 - Fix: support more languages in the html editor
+- Fix: kanban search race condition
 
 ## 6.0.8 (2021-03-16)
 
