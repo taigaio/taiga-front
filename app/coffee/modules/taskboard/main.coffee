@@ -62,11 +62,22 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
 
     excludePrefix: "exclude_"
     filterCategories: [
-        "tags",
         "status",
         "assigned_to",
         "owner",
         "role",
+    ]
+
+    validQueryParams: [
+        'exclude_status',
+        'status',
+        'exclude_assigned_to',
+        'assigned_to',
+        'exclude_role',
+        'role',
+        'exclude_owner',
+        'owner',
+        'order_by'
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @rs2, @params, @q, @appMetaService, @location, @navUrls,
@@ -82,7 +93,7 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
             ref: @params.ref
         })
 
-        return if @.applyStoredFilters(@params.pslug, "tasks-filters")
+        return if @.applyStoredFilters(@params.pslug, "tasks-filters", @.validQueryParams)
 
         @scope.sectionName = @translate.instant("TASKBOARD.SECTION_NAME")
         @.initializeEventHandlers()
@@ -108,6 +119,9 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
                     return @taskboardIssuesService.issuesRaw.find (rawIssue) => milestoneIssue.model.id == rawIssue.id
             else
                 @scope.issues = []
+
+    getQueryParams: () ->
+        return _.pick(_.clone(@location.search()), @.validQueryParams)
 
     firstLoad: () ->
         promise = @.loadInitialData()
@@ -173,7 +187,7 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
 
     saveCustomFilter: (name) ->
         filters = {}
-        urlfilters = @location.search()
+        urlfilters = @.getQueryParams()
         for key in @.filterCategories
             excludeKey = @.excludePrefix.concat(key)
             filters[key] = urlfilters[key]
@@ -185,9 +199,8 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
             @filterRemoteStorageService.storeFilters(@scope.projectId, userFilters, 'tasks-custom-filters').then(@.generateFilters)
 
     generateFilters: ->
-        @.storeFilters(@params.pslug, @location.search(), "tasks-filters")
-
-        urlfilters = @location.search()
+        urlfilters = @.getQueryParams()
+        @.storeFilters(@params.pslug, urlfilters, "tasks-filters")
 
         loadFilters = {}
         loadFilters.project = @scope.projectId
@@ -448,7 +461,8 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
         if @.zoomLevel > 1
             params.include_attachments = 1
 
-        params = _.merge params, @location.search()
+        locationParams = @.getQueryParams()
+        params = _.merge params, locationParams
 
         return @rs.issues.listInProject(@scope.projectId, @scope.sprintId, params).then (issues) =>
             @taskboardIssuesService.init(@scope.project, @scope.usersById, @scope.issueStatusById)
@@ -461,13 +475,14 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
         if @.zoomLevel > 1
             params.include_attachments = 1
 
-        params = _.merge params, @location.search()
+        locationParams = @.getQueryParams()
+        params = _.merge params, locationParams
         params.q = @.filterQ
 
         return @rs.tasks.list(@scope.projectId, @scope.sprintId, null, params).then (tasks) =>
             @.notFoundTasks = false
 
-            if !tasks.length && ((@.filterQ && @.filterQ.length) || Object.keys(@location.search()).length)
+            if !tasks.length && ((@.filterQ && @.filterQ.length) || Object.keys(locationParams).length)
                 @.notFoundTasks = true
 
             @taskboardTasksService.init(@scope.project, @scope.usersById)
@@ -486,7 +501,7 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
     loadInitialData: ->
         @.initialLoad = false
         @.initIssues = false
-        
+
         params = {
             pslug: @params.pslug
             sslug: @params.sslug
@@ -501,7 +516,7 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
         return promise.then(=> @.loadProject()).then =>
             @.generateFilters()
 
-            if @rs.issues.getSprintShowTags(@scope.projectId) == false 
+            if @rs.issues.getSprintShowTags(@scope.projectId) == false
                 @scope.showTags = false
 
             return @.loadTaskboard().then () =>

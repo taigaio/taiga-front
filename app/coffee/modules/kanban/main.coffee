@@ -67,6 +67,18 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
     storeCustomFiltersName: 'kanban-custom-filters'
     storeFiltersName: 'kanban-filters'
+    validQueryParams: [
+        'exclude_tags',
+        'tags',
+        'exclude_assigned_users',
+        'assigned_users',
+        'exclude_role',
+        'role',
+        'exclude_epic',
+        'epic',
+        'exclude_owner',
+        'owner'
+    ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @rs2, @params, @q, @location,
                   @appMetaService, @navUrls, @events, @analytics, @translate, @errorHandlingService,
@@ -83,7 +95,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         @.isLightboxOpened = false # True when a lighbox is open
         @.isRefreshNeeded = false  # True if a lighbox is open and some event arrived
 
-        return if @.applyStoredFilters(@params.pslug, "kanban-filters")
+        return if @.applyStoredFilters(@params.pslug, "kanban-filters", @.validQueryParams)
 
         @scope.sectionName = @translate.instant("KANBAN.SECTION_NAME")
         @.initializeEventHandlers()
@@ -393,7 +405,8 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             params.include_attachments = 1
             params.include_tasks = 1
 
-        params = _.merge params, @location.search()
+        locationParams = _.pick(_.clone(@location.search()), @.validQueryParams)
+        params = _.merge params, locationParams
         params.q = @.filterQ
 
         promise = @q.all([

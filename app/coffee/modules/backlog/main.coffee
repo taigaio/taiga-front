@@ -63,6 +63,20 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
     backlogOrder: {}
     milestonesOrder: {}
     newUs: []
+    validQueryParams: [
+        'exclude_status',
+        'status',
+        'exclude_tags',
+        'tags',
+        'exclude_assigned_users',
+        'assigned_users',
+        'exclude_role',
+        'role',
+        'exclude_epic',
+        'epic',
+        'exclude_owner',
+        'owner'
+    ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @appMetaService, @navUrls,
                   @events, @analytics, @translate, @loading, @rs2, @modelTransform, @errorHandlingService,
@@ -81,7 +95,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         @scope.noSwimlaneUserStories = false
         @scope.swimlanesList = Immutable.List()
 
-        return if @.applyStoredFilters(@params.pslug, "backlog-filters")
+        return if @.applyStoredFilters(@params.pslug, "backlog-filters", @.validQueryParams)
 
         @scope.sectionName = @translate.instant("BACKLOG.SECTION_NAME")
         @showTags = true
@@ -293,7 +307,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
         @.loadingUserstories = true
         @.disablePagination = true
-        params = _.clone(@location.search())
+        params = _.pick(_.clone(@location.search()), @.validQueryParams)
         @rs.userstories.storeQueryParams(@scope.projectId, params)
 
         if resetPagination
@@ -392,7 +406,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         @.fillUsersAndRoles(project.members, project.roles)
         @.initializeSubscription()
 
-        if @rs.userstories.getShowTags(@scope.projectId) == false 
+        if @rs.userstories.getShowTags(@scope.projectId) == false
             @showTags = false
 
         return @.loadBacklog()

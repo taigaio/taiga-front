@@ -114,9 +114,12 @@ class FiltersMixin
         location = if load then @location else @location.noreload(@scope)
         location.search(name, value)
 
-    applyStoredFilters: (projectSlug, key) ->
+    applyStoredFilters: (projectSlug, key, validKeys) ->
         if _.isEmpty(@location.search())
             filters = @.getFilters(projectSlug, key)
+            if validKeys
+                filters = _.pick(filters, validKeys)
+
             if Object.keys(filters).length
                 @location.search(filters)
                 @location.replace()

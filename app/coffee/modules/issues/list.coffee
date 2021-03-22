@@ -73,6 +73,25 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         "role",
     ]
 
+    validQueryParams: [
+        'exclude_tags',
+        'tags',
+        'exclude_status',
+        'status',
+        'exclude_type',
+        'type',
+        'exclude_severity',
+        'severity',
+        'exclude_priority',
+        'priority',
+        'exclude_assigned_to',
+        'assigned_to',
+        'exclude_role',
+        'role',
+        'exclude_owner',
+        'owner',
+        'order_by'
+    ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @urls, @params, @q, @location, @appMetaService,
                   @navUrls, @events, @analytics, @translate, @errorHandlingService, @storage, @filterRemoteStorageService, @projectService) ->
@@ -83,7 +102,7 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         @.voting = false
         @.openFilter = false
 
-        return if @.applyStoredFilters(@params.pslug, @.filtersHashSuffix)
+        return if @.applyStoredFilters(@params.pslug, @.filtersHashSuffix, @.validQueryParams)
 
         promise = @.loadInitialData()
 
@@ -177,9 +196,12 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
             @filterRemoteStorageService.storeFilters(@scope.projectId, userFilters, @.myFiltersHashSuffix).then(@.generateFilters)
 
+    getQueryParams: () ->
+        return _.pick(_.clone(@location.search()), @.validQueryParams)
+
     generateFilters: ->
-        @.storeFilters(@params.pslug, @location.search(), @.filtersHashSuffix)
-        urlfilters = @location.search()
+        urlfilters = @.getQueryParams()
+        @.storeFilters(@params.pslug, urlfilters, @.filtersHashSuffix)
 
         loadFilters = {}
         loadFilters.project = @scope.projectId
@@ -363,7 +385,7 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         @.initializeSubscription()
         @.generateFilters()
 
-        if @rs.issues.getIssuesShowTags(@scope.projectId) == false 
+        if @rs.issues.getIssuesShowTags(@scope.projectId) == false
             @showTags = false
 
         return @.loadIssues()
@@ -523,7 +545,8 @@ IssuesOrderingDirective = ($log, $location, $template, $compile) ->
                 $ctrl.replaceFilter("order_by", finalOrder)
 
                 if $ctrl.filtersHashSuffix
-                    $ctrl.storeFilters($ctrl.params.pslug, $location.search(), $ctrl.filtersHashSuffix)
+                    urlfilters = $ctrl.getQueryParams()
+                    $ctrl.storeFilters($ctrl.params.pslug, urlfilters, $ctrl.filtersHashSuffix)
 
                 $ctrl.loadIssues().then ->
                     # Update the arrow
