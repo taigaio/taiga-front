@@ -2,6 +2,7 @@
 
 .featured-projects {
     @include centered;
+    margin-bottom: 4rem;
     .title {
         @include font-type(medium);
         @include font-size(larger);

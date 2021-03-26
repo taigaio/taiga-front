@@ -49,7 +49,7 @@ class DiscoverProjectsService extends taiga.Service
         _params = _.extend({}, _discoverParams, params)
         return @rs.projects.getProjects(_params, false)
             .then (result) =>
-                data = result.data.slice(0, 5)
+                data = result.data.slice(0, 4)
 
                 projects = Immutable.fromJS(data)
                 projects = projects.map(@.decorate)
@@ -60,7 +60,7 @@ class DiscoverProjectsService extends taiga.Service
         _params = _.extend({}, _discoverParams, params)
         return @rs.projects.getProjects(_params, false)
             .then (result) =>
-                data = result.data.slice(0, 5)
+                data = result.data.slice(0, 4)
 
                 projects = Immutable.fromJS(data)
                 projects = projects.map(@.decorate)

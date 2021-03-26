@@ -25,7 +25,7 @@ class MostActiveController
     constructor: (@discoverProjectsService) ->
         taiga.defineImmutableProperty @, "highlighted", () => return @discoverProjectsService.mostActive
 
-        @.currentOrderBy = 'week'
+        @.currentOrderBy = 'year'
         @.order_by = @.getOrderBy()
 
     fetch: () ->
