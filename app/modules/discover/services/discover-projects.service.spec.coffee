@@ -79,7 +79,7 @@ describe "tgDiscoverProjectsService", ->
         discoverProjectsService.fetchMostLiked(params).then () ->
             result = discoverProjectsService._mostLiked.toJS()
 
-            expect(result).to.have.length(5)
+            expect(result).to.have.length(4)
             expect(result[0].decorate).to.be.ok
 
             done()
@@ -102,7 +102,7 @@ describe "tgDiscoverProjectsService", ->
         discoverProjectsService.fetchMostActive(params).then () ->
             result = discoverProjectsService._mostActive.toJS()
 
-            expect(result).to.have.length(5)
+            expect(result).to.have.length(4)
             expect(result[0].decorate).to.be.ok
 
             done()
