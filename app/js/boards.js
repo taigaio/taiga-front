@@ -40,9 +40,7 @@ function initBoard() {
                     kanbanStatusObservers[swimlaneId] = {};
                 }
 
-                if (!kanbanStatusObservers[swimlaneId][statusId]) {
-                    kanbanStatusObservers[swimlaneId][statusId] = new IntersectionObserver(callback, options);
-                }
+                kanbanStatusObservers[swimlaneId][statusId] = new IntersectionObserver(callback, options);
             } else {
                 if (!kanbanStatusObservers[statusId]) {
                     kanbanStatusObservers[statusId] = new IntersectionObserver(callback, options);
