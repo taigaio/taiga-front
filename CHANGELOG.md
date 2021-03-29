@@ -6,6 +6,7 @@
 - Fix: support more languages in the html editor
 - Fix: kanban search race condition
 - Layout adjustments on discover page
+- Support flex gap for Safari browsers
 
 ## 6.0.8 (2021-03-16)
 

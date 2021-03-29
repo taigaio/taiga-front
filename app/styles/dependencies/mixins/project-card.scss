@@ -18,8 +18,9 @@
         color: $color-black600;
     }
     .project-card-statistics {
+        column-gap: .5rem;
         display: flex;
-        gap: .5rem;
+        row-gap: .5rem;
         margin-top: auto;
         svg {
             &:not(.icon-private) {
@@ -35,8 +36,9 @@
         @include font-size(small);
         align-items: center;
         color: $color-black600;
+        column-gap: .25rem;
         display: flex;
-        gap: .25rem;
+        row-gap: .25rem;
         &.active {
             color: $color-link-tertiary;
             svg {
@@ -64,10 +66,11 @@
     }
     .project-card-name {
         @include font-size(large);
+        column-gap: .25rem;
         display: flex;
         flex-wrap: wrap;
         align-items: center;
-        gap: .25rem;
+        row-gap: .25rem;
         a {
             color: $color-black600;
         }

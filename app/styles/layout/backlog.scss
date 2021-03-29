@@ -1,14 +1,16 @@
 .scrum {
+    column-gap: .25rem;
     display: grid;
-    gap: 1rem;
     grid-template-columns: 9fr minmax(250px, 3fr);
+    row-gap: .25rem;
 }
 
 .backlog-manager {
     align-items: flex-start;
+    column-gap: .25rem;
     display: grid;
-    gap: 1rem;
     grid-template-columns: minmax(180px, 2fr) 7fr;
+    row-gap: .25rem;
     &.expanded {
         grid-template-columns: 9fr;
     }
