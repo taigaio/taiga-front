@@ -52,17 +52,14 @@
     background-color: $color-gray200;
     border-radius: 4px 0 0 4px;
     color: $color-black900;
+    column-gap: .5rem;
     display: flex;
     flex: 1;
     flex-basis: 140px;
-    gap: .5rem;
     justify-content: flex-start;
     min-width: 140px;
     padding: .25rem 1rem;
-    // &:hover {
-    //     background-color: $grey-05;
-    //     color: $grey-90;
-    // }
+    row-gap: .5rem;
 }
 
 .track-icon {

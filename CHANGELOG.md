@@ -6,6 +6,8 @@
 - Fix: support more languages in the html editor
 - Fix: kanban search race condition
 - Layout adjustments on discover page
+- Fix: Support flex gap for webkit browsers
+- Fix: Clean and repair settings icon for webkit browser
 
 ## 6.0.8 (2021-03-16)
 

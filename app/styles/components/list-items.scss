@@ -13,9 +13,10 @@
     }
     .list-itemtype-data-meta {
         align-items: center;
+        column-gap: .25rem;
         display: flex;
         flex-wrap: wrap;
-        gap: .25rem;
+        row-gap: .25rem;
     }
     .list-itemtype-avatar {
         flex-basis: 3rem;

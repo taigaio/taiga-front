@@ -114,10 +114,11 @@
         a {
             align-items: center;
             all: unset;
+            column-gap: .25rem;
             cursor: pointer;
             display: flex;
             flex-wrap: wrap;
-            gap: .25rem;
+            row-gap: .25rem;
         }
         &:hover {
             .issue-ref {

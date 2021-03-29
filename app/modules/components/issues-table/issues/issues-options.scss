@@ -10,8 +10,9 @@
 }
 
 .new-issue {
+    column-gap: .5rem;
     display: flex;
-    gap: .5rem;
+    row-gap: .5rem;
 }
 
 .in-taskboard {

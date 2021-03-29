@@ -19,9 +19,10 @@
         width: 100%;
         .tags-container {
             align-items: center;
+            column-gap: .5rem;
             display: flex;
             flex-wrap: wrap;
-            gap: .5rem;
+            row-gap: .5rem;
         }
         .tag {
             align-items: center;
