@@ -13,3 +13,10 @@ ul.popover.us-option-popup
         )
             tg-svg(svg-icon="icon-trash")
             span {{'COMMON.DELETE' | translate}}
+    li
+        button.e2e-edit.move-to-top(
+            ng-click="ctrl.moveUsToTopOfBacklog(us)"
+            tg-check-permission="modify_us"
+        )
+            tg-svg(svg-icon="icon-move-to-top")
+            span {{'COMMON.MOVE_TO_TOP' | translate}}

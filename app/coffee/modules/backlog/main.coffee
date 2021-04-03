@@ -323,6 +323,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         return promise.then (result) =>
 
             userstories = result[0]
+
             header = result[1]
 
             if resetPagination
@@ -419,8 +420,15 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
     prepareBulkUpdateData: (uses, field="backlog_order") ->
          return _.map(uses, (x) -> {"us_id": x.id, "order": x[field]})
 
+    moveUsToTopOfBacklog: (us) ->
+      self = @
+      $('.first').each(() ->
+        $(this).removeClass('first');
+      )
+      @.moveUs('sprint:us:move', [us], 0, null)
+
     # --move us api behavior--
-    # If your are moving multiples USs you must use the bulk api
+    # If you are moving multiples USs you must use the bulk api
     # If there is only one US you must use patch (repo.save)
     #
     # The new US position is the position of the previous US + 1.
@@ -909,6 +917,8 @@ UsEditSelector = ($rootscope, $tgTemplate, $compile, $translate) ->
             $el.find(".js-popup-button").addClass('popover-open')
             $el.append(html)
             $el.find(".us-option-popup").popover().open(() -> removePopupOpenState())
+            if event.target.parentNode.classList.contains('first')
+              $el.find(".us-option-popup").addClass('first')
 
         $scope.$on "$destroy", ->
             $el.off()
