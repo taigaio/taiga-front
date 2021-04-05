@@ -1,6 +1,10 @@
 # Changelog
 
-## 6.0.9 (unreleased)
+## 6.0.10 (unreleased)
+
+- ...
+
+## 6.0.9 (2021-04-06)
 
 - Fix: prevent invalid query params on filters
 - Fix: support more languages in the html editor
