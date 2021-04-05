@@ -56,7 +56,7 @@
             "DETACH_ISSUE_FROM_SPRINT": "Détacher du sprint",
             "PTS": "{{pts}} pts",
             "DUE_DATE": "Date d’échéance : {{date}}",
-            "NO_PTS": "N/E",
+            "NO_PTS": "Non estimé",
             "ESTIMATION": "Estimation",
             "TASKS": "{{completed}} tâches achevées sur {{total}}",
             "EXTRA_ASSIGNED_USERS": "{{total}} plus d’utilisateurs assignés"
@@ -238,8 +238,8 @@
             "PLACEHOLDER_FILTER_NAME": "Écrivez le nom du filtre et appuyez sur \"Entrée\"",
             "APPLIED_FILTERS_NUM": "filtres appliqués",
             "TITLE_ADVANCED_FILTER": "Filtres avancés",
-            "LENGTH_ZERO_ERROR": "Please add a filter name",
-            "REPEATED_FILTER_ERROR": "This filter name is already in use",
+            "LENGTH_ZERO_ERROR": "Veuillez ajouter un nom de filtre",
+            "REPEATED_FILTER_ERROR": "Le nom du filtre est déjà utilisé",
             "ADVANCED_FILTERS": {
                 "INCLUDE": "Inclus",
                 "EXCLUDE": "Exclus",
@@ -638,7 +638,7 @@
         },
         "PROJECT_VALUES_STATUS": {
             "TITLE": "Statuts",
-            "SUBTITLE": "Add, remove or edit the color and name of the statuses your epics, user stories, task and issues will go through.",
+            "SUBTITLE": "Ajouter, supprimer ou modifier la couleur et le nom des statuts que vont prendre vos épopées, récits utilisateur, tâches et tickets.",
             "EPIC_TITLE": "Statuts d'épopée",
             "US_TITLE": "Statuts de récit utilisateur",
             "TASK_TITLE": "Statuts des tâches",
@@ -991,8 +991,8 @@
         },
         "COMMON": {
             "DETAILS": "Détails du nouveau projet",
-            "PROJECT_TITLE": "Project Name (Required)",
-            "PROJECT_DESCRIPTION": "Project Description (Required)"
+            "PROJECT_TITLE": "Nom du projet (requis)",
+            "PROJECT_DESCRIPTION": "Description du projet (requis)"
         },
         "DUPLICATE": {
             "TITLE": "Dupliquer le projet",
@@ -1307,7 +1307,7 @@
         "TITLE_DELETE_ACTION": "Supprimer le récit utilisateur",
         "TITLE_DELETE_MESSAGE": "Êtes-vous sûr de vouloir supprimer<strong>“{{subject}}“</strong> ?",
         "LIGHTBOX_TITLE_BLOKING_US": "Bloquer un récit utilisateur",
-        "NOT_ESTIMATED": "N/E",
+        "NOT_ESTIMATED": "Non estimé",
         "OWNER_US": "Ce récit utilisateur fait partie de ",
         "RELATE_TO_EPIC": "Lien vers l'épopée",
         "REMOVE_RELATIONSHIP_WITH_EPIC": "Retirer le lien avec l’épopée",
@@ -1571,7 +1571,7 @@
         "PAGE_TITLE": "Tickets - {{projectName}}",
         "PAGE_DESCRIPTION": "Le panneau de la liste des tickets du projet {{projectName}} : {{projectDescription}}",
         "SECTION_NAME": "Ticket",
-        "ACTION_NEW_ISSUE": "NEW ISSUE",
+        "ACTION_NEW_ISSUE": "NOUVEAU TICKET",
         "ACTION_ATTACH_SPRINT": "Attacher le ticket au sprint",
         "ACTION_DETACH_SPRINT": "Détacher le ticket du sprint",
         "EXTERNAL_REFERENCE": "Ce ticket a été créé à partir de",

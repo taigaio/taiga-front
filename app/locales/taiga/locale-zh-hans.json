@@ -22,7 +22,7 @@
         "TAG_LINE": "你的敏捷、免费和开源的项目管理工具",
         "TAG_LINE_2": "你喜欢的项目",
         "BLOCK": "锁定",
-        "BLOCK_TITLE": "Block this item, for example if it has a dependency that can not be satisfied",
+        "BLOCK_TITLE": "冻结：例如它有一个依赖不能满足，那么请冻结此项",
         "BLOCKED": "已冻结",
         "UNBLOCK": "解除冻结",
         "UNBLOCK_TITLE": "解除锁定此项",
@@ -39,7 +39,7 @@
         "NEXT": "下一个",
         "LOGOUT": "退出",
         "EXTERNAL_USER": "外部用户",
-        "GENERIC_ERROR": "The Taiga says {{error}}.",
+        "GENERIC_ERROR": "发现错误 {{error}}",
         "IOCAINE_TEXT": "This member is feeling a bit overwhelmed by this task. They will become immune to the iocaine poison over time with your help. For now, they may need a hug.",
         "CLIENT_REQUIREMENT": "A client requirement is a new requirement that was not previously expected and is required to be part of the project",
         "TEAM_REQUIREMENT": "A team requirement is a requirement that must exist in the project but should have no cost for the client",
@@ -165,7 +165,7 @@
             "DUE_DATE_REASON": "截止日期原因"
         },
         "ROLES": {
-            "ALL": "All points"
+            "ALL": "总点数"
         },
         "ASSIGNED_TO": {
             "NOT_ASSIGNED": "未指派",
@@ -202,7 +202,7 @@
             "UNWATCH": "撤销关注",
             "WATCHERS": "关注者列表",
             "BUTTON_TITLE": "关注/撤销关注该项",
-            "COUNTER_TITLE": "{total, plural, =1{one watcher} other{# watchers}}"
+            "COUNTER_TITLE": "{total, plural, 1{1 个关注者} other{# 个关注者}}"
         },
         "VOTE_BUTTON": {
             "BUTTON_TITLE": "赞/踩该项",
@@ -214,37 +214,37 @@
         "CONFIRM_PROMOTE": {
             "ISSUE": {
                 "TITLE": "将此问题提为用户故事",
-                "MESSAGE": "Are you sure you want to create a new user story from this issue?"
+                "MESSAGE": "你确定要用此任务创建一个新的用户故事？"
             },
             "TASK": {
-                "TITLE": "Promote this task to a new user story",
-                "MESSAGE": "Are you sure you want to create a new user story from this task?"
+                "TITLE": "将此任务提为一个新的用户故事",
+                "MESSAGE": "你确定要用此任务创建一个新的用户故事？"
             }
         },
         "CUSTOM_ATTRIBUTES": {
             "CUSTOM_FIELDS": "自定义字段",
-            "SAVE": "Save custom field",
-            "EDIT": "Edit custom field",
-            "DELETE": "Delete custom fields",
-            "CONFIRM_DELETE": "Remember that all values in this custom field will be deleted."
+            "SAVE": "储存自定义字段",
+            "EDIT": "编辑自定义字段",
+            "DELETE": "删除自定义字段",
+            "CONFIRM_DELETE": "请留意，这个自定义字段中的所有值都会被删除。"
         },
         "FILTERS": {
-            "INPUT_PLACEHOLDER": "subject or reference",
+            "INPUT_PLACEHOLDER": "标题或参考",
             "TITLE_ACTION_FILTER_BUTTON": "搜索",
             "TITLE": "定制过滤器",
             "TITLE_ACTION_SEARCH": "搜索",
             "ACTION_ADD": "新增",
-            "ACTION_SAVE_CUSTOM_FILTER": "save filter",
+            "ACTION_SAVE_CUSTOM_FILTER": "保存过滤器",
             "PLACEHOLDER_FILTER_NAME": "写入过滤器名称后按下enter",
             "APPLIED_FILTERS_NUM": "已用过滤器",
             "TITLE_ADVANCED_FILTER": "高级",
-            "LENGTH_ZERO_ERROR": "Please add a filter name",
-            "REPEATED_FILTER_ERROR": "This filter name is already in use",
+            "LENGTH_ZERO_ERROR": "请输入一个过滤器名字",
+            "REPEATED_FILTER_ERROR": "这个过滤器的名字已被占用",
             "ADVANCED_FILTERS": {
                 "INCLUDE": "包括",
                 "EXCLUDE": "排除",
-                "INCLUDED": "Filtered by:",
-                "EXCLUDED": "Excluded:"
+                "INCLUDED": "过滤条件:",
+                "EXCLUDED": "除了:"
             },
             "CATEGORIES": {
                 "TYPE": "类型",
@@ -322,7 +322,7 @@
     },
     "LOGIN": {
         "PAGE_TITLE": "登入 - Taiga",
-        "PAGE_DESCRIPTION": "登录Taig，它是一个给新创团队与敏捷开发者设计师使用的项目管理平台。Taiga是一个简易轻松美观的工具，让工作变成乐趣。"
+        "PAGE_DESCRIPTION": "登录Taiga，它是一个给新创团队与敏捷开发者设计师使用的项目管理平台。Taiga是一个简易轻松美观的工具，让工作变成乐趣。"
     },
     "AUTH": {
         "INVITED_YOU": "已邀请您加入此项目",
@@ -341,8 +341,8 @@
         "ALT_LOGIN": "或登录为"
     },
     "LOGIN_FORM": {
-        "ERROR_AUTH_INCORRECT": "According to the Taiga, your username/email or password are incorrect.",
-        "SUCCESS": "Welcome to Taiga."
+        "ERROR_AUTH_INCORRECT": "根据Taiga的系统记录，你的账户名称/电子邮件或密码并不正确",
+        "SUCCESS": "欢迎来到 Taiga"
     },
     "REGISTER": {
         "PAGE_TITLE": "注册 - Taiga",
@@ -351,7 +351,7 @@
     "REGISTER_FORM": {
         "TITLE": "注册一个新的Taiga账户(免费 )",
         "PLACEHOLDER_NAME": "填写一个用户账号(注意大小写)",
-        "PLACEHOLDER_FULL_NAME": "填写你的全名",
+        "PLACEHOLDER_FULL_NAME": "请填写你的全名",
         "PLACEHOLDER_EMAIL": "填写你的电子邮件",
         "PLACEHOLDER_PASSWORD": "设置密码(大小写敏感)",
         "ACTION_SIGN_UP": "注册",
@@ -370,7 +370,7 @@
         "LINK_CANCEL": "不，请带我回去，我记起来了",
         "SUCCESS_TITLE": "检查你的收件箱！",
         "SUCCESS_TEXT": "我们向你的邮箱发送了一封带有重置密码指令的邮件",
-        "ERROR": "According to the Taiga, you are not registered yet."
+        "ERROR": "根据Taiga的系统记录，你尚未注册"
     },
     "CHANGE_PASSWORD": {
         "PAGE_TITLE": "修改密码 - Taiga",
@@ -381,7 +381,7 @@
         "PLACEHOLDER_NEW_PASSWORD": "输入新密码",
         "FIELD_RETYPE_PASSWORD": "重新输入新密码",
         "PLACEHOLDER_RETYPE_PASSWORD": "重新输入新密码",
-        "ERROR_PASSWORD_MATCH": "The passwords don't match"
+        "ERROR_PASSWORD_MATCH": "密码错误"
     },
     "CHANGE_PASSWORD_RECOVERY_FORM": {
         "TITLE": "创建新Taiga通过",
@@ -389,22 +389,22 @@
         "PLACEHOLDER_NEW_PASSWORD": "新密码",
         "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "重新输入新密码",
         "ACTION_RESET_PASSWORD": "重设密码",
-        "SUCCESS": "The Taiga saved your new password.<br /> Try to <strong>sign in</strong> with it."
+        "SUCCESS": "系统已储存你的新密码<br />试试 <strong>用它登录</strong>"
     },
     "INVITATION": {
         "PAGE_TITLE": "接受邀请 - Taiga",
         "PAGE_DESCRIPTION": "接受邀请加入Taiga上的项目，它是一个给新创团队与敏捷开发者设计师使用的项目管理平台。Taiga是一个简易轻松美观的工具，让工作变成乐趣。"
     },
     "INVITATION_LOGIN_FORM": {
-        "NOT_FOUND": "The Taiga can't find your invitation.",
+        "NOT_FOUND": "Taiga并未找到你邀请",
         "SUCCESS": "你成功地加入此项目，欢迎来到 {{project_name}}"
     },
     "HOME": {
         "PAGE_TITLE": "首页 - Taiga",
         "PAGE_DESCRIPTION": "Taiga 首页，你的主要项目以及任命，观看用户故事，任务与问题。",
         "EMPTY_WORKING_ON": "<strong>看起来空荡荡的，是不是？</strong>开始使用Taiga，你将会在这里看到你正在处理的用户故事，任务以及问题。",
-        "EMPTY_WATCHING": "<strong>Follow</strong> user stories, tasks, issues in your projects and be notified about their changes :)",
-        "EMPTY_PROJECT_LIST": "You don't have any project yet",
+        "EMPTY_WATCHING": "在你的项目中<strong>追踪</strong>用户故事、任务、问题并且收到更新的通知 :)",
+        "EMPTY_PROJECT_LIST": "你尚无任何项目",
         "WORKING_ON_SECTION": "进行中",
         "WATCHING_SECTION": "关注中",
         "DASHBOARD": "项目仪表盘",
@@ -457,7 +457,7 @@
         "MY_PROJECTS": "我的项目"
     },
     "ATTACHMENT": {
-        "SECTION_NAME": "Attachments",
+        "SECTION_NAME": "附件",
         "TITLE": "{{ fileName }} 上传于 {{ date }}",
         "LIST_VIEW_MODE": "列表视图模式",
         "GALLERY_VIEW_MODE": "缩略图模式",
@@ -511,8 +511,8 @@
             "LOADING_MESSAGE": "请勿关闭本页",
             "ASYNC_MESSAGE": "准备好后，我们会发送一封电子邮件",
             "SYNC_MESSAGE": "如果未能自动下载，<a href='{{url}}' download title='下载转储文件'>请点击此处</a>.",
-            "ERROR": "The Taiga has some problems generating your dump. Please try it again.",
-            "ERROR_BUSY": "Sorry, the Taiga is experiencing heavy load right now. Please try again in a few minutes."
+            "ERROR": "我们的系统无法导出你的资料，请再试一次",
+            "ERROR_BUSY": "抱歉系统繁忙中，请稍后再试试"
         },
         "MODULES": {
             "TITLE": "模块",
@@ -621,7 +621,7 @@
         "PROJECT_VALUES_POINTS": {
             "TITLE": "点数",
             "SUBTITLE": "指定你的用户故事的估计点数为",
-            "US_TITLE": "User story points",
+            "US_TITLE": "用户故事点数",
             "ACTION_ADD": "增加点数"
         },
         "PROJECT_VALUES_PRIORITIES": {
@@ -638,7 +638,7 @@
         },
         "PROJECT_VALUES_STATUS": {
             "TITLE": "状态",
-            "SUBTITLE": "Add, remove or edit the color and name of the statuses your epics, user stories, task and issues will go through.",
+            "SUBTITLE": "新增、删除或修改你的史诗、用户故事、任务、问题的颜色和名称。",
             "EPIC_TITLE": "史诗状态",
             "US_TITLE": "用户故事状态",
             "TASK_TITLE": "任务状态",
@@ -674,7 +674,7 @@
             "AFTER": "晚于"
         },
         "PROJECT_KANBAN_OPTIONS": {
-            "TITLE": "Kanban options",
+            "TITLE": "看板选项",
             "SUBTITLE": "Enable swimlanes to use in your workflow and set WIP limits to restrict the maximun number of user stories on each status.",
             "SWIMLANES": "Swimlanes",
             "ACTION_ADD_SWIMLANE": "New swimlane",
@@ -752,9 +752,9 @@
         "CUSTOM_ATTRIBUTES": {
             "PAGE_TITLE": "{{sectionName}} - 个性设置 - {{projectName}}",
             "ADD": "加入自定义字段",
-            "EDIT": "Edit custom field",
+            "EDIT": "编辑自定义字段",
             "DELETE": "Delete custom field",
-            "SAVE_TITLE": "Save custom field",
+            "SAVE_TITLE": "储存自定义字段",
             "CANCEL_TITLE": "取消创建",
             "SET_FIELD_NAME": "设定你的自定义字段名称",
             "SET_FIELD_DESCRIPTION": "设定你自定义字段的文字描述",
@@ -816,7 +816,7 @@
             "CUSTOM_FIELDS": "自定义字段",
             "TAGS": "标签",
             "DUE_DATES": "截止日期",
-            "KANBAN_OPTIONS": "Kanban options"
+            "KANBAN_OPTIONS": "看板选项"
         },
         "SUBMENU_ROLES": {
             "TITLE": "角色",
@@ -890,12 +890,12 @@
     },
     "PROJECT": {
         "PAGE_TITLE": "{{projectName}}",
-        "HELP": "Reorder your projects to set at the top the most used ones.<br/> The top 4 projects will appear in the top navigation bar project list",
+        "HELP": "记录你的项目在上方常用栏位<br/> 前4个项目将会显示在上方导览项目清单处。",
         "PRIVATE": "私有项目",
         "LOOKING_FOR_PEOPLE": "这个项目在寻找队友",
-        "FANS_COUNTER_TITLE": "{total, plural, =1{one fan} other{# fans}}",
-        "WATCHERS_COUNTER_TITLE": "{total, plural, =1{one watcher} other{# watchers}}",
-        "MEMBERS_COUNTER_TITLE": "{total, plural, =1{one member} other{# members}}",
+        "FANS_COUNTER_TITLE": "{total, plural, 1{1 个粉丝} other{# 个粉丝}}",
+        "WATCHERS_COUNTER_TITLE": "{total, plural, 1{1 个关注者} other{# 个关注者}}",
+        "MEMBERS_COUNTER_TITLE": "{total, plural, 1{1 个成员} other{# 个成员}}",
         "BLOCKED_PROJECT": {
             "BLOCKED": "关闭项目",
             "THIS_PROJECT_IS_BLOCKED": "这个项目暂时被关闭了",
@@ -913,14 +913,14 @@
             "MEETUP": "Meetup",
             "SETTINGS": "设定",
             "SCRUM": "冲刺",
-            "COLLAPSE_MENU": "collapse menu"
+            "COLLAPSE_MENU": "折叠"
         },
         "NAVIGATION": {
             "PROJECTS": "项目",
-            "ACCOUNT_SETTINGS": "Account settings",
-            "ACTION_CREATE_PROJECT": "New project",
-            "ACTION_CREATE_PROJECT_FIRST": "Create your first project",
-            "ACTION_CREATE_PROJECT_FIRST_TEXT": "You don’t have any projects yet. Create one now, invite your team and start using Taiga to the fullest.",
+            "ACCOUNT_SETTINGS": "账户设置",
+            "ACTION_CREATE_PROJECT": "新项目",
+            "ACTION_CREATE_PROJECT_FIRST": "创建你的首个项目",
+            "ACTION_CREATE_PROJECT_FIRST_TEXT": "你尚未有任何项目。现在就创建一个，并邀请你的团队开始使用Taiga吧。",
             "VIEW_ALL_PROJECTS": "View all projects",
             "MANAGE_PROJECTS": "管理项目",
             "TITLE_CREATE_PROJECT": "创建项目",
@@ -928,8 +928,8 @@
             "HOMEPAGE": "主页",
             "TAIGA_RESOURCES_TITLE": "Go to Taiga resources",
             "TAIGA_RESOURCES": "Taiga Resources",
-            "FEEDBACK_TITLE": "Write to us with your feedback",
-            "FEEDBACK": "Ask a question",
+            "FEEDBACK_TITLE": "给我们提供建议",
+            "FEEDBACK": "问一个问题",
             "NOTIFICATIONS_TITLE": "编辑个人通知设定",
             "NOTIFICATIONS": "通知",
             "VIEW_PROFILE_TITLE": "查看个人资料",
@@ -947,13 +947,13 @@
             "LIKED": "已点赞",
             "UNLIKE": "取消点赞",
             "BUTTON_TITLE": "对这个项目点赞或者取消点赞",
-            "COUNTER_TITLE": "{total, plural, =1{one fan} other{# fans}}"
+            "COUNTER_TITLE": "{total, plural, 1{1 个粉丝} other{# 个粉丝}}"
         },
         "WATCH_BUTTON": {
             "BUTTON_TITLE": "关注这个项目并设置通知规则",
             "WATCH": "Watch",
             "WATCHING": "关注中",
-            "COUNTER_TITLE": "{total, plural, =1{one watcher} other{# watchers}}",
+            "COUNTER_TITLE": "{total, plural, 1{1 个关注者} other{# 个关注者}}",
             "OPTIONS": {
                 "NOTIFY_ALL": "接收所有通知",
                 "NOTIFY_ALL_TITLE": "接收这个项目的所有通知",
@@ -1002,11 +1002,11 @@
         "IMPORT": {
             "TITLE": "导入项目",
             "DESCRIPTION": "从多平台导入你的项目到Taiga",
-            "ASYNC_IN_PROGRESS_TITLE": "The Taiga is importing your project",
+            "ASYNC_IN_PROGRESS_TITLE": "正在导入你的项目",
             "ASYNC_IN_PROGRESS_MESSAGE": "这个过程要花上一点时间<br/> 当弄好时我们会发给你一封邮件",
             "UPLOAD_IN_PROGRESS_MESSAGE": "已上传 {{totalSize}}中的{{uploadedSize}}",
             "ERROR": "The Taiga has some problems importing your dump data. Please try again.",
-            "ERROR_TOO_MANY_REQUEST": "Sorry, the Taiga is experiencing heavy load right now. Please try again in a few minutes.",
+            "ERROR_TOO_MANY_REQUEST": "抱歉系统繁忙中，请稍后再试试",
             "ERROR_MESSAGE": "The Taiga has some problems importing your dump data: {{error_message}}",
             "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) is too heavy for the Taiga, try it with a file smaller than ({{maxFileSize}})",
             "SYNC_SUCCESS": "你的项目已成功导入",
@@ -1116,7 +1116,7 @@
             "CONFIRM": "你确定要删除Taiga账户吗？",
             "CANCEL": "返回设置",
             "ACCEPT": "删除账号",
-            "BLOCK_PROJECT": "Note that all projects you own will be <strong>blocked</strong> after you delete your account. If you do not want a particular project to be blocked, make sure you transfer ownership to another existing Taiga member before deleting your account."
+            "BLOCK_PROJECT": "请注意，在你删除你的账户之后，所有属于你的项目都将会被<strong>冻结</strong>。如你不想某个项目被冻结，请在删除账户前，将所有权转移到该项目的其他成员名下。"
         },
         "DELETE_PROJECT": {
             "TITLE": "删除项目",
@@ -1144,13 +1144,13 @@
             "HELP_TEXT": "如果用户已注册Taiga账户，他们会自动被加入。否则他们会收到一封加入的邀请信"
         },
         "FEEDBACK": {
-            "TITLE": "Ask a question",
-            "COMMENT": "Leave us a message",
-            "ACTION_SEND": "Send Message",
-            "YOU_CAN_ALSO": "You can also:",
-            "CREATE": "Create an issue on this",
-            "PUBLIC": "public Taiga project",
-            "EMAIL": "Send us a e-mail directly to",
+            "TITLE": "问一个问题",
+            "COMMENT": "给我们发送一条信息",
+            "ACTION_SEND": "发送消息",
+            "YOU_CAN_ALSO": "你也可以：",
+            "CREATE": "在此创建一个问题",
+            "PUBLIC": "公开的Taiga项目",
+            "EMAIL": "给我们发送邮件到",
             "SUPPORT": "support@taiga.io"
         },
         "SEARCH": {
@@ -1167,30 +1167,30 @@
             "LAST_SPRINT_NAME": "最后冲刺任务 <strong> {{lastSprint}} ;-) </strong>"
         },
         "CREATE_EDIT": {
-            "TASK_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this task",
-            "ISSUE_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this issue",
-            "US_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this user story",
+            "TASK_PLACEHOLDER_DESCRIPTION": "请添加一些描述性的文字以帮助别人更好地理解这个任务",
+            "ISSUE_PLACEHOLDER_DESCRIPTION": "请添加描述性文字帮助别人更好地理解这个问题",
+            "US_PLACEHOLDER_DESCRIPTION": "请添加一些描述性文字以帮助别人更好地理解这个用户故事",
             "NEW_TASK": "新任务",
-            "NEW_ISSUE": "New issue",
+            "NEW_ISSUE": "新问题",
             "NEW_US": "新建用户故事",
             "EDIT_TASK": "结束任务",
-            "EDIT_ISSUE": "Edit issue",
+            "EDIT_ISSUE": "编辑问题",
             "EDIT_US": "编辑用户故事",
-            "ADD_EXISTING_ISSUE": "Add issue to {{ targetName }}",
+            "ADD_EXISTING_ISSUE": "添加问题至 {{ targetName }}",
             "CONFIRM_CLOSE": "你有更改没有保存。\n你确定要关闭该表单吗？",
             "EXISTING_ISSUE": "Existing issue",
-            "CHOOSE_EXISTING_ISSUE": "Which issue?",
+            "CHOOSE_EXISTING_ISSUE": "哪一个问题？",
             "ADD_ISSUE": "新增问题",
-            "FILTER_ISSUES": "Filter issues",
+            "FILTER_ISSUES": "过滤问题",
             "SWIMLANE": "Swimlane",
             "SELECT_SWIMLANE": "Select swimlane",
-            "SELECT_STATUS": "Select status",
+            "SELECT_STATUS": "选择状态",
             "DEFAULT": "默认",
             "ERROR_STATUS": "Changes cannot be saved because there is a problem with the selected status.",
             "ERROR_SWIMLANE": "Changes cannot be saved because there is a problem with the selected swimlane."
         },
         "DISABLE_KANBAN": {
-            "TITLE": "Disable kanban",
+            "TITLE": "停用看板",
             "MESSAGE": "This project has swimlanes. They will be gone but your user stories will not be deleted"
         },
         "DELETE_DUE_DATE": {
@@ -1201,7 +1201,7 @@
             "TITLE": "删除冲刺任务"
         },
         "REMOVE_RELATIONSHIP_WITH_EPIC": {
-            "TITLE": "Remove relationship with epic",
+            "TITLE": "删除与史诗的关系",
             "MESSAGE": "Are you sure you want to remove the relationship of this user story with its epic <strong>{{epicSubject}}</strong>?"
         },
         "CREATE_MEMBER": {
@@ -1259,7 +1259,7 @@
             "DISABLE_DELETE_SWIMLANE": "The default swimlane cannot be deleted"
         },
         "RELATE_TO_EPIC": {
-            "TITLE": "Link to epic",
+            "TITLE": "链接到史诗",
             "EXISTING_EPIC": "现存史诗",
             "NEW_EPIC": "新的史诗",
             "CHOOSE_PROJECT_FOR_CREATION": "项目是什么",
@@ -1273,7 +1273,7 @@
     "EPIC": {
         "PAGE_TITLE": "{{epicSubject}} - 史诗{{epicRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "状态：{{epicStatus}}。描述：{{epicDescription}}",
-        "EPIC_COLOR": "Epic color:",
+        "EPIC_COLOR": "史诗 颜色:",
         "SECTION_NAME": "史诗",
         "ERROR_UNLINK_RELATED_USERSTORY": "无法断开链接：{{errorMessage}}",
         "CREATE_RELATED_USERSTORIES": "创建关系",
@@ -1298,19 +1298,19 @@
         "TITLE_LINK_TASKBOARD": "到任务板去",
         "TOTAL_POINTS": "总点数",
         "ADD": "用户故事",
-        "ADD_BULK": "Add some new user stories in bulk",
-        "PROMOTED_FROM_ISSUE": "This user story has been promoted from issue:",
-        "PROMOTED_FROM_TASK": "This user story has been promoted from task:",
-        "CONVERTED_FROM_TASK": "This user story was originally a task.",
+        "ADD_BULK": "批量添加新的用户故事",
+        "PROMOTED_FROM_ISSUE": "此用户故事由问题提升而来:",
+        "PROMOTED_FROM_TASK": "此用户故事由任务提升而来:",
+        "CONVERTED_FROM_TASK": "这个用户故事来源于一个任务",
         "TITLE_LINK_GO_TO_ISSUE": "到问题",
         "TITLE_LINK_GO_TO_TASK": "转到任务",
         "TITLE_DELETE_ACTION": "删除用户故事",
         "TITLE_DELETE_MESSAGE": "Are you sure you want to delete <strong>“{{subject}}“</strong>?",
-        "LIGHTBOX_TITLE_BLOKING_US": "Blocking user story",
+        "LIGHTBOX_TITLE_BLOKING_US": "暂缓用户故事",
         "NOT_ESTIMATED": "N/E",
         "OWNER_US": "This user story belongs to",
-        "RELATE_TO_EPIC": "Link to epic",
-        "REMOVE_RELATIONSHIP_WITH_EPIC": "Remove epic relationship",
+        "RELATE_TO_EPIC": "链接到史诗",
+        "REMOVE_RELATIONSHIP_WITH_EPIC": "移除史诗关系",
         "TRIBE": {
             "PUBLISH": "以Gig的形式在Taiga Tribe中发布",
             "PUBLISH_INFO": "更多信息",
@@ -1389,8 +1389,8 @@
         "MOVE_US_TO_CURRENT_SPRINT": "移到目前的冲刺",
         "MOVE_US_TO_LATEST_SPRINT": "切换到最近的冲刺",
         "EMPTY": "没有待办任务!",
-        "CREATE_NEW_US": "Create a new user story",
-        "CREATE_NEW_US_EMPTY_HELP": "Add a user story",
+        "CREATE_NEW_US": "创建一个新用户故事",
+        "CREATE_NEW_US_EMPTY_HELP": "新增用户故事",
         "NO_MATCH": "No matching search result found with “{{ q }}”",
         "NO_MATCH_HELP": "Try again using more general search terms",
         "EXCESS_OF_POINTS": "超过的点数",
@@ -1447,7 +1447,7 @@
         "FILTERS": {
             "TOGGLE": "切换过滤器可见度",
             "TITLE": "过滤器",
-            "HIDE_TITLE": "Hide filters"
+            "HIDE_TITLE": "隐藏过滤器"
         },
         "SPRINTS": {
             "TITLE": "冲刺任务",
@@ -1464,26 +1464,26 @@
         }
     },
     "ERROR": {
-        "TEXT1": "Something happened and the Taiga has captured the error to be able to work on it.",
+        "TEXT1": "系统出了一点问题，工程师正在抢修中",
         "NOT_FOUND": "找不到",
         "NOT_FOUND_TEXT": "Error 404，你要找的网页不存在，你可以稍后再回来Taiga首页，看看是否能再次找到要找的东西。",
         "PERMISSION_DENIED": "无此权限",
         "PERMISSION_DENIED_TEXT": "你无权访问这个页面",
-        "VERSION_ERROR": "Some other user inside Taiga has changed this before and your changes can't be applied. Save them elsewhere, reload the page and re-apply your changes again or they will be lost."
+        "VERSION_ERROR": "因Taiga中的某人此前修改了这个，导致你的修改未能提交。请异地保存相关内容后，重载页面并重新提交，否则相关修改会丢失。"
     },
     "TASKBOARD": {
         "PAGE_TITLE": "{{sprintName}} - 冲刺任务看板 - {{projectName}}",
         "PAGE_DESCRIPTION": "冲刺任务 {{sprintName}} (项目 {{projectName}} 从 {{startDate}} 到 {{endDate}})。完成比例{{completedPercentage}}% (总点数 {{totalPoints}} 点，完成 {{completedPoints}} 点)。总任务数 {{totalTasks}}，开启任务数 {{openTasks}}。",
         "SECTION_NAME": "任务板",
-        "TITLE_ACTION_ADD": "Add a new task",
-        "TITLE_ACTION_ADD_BULK": "Add some new tasks in bulk",
-        "TITLE_ACTION_ADD_ISSUE": "Add a new issue",
+        "TITLE_ACTION_ADD": "增加新任务",
+        "TITLE_ACTION_ADD_BULK": "批量添加新任务",
+        "TITLE_ACTION_ADD_ISSUE": "新增一个问题",
         "TITLE_ACTION_ADD_ISSUE_BULK": "Add some new issues in bulk",
         "TITLE_ACTION_ASSIGN": "指派任务",
         "PLACEHOLDER_CARD_TITLE": "This could be a user story",
         "PLACEHOLDER_CARD_TEXT": "Go to the <a href=\"{{ backlogUrl }}\" title=\"Go to backlog\">backlog</a> and drag user stories to this sprint; split the stories into tasks to track them separately.",
-        "TASK_NOT_FOUND_TITLE": "No matching results found",
-        "TASK_NOT_FOUND_TEXT": "Try again using more general search terms or disabling some filters.",
+        "TASK_NOT_FOUND_TITLE": "未发现符合的结果",
+        "TASK_NOT_FOUND_TEXT": "请使用通用词或取消某些过滤器后重试",
         "TITLE_DATE_RANGE": "{{startDate}} <span>to</span> {{endDate}}",
         "TABLE": {
             "COLUMN": "用户故事",
@@ -1497,7 +1497,7 @@
         },
         "CHARTS": {
             "XAXIS_LABEL": "天数",
-            "YAXIS_LABEL": "Projected points progress",
+            "YAXIS_LABEL": "预计积分进度",
             "OPTIMAL": "Pending points for day {{formattedDate}} should be {{roundedValue}}",
             "REAL": "一天真实的待办点数 {{formattedDate}}，应为 {{roundedValue}}",
             "DATE": "DD MMM YYYY",
@@ -1538,9 +1538,9 @@
     },
     "NOTIFICATION": {
         "OK": "一切顺利",
-        "WARNING": "Oops, something went wrong...",
-        "WARNING_TEXT": "Your changes were not saved!",
-        "SAVED": "The Taiga saved all your changes!",
+        "WARNING": "糟糕，发生了一点错误……",
+        "WARNING_TEXT": "修改未能保存！",
+        "SAVED": "修改已保存",
         "CLOSE": "关闭通知",
         "MAIL": "通过邮件通知",
         "DESKTOP": "使用浏览器警告作为桌面提醒",
@@ -1548,7 +1548,7 @@
     },
     "CANCEL_ACCOUNT": {
         "TITLE": "注销您的账户",
-        "SUBTITLE": "We're sorry you are leaving the Taiga, we hope you enjoyed your stay :)",
+        "SUBTITLE": "很遗憾你要离开Taiga，希望你喜欢这段时光 :)",
         "PLACEHOLDER_INPUT_TOKEN": "注销账户代码",
         "ACTION_LEAVING": "是的，我要走了",
         "SUCCESS": "The Taiga removed your account"
@@ -1561,17 +1561,17 @@
         "SUCCESS": "Your email address has been successfully changed"
     },
     "VERIFY_EMAIL_FORM": {
-        "TITLE": "Verify your email",
+        "TITLE": "核对你的邮箱",
         "SUBTITLE": "One click more and your email will be verified!",
         "PLACEHOLDER_INPUT_TOKEN": "变更电邮代码",
-        "ACTION_VERIFY_EMAIL": "Verify email",
+        "ACTION_VERIFY_EMAIL": "核对邮箱",
         "SUCCESS": "Congratulations!!, your email address has been verified"
     },
     "ISSUES": {
         "PAGE_TITLE": "问题 - {{projectName}}",
         "PAGE_DESCRIPTION": "{{projectName}}的问题清单看版：{{projectDescription}}",
         "SECTION_NAME": "问题",
-        "ACTION_NEW_ISSUE": "NEW ISSUE",
+        "ACTION_NEW_ISSUE": "新问题",
         "ACTION_ATTACH_SPRINT": "将问题附加到冲刺任务",
         "ACTION_DETACH_SPRINT": "将问题从冲刺任务分离",
         "EXTERNAL_REFERENCE": "此问题的提出者是",
@@ -1587,7 +1587,7 @@
             "SEVERITY": "严重程度",
             "TYPE": "类型"
         },
-        "FILTER_ISSUES": "Filter issues",
+        "FILTER_ISSUES": "过滤问题",
         "CONFIRM_DETACH_FROM_SPRINT": {
             "TITLE": "将问题从冲刺任务分离",
             "MESSAGE": "你将要分离这个问题从冲刺 <strong>{{ sprintName }}<strong>"
@@ -1604,9 +1604,9 @@
                 "ISSUE": "问题",
                 "VOTES": "投票数",
                 "STATUS": "状态",
-                "ATTACHMENTS": "Attachments",
+                "ATTACHMENTS": "附件",
                 "MODIFIED": "修改日期",
-                "ASSIGNED_TO": "Assign to"
+                "ASSIGNED_TO": "指派给"
             },
             "TITLE_ACTION_CHANGE_STATUS": "改变状态",
             "TITLE_ACTION_ASSIGNED_TO": "指派给",
@@ -1627,11 +1627,11 @@
         "SECTION_NAME": "看板",
         "TITLE_ACTION_FOLD": "隐藏栏位",
         "TITLE_ACTION_UNFOLD": "未隐藏栏位",
-        "TITLE_ACTION_ADD_US": "Add new user story",
+        "TITLE_ACTION_ADD_US": "新增用户故事",
         "TITLE_ACTION_ADD_BULK": "Add new bulk",
         "ACTION_SHOW_ARCHIVED": "显示归档资料",
         "ACTION_HIDE_ARCHIVED": "隐藏归档",
-        "US_NOT_FOUND_TITLE": "No matching results found",
+        "US_NOT_FOUND_TITLE": "未发现符合的结果",
         "US_NOT_FOUND_TEXT_P1": "Try again using more general search terms or disabled some filters.",
         "US_NOT_FOUND_TEXT_P2": "<strong>Archived stories</strong> are not loaded by default. Unfold the archived statuses to expand your search.",
         "PLACEHOLDER_CARD_TITLE": "This could be a user story",
@@ -1716,7 +1716,7 @@
         "ACTION_USE_GRAVATAR": "使用默认图片",
         "ACTION_DELETE_ACCOUNT": "删除Taiga账户",
         "ACTION_DOWNLOAD_PROFILE": "下载Taiga配置文件",
-        "ACTION_VERIFY_EMAIL": "Verify your email",
+        "ACTION_VERIFY_EMAIL": "核对你的邮箱",
         "CHANGE_EMAIL_SUCCESS": "<strong>检查你的收信箱</strong><br />我们送出了一封信<br />里面有设定你新电子邮件的相关指示",
         "VERIFY_EMAIL_SUCCESS": "<strong>Check your inbox!</strong><br />We have sent you an email<br />with instructions on how to verify your address",
         "CHANGE_PHOTO": "变更照片",
@@ -1804,9 +1804,9 @@
         "NEW_COMMENT_TASK": "{{username}} 评论了任务 {{obj_name}}",
         "NEW_COMMENT_EPIC": "{{username}}在史诗{{obj_name}}做了评论",
         "NEW_MEMBER": "{{project_name}} 有新成员",
-        "US_ADDED_MILESTONE": "{{username}} has added the user story {{obj_name}} to {{sprint_name}}",
-        "US_MOVED": "{{username}} has moved the user story {{obj_name}}",
-        "US_REMOVED_FROM_MILESTONE": "{{username}} has added the user story {{obj_name}} to the backlog",
+        "US_ADDED_MILESTONE": "{{username}} 为冲刺 {{sprint_name}} 添加用户故事 {{obj_name}}",
+        "US_MOVED": "{{username}} 已经移动了用户故事 {{obj_name}}",
+        "US_REMOVED_FROM_MILESTONE": "{{username}} 新增用户故事 {{obj_name}} 到待办任务",
         "BLOCKED": "{{username}} 冻结了 {{obj_name}}",
         "UNBLOCKED": "{{username}} 解除对 {{obj_name}} 的冻结",
         "NEW_USER": "{{username}} 已加入 Taiga",
@@ -1935,7 +1935,7 @@
         }
     },
     "ZOOM": {
-        "TITLE": "Zoom:",
+        "TITLE": "缩放:",
         "ZOOM-1": "Compact",
         "ZOOM-2": "默认",
         "ZOOM-3": "Detailed",

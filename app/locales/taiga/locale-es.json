@@ -1327,7 +1327,7 @@
         "TITLE": "Comentarios",
         "DELETED_INFO": "Comentario borrado por {{user}}",
         "COMMENTS_COUNT": "{{comments}} Comentarios",
-        "OLDER_FIRST": "Mas antiguo primero",
+        "OLDER_FIRST": "Más antiguo primero",
         "RECENT_FIRST": "Mas reciente primero",
         "COMMENT": "Comentar",
         "EDITED_COMMENT": "Editado:",

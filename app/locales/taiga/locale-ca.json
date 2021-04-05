@@ -202,11 +202,11 @@
             "UNWATCH": "Deixar de seguir",
             "WATCHERS": "Watchers",
             "BUTTON_TITLE": "Watch/Unwatch this item",
-            "COUNTER_TITLE": "{total, plural, =1{un seguidor} altre{# seguidors}}"
+            "COUNTER_TITLE": "{total, plural, =1{un seguidor} other{# seguidors}}"
         },
         "VOTE_BUTTON": {
             "BUTTON_TITLE": "Upvote/Downvote this item",
-            "COUNTER_TITLE": "{total, plural, =1{one vote} other{# votes}}"
+            "COUNTER_TITLE": "{total, plural, =1{un vot} other{# vots}}"
         },
         "PROMOTE_TO_US": "Promote to user story",
         "PROMOTED_ISSUES": "This issue has been promoted to",
@@ -893,9 +893,9 @@
         "HELP": "Reordena els teus projectes per a establir els més utilitzats en les primeres posicions. <br/> Els quatre primers projectes apareixeran en la llista de projectes de la barra de navegació superior",
         "PRIVATE": "Projecte privat",
         "LOOKING_FOR_PEOPLE": "Este projecte busca col·laboracions",
-        "FANS_COUNTER_TITLE": "{total, plural, =1{un fan} altres{# fans}}",
-        "WATCHERS_COUNTER_TITLE": "{total, plural, =1{un seguidor} altre{# seguidors}}",
-        "MEMBERS_COUNTER_TITLE": "{total, plural, =1{un membre} altres{# membres}}",
+        "FANS_COUNTER_TITLE": "{total, plural, =1{un fan} other{# fans}}",
+        "WATCHERS_COUNTER_TITLE": "{total, plural, =1{un seguidor} other{# seguidors}}",
+        "MEMBERS_COUNTER_TITLE": "{total, plural, =1{un membre} other{# membres}}",
         "BLOCKED_PROJECT": {
             "BLOCKED": "Projecte bloquejat",
             "THIS_PROJECT_IS_BLOCKED": "Aquest projecte està temporalment bloquejat",
@@ -947,13 +947,13 @@
             "LIKED": "T'agrada",
             "UNLIKE": "No t'agrada",
             "BUTTON_TITLE": "Favoriteja o desfavoriteja aquest projecte",
-            "COUNTER_TITLE": "{total, plural, =1{un fan} altres{# fans}}"
+            "COUNTER_TITLE": "{total, plural, =1{un fan} other{# fans}}"
         },
         "WATCH_BUTTON": {
             "BUTTON_TITLE": "Segueix este projecte i edita les notificacions",
             "WATCH": "Segueix",
             "WATCHING": "Observant",
-            "COUNTER_TITLE": "{total, plural, =1{un seguidor} altre{# seguidors}}",
+            "COUNTER_TITLE": "{total, plural, =1{un seguidor} other{# seguidors}}",
             "OPTIONS": {
                 "NOTIFY_ALL": "Rebre totes les notificacions",
                 "NOTIFY_ALL_TITLE": "Rebre totes les notificacions d'aquest projecte",
@@ -1510,12 +1510,12 @@
             "MOVE_TO_OPEN_SPRINT": "Menejar a altre esprint",
             "NO_OPEN_SPRINTS": "No hi ha esprints oberts. Per favor, crea'n un.",
             "SELECT_DESTINATION_PLACEHOLDER": "Selecciona destinació",
-            "UNFINISHED_USER_STORIES_COUNT": "{total, plural, =1{<strong>#</strong> històries d'usuari inacabades} altres{<strong>#</strong> històries d'usuari inacabades}}",
-            "UNFINISHED_STORYLESS_TASKS_COUNT": "{total, plural, =1{<strong>#</strong> tasques sense història inacabades} altres{<strong>#</strong> tasques sense història inacabades}}",
-            "UNFINISHED_ISSUES_COUNT": "{total, plural, =1{<strong>#</strong> incidències inacabades} altres{<strong>#</strong> incidències inacabades}}",
+            "UNFINISHED_USER_STORIES_COUNT": "{total, plural, =1{<strong>#</strong> històries d'usuari inacabades} other{<strong>#</strong> històries d'usuari inacabades}}",
+            "UNFINISHED_STORYLESS_TASKS_COUNT": "{total, plural, =1{<strong>#</strong> tasques sense història inacabades} other{<strong>#</strong> tasques sense història inacabades}}",
+            "UNFINISHED_ISSUES_COUNT": "{total, plural, =1{<strong>#</strong> incidències inacabades} other{<strong>#</strong> incidències inacabades}}",
             "WARNING_ISSUES_NOT_MOVED_TITLE": "Has menejat totes les històries d'usuari i tasques i l'esprint es tancarà",
             "WARNING_ISSUES_NOT_MOVED": "Les incidències es mantindran a l'esprint i no se suprimiran",
-            "WARNING_SPRINT_STILL_OPEN_TITLE": "{total, plural, =1{You just moved # item!} other{You just moved # items!}}",
+            "WARNING_SPRINT_STILL_OPEN_TITLE": "{total, plural, =1{Has menejat # element!} other{Has menejat # elements!}}",
             "WARNING_SPRINT_STILL_OPEN": "Please note that the sprint {{sprintName}} <strong>will remain open</strong> as long as it contains unfinished items."
         }
     },
@@ -1907,7 +1907,7 @@
         "PAGE_TITLE": "Descobreix projectes - Taiga",
         "PAGE_DESCRIPTION": "Directori de projectes públics de Taiga. Explora els backlogs, timelines, incidències i equips. Descobreix els projectes més seguits o els més actius. Filtra projectes per Kanban o Scrum.",
         "DISCOVER_TITLE": "Descobreix projectes",
-        "DISCOVER_SUBTITLE": "{projectes, plural, =1{Un projecte públic per descobrir} altres{# projectes públics per descobrir}}",
+        "DISCOVER_SUBTITLE": "{projectes, plural, =1{Un projecte públic per descobrir} other{# projectes públics per descobrir}}",
         "MOST_ACTIVE": "Mès actius",
         "MOST_ACTIVE_EMPTY": "Encara no hi ha projectes ACTIUS",
         "MOST_LIKED": "Most liked",
