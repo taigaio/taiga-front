@@ -162,7 +162,7 @@
             "VOTES": "Votos",
             "SPRINT": "Sprint",
             "DUE_DATE": "Fecha de vencimiento",
-            "DUE_DATE_REASON": "Motivo  fecha de vencimiento"
+            "DUE_DATE_REASON": "Motivo fecha de vencimiento"
         },
         "ROLES": {
             "ALL": "Todos los puntos"
