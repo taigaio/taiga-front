@@ -449,6 +449,13 @@
             $bottom: '',
             $right: 1rem,
         );
+
+        &.first {
+            .move-to-top {
+                display: none;
+            }
+        }
+
         button {
             appearance: none;
             background: none;
