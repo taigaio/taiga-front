@@ -17,6 +17,7 @@
         "BACK": "后退",
         "COPY_TO_CLIPBOARD": "复制到剪贴板",
         "COPIED_TO_CLIPBOARD": "文本已复制到剪贴板",
+        "MOVE_TO_TOP": "Move to top",
         "EDIT": "编辑",
         "DRAG": "拖拽",
         "TAG_LINE": "你的敏捷、免费和开源的项目管理工具",

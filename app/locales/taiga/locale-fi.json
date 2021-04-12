@@ -17,6 +17,7 @@
         "BACK": "Palvelin",
         "COPY_TO_CLIPBOARD": "Copy to clipboard",
         "COPIED_TO_CLIPBOARD": "Text has been copied to clipboard",
+        "MOVE_TO_TOP": "Move to top",
         "EDIT": "Muokkaa",
         "DRAG": "Vedä",
         "TAG_LINE": "Ketterä, ilmainne avoimen koodin projektinhallintaohjelmisto",

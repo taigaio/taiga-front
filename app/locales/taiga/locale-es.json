@@ -17,6 +17,7 @@
         "BACK": "Back",
         "COPY_TO_CLIPBOARD": "Copiar al portapapeles",
         "COPIED_TO_CLIPBOARD": "El texto se ha copiado al portapapeles",
+        "MOVE_TO_TOP": "Mover arriba",
         "EDIT": "Editar",
         "DRAG": "Arrastra",
         "TAG_LINE": "Tu herramienta de gestión de proyecto ágil, gratuíta y de código abierto",
@@ -318,8 +319,7 @@
                 "ADD_WIKI_LINKS": "Crear enlaces",
                 "DELETE_WIKI_LINKS": "Borrar enlaces"
             }
-        },
-        "MOVE_TO_TOP": "Mover arriba"
+        }
     },
     "LOGIN": {
         "PAGE_TITLE": "Login - Taiga",
