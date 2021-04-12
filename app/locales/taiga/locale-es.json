@@ -318,7 +318,8 @@
                 "ADD_WIKI_LINKS": "Crear enlaces",
                 "DELETE_WIKI_LINKS": "Borrar enlaces"
             }
-        }
+        },
+        "MOVE_TO_TOP": "Mover arriba"
     },
     "LOGIN": {
         "PAGE_TITLE": "Login - Taiga",
