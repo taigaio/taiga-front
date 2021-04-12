@@ -1,9 +1,14 @@
 # Changelog
 
-## 6.0.10 (unreleased)
+## 6.0.11 (unreleased)
+
+- ...
+
+## 6.0.10 (2021-04-13)
 
 - Feature: Add a "move to top" option to the context menu of the backlog ([#2239](https://github.com/taigaio/taiga-front/pull/2239))
 - Fix: Add simple line breaks to wysiwyg editor
+- Update translations
 
 ## 6.0.9 (2021-04-06)
 
