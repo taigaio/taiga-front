@@ -10,7 +10,7 @@
     "Github"
   ],
   "author": "Kaleidos OpenSource SL",
-  "license": "AGPL-3.0",
+  "license": "MIT-0",
   "repository": {
     "type": "git",
     "url": "https://github.com/taigaio/taiga-front.git"
@@ -102,7 +102,6 @@
   ],
   "dependencies": {
     "@highlightjs/cdn-assets": "^10.5.0",
-    "Flot": "git+https://github.com/flot/flot.git#v0.8.3",
     "angular": "1.5.10",
     "angular-animate": "1.5.10",
     "angular-aria": "1.5.10",
@@ -118,6 +117,7 @@
     "checksley": "git+https://github.com/jespino/checksley-bower.git",
     "dom-autoscroller": "^2.3.4",
     "dragula": "^3.7.2",
+    "Flot": "git+https://github.com/flot/flot.git#v0.8.3",
     "flot-axislabels": "git+https://git@github.com/juanfran/flot-axislabels.git",
     "gulp-class-prefix": "^1.0.1",
     "immutable": "^3.8.1",
