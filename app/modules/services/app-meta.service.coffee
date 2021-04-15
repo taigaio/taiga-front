@@ -28,7 +28,7 @@ class AppMetaService
                 meta = $("<title></title>")
                 $("head").append(meta)
 
-            meta.text(value or "")
+            meta.html(value or "")
         else if key.indexOf("og:") == 0
             meta = $("head meta[property='#{key}']")
 
