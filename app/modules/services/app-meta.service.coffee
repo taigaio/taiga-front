@@ -25,7 +25,7 @@ class AppMetaService
             meta = $("head title")
 
             if meta.length == 0
-                meta = document.createElement('title')
+                meta = $("<title></title>")
                 $("head").append(meta)
 
             meta.html(value)
