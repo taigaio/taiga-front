@@ -156,6 +156,12 @@ tg-html-editor .ck-content,
         color: $color-black900;
     }
     a {
+        color: $color-black600;
+        strong {
+            color: $color-black600;
+        }
+    }
+    a[href] {
         color: $color-link-primary;
         font-weight: 600;
     }
