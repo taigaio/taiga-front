@@ -13,7 +13,7 @@
   "license": "MPL-2",
   "repository": {
     "type": "git",
-    "url": "https://github.com/taigaio/taiga-front.git"
+    "url": "https://github.com/kaleidos-ventures/taiga-front.git"
   },
   "scripts": {
     "scss-lint": "gulp scss-lint --fail",

@@ -7,7 +7,7 @@
 
 
 # NOTE: This script is based on taiga-back manage_translations.py script
-#       (https://github.com/taigaio/taiga-back/blob/master/scripts/manage_translations.py)
+#       (https://github.com/kaleidos-ventures/taiga-back/blob/main/scripts/manage_translations.py)
 #
 # This python file contains utility scripts to manage taiga translations.
 # It has to be run inside the taiga-front git root directory (over the taiga-back env).
