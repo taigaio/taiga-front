@@ -39,14 +39,6 @@
             flex-shrink: 0;
             margin-inline-end: .75rem;
         }
-        .user-stories {
-            align-items: center;
-            column-gap: .25rem;
-            display: flex;
-            flex: 1;
-            flex-wrap: wrap;
-            row-gap: .25rem;
-        }
         & > .status {
             flex-basis: 150px;
             flex-grow: 0;
@@ -208,6 +200,19 @@
             margin-right: .5rem;
             padding: .2rem .5rem;
         }
+    }
+}
+
+.backlog-table-title,
+.backlog-table-body,
+.gu-mirror {
+    .user-stories {
+        align-items: center;
+        column-gap: .25rem;
+        display: flex;
+        flex: 1;
+        flex-wrap: wrap;
+        row-gap: .25rem;
     }
 }
 
