@@ -448,7 +448,7 @@
             "TEAM_REQUIREMENT": "Requerido por el equipo",
             "CLIENT_REQUIREMENT": "Requerido por el Cliente",
             "BLOCKED": "Bloqueada",
-            "BLOCKED_NOTE_PLACEHOLDER": "Porque esta esta épica bloqueada?",
+            "BLOCKED_NOTE_PLACEHOLDER": "¿Por qué está esta épica bloqueada?",
             "CREATE_EPIC": "Crear épica"
         }
     },
@@ -710,7 +710,7 @@
         "BITBUCKET": {
             "SECTION_NAME": "Bitbucket",
             "PAGE_TITLE": "Bitbucket - {{projectName}}",
-            "INFO_VERIFYING_IP": "Las peticiones de Bitbucket no van firmadas, con la IP de origen  verificamos su procedencia. Déjalo vacío y no se verificarán."
+            "INFO_VERIFYING_IP": "Las peticiones de Bitbucket no van firmadas, con la IP de origen verificamos su procedencia. Déjalo vacío y no se verificarán."
         },
         "GITLAB": {
             "SECTION_NAME": "Gitlab",
@@ -1043,7 +1043,7 @@
                     "DESC": "El proyecto que estás intento importar es público. Desafortunadamente, tu plan actual no permite proyectos públicos adicionales."
                 },
                 "PRIVATE_PROJECTS_MEMBERS": {
-                    "TITLE": "Su plan actual solo permite un numero maximo de  {{max_memberships}} miembros por proyecto privado"
+                    "TITLE": "Su plan actual solo permite un número máximo de {{max_memberships}} miembros por proyecto privado"
                 },
                 "PUBLIC_PROJECTS_MEMBERS": {
                     "TITLE": "Su plan actual solo permite un maximo de {{max_memberships}} miembros por proyecto publico."
@@ -1276,7 +1276,7 @@
         "PAGE_DESCRIPTION": "Estado: {{taskStatus}}. Descripción: {{taskDescription}}",
         "EPIC_COLOR": "Color de la épica",
         "SECTION_NAME": "Épica",
-        "ERROR_UNLINK_RELATED_USERSTORY": "No se ha podido desvincular:  {{errorMessage}}",
+        "ERROR_UNLINK_RELATED_USERSTORY": "No se ha podido desvincular: {{errorMessage}}",
         "CREATE_RELATED_USERSTORIES": "Crear relación con",
         "NEW_USERSTORY": "Nueva historia de usuario",
         "EXISTING_USERSTORY": "Historia de usuario existente",
@@ -1470,7 +1470,7 @@
         "NOT_FOUND_TEXT": "Error 404. La página que estás buscando ya no existe. Puedes volver a la página de inicio de TAIGA y ver si encuentras lo que estás buscando. ",
         "PERMISSION_DENIED": "Permiso denegado",
         "PERMISSION_DENIED_TEXT": "No tienes permisos para acceder a esta página.",
-        "VERSION_ERROR": "Algún otro usuario de Taiga se te ha adelantado y ha actualizado esto,  y no se pueden aplicar tus cambios. Por favor, recarga la página y aplícalos de nuevo o se perderán."
+        "VERSION_ERROR": "Algún otro usuario de Taiga se te ha adelantado y ha actualizado esto, y no se pueden aplicar tus cambios. Por favor, recarga la página y aplícalos de nuevo o se perderán."
     },
     "TASKBOARD": {
         "PAGE_TITLE": "{{sprintName}} - Sprint - {{projectName}}",
@@ -1535,7 +1535,7 @@
         "FIELDS": {
             "IS_IOCAINE": "Tiene iocaína"
         },
-        "TITLE_ACTION_IOCAINE": "¿Te sientes fuera de tu zona de confort en una tarea? Asegúrate de que los demás están al tanto de ello, marca el check de la Iocaína al editar una tarea. Igual eu era posible llegar a ser inmune a este veneno mortal a base de consumir pequeñas dosis a lo largo del tiempo, es posible conseguir mejor en lo que estás haciendo si afrontas de vez en cuando esta clase de retos!"
+        "TITLE_ACTION_IOCAINE": "¿Te sientes fuera de tu zona de confort en una tarea? Asegúrate de que los demás están al tanto de ello, marca el check de la Iocaína al editar una tarea. ¡Igual que era posible llegar a ser inmune a este veneno mortal a base de consumir pequeñas dosis a lo largo del tiempo, es posible conseguir mejor en lo que estás haciendo si afrontas de vez en cuando esta clase de retos!"
     },
     "NOTIFICATION": {
         "OK": "¡Todo Ok!",
@@ -1628,7 +1628,7 @@
         "SECTION_NAME": "Kanban",
         "TITLE_ACTION_FOLD": "Plegar columna",
         "TITLE_ACTION_UNFOLD": "Desplegar columna",
-        "TITLE_ACTION_ADD_US": "Añadir  historia de usuario",
+        "TITLE_ACTION_ADD_US": "Añadir historia de usuario",
         "TITLE_ACTION_ADD_BULK": "Añadir nuevas en bloque",
         "ACTION_SHOW_ARCHIVED": "Ver archivados",
         "ACTION_HIDE_ARCHIVED": "Ocultar archivados",
@@ -1877,7 +1877,7 @@
             },
             "STEP2": {
                 "TITLE": "Product backlog",
-                "TEXT": "El backlog es la lista de requerimientos (Historias de Usuario) del proyecto. Aquí es donde planificarás  tus sprints"
+                "TEXT": "El backlog es la lista de requerimientos (Historias de Usuario) del proyecto. Aquí es donde planificarás tus sprints"
             },
             "STEP3": {
                 "TITLE": "Sprints",
@@ -1906,7 +1906,7 @@
     },
     "DISCOVER": {
         "PAGE_TITLE": "Descubre proyectos - Taiga",
-        "PAGE_DESCRIPTION": "Directorio de búsqueda de Proyectos Públicos en Taiga. Explora los backlogs, timelines, peticiones y equipos. Echa un vistazo a los proyectos que más  gustan o más activos. Filtrar por Kanban o Scrum.",
+        "PAGE_DESCRIPTION": "Directorio de búsqueda de Proyectos Públicos en Taiga. Explora los backlogs, timelines, peticiones y equipos. Echa un vistazo a los proyectos que más gustan o más activos. Filtrar por Kanban o Scrum.",
         "DISCOVER_TITLE": "Descubre proyectos",
         "DISCOVER_SUBTITLE": "{projects, plural, =1{Un proyecto público por descubrir} other{# proyectos público por descubrir}}",
         "MOST_ACTIVE": "Más activos",
