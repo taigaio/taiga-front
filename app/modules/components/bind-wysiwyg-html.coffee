@@ -22,12 +22,17 @@ BindCode = ($sce, $parse, $compile, wysiwygService) ->
                 blockClasses = block.className + ' ';
                 blockClasses += if block.parentNode then block.parentNode.className else ''
                 match = /\blang(?:uage)?-([\w-]+)\b/i.exec(blockClasses)
-                language = hljs.getLanguage(match[1]);
+                matchResult = 'plaintext'
+
+                if match && match.length
+                    matchResult = match[1]
+
+                language = hljs.getLanguage(matchResult)
 
                 if language
                     resultHighlight = hljs.highlightBlock(block)
                 else
-                    ljs.load "/#{window._version}/highlightjs-languages/" +  match[1] + ".min.js", ->
+                    ljs.load "/#{window._version}/highlightjs-languages/" +  matchResult + ".min.js", ->
                         hljs.highlightBlock(block)
 
             anchor = element[0].querySelectorAll('a[href^="#"]')
