@@ -3,6 +3,7 @@
 ## 6.1.0 (unreleased)
 - Fix: allow sanitized HTML in detail page title
 - Update github templates
+- Plaintext with monospace font family
 
 ## 6.0.10 (2021-04-13)
 
