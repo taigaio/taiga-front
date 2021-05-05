@@ -690,7 +690,7 @@
             "DEFAULT": "Default"
         },
         "PROJECT_BACKLOG_OPTIONS": {
-        "TITLE": "Backlog Options",
+          "TITLE": "Backlog Options",
           "SUBTITLE": "Options for the backlog within scrum and kanban workflows",
           "DEFAULT_BACKLOG_ORDER_SCRUM": "Default ordering for new stories within the backlog for Scrum workflow",
           "DEFAULT_BACKLOG_ORDER_KANBAN": "Default ordering for new stories within the backlog for Kanban workflow",

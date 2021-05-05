@@ -688,6 +688,14 @@
             "WIP_LIMIT_INPUT": "Set WIP limit",
             "DEFAULT": "Default"
         },
+        "PROJECT_BACKLOG_OPTIONS": {
+          "TITLE": "Backlog Options",
+          "SUBTITLE": "Options for the backlog within scrum and kanban workflows",
+          "DEFAULT_BACKLOG_ORDER_SCRUM": "Default ordering for new stories within the backlog for Scrum workflow",
+          "DEFAULT_BACKLOG_ORDER_KANBAN": "Default ordering for new stories within the backlog for Kanban workflow",
+          "TOP_OF_BACKLOG": "Top of Backlog",
+          "BOTTOM_OF_BACKLOG": "Bottom of Backlog"
+        },
         "ROLES": {
             "PAGE_TITLE": "역할 - {{projectName}}",
             "WARNING_NO_ROLE": "주의하세요, 현재 프로젝트에 유저 스토리의 포인트를 산정할 수 있는 역할이 없습니다.",

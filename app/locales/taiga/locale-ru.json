@@ -688,6 +688,14 @@
             "WIP_LIMIT_INPUT": "Установить WIP лимит",
             "DEFAULT": "По умолчанию"
         },
+        "PROJECT_BACKLOG_OPTIONS": {
+          "TITLE": "Backlog Options",
+          "SUBTITLE": "Options for the backlog within scrum and kanban workflows",
+          "DEFAULT_BACKLOG_ORDER_SCRUM": "Default ordering for new stories within the backlog for Scrum workflow",
+          "DEFAULT_BACKLOG_ORDER_KANBAN": "Default ordering for new stories within the backlog for Kanban workflow",
+          "TOP_OF_BACKLOG": "Top of Backlog",
+          "BOTTOM_OF_BACKLOG": "Bottom of Backlog"
+        },
         "ROLES": {
             "PAGE_TITLE": "Роли - {{projectName}}",
             "WARNING_NO_ROLE": "Осторожнее: ни с какими ролями на вашем проекте участники не смогут оценить очки для пользовательских историй.",

@@ -688,6 +688,14 @@
             "WIP_LIMIT_INPUT": "WIP-Limit",
             "DEFAULT": "Standard"
         },
+        "PROJECT_BACKLOG_OPTIONS": {
+          "TITLE": "Backlog Options",
+          "SUBTITLE": "Options for the backlog within scrum and kanban workflows",
+          "DEFAULT_BACKLOG_ORDER_SCRUM": "Default ordering for new stories within the backlog for Scrum workflow",
+          "DEFAULT_BACKLOG_ORDER_KANBAN": "Default ordering for new stories within the backlog for Kanban workflow",
+          "TOP_OF_BACKLOG": "Top of Backlog",
+          "BOTTOM_OF_BACKLOG": "Bottom of Backlog"
+        },
         "ROLES": {
             "PAGE_TITLE": "Rollen - {{projectName}}",
             "WARNING_NO_ROLE": "Beachten Sie, keine Rolle in Ihrem Projekt wird in der Lage sein, die Punktevergabe für User-Stories einzuschätzen.",
