@@ -559,6 +559,8 @@ $confirm, $q, attachmentsService, $template, $compile) ->
                         statusList: _.sortBy(project.us_statuses, "order")
                     }
                 initialData: (data) ->
+                    if $scope.userstories && $scope.userstories.length != 0
+                      backlog_order = if data.project.default_backlog_order_scrum == 1 then 0 else $scope.userstories[$scope.userstories.length - 1].backlog_order + 1
                     return {
                         project: data.project.id
                         subject: ""
@@ -568,6 +570,7 @@ $confirm, $q, attachmentsService, $template, $compile) ->
                         swimlane: if data.project.is_kanban_activated then data.project.default_swimlane else null
                         status: if data.statusId then data.statusId else data.project.default_us_status
                         is_archived: false
+                        backlog_order: backlog_order
                     }
             }
             task: {
@@ -1036,5 +1039,3 @@ tgResources, $tgResources, $epicsService, tgAnalytics) ->
 module.directive("tgLbRelatetoepic", [
     "$rootScope", "$tgConfirm", "lightboxService", "tgCurrentUserService", "tgResources",
     "$tgResources", "tgEpicsService", "$tgAnalytics", RelateToEpicLightboxDirective])
-
-

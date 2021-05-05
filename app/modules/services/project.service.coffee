@@ -51,6 +51,7 @@ class ProjectService
             "admin:project-values:updated"
             "admin:project-values:move"
             "admin:project-custom-attributes:updated"
+            "admin:project-values:backlog-options:updated"
             "sprintform:create:success"
             "sprintform:edit:success"
             "sprintform:remove:success"

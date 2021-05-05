@@ -1,0 +1,38 @@
+doctype html
+
+div.wrapper(
+    ng-controller="ProjectValuesSectionController",
+    ng-init="sectionName='ADMIN.PROJECT_BACKLOG_OPTIONS.TITLE'"
+)
+
+    tg-project-menu
+
+    sidebar.menu-secondary.sidebar.settings-nav(tg-admin-navigation="project-values")
+        include ../includes/modules/admin-menu
+
+    sidebar.menu-tertiary.sidebar(tg-admin-navigation="values-backlog-options")
+        include ../includes/modules/admin-submenu-project-values
+
+    section.main.admin-common.admin-attributes
+        include ../includes/components/mainTitle
+        p.admin-subtitle(translate="ADMIN.PROJECT_BACKLOG_OPTIONS.SUBTITLE")
+
+        div.admin-attributes-section.admin-backlog-options(
+            tg-project-backlog-options
+            ng-controller="ProjectBacklogOptionsController as ctrl",
+            ng-init="section='admin'; resource='backlogOptions'; sectionName='ADMIN.PROJECT_KANBAN_OPTIONS.SWIMLANES'",
+        )
+
+          form(class="backlog-options")
+            fieldset
+                label(for="default_backlog_order_scrum", translate="ADMIN.PROJECT_BACKLOG_OPTIONS.DEFAULT_BACKLOG_ORDER_SCRUM")
+                select(id="default-backlog-order_scrum", ng-model="project.default_backlog_order_scrum",
+                       ng-options="boOption.key as boOption.name|translate for boOption in BACKLOG_ORDER_OPTIONS")
+
+            fieldset
+               button.btn-small(
+                   variant="primary"
+                   type="submit",
+                   title="{{'COMMON.SAVE' | translate}}"
+               )
+                   span(translate="COMMON.SAVE")

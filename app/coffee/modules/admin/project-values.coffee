@@ -26,6 +26,7 @@ joinStr = @.taiga.joinStr
 groupBy = @.taiga.groupBy
 bindOnce = @.taiga.bindOnce
 debounce = @.taiga.debounce
+scopeDefer = @.taiga.scopeDefer
 getDefaulColorList = @.taiga.getDefaulColorList
 
 module = angular.module("taigaAdmin")
@@ -1467,3 +1468,81 @@ ProjectSwimlanesWipDirective = () ->
     }
 
 module.directive("tgProjectSwimlanesWip", ProjectSwimlanesWipDirective)
+
+# #############################################################################
+# ## Scrum Options controller
+# #############################################################################
+
+BACKLOG_ORDER_OPTIONS = [
+    {
+      key: 1,
+      name: "ADMIN.PROJECT_BACKLOG_OPTIONS.TOP_OF_BACKLOG"
+    },
+    {
+      key: 0,
+      name: "ADMIN.PROJECT_BACKLOG_OPTIONS.BOTTOM_OF_BACKLOG"
+    }
+]
+
+class ProjectBacklogOptionsController extends taiga.Controller
+    @.$inject = [
+        "$scope",
+        "$rootScope",
+        "$tgRepo",
+        "$tgConfirm",
+        "$tgResources",
+        "$tgModel",
+        "tgProjectService"
+    ]
+
+    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @model, @projectService) ->
+        @scope.project = @model.make_model("projects", @scope.project)
+        @scope.BACKLOG_ORDER_OPTIONS = BACKLOG_ORDER_OPTIONS
+
+    notifyBacklogOptionsUpdated: ->
+        @rootscope.$broadcast('admin:project-values:backlog-options:updated')
+
+module.controller("ProjectBacklogOptionsController", ProjectBacklogOptionsController)
+
+# #############################################################################
+# ## Scrum options directive
+# #############################################################################
+
+ProjectBacklogOptionsDirective = ($repo, $confirm, $loading, $navurls, $location, projectService, currentUserService, $analytics) ->
+    link = ($scope, $el, $attrs) ->
+        ctrl = $el.controller()
+        form = $el.find("form").checksley({"onlyOneErrorElement": true})
+        submit = debounce 2000, (event) =>
+            event.preventDefault()
+
+            return if not form.validate()
+
+            currentLoading = $loading()
+                .target(submitButton)
+                .start()
+
+            promise = $repo.save($scope.project)
+            promise.then ->
+                ctrl.notifyBacklogOptionsUpdated()
+                $confirm.notify("success")
+
+            promise.then null, (data) ->
+                form.setErrors(data)
+                if data._error_message
+                    $confirm.notify("error", data._error_message)
+
+        submitButton = $el.find(".submit-button")
+
+        $el.on "submit", "form", submit
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {
+      link: link
+    }
+
+module.directive("tgProjectBacklogOptions",
+                 ["$tgRepo", "$tgConfirm", "$tgLoading", "$tgNavUrls",
+                  "$tgLocation", "tgProjectService", "tgCurrentUserService",
+                  "$tgAnalytics", ProjectBacklogOptionsDirective])

@@ -314,3 +314,22 @@
         width: 500px;
     }
 }
+
+.backlog-options {
+    fieldset {
+        margin-bottom: 1rem;
+        &:last-child {
+            margin-top: 1.5rem;
+        }
+    }
+    label,
+    select {
+        display: inline-block;
+        width: 49.7%;
+    }
+    a {
+        color: $white;
+        display: block;
+        text-align: center;
+    }
+}
