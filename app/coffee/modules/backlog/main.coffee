@@ -183,11 +183,11 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         @scope.$on "sprint:us:moved", () =>
             @.loadSprints()
             @.loadProjectStats()
+            @.resetFirstStoryIndicator()
             @rootscope.$broadcast("filters:update")
 
         @scope.$on("backlog:load-closed-sprints", @.loadClosedSprints)
         @scope.$on("backlog:unload-closed-sprints", @.unloadClosedSprints)
-
     initializeSubscription: ->
         routingKey1 = "changes.project.#{@scope.projectId}.userstories"
         @events.subscribe @scope, routingKey1, (message) =>
@@ -331,6 +331,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
             # NOTE: Fix order of USs because the filter orderBy does not work propertly in the partials files
             @scope.userstories = @scope.userstories.concat(_.sortBy(userstories, "backlog_order"))
+            @.resetFirstStoryIndicator()
             @scope.visibleUserStories = _.map @scope.userstories, (it) ->
                 return it.ref
 
@@ -399,6 +400,8 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         @scope.usStatusById = groupBy(project.us_statuses, (x) -> x.id)
         @scope.usStatusList = _.sortBy(project.us_statuses, "id")
 
+        @.resetFirstStoryIndicator()
+
         return project
 
     loadInitialData: ->
@@ -420,11 +423,20 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
     prepareBulkUpdateData: (uses, field="backlog_order") ->
          return _.map(uses, (x) -> {"us_id": x.id, "order": x[field]})
 
+    resetFirstStoryIndicator: () ->
+      for us, key in @scope.userstories
+        @scope.userstories[key].is_first_in_backlog = false
+      if @scope.userstories.length > 0
+        @scope.userstories[0].is_first_in_backlog = true
+
+    moveUsToTopOfBacklogById: (id) ->
+      index = _.findIndex @scope.userstories, (us) ->
+        return us.id == id
+
+      @.moveUsToTopOfBacklog(@scope.userstories[index])
+
     moveUsToTopOfBacklog: (us) ->
       self = @
-      $('.first').each(() ->
-        $(this).removeClass('first');
-      )
       @.moveUs('sprint:us:move', [us], 0, null)
 
     # --move us api behavior--
@@ -617,7 +629,8 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
                 @q.all([
                     @.loadProjectStats(),
-                    @.loadSprints()
+                    @.loadSprints(),
+                    @.resetFirstStoryIndicator()
                 ])
             promise.then null, =>
                 askResponse.finish(false)
