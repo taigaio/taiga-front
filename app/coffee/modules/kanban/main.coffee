@@ -174,6 +174,9 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         @scope.$on "usform:new:success", (event, us) =>
             @.refreshTagsColors().then () =>
                 @kanbanUserstoriesService.add(us)
+
+                @.orderStoriesByPreference([us])
+
                 @scope.$broadcast("redraw:wip")
 
             @analytics.trackEvent("userstory", "create", "create userstory on kanban", 1)
@@ -181,8 +184,11 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         @scope.$on "usform:bulk:success", (event, uss) =>
             @confirm.notify("success")
             @.refreshTagsColors().then () =>
-                @kanbanUserstoriesService.add(uss)
-                @scope.$broadcast("redraw:wip")
+              @kanbanUserstoriesService.add(uss)
+
+              @.orderStoriesByPreference(uss)
+
+              @scope.$broadcast("redraw:wip")
 
             @analytics.trackEvent("userstory", "create", "bulk create userstory on kanban", 1)
 
@@ -521,6 +527,13 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             , 0, true
 
         @.generateFilters()
+
+    orderStoriesByPreference: (stories) ->
+      if @scope.project.default_backlog_order_kanban != 0
+        us = stories[0]
+        columnId = "column-#{us.status}"
+        firstCardInColumn = $('#' + columnId).find('tg-card').first()
+        @scope.$broadcast("kanban:us:move", stories, us.status, us.swimlane, 0, null, firstCardInColumn)
 
     moveUs: (ctx, usList, newStatusId, newSwimlaneId, index, previousCard, nextCard) ->
         @.cleanSelectedUss()

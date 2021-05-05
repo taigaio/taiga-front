@@ -30,6 +30,11 @@ div.wrapper(
                        ng-options="boOption.key as boOption.name|translate for boOption in BACKLOG_ORDER_OPTIONS")
 
             fieldset
+              label(for="default_backlog_order_kanban", translate="ADMIN.PROJECT_BACKLOG_OPTIONS.DEFAULT_BACKLOG_ORDER_KANBAN")
+              select(id="default-backlog-order_kanban", ng-model="project.default_backlog_order_kanban",
+                     ng-options="boOption.key as boOption.name|translate for boOption in BACKLOG_ORDER_OPTIONS")
+
+            fieldset
                button.btn-small(
                    variant="primary"
                    type="submit",
