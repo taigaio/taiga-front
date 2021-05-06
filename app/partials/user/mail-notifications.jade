@@ -20,6 +20,36 @@ div.wrapper(
         header
             h1 {{sectionName | translate}}
 
+        div(ng-if="!ctrl.isTree")
+            p.total(translate="NOTIFICATION.COMMUNICATION")
+
+            .newsletter-email.setting
+                p We will send you news, product updates and recommendations about Taiga.
+                button.btn-small.subscribed-button(
+                    ng-if="!ctrl.onPremiseSubscribed"
+                    ng-click="ctrl.subscribed()"
+                )
+                    span Subscribe
+                    img.loading-spinner(
+                        ng-if="ctrl.loadPremise"
+                        src="/#{v}/svg/spinner-circle.svg",
+                        alt="{{'COMMON.LOADING' | translate}}"
+                    )
+                button.btn-small.subscribed(
+                    variant="secondary"
+                    ng-if="ctrl.onPremiseSubscribed"
+                )
+                    span You are subscribed
+                    tg-svg.check-sub(svg-icon="icon-check-empty")
+
+                .text-container
+                    p.text-info
+                        span.italic(
+                            translate="PROJECT.NEWSLETTER_OPENING.NO_SHARE"
+                        )
+                        br
+                        span.italic(translate="PROJECT.NEWSLETTER_OPENING.OPT_OUT")
+
         p.total(translate="NOTIFICATION.MAIL")
 
         include ../includes/modules/user-settings/mail-notifications-table

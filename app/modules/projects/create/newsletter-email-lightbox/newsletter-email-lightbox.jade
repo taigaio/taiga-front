@@ -1,0 +1,59 @@
+
+//- This Source Code Form is subject to the terms of the Mozilla Public
+//- License, v. 2.0. If a copy of the MPL was not distributed with this
+//- file, You can obtain one at http://mozilla.org/MPL/2.0/.
+//-
+//- Copyright (c) 2021-present Kaleidos Ventures SL
+
+tg-lightbox-close(on-close="vm.onClose()")
+
+form
+    h2.lightbox-title(translate="PROJECT.NEWSLETTER_OPENING.LIGHTBOX_TITLE")
+    .newsletter-info
+        .custom-checkbox
+            input(
+                type="checkbox"
+                name="confirm-email"
+                id="confirm-email"
+                ng-model="preference"
+            )
+            label(
+                for="confirm-email",
+                tabindex="0"
+            )
+        .text-container
+            p(translate="PROJECT.NEWSLETTER_OPENING.CONFIRMATION")
+            p.text-info
+                span.italic(
+                    translate="PROJECT.NEWSLETTER_OPENING.NO_SHARE"
+                )
+                br
+                span.italic(translate="PROJECT.NEWSLETTER_OPENING.OPT_OUT")
+
+    .option-container
+        .ask
+            .custom-checkbox
+                input(
+                    type="checkbox"
+                    name="ask"
+                    id="dont-ask"
+                    ng-model="dontAsk"
+                )
+                label(
+                    for="dont-ask",
+                    tabindex="0"
+                )
+            p(translate="PROJECT.NEWSLETTER_OPENING.DONT_ASK")
+        div.options
+            button.btn-small.btn-cancel.js-cancel(
+                variant="secondary"
+                ng-click="closeLightbox()"
+
+            )
+                span(translate="COMMON.CANCEL")
+
+            button.btn-small(
+                    variant="primary"
+                    ng-click="setEmail()"
+                )
+                span(translate="PROJECT.NEWSLETTER_OPENING.SAVE_PREFERENCE")
