@@ -33,7 +33,7 @@ NewsletterEmailLightboxDirective = (lightboxService, lightboxKeyboardNavigationS
                     {
                         "email": $currentUserService.getUser().get('email'),
                         "full_name": $currentUserService.getUser().get('full_name'),
-                        "origin_form": 'create'
+                        "origin_form": 'Newsletter sign-up create'
                     }
                 )
                 $rs.user.setUserStorage('dont_ask_premise_newsletter', true)
