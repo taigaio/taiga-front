@@ -53,7 +53,13 @@ class UserNotificationsController extends mixOf(taiga.Controller, taiga.PageMixi
             @confirm.notify("success", "Your preferences have been save successfully")
             @.onPremiseSubscribed = true
             @.loadPremise = false
-            @resources.user.setUserStorage('dont_ask_premise_newsletter', true)
+            @resources.user.getUserStorage('dont_ask_premise_newsletter')
+                .then (storageState) =>
+                    @resources.user.setUserStorage('dont_ask_premise_newsletter', true)
+                .catch (storageError) =>
+                    if storageError.status = 404
+                        @resources.user.createUserStorage('dont_ask_premise_newsletter', false)
+
         .catch () =>
             @confirm.notify("light-error", "")
             @.loadPremise = false
