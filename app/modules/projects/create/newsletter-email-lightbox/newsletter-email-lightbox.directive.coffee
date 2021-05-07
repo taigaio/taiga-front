@@ -28,7 +28,6 @@ NewsletterEmailLightboxDirective = (lightboxService, lightboxKeyboardNavigationS
             lightboxService.close(el)
 
         scope.setEmail = () ->
-            $rs.user.setUserStorage('dont_ask_premise_newsletter', true)
             if scope.preference
                 $rs2.onPremise.subscribeOnPremiseNewsletter(
                     {
