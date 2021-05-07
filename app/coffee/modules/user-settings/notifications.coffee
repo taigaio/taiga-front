@@ -25,10 +25,11 @@ class UserNotificationsController extends mixOf(taiga.Controller, taiga.PageMixi
         "$tgAuth",
         "$tgConfig",
         "tgResources",
-        "tgCurrentUserService"
+        "tgCurrentUserService",
+        "$translate"
     ]
 
-    constructor: (@scope, @confirm, @rs, @auth, @config, @resources, @currentUserService) ->
+    constructor: (@scope, @confirm, @rs, @auth, @config, @resources, @currentUserService, @translate) ->
         @scope.sectionName = "USER_SETTINGS.NOTIFICATIONS.SECTION_NAME"
         @scope.user = @auth.getUser()
         promise = @.loadInitialData()
@@ -44,14 +45,17 @@ class UserNotificationsController extends mixOf(taiga.Controller, taiga.PageMixi
             {
                 "email": @currentUserService.getUser().get('email'),
                 "full_name": @currentUserService.getUser().get('full_name'),
-                "origin_form": 'setting'
+                "origin_form": 'Newsletter sign-up settings'
             }
         ).then () =>
-            @confirm.notify("success", "yes")
+            text = @translate.instant("PROJECT.NEWSLETTER_OPENING.SAVED_PREFERENCE")
+
+            @confirm.notify("success", "Your preferences have been save successfully")
             @.onPremiseSubscribed = true
             @.loadPremise = false
+            @resources.user.setUserStorage('dont_ask_premise_newsletter', true)
         .catch () =>
-            @confirm.notify("light-error", "non")
+            @confirm.notify("light-error", "")
             @.loadPremise = false
 
     loadInitialData: ->

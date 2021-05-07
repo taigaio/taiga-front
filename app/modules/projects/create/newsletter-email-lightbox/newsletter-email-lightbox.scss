@@ -16,6 +16,11 @@
         background: $color-gray100;
         margin-bottom: 1.5rem;
 
+        &:hover {
+            background: $color-gray100;
+            cursor: default;
+        }
+
         span {
             color: $color-black600;
             font-style: italic;
