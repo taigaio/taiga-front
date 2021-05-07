@@ -20,23 +20,39 @@ module = angular.module("taigaUserSettings")
 class UserNotificationsController extends mixOf(taiga.Controller, taiga.PageMixin)
     @.$inject = [
         "$scope",
-        "$rootScope",
-        "$tgRepo",
         "$tgConfirm",
         "$tgResources",
-        "$routeParams",
-        "$q",
-        "$tgLocation",
-        "$tgNavUrls",
         "$tgAuth",
-        "tgErrorHandlingService"
+        "$tgConfig",
+        "tgResources",
+        "tgCurrentUserService"
     ]
 
-    constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @navUrls, @auth, @errorHandlingService) ->
+    constructor: (@scope, @confirm, @rs, @auth, @config, @resources, @currentUserService) ->
         @scope.sectionName = "USER_SETTINGS.NOTIFICATIONS.SECTION_NAME"
         @scope.user = @auth.getUser()
         promise = @.loadInitialData()
         promise.then null, @.onInitialDataError.bind(@)
+
+        @.isTree = @config.get("isTree")
+        @.onPremiseSubscribed = false
+        @.loadPremise = false
+
+    subscribed: ->
+        @.loadPremise = true
+        @resources.onPremise.subscribeOnPremiseNewsletter(
+            {
+                "email": @currentUserService.getUser().get('email'),
+                "full_name": @currentUserService.getUser().get('full_name'),
+                "origin_form": 'setting'
+            }
+        ).then () =>
+            @confirm.notify("success", "yes")
+            @.onPremiseSubscribed = true
+            @.loadPremise = false
+        .catch () =>
+            @confirm.notify("light-error", "non")
+            @.loadPremise = false
 
     loadInitialData: ->
         return @rs.notifyPolicies.list().then (notifyPolicies) =>
