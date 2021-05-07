@@ -1,0 +1,90 @@
+.newsletter-email {
+
+    &.setting {
+        .lightbox-title {
+            @include font-size(small);
+
+            text-align: left;
+        }
+    }
+
+    form {
+        max-width: 700px;
+    }
+
+    .subscribed {
+        background: $color-gray100;
+        margin-bottom: 1.5rem;
+
+        span {
+            color: $color-black600;
+            font-style: italic;
+            font-weight: bold;
+        }
+    }
+
+    .newsletter-info {
+        display: flex;
+    }
+
+    .subscribed-button {
+        margin-bottom: 1.5rem;
+
+    }
+
+    .loading-spinner {
+        margin-left: .5rem;
+    }
+
+    .check-sub {
+        fill: $color-link-green;
+        margin-left: .5rem;
+        margin-right: 0;
+    }
+
+    .ask {
+        display: flex;
+
+        p {
+            margin-bottom: 0;
+        }
+    }
+
+    .custom-checkbox {
+        flex-basis: 18px;
+        flex-grow: 0;
+        height: 18px;
+        margin-right: .5rem;
+        margin-top: .2rem;
+    }
+
+    .option-container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .options {
+        .btn-small {
+            margin-left: 1rem;
+        }
+    }
+
+    .lightbox-title {
+        @include font-size(large);
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+    p {
+        color: $color-black600;
+    }
+
+    .text-container {
+        @include font-type(small);
+        color: $color-link-tertiary;
+        .italic {
+            color: $color-link-tertiary;
+            font-style: italic;
+        }
+    }
+}

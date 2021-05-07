@@ -21,7 +21,8 @@ services = [
     "tgTrelloImportResource",
     "tgJiraImportResource",
     "tgGithubImportResource",
-    "tgAsanaImportResource"
+    "tgAsanaImportResource",
+    "tgOnPremiseResource"
 ]
 
 Resources = ($injector) ->
