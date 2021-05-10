@@ -35,7 +35,7 @@ class UserNotificationsController extends mixOf(taiga.Controller, taiga.PageMixi
         promise = @.loadInitialData()
         promise.then null, @.onInitialDataError.bind(@)
 
-        @.isTree = @config.get("isTree")
+        @.isSaas = @config.get("isSaas")
         @.onPremiseSubscribed = false
         @.loadPremise = false
 
