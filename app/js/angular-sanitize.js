@@ -477,10 +477,6 @@ function $SanitizeProvider() {
    */
   function htmlSanitizeWriterImpl(buf, uriValidator) {
 
-    console.log({validElements});
-    console.log({validAttrs});
-    console.log({buf});
-
     var ignoreCurrentElement = false;
     var out = bind(buf, buf.push);
     return {
