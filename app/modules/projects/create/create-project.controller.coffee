@@ -27,7 +27,8 @@ class CreateProjectController
         @.displayScrumDesc = false
         @.dontAsk = false
 
-        if !@config.get("isTree")
+        # If you want to prevent this lightbox from showing up you need to add the variable isSass and set it to true on the conf.json
+        if !@config.get("isSaas")
             @rs.user.getUserStorage('dont_ask_premise_newsletter')
                 .then (storageState) =>
                     @.dontAsk = storageState
