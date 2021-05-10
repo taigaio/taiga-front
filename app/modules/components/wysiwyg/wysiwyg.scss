@@ -70,6 +70,7 @@ tg-wysiwyg {
                 border: 1px solid $color-black600;
             }
         }
+
         tg-text-editor {
             button {
                 display: block;
@@ -239,6 +240,29 @@ tg-html-editor .ck-content {
     table {
         margin: 20px 0;
     }
+}
+
+.ck-content .todo-list .todo-list__label>input[type='checkbox'] {
+    appearance: checkbox;
+    height: auto;
+    left: auto;
+    margin-right: .5rem;
+    vertical-align: middle;
+    width: auto;
+
+
+    &::after,
+    &::before {
+        display: none;
+    }
+
+    &:checked {
+        &::after,
+        &::before {
+            background: inherit;
+        }
+    }
+
 }
 
 
