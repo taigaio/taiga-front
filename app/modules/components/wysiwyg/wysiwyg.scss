@@ -80,6 +80,15 @@ tg-wysiwyg {
             margin: 1rem 0;
         }
     }
+    .task-list-item {
+        align-items: center;
+        display: flex;
+        list-style-type: none;
+
+        input {
+            margin-right: .5rem;
+        }
+    }
     .wysiwyg {
         display: none;
     }
