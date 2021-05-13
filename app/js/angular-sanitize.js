@@ -169,10 +169,29 @@ function $SanitizeProvider() {
       extend(validElements, svgElements);
     }
     return function(html) {
+
+      var bckValidElements = {...validElements};
+      validElements = {
+          ...validElements,
+          ...window._extraValidHtmlElments
+      };
+
+      var bckValidAttrs = {...validAttrs};
+      validAttrs = {
+        ...validAttrs,
+        ...window._extraValidAttrs
+      };
+
       var buf = [];
       htmlParser(html, htmlSanitizeWriter(buf, function(uri, isImage) {
         return !/^unsafe:/.test($$sanitizeUri(uri, isImage));
       }));
+
+      window._extraValidHtmlElments = null
+      window._extraValidAttrs = null
+      validElements = bckValidElements;
+      validAttrs = bckValidAttrs;
+
       return buf.join('');
     };
   }];
@@ -457,6 +476,7 @@ function $SanitizeProvider() {
    * }
    */
   function htmlSanitizeWriterImpl(buf, uriValidator) {
+
     var ignoreCurrentElement = false;
     var out = bind(buf, buf.push);
     return {
