@@ -42,6 +42,9 @@ CreateBulkIssuesDirective = ($repo, $rs, $confirm, $rootscope, $loading, lightbo
                 .target(submitButton)
                 .start()
 
+            if currentLoading.isLoading()
+                return
+
             data = $scope.new.bulk
             projectId = $scope.new.projectId
             milestoneId = $scope.new.milestoneId
@@ -58,7 +61,7 @@ CreateBulkIssuesDirective = ($repo, $rs, $confirm, $rootscope, $loading, lightbo
                 currentLoading.finish()
                 $confirm.notify("error")
 
-        submitButton = $el.find(".submit-button")
+        submitButton = $el.find("button[type='submit']")
 
         $el.on "submit", "form", submit
 

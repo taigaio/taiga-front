@@ -772,6 +772,8 @@ $confirm, $q, attachmentsService, $template, $compile) ->
                 return
 
             currentLoading = $loading().target($el.find("#submitButton")).start()
+            if currentLoading.isLoading()
+                return
 
             if $scope.mode == 'new'
                 promise = $repo.create(schema.model, $scope.obj)
