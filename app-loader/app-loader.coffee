@@ -10,6 +10,7 @@ window._version = "___VERSION___"
 
 window.taigaConfig = {
     "api": "http://localhost:8000/api/v1/",
+    "newsletterSubscriberUrl": "https://newsletter-subscriber.taiga.io",
     "eventsUrl": null,
     "tribeHost": null,
     "eventsMaxMissedHeartbeats": 5,

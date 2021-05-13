@@ -6,12 +6,10 @@
 # Copyright (c) 2021-present Kaleidos Ventures SL
 ###
 
-Resource = (urlsService, http) ->
+Resource = (urlsService, http, config) ->
     service = {}
-
     service.subscribeOnPremiseNewsletter = (params) ->
-        url = "https://taiga-newsletter-subscriber.kaleidos.net/subscribe/"
-
+        url = config.get("newsletterSubscriberUrl")
 
         return http.post(url, params)
             .then (result) ->
@@ -20,7 +18,7 @@ Resource = (urlsService, http) ->
     return () ->
         return {"onPremise": service}
 
-Resource.$inject = ["$tgUrls", "$tgHttp"]
+Resource.$inject = ["$tgUrls", "$tgHttp", "$tgConfig"]
 
 module = angular.module("taigaResources2")
 module.factory("tgOnPremiseResource", Resource)
