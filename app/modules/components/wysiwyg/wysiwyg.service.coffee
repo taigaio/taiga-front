@@ -75,7 +75,6 @@ class WysiwygService
         window._extraValidHtmlElments = {input: true}
         window._extraValidAttrs = {checked: true}
 
-        el.innerHTML =
         el.innerHTML = @sce.getTrustedHtml(html) || ''
         regex = /#_taiga-refresh=([a-zA-Z]*\:\d+)/
 
