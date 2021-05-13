@@ -71,6 +71,10 @@ class WysiwygService
 
     refreshAttachmentURL: (html) ->
         el = document.createElement('html')
+
+        window._extraValidHtmlElments = {input: true}
+        window._extraValidAttrs = {checked: true}
+
         el.innerHTML = @sce.getTrustedHtml(html) || ''
         regex = /#_taiga-refresh=([a-zA-Z]*\:\d+)/
 

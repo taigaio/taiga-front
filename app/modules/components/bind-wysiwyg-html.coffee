@@ -17,6 +17,10 @@ BindCode = ($sce, $parse, $compile, wysiwygService) ->
         $compile.$$addBindingClass(tElement)
 
         render = (element, html) =>
+
+            window._extraValidHtmlElments = {input: true}
+            window._extraValidAttrs = {checked: true}
+
             element.html($sce.getTrustedHtml(html) || '')
             element[0].querySelectorAll('pre code').forEach (block) =>
                 blockClasses = block.className + ' ';
