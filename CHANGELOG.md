@@ -2,7 +2,7 @@
 
 ## 6.1.1 (unreleased)
 
-- ...
+- fix: issues table order issues by ID instead of alphabetically
 
 ## 6.1.0 (2021-05-04)
 
