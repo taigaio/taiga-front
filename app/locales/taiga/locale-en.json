@@ -1115,8 +1115,8 @@
         "NEWSLETTER_OPENING": {
             "LIGHTBOX_TITLE": "Do you want to receive announcements about Taiga?",
             "CONFIRMATION" : "Yes, send me news, product updates and recommendations about Taiga.",
-            "NO_SHARE": "We will never share your email address with any third party. Your privacy matter to us (view our <a href=\"https://www.taiga.io/privacy-policy\" title=\"Go to privacy policy\" target=\"_blank\">privacy policy</a>).",
-            "OPT_OUT": "You can unsubscribe at any time by sending an email to <a href=\"mailto:support@taiga.io\" target=\"_blank\">support@taiga.io</a> with subject “unsubscribe” or through the link in any of our newsletters.",
+            "NO_SHARE": "Your privacy matter to us (view our <a href=\"https://www.taiga.io/privacy-policy\" title=\"Go to privacy policy\" target=\"_blank\">privacy policy</a>).",
+            "OPT_OUT": "We will  only send relevant emails to you (<6 per year). You can unsubscribe at any time by sending an email to <a href=\"mailto:support@taiga.io\" target=\"_blank\">support@taiga.io</a> with subject “unsubscribe” or through the link in any of our newsletters.",
             "DONT_ASK": "Don’t ask again",
             "SAVE_PREFERENCE": "SAVE PREFERENCES",
             "NOTIFY_EXPLANATION": "We will send you news, product updates and recommendations about Taiga.",
