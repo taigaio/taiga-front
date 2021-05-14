@@ -9,7 +9,7 @@
 Resource = (urlsService, http, config) ->
     service = {}
     service.subscribeOnPremiseNewsletter = (params) ->
-        url = config.get("newsletterSubscriberUrl") + "/subscribe/"
+        url = config.get("newsletterSubscriberUrl") + "/subscribe"
 
         return http.post(url, params)
             .then (result) ->
