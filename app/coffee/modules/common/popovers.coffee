@@ -238,3 +238,99 @@ $.fn.popover = () ->
         $el.trigger("popup:close")
 
     return {open: open, close: close, closeAll: closeAll}
+
+# Example:
+#
+# taiga.globalPopover(el, [
+#     {
+#         text: 'Button text',
+#         event: () ->
+#             console.log('button clicked')
+#     }
+# ], {
+#     width: 170,
+#     paddingTop: 10,
+#     paddingLeft: 5
+# }, () -> onClosePopover())
+
+taiga.globalPopover = (target, list, options = {}, cb) ->
+    wrapper = document.createElement('div')
+    wrapper.classList.add('popover', 'global-popover')
+    ul = document.createElement('ul')
+
+    createSvg = (icon) ->
+        tgSvg = document.createElement('tg-svg')
+        svg = document.createElement('svg')
+        use = document.createElement('use')
+
+        xlink = document.createAttribute('xlink:href')
+        xlink.value = '#' + icon
+
+        attrHref = document.createAttribute('attr-href')
+        attrHref.value = '#' + icon
+
+        use.setAttributeNode(xlink)
+        use.setAttributeNode(attrHref)
+
+        svg.classList.add('icon')
+        svg.appendChild(use)
+        tgSvg.appendChild(svg)
+
+        return tgSvg
+
+    close = () ->
+        $(wrapper).popover().close()
+        $(wrapper).remove()
+
+    followElement = () ->
+        elementPosition()
+        requestAnimationFrame(followElement)
+
+    elementPosition = () ->
+        rect = target.getBoundingClientRect()
+        top = rect.top + rect.height
+        width = options.width || 170
+        left = rect.right - width
+
+        if options.paddingTop
+            top = top + options.paddingTop
+
+        if options.paddingLeft
+            left = left + options.paddingLeft
+
+        wrapper.style.top = top + 'px'
+        wrapper.style.left = left + 'px'
+        wrapper.style.width = width + 'px'
+
+    elementPosition()
+    followElement()
+
+    document.addEventListener('scroll', close, true)
+
+    list.forEach (option) ->
+        li = document.createElement('li')
+        button = document.createElement('button')
+        button.addEventListener('click', option.event)
+
+        if option.icon
+            button.innerHTML = createSvg(option.icon).innerHTML
+
+        button.appendChild(document.createTextNode(option.text))
+        li.appendChild(button)
+        ul.appendChild(li)
+
+    wrapper.appendChild(ul)
+    document.body.appendChild(wrapper)
+
+    $(wrapper).popover().open () ->
+        document.removeEventListener('scroll', close)
+
+        cb()
+
+        if wrapper
+            setTimeout () ->
+                $(wrapper).remove()
+            , 2000
+
+    return () =>
+        $(wrapper).popover().close()

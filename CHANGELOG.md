@@ -4,6 +4,7 @@
 
 - fix: issues table order issues by ID instead of alphabetically
 - Update promote to user story icon
+- Move card options, assign, edit a delete card to a menu.
 
 ## 6.1.1 (2021-05-18)
 

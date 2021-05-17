@@ -1,0 +1,30 @@
+.global-popover {
+    @include popover(
+        $width: 170px
+    );
+
+    position: absolute;
+    z-index: $overall-layer;
+
+    ul {
+        margin-bottom: 0;
+    }
+
+    button {
+        appearance: none;
+        background: none;
+        color: $color-link-primary;
+        display: flex;
+        padding: .25rem;
+        width: 100%;
+        &:hover {
+            background: $color-gray200;
+            color: $color-link-tertiary;
+        }
+        svg {
+            @include svg-size(1rem);
+            fill: $color-link-primary;
+            margin-inline-end: .5rem;
+        }
+    }
+}

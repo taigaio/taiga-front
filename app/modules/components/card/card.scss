@@ -49,10 +49,6 @@ $iocaine: #b400d1;
     &.type-task.zoom-3 {
         .card-assigned-to {
             position: static;
-            .card-actions {
-                left: 1px;
-                width: calc(100% - 2px);
-            }
         }
         .wrapper-assigned-to-data {
             align-items: center;
@@ -73,17 +69,12 @@ $iocaine: #b400d1;
             display: flex;
             tg-card-assigned-to {
                 margin-left: auto;
+                margin-right: 1rem;
             }
             .card-title {
                 a {
                     display: flex;
                 }
-            }
-            .card-actions {
-                flex-direction: row-reverse;
-                height: 100%;
-                justify-content: flex-start;
-                top: 0;
             }
             .card-assigned-to-action {
                 span {
@@ -174,16 +165,6 @@ $iocaine: #b400d1;
             a:hover {
                 color: $white;
             }
-        }
-        .card-actions {
-            /* stylelint-disable max-line-length */
-            background: linear-gradient(0deg, rgba($color-solid-red, .25), rgba($color-solid-red, .25)), rgba($color-white, .95);
-
-            a:hover,
-            button:hover {
-                background: linear-gradient(0deg, rgba(228, 64, 87, .25), rgba(228, 64, 87, .25)), $color-gray400;
-            }
-            /* stylelint-enable max-line-length */
         }
         .card-tasks ul {
             /* stylelint-disable color-no-hex */
@@ -294,6 +275,7 @@ $iocaine: #b400d1;
     position: relative;
 
     .card-user-avatar {
+        cursor: pointer;
         margin-right: -.25rem;
         position: relative;
     }
@@ -343,27 +325,57 @@ $iocaine: #b400d1;
             border-color: $iocaine;
         }
     }
-
-    &:hover {
-        .card-actions {
-            display: flex;
-        }
-    }
 }
 
 .card-actions {
-    align-items: center;
-    background: rgba($color-white, .95);
-    display: none;
-    height: 30px;
-    justify-content: space-between;
-    left: 0;
-    padding: $wrap-padding;
     position: absolute;
-    width: 100%;
+    right: .25rem;
+    top: .25rem;
+    z-index: $first-layer;
 
     button {
-        align-items: center;
+        appearance: none;
+        background: transparent;
+        border-radius: 2px;
+        cursor: pointer;
+        padding: .25rem 0;
+        &.popover-open,
+        &:hover {
+            background: $color-gray400;
+        }
+        svg {
+            fill: $color-link-primary;
+        }
+    }
+
+    .card-option-popup {
+        display: none;
+
+        @include popover(
+            $width: 145px,
+            $top: 40px,
+            $left: '',
+            $bottom: '',
+            $right: 1rem,
+        );
+
+        button {
+            appearance: none;
+            background: none;
+            color: $color-link-primary;
+            display: flex;
+            padding: .25rem;
+            width: 100%;
+            &:hover {
+                background: $color-gray200;
+                color: $color-link-tertiary;
+            }
+            svg {
+                @include svg-size(1rem);
+                fill: $color-link-primary;
+                margin-inline-end: .5rem;
+            }
+        }
     }
 }
 
