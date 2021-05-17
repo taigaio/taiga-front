@@ -826,24 +826,9 @@ CardAssignedToDirective = ($template, $translate, avatarService, projectService)
 
                 $el.html(html)
 
-                $el.find('.card-assigned-to-action').on 'click', (event) =>
+                $el.find('.card-user-avatar').on 'click', (event) =>
                     if !event.ctrlKey && !event.metaKey
                         $scope.vm.onClickAssignedTo({id: $scope.vm.item.get('id')})
-
-                $el.find('.js-card-edit-content').on 'click', (event) =>
-                    event.preventDefault()
-                    if !event.ctrlKey && !event.metaKey
-                        $scope.vm.onClickEdit({id: $scope.vm.item.get('id')})
-
-                $el.find('.js-card-remove').on 'click', (event) =>
-                    event.preventDefault()
-                    if !event.ctrlKey && !event.metaKey
-                        $scope.vm.onClickRemove({id: $scope.vm.item.get('id')})
-
-                $el.find('.js-card-delete').on 'click', (event) =>
-                    event.preventDefault()
-                    if !event.ctrlKey && !event.metaKey
-                        $scope.vm.onClickDelete({id: $scope.vm.item.get('id')})
 
             $scope.$watch 'item', onChange
             # ignore the first watch because is the same as item
@@ -944,6 +929,106 @@ module.directive("tgCardData", [
     "tgProjectService",
     "tgDueDateService",
     CardDataDirective])
+
+
+CardActionsDirective = ($template, $translate, projectService) ->
+    template = $template.get("components/card/card-templates/card-actions.html", true)
+    svgTemplate  = _.template(CardSvgTemplate)
+
+    render = (vm) =>
+        return template({
+            vm: vm,
+            translate: (key, params) =>
+                return $translate.instant(key, params)
+            checkPermission: (permission) =>
+                return projectService.project.get('my_permissions').indexOf(permission) > -1
+            svg: (svgData) =>
+                return svgTemplate(Object.assign({
+                    svgTitle: '',
+                    svgFill: ''
+                }, svgData))
+        })
+
+    return {
+        scope: {
+            zoomLevel: '<',
+            item: '<',
+            vm: '<'
+        },
+        link: ($scope, $el) ->
+            initializeZoom = false
+            openPopup = false
+
+            removePopupOpenState = () ->
+                openPopup = false
+                $el.find(".js-popup-button").removeClass('popover-open')
+
+            onChange = () =>
+                html = render($scope.vm)
+                $el.off()
+
+                $el.html(html)
+                openPopup = false
+                $el.find('.js-popup-button').on 'click', (event) =>
+                    if openPopup
+                        return
+
+                    openPopup = true
+                    $(event.currentTarget).addClass('popover-open')
+
+                    actions = []
+
+                    if projectService.project.get('my_permissions').includes($scope.vm.getModifyPermisionKey())
+                        actions.push(
+                            {
+                                text: $translate.instant('COMMON.CARD.EDIT'),
+                                icon: 'icon-edit'
+                                event: () ->
+                                    $scope.vm.onClickEdit({id: $scope.vm.item.get('id')})
+                            },
+                            {
+                                text: $translate.instant('COMMON.CARD.ASSIGN_TO'),
+                                icon: 'icon-assign-to',
+                                event: () ->
+                                    $scope.vm.onClickAssignedTo({id: $scope.vm.item.get('id')})
+                            },
+                        )
+
+                    if projectService.project.get('my_permissions').includes($scope.vm.getDeletePermisionKey())
+                        actions.push(
+                            {
+                                text: $translate.instant('COMMON.CARD.DELETE'),
+                                icon: 'icon-trash',
+                                event: () ->
+                                    $scope.vm.onClickDelete({id: $scope.vm.item.get('id')})
+                            },
+                        )
+
+                    taiga.globalPopover(
+                        event.currentTarget,actions,
+                        {},
+                        () ->
+                            removePopupOpenState()
+                    )
+
+            $scope.$watch 'item', onChange
+            # ignore the first watch because is the same as item
+            $scope.$watch 'zoomLevel', () =>
+                if initializeZoom
+                    onChange()
+                else
+                    initializeZoom = true
+
+            $scope.$on "$destroy", ->
+                $el.off()
+    }
+
+
+module.directive("tgCardActions", [
+    "$tgTemplate",
+    "$translate",
+    "tgProjectService",
+    CardActionsDirective])
 
 #############################################################################
 ## Kanban Swimlane Directive

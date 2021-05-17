@@ -1,0 +1,5 @@
+<% if(vm.zoomLevel > 0 && (checkPermission(vm.getModifyPermisionKey()) || checkPermission(vm.getDeletePermisionKey()))) { %>
+.card-actions
+    button.js-popup-button
+        <%= svg({svgIcon: "icon-more-vertical" }) %>
+<% } %>
