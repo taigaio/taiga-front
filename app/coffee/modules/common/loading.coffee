@@ -41,6 +41,10 @@ TgLoadingService = ($compile) ->
 
                 return service
 
+            isLoading: ->
+                target = service.settings.target
+                return target.hasClass('loading')
+
             start: ->
                 target = service.settings.target
 
