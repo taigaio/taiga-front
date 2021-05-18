@@ -5,7 +5,7 @@
 //-
 //- Copyright (c) 2021-present Kaleidos Ventures SL
 
-.custom-field-single
+.custom-field-single(class!="<%= type === 'checkbox' ? 'custom-field-checkbox' : '' %>")
     .custom-field-data
         span.custom-field-name
             <%- name %>
@@ -14,30 +14,31 @@
             <%- description %>
         <% } %>
 
-    <% if (type=="url") { %>
-    .custom-field-value.js-value-view-mode
-        span
-            a(href!="<%- value %>")
-                <%- value %>
-    <% } else if (type=="richtext") { %>
-    .custom-field-value
-        span(
-            ng-bind-html="attributeHtml"
-        )
-    <% } else if (type=="checkbox") { %>
-    .custom-field-value.js-value-view-mode
-        <% if (value) { %>
-        span {{ 'COMMON.YES' | translate }}
+    .custom-field-value-container
+        <% if (type=="url") { %>
+        .custom-field-value.js-value-view-mode
+            span
+                a(href!="<%- value %>")
+                    <%- value %>
+        <% } else if (type=="richtext") { %>
+        .custom-field-value
+            span(
+                ng-bind-html="attributeHtml"
+            )
+        <% } else if (type=="checkbox") { %>
+        .custom-field-value.js-value-view-mode
+            <% if (value) { %>
+            span {{ 'COMMON.YES' | translate }}
+            <% } else { %>
+            span {{ 'COMMON.NO' | translate }}
+            <% } %>
         <% } else { %>
-        span {{ 'COMMON.NO' | translate }}
+        .custom-field-value.js-value-view-mode
+            span(ng-bind-html="attributeHtml")
         <% } %>
-    <% } else { %>
-    .custom-field-value.js-value-view-mode
-        span(ng-bind-html="attributeHtml")
-    <% } %>
 
-    <% if (isEditable) { %>
-    .custom-field-options
-        a.js-edit-description(href="", title="{{'COMMON.CUSTOM_ATTRIBUTES.EDIT' | translate}}")
-            tg-svg(svg-icon="icon-edit")
-    <% } %>
+        <% if (isEditable) { %>
+        .custom-field-options
+            a.js-edit-description(href="", title="{{'COMMON.CUSTOM_ATTRIBUTES.EDIT' | translate}}")
+                tg-svg(svg-icon="icon-edit")
+        <% } %>

@@ -30,16 +30,15 @@ CustomFieldEditWysiwyg = (attachmentsFullService) ->
         scope: true,
         link: link,
         template: """
-            <div>
-                <tg-wysiwyg
-                    editonly="!!customAttributeValue.value.length"
-                    project="project"
-                    content='customAttributeValue.value'
-                    on-save="saveCustomRichText(text, cb)"
-                    on-cancel="cancelCustomRichText()"
-                    on-upload-file='uploadFiles'>
-                </tg-wysiwyg>
-            </div>
+            <tg-wysiwyg
+                class="custom-field"
+                editonly="!!customAttributeValue.value.length"
+                project="project"
+                content='customAttributeValue.value'
+                on-save="saveCustomRichText(text, cb)"
+                on-cancel="cancelCustomRichText()"
+                on-upload-file='uploadFiles'>
+            </tg-wysiwyg>
         """
     }
 
