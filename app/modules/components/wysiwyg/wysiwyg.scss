@@ -2,6 +2,10 @@
 tg-wysiwyg {
     display: flex;
     margin-bottom: 1rem;
+    &.custom-field {
+        max-width: 100%;
+        width: 100%;
+    }
     .editor {
         width: 100%;
     }
@@ -280,4 +284,9 @@ tg-html-editor .ck-content {
         color: $color-link-primary;
         font-weight: 600;
     }
+}
+
+tg-custom-field-edit-wysiwyg {
+    display: flex;
+    max-width: 100%;
 }
