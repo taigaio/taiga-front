@@ -1,6 +1,10 @@
 # Changelog
 
-## 6.1.1 (unreleased)
+## 6.2.0 (unreleased)
+
+- ...
+
+## 6.1.1 (2021-05-18)
 
 - Add support to checklists in markdown editor
 
