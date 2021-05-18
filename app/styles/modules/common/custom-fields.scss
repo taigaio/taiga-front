@@ -21,22 +21,6 @@
             transform: rotate(0);
         }
     }
-    .custom-field-single {
-        border-bottom: 1px solid $whitish;
-        display: flex;
-        justify-content: flex-start;
-        padding: .7rem;
-        &:hover {
-            .custom-field-options {
-                opacity: 1;
-            }
-        }
-        &.editable {
-            .custom-field-options {
-                margin-top: .5rem;
-            }
-        }
-    }
     .custom-field-options {
         margin: 0;
         opacity: 0;
@@ -52,8 +36,10 @@
         }
     }
     .custom-field-data {
-        flex: 0;
-        min-width: 200px;
+        display: flex;
+        flex-direction: column;
+        white-space: break-spaces;
+        word-break: break-word;
         .custom-field-name {
             display: block;
         }
@@ -69,6 +55,7 @@
         @include font-type(regular);
         align-items: flex-start;
         flex: 1;
+        max-width: 98%;
         padding: 0 1rem 0 2rem;
         &.rich-text {
             padding-right: 0;
@@ -79,6 +66,9 @@
                 white-space: normal;
             }
         }
+    }
+    .custom-field-value-container {
+        display: flex;
     }
     form {
         label {
@@ -97,13 +87,13 @@
         margin: 0;
         min-height: 140px;
         padding: .3rem 1rem .3rem .95rem;
-        width: calc(100% - 2rem);
+        width: calc(100% - 1rem);
     }
 }
 
 .custom-fields-body {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     &.collapse-fields {
         .custom-attribute {
             flex-basis: 50%;
@@ -134,6 +124,53 @@
         }
     }
     .custom-field-single {
-        height: 100%;
+        border-bottom: 1px solid $whitish;
+        display: grid;
+        grid-template-areas: '. .';
+        grid-template-columns: 20% 80%;
+        grid-template-rows: 1fr;
+        justify-content: flex-start;
+        padding: .7rem;
+        @media screen and (max-width: 1280px) {
+            grid-template-areas: '.' '.';
+            grid-template-columns: 100%;
+            grid-template-rows: min-content 1fr;
+
+            &.custom-field-checkbox {
+                grid-template-areas: '. .';
+                grid-template-columns: 1fr 80%;
+                grid-template-rows: 1fr;
+            }
+
+            .rich-text {
+                margin-top: 1rem;
+                padding-left: 0;
+                position: relative;
+            }
+
+            .custom-field-value {
+                margin-top: 1rem;
+                padding-left: 0;
+            }
+
+            .custom-field-options {
+                padding-top: .5rem;
+            }
+        }
+        &:hover {
+            .custom-field-options {
+                opacity: 1;
+            }
+        }
+        &.editable {
+            .custom-field-options {
+                margin-top: .5rem;
+            }
+        }
+        p {
+            white-space: break-spaces;
+            word-break: break-word;
+        }
     }
+
 }

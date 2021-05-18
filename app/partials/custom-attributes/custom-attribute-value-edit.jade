@@ -5,7 +5,8 @@
 //-
 //- Copyright (c) 2021-present Kaleidos Ventures SL
 
-form.custom-field-single.editable(autocomplete="off")
+
+form.custom-field-single.editable(autocomplete="off" class!="<%= type === 'checkbox' ? 'custom-field-checkbox' : '' %>")
     div.custom-field-data
         label.custom-field-name(for="custom-field-value")
             <%- name %>
@@ -14,47 +15,48 @@ form.custom-field-single.editable(autocomplete="off")
             <%- description %>
         <% } %>
 
-    <% if (type=="richtext") { %>
-    div.custom-field-value.rich-text
-        //- See TYPE_CHOICES in app/coffee/modules/common/custom-field-values.coffee
-        tg-custom-field-edit-wysiwyg()
-    <% } else { %>
-    div.custom-field-value
-        //- See TYPE_CHOICES in app/coffee/modules/common/custom-field-values.coffee
-        <% if (type=="text") { %>
-        input#custom-field-value(name="value", type="text", value!="<%- value %>")
-        <% } else if (type=="multiline") { %>
-        textarea#custom-field-value(name="value") <%- value %>
-        <% } else if (type=="date") { %>
-        input#custom-field-value(name="value", type="text", data-pikaday, value!="<%- value %>")
-        <% } else if (type=="url") { %>
-        input#custom-field-value(name="value", data-type="url", type="url", value!="<%- value %>")
-        <% } else if (type=="dropdown") { %>
-        select#custom-field-value(
-            name="value"
-            ng-model="model"
-        )
-            option
-            option(ng-repeat="option in extra", value="{{ option }}") {{ option }}
-        <% } else if (type=="number") { %>
-        input#custom-field-value(name="value", type="number", value!="<%- value %>")
-        <% } else if (type=="checkbox") { %>
-        div.check
-            input(
-                name="value"
-                type="checkbox",
-                ng-checked="model"
-            )
-            div
-            span.check-text.check-yes(translate="COMMON.YES")
-            span.check-text.check-no(translate="COMMON.NO")
+    .custom-field-value-container
+        <% if (type=="richtext") { %>
+        div.custom-field-value.rich-text
+            //- See TYPE_CHOICES in app/coffee/modules/common/custom-field-values.coffee
+            tg-custom-field-edit-wysiwyg()
         <% } else { %>
-        input#custom-field-value(name="value", type="text", value!="<%- value %>")
+        div.custom-field-value
+            //- See TYPE_CHOICES in app/coffee/modules/common/custom-field-values.coffee
+            <% if (type=="text") { %>
+            input#custom-field-value(name="value", type="text", value!="<%- value %>")
+            <% } else if (type=="multiline") { %>
+            textarea#custom-field-value(name="value") <%- value %>
+            <% } else if (type=="date") { %>
+            input#custom-field-value(name="value", type="text", data-pikaday, value!="<%- value %>")
+            <% } else if (type=="url") { %>
+            input#custom-field-value(name="value", data-type="url", type="url", value!="<%- value %>")
+            <% } else if (type=="dropdown") { %>
+            select#custom-field-value(
+                name="value"
+                ng-model="model"
+            )
+                option
+                option(ng-repeat="option in extra", value="{{ option }}") {{ option }}
+            <% } else if (type=="number") { %>
+            input#custom-field-value(name="value", type="number", value!="<%- value %>")
+            <% } else if (type=="checkbox") { %>
+            div.check
+                input(
+                    name="value"
+                    type="checkbox",
+                    ng-checked="model"
+                )
+                div
+                span.check-text.check-yes(translate="COMMON.YES")
+                span.check-text.check-no(translate="COMMON.NO")
+            <% } else { %>
+            input#custom-field-value(name="value", type="text", value!="<%- value %>")
+            <% } %>
         <% } %>
-    <% } %>
 
-    <% if (type != "richtext") { %>
-    div.custom-field-options
-        a.js-save-description(href="", title="{{'COMMON.CUSTOM_ATTRIBUTES.SAVE' | translate}}")
-            tg-svg(svg-icon="icon-save")
-    <% } %>
+        <% if (type != "richtext") { %>
+        div.custom-field-options
+            a.js-save-description(href="", title="{{'COMMON.CUSTOM_ATTRIBUTES.SAVE' | translate}}")
+                tg-svg(svg-icon="icon-save")
+        <% } %>
