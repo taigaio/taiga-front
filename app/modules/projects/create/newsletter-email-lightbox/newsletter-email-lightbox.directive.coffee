@@ -6,7 +6,7 @@
 # Copyright (c) 2021-present Kaleidos Ventures SL
 ###
 
-NewsletterEmailLightboxDirective = (lightboxService, lightboxKeyboardNavigationService, $storageService, $rs, $currentUserService, $rs2) ->
+NewsletterEmailLightboxDirective = (lightboxService, lightboxKeyboardNavigationService, $storageService, $rs, $currentUserService, $rs2, $confirm) ->
 
     link = (scope, el, attrs, ctrl) ->
         lightboxService.open(el)
@@ -35,9 +35,11 @@ NewsletterEmailLightboxDirective = (lightboxService, lightboxKeyboardNavigationS
                         "full_name": $currentUserService.getUser().get('full_name'),
                         "origin_form": 'Newsletter sign-up create'
                     }
-                )
-                $rs.user.setUserStorage('dont_ask_premise_newsletter', true)
-                scope.closeLightbox()
+                ).then () =>
+                    $rs.user.setUserStorage('dont_ask_premise_newsletter', true)
+                    scope.closeLightbox()
+                .catch () =>
+                    $confirm.notify("light-error", "")
             else
                 $rs.user.setUserStorage('dont_ask_premise_newsletter', scope.dontAsk)
                 scope.closeLightbox()
@@ -53,6 +55,6 @@ NewsletterEmailLightboxDirective = (lightboxService, lightboxKeyboardNavigationS
         link: link
     }
 
-NewsletterEmailLightboxDirective.$inject = ['lightboxService', 'lightboxKeyboardNavigationService', "$tgStorage", "tgResources", "tgCurrentUserService", "tgResources"]
+NewsletterEmailLightboxDirective.$inject = ['lightboxService', 'lightboxKeyboardNavigationService', "$tgStorage", "tgResources", "tgCurrentUserService", "tgResources", "$tgConfirm"]
 
 angular.module("taigaProjects").directive("tgNewsletterEmailLightbox", NewsletterEmailLightboxDirective)

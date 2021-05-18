@@ -8,10 +8,15 @@
 
 Resource = (urlsService, http, config) ->
     service = {}
-    service.subscribeOnPremiseNewsletter = (params) ->
-        url = config.get("newsletterSubscriberUrl") + "/subscribe/"
+    service.subscribeOnPremiseNewsletter = (requestParams) ->
+        params = {
+            url: config.get("newsletterSubscriberUrl") + "/subscribe/",
+            method: "POST",
+            cancelable: true,
+            data: requestParams
+        }
 
-        return http.post(url, params)
+        return http.request(params)
             .then (result) ->
                 return Immutable.fromJS(result.data)
 
