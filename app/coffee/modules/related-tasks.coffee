@@ -162,13 +162,14 @@ RelatedTaskCreateFormDirective = ($repo, $compile, $confirm, $tgmodel, $loading,
 
             $scope.openNewRelatedTask = true
 
-            $el.on "keyup", "input", (event)->
-                if event.keyCode == 13
-                    createTask(newTask).then ->
-                        reset()
-                        $el.find('input').focus()
+            $el.on "submit", "form", (event)->
+                event.preventDefault()
+                createTask(newTask).then ->
+                    reset()
+                    $el.find('input').focus()
 
-                else if event.keyCode == 27
+            $el.on "keyup", "input", (event)->
+                if event.keyCode == 27
                     $scope.$apply () -> close()
 
         $scope.save = () ->
