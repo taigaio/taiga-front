@@ -174,6 +174,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
         @scope.$on("sprint:us:move", @.moveUs)
         @scope.$on "sprint:us:moved", () =>
+            @.resetFirstStoryIndicator()
             @rootscope.$broadcast("filters:update")
 
         @scope.$on("backlog:load-closed-sprints", @.loadClosedSprints)
@@ -328,6 +329,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
             # NOTE: Fix order of USs because the filter orderBy does not work propertly in the partials files
             @scope.userstories = @scope.userstories.concat(_.sortBy(userstories, "backlog_order"))
+            @.resetFirstStoryIndicator()
             @scope.visibleUserStories = _.map @scope.userstories, (it) ->
                 return it.ref
 
@@ -433,6 +435,8 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         @scope.usStatusById = groupBy(project.us_statuses, (x) -> x.id)
         @scope.usStatusList = _.sortBy(project.us_statuses, "id")
 
+        @.resetFirstStoryIndicator()
+
         return project
 
     loadInitialData: ->
@@ -454,16 +458,34 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
     prepareBulkUpdateData: (uses, field="backlog_order") ->
          return _.map(uses, (x) -> {"us_id": x.id, "order": x[field]})
 
-    moveUsToTopOfBacklog: (us) ->
-        self = @
-        $('.first').each(() ->
-            $(this).removeClass('first')
-        )
+    resetFirstStoryIndicator: () ->
+      for us, key in @scope.userstories
+        @scope.userstories[key].is_first_in_backlog = false
+      if @scope.userstories.length > 0
+        @scope.userstories[0].is_first_in_backlog = true
 
         nextUs = @scope.userstories.find (us) => us.ref == @scope.visibleUserStories[0]
 
         @.moveUs("sprint:us:move", [us], 0, null, null, nextUs.id)
 
+      @.moveUsToTopOfBacklog(@scope.userstories[index])
+
+    moveUsToTopOfBacklog: (us) ->
+      self = @
+
+      nextUs = @scope.userstories[0].id
+      @.moveUs("sprint:us:move", [us], 0, null, null, nextUs)
+
+    # --move us api behavior--
+    # If you are moving multiples USs you must use the bulk api
+    # If there is only one US you must use patch (repo.save)
+    #
+    # The new US position is the position of the previous US + 1.
+    # If the previous US has a position value that it is equal to
+    # other USs, you must send all the USs with that position value
+    # only if they are before of the target position with this USs
+    # if it's a patch you must add them to the header, if is a bulk
+    # you must send them with the other USs
     moveUs: (ctx, usList, newUsIndex, newSprintId, previousUs, nextUs) ->
         oldSprintId = usList[0].milestone
         project = usList[0].project
@@ -612,7 +634,8 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
                 @q.all([
                     @.loadProjectStats(),
-                    @.loadSprints()
+                    @.loadSprints(),
+                    @.resetFirstStoryIndicator()
                 ])
             promise.then null, =>
                 askResponse.finish(false)
