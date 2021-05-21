@@ -190,7 +190,7 @@ class EventsService
     ###########################################
     # Subscribe and Unsubscribe
     ###########################################
-    subscribe: (scope, routingKey, callback) ->
+    subscribe: (scope, routingKey, callback, options) ->
         if @.error
             return
 
@@ -205,6 +205,9 @@ class EventsService
             "cmd": "subscribe",
             "routing_key": routingKey
         }
+
+        if options
+            message.options = options
 
         @.subscriptions[routingKey] = subscription
         @.sendMessage(message)

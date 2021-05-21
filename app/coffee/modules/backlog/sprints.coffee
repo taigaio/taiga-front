@@ -165,3 +165,16 @@ ToggleExcludeClosedSprintsVisualization = ($rootscope, $loading, $translate) ->
 
 module.directive("tgBacklogToggleClosedSprintsVisualization", ["$rootScope", "$tgLoading", "$translate",
                                                                ToggleExcludeClosedSprintsVisualization])
+
+SprintDirective = (avatarService) ->
+    return {
+        templateUrl: 'backlog/sprint.html'
+        scope: {
+            sprint: '=',
+            project: '=',
+        }
+    }
+
+SprintDirective.$inject = []
+
+module.directive("tgSprint", SprintDirective)
