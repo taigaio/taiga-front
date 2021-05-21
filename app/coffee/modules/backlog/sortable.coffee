@@ -21,7 +21,7 @@ deleteElement = (el) ->
     $(el).remove()
 
 BacklogSortableDirective = () ->
-    link = ($scope, $el, $attrs, x) ->
+    link = ($scope, $el, $attrs) ->
         if !$scope.ctrl
             console.error('BacklogSortableDirective must have access to to BacklogCtrl')
 
@@ -32,6 +32,9 @@ BacklogSortableDirective = () ->
 
             initIsBacklog = false
             emptyBacklog = $('.js-empty-backlog')
+            previousUs = null
+            nextUs = null
+            oldIndex = null
 
             drake = dragula([$el[0], emptyBacklog[0], emptyBacklog[1]], {
                 copySortSource: false,
@@ -43,6 +46,21 @@ BacklogSortableDirective = () ->
 
                     return true
             })
+
+            drake.on 'drop', (item, target, source, sibling) ->
+                previousUs = null
+                nextUs = null
+
+                prev = $(item).prevAll('.row:not(.gu-transit)')
+                next = $(item).nextAll('.row:not(.gu-transit)')
+
+                previousUs = null
+                if prev.length && prev[0].dataset.id
+                    previousUs = Number(prev[0].dataset.id)
+
+                nextUs = null
+                if !previousUs && next.length && next[0].dataset.id
+                    nextUs = Number(next[0].dataset.id)
 
             drake.on 'drag', (item, container) ->
                 if $scope.ctrl.displayVelocity
@@ -57,6 +75,18 @@ BacklogSortableDirective = () ->
                 isChecked = $(item).find("input[type='checkbox']").is(":checked")
 
                 window.dragMultiple.start(item, container)
+
+                dragMultipleItems = window.dragMultiple.getElements()
+
+                firstElement = if dragMultipleItems.length then dragMultipleItems[0] else item
+
+                parentEl = item.parentNode
+                oldIndex = $(parentEl).find('tg-card').index(firstElement)
+
+                if initIsBacklog
+                    oldIndex = $(firstElement).index(".backlog-table-body .row")
+                else
+                    oldIndex = $(firstElement).index()
 
             drake.on 'cloned', (item) ->
                 $(item).addClass('multiple-drag-mirror')
@@ -87,6 +117,9 @@ BacklogSortableDirective = () ->
                     index = $(firstElement).index()
                     sprint = parent.scope()?.sprint.id
 
+                if index == oldIndex && sameContainer
+                    return
+
                 if !sameContainer
                     if dragMultipleItems.length
                         usList = _.map dragMultipleItems, (item) ->
@@ -106,7 +139,8 @@ BacklogSortableDirective = () ->
                     else if $(item).scope()
                         usList = [$(item).scope().us]
 
-                $scope.$emit("sprint:us:move", usList, index, sprint)
+                $scope.$applyAsync () =>
+                    $scope.ctrl.moveUs("sprint:us:move", usList, index, sprint, previousUs, nextUs)
 
             scroll = autoScroll([window], {
                 margin: 20,

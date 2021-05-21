@@ -38,11 +38,13 @@ section.sprints
             span  {{'BACKLOG.SPRINTS.TITLE_ACTION_NEW_SPRINT' | translate}}
             tg-svg(svg-icon="icon-add")
 
-
     div.sprint.sprint-open(ng-repeat="sprint in ctrl.openSprints() track by sprint.id",
                            tg-backlog-sprint="sprint",
                            tg-sprint-sortable)
-        include sprint
+        tg-sprint(
+            project="project"
+            sprint="sprint"
+        )
 
     a.filter-closed-sprints(href="", tg-backlog-toggle-closed-sprints-visualization,
                             ng-if="totalClosedMilestones")
@@ -52,4 +54,7 @@ section.sprints
     div.sprint.sprint-closed(ng-repeat="sprint in closedSprints track by sprint.id",
                              tg-backlog-sprint="sprint",
                              tg-sprint-sortable)
-        include sprint
+        tg-sprint(
+            project="project"
+            sprint="sprint"
+        )

@@ -386,7 +386,7 @@ CreateBulkUserstoriesDirective = ($repo, $rs, $rootscope, lightboxService, $load
                 if response._error_message
                     $confirm.notify("error", response._error_message)
 
-        submitButton = $el.find(".submit-button")
+        submitButton = $el.find(".js-submit-button")
 
         $el.on "submit", "form", submit
 

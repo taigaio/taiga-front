@@ -84,9 +84,19 @@ resourceProvider = ($repo, $http, $urls, $storage, $q) ->
         url = $urls.resolve("userstory-unwatch", userStoryId)
         return $http.post(url)
 
-    service.bulkUpdateBacklogOrder = (projectId, data) ->
+    service.bulkUpdateBacklogOrder = (projectId, milestoneId, afterUserstoryId, beforeUserstoryId, bulkUserstories) ->
         url = $urls.resolve("bulk-update-us-backlog-order")
-        params = {project_id: projectId, bulk_stories: data}
+        params = {project_id: projectId, bulk_userstories: bulkUserstories}
+
+        if milestoneId
+            params.milestone_id = milestoneId
+
+        if afterUserstoryId
+            params.after_userstory_id = afterUserstoryId
+
+        else if  beforeUserstoryId
+            params.before_userstory_id = beforeUserstoryId
+
         return $http.post(url, params)
 
     service.bulkUpdateMilestone = (projectId, milestoneId, data) ->
