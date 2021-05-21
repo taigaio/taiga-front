@@ -2,6 +2,7 @@
 
 ## 6.2.0 (unreleased)
 
+- fix: usestorory navigation within swimlanes
 - fix: issues table order issues by ID instead of alphabetically
 - Update promote to user story icon
 - Move card options, assign, edit a delete card to a menu.

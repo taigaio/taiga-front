@@ -9,7 +9,7 @@ h2.card-title
     a(
         href=""
         tg-nav="{{vm.getNavKey()}}:project=vm.project.slug,ref=vm.item.getIn(['model', 'ref'])",
-        tg-nav-get-params="{\"kanban-status\": {{vm.item.getIn(['model', 'status'])}}}"
+        tg-nav-get-params="{{ vm.getLinkParams() }}"
         ng-attr-title="{{ vm.zoomLevel == 0 ? '#' + vm.item.getIn(['model', 'ref']) + ' ' + vm.item.getIn(['model', 'subject']) : '' }}"
     )
         span.card-ref(ng-if="vm.visible('ref')") {{::"#" + vm.item.getIn(['model', 'ref'])}}

@@ -263,6 +263,16 @@ normalizeString = (string) ->
     normalizedString = normalizedString.replace("Ú", "U").replace("Ü", "U").replace("Ù", "U")
     return normalizedString
 
+findScope = ($scope, condition) ->
+    result = condition($scope)
+    if result
+        return result
+
+    if $scope
+        return findScope($scope.$parent, condition)
+
+    return null
+
 taiga = @.taiga
 taiga.addClass = addClass
 taiga.nl2br = nl2br
@@ -296,3 +306,4 @@ taiga.getDefaulColorList = getDefaulColorList
 taiga.getMatches = getMatches
 taiga.randomInt = randomInt
 taiga.normalizeString = normalizeString
+taiga.findScope = findScope

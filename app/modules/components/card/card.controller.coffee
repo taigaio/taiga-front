@@ -7,7 +7,30 @@
 ###
 
 class CardController
-    @.$inject = []
+    @.$inject = [
+        "$scope",
+    ]
+
+    constructor: (@scope) ->
+        @.getLinkParams()
+
+    getLinkParams: () ->
+        lastLoadUserstoriesParams = taiga.findScope @scope, (scope) ->
+            if scope && scope.ctrl
+                return scope.ctrl.lastLoadUserstoriesParams
+
+            return false
+
+        lastLoadUserstoriesParams['status'] = @scope.vm.item.getIn(['model', 'status'])
+        lastLoadUserstoriesParams['swimlane'] = @scope.vm.item.getIn(['model', 'swimlane'])
+
+        lastLoadUserstoriesParams = _.pickBy(lastLoadUserstoriesParams, _.identity);
+
+        ParsedLastLoadUserstoriesParams = {}
+        Object.keys(lastLoadUserstoriesParams).forEach (key) ->
+            ParsedLastLoadUserstoriesParams['kanban-' + key] = lastLoadUserstoriesParams[key]
+
+        return ParsedLastLoadUserstoriesParams
 
     visible: (name) ->
         return @.zoom.indexOf(name) != -1
