@@ -402,6 +402,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         params.q = @.filterQ
         @.lastSearch = @.filterQ
         lastSearch = @.filterQ
+        @.lastLoadUserstoriesParams = params
 
         promise = @q.all([
             @rs.userstories.listAll(@scope.projectId, params),
