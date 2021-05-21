@@ -56,32 +56,4 @@
         <% } %>
     <% } %>
     <% } %>
-
-    <% if(vm.zoomLevel > 0 && (checkPermission(vm.getModifyPermisionKey()) || checkPermission(vm.getDeletePermisionKey()))) { %>
-    .card-actions
-        <% if(checkPermission(vm.getModifyPermisionKey())) { %>
-        button.btn-link.card-assigned-to-action(variant="icon")
-            <%= svg({svgIcon: "icon-assign-to"}) %>
-            span <%= translate('COMMON.CARD.ASSIGN_TO') %>
-        <% } %>
-
-        .card-detail-actions
-            <% if(checkPermission(vm.getModifyPermisionKey())) { %>
-            button.btn-form.e2e-edit.js-card-edit-content
-                <% if(vm.item.get('loading-edit')) { %>
-                <%= loading %>
-                <% } else { %>
-                <%= svg({svgIcon: "icon-edit", svgTitle: translate('COMMON.CARD.EDIT') }) %>
-                <% } %>
-            <% } %>
-
-            <% if(checkPermission(vm.getDeletePermisionKey())) { %>
-            button.btn-form.card-delete.e2e-edit.js-card-delete
-                <% if(vm.item.get('loading-delete')) { %>
-                <%= loading %>
-                <% } else { %>
-                <%= svg({svgIcon: "icon-trash", svgTitle: translate('COMMON.CARD.DELETE') }) %>
-                <% } %>
-            <% } %>
-    <% } %>
 <% } %>

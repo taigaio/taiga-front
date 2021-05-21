@@ -12,6 +12,13 @@
     ng-class="{'card-blocked': vm.item.getIn(['model', 'is_blocked']), 'archived': vm.archived, 'with-assigned-user': vm.item.get('assigned_users').size, 'with-fold-action': vm.visible('unfold') && (vm.hasTasks() || vm.hasVisibleAttachments())}"
 )
     include card-templates/card-tags
+
+    tg-card-actions(
+        item="vm.item"
+        zoom-level="vm.zoomLevel"
+        vm="vm"
+    )
+
     div(ng-if="vm.zoomLevel > 0")
         include card-templates/card-epics
     include card-templates/card-title
