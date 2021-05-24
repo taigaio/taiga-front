@@ -147,29 +147,35 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         return project
 
     loadUs: ->
-        httpParams = _.pick(@location.search(), "milestone", "no-milestone", "kanban-status")
-        milestone = httpParams.milestone
+        kanbanHttpParams = {}
+        locationSearch = @location.search()
+
+        Object.keys(locationSearch).forEach (key) ->
+            if key.startsWith('kanban-')
+                kanbanHttpParams[key.replace('kanban-', '')] = locationSearch[key]
+
+        backlogHttpParams = _.pick(locationSearch, "milestone", "no-milestone")
+
+        milestone = backlogHttpParams.milestone
         if milestone
             @rs.userstories.storeQueryParams(@scope.projectId, {
                 milestone: milestone
                 order_by: "sprint_order"
             })
 
-        noMilestone = httpParams["no-milestone"]
+        noMilestone = backlogHttpParams["no-milestone"]
         if noMilestone
             @rs.userstories.storeQueryParams(@scope.projectId, {
                 milestone: "null"
                 order_by: "backlog_order"
             })
 
-        kanbanStaus = httpParams["kanban-status"]
+        kanbanStaus = kanbanHttpParams["status"]
         if kanbanStaus
-            @rs.userstories.storeQueryParams(@scope.projectId, {
-                status: kanbanStaus
-                order_by: "kanban_order"
-            })
-
-
+            @rs.userstories.storeQueryParams(@scope.projectId, _.merge(
+                kanbanHttpParams,
+                {order_by: "kanban_order"}
+            ))
 
         return @rs.userstories.getByRef(@scope.projectId, @params.usref).then (us) =>
             @rootscope.$broadcast("userstory:loaded", us)
