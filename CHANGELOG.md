@@ -2,10 +2,11 @@
 
 ## 6.2.0 (unreleased)
 
-- fix: usestorory navigation within swimlanes
+- fix: Userstory navigation within swimlanes
 - fix: issues table order issues by ID instead of alphabetically
 - Update promote to user story icon
 - Move card options, assign, edit a delete card to a menu.
+- Fix: Remove redundant copys on project default values settings.
 
 ## 6.1.1 (2021-05-18)
 
