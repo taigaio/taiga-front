@@ -21,15 +21,22 @@
 
     div.navbar-dropdown.dropdown-user
         .dropdown-user-profile
-            img(
-                tg-avatar="vm.user"
-                alt="{{ ::vm.user.get('full_name_display') }}"
+            a.profile-link.avatar(
+                tg-nav="profile",
+                href="#"
             )
+                img(
+                    tg-avatar="vm.user"
+                    alt="{{ ::vm.user.get('full_name_display') }}"
+                )
             .dropdown-user-data
-                p.full-name {{ ::vm.user.get('full_name_display') }}
-                p.email {{ ::vm.user.get('email') }}
+                a.profile-link.full-name(
+                    tg-nav="profile",
+                    href="#"
+                ) {{ ::vm.user.get('full_name_display') }}
+                .profile-link.email {{ ::vm.user.get('email') }}
                 p
-                    a(
+                    a.edit-profile(
                         href="#",
                         tg-nav="user-settings-user-profile",
                         title="{{'PROJECT.NAVIGATION.EDIT_PROFILE' | translate}}",
