@@ -21,7 +21,7 @@
                 a(href!="<%- value %>")
                     <%- value %>
         <% } else if (type=="richtext") { %>
-        .custom-field-value
+        .custom-field-value.wysiwyg
             span(
                 ng-bind-html="attributeHtml"
             )

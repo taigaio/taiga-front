@@ -2,6 +2,7 @@
 
 ## 6.2.0 (unreleased)
 
+- fix: richtext styles in custom fields
 - fix: Userstory navigation within swimlanes
 - fix: issues table order issues by ID instead of alphabetically
 - Update promote to user story icon
