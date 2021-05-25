@@ -235,5 +235,9 @@
         }
     };
 
+    dragMultiple.getElements = function() {
+        return $('.' + multipleSortableClass);
+    };
+
     window.dragMultiple = dragMultiple;
 }());
