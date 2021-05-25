@@ -25,6 +25,7 @@ module = angular.module("taigaKanban")
 KanbanSortableDirective = ($repo, $rs, $rootscope, kanbanUserstoriesService) ->
     link = ($scope, $el, $attrs) ->
         drake = null
+        oldIndex = null
 
         $scope.openSwimlane = (id) =>
             containers = _.map $('.kanban-swimlane[data-swimlane="' + id + '"] .taskboard-column'), (item) ->
@@ -69,6 +70,16 @@ KanbanSortableDirective = ($repo, $rs, $rootscope, kanbanUserstoriesService) ->
                     $(container).removeClass('target-drop')
 
             drake.on 'drag', (item) ->
+                dragMultipleItems = window.dragMultiple.getElements()
+
+                # if it is not drag multiple
+                if !dragMultipleItems.length
+                    dragMultipleItems = [item]
+
+                firstElement = dragMultipleItems[0]
+
+                parentEl = item.parentNode
+                oldIndex = $(parentEl).find('tg-card').index(firstElement)
                 initialContainer = null
                 window.dragMultiple.start(item, containers)
 
@@ -106,6 +117,9 @@ KanbanSortableDirective = ($repo, $rs, $rootscope, kanbanUserstoriesService) ->
                 index = $(parentEl).find('tg-card').index(firstElement)
                 newStatus = Number(parentEl.dataset.status)
                 newSwimlane = Number(parentEl.dataset.swimlane)
+
+                if index == oldIndex
+                    return
 
                 if initialContainer != parentEl
                     $(parentEl).addClass('new')
