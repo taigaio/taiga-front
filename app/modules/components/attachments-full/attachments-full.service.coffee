@@ -117,8 +117,6 @@ class AttachmentsFullService extends taiga.Service
 
         patch = taiga.patch(oldAttachment.get('file'), toUpdateAttachment.get('file'))
 
-        console.log({patch})
-
         if toUpdateAttachment.get('loading')
             @.setAttachments(index, toUpdateAttachment)
         else
