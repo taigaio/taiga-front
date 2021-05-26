@@ -12,7 +12,6 @@ class CardController
     ]
 
     constructor: (@scope) ->
-        @.getLinkParams()
 
     getLinkParams: () ->
         lastLoadUserstoriesParams = taiga.findScope @scope, (scope) ->
@@ -21,16 +20,19 @@ class CardController
 
             return false
 
-        lastLoadUserstoriesParams['status'] = @scope.vm.item.getIn(['model', 'status'])
-        lastLoadUserstoriesParams['swimlane'] = @scope.vm.item.getIn(['model', 'swimlane'])
+        if lastLoadUserstoriesParams
+            lastLoadUserstoriesParams['status'] = @scope.vm.item.getIn(['model', 'status'])
+            lastLoadUserstoriesParams['swimlane'] = @scope.vm.item.getIn(['model', 'swimlane'])
 
-        lastLoadUserstoriesParams = _.pickBy(lastLoadUserstoriesParams, _.identity);
+            lastLoadUserstoriesParams = _.pickBy(lastLoadUserstoriesParams, _.identity);
 
-        ParsedLastLoadUserstoriesParams = {}
-        Object.keys(lastLoadUserstoriesParams).forEach (key) ->
-            ParsedLastLoadUserstoriesParams['kanban-' + key] = lastLoadUserstoriesParams[key]
+            ParsedLastLoadUserstoriesParams = {}
+            Object.keys(lastLoadUserstoriesParams).forEach (key) ->
+                ParsedLastLoadUserstoriesParams['kanban-' + key] = lastLoadUserstoriesParams[key]
 
-        return ParsedLastLoadUserstoriesParams
+            return ParsedLastLoadUserstoriesParams
+        else
+            return {}
 
     visible: (name) ->
         return @.zoom.indexOf(name) != -1
