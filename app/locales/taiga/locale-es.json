@@ -488,7 +488,7 @@
             "TITLE_ACTION_DELETE_VALUE": "Eliminar valor",
             "TITLE_ACTION_DELETE_TAG": "Borrar etiqueta"
         },
-        "HELP": "¿Necesitas ayuda? ¡Revisa nuestra pagina de soporte! ",
+        "HELP": "¿Necesitas ayuda? ¡Revisa nuestra página de soporte!",
         "PROJECT_DEFAULT_VALUES": {
             "TITLE": "Valores por defecto",
             "SUBTITLE": "Define los valores por defecto para todos los selectores."
