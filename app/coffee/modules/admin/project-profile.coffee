@@ -24,6 +24,17 @@ module = angular.module("taigaAdmin")
 ## Project Profile Controller
 #############################################################################
 
+BACKLOG_ORDER_OPTIONS = [
+    {
+      key: 1,
+      name: "ADMIN.DEFAULT_POSITIONS.TOP_OF_BACKLOG"
+    },
+    {
+      key: 0,
+      name: "ADMIN.DEFAULT_POSITIONS.BOTTOM_OF_BACKLOG"
+    }
+]
+
 class ProjectProfileController extends mixOf(taiga.Controller, taiga.PageMixin)
     @.$inject = [
         "$scope",
@@ -46,6 +57,7 @@ class ProjectProfileController extends mixOf(taiga.Controller, taiga.PageMixin)
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location, @navUrls,
                   @appMetaService, @translate, @tgAuth, @currentUserService, @errorHandlingService, @projectService, @model) ->
+        @scope.BACKLOG_ORDER_OPTIONS = BACKLOG_ORDER_OPTIONS
         @scope.project = {}
 
         @scope.projectTags = []
@@ -118,6 +130,9 @@ class ProjectProfileController extends mixOf(taiga.Controller, taiga.PageMixin)
         _.remove @scope.projectTags, (it) => it[0] == tag[0]
 
         @scope.project.tags = tags
+
+   notifyBacklogOptionsUpdated: ->
+        @rootscope.$broadcast('"admin:project-default-positions:updated"')
 
 module.controller("ProjectProfileController", ProjectProfileController)
 
@@ -192,11 +207,14 @@ module.directive("tgProjectProfile", ["$tgRepo", "$tgConfirm", "$tgLoading", "$t
 
 ProjectDefaultValuesDirective = ($rootScope, $repo, $confirm, $loading) ->
     link = ($scope, $el, $attrs) ->
-        form = $el.find("form").checksley({"onlyOneErrorElement": true})
+        defaultValuesForm = $el.find("form.default-values").checksley({"onlyOneErrorElement": true})
+        defaultPositionsForm = $el.find("form.default-positions").checksley({"onlyOneErrorElement": true})
+
         submit = debounce 2000, (event) =>
             event.preventDefault()
 
-            return if not form.validate()
+            return if not defaultValuesForm.validate()
+            return if not defaultPositionsForm.validate()
 
             currentLoading = $loading()
                 .target(submitButton)
@@ -210,7 +228,8 @@ ProjectDefaultValuesDirective = ($rootScope, $repo, $confirm, $loading) ->
 
             promise.then null, (data) ->
                 currentLoading.finish()
-                form.setErrors(data)
+                defaultValuesForm.setErrors(data)
+                defaultPositionsForm.setErrors(data)
                 if data._error_message
                     $confirm.notify("error", data._error_message)
 
