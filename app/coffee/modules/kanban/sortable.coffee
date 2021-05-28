@@ -118,7 +118,7 @@ KanbanSortableDirective = ($repo, $rs, $rootscope, kanbanUserstoriesService) ->
                 newStatus = Number(parentEl.dataset.status)
                 newSwimlane = Number(parentEl.dataset.swimlane)
 
-                if index == oldIndex
+                if index == oldIndex && initialContainer == parentEl
                     return
 
                 if initialContainer != parentEl
