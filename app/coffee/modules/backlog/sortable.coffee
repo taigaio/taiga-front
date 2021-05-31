@@ -21,7 +21,10 @@ deleteElement = (el) ->
     $(el).remove()
 
 BacklogSortableDirective = () ->
-    link = ($scope, $el, $attrs) ->
+    link = ($scope, $el, $attrs, x) ->
+        if !$scope.ctrl
+            console.error('BacklogSortableDirective must have access to to BacklogCtrl')
+
         bindOnce $scope, "project", (project) ->
             # If the user has not enough permissions we don't enable the sortable
             if not (project.my_permissions.indexOf("modify_us") > -1)
@@ -42,6 +45,9 @@ BacklogSortableDirective = () ->
             })
 
             drake.on 'drag', (item, container) ->
+                if $scope.ctrl.displayVelocity
+                    $scope.ctrl.toggleVelocityForecasting()
+
                 # it doesn't move is the filter is open
                 parent = $(item).parent()
                 initIsBacklog = parent.hasClass('backlog-table-body')
