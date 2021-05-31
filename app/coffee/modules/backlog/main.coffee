@@ -149,6 +149,9 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             @.loadProjectStats()
 
         @scope.$on "sprintform:remove:success", (event, sprint) =>
+            if @.displayVelocity
+                @toggleVelocityForecasting()
+
             @.loadSprints()
             @.loadProjectStats()
             @.loadUserstories(true)
@@ -201,6 +204,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             @scope.visibleUserStories = _.map @scope.userstories, (it) ->
                 return it.ref
         else
+            @.calculateForecasting()
             @scope.visibleUserStories = _.map @.forecastedStories, (it) ->
                 return it.ref
         scopeDefer @scope, =>
@@ -358,12 +362,31 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             @.loadUserstories()
         ]).then(@.calculateForecasting)
 
+    sprintTotalPoints: (sprint) ->
+        points = 0
+
+        for us in sprint.user_stories
+            if us.milestone == sprint.id
+                points += us.total_points
+
+        return points
+
     calculateForecasting: ->
         stats = @scope.stats
         total_points = stats.total_points
         current_sum = stats.assigned_points
         backlog_points_sum = 0
         @forecastedStories = []
+        @scope.forecastNewSprint = true
+
+        if @scope.sprints && @scope.sprints.length
+            backlog_points_sum = @.sprintTotalPoints(@scope.sprints[0])
+
+            # set 0 bacause we're going to create a new sprint
+            if stats.speed > 0 && backlog_points_sum > stats.speed
+                backlog_points_sum = 0
+            else
+                @scope.forecastNewSprint = false
 
         for us in @scope.userstories
             current_sum += us.total_points
@@ -736,7 +759,9 @@ BacklogDirective = ($repo, $rootscope, $translate, $rs) ->
             $el.find(".move-to-sprint").hide()
 
         moveToCurrentSprint = (selectedUss) ->
-            moveUssToSprint(selectedUss, $scope.currentSprint)
+            sprint = if $scope.currentSprint then $scope.currentSprint else $scope.sprints[0]
+
+            moveUssToSprint(selectedUss, sprint)
 
         moveToLatestSprint = (selectedUss) ->
             moveUssToSprint(selectedUss, $scope.sprints[0])
@@ -807,9 +832,10 @@ BacklogDirective = ($repo, $rootscope, $translate, $rs) ->
 
         $el.on "click", ".forecasting-add-sprint", (event) ->
             ussToMoveList = $ctrl.forecastedStories
-            if $scope.currentSprint
+
+            if !$scope.forecastNewSprint
                 ussToMove = _.map ussToMoveList, (us, index) ->
-                    us.milestone = $scope.currentSprint.id
+                    us.milestone = $scope.sprints[0].id
                     us.order = index
                     return us
 

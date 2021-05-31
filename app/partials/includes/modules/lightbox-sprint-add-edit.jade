@@ -7,7 +7,7 @@
 
 tg-lightbox-close
 
-form
+form(ng-if="createEditOpen")
     h2.title(translate="LIGHTBOX.ADD_EDIT_SPRINT.TITLE")
     fieldset
         input.sprint-name.e2e-sprint-name(

@@ -16,13 +16,14 @@ module = angular.module("taigaBacklog")
 ## Creare/Edit Sprint Lightbox Directive
 #############################################################################
 
-CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading, $translate, projectService) ->
+CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading, $translate, projectService, $timeout) ->
     link = ($scope, $el, attrs) ->
         hasErrors = false
         createSprint = true
         form = null
         $scope.newSprint = {}
         ussToAdd = null
+        $scope.createEditOpen = false
 
         resetSprint = () ->
             form.reset() if form
@@ -88,6 +89,7 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading,
                     $rootscope.$broadcast(broadcastEvent, data)
 
                 lightboxService.close($el)
+                $scope.createEditOpen = false
 
             promise.then null, (data) ->
                 currentLoading.finish()
@@ -107,6 +109,7 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading,
                     askResponse.finish()
                     $scope.milestonesCounter -= 1
                     lightboxService.close($el)
+                    $scope.createEditOpen = false
                     $rootscope.$broadcast("sprintform:remove:success", $scope.newSprint)
 
                 onError = ->
@@ -123,80 +126,93 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading,
 
             return sortedSprints[sortedSprints.length - 1]
 
+        # wait to ensure that scope.createEditOpen has been updated in the html
+        openFn = (cb) ->
+            $scope.$applyAsync () ->
+                $timeout () ->
+                    cb()
+                , 0
+
          $scope.$on "sprintform:create", (event, projectId, uss) ->
-            ussToAdd = uss
-            resetSprint()
+            $scope.createEditOpen = true
 
-            form = $el.find("form").checksley()
-            form.reset()
+            openFn () ->
+                ussToAdd = uss
+                resetSprint()
 
-            createSprint = true
-            prettyDate = $translate.instant("COMMON.PICKERDATE.FORMAT")
-            $scope.newSprint.project = projectId
-            $scope.newSprint.name = null
-            $scope.newSprint.slug = null
+                form = $el.find("form").checksley()
+                form.reset()
 
-            lastSprint = getLastSprint()
+                createSprint = true
+                prettyDate = $translate.instant("COMMON.PICKERDATE.FORMAT")
+                $scope.newSprint.project = projectId
+                $scope.newSprint.name = null
+                $scope.newSprint.slug = null
 
-            estimatedStart = moment()
+                lastSprint = getLastSprint()
 
-            if lastSprint
-                estimatedStart = moment(lastSprint.estimated_finish)
-            else if $scope.newSprint.estimated_start
-                estimatedStart = moment($scope.newSprint.estimated_start)
+                estimatedStart = moment()
 
-            $scope.newSprint.estimated_start = estimatedStart.format(prettyDate)
+                if lastSprint
+                    estimatedStart = moment(lastSprint.estimated_finish)
+                else if $scope.newSprint.estimated_start
+                    estimatedStart = moment($scope.newSprint.estimated_start)
 
-            estimatedFinish = moment().add(2, "weeks")
+                $scope.newSprint.estimated_start = estimatedStart.format(prettyDate)
 
-            if lastSprint
-                estimatedFinish = moment(lastSprint.estimated_finish).add(2, "weeks")
-            else if $scope.newSprint.estimated_finish
-                estimatedFinish = moment($scope.newSprint.estimated_finish)
+                estimatedFinish = moment().add(2, "weeks")
 
-            $scope.newSprint.estimated_finish = estimatedFinish.format(prettyDate)
+                if lastSprint
+                    estimatedFinish = moment(lastSprint.estimated_finish).add(2, "weeks")
+                else if $scope.newSprint.estimated_finish
+                    estimatedFinish = moment($scope.newSprint.estimated_finish)
 
-            lastSprintNameDom = $el.find(".last-sprint-name")
-            if lastSprint?.name?
-                text = $translate.instant("LIGHTBOX.ADD_EDIT_SPRINT.LAST_SPRINT_NAME", {
-                            lastSprint: lastSprint.name})
-                lastSprintNameDom.html(text)
+                $scope.newSprint.estimated_finish = estimatedFinish.format(prettyDate)
 
-            $el.find(".delete-sprint").addClass("hidden")
+                lastSprintNameDom = $el.find(".last-sprint-name")
+                if lastSprint?.name?
+                    text = $translate.instant("LIGHTBOX.ADD_EDIT_SPRINT.LAST_SPRINT_NAME", {
+                                lastSprint: lastSprint.name})
+                    lastSprintNameDom.html(text)
 
-            text = $translate.instant("LIGHTBOX.ADD_EDIT_SPRINT.TITLE")
-            $el.find(".title").text(text)
+                $el.find(".delete-sprint").addClass("hidden")
 
-            text = $translate.instant("COMMON.CREATE")
-            $el.find(".button-green").text(text)
+                text = $translate.instant("LIGHTBOX.ADD_EDIT_SPRINT.TITLE")
+                $el.find(".title").text(text)
 
-            lightboxService.open($el)
-            $el.find(".sprint-name").focus()
-            $el.find(".last-sprint-name").removeClass("disappear")
+                text = $translate.instant("COMMON.CREATE")
+                $el.find(".button-green").text(text)
+
+                lightboxService.open($el)
+                $el.find(".sprint-name").focus()
+                $el.find(".last-sprint-name").removeClass("disappear")
 
         $scope.$on "sprintform:edit", (ctx, sprint) ->
-            resetSprint()
+            $scope.createEditOpen = true
 
-            createSprint = false
-            prettyDate = $translate.instant("COMMON.PICKERDATE.FORMAT")
+            openFn () ->
+                resetSprint()
 
-            $scope.$apply () ->
-                $scope.newSprint = sprint.realClone()
-                $scope.newSprint.estimated_start = moment($scope.newSprint.estimated_start).format(prettyDate)
-                $scope.newSprint.estimated_finish = moment($scope.newSprint.estimated_finish).format(prettyDate)
+                createSprint = false
+                prettyDate = $translate.instant("COMMON.PICKERDATE.FORMAT")
 
-            if projectService.project.get('my_permissions').indexOf('delete_milestone') > -1
-                $el.find(".delete-sprint").removeClass("hidden")
+                $scope.$apply () ->
+                    $scope.newSprint = sprint.realClone()
+                    $scope.newSprint.estimated_start = moment($scope.newSprint.estimated_start).format(prettyDate)
+                    $scope.newSprint.estimated_finish = moment($scope.newSprint.estimated_finish).format(prettyDate)
 
-            editSprint = $translate.instant("BACKLOG.EDIT_SPRINT")
-            $el.find(".title").text(editSprint)
+                if projectService.project.get('my_permissions').indexOf('delete_milestone') > -1
+                    $el.find(".delete-sprint").removeClass("hidden")
 
-            save = $translate.instant("COMMON.SAVE")
-            $el.find(".button-green").text(save)
+                editSprint = $translate.instant("BACKLOG.EDIT_SPRINT")
+                $el.find(".title").text(editSprint)
 
-            lightboxService.open($el)
-            $el.find(".sprint-name").focus().select()
-            $el.find(".last-sprint-name").addClass("disappear")
+                save = $translate.instant("COMMON.SAVE")
+                $el.find(".button-green").text(save)
+
+                lightboxService.open($el)
+                $el.find(".sprint-name").focus().select()
+                $el.find(".last-sprint-name").addClass("disappear")
 
         $el.on "keyup", ".sprint-name", (event) ->
             if $el.find(".sprint-name").val().length > 0 or hasErrors
@@ -226,6 +242,7 @@ module.directive("tgLbCreateEditSprint", [
     "lightboxService"
     "$tgLoading",
     "$translate",
-    "tgProjectService"
+    "tgProjectService",
+    "$timeout",
     CreateEditSprint
 ])
