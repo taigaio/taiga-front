@@ -164,7 +164,10 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
 
         @.fillUsersAndRoles(project.members, project.roles)
 
-        return @.loadIssue().then(=> @.loadSprint())
+        return @.loadIssue().then( =>
+            if @scope.project.public_permissions.indexOf("view_milestones") != -1
+                @.loadSprint()
+        )
 
     ###
     # Note: This methods (onUpvote() and onDownvote()) are related to tg-vote-button.
