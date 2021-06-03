@@ -12,4 +12,11 @@
     .title {{ 'ADMIN.PROJECT_PROFILE.PROJECT_OWNER' | translate }}
     .owner-name {{::owner.full_name_display}}
 
-a.request(href="", ng-click="requestOwnership()") {{ 'ADMIN.PROJECT_PROFILE.REQUEST_OWNERSHIP' | translate }}
+.request
+    a(href="", ng-click="requestOwnership()") {{ 'ADMIN.PROJECT_PROFILE.REQUEST_OWNERSHIP' | translate }}
+
+    p.limit-message(
+        ng-if="!canRequest"
+        translate="ADMIN.PROJECT_PROFILE.REQUEST_OWNERSHIP_LIMIT"
+        translate-values="{ 'maxProjects': owner.max_private_projects}"
+    ) {{ 'ADMIN.PROJECT_PROFILE.REQUEST_OWNERSHIP_LIMIT ' | translate }}

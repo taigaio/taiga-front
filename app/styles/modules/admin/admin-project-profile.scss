@@ -201,5 +201,17 @@ tg-admin-project-restrictions {
     }
     .request {
         flex-shrink: 0;
+        text-align: right;
+
+        .limit-message {
+            @include font-size(small);
+            color: $color-black600;
+            font-style: italic;
+            margin-bottom: 0;
+        }
+    }
+    &.limit .request a {
+        cursor: default;
+        opacity: .5;
     }
 }

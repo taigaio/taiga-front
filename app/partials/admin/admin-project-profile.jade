@@ -92,6 +92,8 @@ div.wrapper(
 
                 fieldset(ng-if="project.owner.id != user.id")
                     tg-admin-project-request-ownership.admin-project-profile-owner-actions(
+                        ng-class="{limit: !canCreatePrivateProjects}"
+                        can-request="canCreatePrivateProjects"
                         owner="project.owner",
                         project-id="project.id"
                     )
