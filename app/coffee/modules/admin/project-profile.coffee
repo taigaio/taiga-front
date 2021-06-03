@@ -97,6 +97,7 @@ class ProjectProfileController extends mixOf(taiga.Controller, taiga.PageMixin)
 
     loadInitialData: ->
         @.loadProject()
+        @scope.canCreatePrivateProjects = @currentUserService.canCreatePrivateProjects().valid
 
         return @tgAuth.refresh()
 
@@ -615,13 +616,15 @@ AdminProjectRequestOwnershipDirective = (lightboxFactory) ->
     return {
         link: (scope) ->
             scope.requestOwnership = () ->
-                lightboxFactory.create("tg-lb-request-ownership", {
-                    "class": "lightbox lightbox-request-ownership"
-                }, {
-                    projectId: scope.projectId
-                })
+                if scope.canRequest
+                    lightboxFactory.create("tg-lb-request-ownership", {
+                        "class": "lightbox lightbox-request-ownership"
+                    }, {
+                        projectId: scope.projectId
+                    })
 
         scope: {
+            "canRequest": "=",
             "projectId": "=",
             "owner": "="
         },
