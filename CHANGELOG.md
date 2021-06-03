@@ -8,6 +8,7 @@
 - Update promote to user story icon
 - Move card options, assign, edit a delete card to a menu.
 - Fix: Remove redundant copys on project default values settings.
+- Fix: Hide milestone data and cut fetch in public issues if private sprints
 
 ## 6.1.1 (2021-05-18)
 
