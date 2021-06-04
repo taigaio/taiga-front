@@ -1,6 +1,21 @@
 .issues-table {
     margin-bottom: 2rem;
 
+    .tooltip {
+        @include tooltip(
+            $width: auto,
+            $top: 150%,
+            $left: -8px,
+            $arrow-width: 10px,
+            $arrow-top: -5px,
+            $arrow-left: 10px,
+            $arrow-height: 10px,
+            $padding: .5rem
+        );
+
+        text-transform: capitalize;
+    }
+
     &.empty {
         display: none;
     }
@@ -77,6 +92,8 @@
         .issue-status {
             align-items: center;
             display: flex;
+            justify-content: flex-end;
+            padding-block-start: .25rem;
             .icon {
                 margin-left: .4rem;
             }
@@ -84,6 +101,9 @@
             tg-svg {
                 fill: $color-black900;
             }
+        }
+        .issue-status-bind {
+            @include ellipsis(100%);
         }
         .issue-assignedto {
             &:hover {
@@ -104,6 +124,41 @@
         flex-grow: 0;
         flex-shrink: 0;
         margin: 0 .5rem;
+        position: relative;
+
+        .wide {
+            display: flex;
+        }
+        .mobile {
+            display: none;
+        }
+
+        @include until($widescreen) {
+            flex-basis: 1.5rem;
+
+            &:hover .tooltip {
+                display: block;
+            }
+
+            .wide {
+                display: none;
+            }
+
+            .mobile {
+                display: flex;
+            }
+        }
+
+        .first-letter {
+            display: block;
+            overflow: hidden;
+            visibility: hidden;
+            width: 1ch;
+
+            &::first-letter {
+                visibility: visible;
+            }
+        }
     }
     .issue-text {
         display: flex;
@@ -179,18 +234,31 @@
         position: relative;
     }
     .issue-field {
-        display: flex;
+        display: block;
         flex-basis: 140px;
-        justify-content: flex-end;
+        flex-grow: 0;
+        flex-shrink: 0;
+        max-width: 140px;
+        text-align: right;
+        @include until($widescreen) {
+            flex-basis: 6rem;
+            max-width: 6rem;
+        }
     }
     .modified-field {
         flex-basis: 100px;
+        @include until($widescreen) {
+            flex-basis: 4.5rem;
+        }
     }
     .attachments-field {
         flex-basis: 100px;
     }
     .assigned-field {
         flex-basis: 100px;
+        @include until($widescreen) {
+            flex-basis: 1.5rem;
+        }
         .issue-assignedto {
             align-items: center;
             display: flex;
@@ -241,13 +309,6 @@
             top: auto;
         }
     }
-    .level-field,
-    .modified-field {
-        @include until($widescreen) {
-            display: none;
-        }
-    }
-
     .options {
         background-color: $color-white;
         border: 1px solid $color-gray400;
