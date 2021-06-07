@@ -55,6 +55,7 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
         "assigned_to",
         "owner",
         "role",
+        "tags"
     ]
 
     validQueryParams: [
@@ -66,7 +67,8 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
         'role',
         'exclude_owner',
         'owner',
-        'order_by'
+        'order_by',
+        'tags'
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @rs2, @params, @q, @appMetaService, @location, @navUrls,
