@@ -73,7 +73,7 @@ class AttachmentsFullController
                 @attachmentsFullService.deleteAttachment(toDeleteAttachment, @.type).then(onSuccess, onError)
 
     reorderAttachment: (attachment, newIndex) ->
-        @attachmentsFullService.reorderAttachment(@.type, attachment, newIndex)
+        @attachmentsFullService.reorderAttachment(@.objId, @.type, attachment, newIndex)
 
     updateAttachment: (toUpdateAttachment) ->
         @attachmentsFullService.updateAttachment(toUpdateAttachment, @.type)
