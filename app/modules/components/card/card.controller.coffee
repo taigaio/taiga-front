@@ -14,17 +14,22 @@ class CardController
     constructor: (@scope) ->
 
     getLinkParams: () ->
-        lastLoadUserstoriesParams = taiga.findScope @scope, (scope) ->
+        ctrl = taiga.findScope @scope, (scope) ->
             if scope && scope.ctrl
-                return scope.ctrl.lastLoadUserstoriesParams
+                return scope.ctrl
 
             return false
+
+        lastLoadUserstoriesParams = ctrl.lastLoadUserstoriesParams
 
         if lastLoadUserstoriesParams
             lastLoadUserstoriesParams['status'] = @scope.vm.item.getIn(['model', 'status'])
             lastLoadUserstoriesParams['swimlane'] = @scope.vm.item.getIn(['model', 'swimlane'])
 
-            lastLoadUserstoriesParams = _.pickBy(lastLoadUserstoriesParams, _.identity);
+            lastLoadUserstoriesParams = _.pickBy(lastLoadUserstoriesParams, _.identity)
+
+            if ctrl.scope.swimlanesList.size && !lastLoadUserstoriesParams['swimlane']
+                lastLoadUserstoriesParams.swimlane = "null"
 
             ParsedLastLoadUserstoriesParams = {}
             Object.keys(lastLoadUserstoriesParams).forEach (key) ->
