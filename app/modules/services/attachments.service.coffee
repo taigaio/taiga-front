@@ -82,6 +82,13 @@ class AttachmentsService
 
         return promise
 
+    bulkUpdateOrder: (objectId, type, afterAttachmentId, bulkAttachments) ->
+        promise = @rs.attachments.bulkAttachments(objectId, type, afterAttachmentId, bulkAttachments)
+
+        promise.then null, @.saveError.bind(this, null)
+
+        return promise
+
     patch: (id, type, patch) ->
         promise = @rs.attachments.patch(type, id, patch)
 

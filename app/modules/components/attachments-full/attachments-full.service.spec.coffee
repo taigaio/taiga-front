@@ -172,20 +172,20 @@ describe "tgAttachmentsFullService", ->
     it "reorder attachments", (done) ->
         deferred = $q.defer();
         attachments = Immutable.fromJS([
-            {file: {id: 0, is_deprecated: false, order: 0}},
-            {file: {id: 1, is_deprecated: true, order: 1}},
-            {file: {id: 2, is_deprecated: true, order: 2}},
-            {file: {id: 3, is_deprecated: false, order: 3}},
-            {file: {id: 4, is_deprecated: true, order: 4}}
+            {file: {id: 0, is_deprecated: false, order: 0, is_deprecated: false}},
+            {file: {id: 1, is_deprecated: true, order: 1, is_deprecated: false}},
+            {file: {id: 2, is_deprecated: true, order: 2, is_deprecated: false}},
+            {file: {id: 3, is_deprecated: false, order: 3, is_deprecated: false}},
+            {file: {id: 4, is_deprecated: true, order: 4, is_deprecated: false}}
         ])
 
-        mocks.attachmentsService.patch = sinon.stub()
-        mocks.attachmentsService.patch.returns(deferred)
+        mocks.attachmentsService.bulkUpdateOrder = sinon.stub()
+        mocks.attachmentsService.bulkUpdateOrder.returns(deferred.promise)
         deferred.resolve()
 
         attachmentsFullService._attachments = attachments
 
-        attachmentsFullService.reorderAttachment('us', attachments.get(1), 0).then () ->
+        attachmentsFullService.reorderAttachment(1, 'us', attachments.get(1), 0).then () ->
             expect(attachmentsFullService.attachments.get(0)).to.be.equal(attachments.get(1))
             done()
 

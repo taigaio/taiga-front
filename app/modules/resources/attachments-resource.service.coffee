@@ -48,6 +48,17 @@ Resource = (urlsService, http, config, $rootScope, $q, storage) ->
 
         return http.patch(url, patch)
 
+    service.bulkAttachments = (objectId, type, afterAttachmentId, bulkAttachments) ->
+        urlname = "attachments/#{type}"
+
+        url = urlsService.resolve(urlname) + "/bulk_update_order"
+
+        return http.post(url, {
+            object_id: objectId,
+            after_attachment_id: afterAttachmentId,
+            bulk_attachments: bulkAttachments
+        })
+
     service.create = (type, projectId, objectId, file, from_comment) ->
         urlname = "attachments/#{type}"
 

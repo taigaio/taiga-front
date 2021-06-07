@@ -197,7 +197,7 @@ describe "AttachmentsController", ->
 
         ctrl.reorderAttachment(file, 5)
 
-        expect(mocks.attachmentsFullService.reorderAttachment).to.have.been.calledWith('us', file, 5)
+        expect(mocks.attachmentsFullService.reorderAttachment).to.have.been.calledWith(30, 'us', file, 5)
 
     it "update attachment", () ->
         mocks.attachmentsFullService.updateAttachment = sinon.spy()
