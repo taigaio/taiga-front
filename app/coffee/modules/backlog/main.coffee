@@ -431,6 +431,15 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
     toggleTags: () ->
         @rs.userstories.storeShowTags(@scope.projectId, @showTags)
 
+    getLinkParams: (userstory) ->
+
+        tagList = _.map(userstory.tags, (tag) -> tag[0]).toString()
+
+        return {
+            'no-milestone': 1
+            'tags': tagList
+        }
+
     prepareBulkUpdateData: (uses, field="backlog_order") ->
          return _.map(uses, (x) -> {"us_id": x.id, "order": x[field]})
 
