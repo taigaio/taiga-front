@@ -150,13 +150,13 @@
         }
 
         .first-letter {
+            color: transparent;
             display: block;
             overflow: hidden;
-            visibility: hidden;
             width: 1ch;
 
             &::first-letter {
-                visibility: visible;
+                color: $color-link-tertiary;
             }
         }
     }
