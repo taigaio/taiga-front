@@ -57,13 +57,18 @@ class KanbanUserstoriesService extends taiga.Service
     add: (usList) ->
         if !Array.isArray(usList)
             usList = [usList]
+
+        usList = _.sortBy usList, ['kanban_order']
+
+        @.userstoriesRaw = @.userstoriesRaw.filter (us) =>
+            return !usList.find (it) => it.id == us.id
         @.userstoriesRaw = @.userstoriesRaw.concat(usList)
         @.userstoriesRaw = @.userstoriesRaw.map (us) =>
             return us
 
         @.refreshRawOrder()
 
-        @.userstoriesRaw = _.sortBy @.userstoriesRaw, (it) => @.order[it.id]
+        @.userstoriesRaw = _.sortBy @.userstoriesRaw, [(it) => @.order[it.id]]
 
         for key, usModel of usList
             us = @.retrieveUserStoryData(usModel)
@@ -77,7 +82,9 @@ class KanbanUserstoriesService extends taiga.Service
 
                 @.usByStatus = @.usByStatus.set(
                     status,
-                    @.usByStatus.get(status).push(usModel.id)
+                    @.usByStatus.get(status)
+                    .filter((id) => id != usModel.id)
+                    .push(usModel.id)
                 )
 
         @.refreshSwimlanes()
@@ -119,7 +126,7 @@ class KanbanUserstoriesService extends taiga.Service
 
     move: (usList, statusId, swimlaneId, index, previousCard, nextCard) ->
         usByStatus = @.getStatus(statusId, swimlaneId)
-        usByStatus = _.sortBy usByStatus, (it) => @.order[it.id]
+        usByStatus = _.sortBy usByStatus, [(it) => @.order[it.id]]
 
         if previousCard
             previousUsOrder = @.order[previousCard] + 1
@@ -222,7 +229,7 @@ class KanbanUserstoriesService extends taiga.Service
         return us
 
     refresh: (refreshUsMap = true) ->
-        @.userstoriesRaw = _.sortBy @.userstoriesRaw, (it) => @.order[it.id]
+        @.userstoriesRaw = _.sortBy @.userstoriesRaw, [(it) => @.order[it.id]]
 
         collection = {}
 
@@ -230,6 +237,9 @@ class KanbanUserstoriesService extends taiga.Service
             us = @.retrieveUserStoryData(usModel)
             if (!collection[usModel.status])
                 collection[usModel.status] = []
+
+            collection[usModel.status] = collection[usModel.status]
+            .filter((id) => id != usModel.id)
 
             collection[usModel.status].push(usModel.id)
 
