@@ -311,6 +311,8 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         params.page = @.page
         params.q = @.filterQ
 
+        @.lastLoadUserstoriesParams = params
+
         @.translationData.q = params.q
 
         promise = @rs.userstories.listUnassigned(@scope.projectId, params, pageSize)
@@ -363,6 +365,24 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             @.loadSprints(),
             @.loadUserstories()
         ]).then(@.calculateForecasting)
+
+    getLinkParams: () ->
+        lastLoadUserstoriesParams = @.lastLoadUserstoriesParams
+
+        if lastLoadUserstoriesParams
+            delete lastLoadUserstoriesParams['page']
+
+            lastLoadUserstoriesParams = _.pickBy(lastLoadUserstoriesParams, _.identity)
+
+            ParsedLastLoadUserstoriesParams = {}
+            Object.keys(lastLoadUserstoriesParams).forEach (key) ->
+                ParsedLastLoadUserstoriesParams['backlog-' + key] = lastLoadUserstoriesParams[key]
+
+            ParsedLastLoadUserstoriesParams['no-milestone'] = 1
+
+            return ParsedLastLoadUserstoriesParams
+        else
+            return {}
 
     sprintTotalPoints: (sprint) ->
         points = 0

@@ -33,7 +33,7 @@
         a.user-story-link(
             href=""
             tg-nav="project-userstories-detail:project=project.slug,ref=us.ref"
-            tg-nav-get-params="{\"no-milestone\": 1}"
+            tg-nav-get-params="{{ ctrl.getLinkParams() }}"
         )
             span.user-story-number(tg-bo-ref="us.ref")
             span.user-story-name(ng-bind-html="us.subject | emojify")
