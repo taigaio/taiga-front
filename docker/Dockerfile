@@ -18,17 +18,17 @@ RUN set -eux; \
     apk add \
        bash; \
     # Install taiga-front core
-    wget https://github.com/kaleidos-ventures/taiga-front-dist/archive/6.1.1.zip -O source.zip; \
+    wget https://github.com/kaleidos-ventures/taiga-front-dist/archive/6.2.0.zip -O source.zip; \
     unzip source.zip; \
-    mv /taiga-front-dist-6.1.1 /taiga; \
+    mv /taiga-front-dist-6.2.0 /taiga; \
     mv /conf.json.template taiga/dist/; \
     chmod +x /docker-entrypoint.d/30_config_env_subst.sh; \
     # Install taiga-front contribs
     mkdir /taiga/dist/plugins; \
     cd /taiga/dist/plugins; \
-    svn export "https://github.com/kaleidos-ventures/taiga-contrib-slack/tags/6.1.1/front/dist" "slack"; \
-    svn export "https://github.com/kaleidos-ventures/taiga-contrib-github-auth/tags/6.1.1/front/dist" "github-auth"; \
-    svn export "https://github.com/kaleidos-ventures/taiga-contrib-gitlab-auth/tags/6.1.1/front/dist" "gitlab-auth"; \
+    svn export "https://github.com/kaleidos-ventures/taiga-contrib-slack/tags/6.2.0/front/dist" "slack"; \
+    svn export "https://github.com/kaleidos-ventures/taiga-contrib-github-auth/tags/6.2.0/front/dist" "github-auth"; \
+    svn export "https://github.com/kaleidos-ventures/taiga-contrib-gitlab-auth/tags/6.2.0/front/dist" "gitlab-auth"; \
     cd /; \
     # Remove unused dependencies
     apk del --no-cache .build-deps; \
