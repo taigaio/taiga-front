@@ -23,7 +23,7 @@ AnimatedCounter = () ->
                 </div>
                 <div class="result">
                     <span class="current">{{ nextDown.current || 0 }}</span><span ng-if="nextDown.wip"> / {{ nextDown.wip }}</span>
-                </div>                
+                </div>
             </div>
         </div>
     """
@@ -47,7 +47,7 @@ AnimatedCounter = () ->
             initialLoad = true
             unwatch()
 
-        $scope.$watch 'data', (data) ->
+        renderData = (data) ->
             getCounter = (num) =>
                 return {
                     current: num,
@@ -85,6 +85,18 @@ AnimatedCounter = () ->
                     else if $scope.nextDown != undefined
                         counter.addClass('dec')
 
+        $scope.$watch 'disabled', (disabled) ->
+            if $scope.disabled
+                return
+
+            renderData($scope.data)
+
+        $scope.$watch 'data', (data) ->
+            if $scope.disabled
+                return
+
+            renderData(data)
+
         $scope.$on "$destroy", ->
             $el.off()
             counter.off()
@@ -93,7 +105,8 @@ AnimatedCounter = () ->
         link: link,
         template: template,
         scope: {
-            data: '<'
+            data: '<',
+            disabled: '<'
         },
     }
 

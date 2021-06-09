@@ -16,15 +16,17 @@ class KanbanUserstoriesService extends taiga.Service
     constructor: (@translate) ->
         @.reset()
 
-    reset: (resetSwimlanesList = true) ->
+    reset: (resetSwimlanesList = true, resetArchivedStatus = true) ->
         @.userstoriesRaw = []
-        @.archivedStatus = []
         @.statusHide = []
         @.swimlanes = []
         @.foldStatusChanged = {}
         @.usByStatus = Immutable.Map()
         @.usMap = Immutable.Map()
         @.usByStatusSwimlanes = Immutable.Map()
+
+        if resetArchivedStatus
+            @.archivedStatus = []
 
         if resetSwimlanesList
             @.swimlanesList = Immutable.List()
@@ -228,7 +230,7 @@ class KanbanUserstoriesService extends taiga.Service
 
         return us
 
-    refresh: (refreshUsMap = true) ->
+    refresh: (refreshUsMap = true, refreshSwimlanes = true) ->
         @.userstoriesRaw = _.sortBy @.userstoriesRaw, [(it) => @.order[it.id]]
 
         collection = {}
@@ -248,7 +250,8 @@ class KanbanUserstoriesService extends taiga.Service
 
         @.usByStatus = Immutable.fromJS(collection)
 
-        @.refreshSwimlanes()
+        if refreshSwimlanes
+            @.refreshSwimlanes()
 
     refreshSwimlanes: () ->
         if !@.swimlanes || !@.swimlanes.length

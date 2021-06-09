@@ -340,6 +340,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             @scope.project.tags_colors = tags_colors._attrs
 
     renderBatch: (clean = false) ->
+        @.renderInProgress = true
         newUs = _.take(@.queue, @.batchSize)
         @.rendered = _.concat(@.rendered, newUs)
         @.queue = _.drop(@.queue, @.batchSize)
@@ -359,6 +360,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                 # We can't assure when this exactly happens so we need a defer
                 @rootscope.$broadcast("kanban:userstories:loaded", @.rendered)
                 @scope.$broadcast("userstories:loaded", @.rendered)
+                @.renderInProgress = false
 
                 @timeout () =>
                     @scope.$broadcast("redraw:wip")
@@ -404,16 +406,28 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         lastSearch = @.filterQ
         @.lastLoadUserstoriesParams = params
 
-        promise = @q.all([
+        loadPromises = [
             @rs.userstories.listAll(@scope.projectId, params),
             @.loadSwimlanes()
-        ]).then (result) =>
+        ]
+
+        archivedPromises = @kanbanUserstoriesService.archivedStatus.map (archivedStatusId) =>
+            return @.loadUserStoriesForStatus({}, archivedStatusId)
+
+        loadPromises = loadPromises.concat(archivedPromises)
+
+        promise = @q.all(loadPromises).then (result) =>
             if lastSearch != @.lastSearch
                 return
 
-            @kanbanUserstoriesService.reset(false)
+            @kanbanUserstoriesService.reset(false, false)
             userstories = result[0]
             swimlanes = result[1]
+
+            if result.length > 2
+                result.slice(2).forEach (archivedRedult) =>
+                    userstories = userstories.concat(archivedRedult)
+
             @.notFoundUserstories = false
 
             if !userstories.length && ((@.filterQ && @.filterQ.length) || Object.keys(@location.search()).length)

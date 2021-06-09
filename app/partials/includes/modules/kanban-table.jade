@@ -124,6 +124,7 @@ div.kanban-table(
                         ng-attr-title="{{'KANBAN.NUMBER_US' | translate}}"
                     )
                         tg-animated-counter(
+                            disabled="ctrl.renderInProgress"
                             data="{count: usByStatusSwimlanes.getIn([swimlane.id, s.id]).size, wip: s.wip_limit}"
                         )
                     .placeholder-collapsed(ng-if='folds[s.id]')
@@ -197,6 +198,7 @@ div.kanban-table(
                     ng-attr-title="{{'KANBAN.NUMBER_US' | translate}}"
                 )
                     tg-animated-counter(
+                        disabled="ctrl.renderInProgress"
                         data="{count: usByStatus.get(s.id.toString()).size, wip: s.wip_limit}"
                     )
                 .placeholder-collapsed(ng-if='folds[s.id]')
