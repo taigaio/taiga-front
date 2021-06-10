@@ -143,29 +143,32 @@
                 background: rgba($whitish, .7);
                 cursor: pointer;
                 display: block;
-                padding: .5rem .25rem;
+                padding: .5rem 1rem;
                 text-align: center;
-                text-transform: uppercase;
-                transition: background .2s ease-in;
+                transition: background color .2s ease-in;
             }
             +label:hover {
                 background: rgba($primary-light, .3);
-                transition: background .2s ease-in;
+                transition: background color .2s ease-in;
             }
         }
         .before-after-selector-single {
-            flex: 1;
-            margin-right: .25rem;
+            overflow: hidden;
+            &:first-child {
+                border-radius: .25rem 0 0 .25rem;
+            }
             &:last-child {
+                border-radius: 0 .25rem .25rem 0;
                 margin-right: 0;
             }
             &.checked label {
-                background: $primary-light;
+                background: $color-link-primary;
                 color: $white;
                 transition: background .2s ease-in;
             }
-            &.checked label:hover {
-                background: $primary-light;
+            &:not(.checked) label:hover {
+                background: rgba($color-link-primary, .3);
+                color: $color-black600;
             }
         }
     }

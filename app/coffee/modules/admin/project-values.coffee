@@ -678,7 +678,14 @@ ProjectDueDatesValues = ($log, $repo, $confirm, $location, animationFrame, $tran
 
         $el.on "click", ".days-to-due-sign", (event) ->
             event.preventDefault()
+
+            currentValue = Number(angular.element(event.currentTarget).parent().find('input').val())
+
             value = _valueFromEventTarget(event)
+
+            if currentValue == value.sign
+                return
+
             $scope.$apply ->
                 value.sign = value.sign * -1
                 _setDaysToDue(value)
