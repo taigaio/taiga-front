@@ -703,7 +703,7 @@
             "WARNING_DELETE_ROLE": "Be careful! All role estimations will be removed",
             "ERROR_DELETE_ALL": "You can't delete all values",
             "EXTERNAL_USER": "External user",
-            "NOTE_EXTERNAL_USERS": "<strong>Note:</strong> by External User we mean any anonymous user not belonging to the Taiga platform, including search engines. Please use this role with care."
+            "NOTE_EXTERNAL_USERS": "An external user is any user (logged in to the Taiga platform or not), including search engines. Although unregistered users can never have edit permissions, registered users can, if you allow it. If your project is private, you can also control viewing permissions. Please, use this role with care."
         },
         "THIRD_PARTIES": {
             "SECRET_KEY": "Secret key",
