@@ -75,15 +75,18 @@
         align-items: center;
         color: $color-black600;
         display: flex;
+        padding-left: .5rem;
+        text-align: right;
     }
     .level-color {
         border-radius: 50%;
         height: 1rem;
         margin-inline-start: .75rem;
-        width: 1rem;
+        min-width: 1rem;
     }
     .level-name {
         @include font-size(xsmall);
+        align-self: center;
         color: $color-link-tertiary;
     }
     .popover {
