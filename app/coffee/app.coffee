@@ -729,7 +729,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
         .preferredLanguage(preferedLangCode)
         .useMissingTranslationHandlerLog()
 
-    $translateProvider.fallbackLanguage(preferedLangCode)
+    $translateProvider.fallbackLanguage("en")
 
     # decoratos plugins
     decorators = window.getDecorators()
