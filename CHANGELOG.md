@@ -3,6 +3,7 @@
 ## 6.3.0 (unreleased)
 
 - fix: english as a fallback language
+- fix: remove social media auto embed
 
 ## 6.2.0 (2021-06-09)
 
