@@ -4,6 +4,7 @@
 
 - fix: english as a fallback language
 - fix: remove social media auto embed
+- fix: backlog move to top
 
 ## 6.2.0 (2021-06-09)
 

@@ -460,7 +460,9 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             $(this).removeClass('first')
         )
 
-        @.moveUs("sprint:us:move", [us], 0, null, null, @scope.visibleUserStories[0])
+        nextUs = @scope.userstories.find (us) => us.ref == @scope.visibleUserStories[0]
+
+        @.moveUs("sprint:us:move", [us], 0, null, null, nextUs.id)
 
     moveUs: (ctx, usList, newUsIndex, newSprintId, previousUs, nextUs) ->
         oldSprintId = usList[0].milestone
