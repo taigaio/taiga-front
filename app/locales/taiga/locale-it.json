@@ -45,7 +45,7 @@
         "CLIENT_REQUIREMENT": "A client requirement is a new requirement that was not previously expected and is required to be part of the project",
         "TEAM_REQUIREMENT": "A team requirement is a requirement that must exist in the project but should have no cost for the client",
         "OWNER": "Proprietario Progetto",
-        "CAPSLOCK_WARNING": "Attento! Stai usando lettere maiuscole in un campo che è case sensitive",
+        "CAPSLOCK_WARNING": "Attento! Stai usando lettere maiuscole in un campo case sensitive.",
         "CONFIRM_CLOSE_EDIT_MODE_TITLE": "Sei sicuro di voler chiudere la modalità modifica?",
         "CONFIRM_CLOSE_EDIT_MODE_MESSAGE": "Ricorda che se chiudi la modalità modifica senza salvare, tutte le modifiche saranno perse",
         "RELATED_USERSTORIES": "Storie utente collegate",
@@ -64,8 +64,8 @@
         },
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Questo valore non è valido.",
-            "TYPE_EMAIL": "Questo valore dovrebbe corrispondere ad una mail valida",
-            "TYPE_URL": "Questo valore dovrebbe corrispondere ad un URL valido",
+            "TYPE_EMAIL": "Questo valore deve essere un'email valida.",
+            "TYPE_URL": "Questo valore deve essere un URL valido.",
             "TYPE_URLSTRICT": "Questo valore dovrebbe corrispondere ad un URL valido",
             "TYPE_NUMBER": "Questo valore dovrebbe corrispondere ad un numero valido",
             "TYPE_DIGITS": "Questo valore dovrebbe essere in cifre",
@@ -343,7 +343,7 @@
     },
     "LOGIN_FORM": {
         "ERROR_AUTH_INCORRECT": "Secondo la Taiga, i tuoi nomi utente, email o password sono errati.",
-        "SUCCESS": "Benvenuto in Taiga!"
+        "SUCCESS": "Benvenuti in Taiga."
     },
     "REGISTER": {
         "PAGE_TITLE": "Registrazione - Taiga",
@@ -402,7 +402,7 @@
     },
     "HOME": {
         "PAGE_TITLE": "Home - Taiga",
-        "PAGE_DESCRIPTION": "La home di Taiga con i tuoi principali progetti e tutte le storie utente, i compiti e problemi assegnati e osservati. ",
+        "PAGE_DESCRIPTION": "La home di Taiga con i tuoi progetti principali e tutte le storie utente, i compiti e problemi assegnati e osservati.",
         "EMPTY_WORKING_ON": "<strong>Sembra vuoto, vero?</strong> Inizia a lavorare con Taiga e vedrai qui le storie, task e issue su cui stai lavorando",
         "EMPTY_WATCHING": "<strong>Osserva</strong> Storie Utente, Compiti, Criticità nel progetto e ti verranno notificate le sue modifiche :)",
         "EMPTY_PROJECT_LIST": "Per ora non hai nessun progetto",
@@ -520,7 +520,7 @@
             "EPICS": "Epici",
             "EPICS_DESCRIPTION": "Visulaizza e controlla la parte più strategica del tuo progetto",
             "BACKLOG": "Scrum",
-            "BACKLOG_DESCRIPTION": "Amministra le storie degli utenti per mantenere una visione organizzata dei lavori in arrivo e di quelli ad alta priorità ",
+            "BACKLOG_DESCRIPTION": "Gestisci le storie degli utenti per mantenere una visione organizzata dei lavori pianificati e di quelli prioritari.",
             "NUMBER_SPRINTS": "Numero di Sprint previsto",
             "NUMBER_SPRINTS_HELP": "0 per indeterminato",
             "NUMBER_US_POINTS": "Numero di punti totali della storia previsto",
@@ -569,12 +569,13 @@
             "REQUEST_OWNERSHIP_SUCCESS": "Invieremo una notifica al proprietario del progetto",
             "CHANGE_OWNER": "Cambia proprietario",
             "CHANGE_OWNER_SUCCESS_TITLE": "Ok, la tua richiesta è stata inviata!",
-            "CHANGE_OWNER_SUCCESS_DESC": "Ti invieremo una notifica via mail se la richiesta della mproprietà del progetto è accettata o rifiutata"
+            "CHANGE_OWNER_SUCCESS_DESC": "Ti invieremo una notifica via mail se la richiesta della mproprietà del progetto è accettata o rifiutata",
+            "REQUEST_OWNERSHIP_LIMIT": "Hai raggiunto il tuo limite di {{maxProjects}} progetti privati"
         },
         "REPORTS": {
             "TITLE": "Rapporti",
             "SUBTITLE": "Esporta il tuo progetto dati in formato CSV a crea il tuo report",
-            "DESCRIPTION": "Scarica il file CSV o copia l'url ed usa il tuo editor preferito o spreadsheet per realizzare i tuoi report. Sarai in grado di visualizzare ed analizzare i tuoi dati molto più facilmente vedrai. ",
+            "DESCRIPTION": "Scarica un file CSV o copia l'URL generato ed aprilo nel tuo editor preferito o foglio di calcolo per realizzare i tuoi report di progetto. Sarai in grado di visualizzare ed analizzare tutti i tuoi dati facilmente.",
             "HELP": "Come utilizzarlo all'interno di un foglio di calcolo?",
             "REGENERATE_TITLE": "Cambia URL",
             "REGENERATE_SUBTITLE": "Stai per modificare l'URL di accesso ai dati CSV. L'URL precedente verrà disabilitato. Sei sicuro?",
@@ -667,7 +668,7 @@
             "SUBTITLE": "Specify the due dates status your user stories, tasks and issues will go through if selected",
             "US_TITLE": "Stato scadenza storia utente",
             "ACTION_ADD_STATUS": "Aggiungi un nuovo status",
-            "TASK_TITLE": "Status scadenza compito ",
+            "TASK_TITLE": "Stato Scadenza del compito",
             "ISSUE_TITLE": "Stato scadenza problema",
             "DAYS_TO_DUE_DATE": "Giorni alla scadenza",
             "BEFORE_AFTER": "Prima/dopo",
@@ -696,11 +697,11 @@
             "DISABLE_COMPUTABLE_ALERT_SUBTITLE": "Se disabiliti i permessi di stime per {{roleName}} tutte le stime precedenti di questo ruolo saranno rimosse",
             "COUNT_MEMBERS": "{{ role.members_count }} membri con questo ruolo",
             "TITLE_DELETE_ROLE": "Elimina ruolo",
-            "REPLACEMENT_ROLE": "Tutti gli utenti con questo ruolo saranno spostati a ",
+            "REPLACEMENT_ROLE": "Tutti gli utenti con questo ruolo saranno spostati in",
             "WARNING_DELETE_ROLE": "Attento! Tutte le stime dei ruoli saranno eliminate",
             "ERROR_DELETE_ALL": "Non puoi cancellare tutti i valori",
             "EXTERNAL_USER": "Utente esterno",
-            "NOTE_EXTERNAL_USERS": "<strong>Nota Bene:</strong> Per Utente Esterno noi intendiamo qualunque utente anonimo che non prende parte alla piattaforma di Taiga, inclusi i motori di ricerca. Per favore utilizza questo ruolo con cura."
+            "NOTE_EXTERNAL_USERS": "Un utente esterno è qualsiasi utente (entrato in Taiga o meno), <strong>inclusi i motori di ricerca</strong>. Sebbene gli utenti non registrati non possano mai avere permessi di modifica, quelli registrati possono, se lo permetti. Se il tuo progetto è privato, puoi anche controllare la visualizzazione dei permessi. <strong>Usa questo ruolo con prudenza</strong>."
         },
         "THIRD_PARTIES": {
             "SECRET_KEY": "Chiave segreta",
@@ -758,7 +759,7 @@
             "SAVE_TITLE": "Save custom field",
             "CANCEL_TITLE": "Elimina la creazione",
             "SET_FIELD_NAME": "Imposta il nome del campo predefinito",
-            "SET_FIELD_DESCRIPTION": "Imposta la descrizione del campo personalizzato ",
+            "SET_FIELD_DESCRIPTION": "Imposta la descrizione del campo personalizzato",
             "FIELD_TYPE_DEFAULT": "-- selezionane uno --",
             "ACTION_UPDATE": "Update custom field",
             "ACTION_CANCEL_EDITION": "Elimina versione"
@@ -778,14 +779,14 @@
             "DEFAULT_DELETE_MESSAGE": "L'invito a {{email}}"
         },
         "DEFAULT_VALUES": {
-            "LABEL_EPIC_STATUS": "Valore predefinito per la selezione di stati degli epici",
-            "LABEL_US_STATUS": "Valore predefinito per la selezione di stato della storia utente",
-            "LABEL_POINTS": "Valore standard per punti di selezione",
-            "LABEL_TASK_STATUS": "Valore predefinito per la selezione degli stati del compito",
-            "LABEL_ISSUE_TYPE": "Valore predefinito per il tipo di selezione del problema",
-            "LABEL_ISSUE_STATUS": "Valore predefinito per la selezione di stato del problema",
-            "LABEL_PRIORITY": "Valore predefinito per la selezione prioritaria",
-            "LABEL_SEVERITY": "Valore predefinito per la selezione di rigore"
+            "LABEL_EPIC_STATUS": "Selezione dello stato dell'epico",
+            "LABEL_US_STATUS": "Selezione dello stato della storia utente",
+            "LABEL_POINTS": "Selezione dei punti",
+            "LABEL_TASK_STATUS": "Selezione dello stato del compito",
+            "LABEL_ISSUE_TYPE": "Selezione del tipo di problema",
+            "LABEL_ISSUE_STATUS": "Selezione dello stato del problema",
+            "LABEL_PRIORITY": "Selezione della priorità",
+            "LABEL_SEVERITY": "Selezione della gravità"
         },
         "STATUS": {
             "PLACEHOLDER_WRITE_STATUS_NAME": "Scrivi un nome per il nuovo stato",
@@ -839,6 +840,11 @@
                 "PUBLIC": "Per favore ricorda che puoi avere al massimo <strong>{{maxProjects}}</strong> progetti pubblici. Attualmente hai <strong>{{currentProjects}}</strong> progetti pubblici"
             },
             "CANT_BE_OWNED": "Attualmente non puoi diventare il proprietario di un progetto di questo tipo. Se vuoi diventare proprietario di questo progetto, per favore contatta l'amministratore così può cambiare le impostazioni del tuo account per diventare proprietario dei progetti."
+        },
+        "PROJECT_PRESETS": {
+            "SUBTITLE": "Imposta i valori predefiniti per tutti i selettori.",
+            "TITLE": "Valori predefiniti",
+            "MENU_TITLE": "Preimpostati"
         }
     },
     "USER": {
@@ -1046,7 +1052,7 @@
                     "TITLE": "Il tuo abbonamento attuale permette al massimo {{max_memberships}} membri per progetto privato"
                 },
                 "PUBLIC_PROJECTS_MEMBERS": {
-                    "TITLE": " abbonamento attuale permette al masismo {{max_memberships}} membri per progetto pubblico."
+                    "TITLE": "Il tuo piano attuale permette al massimo {{max_memberships}} membri per progetto pubblico."
                 },
                 "PRIVATE_PROJECTS_SPACE_MEMBERS": {
                     "TITLE": "Sfortunatamente il tuo abbonamento attuale non permette ulteriori progetti privati o un aumento di più di {{max_memberships}} membri per progetto privato",
@@ -1110,6 +1116,18 @@
                 "CREATE_NEW_ISSUES": "Converti le sotto-segnalazioni in segnalazioni Taiga",
                 "NOT_CREATE_NEW_ISSUES": "Non importare le sotto-segnalazioni"
             }
+        },
+        "NEWSLETTER_OPENING": {
+            "SAVED_PREFERENCE": "Le tue preferenze sono state salvate",
+            "SUBSCRIBED": "Sei iscritto",
+            "SUBSCRIBE": "Iscriviti",
+            "NOTIFY_EXPLANATION": "Ti invieremo notizie, aggiornamenti sul prodotto e consigli riguardo Taiga.",
+            "SAVE_PREFERENCE": "SALVA PREFERENZE",
+            "DONT_ASK": "Non chiedere più",
+            "OPT_OUT": "Ti invieremo solo email rilevanti (<6 all'anno). Puoi disiscriverti in qualsiasi momento inviando un'email a <a href=\"mailto:support@taiga.io\" target=\"_blank\">support@taiga.io</a> con l'oggetto “unsubscribe” o attraverso il collegamento in una delle nostre newsletter.",
+            "NO_SHARE": "Noi teniamo alla tua privacy (vedi la nostra <a href=\"https://www.taiga.io/privacy-policy\" title=\"Go to privacy policy\" target=\"_blank\">informativa sulla privacy</a>).",
+            "CONFIRMATION": "Sì, inviami notizie, aggiornamenti sul prodotto e consigli riguardo Taiga.",
+            "LIGHTBOX_TITLE": "Vuoi ricevere annunci riguardo Taiga?"
         }
     },
     "LIGHTBOX": {
@@ -1126,7 +1144,7 @@
             "CONFIRM": "Si, sono proprio sicuro"
         },
         "ASSIGNED_TO": {
-            "SELECT": "Selezione assegnata a ",
+            "SELECT": "Seleziona assegnato a",
             "SEARCH": "Cerca per utenti"
         },
         "SELECT_USER": {
@@ -1149,9 +1167,9 @@
             "COMMENT": "Lasciaci un messaggio",
             "ACTION_SEND": "Invia messaggio",
             "YOU_CAN_ALSO": "Puoi anche:",
-            "CREATE": "Crea un problema su questo",
+            "CREATE": "Crea un problema su questo ",
             "PUBLIC": "progetto Taiga pubblico",
-            "EMAIL": "Send us a e-mail directly to",
+            "EMAIL": "Inviaci un'email direttamente a ",
             "SUPPORT": "support@taiga.io"
         },
         "SEARCH": {
@@ -1409,7 +1427,7 @@
             "YAXIS_LABEL": "Punti",
             "OPTIMAL": "I punti in sospeso ottimali per lo sprint \"{{sprintName}}\" dovrebbero essere {{value}}",
             "REAL": "I punti in sospeso definitivi per lo sprint \"{{sprintName}}\" sono {{value}}",
-            "INCREMENT_TEAM": "I punti incrementati dai requisiti del team per lo sprint  \"{{sprintName}}\" sono {{value}}",
+            "INCREMENT_TEAM": "I punti incrementati dai requisiti del team per lo sprint \"{{sprintName}}\" sono {{value}}",
             "INCREMENT_CLIENT": "I punti incrementati dai requisiti del cliente per lo sprint \"{{sprintName}}\" sono {{value}}"
         },
         "TAGS": {
@@ -1465,7 +1483,7 @@
         }
     },
     "ERROR": {
-        "TEXT1": "E' successo qualcosa, ma la Taiga ci sta lavorando sodo!",
+        "TEXT1": "Qualcosa è andato storto e la Taiga ha rilevato l'errore per poterci lavorare.",
         "NOT_FOUND": "Non trovato",
         "NOT_FOUND_TEXT": "Errore 404. La pagina che stai cercando non esiste più. Forse puoi tornare alla home e vedere se è possibile trovare quello che stai cercando.",
         "PERMISSION_DENIED": "Permesso negato",
@@ -1538,14 +1556,15 @@
         "TITLE_ACTION_IOCAINE": "Sei stremato? Assicurati che gli altri lo sappiano cliccando su \"aspirina\" quando stai lavorando su compito che ti affatica. Ma non demordere, ricordati: si può migliorare solo se di tanto in tanto si accettano sfide extra!"
     },
     "NOTIFICATION": {
-        "OK": "E' tutto ok!",
+        "OK": "Tutto a posto",
         "WARNING": "Ops, qualcosa è andato storto...",
         "WARNING_TEXT": "Le tue modifiche non sono state salvate!",
         "SAVED": "The Taiga saved all your changes!",
         "CLOSE": "Chiudi notifica",
-        "MAIL": "Notifica tramite mail",
+        "MAIL": "Attività",
         "DESKTOP": "Notifiche desktop tramite avvisi del browser",
-        "ASK_DELETE": "Sei sicuro di voler cancellare?"
+        "ASK_DELETE": "Sei sicuro di voler cancellare?",
+        "COMMUNICATION": "Comunicazioni di Taiga"
     },
     "CANCEL_ACCOUNT": {
         "TITLE": "Elimina il tuo account",
@@ -1575,7 +1594,7 @@
         "ACTION_NEW_ISSUE": "NEW ISSUE",
         "ACTION_ATTACH_SPRINT": "Aggiungi problema allo Sprint",
         "ACTION_DETACH_SPRINT": "Togli problema dallo Sprint",
-        "EXTERNAL_REFERENCE": "Questo problema è stato creato da ",
+        "EXTERNAL_REFERENCE": "Questo problema è stato creato da",
         "GO_TO_EXTERNAL_REFERENCE": "Ritorna all'inizio",
         "ACTION_DELETE": "Elimina problema",
         "LIGHTBOX_TITLE_BLOKING_ISSUE": "Problema bloccante",
@@ -1861,10 +1880,10 @@
             "STEP3": {
                 "TITLE": "In osservazione",
                 "TEXT1": "E qui trovi tutte quelle cose del progetto di cui volevi sapere.",
-                "TEXT2": "Stai giù lavorando in Taiga ;) "
+                "TEXT2": "Stai già lavorando con Taiga ;)"
             },
             "STEP4": {
-                "TITLE": "Bene..cominciamo!!",
+                "TITLE": "Cominciamo",
                 "TEXT1": "Il modo migliore per iniziare é creare subito il tuo primo progetto Taiga.",
                 "TEXT2": "Buona fortuna!"
             }
@@ -1877,7 +1896,7 @@
             },
             "STEP2": {
                 "TITLE": "Backlog di produzione",
-                "TEXT": "Il Backlog è la lista dei requisiti (o storie utente) per il progetto. Qui è dove pianificherai i tuoi sprint. "
+                "TEXT": "Il Backlog è la lista dei requisiti (storie utente) per il progetto. Qui è dove pianificherai i tuoi sprint."
             },
             "STEP3": {
                 "TITLE": "Sprints",
@@ -1891,7 +1910,7 @@
         "KANBAN": {
             "STEP1": {
                 "TITLE": "Personalizza il tuo flusso di lavoro",
-                "TEXT": "Imposta le colonne di cui hai bisogno per mappare lo stato dei tuoi flussi di lavoro come Amministratore. "
+                "TEXT": "Imposta le colonne di cui hai bisogno per mappare lo stato dei tuoi flussi di lavoro come amministratore."
             },
             "STEP2": {
                 "TITLE": "Storie utente e compiti",
@@ -1900,7 +1919,7 @@
             "STEP3": {
                 "TITLE": "Aggiungi le storie utente",
                 "TEXT1": "You may want to add a single user story (add user story icon) or a group of them (bulk icon)",
-                "TEXT2": "Buona fortuna! "
+                "TEXT2": "Buona fortuna!"
             }
         }
     },
