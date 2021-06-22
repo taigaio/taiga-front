@@ -2,6 +2,10 @@
 
 ## 6.3.0 (unreleased)
 
+- ...
+
+## 6.2.1 (2021-06-22)
+
 - fix: english as a fallback language
 - fix: remove social media auto embed
 - fix: backlog move to top
