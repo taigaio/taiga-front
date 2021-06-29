@@ -3,6 +3,7 @@
 ## 6.3.0 (unreleased)
 
 - fix: prevent unnecessary kanban refresh with taiga-events
+- fix: empty multiple assigned_to in kanban
 
 ## 6.2.1 (2021-06-22)
 

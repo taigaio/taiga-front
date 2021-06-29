@@ -9,7 +9,7 @@
 .card-assigned-to(
     class!="<%= vm.item.getIn(['model', 'is_iocaine']) ? 'is_iocaine': '' %>"
 )
-    <% if (!vm.item.get('assigned_to')) { %>
+    <% if (!vm.item.get('assigned_to') && !vm.item.get('assigned_users').size) { %>
     .card-user-avatar.card-not-assigned
         img(
             title!="<%= translate('COMMON.ASSIGNED_TO.NOT_ASSIGNED') %>"
@@ -20,7 +20,7 @@
         <% } %>
     <% } %>
 
-    <% if (vm.item.get('assigned_to')) { %>
+    <% if (vm.item.get('assigned_to') || vm.item.get('assigned_users').size) { %>
     <% if (vm.item.get('assigned_users_preview')) { %>
     <% _.forEach(vm.item.get('assigned_users_preview').toJS(), function(assignedUser, index) { %>
     .card-user-avatar
