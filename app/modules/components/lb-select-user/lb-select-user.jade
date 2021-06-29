@@ -21,7 +21,7 @@ div.form.lb-select-user-form
                 .user-list-avatar
                     img(
                         style="background: {{ item.avatar.bg }}"
-                        src="{{ item.avatar.url }}"
+                        ng-src="{{ item.avatar.url }}"
                         ng-if="item.type == 'user'"
                     )
                     img(
