@@ -2,7 +2,7 @@
 
 ## 6.3.0 (unreleased)
 
-- ...
+- fix: prevent unnecessary kanban refresh with taiga-events
 
 ## 6.2.1 (2021-06-22)
 
