@@ -219,7 +219,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         # For user stories events
         routingKeyUserstories = "changes.project.#{@scope.projectId}.userstories"
         @events.subscribe @scope, routingKeyUserstories, debounceLeading randomTimeout, (message) =>
-            @.loadUserstories()
+            @.eventsLoadUserstories(message)
 
         # For project attributes (swimlanes, statuses,...) events
         routingKeyProject = "changes.project.#{@scope.projectId}.projects"
@@ -390,7 +390,8 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         else
             @kanbanUserstoriesService.set(userstories)
 
-    loadUserstories: () ->
+
+    loadUserstoriesParams: () ->
         params = {
             status__is_archived: false
         }
@@ -402,6 +403,38 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         locationParams = _.pick(_.clone(@location.search()), @.validQueryParams)
         params = _.merge params, locationParams
         params.q = @.filterQ
+
+        return params
+
+    eventsLoadUserstories: (data) ->
+        eventUserstories = []
+
+        if !Array.isArray(data.pk)
+            eventUserstories = [data.pk]
+        else
+            eventUserstories = data.pk
+
+        modifiedUs = eventUserstories.filter (us) => !!@kanbanUserstoriesService.userstoriesRaw.find((raw) => raw.id == us)
+
+        params = @.loadUserstoriesParams()
+
+        @rs.userstories.listAll(@scope.projectId, params).then (userstories) =>
+            newUss = userstories.filter (us) => !@kanbanUserstoriesService.userstoriesRaw.find((raw) => raw.id == us.id)
+
+            userstories
+            .filter((us) => modifiedUs.includes(us.id))
+            .forEach (us) =>
+                @kanbanUserstoriesService.replaceModel(us)
+                @kanbanUserstoriesService.refreshRawOrder()
+
+            if newUss.length
+                @kanbanUserstoriesService.add(newUss)
+
+            @kanbanUserstoriesService.refresh(false)
+
+    loadUserstories: () ->
+        params = @.loadUserstoriesParams()
+
         @.lastSearch = @.filterQ
         lastSearch = @.filterQ
         @.lastLoadUserstoriesParams = params
