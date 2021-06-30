@@ -68,24 +68,24 @@
             "TYPE_URL": "有効なURLでなければいけません。",
             "TYPE_URLSTRICT": "有効なURLでなければいけません。",
             "TYPE_NUMBER": "有効な数字でなければいけません。",
-            "TYPE_DIGITS": "アラビア数字でなければいけません",
-            "TYPE_DATEISO": "YYYY-MM-DD の形式でなければいけません (例: 2038年01月23日)",
-            "TYPE_ALPHANUM": "半角英数字でなければなりません",
-            "TYPE_PHONE": "有効な電話番号でなければいけません",
-            "NOTNULL": "null以外でなければいけません",
-            "NOT_BLANK": "空欄にできません",
-            "REQUIRED": "必須です",
-            "REGEXP": "無効な値です",
-            "MIN": "この値は %s 以上でなければいけません",
-            "MAX": "この値は %s 以下でなければいけません",
-            "RANGE": "この値は %s と %s の間でなければいけません",
+            "TYPE_DIGITS": "アラビア数字でなければいけません。",
+            "TYPE_DATEISO": "YYYY-MM-DD の形式でなければいけません (例: 2038年01月23日)。",
+            "TYPE_ALPHANUM": "半角英数字でなければなりません。",
+            "TYPE_PHONE": "有効な電話番号でなければいけません。",
+            "NOTNULL": "null以外でなければいけません。",
+            "NOT_BLANK": "空欄にできません。",
+            "REQUIRED": "必須です。",
+            "REGEXP": "無効な値です。",
+            "MIN": "この値は %s 以上でなければいけません。",
+            "MAX": "この値は %s 以下でなければいけません。",
+            "RANGE": "この値は %s と %s の間でなければいけません。",
             "MIN_LENGTH": "文字数が短すぎます。%s 文字以上にしてください。",
             "MAX_LENGTH": "入力した値が長すぎます。%s 文字以下にしてください。",
             "RANGE_LENGTH": "This value's length is invalid. It should be between %s and %s characters long.",
             "MIN_CHECK": "%s 以上選択してください。",
-            "MAX_CHECK": "選択できるのは %s までです",
-            "RANGE_CHECK": "選択できるのは %s から %s までです",
-            "EQUAL_TO": "この値は同じでなければいけません",
+            "MAX_CHECK": "選択できるのは %s までです。",
+            "RANGE_CHECK": "選択できるのは %s から %s までです。",
+            "EQUAL_TO": "この値は同じでなければいけません。",
             "LINEWIDTH": "行がおそらく長すぎます。%s文字以内におさえてください。",
             "PIKADAY": "無効なデータフォーマットです。DD MMM YYYYの形式で入力してください。（例：23 Mar 1984）"
         },
@@ -149,7 +149,7 @@
             "VALUE": "値",
             "SLUG": "スラッグ",
             "COLOR": "色",
-            "IS_CLOSED": "クローズ",
+            "IS_CLOSED": "クローズ？",
             "STATUS": "ステータス",
             "TYPE": "タイプ",
             "SEVERITY": "深刻度",
@@ -158,7 +158,7 @@
             "ASSIGNED_TO": "割当",
             "ASSIGNED_USERS": "割当ユーザー",
             "POINTS": "ポイント",
-            "IS_BLOCKED": "はブロックされています。",
+            "IS_BLOCKED": "はブロックされています",
             "REF": "参照",
             "VOTES": "投票",
             "SPRINT": "スプリント",
@@ -173,7 +173,7 @@
             "ASSIGN": "割当",
             "DELETE_ASSIGNMENT": "割当を削除",
             "REMOVE_ASSIGNED": "割当を解除",
-            "TOO_MANY": "…ユーザーが多すぎます。フィルタを継続してください。",
+            "TOO_MANY": "…ユーザーが多すぎます。フィルタを継続してください",
             "CONFIRM_UNASSIGNED": "本当にこのアサインから外れてもよろしいですか？",
             "TITLE_ACTION_EDIT_ASSIGNMENT": "割当を編集",
             "SELF": "自分に割当"
@@ -236,7 +236,7 @@
             "TITLE_ACTION_SEARCH": "検索",
             "ACTION_ADD": "追加",
             "ACTION_SAVE_CUSTOM_FILTER": "フィルターを保存",
-            "PLACEHOLDER_FILTER_NAME": "フィルター名を入力しエンターキーを押してください。",
+            "PLACEHOLDER_FILTER_NAME": "フィルター名を入力しエンターキーを押してください",
             "APPLIED_FILTERS_NUM": "フィルター適用中",
             "TITLE_ADVANCED_FILTER": "Advanced",
             "LENGTH_ZERO_ERROR": "フィルタ名を入力してください",
@@ -382,7 +382,7 @@
         "PLACEHOLDER_NEW_PASSWORD": "新しいパスワードを入力",
         "FIELD_RETYPE_PASSWORD": "新しいパスワードを再入力",
         "PLACEHOLDER_RETYPE_PASSWORD": "新しいパスワードを再入力",
-        "ERROR_PASSWORD_MATCH": "パスワードが一致しません。"
+        "ERROR_PASSWORD_MATCH": "パスワードが一致しません"
     },
     "CHANGE_PASSWORD_RECOVERY_FORM": {
         "TITLE": "新しいTaigaのパスを作成",
@@ -402,7 +402,7 @@
     },
     "HOME": {
         "PAGE_TITLE": "ホーム - Taiga",
-        "PAGE_DESCRIPTION": "あなたのメインプロジェクト、担当あるいはフォローしているユーザーストーリー、タスク、課題が表示されるTaigaのホームページです。",
+        "PAGE_DESCRIPTION": "あなたのメインプロジェクト、担当あるいはフォローしているユーザーストーリー、タスク、課題が表示されるTaigaのホームページです",
         "EMPTY_WORKING_ON": "<strong>何も表示されていませんか？</strong> Taigaで作業を始めると、ここにあなたが取り組んでいるユーザーストーリー、タスク、課題が表示されます。",
         "EMPTY_WATCHING": "ユーザーストーリー、タスク、課題を<strong>フォロー</strong>して変更が発生した際に通知を受け取りましょう。:)",
         "EMPTY_PROJECT_LIST": "参加中のプロジェクトがありません",
@@ -520,7 +520,7 @@
             "EPICS": "エピック",
             "EPICS_DESCRIPTION": "あなたのプロジェクトの最も戦略的な部分を視覚化し、管理する",
             "BACKLOG": "スクラム",
-            "BACKLOG_DESCRIPTION": "ユーザーストーリーが適切にメンテナンスされるよう管理し、優先順位に基づく作業を行うためのビュー",
+            "BACKLOG_DESCRIPTION": "ユーザーストーリーが適切にメンテナンスされるよう管理し、優先順位に基づく作業を行うためのビュー。",
             "NUMBER_SPRINTS": "予測されるスプリント数",
             "NUMBER_SPRINTS_HELP": "0に設定した場合、無制限となります",
             "NUMBER_US_POINTS": "予測されるストーリーポイントの合計",
@@ -528,7 +528,7 @@
             "KANBAN": "かんばん",
             "KANBAN_DESCRIPTION": "このかんばんを利用して、無駄のない方法でプロジェクトを整理しましょう。",
             "ISSUES": "課題",
-            "ISSUES_DESCRIPTION": "プロジェクトのバグ追跡、質問、機能改善に関する議論などが行えるようになります。",
+            "ISSUES_DESCRIPTION": "プロジェクトのバグ追跡、質問、機能改善に関する議論などが行えるようになります！",
             "WIKI": "Wiki",
             "WIKI_DESCRIPTION": "他のメンバーと協力してコンテンツを編集することができます。プロジェクトの情報を文書化するのにぴったりです。",
             "MEETUP": "会議",
@@ -557,19 +557,20 @@
             "DELETE": "このプロジェクトを削除",
             "CHANGE_LOGO": "ロゴを変更",
             "ACTION_USE_DEFAULT_LOGO": "デフォルトのイメージを使用する",
-            "MAX_PRIVATE_PROJECTS": "あなたの現在のプランで許可されている非公開プロジェクトの上限数に達しました。",
-            "MAX_PRIVATE_PROJECTS_MEMBERS": "非公開プロジェクトの最大メンバー数を超えました。",
-            "MAX_PUBLIC_PROJECTS": "あなたの現在のプランで許可されている公開プロジェクトの上限数に達しました。",
+            "MAX_PRIVATE_PROJECTS": "あなたの現在のプランで許可されている非公開プロジェクトの上限数に達しました",
+            "MAX_PRIVATE_PROJECTS_MEMBERS": "非公開プロジェクトの最大メンバー数を超えました",
+            "MAX_PUBLIC_PROJECTS": "あなたの現在のプランで許可されている公開プロジェクトの上限数に達しました",
             "MAX_PUBLIC_PROJECTS_MEMBERS": "The project exceeds your maximum number of members for public projects",
             "PROJECT_OWNER": "プロジェクトオーナー",
             "REQUEST_OWNERSHIP": "オーナー権限を要求",
             "REQUEST_OWNERSHIP_CONFIRMATION_TITLE": "新しいプロジェクトオーナーになりますか？",
-            "REQUEST_OWNERSHIP_DESC": "現在のプロジェクトオーナー {{name}} に、このプロジェクトのオーナー権限をあなたに移すよう要求",
+            "REQUEST_OWNERSHIP_DESC": "現在のプロジェクトオーナー {{name}} に、このプロジェクトのオーナー権限をあなたに移すよう要求します。",
             "REQUEST_OWNERSHIP_BUTTON": "リクエスト",
             "REQUEST_OWNERSHIP_SUCCESS": "プロジェクトオーナーに通知します",
             "CHANGE_OWNER": "オーナーを変更",
             "CHANGE_OWNER_SUCCESS_TITLE": "あなたのリクエストが送信されました！",
-            "CHANGE_OWNER_SUCCESS_DESC": "プロジェクトのオーナー権限要求が承認または拒否されことをメールでお知らせします"
+            "CHANGE_OWNER_SUCCESS_DESC": "プロジェクトのオーナー権限要求が承認または拒否されことをメールでお知らせします",
+            "REQUEST_OWNERSHIP_LIMIT": "{{maxProjects}} プライベートプロジェクト数の制限に達しました"
         },
         "REPORTS": {
             "TITLE": "レポート",
@@ -596,7 +597,7 @@
         },
         "CUSTOM_FIELDS": {
             "TITLE": "カスタムフィールド",
-            "SUBTITLE": "ユーザーストーリー、タスク、課題のためのカスタムフィールドを明記してください。",
+            "SUBTITLE": "ユーザーストーリー、タスク、課題のためのカスタムフィールドを明記してください",
             "EPIC_DESCRIPTION": "エピックカスタムフィールド",
             "EPIC_ADD": "複数のエピックにカスタムフィールドを追加",
             "US_DESCRIPTION": "ユーザーストーリーのカスタムフィールド",
@@ -621,19 +622,19 @@
         },
         "PROJECT_VALUES_POINTS": {
             "TITLE": "ポイント",
-            "SUBTITLE": "予測されるユーザーストーリーのポイントを定義することができます。",
+            "SUBTITLE": "予測されるユーザーストーリーのポイントを定義することができます",
             "US_TITLE": "User story points",
             "ACTION_ADD": "新規ポイントを追加"
         },
         "PROJECT_VALUES_PRIORITIES": {
             "TITLE": "優先度",
-            "SUBTITLE": "課題の優先度を定義することができます。",
+            "SUBTITLE": "課題の優先度を定義することができます",
             "ISSUE_TITLE": "課題の優先度",
             "ACTION_ADD": "新しい優先度を追加"
         },
         "PROJECT_VALUES_SEVERITIES": {
             "TITLE": "深刻度",
-            "SUBTITLE": "課題の深刻度を定義することができます。",
+            "SUBTITLE": "課題の深刻度を定義することができます",
             "ISSUE_TITLE": "課題の深刻度",
             "ACTION_ADD": "新しい深刻度を追加"
         },
@@ -647,15 +648,15 @@
         },
         "PROJECT_VALUES_TYPES": {
             "TITLE": "タイプ",
-            "SUBTITLE": "課題のタイプを定義することができます。",
+            "SUBTITLE": "課題のタイプを定義することができます",
             "ISSUE_TITLE": "課題のタイプ",
             "ACTION_ADD": "新しい {{objName}} を追加"
         },
         "PROJECT_VALUES_TAGS": {
             "TITLE": "タグ",
             "SUBTITLE": "タグを定義することができます",
-            "EMPTY": "タグは現在ありません。",
-            "EMPTY_SEARCH": "検索条件に当てはまるものはありませんでした。",
+            "EMPTY": "タグは現在ありません",
+            "EMPTY_SEARCH": "検索条件に当てはまるものはありませんでした",
             "ACTION_ADD": "タグを追加",
             "NEW_TAG": "新規タグ",
             "MIXING_HELP_TEXT": "マージしたいタグを選択",
@@ -664,7 +665,7 @@
         },
         "PROJECT_DUE_DATE_STATUS": {
             "TITLE": "締切日",
-            "SUBTITLE": "ユーザーストーリー、タスク、課題に締切日を設定した場合に適用される締切日ステータスを定義することができます。",
+            "SUBTITLE": "ユーザーストーリー、タスク、課題に締切日を設定した場合に適用される締切日ステータスを定義することができます",
             "US_TITLE": "ユーザーストーリー締切日ステータス",
             "ACTION_ADD_STATUS": "ステータスを追加",
             "TASK_TITLE": "タスク締切日ステータス",
@@ -680,7 +681,7 @@
             "SWIMLANES": "スイムレーン",
             "ACTION_ADD_SWIMLANE": "新規スイムレーン",
             "SWIMLANE_NAME_EXISTS": "This swimlane name already exists",
-            "NO_SWIMLANES": "スイムレーンはまだありません。",
+            "NO_SWIMLANES": "スイムレーンはまだありません",
             "SWIMLANE_NAME": "スイムレーンの名前",
             "POPUP_NEW_SWIMLANE": "作成済みのユーザーストーリーがあればこのスイムレーンに配置されます。",
             "WIP_LIMITS": "WIP制限",
@@ -690,17 +691,17 @@
         },
         "ROLES": {
             "PAGE_TITLE": "役割 - {{projectName}}",
-            "WARNING_NO_ROLE": "ユーザーストーリーのポイントを見積もれる役割がプロジェクトに存在しません。",
+            "WARNING_NO_ROLE": "ユーザーストーリーのポイントを見積もれる役割がプロジェクトに存在しません",
             "HELP_ROLE_ENABLED": "この役割はユーザーストーリーのポイント見積りに関わっています。",
             "DISABLE_COMPUTABLE_ALERT_TITLE": "本当に役割見積もりを無効にしてもよろしいですか？",
             "DISABLE_COMPUTABLE_ALERT_SUBTITLE": "役割 {{roleName}} の見積もり権限を無効にすると、この役割のこれまでの見積もりがすべて削除されます",
             "COUNT_MEMBERS": "{{ role.members_count }} 名がこの役割を担当",
             "TITLE_DELETE_ROLE": "役割を削除",
             "REPLACEMENT_ROLE": "この役割に属するすべてのユーザーはこちらの役割に変更されます:",
-            "WARNING_DELETE_ROLE": "ご注意ください！この役割の見積もりはすべて削除されます。",
+            "WARNING_DELETE_ROLE": "ご注意ください！この役割の見積もりはすべて削除されます",
             "ERROR_DELETE_ALL": "すべての値を削除することはできません",
             "EXTERNAL_USER": "外部ユーザー",
-            "NOTE_EXTERNAL_USERS": "外部ユーザーとは <strong>検索エンジンを含む</strong> 任意のユーザー (Taigaにログインしているかにかかわらず) です。未登録のユーザーは編集権限を持つことができませんが、登録済みのユーザーは許可すれば編集権限を持つことができます。非公開のプロジェクトであれば表示権限も制御することができます。 <strong>この役割は注意して使用してください。</strong>"
+            "NOTE_EXTERNAL_USERS": "外部ユーザーとは <strong>検索エンジンを含む</strong> 任意のユーザー (Taigaにログインしているかにかかわらず) です。未登録のユーザーは編集権限を持つことができませんが、登録済みのユーザーは許可すれば編集権限を持つことができます。非公開のプロジェクトであれば表示権限も制御することができます。 <strong>この役割は注意して使用してください</strong>。"
         },
         "THIRD_PARTIES": {
             "SECRET_KEY": "シークレットキー",
@@ -773,8 +774,8 @@
             "DELETE_MEMBER": "メンバーを削除",
             "RESEND": "再送信",
             "SUCCESS_SEND_INVITATION": "招待メールを '{{email}}' へもう一度送りました。",
-            "SUCCESS_DELETE": "{{message}} を削除しました",
-            "ERROR_DELETE": "{{message}} を削除できませんでした",
+            "SUCCESS_DELETE": "{{message}} を削除しました。",
+            "ERROR_DELETE": "{{message}} を削除できませんでした。",
             "DEFAULT_DELETE_MESSAGE": "{{email}} への招待メール"
         },
         "DEFAULT_VALUES": {
@@ -835,8 +836,8 @@
             "ADD_COMMENT": "プロジェクトオーナーにコメントしますか？",
             "UNLIMITED_PROJECTS": "無制限",
             "OWNER_MESSAGE": {
-                "PRIVATE": "あなたが持てる非公開プロジェクトは最大<strong>{{maxProjects}}</strong>個までです。現在<strong>{{currentProjects}}</strong>個持っています。",
-                "PUBLIC": "あなたが持てる公開プロジェクトは最大<strong>{{maxProjects}}</strong>個までです。現在<strong>{{currentProjects}}</strong>個持っています。"
+                "PRIVATE": "あなたが持てる非公開プロジェクトは最大<strong>{{maxProjects}}</strong>個までです。現在<strong>{{currentProjects}}</strong>個持っています",
+                "PUBLIC": "あなたが持てる公開プロジェクトは最大<strong>{{maxProjects}}</strong>個までです。現在<strong>{{currentProjects}}</strong>個持っています"
             },
             "CANT_BE_OWNED": "現在あなたはこのタイプのプロジェクトのオーナーにはなれません。このプロジェクトのオーナーになりたい場合は管理者に問い合わせてオーナー権限を変更してもらってください。"
         },
@@ -855,7 +856,7 @@
             "PROJECTS_EMPTY": "{{username}} はまだプロジェクトに参加していません",
             "CONTACTS": "連絡先",
             "CONTACTS_EMPTY": "{{username}} はまだ連絡先を持っていません",
-            "CURRENT_USER_CONTACTS_EMPTY": "あなたへのコンタクトはまだありません。",
+            "CURRENT_USER_CONTACTS_EMPTY": "あなたへのコンタクトはまだありません",
             "CURRENT_USER_CONTACTS_EMPTY_EXPLAIN": "Taigaで一緒に仕事をしたメンバーは自動的に連絡先へ追加されます",
             "TABS": {
                 "ACTIVITY_TAB": "タイムライン",
@@ -878,7 +879,7 @@
             "ADD_INFO": "編集する"
         },
         "PROFILE_FAVS": {
-            "FILTER_INPUT_PLACEHOLDER": "入力してください",
+            "FILTER_INPUT_PLACEHOLDER": "何か入力してください…",
             "FILTER_TYPE_ALL": "すべて",
             "FILTER_TYPE_ALL_TITLE": "すべてを表示",
             "FILTER_TYPE_PROJECTS": "プロジェクト",
@@ -896,7 +897,7 @@
     },
     "PROJECT": {
         "PAGE_TITLE": "{{projectName}}",
-        "HELP": "最もよく使うプロジェクトが一番上になるように並び替えてみましょう。<br/> 上位4件はナビゲーションバーのプロジェクトリストに表示されます。",
+        "HELP": "最もよく使うプロジェクトが一番上になるように並び替えてみましょう。<br/> 上位4件はナビゲーションバーのプロジェクトリストに表示されます",
         "PRIVATE": "プライベート プロジェクト",
         "LOOKING_FOR_PEOPLE": "プロジェクトはメンバーを探しています",
         "FANS_COUNTER_TITLE": "{total, plural, =1{one fan} other{# 人のファン}}",
@@ -904,7 +905,7 @@
         "MEMBERS_COUNTER_TITLE": "{total, plural, =1{one member} other{# 人のメンバー}}",
         "BLOCKED_PROJECT": {
             "BLOCKED": "ブロックされたプロジェクト",
-            "THIS_PROJECT_IS_BLOCKED": "このプロジェクトは一時的にブロックされています。",
+            "THIS_PROJECT_IS_BLOCKED": "このプロジェクトは一時的にブロックされています",
             "TO_UNBLOCK_CONTACT_THE_ADMIN_STAFF": "プロジェクトのブロックを解除したい場合は管理者にお問い合わせください。"
         },
         "SECTION": {
@@ -980,10 +981,10 @@
             "TEMPLATE_SCRUM_DESC": "短時間のサイクルでタスクの優先順位付けと解決を行います。",
             "TEMPLATE_SCRUM_LONGDESC": "スクラムはプロダクト開発を管理するための反復的・斬新的なアジャイルソフトウェア開発手法です。\nプロダクトバックログは最終的に実現する項目を優先度順に並べたリストで、スプリントと呼ばれる管理や実行が可能なまとまりに分割されます。チームは一定期間ごとに新しいスプリントに着手し、スキル・能力・リソースに応じてバックログから一定数のユーザーストーリーを実現することを約束します。プロジェクトはバックログが空になるまで続きます。",
             "TEMPLATE_KANBAN": "かんばん",
-            "TEMPLATE_KANBAN_DESC": "独立したタスクで一定のワークフローを維持します。",
+            "TEMPLATE_KANBAN_DESC": "独立したタスクで一定のワークフローを維持します",
             "TEMPLATE_KANBAN_LONGDESC": "かんばん方法論はプロジェクト開発（あらゆる種類のプロジェクト）を工程ごとに区切るのに使われます。\nかんばんカードはインデックスカードやポストイットのようなもので、プロジェクト内の全ての達成する必要のあるタスク（またはユーザーストーリー）がそれぞれのカードに詳細に書かれています。かんばんボードでは各カードを一つの工程が完了するたびに次の工程に動かし、進捗管理をしていきます。",
             "DUPLICATE": "プロジェクトを複製",
-            "DUPLICATE_DESC": "設定を維持したままプロジェクトを始めます。",
+            "DUPLICATE_DESC": "設定を維持したままプロジェクトを始めます",
             "IMPORT": "プロジェクトをインポート",
             "IMPORT_DESC": "複数プラットフォームからのプロジェクトをTaigaにインポート",
             "INVITE": "プロジェクトに招待",
@@ -1002,14 +1003,14 @@
         },
         "DUPLICATE": {
             "TITLE": "プロジェクトを複製",
-            "DESCRIPTION": "設定を維持したままプロジェクトを始めます。",
+            "DESCRIPTION": "設定を維持したままプロジェクトを始めます",
             "SELECT_PLACEHOLDER": "複製する既存プロジェクトを選択"
         },
         "IMPORT": {
             "TITLE": "プロジェクトをインポート",
             "DESCRIPTION": "複数プラットフォームからのプロジェクトをTaigaにインポート",
             "ASYNC_IN_PROGRESS_TITLE": "The Taiga is importing your project",
-            "ASYNC_IN_PROGRESS_MESSAGE": "この処理には時間がかかります。<br/>準備が出来たらメールで通知します。",
+            "ASYNC_IN_PROGRESS_MESSAGE": "この処理には時間がかかります。<br/>準備が出来たらメールで通知します",
             "UPLOAD_IN_PROGRESS_MESSAGE": "{{totalSize}} 中 {{uploadedSize}} アップロード済み",
             "ERROR": "The Taiga has some problems importing your dump data. Please try again.",
             "ERROR_TOO_MANY_REQUEST": "Sorry, the Taiga is experiencing heavy load right now. Please try again in a few minutes.",
@@ -1031,7 +1032,7 @@
             "WARNING_MAIL_USER": "Note that if the user does not have a Taiga account we will not be able to assign the tasks to them.",
             "ASSIGN": "割当",
             "PROJECT_SELECTOR": {
-                "NO_RESULTS": "検索条件に当てはまるものはありませんでした。",
+                "NO_RESULTS": "検索条件に当てはまるものはありませんでした",
                 "ACTION_SEARCH": "検索",
                 "ACTION_BACK": "バックエンド"
             },
@@ -1040,25 +1041,25 @@
                 "PROJECT_MEMBERS_DESC_PUBLIC": "The project you are trying to import has {{members}} members including you. Unfortunately, your current plan allows for a maximum of {{max_memberships}} members per public project. If you would like to increase that limit please contact the administrator.",
                 "ACCOUNT_ALLOW_MEMBERS": "Your account only allows {{members}} members",
                 "PRIVATE_PROJECTS_SPACE": {
-                    "TITLE": "現在のプランではこれ以上の非公開プロジェクトは許可されていません。",
+                    "TITLE": "現在のプランではこれ以上の非公開プロジェクトは許可されていません",
                     "DESC": "インポートしようとしているプロジェクトは非公開プロジェクトです。現在のプランではこれ以上の非公開プロジェクトは許可されていません。"
                 },
                 "PUBLIC_PROJECTS_SPACE": {
-                    "TITLE": "現在のプランではこれ以上の公開プロジェクトは許可されていません。",
+                    "TITLE": "現在のプランではこれ以上の公開プロジェクトは許可されていません",
                     "DESC": "インポートしようとしているプロジェクトは公開プロジェクトです。現在のプランではこれ以上の公開プロジェクトは許可されていません。"
                 },
                 "PRIVATE_PROJECTS_MEMBERS": {
-                    "TITLE": "現在のプランでは非公開プロジェクトごとに最大{{max_memberships}}名のメンバーが許可されています。"
+                    "TITLE": "現在のプランでは非公開プロジェクトごとに最大{{max_memberships}}名のメンバーが許可されています"
                 },
                 "PUBLIC_PROJECTS_MEMBERS": {
                     "TITLE": "現在のプランでは公開プロジェクトごとに最大{{max_memberships}}名のメンバーが許可されています。"
                 },
                 "PRIVATE_PROJECTS_SPACE_MEMBERS": {
-                    "TITLE": "現在のプランではこれ以上の非公開プロジェクトの作成や、一つの非公開プロジェクトに{{max_memberships}}名を超えるメンバーを追加することはできません。",
+                    "TITLE": "現在のプランではこれ以上の非公開プロジェクトの作成や、一つの非公開プロジェクトに{{max_memberships}}名を超えるメンバーを追加することはできません",
                     "DESC": "インポートしようとしているのは非公開プロジェクトで{{members}}名のメンバーがいます。"
                 },
                 "PUBLIC_PROJECTS_SPACE_MEMBERS": {
-                    "TITLE": "現在のプランではこれ以上の公開プロジェクトの作成や、一つの公開プロジェクトに{{max_memberships}}名を超えるメンバーを追加することはできません。",
+                    "TITLE": "現在のプランではこれ以上の公開プロジェクトの作成や、一つの公開プロジェクトに{{max_memberships}}名を超えるメンバーを追加することはできません",
                     "DESC": "インポートしようとしているのは公開プロジェクトで{{members}}名以上のメンバーがいます。"
                 }
             },
@@ -1089,7 +1090,7 @@
                 "SCRUM_PROJECT": "As user stories in a scrum project",
                 "SCRUM_PROJECT_DESCRIPTION": "After that you can enable kanban mode.",
                 "ISSUES_PROJECT": "課題として",
-                "ISSUES_PROJECT_DESCRIPTION": "課題をカンバンまたはスクラムモードで使うことはできません。新しいユーザーストーリーからカンバンまたはスクラムを有効にすることができます。"
+                "ISSUES_PROJECT_DESCRIPTION": "課題をカンバンまたはスクラムモードで使うことはできません。新しいユーザーストーリーからカンバンまたはスクラムを有効にすることができます"
             },
             "ASANA": {
                 "SELECTOR": "Asanaプロジェクトをインポートし管理方法を選択",
@@ -1229,7 +1230,7 @@
             "LIMIT_USERS_WARNING_MESSAGE": "このプロジェクトで許可されている最大メンバー数<strong>{{maxMembers}}</strong>名に達しようとしています。"
         },
         "LEAVE_PROJECT_WARNING": {
-            "TITLE": "オーナーが不在となるため、プロジェクトを離脱することができません。",
+            "TITLE": "オーナーが不在となるため、プロジェクトを離脱することができません",
             "CURRENT_USER_OWNER": {
                 "DESC": "現在、あなたはこのプロジェクトのオーナーです。プロジェクトを離脱する前にオーナー権限を他の誰かに譲渡してください。",
                 "BUTTON": "プロジェクトのオーナーを変更"
@@ -1272,7 +1273,7 @@
             "SUBTITLE_ACTION_DELETE_SWIMLANE_OPTIONS": "本当にスイムレーン {{swimlane}} を削除してもよろしいですか？",
             "SUBTITLE_ACTION_DELETE_SWIMLANE_REPLACEMENT": "このスイムレーンにあるユーザーストーリーはすべて以下のスイムレーンに移動されます:",
             "SUBTITLE_ACTION_DELETE_SWIMLANE_LAST": "ユーザーストーリーは削除されず、かんばんに残ります。",
-            "DEFAULT_SWIMLANE": "デフォルトでは新しいユーザーストーリーはこのスイムレーンに配置されます。",
+            "DEFAULT_SWIMLANE": "デフォルトでは新しいユーザーストーリーはこのスイムレーンに配置されます",
             "SET_DEFAULT_SWIMLANE": "このスイムレーンをデフォルトにする",
             "DISABLE_DELETE_SWIMLANE": "デフォルトスイムレーンは削除できません"
         },
@@ -1285,7 +1286,7 @@
             "SUBJECT": "題名",
             "CHOOSE_EPIC": "What's the epic?",
             "FILTER_EPICS": "エピックをフィルター",
-            "NO_EPICS_FOUND": "検索条件に当てはまるものはありませんでした。"
+            "NO_EPICS_FOUND": "検索条件に当てはまるものはありませんでした"
         }
     },
     "EPIC": {
@@ -1303,7 +1304,7 @@
         "CHOOSE_PROJECT_FROM": "どのプロジェクト？",
         "CHOOSE_USERSTORY": "どのユーザーストーリー？",
         "NO_USERSTORIES": "This project has no user stories yet. Please select another project.",
-        "NO_USERSTORIES_FOUND": "検索条件に当てはまるものはありませんでした。",
+        "NO_USERSTORIES_FOUND": "検索条件に当てはまるものはありませんでした",
         "FILTER_USERSTORIES": "ユーザーストーリーをフィルター",
         "LIGHTBOX_TITLE_BLOKING_EPIC": "ブロックしているエピック",
         "ACTION_DELETE": "エピックの削除"
@@ -1343,7 +1344,7 @@
     },
     "COMMENTS": {
         "TITLE": "コメント",
-        "DELETED_INFO": "{{user}}によってコメントは削除されました。",
+        "DELETED_INFO": "{{user}}によってコメントは削除されました",
         "COMMENTS_COUNT": "{{comments}}コメント",
         "OLDER_FIRST": "古い順",
         "RECENT_FIRST": "新しい順",
@@ -1399,9 +1400,9 @@
         "PAGE_DESCRIPTION": "バックログパネルです。次のプロジェクトのユーザーストーリーとスプリントが記録されています：{{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "スクラム",
         "CUSTOMIZE_GRAPH": "バックロググラフのカスタマイズ",
-        "CUSTOMIZE_GRAPH_TEXT": "プロジェクトの進化に役立つ素敵なグラフを表示するには、ポイントとスプリントを設定する必要があります。",
+        "CUSTOMIZE_GRAPH_TEXT": "プロジェクトの進化に役立つ素敵なグラフを表示するには、ポイントとスプリントを設定する必要があります",
         "CUSTOMIZE_GRAPH_ADMIN": "管理",
-        "CUSTOMIZE_GRAPH_TITLE": "管理ユーザーでポイントとスプリントを設定してください。",
+        "CUSTOMIZE_GRAPH_TITLE": "管理ユーザーでポイントとスプリントを設定してください",
         "TOTAL_STORIES_FILTERED": "of {{ totalUserStories }} user stories",
         "TOTAL_STORIES": "{{ totalUserStories }} user stories",
         "MOVE_US_TO_CURRENT_SPRINT": "現在のスプリントに移動",
@@ -1409,8 +1410,8 @@
         "EMPTY": "バックログが空です！",
         "CREATE_NEW_US": "Create a new user story",
         "CREATE_NEW_US_EMPTY_HELP": "Add a user story",
-        "NO_MATCH": "“{{ q }}” に一致する結果はありませんでした。",
-        "NO_MATCH_HELP": "より一般的な語句を使用してみてください。",
+        "NO_MATCH": "“{{ q }}” に一致する結果はありませんでした",
+        "NO_MATCH_HELP": "より一般的な語句を使用してみてください",
         "EXCESS_OF_POINTS": "ポイント超過",
         "PENDING_POINTS": "保留ポイント",
         "CLOSED_POINTS": "完了",
@@ -1474,9 +1475,9 @@
             "TITLE_LINK_TASKBOARD": "タスクボード{{name}}へ移動",
             "EMPTY": "まだスプリントはありません",
             "WARNING_EMPTY_SPRINT_ANONYMOUS": "This sprint has no user stories",
-            "WARNING_EMPTY_SPRINT": "新しいスプリントを始めるために、バックログからストーリーをここにドロップしてください。",
+            "WARNING_EMPTY_SPRINT": "新しいスプリントを始めるために、バックログからストーリーをここにドロップしてください",
             "TITLE_ACTION_NEW_SPRINT": "スプリントを追加",
-            "TEXT_ACTION_NEW_SPRINT": "新しくスプリントをプロジェクトに作成してください。",
+            "TEXT_ACTION_NEW_SPRINT": "新しくスプリントをプロジェクトに作成してください",
             "ACTION_SHOW_CLOSED_SPRINTS": "終了したスプリントを表示",
             "ACTION_HIDE_CLOSED_SPRINTS": "終了したスプリントを非表示"
         }
@@ -1498,9 +1499,9 @@
         "TITLE_ACTION_ADD_ISSUE": "新規課題を追加",
         "TITLE_ACTION_ADD_ISSUE_BULK": "新規課題を一括で追加する",
         "TITLE_ACTION_ASSIGN": "タスクの割当",
-        "PLACEHOLDER_CARD_TITLE": "これはユーザーストーリーになるかもしれません。",
+        "PLACEHOLDER_CARD_TITLE": "これはユーザーストーリーかもしれません",
         "PLACEHOLDER_CARD_TEXT": "<a href=\"{{ backlogUrl }}\" title=\"Go to backlog\">バックログ</a> でユーザーストーリーをこのスプリントにドラッグしてください。ユーザーストーリーをタスクに分解することで個別に追跡できます。",
-        "TASK_NOT_FOUND_TITLE": "一致する結果はありませんでした。",
+        "TASK_NOT_FOUND_TITLE": "一致する結果はありませんでした",
         "TASK_NOT_FOUND_TEXT": "より一般的な語句を使用するか、フィルターをいくつか解除してみてください。",
         "TITLE_DATE_RANGE": "{{startDate}} <span>to</span> {{endDate}}",
         "TABLE": {
@@ -1556,7 +1557,7 @@
     },
     "NOTIFICATION": {
         "OK": "すべてOKです",
-        "WARNING": "おっと、何か問題があったようです",
+        "WARNING": "おっと、何か問題があったようです…",
         "WARNING_TEXT": "あなたが変更した内容は保存されませんでした！",
         "SAVED": "Taigaは変更内容を保存しました！",
         "CLOSE": "通知を閉じる",
@@ -1609,7 +1610,7 @@
         "FILTER_ISSUES": "課題をフィルター",
         "CONFIRM_DETACH_FROM_SPRINT": {
             "TITLE": "課題をスプリントから切り離す",
-            "MESSAGE": "この課題をスプリント <strong>{{ sprintName }}<strong> から切り離そうとしています。"
+            "MESSAGE": "この課題をスプリント <strong>{{ sprintName }}</strong> から切り離そうとしています"
         },
         "CONFIRM_CHANGE_FROM_SPRINT": {
             "TITLE": "課題をスプリントに加える",
@@ -1650,10 +1651,10 @@
         "TITLE_ACTION_ADD_BULK": "新規一括追加",
         "ACTION_SHOW_ARCHIVED": "アーカイブ済を表示",
         "ACTION_HIDE_ARCHIVED": "アーカイブ済を隠す",
-        "US_NOT_FOUND_TITLE": "一致する結果はありませんでした。",
+        "US_NOT_FOUND_TITLE": "一致する結果はありませんでした",
         "US_NOT_FOUND_TEXT_P1": "より一般的な語句を使用するか、フィルターをいくつか解除してみてください。",
         "US_NOT_FOUND_TEXT_P2": "<strong>Archived stories</strong> are not loaded by default. Unfold the archived statuses to expand your search.",
-        "PLACEHOLDER_CARD_TITLE": "これはユーザーストーリーになるかもしれません。",
+        "PLACEHOLDER_CARD_TITLE": "これはユーザーストーリーかもしれません",
         "PLACEHOLDER_CARD_TEXT": "Create user stories here and change their status to track their progress.",
         "NUMBER_US": "Number of US",
         "ARCHIVED": "(Archived)",
@@ -1672,13 +1673,13 @@
         "PLACEHOLDER_SEARCH": "検索...",
         "TITLE_ACTION_SEARCH": "検索",
         "EMPTY_TITLE": "検索条件に当てはまるものはありませんでした。",
-        "EMPTY_DESCRIPTION": "上のいずれかのタブを試すか、改めて検索してみてください。"
+        "EMPTY_DESCRIPTION": "上のいずれかのタブを試すか、改めて検索してみてください"
     },
     "TEAM": {
         "PAGE_TITLE": "チーム - {{projectName}}",
         "PAGE_DESCRIPTION": "The team panel to show all the members of the project {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "チーム",
-        "PLACEHOLDER_INPUT_SEARCH": "フルネームで検索する",
+        "PLACEHOLDER_INPUT_SEARCH": "フルネームで検索する...",
         "COLUMN_MR_WOLF": "Mr. Wolf",
         "EXPLANATION_COLUMN_MR_WOLF": "完了した課題",
         "COLUMN_IOCAINE": "Iocaine Drinker",
@@ -1928,7 +1929,7 @@
         "DISCOVER_TITLE": "プロジェクトを探す",
         "DISCOVER_SUBTITLE": "{projects, plural, =1{One public project to discover} other{# public projects to discover}}",
         "MOST_ACTIVE": "最も活発なプロジェクト",
-        "MOST_ACTIVE_EMPTY": "アクティブなプロジェクトはまだありません。",
+        "MOST_ACTIVE_EMPTY": "アクティブなプロジェクトはまだありません",
         "MOST_LIKED": "最も好まれているプロジェクト",
         "MOST_LIKED_EMPTY": "「いいね」されたプロジェクトはまだありません",
         "VIEW_MORE": "もっと見る",
@@ -1948,7 +1949,7 @@
         "SEARCH": {
             "PAGE_TITLE": "検索結果 - プロジェクトを探す - Taiga",
             "PAGE_DESCRIPTION": "検索できるTaigaの公開プロジェクトディレクトリ。バックログ、タイムライン、課題、そしてチームを探してみてください。最も人気な、あるいは活気のあるプロジェクトも見つけられます。カンバンやスクラムでフィルターしてみるのも良いかもしれません。",
-            "INPUT_PLACEHOLDER": "入力してください",
+            "INPUT_PLACEHOLDER": "何か入力してください...",
             "ACTION_TITLE": "検索",
             "RESULTS": "検索結果"
         }
