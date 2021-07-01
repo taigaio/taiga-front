@@ -1164,12 +1164,12 @@
         },
         "FEEDBACK": {
             "TITLE": "Ask a question",
-            "COMMENT": "Leave us a message",
+            "COMMENT": "メッセージをお寄せください",
             "ACTION_SEND": "Send Message",
-            "YOU_CAN_ALSO": "You can also:",
-            "CREATE": "Create an issue on this",
+            "YOU_CAN_ALSO": "以下でも可能です:",
+            "CREATE": "課題を作成する: ",
             "PUBLIC": "public Taiga project",
-            "EMAIL": "Send us a e-mail directly to",
+            "EMAIL": "直接メールする: ",
             "SUPPORT": "support@taiga.io"
         },
         "SEARCH": {
@@ -1790,7 +1790,7 @@
         "HINT2_TITLE": "カスタムフィールドが作れるのはご存知ですか？",
         "HINT2_TEXT": "チームは特定のワークフローで役立つデータを入力するための柔軟な手段として、カスタムフィールドを作成できるようになりました。",
         "HINT3_TITLE": "あなたに最も関連性のあるプロジェクトを見つけやすくするために順序を入れ替えてみましょう。",
-        "HINT3_TEXT": "The 4 projects are listed in the direct access bar at the top.",
+        "HINT3_TEXT": "4件のプロジェクトが上部のダイレクトアクセスバーに一覧表示されます。",
         "HINT4_TITLE": "何をしているのか忘れましたか？",
         "HINT4_TEXT": "ご心配なさらないでください。ダッシュボードではあなたが取り組んだ順番にオープンなタスク、課題、ユーザーストーリーが表示されます。"
     },
