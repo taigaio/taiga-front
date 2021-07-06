@@ -127,6 +127,12 @@ class AuthService extends taiga.Service
         @rootscope.user = null
         @storage.remove("userInfo")
 
+    setRefreshToken: (token) ->
+        @storage.set("refresh", token)
+
+    getRefreshToken: ->
+        return @storage.get("refresh")
+
     setToken: (token) ->
         @storage.set("token", token)
 
@@ -166,6 +172,7 @@ class AuthService extends taiga.Service
         return @http.post(url, data).then (data, status) =>
             user = @model.make_model("users", data.data)
             @.setToken(user.auth_token)
+            @.setRefreshToken(user.refresh)
             @.setUser(user)
             @rootscope.$broadcast("auth:login", user)
             return user

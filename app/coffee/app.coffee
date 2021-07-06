@@ -599,25 +599,86 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
     $tgEventsProvider.setSessionId(taiga.sessionId)
 
     # Add next param when user try to access to a secction need auth permissions.
-    authHttpIntercept = ($q, $location, $navUrls, $lightboxService, errorHandlingService) ->
+    authHttpIntercept = ($q, $location, $navUrls, $lightboxService, errorHandlingService, $injector, urls, storage) ->
+        retry = {
+            inProgress: false,
+            promise: null
+        }
+
         httpResponseError = (response) ->
+            if response.config.url.includes('/auth/refresh')
+                return $q.reject(response)
+
             if response.status == 0 || (response.status == -1 && !response.config.cancelable)
                 $lightboxService.closeAll()
 
                 errorHandlingService.error()
             else if response.status == 401 and $location.url().indexOf('/login') == -1
-                nextUrl = $location.url()
-                search = $location.search()
+                return new Promise (resolve, reject) =>
+                    $http = $injector.get('$http')
 
-                if search.force_next
-                    $location.url($navUrls.resolve("login"))
-                        .search("force_next", search.force_next)
-                else
-                    $location.url($navUrls.resolve("login"))
-                        .search({
-                            "unauthorized": true
-                            "next": nextUrl
-                        })
+                    refreshTokenReponse = (responseRefresh) =>
+                        storage.set("token", responseRefresh.data.auth_token)
+                        storage.set("refresh", responseRefresh.data.refresh)
+
+                        response.config.headers.Authorization = "Bearer #{responseRefresh.data.auth_token}"
+                        return $http(response.config).then (result) =>
+                            resolve(result)
+
+                    errorToken = () =>
+                        nextUrl = $location.url()
+                        search = $location.search()
+                        storage.remove("token")
+                        storage.remove("userInfo")
+
+                        if search.force_next
+                            $location.url($navUrls.resolve("login"))
+                                .search("force_next", search.force_next)
+                        else
+                            $location.url($navUrls.resolve("login"))
+                                .search({
+                                    "unauthorized": true
+                                    "next": nextUrl
+                                })
+
+                    if retry.inProgress
+                        retry.promise
+                            .then (responseRefresh) =>
+                                return refreshTokenReponse(responseRefresh)
+                                .catch (err) =>
+                                    # original request error
+                                    reject(err)
+                            .catch (err) =>
+                                # refresh token error
+                                errorToken()
+                                reject(err)
+                    else
+                        retry.inProgress = true
+
+                        apiUrl = urls.resolve('refresh')
+
+                        refreshToken = storage.get("refresh")
+
+                        if refreshToken
+                            request = $http.post(apiUrl, {refresh: refreshToken})
+                            retry.promise = request
+
+                            request.then (responseRefresh) =>
+                                retry.inProgress = false
+                                return refreshTokenReponse(responseRefresh)
+                                .catch (err) =>
+                                    # original request error
+                                    reject(err)
+
+                            request.catch (err) =>
+                                retry.inProgress = false
+                                # refresh token error
+                                errorToken()
+                                reject(err)
+
+                        else
+                            $location.url($navUrls.resolve("login"))
+                            reject(response)
 
             return $q.reject(response)
 
@@ -625,8 +686,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
             responseError: httpResponseError
         }
 
-    $provide.factory("authHttpIntercept", ["$q", "$location", "$tgNavUrls", "lightboxService",
-                                           "tgErrorHandlingService", authHttpIntercept])
+    $provide.factory("authHttpIntercept", ["$q", "$location", "$tgNavUrls", "lightboxService", "tgErrorHandlingService", "$injector", "$tgUrls", "$tgStorage", authHttpIntercept])
 
     $httpProvider.interceptors.push("authHttpIntercept")
 

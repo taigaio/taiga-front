@@ -15,6 +15,7 @@ urls = {
     "auth": "/auth"
     "auth-register": "/auth/register"
     "invitations": "/invitations"
+    "refresh": "/auth/refresh"
 
     # User
     "users": "/users"
