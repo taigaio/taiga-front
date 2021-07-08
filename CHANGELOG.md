@@ -4,6 +4,9 @@
 
 - fix: prevent unnecessary kanban refresh with taiga-events
 - fix: empty multiple assigned_to in kanban
+- feat: Add multi language selector for text parts in editor
+- feat: Add text alinment button in editor toolbar
+- feat: Add todo list button in editor toolbar
 
 ## 6.2.1 (2021-06-22)
 
