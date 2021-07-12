@@ -493,8 +493,7 @@
         "PROJECT_PRESETS": {
             "MENU_TITLE": "Presets",
             "TITLE": "Default Values",
-            "SUBTITLE": "Set default values for all selector inputs.",
-            "DEFAULT_POSITIONS_TITLE": "Default Positions"
+            "SUBTITLE": "Set default values for all selector inputs."
         },
         "MEMBERSHIPS": {
             "TITLE": "Manage members",
@@ -790,12 +789,6 @@
             "LABEL_ISSUE_STATUS": "Issue status selector",
             "LABEL_PRIORITY": "Priority selector",
             "LABEL_SEVERITY": "Severity selector"
-        },
-        "DEFAULT_POSITIONS": {
-          "BACKLOG_ORDER": "User stories created on the backlog",
-          "KANBAN_ORDER": "User stories created on the kanban",
-          "TOP_OF_BACKLOG": "Top",
-          "BOTTOM_OF_BACKLOG": "Bottom"
         },
         "STATUS": {
             "PLACEHOLDER_WRITE_STATUS_NAME": "Write a name for the new status",

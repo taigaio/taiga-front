@@ -1,5 +1,4 @@
-.default-values,
-.default-positions {
+.default-values {
     fieldset {
         margin-bottom: 1rem;
         &:last-child {
@@ -16,8 +15,4 @@
         display: block;
         text-align: center;
     }
-}
-
-section.default-positions {
-    margin-top: 4em;
 }

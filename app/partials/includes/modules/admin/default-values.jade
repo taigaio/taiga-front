@@ -6,7 +6,7 @@
 //- Copyright (c) 2021-present Kaleidos Ventures SL
 
 section.default-values
-    form.default-values
+    form
 
         //- Epics
         fieldset
@@ -52,24 +52,10 @@ section.default-values
             select(id="default-value-severity", ng-model="project.default_severity",
                    ng-options="s.id as s.name for s in severitiesList")
 
-section.default-positions
-    h1.title {{ 'ADMIN.PROJECT_PRESETS.DEFAULT_POSITIONS_TITLE' | translate }}
-
-    form.default-positions
-      fieldset
-          label(for="default_backlog_order_scrum", translate="ADMIN.DEFAULT_POSITIONS.BACKLOG_ORDER")
-          select(id="default-backlog-order_scrum", ng-model="project.default_backlog_order_scrum",
-                 ng-options="boOption.key as boOption.name|translate for boOption in BACKLOG_ORDER_OPTIONS")
-
-      fieldset
-          label(for="default_backlog_order_kanban", translate="ADMIN.DEFAULT_POSITIONS.KANBAN_ORDER")
-          select(id="default-backlog-order_kanban", ng-model="project.default_backlog_order_kanban",
-                 ng-options="boOption.key as boOption.name|translate for boOption in BACKLOG_ORDER_OPTIONS")
-
-      fieldset
-          button.btn-small(
-              variant="primary"
-              type="submit",
-              title="{{'COMMON.SAVE' | translate}}"
-          )
-              span(translate="COMMON.SAVE")
+        fieldset
+            button.btn-small(
+                variant="primary"
+                type="submit",
+                title="{{'COMMON.SAVE' | translate}}"
+            )
+                span(translate="COMMON.SAVE")
