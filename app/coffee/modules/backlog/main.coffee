@@ -125,9 +125,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             @.newUs = _.map els, (it) ->
                 return it.id
 
-            @.loadUserstories(true).then (userstories) =>
-              if @scope.project.default_backlog_order_scrum == 1
-                @.moveUsToTopOfBacklogById(element.id) for element in els
+            @.loadUserstories(true)
             @.loadProjectStats()
             @confirm.notify("success")
             @analytics.trackEvent("userstory", "create", "bulk create userstory on backlog", 1)
@@ -142,9 +140,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
         @scope.$on "usform:new:success", (event, el) =>
             @.newUs = [el.id]
-            @.loadUserstories(true).then (userstories) =>
-              if @scope.project.default_backlog_order_scrum == 1
-                @.moveUsToTopOfBacklogById(el.id)
+            @.loadUserstories(true)
             @.loadProjectStats()
 
             @rootscope.$broadcast("filters:update")

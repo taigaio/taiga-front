@@ -36,7 +36,6 @@ class ProjectService
         fetchRequiredSignals = [
             "admin:project-modules:updated"
             "admin:project-roles:updated"
-            "admin:project-default-positions:updated"
             "admin:project-default-values:updated"
             "admin:project-values:updated"
             "admin:project-values:move"
