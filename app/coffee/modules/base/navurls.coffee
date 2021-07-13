@@ -27,13 +27,21 @@ class NavigationUrlsService extends taiga.Service
     formatUrl: (url, ctx={}) ->
         replacer = (match) ->
             match = trim(match, ":")
-            return ctx[match] or "undefined"
+            return ctx[match] or ":" + match
         return url.replace(/(:\w+)/g, replacer)
 
-    resolve: (name, ctx) ->
+    _resolve: (name, ctx) ->
         url = @.urls[name]
         return "" if not url
         return @.formatUrl(url, ctx) if ctx
+        return url
+
+    resolve: (name, ctx) ->
+        url = @._resolve(name, ctx)
+
+        if url.startsWith('/')
+            return url.slice(1)
+
         return url
 
 module.service("$tgNavUrls", NavigationUrlsService)

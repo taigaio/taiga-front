@@ -103,24 +103,24 @@ section.profile-favs
     div(ng-if="vm.isLoading")
         div.spin
             img(
-                src="/#{v}/svg/spinner-circle.svg"
+                src="#{v}/svg/spinner-circle.svg"
                 alt="{{ 'COMMON.LOADING'|translate }}"
             )
 
     .empty-small(ng-if="vm.hasNoResults && !vm.isLoading")
         img(
             ng-if="vm.tabName === 'likes'"
-            src="/#{v}/images/empty/empty_like.png"
+            src="#{v}/images/empty/empty_like.png"
             alt="{{ 'USER.PROFILE_FAVS.EMPTY_TITLE' | translate }}"
         )
         img(
             ng-if="vm.tabName === 'upvotes'"
-            src="/#{v}/images/empty/empty_upvote.png"
+            src="#{v}/images/empty/empty_upvote.png"
             alt="{{ 'USER.PROFILE_FAVS.EMPTY_TITLE' | translate }}"
         )
         img(
             ng-if="vm.tabName === 'watchers'"
-            src="/#{v}/images/empty/empty_watch.png"
+            src="#{v}/images/empty/empty_watch.png"
             alt="{{ 'USER.PROFILE_FAVS.EMPTY_TITLE' | translate }}"
         )
         p.title {{ 'USER.PROFILE_FAVS.EMPTY_TITLE' | translate }}

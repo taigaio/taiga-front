@@ -40,7 +40,7 @@
         )
     .assigned(ng-if="vm.options.assigned && !vm.story.get('assigned_to')")
         img(
-            src="/#{v}/images/unnamed.png"
+            src="#{v}/images/unnamed.png"
             alt="{{EPICS.DASHBOARD.UNASSIGNED | translate}}"
         )
     .status-holder(ng-if="vm.options.status") {{vm.story.getIn(['status_extra_info', 'name'])}}

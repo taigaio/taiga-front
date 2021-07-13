@@ -23,7 +23,7 @@
         )
         img(
             alt="{{::vm.attachment.getIn(['file', 'name'])}}"
-            src="/#{v}/images/attachment-gallery.png"
+            src="#{v}/images/attachment-gallery.png"
             ng-if="!vm.attachment.getIn(['file', 'thumbnail_card_url'])"
         )
     .attachment-data

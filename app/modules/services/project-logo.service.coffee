@@ -9,11 +9,11 @@
 class ProjectLogoService
     constructor: () ->
         IMAGES = [
-            "/#{window._version}/images/project-logos/project-logo-01.png"
-            "/#{window._version}/images/project-logos/project-logo-02.png"
-            "/#{window._version}/images/project-logos/project-logo-03.png"
-            "/#{window._version}/images/project-logos/project-logo-04.png"
-            "/#{window._version}/images/project-logos/project-logo-05.png"
+            "#{window._version}/images/project-logos/project-logo-01.png"
+            "#{window._version}/images/project-logos/project-logo-02.png"
+            "#{window._version}/images/project-logos/project-logo-03.png"
+            "#{window._version}/images/project-logos/project-logo-04.png"
+            "#{window._version}/images/project-logos/project-logo-05.png"
         ]
 
         COLORS = [

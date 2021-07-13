@@ -16,6 +16,7 @@
 ## 6.3.1 (2021-08-12)
 
 - fix: move us between sprints
+- feat: serve Taiga in subpath
 
 ## 6.3.0 (2021-08-10)
 

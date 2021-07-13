@@ -25,6 +25,13 @@ taiga.generateUniqueSessionIdentifier = ->
 
 taiga.sessionId = taiga.generateUniqueSessionIdentifier()
 
+oldWindowOpen = window.open
+
+window.open = (url, name, config) =>
+    if url.startsWith('/')
+        url = document.baseURI + url
+
+    oldWindowOpen(url)
 
 configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEventsProvider, $compileProvider,
              $translateProvider, $translatePartialLoaderProvider, $animateProvider, $logProvider) ->
@@ -578,7 +585,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
         {templateUrl: "error/permission-denied.html"})
 
     $routeProvider.otherwise({templateUrl: "error/not-found.html"})
-    $locationProvider.html5Mode({enabled: true, requireBase: false})
+    $locationProvider.html5Mode({enabled: true, requireBase: true})
 
     defaultHeaders = {
         "Content-Type": "application/json"
@@ -784,7 +791,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
     $translatePartialLoaderProvider.addPart('taiga')
     $translateProvider
         .useLoader('$translatePartialLoader', {
-            urlTemplate: '/' + window._version + '/locales/{part}/locale-{lang}.json'
+            urlTemplate: window._version + '/locales/{part}/locale-{lang}.json'
         })
         .useSanitizeValueStrategy('escapeParameters')
         .addInterpolation('$translateMessageFormatInterpolation')

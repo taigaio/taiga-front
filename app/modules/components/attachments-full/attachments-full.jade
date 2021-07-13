@@ -101,7 +101,7 @@ section.attachments.attachment-full(
         .single-attachment(ng-repeat="file in vm.uploadingAttachments()")
             .loading-container
                 img.loading-spinner(
-                    src="/#{v}/svg/spinner-circle.svg",
+                    src="#{v}/svg/spinner-circle.svg",
                     alt="{{'COMMON.LOADING' | translate}}"
                 )
             .attachment-data {{file.progressMessage}}

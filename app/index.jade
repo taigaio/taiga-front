@@ -11,6 +11,7 @@ html(lang="en", ng-attr-dir="{{ isRTL ? 'rtl' : 'ltr' }}")
         meta(charset="utf-8")
         meta(http-equiv="content-type", content="text/html; charset=utf-8")
         meta(name="fragment", content="!")
+        base(href="/")
 
         // Main meta
         title Taiga
@@ -18,8 +19,8 @@ html(lang="en", ng-attr-dir="{{ isRTL ? 'rtl' : 'ltr' }}")
         meta(name="keywords", content="agile, scrum, taiga, management, project, developer, designer, user experience")
 
         //-meta(name="viewport", content="width=device-width, user-scalable=no")
-        link(rel="stylesheet", href="/#{v}/styles/theme-taiga.css")
-        link(rel="icon", type="image/png", href="/#{v}/images/favicon.png")
+        link(rel="stylesheet", href="#{v}/styles/theme-taiga.css")
+        link(rel="icon", type="image/png", href="#{v}/images/favicon.png")
 
         //- PRERENDER SERVICE: This is to know when the page is completely loaded.
         script(type='text/javascript').
@@ -59,9 +60,7 @@ html(lang="en", ng-attr-dir="{{ isRTL ? 'rtl' : 'ltr' }}")
 
         div(tg-live-announcement)
 
-        script(src="/#{v}/js/libs.js")
-        script(src="/#{v}/js/templates.js")
-        script(src="/#{v}/js/app-loader.js")
+        script(src="#{v}/js/app-loader.js")
 
         // load userpilot library if required
         if userpilotToken

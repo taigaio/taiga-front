@@ -14,7 +14,7 @@ if [[ -z "${ENABLE_SLACK}" ]]; then
 fi
 
 if [ ${ENABLE_SLACK} == "true" ]; then
-    contribs+=('"/plugins/slack/slack.json"')
+    contribs+=('"plugins/slack/slack.json"')
 fi
 
 # Public registration and oauth
@@ -24,10 +24,10 @@ fi
 
 if [ ${PUBLIC_REGISTER_ENABLED} == "true" ]; then
     if [ ${ENABLE_GITHUB_AUTH} == "true" ]; then
-        contribs+=('"/plugins/github-auth/github-auth.json"')
+        contribs+=('"plugins/github-auth/github-auth.json"')
     fi
     if [ ${ENABLE_GITLAB_AUTH} == "true" ]; then
-        contribs+=('"/plugins/gitlab-auth/gitlab-auth.json"')
+        contribs+=('"plugins/gitlab-auth/gitlab-auth.json"')
     fi
 fi
 
@@ -53,3 +53,5 @@ if [ ! -f "$FILE" ]; then
     envsubst < /usr/share/nginx/html/conf.json.template \
              > /usr/share/nginx/html/conf.json
 fi
+
+sed -i 's;<base href="/">;<base href="'"${TAIGA_SUBPATH}"'">;g' /usr/share/nginx/html/index.html

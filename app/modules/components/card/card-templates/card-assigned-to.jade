@@ -13,7 +13,7 @@
     .card-user-avatar.card-not-assigned
         img(
             title!="<%= translate('COMMON.ASSIGNED_TO.NOT_ASSIGNED') %>"
-            src="/#{v}/images/unnamed.png"
+            src="#{v}/images/unnamed.png"
         )
         <% if (vm.visible('assigned_to_extended')) { %>
         span.card-not-assigned-title <%= translate('COMMON.ASSIGNED_TO.NOT_ASSIGNED') %>

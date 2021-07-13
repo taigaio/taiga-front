@@ -89,6 +89,7 @@ paths.css_vendor = [
 ];
 paths.locales = paths.app + "locales/**/*.json";
 paths.modulesLocales = paths.app + "modules/**/locales/*.json";
+paths.elements = `./elements.js`;
 
 paths.sass = [
     paths.app + "**/*.scss",
@@ -198,10 +199,6 @@ paths.libs = [
     paths.app + "js/sha1-custom.js",
     paths.app + "js/murmurhash3_gc.js"
 ];
-
-if (fs.existsSync(`./elements.js`)) {
-    paths.libs.push(`./elements.js`);
-}
 
 paths.libs.forEach(function(file) {
     try {
@@ -543,6 +540,12 @@ gulp.task("jslibs-deploy", function() {
         .pipe(gulp.dest(paths.distVersion + "js/"));
 });
 
+gulp.task("elements", function() {
+    return gulp.src(paths.elements)
+        .pipe(uglify())
+        .pipe(gulp.dest(paths.distVersion + "js/"));
+});
+
 gulp.task("app-watch", gulp.series("coffee", "conf", "locales", "moment-locales", "app-loader"));
 
 gulp.task("app-deploy", gulp.series("coffee", "conf", "locales", "moment-locales", "app-loader", function() {
@@ -685,6 +688,7 @@ gulp.task("watch", function(cb) {
     gulp.watch(paths.styles_dependencies, gulp.parallel(["styles-dependencies"]));    gulp.watch(paths.svg, gulp.parallel(["copy-svg"]));
     gulp.watch(paths.coffee, gulp.parallel(["app-watch"]));
     gulp.watch(paths.libs, gulp.parallel(["jslibs-watch"]));
+    gulp.watch(paths.elements, gulp.parallel(["elements"]));
     gulp.watch([paths.locales, paths.modulesLocales], gulp.parallel(["locales"]));
     gulp.watch(paths.images, gulp.parallel(["copy-images"]));
 
@@ -700,6 +704,7 @@ gulp.task("deploy", gulp.series(
         "jade-deploy",
         "app-deploy",
         "jslibs-deploy",
+        "elements",
         "link-images",
         "compile-themes"
     )
@@ -715,6 +720,7 @@ gulp.task("default", gulp.series(
         "app-watch",
         "jslibs-watch",
         "jade-deploy",
+        "elements",
         "express",
         "watch"
     ))

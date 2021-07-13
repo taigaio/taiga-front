@@ -1,6 +1,7 @@
 {
     "api": "http://localhost:8000/api/v1/",
     "eventsUrl": null,
+    "baseHref": "/",
     "eventsMaxMissedHeartbeats": 5,
     "eventsHeartbeatIntervalTime": 60000,
     "eventsReconnectTryInterval": 10000,

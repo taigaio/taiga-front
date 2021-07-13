@@ -1,6 +1,7 @@
 {
     "api": "${TAIGA_URL}/api/v1/",
     "eventsUrl": "${TAIGA_WEBSOCKETS_URL}/events",
+    "baseHref": "${TAIGA_SUBPATH}",
     "eventsMaxMissedHeartbeats": 5,
     "eventsHeartbeatIntervalTime": 60000,
     "eventsReconnectTryInterval": 10000,

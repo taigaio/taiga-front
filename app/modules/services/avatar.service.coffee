@@ -9,11 +9,11 @@
 class AvatarService
     constructor: (@config) ->
         IMAGES = [
-            "/#{window._version}/images/user-avatars/user-avatar-01.png"
-            "/#{window._version}/images/user-avatars/user-avatar-02.png"
-            "/#{window._version}/images/user-avatars/user-avatar-03.png"
-            "/#{window._version}/images/user-avatars/user-avatar-04.png"
-            "/#{window._version}/images/user-avatars/user-avatar-05.png"
+            "#{window._version}/images/user-avatars/user-avatar-01.png"
+            "#{window._version}/images/user-avatars/user-avatar-02.png"
+            "#{window._version}/images/user-avatars/user-avatar-03.png"
+            "#{window._version}/images/user-avatars/user-avatar-04.png"
+            "#{window._version}/images/user-avatars/user-avatar-05.png"
         ]
 
         COLORS = [
@@ -34,7 +34,7 @@ class AvatarService
 
     getUnnamed: () ->
         return {
-            url: "/#{window._version}/images/unnamed.png"
+            url: "#{window._version}/images/unnamed.png"
             username: ''
         }
 
@@ -68,7 +68,7 @@ class AvatarService
                 fullName: fullName
             }
         else if location.host.indexOf('localhost') != -1 || !@config.get("gravatar", true)
-            root = location.protocol + '//' + location.host
+            root = location.protocol + '//' + location.host + @config.get('baseHref')
             logo = @.getDefault(gravatar)
 
             return {
@@ -78,7 +78,7 @@ class AvatarService
                 fullName: fullName
             }
         else
-            root = location.protocol + '//' + location.host
+            root = location.protocol + '//' + location.host + @config.get('baseHref')
             logo = @.getDefault(gravatar)
 
             logoUrl = encodeURIComponent(root + logo.src)
