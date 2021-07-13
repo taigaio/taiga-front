@@ -16,6 +16,32 @@
         ng-if="obj"
     )
 
+section.creation-position(ng-if="mode == 'new'")
+    .label {{ 'LIGHTBOX.CREATE_EDIT.LOCATION' | translate }}
+
+    .creation-position-fields
+        label(class="custom-radio")
+            input(
+                id="top-backlog"
+                type='radio'
+                ng-model="obj.us_position"
+                value="bottom"
+            )
+            span.radio-control
+            span.radio-label
+                {{ 'LIGHTBOX.CREATE_EDIT.CREATE_BOTTOM' | translate }}
+
+        label(class="custom-radio")
+            input(
+                id="bottom-backlog"
+                type='radio'
+                ng-model="obj.us_position"
+                value="top"
+            )
+            span.radio-control
+            span.radio-label
+                {{ 'LIGHTBOX.CREATE_EDIT.CREATE_TOP' | translate }}
+
 section.ticket-assigned-to.multiple-assign(
     tg-assigned-users-inline
     ng-model="obj"

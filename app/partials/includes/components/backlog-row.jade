@@ -69,6 +69,6 @@
 
     .us-option(tg-us-edit-selector, tg-check-permission="modify_us")
         button.us-option-popup-button.js-popup-button(
-          ng-class="{first: us.is_first_in_backlog}"
+          ng-class="{first: us.id === first_us_in_backlog}"
         )
             tg-svg(svg-icon="icon-more-vertical")

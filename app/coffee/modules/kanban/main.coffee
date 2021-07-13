@@ -159,11 +159,32 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                 for statusId in openArchived
                     @.loadUserStoriesForStatus({}, statusId)
 
+    moveUsToTop: (us) ->
+        nextUsId = null
+        userstories = []
+
+        if us.swimlane
+            userstories = @scope.usByStatusSwimlanes.getIn([
+                us.swimlane,
+                us.status
+            ])
+        else
+            userstories = @scope.usByStatus.get(us.status.toString())
+
+        if userstories && userstories.size
+            nextUsId = userstories.get(0)
+
+        if nextUsId
+            @.moveUs(null, [us], us.status, us.swimlane, 0, null, nextUsId)
+
     initializeEventHandlers: ->
-        @scope.$on "usform:new:success", (event, us) =>
+        @scope.$on "usform:new:success", (event, us, position = 'bottom') =>
             @.refreshTagsColors().then () =>
                 @kanbanUserstoriesService.add(us)
                 @scope.$broadcast("redraw:wip")
+
+                if position == 'top'
+                    @.moveUsToTop(us)
 
             @analytics.trackEvent("userstory", "create", "create userstory on kanban", 1)
 
