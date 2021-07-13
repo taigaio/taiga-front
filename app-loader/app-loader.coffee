@@ -29,7 +29,8 @@ window.taigaConfig = {
     "enableGithubImporter": false,
     "enableJiraImporter": false,
     "enableTrelloImporter": false,
-    "contribPlugins": []
+    "contribPlugins": [],
+    "baseHref": "/"
 }
 
 window.taigaContribPlugins = []
@@ -43,7 +44,21 @@ window.getDecorators = ->
     return window._decorators
 
 loadStylesheet = (path) ->
-    $('head').append('<link rel="stylesheet" href="' + path + '" type="text/css" />')
+    link = document.createElement('link')
+    link.href = path
+    link.type = 'text/css'
+    link.rel = 'stylesheet'
+    document.getElementsByTagName('head')[0].appendChild(link)
+
+loadJS = (path) ->
+    return new Promise (resolve, reject) ->
+        script = document.createElement('script')
+        script.type = 'text/javascript'
+        script.src = path
+        script.onload = resolve
+        script.onerror = (err) ->
+            reject(err, s)
+        document.body.appendChild(script)
 
 loadPlugin = (pluginPath) ->
     return new Promise (resolve, reject) ->
@@ -59,39 +74,62 @@ loadPlugin = (pluginPath) ->
 
             #dont' wait for css
             if plugin.js
-                ljs.load(plugin.js, resolve)
+                loadJS(plugin.js).then(resolve)
             else
                 resolve()
 
         fail = (jqXHR, textStatus, errorThrown) ->
             console.error("Error loading plugin", pluginPath, errorThrown)
 
-        $.getJSON(pluginPath).then(success, fail)
+        fetch(pluginPath)
+        .then((response) => response.json())
+        .then(success, fail)
 
 loadPlugins = (plugins) ->
     promises = []
-    _.map plugins, (pluginPath) ->
+    plugins.forEach (pluginPath) ->
         promises.push(loadPlugin(pluginPath))
 
     return Promise.all(promises)
 
-promise = $.getJSON "/conf.json"
-promise.done (data) ->
-    window.taigaConfig = _.assign({}, window.taigaConfig, data)
-
-promise.fail () ->
-    console.error "Your conf.json file is not a valid json file, please review it."
-
-promise.always ->
-    emojisPromise = $.getJSON("/#{window._version}/emojis/emojis-data.json").then (emojis) ->
+mainLoad = ->
+    emojisPromise = fetch("#{window._version}/emojis/emojis-data.json")
+    .then((response) => response.json())
+    .then (emojis) ->
         window.emojis = emojis
     if window.taigaConfig.contribPlugins.length > 0
-        loadPlugins(window.taigaConfig.contribPlugins).then () ->
-            ljs.load "/#{window._version}/js/app.js", ->
-                emojisPromise.then ->
-                    angular.bootstrap(document, ['taiga'])
+        loadJS("#{window._version}/js/libs.js")
+            .then(() => loadJS("#{window._version}/js/templates.js"))
+            .then(() => loadPlugins(window.taigaConfig.contribPlugins))
+            .then(() => loadApp(emojisPromise))
     else
-        ljs.load "/#{window._version}/js/app.js", ->
+        loadJS("#{window._version}/js/libs.js")
+            .then(() => loadJS("#{window._version}/js/templates.js"))
+            .then(() => loadApp(emojisPromise))
+
+loadApp = (emojisPromise) ->
+    loadJS("#{window._version}/js/elements.js").then () ->
+        loadJS("#{window._version}/js/app.js").then () ->
             emojisPromise.then ->
                 angular.bootstrap(document, ['taiga'])
 
+promise = fetch "conf.json"
+promise
+.then((response) => response.json())
+.then (data) ->
+    window.taigaConfig = Object.assign({}, window.taigaConfig, data)
+
+    base = document.querySelector('base')
+
+    if base && window.taigaConfig.baseHref
+        base.setAttribute("href", window.taigaConfig.baseHref)
+    else if !base && window.taigaConfig.baseHref
+        base = document.createElement('base')
+        base.setAttribute("href", window.taigaConfig.baseHref)
+        document.head.appendChild(base)
+
+    mainLoad()
+
+promise.catch () ->
+    console.error "Your conf.json file is not a valid json file, please review it."
+    mainLoad()

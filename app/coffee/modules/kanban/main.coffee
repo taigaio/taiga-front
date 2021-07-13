@@ -889,7 +889,7 @@ CardAssignedToDirective = ($template, $translate, avatarService, projectService)
             loading: """
                 <img
                     class='loading-spinner'
-                    src='/#{window._version}/svg/spinner-circle.svg'
+                    src='#{window._version}/svg/spinner-circle.svg'
                     alt='loading...'
                 />
             """

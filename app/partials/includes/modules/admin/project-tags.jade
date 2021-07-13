@@ -43,7 +43,7 @@ section
 
         .empty-large.tags-empty(ng-if="!projectTagsAll.length && !ctrl.loading")
             img(
-                src="/#{v}/images/empty/empty_field.png"
+                src="#{v}/images/empty/empty_field.png"
                 alt="{{'BACKLOG.EMPTY' | translate}}"
             )
             p.title(translate="ADMIN.PROJECT_VALUES_TAGS.EMPTY")
@@ -74,7 +74,7 @@ section
                     tg-loading="ctrl.loading"
                 )
                     img(
-                        src="/#{v}/images/empty/empty_moon.png"
+                        src="#{v}/images/empty/empty_moon.png"
                         alt="{{'BACKLOG.EMPTY' | translate}}"
                     )
                     p(translate="ADMIN.PROJECT_VALUES_TAGS.EMPTY_SEARCH")
