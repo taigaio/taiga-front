@@ -3,6 +3,7 @@
 ## 6.3.0 (unreleased)
 
 - fix: use pointerenter instead of mouseenter (by @astagi)
+- feat: add US position selector in creation form
 
 ## 6.2.2 (2021-07-15)
 

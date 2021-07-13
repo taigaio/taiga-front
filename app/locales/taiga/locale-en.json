@@ -1203,7 +1203,10 @@
             "SELECT_STATUS": "Select status",
             "DEFAULT": "Default",
             "ERROR_STATUS": "Changes cannot be saved because there is a problem with the selected status.",
-            "ERROR_SWIMLANE": "Changes cannot be saved because there is a problem with the selected swimlane."
+            "ERROR_SWIMLANE": "Changes cannot be saved because there is a problem with the selected swimlane.",
+            "LOCATION": "Location",
+            "CREATE_TOP": "on top",
+            "CREATE_BOTTOM": "at the bottom"
         },
         "DISABLE_KANBAN": {
             "TITLE": "Disable kanban",
