@@ -2,6 +2,10 @@
 
 ## 6.3.0 (unreleased)
 
+- ...
+
+## 6.2.2 (2021-07-15)
+
 - fix: prevent unnecessary kanban refresh with taiga-events
 - fix: empty multiple assigned_to in kanban
 - feat: Add multi language selector for text parts in editor
