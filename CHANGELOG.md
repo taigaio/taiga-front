@@ -2,7 +2,7 @@
 
 ## 6.3.0 (unreleased)
 
-- ...
+- fix: use pointerenter instead of mouseenter (by @astagi)
 
 ## 6.2.2 (2021-07-15)
 
