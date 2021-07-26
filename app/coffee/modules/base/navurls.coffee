@@ -98,7 +98,7 @@ NavigationUrlsDirective = ($navurls, $auth, $q, $location, lightboxService, tgSe
         if $el.is("a")
             $el.attr("href", "#")
 
-        $el.on "mouseenter", (event) ->
+        $el.on "pointerenter", (event) ->
             target = $(event.currentTarget)
 
             if !target.data("fullUrl") || $attrs.tgNavGetParams != target.data("params")
