@@ -352,7 +352,7 @@
     },
     "REGISTER_FORM": {
         "TITLE": "Register a new Taiga account (free)",
-        "PLACEHOLDER_NAME": "Pick a username (case sensitive)",
+        "PLACEHOLDER_NAME": "Pick a username",
         "PLACEHOLDER_FULL_NAME": "Pick your full name",
         "PLACEHOLDER_EMAIL": "Your email",
         "PLACEHOLDER_PASSWORD": "Set a password (case sensitive)",
