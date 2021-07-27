@@ -4,6 +4,7 @@
 
 - fix: use pointerenter instead of mouseenter (by @astagi)
 - feat: add US position selector in creation form
+- feat: new Auth module, refresh auth token on api calls fail (history #tg-4625, issue #tgg-626))
 
 ## 6.2.2 (2021-07-15)
 
