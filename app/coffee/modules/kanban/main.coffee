@@ -212,8 +212,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                 @kanbanUserstoriesService.refresh(false)
 
         @scope.$on "kanban:us:deleted", (event, us) =>
-            @.filtersReloadContent()
-            @kanbanUserstoriesService.refreshSwimlanes()
+            @kanbanUserstoriesService.remove(us)
 
         @scope.$on("kanban:us:move", @.moveUs)
         @scope.$on("kanban:show-userstories-for-status", @.loadUserStoriesForStatus)
@@ -298,7 +297,8 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             @confirm.askOnDelete(title, message).then (askResponse) =>
                 promise = @repo.remove(deletingUserStory)
                 promise.then =>
-                    @scope.$broadcast("kanban:us:deleted")
+                    model = us.toJS().model
+                    @scope.$broadcast("kanban:us:deleted", model)
                     askResponse.finish()
                 promise.then null, ->
                     askResponse.finish(false)

@@ -55,6 +55,23 @@ class KanbanUserstoriesService extends taiga.Service
             if (!@.usByStatus.has(status))
                 @.usByStatus = @.usByStatus.set(status, Immutable.List())
 
+    remove: (usModel) ->
+        @.userstoriesRaw = @.userstoriesRaw.filter (it) => it.id != usModel.id
+
+        delete @.order[usModel.id]
+
+        status = String(usModel.status)
+
+        @.usMap = @.usMap.delete(usModel.id)
+
+        @.usByStatus = @.usByStatus.set(
+            status,
+            @.usByStatus.get(status)
+            .filter((id) => id != usModel.id)
+        )
+
+        @.refreshSwimlanes()
+
     # don't call refresh to prevent unnecessary mutations in every single us
     add: (usList) ->
         if !Array.isArray(usList)
