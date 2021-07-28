@@ -351,7 +351,7 @@
     },
     "REGISTER_FORM": {
         "TITLE": "Registra un nuovo account Taiga (è gratis)",
-        "PLACEHOLDER_NAME": "Scegli uno nome utente (occhio alle maiuscole)",
+        "PLACEHOLDER_NAME": "Scegli un nome utente",
         "PLACEHOLDER_FULL_NAME": "Inserisci il tuo nome completo",
         "PLACEHOLDER_EMAIL": "La tua email",
         "PLACEHOLDER_PASSWORD": "Imposta una password (case sensitive)",
@@ -1206,7 +1206,10 @@
             "SELECT_STATUS": "Seleziona lo stato",
             "DEFAULT": "Predefinito",
             "ERROR_STATUS": "Le modifiche non possono essere salvate perché c'è un problema con lo stato selezionato.",
-            "ERROR_SWIMLANE": "Le modifiche non possono essere salvate perché c'è un problema con la swim lane selezionata."
+            "ERROR_SWIMLANE": "Le modifiche non possono essere salvate perché c'è un problema con la swim lane selezionata.",
+            "CREATE_BOTTOM": "in fondo",
+            "CREATE_TOP": "in cima",
+            "LOCATION": "Posizione"
         },
         "DISABLE_KANBAN": {
             "TITLE": "Disattiva kanban",
