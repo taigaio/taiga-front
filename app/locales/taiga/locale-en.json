@@ -52,6 +52,7 @@
         "RELATED_USERSTORIES": "Related user stories",
         "CARD": {
             "ASSIGN_TO": "Assign To",
+            "MOVE_TO_TOP": "Move to top",
             "EDIT": "Edit card",
             "DELETE": "Delete card",
             "DELETE_ISSUE": "Delete issue",

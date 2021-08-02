@@ -77,6 +77,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         @kanbanUserstoriesService.reset()
         @.openFilter = false
         @.selectedUss = {}
+        @.movedUs = []
         @.foldedSwimlane = Immutable.Map()
         @.isFirstLoad = true
         @.renderBatching = true
@@ -159,14 +160,20 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                 for statusId in openArchived
                     @.loadUserStoriesForStatus({}, statusId)
 
+    moveToTopDropdown: (us) ->
+        @.moveUsToTop(us.toJS().model)
+
     moveUsToTop: (uss) ->
         if !Array.isArray(uss)
             uss = [uss]
 
         us = uss[0]
-
         nextUsId = null
         userstories = []
+        @.movedUs.push(us.id)
+        @timeout () =>
+            @.movedUs = []
+        , 1000, false
 
         if us.swimlane
             userstories = @scope.usByStatusSwimlanes.getIn([
@@ -1078,6 +1085,16 @@ CardActionsDirective = ($template, $translate, projectService) ->
                                 icon: 'icon-trash',
                                 event: () ->
                                     $scope.vm.onClickDelete({id: $scope.vm.item.get('id')})
+                            },
+                        )
+
+                    if projectService.project.get('my_permissions').includes($scope.vm.getModifyPermisionKey()) && !$scope.vm.isFirst
+                        actions.push(
+                            {
+                                text: $translate.instant('COMMON.CARD.MOVE_TO_TOP'),
+                                icon: 'icon-move-to-top',
+                                event: () ->
+                                    $scope.vm.onClickMoveToTop($scope.vm.item)
                             },
                         )
 

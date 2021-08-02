@@ -19,14 +19,16 @@ cardDirective = () ->
             onClickEdit: "&",
             onClickRemove: "&",
             onClickDelete: "&",
+            onClickMoveToTop: "&",
             project: "<",
             item: "<",
             zoom: "<",
             zoomLevel: "<",
             archived: "<",
             inViewPort: "<",
-            folded: "<"
-            type: "@"
+            folded: "<",
+            type: "@",
+            isFirst: "<"
         }
     }
 
