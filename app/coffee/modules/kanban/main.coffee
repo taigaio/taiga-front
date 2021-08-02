@@ -159,7 +159,12 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                 for statusId in openArchived
                     @.loadUserStoriesForStatus({}, statusId)
 
-    moveUsToTop: (us) ->
+    moveUsToTop: (uss) ->
+        if !Array.isArray(uss)
+            uss = [uss]
+
+        us = uss[0]
+
         nextUsId = null
         userstories = []
 
@@ -175,7 +180,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             nextUsId = userstories.get(0)
 
         if nextUsId
-            @.moveUs(null, [us], us.status, us.swimlane, 0, null, nextUsId)
+            @.moveUs(null, uss, us.status, us.swimlane, 0, null, nextUsId)
 
     initializeEventHandlers: ->
         @scope.$on "usform:new:success", (event, us, position = 'bottom') =>
@@ -188,11 +193,14 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
 
             @analytics.trackEvent("userstory", "create", "create userstory on kanban", 1)
 
-        @scope.$on "usform:bulk:success", (event, uss) =>
+        @scope.$on "usform:bulk:success", (event, uss, position = 'bottom') =>
             @confirm.notify("success")
             @.refreshTagsColors().then () =>
                 @kanbanUserstoriesService.add(uss)
                 @scope.$broadcast("redraw:wip")
+
+                if position == 'top'
+                    @.moveUsToTop(uss)
 
             @analytics.trackEvent("userstory", "create", "bulk create userstory on kanban", 1)
 

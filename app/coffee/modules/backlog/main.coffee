@@ -121,13 +121,21 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         @.loadUserstories(true)
 
     initializeEventHandlers: ->
-        @scope.$on "usform:bulk:success", (event, els) =>
+        load = () =>
+            # @.loadUserstories(true)
+            @.loadProjectStats()
+            @rootscope.$broadcast("filters:update")
+
+        @scope.$on "usform:bulk:success", (event, els, position = 'bottom') =>
             @.newUs = _.map els, (it) ->
                 return it.id
 
-            @.loadUserstories(true)
-            @.loadProjectStats()
-            @confirm.notify("success")
+            if position == 'top'
+                @.moveUsToTopOfBacklog(els).then () =>
+                    load()
+            else
+                load()
+
             @analytics.trackEvent("userstory", "create", "bulk create userstory on backlog", 1)
 
         @scope.$on "sprintform:create:success", (e, data, ussToMove) =>
@@ -141,17 +149,13 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         @scope.$on "usform:new:success", (event, el, position = 'bottom') =>
             @.newUs = [el.id]
 
-            load = () =>
-                @.loadUserstories(true)
-                @.loadProjectStats()
-                @rootscope.$broadcast("filters:update")
-                @analytics.trackEvent("userstory", "create", "create userstory on backlog", 1)
-
             if position == 'top'
                 @.moveUsToTopOfBacklog(el).then () =>
                     load()
             else
                 load()
+
+            @analytics.trackEvent("userstory", "create", "create userstory on backlog", 1)
 
         @scope.$on "sprintform:edit:success", =>
             @.loadProjectStats()
@@ -469,10 +473,15 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
       if @scope.userstories.length > 0
         @scope.first_us_in_backlog = @scope.userstories[0].id
 
-    moveUsToTopOfBacklog: (us) ->
+    moveUsToTopOfBacklog: (uss) ->
+        if !Array.isArray(uss)
+            uss = [uss]
+
+        us = uss[0]
+
         if @scope.userstories.length
             nextUs = @scope.userstories[0].id
-            return @.moveUs("sprint:us:move", [us], 0, null, null, nextUs)
+            return @.moveUs("sprint:us:move", uss, 0, null, null, nextUs)
 
         return Promise.resolve()
 

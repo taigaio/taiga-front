@@ -345,6 +345,7 @@ CreateBulkUserstoriesDirective = ($repo, $rs, $rootscope, lightboxService, $load
                 statusId: status
                 bulk: ""
                 swimlaneId: swimlaneId
+                us_position: 'bottom'
             }
             getCurrentStatus()
             lightboxService.open($el)
@@ -371,7 +372,7 @@ CreateBulkUserstoriesDirective = ($repo, $rs, $rootscope, lightboxService, $load
             promise.then (result) ->
                 result =  _.map(result.data, (x) => $model.make_model('userstories', x))
                 currentLoading.finish()
-                $rootscope.$broadcast("usform:bulk:success", result)
+                $rootscope.$broadcast("usform:bulk:success", result, $scope.new.us_position)
                 lightboxService.close($el)
 
             promise.then null, (response) ->
