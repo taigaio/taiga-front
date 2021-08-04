@@ -10,7 +10,9 @@ import os
 import json
 
 import logging
-logging.basicConfig(format='%(asctime)s %(message)s', datefmt='%Y/%m/%d %I:%M:%S %p', level=logging.DEBUG)
+logging.basicConfig(format='%(asctime)s %(message)s',
+                    datefmt='%Y/%m/%d %I:%M:%S %p',
+                    level=logging.DEBUG)
 
 
 # Generate js file, css file and a list of images
@@ -31,13 +33,17 @@ for d in Path("./dist/plugins").iterdir():
 
         # Get js
         if "js" in data:
-            js += Path("./dist/", data['js']).open().read()
+            js += (Path("./dist/", data['js']).open()
+                                              .read()
+                                              .replace(f'{d.name}/images',
+                                                       'packed/images'))
             js += "\n";
             del data["js"]
 
         # Get css
         if "css" in data:
-            css += Path("./dist/", data['css']).open().read()
+            css += (Path("./dist/", data['css']).open()
+                                                .read())
             css += "\n";
             del data["css"]
 
