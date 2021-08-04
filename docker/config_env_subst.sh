@@ -54,4 +54,4 @@ if [ ! -f "$FILE" ]; then
              > /usr/share/nginx/html/conf.json
 fi
 
-sed -i 's;<base href="/">;<base href="'"${TAIGA_SUBPATH}"'">;g' /usr/share/nginx/html/index.html
+sed -i 's;<base href="/">;<base href="'"${TAIGA_SUBPATH}/"'">;g' /usr/share/nginx/html/index.html
