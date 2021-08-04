@@ -5,37 +5,79 @@
 #
 # Copyright (c) 2021-present Kaleidos Ventures SL
 
-
+from pathlib import Path
 import os
 import json
 
-plugins = []
-for f in os.listdir("./dist/plugins"):
-    if f != "packed":
-        plugins.append(json.load(open("./dist/plugins/{}/{}.json".format(f,f))))
+import logging
+logging.basicConfig(format='%(asctime)s %(message)s', datefmt='%Y/%m/%d %I:%M:%S %p', level=logging.DEBUG)
 
+
+# Generate js file, css file and a list of images
 js = ""
 css = ""
-for plugin in plugins:
-    if "js" in plugin:
-        js += open("./dist{}".format(plugin['js']), "r").read()
-        js += "\n";
-        del plugin["js"]
-    if "css" in plugin:
-        css += open("./dist{}".format(plugin['css']), "r").read()
-        css += "\n";
-        del plugin["css"]
+images = []
+plugins = []
 
-os.makedirs("./dist/plugins/packed", exist_ok=True)
+logging.info("- Reading plugins:")
 
-plugins_js_file = open("./dist/plugins/packed/plugins.js", "w")
-plugins_js_file.write(js)
-plugins_js_file.close()
+for d in Path("./dist/plugins").iterdir():
+    if d.is_dir() and d.name != "packed":
+        logging.info(f"  <- {d.name}")
 
-plugins_css_file = open("./dist/plugins/packed/plugins.css", "w")
-plugins_css_file.write(css)
-plugins_css_file.close()
+        # Read .json file
+        f = d / f'{d.name}.json'
+        data = (json.load(f.open()))
 
+        # Get js
+        if "js" in data:
+            js += Path("./dist/", data['js']).open().read()
+            js += "\n";
+            del data["js"]
+
+        # Get css
+        if "css" in data:
+            css += Path("./dist/", data['css']).open().read()
+            css += "\n";
+            del data["css"]
+
+        plugins.append(data)
+
+        # Get images
+        imgs_d = d / 'images'
+
+        if imgs_d.exists() and imgs_d.is_dir():
+            images.extend(list(imgs_d.iterdir()))
+
+
+# Generate packed plugin
+logging.info(f"- Generating packed plugin:")
+packed = Path("./dist/plugins/packed")
+packed.mkdir(exist_ok=True)
+
+#  - Generated js file
+logging.info(f"  -> Generating js file.")
+with (packed / "plugins.js").open("w") as f:
+    f.write(js)
+
+#  - Generated css file
+logging.info(f"  -> Generating css file.")
+with (packed / "plugins.css").open("w") as f:
+    f.write(css)
+
+#   - Copy images
+if images:
+    logging.info(f"  -> Copying images.")
+    d = packed / ("images")
+    d.mkdir(exist_ok=True)
+
+    for i in images:
+        new_i = d / i.name
+        with new_i.open(mode='wb') as f:
+            f.write(i.read_bytes())
+
+#  - Generated json file
+logging.info(f"  -> Generating json file.")
 packedPlugin = {
     "isPack": True,
     "js": "/plugins/packed/plugins.js",
@@ -43,6 +85,5 @@ packedPlugin = {
     "plugins": plugins
 }
 
-plugins_json_file = open("./dist/plugins/packed/packed.json", "w")
-json.dump(packedPlugin, plugins_json_file)
-plugins_json_file.close()
+with (packed / "packed.json").open("w") as f:
+    json.dump(packedPlugin, f)
