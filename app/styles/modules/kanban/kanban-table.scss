@@ -201,6 +201,18 @@ body {
     }
 }
 
+@keyframes kanban-move-animation {
+    0%,
+    100% {
+        box-shadow: 4px 4px 8px rgba($color-gray400, .5);
+    }
+
+    25%,
+    75% {
+        box-shadow: 0 0 8px 3px rgba($color-solid-primary, .5);
+    }
+}
+
 
 .kanban-table-body {
     @include font-size(medium);
@@ -294,6 +306,9 @@ body {
             // border: 1px solid $primary-light;
             box-shadow: 0 0 0 1px $primary-light, 2px 2px 4px darken($whitish, 10%);
         }
+    }
+    .kanban-moved {
+        animation: kanban-move-animation 1s ease 0s 1 normal forwards;
     }
 }
 
