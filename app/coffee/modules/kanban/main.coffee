@@ -1078,16 +1078,6 @@ CardActionsDirective = ($template, $translate, projectService) ->
                             },
                         )
 
-                    if projectService.project.get('my_permissions').includes($scope.vm.getDeletePermisionKey())
-                        actions.push(
-                            {
-                                text: $translate.instant('COMMON.CARD.DELETE'),
-                                icon: 'icon-trash',
-                                event: () ->
-                                    $scope.vm.onClickDelete({id: $scope.vm.item.get('id')})
-                            },
-                        )
-
                     if projectService.project.get('my_permissions').includes($scope.vm.getModifyPermisionKey()) && !$scope.vm.isFirst
                         actions.push(
                             {
@@ -1095,6 +1085,16 @@ CardActionsDirective = ($template, $translate, projectService) ->
                                 icon: 'icon-move-to-top',
                                 event: () ->
                                     $scope.vm.onClickMoveToTop($scope.vm.item)
+                            },
+                        )
+
+                    if projectService.project.get('my_permissions').includes($scope.vm.getDeletePermisionKey())
+                        actions.push(
+                            {
+                                text: $translate.instant('COMMON.CARD.DELETE'),
+                                icon: 'icon-trash',
+                                event: () ->
+                                    $scope.vm.onClickDelete({id: $scope.vm.item.get('id')})
                             },
                         )
 
