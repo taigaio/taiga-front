@@ -656,7 +656,6 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
                         retry.inProgress = true
 
                         apiUrl = urls.resolve('refresh')
-
                         refreshToken = storage.get("refresh")
 
                         if refreshToken
@@ -677,9 +676,11 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
                                 reject(err)
 
                         else
-                            $location.url($navUrls.resolve("login"))
+                            window.location.href = $navUrls.resolve("login") + '?force_login'
+
                             reject(response)
 
+                            return
             return $q.reject(response)
 
         return {

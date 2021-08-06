@@ -19,7 +19,10 @@ class StorageService extends taiga.Service
         if serializedValue == null
             return _default or null
 
-        return JSON.parse(serializedValue)
+        try
+            return JSON.parse(serializedValue)
+        catch e
+            return null
 
     set: (key, val) ->
         if _.isObject(key)
