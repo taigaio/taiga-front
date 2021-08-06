@@ -60,7 +60,8 @@
             "NO_PTS": "N/E",
             "ESTIMATION": "Stima",
             "TASKS": "{{completed}} compiti di {{total}} completati",
-            "EXTRA_ASSIGNED_USERS": "Altri {{total}} utenti assegnati"
+            "EXTRA_ASSIGNED_USERS": "Altri {{total}} utenti assegnati",
+            "MOVE_TO_TOP": "Sposta in cima"
         },
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Questo valore non è valido.",
