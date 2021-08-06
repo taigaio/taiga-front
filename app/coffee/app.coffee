@@ -632,14 +632,9 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
                         storage.remove("userInfo")
 
                         if search.force_next
-                            $location.url($navUrls.resolve("login"))
-                                .search("force_next", search.force_next)
+                            window.location.href = $navUrls.resolve("login") + '?force_next=' +  search.force_next
                         else
-                            $location.url($navUrls.resolve("login"))
-                                .search({
-                                    "unauthorized": true
-                                    "next": nextUrl
-                                })
+                            window.location.href = $navUrls.resolve("login") + '?unauthorized=true&next=' + nextUrl
 
                     if retry.inProgress
                         retry.promise
