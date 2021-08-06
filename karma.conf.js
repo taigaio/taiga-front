@@ -88,10 +88,10 @@ module.exports = function(config) {
     browsers: ['Chrome'],
 
     customLaunchers: {
-      Chrome_travis_ci: {
-        base: 'Chrome',
-        flags: ['--no-sandbox']
-      }
+    //   Chrome_travis_ci: {
+    //     base: 'Chrome',
+    //     flags: ['--no-sandbox']
+    //   }
     },
 
     proxies:  {
@@ -104,11 +104,6 @@ module.exports = function(config) {
     // if true, Karma captures browsers, runs the tests and exits
     singleRun: false
   };
-
-  if(process.env.TRAVIS){
-    configuration.browsers = ['Chrome_travis_ci'];
-    configuration.singleRun = true;
-  }
 
   config.set(configuration);
 };

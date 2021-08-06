@@ -19,7 +19,8 @@
     "scss-lint": "gulp scss-lint --fail",
     "test": "./node_modules/karma/bin/karma start",
     "e2e": "./node_modules/.bin/babel-node run-e2e.js",
-    "start": "npx gulp"
+    "start": "npx gulp",
+    "ci": "./node_modules/karma/bin/karma start --single-run && npm run scss-lint"
   },
   "devDependencies": {
     "angular-mocks": "1.5.5",
