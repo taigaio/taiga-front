@@ -9,11 +9,13 @@
 describe "Card", ->
     $provide = null
     $controller = null
+    scope = null
     mocks = {}
 
     _inject = ->
-        inject (_$controller_) ->
+        inject (_$controller_, $rootScope) ->
             $controller = _$controller_
+            scope = $rootScope.$new()
 
     _setup = ->
         _inject()
@@ -24,7 +26,9 @@ describe "Card", ->
         _setup()
 
     it "toggle fold callback", () ->
-        ctrl = $controller("Card")
+        ctrl = $controller("Card", {
+            $scope: scope
+        })
 
         ctrl.item = Immutable.fromJS({id: 2})
         ctrl.onToggleFold = sinon.spy()
@@ -34,7 +38,9 @@ describe "Card", ->
         expect(ctrl.onToggleFold).to.have.been.calledWith({id: 2})
 
     it "get closed tasks", () ->
-        ctrl = $controller("Card")
+        ctrl = $controller("Card", {
+            $scope: scope
+        })
 
         ctrl.item = Immutable.fromJS({
             id: 2,
@@ -51,7 +57,9 @@ describe "Card", ->
         expect(tasks.size).to.be.equal(2)
 
     it "get closed percent", () ->
-        ctrl = $controller("Card")
+        ctrl = $controller("Card", {
+            $scope: scope
+        })
 
         ctrl.item = Immutable.fromJS({
             id: 2,
@@ -70,7 +78,9 @@ describe "Card", ->
 
     describe "check if related task and slides visibility", () ->
         it "no content", () ->
-            ctrl = $controller("Card")
+            ctrl = $controller("Card", {
+                $scope: scope
+            })
 
             ctrl.item = Immutable.fromJS({
                 id: 2,
@@ -90,7 +100,9 @@ describe "Card", ->
             })
 
         it "with content", () ->
-            ctrl = $controller("Card")
+            ctrl = $controller("Card", {
+                $scope: scope
+            })
 
             ctrl.item = Immutable.fromJS({
                 id: 2,
@@ -110,7 +122,9 @@ describe "Card", ->
             })
 
         it "fold", () ->
-            ctrl = $controller("Card")
+            ctrl = $controller("Card", {
+                $scope: scope
+            })
 
             ctrl.item = Immutable.fromJS({
                 foldStatusChanged: true,
