@@ -154,12 +154,6 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             if @scope.swimlanesList.size && !result.length
                 @.foldedSwimlane = @.foldedSwimlane.set(@scope.swimlanesList.first().id.toString(), false)
 
-            openArchived = _.difference(@kanbanUserstoriesService.archivedStatus,
-                                        @kanbanUserstoriesService.statusHide)
-            if openArchived.length
-                for statusId in openArchived
-                    @.loadUserStoriesForStatus({}, statusId)
-
     moveToTopDropdown: (us) ->
         @.moveUsToTop(us.toJS().model)
 
@@ -479,8 +473,13 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             @.loadSwimlanes()
         ]
 
-        archivedPromises = @kanbanUserstoriesService.archivedStatus.map (archivedStatusId) =>
-            return @.loadUserStoriesForStatus({}, archivedStatusId)
+        archivedPromises = []
+        openArchived = _.difference(@kanbanUserstoriesService.archivedStatus,
+                                    @kanbanUserstoriesService.statusHide)
+
+        if openArchived.length
+            archivedPromises = openArchived.map (archivedStatusId) =>
+                return @.loadUserStoriesForStatus({}, archivedStatusId)
 
         loadPromises = loadPromises.concat(archivedPromises)
 
@@ -488,7 +487,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             if lastSearch != @.lastSearch
                 return
 
-            @kanbanUserstoriesService.reset(false, false)
+            @kanbanUserstoriesService.reset(false, false, false)
             userstories = result[0]
             swimlanes = result[1]
 
@@ -731,17 +730,15 @@ KanbanArchivedShowStatusHeaderDirective = ($rootscope, $translate, kanbanUsersto
             unwatch()
 
             status = $scope.$eval($attrs.tgKanbanArchivedShowStatusHeader)
-            show = false
 
             kanbanUserstoriesService.addArchivedStatus(status.id)
             kanbanUserstoriesService.hideStatus(status.id)
 
             $el.on "click", (event) ->
                 $scope.$apply ->
-                    if !show
+                    if kanbanUserstoriesService.statusHide.includes(status.id)
                         $rootscope.$broadcast("kanban:show-userstories-for-status", status.id)
                         kanbanUserstoriesService.showStatus(status.id)
-                        show = true
 
         $scope.$on "$destroy", ->
             $el.off()
@@ -776,7 +773,7 @@ module.directive("tgKanbanArchivedStatusIntro", ["$translate", "tgKanbanUserstor
 ## Kanban Squish Column Directive
 #############################################################################
 
-KanbanSquishColumnDirective = (rs, projectService) ->
+KanbanSquishColumnDirective = (rs, projectService, kanbanUserstoriesService) ->
     link = ($scope, $el, $attrs) ->
         $scope.foldStatus = (status) ->
             if !$scope.folds
@@ -789,6 +786,10 @@ KanbanSquishColumnDirective = (rs, projectService) ->
                 $scope.unfold = status.id
 
             rs.kanban.storeStatusColumnModes($scope.projectId, $scope.folds)
+
+            if kanbanUserstoriesService.archivedStatus.includes(status.id) && !kanbanUserstoriesService.statusHide.includes(status.id)
+                kanbanUserstoriesService.hideStatus(status.id)
+
             return
 
         unwatch = $scope.$watch 'ctrl.initialLoad', (load) ->
@@ -805,7 +806,7 @@ KanbanSquishColumnDirective = (rs, projectService) ->
 
     return {link: link}
 
-module.directive("tgKanbanSquishColumn", ["$tgResources", "tgProjectService", KanbanSquishColumnDirective])
+module.directive("tgKanbanSquishColumn", ["$tgResources", "tgProjectService", "tgKanbanUserstories",KanbanSquishColumnDirective])
 
 #############################################################################
 ## Kanban WIP Limit Directive

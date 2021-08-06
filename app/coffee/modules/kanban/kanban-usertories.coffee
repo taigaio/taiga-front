@@ -16,14 +16,16 @@ class KanbanUserstoriesService extends taiga.Service
     constructor: (@translate) ->
         @.reset()
 
-    reset: (resetSwimlanesList = true, resetArchivedStatus = true) ->
+    reset: (resetSwimlanesList = true, resetArchivedStatus = true, resetHideStatud = true) ->
         @.userstoriesRaw = []
-        @.statusHide = []
         @.swimlanes = []
         @.foldStatusChanged = {}
         @.usByStatus = Immutable.Map()
         @.usMap = Immutable.Map()
         @.usByStatusSwimlanes = Immutable.Map()
+
+        if resetHideStatud
+            @.statusHide = []
 
         if resetArchivedStatus
             @.archivedStatus = []
