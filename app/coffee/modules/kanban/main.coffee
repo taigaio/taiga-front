@@ -388,7 +388,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             @kanbanUserstoriesService.add(newUs)
 
         if @.queue.length > 0
-            timeout = @.batchTimings.shift() || 0
+            timeout = @.batchTimings.shift() || 20
             @timeout(@.renderBatch, timeout)
         else
             scopeDefer @scope, =>
@@ -420,12 +420,11 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                         @.queue = _.concat(@.queue, _.take(userstoriesMap[x.id], 10))
                         userstoriesMap[x.id] = _.drop(userstoriesMap[x.id], 10)
                 if !@.batchSize
-                    @.batchSize = @.queue.length
+                    @.batchSize = 100
 
             @.renderBatch(true)
         else
             @kanbanUserstoriesService.set(userstories)
-
 
     loadUserstoriesParams: () ->
         params = {

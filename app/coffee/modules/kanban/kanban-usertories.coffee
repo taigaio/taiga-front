@@ -112,9 +112,11 @@ class KanbanUserstoriesService extends taiga.Service
         @.archivedStatus.push(statusId)
 
     isUsInArchivedHiddenStatus: (usId) ->
-        us = @.getUsModel(usId)
-        return @.archivedStatus.indexOf(us?.status) != -1 &&
-            @.statusHide.indexOf(us?.status) != -1
+        # us = @.getUsModel(usId)
+        us = @.usMap.get(usId)
+        status = us?.getIn(['model', 'status'])
+        return @.archivedStatus.indexOf(status) != -1 &&
+            @.statusHide.indexOf(status) != -1
 
     hideStatus: (statusId) ->
         @.deleteStatus(statusId)
