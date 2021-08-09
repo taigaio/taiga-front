@@ -24,6 +24,8 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
+      with:
+        persist-credentials: false
 
     - name: Cache node modules
       uses: actions/cache@v1
@@ -42,7 +44,7 @@ jobs:
       run: npm ci
 
     - name: pass linters
-      run: npm run lint
+      run: npm run scss-lint
 
   unit-test:
     # The type of runner that the job will run on
@@ -57,6 +59,8 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
+      with:
+        persist-credentials: false
 
     - name: Cache node modules
       uses: actions/cache@v1
@@ -75,5 +79,5 @@ jobs:
       run: npm ci
 
     - name: pass unit test
-      run: npm run ci
+      run: npm run ci:test
 
