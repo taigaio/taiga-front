@@ -1,6 +1,10 @@
 # Changelog
 
-## 6.3.0 (unreleased)
+## 6.3.1 (unreleased)
+
+- ...
+
+## 6.3.0 (2021-08-10)
 
 - fix: use pointerenter instead of mouseenter (by @astagi)
 - feat: add US position selector in creation form
