@@ -122,7 +122,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
 
     initializeEventHandlers: ->
         load = () =>
-            # @.loadUserstories(true)
+            @.loadUserstories(true)
             @.loadProjectStats()
             @rootscope.$broadcast("filters:update")
 
