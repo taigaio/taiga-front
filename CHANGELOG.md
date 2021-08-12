@@ -1,8 +1,12 @@
 # Changelog
 
-## 6.3.2 (unreleased)
+## 6.3.3 (unreleased)
 
 - ...
+
+## 6.3.2 (2021-10-12)
+
+- fix: prevent redirect loop when the user is auth, token invalid & no refersh token
 
 ## 6.3.1 (2021-10-12)
 
