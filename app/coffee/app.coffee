@@ -617,6 +617,10 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
                 return new Promise (resolve, reject) =>
                     $http = $injector.get('$http')
 
+                    removeUser = () =>
+                        storage.remove("token")
+                        storage.remove("userInfo")
+
                     refreshTokenReponse = (responseRefresh) =>
                         storage.set("token", responseRefresh.data.auth_token)
                         storage.set("refresh", responseRefresh.data.refresh)
@@ -628,8 +632,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
                     errorToken = () =>
                         nextUrl = $location.url()
                         search = $location.search()
-                        storage.remove("token")
-                        storage.remove("userInfo")
+                        removeUser()
 
                         if search.force_next
                             window.location.href = $navUrls.resolve("login") + '?force_next=' +  search.force_next
@@ -671,6 +674,8 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
                                 reject(err)
 
                         else
+                            removeUser()
+
                             window.location.href = $navUrls.resolve("login") + '?force_login'
 
                             reject(response)
