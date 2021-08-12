@@ -1,6 +1,10 @@
 # Changelog
 
-## 6.3.1 (unreleased)
+## 6.3.2 (unreleased)
+
+- ...
+
+## 6.3.1 (2021-10-12)
 
 - fix: move us between sprints
 
