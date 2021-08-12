@@ -2,7 +2,7 @@
 
 ## 6.3.1 (unreleased)
 
-- ...
+- fix: move us between sprints
 
 ## 6.3.0 (2021-08-10)
 

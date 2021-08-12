@@ -511,6 +511,11 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
             })
 
             if newSprintId != oldSprintId
+                if sprint
+                    usList.forEach (us, index) =>
+                        _.remove sprint.user_stories, (it) ->
+                            return it.id == us.id
+
                 if newSprintId == null # From sprint to backlog
                     for us, key in usList # delete from sprint userstories
                         _.remove sprint.user_stories, (it) -> it.id == us.id
