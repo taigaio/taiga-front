@@ -427,7 +427,7 @@
         },
         "EMPTY": {
             "TITLE": "Parece que todavía no hay épicas.",
-            "EXPLANATION": "Las épicas son ítems a un nivel mas elevado que engloban historias de usuario. <br />Las épicas estan al tope de la jerarquia y pueden ser usadas para agrupar historias de usuario.",
+            "EXPLANATION": "Las épicas son ítems a un nivel más elevado que engloban historias de usuario. <br />Las épicas están en lo más alto de la jerarquía y pueden ser usadas para agrupar historias de usuario.",
             "HELP": "Aprende más sobre Épicas"
         },
         "TABLE": {
