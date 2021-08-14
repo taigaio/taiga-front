@@ -1840,7 +1840,7 @@
         "AUTHORIZATION_REQUEST": "Дозволити {{application}} використовувати ваш профіль Taiga?",
         "LOGIN_WITH_ANOTHER_USER": "Увійти як інший користувач",
         "AUTHORIZE_APP": "Authorize app",
-        "CANCEL": "Відмінити"
+        "CANCEL": "Скасувати"
     },
     "JOYRIDE": {
         "NAV": {
