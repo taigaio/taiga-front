@@ -1,14 +1,18 @@
 # Changelog
 
-## 6.3.3 (unreleased)
+## 6.4.0 (unreleased)
 
 - ...
 
-## 6.3.2 (2021-10-12)
+## 6.3.3 (2021-08-16)
+
+- fix: remove auth credentials after logout and error.
+
+## 6.3.2 (2021-08-12)
 
 - fix: prevent redirect loop when the user is auth, token invalid & no refersh token
 
-## 6.3.1 (2021-10-12)
+## 6.3.1 (2021-08-12)
 
 - fix: move us between sprints
 
