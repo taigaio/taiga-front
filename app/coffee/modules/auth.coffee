@@ -141,6 +141,7 @@ class AuthService extends taiga.Service
 
     removeToken: ->
         @storage.remove("token")
+        @storage.remove("refresh")
 
     isAuthenticated: ->
         if @.getUser() != null
