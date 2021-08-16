@@ -632,6 +632,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
                     errorToken = () =>
                         nextUrl = $location.url()
                         search = $location.search()
+                        storage.remove("refresh")
                         removeUser()
 
                         if search.force_next
