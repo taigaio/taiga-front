@@ -9,7 +9,7 @@
 .card-assigned-to(
     class!="<%= vm.item.getIn(['model', 'is_iocaine']) ? 'is_iocaine': '' %>"
 )
-    <% if (!vm.item.get('assigned_to') && !vm.item.get('assigned_users').size) { %>
+    <% if (!vm.item.get('assigned_to') && (!vm.item.get('assigned_users') || !vm.item.get('assigned_users').size)) { %>
     .card-user-avatar.card-not-assigned
         img(
             title!="<%= translate('COMMON.ASSIGNED_TO.NOT_ASSIGNED') %>"
@@ -20,7 +20,7 @@
         <% } %>
     <% } %>
 
-    <% if (vm.item.get('assigned_to') || vm.item.get('assigned_users').size) { %>
+    <% if (vm.item.get('assigned_to') || (vm.item.get('assigned_users') && vm.item.get('assigned_users').size)) { %>
     <% if (vm.item.get('assigned_users_preview')) { %>
     <% _.forEach(vm.item.get('assigned_users_preview').toJS(), function(assignedUser, index) { %>
     .card-user-avatar
@@ -35,7 +35,7 @@
         //- show, 4+ (4 more assigned users)
         //- is the third avatar ($index == 2)
         //- only appears where there is more than 3 avatars (('assigned_users').size > 3)
-        <% if (index == 2 && vm.item.get('assigned_users').size > 3) { %>
+        <% if (index == 2 && (vm.item.get('assigned_users') && vm.item.get('assigned_users').size > 3)) { %>
         span.extra-assigned(
             title!="<%= translate('COMMON.CARD.EXTRA_ASSIGNED_USERS', { total: (vm.item.get('assigned_users').size - 2) }) %>"
         ) <%= vm.item.get('assigned_users').size - 2 %>+
