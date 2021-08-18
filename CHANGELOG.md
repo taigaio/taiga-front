@@ -2,7 +2,7 @@
 
 ## 6.4.0 (unreleased)
 
-- ...
+- fix: fix actions showing on folded cards
 
 ## 6.3.3 (2021-08-16)
 

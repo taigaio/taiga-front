@@ -41,6 +41,7 @@ $fold-animation-duration: .1s;
     align-self: flex-start;
     background-color: transparent;
     box-shadow: none;
+    display: flex;
     margin: 0;
     tg-card-slideshow,
     .card-unfold,
@@ -108,6 +109,9 @@ $fold-animation-duration: .1s;
         overflow: hidden;
         overflow-wrap: break-word;
         /* stylelint-enable property-no-vendor-prefix, value-no-vendor-prefix */
+    }
+    .card-actions {
+        display: none;
     }
 }
 
