@@ -3,6 +3,7 @@
 ## 6.4.0 (unreleased)
 
 - fix: fix actions showing on folded cards
+- fix: fix non-assigned avatar not showing
 
 ## 6.3.3 (2021-08-16)
 
