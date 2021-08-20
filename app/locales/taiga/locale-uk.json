@@ -60,7 +60,8 @@
             "NO_PTS": "N/E",
             "ESTIMATION": "Estimation",
             "TASKS": "{{completed}} tasks of {{total}} completed",
-            "EXTRA_ASSIGNED_USERS": "{{total}} more assigned users"
+            "EXTRA_ASSIGNED_USERS": "{{total}} more assigned users",
+            "MOVE_TO_TOP": "Угору"
         },
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Здається, це значення не вірне.",
@@ -351,7 +352,7 @@
     },
     "REGISTER_FORM": {
         "TITLE": "Зареєструвати новий обліковий запис Taiga (безкоштовно)",
-        "PLACEHOLDER_NAME": "Виберіть ім'я користувача (чутливе до регістру)",
+        "PLACEHOLDER_NAME": "Виберіть ім'я користувача",
         "PLACEHOLDER_FULL_NAME": "Виберіть Ваше повне ім'я",
         "PLACEHOLDER_EMAIL": "Ваша електронна пошта",
         "PLACEHOLDER_PASSWORD": "Вкажіть пароль (чутливий до регістру)",
@@ -569,7 +570,8 @@
             "REQUEST_OWNERSHIP_SUCCESS": "Ми повідомимо власника проєкту",
             "CHANGE_OWNER": "Змінити власника",
             "CHANGE_OWNER_SUCCESS_TITLE": "Гаразд, Ваш запит надіслано!",
-            "CHANGE_OWNER_SUCCESS_DESC": "Ми повідомимо вас по електронній пошті коли запит на право власності проєкту буде прийнято чи відхилено"
+            "CHANGE_OWNER_SUCCESS_DESC": "Ми повідомимо вас по електронній пошті коли запит на право власності проєкту буде прийнято чи відхилено",
+            "REQUEST_OWNERSHIP_LIMIT": "Ви досягли межі приватного проєкту ({{maxProjects}})"
         },
         "REPORTS": {
             "TITLE": "Звіти",
@@ -700,7 +702,7 @@
             "WARNING_DELETE_ROLE": "Обережно! Усі оцінки ролі будуть видалені",
             "ERROR_DELETE_ALL": "Ви не можете видалити усі значення",
             "EXTERNAL_USER": "Зовнішній користувач",
-            "NOTE_EXTERNAL_USERS": "<strong>Примітка:</strong> під зовнішнім користувачем ми маємо на увазі будь-якого анонімного користувача, який не належить до платформи Taiga, включаючи пошукові системи. Будь ласка, використовуйте цю роль обережно."
+            "NOTE_EXTERNAL_USERS": "Зовнішній користувач - це будь-який користувач (який увійшов в платформу Taiga чи ні),<strong> включаючи пошукові системи </strong>. Хоча незареєстровані користувачі ніколи не можуть мати права на редагування, зареєстровані користувачі можуть, якщо ви це дозволите. Якщо ваш проєкт є приватним, ви також можете контролювати дозвіл на перегляд.<strong> Будь ласка, використовуйте цю роль з обережністю</strong>."
         },
         "THIRD_PARTIES": {
             "SECRET_KEY": "Таємний ключ",
@@ -778,14 +780,14 @@
             "DEFAULT_DELETE_MESSAGE": "запрошення на {{email}}"
         },
         "DEFAULT_VALUES": {
-            "LABEL_EPIC_STATUS": "Типове значення для вибору статусу епіка",
-            "LABEL_US_STATUS": "Типове значення для вибору статусу історії користувача",
-            "LABEL_POINTS": "Типове значення для вибору кількості очок",
-            "LABEL_TASK_STATUS": "Типове значення для вибору статусу завдання",
-            "LABEL_ISSUE_TYPE": "Типове значення для вибору типу проблеми",
-            "LABEL_ISSUE_STATUS": "Типове значення для вибору статусу проблеми",
-            "LABEL_PRIORITY": "Типове значення для вибору пріоритету",
-            "LABEL_SEVERITY": "Типове значення для вибору важливості"
+            "LABEL_EPIC_STATUS": "Поле вибору статусу Епіка",
+            "LABEL_US_STATUS": "Вибір статусу історії користувача",
+            "LABEL_POINTS": "Вибір очок",
+            "LABEL_TASK_STATUS": "Вибір статусу завдання",
+            "LABEL_ISSUE_TYPE": "Вибір типу проблеми",
+            "LABEL_ISSUE_STATUS": "Вибір статусу проблеми",
+            "LABEL_PRIORITY": "Вибір пріоритету",
+            "LABEL_SEVERITY": "Вибір важливості"
         },
         "STATUS": {
             "PLACEHOLDER_WRITE_STATUS_NAME": "Напишіть ім'я для нового статусу",
@@ -839,6 +841,11 @@
                 "PUBLIC": "Будь ласка, пам'ятайте, що ви можете мати до <strong>{{maxProjects}}</strong> загальнодоступних проєктів. Зараз у вас <strong>{{currentProjects}}</strong> загальнодоступних проєктів"
             },
             "CANT_BE_OWNED": "На даний момент Ви не можете стати власником проєкту цього типу. Якщо Ви хочете стати власником цього проєкту, будь ласка, зверніться до адміністратора - він може змінити налаштування вашого профілю, щоб активувати право власності на проєкт."
+        },
+        "PROJECT_PRESETS": {
+            "SUBTITLE": "Установіть типові значення для всіх полів вибору.",
+            "TITLE": "Типові значення",
+            "MENU_TITLE": "Переднабори"
         }
     },
     "USER": {
@@ -1110,6 +1117,18 @@
                 "CREATE_NEW_ISSUES": "Перетворити підпроблеми у нові проблеми Taiga",
                 "NOT_CREATE_NEW_ISSUES": "Не імпортувати під-проблеми"
             }
+        },
+        "NEWSLETTER_OPENING": {
+            "SAVED_PREFERENCE": "Ваші налаштування успішно збережено",
+            "SUBSCRIBED": "Ви підписані",
+            "SUBSCRIBE": "Підписатися",
+            "NOTIFY_EXPLANATION": "Ми надсилатимемо вам новини, оновлення продуктів та поради про Taiga.",
+            "SAVE_PREFERENCE": "ЗБЕРЕГТИ НАЛАШТУВАННЯ",
+            "DONT_ASK": "Більше не питати",
+            "OPT_OUT": "Ми надсилатимемо вам лише відповідні електронні листи (<6 на рік). Ви можете будь -коли відписатися, надіславши електронний лист на адресу <a href=\"mailto:support@taiga.io\" target=\"_blank\"> support@taiga.io </a> із темою \"скасувати підписку\" або за посиланням у будь -якому наших інформаційних бюлетенів.",
+            "NO_SHARE": "Для нас важлива ваша приватність (перегляньте нашу <a href=\"https://www.taiga.io/privacy-policy\" title=\"Go to privacy policy\" target=\"_blank\">політику приватності</a>).",
+            "CONFIRMATION": "Так, надішліть мені новини, оновлення продуктів та поради про Taiga.",
+            "LIGHTBOX_TITLE": "Хочете отримувати оголошення про Taiga?"
         }
     },
     "LIGHTBOX": {
@@ -1188,7 +1207,10 @@
             "SELECT_STATUS": "Select status",
             "DEFAULT": "Типове",
             "ERROR_STATUS": "Changes cannot be saved because there is a problem with the selected status.",
-            "ERROR_SWIMLANE": "Changes cannot be saved because there is a problem with the selected swimlane."
+            "ERROR_SWIMLANE": "Changes cannot be saved because there is a problem with the selected swimlane.",
+            "CREATE_BOTTOM": "знизу",
+            "CREATE_TOP": "зверху",
+            "LOCATION": "Мі́сце"
         },
         "DISABLE_KANBAN": {
             "TITLE": "Disable kanban",
@@ -1543,9 +1565,10 @@
         "WARNING_TEXT": "Ваші зміни не збережені!",
         "SAVED": "Taiga зберіг усі ваші зміни!",
         "CLOSE": "Закрити повідомлення",
-        "MAIL": "Повідомлення по електронній пошті",
+        "MAIL": "Діяльність",
         "DESKTOP": "Сповіщення стільниці використовуючи повідомлення переглядача",
-        "ASK_DELETE": "Ви дійсно хочете видалити?"
+        "ASK_DELETE": "Ви дійсно хочете видалити?",
+        "COMMUNICATION": "Комунікації Taiga"
     },
     "CANCEL_ACCOUNT": {
         "TITLE": "Скасувати Ваш обліковий запис",
