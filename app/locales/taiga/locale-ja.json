@@ -60,7 +60,8 @@
             "NO_PTS": "N/E",
             "ESTIMATION": "見積り",
             "TASKS": "{{total}} タスク中 {{completed}} タスク完了",
-            "EXTRA_ASSIGNED_USERS": "{{total}} more assigned users"
+            "EXTRA_ASSIGNED_USERS": "{{total}} more assigned users",
+            "MOVE_TO_TOP": "先頭へ"
         },
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "この値は無効なようです。",
@@ -1201,12 +1202,15 @@
             "CHOOSE_EXISTING_ISSUE": "どの課題？",
             "ADD_ISSUE": "イッシューを追加する",
             "FILTER_ISSUES": "課題をフィルター",
-            "SWIMLANE": "Swimlane",
-            "SELECT_SWIMLANE": "Select swimlane",
-            "SELECT_STATUS": "Select status",
+            "SWIMLANE": "スイムレーン",
+            "SELECT_SWIMLANE": "スイムレーン選択",
+            "SELECT_STATUS": "ステータス選択",
             "DEFAULT": "Default",
             "ERROR_STATUS": "Changes cannot be saved because there is a problem with the selected status.",
-            "ERROR_SWIMLANE": "Changes cannot be saved because there is a problem with the selected swimlane."
+            "ERROR_SWIMLANE": "Changes cannot be saved because there is a problem with the selected swimlane.",
+            "LOCATION": "位置",
+            "CREATE_BOTTOM": "末尾",
+            "CREATE_TOP": "先頭"
         },
         "DISABLE_KANBAN": {
             "TITLE": "Disable kanban",
@@ -1441,7 +1445,7 @@
             "NEW_SPRINT": "ベロシティに基づく次スプリントのユーザーストーリー候補です。",
             "CURRENT_SPRINT": "Candidate user stories for your sprint based on your velocity. Click to add to current sprint.",
             "ADD_NEW_SPRINT": "このスプリントを作成",
-            "ADD_NEW_SPRINT_SHORT": "create sprint"
+            "ADD_NEW_SPRINT_SHORT": "スプリントを作成"
         },
         "TABLE": {
             "COLUMN_US": "User Story",
