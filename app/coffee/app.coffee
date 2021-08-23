@@ -682,9 +682,16 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
                                 reject(err)
 
                         else
+                            window.location.href = $navUrls.resolve("login") + '?force_login'
+
+                            nextUrl = $location.url()
+                            search = $location.search()
                             removeUser()
 
-                            window.location.href = $navUrls.resolve("login") + '?force_login'
+                            if search.force_next
+                                window.location.href = $navUrls.resolve("login") + '?force_next=' +  search.force_next
+                            else
+                                window.location.href = $navUrls.resolve("login") + '?unauthorized=true&next=' + nextUrl
 
                             reject(response)
 
