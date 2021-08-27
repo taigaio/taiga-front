@@ -11,23 +11,46 @@ module = angular.module("taigaBase")
 class DetailNavController
     @.$inject = [
         "$tgNavUrls",
+        "$tgResources",
     ]
 
-    constructor: (@navUrls) ->
+    constructor: (@navUrls, @rs) ->
         return
 
     _checkNav: () ->
-        if @.item.neighbors.previous?.ref?
+        params = @rs.userstories.getQueryParams(@.item.project_extra_info.id)
+        noMilestone = params.milestone == 'null'
+
+        neighbors = @.item.neighbors
+
+        @.previousUrl = null
+        @.nextUrl = null
+
+        if noMilestone
+            uss = @rs.userstories.getBacklog(@.item.project_extra_info.id)
+            index = uss.findIndex (ref) => ref == @.item.ref
+
+            if index != -1
+                neighbors = {
+                    previous: {
+                        ref: uss[index - 1]
+                    },
+                    next: {
+                        ref: uss[index + 1]
+                    },
+                }
+
+        if neighbors.previous?.ref?
             ctx = {
                 project: @.item.project_extra_info.slug
-                ref: @.item.neighbors.previous.ref
+                ref: neighbors.previous.ref
             }
             @.previousUrl = @navUrls.resolve("project-" + @.item._name + "-detail", ctx)
 
-        if @.item.neighbors.next?.ref?
+        if neighbors.next?.ref?
             ctx = {
                 project: @.item.project_extra_info.slug
-                ref: @.item.neighbors.next.ref
+                ref: neighbors.next.ref
             }
             @.nextUrl = @navUrls.resolve("project-" + @.item._name + "-detail", ctx)
 

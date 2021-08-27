@@ -21,10 +21,21 @@ describe "DetailNavComponent", ->
 
         provide.value "$tgNavUrls", mocks.navUrls
 
+    _mockResources = () ->
+        mocks.resources = {
+            userstories: {
+                getQueryParams: sinon.stub().returns({})
+                getBacklog: sinon.stub().returns({})
+            }
+        }
+
+        provide.value "$tgResources", mocks.resources
+
     _mocks = () ->
         module ($provide) ->
             provide = $provide
             _mockTgNav()
+            _mockResources()
             return null
 
     beforeEach ->

@@ -117,6 +117,35 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         # On Error
         promise.then null, @.onInitialDataError.bind(@)
 
+    preloadUsIds: () ->
+        page = 1
+        usIds = []
+
+        loadNextPage = () =>
+            lastLoadUserstoriesParams = Object.assign({}, @.lastLoadUserstoriesParams)
+
+            params = Object.assign(lastLoadUserstoriesParams, {
+                page: page
+                only_ref: true
+            })
+
+            promise = @rs.userstories.listUnassigned(@scope.projectId, params, 100)
+            promise.then (result) =>
+                userstories = result[0]
+                header = result[1]
+                usIds = usIds.concat(userstories.map (us) => us.ref)
+                @rs.userstories.storeBacklog(@scope.projectId, usIds)
+
+                if header('x-pagination-next')
+                    page++
+                    loadNextPage()
+
+        if @.disablePagination
+            usIds = @scope.userstories.map (us) -> us.ref
+            @rs.userstories.storeBacklog(@scope.projectId, usIds)
+        else
+            loadNextPage()
+
     filtersReloadContent: () ->
         @.loadUserstories(true)
 
@@ -330,47 +359,53 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         promise = @rs.userstories.listUnassigned(@scope.projectId, params, pageSize)
 
         return promise.then (result) =>
-
             userstories = result[0]
-
             header = result[1]
 
             if resetPagination
                 @scope.userstories = []
 
-            # NOTE: Fix order of USs because the filter orderBy does not work propertly in the partials files
-            @scope.userstories = @scope.userstories.concat(_.sortBy(userstories, "backlog_order"))
-            @.resetFirstStoryIndicator()
-            @scope.visibleUserStories = _.map @scope.userstories, (it) ->
-                return it.ref
+            uss = @.parseLoadUserstoriesResponse(userstories, header)
 
-            for it in @scope.userstories
-                if @.newUs.includes(it.id)
-                    it.new = true
+            if @.page <= 2
+                @.preloadUsIds()
 
-                @.backlogOrder[it.id] = it.backlog_order
+            return uss
 
-            @.loadingUserstories = false
+    parseLoadUserstoriesResponse: (userstories, header) ->
+        # NOTE: Fix order of USs because the filter orderBy does not work propertly in the partials files
+        @scope.userstories = @scope.userstories.concat(_.sortBy(userstories, "backlog_order"))
+        @.resetFirstStoryIndicator()
+        @scope.visibleUserStories = _.map @scope.userstories, (it) ->
+            return it.ref
 
-            if header('x-pagination-next')
-                @.disablePagination = false
-                @.page++
+        for it in @scope.userstories
+            if @.newUs.includes(it.id)
+                it.new = true
 
-            if header('Taiga-Info-Backlog-Total-Userstories')
-                @.totalUserStories = header('Taiga-Info-Backlog-Total-Userstories')
+            @.backlogOrder[it.id] = it.backlog_order
 
-            if header('Taiga-Info-Userstories-Without-Swimlane')
-                @scope.noSwimlaneUserStories = header('Taiga-Info-Userstories-Without-Swimlane')
+        @.loadingUserstories = false
 
-            @rootscope.$broadcast("backlog:userstories:loaded")
+        if header('x-pagination-next')
+            @.disablePagination = false
+            @.page++
 
-            # The broadcast must be executed when the DOM has been fully reloaded.
-            # We can't assure when this exactly happens so we need a defer
-            scopeDefer @scope, =>
-                @scope.$broadcast("userstories:loaded")
-                @tgLoader.pageLoaded()
+        if header('Taiga-Info-Backlog-Total-Userstories')
+            @.totalUserStories = header('Taiga-Info-Backlog-Total-Userstories')
 
-            return userstories
+        if header('Taiga-Info-Userstories-Without-Swimlane')
+            @scope.noSwimlaneUserStories = header('Taiga-Info-Userstories-Without-Swimlane')
+
+        @rootscope.$broadcast("backlog:userstories:loaded")
+
+        # The broadcast must be executed when the DOM has been fully reloaded.
+        # We can't assure when this exactly happens so we need a defer
+        scopeDefer @scope, =>
+            @scope.$broadcast("userstories:loaded")
+            @tgLoader.pageLoaded()
+
+        return userstories
 
     loadBacklog: ->
         return @q.all([
