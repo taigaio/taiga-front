@@ -29,6 +29,10 @@ resourceProvider = ($repo, $http, $urls, $storage, $q) ->
         params.project = projectId
         params.ref = ref
         params = _.extend({}, params, extraParams)
+        # TODO: fix api performance issue
+        if params.milestone == 'null'
+            delete params.milestone
+            delete params['no-milestone']
 
         return $repo.queryOne("userstories", "by_ref", params)
 
@@ -150,6 +154,16 @@ resourceProvider = ($repo, $http, $urls, $storage, $q) ->
         ns = "#{projectId}:#{hashSuffix}"
         hash = generateHash([projectId, ns])
         return $storage.get(hash) or {}
+
+    service.storeBacklog = (projectId, ids) ->
+        ns = "#{projectId}:backlog-ids"
+        hash = generateHash([projectId, ns])
+        $storage.set(hash, ids)
+
+    service.getBacklog = (projectId) ->
+        ns = "#{projectId}:backlog-ids"
+        hash = generateHash([projectId, ns])
+        return $storage.get(hash) or []
 
     service.storeShowTags = (projectId, params) ->
         ns = "#{projectId}:#{hashShowTags}"
