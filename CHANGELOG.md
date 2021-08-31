@@ -5,6 +5,7 @@
 - fix: fix actions showing on folded cards
 - fix: fix non-assigned avatar not showing
 - fix: redirect to previous url after login
+- fix: neighbors performance 
 
 ## 6.3.3 (2021-08-16)
 
