@@ -1,11 +1,16 @@
 # Changelog
 
-## 6.4.0 (unreleased)
+## 6.5.0 (unreleased
 
+- ...
+
+## 6.4.0 (2021-09-06)
+
+- feat: serve Taiga in subpath
 - fix: fix actions showing on folded cards
 - fix: fix non-assigned avatar not showing
 - fix: redirect to previous url after login
-- fix: neighbors performance 
+- fix: neighbors performance
 
 ## 6.3.3 (2021-08-16)
 
