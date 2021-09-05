@@ -17,18 +17,18 @@
         "BACK": "Arka",
         "COPY_TO_CLIPBOARD": "Kopyala",
         "COPIED_TO_CLIPBOARD": "Metin panoya kopyalandı",
-        "MOVE_TO_TOP": "Move to top",
+        "MOVE_TO_TOP": "En üste taşı",
         "EDIT": "Düzenle",
         "DRAG": "Sürükle",
         "TAG_LINE": "Çevik, ücretsiz ve açık kaynak proje yönetim aracınız",
         "TAG_LINE_2": "PROJENİ SEV",
         "BLOCK": "Engelle",
-        "BLOCK_TITLE": "Block this item, for example if it has a dependency that can not be satisfied",
+        "BLOCK_TITLE": "Örneğin karşılanamayan bir bağımlılığı varsa bu ögeyi engelle",
         "BLOCKED": "Engelli",
         "UNBLOCK": "Engellemeyi kaldır",
         "UNBLOCK_TITLE": "Bu maddeden engellemeyi kaldır",
         "BLOCKED_NOTE": "Bu niye engelli?",
-        "BLOCKED_REASON": "Lütfen sebebini açıklayın",
+        "BLOCKED_REASON": "Lütfen nedenini açıklayın",
         "CREATED_BY": "{{fullDisplayName}} tarafından oluşturuldu",
         "CLOSE": "kapat",
         "GO_HOME": "Ana sayfaya götür beni",
@@ -40,27 +40,27 @@
         "NEXT": "İleri",
         "LOGOUT": "Çıkış",
         "EXTERNAL_USER": "bir dış kullanıcı",
-        "GENERIC_ERROR": "The Taiga says {{error}}.",
-        "IOCAINE_TEXT": "This member is feeling a bit overwhelmed by this task. They will become immune to the iocaine poison over time with your help. For now, they may need a hug.",
-        "CLIENT_REQUIREMENT": "A client requirement is a new requirement that was not previously expected and is required to be part of the project",
-        "TEAM_REQUIREMENT": "A team requirement is a requirement that must exist in the project but should have no cost for the client",
+        "GENERIC_ERROR": "Taiga diyor ki: {{error}}.",
+        "IOCAINE_TEXT": "Bu üye bu görev yüzünden biraz bunalmış hissediyor. Sizin yardımınızla zamanla baldıran zehrine karşı bağışıklık kazanacaklar. Şimdilik bir sarılmaya ihtiyaçları olabilir.",
+        "CLIENT_REQUIREMENT": "Müşteri gereksinimi, daha önce beklenmeyen ve projenin bir parçası olması gereken yeni bir gereksinimdir",
+        "TEAM_REQUIREMENT": "Takım gereksinimi, projede bulunması gereken ancak müşteri için hiçbir maliyeti olmaması gereken bir gereksinimdir",
         "OWNER": "Proje Sahibi",
-        "CAPSLOCK_WARNING": "Be careful! You are using capital letters in an input field that is case sensitive.",
-        "CONFIRM_CLOSE_EDIT_MODE_TITLE": "Are you sure you want to close the edit mode?",
-        "CONFIRM_CLOSE_EDIT_MODE_MESSAGE": "Remember that if you close the edit mode without saving all the changes will be lost",
+        "CAPSLOCK_WARNING": "Dikkatli olun! Büyük/küçük harfe duyarlı bir girdi alanında büyük harfler kullanıyorsunuz.",
+        "CONFIRM_CLOSE_EDIT_MODE_TITLE": "Düzenleme modunu kapatmak istediğinizden emin misiniz?",
+        "CONFIRM_CLOSE_EDIT_MODE_MESSAGE": "Kaydetmeden düzenleme modunu kapatırsanız tüm değişikliklerin kaybolacağını unutmayın",
         "RELATED_USERSTORIES": "Alakalı Kullanıcı Hikayeleri",
         "CARD": {
             "ASSIGN_TO": "Atanmış",
             "EDIT": "Kartı düzenle",
-            "DELETE": "Delete card",
+            "DELETE": "Kartı sil",
             "DELETE_ISSUE": "Sorun sil",
-            "DETACH_ISSUE_FROM_SPRINT": "Detach from sprint",
-            "PTS": "{{pts}} pts",
-            "DUE_DATE": "Due date: {{date}}",
+            "DETACH_ISSUE_FROM_SPRINT": "Koşudan ayrıl",
+            "PTS": "{{pts}} puan",
+            "DUE_DATE": "Bitim tarihi: {{date}}",
             "NO_PTS": "N/E",
-            "ESTIMATION": "Estimation",
-            "TASKS": "{{completed}} tasks of {{total}} completed",
-            "EXTRA_ASSIGNED_USERS": "{{total}} more assigned users",
+            "ESTIMATION": "Tahmin",
+            "TASKS": "{{total}} görevden {{completed}} tanesi tamamlandı",
+            "EXTRA_ASSIGNED_USERS": "{{total}} atanan kullanıcı daha",
             "MOVE_TO_TOP": "En üste taşı"
         },
         "FORM_ERRORS": {
@@ -82,7 +82,7 @@
             "RANGE": "Bu değer %s ve %s aralığında olmalıdır.",
             "MIN_LENGTH": "Bu değer çok kısa. Karakter sayısı en az %s olmalıdır.",
             "MAX_LENGTH": "Bu değer çok uzun. Karakter sayısı %s kadar ya da daha az olmalıdır.",
-            "RANGE_LENGTH": "This value's length is invalid. It should be between %s and %s characters long.",
+            "RANGE_LENGTH": "Bu değerin uzunluğu geçersiz. %s ila %s karakter uzunluğunda olmalıdır.",
             "MIN_CHECK": "En az %s seçenek belirtmek zorundasınız.",
             "MAX_CHECK": "%s seçenek ya da daha azını seçmek zorunlu.",
             "RANGE_CHECK": "%s ve %s seçenekleri arasında bir seçim yapmak zorunludu.",
@@ -139,7 +139,7 @@
             "ADD": "Etiket ekle"
         },
         "DESCRIPTION": {
-            "EMPTY": "Empty space is so boring... go on, be descriptive...",
+            "EMPTY": "Boş alan çok sıkıcı... devam et, açıklayıcı ol...",
             "NO_DESCRIPTION": "Bir tanım henüz yok"
         },
         "FIELDS": {
@@ -160,14 +160,14 @@
             "ASSIGNED_USERS": "Atanmış kullanıcılar",
             "POINTS": "Puanlar",
             "IS_BLOCKED": "engellendi",
-            "REF": "Ref",
+            "REF": "Referans",
             "VOTES": "Oylar",
             "SPRINT": "Koşu",
             "DUE_DATE": "Bitim tarihi",
             "DUE_DATE_REASON": "Bitim tarihi nedeni"
         },
         "ROLES": {
-            "ALL": "All points"
+            "ALL": "Tüm puanlar"
         },
         "ASSIGNED_TO": {
             "NOT_ASSIGNED": "Atanmamış",
@@ -204,52 +204,52 @@
             "UNWATCH": "İzleme",
             "WATCHERS": "İzleyiciler",
             "BUTTON_TITLE": "Bu ögeyi izle/izlemeyi bırak",
-            "COUNTER_TITLE": "{total, plural, =1{one watcher} other{# watchers}}"
+            "COUNTER_TITLE": "{total, plural, =1{bir izleyici} other{# izleyici}}"
         },
         "VOTE_BUTTON": {
             "BUTTON_TITLE": "Bu konuya oy/karşı oy ver",
             "COUNTER_TITLE": "{total, plural, =1{one vote} other{# votes}}"
         },
         "PROMOTE_TO_US": "Kullanıcı Hikayesine Terfi Ettir",
-        "PROMOTED_ISSUES": "This issue has been promoted to",
-        "PROMOTED_TASKS": "This task has been promoted to",
+        "PROMOTED_ISSUES": "Bu talep şuna terfi ettirildi",
+        "PROMOTED_TASKS": "Bu görev şuna terfi ettirildi",
         "CONFIRM_PROMOTE": {
             "ISSUE": {
                 "TITLE": "Bu talebi yeni bir kullanıcı hikayesi olacak şekilde terfi ettirin",
-                "MESSAGE": "Are you sure you want to create a new user story from this issue?"
+                "MESSAGE": "Bu talepten yeni bir kullanıcı hikayesi oluşturmak istediğinize emin misiniz?"
             },
             "TASK": {
-                "TITLE": "Promote this task to a new user story",
-                "MESSAGE": "Are you sure you want to create a new user story from this task?"
+                "TITLE": "Bu görevi yeni bir kullanıcı hikayesine terfi ettir",
+                "MESSAGE": "Bu görevden yeni bir kullanıcı hikayesi oluşturmak istediğinize emin misiniz?"
             }
         },
         "CUSTOM_ATTRIBUTES": {
             "CUSTOM_FIELDS": "Özel Alanlar",
             "SAVE": "Özel alanı kaydet",
             "EDIT": "Özel alanı düzenle",
-            "DELETE": "Delete custom fields",
-            "CONFIRM_DELETE": "Remember that all values in this custom field will be deleted."
+            "DELETE": "Özel alanları sil",
+            "CONFIRM_DELETE": "Bu özel alandaki tüm değerlerin silineceğini unutmayın."
         },
         "FILTERS": {
-            "INPUT_PLACEHOLDER": "subject or reference",
+            "INPUT_PLACEHOLDER": "konu veya referans",
             "TITLE_ACTION_FILTER_BUTTON": "ara",
             "TITLE": "Özel filtreler",
             "TITLE_ACTION_SEARCH": "Ara",
             "ACTION_ADD": "Ekle",
-            "ACTION_SAVE_CUSTOM_FILTER": "save filter",
+            "ACTION_SAVE_CUSTOM_FILTER": "filtreyi kaydet",
             "PLACEHOLDER_FILTER_NAME": "Filtre adı yazın ve enter a basın",
             "APPLIED_FILTERS_NUM": "filtre uygulandı",
-            "TITLE_ADVANCED_FILTER": "Advanced",
-            "LENGTH_ZERO_ERROR": "Please add a filter name",
-            "REPEATED_FILTER_ERROR": "This filter name is already in use",
+            "TITLE_ADVANCED_FILTER": "Gelişmiş",
+            "LENGTH_ZERO_ERROR": "Lütfen bir filtre adı ekleyin",
+            "REPEATED_FILTER_ERROR": "Bu filtre adı zaten kullanılıyor",
             "ADVANCED_FILTERS": {
-                "INCLUDE": "Include",
-                "EXCLUDE": "Exclude",
-                "INCLUDED": "Filtered by:",
-                "EXCLUDED": "Excluded:"
+                "INCLUDE": "Dahil et",
+                "EXCLUDE": "Hariç tut",
+                "INCLUDED": "Şuna göre filtrelendi:",
+                "EXCLUDED": "Hariç tutulan:"
             },
             "CATEGORIES": {
-                "TYPE": "Tip",
+                "TYPE": "Tür",
                 "STATUS": "Durum",
                 "SEVERITY": "Önem Derecesi",
                 "PRIORITIES": "Öncelikler",
@@ -267,7 +267,7 @@
             "DB_CLICK": "düzenlemek için çift tıklayın",
             "SELECT_LANGUAGE_PLACEHOLDER": "Diş Seçin",
             "SELECT_LANGUAGE_REMOVE_FORMATING": "Biçemi kaldır",
-            "OUTDATED": "Another person has made changes while you were editing. Check the new version on the activity tab before you save your changes.",
+            "OUTDATED": "Siz düzenleme yaparken başka bir kişi değişiklik yaptı. Değişikliklerinizi kaydetmeden önce etkinlik sekmesinde yeni sürüme göz atın.",
             "MARKDOWN_HELP": "Markdown yazım kılavuzu"
         },
         "PERMISIONS_CATEGORIES": {
@@ -391,7 +391,7 @@
         "PLACEHOLDER_NEW_PASSWORD": "Yeni parola",
         "PLACEHOLDER_RE_TYPE_NEW_PASSWORD": "Yeni parolayı yeniden girin",
         "ACTION_RESET_PASSWORD": "Parolayı Sıfırla",
-        "SUCCESS": "The Taiga saved your new password.<br /> Try to <strong>sign in</strong> with it."
+        "SUCCESS": "Taiga yeni parolanızı kaydetti.<br /> Onunla <strong>oturum açmayı</strong> deneyin."
     },
     "INVITATION": {
         "PAGE_TITLE": "Davet kabulü - Taiga",
@@ -412,7 +412,7 @@
         "DASHBOARD": "Proje Panosu",
         "SET_HIDDEN": "Gizli olarak ayarla",
         "SET_VISIBLE": "Görünür olarak ayarla",
-        "NO_HIDDEN_ITEMS": "You have no hidden items",
+        "NO_HIDDEN_ITEMS": "Gizli ögeniz yok",
         "HIDE_HIDDEN": "Gizli nesneleri gösterme",
         "SHOW_HIDDEN": "Gizli nesneleri göster"
     },
@@ -440,14 +440,14 @@
             "STATUS": "Durum",
             "PROGRESS": "İlerleme",
             "CLOSED_US": "Kapalı kullanıcı hikayeleri",
-            "CLOSED_EPICS": "Closed epics",
+            "CLOSED_EPICS": "Kapatılan destanlar",
             "VIEW_OPTIONS": "Seçenekleri gör"
         },
         "CREATE": {
             "TITLE": "Yeni Destan",
             "PLACEHOLDER_DESCRIPTION": "Lütfen diğerlerinin bu destanı daha iyi anlayabilmesi için açıklama giriniz",
             "TEAM_REQUIREMENT": "Takım gereksinimi",
-            "CLIENT_REQUIREMENT": "İstemci Gereksinimi",
+            "CLIENT_REQUIREMENT": "Müşteri gereksinimi",
             "BLOCKED": "Engelli",
             "BLOCKED_NOTE_PLACEHOLDER": "Bu destan neden engellenmiş?",
             "CREATE_EPIC": "Destan yarat"
@@ -459,7 +459,7 @@
         "MY_PROJECTS": "Projelerim"
     },
     "ATTACHMENT": {
-        "SECTION_NAME": "Attachments",
+        "SECTION_NAME": "Ekler",
         "TITLE": "{{ date }} tarihinde {{ fileName }} dosyası yüklendi",
         "LIST_VIEW_MODE": "Liste görünümü biçimi",
         "GALLERY_VIEW_MODE": "Galeri görünümü biçimi",
@@ -472,12 +472,12 @@
         "HIDE_DEPRECATED": "- kaldırılan ekleri gizle",
         "COUNT_DEPRECATED": "({{ counter }} kaldırılmış)",
         "MAX_UPLOAD_SIZE": "Karşıya yükleme için en yüksek boyut limiti {{maxFileSize}}",
-        "DATE": "DD MMM YYYY [at] hh:mm",
+        "DATE": "GG AAA YYYY [saat] ss:dd",
         "ERROR_UPLOAD_ATTACHMENT": "'{{fileName}}' dosyasını yükleyemedik. {{errorMessage}}",
         "TITLE_LIGHTBOX_DELETE_ATTACHMENT": "Eki sil...",
         "MSG_LIGHTBOX_DELETE_ATTACHMENT": "ek '{{fileName}}'",
         "ERROR_DELETE_ATTACHMENT": "Silemiyoruz: {{errorMessage}}",
-        "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) is too heavy for the Taiga, try it with a file smaller than ({{maxFileSize}})"
+        "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) Taiga için çok ağır, ({{maxFileSize}}) boyutundan daha küçük bir dosyayla deneyin"
     },
     "PAGINATION": {
         "PREVIOUS": "Önceki",
@@ -500,8 +500,8 @@
             "ADD_BUTTON": "+ Yeni üye",
             "ADD_BUTTON_TITLE": "Yeni üye ekle",
             "UPGRADE_BUTTON": "Planınızı Yükseltin",
-            "LIMIT_USERS_WARNING_MESSAGE_FOR_ADMIN": "If you would like to <strong>add more members</strong>, please contact the project owner <a href='mailto:{{ owner_email }}' title='{{ owner_email }}'>{{ owner_email }}</a>",
-            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "This project has reached its limit of <strong>({{members}})</strong> allowed members. If you would like to increase that limit please contact the administrator."
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_ADMIN": "<strong>Daha fazla üye eklemek</strong> istiyorsanız, lütfen proje sahibiyle iletişime geçin <a href='mailto:{{ owner_email }}' title='{{ owner_email }}'>{{ owner_email }}</a>",
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "Bu proje <strong>({{members}})</strong> izin verilen üye sınırına ulaştı. Bu sınırı artırmak istiyorsanız lütfen yönetici ile iletişime geçin."
         },
         "PROJECT_EXPORT": {
             "TITLE": "Dışarı aktar",
@@ -523,9 +523,9 @@
             "BACKLOG": "Scrum",
             "BACKLOG_DESCRIPTION": "Yeni gelen ve önceliklendirilmiş işler için düzenli bir görünüm elde etmek için kullanıcı hikayelerinizi yönetin.",
             "NUMBER_SPRINTS": "Beklenen koşu sayısı",
-            "NUMBER_SPRINTS_HELP": "Belirsizse 0 giriniz",
+            "NUMBER_SPRINTS_HELP": "Belirsizse 0 girin",
             "NUMBER_US_POINTS": "Hikaye puanlarının beklenen toplamı",
-            "NUMBER_US_POINTS_HELP": "Belirsizse 0 giriniz",
+            "NUMBER_US_POINTS_HELP": "Belirsizse 0 girin",
             "KANBAN": "Kanban",
             "KANBAN_DESCRIPTION": "Bu pano ile projenizi güzel bir şekilde düzenleyin.",
             "ISSUES": "Sorunlar",
@@ -612,8 +612,8 @@
             "FIELD_TYPE_MULTI": "Çoklu-satır",
             "FIELD_TYPE_DATE": "Tarih",
             "FIELD_TYPE_URL": "Url",
-            "FIELD_TYPE_DROPDOWN": "Dropdown",
-            "FIELD_TYPE_CHECKBOX": "Checkbox",
+            "FIELD_TYPE_DROPDOWN": "Açılır menü",
+            "FIELD_TYPE_CHECKBOX": "Onay kutusu",
             "FIELD_TYPE_NUMBER": "Sayı"
         },
         "PROJECT_VALUES": {
@@ -1016,7 +1016,7 @@
             "ERROR": "The Taiga has some problems importing your dump data. Please try again.",
             "ERROR_TOO_MANY_REQUEST": "Sorry, the Taiga is experiencing heavy load right now. Please try again in a few minutes.",
             "ERROR_MESSAGE": "The Taiga has some problems importing your dump data: {{error_message}}",
-            "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) is too heavy for the Taiga, try it with a file smaller than ({{maxFileSize}})",
+            "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) Taiga için çok ağır, ({{maxFileSize}}) boyutundan daha küçük bir dosyayla deneyin",
             "SYNC_SUCCESS": "Projeniz başarıyla içe aktarıldı",
             "IMPORT": "İçe Aktar",
             "WHO_IS": "Their tasks will be assigned to ...",
@@ -1361,24 +1361,24 @@
         "DELETE": "Yorumu sil",
         "RESTORE": "Yorumu geri yükle",
         "HISTORY": {
-            "TITLE": "Aktivite"
+            "TITLE": "Etkinlik"
         }
     },
     "ACTIVITY": {
-        "TITLE": "Aktivite",
-        "ACTIVITIES_COUNT": "{{activities}} Aktivite",
+        "TITLE": "Etkinlik",
+        "ACTIVITIES_COUNT": "{{activities}} Etkinlik",
         "TAGS_ADDED": "eklenen etiketler:",
         "TAGS_REMOVED": "etiketler kaldırıldı:",
         "US_POINTS": "{{role}} puanı",
         "NEW_ATTACHMENT": "yeni eklenti:",
         "DELETED_ATTACHMENT": "silinmiş eklenti:",
         "UPDATED_ATTACHMENT": "eklenti güncellendi ({{filename}}):",
-        "CREATED_CUSTOM_ATTRIBUTE": "özel öznitelik yaratıldı",
+        "CREATED_CUSTOM_ATTRIBUTE": "özel öznitelik oluşturuldu",
         "UPDATED_CUSTOM_ATTRIBUTE": "özel öznitelik güncellendi",
         "BECAME_DEPRECATED": "kaldırıldı olarak işaretlendi",
         "BECAME_UNDEPRECATED": "became undeprecated",
         "TEAM_REQUIREMENT": "Takım Gereksinimi",
-        "CLIENT_REQUIREMENT": "İstemci Gereksinimi",
+        "CLIENT_REQUIREMENT": "Müşteri Gereksinimi",
         "BLOCKED": "Engelli",
         "VALUES": {
             "NOT_SET": "not set",
@@ -1392,7 +1392,7 @@
             "STATUS": "durum",
             "TYPE": "tip",
             "ASSIGNED_TO": "atanmış",
-            "ASSIGNED_USERS": "atanmış kullanıcılar",
+            "ASSIGNED_USERS": "atanan kullanıcılar",
             "DUE_DATE": "bitim tarihi",
             "MILESTONE": "koşu",
             "COLOR": "renk",
@@ -1415,7 +1415,7 @@
         "CREATE_NEW_US": "Create a new user story",
         "CREATE_NEW_US_EMPTY_HELP": "Add a user story",
         "NO_MATCH": "No matching search result found with “{{ q }}”",
-        "NO_MATCH_HELP": "Try again using more general search terms",
+        "NO_MATCH_HELP": "Daha genel arama terimleri kullanarak tekrar deneyin",
         "EXCESS_OF_POINTS": "Puan bolluğu",
         "PENDING_POINTS": "Bekleyen Puanlar",
         "CLOSED_POINTS": "kapatıldı",
@@ -1506,7 +1506,7 @@
         "PLACEHOLDER_CARD_TITLE": "This could be a user story",
         "PLACEHOLDER_CARD_TEXT": "Go to the <a href=\"{{ backlogUrl }}\" title=\"Go to backlog\">backlog</a> and drag user stories to this sprint; split the stories into tasks to track them separately.",
         "TASK_NOT_FOUND_TITLE": "No matching results found",
-        "TASK_NOT_FOUND_TEXT": "Try again using more general search terms or disabling some filters.",
+        "TASK_NOT_FOUND_TEXT": "Daha genel arama terimleri kullanarak veya bazı filtreleri devre dışı bırakarak tekrar deneyin.",
         "TITLE_DATE_RANGE": "{{startDate}} <span>to</span> {{endDate}}",
         "TABLE": {
             "COLUMN": "Kullanıcı hikayesi",
@@ -1582,7 +1582,7 @@
         "SUBTITLE": "Bir tık daha ve e-postanız güncellenecek!",
         "PLACEHOLDER_INPUT_TOKEN": "e-posta kuponunu değiştir",
         "ACTION_CHANGE_EMAIL": "E-posta değiştir",
-        "SUCCESS": "Your email address has been successfully changed"
+        "SUCCESS": "E-posta adresiniz başarıyla değiştirildi"
     },
     "VERIFY_EMAIL_FORM": {
         "TITLE": "Verify your email",
@@ -1609,7 +1609,7 @@
         "FIELDS": {
             "PRIORITY": "Öncelik",
             "SEVERITY": "Önem Durumu",
-            "TYPE": "Tip"
+            "TYPE": "Tür"
         },
         "FILTER_ISSUES": "Filter issues",
         "CONFIRM_DETACH_FROM_SPRINT": {
@@ -1622,7 +1622,7 @@
         },
         "TABLE": {
             "COLUMNS": {
-                "TYPE": "Tip",
+                "TYPE": "Tür",
                 "SEVERITY": "Önem Derecesi",
                 "PRIORITY": "Öncelik",
                 "ISSUE": "Sorun",
@@ -1656,7 +1656,7 @@
         "ACTION_SHOW_ARCHIVED": "Arşivlenmişleri Göster",
         "ACTION_HIDE_ARCHIVED": "Arşivlenmişleri gizle",
         "US_NOT_FOUND_TITLE": "No matching results found",
-        "US_NOT_FOUND_TEXT_P1": "Try again using more general search terms or disabled some filters.",
+        "US_NOT_FOUND_TEXT_P1": "Daha genel arama terimleri kullanarak veya bazı filtreleri devre dışı bırakarak tekrar deneyin.",
         "US_NOT_FOUND_TEXT_P2": "<strong>Archived stories</strong> are not loaded by default. Unfold the archived statuses to expand your search.",
         "PLACEHOLDER_CARD_TITLE": "This could be a user story",
         "PLACEHOLDER_CARD_TEXT": "Create user stories here and change their status to track their progress.",
@@ -1855,12 +1855,12 @@
         "COMMENTED": "{{username}} has commented on {{obj_name}}"
     },
     "LEGAL": {
-        "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>When creating a new account, you agree to our </span><a href=\"{{ termsOfServiceUrl }}\" title=\"See terms of service\" target=\"_blank\">terms of service</a><span> and </span><a href=\"{{ privacyPolicyUrl }}\" title=\"See privacy policy\" target=\"_blank\">privacy policy</a>."
+        "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>Yeni bir hesap oluştururken, </span><a href=\"{{ termsOfServiceUrl }}\" title=\"See terms of service\" target=\"_blank\">hizmet şartlarımızı</a><span> ve </span><a href=\"{{ privacyPolicyUrl }}\" title=\"See privacy policy\" target=\"_blank\">gizlilik politikamızı</a> kabul etmiş olursunuz."
     },
     "EXTERNAL_APP": {
         "PAGE_TITLE": "Bir dış uygulama oturum açmayı gerektiriyor",
         "PAGE_DESCRIPTION": "Bir dış uygulama oturum açmayı gerektiriyor",
-        "AUTHORIZATION_REQUEST": "Taiga hesabınızı kullanması için {{application}} uygulamasına izin verin?",
+        "AUTHORIZATION_REQUEST": "{{application}} uygulamasına Taiga hesabınızı kullanması için yetki verilsin mi?",
         "LOGIN_WITH_ANOTHER_USER": "Başka kullanıcı ile oturum açın",
         "AUTHORIZE_APP": "Uygulamayı yetkilendir",
         "CANCEL": "İptal"
