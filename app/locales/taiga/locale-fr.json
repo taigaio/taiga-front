@@ -1777,7 +1777,7 @@
     },
     "TIMELINE": {
         "UPLOAD_ATTACHMENT": "{{username}} a déposé une nouvelle pièce jointe dans {{obj_name}}",
-        "US_CREATED": "{{username}} as créé un nouveau récit utilisateur {{obj_name}} dans {{project_name}}",
+        "US_CREATED": "{{username}} a créé un nouveau récit utilisateur {{obj_name}} dans {{project_name}}",
         "ISSUE_CREATED": "{{username}} a créé un nouveau ticket {{obj_name}} dans {{project_name}}",
         "TASK_CREATED": "{{username}} a créé une nouvelle Tâche {{obj_name}} dans {{project_name}}",
         "TASK_CREATED_WITH_US": "{{username}} a créé une nouvelle tâche {{obj_name}} dans {{project_name}} qui appartient au récit utilisateur {{us_name}}",
