@@ -293,7 +293,15 @@ tg-card[type='task'].folded-dragging {
             grid-auto-flow: column;
             grid-gap: 5px;
             grid-template-columns: repeat(auto-fill, 30px);
-            grid-template-rows: repeat(3, 30px);
+            grid-template-rows: repeat(1, 30px);
+
+            &.row-max-two {
+                grid-template-rows: repeat(2, 30px);
+            }
+
+            &.row-max-three {
+                grid-template-rows: repeat(3, 30px);
+            }
         }
     }
     .ng-animate {

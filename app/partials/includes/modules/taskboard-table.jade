@@ -126,11 +126,10 @@ div.taskboard-table(
                             .add-new-task
                                 include ../components/addnewtask
 
-
                     div.taskboard-cards-box.taskboard-column(
                         ng-repeat="st in ::taskStatusList track by st.id",
                         class="squish-status-{{st.id}}",
-                        ng-class="{'column-fold':statusesFolded[st.id]}",
+                        ng-class="{'column-fold':statusesFolded[st.id], 'row-max-two': usTasks.getIn([us.id.toString(), st.id.toString()]).size === 2, 'row-max-three': usTasks.getIn([us.id.toString(), st.id.toString()]).size >= 3}",
                         tg-bind-scope
                     )
                         tg-card.card.ng-animate-disabled(
