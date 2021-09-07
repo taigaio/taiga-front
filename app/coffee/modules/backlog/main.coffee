@@ -129,7 +129,7 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
                 only_ref: true
             })
 
-            promise = @rs.userstories.listUnassigned(@scope.projectId, params, 100)
+            promise = @rs.userstories.listUnassigned(@scope.projectId, params, 100, false)
             promise.then (result) =>
                 userstories = result[0]
                 header = result[1]

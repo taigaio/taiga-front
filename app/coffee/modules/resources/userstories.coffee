@@ -42,10 +42,11 @@ resourceProvider = ($repo, $http, $urls, $storage, $q) ->
     service.filtersData = (params) ->
         return $repo.queryOneRaw("userstories-filters", null, params)
 
-    service.listUnassigned = (projectId, filters, pageSize) ->
+    service.listUnassigned = (projectId, filters, pageSize, store = true) ->
         params = {"project": projectId, "milestone": "null"}
         params = _.extend({}, params, filters or {})
-        service.storeQueryParams(projectId, params)
+        if store
+            service.storeQueryParams(projectId, params)
 
         return $repo.queryMany("userstories", _.extend(params, {
             page_size: pageSize
