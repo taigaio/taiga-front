@@ -4,6 +4,10 @@
 
 - ...
 
+## 6.4.1 (2021-09-08)
+
+- fix: prevent store only_ref on project params local storage
+
 ## 6.4.0 (2021-09-06)
 
 - feat: serve Taiga in subpath
