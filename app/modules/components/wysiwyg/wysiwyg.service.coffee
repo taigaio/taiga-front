@@ -90,8 +90,10 @@ class WysiwygService
         promises = []
         _.map [links, images], (tag) =>
             _.map tag.elements, (e) =>
-                if e.getAttribute(tag.attr) && e.getAttribute(tag.attr).indexOf('#_taiga-refresh=') != -1
-                    match = e.getAttribute(tag.attr).match(regex)
+                attrValue = e.getAttribute(tag.attr)
+
+                if attrValue && attrValue.indexOf && attrValue.indexOf('#_taiga-refresh=') != -1
+                    match = attrValue.match(regex)
                     if match && match.length == 2
                         tokens = match[1].split(":")
 
@@ -99,7 +101,7 @@ class WysiwygService
                         .then (url) =>
                             e.setAttribute(tag.attr, url)
                         .catch () =>
-                            console.warn('attachment ref not found', e.getAttribute(tag.attr))
+                            console.warn('attachment ref not found', attrValue)
 
                         promises.push(promise)
 
