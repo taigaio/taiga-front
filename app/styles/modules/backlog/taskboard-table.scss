@@ -113,6 +113,9 @@ $fold-animation-duration: .1s;
     .card-actions {
         display: none;
     }
+    .card-tags {
+        display: none;
+    }
 }
 
 tg-card[type='task'].folded-dragging {
@@ -264,8 +267,11 @@ tg-card[type='task'].folded-dragging {
         }
     }
     .column-fold {
-        display: flex;
-        flex-direction: column;
+        display: grid;
+        grid-auto-rows: 30px 1fr;
+        grid-gap: 5px;
+        grid-template-columns: 30px 30px;
+        grid-template-rows: 30px 30px 30px;
         padding: 1rem;
 
         &:not(.row-fold) {
