@@ -267,11 +267,8 @@ tg-card[type='task'].folded-dragging {
         }
     }
     .column-fold {
-        display: grid;
-        grid-auto-rows: 30px 1fr;
-        grid-gap: 5px;
-        grid-template-columns: 30px 30px;
-        grid-template-rows: 30px 30px 30px;
+        display: flex;
+        flex-direction: column;
         padding: 1rem;
 
         &:not(.row-fold) {
