@@ -4,6 +4,13 @@
 
 - ...
 
+## 6.4.2 (2021-09-16)
+
+- Update locales
+- fix: error in editor with ">" and "<" chars
+- fix: taskboard not collapsing as expected
+
+
 ## 6.4.1 (2021-09-08)
 
 - fix: prevent store only_ref on project params local storage
