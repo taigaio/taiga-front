@@ -69,7 +69,7 @@
             "TYPE_URLSTRICT": "Dieser Wert sollte eine gültige URL enthalten.",
             "TYPE_NUMBER": "Dieser Wert sollte eine gültige Nummer enthalten.",
             "TYPE_DIGITS": "Dieser Wert sollte Ziffern enthalten.",
-            "TYPE_DATEISO": "Dieser Wert sollte ein gültiges Datum sein (YYYY-MM-DD)",
+            "TYPE_DATEISO": "Dieser Wert sollte ein gültiges Datum sein (JJJJ-MM-TT).",
             "TYPE_ALPHANUM": "Dieser Wert sollte alphanumersich sein.",
             "TYPE_PHONE": "Dieser Wert sollte eine gültige Telefonnummer enthalten.",
             "NOTNULL": "Dieser Wert darf nicht leer sein.",
@@ -337,9 +337,9 @@
         "LINK_FORGOT_PASSWORD": "Haben Sie es vergessen?",
         "TITLE_LINK_FORGOT_PASSWORD": "Haben Sie Ihr Passwort vergessen?",
         "ACTION_ENTER": "Eingabe",
-        "ACTION_SIGN_IN": "Login",
-        "PLACEHOLDER_AUTH_PASSWORD": "Passwort",
-        "ALT_LOGIN": "Oder einloggen mit"
+        "ACTION_SIGN_IN": "Anmelden",
+        "PLACEHOLDER_AUTH_PASSWORD": "Passwort (Groß- und Kleinschreibung beachten)",
+        "ALT_LOGIN": "Oder anmelden mit"
     },
     "LOGIN_FORM": {
         "ERROR_AUTH_INCORRECT": "Laut Taiga sind Benutzername/E-Mail oder Passwort nicht korrekt.",
@@ -347,7 +347,7 @@
     },
     "REGISTER": {
         "PAGE_TITLE": "Registrieren - Taiga",
-        "PAGE_DESCRIPTION": "Erstellen Sie ihr Benutzerkonto in Taiga, einer Projekt-Management Plattform für Neugründer und agile Entwickler und Designer, die ein unkompliziertes und ansprechendes Tool möchten, das die Arbeit wirklich angenehm macht."
+        "PAGE_DESCRIPTION": "Erstellen Sie ihr Benutzerkonto in Taiga, einer Projekt-Management Plattform für Neugründer und agile Entwickler und Designer, die ein unkompliziertes und ansprechendes Werkzeug möchten, das die Arbeit wirklich angenehm macht."
     },
     "REGISTER_FORM": {
         "TITLE": "Ein neues Taiga Benutzerkonto registrieren (kostenlos)",
