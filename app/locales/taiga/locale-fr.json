@@ -60,7 +60,8 @@
             "NO_PTS": "Non estimé",
             "ESTIMATION": "Estimation",
             "TASKS": "{{completed}} tâches achevées sur {{total}}",
-            "EXTRA_ASSIGNED_USERS": "{{total}} plus d’utilisateurs assignés"
+            "EXTRA_ASSIGNED_USERS": "{{total}} plus d’utilisateurs assignés",
+            "MOVE_TO_TOP": "Déplacer vers le haut"
         },
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Cette valeur semble être invalide.",
@@ -69,7 +70,7 @@
             "TYPE_URLSTRICT": "Cette valeur doit être une url valide.",
             "TYPE_NUMBER": "Cette valeur doit être un nombre valide.",
             "TYPE_DIGITS": "Cette valeur doit être numérique.",
-            "TYPE_DATEISO": "Cette valeur n'est pas une date valide (YYYY-MM-DD).",
+            "TYPE_DATEISO": "Cette valeur n'est pas une date valide (AAAA-MM-JJ).",
             "TYPE_ALPHANUM": "Cette valeur devrait être alphanumérique.",
             "TYPE_PHONE": "Cette valeur devrait être un numéro de téléphone valide.",
             "NOTNULL": "Cette valeur ne devrait pas être nulle.",
@@ -339,7 +340,7 @@
         "ACTION_ENTER": "Entrer",
         "ACTION_SIGN_IN": "Se connecter",
         "PLACEHOLDER_AUTH_PASSWORD": "Mot de passe (sensible à la casse)",
-        "ALT_LOGIN": "Ou connectez vous avec"
+        "ALT_LOGIN": "Ou connectez-vous avec"
     },
     "LOGIN_FORM": {
         "ERROR_AUTH_INCORRECT": "D'après Taiga, votre nom d'utilisateur/courriel et ou votre mot de passe sont incorrects.",
@@ -351,7 +352,7 @@
     },
     "REGISTER_FORM": {
         "TITLE": "Créer un compte Taiga (gratuit)",
-        "PLACEHOLDER_NAME": "Choisissez un nom d'utilisateur (sensible à la casse)",
+        "PLACEHOLDER_NAME": "Choisissez un nom d'utilisateur",
         "PLACEHOLDER_FULL_NAME": "Choisissez votre nom complet",
         "PLACEHOLDER_EMAIL": "Votre adresse courriel",
         "PLACEHOLDER_PASSWORD": "Saisissez un mot de passe (sensible à la casse)",
@@ -500,7 +501,7 @@
             "ADD_BUTTON_TITLE": "Ajouter un membre",
             "UPGRADE_BUTTON": "Améliorer votre forfait",
             "LIMIT_USERS_WARNING_MESSAGE_FOR_ADMIN": "Si vous souhaitez <strong>ajouter plus de membres</strong>, veuillez contacter le propriétaire du projet <a href='mailto:{{ owner_email }}' title='{{ owner_email }}'>{{ owner_email }}</a>",
-            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "Ce projet a atteint sa limite de  <strong>({{members}})</strong> membres autorisés. Si vous désirez augmenter cette limite, merci de contacter l'administrateur."
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "Ce projet a atteint sa limite de <strong>({{members}})</strong> membres autorisés. Si vous désirez augmenter cette limite, merci de contacter l'administrateur."
         },
         "PROJECT_EXPORT": {
             "TITLE": "Exporter",
@@ -569,7 +570,8 @@
             "REQUEST_OWNERSHIP_SUCCESS": "Nous allons prévenir le propriétaire du projet",
             "CHANGE_OWNER": "Changer le propriétaire",
             "CHANGE_OWNER_SUCCESS_TITLE": "Ok, votre demande a été envoyée !",
-            "CHANGE_OWNER_SUCCESS_DESC": "Nous vous préviendrons par courriel si la demande de propriété du projet est acceptée ou refusée"
+            "CHANGE_OWNER_SUCCESS_DESC": "Nous vous préviendrons par courriel si la demande de propriété du projet est acceptée ou refusée",
+            "REQUEST_OWNERSHIP_LIMIT": "Vous avez atteint votre limite de {{maxProjects}} projets privés"
         },
         "REPORTS": {
             "TITLE": "Rapports",
@@ -693,14 +695,14 @@
             "WARNING_NO_ROLE": "Attention, aucun rôle dans votre projet ne pourra estimer la valeur du point pour les récits utilisateurs",
             "HELP_ROLE_ENABLED": "This role is part of the roles involved in estimating user story points.",
             "DISABLE_COMPUTABLE_ALERT_TITLE": "Êtes-vous sûr de vouloir désactiver les estimations de ce rôle ?",
-            "DISABLE_COMPUTABLE_ALERT_SUBTITLE": "Si vous désactivez les estimations pour le rôle {{roleName}}  toutes les estimations précédentes faites par ce rôle seront supprimées",
+            "DISABLE_COMPUTABLE_ALERT_SUBTITLE": "Si vous désactivez les estimations pour le rôle {{roleName}} toutes les estimations précédentes faites par ce rôle seront supprimées",
             "COUNT_MEMBERS": "{{ role.members_count }} membres avec ce rôle",
             "TITLE_DELETE_ROLE": "Supprimer des rôles",
             "REPLACEMENT_ROLE": "Tous les utilisateurs avec ce rôle seront déplacés dans",
             "WARNING_DELETE_ROLE": "Attention ! Toutes les estimations du rôle vont être supprimées",
             "ERROR_DELETE_ALL": "Vous ne pouvez pas supprimer toutes les valeurs",
             "EXTERNAL_USER": "Utilisateur externe",
-            "NOTE_EXTERNAL_USERS": "<strong>Note :</strong> par Utilisateur Extérieur nous voulons dire n'importe qui n'appartenant pas à la plateforme Taiga, moteurs de recherche inclus. Attention à utiliser ce rôle avec prudence."
+            "NOTE_EXTERNAL_USERS": "Un utilisateur externe est tout utilisateur (connecté ou non à la plateforme Taiga), <strong>y compris les moteurs de recherche</strong>. Bien que les utilisateurs non enregistrés ne puissent jamais avoir de droits d'édition, les utilisateurs enregistrés le peuvent, si vous le permettez. Si votre projet est privé, vous pouvez également contrôler les autorisations de visualisation. <strong>Veuillez utiliser ce rôle avec précaution</strong>."
         },
         "THIRD_PARTIES": {
             "SECRET_KEY": "Clé secrète",
@@ -778,17 +780,17 @@
             "DEFAULT_DELETE_MESSAGE": "l'invitation à {{email}}"
         },
         "DEFAULT_VALUES": {
-            "LABEL_EPIC_STATUS": "Valeur par défaut pour le sélecteur de statut d'épopée",
-            "LABEL_US_STATUS": "Valeur par défaut pour le sélecteur de statut de récit utilisateur",
+            "LABEL_EPIC_STATUS": "Sélecteur de statut épique",
+            "LABEL_US_STATUS": "Sélecteur d'état des histoires d'utilisateurs",
             "LABEL_POINTS": "Valeur par défaut pour la sélection des points",
             "LABEL_TASK_STATUS": "Valeur par défaut pour la sélection du statut des tâches",
             "LABEL_ISSUE_TYPE": "Valeur par défaut pour le sélecteur de type",
-            "LABEL_ISSUE_STATUS": "Valeur par défaut pour le sélecteur de statut de bug",
-            "LABEL_PRIORITY": "Valeur par défaut de la sélection des priorités",
-            "LABEL_SEVERITY": "Valeur par défaut pour le sélecteur de gravité"
+            "LABEL_ISSUE_STATUS": "Sélecteur d'état du problème",
+            "LABEL_PRIORITY": "Sélecteur de priorité",
+            "LABEL_SEVERITY": "Sélecteur de gravité"
         },
         "STATUS": {
-            "PLACEHOLDER_WRITE_STATUS_NAME": "Entrez le nom du nouveau statut",
+            "PLACEHOLDER_WRITE_STATUS_NAME": "Écrivez un nom pour le nouveau statut",
             "PLACEHOLDER_DAYS_TO_DUE_DATE": "Renseigner le nombre de jours jusqu'à la date d'échéance"
         },
         "TYPES": {
@@ -839,6 +841,11 @@
                 "PUBLIC": "Gardez en mémoire que vous pouvez posséder jusqu'à <strong>{{maxProjects}}</strong> projets publics. Vous possédez actuellement <strong>{{currentProjects}}</strong> projets publics."
             },
             "CANT_BE_OWNED": "Pour le moment, vous ne pouvez devenir propriétaire d'un projet de ce type. Si vous voulez devenir propriétaire de ce projet, merci de contacter l'administrateur afin qu'il puisse modifier les paramètres de votre compte pour autoriser la propriété de projet."
+        },
+        "PROJECT_PRESETS": {
+            "SUBTITLE": "Définir les valeurs par défaut pour toutes les entrées du sélecteur.",
+            "MENU_TITLE": "Préréglages",
+            "TITLE": "Valeurs par défaut"
         }
     },
     "USER": {
@@ -1149,9 +1156,9 @@
             "COMMENT": "Laissez nous un message",
             "ACTION_SEND": "Envoyer un message",
             "YOU_CAN_ALSO": "Vous pouvez aussi :",
-            "CREATE": "Créer un ticket là dessus",
+            "CREATE": "Créer un ticket là-dessus ",
             "PUBLIC": "projet public Taiga",
-            "EMAIL": "Envoyez nous un e-mail directement à",
+            "EMAIL": "Envoyez-nous un courriel directement à ",
             "SUPPORT": "support@taiga.io"
         },
         "SEARCH": {
@@ -1309,11 +1316,11 @@
         "TITLE_DELETE_MESSAGE": "Êtes-vous sûr de vouloir supprimer<strong>“{{subject}}“</strong> ?",
         "LIGHTBOX_TITLE_BLOKING_US": "Bloquer un récit utilisateur",
         "NOT_ESTIMATED": "Non estimé",
-        "OWNER_US": "Ce récit utilisateur fait partie de ",
+        "OWNER_US": "Ce récit utilisateur fait partie de",
         "RELATE_TO_EPIC": "Lien vers l'épopée",
         "REMOVE_RELATIONSHIP_WITH_EPIC": "Retirer le lien avec l’épopée",
         "TRIBE": {
-            "PUBLISH": "Publier en tant que Gig sur Taiga Tribe ",
+            "PUBLISH": "Publier en tant que Gig sur Taiga Tribe",
             "PUBLISH_INFO": "Plus d'informations",
             "PUBLISH_TITLE": "Plus d'informations sur la publication dans Taiga Tribe",
             "PUBLISHED_AS_GIG": "Récit publié comme Gig dans Taiga Tribe",
