@@ -70,7 +70,7 @@
             "TYPE_URLSTRICT": "Questo valore deve essere un URL valido.",
             "TYPE_NUMBER": "Questo valore deve essere un numero valido.",
             "TYPE_DIGITS": "Questo valore deve essere in cifre.",
-            "TYPE_DATEISO": "Questo valore dovrebbe corrispondere ad una data valida (YYYY-MM-DD).",
+            "TYPE_DATEISO": "Questo valore dovrebbe corrispondere ad una data valida (AAAA-MM-GG).",
             "TYPE_ALPHANUM": "Questo valore deve essere un alfanumerico.",
             "TYPE_PHONE": "Questo valore deve essere un numero telefonico valido.",
             "NOTNULL": "Questo valore non può essere null.",
@@ -348,7 +348,7 @@
     },
     "REGISTER": {
         "PAGE_TITLE": "Registrazione - Taiga",
-        "PAGE_DESCRIPTION": "Crea il tuo account su Taiga, una piattaforma semplice di project management che rende il lavoro davvero piacevole alle start-up e a chi sviluppa e progetta con il metodo \"agile\"."
+        "PAGE_DESCRIPTION": "Crea il tuo account su Taiga, una piattaforma semplice di project management che rende il lavoro davvero piacevole alle start-up e a chi sviluppa e progetta con il metodo agile."
     },
     "REGISTER_FORM": {
         "TITLE": "Registra un nuovo account Taiga (è gratis)",
