@@ -1161,7 +1161,7 @@
         "ADD_EDIT_SPRINT": {
             "TITLE": "Нови шпринт",
             "PLACEHOLDER_SPRINT_NAME": "име шпринта",
-            "PLACEHOLDER_SPRINT_START": "/home/user/Public/taiga-front/app/locales/taiga/locale-sr.json",
+            "PLACEHOLDER_SPRINT_START": "Процењени почетак",
             "PLACEHOLDER_SPRINT_END": "Завршетак - око",
             "ACTION_DELETE_SPRINT": "Да ли желите да уклоните овај шпринт?",
             "TITLE_ACTION_DELETE_SPRINT": "уклони шпринт",
