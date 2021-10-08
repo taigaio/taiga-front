@@ -107,6 +107,16 @@ TaskboardSortableDirective = ($repo, $rs, $rootscope, $translate) ->
                     deleteElement(itemEl)
 
                 $scope.$apply ->
+                    # prevent fold/unfold animation
+                    tableBody = $('.taskboard-table-body')
+
+                    tableBody.addClass('moving')
+
+                    # wait animation end
+                    setTimeout () ->
+                        tableBody.removeClass('moving')
+                    , 1000
+
                     $rootscope.$broadcast("taskboard:task:move", itemTask, itemTask.getIn(['model', 'status']), newUsId, newStatusId, itemIndex)
 
 

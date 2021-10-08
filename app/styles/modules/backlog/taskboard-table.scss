@@ -307,14 +307,17 @@ tg-card[type='task'].folded-dragging {
             }
         }
     }
+    .taskboard-row-title-box {
+        padding: 0;
+    }
+}
+
+.taskboard-table-body:not(.moving) {
     .ng-animate {
         // wait until unfold is completed to start the animation
         animation: card-unfold 0s forwards $fold-animation-duration;
         position: absolute;
         visibility: hidden;
-    }
-    .taskboard-row-title-box {
-        padding: 0;
     }
 }
 
