@@ -253,7 +253,7 @@
                 "STATUS": "Статус",
                 "SEVERITY": "Важность",
                 "PRIORITIES": "Приоритеты",
-                "TAGS": "Тэги",
+                "TAGS": "Теги",
                 "ASSIGNED_TO": "Назначено",
                 "ASSIGNED_USERS": "Назначенные пользователи",
                 "ROLE": "Роль",
@@ -546,7 +546,7 @@
             "PAGE_TITLE": "{{sectionName}} - профиль Проекта - {{projectName}}",
             "PROJECT_DETAILS": "Детали проекта",
             "PROJECT_NAME": "Название проекта",
-            "TAGS": "Тэги",
+            "TAGS": "Теги",
             "DESCRIPTION": "Описание",
             "RECRUITING": "Этот проект ищет людей?",
             "RECRUITING_MESSAGE": "Кого вы ищете?",
@@ -654,7 +654,7 @@
             "ACTION_ADD": "Добавить новый"
         },
         "PROJECT_VALUES_TAGS": {
-            "TITLE": "Тэги",
+            "TITLE": "Теги",
             "SUBTITLE": "Просмотреть и изменить цвет ваших тэгов",
             "EMPTY": "В данный момент тэги отсутствуют",
             "EMPTY_SEARCH": "Кажется, по вашему запросу ничего не найдено",
@@ -817,7 +817,7 @@
             "SEVERITIES": "Степени важности",
             "TYPES": "Типы",
             "CUSTOM_FIELDS": "Специальные поля",
-            "TAGS": "Тэги",
+            "TAGS": "Теги",
             "DUE_DATES": "Дедлайны",
             "KANBAN_OPTIONS": "Параметры Kanban"
         },
