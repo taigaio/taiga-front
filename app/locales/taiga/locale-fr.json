@@ -175,7 +175,7 @@
             "DELETE_ASSIGNMENT": "Supprimer l'affectation",
             "REMOVE_ASSIGNED": "Supprimer l'affectation",
             "TOO_MANY": "...trop d'utilisateurs ; filtrez davantage",
-            "CONFIRM_UNASSIGNED": "Etes-vous sûr de vouloir continuer sans affectation ?",
+            "CONFIRM_UNASSIGNED": "Êtes-vous sûr·e de vouloir continuer sans affectation ?",
             "TITLE_ACTION_EDIT_ASSIGNMENT": "Modifier l'affectation",
             "SELF": "Me l'affecter"
         },
@@ -216,11 +216,11 @@
         "CONFIRM_PROMOTE": {
             "ISSUE": {
                 "TITLE": "Promouvoir ce ticket en nouveau récit utilisateur",
-                "MESSAGE": "Etes-vous sûr de vouloir créer un nouveau récit utilisateur à partir de ce ticket ?"
+                "MESSAGE": "Êtes-vous sûr·e de vouloir créer un nouveau récit utilisateur à partir de ce ticket ?"
             },
             "TASK": {
                 "TITLE": "Promouvoir cette tâche à un nouveau récit utilisateur",
-                "MESSAGE": "Etes-vous sûr de vouloir créer un nouveau récit utilisateur à partir de cette tâche ?"
+                "MESSAGE": "Êtes-vous sûr·e de vouloir créer un nouveau récit utilisateur à partir de cette tâche ?"
             }
         },
         "CUSTOM_ATTRIBUTES": {
@@ -335,7 +335,7 @@
     "LOGIN_COMMON": {
         "HEADER": "J'ai déjà un identifiant Taiga",
         "PLACEHOLDER_AUTH_NAME": "Nom d'utilisateur ou courriel (sensible à la casse)",
-        "LINK_FORGOT_PASSWORD": "Mot de passe oublié ?",
+        "LINK_FORGOT_PASSWORD": "Mot de passe oublié ?",
         "TITLE_LINK_FORGOT_PASSWORD": "Avez-vous oublié votre mot de passe ?",
         "ACTION_ENTER": "Entrer",
         "ACTION_SIGN_IN": "Se connecter",
@@ -1117,11 +1117,21 @@
                 "CREATE_NEW_ISSUES": "Convertir les sous-tickets en nouveaux tickets Taïga",
                 "NOT_CREATE_NEW_ISSUES": "Ne pas importer les sous-tickets"
             }
+        },
+        "NEWSLETTER_OPENING": {
+            "NOTIFY_EXPLANATION": "Nous vous enverrons des nouvelles, des mises à jour de produits et des recommandations sur Taiga.",
+            "SUBSCRIBED": "Vous êtes abonné·e",
+            "SUBSCRIBE": "S'abonner",
+            "SAVED_PREFERENCE": "Vos préférences ont été enregistrées avec succès",
+            "LIGHTBOX_TITLE": "Voulez-vous recevoir des annonces sur Taiga ?",
+            "CONFIRMATION": "Oui, envoyez-moi des nouvelles, des mises à jour de produits et des recommandations sur Taiga.",
+            "NO_SHARE": "Votre vie privée est importante pour nous (voir notre <a href=\"https://www.taiga.io/privacy-policy\" title=\"Go to privacy policy\" target=\"_blank\">politique de confidentialité</a>).",
+            "SAVE_PREFERENCE": "SAUVEGARDER LES PRÉFÉRENCES"
         }
     },
     "LIGHTBOX": {
         "DELETE_ACCOUNT": {
-            "CONFIRM": "Etes-vous sûr de vouloir supprimer votre compte Taiga ?",
+            "CONFIRM": "Êtes-vous sûr·e de vouloir supprimer votre compte Taiga ?",
             "CANCEL": "Retour aux réglages",
             "ACCEPT": "Supprimer le compte",
             "BLOCK_PROJECT": "Notez que tous les projets dont vous avez la propriété seront <strong>bloqués</strong> après que vous ayez supprimé votre compte. Si vous ne souhaitez pas qu'un projet en particulier soit bloqué, merci d'en transférer la propriété à un autre membre avant la suppression de votre compte."
@@ -1552,7 +1562,7 @@
         "CLOSE": "Fermer la notification",
         "MAIL": "Notifications par courriel",
         "DESKTOP": "Notifications du bureau grâce aux alertes du navigateur",
-        "ASK_DELETE": "Etes-vous sûre de vouloir supprimer ?"
+        "ASK_DELETE": "Êtes-vous sûr·e de vouloir supprimer ?"
     },
     "CANCEL_ACCOUNT": {
         "TITLE": "Annuler votre compte",
