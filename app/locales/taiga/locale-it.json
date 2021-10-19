@@ -1120,7 +1120,7 @@
         },
         "NEWSLETTER_OPENING": {
             "SAVED_PREFERENCE": "Le tue preferenze sono state salvate",
-            "SUBSCRIBED": "Sei iscritto",
+            "SUBSCRIBED": "Sei iscritto/a",
             "SUBSCRIBE": "Iscriviti",
             "NOTIFY_EXPLANATION": "Ti invieremo notizie, aggiornamenti sul prodotto e consigli riguardo Taiga.",
             "SAVE_PREFERENCE": "SALVA PREFERENZE",
