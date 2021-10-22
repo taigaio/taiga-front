@@ -34,7 +34,7 @@
         "GO_HOME": "Ritorna all'inizio",
         "PLUGINS": "Plugin",
         "ONE_ITEM_LINE": "Un elemento per riga...",
-        "NEW_BULK": "Nuovo inserimento nel carico",
+        "NEW_BULK": "Nuovo inserimento di massa",
         "RELATED_TASKS": "Compiti",
         "PREVIOUS": "Precedente",
         "NEXT": "Successivo",
@@ -134,9 +134,9 @@
         "ISSUE": "Problema",
         "EPIC": "Epico",
         "TAGS": {
-            "PLACEHOLDER": "Inserisci tag",
+            "PLACEHOLDER": "Inserisci etichetta",
             "DELETE": "Elimina tag",
-            "ADD": "Aggiungi un tag"
+            "ADD": "Aggiungi etichetta"
         },
         "DESCRIPTION": {
             "EMPTY": "Lo spazio vuoto è così noioso... dai, cerca di essere descrittivo...",
@@ -253,7 +253,7 @@
                 "STATUS": "Stato",
                 "SEVERITY": "Gravità",
                 "PRIORITIES": "Priorità",
-                "TAGS": "Tag",
+                "TAGS": "Etichette",
                 "ASSIGNED_TO": "Assegnato a",
                 "ASSIGNED_USERS": "Utenti assegnati",
                 "ROLE": "Ruolo",
@@ -402,9 +402,9 @@
         "SUCCESS": "Sei ora un membro di questo progetto. Benvenuto in {{project_name}}"
     },
     "HOME": {
-        "PAGE_TITLE": "Home - Taiga",
-        "PAGE_DESCRIPTION": "La home di Taiga con i tuoi progetti principali e tutte le storie utente, i compiti e problemi assegnati e osservati",
-        "EMPTY_WORKING_ON": "<strong>Sembra vuoto, vero?</strong> Inizia a lavorare con Taiga e vedrai qui le storie, i compiti e i problemi su cui stai lavorando.",
+        "PAGE_TITLE": "Pagina iniziale - Taiga",
+        "PAGE_DESCRIPTION": "La pagina iniziale di Taiga con i tuoi progetti principali e tutte le storie utente, i compiti e problemi assegnati e osservati",
+        "EMPTY_WORKING_ON": "<strong>Un po' vuoto, vero?</strong> Inizia a lavorare con Taiga e vedrai qui le storie, i compiti e i problemi su cui stai lavorando.",
         "EMPTY_WATCHING": "<strong>Segui</strong> storie utente, compiti, problemi nei tuoi progetti e ricevi notifiche sulle loro modifiche :)",
         "EMPTY_PROJECT_LIST": "Per ora non hai nessun progetto",
         "WORKING_ON_SECTION": "Stai lavorando su",
@@ -487,7 +487,7 @@
         "COMMON": {
             "TITLE_ACTION_EDIT_VALUE": "Modifica valore",
             "TITLE_ACTION_DELETE_VALUE": "Elimina valore",
-            "TITLE_ACTION_DELETE_TAG": "Elimina tag"
+            "TITLE_ACTION_DELETE_TAG": "Elimina etichetta"
         },
         "HELP": "Hai bisogno di aiuto? Controlla la nostra pagina di supporto!",
         "PROJECT_DEFAULT_VALUES": {
@@ -557,7 +557,7 @@
             "PRIVATE_OR_PUBLIC": "Quale è la differenza tra progetto privato e pubblico?",
             "DELETE": "Elimina questo progetto",
             "CHANGE_LOGO": "Cambia Logo",
-            "ACTION_USE_DEFAULT_LOGO": "Usa l'immagine di default",
+            "ACTION_USE_DEFAULT_LOGO": "Usa l'immagine predefinita",
             "MAX_PRIVATE_PROJECTS": "Hai raggiunto il numero massimo di progetti privati per il tuo abbonamento",
             "MAX_PRIVATE_PROJECTS_MEMBERS": "È stato superato il numero massimo di membri per progetti privati",
             "MAX_PUBLIC_PROJECTS": "Sfortunatamente hai raggiunto il numero massimo di progetti pubblici per il tuo abbonamento",
@@ -655,13 +655,13 @@
         },
         "PROJECT_VALUES_TAGS": {
             "TITLE": "Tag",
-            "SUBTITLE": "Vedi e modifica il colore dei tuoi tag",
-            "EMPTY": "Attualmente non ci sono tag",
+            "SUBTITLE": "Vedi e modifica il colore delle tue etichette",
+            "EMPTY": "Attualmente non ci sono etichette",
             "EMPTY_SEARCH": "Sembra che non ci sia nulla che corrisponda ai criteri ricerca",
-            "ACTION_ADD": "Aggiungi un tag",
-            "NEW_TAG": "Nuovo tag",
+            "ACTION_ADD": "Aggiungi etichetta",
+            "NEW_TAG": "Nuova etichetta",
             "MIXING_HELP_TEXT": "Seleziona i tag che vuoi unire",
-            "MIXING_MERGE": "Unisci tag",
+            "MIXING_MERGE": "Unisci etichette",
             "SELECTED": "Selezionato"
         },
         "PROJECT_DUE_DATE_STATUS": {
@@ -706,7 +706,7 @@
         },
         "THIRD_PARTIES": {
             "SECRET_KEY": "Chiave segreta",
-            "PAYLOAD_URL": "URL payload",
+            "PAYLOAD_URL": "URL del carico utile",
             "VALID_IPS": "IP di origine validi (separati da ,)"
         },
         "BITBUCKET": {
@@ -732,7 +732,7 @@
             "SECTION_NAME": "Webhook",
             "ADD_NEW": "Aggiungi un nuovo Webhook",
             "TYPE_NAME": "Digita il nome del servizio",
-            "TYPE_PAYLOAD_URL": "Digita l'URL del servizio in carico",
+            "TYPE_PAYLOAD_URL": "Digita l'URL del carico utile del servizio",
             "TYPE_SERVICE_SECRET": "Inserisci la chiave segreta di servizio",
             "SAVE": "Salva Webhook",
             "CANCEL": "Elimina Webhook",
@@ -743,7 +743,7 @@
             "REQUEST": "Richiesta",
             "RESEND_REQUEST": "Ri-inoltra la richiesta",
             "HEADERS": "Intestazioni",
-            "PAYLOAD": "Carico",
+            "PAYLOAD": "Carico utile",
             "RESPONSE": "Risposta",
             "DATE": "DD MMM YYYY [alle] hh:mm:ss",
             "ACTION_HIDE_HISTORY": "(Nascondi la storia)",
@@ -817,7 +817,7 @@
             "SEVERITIES": "Severitá",
             "TYPES": "Tipi",
             "CUSTOM_FIELDS": "Campi personalizzati",
-            "TAGS": "Tag",
+            "TAGS": "Etichette",
             "DUE_DATES": "Scadenze",
             "KANBAN_OPTIONS": "Opzioni kanban"
         },
@@ -933,7 +933,7 @@
             "MANAGE_PROJECTS": "Gestisci Progetti",
             "TITLE_CREATE_PROJECT": "Crea progetto",
             "HELP_TITLE": "Aiuto",
-            "HOMEPAGE": "Homepage",
+            "HOMEPAGE": "Pagina iniziale",
             "TAIGA_RESOURCES_TITLE": "Vai alle risorse di Taiga",
             "TAIGA_RESOURCES": "Risorse di Taiga",
             "FEEDBACK_TITLE": "Scrivici la tua opinione",
@@ -1315,7 +1315,7 @@
     },
     "US": {
         "PAGE_TITLE": "{{userStorySubject}} - Storia Utente {{userStoryRef}} - {{projectName}}",
-        "PAGE_DESCRIPTION": "Stato: {{userStoryStatus }}. Completata per il {{userStoryProgressPercentage}}% ({{userStoryClosedTasks}} di {{userStoryTotalTasks}} compiti completati). Punti: {{userStoryPoints}}. Descrizione: {{userStoryDescription}}",
+        "PAGE_DESCRIPTION": "Stato: {{userStoryStatus }}. Completato il {{userStoryProgressPercentage}}% ({{userStoryClosedTasks}} di {{userStoryTotalTasks}} compiti chiusi). Punti: {{userStoryPoints}}. Descrizione: {{userStoryDescription}}",
         "SECTION_NAME": "Storia utente",
         "LINK_TASKBOARD": "Pannello dei compiti",
         "TITLE_LINK_TASKBOARD": "Vai al pannello dei compiti",
@@ -1367,8 +1367,8 @@
     "ACTIVITY": {
         "TITLE": "Attività",
         "ACTIVITIES_COUNT": "{{Activities}} Attività",
-        "TAGS_ADDED": "Tag aggiunti:",
-        "TAGS_REMOVED": "tag rimossi:",
+        "TAGS_ADDED": "etichette aggiunte:",
+        "TAGS_REMOVED": "etichette rimosse:",
         "US_POINTS": "{{role}} punti",
         "NEW_ATTACHMENT": "nuovo allegato:",
         "DELETED_ATTACHMENT": "cancella allegato:",
@@ -1411,7 +1411,7 @@
         "TOTAL_STORIES": "{{ totalUserStories }} storie utente",
         "MOVE_US_TO_CURRENT_SPRINT": "Spostati allo sprint attuale",
         "MOVE_US_TO_LATEST_SPRINT": "Vai allo Sprint più recente",
-        "EMPTY": "OMG..Il backlog é vuoto!!",
+        "EMPTY": "Il backlog è vuoto!",
         "CREATE_NEW_US": "Crea una nuova storia utente",
         "CREATE_NEW_US_EMPTY_HELP": "Aggiungi una storia utente",
         "NO_MATCH": "Nessun risultato trovato per \"{{ q }}\"",
@@ -1435,9 +1435,9 @@
             "INCREMENT_CLIENT": "I punti incrementati dai requisiti del cliente per lo sprint \"{{sprintName}}\" sono {{value}}"
         },
         "TAGS": {
-            "TOGGLE": "Commuta visibilità tag",
-            "SHOW": "tags",
-            "HIDE": "Nascondi tag"
+            "TOGGLE": "Commuta visibilità etichette",
+            "SHOW": "etichette",
+            "HIDE": "Nascondi etichette"
         },
         "FORECASTING": {
             "TITLE": "Previsione di velocità",
@@ -1489,14 +1489,14 @@
     "ERROR": {
         "TEXT1": "Qualcosa è andato storto e la Taiga ha rilevato l'errore per poterci lavorare.",
         "NOT_FOUND": "Non trovato",
-        "NOT_FOUND_TEXT": "Errore 404. La pagina che stai cercando non esiste più. Forse puoi tornare alla home e vedere se è possibile trovare quello che stai cercando.",
+        "NOT_FOUND_TEXT": "Errore 404. La pagina che stai cercando non esiste più. Forse puoi tornare alla pagina iniziale e vedere se è possibile trovare quello che stai cercando.",
         "PERMISSION_DENIED": "Permesso negato",
         "PERMISSION_DENIED_TEXT": "Non si hanno i permessi necessari per accedere a questa pagina.",
         "VERSION_ERROR": "Qualche altro utente di Taiga lo ha modificato prima e le tue modifiche non possono essere applicate. Salvale altrove, ricarica la pagina e riapplica le tue modifiche o andranno perse."
     },
     "TASKBOARD": {
         "PAGE_TITLE": "{{sprintName}} - Pannello dei compiti dello Sprint - {{projectName}}",
-        "PAGE_DESCRIPTION": "Sprint {{sprintName}} (da {{startDate}} a {{endDate}}) di {{projectName}}. Completato il {{completedPercentage}}% ({{completedPoints}} di {{totalPoints}} points). {{openTasks}} compiti aperti di {{totalTasks}}.",
+        "PAGE_DESCRIPTION": "Sprint {{sprintName}} (da {{startDate}} a {{endDate}}) di {{projectName}}. Completato il {{completedPercentage}}% ({{completedPoints}} di {{totalPoints}} punti). {{openTasks}} compiti aperti di {{totalTasks}}.",
         "SECTION_NAME": "Pannello dei compiti",
         "TITLE_ACTION_ADD": "Aggiungi un nuovo compito",
         "TITLE_ACTION_ADD_BULK": "Aggiungi nuovi compiti in massa",
@@ -1595,7 +1595,7 @@
         "PAGE_TITLE": "Problemi - {{projectName}}",
         "PAGE_DESCRIPTION": "Il pannello con la lista dei problemi del progetto {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Problema",
-        "ACTION_NEW_ISSUE": "NEW ISSUE",
+        "ACTION_NEW_ISSUE": "NUOVO PROBLEMA",
         "ACTION_ATTACH_SPRINT": "Aggiungi problema allo Sprint",
         "ACTION_DETACH_SPRINT": "Togli problema dallo Sprint",
         "EXTERNAL_REFERENCE": "Questo problema è stato creato da",
@@ -1642,8 +1642,8 @@
         }
     },
     "ISSUE": {
-        "PAGE_TITLE": "{{issueSubject}} - Criticitá {{issueRef}} - {{projectName}}",
-        "PAGE_DESCRIPTION": "Stato: {{issueStatus }}. Tipo: {{issueType}}, Prioritá: {{issuePriority}}. Severitá: {{issueSeverity}}. Descrizione: {{issueDescription}}"
+        "PAGE_TITLE": "{{issueSubject}} - Problema {{issueRef}} - {{projectName}}",
+        "PAGE_DESCRIPTION": "Stato: {{issueStatus }}. Tipo: {{issueType}}, Priorità: {{issuePriority}}. Gravità: {{issueSeverity}}. Descrizione: {{issueDescription}}"
     },
     "KANBAN": {
         "PAGE_TITLE": "Kanban - {{projectName}}",
@@ -1843,7 +1843,7 @@
     "EVENTS": {
         "TITLE": "Eventi",
         "MY_EVENTS": "I miei eventi",
-        "DISMISS_ALL": "Ignora tutti",
+        "DISMISS_ALL": "Ignora tutte",
         "VIEW_ALL": "Vedi tutte le notifiche",
         "NO_NEW_EVENTS": "Nessun nuovo evento",
         "NO_EVENTS_YET": "Non ci sono ancora eventi",
@@ -1952,7 +1952,7 @@
         },
         "SEARCH": {
             "PAGE_TITLE": "Cerca - Scopri i progetti - Taiga",
-            "PAGE_DESCRIPTION": "Elenco ricercabile dei progetti pubblici in Taiga. Esplora i backlog, le timeline, le issue e i team. Scopri i progetti più piaciuti o più attivi. Filtra per Kanban o Scrum.",
+            "PAGE_DESCRIPTION": "Elenco ricercabile dei progetti pubblici in Taiga. Esplora i backlog, le timeline, i problemi e i team. Scopri i progetti più apprezzati o più attivi. Filtra per Kanban o Scrum.",
             "INPUT_PLACEHOLDER": "Inserisci testo...",
             "ACTION_TITLE": "Cerca",
             "RESULTS": "Risultati della ricerca"
