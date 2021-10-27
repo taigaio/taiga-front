@@ -97,7 +97,7 @@
             "POINTS": "Pontok",
             "ASSIGNED_TO": "Felelős",
             "URL": "URL",
-            "SLUG": "",
+            "SLUG": "Slug",
             "IS_BLOCKED": "zárolt",
             "SEVERITY": "Súlyosság",
             "DESCRIPTION": "Leírás",
@@ -439,11 +439,11 @@
         },
         "WEBHOOKS": {
             "DELETE": "Webhook törlése",
-            "PAYLOAD": "",
+            "PAYLOAD": "Tartalom",
             "RESPONSE": "Válasz",
             "DATE": "YYYY MMM DD hh:mm:ss",
             "ADD_NEW": "Új webhook hozzáadása",
-            "TYPE_PAYLOAD_URL": "",
+            "TYPE_PAYLOAD_URL": "Írd be a szolgáltatás tartalom URL-jét",
             "ACTION_HIDE_HISTORY": "(Előzmények elrejtése)",
             "EDIT": "Webhook szerkesztése",
             "HEADERS": "Fejlécek",
@@ -654,7 +654,7 @@
         },
         "THIRD_PARTIES": {
             "VALID_IPS": "Érvényes forrás IP címek (vesszővel elválasztva)",
-            "PAYLOAD_URL": "",
+            "PAYLOAD_URL": "Tartalom URL",
             "SECRET_KEY": "Titkos kulcs"
         },
         "PROJECT_VALUES_POINTS": {
@@ -778,7 +778,7 @@
             "CHOOSE_TEMPLATE": "Melyik sablon felel meg legjobban a projektednek?",
             "BACK": "Vissza",
             "IMPORT_DESC": "Project importálása a Taiga-ba több platformból",
-            "TEMPLATE_SCRUM_LONGDESC": "",
+            "TEMPLATE_SCRUM_LONGDESC": "A Scrum egy iteratív és inkrementális agilis szoftverfejlesztési módszertan a termékfejlesztés irányítására.\nA product backlog az, amit végül leszállítunk, a szerint rendezve, hogy milyen sorrendben kell szállítani. A product backlogokat kezelhető, végrehajtható darabokra, úgynevezett sprintekre bontják. A csapat bizonyos időközönként új sprintet kezdeményez, és vállalja, hogy készségeinek, képességeinek és erőforrásainak megfelelően bizonyos számú felhasználói történetet szállít a backlogból. A projekt a backlog kimerülésével halad előre.",
             "TEMPLATE_KANBAN": "Kanban",
             "TEMPLATE_KANBAN_DESC": "",
             "PRIVATE_PROJECT": "Privár projekt",
@@ -1180,9 +1180,9 @@
             "EDIT_LINK": "Hivatkozás szerkesztése",
             "PUBLISH_INFO": "További információ",
             "CLOSE": "Bezárás",
-            "PUBLISH": "",
-            "PUBLISHED_AS_GIG": "",
-            "PUBLISH_MORE_INFO_TEXT": "",
+            "PUBLISH": "Közzététel Gig-ként a Taiga Tribe-ban",
+            "PUBLISHED_AS_GIG": "Story közzétéve Gig-ként a Taiga Tribe-ban",
+            "PUBLISH_MORE_INFO_TEXT": "<p>Ha segítségre van szükséged egy adott munkához könnyen létrehozhatsz gigeket a<a href='http://taigatribe.com' title='Taiga Tribe'> Taiga Tribe </a> oldalon, és segítséget kaphatsz a világ minden tájáról. Te irányíthatod és kezelheted a giget, élvezve egy nagyszerű közösséget amely szívesen közreműködik.</p><p><a href='http://taigatribe.com' title='Taiga Tribe'> TaigaTribe </a> a Taiga testvéreként született. A két platform külön-külön is élhet, de hiszünk abban, hogy nagy erő rejlik a kombinált használatukban, ezért gondoskodunk arról, hogy az integráció úgy működjön, mint a karikacsapás.</p>",
             "PUBLISH_MORE_INFO_TITLE": "Szükséged van valakire ehhez a feladathoz?",
             "SYNCHRONIZE_LINK": "szinkronizálás a Taiga Tribe-al",
             "PUBLISH_TITLE": "További információ a Taiga Tribe-ban való publikálásról"
@@ -1221,7 +1221,7 @@
         "RESTORE": "Hozzászólás visszaállítása"
     },
     "BACKLOG": {
-        "DOOMLINE": "",
+        "DOOMLINE": "A projekt hatóköre [Doomline]",
         "SPRINT_SUMMARY": {
             "COMPLETED_POINTS": "befejezett<br />pontszám",
             "TOTAL_POINTS": "össz<br />pontszám",
@@ -1249,18 +1249,18 @@
         "CUSTOMIZE_GRAPH_TEXT": "Ahhoz, hogy legyen egy szép grafikon, amely segít követni a projekt fejlődését, be kell állítania a pontokat és a sprinteket az adminisztrátori beállításokban",
         "PAGE_TITLE": "Backlog - {{projectName}}",
         "CHART": {
-            "INCREMENT_TEAM": "",
-            "OPTIMAL": "",
-            "REAL": "",
+            "INCREMENT_TEAM": "\"{{sprintName}}\" sprint csapat követelmény szerinti inkrementált pontjai: {{value}}",
+            "OPTIMAL": "\"{{sprintName}}\" sprint optimális függőben lévő pontjainak {{value}} pontnak kell lennie",
+            "REAL": "\"{{sprintName}}\" sprint valódi függőben lévő pontjai: {{value}}",
             "XAXIS_LABEL": "Sprintek",
             "YAXIS_LABEL": "Pontok",
-            "INCREMENT_CLIENT": ""
+            "INCREMENT_CLIENT": "\"{{sprintName}}\" sprint ügyfél követelmény szerinti inkrementált pontjai: {{value}}"
         },
         "FORECASTING": {
             "BACKLOG": "vissza a backloghoz",
             "ADD_NEW_SPRINT_SHORT": "sprint létrehozása",
-            "NEW_SPRINT": "",
-            "CURRENT_SPRINT": "",
+            "NEW_SPRINT": "A sebességed alapján a következő sprintedhez javasolt user storyk.",
+            "CURRENT_SPRINT": "A sebességed alapján a következő sprintedhez javasolt user storyk. Kattints az aktuális sprinthez való hozzáadáshoz.",
             "TITLE": "Sebesség előrejelzés",
             "ADD_NEW_SPRINT": "sprint létrehozása és user story hozzáadása"
         },
@@ -1336,15 +1336,15 @@
         "CHARTS": {
             "HELP_LINK": "Hogyan működik ez a diagram",
             "XAXIS_LABEL": "Napok",
-            "REAL": "",
+            "REAL": "{{formattedDate}} nap valós függőben lévő pontjai: {{roundedValue}}",
             "YAXIS_LABEL": "",
-            "OPTIMAL": "",
+            "OPTIMAL": "{{formattedDate}} nap függőben lévő pontjainak ennyinek kellene lennie: {{roundedValue}}",
             "HELP_TOOLTIP": "",
             "DATE": "YYYY MMMM DD"
         },
         "PAGE_TITLE": "{{sprintName}} - Sprint feladattábla - {{projectName}}",
         "TITLE_ACTION_ADD_BULK": "Új feladatok tömeges hozzáadása",
-        "PLACEHOLDER_CARD_TITLE": "",
+        "PLACEHOLDER_CARD_TITLE": "Ez lehet egy user story",
         "SECTION_NAME": "Feladattábla",
         "TITLE_DATE_RANGE": "{{startDate}} <span>és</span> {{endDate}} között",
         "TITLE_ACTION_ADD": "Új feladat hozzáadása",
@@ -1418,7 +1418,7 @@
         "US_NOT_FOUND_TEXT_P1": "Próbáld újra általánosabb keresési kifejezésekkel, vagy tilts le néhány szűrőt.",
         "TITLE_ACTION_UNFOLD": "Oszlop kinyitása",
         "TITLE_ACTION_ADD_BULK": "Tömeges hozzáadás",
-        "PLACEHOLDER_CARD_TITLE": "",
+        "PLACEHOLDER_CARD_TITLE": "Ez lehet egy user story",
         "UNCLASSIFIED_USER_STORIES": "Nem besorolt user storyk",
         "TITLE_ACTION_FOLD": "Oszlop összecsukása",
         "TITLE_ACTION_ADD_US": "Új user story hozzáadása",
@@ -1834,11 +1834,11 @@
         "TITLE": "Email cím módosítása",
         "ACTION_CHANGE_EMAIL": "Email cím módosítása",
         "SUCCESS": "Az email címed sikeresen módosítva",
-        "PLACEHOLDER_INPUT_TOKEN": "",
+        "PLACEHOLDER_INPUT_TOKEN": "email módosítása token",
         "SUBTITLE": "Még egy kattintás és az email címed frissítve lesz!"
     },
     "VERIFY_EMAIL_FORM": {
-        "PLACEHOLDER_INPUT_TOKEN": "",
+        "PLACEHOLDER_INPUT_TOKEN": "email módosítása token",
         "ACTION_VERIFY_EMAIL": "Email ellenőrzése",
         "SUCCESS": "Gratulálunk! Az email címed ellenőrizve",
         "TITLE": "Email ellenőrzése",
@@ -1849,7 +1849,7 @@
         "PREVIOUS": "Előző"
     },
     "CANCEL_ACCOUNT": {
-        "PLACEHOLDER_INPUT_TOKEN": "",
+        "PLACEHOLDER_INPUT_TOKEN": "fiók törlése token",
         "TITLE": "Fiók törlése",
         "ACTION_LEAVING": "Igen, elmegyek!",
         "SUCCESS": "A Taiga eltávolította a fiókodat",
@@ -1885,7 +1885,7 @@
         "BACKLOG": {
             "STEP3": {
                 "TITLE": "Sprintek",
-                "TEXT": ""
+                "TEXT": "A sprintek rövid (általában 2 hetes) időszakok, amelyek során konkrét munkát kell elvégezni és átadni."
             },
             "STEP4": {
                 "TITLE": "User storyk",
@@ -1904,7 +1904,7 @@
         "KANBAN": {
             "STEP1": {
                 "TITLE": "Munkamenet személyre szabása",
-                "TEXT": ""
+                "TEXT": "Állítsd be a munkafolyamatok állapotának leképezéséhez szükséges oszlopokat az adminisztrációban."
             },
             "STEP3": {
                 "TITLE": "User storyk hozzáadása",
