@@ -2,7 +2,12 @@
 
 ## 6.5.0 (unreleased
 
-- fix: prevent taskboard column flicker after drag & drop 
+- ...
+
+## 6.4.3 (2021-10-27)
+
+- fix: prevent taskboard column flicker after drag & drop
+- Update locales
 
 ## 6.4.2 (2021-09-16)
 
