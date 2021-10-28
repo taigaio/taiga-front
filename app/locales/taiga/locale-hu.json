@@ -1159,7 +1159,7 @@
         "CHOOSE_USERSTORY": "Melyik user story?",
         "ACTION_DELETE": "Epic törlése",
         "NEW_USERSTORY": "Új user story",
-        "LIGHTBOX_TITLE_BLOKING_EPIC": "",
+        "LIGHTBOX_TITLE_BLOKING_EPIC": "Epik zárolása",
         "NO_USERSTORIES": "Ennek a projektnek még nincsenek user storyjai. Válassz másik projektet.",
         "NO_USERSTORIES_FOUND": "Úgy tűnik, semmi sem található a keresési feltételekkel",
         "PAGE_DESCRIPTION": "Állapot: {{epicStatus }}. Leírás: {{epicDescription}}",
@@ -1198,7 +1198,7 @@
         "TITLE_LINK_GO_TO_ISSUE": "Ugrás a problémához",
         "TITLE_LINK_GO_TO_TASK": "Ugrás a feladathoz",
         "TITLE_DELETE_ACTION": "User story törlése",
-        "LIGHTBOX_TITLE_BLOKING_US": "",
+        "LIGHTBOX_TITLE_BLOKING_US": "User story zárolása",
         "RELATE_TO_EPIC": "Hozzákapcsolás epichez",
         "PAGE_DESCRIPTION": "Állapot: {{userStoryStatus }}. Befejezve {{userStoryProgressPercentage}}% ({{userStoryClosedTasks}} / {{userStoryTotalTasks}} lezárt feladat). Pontszám: {{userStoryPoints}}. Leírás: {{userStoryDescription}}"
     },
