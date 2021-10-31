@@ -384,7 +384,7 @@
             "MEETUP": "Találkozó",
             "MEETUP_DESCRIPTION": "Videókonferencia rendszer kiválasztása.",
             "NUMBER_SPRINTS_HELP": "0 egy meghatározatlan számhoz",
-            "KANBAN_DESCRIPTION": "",
+            "KANBAN_DESCRIPTION": "Szervezd a projeked karcsú módon ezzel a táblával.",
             "TALKY_CHAT_ROOM": "Talky",
             "CUSTOM_CHAT_ROOM": "Egyéni",
             "SALT_CHAT_ROOM": "Előtag hozzáadása a csevegőszoba nevéhez",
@@ -780,7 +780,7 @@
             "IMPORT_DESC": "Project importálása a Taiga-ba több platformból",
             "TEMPLATE_SCRUM_LONGDESC": "A Scrum egy iteratív és inkrementális agilis szoftverfejlesztési módszertan a termékfejlesztés irányítására.\nA product backlog az, amit végül leszállítunk, a szerint rendezve, hogy milyen sorrendben kell szállítani. A product backlogokat kezelhető, végrehajtható darabokra, úgynevezett sprintekre bontják. A csapat bizonyos időközönként új sprintet kezdeményez, és vállalja, hogy készségeinek, képességeinek és erőforrásainak megfelelően bizonyos számú felhasználói történetet szállít a backlogból. A projekt a backlog kimerülésével halad előre.",
             "TEMPLATE_KANBAN": "Kanban",
-            "TEMPLATE_KANBAN_DESC": "",
+            "TEMPLATE_KANBAN_DESC": "Folyamatos munkafolyamat fenntartása a független feladatokon",
             "PRIVATE_PROJECT": "Privár projekt",
             "SOLO_PROJECT": "Egyedül leszel ebben a projektben",
             "INVITE": "Meghívás a projektbe",
@@ -1042,7 +1042,7 @@
         },
         "FEEDBACK": {
             "TITLE": "Kérdezz",
-            "CREATE": "",
+            "CREATE": "Probléma bejelentése ezzel kapcsolatban: ",
             "EMAIL": "Küldj nekünk emailt közvetlenül ide: ",
             "ACTION_SEND": "Üzenet küldése",
             "PUBLIC": "nyilvános Taiga projekt",
@@ -1337,9 +1337,9 @@
             "HELP_LINK": "Hogyan működik ez a diagram",
             "XAXIS_LABEL": "Napok",
             "REAL": "{{formattedDate}} nap valós függőben lévő pontjai: {{roundedValue}}",
-            "YAXIS_LABEL": "",
+            "YAXIS_LABEL": "Előrejelzett pontok haladása",
             "OPTIMAL": "{{formattedDate}} nap függőben lévő pontjainak ennyinek kellene lennie: {{roundedValue}}",
-            "HELP_TOOLTIP": "",
+            "HELP_TOOLTIP": "Ez a burndown-diagram a sprint hozzávetőleges vagy előre jelzett előrehaladását mutatja a user storyk becsült lezárt feladatai alapján. A ténylegesen befejezett becsült user storyk fentebb követhetők.",
             "DATE": "YYYY MMMM DD"
         },
         "PAGE_TITLE": "{{sprintName}} - Sprint feladattábla - {{projectName}}",
@@ -1935,7 +1935,7 @@
             "STEP3": {
                 "TEXT2": "Már dolgozol a Taigaval ;)",
                 "TITLE": "Megfigyelés",
-                "TEXT1": ""
+                "TEXT1": "És itt találod azokat a projektjeiből amelyekről tudni szeretnél."
             },
             "STEP1": {
                 "TEXT": "Üdvözlet! Itt találod azokat a projekteket amelyekben érintett vagy.",
