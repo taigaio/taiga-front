@@ -6,7 +6,7 @@ Thank you for your interest in contributing to Taiga.  As a contributor, here ar
 
 Help us keep the Taiga Community open and inclusive. Please read and follow our [Code of Conduct](https://www.taiga.io/code-of-conduct).
 
-##  Code patches, enhacements
+##  Code patches, enhancements
 
 There are many different ways to contribute to Taiga's platform, from patches, to documentation and enhancements, just find the one that best fits with your skills. Check out our detailed [contribution guide](https://resources.taiga.io/extend/how-can-i-contribute/#code-patches-enhacements).
 
