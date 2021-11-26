@@ -782,9 +782,9 @@
         "DEFAULT_VALUES": {
             "LABEL_EPIC_STATUS": "Sélecteur de statut épique",
             "LABEL_US_STATUS": "Sélecteur d'état des histoires d'utilisateurs",
-            "LABEL_POINTS": "Valeur par défaut pour la sélection des points",
-            "LABEL_TASK_STATUS": "Valeur par défaut pour la sélection du statut des tâches",
-            "LABEL_ISSUE_TYPE": "Valeur par défaut pour le sélecteur de type",
+            "LABEL_POINTS": "Sélecteur de points",
+            "LABEL_TASK_STATUS": "Sélecteur d'état des tâches",
+            "LABEL_ISSUE_TYPE": "Sélecteur de type de problème",
             "LABEL_ISSUE_STATUS": "Sélecteur d'état du problème",
             "LABEL_PRIORITY": "Sélecteur de priorité",
             "LABEL_SEVERITY": "Sélecteur de gravité"
@@ -1126,7 +1126,9 @@
             "LIGHTBOX_TITLE": "Voulez-vous recevoir des annonces sur Taiga ?",
             "CONFIRMATION": "Oui, envoyez-moi des nouvelles, des mises à jour de produits et des recommandations sur Taiga.",
             "NO_SHARE": "Votre vie privée est importante pour nous (voir notre <a href=\"https://www.taiga.io/privacy-policy\" title=\"Go to privacy policy\" target=\"_blank\">politique de confidentialité</a>).",
-            "SAVE_PREFERENCE": "SAUVEGARDER LES PRÉFÉRENCES"
+            "SAVE_PREFERENCE": "SAUVEGARDER LES PRÉFÉRENCES",
+            "DONT_ASK": "Ne plus demander",
+            "OPT_OUT": "Nous vous enverrons seulement des courriels pertinents (<6 par an). Vous pouvez vous désinscrire à tout moment en envoyant un courriel à <a href=\"mailto:support@taiga.io\" target=\"_blank\">support@taiga.io</a> avec pour objet « unsubscribe » ou par le biais du lien figurant dans l'une de nos lettres d'information."
         }
     },
     "LIGHTBOX": {
@@ -1205,7 +1207,10 @@
             "SELECT_STATUS": "Sélectionnez l’état",
             "DEFAULT": "Valeur par défaut",
             "ERROR_STATUS": "Les modifications ne peuvent pas être enregistrées parce qu’il y a un problème avec l’état sélectionné.",
-            "ERROR_SWIMLANE": "Changes cannot be saved because there is a problem with the selected swimlane."
+            "ERROR_SWIMLANE": "Changes cannot be saved because there is a problem with the selected swimlane.",
+            "LOCATION": "Localisation",
+            "CREATE_TOP": "en haut",
+            "CREATE_BOTTOM": "en bas"
         },
         "DISABLE_KANBAN": {
             "TITLE": "Désactiver le Kanban",
@@ -1560,9 +1565,10 @@
         "WARNING_TEXT": "Vos modifications n'ont pas été enregistrées !",
         "SAVED": "Taiga a sauvegardé toutes vos modifications !",
         "CLOSE": "Fermer la notification",
-        "MAIL": "Notifications par courriel",
+        "MAIL": "Activité",
         "DESKTOP": "Notifications du bureau grâce aux alertes du navigateur",
-        "ASK_DELETE": "Êtes-vous sûr·e de vouloir supprimer ?"
+        "ASK_DELETE": "Êtes-vous sûr·e de vouloir supprimer ?",
+        "COMMUNICATION": "Communications de Taiga"
     },
     "CANCEL_ACCOUNT": {
         "TITLE": "Annuler votre compte",
