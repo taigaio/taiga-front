@@ -60,7 +60,8 @@
             "NO_PTS": "N/E",
             "ESTIMATION": "Schätzung",
             "TASKS": "{{completed}} von {{total}} Aufgaben abgeschlossen",
-            "EXTRA_ASSIGNED_USERS": "{{total}} weitere zugewiesene Benutzer"
+            "EXTRA_ASSIGNED_USERS": "{{total}} weitere zugewiesene Benutzer",
+            "MOVE_TO_TOP": "Nach oben verschieben"
         },
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Dieser Wert scheint ungültig zu sein.",
@@ -351,7 +352,7 @@
     },
     "REGISTER_FORM": {
         "TITLE": "Ein neues Taiga Benutzerkonto registrieren (kostenlos)",
-        "PLACEHOLDER_NAME": "Wählen Sie einen Benutzernamen (Groß- und Kleinschreibung beachten)",
+        "PLACEHOLDER_NAME": "Wählen Sie einen Benutzernamen",
         "PLACEHOLDER_FULL_NAME": "Wählen Sie Ihren Anzeigenamen",
         "PLACEHOLDER_EMAIL": "Ihre E-Mail-Adresse",
         "PLACEHOLDER_PASSWORD": "Setzen Sie ein Passwort (Groß- und Kleinschreibung beachten)",
@@ -569,7 +570,8 @@
             "REQUEST_OWNERSHIP_SUCCESS": "Wir werden den Projektleiter benachrichtigen",
             "CHANGE_OWNER": "Ändere Besitzer",
             "CHANGE_OWNER_SUCCESS_TITLE": "OK, Ihre Anfrage wurde versendet!",
-            "CHANGE_OWNER_SUCCESS_DESC": "Wir informieren Sie via Email, ob sie als neuer Projektleiter akzeptiert wurden oder ob die Anfrage zurückgewiesen wurde."
+            "CHANGE_OWNER_SUCCESS_DESC": "Wir informieren Sie via Email, ob sie als neuer Projektleiter akzeptiert wurden oder ob die Anfrage zurückgewiesen wurde.",
+            "REQUEST_OWNERSHIP_LIMIT": "Sie haben Ihr Limit an {{maxProjects}} privaten Projekten erreicht"
         },
         "REPORTS": {
             "TITLE": "Berichte",
@@ -839,6 +841,11 @@
                 "PUBLIC": "Bitte denken Sie daran, dass Sie bis zu <strong>{{maxProjects}}</strong> öffentliche Projekte besitzen können. Dezeit besitzen Sie <strong>{{currentProjects}}</strong> öffentliche Projekte"
             },
             "CANT_BE_OWNED": "Zur Zeit können Sie kein Projektleiter für diesen Projekt-Typ werden werden. Wenn Sie Projektleiter für dieses Projekt werden möchten, kontaktieren Sie bitte den Administrator, damit er Ihre Benutzerkonto-Einstellungen anpassen kann, um Projektleiter werden zu können."
+        },
+        "PROJECT_PRESETS": {
+            "MENU_TITLE": "Voreinstellungen",
+            "TITLE": "Standardwerte",
+            "SUBTITLE": "Standardwerte für alle Selektoreingänge setzen."
         }
     },
     "USER": {
@@ -1110,6 +1117,18 @@
                 "CREATE_NEW_ISSUES": " Konvertiere Sub-Tickets zu neuen Taiga Tickets",
                 "NOT_CREATE_NEW_ISSUES": "Importiere keine Sub-Tickets"
             }
+        },
+        "NEWSLETTER_OPENING": {
+            "LIGHTBOX_TITLE": "Möchten Sie Ankündigungen über Taiga erhalten?",
+            "SAVE_PREFERENCE": "EINSTELLUNGEN SPEICHERN",
+            "NOTIFY_EXPLANATION": "Wir werden Ihnen Neuigkeiten, Produktaktualisierungen und Empfehlungen über Taiga zusenden.",
+            "SUBSCRIBE": "Abonnieren",
+            "SUBSCRIBED": "Sie sind abonniert",
+            "SAVED_PREFERENCE": "Ihre Einstellungen wurden erfolgreich gespeichert",
+            "NO_SHARE": "Ihre Privatsphäre ist uns wichtig (siehe unsere <a href=\"https://www.taiga.io/privacy-policy\" title=\"Go to privacy policy\" target=\"_blank\">Datenschutzrichtlinie</a>).",
+            "DONT_ASK": "Nicht mehr fragen",
+            "CONFIRMATION": "Ja, senden Sie mir Neuigkeiten und Empfehlungen über Taiga.",
+            "OPT_OUT": "Wir werden Ihnen nur relevante E-Mails schicken (<6 pro Jahr). Sie können sich jederzeit abmelden, indem Sie eine E-Mail an <a href=\"mailto:support@taiga.io\" target=\"_blank\">support@taiga.io</a> mit dem Betreff „unsubscribe“ senden oder den Link in einem unserer Newsletter nutzen."
         }
     },
     "LIGHTBOX": {
@@ -1188,7 +1207,10 @@
             "SELECT_STATUS": "Status wählen",
             "DEFAULT": "Standard",
             "ERROR_STATUS": "Die Änderungen können nicht gespeichert werden, da ein Problem mit dem gewählten Status aufgetreten ist.",
-            "ERROR_SWIMLANE": "Die Änderungen können nicht gespeichert werden, da ein Problem mit der gewählten Swimlane aufgetreten ist."
+            "ERROR_SWIMLANE": "Die Änderungen können nicht gespeichert werden, da ein Problem mit der gewählten Swimlane aufgetreten ist.",
+            "CREATE_BOTTOM": "unten",
+            "CREATE_TOP": "oben",
+            "LOCATION": "Standort"
         },
         "DISABLE_KANBAN": {
             "TITLE": "Kanban deaktivieren",
@@ -1545,7 +1567,8 @@
         "CLOSE": "Benachrichtigung schließen",
         "MAIL": "Benachrichtigungen per Mail",
         "DESKTOP": "Desktop Benachrichtigungen durch den Webbrowser",
-        "ASK_DELETE": "Möchten Sie wirklich löschen?"
+        "ASK_DELETE": "Möchten Sie wirklich löschen?",
+        "COMMUNICATION": "Taiga-Kommunikationen"
     },
     "CANCEL_ACCOUNT": {
         "TITLE": "Ihr Benutzerkonto löschen",
