@@ -60,7 +60,8 @@
             "NO_PTS": "N/E",
             "ESTIMATION": "Estimation",
             "TASKS": "{{completed}} tasks of {{total}} completed",
-            "EXTRA_ASSIGNED_USERS": "{{total}} more assigned users"
+            "EXTRA_ASSIGNED_USERS": "{{total}} more assigned users",
+            "MOVE_TO_TOP": "Eraman goraino"
         },
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Balio hori baliogabea da.",
@@ -351,7 +352,7 @@
     },
     "REGISTER_FORM": {
         "TITLE": "Sortu Taiga kontu berri bat (doan)",
-        "PLACEHOLDER_NAME": "Hautatu erabiltzaile izen bat (letra larriak bereizten ditu)",
+        "PLACEHOLDER_NAME": "Hautatu erabiltzaile izen bat",
         "PLACEHOLDER_FULL_NAME": "Idatzi zure izen-deiturak",
         "PLACEHOLDER_EMAIL": "Zure e-posta",
         "PLACEHOLDER_PASSWORD": "Ezarri pasahitza (letra larriak bereizten ditu)",
@@ -569,7 +570,8 @@
             "REQUEST_OWNERSHIP_SUCCESS": "Jakinaraziko diogu proiektu jabeari",
             "CHANGE_OWNER": "Aldatu jabea",
             "CHANGE_OWNER_SUCCESS_TITLE": "Ederki, bidali dugu zure eskaera!",
-            "CHANGE_OWNER_SUCCESS_DESC": "E-postaz jakinaraziko dizugu proiektuaren jabetza onartzen edo errefusatzen den"
+            "CHANGE_OWNER_SUCCESS_DESC": "E-postaz jakinaraziko dizugu proiektuaren jabetza onartzen edo errefusatzen den",
+            "REQUEST_OWNERSHIP_LIMIT": "{{maxProjects}} proiektu pribatuen mugara iritsi zara"
         },
         "REPORTS": {
             "TITLE": "Txostenak",
@@ -700,7 +702,7 @@
             "WARNING_DELETE_ROLE": "Erne! Erne, rol honek egindako kalkulu guztiak ezabatuko dira",
             "ERROR_DELETE_ALL": "Ezin dituzu ezabatu balio guztiak",
             "EXTERNAL_USER": "Kanpo esteka",
-            "NOTE_EXTERNAL_USERS": "<strong>Oharra:</strong> kanpoko erabiltzailetzat jotzen dugu Taigan izena eman gabeko edonor, baita bilatzaileak ere.  Kontuz, erabili rol hori zentzuz."
+            "NOTE_EXTERNAL_USERS": "Kanpoko erabiltzailea edozein erabiltzaile da (Taiga plataforman saioa hasitakoa edo ez), <strong>bilatzaileak barne</strong>. Erregistratu gabeko erabiltzaileek inoiz editatzeko baimenik izan dezaketen arren, erregistratutako erabiltzaileek edita dezakete, baimena ematen badiezu. Zure proiektua pribatua bada, ikusteko baimenak ere kontrola ditzakezu. <strong>Mesedez, erabili rol hau kontu handiz</strong>."
         },
         "THIRD_PARTIES": {
             "SECRET_KEY": "Giltza sekretua",
@@ -778,14 +780,14 @@
             "DEFAULT_DELETE_MESSAGE": "gonbidapena helbide honetara: {{email}}"
         },
         "DEFAULT_VALUES": {
-            "LABEL_EPIC_STATUS": "Balio lehenetsia mugarriaren egoera hautatzeko",
-            "LABEL_US_STATUS": "Balio lehenetsia eginkizunaren egoera hautatzeko",
-            "LABEL_POINTS": "Balio lehenetsia puntuak hautatzeko",
-            "LABEL_TASK_STATUS": "Balio lehenetsia atazen egoera hautatzeko",
-            "LABEL_ISSUE_TYPE": "Balio lehenetsia gertakari mota hautatzeko",
-            "LABEL_ISSUE_STATUS": "Balio lehenetsia gertakarien egoera hautatzeko",
-            "LABEL_PRIORITY": "Balio lehenetsia lehentasunak hautatzeko",
-            "LABEL_SEVERITY": "Balio lehenetsia larritasuna hautatzeko"
+            "LABEL_EPIC_STATUS": "Epic egoera hautatzailea",
+            "LABEL_US_STATUS": "Erabiltzailearen istorioaren egoera-hautatzailea",
+            "LABEL_POINTS": "Puntuen hautatzailea",
+            "LABEL_TASK_STATUS": "Zereginen egoera-hautatzailea",
+            "LABEL_ISSUE_TYPE": "Arazo mota hautatzailea",
+            "LABEL_ISSUE_STATUS": "Arazoen egoera-hautatzailea",
+            "LABEL_PRIORITY": "Lehentasunen hautatzailea",
+            "LABEL_SEVERITY": "Larritasun-hautatzailea"
         },
         "STATUS": {
             "PLACEHOLDER_WRITE_STATUS_NAME": "Idatzi izen bat egoera berrirako",
@@ -839,6 +841,11 @@
                 "PUBLIC": "Gogoan izan, mesedez, <strong>{{maxProjects}}</strong> proiektu publikoren jabe izan zaitezke gehienez. Gaur gaurkoz <strong>{{currentProjects}}</strong> proiektu publikoren jabe zara."
             },
             "CANT_BE_OWNED": "Orain ezin duzu halako proiektu baten jabe izan. Nahi baduzu proiektuaren jabe berria izan,  jar zatez harremanetan administratzailearekin, zure kontuaren ezarpenak alda ditzan, proiektuaren jabe izan ahal izateko."
+        },
+        "PROJECT_PRESETS": {
+            "MENU_TITLE": "Aurrezarpenak",
+            "TITLE": "Balio lehenetsiak",
+            "SUBTITLE": "Ezarri balio lehenetsiak hautatzaile-sarrera guztientzat."
         }
     },
     "USER": {
@@ -1110,6 +1117,18 @@
                 "CREATE_NEW_ISSUES": "Bihurtu azpi-gertakariak Taigako gertakari",
                 "NOT_CREATE_NEW_ISSUES": "Ez inportatu azpi-gertakariak"
             }
+        },
+        "NEWSLETTER_OPENING": {
+            "NO_SHARE": "Zure pribatutasuna garrantzitsua da guretzat (ikus gure <a href=\"https://www.taiga.io/privacy-policy\" title=\"Joan pribatutasun-politika\" target=\"_blank\">pribatutasun-politika</a>).",
+            "OPT_OUT": "Mezu elektroniko garrantzitsuak soilik bidaliko dizkizugu (urtean <6). Harpidetza ken dezakezu edozein unetan, <a href=\"mailto:support@taiga.io\" target=\"_blank\">support@taiga.io</a> helbidera mezu elektroniko bat bidalita, \"harpidetza kendu\" gaiarekin edo gure boletinen edozein estekaren bidez.",
+            "DONT_ASK": "Ez galdetu berriro",
+            "SAVE_PREFERENCE": "GORDE HOBESPENAK",
+            "LIGHTBOX_TITLE": "Taigari buruzko iragarkiak jaso nahi dituzu?",
+            "CONFIRMATION": "Bai, bidali Taigari buruzko berriak, produktuen eguneraketak eta gomendioak.",
+            "NOTIFY_EXPLANATION": "Taigari buruzko berriak, produktuen eguneraketak eta gomendioak bidaliko dizkizugu.",
+            "SUBSCRIBE": "Harpidetu",
+            "SUBSCRIBED": "Harpidetuta zaude",
+            "SAVED_PREFERENCE": "Zure hobespenak behar bezala gorde dira"
         }
     },
     "LIGHTBOX": {
@@ -1188,7 +1207,10 @@
             "SELECT_STATUS": "Select status",
             "DEFAULT": "Lehenetsia",
             "ERROR_STATUS": "Changes cannot be saved because there is a problem with the selected status.",
-            "ERROR_SWIMLANE": "Changes cannot be saved because there is a problem with the selected swimlane."
+            "ERROR_SWIMLANE": "Changes cannot be saved because there is a problem with the selected swimlane.",
+            "LOCATION": "Kokapena",
+            "CREATE_TOP": "goian",
+            "CREATE_BOTTOM": "behean"
         },
         "DISABLE_KANBAN": {
             "TITLE": "Disable kanban",
@@ -1543,9 +1565,10 @@
         "WARNING_TEXT": "Zure aldaketak ez dira gorde!",
         "SAVED": "Taigak gorde ditu zure aldaketa guztiak!",
         "CLOSE": "Itxi jakinarazpena",
-        "MAIL": "Jakinarazpenak e-postaz",
+        "MAIL": "Aktibitatea",
         "DESKTOP": "Mahaigaineko jakinarazpenak nabigatzailearen alertak erabilita",
-        "ASK_DELETE": "Ziur zaude ezabatu nahi duzula?"
+        "ASK_DELETE": "Ziur zaude ezabatu nahi duzula?",
+        "COMMUNICATION": "Taiga komunikazioak"
     },
     "CANCEL_ACCOUNT": {
         "TITLE": "Ezabatu zure kontua",
