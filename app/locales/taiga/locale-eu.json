@@ -17,7 +17,7 @@
         "BACK": "Atzealdea",
         "COPY_TO_CLIPBOARD": "Kopiatu arbelera",
         "COPIED_TO_CLIPBOARD": "Testua arbelera kopiatuta",
-        "MOVE_TO_TOP": "Move to top",
+        "MOVE_TO_TOP": "Eraman goraino",
         "EDIT": "Editatu",
         "DRAG": "Arrastatu",
         "TAG_LINE": "Proiektuak kudeatzeko tresna arin, aske eta kode irekikoa",
@@ -56,11 +56,11 @@
             "DELETE_ISSUE": "Ezabatu gertakaria",
             "DETACH_ISSUE_FROM_SPRINT": "Detach from sprint",
             "PTS": "{{pts}} pts",
-            "DUE_DATE": "Due date: {{date}}",
+            "DUE_DATE": "Epemuga: {{date}}",
             "NO_PTS": "N/E",
-            "ESTIMATION": "Estimation",
-            "TASKS": "{{completed}} tasks of {{total}} completed",
-            "EXTRA_ASSIGNED_USERS": "{{total}} more assigned users",
+            "ESTIMATION": "Estimazioa",
+            "TASKS": "{{total}} zereginetatik {{completed}} burutuak",
+            "EXTRA_ASSIGNED_USERS": "Esleitutako {{total}} erabiltzaile gehiago",
             "MOVE_TO_TOP": "Eraman goraino"
         },
         "FORM_ERRORS": {
@@ -167,7 +167,7 @@
             "DUE_DATE_REASON": "Epemugaren azalpena"
         },
         "ROLES": {
-            "ALL": "All points"
+            "ALL": "Puntu guztiak"
         },
         "ASSIGNED_TO": {
             "NOT_ASSIGNED": "Esleitu gabe",
@@ -227,25 +227,25 @@
             "CUSTOM_FIELDS": "Eremu pertsonalizatuak",
             "SAVE": "Gorde eremu pertsonalizatua",
             "EDIT": "Editatu eremu pertsonalizatua",
-            "DELETE": "Delete custom fields",
-            "CONFIRM_DELETE": "Remember that all values in this custom field will be deleted."
+            "DELETE": "Ezabatu eremu pertsonalizatuak",
+            "CONFIRM_DELETE": "Gogoratu eremu pertsonalizatu honetako balio guztiak ezabatuko direla."
         },
         "FILTERS": {
-            "INPUT_PLACEHOLDER": "subject or reference",
+            "INPUT_PLACEHOLDER": "gaia edo erreferentzia",
             "TITLE_ACTION_FILTER_BUTTON": "bilatu",
             "TITLE": "Iragazki pertsonalizatuak",
             "TITLE_ACTION_SEARCH": "Bilatu",
             "ACTION_ADD": "Gehitu",
-            "ACTION_SAVE_CUSTOM_FILTER": "save filter",
+            "ACTION_SAVE_CUSTOM_FILTER": "gorde iragazkia",
             "PLACEHOLDER_FILTER_NAME": "Idatzi iragazkiaren izena eta sakatu enter",
             "APPLIED_FILTERS_NUM": "iragazkiak aplikatuta",
             "TITLE_ADVANCED_FILTER": "Aurreratua",
-            "LENGTH_ZERO_ERROR": "Please add a filter name",
-            "REPEATED_FILTER_ERROR": "This filter name is already in use",
+            "LENGTH_ZERO_ERROR": "Gehitu iragazki-izen bat",
+            "REPEATED_FILTER_ERROR": "Iragazki-izen hau dagoeneko erabiltzen ari da",
             "ADVANCED_FILTERS": {
                 "INCLUDE": "Barne hartu",
                 "EXCLUDE": "Kanpo utzi",
-                "INCLUDED": "Filtered by:",
+                "INCLUDED": "Honen arabera iragazita:",
                 "EXCLUDED": "Excluded:"
             },
             "CATEGORIES": {
