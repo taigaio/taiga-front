@@ -985,7 +985,7 @@
             "SOLO_PROJECT": "Estarás solo en este proyecto",
             "INVITE_LATER": "(Podrás invitar otros miembros más adelante)",
             "BACK": "Back",
-            "MAX_PRIVATE_PROJECTS": "l",
+            "MAX_PRIVATE_PROJECTS": "Desafortunadamente, has alcanzado el número máximo de proyectos privados.\nSi desea aumentar este límite, por favor contacte al administrador.",
             "MAX_PUBLIC_PROJECTS": "Desafortunadamente, has alcanzado el número máximo de proyectos públicos.\nSi desea aumentar este limite, por favor contacte al administrador.",
             "PUBLIC_PROJECT": "Proyecto público",
             "PRIVATE_PROJECT": "Proyecto privado"
