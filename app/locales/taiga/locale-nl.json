@@ -14,10 +14,10 @@
         "UNLINK": "ontkoppel",
         "CREATE": "Aanmaken",
         "ADD": "Toevoegen",
-        "BACK": "Back",
+        "BACK": "Terug",
         "COPY_TO_CLIPBOARD": "Kopieer naar klembord",
         "COPIED_TO_CLIPBOARD": "Tekst werd gekopieerd naar het klembord",
-        "MOVE_TO_TOP": "Move to top",
+        "MOVE_TO_TOP": "Naar boven verplaatsen",
         "EDIT": "Bewerk",
         "DRAG": "Sleep",
         "TAG_LINE": "Jouw agile, gratis en open source project management tool",
@@ -40,7 +40,7 @@
         "NEXT": "Volgende",
         "LOGOUT": "Afmelden",
         "EXTERNAL_USER": "een extern gebruiker",
-        "GENERIC_ERROR": "The Taiga says {{error}}.",
+        "GENERIC_ERROR": "De Taiga zegt {{error}}.",
         "IOCAINE_TEXT": "This member is feeling a bit overwhelmed by this task. They will become immune to the iocaine poison over time with your help. For now, they may need a hug.",
         "CLIENT_REQUIREMENT": "A client requirement is a new requirement that was not previously expected and is required to be part of the project",
         "TEAM_REQUIREMENT": "A team requirement is a requirement that must exist in the project but should have no cost for the client",
@@ -60,7 +60,8 @@
             "NO_PTS": "N/E",
             "ESTIMATION": "Estimation",
             "TASKS": "{{completed}} tasks of {{total}} completed",
-            "EXTRA_ASSIGNED_USERS": "{{total}} more assigned users"
+            "EXTRA_ASSIGNED_USERS": "{{total}} more assigned users",
+            "MOVE_TO_TOP": "Naar boven verplaatsen"
         },
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Deze waarde lijkt ongeldig te zijn",
@@ -351,7 +352,7 @@
     },
     "REGISTER_FORM": {
         "TITLE": "Registreer een nieuw Taiga account (gratis)",
-        "PLACEHOLDER_NAME": "Kies een gebruikersnaam (hoofdlettergevoelig)",
+        "PLACEHOLDER_NAME": "Kies een gebruikersnaam",
         "PLACEHOLDER_FULL_NAME": "Kies je volledige naam",
         "PLACEHOLDER_EMAIL": "Jouw e-mail",
         "PLACEHOLDER_PASSWORD": "Kies een wachtwoord (hoofdlettergevoelig)",
@@ -569,7 +570,8 @@
             "REQUEST_OWNERSHIP_SUCCESS": "We'll notify the project owner",
             "CHANGE_OWNER": "Change owner",
             "CHANGE_OWNER_SUCCESS_TITLE": "Ok, your request has been sent!",
-            "CHANGE_OWNER_SUCCESS_DESC": "We will notify you by email if the project ownership request is accepted or declined"
+            "CHANGE_OWNER_SUCCESS_DESC": "We will notify you by email if the project ownership request is accepted or declined",
+            "REQUEST_OWNERSHIP_LIMIT": "Je hebt het limiet van {{maxProjects}} privéprojecten bereikt"
         },
         "REPORTS": {
             "TITLE": "Rapporten",
@@ -700,7 +702,7 @@
             "WARNING_DELETE_ROLE": "Be careful! All role estimations will be removed",
             "ERROR_DELETE_ALL": "Je kan niet alle waarden verwijderen",
             "EXTERNAL_USER": "Externe gebruiker",
-            "NOTE_EXTERNAL_USERS": "<strong>Note:</strong> by External User we mean any anonymous user not belonging to the Taiga platform, including search engines. Please use this role with care."
+            "NOTE_EXTERNAL_USERS": "Een externe gebruiker is elke gebruiker (ingelogd bij het Taiga platform of niet), <strong>inclusief zoekmachines</strong>. Alhoewel niet-geregistreerde gebruikers nooit wijzigingsrechten kunnen hebben, kunnen geregistreerde gebruikers dat wel, als je dat toestaat. Als je project privé is, kun je ook kijkrechten beheren. <strong>Wees voorzichtig bij het gebruik van deze rol</strong>."
         },
         "THIRD_PARTIES": {
             "SECRET_KEY": "Geheime sleutel",
@@ -778,14 +780,14 @@
             "DEFAULT_DELETE_MESSAGE": "de uitnodiging naar {{email}}"
         },
         "DEFAULT_VALUES": {
-            "LABEL_EPIC_STATUS": "Default value for epic status selector",
-            "LABEL_US_STATUS": "Default value for user story status selector",
-            "LABEL_POINTS": "Standaard waarde voor punten selectie",
-            "LABEL_TASK_STATUS": "Standaard waarde voor taak status selectie",
-            "LABEL_ISSUE_TYPE": "Standaard waarde voor Issue type keuze",
-            "LABEL_ISSUE_STATUS": "Standaard waarde voor kwestie status keuze",
-            "LABEL_PRIORITY": "Standaard waarde voor prioriteit selectie",
-            "LABEL_SEVERITY": "Standaard waarde voor ernst selectie"
+            "LABEL_EPIC_STATUS": "Epic status kiezer",
+            "LABEL_US_STATUS": "Gebruikersverhaal status kiezer",
+            "LABEL_POINTS": "Punten kiezer",
+            "LABEL_TASK_STATUS": "Taak status kiezer",
+            "LABEL_ISSUE_TYPE": "Probleem type kiezer",
+            "LABEL_ISSUE_STATUS": "Probleem status kiezer",
+            "LABEL_PRIORITY": "Proriteits kiezer",
+            "LABEL_SEVERITY": "Urgentie kiezer"
         },
         "STATUS": {
             "PLACEHOLDER_WRITE_STATUS_NAME": "Geef een naam voor de nieuwe status",
@@ -839,6 +841,11 @@
                 "PUBLIC": "Please remember that you can own up to <strong>{{maxProjects}}</strong> public projects. You currently own <strong>{{currentProjects}}</strong> public projects"
             },
             "CANT_BE_OWNED": "At the moment you cannot become an owner of a project of this type. If you would like to become the owner of this project, please contact the administrator so they change your account settings to enable project ownership."
+        },
+        "PROJECT_PRESETS": {
+            "TITLE": "Standaard Waardes",
+            "SUBTITLE": "Zet standaard waardes voor alle selectie ingangen.",
+            "MENU_TITLE": "Voorinstellingen"
         }
     },
     "USER": {
@@ -1110,6 +1117,18 @@
                 "CREATE_NEW_ISSUES": "Convert sub-issues to new Taiga issues",
                 "NOT_CREATE_NEW_ISSUES": "Do not import sub-issues"
             }
+        },
+        "NEWSLETTER_OPENING": {
+            "NOTIFY_EXPLANATION": "We zullen je nieuws, product updates en aanbevelingen over Taiga toesturen.",
+            "OPT_OUT": "We zullen allen belangrijke e-mails naar je sturen (<6 per jaar). Je kunt op elk moment uitschrijven door een e-mail te sturen naar <a href=\"mailto:support@taiga.io\" target=\"_blank\">support@taiga.io</a> met als onderwerp \"uitschrijven\" of door op de link te klikken in een van onze e-mails.",
+            "LIGHTBOX_TITLE": "Wil je mededelingen over Taiga ontvangen?",
+            "DONT_ASK": "Niet opnieuw vragen",
+            "CONFIRMATION": "Ja, stuur me nieuws, product updates en aanbevelingen over Taiga.",
+            "NO_SHARE": "Je privacy is belangrijk voor ons (bekijk ons <a href=\"https://www.taiga.io/privacy-policy\" title=\"Go to privacy policy\" target=\"_blank\">privébeleid</a>).",
+            "SAVE_PREFERENCE": "VOORKEUREN OPLSAAN",
+            "SUBSCRIBE": "Abonneren",
+            "SUBSCRIBED": "Je bent geabonneerd",
+            "SAVED_PREFERENCE": "Je voorkeuren zijn succesvol opgeslagen"
         }
     },
     "LIGHTBOX": {
@@ -1188,7 +1207,10 @@
             "SELECT_STATUS": "Select status",
             "DEFAULT": "Default",
             "ERROR_STATUS": "Changes cannot be saved because there is a problem with the selected status.",
-            "ERROR_SWIMLANE": "Changes cannot be saved because there is a problem with the selected swimlane."
+            "ERROR_SWIMLANE": "Changes cannot be saved because there is a problem with the selected swimlane.",
+            "LOCATION": "Locatie",
+            "CREATE_TOP": "bovenaan",
+            "CREATE_BOTTOM": "onderaan"
         },
         "DISABLE_KANBAN": {
             "TITLE": "Kanban uitschakelen",
@@ -1543,9 +1565,10 @@
         "WARNING_TEXT": "Je aanpassingen zijn niet opgeslagen!",
         "SAVED": "De Taiga heeft je wijzigingen opgeslagen!",
         "CLOSE": "Notificatie sluiten",
-        "MAIL": "Notificaties per mail",
+        "MAIL": "Activiteit",
         "DESKTOP": "Desktop notifications using browser alerts",
-        "ASK_DELETE": "Weet je zeker dat je wilt verwijderen?"
+        "ASK_DELETE": "Weet je zeker dat je wilt verwijderen?",
+        "COMMUNICATION": "Taiga mededelingen"
     },
     "CANCEL_ACCOUNT": {
         "TITLE": "Annuleer je account",
