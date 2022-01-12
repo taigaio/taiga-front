@@ -8,6 +8,7 @@ tg-wysiwyg {
     }
     .editor {
         width: 100%;
+        word-break: break-all;
     }
     .tools {
         display: none;
