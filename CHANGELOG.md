@@ -2,7 +2,7 @@
 
 ## 6.5.0 (unreleased
 
-- ...
+- fix: prevent overflowing long texts in layouts. (by @RyoNkmr)
 
 ## 6.4.3 (2021-10-27)
 
