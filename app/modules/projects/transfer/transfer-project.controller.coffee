@@ -46,20 +46,30 @@ class TransferProject
     _checkOwnerData: () ->
         currentUser = @currentUserService.getUser()
         if(@.project.get('is_private'))
-            @.ownerMessage = 'ADMIN.PROJECT_TRANSFER.OWNER_MESSAGE.PRIVATE'
+            @.currentProjects = currentUser.get('total_private_projects')
             @.maxProjects = currentUser.get('max_private_projects')
+            maxMemberships = currentUser.get('max_memberships_private_projects')
             if @.maxProjects == null
                 @.maxProjects = @translate.instant('ADMIN.PROJECT_TRANSFER.UNLIMITED_PROJECTS')
-            @.currentProjects = currentUser.get('total_private_projects')
-            maxMemberships = currentUser.get('max_memberships_private_projects')
+                @.ownerMessage = 'ADMIN.PROJECT_TRANSFER.OWNER_MESSAGE.PRIVATE'
+            else
+                if @.currentProjects < @.maxProjects
+                    @.ownerMessage = 'ADMIN.PROJECT_TRANSFER.OWNER_MESSAGE.PRIVATE'
+                else
+                    @.ownerMessage = 'ADMIN.PROJECT_TRANSFER.OWNER_MESSAGE.PRIVATE_EXCEEDED'
 
         else
-            @.ownerMessage = 'ADMIN.PROJECT_TRANSFER.OWNER_MESSAGE.PUBLIC'
+            @.currentProjects = currentUser.get('total_public_projects')
             @.maxProjects = currentUser.get('max_public_projects')
+            maxMemberships = currentUser.get('max_memberships_public_projects')
             if @.maxProjects == null
                 @.maxProjects = @translate.instant('ADMIN.PROJECT_TRANSFER.UNLIMITED_PROJECTS')
-            @.currentProjects = currentUser.get('total_public_projects')
-            maxMemberships = currentUser.get('max_memberships_public_projects')
+                @.ownerMessage = 'ADMIN.PROJECT_TRANSFER.OWNER_MESSAGE.PUBLIC'
+            else
+                if @.currentProjects < @.maxProjects
+                    @.ownerMessage = 'ADMIN.PROJECT_TRANSFER.OWNER_MESSAGE.PUBLIC'
+                else
+                    @.ownerMessage = 'ADMIN.PROJECT_TRANSFER.OWNER_MESSAGE.PUBLIC_EXCEEDED'
 
         @.validNumberOfMemberships = maxMemberships == null || @.project.get('total_memberships') <= maxMemberships
 
