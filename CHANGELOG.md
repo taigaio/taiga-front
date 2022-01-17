@@ -2,7 +2,7 @@
 
 ## 6.5.0 (unreleased
 
-- ...
+- fix: prevent wrong text in collapsed columns in kanban for vertical languages (by @twovillage)
 
 ## 6.4.3 (2021-10-27)
 
