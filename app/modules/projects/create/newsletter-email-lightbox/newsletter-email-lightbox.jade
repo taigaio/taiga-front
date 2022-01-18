@@ -18,11 +18,11 @@ form
                 ng-model="preference"
             )
             label(
-                for="confirm-email",
+                for="confirm-email"
                 tabindex="0"
             )
         .text-container
-            p(translate="PROJECT.NEWSLETTER_OPENING.CONFIRMATION")
+            label.confirm-label(for="confirm-email" translate="PROJECT.NEWSLETTER_OPENING.CONFIRMATION")
             p.text-info
                 span.italic(
                     translate="PROJECT.NEWSLETTER_OPENING.NO_SHARE"
@@ -43,7 +43,7 @@ form
                     for="dont-ask"
                     tabindex="0"
                 )
-            p(translate="PROJECT.NEWSLETTER_OPENING.DONT_ASK")
+            label.ask-label(for="dont-ask" translate="PROJECT.NEWSLETTER_OPENING.DONT_ASK")
         div.options
             button.btn-small.btn-cancel.js-cancel(
                 variant="secondary"

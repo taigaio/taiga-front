@@ -30,6 +30,12 @@
 
     .newsletter-info {
         display: flex;
+
+        .confirm-label {
+            display: inline-block;
+            line-height: 1.5;
+            margin: 0 0 10px;
+        }
     }
 
     .subscribed-button {
@@ -50,7 +56,8 @@
     .ask {
         display: flex;
 
-        p {
+        .ask-label {
+            line-height: 1.5;
             margin-bottom: 0;
         }
     }
@@ -80,7 +87,8 @@
         text-align: center;
     }
 
-    p {
+    p,
+    label {
         color: $color-black600;
     }
 
