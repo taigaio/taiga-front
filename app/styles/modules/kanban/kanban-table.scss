@@ -373,12 +373,11 @@ body {
     .placeholder-collapsed-wrapper {
         align-items: center;
         display: flex;
-        flex-direction: row-reverse;
+        flex-direction: row;
         padding: 1rem 0;
         text-transform: uppercase;
-        transform: rotate(-180deg);
         width: 100%;
-        writing-mode: tb-rl;
+        writing-mode: vertical-rl;
     }
 
     .name {
@@ -390,7 +389,7 @@ body {
         color: $color-black900;
         display: flex;
         flex-direction: row-reverse;
-        padding-top: .5rem;
+        padding-inline-end: .5rem;
     }
 
     .ammount {
