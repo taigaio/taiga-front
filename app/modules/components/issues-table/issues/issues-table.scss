@@ -194,6 +194,7 @@
             color: $color-black900;
             display: flex;
             margin-inline-end: .75rem;
+            word-break: break-all;
         }
         .due-date,
         .blocked {
