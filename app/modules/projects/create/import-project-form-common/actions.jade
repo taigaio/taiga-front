@@ -16,5 +16,6 @@
     button.btn-small.create-project-action-submit.e2e-create-project-action-submit(
         type="submit"
         tg-loading="vm.formSubmitLoading"
+        ng-disabled="(vm.projectForm.is_private && !vm.canCreatePrivateProjects.valid && vm.canCreatePrivateProjects.reason == 'max_private_projects') || (!vm.projectForm.is_private && !vm.canCreatePublicProjects.valid && vm.canCreatePublicProjects.reason == 'max_public_projects')"
         translate="PROJECT.CREATE.TITLE"
     )
