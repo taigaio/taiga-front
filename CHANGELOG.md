@@ -1,6 +1,10 @@
 # Changelog
 
-## 6.5.0 (unreleased
+## 6.6.0 (unreleased)
+
+- ...
+
+## 6.5.0 (2022-01-24)
 
 - fix: prevent wrong text in collapsed columns in kanban for vertical languages (by @twovillage)
 - fix: prevent overflowing long texts in layouts. (by @RyoNkmr)
