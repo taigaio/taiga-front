@@ -558,9 +558,9 @@
             "DELETE": "Elimina questo progetto",
             "CHANGE_LOGO": "Cambia Logo",
             "ACTION_USE_DEFAULT_LOGO": "Usa l'immagine predefinita",
-            "MAX_PRIVATE_PROJECTS": "Hai raggiunto il numero massimo di progetti privati per il tuo abbonamento",
+            "MAX_PRIVATE_PROJECTS": "Hai raggiunto il numero massimo di progetti privati consentito dal tuo abbonamento",
             "MAX_PRIVATE_PROJECTS_MEMBERS": "È stato superato il numero massimo di membri per progetti privati",
-            "MAX_PUBLIC_PROJECTS": "Sfortunatamente hai raggiunto il numero massimo di progetti pubblici per il tuo abbonamento",
+            "MAX_PUBLIC_PROJECTS": "Sfortunatamente hai raggiunto il numero massimo di progetti pubblici consentito dal tuo abbonamento",
             "MAX_PUBLIC_PROJECTS_MEMBERS": "Il progetto super il tuo numero massimo di membri per progetti pubblici",
             "PROJECT_OWNER": "Proprietario progetto",
             "REQUEST_OWNERSHIP": "Richiedi proprietà",
@@ -837,8 +837,10 @@
             "ADD_COMMENT": "Vorresti aggiungere un commento per il proprietario del progetto?",
             "UNLIMITED_PROJECTS": "Illimitato",
             "OWNER_MESSAGE": {
-                "PRIVATE": "Per favore ricorda che puoi avere al massimo <strong>{{maxProjects}}</strong> progetti privati. Attualmente hai <strong>{{currentProjects}}</strong> progetti privati",
-                "PUBLIC": "Per favore ricorda che puoi avere al massimo <strong>{{maxProjects}}</strong> progetti pubblici. Attualmente hai <strong>{{currentProjects}}</strong> progetti pubblici"
+                "PRIVATE": "Per favore ricorda che puoi avere al massimo <strong>{{maxProjects}}</strong> progetti privati. Attualmente ne hai <strong>{{currentProjects}}</strong>.",
+                "PUBLIC": "Per favore ricorda che puoi avere al massimo <strong>{{maxProjects}}</strong> progetti pubblici. Attualmente ne hai <strong>{{currentProjects}}</strong>.",
+                "PRIVATE_EXCEEDED": "Attualmente hai <strong>{{currentProjects}} progetti privati</strong>, il massimo consentito dal tuo abbonamento.",
+                "PUBLIC_EXCEEDED": "Attualmente hai <strong>{{currentProjects}} progetti pubblici</strong>, il massimo consentito dal tuo abbonamento."
             },
             "CANT_BE_OWNED": "Attualmente non puoi diventare il proprietario di un progetto di questo tipo. Se vuoi diventare proprietario di questo progetto, per favore contatta l'amministratore così può cambiare le impostazioni del tuo account per diventare proprietario dei progetti."
         },
