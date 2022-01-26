@@ -147,7 +147,7 @@ describe "TransferProject", ->
         ctrl = $controller("TransferProjectController")
         ctrl.project = project
         ctrl.initialize().then () ->
-            expect(ctrl.ownerMessage).to.be.equal("ADMIN.PROJECT_TRANSFER.OWNER_MESSAGE.PRIVATE")
+            expect(ctrl.ownerMessage).to.be.equal("ADMIN.PROJECT_TRANSFER.OWNER_MESSAGE.PRIVATE_EXCEEDED")
             expect(ctrl.maxProjects).to.be.equal(1)
             expect(ctrl.currentProjects).to.be.equal(1)
             done()
@@ -198,7 +198,7 @@ describe "TransferProject", ->
         ctrl = $controller("TransferProjectController")
         ctrl.project = project
         ctrl.initialize().then () ->
-            expect(ctrl.ownerMessage).to.be.equal("ADMIN.PROJECT_TRANSFER.OWNER_MESSAGE.PUBLIC")
+            expect(ctrl.ownerMessage).to.be.equal("ADMIN.PROJECT_TRANSFER.OWNER_MESSAGE.PUBLIC_EXCEEDED")
             expect(ctrl.maxProjects).to.be.equal(1)
             expect(ctrl.currentProjects).to.be.equal(1)
             done()
