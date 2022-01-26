@@ -105,7 +105,7 @@
     .detail-subject {
         color: $color-black900;
         flex-grow: 1;
-        word-break: break-all;
+        word-break: break-word;
     }
     .edit-title-input {
         font-size: 1.2rem;
