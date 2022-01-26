@@ -373,7 +373,7 @@ body {
     .placeholder-collapsed-wrapper {
         align-items: center;
         display: flex;
-        flex-direction: row;
+        flex-direction: row-reverse;
         padding: 1rem 0;
         text-transform: uppercase;
         width: 100%;
@@ -389,7 +389,7 @@ body {
         color: $color-black900;
         display: flex;
         flex-direction: row-reverse;
-        padding-inline-end: .5rem;
+        padding-inline-start: .5rem;
     }
 
     .ammount {
