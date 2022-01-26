@@ -2,6 +2,10 @@
 
 ## 6.6.0 (unreleased)
 
+- ...
+
+## 6.5.1 (2022-01-27)
+
 - Enhance text collapse on long text by not dividing words.
 - reorder data display in collapsed columns.
 
