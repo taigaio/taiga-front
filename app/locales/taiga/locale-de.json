@@ -838,7 +838,7 @@
             "UNLIMITED_PROJECTS": "Unbegrenzt",
             "OWNER_MESSAGE": {
                 "PRIVATE": "Bitte denken Sie daran, dass Sie bis zu <strong>{{maxProjects}}</strong> private Projekte besitzen können. Dezeit besitzen Sie <strong>{{currentProjects}}</strong> private Projekte",
-                "PUBLIC": "Bitte denken Sie daran, dass Sie bis zu <strong>{{maxProjects}}</strong> öffentliche Projekte besitzen können. Dezeit besitzen Sie <strong>{{currentProjects}}</strong> öffentliche Projekte"
+                "PUBLIC": "Bitte denken Sie daran, dass Sie bis zu <strong>{{maxProjects}}</strong> öffentliche Projekte besitzen können. Derzeit besitzen Sie <strong>{{currentProjects}}</strong> öffentliche Projekte"
             },
             "CANT_BE_OWNED": "Zur Zeit können Sie kein Projektleiter für diesen Projekt-Typ werden werden. Wenn Sie Projektleiter für dieses Projekt werden möchten, kontaktieren Sie bitte den Administrator, damit er Ihre Benutzerkonto-Einstellungen anpassen kann, um Projektleiter werden zu können."
         },
