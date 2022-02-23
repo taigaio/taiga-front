@@ -513,8 +513,8 @@
             "LOADING_MESSAGE": "Lütfen bu sayfayı kapatmayın.",
             "ASYNC_MESSAGE": "Hazır olduğunda size bir e-posta göndereceğiz.",
             "SYNC_MESSAGE": "İndirme otomatik olarak başlamazsa <a href='{{url}}' download title='Döküm dosyasını indirin'>buraya</a> tıklayın.",
-            "ERROR": "The Taiga has some problems generating your dump. Please try it again.",
-            "ERROR_BUSY": "Sorry, the Taiga is experiencing heavy load right now. Please try again in a few minutes."
+            "ERROR": "Taiga, dökümünüzü oluştururken bazı sorunlar yaşıyor. Lütfen tekrar deneyin.",
+            "ERROR_BUSY": "Maalesef Taiga şu anda ağır bir yüklenme yaşıyor. Lütfen birkaç dakika içinde tekrar deneyin."
         },
         "MODULES": {
             "TITLE": "Modüller",
@@ -531,11 +531,11 @@
             "ISSUES": "Sorunlar",
             "ISSUES_DESCRIPTION": "Proje ile ilgili hataları, sorular ve geliştirmeleri izle. Hiçbir şeyi kaçırma!!",
             "WIKI": "Wiki",
-            "WIKI_DESCRIPTION": "Add, modify, or delete content in collaboration with others. This is the right place for your project's documentation.",
+            "WIKI_DESCRIPTION": "Başkalarıyla işbirliği içinde içerik ekleyin, değiştirin veya silin. Projenizin belgelendirmesi için doğru yer burasıdır.",
             "MEETUP": "Toplantı",
             "MEETUP_DESCRIPTION": "Video konferans sisteminizi seçin.",
             "SELECT_VIDEOCONFERENCE": "Bir video konferans sistemi seç",
-            "SALT_CHAT_ROOM": "Add a prefix to the chatroom name",
+            "SALT_CHAT_ROOM": "Sohbet odası adına bir ön ek ekle",
             "JITSI_CHAT_ROOM": "Jitsi",
             "WHEREBYCOM_CHAT_ROOM": "Whereby.com",
             "TALKY_CHAT_ROOM": "Talky",
@@ -559,18 +559,18 @@
             "CHANGE_LOGO": "Logoyu değiştir",
             "ACTION_USE_DEFAULT_LOGO": "Varsayılan resmi kullan",
             "MAX_PRIVATE_PROJECTS": "Geçerli planınızın izin verdiği en fazla özel proje sayısına ulaştınız",
-            "MAX_PRIVATE_PROJECTS_MEMBERS": "The maximum number of members for private projects has been exceeded",
+            "MAX_PRIVATE_PROJECTS_MEMBERS": "Özel projeler için en fazla üye sayısı aşıldı",
             "MAX_PUBLIC_PROJECTS": "Maalesef, geçerli planınızın izin verdiği en fazla herkese açık proje sayısına ulaştınız",
-            "MAX_PUBLIC_PROJECTS_MEMBERS": "The project exceeds your maximum number of members for public projects",
+            "MAX_PUBLIC_PROJECTS_MEMBERS": "Proje, herkese açık projeler için en fazla üye sayınızı aşıyor",
             "PROJECT_OWNER": "Proje sahibi",
             "REQUEST_OWNERSHIP": "Sahiplik talep et",
-            "REQUEST_OWNERSHIP_CONFIRMATION_TITLE": "Do you want to become the new project owner?",
-            "REQUEST_OWNERSHIP_DESC": "Request that current project owner {{name}} transfer ownership of this project to you.",
+            "REQUEST_OWNERSHIP_CONFIRMATION_TITLE": "Yeni proje sahibi olmak ister misiniz?",
+            "REQUEST_OWNERSHIP_DESC": "Şu anki proje sahibinden ({{name}}) bu projenin sahipliğini size devretmesini talep edin.",
             "REQUEST_OWNERSHIP_BUTTON": "Talep",
-            "REQUEST_OWNERSHIP_SUCCESS": "We'll notify the project owner",
+            "REQUEST_OWNERSHIP_SUCCESS": "Proje sahibini bilgilendireceğiz",
             "CHANGE_OWNER": "Sahibi değiştir",
             "CHANGE_OWNER_SUCCESS_TITLE": "İsteminiz gönderildi!",
-            "CHANGE_OWNER_SUCCESS_DESC": "We will notify you by email if the project ownership request is accepted or declined",
+            "CHANGE_OWNER_SUCCESS_DESC": "Proje sahipliği talebinin kabul edilmesi veya reddedilmesi durumunda sizi e-posta ile bilgilendireceğiz.",
             "REQUEST_OWNERSHIP_LIMIT": "{{maxProjects}} özel proje sınırınıza ulaştınız"
         },
         "REPORTS": {
@@ -579,9 +579,9 @@
             "DESCRIPTION": "Kendi raporlarınızı oluşturmak için CSV dosyası olarak indirin veya oluşturulan URL'yi kopyalayıp istediğiniz metin editörü veya hesap tablosu programında açın. Bu sayede tüm verilerinizi kolayca görüp inceleyebileceksiniz.",
             "HELP": "Bunu elektronik çizelgemde nasıl kullanayım?",
             "REGENERATE_TITLE": "URL değiştir",
-            "REGENERATE_SUBTITLE": "You are going to change the CSV data access url. The previous url will be disabled. Are you sure?",
+            "REGENERATE_SUBTITLE": "CSV veri erişim URL'sini değiştireceksiniz. Önceki URL devre dışı bırakılacak. Emin misiniz?",
             "DELETE_TITLE": "Url'yi sil",
-            "DELETE_SUBTITLE": "You are going to delete the current CSV data access url. Are you sure?"
+            "DELETE_SUBTITLE": "Geçerli CSV veri erişim URL'sini sileceksiniz. Emin misiniz?"
         },
         "CSV": {
             "SECTION_TITLE_EPIC": "destan raporları",
@@ -677,7 +677,7 @@
             "AFTER": "Geçmiş"
         },
         "PROJECT_KANBAN_OPTIONS": {
-            "TITLE": "Kanban options",
+            "TITLE": "Kanban seçenekleri",
             "SUBTITLE": "Enable swimlanes to use in your workflow and set WIP limits to restrict the maximun number of user stories on each status.",
             "SWIMLANES": "Swimlanes",
             "ACTION_ADD_SWIMLANE": "New swimlane",
@@ -707,7 +707,7 @@
         "THIRD_PARTIES": {
             "SECRET_KEY": "Gizli anahtar",
             "PAYLOAD_URL": "Paket URL'si",
-            "VALID_IPS": "Valid source IPs (separated by ,)"
+            "VALID_IPS": "Geçerli kaynak IP'leri (, ile ayrılmış)"
         },
         "BITBUCKET": {
             "SECTION_NAME": "Bitbucket",
@@ -756,7 +756,7 @@
             "PAGE_TITLE": "{{sectionName}} - Özel Öznitelikler - {{projectName}}",
             "ADD": "Özel alan ekle",
             "EDIT": "Özel alanı düzenle",
-            "DELETE": "Delete custom field",
+            "DELETE": "Özel alanı sil",
             "SAVE_TITLE": "Özel alanı kaydet",
             "CANCEL_TITLE": "oluşturmayı iptal et",
             "SET_FIELD_NAME": "Özel alan adınızı belirtin",
@@ -819,7 +819,7 @@
             "CUSTOM_FIELDS": "Özel alanlar",
             "TAGS": "Etiketler",
             "DUE_DATES": "Bitim tarihleri",
-            "KANBAN_OPTIONS": "Kanban options"
+            "KANBAN_OPTIONS": "Kanban seçenekleri"
         },
         "SUBMENU_ROLES": {
             "TITLE": "Roller",
@@ -829,11 +829,11 @@
         "PROJECT_TRANSFER": {
             "DO_YOU_ACCEPT_PROJECT_OWNERNSHIP": "Yeni proje sahibi olmak ister misiniz?",
             "PRIVATE": "Gizli",
-            "ACCEPTED_PROJECT_OWNERNSHIP": "Congratulations! You're now the new project owner.",
-            "REJECTED_PROJECT_OWNERNSHIP": "OK. We'll contact the current project owner",
+            "ACCEPTED_PROJECT_OWNERNSHIP": "Tebrikler! Artık yeni proje sahibi sizsiniz.",
+            "REJECTED_PROJECT_OWNERNSHIP": "Tamam. Şu anki proje sahibiyle iletişime geçeceğiz",
             "ACCEPT": "Kabul et",
             "REJECT": "Reddet",
-            "PROPOSE_OWNERSHIP": "<strong>{{owner}}</strong>, the current owner of the project <strong>{{project}}</strong> has asked that you become the new  project owner.",
+            "PROPOSE_OWNERSHIP": "<strong>{{owner}}</strong>, <strong>{{project}}</strong> projesinin şu anki sahibi yeni proje sahibi olmanızı istedi.",
             "ADD_COMMENT": "Proje sahibine yorum göndermek ister misiniz?",
             "UNLIMITED_PROJECTS": "Sınırsız",
             "OWNER_MESSAGE": {
@@ -842,7 +842,7 @@
                 "PRIVATE_EXCEEDED": "Şu anda planınızın izin verdiği <strong>{{currentProjects}} özel projeniz</strong> var.",
                 "PUBLIC_EXCEEDED": "Şu anda, planınızın izin verdiği <strong>{{currentProjects}} herkese açık projeniz</strong> var."
             },
-            "CANT_BE_OWNED": "At the moment you cannot become an owner of a project of this type. If you would like to become the owner of this project, please contact the administrator so they change your account settings to enable project ownership."
+            "CANT_BE_OWNED": "Şu anda bu tür bir projenin sahibi olamazsınız. Bu projenin sahibi olmak istiyorsanız, proje sahipliğini etkinleştirmek üzere hesap ayarlarınızı değiştirmesi için lütfen yöneticiyle iletişime geçin."
         },
         "PROJECT_PRESETS": {
             "SUBTITLE": "Tüm seçici girdileri için öntanımlı değerleri ayarlayın.",
@@ -927,19 +927,19 @@
         },
         "NAVIGATION": {
             "PROJECTS": "Projeler",
-            "ACCOUNT_SETTINGS": "Account settings",
-            "ACTION_CREATE_PROJECT": "New project",
-            "ACTION_CREATE_PROJECT_FIRST": "Create your first project",
-            "ACTION_CREATE_PROJECT_FIRST_TEXT": "You don’t have any projects yet. Create one now, invite your team and start using Taiga to the fullest.",
-            "VIEW_ALL_PROJECTS": "View all projects",
+            "ACCOUNT_SETTINGS": "Hesap ayarları",
+            "ACTION_CREATE_PROJECT": "Yeni proje",
+            "ACTION_CREATE_PROJECT_FIRST": "İlk projenizi oluşturun",
+            "ACTION_CREATE_PROJECT_FIRST_TEXT": "Henüz herhangi bir projeniz yok. Şimdi bir tane oluşturun, takımınızı davet edin ve Taiga'yı sonuna kadar kullanmaya başlayın.",
+            "VIEW_ALL_PROJECTS": "Tüm projeleri görüntüle",
             "MANAGE_PROJECTS": "Projeleri yönet",
             "TITLE_CREATE_PROJECT": "Proje oluştur",
             "HELP_TITLE": "Yardım",
             "HOMEPAGE": "Ana sayfa",
-            "TAIGA_RESOURCES_TITLE": "Go to Taiga resources",
-            "TAIGA_RESOURCES": "Taiga Resources",
-            "FEEDBACK_TITLE": "Write to us with your feedback",
-            "FEEDBACK": "Ask a question",
+            "TAIGA_RESOURCES_TITLE": "Taiga kaynaklarına git",
+            "TAIGA_RESOURCES": "Taiga Kaynakları",
+            "FEEDBACK_TITLE": "Geri bildirimlerinizi bize yazın",
+            "FEEDBACK": "Bir soru sorun",
             "NOTIFICATIONS_TITLE": "Bildirim ayarlarını düzenle",
             "NOTIFICATIONS": "Bildirimler",
             "VIEW_PROFILE_TITLE": "Profili Görüntüle",
@@ -979,45 +979,45 @@
         },
         "CREATE": {
             "TITLE": "Proje Oluştur",
-            "CHOOSE_TEMPLATE": "Which template fits your project better?",
+            "CHOOSE_TEMPLATE": "Hangi şablon projenize daha uygun?",
             "TEMPLATE_SCRUM": "Scrum",
-            "TEMPLATE_SCRUM_DESC": "Prioritize and solve your tasks in short time cycles.",
+            "TEMPLATE_SCRUM_DESC": "Görevlerinizi kısa zaman dilimlerinde önceliklendirin ve çözün.",
             "TEMPLATE_SCRUM_LONGDESC": "Scrum is an iterative and incremental agile software development methodology for managing product development.\nThe product backlog is what will ultimately be delivered, ordered into the sequence in which it should be delivered. Product Backlogs are broken into manageable, executable chunks named sprints. Every certain amount of time the team initiates a new sprint and commits to deliver a certain number of user stories from the backlog, in accordance with their skills, abilities and resources. The project advances as the backlog becomes depleted.",
             "TEMPLATE_KANBAN": "Kanban",
-            "TEMPLATE_KANBAN_DESC": "Keep a constant workflow on independent tasks",
+            "TEMPLATE_KANBAN_DESC": "Bağımsız görevlerde sürekli bir iş akışı sağlayın",
             "TEMPLATE_KANBAN_LONGDESC": "The Kanban methodology is used to divide project development (any sort of project) into stages.\nA kanban card is like an index card or post-it note that details every task (or user story) in a project that needs to be completed. The Kanban board is used to move each card from one state of completion to the next and in so doing, helps track progress.",
             "DUPLICATE": "Projeyi Kopayala",
-            "DUPLICATE_DESC": "Start clean and keep your configuration",
+            "DUPLICATE_DESC": "Yeni bir sayfa açın ve yapılandırmanızı koruyun",
             "IMPORT": "Projeyi İçe Aktar",
-            "IMPORT_DESC": "Import your project from multiple platforms into Taiga",
+            "IMPORT_DESC": "Projenizi birden fazla platformdan Taiga'ya aktarın",
             "INVITE": "Projeye davet et",
             "SOLO_PROJECT": "Bu projede yalnız olacaksınız",
-            "INVITE_LATER": "(You'll be able to invite more members later)",
+            "INVITE_LATER": "(Daha sonra daha fazla üye davet edebileceksiniz)",
             "BACK": "Arka",
-            "MAX_PRIVATE_PROJECTS": "Unfortunately, You've reached the maximum number of private projects.\nIf you would like to increase the current limit please contact the administrator.",
-            "MAX_PUBLIC_PROJECTS": "Unfortunately, You've reached the maximum number of public projects.\nIf you would like to increase the current limit please contact the administrator.",
+            "MAX_PRIVATE_PROJECTS": "Maalesef, en fazla özel proje sayısına ulaştınız.\nGeçerli sınırı artırmak istiyorsanız lütfen yönetici ile iletişime geçin.",
+            "MAX_PUBLIC_PROJECTS": "Maalesef, en fazla herkese açık proje sayısına ulaştınız.\nGeçerli sınırı artırmak istiyorsanız lütfen yönetici ile iletişime geçin.",
             "PUBLIC_PROJECT": "Açık Proje",
             "PRIVATE_PROJECT": "Gizli Proje"
         },
         "COMMON": {
             "DETAILS": "Proje detayları",
-            "PROJECT_TITLE": "Project Name (Required)",
-            "PROJECT_DESCRIPTION": "Project Description (Required)"
+            "PROJECT_TITLE": "Proje Adı (Gerekli)",
+            "PROJECT_DESCRIPTION": "Proje Açıklaması (Gerekli)"
         },
         "DUPLICATE": {
             "TITLE": "Projeyi Kopyala",
-            "DESCRIPTION": "Start clean and keep your configuration",
+            "DESCRIPTION": "Yeni bir sayfa açın ve yapılandırmanızı koruyun",
             "SELECT_PLACEHOLDER": "Kopyalamak için var olan bir proje seçin"
         },
         "IMPORT": {
             "TITLE": "Projeyi İçe Aktar",
-            "DESCRIPTION": "Import your project from multiple platforms into Taiga",
-            "ASYNC_IN_PROGRESS_TITLE": "The Taiga is importing your project",
+            "DESCRIPTION": "Projenizi birden fazla platformdan Taiga'ya aktarın",
+            "ASYNC_IN_PROGRESS_TITLE": "Taiga projenizi içe aktarıyor",
             "ASYNC_IN_PROGRESS_MESSAGE": "Bu işlem bir kaç dakika sürecek <br/> Hazır olduğunda bir e-posta göndereceğiz",
             "UPLOAD_IN_PROGRESS_MESSAGE": "{{totalSize}} in {{uploadedSize}} kadarı karşıya yüklendi",
-            "ERROR": "The Taiga has some problems importing your dump data. Please try again.",
-            "ERROR_TOO_MANY_REQUEST": "Sorry, the Taiga is experiencing heavy load right now. Please try again in a few minutes.",
-            "ERROR_MESSAGE": "The Taiga has some problems importing your dump data: {{error_message}}",
+            "ERROR": "Taiga, döküm verilerinizi içe aktarırken bazı sorunlar yaşıyor. Lütfen tekrar deneyin.",
+            "ERROR_TOO_MANY_REQUEST": "Maalesef Taiga şu anda ağır bir yüklenme yaşıyor. Lütfen birkaç dakika içinde tekrar deneyin.",
+            "ERROR_MESSAGE": "Taiga, döküm verilerinizi içe aktarırken bazı sorunlar yaşıyor: {{error_message}}",
             "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) Taiga için çok ağır, ({{maxFileSize}}) boyutundan daha küçük bir dosyayla deneyin",
             "SYNC_SUCCESS": "Projeniz başarıyla içe aktarıldı",
             "IMPORT": "İçe Aktar",
