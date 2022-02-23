@@ -558,9 +558,9 @@
             "DELETE": "Bu projeyi sil",
             "CHANGE_LOGO": "Logoyu değiştir",
             "ACTION_USE_DEFAULT_LOGO": "Varsayılan resmi kullan",
-            "MAX_PRIVATE_PROJECTS": "You've reached the maximum number of private projects allowed by your current plan",
+            "MAX_PRIVATE_PROJECTS": "Geçerli planınızın izin verdiği en fazla özel proje sayısına ulaştınız",
             "MAX_PRIVATE_PROJECTS_MEMBERS": "The maximum number of members for private projects has been exceeded",
-            "MAX_PUBLIC_PROJECTS": "Unfortunately, you've reached the maximum number of public projects allowed by your current plan",
+            "MAX_PUBLIC_PROJECTS": "Maalesef, geçerli planınızın izin verdiği en fazla herkese açık proje sayısına ulaştınız",
             "MAX_PUBLIC_PROJECTS_MEMBERS": "The project exceeds your maximum number of members for public projects",
             "PROJECT_OWNER": "Proje sahibi",
             "REQUEST_OWNERSHIP": "Sahiplik talep et",
@@ -837,8 +837,10 @@
             "ADD_COMMENT": "Proje sahibine yorum göndermek ister misiniz?",
             "UNLIMITED_PROJECTS": "Sınırsız",
             "OWNER_MESSAGE": {
-                "PRIVATE": "Please remember that you can own up to <strong>{{maxProjects}}</strong> private projects. You currently own <strong>{{currentProjects}}</strong> private projects",
-                "PUBLIC": "Please remember that you can own up to <strong>{{maxProjects}}</strong> public projects. You currently own <strong>{{currentProjects}}</strong> public projects"
+                "PRIVATE": "Lütfen en fazla <strong>{{maxProjects}}</strong> özel projeye sahip olabileceğinizi unutmayın. Şu anda <strong>{{currentProjects}}</strong> özel projeye sahipsiniz.",
+                "PUBLIC": "Lütfen en fazla <strong>{{maxProjects}}</strong> herkese açık projeye sahip olabileceğinizi unutmayın. Şu anda <strong>{{currentProjects}}</strong> herkese açık projeye sahipsiniz.",
+                "PRIVATE_EXCEEDED": "Şu anda planınızın izin verdiği <strong>{{currentProjects}} özel projeniz</strong> var.",
+                "PUBLIC_EXCEEDED": "Şu anda, planınızın izin verdiği <strong>{{currentProjects}} herkese açık projeniz</strong> var."
             },
             "CANT_BE_OWNED": "At the moment you cannot become an owner of a project of this type. If you would like to become the owner of this project, please contact the administrator so they change your account settings to enable project ownership."
         },
@@ -1749,7 +1751,7 @@
             "EMAIL": "E-posta",
             "FULL_NAME": "Tam isim",
             "PLACEHOLDER_FULL_NAME": "Tam adınızı giriniz (ör. Bilge Tonyukuk)",
-            "BIO": "Bio (max. 210 karakter)",
+            "BIO": "Biyografi (en fazla 210 karakter)",
             "PLACEHOLDER_BIO": "Bize kendin hakkında bir şeyler söyle",
             "LANGUAGE": "Dil",
             "LANGUAGE_DEFAULT": "-- varsayılan dili kullan --",
