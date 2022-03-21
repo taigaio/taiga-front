@@ -1723,7 +1723,7 @@
         },
         "PROJECT_SETTINGS": {
             "SET_START_PAGES": "Projekt-Startseite",
-            "START_PAGES_PER_PROJECT": "Setzen Sie eine die gewünschte Startseite für jedes Projekt.",
+            "START_PAGES_PER_PROJECT": "Startseite pro Projekt auswählen",
             "COLUMN_PROJECT": "Projekt",
             "COLUMN_STARTPAGE": "Startseite",
             "DEFAULT_VALUE": "Standard"
