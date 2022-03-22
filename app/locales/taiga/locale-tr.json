@@ -570,7 +570,7 @@
             "REQUEST_OWNERSHIP_SUCCESS": "Proje sahibini bilgilendireceğiz",
             "CHANGE_OWNER": "Sahibi değiştir",
             "CHANGE_OWNER_SUCCESS_TITLE": "İsteminiz gönderildi!",
-            "CHANGE_OWNER_SUCCESS_DESC": "Proje sahipliği talebinin kabul edilmesi veya reddedilmesi durumunda sizi e-posta ile bilgilendireceğiz.",
+            "CHANGE_OWNER_SUCCESS_DESC": "Proje sahipliği talebinin kabul edilmesi veya reddedilmesi durumunda sizi e-posta ile bilgilendireceğiz",
             "REQUEST_OWNERSHIP_LIMIT": "{{maxProjects}} özel proje sınırınıza ulaştınız"
         },
         "REPORTS": {
@@ -624,7 +624,7 @@
         "PROJECT_VALUES_POINTS": {
             "TITLE": "Puanlar",
             "SUBTITLE": "Kullanıcı hikayelerinin puanları için kestirim değerleri belirtin",
-            "US_TITLE": "User story points",
+            "US_TITLE": "Kullanıcı hikayesi puanları",
             "ACTION_ADD": "Yeni puan ekle"
         },
         "PROJECT_VALUES_PRIORITIES": {
@@ -641,8 +641,8 @@
         },
         "PROJECT_VALUES_STATUS": {
             "TITLE": "Durumlar",
-            "SUBTITLE": "Add, remove or edit the color and name of the statuses your epics, user stories, task and issues will go through.",
-            "EPIC_TITLE": "Epic Statuses",
+            "SUBTITLE": "Destanlarınızın, kullanıcı hikayelerinizin, görevinizin ve sorunlarınızın geçeceği durumların rengini ve adını ekleyin, kaldırın veya düzenleyin.",
+            "EPIC_TITLE": "Destan Durumları",
             "US_TITLE": "Kullanıcı hikayelerinin durumları",
             "TASK_TITLE": "Görev Durumları",
             "ISSUE_TITLE": "Sorun Durumları"
@@ -672,19 +672,19 @@
             "TASK_TITLE": "Görev Bitim Tarihi durumu",
             "ISSUE_TITLE": "Sorun Bitim Tarihi durumu",
             "DAYS_TO_DUE_DATE": "Bitim tarihi günleri",
-            "BEFORE_AFTER": "Before/after",
-            "BEFORE": "Before",
+            "BEFORE_AFTER": "Önce/sonra",
+            "BEFORE": "Önce",
             "AFTER": "Geçmiş"
         },
         "PROJECT_KANBAN_OPTIONS": {
             "TITLE": "Kanban seçenekleri",
             "SUBTITLE": "Enable swimlanes to use in your workflow and set WIP limits to restrict the maximun number of user stories on each status.",
-            "SWIMLANES": "Swimlanes",
-            "ACTION_ADD_SWIMLANE": "New swimlane",
-            "SWIMLANE_NAME_EXISTS": "This swimlane name already exists",
-            "NO_SWIMLANES": "There are no swimlanes yet",
-            "SWIMLANE_NAME": "Swimlane name",
-            "POPUP_NEW_SWIMLANE": "If you had some user stories created, you will find them on this swimlane.",
+            "SWIMLANES": "Kulvarlar",
+            "ACTION_ADD_SWIMLANE": "Yeni kulvar",
+            "SWIMLANE_NAME_EXISTS": "Bu kulvar adı zaten var",
+            "NO_SWIMLANES": "Henüz kulvar yok",
+            "SWIMLANE_NAME": "Kulvar adı",
+            "POPUP_NEW_SWIMLANE": "Oluşturduğunuz bazı kullanıcı hikayeleri varsa, onları bu kulvarda bulacaksınız.",
             "WIP_LIMITS": "WIP LIMITS",
             "WIP_LIMIT_PLACEHOLDER": "WIP limit not set",
             "WIP_LIMIT_INPUT": "Set WIP limit",
@@ -693,13 +693,13 @@
         "ROLES": {
             "PAGE_TITLE": "Roller - {{projectName}}",
             "WARNING_NO_ROLE": "Dikkat edin, projenizdeki rollerden hiçbiri kullanıcı hikayeleri için puan değerini tahmin edemeyecek",
-            "HELP_ROLE_ENABLED": "This role is part of the roles involved in estimating user story points.",
+            "HELP_ROLE_ENABLED": "Bu rol, kullanıcı hikayesi puanlarını tahmin etmeyle ilgili rollerin bir parçasıdır.",
             "DISABLE_COMPUTABLE_ALERT_TITLE": "Bu role ait kestirimleri kapatmak istediğinizden emin misiniz?",
             "DISABLE_COMPUTABLE_ALERT_SUBTITLE": "{{roleName}} görevi için tahmin izinlerini kaldırırsanız, bu görevdekiler tarafından daha önce yapılmış tüm tahminler silinir",
             "COUNT_MEMBERS": "Bu roldeki {{ role.members_count }} üye",
             "TITLE_DELETE_ROLE": "Rol Sil",
             "REPLACEMENT_ROLE": "Bu role sahip kullanıcıların taşınacağı",
-            "WARNING_DELETE_ROLE": "Be careful! All role estimations will be removed",
+            "WARNING_DELETE_ROLE": "Dikkatli olun! Tüm rol tahminleri kaldırılacaktır",
             "ERROR_DELETE_ALL": "Bütün değerleri silemezsiniz",
             "EXTERNAL_USER": "Dış kullanıcı",
             "NOTE_EXTERNAL_USERS": "Harici bir kullanıcı, (Taiga platformunda oturum açmış veya açmamış) herhangi bir kullanıcıdır, <strong>buna arama motorları da dahildir</strong>. Kayıtlı olmayan kullanıcılar hiçbir zaman düzenleme izinlerine sahip olamasa da, izin verirseniz kayıtlı kullanıcılar olabilir. Projeniz özelse, görüntüleme izinlerini de denetleyebilirsiniz. <strong>Lütfen bu rolü dikkatli kullanın</strong>."
@@ -728,8 +728,8 @@
             "PAGE_TITLE": "Gogs - {{projectName}}"
         },
         "WEBHOOKS": {
-            "PAGE_TITLE": "Webhooks - {{projectName}}",
-            "SECTION_NAME": "Webhooks",
+            "PAGE_TITLE": "Web kancaları - {{projectName}}",
+            "SECTION_NAME": "Web kancaları",
             "ADD_NEW": "Yeni bir Webhook Ekle",
             "TYPE_NAME": "Servis adını girin",
             "TYPE_PAYLOAD_URL": "Servis paket URL'sini yazın",
@@ -745,7 +745,7 @@
             "HEADERS": "Başlıklar",
             "PAYLOAD": "Paket",
             "RESPONSE": "Cevap",
-            "DATE": "DD MMM YYYY [at] hh:mm:ss",
+            "DATE": "DD MMM YYYY [saat] hh:mm:ss",
             "ACTION_HIDE_HISTORY": "(Tarihçe gizle)",
             "ACTION_HIDE_HISTORY_TITLE": "Tarihçe detaylarını gizle",
             "ACTION_SHOW_HISTORY": "(Tarihçeyi göster)",
@@ -900,7 +900,7 @@
     },
     "PROJECT": {
         "PAGE_TITLE": "{{projectName}}",
-        "HELP": "Reorder your projects to set at the top the most used ones.<br/> The top 4 projects will appear in the top navigation bar project list",
+        "HELP": "En çok kullanılanları en üste ayarlamak için projelerinizi yeniden sıralayın.<br/> En iyi 4 proje, üst gezinme çubuğu proje listesinde görünecektir.",
         "PRIVATE": "Gizli proje",
         "LOOKING_FOR_PEOPLE": "Bu proje ahalisini arıyor",
         "FANS_COUNTER_TITLE": "{total, plural, =1{one fan} other{# fans}}",
@@ -982,10 +982,10 @@
             "CHOOSE_TEMPLATE": "Hangi şablon projenize daha uygun?",
             "TEMPLATE_SCRUM": "Scrum",
             "TEMPLATE_SCRUM_DESC": "Görevlerinizi kısa zaman dilimlerinde önceliklendirin ve çözün.",
-            "TEMPLATE_SCRUM_LONGDESC": "Scrum is an iterative and incremental agile software development methodology for managing product development.\nThe product backlog is what will ultimately be delivered, ordered into the sequence in which it should be delivered. Product Backlogs are broken into manageable, executable chunks named sprints. Every certain amount of time the team initiates a new sprint and commits to deliver a certain number of user stories from the backlog, in accordance with their skills, abilities and resources. The project advances as the backlog becomes depleted.",
+            "TEMPLATE_SCRUM_LONGDESC": "Scrum, ürün geliştirmeyi yönetmek için yinelemeli ve artımlı bir çevik yazılım geliştirme yöntemidir.\nÜrün havuzu, nihai olarak teslim edilecek olan şeydir ve teslim edilmesi gereken sıraya göre sıralanır. Ürün Havuzları, koşu adı verilen yönetilebilir, yürütülebilir parçalara bölünür. Her belirli zaman diliminde takım yeni bir koşu başlatır ve becerilerine, yeteneklerine ve kaynaklarına uygun olarak havuzdan belirli sayıda kullanıcı hikayesi teslim etmeyi taahhüt eder. Proje ilerleme kaydettikçe havuzdaki miktar azalır.",
             "TEMPLATE_KANBAN": "Kanban",
             "TEMPLATE_KANBAN_DESC": "Bağımsız görevlerde sürekli bir iş akışı sağlayın",
-            "TEMPLATE_KANBAN_LONGDESC": "The Kanban methodology is used to divide project development (any sort of project) into stages.\nA kanban card is like an index card or post-it note that details every task (or user story) in a project that needs to be completed. The Kanban board is used to move each card from one state of completion to the next and in so doing, helps track progress.",
+            "TEMPLATE_KANBAN_LONGDESC": "Kanban yöntemi, proje geliştirmeyi (her türlü projeyi) aşamalara bölmek için kullanılır.\nKanban kartı, bir projedeki tamamlanması gereken her görevi (veya kullanıcı hikayesini) detaylandıran bir dizin kartı veya yapışkan notu gibidir. Kanban panosu, her kartı bir tamamlanma durumundan diğerine taşımak için kullanılır ve bunu yaparken ilerlemenin izlenmesine yardımcı olur.",
             "DUPLICATE": "Projeyi Kopayala",
             "DUPLICATE_DESC": "Yeni bir sayfa açın ve yapılandırmanızı koruyun",
             "IMPORT": "Projeyi İçe Aktar",
@@ -1021,18 +1021,18 @@
             "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) Taiga için çok ağır, ({{maxFileSize}}) boyutundan daha küçük bir dosyayla deneyin",
             "SYNC_SUCCESS": "Projeniz başarıyla içe aktarıldı",
             "IMPORT": "İçe Aktar",
-            "WHO_IS": "Their tasks will be assigned to ...",
-            "WRITE_EMAIL": "Or if you want, write the email that this user uses in Taiga",
-            "SEARCH_CONTACT": "Or if you want, search in your contacts",
-            "WRITE_EMAIL_LABEL": "Write the email that this user uses in Taiga",
+            "WHO_IS": "Görevleri şuna atanacak ...",
+            "WRITE_EMAIL": "Veya isterseniz bu kullanıcının Taiga'da kullandığı e-postayı yazın",
+            "SEARCH_CONTACT": "Veya isterseniz, kişilerinizde arayın",
+            "WRITE_EMAIL_LABEL": "Bu kullanıcının Taiga'da kullandığı e-postayı yazın",
             "ACCEEDE": "Access",
             "PROJECT_MEMBERS": "Proje Üyeleri",
-            "PROCESS_DESCRIPTION": "Tell us to whom from Taiga you want to assign the tasks of {{platform}}",
-            "MATCH": "Is <strong>{{user_external}}</strong> the same person as <strong>{{user_internal}}</strong>?",
+            "PROCESS_DESCRIPTION": "{{platform}} görevlerini Taiga'dan kime vermek istediğinizi bize söyleyin",
+            "MATCH": "<strong>{{user_external}}</strong> ile <strong>{{user_internal}}</strong> aynı kişi mi?",
             "CHOOSE": "Kullanıcı seçin",
             "LINKS": "Links with {{platform}}",
-            "LINKS_DESCRIPTION": "Do you want to keep the link of each item with the original {{platform}} card?",
-            "WARNING_MAIL_USER": "Note that if the user does not have a Taiga account we will not be able to assign the tasks to them.",
+            "LINKS_DESCRIPTION": "Orijinal {{platform}} kartıyla her ögenin bağlantısını korumak istiyor musunuz?",
+            "WARNING_MAIL_USER": "Kullanıcının bir Taiga hesabı yoksa, görevleri onlara atayamayacağımızı unutmayın.",
             "ASSIGN": "Ata",
             "PROJECT_SELECTOR": {
                 "NO_RESULTS": "Arama kriterlerinize uyan bir kayıt bulunamadı",
@@ -1040,11 +1040,11 @@
                 "ACTION_BACK": "Arka"
             },
             "PROJECT_RESTRICTIONS": {
-                "PROJECT_MEMBERS_DESC_PRIVATE": "The project you are trying to import has {{members}} members including you. Unfortunately, your current plan allows for a maximum of {{max_memberships}} members per private project. If you would like to increase that limit please contact the administrator.",
-                "PROJECT_MEMBERS_DESC_PUBLIC": "The project you are trying to import has {{members}} members including you. Unfortunately, your current plan allows for a maximum of {{max_memberships}} members per public project. If you would like to increase that limit please contact the administrator.",
+                "PROJECT_MEMBERS_DESC_PRIVATE": "İçe aktarmaya çalıştığınız projede, siz dahil {{members}} üye var. Maalesef, geçerli planınız özel proje başına en fazla {{max_memberships}} üyeye izin veriyor. Bu sınırı artırmak isterseniz lütfen yönetici ile iletişime geçin.",
+                "PROJECT_MEMBERS_DESC_PUBLIC": "İçe aktarmaya çalıştığınız projede, siz dahil {{members}} üye var. Maalesef, geçerli planınız herkese açık proje başına en fazla {{max_memberships}} üyeye izin veriyor. Bu sınırı artırmak isterseniz lütfen yönetici ile iletişime geçin.",
                 "ACCOUNT_ALLOW_MEMBERS": "Hesabınız sadece {{members}} kişiye izin veriyor",
                 "PRIVATE_PROJECTS_SPACE": {
-                    "TITLE": "Unfortunately, your current plan does not allow for additional private projects",
+                    "TITLE": "Maalesef geçerli planınız ek özel projelere izin vermiyor",
                     "DESC": "İçe aktarmaya çalıştığınız proje gizli. Maalesef geçerli ödeme planınız daha fazla gizli proje oluşturmanıza izin vermiyor."
                 },
                 "PUBLIC_PROJECTS_SPACE": {
@@ -1086,7 +1086,7 @@
             "GITHUB": {
                 "SELECTOR": "GitHub proje taleplerini içe aktar",
                 "CHOOSE_PROJECT": "İçe aktarmak istediğiniz projeyi bulun",
-                "NO_PROJECTS": "It seems you have no projects in GitHub",
+                "NO_PROJECTS": "GitHub'da projeniz yok gibi görünüyor",
                 "HOW_DO_YOU_WANT_TO_IMPORT": "Taleplerinizi Taiga'ya nasıl aktarmak istersiniz?",
                 "KANBAN_PROJECT": "Kanban projesine kullanıcı hikayesi olarak",
                 "KANBAN_PROJECT_DESCRIPTION": "Bundan sonra scrum havuzunu açabileceksiniz.",
@@ -1098,7 +1098,7 @@
             "ASANA": {
                 "SELECTOR": "Asana projenizi içe aktarın ve nasıl yöneteceğiniz seçin",
                 "CHOOSE_PROJECT": "İçe aktarmak istediğiniz projeyi seçiniz",
-                "NO_PROJECTS": "It seems you have no projects in Asana",
+                "NO_PROJECTS": "Asana'da projeniz yok gibi görünüyor",
                 "KANBAN_PROJECT": "Kanban",
                 "SCRUM_PROJECT": "Scrum",
                 "CREATE_AS_SCRUM_DESCRIPTION": "Projenizin görev ve alt görevleri, Taiga kullanıcı hikayeleri ve görevleri olarak oluşturulacak.",
@@ -1108,7 +1108,7 @@
                 "SELECTOR": "Jira projenizi içe aktarın ve nasıl yöneteceğiniz seçin",
                 "HOW_TO_CONFIGURE": "(configuration help)",
                 "CHOOSE_PROJECT": "İçe aktarmak istediğiniz proje ya da panoyu seçiniz",
-                "NO_PROJECTS": "It seems you have no projects or boards in Jira",
+                "NO_PROJECTS": "Jira'da projeniz veya panonuz yok gibi görünüyor",
                 "URL": "Jira URL'niz",
                 "KANBAN_PROJECT": "Kanban",
                 "SCRUM_PROJECT": "Scrum",
@@ -1138,7 +1138,7 @@
             "CONFIRM": "Taiga hesabınızı silmek istediğinizden emin misiniz?",
             "CANCEL": "Ayarlara dön",
             "ACCEPT": "Hesabı sil",
-            "BLOCK_PROJECT": "Note that all projects you own will be <strong>blocked</strong> after you delete your account. If you do not want a particular project to be blocked, make sure you transfer ownership to another existing Taiga member before deleting your account."
+            "BLOCK_PROJECT": "Hesabınızı sildikten sonra sahip olduğunuz tüm projelerin <strong>engelleneceğini</strong> unutmayın. Belirli bir projenin engellenmesini istemiyorsanız hesabınızı silmeden önce sahipliği başka bir Taiga üyesine devrettiğinizden emin olun."
         },
         "DELETE_PROJECT": {
             "TITLE": "Proje Sil",
@@ -1166,10 +1166,10 @@
             "HELP_TEXT": "Eğer kullanıcılar önceden Taigaya kayıt olmuşlarsa, otomatik olarak ekleneceklerdir. Eğer olmamışlarsa bir davet mektubu alacaklardır."
         },
         "FEEDBACK": {
-            "TITLE": "Ask a question",
-            "COMMENT": "Leave us a message",
+            "TITLE": "Bir soru sorun",
+            "COMMENT": "Bize bir mesaj bırakın",
             "ACTION_SEND": "Send Message",
-            "YOU_CAN_ALSO": "You can also:",
+            "YOU_CAN_ALSO": "Şunu da yapabilirsiniz:",
             "CREATE": "Bu konuda bir sorun oluştur ",
             "PUBLIC": "public Taiga project",
             "EMAIL": "Bize doğrudan bir e-posta gönderin ",
@@ -1189,9 +1189,9 @@
             "LAST_SPRINT_NAME": "Son koşu <strong> {{lastSprint}} </strong> ;-)"
         },
         "CREATE_EDIT": {
-            "TASK_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this task",
-            "ISSUE_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this issue",
-            "US_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this user story",
+            "TASK_PLACEHOLDER_DESCRIPTION": "Lütfen başkalarının bu görevi daha iyi anlamasına yardımcı olmak için açıklayıcı metin ekleyin",
+            "ISSUE_PLACEHOLDER_DESCRIPTION": "Lütfen başkalarının bu sorunu daha iyi anlamasına yardımcı olmak için açıklayıcı metin ekleyin",
+            "US_PLACEHOLDER_DESCRIPTION": "Lütfen başkalarının bu kullanıcı hikayesini daha iyi anlamasına yardımcı olmak için açıklayıcı metin ekleyin",
             "NEW_TASK": "Yeni görev",
             "NEW_ISSUE": "New issue",
             "NEW_US": "Yeni kullanıcı hikayesi",
@@ -1199,24 +1199,24 @@
             "EDIT_ISSUE": "Edit issue",
             "EDIT_US": "Kullanıcı hikayesini düzenle",
             "ADD_EXISTING_ISSUE": "Add issue to {{ targetName }}",
-            "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?",
+            "CONFIRM_CLOSE": "Değişiklikleri kaydetmediniz.\nFormu kapatmak istediğinizden emin misiniz?",
             "EXISTING_ISSUE": "Existing issue",
             "CHOOSE_EXISTING_ISSUE": "Which issue?",
             "ADD_ISSUE": "Talep ekle",
             "FILTER_ISSUES": "Filter issues",
-            "SWIMLANE": "Swimlane",
-            "SELECT_SWIMLANE": "Select swimlane",
-            "SELECT_STATUS": "Select status",
+            "SWIMLANE": "Kulvar",
+            "SELECT_SWIMLANE": "Kulvar seç",
+            "SELECT_STATUS": "Durum seç",
             "DEFAULT": "Varsayılan",
-            "ERROR_STATUS": "Changes cannot be saved because there is a problem with the selected status.",
-            "ERROR_SWIMLANE": "Changes cannot be saved because there is a problem with the selected swimlane.",
+            "ERROR_STATUS": "Seçilen durumla ilgili bir sorun olduğundan değişiklikler kaydedilemiyor.",
+            "ERROR_SWIMLANE": "Seçilen kulvarla ilgili bir sorun olduğundan değişiklikler kaydedilemiyor.",
             "CREATE_BOTTOM": "en altta",
             "CREATE_TOP": "en üstte",
             "LOCATION": "Konum"
         },
         "DISABLE_KANBAN": {
-            "TITLE": "Disable kanban",
-            "MESSAGE": "This project has swimlanes. They will be gone but your user stories will not be deleted"
+            "TITLE": "Kanban'ı devre dışı bırak",
+            "MESSAGE": "Bu projede kulvarlar var. Onlar kaybolacak ama kullanıcı hikayeleriniz silinmeyecek"
         },
         "DELETE_DUE_DATE": {
             "TITLE": "Bitim tarihi sil",
