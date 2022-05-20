@@ -4,12 +4,16 @@
 #
 # Copyright (c) 2021-present Kaleidos Ventures SL
 
-FROM nginx:1.19-alpine
+FROM nginxinc/nginx-unprivileged:1.19-alpine
 LABEL maintainer="support@taiga.io"
+ENV LISTEN_PORT=80
+EXPOSE 80
 
-COPY docker/default.conf /etc/nginx/conf.d/default.conf
+COPY docker/default.conf.template /etc/nginx/templates/default.conf.template
 COPY docker/conf.json.template /
 COPY docker/config_env_subst.sh /docker-entrypoint.d/30_config_env_subst.sh
+
+USER 0
 
 RUN set -eux; \
     apk update; \
@@ -35,4 +39,5 @@ RUN set -eux; \
     rm source.zip; \
     # Ready for nginx
     mv /taiga/dist/* /usr/share/nginx/html; \
-    rm -rf /taiga
+    rm -rf /taiga; \
+    chmod -R a+rwX /usr/share/nginx/html
