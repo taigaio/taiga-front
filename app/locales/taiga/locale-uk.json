@@ -1743,7 +1743,7 @@
         "ACTION_VERIFY_EMAIL": "Verify your email",
         "CHANGE_EMAIL_SUCCESS": "<strong>Перевірте свою скриньку!</strong><br />Ми надіслали лист на ваш профіль<br />з інструкціями для налаштування нової адреси ",
         "VERIFY_EMAIL_SUCCESS": "<strong>Check your inbox!</strong><br />We have sent you an email<br />with instructions on how to verify your address",
-        "CHANGE_PHOTO": "Змінити фото",
+        "CHANGE_PHOTO": "Змінити світлину",
         "FIELD": {
             "USERNAME": "Ім'я користувача",
             "EMAIL": "Електронна адреса",
