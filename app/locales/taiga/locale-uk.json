@@ -1032,7 +1032,7 @@
             "CHOOSE": "Вибрати користувача",
             "LINKS": "Зв'язки з {{platform}}",
             "LINKS_DESCRIPTION": "Ви хочете зберегти посилання кожного елемента на оригінальну {{platform}} картку?",
-            "WARNING_MAIL_USER": "Зверніть увагу, якщо користувач не має профілю на Taiga, ми не зможемо назначити завдання на нього.",
+            "WARNING_MAIL_USER": "Завбачте, якщо користувач не має профілю на Taiga, ми не зможемо назначити завдання на нього.",
             "ASSIGN": "Назначити",
             "PROJECT_SELECTOR": {
                 "NO_RESULTS": "Нічого не вдалось знайти за Вашим критерієм пошуку",
@@ -1541,7 +1541,7 @@
             "WARNING_ISSUES_NOT_MOVED_TITLE": "Ви щойно перемістили усі історії користувача та завдання і спринт буде закритий",
             "WARNING_ISSUES_NOT_MOVED": "Ця проблем залишиться у спринті та не буде видалена",
             "WARNING_SPRINT_STILL_OPEN_TITLE": "{total, plural, =1{You just moved # item!} other{You just moved # items!}}",
-            "WARNING_SPRINT_STILL_OPEN": "Будь ласка, зверніть увагу, що спринт {{sprintName}} <strong>буде відкритим </strong> поки він міститиме незавершені елементи."
+            "WARNING_SPRINT_STILL_OPEN": "Будь ласка, завбачте, що спринт {{sprintName}} <strong>буде відкритим </strong> поки він міститиме незавершені елементи."
         }
     },
     "TASK": {
