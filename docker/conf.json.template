@@ -13,7 +13,7 @@
     "defaultLoginEnabled": true,
     "publicRegisterEnabled": ${PUBLIC_REGISTER_ENABLED},
     "feedbackEnabled": true,
-    "supportUrl": "https://resources.taiga.io",
+    "supportUrl": "https://community.taiga.io/",
     "privacyPolicyUrl": null,
     "termsOfServiceUrl": null,
     "maxUploadFileSize": null,

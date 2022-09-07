@@ -14,18 +14,18 @@ You can get the compiled version of this code in the
 
 Currently, we have authored three main documentation hubs:
 
-- **[API](https://docs.taiga.io/api.html)**: Our API documentation and reference for developing from Taiga API.
-- **[Documentation](https://docs.taiga.io/)**: If you need to install Taiga on your own server, this is the place to find some guides.
-- **[Taiga Resources](https://resources.taiga.io)**: This page is intended to be the support reference page for the users.
+-   **[API](https://docs.taiga.io/api.html)**: Our API documentation and reference for developing from Taiga API.
+-   **[Documentation](https://docs.taiga.io/)**: If you need to install Taiga on your own server, this is the place to find some guides.
+-   **[Taiga Community](https://community.taiga.io/)**: This page is intended to be the support reference page for the users.
 
 ## Bug reports
 
 If you **find a bug** in Taiga you can always report it:
 
-- in [Taiga issues](https://tree.taiga.io/project/taiga/issues). **This is the preferred way**
-- in [Github issues](https://github.com/kaleidos-ventures/taiga-front/issues)
-- send us a mail to support@taiga.io if is a bug related to [tree.taiga.io](https://tree.taiga.io)
-- send us a mail to security@taiga.io if is a **security bug**.
+-   in [Taiga issues](https://tree.taiga.io/project/taiga/issues). **This is the preferred way**
+-   in [Github issues](https://github.com/kaleidos-ventures/taiga-front/issues)
+-   send us a mail to support@taiga.io if is a bug related to [tree.taiga.io](https://tree.taiga.io)
+-   send us a mail to security@taiga.io if is a **security bug**.
 
 One of our fellow Taiga developers will search, find and hunt it as soon as possible.
 
@@ -39,7 +39,7 @@ If you want to be up to date about announcements of releases, important changes 
 
 ## Contribute to Taiga
 
-There are many different ways to contribute to Taiga's platform, from patches, to documentation and UI enhancements, just find the one that best fits with your skills. Check out our detailed [contribution guide](https://resources.taiga.io/extend/how-can-i-contribute/)
+There are many different ways to contribute to Taiga's platform, from patches, to documentation and UI enhancements, just find the one that best fits with your skills. Check out our detailed [contribution guide](https://community.taiga.io/t/how-can-i-contribute/159)
 
 ## Code of Conduct
 
@@ -58,13 +58,14 @@ Install requirements:
 **Node + Gulp**
 
 We recommend using [nvm](https://github.com/creationix/nvm) to manage different node versions
+
 ```
 npm start
 ```
 
 And go in your browser to: http://localhost:9001/
 
-#### E2E test ####
+#### E2E test
 
 If you want to run e2e tests
 
@@ -78,30 +79,33 @@ webdriver-manager update
 
 To run a local Selenium Server, you will need to have the Java Development Kit (JDK) installed.
 
-## Tests ##
+## Tests
 
-#### Unit tests ####
+#### Unit tests
 
-- To run **unit tests**
+-   To run **unit tests**
 
-  ```
-  npx gulp
-  ```
-  ```
-  npm test
-  ```
+    ```
+    npx gulp
+    ```
 
-#### E2E tests ####
+    ```
+    npm test
+    ```
 
-- To run **e2e tests** you need [taiga-back](https://github.com/kaleidos-ventures/taiga-back) running and
+#### E2E tests
 
-  ```
-  npx gulp
-  ```
-  ```
-  webdriver-manager start
-  ```
-  ```
-  protractor conf.e2e.js --suite=auth     # To tests authentication
-  protractor conf.e2e.js --suite=full     # To test all the platform authenticated
-  ```
+-   To run **e2e tests** you need [taiga-back](https://github.com/kaleidos-ventures/taiga-back) running and
+
+    ```
+    npx gulp
+    ```
+
+    ```
+    webdriver-manager start
+    ```
+
+    ```
+    protractor conf.e2e.js --suite=auth     # To tests authentication
+    protractor conf.e2e.js --suite=full     # To test all the platform authenticated
+    ```

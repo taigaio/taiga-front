@@ -9,10 +9,10 @@
 class ProfileHints
     HINTS: [
         { #hint1
-            url: "https://resources.taiga.io/extend/import-export-projects/"
+            url: "https://community.taiga.io/t/import-export-taiga-projects/168"
         },
         { #hint2
-            url: "https://resources.taiga.io/features/customisation/#tier-4-custom-fields-and-due-dates"
+            url: "https://community.taiga.io/t/customisation-for-your-projects/127#tier-4-custom-fields-and-due-dates-5"
         },
         { #hint3
         },
