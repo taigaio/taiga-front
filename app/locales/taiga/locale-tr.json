@@ -950,7 +950,9 @@
             "CHANGE_PASSWORD": "Parolayı değiştir",
             "DASHBOARD_TITLE": "Pano",
             "DISCOVER_TITLE": "Trend projeleri keşfet",
-            "DISCOVER": "Keşfet"
+            "DISCOVER": "Keşfet",
+            "TAIGA_COMMUNITY_TITLE": "Taiga Topluluğuna Git",
+            "TAIGA_COMMUNITY": "Taiga Topluluğu"
         },
         "LIKE_BUTTON": {
             "LIKE": "Beğen",
@@ -1166,14 +1168,16 @@
             "HELP_TEXT": "Eğer kullanıcılar önceden Taigaya kayıt olmuşlarsa, otomatik olarak ekleneceklerdir. Eğer olmamışlarsa bir davet mektubu alacaklardır."
         },
         "FEEDBACK": {
-            "TITLE": "Bir soru sorun",
+            "TITLE": "Taiga Destek",
             "COMMENT": "Bize bir mesaj bırakın",
             "ACTION_SEND": "Send Message",
             "YOU_CAN_ALSO": "Şunu da yapabilirsiniz:",
             "CREATE": "Bu konuda bir sorun oluştur ",
             "PUBLIC": "public Taiga project",
             "EMAIL": "Bize doğrudan bir e-posta gönderin ",
-            "SUPPORT": "support@taiga.io"
+            "SUPPORT": "support@taiga.io",
+            "VISIT": "Ziyaret edin ",
+            "FAQ": "Sık sorulan sorular"
         },
         "SEARCH": {
             "TITLE": "Ara",
