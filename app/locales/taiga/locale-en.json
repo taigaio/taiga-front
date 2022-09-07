@@ -215,14 +215,14 @@
         "PROMOTED_ISSUES": "This issue has been promoted to",
         "PROMOTED_TASKS": "This task has been promoted to",
         "CONFIRM_PROMOTE": {
-          "ISSUE": {
-            "TITLE": "Promote this issue to a new user story",
-            "MESSAGE": "Are you sure you want to create a new user story from this issue?"
-          },
-          "TASK": {
-            "TITLE": "Promote this task to a new user story",
-            "MESSAGE": "Are you sure you want to create a new user story from this task?"
-          }
+            "ISSUE": {
+                "TITLE": "Promote this issue to a new user story",
+                "MESSAGE": "Are you sure you want to create a new user story from this issue?"
+            },
+            "TASK": {
+                "TITLE": "Promote this task to a new user story",
+                "MESSAGE": "Are you sure you want to create a new user story from this task?"
+            }
         },
         "CUSTOM_ATTRIBUTES": {
             "CUSTOM_FIELDS": "Custom Fields",
@@ -933,8 +933,8 @@
             "TITLE_CREATE_PROJECT": "Create project",
             "HELP_TITLE": "Help",
             "HOMEPAGE": "Homepage",
-            "TAIGA_RESOURCES_TITLE": "Go to Taiga resources",
-            "TAIGA_RESOURCES": "Taiga Resources",
+            "TAIGA_COMMUNITY_TITLE": "Go to Taiga Community",
+            "TAIGA_COMMUNITY": "Taiga Community",
             "FEEDBACK_TITLE": "Write to us with your feedback",
             "FEEDBACK": "Ask a question",
             "NOTIFICATIONS_TITLE": "Edit your notification settings",
@@ -1119,7 +1119,7 @@
         },
         "NEWSLETTER_OPENING": {
             "LIGHTBOX_TITLE": "Do you want to receive announcements about Taiga?",
-            "CONFIRMATION" : "Yes, send me news, product updates and recommendations about Taiga.",
+            "CONFIRMATION": "Yes, send me news, product updates and recommendations about Taiga.",
             "NO_SHARE": "Your privacy matter to us (view our <a href=\"https://www.taiga.io/privacy-policy\" title=\"Go to privacy policy\" target=\"_blank\">privacy policy</a>).",
             "OPT_OUT": "We will  only send relevant emails to you (<6 per year). You can unsubscribe at any time by sending an email to <a href=\"mailto:support@taiga.io\" target=\"_blank\">support@taiga.io</a> with subject “unsubscribe” or through the link in any of our newsletters.",
             "DONT_ASK": "Don’t ask again",
@@ -1163,10 +1163,12 @@
             "HELP_TEXT": "If users are already registered on Taiga, they will be added automatically. Otherwise they will receive an invitation."
         },
         "FEEDBACK": {
-            "TITLE": "Ask a question",
+            "TITLE": "Taiga Support",
             "COMMENT": "Leave us a message",
             "ACTION_SEND": "Send Message",
             "YOU_CAN_ALSO": "You can also:",
+            "VISIT": "Visit our ",
+            "FAQ": "Frecuently asked questions",
             "CREATE": "Create an issue on this ",
             "PUBLIC": "public Taiga project",
             "EMAIL": "Send us a e-mail directly to ",
@@ -1279,7 +1281,6 @@
             "DEFAULT_SWIMLANE": "New user stories will be in this swimlane by default",
             "SET_DEFAULT_SWIMLANE": "Set this swimlane as default",
             "DISABLE_DELETE_SWIMLANE": "The default swimlane cannot be deleted"
-
         },
         "RELATE_TO_EPIC": {
             "TITLE": "Link to epic",
@@ -1505,8 +1506,8 @@
         "TITLE_ACTION_ASSIGN": "Assign task",
         "PLACEHOLDER_CARD_TITLE": "This could be a user story",
         "PLACEHOLDER_CARD_TEXT": "Go to the <a href=\"{{ backlogUrl }}\" title=\"Go to backlog\">backlog</a> and drag user stories to this sprint; split the stories into tasks to track them separately.",
-        "TASK_NOT_FOUND_TITLE": "No matching results found" ,
-        "TASK_NOT_FOUND_TEXT": "Try again using more general search terms or disabling some filters." ,
+        "TASK_NOT_FOUND_TITLE": "No matching results found",
+        "TASK_NOT_FOUND_TEXT": "Try again using more general search terms or disabling some filters.",
         "TITLE_DATE_RANGE": "{{startDate}} <span>to</span> {{endDate}}",
         "TABLE": {
             "COLUMN": "User story",
@@ -1528,18 +1529,18 @@
             "HELP_TOOLTIP": "This burndown chart shows the sprint's approximate or projected progress based on estimated user story closed tasks. Actual finished estimated user stories are tracked above."
         },
         "MOVE_TO_SPRINT": {
-          "TITLE_ACTION_MOVE_UNFINISHED": "Move unfinished items to another sprint",
-          "TITLE_MOVE_UNFINISHED": "Move unfinished items to another open sprint",
-          "MOVE_TO_OPEN_SPRINT": "Move to open sprint",
-          "NO_OPEN_SPRINTS": "There are no other open sprints. Please create one first.",
-          "SELECT_DESTINATION_PLACEHOLDER": "Select destination",
-          "UNFINISHED_USER_STORIES_COUNT": "{total, plural, =1{<strong>#</strong> unfinished user story} other{<strong>#</strong> unfinished user stories}}",
-          "UNFINISHED_STORYLESS_TASKS_COUNT": "{total, plural, =1{<strong>#</strong> unfinished storyless task} other{<strong>#</strong> unfinished storyless tasks}}",
-          "UNFINISHED_ISSUES_COUNT": "{total, plural, =1{<strong>#</strong> unfinished issue} other{<strong>#</strong> unfinished issue}}",
-          "WARNING_ISSUES_NOT_MOVED_TITLE": "You just moved all user stories and taks, and the sprint'll be closed",
-          "WARNING_ISSUES_NOT_MOVED": "The issues'll remain in the sprint and don't be removed",
-          "WARNING_SPRINT_STILL_OPEN_TITLE": "{total, plural, =1{You just moved # item!} other{You just moved # items!}}",
-          "WARNING_SPRINT_STILL_OPEN": "Please note that the sprint {{sprintName}} <strong>will remain open</strong> as long as it contains unfinished items."
+            "TITLE_ACTION_MOVE_UNFINISHED": "Move unfinished items to another sprint",
+            "TITLE_MOVE_UNFINISHED": "Move unfinished items to another open sprint",
+            "MOVE_TO_OPEN_SPRINT": "Move to open sprint",
+            "NO_OPEN_SPRINTS": "There are no other open sprints. Please create one first.",
+            "SELECT_DESTINATION_PLACEHOLDER": "Select destination",
+            "UNFINISHED_USER_STORIES_COUNT": "{total, plural, =1{<strong>#</strong> unfinished user story} other{<strong>#</strong> unfinished user stories}}",
+            "UNFINISHED_STORYLESS_TASKS_COUNT": "{total, plural, =1{<strong>#</strong> unfinished storyless task} other{<strong>#</strong> unfinished storyless tasks}}",
+            "UNFINISHED_ISSUES_COUNT": "{total, plural, =1{<strong>#</strong> unfinished issue} other{<strong>#</strong> unfinished issue}}",
+            "WARNING_ISSUES_NOT_MOVED_TITLE": "You just moved all user stories and taks, and the sprint'll be closed",
+            "WARNING_ISSUES_NOT_MOVED": "The issues'll remain in the sprint and don't be removed",
+            "WARNING_SPRINT_STILL_OPEN_TITLE": "{total, plural, =1{You just moved # item!} other{You just moved # items!}}",
+            "WARNING_SPRINT_STILL_OPEN": "Please note that the sprint {{sprintName}} <strong>will remain open</strong> as long as it contains unfinished items."
         }
     },
     "TASK": {
@@ -1655,9 +1656,9 @@
         "TITLE_ACTION_ADD_BULK": "Add new bulk",
         "ACTION_SHOW_ARCHIVED": "Show archived",
         "ACTION_HIDE_ARCHIVED": "Hide archived",
-        "US_NOT_FOUND_TITLE": "No matching results found" ,
-        "US_NOT_FOUND_TEXT_P1": "Try again using more general search terms or disabled some filters." ,
-        "US_NOT_FOUND_TEXT_P2": "<strong>Archived stories</strong> are not loaded by default. Unfold the archived statuses to expand your search." ,
+        "US_NOT_FOUND_TITLE": "No matching results found",
+        "US_NOT_FOUND_TEXT_P1": "Try again using more general search terms or disabled some filters.",
+        "US_NOT_FOUND_TEXT_P2": "<strong>Archived stories</strong> are not loaded by default. Unfold the archived statuses to expand your search.",
         "PLACEHOLDER_CARD_TITLE": "This could be a user story",
         "PLACEHOLDER_CARD_TEXT": "Create user stories here and change their status to track their progress.",
         "NUMBER_US": "Number of US",

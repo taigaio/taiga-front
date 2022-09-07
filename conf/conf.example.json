@@ -8,22 +8,30 @@
     "debug": false,
     "debugInfo": false,
     "defaultLanguage": "en",
-    "themes": ["taiga"],
+    "themes": [
+        "taiga"
+    ],
     "defaultTheme": "taiga",
     "defaultLoginEnabled": true,
     "publicRegisterEnabled": true,
     "feedbackEnabled": true,
-    "supportUrl": "https://resources.taiga.io",
+    "supportUrl": "https://community.taiga.io/",
     "privacyPolicyUrl": null,
     "termsOfServiceUrl": null,
     "maxUploadFileSize": null,
     "contribPlugins": [],
-    "tagManager": { "accountId": null },
+    "tagManager": {
+        "accountId": null
+    },
     "tribeHost": null,
     "enableAsanaImporter": false,
     "enableGithubImporter": false,
     "enableJiraImporter": false,
     "enableTrelloImporter": false,
     "gravatar": false,
-    "rtlLanguages": ["ar", "fa", "he"]
+    "rtlLanguages": [
+        "ar",
+        "fa",
+        "he"
+    ]
 }
