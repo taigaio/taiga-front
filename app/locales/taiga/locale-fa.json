@@ -60,7 +60,8 @@
             "NO_PTS": "N/E",
             "ESTIMATION": "Estimation",
             "TASKS": "{{completed}} tasks of {{total}} completed",
-            "EXTRA_ASSIGNED_USERS": "{{total}} more assigned users"
+            "EXTRA_ASSIGNED_USERS": "{{total}} more assigned users",
+            "MOVE_TO_TOP": "انتقال به بالا"
         },
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "مقدار نامعتبر است.",
@@ -351,7 +352,7 @@
     },
     "REGISTER_FORM": {
         "TITLE": "ایجاد حساب کاربری جدید در تایگا (رایگان)",
-        "PLACEHOLDER_NAME": "نام کاربری (حساس به حروف بزرگ و کوچک)",
+        "PLACEHOLDER_NAME": "نام کاربری",
         "PLACEHOLDER_FULL_NAME": "نام کامل خود را وارد کنید",
         "PLACEHOLDER_EMAIL": "ایمیل شما",
         "PLACEHOLDER_PASSWORD": "رمز عبور جدید انتخاب کنید (حساس به حروف بزرگ و کوچک)",
@@ -841,7 +842,8 @@
             "CANT_BE_OWNED": "در حال حاضر نمی‌توانید مالک پروژه‌ای از این نوع شوید. اگر می‌خواهید مالک این پروژه شوید، لطفاً با ادمین تماس بگیرید تا تنظیمات حساب شما را برای فعالسازی مالکیت پروژه تغییر دهد."
         },
         "PROJECT_PRESETS": {
-            "TITLE": "مقادیر پیش‌فرض"
+            "TITLE": "مقادیر پیش‌فرض",
+            "SUBTITLE": "مقادیر پیش‌فرض را برای همهۀ ورودی‌های انتخابگر تنظیم کنید."
         }
     },
     "USER": {
