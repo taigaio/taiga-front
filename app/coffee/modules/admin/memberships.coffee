@@ -430,7 +430,7 @@ MembershipsRowActionsDirective = ($log, $repo, $rs, $confirm, $compile, $transla
                 })
                 $confirm.notify("success", text)
             onError = ->
-                text = $translate.instant("ADMIM.MEMBERSHIP.ERROR_SEND_INVITATION")
+                text = $translate.instant("ADMIN.MEMBERSHIP.ERROR_SEND_INVITATION")
                 $confirm.notify("error", text)
 
             $rs.memberships.resendInvitation($scope.member.id).then(onSuccess, onError)
