@@ -950,7 +950,9 @@
             "CHANGE_PASSWORD": "Cambia password",
             "DASHBOARD_TITLE": "Dashboard",
             "DISCOVER_TITLE": "Scopri i progetti più seguiti",
-            "DISCOVER": "Scopri"
+            "DISCOVER": "Scopri",
+            "TAIGA_COMMUNITY_TITLE": "Vai alla comunità di Taiga",
+            "TAIGA_COMMUNITY": "Comunità di Taiga"
         },
         "LIKE_BUTTON": {
             "LIKE": "Mi piace",
@@ -1166,14 +1168,16 @@
             "HELP_TEXT": "Se gli utenti sono già registrati su Taiga, verranno aggiunti automaticamente. In caso contrario, riceveranno un invito."
         },
         "FEEDBACK": {
-            "TITLE": "Fai una domanda",
+            "TITLE": "Supporto di Taiga",
             "COMMENT": "Lasciaci un messaggio",
             "ACTION_SEND": "Invia messaggio",
             "YOU_CAN_ALSO": "Puoi anche:",
             "CREATE": "Crea un problema su questo ",
             "PUBLIC": "progetto Taiga pubblico",
             "EMAIL": "Inviaci un'email direttamente a ",
-            "SUPPORT": "support@taiga.io"
+            "SUPPORT": "support@taiga.io",
+            "VISIT": "Visita il nostro ",
+            "FAQ": "Domande frequenti"
         },
         "SEARCH": {
             "TITLE": "Cerca",

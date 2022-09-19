@@ -570,7 +570,8 @@
             "REQUEST_OWNERSHIP_SUCCESS": "Vamos notificar o dono do projeto",
             "CHANGE_OWNER": "Mudar dono",
             "CHANGE_OWNER_SUCCESS_TITLE": "Ok, sua requisição foi enviada!",
-            "CHANGE_OWNER_SUCCESS_DESC": "Nós notificaremos você por email se a requisição de propriedade do projeto for aceita ou recusada"
+            "CHANGE_OWNER_SUCCESS_DESC": "Nós notificaremos você por email se a requisição de propriedade do projeto for aceita ou recusada",
+            "REQUEST_OWNERSHIP_LIMIT": "Voce alcançou seu limite de {{maxProjects}} projetos privados"
         },
         "REPORTS": {
             "TITLE": "Relatórios",
@@ -837,7 +838,9 @@
             "UNLIMITED_PROJECTS": "Ilimitado",
             "OWNER_MESSAGE": {
                 "PRIVATE": "Por favor, lembre-se que você pode ser dono de até <strong>{{maxProjects}}</strong> projetos privados. Você, atualmente, é dono de <strong>{{currentProjects}}</strong> projetos privados",
-                "PUBLIC": "Por favor, lembre-se que você pode ser dono de até <strong>{{maxProjects}}</strong> projetos públicos. Você, atualmente, é dono de <strong>{{currentProjects}}</strong> projetos públicos"
+                "PUBLIC": "Por favor, lembre-se que você pode ser dono de até <strong>{{maxProjects}}</strong> projetos públicos. Você, atualmente, é dono de <strong>{{currentProjects}}</strong> projetos públicos",
+                "PUBLIC_EXCEEDED": "Atualmente você tem <strong>{{currentProjects}} projetos públicos</strong> do máximo que seu plano permite.",
+                "PRIVATE_EXCEEDED": "Atualmente você tem <strong>{{currentProjects}} projetos privados </strong> do máximo que seu plano permite."
             },
             "CANT_BE_OWNED": "No momento, você não pode se tornar dono de um projeto desse tipo. Se você quiser se tornar dono desse projeto, por favor, entre em contato com os administradores para mudarem as configurações da sua conta para habilitar a propriedade do projeto."
         },
@@ -1116,6 +1119,13 @@
                 "CREATE_NEW_ISSUES": "Converta sub problemas para novos problemas Taiga",
                 "NOT_CREATE_NEW_ISSUES": "Não importe sub problemas"
             }
+        },
+        "NEWSLETTER_OPENING": {
+            "LIGHTBOX_TITLE": "Você gostaria de receber notícias sobre o Taiga?",
+            "CONFIRMATION": "Sim, mande-me notícias, atualizações de produtos e recomendações sobre Taiga.",
+            "SUBSCRIBED": "Você está inscrito",
+            "SAVED_PREFERENCE": "Suas preferências foram salvas com sucesso",
+            "SUBSCRIBE": "Inscrever-se"
         }
     },
     "LIGHTBOX": {

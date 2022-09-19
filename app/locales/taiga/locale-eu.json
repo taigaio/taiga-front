@@ -40,22 +40,22 @@
         "NEXT": "Hurrengoa",
         "LOGOUT": "Amaitu saioa",
         "EXTERNAL_USER": "kanpo erabiltzailea",
-        "GENERIC_ERROR": "Taigak dio: {{error}}",
+        "GENERIC_ERROR": "Taigak dio: {{error}}.",
         "IOCAINE_TEXT": "Lankide hau nahiko estutua dabil ataza honekin. Denborarekin eta zure laguntzarekin, agian pozoiaren aurkako immunitatea lortuko du. Oraingoz, nahikoa izango luke irribarretxo bat.",
         "CLIENT_REQUIREMENT": "Bezeroaren eskaera bat da aurreikusi gabeko eginkizun bat, baina proiektuan txertatu beharrekoa",
         "TEAM_REQUIREMENT": "Lantalde eskaera proiektuan egin behar da, baina ezin du izan kosturik bezeroarentzat",
         "OWNER": "Proiektuaren jabea",
-        "CAPSLOCK_WARNING": "Erne! Erne, letra larriak erabiltzen ari zara, halakoak bereizten dituen eremu batean.",
+        "CAPSLOCK_WARNING": "Erne! Letra larriak erabiltzen ari zara, halakoak bereizten dituen eremu batean.",
         "CONFIRM_CLOSE_EDIT_MODE_TITLE": "Ziur zaude edizio modua itxi nahi duzula?",
         "CONFIRM_CLOSE_EDIT_MODE_MESSAGE": "Gogoan izan, edizio modua ixten baduzu gorde gabe aldaketa guztiak galduko dituzu",
         "RELATED_USERSTORIES": "Honekin harremana duten eginkizunak",
         "CARD": {
-            "ASSIGN_TO": "Honi esleitu:",
+            "ASSIGN_TO": "Honi esleitu",
             "EDIT": "Editatu txartela",
             "DELETE": "Ezabatu txartela",
-            "DELETE_ISSUE": "Ezabatu gertakaria",
-            "DETACH_ISSUE_FROM_SPRINT": "Detach from sprint",
-            "PTS": "{{pts}} pts",
+            "DELETE_ISSUE": "Ezabatu eskaera",
+            "DETACH_ISSUE_FROM_SPRINT": "Esprintetik aldendu",
+            "PTS": "{{pts}} puntu",
             "DUE_DATE": "Epemuga: {{date}}",
             "NO_PTS": "N/E",
             "ESTIMATION": "Estimazioa",
@@ -67,24 +67,24 @@
             "DEFAULT_MESSAGE": "Balio hori baliogabea da.",
             "TYPE_EMAIL": "Hemen baliozko e-posta bat idatzi behar da.",
             "TYPE_URL": "Hemen baliozko URL bat idatzi behar da.",
-            "TYPE_URLSTRICT": "Hemen baliozko URL bat idatzi behar da",
+            "TYPE_URLSTRICT": "Hemen baliozko URL bat idatzi behar da.",
             "TYPE_NUMBER": "Hemen baliozko zenbaki bat idatzi behar da.",
             "TYPE_DIGITS": "Hemen zenbaki bat idatzi behar da.",
-            "TYPE_DATEISO": "Balioa izan behar da baliozko data bat (YYYY-MM-DD)",
-            "TYPE_ALPHANUM": "Balioa alfanumerikoa izan behar da",
+            "TYPE_DATEISO": "Balio honek baliozko data bat izan behar du (YYYY-MM-DD).",
+            "TYPE_ALPHANUM": "Balioa alfanumerikoa izan behar da.",
             "TYPE_PHONE": "Hemen baliozko telefono zenbaki bat idatzi behar da.",
             "NOTNULL": "Balio honek ezin du hutsik egon.",
             "NOT_BLANK": "Balio honek ezin du hutsik egon.",
             "REQUIRED": "Balio honek ezin du hutsik egon.",
             "REGEXP": "Balio hori baliogabea da.",
-            "MIN": "Balio honek izan behar du hau baino handiagoa edo berdina: %s",
-            "MAX": "Balio honek izan behar du hau baino txikiagoa edo berdina: %s",
+            "MIN": "Balio honek izan behar du hau baino handiagoa edo berdina: %s.",
+            "MAX": "Balio honek izan behar du hau baino txikiagoa edo berdina: %s.",
             "RANGE": "Balio honek izan behar du tarte honetan: %s eta %s.",
             "MIN_LENGTH": "Balio hau laburregia da. Izan behar ditu %s karaktere edo gehiago.",
             "MAX_LENGTH": "Balio hau luzeegia da. Izan behar ditu %s karaktere edo gutxiago.",
             "RANGE_LENGTH": "Balio honen luzera ez da zuzena. Luzera izan behar da tarte honetan: %s eta %s karaktere.",
             "MIN_CHECK": "Gutxienez %s aukera hautatu behar duzu.",
-            "MAX_CHECK": "Hautatu behar dituzu %s aukera edo gutxiago",
+            "MAX_CHECK": "Hautatu behar dituzu %s aukera edo gutxiago.",
             "RANGE_CHECK": "Hautatu behar dituzu %s eta %s bitarteko aukerak.",
             "EQUAL_TO": "Balio hau berdina izan behar da.",
             "LINEWIDTH": "Lerro bat edo gehiago luzeegiak dira. Saiatu %s karakteretara mugatzen.",
@@ -131,7 +131,7 @@
         "SEE_USER_PROFILE": "Ikusi {{username }} erabiltzailearen soslaia",
         "USER_STORY": "Eginkizuna",
         "TASK": "Ataza",
-        "ISSUE": "Gertakaria",
+        "ISSUE": "Eskaera",
         "EPIC": "Mugarria",
         "TAGS": {
             "PLACEHOLDER": "Idatzi etiketa",
@@ -156,7 +156,7 @@
             "SEVERITY": "Larritasuna",
             "PRIORITY": "Lehentasuna",
             "ASSIGNED": "Esleituta",
-            "ASSIGNED_TO": "nori esleitua?",
+            "ASSIGNED_TO": "Honi esleitua",
             "ASSIGNED_USERS": "esleitutako erabiltzaile",
             "POINTS": "Puntuak",
             "IS_BLOCKED": "blokeatuta dago",
@@ -195,7 +195,7 @@
             "WATCHERS": "Begiratzaileak",
             "ADD": "Gehitu begiratzaileak",
             "TITLE_ADD": "Gehitu proiektuko lankide bat begiratzaileen zerrendara",
-            "DELETE": "Gehitu begiratzailea…",
+            "DELETE": "Ezabatu begiratzailea",
             "TITLE_LIGHTBOX_DELETE_WARTCHER": "Gehitu begiratzailea…"
         },
         "WATCH_BUTTON": {
@@ -204,19 +204,19 @@
             "UNWATCH": "Ez begiratu",
             "WATCHERS": "Begiratzaileak",
             "BUTTON_TITLE": "Izan/ez izan begiratzaile gai honetan",
-            "COUNTER_TITLE": "{total, plural, =1{behatzaile bat} other{# behatzaile}} "
+            "COUNTER_TITLE": "{total, plural, =1{behatzaile bat} other{# behatzaile}}"
         },
         "VOTE_BUTTON": {
             "BUTTON_TITLE": "Bozkatu gora/behera gai hau",
             "COUNTER_TITLE": "{total, plural, =1{bozka bat} other{# bozka}}"
         },
         "PROMOTE_TO_US": "Goratu eginkizun izatera",
-        "PROMOTED_ISSUES": "Gertakari hau bilakatu da:",
-        "PROMOTED_TASKS": "Ataza hau bilakatu da:",
+        "PROMOTED_ISSUES": "Eskaera honek gora egin du hona",
+        "PROMOTED_TASKS": "Ataza hau gora egin du hona",
         "CONFIRM_PROMOTE": {
             "ISSUE": {
-                "TITLE": "Sustatu gertakari hau eginkizun berri batera",
-                "MESSAGE": "Ziur zaude eginkizun berri bat sortu nahi duzula gertakari honetatik abiatuta?"
+                "TITLE": "Sustatu eskaera hau eginkizun berri batera",
+                "MESSAGE": "Ziur zaude eginkizun berri bat sortu nahi duzula eskaera honetatik abiatuta?"
             },
             "TASK": {
                 "TITLE": "Goratu ataza hau eginkizun berri batera",
@@ -246,7 +246,7 @@
                 "INCLUDE": "Barne hartu",
                 "EXCLUDE": "Kanpo utzi",
                 "INCLUDED": "Honen arabera iragazita:",
-                "EXCLUDED": "Excluded:"
+                "EXCLUDED": "Baztertuak:"
             },
             "CATEGORIES": {
                 "TYPE": "Mota",
@@ -254,10 +254,10 @@
                 "SEVERITY": "Larritasuna",
                 "PRIORITIES": "Lehentasunak",
                 "TAGS": "Etiketak",
-                "ASSIGNED_TO": "nori esleitua?",
+                "ASSIGNED_TO": "Honi esleitua",
                 "ASSIGNED_USERS": "esleitutako erabiltzaile",
                 "ROLE": "Rola",
-                "CREATED_BY": "Sortzailea:",
+                "CREATED_BY": "Sortzailea",
                 "CUSTOM_FILTERS": "Iragazki pertsonalizatuak",
                 "EPIC": "Mugarria"
             }
@@ -303,12 +303,12 @@
                 "DELETE_TASKS": "Ezabatu atazak"
             },
             "ISSUES": {
-                "NAME": "Gertakariak",
-                "VIEW_ISSUES": "Ikusi gertakariak",
-                "ADD_ISSUES": "Gehitu gertakariak",
-                "MODIFY_ISSUES": "Aldatu gertakariak",
-                "COMMENT_ISSUES": "Iruzkindu gertakariak",
-                "DELETE_ISSUES": "Ezabatu gertakariak"
+                "NAME": "Eskaerak",
+                "VIEW_ISSUES": "Ikusi eskaerak",
+                "ADD_ISSUES": "Gehitu eskaerak",
+                "MODIFY_ISSUES": "Aldatu eskaerak",
+                "COMMENT_ISSUES": "Iruzkindu eskaerak",
+                "DELETE_ISSUES": "Ezabatu eskaerak"
             },
             "WIKI": {
                 "NAME": "Wiki",
@@ -340,7 +340,7 @@
         "ACTION_ENTER": "Sartu",
         "ACTION_SIGN_IN": "Hasi saioa",
         "PLACEHOLDER_AUTH_PASSWORD": "Pasahitza (letra larriak bereizten ditu)",
-        "ALT_LOGIN": "Edo hasi saioa honekin:"
+        "ALT_LOGIN": "Edo hasi saioa honekin"
     },
     "LOGIN_FORM": {
         "ERROR_AUTH_INCORRECT": "Taigaren arabera, zure erabiltzailea/e-posta edo pasahitza ez dira zuzenak.",
@@ -371,7 +371,7 @@
         "ACTION_RESET_PASSWORD": "Berrezarri pasahitza",
         "LINK_CANCEL": "Ez, eraman nazazu atzera Uste dut gogoratzen naizela.",
         "SUCCESS_TITLE": "Begiratu zure e-posta!",
-        "SUCCESS_TEXT": "Posta mezu bat bidali dizugu, pasahitz berri bat ezartzeko jarraibideekin.",
+        "SUCCESS_TEXT": "Posta mezu bat bidali dizugu, pasahitz berri bat ezartzeko jarraibideekin",
         "ERROR": "Taigaren arabera, ez duzu izenik eman."
     },
     "CHANGE_PASSWORD": {
@@ -403,9 +403,9 @@
     },
     "HOME": {
         "PAGE_TITLE": "Hasiera - Taiga",
-        "PAGE_DESCRIPTION": "Taigaren hasierako orrian aurkituko dituzu zure proiektuak, zuri egotzitako eginkizun, ataza eta gertakariekin.",
-        "EMPTY_WORKING_ON": "<strong>Hutsik dago, ezta?</strong> Hasi Taigarekin lanean eta hemen ikusiko dituzu lantzen ari zaren eginkizun, ataza eta gertakariak.",
-        "EMPTY_WATCHING": "<strong>Jarraiki</strong> zure proiektuen eginkizunei, atazei eta gertakariei eta jaso aldaketen jakinarazpenak :)",
+        "PAGE_DESCRIPTION": "Taigaren hasierako orrian aurkituko dituzu zure proiektuak, zuri egotzitako eginkizun, ataza eta eskaerekin",
+        "EMPTY_WORKING_ON": "<strong>Hutsik dago, ezta?</strong> Hasi Taigarekin lanean eta hemen ikusiko dituzu lantzen ari zaren eginkizun, ataza eta eskaerak.",
+        "EMPTY_WATCHING": "<strong>Jarraiki</strong> zure proiektuen eginkizunei, atazei eta eskaerei eta jaso aldaketen jakinarazpenak :)",
         "EMPTY_PROJECT_LIST": "Ez duzu proiekturik oraingoz",
         "WORKING_ON_SECTION": "Lantzen",
         "WATCHING_SECTION": "Behatzen",
@@ -445,7 +445,7 @@
         },
         "CREATE": {
             "TITLE": "Mugarri berria",
-            "PLACEHOLDER_DESCRIPTION": "Mesedez, gehitu azalpen bat, besteek errazago uler dezaten mugarri hau.",
+            "PLACEHOLDER_DESCRIPTION": "Gehitu deskribapen bat, besteek errazago uler dezaten mugarri hau",
             "TEAM_REQUIREMENT": "Lantaldea behar du",
             "CLIENT_REQUIREMENT": "Bezeroaren eskaera",
             "BLOCKED": "Blokeatuta",
@@ -459,7 +459,7 @@
         "MY_PROJECTS": "Nire proiektuak"
     },
     "ATTACHMENT": {
-        "SECTION_NAME": "Attachments",
+        "SECTION_NAME": "Eranskinak",
         "TITLE": "{{ fileName }} kargatu da data honetan: {{ date }}",
         "LIST_VIEW_MODE": "Zerrenda ikuspegia",
         "GALLERY_VIEW_MODE": "Galeria ikuspegia",
@@ -489,7 +489,7 @@
             "TITLE_ACTION_DELETE_VALUE": "Ezabatu balioa",
             "TITLE_ACTION_DELETE_TAG": "Ezabatu etiketa"
         },
-        "HELP": "Laguntza behar duzu? Jo gure laguntza orrira",
+        "HELP": "Laguntza behar duzu? Begiratu gure laguntza orrira!",
         "PROJECT_DEFAULT_VALUES": {
             "TITLE": "Balio lehenetsiak",
             "SUBTITLE": "Ezarri balio lehenetsiak hautatutako guztiei"
@@ -500,8 +500,8 @@
             "ADD_BUTTON": "+ Lankide berri bat",
             "ADD_BUTTON_TITLE": "Gehitu lankide bat",
             "UPGRADE_BUTTON": "Eguneratu zure plana",
-            "LIMIT_USERS_WARNING_MESSAGE_FOR_ADMIN": "Nahi badituzu <strong>lankideak gehitu</strong>, mesedez, jar zaitez harremanetan proiektuaren jabearekin <a href='mailto:{{ owner_email }}' gaia='{{ owner_email }}'>{{ owner_email }}</a>",
-            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "Proiektu honen lankide kopurua gehienezko <strong>({{members}})</strong> kopurura iritsi da.  Muga hori handitu nahi baduzu, jar zatez harremanetan administratzailearekin."
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_ADMIN": "Nahi badituzu <strong>lankideak gehitu</strong>, jar zaitez harremanetan proiektuaren jabearekin <a href='mailto:{{ owner_email }}' title='{{ owner_email }}'>{{ owner_email }}</a>",
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "Proiektu honen lankide kopurua gehienezko <strong>({{members}})</strong> kopurura iritsi da. Muga hori handitu nahi baduzu, jar zatez harremanetan administratzailearekin."
         },
         "PROJECT_EXPORT": {
             "TITLE": "Esportatu",
@@ -513,7 +513,7 @@
             "LOADING_MESSAGE": "Mesedez ez itxi orri hau.",
             "ASYNC_MESSAGE": "E-posta mezu bat bidaliko dizugu prest dagoenean.",
             "SYNC_MESSAGE": "Karga ez bada berez hasten, klik egin <a href='{{url}}' download title='Deskargatu fitxategia'>hemen</a>.",
-            "ERROR": "Taigak arazoren bat du deskarga sortzeko. Saiatu berriro, mesedez. ",
+            "ERROR": "Taigak arazoren bat du deskarga sortzeko. Saiatu berriro, mesedez.",
             "ERROR_BUSY": "Barka, Taiga oso lanpetuta dago orain. Saiatu berriro hemendik pixka batera, mesedez."
         },
         "MODULES": {
@@ -522,14 +522,14 @@
             "EPICS_DESCRIPTION": "Bistaratu eta kudeatu zure proiektuaren alde estrategikoa",
             "BACKLOG": "Scrum",
             "BACKLOG_DESCRIPTION": "Kudeatu eginkizunak laster eta lehentasunez egin beharreko lana antolatuta ikusteko.",
-            "NUMBER_SPRINTS": "Zenbat urrats aurreikusten dira?",
+            "NUMBER_SPRINTS": "Espero den esprint kopurua",
             "NUMBER_SPRINTS_HELP": "0 zehaztu gabeko kopurua nahi bada",
             "NUMBER_US_POINTS": "Eginkizunaren gehienezko puntuak",
             "NUMBER_US_POINTS_HELP": "0 zehaztu gabeko kopurua nahi bada",
             "KANBAN": "Kanban",
             "KANBAN_DESCRIPTION": "Antolatu proiektua era lirain batean arbel honen bitartez.",
-            "ISSUES": "Gertakariak",
-            "ISSUES_DESCRIPTION": "Jarraitu zure proiektuaren akatsak, galderak eta hobekuntzak. Ez galdu ezer! Ez galdu ezer!",
+            "ISSUES": "Eskaerak",
+            "ISSUES_DESCRIPTION": "Jarraitu zure proiektuaren akatsak, galderak eta hobekuntzak. Ez galdu ezer!",
             "WIKI": "Wiki",
             "WIKI_DESCRIPTION": "Gehitu, aldatu edo ezabatu edukia lankidetza giro batean. Hau da proiektuaren dokumentazioa ipintzeko leku egokia.",
             "MEETUP": "Elkartu",
@@ -576,10 +576,10 @@
         "REPORTS": {
             "TITLE": "Txostenak",
             "SUBTITLE": "Esportatu proiektuaren datuak CSV formatuan, zure txostenak osatzeko.",
-            "DESCRIPTION": "Deskargatu CSV fitxategi bat edo kopiatu URLa eta ireki testu editore batean edo kalkulu orri batean, zure proiektuaren txostenak lantzeko.  Datu guztiak aise bistaratu eta aztertu ahal izango dituzu.",
+            "DESCRIPTION": "Deskargatu CSV fitxategi bat edo kopiatu URLa eta ireki testu editore batean edo kalkulu orri batean, zure proiektuaren txostenak lantzeko. Datu guztiak erraz bistaratu eta aztertu ahal izango dituzu.",
             "HELP": "Nola erabili nire kalkulu orrian?",
             "REGENERATE_TITLE": "Aldatu URLa",
-            "REGENERATE_SUBTITLE": "Aldatzera zoaz CSV formatuan datuak eskuratzeko URLa.  Aurreko URLa desgaitu egingo da.  Ziur zaude?",
+            "REGENERATE_SUBTITLE": "Aldatzera zoaz CSV formatuan datuak eskuratzeko URLa. Aurreko URLa desgaitu egingo da. Ziur zaude?",
             "DELETE_TITLE": "Ezabatu URLa",
             "DELETE_SUBTITLE": "Ezabatu egingo duzu CSV hau eskuratzeko URLa. Ziur zaude? Ziur zaude?"
         },
@@ -587,7 +587,7 @@
             "SECTION_TITLE_EPIC": "Mugarrien txostenak",
             "SECTION_TITLE_US": "eginkizunen txostenak",
             "SECTION_TITLE_TASK": "Ataza txostenak",
-            "SECTION_TITLE_ISSUE": "gertakarien txostenak",
+            "SECTION_TITLE_ISSUE": "eskaeren txostenak",
             "DOWNLOAD": "Deskargatu CSV",
             "URL_FIELD_PLACEHOLDER": "Birsortu CSVren URLa, mesedez",
             "TITLE_REGENERATE_URL": "Birsortu CSVren URLa",
@@ -598,15 +598,15 @@
         },
         "CUSTOM_FIELDS": {
             "TITLE": "Eremu pertsonalizatuak",
-            "SUBTITLE": "Zehaztu eremu pertsonalizatuak zure eginkizun, ataza eta gertakarietarako",
+            "SUBTITLE": "Zehaztu eremu pertsonalizatuak zure eginkizun, ataza eta eskaeretarako",
             "EPIC_DESCRIPTION": "Mugarrien eremu pertsonalizatuak",
             "EPIC_ADD": "Gehitu eremu pertsonalizatu bat mugarrietan",
             "US_DESCRIPTION": "Eginkizunaren eremu pertsonalizatuak",
             "US_ADD": "Gehitu eremu pertsonalizatu bat eginkizunetan",
             "TASK_DESCRIPTION": "Atazaren eremu pertsonalizatuak",
             "TASK_ADD": "Gehitu eremu pertsonalizatu bat atazatan",
-            "ISSUE_DESCRIPTION": "Gertakarien eremu pertsonalizatuak",
-            "ISSUE_ADD": "Gehitu eremu pertsonalizatu bat gertakarian",
+            "ISSUE_DESCRIPTION": "Eskaeren eremu pertsonalizatuak",
+            "ISSUE_ADD": "Gehitu eremu pertsonalizatu bat eskaeretan",
             "FIELD_TYPE_TEXT": "Testua",
             "FIELD_TYPE_RICHTEXT": "Testu aberastua",
             "FIELD_TYPE_MULTI": "Lerro asko",
@@ -618,7 +618,7 @@
         },
         "PROJECT_VALUES": {
             "PAGE_TITLE": "{{sectionName}} - Proiektuaren balioak - {{projectName}}",
-            "REPLACEMENT": "Balio hori duten osagai guztiak aldatuko dira honetara:",
+            "REPLACEMENT": "Balio hori duten osagai guztiak aldatuko dira honetara",
             "ERROR_DELETE_ALL": "Ezin dituzu ezabatu balio guztiak."
         },
         "PROJECT_VALUES_POINTS": {
@@ -629,28 +629,28 @@
         },
         "PROJECT_VALUES_PRIORITIES": {
             "TITLE": "Lehentasunak",
-            "SUBTITLE": "Zehaztu zure gertakariaren lehentasunak",
-            "ISSUE_TITLE": "Gertakariaren lehentasunak",
+            "SUBTITLE": "Zehaztu zure eskaeren lehentasunak",
+            "ISSUE_TITLE": "Eskaeren lehentasunak",
             "ACTION_ADD": "Gehitu lehentasun berri bat"
         },
         "PROJECT_VALUES_SEVERITIES": {
             "TITLE": "Larritasunak",
-            "SUBTITLE": "Zehaztu gertakarien larritasunak",
-            "ISSUE_TITLE": "Gertakarien larritasunak",
+            "SUBTITLE": "Zehaztu eskaeren premiak",
+            "ISSUE_TITLE": "Eskaeren premiak",
             "ACTION_ADD": "Gehitu larritasun berri bat"
         },
         "PROJECT_VALUES_STATUS": {
             "TITLE": "Egoerak",
-            "SUBTITLE": "Add, remove or edit the color and name of the statuses your epics, user stories, task and issues will go through.",
+            "SUBTITLE": "Gehitu, kendu edo editatu zure mugarriek, eginkizunek, atazek eta eskaerek izango dituzten egoeren kolorea eta izena.",
             "EPIC_TITLE": "Mugarriaren egoerak",
             "US_TITLE": "Eginkizunen egoerak",
             "TASK_TITLE": "Atazen egoerak",
-            "ISSUE_TITLE": "Gertakarien egoerak"
+            "ISSUE_TITLE": "Eskaeren egoerak"
         },
         "PROJECT_VALUES_TYPES": {
             "TITLE": "Motak",
-            "SUBTITLE": "Zehaztu zein motatakoa izan daitezkeen zure gertakariak",
-            "ISSUE_TITLE": "Gertakari motak",
+            "SUBTITLE": "Zehaztu zein motatakoa izan daitezkeen zure eskaerak",
+            "ISSUE_TITLE": "Eskaera motak",
             "ACTION_ADD": "Gehitu {{objName}}"
         },
         "PROJECT_VALUES_TAGS": {
@@ -666,40 +666,40 @@
         },
         "PROJECT_DUE_DATE_STATUS": {
             "TITLE": "Epemugak",
-            "SUBTITLE": "Zehaztu zein epemugetan barrena joango diren eginkizunak, atazak eta gertakariak, hautatuta badaude",
+            "SUBTITLE": "Zehaztu zein epemugetan barrena joango diren eginkizunak, atazak eta eskaerak, hautatuta badaude",
             "US_TITLE": "Eginkizunaren epemugaren egoera",
             "ACTION_ADD_STATUS": "Gehitu egoera berri bat",
             "TASK_TITLE": "Atazaren epemugaren egoera",
-            "ISSUE_TITLE": "Gertakariaren epemugaren egoera",
-            "DAYS_TO_DUE_DATE": "Zenbat egun epemugarako?",
+            "ISSUE_TITLE": "Eskaeren epemugaren egoera",
+            "DAYS_TO_DUE_DATE": "Zenbat egun epemugarako",
             "BEFORE_AFTER": "Lehenago/geroago",
             "BEFORE": "Lehenago",
             "AFTER": "Iraganekoa"
         },
         "PROJECT_KANBAN_OPTIONS": {
-            "TITLE": "Kanban options",
-            "SUBTITLE": "Enable swimlanes to use in your workflow and set WIP limits to restrict the maximun number of user stories on each status.",
-            "SWIMLANES": "Swimlanes",
-            "ACTION_ADD_SWIMLANE": "New swimlane",
-            "SWIMLANE_NAME_EXISTS": "This swimlane name already exists",
-            "NO_SWIMLANES": "There are no swimlanes yet",
-            "SWIMLANE_NAME": "Swimlane name",
-            "POPUP_NEW_SWIMLANE": "If you had some user stories created, you will find them on this swimlane.",
+            "TITLE": "Kanban aukerak",
+            "SUBTITLE": "Gaitu funtzioen fluxu-diagramak (swimlane) zure lan-fluxuan erabiltzeko eta ezarri martxan dauden proiektu (WIP) kopuruen mugak egoera bakoitzean erabiltzaile-istorioen gehienezko kopurua mugatzeko.",
+            "SWIMLANES": "funtzioen fluxu-diagramak",
+            "ACTION_ADD_SWIMLANE": "Funtzioaren fluxu-diagrama berria",
+            "SWIMLANE_NAME_EXISTS": "Funtzioaren fluxu diagramaren izen hori dagoeneko badago",
+            "NO_SWIMLANES": "Oraindik ez dago funtzioen fluxu-diagramarik",
+            "SWIMLANE_NAME": "Funtzioaren fluxu-diagrama",
+            "POPUP_NEW_SWIMLANE": "Erabiltzaile-istorio batzuk sortu badituzu, funtzioen fluxu-diagrama honetan aurkituko dituzu.",
             "WIP_LIMITS": "WIP LIMITS",
-            "WIP_LIMIT_PLACEHOLDER": "WIP limit not set",
-            "WIP_LIMIT_INPUT": "Set WIP limit",
+            "WIP_LIMIT_PLACEHOLDER": "Martxan dauden proiektuen kopuru maximoa ezarri gabe",
+            "WIP_LIMIT_INPUT": "Ezarri martxan dauden proiektu kopuruaren maximoa",
             "DEFAULT": "Lehenetsia"
         },
         "ROLES": {
             "PAGE_TITLE": "Rolak - {{projectName}}",
             "WARNING_NO_ROLE": "Erne, zure proiektuan ez dago rol bat ere eginkizunen balio puntuak kalkulatu dezakeenik",
-            "HELP_ROLE_ENABLED": "This role is part of the roles involved in estimating user story points.",
+            "HELP_ROLE_ENABLED": "Rol hau erabiltzailearen eginkizunetan lotutako rolen partea da.",
             "DISABLE_COMPUTABLE_ALERT_TITLE": "Ziur zaude rol honen balioespenak desgaitu nahi dituzula?",
             "DISABLE_COMPUTABLE_ALERT_SUBTITLE": "Desgaitzen baduzu {{roleName}} rolerako balioespen baimena, rol horrek aurrez egindako balioespen guztiak ezabatuko dira",
             "COUNT_MEMBERS": "{{ role.members_count }} lankide daude rol honekin",
             "TITLE_DELETE_ROLE": "Ezabatu rola",
-            "REPLACEMENT_ROLE": "Rol hau duten erabiltzaile guztiak mugituko dira hona:",
-            "WARNING_DELETE_ROLE": "Erne! Erne, rol honek egindako kalkulu guztiak ezabatuko dira",
+            "REPLACEMENT_ROLE": "Rol hau duten erabiltzaile guztiak mugituko dira hona",
+            "WARNING_DELETE_ROLE": "Erne, rol honek egindako kalkulu guztiak ezabatuko dira",
             "ERROR_DELETE_ALL": "Ezin dituzu ezabatu balio guztiak",
             "EXTERNAL_USER": "Kanpo esteka",
             "NOTE_EXTERNAL_USERS": "Kanpoko erabiltzailea edozein erabiltzaile da (Taiga plataforman saioa hasitakoa edo ez), <strong>bilatzaileak barne</strong>. Erregistratu gabeko erabiltzaileek inoiz editatzeko baimenik izan dezaketen arren, erregistratutako erabiltzaileek edita dezakete, baimena ematen badiezu. Zure proiektua pribatua bada, ikusteko baimenak ere kontrola ditzakezu. <strong>Mesedez, erabili rol hau kontu handiz</strong>."
@@ -724,7 +724,7 @@
             "PAGE_TITLE": "GitHub - {{projectName}}"
         },
         "GOGS": {
-            "SECTION_NAME": "Gogs",
+            "SECTION_NAME": "Gog-ak",
             "PAGE_TITLE": "Gogs - {{projectName}}"
         },
         "WEBHOOKS": {
@@ -775,8 +775,8 @@
             "DELETE_MEMBER": "Ezabatu lankidea",
             "RESEND": "Berriro bidali",
             "SUCCESS_SEND_INVITATION": "Berriro bidali dugu gonbidapena helbide honetara: '{{email}}'.",
-            "SUCCESS_DELETE": "Ezabatu dugu mezu hau: {{message}}",
-            "ERROR_DELETE": "Ezin izan dugu ezabatu: {{errorMessage}}",
+            "SUCCESS_DELETE": "Ezabatu dugu mezu hau: {{message}}.",
+            "ERROR_DELETE": "Ezin izan dugu ezabatu: {{errorMessage}}.",
             "DEFAULT_DELETE_MESSAGE": "gonbidapena helbide honetara: {{email}}"
         },
         "DEFAULT_VALUES": {
@@ -784,8 +784,8 @@
             "LABEL_US_STATUS": "Erabiltzailearen istorioaren egoera-hautatzailea",
             "LABEL_POINTS": "Puntuen hautatzailea",
             "LABEL_TASK_STATUS": "Zereginen egoera-hautatzailea",
-            "LABEL_ISSUE_TYPE": "Arazo mota hautatzailea",
-            "LABEL_ISSUE_STATUS": "Arazoen egoera-hautatzailea",
+            "LABEL_ISSUE_TYPE": "Eskaera motaren hautatzailea",
+            "LABEL_ISSUE_STATUS": "Eskaera egoeraren hautatzailea",
             "LABEL_PRIORITY": "Lehentasunen hautatzailea",
             "LABEL_SEVERITY": "Larritasun-hautatzailea"
         },
@@ -800,7 +800,7 @@
             "ACTION_ADD_STATUS": "Gehitu egoera berri bat",
             "IS_ARCHIVED_COLUMN": "Artxibatuta",
             "IS_CLOSED_COLUMN": "Itxita",
-            "WIP_LIMIT_COLUMN": "WIP limit",
+            "WIP_LIMIT_COLUMN": "Funtzioen fluxu-diagramen kopuru maximoa",
             "PLACEHOLDER_WRITE_NAME": "Idatzi izen bat egoera berrirako"
         },
         "MENU": {
@@ -819,7 +819,7 @@
             "CUSTOM_FIELDS": "Eremu pertsonalizatuak",
             "TAGS": "Etiketak",
             "DUE_DATES": "Epemugak",
-            "KANBAN_OPTIONS": "Kanban options"
+            "KANBAN_OPTIONS": "Kanban aukerak"
         },
         "SUBMENU_ROLES": {
             "TITLE": "Rolak",
@@ -830,17 +830,19 @@
             "DO_YOU_ACCEPT_PROJECT_OWNERNSHIP": "Nahi duzu proiektuaren jabe berria izan?",
             "PRIVATE": "Pribatua",
             "ACCEPTED_PROJECT_OWNERNSHIP": "Zorionak! Proiektuaren jabea zara orain.",
-            "REJECTED_PROJECT_OWNERNSHIP": "Ongi. Proiektuaren jabearekin harremanetan jarriko gara.",
+            "REJECTED_PROJECT_OWNERNSHIP": "Ongi. Proiektuaren jabearekin harremanetan jarriko gara",
             "ACCEPT": "Onartu",
             "REJECT": "Ez onartu",
             "PROPOSE_OWNERSHIP": "<strong>{{owner}}</strong> erabiltzaileak, <strong>{{project}}</strong> proiektuaren jabe denez, eskatzen dizu zu izatea proiektuaren jabe.",
             "ADD_COMMENT": "Nahi duzu iruzkin bat gehitu proiektu jabearentzat?",
             "UNLIMITED_PROJECTS": "Mugagabea",
             "OWNER_MESSAGE": {
-                "PRIVATE": "Gogoan izan, mesedez, <strong>{{maxProjects}}</strong> proiektu pribaturen jabe izan zaitezke gehienez. Gaur gaurkoz <strong>{{currentProjects}}</strong> proiektu pribaturen jabe zara.",
-                "PUBLIC": "Gogoan izan, mesedez, <strong>{{maxProjects}}</strong> proiektu publikoren jabe izan zaitezke gehienez. Gaur gaurkoz <strong>{{currentProjects}}</strong> proiektu publikoren jabe zara."
+                "PRIVATE": "Gogoan izan <strong>{{maxProjects}}</strong> proiektu pribaturen jabe izan zaitezke gehienez. Gaur gaurkoz <strong>{{currentProjects}}</strong> proiektu pribaturen jabe zara.",
+                "PUBLIC": "Gogoan izan, mesedez, <strong>{{maxProjects}}</strong> proiektu publikoren jabe izan zaitezke gehienez. Gaur gaurkoz <strong>{{currentProjects}}</strong> proiektu publikoren jabe zara.",
+                "PRIVATE_EXCEEDED": "Une honetan <strong>{{currentProjects}} proiektu pribatua</strong> dituzu, zure planak onartzen duen maximoa.",
+                "PUBLIC_EXCEEDED": "Une honetan <strong>{{currentProjects}} proiektu publiko</strong> dituzu, zure planak onartzen duen maximoa."
             },
-            "CANT_BE_OWNED": "Orain ezin duzu halako proiektu baten jabe izan. Nahi baduzu proiektuaren jabe berria izan,  jar zatez harremanetan administratzailearekin, zure kontuaren ezarpenak alda ditzan, proiektuaren jabe izan ahal izateko."
+            "CANT_BE_OWNED": "Orain ezin duzu halako proiektu baten jabe izan. Nahi baduzu proiektuaren jabe berria izan, jar zatez harremanetan administratzailearekin, zure kontuaren ezarpenak alda ditzan, proiektuaren jabe izan ahal izateko."
         },
         "PROJECT_PRESETS": {
             "MENU_TITLE": "Aurrezarpenak",
@@ -891,19 +893,19 @@
             "FILTER_TYPE_USER_STORIES_TITLE": "Erakutsi soilik eginkizunak",
             "FILTER_TYPE_TASKS": "Atazak",
             "FILTER_TYPE_TASKS_TITLE": "Erakutsi soilik atazak",
-            "FILTER_TYPE_ISSUES": "Gertakariak",
-            "FILTER_TYPE_ISSUES_TITLE": "Erakutsi soilik gertakariak",
-            "EMPTY_TITLE": "Badirudi ez dagoela ezer erakustekorik hemen"
+            "FILTER_TYPE_ISSUES": "Eskaerak",
+            "FILTER_TYPE_ISSUES_TITLE": "Erakutsi soilik eskaerak",
+            "EMPTY_TITLE": "Badirudi ez dagoela ezer erakusteko hemen."
         }
     },
     "PROJECT": {
         "PAGE_TITLE": "{{projectName}}",
-        "HELP": "Reorder your projects to set at the top the most used ones.<br/> The top 4 projects will appear in the top navigation bar project list",
+        "HELP": "Berrantolatu zure proiektuak gehien erabiltzen direnak goian ezartzeko.<br/> Goiko nabigazio-barrako proiektuen zerrendan agertuko dira lau proiektu nagusiak",
         "PRIVATE": "Proiektu pribatua",
         "LOOKING_FOR_PEOPLE": "Proiektu honek lankideak behar ditu",
-        "FANS_COUNTER_TITLE": " {total, plural, =1{jarraitzaile bat} other{# jarraitzaile}} ",
-        "WATCHERS_COUNTER_TITLE": "{total, plural, =1{behatzaile bat} other{# behatzaile}} ",
-        "MEMBERS_COUNTER_TITLE": "{total, plural, =1{lankide bat} other{# lankide}} ",
+        "FANS_COUNTER_TITLE": "{guztira, plurala, =1{zale bat} beste{# zale}}",
+        "WATCHERS_COUNTER_TITLE": "{total, plural, =1{behatzaile bat} other{# behatzaile}}",
+        "MEMBERS_COUNTER_TITLE": "{total, plural, =1{lankide bat} other{# lankide}}",
         "BLOCKED_PROJECT": {
             "BLOCKED": "Proiektua blokeatuta",
             "THIS_PROJECT_IS_BLOCKED": "Proiektu hau blokeatuta aldi baterako",
@@ -915,29 +917,29 @@
             "EPICS": "Mugarriak",
             "BACKLOG": "Atzeratutako lana",
             "KANBAN": "Kanban",
-            "ISSUES": "Gertakariak",
+            "ISSUES": "Eskaerak",
             "WIKI": "Wiki",
             "TEAM": "Lantaldea",
-            "MEETUP": "Meetup",
-            "SETTINGS": "Settings",
+            "MEETUP": "Elkartu",
+            "SETTINGS": "Ezarpenak",
             "SCRUM": "Scrum",
-            "COLLAPSE_MENU": "collapse menu"
+            "COLLAPSE_MENU": "tolestu menua"
         },
         "NAVIGATION": {
             "PROJECTS": "Proiektuak",
-            "ACCOUNT_SETTINGS": "Account settings",
-            "ACTION_CREATE_PROJECT": "New project",
-            "ACTION_CREATE_PROJECT_FIRST": "Create your first project",
-            "ACTION_CREATE_PROJECT_FIRST_TEXT": "You don’t have any projects yet. Create one now, invite your team and start using Taiga to the fullest.",
-            "VIEW_ALL_PROJECTS": "View all projects",
+            "ACCOUNT_SETTINGS": "Kontuaren ezarpenak",
+            "ACTION_CREATE_PROJECT": "Proiektu berria",
+            "ACTION_CREATE_PROJECT_FIRST": "Sortu zure lehenengo proiektua",
+            "ACTION_CREATE_PROJECT_FIRST_TEXT": "Oraindik ez duzu proiekturik. Sortu bat orain, gonbidatu zure taldea eta hasi Taiga erabiltzen.",
+            "VIEW_ALL_PROJECTS": "Ikusi proiektu guztiak",
             "MANAGE_PROJECTS": "Kudeatu proiektuak",
             "TITLE_CREATE_PROJECT": "Sortu proiektu bat",
             "HELP_TITLE": "Laguntza",
             "HOMEPAGE": "Hasiera",
-            "TAIGA_RESOURCES_TITLE": "Go to Taiga resources",
-            "TAIGA_RESOURCES": "Taiga Resources",
-            "FEEDBACK_TITLE": "Write to us with your feedback",
-            "FEEDBACK": "Ask a question",
+            "TAIGA_RESOURCES_TITLE": "Ikusi Taigaren baliabideak",
+            "TAIGA_RESOURCES": "Taiga baliabideak",
+            "FEEDBACK_TITLE": "Bidali zure iritzia",
+            "FEEDBACK": "Egin galdera bat",
             "NOTIFICATIONS_TITLE": "Editatu jakinarazpen ezarpenak",
             "NOTIFICATIONS": "Jakinarazpenak",
             "VIEW_PROFILE_TITLE": "Ikusi soslaia",
@@ -955,13 +957,13 @@
             "LIKED": "Gogokoa",
             "UNLIKE": "Ez datsegit",
             "BUTTON_TITLE": "Proiektu hau datsegit edo ez datsegit",
-            "COUNTER_TITLE": " {total, plural, =1{jarraitzaile bat} other{# jarraitzaile}}"
+            "COUNTER_TITLE": "{guztira, plurala, =1{zale bat} beste{# zale}}"
         },
         "WATCH_BUTTON": {
             "BUTTON_TITLE": "Begiratu proiektu hau eta ezarri jakinarazpenak",
             "WATCH": "Begiratu",
             "WATCHING": "Behatzen",
-            "COUNTER_TITLE": "{total, plural, =1{behatzaile bat} other{# behatzaile}} ",
+            "COUNTER_TITLE": "{guztira, plurala, =1{behatzaile bat} other{# behatzaile}}",
             "OPTIONS": {
                 "NOTIFY_ALL": "Jaso jakinarazpen guztiak",
                 "NOTIFY_ALL_TITLE": "Jaso jakinarazpen guztiak proiektu honetan",
@@ -979,8 +981,8 @@
             "TITLE": "Sortu proiektu bat",
             "CHOOSE_TEMPLATE": "Zein txantiloi da egokiena zure proiekturako?",
             "TEMPLATE_SCRUM": "Scrum",
-            "TEMPLATE_SCRUM_DESC": "Antolatu zure atazak aldi laburretan, lehentasunak ezarrita",
-            "TEMPLATE_SCRUM_LONGDESC": "Scrum softwarea garatzeko metodologia bat da, errepikatzailea eta metatzailea, produktuen garapena kudeatzeko sortua.\nProduktua garatzeko egin beharreko lana sekuentzia batean antolatzen da, hurrenkera zorrotzaz. Egin beharreko horiek zatiki erabilgarritan banatzen dira, epe bat dutenak.  Aldiro-aldiro, lantaldeak urrats berri bati ekiten dio, eginkizun kopuru bat amaitzeko konpromisoaz, eskura dituen trebetasun, jakintza eta baliabideen arabera. Proiektua aurrera doa atzeratutako lana gutxitzen den heinean.",
+            "TEMPLATE_SCRUM_DESC": "Antolatu zure atazak aldi laburretan, lehentasunak ezarrita.",
+            "TEMPLATE_SCRUM_LONGDESC": "Scrum softwarea garatzeko metodologia bat da, errepikatzailea eta metatzailea, produktuen garapena kudeatzeko sortua.\nProduktua garatzeko egin beharreko lana sekuentzia batean antolatzen da, hurrenkera zorrotzaz. Egin beharreko horiek zati erabilgarritan banatzen dira, epe bat dutenak. Aldiro-aldiro, lantaldeak urrats berri bati ekiten dio, eginkizun kopuru bat amaitzeko konpromisoaz, eskura dituen trebetasun, jakintza eta baliabideen arabera. Proiektua aurrera doa atzeratutako lana gutxitzen den heinean.",
             "TEMPLATE_KANBAN": "Kanban",
             "TEMPLATE_KANBAN_DESC": "Eduki lan katea etengabe bat ataza bereizietan",
             "TEMPLATE_KANBAN_LONGDESC": "Kanban metodologia erabili ohi da proiektuen garapena urratsetan banatzeko.\nKanban txartel edo ohar moduko bat da, gauzatu beharreko eginkizun eta atazak xehatzen dituena. Kanban arbela erabiltzen da txartelak urratsez urrats eramaten joateko eta, horrela, aurrerabidearen jarraipena egiteko.",
@@ -999,8 +1001,8 @@
         },
         "COMMON": {
             "DETAILS": "Proiektu berriaren xehetasunak",
-            "PROJECT_TITLE": "Project Name (Required)",
-            "PROJECT_DESCRIPTION": "Project Description (Required)"
+            "PROJECT_TITLE": "Proiektuaren izena (beharrezkoa)",
+            "PROJECT_DESCRIPTION": "Proiektuaren deskribapena (beharrezkoa)"
         },
         "DUPLICATE": {
             "TITLE": "Bikoiztu proiektua",
@@ -1023,7 +1025,7 @@
             "WRITE_EMAIL": "Edo, nahiago baduzu, idatzi erabiltzailearen e-posta Taigan",
             "SEARCH_CONTACT": "Edo nahiago baduzu, bilatu zure kontaktuetan",
             "WRITE_EMAIL_LABEL": "Idatzi erabiltzailearen e-posta Taigan",
-            "ACCEEDE": "Access",
+            "ACCEEDE": "Sartu",
             "PROJECT_MEMBERS": "Proiektuaren lankideak",
             "PROCESS_DESCRIPTION": "Esaiguzu Taigako nori esleitu nahi dizkiozun plataforma honen atazak: {{platform}}",
             "MATCH": "pertsona bera al dira <strong>{{user_external}}</strong> eta <strong>{{user_internal}}</strong>?",
@@ -1042,31 +1044,31 @@
                 "PROJECT_MEMBERS_DESC_PUBLIC": "Inportatu nahian ari zaren proiektuak {{members}} erabiltzaile ditu, zu barne. Zoritxarrez, zure planak {{max_memberships}} erabiltzaile onartzen ditu proiektu publiko batean. Muga hori handitu nahi baduzu, jar zatez harremanetan administratzailearekin.",
                 "ACCOUNT_ALLOW_MEMBERS": "Zure kontuan soilik {{members}} erabiltzaile onartzen ditu",
                 "PRIVATE_PROJECTS_SPACE": {
-                    "TITLE": "Zoritxarrez, zure planak ez du onartzen proiektu pribatu gehiago.",
+                    "TITLE": "Zoritxarrez, zure planak ez du onartzen proiektu pribatu gehiago",
                     "DESC": "Inportatzen saiatzen ari zaren proiektua pribatua da. Zoritxarrez, zure planak ez du onartzen proiektu pribatu gehiago."
                 },
                 "PUBLIC_PROJECTS_SPACE": {
-                    "TITLE": "Zoritxarrez, zure planak ez du onartzen proiektu publiko gehiago.",
+                    "TITLE": "Zoritxarrez, zure planak ez du onartzen proiektu publiko gehiago",
                     "DESC": "Inportatzen saiatzen ari zaren proiektua publikoa da. Zoritxarrez, zure planak ez du onartzen proiektu publiko gehiago."
                 },
                 "PRIVATE_PROJECTS_MEMBERS": {
-                    "TITLE": "Zure planak {{max_memberships}} erabiltzaile onartzen ditu proiektu pribatu batean."
+                    "TITLE": "Zure planak {{max_memberships}} erabiltzaile onartzen ditu proiektu pribatu batean"
                 },
                 "PUBLIC_PROJECTS_MEMBERS": {
                     "TITLE": "Zure planak {{max_memberships}} erabiltzaile onartzen ditu proiektu publiko batean."
                 },
                 "PRIVATE_PROJECTS_SPACE_MEMBERS": {
-                    "TITLE": "Zoritxarrez, zure planak ez du onartzen proiektu pribatu gehiago edo gainditzea {{max_memberships}} erabiltzaile baino gehiago proiektu pribatu batean.",
+                    "TITLE": "Zoritxarrez, zure planak ez du onartzen proiektu pribatu gehiago edo gainditzea {{max_memberships}} erabiltzaile baino gehiago proiektu pribatu batean",
                     "DESC": "Inportatzen saiatzen ari zaren proiektua pribatua da eta {{members}} erabiltzaile ditu."
                 },
                 "PUBLIC_PROJECTS_SPACE_MEMBERS": {
-                    "TITLE": "Zoritxarrez, zure planak ez du onartzen proiektu pribatu gehiago edo gainditzea {{max_memberships}} erabiltzaile baino gehiago proiektu publiko batean.",
+                    "TITLE": "Zoritxarrez, zure planak ez du onartzen proiektu pribatu gehiago edo gainditzea {{max_memberships}} erabiltzaile baino gehiago proiektu publiko batean",
                     "DESC": "Inportatzen saiatzen ari zaren proiektua publikoa da eta {{members}} erabiltzaile ditu."
                 }
             },
             "IN_PROGRESS": {
                 "TITLE": "Proiektua inportatzen",
-                "DESCRIPTION": "Prozesu honek denbora pixka bat behar du, ez itxi leiho hau"
+                "DESCRIPTION": "Prozesu honek denbora pixka bat behar du, ez itxi leiho hau."
             },
             "WARNING": {
                 "TITLE": "Ataza batzuk esleitu gabe geldituko dira",
@@ -1082,40 +1084,40 @@
                 "NO_PROJECTS": "Badirudi ez duzula arbelik Trellon"
             },
             "GITHUB": {
-                "SELECTOR": "Inportatu GitHub proiektuaren gertakariak",
+                "SELECTOR": "Inportatu GitHub proiektuaren eskaerak",
                 "CHOOSE_PROJECT": "Aurkitu zein proiektu nahi duzun inportatu",
-                "NO_PROJECTS": "It seems you have no projects in GitHub",
-                "HOW_DO_YOU_WANT_TO_IMPORT": "Nola nahi dituzu gertakariak inportatu Taigara?",
+                "NO_PROJECTS": "Ematen du ez daukazula proiekturik GitHub-en",
+                "HOW_DO_YOU_WANT_TO_IMPORT": "Nola nahi dituzu eskaerak inportatu Taigara?",
                 "KANBAN_PROJECT": "Kanban proiektu bateko eginkizun gisa",
-                "KANBAN_PROJECT_DESCRIPTION": "Hori egin ondoren, Scrum gaitu ahal izango duzu egin beharreko lanarekin",
+                "KANBAN_PROJECT_DESCRIPTION": "Hori egin ondoren, Scrum gaitu ahal izango duzu egitekoekin.",
                 "SCRUM_PROJECT": "Scrum proiektu baten eginkizun gisa",
                 "SCRUM_PROJECT_DESCRIPTION": "Hori egin ondoren, Kanban modua gaitu ahal izango duzu.",
-                "ISSUES_PROJECT": "Gertakari gisa",
-                "ISSUES_PROJECT_DESCRIPTION": "Gertakaria horiek ezin izango dituzu erabili Kanban edo Scrum moduan. Kanban edo Scrum gaitu ahal izango duzu eginkizun berriekin."
+                "ISSUES_PROJECT": "Eskaera gisa",
+                "ISSUES_PROJECT_DESCRIPTION": "Eskaera horiek ezin izango dituzu erabili Kanban edo Scrum moduan. Kanban edo Scrum gaitu ahal izango duzu eginkizun berriekin"
             },
             "ASANA": {
                 "SELECTOR": "Inportatu Asana proiektua eta hautatu nola kudeatu",
                 "CHOOSE_PROJECT": "Aukeratu zein proiektu nahi duzun inportatu",
-                "NO_PROJECTS": "It seems you have no projects in Asana",
+                "NO_PROJECTS": "Ematen du ez daukazula proiekturik Asana-n",
                 "KANBAN_PROJECT": "Kanban",
                 "SCRUM_PROJECT": "Scrum",
-                "CREATE_AS_SCRUM_DESCRIPTION": "Zure proiektuaren atazak eta azpi-atazak bihurtuko dira Taigan eginkizun eta atazak",
-                "CREATE_AS_KANBAN_DESCRIPTION": "Zure proiektuaren atazak eta azpi-atazak bihurtuko dira Taigan eginkizun eta atazak"
+                "CREATE_AS_SCRUM_DESCRIPTION": "Zure proiektuaren atazak eta azpi-atazak bihurtuko dira Taigan eginkizun eta atazak.",
+                "CREATE_AS_KANBAN_DESCRIPTION": "Zure proiektuaren atazak eta azpi-atazak bihurtuko dira Taigako eginkizun eta atazak."
             },
             "JIRA": {
                 "SELECTOR": "Inportatu Jira proiektua eta hautatu nola kudeatu",
                 "HOW_TO_CONFIGURE": "(konfigurazio laguntza)",
                 "CHOOSE_PROJECT": "Aukeratu zein proiektu edo arbel nahi duzun inportatu",
-                "NO_PROJECTS": "It seems you have no projects or boards in Jira",
+                "NO_PROJECTS": "Ematen du ez daukazula proiekturik Jira-n",
                 "URL": "Zure Jira URLa",
                 "KANBAN_PROJECT": "Kanban",
                 "SCRUM_PROJECT": "Scrum",
-                "ISSUES_PROJECT": "Gertakariak",
-                "CREATE_AS_SCRUM_DESCRIPTION": "Zure proiektuaren atazak eta azpi-atazak bihurtuko dira Taigan eginkizun eta atazak",
-                "CREATE_AS_KANBAN_DESCRIPTION": "Zure proiektuaren atazak eta azpi-atazak bihurtuko dira Taigan eginkizun eta atazak",
-                "CREATE_AS_ISSUES_DESCRIPTION": "Zer nahi duzu egin Jira proiektuko azpi-gertakariekin? (Taigak ez du onartzen azpi-gertakaririk)",
-                "CREATE_NEW_ISSUES": "Bihurtu azpi-gertakariak Taigako gertakari",
-                "NOT_CREATE_NEW_ISSUES": "Ez inportatu azpi-gertakariak"
+                "ISSUES_PROJECT": "Eskaerak",
+                "CREATE_AS_SCRUM_DESCRIPTION": "Zure proiektuaren eskaerak eta azpi-eskaerak bihurtuko dira Taigan eginkizun eta ataza.",
+                "CREATE_AS_KANBAN_DESCRIPTION": "Zure proiektuaren atazak eta azpi-atazak bihurtuko dira Taigan eginkizun eta ataza.",
+                "CREATE_AS_ISSUES_DESCRIPTION": "Zer nahi duzu egin Jira proiektuko azpi-eskaerekin? (Taigak ez du onartzen azpi-eskaerak)",
+                "CREATE_NEW_ISSUES": "Bihurtu azpi-eskaerak Taigako eskaera",
+                "NOT_CREATE_NEW_ISSUES": "Ez inportatu azpi-eskaerak"
             }
         },
         "NEWSLETTER_OPENING": {
@@ -1136,12 +1138,12 @@
             "CONFIRM": "Ziur zaude Taiga kontua ezabatu nahi duzula?",
             "CANCEL": "Atzera ezarpenetara",
             "ACCEPT": "Ezabatu kontua",
-            "BLOCK_PROJECT": "Note that all projects you own will be <strong>blocked</strong> after you delete your account. If you do not want a particular project to be blocked, make sure you transfer ownership to another existing Taiga member before deleting your account."
+            "BLOCK_PROJECT": "Kontuan izan zure jabetzako proiektu guztiak <strong>blokeatuta</strong> izango direla zure kontua ezabatu ondoren. Proiektu jakin bat blokeatzea nahi ez baduzu, ziurtatu jabetza lehendik dagoen Taigako beste kide bati transferitzen diozula zure kontua ezabatu aurretik."
         },
         "DELETE_PROJECT": {
             "TITLE": "Ezabatu proiektua",
             "QUESTION": "Ziur zaude proiektu hau ezabatu nahi duzula?",
-            "SUBTITLE": "Proiektuaren datu guztiak (eginkizunak, atazak, gertakariak, urratsak eta wiki orriak) galdu egingo dira! :-(",
+            "SUBTITLE": "Proiektuaren datu guztiak (eginkizunak, atazak, eskaerak, urratsak eta wiki orriak) galdu egingo dira! :-(",
             "CONFIRM": "Bai, ziur nago"
         },
         "ASSIGNED_TO": {
@@ -1164,13 +1166,13 @@
             "HELP_TEXT": "Erabiltzailea dagoenekoz Taigan izena emana badago, automatikoki gehituko da. Bestela, gonbidapena jasoko du."
         },
         "FEEDBACK": {
-            "TITLE": "Ask a question",
-            "COMMENT": "Leave us a message",
+            "TITLE": "Egin galdera bat",
+            "COMMENT": "Bidali mezu bat",
             "ACTION_SEND": "Send Message",
-            "YOU_CAN_ALSO": "You can also:",
-            "CREATE": "Create an issue on this",
+            "YOU_CAN_ALSO": "Hau ere egin dezakezu:",
+            "CREATE": "Sortu eskaera bat hemen ",
             "PUBLIC": "public Taiga project",
-            "EMAIL": "Send us a e-mail directly to",
+            "EMAIL": "Bidali e-mail bat zuzenean helbide honetara ",
             "SUPPORT": "support@taiga.io"
         },
         "SEARCH": {
@@ -1187,34 +1189,34 @@
             "LAST_SPRINT_NAME": "azken urratsa da <strong> {{lastSprint}} ;-) </strong>"
         },
         "CREATE_EDIT": {
-            "TASK_PLACEHOLDER_DESCRIPTION": "Mesedez, gehitu azalpen bat, besteek errazago uler dezaten ataza hau.",
-            "ISSUE_PLACEHOLDER_DESCRIPTION": "Mesedez, gehitu azalpen bat, besteek errazago uler dezaten gertakari hau.",
-            "US_PLACEHOLDER_DESCRIPTION": "Mesedez, gehitu azalpen bat, besteek errazago uler dezaten eginkizun hau.",
+            "TASK_PLACEHOLDER_DESCRIPTION": "Gehitu azalpen bat, besteek errazago uler dezaten ataza hau",
+            "ISSUE_PLACEHOLDER_DESCRIPTION": "Mesedez, gehitu azalpen bat, besteek errazago uler dezaten eskaera hau",
+            "US_PLACEHOLDER_DESCRIPTION": "Gehitu azalpen bat, besteek errazago uler dezaten eginkizun hau",
             "NEW_TASK": "Ataza berria",
-            "NEW_ISSUE": "Gertakari berria",
+            "NEW_ISSUE": "Eskaera berria",
             "NEW_US": "Eginkizun berria",
             "EDIT_TASK": "Editatu ataza",
-            "EDIT_ISSUE": "Editatu gertakaria",
+            "EDIT_ISSUE": "Editatu eskaera",
             "EDIT_US": "Editatu eginkizuna",
-            "ADD_EXISTING_ISSUE": "Gehitu gertakaria hemen: {{ targetName }}",
+            "ADD_EXISTING_ISSUE": "Gehitu eskaera hemen: {{ targetName }}",
             "CONFIRM_CLOSE": "Ez dituzu gorde aldaketak.\nZiur zaude edizio modua itxi nahi duzula?",
-            "EXISTING_ISSUE": "Badago gertakari hori",
-            "CHOOSE_EXISTING_ISSUE": "Zein gertakari?",
-            "ADD_ISSUE": "Gehitu gertakaria",
-            "FILTER_ISSUES": "Iragazi gertakariak",
-            "SWIMLANE": "Swimlane",
-            "SELECT_SWIMLANE": "Select swimlane",
-            "SELECT_STATUS": "Select status",
+            "EXISTING_ISSUE": "Badago eskaera hori",
+            "CHOOSE_EXISTING_ISSUE": "Zein eskaera?",
+            "ADD_ISSUE": "Gehitu eskaera",
+            "FILTER_ISSUES": "Iragazi eskaerak",
+            "SWIMLANE": "Funtzioaren fluxu-diagrama",
+            "SELECT_SWIMLANE": "Aukeratu funtzioaren fluxu-diagrama",
+            "SELECT_STATUS": "Hautatu egoera",
             "DEFAULT": "Lehenetsia",
-            "ERROR_STATUS": "Changes cannot be saved because there is a problem with the selected status.",
-            "ERROR_SWIMLANE": "Changes cannot be saved because there is a problem with the selected swimlane.",
+            "ERROR_STATUS": "Aldaketak ezin dira gorde hautatutako egoerarekin arazo bat dagoelako.",
+            "ERROR_SWIMLANE": "Aldaketak ezin dira gorde hautatutako fluxu-diagramarekin arazo bat dagoelako.",
             "LOCATION": "Kokapena",
             "CREATE_TOP": "goian",
             "CREATE_BOTTOM": "behean"
         },
         "DISABLE_KANBAN": {
-            "TITLE": "Disable kanban",
-            "MESSAGE": "This project has swimlanes. They will be gone but your user stories will not be deleted"
+            "TITLE": "Desaktibatu kanban",
+            "MESSAGE": "Proiektu honek fluxu-diagramak ditu. Desagertu egingo dira baina zure eginkizunak ez dira ezabatuko"
         },
         "DELETE_DUE_DATE": {
             "TITLE": "Ezabatu epemuga",
@@ -1250,7 +1252,7 @@
             "BUTTON": "Eskatu lankide honi proiektuaren jabe izatea"
         },
         "CONTACT_PROJECT": {
-            "TITLE": "Bidali e-posta bat honi:",
+            "TITLE": "Bidali e-posta bat honi",
             "WARNING": "E-posta jasoko du proiektuaren admin-ek",
             "PLACEHOLDER": "Idatzi mezua",
             "SEND": "Bidali"
@@ -1273,13 +1275,13 @@
             "SUBTITLE_ACTION_DELETE_DUE_DATE": "Ziur zaude ezabatu nahi duzula epemugaren egoera {{due_date_status_name}}?"
         },
         "ADMIN_KANBAN_POWERUPS": {
-            "TITLE_ACTION_DELETE_SWIMLANE": "Delete swimlane",
-            "SUBTITLE_ACTION_DELETE_SWIMLANE_OPTIONS": "Are you sure you want to delete {{swimlane}}?",
-            "SUBTITLE_ACTION_DELETE_SWIMLANE_REPLACEMENT": "All the user stories on this swimlane will be moved to:",
-            "SUBTITLE_ACTION_DELETE_SWIMLANE_LAST": "Your user stories will not be deleted. They will remain in the kanban.",
-            "DEFAULT_SWIMLANE": "New user stories will be in this swimlane by default",
-            "SET_DEFAULT_SWIMLANE": "Set this swimlane as default",
-            "DISABLE_DELETE_SWIMLANE": "The default swimlane cannot be deleted"
+            "TITLE_ACTION_DELETE_SWIMLANE": "Ezabatu fluxu-diagrama",
+            "SUBTITLE_ACTION_DELETE_SWIMLANE_OPTIONS": "Ziur zaude ezabatu nahi duzula {{swimlane}}?",
+            "SUBTITLE_ACTION_DELETE_SWIMLANE_REPLACEMENT": "Fluxu-diagrama honetako eginkizun guztiak mugituko dira hona:",
+            "SUBTITLE_ACTION_DELETE_SWIMLANE_LAST": "Zure eginkizunak ez dira ezabatuko. Kanbanean mantenduko dira.",
+            "DEFAULT_SWIMLANE": "Erabiltzaile berriaren eginkizunak fluxu-diagrama honetan egongo dira berez",
+            "SET_DEFAULT_SWIMLANE": "Ezarri fluxu-diagrama hau lehenetsi gisa",
+            "DISABLE_DELETE_SWIMLANE": "Ezin da fluxu-diagrama lehenetsia ezabatu"
         },
         "RELATE_TO_EPIC": {
             "TITLE": "Estekatu mugarri bati",
@@ -1296,10 +1298,10 @@
     "EPIC": {
         "PAGE_TITLE": "{{epicSubject}} - Mugarria {{epicRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Egoera: {{epicStatus }}. Azalpena: {{epicDescription}}",
-        "EPIC_COLOR": "Epic color:",
+        "EPIC_COLOR": "Mugarriaren kolorea:",
         "SECTION_NAME": "Mugarria",
         "ERROR_UNLINK_RELATED_USERSTORY": "Ezin izan dugu esteka kendu: {{errorMessage}}",
-        "CREATE_RELATED_USERSTORIES": "Sortu harremana honekin:",
+        "CREATE_RELATED_USERSTORIES": "Sortu harremana honekin",
         "NEW_USERSTORY": "Eginkizun berria",
         "EXISTING_USERSTORY": "Lehendik dauden eginkizunak",
         "CHOOSE_PROJECT_FOR_CREATION": "Zein proiektu?",
@@ -1322,16 +1324,16 @@
         "TOTAL_POINTS": "puntuak guztira",
         "ADD": "eginkizuna",
         "ADD_BULK": "Gehitu eginkizun berrien sail bat",
-        "PROMOTED_FROM_ISSUE": "Eginkizun hau gertakari honetatik sortua da:",
+        "PROMOTED_FROM_ISSUE": "Eginkizun hau eskaera honetatik sortua da:",
         "PROMOTED_FROM_TASK": "Eginkizun hau ataza honetatik sortua da:",
-        "CONVERTED_FROM_TASK": "This user story was originally a task.",
-        "TITLE_LINK_GO_TO_ISSUE": "Joan gertakarira",
+        "CONVERTED_FROM_TASK": "Eginkizun honek ataza batean du jatorria.",
+        "TITLE_LINK_GO_TO_ISSUE": "Joan eskaera honetara",
         "TITLE_LINK_GO_TO_TASK": "Joan atazara",
         "TITLE_DELETE_ACTION": "Ezabatu eginkizuna",
-        "TITLE_DELETE_MESSAGE": "Are you sure you want to delete <strong>“{{subject}}“</strong>?",
+        "TITLE_DELETE_MESSAGE": "Ziur <strong>“{{subject}}”</strong> ezabatu nahi duzula?",
         "LIGHTBOX_TITLE_BLOKING_US": "Blokeatzen eginkizuna",
         "NOT_ESTIMATED": "N/E",
-        "OWNER_US": "Eginkizun hau honi dagokio:",
+        "OWNER_US": "Eginkizun hau honi dagokio",
         "RELATE_TO_EPIC": "Estekatu mugarri bati",
         "REMOVE_RELATIONSHIP_WITH_EPIC": "Ezabatu mugarriarekiko harremana",
         "TRIBE": {
@@ -1343,11 +1345,11 @@
             "CLOSE": "Itxi",
             "SYNCHRONIZE_LINK": "sinkronizatu Taiga Tribe-rekin",
             "PUBLISH_MORE_INFO_TITLE": "Beste inor behar duzu ataza honetan?",
-            "PUBLISH_MORE_INFO_TEXT": "<p>Laguntza behar baduzu lan jakin batetik, aise sor dezakezu <i>gig</i> bat hemen:<a href='http://taigatribe.com' title='Taiga Tribe'> Taiga Tribe </a>; komunitatearen laguntza jasoko duzu. Zure <i>gig</i> hori kontrolatu eta kudeatu ahal izango duzu, laguntzeko prest dagoen komunitate zabal baten laguntzaz.</p><p><a href='http://taigatribe.com' title='Taiga Tribe'> TaigaTribe </a>  Taiga senide bat da. Bi plataformak bereiz bizi daitezke, noski, baina uste dugu elkar indartzen ahal dutela batera erabiliz gero, eta lana atseginago bihurtzen dutela.</p>"
+            "PUBLISH_MORE_INFO_TEXT": "<p>Laguntza behar baduzu lan jakin batetik, aise sor dezakezu 'gig' bat hemen:<a href='http://taigatribe.com' title='Taiga Tribe'> Taiga Tribe </a> eta komunitatearen laguntza jasoko duzu. Zure 'gig' hori kontrolatu eta kudeatu ahal izango duzu, laguntzeko prest dagoen komunitate zabal baten laguntzaz.</p><p><a href='http://taigatribe.com' title='Taiga Tribe'> TaigaTribe </a> Taiga senide bat da. Bi plataformak bereiz bizi daitezke, noski, baina uste dugu elkar indartzen ahal dutela batera erabiliz gero, eta lana atseginago bihurtzen dutela.</p>"
         }
     },
     "COMMENTS": {
-        "TITLE": "Comments",
+        "TITLE": "Iradokizunak",
         "DELETED_INFO": "Iruzkina erabiltzaile honek ezabatu du: {{user}}",
         "COMMENTS_COUNT": "{{comments}} Iruzkinak",
         "OLDER_FIRST": "Zaharrena lehenbizi",
@@ -1370,7 +1372,7 @@
         "TAGS_ADDED": "gehitutako etiketak:",
         "TAGS_REMOVED": "ezabatutako etiketak:",
         "US_POINTS": "{{role}} puntuak",
-        "NEW_ATTACHMENT": "eranskin berria",
+        "NEW_ATTACHMENT": "eranskin berria:",
         "DELETED_ATTACHMENT": "ezabatutako eranskina:",
         "UPDATED_ATTACHMENT": "eguneratu eranskin hau ({{filename}}):",
         "CREATED_CUSTOM_ATTRIBUTE": "Ezaugarri pertsonalizatua sortuta",
@@ -1391,12 +1393,12 @@
             "SEVERITY": "larritasuna",
             "STATUS": "egoera",
             "TYPE": "mota",
-            "ASSIGNED_TO": "nori esleitua?",
+            "ASSIGNED_TO": "honi esleitua",
             "ASSIGNED_USERS": "esleitutako erabiltzaile",
             "DUE_DATE": "epemuga",
             "MILESTONE": "urratsa",
             "COLOR": "kolorea",
-            "PROMOTED_TO": "promoted to"
+            "PROMOTED_TO": "goratu hona"
         }
     },
     "BACKLOG": {
@@ -1404,18 +1406,18 @@
         "PAGE_DESCRIPTION": "Atzeratutako lanen panela, proiektu honen eginkizun eta urratsekin: {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Scrum",
         "CUSTOMIZE_GRAPH": "Pertsonalizatu atzeratutako lanen grafikoa",
-        "CUSTOMIZE_GRAPH_TEXT": "Proiektuaren bilakaeraren jarraipena egiteko grafiko bat nahi baduzu, puntuak eta urratsak zehaztu behar dituzu honen bitartez:",
+        "CUSTOMIZE_GRAPH_TEXT": "Proiektuaren bilakaeraren jarraipena egiteko grafiko bat nahi baduzu, puntuak eta urratsak zehaztu behar dituzu honen bitartez",
         "CUSTOMIZE_GRAPH_ADMIN": "Admin",
         "CUSTOMIZE_GRAPH_TITLE": "Ezarri puntuak eta urratsak Admin bitartez",
-        "TOTAL_STORIES_FILTERED": "of {{ totalUserStories }} user stories",
-        "TOTAL_STORIES": "{{ totalUserStories }} user stories",
+        "TOTAL_STORIES_FILTERED": "{{ totalUserStories }} eginkizunetatik",
+        "TOTAL_STORIES": "{{ totalUserStories }} eginkizun",
         "MOVE_US_TO_CURRENT_SPRINT": "Mugitu oraingo urratsera",
         "MOVE_US_TO_LATEST_SPRINT": "Mugitu azken urratsera",
         "EMPTY": "Atzeratutako lanen atala hutsik dago!",
         "CREATE_NEW_US": "Sortu eginkizun berri bat",
-        "CREATE_NEW_US_EMPTY_HELP": "Add a user story",
-        "NO_MATCH": "No matching search result found with “{{ q }}”",
-        "NO_MATCH_HELP": "Try again using more general search terms",
+        "CREATE_NEW_US_EMPTY_HELP": "Gehitu eginkizuna",
+        "NO_MATCH": "Ez da \"{{ q }}\"-rekin bat datorren bilaketa-emaitzarik aurkitu",
+        "NO_MATCH_HELP": "Saiatu berriro bilaketa-termino orokorragoak erabiliz",
         "EXCESS_OF_POINTS": "Puntu gehiegi",
         "PENDING_POINTS": "Emateko dauden puntuak",
         "CLOSED_POINTS": "itxita",
@@ -1441,11 +1443,11 @@
         },
         "FORECASTING": {
             "TITLE": "Lastertasun aurreikuspena",
-            "BACKLOG": "return to backlog",
-            "NEW_SPRINT": "Candidate user stories for your next sprint based on your velocity.",
+            "BACKLOG": "bueltatu egitekoetara",
+            "NEW_SPRINT": "Zure hurrengo urratserako eginkizun hautagaiak, zure abiaduran oinarrituta.",
             "CURRENT_SPRINT": "Eginkizun hautagaia, urratsetik sortua, zure lastertasunean oinarrituta. Klik egin urrats hau gehitzeko.",
-            "ADD_NEW_SPRINT": "create sprint and add US",
-            "ADD_NEW_SPRINT_SHORT": "create sprint"
+            "ADD_NEW_SPRINT": "sortu urratsa eta gehitu eginkizunak",
+            "ADD_NEW_SPRINT_SHORT": "sortu urratsa"
         },
         "TABLE": {
             "COLUMN_US": "Eginkizuna",
@@ -1470,7 +1472,7 @@
         "FILTERS": {
             "TOGGLE": "Txandakatu iragazkiak ikustea",
             "TITLE": "Iragazkiak",
-            "HIDE_TITLE": "Hide filters"
+            "HIDE_TITLE": "Ezkutatu iragazkiak"
         },
         "SPRINTS": {
             "TITLE": "Urratsak",
@@ -1489,7 +1491,7 @@
     "ERROR": {
         "TEXT1": "Arazoren bat gertatu da, Taigak errorea atzitu du konpondu ahal izateko.",
         "NOT_FOUND": "Ezin da aurkitu",
-        "NOT_FOUND_TEXT": "Error 404. Bilatzen ari zaren orria ez dago. Agian Taigaren hasiera orrira itzul zaitezke eta saiatu aurkitzen",
+        "NOT_FOUND_TEXT": "Error 404. Bilatzen ari zaren orria ez dago. Agian Taigaren hasiera orrira itzul zaitezke eta saiatu aurkitzen.",
         "PERMISSION_DENIED": "Ez duzu baimenik",
         "PERMISSION_DENIED_TEXT": "Ez duzu baimenik orri honetan sartzeko.",
         "VERSION_ERROR": "Beste norbaitek aldatu du hau Taigan zuk baino lehenago; beraz, zure aldaketak ezin dira gorde. Gorde aldaketak beste nonbait, kargatu orria eta idatzi zure aldaketak berriro, bestela galdu egingo baitira."
@@ -1500,13 +1502,13 @@
         "SECTION_NAME": "Ataza arbela",
         "TITLE_ACTION_ADD": "Gehitu ataza berria",
         "TITLE_ACTION_ADD_BULK": "Gehitu ataza berriak sailka",
-        "TITLE_ACTION_ADD_ISSUE": "Gehitu gertakari berri bat",
-        "TITLE_ACTION_ADD_ISSUE_BULK": "Gehitu gertakari berriak sailka",
+        "TITLE_ACTION_ADD_ISSUE": "Gehitu eskaera berri bat",
+        "TITLE_ACTION_ADD_ISSUE_BULK": "Gehitu eskaera berriak sailka",
         "TITLE_ACTION_ASSIGN": "Esleitu ataza",
-        "PLACEHOLDER_CARD_TITLE": "This could be a user story",
-        "PLACEHOLDER_CARD_TEXT": "Go to the <a href=\"{{ backlogUrl }}\" title=\"Go to backlog\">backlog</a> and drag user stories to this sprint; split the stories into tasks to track them separately.",
-        "TASK_NOT_FOUND_TITLE": "No matching results found",
-        "TASK_NOT_FOUND_TEXT": "Try again using more general search terms or disabling some filters.",
+        "PLACEHOLDER_CARD_TITLE": "Hau eginkizun bat izan daiteke",
+        "PLACEHOLDER_CARD_TEXT": "Joan <a href=\"{{ backlogUrl }}\" title=\"Go to backlog\">egitekoetara</a>ra eta arrastatu eginkizunak urrats honetara; zatitu eginkizunak atazetan bereizita jarraitzeko.",
+        "TASK_NOT_FOUND_TITLE": "Ez da bat datorren emaitzarik aurkitu",
+        "TASK_NOT_FOUND_TEXT": "Saiatu berriro bilaketa-termino orokorragoak erabiliz edo iragazki batzuk desgaituz.",
         "TITLE_DATE_RANGE": "{{startDate}} <span>to</span> {{endDate}}",
         "TABLE": {
             "COLUMN": "Eginkizuna",
@@ -1516,16 +1518,16 @@
             "TITLE_ACTION_UNFOLD_ROW": "Zabaldu lerroa",
             "FIELD_POINTS": "puntuak",
             "ROW_STORYLESS_TASKS_TITLE": "Eginkizunik gabeko atazak",
-            "ROW_ISSUES_TITLE": "Urratsen gertakariak"
+            "ROW_ISSUES_TITLE": "Urratsen eskaerak"
         },
         "CHARTS": {
             "XAXIS_LABEL": "Egunak",
-            "YAXIS_LABEL": "Projected points progress",
-            "OPTIMAL": "Pending points for day {{formattedDate}} should be {{roundedValue}}",
+            "YAXIS_LABEL": "Proiektuko eginkizunen aurrerapena",
+            "OPTIMAL": "{{formattedDate}} egunean zain dauden eginkizunak {{roundedValue}} izan behar dira",
             "REAL": "{{formattedDate}} egunean eman beharreko benetako puntu kopurua da {{roundedValue}}",
             "DATE": "DD MMMM YYYY",
-            "HELP_LINK": "How this chart works",
-            "HELP_TOOLTIP": "This burndown chart shows the sprint's approximate or projected progress based on estimated user story closed tasks. Actual finished estimated user stories are tracked above."
+            "HELP_LINK": "Taula honek nola funtzionatzen duen",
+            "HELP_TOOLTIP": "Errekuntza-taula honek gutxi gorabeherako urratsa edo eginkizunean burututako atazetan oinarrituta aurreikusitako aurrerapena erakusten du. Amaitutako benetako eginkizunen jarraipena egiten da goian."
         },
         "MOVE_TO_SPRINT": {
             "TITLE_ACTION_MOVE_UNFINISHED": "Eraman bukatu gabeko osagaiak urrats berri batera",
@@ -1535,9 +1537,9 @@
             "SELECT_DESTINATION_PLACEHOLDER": "Hautatu helmuga",
             "UNFINISHED_USER_STORIES_COUNT": "{total, plural, =1{eginkizun <strong>#</strong> amaitu gabe} other{<strong>#</strong> eginkizun amaitu gabe}}",
             "UNFINISHED_STORYLESS_TASKS_COUNT": "{total, plural, =1{eginkizunik gabeko ataza <strong>#</strong> amaitu gabe} other{eginkizunik gabeko <strong>#</strong> ataza amaitu gabe}}",
-            "UNFINISHED_ISSUES_COUNT": "{total, plural, =1{amaitu gabeko gertakari <strong>#</strong>} other{amaitu gabeko<strong>#</strong> gertakari}}",
+            "UNFINISHED_ISSUES_COUNT": "{total, plural, =1{amaitu gabeko eskaera <strong>#</strong>} other{amaitu gabeko<strong>#</strong> eskaera}}",
             "WARNING_ISSUES_NOT_MOVED_TITLE": "Eginkizun eta ataza guztiak mugitu dituzu; urratsa itxi egingo da",
-            "WARNING_ISSUES_NOT_MOVED": "Gertakariak urratsean geldituko dira, ezabatu gabe",
+            "WARNING_ISSUES_NOT_MOVED": "Eskaerak urratsean geldituko dira, ezabatu gabe",
             "WARNING_SPRINT_STILL_OPEN_TITLE": "{total, plural, =1{Mugitu duzu osagai #!} other{Mugitu dituzu # osagai!}}",
             "WARNING_SPRINT_STILL_OPEN": "Gogoan izan {{sprintName}} urratsa <strong>zabalik geldituko dela</strong> amaitu gabeko osagairik duen bitartean."
         }
@@ -1550,7 +1552,7 @@
         "TITLE_LINK_TASKBOARD": "Zoaz atazen arbelera",
         "PLACEHOLDER_SUBJECT": "Idatzi ataza berriaren gaia",
         "TITLE_SELECT_STATUS": "Egoeraren izena",
-        "OWNER_US": "Ataza hau honi dagokio:",
+        "OWNER_US": "Ataza hau honi dagokio",
         "TITLE_LINK_GO_OWNER": "Joan eginkizunera",
         "TITLE_DELETE_ACTION": "Ezabatu ataza",
         "LIGHTBOX_TITLE_BLOKING_TASK": "Blokeatzen ataza",
@@ -1561,7 +1563,7 @@
     },
     "NOTIFICATION": {
         "OK": "Dena ongi joan da",
-        "WARNING": "Oops, something went wrong...",
+        "WARNING": "Oops, zerbait gaizki joan da...",
         "WARNING_TEXT": "Zure aldaketak ez dira gorde!",
         "SAVED": "Taigak gorde ditu zure aldaketa guztiak!",
         "CLOSE": "Itxi jakinarazpena",
@@ -1582,26 +1584,26 @@
         "SUBTITLE": "Klik bat gehiago eginda, zure e-posta eguneratuta geldituko da!",
         "PLACEHOLDER_INPUT_TOKEN": "aldatu e-postaren identifikatzailea",
         "ACTION_CHANGE_EMAIL": "Aldatu e-posta",
-        "SUCCESS": "Your email address has been successfully changed"
+        "SUCCESS": "Zure helbide elektronikoa behar bezala aldatu da"
     },
     "VERIFY_EMAIL_FORM": {
-        "TITLE": "Verify your email",
-        "SUBTITLE": "One click more and your email will be verified!",
+        "TITLE": "Egiaztatu posta elektronikoa",
+        "SUBTITLE": "Klik bat gehiago eta zure posta elektronikoa egiaztatuko da!",
         "PLACEHOLDER_INPUT_TOKEN": "aldatu e-postaren identifikatzailea",
-        "ACTION_VERIFY_EMAIL": "Verify email",
-        "SUCCESS": "Congratulations!!, your email address has been verified"
+        "ACTION_VERIFY_EMAIL": "Egiaztatu posta elektronikoa",
+        "SUCCESS": "Zorionak!!, zure helbide elektronikoa egiaztatu da"
     },
     "ISSUES": {
-        "PAGE_TITLE": "Gertakariak - {{projectName}}",
-        "PAGE_DESCRIPTION": "Gertakarien zerrenda {{projectName}} proiektuan:{{projectDescription}}",
-        "SECTION_NAME": "Gertakaria",
-        "ACTION_NEW_ISSUE": "NEW ISSUE",
-        "ACTION_ATTACH_SPRINT": "Erantsi gertakaria urrats batean",
-        "ACTION_DETACH_SPRINT": "Desestekatu gertakaria urratsetik",
-        "EXTERNAL_REFERENCE": "Gertakari hau hemendik sortua da:",
+        "PAGE_TITLE": "Eskaerak - {{projectName}}",
+        "PAGE_DESCRIPTION": "Eskaeren zerrenda {{projectName}} proiektuan:{{projectDescription}}",
+        "SECTION_NAME": "Eskaera",
+        "ACTION_NEW_ISSUE": "ESKAERA BERRIA",
+        "ACTION_ATTACH_SPRINT": "Erantsi eskaera urrats honi",
+        "ACTION_DETACH_SPRINT": "Desestekatu eskaera urratsetik",
+        "EXTERNAL_REFERENCE": "Eskaera hau hemendik sortua da",
         "GO_TO_EXTERNAL_REFERENCE": "Joan jatorrira",
-        "ACTION_DELETE": "Ezabatu gertakaria",
-        "LIGHTBOX_TITLE_BLOKING_ISSUE": "Blokeatzen gertakaria",
+        "ACTION_DELETE": "Ezabatu eskaera",
+        "LIGHTBOX_TITLE_BLOKING_ISSUE": "Eskaera blokeatuta",
         "LINK_TASKBOARD": "Atazen arbela",
         "TITLE_LINK_TASKBOARD": "Zoaz atazen arbelera",
         "FILTER_SPRINTS": "Iragazi urratsak",
@@ -1611,38 +1613,38 @@
             "SEVERITY": "Larritasuna",
             "TYPE": "Mota"
         },
-        "FILTER_ISSUES": "Iragazi gertakariak",
+        "FILTER_ISSUES": "Iragazi eskaerak",
         "CONFIRM_DETACH_FROM_SPRINT": {
-            "TITLE": "Desestekatu gertakaria urratsetik",
-            "MESSAGE": "Gertakari desestekatu egingo duzu <strong>{{ sprintName }}<strong> urratsetik"
+            "TITLE": "Kendu eskaera urratsetik",
+            "MESSAGE": "Eskaera desestekatu egingo duzu <strong>{{ sprintName }}<strong> urratsetik"
         },
         "CONFIRM_CHANGE_FROM_SPRINT": {
-            "TITLE": "Erantsi gertakaria urrats batean",
-            "MESSAGE": "<strong>Gertakari hau loturik dago urrats honekin: {{ oldSprintName }}</strong>. Desestekatu egingo duzu urrats honetatik eta estekatu <strong>{{ new sprintName }}<strong> urratsera."
+            "TITLE": "Erantsi eskaera urrats bati",
+            "MESSAGE": "<strong>Eskaera hau loturik dago {{ oldSprintName } urratsarekin}</strong>. Desestekatu egingo duzu urrats honetatik eta estekatu <strong>{{ newSprintName }} urratsera.</strong>"
         },
         "TABLE": {
             "COLUMNS": {
                 "TYPE": "Mota",
                 "SEVERITY": "Larritasuna",
                 "PRIORITY": "Lehentasuna",
-                "ISSUE": "Gertakaria",
+                "ISSUE": "Eskaera",
                 "VOTES": "Bozkak",
                 "STATUS": "Egoera",
-                "ATTACHMENTS": "Attachments",
+                "ATTACHMENTS": "Eranskinak",
                 "MODIFIED": "Aldatuta",
-                "ASSIGNED_TO": "Assign to"
+                "ASSIGNED_TO": "Honi esleitua"
             },
             "TITLE_ACTION_CHANGE_STATUS": "Aldatu egoera",
-            "TITLE_ACTION_ASSIGNED_TO": "nori esleitua?",
+            "TITLE_ACTION_ASSIGNED_TO": "Honi esleitua",
             "BLOCKED": "Blokeatuta",
             "EMPTY": {
-                "TITLE": "Ez dago gertakaririk txostenerako :-)",
-                "SUBTITLE": "Aurkitu duzu gertakaririk?"
+                "TITLE": "Ez dago eskaerarik txostenerako :-)",
+                "SUBTITLE": "Aurkitu duzu eskaerarik?"
             }
         }
     },
     "ISSUE": {
-        "PAGE_TITLE": "{{issueSubject}} - Gertakaria {{issueRef}} - {{projectName}}",
+        "PAGE_TITLE": "{{issueSubject}} - Eskaera {{issueRef}} - {{projectName}}",
         "PAGE_DESCRIPTION": "Egoera: {{issueStatus }}. Mota: {{issueType}}, lehentasuna: {{issuePriority}}. Larritasuna: {{issueSeverity}}. Azalpena: {{issueDescription}}"
     },
     "KANBAN": {
@@ -1655,28 +1657,28 @@
         "TITLE_ACTION_ADD_BULK": "Gehitu berriak sailka",
         "ACTION_SHOW_ARCHIVED": "Erakutsi artxibatuak",
         "ACTION_HIDE_ARCHIVED": "Ezkutatu artxibatuak",
-        "US_NOT_FOUND_TITLE": "No matching results found",
-        "US_NOT_FOUND_TEXT_P1": "Try again using more general search terms or disabled some filters.",
-        "US_NOT_FOUND_TEXT_P2": "<strong>Archived stories</strong> are not loaded by default. Unfold the archived statuses to expand your search.",
-        "PLACEHOLDER_CARD_TITLE": "This could be a user story",
-        "PLACEHOLDER_CARD_TEXT": "Create user stories here and change their status to track their progress.",
+        "US_NOT_FOUND_TITLE": "Ez da bat datorren emaitzarik aurkitu",
+        "US_NOT_FOUND_TEXT_P1": "Saiatu berriro bilaketa-termino orokorragoak erabiliz edo desgaitu iragazki batzuk.",
+        "US_NOT_FOUND_TEXT_P2": "<strong>Artxibatutako eginkizunak</strong> ez dira lehenespenez kargatzen. Zabaldu artxibatutako egoerak bilaketa zabaltzeko.",
+        "PLACEHOLDER_CARD_TITLE": "Hau eginkizun bat izan daiteke",
+        "PLACEHOLDER_CARD_TEXT": "Sortu eginkizunak hemen eta aldatu haien egoera haien aurrerapena jarraitzeko.",
         "NUMBER_US": "Number of US",
-        "ARCHIVED": "(Archived)",
-        "CREATE_SWIMLANE": "Create more swimlanes",
-        "UNCLASSIFIED_USER_STORIES": "Unclassified user stories",
-        "UNCLASSIFIED_USER_STORIES_TOOLTIP": "The user stories that are not part of any swimlane are here."
+        "ARCHIVED": "(Gordeta)",
+        "CREATE_SWIMLANE": "Sortu fluxu-diagrama gehiago",
+        "UNCLASSIFIED_USER_STORIES": "Sailkatu gabeko eginkizunak",
+        "UNCLASSIFIED_USER_STORIES_TOOLTIP": "Inongo fluxu-diagramako parte ez diren eginkizunak hemen daude."
     },
     "SEARCH": {
         "PAGE_TITLE": "Bilatu - {{projectName}}",
-        "PAGE_DESCRIPTION": "Bilatu zernahi, eginkizunak, gertakariak, atazak edo wiki orriak proiektu honetan: {{projectName}}: {{projectDescription}}",
+        "PAGE_DESCRIPTION": "Bilatu zernahi, eginkizunak, eskaerak, atazak edo wiki orriak proiektu honetan: {{projectName}}: {{projectDescription}}",
         "FILTER_EPICS": "Mugarriak",
         "FILTER_USER_STORIES": "Eginkizunak",
-        "FILTER_ISSUES": "Gertakariak",
+        "FILTER_ISSUES": "Eskaerak",
         "FILTER_TASKS": "Atazak",
         "FILTER_WIKI": "Wiki orriak",
-        "PLACEHOLDER_SEARCH": "Bilatu hemen:",
+        "PLACEHOLDER_SEARCH": "Bilatu hemen...",
         "TITLE_ACTION_SEARCH": "bilatu",
-        "EMPTY_TITLE": "Ez dugu ezer aurkitu bilaketa irizpide horiekin",
+        "EMPTY_TITLE": "Ez dugu ezer aurkitu bilaketa irizpide horrekin.",
         "EMPTY_DESCRIPTION": "Saiatu goiko fitxetan edo bilatu berriro"
     },
     "TEAM": {
@@ -1684,14 +1686,14 @@
         "PAGE_DESCRIPTION": "Lantaldearen panela proiektuaren lankide guztiak erakusteko: {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Lantaldea",
         "PLACEHOLDER_INPUT_SEARCH": "Bilatu izen osoaren arabera…",
-        "COLUMN_MR_WOLF": "Mr. Wolf",
-        "EXPLANATION_COLUMN_MR_WOLF": "Itxitako gertakariak",
+        "COLUMN_MR_WOLF": "Otsoa Jauna",
+        "EXPLANATION_COLUMN_MR_WOLF": "Itxitako eskaerak",
         "COLUMN_IOCAINE": "Pozoi edalea",
         "EXPLANATION_COLUMN_IOCAINE": "Pozoi dosia irentsita",
         "COLUMN_CERVANTES": "Etxepare",
         "EXPLANATION_COLUMN_CERVANTES": "Wiki orriak editatuta",
         "COLUMN_BUG_HUNTER": "Zomorro ehiztaria",
-        "EXPLANATION_COLUMN_BUG_HUNTER": "Gertakari aitortuak",
+        "EXPLANATION_COLUMN_BUG_HUNTER": "Informatutako eskaerak",
         "COLUMN_NIGHT_SHIFT": "Gaueko txanda",
         "EXPLANATION_COLUMN_NIGHT_SHIFT": "Atazak itxita",
         "COLUMN_TOTAL_POWER": "Guztira indarra",
@@ -1702,7 +1704,7 @@
         "ACTION_LEAVE_PROJECT": "Ezabatu proiektu hau"
     },
     "USER_SETTINGS": {
-        "AVATAR_MAX_SIZE": "[Max. size: {{maxFileSize}}]",
+        "AVATAR_MAX_SIZE": "[Tamaina maximoa: {{maxFileSize}}]",
         "MENU": {
             "SECTION_TITLE": "Erabiltzailearen ezarpenak",
             "CHANGE_PASSWORD": "Aldatu pasahitza",
@@ -1740,9 +1742,9 @@
         "ACTION_USE_GRAVATAR": "Erabili irudi lehenetsia",
         "ACTION_DELETE_ACCOUNT": "Ezabatu Taigako kontua",
         "ACTION_DOWNLOAD_PROFILE": "Deskargatu Taiga soslaia",
-        "ACTION_VERIFY_EMAIL": "Verify your email",
+        "ACTION_VERIFY_EMAIL": "Egiaztatu zure posta elektronikoa",
         "CHANGE_EMAIL_SUCCESS": "<strong>Begiratu zure e-posta!</strong><br />Mezu ba bidali dugu zure izenean<br />helbide berria ezartzeko jarraibideekin",
-        "VERIFY_EMAIL_SUCCESS": "<strong>Check your inbox!</strong><br />We have sent you an email<br />with instructions on how to verify your address",
+        "VERIFY_EMAIL_SUCCESS": "<strong>Begiratu zure sarrera-ontzia!</strong><br />Mezu elektroniko bat bidali dizugu<br />zure helbidea egiaztatzeko argibideekin",
         "CHANGE_PHOTO": "Aldatu argazkia",
         "FIELD": {
             "USERNAME": "Erabiltzaile izena",
@@ -1794,16 +1796,16 @@
         "HINT2_TITLE": "Badakizu eremu pertsonalizatuak sortu ditzakezula?",
         "HINT2_TEXT": "Lantaldeak eremu pertsonalizatuak sor ditzake, bakoitzaren lan kateari ongi egokitutako datuak jaso ahal izateko.",
         "HINT3_TITLE": "Jarri proiektuak zure hurrenkeraren arabera.",
-        "HINT3_TEXT": "The 4 projects are listed in the direct access bar at the top.",
+        "HINT3_TEXT": "4 proiektuak goiko sarbide zuzeneko barran ageri dira.",
         "HINT4_TITLE": "Ahaztu zaizu zertan ari zinen lanean?",
-        "HINT4_TEXT": "Ez kezkatu, tresnen arbelean aurkituko dituzu zabalik, zuk landutako ataza, gertakari eta eginkizunak."
+        "HINT4_TEXT": "Ez kezkatu, tresnen arbelean aurkituko dituzu zabalik, zuk landutako ataza, eskaerak eta eginkizunak."
     },
     "TIMELINE": {
         "UPLOAD_ATTACHMENT": "{{username}} erabiltzaileak eranskin bat kargatu du hemen: {{obj_name}}",
         "US_CREATED": "{{username}} erabiltzaileak {{obj_name}} eginkizuna sortu du hemen: {{project_name}}",
-        "ISSUE_CREATED": "{{username}} erabiltzaileak {{obj_name}} gertakaria sortu du hemen: {{project_name}}",
+        "ISSUE_CREATED": "{{username}} erabiltzaileak {{obj_name}} eskaria sortu du hemen: {{project_name}}",
         "TASK_CREATED": "{{username}} erabiltzaileak {{obj_name}} ataza berri bat sortu du hemen: {{project_name}}",
-        "TASK_CREATED_WITH_US": "{{username}} erabiltzaileak {{obj_name}} ataza berri bat sortu du  {{project_name}} proiektuan, eginkizun honi dagokiona: {{us_name}}",
+        "TASK_CREATED_WITH_US": "{{username}} erabiltzaileak {{obj_name}} ataza berri bat sortu du {{project_name}} proiektuan, eginkizun honi dagokiona: {{us_name}}",
         "WIKI_CREATED": "{{username}} erabiltzaileak {{obj_name}} wiki orria sortu du hemen: {{project_name}}",
         "MILESTONE_CREATED": "{{username}} erabiltzaileak {{obj_name}} urrats berri bat sortu du hemen: {{project_name}}",
         "EPIC_CREATED": "{{username}} erabiltzaileak {{obj_name}} mugarri bat sortu du hemen: {{project_name}}",
@@ -1824,10 +1826,10 @@
         "EPIC_UPDATED_WITH_NEW_VALUE": "{{username}} erabiltzaileak eguneratu du ezaugarri hau \"{{field_name}}\" eginkizun honetan: {{obj_name}}",
         "EPIC_UPDATED_WITH_NEW_COLOR": "{{username}} erabiltzaileak eguneratu du \"{{field_name}}\" mugarri honetan: {{obj_name}}, balio honetara <span class=\"new-color\" style=\"background: {{new_value}}\"></span>",
         "NEW_COMMENT_US": "{{username}} erabiltzaileak iruzkindu du eginkizun hau: {{obj_name}}",
-        "NEW_COMMENT_ISSUE": "{{username}} erabiltzaileak iruzkindu du gertakari hau: {{obj_name}}",
+        "NEW_COMMENT_ISSUE": "{{username}} erabiltzaileak iruzkindu du eskaera hau: {{obj_name}}",
         "NEW_COMMENT_TASK": "{{username}} erabiltzaileak iruzkindu du ataza hau: {{obj_name}}",
         "NEW_COMMENT_EPIC": "{{username}} erabiltzaileak iruzkindu du mugarri hau: {{obj_name}}",
-        "NEW_MEMBER": "{{project_name}} proiektua lankide  berri bat du",
+        "NEW_MEMBER": "{{project_name}} proiektuak lankide berri bat du",
         "US_ADDED_MILESTONE": "{{username}} erabiltzaileak gehitu du eginkizun hau: {{obj_name}} {{sprint_name}} urratsean",
         "US_MOVED": "{{username}} erabiltzaileak mugitu du eginkizun hau: {{obj_name}}",
         "US_REMOVED_FROM_MILESTONE": "{{username}} erabiltzaileak gehitu du eginkizun hau: {{obj_name}} atzeratutako lanera",
@@ -1836,7 +1838,7 @@
         "NEW_USER": "{{username}} erabiltzailea Taigan sartu da",
         "ITEM_TYPES": {
             "USERSTORY": "Eginkizuna",
-            "ISSUE": "Gertakaria",
+            "ISSUE": "Eskaera",
             "TASK": "Ataza"
         }
     },
@@ -1844,7 +1846,7 @@
         "TITLE": "Gertakizunak",
         "MY_EVENTS": "Nire gertakizunak",
         "DISMISS_ALL": "Alboratu guztiak",
-        "VIEW_ALL": "View all notifications",
+        "VIEW_ALL": "Ikusi jakinarazpen guztiak",
         "NO_NEW_EVENTS": "Ez dago gertakizun berririk",
         "NO_EVENTS_YET": "Ez dago gertakizunik oraingoz",
         "ASSIGNED_YOU": "{{username}} erabiltzaileak {{obj_name}} esleitu",
@@ -1879,7 +1881,7 @@
             },
             "STEP2": {
                 "TITLE": "Lantzen",
-                "TEXT": "Hemen aurkituko dituzu lantzen ari zaren eginkizun, ataza eta gertakariak."
+                "TEXT": "Hemen aurkituko dituzu lantzen ari zaren eginkizun, ataza eta eskaerak."
             },
             "STEP3": {
                 "TITLE": "Behatzen",
@@ -1888,7 +1890,7 @@
             },
             "STEP4": {
                 "TITLE": "Has gaitezen",
-                "TEXT1": "Hasi zaitezke zure lehen Taiga proiektu bat sortzen",
+                "TEXT1": "Has zaitezke zure lehen Taiga proiektu bat sortzen.",
                 "TEXT2": "On egin!"
             }
         },
@@ -1918,7 +1920,7 @@
             },
             "STEP2": {
                 "TITLE": "Eginkizunak eta atazak",
-                "TEXT": "Eginkizunak dira goi mailako zereginak.  Zenbait zutabetan antola ditzakezu."
+                "TEXT": "Eginkizunak goi mailako zereginak dira. Hainbat zutabetan antola ditzakezu."
             },
             "STEP3": {
                 "TITLE": "Eginkizunak gehitzen",
@@ -1929,7 +1931,7 @@
     },
     "DISCOVER": {
         "PAGE_TITLE": "Aurkitu Taigako proiektuak",
-        "PAGE_DESCRIPTION": "Taigako proiektu publikoen direktorioa Esploratu epeak, gertakariak eta lantaldeak Begiratu proiektu aktiboenak Iragazi Kanban edo Scrum-en arabera",
+        "PAGE_DESCRIPTION": "Taigako Proiektu Publikoen direktorio arakagarria. Bilatu egitekoak, epeak, eskaerak eta taldeak. Begiratu gustukoenak edo aktiboenak diren proiektuak. Iragazi Kanban edo Scrum arabera.",
         "DISCOVER_TITLE": "Aurkitu proiektuak",
         "DISCOVER_SUBTITLE": "{projects, plural, =1{Proiektu publiko bat ikusgarri} other{# proiektu publiko ikusgarri}}",
         "MOST_ACTIVE": "Aktiboena",
@@ -1952,7 +1954,7 @@
         },
         "SEARCH": {
             "PAGE_TITLE": "Bilatu - Aurkitu proiektuak - Taiga",
-            "PAGE_DESCRIPTION": "Taigako proiektu publikoen direktorioa Esploratu epeak, gertakariak eta lantaldeak Begiratu proiektu aktiboenak Iragazi Kanban edo Scrum-en arabera",
+            "PAGE_DESCRIPTION": "Taigako proiektu publikoen direktorioa Esploratu epeak, eskaerak eta lantaldeak Begiratu proiektu aktiboenak Iragazi Kanban edo Scrum-en arabera.",
             "INPUT_PLACEHOLDER": "Idatzi zeozer…",
             "ACTION_TITLE": "Bilatu",
             "RESULTS": "Bilatu emaitzetan"
@@ -1960,9 +1962,9 @@
     },
     "ZOOM": {
         "TITLE": "Zoom:",
-        "ZOOM-1": "Compact",
+        "ZOOM-1": "Trinkoa",
         "ZOOM-2": "Lehenetsia",
-        "ZOOM-3": "Detailed",
-        "ZOOM-4": "Expanded"
+        "ZOOM-3": "Xehetasunekin",
+        "ZOOM-4": "Hedatua"
     }
 }
