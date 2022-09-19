@@ -4,6 +4,11 @@
 
 - ...
 
+## 6.5.2 (2022-09-26)
+
+- Updated links to the Taiga community site.
+- Update locales
+
 ## 6.5.1 (2022-01-27)
 
 - Enhance text collapse on long text by not dividing words.
