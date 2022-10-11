@@ -19,7 +19,7 @@ div.search-result-table-container(ng-class="{'hidden': !epics.length}", tg-bind-
                         tg-nav="project-epics-detail:project=project.slug,ref=epic.ref"
                     )
                         span.ref(tg-bo-ref="epic.ref")
-                        span {{ epic.subject | emojify }}
+                        span(ng-bind-html="epic.subject | emojify")
             div.status(tg-listitem-epic-status="epic")
 
 div.empty-large(ng-class="{'hidden': epics.length}")

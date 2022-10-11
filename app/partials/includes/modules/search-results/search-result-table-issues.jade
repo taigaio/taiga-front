@@ -16,11 +16,11 @@ div.search-result-table-container(ng-class="{'hidden': !issues.length}", tg-bind
             div.user-stories
                 div.user-story-name
                     a(
-                        href="", 
+                        href="",
                         tg-nav="project-issues-detail:project=project.slug,ref=issue.ref"
                     )
                         span.ref(tg-bo-ref="issue.ref")
-                        span {{ issue.subject | emojify }}
+                        span(ng-bind-html="issue.subject | emojify")
             div.status(tg-listitem-issue-status="issue")
             div.assigned-to(tg-listitem-assignedto="issue")
 
