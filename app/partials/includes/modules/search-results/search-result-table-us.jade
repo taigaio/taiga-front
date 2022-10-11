@@ -16,12 +16,12 @@ div.search-result-table-container(ng-class="{'hidden': !userstories.length}", tg
         div.row.table-main(ng-repeat="us in userstories track by us.id")
             div.user-stories
                 div.user-story-name
-                    a(  
+                    a(
                         href=""
                         tg-nav="project-userstories-detail:project=project.slug,ref=us.ref"
                     )
                         span.ref(tg-bo-ref="us.ref")
-                        span {{ us.subject | emojify }}
+                        span(ng-bind-html="us.subject | emojify")
             div.sprint
                 div.sprint-link
                     a(href="", tg-nav="project-taskboard:project=project.slug,sprint=us.milestone_slug",
