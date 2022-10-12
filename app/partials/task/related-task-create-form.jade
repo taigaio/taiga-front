@@ -7,7 +7,7 @@
 
 .row.single-related-task.related-task-create-form.active(ng-if="openNewRelatedTask")
     .task-name
-        form
+        form(style='width:100%')
             input(type='text', tg-autofocus, placeholder="{{'TASK.PLACEHOLDER_SUBJECT' | translate}}")
     .task-settings
         a.save-task(ng-click="save()" title="{{'COMMON.SAVE' | translate}}")
