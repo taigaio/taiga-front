@@ -1,5 +1,5 @@
 server {
-    listen 80 default_server;
+    listen ${LISTEN_PORT} default_server;
 
     client_max_body_size 100M;
     charset utf-8;
