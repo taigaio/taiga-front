@@ -2,7 +2,7 @@
 
 ## 6.6.0 (unreleased)
 
-- ...
+- Update base image for docker
 
 ## 6.5.2 (2022-09-26)
 

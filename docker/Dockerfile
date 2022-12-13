@@ -4,7 +4,7 @@
 #
 # Copyright (c) 2021-present Kaleidos Ventures SL
 
-FROM nginx:1.19-alpine
+FROM nginx:1.23-alpine
 LABEL maintainer="support@taiga.io"
 
 COPY docker/default.conf /etc/nginx/conf.d/default.conf
