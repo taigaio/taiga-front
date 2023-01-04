@@ -1,6 +1,6 @@
 {
     "COMMON": {
-        "YES": "Si",
+        "YES": "Sí",
         "NO": "No",
         "OR": "o",
         "I_GET_IT": "Ok, entés",
@@ -60,7 +60,8 @@
             "NO_PTS": "N/E",
             "ESTIMATION": "Estimació",
             "TASKS": "{{completed}} tasques de {{total}} completades",
-            "EXTRA_ASSIGNED_USERS": "{{total}} més usuaris assignats"
+            "EXTRA_ASSIGNED_USERS": "{{total}} més usuaris assignats",
+            "MOVE_TO_TOP": "Puja"
         },
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Aquest valor pareix invàlid.",
@@ -839,6 +840,9 @@
                 "PUBLIC": "Please remember that you can own up to <strong>{{maxProjects}}</strong> public projects. You currently own <strong>{{currentProjects}}</strong> public projects"
             },
             "CANT_BE_OWNED": "At the moment you cannot become an owner of a project of this type. If you would like to become the owner of this project, please contact the administrator so they change your account settings to enable project ownership."
+        },
+        "PROJECT_PRESETS": {
+            "MENU_TITLE": "Preajustaments"
         }
     },
     "USER": {
