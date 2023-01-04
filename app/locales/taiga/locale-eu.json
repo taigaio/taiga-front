@@ -950,7 +950,9 @@
             "CHANGE_PASSWORD": "Aldatu pasahitza",
             "DASHBOARD_TITLE": "Tresnen arbela",
             "DISCOVER_TITLE": "Gainbegiratu proiektu jakingarriak",
-            "DISCOVER": "Aurkitu"
+            "DISCOVER": "Aurkitu",
+            "TAIGA_COMMUNITY_TITLE": "Joan Taiga komunitatera",
+            "TAIGA_COMMUNITY": "Taiga komunitatea"
         },
         "LIKE_BUTTON": {
             "LIKE": "Datsegit",
@@ -1166,14 +1168,16 @@
             "HELP_TEXT": "Erabiltzailea dagoenekoz Taigan izena emana badago, automatikoki gehituko da. Bestela, gonbidapena jasoko du."
         },
         "FEEDBACK": {
-            "TITLE": "Egin galdera bat",
+            "TITLE": "Taiga laguntza",
             "COMMENT": "Bidali mezu bat",
             "ACTION_SEND": "Send Message",
             "YOU_CAN_ALSO": "Hau ere egin dezakezu:",
             "CREATE": "Sortu eskaera bat hemen ",
             "PUBLIC": "public Taiga project",
             "EMAIL": "Bidali e-mail bat zuzenean helbide honetara ",
-            "SUPPORT": "support@taiga.io"
+            "SUPPORT": "support@taiga.io",
+            "FAQ": "Sarritan egindako galderak",
+            "VISIT": "Bisita ezazu "
         },
         "SEARCH": {
             "TITLE": "Bilatu",
