@@ -370,7 +370,7 @@
         "PLACEHOLDER_FIELD": "Nom d'usuari o correu electrònic",
         "ACTION_RESET_PASSWORD": "Resetejar contrasenya",
         "LINK_CANCEL": "No, porta'm enrere, crec que ja ho recordo.",
-        "SUCCESS_TITLE": "Revisa el teu correu",
+        "SUCCESS_TITLE": "Reviseu el vostre correu!",
         "SUCCESS_TEXT": "L'hem enviat un correu amb les instruccions per a crear una nova contrasenya",
         "ERROR": "Segons Taiga, no estàs registrat."
     },
@@ -510,7 +510,7 @@
             "EXPORT_BUTTON_TITLE": "Exporta el teu projecte",
             "LOADING_TITLE": "Estem generant el teu fitxer",
             "DUMP_READY": "El fitxer de daes està llest!",
-            "LOADING_MESSAGE": "Per favor no tanqui aquesta pàgina",
+            "LOADING_MESSAGE": "Si us plau no tanqui aquesta pàgina.",
             "ASYNC_MESSAGE": "T'enviarem un correu quan estiga llest.",
             "SYNC_MESSAGE": "Si la descàrrega no baixa directament clica <a href='{{url}}' download title='Download the dump file'>ací</a>.",
             "ERROR": "Taiga té problemes generant el teu arxiu de dades. Per favor, intenta-ho de nou.",
@@ -695,7 +695,7 @@
             "WARNING_NO_ROLE": "Ves amb compte, cap rol en el teu projecte pot estimar punts per a les històries d'usuari",
             "HELP_ROLE_ENABLED": "Aquest rol forma part dels rols implicats en l'estimació dels punts d'història d'usuari.",
             "DISABLE_COMPUTABLE_ALERT_TITLE": "Segur que vols desactivar les estimacions per a aquest rol?",
-            "DISABLE_COMPUTABLE_ALERT_SUBTITLE": "Si desactives els permisos per a estimar del rol {{roleName}} totes les estimacions prèvies d'aquest rol seran esborrades.",
+            "DISABLE_COMPUTABLE_ALERT_SUBTITLE": "Si desactiveu els permisos d'estimació del rol {{roleName}} totes les estimacions anteriors d'aquest rol seran esborrades",
             "COUNT_MEMBERS": "{{ role.members_count }} membres amb aquest rol",
             "TITLE_DELETE_ROLE": "Esborrar rol",
             "REPLACEMENT_ROLE": "Tots els usuaris amb aquest rol es canviaran a",
@@ -761,7 +761,7 @@
             "CANCEL_TITLE": "Cancel·la la creació",
             "SET_FIELD_NAME": "Escriu el nom del camp personalitzat",
             "SET_FIELD_DESCRIPTION": "Escriu la descripció del camp personalitzat",
-            "FIELD_TYPE_DEFAULT": "-- selecciona un  --",
+            "FIELD_TYPE_DEFAULT": "-- seleccioni un --",
             "ACTION_UPDATE": "Actualitza el camp personalitzat",
             "ACTION_CANCEL_EDITION": "Cancel·la la edició"
         },
@@ -776,8 +776,8 @@
             "RESEND": "Reenviar",
             "SUCCESS_SEND_INVITATION": "Hem tornat a enviar la invitació a '{{email}}'.",
             "SUCCESS_DELETE": "Hem esborrat {{message}}.",
-            "ERROR_DELETE": "No hem pogut esborrar ",
-            "DEFAULT_DELETE_MESSAGE": "la invitació a '{{email}}'."
+            "ERROR_DELETE": "No s'ha pogut esborrar {{message}}.",
+            "DEFAULT_DELETE_MESSAGE": "la invitació per a {{email}}"
         },
         "DEFAULT_VALUES": {
             "LABEL_EPIC_STATUS": "Selector d'estats d'èpica",
@@ -818,7 +818,7 @@
             "TYPES": "Tipus",
             "CUSTOM_FIELDS": "Camps personalitzats",
             "TAGS": "Etiquetes",
-            "DUE_DATES": "Data de venciment ",
+            "DUE_DATES": "Data de venciment",
             "KANBAN_OPTIONS": "Opcions del kanban"
         },
         "SUBMENU_ROLES": {
@@ -838,7 +838,7 @@
             "UNLIMITED_PROJECTS": "Unlimited",
             "OWNER_MESSAGE": {
                 "PRIVATE": "Recordeu que podeu tenir fins a <strong>{{maxProjects}}</strong> projectes privats. Actualment sou propietari de <strong>{{currentProjects}}</strong> projectes privats.",
-                "PUBLIC": "Recordeu que podeu tenir fins a <strong>{{maxProjects}}</strong>  projectes públics. Actualment sou propietari de <strong>{{currentProjects}}</strong> projectes públics.",
+                "PUBLIC": "Recordeu que podeu tenir fins a <strong>{{maxProjects}}</strong> projectes públics. Actualment sou propietari de <strong>{{currentProjects}}</strong> projectes públics.",
                 "PRIVATE_EXCEEDED": "Actualment té <strong>{{currentProjects}} projectes privats</strong>, el màxim que el teu pla permet.",
                 "PUBLIC_EXCEEDED": "Actualment té <strong>{{currentProjects}} projectes públics</strong>, el màxim que el teu pla permet."
             },
@@ -895,7 +895,7 @@
             "FILTER_TYPE_TASKS_TITLE": "Mostra només tasquest",
             "FILTER_TYPE_ISSUES": "Incidències",
             "FILTER_TYPE_ISSUES_TITLE": "Mostra només incidències",
-            "EMPTY_TITLE": "Sembla que no hi ha res que mostrar"
+            "EMPTY_TITLE": "Sembla que no s'ha trobat res."
         }
     },
     "PROJECT": {
@@ -983,8 +983,8 @@
             "TITLE": "Crear projecte",
             "CHOOSE_TEMPLATE": "Quina plantilla encaixa millor en el teu projecte?",
             "TEMPLATE_SCRUM": "Scrum",
-            "TEMPLATE_SCRUM_DESC": "Prioritza i resol les tasques en curts cicles de temps",
-            "TEMPLATE_SCRUM_LONGDESC": "Scrum és una metodologia de desenvolupament de programari àgil i iterativa i incremental per gestionar el desenvolupament de productes.\nEl registre de productes és el que finalment es lliurarà, ordenat en la seqüència en què s’hauria de lliurar. Els registres de productes es divideixen en trossos executables i manejables anomenats sprints. Cada cert temps, l’equip inicia un nou sprint i es compromet a lliurar un nombre determinat d’històries d’usuaris des del backlog, d’acord amb les seues habilitats, habilitats i recursos. El projecte avança a mesura que es va esgotant l’endarreriment.",
+            "TEMPLATE_SCRUM_DESC": "Prioritza i resol les teves tasques en cicles de temps curts.",
+            "TEMPLATE_SCRUM_LONGDESC": "Scrum és una metodologia de desenvolupament de programari àgil i iterativa i incremental per gestionar el desenvolupament de productes.\nEl registre de producte és el que finalment es lliurarà, ordenat en la seqüència en què s’hauria de lliurar. El registre de producte es divideix en trossos executables i manejables anomenats sprints. Cada cert temps, l’equip inicia un nou sprint i es compromet a lliurar un nombre determinat d’històries d’usuaris des del backlog, en funció de les seues habilitats, capacitats i recursos. El projecte s'executa fins a completar tots els sprints.",
             "TEMPLATE_KANBAN": "Kanban",
             "TEMPLATE_KANBAN_DESC": "Mantín un workflow constant en tasques independents",
             "TEMPLATE_KANBAN_LONGDESC": "La metodologia Kanban s'utilitza per dividir el desenvolupament de projectes (qualsevol classe de projecte) en etapes.\nUna targeta kanban és com una targeta post-it que detalla totes les tasques (o història de l’usuari) d’un projecte que cal completar. El tauler Kanban s’utilitza per moure cada targeta d’un estat de finalització al següent i, en fer-ho, ajuda a fer un seguiment del progrés.",
@@ -1009,15 +1009,15 @@
         "DUPLICATE": {
             "TITLE": "Duplica projecte",
             "DESCRIPTION": "Comença des de zero amb la mateixa configuració",
-            "SELECT_PLACEHOLDER": "Trieu un projecte existent a duplicar "
+            "SELECT_PLACEHOLDER": "Trieu un projecte existent a duplicar"
         },
         "IMPORT": {
             "TITLE": "Importar projecte",
             "DESCRIPTION": "Importa un projecte des de mútliples plataformes a Taiga",
             "ASYNC_IN_PROGRESS_TITLE": "El Taiga està important el projecte",
-            "ASYNC_IN_PROGRESS_MESSAGE": "Aquest procés pot durar uns moments <br/> T'enviarem un correo quan estiga llest.",
+            "ASYNC_IN_PROGRESS_MESSAGE": "Aquest procés ens pot portar una estona <br/> Li enviarem un correu quan finalitzi",
             "UPLOAD_IN_PROGRESS_MESSAGE": "Pujat {{uploadedSize}} de {{totalSize}}",
-            "ERROR": "Taiga té problemes important les dades. Per favor, torna a intentar-ho",
+            "ERROR": "Taiga té problemes important les seves dades. Si us plau, torni a intentar-ho.",
             "ERROR_TOO_MANY_REQUEST": "Ho sentim, Taiga està experimentant molta càrrega ara mateix. Intenta-ho de nou en uns moments.",
             "ERROR_MESSAGE": "Taiga té problemes important les teues dades: {{error_message}}",
             "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) és massa gran per a Taiga, prova amb un arxiu més lleuger de ({{maxFileSize}})",
@@ -1070,7 +1070,7 @@
             },
             "IN_PROGRESS": {
                 "TITLE": "Important Projecte",
-                "DESCRIPTION": "Aquest procés pot durar una mica, pero favor mantinga la finestra oberta"
+                "DESCRIPTION": "Aquest procés pot trigar una estona, si us plau mantingui la finestra oberta."
             },
             "WARNING": {
                 "TITLE": "Some taks will be unassigned",
@@ -1137,7 +1137,7 @@
     },
     "LIGHTBOX": {
         "DELETE_ACCOUNT": {
-            "CONFIRM": "Segur que vols borrar el teu compte de Taiga? ",
+            "CONFIRM": "Segur que voleu eliminar el vostre compte de Taiga?",
             "CANCEL": "Tornar a preferències",
             "ACCEPT": "Esborrar compte",
             "BLOCK_PROJECT": "Tin en compte que tots els projectes que posseeixes seran <strong>bloquejats</strong>quan esborres el teu compte. Si no vols que algun projecte es bloquege, assegurat que el transfereixes a un altre membre de Taiga abans d'esborrar el compte."
@@ -1172,9 +1172,9 @@
             "COMMENT": "Deixa'ns un missatge",
             "ACTION_SEND": "Envia missatge",
             "YOU_CAN_ALSO": "També pots:",
-            "CREATE": "Crea nova incidència",
+            "CREATE": "Crea nova incidència ",
             "PUBLIC": "Projecte públic de Taiga",
-            "EMAIL": "Envia'ns un e-mail directament a",
+            "EMAIL": "Envia'ns un e-mail directament a ",
             "SUPPORT": "support@taiga.io",
             "VISIT": "Visiti el nostre ",
             "FAQ": "Preguntes freqüents"
@@ -1212,15 +1212,15 @@
             "SELECT_SWIMLANE": "Seleccionar swimlane",
             "SELECT_STATUS": "Selecciona estatus",
             "DEFAULT": "Per defecte",
-            "ERROR_STATUS": "No es poden guardar els canvis perquè hi ha un problema amb l'estatus seleccionat. ",
-            "ERROR_SWIMLANE": "No es poden guardar els canvis perquè hi ha un problema amb el swimlane seleccionat. ",
+            "ERROR_STATUS": "No es poden guardar els canvis perquè hi ha un problema amb l'estatus seleccionat.",
+            "ERROR_SWIMLANE": "No es poden guardar els canvis perquè hi ha un problema amb el swimlane seleccionat.",
             "LOCATION": "Ubicació",
             "CREATE_BOTTOM": "a la part inferior",
             "CREATE_TOP": "a la part superior"
         },
         "DISABLE_KANBAN": {
             "TITLE": "Desactiva kanban",
-            "MESSAGE": "Este projecte té swimlanes. Desapareixeran, però les teues històries d'usuari no seran esborrades. "
+            "MESSAGE": "Aquest projecte té swimlanes. Desapareixeran, però les seves històries d'usuari no seran esborrades"
         },
         "DELETE_DUE_DATE": {
             "TITLE": "Esborrar data de venciment",
@@ -1240,9 +1240,9 @@
             "LIMIT_USERS_WARNING_MESSAGE": "Estàs a punt d'assolir el màxim de membres permés a aquest projecte, <strong>{{maxMembers}}</strong> membres."
         },
         "LEAVE_PROJECT_WARNING": {
-            "TITLE": "Per desgràcia, aquest projecte no pot ser deixat sense propietari.",
+            "TITLE": "Malauradament, aquest projecte no es pot quedar sense un propietari",
             "CURRENT_USER_OWNER": {
-                "DESC": "Tu eres el propietari actual d'aquest projecte. Abans de deixar-lo, per favor transfereix-lo a un altre membre. ",
+                "DESC": "Vostè és el propietari actual d'aquest projecte. Abans de deixar-lo, si us plau transferiu la propietat a un altre membre.",
                 "BUTTON": "Canvia el propietari del projecte"
             },
             "OTHER_USER_OWNER": {
@@ -1362,10 +1362,10 @@
         "EDITED_COMMENT": "Editat:",
         "SHOW_HISTORY": "Veure històric",
         "TYPE_NEW_COMMENT": "Escriu un nou comentari ací",
-        "SHOW_DELETED": "Mostra el comentari esborrat.",
+        "SHOW_DELETED": "Mostra el comentari esborrat",
         "HIDE_DELETED": "Amaga el comentari esborrat",
         "DELETE": "Esborrar comentari",
-        "RESTORE": "Resturar comentari.",
+        "RESTORE": "Restaura el comentari",
         "HISTORY": {
             "TITLE": "Activitat"
         }
@@ -1399,7 +1399,7 @@
             "TYPE": "tipus",
             "ASSIGNED_TO": "Assignat a",
             "ASSIGNED_USERS": "Usuaris assignats",
-            "DUE_DATE": "Data de venciment ",
+            "DUE_DATE": "Data de venciment",
             "MILESTONE": "sprint",
             "COLOR": "color",
             "PROMOTED_TO": "Promocionat a"
@@ -1421,7 +1421,7 @@
         "CREATE_NEW_US": "Crea una nova història d'usuari",
         "CREATE_NEW_US_EMPTY_HELP": "Afegeix història d'usuari",
         "NO_MATCH": "No s'han trobat resultats per a “{{ q }}”",
-        "NO_MATCH_HELP": "Torneu-ho a provar utilitzant termes de cerca més generals.",
+        "NO_MATCH_HELP": "Torneu-ho a provar utilitzant termes de cerca més generals",
         "EXCESS_OF_POINTS": "Excés de punts",
         "PENDING_POINTS": "Punts pendents",
         "CLOSED_POINTS": "tancat",
@@ -1665,7 +1665,7 @@
         "US_NOT_FOUND_TEXT_P1": "Torneu-ho a provar utilitzant termes de cerca més generals o desactivant alguns filtres.",
         "US_NOT_FOUND_TEXT_P2": "Les <strong>històries arxivades</strong> no es carreguen per defecte. Desplega els estats arxivats per expandir la teva recerca.",
         "PLACEHOLDER_CARD_TITLE": "Açò podria ser una història d'usuari",
-        "PLACEHOLDER_CARD_TEXT": "Crea històries d'usuari i canvia l'estatus per seguir el seu progrés",
+        "PLACEHOLDER_CARD_TEXT": "Crea històries d'usuari i canvia l'estatus per seguir el seu progrés.",
         "NUMBER_US": "Nombre de US",
         "ARCHIVED": "(Arxivades)",
         "CREATE_SWIMLANE": "Crea mès swimlanes",
@@ -1682,7 +1682,7 @@
         "FILTER_WIKI": "Pàgines de Wiki",
         "PLACEHOLDER_SEARCH": "Cerca en...",
         "TITLE_ACTION_SEARCH": "cerca",
-        "EMPTY_TITLE": "Pareix que no hem trobat res amb este criteri de recerca",
+        "EMPTY_TITLE": "Sembla que no hem trobat res amb aquest criteri de cerca.",
         "EMPTY_DESCRIPTION": "Prova amb una de les pestanyes o busca de nou"
     },
     "TEAM": {
@@ -1708,7 +1708,7 @@
         "ACTION_LEAVE_PROJECT": "Abandonar aquest projecte"
     },
     "USER_SETTINGS": {
-        "AVATAR_MAX_SIZE": "[Max. grandària:  {{maxFileSize}}]",
+        "AVATAR_MAX_SIZE": "[Max. grandària: {{maxFileSize}}]",
         "MENU": {
             "SECTION_TITLE": "Configuració d'usuari",
             "CHANGE_PASSWORD": "Canvi de contrasenya",
@@ -1793,16 +1793,16 @@
     },
     "HINTS": {
         "SECTION_NAME": "Idea",
-        "LINK": "Si vols saber com utilitzar-ho visita la nostra pàgina de suport.",
+        "LINK": "Si vol saber com utilitzar-ho visiteu la nostra pàgina de suport",
         "LINK_TITLE": "Visita la nostra pàgina d'ajuda",
         "HINT1_TITLE": "Saps que pots importar i exportar projectes?",
         "HINT1_TEXT": "Això li permet extreure totes les dades d'un Taiga i moure'l a un altre.",
         "HINT2_TITLE": "Saps que pots crear camps personalitzats?",
-        "HINT2_TEXT": "Ara el equips poden crear camps personalitzats com a mitjá flexible per introduir dades específiques útils per el seu workflow particular",
+        "HINT2_TEXT": "Ara el equips poden crear camps personalitzats com a mitjà flexible per introduir dades específiques útils per el seu flux de treball particular.",
         "HINT3_TITLE": "Reordena els projectes per destacar aquells més rellevants per a tu.",
         "HINT3_TEXT": "Els 4 projectes es llistaran a la barra d'accés directe en la part superior.",
         "HINT4_TITLE": "Has oblidat en què estaves treballant?",
-        "HINT4_TEXT": "No patisques, al tauler trobareu les tasques obertes, les incidències i les històries d'usuari en ordre. "
+        "HINT4_TEXT": "No us preocupeu, al tauler trobareu les tasques, les incidències i les històries d'usuari obertes en l'ordre en què hi heu treballat."
     },
     "TIMELINE": {
         "UPLOAD_ATTACHMENT": "{{username}} ha pujat un nou adjunt a {{obj_name}}",
@@ -1849,7 +1849,7 @@
     "EVENTS": {
         "TITLE": "Events",
         "MY_EVENTS": "Els meus events",
-        "DISMISS_ALL": "Descartar-ho tot ",
+        "DISMISS_ALL": "Descartar-ho tot",
         "VIEW_ALL": "Veure totes les notificacions",
         "NO_NEW_EVENTS": "No hi ha events nous",
         "NO_EVENTS_YET": "Encara no hi ha events",
@@ -1902,7 +1902,7 @@
             "STEP1": {
                 "TITLE": "Resum del projecte",
                 "TEXT1": "Ací veuràs l'estat del teu projecte.",
-                "TEXT2": "Pots canviar qualsevol aspecte de la configuració del projecte a través de  l'admin."
+                "TEXT2": "Pots canviar qualsevol aspecte de la configuració del projecte a través de l'administrador."
             },
             "STEP2": {
                 "TITLE": "Backlog de producte",
@@ -1920,7 +1920,7 @@
         "KANBAN": {
             "STEP1": {
                 "TITLE": "Configura el workflow",
-                "TEXT": "Configura les columnes que necessites per organitzar el workflow de estats mitjançant l'admin"
+                "TEXT": "Configureu les columnes que necessiteu per organitzar el vostre estatus de flux de treball a través de l'administració."
             },
             "STEP2": {
                 "TITLE": "Històries d'usuari i tasques",
