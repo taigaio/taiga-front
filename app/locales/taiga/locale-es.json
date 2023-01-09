@@ -60,7 +60,8 @@
             "NO_PTS": "N/E",
             "ESTIMATION": "Estimación",
             "TASKS": "{{completed}} tareas de {{total}} completadas",
-            "EXTRA_ASSIGNED_USERS": "{{total}} usuarios asignados más"
+            "EXTRA_ASSIGNED_USERS": "{{total}} usuarios asignados más",
+            "MOVE_TO_TOP": "Ir arriba"
         },
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Este valor parece inválido.",
