@@ -14,10 +14,10 @@
         "UNLINK": "Détacher",
         "CREATE": "Créer",
         "ADD": "Ajouter",
-        "BACK": "Back",
+        "BACK": "Retour",
         "COPY_TO_CLIPBOARD": "Copier dans le presse-papier",
         "COPIED_TO_CLIPBOARD": "Le texte a été copié dans le presse-papier",
-        "MOVE_TO_TOP": "Move to top",
+        "MOVE_TO_TOP": "Aller en haut",
         "EDIT": "Éditer",
         "DRAG": "Faire glisser",
         "TAG_LINE": "Votre outil de gestion de projet agile, libre et open source",
@@ -185,7 +185,7 @@
         "ASSIGNED_USERS": {
             "ADD": "Sélectionner un utilisateur affecté",
             "ADD_ASSIGNED": "Ajouter un utilisateur affecté",
-            "TITLE_LIGHTBOX_DELETE_ASSIGNED": "Supprimer l'affectation"
+            "TITLE_LIGHTBOX_DELETE_ASSIGNED": "Supprimer l'affectation..."
         },
         "STATUS": {
             "CLOSED": "Fermé",
@@ -263,7 +263,7 @@
             }
         },
         "WYSIWYG": {
-            "CODE_SNIPPET": "Code Snippet",
+            "CODE_SNIPPET": "Extrait de code",
             "DB_CLICK": "double cliquer pour modifier",
             "SELECT_LANGUAGE_PLACEHOLDER": "Sélectionnez la langue",
             "SELECT_LANGUAGE_REMOVE_FORMATING": "Retirer la mise en forme",
@@ -328,7 +328,7 @@
     },
     "AUTH": {
         "INVITED_YOU": "vous a invité à rejoindre le projet",
-        "NOT_REGISTERED_YET": "Pas encore inscrit?",
+        "NOT_REGISTERED_YET": "Pas encore inscrit ?",
         "REGISTER": "S'inscrire",
         "CREATE_ACCOUNT": "créer votre compte gratuit ici"
     },
@@ -344,7 +344,7 @@
     },
     "LOGIN_FORM": {
         "ERROR_AUTH_INCORRECT": "D'après Taiga, votre nom d'utilisateur/courriel et ou votre mot de passe sont incorrects.",
-        "SUCCESS": "Bienvenue sur Taiga"
+        "SUCCESS": "Bienvenue sur Taïga."
     },
     "REGISTER": {
         "PAGE_TITLE": "S'inscrire - Taiga",
@@ -358,7 +358,7 @@
         "PLACEHOLDER_PASSWORD": "Saisissez un mot de passe (sensible à la casse)",
         "ACTION_SIGN_UP": "S'enregistrer",
         "TITLE_LINK_LOGIN": "Se connecter",
-        "LINK_LOGIN": "Êtes-vous déjà enregistré ? Connectez-vous."
+        "LINK_LOGIN": "Êtes-vous déjà enregistré ? Connectez-vous"
     },
     "FORGOT_PASSWORD": {
         "PAGE_TITLE": "Mot de passe oublié - Taiga",
@@ -398,12 +398,12 @@
         "PAGE_DESCRIPTION": "Acceptez l'invitation à rejoindre un projet sur Taiga, une plateforme de gestion de projets pour les startups, les développeurs et les designers agiles qui veulent un outil simple, beau et qui rend le travail vraiment agréable."
     },
     "INVITATION_LOGIN_FORM": {
-        "NOT_FOUND": "Taiga n'a pas trouvé votre invitation",
+        "NOT_FOUND": "Taïga n'a pas trouvé votre invitation.",
         "SUCCESS": "Vous avez rejoint ce projet, Bienvenue sur {{project_name}}"
     },
     "HOME": {
         "PAGE_TITLE": "Accueil - Taiga",
-        "PAGE_DESCRIPTION": "La page d'accueil de Taiga sur laquelle apparaissent vos projets principaux et toutes les récits utilisateur, tâches et tickets qui vont sont assignés et surveillés.",
+        "PAGE_DESCRIPTION": "Sur la page d'accueil de Taïga apparaissent vos projets principaux et tous les récits utilisateur, tâches et tickets qui vont sont assignés et que vous surveillez",
         "EMPTY_WORKING_ON": "<strong>Ça fait vide, hein ?</strong>Commencez à utiliser Taiga et vous verrez apparaître ici les récits, tâches et tickets sur lesquels vous travaillez.",
         "EMPTY_WATCHING": "<strong>Suivez</strong> des récits utilisateur, des tâches, des tickets dans vos projets et soyez prévenu des modifications :)",
         "EMPTY_PROJECT_LIST": "Vous n'avez pas encore de projet",
@@ -421,7 +421,7 @@
         "SECTION_NAME": "Épopées",
         "EPIC": "ÉPOPÉE",
         "PAGE_TITLE": "Épopées - {{projectName}}",
-        "PAGE_DESCRIPTION": "Liste des épopées du projet {{projectName}}: {{projectDescription}}",
+        "PAGE_DESCRIPTION": "Liste des épopées du projet {{projectName}} : {{projectDescription}}",
         "DASHBOARD": {
             "ADD": "+ AJOUTER ÉPOPÉE",
             "UNASSIGNED": "Non affecté"
@@ -445,7 +445,7 @@
         },
         "CREATE": {
             "TITLE": "Nouvelle épopée",
-            "PLACEHOLDER_DESCRIPTION": "Ajoutez une description pour aider les autres utilisateurs à mieux comprendre cette épopée.",
+            "PLACEHOLDER_DESCRIPTION": "Ajoutez une description pour aider les autres utilisateurs à mieux comprendre cette épopée",
             "TEAM_REQUIREMENT": "Exigence équipe",
             "CLIENT_REQUIREMENT": "Exigence client",
             "BLOCKED": "Bloqué",
@@ -472,11 +472,11 @@
         "HIDE_DEPRECATED": "- cacher les pièces jointes obsolètes",
         "COUNT_DEPRECATED": "({{ counter }} obsolètes)",
         "MAX_UPLOAD_SIZE": "La taille maximum de dépôt est {{maxFileSize}}",
-        "DATE": "DD MMM YYYY [at] hh:mm",
+        "DATE": "DD MMM YYYY [à] hh:mm",
         "ERROR_UPLOAD_ATTACHMENT": "Nous n'avons pas été capable de téléverser '{{fileName}}'. {{errorMessage}}",
         "TITLE_LIGHTBOX_DELETE_ATTACHMENT": "Supprimer la pièce jointe...",
         "MSG_LIGHTBOX_DELETE_ATTACHMENT": "la pièce jointe \"{{fileName}}\"",
-        "ERROR_DELETE_ATTACHMENT": "Nous n'avons pas été capable de supprimer {{errorMessage}}.",
+        "ERROR_DELETE_ATTACHMENT": "Nous n'avons pas été capable de supprimer {{errorMessage}}",
         "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) est trop lourd pour Taiga, réessayez avec un fichier d'une taille inférieure à ({{maxFileSize}})"
     },
     "PAGINATION": {
@@ -508,7 +508,7 @@
             "SUBTITLE": "Exportez votre projet pour le sauvegarder ou en créer un nouveau basé sur celui-ci.",
             "EXPORT_BUTTON": "Exporter",
             "EXPORT_BUTTON_TITLE": "Exportez votre projet",
-            "LOADING_TITLE": "Nous sommes en train de générer votre fichier de vidage.",
+            "LOADING_TITLE": "Nous sommes en train de générer votre fichier de d'export",
             "DUMP_READY": "Votre fichier de vidage est prêt !",
             "LOADING_MESSAGE": "Merci de ne pas fermer cette page.",
             "ASYNC_MESSAGE": "Nous vous enverrons un courriel lorsque ce sera prêt.",
@@ -533,7 +533,7 @@
             "WIKI": "Wiki",
             "WIKI_DESCRIPTION": "Ajoutez, modifiez, ou supprimez du contenu en collaboration avec d'autres. C'est le bon endroit pour la documentation de votre projet.",
             "MEETUP": "Meet Up",
-            "MEETUP_DESCRIPTION": "Choisissez un système de vidéoconférence",
+            "MEETUP_DESCRIPTION": "Choisissez un système de vidéoconférence.",
             "SELECT_VIDEOCONFERENCE": "Choisissez un système de vidéoconférence",
             "SALT_CHAT_ROOM": "Ajouter un préfixe au nom du salon de chat",
             "JITSI_CHAT_ROOM": "Jitsi",
@@ -551,16 +551,16 @@
             "RECRUITING": "Est-ce que ce projet recherche des membres ?",
             "RECRUITING_MESSAGE": "Qui cherchez-vous ?",
             "RECRUITING_PLACEHOLDER": "Définissez le profil que vous recherchez",
-            "FEEDBACK": "Recevoir les commentaires des utilisateurs de Taiga?",
+            "FEEDBACK": "Recevoir les commentaires des utilisateurs de Taïga ?",
             "PUBLIC_PROJECT": "Projet public",
             "PRIVATE_PROJECT": "Projet privé",
             "PRIVATE_OR_PUBLIC": "Quelle est la différence entre les projets publics et privés ?",
             "DELETE": "Supprimer ce projet",
             "CHANGE_LOGO": "Changer le logo",
             "ACTION_USE_DEFAULT_LOGO": "Utiliser l'image par défaut",
-            "MAX_PRIVATE_PROJECTS": "Vous avez atteint le nombre maximum autorisé de projets privés accordé par votre souscription actuelle.",
-            "MAX_PRIVATE_PROJECTS_MEMBERS": "Le nombre maximum de membres de projets privés a été dépassé.",
-            "MAX_PUBLIC_PROJECTS": "Désolé, vous avez atteint le nombre maximum de projets publics accordé par votre souscription actuelle.",
+            "MAX_PRIVATE_PROJECTS": "Vous avez atteint le nombre maximum autorisé de projets privés accordé par votre souscription actuelle",
+            "MAX_PRIVATE_PROJECTS_MEMBERS": "Le nombre maximum de membres de projets privés a été dépassé",
+            "MAX_PUBLIC_PROJECTS": "Désolé, vous avez atteint le nombre maximum de projets publics accordé par votre souscription actuelle",
             "MAX_PUBLIC_PROJECTS_MEMBERS": "Ce projet dépasse le nombre maximum de membres autorisés pour un projet public",
             "PROJECT_OWNER": "Propriétaire du projet",
             "REQUEST_OWNERSHIP": "Demander la propriété",
@@ -577,7 +577,7 @@
             "TITLE": "Rapports",
             "SUBTITLE": "Exportez les données de votre projet au format CSV pour créer vos propres rapports.",
             "DESCRIPTION": "Téléchargez un fichier CSV ou copier l'URL générée puis ouvrez la dans votre éditeur de texte ou tableur préféré pour créer votre propre rapports de projet. Vous pourrez facilement visualiser et analyser toutes vos données.",
-            "HELP": "Comment utiliser ceci dans ma propre feuille de calcul?",
+            "HELP": "Comment utiliser ceci dans ma propre feuille de calcul ?",
             "REGENERATE_TITLE": "Changer l'URL",
             "REGENERATE_SUBTITLE": "Vous êtes sur le point de changer l’URL d'accès aux données CSV. L'URL précédente sera désactivée. Êtes-vous sûr ?",
             "DELETE_TITLE": "Supprimer l'URL",
@@ -678,22 +678,22 @@
         },
         "PROJECT_KANBAN_OPTIONS": {
             "TITLE": "options du Kanban",
-            "SUBTITLE": "Enable swimlanes to use in your workflow and set WIP limits to restrict the maximun number of user stories on each status.",
-            "SWIMLANES": "Swimlanes",
-            "ACTION_ADD_SWIMLANE": "New swimlane",
-            "SWIMLANE_NAME_EXISTS": "This swimlane name already exists",
-            "NO_SWIMLANES": "There are no swimlanes yet",
-            "SWIMLANE_NAME": "Swimlane name",
-            "POPUP_NEW_SWIMLANE": "If you had some user stories created, you will find them on this swimlane.",
+            "SUBTITLE": "Activez les couloirs à utiliser dans votre process et paramétrez les limites de travaux en cours pour restreindre le nombre de récits utilisateurs pour chaque statut.",
+            "SWIMLANES": "Couloirs",
+            "ACTION_ADD_SWIMLANE": "Nouveau couloir",
+            "SWIMLANE_NAME_EXISTS": "Un autre couloir porte déjà ce nom",
+            "NO_SWIMLANES": "Il y a aucun couloir pour l'instant",
+            "SWIMLANE_NAME": "Nom du couloir",
+            "POPUP_NEW_SWIMLANE": "Si vous avez créé des récits utilisateur, vous les trouverez dans ce couloir.",
             "WIP_LIMITS": "WIP LIMITS",
-            "WIP_LIMIT_PLACEHOLDER": "WIP limit not set",
-            "WIP_LIMIT_INPUT": "Set WIP limit",
+            "WIP_LIMIT_PLACEHOLDER": "Date limite d'en-cours non paramétrée",
+            "WIP_LIMIT_INPUT": "Paramétrer la limite d'en-cours",
             "DEFAULT": "Valeur par défaut"
         },
         "ROLES": {
             "PAGE_TITLE": "Rôles - {{projectName}}",
             "WARNING_NO_ROLE": "Attention, aucun rôle dans votre projet ne pourra estimer la valeur du point pour les récits utilisateurs",
-            "HELP_ROLE_ENABLED": "This role is part of the roles involved in estimating user story points.",
+            "HELP_ROLE_ENABLED": "Ce rôle fait partie de ceux concernés pour l'estimation des points des récits utilisateurs.",
             "DISABLE_COMPUTABLE_ALERT_TITLE": "Êtes-vous sûr de vouloir désactiver les estimations de ce rôle ?",
             "DISABLE_COMPUTABLE_ALERT_SUBTITLE": "Si vous désactivez les estimations pour le rôle {{roleName}} toutes les estimations précédentes faites par ce rôle seront supprimées",
             "COUNT_MEMBERS": "{{ role.members_count }} membres avec ce rôle",
@@ -721,7 +721,7 @@
         },
         "GITHUB": {
             "SECTION_NAME": "GitHub",
-            "PAGE_TITLE": " GitHub - {{projectName}}"
+            "PAGE_TITLE": "GitHub - {{projectName}}"
         },
         "GOGS": {
             "SECTION_NAME": "Gogs",
@@ -745,7 +745,7 @@
             "HEADERS": "Entêtes",
             "PAYLOAD": "Données utiles",
             "RESPONSE": "Réponse",
-            "DATE": "DD MMM YYYY [at] hh:mm:ss",
+            "DATE": "DD MMM YYYY [à] hh:mm:ss",
             "ACTION_HIDE_HISTORY": "(Cacher l'historique)",
             "ACTION_HIDE_HISTORY_TITLE": "Cacher l'historique",
             "ACTION_SHOW_HISTORY": "(Afficher l'historique)",
@@ -800,7 +800,7 @@
             "ACTION_ADD_STATUS": "Ajouter un nouveau statut",
             "IS_ARCHIVED_COLUMN": "Archivé",
             "IS_CLOSED_COLUMN": "Fermé",
-            "WIP_LIMIT_COLUMN": "WIP limit",
+            "WIP_LIMIT_COLUMN": "limite d'en-cours",
             "PLACEHOLDER_WRITE_NAME": "Donnez un nom au nouvel statut"
         },
         "MENU": {
@@ -837,8 +837,8 @@
             "ADD_COMMENT": "Voulez-vous ajouter un commentaire pour le propriétaire du projet ?",
             "UNLIMITED_PROJECTS": "Illimité",
             "OWNER_MESSAGE": {
-                "PRIVATE": "Gardez en mémoire que vous pouvez posséder jusqu'à <strong>{{maxProjects}}</strong> projets privés. Vous possédez actuellement <strong>{{currentProjects}}</strong> projets privés.",
-                "PUBLIC": "Gardez en mémoire que vous pouvez posséder jusqu'à <strong>{{maxProjects}}</strong> projets publics. Vous possédez actuellement <strong>{{currentProjects}}</strong> projets publics."
+                "PRIVATE": "Souvenez-vous que vous pouvez posséder jusqu'à <strong>{{maxProjects}}</strong> projets privés. Vous possédez actuellement <strong>{{currentProjects}}</strong> projets privés.",
+                "PUBLIC": "Souvenez-vous que vous pouvez posséder jusqu'à <strong>{{maxProjects}}</strong> projets publics. Vous possédez actuellement <strong>{{currentProjects}}</strong> projets publics."
             },
             "CANT_BE_OWNED": "Pour le moment, vous ne pouvez devenir propriétaire d'un projet de ce type. Si vous voulez devenir propriétaire de ce projet, merci de contacter l'administrateur afin qu'il puisse modifier les paramètres de votre compte pour autoriser la propriété de projet."
         },
@@ -900,7 +900,7 @@
         "PAGE_TITLE": "{{projectName}}",
         "HELP": "Réorganisez vos projets pour placer les plus utilisés en premier.<br/> Les 4 premiers projets apparaîtront dans la liste des projets de la barre de navigation supérieure",
         "PRIVATE": "Projet privé",
-        "LOOKING_FOR_PEOPLE": "Est-ce que ce projet recherche des membres ?",
+        "LOOKING_FOR_PEOPLE": "Ce projet recherche des contributeurs",
         "FANS_COUNTER_TITLE": "{total, plural, =1{un fan} other{# fans}}",
         "WATCHERS_COUNTER_TITLE": "{total, plural, =1{un observateur} other{# observateurs}}",
         "MEMBERS_COUNTER_TITLE": "{total, plural, =1{un membre} other{# membres}}",
@@ -980,10 +980,10 @@
             "CHOOSE_TEMPLATE": "Quel template correspond le mieux à votre projet ?",
             "TEMPLATE_SCRUM": "Scrum",
             "TEMPLATE_SCRUM_DESC": "Prioriser et résoudre vos tâches sur de court cycles de temps.",
-            "TEMPLATE_SCRUM_LONGDESC": "Scrum est une méthodologie de développement de logiciels agile, incrémentale et itérative pour la gestion du développement de produits.\n\nLe backlog du produit est ce qui sera finalement livré, organisé dans l'ordre dans lequel il doit être livré. Les besoins sont divisés en fragments manageables et exécutables nommés sprints. Chaque fois que l'équipe initie un nouveau sprint; elle s'engage à livrer un certain nombre de récits utilisateurs du backlog, en fonction de leurs compétences, capacités et ressources. Le projet avance à mesure que le backlog se vide.",
+            "TEMPLATE_SCRUM_LONGDESC": "Scrum est une méthodologie de développement de logiciels agile, incrémentale et itérative pour la gestion du développement de produits.\nLe backlog du produit est ce qui sera finalement livré, organisé dans l'ordre dans lequel il doit être livré. Les besoins sont divisés en fragments manageables et exécutables nommés sprints. Chaque fois que l'équipe initie un nouveau sprint ; elle s'engage à livrer un certain nombre de récits utilisateurs du backlog, en fonction de leurs compétences, capacités et ressources. Le projet avance à mesure que le backlog se vide.",
             "TEMPLATE_KANBAN": "Kanban",
             "TEMPLATE_KANBAN_DESC": "Garder un flux de travail constant sur les tâches indépendantes",
-            "TEMPLATE_KANBAN_LONGDESC": "La méthodologie Kanban est utilisée pour diviser un développement de projet (n'importe quelle sorte de projet) en différentes étapes.\n\nUne carte Kamban est similaire à un mémo ou un post-it qui détaille chaque tâche (ou récit utilisateur) qu'il faut effectuer dans un projet. Le tableau Kanban est utilisé pour déplacer chaque carte d'un état d'avancement à l'autre, d'état en état, facilitant de ce fait l'avancée des tâches.",
+            "TEMPLATE_KANBAN_LONGDESC": "La méthodologie Kanban est utilisée pour diviser un développement de projet (n'importe quelle sorte de projet) en différentes étapes.\nUne carte Kanban est similaire à un mémo ou un post-it qui détaille chaque tâche (ou récit utilisateur) qu'il faut effectuer dans un projet. Le tableau Kanban est utilisé pour déplacer chaque carte d'un état d'avancement à l'autre, d'état en état, facilitant de ce fait l'avancée des tâches.",
             "DUPLICATE": "Dupliquer le projet",
             "DUPLICATE_DESC": "Repartir de rien en conservant vos configurations",
             "IMPORT": "Importer un projet",
@@ -991,9 +991,9 @@
             "INVITE": "Inviter au sein du projet",
             "SOLO_PROJECT": "Vous allez être seul sur ce projet",
             "INVITE_LATER": "(Vous pourrez inviter d'autres membres plus tard)",
-            "BACK": "Back",
-            "MAX_PRIVATE_PROJECTS": "Malheureusement vous avez atteint le nombre maximum de projets privés. Si vous voulez augmenter la limite, contactez votre administrateur.",
-            "MAX_PUBLIC_PROJECTS": "Malheureusement, vous avez atteind le nombre maximal de projets publics. Si vous souhaitez en augmenter le nombre, merci de contacter un administrateur",
+            "BACK": "Retour",
+            "MAX_PRIVATE_PROJECTS": "Malheureusement vous avez atteint le nombre maximum de projets privés.\nSi vous voulez augmenter la limite, contactez votre administrateur.",
+            "MAX_PUBLIC_PROJECTS": "Malheureusement, vous avez atteint le nombre maximal de projets publics.\nSi vous souhaitez modifier le nombre limite de projets publics, contactez un administrateur.",
             "PUBLIC_PROJECT": "Projet public",
             "PRIVATE_PROJECT": "Projet privé"
         },
@@ -1015,7 +1015,7 @@
             "UPLOAD_IN_PROGRESS_MESSAGE": "{{uploadedSize}} de {{totalSize}} déposés",
             "ERROR": "Taiga rencontre des difficultés pour importer votre fichier d'import. Merci de réessayer.",
             "ERROR_TOO_MANY_REQUEST": "Désolé, Taiga subit actuellement une charge importante. Veuillez réessayer dans quelques minutes.",
-            "ERROR_MESSAGE": "Taiga rencontre des difficultés pour importer vos données: {{error_message}}",
+            "ERROR_MESSAGE": "Taïga rencontre des difficultés pour importer vos données : {{error_message}}",
             "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) est trop lourd pour Taiga, réessayez avec un fichier d'une taille inférieure à ({{maxFileSize}})",
             "SYNC_SUCCESS": "Votre projet a été importé avec succès",
             "IMPORT": "Importer",
@@ -1026,41 +1026,41 @@
             "ACCEEDE": "Accès",
             "PROJECT_MEMBERS": "Membres du projet",
             "PROCESS_DESCRIPTION": "Dites-nous à qui de Taiga vous voulez assigner les tâches de {{platform}}",
-            "MATCH": "<strong>{{user_external}}</strong> est elle la même personne que <strong>{{user_internal}}</strong>?",
+            "MATCH": "<strong>{{user_external}}</strong> est elle la même personne que <strong>{{user_internal}}</strong> ?",
             "CHOOSE": "Sélectionnez l'utilisateur",
-            "LINKS": "Liens avec  {{platform}}",
+            "LINKS": "Liens avec {{platform}}",
             "LINKS_DESCRIPTION": "Souhaitez vous conserver le lien de chaque objet avec la carte originelle de {{platform}} ?",
             "WARNING_MAIL_USER": "Notez que si l’utilisateur n’a pas de compte Taiga, nous ne serons pas en mesure de lui assigner les tâches.",
             "ASSIGN": "Affecter",
             "PROJECT_SELECTOR": {
                 "NO_RESULTS": "Il semble qu'aucun résultat ne correspond à vos critères de recherche",
                 "ACTION_SEARCH": "recherche",
-                "ACTION_BACK": "Back"
+                "ACTION_BACK": "Retour"
             },
             "PROJECT_RESTRICTIONS": {
                 "PROJECT_MEMBERS_DESC_PRIVATE": "Le projet que vous essayez d’importer compte {{members}} membres y compris vous. Malheureusement, votre plan actuel permet un maximum de {{max_memberships}} membres par projet privé. Si vous souhaitez augmenter cette limite, veuillez contacter l’administrateur.",
                 "PROJECT_MEMBERS_DESC_PUBLIC": "Le projet que vous essayez d’importer compte {{members}} membres y compris vous. Malheureusement, votre plan actuel permet un maximum de {{max_memberships}} membres par projet privé. Si vous souhaitez augmenter cette limite, veuillez contacter l’administrateur.",
-                "ACCOUNT_ALLOW_MEMBERS": "Votre compte autorise  {{members}} membres",
+                "ACCOUNT_ALLOW_MEMBERS": "Votre compte autorise {{members}} membres",
                 "PRIVATE_PROJECTS_SPACE": {
-                    "TITLE": "Malheureusement, votre souscription actuelle ne vous permet pas d'ajouter un projet privé supplémentaire.",
+                    "TITLE": "Malheureusement, votre souscription actuelle ne vous permet pas d'ajouter un projet privé supplémentaire",
                     "DESC": "Le projet que vous voulez importer est privé. Votre souscription actuelle ne vous permet pas d'ajouter un projet privé supplémentaire."
                 },
                 "PUBLIC_PROJECTS_SPACE": {
-                    "TITLE": "Malheureusement, votre souscription actuelle ne vous permet pas d'ajouter un projet public supplémentaire.",
+                    "TITLE": "Malheureusement, votre souscription actuelle ne vous permet pas d'ajouter un projet public supplémentaire",
                     "DESC": "Le projet que vous voulez importer est privé. Votre souscription actuelle ne vous permet pas d'ajouter un projet public supplémentaire."
                 },
                 "PRIVATE_PROJECTS_MEMBERS": {
-                    "TITLE": "Votre souscription actuelle permet un maximum de {{max_memberships}} par projet privé."
+                    "TITLE": "Votre souscription actuelle permet un maximum de {{max_memberships}} membres par projet privé"
                 },
                 "PUBLIC_PROJECTS_MEMBERS": {
                     "TITLE": "Votre souscription actuelle permet un maximum de {{max_memberships}} par projet public."
                 },
                 "PRIVATE_PROJECTS_SPACE_MEMBERS": {
-                    "TITLE": "Désolé, votre souscription actuelle ne permet ni d'ajouter des projets privés supplémentaire, ni d'avoir plus de  {{max_memberships}} membres par projet privé.",
+                    "TITLE": "Désolé, votre souscription actuelle ne permet ni d'ajouter des projets privés supplémentaires, ni d'avoir plus de {{max_memberships}} membres par projet privé",
                     "DESC": "Le projet que vous voulez importer est privé et a {{members}} membres."
                 },
                 "PUBLIC_PROJECTS_SPACE_MEMBERS": {
-                    "TITLE": "Désolé, votre souscription actuelle ne permet ni d'ajouter des projets publics supplémentaire, ni d'avoir plus de  {{max_memberships}} membres par projet public.",
+                    "TITLE": "Désolé, votre souscription actuelle ne permet ni d'ajouter des projets publics supplémentaires, ni d'avoir plus de {{max_memberships}} membres par projet public",
                     "DESC": "Le projet que vous voulez importer est public et a {{members}} membres."
                 }
             },
@@ -1087,11 +1087,11 @@
                 "NO_PROJECTS": "Il semblerait que vous n'ayez aucun projet dans GitHub",
                 "HOW_DO_YOU_WANT_TO_IMPORT": "Comment souhaitez-vous importer vos tickets dans Taïga ?",
                 "KANBAN_PROJECT": "Comme récits dans un projet Kanban",
-                "KANBAN_PROJECT_DESCRIPTION": "Après cela vous pourrez activer le backlog de Scrum",
+                "KANBAN_PROJECT_DESCRIPTION": "Après cela vous pourrez activer le backlog de Scrum.",
                 "SCRUM_PROJECT": "Comme récit dans un projet Scrum",
-                "SCRUM_PROJECT_DESCRIPTION": "Après cela vous pourrez activer le mode Kanban",
+                "SCRUM_PROJECT_DESCRIPTION": "Après cela vous pourrez activer le mode Kanban.",
                 "ISSUES_PROJECT": "Comme ticket",
-                "ISSUES_PROJECT_DESCRIPTION": "Vous ne pourrez utiliser vos tickets dans les modes Kanban ou Scrum. Vous pourrez activer Kanban ou Scrum pour de nouveaux récits."
+                "ISSUES_PROJECT_DESCRIPTION": "Vous ne pourrez utiliser vos tickets dans les modes Kanban ou Scrum. Vous pourrez activer Kanban ou Scrum pour de nouveaux récits"
             },
             "ASANA": {
                 "SELECTOR": "Importer votre projet Asana et choisissez comment le suivre",
@@ -1099,8 +1099,8 @@
                 "NO_PROJECTS": "Il semble que vous n’avez pas de projets dans Asana",
                 "KANBAN_PROJECT": "Kanban",
                 "SCRUM_PROJECT": "Scrum",
-                "CREATE_AS_SCRUM_DESCRIPTION": "Les tâches et sous-tâches de votre projet seront créées comme récits et tâches dans Taïga",
-                "CREATE_AS_KANBAN_DESCRIPTION": "Les tâches et sous-tâches de votre projet seront créées comme récits et tâches dans Taïga"
+                "CREATE_AS_SCRUM_DESCRIPTION": "Les tâches et sous-tâches de votre projet seront créées comme récits et tâches dans Taïga.",
+                "CREATE_AS_KANBAN_DESCRIPTION": "Les tâches et sous-tâches de votre projet seront créées comme récits et tâches dans Taïga."
             },
             "JIRA": {
                 "SELECTOR": "Importer votre projet Jira et choisissez comment le suivre",
@@ -1113,7 +1113,7 @@
                 "ISSUES_PROJECT": "Tickets",
                 "CREATE_AS_SCRUM_DESCRIPTION": "Les tickets et sous-tickets de votre projet seront créées en tant que récit et tâches Taïga.",
                 "CREATE_AS_KANBAN_DESCRIPTION": "Les tickets et sous-tickets de votre projet seront créées en tant que récit et tâches Taïga.",
-                "CREATE_AS_ISSUES_DESCRIPTION": "Que souhaitez vous faire avec les sous-tickets de votre projet Jira ? (Taïga n'autorise pas les sous-tickets).",
+                "CREATE_AS_ISSUES_DESCRIPTION": "Que souhaitez-vous faire avec les sous-tickets de votre projet Jira ? (Taïga n'autorise pas les sous-tickets)",
                 "CREATE_NEW_ISSUES": "Convertir les sous-tickets en nouveaux tickets Taïga",
                 "NOT_CREATE_NEW_ISSUES": "Ne pas importer les sous-tickets"
             }
@@ -1164,7 +1164,7 @@
             "HELP_TEXT": "Si vos utilisateurs sont déjà inscrits sur Taiga, ils seront automatiquement ajoutés. Sinon, ils recevront une invitation."
         },
         "FEEDBACK": {
-            "TITLE": "Poser une question",
+            "TITLE": "Support Taïga",
             "COMMENT": "Laissez nous un message",
             "ACTION_SEND": "Envoyer un message",
             "YOU_CAN_ALSO": "Vous pouvez aussi :",
@@ -1202,19 +1202,19 @@
             "CHOOSE_EXISTING_ISSUE": "Quel ticket ?",
             "ADD_ISSUE": "Ajouter un problème",
             "FILTER_ISSUES": "Filtrer les tickets",
-            "SWIMLANE": "Swimlane",
-            "SELECT_SWIMLANE": "Select swimlane",
+            "SWIMLANE": "Couloir",
+            "SELECT_SWIMLANE": "Sélectionner le couloir",
             "SELECT_STATUS": "Sélectionnez l’état",
             "DEFAULT": "Valeur par défaut",
             "ERROR_STATUS": "Les modifications ne peuvent pas être enregistrées parce qu’il y a un problème avec l’état sélectionné.",
-            "ERROR_SWIMLANE": "Changes cannot be saved because there is a problem with the selected swimlane.",
+            "ERROR_SWIMLANE": "Les modifications ne peuvent être sauvegardées car il y a un problème avec le couloir sélectionné.",
             "LOCATION": "Localisation",
             "CREATE_TOP": "en haut",
             "CREATE_BOTTOM": "en bas"
         },
         "DISABLE_KANBAN": {
             "TITLE": "Désactiver le Kanban",
-            "MESSAGE": "This project has swimlanes. They will be gone but your user stories will not be deleted"
+            "MESSAGE": "Ce projet possède des couloirs. Ces couloirs seront supprimés mais vos récits utilisateurs seront conservés"
         },
         "DELETE_DUE_DATE": {
             "TITLE": "Supprimer l’échéance",
@@ -1273,13 +1273,13 @@
             "SUBTITLE_ACTION_DELETE_DUE_DATE": "Êtes-vous sûr de vouloir supprimer le statut de date d’échéance {{due_date_status_name}} ?"
         },
         "ADMIN_KANBAN_POWERUPS": {
-            "TITLE_ACTION_DELETE_SWIMLANE": "Delete swimlane",
+            "TITLE_ACTION_DELETE_SWIMLANE": "Supprimer le couloir",
             "SUBTITLE_ACTION_DELETE_SWIMLANE_OPTIONS": "Êtes-vous sûr de vouloir supprimer {{swimlane}} ?",
-            "SUBTITLE_ACTION_DELETE_SWIMLANE_REPLACEMENT": "All the user stories on this swimlane will be moved to:",
+            "SUBTITLE_ACTION_DELETE_SWIMLANE_REPLACEMENT": "Tous les récits utilisateur de ce couloir seront déplacés vers :",
             "SUBTITLE_ACTION_DELETE_SWIMLANE_LAST": "Vos récits utilisateur ne seront pas supprimées. Ils resteront dans le kanban.",
-            "DEFAULT_SWIMLANE": "New user stories will be in this swimlane by default",
-            "SET_DEFAULT_SWIMLANE": "Set this swimlane as default",
-            "DISABLE_DELETE_SWIMLANE": "The default swimlane cannot be deleted"
+            "DEFAULT_SWIMLANE": "Les nouveaux récits utilisateurs seront placés dans ce couloir par défaut",
+            "SET_DEFAULT_SWIMLANE": "Choisir ce couloir comme couloir par défaut",
+            "DISABLE_DELETE_SWIMLANE": "Le couloir par défaut ne peut être supprimé"
         },
         "RELATE_TO_EPIC": {
             "TITLE": "Lien vers l'épopée",
@@ -1368,9 +1368,9 @@
         "TITLE": "Activité",
         "ACTIVITIES_COUNT": "{{activities}} activités",
         "TAGS_ADDED": "Mots-clés ajoutés :",
-        "TAGS_REMOVED": "Mots-clés supprimés",
+        "TAGS_REMOVED": "Mots-clés supprimés :",
         "US_POINTS": "{{role}} points",
-        "NEW_ATTACHMENT": "Nouvelle pièce jointe",
+        "NEW_ATTACHMENT": "Nouvelle pièce jointe :",
         "DELETED_ATTACHMENT": "Pièces jointes supprimées :",
         "UPDATED_ATTACHMENT": "Pièces jointes mises à jour ({{filename}}) :",
         "CREATED_CUSTOM_ATTRIBUTE": "Attribut personnalisé créé",
@@ -1431,7 +1431,7 @@
             "YAXIS_LABEL": "Points",
             "OPTIMAL": "Le nombre optimal de points pour le sprint \"{{sprintName}}\" devrait être {{value}}",
             "REAL": "Le nombre réel de points pour le sprint \"{{sprintName}}\" est {{value}}",
-            "INCREMENT_TEAM": "Le nombre de points ajoutés par les exigences équipe pour le sprint  \"{{sprintName}}\" est {{value}}",
+            "INCREMENT_TEAM": "Le nombre de points ajoutés par les exigences équipe pour le sprint \"{{sprintName}}\" est {{value}}",
             "INCREMENT_CLIENT": "Le nombre de points ajoutés par les exigences client pour le sprint \"{{sprintName}}\" est {{value}}"
         },
         "TAGS": {
@@ -1452,7 +1452,7 @@
             "TITLE_COLUMN_POINTS": "Sélectionnez la vue par rôle"
         },
         "SPRINT_SUMMARY": {
-            "TOTAL_POINTS": "total<br />points",
+            "TOTAL_POINTS": "points<br />au total",
             "COMPLETED_POINTS": "points<br />complétés",
             "OPEN_TASKS": "tâches<br /> ouvertes",
             "CLOSED_TASKS": "tâches<br />fermées",
@@ -1481,7 +1481,7 @@
             "WARNING_EMPTY_SPRINT_ANONYMOUS": "Ce sprint n'a pas de récits utilisateur",
             "WARNING_EMPTY_SPRINT": "Déposez ici les récits depuis votre backlog pour démarrer un nouveau sprint",
             "TITLE_ACTION_NEW_SPRINT": "Ajouter un sprint",
-            "TEXT_ACTION_NEW_SPRINT": "Vous souhaitez peut être créer un nouveau sprint dans votre projet.",
+            "TEXT_ACTION_NEW_SPRINT": "Vous souhaitez peut être créer un nouveau sprint dans votre projet",
             "ACTION_SHOW_CLOSED_SPRINTS": "Afficher les sprints fermés",
             "ACTION_HIDE_CLOSED_SPRINTS": "Cacher les sprints fermés"
         }
@@ -1520,7 +1520,7 @@
         },
         "CHARTS": {
             "XAXIS_LABEL": "Jours",
-            "YAXIS_LABEL": "Projected points progress",
+            "YAXIS_LABEL": "Projection de points de progression",
             "OPTIMAL": "Les points en attente pour la journée {{formattedDate}} devraient être {{roundedValue}}",
             "REAL": "Le nombre réel de points pour le jour {{formattedDate}} est {{roundedValue}}",
             "DATE": "DD MMMM YYYY",
@@ -1557,7 +1557,7 @@
         "FIELDS": {
             "IS_IOCAINE": "est sous iocaine"
         },
-        "TITLE_ACTION_IOCAINE": "Vous vous sentez un peu dépassé(e) par une tâche ? Assurez-vous que les autres le sachent en cliquant sur locaine en éditant une tâche. Il est possible de s'immuniser contre ce poison (fictif) en en consommant de faibles doses pendant un moment tout comme il est possible de devenir meilleur à ce que vous faîtes en relevant quelques défis à l'occasion !"
+        "TITLE_ACTION_IOCAINE": "Vous vous sentez un peu dépassé(e) par une tâche ? Assurez-vous que les autres le sachent en cliquant sur locaine en éditant une tâche. Il est possible de s'immuniser contre ce poison (fictif) en consommant de faibles doses pendant un moment tout comme il est possible de devenir meilleur à ce que vous faîtes en relevant quelques défis à l'occasion !"
     },
     "NOTIFICATION": {
         "OK": "Tout est ok",
@@ -1618,7 +1618,7 @@
         },
         "CONFIRM_CHANGE_FROM_SPRINT": {
             "TITLE": "Attacher le ticket au sprint",
-            "MESSAGE": "<strong>Ce ticket est actuellement attaché au sprint {{ oldSprintName }}</strong>. Vous êtes sur le point de le détacher de ce sprint afin de l’attacher au sprint <strong>{{ newSprintName }}</strong>."
+            "MESSAGE": "<strong>Ce ticket est actuellement attaché au sprint {{ oldSprintName }}</strong>. Vous êtes sur le point détacher ce ticket de son sprint pour l'attacher au sprint <strong>{{ newSprintName }}</strong>"
         },
         "TABLE": {
             "COLUMNS": {
@@ -1790,7 +1790,7 @@
         "LINK": "Si vous voulez savoir comment l'utiliser, visitez notre page d'assistance",
         "LINK_TITLE": "Visitez notre page d'assistance",
         "HINT1_TITLE": "Savez-vous que vous pouvez importer et exporter les projets ?",
-        "HINT1_TEXT": "Cela vous permet d'extraire toutes vos données d'un Taiga et de le déplacer vers un autre",
+        "HINT1_TEXT": "Cela vous permet d'extraire toutes vos données d'un Taïga et de le déplacer vers un autre.",
         "HINT2_TITLE": "Savez-vous que vous pouvez créer des champs personnalisés ?",
         "HINT2_TEXT": "Les équipes peuvent désormais créer des champs personnalisés comme un moyen flexible d'entrer des données spécifiques utiles pour leur flux de travail particulier.",
         "HINT3_TITLE": "Triez vos projets pour mettre en valeur vos projets les plus pertinents.",
@@ -1889,7 +1889,7 @@
             "STEP4": {
                 "TITLE": "Commençons",
                 "TEXT1": "Vous pouvez démarrer en créant votre premier projet Taiga.",
-                "TEXT2": "Bonne chance!"
+                "TEXT2": "Bonne chance !"
             }
         },
         "BACKLOG": {
