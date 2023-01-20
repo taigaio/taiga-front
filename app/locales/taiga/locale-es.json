@@ -352,7 +352,7 @@
     },
     "REGISTER_FORM": {
         "TITLE": "Crea tu nueva cuenta en Taiga, ¡es gratis!",
-        "PLACEHOLDER_NAME": "Escribe un nombre de usuario (distingue mayúsculas y minúsculas)",
+        "PLACEHOLDER_NAME": "Elige un nombre de usuario",
         "PLACEHOLDER_FULL_NAME": "Escribe tu nombre completo",
         "PLACEHOLDER_EMAIL": "Tu email",
         "PLACEHOLDER_PASSWORD": "Establece una contraseña (distingue mayúsculas y minúsculas)",
@@ -470,9 +470,9 @@
         "DROP": "¡Arrastre los archivos adjuntos aquí!",
         "SHOW_DEPRECATED": "+ mostrar adjuntos obsoletos",
         "HIDE_DEPRECATED": "- ocultar adjuntos obsoletos",
-        "COUNT_DEPRECATED": "({{ counter }} obsoletos)\n",
+        "COUNT_DEPRECATED": "({{ counter }} obsoletos)",
         "MAX_UPLOAD_SIZE": "El tamaño máximo de subida es de {{maxFileSize}}",
-        "DATE": "DD MMM YYYY [a las] hh:mm\n",
+        "DATE": "DD MMM AAAA [a las] hh:mm",
         "ERROR_UPLOAD_ATTACHMENT": "No hemos podido subir el fichero '{{fileName}}'. {{errorMessage}}",
         "TITLE_LIGHTBOX_DELETE_ATTACHMENT": "Borrar adjunto...",
         "MSG_LIGHTBOX_DELETE_ATTACHMENT": "el adjunto '{{fileName}}'",
@@ -543,7 +543,7 @@
             "URL_CHAT_ROOM": "URL de tu chat room"
         },
         "PROJECT_PROFILE": {
-            "PAGE_TITLE": "{{sectionName}} - Perfil de Proyecto - {{projectName}}\n",
+            "PAGE_TITLE": "{{sectionName}} - Perfil del proyecto - {{projectName}}",
             "PROJECT_DETAILS": "Info del proyecto",
             "PROJECT_NAME": "Nombre del proyecto",
             "TAGS": "Etiquetas",
@@ -558,9 +558,9 @@
             "DELETE": "Eliminar este proyecto",
             "CHANGE_LOGO": "Cambia el logo",
             "ACTION_USE_DEFAULT_LOGO": "Usar imagen por defecto",
-            "MAX_PRIVATE_PROJECTS": "Has alcanzado el número máximo de proyectos privados permitidos por su actual plan",
+            "MAX_PRIVATE_PROJECTS": "Has alcanzado el número máximo de proyectos privados que permite tu plan actual",
             "MAX_PRIVATE_PROJECTS_MEMBERS": "El numero máximo de miembros para proyectos privados se ha excedido",
-            "MAX_PUBLIC_PROJECTS": "Desafortunadamente, usted ha alcanzado el número máximo de proyectos públicos permitidos por su plan actual",
+            "MAX_PUBLIC_PROJECTS": "Lamentablemente, ha alcanzado el número máximo de proyectos públicos que permite su plan actual",
             "MAX_PUBLIC_PROJECTS_MEMBERS": "El proyecto excede el numero maximo de usuarios para proyectos publicos",
             "PROJECT_OWNER": "Dueño del proyecto",
             "REQUEST_OWNERSHIP": "Solicitar de dueño",
@@ -570,7 +570,8 @@
             "REQUEST_OWNERSHIP_SUCCESS": "Notificaremos al dueño del proyecto",
             "CHANGE_OWNER": "Cambiar dueño",
             "CHANGE_OWNER_SUCCESS_TITLE": "Ok, su solicitud ha sido enviado!",
-            "CHANGE_OWNER_SUCCESS_DESC": "Le notificaremos por correo si la solicitud para ser dueño del proyecto fue aceptada o rechazada"
+            "CHANGE_OWNER_SUCCESS_DESC": "Le notificaremos por correo si la solicitud para ser dueño del proyecto fue aceptada o rechazada",
+            "REQUEST_OWNERSHIP_LIMIT": "Ha alcanzado su límite de {{maxProjects}} proyectos privados"
         },
         "REPORTS": {
             "TITLE": "Informes",
@@ -701,7 +702,7 @@
             "WARNING_DELETE_ROLE": "¡Ten cuidado! Todas las estimaciones de roles serán eliminados",
             "ERROR_DELETE_ALL": "No puedes eliminar todos los valores",
             "EXTERNAL_USER": "Usuario externo",
-            "NOTE_EXTERNAL_USERS": "<strong>Nota:</strong> por Usuario Externo entendemos cualquier usuario anónimo no perteneciente a la plataforma Taiga, incluyendo motores de búsqueda. Por favor, usa este rol con cuidado."
+            "NOTE_EXTERNAL_USERS": "Un usuario externo es cualquier usuario (iniciado sesión en la plataforma Taiga o no), <strong>incluidos los motores de búsqueda</strong>. Aunque los usuarios no registrados nunca pueden tener permisos de edición, los usuarios registrados sí pueden, si usted lo permite. Si su proyecto es privado, también puede controlar los permisos de visualización. <strong>Utilice este rol con cuidado</strong>."
         },
         "THIRD_PARTIES": {
             "SECRET_KEY": "Secret key",
@@ -779,14 +780,14 @@
             "DEFAULT_DELETE_MESSAGE": "la invitación enviada a"
         },
         "DEFAULT_VALUES": {
-            "LABEL_EPIC_STATUS": "Valor por defecto para el selector de estado de épicas.",
-            "LABEL_US_STATUS": "Valor por defecto para el selector de estado de historias de usuario.",
-            "LABEL_POINTS": "Valor por defecto para el selector de puntos",
-            "LABEL_TASK_STATUS": "Valor por defecto para el selector de estado de tarea",
-            "LABEL_ISSUE_TYPE": "Valor por defecto para el selector de tipo de la petición",
-            "LABEL_ISSUE_STATUS": "Valor por defecto para el selector de estado de petición",
-            "LABEL_PRIORITY": "Valor por defecto para el selector de prioridad",
-            "LABEL_SEVERITY": "Valor por defecto para el selector de gravedad"
+            "LABEL_EPIC_STATUS": "Selector del estado de Epic",
+            "LABEL_US_STATUS": "Selector del estado de las historias del usuario",
+            "LABEL_POINTS": "Selector de puntos",
+            "LABEL_TASK_STATUS": "Selector del estado de las tareas",
+            "LABEL_ISSUE_TYPE": "Selector de tipo de problema",
+            "LABEL_ISSUE_STATUS": "Selector del estado del problema",
+            "LABEL_PRIORITY": "Selector de prioridad",
+            "LABEL_SEVERITY": "Selector de la gravedad"
         },
         "STATUS": {
             "PLACEHOLDER_WRITE_STATUS_NAME": "Escribe un nombre para el nuevo estado",
@@ -836,10 +837,17 @@
             "ADD_COMMENT": "¿Te gustaría añadir un comentario para el project owner?",
             "UNLIMITED_PROJECTS": "Sin límite",
             "OWNER_MESSAGE": {
-                "PRIVATE": "Por favor recuerde que puede ser dueño de maximo <strong>{{maxProjects}}</strong> proyectos privados. Usted tiene actualmente <strong>{{currentProjects}}</strong> proyectos privados bajo su poder",
-                "PUBLIC": "Pro favor recuerde que solo puede ser dueño de maximo <strong>{{maxProjects}}</strong> proyectos publicos. Actualmente tiene <strong>{{currentProjects}}</strong> proyectos publicos bajo su poder"
+                "PRIVATE": "Recuerde que puede poseer hasta <strong>{{maxProjects}}</strong> proyectos privados. Actualmente posee <strong>{{currentProjects}}</strong> proyectos privados.",
+                "PUBLIC": "Recuerde que puede poseer hasta <strong>{{maxProjects}}</strong> proyectos públicos. Actualmente posee <strong>{{currentProjects}}</strong> proyectos públicos.",
+                "PRIVATE_EXCEEDED": "Actualmente tiene <strong>{{currentProjects}} proyectos privados</strong> el máximo que permite su plan.",
+                "PUBLIC_EXCEEDED": "Actualmente tiene <strong>{{currentProjects}} proyectos públicos</strong> el máximo que permite su plan."
             },
             "CANT_BE_OWNED": "en el momento no puede ser el dueño de un proyecto de este tipo. Si desea ser el dueño de este proyecto, por favor contacte al administrador para cambiar la configuracion que le permita ser dueño del proyecto"
+        },
+        "PROJECT_PRESETS": {
+            "MENU_TITLE": "Preajustes",
+            "TITLE": "Valores predeterminados",
+            "SUBTITLE": "Establecer los valores por defecto para todas las entradas del selector."
         }
     },
     "USER": {
@@ -942,7 +950,9 @@
             "CHANGE_PASSWORD": "Cambiar contraseña",
             "DASHBOARD_TITLE": "Dashboard",
             "DISCOVER_TITLE": "Descubre los proyectos más relevantes",
-            "DISCOVER": "Descubrir"
+            "DISCOVER": "Descubrir",
+            "TAIGA_COMMUNITY_TITLE": "Ir a la Comunidad de Taiga",
+            "TAIGA_COMMUNITY": "Comunidad Taiga"
         },
         "LIKE_BUTTON": {
             "LIKE": "Me gusta",
@@ -1111,6 +1121,18 @@
                 "CREATE_NEW_ISSUES": "Convertir sub-peticiones como nuevas peticiones de Taiga",
                 "NOT_CREATE_NEW_ISSUES": "No importar sub-peticiones"
             }
+        },
+        "NEWSLETTER_OPENING": {
+            "SAVE_PREFERENCE": "GUARDAR LAS PREFERENCIAS",
+            "SAVED_PREFERENCE": "Tus preferencias se han guardado correctamente",
+            "CONFIRMATION": "Sí, envíenme noticias, actualizaciones de productos y recomendaciones sobre Taiga.",
+            "NO_SHARE": "Su privacidad nos importa (consulte nuestra <a href=\"https://www.taiga.io/privacy-policy\" title=\"Go to privacy policy\" target=\"_blank\">política de privacidad</a>).",
+            "OPT_OUT": "Lo haremos   Solo le enviaremos correos electrónicos relevantes (<6 por año). Puede darse de baja en cualquier momento enviando un correo electrónico a <a href=\"mailto:support@taiga.io\" target=\"_blank\">support@taiga.io</a> con el asunto \"cancelar suscripción\" o a través del enlace en uno de nuestros boletines.",
+            "LIGHTBOX_TITLE": "¿Quieres recibir anuncios sobre Taiga?",
+            "DONT_ASK": "No vuelvas a preguntar",
+            "SUBSCRIBE": "Suscríbete",
+            "NOTIFY_EXPLANATION": "Le enviaremos noticias, actualizaciones de productos y recomendaciones sobre Taiga.",
+            "SUBSCRIBED": "Estás suscrito"
         }
     },
     "LIGHTBOX": {
@@ -1146,14 +1168,16 @@
             "HELP_TEXT": "Si los usuarios ya están registrado en Taiga, se añadirán automáticamente. De lo contrario recibirán una invitación."
         },
         "FEEDBACK": {
-            "TITLE": "Escribe tu pregunta",
+            "TITLE": "Soporte Taiga",
             "COMMENT": "Déjanos un mensaje",
             "ACTION_SEND": "Enviar el mensaje",
             "YOU_CAN_ALSO": "Puedes también:",
             "CREATE": "Crear una petición en este",
             "PUBLIC": "proyecto público de Taiga",
             "EMAIL": "Enviarnos un e-mail a",
-            "SUPPORT": "support@taiga.io"
+            "SUPPORT": "support@taiga.io",
+            "FAQ": "Preguntas más frecuentes",
+            "VISIT": "Visite nuestro "
         },
         "SEARCH": {
             "TITLE": "Busqueda",
@@ -1189,7 +1213,10 @@
             "SELECT_STATUS": "Selecciona estado",
             "DEFAULT": "Predeterminado",
             "ERROR_STATUS": "Changes cannot be saved because there is a problem with the selected status.",
-            "ERROR_SWIMLANE": "Changes cannot be saved because there is a problem with the selected swimlane."
+            "ERROR_SWIMLANE": "Changes cannot be saved because there is a problem with the selected swimlane.",
+            "LOCATION": "Ubicación",
+            "CREATE_TOP": "en la parte superior",
+            "CREATE_BOTTOM": "en la parte inferior"
         },
         "DISABLE_KANBAN": {
             "TITLE": "Desactivar kanban",
@@ -1529,7 +1556,7 @@
         "TITLE_LINK_TASKBOARD": "Ir al panel de tareas",
         "PLACEHOLDER_SUBJECT": "Escribe el asunto de la nueva tarea",
         "TITLE_SELECT_STATUS": "Nombre del estado",
-        "OWNER_US": "Esta tarea pertenece a\n",
+        "OWNER_US": "Esta tarea corresponde a",
         "TITLE_LINK_GO_OWNER": "Ir a historia de usuario",
         "TITLE_DELETE_ACTION": "Eliminar Tarea",
         "LIGHTBOX_TITLE_BLOKING_TASK": "Tarea bloqueada",
@@ -1544,9 +1571,10 @@
         "WARNING_TEXT": "¡Tus cambios no han sido guardados!",
         "SAVED": "¡La Taiga ha guardado todos tus cambios!",
         "CLOSE": "Cerrar notificación",
-        "MAIL": "Notificaciones Por Mail",
+        "MAIL": "Actividad",
         "DESKTOP": "Notificaciones de escritorio usando alertas de navegador",
-        "ASK_DELETE": "¿Esta seguro que desea eliminar?"
+        "ASK_DELETE": "¿Esta seguro que desea eliminar?",
+        "COMMUNICATION": "Comunicaciones de Taiga"
     },
     "CANCEL_ACCOUNT": {
         "TITLE": "Cancelar tu cuenta de usuario",
@@ -1571,7 +1599,7 @@
     },
     "ISSUES": {
         "PAGE_TITLE": "Peticiones - {{projectName}}",
-        "PAGE_DESCRIPTION": "El panel de peticiones del proyecto {{projectName}}: {{projectDescription}}\n",
+        "PAGE_DESCRIPTION": "El panel de la lista de incidencias del proyecto {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Petición",
         "ACTION_NEW_ISSUE": "NEW ISSUE",
         "ACTION_ATTACH_SPRINT": "Vincular petición a un Sprint",
@@ -1768,7 +1796,7 @@
         "LINK": "Si quieres saber como funciona visita nuestra página de soporte",
         "LINK_TITLE": "Visita nuestra página de soporte",
         "HINT1_TITLE": "¿Sabes que puedes importar y exportar proyectos?",
-        "HINT1_TEXT": "Esto permite extraer todos tus datos para moverlos de una instancia de Taiga a otra.\n",
+        "HINT1_TEXT": "Esto te permite extraer todos tus datos de un Taiga y trasladarlos a otro.",
         "HINT2_TITLE": "¿Sabías que puedes crear atributos personalizados?",
         "HINT2_TEXT": "Los equipos ahora pueden crear atributos personalizados como un medio flexible para introducir datos específicos útiles para su flujo de trabajo particular",
         "HINT3_TITLE": "Reordenar tus proyectos para facilitar el acceso a los más relevantes para ti",
@@ -1777,12 +1805,12 @@
         "HINT4_TEXT": "No te preocupes, en el dashboard encontrarás las tareas, peticiones e historias de usuario abiertas en el orden en el que trabajste en ellas."
     },
     "TIMELINE": {
-        "UPLOAD_ATTACHMENT": "{{username}} ha subido un nuevo adjunto en {{obj_name}}\n",
+        "UPLOAD_ATTACHMENT": "{{username}} ha subido un nuevo archivo adjunto en {{obj_name}}",
         "US_CREATED": "{{username}} ha creado una nueva historia de usuario {{obj_name}} en {{project_name}}",
         "ISSUE_CREATED": "{{username}} ha creado una nueva petición {{obj_name}} en {{project_name}}",
         "TASK_CREATED": "{{username}} ha creado una nueva tarea {{obj_name}} en {{project_name}}",
         "TASK_CREATED_WITH_US": "{{username}} ha creado una nueva tarea {{obj_name}} en {{project_name}} que proviene de la historia de usuario {{us_name}}",
-        "WIKI_CREATED": "{{username}} ha creado una nueva página de wiki {{obj_name}} en {{project_name}}\n",
+        "WIKI_CREATED": "{{username}} ha creado una nueva página wiki {{obj_name}} en {{project_name}}",
         "MILESTONE_CREATED": "{{username}} ha creado un nuevo sprint {{obj_name}} en {{project_name}}",
         "EPIC_CREATED": "{{username}} ha creado una nueva épica {{obj_name}} en {{project_name}}.",
         "EPIC_RELATED_USERSTORY_CREATED": "{{username}} ha relacionado la historia de usuario {{related_us_name}} con la épica {{epic_name}} en {{project_name}}.",
