@@ -60,7 +60,8 @@
             "NO_PTS": "N/E",
             "ESTIMATION": "Estimation",
             "TASKS": "{{completed}} tasks of {{total}} completed",
-            "EXTRA_ASSIGNED_USERS": "{{total}} more assigned users"
+            "EXTRA_ASSIGNED_USERS": "{{total}} more assigned users",
+            "MOVE_TO_TOP": "移到最上方"
         },
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "該數值似乎為無效",
@@ -569,7 +570,8 @@
             "REQUEST_OWNERSHIP_SUCCESS": "We'll notify the project owner",
             "CHANGE_OWNER": "Change owner",
             "CHANGE_OWNER_SUCCESS_TITLE": "Ok, your request has been sent!",
-            "CHANGE_OWNER_SUCCESS_DESC": "We will notify you by email if the project ownership request is accepted or declined"
+            "CHANGE_OWNER_SUCCESS_DESC": "We will notify you by email if the project ownership request is accepted or declined",
+            "REQUEST_OWNERSHIP_LIMIT": "你已達到 {{maxProjects}} 個不公開專案的限額"
         },
         "REPORTS": {
             "TITLE": "Reports",
@@ -839,6 +841,10 @@
                 "PUBLIC": "Please remember that you can own up to <strong>{{maxProjects}}</strong> public projects. You currently own <strong>{{currentProjects}}</strong> public projects"
             },
             "CANT_BE_OWNED": "At the moment you cannot become an owner of a project of this type. If you would like to become the owner of this project, please contact the administrator so they change your account settings to enable project ownership."
+        },
+        "PROJECT_PRESETS": {
+            "MENU_TITLE": "預設選項",
+            "TITLE": "預設值"
         }
     },
     "USER": {
@@ -941,7 +947,9 @@
             "CHANGE_PASSWORD": "更換密碼 ",
             "DASHBOARD_TITLE": "控制台",
             "DISCOVER_TITLE": "發現流行專案",
-            "DISCOVER": "發現"
+            "DISCOVER": "發現",
+            "TAIGA_COMMUNITY_TITLE": "前往Taiga社區群組",
+            "TAIGA_COMMUNITY": "Taiga社區群組"
         },
         "LIKE_BUTTON": {
             "LIKE": "喜歡",
@@ -1110,6 +1118,14 @@
                 "CREATE_NEW_ISSUES": "Convert sub-issues to new Taiga issues",
                 "NOT_CREATE_NEW_ISSUES": "Do not import sub-issues"
             }
+        },
+        "NEWSLETTER_OPENING": {
+            "SUBSCRIBED": "已訂閱",
+            "LIGHTBOX_TITLE": "你想接收Taiga的新訊息嗎？",
+            "DONT_ASK": "不再詢問",
+            "SUBSCRIBE": "訂閲",
+            "OPT_OUT": "我們只會向你發送相關電子郵件（每年少於 6 封）。你可以隨時發送以「unsubscribe」題的電子郵件到 <a href=\"mailto:support@taiga.io\" target=\"_blank\">support@taiga.io</a>，或通訊中的連結來取消訂閱。",
+            "SAVE_PREFERENCE": "儲存選項"
         }
     },
     "LIGHTBOX": {
@@ -1152,7 +1168,8 @@
             "CREATE": "Create an issue on this",
             "PUBLIC": "public Taiga project",
             "EMAIL": "Send us a e-mail directly to",
-            "SUPPORT": "support@taiga.io"
+            "SUPPORT": "support@taiga.io",
+            "FAQ": "常見問題"
         },
         "SEARCH": {
             "TITLE": "搜尋",
@@ -1188,7 +1205,10 @@
             "SELECT_STATUS": "Select status",
             "DEFAULT": "Default",
             "ERROR_STATUS": "Changes cannot be saved because there is a problem with the selected status.",
-            "ERROR_SWIMLANE": "Changes cannot be saved because there is a problem with the selected swimlane."
+            "ERROR_SWIMLANE": "Changes cannot be saved because there is a problem with the selected swimlane.",
+            "CREATE_BOTTOM": "最下方",
+            "CREATE_TOP": "最上方",
+            "LOCATION": "位置"
         },
         "DISABLE_KANBAN": {
             "TITLE": "Disable kanban",
