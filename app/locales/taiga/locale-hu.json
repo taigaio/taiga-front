@@ -536,8 +536,10 @@
             "UNLIMITED_PROJECTS": "Korlátlan",
             "REJECTED_PROJECT_OWNERNSHIP": "OK. Felvesszük a kapcsolatot a jelenlegi projekt tulajdonossal",
             "OWNER_MESSAGE": {
-                "PRIVATE": "Ne feledd, hogy legfeljebb <strong>{{maxProjects}}</strong> privát projekt tulajdonosa lehetsz. Jelenleg <strong>{{currentProjects}}</strong> privát projekted van",
-                "PUBLIC": "Ne feledd, hogy legfeljebb <strong>{{maxProjects}}</strong> nyilvános projekt tulajdonosa lehetsz. Jelenleg <strong>{{currentProjects}}</strong> nyilvános projekted van"
+                "PRIVATE": "Ne feledd, hogy legfeljebb <strong>{{maxProjects}}</strong> privát projekt tulajdonosa lehetsz. Jelenleg <strong>{{currentProjects}}</strong> privát projekted van.",
+                "PUBLIC": "Ne feledd, hogy legfeljebb <strong>{{maxProjects}}</strong> nyilvános projekt tulajdonosa lehetsz. Jelenleg <strong>{{currentProjects}}</strong> nyilvános projekted van.",
+                "PUBLIC_EXCEEDED": "Jelenleg <strong>{{currentProjects}} privát projekted van </strong> a maximum amit a jelenlegi előfizetésed megenged.",
+                "PRIVATE_EXCEEDED": "Jelenleg <strong>{{currentProjects}} privát projekted van </strong> a maximum amit a jelenlegi előfizetésed megenged."
             }
         },
         "PROJECT_PROFILE": {
@@ -555,7 +557,7 @@
             "REQUEST_OWNERSHIP": "Tulajdonjog kérése",
             "CHANGE_OWNER": "Tulajdonos módosítása",
             "CHANGE_OWNER_SUCCESS_TITLE": "Rendben, a kérés elküldve!",
-            "MAX_PRIVATE_PROJECTS": "Elérted a jelenlegi terv által engedélyezett privát projektek maximális számát",
+            "MAX_PRIVATE_PROJECTS": "Elérted a jelenlegi előfizetésed által engedélyezett privát projektek maximális számát",
             "MAX_PRIVATE_PROJECTS_MEMBERS": "A privát projektek maximális taglétszáma túllépve",
             "MAX_PUBLIC_PROJECTS_MEMBERS": "A projekt túllépte a nyilvános projektek maximális taglétszámát",
             "REQUEST_OWNERSHIP_DESC": "Kérés, hogy {{name}}, a pojekt jelenlegi tulajdonosa ruházza át rád a projekt tulajdonjogát.",
@@ -569,7 +571,7 @@
             "ACTION_USE_DEFAULT_LOGO": "Alapértelmezett kép használata",
             "REQUEST_OWNERSHIP_LIMIT": "Elérted a {{maxProjects}} privát projekt korlátot",
             "CHANGE_OWNER_SUCCESS_DESC": "Emailben értesíteni fogunk róla ha a project tulajdonosi kérésedet elfgoadták vagy visszautasították",
-            "MAX_PUBLIC_PROJECTS": "Sajnos elérted a jelenlegi terv által engedélyezett nyilvános projektek maximális számát"
+            "MAX_PUBLIC_PROJECTS": "Sajnos elérted a jelenlegi előfizetésed által engedélyezett nyilvános projektek maximális számát"
         },
         "CUSTOM_FIELDS": {
             "US_ADD": "Egy egyéni mező hozzáadása a user storykhoz",
@@ -942,7 +944,9 @@
             "VIEW_PROFILE_TITLE": "Profil megtekintése",
             "VIEW_PROFILE": "Profil megtekintése",
             "TAIGA_RESOURCES_TITLE": "Ugrás a Taiga resources oldalra",
-            "ACTION_CREATE_PROJECT_FIRST_TEXT": "Még nincsenek projektjeid. Hozz létre egyet most, hívd meg a csapatodat és kezd el teljes mértékben használni a Taigat."
+            "ACTION_CREATE_PROJECT_FIRST_TEXT": "Még nincsenek projektjeid. Hozz létre egyet most, hívd meg a csapatodat és kezd el teljes mértékben használni a Taigat.",
+            "TAIGA_COMMUNITY": "Taiga Közösség",
+            "TAIGA_COMMUNITY_TITLE": "Irány a Taiga közösség"
         },
         "LIKE_BUTTON": {
             "LIKE": "Kedvelés",
@@ -1041,14 +1045,16 @@
             "NO_EPICS_FOUND": "Úgy tűnik, semmi sem található a keresési feltételekkel"
         },
         "FEEDBACK": {
-            "TITLE": "Kérdezz",
+            "TITLE": "Taiga támogatás",
             "CREATE": "Probléma bejelentése ezzel kapcsolatban: ",
             "EMAIL": "Küldj nekünk emailt közvetlenül ide: ",
             "ACTION_SEND": "Üzenet küldése",
             "PUBLIC": "nyilvános Taiga projekt",
             "SUPPORT": "support@taiga.io",
             "COMMENT": "Hagyj nekünk üzenetet",
-            "YOU_CAN_ALSO": "Ezt is megteheted:"
+            "YOU_CAN_ALSO": "Ezt is megteheted:",
+            "VISIT": "Látogasd meg ",
+            "FAQ": "Gyakran ismételt kérdések"
         },
         "LEAVE_PROJECT_WARNING": {
             "CURRENT_USER_OWNER": {
