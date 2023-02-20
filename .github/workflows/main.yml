@@ -18,7 +18,7 @@ jobs:
     # Set node version
     strategy:
       matrix:
-        node-version: [12.17.0]
+        node-version: [16.19.1]
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -60,7 +60,7 @@ jobs:
     # Set node version
     strategy:
       matrix:
-        node-version: [12.17.0]
+        node-version: [16.19.1]
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
