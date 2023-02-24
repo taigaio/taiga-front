@@ -1,7 +1,7 @@
 .auth {
     @include triangled-bg;
     align-items: center;
-    background: $color-link-primary;
+    background: $color-white;
     bottom: 0;
     display: flex;
     flex-direction: row;
@@ -37,14 +37,14 @@
     .logo {
         @include font-size(xxlarge);
         @include font-type(regular);
-        color: $color-white;
+        color: $color-black900;
         display: block;
         margin-bottom: 1rem;
         text-align: center;
     }
     .tagline {
         @include font-size(xlarge);
-        color: $color-white;
+        color: $color-black900;
         line-height: 2rem;
         margin-bottom: 1rem;
         text-align: center;
@@ -62,16 +62,16 @@
     }
     .login-text,
     .register-text {
-        color: $color-white;
+        color: $color-black900;
         font-size: .875rem;
         margin-top: 2rem;
         padding-bottom: 1rem;
         text-align: center;
         a {
-            color: $color-white;
+            color: $color-black900;
             text-decoration: underline;
             &:hover {
-                color: $color-gray400;
+                color: $color-link-primary;
             }
         }
     }
@@ -90,7 +90,7 @@
     }
     a {
         &:hover {
-            color: $color-white;
+            color: $color-link-primary;
         }
     }
     .btn-small {
