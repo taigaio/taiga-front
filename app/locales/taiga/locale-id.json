@@ -52,7 +52,24 @@
         "CARD": {
             "ASSIGN_TO": "Ditugaskan Kepada",
             "MOVE_TO_TOP": "Pindah ke atas",
-            "EDIT": "Edit kartu"
-        }
+            "EDIT": "Edit kartu",
+            "DUE_DATE": "Sampai tanggal: {{date}}",
+            "DELETE": "Hapus kartu",
+            "DETACH_ISSUE_FROM_SPRINT": "Lepaskan dari sprint",
+            "DELETE_ISSUE": "Hapus isu",
+            "PTS": "{{pts}} poin",
+            "NO_PTS": "N/E",
+            "ESTIMATION": "Estimasi"
+        },
+        "TAGS": {
+            "ADD": "Tambah tag",
+            "DELETE": "Hapus tag",
+            "PLACEHOLDER": "Masukkan tag"
+        },
+        "FORM_ERRORS": {
+            "DEFAULT_MESSAGE": "Nilai ini sepertinya tidak valid."
+        },
+        "ISSUE": "Isu",
+        "EPIC": "Epik"
     }
 }
