@@ -558,9 +558,9 @@
             "DELETE": "Excluir este projeto",
             "CHANGE_LOGO": "Alterar logo",
             "ACTION_USE_DEFAULT_LOGO": "Usar imagem padrão",
-            "MAX_PRIVATE_PROJECTS": "Você atingiu o número máximo de projetos privados permitidos para seu plano atual",
+            "MAX_PRIVATE_PROJECTS": "Você atingiu o número máximo de projetos privados que seu plano atual permite",
             "MAX_PRIVATE_PROJECTS_MEMBERS": "O número máximo de membros para projetos privados foi excedido",
-            "MAX_PUBLIC_PROJECTS": "Infelizmente você atingiu o número máximo de projetos público permitidos para seu plano atual",
+            "MAX_PUBLIC_PROJECTS": "Infelizmente, você atingiu o número máximo de projetos públicos que seu plano atual permite",
             "MAX_PUBLIC_PROJECTS_MEMBERS": "Este projeto atingiu o seu limite atual de membros para projetos públicos",
             "PROJECT_OWNER": "Dono do projeto",
             "REQUEST_OWNERSHIP": "Solicitar propriedade",
@@ -837,7 +837,7 @@
             "ADD_COMMENT": "Você gostaria de adicionar um comentário para o dono do projeto?",
             "UNLIMITED_PROJECTS": "Ilimitado",
             "OWNER_MESSAGE": {
-                "PRIVATE": "Por favor, lembre-se que você pode ser dono de até <strong>{{maxProjects}}</strong> projetos privados. Você, atualmente, é dono de <strong>{{currentProjects}}</strong> projetos privados",
+                "PRIVATE": "Por favor, lembre-se que você pode ser dono de até <strong>{{maxProjects}}</strong> projetos privados. Você, atualmente, é dono de <strong>{{currentProjects}}</strong> projetos privados.",
                 "PUBLIC": "Por favor, lembre-se que você pode ser dono de até <strong>{{maxProjects}}</strong> projetos públicos. Você, atualmente, é dono de <strong>{{currentProjects}}</strong> projetos públicos",
                 "PUBLIC_EXCEEDED": "Atualmente você tem <strong>{{currentProjects}} projetos públicos</strong> do máximo que seu plano permite.",
                 "PRIVATE_EXCEEDED": "Atualmente você tem <strong>{{currentProjects}} projetos privados </strong> do máximo que seu plano permite."
@@ -950,7 +950,9 @@
             "CHANGE_PASSWORD": "Alterar senha",
             "DASHBOARD_TITLE": "Painel",
             "DISCOVER_TITLE": "Descobrir projetos em destaques",
-            "DISCOVER": "Descubra"
+            "DISCOVER": "Descubra",
+            "TAIGA_COMMUNITY": "Comunidade Taiga",
+            "TAIGA_COMMUNITY_TITLE": "Ir para comunidade Taiga"
         },
         "LIKE_BUTTON": {
             "LIKE": "Curtir",
@@ -1161,14 +1163,16 @@
             "HELP_TEXT": "Se os usuários já estiverem registrados no Taiga, eles serão adicionados automaticamente. Caso contrário, eles receberão um convite."
         },
         "FEEDBACK": {
-            "TITLE": "Pergunte algo",
+            "TITLE": "Suporte do Taiga",
             "COMMENT": "Deixe uma mensagem",
             "ACTION_SEND": "Enviar mensagem",
             "YOU_CAN_ALSO": "Você também pode:",
             "CREATE": "Crie um problema sobre este ",
             "PUBLIC": "public Taiga project",
             "EMAIL": "Envie-nos um e-mail diretamente para ",
-            "SUPPORT": "support@taiga.io"
+            "SUPPORT": "support@taiga.io",
+            "VISIT": "Visite nosso ",
+            "FAQ": "Perguntas frequentes"
         },
         "SEARCH": {
             "TITLE": "Procurar",
@@ -1204,7 +1208,8 @@
             "SELECT_STATUS": "Select status",
             "DEFAULT": "Default",
             "ERROR_STATUS": "Changes cannot be saved because there is a problem with the selected status.",
-            "ERROR_SWIMLANE": "Changes cannot be saved because there is a problem with the selected swimlane."
+            "ERROR_SWIMLANE": "Changes cannot be saved because there is a problem with the selected swimlane.",
+            "LOCATION": "Localização"
         },
         "DISABLE_KANBAN": {
             "TITLE": "Disable kanban",
