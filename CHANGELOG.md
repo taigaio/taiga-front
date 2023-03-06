@@ -1,7 +1,12 @@
 # Changelog
 
-## 6.6.0 (unreleased)
+## 6.6.1 (unreleased)
 
+- ...
+
+## 6.6.0 (2023-03-06)
+
+- Upgrade to node 16.19.1
 - Update base image for docker
 
 ## 6.5.2 (2022-09-26)
