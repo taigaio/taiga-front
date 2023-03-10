@@ -134,7 +134,7 @@ module.filter("inArray", ["$filter", inArray])
 emojify = ($emojis) ->
     return (input) ->
         if input
-            return $emojis.replaceEmojiNameByHtmlImgs(_.escape(input))
+            return _.unescape($emojis.replaceEmojiNameByHtmlImgs(_.escape(input)))
 
         return ""
 
