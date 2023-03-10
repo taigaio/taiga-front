@@ -745,7 +745,7 @@
             "HEADERS": "Goiburuak",
             "PAYLOAD": "Karga",
             "RESPONSE": "Erantzuna",
-            "DATE": "DD MMM YYYY [at] hh:mm:ss",
+            "DATE": "DD MMM YYYY hh:mm:ss [etan]",
             "ACTION_HIDE_HISTORY": "(Ezkutatu historia)",
             "ACTION_HIDE_HISTORY_TITLE": "Ezkutatu historiaren xehetasunak",
             "ACTION_SHOW_HISTORY": "(Erakutsi historia)",
