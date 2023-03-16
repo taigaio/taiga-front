@@ -532,7 +532,7 @@
             "ISSUES_DESCRIPTION": "Suivez les bugs, questions et améliorations liés à votre projet. Ne ratez rien !",
             "WIKI": "Wiki",
             "WIKI_DESCRIPTION": "Ajoutez, modifiez, ou supprimez du contenu en collaboration avec d'autres. C'est le bon endroit pour la documentation de votre projet.",
-            "MEETUP": "Meet Up",
+            "MEETUP": "Visioconférence",
             "MEETUP_DESCRIPTION": "Choisissez un système de vidéoconférence.",
             "SELECT_VIDEOCONFERENCE": "Choisissez un système de vidéoconférence",
             "SALT_CHAT_ROOM": "Ajouter un préfixe au nom du salon de chat",
