@@ -1127,7 +1127,12 @@
             "CONFIRMATION": "Sim, mande-me notícias, atualizações de produtos e recomendações sobre Taiga.",
             "SUBSCRIBED": "Você está inscrito",
             "SAVED_PREFERENCE": "Suas preferências foram salvas com sucesso",
-            "SUBSCRIBE": "Inscrever-se"
+            "SUBSCRIBE": "Inscrever-se",
+            "NOTIFY_EXPLANATION": "Enviaremos para você notícias, atualizações de produtos e recomendações sobre Taiga.",
+            "DONT_ASK": "Não pergunte novamente",
+            "NO_SHARE": "Sua privacidade é importante para nós (veja nossa <a href=\"https://www.taiga.io/privacy-policy\" title=\"Ir para política de privacidade\" target=\"_blank\">política de privacidade</a>).",
+            "SAVE_PREFERENCE": "SALVAR PREFERÊNCIAS",
+            "OPT_OUT": "Enviaremos para você apenas e-mails relevantes (menos de 6 por ano). Você pode cancelar a inscrição a qualquer momento enviando um e-mail para <a href=\"mailto:support@taiga.io\" target=\"_blank\">support@taiga.io</a> com o assunto “unsubscribe” ou através do link em qualquer um de nossos boletins."
         }
     },
     "LIGHTBOX": {
@@ -1209,7 +1214,9 @@
             "DEFAULT": "Default",
             "ERROR_STATUS": "Changes cannot be saved because there is a problem with the selected status.",
             "ERROR_SWIMLANE": "Changes cannot be saved because there is a problem with the selected swimlane.",
-            "LOCATION": "Localização"
+            "LOCATION": "Localização",
+            "CREATE_BOTTOM": "embaixo",
+            "CREATE_TOP": "acima"
         },
         "DISABLE_KANBAN": {
             "TITLE": "Disable kanban",
@@ -1566,7 +1573,8 @@
         "CLOSE": "Fechar Notificação",
         "MAIL": "Atividade",
         "DESKTOP": "Notificações da área de trabalho usando alertas do navegador",
-        "ASK_DELETE": "Você tem certeza que quer excluir?"
+        "ASK_DELETE": "Você tem certeza que quer excluir?",
+        "COMMUNICATION": "Comunicações de Taiga"
     },
     "CANCEL_ACCOUNT": {
         "TITLE": "Cancelar sua conta",
