@@ -23,6 +23,9 @@ class EventsService
         @.connected = false
         @.error = false
         @.pendingMessages = []
+        @.reconnectTryInterval = @config.get("eventsReconnectTryInterval", 10000)
+        @.maxConnectionErrors = @config.get("eventsMaxConnectionErrors", 5)
+        @.errors = 0
 
         @.missedHeartbeats = 0
         @.heartbeatInterval = null
@@ -122,7 +125,6 @@ class EventsService
 
         maxMissedHeartbeats =  @config.get("eventsMaxMissedHeartbeats", 5)
         heartbeatIntervalTime = @config.get("eventsHeartbeatIntervalTime", 60000)
-        reconnectTryInterval = @config.get("eventsReconnectTryInterval", 10000)
 
         @.missedHeartbeats = 0
         @.heartbeatInterval = setInterval(() =>
@@ -260,13 +262,27 @@ class EventsService
     onError: (error) ->
         @log.error("WebSocket error: #{error}")
         @.error = true
-        setTimeout(@.setupConnection, @.reconnectTryInterval)
+        @.errors++
+
+        if @.errors < @.maxConnectionErrors
+            setTimeout(@.setupConnection, @.randomTryInterval())
+        else
+            @log.error("Events are disabled: the maximum number of connection errors has been reached.")
 
     onClose: ->
         @log.debug("WebSocket closed.")
         @.connected = false
         @.stopHeartBeatMessages()
-        setTimeout(@.setupConnection, @.reconnectTryInterval)
+
+        if !@.error
+            setTimeout(@.setupConnection, @.randomTryInterval())
+
+    randomTryInterval: ->
+        min = @.reconnectTryInterval / 2
+        max = @.reconnectTryInterval
+
+        return Math.floor(Math.random() * (max - min + 1)) + min
+
 
 
 class EventsProvider
