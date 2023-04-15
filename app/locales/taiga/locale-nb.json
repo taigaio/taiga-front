@@ -394,7 +394,7 @@
     },
     "INVITATION": {
         "PAGE_TITLE": "Invitasjonsbekreftelse - Taiga",
-        "PAGE_DESCRIPTION": "Godta invitasjonen til å delta i et prosjekt i Taiga, prosjektledelsesplattformen for startups, smidige utviklere og designere som ønsker et enkelt og  pent verktøy som gjør arbeidet fornøyelig."
+        "PAGE_DESCRIPTION": "Godta invitasjonen til å delta i et prosjekt i Taiga, prosjektledelsesplattformen for startups, smidige utviklere og designere som ønsker et enkelt og pent verktøy som gjør arbeidet fornøyelig."
     },
     "INVITATION_LOGIN_FORM": {
         "NOT_FOUND": "Våre Ompa Lompaer kan ikke finne invitasjonen din.",
