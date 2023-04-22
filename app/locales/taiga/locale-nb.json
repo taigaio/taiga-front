@@ -45,7 +45,7 @@
         "CLIENT_REQUIREMENT": "Kundekravet er et nytt krav som tidligere ikke var forventet, og er nødt til å være en del av prosjektet",
         "TEAM_REQUIREMENT": "Teamkrav er behov som eksisterer i prosjektet, men som ikke har noen kostnad for kunden",
         "OWNER": "Prosjekteier",
-        "CAPSLOCK_WARNING": "Vær forsiktig! Du bruker blokkbokstaver i et felt som er  for store og små bokstaver.",
+        "CAPSLOCK_WARNING": "Vær forsiktig! Du bruker blokkbokstaver i et felt som er for store og små bokstaver.",
         "CONFIRM_CLOSE_EDIT_MODE_TITLE": "Are you sure you want to close the edit mode?",
         "CONFIRM_CLOSE_EDIT_MODE_MESSAGE": "Remember that if you close the edit mode without saving all the changes will be lost",
         "RELATED_USERSTORIES": "Relaterte brukerhistorier",
