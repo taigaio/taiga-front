@@ -162,6 +162,7 @@ urls = {
     "attachments/task": "/tasks/attachments"
     "attachments/wiki_page": "/wiki/attachments"
     "attachments/wikipage": "/wiki/attachments"
+    "attachments/wiki": "/wiki/attachments"
 
     # Custom Attributess
     "custom-attributes/epic": "/epic-custom-attributes"
