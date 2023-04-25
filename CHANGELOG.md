@@ -4,6 +4,10 @@
 
 - ...
 
+## 6.6.2 (2023-04-25)
+
+- Fix error with attachment images linked in different wiki pages.
+
 ## 6.6.1 (2023-04-12)
 
 - Improve the reconnection system of the events service.
