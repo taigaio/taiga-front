@@ -1132,7 +1132,7 @@
             "DONT_ASK": "Não pergunte novamente",
             "NO_SHARE": "Sua privacidade é importante para nós (veja nossa <a href=\"https://www.taiga.io/privacy-policy\" title=\"Ir para política de privacidade\" target=\"_blank\">política de privacidade</a>).",
             "SAVE_PREFERENCE": "SALVAR PREFERÊNCIAS",
-            "OPT_OUT": "Enviaremos para você apenas e-mails relevantes (menos de 6 por ano). Você pode cancelar a inscrição a qualquer momento enviando um e-mail para <a href=\"mailto:support@taiga.io\" target=\"_blank\">support@taiga.io</a> com o assunto “unsubscribe” ou através do link em qualquer um de nossos boletins."
+            "OPT_OUT": "Nós enviaremos para você apenas e-mails relevantes (menos de 6 por ano). Você pode cancelar a inscrição a qualquer momento enviando um e-mail para <a href=\"mailto:support@taiga.io\" target=\"_blank\">support@taiga.io</a> com o assunto “Cancelar inscrição” ou através do link em qualquer um de nossos boletins."
         }
     },
     "LIGHTBOX": {
