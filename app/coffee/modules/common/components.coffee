@@ -292,7 +292,7 @@ ListItemEpicStatusDirective = ->
     link = ($scope, $el, $attrs) ->
         epic = $scope.$eval($attrs.tgListitemEpicStatus)
         bindOnce $scope, "epicStatusById", (epicStatusById) ->
-            $el.html(epicStatusById[epic.status].name)
+            $el.text(epicStatusById[epic.status].name)
 
     return {link:link}
 
@@ -302,7 +302,7 @@ ListItemUsStatusDirective = ->
     link = ($scope, $el, $attrs) ->
         us = $scope.$eval($attrs.tgListitemUsStatus)
         bindOnce $scope, "usStatusById", (usStatusById) ->
-            $el.html(usStatusById[us.status].name)
+            $el.text(usStatusById[us.status].name)
 
     return {link:link}
 
@@ -313,7 +313,7 @@ ListItemTaskStatusDirective = ->
     link = ($scope, $el, $attrs) ->
         task = $scope.$eval($attrs.tgListitemTaskStatus)
         bindOnce $scope, "taskStatusById", (taskStatusById) ->
-            $el.html(taskStatusById[task.status].name)
+            $el.text(taskStatusById[task.status].name)
 
     return {link:link}
 
@@ -350,7 +350,7 @@ ListItemIssueStatusDirective = ->
     link = ($scope, $el, $attrs) ->
         issue = $scope.$eval($attrs.tgListitemIssueStatus)
         bindOnce $scope, "issueStatusById", (issueStatusById) ->
-            $el.html(issueStatusById[issue.status].name)
+            $el.text(issueStatusById[issue.status].name)
 
     return {link:link}
 
