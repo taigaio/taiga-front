@@ -18,9 +18,10 @@
         color: $color-white;
     }
     .checksley-error-list {
-        color: $color-white;
+        color: $red;
         li {
             margin: .5rem 0;
+            text-align: left;
         }
     }
     .auth-container {

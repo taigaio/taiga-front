@@ -2,7 +2,7 @@
 
 ## 6.7.0 (unreleased)
 
-- ...
+- Fix style for error messages in auth forms (thanks to [@DPRIYATHAM](https://github.com/DPRIYATHAM))
 
 ## 6.6.2 (2023-04-25)
 
