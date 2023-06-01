@@ -1,8 +1,7 @@
 .invitation-main {
     align-content: center;
     align-items: center;
-    background-color: $color-link-primary;
-    background-size: cover;
+    background: $color-white;
     display: flex;
     flex: 1;
     height: 100vh;
@@ -27,7 +26,7 @@
         .person-name {
             @include font-size(large);
             @include font-type(regular);
-            color: $white;
+            color: $color-black900;
         }
         img {
             margin-bottom: .5rem;
@@ -37,7 +36,7 @@
     .invitation-text {
         @include font-size(large);
         @include font-type(regular);
-        color: $white;
+        color: $color-black900;
         text-align: center;
         .project-name {
             @include font-size(xlarge);
@@ -71,6 +70,13 @@
                 transition: color .3s linear;
             }
         }
+        & .checksley-error-list {
+            color: $red;
+            li {
+                margin: .5rem 0;
+                text-align: left;
+            }
+        }
     }
     .login-form,
     .register-form {
@@ -80,7 +86,7 @@
         .form-header {
             @include font-size(large);
             @include font-type(regular);
-            color: $white;
+            color: $color-black900;
         }
     }
     .register-form {
@@ -91,18 +97,18 @@
         }
     }
     .register-text {
-        color: $white;
+        color: $color-black900;
         font-size: .9rem;
         margin-left: .5rem;
         padding-bottom: 1rem;
         text-align: left;
         a {
-            color: $color-white;
+            color: $color-black900;
             text-decoration: underline;
         }
     }
     .button-auth {
-        color: $color-white;
+        color: $color-black900;
         display: block;
     }
     .button-blackish {
@@ -111,7 +117,7 @@
         }
     }
     .login-form {
-        border-right: 1px solid rgba($white, .3);
+        border-right: 1px solid rgba($color-black900, .3);
     }
     .public-register-disabled {
         width: 400px;
@@ -122,7 +128,7 @@
 
     .contrib-plugins-wrapper {
         label {
-            color: $color-white;
+            color: $color-black900;
         }
     }
 }

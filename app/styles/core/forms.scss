@@ -27,15 +27,20 @@ textarea {
         color: rgba($color-black600, .5);
     }
 
-    &.checksley-error {
-        border: 2px solid $color-link-red;
-        transition: border .2s linear;
-    }
-
     &:focus {
         border: 2px solid $color-link-primary;
         outline: none;
         transition: border .2s linear;
+    }
+
+    &.checksley-error {
+        border: 2px solid $color-solid-red;
+        transition: border .2s linear;
+
+        &:focus {
+            border: 2px solid $color-link-red;
+            transition: border .2s linear;
+        }
     }
 }
 input[type='search'] {
