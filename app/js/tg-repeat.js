@@ -116,8 +116,6 @@ updateScope(block.scope, index, valueIdentifier, immutable_value, keyIdentifier,
         return jqLite(blockNodes);
     }
 
-    var isArray = Array.isArray;
-
     var jqLite = $;
 
     var ngRepeatDirective = ['$parse', '$animate', function($parse, $animate) {

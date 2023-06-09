@@ -21,26 +21,7 @@
             .data('dragMultipleActive', false);
     };
 
-    var sort = function(positions) {
-        var current = dragMultiple.items.elm;
-
-        positions.after.reverse();
-
-        $.each(positions.after, function () {
-            reset(this);
-            current.after(this);
-        });
-
-        $.each(positions.before, function () {
-            reset(this);
-            current.before(this);
-        });
-    };
-
     var drag = function() {
-        var current = dragMultiple.items.elm;
-        var container = dragMultiple.items.container;
-
         var shadow = dragMultiple.items.shadow;
 
         // following the drag element
