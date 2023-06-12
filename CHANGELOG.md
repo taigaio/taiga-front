@@ -1,6 +1,10 @@
 # Changelog
 
-## 6.7.0 (unreleased)
+## 6.7.1 (unreleased)
+
+- ...
+
+## 6.7.0 (2023-06-12)
 
 - Fix style for error messages in auth forms (thanks to [@DPRIYATHAM](https://github.com/DPRIYATHAM))
 
