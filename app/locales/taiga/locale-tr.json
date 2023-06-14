@@ -848,6 +848,9 @@
             "SUBTITLE": "Tüm seçici girdileri için öntanımlı değerleri ayarlayın.",
             "TITLE": "Öntanımlı Değerler",
             "MENU_TITLE": "Ön Ayarlar"
+        },
+        "PLUGINS": {
+            "PAGE_TITLE": "{{pluginName}} - Eklentiler  - {{projectName}}"
         }
     },
     "USER": {
