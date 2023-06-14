@@ -845,6 +845,9 @@
                 "PUBLIC_EXCEEDED": "You currently have <strong>{{currentProjects}} public projects</strong> the maximum that you plan allows."
             },
             "CANT_BE_OWNED": "At the moment you cannot become an owner of a project of this type. If you would like to become the owner of this project, please contact the administrator so they change your account settings to enable project ownership."
+        },
+        "PLUGINS": {
+            "PAGE_TITLE": "{{pluginName}} - Plugins  - {{projectName}}"
         }
     },
     "USER": {
