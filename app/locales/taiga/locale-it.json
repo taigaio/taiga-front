@@ -848,6 +848,9 @@
             "SUBTITLE": "Imposta i valori predefiniti per tutti i selettori.",
             "TITLE": "Valori predefiniti",
             "MENU_TITLE": "Preimpostati"
+        },
+        "PLUGINS": {
+            "PAGE_TITLE": "{{pluginName}} - Plugin  - {{projectName}}"
         }
     },
     "USER": {
