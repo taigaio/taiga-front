@@ -32,7 +32,7 @@
         "CREATED_BY": "Creat per {{fullDisplayName}}",
         "CLOSE": "Tancar",
         "GO_HOME": "Porta'm a l'inici",
-        "PLUGINS": "Plugins",
+        "PLUGINS": "Connectors",
         "ONE_ITEM_LINE": "Un element per línia...",
         "NEW_BULK": "Nova inserció en grup",
         "RELATED_TASKS": "Tasques",
@@ -848,6 +848,9 @@
             "MENU_TITLE": "Ajustaments preestablerts",
             "TITLE": "Valors predeterminats",
             "SUBTITLE": "Estableix els valors predeterminats per a totes les entrades del selector."
+        },
+        "PLUGINS": {
+            "PAGE_TITLE": "{{NomConnector}} - Connectors  - {{NomProjecte}}"
         }
     },
     "USER": {
