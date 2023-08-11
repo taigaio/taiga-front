@@ -838,7 +838,9 @@
             "UNLIMITED_PROJECTS": "Illimité",
             "OWNER_MESSAGE": {
                 "PRIVATE": "Souvenez-vous que vous pouvez posséder jusqu'à <strong>{{maxProjects}}</strong> projets privés. Vous possédez actuellement <strong>{{currentProjects}}</strong> projets privés.",
-                "PUBLIC": "Souvenez-vous que vous pouvez posséder jusqu'à <strong>{{maxProjects}}</strong> projets publics. Vous possédez actuellement <strong>{{currentProjects}}</strong> projets publics."
+                "PUBLIC": "Souvenez-vous que vous pouvez posséder jusqu'à <strong>{{maxProjects}}</strong> projets publics. Vous possédez actuellement <strong>{{currentProjects}}</strong> projets publics.",
+                "PRIVATE_EXCEEDED": "Vous avez actuellement <strong>{{currentProjects}} projets privés</strong>, le maximum autorisé par votre plan.",
+                "PUBLIC_EXCEEDED": "Vous avez actuellement <strong>{{currentProjects}} projets publics</strong>, le maximum autorisé par votre plan."
             },
             "CANT_BE_OWNED": "Pour le moment, vous ne pouvez devenir propriétaire d'un projet de ce type. Si vous voulez devenir propriétaire de ce projet, merci de contacter l'administrateur afin qu'il puisse modifier les paramètres de votre compte pour autoriser la propriété de projet."
         },
@@ -846,6 +848,9 @@
             "SUBTITLE": "Définir les valeurs par défaut pour toutes les entrées du sélecteur.",
             "MENU_TITLE": "Préréglages",
             "TITLE": "Valeurs par défaut"
+        },
+        "PLUGINS": {
+            "PAGE_TITLE": "{{pluginName}} - Plugins  - {{projectName}}"
         }
     },
     "USER": {
@@ -948,7 +953,9 @@
             "CHANGE_PASSWORD": "Modifier le mot de passe",
             "DASHBOARD_TITLE": "Tableau de bord",
             "DISCOVER_TITLE": "Découvrir les projets populaires",
-            "DISCOVER": "Découvrir"
+            "DISCOVER": "Découvrir",
+            "TAIGA_COMMUNITY_TITLE": "Accéder à la Communauté Taiga",
+            "TAIGA_COMMUNITY": "Communauté Taiga"
         },
         "LIKE_BUTTON": {
             "LIKE": "J'aime",
@@ -1171,7 +1178,9 @@
             "CREATE": "Créer un ticket là-dessus ",
             "PUBLIC": "projet public Taiga",
             "EMAIL": "Envoyez-nous un courriel directement à ",
-            "SUPPORT": "support@taiga.io"
+            "SUPPORT": "support@taiga.io",
+            "VISIT": "Visitez notre ",
+            "FAQ": "Foire aux questions"
         },
         "SEARCH": {
             "TITLE": "Rechercher",
