@@ -63,6 +63,35 @@ class WysiwygService
                     @.cache[cache_key] = url
                     return url
 
+    relativePaths: (html) ->
+        el = document.createElement('html')
+
+        el.innerHTML = @sce.getTrustedHtml(html) || ''
+
+        el.querySelectorAll('a').forEach (link) =>
+            href = link.getAttribute('href')
+
+            if href && !href.startsWith('http') && !href.startsWith('/') && !link.classList.contains('mention')
+                currentHref = window.location.href.slice(
+                    0,
+                    window.location.href.lastIndexOf('/') + 1
+                );
+
+                if !currentHref.endsWith('/')
+                    currentHref = currentHref + '/'
+
+                newHref = currentHref + link.getAttribute('href')
+                link.removeAttribute('rel')
+                link.removeAttribute('target')
+
+                link.setAttribute('href', newHref)
+
+            if href.startsWith('project') && link.classList.contains('mention')
+                link.removeAttribute('rel')
+                link.removeAttribute('target')
+
+        return el.innerHTML
+
     refreshAttachmentURLFromMarkdown: (markdown) ->
         html = @.getHTML(markdown)
 

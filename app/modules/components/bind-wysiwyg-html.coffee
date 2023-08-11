@@ -53,6 +53,9 @@ BindCode = ($sce, $parse, $compile, wysiwygService) ->
 
             scope.$watch tgBindWysiwygHtmlWatch, () ->
                 html = wysiwygService.getHTML(tgBindWysiwygHtmlGetter(scope))
+
+                html = wysiwygService.relativePaths(html)
+
                 wysiwygService.refreshAttachmentURL(html).then (html) =>
                     render(element, html)
 
