@@ -2,7 +2,10 @@
 
 ## 6.7.1 (unreleased)
 
-- ...
+- Fix relative wiki links.
+- Fix, remove editor ellipsis transformation.
+- Fix, wysiwyg autlinks.
+- Fix, internal project urls open in the same tab.
 
 ## 6.7.0 (2023-06-12)
 
