@@ -1,8 +1,12 @@
 # Changelog
 
-## 6.7.1 (unreleased)
+## 6.7.2 (unreleased)
 
-- Fix relative wiki links.
+- ...
+
+## 6.7.1 (2023-09-20)
+
+- Fix, relative wiki links.
 - Fix, remove editor ellipsis transformation.
 - Fix, wysiwyg autlinks.
 - Fix, internal project urls open in the same tab.
