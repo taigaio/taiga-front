@@ -54,7 +54,7 @@
             "EDIT": "Editar cartão",
             "DELETE": "Excluir cartão",
             "DELETE_ISSUE": "Problema excluído",
-            "DETACH_ISSUE_FROM_SPRINT": "Detach from sprint",
+            "DETACH_ISSUE_FROM_SPRINT": "separar do sprint",
             "PTS": "{{pts}} pontos",
             "DUE_DATE": "Due date: {{date}}",
             "NO_PTS": "N/E",
