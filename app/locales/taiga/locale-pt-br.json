@@ -56,11 +56,11 @@
             "DELETE_ISSUE": "Problema excluído",
             "DETACH_ISSUE_FROM_SPRINT": "separar do sprint",
             "PTS": "{{pts}} pontos",
-            "DUE_DATE": "Due date: {{date}}",
+            "DUE_DATE": "Data Prevista: {{date}}",
             "NO_PTS": "N/E",
             "ESTIMATION": "Estimativa",
             "TASKS": "{{completed}} tarefas de {{total}} completadas",
-            "EXTRA_ASSIGNED_USERS": "{{total}} more assigned users",
+            "EXTRA_ASSIGNED_USERS": "{{total}} mais usuários atribuídos",
             "MOVE_TO_TOP": "Mover para o topo"
         },
         "FORM_ERRORS": {
