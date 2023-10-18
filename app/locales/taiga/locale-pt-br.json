@@ -848,6 +848,9 @@
             "TITLE": "Valores padrão",
             "SUBTITLE": "Definir valores padrão para todas as entradas da seleção.",
             "MENU_TITLE": "Predefinições"
+        },
+        "PLUGINS": {
+            "PAGE_TITLE": "As pessoas com a qual você  na Taiga serão seus contatos automaticamente"
         }
     },
     "USER": {
