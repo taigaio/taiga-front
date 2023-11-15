@@ -60,7 +60,8 @@
             "NO_PTS": "N/E",
             "ESTIMATION": "Estimation",
             "TASKS": "{{completed}} tasks of {{total}} completed",
-            "EXTRA_ASSIGNED_USERS": "{{total}} more assigned users"
+            "EXTRA_ASSIGNED_USERS": "{{total}} more assigned users",
+            "MOVE_TO_TOP": "Przesuń na górę"
         },
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Nieprawidłowa wartość",
@@ -569,7 +570,8 @@
             "REQUEST_OWNERSHIP_SUCCESS": "Powiadomimy właściciela projektu",
             "CHANGE_OWNER": "Zmień właściciela",
             "CHANGE_OWNER_SUCCESS_TITLE": "Ok, your request has been sent!",
-            "CHANGE_OWNER_SUCCESS_DESC": "We will notify you by email if the project ownership request is accepted or declined"
+            "CHANGE_OWNER_SUCCESS_DESC": "We will notify you by email if the project ownership request is accepted or declined",
+            "REQUEST_OWNERSHIP_LIMIT": "Osiągnięto limit {{maxProjects}} prywatnych projektów"
         },
         "REPORTS": {
             "TITLE": "Raporty",
@@ -839,6 +841,13 @@
                 "PUBLIC": "Please remember that you can own up to <strong>{{maxProjects}}</strong> public projects. You currently own <strong>{{currentProjects}}</strong> public projects"
             },
             "CANT_BE_OWNED": "At the moment you cannot become an owner of a project of this type. If you would like to become the owner of this project, please contact the administrator so they change your account settings to enable project ownership."
+        },
+        "PROJECT_PRESETS": {
+            "TITLE": "Domyślne wartości",
+            "MENU_TITLE": "Szablony"
+        },
+        "PLUGINS": {
+            "PAGE_TITLE": "{{pluginName}} - Wtyczki  - {{projectName}}"
         }
     },
     "USER": {
@@ -941,7 +950,9 @@
             "CHANGE_PASSWORD": "Zmień hasło",
             "DASHBOARD_TITLE": "Dashboard",
             "DISCOVER_TITLE": "Odkryj projekty",
-            "DISCOVER": "Odkryj"
+            "DISCOVER": "Odkryj",
+            "TAIGA_COMMUNITY_TITLE": "Przejdź do Społeczności Taiga",
+            "TAIGA_COMMUNITY": "Społeczność Taiga"
         },
         "LIKE_BUTTON": {
             "LIKE": "Like",
@@ -1110,6 +1121,15 @@
                 "CREATE_NEW_ISSUES": "Convert sub-issues to new Taiga issues",
                 "NOT_CREATE_NEW_ISSUES": "Do not import sub-issues"
             }
+        },
+        "NEWSLETTER_OPENING": {
+            "DONT_ASK": "Nie pytaj ponownie",
+            "LIGHTBOX_TITLE": "Czy chcesz otrzymać wiadomość o Taidze?",
+            "NO_SHARE": "Twoja prywatność ma dla nas znaczenie (przeczytaj naszą <a href=\"https://www.taiga.io/privacy-policy\" title=\"Go to privacy policy\" target=\"_blank\">politykę prywatności</a>).",
+            "SUBSCRIBE": "Subskrybuj",
+            "SAVED_PREFERENCE": "Twoje preferencje zostały zapisane pomyślnie",
+            "SAVE_PREFERENCE": "ZAPISZ PREFERENCJE",
+            "CONFIRMATION": "Tak, wysyłaj mi wiadomości, aktualizacje produktów i rekomendacje dotyczące Taigi."
         }
     },
     "LIGHTBOX": {
@@ -1152,7 +1172,9 @@
             "CREATE": "Create an issue on this",
             "PUBLIC": "public Taiga project",
             "EMAIL": "Send us a e-mail directly to",
-            "SUPPORT": "support@taiga.io"
+            "SUPPORT": "support@taiga.io",
+            "VISIT": "Odwiedź nasze ",
+            "FAQ": "Najczęściej zadawane pytania"
         },
         "SEARCH": {
             "TITLE": "Szukaj",
@@ -1188,7 +1210,10 @@
             "SELECT_STATUS": "Select status",
             "DEFAULT": "Default",
             "ERROR_STATUS": "Changes cannot be saved because there is a problem with the selected status.",
-            "ERROR_SWIMLANE": "Changes cannot be saved because there is a problem with the selected swimlane."
+            "ERROR_SWIMLANE": "Changes cannot be saved because there is a problem with the selected swimlane.",
+            "LOCATION": "Położenie",
+            "CREATE_TOP": "na górze",
+            "CREATE_BOTTOM": "na dole"
         },
         "DISABLE_KANBAN": {
             "TITLE": "Disable kanban",
