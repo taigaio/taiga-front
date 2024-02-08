@@ -66,7 +66,7 @@ class WysiwygService
     relativePaths: (html) ->
         el = document.createElement('html')
 
-        el.innerHTML = @sce.getTrustedHtml(html) || ''
+        el.innerHTML = @sce.trustAsHtml(html) || ''
 
         el.querySelectorAll('a').forEach (link) =>
             href = link.getAttribute('href')
@@ -104,7 +104,7 @@ class WysiwygService
         window._extraValidHtmlElments = {input: true}
         window._extraValidAttrs = {checked: true}
 
-        el.innerHTML = @sce.getTrustedHtml(html) || ''
+        el.innerHTML = @sce.trustAsHtml(html) || ''
         regex = /#_taiga-refresh=([a-zA-Z]*\:\d+)/
 
         links = {

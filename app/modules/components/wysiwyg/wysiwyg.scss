@@ -93,6 +93,10 @@ tg-wysiwyg {
         input {
             margin-right: .5rem;
         }
+
+        input[type='checkbox'] {
+            pointer-events: none;
+        }
     }
     .wysiwyg {
         display: none;
