@@ -13,6 +13,9 @@ html(lang="en", ng-attr-dir="{{ isRTL ? 'rtl' : 'ltr' }}")
         meta(name="fragment", content="!")
         base(href="/")
 
+        if disableRobots
+            meta(name="robots", content="noindex, nofollow")
+
         // Main meta
         title Taiga
         meta(name="description", content="Taiga is a project management platform for startups and agile developers & designers who want a simple, beautiful tool that makes work truly enjoyable.")
