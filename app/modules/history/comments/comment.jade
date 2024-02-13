@@ -11,44 +11,46 @@
         ng-alt="{{vm.comment.user.name}}"
     )
     .comment-main
-        .comment-data
-            span.comment-creator {{vm.comment.user.name}}
-            span.comment-date {{vm.comment.created_at | momentFormat:'DD MMM YYYY HH:mm'}}
-            .comment-edited(ng-if="vm.comment.edit_comment_date")
-                span(translate="COMMENTS.EDITED_COMMENT")
-                span {{vm.comment.edit_comment_date | momentFormat:'DD MMM YYYY HH:mm'}}
-                span.separator -
-                a.comment-history(
-                    href=""
-                    title="{{'COMMENTS.SHOW_HISTORY' | translate}}"
-                    ng-click="vm.displayCommentHistory()"
-                )
-                    span(translate="COMMENTS.SHOW_HISTORY")
-        .comment-container
+        .comment-content-wrapper
+            .comment-data
+                span.comment-creator {{vm.comment.user.name}}
+                span.comment-date {{vm.comment.created_at | momentFormat:'DD MMM YYYY HH:mm'}}
+                .comment-edited(ng-if="vm.comment.edit_comment_date")
+                    span(translate="COMMENTS.EDITED_COMMENT")
+                    span {{vm.comment.edit_comment_date | momentFormat:'DD MMM YYYY HH:mm'}}
+                    span.separator -
+                    a.comment-history(
+                        href=""
+                        title="{{'COMMENTS.SHOW_HISTORY' | translate}}"
+                        ng-click="vm.displayCommentHistory()"
+                    )
+                        span(translate="COMMENTS.SHOW_HISTORY")
+
             .comment-text.wysiwyg(
                 ng-if="!vm.editMode"
                 tg-bind-wysiwyg-html="vm.comment.comment"
             )
+
             .comment-editor(
                 ng-if="vm.editMode"
                 ng-keyup="vm.checkCancelComment($event)"
             )
                 tg-comment-edit-wysiwyg.edit-comment
 
-    .comment-options(ng-if="vm.canEditDeleteComment() && !vm.editMode")
-        tg-svg.comment-option(
-            svg-icon="icon-edit"
-            svg-title-translate="COMMON.EDIT"
-            ng-click="vm.onEditMode({commentId: vm.comment.id})"
-            ng-if="!vm.editMode"
-        )
-        tg-svg.comment-option(
-            svg-icon="icon-trash"
-            svg-title-translate="COMMON.DELETE"
-            ng-click="vm.onDeleteComment({commentId: vm.comment.id})"
-            ng-if="!vm.editMode"
-            tg-loading="vm.deleting == vm.comment.id"
-        )
+        .comment-options(ng-if="vm.canEditDeleteComment() && !vm.editMode")
+            tg-svg.comment-option(
+                svg-icon="icon-edit"
+                svg-title-translate="COMMON.EDIT"
+                ng-click="vm.onEditMode({commentId: vm.comment.id})"
+                ng-if="!vm.editMode"
+            )
+            tg-svg.comment-option(
+                svg-icon="icon-trash"
+                svg-title-translate="COMMON.DELETE"
+                ng-click="vm.onDeleteComment({commentId: vm.comment.id})"
+                ng-if="!vm.editMode"
+                tg-loading="vm.deleting == vm.comment.id"
+            )
 
 .deleted-comment-wrapper(
     ng-if="vm.comment.delete_comment_date"
