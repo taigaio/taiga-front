@@ -2,6 +2,8 @@
 tg-wysiwyg {
     display: flex;
     margin-bottom: 1rem;
+    position: relative;
+
     &.custom-field {
         max-width: 100%;
         width: 100%;
@@ -11,11 +13,19 @@ tg-wysiwyg {
         word-break: break-word;
     }
     .tools {
+        bottom: 34px;
         display: none;
+        gap: .75rem;
         padding-left: 1rem;
+        position: absolute;
+        right: .75rem;
+
+        a {
+            text-transform: initial;
+        }
 
         &.visible {
-            display: block;
+            display: flex;
         }
     }
     .mode-editor {
@@ -36,6 +46,9 @@ tg-wysiwyg {
                 white-space: pre-wrap;
             }
         }
+    }
+    .ck.ck-editor__main > .ck-editor__editable {
+        padding-bottom: 3rem;
     }
     .read-mode {
         cursor: pointer;
