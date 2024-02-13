@@ -33,7 +33,20 @@ Wysiwyg = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoa
 
 
         linksEvents = () ->
+            initialPos = null
+
             $el.on 'mousedown', '.js-wysiwyg-html', (e) =>
+                initialPos = {x: e.clientX, y: e.clientY}
+
+            $el.on 'click', '.js-wysiwyg-html', (e) =>
+                diffX = Math.abs(e.clientX - initialPos.x)
+                diffY = Math.abs(e.clientY - initialPos.y)
+
+                initialPos = null
+
+                if diffX > 10 || diffY > 10
+                    return
+
                 if e.target.tagName != 'A' && e.target.parentElement.tagName != 'A'
                     $scope.$applyAsync () => $scope.setEditMode(true)
 
