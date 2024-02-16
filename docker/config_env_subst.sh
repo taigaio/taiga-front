@@ -44,6 +44,16 @@ if [[ -z "${ENABLE_TRELLO_IMPORTER}" ]]; then
     export ENABLE_TRELLO_IMPORTER="false"
 fi
 
+# Default language
+if [[ -z "${DEFAULT_LANGUAGE}" ]]; then
+    export DEFAULT_LANGUAGE="en"
+fi
+
+# Debug
+if [[ -z "${DEBUG}" ]]; then
+    export DEBUG="false"
+fi
+
 contribs=$( IFS=,; echo "[${contribs[*]}]" )
 
 export CONTRIB_PLUGINS=$contribs
