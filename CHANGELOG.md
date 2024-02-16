@@ -1,8 +1,16 @@
 # Changelog
 
-## 6.7.2 (unreleased)
+## 6.8.0 (unreleased)
 
 - ...
+
+## 6.7.2 (2024-02-16)
+
+- New redesign of the editor action buttons.
+* Fix: only open the text editor if cursor didn't move.
+* Fix: render checkboxes in wysiwyg teGt editor.
+* Docker: `DEBUG` and `DEFAULT_LANGUAGE` are customizable.
+* Disable robots using `DISABLE_ROBOTS=true` environment var during code build process.
 
 ## 6.7.1 (2023-09-20)
 
