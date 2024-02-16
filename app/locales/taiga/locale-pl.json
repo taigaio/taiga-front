@@ -3,7 +3,7 @@
         "YES": "Tak",
         "NO": "Nie",
         "OR": "lub",
-        "I_GET_IT": "Ok, zrozumiałem.",
+        "I_GET_IT": "Ok, zrozumiałem",
         "LOADING": "Wczytywanie...",
         "DATE": "DD MMM YYYY",
         "DATETIME": "DD MMM YYYY HH:mm",
@@ -14,10 +14,10 @@
         "UNLINK": "Odłącz",
         "CREATE": "Stwórz",
         "ADD": "Dodaj",
-        "BACK": "Back",
+        "BACK": "Wstecz",
         "COPY_TO_CLIPBOARD": "Skopiuj do schowka",
         "COPIED_TO_CLIPBOARD": "Tekst został skopiowany do schowka",
-        "MOVE_TO_TOP": "Move to top",
+        "MOVE_TO_TOP": "Umieść na górze",
         "EDIT": "Edycja",
         "DRAG": "Przeciągnij",
         "TAG_LINE": "Twoje zwinne, wolne, otwartoźródłowe narzędzie do zarządzania projektem",
@@ -41,11 +41,11 @@
         "LOGOUT": "Wyloguj",
         "EXTERNAL_USER": "zewnętrzny użytkownik",
         "GENERIC_ERROR": "The Taiga says {{error}}.",
-        "IOCAINE_TEXT": "This member is feeling a bit overwhelmed by this task. They will become immune to the iocaine poison over time with your help. For now, they may need a hug.",
-        "CLIENT_REQUIREMENT": "A client requirement is a new requirement that was not previously expected and is required to be part of the project",
-        "TEAM_REQUIREMENT": "A team requirement is a requirement that must exist in the project but should have no cost for the client",
-        "OWNER": "Project Owner",
-        "CAPSLOCK_WARNING": "Be careful! You are using capital letters in an input field that is case sensitive.",
+        "IOCAINE_TEXT": "Ten członek czuje się nieco przytłoczony tym zadaniem. Z czasem z twoją pomocą uodporni się na truciznę iokainy. Na razie może potrzebować przytulenia.",
+        "CLIENT_REQUIREMENT": "Wymaganie klienta to nowe wymaganie, które nie było wcześniej oczekiwane i musi być częścią projektu.",
+        "TEAM_REQUIREMENT": "Wymaganie zespołowe to wymaganie, które musi istnieć w projekcie, ale nie powinno wiązać się z żadnymi kosztami dla klienta.",
+        "OWNER": "Właściciel Projektu",
+        "CAPSLOCK_WARNING": "Uważaj! Używasz wielkich liter w polu wejściowym, w którym wielkość liter ma znaczenie.",
         "CONFIRM_CLOSE_EDIT_MODE_TITLE": "Are you sure you want to close the edit mode?",
         "CONFIRM_CLOSE_EDIT_MODE_MESSAGE": "Remember that if you close the edit mode without saving all the changes will be lost",
         "RELATED_USERSTORIES": "Powiązane historyjki użytkownika",
@@ -54,13 +54,14 @@
             "EDIT": "Edit card",
             "DELETE": "Delete card",
             "DELETE_ISSUE": "Usuń zgłoszenie",
-            "DETACH_ISSUE_FROM_SPRINT": "Detach from sprint",
+            "DETACH_ISSUE_FROM_SPRINT": "Odłącz od sprintu",
             "PTS": "{{pts}} pts",
-            "DUE_DATE": "Due date: {{date}}",
+            "DUE_DATE": "Termin: {{date}}",
             "NO_PTS": "N/E",
             "ESTIMATION": "Estimation",
             "TASKS": "{{completed}} tasks of {{total}} completed",
-            "EXTRA_ASSIGNED_USERS": "{{total}} more assigned users"
+            "EXTRA_ASSIGNED_USERS": "{{total}} more assigned users",
+            "MOVE_TO_TOP": "Przesuń na górę"
         },
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Nieprawidłowa wartość",
@@ -75,19 +76,19 @@
             "NOTNULL": "Ta wartość nie powinna być zerowa.",
             "NOT_BLANK": "To pole nie powinno zostać puste.",
             "REQUIRED": "To pole jest wymagane.",
-            "REGEXP": "Nieprawidłowa wartość",
+            "REGEXP": "Nieprawidłowa wartość.",
             "MIN": "Ta wartość powinna być większa lub równa od %s.",
             "MAX": "Ta wartość powinna być mniejsza lub równa od %s.",
             "RANGE": "Ta wartość powinna mieścić się w przedziale od %s do %s.",
             "MIN_LENGTH": "Zbyt mało znaków. Wpisz %s lub więcej znaków.",
             "MAX_LENGTH": "Zbyt dużo znaków. Wpisz %s lub mniej znaków.",
-            "RANGE_LENGTH": "This value's length is invalid. It should be between %s and %s characters long.",
+            "RANGE_LENGTH": "Długość wartości jest nieprawidłowa. Powinna mieć zawierać od %s do %s znaków.",
             "MIN_CHECK": "Musisz zaznaczyć przynajmniej %s pozycji.",
             "MAX_CHECK": "Musisz zaznaczyć %s pozycji lub mniej.",
             "RANGE_CHECK": "Musisz zaznaczyć pomiędzy %s a %s pozycji.",
             "EQUAL_TO": "Ta wartość powinna być taka sama.",
-            "LINEWIDTH": "One or more lines is perhaps too long. Try to keep under %s characters.",
-            "PIKADAY": "Invalid date format, please use DD MMM YYYY (like 23 Mar 1984)"
+            "LINEWIDTH": "Jeden lub więcej wierszy może być zbyt długi. Postaraj się nie przekraczać %s znaków.",
+            "PIKADAY": "Nieprawidłowy format daty, użyj DD MMM RRRR (np. 23 Mar 1984 r.)"
         },
         "PICKERDATE": {
             "FORMAT": "DD MMM YYYY",
@@ -218,7 +219,7 @@
                 "MESSAGE": "Are you sure you want to create a new user story from this issue?"
             },
             "TASK": {
-                "TITLE": "Promote this task to a new user story",
+                "TITLE": "Promuj to zadanie do nowej historyjki uzytkownika",
                 "MESSAGE": "Are you sure you want to create a new user story from this task?"
             }
         },
@@ -351,7 +352,7 @@
     },
     "REGISTER_FORM": {
         "TITLE": "Utwórz nowe konto (bezpłatnie)",
-        "PLACEHOLDER_NAME": "Wybierz nazwę użytkownika (z uwzględnieniem wielkości liter)",
+        "PLACEHOLDER_NAME": "Wybierz nazwę użytkownika",
         "PLACEHOLDER_FULL_NAME": "Podaj twoje imię i nazwisko",
         "PLACEHOLDER_EMAIL": "Twój e-mail",
         "PLACEHOLDER_PASSWORD": "Wpisz nowe hasło (z uwzględnieniem wielkości liter)",
@@ -557,9 +558,9 @@
             "DELETE": "Usuń ten projekt",
             "CHANGE_LOGO": "Zmień logo",
             "ACTION_USE_DEFAULT_LOGO": "Użyj domyślnego obrazu",
-            "MAX_PRIVATE_PROJECTS": "Osiągnąłeś maksymalną liczbę prywatnych projektów dozwoloną przez obecny plan",
+            "MAX_PRIVATE_PROJECTS": "Osiągnięto maksymalną liczbę projektów prywatnych, na jaką pozwala bieżący plan",
             "MAX_PRIVATE_PROJECTS_MEMBERS": "Maksymalna liczba członków dla prywatnych projektów została przekroczona.",
-            "MAX_PUBLIC_PROJECTS": "Unfortunately, you've reached the maximum number of public projects allowed by your current plan",
+            "MAX_PUBLIC_PROJECTS": "Niestety, osiągnąłeś maksymalną liczbę projektów publicznych, na jaką pozwala twój obecny plan",
             "MAX_PUBLIC_PROJECTS_MEMBERS": "The project exceeds your maximum number of members for public projects",
             "PROJECT_OWNER": "Project owner",
             "REQUEST_OWNERSHIP": "Request ownership",
@@ -569,7 +570,8 @@
             "REQUEST_OWNERSHIP_SUCCESS": "Powiadomimy właściciela projektu",
             "CHANGE_OWNER": "Zmień właściciela",
             "CHANGE_OWNER_SUCCESS_TITLE": "Ok, your request has been sent!",
-            "CHANGE_OWNER_SUCCESS_DESC": "We will notify you by email if the project ownership request is accepted or declined"
+            "CHANGE_OWNER_SUCCESS_DESC": "We will notify you by email if the project ownership request is accepted or declined",
+            "REQUEST_OWNERSHIP_LIMIT": "Osiągnięto limit {{maxProjects}} prywatnych projektów"
         },
         "REPORTS": {
             "TITLE": "Raporty",
@@ -700,7 +702,7 @@
             "WARNING_DELETE_ROLE": "Be careful! All role estimations will be removed",
             "ERROR_DELETE_ALL": "Nie możesz usunąć wszystkich wartości",
             "EXTERNAL_USER": "Zewnętrzny użytkownik",
-            "NOTE_EXTERNAL_USERS": "<strong>Note:</strong> by External User we mean any anonymous user not belonging to the Taiga platform, including search engines. Please use this role with care."
+            "NOTE_EXTERNAL_USERS": "Użytkownik zewnętrzny to dowolny użytkownik (zalogowany lub niezalogowany na platformie Taiga), <strong>łącznie z wyszukiwarkami</strong>. Chociaż niezarejestrowani użytkownicy nigdy nie mogą mieć uprawnień do edycji, zarejestrowani użytkownicy mogą, jeśli na to pozwolisz. Jeśli Twój projekt jest prywatny, możesz również kontrolować uprawnienia do przeglądania. <strong>Używaj tej roli ostrożnie</strong>."
         },
         "THIRD_PARTIES": {
             "SECRET_KEY": "Tajny klucz",
@@ -779,13 +781,13 @@
         },
         "DEFAULT_VALUES": {
             "LABEL_EPIC_STATUS": "Default value for epic status selector",
-            "LABEL_US_STATUS": "Default value for user story status selector",
-            "LABEL_POINTS": "Domyślna wartość dla selektora punktów",
-            "LABEL_TASK_STATUS": "Domyśla wartość dla selektora statusu zadań",
-            "LABEL_ISSUE_TYPE": "Domyślna wartość dla selektora typu zgłoszenia",
-            "LABEL_ISSUE_STATUS": "Domyślna wartość dla selektora statusu zgłoszenia",
-            "LABEL_PRIORITY": "Domyślna wartość dla selektora priorytetu",
-            "LABEL_SEVERITY": "Domyślna wartość dla selektora ważności"
+            "LABEL_US_STATUS": "Selektor statusu historyjki użytkownika",
+            "LABEL_POINTS": "Selektor punktów",
+            "LABEL_TASK_STATUS": "Selektor statusu zadań",
+            "LABEL_ISSUE_TYPE": "Selektor typu zgłoszenia",
+            "LABEL_ISSUE_STATUS": "Selektor statusu zgłoszenia",
+            "LABEL_PRIORITY": "Selektor priorytetu",
+            "LABEL_SEVERITY": "Selektor ważności"
         },
         "STATUS": {
             "PLACEHOLDER_WRITE_STATUS_NAME": "Wpisz nazwę nowego statusu",
@@ -835,10 +837,20 @@
             "ADD_COMMENT": "Would you like to add a comment for the project owner?",
             "UNLIMITED_PROJECTS": "Unlimited",
             "OWNER_MESSAGE": {
-                "PRIVATE": "Please remember that you can own up to <strong>{{maxProjects}}</strong> private projects. You currently own <strong>{{currentProjects}}</strong> private projects",
-                "PUBLIC": "Please remember that you can own up to <strong>{{maxProjects}}</strong> public projects. You currently own <strong>{{currentProjects}}</strong> public projects"
+                "PRIVATE": "Pamiętaj, że możesz posiadać maksymalnie <strong>{{maxProjects}}</strong> projektów prywatnych. Obecnie posiadasz <strong>{{currentProjects}}</strong> projektów prywatnych.",
+                "PUBLIC": "Pamiętaj, że możesz posiadać maksymalnie <strong>{{maxProjects}}</strong> projektów publicznych. Obecnie posiadasz <strong>{{currentProjects}}</strong> projektów publicznych.",
+                "PRIVATE_EXCEEDED": "Obecnie posiadasz <strong>{{currentProjects}} projektów prywatnych</strong> maksymalnie tyle, na ile pozwala Twój plan.",
+                "PUBLIC_EXCEEDED": "Obecnie posiadasz <strong>{{currentProjects}} projektów publicznych</strong> maksymalnie tyle, na ile pozwala Twój plan."
             },
             "CANT_BE_OWNED": "At the moment you cannot become an owner of a project of this type. If you would like to become the owner of this project, please contact the administrator so they change your account settings to enable project ownership."
+        },
+        "PROJECT_PRESETS": {
+            "TITLE": "Domyślne wartości",
+            "MENU_TITLE": "Szablony",
+            "SUBTITLE": "Ustaw wartości domyślne dla wszystkich pól wyboru."
+        },
+        "PLUGINS": {
+            "PAGE_TITLE": "{{pluginName}} - Wtyczki  - {{projectName}}"
         }
     },
     "USER": {
@@ -941,7 +953,9 @@
             "CHANGE_PASSWORD": "Zmień hasło",
             "DASHBOARD_TITLE": "Dashboard",
             "DISCOVER_TITLE": "Odkryj projekty",
-            "DISCOVER": "Odkryj"
+            "DISCOVER": "Odkryj",
+            "TAIGA_COMMUNITY_TITLE": "Przejdź do Społeczności Taiga",
+            "TAIGA_COMMUNITY": "Społeczność Taiga"
         },
         "LIKE_BUTTON": {
             "LIKE": "Like",
@@ -1110,6 +1124,18 @@
                 "CREATE_NEW_ISSUES": "Convert sub-issues to new Taiga issues",
                 "NOT_CREATE_NEW_ISSUES": "Do not import sub-issues"
             }
+        },
+        "NEWSLETTER_OPENING": {
+            "DONT_ASK": "Nie pytaj ponownie",
+            "LIGHTBOX_TITLE": "Czy chcesz otrzymać wiadomość o Taidze?",
+            "NO_SHARE": "Twoja prywatność ma dla nas znaczenie (przeczytaj naszą <a href=\"https://www.taiga.io/privacy-policy\" title=\"Go to privacy policy\" target=\"_blank\">politykę prywatności</a>).",
+            "SUBSCRIBE": "Subskrybuj",
+            "SAVED_PREFERENCE": "Twoje preferencje zostały zapisane pomyślnie",
+            "SAVE_PREFERENCE": "ZAPISZ PREFERENCJE",
+            "CONFIRMATION": "Tak, wysyłaj mi wiadomości, aktualizacje produktów i rekomendacje dotyczące Taigi.",
+            "SUBSCRIBED": "Jesteś subskrybentem",
+            "OPT_OUT": "Będziemy wysyłać tylko istotne wiadomości e-mail (<6 rocznie). Możesz zrezygnować z subskrypcji w dowolnym momencie, wysyłając wiadomość e-mail na adres <a href=\"mailto:support@taiga.io\" target=\"_blank\">support@taiga.io</a> z tematem \"unsubscribe\" lub za pośrednictwem łącza w dowolnym z naszych biuletynów.",
+            "NOTIFY_EXPLANATION": "Będziemy wysyłać Ci informacje o nowościach, aktualizacji produktu i rekomendacje dotyczące Taiga."
         }
     },
     "LIGHTBOX": {
@@ -1145,14 +1171,16 @@
             "HELP_TEXT": "Jeżeli użytkownik jest już zarejestrowany w Taiga, będzie dodany automatycznie. W przeciwnym wypadku otrzyma zaproszenie."
         },
         "FEEDBACK": {
-            "TITLE": "Ask a question",
+            "TITLE": "Wsparcie Taiga",
             "COMMENT": "Leave us a message",
             "ACTION_SEND": "Send Message",
             "YOU_CAN_ALSO": "You can also:",
             "CREATE": "Create an issue on this",
             "PUBLIC": "public Taiga project",
             "EMAIL": "Send us a e-mail directly to",
-            "SUPPORT": "support@taiga.io"
+            "SUPPORT": "support@taiga.io",
+            "VISIT": "Odwiedź nasze ",
+            "FAQ": "Najczęściej zadawane pytania"
         },
         "SEARCH": {
             "TITLE": "Szukaj",
@@ -1188,7 +1216,10 @@
             "SELECT_STATUS": "Select status",
             "DEFAULT": "Default",
             "ERROR_STATUS": "Changes cannot be saved because there is a problem with the selected status.",
-            "ERROR_SWIMLANE": "Changes cannot be saved because there is a problem with the selected swimlane."
+            "ERROR_SWIMLANE": "Changes cannot be saved because there is a problem with the selected swimlane.",
+            "LOCATION": "Położenie",
+            "CREATE_TOP": "na górze",
+            "CREATE_BOTTOM": "na dole"
         },
         "DISABLE_KANBAN": {
             "TITLE": "Disable kanban",
@@ -1543,7 +1574,7 @@
         "WARNING_TEXT": "Twoje zmiany nie zostały zapisane!",
         "SAVED": "The Taiga saved all your changes!",
         "CLOSE": "Zamknij powiadomienie",
-        "MAIL": "Powiadomienia na e-mail",
+        "MAIL": "Aktywność",
         "DESKTOP": "Desktop notifications using browser alerts",
         "ASK_DELETE": "Czy na pewno chcesz usunąć?"
     },

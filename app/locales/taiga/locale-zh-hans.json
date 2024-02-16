@@ -17,7 +17,7 @@
         "BACK": "后退",
         "COPY_TO_CLIPBOARD": "复制到剪贴板",
         "COPIED_TO_CLIPBOARD": "文本已复制到剪贴板",
-        "MOVE_TO_TOP": "Move to top",
+        "MOVE_TO_TOP": "移至顶部",
         "EDIT": "编辑",
         "DRAG": "拖拽",
         "TAG_LINE": "你的敏捷、免费和开源的项目管理工具",
@@ -43,7 +43,7 @@
         "GENERIC_ERROR": "发现错误 {{error}}",
         "IOCAINE_TEXT": "This member is feeling a bit overwhelmed by this task. They will become immune to the iocaine poison over time with your help. For now, they may need a hug.",
         "CLIENT_REQUIREMENT": "A client requirement is a new requirement that was not previously expected and is required to be part of the project",
-        "TEAM_REQUIREMENT": "A team requirement is a requirement that must exist in the project but should have no cost for the client",
+        "TEAM_REQUIREMENT": "团队需求是项目中必须存在的需求，但不应该给客户带来任何成本。",
         "OWNER": "项目所有者",
         "CAPSLOCK_WARNING": "注意！你正在输入大写字母，该输入区域是区分大小写的。",
         "CONFIRM_CLOSE_EDIT_MODE_TITLE": "你确定关闭编辑模式吗？",
@@ -54,13 +54,14 @@
             "EDIT": "编辑卡片",
             "DELETE": "删除卡片",
             "DELETE_ISSUE": "删除问题",
-            "DETACH_ISSUE_FROM_SPRINT": "Detach from sprint",
+            "DETACH_ISSUE_FROM_SPRINT": "离开冲刺",
             "PTS": "{{pts}} pts",
-            "DUE_DATE": "Due date: {{date}}",
+            "DUE_DATE": "截止日期: {{date}}",
             "NO_PTS": "N/E",
             "ESTIMATION": "Estimation",
-            "TASKS": "{{completed}} tasks of {{total}} completed",
-            "EXTRA_ASSIGNED_USERS": "{{total}} more assigned users"
+            "TASKS": "{{total}} 个任务中{{completed}} 个完成了",
+            "EXTRA_ASSIGNED_USERS": "{{total}} more assigned users",
+            "MOVE_TO_TOP": "移至顶部"
         },
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "该数值似乎为无效",
@@ -569,7 +570,8 @@
             "REQUEST_OWNERSHIP_SUCCESS": "我们将通知项目所有者",
             "CHANGE_OWNER": "改变所有者",
             "CHANGE_OWNER_SUCCESS_TITLE": "好，你的请求已经发出！",
-            "CHANGE_OWNER_SUCCESS_DESC": "如果项目所有者请求被接受或者被拒绝，我们将通过邮件通知你"
+            "CHANGE_OWNER_SUCCESS_DESC": "如果项目所有者请求被接受或者被拒绝，我们将通过邮件通知你",
+            "REQUEST_OWNERSHIP_LIMIT": "您已达到 {{maxProjects}} 个私人项目的限制"
         },
         "REPORTS": {
             "TITLE": "报告",
@@ -839,6 +841,11 @@
                 "PUBLIC": "请记住你最多可以拥有 <strong>{{maxProjects}}</strong> 个公开项目。你当前拥有 <strong>{{currentProjects}}</strong> 个公开项目"
             },
             "CANT_BE_OWNED": "目前你不能成为这类项目的所有者。如果你希望成为这个项目的所有者，请联系管理员，请其在你的账户设置中启用项目所有权。"
+        },
+        "PROJECT_PRESETS": {
+            "TITLE": "默认值",
+            "SUBTITLE": "为所有选择器输入设置的默认值。",
+            "MENU_TITLE": "预设"
         }
     },
     "USER": {
