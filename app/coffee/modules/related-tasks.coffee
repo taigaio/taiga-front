@@ -92,6 +92,9 @@ RelatedTaskRowDirective = ($repo, $compile, $confirm, $rootscope, $loading, $tem
 
         $scope.$watch $attrs.ngModel, (val) ->
             return if not val
+
+            $el.off()
+
             renderView(val)
 
         $scope.$on "related-tasks:assigned-to-changed", ->
@@ -218,12 +221,8 @@ module.directive("tgRelatedTaskCreateButton", ["$tgRepo", "$compile", "$tgConfir
                                                "$tgTemplate", RelatedTaskCreateButtonDirective])
 
 
-RelatedTasksDirective = ($repo, $rs, $rootscope) ->
+RelatedTasksDirective = ($rootscope) ->
     link = ($scope, $el, $attrs) ->
-        loadTasks = ->
-            return $rs.tasks.list($scope.projectId, null, $scope.usId).then (result) ->
-                Immutable.fromJS(result.data)
-
         _isVisible = ->
             if $scope.project
                 return $scope.project.my_permissions.indexOf("view_tasks") != -1
@@ -246,28 +245,23 @@ RelatedTasksDirective = ($repo, $rs, $rootscope) ->
             return _isVisible()
 
         $scope.$on "related-tasks:add", ->
-            loadTasks().then ->
-                $rootscope.$broadcast("related-tasks:update")
+            $rootscope.$broadcast("related-tasks:update")
 
         $scope.$on "related-tasks:reordered", ->
-            loadTasks()
+            $rootscope.$broadcast("related-tasks:update")
 
         $scope.$on "related-tasks:delete", ->
-            loadTasks().then ->
-                $rootscope.$broadcast("related-tasks:update")
+            $rootscope.$broadcast("related-tasks:update")
 
         $scope.$on "related-tasks:add-new-clicked", ->
             $scope.$broadcast("related-tasks:show-form")
-
-        taiga.bindOnce $scope, "us", (val) ->
-            loadTasks()
 
         $scope.$on "$destroy", ->
             $el.off()
 
     return {link: link}
 
-module.directive("tgRelatedTasks", ["$tgRepo", "$tgResources", "$rootScope", RelatedTasksDirective])
+module.directive("tgRelatedTasks", ["$rootScope", RelatedTasksDirective])
 
 
 RelatedTaskAssignedToInlineEditionDirective = ($repo, $rootscope, $translate, avatarService, $lightboxFactory) ->
