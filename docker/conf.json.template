@@ -7,7 +7,7 @@
     "eventsReconnectTryInterval": 10000,
     "debug": ${DEBUG},
     "debugInfo": ${DEBUG},
-    "defaultLanguage": "${DEFAULT_LANGUAGE}"
+    "defaultLanguage": "${DEFAULT_LANGUAGE}",
     "themes": ["taiga"],
     "defaultTheme": "taiga",
     "defaultLoginEnabled": true,

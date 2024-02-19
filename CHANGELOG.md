@@ -4,6 +4,10 @@
 
 - ...
 
+## 6.7.4 (2024-02-19)
+
+* Docker: fix a typo in the template for generate the config.json file.
+
 ## 6.7.3 (2024-02-19)
 
 * Docker: GitHub no longer supports subversion, change plugins setup system.
