@@ -28,6 +28,7 @@ HistorySectionDirective = () ->
             name: "@",
             id: "=",
             project: "="
+            totalComments: "="
         }
     }
 

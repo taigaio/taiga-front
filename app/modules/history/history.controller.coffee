@@ -32,7 +32,12 @@ class HistorySectionController
             return @activityService.loading
 
     _loadHistory: () ->
-        @._loadComments()
+        if @.totalComments == 0
+            @.commentsNum = 0
+            return
+        else
+         @._loadComments()
+
         @._loadActivity()
 
     _loadActivity: () ->
