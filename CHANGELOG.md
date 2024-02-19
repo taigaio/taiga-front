@@ -4,6 +4,10 @@
 
 - ...
 
+## 6.7.3 (2024-02-19)
+
+* Docker: GitHub no longer supports subversion, change plugins setup system.
+
 ## 6.7.2 (2024-02-16)
 
 - New redesign of the editor action buttons.
