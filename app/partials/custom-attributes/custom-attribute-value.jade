@@ -23,7 +23,7 @@
         <% } else if (type=="richtext") { %>
         .custom-field-value.wysiwyg
             span(
-                ng-bind-html="attributeHtml"
+                tg-bind-wysiwyg-html="model"
             )
         <% } else if (type=="checkbox") { %>
         .custom-field-value.js-value-view-mode

@@ -98,19 +98,6 @@ tg-wysiwyg {
             margin: 1rem 0;
         }
     }
-    .task-list-item {
-        align-items: center;
-        display: flex;
-        list-style-type: none;
-
-        input {
-            margin-right: .5rem;
-        }
-
-        input[type='checkbox'] {
-            pointer-events: none;
-        }
-    }
     .wysiwyg {
         display: none;
     }
@@ -257,6 +244,19 @@ tg-html-editor .ck-content,
     .placeholder {
         color: $default-tags;
         font-style: italic;
+    }
+    .task-list-item {
+        align-items: center;
+        display: flex;
+        list-style-type: none;
+
+        input {
+            margin-right: .5rem;
+        }
+
+        input[type='checkbox'] {
+            pointer-events: none;
+        }
     }
 }
 
