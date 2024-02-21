@@ -4,6 +4,10 @@
 
 - ...
 
+## 6.7.5 (2024-02-21)
+
+* Fix: render checkboxes in wysiwyg text editor (more corner cases).
+
 ## 6.7.4 (2024-02-19)
 
 * Docker: fix a typo in the template for generate the config.json file.
@@ -16,7 +20,7 @@
 
 - New redesign of the editor action buttons.
 * Fix: only open the text editor if cursor didn't move.
-* Fix: render checkboxes in wysiwyg teGt editor.
+* Fix: render checkboxes in wysiwyg text editor.
 * Docker: `DEBUG` and `DEFAULT_LANGUAGE` are customizable.
 * Disable robots using `DISABLE_ROBOTS=true` environment var during code build process.
 
