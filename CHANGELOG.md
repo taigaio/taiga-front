@@ -4,6 +4,10 @@
 
 - ...
 
+## 6.7.6 (2024-02-22)
+
+* Docker: fix a typo related to plugins setup process.
+
 ## 6.7.5 (2024-02-21)
 
 * Fix: render checkboxes in wysiwyg text editor (more corner cases).
