@@ -28,7 +28,7 @@ RUN set -eux; \
     cd /taiga/dist/plugins; \
     # Slack
     wget https://github.com/kaleidos-ventures/taiga-contrib-slack/archive/6.7.0.zip -O source.zip; \
-    unzip -j source.zip "taiga-contrib-slack-6.7.0/front/dist/*" -d slak; \
+    unzip -j source.zip "taiga-contrib-slack-6.7.0/front/dist/*" -d slack; \
     rm source.zip; \
     # Github
     wget http://github.com/kaleidos-ventures/taiga-contrib-github-auth/archive/6.7.0.zip -O source.zip; \
