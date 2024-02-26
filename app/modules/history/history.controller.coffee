@@ -34,9 +34,8 @@ class HistorySectionController
     _loadHistory: () ->
         if @.totalComments == 0
             @.commentsNum = 0
-            return
         else
-         @._loadComments()
+            @._loadComments()
 
         @._loadActivity()
 
