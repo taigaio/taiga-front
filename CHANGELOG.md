@@ -4,6 +4,10 @@
 
 - ...
 
+## 6.7.7 (2024-02-26)
+
+* Fix: sometime activity tab is empty.
+
 ## 6.7.6 (2024-02-22)
 
 * Docker: fix a typo related to plugins setup process.
