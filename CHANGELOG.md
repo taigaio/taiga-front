@@ -2,7 +2,7 @@
 
 ## 6.8.0 (unreleased)
 
-- ...
+- Change license to AGPL version 3.
 
 ## 6.7.7 (2024-02-26)
 
