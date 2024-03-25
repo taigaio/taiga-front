@@ -13,7 +13,7 @@
   "license": "MPL-2",
   "repository": {
     "type": "git",
-    "url": "https://github.com/kaleidos-ventures/taiga-front.git"
+    "url": "https://github.com/taigaio/taiga-front.git"
   },
   "scripts": {
     "scss-lint": "gulp scss-lint --fail",
@@ -133,6 +133,6 @@
     "pikaday": "^1.8.2",
     "raven-js": "^3.7.0",
     "showdown": "^1.4.3",
-    "taiga-html-editor": "https://github.com/kaleidos-ventures/taiga-html-editor#stable"
+    "taiga-html-editor": "https://github.com/taigaio/taiga-html-editor#stable"
   }
 }
