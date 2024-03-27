@@ -3,7 +3,7 @@
 //- License, v. 2.0. If a copy of the MPL was not distributed with this
 //- file, You can obtain one at http://mozilla.org/MPL/2.0/.
 //-
-//- Copyright (c) 2021-present Kaleidos Ventures SL
+//- Copyright (c) 2021-present Kaleidos INC
 
 fieldset(ng-if="!project.is_private_extra_info.can_be_updated && project.i_am_owner" ng-switch="project.is_private_extra_info.reason")
     span(ng-switch-when="max_private_projects") {{ 'ADMIN.PROJECT_PROFILE.MAX_PRIVATE_PROJECTS' | translate }}

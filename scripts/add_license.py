@@ -3,7 +3,7 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 #
-# Copyright (c) 2021-present Kaleidos Ventures SL
+# Copyright (c) 2021-present Kaleidos INC
 
 import os
 import sys
@@ -18,74 +18,74 @@ SH_LICENSE = """# This Source Code Form is subject to the terms of the Mozilla P
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 #
-# Copyright (c) 2021-present Kaleidos Ventures SL
+# Copyright (c) 2021-present Kaleidos INC
 
 """
-SH_FIND_REGEXP = r"Copyright \(c\) 2021-present Kaleidos Ventures SL"
+SH_FIND_REGEXP = r"Copyright \(c\) 2021-present Kaleidos INC"
 
 
 PY_LICENSE = """# This Source Code Form is subject to the terms of the Mozilla Public
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 #
-# Copyright (c) 2021-present Kaleidos Ventures SL
+# Copyright (c) 2021-present Kaleidos INC
 
 """
-PY_FIND_REGEXP = r"Copyright \(c\) 2021-present Kaleidos Ventures SL"
+PY_FIND_REGEXP = r"Copyright \(c\) 2021-present Kaleidos INC"
 
 COFFEE_LICENSE = """###
 # This Source Code Form is subject to the terms of the Mozilla Public
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 #
-# Copyright (c) 2021-present Kaleidos Ventures SL
+# Copyright (c) 2021-present Kaleidos INC
 ###
 
 """
-COFFEE_FIND_REGEXP = r"Copyright \(c\) 2021-present Kaleidos Ventures SL"
+COFFEE_FIND_REGEXP = r"Copyright \(c\) 2021-present Kaleidos INC"
 
 PUG_LICENSE = """
 //- This Source Code Form is subject to the terms of the Mozilla Public
 //- License, v. 2.0. If a copy of the MPL was not distributed with this
 //- file, You can obtain one at http://mozilla.org/MPL/2.0/.
 //-
-//- Copyright (c) 2021-present Kaleidos Ventures SL
+//- Copyright (c) 2021-present Kaleidos INC
 
 """
-PUG_FIND_REGEXP = r"Copyright \(c\) 2021-present Kaleidos Ventures SL"
+PUG_FIND_REGEXP = r"Copyright \(c\) 2021-present Kaleidos INC"
 
 JS_LICENSE = """/*
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  *
- * Copyright (c) 2021-present Kaleidos Ventures SL
+ * Copyright (c) 2021-present Kaleidos INC
  */
 
 """
-JS_FIND_REGEXP = r"Copyright \(c\) 2021-present Kaleidos Ventures SL"
+JS_FIND_REGEXP = r"Copyright \(c\) 2021-present Kaleidos INC"
 
 TS_LICENSE = """/**
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  *
- * Copyright (c) 2021-present Kaleidos Ventures SL
+ * Copyright (c) 2021-present Kaleidos INC
  */
 
 """
-TS_FIND_REGEXP = r"Copyright \(c\) 2021-present Kaleidos Ventures SL"
+TS_FIND_REGEXP = r"Copyright \(c\) 2021-present Kaleidos INC"
 
 HTML_LICENSE = """<!--
 This Source Code Form is subject to the terms of the Mozilla Public
 License, v. 2.0. If a copy of the MPL was not distributed with this
 file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-Copyright (c) 2021-present Kaleidos Ventures SL
+Copyright (c) 2021-present Kaleidos INC
 -->
 
 """
-HTML_FIND_REGEXP = r"Copyright \(c\) 2021-present Kaleidos Ventures SL"
+HTML_FIND_REGEXP = r"Copyright \(c\) 2021-present Kaleidos INC"
 
 CSS_LICENSE = """
 /*
@@ -93,11 +93,11 @@ This Source Code Form is subject to the terms of the Mozilla Public
 License, v. 2.0. If a copy of the MPL was not distributed with this
 file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-Copyright (c) 2021-present Kaleidos Ventures SL
+Copyright (c) 2021-present Kaleidos INC
 */
 
 """
-CSS_FIND_REGEXP = r"Copyright \(c\) 2021-present Kaleidos Ventures SL"
+CSS_FIND_REGEXP = r"Copyright \(c\) 2021-present Kaleidos INC"
 
 
 BASE_DIR = os.path.dirname(os.path.realpath(__file__))
