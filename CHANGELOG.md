@@ -1,7 +1,12 @@
 # Changelog
 
-## 6.8.0 (unreleased)
+## 6.8.1 (unreleased)
 
+...
+
+## 6.8.0 (2024-04-03)
+
+- Changed the namespace of the repositories, from kaleidos-ventures to taigaio
 - Change license to AGPL version 3.
 
 ## 6.7.7 (2024-02-26)
