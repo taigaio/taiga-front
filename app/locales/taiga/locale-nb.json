@@ -511,7 +511,7 @@
             "LOADING_TITLE": "Vi genererer din eksportfil",
             "DUMP_READY": "Din data-dump-fil er klar!",
             "LOADING_MESSAGE": "Vennligst ikke lukk denne siden.",
-            "ASYNC_MESSAGE": "Vi sender deg en epost når det er klart.",
+            "ASYNC_MESSAGE": "Vi sender deg en e-post når det er klart.",
             "SYNC_MESSAGE": "Hvis nedlastningen ikke starter automatisk, klikk <a href='{{url}}' download title='Download the dump file'>her</a>.",
             "ERROR": "Våre Ompa Lompaer har problemer med å generere en data dump. Vennligst prøv på nytt.",
             "ERROR_BUSY": "Beklager, våre Ompa Lompaer opplever tung arbeidsbelastning akkurat nå. Vennligst prøv igjen om noen få minutter."
@@ -570,7 +570,7 @@
             "REQUEST_OWNERSHIP_SUCCESS": "Vi vil varsle prosjekteieren",
             "CHANGE_OWNER": "Endre eier",
             "CHANGE_OWNER_SUCCESS_TITLE": "Ok, din henvendelse har blitt sendt!",
-            "CHANGE_OWNER_SUCCESS_DESC": "Vi vil varsle deg via epost hvis anmodningen om eierskap til prosjektet ble godtatt eller avslått",
+            "CHANGE_OWNER_SUCCESS_DESC": "Vi vil varsle deg via e-post hvis anmodningen om eierskap til prosjektet ble godtatt eller avslått",
             "REQUEST_OWNERSHIP_LIMIT": "Du har nådd grensen på {{maxProjects}} private prosjekt"
         },
         "REPORTS": {

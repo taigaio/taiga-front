@@ -71,5 +71,17 @@
         },
         "ISSUE": "Isu",
         "EPIC": "Epik"
+    },
+    "ADMIN": {
+        "ROLES": {
+            "HELP_ROLE_ENABLED": "Peran ini merupakan bagian dari peran yang terlibat dalam memperkirakan poin user story.",
+            "DISABLE_COMPUTABLE_ALERT_TITLE": "Apakah Anda yakin ingin menonaktifkan estimasi peran ini?",
+            "DISABLE_COMPUTABLE_ALERT_SUBTITLE": "Jika Anda menonaktifkan izin estimasi untuk peran {{roleName}}, semua estimasi sebelumnya yang dibuat oleh peran ini akan dihapus",
+            "TITLE_DELETE_ROLE": "Hapus Peran",
+            "REPLACEMENT_ROLE": "Semua pengguna dengan peran ini akan dipindahkan ke",
+            "COUNT_MEMBERS": "{{ role.members_count }} anggota dengan peran ini",
+            "WARNING_DELETE_ROLE": "Hati-hati! Semua estimasi peran akan dihapus",
+            "ERROR_DELETE_ALL": "Anda tidak dapat menghapus semua nilai"
+        }
     }
 }
