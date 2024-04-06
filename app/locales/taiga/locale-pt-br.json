@@ -82,7 +82,7 @@
             "RANGE": "Esse valor deve ser entre %s e %s.",
             "MIN_LENGTH": "Esse valor é muito curto. deve ter %s caracteres ou mais.",
             "MAX_LENGTH": "Valor muito longo. O campo deve conter %s caracteres ou menos.",
-            "RANGE_LENGTH": "This value's length is invalid. It should be between %s and %s characters long.",
+            "RANGE_LENGTH": "O comprimento deste valor é inválido. Deve ter entre %e %s caracteres de comprimento.",
             "MIN_CHECK": "Você deve selecionar pelo menos %s escolhas.",
             "MAX_CHECK": "Você deve selecionar %s escolhas ou menos.",
             "RANGE_CHECK": "Você deve selecionar entre %s e %s escolhas.",
@@ -139,7 +139,7 @@
             "ADD": "Adicionar tag"
         },
         "DESCRIPTION": {
-            "EMPTY": "Empty space is so boring... go on, be descriptive...",
+            "EMPTY": "O espaço vazio é tão chato... vá em frente, seja descritivo...",
             "NO_DESCRIPTION": "Sem descrição ainda"
         },
         "FIELDS": {
@@ -163,11 +163,11 @@
             "REF": "Ref",
             "VOTES": "Votos",
             "SPRINT": "Sprint",
-            "DUE_DATE": "Due date",
-            "DUE_DATE_REASON": "Due date reason"
+            "DUE_DATE": "Data de vencimento.",
+            "DUE_DATE_REASON": "Motivo da data de vencimento"
         },
         "ROLES": {
-            "ALL": "All points"
+            "ALL": "Todos os pontos"
         },
         "ASSIGNED_TO": {
             "NOT_ASSIGNED": "Não assinado",
@@ -180,10 +180,10 @@
             "SELF": "Atribuir a mim"
         },
         "DUE_DATE": {
-            "TITLE_ACTION_SET_DUE_DATE": "Set due date"
+            "TITLE_ACTION_SET_DUE_DATE": "Definir data de vencimento"
         },
         "ASSIGNED_USERS": {
-            "ADD": "Select assigned user",
+            "ADD": "Selecione o usuário atribuído",
             "ADD_ASSIGNED": "Add assigned",
             "TITLE_LIGHTBOX_DELETE_ASSIGNED": "Delete assigned..."
         },
@@ -204,15 +204,15 @@
             "UNWATCH": "Deixar de Observar",
             "WATCHERS": "Observadores",
             "BUTTON_TITLE": "Observar/Deixar de observar este item",
-            "COUNTER_TITLE": "{total, plural, =1{one watcher} other{# watchers}}"
+            "COUNTER_TITLE": "{total, plural, =1{um observador} outros{# observadores}}"
         },
         "VOTE_BUTTON": {
             "BUTTON_TITLE": "Aprovar/Reprovar este item",
             "COUNTER_TITLE": "{total, plural, =1{one vote} other{# votes}}"
         },
-        "PROMOTE_TO_US": "Promote to user story",
+        "PROMOTE_TO_US": "Promova para a história do usuário",
         "PROMOTED_ISSUES": "This issue has been promoted to",
-        "PROMOTED_TASKS": "This task has been promoted to",
+        "PROMOTED_TASKS": "Este task foi promovido para",
         "CONFIRM_PROMOTE": {
             "ISSUE": {
                 "TITLE": "Promover esse problema para nova história de usuário",
