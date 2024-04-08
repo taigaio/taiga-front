@@ -1968,10 +1968,10 @@
         }
     },
     "ZOOM": {
-        "TITLE": "Zoom:",
+        "TITLE": "Visualização:",
         "ZOOM-1": "Compact",
         "ZOOM-2": "Default",
         "ZOOM-3": "Detailed",
-        "ZOOM-4": "Expanded"
+        "ZOOM-4": "Expandido"
     }
 }
