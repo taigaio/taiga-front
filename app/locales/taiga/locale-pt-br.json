@@ -170,10 +170,10 @@
             "ALL": "Todos os pontos"
         },
         "ASSIGNED_TO": {
-            "NOT_ASSIGNED": "Não assinado",
+            "NOT_ASSIGNED": "Não atribuído",
             "ASSIGN": "Atribuir",
             "DELETE_ASSIGNMENT": "Excluir atribuição",
-            "REMOVE_ASSIGNED": "Remover assinatura",
+            "REMOVE_ASSIGNED": "Remover atribuído",
             "TOO_MANY": "...muitos usuários, continue filtrando",
             "CONFIRM_UNASSIGNED": "Tem certeza de que deseja deixá-lo sem atribuição?",
             "TITLE_ACTION_EDIT_ASSIGNMENT": "E",
