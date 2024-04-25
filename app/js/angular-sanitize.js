@@ -485,6 +485,14 @@ function $SanitizeProvider() {
         if (!ignoreCurrentElement && blockedElements[tag]) {
           ignoreCurrentElement = tag;
         }
+        const validCheckbox = validElements['input'] && validAttrs['checked'];
+
+        if (validCheckbox) {
+          if (tag === 'input' && attrs.type !== 'checkbox') {
+            return;
+          }
+        }
+
         if (!ignoreCurrentElement && validElements[tag] === true) {
           out('<');
           out(tag);
