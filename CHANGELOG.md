@@ -1,8 +1,13 @@
 # Changelog
 
-## 6.8.1 (unreleased)
+## 6.8.2 (unreleased)
 
 ...
+
+## 6.8.1 (2024-07-23)
+
+- Prevent XSS attack.
+- Update locales.
 
 ## 6.8.0 (2024-04-03)
 
