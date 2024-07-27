@@ -558,9 +558,9 @@
             "DELETE": "Verwijder dit project",
             "CHANGE_LOGO": "Change logo",
             "ACTION_USE_DEFAULT_LOGO": "Use default image",
-            "MAX_PRIVATE_PROJECTS": "You've reached the maximum number of private projects allowed by your current plan",
+            "MAX_PRIVATE_PROJECTS": "U hebt het maximale aantal privéprojecten bereikt dat uw huidige abonnement toestaat",
             "MAX_PRIVATE_PROJECTS_MEMBERS": "The maximum number of members for private projects has been exceeded",
-            "MAX_PUBLIC_PROJECTS": "Unfortunately, you've reached the maximum number of public projects allowed by your current plan",
+            "MAX_PUBLIC_PROJECTS": "Helaas hebt u het maximale aantal openbare projecten bereikt dat uw huidige plan toestaat",
             "MAX_PUBLIC_PROJECTS_MEMBERS": "The project exceeds your maximum number of members for public projects",
             "PROJECT_OWNER": "Project owner",
             "REQUEST_OWNERSHIP": "Request ownership",
@@ -837,8 +837,10 @@
             "ADD_COMMENT": "Would you like to add a comment for the project owner?",
             "UNLIMITED_PROJECTS": "Ongelimiteerd",
             "OWNER_MESSAGE": {
-                "PRIVATE": "Please remember that you can own up to <strong>{{maxProjects}}</strong> private projects. You currently own <strong>{{currentProjects}}</strong> private projects",
-                "PUBLIC": "Please remember that you can own up to <strong>{{maxProjects}}</strong> public projects. You currently own <strong>{{currentProjects}}</strong> public projects"
+                "PRIVATE": "Vergeet niet dat u maximaal <strong>{{maxProjects}}</strong> privéprojecten kunt bezitten. U bezit momenteel <strong>{{currentProjects}}</strong> privéprojecten.",
+                "PUBLIC": "Vergeet niet dat u maximaal <strong>{{maxProjects}}</strong> openbare projecten kunt bezitten. U bezit momenteel <strong>{{currentProjects}}</strong> openbare projecten.",
+                "PRIVATE_EXCEEDED": "U hebt momenteel <strong>{{currentProjects}} privéprojecten</strong>, het maximum dat uw planning toestaat.",
+                "PUBLIC_EXCEEDED": "U hebt momenteel <strong>{{currentProjects}} openbare projecten</strong>, het maximum dat uw planning toestaat."
             },
             "CANT_BE_OWNED": "At the moment you cannot become an owner of a project of this type. If you would like to become the owner of this project, please contact the administrator so they change your account settings to enable project ownership."
         },
@@ -846,6 +848,9 @@
             "TITLE": "Standaard Waardes",
             "SUBTITLE": "Zet standaard waardes voor alle selectie ingangen.",
             "MENU_TITLE": "Voorinstellingen"
+        },
+        "PLUGINS": {
+            "PAGE_TITLE": "{{pluginName}} - Plugins - {{projectName}}"
         }
     },
     "USER": {
@@ -948,7 +953,9 @@
             "CHANGE_PASSWORD": "Wachtwoord wijzigen",
             "DASHBOARD_TITLE": "Dashboard",
             "DISCOVER_TITLE": "Ontdek trending projecten",
-            "DISCOVER": "Ontdek"
+            "DISCOVER": "Ontdek",
+            "TAIGA_COMMUNITY_TITLE": "Ga naar de Taiga-gemeenschap",
+            "TAIGA_COMMUNITY": "Taiga-gemeenschap"
         },
         "LIKE_BUTTON": {
             "LIKE": "Vind ik leuk",
@@ -1164,14 +1171,16 @@
             "HELP_TEXT": "Als gebruikers al geregistreerd zijn op Taiga, zullen ze automatisch toegevoegd worden. Anders krijgen ze een uitnodiging."
         },
         "FEEDBACK": {
-            "TITLE": "Stel een vraag",
+            "TITLE": "Taiga-ondersteuning",
             "COMMENT": "Stuur ons een bericht",
             "ACTION_SEND": "Verzend bericht",
             "YOU_CAN_ALSO": "Je kunt ook:",
             "CREATE": "Nieuw Issue aanmaken voor dit",
             "PUBLIC": "open Taiga project",
             "EMAIL": "Stuur ons een e-mail rechtstreeks aan",
-            "SUPPORT": "support@taiga.io"
+            "SUPPORT": "support@taiga.io",
+            "VISIT": "Bezoek onze ",
+            "FAQ": "Veel Gestelde Vragen"
         },
         "SEARCH": {
             "TITLE": "Zoek",
