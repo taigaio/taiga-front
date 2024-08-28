@@ -236,6 +236,7 @@
             "TITLE": "Benutzerfilter",
             "TITLE_ACTION_SEARCH": "Suche",
             "ACTION_ADD": "Hinzufügen",
+            "CLEAR": "Zurücksetzen",
             "ACTION_SAVE_CUSTOM_FILTER": "Filter speichern",
             "PLACEHOLDER_FILTER_NAME": "Benennen Sie den Filter und drücken Sie die Eingabetaste",
             "APPLIED_FILTERS_NUM": "Filter wurden angewandt",
