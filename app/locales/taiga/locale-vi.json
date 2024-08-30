@@ -29,7 +29,7 @@
         "UNBLOCK_TITLE": "Chặn mục này",
         "BLOCKED_NOTE": "Vì sao mục này bị chặn?",
         "BLOCKED_REASON": "Vui lòng giải thích lí do",
-        "CREATED_BY": "Được tạo bởi {{hiển thị tên đầy đủ}}",
+        "CREATED_BY": "Được tạo bởi {{fullDisplayName}}",
         "CLOSE": "đóng",
         "GO_HOME": "Đưa tôi trở lại trang chủ",
         "PLUGINS": "Plugins",
@@ -459,13 +459,13 @@
     },
     "ATTACHMENT": {
         "SECTION_NAME": "Attachments",
-        "TITLE": "{{tên file}} được đăng vào {{ngày}}",
+        "TITLE": "{{ fileName }} được đăng vào {{ date }}",
         "LIST_VIEW_MODE": "Chế độ xem danh sách",
         "GALLERY_VIEW_MODE": "Chế độ xem bộ sưu tập ảnh",
         "DESCRIPTION": "Nhập mô tả ngắn gọn",
         "DEPRECATED": "(bị từ chối)",
         "DEPRECATED_FILE": "Bị từ chối?",
-        "ADD": "Bổ sung tệp đính kèm mới {{dung lượng tối đa}}",
+        "ADD": "Bổ sung tệp đính kèm mới {{maxFileSizeMsg}}",
         "DROP": "Thả tập tin đính kèm tại đây!",
         "SHOW_DEPRECATED": "+ hiện tập tin đính kèm bị từ chối",
         "HIDE_DEPRECATED": "- ẩn tập tin đính kèm bị từ chối ",
@@ -495,7 +495,7 @@
         },
         "MEMBERSHIPS": {
             "TITLE": "Quản lý thành viên",
-            "PAGE_TITLE": "Thành viên - {{Tên dự án}}",
+            "PAGE_TITLE": "Thành viên - {{projectName}}",
             "ADD_BUTTON": "+ Thêm thành viên mới",
             "ADD_BUTTON_TITLE": "Thêm thành viên mới",
             "UPGRADE_BUTTON": "Upgrade your plan",
@@ -843,7 +843,7 @@
     },
     "USER": {
         "PROFILE": {
-            "PAGE_TITLE": "{{tên đầy đủ của người dùng}}@{{tên người dùng sử dụng}}",
+            "PAGE_TITLE": "{{userFullName}}@{{userUsername}}",
             "USER_SETTINGS": "Cài đặt người dùng",
             "CLOSED_US": "Đóng NKND",
             "PROJECTS": "Dự án",
@@ -890,7 +890,7 @@
         }
     },
     "PROJECT": {
-        "PAGE_TITLE": "{{Tên dự án}}",
+        "PAGE_TITLE": "{{projectName}}",
         "HELP": "Reorder your projects to set at the top the most used ones.<br/> The top 4 projects will appear in the top navigation bar project list",
         "PRIVATE": "Dự án riêng tư",
         "LOOKING_FOR_PEOPLE": "Dự án này đang cần thêm thành viên",
