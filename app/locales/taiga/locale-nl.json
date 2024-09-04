@@ -56,11 +56,11 @@
             "DELETE_ISSUE": "Verwijder kwestie",
             "DETACH_ISSUE_FROM_SPRINT": "Loskoppelen van werkplan",
             "PTS": "{{pts}} pts",
-            "DUE_DATE": "Due date: {{date}}",
+            "DUE_DATE": "Vervaldatum: {{date}}",
             "NO_PTS": "N/E",
-            "ESTIMATION": "Estimation",
-            "TASKS": "{{completed}} tasks of {{total}} completed",
-            "EXTRA_ASSIGNED_USERS": "{{total}} more assigned users",
+            "ESTIMATION": "Inschatting",
+            "TASKS": "{{completed}} taken van {{total}} klaar",
+            "EXTRA_ASSIGNED_USERS": "{{total}} meer toegewezen gebruikers",
             "MOVE_TO_TOP": "Naar boven verplaatsen"
         },
         "FORM_ERRORS": {
@@ -82,12 +82,12 @@
             "RANGE": "Deze waarde zou tussen %s en %s moeten zijn.",
             "MIN_LENGTH": "Deze waarde is te kort. Hij zou %s tekens of meer moeten bevatten.",
             "MAX_LENGTH": "Deze waarde is te lang. Hij zou %s tekens of minder moeten bevatten.",
-            "RANGE_LENGTH": "This value's length is invalid. It should be between %s and %s characters long.",
+            "RANGE_LENGTH": "De lengte van deze waarde is ongeldig. Deze moet tussen %s en %s tekens lang zijn.",
             "MIN_CHECK": "Je moet minstens %s opties selecteren.",
             "MAX_CHECK": "Je moet %s keuzes of minder selecteren.",
             "RANGE_CHECK": "Je moet tussen %s en %s keuzes selecteren.",
             "EQUAL_TO": "Deze waarde zou hetzelfde moeten zijn.",
-            "LINEWIDTH": "One or more lines is perhaps too long. Try to keep under %s characters.",
+            "LINEWIDTH": "Een of meer regels is misschien te lang. Probeer onder %s tekens te blijven.",
             "PIKADAY": "Ongeldige datum, gebruik DD MMM YYYY (vb 23 mar 1984)"
         },
         "PICKERDATE": {
@@ -139,7 +139,7 @@
             "ADD": "Tag toevoegen"
         },
         "DESCRIPTION": {
-            "EMPTY": "Empty space is so boring... go on, be descriptive...",
+            "EMPTY": "Lege ruimte is zo saai... ga je gang, beschrijf het eens...",
             "NO_DESCRIPTION": "Nog geen beschrijving"
         },
         "FIELDS": {
@@ -157,21 +157,21 @@
             "PRIORITY": "Prioriteit",
             "ASSIGNED": "Toegewezen",
             "ASSIGNED_TO": "Toegewezen aan",
-            "ASSIGNED_USERS": "Assigned users",
+            "ASSIGNED_USERS": "Toegewezen gebruikers",
             "POINTS": "Punten",
             "IS_BLOCKED": "is geblokkeerd",
             "REF": "Ref",
             "VOTES": "Stemmen",
             "SPRINT": "Sprint",
-            "DUE_DATE": "Due date",
-            "DUE_DATE_REASON": "Due date reason"
+            "DUE_DATE": "Vervaldatum",
+            "DUE_DATE_REASON": "Vervaldatum reden"
         },
         "ROLES": {
-            "ALL": "All points"
+            "ALL": "Alle punten"
         },
         "ASSIGNED_TO": {
             "NOT_ASSIGNED": "Niet toegewezen",
-            "ASSIGN": "Assign",
+            "ASSIGN": "Toegewezen",
             "DELETE_ASSIGNMENT": "Toewijzing verwijderen",
             "REMOVE_ASSIGNED": "Verwijder toegewezene",
             "TOO_MANY": "...te veel gebruikers, blijf filteren",
@@ -180,10 +180,10 @@
             "SELF": "Aan mezelf toewijzen"
         },
         "DUE_DATE": {
-            "TITLE_ACTION_SET_DUE_DATE": "Set due date"
+            "TITLE_ACTION_SET_DUE_DATE": "Vervaldatum instellen"
         },
         "ASSIGNED_USERS": {
-            "ADD": "Select assigned user",
+            "ADD": "Selecteer toegewezen gebruiker",
             "ADD_ASSIGNED": "Add assigned",
             "TITLE_LIGHTBOX_DELETE_ASSIGNED": "Delete assigned..."
         },
@@ -193,26 +193,26 @@
         },
         "WATCHERS": {
             "WATCHERS": "Volgers",
-            "ADD": "Add watchers",
-            "TITLE_ADD": "Add a project member to the watchers list",
+            "ADD": "Voeg toeschouwers toe",
+            "TITLE_ADD": "Voeg een projectlid toe aan de lijst met waarnemers",
             "DELETE": "Verwijder waarnemer",
             "TITLE_LIGHTBOX_DELETE_WARTCHER": "Verwijder waarnemer..."
         },
         "WATCH_BUTTON": {
             "WATCH": "Bekijk",
             "WATCHING": "Volgers",
-            "UNWATCH": "Unwatch",
+            "UNWATCH": "Niet meer bekijken",
             "WATCHERS": "Volgers",
-            "BUTTON_TITLE": "Watch/Unwatch this item",
+            "BUTTON_TITLE": "Bekijk/Ontkijk dit item",
             "COUNTER_TITLE": "{total, plural, =1{één kijker} other{# kijkers}}"
         },
         "VOTE_BUTTON": {
-            "BUTTON_TITLE": "Upvote/Downvote this item",
+            "BUTTON_TITLE": "Stem omhoog/omlaag op dit item",
             "COUNTER_TITLE": "{total, plural, =1{one vote} other{# votes}}"
         },
         "PROMOTE_TO_US": "Promote to werkorder",
-        "PROMOTED_ISSUES": "This issue has been promoted to",
-        "PROMOTED_TASKS": "This task has been promoted to",
+        "PROMOTED_ISSUES": "Dit probleem is gepromoot om",
+        "PROMOTED_TASKS": "Deze taak is gepromoveerd tot",
         "CONFIRM_PROMOTE": {
             "ISSUE": {
                 "TITLE": "Bevorder deze kwestie tot een nieuwe werkorder",
@@ -225,18 +225,18 @@
         },
         "CUSTOM_ATTRIBUTES": {
             "CUSTOM_FIELDS": "Eigen velden",
-            "SAVE": "Save custom field",
-            "EDIT": "Edit custom field",
-            "DELETE": "Delete custom fields",
-            "CONFIRM_DELETE": "Remember that all values in this custom field will be deleted."
+            "SAVE": "Aangepast veld opslaan",
+            "EDIT": "Aangepast veld bewerken",
+            "DELETE": "Aangepaste velden verwijderen",
+            "CONFIRM_DELETE": "Houd er rekening mee dat alle waarden in dit aangepaste veld worden verwijderd."
         },
         "FILTERS": {
-            "INPUT_PLACEHOLDER": "subject or reference",
+            "INPUT_PLACEHOLDER": "onderwerp of referentie",
             "TITLE_ACTION_FILTER_BUTTON": "zoek",
             "TITLE": "Eigen filters",
             "TITLE_ACTION_SEARCH": "Zoek",
             "ACTION_ADD": "Toevoegen",
-            "ACTION_SAVE_CUSTOM_FILTER": "save filter",
+            "ACTION_SAVE_CUSTOM_FILTER": "filter opslaan",
             "PLACEHOLDER_FILTER_NAME": "Geef de filternaam in en druk op enter",
             "APPLIED_FILTERS_NUM": "filters applied",
             "TITLE_ADVANCED_FILTER": "Advanced",
