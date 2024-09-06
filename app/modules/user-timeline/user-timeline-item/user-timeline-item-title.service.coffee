@@ -74,6 +74,11 @@ class UserTimelineItemTitle
                     else
                         value = @translate.instant('ACTIVITY.VALUES.NOT_SET')
 
+                # color
+                else if timeline.getIn(["data", "value_diff", "key"]) == 'color'
+                    if value
+                        return value
+
                 new_value = value
             else
                 new_value = timeline.getIn(["data", "value_diff", "value"]).first().get(1)
