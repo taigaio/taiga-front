@@ -665,7 +665,7 @@
             "SELECTED": "Selecionado"
         },
         "PROJECT_DUE_DATE_STATUS": {
-            "TITLE": "Due Dates",
+            "TITLE": "Data Limite",
             "SUBTITLE": "Specify the due dates status your user stories, tasks and issues will go through if selected",
             "US_TITLE": "User Story Due Date status",
             "ACTION_ADD_STATUS": "Adicionar novo status",
@@ -930,18 +930,18 @@
         },
         "NAVIGATION": {
             "PROJECTS": "Projetos",
-            "ACCOUNT_SETTINGS": "Account settings",
-            "ACTION_CREATE_PROJECT": "New project",
-            "ACTION_CREATE_PROJECT_FIRST": "Create your first project",
-            "ACTION_CREATE_PROJECT_FIRST_TEXT": "You don’t have any projects yet. Create one now, invite your team and start using Taiga to the fullest.",
-            "VIEW_ALL_PROJECTS": "View all projects",
+            "ACCOUNT_SETTINGS": "Configurações",
+            "ACTION_CREATE_PROJECT": "Novo projeto",
+            "ACTION_CREATE_PROJECT_FIRST": "Crie seu primeiro projeto",
+            "ACTION_CREATE_PROJECT_FIRST_TEXT": "Você ainda não possui projetos. Crie um agora, convide seu time e começe a usar o Taiga em seu potencial máximo.",
+            "VIEW_ALL_PROJECTS": "Ver todos os projetos",
             "MANAGE_PROJECTS": "Gerenciar projetos",
             "TITLE_CREATE_PROJECT": "Criar projeto",
             "HELP_TITLE": "Ajuda",
             "HOMEPAGE": "Página pessoal",
-            "TAIGA_RESOURCES_TITLE": "Go to Taiga resources",
-            "TAIGA_RESOURCES": "Taiga Resources",
-            "FEEDBACK_TITLE": "Write to us with your feedback",
+            "TAIGA_RESOURCES_TITLE": "Vá para os recursos do Taiga",
+            "TAIGA_RESOURCES": "Recursos do Taiga",
+            "FEEDBACK_TITLE": "Escreva para nós com seu feedback",
             "FEEDBACK": "Pergunte algo",
             "NOTIFICATIONS_TITLE": "Editar suas configurações de notificações",
             "NOTIFICATIONS": "Notificações",
@@ -962,16 +962,16 @@
             "LIKED": "Curtiu",
             "UNLIKE": "Descurtir",
             "BUTTON_TITLE": "Curtir ou descurtir este projeto",
-            "COUNTER_TITLE": "{total, plural, =1{one fan} other{# fans}}"
+            "COUNTER_TITLE": "{total, plural, =1{one fan} outro{# fans}}"
         },
         "WATCH_BUTTON": {
             "BUTTON_TITLE": "Observar este projeto e definir política de notificação",
             "WATCH": "Observar",
             "WATCHING": "Observando",
-            "COUNTER_TITLE": "{total, plural, =1{one watcher} other{# watchers}}",
+            "COUNTER_TITLE": "{total, plural, =1{one watcher} outro{# watchers}}",
             "OPTIONS": {
-                "NOTIFY_ALL": "receber todas notificações",
-                "NOTIFY_ALL_TITLE": "Receber todas notificações para este projeto",
+                "NOTIFY_ALL": "receber todas as notificações",
+                "NOTIFY_ALL_TITLE": "Receber todas as notificações para este projeto",
                 "NOTIFY_INVOLVED": "Apenas envolvidos",
                 "NOTIFY_INVOLVED_TITLE": "Receber notificações apenas enquanto você estiver envolvido",
                 "UNWATCH": "Deixar de Observar",
@@ -1006,8 +1006,8 @@
         },
         "COMMON": {
             "DETAILS": "Detalhes do novo projeto",
-            "PROJECT_TITLE": "Project Name (Required)",
-            "PROJECT_DESCRIPTION": "Project Description (Required)"
+            "PROJECT_TITLE": "Nome do Projeto (Obrigatório)",
+            "PROJECT_DESCRIPTION": "Descrição do Projeto (Obrigatório)"
         },
         "DUPLICATE": {
             "TITLE": "Duplicar Projeto",
@@ -1021,9 +1021,9 @@
             "ASYNC_IN_PROGRESS_MESSAGE": "Este processo pode levar alguns minutos <br/> Enviaremos um email a você assim que estiver pronto",
             "UPLOAD_IN_PROGRESS_MESSAGE": "Enviado {{uploadedSize}} de {{totalSize}}",
             "ERROR": "The Taiga has some problems importing your dump data. Please try again.",
-            "ERROR_TOO_MANY_REQUEST": "Sorry, the Taiga is experiencing heavy load right now. Please try again in a few minutes.",
+            "ERROR_TOO_MANY_REQUEST": "Desculpe, o Taiga está com um número muito alto de requisições. Por favor tente em alguns minutos.",
             "ERROR_MESSAGE": "The Taiga has some problems importing your dump data: {{error_message}}",
-            "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) is too heavy for the Taiga, try it with a file smaller than ({{maxFileSize}})",
+            "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) é muito pesado para o Taiga, tente com um arquivo de tamanho menor que ({{maxFileSize}})",
             "SYNC_SUCCESS": "Seu projeto foi importado com sucesso",
             "IMPORT": "Importar",
             "WHO_IS": "As tarefas deles serão atribuídas para...",
