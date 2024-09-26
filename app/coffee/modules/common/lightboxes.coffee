@@ -1087,8 +1087,12 @@ tgResources, $rs, tgAnalytics) ->
             $el.off()
 
         $scope.$on "related-sprint:changed", (ctx, userStory)->
-            $rs.userstories.getByRef(userStory.project, userStory.ref, {}).then (us) ->
+            $rs.userstories.getByRef(userStory.project, userStory.ref, {}).then((us) ->
                 $scope.us = us
+                return us
+            ).then (us)->
+                $rs.sprints.get(us.project, us.milestone).then (sprint) =>
+                    $scope.sprint = sprint
 
         $scope.onUpdateSearchSprint = debounceLeading 300, () ->
             $scope.selectedSprint = null
