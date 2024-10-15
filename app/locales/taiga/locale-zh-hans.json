@@ -352,7 +352,7 @@
     },
     "REGISTER_FORM": {
         "TITLE": "注册一个新的Taiga账户(免费 )",
-        "PLACEHOLDER_NAME": "填写一个用户账号(注意大小写)",
+        "PLACEHOLDER_NAME": "填写用户账户",
         "PLACEHOLDER_FULL_NAME": "请填写你的全名",
         "PLACEHOLDER_EMAIL": "填写你的电子邮件",
         "PLACEHOLDER_PASSWORD": "设置密码(大小写敏感)",
@@ -558,9 +558,9 @@
             "DELETE": "删除此项目",
             "CHANGE_LOGO": "更换图标",
             "ACTION_USE_DEFAULT_LOGO": "使用默认图片",
-            "MAX_PRIVATE_PROJECTS": "根据你当前计划，你已经达到了私有项目允许的最大成员限制",
+            "MAX_PRIVATE_PROJECTS": "您已达到当前计划允许的私人项目数量上限",
             "MAX_PRIVATE_PROJECTS_MEMBERS": "已超过私有项目的最大成员数目的限制",
-            "MAX_PUBLIC_PROJECTS": "对不起，根据你当前计划，你已经达到了公开项目允许的最大成员限制",
+            "MAX_PUBLIC_PROJECTS": "抱歉，您已达到当前计划允许的公共项目数量上限",
             "MAX_PUBLIC_PROJECTS_MEMBERS": "作为公开项目，该项目已经超过了你的最大成员数目",
             "PROJECT_OWNER": "项目所有者",
             "REQUEST_OWNERSHIP": "请求项目所有权",
@@ -780,9 +780,9 @@
             "DEFAULT_DELETE_MESSAGE": "邀请  {{email}}"
         },
         "DEFAULT_VALUES": {
-            "LABEL_EPIC_STATUS": "史诗状态选择器的默认值",
-            "LABEL_US_STATUS": "用户故事状态选择器的默认值",
-            "LABEL_POINTS": "点数选择器预设值",
+            "LABEL_EPIC_STATUS": "史诗状态选择器",
+            "LABEL_US_STATUS": "用户故事状态选择器",
+            "LABEL_POINTS": "点数选择器",
             "LABEL_TASK_STATUS": "任务状态选择器预设值",
             "LABEL_ISSUE_TYPE": "问题类型选择器预设值",
             "LABEL_ISSUE_STATUS": "问题状态选择器预设值",
