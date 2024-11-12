@@ -22,6 +22,9 @@ SelectUserDirective = (
         roles = []
         lightboxService.open($el)
 
+        normalize = (text) ->
+            text.toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+
         getFilteredUsers = (text="") ->
             selected = _.compact(_.sortBy(
                 _.filter(users, (x) ->
@@ -34,8 +37,9 @@ SelectUserDirective = (
                 if row.type == 'user' && _.find(selected, ['id', row.id])
                     return false
 
-                name = row.name.toUpperCase()
-                text = text.toUpperCase()
+                name = normalize(row.name)
+                text = normalize(text)
+
                 return _.includes(name, text)
 
             collection = _.union(
