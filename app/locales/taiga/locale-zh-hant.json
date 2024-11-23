@@ -5,7 +5,7 @@
         "OR": "或",
         "I_GET_IT": "我已了解",
         "LOADING": "載入中...",
-        "DATE": "DD MMM YYYY",
+        "DATE": "YYYY年MM月DD日",
         "DATETIME": "YYYY年MM月DD日 HH時mm分",
         "SAVE": "儲存",
         "CANCEL": "取消",
@@ -42,25 +42,25 @@
         "EXTERNAL_USER": "外部使用者",
         "GENERIC_ERROR": "發現錯誤： {{error}}。",
         "IOCAINE_TEXT": "這位成員對這項任務感到有些壓力。在您的幫助下，他們將會逐漸對鉈毒產生免疫力。暫時來說，也許需要一個擁抱。",
-        "CLIENT_REQUIREMENT": "A client requirement is a new requirement that was not previously expected and is required to be part of the project",
-        "TEAM_REQUIREMENT": "A team requirement is a requirement that must exist in the project but should have no cost for the client",
+        "CLIENT_REQUIREMENT": "客戶要求是指在專案初期並未設想到的要求，需要加以整合入現有的專案之中",
+        "TEAM_REQUIREMENT": "團隊需求是專案中必需存在的需求，但不應給客戶帶來任何成本",
         "OWNER": "專案主持人",
         "CAPSLOCK_WARNING": "請注意，此欄位大小寫有區別，目前輸入法切換至大寫模式。",
         "CONFIRM_CLOSE_EDIT_MODE_TITLE": "是否關閉編輯模式？",
-        "CONFIRM_CLOSE_EDIT_MODE_MESSAGE": "Remember that if you close the edit mode without saving all the changes will be lost",
-        "RELATED_USERSTORIES": "Related user stories",
+        "CONFIRM_CLOSE_EDIT_MODE_MESSAGE": "請記得，如果您在關閉編輯模式時沒有保存，所有做出的更動將被丢棄",
+        "RELATED_USERSTORIES": "相關的用戶故事",
         "CARD": {
-            "ASSIGN_TO": "Assign To",
-            "EDIT": "Edit card",
+            "ASSIGN_TO": "指派給",
+            "EDIT": "編輯卡片",
             "DELETE": "刪除卡片",
             "DELETE_ISSUE": "删除議題",
-            "DETACH_ISSUE_FROM_SPRINT": "Detach from sprint",
-            "PTS": "{{pts}} pts",
-            "DUE_DATE": "Due date: {{date}}",
+            "DETACH_ISSUE_FROM_SPRINT": "脫離衝刺",
+            "PTS": "{{pts}} 點",
+            "DUE_DATE": "截止日期： {{date}}",
             "NO_PTS": "N/E",
-            "ESTIMATION": "Estimation",
-            "TASKS": "{{completed}} tasks of {{total}} completed",
-            "EXTRA_ASSIGNED_USERS": "{{total}} more assigned users",
+            "ESTIMATION": "估計",
+            "TASKS": "{{total}} 個任務中完成了 {{completed}} 個",
+            "EXTRA_ASSIGNED_USERS": "再增加 {{total}} 位指派的用戶",
             "MOVE_TO_TOP": "移到最上方"
         },
         "FORM_ERRORS": {
@@ -70,7 +70,7 @@
             "TYPE_URLSTRICT": "該網址應為有效連結。",
             "TYPE_NUMBER": "該數值應為有效號碼。",
             "TYPE_DIGITS": "該數值應為有效數字。",
-            "TYPE_DATEISO": "該數值應為有效日期 (YYYY-MM-DD).",
+            "TYPE_DATEISO": "該數值應為有效日期 (YYYY-MM-DD)。",
             "TYPE_ALPHANUM": "該數值應為字母。",
             "TYPE_PHONE": "該數值應為有效的電話號碼。",
             "NOTNULL": "該數值不應為零。",
@@ -82,16 +82,16 @@
             "RANGE": "該數值應介於 %s 與 %s之間。",
             "MIN_LENGTH": "該數值過簡短，它至少要有 %s個字元。",
             "MAX_LENGTH": "該數值過長，它不可多於 %s個字元。",
-            "RANGE_LENGTH": "This value's length is invalid. It should be between %s and %s characters long.",
+            "RANGE_LENGTH": "此數值的長度不合理，應該要介於 %s 和 %s 位之間。",
             "MIN_CHECK": "你必須至少選擇 %s 選項。",
             "MAX_CHECK": "你必須至多選出 %s選項。",
             "RANGE_CHECK": "你必須在%s 與 %s 之間作出選擇。",
             "EQUAL_TO": "該數值應為一致。",
-            "LINEWIDTH": "One or more lines is perhaps too long. Try to keep under %s characters.",
-            "PIKADAY": "Invalid date format, please use DD MMM YYYY (like 23 Mar 1984)"
+            "LINEWIDTH": "有些行顯然太長了，請試著保持在 %s 個字以內。",
+            "PIKADAY": "無效的日期格式，請使用 YYYY年MM月DD日（例如1984年03月23日）"
         },
         "PICKERDATE": {
-            "FORMAT": "DD MMM YYYY",
+            "FORMAT": "YYYY年MM月DD日",
             "FIRST_DAY_OF_WEEK": "1",
             "PREV_MONTH": "上個月",
             "NEXT_MONTH": "下個月",
@@ -132,7 +132,7 @@
         "USER_STORY": "使用者故事",
         "TASK": "任務",
         "ISSUE": "問題",
-        "EPIC": "Epic",
+        "EPIC": "史詩",
         "TAGS": {
             "PLACEHOLDER": "Enter tag",
             "DELETE": "刪除Tag",
@@ -259,7 +259,7 @@
                 "ROLE": "角色",
                 "CREATED_BY": "由創建",
                 "CUSTOM_FILTERS": "客製過濾器",
-                "EPIC": "Epic"
+                "EPIC": "史詩"
             }
         },
         "WYSIWYG": {
@@ -272,12 +272,12 @@
         },
         "PERMISIONS_CATEGORIES": {
             "EPICS": {
-                "NAME": "Epics",
-                "VIEW_EPICS": "View epics",
-                "ADD_EPICS": "Add epics",
-                "MODIFY_EPICS": "Modify epics",
-                "COMMENT_EPICS": "Comment epics",
-                "DELETE_EPICS": "Delete epics"
+                "NAME": "史詩",
+                "VIEW_EPICS": "查看史詩",
+                "ADD_EPICS": "添加史詩",
+                "MODIFY_EPICS": "修改史詩",
+                "COMMENT_EPICS": "評論史詩",
+                "DELETE_EPICS": "刪除史詩"
             },
             "SPRINTS": {
                 "NAME": "衝刺任務",
@@ -417,17 +417,17 @@
         "SHOW_HIDDEN": "Show hidden objects"
     },
     "EPICS": {
-        "TITLE": "EPICS",
-        "SECTION_NAME": "Epics",
-        "EPIC": "EPIC",
-        "PAGE_TITLE": "Epics - {{projectName}}",
-        "PAGE_DESCRIPTION": "The epics list of the project {{projectName}}: {{projectDescription}}",
+        "TITLE": "史詩",
+        "SECTION_NAME": "史詩",
+        "EPIC": "史詩",
+        "PAGE_TITLE": "史詩 - {{projectName}}",
+        "PAGE_DESCRIPTION": "專案的史詩列表 {{projectName}}: {{projectDescription}}",
         "DASHBOARD": {
-            "ADD": "+ ADD EPIC",
+            "ADD": "+ 添加史詩",
             "UNASSIGNED": "未指派"
         },
         "EMPTY": {
-            "TITLE": "It looks like there aren't any epics yet",
+            "TITLE": "尚未建立任何史詩",
             "EXPLANATION": "Epics are items at a higher level that encompass user stories.<br />Epics are at the top of the hierarchy and can be used to group user stories together.",
             "HELP": "Learn more about epics"
         },
@@ -447,7 +447,7 @@
             "TITLE": "New Epic",
             "PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this epic",
             "TEAM_REQUIREMENT": "Team requirement",
-            "CLIENT_REQUIREMENT": "Client requirement",
+            "CLIENT_REQUIREMENT": "客戶要求",
             "BLOCKED": "已封鎖",
             "BLOCKED_NOTE_PLACEHOLDER": "Why is this epic blocked?",
             "CREATE_EPIC": "Create epic"
@@ -472,7 +472,7 @@
         "HIDE_DEPRECATED": "- 隱藏棄用的附件",
         "COUNT_DEPRECATED": "({{ counter }} 遭棄用)",
         "MAX_UPLOAD_SIZE": "上傳檔案最大容量限制 {{maxFileSize}}",
-        "DATE": "DD MMM YYYY [at] hh:mm",
+        "DATE": "YYYY年MM月DD日 hh時mm分",
         "ERROR_UPLOAD_ATTACHMENT": "無法成功上傳 '{{fileName}}'. {{errorMessage}}",
         "TITLE_LIGHTBOX_DELETE_ATTACHMENT": "刪除附件....",
         "MSG_LIGHTBOX_DELETE_ATTACHMENT": "附件 '{{fileName}}'",
@@ -745,7 +745,7 @@
             "HEADERS": "標頭　",
             "PAYLOAD": "有效載荷",
             "RESPONSE": "回應",
-            "DATE": "DD MMM YYYY [at] hh:mm",
+            "DATE": "YYYY年MM月DD日 hh時mm分ss秒",
             "ACTION_HIDE_HISTORY": "(藏記錄)",
             "ACTION_HIDE_HISTORY_TITLE": "藏記錄細節",
             "ACTION_SHOW_HISTORY": "(顯示記錄)",
@@ -1483,7 +1483,7 @@
         },
         "SPRINTS": {
             "TITLE": "衝刺任務",
-            "DATE": "DD MMM YYYY",
+            "DATE": "YYYY年MM月DD日",
             "LINK_TASKBOARD": "衝刺任務板",
             "TITLE_LINK_TASKBOARD": "到任務板 {{spring.name}}",
             "EMPTY": "尚無衝刺任務",
@@ -1532,7 +1532,7 @@
             "YAXIS_LABEL": "Projected points progress",
             "OPTIMAL": "Pending points for day {{formattedDate}} should be {{roundedValue}}",
             "REAL": "一天真實的待辦點數 {{formattedDate}} is {{roundedValue}}",
-            "DATE": "DD MMM YYYY",
+            "DATE": "YYYY年MM月DD日",
             "HELP_LINK": "How this chart works",
             "HELP_TOOLTIP": "This burndown chart shows the sprint's approximate or projected progress based on estimated user story closed tasks. Actual finished estimated user stories are tracked above."
         },
@@ -1769,7 +1769,7 @@
     "WIKI": {
         "PAGE_TITLE": "{{wikiPageName}} - 維基 - {{projectName}}",
         "PAGE_DESCRIPTION": "上回編輯{{lastModifiedDate}} ({{totalEditions}} editions in total) 內容: {{ wikiPageContent }}",
-        "DATETIME": "DD MMM YYYY HH:mm",
+        "DATETIME": "YYYY年MM月DD日 hh時mm分",
         "REMOVE": "移除此維基頁　",
         "DELETE_LIGHTBOX_TITLE": "刪除維基頁",
         "DELETE_LINK_TITLE": "Delete Wiki link",
