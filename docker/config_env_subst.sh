@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# This Source Code Form is subject to the terms of the Mozilla Public
-# License, v. 2.0. If a copy of the MPL was not distributed with this
-# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+# This source code is licensed under the terms of the
+# GNU Affero General Public License found in the LICENSE file in
+# the root directory of this source tree.
 #
-# Copyright (c) 2021-present Kaleidos Ventures SL
+# Copyright (c) 2021-present Kaleidos INC
 
 contribs=()
 
@@ -74,6 +74,16 @@ fi
 # Include Slack plugin if enabled
 if [ ${ENABLE_SLACK} == "true" ]; then
     contribs+=('"plugins/slack/slack.json"')
+fi
+
+# Default language
+if [[ -z "${DEFAULT_LANGUAGE}" ]]; then
+    export DEFAULT_LANGUAGE="en"
+fi
+
+# Debug
+if [[ -z "${DEBUG}" ]]; then
+    export DEBUG="false"
 fi
 
 # Convert array to a comma-separated string

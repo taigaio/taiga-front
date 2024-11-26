@@ -1,9 +1,9 @@
 /*
- * This Source Code Form is subject to the terms of the Mozilla Public
- * License, v. 2.0. If a copy of the MPL was not distributed with this
- * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ * This source code is licensed under the terms of the
+ * GNU Affero General Public License found in the LICENSE file in
+ * the root directory of this source tree.
  *
- * Copyright (c) 2021-present Kaleidos Ventures SL
+ * Copyright (c) 2021-present Kaleidos INC
  */
 
 var gulp = require("gulp"),
@@ -58,6 +58,7 @@ var version = "v-" + Date.now();
 // userpilot config
 var userpilotToken = process.env.USERPILOT_TOKEN || null;
 var zendeskToken = process.env.ZENDESK_TOKEN || null;
+var disableRobots = process.env.DISABLE_ROBOTS || false;
 
 var paths = {};
 paths.app = "app/";
@@ -232,7 +233,16 @@ gulp.task("jade", function() {
     return gulp.src(paths.jade)
         .pipe(plumber())
         .pipe(cached("jade"))
-        .pipe(jade({pretty: true, locals:{v:version, userpilotToken: userpilotToken, zendeskToken: zendeskToken, availableThemes: availableThemes}}))
+        .pipe(jade({
+            pretty: true,
+            locals:{
+                v:version,
+                userpilotToken: userpilotToken,
+                disableRobots: disableRobots,
+                zendeskToken: zendeskToken,
+                availableThemes: availableThemes
+            }
+        }))
         .pipe(gulp.dest(paths.tmp));
 });
 
@@ -241,7 +251,16 @@ gulp.task("jade-inheritance", function() {
         .pipe(plumber())
         .pipe(cached("jade"))
         .pipe(jadeInheritance({basedir: "./app/"}))
-        .pipe(jade({pretty: true, locals:{v: version, userpilotToken: userpilotToken, zendeskToken: zendeskToken, availableThemes: availableThemes}}))
+        .pipe(jade({
+            pretty: true,
+            locals:{
+                v: version,
+                userpilotToken: userpilotToken,
+                disableRobots: disableRobots,
+                zendeskToken: zendeskToken,
+                availableThemes: availableThemes
+            }
+        }))
         .pipe(gulp.dest(paths.tmp));
 });
 

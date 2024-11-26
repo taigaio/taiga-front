@@ -34,7 +34,7 @@
     &.unfold {
         .name {
             .icon {
-                transform: rotate(180deg);
+                transform: rotate(0deg);
             }
         }
     }
@@ -60,7 +60,7 @@
             margin-left: .25rem;
         }
         .icon {
-            transform: rotate(0);
+            transform: rotate(-90deg);
             transition: all .2s;
         }
     }

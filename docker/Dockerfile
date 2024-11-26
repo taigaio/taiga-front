@@ -1,8 +1,8 @@
-# This Source Code Form is subject to the terms of the Mozilla Public
-# License, v. 2.0. If a copy of the MPL was not distributed with this
-# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+# This source code is licensed under the terms of the
+# GNU Affero General Public License found in the LICENSE file in
+# the root directory of this source tree.
 #
-# Copyright (c) 2021-present Kaleidos Ventures SL
+# Copyright (c) 2021-present Kaleidos INC
 
 FROM nginx:1.23-alpine
 LABEL maintainer="support@taiga.io"
@@ -18,17 +18,26 @@ RUN set -eux; \
     apk add \
        bash; \
     # Install taiga-front core
-    wget https://github.com/kaleidos-ventures/taiga-front-dist/archive/6.7.1.zip -O source.zip; \
+    wget https://github.com/taigaio/taiga-front-dist/archive/6.8.1.zip -O source.zip; \
     unzip source.zip; \
-    mv /taiga-front-dist-6.7.1 /taiga; \
+    mv /taiga-front-dist-6.8.1 /taiga; \
     mv /conf.json.template taiga/dist/; \
     chmod +x /docker-entrypoint.d/30_config_env_subst.sh; \
     # Install taiga-front contribs
     mkdir /taiga/dist/plugins; \
     cd /taiga/dist/plugins; \
-    svn export "https://github.com/kaleidos-ventures/taiga-contrib-slack/tags/6.7.0/front/dist" "slack"; \
-    svn export "https://github.com/kaleidos-ventures/taiga-contrib-github-auth/tags/6.7.0/front/dist" "github-auth"; \
-    svn export "https://github.com/kaleidos-ventures/taiga-contrib-gitlab-auth/tags/6.7.1/front/dist" "gitlab-auth"; \
+    # Slack
+    wget https://github.com/taigaio/taiga-contrib-slack/archive/6.8.0.zip -O source.zip; \
+    unzip -j source.zip "taiga-contrib-slack-6.8.0/front/dist/*" -d slack; \
+    rm source.zip; \
+    # Github
+    wget http://github.com/taigaio/taiga-contrib-github-auth/archive/6.8.0.zip -O source.zip; \
+    unzip -j source.zip "taiga-contrib-github-auth-6.8.0/front/dist/*" -d github-auth; \
+    rm source.zip; \
+    # Gitlab
+    wget http://github.com/taigaio/taiga-contrib-gitlab-auth/archive/6.8.0.zip -O source.zip; \
+    unzip -j source.zip "taiga-contrib-gitlab-auth-6.8.0/front/dist/*" -d gitlab-auth; \
+    rm source.zip; \
     cd /; \
     # Remove unused dependencies
     apk del --no-cache .build-deps; \

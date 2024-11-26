@@ -5,9 +5,9 @@
     "eventsMaxMissedHeartbeats": 5,
     "eventsHeartbeatIntervalTime": 60000,
     "eventsReconnectTryInterval": 10000,
-    "debug": false,
-    "debugInfo": false,
-    "defaultLanguage": "en",
+    "debug": ${DEBUG},
+    "debugInfo": ${DEBUG},
+    "defaultLanguage": "${DEFAULT_LANGUAGE}",
     "themes": ["taiga"],
     "defaultTheme": "taiga",
     "defaultLoginEnabled": true,
@@ -28,5 +28,9 @@
     "enableJiraImporter": ${ENABLE_JIRA_IMPORTER},
     "enableTrelloImporter": ${ENABLE_TRELLO_IMPORTER},
     "gravatar": false,
-    "rtlLanguages": ["fa"]
+    "rtlLanguages": [
+        "ar",
+        "fa",
+        "he"
+    ]
 }

@@ -1,9 +1,9 @@
 
-//- This Source Code Form is subject to the terms of the Mozilla Public
-//- License, v. 2.0. If a copy of the MPL was not distributed with this
-//- file, You can obtain one at http://mozilla.org/MPL/2.0/.
+//- This source code is licensed under the terms of the
+//- GNU Affero General Public License found in the LICENSE file in
+//- the root directory of this source tree.
 //-
-//- Copyright (c) 2021-present Kaleidos Ventures SL
+//- Copyright (c) 2021-present Kaleidos INC
 
 .editor(ng-class="{'edit-mode': editMode, 'read-mode': !editMode, 'html-read-mode': htmlReadMode}")
     div(ng-if="outdated")
@@ -33,15 +33,21 @@
 
 .tools(ng-class="{visible: editMode}")
     a.e2e-save-editor(
+        variant="primary"
+        class="btn-small"
         ng-class="{disabled: required && !markdown.length}"
         tg-loading="saving"
         href="#",
         ng-click="save($event)"
+        translate="COMMON.SAVE"
     )
-        tg-svg(svg-icon="icon-save")
+
     a.e2e-cancel-editor(
+        variant="secondary"
+        class="btn-small"
         href="#",
         ng-click="cancelWithConfirmation($event)"
         title="{{ 'COMMON.CANCEL' | translate }}"
+        translate="COMMON.CANCEL"
     )
-        tg-svg(svg-icon="icon-close")
+

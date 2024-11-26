@@ -1,9 +1,9 @@
 ###
-# This Source Code Form is subject to the terms of the Mozilla Public
-# License, v. 2.0. If a copy of the MPL was not distributed with this
-# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+# This source code is licensed under the terms of the
+# GNU Affero General Public License found in the LICENSE file in
+# the root directory of this source tree.
 #
-# Copyright (c) 2021-present Kaleidos Ventures SL
+# Copyright (c) 2021-present Kaleidos INC
 ###
 
 taiga = @.taiga
@@ -92,6 +92,9 @@ RelatedTaskRowDirective = ($repo, $compile, $confirm, $rootscope, $loading, $tem
 
         $scope.$watch $attrs.ngModel, (val) ->
             return if not val
+
+            $el.off()
+
             renderView(val)
 
         $scope.$on "related-tasks:assigned-to-changed", ->
@@ -218,12 +221,8 @@ module.directive("tgRelatedTaskCreateButton", ["$tgRepo", "$compile", "$tgConfir
                                                "$tgTemplate", RelatedTaskCreateButtonDirective])
 
 
-RelatedTasksDirective = ($repo, $rs, $rootscope) ->
+RelatedTasksDirective = ($rootscope) ->
     link = ($scope, $el, $attrs) ->
-        loadTasks = ->
-            return $rs.tasks.list($scope.projectId, null, $scope.usId).then (result) ->
-                Immutable.fromJS(result.data)
-
         _isVisible = ->
             if $scope.project
                 return $scope.project.my_permissions.indexOf("view_tasks") != -1
@@ -246,28 +245,23 @@ RelatedTasksDirective = ($repo, $rs, $rootscope) ->
             return _isVisible()
 
         $scope.$on "related-tasks:add", ->
-            loadTasks().then ->
-                $rootscope.$broadcast("related-tasks:update")
+            $rootscope.$broadcast("related-tasks:update")
 
         $scope.$on "related-tasks:reordered", ->
-            loadTasks()
+            $rootscope.$broadcast("related-tasks:update")
 
         $scope.$on "related-tasks:delete", ->
-            loadTasks().then ->
-                $rootscope.$broadcast("related-tasks:update")
+            $rootscope.$broadcast("related-tasks:update")
 
         $scope.$on "related-tasks:add-new-clicked", ->
             $scope.$broadcast("related-tasks:show-form")
-
-        taiga.bindOnce $scope, "us", (val) ->
-            loadTasks()
 
         $scope.$on "$destroy", ->
             $el.off()
 
     return {link: link}
 
-module.directive("tgRelatedTasks", ["$tgRepo", "$tgResources", "$rootScope", RelatedTasksDirective])
+module.directive("tgRelatedTasks", ["$rootScope", RelatedTasksDirective])
 
 
 RelatedTaskAssignedToInlineEditionDirective = ($repo, $rootscope, $translate, avatarService, $lightboxFactory) ->

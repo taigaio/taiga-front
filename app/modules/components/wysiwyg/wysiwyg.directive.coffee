@@ -1,9 +1,9 @@
 ###
-# This Source Code Form is subject to the terms of the Mozilla Public
-# License, v. 2.0. If a copy of the MPL was not distributed with this
-# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+# This source code is licensed under the terms of the
+# GNU Affero General Public License found in the LICENSE file in
+# the root directory of this source tree.
 #
-# Copyright (c) 2021-present Kaleidos Ventures SL
+# Copyright (c) 2021-present Kaleidos INC
 ###
 
 # cp -r node_modules/taiga-html-editor/packages/ckeditor5-build-classic/build/translations ../taiga-front/extras
@@ -33,7 +33,20 @@ Wysiwyg = ($translate, $confirm, $storage, wysiwygService, animationFrame, tgLoa
 
 
         linksEvents = () ->
+            initialPos = null
+
             $el.on 'mousedown', '.js-wysiwyg-html', (e) =>
+                initialPos = {x: e.clientX, y: e.clientY}
+
+            $el.on 'click', '.js-wysiwyg-html', (e) =>
+                diffX = Math.abs(e.clientX - initialPos.x)
+                diffY = Math.abs(e.clientY - initialPos.y)
+
+                initialPos = null
+
+                if diffX > 10 || diffY > 10
+                    return
+
                 if e.target.tagName != 'A' && e.target.parentElement.tagName != 'A'
                     $scope.$applyAsync () => $scope.setEditMode(true)
 

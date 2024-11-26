@@ -1,13 +1,13 @@
 #!/usr/bin/env python
-# This Source Code Form is subject to the terms of the Mozilla Public
-# License, v. 2.0. If a copy of the MPL was not distributed with this
-# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+# This source code is licensed under the terms of the
+# GNU Affero General Public License found in the LICENSE file in
+# the root directory of this source tree.
 #
-# Copyright (c) 2021-present Kaleidos Ventures SL
+# Copyright (c) 2021-present Kaleidos INC
 
 
 # NOTE: This script is based on taiga-back manage_translations.py script
-#       (https://github.com/kaleidos-ventures/taiga-back/blob/main/scripts/manage_translations.py)
+#       (https://github.com/taigaio/taiga-back/blob/main/scripts/manage_translations.py)
 #
 # This python file contains utility scripts to manage taiga translations.
 # It has to be run inside the taiga-front git root directory (over the taiga-back env).

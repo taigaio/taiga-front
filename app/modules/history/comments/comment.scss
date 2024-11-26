@@ -48,7 +48,15 @@
             }
         }
     }
+    .comment-editor {
+        inline-size: calc(100% - 5px);
+    }
+    .comment-content-wrapper {
+        inline-size: 100%;
+    }
     .comment-main {
+        display: flex;
+        justify-content: space-between;
         width: 100%;
     }
     .comment-avatar {

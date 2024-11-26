@@ -17,7 +17,7 @@
         "BACK": "Назад",
         "COPY_TO_CLIPBOARD": "Скопіювати до буферу обміну",
         "COPIED_TO_CLIPBOARD": "Текст скопійовано до буферу обміну",
-        "MOVE_TO_TOP": "Move to top",
+        "MOVE_TO_TOP": "Угору",
         "EDIT": "Редагувати",
         "DRAG": "Перетягнути",
         "TAG_LINE": "Ваш гнучкий, безкоштовний з відкритим кодом засіб керування проєктом",
@@ -55,10 +55,10 @@
             "DELETE": "Видалити карточку",
             "DELETE_ISSUE": "Видалити проблему",
             "DETACH_ISSUE_FROM_SPRINT": "Detach from sprint",
-            "PTS": "{{pts}} pts",
-            "DUE_DATE": "Due date: {{date}}",
+            "PTS": "{{pts}} очок",
+            "DUE_DATE": "Речене́ць: {{date}}",
             "NO_PTS": "N/E",
-            "ESTIMATION": "Estimation",
+            "ESTIMATION": "Оцінка",
             "TASKS": "{{completed}} tasks of {{total}} completed",
             "EXTRA_ASSIGNED_USERS": "{{total}} more assigned users",
             "MOVE_TO_TOP": "Угору"
@@ -848,6 +848,9 @@
             "SUBTITLE": "Установіть типові значення для всіх полів вибору.",
             "TITLE": "Типові значення",
             "MENU_TITLE": "Переднабори"
+        },
+        "PLUGINS": {
+            "PAGE_TITLE": "{{pluginName}} - Додатки  - {{projectName}}"
         }
     },
     "USER": {
@@ -950,7 +953,9 @@
             "CHANGE_PASSWORD": "Змінити пароль",
             "DASHBOARD_TITLE": "Інформаційна панель",
             "DISCOVER_TITLE": "Відкрити популярні проєкти",
-            "DISCOVER": "Відкрийте для себе"
+            "DISCOVER": "Відкрийте для себе",
+            "TAIGA_COMMUNITY": "Спільнота Taiga",
+            "TAIGA_COMMUNITY_TITLE": "Перейти до спільноти Taiga"
         },
         "LIKE_BUTTON": {
             "LIKE": "Вподобати",
@@ -1166,14 +1171,16 @@
             "HELP_TEXT": "Якщо користувачі зареєстровані у Taiga, вони автоматично додадуться. Інакше вони отримають запрошення."
         },
         "FEEDBACK": {
-            "TITLE": "Ask a question",
+            "TITLE": "Підтримка Taiga",
             "COMMENT": "Leave us a message",
             "ACTION_SEND": "Send Message",
             "YOU_CAN_ALSO": "You can also:",
             "CREATE": "Створіть запит про проблему щодо цього ",
             "PUBLIC": "public Taiga project",
             "EMAIL": "Надішліть нам ел. лист на адресу ",
-            "SUPPORT": "support@taiga.io"
+            "SUPPORT": "support@taiga.io",
+            "VISIT": "Відвідайте наш ",
+            "FAQ": "Часті запитання"
         },
         "SEARCH": {
             "TITLE": "Пошук",
@@ -1233,7 +1240,7 @@
             "PLACEHOLDER_INVITATION_TEXT": "(Не обов'язково) Додайте персоналізований текст до запрошення. Скажіть щось приємне для вашого нового учасника ;-)",
             "PLACEHOLDER_TYPE_EMAIL": "Введіть електронну пошту",
             "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "Ви майже досягли максимально дозволену кількість учасників для цього проєкту, <strong>{{maxMembers}}</strong> учасників. Якщо ви хочете збільшити поточний ліміт, будь ласка, зверніться до адміністратора.",
-            "LIMIT_USERS_WARNING_MESSAGE": "Ви майже досягли максимально дозволену кількість учасників для цього проєкту, 1{{maxMembers}}1 учасників."
+            "LIMIT_USERS_WARNING_MESSAGE": "Ви майже досягли максимально дозволену кількість учасників для цього проєкту, <strong>{{maxMembers}}</strong> учасників."
         },
         "LEAVE_PROJECT_WARNING": {
             "TITLE": "На жаль, цей проєкт не можна залишити без власника",

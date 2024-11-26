@@ -1,8 +1,46 @@
 # Changelog
 
-## 6.7.2 (unreleased)
+## 6.8.2 (unreleased)
 
-- ...
+...
+
+## 6.8.1 (2024-07-23)
+
+- Prevent XSS attack.
+- Update locales.
+
+## 6.8.0 (2024-04-03)
+
+- Changed the namespace of the repositories, from kaleidos-ventures to taigaio
+- Change license to AGPL version 3.
+
+## 6.7.7 (2024-02-26)
+
+* Fix: sometime activity tab is empty.
+
+## 6.7.6 (2024-02-22)
+
+* Docker: fix a typo related to plugins setup process.
+
+## 6.7.5 (2024-02-21)
+
+* Fix: render checkboxes in wysiwyg text editor (more corner cases).
+
+## 6.7.4 (2024-02-19)
+
+* Docker: fix a typo in the template for generate the config.json file.
+
+## 6.7.3 (2024-02-19)
+
+* Docker: GitHub no longer supports subversion, change plugins setup system.
+
+## 6.7.2 (2024-02-16)
+
+- New redesign of the editor action buttons.
+* Fix: only open the text editor if cursor didn't move.
+* Fix: render checkboxes in wysiwyg text editor.
+* Docker: `DEBUG` and `DEFAULT_LANGUAGE` are customizable.
+* Disable robots using `DISABLE_ROBOTS=true` environment var during code build process.
 
 ## 6.7.1 (2023-09-20)
 
@@ -125,7 +163,7 @@
 
 ## 6.0.10 (2021-04-13)
 
-- Feature: Add a "move to top" option to the context menu of the backlog ([#2239](https://github.com/kaleidos-ventures/taiga-front/pull/2239))
+- Feature: Add a "move to top" option to the context menu of the backlog (PR #2239)
 - Fix: Add simple line breaks to wysiwyg editor
 - Update translations
 

@@ -60,7 +60,8 @@
             "NO_PTS": "N/E",
             "ESTIMATION": "Estimering",
             "TASKS": "{{completed}} tasks of {{total}} completed",
-            "EXTRA_ASSIGNED_USERS": "{{total}} more assigned users"
+            "EXTRA_ASSIGNED_USERS": "{{total}} more assigned users",
+            "MOVE_TO_TOP": "Flytt til toppen"
         },
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Denne verdien virker å være ugyldig",
@@ -351,7 +352,7 @@
     },
     "REGISTER_FORM": {
         "TITLE": "Registrer en ny Taiga konto (gratis)",
-        "PLACEHOLDER_NAME": "Velg et brukernavn (case sensitiv)",
+        "PLACEHOLDER_NAME": "Velg et brukernavn",
         "PLACEHOLDER_FULL_NAME": "Skriv inn fullt navn",
         "PLACEHOLDER_EMAIL": "Din e-post",
         "PLACEHOLDER_PASSWORD": "Set et passord (case sensitiv)",
@@ -370,7 +371,7 @@
         "ACTION_RESET_PASSWORD": "Nullstill passord",
         "LINK_CANCEL": "Eh, ta meg tilbake. Jeg tror jeg husker det.",
         "SUCCESS_TITLE": "Sjekk innboksen din!",
-        "SUCCESS_TEXT": "\nVi har sendte deg en e-post med instruksjoner for å sette et nytt passord",
+        "SUCCESS_TEXT": "Du har fått tilsendt instruks for valg av nytt passord per e-post.",
         "ERROR": "Ifølge våre Ompa Lompaer er du ikke registrert enda."
     },
     "CHANGE_PASSWORD": {
@@ -510,7 +511,7 @@
             "LOADING_TITLE": "Vi genererer din eksportfil",
             "DUMP_READY": "Din data-dump-fil er klar!",
             "LOADING_MESSAGE": "Vennligst ikke lukk denne siden.",
-            "ASYNC_MESSAGE": "Vi sender deg en epost når det er klart.",
+            "ASYNC_MESSAGE": "Vi sender deg en e-post når det er klart.",
             "SYNC_MESSAGE": "Hvis nedlastningen ikke starter automatisk, klikk <a href='{{url}}' download title='Download the dump file'>her</a>.",
             "ERROR": "Våre Ompa Lompaer har problemer med å generere en data dump. Vennligst prøv på nytt.",
             "ERROR_BUSY": "Beklager, våre Ompa Lompaer opplever tung arbeidsbelastning akkurat nå. Vennligst prøv igjen om noen få minutter."
@@ -557,9 +558,9 @@
             "DELETE": "Slett dette prosjektet",
             "CHANGE_LOGO": "Endre logo",
             "ACTION_USE_DEFAULT_LOGO": "Bruk standardbilde",
-            "MAX_PRIVATE_PROJECTS": "Du har nådd maksimalt antall private prosjekter som tillates med din gjeldende plan",
+            "MAX_PRIVATE_PROJECTS": "Du har nådd maksimalt antall private prosjekter din gjeldende plan tillater",
             "MAX_PRIVATE_PROJECTS_MEMBERS": "Det maksimale antall medlemmer for private prosjekter er overskredet",
-            "MAX_PUBLIC_PROJECTS": "Dessverre , du har nådd det maksimale antallet offentlige prosjekter som tillates av din gjeldende plan",
+            "MAX_PUBLIC_PROJECTS": "Dessverre , du har nådd det maksimale antallet offentlige prosjekter din gjeldende plan tillater",
             "MAX_PUBLIC_PROJECTS_MEMBERS": "Prosjektet overskrider maksimalt antall medlemmer for offentlige prosjekter",
             "PROJECT_OWNER": "Prosjekteier",
             "REQUEST_OWNERSHIP": "Be om eierskap",
@@ -569,7 +570,8 @@
             "REQUEST_OWNERSHIP_SUCCESS": "Vi vil varsle prosjekteieren",
             "CHANGE_OWNER": "Endre eier",
             "CHANGE_OWNER_SUCCESS_TITLE": "Ok, din henvendelse har blitt sendt!",
-            "CHANGE_OWNER_SUCCESS_DESC": "Vi vil varsle deg via epost hvis anmodningen om eierskap til prosjektet ble godtatt eller avslått"
+            "CHANGE_OWNER_SUCCESS_DESC": "Vi vil varsle deg via e-post hvis anmodningen om eierskap til prosjektet ble godtatt eller avslått",
+            "REQUEST_OWNERSHIP_LIMIT": "Du har nådd grensen på {{maxProjects}} private prosjekt"
         },
         "REPORTS": {
             "TITLE": "Rapporter",
@@ -700,7 +702,7 @@
             "WARNING_DELETE_ROLE": "Vær forsiktig! Alle rolle-estimatene vil bli fjernet",
             "ERROR_DELETE_ALL": "Du kan ikke slette alle verdier",
             "EXTERNAL_USER": "Ekstern bruker",
-            "NOTE_EXTERNAL_USERS": "<strong>Note:</strong> by External User we mean any anonymous user not belonging to the Taiga platform, including search engines. Please use this role with care."
+            "NOTE_EXTERNAL_USERS": "En ekstern bruker kan være hvem som helst (innlogget på Taiga-plattformen eller ikke), <strong>inkludert søkemotorer</strong>. Selv om uregistrerte brukere aldri kan ha redigeringstilgang, kan dette tillates for registrerte brukere. Hvis prosjektet er privat kan du også kontrollere visningstilganger. <strong>Bruk denne rollen med varsomhet</strong>."
         },
         "THIRD_PARTIES": {
             "SECRET_KEY": "Hemmelig nøkkel",
@@ -778,14 +780,14 @@
             "DEFAULT_DELETE_MESSAGE": "invitasjonen til {{epost}}"
         },
         "DEFAULT_VALUES": {
-            "LABEL_EPIC_STATUS": "Standardverdi for epos statusvelger",
-            "LABEL_US_STATUS": "Default value for user story status selector",
-            "LABEL_POINTS": "Standardverdi for poengvelger",
-            "LABEL_TASK_STATUS": "Standardverdi for oppgave statusvelger",
-            "LABEL_ISSUE_TYPE": "Standard verdi for hendelses type-velger",
-            "LABEL_ISSUE_STATUS": "Standard verdi for hendelse statusvelger",
-            "LABEL_PRIORITY": "Standardverdi for prioritetsvelger",
-            "LABEL_SEVERITY": "Standardverdi for alvorlighetsgradsvelgeren"
+            "LABEL_EPIC_STATUS": "Epos-statusvelger",
+            "LABEL_US_STATUS": "Brukerhistorie-statusvelger",
+            "LABEL_POINTS": "Poengvelger",
+            "LABEL_TASK_STATUS": "Oppgave-statusvelger",
+            "LABEL_ISSUE_TYPE": "Hendelsestype-velger",
+            "LABEL_ISSUE_STATUS": "Hendelse-statusvelger",
+            "LABEL_PRIORITY": "Prioritetsvelger",
+            "LABEL_SEVERITY": "Alvorlighetsgradsvelger"
         },
         "STATUS": {
             "PLACEHOLDER_WRITE_STATUS_NAME": "Skriv et navn til den nye statusen",
@@ -836,9 +838,19 @@
             "UNLIMITED_PROJECTS": "Ubegrenset",
             "OWNER_MESSAGE": {
                 "PRIVATE": "Husk, du kan eie opp til <strong>{{maxProjects}}</strong> private prosjekter. Du eier for tiden <strong>{{currentProjects}}</strong> private prosjekter",
-                "PUBLIC": "Husk, du kan eie opp til <strong>{{maxProjects}}</strong> offentlige prosjekter. Du eier foreløpig <strong>{{currentProjects}}</strong> offentlige prosjekter"
+                "PUBLIC": "Husk, du kan eie opp til <strong>{{maxProjects}}</strong> offentlige prosjekter. Du eier foreløpig <strong>{{currentProjects}}</strong> offentlige prosjekter",
+                "PUBLIC_EXCEEDED": "Du har <strong>{{currentProjects}} offentlige prosjekter</strong> som er det maksimale planen din tillater.",
+                "PRIVATE_EXCEEDED": "Du har <strong>{{currentProjects}} private prosjekter</strong> som er det maksimale planen din tillater."
             },
             "CANT_BE_OWNED": "For øyeblikket kan du ikke bli eier av et prosjekt av denne typen. Dersom du ønsker å bli eier av dette prosjektet, venligst kontakt en administrator så de kan endre dine kontoinstillinger slik at du kan eie et prosjekt."
+        },
+        "PROJECT_PRESETS": {
+            "TITLE": "Forvalgte verdier",
+            "SUBTITLE": "Sett forvalgte verdier for all valgbar inndata.",
+            "MENU_TITLE": "Forhåndsinnsillinger"
+        },
+        "PLUGINS": {
+            "PAGE_TITLE": "{{pluginName}} — Programtillegg — {{projectName}}"
         }
     },
     "USER": {
@@ -941,7 +953,9 @@
             "CHANGE_PASSWORD": "Endre passord",
             "DASHBOARD_TITLE": "Dashbord",
             "DISCOVER_TITLE": "Oppdag populære prosjekter",
-            "DISCOVER": "Oppdag"
+            "DISCOVER": "Oppdag",
+            "TAIGA_COMMUNITY_TITLE": "Gå til Taiga-gemenskapen",
+            "TAIGA_COMMUNITY": "Taiga-gemenskap"
         },
         "LIKE_BUTTON": {
             "LIKE": "Liker",
@@ -1110,6 +1124,18 @@
                 "CREATE_NEW_ISSUES": "Convert sub-issues to new Taiga issues",
                 "NOT_CREATE_NEW_ISSUES": "Ikke importer underhendelser"
             }
+        },
+        "NEWSLETTER_OPENING": {
+            "DONT_ASK": "Ikke spør igjen",
+            "LIGHTBOX_TITLE": "Vil du ha nyheter om Taiga?",
+            "OPT_OUT": "Du vil kun få relevante e-poster for deg (<6 per år). Du kan oppheve abonnementet når som helst ved å sende en e-post til <a href=\"mailto:support@taiga.io\" target=\"_blank\">support@taiga.io</a> med emnet «unsubscribe» eller bruke lenken i ett av nyhetsbrevene.",
+            "NOTIFY_EXPLANATION": "Vi sender deg nyheter, produktoppdateringer, og anbefalinger om Taiga.",
+            "NO_SHARE": "Ditt personvern betyr noe for oss (besøk vår <a href=\"https://www.taiga.io/privacy-policy\" title=\"Go to privacy policy\" target=\"_blank\">personvernspraksis</a>).",
+            "SUBSCRIBE": "Abonner",
+            "SAVED_PREFERENCE": "Innstillinger lagret",
+            "SAVE_PREFERENCE": "Lagre innstillinger",
+            "SUBSCRIBED": "Du har abonnert",
+            "CONFIRMATION": "Ja, send meg nyheter, produktoppdateringer, og anbefalinger om Taiga."
         }
     },
     "LIGHTBOX": {
@@ -1145,14 +1171,16 @@
             "HELP_TEXT": "Hvis brukere allerede er registrerte på Taiga, vil de bli lagt til automatisk. Ellers vil de motta en invitasjon."
         },
         "FEEDBACK": {
-            "TITLE": "Spør et spørsmål",
+            "TITLE": "Taiga-støtte",
             "COMMENT": "Legg igjen en beskjed",
             "ACTION_SEND": "Send melding",
             "YOU_CAN_ALSO": "Du kan også:",
             "CREATE": "Opprett en sak på dette",
             "PUBLIC": "offentlig Taiga-prosjekt",
             "EMAIL": "Send oss en epost direkte til",
-            "SUPPORT": "support@taiga.io"
+            "SUPPORT": "support@taiga.io",
+            "VISIT": "Besøk vår ",
+            "FAQ": "ofte stilte spørsmål"
         },
         "SEARCH": {
             "TITLE": "Søk",
@@ -1188,7 +1216,10 @@
             "SELECT_STATUS": "Velg status",
             "DEFAULT": "Standard",
             "ERROR_STATUS": "Changes cannot be saved because there is a problem with the selected status.",
-            "ERROR_SWIMLANE": "Changes cannot be saved because there is a problem with the selected swimlane."
+            "ERROR_SWIMLANE": "Changes cannot be saved because there is a problem with the selected swimlane.",
+            "LOCATION": "Posisjon",
+            "CREATE_TOP": "topp",
+            "CREATE_BOTTOM": "bunn"
         },
         "DISABLE_KANBAN": {
             "TITLE": "Deaktiver KanBan",
@@ -1543,9 +1574,10 @@
         "WARNING_TEXT": "Våre Ompa Lompaer er lei seg, dine endringer ble ikke lagret!",
         "SAVED": "Våre Ompa Lompaer har lagret alle dine endringer!",
         "CLOSE": "Lukk melding",
-        "MAIL": "Varsler per Epost",
+        "MAIL": "Aktivitet",
         "DESKTOP": "Skrivebordsvarsel ved bruk av varsler i nettleser",
-        "ASK_DELETE": "Er du sikker på at du vil slette?"
+        "ASK_DELETE": "Er du sikker på at du vil slette?",
+        "COMMUNICATION": "Taiga-kommunikasjon"
     },
     "CANCEL_ACCOUNT": {
         "TITLE": "Kanseler din konto",

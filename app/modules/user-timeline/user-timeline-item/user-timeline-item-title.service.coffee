@@ -1,9 +1,9 @@
 ###
-# This Source Code Form is subject to the terms of the Mozilla Public
-# License, v. 2.0. If a copy of the MPL was not distributed with this
-# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+# This source code is licensed under the terms of the
+# GNU Affero General Public License found in the LICENSE file in
+# the root directory of this source tree.
 #
-# Copyright (c) 2021-present Kaleidos Ventures SL
+# Copyright (c) 2021-present Kaleidos INC
 ###
 
 unslugify = @.taiga.unslugify
@@ -73,6 +73,11 @@ class UserTimelineItemTitle
                         value = moment(value, "YYYY-MM-DD").format(prettyDate)
                     else
                         value = @translate.instant('ACTIVITY.VALUES.NOT_SET')
+
+                # color
+                else if timeline.getIn(["data", "value_diff", "key"]) == 'color'
+                    if value
+                        return value
 
                 new_value = value
             else
