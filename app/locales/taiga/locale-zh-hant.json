@@ -532,7 +532,7 @@
             "ISSUES_DESCRIPTION": "追踪錯誤、問題並且強化你的專案，不要錯過任何事！",
             "WIKI": "維基",
             "WIKI_DESCRIPTION": "和其它人一起合作為專案的文檔添加、編輯和移除內容，十分適合用來記錄您專案的相關資訊。",
-            "MEETUP": "符合",
+            "MEETUP": "會議",
             "MEETUP_DESCRIPTION": "請選擇您的視訊會議系統。",
             "SELECT_VIDEOCONFERENCE": "選擇一個視訊會議系統",
             "SALT_CHAT_ROOM": "為聊天室的名稱添加一個前綴",
@@ -562,15 +562,15 @@
             "MAX_PRIVATE_PROJECTS_MEMBERS": "已超過私密專案所允許成員數量的最大上限",
             "MAX_PUBLIC_PROJECTS": "您已達到目前方案允許的私人專案最大數量",
             "MAX_PUBLIC_PROJECTS_MEMBERS": "已超過公開專案所允許成員數量的最大上限",
-            "PROJECT_OWNER": "Project owner",
-            "REQUEST_OWNERSHIP": "Request ownership",
-            "REQUEST_OWNERSHIP_CONFIRMATION_TITLE": "Do you want to become the new project owner?",
-            "REQUEST_OWNERSHIP_DESC": "Request that current project owner {{name}} transfer ownership of this project to you.",
+            "PROJECT_OWNER": "專案擁有者",
+            "REQUEST_OWNERSHIP": "請求專案所有權",
+            "REQUEST_OWNERSHIP_CONFIRMATION_TITLE": "您希望成為該專案的新所有者嗎？",
+            "REQUEST_OWNERSHIP_DESC": "請求目前的專案所有者 {{name}} 將專案轉讓給您。",
             "REQUEST_OWNERSHIP_BUTTON": "要求",
-            "REQUEST_OWNERSHIP_SUCCESS": "We'll notify the project owner",
-            "CHANGE_OWNER": "Change owner",
-            "CHANGE_OWNER_SUCCESS_TITLE": "Ok, your request has been sent!",
-            "CHANGE_OWNER_SUCCESS_DESC": "We will notify you by email if the project ownership request is accepted or declined",
+            "REQUEST_OWNERSHIP_SUCCESS": "我們將會通知專案所有者",
+            "CHANGE_OWNER": "更換專案擁有者",
+            "CHANGE_OWNER_SUCCESS_TITLE": "好的，已經發出了您的請求！",
+            "CHANGE_OWNER_SUCCESS_DESC": "我們將會以電子郵件通知您關於您請求更改專案所有者之結果",
             "REQUEST_OWNERSHIP_LIMIT": "你已達到 {{maxProjects}} 個不公開專案的限額"
         },
         "REPORTS": {
@@ -579,9 +579,9 @@
             "DESCRIPTION": "下載CSV檔案格式是複制生成網址到常用的文字編輯軟體/試算表，以保存你的專案資料報告。你可以輕易地視覺化和分析你的資料。",
             "HELP": "如何將這個用於我自己的試算表上？",
             "REGENERATE_TITLE": "改變網址",
-            "REGENERATE_SUBTITLE": "You are going to change the CSV data access url. The previous url will be disabled. Are you sure?",
+            "REGENERATE_SUBTITLE": "即將更改獲取 CSV 數據的網址。如果更改，將無法使用之前的網址來獲取 CSV 數據。請再次確認是否要更改獲取 CSV 數據的網址？",
             "DELETE_TITLE": "Delete URL",
-            "DELETE_SUBTITLE": "You are going to delete the current CSV data access url. Are you sure?"
+            "DELETE_SUBTITLE": "即將移除 CSV 數據的訪問網址，請再次確認是否要移除？"
         },
         "CSV": {
             "SECTION_TITLE_EPIC": "史詩報告",
@@ -624,7 +624,7 @@
         "PROJECT_VALUES_POINTS": {
             "TITLE": "點數",
             "SUBTITLE": "指定你的使用者故事點數可能預估為",
-            "US_TITLE": "User story points",
+            "US_TITLE": "用戶故事點數",
             "ACTION_ADD": "增加點數"
         },
         "PROJECT_VALUES_PRIORITIES": {
@@ -640,10 +640,10 @@
             "ACTION_ADD": "新增急迫性"
         },
         "PROJECT_VALUES_STATUS": {
-            "TITLE": "Statuses",
+            "TITLE": "狀態",
             "SUBTITLE": "增加、移除或編輯史詩、用戶故事、任務和問題的顔色和名稱。",
             "EPIC_TITLE": "史詩狀態",
-            "US_TITLE": "User Story Statuses",
+            "US_TITLE": "用戶故事狀態",
             "TASK_TITLE": "任務狀態",
             "ISSUE_TITLE": "問題狀態"
         },
@@ -655,39 +655,39 @@
         },
         "PROJECT_VALUES_TAGS": {
             "TITLE": "標籤",
-            "SUBTITLE": "View and edit the color of your tags",
-            "EMPTY": "Currently there are no tags",
-            "EMPTY_SEARCH": "It looks like nothing was found with your search criteria",
+            "SUBTITLE": "瀏覽並編輯用戶故事標籤的色彩",
+            "EMPTY": "目前沒有標籤",
+            "EMPTY_SEARCH": "目前沒有符合搜索條件的結果",
             "ACTION_ADD": "新增標籤",
-            "NEW_TAG": "New tag",
-            "MIXING_HELP_TEXT": "Select the tags that you want to merge",
+            "NEW_TAG": "建立新的標籤",
+            "MIXING_HELP_TEXT": "選擇想要合併的標籤",
             "MIXING_MERGE": "Merge Tags",
             "SELECTED": "已選擇"
         },
         "PROJECT_DUE_DATE_STATUS": {
-            "TITLE": "Due Dates",
-            "SUBTITLE": "Specify the due dates status your user stories, tasks and issues will go through if selected",
-            "US_TITLE": "User Story Due Date status",
+            "TITLE": "截止日期",
+            "SUBTITLE": "您可以自行定義用戶故事、任務和事項的截止日期狀態",
+            "US_TITLE": "用戶故事截止日期狀態",
             "ACTION_ADD_STATUS": "增加新狀態",
-            "TASK_TITLE": "Task Due Date status",
-            "ISSUE_TITLE": "Issue Due Date status",
-            "DAYS_TO_DUE_DATE": "Days to due date",
-            "BEFORE_AFTER": "Before/after",
-            "BEFORE": "Before",
-            "AFTER": "Past"
+            "TASK_TITLE": "任務截止日期狀態",
+            "ISSUE_TITLE": "事項截止日期狀態",
+            "DAYS_TO_DUE_DATE": "距離截止日期的天數",
+            "BEFORE_AFTER": "之前／之後",
+            "BEFORE": "早於",
+            "AFTER": "晚於"
         },
         "PROJECT_KANBAN_OPTIONS": {
-            "TITLE": "Kanban options",
-            "SUBTITLE": "Enable swimlanes to use in your workflow and set WIP limits to restrict the maximun number of user stories on each status.",
-            "SWIMLANES": "Swimlanes",
-            "ACTION_ADD_SWIMLANE": "New swimlane",
-            "SWIMLANE_NAME_EXISTS": "This swimlane name already exists",
-            "NO_SWIMLANES": "There are no swimlanes yet",
-            "SWIMLANE_NAME": "Swimlane name",
-            "POPUP_NEW_SWIMLANE": "If you had some user stories created, you will find them on this swimlane.",
-            "WIP_LIMITS": "WIP LIMITS",
-            "WIP_LIMIT_PLACEHOLDER": "WIP limit not set",
-            "WIP_LIMIT_INPUT": "Set WIP limit",
+            "TITLE": "看板選項",
+            "SUBTITLE": "在您的工作流程中使用泳道並以在製品（WIP）限制來設定各個狀態中用戶故事的數量上限。",
+            "SWIMLANES": "泳道",
+            "ACTION_ADD_SWIMLANE": "建立新泳道",
+            "SWIMLANE_NAME_EXISTS": "泳道名稱重覆",
+            "NO_SWIMLANES": "尚未存在泳道",
+            "SWIMLANE_NAME": "泳道名稱",
+            "POPUP_NEW_SWIMLANE": "您所建立的用戶故事將置於此泳道中。",
+            "WIP_LIMITS": "WIP 限制",
+            "WIP_LIMIT_PLACEHOLDER": "未設定 WIP 限制",
+            "WIP_LIMIT_INPUT": "設定 WIP 限制",
             "DEFAULT": "Default"
         },
         "ROLES": {
@@ -800,7 +800,7 @@
             "ACTION_ADD_STATUS": "增加新狀態",
             "IS_ARCHIVED_COLUMN": "歸檔",
             "IS_CLOSED_COLUMN": "關閉",
-            "WIP_LIMIT_COLUMN": "WIP limit",
+            "WIP_LIMIT_COLUMN": "WIP 限制",
             "PLACEHOLDER_WRITE_NAME": "為此新狀態命名"
         },
         "MENU": {
@@ -811,14 +811,14 @@
             "INTEGRATIONS": "整合"
         },
         "SUBMENU_PROJECT_VALUES": {
-            "STATUS": "Statuses",
+            "STATUS": "狀態",
             "POINTS": "點數",
             "PRIORITIES": "優先性",
             "SEVERITIES": "急迫性",
             "TYPES": "類型",
             "CUSTOM_FIELDS": "客製化欄位",
             "TAGS": "標籤",
-            "DUE_DATES": "Due dates",
+            "DUE_DATES": "截止日期",
             "KANBAN_OPTIONS": "Kanban options"
         },
         "SUBMENU_ROLES": {
@@ -832,10 +832,10 @@
             "ACCEPTED_PROJECT_OWNERNSHIP": "Congratulations! You're now the new project owner.",
             "REJECTED_PROJECT_OWNERNSHIP": "OK. We'll contact the current project owner",
             "ACCEPT": "接受",
-            "REJECT": "Reject",
+            "REJECT": "拒絕",
             "PROPOSE_OWNERSHIP": "<strong>{{owner}}</strong>, the current owner of the project <strong>{{project}}</strong> has asked that you become the new  project owner.",
             "ADD_COMMENT": "Would you like to add a comment for the project owner?",
-            "UNLIMITED_PROJECTS": "Unlimited",
+            "UNLIMITED_PROJECTS": "無限制",
             "OWNER_MESSAGE": {
                 "PRIVATE": "請記得您最多能夠擁有 <strong>{{maxProjects}}</strong>項私密專案。您目前共擁有 <strong>{{currentProjects}}</strong>項私密專案。",
                 "PUBLIC": "請記得您最多能夠擁有 <strong>{{maxProjects}}</strong>項公開專案。您目前共擁有 <strong>{{currentProjects}}</strong>項公開專案。",
@@ -923,7 +923,7 @@
             "ISSUES": "問題",
             "WIKI": "維基",
             "TEAM": "團隊",
-            "MEETUP": "Meetup",
+            "MEETUP": "會議",
             "SETTINGS": "設定",
             "SCRUM": "Scrum",
             "COLLAPSE_MENU": "collapse menu"
@@ -933,7 +933,7 @@
             "ACCOUNT_SETTINGS": "Account settings",
             "ACTION_CREATE_PROJECT": "New project",
             "ACTION_CREATE_PROJECT_FIRST": "Create your first project",
-            "ACTION_CREATE_PROJECT_FIRST_TEXT": "You don’t have any projects yet. Create one now, invite your team and start using Taiga to the fullest.",
+            "ACTION_CREATE_PROJECT_FIRST_TEXT": "您現在還沒有任何專案。立刻創建、建立團隊，使用 Taiga 來發揮你們的無限潛力。",
             "VIEW_ALL_PROJECTS": "View all projects",
             "MANAGE_PROJECTS": "管理專案",
             "TITLE_CREATE_PROJECT": "創建專案",
@@ -995,9 +995,9 @@
             "DUPLICATE_DESC": "Start clean and keep your configuration",
             "IMPORT": "滙入專案",
             "IMPORT_DESC": "Import your project from multiple platforms into Taiga",
-            "INVITE": "Invite to the project",
+            "INVITE": "邀請加入專案",
             "SOLO_PROJECT": "You'll be alone in this project",
-            "INVITE_LATER": "(You'll be able to invite more members later)",
+            "INVITE_LATER": "（您可以在之後邀請更多人來加入專案）",
             "BACK": "後台",
             "MAX_PRIVATE_PROJECTS": "Unfortunately, You've reached the maximum number of private projects.\nIf you would like to increase the current limit please contact the administrator.",
             "MAX_PUBLIC_PROJECTS": "Unfortunately, You've reached the maximum number of public projects.\nIf you would like to increase the current limit please contact the administrator.",
@@ -1030,7 +1030,7 @@
             "WRITE_EMAIL": "Or if you want, write the email that this user uses in Taiga",
             "SEARCH_CONTACT": "Or if you want, search in your contacts",
             "WRITE_EMAIL_LABEL": "Write the email that this user uses in Taiga",
-            "ACCEEDE": "Access",
+            "ACCEEDE": "訪問",
             "PROJECT_MEMBERS": "Project Members",
             "PROCESS_DESCRIPTION": "Tell us to whom from Taiga you want to assign the tasks of {{platform}}",
             "MATCH": "Is <strong>{{user_external}}</strong> the same person as <strong>{{user_internal}}</strong>?",
@@ -1162,10 +1162,10 @@
         },
         "ADD_MEMBER": {
             "TITLE": "新成員",
-            "PLACEHOLDER": "Filter users or write an email to invite",
+            "PLACEHOLDER": "篩選使用者或發電子郵件邀請",
             "ADD_EMAIL": "Add email",
             "REMOVE": "移除",
-            "INVITE": "Invite",
+            "INVITE": "邀請",
             "CHOOSE_ROLE": "選擇角色",
             "PLACEHOLDER_INVITATION_TEXT": "(非必要) 加上一段私人文字在邀請信，告訴你的新成員一些好事 ;-)",
             "HELP_TEXT": "如果用戶已註冊Taiga帳戶，他們將會自動被加入。不然他們會收到一封加入的邀請信。"
@@ -1211,19 +1211,19 @@
             "CHOOSE_EXISTING_ISSUE": "Which issue?",
             "ADD_ISSUE": "新增問題　",
             "FILTER_ISSUES": "Filter issues",
-            "SWIMLANE": "Swimlane",
-            "SELECT_SWIMLANE": "Select swimlane",
+            "SWIMLANE": "泳道",
+            "SELECT_SWIMLANE": "選擇泳道",
             "SELECT_STATUS": "Select status",
             "DEFAULT": "Default",
             "ERROR_STATUS": "Changes cannot be saved because there is a problem with the selected status.",
-            "ERROR_SWIMLANE": "Changes cannot be saved because there is a problem with the selected swimlane.",
+            "ERROR_SWIMLANE": "所選的泳道發生了問題，因此目前無法保存您所做的修改。",
             "CREATE_BOTTOM": "最下方",
             "CREATE_TOP": "最上方",
             "LOCATION": "位置"
         },
         "DISABLE_KANBAN": {
             "TITLE": "Disable kanban",
-            "MESSAGE": "This project has swimlanes. They will be gone but your user stories will not be deleted"
+            "MESSAGE": "將移除此專案中的泳道，但專案中的用戶故事將會保留"
         },
         "DELETE_DUE_DATE": {
             "TITLE": "Delete due date",
@@ -1282,13 +1282,13 @@
             "SUBTITLE_ACTION_DELETE_DUE_DATE": "Are you sure you want to delete the due date status {{due_date_status_name}}?"
         },
         "ADMIN_KANBAN_POWERUPS": {
-            "TITLE_ACTION_DELETE_SWIMLANE": "Delete swimlane",
-            "SUBTITLE_ACTION_DELETE_SWIMLANE_OPTIONS": "Are you sure you want to delete {{swimlane}}?",
-            "SUBTITLE_ACTION_DELETE_SWIMLANE_REPLACEMENT": "All the user stories on this swimlane will be moved to:",
-            "SUBTITLE_ACTION_DELETE_SWIMLANE_LAST": "Your user stories will not be deleted. They will remain in the kanban.",
-            "DEFAULT_SWIMLANE": "New user stories will be in this swimlane by default",
-            "SET_DEFAULT_SWIMLANE": "Set this swimlane as default",
-            "DISABLE_DELETE_SWIMLANE": "The default swimlane cannot be deleted"
+            "TITLE_ACTION_DELETE_SWIMLANE": "移除泳道",
+            "SUBTITLE_ACTION_DELETE_SWIMLANE_OPTIONS": "請確認是否要移除泳道 {{swimlane}} ？",
+            "SUBTITLE_ACTION_DELETE_SWIMLANE_REPLACEMENT": "將此泳道中的所有用戶故事移至：",
+            "SUBTITLE_ACTION_DELETE_SWIMLANE_LAST": "您的用戶故事將被保留，依然會留在看板上。",
+            "DEFAULT_SWIMLANE": "在預設條件下，新的用戶故事將放置於此泳道中",
+            "SET_DEFAULT_SWIMLANE": "將此泳道設為預設泳道",
+            "DISABLE_DELETE_SWIMLANE": "不可移除預設泳道"
         },
         "RELATE_TO_EPIC": {
             "TITLE": "與史詩建立關係",
@@ -1381,7 +1381,7 @@
         "US_POINTS": "{{role}} points",
         "NEW_ATTACHMENT": "新增附件:",
         "DELETED_ATTACHMENT": "刪除附件:",
-        "UPDATED_ATTACHMENT": "updated attachment ({{filename}}):",
+        "UPDATED_ATTACHMENT": "更新附件 ({{filename}})：",
         "CREATED_CUSTOM_ATTRIBUTE": "建立自訂屬性",
         "UPDATED_CUSTOM_ATTRIBUTE": "更新自訂屬性",
         "BECAME_DEPRECATED": "became deprecated",
@@ -1605,7 +1605,7 @@
         "PAGE_DESCRIPTION": "{{projectName}}的問題清單看版：{{projectDescription}}",
         "SECTION_NAME": "問題",
         "ACTION_NEW_ISSUE": "NEW ISSUE",
-        "ACTION_ATTACH_SPRINT": "Attach issue to Sprint",
+        "ACTION_ATTACH_SPRINT": "將事項附加至衝刺任務上",
         "ACTION_DETACH_SPRINT": "Detach issue from Sprint",
         "EXTERNAL_REFERENCE": "此問題的提供者是",
         "GO_TO_EXTERNAL_REFERENCE": "回到一開始",
@@ -1626,8 +1626,8 @@
             "MESSAGE": "You are about to detach the issue from the sprint <strong>{{ sprintName }}<strong>"
         },
         "CONFIRM_CHANGE_FROM_SPRINT": {
-            "TITLE": "Attach issue to sprint",
-            "MESSAGE": "<strong>This issue is currently attached to sprint {{ oldSprintName }}</strong>. You are about to detach it from that sprint and attach it instead to sprint <strong>{{ newSprintName }}.</strong>"
+            "TITLE": "將事項附加至衝刺任務上",
+            "MESSAGE": "<strong>此事項目前附加在衝刺任務 {{ oldSprintName }} 上。</strong>它將被由舊的衝刺任務 {{ oldSprintName }} 上取下並附加到新的衝刺任務<strong>{{ newSprintName }}。</strong>上"
         },
         "TABLE": {
             "COLUMNS": {
@@ -1637,7 +1637,7 @@
                 "ISSUE": "問題",
                 "VOTES": "投票數",
                 "STATUS": "狀態",
-                "ATTACHMENTS": "Attachments",
+                "ATTACHMENTS": "附件",
                 "MODIFIED": "Modified",
                 "ASSIGNED_TO": "Assign to"
             },
@@ -1671,9 +1671,9 @@
         "PLACEHOLDER_CARD_TEXT": "Create user stories here and change their status to track their progress.",
         "NUMBER_US": "Number of US",
         "ARCHIVED": "(Archived)",
-        "CREATE_SWIMLANE": "Create more swimlanes",
+        "CREATE_SWIMLANE": "增加泳道",
         "UNCLASSIFIED_USER_STORIES": "Unclassified user stories",
-        "UNCLASSIFIED_USER_STORIES_TOOLTIP": "The user stories that are not part of any swimlane are here."
+        "UNCLASSIFIED_USER_STORIES_TOOLTIP": "未隸屬於任何泳道的用戶故事都會放置於此。"
     },
     "SEARCH": {
         "PAGE_TITLE": "搜尋 - {{projectName}}",
@@ -1803,7 +1803,7 @@
         "HINT2_TITLE": "你知道可以創建個人化欄位嗎？",
         "HINT2_TEXT": "團隊可以使用客制化欄位來彈性地輸入特殊資料以應付其特定的工作流程。",
         "HINT3_TITLE": "重新整理與您相關的專案特徵。",
-        "HINT3_TEXT": "The 4 projects are listed in the direct access bar at the top.",
+        "HINT3_TEXT": "4 個專案便條列在頂部的導覽列中。",
         "HINT4_TITLE": "你是否忘了你在做什麼?",
         "HINT4_TEXT": "別憺心，在控制台可以找到你的公開任務、問題以及使用者故事的工作次序。"
     },
