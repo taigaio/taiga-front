@@ -693,7 +693,7 @@
         "ROLES": {
             "PAGE_TITLE": "角色- {{projectName}}",
             "WARNING_NO_ROLE": "注意，你的專案中無角色可以評估使用者故事的點數",
-            "HELP_ROLE_ENABLED": "This role is part of the roles involved in estimating user story points.",
+            "HELP_ROLE_ENABLED": "此角色是屬於參與估計用戶點數的角色。",
             "DISABLE_COMPUTABLE_ALERT_TITLE": "Are you sure you want to disable this role estimations?",
             "DISABLE_COMPUTABLE_ALERT_SUBTITLE": "If you disable estimation permissions for role {{roleName}} all previous estimations made by this role will be removed",
             "COUNT_MEMBERS": "{{ role.members_count }} 這類角色的成員",
@@ -705,7 +705,7 @@
             "NOTE_EXTERNAL_USERS": "外部用戶是指任何人（不論是否登錄 Taiga），<strong>也包括搜索引擎</strong>。外部用戶並不具有編輯權限，但只要您允許，有登錄 Taiga 的外部用戶便能編輯。如果您的專案是私密的，您也可以控制閱覽的權限。因此，<strong>請小心使用這種角色</strong>。"
         },
         "THIRD_PARTIES": {
-            "SECRET_KEY": "Secret key",
+            "SECRET_KEY": "密鑰",
             "PAYLOAD_URL": "有效載荷網址",
             "VALID_IPS": "Valid source IPs (separated by ,)"
         },
@@ -819,7 +819,7 @@
             "CUSTOM_FIELDS": "客製化欄位",
             "TAGS": "標籤",
             "DUE_DATES": "截止日期",
-            "KANBAN_OPTIONS": "Kanban options"
+            "KANBAN_OPTIONS": "看板選項"
         },
         "SUBMENU_ROLES": {
             "TITLE": "角色",
@@ -842,7 +842,7 @@
                 "PRIVATE_EXCEEDED": "您現在共有 <strong>{{currentProjects}} 個私密專案</strong>，是目前方案所允許的最大數量。",
                 "PUBLIC_EXCEEDED": "您目前共有 <strong>{{currentProjects}} 公開專案</strong>，是目前方案所允許的最大數量。"
             },
-            "CANT_BE_OWNED": "At the moment you cannot become an owner of a project of this type. If you would like to become the owner of this project, please contact the administrator so they change your account settings to enable project ownership."
+            "CANT_BE_OWNED": "目前您無法成為專案的擁有者。如果您有此類需求，請和管理員聯絡以請求為您的帳戶開啟擁有專案的權限。"
         },
         "PROJECT_PRESETS": {
             "MENU_TITLE": "預設選項",
@@ -910,7 +910,7 @@
         "WATCHERS_COUNTER_TITLE": "{total, plural, =1{one watcher} other{# watchers}}",
         "MEMBERS_COUNTER_TITLE": "{total, plural, =1{one member} other{# members}}",
         "BLOCKED_PROJECT": {
-            "BLOCKED": "Blocked project",
+            "BLOCKED": "已凍結的專案",
             "THIS_PROJECT_IS_BLOCKED": "This project is temporarily blocked",
             "TO_UNBLOCK_CONTACT_THE_ADMIN_STAFF": "欲解鎖專案請聯絡管理員。"
         },
@@ -926,15 +926,15 @@
             "MEETUP": "會議",
             "SETTINGS": "設定",
             "SCRUM": "Scrum",
-            "COLLAPSE_MENU": "collapse menu"
+            "COLLAPSE_MENU": "折疊選單"
         },
         "NAVIGATION": {
             "PROJECTS": "專案",
-            "ACCOUNT_SETTINGS": "Account settings",
-            "ACTION_CREATE_PROJECT": "New project",
+            "ACCOUNT_SETTINGS": "帳戶設定",
+            "ACTION_CREATE_PROJECT": "新專案",
             "ACTION_CREATE_PROJECT_FIRST": "Create your first project",
             "ACTION_CREATE_PROJECT_FIRST_TEXT": "您現在還沒有任何專案。立刻創建、建立團隊，使用 Taiga 來發揮你們的無限潛力。",
-            "VIEW_ALL_PROJECTS": "View all projects",
+            "VIEW_ALL_PROJECTS": "檢視所有專案",
             "MANAGE_PROJECTS": "管理專案",
             "TITLE_CREATE_PROJECT": "創建專案",
             "HELP_TITLE": "幫助",
@@ -942,7 +942,7 @@
             "TAIGA_RESOURCES_TITLE": "Go to Taiga resources",
             "TAIGA_RESOURCES": "Taiga Resources",
             "FEEDBACK_TITLE": "Write to us with your feedback",
-            "FEEDBACK": "Ask a question",
+            "FEEDBACK": "我有疑問",
             "NOTIFICATIONS_TITLE": "編輯個人通知設定",
             "NOTIFICATIONS": "通知",
             "VIEW_PROFILE_TITLE": "檢視個人資料",
@@ -986,12 +986,12 @@
             "TITLE": "創建專案",
             "CHOOSE_TEMPLATE": "Which template fits your project better?",
             "TEMPLATE_SCRUM": "Scrum",
-            "TEMPLATE_SCRUM_DESC": "Prioritize and solve your tasks in short time cycles.",
+            "TEMPLATE_SCRUM_DESC": "在短週期內確定任務的優先次序並加以解決。",
             "TEMPLATE_SCRUM_LONGDESC": "Scrum is an iterative and incremental agile software development methodology for managing product development.\nThe product backlog is what will ultimately be delivered, ordered into the sequence in which it should be delivered. Product Backlogs are broken into manageable, executable chunks named sprints. Every certain amount of time the team initiates a new sprint and commits to deliver a certain number of user stories from the backlog, in accordance with their skills, abilities and resources. The project advances as the backlog becomes depleted.",
             "TEMPLATE_KANBAN": "Kanban(看板)",
             "TEMPLATE_KANBAN_DESC": "Keep a constant workflow on independent tasks",
             "TEMPLATE_KANBAN_LONGDESC": "The Kanban methodology is used to divide project development (any sort of project) into stages.\nA kanban card is like an index card or post-it note that details every task (or user story) in a project that needs to be completed. The Kanban board is used to move each card from one state of completion to the next and in so doing, helps track progress.",
-            "DUPLICATE": "Duplicate project",
+            "DUPLICATE": "複製專案",
             "DUPLICATE_DESC": "Start clean and keep your configuration",
             "IMPORT": "滙入專案",
             "IMPORT_DESC": "Import your project from multiple platforms into Taiga",
@@ -1010,7 +1010,7 @@
             "PROJECT_DESCRIPTION": "Project Description (Required)"
         },
         "DUPLICATE": {
-            "TITLE": "Duplicate Project",
+            "TITLE": "複製專案",
             "DESCRIPTION": "Start clean and keep your configuration",
             "SELECT_PLACEHOLDER": "Choose an existing project to duplicate"
         },
@@ -1031,10 +1031,10 @@
             "SEARCH_CONTACT": "Or if you want, search in your contacts",
             "WRITE_EMAIL_LABEL": "Write the email that this user uses in Taiga",
             "ACCEEDE": "訪問",
-            "PROJECT_MEMBERS": "Project Members",
+            "PROJECT_MEMBERS": "專案成員",
             "PROCESS_DESCRIPTION": "Tell us to whom from Taiga you want to assign the tasks of {{platform}}",
             "MATCH": "Is <strong>{{user_external}}</strong> the same person as <strong>{{user_internal}}</strong>?",
-            "CHOOSE": "Select user",
+            "CHOOSE": "選擇用戶",
             "LINKS": "Links with {{platform}}",
             "LINKS_DESCRIPTION": "Do you want to keep the link of each item with the original {{platform}} card?",
             "WARNING_MAIL_USER": "Note that if the user does not have a Taiga account we will not be able to assign the tasks to them.",
@@ -1078,7 +1078,7 @@
             "WARNING": {
                 "TITLE": "Some taks will be unassigned",
                 "DESCRIPTION": "There are still unidentified people. The cards assigned to these people will remain unassigned. Check all the contacts to not lose that information.",
-                "CHECK": "Check contacts"
+                "CHECK": "檢查聯絡人"
             },
             "TAIGA": {
                 "SELECTOR": "Import your Taiga project"
@@ -1094,11 +1094,11 @@
                 "NO_PROJECTS": "It seems you have no projects in GitHub",
                 "HOW_DO_YOU_WANT_TO_IMPORT": "How do you want to import your issues into Taiga?",
                 "KANBAN_PROJECT": "As user stories in a kanban project",
-                "KANBAN_PROJECT_DESCRIPTION": "After that you can enable scrum with backlog.",
-                "SCRUM_PROJECT": "As user stories in a scrum project",
-                "SCRUM_PROJECT_DESCRIPTION": "After that you can enable kanban mode.",
-                "ISSUES_PROJECT": "As issues",
-                "ISSUES_PROJECT_DESCRIPTION": "You will not be able to use your issues in kanban or scrum mode. You will be able to enable kanban or scrum for new user stories"
+                "KANBAN_PROJECT_DESCRIPTION": "之後便可啟用具有待辦事項的 Scrum。",
+                "SCRUM_PROJECT": "在 Scrum 專案作為用戶故事",
+                "SCRUM_PROJECT_DESCRIPTION": "之後便可啟用看板模式。",
+                "ISSUES_PROJECT": "作為事項",
+                "ISSUES_PROJECT_DESCRIPTION": "現在無法在看板模式或衝刺模式下使用您的事項，您可以在新的用戶故事中啟用看板模式或衝刺模式以使用事項"
             },
             "ASANA": {
                 "SELECTOR": "Import your Asana project and choose how to manage it",
@@ -1106,7 +1106,7 @@
                 "NO_PROJECTS": "It seems you have no projects in Asana",
                 "KANBAN_PROJECT": "Kanban(看板)",
                 "SCRUM_PROJECT": "Scrum",
-                "CREATE_AS_SCRUM_DESCRIPTION": "The tasks and sub-tasks of your project will be created as Taiga user stories and tasks.",
+                "CREATE_AS_SCRUM_DESCRIPTION": "專案中的任務和子任務會被轉化為 Taiga 中的用戶故事和任務。",
                 "CREATE_AS_KANBAN_DESCRIPTION": "The tasks and sub-tasks of your project will be created as Taiga user stories and tasks."
             },
             "JIRA": {
@@ -1118,7 +1118,7 @@
                 "KANBAN_PROJECT": "Kanban(看板)",
                 "SCRUM_PROJECT": "Scrum",
                 "ISSUES_PROJECT": "問題",
-                "CREATE_AS_SCRUM_DESCRIPTION": "The issues and sub-issues of your project will be created as Taiga user stories and tasks.",
+                "CREATE_AS_SCRUM_DESCRIPTION": "專案中的事項和子事項會被轉化為 Taiga 中的用戶故事和任務。",
                 "CREATE_AS_KANBAN_DESCRIPTION": "The issues and sub-issues of your project will be created as Taiga user stories and tasks.",
                 "CREATE_AS_ISSUES_DESCRIPTION": "What do you want to do with sub-issues from the Jira project? (Taiga doesn't allow sub-issues)",
                 "CREATE_NEW_ISSUES": "Convert sub-issues to new Taiga issues",
@@ -1157,7 +1157,7 @@
         },
         "SELECT_USER": {
             "SEARCH": "搜尋使用者",
-            "REMOVE": "Remove user",
+            "REMOVE": "移除用戶",
             "ROLE": "角色"
         },
         "ADD_MEMBER": {
@@ -1200,20 +1200,20 @@
             "ISSUE_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this issue",
             "US_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this user story",
             "NEW_TASK": "新任務",
-            "NEW_ISSUE": "New issue",
+            "NEW_ISSUE": "新事項",
             "NEW_US": "新使用者故事",
             "EDIT_TASK": "結束任務",
-            "EDIT_ISSUE": "Edit issue",
+            "EDIT_ISSUE": "編輯事項",
             "EDIT_US": "編輯使用者故事",
             "ADD_EXISTING_ISSUE": "Add issue to {{ targetName }}",
             "CONFIRM_CLOSE": "You have not saved changes.\nAre you sure you want to close the form?",
-            "EXISTING_ISSUE": "Existing issue",
-            "CHOOSE_EXISTING_ISSUE": "Which issue?",
+            "EXISTING_ISSUE": "既存事項",
+            "CHOOSE_EXISTING_ISSUE": "哪一個事項？",
             "ADD_ISSUE": "新增問題　",
-            "FILTER_ISSUES": "Filter issues",
+            "FILTER_ISSUES": "過濾事項",
             "SWIMLANE": "泳道",
             "SELECT_SWIMLANE": "選擇泳道",
-            "SELECT_STATUS": "Select status",
+            "SELECT_STATUS": "選擇狀態",
             "DEFAULT": "Default",
             "ERROR_STATUS": "Changes cannot be saved because there is a problem with the selected status.",
             "ERROR_SWIMLANE": "所選的泳道發生了問題，因此目前無法保存您所做的修改。",
@@ -1222,7 +1222,7 @@
             "LOCATION": "位置"
         },
         "DISABLE_KANBAN": {
-            "TITLE": "Disable kanban",
+            "TITLE": "停用看板",
             "MESSAGE": "將移除此專案中的泳道，但專案中的用戶故事將會保留"
         },
         "DELETE_DUE_DATE": {
@@ -1255,7 +1255,7 @@
         },
         "CHANGE_OWNER": {
             "TITLE": "Who do you want to be the new project owner?",
-            "ADD_COMMENT": "Add comment",
+            "ADD_COMMENT": "進行評論",
             "BUTTON": "Ask this project member to become the new project owner"
         },
         "CONTACT_PROJECT": {
@@ -1266,7 +1266,7 @@
         },
         "SET_DUE_DATE": {
             "TITLE": "Set due date",
-            "PLACEHOLDER_DUE_DATE": "Select date",
+            "PLACEHOLDER_DUE_DATE": "選擇日期",
             "REASON_FOR_DUE_DATE": "Reason for the due date",
             "PLACEHOLDER_REASON_FOR_DUE_DATE": "Why does this user story need a due date?",
             "SUGGESTIONS": {
@@ -1345,10 +1345,10 @@
         "REMOVE_RELATIONSHIP_WITH_EPIC": "移除與史詩之間的關係",
         "TRIBE": {
             "PUBLISH": "Publish as Gig in Taiga Tribe",
-            "PUBLISH_INFO": "More info",
+            "PUBLISH_INFO": "更多資訊",
             "PUBLISH_TITLE": "More info on publishing in Taiga Tribe",
             "PUBLISHED_AS_GIG": "Story published as Gig in Taiga Tribe",
-            "EDIT_LINK": "Edit link",
+            "EDIT_LINK": "編輯連結",
             "CLOSE": "關閉",
             "SYNCHRONIZE_LINK": "synchronize with Taiga Tribe",
             "PUBLISH_MORE_INFO_TITLE": "Do you need somebody for this task?",
@@ -1358,12 +1358,12 @@
     "COMMENTS": {
         "TITLE": "評論",
         "DELETED_INFO": "Comment deleted by {{user}}",
-        "COMMENTS_COUNT": "{{comments}} Comments",
-        "OLDER_FIRST": "Older first",
-        "RECENT_FIRST": "Recent first",
+        "COMMENTS_COUNT": "{{comments}} 評論",
+        "OLDER_FIRST": "按時間順序",
+        "RECENT_FIRST": "按時間倒序",
         "COMMENT": "評論",
         "EDITED_COMMENT": "已編輯:",
-        "SHOW_HISTORY": "View historic",
+        "SHOW_HISTORY": "瀏覽歷史",
         "TYPE_NEW_COMMENT": "在此輸入一個新的評論",
         "SHOW_DELETED": "顯示遭刪除的評論",
         "HIDE_DELETED": "隱藏已刪除之評論",
@@ -1375,17 +1375,17 @@
     },
     "ACTIVITY": {
         "TITLE": "動態",
-        "ACTIVITIES_COUNT": "{{activities}} Activities",
-        "TAGS_ADDED": "tags added:",
-        "TAGS_REMOVED": "tags removed:",
+        "ACTIVITIES_COUNT": "{{activities}} 活動",
+        "TAGS_ADDED": "已添加的標籤：",
+        "TAGS_REMOVED": "已移除的標籤：",
         "US_POINTS": "{{role}} points",
         "NEW_ATTACHMENT": "新增附件:",
         "DELETED_ATTACHMENT": "刪除附件:",
         "UPDATED_ATTACHMENT": "更新附件 ({{filename}})：",
         "CREATED_CUSTOM_ATTRIBUTE": "建立自訂屬性",
         "UPDATED_CUSTOM_ATTRIBUTE": "更新自訂屬性",
-        "BECAME_DEPRECATED": "became deprecated",
-        "BECAME_UNDEPRECATED": "became undeprecated",
+        "BECAME_DEPRECATED": "已棄用",
+        "BECAME_UNDEPRECATED": "已保留",
         "TEAM_REQUIREMENT": "團隊要求",
         "CLIENT_REQUIREMENT": "客戶要求",
         "BLOCKED": "已封鎖",
@@ -1401,8 +1401,8 @@
             "STATUS": "狀態",
             "TYPE": "類型",
             "ASSIGNED_TO": "指派給",
-            "ASSIGNED_USERS": "assigned users",
-            "DUE_DATE": "due date",
+            "ASSIGNED_USERS": "被指派人員列表",
+            "DUE_DATE": "截止日期",
             "MILESTONE": "衝刺任務",
             "COLOR": "顏色",
             "PROMOTED_TO": "提升至"
@@ -1416,15 +1416,15 @@
         "CUSTOMIZE_GRAPH_TEXT": "想要有好的圖表來協助跟踪專案進展，那麼您必須得設定好點數和衝刺任務",
         "CUSTOMIZE_GRAPH_ADMIN": "管理者",
         "CUSTOMIZE_GRAPH_TITLE": "透由管理頁面設置點數與衝刺任務",
-        "TOTAL_STORIES_FILTERED": "of {{ totalUserStories }} user stories",
-        "TOTAL_STORIES": "{{ totalUserStories }} user stories",
+        "TOTAL_STORIES_FILTERED": "{{ totalUserStories }} 個用戶故事中的",
+        "TOTAL_STORIES": "總共 {{ totalUserStories }} 個用戶故事",
         "MOVE_US_TO_CURRENT_SPRINT": "移到目前的 Sprint",
         "MOVE_US_TO_LATEST_SPRINT": "移到最近的一個衝刺任務",
-        "EMPTY": "The backlog is empty!",
-        "CREATE_NEW_US": "Create a new user story",
-        "CREATE_NEW_US_EMPTY_HELP": "Add a user story",
-        "NO_MATCH": "No matching search result found with “{{ q }}”",
-        "NO_MATCH_HELP": "Try again using more general search terms",
+        "EMPTY": "沒有待辦任務！",
+        "CREATE_NEW_US": "建立新的用戶故事",
+        "CREATE_NEW_US_EMPTY_HELP": "新增用戶故事",
+        "NO_MATCH": "沒有搜尋到符合 「 {{ q }} 」 的結果",
+        "NO_MATCH_HELP": "請使用更籠統的搜尋條件來再次搜尋",
         "EXCESS_OF_POINTS": "超過的點數",
         "PENDING_POINTS": "待核點數",
         "CLOSED_POINTS": "關閉",
@@ -1449,15 +1449,15 @@
             "HIDE": "隱藏標籤"
         },
         "FORECASTING": {
-            "TITLE": "Velocity forecasting",
-            "BACKLOG": "return to backlog",
+            "TITLE": "速度預測",
+            "BACKLOG": "返回待辦事項",
             "NEW_SPRINT": "Candidate user stories for your next sprint based on your velocity.",
             "CURRENT_SPRINT": "Candidate user stories for your sprint based on your velocity. Click to add to current sprint.",
             "ADD_NEW_SPRINT": "create sprint and add US",
-            "ADD_NEW_SPRINT_SHORT": "create sprint"
+            "ADD_NEW_SPRINT_SHORT": "建立衝刺任務"
         },
         "TABLE": {
-            "COLUMN_US": "User Story",
+            "COLUMN_US": "用戶故事",
             "TITLE_COLUMN_POINTS": "選擇檢示每個角色"
         },
         "SPRINT_SUMMARY": {
@@ -1479,7 +1479,7 @@
         "FILTERS": {
             "TOGGLE": "切換過濾器可見度",
             "TITLE": "過濾器",
-            "HIDE_TITLE": "Hide filters"
+            "HIDE_TITLE": "隱藏過濾器"
         },
         "SPRINTS": {
             "TITLE": "衝刺任務",
@@ -1524,8 +1524,8 @@
             "TITLE_ACTION_FOLD_ROW": "隱藏列數",
             "TITLE_ACTION_UNFOLD_ROW": "未隱藏列數",
             "FIELD_POINTS": "點數",
-            "ROW_STORYLESS_TASKS_TITLE": "Storyless tasks",
-            "ROW_ISSUES_TITLE": "Sprint issues"
+            "ROW_STORYLESS_TASKS_TITLE": "非用戶故事任務",
+            "ROW_ISSUES_TITLE": "衝刺任務事項"
         },
         "CHARTS": {
             "XAXIS_LABEL": "天數",
@@ -1541,7 +1541,7 @@
             "TITLE_MOVE_UNFINISHED": "Move unfinished items to another open sprint",
             "MOVE_TO_OPEN_SPRINT": "Move to open sprint",
             "NO_OPEN_SPRINTS": "There are no other open sprints. Please create one first.",
-            "SELECT_DESTINATION_PLACEHOLDER": "Select destination",
+            "SELECT_DESTINATION_PLACEHOLDER": "選擇目標",
             "UNFINISHED_USER_STORIES_COUNT": "{total, plural, =1{<strong>#</strong> unfinished user story} other{<strong>#</strong> unfinished user stories}}",
             "UNFINISHED_STORYLESS_TASKS_COUNT": "{total, plural, =1{<strong>#</strong> unfinished storyless task} other{<strong>#</strong> unfinished storyless tasks}}",
             "UNFINISHED_ISSUES_COUNT": "{total, plural, =1{<strong>#</strong> unfinished issue} other{<strong>#</strong> unfinished issue}}",
@@ -1597,7 +1597,7 @@
         "TITLE": "Verify your email",
         "SUBTITLE": "One click more and your email will be verified!",
         "PLACEHOLDER_INPUT_TOKEN": "變更電郵代碼　",
-        "ACTION_VERIFY_EMAIL": "Verify email",
+        "ACTION_VERIFY_EMAIL": "驗證電子信箱",
         "SUCCESS": "Congratulations!!, your email address has been verified"
     },
     "ISSUES": {
@@ -1613,14 +1613,14 @@
         "LIGHTBOX_TITLE_BLOKING_ISSUE": "封鎖中的問題",
         "LINK_TASKBOARD": "任務板",
         "TITLE_LINK_TASKBOARD": "到任務板去",
-        "FILTER_SPRINTS": "Filter Sprints",
-        "CHOOSE_SPRINT": "Which Sprint?",
+        "FILTER_SPRINTS": "刺濾衝刺任務",
+        "CHOOSE_SPRINT": "哪一個衝刺任務？",
         "FIELDS": {
             "PRIORITY": "優先性",
             "SEVERITY": "急迫性",
             "TYPE": "類型"
         },
-        "FILTER_ISSUES": "Filter issues",
+        "FILTER_ISSUES": "過濾事項",
         "CONFIRM_DETACH_FROM_SPRINT": {
             "TITLE": "Detach issue from sprint",
             "MESSAGE": "You are about to detach the issue from the sprint <strong>{{ sprintName }}<strong>"
@@ -1638,8 +1638,8 @@
                 "VOTES": "投票數",
                 "STATUS": "狀態",
                 "ATTACHMENTS": "附件",
-                "MODIFIED": "Modified",
-                "ASSIGNED_TO": "Assign to"
+                "MODIFIED": "修改日期",
+                "ASSIGNED_TO": "指派給"
             },
             "TITLE_ACTION_CHANGE_STATUS": "改變狀態",
             "TITLE_ACTION_ASSIGNED_TO": "指派給",
@@ -1666,11 +1666,11 @@
         "ACTION_HIDE_ARCHIVED": "隱藏歸檔",
         "US_NOT_FOUND_TITLE": "No matching results found",
         "US_NOT_FOUND_TEXT_P1": "Try again using more general search terms or disabled some filters.",
-        "US_NOT_FOUND_TEXT_P2": "<strong>Archived stories</strong> are not loaded by default. Unfold the archived statuses to expand your search.",
+        "US_NOT_FOUND_TEXT_P2": "<strong>已歸檔的故事</strong> 並不會被納入搜尋中，如果需要進行搜尋，請將其解除歸檔以進行搜尋。",
         "PLACEHOLDER_CARD_TITLE": "This could be a user story",
         "PLACEHOLDER_CARD_TEXT": "Create user stories here and change their status to track their progress.",
         "NUMBER_US": "Number of US",
-        "ARCHIVED": "(Archived)",
+        "ARCHIVED": "（歸檔）",
         "CREATE_SWIMLANE": "增加泳道",
         "UNCLASSIFIED_USER_STORIES": "Unclassified user stories",
         "UNCLASSIFIED_USER_STORIES_TOOLTIP": "未隸屬於任何泳道的用戶故事都會放置於此。"
@@ -1741,7 +1741,7 @@
             "SECTION_NAME": "Events",
             "SECTION_DESCRIPTION": "Important events in Taiga header",
             "SECTION_DESCRIPTION_EXPANDED": "(direct mentions, updates in items that you are watching...)",
-            "COLUMN_ENABLED": "Enabled",
+            "COLUMN_ENABLED": "已啟用",
             "COLUMN_PROJECT": "專案"
         }
     },
@@ -1774,9 +1774,9 @@
         "DELETE_LIGHTBOX_TITLE": "刪除維基頁",
         "DELETE_LINK_TITLE": "Delete Wiki link",
         "NAVIGATION": {
-            "HOME": "Main Page",
+            "HOME": "首頁",
             "SECTION_NAME": "BOOKMARKS",
-            "ACTION_ADD_LINK": "Add bookmark",
+            "ACTION_ADD_LINK": "添加連結",
             "ALL_PAGES": "All wiki pages"
         },
         "SUMMARY": {
@@ -1784,14 +1784,14 @@
             "LAST_EDIT": "上次 <br />編輯",
             "LAST_MODIFICATION": "上回修改"
         },
-        "SECTION_PAGES_LIST": "All pages",
+        "SECTION_PAGES_LIST": "所有頁面",
         "PAGES_LIST_COLUMNS": {
             "TITLE": "Title",
             "EDITIONS": "Editions",
             "CREATED": "已創建",
-            "MODIFIED": "Modified",
+            "MODIFIED": "已修改",
             "CREATOR": "Creator",
-            "LAST_MODIFIER": "Last modifier"
+            "LAST_MODIFIER": "最後的變更者"
         }
     },
     "HINTS": {
@@ -1844,7 +1844,7 @@
         "UNBLOCKED": "{{username}} 解除了封鎖 {{obj_name}}",
         "NEW_USER": "{{username}} 已加入 Taiga",
         "ITEM_TYPES": {
-            "USERSTORY": "User Story",
+            "USERSTORY": "用戶故事",
             "ISSUE": "問題",
             "TASK": "任務"
         }
@@ -1852,7 +1852,7 @@
     "EVENTS": {
         "TITLE": "Events",
         "MY_EVENTS": "My events",
-        "DISMISS_ALL": "Dismiss all",
+        "DISMISS_ALL": "全部取消",
         "VIEW_ALL": "View all notifications",
         "NO_NEW_EVENTS": "No new events",
         "NO_EVENTS_YET": "There are no events yet",
@@ -1908,7 +1908,7 @@
                 "TEXT2": "你可以在管理頁面變更專案的設定。"
             },
             "STEP2": {
-                "TITLE": "Product backlog",
+                "TITLE": "産品待辦事項",
                 "TEXT": "The backlog is the list of requirements (User Stories) for the project. Here is where you will plan your sprints."
             },
             "STEP3": {
