@@ -42,7 +42,7 @@
         "EXTERNAL_USER": "zewnętrzny użytkownik",
         "GENERIC_ERROR": "Taiga raportuje {{error}}.",
         "IOCAINE_TEXT": "Ten członek czuje się nieco przytłoczony tym zadaniem. Z czasem z twoją pomocą uodporni się na truciznę jokainy. Na razie może potrzebować przytulenia.",
-        "CLIENT_REQUIREMENT": "Wymaganie klienta to nowe wymaganie, które nie było wcześniej oczekiwane i musi być częścią projektu.",
+        "CLIENT_REQUIREMENT": "Wymaganie klienta to nowe wymaganie, które nie było wcześniej oczekiwane i musi być częścią projektu",
         "TEAM_REQUIREMENT": "Wymaganie zespołowe to wymaganie, które musi istnieć w projekcie, ale nie powinno wiązać się z żadnymi kosztami dla klienta",
         "OWNER": "Właściciel Projektu",
         "CAPSLOCK_WARNING": "Uważaj! Używasz wielkich liter w polu wejściowym, w którym wielkość liter ma znaczenie.",
@@ -58,9 +58,9 @@
             "PTS": "{{pts}} pts",
             "DUE_DATE": "Termin: {{date}}",
             "NO_PTS": "N/E",
-            "ESTIMATION": "Estimation",
-            "TASKS": "{{completed}} tasks of {{total}} completed",
-            "EXTRA_ASSIGNED_USERS": "{{total}} more assigned users",
+            "ESTIMATION": "Estymata",
+            "TASKS": "{{completed}} zadań z  {{total}} ukończonych",
+            "EXTRA_ASSIGNED_USERS": "{{total}} więcej przypisanych użytkowników",
             "MOVE_TO_TOP": "Przesuń na górę"
         },
         "FORM_ERRORS": {
@@ -130,17 +130,17 @@
         },
         "SEE_USER_PROFILE": "Zobacz profil użytkownika {{username }}",
         "USER_STORY": "Historyjka użytkownika",
-        "TASK": "Zadania",
+        "TASK": "Zadanie",
         "ISSUE": "Zgłoszenie",
         "EPIC": "Epik",
         "TAGS": {
-            "PLACEHOLDER": "Enter tag",
-            "DELETE": "Usuń tag",
-            "ADD": "Dodaj tag"
+            "PLACEHOLDER": "Wpisz etykietę",
+            "DELETE": "Usuń etykietę",
+            "ADD": "Dodaj etykietę"
         },
         "DESCRIPTION": {
-            "EMPTY": "Empty space is so boring... go on, be descriptive...",
-            "NO_DESCRIPTION": "Jeszcze bez opisu"
+            "EMPTY": "Pustka jest nudna... dalej, napisz coś...",
+            "NO_DESCRIPTION": "Brak opisu"
         },
         "FIELDS": {
             "SUBJECT": "Temat",
@@ -157,35 +157,35 @@
             "PRIORITY": "Priorytet",
             "ASSIGNED": "Przydzielone",
             "ASSIGNED_TO": "Przydzielone do",
-            "ASSIGNED_USERS": "Assigned users",
+            "ASSIGNED_USERS": "Przydzieleni użytkownicy",
             "POINTS": "Punkty",
             "IS_BLOCKED": "zablokowana",
             "REF": "Ref",
             "VOTES": "Głosy",
             "SPRINT": "Sprint",
-            "DUE_DATE": "Due date",
-            "DUE_DATE_REASON": "Due date reason"
+            "DUE_DATE": "Termin",
+            "DUE_DATE_REASON": "Powód terminu"
         },
         "ROLES": {
-            "ALL": "All points"
+            "ALL": "Wszystkie punkty"
         },
         "ASSIGNED_TO": {
             "NOT_ASSIGNED": "Nieprzypisane",
-            "ASSIGN": "Assign",
+            "ASSIGN": "Przypisz",
             "DELETE_ASSIGNMENT": "Usuń przypisanie",
-            "REMOVE_ASSIGNED": "Ukryj przypisane",
+            "REMOVE_ASSIGNED": "Usuń przypisane",
             "TOO_MANY": "...zbyt wielu użytkowników, filtruj dalej Umpa Lumpy nie ogarniają",
             "CONFIRM_UNASSIGNED": "Jesteś pewny, że chcesz pozostawić nieprzypisane?",
             "TITLE_ACTION_EDIT_ASSIGNMENT": "Edytuj przypisanie",
             "SELF": "Przypisz do mnie"
         },
         "DUE_DATE": {
-            "TITLE_ACTION_SET_DUE_DATE": "Set due date"
+            "TITLE_ACTION_SET_DUE_DATE": "Ustaw termin"
         },
         "ASSIGNED_USERS": {
-            "ADD": "Select assigned user",
-            "ADD_ASSIGNED": "Add assigned",
-            "TITLE_LIGHTBOX_DELETE_ASSIGNED": "Delete assigned..."
+            "ADD": "Wybierz przypisanego użytkownika",
+            "ADD_ASSIGNED": "Dodaj przypisanych",
+            "TITLE_LIGHTBOX_DELETE_ASSIGNED": "Skasuj przypisanych..."
         },
         "STATUS": {
             "CLOSED": "Zamknięte",
@@ -204,47 +204,47 @@
             "UNWATCH": "Nie obserwuj",
             "WATCHERS": "Obserwatorzy",
             "BUTTON_TITLE": "Obserwuj lub przestań obserwować",
-            "COUNTER_TITLE": "{total, plural, =1{one watcher} other{# watchers}}"
+            "COUNTER_TITLE": "{total, plural, =1{jeden obserwujący} other{# obserwujących}}"
         },
         "VOTE_BUTTON": {
-            "BUTTON_TITLE": "Ocen ten obiekt",
-            "COUNTER_TITLE": "{total, plural, =1{one vote} other{# votes}}"
+            "BUTTON_TITLE": "Oceń ten obiekt",
+            "COUNTER_TITLE": "{total, plural, =1{jeden głos} other{# głosów}}"
         },
-        "PROMOTE_TO_US": "Promote to user story",
-        "PROMOTED_ISSUES": "This issue has been promoted to",
-        "PROMOTED_TASKS": "This task has been promoted to",
+        "PROMOTE_TO_US": "Awansuj do poziomu historyjki użytkownika",
+        "PROMOTED_ISSUES": "To zgłoszenie zostało awansowane",
+        "PROMOTED_TASKS": "To zadanie zostało awansowane",
         "CONFIRM_PROMOTE": {
             "ISSUE": {
                 "TITLE": "Awansuj to zgłoszenie na historyjkę użytkownika",
-                "MESSAGE": "Are you sure you want to create a new user story from this issue?"
+                "MESSAGE": "Jesteś pewien, że chcesz stworzyć historyjkę użytkownika z tego zgłoszenia?"
             },
             "TASK": {
-                "TITLE": "Promuj to zadanie do nowej historyjki uzytkownika",
-                "MESSAGE": "Are you sure you want to create a new user story from this task?"
+                "TITLE": "Awansuj to zadanie do nowej historyjki uzytkownika",
+                "MESSAGE": "Jesteś pewien, że chcesz stworzyć nową historyjkę użytkownika z tego zadania?"
             }
         },
         "CUSTOM_ATTRIBUTES": {
-            "CUSTOM_FIELDS": "Własne Pola",
-            "SAVE": "Save custom field",
-            "EDIT": "Edit custom field",
-            "DELETE": "Delete custom fields",
-            "CONFIRM_DELETE": "Remember that all values in this custom field will be deleted."
+            "CUSTOM_FIELDS": "Pola niestandardowe",
+            "SAVE": "Zapisz pole niestandardowe",
+            "EDIT": "Edytuj pole niestandardowe",
+            "DELETE": "Skasuj pole niestandardowe",
+            "CONFIRM_DELETE": "Pamiętaj że wszystkie wartości z tego pola zostaną usunięte."
         },
         "FILTERS": {
-            "INPUT_PLACEHOLDER": "subject or reference",
+            "INPUT_PLACEHOLDER": "odniesienie",
             "TITLE_ACTION_FILTER_BUTTON": "szukaj",
             "TITLE": "Filtry niestandardowe",
             "TITLE_ACTION_SEARCH": "Szukaj",
             "ACTION_ADD": "Dodaj",
-            "ACTION_SAVE_CUSTOM_FILTER": "save filter",
+            "ACTION_SAVE_CUSTOM_FILTER": "zapisz filtr",
             "PLACEHOLDER_FILTER_NAME": "Wpisz nazwę filtru i kliknij enter",
-            "APPLIED_FILTERS_NUM": "filters applied",
-            "TITLE_ADVANCED_FILTER": "Advanced",
-            "LENGTH_ZERO_ERROR": "Please add a filter name",
-            "REPEATED_FILTER_ERROR": "This filter name is already in use",
+            "APPLIED_FILTERS_NUM": "filtry ustawione",
+            "TITLE_ADVANCED_FILTER": "Zaawansowane",
+            "LENGTH_ZERO_ERROR": "Dodaj nazwę filtra",
+            "REPEATED_FILTER_ERROR": "Ta nazwa filtra jest już używana",
             "ADVANCED_FILTERS": {
-                "INCLUDE": "Include",
-                "EXCLUDE": "Exclude",
+                "INCLUDE": "Zawiera",
+                "EXCLUDE": "Nie zawiera",
                 "INCLUDED": "Filtered by:",
                 "EXCLUDED": "Excluded:"
             },
