@@ -246,16 +246,16 @@
                 "INCLUDE": "Zawiera",
                 "EXCLUDE": "Nie zawiera",
                 "INCLUDED": "Filtered by:",
-                "EXCLUDED": "Excluded:"
+                "EXCLUDED": "Poza filtrem:"
             },
             "CATEGORIES": {
                 "TYPE": "Typ",
-                "STATUS": "Statusy",
+                "STATUS": "Status",
                 "SEVERITY": "Ważność",
                 "PRIORITIES": "Priorytety",
-                "TAGS": "Tagi",
+                "TAGS": "Etykiety",
                 "ASSIGNED_TO": "Przypisane do",
-                "ASSIGNED_USERS": "Assigned users",
+                "ASSIGNED_USERS": "Przydzieleni użytkownicy",
                 "ROLE": "Rola",
                 "CREATED_BY": "Stworzona przez",
                 "CUSTOM_FILTERS": "Filtry niestandardowe",
@@ -263,21 +263,21 @@
             }
         },
         "WYSIWYG": {
-            "CODE_SNIPPET": "Code Snippet",
-            "DB_CLICK": "double click to edit",
-            "SELECT_LANGUAGE_PLACEHOLDER": "Select Language",
-            "SELECT_LANGUAGE_REMOVE_FORMATING": "Remove formatting",
-            "OUTDATED": "Another person has made changes while you were editing. Check the new version on the activity tab before you save your changes.",
+            "CODE_SNIPPET": "Fragment kodu",
+            "DB_CLICK": "kliknij dwa razy by edytować",
+            "SELECT_LANGUAGE_PLACEHOLDER": "Wybierz Język",
+            "SELECT_LANGUAGE_REMOVE_FORMATING": "Usuń formatowanie",
+            "OUTDATED": "Ktoś inny dokonał zmian w trakcie twojej edycji. Sprawdź nową wersję zanim zapiszesz zmiany.",
             "MARKDOWN_HELP": "Składnia Markdown pomoc"
         },
         "PERMISIONS_CATEGORIES": {
             "EPICS": {
                 "NAME": "Epiki",
-                "VIEW_EPICS": "View epics",
-                "ADD_EPICS": "Add epics",
-                "MODIFY_EPICS": "Modify epics",
-                "COMMENT_EPICS": "Comment epics",
-                "DELETE_EPICS": "Delete epics"
+                "VIEW_EPICS": "Wyświetl epiki",
+                "ADD_EPICS": "Dodaj epiki",
+                "MODIFY_EPICS": "Modyfikuj epiki",
+                "COMMENT_EPICS": "Komentuj",
+                "DELETE_EPICS": "Skasuj epiki"
             },
             "SPRINTS": {
                 "NAME": "Sprinty",
@@ -291,7 +291,7 @@
                 "VIEW_USER_STORIES": "Przeglądaj historyjki użytkownika",
                 "ADD_USER_STORIES": "Dodawaj historyjki użytkownika",
                 "MODIFY_USER_STORIES": "Modyfikuj historyjki użytkownika",
-                "COMMENT_USER_STORIES": "Comment user stories",
+                "COMMENT_USER_STORIES": "Komentuj historyjki użytkownika",
                 "DELETE_USER_STORIES": "Usuwaj historyjki użytkownika"
             },
             "TASKS": {
@@ -299,7 +299,7 @@
                 "VIEW_TASKS": "Przeglądaj zadania",
                 "ADD_TASKS": "Dodawaj zadania",
                 "MODIFY_TASKS": "Modyfikuj zadania",
-                "COMMENT_TASKS": "Comment tasks",
+                "COMMENT_TASKS": "Skomentuj zadania",
                 "DELETE_TASKS": "Usuwaj zadania"
             },
             "ISSUES": {
@@ -307,7 +307,7 @@
                 "VIEW_ISSUES": "Przeglądaj zgłoszenia",
                 "ADD_ISSUES": "Dodawaj zgłoszenia",
                 "MODIFY_ISSUES": "Modyfikuj zgłoszenia",
-                "COMMENT_ISSUES": "Comment issues",
+                "COMMENT_ISSUES": "Komentuj zgłoszenia",
                 "DELETE_ISSUES": "Usuwaj zgłoszenia"
             },
             "WIKI": {
@@ -336,7 +336,7 @@
         "HEADER": "Mam już login do Taigi",
         "PLACEHOLDER_AUTH_NAME": "Login albo e-mail (uwzględnij wielkość liter)",
         "LINK_FORGOT_PASSWORD": "Zapomniałeś?",
-        "TITLE_LINK_FORGOT_PASSWORD": "Zapomniałeś hasło? ",
+        "TITLE_LINK_FORGOT_PASSWORD": "Zapomniałeś hasło?",
         "ACTION_ENTER": "Wprowadź",
         "ACTION_SIGN_IN": "Zaloguj",
         "PLACEHOLDER_AUTH_PASSWORD": "Hasło (uwzględnij wielkość liter)",
@@ -780,7 +780,7 @@
             "DEFAULT_DELETE_MESSAGE": "zaproszenie do {{e-mail}}"
         },
         "DEFAULT_VALUES": {
-            "LABEL_EPIC_STATUS": "Default value for epic status selector",
+            "LABEL_EPIC_STATUS": "Domyślny status epika",
             "LABEL_US_STATUS": "Selektor statusu historyjki użytkownika",
             "LABEL_POINTS": "Selektor punktów",
             "LABEL_TASK_STATUS": "Selektor statusu zadań",
@@ -1576,7 +1576,8 @@
         "CLOSE": "Zamknij powiadomienie",
         "MAIL": "Aktywność",
         "DESKTOP": "Desktop notifications using browser alerts",
-        "ASK_DELETE": "Czy na pewno chcesz usunąć?"
+        "ASK_DELETE": "Czy na pewno chcesz usunąć?",
+        "COMMUNICATION": "wiadomości z Taigi"
     },
     "CANCEL_ACCOUNT": {
         "TITLE": "Unieważnij swoje konto",
