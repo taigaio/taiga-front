@@ -1827,12 +1827,12 @@
         "TASK_UPDATED": "{{username}} 更新了任务 {{obj_name}} 的 \"{{field_name}}\" 属性为 {{new_value}}",
         "TASK_UPDATED_WITH_NEW_VALUE": "{{username}} 更新了任务 {{obj_name}} 的 \"{{field_name}}\" 属性为 {{new_value}}",
         "TASK_UPDATED_WITH_US": "{{username}} 更新了用户故事 {{us_name}} 任务 {{obj_name}} 的属性 \"{{field_name}}\"",
-        "TASK_UPDATED_WITH_US_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} which belongs to the user story {{us_name}} to {{new_value}}",
+        "TASK_UPDATED_WITH_US_NEW_VALUE": "{{username}} 更新了用户故事 {{us_name}} 中任务 {{obj_name}} 的字段 \"{{field_name}}\" 为 {{new_value}}",
         "WIKI_UPDATED": "{{username}} 更新了维基页 {{obj_name}}",
         "EPIC_UPDATED": "{{username}}已经更新了史诗{{obj_name}}的\"{{field_name}}\"属性",
         "EPIC_UPDATED_WITH_NEW_VALUE": "{{username}}已经更新了史诗{{obj_name}}的\"{{field_name}}\"属性为{{new_value}}",
         "EPIC_UPDATED_WITH_NEW_COLOR": "{{username}}已经更新了史诗{{obj_name}}的\"{{field_name}}\"属性为<span class=\"new-color\" style=\"background:{{new_value}}\"></span>",
-        "NEW_COMMENT_US": "{{username}} has commented in the user story {{obj_name}}",
+        "NEW_COMMENT_US": "{{username}} 评论了用户故事 {{obj_name}}",
         "NEW_COMMENT_ISSUE": "{{username}} 评论了问题 {{obj_name}}",
         "NEW_COMMENT_TASK": "{{username}} 评论了任务 {{obj_name}}",
         "NEW_COMMENT_EPIC": "{{username}}在史诗{{obj_name}}做了评论",
@@ -1940,7 +1940,7 @@
         "PAGE_TITLE": "探索更多项目",
         "PAGE_DESCRIPTION": "Taiga中的公共项目的可搜索的目录。探索积压，时间线，问题，以及团队。检索出最喜欢的或者最活跃的项目。通过看板或者敏捷开发进行过滤。",
         "DISCOVER_TITLE": "探索项目",
-        "DISCOVER_SUBTITLE": "{projects, plural, =1{One public project to discover} other{# public projects to discover}}",
+        "DISCOVER_SUBTITLE": "{projects, plural, =1{一个公共项目等你发现} other{# 一个公共项目等你发现}}",
         "MOST_ACTIVE": "最活跃的",
         "MOST_ACTIVE_EMPTY": "还没有活动的项目",
         "MOST_LIKED": "最受欢迎的",
@@ -1969,9 +1969,9 @@
     },
     "ZOOM": {
         "TITLE": "缩放:",
-        "ZOOM-1": "Compact",
+        "ZOOM-1": "收起",
         "ZOOM-2": "默认",
-        "ZOOM-3": "Detailed",
-        "ZOOM-4": "Expanded"
+        "ZOOM-3": "详情",
+        "ZOOM-4": "展开"
     }
 }
