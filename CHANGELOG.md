@@ -1,8 +1,14 @@
 # Changelog
 
-## 6.8.2 (unreleased)
+## 6.8.3 (unreleased)
 
-...
+- ...
+
+## 6.8.2 (2025-01-13)
+
+- Fix epic change color timeline message.
+- Fix epic caret icons rotation.
+- Fix search users with accents.
 
 ## 6.8.1 (2024-07-23)
 
