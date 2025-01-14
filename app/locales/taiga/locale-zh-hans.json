@@ -418,7 +418,7 @@
     },
     "EPICS": {
         "TITLE": "史诗",
-        "SECTION_NAME": "用户故事",
+        "SECTION_NAME": "史诗",
         "EPIC": "史诗",
         "PAGE_TITLE": "史诗 - {{projectName}}",
         "PAGE_DESCRIPTION": "项目的史诗列表{{projectName}}：{{projectDescription}}",
