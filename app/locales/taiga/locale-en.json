@@ -1295,6 +1295,16 @@
             "CHOOSE_EPIC": "What's the epic?",
             "FILTER_EPICS": "Filter epics",
             "NO_EPICS_FOUND": "It looks like nothing was found with your search criteria"
+        },
+        "RELATE_TO_SPRINT": {
+            "TITLE": "Link to sprint",
+            "EXISTING_SPRINT": "Existing sprint",
+            "CHOOSE_PROJECT_FOR_CREATION": "What's the project?",
+            "CHOOSE_PROJECT_FROM": "What's the project?",
+            "SUBJECT": "Subject",
+            "CHOOSE_SPRINT": "What's the sprint?",
+            "FILTER_SPRINTS": "Filter sprints",
+            "NO_SPRINTS_FOUND": "It looks like nothing was found with your search criteria"
         }
     },
     "EPIC": {
@@ -1336,7 +1346,9 @@
         "LIGHTBOX_TITLE_BLOKING_US": "Blocking user story",
         "NOT_ESTIMATED": "N/E",
         "OWNER_US": "This user story belongs to",
+        "OWNER_US_SPRINT": "This user story belongs to sprint",
         "RELATE_TO_EPIC": "Link to epic",
+        "RELATE_TO_SPRINT": "Link to sprint",
         "REMOVE_RELATIONSHIP_WITH_EPIC": "Remove epic relationship",
         "TRIBE": {
             "PUBLISH": "Publish as Gig in Taiga Tribe",

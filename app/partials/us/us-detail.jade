@@ -25,6 +25,31 @@ div.wrapper(
                     type="text"
                 )
 
+                .detail-header-line.belong-to-sprint-wrapper
+                    .related-to-sprint
+                        span.belong-to-sprint-title(ng-if="us.milestone", translate="US.OWNER_US_SPRINT")
+                        a.belong-to-sprint-text(
+                            href=""
+                            tg-nav="project-taskboard:project=project.slug,sprint=sprint.slug"
+                            ng-bind-html="'#'+us.milestone+' '+us.milestone_name | emojify"
+                        )
+                        
+
+                //- User Story relate to Sprint
+                .relate-to-sprint(
+                    tg-check-permission="modify_us"
+                )
+                    a.relate-to-sprint-button.ng-animate-disabled(
+                        href=""
+                        title="{{'US.RELATE_TO_SPRINT' | translate}}"
+                        ng-click="relateToSprint(us)"
+                    )
+                        //- tg-svg(
+                        //-     svg-icon="icon-add-to-sprint"
+                        //-     svg-title-translate="US.RELATE_TO_SPRINT"
+                        //- )
+                        span.relate-to-sprint-text(translate="US.RELATE_TO_SPRINT")
+
                 //- User Story belongs to epic
                 .detail-header-line.belong-to-epics-wrapper(ng-if="!!project.is_epics_activated")
                     .related-to-epics
@@ -215,3 +240,4 @@ div.wrapper(
         ng-model="us"
     )
     div.lightbox.lightbox-relate-to-epic(tg-lb-relatetoepic)
+    div.lightbox.lightbox-relate-to-story(tg-lb-relatetosprint)
