@@ -968,7 +968,7 @@
                 "NOTIFY_ALL": "Receive all notifications",
                 "NOTIFY_ALL_TITLE": "Receive all notifications for this project",
                 "NOTIFY_INVOLVED": "Only involved",
-                "NOTIFY_INVOLVED_TITLE": "Recive notificacions only when you are involved",
+                "NOTIFY_INVOLVED_TITLE": "Receive notifications only when you are involved",
                 "UNWATCH": "Unwatch",
                 "UNWATCH_TITLE": "Unwatch this project"
             }
