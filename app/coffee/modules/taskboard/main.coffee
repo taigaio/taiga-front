@@ -83,6 +83,7 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
             project: @projectService.project.get('slug'),
             ref: @params.ref
         })
+        @.pendingDrag = []
 
         return if @.applyStoredFilters(@params.pslug, "tasks-filters", @.validQueryParams)
 
@@ -358,6 +359,10 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
             else
                 @.loadTasks() if itemsMoved.tasks
                 @.loadIssues() if itemsMoved.issues
+        
+        @scope.$on("sprint:us:move", @.moveUs)
+        @scope.$on "sprint:us:moved", () =>
+            @.firstLoad()
 
     onAssignedToChanged: (ctx, userid, model) ->
         if model.getName() == 'tasks'
@@ -771,6 +776,61 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
             return @location.search().order_by
         else
             return "created_date"
+    
+    moveUs: (ctx, usList, newUsIndex, previousUs, nextUs) ->
+        sprintId = usList[0].milestone
+        project = usList[0].project
+
+        bulkUserstories = _.map(usList, (it) ->
+            return it.id
+        )
+
+        if ctx
+            @.pendingDrag.push({
+                usList: usList,
+                newUsIndex: newUsIndex,
+                sprintId: sprintId,
+                previousUs: previousUs,
+                nextUs: nextUs
+            })
+            
+            @scope.visibleUserStories = _.map @scope.userstories, (it) ->
+                return it.ref
+
+        if ctx && @.pendingDrag.length > 1
+            return
+
+        promise = @rs.userstories.bulkUpdateBacklogOrder(
+            project,
+            sprintId,
+            previousUs,
+            nextUs,
+            bulkUserstories
+        )
+
+        promise.then (result) =>
+            for updatedUs in result.data
+                usList.forEach (us, index) =>
+                    if us.id == updatedUs.id
+                        us.milestone = updatedUs.milestone
+                        us.backlog_order = updatedUs.backlog_order
+
+            @.pendingDrag.shift()
+
+            if @.pendingDrag.length
+                @scope.$applyAsync () =>
+                    @.moveUs(
+                        null
+                        @.pendingDrag[0].usList,
+                        @.pendingDrag[0].newUsIndex,
+                        @.pendingDrag[0].sprintId,
+                        @.pendingDrag[0].previousUs,
+                        @.pendingDrag[0].nextUs,
+                    )
+            else
+                @rootscope.$broadcast("sprint:us:moved")
+
+        return promise
 
 module.controller("TaskboardController", TaskboardController)
 
