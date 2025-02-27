@@ -54,7 +54,7 @@
             "EDIT": "Редагувати картку",
             "DELETE": "Видалити карточку",
             "DELETE_ISSUE": "Видалити проблему",
-            "DETACH_ISSUE_FROM_SPRINT": "Detach from sprint",
+            "DETACH_ISSUE_FROM_SPRINT": "Відокремити зі спрінту",
             "PTS": "{{pts}} очок",
             "DUE_DATE": "Речене́ць: {{date}}",
             "NO_PTS": "N/E",
