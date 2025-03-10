@@ -18,9 +18,9 @@ RUN set -eux; \
     apk add \
        bash; \
     # Install taiga-front core
-    wget https://github.com/taigaio/taiga-front-dist/archive/6.8.1.zip -O source.zip; \
+    wget https://github.com/taigaio/taiga-front-dist/archive/6.8.2.zip -O source.zip; \
     unzip source.zip; \
-    mv /taiga-front-dist-6.8.1 /taiga; \
+    mv /taiga-front-dist-6.8.2 /taiga; \
     mv /conf.json.template taiga/dist/; \
     chmod +x /docker-entrypoint.d/30_config_env_subst.sh; \
     # Install taiga-front contribs
