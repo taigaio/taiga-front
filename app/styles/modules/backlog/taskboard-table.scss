@@ -74,6 +74,10 @@ $fold-animation-duration: .1s;
     }
 }
 
+.taskboard-row {
+    cursor: move;
+}
+
 @mixin fold {
     &.taskboard-row {
         min-height: 50px;
