@@ -1035,4 +1035,96 @@ module.directive("tgLbRelatetoepic", [
     "$rootScope", "$tgConfirm", "lightboxService", "tgCurrentUserService", "tgResources",
     "$tgResources", "tgEpicsService", "$tgAnalytics", RelateToEpicLightboxDirective])
 
+#############################################################################
+## RelateToSprint Lightbox Directive
+#############################################################################
 
+debounceLeading = @.taiga.debounceLeading
+
+RelateToSprintLightboxDirective = ($rootScope, $confirm, lightboxService, $tgCurrentUserService
+tgResources, $rs, tgAnalytics) ->
+    link = ($scope, $el, $attrs) ->
+        us = null
+
+        $scope.sprints = []
+        $scope.loading = false
+        $scope.selectedProject = $scope.project.id
+
+        params = {}
+        $rs.sprints.list($scope.selectedProject, params).then (result) ->
+            $scope.sprints = result.milestones
+
+        existingSprintForm = $el.find(".existing-sprint-form").checksley()
+
+        filterSprints = (selectedProjectId, filterText) ->
+            params = {}
+            $rs.sprints.list(selectedProjectId, params).then (result) ->
+                excludeId = $scope.us.milestone
+                searchText = filterText.toLowerCase()
+
+                filteredSprints = result.milestones.filter((sprint) ->
+                    sprint.id != excludeId and (
+                        sprint.slug.toLowerCase().includes(searchText) or
+                        sprint.id.toString().includes(searchText)
+                    )
+                )
+
+                $scope.sprints = filteredSprints
+
+        $el.on "click", ".close", (event) ->
+            event.preventDefault()
+            lightboxService.close($el)
+
+        $scope.$on "relate-to-sprint:add", (ctx, item) ->
+            us = item
+            $scope.selectedSprint = null
+            $scope.searchSprint = ""
+            filterSprints($scope.selectedProject, $scope.searchSprint).then () ->
+                lightboxService.open($el).then ->
+                    $el.find('input').focus
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+        $scope.$on "related-sprint:changed", (ctx, userStory)->
+            $rs.userstories.getByRef(userStory.project, userStory.ref, {}).then((us) ->
+                $scope.us = us
+                return us
+            ).then (us)->
+                $rs.sprints.get(us.project, us.milestone).then (sprint) =>
+                    $scope.sprint = sprint
+
+        $scope.onUpdateSearchSprint = debounceLeading 300, () ->
+            $scope.selectedSprint = null
+            filterSprints($scope.selectedProject, $scope.searchSprint)
+
+        $scope.saveRelatedSprint = (selectedSprintId, onSavedRelatedSprint) ->
+            return if not existingSprintForm.validate()
+
+            $scope.loading = true
+
+            onError = (data) ->
+                $scope.loading = false
+                $confirm.notify("error")
+                existingSprintForm.setErrors(data)
+
+            onSuccess = (data) ->
+                $scope.loading = false
+                $scope.$broadcast("related-sprint:changed", us)
+                lightboxService.close($el)
+
+            bulk_data = [{
+                    us_id: us.id
+                    order: us.sprint_order
+                }]
+            $rs.userstories.bulkUpdateMilestone($scope.selectedProject, Number(selectedSprintId), bulk_data).then(
+                onSuccess, onError)
+
+    return {
+        templateUrl: "common/lightbox/lightbox-relate-to-sprint.html"
+        link:link
+    }
+
+module.directive("tgLbRelatetosprint", [
+    "$rootScope", "$tgConfirm", "lightboxService", "tgCurrentUserService", "tgResources",
+    "$tgResources", "$tgAnalytics", RelateToSprintLightboxDirective])
