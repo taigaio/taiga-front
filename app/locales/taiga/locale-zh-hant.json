@@ -694,12 +694,12 @@
             "PAGE_TITLE": "角色- {{projectName}}",
             "WARNING_NO_ROLE": "注意，你的專案中無角色可以評估使用者故事的點數",
             "HELP_ROLE_ENABLED": "此角色是屬於參與估計用戶點數的角色。",
-            "DISABLE_COMPUTABLE_ALERT_TITLE": "Are you sure you want to disable this role estimations?",
-            "DISABLE_COMPUTABLE_ALERT_SUBTITLE": "If you disable estimation permissions for role {{roleName}} all previous estimations made by this role will be removed",
+            "DISABLE_COMPUTABLE_ALERT_TITLE": "您確定要禁用該角色評估嗎？",
+            "DISABLE_COMPUTABLE_ALERT_SUBTITLE": "如果您要移除角色 {{roleName}} 的估計權限，則該角色之前所做出的任何估計將被移除",
             "COUNT_MEMBERS": "{{ role.members_count }} 這類角色的成員",
             "TITLE_DELETE_ROLE": "删除角色",
             "REPLACEMENT_ROLE": "和此角色有關的使用者都將遭移除　",
-            "WARNING_DELETE_ROLE": "Be careful! All role estimations will be removed",
+            "WARNING_DELETE_ROLE": "當心！即將移除所有角色的估計權限",
             "ERROR_DELETE_ALL": "你不能刪除所有數值",
             "EXTERNAL_USER": "外部使用者",
             "NOTE_EXTERNAL_USERS": "外部用戶是指任何人（不論是否登錄 Taiga），<strong>也包括搜索引擎</strong>。外部用戶並不具有編輯權限，但只要您允許，有登錄 Taiga 的外部用戶便能編輯。如果您的專案是私密的，您也可以控制閱覽的權限。因此，<strong>請小心使用這種角色</strong>。"
@@ -707,7 +707,7 @@
         "THIRD_PARTIES": {
             "SECRET_KEY": "密鑰",
             "PAYLOAD_URL": "有效載荷網址",
-            "VALID_IPS": "Valid source IPs (separated by ,)"
+            "VALID_IPS": "有效的來源 IP (若有多個 IP，以 \",\" 分隔)"
         },
         "BITBUCKET": {
             "SECTION_NAME": "Bitbucket",
@@ -791,7 +791,7 @@
         },
         "STATUS": {
             "PLACEHOLDER_WRITE_STATUS_NAME": "為此新狀態命名",
-            "PLACEHOLDER_DAYS_TO_DUE_DATE": "Write a number of days to due date"
+            "PLACEHOLDER_DAYS_TO_DUE_DATE": "寫下距截止日期的天數"
         },
         "TYPES": {
             "PLACEHOLDER_WRITE_NAME": "為此新要素命名"
@@ -827,9 +827,9 @@
             "TITLE_ACTION_NEW_ROLE": "新增角色"
         },
         "PROJECT_TRANSFER": {
-            "DO_YOU_ACCEPT_PROJECT_OWNERNSHIP": "Would you like to become the new project owner?",
+            "DO_YOU_ACCEPT_PROJECT_OWNERNSHIP": "您希望成為新的專案擁有者嗎？",
             "PRIVATE": "Private",
-            "ACCEPTED_PROJECT_OWNERNSHIP": "Congratulations! You're now the new project owner.",
+            "ACCEPTED_PROJECT_OWNERNSHIP": "恭喜！您現在是專案新的擁有者。",
             "REJECTED_PROJECT_OWNERNSHIP": "OK. We'll contact the current project owner",
             "ACCEPT": "接受",
             "REJECT": "拒絕",
