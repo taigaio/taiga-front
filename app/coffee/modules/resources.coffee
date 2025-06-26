@@ -115,6 +115,7 @@ urls = {
     "userstory-downvote": "/userstories/%s/downvote"
     "userstory-watch": "/userstories/%s/watch"
     "userstory-unwatch": "/userstories/%s/unwatch"
+    "userstory-feedback": "/userstories-feedback"
 
     # Tasks
     "tasks": "/tasks"

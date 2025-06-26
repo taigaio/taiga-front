@@ -41,13 +41,14 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         "tgWysiwygService",
         "tgAttachmentsFullService",
         "$tgModel",
-        "$sce"
+        "$sce",
+        "tgCurrentUserService"
     ]
 
     constructor: (@scope, @rootscope, @repo, @confirm, @rs, @params, @q, @location,
                   @log, @appMetaService, @navUrls, @analytics, @translate, @modelTransform,
                   @errorHandlingService, @configService, @projectService, @wysiwigService,
-                  @attachmentsFullService, @tgmodel, @sce) ->
+                  @attachmentsFullService, @tgmodel, @sce, @tgCurrentUserService) ->
         bindMethods(@)
 
         @scope.usRef = @params.usref
@@ -68,6 +69,15 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
 
         # On Error
         promise.then null, @.onInitialDataError.bind(@)
+
+        @scope.isAdmin = @isAdmin
+        @scope.isRequestor = @isRequestor
+    
+    isAdmin: =>
+        user = @tgCurrentUserService.getUser()
+        return false unless user
+        roles = user.get('roles') or []
+        return roles.indexOf('Product Owner') isnt -1 and roles.indexOf('Stakeholder') isnt -1
 
     _setMeta: ->
         totalTasks = @scope.tasks.length

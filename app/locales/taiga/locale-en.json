@@ -18,7 +18,6 @@
         "COPY_TO_CLIPBOARD": "Copy to clipboard",
         "COPIED_TO_CLIPBOARD": "Text has been copied to clipboard",
         "MOVE_TO_TOP": "Move to top",
-        "MOVE_TO_TOP": "Move to top",
         "EDIT": "Edit",
         "DRAG": "Drag",
         "TAG_LINE": "Your agile, free, and open source project management tool",
@@ -165,7 +164,8 @@
             "VOTES": "Votes",
             "SPRINT": "Sprint",
             "DUE_DATE": "Due date",
-            "DUE_DATE_REASON": "Due date reason"
+            "DUE_DATE_REASON": "Due date reason",
+            "REQUESTORS": "Requestors"
         },
         "ROLES": {
             "ALL": "All points"
@@ -187,6 +187,12 @@
             "ADD": "Select assigned user",
             "ADD_ASSIGNED": "Add assigned",
             "TITLE_LIGHTBOX_DELETE_ASSIGNED": "Delete assigned..."
+        },
+        "REQUESTORS": {
+            "ADD": "Select requestor",
+            "ADD_REQUESTOR": "Add requestor",
+            "DELETE_REQUESTOR": "Delete requestor",
+            "TITLE_LIGHTBOX_DELETE_REQUESTOR": "Delete requestor..."
         },
         "STATUS": {
             "CLOSED": "Closed",
@@ -639,7 +645,7 @@
             "TITLE": "Severities",
             "SUBTITLE": "Specify the severities your issues will have",
             "ISSUE_TITLE": "Issue severities",
-            "ACTION_ADD": "Add new severity"
+            "ACTION_ADD": "Add a new custom field in issues"
         },
         "PROJECT_VALUES_STATUS": {
             "TITLE": "Statuses",
@@ -1968,5 +1974,16 @@
         "ZOOM-2": "Default",
         "ZOOM-3": "Detailed",
         "ZOOM-4": "Expanded"
+    },
+    "TASK_FEEDBACK": {
+        "ADD": "Add Feedback Button",
+        "EMPTY": "No feedback shared",
+        "LABEL":"Please provide feedback for assignee",
+        "PLACEHOLDER": "Don't Worry! This feedback is only visible to Admin and Requestors",
+        "SAVE":"SAVE",
+        "SECTION_NAME": "Feedback",
+        "RATING_REQUIRED": "( Rating is required )",
+        "TEXT_REQUIRED": "( Feedback text is required )",
+        "GENERIC_ERROR": "An unexpected error occurred. Please try again."
     }
 }

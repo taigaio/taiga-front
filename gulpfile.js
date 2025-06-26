@@ -694,7 +694,10 @@ gulp.task("express", function(cb) {
         res.sendFile("index.html", {root: __dirname + "/dist/"});
     });
 
-    app.listen(9001);
+    PORT = 9001
+    app.listen(PORT, function() {
+        console.log(`\nTaiga Frontend running at http://localhost:${PORT}\n`);
+    });
     cb();
 });
 

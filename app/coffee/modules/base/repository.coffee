@@ -40,10 +40,10 @@ class RepositoryService extends taiga.Service
 
         promise = @http.delete(url, {}, params)
         promise.success (data, status) ->
-            defered.resolve(model)
+            defered.resolve(data)
 
         promise.error (data, status) ->
-            defered.reject(model)
+            defered.reject(data)
 
         return defered.promise
 

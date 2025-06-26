@@ -1,0 +1,97 @@
+.div.feedbacks(ng-if="vm.canViewFeedbackSection()")
+    .feedback-header
+        span.feedback-title(translate="TASK_FEEDBACK.SECTION_NAME")
+        .options
+            .add-feedback(
+                tg-check-permission="modify_us"
+                title!="{{'TASK_FEEDBACK.ADD' | translate}}"
+                ng-if="vm.isRequestor() && !vm.hasSubmittedFeedback()"
+            )
+                button.btn-icon.add-feedback-button(
+                    type="button"
+                    variant="primary"
+                    ng-click="vm.displayFeedbackModal()"
+                )
+                    tg-svg(svg-icon="icon-add")
+    .feedback-list(ng-if="vm.feedbacks.length")
+        .feedback-item(ng-repeat="feedback in vm.feedbacks")
+            
+            .feedback-col-avatar
+                .feedback-avatar
+                    img(
+                        ng-if="feedback._avatar.url"
+                        ng-src="{{feedback._avatar.url}}"
+                        alt="{{feedback._avatar.fullName || feedback.user.full_name}}"
+                        style="background: {{feedback._avatar.bg}}"
+                    )
+                    .avatar-placeholder(ng-if="!feedback._avatar.url")
+                        span {{feedback.user.full_name.charAt(0)}}
+
+            .feedback-col-content
+                .feedback-row-user-date
+                    span.feedback-user-name {{feedback.user.full_name}}
+                    span.feedback-updated-at
+                        | {{feedback.updated_at | date:'medium'}}
+                        span(
+                            ng-if="feedback.updated_at !== feedback.created_at"
+                            style="margin-left: .5em;"
+                        ) (Edited)
+                .feedback-row-text-rating
+                    span.feedback-text {{feedback.feedback_text}}
+                    span.feedback-rating {{feedback.rating | uppercase}}
+            
+            .feedback-col-actions
+                button.btn-icon.edit-feedback-button(
+                    type="button"
+                    ng-if="feedback.user.id === (vm.currentUser && vm.currentUser.get('id'))"
+                    ng-click="vm.displayFeedbackModal(feedback)"
+                    title="{{'TASK_FEEDBACK.EDIT' | translate}}"
+                )
+                    tg-svg(svg-icon="icon-edit")
+    
+    .feedback-empty(ng-if="!vm.feedbacks.length")
+        div {{'TASK_FEEDBACK.EMPTY' | translate}}
+    
+    dialog#taskFeedbackDialog
+        button.close(type="button" ng-click="vm.closeFeedbackModal()")
+            tg-svg(svg-icon="icon-close")
+        form.feedback-modal-content(name="feedbackForm" ng-submit="vm.submitFeedback()" novalidate)
+            h2(translate="TASK_FEEDBACK.SECTION_NAME")
+            //- Feedback Rating Options
+            .feedback-radios
+                label.radio-item(ng-repeat="option in vm.ratingOptions")
+                    input(
+                        type="radio"
+                        name="feedbackRating"
+                        ng-model="vm.selectedRating"
+                        ng-value="option.value"
+                        required
+                    )
+                    span {{option.label}}
+                span.feedback-error-msg-inline(ng-if="feedbackForm.feedbackRating.$invalid && feedbackForm.$submitted")
+                    | {{'TASK_FEEDBACK.RATING_REQUIRED' | translate}}
+            //- Feedback Text Area
+            div.feedback-field
+                div
+                    label.feedback-label(for="feedbackTextArea")
+                        | {{'TASK_FEEDBACK.LABEL' | translate}}
+                    span.feedback-error-msg-inline(ng-if="feedbackForm.feedbackText.$invalid && feedbackForm.$submitted")
+                        | {{'TASK_FEEDBACK.TEXT_REQUIRED' | translate}}
+                textarea#feedbackTextArea.feedback-textarea(
+                    autofocus
+                    name="feedbackText"
+                    ng-model="vm.feedbackText"
+                    placeholder="{{'TASK_FEEDBACK.PLACEHOLDER' | translate}}"
+                    ng-required="true"
+                    ng-maxlength="500"
+                    rows="4"
+                )
+            //- Feedback Actions
+            .feedback-actions
+                button.btn-big.feedback-submit(type="submit")
+                    | {{'TASK_FEEDBACK.SAVE' | translate}}
+                button.feedback-bin(type="button" ng-click="vm.deleteFeedback()")
+                    tg-svg(svg-icon="icon-trash")
+            //- Server error message
+            .feedback-server-error(ng-class="{'is-visible': vm.error}")
+                span(ng-if="vm.error") {{vm.error}}

@@ -1,0 +1,53 @@
+//- This source code is licensed under the terms of the
+//- GNU Affero General Public License found in the LICENSE file in
+//- the root directory of this source tree.
+//-
+//- Copyright (c) 2025-present Kaleidos INC
+
+.ticket-section-label
+    span {{ 'COMMON.FIELDS.REQUESTORS'|translate }}
+    span(ng-if="requestors.length > visibleRequestorsCount && !displayHidden") &nbsp;({{ requestors.length }})
+
+.ticket-user-list-container
+    div.loading-container(ng-show="loading")
+        img.loading-spinner(
+            src="#{v}/svg/spinner-circle.svg",
+            alt="{{'COMMON.LOADING' | translate}}"
+        )
+    .ticket-user-list-content(ng-class="{ 'loading': loading }")
+        .ticket-user-list
+            div(ng-repeat="requestor in requestors track by requestor.id")
+                .user-list-single(
+                    ng-if="($index + 1 <= visibleRequestorsCount) || displayHidden"
+                    ng-class="{ 'read-only': !isAdmin() }"
+                )
+                    .user-list-avatar
+                        img(
+                            tg-avatar="requestor"
+                            alt="{{requestor.full_name_display}}"
+                        )
+                    .user-list-name
+                        span {{requestor.full_name_display}}
+
+                    tg-svg.remove-user(
+                        ng-if="isAdmin()",
+                        svg-icon="icon-close",
+                        title="{{'COMMON.REQUESTORS.DELETE_REQUESTOR' | translate}}"
+                        data-user-id="{{ requestor.id }}"
+                    )
+
+        a.ticket-section-unfold(
+            href=""
+            ng-if="requestors.length > visibleRequestorsCount"
+            ng-click="toggleFold()"
+            ng-class="{ active: displayHidden }"
+            role="button"
+        )
+            tg-svg(svg-icon="icon-view-more")
+
+        .ticket-users-actions(ng-if="isAdmin()")
+            a.ticket-users-action(
+                ng-click="addRequestors()"
+            )
+                tg-svg.users-action.icon(svg-icon="icon-add")
+                span {{ "COMMON.REQUESTORS.ADD_REQUESTOR" | translate }}
