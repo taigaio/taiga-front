@@ -211,42 +211,42 @@
             "COUNTER_TITLE": "{total, plural, =1{one vote} other{# votes}}"
         },
         "PROMOTE_TO_US": "Promova para a história do usuário",
-        "PROMOTED_ISSUES": "This issue has been promoted to",
+        "PROMOTED_ISSUES": "Esta questão foi promovida para",
         "PROMOTED_TASKS": "Este task foi promovido para",
         "CONFIRM_PROMOTE": {
             "ISSUE": {
                 "TITLE": "Promover esse problema para nova história de usuário",
-                "MESSAGE": "Are you sure you want to create a new user story from this issue?"
+                "MESSAGE": "Tem certeza de que deseja criar uma nova história de usuário a partir deste problema?"
             },
             "TASK": {
-                "TITLE": "Promote this task to a new user story",
-                "MESSAGE": "Are you sure you want to create a new user story from this task?"
+                "TITLE": "Promova esta tarefa para uma nova história de usuário",
+                "MESSAGE": "Tem certeza de que deseja criar uma nova história de usuário a partir desta tarefa?"
             }
         },
         "CUSTOM_ATTRIBUTES": {
             "CUSTOM_FIELDS": "Campos Personalizados",
-            "SAVE": "Save custom field",
-            "EDIT": "Edit custom field",
-            "DELETE": "Delete custom fields",
-            "CONFIRM_DELETE": "Remember that all values in this custom field will be deleted."
+            "SAVE": "Salvar campo personalizado",
+            "EDIT": "Editar campo personalizado",
+            "DELETE": "Excluir campos personalizados",
+            "CONFIRM_DELETE": "Lembre-se de que todos os valores neste campo personalizado serão excluídos."
         },
         "FILTERS": {
-            "INPUT_PLACEHOLDER": "subject or reference",
+            "INPUT_PLACEHOLDER": "assunto ou referência",
             "TITLE_ACTION_FILTER_BUTTON": "procurar",
             "TITLE": "Filtros personalizados",
             "TITLE_ACTION_SEARCH": "Procurar",
             "ACTION_ADD": "Adicionar",
-            "ACTION_SAVE_CUSTOM_FILTER": "save filter",
+            "ACTION_SAVE_CUSTOM_FILTER": "salvar filtro",
             "PLACEHOLDER_FILTER_NAME": "Digite o nome do filtro e pressione Enter",
             "APPLIED_FILTERS_NUM": "filtros aplicados",
-            "TITLE_ADVANCED_FILTER": "Advanced",
-            "LENGTH_ZERO_ERROR": "Please add a filter name",
-            "REPEATED_FILTER_ERROR": "This filter name is already in use",
+            "TITLE_ADVANCED_FILTER": "Avançado",
+            "LENGTH_ZERO_ERROR": "Por favor, adicione um nome de filtro",
+            "REPEATED_FILTER_ERROR": "Este nome de filtro já está em uso",
             "ADVANCED_FILTERS": {
-                "INCLUDE": "Include",
-                "EXCLUDE": "Exclude",
-                "INCLUDED": "Filtered by:",
-                "EXCLUDED": "Excluded:"
+                "INCLUDE": "Incluir",
+                "EXCLUDE": "Excluir",
+                "INCLUDED": "Filtrado por:",
+                "EXCLUDED": "Excluídos:"
             },
             "CATEGORIES": {
                 "TYPE": "Tipo",
@@ -477,7 +477,7 @@
         "TITLE_LIGHTBOX_DELETE_ATTACHMENT": "Excluir anexo...",
         "MSG_LIGHTBOX_DELETE_ATTACHMENT": "o anexo '{{fileName}}'",
         "ERROR_DELETE_ATTACHMENT": "Não fomos capazes de excluir: {{errorMessage}}",
-        "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) is too heavy for the Taiga, try it with a file smaller than ({{maxFileSize}})"
+        "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) é muito pesado para o Taiga, tente com um arquivo menor que ({{maxFileSize}})"
     },
     "PAGINATION": {
         "PREVIOUS": "Anterior",
@@ -513,8 +513,8 @@
             "LOADING_MESSAGE": "Por favor, não feche esta pagina.",
             "ASYNC_MESSAGE": "Enviaremos um email para você assim que estiver pronto.",
             "SYNC_MESSAGE": "Se a descarga não iniciar automaticamente clique <a href='{{url}}' título da descarga='Download do arquivo de dump'>aqui</a>.",
-            "ERROR": "The Taiga has some problems generating your dump. Please try it again.",
-            "ERROR_BUSY": "Sorry, the Taiga is experiencing heavy load right now. Please try again in a few minutes."
+            "ERROR": "O Taiga está com problemas para gerar seu dump. Tente novamente.",
+            "ERROR_BUSY": "Desculpe, o Taiga está com carga pesada no momento. Tente novamente em alguns minutos."
         },
         "MODULES": {
             "TITLE": "Modulos",
@@ -579,9 +579,9 @@
             "DESCRIPTION": "Baixe o arquivo CSV ou copie a URL gerada e abra no seu editor de texto favorito ou planilha para fazer seu próprio relatório. Você poderá visualizar e analisar todos os seus dados facilmente.",
             "HELP": "Como utilizar isto em minha própria planilha?",
             "REGENERATE_TITLE": "Mudar URL",
-            "REGENERATE_SUBTITLE": "You are going to change the CSV data access url. The previous url will be disabled. Are you sure?",
+            "REGENERATE_SUBTITLE": "Você vai alterar a URL de acesso aos dados CSV. A URL anterior será desativada. Tem certeza?",
             "DELETE_TITLE": "Apagar URL",
-            "DELETE_SUBTITLE": "You are going to delete the current CSV data access url. Are you sure?"
+            "DELETE_SUBTITLE": "Você vai excluir a URL de acesso aos dados CSV atual. Tem certeza?"
         },
         "CSV": {
             "SECTION_TITLE_EPIC": "relatórios de épicos",
@@ -624,7 +624,7 @@
         "PROJECT_VALUES_POINTS": {
             "TITLE": "Pontos",
             "SUBTITLE": "Especifique os pontos em que suas histórias de usuários poderiam ser estimados",
-            "US_TITLE": "User story points",
+            "US_TITLE": "Pontos da história do usuário",
             "ACTION_ADD": "Adicionar novo ponto"
         },
         "PROJECT_VALUES_PRIORITIES": {
@@ -666,28 +666,28 @@
         },
         "PROJECT_DUE_DATE_STATUS": {
             "TITLE": "Datas de Vencimento",
-            "SUBTITLE": "Defina os status que suas histórias de usuário, tarefas e issues percorrerão ao serem selecionadas.",
-            "US_TITLE": "User Story Due Date status",
+            "SUBTITLE": "Defina os status que suas histórias de usuário, tarefas e issues percorrerão ao serem selecionadas",
+            "US_TITLE": "Status da data de vencimento da história do usuário",
             "ACTION_ADD_STATUS": "Adicionar novo status",
-            "TASK_TITLE": "Task Due Date status",
-            "ISSUE_TITLE": "Issue Due Date status",
-            "DAYS_TO_DUE_DATE": "Days to due date",
-            "BEFORE_AFTER": "Before/after",
-            "BEFORE": "Before",
-            "AFTER": "Past"
+            "TASK_TITLE": "Status da data de vencimento da tarefa",
+            "ISSUE_TITLE": "Status da data de vencimento da emissão",
+            "DAYS_TO_DUE_DATE": "Dias até a data de vencimento",
+            "BEFORE_AFTER": "Antes/depois",
+            "BEFORE": "Antes",
+            "AFTER": "Passado"
         },
         "PROJECT_KANBAN_OPTIONS": {
-            "TITLE": "Kanban options",
-            "SUBTITLE": "Enable swimlanes to use in your workflow and set WIP limits to restrict the maximun number of user stories on each status.",
-            "SWIMLANES": "Swimlanes",
-            "ACTION_ADD_SWIMLANE": "New swimlane",
-            "SWIMLANE_NAME_EXISTS": "This swimlane name already exists",
-            "NO_SWIMLANES": "There are no swimlanes yet",
-            "SWIMLANE_NAME": "Swimlane name",
-            "POPUP_NEW_SWIMLANE": "If you had some user stories created, you will find them on this swimlane.",
+            "TITLE": "Opções Kanban",
+            "SUBTITLE": "Habilite raias para usar em seu fluxo de trabalho e defina limites de WIP para restringir o número máximo de histórias de usuário em cada status.",
+            "SWIMLANES": "Raias",
+            "ACTION_ADD_SWIMLANE": "Nova raia",
+            "SWIMLANE_NAME_EXISTS": "Este nome de raia já existe",
+            "NO_SWIMLANES": "Ainda não há raias",
+            "SWIMLANE_NAME": "Nome da raia",
+            "POPUP_NEW_SWIMLANE": "Se você tiver criado algumas histórias de usuário, você as encontrará nesta raia.",
             "WIP_LIMITS": "WIP LIMITS",
-            "WIP_LIMIT_PLACEHOLDER": "WIP limit not set",
-            "WIP_LIMIT_INPUT": "Set WIP limit",
+            "WIP_LIMIT_PLACEHOLDER": "Limite de WIP não definido",
+            "WIP_LIMIT_INPUT": "Definir limite de WIP",
             "DEFAULT": "Default"
         },
         "ROLES": {
@@ -707,7 +707,7 @@
         "THIRD_PARTIES": {
             "SECRET_KEY": "Chave secreta",
             "PAYLOAD_URL": "URL da Payload",
-            "VALID_IPS": "Valid source IPs (separated by ,)"
+            "VALID_IPS": "IPs de origem válidos (separados por ,)"
         },
         "BITBUCKET": {
             "SECTION_NAME": "Bitbucket",
@@ -755,14 +755,14 @@
         "CUSTOM_ATTRIBUTES": {
             "PAGE_TITLE": "{{sectionName}} - Atributos personalizados - {{projectName}}",
             "ADD": "Adicionar campos personalizados",
-            "EDIT": "Edit custom field",
-            "DELETE": "Delete custom field",
-            "SAVE_TITLE": "Save custom field",
+            "EDIT": "Editar campo personalizado",
+            "DELETE": "Excluir campo personalizado",
+            "SAVE_TITLE": "Salvar campo personalizado",
             "CANCEL_TITLE": "Cancelar criação",
             "SET_FIELD_NAME": "Definir nome do seu campo personalizados",
             "SET_FIELD_DESCRIPTION": "Definir a descrição do seu campo personalizado",
             "FIELD_TYPE_DEFAULT": "-- selecionar --",
-            "ACTION_UPDATE": "Update custom field",
+            "ACTION_UPDATE": "Atualizar campo personalizado",
             "ACTION_CANCEL_EDITION": "Cancelar edição"
         },
         "MEMBERSHIP": {
@@ -791,7 +791,7 @@
         },
         "STATUS": {
             "PLACEHOLDER_WRITE_STATUS_NAME": "Digite um nome para o novo status",
-            "PLACEHOLDER_DAYS_TO_DUE_DATE": "Write a number of days to due date"
+            "PLACEHOLDER_DAYS_TO_DUE_DATE": "Escreva o número de dias até a data de vencimento"
         },
         "TYPES": {
             "PLACEHOLDER_WRITE_NAME": "Escreva o nome do novo elemento"
@@ -800,7 +800,7 @@
             "ACTION_ADD_STATUS": "Adicionar novo status",
             "IS_ARCHIVED_COLUMN": "Arquivado",
             "IS_CLOSED_COLUMN": "Fechado",
-            "WIP_LIMIT_COLUMN": "WIP limit",
+            "WIP_LIMIT_COLUMN": "Limite de WIP",
             "PLACEHOLDER_WRITE_NAME": "Digite um nome para o novo status"
         },
         "MENU": {
@@ -819,7 +819,7 @@
             "CUSTOM_FIELDS": "Campos personalizados",
             "TAGS": "Tags",
             "DUE_DATES": "Datas de vencimento",
-            "KANBAN_OPTIONS": "Kanban options"
+            "KANBAN_OPTIONS": "Opções Kanban"
         },
         "SUBMENU_ROLES": {
             "TITLE": "Funções",
@@ -906,9 +906,9 @@
         "HELP": "Reorganize seus projetos para colocar os mais usados no topo.<br/> Os 4 primeiros aparecerão na lista de projetos da barra de navegação superior",
         "PRIVATE": "Projeto Privado",
         "LOOKING_FOR_PEOPLE": "Este projeto esta a procura de colaboradores",
-        "FANS_COUNTER_TITLE": "{total, plural, =1{one fan} other{# fans}}",
-        "WATCHERS_COUNTER_TITLE": "{total, plural, =1{one watcher} other{# watchers}}",
-        "MEMBERS_COUNTER_TITLE": "{total, plural, =1{one member} other{# members}}",
+        "FANS_COUNTER_TITLE": "{total, plural, =1{one fan} outro{# fãs}}",
+        "WATCHERS_COUNTER_TITLE": "{total, plural, =1{one watcher} outro{# watchers}}",
+        "MEMBERS_COUNTER_TITLE": "{total, plural, =1{one member} outro{# members}}",
         "BLOCKED_PROJECT": {
             "BLOCKED": "Projeto bloqueado",
             "THIS_PROJECT_IS_BLOCKED": "Este projeto está temporariamente bloqueado",
@@ -926,22 +926,22 @@
             "MEETUP": "Meetup",
             "SETTINGS": "Configurações",
             "SCRUM": "Scrum",
-            "COLLAPSE_MENU": "collapse menu"
+            "COLLAPSE_MENU": "recolher menu"
         },
         "NAVIGATION": {
             "PROJECTS": "Projetos",
             "ACCOUNT_SETTINGS": "Configurações de Conta",
-            "ACTION_CREATE_PROJECT": "New project",
+            "ACTION_CREATE_PROJECT": "Novo projeto",
             "ACTION_CREATE_PROJECT_FIRST": "Crie seu primeiro projeto",
             "ACTION_CREATE_PROJECT_FIRST_TEXT": "Você ainda não tem nenhum projeto. Crie um agora, convide sua equipe e comece a aproveitar o Taiga ao máximo.",
-            "VIEW_ALL_PROJECTS": "View all projects",
+            "VIEW_ALL_PROJECTS": "Ver todos os projetos",
             "MANAGE_PROJECTS": "Gerenciar projetos",
             "TITLE_CREATE_PROJECT": "Criar projeto",
             "HELP_TITLE": "Ajuda",
             "HOMEPAGE": "Página pessoal",
             "TAIGA_RESOURCES_TITLE": "Go to Taiga resources",
             "TAIGA_RESOURCES": "Taiga Resources",
-            "FEEDBACK_TITLE": "Write to us with your feedback",
+            "FEEDBACK_TITLE": "Envie seu feedback para nós",
             "FEEDBACK": "Pergunte algo",
             "NOTIFICATIONS_TITLE": "Editar suas configurações de notificações",
             "NOTIFICATIONS": "Notificações",
@@ -962,13 +962,13 @@
             "LIKED": "Curtiu",
             "UNLIKE": "Descurtir",
             "BUTTON_TITLE": "Curtir ou descurtir este projeto",
-            "COUNTER_TITLE": "{total, plural, =1{one fan} other{# fans}}"
+            "COUNTER_TITLE": "{total, plural, =1{one fan} outro{# fans}}"
         },
         "WATCH_BUTTON": {
             "BUTTON_TITLE": "Observar este projeto e definir política de notificação",
             "WATCH": "Observar",
             "WATCHING": "Observando",
-            "COUNTER_TITLE": "{total, plural, =1{one watcher} other{# watchers}}",
+            "COUNTER_TITLE": "{total, plural, =1{one watcher} outro{# watchers}}",
             "OPTIONS": {
                 "NOTIFY_ALL": "receber todas notificações",
                 "NOTIFY_ALL_TITLE": "Receber todas notificações para este projeto",
@@ -998,7 +998,7 @@
             "INVITE": "Convidar para o projeto",
             "SOLO_PROJECT": "Você estará sozinho neste projeto",
             "INVITE_LATER": "(Você poderá convidar mais membros depois)",
-            "BACK": "Back",
+            "BACK": "Voltar",
             "MAX_PRIVATE_PROJECTS": "Infelizmente, você atingiu o número máximo de projetos privados.\nSe você quiser aumentar o limite atual, entre em contato com o administrador.",
             "MAX_PUBLIC_PROJECTS": "Infelizmente, você atingiu o número máximo de projetos públicos.\nSe você quiser aumentar o limite atual, entre em contato com o administrador.",
             "PUBLIC_PROJECT": "Projeto Público",
@@ -1017,12 +1017,12 @@
         "IMPORT": {
             "TITLE": "Importar Projeto",
             "DESCRIPTION": "Importar seu projeto de múltiplas plataformas para o Taiga",
-            "ASYNC_IN_PROGRESS_TITLE": "The Taiga is importing your project",
+            "ASYNC_IN_PROGRESS_TITLE": "A Taiga está importando seu projeto",
             "ASYNC_IN_PROGRESS_MESSAGE": "Este processo pode levar alguns minutos <br/> Enviaremos um email a você assim que estiver pronto",
             "UPLOAD_IN_PROGRESS_MESSAGE": "Enviado {{uploadedSize}} de {{totalSize}}",
-            "ERROR": "The Taiga has some problems importing your dump data. Please try again.",
-            "ERROR_TOO_MANY_REQUEST": "Sorry, the Taiga is experiencing heavy load right now. Please try again in a few minutes.",
-            "ERROR_MESSAGE": "The Taiga has some problems importing your dump data: {{error_message}}",
+            "ERROR": "O Taiga encontrou problemas ao importar seus dados exportados. Por favor, tente novamente.",
+            "ERROR_TOO_MANY_REQUEST": "Desculpe, o Taiga está com carga pesada no momento. Tente novamente em alguns minutos.",
+            "ERROR_MESSAGE": "O Taiga não conseguiu importar seus dados: {{error_message}}",
             "ERROR_MAX_SIZE_EXCEEDED": "'{{fileName}}' ({{fileSize}}) is too heavy for the Taiga, try it with a file smaller than ({{maxFileSize}})",
             "SYNC_SUCCESS": "Seu projeto foi importado com sucesso",
             "IMPORT": "Importar",
