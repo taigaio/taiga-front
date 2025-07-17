@@ -163,7 +163,7 @@
             "REF": "Ref",
             "VOTES": "Votos",
             "SPRINT": "Sprint",
-            "DUE_DATE": "Data de vencimento.",
+            "DUE_DATE": "Data de vencimento",
             "DUE_DATE_REASON": "Motivo da data de vencimento"
         },
         "ROLES": {
@@ -531,7 +531,7 @@
             "ISSUES": "Problemas",
             "ISSUES_DESCRIPTION": "Acompanhe os bugs, problemas e melhorias relacionados ao seu projeto. Não perca nada!",
             "WIKI": "Wiki",
-            "WIKI_DESCRIPTION": "Add, modify, or delete content in collaboration with others. This is the right place for your project's documentation.",
+            "WIKI_DESCRIPTION": "Adicione, modifique ou exclua conteúdo em colaboração com outras pessoas. Este é o lugar certo para a documentação do seu projeto.",
             "MEETUP": "Reunião",
             "MEETUP_DESCRIPTION": "Selecione seu sistema de videoconferência.",
             "SELECT_VIDEOCONFERENCE": "Selecione um sistema de videoconferência",
@@ -641,7 +641,7 @@
         },
         "PROJECT_VALUES_STATUS": {
             "TITLE": "Status",
-            "SUBTITLE": "Add, remove or edit the color and name of the statuses your epics, user stories, task and issues will go through.",
+            "SUBTITLE": "Adicione, remova ou edite a cor e o nome dos status pelos quais seus épicos, histórias de usuário, tarefas e problemas passarão.",
             "EPIC_TITLE": "Estados do Épico",
             "US_TITLE": "Status de história de usuário",
             "TASK_TITLE": "Estados da Tarefa",
@@ -665,8 +665,8 @@
             "SELECTED": "Selecionado"
         },
         "PROJECT_DUE_DATE_STATUS": {
-            "TITLE": "Due Dates",
-            "SUBTITLE": "Specify the due dates status your user stories, tasks and issues will go through if selected",
+            "TITLE": "Datas de Vencimento",
+            "SUBTITLE": "Defina os status que suas histórias de usuário, tarefas e issues percorrerão ao serem selecionadas.",
             "US_TITLE": "User Story Due Date status",
             "ACTION_ADD_STATUS": "Adicionar novo status",
             "TASK_TITLE": "Task Due Date status",
@@ -693,7 +693,7 @@
         "ROLES": {
             "PAGE_TITLE": "Funções - {{projectName}}",
             "WARNING_NO_ROLE": "Seja cuidadoso, nenhuma função em seu projeto será capaz de estimar o valor dos pontos para as histórias de usuários",
-            "HELP_ROLE_ENABLED": "This role is part of the roles involved in estimating user story points.",
+            "HELP_ROLE_ENABLED": "Esta função faz parte das funções envolvidas na estimativa de pontos da história do usuário.",
             "DISABLE_COMPUTABLE_ALERT_TITLE": "Você tem certeza que quer desativar esta permissão de estimativas?",
             "DISABLE_COMPUTABLE_ALERT_SUBTITLE": "Se você desativar a permissão de estimativas para esta regra {{roleName}} todas estimativas feitas anteriormente por esta regra serão removidas",
             "COUNT_MEMBERS": "{{ role.members_count }} membros com a mesma função",
@@ -818,7 +818,7 @@
             "TYPES": "Tipos",
             "CUSTOM_FIELDS": "Campos personalizados",
             "TAGS": "Tags",
-            "DUE_DATES": "Due dates",
+            "DUE_DATES": "Datas de vencimento",
             "KANBAN_OPTIONS": "Kanban options"
         },
         "SUBMENU_ROLES": {
@@ -930,10 +930,10 @@
         },
         "NAVIGATION": {
             "PROJECTS": "Projetos",
-            "ACCOUNT_SETTINGS": "Account settings",
+            "ACCOUNT_SETTINGS": "Configurações de Conta",
             "ACTION_CREATE_PROJECT": "New project",
-            "ACTION_CREATE_PROJECT_FIRST": "Create your first project",
-            "ACTION_CREATE_PROJECT_FIRST_TEXT": "You don’t have any projects yet. Create one now, invite your team and start using Taiga to the fullest.",
+            "ACTION_CREATE_PROJECT_FIRST": "Crie seu primeiro projeto",
+            "ACTION_CREATE_PROJECT_FIRST_TEXT": "Você ainda não tem nenhum projeto. Crie um agora, convide sua equipe e comece a aproveitar o Taiga ao máximo.",
             "VIEW_ALL_PROJECTS": "View all projects",
             "MANAGE_PROJECTS": "Gerenciar projetos",
             "TITLE_CREATE_PROJECT": "Criar projeto",
@@ -1006,8 +1006,8 @@
         },
         "COMMON": {
             "DETAILS": "Detalhes do novo projeto",
-            "PROJECT_TITLE": "Project Name (Required)",
-            "PROJECT_DESCRIPTION": "Project Description (Required)"
+            "PROJECT_TITLE": "Nome do Projeto (Obrigatório)",
+            "PROJECT_DESCRIPTION": "Descrição do Projeto (Obrigatório)"
         },
         "DUPLICATE": {
             "TITLE": "Duplicar Projeto",
@@ -1489,7 +1489,7 @@
             "EMPTY": "Ainda não temos sprints",
             "WARNING_EMPTY_SPRINT_ANONYMOUS": "This sprint has no user stories",
             "WARNING_EMPTY_SPRINT": "Solte aqui Histórias do seu backlog para iniciar uma nova sprint",
-            "TITLE_ACTION_NEW_SPRINT": "Add a sprint",
+            "TITLE_ACTION_NEW_SPRINT": "Adicionar um sprint",
             "TEXT_ACTION_NEW_SPRINT": "Você poderá querer criar uma nova sprint em seu projeto",
             "ACTION_SHOW_CLOSED_SPRINTS": "Mostrar sprints fechadas",
             "ACTION_HIDE_CLOSED_SPRINTS": "Esconder sprints fechadas"
@@ -1660,7 +1660,7 @@
         "SECTION_NAME": "Kanban",
         "TITLE_ACTION_FOLD": "Recolher coluna",
         "TITLE_ACTION_UNFOLD": "Abrir coluna",
-        "TITLE_ACTION_ADD_US": "Add new user story",
+        "TITLE_ACTION_ADD_US": "Adicionar nova história de usuário",
         "TITLE_ACTION_ADD_BULK": "Add new bulk",
         "ACTION_SHOW_ARCHIVED": "Mostrar arquivados",
         "ACTION_HIDE_ARCHIVED": "esconder arquivados",
@@ -1731,24 +1731,24 @@
             "OPTION_NONE": "Nada"
         },
         "PROJECT_SETTINGS": {
-            "SET_START_PAGES": "Set start pages",
-            "START_PAGES_PER_PROJECT": "Set start pages per project",
+            "SET_START_PAGES": "Definir páginas iniciais",
+            "START_PAGES_PER_PROJECT": "Definir páginas iniciais por projeto",
             "COLUMN_PROJECT": "Projeto",
             "COLUMN_STARTPAGE": "Start page",
             "DEFAULT_VALUE": "Default"
         },
         "EVENTS": {
             "SECTION_NAME": "Events",
-            "SECTION_DESCRIPTION": "Important events in Taiga header",
-            "SECTION_DESCRIPTION_EXPANDED": "(direct mentions, updates in items that you are watching...)",
-            "COLUMN_ENABLED": "Enabled",
+            "SECTION_DESCRIPTION": "Eventos importantes no cabeçalho Taiga",
+            "SECTION_DESCRIPTION_EXPANDED": "(Menções diretas, atualizações em itens que você está acompanhando...)",
+            "COLUMN_ENABLED": "Habilitado",
             "COLUMN_PROJECT": "Projeto"
         }
     },
     "USER_PROFILE": {
         "ACTION_USE_GRAVATAR": "Usar imagem padrão",
         "ACTION_DELETE_ACCOUNT": "Excluir conta Taiga",
-        "ACTION_DOWNLOAD_PROFILE": "Download Taiga profile",
+        "ACTION_DOWNLOAD_PROFILE": "Baixar perfil do Taiga",
         "ACTION_VERIFY_EMAIL": "Verify your email",
         "CHANGE_EMAIL_SUCCESS": "<strong>Verifique sua caixa de entrada!</strong><br />Enviamos um e-mail para sua conta<br />com as instruções para definir seu novo endereço",
         "VERIFY_EMAIL_SUCCESS": "<strong>Check your inbox!</strong><br />We have sent you an email<br />with instructions on how to verify your address",
@@ -1837,7 +1837,7 @@
         "NEW_COMMENT_TASK": "{{username}} comentou na tarefa {{obj_name}}",
         "NEW_COMMENT_EPIC": "{{username}} comentou no épico {{obj_name}}",
         "NEW_MEMBER": "{{project_name}} tem um membro novo",
-        "US_ADDED_MILESTONE": "{{username}} has added the user story {{obj_name}} to {{sprint_name}}",
+        "US_ADDED_MILESTONE": "{{username}} adicionou a história do usuário {{obj_name}} a {{sprint_name}}",
         "US_MOVED": "{{username}} has moved the user story {{obj_name}}",
         "US_REMOVED_FROM_MILESTONE": "{{username}} has added the user story {{obj_name}} to the backlog",
         "BLOCKED": "{{username}} bloqueou {{obj_name}}",
@@ -1853,7 +1853,7 @@
         "TITLE": "Events",
         "MY_EVENTS": "My events",
         "DISMISS_ALL": "Dismiss all",
-        "VIEW_ALL": "View all notifications",
+        "VIEW_ALL": "Ver todas as notificações",
         "NO_NEW_EVENTS": "No new events",
         "NO_EVENTS_YET": "There are no events yet",
         "ASSIGNED_YOU": "{{username}} assigned you to {{obj_name}}",
