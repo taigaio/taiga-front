@@ -1508,9 +1508,9 @@
         "PAGE_DESCRIPTION": "Sprint {{sprintName}} (de{{startDate}} até {{endDate}}) para {{projectName}}. Completos {{completedPercentage}}% ({{completedPoints}} de {{totalPoints}} pontos). {{openTasks}} tarefas abertas de {{totalTasks}}.",
         "SECTION_NAME": "Quadro de Tarefas",
         "TITLE_ACTION_ADD": "Adicionar uma nova tarefa",
-        "TITLE_ACTION_ADD_BULK": "Adicione algumas novas tarefas em massa",
+        "TITLE_ACTION_ADD_BULK": "Adicione algumas novas tarefas em lote",
         "TITLE_ACTION_ADD_ISSUE": "Adicionar um novo problema",
-        "TITLE_ACTION_ADD_ISSUE_BULK": "Add some new issues in bulk",
+        "TITLE_ACTION_ADD_ISSUE_BULK": "Criar novos problemas em lote",
         "TITLE_ACTION_ASSIGN": "Assinalar tarefa",
         "PLACEHOLDER_CARD_TITLE": "This could be a user story",
         "PLACEHOLDER_CARD_TEXT": "Go to the <a href=\"{{ backlogUrl }}\" title=\"Go to backlog\">backlog</a> and drag user stories to this sprint; split the stories into tasks to track them separately.",
@@ -1661,7 +1661,7 @@
         "TITLE_ACTION_FOLD": "Recolher coluna",
         "TITLE_ACTION_UNFOLD": "Abrir coluna",
         "TITLE_ACTION_ADD_US": "Adicionar nova história de usuário",
-        "TITLE_ACTION_ADD_BULK": "Add new bulk",
+        "TITLE_ACTION_ADD_BULK": "Adicionar novos em lote",
         "ACTION_SHOW_ARCHIVED": "Mostrar arquivados",
         "ACTION_HIDE_ARCHIVED": "esconder arquivados",
         "US_NOT_FOUND_TITLE": "No matching results found",
@@ -1931,7 +1931,7 @@
             },
             "STEP3": {
                 "TITLE": "Adicionando Histórias de Usuários",
-                "TEXT1": "You may want to add a single user story (add user story icon) or a group of them (bulk icon)",
+                "TEXT1": "Você pode querer adicionar uma única história de usuário (ícone de adição de história de usuário) ou um grupo delas (ícone em lote)",
                 "TEXT2": "Boa Sorte!"
             }
         }
