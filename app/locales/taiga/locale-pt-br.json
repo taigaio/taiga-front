@@ -1330,7 +1330,7 @@
         "TITLE_LINK_TASKBOARD": "Ir para o quadro de tarefas",
         "TOTAL_POINTS": "total de pontos",
         "ADD": "história de usuário",
-        "ADD_BULK": "Adicione algumas novas histórias de usuários em massa",
+        "ADD_BULK": "Adicione algumas novas histórias de usuários em lote",
         "PROMOTED_FROM_ISSUE": "Esta história de usuário foi promovida a partir do problema:",
         "PROMOTED_FROM_TASK": "Esta história de usuário foi promovida da tarefa:",
         "CONVERTED_FROM_TASK": "Esta história de usuário era originalmente uma tarefa.",
@@ -1452,12 +1452,12 @@
             "TITLE": "Projeção de velocidade",
             "BACKLOG": "retornar ao backlog",
             "NEW_SPRINT": "Histórias de usuário candidatas para sua próxima sprint com base na sua velocidade",
-            "CURRENT_SPRINT": "Histórias de usuário candidatas para sua próxima sprint com base na sua velocidade. Clique para adicionar à sprint atual.",
-            "ADD_NEW_SPRINT": "create sprint and add US",
-            "ADD_NEW_SPRINT_SHORT": "create sprint"
+            "CURRENT_SPRINT": "Histórias de usuário candidatas para sua próxima sprint com base na sua velocidade. Clique para adicionar ao sprint atual.",
+            "ADD_NEW_SPRINT": "Criar sprint e adicionar história de usuário",
+            "ADD_NEW_SPRINT_SHORT": "criar sprint"
         },
         "TABLE": {
-            "COLUMN_US": "User Story",
+            "COLUMN_US": "História de usuário",
             "TITLE_COLUMN_POINTS": "Selecionar exibição por função"
         },
         "SPRINT_SUMMARY": {
@@ -1465,7 +1465,7 @@
             "COMPLETED_POINTS": "pontos <br />completados",
             "OPEN_TASKS": "tarefas<br />abertas",
             "CLOSED_TASKS": "tarefas<br />fechadas",
-            "IOCAINE_DOSES": "iocaine<br />doses",
+            "IOCAINE_DOSES": "iocaina<br />doses",
             "SHOW_STATISTICS_TITLE": "Mostrar estatísticas",
             "TOGGLE_BAKLOG_GRAPH": "Mostrar/Esconder gráfico de burndown",
             "POINTS_PER_ROLE": "Pontos por regra"
@@ -1479,7 +1479,7 @@
         "FILTERS": {
             "TOGGLE": "Alternar visibilidade de filtros",
             "TITLE": "Filtros",
-            "HIDE_TITLE": "Hide filters"
+            "HIDE_TITLE": "Ocultar filtros"
         },
         "SPRINTS": {
             "TITLE": "SPRINTS",
@@ -1487,7 +1487,7 @@
             "LINK_TASKBOARD": "Quadro de tarefas da Sprint",
             "TITLE_LINK_TASKBOARD": "ir para quadro de tarefas de \"{{name}}\"",
             "EMPTY": "Ainda não temos sprints",
-            "WARNING_EMPTY_SPRINT_ANONYMOUS": "This sprint has no user stories",
+            "WARNING_EMPTY_SPRINT_ANONYMOUS": "Este sprint não possui histórias de usuários",
             "WARNING_EMPTY_SPRINT": "Solte aqui Histórias do seu backlog para iniciar uma nova sprint",
             "TITLE_ACTION_NEW_SPRINT": "Adicionar um sprint",
             "TEXT_ACTION_NEW_SPRINT": "Você poderá querer criar uma nova sprint em seu projeto",
@@ -1501,15 +1501,15 @@
         "NOT_FOUND_TEXT": "Erro 404. A página que você procura não existe mais. Você pode voltar para a página do TAIGA e ver se consegue encontrar o que está procurando.",
         "PERMISSION_DENIED": "Permissão negada",
         "PERMISSION_DENIED_TEXT": "Você não tem permissão de acesso a esta página.",
-        "VERSION_ERROR": "Some other user inside Taiga has changed this before and your changes can't be applied. Save them elsewhere, reload the page and re-apply your changes again or they will be lost."
+        "VERSION_ERROR": "Outro usuário do Taiga já alterou isso antes e suas alterações não podem ser aplicadas. Salve-as em outro lugar, recarregue a página e reaplique as alterações ou elas serão perdidas."
     },
     "TASKBOARD": {
         "PAGE_TITLE": "{{sprintName}} - Quadro de Tarefas da Sprint - {{projectName}}",
         "PAGE_DESCRIPTION": "Sprint {{sprintName}} (de{{startDate}} até {{endDate}}) para {{projectName}}. Completos {{completedPercentage}}% ({{completedPoints}} de {{totalPoints}} pontos). {{openTasks}} tarefas abertas de {{totalTasks}}.",
         "SECTION_NAME": "Quadro de Tarefas",
-        "TITLE_ACTION_ADD": "Add a new task",
-        "TITLE_ACTION_ADD_BULK": "Add some new tasks in bulk",
-        "TITLE_ACTION_ADD_ISSUE": "Add a new issue",
+        "TITLE_ACTION_ADD": "Adicionar uma nova tarefa",
+        "TITLE_ACTION_ADD_BULK": "Adicione algumas novas tarefas em massa",
+        "TITLE_ACTION_ADD_ISSUE": "Adicionar um novo problema",
         "TITLE_ACTION_ADD_ISSUE_BULK": "Add some new issues in bulk",
         "TITLE_ACTION_ASSIGN": "Assinalar tarefa",
         "PLACEHOLDER_CARD_TITLE": "This could be a user story",
