@@ -1197,8 +1197,8 @@
         },
         "CREATE_EDIT": {
             "TASK_PLACEHOLDER_DESCRIPTION": "Por favor adicione um texto descritivo que ajude os outros a compreender melhor esta tarefa",
-            "ISSUE_PLACEHOLDER_DESCRIPTION": "Adicione um texto descritivo para ajudar outras pessoas a entender melhor este problema.",
-            "US_PLACEHOLDER_DESCRIPTION": "Adicione um texto descritivo para ajudar outras pessoas a entender melhor esta história do usuário.",
+            "ISSUE_PLACEHOLDER_DESCRIPTION": "Adicione um texto descritivo para ajudar outras pessoas a entender melhor este problema",
+            "US_PLACEHOLDER_DESCRIPTION": "Adicione um texto descritivo para ajudar outras pessoas a entender melhor esta história do usuário",
             "NEW_TASK": "Nova tarefa",
             "NEW_ISSUE": "Novo problema",
             "NEW_US": "Nova história de usuário",
@@ -1223,7 +1223,7 @@
         },
         "DISABLE_KANBAN": {
             "TITLE": "Desabilitar kanban",
-            "MESSAGE": "Este projeto possui raias. Elas desaparecerão, mas suas histórias de usuário não serão excluídas."
+            "MESSAGE": "Este projeto possui raias. Elas desaparecerão, mas suas histórias de usuário não serão excluídas"
         },
         "DELETE_DUE_DATE": {
             "TITLE": "Excluir data de vencimento",
@@ -1451,7 +1451,7 @@
         "FORECASTING": {
             "TITLE": "Projeção de velocidade",
             "BACKLOG": "retornar ao backlog",
-            "NEW_SPRINT": "Histórias de usuário candidatas para sua próxima sprint com base na sua velocidade",
+            "NEW_SPRINT": "Histórias de usuário candidatas para sua próxima sprint com base na sua velocidade.",
             "CURRENT_SPRINT": "Histórias de usuário candidatas para sua próxima sprint com base na sua velocidade. Clique para adicionar ao sprint atual.",
             "ADD_NEW_SPRINT": "Criar sprint e adicionar história de usuário",
             "ADD_NEW_SPRINT_SHORT": "criar sprint"
