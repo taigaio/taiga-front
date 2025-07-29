@@ -1512,10 +1512,10 @@
         "TITLE_ACTION_ADD_ISSUE": "Adicionar um novo problema",
         "TITLE_ACTION_ADD_ISSUE_BULK": "Criar novos problemas em lote",
         "TITLE_ACTION_ASSIGN": "Assinalar tarefa",
-        "PLACEHOLDER_CARD_TITLE": "This could be a user story",
-        "PLACEHOLDER_CARD_TEXT": "Go to the <a href=\"{{ backlogUrl }}\" title=\"Go to backlog\">backlog</a> and drag user stories to this sprint; split the stories into tasks to track them separately.",
-        "TASK_NOT_FOUND_TITLE": "No matching results found",
-        "TASK_NOT_FOUND_TEXT": "Try again using more general search terms or disabling some filters.",
+        "PLACEHOLDER_CARD_TITLE": "Esta poderia ser uma história de usuário",
+        "PLACEHOLDER_CARD_TEXT": "Vá para <a href=\"{{ backlogUrl }}\" title=\"Ir para backlog\"> backlog </a> e arraste as histórias do usuário para este sprint; divida as histórias em tarefas para rastreá-las separadamente.",
+        "TASK_NOT_FOUND_TITLE": "Nenhum resultado correspondente encontrado",
+        "TASK_NOT_FOUND_TEXT": "Tente novamente usando termos de pesquisa mais gerais ou desabilitando alguns filtros.",
         "TITLE_DATE_RANGE": "{{startDate}} <span>to</span> {{endDate}}",
         "TABLE": {
             "COLUMN": "História de usuário",
@@ -1524,31 +1524,31 @@
             "TITLE_ACTION_FOLD_ROW": "Guardar Linha",
             "TITLE_ACTION_UNFOLD_ROW": "Abrir linha",
             "FIELD_POINTS": "pontos",
-            "ROW_STORYLESS_TASKS_TITLE": "Storyless tasks",
-            "ROW_ISSUES_TITLE": "Sprint issues"
+            "ROW_STORYLESS_TASKS_TITLE": "Tarefas sem história",
+            "ROW_ISSUES_TITLE": "Problemas de sprint"
         },
         "CHARTS": {
             "XAXIS_LABEL": "Dias",
-            "YAXIS_LABEL": "Projected points progress",
-            "OPTIMAL": "Pending points for day {{formattedDate}} should be {{roundedValue}}",
+            "YAXIS_LABEL": "Progresso de pontos projetados",
+            "OPTIMAL": "Os pontos pendentes para o dia {{formattedDate}} devem ser {{roundedValue}}",
             "REAL": "\"Pontos pendentes reais para o dia {{formattedDate}} são {{roundedValue}}\"",
             "DATE": "DD MMM YYYY",
-            "HELP_LINK": "How this chart works",
-            "HELP_TOOLTIP": "This burndown chart shows the sprint's approximate or projected progress based on estimated user story closed tasks. Actual finished estimated user stories are tracked above."
+            "HELP_LINK": "Como este gráfico funciona",
+            "HELP_TOOLTIP": "Este gráfico de burndown mostra o progresso aproximado ou projetado do sprint com base nas tarefas estimadas de conclusão de histórias de usuários. As histórias de usuários estimadas e efetivamente concluídas são monitoradas acima."
         },
         "MOVE_TO_SPRINT": {
-            "TITLE_ACTION_MOVE_UNFINISHED": "Move unfinished items to another sprint",
-            "TITLE_MOVE_UNFINISHED": "Move unfinished items to another open sprint",
-            "MOVE_TO_OPEN_SPRINT": "Move to open sprint",
-            "NO_OPEN_SPRINTS": "There are no other open sprints. Please create one first.",
-            "SELECT_DESTINATION_PLACEHOLDER": "Select destination",
-            "UNFINISHED_USER_STORIES_COUNT": "{total, plural, =1{<strong>#</strong> unfinished user story} other{<strong>#</strong> unfinished user stories}}",
-            "UNFINISHED_STORYLESS_TASKS_COUNT": "{total, plural, =1{<strong>#</strong> unfinished storyless task} other{<strong>#</strong> unfinished storyless tasks}}",
-            "UNFINISHED_ISSUES_COUNT": "{total, plural, =1{<strong>#</strong> unfinished issue} other{<strong>#</strong> unfinished issue}}",
-            "WARNING_ISSUES_NOT_MOVED_TITLE": "You just moved all user stories and taks, and the sprint'll be closed",
-            "WARNING_ISSUES_NOT_MOVED": "The issues'll remain in the sprint and don't be removed",
+            "TITLE_ACTION_MOVE_UNFINISHED": "Mover itens inacabados para outro sprint",
+            "TITLE_MOVE_UNFINISHED": "Mover itens inacabados para outro sprint aberto",
+            "MOVE_TO_OPEN_SPRINT": "Mover para sprint aberto",
+            "NO_OPEN_SPRINTS": "Não há outros sprints abertos. Crie um primeiro.",
+            "SELECT_DESTINATION_PLACEHOLDER": "Selecione o destino",
+            "UNFINISHED_USER_STORIES_COUNT": "{total, plural, =1{ <strong> # </strong> história de usuário inacabada} outro{ <strong> # </strong> histórias de usuário inacabadas}}",
+            "UNFINISHED_STORYLESS_TASKS_COUNT": "{total, plural, =1{ <strong> # </strong> tarefa sem história inacabada } outro{ <strong> # </strong> tarefas sem história inacabadas}}",
+            "UNFINISHED_ISSUES_COUNT": "{total, plural, =1{ <strong> # </strong> questão inacabada } outro{ <strong> # </strong> questão inacabada }}",
+            "WARNING_ISSUES_NOT_MOVED_TITLE": "Você acabou de mover todas as histórias e tarefas do usuário, e o sprint será fechado",
+            "WARNING_ISSUES_NOT_MOVED": "Os problemas permanecerão no sprint e não serão removidos",
             "WARNING_SPRINT_STILL_OPEN_TITLE": "{total, plural, =1{You just moved # item!} other{You just moved # items!}}",
-            "WARNING_SPRINT_STILL_OPEN": "Please note that the sprint {{sprintName}} <strong>will remain open</strong> as long as it contains unfinished items."
+            "WARNING_SPRINT_STILL_OPEN": "Observe que o sprint {{sprintName}} <strong> permanecerá aberto </strong> enquanto contiver itens inacabados."
         }
     },
     "TASK": {
@@ -1570,9 +1570,9 @@
     },
     "NOTIFICATION": {
         "OK": "Tudo está ok",
-        "WARNING": "Oops, something went wrong...",
-        "WARNING_TEXT": "Your changes were not saved!",
-        "SAVED": "The Taiga saved all your changes!",
+        "WARNING": "Ops, algo deu errado...",
+        "WARNING_TEXT": "Suas alterações não foram salvas!",
+        "SAVED": "A Taiga salvou todas as suas alterações!",
         "CLOSE": "Fechar Notificação",
         "MAIL": "Atividade",
         "DESKTOP": "Notificações da área de trabalho usando alertas do navegador",
@@ -1581,53 +1581,53 @@
     },
     "CANCEL_ACCOUNT": {
         "TITLE": "Cancelar sua conta",
-        "SUBTITLE": "We're sorry you are leaving the Taiga, we hope you enjoyed your stay :)",
+        "SUBTITLE": "Lamentamos que você esteja deixando a Taiga, esperamos que tenha gostado da sua estadia :)",
         "PLACEHOLDER_INPUT_TOKEN": "cancelar o token da conta",
         "ACTION_LEAVING": "Sim, estou indo embora!",
-        "SUCCESS": "The Taiga removed your account"
+        "SUCCESS": "A Taiga removeu sua conta"
     },
     "CHANGE_EMAIL_FORM": {
         "TITLE": "Mudar seu e-mail",
         "SUBTITLE": "Só mais um clique e seu email será atualizado!",
         "PLACEHOLDER_INPUT_TOKEN": "mudar token do email",
         "ACTION_CHANGE_EMAIL": "Mudar email",
-        "SUCCESS": "Your email address has been successfully changed"
+        "SUCCESS": "Seu endereço de e-mail foi alterado com sucesso"
     },
     "VERIFY_EMAIL_FORM": {
-        "TITLE": "Verify your email",
-        "SUBTITLE": "One click more and your email will be verified!",
+        "TITLE": "Verifique seu e-mail",
+        "SUBTITLE": "Mais um clique e seu e-mail será verificado!",
         "PLACEHOLDER_INPUT_TOKEN": "mudar token do email",
-        "ACTION_VERIFY_EMAIL": "Verify email",
-        "SUCCESS": "Congratulations!!, your email address has been verified"
+        "ACTION_VERIFY_EMAIL": "Verificar e-mail",
+        "SUCCESS": "Parabéns!!, seu endereço de e-mail foi verificado"
     },
     "ISSUES": {
         "PAGE_TITLE": "Apontamentos - {{projectName}}",
         "PAGE_DESCRIPTION": "O painel de problemas do projeto {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Problema",
         "ACTION_NEW_ISSUE": "NEW ISSUE",
-        "ACTION_ATTACH_SPRINT": "Attach issue to Sprint",
-        "ACTION_DETACH_SPRINT": "Detach issue from Sprint",
+        "ACTION_ATTACH_SPRINT": "Anexar problema ao Sprint",
+        "ACTION_DETACH_SPRINT": "Desvincular o problema do Sprint",
         "EXTERNAL_REFERENCE": "Esse problema foi criado a partir de",
         "GO_TO_EXTERNAL_REFERENCE": "Ir para a origem",
         "ACTION_DELETE": "Problema excluído",
         "LIGHTBOX_TITLE_BLOKING_ISSUE": "Problema que está bloqueando",
         "LINK_TASKBOARD": "Quadro de Tarefas",
         "TITLE_LINK_TASKBOARD": "Ir para o quadro de tarefas",
-        "FILTER_SPRINTS": "Filter Sprints",
-        "CHOOSE_SPRINT": "Which Sprint?",
+        "FILTER_SPRINTS": "Filtrar Sprints",
+        "CHOOSE_SPRINT": "Qual Sprint?",
         "FIELDS": {
             "PRIORITY": "Prioridade",
             "SEVERITY": "Gravidade",
             "TYPE": "Tipo"
         },
-        "FILTER_ISSUES": "Filter issues",
+        "FILTER_ISSUES": "Problemas de filtro",
         "CONFIRM_DETACH_FROM_SPRINT": {
-            "TITLE": "Detach issue from sprint",
-            "MESSAGE": "You are about to detach the issue from the sprint <strong>{{ sprintName }}<strong>"
+            "TITLE": "Desvincular o problema do sprint",
+            "MESSAGE": "Você está prestes a separar o problema do sprint <strong>{{ sprintName }}<strong>"
         },
         "CONFIRM_CHANGE_FROM_SPRINT": {
-            "TITLE": "Attach issue to sprint",
-            "MESSAGE": "<strong>This issue is currently attached to sprint {{ oldSprintName }}</strong>. You are about to detach it from that sprint and attach it instead to sprint <strong>{{ newSprintName }}.</strong>"
+            "TITLE": "Anexar problema ao sprint",
+            "MESSAGE": "<strong> Este problema está atualmente vinculado ao sprint {{ oldSprintName }} </strong> . Você está prestes a desvinculá-lo desse sprint e anexá-lo ao sprint <strong> {{ newSprintName }}. </strong>"
         },
         "TABLE": {
             "COLUMNS": {
@@ -1639,7 +1639,7 @@
                 "STATUS": "Status",
                 "ATTACHMENTS": "Anexos",
                 "MODIFIED": "Modificado",
-                "ASSIGNED_TO": "Assign to"
+                "ASSIGNED_TO": "Atribuir a"
             },
             "TITLE_ACTION_CHANGE_STATUS": "Mudar status",
             "TITLE_ACTION_ASSIGNED_TO": "Atribuído a",
@@ -1664,16 +1664,16 @@
         "TITLE_ACTION_ADD_BULK": "Adicionar novos em lote",
         "ACTION_SHOW_ARCHIVED": "Mostrar arquivados",
         "ACTION_HIDE_ARCHIVED": "esconder arquivados",
-        "US_NOT_FOUND_TITLE": "No matching results found",
-        "US_NOT_FOUND_TEXT_P1": "Try again using more general search terms or disabled some filters.",
-        "US_NOT_FOUND_TEXT_P2": "<strong>Archived stories</strong> are not loaded by default. Unfold the archived statuses to expand your search.",
-        "PLACEHOLDER_CARD_TITLE": "This could be a user story",
-        "PLACEHOLDER_CARD_TEXT": "Create user stories here and change their status to track their progress.",
+        "US_NOT_FOUND_TITLE": "Nenhum resultado correspondente encontrado",
+        "US_NOT_FOUND_TEXT_P1": "Tente novamente usando termos de pesquisa mais gerais ou desabilite alguns filtros.",
+        "US_NOT_FOUND_TEXT_P2": "<strong> Histórias arquivadas </strong> não são carregadas por padrão. Desdobre os status arquivados para expandir sua busca.",
+        "PLACEHOLDER_CARD_TITLE": "Esta poderia ser uma história de usuário",
+        "PLACEHOLDER_CARD_TEXT": "Crie histórias de usuários aqui e altere o status delas para acompanhar seu progresso.",
         "NUMBER_US": "Number of US",
         "ARCHIVED": "(Archived)",
-        "CREATE_SWIMLANE": "Create more swimlanes",
-        "UNCLASSIFIED_USER_STORIES": "Unclassified user stories",
-        "UNCLASSIFIED_USER_STORIES_TOOLTIP": "The user stories that are not part of any swimlane are here."
+        "CREATE_SWIMLANE": "Crie mais raias",
+        "UNCLASSIFIED_USER_STORIES": "Histórias de usuários não classificadas",
+        "UNCLASSIFIED_USER_STORIES_TOOLTIP": "As histórias de usuários que não fazem parte de nenhuma raia estão aqui."
     },
     "SEARCH": {
         "PAGE_TITLE": "Buscar - {{projectName}}",
@@ -1749,9 +1749,9 @@
         "ACTION_USE_GRAVATAR": "Usar imagem padrão",
         "ACTION_DELETE_ACCOUNT": "Excluir conta Taiga",
         "ACTION_DOWNLOAD_PROFILE": "Baixar perfil do Taiga",
-        "ACTION_VERIFY_EMAIL": "Verify your email",
+        "ACTION_VERIFY_EMAIL": "Verifique seu e-mail",
         "CHANGE_EMAIL_SUCCESS": "<strong>Verifique sua caixa de entrada!</strong><br />Enviamos um e-mail para sua conta<br />com as instruções para definir seu novo endereço",
-        "VERIFY_EMAIL_SUCCESS": "<strong>Check your inbox!</strong><br />We have sent you an email<br />with instructions on how to verify your address",
+        "VERIFY_EMAIL_SUCCESS": "<strong> Verifique sua caixa de entrada! </strong> <br /> Enviamos um e-mail <br /> com instruções sobre como verificar seu endereço",
         "CHANGE_PHOTO": "Mudar foto",
         "FIELD": {
             "USERNAME": "Nome do usuário",
@@ -1803,48 +1803,48 @@
         "HINT2_TITLE": "Você sabia que pode criar campos personalizados?",
         "HINT2_TEXT": "Equipes agora podem personalizar campos, um jeito flexível de inserir dados específicos para uso em seu próprio fluxo de trabalho.",
         "HINT3_TITLE": "Reordene seus projetos para evidenciar os mais relevantes para você.",
-        "HINT3_TEXT": "The 4 projects are listed in the direct access bar at the top.",
+        "HINT3_TEXT": "Os 4 projetos estão listados na barra de acesso direto na parte superior.",
         "HINT4_TITLE": "Você esqueceu onde está trabalhando?",
         "HINT4_TEXT": "Não se preocupe, no seu painel você vai encontrar suas tarefas abertas, problemas, e histórias de usuários na ordem em que você trabalhou nelas."
     },
     "TIMELINE": {
         "UPLOAD_ATTACHMENT": "{{username}} adicionou um novo anexo em {{obj_name}}",
-        "US_CREATED": "{{username}} has created a new user story {{obj_name}} in {{project_name}}",
+        "US_CREATED": "{{username}} criou uma nova história de usuário {{obj_name}} em {{project_name}}",
         "ISSUE_CREATED": "{{username}} criou um novo problema {{obj_name}} em {{project_name}}",
         "TASK_CREATED": "{{username}} criou uma nova tarefa {{obj_name}} em {{project_name}}",
-        "TASK_CREATED_WITH_US": "{{username}} has created a new task {{obj_name}} in {{project_name}} which belongs to the user story {{us_name}}",
+        "TASK_CREATED_WITH_US": "{{username}} criou uma nova tarefa {{obj_name}} em {{project_name}} que pertence à história do usuário {{us_name}}",
         "WIKI_CREATED": "{{username}} criou uma página wiki {{obj_name}} em {{project_name}}",
         "MILESTONE_CREATED": "{{username}} criou uma nova sprint {{obj_name}} em {{project_name}}",
         "EPIC_CREATED": "{{username}} criou um novo épico {{obj_name}} em {{project_name}}",
-        "EPIC_RELATED_USERSTORY_CREATED": "{{username}} has related the user story {{related_us_name}} to the epic {{epic_name}} in {{project_name}}",
+        "EPIC_RELATED_USERSTORY_CREATED": "{{username}} relacionou a história do usuário {{related_us_name}} ao épico {{epic_name}} em {{project_name}}",
         "NEW_PROJECT": "{{username}} criou o projeto {{project_name}}",
         "MILESTONE_UPDATED": "{{username}} atualizou a sprint {{obj_name}}",
-        "US_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the user story {{obj_name}}",
-        "US_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the user story {{obj_name}} to {{new_value}}",
-        "US_UPDATED_POINTS": "{{username}} has updated '{{role_name}}' points of the user story {{obj_name}} to {{new_value}}",
+        "US_UPDATED": "{{username}} atualizou o atributo \"{{field_name}}\" da história do usuário {{obj_name}}",
+        "US_UPDATED_WITH_NEW_VALUE": "{{username}} atualizou o atributo \"{{field_name}}\" da história do usuário {{obj_name}} para {{new_value}}",
+        "US_UPDATED_POINTS": "{{username}} atualizou os pontos '{{role_name}}' da história do usuário {{obj_name}} para {{new_value}}",
         "ISSUE_UPDATED": "{{username}} atualizou o atributo \"{{field_name}}\" do problema {{obj_name}}",
         "ISSUE_UPDATED_WITH_NEW_VALUE": "{{username}} atualizou o atributo \"{{field_name}}\" do problema {{obj_name}} para {{new_value}}",
         "TASK_UPDATED": "{{username}} atualizou o atributo \"{{field_name}}\" da tarefa {{obj_name}} para {{new_value}}",
         "TASK_UPDATED_WITH_NEW_VALUE": "{{username}} atualizou o atributo \"{{field_name}}\" da tarefa {{obj_name}} para {{new_value}}",
-        "TASK_UPDATED_WITH_US": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} which belongs to the user story {{us_name}}",
-        "TASK_UPDATED_WITH_US_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the task {{obj_name}} which belongs to the user story {{us_name}} to {{new_value}}",
+        "TASK_UPDATED_WITH_US": "{{username}} atualizou o atributo \"{{field_name}}\" da tarefa {{obj_name}} que pertence à história do usuário {{us_name}}",
+        "TASK_UPDATED_WITH_US_NEW_VALUE": "{{username}} atualizou o atributo \"{{field_name}}\" da tarefa {{obj_name}} que pertence à história do usuário {{us_name}} para {{new_value}}",
         "WIKI_UPDATED": "{{username}} atualizou a página wiki {{obj_name}}",
         "EPIC_UPDATED": "{{username}} atualizou o atributo \"{{field_name}}\" do épico {{obj_name}}",
         "EPIC_UPDATED_WITH_NEW_VALUE": "{{username}} atualizou o atributo \"{{field_name}}\" do épico {{obj_name}} para {{new_value}}",
         "EPIC_UPDATED_WITH_NEW_COLOR": "{{username}} atualizou o \"{{field_name}}\" do épico {{obj_name}} para <span class=\"new-color\" style=\"background: {{new_value}}\"></span>",
-        "NEW_COMMENT_US": "{{username}} has commented in the user story {{obj_name}}",
+        "NEW_COMMENT_US": "{{username}} comentou na história do usuário {{obj_name}}",
         "NEW_COMMENT_ISSUE": "{{username}} comentou no problema {{obj_name}}",
         "NEW_COMMENT_TASK": "{{username}} comentou na tarefa {{obj_name}}",
         "NEW_COMMENT_EPIC": "{{username}} comentou no épico {{obj_name}}",
         "NEW_MEMBER": "{{project_name}} tem um membro novo",
         "US_ADDED_MILESTONE": "{{username}} adicionou a história do usuário {{obj_name}} a {{sprint_name}}",
-        "US_MOVED": "{{username}} has moved the user story {{obj_name}}",
+        "US_MOVED": "{{username}} moveu a história do usuário {{obj_name}}",
         "US_REMOVED_FROM_MILESTONE": "{{username}} has added the user story {{obj_name}} to the backlog",
         "BLOCKED": "{{username}} bloqueou {{obj_name}}",
         "UNBLOCKED": "{{username}} desbloqueou {{obj_name}}",
         "NEW_USER": "{{username}} ingressou no Taiga",
         "ITEM_TYPES": {
-            "USERSTORY": "User Story",
+            "USERSTORY": "História do usuário",
             "ISSUE": "Problema",
             "TASK": "Tarefa"
         }
@@ -1852,16 +1852,16 @@
     "EVENTS": {
         "TITLE": "Events",
         "MY_EVENTS": "My events",
-        "DISMISS_ALL": "Dismiss all",
+        "DISMISS_ALL": "Descartar tudo",
         "VIEW_ALL": "Ver todas as notificações",
-        "NO_NEW_EVENTS": "No new events",
-        "NO_EVENTS_YET": "There are no events yet",
-        "ASSIGNED_YOU": "{{username}} assigned you to {{obj_name}}",
-        "ADDED_YOU_AS_WATCHER": "{{username}} added you as watcher on {{obj_name}}",
-        "ADDED_YOU_AS_MEMBER": "{{username}} added you as member",
-        "MENTIONED_YOU": "{{username}} mentioned you on {{obj_name}}",
-        "MENTIONED_YOU_IN_COMMENT": "{{username}} mentioned you in a comment on {{obj_name}}",
-        "COMMENTED": "{{username}} has commented on {{obj_name}}"
+        "NO_NEW_EVENTS": "Nenhum evento novo",
+        "NO_EVENTS_YET": "Ainda não há eventos",
+        "ASSIGNED_YOU": "{{username}} atribuiu você a {{obj_name}}",
+        "ADDED_YOU_AS_WATCHER": "{{username}} adicionou você como observador em {{obj_name}}",
+        "ADDED_YOU_AS_MEMBER": "{{username}} adicionou você como membro",
+        "MENTIONED_YOU": "{{username}} mencionou você em {{obj_name}}",
+        "MENTIONED_YOU_IN_COMMENT": "{{username}} mencionou você em um comentário em {{obj_name}}",
+        "COMMENTED": "{{username}} comentou em {{obj_name}}"
     },
     "LEGAL": {
         "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>Ao criar uma nova conta, você concorda com nossos </span><a href=\"{{ termsOfServiceUrl }}\" title=\"See terms of service\" target=\"_blank\">termos de serviço</a><span> e </span><a href=\"{{ privacyPolicyUrl }}\" title=\"See privacy policy\" target=\"_blank\">política de privacidade</a>."
@@ -1877,7 +1877,7 @@
     "JOYRIDE": {
         "NAV": {
             "NEXT": "Próximo",
-            "BACK": "Back",
+            "BACK": "Voltar",
             "SKIP": "Pular",
             "DONE": "Terminado"
         },
@@ -1888,7 +1888,7 @@
             },
             "STEP2": {
                 "TITLE": "Trabalhando em",
-                "TEXT": "Here you will find the user stories, tasks and issues in which you are working on."
+                "TEXT": "Aqui você encontrará as histórias de usuários, tarefas e problemas nos quais está trabalhando."
             },
             "STEP3": {
                 "TITLE": "Observando",
@@ -1927,7 +1927,7 @@
             },
             "STEP2": {
                 "TITLE": "Histórias de Usuários & Atividades",
-                "TEXT": "User stories are the requirements at high level. You can drag them to different columns."
+                "TEXT": "Histórias de usuário são os requisitos de alto nível. Você pode arrastá-las para colunas diferentes."
             },
             "STEP3": {
                 "TITLE": "Adicionando Histórias de Usuários",
@@ -1971,7 +1971,7 @@
         "TITLE": "Visualização:",
         "ZOOM-1": "Compact",
         "ZOOM-2": "Default",
-        "ZOOM-3": "Detailed",
+        "ZOOM-3": "Detalhado",
         "ZOOM-4": "Expandido"
     }
 }
