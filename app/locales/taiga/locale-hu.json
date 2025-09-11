@@ -704,6 +704,9 @@
             "UPGRADE_BUTTON": "Frissítsd a tervedet",
             "LIMIT_USERS_WARNING_MESSAGE_FOR_ADMIN": "Ha <strong>új tagokat</strong> szeretnél hozzáadni, vedd fel a kapcsolatot a projekt tulajdonosával <a href='mailto:{{ owner_email }}' title='{{ owner_email }}'>{{ owner_email }}</a>",
             "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "Ez a projekt elérte az engedélyezett <strong>({{members}})</strong> tagnyi korlátját.Ha növelni akarod a korlátot kérjük vedd fel a kapcsolatot az adminisztrátorral."
+        },
+        "PLUGINS": {
+            "PAGE_TITLE": "{{pluginName}} - Bővítmények  - {{projectName}}"
         }
     },
     "USER": {
