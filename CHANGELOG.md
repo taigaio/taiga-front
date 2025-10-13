@@ -1,8 +1,12 @@
 # Changelog
 
-## 6.8.3 (unreleased)
+## 6.9.1 (unreleased)
 
 - ...
+
+## 6.9.0 (2025-10-13)
+
+- Compatible with Taiga 6.9.0.
 
 ## 6.8.2 (2025-01-13)
 
