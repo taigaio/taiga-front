@@ -17,13 +17,13 @@
         "BACK": "پشت",
         "COPY_TO_CLIPBOARD": "کپی کردن در کلیپ‌بورد",
         "COPIED_TO_CLIPBOARD": "متن در کلیپ‌بورد کپی شد",
-        "MOVE_TO_TOP": "Move to top",
+        "MOVE_TO_TOP": "انتقال به بالا",
         "EDIT": "ویرایش",
         "DRAG": "درگ",
         "TAG_LINE": "ابزار سریع، آزاد و متن‌باز مدیریت پروژه‌ی شما",
         "TAG_LINE_2": "علاقه‌مندی به پروژه‌ی شما",
         "BLOCK": "مسدود کردن",
-        "BLOCK_TITLE": "Block this item, for example if it has a dependency that can not be satisfied",
+        "BLOCK_TITLE": "این مورد را مسدود کن, برای مثال هنگامی که یکی از پیشنیاز ها فراهم نیست",
         "BLOCKED": "مسدود شده",
         "UNBLOCK": "حذف مسدودسازی",
         "UNBLOCK_TITLE": "این آیتم را از حالت مسدود خارج کن",
@@ -40,10 +40,10 @@
         "NEXT": "بعدی",
         "LOGOUT": "خروج",
         "EXTERNAL_USER": "کاربر خارجی",
-        "GENERIC_ERROR": "The Taiga says {{error}}.",
-        "IOCAINE_TEXT": "This member is feeling a bit overwhelmed by this task. They will become immune to the iocaine poison over time with your help. For now, they may need a hug.",
-        "CLIENT_REQUIREMENT": "A client requirement is a new requirement that was not previously expected and is required to be part of the project",
-        "TEAM_REQUIREMENT": "A team requirement is a requirement that must exist in the project but should have no cost for the client",
+        "GENERIC_ERROR": "پیام سیستم :{{error}}.",
+        "IOCAINE_TEXT": "این عضو در حال حاضر کمی تحت فشار وظایف است.",
+        "CLIENT_REQUIREMENT": "الزام مشتری، الزام جدیدی است که قبلاً مورد انتظار نبوده و لازم است بخشی از پروژه باشد.",
+        "TEAM_REQUIREMENT": "الزام تیمی، الزامی است که باید در پروژه وجود داشته باشد اما نباید هیچ هزینه‌ای برای مشتری داشته باشد.",
         "OWNER": "مالکیت پروژه",
         "CAPSLOCK_WARNING": "مراقب باشید! در حال تایپ کردن حروف بزرگ هستید و این فیلد نسبت به بزرگی و کوچکی حروف حساس است.",
         "CONFIRM_CLOSE_EDIT_MODE_TITLE": "آیا مطمئن هستید که می‌خواهید حالت ویرایش را ببندید؟",
@@ -54,13 +54,13 @@
             "EDIT": "ویرایش کارت",
             "DELETE": "حذف کارت",
             "DELETE_ISSUE": "حذف موضوع",
-            "DETACH_ISSUE_FROM_SPRINT": "Detach from sprint",
+            "DETACH_ISSUE_FROM_SPRINT": "از sprint جدا شوید",
             "PTS": "{{pts}} pts",
-            "DUE_DATE": "Due date: {{date}}",
-            "NO_PTS": "N/E",
-            "ESTIMATION": "Estimation",
-            "TASKS": "{{completed}} tasks of {{total}} completed",
-            "EXTRA_ASSIGNED_USERS": "{{total}} more assigned users",
+            "DUE_DATE": "تاریخ سررسید: {{date}}",
+            "NO_PTS": "ندارد",
+            "ESTIMATION": "تخمین",
+            "TASKS": "{{completed}} وظیفه از مجموع{{total}} تکمیل شده",
+            "EXTRA_ASSIGNED_USERS": "{{total}} کاربر بیشتر اختصاص داده شده",
             "MOVE_TO_TOP": "انتقال به بالا"
         },
         "FORM_ERRORS": {
@@ -82,7 +82,7 @@
             "RANGE": "این مقدار می‌بایست بین %s و %s باشد.",
             "MIN_LENGTH": "این مقدار بسیار کوتاه است. می‌بایست حداقل %s حرف داشته باشد.",
             "MAX_LENGTH": "این مقدار بیش از حد طولانی است. می‌بایست حداکثر %s حرف داشته باشد.",
-            "RANGE_LENGTH": "This value's length is invalid. It should be between %s and %s characters long.",
+            "RANGE_LENGTH": "طول این مقدار نامعتبر است. باید بین %s و %s کاراکتر باشد.",
             "MIN_CHECK": "حداقل %s مورد انتخاب کنید.",
             "MAX_CHECK": "می‌بایست %s انتخاب یا کمتر داشته باشید.",
             "RANGE_CHECK": "می‌بایست بین %s الی %s انتخاب داشته باشید.",
@@ -101,7 +101,7 @@
                 "MAR": "مارس (اسفند)",
                 "APR": "آوریل (فروردین)",
                 "MAY": "می (اردیبهشت)",
-                "JUN": "خرداد",
+                "JUN": "جون (خرداد)",
                 "JUL": "جولای (تیر)",
                 "AUG": "آگوست (مرداد)",
                 "SEP": "سپتامبر (شهریور)",
@@ -139,7 +139,7 @@
             "ADD": "اضافه کردن برچسب"
         },
         "DESCRIPTION": {
-            "EMPTY": "Empty space is so boring... go on, be descriptive...",
+            "EMPTY": "فضای خالی خیلی کسل کننده است... ادامه بده، توصیف کن...",
             "NO_DESCRIPTION": "بدون توضیح"
         },
         "FIELDS": {
@@ -421,7 +421,7 @@
         "SECTION_NAME": "اپیک‌ها",
         "EPIC": "اپیک",
         "PAGE_TITLE": "Epics - {{projectName}}",
-        "PAGE_DESCRIPTION": "لیست پروژه‌  {{projectName}}: {{projectDescription}}",
+        "PAGE_DESCRIPTION": "لیست پروژه‌ {{projectName}}: {{projectDescription}}",
         "DASHBOARD": {
             "ADD": "اضافه کردن اپیک",
             "UNASSIGNED": "آزاد"
@@ -690,7 +690,7 @@
             "DEFAULT": "پیش فرض"
         },
         "ROLES": {
-            "PAGE_TITLE": "نقش‌ها -  {{projectName}}",
+            "PAGE_TITLE": "نقش‌ها - {{projectName}}",
             "WARNING_NO_ROLE": "مراقب باشید، هیچ نقشی در پروژه‌ی شما قادر به تخمین ارزش امتیازات استوری‌های کاربر نیست",
             "HELP_ROLE_ENABLED": "This role is part of the roles involved in estimating user story points.",
             "DISABLE_COMPUTABLE_ALERT_TITLE": "آیا مطمئن هستید که می‌خواهید تخمین‌های این نقش را غیرفعال کنید؟",
@@ -715,7 +715,7 @@
         },
         "GITLAB": {
             "SECTION_NAME": "گیتلب",
-            "PAGE_TITLE": "گیت‌لب -  {{projectName}}",
+            "PAGE_TITLE": "گیت‌لب - {{projectName}}",
             "INFO_VERIFYING_IP": "درخواست‌های گیت‌لب امضا نشده‌اند لذا بهترین راه برای تأیید منبع، استفاده از IP است. اگر فیلد خالی باشد، تأییدیه‌ی IP در کار نخواهد بود."
         },
         "GITHUB": {
@@ -773,9 +773,9 @@
             "STATUS_PENDING": "در انتظار",
             "DELETE_MEMBER": "حذف عضو",
             "RESEND": "ارسال مجدد",
-            "SUCCESS_SEND_INVITATION": "ما مجدداً دعوتنامه‌ای به  '{{email}}' ارسال کرده‌ایم.",
+            "SUCCESS_SEND_INVITATION": "ما مجدداً دعوتنامه‌ای به '{{email}}' ارسال کرده‌ایم.",
             "SUCCESS_DELETE": "پیام {{message}} را حذف کرده‌ایم",
-            "ERROR_DELETE": "نمی‌توانیم حذف کنیم  {{message}}.",
+            "ERROR_DELETE": "نمی‌توانیم حذف کنیم {{message}}.",
             "DEFAULT_DELETE_MESSAGE": "دعوتنامه برای {{email}}"
         },
         "DEFAULT_VALUES": {
@@ -1026,7 +1026,7 @@
             "PROCESS_DESCRIPTION": "Tell us to whom from Taiga you want to assign the tasks of {{platform}}",
             "MATCH": "آیا <strong>{{user_external}}</strong> همان <strong>{{user_internal}}</strong> است؟",
             "CHOOSE": "انتخاب کاربر",
-            "LINKS": "لینک‌هایی با  {{platform}}",
+            "LINKS": "لینک‌هایی با {{platform}}",
             "LINKS_DESCRIPTION": "آیا می‌خواهید پیوند آیتم‌ها با کارت {{platform}} را حفظ کنید؟",
             "WARNING_MAIL_USER": "Note that if the user does not have a Taiga account we will not be able to assign the tasks to them.",
             "ASSIGN": "تخصیص",
@@ -1146,7 +1146,7 @@
             "REMOVE": "حذف",
             "INVITE": "دعوت",
             "CHOOSE_ROLE": "نقشی را انتخاب کنید",
-            "PLACEHOLDER_INVITATION_TEXT": "(اختیاری) متنی برای دعوت‌نامه اضافه کنید و جملات جالبی برای اعضای جدید بنویسید  ;-)",
+            "PLACEHOLDER_INVITATION_TEXT": "(اختیاری) متنی برای دعوت‌نامه اضافه کنید و جملات جالبی برای اعضای جدید بنویسید ;-)",
             "HELP_TEXT": "اگر کاربران قبلاً در تایگا ثبت نام کرده باشند، به صورت خودکار اضافه می‌شوند. در عین این صورت دعوت‌نامه دریافت می‌کنند."
         },
         "FEEDBACK": {
@@ -1170,7 +1170,7 @@
             "PLACEHOLDER_SPRINT_END": "تخمین پایان",
             "ACTION_DELETE_SPRINT": "آیا می‌خواهید این اسپرینت را حذف کنید؟",
             "TITLE_ACTION_DELETE_SPRINT": "حذف اسپرینت",
-            "LAST_SPRINT_NAME": "آخرین اسپرینت <strong>  {{lastSprint}} ;-)</strong> است"
+            "LAST_SPRINT_NAME": "آخرین اسپرینت <strong> {{lastSprint}} ;-)</strong> است"
         },
         "CREATE_EDIT": {
             "TASK_PLACEHOLDER_DESCRIPTION": "Please add descriptive text to help others better understand this task",
@@ -1211,7 +1211,7 @@
             "MESSAGE": "Are you sure you want to remove the relationship of this user story with its epic <strong>{{epicSubject}}</strong>?"
         },
         "CREATE_MEMBER": {
-            "PLACEHOLDER_INVITATION_TEXT": "(اختیاری) متنی برای دعوت‌نامه اضافه کنید و جملات جالبی برای اعضای جدید بنویسید  ;-)",
+            "PLACEHOLDER_INVITATION_TEXT": "(اختیاری) متنی برای دعوت‌نامه اضافه کنید و جملات جالبی برای اعضای جدید بنویسید ;-)",
             "PLACEHOLDER_TYPE_EMAIL": "ایمیلی تایپ کنید",
             "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "به محدودیت تعداد اعضای این پروژه که <strong>({{maxFileSize}})</strong> است، نزدیک شده‌اید. برای افزایش سقف تعداد اعضا با ادمین تماس بگیرید.",
             "LIMIT_USERS_WARNING_MESSAGE": "به محدودیت <strong>{{maxMembers}}</strong> عضو این پروژه نزدیک می‌شوید."
@@ -1384,7 +1384,7 @@
     },
     "BACKLOG": {
         "PAGE_TITLE": "گزارش امور ناتمام- {{projectName}}",
-        "PAGE_DESCRIPTION": "پنل گزارش امور ناتمام به همراه استوری‌های کاربر، اسپرینت پروژه  {{projectName}}: {{projectDescription}}",
+        "PAGE_DESCRIPTION": "پنل گزارش امور ناتمام به همراه استوری‌های کاربر، اسپرینت پروژه {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "اسکرام",
         "CUSTOMIZE_GRAPH": "سفارشی کردن گراف گزارشات امور ناتمام شما",
         "CUSTOMIZE_GRAPH_TEXT": "برای ایجاد گرافی خوب که اسپرینت پروژه را نشان دهد، می‌بایست امتیازات و اسپرینت‌ها را از",
@@ -1479,7 +1479,7 @@
     },
     "TASKBOARD": {
         "PAGE_TITLE": "{{sprintName}} - بورد اسپرینت وظایف - {{projectName}}",
-        "PAGE_DESCRIPTION": "اسپرینت {{sprintName}} (از {{startDate}} الی {{endDate}}) از {{projectName}}. درصد تکمیل:{{completedPercentage}}% ({{completedPoints}} از {{totalPoints}} امتیاز). {{openTasks}} وظایف باز  {{totalTasks}}.",
+        "PAGE_DESCRIPTION": "اسپرینت {{sprintName}} (از {{startDate}} الی {{endDate}}) از {{projectName}}. درصد تکمیل:{{completedPercentage}}% ({{completedPoints}} از {{totalPoints}} امتیاز). {{openTasks}} وظایف باز {{totalTasks}}.",
         "SECTION_NAME": "برد وظایف",
         "TITLE_ACTION_ADD": "Add a new task",
         "TITLE_ACTION_ADD_BULK": "Add some new tasks in bulk",
@@ -1788,9 +1788,9 @@
         "TASK_CREATED_WITH_US": "{{username}} has created a new task {{obj_name}} in {{project_name}} which belongs to the user story {{us_name}}",
         "WIKI_CREATED": "{{username}} صفحه‌ی ویکی جدید  {{obj_name}} در {{project_name}} ایجاد کرده است",
         "MILESTONE_CREATED": "{{username}} اسپرینت جدید {{obj_name}} در{{project_name}} ایجاد کرده است",
-        "EPIC_CREATED": "{{username}}  جدید epic {{obj_name}} را در {{project_name}} ایجاد کرده است",
+        "EPIC_CREATED": "{{username}} جدید epic {{obj_name}} را در {{project_name}} ایجاد کرده است",
         "EPIC_RELATED_USERSTORY_CREATED": "{{username}} has related the user story {{related_us_name}} to the epic {{epic_name}} in {{project_name}}",
-        "NEW_PROJECT": "{{username}} پروژه‌ی  {{project_name}} را ایجاد کرده است",
+        "NEW_PROJECT": "{{username}} پروژه‌ی {{project_name}} را ایجاد کرده است",
         "MILESTONE_UPDATED": "{{username}} اسپرینت {{obj_name}} را آپدیت کرده است",
         "US_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the user story {{obj_name}}",
         "US_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the user story {{obj_name}} to {{new_value}}",
