@@ -76,6 +76,16 @@ div.wrapper.issues.lightbox-generic-form(
                             ng-click="ctrl.addIssuesInBulk()"
                         )
                             tg-svg(svg-icon="icon-bulk")
+
+                        button.btn-ai-analysis(
+                            tg-ai-analysis-button
+                            issues="issues"
+                            project-id="projectId"
+                            ng-class="{'btn-small': !ctrl.sprintIssues, 'btn-board': ctrl.sprintIssues}"
+                            type="button"
+                            title="{{'ISSUES.ACTION_AI_ANALYSIS' | translate}}"
+                        )
+                            span {{"ISSUES.ACTION_AI_ANALYSIS" | translate}}
         .issue-container
             sidebar.filters-bar(
                 ng-if="ctrl.openFilter"
@@ -113,3 +123,6 @@ div.wrapper.issues.lightbox-generic-form(
 
     div.lightbox.lightbox-generic-bulk(tg-lb-create-bulk-issues)
         include ../includes/modules/lightbox-issue-bulk
+
+    // AI 分析模态框
+    tg-ai-analysis-modal

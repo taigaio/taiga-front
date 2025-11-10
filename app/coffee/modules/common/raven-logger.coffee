@@ -10,18 +10,30 @@ taiga = @.taiga
 
 module = angular.module("taigaCommon")
 
-ExceptionHandlerFactory = ($log, @config) ->
+ExceptionHandlerFactory = ($log, @config, $injector) ->
     ravenConfig = @config.get("ravenConfig", null)
+    
+    # Delay getting performance monitor to avoid circular dependency
+    getPerformanceMonitor = ->
+        try
+            return $injector.get("tgPerformanceMonitor")
+        catch
+            return null
+    
     if ravenConfig
       $log.debug "Using the RavenJS exception handler."
       Raven.config(ravenConfig).install()
       return (exception, cause) ->
         $log.error.apply($log, arguments)
         Raven.captureException(exception)
+        performanceMonitor = getPerformanceMonitor()
+        performanceMonitor?.recordError(exception, {cause: cause, source: "angular"})
 
     else
       $log.debug "Using the default logging exception handler."
       return (exception, cause) ->
           $log.error.apply($log, arguments)
+          performanceMonitor = getPerformanceMonitor()
+          performanceMonitor?.recordError(exception, {cause: cause, source: "angular"})
 
-module.factory("$exceptionHandler", ["$log", "$tgConfig", ExceptionHandlerFactory])
+module.factory("$exceptionHandler", ["$log", "$tgConfig", "$injector", ExceptionHandlerFactory])

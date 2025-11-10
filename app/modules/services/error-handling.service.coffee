@@ -10,28 +10,57 @@ taiga = @.taiga
 
 class ErrorHandlingService
     @.$inject = [
-        "$rootScope"
+        "$rootScope",
+        "$window",
+        "$location"
     ]
 
-    constructor: (@rootScope) ->
+    constructor: (@rootScope, @window, @location) ->
+        @.errorHistory = []
+        @.maxHistorySize = 20
 
     init: () ->
         @rootScope.errorHandling = {}
 
-    notfound: ->
+    notfound: (context) ->
+        @._recordError("not_found", context)
         @rootScope.errorHandling.showingError = true
         @rootScope.errorHandling.notfound = true
 
-    error: ->
+    error: (context) ->
+        @._recordError("error", context)
         @rootScope.errorHandling.showingError = true
         @rootScope.errorHandling.error = true
 
-    permissionDenied: ->
+    permissionDenied: (context) ->
+        @._recordError("permission_denied", context)
         @rootScope.errorHandling.showingError = true
         @rootScope.errorHandling.permissionDenied = true
 
-    block: ->
+    block: (context) ->
+        @._recordError("blocked", context)
         @rootScope.errorHandling.showingError = true
         @rootScope.errorHandling.blocked = true
+
+    _recordError: (type, context) ->
+        errorInfo = {
+            type: type
+            timestamp: Date.now()
+            url: @location.absUrl()
+            path: @location.path()
+            userAgent: @window.navigator.userAgent
+            context: context
+        }
+
+        @.errorHistory.push(errorInfo)
+
+        if @.errorHistory.length > @.maxHistorySize
+            @.errorHistory.shift()
+
+    getErrorHistory: ->
+        return @.errorHistory.slice()
+
+    clearErrorHistory: ->
+        @.errorHistory = []
 
 angular.module("taigaCommon").service("tgErrorHandlingService", ErrorHandlingService)
