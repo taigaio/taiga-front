@@ -48,15 +48,15 @@ class AuthService extends taiga.Service
                  "$tgResources",
                  "$tgHttp",
                  "$tgUrls",
-                 "$tgConfig",
-                 "$tgUserPilot",
-                 "$translate",
                  "tgCurrentUserService",
+                 "$translate",
+                 "$tgNavUrls",
+                 "$tgConfig",
                  "tgThemeService",
-                 "$tgAnalytics"]
+                 "$tgAnalytics",
+                 "tgLocaleService"]
 
-    constructor: (@rootscope, @storage, @model, @rs, @http, @urls, @config, @userpilot, @translate, @currentUserService,
-                  @themeService, @analytics) ->
+    constructor: (@rootscope, @storage, @model, @resources, @http, @urls, @currentUserService, @translate, @navUrls, @config, @themeService, @analytics, @localeService) ->
         super()
 
         userModel = @.getUser()
@@ -90,8 +90,7 @@ class AuthService extends taiga.Service
 
     _setLocales: ->
         lang = @rootscope.user?.lang || @config.get("defaultLanguage") || "en"
-        @translate.preferredLanguage(lang)  # Needed for calls to the api in the correct language
-        @translate.use(lang)                # Needed for change the interface in runtime
+        @localeService.setLocale(lang, false)
 
     getUser: ->
         if @rootscope.user

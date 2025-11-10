@@ -707,10 +707,11 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
     $httpProvider.interceptors.push("authHttpIntercept")
 
 
-    loaderIntercept = ($q, loaderService) ->
+    loaderIntercept = ($q, loaderService, performanceMonitor) ->
         return {
             request: (config) ->
                 loaderService.logRequest()
+                config._requestStartTime = Date.now()
 
                 return config
 
@@ -722,16 +723,24 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
             responseError: (rejection) ->
                 loaderService.logResponse()
 
+                if rejection.config?._requestStartTime
+                    duration = Date.now() - rejection.config._requestStartTime
+                    performanceMonitor.recordApiTiming(rejection.config, duration, rejection.status)
+
                 return $q.reject(rejection)
 
             response: (response) ->
                 loaderService.logResponse()
 
+                if response.config?._requestStartTime
+                    duration = Date.now() - response.config._requestStartTime
+                    performanceMonitor.recordApiTiming(response.config, duration, response.status)
+
                 return response
         }
 
 
-    $provide.factory("loaderIntercept", ["$q", "tgLoader", loaderIntercept])
+    $provide.factory("loaderIntercept", ["$q", "tgLoader", "tgPerformanceMonitor", loaderIntercept])
 
     $httpProvider.interceptors.push("loaderIntercept")
 
@@ -896,7 +905,7 @@ i18nInit = (lang, $translate) ->
 
 init = ($log, $rootscope, $auth, $events, $analytics, $tagManager, $userPilot, $translate, $location, $navUrls, appMetaService,
         loaderService, navigationBarService, errorHandlingService, lightboxService, $tgConfig,
-        projectService) ->
+        projectService, monitoringCollector, localeService) ->
     $log.debug("Initialize application")
 
     $rootscope.$on '$translatePartialLoaderStructureChanged', () ->
@@ -993,6 +1002,12 @@ init = ($log, $rootscope, $auth, $events, $analytics, $tagManager, $userPilot, $
     # UserPilot
     $userPilot.initialize()
     $userPilot.identify()
+
+    # Performance Monitoring
+    monitoringCollector.initialize()
+
+    # Locale Service
+    localeService.initialize()
 
     # Initialize error handling service when location change start
     $rootscope.$on '$locationChangeStart',  (event) ->
@@ -1137,5 +1152,7 @@ module.run([
     "lightboxService",
     "$tgConfig",
     "tgProjectService",
+    "tgMonitoringCollector",
+    "tgLocaleService",
     init
 ])
