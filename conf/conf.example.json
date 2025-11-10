@@ -23,6 +23,14 @@
     "tagManager": {
         "accountId": null
     },
+    "monitoring": {
+        "enabled": false,
+        "reportInterval": 300000,
+        "reportEndpoint": null
+    },
+    "performanceMonitor": {
+        "enabled": false
+    },
     "tribeHost": null,
     "enableAsanaImporter": false,
     "enableGithubImporter": false,
