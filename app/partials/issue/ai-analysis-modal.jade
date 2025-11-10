@@ -1,0 +1,77 @@
+//- This source code is licensed under the terms of the
+//- GNU Affero General Public License found in the LICENSE file in
+//- the root directory of this source tree.
+//-
+//- Copyright (c) 2021-present Kaleidos INC
+
+.ai-analysis-modal-overlay(
+    ng-show="vm.showModal"
+    ng-click="vm.closeModal()"
+)
+    .ai-analysis-modal(
+        ng-click="$event.stopPropagation()"
+    )
+        .modal-header
+            h2.modal-title
+                span 🤖 
+                span(translate="ISSUES.AI_ANALYSIS_TITLE")
+            button.close-btn(
+                type="button"
+                ng-click="vm.closeModal()"
+                title="Close"
+            ) ×
+        
+        .modal-body
+            p.subtitle(translate="ISSUES.AI_ANALYSIS_SUBTITLE" translate-values="{count: vm.results.length}")
+            
+            .ai-issue-card(
+                ng-repeat="result in vm.results track by result.issueId"
+            )
+                .ai-card-header
+                    h3.issue-title
+                        span.issue-ref {{result.issueRef}}
+                        span.issue-subject {{result.subject}}
+                    span.ai-confidence(
+                        title="Analysis confidence score"
+                    ) Confidence: {{result.analysis.confidence}}
+                
+                .ai-card-body
+                    .ai-section
+                        strong Priority: 
+                        span.ai-badge.priority(
+                            ng-class="{'priority-high': result.analysis.priority === 'High', 'priority-normal': result.analysis.priority === 'Normal', 'priority-low': result.analysis.priority === 'Low'}"
+                        ) {{result.analysis.priority}}
+                        span  ({{result.analysis.priorityReason}})
+                    
+                    .ai-section
+                        strong Type: 
+                        span.ai-badge {{result.analysis.type}}
+                    
+                    .ai-section
+                        strong Severity: 
+                        span.ai-badge {{result.analysis.severity}}
+                    
+                    .ai-section
+                        strong Analysis: 
+                        p.ai-description {{result.analysis.description}}
+                    
+                    .ai-section(ng-if="result.analysis.relatedModules.length > 0")
+                        strong Related Modules: 
+                        .ai-badges
+                            span.ai-badge.module(
+                                ng-repeat="module in result.analysis.relatedModules"
+                            ) {{module}}
+                    
+                    .ai-section(ng-if="result.analysis.solutions.length > 0")
+                        strong Suggested Solutions:
+                        ul.ai-solutions
+                            li(
+                                ng-repeat="solution in result.analysis.solutions"
+                            ) {{solution}}
+        
+        .modal-footer
+            button.button-green(
+                type="button"
+                ng-click="vm.closeModal()"
+                translate="COMMON.CLOSE"
+            )

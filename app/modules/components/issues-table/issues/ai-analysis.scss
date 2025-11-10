@@ -1,0 +1,355 @@
+/*
+ * This source code is licensed under the terms of the
+ * GNU Affero General Public License found in the LICENSE file in
+ * the root directory of this source tree.
+ *
+ * Copyright (c) 2021-present Kaleidos INC
+ */
+
+// AI 分析按钮样式
+.btn-ai-analysis {
+    background-color: #2196F3 !important;
+    color: white !important;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    margin-left: 8px;
+    
+    &:hover {
+        background-color: #1976D2 !important;
+        transform: translateY(-1px);
+    }
+    
+    &:active {
+        background-color: #1565C0 !important;
+        transform: translateY(0);
+    }
+    
+    &.btn-small {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+    
+    &.btn-board {
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+}
+
+// AI 分析 Lightbox 样式
+.lightbox-ai-analysis {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    .ai-analysis-content {
+        background: white;
+        border-radius: 8px;
+        max-width: 900px;
+        width: 90%;
+        max-height: 85vh;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    }
+    
+    .ai-analysis-header {
+        padding: 24px 32px;
+        border-bottom: 2px solid #E3F2FD;
+        background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+        color: white;
+        
+        .title {
+            font-size: 24px;
+            font-weight: 600;
+            margin: 0 0 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .subtitle {
+            font-size: 14px;
+            opacity: 0.9;
+            margin: 0;
+        }
+    }
+    
+    .ai-analysis-body {
+        padding: 24px 32px;
+        overflow-y: auto;
+        flex: 1;
+        
+        &::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        &::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+        
+        &::-webkit-scrollbar-thumb {
+            background: #2196F3;
+            border-radius: 4px;
+            
+            &:hover {
+                background: #1976D2;
+            }
+        }
+    }
+    
+    .ai-issue-card {
+        background: #FAFAFA;
+        border: 1px solid #E0E0E0;
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 20px;
+        transition: box-shadow 0.3s ease, transform 0.2s ease;
+        
+        &:hover {
+            box-shadow: 0 4px 12px rgba(33, 150, 243, 0.15);
+            transform: translateY(-2px);
+        }
+        
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+    
+    .ai-card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid #E0E0E0;
+        
+        .issue-title {
+            flex: 1;
+            margin: 0;
+            font-size: 16px;
+            font-weight: 600;
+            color: #212121;
+            
+            .issue-ref {
+                color: #2196F3;
+                margin-right: 8px;
+                font-weight: 700;
+            }
+            
+            .issue-subject {
+                color: #424242;
+            }
+        }
+        
+        .ai-confidence {
+            background: #E3F2FD;
+            color: #1976D2;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 500;
+            white-space: nowrap;
+            margin-left: 16px;
+        }
+    }
+    
+    .ai-card-body {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+    
+    .ai-section {
+        .ai-section-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #616161;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            
+            svg {
+                width: 16px;
+                height: 16px;
+                fill: #757575;
+            }
+        }
+        
+        .ai-description {
+            color: #424242;
+            line-height: 1.6;
+            font-size: 14px;
+            margin: 0;
+            padding: 12px;
+            background: white;
+            border-radius: 4px;
+            border-left: 3px solid #2196F3;
+        }
+    }
+    
+    .ai-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+    }
+    
+    .ai-badge {
+        display: inline-block;
+        padding: 6px 12px;
+        border-radius: 4px;
+        font-size: 13px;
+        font-weight: 500;
+        background: white;
+        border: 1px solid #E0E0E0;
+        color: #424242;
+        
+        &.priority {
+            border-width: 2px;
+            font-weight: 600;
+        }
+        
+        &.priority-high {
+            background: #FFEBEE;
+            border-color: #EF5350;
+            color: #C62828;
+        }
+        
+        &.priority-normal {
+            background: #FFF3E0;
+            border-color: #FFA726;
+            color: #E65100;
+        }
+        
+        &.priority-low {
+            background: #E8F5E9;
+            border-color: #66BB6A;
+            color: #2E7D32;
+        }
+        
+        &.type {
+            background: #E3F2FD;
+            border-color: #2196F3;
+            color: #1565C0;
+        }
+        
+        &.severity {
+            background: #F3E5F5;
+            border-color: #AB47BC;
+            color: #6A1B9A;
+        }
+        
+        &.module {
+            background: #FFF9C4;
+            border-color: #FDD835;
+            color: #F57F17;
+        }
+    }
+    
+    .ai-reason {
+        color: #757575;
+        font-size: 12px;
+        font-style: italic;
+        padding: 4px 8px;
+        background: white;
+        border-radius: 4px;
+    }
+    
+    .ai-solutions {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        
+        li {
+            position: relative;
+            padding: 10px 12px 10px 28px;
+            margin-bottom: 8px;
+            background: white;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #424242;
+            line-height: 1.5;
+            transition: background-color 0.2s ease;
+            
+            &:before {
+                content: "✓";
+                position: absolute;
+                left: 8px;
+                top: 10px;
+                color: #2196F3;
+                font-weight: 700;
+                font-size: 16px;
+            }
+            
+            &:hover {
+                background: #E3F2FD;
+            }
+            
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+    
+    .ai-analysis-footer {
+        padding: 20px 32px;
+        border-top: 1px solid #E0E0E0;
+        display: flex;
+        justify-content: flex-end;
+        background: #FAFAFA;
+        
+        .button-green {
+            padding: 10px 24px;
+            font-size: 14px;
+            font-weight: 500;
+            min-width: 100px;
+        }
+    }
+}
+
+// 响应式设计
+@media (max-width: 768px) {
+    .lightbox-ai-analysis {
+        .ai-analysis-content {
+            width: 95%;
+            max-height: 90vh;
+        }
+        
+        .ai-analysis-header,
+        .ai-analysis-body,
+        .ai-analysis-footer {
+            padding: 16px 20px;
+        }
+        
+        .ai-card-header {
+            flex-direction: column;
+            gap: 8px;
+            
+            .ai-confidence {
+                margin-left: 0;
+                align-self: flex-start;
+            }
+        }
+        
+        .ai-badges {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+    
+    .btn-ai-analysis {
+        font-size: 12px;
+        padding: 6px 12px;
+        margin-left: 4px;
+    }
+}

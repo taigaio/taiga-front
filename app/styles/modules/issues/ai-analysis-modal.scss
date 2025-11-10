@@ -1,0 +1,236 @@
+/* Analysis modal styles */
+
+.ai-analysis-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.2s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.ai-analysis-modal {
+    background: white;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 900px;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.ai-analysis-modal .modal-header {
+    padding: 20px 24px;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ai-analysis-modal .modal-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ai-analysis-modal .close-btn {
+    background: none;
+    border: none;
+    font-size: 32px;
+    line-height: 1;
+    cursor: pointer;
+    color: #666;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.ai-analysis-modal .close-btn:hover {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.ai-analysis-modal .modal-body {
+    padding: 20px 24px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.ai-analysis-modal .subtitle {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.ai-analysis-modal .ai-issue-card {
+    background: #f8f9fa;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 16px;
+    margin-bottom: 16px;
+}
+
+.ai-analysis-modal .ai-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.ai-analysis-modal .issue-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+    flex: 1;
+}
+
+.ai-analysis-modal .issue-ref {
+    color: #666;
+    margin-right: 8px;
+}
+
+.ai-analysis-modal .issue-subject {
+    color: #333;
+}
+
+.ai-analysis-modal .ai-confidence {
+    background: #e3f2fd;
+    color: #1976d2;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.ai-analysis-modal .ai-card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.ai-analysis-modal .ai-section {
+    line-height: 1.6;
+}
+
+.ai-analysis-modal .ai-section strong {
+    color: #333;
+    font-weight: 600;
+}
+
+.ai-analysis-modal .ai-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 500;
+    margin-right: 8px;
+    background: #e0e0e0;
+    color: #333;
+}
+
+.ai-analysis-modal .ai-badge.priority {
+    font-weight: 600;
+}
+
+.ai-analysis-modal .ai-badge.priority-high {
+    background: #ffebee;
+    color: #c62828;
+}
+
+.ai-analysis-modal .ai-badge.priority-normal {
+    background: #fff3e0;
+    color: #e65100;
+}
+
+.ai-analysis-modal .ai-badge.priority-low {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+
+.ai-analysis-modal .ai-badge.module {
+    background: #e3f2fd;
+    color: #1565c0;
+}
+
+.ai-analysis-modal .ai-description {
+    color: #555;
+    margin: 8px 0 0 0;
+    padding: 8px;
+    background: white;
+    border-radius: 4px;
+    border-left: 3px solid #2196f3;
+}
+
+.ai-analysis-modal .ai-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 6px;
+}
+
+.ai-analysis-modal .ai-solutions {
+    margin: 8px 0 0 0;
+    padding-left: 20px;
+}
+
+.ai-analysis-modal .ai-solutions li {
+    color: #555;
+    margin-bottom: 6px;
+    line-height: 1.5;
+}
+
+.ai-analysis-modal .modal-footer {
+    padding: 16px 24px;
+    border-top: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.ai-analysis-modal .button-green {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.ai-analysis-modal .button-green:hover {
+    background-color: #45a049;
+}
