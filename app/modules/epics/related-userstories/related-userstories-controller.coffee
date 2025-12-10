@@ -22,7 +22,7 @@ class RelatedUserStoriesController
         return @projectService.hasPermission("view_epics") or @.userstories?.length > 0
 
     userCanSort: () ->
-        return @projectService.hasPermission("modify_epic")
+        return @projectService.canEdit("modify_epic")
 
     loadRelatedUserstories: () ->
         @epicsService.listRelatedUserStories(@.epic)

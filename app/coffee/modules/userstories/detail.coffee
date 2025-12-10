@@ -384,7 +384,7 @@ UsStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $modelTransfor
 
     link = ($scope, $el, $attrs, $model) ->
         isEditable = ->
-            return $scope.project.my_permissions.indexOf("modify_us") != -1
+            return !$scope.project.archived_code && $scope.project.my_permissions.indexOf("modify_us") != -1
 
         render = (us) =>
             status = $scope.statusById[us.status]
@@ -467,7 +467,7 @@ UsTeamRequirementButtonDirective = ($rootscope, $tgrepo, $confirm, $loading, $mo
 
     link = ($scope, $el, $attrs, $model) ->
         canEdit = ->
-            return $scope.project.my_permissions.indexOf("modify_us") != -1
+            return !$scope.project.archived_code and $scope.project.my_permissions.indexOf("modify_us") != -1
 
         render = (us) ->
             ctx = {
@@ -531,7 +531,7 @@ UsClientRequirementButtonDirective = ($rootscope, $tgrepo, $confirm, $loading, $
 
     link = ($scope, $el, $attrs, $model) ->
         canEdit = ->
-            return $scope.project.my_permissions.indexOf("modify_us") != -1
+            return !$scope.project.archived_code and $scope.project.my_permissions.indexOf("modify_us") != -1
 
         render = (us) ->
             ctx = {

@@ -880,7 +880,7 @@ CardAssignedToDirective = ($template, $translate, avatarService, projectService)
             translate: (key, params) =>
                 return $translate.instant(key, params)
             checkPermission: (permission) =>
-                return projectService.project.get('my_permissions').indexOf(permission) > -1
+                return projectService.hasPermission(permission)
             svg: (svgData) =>
                 return svgTemplate(Object.assign({
                     svgTitle: '',
@@ -1025,7 +1025,7 @@ CardActionsDirective = ($template, $translate, projectService) ->
             translate: (key, params) =>
                 return $translate.instant(key, params)
             checkPermission: (permission) =>
-                return projectService.project.get('my_permissions').indexOf(permission) > -1
+                return projectService.canEdit(permission)
             svg: (svgData) =>
                 return svgTemplate(Object.assign({
                     svgTitle: '',
@@ -1062,7 +1062,7 @@ CardActionsDirective = ($template, $translate, projectService) ->
 
                     actions = []
 
-                    if projectService.project.get('my_permissions').includes($scope.vm.getModifyPermisionKey())
+                    if projectService.canEdit($scope.vm.getModifyPermisionKey())
                         actions.push(
                             {
                                 text: $translate.instant('COMMON.CARD.EDIT'),
@@ -1078,7 +1078,7 @@ CardActionsDirective = ($template, $translate, projectService) ->
                             },
                         )
 
-                    if projectService.project.get('my_permissions').includes($scope.vm.getDeletePermisionKey())
+                    if projectService.canEdit($scope.vm.getDeletePermisionKey())
                         actions.push(
                             {
                                 text: $translate.instant('COMMON.CARD.DELETE'),
@@ -1088,7 +1088,7 @@ CardActionsDirective = ($template, $translate, projectService) ->
                             },
                         )
 
-                    if projectService.project.get('my_permissions').includes($scope.vm.getModifyPermisionKey()) && !$scope.vm.isFirst
+                    if projectService.canEdit($scope.vm.getModifyPermisionKey()) && !$scope.vm.isFirst
                         actions.push(
                             {
                                 text: $translate.instant('COMMON.CARD.MOVE_TO_TOP'),

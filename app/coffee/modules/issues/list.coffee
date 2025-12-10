@@ -622,7 +622,7 @@ IssueStatusInlineEditionDirective = ($repo, $template, $rootscope) ->
             updateIssueStatus($el, issue, $scope.issueStatusById)
 
             # If the user has not enough permissions the click events are unbinded
-            if project.my_permissions.indexOf("modify_issue") == -1
+            if !project.archived_code and project.my_permissions.indexOf("modify_issue") == -1
                 $el.unbind("click")
                 $el.find("a").addClass("not-clickable")
 

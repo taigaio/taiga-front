@@ -57,7 +57,7 @@ class EpicsDashboardController
                 return @epicsService.fetchEpics()
 
     canCreateEpics: () ->
-        return @projectService.hasPermission("add_epic")
+        return @projectService.canEdit("add_epic")
 
     onCreateEpic: () ->
         onCreateEpic =  () =>

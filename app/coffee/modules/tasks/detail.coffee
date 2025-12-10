@@ -269,7 +269,7 @@ TaskStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $modelTransf
 
     link = ($scope, $el, $attrs, $model) ->
         isEditable = ->
-            return $scope.project.my_permissions.indexOf("modify_task") != -1
+            return !$scope.project.archived_code && $scope.project.my_permissions.indexOf("modify_task") != -1
 
         render = (task) =>
             status = $scope.statusById[task.status]
@@ -344,7 +344,7 @@ TaskIsIocaineButtonDirective = ($rootscope, $tgrepo, $confirm, $loading, $modelT
 
     link = ($scope, $el, $attrs, $model) ->
         isEditable = ->
-            return $scope.project.my_permissions.indexOf("modify_task") != -1
+            return !$scope.project.archived_code and $scope.project.my_permissions.indexOf("modify_task") != -1
 
         render = (task) ->
             if not isEditable() and not task.is_iocaine

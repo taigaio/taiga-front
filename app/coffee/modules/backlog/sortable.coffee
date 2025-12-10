@@ -27,7 +27,7 @@ BacklogSortableDirective = () ->
 
         bindOnce $scope, "project", (project) ->
             # If the user has not enough permissions we don't enable the sortable
-            if not (project.my_permissions.indexOf("modify_us") > -1)
+            if not (project.my_permissions.indexOf("modify_us") > -1) and !project.archived_code
                 return
 
             initIsBacklog = false

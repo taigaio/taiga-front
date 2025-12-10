@@ -28,7 +28,7 @@ TaskboardSortableDirective = ($repo, $rs, $rootscope, $translate) ->
 
             unwatch()
 
-            if not ($scope.project.my_permissions.indexOf("modify_task") > -1)
+            if not ($scope.project.my_permissions.indexOf("modify_task") > -1) and project.archived_code
                 return
 
             oldParentScope = null

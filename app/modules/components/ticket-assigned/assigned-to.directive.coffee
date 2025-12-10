@@ -12,7 +12,7 @@ $translate, $compile, $currentUserService, avatarService, $lightboxFactory) ->
         currentUserId = $currentUserService.getUser()?.get('id')
 
         isEditable = ->
-            return $scope.project?.my_permissions?.indexOf($attrs.requiredPerm) != -1
+            return !$scope.project?.archived_code && $scope.project?.my_permissions.indexOf($attrs.requiredPerm) != -1
 
         isIocaine = (item) ->
             return item?.is_iocaine

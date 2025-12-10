@@ -37,7 +37,7 @@ class EpicRowController
                 @.percentage = "#{progress * 100 / total}%"
 
     canEditEpics: () ->
-        return @projectService.hasPermission("modify_epic")
+        return @projectService.canEdit("modify_epic")
 
     toggleUserStoryList: () ->
         if !@.displayUserStories

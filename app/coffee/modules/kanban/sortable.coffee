@@ -34,7 +34,7 @@ KanbanSortableDirective = ($repo, $rs, $rootscope, kanbanUserstoriesService) ->
             init(containers)
 
         init = (containers) =>
-            if not ($scope.project.my_permissions.indexOf("modify_us") > -1)
+            if not ($scope.project.my_permissions.indexOf("modify_us") > -1) and project.archived_code
                 return
 
             if drake

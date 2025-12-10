@@ -203,9 +203,10 @@ CustomAttributeValueDirective = ($template, $selectedText, $compile, $translate,
                 $el.html(html)
 
         isEditable = ->
+            isArchived = $scope.project.archived_code
             permissions = $scope.project.my_permissions
             requiredEditionPerm = $attrs.requiredEditionPerm
-            return permissions.indexOf(requiredEditionPerm) > -1
+            return not isArchived and permissions.indexOf(requiredEditionPerm) > -1
 
         $scope.saveCustomRichText = (markdown, callback) =>
             attributeValue.value = markdown

@@ -52,7 +52,7 @@ ItemWysiwyg = ($modelTransform, $rootscope, $confirm, attachmentsFullService, $t
         $scope.$watch 'project', (project) ->
             return if !project
 
-            $scope.editableDescription = project.my_permissions.indexOf($attrs.requiredPerm) != -1
+            $scope.editableDescription = !project.archived_code and project.my_permissions.indexOf($attrs.requiredPerm) != -1
 
     return {
         scope: true,
