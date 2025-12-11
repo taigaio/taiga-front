@@ -55,7 +55,7 @@
                                         svg-title-translate="COMMON.OWNER"
                                     )
                                     tg-svg(
-                                        ng-if="project.get('blocked_code')",
+                                        ng-if="project.get('blocked_code') || project.get('archived_code')",
                                         svg-icon="icon-blocked-project",
                                         svg-title-translate="PROJECT.BLOCKED_PROJECT.BLOCKED"
                                     )
