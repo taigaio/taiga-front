@@ -17,7 +17,7 @@ $translate, $currentUserService, $lightboxFactory) ->
             $scope.displayHidden = !$scope.displayHidden
 
         isEditable = ->
-            return $scope.project?.my_permissions?.indexOf($attrs.requiredPerm) != -1
+            return !$scope.project?.archived_code and $scope.project?.my_permissions?.indexOf($attrs.requiredPerm) != -1
 
         save = (assignedUsersIds, assignedToUser) ->
             $scope.loading = true

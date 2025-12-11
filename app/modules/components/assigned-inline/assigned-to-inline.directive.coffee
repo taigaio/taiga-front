@@ -10,7 +10,7 @@ AssignedToInlineDirective = ($rootscope, $confirm, $repo, $loading, $modelTransf
 $translate, $compile, $currentUserService, avatarService, $userListService) ->
     link = ($scope, $el, $attr, $model) ->
         isEditable = ->
-            return $scope.project?.my_permissions?.indexOf($attr.requiredPerm) != -1
+            return !$scope.project?.archived_code and $scope.project?.my_permissions?.indexOf($attr.requiredPerm) != -1
 
         renderUserList = (text) ->
             selectedId = $model.$modelValue.assigned_to

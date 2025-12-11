@@ -14,7 +14,7 @@ $compile, $translate, $currentUserService) ->
         $scope.isAuthenticated = !!$currentUserService.getUser()
 
         isEditable = ->
-            return $scope.project?.my_permissions?.indexOf($attrs.requiredPerm) != -1
+            return !$scope.project?.archived_code and $scope.project?.my_permissions?.indexOf($attrs.requiredPerm) != -1
 
         render = () ->
             watchersIds = _.clone($scope.vm.item?.watchers, false)
