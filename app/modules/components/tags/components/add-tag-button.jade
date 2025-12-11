@@ -7,7 +7,7 @@
 
 button.btn-filter.ng-animate-disabled.e2e-show-tag-input(
     variant="secondary"
-    ng-if="!vm.addTag && vm.checkPermissions()"
+    ng-if="!vm.addTag && vm.checkPermissions() && !vm.isArchived()"
     title="{{'COMMON.TAGS.ADD' | translate}}"
     ng-click="vm.displayTagInput()"
 )

@@ -8,7 +8,7 @@
 .tag(ng-style="{'background-color': tag[1]}")
     span(ng-bind-html="tag[0] | emojify")
     tg-svg.icon-close.e2e-delete-tag(
-        ng-if="hasPermissions"
+        ng-if="hasPermissions && !isArchived"
         svg-icon="icon-close"
         svg-title-translate="COMMON.TAG.DELETE"
         ng-click="onDeleteTag(tag)"

@@ -16,6 +16,7 @@
             project="vm.project"
             on-delete-tag="vm.onDeleteTag({tag: tag})"
             has-permissions="vm.checkPermissions()"
+            is-archived="vm.isArchived()"
         )
     .tag-wrapper(
         ng-if="!tag[1] || vm.disableColorSelection"
@@ -26,6 +27,7 @@
             loading-remove-tag="vm.loadingRemoveTag"
             on-delete-tag="vm.onDeleteTag({tag: tag})"
             has-permissions="vm.checkPermissions()"
+            is-archived="vm.isArchived()"
         )
 
     include ../components/add-tag-button
