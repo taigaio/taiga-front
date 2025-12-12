@@ -102,7 +102,10 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
             @scope.wikiId = null
             @scope.attachmentsReady = true
 
-            if !project.archived_code and @scope.project.my_permissions.indexOf("add_wiki_page") == -1
+            if @scope.project.my_permissions.indexOf("add_wiki_page") == -1
+                return null
+
+            if @scope.project.archived_code
                 return null
 
             data = {
