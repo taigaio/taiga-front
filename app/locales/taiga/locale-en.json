@@ -321,6 +321,9 @@
                 "ADD_WIKI_LINKS": "Add wiki links",
                 "DELETE_WIKI_LINKS": "Delete wiki links"
             }
+        },
+        "ARCHIVED_PROJECT_WARNING": {
+            "MESSAGE": "This project was archived. It is now read-only."
         }
     },
     "LOGIN": {
