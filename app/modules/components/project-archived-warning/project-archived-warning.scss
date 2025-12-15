@@ -1,13 +1,9 @@
 .project-archived-banner {
     background: lighten($color-link-orange, 35%);
     border-bottom: 2px solid lighten($color-link-orange, 15%);
-    margin-bottom: 2em;
-    margin-left: calc(-50vw + 50%);
-    margin-right: calc(-50vw + 50%);
-    margin-top: -16px;
     padding: .5rem .5rem;
     position: relative;
-    width: 100vw;
+    width: 100%;
 
     .archived-banner-content {
         align-items: center;
