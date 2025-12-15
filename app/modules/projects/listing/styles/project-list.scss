@@ -76,6 +76,15 @@
                 opacity: 1;
             }
         }
+        &.archived-project {
+            background-color: lighten($color-link-orange, 35%);
+            .list-itemtype-project-image,
+            .project-title,
+            .private,
+            .project-description {
+                opacity: 1;
+            }
+        }
         .list-itemtype-project-data-wrapper {
             display: flex;
         }

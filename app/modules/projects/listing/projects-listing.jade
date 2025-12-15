@@ -23,7 +23,7 @@
                 li.list-itemtype-project(
                     tg-bind-scope
                     tg-repeat="project in vm.projects track by project.get('id')"
-                    ng-class="{'blocked-project': project.get('blocked_code')}"
+                    ng-class="{'blocked-project': project.get('blocked_code'), 'archived-project': project.get('archived_code')}"
                 )
                     .list-itemtype-project-left
 
