@@ -1,0 +1,162 @@
+form
+    .project-details-image(tg-project-logo)
+                fieldset.image-container
+                    img.image(
+                        tg-project-logo-big-src="project._attrs"
+                        alt="logo"
+                    )
+                    .loading-overlay
+                        img.loading-spinner(
+                            src="#{v}/svg/spinner-circle.svg",
+                            alt="{{'COMMON.LOADING' | translate}}"
+                        )
+                    input.hidden(
+                        type="file"
+                        id="logo-field"
+                        tg-project-logo-model="logoAttachment"
+                    )
+
+                button.btn-small.button-full.change-image.js-change-logo(
+                    type="button"
+                    variant="secondary"
+                    title="{{'ADMIN.PROJECT_PROFILE.CHANGE_LOGO' | translate}}"
+                ) {{'ADMIN.PROJECT_PROFILE.CHANGE_LOGO' | translate}}
+
+                a.use-default-image.js-use-default-logo(
+                    href="#"
+                    title="{{ 'ADMIN.PROJECT_PROFILE.ACTION_USE_DEFAULT_LOGO' | translate }}"
+                ) {{ 'ADMIN.PROJECT_PROFILE.ACTION_USE_DEFAULT_LOGO' | translate }}
+
+
+            .project-details-form-data
+                fieldset
+                    label(for="project-name") {{ 'ADMIN.PROJECT_PROFILE.PROJECT_NAME' | translate }}
+                    input(
+                        type="text"
+                        name="name"
+                        placeholder="{{'ADMIN.PROJECT_PROFILE.PROJECT_NAME' | translate}}"
+                        id="project-name"
+                        ng-model="project.name"
+                        data-required="true"
+                        maxlength="45"
+                    )
+
+                fieldset
+                    label(for="project-description") {{ 'ADMIN.PROJECT_PROFILE.DESCRIPTION' | translate }}
+                    textarea(
+                        name="description"
+                        ng-attr-placeholder="{{'ADMIN.PROJECT_PROFILE.DESCRIPTION' | translate}}"
+                        id="project-description"
+                        ng-model="project.description"
+                        data-required="true"
+                    )
+                fieldset
+                    label(for="tags") {{ 'ADMIN.PROJECT_PROFILE.TAGS' | translate }}
+
+                    tg-tag-line-common.tags-block(
+                        disable-color-selection
+                        project="project"
+                        tags="projectTags"
+                        permissions="modify_project"
+                        on-add-tag="ctrl.addTag(name)"
+                        on-delete-tag="ctrl.deleteTag(tag)"
+                    )
+
+                fieldset(ng-if="project.owner.id != user.id")
+                    tg-admin-project-request-ownership.admin-project-profile-owner-actions(
+                        ng-class="{limit: !canCreatePrivateProjects}"
+                        can-request="canCreatePrivateProjects"
+                        owner="project.owner",
+                        project-id="project.id"
+                    )
+                fieldset(ng-if="project.owner.id == user.id")
+                    tg-admin-project-change-owner.admin-project-profile-owner-actions(
+                        members="project.members.length"
+                        owner="project.owner",
+                        project-id="project.id"
+                        active-users="activeUsers"
+                    )
+
+                fieldset.looking-for-people
+                    .looking-for-people-selector
+                        span {{ 'ADMIN.PROJECT_PROFILE.RECRUITING' | translate }}
+                        tg-svg(
+                            svg-icon="icon-recruit",
+                            svg-title-translate="ADMIN.PROJECT_PROFILE.RECRUITING_MESSAGE"
+                        )
+                        div.check
+                            input(
+                                type="checkbox",
+                                ng-model="project.is_looking_for_people"
+                            )
+                            div
+                            span.check-text.check-yes(translate="COMMON.YES")
+                            span.check-text.check-no(translate="COMMON.NO")
+
+                    .looking-for-people-reason(ng-show="project.is_looking_for_people")
+                        label {{ 'ADMIN.PROJECT_PROFILE.RECRUITING_MESSAGE' | translate }}
+                        input(
+                            type="text"
+                            maxlength="200"
+                            ng-model="project.looking_for_people_note"
+                            placeholder="{{ 'ADMIN.PROJECT_PROFILE.RECRUITING_PLACEHOLDER' | translate }}"
+                        )
+
+                fieldset.get-feedback
+                    .get-feedback-inner
+                        span {{ 'ADMIN.PROJECT_PROFILE.FEEDBACK' | translate }}
+                        div.check
+                            input(
+                                type="checkbox",
+                                ng-model="project.is_contact_activated"
+                            )
+                            div
+                            span.check-text.check-yes(translate="COMMON.YES")
+                            span.check-text.check-no(translate="COMMON.NO")
+
+                tg-admin-project-restrictions(project="project")
+
+                fieldset
+                    .project-privacy-settings
+                        div.privacy-option
+                            input.privacy-project(
+                                ng-disabled="project.is_private && !project.is_private_extra_info.can_be_updated"
+                                type="radio"
+                                id="private-project"
+                                name="privacy-project"
+                                ng-model="project.is_private"
+                                ng-value="false"
+                            )
+                            label.trans-button(for="private-project") {{ 'ADMIN.PROJECT_PROFILE.PUBLIC_PROJECT' | translate }}
+
+                        div.privacy-option
+                            input.privacy-project(
+                                ng-disabled="!project.is_private && !project.is_private_extra_info.can_be_updated"
+                                type="radio"
+                                id="public-project"
+                                name="privacy-project"
+                                ng-model="project.is_private"
+                                ng-value="true"
+                            )
+                            label.trans-button(for="public-project") {{'ADMIN.PROJECT_PROFILE.PRIVATE_PROJECT' | translate }}
+
+                    a.private-or-public(
+                        href="https://community.taiga.io/t/whats-the-difference-between-public-and-private-projects/139"
+                        target="_blank"
+                    )
+                        tg-svg(
+                            svg-icon="icon-question",
+                            svg-title-translate="ADMIN.PROJECT_PROFILE.PRIVATE_OR_PUBLIC"
+                        )
+                        span {{'ADMIN.PROJECT_PROFILE.PRIVATE_OR_PUBLIC' | translate }}
+                button.btn-small(
+                    variant="primary"
+                    type="submit"
+                    title="{{'COMMON.SAVE' | translate}}"
+                    translate="COMMON.SAVE"
+                )
+                a.delete-project(
+                    href=""
+                    title="{{'ADMIN.PROJECT_PROFILE.DELETE' | translate}}"
+                    ng-click="ctrl.openDeleteLightbox()"
+                ) {{ 'ADMIN.PROJECT_PROFILE.DELETE' | translate }}

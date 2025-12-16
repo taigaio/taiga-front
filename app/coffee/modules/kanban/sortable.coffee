@@ -37,6 +37,9 @@ KanbanSortableDirective = ($repo, $rs, $rootscope, kanbanUserstoriesService) ->
             if not ($scope.project.my_permissions.indexOf("modify_us") > -1)
                 return
 
+            if $scope.project.archived_code
+                return
+
             if drake
                 containers.forEach (container) =>
                     drake.containers.push(container)

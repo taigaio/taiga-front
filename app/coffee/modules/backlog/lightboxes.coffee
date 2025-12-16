@@ -201,7 +201,7 @@ CreateEditSprint = ($repo, $confirm, $rs, $rootscope, lightboxService, $loading,
                     $scope.newSprint.estimated_start = moment($scope.newSprint.estimated_start).format(prettyDate)
                     $scope.newSprint.estimated_finish = moment($scope.newSprint.estimated_finish).format(prettyDate)
 
-                if projectService.project.get('my_permissions').indexOf('delete_milestone') > -1
+                if projectService.canEdit('delete_milestone')
                     $el.find(".delete-sprint").removeClass("hidden")
 
                 editSprint = $translate.instant("BACKLOG.EDIT_SPRINT")

@@ -87,7 +87,7 @@ module.factory("$selectedText", ["$window", "$document", SelectedText])
 CheckPermissionDirective = (projectService) ->
     render = ($el, project, permission) ->
         if project && permission
-            $el.removeClass('hidden') if project.get('my_permissions').indexOf(permission) > -1
+            $el.removeClass('hidden') if projectService.canEdit(permission)
 
     link = ($scope, $el, $attrs) ->
         $el.addClass('hidden')
@@ -425,5 +425,3 @@ module.directive 'tgPreloadImage', () ->
 
                 preload(src, onLoad)
     }
-
-

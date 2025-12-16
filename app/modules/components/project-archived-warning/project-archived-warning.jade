@@ -1,0 +1,5 @@
+div.project-archived-banner(ng-if="vm.isArchived")
+    .archived-banner-content
+        .archived-banner-icon
+            tg-svg(svg-icon="icon-blocked-project")
+        span.archived-banner-message {{ "COMMON.ARCHIVED_PROJECT_WARNING.MESSAGE" | translate }}

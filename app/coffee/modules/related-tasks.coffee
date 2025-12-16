@@ -61,8 +61,8 @@ RelatedTaskRowDirective = ($repo, $compile, $confirm, $rootscope, $loading, $tem
 
         renderView = (task) ->
             perms = {
-                modify_task: $scope.project.my_permissions.indexOf("modify_task") != -1
-                delete_task: $scope.project.my_permissions.indexOf("delete_task") != -1
+                modify_task: !$scope.project.archived_code && $scope.project.my_permissions.indexOf("modify_task") != -1
+                delete_task: !$scope.project.archived_code && $scope.project.my_permissions.indexOf("delete_task") != -1
             }
 
             $el.html($compile(templateView({
@@ -204,7 +204,7 @@ RelatedTaskCreateButtonDirective = ($repo, $compile, $confirm, $tgmodel, $templa
         $scope.$watch "project", (val) ->
             return if not val
             $el.off()
-            if $scope.project.my_permissions.indexOf("add_task") != -1
+            if !$scope.project.archived_code and $scope.project.my_permissions.indexOf("add_task") != -1
                 $el.html($compile(template())($scope))
             else
                 $el.html("")
@@ -226,11 +226,12 @@ RelatedTasksDirective = ($rootscope) ->
         _isVisible = ->
             if $scope.project
                 return $scope.project.my_permissions.indexOf("view_tasks") != -1
+
             return false
 
         _isEditable = ->
             if $scope.project
-                return $scope.project.my_permissions.indexOf("modify_task") != -1
+                return !$scope.project.archived_code and $scope.project.my_permissions.indexOf("view_tasks") != -1
             return false
 
         $scope.reorderTask = (task, newIndex) ->
@@ -238,7 +239,7 @@ RelatedTasksDirective = ($rootscope) ->
 
         $scope.showAddTaks = ->
             if $scope.project
-                return $scope.project.my_permissions.indexOf("add_task") != -1
+                return !$scope.project.archived_code and $scope.project.my_permissions.indexOf("add_task") != -1
             return false
 
         $scope.showRelatedTasks = ->
@@ -326,7 +327,7 @@ RelatedTaskAssignedToInlineEditionDirective = ($repo, $rootscope, $translate, av
 
         taiga.bindOnce $scope, "project", (project) ->
             # If the user has not enough permissions the click events are unbinded
-            if project.my_permissions.indexOf("modify_task") == -1
+            if !project.archived_code && project.my_permissions.indexOf("modify_task") == -1
                 $el.unbind("click")
                 $el.find("a").addClass("not-clickable")
 

@@ -11,10 +11,10 @@ section.admin-submenu
             li#adminmenu-details
                 a(href="", tg-nav="project-admin-project-profile-details:project=project.slug")
                     span.title(translate="ADMIN.PROJECT_PROFILE.PROJECT_DETAILS")
-            li#adminmenu-default-values
+            li#adminmenu-default-values(ng-if="!project.archived_code")
                 a(href="", tg-nav="project-admin-project-profile-default-values:project=project.slug")
                     span.title(translate="ADMIN.PROJECT_PRESETS.MENU_TITLE")
-            li#adminmenu-modules
+            li#adminmenu-modules(ng-if="!project.archived_code")
                 a(href="", tg-nav="project-admin-project-profile-modules:project=project.slug")
                     span.title(translate="ADMIN.MODULES.TITLE")
             li#adminmenu-export

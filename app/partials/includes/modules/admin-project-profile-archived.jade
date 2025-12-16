@@ -1,0 +1,89 @@
+form
+    .project-details-image(tg-project-logo)
+        fieldset.image-container
+            img.image(
+                tg-project-logo-big-src="project._attrs"
+                alt="logo"
+            )
+            .loading-overlay
+                img.loading-spinner(
+                    src="#{v}/svg/spinner-circle.svg",
+                    alt="{{'COMMON.LOADING' | translate}}"
+                )
+            input.hidden(
+                type="file"
+                id="logo-field"
+                tg-project-logo-model="logoAttachment"
+            )
+
+    .project-details-form-data
+            fieldset
+                label(for="project-name") {{ 'ADMIN.PROJECT_PROFILE.PROJECT_NAME' | translate }}
+                input(
+                    type="text"
+                    name="name"
+                    placeholder="{{'ADMIN.PROJECT_PROFILE.PROJECT_NAME' | translate}}"
+                    id="project-name"
+                    ng-model="project.name"
+                    data-required="true"
+                    maxlength="45"
+                    disabled="true"
+                )
+
+            fieldset
+                label(for="project-description") {{ 'ADMIN.PROJECT_PROFILE.DESCRIPTION' | translate }}
+                textarea(
+                    name="description"
+                    ng-attr-placeholder="{{'ADMIN.PROJECT_PROFILE.DESCRIPTION' | translate}}"
+                    id="project-description"
+                    ng-model="project.description"
+                    data-required="true"
+                    disabled="true"
+                )
+
+            fieldset
+                label(for="tags") {{ 'ADMIN.PROJECT_PROFILE.TAGS' | translate }}
+
+                tg-tag-line-common.tags-block(
+                    disable-color-selection
+                    project="project"
+                    tags="projectTags"
+                    permissions=""
+                    on-add-tag="ctrl.addTag(name)"
+                    on-delete-tag="ctrl.deleteTag(tag)"
+                )
+
+            div.admin-project-profile-owner-actions
+                .owner-info
+                    .owner-info-title {{ 'ADMIN.PROJECT_PROFILE.PROJECT_OWNER' | translate }}
+                    .owner-name {{ ::project.owner.full_name_display }}
+
+            fieldset
+                .project-privacy-settings
+                    div.privacy-option(ng-if="!project.is_private")
+                        input.privacy-project(
+                            ng-disabled="true"
+                            type="radio"
+                            id="private-project"
+                            name="privacy-project"
+                            ng-model="project.is_private"
+                            ng-value="false"
+                        )
+                        label.trans-button(for="private-project") {{ 'ADMIN.PROJECT_PROFILE.PUBLIC_PROJECT' | translate }}
+
+                    div.privacy-option(ng-if="project.is_private")
+                        input.privacy-project(
+                            ng-disabled="true"
+                            type="radio"
+                            id="public-project"
+                            name="privacy-project"
+                            ng-model="project.is_private"
+                            ng-value="true"
+                        )
+                        label.trans-button(for="public-project") {{'ADMIN.PROJECT_PROFILE.PRIVATE_PROJECT' | translate }}
+
+            a.delete-project(
+                href=""
+                title="{{'ADMIN.PROJECT_PROFILE.DELETE' | translate}}"
+                ng-click="ctrl.openDeleteLightbox()"
+            ) {{ 'ADMIN.PROJECT_PROFILE.DELETE' | translate }}

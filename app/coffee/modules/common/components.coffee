@@ -204,7 +204,7 @@ BlockButtonDirective = ($rootscope, $loading, $template) ->
 
     link = ($scope, $el, $attrs, $model) ->
         isEditable = ->
-            return $scope.project.my_permissions.indexOf("modify_us") != -1
+            return !$scope.project.archived_code && $scope.project.my_permissions.indexOf("modify_us") != -1
 
         $scope.$watch $attrs.ngModel, (item) ->
             return if not item

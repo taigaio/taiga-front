@@ -105,6 +105,9 @@ class WikiDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
             if @scope.project.my_permissions.indexOf("add_wiki_page") == -1
                 return null
 
+            if @scope.project.archived_code
+                return null
+
             data = {
                 project: @scope.projectId
                 slug: @scope.wikiSlug
@@ -222,7 +225,7 @@ $qqueue, $repo, $analytics, activityService) ->
                 if not $scope.item.id?
                     $analytics.trackEvent("wikipage", "create", "create wiki page", 1)
                     $scope.$emit("wikipage:add")
-                    $scope.editableDescription = $scope.project.my_permissions.indexOf("modify_wiki_page") != -1
+                    $scope.editableDescription = !project.get("archived_code") and $scope.project.my_permissions.indexOf("modify_wiki_page") != -1
 
                 activityService.fetchEntries(true)
                 $confirm.notify("success")
@@ -257,9 +260,9 @@ $qqueue, $repo, $analytics, activityService) ->
             return if !project
 
             if $scope.item.id?
-                $scope.editableDescription = project.my_permissions.indexOf("modify_wiki_page") != -1
+                $scope.editableDescription = !project.archived_code and $scope.project.my_permissions.indexOf("modify_wiki_page") != -1
             else
-                $scope.editableDescription = project.my_permissions.indexOf("add_wiki_page") != -1
+                $scope.editableDescription = !project.archived_code and $scope.project.my_permissions.indexOf("add_wiki_page") != -1
 
     return {
         scope: true,

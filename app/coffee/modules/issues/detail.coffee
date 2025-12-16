@@ -279,7 +279,7 @@ IssueStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $modelTrans
 
     link = ($scope, $el, $attrs, $model) ->
         isEditable = ->
-            return $scope.project.my_permissions.indexOf("modify_issue") != -1
+            return !$scope.project.archived_code && $scope.project.my_permissions.indexOf("modify_issue") != -1
 
         render = (issue) =>
             status = $scope.statusById[issue.status]
@@ -370,7 +370,7 @@ IssueTypeButtonDirective = ($rootScope, $repo, $confirm, $loading, $modelTransfo
         notAutoSave = $scope.$eval($attrs.notAutoSave)
 
         isEditable = ->
-            return $scope.project.my_permissions.indexOf("modify_issue") != -1
+            return !$scope.project.archived_code and $scope.project.my_permissions.indexOf("modify_issue") != -1
 
         render = (issue) ->
             type = $scope.typeById[issue.type]
@@ -467,7 +467,7 @@ IssueSeverityButtonDirective = ($rootScope, $repo, $confirm, $loading, $modelTra
         notAutoSave = $scope.$eval($attrs.notAutoSave)
 
         isEditable = ->
-            return $scope.project.my_permissions.indexOf("modify_issue") != -1
+            return !$scope.project.archived_code and $scope.project.my_permissions.indexOf("modify_issue") != -1
 
         render = (issue) ->
             severity = $scope.severityById[issue.severity]
@@ -565,7 +565,7 @@ IssuePriorityButtonDirective = ($rootScope, $repo, $confirm, $loading, $modelTra
         notAutoSave = $scope.$eval($attrs.notAutoSave)
 
         isEditable = ->
-            return $scope.project.my_permissions.indexOf("modify_issue") != -1
+            return !$scope.project.archived_code and $scope.project.my_permissions.indexOf("modify_issue") != -1
 
         render = (issue) ->
             priority = $scope.priorityById[issue.priority]

@@ -16,6 +16,7 @@ TagDirective = () ->
             loadingRemoveTag: "<",
             onDeleteTag: "&",
             hasPermissions: "<"
+            isArchived: "&"
         },
     }
 

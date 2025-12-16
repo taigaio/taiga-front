@@ -8,7 +8,7 @@
 
 TasksSortableDirective = ($parse, projectService) ->
     link = (scope, el, attrs) ->
-        return if not projectService.hasPermission("modify_task")
+        return if not projectService.canEdit("modify_task")
 
         callback = $parse(attrs.tgTasksSortable)
 

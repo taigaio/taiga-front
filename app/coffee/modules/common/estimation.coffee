@@ -141,7 +141,7 @@ EstimationsService = ($template, $repo, $confirm, $q, $qqueue) ->
 
     class EstimationProcess
         constructor: (@$el, @us, @project) ->
-            @isEditable = @project.my_permissions.indexOf("modify_us") != -1
+            @isEditable = !@project.archived_code and @project.my_permissions.indexOf("modify_us") != -1
             @roles = @project.roles
             @points = @project.points
             @loading = false

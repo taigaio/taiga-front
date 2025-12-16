@@ -26,6 +26,9 @@ class TagLineCommonController
         hasPermissions = @tagLineService.checkPermissions(@.project.my_permissions, @.permissions)
         return hasPermissions
 
+    isArchived: () ->
+        return @.project.archived_code
+
     _createColorsArray: (projectTagColors) ->
         @.colorArray =  @tagLineService.createColorsArray(projectTagColors)
 

@@ -263,7 +263,7 @@ EpicStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $modelTransf
 
     link = ($scope, $el, $attrs, $model) ->
         isEditable = ->
-            return $scope.project.my_permissions.indexOf("modify_epic") != -1
+            return !$scope.project.archived_code and $scope.project.my_permissions.indexOf("modify_epic") != -1
 
         render = (epic) =>
             status = $scope.statusById[epic.status]

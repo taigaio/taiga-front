@@ -102,6 +102,13 @@ class ProjectService
     hasPermission: (permission) ->
         return @._project.get('my_permissions').indexOf(permission) != -1
 
+    isArchived: () ->
+        return @._project.get('archived_code')
+
+    canEdit: (permission) ->
+        return false if this.isArchived()
+        return this.hasPermission(permission)
+
     isEpicsDashboardEnabled: ->
         return @._project.get("is_epics_activated")
 

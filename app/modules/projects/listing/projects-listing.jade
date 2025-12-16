@@ -23,7 +23,7 @@
                 li.list-itemtype-project(
                     tg-bind-scope
                     tg-repeat="project in vm.projects track by project.get('id')"
-                    ng-class="{'blocked-project': project.get('blocked_code')}"
+                    ng-class="{'blocked-project': project.get('blocked_code'), 'archived-project': project.get('archived_code')}"
                 )
                     .list-itemtype-project-left
 
@@ -55,7 +55,7 @@
                                         svg-title-translate="COMMON.OWNER"
                                     )
                                     tg-svg(
-                                        ng-if="project.get('blocked_code')",
+                                        ng-if="project.get('blocked_code') || project.get('archived_code')",
                                         svg-icon="icon-blocked-project",
                                         svg-title-translate="PROJECT.BLOCKED_PROJECT.BLOCKED"
                                     )
