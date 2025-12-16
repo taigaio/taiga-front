@@ -189,6 +189,11 @@ class UsFiltersMixin
         @.filtersReloadContent()
         @.generateFilters()
 
+    clearFilters: () ->
+        @.replaceAllFilters({})
+        @.filtersReloadContent()
+        @.generateFilters()
+
     addFilter: (newFilter) ->
         @.selectFilter(newFilter.category.dataType, newFilter.filter.id, false, newFilter.mode)
         @.filtersReloadContent()
