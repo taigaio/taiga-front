@@ -320,6 +320,9 @@
                 "ADD_WIKI_LINKS": "Wiki bağlantıları ekle",
                 "DELETE_WIKI_LINKS": "Wiki bağlantılarını sil"
             }
+        },
+        "ARCHIVED_PROJECT_WARNING": {
+            "MESSAGE": "Bu proje arşivlendi. Artık salt okunur durumdadır."
         }
     },
     "LOGIN": {
