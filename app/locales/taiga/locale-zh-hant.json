@@ -320,6 +320,9 @@
                 "ADD_WIKI_LINKS": "新增維基連結",
                 "DELETE_WIKI_LINKS": "刪除維基連結"
             }
+        },
+        "ARCHIVED_PROJECT_WARNING": {
+            "MESSAGE": "此專案已經歸檔。目前僅能讀取。"
         }
     },
     "LOGIN": {
