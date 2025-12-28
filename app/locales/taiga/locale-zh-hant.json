@@ -48,7 +48,7 @@
         "CAPSLOCK_WARNING": "請注意，此欄位大小寫有區別，目前輸入法切換至大寫模式。",
         "CONFIRM_CLOSE_EDIT_MODE_TITLE": "是否關閉編輯模式？",
         "CONFIRM_CLOSE_EDIT_MODE_MESSAGE": "請記得，如果您在關閉編輯模式時沒有保存，所有做出的更動將被丢棄",
-        "RELATED_USERSTORIES": "相關的用戶故事",
+        "RELATED_USERSTORIES": "相關的使用者故事",
         "CARD": {
             "ASSIGN_TO": "指派給",
             "EDIT": "編輯卡片",
@@ -210,17 +210,17 @@
             "BUTTON_TITLE": "贊成／反對該項目",
             "COUNTER_TITLE": "{total, plural, =1{one vote} other{# votes}}"
         },
-        "PROMOTE_TO_US": "提升至用戶故事",
+        "PROMOTE_TO_US": "提升至使用者故事",
         "PROMOTED_ISSUES": "此問題已提升至",
         "PROMOTED_TASKS": "此任務已提升至",
         "CONFIRM_PROMOTE": {
             "ISSUE": {
-                "TITLE": "將此問題提到使用者故事",
-                "MESSAGE": "請確認是否要以此事項來創建新的用戶故事？"
+                "TITLE": "將此問題提升為新的使用者故事",
+                "MESSAGE": "請確認是否要以此議題來創建新的用戶故事？"
             },
             "TASK": {
-                "TITLE": "將此任務提到使用者故事",
-                "MESSAGE": "請確認是否要以此任務來創建新的用戶故事？"
+                "TITLE": "將此任務提升到為新的使用者故事",
+                "MESSAGE": "請確認是否要以此任務來創建新的使用者故事？"
             }
         },
         "CUSTOM_ATTRIBUTES": {
@@ -524,7 +524,7 @@
             "EPICS": "史詩",
             "EPICS_DESCRIPTION": "對於專案中最為要害的部份進行可視化和管理",
             "BACKLOG": "Scrum",
-            "BACKLOG_DESCRIPTION": "管理您的用戶故事以有條理地檢視接下來的及優先的工作。",
+            "BACKLOG_DESCRIPTION": "管理您的使用者故事，以便有條理地檢視接下來的及優先的工作。",
             "NUMBER_SPRINTS": "預期的衝刺數量",
             "NUMBER_SPRINTS_HELP": "0 for an undetermined number",
             "NUMBER_US_POINTS": "預期的全部故事點數",
@@ -565,13 +565,13 @@
             "MAX_PRIVATE_PROJECTS_MEMBERS": "已超過私密專案所允許成員數量的最大上限",
             "MAX_PUBLIC_PROJECTS": "您已達到目前方案允許的私人專案最大數量",
             "MAX_PUBLIC_PROJECTS_MEMBERS": "已超過公開專案所允許成員數量的最大上限",
-            "PROJECT_OWNER": "專案擁有者",
+            "PROJECT_OWNER": "專案所有者",
             "REQUEST_OWNERSHIP": "請求專案所有權",
             "REQUEST_OWNERSHIP_CONFIRMATION_TITLE": "您希望成為該專案的新所有者嗎？",
             "REQUEST_OWNERSHIP_DESC": "請求目前的專案所有者 {{name}} 將專案轉讓給您。",
             "REQUEST_OWNERSHIP_BUTTON": "要求",
             "REQUEST_OWNERSHIP_SUCCESS": "我們將會通知專案所有者",
-            "CHANGE_OWNER": "更換專案擁有者",
+            "CHANGE_OWNER": "更換專案所有者",
             "CHANGE_OWNER_SUCCESS_TITLE": "好的，已經發出了您的請求！",
             "CHANGE_OWNER_SUCCESS_DESC": "我們將會以電子郵件通知您關於您請求更改專案所有者之結果",
             "REQUEST_OWNERSHIP_LIMIT": "你已達到 {{maxProjects}} 個不公開專案的限額"
@@ -627,7 +627,7 @@
         "PROJECT_VALUES_POINTS": {
             "TITLE": "點數",
             "SUBTITLE": "指定你的使用者故事點數可能預估為",
-            "US_TITLE": "用戶故事點數",
+            "US_TITLE": "使用者故事點數",
             "ACTION_ADD": "增加點數"
         },
         "PROJECT_VALUES_PRIORITIES": {
@@ -646,7 +646,7 @@
             "TITLE": "狀態",
             "SUBTITLE": "增加、移除或編輯史詩、用戶故事、任務和問題的顔色和名稱。",
             "EPIC_TITLE": "史詩狀態",
-            "US_TITLE": "用戶故事狀態",
+            "US_TITLE": "使用者故事狀態",
             "TASK_TITLE": "任務狀態",
             "ISSUE_TITLE": "問題狀態"
         },
@@ -670,7 +670,7 @@
         "PROJECT_DUE_DATE_STATUS": {
             "TITLE": "截止日期",
             "SUBTITLE": "您可以自行定義用戶故事、任務和事項的截止日期狀態",
-            "US_TITLE": "用戶故事截止日期狀態",
+            "US_TITLE": "使用者故事截止日期狀態",
             "ACTION_ADD_STATUS": "增加新狀態",
             "TASK_TITLE": "任務截止日期狀態",
             "ISSUE_TITLE": "事項截止日期狀態",
@@ -696,7 +696,7 @@
         "ROLES": {
             "PAGE_TITLE": "角色- {{projectName}}",
             "WARNING_NO_ROLE": "注意，你的專案中無角色可以評估使用者故事的點數",
-            "HELP_ROLE_ENABLED": "此角色是屬於參與估計用戶點數的角色。",
+            "HELP_ROLE_ENABLED": "此角色是屬於參與估計使用者故事點數的角色。",
             "DISABLE_COMPUTABLE_ALERT_TITLE": "您確定要禁用該角色評估嗎？",
             "DISABLE_COMPUTABLE_ALERT_SUBTITLE": "如果您要移除角色 {{roleName}} 的估計權限，則該角色之前所做出的任何估計將被移除",
             "COUNT_MEMBERS": "{{ role.members_count }} 這類角色的成員",
@@ -833,11 +833,11 @@
             "DO_YOU_ACCEPT_PROJECT_OWNERNSHIP": "您希望成為新的專案擁有者嗎？",
             "PRIVATE": "Private",
             "ACCEPTED_PROJECT_OWNERNSHIP": "恭喜！您現在是專案新的擁有者。",
-            "REJECTED_PROJECT_OWNERNSHIP": "OK. We'll contact the current project owner",
+            "REJECTED_PROJECT_OWNERNSHIP": "好的。我們將會聯繫目前專案的所有者",
             "ACCEPT": "接受",
             "REJECT": "拒絕",
-            "PROPOSE_OWNERSHIP": "<strong>{{owner}}</strong>, the current owner of the project <strong>{{project}}</strong> has asked that you become the new  project owner.",
-            "ADD_COMMENT": "Would you like to add a comment for the project owner?",
+            "PROPOSE_OWNERSHIP": "<strong>{{owner}}</strong>，專案 <strong>{{project}}</strong> 目前的所有者，已要求您成為新的專案所有者。",
+            "ADD_COMMENT": "您想要向專案所有者留言嗎？",
             "UNLIMITED_PROJECTS": "無限制",
             "OWNER_MESSAGE": {
                 "PRIVATE": "請記得您最多能夠擁有 <strong>{{maxProjects}}</strong>項私密專案。您目前共擁有 <strong>{{currentProjects}}</strong>項私密專案。",
@@ -921,7 +921,7 @@
             "SEARCH": "搜尋",
             "TIMELINE": "時間表",
             "EPICS": "史詩",
-            "BACKLOG": "待辦任務優先表",
+            "BACKLOG": "待辦清單",
             "KANBAN": "Kanban(看板)",
             "ISSUES": "問題",
             "WIKI": "維基",
@@ -990,7 +990,7 @@
             "CHOOSE_TEMPLATE": "Which template fits your project better?",
             "TEMPLATE_SCRUM": "Scrum",
             "TEMPLATE_SCRUM_DESC": "在短週期內確定任務的優先次序並加以解決。",
-            "TEMPLATE_SCRUM_LONGDESC": "Scrum is an iterative and incremental agile software development methodology for managing product development.\nThe product backlog is what will ultimately be delivered, ordered into the sequence in which it should be delivered. Product Backlogs are broken into manageable, executable chunks named sprints. Every certain amount of time the team initiates a new sprint and commits to deliver a certain number of user stories from the backlog, in accordance with their skills, abilities and resources. The project advances as the backlog becomes depleted.",
+            "TEMPLATE_SCRUM_LONGDESC": "Scrum 是一種用於管理産品開發的疊代式與漸進式的敏捷軟體開發方法。\n産品待辦清單（Product Backlog）代表最終交付的內容，並按照應交付順序排列。將産品待辦清單拆分為可管理、可執行的區塊，便稱為衝刺任務（Sprint）。團隊每隔特定時間便啟動新一輪的衝刺忹務，並根據自身技能、能力與資源，承諾自待辦清單中交付特定數量的使用者故事。隨著待辦清單中的使用者故事逐漸減少，專案便持續推進。",
             "TEMPLATE_KANBAN": "Kanban(看板)",
             "TEMPLATE_KANBAN_DESC": "Keep a constant workflow on independent tasks",
             "TEMPLATE_KANBAN_LONGDESC": "The Kanban methodology is used to divide project development (any sort of project) into stages.\nA kanban card is like an index card or post-it note that details every task (or user story) in a project that needs to be completed. The Kanban board is used to move each card from one state of completion to the next and in so doing, helps track progress.",
@@ -1097,7 +1097,7 @@
                 "NO_PROJECTS": "It seems you have no projects in GitHub",
                 "HOW_DO_YOU_WANT_TO_IMPORT": "How do you want to import your issues into Taiga?",
                 "KANBAN_PROJECT": "As user stories in a kanban project",
-                "KANBAN_PROJECT_DESCRIPTION": "之後便可啟用具有待辦事項的 Scrum。",
+                "KANBAN_PROJECT_DESCRIPTION": "之後便可啟用具有待辦清單的 Scrum。",
                 "SCRUM_PROJECT": "在 Scrum 專案作為用戶故事",
                 "SCRUM_PROJECT_DESCRIPTION": "之後便可啟用看板模式。",
                 "ISSUES_PROJECT": "作為事項",
@@ -1146,7 +1146,7 @@
             "CONFIRM": "你確定要刪除Taiga帳戶嗎？",
             "CANCEL": "回到設定",
             "ACCEPT": "移除帳號",
-            "BLOCK_PROJECT": "Note that all projects you own will be <strong>blocked</strong> after you delete your account. If you do not want a particular project to be blocked, make sure you transfer ownership to another existing Taiga member before deleting your account."
+            "BLOCK_PROJECT": "請注意，在刪除帳戶後您擁有的所有專案都將被<strong>封鎖</strong>。如果您不希望特定專案被封鎖，請務必在刪除帳戶前將專案的所有權轉移給其他現有 Taiga 成員。"
         },
         "DELETE_PROJECT": {
             "TITLE": "刪除專案",
@@ -1175,7 +1175,7 @@
         },
         "FEEDBACK": {
             "TITLE": "Taiga 的支持",
-            "COMMENT": "Leave us a message",
+            "COMMENT": "向我們留言",
             "ACTION_SEND": "Send Message",
             "YOU_CAN_ALSO": "You can also:",
             "CREATE": "在此建立問題。 ",
@@ -1242,24 +1242,24 @@
         "CREATE_MEMBER": {
             "PLACEHOLDER_INVITATION_TEXT": "(非必要) 加上一段私人文字在邀請信，告訴你的新成員一些好事 ;-)",
             "PLACEHOLDER_TYPE_EMAIL": "輸入一個電郵地址",
-            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "You are about to reach the maximum number of members allowed for this project, <strong>{{maxMembers}}</strong> members. If you would like to increase the current limit, please contact the administrator.",
+            "LIMIT_USERS_WARNING_MESSAGE_FOR_OWNER": "您即將達到本專案所能允許的成員上限，上限為 <strong>{{maxMembers}}</strong> 名成員。如果您想要提高目前專案成員的限制，請和管理人員聯繫。",
             "LIMIT_USERS_WARNING_MESSAGE": "You are about to reach the maximum number of members allowed for this project, <strong>{{maxMembers}}</strong> members."
         },
         "LEAVE_PROJECT_WARNING": {
-            "TITLE": "Unfortunately, this project can't be left without an owner",
+            "TITLE": "很遺憾，您無法在專案缺少所有者的情況下離開本專案",
             "CURRENT_USER_OWNER": {
-                "DESC": "You are the current owner of this project. Before leaving, please transfer ownership to someone else.",
-                "BUTTON": "Change the project owner"
+                "DESC": "您是本專案現在的所有者。在離開專案前，請先將專案的所有權轉讓給其他專案成員。",
+                "BUTTON": "更換專案所有者"
             },
             "OTHER_USER_OWNER": {
-                "DESC": "Unfortunately, you can't delete a member who is also the current project owner. First, please assign a new project owner.",
-                "BUTTON": "Request project owner change"
+                "DESC": "很遺憾，您無法移除身為專案所有者的專案成員。因此，請先指派新的專案所有者再移除專案成員。",
+                "BUTTON": "要求更換專案所有者"
             }
         },
         "CHANGE_OWNER": {
-            "TITLE": "Who do you want to be the new project owner?",
-            "ADD_COMMENT": "進行評論",
-            "BUTTON": "Ask this project member to become the new project owner"
+            "TITLE": "您想要選擇誰作為新的專案所有者？",
+            "ADD_COMMENT": "新增評論",
+            "BUTTON": "要求這位專案成員成為新的專案所有者"
         },
         "CONTACT_PROJECT": {
             "TITLE": "Send an email to",
@@ -1313,15 +1313,15 @@
         "ERROR_UNLINK_RELATED_USERSTORY": "無法解除之間的關係： {{errorMessage}}",
         "CREATE_RELATED_USERSTORIES": "建立之間的關係",
         "NEW_USERSTORY": "建立使用者故事",
-        "EXISTING_USERSTORY": "現有用戶故事",
+        "EXISTING_USERSTORY": "現有使用者故事",
         "CHOOSE_PROJECT_FOR_CREATION": "哪一項專案？",
         "SUBJECT": "主旨",
         "SUBJECT_BULK_MODE": "主旨（批量插入）",
         "CHOOSE_PROJECT_FROM": "哪一項專案？",
-        "CHOOSE_USERSTORY": "哪一個用戶故事？",
-        "NO_USERSTORIES": "此專案尚未存在用戶故事，請選擇其它專案。",
+        "CHOOSE_USERSTORY": "哪一個使用者故事？",
+        "NO_USERSTORIES": "此專案尚未存在使用者故事，請選擇其它專案。",
         "NO_USERSTORIES_FOUND": "看起來沒有結果符合您的搜尋條件",
-        "FILTER_USERSTORIES": "過濾用戶故事",
+        "FILTER_USERSTORIES": "過濾使用者故事",
         "LIGHTBOX_TITLE_BLOKING_EPIC": "封鎖史詩",
         "ACTION_DELETE": "移除史詩"
     },
@@ -1343,7 +1343,7 @@
         "TITLE_DELETE_MESSAGE": "Are you sure you want to delete <strong>“{{subject}}“</strong>?",
         "LIGHTBOX_TITLE_BLOKING_US": "Blocking user story",
         "NOT_ESTIMATED": "N/E",
-        "OWNER_US": "This user story belongs to",
+        "OWNER_US": "該用戶故事屬於",
         "RELATE_TO_EPIC": "與史詩建立關係",
         "REMOVE_RELATIONSHIP_WITH_EPIC": "移除與史詩之間的關係",
         "TRIBE": {
@@ -1360,12 +1360,12 @@
     },
     "COMMENTS": {
         "TITLE": "評論",
-        "DELETED_INFO": "Comment deleted by {{user}}",
+        "DELETED_INFO": "{{user}} 刪除了評論",
         "COMMENTS_COUNT": "{{comments}} 評論",
         "OLDER_FIRST": "按時間順序",
         "RECENT_FIRST": "按時間倒序",
         "COMMENT": "評論",
-        "EDITED_COMMENT": "已編輯:",
+        "EDITED_COMMENT": "已編輯：",
         "SHOW_HISTORY": "瀏覽歷史",
         "TYPE_NEW_COMMENT": "在此輸入一個新的評論",
         "SHOW_DELETED": "顯示遭刪除的評論",
@@ -1412,20 +1412,20 @@
         }
     },
     "BACKLOG": {
-        "PAGE_TITLE": "待辦任務優先表 - {{projectName}}",
-        "PAGE_DESCRIPTION": "待辦任務優先表面板 {{projectName}}（專案的使用者故事與衝刺任務）: {{projectDescription}}",
+        "PAGE_TITLE": "待辦清單 - {{projectName}}",
+        "PAGE_DESCRIPTION": "待辦清單面板 {{projectName}}，包含了專案的使用者故事與衝刺任務: {{projectDescription}}",
         "SECTION_NAME": "Scrum",
         "CUSTOMIZE_GRAPH": "定製您的待辦事項圖表",
         "CUSTOMIZE_GRAPH_TEXT": "想要有好的圖表來協助跟踪專案進展，那麼您必須得設定好點數和衝刺任務",
         "CUSTOMIZE_GRAPH_ADMIN": "管理者",
         "CUSTOMIZE_GRAPH_TITLE": "透由管理頁面設置點數與衝刺任務",
-        "TOTAL_STORIES_FILTERED": "{{ totalUserStories }} 個用戶故事中的",
-        "TOTAL_STORIES": "總共 {{ totalUserStories }} 個用戶故事",
-        "MOVE_US_TO_CURRENT_SPRINT": "移到目前的 Sprint",
-        "MOVE_US_TO_LATEST_SPRINT": "移到最近的一個衝刺任務",
+        "TOTAL_STORIES_FILTERED": "{{ totalUserStories }} 個使用者故事中的",
+        "TOTAL_STORIES": "總共 {{ totalUserStories }} 個使用者故事",
+        "MOVE_US_TO_CURRENT_SPRINT": "移動到目前的衝刺任務",
+        "MOVE_US_TO_LATEST_SPRINT": "移動到最新的衝刺任務",
         "EMPTY": "沒有待辦任務！",
-        "CREATE_NEW_US": "建立新的用戶故事",
-        "CREATE_NEW_US_EMPTY_HELP": "新增用戶故事",
+        "CREATE_NEW_US": "建立新的使用者故事",
+        "CREATE_NEW_US_EMPTY_HELP": "新增使用者故事",
         "NO_MATCH": "沒有搜尋到符合 「 {{ q }} 」 的結果",
         "NO_MATCH_HELP": "請使用更籠統的搜尋條件來再次搜尋",
         "EXCESS_OF_POINTS": "超過的點數",
@@ -1436,15 +1436,15 @@
         "EDIT_SPRINT": "編輯衝刺任務",
         "TOTAL_POINTS": "全部",
         "STATUS_NAME": "狀態名稱",
-        "SORTABLE_FILTER_ERROR": "當過濾器開啟時，無法放入待辦任務優先表",
+        "SORTABLE_FILTER_ERROR": "當過濾器開啟時，無法放入待辦任務",
         "DOOMLINE": "專案規模 [Doomline]",
         "CHART": {
             "XAXIS_LABEL": "衝刺任務",
             "YAXIS_LABEL": "點數",
-            "OPTIMAL": "最適化的衝刺任務\"{{sprintName}}\"待定點數應為 {{value}}",
-            "REAL": "真實的衝刺任務\"{{sprintName}}\"待定點數為 {{value}}",
-            "INCREMENT_TEAM": "團隊要求的衝刺任務\"{{sprintName}}\"漸增點數為 {{value}}",
-            "INCREMENT_CLIENT": "客戶要求的衝刺任務\"{{sprintName}}\"漸增點數為 {{value}}"
+            "OPTIMAL": "衝刺任務\"{{sprintName}}\"的理想待定點數應為 {{value}}",
+            "REAL": "衝刺任務\"{{sprintName}}\"實際待定點數為 {{value}}",
+            "INCREMENT_TEAM": "依據團隊要求，衝刺任務\"{{sprintName}}\"所應增加的點數為 {{value}}",
+            "INCREMENT_CLIENT": "依據客戶要求，衝刺任務\"{{sprintName}}\"所應增加的點數為 {{value}}"
         },
         "TAGS": {
             "TOGGLE": "切換標籤可見度",
@@ -1453,15 +1453,15 @@
         },
         "FORECASTING": {
             "TITLE": "速度預測",
-            "BACKLOG": "返回待辦事項",
-            "NEW_SPRINT": "Candidate user stories for your next sprint based on your velocity.",
-            "CURRENT_SPRINT": "Candidate user stories for your sprint based on your velocity. Click to add to current sprint.",
-            "ADD_NEW_SPRINT": "create sprint and add US",
+            "BACKLOG": "返回待辦清單",
+            "NEW_SPRINT": "依據您的工作速率，為下輪衝刺任務所預備的候選使用者故事。",
+            "CURRENT_SPRINT": "依據您的工作速率，為下輪衝刺任務所預備的候選使用者故事。 按一下以加入至目前的衝刺任務。",
+            "ADD_NEW_SPRINT": "新建衝刺任務並加入使用者故事",
             "ADD_NEW_SPRINT_SHORT": "建立衝刺任務"
         },
         "TABLE": {
-            "COLUMN_US": "用戶故事",
-            "TITLE_COLUMN_POINTS": "選擇檢示每個角色"
+            "COLUMN_US": "使用者故事",
+            "TITLE_COLUMN_POINTS": "按選擇檢視角色"
         },
         "SPRINT_SUMMARY": {
             "TOTAL_POINTS": "全部<br/> 點數",
@@ -1471,7 +1471,7 @@
             "IOCAINE_DOSES": "毒物（全新任務挑戰）<br />劑量",
             "SHOW_STATISTICS_TITLE": "顯示統計",
             "TOGGLE_BAKLOG_GRAPH": "顯示/隱藏 剩餘工作量圖",
-            "POINTS_PER_ROLE": "Points per role"
+            "POINTS_PER_ROLE": "每個角色的點數"
         },
         "SUMMARY": {
             "PROJECT_POINTS": "專案<br/> 點數",
@@ -1490,8 +1490,8 @@
             "LINK_TASKBOARD": "衝刺任務板",
             "TITLE_LINK_TASKBOARD": "到任務板 {{spring.name}}",
             "EMPTY": "尚無衝刺任務",
-            "WARNING_EMPTY_SPRINT_ANONYMOUS": "This sprint has no user stories",
-            "WARNING_EMPTY_SPRINT": "Drop here Stories from your backlog to start a new sprint",
+            "WARNING_EMPTY_SPRINT_ANONYMOUS": "此衝刺任務還沒有用戶故事",
+            "WARNING_EMPTY_SPRINT": "由您的待辦清單中挑出一些使用者故事放到這裡以開始新一輪的衝刺任務",
             "TITLE_ACTION_NEW_SPRINT": "Add a sprint",
             "TEXT_ACTION_NEW_SPRINT": "你可以在你的專案下創建一個新衝刺任務",
             "ACTION_SHOW_CLOSED_SPRINTS": "顯示關閉衝刺任務",
@@ -1516,7 +1516,7 @@
         "TITLE_ACTION_ADD_ISSUE_BULK": "Add some new issues in bulk",
         "TITLE_ACTION_ASSIGN": "指派任務",
         "PLACEHOLDER_CARD_TITLE": "This could be a user story",
-        "PLACEHOLDER_CARD_TEXT": "Go to the <a href=\"{{ backlogUrl }}\" title=\"Go to backlog\">backlog</a> and drag user stories to this sprint; split the stories into tasks to track them separately.",
+        "PLACEHOLDER_CARD_TEXT": "前往<a href=\"{{ backlogUrl }}\" title=\"Go to backlog\">待辦清單</a> 並拉取使用者故事至此輪衝刺任務；將使用者故事拆分為任務以方便個別追踪。",
         "TASK_NOT_FOUND_TITLE": "No matching results found",
         "TASK_NOT_FOUND_TEXT": "Try again using more general search terms or disabling some filters.",
         "TITLE_DATE_RANGE": "{{startDate}} <span>to</span> {{endDate}}",
@@ -1819,7 +1819,7 @@
         "WIKI_CREATED": "{{username}} 創建新維基頁 {{obj_name}} 於 {{project_name}}",
         "MILESTONE_CREATED": "{{username}} 創建新衝刺任務 {{obj_name}} 於 {{project_name}}",
         "EPIC_CREATED": "{{username}} 已經在 {{project_name}} 中建立名為 {{obj_name}} 的新史詩",
-        "EPIC_RELATED_USERSTORY_CREATED": "{{username}} 在 {{project_name}} 中將戶故事 {{related_us_name}} 和史詩 {{epic_name}} 建立了關係",
+        "EPIC_RELATED_USERSTORY_CREATED": "{{username}} 在 {{project_name}} 中將使用者故事 {{related_us_name}} 和史詩 {{epic_name}} 建立了關係",
         "NEW_PROJECT": "{{username}} 創建專案 {{project_name}}",
         "MILESTONE_UPDATED": "{{username}}更新衝刺任務 {{obj_name}}",
         "US_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the user story {{obj_name}}",
@@ -1835,19 +1835,19 @@
         "EPIC_UPDATED": "{{username}} 已經更新了史詩 {{obj_name}} 的 \"{{field_name}}\" 屬性",
         "EPIC_UPDATED_WITH_NEW_VALUE": "{{username}} 已經將史詩 {{obj_name}} 的 \"{{field_name}}\" 屬性更新為 {{new_value}}",
         "EPIC_UPDATED_WITH_NEW_COLOR": "{{username}} 已經將史詩 {{obj_name}} 的 \"{{field_name}}\" 屬性更新為 <span class=\"new-color\" style=\"background: {{new_value}}\"></span>",
-        "NEW_COMMENT_US": "{{username}} has commented in the user story {{obj_name}}",
-        "NEW_COMMENT_ISSUE": "{{username}}評論了此問題 {{obj_name}}",
-        "NEW_COMMENT_TASK": "{{username}} 評論了此任務{{obj_name}}",
-        "NEW_COMMENT_EPIC": "{{username}} 在史詩 {{obj_name}} 中做出了評論",
+        "NEW_COMMENT_US": "{{username}} 在用戶故事 {{obj_name}} 留下了評論",
+        "NEW_COMMENT_ISSUE": "{{username}} 在議題 {{obj_name}} 留下了評論",
+        "NEW_COMMENT_TASK": "{{username}} 在任務{{obj_name}} 留下了評論",
+        "NEW_COMMENT_EPIC": "{{username}} 在史詩 {{obj_name}} 留下了評論",
         "NEW_MEMBER": "{{project_name}} 有新成員",
-        "US_ADDED_MILESTONE": "{{username}} has added the user story {{obj_name}} to {{sprint_name}}",
+        "US_ADDED_MILESTONE": "{{username}} 已經將用戶故事 {{obj_name}} 加入至 {{sprint_name}}",
         "US_MOVED": "{{username}} has moved the user story {{obj_name}}",
-        "US_REMOVED_FROM_MILESTONE": "{{username}} has added the user story {{obj_name}} to the backlog",
+        "US_REMOVED_FROM_MILESTONE": "{{username}} 已經將用戶故事 {{obj_name}} 加入至産品待辦清單",
         "BLOCKED": "{{username}} 封鎖了 {{obj_name}}",
         "UNBLOCKED": "{{username}} 解除了封鎖 {{obj_name}}",
         "NEW_USER": "{{username}} 已加入 Taiga",
         "ITEM_TYPES": {
-            "USERSTORY": "用戶故事",
+            "USERSTORY": "使用者故事",
             "ISSUE": "問題",
             "TASK": "任務"
         }
@@ -1863,8 +1863,8 @@
         "ADDED_YOU_AS_WATCHER": "{{username}} added you as watcher on {{obj_name}}",
         "ADDED_YOU_AS_MEMBER": "{{username}} added you as member",
         "MENTIONED_YOU": "{{username}} mentioned you on {{obj_name}}",
-        "MENTIONED_YOU_IN_COMMENT": "{{username}} mentioned you in a comment on {{obj_name}}",
-        "COMMENTED": "{{username}} has commented on {{obj_name}}"
+        "MENTIONED_YOU_IN_COMMENT": "{{username}} 在 {{obj_name}} 的留言中提到了您",
+        "COMMENTED": "{{username}} 在 {{obj_name}} 發表了評論"
     },
     "LEGAL": {
         "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>When creating a new account, you agree to our </span><a href=\"{{ termsOfServiceUrl }}\" title=\"See terms of service\" target=\"_blank\">terms of service</a><span> and </span><a href=\"{{ privacyPolicyUrl }}\" title=\"See privacy policy\" target=\"_blank\">privacy policy</a>."
@@ -1911,8 +1911,8 @@
                 "TEXT2": "你可以在管理頁面變更專案的設定。"
             },
             "STEP2": {
-                "TITLE": "産品待辦事項",
-                "TEXT": "The backlog is the list of requirements (User Stories) for the project. Here is where you will plan your sprints."
+                "TITLE": "産品待辦清單",
+                "TEXT": "待辦清單（backlog）是指專案的各類需求（使用者故事）清單。通常會在這裡安排未來的衝刺任務。"
             },
             "STEP3": {
                 "TITLE": "衝刺任務",
@@ -1920,7 +1920,7 @@
             },
             "STEP4": {
                 "TITLE": "使用者故事",
-                "TEXT": "Those are the requirements at high level. You can add them to the backlog and drag them to the sprint in which it should be delivered."
+                "TEXT": "這些是優先程度較高的需求，您可以將它們加入待辦清單並放置至需要交付的衝刺任務中。"
             }
         },
         "KANBAN": {
@@ -1941,7 +1941,7 @@
     },
     "DISCOVER": {
         "PAGE_TITLE": "Discover projects - Taiga",
-        "PAGE_DESCRIPTION": "Searchable directory of Public Projects in Taiga. Explore backlogs, timelines, issues, and teams. Check out the most liked or most active projects. Filter by Kanban or Scrum.",
+        "PAGE_DESCRIPTION": "Taiga 可搜尋公開專案目錄。探索各類待辦清單、時間軸、議題與團隊。查看最受歡迎或最活躍的專案。依 Kanban 或Scrum 進行篩選。",
         "DISCOVER_TITLE": "發現更多專案",
         "DISCOVER_SUBTITLE": "{projects, plural, =1{One public project to discover} other{# public projects to discover}}",
         "MOST_ACTIVE": "最活躍",
@@ -1964,7 +1964,7 @@
         },
         "SEARCH": {
             "PAGE_TITLE": "Search - Discover projects - Taiga",
-            "PAGE_DESCRIPTION": "Searchable directory of Public Projects in Taiga. Explore backlogs, timelines, issues, and teams. Check out the most liked or most active projects. Filter by Kanban or Scrum.",
+            "PAGE_DESCRIPTION": "Taiga 可搜尋公開專案目錄。探索各類待辦清單、時間軸、議題與團隊。查看最受歡迎或最活躍的專案。依 Kanban 或Scrum 進行篩選。",
             "INPUT_PLACEHOLDER": "輸入文字…",
             "ACTION_TITLE": "搜尋",
             "RESULTS": "搜尋結果"
