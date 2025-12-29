@@ -63,7 +63,7 @@
                 span {{ 'COMMON.WATCH_BUTTON.WATCH' | translate }}
 
             a.ticket-users-action(
-                ng-if="vm.item.is_watcher && isAuthenticated"
+                ng-if="!isProjectArchived && vm.item.is_watcher && isAuthenticated"
                 ng-click="vm.unwatch()"
             )
                 tg-svg.users-action.icon(svg-icon="icon-unwatch")
