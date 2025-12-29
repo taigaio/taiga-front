@@ -8,6 +8,9 @@
 
 AttachmentsDropDirective = ($parse) ->
     link = (scope, el, attrs) ->
+        if scope.vm?.projectService?.isArchived()
+            return false
+
         eventAttr = $parse(attrs.tgAttachmentsDrop)
 
         el.on 'dragover', (e) ->
