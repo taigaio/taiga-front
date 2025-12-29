@@ -33,7 +33,7 @@ div.wrapper
                         tg-like-project-button(project="vm.project")
                         tg-watch-project-button(project="vm.project")
                         tg-contact-project-button(
-                            ng-if="vm.project.get('is_contact_activated')"
+                            ng-if="!vm.project.get('archived_code') && vm.project.get('is_contact_activated')"
                             project="vm.project"
                         )
 
