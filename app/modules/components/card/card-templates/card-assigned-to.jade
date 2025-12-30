@@ -5,7 +5,7 @@
 //-
 //- Copyright (c) 2021-present Kaleidos INC
 
-<% if (vm.visible('assigned_to')) { %>
+<% if (vm.visible('assigned_to') && !vm.project.archived_code) { %>
 .card-assigned-to(
     class!="<%= vm.item.getIn(['model', 'is_iocaine']) ? 'is_iocaine': '' %>"
 )

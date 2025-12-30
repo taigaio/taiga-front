@@ -16,12 +16,16 @@ $compile, $translate, $currentUserService) ->
         isEditable = ->
             return !$scope.project?.archived_code and $scope.project?.my_permissions?.indexOf($attrs.requiredPerm) != -1
 
+        isProjectArchived = ->
+            return $scope.project?.archived_code
+
         render = () ->
             watchersIds = _.clone($scope.vm.item?.watchers, false)
             watchers = _.map(watchersIds, (watcherId) -> $scope.usersById[watcherId])
             watchers = _.filter watchers, (it) -> return !!it
             $scope.vm.watchers = _.compact(watchers)
             $scope.isEditable = isEditable()
+            $scope.isProjectArchived = isProjectArchived()
 
         $scope.toggleFold = () ->
             $scope.displayHidden = !$scope.displayHidden
