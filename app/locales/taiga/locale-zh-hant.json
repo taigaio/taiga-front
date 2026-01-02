@@ -831,8 +831,8 @@
         },
         "PROJECT_TRANSFER": {
             "DO_YOU_ACCEPT_PROJECT_OWNERNSHIP": "您希望成為新的專案擁有者嗎？",
-            "PRIVATE": "Private",
-            "ACCEPTED_PROJECT_OWNERNSHIP": "恭喜！您現在是專案新的擁有者。",
+            "PRIVATE": "私人的",
+            "ACCEPTED_PROJECT_OWNERNSHIP": "恭喜！您現在是專案新的所有者。",
             "REJECTED_PROJECT_OWNERNSHIP": "好的。我們將會聯繫目前專案的所有者",
             "ACCEPT": "接受",
             "REJECT": "拒絕",
@@ -1585,21 +1585,21 @@
     "CANCEL_ACCOUNT": {
         "TITLE": "取消您的帳戶",
         "SUBTITLE": "We're sorry you are leaving the Taiga, we hope you enjoyed your stay :)",
-        "PLACEHOLDER_INPUT_TOKEN": "取消帳戶代碼　",
+        "PLACEHOLDER_INPUT_TOKEN": "取消帳戶令牌",
         "ACTION_LEAVING": "是的，我要走了！",
         "SUCCESS": "The Taiga removed your account"
     },
     "CHANGE_EMAIL_FORM": {
         "TITLE": "變更電子郵件",
         "SUBTITLE": "即將更新您的電子郵件！",
-        "PLACEHOLDER_INPUT_TOKEN": "變更電郵代碼　",
+        "PLACEHOLDER_INPUT_TOKEN": "變更電子信箱令牌",
         "ACTION_CHANGE_EMAIL": "變更電郵地址",
         "SUCCESS": "Your email address has been successfully changed"
     },
     "VERIFY_EMAIL_FORM": {
         "TITLE": "Verify your email",
-        "SUBTITLE": "One click more and your email will be verified!",
-        "PLACEHOLDER_INPUT_TOKEN": "變更電郵代碼　",
+        "SUBTITLE": "再點擊一次，您的電子郵件便可驗證完成！",
+        "PLACEHOLDER_INPUT_TOKEN": "變更電子信箱令牌",
         "ACTION_VERIFY_EMAIL": "驗證電子信箱",
         "SUCCESS": "Congratulations!!, your email address has been verified"
     },
