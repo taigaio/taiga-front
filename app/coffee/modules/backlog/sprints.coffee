@@ -71,7 +71,7 @@ BacklogSprintHeaderDirective = ($navUrls, $template, $compile, $translate) ->
         prettyDate = $translate.instant("BACKLOG.SPRINTS.DATE")
 
         isEditable = ->
-            return !project.archived_code and $scope.project.my_permissions.indexOf("modify_milestone") != -1
+            return !$scope.project.archived_code and $scope.project.my_permissions.indexOf("modify_milestone") != -1
 
         isVisible = ->
             return $scope.project.my_permissions.indexOf("view_milestones") != -1
