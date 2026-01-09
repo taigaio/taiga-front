@@ -143,6 +143,11 @@ class IssuesController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         @.loadIssues()
         @.generateFilters()
 
+    clearFilters: () ->
+        @.replaceAllFilters({})
+        @.loadIssues()
+        @.generateFilters()
+
     addFilter: (newFilter) ->
         @.unselectFilter("page")
         @.selectFilter(newFilter.category.dataType, newFilter.filter.id, false, newFilter.mode)
