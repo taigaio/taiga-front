@@ -320,6 +320,9 @@
                 "ADD_WIKI_LINKS": "Gehitu wiki estekak",
                 "DELETE_WIKI_LINKS": "Ezabatu wiki esteka"
             }
+        },
+        "ARCHIVED_PROJECT_WARNING": {
+            "MESSAGE": "Proiektu hau artxibatu egin da. Orain irakurtzeko soilik da."
         }
     },
     "LOGIN": {
