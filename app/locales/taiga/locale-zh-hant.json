@@ -192,8 +192,8 @@
             "OPEN": "開啟"
         },
         "WATCHERS": {
-            "WATCHERS": "觀注者",
-            "ADD": "新增觀注者",
+            "WATCHERS": "關注者",
+            "ADD": "新增關注者",
             "TITLE_ADD": "將專案成員加到關注者清單裏",
             "DELETE": "已刪除監督者",
             "TITLE_LIGHTBOX_DELETE_WARTCHER": "刪除監督者…"
@@ -202,7 +202,7 @@
             "WATCH": "觀注",
             "WATCHING": "觀看中",
             "UNWATCH": "不觀注",
-            "WATCHERS": "觀注者",
+            "WATCHERS": "關注者",
             "BUTTON_TITLE": "關注／取消關注此項目",
             "COUNTER_TITLE": "{total, plural, =1{1 位關注者} other{# 位關注者}}"
         },
@@ -211,12 +211,12 @@
             "COUNTER_TITLE": "{total, plural, =1{one vote} other{# votes}}"
         },
         "PROMOTE_TO_US": "提升至使用者故事",
-        "PROMOTED_ISSUES": "此問題已提升至",
+        "PROMOTED_ISSUES": "此議題已提升至",
         "PROMOTED_TASKS": "此任務已提升至",
         "CONFIRM_PROMOTE": {
             "ISSUE": {
-                "TITLE": "將此問題提升為新的使用者故事",
-                "MESSAGE": "請確認是否要以此議題來創建新的用戶故事？"
+                "TITLE": "將此議題提升為新的使用者故事",
+                "MESSAGE": "請確認是否要以此議題來創建新的使用者故事？"
             },
             "TASK": {
                 "TITLE": "將此任務提升到為新的使用者故事",
@@ -515,7 +515,7 @@
             "DUMP_READY": "你注入的檔案已完成！",
             "LOADING_MESSAGE": "請勿關閉本頁。",
             "ASYNC_MESSAGE": "準備好後，我們會寄給您一封電子郵件。",
-            "SYNC_MESSAGE": "如果未能自動下載，<a href='{{url}}' download title='Download the dump file'>請點選此處 </a>。",
+            "SYNC_MESSAGE": "如果未能自動下載，<a href='{{url}}' download title='下載專案備份檔案'>請點選此處 </a>。",
             "ERROR": "我們的系統目前無法導出您的資料，請再次嘗試。",
             "ERROR_BUSY": "對不起，系統目前忙碌中，請稍後再嘗試。"
         },
@@ -715,12 +715,12 @@
         "BITBUCKET": {
             "SECTION_NAME": "Bitbucket",
             "PAGE_TITLE": "Bitbucket - {{projectName}}",
-            "INFO_VERIFYING_IP": "Bitbucket要求不指派因此最佳確認方式為IP位置來源。如果此處空白，表示IP未有效確核。"
+            "INFO_VERIFYING_IP": "Bitbucket 的請求未經簽名，因此驗證來源的最佳方式是透過 IP 位址。若該欄位為空，則不會進行 IP 驗證。"
         },
         "GITLAB": {
             "SECTION_NAME": "Gitlob",
             "PAGE_TITLE": "Gitlab - {{projectName}}",
-            "INFO_VERIFYING_IP": "GitHub要求不指派因此最佳確認方式為IP位置來源。如果此處空白，表示IP未有效確核。"
+            "INFO_VERIFYING_IP": "GitLab 的請求未經簽名，因此驗證來源的最佳方式是透過 IP 位址。若該欄位為空，則不會進行 IP 驗證。"
         },
         "GITHUB": {
             "SECTION_NAME": "GitHub",
@@ -910,7 +910,7 @@
         "PRIVATE": "不公開專案",
         "LOOKING_FOR_PEOPLE": "這個專案正在徵人",
         "FANS_COUNTER_TITLE": "{total, plural, =1{one fan} other{# fans}}",
-        "WATCHERS_COUNTER_TITLE": "{total, plural, =1{one watcher} other{# watchers}}",
+        "WATCHERS_COUNTER_TITLE": "{total, plural, =1{1 位關注者} other{# 位關注者}}",
         "MEMBERS_COUNTER_TITLE": "{total, plural, =1{one member} other{# members}}",
         "BLOCKED_PROJECT": {
             "BLOCKED": "已凍結的專案",
@@ -971,7 +971,7 @@
             "BUTTON_TITLE": "觀注本專案並設置通知選項",
             "WATCH": "觀注",
             "WATCHING": "觀看中",
-            "COUNTER_TITLE": "{total, plural, =1{one watcher} other{# watchers}}",
+            "COUNTER_TITLE": "{total, plural, =1{1 位關注者} other{# 位關注者}}",
             "OPTIONS": {
                 "NOTIFY_ALL": "接收所有通知",
                 "NOTIFY_ALL_TITLE": "接到該專案的所有通知",
@@ -1002,8 +1002,8 @@
             "SOLO_PROJECT": "You'll be alone in this project",
             "INVITE_LATER": "（您可以在之後邀請更多人來加入專案）",
             "BACK": "後台",
-            "MAX_PRIVATE_PROJECTS": "十分抱歉，您已達到可擁有私人專案數量的上限。\n若您希望提高專案數量上限，請聯絡管理員。",
-            "MAX_PUBLIC_PROJECTS": "十分抱歉，您已達到可擁有公開專案數量的上限。\n若您希望提高專案數量上限，請聯絡管理員。",
+            "MAX_PRIVATE_PROJECTS": "十分抱歉，您已達到可擁有私人專案數量的極限。\n若您希望提高專案數量上限，請聯絡管理員。",
+            "MAX_PUBLIC_PROJECTS": "十分抱歉，您已達到可擁有公開專案數量的極限。\n若您希望提高專案數量上限，請聯絡管理員。",
             "PUBLIC_PROJECT": "Public Project",
             "PRIVATE_PROJECT": "Private Project"
         },
@@ -1138,7 +1138,7 @@
             "CONFIRMATION": "好的，請寄給我關於 Taiga 的新聞、産品更新和推薦消息。",
             "NOTIFY_EXPLANATION": "我們將會寄送有關於 Taiga 的新聞、産品更新和推薦消息。",
             "SAVED_PREFERENCE": "您的偏好設定保存成功",
-            "NO_SHARE": "您的隱私對我們至關重要（請參閱我們的 <a href=\"https://www.taiga.io/privacy-policy\" title=\"Go to privacy policy\" target=\"_blank\">隱私政策</a>）。"
+            "NO_SHARE": "您的隱私對我們至關重要（請參閱我們的 <a href=\"https://www.taiga.io/privacy-policy\" title=\"前往隱私政策\" target=\"_blank\">隱私政策</a>）。"
         }
     },
     "LIGHTBOX": {
@@ -1516,7 +1516,7 @@
         "TITLE_ACTION_ADD_ISSUE_BULK": "批次新增一些議題",
         "TITLE_ACTION_ASSIGN": "指派任務",
         "PLACEHOLDER_CARD_TITLE": "This could be a user story",
-        "PLACEHOLDER_CARD_TEXT": "前往<a href=\"{{ backlogUrl }}\" title=\"Go to backlog\">待辦清單</a> 並拉取使用者故事至此輪衝刺任務；將使用者故事拆分為任務以方便個別追踪。",
+        "PLACEHOLDER_CARD_TEXT": "前往 <a href=\"{{ backlogUrl }}\" title=\"前往待辦清單\">待辦清單</a> 並拉取使用者故事至此輪衝刺任務；將使用者故事拆分為任務以方便個別追踪。",
         "TASK_NOT_FOUND_TITLE": "No matching results found",
         "TASK_NOT_FOUND_TEXT": "Try again using more general search terms or disabling some filters.",
         "TITLE_DATE_RANGE": "{{startDate}} <span>to</span> {{endDate}}",
@@ -1597,11 +1597,11 @@
         "SUCCESS": "Your email address has been successfully changed"
     },
     "VERIFY_EMAIL_FORM": {
-        "TITLE": "Verify your email",
+        "TITLE": "驗證您的電子信箱",
         "SUBTITLE": "再點擊一次，您的電子郵件便可驗證完成！",
         "PLACEHOLDER_INPUT_TOKEN": "變更電子信箱令牌",
         "ACTION_VERIFY_EMAIL": "驗證電子信箱",
-        "SUCCESS": "Congratulations!!, your email address has been verified"
+        "SUCCESS": "恭喜！！您的電子信箱地址已通過驗證"
     },
     "ISSUES": {
         "PAGE_TITLE": "問題 - {{projectName}}",
@@ -1752,9 +1752,9 @@
         "ACTION_USE_GRAVATAR": "使用預設圖像",
         "ACTION_DELETE_ACCOUNT": "刪除Taiga帳戶",
         "ACTION_DOWNLOAD_PROFILE": "Download Taiga profile",
-        "ACTION_VERIFY_EMAIL": "Verify your email",
+        "ACTION_VERIFY_EMAIL": "驗證您的電子信箱",
         "CHANGE_EMAIL_SUCCESS": "<strong>檢查你的收信箱</strong><br />我們送出了一封信<br />裏面有設定你新電子郵件的相關指示",
-        "VERIFY_EMAIL_SUCCESS": "<strong>Check your inbox!</strong><br />We have sent you an email<br />with instructions on how to verify your address",
+        "VERIFY_EMAIL_SUCCESS": "<strong>請檢查您的收件箱！</strong><br />我們向您寄送了一封電子郵件<br />其中包含了如何驗證地址的教學",
         "CHANGE_PHOTO": "變更照片",
         "FIELD": {
             "USERNAME": "使用者名稱",
@@ -1860,14 +1860,14 @@
         "NO_NEW_EVENTS": "No new events",
         "NO_EVENTS_YET": "There are no events yet",
         "ASSIGNED_YOU": "{{username}} assigned you to {{obj_name}}",
-        "ADDED_YOU_AS_WATCHER": "{{username}} added you as watcher on {{obj_name}}",
+        "ADDED_YOU_AS_WATCHER": "{{username}} 將您添加為 {{obj_name}} 的關注者",
         "ADDED_YOU_AS_MEMBER": "{{username}} added you as member",
         "MENTIONED_YOU": "{{username}} mentioned you on {{obj_name}}",
         "MENTIONED_YOU_IN_COMMENT": "{{username}} 在 {{obj_name}} 的留言中提到了您",
         "COMMENTED": "{{username}} 在 {{obj_name}} 發表了評論"
     },
     "LEGAL": {
-        "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>When creating a new account, you agree to our </span><a href=\"{{ termsOfServiceUrl }}\" title=\"See terms of service\" target=\"_blank\">terms of service</a><span> and </span><a href=\"{{ privacyPolicyUrl }}\" title=\"See privacy policy\" target=\"_blank\">privacy policy</a>."
+        "TERMS_OF_SERVICE_AND_PRIVACY_POLICY_AD": "<span>當您在 Taiga 建立新的帳戶時，即代表您已經同意了我們的 </span><a href=\"{{ termsOfServiceUrl }}\" title=\"查看服務條款\" target=\"_blank\">服務條款</a><span> 和 </span><a href=\"{{ privacyPolicyUrl }}\" title=\"查看隱私政策\" target=\"_blank\">隱私政策</a>."
     },
     "EXTERNAL_APP": {
         "PAGE_TITLE": "外部的應用程式要求取得授權",
