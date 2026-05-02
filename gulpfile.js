@@ -634,6 +634,11 @@ gulp.task("copy-hljs-languages", function() {
         .pipe(gulp.dest(paths.distVersion + "/highlightjs-languages/"));
 });
 
+gulp.task("copy-nakomis-css", function() {
+    return gulp.src(paths.app + "themes/nakomis/theme-nakomis.css")
+        .pipe(gulp.dest(paths.distVersion + "styles/"));
+});
+
 gulp.task("link-images", gulp.series("copy-images", function(cb) {
     try {
         fs.unlinkSync(paths.dist+"images");
@@ -726,7 +731,8 @@ gulp.task("deploy", gulp.series(
         "elements",
         "link-images",
         "compile-themes"
-    )
+    ),
+    "copy-nakomis-css"
 ));
 
 //The default task (called when you run gulp from cli)
