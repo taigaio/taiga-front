@@ -1,4 +1,3 @@
-
 //- This source code is licensed under the terms of the
 //- GNU Affero General Public License found in the LICENSE file in
 //- the root directory of this source tree.
@@ -17,8 +16,37 @@ div.wrapper(
     section.main.taskboard
         .taskboard-header
             h1
-                span.green(tg-bo-bind="sprint.name")
-                .date(tg-date-range="sprint.estimated_start,sprint.estimated_finish")
+                span.green(ng-if="!ctrl.editingSprintName") {{ sprint.name }}
+                .date(ng-if="!ctrl.editingSprintName" tg-date-range="sprint.estimated_start,sprint.estimated_finish")
+                
+                // Inline edit mode
+                input.sprint-edit-input(
+                    ng-if="ctrl.editingSprintName"
+                    ng-model="ctrl.editedSprintName"
+                    ng-blur="ctrl.saveSprintName()"
+                    ng-keyup="$event.keyCode == 13 && ctrl.saveSprintName()"
+                    ng-init="focusMe = true"
+                    tg-autofocus="focusMe"
+                )
+
+                // Edit button (pencil)
+                a.edit-sprint.taskboard-btn(
+                    ng-if="!ctrl.editingSprintName"
+                    ng-click="ctrl.editSprint()"
+                    href=""
+                    title="{{'BACKLOG.EDIT_SPRINT' | translate}}"
+                )
+                    tg-svg(svg-icon="icon-edit")
+
+                // Save button (checkmark)
+                a.save-sprint.taskboard-btn(
+                    ng-if="ctrl.editingSprintName"
+                    ng-click="ctrl.saveSprintName()"
+                    href=""
+                    title="{{'COMMON.SAVE' | translate}}"
+                )
+                    tg-svg(svg-icon="icon-save")
+                
 
         .taskboard-inner
             include ../includes/components/sprint-summary
@@ -69,7 +97,7 @@ div.wrapper(
                         filters="ctrl.filters"
                         custom-filters="ctrl.customFilters"
                         selected-filters="ctrl.selectedFilters"
-                        customFilters="ctl.customFilters"
+                        customFilters="ctrl.customFilters"
                         on-save-custom-filter="ctrl.saveCustomFilter(name)"
                         on-add-filter="ctrl.addFilter(filter)"
                         on-select-custom-filter="ctrl.selectCustomFilter(filter)"

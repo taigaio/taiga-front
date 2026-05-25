@@ -138,3 +138,28 @@
         width: 185px;
     }
 }
+
+.save-sprint.taskboard-btn,
+.edit-sprint.taskboard-btn {
+    align-items: center;
+    display: inline-flex;
+    margin-left: 8px;
+    opacity: .7;
+    transition: opacity .15s ease;
+}
+
+.edit-sprint.taskboard-btn:hover {
+    opacity: 1;
+}
+
+.sprint-edit-input {
+    border: 1px solid rgb(204, 204, 204); // replaces #ccc
+    border-radius: 3px;
+    font-size: 1.4rem;
+    padding: 2px 4px;
+    width: auto;
+}
+
+
+
+

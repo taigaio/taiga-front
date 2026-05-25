@@ -79,6 +79,7 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
         @scope.userstories = []
         @.openFilter = false
         @.filterQ = ''
+        @editingSprintName = false
         @.backToBacklogUrl = @navUrls.resolve('project-backlog', {
             project: @projectService.project.get('slug'),
             ref: @params.ref
@@ -771,6 +772,20 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
             return @location.search().order_by
         else
             return "created_date"
+
+    editSprint: () ->
+        @editedSprintName = @scope.sprint.name
+        @editingSprintName = true
+
+
+    saveSprintName: ->
+        sprint = @scope.sprint
+        return unless sprint?
+        newName = @editedSprintName
+        @scope.sprint.name = newName
+        @repo.save(sprint).then =>
+            @scope.sprint.name = newName
+            @editingSprintName = false
 
 module.controller("TaskboardController", TaskboardController)
 
