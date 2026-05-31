@@ -60,6 +60,27 @@
             }
         }
     }
+    .relate-to-sprint {
+        flex-basis: 100%;
+        margin: 0 1rem .5rem 0;
+
+        .relate-to-sprint-button {
+            align-content: flex-end;
+            color: $color-link-primary;
+            cursor: pointer;
+            display: flex;
+            .icon-sprints {
+                fill: currentColor;
+                margin-right: .25rem;
+            }
+            .relate-to-sprint-text {
+                font-size: .9375rem;
+            }
+        }
+    }
+    .belong-to-sprint-title {
+        color: $color-black600;
+    }
     & > .color-selector {
         display: block;
         margin-bottom: -2rem;

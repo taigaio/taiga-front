@@ -100,6 +100,9 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
         @scope.relateToEpic = (us) =>
             @scope.$broadcast("relate-to-epic:add", us)
 
+        @scope.relateToSprint = (us) =>
+            @scope.$broadcast("relate-to-sprint:add", us)
+
         @scope.$on "related-tasks:update", =>
             @.loadTasks()
             @scope.tasks = _.clone(@scope.tasks, false)

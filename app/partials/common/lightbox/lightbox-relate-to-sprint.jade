@@ -1,0 +1,66 @@
+
+//- This source code is licensed under the terms of the
+//- GNU Affero General Public License found in the LICENSE file in
+//- the root directory of this source tree.
+//-
+//- Copyright (c) 2021-present Kaleidos INC
+
+tg-lightbox-close
+
+.lightbox-create-related-sprint-wrapper
+    h2.title(translate="LIGHTBOX.RELATE_TO_SPRINT.TITLE")
+
+    .button-group(tg-check-permission="modify_us")
+        .button-group-single
+            input(
+                type="radio"
+                name="related-with-selector"
+                id="existing-sprint"
+                value="existing-sprint"
+                ng-model="relatedWithSelector"
+                ng-init="relatedWithSelector='existing-sprint'"
+            )
+            label.e2e-existing-sprint-label(for="existing-sprint")
+                span.name {{ 'LIGHTBOX.RELATE_TO_SPRINT.EXISTING_SPRINT' | translate}}
+
+
+    fieldset.existing-sprint(ng-show="relatedWithSelector=='existing-sprint'")
+        label(
+            translate="LIGHTBOX.RELATE_TO_SPRINT.CHOOSE_SPRINT"
+            for="sprint-filter"
+        )
+        input.sprint-filter.e2e-filter-userstories-input(
+            id="sprint-filter"
+            type="text"
+            placeholder="{{'LIGHTBOX.RELATE_TO_SPRINT.FILTER_SPRINTS' | translate}}"
+            ng-model="searchSprint"
+            ng-change="onUpdateSearchSprint()"
+        )
+
+        form.existing-sprint-form(ng-show="relatedWithSelector=='existing-sprint' && sprints.length")
+            select.sprint.e2e-userstories-select(
+                size="5"
+                ng-model="selectedSprint"
+                data-required="true"
+            )
+                - var hash = "#";
+                option.hidden(
+                    value=""
+                )
+                option(
+                    ng-repeat="sprint in sprints track by sprint.id"
+                    value="{{ ::sprint.id }}"
+                ) #{hash}{{::sprint.id}} {{::sprint.name}}
+
+        p.no-stories-found(
+            ng-show="relatedWithSelector=='existing-sprint' && !sprints.length"
+            translate="LIGHTBOX.RELATE_TO_SPRINT.NO_SPRINTS_FOUND"
+        )
+
+        button.btn-big.e2e-select-related-sprint-button(
+            href=""
+            ng-click="saveRelatedSprint(selectedSprint, closeLightbox)"
+            tg-loading="loading"
+            translate="COMMON.SAVE"
+        )
+
