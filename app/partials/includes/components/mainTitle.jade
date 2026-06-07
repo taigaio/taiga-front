@@ -5,8 +5,9 @@
 //-
 //- Copyright (c) 2021-present Kaleidos INC
 
-header
-    h1(
-        tg-main-title
-        i18n-section-name="{{ sectionName }}"
-    )
+div(ng-if="showSectionTitles")
+    header
+        h1(
+            tg-main-title
+            i18n-section-name="{{ sectionName }}"
+        )

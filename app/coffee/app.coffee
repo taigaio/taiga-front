@@ -1038,6 +1038,10 @@ init = ($log, $rootscope, $auth, $events, $analytics, $tagManager, $userPilot, $
             navigationBarService.disableHeader()
         else
             navigationBarService.enableHeader()
+            
+    # Whether or not to show the superfluous section titles on page
+    # Default to true if config doesn't exist
+    $rootscope.showSectionTitles = $tgConfig.get("showSectionTitles", true)
 
 # Config for infinite scroll
 angular.module('infinite-scroll').value('THROTTLE_MILLISECONDS', 500)
