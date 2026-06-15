@@ -70,7 +70,19 @@ class NotificationsController extends mixOf(taiga.Controller, taiga.PageMixin, t
                 @.loading = false
                 return @.notificationsList
 
-    setAsRead: (notification, url) ->
+    setAsRead: (notification, url, event) ->
+        # Modifier-clicks (ctrl/cmd/shift, and the legacy middle-click some
+        # browsers still report as a click) follow the real href to open a new
+        # tab/window natively, so here we only mark the notification as read.
+        if event? and (event.ctrlKey or event.metaKey or event.shiftKey or event.which > 1)
+            @notificationsService.setNotificationAsRead(notification.get("id")).then(angular.noop, angular.noop)
+            @rootScope.$broadcast "notifications:dismiss"
+            return
+
+        # Plain left-click: navigate within the SPA ourselves, so prevent the
+        # browser from also following the href (which would full-reload the page).
+        event.preventDefault() if event?
+
         @notificationsService.setNotificationAsRead(notification.get("id")).then =>
             if @location.$$url == url
                 @window.location.reload()
