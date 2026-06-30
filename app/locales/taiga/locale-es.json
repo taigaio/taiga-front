@@ -43,9 +43,9 @@
         "GENERIC_ERROR": "La Taiga dice {{error}}.",
         "IOCAINE_TEXT": "Este miembro se siente un poco abrumado por esta tarea. Se inmunizará al veneno de la iocaína con tiempo y con tu ayuda. De momento, puede que necesite un abrazo.",
         "CLIENT_REQUIREMENT": "Un requerimiento de cliente es un nuevo requisito que no se esperaba y es necesario que forme parte del proyecto",
-        "TEAM_REQUIREMENT": "Requerimiento del equipo es un nuevo requisito que debe existir en el proyecto pero que no conllevará ningún coste para el cliente.",
+        "TEAM_REQUIREMENT": "Requerimiento del equipo es un nuevo requisito que debe existir en el proyecto pero que no conllevará ningún coste para el cliente",
         "OWNER": "Dueño del proyecto",
-        "CAPSLOCK_WARNING": "¡Cuidado! Está usando mayúsculas en un campo sensible a mayúsculas",
+        "CAPSLOCK_WARNING": "¡Cuidado! Está usando mayúsculas en un campo sensible a mayúsculas.",
         "CONFIRM_CLOSE_EDIT_MODE_TITLE": "¿Seguro que desea cerrar el modo de edición?",
         "CONFIRM_CLOSE_EDIT_MODE_MESSAGE": "Recuerde que si cierra el modo de edición sin guardar todos los cambios se perderán",
         "RELATED_USERSTORIES": "Historias de usuario relacionadas",
@@ -70,7 +70,7 @@
             "TYPE_URLSTRICT": "El valor debe ser una url.",
             "TYPE_NUMBER": "El valor debe ser un número.",
             "TYPE_DIGITS": "El valor deben ser dígitos.",
-            "TYPE_DATEISO": "El valor debe ser una fecha válida (DD-MM-YYY)",
+            "TYPE_DATEISO": "El valor debe ser una fecha válida (DD-MM-YYY).",
             "TYPE_ALPHANUM": "El valor debe ser alfanumérico.",
             "TYPE_PHONE": "El valor debe ser un teléfono válido.",
             "NOTNULL": "No puede ser un valor nulo.",
@@ -139,7 +139,7 @@
             "ADD": "Añadir etiqueta"
         },
         "DESCRIPTION": {
-            "EMPTY": "El espacio vacío es tan aburrido... trata de ser descriptivo... ",
+            "EMPTY": "El espacio vacío es tan aburrido... trata de ser descriptivo...",
             "NO_DESCRIPTION": "Sin descripción todavía"
         },
         "FIELDS": {
@@ -228,7 +228,7 @@
             "SAVE": "Guardar atributo personalizado",
             "EDIT": "Editar atributo personalizado",
             "DELETE": "Eliminar campos personalizados",
-            "CONFIRM_DELETE": "Recuerda que todos los valores en este campo personalizado se borrarán"
+            "CONFIRM_DELETE": "Recuerda que todos los valores en este campo personalizado se borrarán."
         },
         "FILTERS": {
             "INPUT_PLACEHOLDER": "asunto o referencia",
@@ -320,6 +320,9 @@
                 "ADD_WIKI_LINKS": "Crear enlaces",
                 "DELETE_WIKI_LINKS": "Borrar enlaces"
             }
+        },
+        "ARCHIVED_PROJECT_WARNING": {
+            "MESSAGE": "Este proyecto se ha archivado. Ahora es de solo lectura."
         }
     },
     "LOGIN": {
@@ -403,7 +406,7 @@
     },
     "HOME": {
         "PAGE_TITLE": "Inicio - Taiga",
-        "PAGE_DESCRIPTION": "Página de inicio de Taiga, con tus proyectos principales y tus historias de usuario, tareas y peticiones en progreso asignadas y las que observas.",
+        "PAGE_DESCRIPTION": "Página de inicio de Taiga, con tus proyectos principales y tus historias de usuario, tareas y peticiones en progreso asignadas y las que observas",
         "EMPTY_WORKING_ON": "<strong>Parece vacío, ¿no?</strong> Empieza a trabajar con Taiga y verás aquí las historias, tareas e incidentes en los que estás trabajando.",
         "EMPTY_WATCHING": "<strong>Sigue</strong> historias de usuario, tareas y peticiones en tus proyectos y se te notificará sobre sus cambios :)",
         "EMPTY_PROJECT_LIST": "Aún no tienes ningún proyecto",
@@ -427,7 +430,7 @@
             "UNASSIGNED": "No asignado"
         },
         "EMPTY": {
-            "TITLE": "Parece que todavía no hay épicas.",
+            "TITLE": "Parece que todavía no hay épicas",
             "EXPLANATION": "Las épicas son ítems a un nivel más elevado que engloban historias de usuario. <br />Las épicas están en lo más alto de la jerarquía y pueden ser usadas para agrupar historias de usuario.",
             "HELP": "Aprende más sobre Épicas"
         },
@@ -445,7 +448,7 @@
         },
         "CREATE": {
             "TITLE": "Nueva Épica",
-            "PLACEHOLDER_DESCRIPTION": "Por favor añade un texto descriptivo para ayudar a otros usuarios a entender mejor esta historia.",
+            "PLACEHOLDER_DESCRIPTION": "Por favor añade un texto descriptivo para ayudar a otros usuarios a entender mejor esta historia",
             "TEAM_REQUIREMENT": "Requerido por el equipo",
             "CLIENT_REQUIREMENT": "Requerido por el Cliente",
             "BLOCKED": "Bloqueada",
@@ -477,7 +480,7 @@
         "TITLE_LIGHTBOX_DELETE_ATTACHMENT": "Borrar adjunto...",
         "MSG_LIGHTBOX_DELETE_ATTACHMENT": "el adjunto '{{fileName}}'",
         "ERROR_DELETE_ATTACHMENT": "No hemos podido borrarlo: {{errorMessage}}",
-        "ERROR_MAX_SIZE_EXCEEDED": "El fichero '{{fileName}}' ({{fileSize}}) es demasiado pesado para la Taiga, prueba con uno de menos de ({{maxFileSize}})."
+        "ERROR_MAX_SIZE_EXCEEDED": "El fichero '{{fileName}}' ({{fileSize}}) es demasiado pesado para la Taiga, prueba con uno de menos de ({{maxFileSize}})"
     },
     "PAGINATION": {
         "PREVIOUS": "Anterior",
@@ -519,9 +522,9 @@
         "MODULES": {
             "TITLE": "Módulos",
             "EPICS": "Épicas",
-            "EPICS_DESCRIPTION": "Visualizar y administrar la parte mas estrategica del proyecto.",
+            "EPICS_DESCRIPTION": "Visualizar y administrar la parte mas estrategica del proyecto",
             "BACKLOG": "Scrum",
-            "BACKLOG_DESCRIPTION": "Gestiona tus historias de usuario para mantener una vista organizada y priorizada de los próximos trabajos que deberás afrontar. ",
+            "BACKLOG_DESCRIPTION": "Gestiona tus historias de usuario para mantener una vista organizada y priorizada de los próximos trabajos que deberás afrontar.",
             "NUMBER_SPRINTS": "Numero esperado de sprints",
             "NUMBER_SPRINTS_HELP": "0 para un numero indeterminado",
             "NUMBER_US_POINTS": "Total esperado de puntos historicos",
@@ -584,7 +587,7 @@
             "DELETE_SUBTITLE": "Vas a borrar la url de acceso a los datos en formato CSV actuales. ¿Estás seguro?"
         },
         "CSV": {
-            "SECTION_TITLE_EPIC": "Reportes de épicas.",
+            "SECTION_TITLE_EPIC": "Reportes de épicas",
             "SECTION_TITLE_US": "informes de historias de usuario",
             "SECTION_TITLE_TASK": "Informes de tareas",
             "SECTION_TITLE_ISSUE": "informes de peticiones",
@@ -649,13 +652,13 @@
         },
         "PROJECT_VALUES_TYPES": {
             "TITLE": "Tipos",
-            "SUBTITLE": "Especifica los deferentes tipos posibles de peticiones que pueden existir.",
+            "SUBTITLE": "Especifica los deferentes tipos posibles de peticiones que pueden existir",
             "ISSUE_TITLE": "Tipos de la petición",
             "ACTION_ADD": "Añadir nuevo {{objName}}"
         },
         "PROJECT_VALUES_TAGS": {
             "TITLE": "Etiquetas",
-            "SUBTITLE": "Ver y editar el color de sus etiquetas.",
+            "SUBTITLE": "Ver y editar el color de sus etiquetas",
             "EMPTY": "Actualmente no hay etiquetas",
             "EMPTY_SEARCH": "Parece que no se encontro nada con este criterio de busqueda",
             "ACTION_ADD": "Añadir etiqueta",
@@ -776,7 +779,7 @@
             "RESEND": "Enviar de nuevo",
             "SUCCESS_SEND_INVITATION": "Hemos enviado nuevamente la invitación a '{{email}}'.",
             "SUCCESS_DELETE": "Hemos eliminado {{message}}.",
-            "ERROR_DELETE": "No se ha podido eliminar {{message}}. ",
+            "ERROR_DELETE": "No se ha podido eliminar {{message}}.",
             "DEFAULT_DELETE_MESSAGE": "la invitación enviada a"
         },
         "DEFAULT_VALUES": {
@@ -842,7 +845,7 @@
                 "PRIVATE_EXCEEDED": "Actualmente tiene <strong>{{currentProjects}} proyectos privados</strong> el máximo que permite su plan.",
                 "PUBLIC_EXCEEDED": "Actualmente tiene <strong>{{currentProjects}} proyectos públicos</strong> el máximo que permite su plan."
             },
-            "CANT_BE_OWNED": "en el momento no puede ser el dueño de un proyecto de este tipo. Si desea ser el dueño de este proyecto, por favor contacte al administrador para cambiar la configuracion que le permita ser dueño del proyecto"
+            "CANT_BE_OWNED": "en el momento no puede ser el dueño de un proyecto de este tipo. Si desea ser el dueño de este proyecto, por favor contacte al administrador para cambiar la configuracion que le permita ser dueño del proyecto."
         },
         "PROJECT_PRESETS": {
             "MENU_TITLE": "Preajustes",
@@ -1023,8 +1026,8 @@
             "ERROR": "La Taiga tiene problemas para importar tus datos. Por favor, inténtalo de nuevo.",
             "ERROR_TOO_MANY_REQUEST": "Lo sentimos, la Taiga está muy ocupada en este momento. Por favor, inténtalo de nuevo en unos minutos.",
             "ERROR_MESSAGE": "La Taiga tiene algunos problemas al importar tus datos: {{error_message}}",
-            "ERROR_MAX_SIZE_EXCEEDED": "El fichero '{{fileName}}' ({{fileSize}}) es demasiado pesado para la Taiga, prueba con uno de menos de ({{maxFileSize}}).",
-            "SYNC_SUCCESS": "Tu proyecto se ha importado con éxito.",
+            "ERROR_MAX_SIZE_EXCEEDED": "El fichero '{{fileName}}' ({{fileSize}}) es demasiado pesado para la Taiga, prueba con uno de menos de ({{maxFileSize}})",
+            "SYNC_SUCCESS": "Tu proyecto se ha importado con éxito",
             "IMPORT": "Importar",
             "WHO_IS": "Sus tareas serán asignadas a...",
             "WRITE_EMAIL": "O si tu quieres, escribe el email que este usuario usa en Taiga",
@@ -1050,7 +1053,7 @@
                 "ACCOUNT_ALLOW_MEMBERS": "Tu cuenta sólo permite {{members}} miembros",
                 "PRIVATE_PROJECTS_SPACE": {
                     "TITLE": "Desafortunadamente, su plan actual no permite a los proyectos privados adicionales",
-                    "DESC": "El proyecto que trata de importar es privado. Desafortunadamente, su plan actual no le permite adicionar mas proyectos privados"
+                    "DESC": "El proyecto que trata de importar es privado. Desafortunadamente, su plan actual no le permite adicionar mas proyectos privados."
                 },
                 "PUBLIC_PROJECTS_SPACE": {
                     "TITLE": "Desafortunadamente, su plan actual no permite adicionar mas proyectos publicos",
@@ -1094,10 +1097,10 @@
                 "NO_PROJECTS": "Parece que no tienes proyectos en GitHub",
                 "HOW_DO_YOU_WANT_TO_IMPORT": "¿Cómo quieres importar las peticiones en Taiga?",
                 "KANBAN_PROJECT": "Como historias de usuario en un proyecto kanban",
-                "KANBAN_PROJECT_DESCRIPTION": "ll",
+                "KANBAN_PROJECT_DESCRIPTION": "A continuación, puedes habilitar Scrum con el backlog.",
                 "SCRUM_PROJECT": "Como historias de usuario en un proyecto scrum",
-                "SCRUM_PROJECT_DESCRIPTION": "Después de esto podrás activar el modo kanban",
-                "ISSUES_PROJECT": "Como petición ",
+                "SCRUM_PROJECT_DESCRIPTION": "Después de esto podrás activar el modo kanban.",
+                "ISSUES_PROJECT": "Como petición",
                 "ISSUES_PROJECT_DESCRIPTION": "No podrás usar tus peticiones en el modo kanban o scrum. Podrás activar el kanban o scrum para las nuevas historias de usuario"
             },
             "ASANA": {
@@ -1152,7 +1155,7 @@
             "CONFIRM": "Si, Estoy realmente seguro"
         },
         "ASSIGNED_TO": {
-            "SELECT": "Asignar a...",
+            "SELECT": "Seleccionar asignado a",
             "SEARCH": "Buscar usuarios"
         },
         "SELECT_USER": {
@@ -1175,9 +1178,9 @@
             "COMMENT": "Déjanos un mensaje",
             "ACTION_SEND": "Enviar el mensaje",
             "YOU_CAN_ALSO": "Puedes también:",
-            "CREATE": "Crear una petición en este",
+            "CREATE": "Crear una petición en este ",
             "PUBLIC": "proyecto público de Taiga",
-            "EMAIL": "Enviarnos un e-mail a",
+            "EMAIL": "Enviarnos un e-mail a ",
             "SUPPORT": "support@taiga.io",
             "FAQ": "Preguntas más frecuentes",
             "VISIT": "Visite nuestro "
@@ -1498,7 +1501,7 @@
     "ERROR": {
         "TEXT1": "Algo no va bien, y la Taiga ha capturado el error para verlo con detenimiento.",
         "NOT_FOUND": "No encontrado",
-        "NOT_FOUND_TEXT": "Error 404. La página que estás buscando ya no existe. Puedes volver a la página de inicio de TAIGA y ver si encuentras lo que estás buscando. ",
+        "NOT_FOUND_TEXT": "Error 404. La página que estás buscando ya no existe. Puedes volver a la página de inicio de TAIGA y ver si encuentras lo que estás buscando.",
         "PERMISSION_DENIED": "Permiso denegado",
         "PERMISSION_DENIED_TEXT": "No tienes permisos para acceder a esta página.",
         "VERSION_ERROR": "Algún otro usuario de Taiga se te ha adelantado y ha actualizado esto, y no se pueden aplicar tus cambios. Por favor, recarga la página y aplícalos de nuevo o se perderán."
@@ -1515,7 +1518,7 @@
         "PLACEHOLDER_CARD_TITLE": "Esta podría ser una historia de usuario",
         "PLACEHOLDER_CARD_TEXT": "Ve al <a href=\"{{ backlogUrl }}\" title=\"Go to backlog\">backlog</a> y arrastre las historias de usuario a este sprint; dividelas en tareas para gestionarlas de manera separada.",
         "TASK_NOT_FOUND_TITLE": "No se han encontrado resultados",
-        "TASK_NOT_FOUND_TEXT": "Inténtalo con términos de búsqueda más generales o deshabilita algunos filtros. ",
+        "TASK_NOT_FOUND_TEXT": "Inténtalo con términos de búsqueda más generales o deshabilita algunos filtros.",
         "TITLE_DATE_RANGE": "{{startDate}} <span>a</span> {{endDate}}",
         "TABLE": {
             "COLUMN": "Historia de usuario",
@@ -1607,7 +1610,7 @@
         "ACTION_NEW_ISSUE": "NEW ISSUE",
         "ACTION_ATTACH_SPRINT": "Vincular petición a un Sprint",
         "ACTION_DETACH_SPRINT": "Desvincular petición de Sprint",
-        "EXTERNAL_REFERENCE": "Esta petición ha sido creada a partir de ",
+        "EXTERNAL_REFERENCE": "Esta petición ha sido creada a partir de",
         "GO_TO_EXTERNAL_REFERENCE": "Ir al origen",
         "ACTION_DELETE": "Borrar petición",
         "LIGHTBOX_TITLE_BLOKING_ISSUE": "Petición bloqueada",
@@ -1665,7 +1668,7 @@
         "ACTION_SHOW_ARCHIVED": "Ver archivados",
         "ACTION_HIDE_ARCHIVED": "Ocultar archivados",
         "US_NOT_FOUND_TITLE": "No se han encontrado resultados",
-        "US_NOT_FOUND_TEXT_P1": "Inténtalo con términos de búsqueda más generales o deshabilita algunos filtros. ",
+        "US_NOT_FOUND_TEXT_P1": "Inténtalo con términos de búsqueda más generales o deshabilita algunos filtros.",
         "US_NOT_FOUND_TEXT_P2": "Las <strong>historias archivadas</strong> no se cargan de forma predeterminada. Despliegua los estados archivados para ampliar su búsqueda.",
         "PLACEHOLDER_CARD_TITLE": "Esta podría ser una historia de usuario",
         "PLACEHOLDER_CARD_TEXT": "Cree historias de usuario aquí y cambie su estado para seguir su progreso.",
@@ -1801,8 +1804,8 @@
         "HINT1_TITLE": "¿Sabes que puedes importar y exportar proyectos?",
         "HINT1_TEXT": "Esto te permite extraer todos tus datos de un Taiga y trasladarlos a otro.",
         "HINT2_TITLE": "¿Sabías que puedes crear atributos personalizados?",
-        "HINT2_TEXT": "Los equipos ahora pueden crear atributos personalizados como un medio flexible para introducir datos específicos útiles para su flujo de trabajo particular",
-        "HINT3_TITLE": "Reordenar tus proyectos para facilitar el acceso a los más relevantes para ti",
+        "HINT2_TEXT": "Los equipos ahora pueden crear atributos personalizados como un medio flexible para introducir datos específicos útiles para su flujo de trabajo particular.",
+        "HINT3_TITLE": "Reordenar tus proyectos para facilitar el acceso a los más relevantes para ti.",
         "HINT3_TEXT": "The 4 projects are listed in the direct access bar at the top.",
         "HINT4_TITLE": "¿Olvidaste lo que estabas trabajando?",
         "HINT4_TEXT": "No te preocupes, en el dashboard encontrarás las tareas, peticiones e historias de usuario abiertas en el orden en el que trabajste en ellas."
@@ -1815,8 +1818,8 @@
         "TASK_CREATED_WITH_US": "{{username}} ha creado una nueva tarea {{obj_name}} en {{project_name}} que proviene de la historia de usuario {{us_name}}",
         "WIKI_CREATED": "{{username}} ha creado una nueva página wiki {{obj_name}} en {{project_name}}",
         "MILESTONE_CREATED": "{{username}} ha creado un nuevo sprint {{obj_name}} en {{project_name}}",
-        "EPIC_CREATED": "{{username}} ha creado una nueva épica {{obj_name}} en {{project_name}}.",
-        "EPIC_RELATED_USERSTORY_CREATED": "{{username}} ha relacionado la historia de usuario {{related_us_name}} con la épica {{epic_name}} en {{project_name}}.",
+        "EPIC_CREATED": "{{username}} ha creado una nueva épica {{obj_name}} en {{project_name}}",
+        "EPIC_RELATED_USERSTORY_CREATED": "{{username}} ha relacionado la historia de usuario {{related_us_name}} con la épica {{epic_name}} en {{project_name}}",
         "NEW_PROJECT": "{{username}} creó el proyecto {{project_name}}",
         "MILESTONE_UPDATED": "{{username}} ha actualizado el sprint {{obj_name}}",
         "US_UPDATED": "{{username}} ha actualizado el atributo \"{{field_name}}\" de la historia de usuario {{obj_name}}",
@@ -1897,7 +1900,7 @@
             },
             "STEP4": {
                 "TITLE": "Comencemos",
-                "TEXT1": "Puedes comenzar creando tu primer proyecto en Taiga",
+                "TEXT1": "Puedes comenzar creando tu primer proyecto en Taiga.",
                 "TEXT2": "Buena suerte!"
             }
         },
@@ -1909,15 +1912,15 @@
             },
             "STEP2": {
                 "TITLE": "Product backlog",
-                "TEXT": "El backlog es la lista de requerimientos (Historias de Usuario) del proyecto. Aquí es donde planificarás tus sprints"
+                "TEXT": "El backlog es la lista de requerimientos (Historias de Usuario) del proyecto. Aquí es donde planificarás tus sprints."
             },
             "STEP3": {
                 "TITLE": "Sprints",
-                "TEXT": "Los sprints son periodos cortos de tiempo (normalmente de 2 semanas) durante los cuales un trabajo específico tiene que ser completado y entregado"
+                "TEXT": "Los sprints son periodos cortos de tiempo (normalmente de 2 semanas) durante los cuales un trabajo específico tiene que ser completado y entregado."
             },
             "STEP4": {
                 "TITLE": "Historias de Usuario",
-                "TEXT": "Estos son los requerimientos de alto nivel. Puedes añadirlos al backlog y arrastrarlos al sprint en el que deban ser completados"
+                "TEXT": "Estos son los requerimientos de alto nivel. Puedes añadirlos al backlog y arrastrarlos al sprint en el que deban ser completados."
             }
         },
         "KANBAN": {
@@ -1944,7 +1947,7 @@
         "MOST_ACTIVE": "Más activos",
         "MOST_ACTIVE_EMPTY": "No hay proyectos con actividad todavía",
         "MOST_LIKED": "Favoritos",
-        "MOST_LIKED_EMPTY": "No hay proyectos marcados como FAVORITOS todavía.",
+        "MOST_LIKED_EMPTY": "No hay proyectos marcados como FAVORITOS todavía",
         "VIEW_MORE": "Ver más",
         "FEATURED": "Proyectos Destacados",
         "EMPTY": "No hay proyectos que mostrar para estos criterios de búsqueda.<br> ¡Inténtalo de nuevo!",
@@ -1961,7 +1964,7 @@
         },
         "SEARCH": {
             "PAGE_TITLE": "Buscar - Descubre proyectos - Taiga",
-            "PAGE_DESCRIPTION": "Directorio de búsqueda de Proyectos Públicos en Taiga. Explora los backlogs, timelines, peticiones y equipos. Echa un vistazo a los proyectos que más  gustan o más activos. Filtrar por Kanban o Scrum.",
+            "PAGE_DESCRIPTION": "Directorio de búsqueda de Proyectos Públicos en Taiga. Explora los backlogs, timelines, peticiones y equipos. Echa un vistazo a los proyectos que más gustan o más activos. Filtrar por Kanban o Scrum.",
             "INPUT_PLACEHOLDER": "Escribe algo...",
             "ACTION_TITLE": "Buscar",
             "RESULTS": "Resultados de búsqueda"
