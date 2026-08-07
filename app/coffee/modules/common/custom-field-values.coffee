@@ -159,7 +159,7 @@ CustomAttributeValueDirective = ($template, $selectedText, $compile, $translate,
         render = (attributeValue, edit=false) ->
             if attributeValue.type is DATE_TYPE and attributeValue.value
                 value = moment(attributeValue.value, "YYYY-MM-DD").format(prettyDate)
-            if attributeValue.type is NUMBER_TYPE and attributeValue.value
+            else if attributeValue.type is NUMBER_TYPE and attributeValue.value
                 value = parseFloat(attributeValue.value)
             else
                 value = attributeValue.value
