@@ -233,6 +233,7 @@ div.kanban-table(
                     on-click-edit="ctrl.editUs(id)"
                     on-click-delete="ctrl.deleteUs(id)"
                     on-click-assigned-to="ctrl.changeUsAssignedUsers(id)"
+                    on-click-move-to-top="ctrl.moveToTopDropdown(usMap.get(usId))"
                     is-first="$first"
                     project="project"
                     item="usMap.get(usId)"
