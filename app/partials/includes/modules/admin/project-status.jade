@@ -21,6 +21,7 @@ section.admin-status-table
                 div.status-name(translate="COMMON.FIELDS.NAME")
                 div.status-slug(translate="COMMON.FIELDS.SLUG")
                 div.is-closed-column(translate="COMMON.FIELDS.IS_CLOSED")
+                div.is-archived-column(translate="ADMIN.US_STATUS.IS_ARCHIVED_COLUMN")
                 div.options-column
         div.sortable
             div(ng-repeat="value in values", tg-bind-scope)
@@ -39,6 +40,12 @@ section.admin-status-table
                         div.is-closed-column
                             tg-svg(
                                 ng-show="value.is_closed"
+                                svg-icon="icon-check"
+                            )
+
+                        div.is-archived-column
+                            tg-svg(
+                                ng-show="value.is_archived"
                                 svg-icon="icon-check"
                             )
 
@@ -78,6 +85,13 @@ section.admin-status-table
                                 data-required="true"
                                 ng-options="e.id as e.name | translate for e in [{'id':true, 'name':'COMMON.YES'},{'id':false, 'name': 'COMMON.NO'}]")
 
+                        div.is-archived-column
+                            select(
+                                name="is_archived"
+                                ng-model="value.is_archived"
+                                data-required="true"
+                                ng-options="e.id as e.name | translate for e in [{'id':true, 'name':'COMMON.YES'},{'id':false, 'name': 'COMMON.NO'}]")
+
                         div.options-column
                             a.save.e2e-save(href="", title="{{'COMMON.SAVE' | translate}}")
                                 tg-svg(svg-icon="icon-check-empty")
@@ -107,6 +121,14 @@ section.admin-status-table
                     select(
                         name="is_closed"
                         ng-model="newValue.is_closed"
+                        data-required="true"
+                        ng-options="e.id as e.name | translate for e in [{'id':true, 'name': 'COMMON.YES'},{'id':false, 'name': 'COMMON.NO'}]"
+                    )
+
+                div.is-archived-column
+                    select(
+                        name="is_archived"
+                        ng-model="newValue.is_archived"
                         data-required="true"
                         ng-options="e.id as e.name | translate for e in [{'id':true, 'name': 'COMMON.YES'},{'id':false, 'name': 'COMMON.NO'}]"
                     )
