@@ -107,7 +107,7 @@ $fold-animation-duration: .1s;
         display: -webkit-box;
         -webkit-line-clamp: 3;
         overflow: hidden;
-        overflow-wrap: break-word;
+        overflow-wrap: anywhere;
         /* stylelint-enable property-no-vendor-prefix, value-no-vendor-prefix */
     }
     .card-actions {
@@ -400,6 +400,7 @@ tg-card[type='task'].folded-dragging {
     }
     .us-subject {
         color: $color-black900;
+        overflow-wrap: anywhere;
     }
     .us-title {
         @include font-size(normal);
@@ -504,6 +505,7 @@ tg-card[type='task'].folded-dragging {
         }
     }
     .taskboard-us {
+        min-width: 0;
         padding: .5rem;
         position: relative;
         width: 100%;

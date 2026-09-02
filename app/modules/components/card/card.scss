@@ -397,6 +397,7 @@ $iocaine: #b400d1;
 
 .card-title {
     margin-bottom: $card-section-margin-bottom;
+    min-width: 0;
     padding: $wrap-padding;
     .card-ref {
         @include font-type(medium);
@@ -404,6 +405,8 @@ $iocaine: #b400d1;
     }
     .card-subject {
         color: $color-black900;
+        min-width: 0;
+        overflow-wrap: anywhere;
     }
     a {
         @include font-size(small);
