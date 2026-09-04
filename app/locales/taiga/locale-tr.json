@@ -14,7 +14,7 @@
         "UNLINK": "Bağlantıyı Kopar",
         "CREATE": "Oluştur",
         "ADD": "Ekle",
-        "BACK": "Arka",
+        "BACK": "Geri",
         "COPY_TO_CLIPBOARD": "Kopyala",
         "COPIED_TO_CLIPBOARD": "Metin panoya kopyalandı",
         "MOVE_TO_TOP": "En üste taşı",
@@ -320,6 +320,9 @@
                 "ADD_WIKI_LINKS": "Wiki bağlantıları ekle",
                 "DELETE_WIKI_LINKS": "Wiki bağlantılarını sil"
             }
+        },
+        "ARCHIVED_PROJECT_WARNING": {
+            "MESSAGE": "Bu proje arşivlendi. Artık salt okunur durumdadır."
         }
     },
     "LOGIN": {
@@ -923,7 +926,7 @@
             "ISSUES": "Sorunlar",
             "WIKI": "Wiki",
             "TEAM": "Takım",
-            "MEETUP": "Buluşma",
+            "MEETUP": "Toplantı",
             "SETTINGS": "Ayarlar",
             "SCRUM": "Scrum",
             "COLLAPSE_MENU": "menüyü daralt"
@@ -998,7 +1001,7 @@
             "INVITE": "Projeye davet et",
             "SOLO_PROJECT": "Bu projede yalnız olacaksınız",
             "INVITE_LATER": "(Daha sonra daha fazla üye davet edebileceksiniz)",
-            "BACK": "Arka",
+            "BACK": "Geri",
             "MAX_PRIVATE_PROJECTS": "Maalesef, en fazla özel proje sayısına ulaştınız.\nGeçerli sınırı artırmak istiyorsanız lütfen yönetici ile iletişime geçin.",
             "MAX_PUBLIC_PROJECTS": "Maalesef, en fazla herkese açık proje sayısına ulaştınız.\nGeçerli sınırı artırmak istiyorsanız lütfen yönetici ile iletişime geçin.",
             "PUBLIC_PROJECT": "Açık Proje",
@@ -1042,7 +1045,7 @@
             "PROJECT_SELECTOR": {
                 "NO_RESULTS": "Arama kriterlerinize uyan bir kayıt bulunamadı",
                 "ACTION_SEARCH": "ara",
-                "ACTION_BACK": "Arka"
+                "ACTION_BACK": "Geri"
             },
             "PROJECT_RESTRICTIONS": {
                 "PROJECT_MEMBERS_DESC_PRIVATE": "İçe aktarmaya çalıştığınız projede, siz dahil {{members}} üye var. Maalesef, geçerli planınız özel proje başına en fazla {{max_memberships}} üyeye izin veriyor. Bu sınırı artırmak istiyorsanız lütfen yönetici ile iletişime geçin.",
@@ -1877,7 +1880,7 @@
     "JOYRIDE": {
         "NAV": {
             "NEXT": "İleri",
-            "BACK": "Arka",
+            "BACK": "Geri",
             "SKIP": "Geç",
             "DONE": "Bitmiş"
         },

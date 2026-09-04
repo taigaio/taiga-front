@@ -1737,7 +1737,7 @@
     "WIKI": {
         "PAGE_TITLE": "{{wikiPageName}} - Wiki - {{projectName}}",
         "PAGE_DESCRIPTION": "Pēdējo reizi mainīts {{lastModifiedDate}} ({{totalEditions}} izmaiņu kopā) Saturs: {{ wikiPageContent }}",
-        "DATETIME": "GGGG MM DD  HH:mm",
+        "DATETIME": "GGGG MM DD HH:mm",
         "REMOVE": "Dzēst šo Wiki lapu",
         "DELETE_LIGHTBOX_TITLE": "Dzēst Wiki lapu",
         "DELETE_LINK_TITLE": "Dzēst Wiki saiti",
