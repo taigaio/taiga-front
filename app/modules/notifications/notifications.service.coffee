@@ -148,10 +148,11 @@ class NotificationsService extends taiga.Service
             .attr('ng-non-bindable', true)
             .text(text)
 
-        return $('<a href="">')
+        return $('<a>')
+            .attr('href', url)
             .attr('title', title)
             .attr('class', css)
-            .attr('ng-click', "vm.setAsRead(notification, \"#{url}\")")
+            .attr('ng-click', "vm.setAsRead(notification, \"#{url}\", $event)")
             .append(span)
             .prop('outerHTML')
 

@@ -44,7 +44,7 @@ section.notifications-list
                     p(tg-compile-html="notification.get('title_html')")
                     .entry-extra-data
                         a.entry-project(
-                            href=""
-                            ng-click="vm.setAsRead(notification, notification.get('projectUrl'))"
+                            ng-href="{{::notification.get('projectUrl')}}"
+                            ng-click="vm.setAsRead(notification, notification.get('projectUrl'), $event)"
                         ) {{::notification.getIn(['data', 'project', 'name'])}}
                         .entry-date {{::notification.get('created') | momentFromNow}}
