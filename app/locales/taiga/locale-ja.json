@@ -4,7 +4,7 @@
         "NO": "いいえ",
         "OR": "または",
         "I_GET_IT": "OK",
-        "LOADING": "ロード中...",
+        "LOADING": "読み込み中...",
         "DATE": "YYYY年MM月DD日",
         "DATETIME": "YYYY年MM月DD日 HH時mm分",
         "SAVE": "保存",
@@ -14,7 +14,7 @@
         "UNLINK": "リンク解除",
         "CREATE": "作成",
         "ADD": "追加",
-        "BACK": "バックエンド",
+        "BACK": "戻る",
         "COPY_TO_CLIPBOARD": "クリップボードにコピー",
         "COPIED_TO_CLIPBOARD": "テキストをクリップボードにコピーしました",
         "MOVE_TO_TOP": "先頭へ",
@@ -27,8 +27,8 @@
         "BLOCKED": "ブロック中",
         "UNBLOCK": "ブロック解除",
         "UNBLOCK_TITLE": "ブロックを解除する",
-        "BLOCKED_NOTE": "なぜこれはブロックされているのか？",
-        "BLOCKED_REASON": "理由を説明してください",
+        "BLOCKED_NOTE": "ブロックされた理由",
+        "BLOCKED_REASON": "ブロックの理由",
         "CREATED_BY": "{{fullDisplayName}} によって作成",
         "CLOSE": "閉じる",
         "GO_HOME": "ホームに戻る",
@@ -40,17 +40,17 @@
         "NEXT": "次へ",
         "LOGOUT": "ログアウト",
         "EXTERNAL_USER": "外部ユーザー",
-        "GENERIC_ERROR": "The Taiga says {{error}}.",
-        "IOCAINE_TEXT": "このメンバーはタスクがやや困難だと感じているようです。あなたの助けがあれば、やがてIocaineの毒に対して免疫を得られるでしょう。今は支援が必要かもしれません。",
-        "CLIENT_REQUIREMENT": "これはお客様からの新たな要求で、プロジェクトに含める必要があります",
+        "GENERIC_ERROR": "エラーが発生しました。内容:{{error}}",
+        "IOCAINE_TEXT": "このメンバーはタスクがやや困難だと感じているようです。",
+        "CLIENT_REQUIREMENT": "これはクライアントからの新しい要求で、プロジェクトに含める必要があります",
         "TEAM_REQUIREMENT": "これはプロジェクトに必要ですが、お客様にはコストが発生しない要求です",
         "OWNER": "プロジェクトオーナー",
-        "CAPSLOCK_WARNING": "Be careful! You are using capital letters in an input field that is case sensitive.",
+        "CAPSLOCK_WARNING": "注意してください！大文字と小文字を区別する入力フィールドで大文字を使用しています。",
         "CONFIRM_CLOSE_EDIT_MODE_TITLE": "本当にこの編集画面を閉じてもよろしいですか？",
-        "CONFIRM_CLOSE_EDIT_MODE_MESSAGE": "保存せずに編集画面を閉じた場合、すべての変更が失われます",
+        "CONFIRM_CLOSE_EDIT_MODE_MESSAGE": "保存せずに編集画面を閉じた場合、すべての変更が失われます。",
         "RELATED_USERSTORIES": "関連するユーザーストーリー",
         "CARD": {
-            "ASSIGN_TO": "割当",
+            "ASSIGN_TO": "割り当て",
             "EDIT": "編集",
             "DELETE": "カードを削除",
             "DELETE_ISSUE": "課題を削除",
@@ -87,7 +87,7 @@
             "MAX_CHECK": "選択できるのは %s までです。",
             "RANGE_CHECK": "選択できるのは %s から %s までです。",
             "EQUAL_TO": "この値は同じでなければいけません。",
-            "LINEWIDTH": "行がおそらく長すぎます。%s文字以内におさえてください。",
+            "LINEWIDTH": "行が長すぎるようです。%s文字以内におさえてください。",
             "PIKADAY": "無効なデータフォーマットです。DD MMM YYYYの形式で入力してください。（例：23 Mar 1984）"
         },
         "PICKERDATE": {
@@ -110,13 +110,13 @@
                 "DEC": "12月"
             },
             "WEEK_DAYS": {
-                "SUN": "日曜",
-                "MON": "月曜",
-                "TUE": "火曜",
-                "WED": "水曜",
+                "SUN": "日曜日",
+                "MON": "月曜日",
+                "TUE": "火曜日",
+                "WED": "水曜日",
                 "THU": "木曜日",
-                "FRI": "金曜",
-                "SAT": "土曜"
+                "FRI": "金曜日",
+                "SAT": "土曜日"
             },
             "WEEK_DAYS_SHORT": {
                 "SUN": "日",
@@ -139,7 +139,7 @@
             "ADD": "タグを追加"
         },
         "DESCRIPTION": {
-            "EMPTY": "空欄だと退屈です…。説明を追加してください。",
+            "EMPTY": "説明を追加してください。",
             "NO_DESCRIPTION": "説明はありません"
         },
         "FIELDS": {
@@ -150,41 +150,41 @@
             "VALUE": "値",
             "SLUG": "スラッグ",
             "COLOR": "色",
-            "IS_CLOSED": "クローズ？",
+            "IS_CLOSED": "閉じますか？",
             "STATUS": "ステータス",
             "TYPE": "タイプ",
             "SEVERITY": "深刻度",
             "PRIORITY": "優先度",
-            "ASSIGNED": "割当済",
-            "ASSIGNED_TO": "割当",
-            "ASSIGNED_USERS": "割当ユーザー",
+            "ASSIGNED": "割り当て済",
+            "ASSIGNED_TO": "割り当て先",
+            "ASSIGNED_USERS": "割り当てられたユーザー",
             "POINTS": "ポイント",
             "IS_BLOCKED": "はブロックされています",
             "REF": "参照",
             "VOTES": "投票",
             "SPRINT": "スプリント",
             "DUE_DATE": "締切日",
-            "DUE_DATE_REASON": "締切日理由"
+            "DUE_DATE_REASON": "締切日の理由"
         },
         "ROLES": {
             "ALL": "すべて"
         },
         "ASSIGNED_TO": {
-            "NOT_ASSIGNED": "未割当",
-            "ASSIGN": "割当",
-            "DELETE_ASSIGNMENT": "割当を削除",
-            "REMOVE_ASSIGNED": "割当を解除",
-            "TOO_MANY": "…ユーザーが多すぎます。フィルタを継続してください",
-            "CONFIRM_UNASSIGNED": "本当にこのアサインから外れてもよろしいですか？",
-            "TITLE_ACTION_EDIT_ASSIGNMENT": "割当を編集",
-            "SELF": "自分に割当"
+            "NOT_ASSIGNED": "未割り当て",
+            "ASSIGN": "割り当て",
+            "DELETE_ASSIGNMENT": "割り当てを削除",
+            "REMOVE_ASSIGNED": "割り当てを解除",
+            "TOO_MANY": "割り当てる人が多すぎます。フィルターを活用してください。",
+            "CONFIRM_UNASSIGNED": "本当にこの人を割り当てから外しますか？",
+            "TITLE_ACTION_EDIT_ASSIGNMENT": "割り当てを編集",
+            "SELF": "自分に割り当てる"
         },
         "DUE_DATE": {
             "TITLE_ACTION_SET_DUE_DATE": "締切日を設定"
         },
         "ASSIGNED_USERS": {
-            "ADD": "割当ユーザーを選択",
-            "ADD_ASSIGNED": "割当を追加",
+            "ADD": "割り当てユーザーを選択",
+            "ADD_ASSIGNED": "割り当てを追加",
             "TITLE_LIGHTBOX_DELETE_ASSIGNED": "Delete assigned..."
         },
         "STATUS": {
@@ -254,8 +254,8 @@
                 "SEVERITY": "深刻度",
                 "PRIORITIES": "優先度",
                 "TAGS": "タグ",
-                "ASSIGNED_TO": "割当",
-                "ASSIGNED_USERS": "割当ユーザー",
+                "ASSIGNED_TO": "割り当て",
+                "ASSIGNED_USERS": "割り当てユーザー",
                 "ROLE": "役割",
                 "CREATED_BY": "作成者",
                 "CUSTOM_FILTERS": "カスタムフィルター",
@@ -424,7 +424,7 @@
         "PAGE_DESCRIPTION": "エピックの一覧 {{projectName}}: {{projectDescription}}",
         "DASHBOARD": {
             "ADD": "エピックを追加",
-            "UNASSIGNED": "未割当"
+            "UNASSIGNED": "未割り当て"
         },
         "EMPTY": {
             "TITLE": "まだエピックが無いようです",
@@ -436,7 +436,7 @@
             "NAME": "名前",
             "PROJECT": "プロジェクト",
             "SPRINT": "スプリント",
-            "ASSIGNED_TO": "割当済",
+            "ASSIGNED_TO": "割り当て済",
             "STATUS": "ステータス",
             "PROGRESS": "進捗",
             "CLOSED_US": "完了したユーザーストーリー",
@@ -1031,7 +1031,7 @@
             "LINKS": "Links with {{platform}}",
             "LINKS_DESCRIPTION": "Do you want to keep the link of each item with the original {{platform}} card?",
             "WARNING_MAIL_USER": "Note that if the user does not have a Taiga account we will not be able to assign the tasks to them.",
-            "ASSIGN": "割当",
+            "ASSIGN": "割り当て",
             "PROJECT_SELECTOR": {
                 "NO_RESULTS": "検索条件に当てはまるものはありませんでした",
                 "ACTION_SEARCH": "検索",
@@ -1069,7 +1069,7 @@
                 "DESCRIPTION": "このプロセスには時間がかかります。ウィンドウを開いたままにしていてください。"
             },
             "WARNING": {
-                "TITLE": "いくつかのタスクは未割当になります",
+                "TITLE": "いくつかのタスクは未割り当てになります",
                 "DESCRIPTION": "There are still unidentified people. The cards assigned to these people will remain unassigned. Check all the contacts to not lose that information.",
                 "CHECK": "コンタクトを確認"
             },
@@ -1382,7 +1382,7 @@
         "BLOCKED": "ブロック中",
         "VALUES": {
             "NOT_SET": "not set",
-            "UNASSIGNED": "未割当"
+            "UNASSIGNED": "未割り当て"
         },
         "FIELDS": {
             "SUBJECT": "題名",
@@ -1391,8 +1391,8 @@
             "SEVERITY": "深刻度",
             "STATUS": "ステータス",
             "TYPE": "タイプ",
-            "ASSIGNED_TO": "割当",
-            "ASSIGNED_USERS": "割当ユーザー",
+            "ASSIGNED_TO": "割り当て",
+            "ASSIGNED_USERS": "割り当てユーザー",
             "DUE_DATE": "締切日",
             "MILESTONE": "スプリント",
             "COLOR": "色",
@@ -1502,7 +1502,7 @@
         "TITLE_ACTION_ADD_BULK": "新規タスクを一括で追加する",
         "TITLE_ACTION_ADD_ISSUE": "新規課題を追加",
         "TITLE_ACTION_ADD_ISSUE_BULK": "新規課題を一括で追加する",
-        "TITLE_ACTION_ASSIGN": "タスクの割当",
+        "TITLE_ACTION_ASSIGN": "タスクの割り当て",
         "PLACEHOLDER_CARD_TITLE": "これはユーザーストーリーかもしれません",
         "PLACEHOLDER_CARD_TEXT": "<a href=\"{{ backlogUrl }}\" title=\"Go to backlog\">バックログ</a> でユーザーストーリーをこのスプリントにドラッグしてください。ユーザーストーリーをタスクに分解することで個別に追跡できます。",
         "TASK_NOT_FOUND_TITLE": "一致する結果はありませんでした",
@@ -1633,7 +1633,7 @@
                 "ASSIGNED_TO": "Assign to"
             },
             "TITLE_ACTION_CHANGE_STATUS": "ステータスを変更",
-            "TITLE_ACTION_ASSIGNED_TO": "割当",
+            "TITLE_ACTION_ASSIGNED_TO": "割り当て",
             "BLOCKED": "ブロック中",
             "EMPTY": {
                 "TITLE": "レポートが必要な課題はありません :-)",
@@ -1847,7 +1847,7 @@
         "VIEW_ALL": "すべての通知を見る",
         "NO_NEW_EVENTS": "新しいイベントはありません",
         "NO_EVENTS_YET": "まだイベントはありません",
-        "ASSIGNED_YOU": "{{username}} さんがあなたを {{obj_name}} に割当てました",
+        "ASSIGNED_YOU": "{{username}} さんがあなたを {{obj_name}} に割り当ててました",
         "ADDED_YOU_AS_WATCHER": "{{username}} さんがあなたを {{obj_name}} のウォッチャーに追加しました",
         "ADDED_YOU_AS_MEMBER": "{{username}} added you as member",
         "MENTIONED_YOU": "{{username}} さんが {{obj_name}} であなたを指名しました",
