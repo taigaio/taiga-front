@@ -42,12 +42,12 @@
         "EXTERNAL_USER": "een extern gebruiker",
         "GENERIC_ERROR": "De Taiga zegt {{error}}.",
         "IOCAINE_TEXT": "Dit lid voelt zich een beetje overweldigd door deze taak. Ze zullen met jouw hulp na verloop van tijd immuun worden voor het iocaïnegif. Voor nu hebben ze misschien een knuffel nodig.",
-        "CLIENT_REQUIREMENT": "Een klantvereiste is een nieuwe vereiste die niet eerder werd verwacht en die deel moet uitmaken van het project.",
-        "TEAM_REQUIREMENT": "Een teamvereiste is een vereiste die in het project aanwezig moet zijn, maar geen kosten voor de klant met zich mee mag brengen.",
+        "CLIENT_REQUIREMENT": "Een klantvereiste is een nieuwe vereiste die niet eerder werd verwacht en die deel moet uitmaken van het project",
+        "TEAM_REQUIREMENT": "Een teamvereiste is een vereiste die in het project aanwezig moet zijn, maar geen kosten voor de klant met zich mee mag brengen",
         "OWNER": "Project eigenaar",
         "CAPSLOCK_WARNING": "Let op! U gebruikt hoofdletters in een invoerveld dat hoofdlettergevoelig is.",
         "CONFIRM_CLOSE_EDIT_MODE_TITLE": "Weet u zeker dat u de bewerkingsmodus wilt sluiten?",
-        "CONFIRM_CLOSE_EDIT_MODE_MESSAGE": "Houd er rekening mee dat als u de bewerkingsmodus sluit zonder alle wijzigingen op te slaan, deze verloren gaan.",
+        "CONFIRM_CLOSE_EDIT_MODE_MESSAGE": "Houd er rekening mee dat als u de bewerkingsmodus sluit zonder alle wijzigingen op te slaan, deze verloren gaan",
         "RELATED_USERSTORIES": "Gerelateerde werkorders",
         "CARD": {
             "ASSIGN_TO": "Toewijzen aan",
@@ -232,21 +232,21 @@
         },
         "FILTERS": {
             "INPUT_PLACEHOLDER": "onderwerp of referentie",
-            "TITLE_ACTION_FILTER_BUTTON": "zoek",
+            "TITLE_ACTION_FILTER_BUTTON": "zoeken",
             "TITLE": "Eigen filters",
-            "TITLE_ACTION_SEARCH": "Zoek",
+            "TITLE_ACTION_SEARCH": "Zoeken",
             "ACTION_ADD": "Toevoegen",
             "ACTION_SAVE_CUSTOM_FILTER": "filter opslaan",
             "PLACEHOLDER_FILTER_NAME": "Geef de filternaam in en druk op enter",
-            "APPLIED_FILTERS_NUM": "filters applied",
-            "TITLE_ADVANCED_FILTER": "Advanced",
-            "LENGTH_ZERO_ERROR": "Please add a filter name",
-            "REPEATED_FILTER_ERROR": "This filter name is already in use",
+            "APPLIED_FILTERS_NUM": "filters toegepast",
+            "TITLE_ADVANCED_FILTER": "Geavanceerd",
+            "LENGTH_ZERO_ERROR": "Voeg een filternaam toe",
+            "REPEATED_FILTER_ERROR": "Deze filternaam is al in gebruik",
             "ADVANCED_FILTERS": {
-                "INCLUDE": "Include",
-                "EXCLUDE": "Exclude",
-                "INCLUDED": "Filtered by:",
-                "EXCLUDED": "Excluded:"
+                "INCLUDE": "Inbegrepen",
+                "EXCLUDE": "Uitsluiten",
+                "INCLUDED": "Gefilterd door:",
+                "EXCLUDED": "Uitgesloten:"
             },
             "CATEGORIES": {
                 "TYPE": "Type",
@@ -255,7 +255,7 @@
                 "PRIORITIES": "Prioriteit",
                 "TAGS": "Tags",
                 "ASSIGNED_TO": "Toegewezen aan",
-                "ASSIGNED_USERS": "Assigned users",
+                "ASSIGNED_USERS": "Toegewezen gebruikers",
                 "ROLE": "Rol",
                 "CREATED_BY": "Aangemaakt door",
                 "CUSTOM_FILTERS": "Eigen filters",
@@ -263,11 +263,11 @@
             }
         },
         "WYSIWYG": {
-            "CODE_SNIPPET": "Code Snippet",
-            "DB_CLICK": "double click to edit",
-            "SELECT_LANGUAGE_PLACEHOLDER": "Select Language",
-            "SELECT_LANGUAGE_REMOVE_FORMATING": "Remove formatting",
-            "OUTDATED": "Another person has made changes while you were editing. Check the new version on the activity tab before you save your changes.",
+            "CODE_SNIPPET": "Code fragment",
+            "DB_CLICK": "dubbelklikken om aan te passen",
+            "SELECT_LANGUAGE_PLACEHOLDER": "Taal Selecteren",
+            "SELECT_LANGUAGE_REMOVE_FORMATING": "Verwijder formattering",
+            "OUTDATED": "Een ander heeft veranderingen gemaakt terwijl je bezig was met aanpassen. Check de nieuwe versie op het activiteitentabblad voordat je je veranderingen opslaat.",
             "MARKDOWN_HELP": "Markdown syntax help"
         },
         "PERMISIONS_CATEGORIES": {
@@ -280,14 +280,14 @@
                 "DELETE_EPICS": "Verwijder initiatieven"
             },
             "SPRINTS": {
-                "NAME": "Sprints",
+                "NAME": "Sprinten",
                 "VIEW_SPRINTS": "Sprints bekijken",
                 "ADD_SPRINTS": "Sprints toevoegen",
                 "MODIFY_SPRINTS": "Sprints bewerken",
                 "DELETE_SPRINTS": "Sprints verwijderen"
             },
             "USER_STORIES": {
-                "NAME": "User Stories",
+                "NAME": "Gebruikersverhalen",
                 "VIEW_USER_STORIES": "Bekijk user stories",
                 "ADD_USER_STORIES": "User stories toevoegen",
                 "MODIFY_USER_STORIES": "user stories bewerken",
@@ -320,6 +320,9 @@
                 "ADD_WIKI_LINKS": "Wiki links toevoegen",
                 "DELETE_WIKI_LINKS": "Verwijder wiki links"
             }
+        },
+        "ARCHIVED_PROJECT_WARNING": {
+            "MESSAGE": "Dit project was gearchiveerd. Het is nu alleen leesbaar."
         }
     },
     "LOGIN": {
@@ -915,7 +918,7 @@
             "TO_UNBLOCK_CONTACT_THE_ADMIN_STAFF": "Neem contact op met de administrator om je projecten te deblokkeren."
         },
         "SECTION": {
-            "SEARCH": "Zoek",
+            "SEARCH": "Zoeken",
             "TIMELINE": "Tijdlijn",
             "EPICS": "Initiatieven",
             "BACKLOG": "Backlog",
@@ -960,7 +963,7 @@
         "LIKE_BUTTON": {
             "LIKE": "Vind ik leuk",
             "LIKED": "Leuk gevonden",
-            "UNLIKE": "Vind ik niet meer leu",
+            "UNLIKE": "Vind ik niet meer leuk",
             "BUTTON_TITLE": "Vind dit project leuk of niet",
             "COUNTER_TITLE": "{total, plural, =1{één fan} other{# fans}}"
         },
@@ -1041,7 +1044,7 @@
             "ASSIGN": "Assign",
             "PROJECT_SELECTOR": {
                 "NO_RESULTS": "It looks like nothing was found with your search criteria",
-                "ACTION_SEARCH": "zoek",
+                "ACTION_SEARCH": "zoeken",
                 "ACTION_BACK": "Back"
             },
             "PROJECT_RESTRICTIONS": {
@@ -1183,7 +1186,7 @@
             "FAQ": "Veel Gestelde Vragen"
         },
         "SEARCH": {
-            "TITLE": "Zoek",
+            "TITLE": "Zoeken",
             "PLACEHOLDER_SEARCH": "Wat zoek je?"
         },
         "ADD_EDIT_SPRINT": {
@@ -1676,7 +1679,7 @@
         "UNCLASSIFIED_USER_STORIES_TOOLTIP": "The user stories that are not part of any swimlane are here."
     },
     "SEARCH": {
-        "PAGE_TITLE": "Zoek - {{projectName}}",
+        "PAGE_TITLE": "Zoeken - {{projectName}}",
         "PAGE_DESCRIPTION": "Zoek op alles, User Stories, Issues, taken, wiki pagina's, in het project {{projectName}}: {{projectDescription}}",
         "FILTER_EPICS": "Initiatieven",
         "FILTER_USER_STORIES": "User Stories",
@@ -1684,7 +1687,7 @@
         "FILTER_TASKS": "Taken",
         "FILTER_WIKI": "Wiki pagina's",
         "PLACEHOLDER_SEARCH": "Zoeken in...",
-        "TITLE_ACTION_SEARCH": "zoek",
+        "TITLE_ACTION_SEARCH": "zoeken",
         "EMPTY_TITLE": "Het lijkt erop dat er niets kon gevonden worden met je opgegeven zoektermen.",
         "EMPTY_DESCRIPTION": "Probeer één van de bovenstaande tabs of zoek opnieuw"
     },
@@ -1819,8 +1822,8 @@
         "EPIC_RELATED_USERSTORY_CREATED": "{{username}} has related the werkorder {{related_us_name}} to the epic {{epic_name}} in {{project_name}}",
         "NEW_PROJECT": "{{username}} heeft een nieuw project aangemaakt {{project_name}}",
         "MILESTONE_UPDATED": "{{username}} heeft de sprint {{obj_name}} bijgewerkt",
-        "US_UPDATED": "{{username}} has updated the attribute \"{{field_name}}\" of the werkorder {{obj_name}}",
-        "US_UPDATED_WITH_NEW_VALUE": "{{username}} has updated the attribute \"{{field_name}}\" of the werkorder {{obj_name}} to {{new_value}}",
+        "US_UPDATED": "{{username}} paste het kenmerk \"{{field_name}}\" aan van het gebruikersverhaal {{obj_name}}",
+        "US_UPDATED_WITH_NEW_VALUE": "{{username}} paste het kenmerk \"{{field_name}}\" aan van het gebruikersverhaal {{obj_name}} naar {{new_value}}",
         "US_UPDATED_POINTS": "{{username}} has updated '{{role_name}}' points of the werkorder {{obj_name}} to {{new_value}}",
         "ISSUE_UPDATED": "{{username}} heeft de eigenschap \"{{field_name}}\" van het issue {{obj_name}} bijgewerkt",
         "ISSUE_UPDATED_WITH_NEW_VALUE": "{{username}} heeft het attribuut \"{{field_name}}\" van de issue gewijzigd van {{obj_name}} naar {{new_value}}",
@@ -1963,7 +1966,7 @@
             "PAGE_TITLE": "Search - Discover projects - Taiga",
             "PAGE_DESCRIPTION": "Searchable directory of Public Projects in Taiga. Explore backlogs, timelines, issues, and teams. Check out the most liked or most active projects. Filter by Kanban or Scrum.",
             "INPUT_PLACEHOLDER": "Typ iets...",
-            "ACTION_TITLE": "Zoek",
+            "ACTION_TITLE": "Zoeken",
             "RESULTS": "Search results"
         }
     },
