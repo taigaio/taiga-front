@@ -6,9 +6,9 @@
 //- Copyright (c) 2021-present Kaleidos INC
 
 .epic-row.e2e-epic-row(
-    ng-class="{'is-blocked':  vm.epic.get('is_blocked'), 'is-closed': vm.epic.get('is_closed'), 'unfold': vm.displayUserStories, 'not-empty': vm.epic.getIn(['user_stories_counts', 'opened']) || vm.epic.getIn(['user_stories_counts', 'closed'])}"
+    ng-class="{'is-blocked':  vm.epic.get('is_blocked'), 'is-closed': vm.epic.get('is_closed'), 'is-archived': vm.epic.get('is_archived'), 'unfold': vm.displayUserStories, 'not-empty': vm.epic.getIn(['user_stories_counts', 'opened']) || vm.epic.getIn(['user_stories_counts', 'closed'])}"
     ng-click="vm.toggleUserStoryList()"
-    ng-hide="!vm.options.closed && vm.epic.get('is_closed')"
+    ng-hide="!vm.options.closed && vm.epic.get('is_closed')  || (!vm.options.archived && vm.epic.get('is_archived'))"
 )
     tg-svg.icon-drag(
         svg-icon="icon-draggable"
