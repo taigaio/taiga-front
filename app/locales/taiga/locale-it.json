@@ -180,7 +180,7 @@
             "SELF": "Assegna a me"
         },
         "DUE_DATE": {
-            "TITLE_ACTION_SET_DUE_DATE": "Setta scadenza"
+            "TITLE_ACTION_SET_DUE_DATE": "Imposta scadenza"
         },
         "ASSIGNED_USERS": {
             "ADD": "Seleziona utente assegnato",
@@ -410,8 +410,8 @@
         "WORKING_ON_SECTION": "Stai lavorando su",
         "WATCHING_SECTION": "Stai osservando",
         "DASHBOARD": "Dashboard Progetti",
-        "SET_HIDDEN": "Setta come nascosto",
-        "SET_VISIBLE": "Setta come visibile",
+        "SET_HIDDEN": "Imposta come nascosto",
+        "SET_VISIBLE": "Imposta come visibile",
         "NO_HIDDEN_ITEMS": "Non hai elementi nascosti",
         "HIDE_HIDDEN": "Non mostrare oggetti nascosti",
         "SHOW_HIDDEN": "Mostra oggetti nascosti"
@@ -1265,7 +1265,7 @@
             "SEND": "Invia"
         },
         "SET_DUE_DATE": {
-            "TITLE": "Setta scadenza",
+            "TITLE": "Imposta scadenza",
             "PLACEHOLDER_DUE_DATE": "Seleziona data",
             "REASON_FOR_DUE_DATE": "Motivo scadenza",
             "PLACEHOLDER_REASON_FOR_DUE_DATE": "Perché questa storia utente ha bisogno di una data di scadenza?",
