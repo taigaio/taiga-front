@@ -242,6 +242,11 @@ class UsFiltersMixin
         if milestone
             loadFilters.milestone = milestone
 
+        if @.loadUserstoriesParams?
+            delete loadFilters.exclude_status
+            _.assign(loadFilters, _.pick(@.loadUserstoriesParams(),
+                                        ["status__is_archived", "exclude_status"]))
+
         return @q.all([
             @rs.userstories.filtersData(loadFilters),
             @filterRemoteStorageService.getFilters(@scope.projectId, @.storeCustomFiltersName)

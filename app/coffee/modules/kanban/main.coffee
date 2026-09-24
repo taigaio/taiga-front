@@ -188,6 +188,8 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             @.refreshTagsColors().then () =>
                 @kanbanUserstoriesService.add(us)
                 @scope.$broadcast("redraw:wip")
+                @.generateFilters()
+                @.filtersReloadContent() if @.isUsInArchivedHiddenStatus(us.id)
 
                 if position == 'top'
                     @.moveUsToTop(us)
@@ -199,6 +201,8 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             @.refreshTagsColors().then () =>
                 @kanbanUserstoriesService.add(uss)
                 @scope.$broadcast("redraw:wip")
+                @.generateFilters()
+                @.filtersReloadContent() if uss.some((us) => @.isUsInArchivedHiddenStatus(us.id))
 
                 if position == 'top'
                     @.moveUsToTop(uss)
@@ -219,13 +223,23 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                 @kanbanUserstoriesService.replaceModel(us)
                 @kanbanUserstoriesService.refreshRawOrder()
                 @kanbanUserstoriesService.refresh(false)
+                @.generateFilters()
+                @.filtersReloadContent() if @.isUsInArchivedHiddenStatus(us.id)
 
         @scope.$on "kanban:us:deleted", (event, us) =>
             @kanbanUserstoriesService.remove(us)
+            @.generateFilters()
 
         @scope.$on("kanban:us:move", @.moveUs)
-        @scope.$on("kanban:show-userstories-for-status", @.loadUserStoriesForStatus)
-        @scope.$on("kanban:hide-userstories-for-status", @.hideUserStoriesForStatus)
+        @scope.$on "kanban:show-userstories-for-status", (ctx, statusId) =>
+            @kanbanUserstoriesService.showStatus(statusId)
+            @.loadUserStoriesForStatus(ctx, statusId)
+            @.generateFilters()
+
+        @scope.$on "kanban:hide-userstories-for-status", (ctx, statusId) =>
+            @.hideUserStoriesForStatus(ctx, statusId)
+            @.filtersReloadContent()
+            @.generateFilters()
 
         @scope.$on "lightbox:opened", () =>
             @.isLightboxOpened = true
@@ -421,9 +435,15 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             @kanbanUserstoriesService.set(userstories)
 
     loadUserstoriesParams: () ->
-        params = {
-            status__is_archived: false
-        }
+        params = {}
+        openArchived = _.difference(@kanbanUserstoriesService.archivedStatus,
+                                    @kanbanUserstoriesService.statusHide)
+        if openArchived.length
+            hiddenArchived = _.intersection(@kanbanUserstoriesService.archivedStatus,
+                                            @kanbanUserstoriesService.statusHide)
+            params.exclude_status = hiddenArchived.join(",") if hiddenArchived.length
+        else
+            params.status__is_archived = false
 
         if @.zoomLevel >= 2
             params.include_attachments = 1
@@ -448,6 +468,11 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         params = @.loadUserstoriesParams()
 
         @rs.userstories.listAll(@scope.projectId, params).then (userstories) =>
+            modifiedUs
+            .filter((id) -> !userstories.find((us) -> us.id == id))
+            .forEach (id) =>
+                @kanbanUserstoriesService.remove(@kanbanUserstoriesService.getUsModel(id))
+
             newUss = userstories.filter (us) => !@kanbanUserstoriesService.userstoriesRaw.find((raw) => raw.id == us.id)
 
             userstories
@@ -460,6 +485,7 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
                 @kanbanUserstoriesService.add(newUss)
 
             @kanbanUserstoriesService.refresh(false)
+            @.generateFilters()
 
     loadUserstories: () ->
         params = @.loadUserstoriesParams()
@@ -473,16 +499,6 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             @.loadSwimlanes()
         ]
 
-        archivedPromises = []
-        openArchived = _.difference(@kanbanUserstoriesService.archivedStatus,
-                                    @kanbanUserstoriesService.statusHide)
-
-        if openArchived.length
-            archivedPromises = openArchived.map (archivedStatusId) =>
-                return @.loadUserStoriesForStatus({}, archivedStatusId)
-
-        loadPromises = loadPromises.concat(archivedPromises)
-
         promise = @q.all(loadPromises).then (result) =>
             if lastSearch != @.lastSearch
                 return
@@ -490,10 +506,6 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             @kanbanUserstoriesService.reset(false, false, false)
             userstories = result[0]
             swimlanes = result[1]
-
-            if result.length > 2
-                result.slice(2).forEach (archivedRedult) =>
-                    userstories = userstories.concat(archivedRedult)
 
             @.notFoundUserstories = false
 
@@ -527,6 +539,8 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
             params.q = @.filterQ
 
         params = _.merge params, @location.search()
+        delete params.status__is_archived
+        delete params.exclude_status
 
         return @rs.userstories.listAll(@scope.projectId, params).then (userstories) =>
             @.waitEmptyQuote () =>
@@ -575,6 +589,13 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
         @scope.usStatusById = groupBy(project.us_statuses, (x) -> x.id)
         @scope.usStatusList = _.sortBy(project.us_statuses, "order")
         @scope.usCardVisibility = {}
+
+        folds = @rs.kanban.getStatusColumnModes(project.id)
+        @kanbanUserstoriesService.archivedStatus = []
+        @kanbanUserstoriesService.statusHide = []
+        for status in @scope.usStatusList when status.is_archived
+            @kanbanUserstoriesService.addArchivedStatus(status.id)
+            @kanbanUserstoriesService.hideStatus(status.id) unless folds[status.id] is false
 
         @scope.$emit("project:loaded", project)
         return project
@@ -717,37 +738,6 @@ KanbanDirective = ($repo, $rootscope) ->
 module.directive("tgKanban", ["$tgRepo", "$rootScope", KanbanDirective])
 
 #############################################################################
-## Kanban Archived Show Status
-#############################################################################
-
-KanbanArchivedShowStatusHeaderDirective = ($rootscope, $translate, kanbanUserstoriesService) ->
-    showArchivedText = $translate.instant("KANBAN.ACTION_SHOW_ARCHIVED")
-
-    link = ($scope, $el, $attrs) ->
-        unwatch = $scope.$watch 'ctrl.initialLoad', (initialLoad) =>
-            return if !initialLoad
-
-            unwatch()
-
-            status = $scope.$eval($attrs.tgKanbanArchivedShowStatusHeader)
-
-            kanbanUserstoriesService.addArchivedStatus(status.id)
-            kanbanUserstoriesService.hideStatus(status.id)
-
-            $el.on "click", (event) ->
-                $scope.$apply ->
-                    if kanbanUserstoriesService.statusHide.includes(status.id)
-                        $rootscope.$broadcast("kanban:show-userstories-for-status", status.id)
-                        kanbanUserstoriesService.showStatus(status.id)
-
-        $scope.$on "$destroy", ->
-            $el.off()
-
-    return {link:link}
-
-module.directive("tgKanbanArchivedShowStatusHeader", [ "$rootScope", "$translate", "tgKanbanUserstories", KanbanArchivedShowStatusHeaderDirective])
-
-#############################################################################
 ## Kanban Archived Status Column Intro Directive
 #############################################################################
 
@@ -787,20 +777,24 @@ KanbanSquishColumnDirective = (rs, projectService, kanbanUserstoriesService) ->
 
             rs.kanban.storeStatusColumnModes($scope.projectId, $scope.folds)
 
-            if kanbanUserstoriesService.archivedStatus.includes(status.id) && !kanbanUserstoriesService.statusHide.includes(status.id)
-                kanbanUserstoriesService.hideStatus(status.id)
+            if kanbanUserstoriesService.archivedStatus.includes(status.id)
+                if $scope.folds[status.id]
+                    kanbanUserstoriesService.hideStatus(status.id)
+                    $scope.$emit("kanban:hide-userstories-for-status", status.id)
+                else
+                    $scope.$emit("kanban:show-userstories-for-status", status.id)
 
             return
 
         unwatch = $scope.$watch 'ctrl.initialLoad', (load) ->
-            if load && $scope.usByStatus?.size
+            if load
                 $scope.folds = rs.kanban.getStatusColumnModes(projectService.project.get('id'))
 
                 archivedFolds = $scope.usStatusList.filter (status) ->
                     return status.is_archived
 
                 for status in archivedFolds
-                    $scope.folds[status.id] = true
+                    $scope.folds[status.id] = true if $scope.folds[status.id] is undefined
 
                 unwatch()
 
