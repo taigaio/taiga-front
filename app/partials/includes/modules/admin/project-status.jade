@@ -20,7 +20,8 @@ section.admin-status-table
                 div.color-column(translate="COMMON.FIELDS.COLOR")
                 div.status-name(translate="COMMON.FIELDS.NAME")
                 div.status-slug(translate="COMMON.FIELDS.SLUG")
-                div.is-closed-column(translate="COMMON.FIELDS.IS_CLOSED")
+                div.is-closed-column(translate="ADMIN.US_STATUS.IS_CLOSED_COLUMN")
+                div.is-archived-column(translate="")
                 div.options-column
         div.sortable
             div(ng-repeat="value in values", tg-bind-scope)
@@ -41,6 +42,8 @@ section.admin-status-table
                                 ng-show="value.is_closed"
                                 svg-icon="icon-check"
                             )
+
+                        div.is-archived-column
 
                         div.options-column
                             a.edit-value(href="")
@@ -78,6 +81,8 @@ section.admin-status-table
                                 data-required="true"
                                 ng-options="e.id as e.name | translate for e in [{'id':true, 'name':'COMMON.YES'},{'id':false, 'name': 'COMMON.NO'}]")
 
+                        div.is-archived-column
+
                         div.options-column
                             a.save.e2e-save(href="", title="{{'COMMON.SAVE' | translate}}")
                                 tg-svg(svg-icon="icon-check-empty")
@@ -110,6 +115,8 @@ section.admin-status-table
                         data-required="true"
                         ng-options="e.id as e.name | translate for e in [{'id':true, 'name': 'COMMON.YES'},{'id':false, 'name': 'COMMON.NO'}]"
                     )
+
+                div.is-archived-column
 
                 div.options-column
                     a.add-new.e2e-save(href="", title="{{'COMMON.ADD' | translate}}")
