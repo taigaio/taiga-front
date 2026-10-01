@@ -230,6 +230,7 @@ class UsFiltersMixin
         @.storeFilters(@params.pslug, @location.search(), @.storeFiltersName)
 
         urlfilters = @location.search()
+        manualFilters = _.pick(urlfilters, @.validQueryParams)
 
         loadFilters = {}
         loadFilters.project = @scope.projectId
@@ -311,11 +312,11 @@ class UsFiltersMixin
 
             for key in @.filterCategories
                 excludeKey = @.excludePrefix.concat(key)
-                if loadFilters[key]
-                    selected = @.formatSelectedFilters(key, dataCollection[key], loadFilters[key])
+                if manualFilters[key]
+                    selected = @.formatSelectedFilters(key, dataCollection[key], manualFilters[key])
                     @.selectedFilters = @.selectedFilters.concat(selected)
-                if loadFilters[excludeKey]
-                    selected = @.formatSelectedFilters(key, dataCollection[key], loadFilters[excludeKey], "exclude")
+                if manualFilters[excludeKey]
+                    selected = @.formatSelectedFilters(key, dataCollection[key], manualFilters[excludeKey], "exclude")
                     @.selectedFilters = @.selectedFilters.concat(selected)
 
             @.filters = []

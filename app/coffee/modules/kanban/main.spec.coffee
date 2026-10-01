@@ -24,6 +24,7 @@ describe "Kanban archived filters", ->
         }
 
         module "taigaKanban"
+        module "taigaBacklog"
         module ($provide) ->
             $provide.value "$tgResources", {kanban: kanbanResources}
             $provide.value "tgProjectService", {project: Immutable.fromJS({id: 1})}
@@ -135,6 +136,60 @@ describe "Kanban archived filters", ->
         expect(kanban.statusHide).to.deep.equal([7])
         expect(ctrl.filtersReloadContent).to.have.been.calledOnce
         expect(userstories.filtersData.secondCall.args[0].status__is_archived).to.equal(false)
+
+    it "keeps folded statuses out of applied filters and allows removing excluded tags", ->
+        kanban.archivedStatus = [7, 8]
+        params = {tags: "keep", exclude_tags: "archived", exclude_status: "7"}
+        location.search = (name, value) ->
+            if arguments.length
+                if value == null then delete params[name] else params[name] = value
+            return params
+        location.noreload = -> location
+        ctrl.filtersReloadContent = sinon.spy()
+        userstories.filtersData = sinon.spy -> $q.when({
+            statuses: [{id: 7, name: "Done"}, {id: 8, name: "Discarded"}]
+            tags: [{name: "keep", count: 1}, {name: "archived", count: 0}]
+        })
+        filters.getFilters.returns($q.when({}))
+
+        for hidden in [[7, 8], [8], []]
+            kanban.statusHide = hidden
+            ctrl.generateFilters()
+            $rootScope.$digest()
+
+            expect(_.map(ctrl.selectedFilters, "key")).to.deep.equal(["tags:keep", "tags:archived"])
+            expect(params).to.deep.equal({tags: "keep", exclude_tags: "archived", exclude_status: "7"})
+
+        kanban.statusHide = [8]
+        ctrl.removeFilter(_.find(ctrl.selectedFilters, {mode: "exclude"}))
+        $rootScope.$digest()
+
+        expect(params).not.to.have.property("exclude_tags")
+        expect(_.map(ctrl.selectedFilters, "key")).to.deep.equal(["tags:keep"])
+        expect(ctrl.filtersReloadContent).to.have.been.calledOnce
+        expect(userstories.filtersData.lastCall.args[0].exclude_status).to.equal("8")
+        expect(userstories.filtersData.lastCall.args[0].exclude_tags).to.equal(undefined)
+        expect(kanban.statusHide).to.deep.equal([8])
+
+    it "preserves manual status exclusions in Backlog", ->
+        backlog = $controller("BacklogController", {}, true).instance
+        _.assign(backlog, _.pick(ctrl, ["params", "scope", "q", "location", "storage",
+                                      "rs", "translate", "filterRemoteStorageService"]))
+        location.search.returns({exclude_status: "8"})
+        userstories.filtersData.returns($q.when({
+            statuses: [{id: 8, name: "Discarded"}]
+            tags: []
+        }))
+        filters.getFilters.returns($q.when({}))
+
+        backlog.generateFilters()
+        $rootScope.$digest()
+
+        expect(userstories.filtersData.firstCall.args[0].exclude_status).to.equal("8")
+        expect(backlog.selectedFilters).to.have.length(1)
+        expect(backlog.selectedFilters[0]).to.include({
+            key: "status:8", name: "Discarded", mode: "exclude"
+        })
 
     it "restores the archived view from stored column modes", ->
         ctrl.rs.kanban = {getStatusColumnModes: -> {7: false, 8: true}}
