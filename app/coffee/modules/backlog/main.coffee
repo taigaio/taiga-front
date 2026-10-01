@@ -712,6 +712,11 @@ class BacklogController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.F
         @.filtersReloadContent()
         @.generateFilters('null')
 
+    clearFiltersBacklog: () ->
+        @.replaceAllFilters({})        
+        @.filtersReloadContent()
+        @.generateFilters('null')
+
 module.controller("BacklogController", BacklogController)
 
 #############################################################################

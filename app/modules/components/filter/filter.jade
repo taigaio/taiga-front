@@ -58,6 +58,12 @@
                 tg-svg(svg-icon="icon-trash")
 
 .filters-step-cat
+    .clear-filter-wrapper(ng-if="vm.selectedFilters.length")
+        button.clear-filter(
+            ng-click="vm.clearCustomFilter()"
+            translate="COMMON.FILTERS.CLEAR"
+        )
+
     .filters-applied(ng-if="vm.includedFilters.length || vm.excludedFilters.length")
         .filters-included(ng-if="vm.includedFilters.length")
             .filters-title(translate="COMMON.FILTERS.ADVANCED_FILTERS.INCLUDED")
