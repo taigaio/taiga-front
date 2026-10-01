@@ -949,7 +949,7 @@ tgResources, $tgResources, $epicsService, tgAnalytics) ->
                     excludeIds = []
                     if (us.epics)
                         excludeIds = us.epics.map((epic) -> epic.id)
-                    filteredData = data.filter((epic) -> excludeIds.indexOf(epic.get('id')) == -1)
+                    filteredData = data.filter((epic) -> excludeIds.indexOf(epic.get('id')) == -1).filter((epic) -> epic.get('is_closed') == false)
                     $scope.projectEpics = filteredData
 
         selectProject = (selectedProjectId) ->
