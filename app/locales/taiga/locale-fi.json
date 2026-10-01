@@ -398,12 +398,12 @@
     },
     "INVITATION_LOGIN_FORM": {
         "NOT_FOUND": "The Taiga can't find your invitation.",
-        "SUCCESS": "Olet onnistuneesti liittynyt projektiin {{project_name}}. Tervetuloa!"
+        "SUCCESS": "Olet onnistuneesti liittynyt tähän projektiin. Tervetuloa {{project_name}}"
     },
     "HOME": {
         "PAGE_TITLE": "Etusivu - Taiga",
         "PAGE_DESCRIPTION": "The Taiga home page with your main projects and all your assigned and watched user stories, tasks and issues",
-        "EMPTY_WORKING_ON": "<strong>Näyttää tyhjätlä, eikövain?</strong>  Aloita työskentely ja näet tässä sinua koskevat käyttäjätarinat, tehtävät ja tukipyynnöt.",
+        "EMPTY_WORKING_ON": "<strong>Se tuntuu tyhjältä, eikö totta?</strong> Aloita työskentely Taigan kanssa, niin näet tässä käsittelemäsi tarinat, tehtävät ja ongelmat.",
         "EMPTY_WATCHING": "<strong>Follow</strong> user stories, tasks, issues in your projects and be notified about their changes :)",
         "EMPTY_PROJECT_LIST": "You don't have any project yet",
         "WORKING_ON_SECTION": "Käynnissä olevat",
@@ -471,7 +471,7 @@
         "HIDE_DEPRECATED": "- piilota vanhentuneet liitteet",
         "COUNT_DEPRECATED": "({{ counter }} vanhentunutta)",
         "MAX_UPLOAD_SIZE": "Maksimi tiedoston koko {{maxFileSize}}",
-        "DATE": "DD.MM.YY  - hh:mm",
+        "DATE": "DD MMM YYYY [at] hh:mm",
         "ERROR_UPLOAD_ATTACHMENT": "Emme onnistuneet lataamaan tiedostoa '{{fileName}}'. {{errorMessage}}",
         "TITLE_LIGHTBOX_DELETE_ATTACHMENT": "Poista liite...",
         "MSG_LIGHTBOX_DELETE_ATTACHMENT": "liite '{{fileName}}'",
@@ -488,7 +488,7 @@
             "TITLE_ACTION_DELETE_VALUE": "Poista arvo",
             "TITLE_ACTION_DELETE_TAG": "Poista avainsana"
         },
-        "HELP": "Tarvitsetko apua? Katso tukisivuilta.",
+        "HELP": "Tarvitsetko apua? Katso tukisivumme!",
         "PROJECT_DEFAULT_VALUES": {
             "TITLE": "Oletusarvot",
             "SUBTITLE": "Aseta oletukset kaikille syötteille."
@@ -508,7 +508,7 @@
             "EXPORT_BUTTON": "Vie",
             "EXPORT_BUTTON_TITLE": "Vie projekti",
             "LOADING_TITLE": "Varmistustiedostoa muodostetaan",
-            "DUMP_READY": "Tiedostosi on valmis",
+            "DUMP_READY": "Vetotiedostosi on valmis!",
             "LOADING_MESSAGE": "Älä sulje tätä sivua.",
             "ASYNC_MESSAGE": "Lähetämme sähköpostia, kun on valmista.",
             "SYNC_MESSAGE": "Jos lataus ei ala automaattisesti klikkaa <a href='{{url}}' download title='Lataa varmuuskopio'>tästä</a>.",
@@ -1345,7 +1345,7 @@
     "ACTIVITY": {
         "TITLE": "Aktiivisuus",
         "ACTIVITIES_COUNT": "{{activities}} Aktiviteetit",
-        "TAGS_ADDED": "tagit lisätty",
+        "TAGS_ADDED": "tagit lisätty:",
         "TAGS_REMOVED": "tagit poistettu:",
         "US_POINTS": "{{role}} pisteet",
         "NEW_ATTACHMENT": "uusi liitetiedosto:",
@@ -1535,7 +1535,7 @@
         "FIELDS": {
             "IS_IOCAINE": "Myrkyllinen"
         },
-        "TITLE_ACTION_IOCAINE": "Rasittaako tehtävä? Kerro muillekin klikkaamalla myrkyn kuvaketta. Sattaa myös helpottaa jatkossa jos nautit vähitellen."
+        "TITLE_ACTION_IOCAINE": "Tuntuuko tehtävän painautumisesta? Varmista, että muut tietävät siitä napsauttamalla Iokaiinia tehtävää muokkaaessasi. Tälle (fiktiiviselle) tappavalle myrkkylle on mahdollista tulla immuuniksi nauttimalla pieniä määriä ajan mittaan, aivan kuten on mahdollista kehittyä paremmin tekemällä satunnaisesti ylimääräisiä haasteita!"
     },
     "NOTIFICATION": {
         "OK": "Kaikki on kunnossa",
@@ -1575,7 +1575,7 @@
         "ACTION_NEW_ISSUE": "NEW ISSUE",
         "ACTION_ATTACH_SPRINT": "Attach issue to Sprint",
         "ACTION_DETACH_SPRINT": "Detach issue from Sprint",
-        "EXTERNAL_REFERENCE": "Tämä pyyntö on luotu täältä:",
+        "EXTERNAL_REFERENCE": "Tämä ongelmalippu on luotu täältä",
         "GO_TO_EXTERNAL_REFERENCE": "Palaa alkuun",
         "ACTION_DELETE": "Poista pyyntö",
         "LIGHTBOX_TITLE_BLOKING_ISSUE": "Estävä pyyntö",
