@@ -22,10 +22,9 @@ Resource = (urlsService, http) ->
             .then (result) ->
                 return Immutable.fromJS(result.data)
 
-    service.list = (projectId, page=0) ->
+    service.list = (projectId, params={}) ->
         url = urlsService.resolve("epics")
-
-        params = {project: projectId, page: page}
+        params = _.extend({}, params, {project: projectId})
 
         return http.get(url, params)
             .then (result) ->
@@ -33,6 +32,12 @@ Resource = (urlsService, http) ->
                     list: Immutable.fromJS(result.data)
                     headers: result.headers
                 }
+
+    service.filtersData = (params) ->
+        url = "#{urlsService.resolve('epics')}/filters_data"
+
+        return http.get(url, params)
+            .then (result) -> result.data
 
     service.patch = (id, patch) ->
         url = urlsService.resolve("epics") + "/#{id}"

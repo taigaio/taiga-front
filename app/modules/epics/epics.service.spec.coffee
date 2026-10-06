@@ -90,7 +90,7 @@ describe "tgEpicsService", ->
 
         result.headers = () -> true
 
-        promise = mocks.tgResources.epics.list.withArgs(1).promise()
+        promise = mocks.tgResources.epics.list.withArgs(1, {page: 1}).promise()
 
         fetchPromise = epicsService.fetchEpics()
 
@@ -113,7 +113,7 @@ describe "tgEpicsService", ->
 
         result.headers = () -> false
 
-        promise = mocks.tgResources.epics.list.withArgs(1).promise()
+        promise = mocks.tgResources.epics.list.withArgs(1, {page: 1}).promise()
 
         fetchPromise = epicsService.fetchEpics()
 
@@ -132,7 +132,7 @@ describe "tgEpicsService", ->
             { id: 111 }
             { id: 112 }
         ])
-        promise = mocks.tgResources.epics.list.withArgs(1).promise().reject(new Error("error"))
+        promise = mocks.tgResources.epics.list.withArgs(1, {page: 1}).promise().reject(new Error("error"))
         epicsService.fetchEpics().then () ->
             expect(mocks.tgXhrErrorService.response.withArgs(new Error("error"))).have.been.calledOnce
 

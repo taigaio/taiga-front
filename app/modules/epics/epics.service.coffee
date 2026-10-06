@@ -32,7 +32,7 @@ class EpicsService
         @._loadingEpics = true
         @._disablePagination = true
 
-        return @resources.epics.list(@projectService.project.get('id'), @._page)
+        return @resources.epics.list(@projectService.project.get('id'), {page: @_page})
             .then (result) =>
                 if reset
                     @.clear()
