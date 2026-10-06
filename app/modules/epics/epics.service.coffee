@@ -30,6 +30,10 @@ class EpicsService
         @._epics = Immutable.List()
 
     fetchEpics: (reset = false, filters = null) ->
+        if reset
+            @._page = 1
+            @._epics = Immutable.List()
+
         @._loadingEpics = true
         @._disablePagination = true
 
@@ -43,7 +47,6 @@ class EpicsService
         return @resources.epics.list(@projectService.project.get('id'), params)
             .then (result) =>
                 if reset
-                    @.clear()
                     @._epics = result.list
                 else
                     @._epics = @._epics.concat(result.list)

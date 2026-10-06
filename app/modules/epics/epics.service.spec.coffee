@@ -162,6 +162,23 @@ describe "tgEpicsService", ->
             {status: "3", page: 1}
         ])
 
+    it "keeps active filters after a reset fetch", () ->
+        mocks.tgResources.epics.list.returns($q.when({
+            list: Immutable.List()
+            headers: () -> true
+        }))
+
+        epicsService.fetchEpics(false, {status: "3", exclude_tags: "Legacy"})
+        epicsService.fetchEpics(true)
+        $rootScope.$apply()
+        $rootScope.$apply()
+        epicsService.nextPage()
+
+        expect(mocks.tgResources.epics.list.lastCall.args).to.deep.equal([
+            1
+            {status: "3", exclude_tags: "Legacy", page: 2}
+        ])
+
     it "fetch epics error", () ->
         epics = Immutable.fromJS([
             { id: 111 }
