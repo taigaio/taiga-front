@@ -76,6 +76,13 @@ describe "EpicsDashboard", ->
         }
         provide.value "$tgStorage", mocks.tgStorage
 
+    _mockFilterRemoteStorageService = () ->
+        mocks.filterRemoteStorageService = {
+            getFilters: sinon.stub()
+            storeFilters: sinon.stub()
+        }
+        provide.value "tgFilterRemoteStorageService", mocks.filterRemoteStorageService
+
     _mockRouteParams = () ->
         mocks.routeParams = {
             pslug: sinon.stub()
@@ -126,6 +133,7 @@ describe "EpicsDashboard", ->
             _mockTgResources()
             _mockTgLocation()
             _mockTgStorage()
+            _mockFilterRemoteStorageService()
             _mockRouteParams()
             _mockTgErrorHandlingService()
             _mockTgLightboxFactory()
@@ -146,6 +154,8 @@ describe "EpicsDashboard", ->
             $rootScope = _$rootScope_
 
     createController = () ->
+        mocks.filterRemoteStorageService.getFilters.returns($q.when({}))
+        mocks.filterRemoteStorageService.storeFilters.returns($q.when())
         return controller("EpicsDashboardCtrl", {$scope: $rootScope.$new()})
 
     it "metada is set", () ->
@@ -324,6 +334,55 @@ describe "EpicsDashboard", ->
 
         expect(mocks.tgStorage.set).to.have.been.calledOnce
         expect(mocks.tgStorage.set.firstCall.args[1]).to.deep.equal({status: "3", exclude_tags: "Legacy"})
+
+    it "saves combined filters through remote storage", ->
+        mocks.routeParams.pslug = "project"
+        mocks.tgProjectService.project = Immutable.Map({id: 42})
+        mocks.urlParams = {assigned_to: "7", exclude_status: "2", exclude_tags: "Legacy", q: "authentication"}
+        ctrl = createController()
+
+        ctrl.saveCustomFilter("Mine")
+        $rootScope.$apply()
+        $rootScope.$apply()
+
+        expect(mocks.filterRemoteStorageService.getFilters).to.have.been.calledWith(42, "epics-custom-filters")
+        expect(mocks.filterRemoteStorageService.storeFilters).to.have.been.calledWith(42, {
+            Mine: {assigned_to: "7", exclude_status: "2", exclude_tags: "Legacy"}
+        }, "epics-custom-filters")
+
+    it "loads and applies a saved include/exclude filter", ->
+        mocks.tgProjectService.project = Immutable.Map({id: 42})
+        mocks.urlParams = {}
+        savedFilters = {Mine: {assigned_to: "7", exclude_status: "2", exclude_tags: "Legacy"}}
+        ctrl = createController()
+        mocks.filterRemoteStorageService.getFilters.returns($q.when(savedFilters))
+        ctrl.reloadWithFilters = sinon.spy()
+        mocks.tgResources.epics.filtersData.returns($q.when({statuses: [], assigned_to: [], owners: [], tags: []}))
+
+        ctrl.loadFilterData({project: 42}).then () ->
+            customFilter = ctrl.customFilters[0]
+            ctrl.selectCustomFilter(customFilter)
+        $rootScope.$apply()
+        $rootScope.$apply()
+
+        expect(ctrl.customFilters).to.deep.equal([{id: "Mine", name: "Mine", filter: savedFilters.Mine}])
+        expect(mocks.urlParams).to.deep.equal(savedFilters.Mine)
+        expect(ctrl.reloadWithFilters).to.have.been.calledOnce
+
+    it "deletes a saved filter through remote storage", ->
+        mocks.tgProjectService.project = Immutable.Map({id: 42})
+        savedFilters = {Mine: {assigned_to: "7", exclude_status: "2", exclude_tags: "Legacy"}}
+        mocks.filterRemoteStorageService.getFilters.returns($q.when(savedFilters))
+        mocks.filterRemoteStorageService.storeFilters.returns($q.when())
+        ctrl = createController()
+        ctrl.customFilters = [{id: "Mine", name: "Mine", filter: savedFilters.Mine}]
+
+        ctrl.removeCustomFilter(ctrl.customFilters[0])
+        $rootScope.$apply()
+        $rootScope.$apply()
+
+        expect(mocks.filterRemoteStorageService.storeFilters).to.have.been.calledWith(42, {}, "epics-custom-filters")
+        expect(ctrl.customFilters).to.deep.equal([])
 
     it "not load data because epics panel is not enabled", (done) ->
         ctrl = createController()

@@ -23,11 +23,15 @@ class EpicsDashboardController extends mixOf(taiga.Controller, taiga.FiltersMixi
         "$tgResources",
         "$tgLocation",
         "$tgStorage",
+        "tgFilterRemoteStorageService",
+        "$q",
         "tgAppMetaService",
         "$translate"
     ]
 
     filtersHashSuffix: "epics-filters"
+    customFiltersHashSuffix: "epics-custom-filters"
+    filterCategories: ["status", "assigned_to", "owner", "tags"]
     validQueryParams: [
         "q", "status", "exclude_status", "assigned_to", "exclude_assigned_to",
         "owner", "exclude_owner", "tags", "exclude_tags"
@@ -35,7 +39,7 @@ class EpicsDashboardController extends mixOf(taiga.Controller, taiga.FiltersMixi
 
     constructor: (@scope, @params, @errorHandlingService, @lightboxFactory, @lightboxService,
                   @confirm, @projectService, @epicsService, @rs, @location, @storage,
-                  @appMetaService, @translate) ->
+                  @filterRemoteStorageService, @q, @appMetaService, @translate) ->
 
         @.sectionName = "EPICS.SECTION_NAME"
         @.openFilter = false
@@ -95,8 +99,17 @@ class EpicsDashboardController extends mixOf(taiga.Controller, taiga.FiltersMixi
             @epicsService.fetchEpics(false, filters)
 
     loadFilterData: (params) ->
-        return @rs.epics.filtersData(params).then (data) =>
-            @.setFiltersFromData(data)
+        return @q.all([
+            @rs.epics.filtersData(params),
+            @filterRemoteStorageService.getFilters(params.project, @.customFiltersHashSuffix)
+        ]).then (result) =>
+            @.setFiltersFromData(result[0])
+            @.setCustomFilters(result[1])
+
+    setCustomFilters: (filters) ->
+        @.customFilters = []
+        _.forOwn filters or {}, (value, key) =>
+            @.customFilters.push({id: key, name: key, filter: value})
 
     setFiltersFromData: (data) ->
         dataCollection = {}
@@ -184,6 +197,30 @@ class EpicsDashboardController extends mixOf(taiga.Controller, taiga.FiltersMixi
     storeCurrentFilters: () ->
         filters = _.pick(_.clone(@location.search()), @.validQueryParams)
         @.storeFilters(@params.pslug, filters, @.filtersHashSuffix)
+
+    saveCustomFilter: (name) ->
+        projectId = @project.get("id")
+        filters = _.pick(_.clone(@location.search()), @.filterCategories.concat(
+            _.map(@.filterCategories, (key) -> "exclude_#{key}")
+        ))
+
+        return @filterRemoteStorageService.getFilters(projectId, @.customFiltersHashSuffix).then (savedFilters) =>
+            savedFilters[name] = filters
+            return @filterRemoteStorageService.storeFilters(projectId, savedFilters, @.customFiltersHashSuffix).then () =>
+                @.setCustomFilters(savedFilters)
+
+    selectCustomFilter: (customFilter) ->
+        @.replaceAllFilters(customFilter.filter)
+        @.filterQ = customFilter.filter.q
+        @.storeCurrentFilters()
+        @.reloadWithFilters()
+
+    removeCustomFilter: (customFilter) ->
+        projectId = @project.get("id")
+        return @filterRemoteStorageService.getFilters(projectId, @.customFiltersHashSuffix).then (savedFilters) =>
+            delete savedFilters[customFilter.id]
+            return @filterRemoteStorageService.storeFilters(projectId, savedFilters, @.customFiltersHashSuffix).then () =>
+                @.setCustomFilters(savedFilters)
 
     onCreateEpic: () ->
         onCreateEpic =  () =>

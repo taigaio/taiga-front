@@ -52,7 +52,10 @@ tg-project-archived-warning
                 filters="vm.filters"
                 custom-filters="vm.customFilters"
                 selected-filters="vm.selectedFilters"
+                on-save-custom-filter="vm.saveCustomFilter(name)"
                 on-add-filter="vm.addFilter(filter)"
+                on-select-custom-filter="vm.selectCustomFilter(filter)"
+                on-remove-custom-filter="vm.removeCustomFilter(filter)"
                 on-remove-filter="vm.removeFilter(filter)"
                 on-change-q="vm.changeQ(q)"
             )
