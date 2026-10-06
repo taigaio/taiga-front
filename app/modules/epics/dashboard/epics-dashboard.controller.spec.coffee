@@ -9,6 +9,7 @@
 describe "EpicsDashboard", ->
     provide = null
     controller = null
+    $q = $rootScope = null
     mocks = {}
 
     _mockTgConfirm = () ->
@@ -35,6 +36,32 @@ describe "EpicsDashboard", ->
             fetchEpics: sinon.stub()
         }
         provide.value "tgEpicsService", mocks.tgEpicsService
+
+    _mockTgResources = () ->
+        mocks.tgResources = {
+            epics: {
+                filtersData: sinon.stub()
+            }
+        }
+        provide.value "$tgResources", mocks.tgResources
+
+    _mockTgLocation = () ->
+        mocks.tgLocation = {
+            search: sinon.stub().returns({
+                page: "4"
+                q: "authentication"
+                assigned_to: "7"
+                exclude_status: "2"
+            })
+        }
+        provide.value "$tgLocation", mocks.tgLocation
+
+    _mockTgStorage = () ->
+        mocks.tgStorage = {
+            get: sinon.stub().returns({})
+            set: sinon.stub()
+        }
+        provide.value "$tgStorage", mocks.tgStorage
 
     _mockRouteParams = () ->
         mocks.routeParams = {
@@ -83,6 +110,9 @@ describe "EpicsDashboard", ->
             _mockTgConfirm()
             _mockTgProjectService()
             _mockTgEpicsService()
+            _mockTgResources()
+            _mockTgLocation()
+            _mockTgStorage()
             _mockRouteParams()
             _mockTgErrorHandlingService()
             _mockTgLightboxFactory()
@@ -97,32 +127,93 @@ describe "EpicsDashboard", ->
 
         _mocks()
 
-        inject ($controller) ->
+        inject ($controller, _$q_, _$rootScope_) ->
             controller = $controller
+            $q = _$q_
+            $rootScope = _$rootScope_
+
+    createController = () ->
+        return controller("EpicsDashboardCtrl", {$scope: $rootScope.$new()})
 
     it "metada is set", () ->
-        ctrl = controller("EpicsDashboardCtrl")
+        ctrl = createController()
         expect(mocks.tgAppMetaService.setfn).have.been.called
 
-    it "load data because epics panel is enabled and user has permissions", (done) ->
-        ctrl = controller("EpicsDashboardCtrl")
+    it "load data because epics panel is enabled and user has permissions", ->
+        ctrl = createController()
 
-        mocks.tgProjectService.setProjectBySlug
-            .promise()
-            .resolve("ok")
+        mocks.tgProjectService.setProjectBySlug.returns($q.when("ok"))
         mocks.tgProjectService.hasPermission
             .returns(true)
         mocks.tgProjectService.isEpicsDashboardEnabled
             .returns(true)
+        mocks.tgResources.epics.filtersData.returns($q.when({statuses: []}))
+        mocks.tgEpicsService.fetchEpics.returns($q.when())
 
-        ctrl.loadInitialData().then () ->
-            expect(mocks.tgErrorHandlingService.permissionDenied).not.have.been.called
-            expect(mocks.tgErrorHandlingService.notFound).not.have.been.called
-            expect(mocks.tgEpicsService.fetchEpics).have.been.called
-            done()
+        ctrl.loadInitialData()
+        $rootScope.$apply()
+        $rootScope.$apply()
+
+        expect(mocks.tgErrorHandlingService.permissionDenied).not.have.been.called
+        expect(mocks.tgErrorHandlingService.notFound).not.have.been.called
+        expect(mocks.tgEpicsService.fetchEpics).have.been.called
+
+    it "loads facet counts and epics with the active URL filters", ->
+        ctrl = createController()
+        project = Immutable.Map({id: 42})
+        mocks.tgProjectService.project = project
+        mocks.tgProjectService.setProjectBySlug.returns($q.when("ok"))
+        mocks.tgProjectService.hasPermission.returns(true)
+        mocks.tgProjectService.isEpicsDashboardEnabled.returns(true)
+        mocks.tgEpicsService.fetchEpics.returns($q.when())
+        mocks.tgResources.epics.filtersData.returns($q.when({statuses: []}))
+
+        ctrl.loadInitialData()
+        $rootScope.$apply()
+        $rootScope.$apply()
+
+        expect(mocks.tgResources.epics.filtersData).to.have.been.calledWith({
+            project: 42
+            q: "authentication"
+            assigned_to: "7"
+            exclude_status: "2"
+        })
+        expect(mocks.tgEpicsService.fetchEpics).to.have.been.calledWith(false, {
+            project: 42
+            page: "4"
+            q: "authentication"
+            assigned_to: "7"
+            exclude_status: "2"
+        })
+
+    it "resets pagination before reloading changed filters", ->
+        ctrl = createController()
+        project = Immutable.Map({id: 42})
+        mocks.tgProjectService.project = project
+        params = {page: "4", status: "3"}
+        mocks.tgLocation.search = (name, value) ->
+            if name is undefined
+                return params
+            if value is null
+                delete params[name]
+            else
+                params[name] = value
+            return mocks.tgLocation
+        mocks.tgLocation.noreload = sinon.stub().returns(mocks.tgLocation)
+        mocks.tgResources.epics.filtersData.returns($q.when({statuses: []}))
+        mocks.tgEpicsService.fetchEpics.returns($q.when())
+
+        ctrl.reloadWithFilters()
+        $rootScope.$apply()
+        $rootScope.$apply()
+
+        expect(params).not.to.have.property("page")
+        expect(mocks.tgEpicsService.clear).to.have.been.calledBefore(mocks.tgResources.epics.filtersData)
+        expect(mocks.tgResources.epics.filtersData).to.have.been.calledWith({project: 42, status: "3"})
+        expect(mocks.tgEpicsService.fetchEpics).to.have.been.calledWith(false, {project: 42, status: "3"})
 
     it "not load data because epics panel is not enabled", (done) ->
-        ctrl = controller("EpicsDashboardCtrl")
+        ctrl = createController()
 
         mocks.tgProjectService.setProjectBySlug
             .promise()
@@ -139,7 +230,7 @@ describe "EpicsDashboard", ->
             done()
 
     it "not load data because user has not permissions", (done) ->
-        ctrl = controller("EpicsDashboardCtrl")
+        ctrl = createController()
 
         mocks.tgProjectService.setProjectBySlug
             .promise()
@@ -156,7 +247,7 @@ describe "EpicsDashboard", ->
             done()
 
     it "not load data because epics panel is not enabled and user has not permissions", (done) ->
-        ctrl = controller("EpicsDashboardCtrl")
+        ctrl = createController()
 
         mocks.tgProjectService.setProjectBySlug
             .promise()

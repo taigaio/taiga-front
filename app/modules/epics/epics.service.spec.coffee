@@ -127,6 +127,41 @@ describe "tgEpicsService", ->
             expect(epicsService._loadingEpics).to.be.false
             expect(epicsService._disablePagination).to.be.true
 
+    it "keeps active filters when fetching subsequent pages", () ->
+        result = {
+            list: Immutable.List()
+            headers: () -> true
+        }
+        mocks.tgResources.epics.list.returns($q.when(result))
+
+        epicsService.fetchEpics(false, {q: "authentication", exclude_status: "2"})
+        epicsService.nextPage()
+
+        expect(mocks.tgResources.epics.list.firstCall.args).to.deep.equal([
+            1
+            {q: "authentication", exclude_status: "2", page: 1}
+        ])
+        expect(mocks.tgResources.epics.list.secondCall.args).to.deep.equal([
+            1
+            {q: "authentication", exclude_status: "2", page: 2}
+        ])
+
+    it "starts filtered results from the first page after clearing", () ->
+        mocks.tgResources.epics.list.returns($q.when({
+            list: Immutable.List()
+            headers: () -> true
+        }))
+
+        epicsService.fetchEpics(false, {q: "authentication"})
+        epicsService.nextPage()
+        epicsService.clear()
+        epicsService.fetchEpics(false, {status: "3"})
+
+        expect(mocks.tgResources.epics.list.lastCall.args).to.deep.equal([
+            1
+            {status: "3", page: 1}
+        ])
+
     it "fetch epics error", () ->
         epics = Immutable.fromJS([
             { id: 111 }

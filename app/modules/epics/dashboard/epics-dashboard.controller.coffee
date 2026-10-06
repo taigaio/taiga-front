@@ -7,10 +7,12 @@
 ###
 
 taiga = @.taiga
+mixOf = @.taiga.mixOf
 
 
-class EpicsDashboardController
+class EpicsDashboardController extends mixOf(taiga.Controller, taiga.FiltersMixin)
     @.$inject = [
+        "$scope",
         "$routeParams",
         "tgErrorHandlingService",
         "tgLightboxFactory",
@@ -18,12 +20,22 @@ class EpicsDashboardController
         "$tgConfirm",
         "tgProjectService",
         "tgEpicsService",
+        "$tgResources",
+        "$tgLocation",
+        "$tgStorage",
         "tgAppMetaService",
         "$translate"
     ]
 
-    constructor: (@params, @errorHandlingService, @lightboxFactory, @lightboxService,
-                  @confirm, @projectService, @epicsService, @appMetaService, @translate) ->
+    filtersHashSuffix: "epics-filters"
+    validQueryParams: [
+        "q", "status", "exclude_status", "assigned_to", "exclude_assigned_to",
+        "owner", "exclude_owner", "tags", "exclude_tags"
+    ]
+
+    constructor: (@scope, @params, @errorHandlingService, @lightboxFactory, @lightboxService,
+                  @confirm, @projectService, @epicsService, @rs, @location, @storage,
+                  @appMetaService, @translate) ->
 
         @.sectionName = "EPICS.SECTION_NAME"
 
@@ -31,6 +43,8 @@ class EpicsDashboardController
         taiga.defineImmutableProperty @, 'epics', () => return @epicsService.epics
 
         @appMetaService.setfn @._setMeta.bind(this)
+
+        return if @.applyStoredFilters(@params.pslug, @.filtersHashSuffix, @.validQueryParams)
 
     _setMeta: () ->
         return null if !@.project
@@ -54,7 +68,26 @@ class EpicsDashboardController
                 if not @projectService.hasPermission("view_epics")
                     return @errorHandlingService.permissionDenied()
 
-                return @epicsService.fetchEpics()
+                filters = @.getActiveFilters()
+                filters.project = @project.get("id")
+                filterDataParams = _.omit(_.clone(filters), "page")
+
+                return @rs.epics.filtersData(filterDataParams).then () =>
+                    @epicsService.fetchEpics(false, filters)
+
+    getActiveFilters: () ->
+        return _.pick(_.clone(@location.search()), @.validQueryParams.concat("page"))
+
+    reloadWithFilters: () ->
+        @.unselectFilter("page")
+        @epicsService.clear()
+
+        filters = @.getActiveFilters()
+        filters.project = @project.get("id")
+        filterDataParams = _.omit(_.clone(filters), "page")
+
+        return @rs.epics.filtersData(filterDataParams).then () =>
+            @epicsService.fetchEpics(false, filters)
 
     canCreateEpics: () ->
         return @projectService.canEdit("add_epic")
