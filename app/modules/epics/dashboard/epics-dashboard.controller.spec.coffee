@@ -66,6 +66,7 @@ describe "EpicsDashboard", ->
             isInCurrentRouteParams: sinon.stub().returns(false)
         }
         mocks.tgLocation.noreload = sinon.stub().returns(mocks.tgLocation)
+        mocks.tgLocation.replace = sinon.stub()
         provide.value "$tgLocation", mocks.tgLocation
 
     _mockTgStorage = () ->
@@ -287,6 +288,42 @@ describe "EpicsDashboard", ->
         ctrl.clearFilters()
         expect(mocks.urlParams).to.deep.equal({})
         expect(ctrl.reloadWithFilters.callCount).to.equal(5)
+
+    it "restores stored filters only when the URL has no filters", ->
+        mocks.urlParams = {}
+        mocks.routeParams.pslug = "project"
+        mocks.tgStorage.get.returns({status: "3", exclude_tags: "Legacy", q: "not-restored"})
+
+        ctrl = createController()
+
+        expect(mocks.urlParams).to.deep.equal({status: "3", exclude_tags: "Legacy"})
+        expect(mocks.tgLocation.replace).to.have.been.calledOnce
+        expect(ctrl.filterQ).to.equal(undefined)
+
+    it "keeps URL filters ahead of stored filters", ->
+        mocks.routeParams.pslug = "project"
+        mocks.tgStorage.get.returns({status: "3"})
+
+        createController()
+
+        expect(mocks.urlParams).to.deep.equal({
+            page: "4"
+            q: "authentication"
+            assigned_to: "7"
+            exclude_status: "2"
+        })
+        expect(mocks.tgLocation.replace).not.to.have.been.called
+
+    it "persists filter changes by project", ->
+        mocks.routeParams.pslug = "project"
+        mocks.urlParams = {exclude_tags: "Legacy"}
+        ctrl = createController()
+        ctrl.reloadWithFilters = sinon.spy()
+
+        ctrl.addFilter({category: {dataType: "status"}, filter: {id: "3"}, mode: "include"})
+
+        expect(mocks.tgStorage.set).to.have.been.calledOnce
+        expect(mocks.tgStorage.set.firstCall.args[1]).to.deep.equal({status: "3", exclude_tags: "Legacy"})
 
     it "not load data because epics panel is not enabled", (done) ->
         ctrl = createController()

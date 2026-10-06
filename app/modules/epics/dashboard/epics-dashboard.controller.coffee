@@ -161,21 +161,29 @@ class EpicsDashboardController extends mixOf(taiga.Controller, taiga.FiltersMixi
     changeQ: (q) ->
         @.filterQ = q
         @.replaceFilter("q", q)
+        @.storeCurrentFilters()
         @.reloadWithFilters()
 
     addFilter: (newFilter) ->
         @.selectFilter(newFilter.category.dataType, newFilter.filter.id, false, newFilter.mode)
+        @.storeCurrentFilters()
         @.reloadWithFilters()
 
     removeFilter: (filter) ->
         @.unselectFilter(filter.dataType, filter.id, false, filter.mode)
+        @.storeCurrentFilters()
         @.reloadWithFilters()
 
     clearFilters: () ->
         params = _.omit(_.clone(@location.search()), @.validQueryParams.concat("page"))
         @.replaceAllFilters(params)
         @.filterQ = null
+        @.storeCurrentFilters()
         @.reloadWithFilters()
+
+    storeCurrentFilters: () ->
+        filters = _.pick(_.clone(@location.search()), @.validQueryParams)
+        @.storeFilters(@params.pslug, filters, @.filtersHashSuffix)
 
     onCreateEpic: () ->
         onCreateEpic =  () =>
