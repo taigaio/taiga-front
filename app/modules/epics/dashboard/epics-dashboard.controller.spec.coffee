@@ -46,14 +46,26 @@ describe "EpicsDashboard", ->
         provide.value "$tgResources", mocks.tgResources
 
     _mockTgLocation = () ->
-        mocks.tgLocation = {
-            search: sinon.stub().returns({
-                page: "4"
-                q: "authentication"
-                assigned_to: "7"
-                exclude_status: "2"
-            })
+        mocks.urlParams = {
+            page: "4"
+            q: "authentication"
+            assigned_to: "7"
+            exclude_status: "2"
         }
+        mocks.tgLocation = {
+            search: (name, value) ->
+                if _.isObject(name)
+                    mocks.urlParams = name
+                    return mocks.urlParams
+                if name?
+                    if value is null
+                        delete mocks.urlParams[name]
+                    else
+                        mocks.urlParams[name] = value
+                return mocks.urlParams
+            isInCurrentRouteParams: sinon.stub().returns(false)
+        }
+        mocks.tgLocation.noreload = sinon.stub().returns(mocks.tgLocation)
         provide.value "$tgLocation", mocks.tgLocation
 
     _mockTgStorage = () ->
@@ -100,7 +112,7 @@ describe "EpicsDashboard", ->
         provide.value "tgAppMetaService", mocks.tgAppMetaService
 
     _mockTranslate = () ->
-        mocks.translate = sinon.stub()
+        mocks.translate = {instant: sinon.stub().returns("Filter")}
 
         provide.value "$translate", mocks.translate
 
@@ -211,6 +223,45 @@ describe "EpicsDashboard", ->
         expect(mocks.tgEpicsService.clear).to.have.been.calledBefore(mocks.tgResources.epics.filtersData)
         expect(mocks.tgResources.epics.filtersData).to.have.been.calledWith({project: 42, status: "3"})
         expect(mocks.tgEpicsService.fetchEpics).to.have.been.calledWith(false, {project: 42, status: "3"})
+
+    it "maps epic facets into the shared filter categories", ->
+        ctrl = createController()
+        ctrl.setFiltersFromData({
+            statuses: [{id: 2, name: "Closed", color: "#aaa", count: 3}]
+            assigned_to: [{id: 7, full_name: "Alex User", count: 2}, {id: null, count: 1}]
+            owners: [{id: 8, full_name: "Taylor Owner", count: 4}]
+            tags: [{name: "Legacy", count: 1}]
+        })
+
+        expect(_.map(ctrl.filters, "dataType")).to.deep.equal(["status", "assigned_to", "owner", "tags"])
+        expect(ctrl.filters[0].content[0]).to.include({id: "2", name: "Closed"})
+        expect(ctrl.filters[1].content[0]).to.include({id: "7", name: "Alex User"})
+        expect(ctrl.filters[1].content[1]).to.include({id: "null", name: "Unassigned"})
+        expect(ctrl.filters[2].content[0]).to.include({id: "8", name: "Taylor Owner"})
+        expect(ctrl.filters[3].content[0]).to.include({id: "Legacy", name: "Legacy"})
+        expect(_.map(ctrl.selectedFilters, (filter) -> [filter.dataType, filter.id, filter.mode])).to.deep.equal([
+            ["status", "2", "exclude"]
+            ["assigned_to", "7", "include"]
+        ])
+
+    it "supports include, exclude, search, remove, and clearing filters", ->
+        ctrl = createController()
+        ctrl.reloadWithFilters = sinon.spy()
+
+        ctrl.addFilter({category: {dataType: "status"}, filter: {id: "2"}, mode: "exclude"})
+        ctrl.addFilter({category: {dataType: "tags"}, filter: {id: "Legacy"}, mode: "exclude"})
+        ctrl.changeQ("authentication")
+
+        expect(mocks.urlParams.exclude_status).to.equal("2")
+        expect(mocks.urlParams.exclude_tags).to.equal("Legacy")
+        expect(mocks.urlParams.q).to.equal("authentication")
+
+        ctrl.removeFilter({dataType: "status", id: "2", mode: "exclude"})
+        expect(mocks.urlParams).not.to.have.property("exclude_status")
+
+        ctrl.clearFilters()
+        expect(mocks.urlParams).to.deep.equal({})
+        expect(ctrl.reloadWithFilters.callCount).to.equal(5)
 
     it "not load data because epics panel is not enabled", (done) ->
         ctrl = createController()

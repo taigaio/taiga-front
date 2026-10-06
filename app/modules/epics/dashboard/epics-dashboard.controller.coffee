@@ -38,6 +38,11 @@ class EpicsDashboardController extends mixOf(taiga.Controller, taiga.FiltersMixi
                   @appMetaService, @translate) ->
 
         @.sectionName = "EPICS.SECTION_NAME"
+        @.openFilter = false
+        @.filterQ = @location.search().q
+        @.filters = []
+        @.customFilters = []
+        @.selectedFilters = []
 
         taiga.defineImmutableProperty @, 'project', () => return @projectService.project
         taiga.defineImmutableProperty @, 'epics', () => return @epicsService.epics
@@ -72,7 +77,7 @@ class EpicsDashboardController extends mixOf(taiga.Controller, taiga.FiltersMixi
                 filters.project = @project.get("id")
                 filterDataParams = _.omit(_.clone(filters), "page")
 
-                return @rs.epics.filtersData(filterDataParams).then () =>
+                return @.loadFilterData(filterDataParams).then () =>
                     @epicsService.fetchEpics(false, filters)
 
     getActiveFilters: () ->
@@ -86,11 +91,91 @@ class EpicsDashboardController extends mixOf(taiga.Controller, taiga.FiltersMixi
         filters.project = @project.get("id")
         filterDataParams = _.omit(_.clone(filters), "page")
 
-        return @rs.epics.filtersData(filterDataParams).then () =>
+        return @.loadFilterData(filterDataParams).then () =>
             @epicsService.fetchEpics(false, filters)
+
+    loadFilterData: (params) ->
+        return @rs.epics.filtersData(params).then (data) =>
+            @.setFiltersFromData(data)
+
+    setFiltersFromData: (data) ->
+        dataCollection = {}
+        dataCollection.status = _.map(data.statuses or [], (item) ->
+            _.assign({}, item, {id: _.toString(item.id)})
+        )
+        dataCollection.assigned_to = _.map(data.assigned_to or [], (item) ->
+            _.assign({}, item, {
+                id: if item.id? then _.toString(item.id) else "null"
+                name: item.full_name or "Unassigned"
+            })
+        )
+        dataCollection.owner = _.map(data.owners or [], (item) ->
+            _.assign({}, item, {id: _.toString(item.id), name: item.full_name})
+        )
+        dataCollection.tags = _.map(data.tags or [], (item) ->
+            _.assign({}, item, {id: item.name})
+        )
+
+        selectedParams = _.pick(@location.search(), @.validQueryParams)
+        @.selectedFilters = []
+        for key in ["status", "assigned_to", "owner", "tags"]
+            if selectedParams[key]
+                @.selectedFilters = @.selectedFilters.concat(
+                    @.formatSelectedFilters(key, dataCollection[key], selectedParams[key])
+                )
+            excludeKey = "exclude_#{key}"
+            if selectedParams[excludeKey]
+                @.selectedFilters = @.selectedFilters.concat(
+                    @.formatSelectedFilters(key, dataCollection[key], selectedParams[excludeKey], "exclude")
+                )
+
+        tagsWithAtLeastOneEpic = _.filter(dataCollection.tags, (tag) -> tag.count > 0)
+        @.filters = [
+            {
+                title: @translate.instant("COMMON.FILTERS.CATEGORIES.STATUS")
+                dataType: "status"
+                content: dataCollection.status
+            }
+            {
+                title: @translate.instant("COMMON.FILTERS.CATEGORIES.ASSIGNED_TO")
+                dataType: "assigned_to"
+                content: dataCollection.assigned_to
+            }
+            {
+                title: @translate.instant("COMMON.FILTERS.CATEGORIES.CREATED_BY")
+                dataType: "owner"
+                content: dataCollection.owner
+            }
+            {
+                title: @translate.instant("COMMON.FILTERS.CATEGORIES.TAGS")
+                dataType: "tags"
+                content: dataCollection.tags
+                hideEmpty: true
+                totalTaggedElements: tagsWithAtLeastOneEpic.length
+            }
+        ]
 
     canCreateEpics: () ->
         return @projectService.canEdit("add_epic")
+
+    changeQ: (q) ->
+        @.filterQ = q
+        @.replaceFilter("q", q)
+        @.reloadWithFilters()
+
+    addFilter: (newFilter) ->
+        @.selectFilter(newFilter.category.dataType, newFilter.filter.id, false, newFilter.mode)
+        @.reloadWithFilters()
+
+    removeFilter: (filter) ->
+        @.unselectFilter(filter.dataType, filter.id, false, filter.mode)
+        @.reloadWithFilters()
+
+    clearFilters: () ->
+        params = _.omit(_.clone(@location.search()), @.validQueryParams.concat("page"))
+        @.replaceAllFilters(params)
+        @.filterQ = null
+        @.reloadWithFilters()
 
     onCreateEpic: () ->
         onCreateEpic =  () =>

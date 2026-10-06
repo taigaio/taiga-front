@@ -15,12 +15,53 @@ tg-project-archived-warning
                 project-name="vm.project.get('name')"
                 i18n-section-name="{{vm.sectionName}}"
             )
+            .taskboard-actions
+                button.btn-filter.e2e-open-filter(
+                    ng-click="vm.openFilter = !vm.openFilter"
+                    title="{{vm.selectedFilters.length}} {{'COMMON.FILTERS.APPLIED_FILTERS_NUM' | translate}}"
+                    ng-class="{active: vm.openFilter}"
+                )
+                    tg-svg(svg-icon="icon-filters")
+                    span.text(
+                        ng-if="!vm.openFilter"
+                        translate="BACKLOG.FILTERS.TITLE"
+                    )
+                    span.text(
+                        ng-if="vm.openFilter"
+                        translate="BACKLOG.FILTERS.HIDE_TITLE"
+                    )
+                    span.selected-filters(ng-if="vm.selectedFilters.length") {{vm.selectedFilters.length}}
+
+                tg-input-search(
+                    q="vm.filterQ"
+                    change="vm.changeQ(q)"
+                )
+
             .action-buttons(ng-if="vm.epics.size && vm.canCreateEpics()")
                 button.btn-big.e2e-create-epic(
                     translate="EPICS.DASHBOARD.ADD"
                     title="{{ EPICS.DASHBOARD.ADD_TITLE | translate }}",
                     ng-click="vm.onCreateEpic()"
                 )
+
+        sidebar.filters-bar(
+            ng-if="vm.openFilter"
+        )
+            tg-filter(
+                q="vm.filterQ"
+                filters="vm.filters"
+                custom-filters="vm.customFilters"
+                selected-filters="vm.selectedFilters"
+                on-add-filter="vm.addFilter(filter)"
+                on-remove-filter="vm.removeFilter(filter)"
+                on-change-q="vm.changeQ(q)"
+            )
+            button.btn-small.e2e-clear-filters(
+                type="button"
+                translate="DISCOVER.FILTERS.CLEAR"
+                ng-click="vm.clearFilters()"
+                ng-if="vm.selectedFilters.length || vm.filterQ"
+            )
 
         tg-epics-table(
             ng-if="vm.epics.size"
