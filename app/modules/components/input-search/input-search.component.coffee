@@ -21,14 +21,12 @@ InputSearchComponent =
   """,
   controller: ->
     @.searchText = ''
-    @.dirty = false
 
     @.$onChanges = (changes) ->
-        if changes.q && !@.dirty
+        if changes.q
             @.searchText = @.q
 
     @.onChange = (text) =>
-        @.dirty = true
         @.change({q: text})
 
     return
