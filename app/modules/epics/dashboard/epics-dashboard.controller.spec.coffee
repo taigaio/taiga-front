@@ -224,6 +224,31 @@ describe "EpicsDashboard", ->
         expect(mocks.tgResources.epics.filtersData).to.have.been.calledWith({project: 42, status: "3"})
         expect(mocks.tgEpicsService.fetchEpics).to.have.been.calledWith(false, {project: 42, status: "3"})
 
+    it "sends the same combined filters to facets and the epic list", ->
+        ctrl = createController()
+        mocks.tgProjectService.project = Immutable.Map({id: 42})
+        mocks.urlParams = {assigned_to: "7", exclude_status: "2"}
+        mocks.tgResources.epics.filtersData.returns($q.when({statuses: []}))
+        mocks.tgEpicsService.fetchEpics.returns($q.when())
+
+        ctrl.reloadWithFilters()
+        $rootScope.$apply()
+        $rootScope.$apply()
+        mocks.urlParams.exclude_tags = "Legacy"
+        ctrl.reloadWithFilters()
+        $rootScope.$apply()
+        $rootScope.$apply()
+
+        facetsParams = mocks.tgResources.epics.filtersData.secondCall.args[0]
+        listParams = mocks.tgEpicsService.fetchEpics.secondCall.args[1]
+        expect(facetsParams).to.deep.equal({
+            project: 42
+            assigned_to: "7"
+            exclude_status: "2"
+            exclude_tags: "Legacy"
+        })
+        expect(_.omit(listParams, "page")).to.deep.equal(facetsParams)
+
     it "maps epic facets into the shared filter categories", ->
         ctrl = createController()
         ctrl.setFiltersFromData({
