@@ -68,10 +68,10 @@ tg-project-archived-warning
                 )
 
             tg-epics-table(
-                ng-if="vm.epics.size"
+                ng-if="vm.epics.size || vm.loadingEpics"
             )
 
-            section.empty-epics.empty-large(ng-if="!vm.epics.size")
+            section.empty-epics.empty-large(ng-if="!vm.epics.size && !vm.loadingEpics")
                 img(
                     src="#{v}/images/empty/empty_des.png"
                     ng-title="EPICS.EMPTY.HELP | translate"

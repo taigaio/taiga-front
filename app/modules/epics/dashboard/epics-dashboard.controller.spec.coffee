@@ -10,6 +10,7 @@ describe "EpicsDashboard", ->
     provide = null
     controller = null
     $q = $rootScope = null
+    $compile = $templateCache = null
     mocks = {}
 
     _mockTgConfirm = () ->
@@ -22,6 +23,7 @@ describe "EpicsDashboard", ->
         mocks.tgProjectService = {
             setProjectBySlug: sinon.stub()
             hasPermission: sinon.stub()
+            canEdit: sinon.stub().returns(false)
             isEpicsDashboardEnabled: sinon.stub()
             project: Immutable.Map({
                 "name": "testing name"
@@ -140,18 +142,23 @@ describe "EpicsDashboard", ->
             _mockLightboxService()
             _mockTgAppMetaService()
             _mockTranslate()
+            provide.value "translateFilter", (text) -> text
+            provide.value "tgEpicsTableDirective", [{restrict: "E", template: "<div>Epics</div>"}]
 
             return null
 
     beforeEach ->
         module "taigaEpics"
+        module "templates"
 
         _mocks()
 
-        inject ($controller, _$q_, _$rootScope_) ->
+        inject ($controller, _$q_, _$rootScope_, _$compile_, _$templateCache_) ->
             controller = $controller
             $q = _$q_
             $rootScope = _$rootScope_
+            $compile = _$compile_
+            $templateCache = _$templateCache_
 
     createController = () ->
         mocks.filterRemoteStorageService.getFilters.returns($q.when({}))
@@ -231,9 +238,81 @@ describe "EpicsDashboard", ->
         $rootScope.$apply()
 
         expect(params).not.to.have.property("page")
-        expect(mocks.tgEpicsService.clear).to.have.been.calledBefore(mocks.tgResources.epics.filtersData)
+        expect(mocks.tgEpicsService.clear).not.to.have.been.called
         expect(mocks.tgResources.epics.filtersData).to.have.been.calledWith({project: 42, status: "3"})
-        expect(mocks.tgEpicsService.fetchEpics).to.have.been.calledWith(false, {project: 42, status: "3"})
+        expect(mocks.tgEpicsService.fetchEpics).to.have.been.calledWith(true, {project: 42, status: "3"})
+
+    it "starts a search without waiting for facet data or clearing the list", ->
+        ctrl = createController()
+        mocks.tgProjectService.project = Immutable.Map({id: 42})
+        facets = $q.defer()
+        mocks.tgResources.epics.filtersData.returns(facets.promise)
+        mocks.tgEpicsService.fetchEpics.returns($q.when())
+
+        ctrl.changeQ("new query")
+
+        expect(mocks.tgEpicsService.clear).not.to.have.been.called
+        expect(mocks.tgEpicsService.fetchEpics).to.have.been.calledWith(true, {
+            project: 42
+            q: "new query"
+            assigned_to: "7"
+            exclude_status: "2"
+        })
+
+    it "ignores facet and saved filter data from an older search", ->
+        ctrl = createController()
+        older = $q.defer()
+        newer = $q.defer()
+        olderSaved = $q.defer()
+        newerSaved = $q.defer()
+        mocks.tgResources.epics.filtersData.onFirstCall().returns(older.promise)
+        mocks.tgResources.epics.filtersData.onSecondCall().returns(newer.promise)
+        mocks.filterRemoteStorageService.getFilters.onFirstCall().returns(olderSaved.promise)
+        mocks.filterRemoteStorageService.getFilters.onSecondCall().returns(newerSaved.promise)
+        ctrl.setFiltersFromData = sinon.spy()
+        ctrl.setCustomFilters = sinon.spy()
+
+        ctrl.loadFilterData({project: 42, q: "a"})
+        ctrl.loadFilterData({project: 42, q: "ab"})
+        newer.resolve({statuses: [{id: 2, count: 1}]})
+        newerSaved.resolve({Latest: {status: "2"}})
+        $rootScope.$apply()
+        older.resolve({statuses: [{id: 1, count: 9}]})
+        olderSaved.resolve({Old: {status: "1"}})
+        $rootScope.$apply()
+
+        expect(ctrl.setFiltersFromData).to.have.been.calledOnce
+        expect(ctrl.setFiltersFromData).to.have.been.calledWith({statuses: [{id: 2, count: 1}]})
+        expect(ctrl.setCustomFilters).to.have.been.calledOnce
+        expect(ctrl.setCustomFilters).to.have.been.calledWith({Latest: {status: "2"}})
+
+    it "keeps the table mounted while searching and shows an empty state only after loading", ->
+        ctrl = createController()
+        ctrl.scope.vm = ctrl
+        mocks.tgEpicsService.epics = Immutable.List()
+        mocks.tgEpicsService._loadingEpics = true
+        template = angular.element("<div>" + $templateCache.get("epics/dashboard/epics-dashboard.html") + "</div>")
+        element = $compile(template.find(".epics-manager"))(ctrl.scope)
+        ctrl.scope.$digest()
+
+        table = element.find("tg-epics-table")[0]
+        expect(table).to.exist
+        expect(element.find(".empty-epics").length).to.equal(0)
+
+        mocks.tgEpicsService.epics = Immutable.fromJS([{id: 1}])
+        mocks.tgEpicsService._loadingEpics = false
+        ctrl.scope.$digest()
+        mocks.tgEpicsService._loadingEpics = true
+        ctrl.scope.$digest()
+        expect(element.find("tg-epics-table")[0]).to.equal(table)
+
+        mocks.tgEpicsService.epics = Immutable.List()
+        mocks.tgEpicsService._loadingEpics = false
+        ctrl.scope.$digest()
+        expect(element.find("tg-epics-table").length).to.equal(0)
+        expect(element.find(".empty-epics").length).to.equal(1)
+        ctrl.scope.$destroy()
+        element.remove()
 
     it "sends the same combined filters to facets and the epic list", ->
         ctrl = createController()

@@ -47,9 +47,11 @@ class EpicsDashboardController extends mixOf(taiga.Controller, taiga.FiltersMixi
         @.filters = []
         @.customFilters = []
         @.selectedFilters = []
+        @._filterLoadVersion = 0
 
         taiga.defineImmutableProperty @, 'project', () => return @projectService.project
         taiga.defineImmutableProperty @, 'epics', () => return @epicsService.epics
+        taiga.defineImmutableProperty @, 'loadingEpics', () => return @epicsService._loadingEpics
 
         @appMetaService.setfn @._setMeta.bind(this)
 
@@ -69,6 +71,7 @@ class EpicsDashboardController extends mixOf(taiga.Controller, taiga.FiltersMixi
         }
 
     loadInitialData: () ->
+        @._filterLoadVersion += 1
         @epicsService.clear()
         return @projectService.setProjectBySlug(@params.pslug)
             .then () =>
@@ -81,28 +84,36 @@ class EpicsDashboardController extends mixOf(taiga.Controller, taiga.FiltersMixi
                 filters.project = @project.get("id")
                 filterDataParams = _.omit(_.clone(filters), "page")
 
-                return @.loadFilterData(filterDataParams).then () =>
+                return @q.all([
+                    @.loadFilterData(filterDataParams)
                     @epicsService.fetchEpics(false, filters)
+                ])
 
     getActiveFilters: () ->
         return _.pick(_.clone(@location.search()), @.validQueryParams.concat("page"))
 
     reloadWithFilters: () ->
         @.unselectFilter("page")
-        @epicsService.clear()
 
         filters = @.getActiveFilters()
         filters.project = @project.get("id")
         filterDataParams = _.omit(_.clone(filters), "page")
 
-        return @.loadFilterData(filterDataParams).then () =>
-            @epicsService.fetchEpics(false, filters)
+        return @q.all([
+            @.loadFilterData(filterDataParams)
+            @epicsService.fetchEpics(true, filters)
+        ])
 
     loadFilterData: (params) ->
+        @._filterLoadVersion += 1
+        loadVersion = @._filterLoadVersion
+
         return @q.all([
             @rs.epics.filtersData(params),
             @filterRemoteStorageService.getFilters(params.project, @.customFiltersHashSuffix)
         ]).then (result) =>
+            return if loadVersion != @._filterLoadVersion
+
             @.setFiltersFromData(result[0])
             @.setCustomFilters(result[1])
 
