@@ -23,19 +23,35 @@ class EpicsService
         taiga.defineImmutableProperty @, 'epics', () => return @._epics
 
     clear: () ->
+        @._loadVersion = (@._loadVersion or 0) + 1
         @._loadingEpics = false
         @._disablePagination = false
         @._page = 1
+        @._filters = {}
         @._epics = Immutable.List()
 
-    fetchEpics: (reset = false) ->
+    fetchEpics: (reset = false, filters = null) ->
+        if reset
+            @._page = 1
+            @._loadVersion += 1
+
+        loadVersion = @._loadVersion
+
         @._loadingEpics = true
         @._disablePagination = true
 
-        return @resources.epics.list(@projectService.project.get('id'), @._page)
+        filters ?= @_filters
+        @._filters = _.omit(_.clone(filters), "page", "project")
+        if filters.page?
+            @._page = parseInt(filters.page, 10)
+
+        params = _.assign({}, @._filters, {page: @_page})
+
+        return @resources.epics.list(@projectService.project.get('id'), params)
             .then (result) =>
+                return if loadVersion != @._loadVersion
+
                 if reset
-                    @.clear()
                     @._epics = result.list
                 else
                     @._epics = @._epics.concat(result.list)
@@ -44,6 +60,9 @@ class EpicsService
 
                 @._disablePagination = !result.headers('x-pagination-next')
             .catch (xhr) =>
+                return if loadVersion != @._loadVersion
+
+                @._loadingEpics = false
                 @xhrError.response(xhr)
 
     nextPage: () ->

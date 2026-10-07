@@ -90,7 +90,7 @@ describe "tgEpicsService", ->
 
         result.headers = () -> true
 
-        promise = mocks.tgResources.epics.list.withArgs(1).promise()
+        promise = mocks.tgResources.epics.list.withArgs(1, {page: 1}).promise()
 
         fetchPromise = epicsService.fetchEpics()
 
@@ -113,7 +113,7 @@ describe "tgEpicsService", ->
 
         result.headers = () -> false
 
-        promise = mocks.tgResources.epics.list.withArgs(1).promise()
+        promise = mocks.tgResources.epics.list.withArgs(1, {page: 1}).promise()
 
         fetchPromise = epicsService.fetchEpics()
 
@@ -127,12 +127,172 @@ describe "tgEpicsService", ->
             expect(epicsService._loadingEpics).to.be.false
             expect(epicsService._disablePagination).to.be.true
 
+    it "keeps active filters when fetching subsequent pages", () ->
+        result = {
+            list: Immutable.List()
+            headers: () -> true
+        }
+        mocks.tgResources.epics.list.returns($q.when(result))
+
+        epicsService.fetchEpics(false, {q: "authentication", exclude_status: "2"})
+        epicsService.nextPage()
+
+        expect(mocks.tgResources.epics.list.firstCall.args).to.deep.equal([
+            1
+            {q: "authentication", exclude_status: "2", page: 1}
+        ])
+        expect(mocks.tgResources.epics.list.secondCall.args).to.deep.equal([
+            1
+            {q: "authentication", exclude_status: "2", page: 2}
+        ])
+
+    it "starts filtered results from the first page after clearing", () ->
+        mocks.tgResources.epics.list.returns($q.when({
+            list: Immutable.List()
+            headers: () -> true
+        }))
+
+        epicsService.fetchEpics(false, {q: "authentication"})
+        epicsService.nextPage()
+        epicsService.clear()
+        epicsService.fetchEpics(false, {status: "3"})
+
+        expect(mocks.tgResources.epics.list.lastCall.args).to.deep.equal([
+            1
+            {status: "3", page: 1}
+        ])
+
+    it "keeps active filters after a reset fetch", () ->
+        mocks.tgResources.epics.list.returns($q.when({
+            list: Immutable.List()
+            headers: () -> true
+        }))
+
+        epicsService.fetchEpics(false, {status: "3", exclude_tags: "Legacy"})
+        epicsService.fetchEpics(true)
+        $rootScope.$apply()
+        $rootScope.$apply()
+        epicsService.nextPage()
+
+        expect(mocks.tgResources.epics.list.lastCall.args).to.deep.equal([
+            1
+            {status: "3", exclude_tags: "Legacy", page: 2}
+        ])
+
+    it "keeps the list while resetting and paginates the replacement results", ->
+        previous = Immutable.fromJS([{id: 1}])
+        replacement = Immutable.fromJS([{id: 2}])
+        epicsService._epics = previous
+        epicsService._page = 4
+        pending = $q.defer()
+        mocks.tgResources.epics.list.onFirstCall().returns(pending.promise)
+        mocks.tgResources.epics.list.onSecondCall().returns($q.when({
+            list: Immutable.fromJS([{id: 3}])
+            headers: () -> false
+        }))
+
+        epicsService.fetchEpics(true, {q: "new", exclude_status: "2"})
+
+        expect(epicsService.epics).to.equal(previous)
+        expect(epicsService._loadingEpics).to.be.true
+        expect(epicsService._disablePagination).to.be.true
+        expect(mocks.tgResources.epics.list.firstCall.args[1]).to.deep.equal({
+            q: "new", exclude_status: "2", page: 1
+        })
+
+        pending.resolve({list: replacement, headers: () -> true})
+        $rootScope.$apply()
+        expect(epicsService.epics).to.equal(replacement)
+        expect(epicsService._loadingEpics).to.be.false
+        epicsService.nextPage()
+        $rootScope.$apply()
+
+        expect(mocks.tgResources.epics.list.secondCall.args[1]).to.deep.equal({
+            q: "new", exclude_status: "2", page: 2
+        })
+        expect(epicsService.epics.toJS()).to.deep.equal([{id: 2}, {id: 3}])
+
+    it "only clears a search with no matches once its response arrives", ->
+        epicsService._epics = Immutable.fromJS([{id: 1}])
+        pending = $q.defer()
+        mocks.tgResources.epics.list.returns(pending.promise)
+
+        epicsService.fetchEpics(true, {q: "no matches"})
+        expect(epicsService.epics.size).to.equal(1)
+        pending.resolve({list: Immutable.List(), headers: () -> false})
+        $rootScope.$apply()
+
+        expect(epicsService.epics.size).to.equal(0)
+        expect(epicsService._loadingEpics).to.be.false
+        expect(epicsService._disablePagination).to.be.true
+
+    it "ignores older searches and pagination responses after a reset", ->
+        previous = Immutable.fromJS([{id: 1}])
+        epicsService._epics = previous
+        oldPage = $q.defer()
+        olderSearch = $q.defer()
+        latestSearch = $q.defer()
+        mocks.tgResources.epics.list.onFirstCall().returns(oldPage.promise)
+        mocks.tgResources.epics.list.onSecondCall().returns(olderSearch.promise)
+        mocks.tgResources.epics.list.onThirdCall().returns(latestSearch.promise)
+
+        epicsService.nextPage()
+        epicsService.fetchEpics(true, {q: "a"})
+        epicsService.fetchEpics(true, {q: "ab"})
+        olderSearch.resolve({list: Immutable.fromJS([{id: 2}]), headers: () -> true})
+        $rootScope.$apply()
+        expect(epicsService.epics).to.equal(previous)
+        expect(epicsService._loadingEpics).to.be.true
+        expect(epicsService._disablePagination).to.be.true
+
+        latestSearch.resolve({list: Immutable.fromJS([{id: 3}]), headers: () -> false})
+        $rootScope.$apply()
+        oldPage.resolve({list: Immutable.fromJS([{id: 4}]), headers: () -> true})
+        $rootScope.$apply()
+
+        expect(epicsService.epics.toJS()).to.deep.equal([{id: 3}])
+        expect(epicsService._loadingEpics).to.be.false
+        expect(epicsService._disablePagination).to.be.true
+
+    it "ignores responses after the service is cleared", ->
+        pending = $q.defer()
+        mocks.tgResources.epics.list.returns(pending.promise)
+        epicsService.fetchEpics()
+        epicsService.clear()
+        pending.resolve({list: Immutable.fromJS([{id: 1}]), headers: () -> true})
+        $rootScope.$apply()
+
+        expect(epicsService.epics.size).to.equal(0)
+        expect(epicsService._loadingEpics).to.be.false
+
+    it "ignores outdated errors and preserves results when the latest search fails", ->
+        previous = Immutable.fromJS([{id: 1}])
+        epicsService._epics = previous
+        older = $q.defer()
+        latest = $q.defer()
+        mocks.tgResources.epics.list.onFirstCall().returns(older.promise)
+        mocks.tgResources.epics.list.onSecondCall().returns(latest.promise)
+        epicsService.fetchEpics(true, {q: "a"})
+        epicsService.fetchEpics(true, {q: "ab"})
+        older.reject({status: 500})
+        $rootScope.$apply()
+
+        expect(mocks.tgXhrErrorService.response).not.to.have.been.called
+        expect(epicsService._loadingEpics).to.be.true
+        latest.reject({status: 503})
+        $rootScope.$apply()
+
+        expect(mocks.tgXhrErrorService.response).to.have.been.calledOnce
+        expect(mocks.tgXhrErrorService.response).to.have.been.calledWith({status: 503})
+        expect(epicsService.epics).to.equal(previous)
+        expect(epicsService._loadingEpics).to.be.false
+
     it "fetch epics error", () ->
         epics = Immutable.fromJS([
             { id: 111 }
             { id: 112 }
         ])
-        promise = mocks.tgResources.epics.list.withArgs(1).promise().reject(new Error("error"))
+        promise = mocks.tgResources.epics.list.withArgs(1, {page: 1}).promise().reject(new Error("error"))
         epicsService.fetchEpics().then () ->
             expect(mocks.tgXhrErrorService.response.withArgs(new Error("error"))).have.been.calledOnce
 

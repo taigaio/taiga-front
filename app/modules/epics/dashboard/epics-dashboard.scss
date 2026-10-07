@@ -1,3 +1,31 @@
+.epics > .taskboard-actions {
+    justify-content: flex-start;
+    margin-bottom: 1rem;
+    tg-input-search {
+        margin-inline-start: .5rem;
+        width: 185px;
+    }
+}
+
+.epics-manager {
+    align-items: start;
+    column-gap: 1rem;
+    display: grid;
+    grid-template-columns: minmax(180px, 2fr) minmax(0, 10fr);
+    &.expanded {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .filters-bar tg-filter {
+        background: none;
+        border: 1px solid $color-gray200;
+        padding: .5rem;
+    }
+    .filters-bar > .btn-small {
+        margin-top: .5rem;
+    }
+}
+
 .empty-epics {
     text-align: center;
     a {
