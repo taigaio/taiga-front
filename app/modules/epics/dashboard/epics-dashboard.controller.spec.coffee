@@ -43,7 +43,7 @@ describe "EpicsDashboard", ->
                 filtersData: sinon.stub()
             }
         }
-        provide.value "$tgResources", mocks.tgResources
+        provide.value "tgResources", mocks.tgResources
 
     _mockTgLocation = () ->
         mocks.urlParams = {

@@ -15,28 +15,6 @@ tg-project-archived-warning
                 project-name="vm.project.get('name')"
                 i18n-section-name="{{vm.sectionName}}"
             )
-            .taskboard-actions
-                button.btn-filter.e2e-open-filter(
-                    ng-click="vm.openFilter = !vm.openFilter"
-                    title="{{vm.selectedFilters.length}} {{'COMMON.FILTERS.APPLIED_FILTERS_NUM' | translate}}"
-                    ng-class="{active: vm.openFilter}"
-                )
-                    tg-svg(svg-icon="icon-filters")
-                    span.text(
-                        ng-if="!vm.openFilter"
-                        translate="BACKLOG.FILTERS.TITLE"
-                    )
-                    span.text(
-                        ng-if="vm.openFilter"
-                        translate="BACKLOG.FILTERS.HIDE_TITLE"
-                    )
-                    span.selected-filters(ng-if="vm.selectedFilters.length") {{vm.selectedFilters.length}}
-
-                tg-input-search(
-                    q="vm.filterQ"
-                    change="vm.changeQ(q)"
-                )
-
             .action-buttons(ng-if="vm.epics.size && vm.canCreateEpics()")
                 button.btn-big.e2e-create-epic(
                     translate="EPICS.DASHBOARD.ADD"
@@ -44,48 +22,71 @@ tg-project-archived-warning
                     ng-click="vm.onCreateEpic()"
                 )
 
-        sidebar.filters-bar(
-            ng-if="vm.openFilter"
-        )
-            tg-filter(
+        .taskboard-actions
+            button.btn-filter.e2e-open-filter(
+                ng-click="vm.openFilter = !vm.openFilter"
+                title="{{vm.selectedFilters.length}} {{'COMMON.FILTERS.APPLIED_FILTERS_NUM' | translate}}"
+                ng-class="{active: vm.openFilter}"
+            )
+                tg-svg(svg-icon="icon-filters")
+                span.text(
+                    ng-if="!vm.openFilter"
+                    translate="BACKLOG.FILTERS.TITLE"
+                )
+                span.text(
+                    ng-if="vm.openFilter"
+                    translate="BACKLOG.FILTERS.HIDE_TITLE"
+                )
+                span.selected-filters(ng-if="vm.selectedFilters.length") {{vm.selectedFilters.length}}
+
+            tg-input-search(
                 q="vm.filterQ"
-                filters="vm.filters"
-                custom-filters="vm.customFilters"
-                selected-filters="vm.selectedFilters"
-                on-save-custom-filter="vm.saveCustomFilter(name)"
-                on-add-filter="vm.addFilter(filter)"
-                on-select-custom-filter="vm.selectCustomFilter(filter)"
-                on-remove-custom-filter="vm.removeCustomFilter(filter)"
-                on-remove-filter="vm.removeFilter(filter)"
-                on-change-q="vm.changeQ(q)"
-            )
-            button.btn-small.e2e-clear-filters(
-                type="button"
-                translate="DISCOVER.FILTERS.CLEAR"
-                ng-click="vm.clearFilters()"
-                ng-if="vm.selectedFilters.length || vm.filterQ"
+                change="vm.changeQ(q)"
             )
 
-        tg-epics-table(
-            ng-if="vm.epics.size"
-        )
+        .epics-manager(ng-class="{expanded: !vm.openFilter}")
+            sidebar.filters-bar(
+                ng-if="vm.openFilter"
+            )
+                tg-filter(
+                    q="vm.filterQ"
+                    filters="vm.filters"
+                    custom-filters="vm.customFilters"
+                    selected-filters="vm.selectedFilters"
+                    on-save-custom-filter="vm.saveCustomFilter(name)"
+                    on-add-filter="vm.addFilter(filter)"
+                    on-select-custom-filter="vm.selectCustomFilter(filter)"
+                    on-remove-custom-filter="vm.removeCustomFilter(filter)"
+                    on-remove-filter="vm.removeFilter(filter)"
+                    on-change-q="vm.changeQ(q)"
+                )
+                button.btn-small.e2e-clear-filters(
+                    type="button"
+                    translate="DISCOVER.FILTERS.CLEAR"
+                    ng-click="vm.clearFilters()"
+                    ng-if="vm.selectedFilters.length || vm.filterQ"
+                )
 
-        section.empty-epics.empty-large(ng-if="!vm.epics.size")
-            img(
-                src="#{v}/images/empty/empty_des.png"
-                ng-title="EPICS.EMPTY.HELP | translate"
+            tg-epics-table(
+                ng-if="vm.epics.size"
             )
-            h1.title(translate="EPICS.EMPTY.TITLE")
-            p(translate="EPICS.EMPTY.EXPLANATION")
-            a(
-                translate="EPICS.EMPTY.HELP"
-                href="https://tree.taiga.io/support/epics/what-is-an-epic/"
-                target="_blank"
-                ng-title="EPICS.EMPTY.HELP | translate"
-            )
-            button.create-epic.btn-big(
-                ng-if="vm.canCreateEpics()"
-                translate="EPICS.DASHBOARD.ADD"
-                title="{{ EPICS.DASHBOARD.ADD_TITLE | translate }}"
-                ng-click="vm.onCreateEpic()"
-            )
+
+            section.empty-epics.empty-large(ng-if="!vm.epics.size")
+                img(
+                    src="#{v}/images/empty/empty_des.png"
+                    ng-title="EPICS.EMPTY.HELP | translate"
+                )
+                h1.title(translate="EPICS.EMPTY.TITLE")
+                p(translate="EPICS.EMPTY.EXPLANATION")
+                a(
+                    translate="EPICS.EMPTY.HELP"
+                    href="https://tree.taiga.io/support/epics/what-is-an-epic/"
+                    target="_blank"
+                    ng-title="EPICS.EMPTY.HELP | translate"
+                )
+                button.create-epic.btn-big(
+                    ng-if="vm.canCreateEpics()"
+                    translate="EPICS.DASHBOARD.ADD"
+                    title="{{ EPICS.DASHBOARD.ADD_TITLE | translate }}"
+                    ng-click="vm.onCreateEpic()"
+                )

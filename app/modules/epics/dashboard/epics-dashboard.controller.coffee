@@ -20,7 +20,7 @@ class EpicsDashboardController extends mixOf(taiga.Controller, taiga.FiltersMixi
         "$tgConfirm",
         "tgProjectService",
         "tgEpicsService",
-        "$tgResources",
+        "tgResources",
         "$tgLocation",
         "$tgStorage",
         "tgFilterRemoteStorageService",
