@@ -154,6 +154,11 @@ class TaskboardController extends mixOf(taiga.Controller, taiga.PageMixin, taiga
         @.loadTasks()
         @.generateFilters()
 
+    clearFilters: () ->
+        @.replaceAllFilters({})
+        @.loadTasks()
+        @.generateFilters()
+
     addFilter: (newFilter) ->
         @.selectFilter(newFilter.category.dataType, newFilter.filter.id, false, newFilter.mode)
         @.loadTasks()

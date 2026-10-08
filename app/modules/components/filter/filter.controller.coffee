@@ -49,7 +49,15 @@ class FilterController
         @.lengthZeroError = false
         @.repeatedFilterError = false
 
-    saveCustomFilter: () ->
+    clearCustomFilter: () ->
+        @.customFilterForm = false
+        @.lengthZeroError = false
+        @.repeatedFilterError = false
+        @.activeCustomFilter = null
+
+        @.onClearFilters()
+
+    saveCustomFilter: () -> 
         if @.customFilterName.length > 0 && !@.customFilters.find((filter) => filter.name == @.customFilterName)
             @.lengthZeroError = false
             @.repeatedFilterError = false
