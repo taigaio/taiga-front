@@ -5,8 +5,8 @@
         "OR": "או",
         "I_GET_IT": "הבנתי",
         "LOADING": "טוען...",
-        "DATE": "שששש חחח יי",
-        "DATETIME": "יי חחח ששש שש:דד",
+        "DATE": "DD MMM YYYY",
+        "DATETIME": "DD MMM YYYY HH:mm",
         "SAVE": "שמור",
         "CANCEL": "בטל",
         "ACCEPT": "אשר",
@@ -90,7 +90,7 @@
             "PIKADAY": "פורמט תאריך שגוי, נסה להשתמש בתבנית DD MMM YYYY (like 23 Mar 1984)"
         },
         "PICKERDATE": {
-            "FORMAT": "שששש חחח יי",
+            "FORMAT": "DD MMM YYYY",
             "FIRST_DAY_OF_WEEK": "1",
             "PREV_MONTH": "חודש קודם",
             "NEXT_MONTH": "חודש הבא",
@@ -1452,7 +1452,7 @@
         },
         "SPRINTS": {
             "TITLE": "ספרינטים",
-            "DATE": "שששש חחח יי",
+            "DATE": "DD MMM YYYY",
             "LINK_TASKBOARD": "לוח ספרינטים",
             "TITLE_LINK_TASKBOARD": "עבור ללוח המשימות של \"{{name}}\"",
             "EMPTY": "אין עדין ספרינטים",
@@ -1501,7 +1501,7 @@
             "YAXIS_LABEL": "Projected points progress",
             "OPTIMAL": "Pending points for day {{formattedDate}} should be {{roundedValue}}",
             "REAL": "מספר הנקודות הממתינות ליום {{formattedDate}} הוא {{roundedValue}}",
-            "DATE": "שששש חחח יי",
+            "DATE": "DD MMMM YYYY",
             "HELP_LINK": "How this chart works",
             "HELP_TOOLTIP": "This burndown chart shows the sprint's approximate or projected progress based on estimated user story closed tasks. Actual finished estimated user stories are tracked above."
         },
@@ -1737,7 +1737,7 @@
     "WIKI": {
         "PAGE_TITLE": "{{wikiPageName}} - ויקי - {{projectName}}",
         "PAGE_DESCRIPTION": "גרסא אחרונה ב {{lastModifiedDate}} ({{totalEditions}} editions in total) תוכן: {{ wikiPageContent }}",
-        "DATETIME": "יי חחח ששש שש:דד",
+        "DATETIME": "DD MMM YYYY HH:mm",
         "REMOVE": "מחק את דף הויקי הזה",
         "DELETE_LIGHTBOX_TITLE": "מחק דף ויקי",
         "DELETE_LINK_TITLE": "מחק קישורי ויקי",
