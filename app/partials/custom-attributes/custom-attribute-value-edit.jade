@@ -30,7 +30,7 @@ form.custom-field-single.editable(autocomplete="off" class!="<%= type === 'check
             <% } else if (type=="date") { %>
             input#custom-field-value(name="value", type="text", data-pikaday, value!="<%- value %>")
             <% } else if (type=="url") { %>
-            input#custom-field-value(name="value", data-type="url", type="url", value!="<%- value %>")
+            input#custom-field-value(name="value", data-customfieldurl="true", type="url", value!="<%- value %>")
             <% } else if (type=="dropdown") { %>
             select#custom-field-value(
                 name="value"

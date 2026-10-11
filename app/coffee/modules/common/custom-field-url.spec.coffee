@@ -41,10 +41,28 @@ describe "Custom URL field validation", ->
         "obsidian://plugin-action?foo=bar"
         "javascript:alert(1)"
         "data:text/html,<script>alert(1)</script>"
+        "javascript:alert(1)@example.com"
+        "obsidian://open?vault=x&file=y&append=z"
+        "obsidian://open?vault=x&file=y&file=z"
     ]
         do (value) ->
             it "rejects #{value}", ->
                 expect(validate(value)).to.equal(false)
+
+    it "keeps invalid values in the editor and displays a Checksley error", ->
+        value = "obsidian://new?vault=x&file=y"
+        expect(validate(value)).to.equal(false)
+        expect(form.find("input[name=value]").val()).to.equal(value)
+        expect(form.find(".checksley-error-list li")).to.have.length(1)
+
+    it "still allows an optional URL field to be cleared", ->
+        expect(validate("")).to.equal(true)
+
+    it "does not allow Obsidian in other Checksley URL inputs", ->
+        form = $('<form><input name="value" type="url" data-type="url"></form>')
+        form.find("input").val("obsidian://open?vault=x&file=y")
+        form.appendTo(document.body)
+        expect(form.checksley().validate()).to.equal(false)
 
 describe "Custom URL field policy", ->
     for value in [

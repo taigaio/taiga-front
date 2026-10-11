@@ -890,6 +890,7 @@ i18nInit = (lang, $translate) ->
         equalto: $translate.instant("COMMON.FORM_ERRORS.EQUAL_TO")
         linewidth: $translate.instant("COMMON.FORM_ERRORS.LINEWIDTH") # Extra validator
         pikaday: $translate.instant("COMMON.FORM_ERRORS.PIKADAY") # Extra validator
+        customfieldurl: $translate.instant("COMMON.FORM_ERRORS.TYPE_URL")
     }
     checksley.updateMessages('default', messages)
 
