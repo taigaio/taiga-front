@@ -201,3 +201,14 @@ describe "Custom URL field rendering", ->
         expect(repo.save).to.have.been.calledOnce
         expect(repo.save.firstCall.args[0].attributes_values[1]).to.equal("")
         expect(field.find(".custom-field-value a")).to.have.length(0)
+
+    for value in ["obsidian://open?vault=x&file={{7*7}}", "data:text/html,{{7*7}}"]
+        do (value) ->
+            it "keeps a stored URL literal when opening the editor: #{value}", ->
+                field = mount({id: 1, name: "URL", description: "", type: "url"}, {
+                    attributes_values: {1: value}
+                })
+                field.find(".js-edit-description").trigger("click")
+                scope.$digest()
+                expect(field.find("input[name=value]").val()).to.equal(value)
+                expect(repo.save).not.to.have.been.called
