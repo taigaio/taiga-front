@@ -100,6 +100,10 @@ describe "Custom URL field policy", ->
         "obsidian://open?vault=x&file=y&file=z"
         "obsidian://open?vault=x&file=y&%76ault=z"
         "obsidian://user@open?vault=x&file=y"
+        "obsidian://@open?vault=x&file=y"
+        "obsidian://:@open?vault=x&file=y"
+        "obsidian://open:?vault=x&file=y"
+        "obsidian://OPEN?vault=x&file=y"
         "obsidian://open:123?vault=x&file=y"
         "obsidian://open/path?vault=x&file=y"
         "obsidian://open/?vault=x&file=y"
@@ -119,3 +123,23 @@ describe "Custom URL field policy", ->
         do (value) ->
             it "rejects unsafe or malformed value #{JSON.stringify(value)}", ->
                 expect(taiga.isValidCustomFieldUrl(value)).to.equal(false)
+
+    it "preserves existing URLs when the native URL parser is unavailable", ->
+        originalURL = window.URL
+        try
+            window.URL = undefined
+            expect(taiga.isValidCustomFieldUrl("https://example.com")).to.equal(true)
+            expect(taiga.isValidCustomFieldUrl("mailto:user@example.com")).to.equal(true)
+            expect(taiga.isValidCustomFieldUrl("obsidian://open?vault=x&file=y")).to.equal(false)
+        finally
+            window.URL = originalURL
+
+    it "rejects Obsidian if the native parser cannot inspect query parameters", ->
+        originalURL = window.URL
+        parsedURL = new URL("obsidian://open?vault=x&file=y")
+        Object.defineProperty(parsedURL, "searchParams", {value: undefined})
+        try
+            window.URL = -> parsedURL
+            expect(taiga.isValidCustomFieldUrl("obsidian://open?vault=x&file=y")).to.equal(false)
+        finally
+            window.URL = originalURL
