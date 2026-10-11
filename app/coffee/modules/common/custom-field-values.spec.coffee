@@ -168,3 +168,36 @@ describe "Custom URL field rendering", ->
                 expect(field.find(".custom-field-value span").text()).to.equal(value)
                 expect(saved.attributes_values[1]).to.equal(value)
                 expect(repo.save).to.have.been.calledOnce
+
+    for value in [
+        "https://example.com"
+        "http://example.com/path?query=value#section"
+        "mailto:user@example.com"
+        "ftp://example.com/path"
+        "sftp://example.com/path"
+        "git://example.com/project.git"
+        "example.com/path"
+    ]
+        do (value) ->
+            it "preserves saving and linking #{value}", ->
+                field = mount({id: 1, name: "URL", description: "", type: "url"}, {
+                    attributes_values: {1: ""}
+                })
+                field.find("input[name=value]").val(value)
+                field.find(".js-save-description").trigger("click")
+
+                expect(repo.save).to.have.been.calledOnce
+                expect(repo.save.firstCall.args[0].attributes_values[1]).to.equal(value)
+                expect(field.find(".custom-field-value a")).to.have.attr("href", value)
+
+    it "allows an existing URL value to be cleared", ->
+        field = mount({id: 1, name: "URL", description: "", type: "url"}, {
+            attributes_values: {1: "https://example.com"}
+        })
+        field.find(".js-edit-description").trigger("click")
+        field.find("input[name=value]").val("")
+        field.find(".js-save-description").trigger("click")
+
+        expect(repo.save).to.have.been.calledOnce
+        expect(repo.save.firstCall.args[0].attributes_values[1]).to.equal("")
+        expect(field.find(".custom-field-value a")).to.have.length(0)

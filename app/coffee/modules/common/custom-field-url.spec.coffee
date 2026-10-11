@@ -27,6 +27,13 @@ describe "Custom URL field validation", ->
         "https://example.com"
         "http://example.com/path"
         "mailto:user@example.com"
+        "ftp://example.com/path"
+        "sftp://example.com/path"
+        "git://example.com/project.git"
+        "example.com/path"
+        "https://user:pass@example.com:8443/path?query=value#section"
+        "http://192.168.1.1/path"
+        "https://例え.テスト/path"
         "obsidian://open?vault=vaultname&file=path%2Fto%2Fpage"
     ]
         do (value) ->
