@@ -67,6 +67,7 @@ describe "Custom URL field rendering", ->
         "javascript:alert(1)"
         "javascript:alert(1)@example.com"
         "data:text/html,<script>alert(1)</script>"
+        "data:text/html,{{7*7}}"
     ]
         do (value) ->
             it "keeps #{value} as text after TEXT becomes URL", ->
@@ -91,3 +92,11 @@ describe "Custom URL field rendering", ->
 
         expect(field.find(".custom-field-value a")).to.have.attr("href", value)
         expect(storedValues.attributes_values[1]).to.equal(value)
+
+    it "does not compile expressions in a stored URL", ->
+        value = "obsidian://open?vault=x&file={{7*7}}"
+        field = mount({id: 1, name: "URL", description: "", type: "url"}, {
+            attributes_values: {1: value}
+        })
+        expect(field.find(".custom-field-value a")).to.have.attr("href", value)
+        expect(field.find(".custom-field-value span").text()).to.equal(value)

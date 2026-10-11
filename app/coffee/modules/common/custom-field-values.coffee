@@ -172,6 +172,7 @@ CustomAttributeValueDirective = ($template, $selectedText, $compile, $translate,
                 description: attributeValue.description
                 value: value
                 type: attributeValue.type
+                isValidUrl: attributeValue.type is URL_TYPE and taiga.isValidCustomFieldUrl(value)
                 isEditable: editable
             }
 

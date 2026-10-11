@@ -17,9 +17,13 @@
     .custom-field-value-container
         <% if (type=="url") { %>
         .custom-field-value.js-value-view-mode
+            <% if (isValidUrl) { %>
             span
-                a(href!="<%- value %>")
+                a(href!="<%- value %>", ng-non-bindable)
                     <%- value %>
+            <% } else { %>
+            span(ng-bind="model")
+            <% } %>
         <% } else if (type=="richtext") { %>
         .custom-field-value.wysiwyg
             span(
