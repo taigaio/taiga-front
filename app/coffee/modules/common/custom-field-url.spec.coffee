@@ -31,6 +31,9 @@ describe "Custom URL field validation", ->
         "sftp://example.com/path"
         "git://example.com/project.git"
         "example.com/path"
+        "example.com:8080/path"
+        "example.com:8080?query=value#section"
+        "192.168.1.1:8080/path"
         "https://user:pass@example.com:8443/path?query=value#section"
         "http://192.168.1.1/path"
         "https://例え.テスト/path"
@@ -49,6 +52,12 @@ describe "Custom URL field validation", ->
         "javascript:alert(1)"
         "data:text/html,<script>alert(1)</script>"
         "javascript:alert(1)@example.com"
+        "user:pass@example.com"
+        "user:8080@example.com"
+        "user_name:pass@example.com"
+        "123:pass@example.com"
+        "javascript:8080"
+        "example.com:not-a-port/path"
         "obsidian://open?vault=x&file=y&append=z"
         "obsidian://open?vault=x&file=y&file=z"
     ]
@@ -130,6 +139,7 @@ describe "Custom URL field policy", ->
             window.URL = undefined
             expect(taiga.isValidCustomFieldUrl("https://example.com")).to.equal(true)
             expect(taiga.isValidCustomFieldUrl("mailto:user@example.com")).to.equal(true)
+            expect(taiga.isValidCustomFieldUrl("example.com:8080/path")).to.equal(true)
             expect(taiga.isValidCustomFieldUrl("obsidian://open?vault=x&file=y")).to.equal(false)
         finally
             window.URL = originalURL

@@ -21,18 +21,28 @@ isValidObsidianUrl = (value) ->
     return false unless keys.length is 2 and url.searchParams.get("vault") and url.searchParams.get("file")
     return keys.every (key) -> key in ["vault", "file"]
 
-isValidCustomFieldUrl = (value) ->
-    return false unless _.isString(value) and value.length
+getCustomFieldUrlHref = (value) ->
+    return null unless _.isString(value) and value.length
     # URL parsing strips control characters; reject them before checking the scheme.
-    return false if /[\x00-\x20\x7f]/.test(value)
+    return null if /[\x00-\x20\x7f]/.test(value)
 
-    protocolMatch = /^([a-z][a-z0-9+.-]*):/i.exec(value)
+    href = value
+    if /^[^:\/?#@]+:\d+(?:[\/?#]|$)/.test(value)
+        href = "http://#{value}"
+
+    protocolMatch = /^([a-z][a-z0-9+.-]*):/i.exec(href)
     protocol = protocolMatch[1].toLowerCase() if protocolMatch
     if protocol is "obsidian"
-        return isValidObsidianUrl(value)
+        return href if isValidObsidianUrl(href)
+        return null
 
-    return false if protocol? and protocol not in ["http", "https", "ftp", "sftp", "git", "mailto"]
-    return validators.type(value, "url")
+    return null if protocol? and protocol not in ["http", "https", "ftp", "sftp", "git", "mailto"]
+    return null if not protocol? and /^[^\/?#]*:[^\/?#]*@/.test(href)
+    return href if validators.type(href, "url")
+    return null
+
+isValidCustomFieldUrl = (value) -> getCustomFieldUrlHref(value)?
 
 validators = checksley.updateValidators({customfieldurl: isValidCustomFieldUrl})
 @.taiga.isValidCustomFieldUrl = isValidCustomFieldUrl
+@.taiga.getCustomFieldUrlHref = getCustomFieldUrlHref

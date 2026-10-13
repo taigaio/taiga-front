@@ -66,6 +66,10 @@ describe "Custom URL field rendering", ->
         "obsidian://open?vault=x&file=y&file=z"
         "javascript:alert(1)"
         "javascript:alert(1)@example.com"
+        "user:pass@example.com"
+        "user:8080@example.com"
+        "user_name:pass@example.com"
+        "123:pass@example.com"
         "data:text/html,<script>alert(1)</script>"
         "data:text/html,{{7*7}}"
     ]
@@ -137,6 +141,8 @@ describe "Custom URL field rendering", ->
         "obsidian://plugin-action?foo=bar"
         "javascript:alert(1)"
         "data:text/html,user@example.com"
+        "user:pass@example.com"
+        "user:8080@example.com"
     ]
         do (value) ->
             it "blocks saving #{value}", ->
@@ -189,6 +195,32 @@ describe "Custom URL field rendering", ->
                 expect(repo.save).to.have.been.calledOnce
                 expect(repo.save.firstCall.args[0].attributes_values[1]).to.equal(value)
                 expect(field.find(".custom-field-value a")).to.have.attr("href", value)
+
+    for value in ["example.com:8080/path", "example.com:8080?query=value#section", "192.168.1.1:8080/path"]
+        do (value) ->
+            it "saves #{value} unchanged and links to its HTTP address", ->
+                field = mount({id: 1, name: "URL", description: "", type: "url"}, {
+                    attributes_values: {1: ""}
+                })
+                field.find("input[name=value]").val(value)
+                field.find(".js-save-description").trigger("click")
+
+                expect(repo.save).to.have.been.calledOnce
+                expect(repo.save.firstCall.args[0].attributes_values[1]).to.equal(value)
+                expect(field.find(".custom-field-value a")).to.have.attr("href", "http://#{value}")
+                expect(field.find(".custom-field-value span").text()).to.equal(value)
+
+            it "links stored #{value} to HTTP after TEXT becomes URL without changing it", ->
+                attribute = {id: 1, name: "URL", description: "", type: "text"}
+                storedValues = {attributes_values: {1: value}}
+                mount(attribute, storedValues)
+                attribute.type = "url"
+                field = mount(attribute, storedValues)
+
+                expect(field.find(".custom-field-value a")).to.have.attr("href", "http://#{value}")
+                expect(field.find(".custom-field-value span").text()).to.equal(value)
+                expect(storedValues.attributes_values[1]).to.equal(value)
+                expect(repo.save).not.to.have.been.called
 
     it "allows an existing URL value to be cleared", ->
         field = mount({id: 1, name: "URL", description: "", type: "url"}, {
