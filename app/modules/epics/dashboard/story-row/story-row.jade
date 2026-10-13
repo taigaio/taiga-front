@@ -6,8 +6,8 @@
 //- Copyright (c) 2021-present Kaleidos INC
 
 .story-row(
-    ng-class="{'is-blocked': vm.story.get('is_blocked'), 'is-closed': vm.story.get('is_closed')}"
-    ng-hide="!vm.options.closed_us && vm.story.get('is_closed')"
+    ng-class="{'is-blocked': vm.story.get('is_blocked'), 'is-closed': vm.story.get('is_closed'), 'is-archived': vm.story.get('is_archived')}"
+    ng-hide="(!vm.options.closed_us && vm.story.get('is_closed')) || (!vm.options.archived_us && vm.story.get('is_archived'))"
 )
     .name(ng-if="vm.options.name")
         .name-container
