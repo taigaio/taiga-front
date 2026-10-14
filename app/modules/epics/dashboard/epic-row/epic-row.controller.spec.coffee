@@ -37,6 +37,8 @@ describe "EpicRow", ->
     _mocks = () ->
         module ($provide) ->
             provide = $provide
+            mocks.scope = {$emit: sinon.stub()}
+            provide.value "$scope", mocks.scope
             _mockTgConfirm()
             _mockTgProjectService()
             _mockTgEpicsService()
@@ -110,6 +112,7 @@ describe "EpicRow", ->
         ctrl.updateStatus(statusId).then () ->
             expect(ctrl.loadingStatus).to.be.false
             expect(ctrl.displayStatusList).to.be.false
+            expect(mocks.scope.$emit).have.been.calledWith("epic:status:changed")
             done()
 
     it "Update Epic Status Error", (done) ->
@@ -131,6 +134,7 @@ describe "EpicRow", ->
             expect(ctrl.loadingStatus).to.be.false
             expect(ctrl.displayStatusList).to.be.false
             expect(mocks.tgConfirm.notify).have.been.calledWith('error')
+            expect(mocks.scope.$emit).not.have.been.called
             done()
 
     it "display User Stories", (done) ->

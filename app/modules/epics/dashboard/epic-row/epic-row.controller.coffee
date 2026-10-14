@@ -8,12 +8,13 @@
 
 class EpicRowController
     @.$inject = [
+        "$scope",
         "$tgConfirm",
         "tgProjectService",
         "tgEpicsService"
     ]
 
-    constructor: (@confirm, @projectService, @epicsService) ->
+    constructor: (@scope, @confirm, @projectService, @epicsService) ->
         @.displayUserStories = false
         @.displayAssignedTo = false
         @.displayStatusList = false
@@ -54,6 +55,8 @@ class EpicRowController
         @.displayStatusList = false
         @.loadingStatus = true
         return @epicsService.updateEpicStatus(@.epic, statusId)
+            .then () =>
+                @scope.$emit("epic:status:changed")
             .catch () =>
                 @confirm.notify('error')
             .finally () =>
