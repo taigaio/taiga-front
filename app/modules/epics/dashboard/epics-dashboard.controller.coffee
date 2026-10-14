@@ -57,6 +57,14 @@ class EpicsDashboardController extends mixOf(taiga.Controller, taiga.FiltersMixi
 
         return if @.applyStoredFilters(@params.pslug, @.filtersHashSuffix, @.validQueryParams)
 
+        @scope.$on "epic:status:changed", () =>
+            filters = @.getActiveFilters()
+            if filters.status or filters.exclude_status
+                @.reloadWithFilters()
+            else
+                filters.project = @project.get("id")
+                @.loadFilterData(_.omit(filters, "page"))
+
     _setMeta: () ->
         return null if !@.project
 
