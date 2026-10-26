@@ -23,4 +23,12 @@ describe "ThemeService", ->
     it "use a test theme", () ->
         window._version = '123'
         themeService.use(data.theme)
-        expect($("link[rel='stylesheet']")).to.have.attr("href", "123/styles/theme-#{data.theme}.css")
+        expect($("#taiga-theme")).to.have.attr("href", "123/styles/theme-#{data.theme}.css")
+
+    it "leaves the loading stylesheet in place", ->
+        loading = $("<link id='taiga-loading-style' rel='stylesheet' href='loading.css'>")
+        $("head").prepend(loading)
+        window._version = '123'
+        themeService.use(data.theme)
+        expect(loading).to.have.attr("href", "loading.css")
+        loading.remove()

@@ -1,0 +1,39 @@
+/* Keep application content out of view until its selected theme is ready. */
+html,
+body {
+    margin: 0;
+}
+
+body:not(.taiga-ready) > :not(#taiga-loading) {
+    display: none !important;
+}
+
+#taiga-loading {
+    align-items: center;
+    background: #1b2230;
+    color: #f5f8fc;
+    display: flex;
+    flex-direction: column;
+    font: 16px sans-serif;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+#taiga-loading button {
+    background: #40cdb4;
+    border: 0;
+    border-radius: 3px;
+    color: #141922;
+    cursor: pointer;
+    margin-top: 1rem;
+    padding: .5rem 1rem;
+}
+
+#taiga-loading button:focus {
+    outline: 2px solid #f5f8fc;
+    outline-offset: 2px;
+}
+
+body.taiga-ready #taiga-loading {
+    display: none;
+}

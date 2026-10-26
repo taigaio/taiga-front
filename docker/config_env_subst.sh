@@ -44,10 +44,28 @@ if [[ -z "${ENABLE_TRELLO_IMPORTER}" ]]; then
     export ENABLE_TRELLO_IMPORTER="false"
 fi
 
-# Default language
-if [[ -z "${DEFAULT_LANGUAGE}" ]]; then
-    export DEFAULT_LANGUAGE="en"
+# Use the backend's language setting when supplied. Keep DEFAULT_LANGUAGE as
+# a compatibility alias for existing frontend deployments.
+if [[ -n "${LANGUAGE_CODE:-}" && -n "${DEFAULT_LANGUAGE:-}" &&
+      "${LANGUAGE_CODE}" != "${DEFAULT_LANGUAGE}" ]]; then
+    echo "LANGUAGE_CODE and DEFAULT_LANGUAGE must match" >&2
+    exit 1
 fi
+export LANGUAGE_CODE="${LANGUAGE_CODE:-${DEFAULT_LANGUAGE:-en}}"
+
+if [[ ! "$LANGUAGE_CODE" =~ ^[a-z]{2}(-[a-z0-9]+)*$ ]] ||
+   ! compgen -G "/usr/share/nginx/html/v-*/locales/taiga/locale-${LANGUAGE_CODE}.json" > /dev/null; then
+    echo "LANGUAGE_CODE is not a shipped frontend locale" >&2
+    exit 1
+fi
+
+# The upstream image can contain an older prebuilt distribution. Offer the
+# dark theme only after that distribution includes its compiled stylesheet.
+TAIGA_THEMES_JSON='["taiga"]'
+if compgen -G "/usr/share/nginx/html/v-*/styles/theme-taiga-dark.css" > /dev/null; then
+    TAIGA_THEMES_JSON='["taiga", "taiga-dark"]'
+fi
+export TAIGA_THEMES_JSON
 
 # Debug
 if [[ -z "${DEBUG}" ]]; then

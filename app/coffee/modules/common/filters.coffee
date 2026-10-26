@@ -30,6 +30,35 @@ yesNoFilter = ($translate) ->
 module.filter("yesNo", ["$translate", yesNoFilter])
 
 
+themeNameFilter = ($translate) ->
+    keys = {
+        "taiga": "THEMES.LIGHT"
+        "taiga-dark": "THEMES.DARK"
+    }
+
+    filter = (theme) ->
+        return "" if !theme
+        key = keys[theme]
+        return theme if !key
+        label = $translate.instant(key)
+        return if label == key then theme else label
+
+    filter.$stateful = true
+    return filter
+
+module.filter("themeName", ["$translate", themeNameFilter])
+
+
+localeNameFilter = ->
+    return (code, locales) ->
+        return "" if !code
+        for locale in (locales || []) when locale.code == code
+            return locale.name
+        return code
+
+module.filter("localeName", localeNameFilter)
+
+
 unslugify = ->
     return taiga.unslugify
 

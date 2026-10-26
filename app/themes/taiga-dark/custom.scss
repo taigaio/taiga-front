@@ -1,0 +1,17 @@
+// This source code is licensed under the terms of the
+// GNU Affero General Public License found in the LICENSE file in
+// the root directory of this source tree.
+
+body {
+    background: $grey-02;
+    color: $grey-90;
+}
+
+// These legacy button variants use bright fills and otherwise inherit the
+// light foreground used by buttons on dark surfaces.
+.button-green,
+.button-gray,
+.button-red,
+.button-red-light {
+    color: $grey-02;
+}
