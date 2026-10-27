@@ -11,6 +11,21 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
+  locale-keys:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v7.0.1
+      with:
+        persist-credentials: false
+
+    - name: Check locale keys
+      run: python3 scripts/check_locale_keys.py --supported-codes-file scripts/selectable-locale-codes.json --baseline scripts/locale-key-baseline.json
+
+    - name: Test locale key checker
+      run: python3 -m unittest discover -s scripts/tests -p 'test_check_locale_keys.py'
+
   linters:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
@@ -94,4 +109,3 @@ jobs:
 
     - name: pass unit test
       run: npm run ci:test
-
