@@ -113,11 +113,64 @@ loadApp = (emojisPromise) ->
             emojisPromise.then ->
                 angular.bootstrap(document, ['taiga'])
 
-promise = fetch "conf.json"
-promise
-.then((response) => response.json())
-.then (data) ->
+isAvailableTheme = (theme) ->
+    return window._taigaAvailableThemes.includes(theme) and
+           window.taigaConfig.themes.includes(theme)
+
+getInitialTheme = ->
+    theme = window.taigaConfig.defaultTheme || "taiga"
+    theme = "taiga" if !isAvailableTheme(theme)
+
+    try
+        user = JSON.parse(localStorage.getItem("userInfo"))
+        theme = user.theme if user?.theme and isAvailableTheme(user.theme)
+    catch error
+        # A corrupt local preference must not stop the application.
+
+    return theme
+
+loadTheme = (theme) ->
+    return new Promise (resolve, reject) ->
+        link = document.getElementById("taiga-theme")
+        if !link
+            link = document.createElement("link")
+            link.id = "taiga-theme"
+            link.rel = "stylesheet"
+            document.head.appendChild(link)
+
+        link.onload = resolve
+        link.onerror = reject
+        link.href = "#{window._version}/styles/theme-#{theme}.css"
+
+showLoadError = ->
+    loading = document.getElementById("taiga-loading")
+    loading.textContent = "Taiga could not load."
+    retry = document.createElement("button")
+    retry.type = "button"
+    retry.textContent = "Retry"
+    retry.addEventListener "click", -> window.location.reload()
+    loading.appendChild(retry)
+
+startApp = ->
+    theme = getInitialTheme()
+    loadTheme(theme)
+    .catch ->
+        throw new Error("The default theme could not load") if theme == "taiga"
+        window._taigaAvailableThemes = window._taigaAvailableThemes.filter (available) -> available != theme
+        return loadTheme("taiga")
+    .then ->
+        document.body.classList.add("taiga-ready")
+        mainLoad()
+    .catch ->
+        showLoadError()
+
+promise = fetch "conf.json", {cache: "no-store"}
+promise = promise.then (response) ->
+    throw new Error("conf.json could not load") if !response.ok
+    return response.json()
+promise = promise.then (data) ->
     window.taigaConfig = Object.assign({}, window.taigaConfig, data)
+    document.documentElement.lang = window.taigaConfig.defaultLanguage
 
     base = document.querySelector('base')
 
@@ -128,8 +181,8 @@ promise
         base.setAttribute("href", window.taigaConfig.baseHref)
         document.head.appendChild(base)
 
-    mainLoad()
+    startApp()
 
 promise.catch () ->
-    console.error "Your conf.json file is not a valid json file, please review it."
-    mainLoad()
+    console.error "Taiga could not load conf.json."
+    showLoadError()

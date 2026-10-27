@@ -76,6 +76,9 @@ class AuthService extends taiga.Service
         compiledThemes = window._taigaAvailableThemes
         defaultTheme = @config.get("defaultTheme") || "taiga"
 
+        if !_.includes(@config.get("themes"), defaultTheme) || !compiledThemes.includes(defaultTheme)
+            defaultTheme = "taiga"
+
         if !_.includes(@config.get("themes"), @rootscope.user?.theme) || !compiledThemes.includes(@rootscope.user?.theme)
             return defaultTheme
 
@@ -90,6 +93,7 @@ class AuthService extends taiga.Service
 
     _setLocales: ->
         lang = @rootscope.user?.lang || @config.get("defaultLanguage") || "en"
+        document.documentElement.lang = lang
         @translate.preferredLanguage(lang)  # Needed for calls to the api in the correct language
         @translate.use(lang)                # Needed for change the interface in runtime
 
@@ -126,6 +130,8 @@ class AuthService extends taiga.Service
         @rootscope.auth = null
         @rootscope.user = null
         @storage.remove("userInfo")
+        @._setLocales()
+        @._setTheme()
 
     setRefreshToken: (token) ->
         @storage.set("refresh", token)

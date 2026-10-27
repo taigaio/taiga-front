@@ -1965,6 +1965,10 @@
             "RESULTS": "Search results"
         }
     },
+    "THEMES": {
+        "LIGHT": "Light",
+        "DARK": "Dark"
+    },
     "ZOOM": {
         "TITLE": "Zoom:",
         "ZOOM-1": "Compact",

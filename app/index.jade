@@ -22,7 +22,7 @@ html(lang="en", ng-attr-dir="{{ isRTL ? 'rtl' : 'ltr' }}")
         meta(name="keywords", content="agile, scrum, taiga, management, project, developer, designer, user experience")
 
         //-meta(name="viewport", content="width=device-width, user-scalable=no")
-        link(rel="stylesheet", href="#{v}/styles/theme-taiga.css")
+        link(rel="stylesheet", href="loading.css")
         link(rel="icon", type="image/png", href="#{v}/images/favicon.png")
 
         //- PRERENDER SERVICE: This is to know when the page is completely loaded.
@@ -33,6 +33,7 @@ html(lang="en", ng-attr-dir="{{ isRTL ? 'rtl' : 'ltr' }}")
             window._taigaAvailableThemes = !{availableThemes};
 
     body(tg-main, ng-class="{'rtl': isRTL}")
+        div#taiga-loading(role="status") Loading Taiga…
         tg-legacy
 
         div(tg-navigation-bar, ng-if="!errorHandling.showingError")

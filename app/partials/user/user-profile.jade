@@ -103,6 +103,7 @@ div.wrapper(
                         ng-options="locale.code as locale.name for locale in locales"
                     )
                         option(value="", translate="USER_PROFILE.FIELD.LANGUAGE_DEFAULT")
+                    small(ng-if="!lang") {{effectiveLang | localeName:locales}}
 
                 fieldset
                     label(for="theme", translate="USER_PROFILE.FIELD.THEME")
@@ -110,9 +111,10 @@ div.wrapper(
                         name="theme"
                         id="theme"
                         ng-model="theme"
-                        ng-options="availableTheme for availableTheme in availableThemes"
+                        ng-options="availableTheme as (availableTheme | themeName) for availableTheme in availableThemes"
                     )
                         option(value="", translate="USER_PROFILE.FIELD.THEME_DEFAULT")
+                    small(ng-if="!theme") {{effectiveTheme | themeName}}
 
                 fieldset
                     label(for="bio", translate="USER_PROFILE.FIELD.BIO")

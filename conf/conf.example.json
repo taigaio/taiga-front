@@ -9,7 +9,8 @@
     "debugInfo": false,
     "defaultLanguage": "en",
     "themes": [
-        "taiga"
+        "taiga",
+        "taiga-dark"
     ],
     "defaultTheme": "taiga",
     "defaultLoginEnabled": true,

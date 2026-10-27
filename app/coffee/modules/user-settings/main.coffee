@@ -44,8 +44,10 @@ class UserSettingsController extends mixOf(taiga.Controller, taiga.PageMixin)
         if !@scope.user
             @errorHandlingService.permissionDenied()
         else
-            @scope.lang = @getLan()
-            @scope.theme = @getTheme()
+            @scope.lang = @scope.user.lang || ""
+            @scope.theme = @scope.user.theme || ""
+            @scope.effectiveLang = @config.get("defaultLanguage") || "en"
+            @scope.effectiveTheme = @getTheme()
 
         maxFileSize = @config.get("maxUploadFileSize", null)
         if maxFileSize
@@ -68,18 +70,13 @@ class UserSettingsController extends mixOf(taiga.Controller, taiga.PageMixin)
     openDeleteLightbox: ->
         @rootscope.$broadcast("deletelightbox:new", @scope.user)
 
-    getLan: ->
-        return @scope.user.lang ||
-               @translate.preferredLanguage()
-
     getTheme: ->
         compiledThemes = window._taigaAvailableThemes
+        enabledThemes = @config.get("themes", [])
 
-        theme = @scope.user.theme ||
-               @config.get("defaultTheme") ||
-               "taiga"
+        theme = @config.get("defaultTheme") || "taiga"
 
-        if !compiledThemes.includes(theme)
+        if !compiledThemes.includes(theme) || !enabledThemes.includes(theme)
             theme = "taiga"
 
         return theme

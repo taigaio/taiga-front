@@ -1,0 +1,81 @@
+// This source code is licensed under the terms of the
+// GNU Affero General Public License found in the LICENSE file in
+// the root directory of this source tree.
+
+@import "../taiga/variables";
+
+// Keep the light theme's semantic palette while reversing its neutral scale.
+$grey-02: #141922;
+$grey-05: #1b2230;
+$grey-10: #252e3d;
+$grey-20: #364255;
+$grey-30: #56657a;
+$grey-40: #8798ad;
+$grey-50: #afbdd0;
+$grey-60: #c4cfde;
+$grey-70: #d7e0ea;
+$grey-80: #e6edf5;
+$grey-90: #f5f8fc;
+
+$black: $grey-90;
+$blackish: $grey-90;
+$grayer: $grey-70;
+$gray: $grey-60;
+$gray-light: $grey-50;
+$gray-lighter: $grey-30;
+$whitish: $grey-10;
+$mass-white: $grey-05;
+$white: $grey-05;
+
+$primary: #40cdb4;
+$primary-75: #31b59e;
+$primary-50: #218d7d;
+$primary-25: #1b554e;
+$primary-10: #173831;
+$primary-light: $primary-75;
+$primary-lighter: $primary-10;
+$primary-dark: $primary-50;
+$primary-background: $primary-25;
+
+$secondary: #b6d45f;
+$secondary-75: #9cb74f;
+$secondary-50: #78943d;
+$secondary-25: #34452b;
+$secondary-light: $secondary-50;
+$secondary-dark: #cce686;
+
+$red: #ff7f87;
+$red-25: #5b303a;
+$red-10: #38252d;
+$red-light: #ffa8ad;
+
+$green-light: #2d493b;
+$card: #383428;
+$card-hover: #47412e;
+$card-dark: #645633;
+
+$top-icon-color: $grey-90;
+$dropdown-color: $grey-05;
+$highlight: #5d6b35;
+
+$color-solid-primary: #257a70;
+$color-link-primary: #78d6e6;
+$color-link-tertiary: #b7c7dc;
+
+$color-gray100: $grey-02;
+$color-gray200: $grey-05;
+$color-gray300: $grey-10;
+$color-gray400: $grey-20;
+$color-gray800: $grey-60;
+$color-black600: $grey-70;
+$color-black700: $grey-80;
+$color-black800: $grey-80;
+$color-black900: $grey-90;
+$color-white: $grey-05;
+$color-black: $grey-90;
+
+$color-link-red: #ff8e99;
+$color-link-orange: #ffae75;
+$color-link-yellow: #f6d881;
+$color-link-green: #b8db83;
+$color-link-purple: #e4a8de;
