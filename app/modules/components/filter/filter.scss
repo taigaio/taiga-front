@@ -201,6 +201,25 @@ tg-filter {
     }
 }
 
+.clear-filter-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    margin: .5rem 0;
+
+    .clear-filter {
+        @include font-size(small);
+        @include font-type(medium);
+        background: none;
+        color: $color-link-primary;
+        padding: 0;
+        text-transform: lowercase;
+
+        &[disabled] {
+            color: rgba($color-link-primary, .5);
+        }
+    }
+}
+
 .filters-applied {
     border-bottom: 1px solid $color-gray400;
     margin-bottom: .5rem;
