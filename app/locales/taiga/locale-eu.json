@@ -66,8 +66,8 @@
         "FORM_ERRORS": {
             "DEFAULT_MESSAGE": "Balio hori baliogabea da.",
             "TYPE_EMAIL": "Hemen baliozko e-posta bat idatzi behar da.",
-            "TYPE_URL": "Hemen baliozko URL bat idatzi behar da.",
-            "TYPE_URLSTRICT": "Hemen baliozko URL bat idatzi behar da.",
+            "TYPE_URL": "Hemen baliozko Url bat idatzi behar da.",
+            "TYPE_URLSTRICT": "Hemen baliozko Url bat idatzi behar da.",
             "TYPE_NUMBER": "Hemen baliozko zenbaki bat idatzi behar da.",
             "TYPE_DIGITS": "Hemen zenbaki bat idatzi behar da.",
             "TYPE_DATEISO": "Balio honek baliozko data bat izan behar du (YYYY-MM-DD).",
@@ -320,6 +320,9 @@
                 "ADD_WIKI_LINKS": "Gehitu wiki estekak",
                 "DELETE_WIKI_LINKS": "Ezabatu wiki esteka"
             }
+        },
+        "ARCHIVED_PROJECT_WARNING": {
+            "MESSAGE": "Proiektu hau artxibatu egin da. Orain irakurtzeko soilik da."
         }
     },
     "LOGIN": {
