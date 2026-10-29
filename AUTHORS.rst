@@ -44,3 +44,4 @@ And here is an inevitably incomplete list of MUCH-APPRECIATED CONTRIBUTORS, peop
 - Vlad Topala <topalavlad@gmail.com>
 - Wil Wade
 - Iago Last
+- Baptiste Gosselin <baptiste.gosselin@unxwares.com>

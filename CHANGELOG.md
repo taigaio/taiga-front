@@ -2,7 +2,7 @@
 
 ## 6.10.4 (unreleased)
 
-- ...
+- fix: docker image on nginx 1.30 with up to date Alpine packages (nginx 1.23 runs on the end-of-life Alpine 3.17)
 
 ## 6.10.3 (2026-05-14)
 - fix: intermitent error when changing project name
