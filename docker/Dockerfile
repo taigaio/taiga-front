@@ -4,7 +4,7 @@
 #
 # Copyright (c) 2021-present Kaleidos INC
 
-FROM nginx:1.23-alpine
+FROM nginx:1.30-alpine
 LABEL maintainer="support@taiga.io"
 
 COPY docker/default.conf /etc/nginx/conf.d/default.conf
@@ -13,6 +13,7 @@ COPY docker/config_env_subst.sh /docker-entrypoint.d/30_config_env_subst.sh
 
 RUN set -eux; \
     apk update; \
+    apk upgrade --no-cache; \
     apk add --no-cache --virtual .build-deps \
        subversion; \
     apk add \
