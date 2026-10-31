@@ -1,3 +1,31 @@
+@font-face {
+    font-display: swap;
+    font-family: 'Vazirmatn';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/Vazirmatn-Regular.woff2') format('woff2');
+}
+
+@font-face {
+    font-display: swap;
+    font-family: 'Vazirmatn';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../fonts/Vazirmatn-Bold.woff2') format('woff2');
+}
+
+@font-face {
+    font-display: swap;
+    font-family: 'Ubuntu-Regular';
+    src: url('../fonts/Vazirmatn-Regular.woff2') format('woff2');
+}
+
+@font-face {
+    font-display: swap;
+    font-family: 'Ubuntu-Medium';
+    src: url('../fonts/Vazirmatn-Bold.woff2') format('woff2');
+}
+
 /* Siapicha Persian Theme */
 
 body {
