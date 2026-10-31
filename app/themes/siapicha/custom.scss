@@ -1,0 +1,598 @@
+@font-face {
+    font-display: swap;
+    font-family: 'Vazirmatn';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/Vazirmatn-Regular.woff2') format('woff2');
+}
+
+@font-face {
+    font-display: swap;
+    font-family: 'Vazirmatn';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../fonts/Vazirmatn-Bold.woff2') format('woff2');
+}
+
+@font-face {
+    font-display: swap;
+    font-family: 'Ubuntu-Regular';
+    src: url('../fonts/Vazirmatn-Regular.woff2') format('woff2');
+}
+
+@font-face {
+    font-display: swap;
+    font-family: 'Ubuntu-Medium';
+    src: url('../fonts/Vazirmatn-Bold.woff2') format('woff2');
+}
+
+/* Siapicha Persian Theme */
+
+body {
+    background-color: $color-gray100;
+    font-family: 'Vazirmatn', 'Tahoma', sans-serif;
+}
+
+/* Links */
+a {
+    color: $color-link-primary;
+}
+
+/* Buttons */
+button {
+    border-radius: 10px;
+}
+
+/* Persian RTL */
+html[dir='rtl'] {
+    text-align: right;
+}
+
+.rtl {
+    .detail-ref,
+    .card-ref,
+    .user-story-number,
+    .issues-table .issue-ref,
+    .search-result-table .ref,
+    .list-itemtype-ticket .ticket-id {
+        direction: ltr;
+        display: inline-block;
+        unicode-bidi: isolate;
+    }
+
+    .detail-ref {
+        margin: 0 0 0 .5rem;
+    }
+
+    .card-title .card-ref {
+        margin-inline-end: .25rem;
+        padding: 0;
+    }
+
+    .backlog-header-title {
+        gap: .5rem;
+    }
+
+    .backlog-stories-number {
+        margin: 0;
+    }
+
+    .btn-filter tg-svg {
+        margin-left: .25rem;
+        margin-right: 0;
+    }
+
+    tg-input-search input[type='search'] {
+        padding-inline-end: 1rem;
+        padding-inline-start: 2.25rem;
+    }
+}
+
+.button,
+.btn-big,
+.btn-small,
+.btn-icon {
+    border-radius: 8px;
+    text-transform: none;
+}
+
+input[type='text'],
+input[type='number'],
+input[type='password'],
+input[type='url'],
+input[type='email'],
+input[type='date'],
+input[type='search'],
+select,
+textarea {
+    border-radius: 8px;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid $color-link-primary;
+    outline-offset: 2px;
+}
+
+// Global navigation
+.navbar {
+    background-color: $color-white;
+    border-bottom: 1px solid $color-gray300;
+    box-shadow: none;
+    padding-inline: .75rem;
+
+    .nav-left,
+    .nav-right {
+        gap: .25rem;
+        min-width: 0;
+    }
+
+    .nav-left .logo {
+        align-items: center;
+        display: flex;
+        padding: .25rem;
+    }
+
+    .nav-right:not(.center) > a,
+    .nav-right .topnav-dropdown-wrapper > a {
+        align-items: center;
+        border-radius: 8px;
+        display: flex;
+        height: 40px;
+        justify-content: center;
+        margin-block: 4px;
+        padding: .5rem;
+        width: 40px;
+    }
+
+    .nav-right svg {
+        margin-top: 0;
+    }
+
+    [tg-dropdown-user] {
+        margin: 0;
+        padding: 0 .25rem;
+    }
+
+    .dropdown-user-inner {
+        border: 0;
+    }
+
+    .user-avatar,
+    .rtl & .user-avatar {
+        padding: 0;
+    }
+
+    .user-avatar img {
+        border: 2px solid $color-gray300;
+    }
+
+    .chevron {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        min-height: 40px;
+        min-width: 32px;
+        padding: .25rem;
+    }
+}
+
+.navbar .nav-right > a:hover,
+.navbar .nav-right > a.active,
+.navbar .nav-right .topnav-dropdown-wrapper:hover > a,
+.navbar .chevron:hover {
+    background: $color-gray200;
+}
+
+.navbar .dropdown-project-list-projects {
+    gap: .5rem;
+    min-height: 40px;
+    padding: .5rem .75rem;
+
+    .icon-folder {
+        margin: 0;
+    }
+}
+
+.navbar .topnav-dropdown-wrapper:focus-within .navbar-dropdown,
+.navbar [tg-dropdown-user]:focus-within .navbar-dropdown {
+    display: block;
+}
+
+.rtl .navbar-dropdown.dropdown-user {
+    left: 0;
+
+    ul::before,
+    ul::after {
+        left: 28px;
+    }
+}
+
+.navbar-dropdown,
+.topnav-dropdown-wrapper .navbar-dropdown-notifications {
+    background: $color-white;
+    border: 1px solid $color-gray300;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba($color-black900, .12);
+}
+
+.dropdown-project-list-projects,
+.navbar-dropdown a {
+    border-radius: 8px;
+}
+
+.dropdown-project-list .dropdown-project-list-link img {
+    margin-inline-end: .5rem;
+    margin-inline-start: 0;
+}
+
+.home-wrapper {
+    column-gap: 1.5rem;
+    row-gap: 1.5rem;
+
+    .dashboard-container {
+        margin: 0;
+    }
+
+    .title-bar {
+        background: transparent;
+        color: $color-black900;
+        padding: .5rem 0;
+    }
+
+    .home-project {
+        border-color: $color-gray300;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba($color-black900, .04);
+        margin: 0 0 1rem;
+
+        &:hover {
+            border-color: $primary-50;
+            box-shadow: 0 6px 18px rgba($color-black900, .1);
+        }
+    }
+
+    .project-card-inner {
+        padding: 1.25rem;
+    }
+}
+
+.rtl .home-wrapper .working-on-container {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+@media (min-width: 769px) {
+    .home-wrapper .dashboard-container {
+        column-gap: 1.5rem;
+    }
+
+    .home-wrapper .working-on-container {
+        margin: 0;
+    }
+}
+
+// Backlog
+.scrum {
+    grid-template-columns: minmax(0, 9fr) minmax(250px, 3fr);
+
+    .backlog,
+    .sidebar {
+        min-width: 0;
+    }
+
+    .summary {
+        margin-bottom: .75rem;
+    }
+
+    .empty-burndown {
+        margin-bottom: .75rem;
+        padding: .75rem 1rem;
+    }
+
+    .sprint-header .number {
+        margin-inline-end: .5ch;
+    }
+}
+
+// Work item details
+.wrapper:has(> .detail) {
+    .detail-title-text {
+        flex-wrap: wrap;
+        min-width: 0;
+    }
+
+    .detail-subject,
+    .edit-title-input {
+        min-width: 0;
+        overflow-wrap: anywhere;
+    }
+
+    .ticket-header,
+    .ticket-users-actions,
+    .comment-data {
+        flex-wrap: wrap;
+        gap: .5rem;
+    }
+
+    .ticket-users-actions {
+        margin-inline: 0;
+    }
+
+    .ticket-users-action {
+        align-items: center;
+        line-height: 1.5;
+        margin: 0;
+        min-height: 2.5rem;
+        padding: .5rem;
+    }
+
+    .attachment-name,
+    .comment-content-wrapper {
+        min-width: 0;
+        overflow-wrap: anywhere;
+    }
+}
+
+// Supporting work screens
+.issues-page,
+.search-result,
+.wiki,
+.project-data .timeline,
+.list-itemtype-ticket-data {
+    min-width: 0;
+}
+
+.issues-table .issue-subject,
+.list-itemtype-data-title,
+.profile-timeline .activity-item p,
+.wiki .wysiwyg {
+    overflow-wrap: anywhere;
+}
+
+.search-result-table .user-story-name span {
+    white-space: normal;
+}
+
+.wiki .wysiwyg pre {
+    direction: ltr;
+    overflow-x: auto;
+    text-align: left;
+}
+
+// Boards and forms
+.kanban-manager,
+.taskboard-manager {
+    min-height: 0;
+    min-width: 0;
+}
+
+.kanban-table,
+.taskboard-table {
+    min-height: 0;
+    min-width: 0;
+
+    .card-subject {
+        overflow-wrap: anywhere;
+    }
+
+    .card-title a {
+        min-width: 0;
+    }
+
+    .task-colum-name {
+        border-radius: 8px 8px 0 0;
+        gap: .25rem;
+        text-transform: none;
+    }
+
+    .card:not(.gu-mirror) {
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba($color-black900, .1);
+    }
+
+    .card-inner {
+        border-radius: 8px;
+    }
+}
+
+input[type='search'] {
+    padding-inline-end: 25px;
+    padding-inline-start: 1rem;
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding-inline: .25rem;
+
+        .nav-left,
+        .nav-right {
+            gap: 0;
+        }
+
+        .dropdown-project-list-projects {
+            padding-inline: .4rem;
+        }
+    }
+
+    .wrapper:has(> .scrum),
+    .wrapper:has(> .detail),
+    .wrapper:has(> .kanban),
+    .wrapper:has(> .taskboard),
+    .wrapper.issues,
+    .wrapper:has(> .search-result),
+    .wrapper:has(> .wiki),
+    .wrapper:has(> .single-project) {
+        flex-direction: column;
+
+        > tg-project-menu {
+            height: 110px;
+            overflow-y: auto;
+        }
+
+        .sticky-project-menu {
+            position: static;
+        }
+    }
+
+    .issues .taskboard-actions,
+    .issue-table-options-start {
+        flex-wrap: wrap;
+        gap: .5rem;
+    }
+
+    .issue-container {
+        flex-direction: column;
+
+        .filters-bar {
+            flex: 0 1 auto;
+            position: static;
+            width: 100%;
+        }
+    }
+
+    .issues-table,
+    .search-result-table {
+        overflow-x: auto;
+    }
+
+    .search-result-table .row {
+        min-width: 38rem;
+    }
+
+    .wrapper:has(> .search-result) > .sidebar,
+    .wrapper:has(> .wiki) > .wiki-nav {
+        max-width: none;
+        width: 100%;
+    }
+
+    .project-data {
+        flex-wrap: wrap;
+    }
+
+    .kanban,
+    .taskboard {
+        min-width: 0;
+        width: 100%;
+
+        .taskboard-actions {
+            flex-wrap: wrap;
+            gap: .5rem;
+        }
+    }
+
+    .kanban-manager,
+    .taskboard-manager {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .wrapper:has(> .detail) {
+        .detail,
+        .ticket-data {
+            flex: 0 1 auto;
+            max-width: none;
+            width: 100%;
+        }
+
+        .detail-header,
+        .detail-title-wrapper,
+        .edit-title-wrapper {
+            min-width: 0;
+        }
+
+        .attachment-list .single-attachment {
+            flex-wrap: wrap;
+            gap: .5rem;
+        }
+
+        .attachment-list .attachment-name {
+            flex-shrink: 1;
+        }
+
+        .comment .comment-avatar {
+            margin-inline-end: .75rem;
+            width: 2.5rem;
+        }
+    }
+
+    .scrum {
+        grid-template-columns: minmax(0, 1fr);
+
+        .backlog-manager,
+        .backlog-manager.expanded {
+            grid-template-columns: minmax(0, 1fr);
+        }
+
+        .backlog-top,
+        .backlog-table-header,
+        .backlog-filter {
+            height: auto;
+            position: static;
+        }
+
+        .backlog-header,
+        .backlog-table-options,
+        .backlog-table-options-start {
+            flex-wrap: wrap;
+            gap: .5rem;
+        }
+
+        .backlog-table-options-start > * {
+            margin: 0;
+        }
+
+        .backlog-table-header .row {
+            flex-wrap: wrap;
+            gap: .5rem;
+        }
+
+        .backlog-table-header .user-stories {
+            flex-basis: calc(100% - 4rem);
+        }
+
+        .backlog-table-header .row > .status {
+            flex-basis: auto;
+        }
+
+        .backlog-table-body .row {
+            flex-wrap: wrap;
+            gap: .5rem;
+        }
+
+        .backlog-table-body .user-stories {
+            flex-basis: calc(100% - 4rem);
+            min-width: 0;
+        }
+
+        .backlog-table-body .row > .status {
+            flex-basis: auto;
+        }
+
+        .summary {
+            height: auto;
+            overflow: visible;
+        }
+
+        .summary-stats {
+            margin: .25rem .5rem;
+        }
+    }
+
+    .home-wrapper .project-list {
+        flex-basis: auto;
+        min-width: 0;
+        width: 100%;
+    }
+
+    .home-wrapper .duty-summary {
+        min-width: 0;
+    }
+
+    .navbar-dropdown,
+    .topnav-dropdown-wrapper .navbar-dropdown-notifications {
+        max-width: calc(100vw - 2rem);
+    }
+}

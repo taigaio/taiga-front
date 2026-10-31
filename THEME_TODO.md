@@ -1,0 +1,5 @@
+- [x] 1. Stabilize the custom theme and CSS loading
+- [x] 2. Implement Vazirmatn typography and RTL foundations
+- [x] 3. Create a beautiful color palette and shared UI components
+- [x] 4. Redesign the dashboard and project navigation
+- [x] 5. Polish Kanban, tasks, forms, and responsive layouts
