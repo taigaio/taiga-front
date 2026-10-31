@@ -48,6 +48,46 @@ html[dir='rtl'] {
     text-align: right;
 }
 
+.rtl {
+    .detail-ref,
+    .card-ref,
+    .user-story-number,
+    .issues-table .issue-ref,
+    .search-result-table .ref,
+    .list-itemtype-ticket .ticket-id {
+        direction: ltr;
+        display: inline-block;
+        unicode-bidi: isolate;
+    }
+
+    .detail-ref {
+        margin: 0 0 0 .5rem;
+    }
+
+    .card-title .card-ref {
+        margin-inline-end: .25rem;
+        padding: 0;
+    }
+
+    .backlog-header-title {
+        gap: .5rem;
+    }
+
+    .backlog-stories-number {
+        margin: 0;
+    }
+
+    .btn-filter tg-svg {
+        margin-left: .25rem;
+        margin-right: 0;
+    }
+
+    tg-input-search input[type='search'] {
+        padding-inline-end: 1rem;
+        padding-inline-start: 2.25rem;
+    }
+}
+
 .button,
 .btn-big,
 .btn-small,
@@ -147,11 +187,117 @@ textarea:focus-visible {
     }
 }
 
+// Backlog
+.scrum {
+    grid-template-columns: minmax(0, 9fr) minmax(250px, 3fr);
+
+    .backlog,
+    .sidebar {
+        min-width: 0;
+    }
+
+    .summary {
+        margin-bottom: .75rem;
+    }
+
+    .empty-burndown {
+        margin-bottom: .75rem;
+        padding: .75rem 1rem;
+    }
+
+    .sprint-header .number {
+        margin-inline-end: .5ch;
+    }
+}
+
+// Work item details
+.wrapper:has(> .detail) {
+    .detail-title-text {
+        flex-wrap: wrap;
+        min-width: 0;
+    }
+
+    .detail-subject,
+    .edit-title-input {
+        min-width: 0;
+        overflow-wrap: anywhere;
+    }
+
+    .ticket-header,
+    .ticket-users-actions,
+    .comment-data {
+        flex-wrap: wrap;
+        gap: .5rem;
+    }
+
+    .ticket-users-actions {
+        margin-inline: 0;
+    }
+
+    .ticket-users-action {
+        align-items: center;
+        line-height: 1.5;
+        margin: 0;
+        min-height: 2.5rem;
+        padding: .5rem;
+    }
+
+    .attachment-name,
+    .comment-content-wrapper {
+        min-width: 0;
+        overflow-wrap: anywhere;
+    }
+}
+
+// Supporting work screens
+.issues-page,
+.search-result,
+.wiki,
+.project-data .timeline,
+.list-itemtype-ticket-data {
+    min-width: 0;
+}
+
+.issues-table .issue-subject,
+.list-itemtype-data-title,
+.profile-timeline .activity-item p,
+.wiki .wysiwyg {
+    overflow-wrap: anywhere;
+}
+
+.search-result-table .user-story-name span {
+    white-space: normal;
+}
+
+.wiki .wysiwyg pre {
+    direction: ltr;
+    overflow-x: auto;
+    text-align: left;
+}
+
 // Boards and forms
+.kanban-manager,
+.taskboard-manager {
+    min-height: 0;
+    min-width: 0;
+}
+
 .kanban-table,
 .taskboard-table {
+    min-height: 0;
+    min-width: 0;
+
+    .card-subject {
+        overflow-wrap: anywhere;
+    }
+
+    .card-title a {
+        min-width: 0;
+    }
+
     .task-colum-name {
         border-radius: 8px 8px 0 0;
+        gap: .25rem;
         text-transform: none;
     }
 
@@ -171,6 +317,185 @@ input[type='search'] {
 }
 
 @media (max-width: 768px) {
+    .rtl .navbar {
+        .nav-right > a,
+        .nav-right .topnav-dropdown-wrapper > a {
+            padding-inline: .35rem;
+        }
+
+        [tg-dropdown-user] {
+            margin: 0;
+            padding: 0 .35rem;
+        }
+
+        .nav-right .user-avatar {
+            padding-right: 0;
+        }
+    }
+
+    .wrapper:has(> .scrum),
+    .wrapper:has(> .detail),
+    .wrapper:has(> .kanban),
+    .wrapper:has(> .taskboard),
+    .wrapper.issues,
+    .wrapper:has(> .search-result),
+    .wrapper:has(> .wiki),
+    .wrapper:has(> .single-project) {
+        flex-direction: column;
+
+        > tg-project-menu {
+            height: 110px;
+            overflow-y: auto;
+        }
+
+        .sticky-project-menu {
+            position: static;
+        }
+    }
+
+    .issues .taskboard-actions,
+    .issue-table-options-start {
+        flex-wrap: wrap;
+        gap: .5rem;
+    }
+
+    .issue-container {
+        flex-direction: column;
+
+        .filters-bar {
+            flex: 0 1 auto;
+            position: static;
+            width: 100%;
+        }
+    }
+
+    .issues-table,
+    .search-result-table {
+        overflow-x: auto;
+    }
+
+    .search-result-table .row {
+        min-width: 38rem;
+    }
+
+    .wrapper:has(> .search-result) > .sidebar,
+    .wrapper:has(> .wiki) > .wiki-nav {
+        max-width: none;
+        width: 100%;
+    }
+
+    .project-data {
+        flex-wrap: wrap;
+    }
+
+    .kanban,
+    .taskboard {
+        min-width: 0;
+        width: 100%;
+
+        .taskboard-actions {
+            flex-wrap: wrap;
+            gap: .5rem;
+        }
+    }
+
+    .kanban-manager,
+    .taskboard-manager {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .wrapper:has(> .detail) {
+        .detail,
+        .ticket-data {
+            flex: 0 1 auto;
+            max-width: none;
+            width: 100%;
+        }
+
+        .detail-header,
+        .detail-title-wrapper,
+        .edit-title-wrapper {
+            min-width: 0;
+        }
+
+        .attachment-list .single-attachment {
+            flex-wrap: wrap;
+            gap: .5rem;
+        }
+
+        .attachment-list .attachment-name {
+            flex-shrink: 1;
+        }
+
+        .comment .comment-avatar {
+            margin-inline-end: .75rem;
+            width: 2.5rem;
+        }
+    }
+
+    .scrum {
+        grid-template-columns: minmax(0, 1fr);
+
+        .backlog-manager,
+        .backlog-manager.expanded {
+            grid-template-columns: minmax(0, 1fr);
+        }
+
+        .backlog-top,
+        .backlog-table-header,
+        .backlog-filter {
+            height: auto;
+            position: static;
+        }
+
+        .backlog-header,
+        .backlog-table-options,
+        .backlog-table-options-start {
+            flex-wrap: wrap;
+            gap: .5rem;
+        }
+
+        .backlog-table-options-start > * {
+            margin: 0;
+        }
+
+        .backlog-table-header .row {
+            flex-wrap: wrap;
+            gap: .5rem;
+        }
+
+        .backlog-table-header .user-stories {
+            flex-basis: calc(100% - 4rem);
+        }
+
+        .backlog-table-header .row > .status {
+            flex-basis: auto;
+        }
+
+        .backlog-table-body .row {
+            flex-wrap: wrap;
+            gap: .5rem;
+        }
+
+        .backlog-table-body .user-stories {
+            flex-basis: calc(100% - 4rem);
+            min-width: 0;
+        }
+
+        .backlog-table-body .row > .status {
+            flex-basis: auto;
+        }
+
+        .summary {
+            height: auto;
+            overflow: visible;
+        }
+
+        .summary-stats {
+            margin: .25rem .5rem;
+        }
+    }
+
     .home-wrapper .project-list {
         flex-basis: auto;
         min-width: 0;
