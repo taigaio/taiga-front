@@ -76,3 +76,73 @@ textarea:focus-visible {
     outline: 2px solid $color-link-primary;
     outline-offset: 2px;
 }
+
+// Dashboard and project navigation
+.navbar {
+    background-color: $color-white;
+    box-shadow: 0 1px 4px rgba($color-black900, .08);
+}
+
+.navbar-dropdown,
+.topnav-dropdown-wrapper .navbar-dropdown-notifications {
+    background: $color-white;
+    border: 1px solid $color-gray300;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba($color-black900, .12);
+}
+
+.dropdown-project-list-projects,
+.navbar-dropdown a {
+    border-radius: 8px;
+}
+
+.dropdown-project-list .dropdown-project-list-link img {
+    margin-inline-end: .5rem;
+    margin-inline-start: 0;
+}
+
+.home-wrapper {
+    column-gap: 1.5rem;
+    row-gap: 1.5rem;
+
+    .dashboard-container {
+        margin: 0;
+    }
+
+    .title-bar {
+        background: transparent;
+        color: $color-black900;
+        padding: .5rem 0;
+    }
+
+    .home-project {
+        border-color: $color-gray300;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba($color-black900, .04);
+        margin: 0 0 1rem;
+
+        &:hover {
+            border-color: $primary-50;
+            box-shadow: 0 6px 18px rgba($color-black900, .1);
+        }
+    }
+
+    .project-card-inner {
+        padding: 1.25rem;
+    }
+}
+
+.rtl .home-wrapper .working-on-container {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+@media (min-width: 769px) {
+    .home-wrapper .dashboard-container {
+        column-gap: 1.5rem;
+    }
+
+    .home-wrapper .working-on-container {
+        margin: 0;
+    }
+}
