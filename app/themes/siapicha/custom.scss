@@ -146,3 +146,43 @@ textarea:focus-visible {
         margin: 0;
     }
 }
+
+// Boards and forms
+.kanban-table,
+.taskboard-table {
+    .task-colum-name {
+        border-radius: 8px 8px 0 0;
+        text-transform: none;
+    }
+
+    .card:not(.gu-mirror) {
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba($color-black900, .1);
+    }
+
+    .card-inner {
+        border-radius: 8px;
+    }
+}
+
+input[type='search'] {
+    padding-inline-end: 25px;
+    padding-inline-start: 1rem;
+}
+
+@media (max-width: 768px) {
+    .home-wrapper .project-list {
+        flex-basis: auto;
+        min-width: 0;
+        width: 100%;
+    }
+
+    .home-wrapper .duty-summary {
+        min-width: 0;
+    }
+
+    .navbar-dropdown,
+    .topnav-dropdown-wrapper .navbar-dropdown-notifications {
+        max-width: calc(100vw - 2rem);
+    }
+}

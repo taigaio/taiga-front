@@ -2,4 +2,4 @@
 - [x] 2. Implement Vazirmatn typography and RTL foundations
 - [x] 3. Create a beautiful color palette and shared UI components
 - [x] 4. Redesign the dashboard and project navigation
-- [ ] 5. Polish Kanban, tasks, forms, and responsive layouts
+- [x] 5. Polish Kanban, tasks, forms, and responsive layouts
