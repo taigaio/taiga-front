@@ -45,8 +45,9 @@ var utils = require("./gulp-utils");
 
 var themes = utils.themes.sequence();
 
-if (argv.theme) {
-    themes.set(argv.theme);
+var selectedTheme = argv.theme || "siapicha";
+if (argv._.indexOf("deploy") === -1) {
+    themes.set(selectedTheme);
 }
 
 const availableThemes = JSON.stringify(themes.availableThemes.map((theme) => {
@@ -237,6 +238,7 @@ gulp.task("jade", function() {
             pretty: true,
             locals:{
                 v:version,
+                selectedTheme: selectedTheme,
                 userpilotToken: userpilotToken,
                 disableRobots: disableRobots,
                 zendeskToken: zendeskToken,
@@ -255,6 +257,7 @@ gulp.task("jade-inheritance", function() {
             pretty: true,
             locals:{
                 v: version,
+                selectedTheme: selectedTheme,
                 userpilotToken: userpilotToken,
                 disableRobots: disableRobots,
                 zendeskToken: zendeskToken,

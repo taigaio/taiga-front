@@ -1,0 +1,21 @@
+/* Siapicha Persian Theme */
+
+body {
+    background-color: rgb(246, 248, 252);
+    font-family: 'Vazirmatn', 'Tahoma', sans-serif;
+}
+
+/* Links */
+a {
+    color: rgb(79, 70, 229);
+}
+
+/* Buttons */
+button {
+    border-radius: 10px;
+}
+
+/* Persian RTL */
+html[dir='rtl'] {
+    text-align: right;
+}
