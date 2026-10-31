@@ -29,13 +29,13 @@
 /* Siapicha Persian Theme */
 
 body {
-    background-color: rgb(246, 248, 252);
+    background-color: $color-gray100;
     font-family: 'Vazirmatn', 'Tahoma', sans-serif;
 }
 
 /* Links */
 a {
-    color: rgb(79, 70, 229);
+    color: $color-link-primary;
 }
 
 /* Buttons */
@@ -46,4 +46,33 @@ button {
 /* Persian RTL */
 html[dir='rtl'] {
     text-align: right;
+}
+
+.button,
+.btn-big,
+.btn-small,
+.btn-icon {
+    border-radius: 8px;
+    text-transform: none;
+}
+
+input[type='text'],
+input[type='number'],
+input[type='password'],
+input[type='url'],
+input[type='email'],
+input[type='date'],
+input[type='search'],
+select,
+textarea {
+    border-radius: 8px;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid $color-link-primary;
+    outline-offset: 2px;
 }
