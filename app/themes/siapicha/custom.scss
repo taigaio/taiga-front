@@ -117,10 +117,98 @@ textarea:focus-visible {
     outline-offset: 2px;
 }
 
-// Dashboard and project navigation
+// Global navigation
 .navbar {
     background-color: $color-white;
-    box-shadow: 0 1px 4px rgba($color-black900, .08);
+    border-bottom: 1px solid $color-gray300;
+    box-shadow: none;
+    padding-inline: .75rem;
+
+    .nav-left,
+    .nav-right {
+        gap: .25rem;
+        min-width: 0;
+    }
+
+    .nav-left .logo {
+        align-items: center;
+        display: flex;
+        padding: .25rem;
+    }
+
+    .nav-right:not(.center) > a,
+    .nav-right .topnav-dropdown-wrapper > a {
+        align-items: center;
+        border-radius: 8px;
+        display: flex;
+        height: 40px;
+        justify-content: center;
+        margin-block: 4px;
+        padding: .5rem;
+        width: 40px;
+    }
+
+    .nav-right svg {
+        margin-top: 0;
+    }
+
+    [tg-dropdown-user] {
+        margin: 0;
+        padding: 0 .25rem;
+    }
+
+    .dropdown-user-inner {
+        border: 0;
+    }
+
+    .user-avatar,
+    .rtl & .user-avatar {
+        padding: 0;
+    }
+
+    .user-avatar img {
+        border: 2px solid $color-gray300;
+    }
+
+    .chevron {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        min-height: 40px;
+        min-width: 32px;
+        padding: .25rem;
+    }
+}
+
+.navbar .nav-right > a:hover,
+.navbar .nav-right > a.active,
+.navbar .nav-right .topnav-dropdown-wrapper:hover > a,
+.navbar .chevron:hover {
+    background: $color-gray200;
+}
+
+.navbar .dropdown-project-list-projects {
+    gap: .5rem;
+    min-height: 40px;
+    padding: .5rem .75rem;
+
+    .icon-folder {
+        margin: 0;
+    }
+}
+
+.navbar .topnav-dropdown-wrapper:focus-within .navbar-dropdown,
+.navbar [tg-dropdown-user]:focus-within .navbar-dropdown {
+    display: block;
+}
+
+.rtl .navbar-dropdown.dropdown-user {
+    left: 0;
+
+    ul::before,
+    ul::after {
+        left: 28px;
+    }
 }
 
 .navbar-dropdown,
@@ -317,19 +405,16 @@ input[type='search'] {
 }
 
 @media (max-width: 768px) {
-    .rtl .navbar {
-        .nav-right > a,
-        .nav-right .topnav-dropdown-wrapper > a {
-            padding-inline: .35rem;
+    .navbar {
+        padding-inline: .25rem;
+
+        .nav-left,
+        .nav-right {
+            gap: 0;
         }
 
-        [tg-dropdown-user] {
-            margin: 0;
-            padding: 0 .35rem;
-        }
-
-        .nav-right .user-avatar {
-            padding-right: 0;
+        .dropdown-project-list-projects {
+            padding-inline: .4rem;
         }
     }
 
