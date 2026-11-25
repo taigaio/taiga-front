@@ -37,10 +37,9 @@ class UserTimelineItemTitle
             user = timeline.getIn(['data', 'user'])
 
             if user.get('is_profile_visible')
-                title_attr = @translate.instant('COMMON.SEE_USER_PROFILE', {username: user.get('username')})
                 url = "user-profile:username=timeline.getIn(['data', 'user', 'username'])"
 
-                return @._getLink(url, user.get('name'), title_attr)
+                return @._getLink(url, user.get('name'))
             else
                 return @._getUsernameSpan(user.get('name'))
 
@@ -83,7 +82,7 @@ class UserTimelineItemTitle
             else
                 new_value = timeline.getIn(["data", "value_diff", "value"]).first().get(1)
 
-            return $('<span>').attr('ng-non-bindable', true).text(new_value).prop('outerHTML')
+            return @._getBdi(new_value)
 
         sprint_name: (timeline, event) ->
             url = "project-taskboard:project=timeline.getIn(['data', 'project', 'slug']),sprint=timeline.getIn(['data', 'milestone', 'slug'])"
@@ -96,37 +95,31 @@ class UserTimelineItemTitle
             event_us = {obj: 'parent_userstory'}
             url = @._getDetailObjUrl(event_us)
 
-            text = '#' + obj.get('ref') + ' ' + obj.get('subject')
-
-            return @._getLink(url, text)
+            return @._getLink(url, obj.get('subject'), obj.get('ref'))
 
         related_us_name: (timeline, event) ->
             obj = timeline.getIn(["data", "userstory"])
             url = "project-userstories-detail:project=timeline.getIn(['data', 'userstory', 'project', 'slug']),ref=timeline.getIn(['data', 'userstory', 'ref'])"
-            text = '#' + obj.get('ref') + ' ' + obj.get('subject')
-            return @._getLink(url, text)
+            return @._getLink(url, obj.get('subject'), obj.get('ref'))
 
         epic_name: (timeline, event) ->
             obj = timeline.getIn(["data", "epic"])
             url = "project-epics-detail:project=timeline.getIn(['data', 'project', 'slug']),ref=timeline.getIn(['data', 'epic', 'ref'])"
-            text = '#' + obj.get('ref') + ' ' + obj.get('subject')
-            return @._getLink(url, text)
+            return @._getLink(url, obj.get('subject'), obj.get('ref'))
 
         obj_name: (timeline, event) ->
             obj = @._getTimelineObj(timeline, event)
             url = @._getDetailObjUrl(event)
 
             if event.obj == 'wikipage'
-                text = unslugify(obj.get('slug'))
+                return @._getLink(url, unslugify(obj.get('slug')))
             else if event.obj == 'milestone'
-                text = obj.get('name')
+                return @._getLink(url, obj.get('name'))
             else
-                text = '#' + obj.get('ref') + ' ' + obj.get('subject')
-
-            return @._getLink(url, text)
+                return @._getLink(url, obj.get('subject'), obj.get('ref'))
 
         role_name: (timeline, event) ->
-            return _.escape(timeline.getIn(['data', 'value_diff', 'value']).keySeq().first())
+            return @._getBdi(timeline.getIn(['data', 'value_diff', 'value']).keySeq().first())
     }
 
     constructor: (@translate, @sce) ->
@@ -150,24 +143,34 @@ class UserTimelineItemTitle
         }
         return url[event.obj][0] + url[event.obj][1]
 
-    _getLink: (url, text, title) ->
-        title = title || text
-
-        span = $('<span>')
+    # User content (names, subjects, values) is embedded in a translated UI
+    # sentence, so it is isolated with <bdi>: it takes its own direction from its
+    # first strong character and cannot reorder the words around it. The sentence
+    # itself keeps the UI direction.
+    _getBdiElement: (text) ->
+        return $('<bdi>')
             .attr('ng-non-bindable', true)
             .text(text)
 
-        return $('<a>')
-            .attr('tg-nav', url)
-            .append(span)
+    _getBdi: (text) ->
+        return @._getBdiElement(text).prop('outerHTML')
+
+    # `ref` (#123) is UI, not user content: it stays outside the isolate so it
+    # keeps its place in the sentence whatever the subject's direction.
+    _getLink: (url, text, ref) ->
+        link = $('<a>').attr('tg-nav', url)
+
+        if ref?
+            link.append(document.createTextNode('#' + ref + ' '))
+
+        return link
+            .append(@._getBdiElement(text))
             .prop('outerHTML')
 
     _getUsernameSpan: (text) ->
-        title = title || text
-
         return $('<span>')
             .addClass('username')
-            .text(text)
+            .append(@._getBdiElement(text))
             .prop('outerHTML')
 
     _getParams: (timeline, event, timeline_type) ->

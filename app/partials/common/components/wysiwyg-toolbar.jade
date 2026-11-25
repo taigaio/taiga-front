@@ -19,7 +19,7 @@
     )
         p.placeholder {{ placeholder }}
 
-    .editor-wrapper
+    .editor-wrapper(tg-bidi-observe)
 
     .mode-editor(ng-if="editMode")
         a.help-markdown(

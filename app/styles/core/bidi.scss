@@ -1,0 +1,114 @@
+// This source code is licensed under the terms of the
+// GNU Affero General Public License found in the LICENSE file in
+// the root directory of this source tree.
+//
+// Content-driven bidirectional text support.
+//
+// The UI direction is decided by the locale (see layout/rtl.scss). User
+// generated text (titles, comments, descriptions, tags...) may use any script
+// regardless of the UI locale. Two separate things are handled here:
+//
+// 1. Direction: an element that holds only user text resolves its own base
+//    direction from its first strong character, paragraph by paragraph
+//    (`unicode-bidi: plaintext`), and aligns to the start of it.
+// 2. Isolation: user text embedded in a UI sentence ("X created #12 <title>")
+//    must not reorder the words around it. It is wrapped in <bdi> (or an element
+//    with `unicode-bidi: plaintext`, which is an isolate for inline boxes); the
+//    sentence keeps the UI direction.
+
+// Isolation: titles and names, usually inline next to UI (#ref, icons,
+// counters). On block boxes this resolves their direction as in (1).
+.card-subject,
+.detail-subject,
+.view-subject,
+.issue-subject,
+.us-subject,
+.task-name-subject,
+.sprint-name,
+.tag-name,
+.link-title,
+.title-field,
+.subject,
+.comment-creator,
+.search-list .title,
+.project-name,
+.project-title,
+.project-card-name a,
+.list-itemtype-project-name,
+.ticket-project {
+    unicode-bidi: plaintext;
+}
+
+// Direction: blocks of user text.
+.view-subject,
+.comment-text,
+.subject,
+.title-field,
+.single-project-intro .project-name,
+.single-project-intro .description,
+.looking-for-people-content p,
+.project-card-description,
+.project-description,
+.list-itemtype-project-description,
+.activity-comment-quote {
+    text-align: start;
+    unicode-bidi: plaintext;
+}
+
+// Form fields: direction follows what is typed, also while the field is empty
+// the browser keeps the page direction.
+input[type='text'],
+input[type='search'],
+input:not([type]),
+textarea {
+    text-align: start;
+    unicode-bidi: plaintext;
+}
+
+// Rendered markdown (comments, descriptions, wiki, custom fields) and the
+// CKEditor editable area. Every block resolves its own direction.
+.wysiwyg,
+.ck-content {
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    li,
+    blockquote,
+    th,
+    td,
+    figcaption,
+    dt,
+    dd {
+        text-align: start;
+        unicode-bidi: plaintext;
+    }
+
+    // Lists, quotes and tables also need the *box* direction (marker side,
+    // indent, border, column order) to follow the content. `dir="auto"` is set
+    // on them by the tgBidi service; `:dir()` then mirrors the physical rules.
+    ul,
+    ol {
+        &:dir(rtl) {
+            padding-left: 0;
+            padding-right: 1rem;
+        }
+    }
+    blockquote:dir(rtl) {
+        border-left: 0;
+        border-right: 5px solid $color-solid-primary;
+    }
+
+    // Code is always left-to-right.
+    pre,
+    code,
+    kbd,
+    samp {
+        direction: ltr;
+        text-align: left;
+        unicode-bidi: isolate;
+    }
+}
