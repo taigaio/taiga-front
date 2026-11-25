@@ -320,3 +320,108 @@ describe "tgUserTimelineItemTitle", ->
         title = mySvc.getTitle(timeline, event, type)
 
         expect(title).to.be.equal("title_ok")
+
+    describe "bidi isolation of user content", () ->
+        _title = (timeline, event, param) ->
+            paramsKeys = {}
+            paramsKeys[param] = '{{' + param + '}}'
+
+            mockTranslate.instant
+                .withArgs('TITLE', paramsKeys)
+                .returns('text {{' + param + '}} text')
+
+            title = mySvc.getTitle(timeline, event, {key: 'TITLE', translate_params: [param]})
+
+            return $('<p>').html(title)
+
+        it "isolates the subject but keeps the ref outside", () ->
+            timeline = Immutable.fromJS({
+                data: {
+                    issue: {
+                        ref: 123,
+                        subject: 'عنوان <b>{{x}}</b>'
+                    }
+                }
+            })
+
+            title = _title(timeline, {obj: 'issue'}, 'obj_name')
+            link = title.children('a')
+
+            expect(title.text()).to.be.equal('text #123 عنوان <b>{{x}}</b> text')
+            expect(link.contents().first().text()).to.be.equal('#123 ')
+            expect(link.children('bdi').text()).to.be.equal('عنوان <b>{{x}}</b>')
+            expect(link.children('bdi').attr('ng-non-bindable')).to.be.ok
+            expect(title.find('b').length).to.be.equal(0)
+
+        it "isolates a milestone name without ref", () ->
+            timeline = Immutable.fromJS({
+                data: {
+                    milestone: {
+                        name: 'اسپرینت ۱'
+                    }
+                }
+            })
+
+            title = _title(timeline, {obj: 'milestone'}, 'obj_name')
+            link = title.children('a')
+
+            expect(link.text()).to.be.equal('اسپرینت ۱')
+            expect(link.children('bdi').text()).to.be.equal('اسپرینت ۱')
+
+        it "isolates the user name", () ->
+            timeline = Immutable.fromJS({
+                data: {
+                    user: {
+                        name: 'احمد',
+                        is_profile_visible: false
+                    }
+                }
+            })
+
+            title = _title(timeline, {}, 'username')
+
+            expect(title.children('.username').children('bdi').text()).to.be.equal('احمد')
+
+        it "isolates the linked user name", () ->
+            timeline = Immutable.fromJS({
+                data: {
+                    user: {
+                        name: 'احمد',
+                        username: 'ahmad',
+                        is_profile_visible: true
+                    }
+                }
+            })
+
+            title = _title(timeline, {}, 'username')
+            link = title.children('a')
+
+            expect(link.text()).to.be.equal('احمد')
+            expect(link.children('bdi').text()).to.be.equal('احمد')
+
+        it "isolates the project name", () ->
+            timeline = Immutable.fromJS({
+                data: {
+                    project: {
+                        name: 'پروژه'
+                    }
+                }
+            })
+
+            title = _title(timeline, {}, 'project_name')
+
+            expect(title.children('a').children('bdi').text()).to.be.equal('پروژه')
+
+        it "isolates a new value", () ->
+            timeline = Immutable.fromJS({
+                data: {
+                    value_diff: {
+                        key: 'status',
+                        value: ['قدیم', 'جدید']
+                    }
+                }
+            })
+
+            title = _title(timeline, {}, 'new_value')
+
+            expect(title.children('bdi').text()).to.be.equal('جدید')
