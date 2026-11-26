@@ -96,6 +96,18 @@ mixin epicSwitch(name, model)
                         for="switch-closed_us"
                     )
                     +epicSwitch('switch-closed_us', 'vm.options.closed_us')
+                .fieldset
+                    label.epics-table-options-vote(
+                        translate="EPICS.TABLE.ARCHIVED_EPICS"
+                        for="switch-archived"
+                    )
+                    +epicSwitch('switch-archived', 'vm.options.archived')
+                .fieldset
+                    label.epics-table-options-vote(
+                        translate="EPICS.TABLE.ARCHIVED_US"
+                        for="switch-archived_us"
+                    )
+                    +epicSwitch('switch-archived_us', 'vm.options.archived_us')
 
     .epics-table-body(
         tg-epics-sortable="vm.reorderEpic(epic, newIndex)"
